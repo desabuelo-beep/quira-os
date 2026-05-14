@@ -127,18 +127,24 @@ from quira_pages.p2_holding      import render as p2
 from quira_pages.p3_congruencias import render as p3
 from quira_pages.p4_geotwin      import render as p4
 from quira_pages.p5_operacion    import render as p5
+from quira_pages.p6_pulso        import render as p6
+from quira_pages.p7_brecha       import render as p7
+from quira_pages.p8_metas        import render as p8
 from components.sentinel   import render_sentinel
 
-def _p6_sentinel():
+def _p_sentinel():
     render_sentinel()
 
 PAGES = {
     "dashboard":    {"label": "Tablero Ejecutivo",     "icon": "📊", "render": p1},
+    "pulso":        {"label": "Pulso Ejecutivo",       "icon": "⚡", "render": p6},
+    "brecha":       {"label": "Causas de la Brecha",   "icon": "📉", "render": p7},
+    "metas":        {"label": "Metas PDOT",            "icon": "🎯", "render": p8},
     "holding":      {"label": "Holding Municipal",     "icon": "🏛️", "render": p2},
-    "congruencias": {"label": "Congruencias",          "icon": "🎯", "render": p3},
+    "congruencias": {"label": "Congruencias HPT-M",    "icon": "🔗", "render": p3},
     "geotwin":      {"label": "GeoTwin · Territorio",  "icon": "🗺️", "render": p4},
     "operacion":    {"label": "Operación Técnica",     "icon": "⚙️", "render": p5},
-    "sentinel":     {"label": "Sentinel · IA",         "icon": "🔮", "render": _p6_sentinel},
+    "sentinel":     {"label": "Sentinel · IA",         "icon": "🔮", "render": _p_sentinel},
 }
 
 # ── SIDEBAR ────────────────────────────────────────────────────────────────────
