@@ -114,11 +114,11 @@ if not is_authenticated():
     st.stop()
 
 # ── CARGA LAZY DE PÁGINAS ──────────────────────────────────────────────────────
-from pages.p1_dashboard    import render as p1
-from pages.p2_holding      import render as p2
-from pages.p3_congruencias import render as p3
-from pages.p4_geotwin      import render as p4
-from pages.p5_operacion    import render as p5
+from quira_pages.p1_dashboard    import render as p1
+from quira_pages.p2_holding      import render as p2
+from quira_pages.p3_congruencias import render as p3
+from quira_pages.p4_geotwin      import render as p4
+from quira_pages.p5_operacion    import render as p5
 from components.sentinel   import render_sentinel
 
 def _p6_sentinel():
