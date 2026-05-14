@@ -217,12 +217,14 @@ GROQ_API_KEY = "gsk_..."
 
 
 # ── HELPERS ────────────────────────────────────────────────────────────────────
-# Groq: free tier real (sin billing), OpenAI-compatible, ~30 RPM
-_GROQ_URL    = "https://api.groq.com/openai/v1/chat/completions"
-_GROQ_MODELS = [
+# Groq: free tier real (sin billing), OpenAI-compatible, ~30 RPM, 6k TPM
+_GROQ_URL        = "https://api.groq.com/openai/v1/chat/completions"
+_GROQ_MODELS     = [
     "llama-3.3-70b-versatile",   # Llama 3.3 70B — calidad alta, free
     "llama-3.1-8b-instant",      # fallback: más rápido si el anterior falla
 ]
+# Máximo de mensajes del historial enviados a la API (evita 413 por acumulación)
+_MAX_HISTORY_MSG = 6
 
 
 def _run_sentinel(api_key: str, system_prompt: str) -> None:
@@ -242,8 +244,10 @@ def _run_sentinel(api_key: str, system_prompt: str) -> None:
                 }
 
                 # Historial en formato OpenAI (user / assistant)
+                # Solo los últimos _MAX_HISTORY_MSG mensajes para no superar el TPM limit
+                recent = messages[-_MAX_HISTORY_MSG:] if len(messages) > _MAX_HISTORY_MSG else messages
                 groq_msgs = [{"role": "system", "content": system_prompt}]
-                for msg in messages:
+                for msg in recent:
                     groq_msgs.append({
                         "role": msg["role"],          # user / assistant
                         "content": msg["content"],
@@ -256,7 +260,7 @@ def _run_sentinel(api_key: str, system_prompt: str) -> None:
                     payload = {
                         "model": model_name,
                         "messages": groq_msgs,
-                        "max_tokens": 2048,
+                        "max_tokens": 800,
                         "temperature": 0.7,
                         "stream": True,
                     }

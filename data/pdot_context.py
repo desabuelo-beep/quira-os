@@ -122,8 +122,8 @@ def _build_priorizacion(df: pd.DataFrame) -> str:
         else:
             lines_otros.append(line)
 
-    text_alto  = "\n".join(lines_alto[:15])
-    text_otros = "\n".join(lines_otros[:10])
+    text_alto  = "\n".join(lines_alto[:8])
+    text_otros = "\n".join(lines_otros[:5])
 
     return _section(
         "PRIORIDADES PDOT — POTENCIALIDADES Y PROBLEMAS TERRITORIALES",
@@ -289,7 +289,7 @@ def _build_programas(df: pd.DataFrame) -> str:
         vistos.add(key)
 
         lines.append(f"  [{sistema}] {_trunc(obj_des, 80)} → Programa: {_trunc(programa, 60)}")
-        if len(lines) >= 18:
+        if len(lines) >= 10:
             break
 
     return _section(
@@ -372,77 +372,30 @@ def _trunc(text: str, n: int) -> str:
 
 def _build_diagnostico_docx() -> str:
     """
-    Contexto estático extraído del documento diagnóstico oficial PDOT Montecristi 2023-2027.
-    Fuente: 'diagnostico pdot para claude ingesta excel 2.docx' (Dylus Lab ProyecT).
-    Incluye matrices de sistematización y tablas de priorización por los 5 sistemas PDOT.
+    Resumen compacto del diagnóstico oficial PDOT (version condensada para TPM limit).
+    Fuente: documento diagnóstico técnico PDOT Montecristi 2023-2027 (300 págs).
     """
     return _section(
-        "DIAGNÓSTICO OFICIAL PDOT — MATRICES DE POTENCIALIDADES, PROBLEMAS Y PRIORIZACIÓN",
-        """Fuente: Documento de diagnóstico técnico oficial PDOT Montecristi 2023-2027.
-Metodología de priorización: C1=Apoyo sectorial, C2=Urgencia, C3=Ámbito territorial, C4=Capacidad institucional.
-Niveles: Alto (≥9 pts), Medio (5-8), Bajo (<5).
+        "DIAGNÓSTICO PDOT — BRECHAS Y POTENCIALIDADES CLAVE",
+        """BRECHAS CRÍTICAS (prioridad alta en matrices oficiales PDOT):
+  · Agua/Saneamiento: 34.9% viviendas con red pública agua; 43.5% alcantarillado (INEC).
+  · Vías: 53% centro urbano con tratamiento medio, 15.61% sin tratamiento.
+  · Residuos: 47.9 ton/día generación sin reciclaje ni clasificación.
+  · Conectividad/Salud: acceso inequitativo a tecnología y servicios médicos.
+  · Empleo: falta especialización mano de obra; oferta no suple demanda.
+  · Institucional: catastro predial desactualizado; déficit RRHH especializado.
+  · Riesgos naturales: asentamientos en zonas deslizamiento/movimiento de masa (ENOS).
 
-━━ SISTEMA FÍSICO AMBIENTAL ━━
-  [ALTO · 9pts]  Ecosistema — Contaminación de cuencas hídricas por descargas domésticas e industriales. Potencialidad: convenios de reforestación con fauna silvestre.
-  [ALTO · 10pts] Amenazas Naturales — Asentamientos en zonas de deslizamientos y movimientos de masa (eventos ENOS, sismos). Capacidad de respuesta ante eventos menores con sitios evacuación.
-  [ALTO · 10pts] Calidad Ambiental/Residuos — Déficit de espacio para tratamiento residuos sólidos (producción: 47.9 ton/día sin reciclaje). EP Aseo tiene competencia de recolección.
-  [MEDIO · 8pts] Contaminación — Aguas servidas en quebradas/esteros + emisiones GEI por cambio de uso de suelo agrícola y silvicultura.
-  [MEDIO · 7pts] Patrimonio Hídrico — Pérdida de hábitats por expansión urbana, agricultura intensiva. Patrimonio en SNAP con protección marítima.
-  [MEDIO · 6pts] Recursos Mineros — Falta facilidades para material pétreo obra pública. Minería ilegal en ecosistemas frágiles.
-  Desafío LP: infraestructura resiliente ante cambio climático; sistemas de monitoreo continuo.
+POTENCIALIDADES ESTRATÉGICAS:
+  · Turismo: UNESCO ciudad creativa; artesanía paja toquilla; recursos naturales.
+  · Empleo: 3er lugar en plazas de empleo en Manabí; polo inversión privada creciente.
+  · Social: Patronato 56,158 beneficiarios; Clínica Diálisis; CBV; menor índice delitos vs Manta.
+  · Ambiente: SNAP protegido, convenios reforestación, distintivo AFC agricultura familiar.
+  · Economía solidaria: artesanías paja toquilla/mimbre/barro con potencial formalización.
 
-━━ SISTEMA ASENTAMIENTOS HUMANOS ━━
-  [ALTO · 12pts] Agua y Saneamiento — Solo 34.9% viviendas con red pública de agua; 43.5% con alcantarillado (INEC). Estudios de ampliación existen en PUGS 2023.
-  [ALTO · 10pts] Red de Vías — Centro urbano: 53% vías con tratamiento medio, 15.61% sin tratamiento. Mal estado vías: principal malestar ciudadano. PUGS proyecta vías interconexión.
-  [MEDIO · 7pts] Transporte — Sin Plan Inteligente de Movilidad urbana; transporte público ineficiente; accidentes por falta de señaléticas y agentes de control.
-  [MEDIO · 7pts] Vivienda — 34.6% de la población sin casa propia (arrendada/prestada). PUGS proyecta suelo para vivienda social.
-  [MEDIO · 6pts] Equipamiento — No cumple cobertura estándar de equipamientos por habitante. PUGS 2023 destina suelos para equipamientos futuros.
-  Desafío LP: conectividad rural prioritaria; plan de movilidad integral.
-
-━━ SISTEMA SOCIOCULTURAL ━━
-  [ALTO · 10pts] Educación/Salud/Conectividad — Acceso inequitativo a tecnología y salud; carencia de programas deportivos y educacionales comunitarios.
-  [ALTO · 9pts]  Grupos Prioritarios — Falta programas de protección social. Patronato: 56,158 beneficiarios (CBV 90.23%, USMC 4.45%, CMD 3%, Montecristi Solidario 2.24%).
-  [ALTO · 9pts]  Pobreza y NBI — Necesidad urgente de políticas para áreas rurales. Montecristi: menor índice de delitos vs. Manta y Portoviejo.
-  [MEDIO · 8pts] Seguridad — Escasa vigilancia policial; déficit luminarias en espacios públicos; falta oportunidades laborales estables.
-  [MEDIO · 5pts] Patrimonio Cultural — Artesanos paja toquilla no formalizados; no acceden a financiamiento. Reconocimiento UNESCO ciudad creativa.
-  [MEDIO · 5pts] Demografía/Migración — Ausencia de políticas para familias migrantes que llegan buscando nuevas oportunidades.
-  Potencialidades sociales: Clínica Municipal Diálisis, CBV, Junta Cantonal Protección Derechos.
-
-━━ SISTEMA ECONÓMICO PRODUCTIVO ━━
-  [ALTO · 10pts] Concentración de Riqueza — Carencia de asesoramiento técnico/empresarial; emprendedores sin estrategias efectivas.
-  [ALTO · 9pts]  Tecnología Limpia — Ausencia de normativa que promueva tecnologías limpias; 47.9 ton/día residuos sin tratamiento.
-  [MEDIO · 8pts] Empleo — Falta especialización de mano de obra local; oferta no suple demanda. Montecristi: 3er lugar plazas empleo en Manabí.
-  [MEDIO · 8pts] Economía Solidaria — Artesanías paja toquilla, mimbre, barro: productividad local sin formalización completa.
-  [MEDIO · 6pts] Turismo — Sin agencias turísticas, centros comunitarios, ni transporte turístico. Recursos: arquitectura, naturaleza, artesanía.
-  [MEDIO · 5pts] Servicios Financieros — Dificultades acceso crédito por falta de garantías; cooperativas como fuente principal.
-  [BAJO · 4pts]  Modelos de Consumo — Actividades industriales/turísticas concentradas en ciudad; desequilibrio campo-ciudad.
-  Potencialidades económicas: inversión privada creciente, distintivo AFC agricultura familiar, programa FAO alimentación.
-
-━━ SISTEMA POLÍTICO INSTITUCIONAL ━━
-  [ALTO · 10pts] Seguimiento Institucional — Carencia de evaluación en procesos de fortalecimiento; catastro predial desactualizado; déficit RRHH especializado.
-  [MEDIO · 8pts] Gobernanza del Riesgo — Falta recursos para proyectos de gestión del riesgo; albergues temporales en escuelas durante desastres.
-  [MEDIO · 8pts] Actores Territoriales — Relación baja con GAD's provinciales/cantonales y Gobierno Central; buena relación con academia y ONG internacionales.
-  [MEDIO · 7pts] Participación Ciudadana — Falta incentivos y programas que fomenten participación activa; comités barriales/comunitarios no consolidados.
-  [MEDIO · 6pts] Capacidades Institucionales — Déficit equipos, maquinarias, RRHH especializado; imagen institucional en construcción.
-  [MEDIO · 6pts] Transversalización Igualdad — Oportunidad de fortalecer imagen con comunicación abierta y participativa.
-  Potencialidades institucionales: convenios ONG internacionales, buena relación academia-GAD.
-
-━━ POTENCIALIDADES ESTRATÉGICAS DEL CANTÓN ━━
-  · Turismo y cultura: UNESCO ciudad creativa, artesanía paja toquilla (tratamiento MP a venta), recursos naturales.
-  · Economía: 3er lugar en plazas de empleo en Manabí; polo creciente de inversión privada local y extranjera.
-  · Social: Patronato de Amparo Social con 56,158 beneficiarios; clínica diálisis; CBV Centro Diario Buen Vivir.
-  · Ambiente: Sistema Nacional Áreas Protegidas, protección marina, convenios reforestación, distintivo AFC.
-  · Seguridad: índice de delitos más bajo comparado con Manta y Portoviejo.
-  · Institucional: alianzas ONG internacionales y academia; programa FAO 'Alimentando la Ciudad'.
-
-━━ DESAFÍOS ESTRATÉGICOS DE LARGO PLAZO (PDOT oficial) ━━
-  · Cobertura universal agua potable/saneamiento (brecha actual: 65.1% sin red pública agua).
-  · Plan de Movilidad Inteligente: reducir accidentes, mejorar conectividad rural.
-  · Infraestructura salud resiliente ante ENOS y cambio climático.
-  · Formalizar artesanos paja toquilla + plan turismo sostenible con agencias e intermediación.
-  · Fortalecer relación con Gobierno Central y GADs provinciales (actualmente baja).
-  · Reducir NBI en parroquias rurales (agua, vivienda, salud, educación).
-  · Normativa de tecnologías limpias + sistema de reciclaje para 47.9 ton/día residuos."""
+VIVIENDA Y DEMOGRAFÍA: 34.6% población sin casa propia. Migración familiar en crecimiento.
+GRUPOS PRIORITARIOS: Patronato (CBV 90%, USMC 4.4%, CMD 3%, Solidario 2.2%). Junta Cantonal.
+ECONOMÍA: Cooperativas financieras como principal fuente crédito. Sin plan turismo formal."""
     )
 
 
