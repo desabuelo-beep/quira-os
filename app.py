@@ -29,6 +29,14 @@ html, body, [data-testid="stAppViewContainer"] {
     color: #E2E8F0;
 }
 
+/* ── LAYOUT ANCHO TOTAL ── */
+.main .block-container {
+    max-width: 100% !important;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+    padding-top: 1rem !important;
+}
+
 /* Header */
 [data-testid="stHeader"] { background: transparent !important; }
 [data-testid="stToolbar"] { display: none !important; }

@@ -1,6 +1,6 @@
 """
 QUIRA OS v0.1 — Sentinel · Asistente de Gobernanza
-Powered by Claude (Anthropic) + PDOT_KB + SIAP-ICPI Q1-2026
+Powered by Google Gemini 1.5 Flash (free tier) + PDOT_KB + SIAP-ICPI Q1-2026
 
 Sentinel es el componente conversacional de QUIRA OS. Su carácter:
   · Analítico: razona con los datos reales del ICGI-T y el PDOT
@@ -12,8 +12,8 @@ Sentinel es el componente conversacional de QUIRA OS. Su carácter:
 Dylus Lab © 2026
 """
 import streamlit as st
-import anthropic
 import os
+import google.generativeai as genai
 from data.loader import load_all
 from data.pdot_context import build_pdot_context, pdot_context_stats
 from utils.session import get_rol, is_tecnico
@@ -75,6 +75,7 @@ CARÁCTER Y COMPORTAMIENTO
 - Nunca inventas cifras. Si un índice está "en construcción", lo aclaras.
 - Tu tono: institucional pero accesible. Usas analogías cuando ayudan a entender.
 - Máximo 3-4 párrafos por respuesta salvo que explícitamente te pidan más desarrollo. Sé conciso.
+- Responde siempre en español.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ESTADO ACTUAL DEL SISTEMA — CORTE Q1-2026
@@ -113,18 +114,10 @@ def render_sentinel(
     pregunta_inicial: str = "",
     compact: bool = False,
 ) -> None:
-    """
-    Renderiza el chat Sentinel.
-
-    Args:
-        pregunta_inicial: Si se pasa, envía automáticamente esta pregunta al inicio.
-        compact: Si True, muestra versión embebida (sin header full, para modals).
-    """
-    # Inicializar historial de chat
+    """Renderiza el chat Sentinel con Google Gemini Flash."""
     if "sentinel_messages" not in st.session_state:
         st.session_state["sentinel_messages"] = []
 
-    # Cargar datos y contexto
     data     = load_all()
     pdot_ctx = build_pdot_context()
     rol      = get_rol()
@@ -134,16 +127,15 @@ def render_sentinel(
     # ── HEADER ─────────────────────────────────────────────────────────────────
     if not compact:
         pdot_stats = pdot_context_stats()
-
-        if pdot_stats["disponible"]:
-            pdot_status = f"⚡ PDOT KB activo · ~{pdot_stats['tokens_aprox']:,} tokens"
-        else:
-            pdot_status = "⚠ PDOT KB no disponible"
-
+        pdot_status = (
+            f"⚡ PDOT KB activo · ~{pdot_stats['tokens_aprox']:,} tokens"
+            if pdot_stats["disponible"] else "⚠ PDOT KB no disponible"
+        )
         st.subheader("🔮 Sentinel · Asistente de Gobernanza")
-        st.caption(f"Análisis territorial · Prospectiva · PDOT 2023-2027 · ICGI-T Q1-2026   |   {pdot_status}")
-
-        # Debug técnico
+        st.caption(
+            f"Análisis territorial · Prospectiva · PDOT 2023-2027 · ICGI-T Q1-2026"
+            f"   |   {pdot_status}   |   ✨ Gemini 1.5 Flash"
+        )
         if is_tecnico():
             with st.expander("🔧 Debug Sentinel — Solo Técnico", expanded=False):
                 st.json(pdot_stats)
@@ -156,32 +148,26 @@ def render_sentinel(
     # ── API KEY CHECK ──────────────────────────────────────────────────────────
     api_key = _get_api_key()
     if not api_key:
-        st.error("🔑 **API Key no configurada** — Sentinel requiere una Anthropic API Key para funcionar.")
-
-        st.markdown("**Configura la API Key:**")
+        st.error("🔑 **Gemini API Key no configurada** — Sentinel requiere una Google AI API Key.")
         with st.expander("Ver instrucciones"):
             st.markdown("""
-            **Opción A — Variable de entorno** (recomendada para desarrollo):
-            ```bash
-            set ANTHROPIC_API_KEY=sk-ant-...
-            streamlit run app.py
-            ```
+**Cómo obtener la API Key (gratis):**
+1. Ve a [aistudio.google.com](https://aistudio.google.com) → **Get API Key**
+2. Crea una clave (plan gratuito: 15 RPM, 1M tokens/mes)
 
-            **Opción B — Streamlit secrets** (para despliegue):
-            Crea el archivo `.streamlit/secrets.toml`:
-            ```toml
-            ANTHROPIC_API_KEY = "sk-ant-..."
-            ```
+**Configura en Streamlit Cloud:**
+En tu app → ⋮ → **Settings → Secrets** → agrega:
+```toml
+GEMINI_API_KEY = "AIza..."
+```
             """)
-
-        # Input temporal de API key en sesión
         temp_key = st.text_input(
             "O ingresa la API Key para esta sesión:",
             type="password",
-            placeholder="sk-ant-...",
+            placeholder="AIza...",
         )
-        if temp_key and temp_key.startswith("sk-"):
-            st.session_state["temp_api_key"] = temp_key
+        if temp_key and temp_key.startswith("AIza"):
+            st.session_state["temp_gemini_key"] = temp_key
             st.rerun()
         return
 
@@ -193,10 +179,10 @@ def render_sentinel(
         })
         _run_sentinel(api_key, system_prompt)
 
-    # ── HISTORIAL DEL CHAT ─────────────────────────────────────────────────────
+    # ── HISTORIAL ─────────────────────────────────────────────────────────────
     _render_chat_history()
 
-    # ── SUGERENCIAS RÁPIDAS ────────────────────────────────────────────────────
+    # ── SUGERENCIAS ───────────────────────────────────────────────────────────
     if not st.session_state["sentinel_messages"]:
         _render_suggestions()
 
@@ -220,28 +206,37 @@ def render_sentinel(
 
 # ── HELPERS ────────────────────────────────────────────────────────────────────
 def _run_sentinel(api_key: str, system_prompt: str) -> None:
-    """Llama a Claude con el historial actual y agrega la respuesta."""
+    """Llama a Gemini Flash con el historial actual y agrega la respuesta."""
     messages = st.session_state["sentinel_messages"]
 
     with st.chat_message("assistant", avatar="🔮"):
         with st.spinner("Sentinel analizando…"):
             try:
-                client  = anthropic.Anthropic(api_key=api_key)
-                # Usar streaming para respuesta en tiempo real
+                genai.configure(api_key=api_key)
+                model = genai.GenerativeModel(
+                    model_name="gemini-1.5-flash",
+                    system_instruction=system_prompt,
+                )
+
+                # Convertir historial al formato Gemini (user/model, no user/assistant)
+                gemini_history = []
+                for msg in messages[:-1]:  # Todos menos el último (el nuevo)
+                    gemini_role = "user" if msg["role"] == "user" else "model"
+                    gemini_history.append({
+                        "role": gemini_role,
+                        "parts": [msg["content"]],
+                    })
+
+                chat = model.start_chat(history=gemini_history)
+                user_msg = messages[-1]["content"]
+
                 full_response = ""
                 response_placeholder = st.empty()
 
-                with client.messages.stream(
-                    model="claude-haiku-3-5-20241022",
-                    max_tokens=1024,
-                    system=system_prompt,
-                    messages=[
-                        {"role": m["role"], "content": m["content"]}
-                        for m in messages
-                    ],
-                ) as stream:
-                    for text in stream.text_stream:
-                        full_response += text
+                response = chat.send_message(user_msg, stream=True)
+                for chunk in response:
+                    if chunk.text:
+                        full_response += chunk.text
                         response_placeholder.markdown(full_response + "▌")
 
                 response_placeholder.markdown(full_response)
@@ -251,19 +246,19 @@ def _run_sentinel(api_key: str, system_prompt: str) -> None:
                     "content": full_response,
                 })
 
-            except anthropic.AuthenticationError:
-                st.error("⚠ API Key inválida. Verifica tu clave Anthropic.")
-                st.session_state["sentinel_messages"].pop()
-            except anthropic.RateLimitError:
-                st.error("⚠ Límite de rate alcanzado. Intenta en unos segundos.")
-                st.session_state["sentinel_messages"].pop()
             except Exception as e:
-                st.error(f"⚠ Error Sentinel: {str(e)[:200]}")
-                st.session_state["sentinel_messages"].pop()
+                err = str(e)
+                if "API_KEY_INVALID" in err or "API key" in err.lower():
+                    st.error("⚠ API Key de Gemini inválida. Verifica en Google AI Studio.")
+                elif "quota" in err.lower() or "429" in err:
+                    st.error("⚠ Límite de cuota alcanzado. Intenta en unos segundos.")
+                else:
+                    st.error(f"⚠ Error Sentinel: {err[:200]}")
+                if st.session_state["sentinel_messages"]:
+                    st.session_state["sentinel_messages"].pop()
 
 
 def _render_chat_history() -> None:
-    """Renderiza el historial de mensajes."""
     for msg in st.session_state["sentinel_messages"]:
         role   = msg["role"]
         avatar = "🔮" if role == "assistant" else "👤"
@@ -272,7 +267,6 @@ def _render_chat_history() -> None:
 
 
 def _render_suggestions() -> None:
-    """Muestra preguntas sugeridas cuando el chat está vacío."""
     sugerencias = [
         "¿Cuáles son las parroquias con mayor urgencia de inversión?",
         "¿Por qué el ICGI-T bajó de 69.93 en 2025 a 53.56 en Q1-2026?",
@@ -281,17 +275,11 @@ def _render_suggestions() -> None:
         "¿Qué debería hacer el GAD para alcanzar la meta de 70 al cierre 2026?",
         "¿Cuáles son las potencialidades económicas más relevantes del cantón?",
     ]
-
     st.caption("💬 PREGUNTAS SUGERIDAS")
-
     cols = st.columns(2)
     for i, sug in enumerate(sugerencias):
         with cols[i % 2]:
-            if st.button(
-                f"💬 {sug}",
-                key=f"sug_{i}",
-                use_container_width=True,
-            ):
+            if st.button(f"💬 {sug}", key=f"sug_{i}", use_container_width=True):
                 st.session_state["sentinel_messages"].append({
                     "role": "user",
                     "content": sug,
@@ -301,22 +289,20 @@ def _render_suggestions() -> None:
 
 def _get_api_key() -> str:
     """
-    Obtiene la API key en orden de prioridad:
+    Obtiene Gemini API Key en orden de prioridad:
     1. session_state (ingresada temporalmente en UI)
-    2. Streamlit secrets
-    3. Variable de entorno
+    2. Streamlit secrets: GEMINI_API_KEY o GOOGLE_API_KEY
+    3. Variables de entorno
     """
-    # Prioridad 1: sesión temporal
-    if "temp_api_key" in st.session_state:
-        return st.session_state["temp_api_key"]
-
-    # Prioridad 2: Streamlit secrets
+    if "temp_gemini_key" in st.session_state:
+        return st.session_state["temp_gemini_key"]
     try:
-        key = st.secrets.get("ANTHROPIC_API_KEY", "")
+        key = st.secrets.get("GEMINI_API_KEY", "") or st.secrets.get("GOOGLE_API_KEY", "")
         if key:
             return key
     except Exception:
         pass
-
-    # Prioridad 3: variable de entorno
-    return os.environ.get("ANTHROPIC_API_KEY", "")
+    return (
+        os.environ.get("GEMINI_API_KEY", "")
+        or os.environ.get("GOOGLE_API_KEY", "")
+    )

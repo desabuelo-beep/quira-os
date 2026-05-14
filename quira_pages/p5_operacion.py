@@ -488,14 +488,61 @@ def _p19_html(show_tech: bool) -> str:
     return hdr + banner + principio + grid
 
 
+_TECH_PASSWORD = "quira2026"
+
+
 # ─── MAIN RENDER ─────────────────────────────────────────────────────────────
 def render() -> None:
     show_tech = is_tecnico()
 
-    # Access check — only técnico roles
-    if not show_tech:
-        st.error("🔒 Acceso Restringido — Módulo disponible solo para el rol Técnico.")
+    # ── GATE DE CONTRASEÑA ────────────────────────────────────────────────────
+    # El rol Técnico pasa directo. Otros roles pueden entrar con contraseña.
+    if not show_tech and not st.session_state.get("tech_auth"):
+        st.markdown("""
+<style>
+.tech-gate-card {
+    background: rgba(124,92,252,0.06);
+    border: 1px solid rgba(124,92,252,0.25);
+    border-radius: 16px;
+    padding: 2.5rem;
+    max-width: 420px;
+    margin: 3rem auto;
+}
+</style>
+        """, unsafe_allow_html=True)
+        col_l, col_c, col_r = st.columns([1, 2, 1])
+        with col_c:
+            st.markdown("""
+<div class="tech-gate-card">
+    <div style="font-size:1.8rem;text-align:center;margin-bottom:8px">⚙️</div>
+    <div style="font-size:1.1rem;font-weight:800;color:#7C5CFC;
+                text-align:center;margin-bottom:4px">Operación Técnica</div>
+    <div style="font-size:0.75rem;color:rgba(255,255,255,0.4);
+                text-align:center;margin-bottom:1.6rem;letter-spacing:0.04em">
+        P-17 · P-18 · P-19 · SIAP-ICPI · Acceso Restringido
+    </div>
+</div>
+            """, unsafe_allow_html=True)
+            with st.form("tech_gate_form"):
+                pwd = st.text_input(
+                    "CONTRASEÑA TÉCNICA",
+                    type="password",
+                    placeholder="••••••••",
+                )
+                submitted = st.form_submit_button(
+                    "ACCEDER →",
+                    use_container_width=True,
+                )
+            if submitted:
+                if pwd == _TECH_PASSWORD:
+                    st.session_state["tech_auth"] = True
+                    st.rerun()
+                else:
+                    st.error("⚠️ Contraseña incorrecta. Intente nuevamente.")
         return
+
+    # Si llegó aquí es técnico de rol O ingresó la contraseña
+    show_tech = True
 
     tab1, tab2, tab3 = st.tabs([
         "📥 P-17 · Ingesta",
