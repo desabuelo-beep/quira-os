@@ -282,16 +282,13 @@ def _run_sentinel(api_key: str, system_prompt: str) -> None:
 
             except Exception as e:
                 err = str(e)
-                if "400" in err or "API_KEY_INVALID" in err or "API key" in err.lower():
-                    error_msg = "⚠️ **API Key inválida.** Verifica tu clave en [Google AI Studio](https://aistudio.google.com) y actualiza los Secrets de Streamlit Cloud."
-                elif "403" in err:
-                    error_msg = f"⚠️ **Acceso denegado (403).** La API Generative Language puede necesitar habilitarse. Error: `{err[:300]}`"
-                elif "429" in err or "quota" in err.lower() or "RESOURCE_EXHAUSTED" in err:
-                    error_msg = f"⚠️ **Cuota agotada en todos los modelos.** Error: `{err[:300]}`"
-                elif not api_key:
+                if not api_key:
                     error_msg = "⚠️ **No hay API Key configurada.** Agrega `GEMINI_API_KEY` en los Secrets de Streamlit Cloud."
+                elif "API_KEY_INVALID" in err or "API key not valid" in err:
+                    error_msg = "⚠️ **API Key inválida.** Verifica tu clave en [Google AI Studio](https://aistudio.google.com) y actualiza los Secrets de Streamlit Cloud."
                 else:
-                    error_msg = f"⚠️ **Error Sentinel:** `{err[:400]}`"
+                    # Mostrar error completo para diagnóstico exacto
+                    error_msg = f"⚠️ **Error Sentinel (diagnóstico):**\n```\n{err[:600]}\n```"
                 placeholder.markdown(error_msg)
                 st.session_state["sentinel_messages"].append({
                     "role": "assistant",
