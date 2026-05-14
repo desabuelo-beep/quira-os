@@ -258,13 +258,21 @@ def _run_sentinel(api_key: str, system_prompt: str) -> None:
             except Exception as e:
                 err = str(e)
                 if "API_KEY_INVALID" in err or "API key" in err.lower():
-                    st.error("⚠ API Key de Gemini inválida. Verifica en Google AI Studio.")
+                    error_msg = "⚠️ **API Key de Gemini inválida.** Verifica tu clave en [Google AI Studio](https://aistudio.google.com) y actualiza los Secrets de Streamlit Cloud."
                 elif "quota" in err.lower() or "429" in err:
-                    st.error("⚠ Límite de cuota alcanzado. Intenta en unos segundos.")
+                    error_msg = "⚠️ **Límite de cuota alcanzado.** Espera unos segundos e intenta de nuevo."
+                elif "ModuleNotFoundError" in err or "No module" in err:
+                    error_msg = "⚠️ **Librería google-generativeai no disponible.** La app está redesplegando, intenta en 1-2 minutos."
+                elif not api_key:
+                    error_msg = "⚠️ **No hay API Key configurada.** Agrega `GEMINI_API_KEY` en los Secrets de Streamlit Cloud."
                 else:
-                    st.error(f"⚠ Error Sentinel: {err[:200]}")
-                if st.session_state["sentinel_messages"]:
-                    st.session_state["sentinel_messages"].pop()
+                    error_msg = f"⚠️ **Error de Sentinel:** `{err[:400]}`"
+                # Guardar el error como mensaje del asistente para que persista tras st.rerun()
+                st.markdown(error_msg)
+                st.session_state["sentinel_messages"].append({
+                    "role": "assistant",
+                    "content": error_msg,
+                })
 
 
 def _render_chat_history() -> None:
