@@ -182,6 +182,15 @@ GEMINI_API_KEY = "AIza..."
     # ── HISTORIAL ─────────────────────────────────────────────────────────────
     _render_chat_history()
 
+    # ── PENDING RESPONSE ──────────────────────────────────────────────────────
+    # Si el último mensaje es del usuario (sin respuesta aún), genera la respuesta.
+    # Esto cubre el caso de los botones de sugerencia que hacen st.rerun() sin
+    # llamar a _run_sentinel(), dejando la pregunta "huérfana" en el historial.
+    _msgs = st.session_state["sentinel_messages"]
+    if _msgs and _msgs[-1]["role"] == "user":
+        _run_sentinel(api_key, system_prompt)
+        st.rerun()
+
     # ── SUGERENCIAS ───────────────────────────────────────────────────────────
     if not st.session_state["sentinel_messages"]:
         _render_suggestions()
