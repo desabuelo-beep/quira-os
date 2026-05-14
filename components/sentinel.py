@@ -1,6 +1,6 @@
 """
 QUIRA OS v0.1 — Sentinel · Asistente de Gobernanza
-Powered by Google Gemini 1.5 Flash (free tier) + PDOT_KB + SIAP-ICPI Q1-2026
+Powered by Groq · Llama 3.3 70B (free tier) + PDOT_KB + SIAP-ICPI Q1-2026
 
 Sentinel es el componente conversacional de QUIRA OS. Su carácter:
   · Analítico: razona con los datos reales del ICGI-T y el PDOT
@@ -113,7 +113,7 @@ def render_sentinel(
     pregunta_inicial: str = "",
     compact: bool = False,
 ) -> None:
-    """Renderiza el chat Sentinel con Google Gemini Flash."""
+    """Renderiza el chat Sentinel con Groq · Llama 3.3."""
     if "sentinel_messages" not in st.session_state:
         st.session_state["sentinel_messages"] = []
 
@@ -133,7 +133,7 @@ def render_sentinel(
         st.subheader("🔮 Sentinel · Asistente de Gobernanza")
         st.caption(
             f"Análisis territorial · Prospectiva · PDOT 2023-2027 · ICGI-T Q1-2026"
-            f"   |   {pdot_status}   |   ✨ Gemini 2.0 Flash"
+            f"   |   {pdot_status}   |   ⚡ Groq · Llama 3.3 70B"
         )
         if is_tecnico():
             with st.expander("🔧 Debug Sentinel — Solo Técnico", expanded=False):
@@ -147,26 +147,26 @@ def render_sentinel(
     # ── API KEY CHECK ──────────────────────────────────────────────────────────
     api_key = _get_api_key()
     if not api_key:
-        st.error("🔑 **Gemini API Key no configurada** — Sentinel requiere una Google AI API Key.")
+        st.error("🔑 **Groq API Key no configurada** — Sentinel requiere una Groq API Key (gratis, sin tarjeta).")
         with st.expander("Ver instrucciones"):
             st.markdown("""
-**Cómo obtener la API Key (gratis):**
-1. Ve a [aistudio.google.com](https://aistudio.google.com) → **Get API Key**
-2. Crea una clave (plan gratuito: 15 RPM, 1M tokens/mes)
+**Cómo obtener la API Key (100% gratis, sin tarjeta de crédito):**
+1. Ve a [console.groq.com](https://console.groq.com) → crea cuenta → **API Keys** → **Create API Key**
+2. Copia la clave (empieza con `gsk_`)
 
 **Configura en Streamlit Cloud:**
 En tu app → ⋮ → **Settings → Secrets** → agrega:
 ```toml
-GEMINI_API_KEY = "AIza..."
+GROQ_API_KEY = "gsk_..."
 ```
             """)
         temp_key = st.text_input(
             "O ingresa la API Key para esta sesión:",
             type="password",
-            placeholder="AIza...",
+            placeholder="gsk_...",
         )
-        if temp_key and temp_key.startswith("AIza"):
-            st.session_state["temp_gemini_key"] = temp_key
+        if temp_key and temp_key.startswith("gsk_"):
+            st.session_state["temp_groq_key"] = temp_key
             st.rerun()
         return
 
@@ -213,17 +213,16 @@ GEMINI_API_KEY = "AIza..."
 
 
 # ── HELPERS ────────────────────────────────────────────────────────────────────
-# Modelos a intentar en orden (v1beta soporta system_instruction y gemini-1.5-flash free tier)
-_GEMINI_MODELS = [
-    "gemini-1.5-flash",
-    "gemini-1.5-flash-8b",
-    "gemini-2.0-flash-lite",
+# Groq: free tier real (sin billing), OpenAI-compatible, ~30 RPM
+_GROQ_URL    = "https://api.groq.com/openai/v1/chat/completions"
+_GROQ_MODELS = [
+    "llama-3.3-70b-versatile",   # Llama 3.3 70B — calidad alta, free
+    "llama-3.1-8b-instant",      # fallback: más rápido si el anterior falla
 ]
-_GEMINI_BASE = "https://generativelanguage.googleapis.com/v1beta/models"
 
 
 def _run_sentinel(api_key: str, system_prompt: str) -> None:
-    """Llama a Gemini vía REST v1 (no SDK, no v1beta) con fallback de modelos."""
+    """Llama a Groq (Llama 3.3) con streaming y fallback de modelos."""
     import requests
     import json as _json
 
@@ -233,46 +232,69 @@ def _run_sentinel(api_key: str, system_prompt: str) -> None:
         placeholder = st.empty()
         with st.spinner("Sentinel analizando…"):
             try:
-                # Construir contenido en formato Gemini (user / model)
-                contents = []
-                for msg in messages:
-                    role = "user" if msg["role"] == "user" else "model"
-                    contents.append({
-                        "role": role,
-                        "parts": [{"text": msg["content"]}],
-                    })
-
-                payload = {
-                    "system_instruction": {
-                        "parts": [{"text": system_prompt}],
-                    },
-                    "contents": contents,
-                    "generationConfig": {
-                        "maxOutputTokens": 2048,
-                        "temperature": 0.7,
-                    },
+                headers = {
+                    "Authorization": f"Bearer {api_key}",
+                    "Content-Type": "application/json",
                 }
+
+                # Historial en formato OpenAI (user / assistant)
+                groq_msgs = [{"role": "system", "content": system_prompt}]
+                for msg in messages:
+                    groq_msgs.append({
+                        "role": msg["role"],          # user / assistant
+                        "content": msg["content"],
+                    })
 
                 full_response = ""
                 last_err = ""
 
-                for model_name in _GEMINI_MODELS:
-                    url = f"{_GEMINI_BASE}/{model_name}:generateContent?key={api_key}"
+                for model_name in _GROQ_MODELS:
+                    payload = {
+                        "model": model_name,
+                        "messages": groq_msgs,
+                        "max_tokens": 2048,
+                        "temperature": 0.7,
+                        "stream": True,
+                    }
                     try:
-                        resp = requests.post(url, json=payload, timeout=45)
-                        if resp.status_code == 200:
-                            data = resp.json()
-                            full_response = (
-                                data["candidates"][0]["content"]["parts"][0]["text"]
-                            )
-                            break  # éxito
-                        else:
-                            last_err = f"HTTP {resp.status_code} [{model_name}]: {resp.text[:200]}"
+                        with requests.post(
+                            _GROQ_URL, headers=headers, json=payload,
+                            stream=True, timeout=45
+                        ) as resp:
+                            if resp.status_code != 200:
+                                last_err = (
+                                    f"HTTP {resp.status_code} [{model_name}]: "
+                                    f"{resp.text[:300]}"
+                                )
+                                continue
+
+                            for line in resp.iter_lines():
+                                if not line:
+                                    continue
+                                decoded = line.decode("utf-8")
+                                if decoded == "data: [DONE]":
+                                    break
+                                if decoded.startswith("data: "):
+                                    try:
+                                        chunk = _json.loads(decoded[6:])
+                                        delta = (
+                                            chunk["choices"][0]["delta"]
+                                            .get("content", "")
+                                        )
+                                        if delta:
+                                            full_response += delta
+                                            placeholder.markdown(
+                                                full_response + "▌"
+                                            )
+                                    except (_json.JSONDecodeError, KeyError):
+                                        pass
+                        if full_response:
+                            break  # éxito con este modelo
                     except Exception as ex:
                         last_err = f"{model_name}: {ex}"
 
                 if not full_response:
-                    raise RuntimeError(last_err or "Sin respuesta de la API")
+                    raise RuntimeError(last_err or "Sin respuesta de Groq")
 
                 placeholder.markdown(full_response)
                 st.session_state["sentinel_messages"].append({
@@ -282,13 +304,12 @@ def _run_sentinel(api_key: str, system_prompt: str) -> None:
 
             except Exception as e:
                 err = str(e)
-                if not api_key:
-                    error_msg = "⚠️ **No hay API Key configurada.** Agrega `GEMINI_API_KEY` en los Secrets de Streamlit Cloud."
-                elif "API_KEY_INVALID" in err or "API key not valid" in err:
-                    error_msg = "⚠️ **API Key inválida.** Verifica tu clave en [Google AI Studio](https://aistudio.google.com) y actualiza los Secrets de Streamlit Cloud."
+                if "401" in err or "invalid_api_key" in err.lower() or "authentication" in err.lower():
+                    error_msg = "⚠️ **Groq API Key inválida.** Verifica en [console.groq.com/keys](https://console.groq.com/keys)."
+                elif "429" in err or "rate_limit" in err.lower():
+                    error_msg = "⚠️ **Límite de Groq alcanzado.** Espera unos segundos e intenta de nuevo."
                 else:
-                    # Mostrar error completo para diagnóstico exacto
-                    error_msg = f"⚠️ **Error Sentinel (diagnóstico):**\n```\n{err[:600]}\n```"
+                    error_msg = f"⚠️ **Error Sentinel:**\n```\n{err[:500]}\n```"
                 placeholder.markdown(error_msg)
                 st.session_state["sentinel_messages"].append({
                     "role": "assistant",
@@ -327,20 +348,17 @@ def _render_suggestions() -> None:
 
 def _get_api_key() -> str:
     """
-    Obtiene Gemini API Key en orden de prioridad:
+    Obtiene Groq API Key en orden de prioridad:
     1. session_state (ingresada temporalmente en UI)
-    2. Streamlit secrets: GEMINI_API_KEY o GOOGLE_API_KEY
+    2. Streamlit secrets: GROQ_API_KEY
     3. Variables de entorno
     """
-    if "temp_gemini_key" in st.session_state:
-        return st.session_state["temp_gemini_key"]
+    if "temp_groq_key" in st.session_state:
+        return st.session_state["temp_groq_key"]
     try:
-        key = st.secrets.get("GEMINI_API_KEY", "") or st.secrets.get("GOOGLE_API_KEY", "")
+        key = st.secrets.get("GROQ_API_KEY", "")
         if key:
             return key
     except Exception:
         pass
-    return (
-        os.environ.get("GEMINI_API_KEY", "")
-        or os.environ.get("GOOGLE_API_KEY", "")
-    )
+    return os.environ.get("GROQ_API_KEY", "")
