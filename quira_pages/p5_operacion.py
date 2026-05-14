@@ -13,7 +13,7 @@ from utils.session import is_tecnico, get_rol
 def render() -> None:
     # ── ACCESS CONTROL ─────────────────────────────────────────────────────────
     if not is_tecnico():
-        st.markdown("""
+        st.html("""
         <div style="background:rgba(229,62,62,0.08);border:1px solid rgba(229,62,62,0.25);
                     border-radius:12px;padding:32px;text-align:center;margin-top:40px">
             <div style="font-size:2rem;margin-bottom:12px">🔒</div>
@@ -25,13 +25,13 @@ def render() -> None:
                 Rol actual: <strong style="color:#FFB700">{}</strong>
             </div>
         </div>
-        """.format(get_rol()), unsafe_allow_html=True)
+        """.format(get_rol()))
         return
 
     data = load_all()
 
     # ── HEADER ─────────────────────────────────────────────────────────────────
-    st.markdown("""
+    st.html("""
     <div style="margin-bottom:20px">
         <h1 style="font-size:1.4rem;font-weight:900;color:#E2E8F0;margin:0">
             ⚙️ Operación Técnica · HITL
@@ -40,7 +40,7 @@ def render() -> None:
             Human-in-the-Loop · Ingesta · Validación cruzada · Auditoría
         </div>
     </div>
-    """, unsafe_allow_html=True)
+    """)
 
     # ── TABS ───────────────────────────────────────────────────────────────────
     tab1, tab2, tab3 = st.tabs([
@@ -70,7 +70,7 @@ def _render_ingesta(data: dict) -> None:
         level="warning",
     )
 
-    st.markdown("<div style='height:10px'></div>", unsafe_allow_html=True)
+    st.html("<div style='height:10px'></div>")
 
     col1, col2 = st.columns(2, gap="medium")
     with col1:
@@ -80,12 +80,12 @@ def _render_ingesta(data: dict) -> None:
 
 
 def _ingesta_form() -> None:
-    st.markdown("""
+    st.html("""
     <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.5);
                 letter-spacing:0.06em;margin-bottom:12px">
         FORMULARIO DE CARGA
     </div>
-    """, unsafe_allow_html=True)
+    """)
 
     with st.form("ingesta_form"):
         proceso_id = st.text_input("ID Proceso PAC/POA", placeholder="PAC-2026-001")
@@ -107,17 +107,17 @@ def _ingesta_form() -> None:
 
 
 def _ingesta_status(data: dict) -> None:
-    st.markdown("""
+    st.html("""
     <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.5);
                 letter-spacing:0.06em;margin-bottom:12px">
         ESTADO GENERAL · SAT-0
     </div>
-    """, unsafe_allow_html=True)
+    """)
 
     # SAT-0 info
     sat0 = next((s for s in data["sat"] if s["id"] == "SAT-0"), None)
     if sat0:
-        st.markdown(f"""
+        st.html(f"""
         <div style="background:rgba(229,62,62,0.08);border:1px solid rgba(229,62,62,0.25);
                     border-left:4px solid #E53E3E;border-radius:10px;padding:14px">
             <div style="font-size:12px;font-weight:700;color:#FC8181;margin-bottom:8px">
@@ -131,9 +131,9 @@ def _ingesta_status(data: dict) -> None:
                 <strong style="color:#FC8181">Acción:</strong> {sat0['accion']}
             </div>
         </div>
-        """, unsafe_allow_html=True)
+        """)
 
-    st.markdown("<div style='height:10px'></div>", unsafe_allow_html=True)
+    st.html("<div style='height:10px'></div>")
 
     # Estadísticas rápidas
     stats = [
@@ -143,13 +143,13 @@ def _ingesta_status(data: dict) -> None:
         ("Tasa cobertura",       "43%","#D69E2E"),
     ]
     for label, val, color in stats:
-        st.markdown(f"""
+        st.html(f"""
         <div style="display:flex;justify-content:space-between;padding:6px 0;
                     border-bottom:1px solid rgba(255,255,255,0.05)">
             <span style="font-size:10px;color:rgba(255,255,255,0.55)">{label}</span>
             <span style="font-size:11px;font-weight:700;color:{color}">{val}</span>
         </div>
-        """, unsafe_allow_html=True)
+        """)
 
 
 # ── P-18: VALIDADOR CRUZADO ────────────────────────────────────────────────────
@@ -162,7 +162,7 @@ def _render_validador(data: dict) -> None:
         level="warning",
     )
 
-    st.markdown("<div style='height:10px'></div>", unsafe_allow_html=True)
+    st.html("<div style='height:10px'></div>")
 
     # 4 cortes detectados
     cortes = [
@@ -207,7 +207,7 @@ def _render_validador(data: dict) -> None:
     col1, col2 = st.columns(2, gap="medium")
     for i, corte in enumerate(cortes):
         with (col1 if i % 2 == 0 else col2):
-            st.markdown(f"""
+            st.html(f"""
             <div style="background:rgba(255,255,255,0.03);
                         border:1px solid rgba({_rgb(corte['color'])},0.25);
                         border-left:4px solid {corte['color']};
@@ -229,10 +229,10 @@ def _render_validador(data: dict) -> None:
                     ⚠ {corte['impacto']}
                 </div>
             </div>
-            """, unsafe_allow_html=True)
+            """)
 
     # Resumen de cadena
-    st.markdown("<div style='height:10px'></div>", unsafe_allow_html=True)
+    st.html("<div style='height:10px'></div>")
     section_header("Cadena de Trazabilidad", "Estado actual Q1-2026", "🔗")
 
     cadena = [
@@ -246,14 +246,14 @@ def _render_validador(data: dict) -> None:
     cols = st.columns(len(cadena))
     for col, (capa, estado, color, nota) in zip(cols, cadena):
         with col:
-            st.markdown(f"""
+            st.html(f"""
             <div style="background:rgba({_rgb(color)},0.08);border:1px solid rgba({_rgb(color)},0.25);
                         border-radius:8px;padding:10px;text-align:center">
                 <div style="font-size:10px;font-weight:700;color:rgba(255,255,255,0.7)">{capa}</div>
                 <div style="font-size:10px;color:{color};font-weight:700;margin-top:4px">{estado}</div>
                 <div style="font-size:8px;color:rgba(255,255,255,0.35);margin-top:4px">{nota}</div>
             </div>
-            """, unsafe_allow_html=True)
+            """)
 
 
 # ── P-19: AUDITOR HITL ────────────────────────────────────────────────────────
@@ -266,7 +266,7 @@ def _render_auditor(data: dict) -> None:
         level="warning",
     )
 
-    st.markdown("<div style='height:10px'></div>", unsafe_allow_html=True)
+    st.html("<div style='height:10px'></div>")
 
     # Hallazgos pendientes
     hallazgos = [
@@ -306,7 +306,7 @@ def _render_auditor(data: dict) -> None:
 
         col_info, col_action = st.columns([3, 1])
         with col_info:
-            st.markdown(f"""
+            st.html(f"""
             <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);
                         border-radius:10px;padding:14px;margin-bottom:4px">
                 <div style="display:flex;justify-content:space-between;align-items:flex-start">
@@ -333,11 +333,11 @@ def _render_auditor(data: dict) -> None:
                     {h['descripcion']}
                 </div>
             </div>
-            """, unsafe_allow_html=True)
+            """)
 
         with col_action:
             if h["estado"] == "PENDIENTE":
-                st.markdown("<div style='height:4px'></div>", unsafe_allow_html=True)
+                st.html("<div style='height:4px'></div>")
                 if st.button("✓ Validar", key=f"val_{h['id']}"):
                     st.success("Validado")
                 if st.button("✗ Rechazar", key=f"rec_{h['id']}"):
@@ -345,12 +345,12 @@ def _render_auditor(data: dict) -> None:
                 if st.button("↑ Escalar", key=f"esc_{h['id']}"):
                     st.warning("Escalado al Alcalde")
 
-        st.markdown("<div style='height:4px'></div>", unsafe_allow_html=True)
+        st.html("<div style='height:4px'></div>")
 
     # Log técnico
-    st.markdown("<div style='height:16px'></div>", unsafe_allow_html=True)
+    st.html("<div style='height:16px'></div>")
     section_header("Log de Auditoría", "Acciones técnicas registradas", "📋")
-    st.markdown("""
+    st.html("""
     <div style="background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.07);
                 border-radius:10px;padding:14px;font-family:monospace">
         <div style="font-size:10px;color:#38A169">[2026-03-31 14:22] HLL-003 VALIDADO · usuario:tecnico</div>
@@ -359,7 +359,7 @@ def _render_auditor(data: dict) -> None:
         <div style="font-size:10px;color:#7C5CFC">[2026-03-20 16:40] Motor QUIRA v0.1 inicializado · SIAP-ICPI cargado</div>
         <div style="font-size:10px;color:rgba(255,255,255,0.3)">[2026-03-01 08:00] Corte Q1-2026 abierto · marzo 2026</div>
     </div>
-    """, unsafe_allow_html=True)
+    """)
 
 
 def _rgb(hex_color: str) -> str:

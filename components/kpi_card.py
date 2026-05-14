@@ -28,8 +28,7 @@ def kpi_card(
     if note:
         note_html = f'<div style="font-size:9px;color:rgba(255,255,255,0.3);margin-top:5px">{note}</div>'
 
-    st.markdown(f"""
-    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);
+    st.html(f"""<div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);
                 border-top:2px solid {color};border-radius:12px;
                 padding:14px 16px;width:{width_pct}%">
         <div style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.45);
@@ -39,8 +38,7 @@ def kpi_card(
         <div style="font-size:1.7rem;font-weight:900;color:#FFFFFF;line-height:1">{value}</div>
         {delta_html}
         {note_html}
-    </div>
-    """, unsafe_allow_html=True)
+    </div>""")
 
 
 def metric_row(*metrics: dict) -> None:
@@ -101,8 +99,7 @@ def progress_bar_card(
     if note:
         note_html = f'<div style="font-size:9px;color:rgba(255,255,255,0.35);margin-top:4px">{note}</div>'
 
-    st.markdown(f"""
-    <div style="margin-bottom:12px">
+    st.html(f"""<div style="margin-bottom:12px">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px">
             <div>
                 <span style="font-size:11px;font-weight:600;color:rgba(255,255,255,0.8)">{label}</span>
@@ -117,20 +114,17 @@ def progress_bar_card(
             <div style="font-size:9px;color:rgba(255,255,255,0.3)">{emoji} {avep}</div>
         </div>
         {note_html}
-    </div>
-    """, unsafe_allow_html=True)
+    </div>""")
 
 
 def section_header(title: str, subtitle: str = "", icon: str = "") -> None:
     """Encabezado de sección con línea inferior."""
-    st.markdown(f"""
-    <div style="border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:10px;margin-bottom:16px">
+    st.html(f"""<div style="border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:10px;margin-bottom:16px">
         <div style="font-size:1rem;font-weight:800;color:#E2E8F0;letter-spacing:-0.02em">
             {icon} {title}
         </div>
         {'<div style="font-size:0.75rem;color:rgba(255,255,255,0.4);margin-top:3px">' + subtitle + '</div>' if subtitle else ''}
-    </div>
-    """, unsafe_allow_html=True)
+    </div>""")
 
 
 def info_box(text: str, level: str = "info") -> None:
@@ -145,10 +139,8 @@ def info_box(text: str, level: str = "info") -> None:
         "success": ("#00E096", "rgba(0,224,150,0.08)"),
     }
     border_color, bg_color = colors.get(level, colors["info"])
-    st.markdown(f"""
-    <div style="background:{bg_color};border-left:3px solid {border_color};
+    st.html(f"""<div style="background:{bg_color};border-left:3px solid {border_color};
                 border-radius:0 8px 8px 0;padding:10px 14px;margin:8px 0;
                 font-size:12px;color:rgba(255,255,255,0.75);line-height:1.5">
         {text}
-    </div>
-    """, unsafe_allow_html=True)
+    </div>""")

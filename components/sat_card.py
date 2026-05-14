@@ -35,12 +35,10 @@ def _sat_full(
         f'border-radius:20px;padding:2px 10px;font-size:9px;font-weight:700;color:{color}">'
         f'{estado}</span>'
     )
-    st.markdown(f"""
-    <div style="background:rgba(255,255,255,0.03);
+    st.html(f"""<div style="background:rgba(255,255,255,0.03);
                 border:1px solid rgba({_rgb(color)},0.25);
                 border-left:4px solid {color};
                 border-radius:12px;padding:16px 18px;margin-bottom:12px">
-
         <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">
             <div style="display:flex;align-items:center;gap:8px">
                 <span style="font-size:1.2rem">{emoji}</span>
@@ -52,30 +50,25 @@ def _sat_full(
             </div>
             {estado_badge}
         </div>
-
         <div style="font-size:11px;color:rgba(255,255,255,0.65);margin-bottom:10px;line-height:1.5">
             {descripcion}
         </div>
-
         <div style="background:rgba({_rgb(color)},0.07);border-radius:8px;padding:10px 12px;margin-bottom:10px">
             <div style="font-size:9px;font-weight:700;color:{color};letter-spacing:0.06em;margin-bottom:4px">
                 IMPACTO CUANTIFICADO
             </div>
             <div style="font-size:11px;color:rgba(255,255,255,0.75)">{impacto}</div>
         </div>
-
         <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:10px">
             <div style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.4);
                         letter-spacing:0.06em;margin-bottom:4px">ACCIÓN RECOMENDADA</div>
             <div style="font-size:11px;color:rgba(255,255,255,0.65)">→ {accion}</div>
         </div>
-    </div>
-    """, unsafe_allow_html=True)
+    </div>""")
 
 
 def _sat_compact(sat_id, nombre, nivel, color, emoji, impacto) -> None:
-    st.markdown(f"""
-    <div style="background:rgba({_rgb(color)},0.06);
+    st.html(f"""<div style="background:rgba({_rgb(color)},0.06);
                 border-left:3px solid {color};
                 border-radius:0 8px 8px 0;
                 padding:8px 12px;margin-bottom:6px">
@@ -84,8 +77,7 @@ def _sat_compact(sat_id, nombre, nivel, color, emoji, impacto) -> None:
             <div style="font-size:9px;color:{color};font-weight:600">{nivel}</div>
         </div>
         <div style="font-size:9px;color:rgba(255,255,255,0.45);margin-top:3px">{impacto}</div>
-    </div>
-    """, unsafe_allow_html=True)
+    </div>""")
 
 
 def sat_feed_header(n_criticos: int, n_alertas: int) -> None:
@@ -101,8 +93,7 @@ def sat_feed_header(n_criticos: int, n_alertas: int) -> None:
         color_header = "#38A169"
         emoji_header = "🟢"
 
-    st.markdown(f"""
-    <div style="background:rgba({_rgb(color_header)},0.08);
+    st.html(f"""<div style="background:rgba({_rgb(color_header)},0.08);
                 border:1px solid rgba({_rgb(color_header)},0.25);
                 border-radius:10px;padding:10px 14px;margin-bottom:10px">
         <div style="display:flex;justify-content:space-between;align-items:center">
@@ -120,8 +111,7 @@ def sat_feed_header(n_criticos: int, n_alertas: int) -> None:
                 </span>
             </div>
         </div>
-    </div>
-    """, unsafe_allow_html=True)
+    </div>""")
 
 
 def _rgb(hex_color: str) -> str:

@@ -23,7 +23,7 @@ def render() -> None:
     show_tech = is_tecnico()
 
     # ── HEADER ─────────────────────────────────────────────────────────────────
-    st.markdown(f"""
+    st.html(f"""
     <div style="display:flex;justify-content:space-between;align-items:flex-start;
                 margin-bottom:20px">
         <div>
@@ -41,7 +41,7 @@ def render() -> None:
             </div>
         </div>
     </div>
-    """, unsafe_allow_html=True)
+    """)
 
     # ── FILA 1: Gauge + KPIs ───────────────────────────────────────────────────
     col_gauge, col_kpis = st.columns([1, 2], gap="medium")
@@ -58,7 +58,7 @@ def render() -> None:
         st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
 
         # AVEP label debajo del gauge
-        st.markdown(f"""
+        st.html(f"""
         <div style="text-align:center;margin-top:-10px">
             <span style="display:inline-block;background:rgba(214,158,46,0.12);
                          border:1px solid rgba(214,158,46,0.3);border-radius:20px;
@@ -67,7 +67,7 @@ def render() -> None:
                 {icgit.get('avep_emoji','🟡')} {icgit['avep']}
             </span>
         </div>
-        """, unsafe_allow_html=True)
+        """)
 
     with col_kpis:
         # Row A: inversión + SAT críticos
@@ -93,7 +93,7 @@ def render() -> None:
                 delta_col,
             )
 
-        st.markdown("<div style='height:10px'></div>", unsafe_allow_html=True)
+        st.html("<div style='height:10px'></div>")
 
         c3, c4 = st.columns(2)
         with c3:
@@ -117,7 +117,7 @@ def render() -> None:
             )
 
     # ── FILA 2: Tendencia + Proyección ─────────────────────────────────────────
-    st.markdown("<div style='height:12px'></div>", unsafe_allow_html=True)
+    st.html("<div style='height:12px'></div>")
     col_trend, col_proj = st.columns([2, 1], gap="medium")
 
     with col_trend:
@@ -127,7 +127,7 @@ def render() -> None:
     with col_proj:
         proj = scorecard["proyeccion"]
         section_header("Proyección Cierre 2026", "", "🎯")
-        st.markdown(f"""
+        st.html(f"""
         <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);
                     border-radius:12px;padding:18px;text-align:center">
             <div style="font-size:0.7rem;color:rgba(255,255,255,0.4);margin-bottom:8px">
@@ -147,10 +147,10 @@ def render() -> None:
                 </span>
             </div>
         </div>
-        """, unsafe_allow_html=True)
+        """)
 
         if not proj["on_track"]:
-            st.markdown("<div style='height:10px'></div>", unsafe_allow_html=True)
+            st.html("<div style='height:10px'></div>")
             info_box(
                 "⚠ Al ritmo actual, el cierre 2026 no alcanzaría la meta de Gestión por Mandato. "
                 "Se requiere acelerar ejecución en Q2-Q3.",
@@ -158,7 +158,7 @@ def render() -> None:
             )
 
     # ── FILA 3: Brechas Estructurales + SAT feed ───────────────────────────────
-    st.markdown("<div style='height:12px'></div>", unsafe_allow_html=True)
+    st.html("<div style='height:12px'></div>")
     col_brechas, col_sat = st.columns([1, 1], gap="medium")
 
     with col_brechas:
@@ -229,18 +229,18 @@ def render() -> None:
     # ── FOOTER TÉCNICO ─────────────────────────────────────────────────────────
     if show_tech:
         st.markdown("---")
-        st.markdown("""
+        st.html("""
         <div style="font-size:9px;color:rgba(255,255,255,0.2);line-height:1.6">
         🔧 MODO TÉCNICO · Fuente: SIAP-ICPI H12 · H15 · H19 · H20b · H28 ·
         Corte Q1-2026 · Verificado Dylus Lab
         </div>
-        """, unsafe_allow_html=True)
+        """)
 
 
 # ── HELPERS ────────────────────────────────────────────────────────────────────
 def _kpi(label: str, value: str, subtitle: str, emoji: str, color: str, note: str = "") -> None:
     note_html = f'<div style="font-size:9px;color:rgba(255,255,255,0.3);margin-top:5px">{note}</div>' if note else ""
-    st.markdown(f"""
+    st.html(f"""
     <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);
                 border-top:2px solid {color};border-radius:12px;padding:14px 16px">
         <div style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.45);
@@ -253,7 +253,7 @@ def _kpi(label: str, value: str, subtitle: str, emoji: str, color: str, note: st
         </div>
         {note_html}
     </div>
-    """, unsafe_allow_html=True)
+    """)
 
 
 def _render_trend_chart(icgit: dict) -> None:

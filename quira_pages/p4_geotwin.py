@@ -31,7 +31,7 @@ def render() -> None:
     show_tech  = is_tecnico()
 
     # ── HEADER ─────────────────────────────────────────────────────────────────
-    st.markdown("""
+    st.html("""
     <div style="margin-bottom:20px">
         <h1 style="font-size:1.4rem;font-weight:900;color:#E2E8F0;margin:0">
             GeoTwin · Análisis Territorial
@@ -40,7 +40,7 @@ def render() -> None:
             7 parroquias · SIAP-ICPI + PDOT_KB · Gobernanza Participativa · Q1-2026
         </div>
     </div>
-    """, unsafe_allow_html=True)
+    """)
 
     # ── KPIs ───────────────────────────────────────────────────────────────────
     c1, c2, c3, c4 = st.columns(4)
@@ -60,7 +60,7 @@ def render() -> None:
         _stat("EN EMERGENCIA", str(stats["parroquias_emergencia"]), "#E53E3E",
               note=f"de {stats['n_total']} parroquias")
 
-    st.markdown("<div style='height:14px'></div>", unsafe_allow_html=True)
+    st.html("<div style='height:14px'></div>")
 
     # ── GRÁFICOS ───────────────────────────────────────────────────────────────
     col_bar, col_bubble = st.columns([1, 1], gap="medium")
@@ -73,13 +73,13 @@ def render() -> None:
         section_header("Brecha NBI vs Inversión", "Necesidad vs. respuesta institucional", "📍")
         _render_bubble(parroquias)
 
-    st.markdown("<div style='height:12px'></div>", unsafe_allow_html=True)
+    st.html("<div style='height:12px'></div>")
 
     # ── TABLA PARROQUIAS ───────────────────────────────────────────────────────
     section_header("Detalle por Parroquia", "TPS · NBI · Agua · Inversión · Participación IGP", "📋")
     _render_table(parroquias, show_tech)
 
-    st.markdown("<div style='height:12px'></div>", unsafe_allow_html=True)
+    st.html("<div style='height:12px'></div>")
 
     # ── IGP GOBERNANZA PARTICIPATIVA ───────────────────────────────────────────
     section_header("Gobernanza Participativa · IGP", "Obligación institucional CPCCS / LOPC", "🗳️")
@@ -88,7 +88,7 @@ def render() -> None:
 
     with col_igp:
         igp = data["indices"].get("IGP", {})
-        st.markdown(f"""
+        st.html(f"""
         <div style="background:rgba(124,92,252,0.06);border:1px solid rgba(124,92,252,0.2);
                     border-radius:12px;padding:16px">
             <div style="display:flex;justify-content:space-between;align-items:flex-start">
@@ -104,15 +104,15 @@ def render() -> None:
             </div>
             <div style="font-size:10px;color:rgba(255,255,255,0.5);line-height:1.5">{igp.get('nota','')}</div>
         </div>
-        """, unsafe_allow_html=True)
+        """)
 
-        st.markdown("<div style='height:10px'></div>", unsafe_allow_html=True)
+        st.html("<div style='height:10px'></div>")
 
         # Tabla participación resumida
-        st.markdown("""
+        st.html("""
         <div style="font-size:10px;font-weight:700;color:rgba(255,255,255,0.5);
                     letter-spacing:0.06em;margin-bottom:8px">PARTICIPACIÓN 2025 POR PARROQUIA</div>
-        """, unsafe_allow_html=True)
+        """)
 
         for p in parroquias:
             part  = p.get("participacion", {})
@@ -121,7 +121,7 @@ def render() -> None:
                     "#D69E2E" if part.get("estado") == "Parcial" else "#38A169"
             mesas = part.get("mesas", 0)
             pres  = part.get("presupuesto", 0)
-            st.markdown(f"""
+            st.html(f"""
             <div style="display:flex;justify-content:space-between;align-items:center;
                         padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04)">
                 <div style="font-size:10px;color:rgba(255,255,255,0.7)">{p['nombre']}</div>
@@ -130,11 +130,11 @@ def render() -> None:
                     <span style="font-size:9px;font-weight:700;color:{color}">{part.get('estado','—')}</span>
                 </div>
             </div>
-            """, unsafe_allow_html=True)
+            """)
 
     with col_paradox:
         # Paradoja democrática
-        st.markdown(f"""
+        st.html(f"""
         <div style="background:rgba(229,62,62,0.06);border:2px solid rgba(229,62,62,0.25);
                     border-radius:12px;padding:18px;margin-bottom:12px">
             <div style="font-size:12px;font-weight:800;color:#FC8181;margin-bottom:10px">
@@ -148,10 +148,10 @@ def render() -> None:
             <div style="background:rgba(255,255,255,0.04);border-radius:8px;padding:12px">
                 <div style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.4);
                             letter-spacing:0.06em;margin-bottom:8px">ZONAS SIN VOZ PARTICIPATIVA</div>
-        """, unsafe_allow_html=True)
+        """)
 
         for p in sin_voz:
-            st.markdown(f"""
+            st.html(f"""
                 <div style="display:flex;justify-content:space-between;align-items:center;
                             margin-bottom:6px;padding:8px 10px;
                             background:rgba(229,62,62,0.08);border-radius:6px;
@@ -169,12 +169,12 @@ def render() -> None:
                         <div style="font-size:9px;color:rgba(255,255,255,0.3)">$0 part.</div>
                     </div>
                 </div>
-            """, unsafe_allow_html=True)
+            """)
 
-        st.markdown("""
+        st.html("""
             </div>
         </div>
-        """, unsafe_allow_html=True)
+        """)
 
         info_box(
             "🎯 Acción SAT-V: Convocar asambleas en Isabel Muentes y Aníbal San Andrés. "
@@ -184,18 +184,18 @@ def render() -> None:
 
     if show_tech:
         st.markdown("---")
-        st.markdown("""
+        st.html("""
         <div style="font-size:9px;color:rgba(255,255,255,0.2)">
         🔧 GeoTwin · Fuente: SIAP-ICPI + PDOT_KB · H20b (IGP) · H04 (TPS) ·
         CPCCS V=0 en RDC 2026 · 50 UT activas vs meta 75
         </div>
-        """, unsafe_allow_html=True)
+        """)
 
 
 # ── HELPERS ────────────────────────────────────────────────────────────────────
 def _stat(label: str, value: str, color: str, note: str = "") -> None:
     note_html = f'<div style="font-size:9px;color:rgba(255,255,255,0.3);margin-top:4px">{note}</div>' if note else ""
-    st.markdown(f"""
+    st.html(f"""
     <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);
                 border-top:2px solid {color};border-radius:12px;padding:14px 16px">
         <div style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.4);
@@ -203,7 +203,7 @@ def _stat(label: str, value: str, color: str, note: str = "") -> None:
         <div style="font-size:1.5rem;font-weight:900;color:{color};line-height:1">{value}</div>
         {note_html}
     </div>
-    """, unsafe_allow_html=True)
+    """)
 
 
 def _render_per_capita_chart(parroquias: list[dict]) -> None:
@@ -328,7 +328,7 @@ def _render_table(parroquias: list[dict], show_tech: bool) -> None:
         </tr>
         """
 
-    st.markdown(f"""
+    st.html(f"""
     <div style="overflow-x:auto">
     <table style="width:100%;border-collapse:collapse;font-family:Inter,sans-serif">
         <thead>
@@ -368,4 +368,4 @@ def _render_table(parroquias: list[dict], show_tech: bool) -> None:
         </tbody>
     </table>
     </div>
-    """, unsafe_allow_html=True)
+    """)

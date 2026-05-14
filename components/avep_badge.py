@@ -57,8 +57,7 @@ def render_avep_scale(current_score: Optional[float] = None) -> None:
             )
             border = f"2px solid {band['color']}" if active else "1px solid rgba(255,255,255,0.08)"
             bg     = f"rgba({_hex_to_rgb(band['color'])},0.15)" if active else "rgba(255,255,255,0.03)"
-            st.markdown(f"""
-            <div style="background:{bg};border:{border};border-radius:10px;
+            st.html(f"""<div style="background:{bg};border:{border};border-radius:10px;
                         padding:10px 8px;text-align:center">
                 <div style="font-size:1.4rem">{band['emoji']}</div>
                 <div style="font-size:0.65rem;font-weight:700;color:{band['color']};
@@ -67,8 +66,7 @@ def render_avep_scale(current_score: Optional[float] = None) -> None:
                     {int(band['min']*100)}–{int(band['max']*100)}%
                 </div>
                 {'<div style="font-size:0.6rem;color:rgba(255,255,255,0.6);margin-top:4px">◄ ACTUAL</div>' if active else ''}
-            </div>
-            """, unsafe_allow_html=True)
+            </div>""")
 
 
 def render_index_card(
@@ -86,8 +84,7 @@ def render_index_card(
     valor_str = f"{valor:.2f}" if valor is not None else "—"
     tech_html = f'<div style="font-size:9px;color:rgba(255,255,255,0.3);margin-top:2px">↳ {key}</div>' if show_tech else ""
 
-    st.markdown(f"""
-    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);
+    st.html(f"""<div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);
                 border-left:3px solid {color};border-radius:10px;padding:12px 14px;
                 margin-bottom:8px">
         <div style="display:flex;justify-content:space-between;align-items:flex-start">
@@ -107,8 +104,7 @@ def render_index_card(
                     border-top:1px solid rgba(255,255,255,0.05);padding-top:6px">
             {nota}
         </div>
-    </div>
-    """, unsafe_allow_html=True)
+    </div>""")
 
 
 # ── HELPER ────────────────────────────────────────────────────────────────────

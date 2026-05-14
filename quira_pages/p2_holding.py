@@ -19,7 +19,7 @@ def render() -> None:
     show_tech = is_tecnico()
 
     # ── HEADER ─────────────────────────────────────────────────────────────────
-    st.markdown(f"""
+    st.html(f"""
     <div style="margin-bottom:20px">
         <h1 style="font-size:1.4rem;font-weight:900;color:#E2E8F0;margin:0">
             Holding Municipal · HPT-M
@@ -28,7 +28,7 @@ def render() -> None:
             Gobernanza integrada · 4 entidades municipales · Q1-2026
         </div>
     </div>
-    """, unsafe_allow_html=True)
+    """)
 
     # ── MÉTRICAS RESUMEN ───────────────────────────────────────────────────────
     c1, c2, c3, c4 = st.columns(4)
@@ -43,7 +43,7 @@ def render() -> None:
         _stat_card("EN ALERTA", str(stats["en_alerta"]), alert_color,
                    "requieren intervención" if stats["en_alerta"] > 0 else "sin alertas activas")
 
-    st.markdown("<div style='height:16px'></div>", unsafe_allow_html=True)
+    st.html("<div style='height:16px'></div>")
 
     # ── RADAR / COMPARATIVA ────────────────────────────────────────────────────
     col_chart, col_list = st.columns([1, 1], gap="medium")
@@ -56,7 +56,7 @@ def render() -> None:
         section_header("Cascada de Gobernanza", "ICGI-T → Nodo 1 → Nodo 2", "🔗")
         _render_cascade(holding["entidades"], stats["icgit_global"])
 
-    st.markdown("<div style='height:12px'></div>", unsafe_allow_html=True)
+    st.html("<div style='height:12px'></div>")
 
     # ── TARJETAS ENTIDADES ─────────────────────────────────────────────────────
     section_header("Detalle de Entidades", "", "🏛️")
@@ -66,7 +66,7 @@ def render() -> None:
             _entity_card(entity, show_tech)
 
     # ── NOTA TÉCNICA ───────────────────────────────────────────────────────────
-    st.markdown("<div style='height:12px'></div>", unsafe_allow_html=True)
+    st.html("<div style='height:12px'></div>")
     info_box(
         "🔗 El score HPT-M es el promedio ponderado de las 4 entidades del holding. "
         "EP Aseo Municipal está en alerta por ISP inferior al umbral COOTAD. "
@@ -76,16 +76,16 @@ def render() -> None:
 
     if show_tech:
         st.markdown("---")
-        st.markdown("""
+        st.html("""
         <div style="font-size:9px;color:rgba(255,255,255,0.2)">
         🔧 Fuente: SIAP-ICPI H71 · H71b · HPT-M canónico · Corte Q1-2026
         </div>
-        """, unsafe_allow_html=True)
+        """)
 
 
 # ── HELPERS ────────────────────────────────────────────────────────────────────
 def _stat_card(label: str, value: str, color: str, note: str = "") -> None:
-    st.markdown(f"""
+    st.html(f"""
     <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);
                 border-top:2px solid {color};border-radius:12px;padding:14px 16px">
         <div style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.4);
@@ -93,7 +93,7 @@ def _stat_card(label: str, value: str, color: str, note: str = "") -> None:
         <div style="font-size:1.8rem;font-weight:900;color:{color};line-height:1">{value}</div>
         <div style="font-size:9px;color:rgba(255,255,255,0.4);margin-top:4px">{note}</div>
     </div>
-    """, unsafe_allow_html=True)
+    """)
 
 
 def _render_bar_chart(entidades: list[dict]) -> None:
@@ -137,7 +137,7 @@ def _render_cascade(entidades: list[dict], icgit_global: float) -> None:
     nodo2 = [e for e in entidades if e.get("nodo") == "Nodo 2"]
 
     # ICGI-T global
-    st.markdown(f"""
+    st.html(f"""
     <div style="text-align:center;margin-bottom:12px">
         <div style="display:inline-block;background:rgba(0,212,255,0.1);
                     border:2px solid rgba(0,212,255,0.3);border-radius:12px;
@@ -149,11 +149,11 @@ def _render_cascade(entidades: list[dict], icgit_global: float) -> None:
         </div>
     </div>
     <div style="text-align:center;color:rgba(255,255,255,0.3);font-size:18px;margin-bottom:8px">↓</div>
-    """, unsafe_allow_html=True)
+    """)
 
     # Nodo 1
     for e in nodo1:
-        st.markdown(f"""
+        st.html(f"""
         <div style="text-align:center;margin-bottom:8px">
             <div style="display:inline-block;background:rgba({_rgb(e['color'])},0.1);
                         border:1px solid rgba({_rgb(e['color'])},0.3);border-radius:10px;
@@ -164,14 +164,14 @@ def _render_cascade(entidades: list[dict], icgit_global: float) -> None:
             </div>
         </div>
         <div style="text-align:center;color:rgba(255,255,255,0.3);font-size:14px;margin-bottom:8px">↓</div>
-        """, unsafe_allow_html=True)
+        """)
 
     # Nodo 2 (horizontal)
     n2_cols = st.columns(len(nodo2))
     for col, e in zip(n2_cols, nodo2):
         with col:
             alert_border = "2px solid #E53E3E" if e.get("alerta") else f"1px solid rgba({_rgb(e['color'])},0.3)"
-            st.markdown(f"""
+            st.html(f"""
             <div style="background:rgba({_rgb(e['color'])},0.08);
                         border:{alert_border};border-radius:10px;
                         padding:10px;text-align:center">
@@ -182,7 +182,7 @@ def _render_cascade(entidades: list[dict], icgit_global: float) -> None:
                 <div style="font-size:1.1rem;font-weight:900;color:{e['color']}">{e['score']:.1f}</div>
                 {'<div style="font-size:8px;color:#FC8181;margin-top:2px">⚠ ALERTA</div>' if e.get("alerta") else ''}
             </div>
-            """, unsafe_allow_html=True)
+            """)
 
 
 def _entity_card(entity: dict, show_tech: bool) -> None:
@@ -197,7 +197,7 @@ def _entity_card(entity: dict, show_tech: bool) -> None:
 
     tech_html = f'<div style="font-size:9px;color:rgba(255,255,255,0.25);margin-top:2px">↳ {entity["id"]} · {entity["nodo"]}</div>' if show_tech else ""
 
-    st.markdown(f"""
+    st.html(f"""
     <div style="background:rgba(255,255,255,0.03);
                 border:1px solid rgba({_rgb(entity['color'])},0.2);
                 border-left:4px solid {entity['color']};
@@ -223,7 +223,7 @@ def _entity_card(entity: dict, show_tech: bool) -> None:
         </div>
         {alert_html}
     </div>
-    """, unsafe_allow_html=True)
+    """)
 
 
 def _rgb(hex_color: str) -> str:

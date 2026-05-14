@@ -40,7 +40,7 @@ def render() -> None:
     show_tech = is_tecnico()
 
     # ── HEADER ─────────────────────────────────────────────────────────────────
-    st.markdown("""
+    st.html("""
     <div style="margin-bottom:20px">
         <h1 style="font-size:1.4rem;font-weight:900;color:#E2E8F0;margin:0">
             Congruencias de Gobernanza
@@ -49,7 +49,7 @@ def render() -> None:
             Promesa → Planificación → Ejecución → Territorio · Q1-2026
         </div>
     </div>
-    """, unsafe_allow_html=True)
+    """)
 
     # ── 4 CONGRUENCIAS ─────────────────────────────────────────────────────────
     section_header("Las Cuatro Congruencias", "Dimensiones de coherencia institucional", "🎯")
@@ -62,7 +62,7 @@ def render() -> None:
             _congruencia_card(c, meta, show_tech)
 
     # ── RADAR ──────────────────────────────────────────────────────────────────
-    st.markdown("<div style='height:12px'></div>", unsafe_allow_html=True)
+    st.html("<div style='height:12px'></div>")
     col_radar, col_ife = st.columns([1, 1], gap="medium")
 
     with col_radar:
@@ -74,7 +74,7 @@ def render() -> None:
         _render_ife(data["indices"], show_tech)
 
     # ── 10 ÍNDICES COMPLEMENTARIOS ─────────────────────────────────────────────
-    st.markdown("<div style='height:12px'></div>", unsafe_allow_html=True)
+    st.html("<div style='height:12px'></div>")
     section_header("Índices Complementarios ICGI-T", "10 dimensiones de gobernanza · Q1-2026", "📋")
 
     indices = data["indices"]
@@ -95,12 +95,12 @@ def render() -> None:
 
     if show_tech:
         st.markdown("---")
-        st.markdown("""
+        st.html("""
         <div style="font-size:9px;color:rgba(255,255,255,0.2)">
         🔧 Fuente: SIAP-ICPI H16 (IFE-A) + IFE-E · H15 · H19 · H20b · H28 ·
         Fidelidad de Mandato · Corte Q1-2026
         </div>
-        """, unsafe_allow_html=True)
+        """)
 
 
 # ── HELPERS ────────────────────────────────────────────────────────────────────
@@ -112,7 +112,7 @@ def _congruencia_card(c: dict, meta: dict, show_tech: bool) -> None:
     fuente = meta.get("fuente", c.get("fuente", ""))
     pregunta = meta.get("pregunta", c.get("pregunta", ""))
 
-    st.markdown(f"""
+    st.html(f"""
     <div style="background:rgba(255,255,255,0.03);
                 border:1px solid rgba(255,255,255,0.07);
                 border-top:3px solid {color};
@@ -140,7 +140,7 @@ def _congruencia_card(c: dict, meta: dict, show_tech: bool) -> None:
 
         <div style="font-size:9px;color:rgba(255,255,255,0.35)">{fuente}</div>
     </div>
-    """, unsafe_allow_html=True)
+    """)
 
 
 def _render_radar(congruencias: dict) -> None:
@@ -198,7 +198,7 @@ def _render_radar(congruencias: dict) -> None:
 def _render_ife(indices: dict, show_tech: bool) -> None:
     # IFE-A
     ife_a = indices.get("IFE-A", {})
-    st.markdown(f"""
+    st.html(f"""
     <div style="background:rgba(56,161,105,0.06);border:1px solid rgba(56,161,105,0.2);
                 border-left:4px solid #38A169;border-radius:10px;padding:14px 16px;margin-bottom:10px">
         <div style="display:flex;justify-content:space-between;align-items:flex-start">
@@ -220,11 +220,11 @@ def _render_ife(indices: dict, show_tech: bool) -> None:
             <div style="width:{ife_a.get('valor',72.73):.1f}%;height:100%;background:#38A169;border-radius:2px"></div>
         </div>
     </div>
-    """, unsafe_allow_html=True)
+    """)
 
     # IFE-E (en construcción)
     ife_e = indices.get("IFE-E", {})
-    st.markdown(f"""
+    st.html(f"""
     <div style="background:rgba(124,92,252,0.06);border:1px solid rgba(124,92,252,0.2);
                 border-left:4px solid #7C5CFC;border-radius:10px;padding:14px 16px">
         <div style="display:flex;justify-content:space-between;align-items:flex-start">
@@ -246,9 +246,9 @@ def _render_ife(indices: dict, show_tech: bool) -> None:
                     background:repeating-linear-gradient(45deg,rgba(124,92,252,.18),rgba(124,92,252,.18) 3px,
                     transparent 3px,transparent 7px);border:1px dashed rgba(124,92,252,.3)"></div>
     </div>
-    """, unsafe_allow_html=True)
+    """)
 
-    st.markdown("<div style='height:8px'></div>", unsafe_allow_html=True)
+    st.html("<div style='height:8px'></div>")
     info_box(
         "📋 IFE-A mide la coherencia entre promesas electorales (CNE) y el PDOT. "
         "IFE-E medirá la trazabilidad de ejecución POA→PAC→SERCOP→eSIGEF — disponible Q2-2026.",
