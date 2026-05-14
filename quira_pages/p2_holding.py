@@ -6,7 +6,7 @@ Dylus Lab © 2026
 import streamlit as st
 from data.loader import load_all
 from utils.session import is_tecnico
-from quira_pages.html_engine import render_page, page_header
+from quira_pages.html_engine import render_page_iframe as render_page, page_header
 
 
 # ── helpers ──────────────────────────────────────────────────────────────────
