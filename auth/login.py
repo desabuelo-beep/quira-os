@@ -10,8 +10,7 @@ from utils.session import set_user
 def render_login() -> None:
     """Renderiza la pantalla de autenticación QUIRA OS."""
     # CSS mínimo para login
-    st.html("""
-    <style>
+    st.markdown("""<style>
     [data-testid="stAppViewContainer"] {
         background: #0A1628;
     }
@@ -91,21 +90,21 @@ def render_login() -> None:
         text-align: center;
     }
     </style>
-    """)
+    """, unsafe_allow_html=True)
 
     # Centrar contenido
     col_l, col_c, col_r = st.columns([1, 2, 1])
     with col_c:
-        st.html(f"""
-        <div class="login-card">
-            <div class="login-logo">⬡ {APP_NAME}</div>
-            <div class="login-sub">SISTEMA INTEGRAL DE GOBERNANZA</div>
-            <div style="text-align:center;margin-bottom:1.2rem">
-                <span class="login-badge">🔒 PMV · Acceso Restringido · {CORTE}</span>
-            </div>
-            <div class="login-gad">🏛️ {GAD_NOMBRE}</div>
-        </div>
-        """)
+        st.markdown(f"""
+<div class="login-card">
+    <div class="login-logo">⬡ {APP_NAME}</div>
+    <div class="login-sub">SISTEMA INTEGRAL DE GOBERNANZA</div>
+    <div style="text-align:center;margin-bottom:1.2rem">
+        <span class="login-badge">🔒 PMV · Acceso Restringido · {CORTE}</span>
+    </div>
+    <div class="login-gad">🏛️ {GAD_NOMBRE}</div>
+</div>
+        """, unsafe_allow_html=True)
 
         with st.form("login_form"):
             rol_options = {
@@ -136,16 +135,14 @@ def render_login() -> None:
                 )
                 st.rerun()
             else:
-                st.html(
-                    '<div class="login-error">⚠️ Contraseña incorrecta. Intente nuevamente.</div>',
-                )
+                st.error("⚠️ Contraseña incorrecta. Intente nuevamente.")
 
         # Nota PMV
-        st.html("""
-        <div style="text-align:center;margin-top:1.6rem;font-size:0.68rem;
-                    color:rgba(255,255,255,0.22);line-height:1.5">
-            QUIRA OS v0.1 · Dylus Lab © 2026<br>
-            Datos sellados Q1-2026 · SIAP-ICPI v1.0222<br>
-            <span style="color:rgba(255,180,0,0.5)">⚠ Entorno de demostración — no producción</span>
-        </div>
-        """)
+        st.markdown("""
+<div style="text-align:center;margin-top:1.6rem;font-size:0.68rem;
+            color:rgba(255,255,255,0.22);line-height:1.5">
+    QUIRA OS v0.1 · Dylus Lab © 2026<br>
+    Datos sellados Q1-2026 · SIAP-ICPI v1.0222<br>
+    <span style="color:rgba(255,180,0,0.5)">⚠ Entorno de demostración — no producción</span>
+</div>
+        """, unsafe_allow_html=True)

@@ -494,15 +494,7 @@ def render() -> None:
 
     # Access check — only técnico roles
     if not show_tech:
-        st.html("""
-        <div style="background:rgba(229,62,62,0.08);border:1px solid rgba(229,62,62,0.25);
-                    border-radius:12px;padding:20px 24px;margin:20px 0;text-align:center">
-            <div style="font-size:1.2rem;margin-bottom:8px">🔒</div>
-            <div style="font-size:14px;font-weight:700;color:#FC8181">Acceso Restringido</div>
-            <div style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:4px">
-                Módulo disponible solo para el rol Técnico
-            </div>
-        </div>""")
+        st.error("🔒 Acceso Restringido — Módulo disponible solo para el rol Técnico.")
         return
 
     tab1, tab2, tab3 = st.tabs([
@@ -520,7 +512,6 @@ def render() -> None:
     with tab3:
         render_page(_p19_html(show_tech), show_tech=show_tech, height=950)
 
-    st.html("<div style='height:8px'></div>")
     if st.button("🔮 Consultar SENTINEL sobre operación técnica", use_container_width=True):
         st.session_state["page"] = "sentinel"
         st.rerun()

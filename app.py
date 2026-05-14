@@ -140,29 +140,23 @@ with st.sidebar:
     rol_emoji  = st.session_state.get("rol_emoji", "")
     usuario    = st.session_state.get("usuario", "")
 
-    st.html(f"""
-    <div style="padding:16px 0 20px">
-        <div style="font-size:1.4rem;font-weight:900;color:#00D4FF;letter-spacing:-0.03em;
-                    margin-bottom:2px">⬡ {APP_NAME}</div>
-        <div style="font-size:0.65rem;color:rgba(255,255,255,0.35);letter-spacing:0.05em;
-                    text-transform:uppercase">{APP_VERSION} · Sistema de Gobernanza</div>
-    </div>
-
-    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);
-                border-radius:10px;padding:10px 12px;margin-bottom:20px">
-        <div style="font-size:10px;color:rgba(255,255,255,0.4);margin-bottom:4px">SESIÓN ACTIVA</div>
-        <div style="font-size:12px;font-weight:700;color:#E2E8F0">{rol_emoji} {rol}</div>
-        <div style="font-size:9px;color:rgba(255,255,255,0.3);margin-top:2px">{GAD_NOMBRE}</div>
-    </div>
-    """)
+    st.markdown(f"""
+<div style="padding:16px 0 20px">
+    <div style="font-size:1.4rem;font-weight:900;color:#00D4FF;letter-spacing:-0.03em;
+                margin-bottom:2px">⬡ {APP_NAME}</div>
+    <div style="font-size:0.65rem;color:rgba(255,255,255,0.35);letter-spacing:0.05em;
+                text-transform:uppercase">{APP_VERSION} · Sistema de Gobernanza</div>
+</div>
+<div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);
+            border-radius:10px;padding:10px 12px;margin-bottom:20px">
+    <div style="font-size:10px;color:rgba(255,255,255,0.4);margin-bottom:4px">SESIÓN ACTIVA</div>
+    <div style="font-size:12px;font-weight:700;color:#E2E8F0">{rol_emoji} {rol}</div>
+    <div style="font-size:9px;color:rgba(255,255,255,0.3);margin-top:2px">{GAD_NOMBRE}</div>
+</div>
+    """, unsafe_allow_html=True)
 
     # Navegación
-    st.html("""
-    <div style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.35);
-                letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px">
-        MÓDULOS QUIRA OS
-    </div>
-    """)
+    st.caption("MÓDULOS QUIRA OS")
 
     current_page = st.session_state.get("page", "dashboard")
     for key, page in PAGES.items():
@@ -178,23 +172,19 @@ with st.sidebar:
             st.session_state["page"] = key
             st.rerun()
 
-    st.html("<div style='height:20px'></div>")
+    st.markdown("---")
 
     # Info GAD
-    st.html(f"""
-    <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:14px">
-        <div style="font-size:9px;color:rgba(255,255,255,0.25);line-height:1.6">
-            🏛️ {GAD_NOMBRE}<br>
-            📅 Período {GAD_PERIODO}<br>
-            👤 {ALCALDE}<br>
-            📊 Corte {CORTE}<br>
-            <br>
-            <span style="color:rgba(255,180,0,0.5)">⚠ Entorno PMV · no producción</span>
-        </div>
-    </div>
-    """)
-
-    st.html("<div style='height:14px'></div>")
+    st.markdown(f"""
+<div style="font-size:9px;color:rgba(255,255,255,0.25);line-height:1.8">
+    🏛️ {GAD_NOMBRE}<br>
+    📅 Período {GAD_PERIODO}<br>
+    👤 {ALCALDE}<br>
+    📊 Corte {CORTE}<br>
+    <br>
+    <span style="color:rgba(255,180,0,0.5)">⚠ Entorno PMV · no producción</span>
+</div>
+    """, unsafe_allow_html=True)
 
     # Logout
     if st.button("← Cerrar Sesión", use_container_width=True):
@@ -207,18 +197,10 @@ with st.sidebar:
         _data = load_all()
         _sat  = get_sat_counts(_data)
         if _sat["criticos"] > 0:
-            st.html(f"""
-            <div style="margin-top:12px;background:rgba(229,62,62,0.1);
-                        border:1px solid rgba(229,62,62,0.25);border-radius:8px;
-                        padding:8px 10px;text-align:center">
-                <div style="font-size:10px;font-weight:700;color:#FC8181">
-                    🔴 {_sat['criticos']} SAT Crítica{'s' if _sat['criticos']>1 else ''} Activa{'s' if _sat['criticos']>1 else ''}
-                </div>
-                <div style="font-size:9px;color:rgba(255,255,255,0.35);margin-top:2px">
-                    Ver Tablero Ejecutivo
-                </div>
-            </div>
-            """)
+            st.error(
+                f"🔴 {_sat['criticos']} SAT Crítica{'s' if _sat['criticos']>1 else ''} "
+                f"Activa{'s' if _sat['criticos']>1 else ''} · Ver Tablero"
+            )
     except Exception:
         pass
 
@@ -228,11 +210,4 @@ page_cfg  = PAGES.get(page_key, PAGES["dashboard"])
 page_cfg["render"]()
 
 # ── FOOTER ─────────────────────────────────────────────────────────────────────
-st.html("""
-<div style="margin-top:40px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.05);
-            text-align:center">
-    <div style="font-size:9px;color:rgba(255,255,255,0.18)">
-        QUIRA OS v0.1 · Dylus Lab © 2026 · SIAP-ICPI v1.0222 · Datos sellados Q1-2026
-    </div>
-</div>
-""")
+st.caption("QUIRA OS v0.1 · Dylus Lab © 2026 · SIAP-ICPI v1.0222 · Datos sellados Q1-2026")

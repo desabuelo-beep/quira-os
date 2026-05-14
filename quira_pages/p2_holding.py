@@ -332,7 +332,6 @@ def render() -> None:
     render_page(html, show_tech=show_tech, height=1400)
 
     # Native Streamlit CTA after iframe
-    st.html("<div style='height:8px'></div>")
     c1, c2 = st.columns(2, gap="small")
     with c1:
         if st.button("🔮 Analizar Holding con Sentinel", use_container_width=True):
