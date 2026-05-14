@@ -213,13 +213,13 @@ GEMINI_API_KEY = "AIza..."
 
 
 # ── HELPERS ────────────────────────────────────────────────────────────────────
-# Modelos a intentar en orden (v1 REST estable — sin SDK, sin v1beta)
+# Modelos a intentar en orden (v1beta soporta system_instruction y gemini-1.5-flash free tier)
 _GEMINI_MODELS = [
     "gemini-1.5-flash",
     "gemini-1.5-flash-8b",
     "gemini-2.0-flash-lite",
 ]
-_GEMINI_BASE = "https://generativelanguage.googleapis.com/v1/models"
+_GEMINI_BASE = "https://generativelanguage.googleapis.com/v1beta/models"
 
 
 def _run_sentinel(api_key: str, system_prompt: str) -> None:
