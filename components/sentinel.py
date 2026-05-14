@@ -171,6 +171,10 @@ GROQ_API_KEY = "gsk_..."
         return
 
     # ── PREGUNTA INICIAL AUTO-INJECT ───────────────────────────────────────────
+    # Recoge pregunta inyectada desde otras páginas (Holding, GeoTwin, etc.)
+    if not pregunta_inicial:
+        pregunta_inicial = st.session_state.pop("sentinel_pregunta_auto", "")
+
     if pregunta_inicial and not st.session_state["sentinel_messages"]:
         st.session_state["sentinel_messages"].append({
             "role": "user",

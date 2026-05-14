@@ -236,6 +236,11 @@ def render() -> None:
             st.session_state["page"] = "geotwin"
             st.rerun()
     with c2:
-        if st.button("🔮 Analizar con Sentinel", use_container_width=True):
+        if st.button("🔮 Analizar con Sentinel", use_container_width=True, type="primary"):
             st.session_state["page"] = "sentinel"
+            st.session_state["sentinel_pregunta_auto"] = (
+                "¿Qué congruencias de gobernanza están más críticas y qué acciones "
+                "concretas debe tomar el GAD de Montecristi para mejorarlas "
+                "antes del cierre 2026?"
+            )
             st.rerun()

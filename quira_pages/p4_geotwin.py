@@ -268,6 +268,11 @@ def render() -> None:
             st.session_state["page"] = "congruencias"
             st.rerun()
     with c2:
-        if st.button("🔮 Priorizar territorio con Sentinel", use_container_width=True):
+        if st.button("🔮 Priorizar territorio con Sentinel", use_container_width=True, type="primary"):
             st.session_state["page"] = "sentinel"
+            st.session_state["sentinel_pregunta_auto"] = (
+                "¿Cuáles son las parroquias con mayor urgencia de inversión según NBI, "
+                "cobertura de agua y estado de participación ciudadana? "
+                "¿Qué prioriza el PDOT para el territorio?"
+            )
             st.rerun()

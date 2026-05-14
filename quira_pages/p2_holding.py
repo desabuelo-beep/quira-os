@@ -334,8 +334,13 @@ def render() -> None:
     # Native Streamlit CTA after iframe
     c1, c2 = st.columns(2, gap="small")
     with c1:
-        if st.button("🔮 Analizar Holding con Sentinel", use_container_width=True):
+        if st.button("🔮 Analizar Holding con Sentinel", use_container_width=True, type="primary"):
             st.session_state["page"] = "sentinel"
+            st.session_state["sentinel_pregunta_auto"] = (
+                "¿Cómo están funcionando las empresas del Holding Municipal "
+                "(Bomberos, Patronato, EP Aseo) y cuáles representan mayor riesgo "
+                "de gobernanza para el GAD de Montecristi?"
+            )
             st.rerun()
     with c2:
         if st.button("📊 Ver Tablero Ejecutivo", use_container_width=True):

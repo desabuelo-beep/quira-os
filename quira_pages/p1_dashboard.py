@@ -307,9 +307,13 @@ def render() -> None:
     st.markdown("---")
     col1, col2 = st.columns([1, 1])
     with col1:
-        if st.button("💬 Preguntar a Sentinel sobre el ICGI-T",
+        if st.button("🔮 Preguntar a Sentinel sobre el ICGI-T",
                      use_container_width=True, type="primary"):
             st.session_state["page"] = "sentinel"
+            st.session_state["sentinel_pregunta_auto"] = (
+                "¿Por qué el ICGI-T bajó de 69.93 en 2025 a 53.56 en Q1-2026 "
+                "y qué debe hacer el GAD para alcanzar la meta de 70 al cierre 2026?"
+            )
             st.rerun()
     with col2:
         if st.button("📊 Ver Congruencias de Gobernanza", use_container_width=True):
