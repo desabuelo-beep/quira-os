@@ -134,33 +134,14 @@ def render_sentinel(
     # ── HEADER ─────────────────────────────────────────────────────────────────
     if not compact:
         pdot_stats = pdot_context_stats()
-        pdot_badge = ""
-        if pdot_stats["disponible"]:
-            pdot_badge = (
-                f'<span style="font-size:9px;background:rgba(56,161,105,0.15);'
-                f'border:1px solid rgba(56,161,105,0.3);border-radius:20px;'
-                f'padding:2px 8px;color:#68D391">⚡ PDOT KB activo · ~{pdot_stats["tokens_aprox"]:,} tokens</span>'
-            )
-        else:
-            pdot_badge = (
-                '<span style="font-size:9px;background:rgba(229,62,62,0.12);'
-                'border:1px solid rgba(229,62,62,0.3);border-radius:20px;'
-                'padding:2px 8px;color:#FC8181">⚠ PDOT KB no disponible</span>'
-            )
 
-        st.markdown(f"""
-        <div style="margin-bottom:20px">
-            <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
-                <h1 style="font-size:1.4rem;font-weight:900;color:#E2E8F0;margin:0">
-                    🔮 Sentinel · Asistente de Gobernanza
-                </h1>
-                {pdot_badge}
-            </div>
-            <div style="font-size:0.75rem;color:rgba(255,255,255,0.4)">
-                Análisis territorial · Prospectiva · PDOT 2023-2027 · ICGI-T Q1-2026
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
+        if pdot_stats["disponible"]:
+            pdot_status = f"⚡ PDOT KB activo · ~{pdot_stats['tokens_aprox']:,} tokens"
+        else:
+            pdot_status = "⚠ PDOT KB no disponible"
+
+        st.subheader("🔮 Sentinel · Asistente de Gobernanza")
+        st.caption(f"Análisis territorial · Prospectiva · PDOT 2023-2027 · ICGI-T Q1-2026   |   {pdot_status}")
 
         # Debug técnico
         if is_tecnico():
@@ -175,18 +156,7 @@ def render_sentinel(
     # ── API KEY CHECK ──────────────────────────────────────────────────────────
     api_key = _get_api_key()
     if not api_key:
-        st.markdown("""
-        <div style="background:rgba(229,62,62,0.08);border:1px solid rgba(229,62,62,0.25);
-                    border-radius:12px;padding:20px;text-align:center">
-            <div style="font-size:1.2rem;margin-bottom:8px">🔑</div>
-            <div style="font-size:13px;font-weight:700;color:#FC8181;margin-bottom:8px">
-                API Key no configurada
-            </div>
-            <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:12px">
-                Sentinel requiere una Anthropic API Key para funcionar.
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
+        st.error("🔑 **API Key no configurada** — Sentinel requiere una Anthropic API Key para funcionar.")
 
         st.markdown("**Configura la API Key:**")
         with st.expander("Ver instrucciones"):
@@ -205,7 +175,6 @@ def render_sentinel(
             """)
 
         # Input temporal de API key en sesión
-        st.markdown("<div style='height:8px'></div>", unsafe_allow_html=True)
         temp_key = st.text_input(
             "O ingresa la API Key para esta sesión:",
             type="password",
@@ -313,12 +282,7 @@ def _render_suggestions() -> None:
         "¿Cuáles son las potencialidades económicas más relevantes del cantón?",
     ]
 
-    st.markdown("""
-    <div style="font-size:10px;font-weight:700;color:rgba(255,255,255,0.35);
-                letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px">
-        PREGUNTAS SUGERIDAS
-    </div>
-    """, unsafe_allow_html=True)
+    st.caption("💬 PREGUNTAS SUGERIDAS")
 
     cols = st.columns(2)
     for i, sug in enumerate(sugerencias):
