@@ -134,7 +134,7 @@ def render_sentinel(
         st.subheader("🔮 Sentinel · Asistente de Gobernanza")
         st.caption(
             f"Análisis territorial · Prospectiva · PDOT 2023-2027 · ICGI-T Q1-2026"
-            f"   |   {pdot_status}   |   ✨ Gemini 1.5 Flash"
+            f"   |   {pdot_status}   |   ✨ Gemini 2.0 Flash"
         )
         if is_tecnico():
             with st.expander("🔧 Debug Sentinel — Solo Técnico", expanded=False):
@@ -223,7 +223,7 @@ def _run_sentinel(api_key: str, system_prompt: str) -> None:
             try:
                 genai.configure(api_key=api_key)
                 model = genai.GenerativeModel(
-                    model_name="gemini-1.5-flash",
+                    model_name="gemini-2.0-flash",
                     system_instruction=system_prompt,
                 )
 
