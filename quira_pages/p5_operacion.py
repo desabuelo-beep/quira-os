@@ -1,369 +1,526 @@
 """
-QUIRA OS v0.1 — P-05 Operación Técnica (HITL)
-Ingesta de cumplimiento · Validador cruzado · Auditor HITL
-Solo accesible en rol Técnico
+QUIRA OS v0.1 — P-05 Operación Técnica
+P-17 Ingesta · P-18 Validador · P-19 HITL
+Fiel al DEMO.html P-17/18/19 · st.components.v1.html() render
 Dylus Lab © 2026
 """
 import streamlit as st
-from data.loader import load_all
-from components.kpi_card import section_header, info_box
-from utils.session import is_tecnico, get_rol
+from utils.session import is_tecnico
+from quira_pages.html_engine import render_page, page_header
 
 
+# ─── P-17 INGESTA DE CUMPLIMIENTO ────────────────────────────────────────────
+def _p17_html(show_tech: bool) -> str:
+    hdr = page_header(
+        "⑦ OPERACIÓN TÉCNICA · BACKOFFICE",
+        "Ingesta de Cumplimiento",
+        "Carga mensual de reportes · 6 Direcciones + Adscritas · Protocolo HITL · QUIRA OS",
+    )
+
+    banner = """
+<div style="padding:12px 16px;background:rgba(124,92,252,.07);
+            border:1px solid rgba(124,92,252,.25);border-radius:10px;
+            margin-bottom:16px;display:flex;align-items:center;gap:12px">
+  <div style="font-size:28px">📥</div>
+  <div style="flex:1">
+    <div style="font-size:11px;font-weight:700;color:var(--purple);margin-bottom:3px">
+      QUIRA OS · Backoffice Operativo · Streamlit v0.1
+    </div>
+    <div style="font-size:11px;color:var(--muted)">
+      Este módulo operará en <strong style="color:var(--white)">QUIRA OS (Streamlit)</strong> —
+      no en el HTML institucional. Aquí: protocolo, arquitectura y estado de ingesta del sistema
+      mensualizado.
+    </div>
+  </div>
+  <span class="badge" style="background:rgba(124,92,252,.2);color:var(--purple);
+                              font-size:9px;white-space:nowrap">En construcción</span>
+</div>"""
+
+    pasos = """
+<div class="card">
+  <div class="card-title">Protocolo de Ingesta · 4 pasos mensuales</div>
+  <div style="display:flex;flex-direction:column;gap:8px">
+    <div style="display:flex;gap:10px;align-items:flex-start;padding:10px;
+                background:rgba(0,212,255,.05);border-radius:8px;border-left:3px solid var(--cyan)">
+      <div style="font-size:15px;font-weight:800;color:var(--cyan);min-width:20px">①</div>
+      <div>
+        <div style="font-size:12px;font-weight:700;color:var(--cyan)">Carga de informe</div>
+        <div style="font-size:11px;color:var(--muted)">
+          Responsable de dirección sube PDF firmado + avance de meta + evidencias eSIGEF.
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;align-items:flex-start;padding:10px;
+                background:rgba(0,224,150,.05);border-radius:8px;border-left:3px solid var(--green)">
+      <div style="font-size:15px;font-weight:800;color:var(--green);min-width:20px">②</div>
+      <div>
+        <div style="font-size:12px;font-weight:700;color:var(--green)">Extracción IA</div>
+        <div style="font-size:11px;color:var(--muted)">
+          SENTINEL extrae KPIs, detecta incoherencias y compara con el mes anterior.
+          Genera borrador de validación automática.
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;align-items:flex-start;padding:10px;
+                background:rgba(255,183,0,.05);border-radius:8px;border-left:3px solid var(--amber)">
+      <div style="font-size:15px;font-weight:800;color:var(--amber);min-width:20px">③</div>
+      <div>
+        <div style="font-size:12px;font-weight:700;color:var(--amber)">Revisión HITL</div>
+        <div style="font-size:11px;color:var(--muted)">
+          Técnico de Planificación revisa el borrador: aprueba, rechaza o agrega observaciones.
+          Sin validación humana, ningún dato entra al motor.
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;align-items:flex-start;padding:10px;
+                background:rgba(124,92,252,.05);border-radius:8px;border-left:3px solid var(--purple)">
+      <div style="font-size:15px;font-weight:800;color:var(--purple);min-width:20px">④</div>
+      <div>
+        <div style="font-size:12px;font-weight:700;color:var(--purple)">Actualización ICGI-T</div>
+        <div style="font-size:11px;color:var(--muted)">
+          Motor SIAP-ICPI recalcula el índice. QUIRA Gov se actualiza.
+          Trazabilidad SHA-256 generada.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>"""
+
+    tabla_ingesta = """
+<div class="card">
+  <div class="card-title">
+    Estado de Ingesta · Mayo 2026
+    <span class="badge badge-amber" style="float:right">mockup</span>
+  </div>
+  <table class="tbl">
+    <thead><tr><th>Unidad</th><th>Informe</th><th>eSIGEF</th><th>Estado</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span style="color:var(--cyan);font-weight:700">DAPS-01</span>
+            <span style="font-size:9px;color:var(--muted)"> Agua y Saneamiento</span></td>
+        <td style="text-align:center;color:var(--amber)">⏳</td>
+        <td style="text-align:center;color:var(--amber)">⏳</td>
+        <td><span style="font-size:9px;color:var(--amber)">Pendiente</span></td>
+      </tr>
+      <tr>
+        <td><span style="color:var(--cyan);font-weight:700">DOP-01</span>
+            <span style="font-size:9px;color:var(--muted)"> Obras Públicas</span></td>
+        <td style="text-align:center;color:var(--amber)">⏳</td>
+        <td style="text-align:center;color:var(--amber)">⏳</td>
+        <td><span style="font-size:9px;color:var(--amber)">Pendiente</span></td>
+      </tr>
+      <tr>
+        <td><span style="color:var(--cyan);font-weight:700">FIN-01</span>
+            <span style="font-size:9px;color:var(--muted)"> Dir. Financiera</span></td>
+        <td style="text-align:center;color:var(--green)">✅</td>
+        <td style="text-align:center;color:var(--green)">✅</td>
+        <td><span style="font-size:9px;color:var(--green)">Validado</span></td>
+      </tr>
+      <tr>
+        <td><span style="color:var(--cyan);font-weight:700">RR.HH-01</span>
+            <span style="font-size:9px;color:var(--muted)"> Recursos Humanos</span></td>
+        <td style="text-align:center;color:var(--red)">❌</td>
+        <td style="text-align:center;color:var(--muted)">—</td>
+        <td><span style="font-size:9px;color:var(--red)">Sin carga</span></td>
+      </tr>
+      <tr>
+        <td><span style="color:var(--green);font-weight:700">🚒 BOMB</span>
+            <span style="font-size:9px;color:var(--muted)"> Bomberos</span></td>
+        <td style="text-align:center;color:var(--green)">✅</td>
+        <td style="text-align:center;color:var(--green)">✅</td>
+        <td><span style="font-size:9px;color:var(--green)">Validado</span></td>
+      </tr>
+      <tr>
+        <td><span style="color:var(--amber);font-weight:700">🗑️ EP ASEO</span>
+            <span style="font-size:9px;color:var(--muted)"> EP Aseo Municipal</span></td>
+        <td style="text-align:center;color:var(--amber)">⏳</td>
+        <td style="text-align:center;color:var(--red)">❌</td>
+        <td><span style="font-size:9px;color:var(--red)">Incompleto</span></td>
+      </tr>
+      <tr>
+        <td><span style="color:var(--green);font-weight:700">🤝 PAT</span>
+            <span style="font-size:9px;color:var(--muted)"> Patronato</span></td>
+        <td style="text-align:center;color:var(--green)">✅</td>
+        <td style="text-align:center;color:var(--amber)">⏳</td>
+        <td><span style="font-size:9px;color:var(--amber)">En revisión</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <div style="margin-top:8px;padding:8px;background:rgba(124,92,252,.05);border-radius:6px;
+              font-size:10px;color:var(--muted)">
+    ℹ️ Lógica real de cargas y validación disponible en
+    <strong style="color:var(--purple)">QUIRA OS · Streamlit v0.1</strong>.
+    Este mockup muestra la estructura operativa del sistema.
+  </div>
+  <div style="display:inline-block;margin-top:12px;padding:8px 12px;
+              background:rgba(0,212,255,.06);border:1px solid rgba(0,212,255,.15);
+              border-radius:8px;font-size:12px;color:var(--cyan)">
+    🔧 SENTINEL · Protocolo de ingesta
+  </div>
+</div>"""
+
+    grid = (
+        f'<div class="grid-2" style="align-items:start;gap:14px">'
+        f'{pasos}{tabla_ingesta}'
+        f'</div>'
+    )
+
+    return hdr + banner + grid
+
+
+# ─── P-18 VALIDADOR CRUZADO ───────────────────────────────────────────────────
+def _p18_html(show_tech: bool) -> str:
+    hdr = page_header(
+        "⑦ OPERACIÓN TÉCNICA · BACKOFFICE",
+        "Validador Cruzado",
+        "¿Lo reportado coincide con lo oficialmente ejecutado? · Doble filtro QUIRA · QUIRA OS",
+    )
+
+    banner = """
+<div style="padding:12px 16px;background:rgba(124,92,252,.07);
+            border:1px solid rgba(124,92,252,.25);border-radius:10px;
+            margin-bottom:16px;display:flex;align-items:center;gap:12px">
+  <div style="font-size:28px">🔍</div>
+  <div>
+    <div style="font-size:11px;font-weight:700;color:var(--purple);margin-bottom:3px">
+      QUIRA OS · Validador Cruzado · Streamlit v0.1
+    </div>
+    <div style="font-size:11px;color:var(--muted)">
+      Cruza <strong style="color:var(--white)">4 fuentes</strong> ×
+      <strong style="color:var(--white)">25 metas</strong> ×
+      <strong style="color:var(--white)">6 direcciones</strong>.
+      Detecta brechas antes de que lleguen al índice y generen riesgo institucional.
+    </div>
+  </div>
+</div>"""
+
+    fuentes = """
+<div class="grid-4" style="margin-bottom:14px">
+  <div style="padding:11px;background:var(--navy-card);border-radius:8px;
+              border-top:3px solid var(--cyan);text-align:center">
+    <div style="font-size:20px;margin-bottom:5px">📄</div>
+    <div style="font-size:11px;font-weight:700;color:var(--cyan)">Informe humano</div>
+    <div style="font-size:9px;color:var(--muted);margin-top:3px">
+      Lo que el director dice que ejecutó
+    </div>
+  </div>
+  <div style="padding:11px;background:var(--navy-card);border-radius:8px;
+              border-top:3px solid var(--green);text-align:center">
+    <div style="font-size:20px;margin-bottom:5px">📋</div>
+    <div style="font-size:11px;font-weight:700;color:var(--green)">PAC SERCOP</div>
+    <div style="font-size:9px;color:var(--muted);margin-top:3px">Procesos contratados oficialmente</div>
+  </div>
+  <div style="padding:11px;background:var(--navy-card);border-radius:8px;
+              border-top:3px solid var(--amber);text-align:center">
+    <div style="font-size:20px;margin-bottom:5px">💰</div>
+    <div style="font-size:11px;font-weight:700;color:var(--amber)">Devengado eSIGEF</div>
+    <div style="font-size:9px;color:var(--muted);margin-top:3px">Lo que realmente se pagó</div>
+  </div>
+  <div style="padding:11px;background:var(--navy-card);border-radius:8px;
+              border-top:3px solid var(--red);text-align:center">
+    <div style="font-size:20px;margin-bottom:5px">🏛️</div>
+    <div style="font-size:11px;font-weight:700;color:var(--red)">Presupuesto aprobado</div>
+    <div style="font-size:9px;color:var(--muted);margin-top:3px">Lo que el Concejo autorizó</div>
+  </div>
+</div>"""
+
+    pregunta = """
+<div style="padding:14px 18px;
+            background:linear-gradient(135deg,rgba(124,92,252,.08) 0%,rgba(0,212,255,.05) 100%);
+            border:1px solid rgba(124,92,252,.2);border-radius:10px;
+            margin-bottom:14px;text-align:center">
+  <div style="font-size:14px;font-weight:800;color:var(--white);font-style:italic">
+    "¿Lo reportado coincide con lo oficialmente ejecutado?"
+  </div>
+  <div style="font-size:11px;color:var(--muted);margin-top:6px">
+    Si la respuesta es NO en cualquier fuente →
+    alerta automática → revisión HITL → trazabilidad SHA-256
+  </div>
+</div>"""
+
+    brechas = """
+<div class="card">
+  <div class="card-title">4 tipos de brecha que detecta</div>
+  <div style="display:flex;flex-direction:column;gap:7px">
+    <div style="padding:8px;background:rgba(255,77,109,.05);border-radius:6px;
+                border-left:3px solid var(--red);font-size:11px;color:var(--muted)">
+      <strong style="color:var(--red)">C1 — Gasto no reportado:</strong>
+      eSIGEF muestra devengado pero no hay informe de dirección correspondiente.
+    </div>
+    <div style="padding:8px;background:rgba(255,183,0,.05);border-radius:6px;
+                border-left:3px solid var(--amber);font-size:11px;color:var(--muted)">
+      <strong style="color:var(--amber)">C2 — PAC fantasma:</strong>
+      Proceso en PAC sin respaldo en devengado eSIGEF. Posible proceso no ejecutado.
+    </div>
+    <div style="padding:8px;background:rgba(255,77,109,.05);border-radius:6px;
+                border-left:3px solid var(--red);font-size:11px;color:var(--muted)">
+      <strong style="color:var(--red)">C3 — Sobrereporte:</strong>
+      Informe humano declara avance superior al devengado real.
+    </div>
+    <div style="padding:8px;background:rgba(255,183,0,.05);border-radius:6px;
+                border-left:3px solid var(--amber);font-size:11px;color:var(--muted)">
+      <strong style="color:var(--amber)">C4 — Gasto ciego:</strong>
+      Devengado sin proceso PAC ni SHA-256.
+      <strong style="color:var(--red)">24 activos Q1-2026 · SAT-0 activo.</strong>
+    </div>
+  </div>
+</div>"""
+
+    flujo = """
+<div class="card">
+  <div class="card-title">Flujo de validación QUIRA</div>
+  <div style="display:flex;flex-direction:column;gap:0">
+    <div style="display:flex;align-items:center;gap:8px;padding:7px 0;
+                border-bottom:1px solid rgba(255,255,255,.05);font-size:11px;color:var(--muted)">
+      <span style="color:var(--cyan);font-weight:700;min-width:18px">①</span>
+      Carga de fuentes (H05 POA · H05b PAC · H07 eSIGEF · Informe PDF)
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;padding:7px 0;
+                border-bottom:1px solid rgba(255,255,255,.05);font-size:11px;color:var(--muted)">
+      <span style="color:var(--cyan);font-weight:700;min-width:18px">②</span>
+      Cruce automático: 4 fuentes × 25 metas × 6 direcciones
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;padding:7px 0;
+                border-bottom:1px solid rgba(255,255,255,.05);font-size:11px;color:var(--muted)">
+      <span style="color:var(--amber);font-weight:700;min-width:18px">③</span>
+      Brechas detectadas → clasificadas C1/C2/C3/C4 → notificación HITL
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;padding:7px 0;
+                border-bottom:1px solid rgba(255,255,255,.05);font-size:11px;color:var(--muted)">
+      <span style="color:var(--green);font-weight:700;min-width:18px">④</span>
+      Técnico resuelve cada brecha → registro SHA-256
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;padding:7px 0;
+                font-size:11px;color:var(--muted)">
+      <span style="color:var(--purple);font-weight:700;min-width:18px">⑤</span>
+      Motor ICGI-T recalcula → QUIRA Gov se actualiza → PDF certificado
+    </div>
+  </div>
+  <div style="margin-top:10px;padding:8px;background:rgba(124,92,252,.05);border-radius:6px;
+              font-size:10px;color:var(--muted)">
+    ℹ️ Implementación completa en
+    <strong style="color:var(--purple)">QUIRA OS · Streamlit v0.1</strong>
+  </div>
+  <div style="display:inline-block;margin-top:12px;padding:8px 12px;
+              background:rgba(0,212,255,.06);border:1px solid rgba(0,212,255,.15);
+              border-radius:8px;font-size:12px;color:var(--cyan)">
+    🔍 SENTINEL · Análisis de brechas cruzadas
+  </div>
+</div>"""
+
+    grid = (
+        f'<div class="grid-2" style="align-items:start;gap:14px">'
+        f'{brechas}{flujo}'
+        f'</div>'
+    )
+
+    return hdr + banner + fuentes + pregunta + grid
+
+
+# ─── P-19 AUDITOR HITL ────────────────────────────────────────────────────────
+def _p19_html(show_tech: bool) -> str:
+    hdr = page_header(
+        "⑦ OPERACIÓN TÉCNICA · BACKOFFICE",
+        "Auditor HITL",
+        "Human-in-the-Loop · IA propone · Técnico decide · Trazabilidad total · QUIRA OS",
+    )
+
+    banner = """
+<div style="padding:12px 16px;background:rgba(124,92,252,.07);
+            border:1px solid rgba(124,92,252,.25);border-radius:10px;
+            margin-bottom:16px;display:flex;align-items:center;gap:12px">
+  <div style="font-size:28px">🧠</div>
+  <div>
+    <div style="font-size:11px;font-weight:700;color:var(--purple);margin-bottom:3px">
+      HITL — Human-in-the-Loop · QUIRA OS · Streamlit v0.1
+    </div>
+    <div style="font-size:11px;color:var(--muted)">
+      La IA detecta inconsistencias y propone clasificaciones. El técnico aprueba, rechaza o comenta.
+      <strong style="color:var(--white)">Sin validación humana, ningún dato entra al motor ICGI-T.</strong>
+    </div>
+  </div>
+</div>"""
+
+    principio = """
+<div style="padding:14px 18px;
+            background:linear-gradient(135deg,rgba(0,224,150,.07) 0%,rgba(124,92,252,.04) 100%);
+            border:1px solid rgba(0,224,150,.18);border-radius:10px;margin-bottom:14px">
+  <div style="font-size:11px;font-weight:700;color:var(--green);margin-bottom:10px">
+    ⚖️ Principio HITL de QUIRA
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 40px 1fr;gap:8px;align-items:center;text-align:center">
+    <div style="padding:10px;background:rgba(0,212,255,.06);border-radius:8px;
+                border:1px solid rgba(0,212,255,.15)">
+      <div style="font-size:20px;margin-bottom:4px">🤖</div>
+      <div style="font-size:11px;font-weight:700;color:var(--cyan)">IA propone</div>
+      <div style="font-size:10px;color:var(--muted)">Detecta · Clasifica · Sugiere</div>
+    </div>
+    <div style="font-size:20px;color:var(--purple)">⟷</div>
+    <div style="padding:10px;background:rgba(0,224,150,.06);border-radius:8px;
+                border:1px solid rgba(0,224,150,.15)">
+      <div style="font-size:20px;margin-bottom:4px">👤</div>
+      <div style="font-size:11px;font-weight:700;color:var(--green)">Técnico decide</div>
+      <div style="font-size:10px;color:var(--muted)">Aprueba · Rechaza · Comenta</div>
+    </div>
+  </div>
+  <div style="margin-top:10px;font-size:11px;color:var(--muted);text-align:center">
+    El HITL reduce la carga manual ≥70% y garantiza que la experiencia institucional del técnico
+    nunca sea reemplazada — sino amplificada.
+  </div>
+</div>"""
+
+    ejemplo = """
+<div class="card">
+  <div class="card-title">
+    Ejemplo · Hallazgo IA + Decisión HITL
+    <span class="badge badge-amber" style="float:right">mockup</span>
+  </div>
+  <div style="padding:10px;background:rgba(255,77,109,.06);border-radius:8px;
+              border:1px solid rgba(255,77,109,.2);margin-bottom:10px">
+    <div style="font-size:10px;font-weight:700;color:var(--red);margin-bottom:4px">
+      🤖 SENTINEL detectó — Mayo 2026
+    </div>
+    <div style="font-size:11px;color:var(--white);margin-bottom:4px">
+      EP Aseo reporta ejecución $280K en informe de dirección, pero eSIGEF registra solo
+      $118K devengado. Brecha: $162K sin trazabilidad.
+    </div>
+    <div style="font-size:10px;color:var(--amber)">
+      Clasificación automática: Brecha C3 · Sobrereporte · Requiere evidencia adicional
+    </div>
+  </div>
+  <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;
+              letter-spacing:.08em;margin-bottom:7px">Decisión del técnico:</div>
+  <div style="display:flex;gap:6px;margin-bottom:10px">
+    <div style="padding:6px 12px;background:rgba(0,224,150,.1);
+                border:1px solid rgba(0,224,150,.3);border-radius:6px;
+                font-size:11px;color:var(--green)">✅ Aprobar</div>
+    <div style="padding:6px 12px;background:rgba(255,77,109,.1);
+                border:1px solid rgba(255,77,109,.3);border-radius:6px;
+                font-size:11px;color:var(--red)">❌ Rechazar</div>
+    <div style="padding:6px 12px;background:rgba(255,183,0,.1);
+                border:1px solid rgba(255,183,0,.3);border-radius:6px;
+                font-size:11px;color:var(--amber)">💬 Comentar</div>
+  </div>
+  <div style="padding:8px;background:rgba(0,0,0,.15);border-radius:6px;
+              font-size:10px;color:var(--muted);font-style:italic">
+    "EP Aseo incluye $162K de contrato pendiente de certificación.
+     Adjunto acta de recepción provisional..."
+  </div>
+  <div style="margin-top:8px;font-size:10px;color:var(--green);padding:6px;
+              background:rgba(0,224,150,.04);border-radius:6px">
+    → Resolución registrada · SHA-256 generado · Motor ICGI-T actualiza EP Aseo 58.4% → recalcula
+  </div>
+</div>"""
+
+    roles = """
+<div class="card">
+  <div class="card-title">3 roles que operan el HITL</div>
+  <div style="display:flex;flex-direction:column;gap:8px">
+    <div style="display:flex;gap:10px;align-items:center;padding:8px;
+                background:rgba(0,212,255,.05);border-radius:6px">
+      <div style="font-size:16px">🔧</div>
+      <div>
+        <div style="font-size:11px;font-weight:700;color:var(--cyan)">Técnico de Planificación</div>
+        <div style="font-size:10px;color:var(--muted)">Valida metas, avances POA y evidencias documentales</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;align-items:center;padding:8px;
+                background:rgba(0,224,150,.05);border-radius:6px">
+      <div style="font-size:16px">💰</div>
+      <div>
+        <div style="font-size:11px;font-weight:700;color:var(--green)">Director Financiero</div>
+        <div style="font-size:10px;color:var(--muted)">Certifica devengados eSIGEF y partidas presupuestarias</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;align-items:center;padding:8px;
+                background:rgba(255,183,0,.05);border-radius:6px">
+      <div style="font-size:16px">📋</div>
+      <div>
+        <div style="font-size:11px;font-weight:700;color:var(--amber)">Responsable de Compras</div>
+        <div style="font-size:10px;color:var(--muted)">Verifica procesos PAC, SHA-256 y contratos SERCOP</div>
+      </div>
+    </div>
+  </div>
+</div>"""
+
+    roadmap = """
+<div class="card">
+  <div class="card-title">Roadmap QUIRA</div>
+  <div style="display:flex;flex-direction:column;gap:6px;font-size:11px;color:var(--muted)">
+    <div style="display:flex;gap:8px;align-items:center">
+      <span style="color:var(--green)">✅</span>
+      <span><strong style="color:var(--white)">QUIRA Gov v1.0</strong>
+            · HTML institucional · Freeze</span>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <span style="color:var(--amber)">🔄</span>
+      <span><strong style="color:var(--white)">QUIRA OS v0.1</strong>
+            · Streamlit · Dashboard + SENTINEL + GeoTwin + Backoffice</span>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <span style="color:var(--purple)">⏳</span>
+      <span>QUIRA OS v0.2 · Ingesta P-17 + Validador P-18 + HITL P-19 completos</span>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <span style="color:var(--muted)">⏳</span>
+      <span>QUIRA Citizen · PMV-2 · Auditoría social aumentada</span>
+    </div>
+  </div>
+</div>"""
+
+    right_col = (
+        f'<div style="display:flex;flex-direction:column;gap:12px">'
+        f'{roles}{roadmap}'
+        f'<div style="display:inline-block;padding:8px 12px;'
+        f'background:rgba(0,212,255,.06);border:1px solid rgba(0,212,255,.15);'
+        f'border-radius:8px;font-size:12px;color:var(--cyan)">'
+        f'🧠 SENTINEL · Protocolo HITL completo'
+        f'</div>'
+        f'</div>'
+    )
+
+    grid = (
+        f'<div class="grid-2" style="align-items:start;gap:14px">'
+        f'{ejemplo}{right_col}'
+        f'</div>'
+    )
+
+    return hdr + banner + principio + grid
+
+
+# ─── MAIN RENDER ─────────────────────────────────────────────────────────────
 def render() -> None:
-    # ── ACCESS CONTROL ─────────────────────────────────────────────────────────
-    if not is_tecnico():
+    show_tech = is_tecnico()
+
+    # Access check — only técnico roles
+    if not show_tech:
         st.html("""
         <div style="background:rgba(229,62,62,0.08);border:1px solid rgba(229,62,62,0.25);
-                    border-radius:12px;padding:32px;text-align:center;margin-top:40px">
-            <div style="font-size:2rem;margin-bottom:12px">🔒</div>
-            <div style="font-size:14px;font-weight:700;color:#FC8181;margin-bottom:8px">
-                Acceso Restringido
+                    border-radius:12px;padding:20px 24px;margin:20px 0;text-align:center">
+            <div style="font-size:1.2rem;margin-bottom:8px">🔒</div>
+            <div style="font-size:14px;font-weight:700;color:#FC8181">Acceso Restringido</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:4px">
+                Módulo disponible solo para el rol Técnico
             </div>
-            <div style="font-size:11px;color:rgba(255,255,255,0.4)">
-                Esta sección es exclusiva del rol Técnico.<br>
-                Rol actual: <strong style="color:#FFB700">{}</strong>
-            </div>
-        </div>
-        """.format(get_rol()))
+        </div>""")
         return
 
-    data = load_all()
-
-    # ── HEADER ─────────────────────────────────────────────────────────────────
-    st.html("""
-    <div style="margin-bottom:20px">
-        <h1 style="font-size:1.4rem;font-weight:900;color:#E2E8F0;margin:0">
-            ⚙️ Operación Técnica · HITL
-        </h1>
-        <div style="font-size:0.75rem;color:rgba(255,255,255,0.4);margin-top:4px">
-            Human-in-the-Loop · Ingesta · Validación cruzada · Auditoría
-        </div>
-    </div>
-    """)
-
-    # ── TABS ───────────────────────────────────────────────────────────────────
     tab1, tab2, tab3 = st.tabs([
-        "📥 Ingesta de Cumplimiento",
-        "🔀 Validador Cruzado",
-        "🔍 Auditor HITL",
+        "📥 P-17 · Ingesta",
+        "🔍 P-18 · Validador",
+        "🧠 P-19 · Auditor HITL",
     ])
 
     with tab1:
-        _render_ingesta(data)
+        render_page(_p17_html(show_tech), show_tech=show_tech, height=900)
 
     with tab2:
-        _render_validador(data)
+        render_page(_p18_html(show_tech), show_tech=show_tech, height=950)
 
     with tab3:
-        _render_auditor(data)
+        render_page(_p19_html(show_tech), show_tech=show_tech, height=950)
 
-
-# ── P-17: INGESTA DE CUMPLIMIENTO ──────────────────────────────────────────────
-def _render_ingesta(data: dict) -> None:
-    section_header("Ingesta de Cumplimiento", "Carga manual de evidencias por período", "📥")
-
-    info_box(
-        "🔧 Este módulo permite cargar evidencias de cumplimiento (SHA-256) para los "
-        "procesos PAC/POA. En PMV v0.1, funciona como simulador de interfaz — "
-        "la carga real se activará con el conector eSIGEF en Q2-2026.",
-        level="warning",
-    )
-
-    st.html("<div style='height:10px'></div>")
-
-    col1, col2 = st.columns(2, gap="medium")
-    with col1:
-        _ingesta_form()
-    with col2:
-        _ingesta_status(data)
-
-
-def _ingesta_form() -> None:
-    st.html("""
-    <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.5);
-                letter-spacing:0.06em;margin-bottom:12px">
-        FORMULARIO DE CARGA
-    </div>
-    """)
-
-    with st.form("ingesta_form"):
-        proceso_id = st.text_input("ID Proceso PAC/POA", placeholder="PAC-2026-001")
-        tipo = st.selectbox(
-            "Tipo de Evidencia",
-            ["Contrato firmado", "Acta de entrega", "Factura", "Resolución", "Otro"],
-        )
-        descripcion = st.text_area("Descripción", placeholder="Descripción del hito de cumplimiento...", height=80)
-        monto = st.number_input("Monto ($)", min_value=0.0, step=100.0)
-        fecha = st.date_input("Fecha de hito")
-        archivo = st.file_uploader("Evidencia (PDF/imagen)", type=["pdf", "png", "jpg"])
-
-        submitted = st.form_submit_button("📤 Registrar Evidencia")
-        if submitted:
-            if proceso_id:
-                st.success(f"✓ Evidencia '{proceso_id}' registrada en modo simulación · SHA-256 pendiente")
-            else:
-                st.error("Debe ingresar el ID del proceso.")
-
-
-def _ingesta_status(data: dict) -> None:
-    st.html("""
-    <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.5);
-                letter-spacing:0.06em;margin-bottom:12px">
-        ESTADO GENERAL · SAT-0
-    </div>
-    """)
-
-    # SAT-0 info
-    sat0 = next((s for s in data["sat"] if s["id"] == "SAT-0"), None)
-    if sat0:
-        st.html(f"""
-        <div style="background:rgba(229,62,62,0.08);border:1px solid rgba(229,62,62,0.25);
-                    border-left:4px solid #E53E3E;border-radius:10px;padding:14px">
-            <div style="font-size:12px;font-weight:700;color:#FC8181;margin-bottom:8px">
-                🔴 {sat0['nombre']}
-            </div>
-            <div style="font-size:10px;color:rgba(255,255,255,0.6);margin-bottom:8px;line-height:1.5">
-                {sat0['descripcion']}
-            </div>
-            <div style="font-size:10px;color:rgba(255,255,255,0.5);line-height:1.5">
-                <strong style="color:#FC8181">Impacto:</strong> {sat0['impacto']}<br>
-                <strong style="color:#FC8181">Acción:</strong> {sat0['accion']}
-            </div>
-        </div>
-        """)
-
-    st.html("<div style='height:10px'></div>")
-
-    # Estadísticas rápidas
-    stats = [
-        ("Procesos sin evidencia", "24", "#E53E3E"),
-        ("Procesos con evidencia", "18", "#38A169"),
-        ("Pendientes revisión", "6",  "#E67E22"),
-        ("Tasa cobertura",       "43%","#D69E2E"),
-    ]
-    for label, val, color in stats:
-        st.html(f"""
-        <div style="display:flex;justify-content:space-between;padding:6px 0;
-                    border-bottom:1px solid rgba(255,255,255,0.05)">
-            <span style="font-size:10px;color:rgba(255,255,255,0.55)">{label}</span>
-            <span style="font-size:11px;font-weight:700;color:{color}">{val}</span>
-        </div>
-        """)
-
-
-# ── P-18: VALIDADOR CRUZADO ────────────────────────────────────────────────────
-def _render_validador(data: dict) -> None:
-    section_header("Validador Cruzado", "POA → PAC → SERCOP → eSIGEF · cortes de trazabilidad", "🔀")
-
-    info_box(
-        "🔧 El validador cruzado detecta inconsistencias entre capas de la cadena de ejecución. "
-        "En PMV v0.1, muestra los 4 cortes identificados en Q1-2026.",
-        level="warning",
-    )
-
-    st.html("<div style='height:10px'></div>")
-
-    # 4 cortes detectados
-    cortes = [
-        {
-            "id": "C1",
-            "capa_origen": "POA 2026",
-            "capa_destino": "PAC Q1",
-            "descripcion": "12 metas POA sin correlato en PAC Q1",
-            "impacto": "Desconexión planificación-contratación",
-            "estado": "CRÍTICO",
-            "color": "#E53E3E",
-        },
-        {
-            "id": "C2",
-            "capa_origen": "PAC Q1",
-            "capa_destino": "SERCOP",
-            "descripcion": "24 procesos PAC sin registro en portal SERCOP",
-            "impacto": "SAT-0 activa · riesgo observación Contraloría",
-            "estado": "CRÍTICO",
-            "color": "#E53E3E",
-        },
-        {
-            "id": "C3",
-            "capa_origen": "SERCOP",
-            "capa_destino": "eSIGEF",
-            "descripcion": "8 contratos adjudicados sin devengamiento eSIGEF",
-            "impacto": "Gasto no reflejado en ejecución presupuestal",
-            "estado": "ALERTA",
-            "color": "#E67E22",
-        },
-        {
-            "id": "C4",
-            "capa_origen": "eSIGEF",
-            "capa_destino": "Informes",
-            "descripcion": "Discrepancia $320K entre eSIGEF e informe alcaldía",
-            "impacto": "Riesgo reputacional · auditoría interna recomendada",
-            "estado": "ALERTA",
-            "color": "#E67E22",
-        },
-    ]
-
-    col1, col2 = st.columns(2, gap="medium")
-    for i, corte in enumerate(cortes):
-        with (col1 if i % 2 == 0 else col2):
-            st.html(f"""
-            <div style="background:rgba(255,255,255,0.03);
-                        border:1px solid rgba({_rgb(corte['color'])},0.25);
-                        border-left:4px solid {corte['color']};
-                        border-radius:10px;padding:14px;margin-bottom:10px">
-                <div style="display:flex;justify-content:space-between;margin-bottom:8px">
-                    <div style="font-size:12px;font-weight:700;color:#E2E8F0">
-                        Corte {corte['id']} · {corte['capa_origen']} → {corte['capa_destino']}
-                    </div>
-                    <span style="font-size:9px;background:rgba({_rgb(corte['color'])},0.15);
-                                 border-radius:20px;padding:2px 10px;
-                                 color:{corte['color']};font-weight:700">
-                        {corte['estado']}
-                    </span>
-                </div>
-                <div style="font-size:10px;color:rgba(255,255,255,0.6);margin-bottom:6px">
-                    {corte['descripcion']}
-                </div>
-                <div style="font-size:9px;color:rgba(255,255,255,0.4)">
-                    ⚠ {corte['impacto']}
-                </div>
-            </div>
-            """)
-
-    # Resumen de cadena
-    st.html("<div style='height:10px'></div>")
-    section_header("Cadena de Trazabilidad", "Estado actual Q1-2026", "🔗")
-
-    cadena = [
-        ("POA 2026",  "🟡 Parcial",  "#D69E2E", "12 metas sin correlato PAC"),
-        ("PAC Q1",    "🔴 Crítico",  "#E53E3E", "24 procesos sin evidencia"),
-        ("SERCOP",    "🟠 Alerta",   "#E67E22", "8 contratos sin devengamiento"),
-        ("eSIGEF",    "🟠 Alerta",   "#E67E22", "Discrepancia $320K"),
-        ("Informes",  "🟡 Revisión", "#D69E2E", "Pendiente reconciliación"),
-    ]
-
-    cols = st.columns(len(cadena))
-    for col, (capa, estado, color, nota) in zip(cols, cadena):
-        with col:
-            st.html(f"""
-            <div style="background:rgba({_rgb(color)},0.08);border:1px solid rgba({_rgb(color)},0.25);
-                        border-radius:8px;padding:10px;text-align:center">
-                <div style="font-size:10px;font-weight:700;color:rgba(255,255,255,0.7)">{capa}</div>
-                <div style="font-size:10px;color:{color};font-weight:700;margin-top:4px">{estado}</div>
-                <div style="font-size:8px;color:rgba(255,255,255,0.35);margin-top:4px">{nota}</div>
-            </div>
-            """)
-
-
-# ── P-19: AUDITOR HITL ────────────────────────────────────────────────────────
-def _render_auditor(data: dict) -> None:
-    section_header("Auditor HITL", "Human-in-the-Loop · validación de hallazgos", "🔍")
-
-    info_box(
-        "🔧 El Auditor HITL permite al equipo técnico validar, rechazar o escalar hallazgos "
-        "del motor QUIRA. En PMV v0.1, funciona como panel de revisión simulado.",
-        level="warning",
-    )
-
-    st.html("<div style='height:10px'></div>")
-
-    # Hallazgos pendientes
-    hallazgos = [
-        {
-            "id": "HLL-001",
-            "tipo": "Fragmentación",
-            "descripcion": "Patrón de partición de contratos DAPS-01 detectado por motor QUIRA",
-            "confianza": 87,
-            "sat": "SAT-I",
-            "estado": "PENDIENTE",
-        },
-        {
-            "id": "HLL-002",
-            "tipo": "Brecha Participación",
-            "descripcion": "2 parroquias sin asambleas ni presupuesto participativo documentado",
-            "confianza": 95,
-            "sat": "SAT-V",
-            "estado": "PENDIENTE",
-        },
-        {
-            "id": "HLL-003",
-            "tipo": "Catastro Desactualizado",
-            "descripcion": "ISP 14.58% — Coactivas no iniciadas para recuperación ingresos propios",
-            "confianza": 91,
-            "sat": "SAT-IV",
-            "estado": "VALIDADO",
-        },
-    ]
-
-    for h in hallazgos:
-        conf_color = "#38A169" if h["confianza"] >= 90 else "#D69E2E"
-        estado_color = {
-            "PENDIENTE": "#E67E22",
-            "VALIDADO":  "#38A169",
-            "RECHAZADO": "#E53E3E",
-        }.get(h["estado"], "#D69E2E")
-
-        col_info, col_action = st.columns([3, 1])
-        with col_info:
-            st.html(f"""
-            <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);
-                        border-radius:10px;padding:14px;margin-bottom:4px">
-                <div style="display:flex;justify-content:space-between;align-items:flex-start">
-                    <div>
-                        <div style="font-size:11px;font-weight:700;color:#E2E8F0">
-                            {h['id']} · {h['tipo']}
-                        </div>
-                        <div style="font-size:9px;color:rgba(255,255,255,0.4);margin-top:2px">
-                            Vinculado a {h['sat']}
-                        </div>
-                    </div>
-                    <div style="display:flex;gap:8px;align-items:center">
-                        <span style="font-size:9px;color:{conf_color};font-weight:700">
-                            ⚡ {h['confianza']}% confianza
-                        </span>
-                        <span style="font-size:9px;background:rgba({_rgb(estado_color)},0.15);
-                                     border-radius:20px;padding:2px 10px;
-                                     color:{estado_color};font-weight:700">
-                            {h['estado']}
-                        </span>
-                    </div>
-                </div>
-                <div style="font-size:10px;color:rgba(255,255,255,0.6);margin-top:8px">
-                    {h['descripcion']}
-                </div>
-            </div>
-            """)
-
-        with col_action:
-            if h["estado"] == "PENDIENTE":
-                st.html("<div style='height:4px'></div>")
-                if st.button("✓ Validar", key=f"val_{h['id']}"):
-                    st.success("Validado")
-                if st.button("✗ Rechazar", key=f"rec_{h['id']}"):
-                    st.error("Rechazado")
-                if st.button("↑ Escalar", key=f"esc_{h['id']}"):
-                    st.warning("Escalado al Alcalde")
-
-        st.html("<div style='height:4px'></div>")
-
-    # Log técnico
-    st.html("<div style='height:16px'></div>")
-    section_header("Log de Auditoría", "Acciones técnicas registradas", "📋")
-    st.html("""
-    <div style="background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.07);
-                border-radius:10px;padding:14px;font-family:monospace">
-        <div style="font-size:10px;color:#38A169">[2026-03-31 14:22] HLL-003 VALIDADO · usuario:tecnico</div>
-        <div style="font-size:10px;color:#D69E2E">[2026-03-28 10:15] SAT-IV activada · ISP=14.58 umbral=65</div>
-        <div style="font-size:10px;color:#E53E3E">[2026-03-25 09:05] SAT-0 activada · 24 procesos sin SHA-256</div>
-        <div style="font-size:10px;color:#7C5CFC">[2026-03-20 16:40] Motor QUIRA v0.1 inicializado · SIAP-ICPI cargado</div>
-        <div style="font-size:10px;color:rgba(255,255,255,0.3)">[2026-03-01 08:00] Corte Q1-2026 abierto · marzo 2026</div>
-    </div>
-    """)
-
-
-def _rgb(hex_color: str) -> str:
-    h = hex_color.lstrip("#")
-    if len(h) == 6:
-        return f"{int(h[0:2],16)},{int(h[2:4],16)},{int(h[4:6],16)}"
-    return "255,255,255"
+    st.html("<div style='height:8px'></div>")
+    if st.button("🔮 Consultar SENTINEL sobre operación técnica", use_container_width=True):
+        st.session_state["page"] = "sentinel"
+        st.rerun()

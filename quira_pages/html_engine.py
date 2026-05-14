@@ -161,12 +161,13 @@ def page_frame(content: str, show_tech: bool = False, extra_css: str = "") -> st
     )
 
 
-def render_page(content: str, show_tech: bool = False, height: int = 900) -> None:
+def render_page(content: str, show_tech: bool = False,
+                height: int = 900, extra_css: str = "") -> None:
     """
     Renderiza una sección de página vía st.components.v1.html().
     SIEMPRE funciona en Streamlit Cloud (iframe real).
     """
-    html = page_frame(content, show_tech)
+    html = page_frame(content, show_tech, extra_css=extra_css)
     components.html(html, height=height, scrolling=True)
 
 

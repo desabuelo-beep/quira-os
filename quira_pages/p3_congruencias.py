@@ -1,256 +1,242 @@
 """
-QUIRA OS v0.1 — P-03 Congruencias + IFE-A/E + 10 Índices
-Cuatro congruencias · fidelidad de mandato · trazabilidad
+QUIRA OS v0.1 — P-03 Congruencias · HPT-M
+Fiel al DEMO.html P-05 · st.components.v1.html() render
 Dylus Lab © 2026
 """
 import streamlit as st
-import plotly.graph_objects as go
 from data.loader import load_all
-from components.kpi_card import section_header, info_box, progress_bar_card
-from components.avep_badge import avep_badge_html, render_index_card
 from utils.session import is_tecnico
+from quira_pages.html_engine import render_page, page_header
 
 
-_CONGRUENCIA_META = {
-    "politica":    {
-        "pregunta":  "¿Estamos gobernando lo que prometimos?",
-        "fuente":    "IFE-A · 48/66 promesas CNE vinculadas al PDOT",
-        "icon":      "🗳️",
-    },
-    "operativa":   {
-        "pregunta":  "¿Lo planificado se está ejecutando?",
-        "fuente":    "POA→PAC→SERCOP→eSIGEF · 4 cortes detectados",
-        "icon":      "⚙️",
-    },
-    "territorial": {
-        "pregunta":  "¿La inversión llega donde más se necesita?",
-        "fuente":    "GeoTwin · 7 parroquias · PDOT_KB",
-        "icon":      "🗺️",
-    },
-    "ecosistemica":{
-        "pregunta":  "¿Todo el holding municipal está alineado?",
-        "fuente":    "HPT-M · 4 entidades · Bomberos/Patronato/EP Aseo",
-        "icon":      "🔗",
-    },
-}
+def _cong_card(numero: str, nombre: str, subtitulo: str, score: float,
+               color: str, fill_class: str, detalle: str, pregunta: str,
+               sentinel_txt: str) -> str:
+    return f"""
+<div class="card" style="border-left:3px solid var(--{color})">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+    <div>
+      <div style="font-size:13px;font-weight:700">{numero} {nombre}</div>
+      <div style="font-size:11px;color:var(--muted)">{subtitulo}</div>
+    </div>
+    <div style="font-size:24px;font-weight:800;font-family:var(--mono);
+                color:var(--{color})">{score:.1f}%</div>
+  </div>
+  <div class="prog-bar"><div class="prog-fill {fill_class}" style="width:{score:.1f}%"></div></div>
+  <div style="font-size:11px;color:var(--muted);margin-top:6px">{detalle}</div>
+  <div style="font-size:11px;color:var(--cyan);font-style:italic;margin-top:7px;
+              padding:5px 9px;border-left:2px solid rgba(14,165,233,.4);
+              background:rgba(14,165,233,.05);border-radius:0 6px 6px 0">{pregunta}</div>
+  <div style="display:inline-block;margin-top:12px;padding:8px 12px;
+              background:rgba(0,212,255,.06);border:1px solid rgba(0,212,255,.15);
+              border-radius:8px;font-size:12px;color:var(--cyan)">
+    💬 {sentinel_txt}
+  </div>
+</div>"""
+
+
+def _nodo_card(nodo: str, nombre: str, entidades: str, score: float, color: str) -> str:
+    return (
+        f'<div style="text-align:center;padding:12px;background:var(--navy-light);border-radius:8px">'
+        f'<div style="font-size:10px;font-weight:700;color:var(--muted);margin-bottom:4px">{nodo}</div>'
+        f'<div style="font-size:13px;font-weight:700">{nombre}</div>'
+        f'<div style="font-size:11px;color:var(--muted);margin:4px 0">{entidades}</div>'
+        f'<div style="font-size:20px;font-weight:800;color:var(--{color})">{score:.1f}%</div>'
+        f'</div>'
+    )
 
 
 def render() -> None:
     data      = load_all()
     show_tech = is_tecnico()
 
-    # ── HEADER ─────────────────────────────────────────────────────────────────
-    st.html("""
-    <div style="margin-bottom:20px">
-        <h1 style="font-size:1.4rem;font-weight:900;color:#E2E8F0;margin:0">
-            Congruencias de Gobernanza
-        </h1>
-        <div style="font-size:0.75rem;color:rgba(255,255,255,0.4);margin-top:4px">
-            Promesa → Planificación → Ejecución → Territorio · Q1-2026
-        </div>
+    # ── HEADER ────────────────────────────────────────────────────────────────
+    hdr = page_header(
+        "② FIDELIDAD POLÍTICA",
+        "Fidelidad Electoral · HPT-M · 4 Congruencias",
+        "Plan de Gobierno 2023 → PDOT 2023-2027 → POA → Territorio · Fidelidad de Mandato",
+        '<span class="badge badge-real">REAL</span>',
+    )
+
+    # ── IFE HERO CARD ─────────────────────────────────────────────────────────
+    ife_hero = """
+<div class="card" style="margin-bottom:14px;border-left:4px solid var(--cyan);padding:14px 16px;
+     background:linear-gradient(135deg,rgba(14,165,233,.06) 0%,rgba(0,0,0,0) 100%)">
+  <div style="font-size:10px;font-weight:700;color:var(--cyan);text-transform:uppercase;
+              letter-spacing:.12em;margin-bottom:10px">
+    🗳️ Fidelidad Electoral · IFE · Promesa → Planificación → Ejecución ·
+    <span class="badge badge-real">REAL</span>
+  </div>
+  <div style="display:grid;grid-template-columns:auto 1fr 1fr;gap:16px;align-items:center">
+
+    <!-- IFE-A número -->
+    <div style="text-align:center;min-width:110px">
+      <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;
+                  letter-spacing:.08em;margin-bottom:2px">IFE-A · Alineación</div>
+      <div style="font-size:42px;font-weight:800;color:var(--white);line-height:1">72.73%</div>
+      <div style="font-size:10px;color:var(--amber);font-weight:700;margin-top:3px">
+        Gestión por Mandato ✅
+      </div>
+      <div class="prog-bar" style="margin-top:6px;height:6px">
+        <div class="prog-fill amber" style="width:72.73%"></div>
+      </div>
+      <div style="font-size:9px;color:var(--muted);margin-top:3px">AVEP ≥ 70%</div>
     </div>
-    """)
 
-    # ── 4 CONGRUENCIAS ─────────────────────────────────────────────────────────
-    section_header("Las Cuatro Congruencias", "Dimensiones de coherencia institucional", "🎯")
-    cols = st.columns(2, gap="medium")
-    congruencias = data["congruencias"]
+    <!-- Promesas counts -->
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="background:rgba(0,224,150,.08);border:1px solid rgba(0,224,150,.22);
+                  border-radius:7px;padding:8px 10px">
+        <div style="font-size:10px;font-weight:700;color:var(--green)">✅ Con meta PDOT formal</div>
+        <div style="font-size:22px;font-weight:800;color:var(--green)">
+          48 <span style="font-size:11px;font-weight:400;color:var(--muted)">/ 66 CNE</span>
+        </div>
+        <div style="font-size:9px;color:var(--muted)">Meta · indicador · presupuesto en PDOT 2023-2027</div>
+      </div>
+      <div style="background:rgba(255,77,109,.05);border:1px solid rgba(255,77,109,.22);
+                  border-radius:7px;padding:8px 10px">
+        <div style="font-size:10px;font-weight:700;color:var(--red)">⚠️ Sin meta PDOT formal</div>
+        <div style="font-size:22px;font-weight:800;color:var(--red)">
+          18 <span style="font-size:11px;font-weight:400;color:var(--muted)">promesas · 27.27%</span>
+        </div>
+        <div style="font-size:9px;color:var(--muted)">Riesgo político cierre mandato 2027</div>
+      </div>
+    </div>
 
-    for i, (key, c) in enumerate(congruencias.items()):
-        meta = _CONGRUENCIA_META.get(key, {})
-        with cols[i % 2]:
-            _congruencia_card(c, meta, show_tech)
+    <!-- IFE-E + interpretación -->
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="background:rgba(124,92,252,.07);border:1px solid rgba(124,92,252,.28);
+                  border-radius:7px;padding:8px 10px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+          <div style="font-size:10px;font-weight:700;color:var(--purple)">IFE-E · Ejecución</div>
+          <div style="font-size:9px;font-weight:700;color:var(--purple);
+                      background:rgba(124,92,252,.15);border-radius:4px;padding:2px 6px">
+            IFE-E · v1.2
+          </div>
+        </div>
+        <div style="font-size:10px;color:var(--muted);line-height:1.5">
+          PDOT→POA→PAC→eSIGEF ·
+          <span style="color:var(--red);font-weight:700">⚡ SAT-0:</span>
+          4 metas sin contrato PAC
+        </div>
+      </div>
+      <div style="font-size:10px;color:var(--muted);line-height:1.5;padding:0 2px">
+        💡 Mayo 2023: el <strong style="color:var(--white)">Ing. Jonathan Toro Largacha</strong>
+        asumió 66 compromisos CNE ante 101,181 ciudadanos.
+        IFE-A = <strong style="color:var(--amber)">48/66 formalizados</strong>.
+        18 sin respaldo PDOT.
+      </div>
+      <div style="display:inline-block;padding:8px 12px;
+                  background:rgba(0,212,255,.06);border:1px solid rgba(0,212,255,.15);
+                  border-radius:8px;font-size:12px;color:var(--cyan)">
+        💬 SENTINEL · IFE
+      </div>
+    </div>
+  </div>
+</div>"""
 
-    # ── RADAR ──────────────────────────────────────────────────────────────────
-    st.html("<div style='height:12px'></div>")
-    col_radar, col_ife = st.columns([1, 1], gap="medium")
+    # ── PDOT FRASE RECTORA ────────────────────────────────────────────────────
+    pdot_frase = """
+<div style="padding:8px 12px;margin-bottom:14px;background:rgba(14,165,233,.04);
+            border-radius:8px;border-left:3px solid rgba(14,165,233,.3);
+            font-size:11px;color:var(--muted);line-height:1.6">
+  📌 <strong style="color:var(--cyan)">El PDOT sigue siendo el instrumento rector.</strong>
+  El IFE mide la fidelidad del mandato dentro de él: cuántas promesas electorales se convirtieron
+  en metas formales <strong style="color:var(--white)">(IFE-A)</strong> y cuántas de esas metas
+  tienen trazabilidad operativa completa hasta el devengado eSIGEF
+  <strong style="color:var(--white)">(IFE-E)</strong>.
+</div>"""
 
-    with col_radar:
-        section_header("Radar de Congruencias", "", "📡")
-        _render_radar(congruencias)
+    # ── 4 CONGRUENCIAS GRID ───────────────────────────────────────────────────
+    cong_label = """
+<div style="font-size:10px;font-weight:700;color:var(--cyan);text-transform:uppercase;
+            letter-spacing:.12em;margin-bottom:10px">
+  🔗 Las 4 congruencias del HPT-M · cadena de integridad política
+</div>"""
 
-    with col_ife:
-        section_header("Fidelidad de Mandato · IFE", "IFE-A auditado + IFE-E en construcción", "🗳️")
-        _render_ife(data["indices"], show_tech)
+    cong_politica = _cong_card(
+        "①", "Congruencia Política",
+        "Promesa electoral → Meta PDOT → COOTAD",
+        58.4, "amber", "amber",
+        "IFE-A 72.73% mide la promesa → plan (48/66 CNE). El 58.4% incorpora la ejecución: 4 metas sin contrato PAC activo",
+        "¿Estamos gobernando lo que prometimos?",
+        "Analizar Congruencia Política",
+    )
 
-    # ── 10 ÍNDICES COMPLEMENTARIOS ─────────────────────────────────────────────
-    st.html("<div style='height:12px'></div>")
-    section_header("Índices Complementarios ICGI-T", "10 dimensiones de gobernanza · Q1-2026", "📋")
+    cong_operativa = _cong_card(
+        "②", "Congruencia Operativa",
+        "POA ↔ PAC ↔ eSIGEF ↔ EP",
+        47.2, "red", "red",
+        "Cadena POA-PAC-SERCOP-eSIGEF · 4 cortes detectados · SAT-0 activo",
+        "¿Lo planificado se está contratando y ejecutando?",
+        "Analizar Cadena Operativa",
+    )
 
-    indices = data["indices"]
-    c1, c2 = st.columns(2, gap="medium")
-    for i, (key, idx) in enumerate(indices.items()):
-        with (c1 if i % 2 == 0 else c2):
-            render_index_card(
-                key       = key,
-                nombre    = idx["nombre"],
-                valor     = idx["valor"],
-                avep      = idx["avep"],
-                emoji     = idx["emoji"],
-                color     = idx["color"],
-                estado    = idx["estado"],
-                nota      = idx["nota"],
-                show_tech = show_tech,
-            )
+    cong_territorial = _cong_card(
+        "③", "Congruencia Territorial",
+        "Inversión ↔ Parroquias ↔ NBI ↔ TPS",
+        44.8, "red", "red",
+        "Isabel Muentes (TPS 77.94) recibe solo $140K · brecha territorial crítica",
+        "¿La inversión llega donde más se necesita?",
+        "Analizar Brecha Territorial",
+    )
 
+    cong_ecosistemica = _cong_card(
+        "④", "Congruencia Ecosistémica",
+        "GAD ↔ Operadores ↔ Ciudadanía ↔ Cooperación",
+        61.1, "amber", "amber",
+        "Bomberos y Patronato bien alineados · EP Aseo bajo umbral",
+        "¿Todo el holding municipal está alineado?",
+        "Analizar Holding Municipal",
+    )
+
+    cong_grid = (
+        f'<div class="grid-2" style="gap:16px;align-items:start">'
+        f'<div style="display:flex;flex-direction:column;gap:12px">'
+        f'{cong_politica}{cong_operativa}'
+        f'</div>'
+        f'<div style="display:flex;flex-direction:column;gap:12px">'
+        f'{cong_territorial}{cong_ecosistemica}'
+        f'</div>'
+        f'</div>'
+    )
+
+    # ── ÁRBOL HPT-M ───────────────────────────────────────────────────────────
+    arbol = (
+        '<div class="card" style="margin-top:4px">'
+        '<div class="card-title">Árbol HPT-M · 4 Nodos institucionales</div>'
+        '<div class="grid-4">'
+        + _nodo_card("NODO 1", "GOBIERNO",    "GAD Central · Alcaldía · Concejo",     61.2, "amber")
+        + _nodo_card("NODO 2", "OPERADORES",  "EP Aseo · Bomberos · Patronato",        71.7, "amber")
+        + _nodo_card("NODO 3", "TERRITORIO",  "7 parroquias · 101,181 hab.",           44.8, "red")
+        + _nodo_card("NODO 4", "ECOSISTEMA",  "ODS · BID/CAF · CPCCS",                61.1, "amber")
+        + '</div></div>'
+    )
+
+    # ── TECH NOTE ─────────────────────────────────────────────────────────────
+    tech = ""
     if show_tech:
-        st.markdown("---")
-        st.html("""
-        <div style="font-size:9px;color:rgba(255,255,255,0.2)">
-        🔧 Fuente: SIAP-ICPI H16 (IFE-A) + IFE-E · H15 · H19 · H20b · H28 ·
-        Fidelidad de Mandato · Corte Q1-2026
-        </div>
-        """)
+        tech = """
+<div style="margin-top:16px;font-size:9px;color:rgba(255,255,255,.2);
+            border-top:1px solid rgba(255,255,255,.04);padding-top:8px">
+  🔧 Fuente: SIAP-ICPI H16 · H24 · IFE-A auditado CNE · IFE-E en construcción · Q1-2026
+</div>"""
 
-
-# ── HELPERS ────────────────────────────────────────────────────────────────────
-def _congruencia_card(c: dict, meta: dict, show_tech: bool) -> None:
-    score  = c["score"]
-    color  = c.get("color_avep", c.get("color", "#D69E2E"))
-    pct    = min(score, 100)
-    icon   = meta.get("icon", "")
-    fuente = meta.get("fuente", c.get("fuente", ""))
-    pregunta = meta.get("pregunta", c.get("pregunta", ""))
-
-    st.html(f"""
-    <div style="background:rgba(255,255,255,0.03);
-                border:1px solid rgba(255,255,255,0.07);
-                border-top:3px solid {color};
-                border-radius:12px;padding:16px 18px;margin-bottom:12px">
-
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">
-            <div>
-                <div style="font-size:13px;font-weight:800;color:#E2E8F0">
-                    {icon} {c['nombre']}
-                </div>
-                <div style="font-size:10px;color:rgba(255,255,255,0.4);margin-top:3px;
-                            font-style:italic">{pregunta}</div>
-            </div>
-            <div style="text-align:right">
-                <div style="font-size:1.8rem;font-weight:900;color:{color};line-height:1">
-                    {score:.2f}
-                </div>
-                <div style="font-size:9px;color:{color};opacity:0.8">{c['emoji']} {c['avep']}</div>
-            </div>
-        </div>
-
-        <div style="height:5px;background:rgba(255,255,255,0.07);border-radius:3px;margin-bottom:8px">
-            <div style="width:{pct:.1f}%;height:100%;background:{color};border-radius:3px"></div>
-        </div>
-
-        <div style="font-size:9px;color:rgba(255,255,255,0.35)">{fuente}</div>
-    </div>
-    """)
-
-
-def _render_radar(congruencias: dict) -> None:
-    labels = [c["nombre"] for c in congruencias.values()]
-    values = [c["score"] for c in congruencias.values()]
-    # Cerrar el polígono
-    labels_closed = labels + [labels[0]]
-    values_closed = values + [values[0]]
-
-    fig = go.Figure(go.Scatterpolar(
-        r=values_closed,
-        theta=labels_closed,
-        fill="toself",
-        fillcolor="rgba(0,212,255,0.1)",
-        line={"color": "#00D4FF", "width": 2},
-        marker={"size": 6, "color": "#00D4FF"},
-        hovertemplate="%{theta}: %{r:.2f}<extra></extra>",
-    ))
-
-    # Meta 70
-    fig.add_trace(go.Scatterpolar(
-        r=[70, 70, 70, 70, 70],
-        theta=labels_closed,
-        mode="lines",
-        line={"color": "rgba(56,161,105,0.5)", "width": 1.5, "dash": "dash"},
-        showlegend=True,
-        name="Meta 70%",
-    ))
-
-    fig.update_layout(
-        paper_bgcolor="rgba(0,0,0,0)",
-        plot_bgcolor="rgba(0,0,0,0)",
-        polar={
-            "bgcolor": "rgba(0,0,0,0)",
-            "radialaxis": {
-                "range": [0, 100],
-                "tickfont": {"size": 9, "color": "rgba(255,255,255,0.35)"},
-                "gridcolor": "rgba(255,255,255,0.07)",
-                "linecolor": "rgba(255,255,255,0.1)",
-            },
-            "angularaxis": {
-                "tickfont": {"size": 9, "color": "rgba(255,255,255,0.6)"},
-                "linecolor": "rgba(255,255,255,0.1)",
-            },
-        },
-        font={"color": "#E2E8F0"},
-        height=260,
-        margin={"t": 20, "b": 20, "l": 20, "r": 20},
-        legend={"font": {"size": 9}},
-        showlegend=True,
+    # ── ASSEMBLE & RENDER ─────────────────────────────────────────────────────
+    html = (
+        hdr + ife_hero + pdot_frase
+        + cong_label + cong_grid + arbol + tech
     )
-    st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
+    render_page(html, show_tech=show_tech, height=1350)
 
-
-def _render_ife(indices: dict, show_tech: bool) -> None:
-    # IFE-A
-    ife_a = indices.get("IFE-A", {})
-    st.html(f"""
-    <div style="background:rgba(56,161,105,0.06);border:1px solid rgba(56,161,105,0.2);
-                border-left:4px solid #38A169;border-radius:10px;padding:14px 16px;margin-bottom:10px">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start">
-            <div>
-                <div style="font-size:12px;font-weight:700;color:#E2E8F0">
-                    🟢 IFE-A · Fidelidad Electoral
-                </div>
-                <div style="font-size:9px;color:rgba(255,255,255,0.4);margin-top:2px">
-                    {ife_a.get('estado', 'REAL auditado')}
-                </div>
-                {'<div style="font-size:9px;color:rgba(255,255,255,0.25);margin-top:1px">↳ IFE-A · H16</div>' if show_tech else ''}
-            </div>
-            <div style="font-size:1.6rem;font-weight:900;color:#38A169">{ife_a.get('valor', 72.73):.2f}</div>
-        </div>
-        <div style="font-size:10px;color:rgba(255,255,255,0.5);margin-top:8px;line-height:1.5">
-            {ife_a.get('nota', '48 de 66 promesas vinculadas al PDOT')}
-        </div>
-        <div style="height:4px;background:rgba(255,255,255,0.06);border-radius:2px;margin-top:8px">
-            <div style="width:{ife_a.get('valor',72.73):.1f}%;height:100%;background:#38A169;border-radius:2px"></div>
-        </div>
-    </div>
-    """)
-
-    # IFE-E (en construcción)
-    ife_e = indices.get("IFE-E", {})
-    st.html(f"""
-    <div style="background:rgba(124,92,252,0.06);border:1px solid rgba(124,92,252,0.2);
-                border-left:4px solid #7C5CFC;border-radius:10px;padding:14px 16px">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start">
-            <div>
-                <div style="font-size:12px;font-weight:700;color:#E2E8F0">
-                    ⏳ IFE-E · Fidelidad de Ejecución
-                </div>
-                <div style="font-size:9px;color:rgba(255,255,255,0.4);margin-top:2px">
-                    En construcción · Activo {ife_e.get('estado', 'Q2-2026')}
-                </div>
-                {'<div style="font-size:9px;color:rgba(255,255,255,0.25);margin-top:1px">↳ IFE-E · v1.2</div>' if show_tech else ''}
-            </div>
-            <div style="font-size:1rem;font-weight:700;color:#7C5CFC">—</div>
-        </div>
-        <div style="font-size:10px;color:rgba(255,255,255,0.5);margin-top:8px;line-height:1.5">
-            {ife_e.get('nota', 'Mide trazabilidad POA→PAC→eSIGEF')}
-        </div>
-        <div style="height:4px;background:rgba(255,255,255,0.06);border-radius:2px;margin-top:8px;
-                    background:repeating-linear-gradient(45deg,rgba(124,92,252,.18),rgba(124,92,252,.18) 3px,
-                    transparent 3px,transparent 7px);border:1px dashed rgba(124,92,252,.3)"></div>
-    </div>
-    """)
-
+    # Native CTA
     st.html("<div style='height:8px'></div>")
-    info_box(
-        "📋 IFE-A mide la coherencia entre promesas electorales (CNE) y el PDOT. "
-        "IFE-E medirá la trazabilidad de ejecución POA→PAC→SERCOP→eSIGEF — disponible Q2-2026.",
-        level="info",
-    )
+    c1, c2 = st.columns(2, gap="small")
+    with c1:
+        if st.button("🗺️ Ver GeoTwin · Territorio", use_container_width=True):
+            st.session_state["page"] = "geotwin"
+            st.rerun()
+    with c2:
+        if st.button("🔮 Analizar con Sentinel", use_container_width=True):
+            st.session_state["page"] = "sentinel"
+            st.rerun()

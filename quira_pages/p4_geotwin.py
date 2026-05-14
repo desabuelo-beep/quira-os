@@ -1,371 +1,274 @@
 """
-QUIRA OS v0.1 — P-04 GeoTwin · Análisis Territorial
-7 parroquias · IGP · Paradoja democrática · Equidad territorial
+QUIRA OS v0.1 — P-04 GeoTwin · Territorio
+Fiel al DEMO.html P-04 · st.components.v1.html() render
 Dylus Lab © 2026
 """
 import streamlit as st
-import plotly.graph_objects as go
-import plotly.express as px
-import pandas as pd
-from data.loader import load_all, get_zonas_sin_voz
-from data.icgi_engine import geotwin_stats
-from components.kpi_card import section_header, info_box
+from data.loader import load_all
 from utils.session import is_tecnico
+from quira_pages.html_engine import render_page, page_header
+
+# Extra CSS for GeoTwin-specific classes not in DEMO_CSS
+_GT_CSS = """
+.gt-legend { display:flex; gap:12px; flex-wrap:wrap; margin-top:10px; }
+.gt-leg-item { display:flex; align-items:center; gap:5px; font-size:11px; color:var(--muted); }
+.gt-leg-dot { width:10px; height:10px; border-radius:50%; }
+.gt-project { background:var(--navy-light); border:1px solid var(--divider);
+  border-radius:10px; padding:14px; margin-bottom:10px; }
+.gt-project-title { font-size:13px; font-weight:700; color:var(--white); margin-bottom:8px; }
+.gt-contrib { display:flex; gap:10px; margin-bottom:8px; }
+.gt-contrib-box { flex:1; background:var(--navy-card); border-radius:8px;
+  padding:8px; font-size:11px; color:var(--muted); }
+.gt-contrib-box strong { display:block; font-size:10px; margin-bottom:3px; }
+.gt-fund { font-size:12px; font-weight:600; }
+.gt-fund.elegible { color:var(--green); }
+.gt-fund.pending { color:var(--amber); }
+.gt-fund.priority { color:var(--cyan); }
+"""
 
 
-# Colores de estado
-_ESTADO_COLOR = {
-    "EMERGENCIA": "#E53E3E",
-    "PRIORIDAD":  "#7C5CFC",
-    "ALERTA":     "#E67E22",
-    "NORMAL":     "#D69E2E",
-    "OK":         "#38A169",
-}
+def _parroquia_row(p: dict) -> str:
+    """HTML row for parroquia table."""
+    agua_color = "#E53E3E" if p["agua"] < 20 else ("#D69E2E" if p["agua"] < 50 else "#38A169")
+    estado_badge = {
+        "EMERGENCIA": '<span class="badge badge-red">EMERGENCIA</span>',
+        "PRIORIDAD":  '<span style="display:inline-block;padding:2px 8px;border-radius:8px;font-size:10px;font-weight:600;background:rgba(124,92,252,.15);color:#7C5CFC;border:1px solid rgba(124,92,252,.3)">PRIORIDAD</span>',
+        "ALERTA":     '<span class="badge badge-amber">ALERTA</span>',
+        "NORMAL":     '<span class="badge badge-cyan">NORMAL</span>',
+        "OK":         '<span class="badge badge-green">OK</span>',
+    }.get(p["estado"], "")
+
+    return (
+        f'<tr>'
+        f'<td>{p["emoji"]} {p["nombre"]}</td>'
+        f'<td class="td-num" style="color:var(--red)">{p["tps"]:.2f}</td>'
+        f'<td class="td-num" style="color:{agua_color}">{p["agua"]:.1f}%</td>'
+        f'<td class="td-num">{p["habitantes"]:,}</td>'
+        f'<td class="td-num">${p["per_capita"]}</td>'
+        f'<td>{estado_badge}</td>'
+        f'</tr>'
+    )
 
 
 def render() -> None:
-    data       = load_all()
-    parroquias = data["parroquias"]
-    stats      = geotwin_stats(parroquias)
-    sin_voz    = get_zonas_sin_voz(data)
-    show_tech  = is_tecnico()
+    data      = load_all()
+    parroquias = data.get("parroquias", [])
+    show_tech = is_tecnico()
 
-    # ── HEADER ─────────────────────────────────────────────────────────────────
-    st.html("""
-    <div style="margin-bottom:20px">
-        <h1 style="font-size:1.4rem;font-weight:900;color:#E2E8F0;margin:0">
-            GeoTwin · Análisis Territorial
-        </h1>
-        <div style="font-size:0.75rem;color:rgba(255,255,255,0.4);margin-top:4px">
-            7 parroquias · SIAP-ICPI + PDOT_KB · Gobernanza Participativa · Q1-2026
-        </div>
+    # Sort by TPS descending (most vulnerable first)
+    parroquias_sorted = sorted(parroquias, key=lambda x: x["tps"], reverse=True)
+
+    # ── HEADER ────────────────────────────────────────────────────────────────
+    hdr = page_header(
+        "④ EQUIDAD TERRITORIAL · GOV TWIN",
+        "Territorio + Gov Twin",
+        "Nexo Holding Municipal ↔ Ciudadanía · Proyectos colaborativos",
+    )
+
+    # ── SVG MAP ───────────────────────────────────────────────────────────────
+    svg_map = """
+<div class="gt-map">
+  <svg viewBox="0 0 400 260" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+    <rect width="400" height="260" fill="#111830"/>
+    <text x="200" y="130" text-anchor="middle" fill="#1E2D50" font-size="40"
+          font-weight="800" font-family="Inter">MANABÍ</text>
+    <path d="M60,40 L340,40 L360,130 L300,220 L100,220 L40,130 Z"
+          fill="none" stroke="#1E2D50" stroke-width="2" stroke-dasharray="6,4"/>
+
+    <!-- Montecristi cabecera -->
+    <circle cx="200" cy="120" r="14" fill="#00D4FF" opacity=".9"/>
+    <text x="200" y="125" text-anchor="middle" fill="#0A1128" font-size="9" font-weight="800">MCT</text>
+    <text x="200" y="144" text-anchor="middle" fill="#F0F4FF" font-size="8">Montecristi</text>
+    <text x="200" y="154" text-anchor="middle" fill="#8892B0" font-size="7">TPS: 22.4</text>
+
+    <!-- Eloy Alfaro -->
+    <circle cx="140" cy="90" r="10" fill="#FFB800" opacity=".85"/>
+    <text x="140" y="94" text-anchor="middle" fill="#0A1128" font-size="8" font-weight="700">EA</text>
+    <text x="140" y="108" text-anchor="middle" fill="#F0F4FF" font-size="7">E. Alfaro</text>
+    <text x="140" y="117" text-anchor="middle" fill="#FFB800" font-size="7">TPS: 31.2</text>
+
+    <!-- Leónidas Plaza -->
+    <circle cx="270" cy="85" r="10" fill="#FFB800" opacity=".85"/>
+    <text x="270" y="89" text-anchor="middle" fill="#0A1128" font-size="8" font-weight="700">LP</text>
+    <text x="270" y="103" text-anchor="middle" fill="#F0F4FF" font-size="7">L. Plaza</text>
+    <text x="270" y="112" text-anchor="middle" fill="#FFB800" font-size="7">TPS: 28.8</text>
+
+    <!-- La Pila -->
+    <circle cx="155" cy="160" r="9" fill="#FF4D6D" opacity=".85"/>
+    <text x="155" y="164" text-anchor="middle" fill="#F0F4FF" font-size="8" font-weight="700">LP</text>
+    <text x="155" y="178" text-anchor="middle" fill="#F0F4FF" font-size="7">La Pila</text>
+    <text x="155" y="187" text-anchor="middle" fill="#FF4D6D" font-size="7">TPS: 41.2</text>
+
+    <!-- Colorado -->
+    <circle cx="290" cy="170" r="9" fill="#FF4D6D" opacity=".85"/>
+    <text x="290" y="174" text-anchor="middle" fill="#F0F4FF" font-size="8" font-weight="700">CO</text>
+    <text x="290" y="188" text-anchor="middle" fill="#F0F4FF" font-size="7">Colorado</text>
+    <text x="290" y="197" text-anchor="middle" fill="#FF4D6D" font-size="7">TPS: 58.7</text>
+
+    <!-- Aníbal San Andrés -->
+    <circle cx="100" cy="170" r="9" fill="#7C5CFC" opacity=".9"/>
+    <text x="100" y="174" text-anchor="middle" fill="#F0F4FF" font-size="8" font-weight="700">ASA</text>
+    <text x="100" y="188" text-anchor="middle" fill="#F0F4FF" font-size="7">A. San Andrés</text>
+    <text x="100" y="197" text-anchor="middle" fill="#7C5CFC" font-size="7">💜 TPS: 62.3</text>
+
+    <!-- Isabel Muentes (CRÍTICA — con pulso animado) -->
+    <circle cx="340" cy="190" r="12" fill="#FF4D6D" opacity="1"/>
+    <circle cx="340" cy="190" r="16" fill="none" stroke="#FF4D6D" stroke-width="2" opacity=".5">
+      <animate attributeName="r" values="16;22;16" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values=".5;0;.5" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <text x="340" y="194" text-anchor="middle" fill="#F0F4FF" font-size="8" font-weight="800">IM!</text>
+    <text x="340" y="210" text-anchor="middle" fill="#FF4D6D" font-size="7" font-weight="700">Isabel Muentes</text>
+    <text x="340" y="219" text-anchor="middle" fill="#FF4D6D" font-size="7">💧 1.02% agua</text>
+
+    <text x="370" y="30" text-anchor="middle" fill="#1E2D50" font-size="12">N↑</text>
+  </svg>
+</div>
+<div class="gt-legend">
+  <div class="gt-leg-item"><div class="gt-leg-dot" style="background:var(--cyan)"></div>Cabecera</div>
+  <div class="gt-leg-item"><div class="gt-leg-dot" style="background:var(--amber)"></div>Alerta media</div>
+  <div class="gt-leg-item"><div class="gt-leg-dot" style="background:var(--red)"></div>Prioridad alta</div>
+  <div class="gt-leg-item"><div class="gt-leg-dot" style="background:var(--purple)"></div>Pin Morado 💜</div>
+</div>
+<div style="display:inline-block;margin-top:12px;padding:8px 12px;
+            background:rgba(0,212,255,.06);border:1px solid rgba(0,212,255,.15);
+            border-radius:8px;font-size:12px;color:var(--cyan)">
+  💬 Analizar prioridad territorial
+</div>"""
+
+    # ── GOV TWIN PROJECTS ─────────────────────────────────────────────────────
+    gt_projects = """
+<div style="font-size:12px;color:var(--muted);margin-bottom:12px;padding:8px;
+            background:rgba(0,212,255,.04);border-radius:8px;border:1px solid rgba(0,212,255,.1)">
+  <strong style="color:var(--cyan)">¿Qué es Gov Twin?</strong><br>
+  La línea de encuentro entre el Holding Municipal y la ciudadanía. El municipio aporta recursos
+  técnicos; el barrio aporta mano de obra y custodia. Juntos desbloquean fondos no reembolsables
+  imposibles de obtener por separado.
+</div>
+
+<div class="gt-project">
+  <div class="gt-project-title">
+    💧 Sistema Agua · Isabel Muentes
+    <span class="badge badge-red" style="float:right">URGENTE</span>
+  </div>
+  <div class="gt-contrib">
+    <div class="gt-contrib-box">
+      <strong>🏛️ Municipio aporta:</strong>Infraestructura hidráulica + diseño técnico + fiscalización
     </div>
-    """)
+    <div class="gt-contrib-box">
+      <strong>👥 Comunidad aporta:</strong>Mano de obra local + Junta de Agua + custodia
+    </div>
+  </div>
+  <div class="gt-fund priority">🌐 PNUD Agua Rural · $2,400,000 · Score 81/100</div>
+  <div style="font-size:11px;color:var(--amber);margin-top:4px">
+    ⚠️ Requiere Gobernanza ≥ 55% · Brecha actual: 1.44 pts
+  </div>
+</div>
 
-    # ── KPIs ───────────────────────────────────────────────────────────────────
-    c1, c2, c3, c4 = st.columns(4)
-    with c1:
-        _stat("INVERSIÓN TOTAL", f"${stats['total_inversion']:,.0f}", "#00D4FF")
-    with c2:
-        _stat("BRECHA TERRITORIAL",
-              f"${stats['brecha_territorial']:,.0f}/hab",
-              "#E53E3E",
-              note=f"Cabecera ${stats['per_capita_max']}/hab · Peor ${stats['per_capita_min']}/hab")
-    with c3:
-        _stat("PARROQUIAS SIN VOZ",
-              str(stats["parroquias_sin_voz"]),
-              "#E53E3E" if stats["parroquias_sin_voz"] > 0 else "#38A169",
-              note="IGP · participación = 0")
-    with c4:
-        _stat("EN EMERGENCIA", str(stats["parroquias_emergencia"]), "#E53E3E",
-              note=f"de {stats['n_total']} parroquias")
+<div class="gt-project">
+  <div class="gt-project-title">🌳 Reforestación Laderas · Colorado</div>
+  <div class="gt-contrib">
+    <div class="gt-contrib-box">
+      <strong>🏛️ Municipio aporta:</strong>Plantas nativas + técnico forestal + transporte
+    </div>
+    <div class="gt-contrib-box">
+      <strong>👥 Comunidad aporta:</strong>Mano de obra + custodios del bosque
+    </div>
+  </div>
+  <div class="gt-fund elegible">✅ Fondo Verde del Clima GEF · $180,000 · Elegible</div>
+  <div style="font-size:11px;color:var(--muted);margin-top:4px">
+    Pin Verde activo · dMRV preparado
+  </div>
+</div>
 
-    st.html("<div style='height:14px'></div>")
+<div class="gt-project">
+  <div class="gt-project-title">💜 Luminarias Seguridad · Aníbal San Andrés</div>
+  <div class="gt-contrib">
+    <div class="gt-contrib-box">
+      <strong>🏛️ Municipio aporta:</strong>Postes + instalación eléctrica + diseño
+    </div>
+    <div class="gt-contrib-box">
+      <strong>👥 Comunidad aporta:</strong>Mantenimiento + veeduría + Pin Morado activo
+    </div>
+  </div>
+  <div class="gt-fund pending">⏳ BID Lab Gender Bond · $95,000 · Requiere PSG ≥ 30%</div>
+  <div style="font-size:11px;color:var(--amber);margin-top:4px">
+    PSG actual: 12.83% · Brecha: 17.17 pts
+  </div>
+</div>
 
-    # ── GRÁFICOS ───────────────────────────────────────────────────────────────
-    col_bar, col_bubble = st.columns([1, 1], gap="medium")
+<div style="display:inline-block;padding:8px 12px;
+            background:rgba(0,212,255,.06);border:1px solid rgba(0,212,255,.15);
+            border-radius:8px;font-size:12px;color:var(--cyan)">
+  💬 Explicar Gov Twin
+</div>"""
 
-    with col_bar:
-        section_header("Inversión Per Cápita", "$/habitante · Q1-2026", "💰")
-        _render_per_capita_chart(parroquias)
+    # ── 2-COL GRID ────────────────────────────────────────────────────────────
+    grid = f"""
+<div class="grid-2" style="align-items:start;gap:20px;margin-bottom:16px">
+  <div>
+    <div class="section-hdr">
+      <h3>Mapa Territorial · 7 Parroquias</h3>
+      <span class="badge badge-amber">Q1-2026</span>
+    </div>
+    {svg_map}
+  </div>
+  <div>
+    <div class="section-hdr">
+      <h3>Gov Twin · Proyectos Colaborativos</h3>
+      <span class="badge badge-cyan">Proyectos Colaborativos</span>
+    </div>
+    {gt_projects}
+  </div>
+</div>"""
 
-    with col_bubble:
-        section_header("Brecha NBI vs Inversión", "Necesidad vs. respuesta institucional", "📍")
-        _render_bubble(parroquias)
+    # ── PARROQUIAS TABLE ──────────────────────────────────────────────────────
+    rows = "".join(_parroquia_row(p) for p in parroquias_sorted)
+    tabla = f"""
+<div class="card">
+  <div class="card-title">📊 Las 7 Parroquias · Inequidad territorial documentada · Q1-2026</div>
+  <table class="tbl">
+    <thead>
+      <tr>
+        <th>Parroquia</th>
+        <th>TPS ↓</th>
+        <th>Agua %</th>
+        <th>Habitantes</th>
+        <th>$/hab</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>{rows}</tbody>
+  </table>
+  <div style="font-size:10px;color:var(--muted);margin-top:8px;padding-top:8px;
+              border-top:1px solid rgba(255,255,255,.05)">
+    📌 TPS = Tasa de Pobreza por Sistema (mayor TPS = mayor vulnerabilidad)
+    · Montecristi cabecera: $113/hab · Isabel Muentes: $40/hab
+    · Brecha: 2.8×
+  </div>
+</div>"""
 
-    st.html("<div style='height:12px'></div>")
-
-    # ── TABLA PARROQUIAS ───────────────────────────────────────────────────────
-    section_header("Detalle por Parroquia", "TPS · NBI · Agua · Inversión · Participación IGP", "📋")
-    _render_table(parroquias, show_tech)
-
-    st.html("<div style='height:12px'></div>")
-
-    # ── IGP GOBERNANZA PARTICIPATIVA ───────────────────────────────────────────
-    section_header("Gobernanza Participativa · IGP", "Obligación institucional CPCCS / LOPC", "🗳️")
-
-    col_igp, col_paradox = st.columns([1, 1], gap="medium")
-
-    with col_igp:
-        igp = data["indices"].get("IGP", {})
-        st.html(f"""
-        <div style="background:rgba(124,92,252,0.06);border:1px solid rgba(124,92,252,0.2);
-                    border-radius:12px;padding:16px">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start">
-                <div>
-                    <div style="font-size:12px;font-weight:700;color:#E2E8F0">IGP · {igp.get('nombre','Gobernanza Participativa')}</div>
-                    <div style="font-size:9px;color:rgba(255,255,255,0.4);margin-top:2px">{igp.get('estado','Referencia 2025')}</div>
-                    {'<div style="font-size:9px;color:rgba(255,255,255,0.25);margin-top:1px">↳ IGP · H20b · CPCCS</div>' if show_tech else ''}
-                </div>
-                <div style="font-size:1.8rem;font-weight:900;color:#7C5CFC">{igp.get('valor',27.98):.2f}</div>
-            </div>
-            <div style="height:4px;background:rgba(255,255,255,0.07);border-radius:2px;margin:10px 0">
-                <div style="width:{igp.get('valor',27.98):.1f}%;height:100%;background:#7C5CFC;border-radius:2px"></div>
-            </div>
-            <div style="font-size:10px;color:rgba(255,255,255,0.5);line-height:1.5">{igp.get('nota','')}</div>
-        </div>
-        """)
-
-        st.html("<div style='height:10px'></div>")
-
-        # Tabla participación resumida
-        st.html("""
-        <div style="font-size:10px;font-weight:700;color:rgba(255,255,255,0.5);
-                    letter-spacing:0.06em;margin-bottom:8px">PARTICIPACIÓN 2025 POR PARROQUIA</div>
-        """)
-
-        for p in parroquias:
-            part  = p.get("participacion", {})
-            color = "#E53E3E" if part.get("estado") == "Sin voz" else \
-                    "#E67E22" if part.get("estado") == "Bajo" else \
-                    "#D69E2E" if part.get("estado") == "Parcial" else "#38A169"
-            mesas = part.get("mesas", 0)
-            pres  = part.get("presupuesto", 0)
-            st.html(f"""
-            <div style="display:flex;justify-content:space-between;align-items:center;
-                        padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04)">
-                <div style="font-size:10px;color:rgba(255,255,255,0.7)">{p['nombre']}</div>
-                <div style="display:flex;gap:8px;align-items:center">
-                    <span style="font-size:9px;color:rgba(255,255,255,0.4)">{mesas} mesas · ${pres:,.0f}</span>
-                    <span style="font-size:9px;font-weight:700;color:{color}">{part.get('estado','—')}</span>
-                </div>
-            </div>
-            """)
-
-    with col_paradox:
-        # Paradoja democrática
-        st.html(f"""
-        <div style="background:rgba(229,62,62,0.06);border:2px solid rgba(229,62,62,0.25);
-                    border-radius:12px;padding:18px;margin-bottom:12px">
-            <div style="font-size:12px;font-weight:800;color:#FC8181;margin-bottom:10px">
-                ⚠ Paradoja Democrática Detectada
-            </div>
-            <div style="font-size:11px;color:rgba(255,255,255,0.7);line-height:1.6;margin-bottom:12px">
-                Las parroquias con mayor necesidad (NBI alto, TPS crítico) son las que
-                <strong style="color:#FC8181">menos participación tienen</strong> en decisiones
-                de presupuesto y planificación territorial.
-            </div>
-            <div style="background:rgba(255,255,255,0.04);border-radius:8px;padding:12px">
-                <div style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.4);
-                            letter-spacing:0.06em;margin-bottom:8px">ZONAS SIN VOZ PARTICIPATIVA</div>
-        """)
-
-        for p in sin_voz:
-            st.html(f"""
-                <div style="display:flex;justify-content:space-between;align-items:center;
-                            margin-bottom:6px;padding:8px 10px;
-                            background:rgba(229,62,62,0.08);border-radius:6px;
-                            border-left:3px solid #E53E3E">
-                    <div>
-                        <div style="font-size:11px;font-weight:700;color:#FC8181">
-                            🚨 {p['nombre']}
-                        </div>
-                        <div style="font-size:9px;color:rgba(255,255,255,0.4);margin-top:2px">
-                            NBI {p['nbi']}% · TPS {p['tps']:.0f}% · ${p['per_capita']}/hab
-                        </div>
-                    </div>
-                    <div style="text-align:right">
-                        <div style="font-size:9px;color:#FC8181;font-weight:700">0 mesas</div>
-                        <div style="font-size:9px;color:rgba(255,255,255,0.3)">$0 part.</div>
-                    </div>
-                </div>
-            """)
-
-        st.html("""
-            </div>
-        </div>
-        """)
-
-        info_box(
-            "🎯 Acción SAT-V: Convocar asambleas en Isabel Muentes y Aníbal San Andrés. "
-            "El silencio participativo amplifica la brecha territorial.",
-            level="danger",
-        )
-
+    # ── TECH NOTE ─────────────────────────────────────────────────────────────
+    tech = ""
     if show_tech:
-        st.markdown("---")
-        st.html("""
-        <div style="font-size:9px;color:rgba(255,255,255,0.2)">
-        🔧 GeoTwin · Fuente: SIAP-ICPI + PDOT_KB · H20b (IGP) · H04 (TPS) ·
-        CPCCS V=0 en RDC 2026 · 50 UT activas vs meta 75
-        </div>
-        """)
+        tech = """
+<div style="margin-top:16px;font-size:9px;color:rgba(255,255,255,.2);
+            border-top:1px solid rgba(255,255,255,.04);padding-top:8px">
+  🔧 Fuente: SIAP-ICPI H24 · GeoTwin KB · INEC 2022 · IET Q1-2026 · Corte sellado Q1-2026
+</div>"""
 
+    # ── ASSEMBLE & RENDER ─────────────────────────────────────────────────────
+    html = hdr + grid + tabla + tech
+    render_page(html, show_tech=show_tech, height=1400, extra_css=_GT_CSS)
 
-# ── HELPERS ────────────────────────────────────────────────────────────────────
-def _stat(label: str, value: str, color: str, note: str = "") -> None:
-    note_html = f'<div style="font-size:9px;color:rgba(255,255,255,0.3);margin-top:4px">{note}</div>' if note else ""
-    st.html(f"""
-    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);
-                border-top:2px solid {color};border-radius:12px;padding:14px 16px">
-        <div style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.4);
-                    letter-spacing:0.08em;text-transform:uppercase;margin-bottom:6px">{label}</div>
-        <div style="font-size:1.5rem;font-weight:900;color:{color};line-height:1">{value}</div>
-        {note_html}
-    </div>
-    """)
-
-
-def _render_per_capita_chart(parroquias: list[dict]) -> None:
-    nombres = [p["nombre"].replace(" (cabecera)", "") for p in parroquias]
-    vals    = [p["per_capita"] for p in parroquias]
-    colors  = [_ESTADO_COLOR.get(p["estado"], "#D69E2E") for p in parroquias]
-
-    fig = go.Figure(go.Bar(
-        x=vals,
-        y=nombres,
-        orientation="h",
-        marker_color=colors,
-        marker_line_width=0,
-        text=[f"${v}/hab" for v in vals],
-        textposition="outside",
-        textfont={"size": 9, "color": "#E2E8F0"},
-    ))
-    fig.update_layout(
-        paper_bgcolor="rgba(0,0,0,0)",
-        plot_bgcolor="rgba(0,0,0,0)",
-        font={"color": "#E2E8F0", "size": 10},
-        height=270,
-        margin={"t": 10, "b": 10, "l": 10, "r": 60},
-        xaxis={"gridcolor": "rgba(255,255,255,0.05)", "range": [0, 140]},
-        yaxis={"tickfont": {"size": 9}},
-        showlegend=False,
-    )
-    st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
-
-
-def _render_bubble(parroquias: list[dict]) -> None:
-    df = pd.DataFrame([{
-        "Parroquia": p["nombre"].replace(" (cabecera)", ""),
-        "NBI (%)":   p["nbi"],
-        "Inversión ($)": p["inversion"],
-        "Habitantes": p["habitantes"],
-        "Estado": p["estado"],
-        "Color": _ESTADO_COLOR.get(p["estado"], "#D69E2E"),
-    } for p in parroquias])
-
-    fig = go.Figure()
-    for _, row in df.iterrows():
-        fig.add_trace(go.Scatter(
-            x=[row["NBI (%)"]],
-            y=[row["Inversión ($)"]],
-            mode="markers+text",
-            marker={
-                "size": max(row["Habitantes"] / 500, 8),
-                "color": row["Color"],
-                "opacity": 0.8,
-                "line": {"width": 1, "color": "rgba(255,255,255,0.3)"},
-            },
-            text=[row["Parroquia"]],
-            textposition="top center",
-            textfont={"size": 8, "color": "rgba(255,255,255,0.6)"},
-            name=row["Parroquia"],
-            hovertemplate=(
-                f"<b>{row['Parroquia']}</b><br>"
-                f"NBI: {row['NBI (%)']:.1f}%<br>"
-                f"Inversión: ${row['Inversión ($)']:,.0f}<br>"
-                f"Habitantes: {row['Habitantes']:,}<extra></extra>"
-            ),
-        ))
-
-    fig.update_layout(
-        paper_bgcolor="rgba(0,0,0,0)",
-        plot_bgcolor="rgba(0,0,0,0)",
-        font={"color": "#E2E8F0", "size": 10},
-        height=270,
-        margin={"t": 10, "b": 10, "l": 10, "r": 10},
-        xaxis={
-            "title": "NBI (%)", "gridcolor": "rgba(255,255,255,0.05)",
-            "titlefont": {"size": 9},
-        },
-        yaxis={
-            "title": "Inversión ($)", "gridcolor": "rgba(255,255,255,0.05)",
-            "titlefont": {"size": 9},
-        },
-        showlegend=False,
-    )
-    st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
-
-
-def _render_table(parroquias: list[dict], show_tech: bool) -> None:
-    rows_html = ""
-    for p in parroquias:
-        part   = p.get("participacion", {})
-        estado_color = _ESTADO_COLOR.get(p["estado"], "#D69E2E")
-        part_color   = {
-            "Sin voz": "#E53E3E",
-            "Bajo":    "#E67E22",
-            "Parcial": "#D69E2E",
-            "Activo":  "#38A169",
-        }.get(part.get("estado", ""), "#D69E2E")
-
-        rows_html += f"""
-        <tr style="border-bottom:1px solid rgba(255,255,255,0.05)">
-            <td style="padding:8px 10px;font-size:11px;color:rgba(255,255,255,0.8);font-weight:600">
-                {p['emoji']} {p['nombre']}
-            </td>
-            <td style="padding:8px 10px;text-align:center;font-size:11px">
-                <span style="color:{estado_color};font-weight:700">{p['estado']}</span>
-            </td>
-            <td style="padding:8px 10px;text-align:right;font-size:11px;color:rgba(255,255,255,0.7)">
-                {p['tps']:.1f}%
-            </td>
-            <td style="padding:8px 10px;text-align:right;font-size:11px;color:rgba(255,255,255,0.7)">
-                {p['nbi']:.1f}%
-            </td>
-            <td style="padding:8px 10px;text-align:right;font-size:11px;color:rgba(255,255,255,0.7)">
-                {p['agua']:.1f}%
-            </td>
-            <td style="padding:8px 10px;text-align:right;font-size:11px;color:#00D4FF;font-weight:700">
-                ${p['per_capita']}/hab
-            </td>
-            <td style="padding:8px 10px;text-align:center;font-size:10px">
-                <span style="color:{part_color};font-weight:700">{part.get('estado','—')}</span><br>
-                <span style="color:rgba(255,255,255,0.3);font-size:9px">
-                    {part.get('mesas',0)} mesas · ${part.get('presupuesto',0):,.0f}
-                </span>
-            </td>
-        </tr>
-        """
-
-    st.html(f"""
-    <div style="overflow-x:auto">
-    <table style="width:100%;border-collapse:collapse;font-family:Inter,sans-serif">
-        <thead>
-            <tr style="border-bottom:2px solid rgba(255,255,255,0.12)">
-                <th style="padding:8px 10px;text-align:left;font-size:9px;font-weight:700;
-                           color:rgba(255,255,255,0.4);letter-spacing:0.06em;text-transform:uppercase">
-                    PARROQUIA
-                </th>
-                <th style="padding:8px 10px;text-align:center;font-size:9px;font-weight:700;
-                           color:rgba(255,255,255,0.4);letter-spacing:0.06em;text-transform:uppercase">
-                    ESTADO
-                </th>
-                <th style="padding:8px 10px;text-align:right;font-size:9px;font-weight:700;
-                           color:rgba(255,255,255,0.4);letter-spacing:0.06em;text-transform:uppercase">
-                    TPS
-                </th>
-                <th style="padding:8px 10px;text-align:right;font-size:9px;font-weight:700;
-                           color:rgba(255,255,255,0.4);letter-spacing:0.06em;text-transform:uppercase">
-                    NBI
-                </th>
-                <th style="padding:8px 10px;text-align:right;font-size:9px;font-weight:700;
-                           color:rgba(255,255,255,0.4);letter-spacing:0.06em;text-transform:uppercase">
-                    AGUA
-                </th>
-                <th style="padding:8px 10px;text-align:right;font-size:9px;font-weight:700;
-                           color:rgba(255,255,255,0.4);letter-spacing:0.06em;text-transform:uppercase">
-                    INV/HAB
-                </th>
-                <th style="padding:8px 10px;text-align:center;font-size:9px;font-weight:700;
-                           color:rgba(255,255,255,0.4);letter-spacing:0.06em;text-transform:uppercase">
-                    IGP · PARTICIPACIÓN
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            {rows_html}
-        </tbody>
-    </table>
-    </div>
-    """)
+    # Native CTA
+    st.html("<div style='height:8px'></div>")
+    c1, c2 = st.columns(2, gap="small")
+    with c1:
+        if st.button("🎯 Ver Congruencia Territorial", use_container_width=True):
+            st.session_state["page"] = "congruencias"
+            st.rerun()
+    with c2:
+        if st.button("🔮 Priorizar territorio con Sentinel", use_container_width=True):
+            st.session_state["page"] = "sentinel"
+            st.rerun()
