@@ -135,25 +135,44 @@ from quira_pages.p10_inversion   import render as p10
 from quira_pages.p11_ods         import render as p11
 from quira_pages.p12_cadena      import render as p12
 from quira_pages.p13_simulador   import render as p13
+from quira_pages.p14_eficiencia  import render as p14
+from quira_pages.p15_transparencia import render as p15
+from quira_pages.p16_confianza   import render as p16
+from quira_pages.p17_rdc         import render as p17
+from quira_pages.p18_cooperacion import render as p18
+from quira_pages.p19_genero      import render as p19
 from components.sentinel   import render_sentinel
 
 def _p_sentinel():
     render_sentinel()
 
 PAGES = {
+    # ── EJECUTIVO ─────────────────────────────────────────────────────────────
     "dashboard":    {"label": "Tablero Ejecutivo",     "icon": "📊", "render": p1},
     "pulso":        {"label": "Pulso Ejecutivo",       "icon": "⚡", "render": p6},
     "brecha":       {"label": "Causas de la Brecha",   "icon": "📉", "render": p7},
-    "metas":        {"label": "Metas PDOT",            "icon": "🎯", "render": p8},
-    "sat":          {"label": "Alertas SAT",           "icon": "🚨", "render": p9},
-    "inversion":    {"label": "Inversión per Cápita",  "icon": "💰", "render": p10},
-    "ods":          {"label": "ODS Tracker",           "icon": "🌐", "render": p11},
-    "cadena":       {"label": "Cadena POA·PAC",        "icon": "🔗", "render": p12},
     "simulador":    {"label": "Simulador ✨",           "icon": "🧮", "render": p13},
-    "holding":      {"label": "Holding Municipal",     "icon": "🏛️", "render": p2},
-    "congruencias": {"label": "Congruencias HPT-M",    "icon": "🎯", "render": p3},
-    "geotwin":      {"label": "GeoTwin · Territorio",  "icon": "🗺️", "render": p4},
+    # ── PLANIFICACIÓN ─────────────────────────────────────────────────────────
+    "metas":        {"label": "Metas PDOT",            "icon": "🎯", "render": p8},
+    "cadena":       {"label": "Cadena POA·PAC",        "icon": "🔗", "render": p12},
+    "congruencias": {"label": "Congruencias HPT-M",    "icon": "🔗", "render": p3},
+    # ── OPERATIVO ─────────────────────────────────────────────────────────────
+    "sat":          {"label": "Alertas SAT",           "icon": "🚨", "render": p9},
+    "eficiencia":   {"label": "Eficiencia Dirs.",      "icon": "📋", "render": p14},
     "operacion":    {"label": "Operación Técnica",     "icon": "⚙️", "render": p5},
+    # ── TERRITORIAL ───────────────────────────────────────────────────────────
+    "geotwin":      {"label": "GeoTwin · Territorio",  "icon": "🗺️", "render": p4},
+    "inversion":    {"label": "Inversión per Cápita",  "icon": "💰", "render": p10},
+    "holding":      {"label": "Holding Municipal",     "icon": "🏛️", "render": p2},
+    # ── CIUDADANÍA ────────────────────────────────────────────────────────────
+    "confianza":    {"label": "Confianza Ciudadana",   "icon": "🗳️", "render": p16},
+    "rdc":          {"label": "Rendición de Cuentas",  "icon": "📅", "render": p17},
+    "transparencia":{"label": "Transparencia LOTAIP",  "icon": "🔍", "render": p15},
+    # ── ESTRATÉGICO ───────────────────────────────────────────────────────────
+    "ods":          {"label": "ODS Tracker",           "icon": "🌐", "render": p11},
+    "cooperacion":  {"label": "Cooperación Intern.",   "icon": "💸", "render": p18},
+    "genero":       {"label": "Género y Equidad",      "icon": "💜", "render": p19},
+    # ── IA ────────────────────────────────────────────────────────────────────
     "sentinel":     {"label": "Sentinel · IA",         "icon": "🔮", "render": _p_sentinel},
 }
 
