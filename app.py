@@ -130,6 +130,8 @@ from quira_pages.p5_operacion    import render as p5
 from quira_pages.p6_pulso        import render as p6
 from quira_pages.p7_brecha       import render as p7
 from quira_pages.p8_metas        import render as p8
+from quira_pages.p9_sat          import render as p9
+from quira_pages.p10_inversion   import render as p10
 from components.sentinel   import render_sentinel
 
 def _p_sentinel():
@@ -140,6 +142,8 @@ PAGES = {
     "pulso":        {"label": "Pulso Ejecutivo",       "icon": "⚡", "render": p6},
     "brecha":       {"label": "Causas de la Brecha",   "icon": "📉", "render": p7},
     "metas":        {"label": "Metas PDOT",            "icon": "🎯", "render": p8},
+    "sat":          {"label": "Alertas SAT",           "icon": "🚨", "render": p9},
+    "inversion":    {"label": "Inversión per Cápita",  "icon": "💰", "render": p10},
     "holding":      {"label": "Holding Municipal",     "icon": "🏛️", "render": p2},
     "congruencias": {"label": "Congruencias HPT-M",    "icon": "🔗", "render": p3},
     "geotwin":      {"label": "GeoTwin · Territorio",  "icon": "🗺️", "render": p4},
