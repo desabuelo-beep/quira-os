@@ -165,36 +165,9 @@ def page_frame(content: str, show_tech: bool = False, extra_css: str = "") -> st
 def render_page(content: str, show_tech: bool = False,
                 height: int = 900, extra_css: str = "") -> None:
     """
-    Renderiza una sección de página vía st.markdown(unsafe_allow_html=True).
-    El CSS del DEMO se inyecta como <style> en el DOM de Streamlit.
-    Más fiable que components.v1.html() en todos los entornos Cloud.
-    """
-    # Selectores .tecnico: en markdown el wrapper es un div, no body
-    tech_css = ""
-    if show_tech:
-        tech_css = (
-            ".tech-label { display: block !important; }"
-            ".td-tech { display: table-cell !important; }"
-        )
-
-    # 1. Inyectar CSS (global para todo el documento Streamlit)
-    st.markdown(
-        f"<style>{DEMO_CSS}{extra_css}{tech_css}</style>",
-        unsafe_allow_html=True,
-    )
-
-    # 2. Renderizar contenido HTML directamente
-    st.markdown(
-        f'<div style="padding-bottom:24px">{content}</div>',
-        unsafe_allow_html=True,
-    )
-
-
-def render_page_iframe(content: str, show_tech: bool = False,
-                       height: int = 900, extra_css: str = "") -> None:
-    """
-    Alternativa iframe vía components.v1.html() — usar sólo cuando
-    se necesita JavaScript (onclick, etc.) aislado del DOM principal.
+    Renderiza una sección de página vía components.v1.html() — iframe real.
+    El browser renderiza el HTML directamente, sin sanitización de Streamlit.
+    Soporta SVG, HTML comments, CSS Grid, variables CSS, animaciones.
     """
     html = page_frame(content, show_tech, extra_css=extra_css)
     components.html(html, height=height, scrolling=True)
