@@ -1,0 +1,77 @@
+"""
+QUIRA OS v0.1 — Configuración central
+Dylus Lab © 2026
+"""
+import os
+
+# ── MODO CLOUD ────────────────────────────────────────────────────────────────
+# En Streamlit Community Cloud no hay Excel local.
+# La app detecta esto automáticamente y usa demo_data.py como fuente de verdad.
+IS_CLOUD = not os.path.exists(r"C:\Users\DELL")
+
+# ── PATHS EXCEL (solo relevante en desarrollo local) ──────────────────────────
+BASE_EXCEL = r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT"
+SIAP_PATH  = os.path.join(BASE_EXCEL, "Dylus Lab - Sistema de Integridad Algorítmica Predictivo (SIAP-ICPI v1.0)222.xlsx")
+PDOT_PATH  = os.path.join(BASE_EXCEL, "PDOT_MONTECRISTI_KB.xlsx")
+
+SIAP_PATH_ALT = os.path.join(BASE_EXCEL, "quira-data",
+    "Dylus Lab - Sistema de Integridad Algorítmica Predictivo (SIAP-ICPI v1.0)222.xlsx")
+
+
+def get_siap_path() -> str:
+    """Retorna la ruta del Excel SIAP-ICPI. Lanza FileNotFoundError si no existe."""
+    if os.path.exists(SIAP_PATH):
+        return SIAP_PATH
+    if os.path.exists(SIAP_PATH_ALT):
+        return SIAP_PATH_ALT
+    raise FileNotFoundError("SIAP-ICPI Excel no encontrado — usando datos demo.")
+
+
+def get_pdot_path() -> str:
+    """
+    Retorna la ruta del Excel PDOT_KB.
+    Orden de búsqueda:
+      1. data/ dentro del repo (cloud + local con copia)
+      2. Ruta absoluta local (desarrollo)
+    """
+    # 1. En el repo (data/PDOT_MONTECRISTI_KB.xlsx) — funciona en cloud y local
+    repo_path = os.path.join(os.path.dirname(__file__), "data", "PDOT_MONTECRISTI_KB.xlsx")
+    if os.path.exists(repo_path):
+        return repo_path
+    # 2. Ruta local absoluta (fallback desarrollo sin copia en data/)
+    if os.path.exists(PDOT_PATH):
+        return PDOT_PATH
+    raise FileNotFoundError("PDOT_KB Excel no encontrado — Sentinel operará sin KB territorial.")
+
+
+# ── IDENTIDAD ─────────────────────────────────────────────────────────────────
+APP_NAME    = "QUIRA OS"
+APP_VERSION = "v0.1"
+GAD_NOMBRE  = "GAD Municipal de Montecristi"
+GAD_PERIODO = "2023–2027"
+ALCALDE     = "Ing. Jonathan Toro Largacha"
+CORTE       = "Q1-2026"
+
+# ── CREDENCIALES PMV (v0.1 — no producción) ──────────────────────────────────
+USERS = {
+    "alcalde":  {"password": "quira2026", "rol": "Alcalde",  "emoji": "🏛️"},
+    "concejal": {"password": "quira2026", "rol": "Concejal", "emoji": "⚖️"},
+    "tecnico":  {"password": "quira2026", "rol": "Técnico",  "emoji": "⚙️"},
+}
+
+# ── AVEP — ESCALA CANÓNICA (H01_PARÁMETROS) ──────────────────────────────────
+AVEP = [
+    {"nivel": 5, "min": 0.90, "max": 1.00, "label": "Excelencia en Gobernanza",  "color": "#3182CE", "emoji": "🔵"},
+    {"nivel": 4, "min": 0.70, "max": 0.89, "label": "Gestión por Mandato",       "color": "#38A169", "emoji": "🟢"},
+    {"nivel": 3, "min": 0.40, "max": 0.69, "label": "Transición Crítica",        "color": "#D69E2E", "emoji": "🟡"},
+    {"nivel": 2, "min": 0.20, "max": 0.39, "label": "Gestión por Ocurrencia",    "color": "#E67E22", "emoji": "🟠"},
+    {"nivel": 1, "min": 0.00, "max": 0.19, "label": "Ruptura Sistémica",         "color": "#E53E3E", "emoji": "🔴"},
+]
+
+# ── COLORES DESIGN SYSTEM ─────────────────────────────────────────────────────
+CYAN   = "#00D4FF"
+AMBER  = "#FFB700"
+GREEN  = "#00E096"
+RED    = "#FF4D6D"
+PURPLE = "#7C5CFC"
+NAVY   = "#0A1628"

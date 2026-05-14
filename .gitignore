@@ -1,0 +1,46 @@
+# ── SECRETOS Y CREDENCIALES ───────────────────────────────────────────────────
+.streamlit/secrets.toml
+*.env
+.env.*
+
+# ── EXCEL PRIVADO (metodología propietaria Dylus Lab — NUNCA al repo) ─────────
+*SIAP-ICPI*.xlsx
+*SIAP*.xlsx
+
+# ── PDOT_MONTECRISTI_KB.xlsx → SÍ va al repo (datos oficiales públicos) ───────
+# (no se excluye)
+
+# ── PYTHON ────────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+.mypy_cache/
+
+# ── ENTORNOS VIRTUALES ────────────────────────────────────────────────────────
+venv/
+env/
+ENV/
+.venv/
+
+# ── SISTEMA OPERATIVO ─────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
+
+# ── IDE ───────────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+
+# ── LOGS ──────────────────────────────────────────────────────────────────────
+*.log
+
+# ── STREAMLIT CACHE ───────────────────────────────────────────────────────────
+.streamlit/cache/
