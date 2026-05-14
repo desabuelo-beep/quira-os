@@ -13,7 +13,6 @@ Dylus Lab © 2026
 """
 import streamlit as st
 import os
-import google.generativeai as genai
 from data.loader import load_all
 from data.pdot_context import build_pdot_context, pdot_context_stats
 from utils.session import get_rol, is_tecnico
@@ -214,42 +213,68 @@ GEMINI_API_KEY = "AIza..."
 
 
 # ── HELPERS ────────────────────────────────────────────────────────────────────
+# Modelos a intentar en orden (v1 REST estable — sin SDK, sin v1beta)
+_GEMINI_MODELS = [
+    "gemini-1.5-flash",
+    "gemini-1.5-flash-8b",
+    "gemini-2.0-flash-lite",
+]
+_GEMINI_BASE = "https://generativelanguage.googleapis.com/v1/models"
+
+
 def _run_sentinel(api_key: str, system_prompt: str) -> None:
-    """Llama a Gemini Flash con el historial actual y agrega la respuesta."""
+    """Llama a Gemini vía REST v1 (no SDK, no v1beta) con fallback de modelos."""
+    import requests
+    import json as _json
+
     messages = st.session_state["sentinel_messages"]
 
     with st.chat_message("assistant", avatar="🔮"):
+        placeholder = st.empty()
         with st.spinner("Sentinel analizando…"):
             try:
-                genai.configure(api_key=api_key)
-                model = genai.GenerativeModel(
-                    model_name="gemini-2.0-flash",
-                    system_instruction=system_prompt,
-                )
-
-                # Convertir historial al formato Gemini (user/model, no user/assistant)
-                gemini_history = []
-                for msg in messages[:-1]:  # Todos menos el último (el nuevo)
-                    gemini_role = "user" if msg["role"] == "user" else "model"
-                    gemini_history.append({
-                        "role": gemini_role,
-                        "parts": [msg["content"]],
+                # Construir contenido en formato Gemini (user / model)
+                contents = []
+                for msg in messages:
+                    role = "user" if msg["role"] == "user" else "model"
+                    contents.append({
+                        "role": role,
+                        "parts": [{"text": msg["content"]}],
                     })
 
-                chat = model.start_chat(history=gemini_history)
-                user_msg = messages[-1]["content"]
+                payload = {
+                    "system_instruction": {
+                        "parts": [{"text": system_prompt}],
+                    },
+                    "contents": contents,
+                    "generationConfig": {
+                        "maxOutputTokens": 2048,
+                        "temperature": 0.7,
+                    },
+                }
 
                 full_response = ""
-                response_placeholder = st.empty()
+                last_err = ""
 
-                response = chat.send_message(user_msg, stream=True)
-                for chunk in response:
-                    if chunk.text:
-                        full_response += chunk.text
-                        response_placeholder.markdown(full_response + "▌")
+                for model_name in _GEMINI_MODELS:
+                    url = f"{_GEMINI_BASE}/{model_name}:generateContent?key={api_key}"
+                    try:
+                        resp = requests.post(url, json=payload, timeout=45)
+                        if resp.status_code == 200:
+                            data = resp.json()
+                            full_response = (
+                                data["candidates"][0]["content"]["parts"][0]["text"]
+                            )
+                            break  # éxito
+                        else:
+                            last_err = f"HTTP {resp.status_code} [{model_name}]: {resp.text[:200]}"
+                    except Exception as ex:
+                        last_err = f"{model_name}: {ex}"
 
-                response_placeholder.markdown(full_response)
+                if not full_response:
+                    raise RuntimeError(last_err or "Sin respuesta de la API")
 
+                placeholder.markdown(full_response)
                 st.session_state["sentinel_messages"].append({
                     "role": "assistant",
                     "content": full_response,
@@ -257,18 +282,17 @@ def _run_sentinel(api_key: str, system_prompt: str) -> None:
 
             except Exception as e:
                 err = str(e)
-                if "API_KEY_INVALID" in err or "API key" in err.lower():
-                    error_msg = "⚠️ **API Key de Gemini inválida.** Verifica tu clave en [Google AI Studio](https://aistudio.google.com) y actualiza los Secrets de Streamlit Cloud."
-                elif "quota" in err.lower() or "429" in err:
-                    error_msg = "⚠️ **Límite de cuota alcanzado.** Espera unos segundos e intenta de nuevo."
-                elif "ModuleNotFoundError" in err or "No module" in err:
-                    error_msg = "⚠️ **Librería google-generativeai no disponible.** La app está redesplegando, intenta en 1-2 minutos."
+                if "400" in err or "API_KEY_INVALID" in err or "API key" in err.lower():
+                    error_msg = "⚠️ **API Key inválida.** Verifica tu clave en [Google AI Studio](https://aistudio.google.com) y actualiza los Secrets de Streamlit Cloud."
+                elif "403" in err:
+                    error_msg = f"⚠️ **Acceso denegado (403).** La API Generative Language puede necesitar habilitarse. Error: `{err[:300]}`"
+                elif "429" in err or "quota" in err.lower() or "RESOURCE_EXHAUSTED" in err:
+                    error_msg = f"⚠️ **Cuota agotada en todos los modelos.** Error: `{err[:300]}`"
                 elif not api_key:
                     error_msg = "⚠️ **No hay API Key configurada.** Agrega `GEMINI_API_KEY` en los Secrets de Streamlit Cloud."
                 else:
-                    error_msg = f"⚠️ **Error de Sentinel:** `{err[:400]}`"
-                # Guardar el error como mensaje del asistente para que persista tras st.rerun()
-                st.markdown(error_msg)
+                    error_msg = f"⚠️ **Error Sentinel:** `{err[:400]}`"
+                placeholder.markdown(error_msg)
                 st.session_state["sentinel_messages"].append({
                     "role": "assistant",
                     "content": error_msg,
