@@ -1,13 +1,14 @@
 """
 QUIRA OS v0.1 — HTML Rendering Engine
-Renderiza páginas vía st.markdown(unsafe_allow_html=True).
-CSS/diseño basado en QUIRA_Gov_v1.1_DEMO.html (aprobado).
+Renderiza directo en el DOM de Streamlit vía st.markdown() — sin iframe.
+Sin altura fija, sin scroll interno, ancho completo natural.
 Dylus Lab © 2026
 """
 import streamlit as st
-import streamlit.components.v1 as components
 
-# ── CSS COMPARTIDO (igual al DEMO.html aprobado) ──────────────────────────────
+# ── CSS COMPARTIDO ────────────────────────────────────────────────────────────
+# Nota: html/body no se redefinen — están controlados por app.py.
+# Todos los estilos se aplican dentro de .quira-wrap.
 DEMO_CSS = """
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
 
@@ -19,14 +20,15 @@ DEMO_CSS = """
   --white:#F0F4FF; --muted:#8892B0; --divider:#1E2D50;
   --font:'Inter',sans-serif; --mono:'JetBrains Mono',monospace;
 }
-*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
-html, body {
-  background: var(--navy-deep);
-  color: var(--white);
+
+/* Base del contenedor de página */
+.quira-wrap {
   font-family: var(--font);
   font-size: 14px;
+  color: var(--white);
+  padding-bottom: 20px;
+  animation: fadeIn .25s ease;
 }
-body { padding: 2px 2px 24px; }
 
 /* CARDS */
 .card {
@@ -52,9 +54,9 @@ body { padding: 2px 2px 24px; }
   text-transform: uppercase; letter-spacing: .06em;
 }
 .tech-label { font-size: 10px; color: #4A5568; margin-top: 3px; display: none; }
-body.tecnico .tech-label { display: block; }
+.quira-wrap.tecnico .tech-label { display: block; }
 .td-tech { display: none; }
-body.tecnico .td-tech { display: table-cell; }
+.quira-wrap.tecnico .td-tech { display: table-cell; }
 
 /* BADGES */
 .badge {
@@ -118,20 +120,6 @@ body.tecnico .td-tech { display: table-cell; }
   border-radius:12px; height:260px; overflow:hidden;
   border:1px solid var(--divider);
 }
-.gt-parroquia {
-  position:absolute; display:flex; flex-direction:column;
-  align-items:center; gap:2px;
-}
-.gt-pin-dot {
-  width:16px; height:16px; border-radius:50%;
-  border:2px solid var(--navy-deep); transition:transform .2s;
-  box-shadow:0 0 8px currentColor;
-}
-.gt-pin-label {
-  font-size:9px; font-weight:600; color:var(--white);
-  background:rgba(10,17,40,.8); padding:1px 5px;
-  border-radius:4px; white-space:nowrap;
-}
 
 /* SENTINEL BUBBLE */
 .sentinel-bubble {
@@ -144,36 +132,44 @@ body.tecnico .td-tech { display: table-cell; }
 @keyframes fadeIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:none} }
 """
 
-
-def page_frame(content: str, show_tech: bool = False, extra_css: str = "") -> str:
-    """
-    Envuelve el contenido en un documento HTML completo con el CSS del DEMO.html.
-    """
-    body_class = "tecnico" if show_tech else ""
-    return (
-        "<!DOCTYPE html><html lang='es'><head>"
-        "<meta charset='UTF-8'>"
-        "<meta name='viewport' content='width=device-width,initial-scale=1'>"
-        f"<style>{DEMO_CSS}{extra_css}</style>"
-        "</head>"
-        f"<body class='{body_class}'>"
-        f"<div style='animation:fadeIn .25s ease'>{content}</div>"
-        "</body></html>"
-    )
+# CSS ya inyectado en esta sesión (evita duplicar estilos en cada render_page)
+_CSS_INJECTED: set[str] = set()
 
 
 def render_page(content: str, show_tech: bool = False,
                 height: int = 900, extra_css: str = "") -> None:
     """
-    Renderiza una sección de página vía components.v1.html() — iframe real.
-    El browser renderiza el HTML directamente, sin sanitización de Streamlit.
-    Soporta SVG, HTML comments, CSS Grid, variables CSS, animaciones.
+    Renderiza HTML directamente en el DOM de Streamlit via st.markdown().
+    Sin iframe: sin scrollbar interno, sin altura fija, ancho completo, scroll nativo.
+    El parámetro 'height' se mantiene por compatibilidad pero ya no se aplica.
     """
-    html = page_frame(content, show_tech, extra_css=extra_css)
-    components.html(html, height=height, scrolling=False)
+    body_class = "tecnico" if show_tech else ""
+
+    # Inyectar CSS base una sola vez por sesión
+    css_key = "demo_base"
+    if css_key not in _CSS_INJECTED:
+        st.markdown(f"<style>{DEMO_CSS}</style>", unsafe_allow_html=True)
+        _CSS_INJECTED.add(css_key)
+
+    # Inyectar CSS extra de la página (p.ej. _GT_CSS del GeoTwin)
+    if extra_css:
+        extra_key = hash(extra_css)
+        if extra_key not in _CSS_INJECTED:
+            st.markdown(f"<style>{extra_css}</style>", unsafe_allow_html=True)
+            _CSS_INJECTED.add(extra_key)
+
+    st.markdown(
+        f'<div class="quira-wrap {body_class}">{content}</div>',
+        unsafe_allow_html=True,
+    )
 
 
 # ── BLOQUES REUTILIZABLES ─────────────────────────────────────────────────────
+
+def page_frame(content: str, show_tech: bool = False, extra_css: str = "") -> str:
+    """Mantiene compatibilidad con cualquier código que aún use page_frame()."""
+    return content
+
 
 def page_header(section_label: str, title: str, subtitle: str,
                 badge_html: str = "") -> str:
@@ -200,7 +196,6 @@ def prog_bar(name: str, pct: float, color_class: str,
 
 
 def sentinel_cta(text: str) -> str:
-    """Botón decorativo (sin onclick real en iframe — usar Streamlit button fuera)."""
     return (
         f'<div style="display:inline-block;margin-top:10px;padding:8px 14px;'
         f'background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);'
