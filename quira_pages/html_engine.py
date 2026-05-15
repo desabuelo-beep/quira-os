@@ -1,14 +1,13 @@
 """
 QUIRA OS v0.1 — HTML Rendering Engine
-Renderiza directo en el DOM de Streamlit vía st.markdown() — sin iframe.
-Sin altura fija, sin scroll interno, ancho completo natural.
+Renderiza via components.html() con auto-resize JS.
+El iframe mide su propio contenido y ajusta la altura — sin cortes, sin scrollbar interno.
 Dylus Lab © 2026
 """
 import streamlit as st
+import streamlit.components.v1 as components
 
 # ── CSS COMPARTIDO ────────────────────────────────────────────────────────────
-# Nota: html/body no se redefinen — están controlados por app.py.
-# Todos los estilos se aplican dentro de .quira-wrap.
 DEMO_CSS = """
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
 
@@ -20,15 +19,19 @@ DEMO_CSS = """
   --white:#F0F4FF; --muted:#8892B0; --divider:#1E2D50;
   --font:'Inter',sans-serif; --mono:'JetBrains Mono',monospace;
 }
-
-/* Base del contenedor de página */
-.quira-wrap {
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html, body {
+  background: var(--navy-deep);
+  color: var(--white);
   font-family: var(--font);
   font-size: 14px;
-  color: var(--white);
-  padding-bottom: 20px;
-  animation: fadeIn .25s ease;
+  /* Scrollbar interno invisible — el outer page scroll maneja todo */
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
+html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; width: 0; }
+body { padding: 2px 2px 16px; }
 
 /* CARDS */
 .card {
@@ -54,9 +57,9 @@ DEMO_CSS = """
   text-transform: uppercase; letter-spacing: .06em;
 }
 .tech-label { font-size: 10px; color: #4A5568; margin-top: 3px; display: none; }
-.quira-wrap.tecnico .tech-label { display: block; }
+body.tecnico .tech-label { display: block; }
 .td-tech { display: none; }
-.quira-wrap.tecnico .td-tech { display: table-cell; }
+body.tecnico .td-tech { display: table-cell; }
 
 /* BADGES */
 .badge {
@@ -120,6 +123,20 @@ DEMO_CSS = """
   border-radius:12px; height:260px; overflow:hidden;
   border:1px solid var(--divider);
 }
+.gt-parroquia {
+  position:absolute; display:flex; flex-direction:column;
+  align-items:center; gap:2px;
+}
+.gt-pin-dot {
+  width:16px; height:16px; border-radius:50%;
+  border:2px solid var(--navy-deep); transition:transform .2s;
+  box-shadow:0 0 8px currentColor;
+}
+.gt-pin-label {
+  font-size:9px; font-weight:600; color:var(--white);
+  background:rgba(10,17,40,.8); padding:1px 5px;
+  border-radius:4px; white-space:nowrap;
+}
 
 /* SENTINEL BUBBLE */
 .sentinel-bubble {
@@ -132,44 +149,62 @@ DEMO_CSS = """
 @keyframes fadeIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:none} }
 """
 
-# CSS ya inyectado en esta sesión (evita duplicar estilos en cada render_page)
-_CSS_INJECTED: set[str] = set()
+# ── AUTO-RESIZE SCRIPT ────────────────────────────────────────────────────────
+# El iframe mide su propio scrollHeight y lo reporta al parent (Streamlit).
+# Streamlit recibe el mensaje y ajusta la altura del iframe en consecuencia.
+_AUTORESIZE_JS = """
+<script>
+(function () {
+  function sendHeight() {
+    var h = Math.max(
+      document.body ? document.body.scrollHeight : 0,
+      document.documentElement ? document.documentElement.scrollHeight : 0
+    );
+    if (h > 0) {
+      window.parent.postMessage(
+        { isStreamlitMessage: true, type: 'streamlit:setFrameHeight', height: h },
+        '*'
+      );
+    }
+  }
+  sendHeight();
+  document.addEventListener('DOMContentLoaded', sendHeight);
+  window.addEventListener('load', sendHeight);
+  setTimeout(sendHeight, 150);
+  setTimeout(sendHeight, 600);
+})();
+</script>
+"""
+
+
+def page_frame(content: str, show_tech: bool = False, extra_css: str = "") -> str:
+    body_class = "tecnico" if show_tech else ""
+    return (
+        "<!DOCTYPE html><html lang='es'><head>"
+        "<meta charset='UTF-8'>"
+        "<meta name='viewport' content='width=device-width,initial-scale=1'>"
+        f"<style>{DEMO_CSS}{extra_css}</style>"
+        "</head>"
+        f"<body class='{body_class}'>"
+        f"<div style='animation:fadeIn .25s ease'>{content}</div>"
+        f"{_AUTORESIZE_JS}"
+        "</body></html>"
+    )
 
 
 def render_page(content: str, show_tech: bool = False,
                 height: int = 900, extra_css: str = "") -> None:
     """
-    Renderiza HTML directamente en el DOM de Streamlit via st.markdown().
-    Sin iframe: sin scrollbar interno, sin altura fija, ancho completo, scroll nativo.
-    El parámetro 'height' se mantiene por compatibilidad pero ya no se aplica.
+    Renderiza HTML en iframe con auto-resize JavaScript.
+    - scrolling=False: sin scrollbar interno visible
+    - _AUTORESIZE_JS: el iframe se ajusta a la altura real del contenido
+    - height: altura inicial (antes de que JS reporte la real)
     """
-    body_class = "tecnico" if show_tech else ""
-
-    # Inyectar CSS base una sola vez por sesión
-    css_key = "demo_base"
-    if css_key not in _CSS_INJECTED:
-        st.markdown(f"<style>{DEMO_CSS}</style>", unsafe_allow_html=True)
-        _CSS_INJECTED.add(css_key)
-
-    # Inyectar CSS extra de la página (p.ej. _GT_CSS del GeoTwin)
-    if extra_css:
-        extra_key = hash(extra_css)
-        if extra_key not in _CSS_INJECTED:
-            st.markdown(f"<style>{extra_css}</style>", unsafe_allow_html=True)
-            _CSS_INJECTED.add(extra_key)
-
-    st.markdown(
-        f'<div class="quira-wrap {body_class}">{content}</div>',
-        unsafe_allow_html=True,
-    )
+    html = page_frame(content, show_tech, extra_css=extra_css)
+    components.html(html, height=height, scrolling=False)
 
 
 # ── BLOQUES REUTILIZABLES ─────────────────────────────────────────────────────
-
-def page_frame(content: str, show_tech: bool = False, extra_css: str = "") -> str:
-    """Mantiene compatibilidad con cualquier código que aún use page_frame()."""
-    return content
-
 
 def page_header(section_label: str, title: str, subtitle: str,
                 badge_html: str = "") -> str:
