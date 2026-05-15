@@ -16,9 +16,10 @@ from sentinel.policies      import evaluar_seguridad, sugerir_pantallas
 from sentinel.audit         import log_interaction, get_audit_stats
 from sentinel.renderer      import parse_response, render_visual
 from sentinel               import charts as _charts
-from sentinel.legal_router  import build_legal_prompt_block, find_legal_refs, has_legal_refs
-from sentinel.trust_engine  import calculate_trust, context_from_query
-from sentinel.ui_components import trust_badge, legal_card
+from sentinel.legal_router      import build_legal_prompt_block, find_legal_refs, has_legal_refs
+from sentinel.trust_engine      import calculate_trust, context_from_query
+from sentinel.coherencia_engine import evaluate as _coh_eval, detect_coherencia_intent
+from sentinel.ui_components     import trust_badge, legal_card, coherencia_card
 
 
 # ── COMPONENTE PRINCIPAL ──────────────────────────────────────────────────────
@@ -348,6 +349,16 @@ def _run_sentinel(
                 trust_badge(_trust_res_llm, _legal_refs_llm)
                 if _legal_refs_llm:
                     legal_card(_legal_refs_llm)
+
+                # Fase 3: coherencia_card para queries de viabilidad/simulación/evaluación
+                if detect_coherencia_intent(pregunta):
+                    _coh_res = _coh_eval(
+                        query      = pregunta,
+                        data       = data,
+                        legal_refs = _legal_refs_llm,
+                        territory  = _mem.get_context().get("ultima_parroquia"),
+                    )
+                    coherencia_card(_coh_res)
 
                 # ── Audit log ─────────────────────────────────────────────────
                 log_interaction(

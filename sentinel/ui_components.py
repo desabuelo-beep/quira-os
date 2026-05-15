@@ -477,3 +477,86 @@ def quadrum_card(quadrum_result: dict) -> None:
     {recoms_html}
   </div>
 </div>""", unsafe_allow_html=True)
+
+
+# ── 10. COHERENCIA CARD (Fase 3) ──────────────────────────────────────────────
+
+def coherencia_card(result: dict) -> None:
+    """
+    Tarjeta de Coherencia Institucional — Fase 3.
+    result: dict de coherencia_engine.evaluate()
+    Muestra 4 dimensiones + Confianza de Implementación.
+    """
+    ci        = result.get("confianza_implementacion", 0)
+    ci_label  = result.get("confianza_label", "")
+    dims      = result.get("dimensiones", [])
+    recoms    = result.get("recomendaciones", [])
+
+    ci_color = (
+        "#38A169" if ci >= 80 else
+        "#00D4FF" if ci >= 65 else
+        "#D69E2E" if ci >= 50 else
+        "#E53E3E"
+    )
+
+    _NIVEL_COLOR = {
+        "Alta":         "#38A169",
+        "Media":        "#D69E2E",
+        "Baja":         "#E67E22",
+        "Insuficiente": "#E53E3E",
+    }
+
+    def _bar(score: int, nivel: str) -> str:
+        color = _NIVEL_COLOR.get(nivel, "#E2E8F0")
+        return (
+            f'<div style="height:6px;background:rgba(255,255,255,0.06);'
+            f'border-radius:3px;overflow:hidden;margin-top:4px">'
+            f'<div style="height:6px;width:{min(score,100)}%;background:{color};'
+            f'border-radius:3px"></div></div>'
+        )
+
+    dims_html = ""
+    for d in dims:
+        color = _NIVEL_COLOR.get(d["nivel"], "#E2E8F0")
+        dims_html += (
+            f'<div style="flex:1;padding:8px 6px;background:rgba(255,255,255,0.02);'
+            f'border-radius:6px;margin:2px;border-top:2px solid {color}">'
+            f'<div style="font-size:8px;font-weight:700;color:{color};'
+            f'text-transform:uppercase;letter-spacing:0.05em">{d["dimension"]}</div>'
+            f'<div style="font-size:18px;font-weight:700;color:{color};margin:3px 0">'
+            f'{d["score"]}</div>'
+            f'<div style="font-size:8px;color:rgba(255,255,255,0.4)">{d["nivel"]}</div>'
+            f'{_bar(d["score"], d["nivel"])}'
+            f'</div>'
+        )
+
+    recoms_html = "".join(
+        f'<div style="font-size:10px;color:rgba(255,255,255,0.65);'
+        f'padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.04)">{r}</div>'
+        for r in recoms
+    )
+
+    st.markdown(f"""
+<div style="{_CARD_BASE}background:rgba(0,180,120,0.05);border:1px solid rgba(0,180,120,0.20)">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">
+    <div>
+      <div style="font-size:10px;font-weight:700;color:rgba(56,161,105,0.9);
+                  letter-spacing:0.07em;text-transform:uppercase">
+        ◆ COHERENCIA INSTITUCIONAL</div>
+      <div style="font-size:9px;color:rgba(255,255,255,0.35);margin-top:2px">
+        Confianza de Implementación</div>
+    </div>
+    <div style="text-align:right;min-width:64px">
+      <div style="font-size:28px;font-weight:900;color:{ci_color};line-height:1">{ci}%</div>
+      <div style="font-size:8px;color:{ci_color};max-width:120px;text-align:right;margin-top:2px">
+        {ci_label.split(' — ')[0]}</div>
+    </div>
+  </div>
+  <div style="display:flex;gap:4px;margin-bottom:10px">{dims_html}</div>
+  <div style="font-size:8px;color:rgba(255,255,255,0.25);margin-bottom:6px">{ci_label}</div>
+  <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:7px">
+    <div style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.30);margin-bottom:4px">
+      PARA ELEVAR AL DECISOR</div>
+    {recoms_html}
+  </div>
+</div>""", unsafe_allow_html=True)

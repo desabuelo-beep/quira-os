@@ -153,13 +153,29 @@ def detect_and_render(query: str) -> bool:
     hit  = False
 
     # ── Sprint 4: Simulación paramétrica (tiene prioridad sobre charts) ────────
-    from sentinel.simulate_policy import detect_simulation_intent, simulate_policy
-    from sentinel.ui_components   import simulation_card, evidence_card, nav_card
+    from sentinel.simulate_policy  import detect_simulation_intent, simulate_policy
+    from sentinel.ui_components    import simulation_card, evidence_card, nav_card
+    from sentinel.legal_router     import find_legal_refs
+    from sentinel.coherencia_engine import evaluate as _coh_eval
+    from sentinel.ui_components    import coherencia_card
     sim_intent = detect_simulation_intent(query)
     if sim_intent:
         result = simulate_policy(**sim_intent)
         if result:
             simulation_card(result, query_hash=hash(query) & 0xFFFF)
+
+            # Fase 3 — Coherencia Institucional automática tras proyección
+            _legal_refs = find_legal_refs(query)
+            _territory  = result.get("territorio")
+            _coh_result = _coh_eval(
+                query      = query,
+                data       = data,
+                sim_result = result,
+                legal_refs = _legal_refs,
+                territory  = _territory,
+            )
+            coherencia_card(_coh_result)
+
             evidence_card(
                 sources=[
                     f"CBST {result['cbst_version']} · {result['model_status']}",
