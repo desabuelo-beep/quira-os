@@ -1,6 +1,6 @@
 """
 SENTINEL · charts.py
-Motor de visualización determinístico — Sentinel v1.1.
+Motor de visualización determinístico — Sentinel v1.2.
 Detecta intención en la query del usuario y renderiza charts pre-construidos
 desde demo_data (sellados Q1-2026). No depende del LLM para los datos.
 Dylus Lab © 2026
@@ -29,10 +29,59 @@ _VIZ_TRIGGER = (
 
 _DARK = dict(
     paper_bgcolor="rgba(0,0,0,0)",
-    plot_bgcolor="rgba(255,255,255,0.02)",
-    font=dict(color="#E2E8F0", size=11),
-    margin=dict(t=58, b=44, l=10, r=10),
+    plot_bgcolor="rgba(0,212,255,0.015)",
+    font=dict(family="'Segoe UI', system-ui, -apple-system, sans-serif",
+              color="#E2E8F0", size=12),
+    margin=dict(t=72, b=52, l=14, r=14),
 )
+
+# AVEP threshold bands (y_min, y_max, fill, label, label_color)
+_AVEP_BANDS = [
+    (90, 100, "rgba(56,161,105,0.06)",  "Excelencia ≥90",   "rgba(56,161,105,0.55)"),
+    (70,  90, "rgba(0,212,255,0.04)",   "Mandato ≥70",      "rgba(0,212,255,0.50)"),
+    (50,  70, "rgba(214,158,46,0.04)",  "Transición ≥50",   "rgba(214,158,46,0.50)"),
+    (30,  50, "rgba(230,126,34,0.04)",  "Ocurrencia ≥30",   "rgba(230,126,34,0.45)"),
+    ( 0,  30, "rgba(229,62,62,0.05)",   "Ruptura <30",      "rgba(229,62,62,0.50)"),
+]
+
+
+def _add_avep_bands(fig, x_count: int, y_max: float = 100.0) -> None:
+    """Añade bandas de zona AVEP como fondos rectangulares."""
+    for y0, y1, fill, label, lcolor in _AVEP_BANDS:
+        if y0 >= y_max:
+            continue
+        fig.add_shape(
+            type="rect",
+            x0=-0.5, x1=x_count - 0.5,
+            y0=y0, y1=min(y1, y_max),
+            fillcolor=fill, line_width=0, layer="below",
+        )
+        if y0 < y_max and y1 <= y_max:
+            fig.add_annotation(
+                x=x_count - 0.5, y=y1 - 1,
+                text=label, showarrow=False,
+                font=dict(size=8, color=lcolor),
+                xanchor="right", yanchor="top",
+            )
+
+
+def _glow_bar(colors: list[str]) -> dict:
+    """Marker dict con glow: borde fino del mismo color que la barra."""
+    return dict(
+        color=colors,
+        line=dict(color=colors, width=1.5),
+        opacity=0.92,
+    )
+
+
+def _source_annotation(fig) -> None:
+    fig.add_annotation(
+        text="Fuente: SIAP-ICPI Gold Master v4.1 · Q1-2026",
+        xref="paper", yref="paper",
+        x=1.0, y=-0.22, showarrow=False,
+        font=dict(size=9, color="rgba(255,255,255,0.30)"),
+        align="right",
+    )
 
 
 # ── API PÚBLICA ────────────────────────────────────────────────────────────────
@@ -246,23 +295,42 @@ def _chart_nbi(data: dict) -> None:
         "#E53E3E" if v >= 50 else "#F6AD55" if v >= 38 else "#38A169"
         for v in values
     ]
+    hover = [
+        f"<b>{p['nombre']}</b><br>"
+        f"NBI: <b>{p['nbi']:.1f}%</b><br>"
+        f"Estado: {p.get('estado','—')}<br>"
+        f"TPS: {p.get('tps',0):.1f}%<extra></extra>"
+        for p in parroquias
+    ]
 
     fig = go.Figure(go.Bar(
         x=labels, y=values,
-        marker_color=colors,
-        text=[f"{v}%" for v in values],
+        marker=_glow_bar(colors),
+        text=[f"<b>{v:.1f}%</b>" for v in values],
         textposition="outside",
-        textfont=dict(size=10, color="#E2E8F0"),
+        textfont=dict(size=11, color="#E2E8F0"),
+        hovertemplate=hover,
     ))
+
+    _add_avep_bands(fig, len(labels), y_max=75)
+
     fig.update_layout(
-        **_DARK, height=310,
+        **_DARK,
+        height=380,
+        bargap=0.28,
         title=dict(
             text="NBI por Parroquia · Necesidades Básicas Insatisfechas"
-                 "<br><sup>🔴 ≥50% crítico · 🟠 ≥38% alerta · 🟢 <38% · Q1-2026</sup>",
-            font=dict(size=13, color="#E2E8F0"),
+                 "<br><sup>🔴 ≥50% crítico · 🟠 ≥38% alerta · 🟢 <38% · Corte Q1-2026</sup>",
+            font=dict(size=14, color="#E2E8F0"),
+            x=0.01,
         ),
-        yaxis=dict(gridcolor="rgba(255,255,255,0.07)", zeroline=False, ticksuffix="%"),
-        xaxis=dict(gridcolor="rgba(255,255,255,0.07)"),
+        yaxis=dict(
+            gridcolor="rgba(255,255,255,0.05)",
+            zeroline=False,
+            ticksuffix="%",
+            range=[0, 78],
+        ),
+        xaxis=dict(gridcolor="rgba(0,0,0,0)"),
         showlegend=False,
     )
     _source_annotation(fig)
@@ -285,31 +353,63 @@ def _chart_inversion(data: dict) -> None:
         "#E53E3E" if v <= 60 else "#F6AD55" if v <= 90 else "#38A169"
         for v in values
     ]
+    hover = [
+        f"<b>{p['nombre']}</b><br>"
+        f"Inversión: <b>${p['per_capita']}/hab</b><br>"
+        f"Total Q1: ${p.get('inversion',0):,.0f}<br>"
+        f"Habitantes: {p.get('habitantes',0):,}<extra></extra>"
+        for p in parroquias
+    ]
+    avg = sum(values) / len(values)
 
     fig = go.Figure(go.Bar(
         x=labels, y=values,
-        marker_color=colors,
-        text=[f"${v}/hab" for v in values],
+        marker=_glow_bar(colors),
+        text=[f"<b>${v}/hab</b>" for v in values],
         textposition="outside",
-        textfont=dict(size=10, color="#E2E8F0"),
+        textfont=dict(size=11, color="#E2E8F0"),
+        hovertemplate=hover,
     ))
 
-    # Línea de equidad (promedio)
-    avg = sum(values) / len(values)
-    fig.add_hline(y=avg, line_dash="dash", line_color="rgba(255,255,255,0.35)",
-                  annotation_text=f"Promedio ${avg:.0f}/hab",
-                  annotation_font_color="rgba(255,255,255,0.5)",
-                  annotation_position="top right")
+    fig.add_hline(
+        y=avg,
+        line_dash="dash",
+        line_color="rgba(0,212,255,0.50)",
+        line_width=1.5,
+        annotation_text=f"Promedio cantonal ${avg:.0f}/hab",
+        annotation_font=dict(size=9, color="rgba(0,212,255,0.70)"),
+        annotation_position="top right",
+    )
+
+    # Zona inequidad crítica
+    fig.add_shape(
+        type="rect", x0=-0.5, x1=len(labels)-0.5, y0=0, y1=60,
+        fillcolor="rgba(229,62,62,0.06)", line_width=0, layer="below",
+    )
+    fig.add_annotation(
+        x=len(labels)-0.5, y=59,
+        text="Zona inequidad crítica ≤$60/hab",
+        showarrow=False,
+        font=dict(size=8, color="rgba(229,62,62,0.55)"),
+        xanchor="right", yanchor="top",
+    )
 
     fig.update_layout(
-        **_DARK, height=310,
+        **_DARK,
+        height=380,
+        bargap=0.28,
         title=dict(
             text="Inversión per Cápita por Parroquia · $/habitante"
                  "<br><sup>🔴 ≤$60 inequidad crítica · línea = promedio cantonal · Q1-2026</sup>",
-            font=dict(size=13, color="#E2E8F0"),
+            font=dict(size=14, color="#E2E8F0"),
+            x=0.01,
         ),
-        yaxis=dict(gridcolor="rgba(255,255,255,0.07)", zeroline=False, tickprefix="$"),
-        xaxis=dict(gridcolor="rgba(255,255,255,0.07)"),
+        yaxis=dict(
+            gridcolor="rgba(255,255,255,0.05)",
+            zeroline=False,
+            tickprefix="$",
+        ),
+        xaxis=dict(gridcolor="rgba(0,0,0,0)"),
         showlegend=False,
     )
     _source_annotation(fig)
@@ -332,23 +432,42 @@ def _chart_tps(data: dict) -> None:
         "#E53E3E" if v >= 60 else "#F6AD55" if v >= 35 else "#38A169"
         for v in values
     ]
+    hover = [
+        f"<b>{p['nombre']}</b><br>"
+        f"TPS: <b>{p['tps']:.1f}%</b><br>"
+        f"NBI: {p.get('nbi',0):.1f}%<br>"
+        f"Estado: {p.get('estado','—')}<extra></extra>"
+        for p in parroquias
+    ]
 
     fig = go.Figure(go.Bar(
         x=labels, y=values,
-        marker_color=colors,
-        text=[f"{v}%" for v in values],
+        marker=_glow_bar(colors),
+        text=[f"<b>{v:.1f}%</b>" for v in values],
         textposition="outside",
-        textfont=dict(size=10, color="#E2E8F0"),
+        textfont=dict(size=11, color="#E2E8F0"),
+        hovertemplate=hover,
     ))
+
+    _add_avep_bands(fig, len(labels), y_max=90)
+
     fig.update_layout(
-        **_DARK, height=310,
+        **_DARK,
+        height=380,
+        bargap=0.28,
         title=dict(
             text="TPS por Parroquia · Tasa de Pobreza por Servicios"
                  "<br><sup>🔴 ≥60% · 🟠 ≥35% · 🟢 <35% · Fuente INEC/PDOT Q1-2026</sup>",
-            font=dict(size=13, color="#E2E8F0"),
+            font=dict(size=14, color="#E2E8F0"),
+            x=0.01,
         ),
-        yaxis=dict(gridcolor="rgba(255,255,255,0.07)", zeroline=False, ticksuffix="%"),
-        xaxis=dict(gridcolor="rgba(255,255,255,0.07)"),
+        yaxis=dict(
+            gridcolor="rgba(255,255,255,0.05)",
+            zeroline=False,
+            ticksuffix="%",
+            range=[0, 92],
+        ),
+        xaxis=dict(gridcolor="rgba(0,0,0,0)"),
         showlegend=False,
     )
     _source_annotation(fig)
@@ -371,23 +490,55 @@ def _chart_agua(data: dict) -> None:
         "#E53E3E" if v < 30 else "#F6AD55" if v < 60 else "#38A169"
         for v in values
     ]
+    hover = [
+        f"<b>{p['nombre']}</b><br>"
+        f"Cobertura agua: <b>{p['agua']:.1f}%</b><br>"
+        f"NBI: {p.get('nbi',0):.1f}%<extra></extra>"
+        for p in parroquias
+    ]
 
     fig = go.Figure(go.Bar(
         x=labels, y=values,
-        marker_color=colors,
-        text=[f"{v}%" for v in values],
+        marker=_glow_bar(colors),
+        text=[f"<b>{v:.1f}%</b>" for v in values],
         textposition="outside",
-        textfont=dict(size=10, color="#E2E8F0"),
+        textfont=dict(size=11, color="#E2E8F0"),
+        hovertemplate=hover,
     ))
+
+    # Meta PDOT como línea
+    fig.add_hline(
+        y=42.38,
+        line_dash="dot",
+        line_color="rgba(56,161,105,0.55)",
+        line_width=2,
+        annotation_text="Meta PDOT 2027: 42.38%",
+        annotation_font=dict(size=9, color="rgba(56,161,105,0.75)"),
+        annotation_position="top right",
+    )
+    # Zona crítica < 30%
+    fig.add_shape(
+        type="rect", x0=-0.5, x1=len(labels)-0.5, y0=0, y1=30,
+        fillcolor="rgba(229,62,62,0.07)", line_width=0, layer="below",
+    )
+
     fig.update_layout(
-        **_DARK, height=310,
+        **_DARK,
+        height=380,
+        bargap=0.28,
         title=dict(
             text="Cobertura de Agua Potable por Parroquia"
-                 "<br><sup>🔴 <30% crítico · 🟠 <60% alerta · Meta PDOT 42.38% · Q1-2026</sup>",
-            font=dict(size=13, color="#E2E8F0"),
+                 "<br><sup>🔴 <30% crisis hídrica · 🟠 <60% alerta · Meta PDOT 42.38% · Q1-2026</sup>",
+            font=dict(size=14, color="#E2E8F0"),
+            x=0.01,
         ),
-        yaxis=dict(gridcolor="rgba(255,255,255,0.07)", zeroline=False, ticksuffix="%"),
-        xaxis=dict(gridcolor="rgba(255,255,255,0.07)"),
+        yaxis=dict(
+            gridcolor="rgba(255,255,255,0.05)",
+            zeroline=False,
+            ticksuffix="%",
+            range=[0, 115],
+        ),
+        xaxis=dict(gridcolor="rgba(0,0,0,0)"),
         showlegend=False,
     )
     _source_annotation(fig)
@@ -411,38 +562,57 @@ def _chart_indices(data: dict) -> None:
     keys   = [k for k, _ in items]
     values = [v["valor"] for _, v in items]
     colors = [v.get("color", "#00D4FF") for _, v in items]
+    hover  = [
+        f"<b>{v['nombre']}</b><br>"
+        f"Score: <b>{v['valor']:.1f}</b><br>"
+        f"AVEP: {v.get('avep','—')}<br>"
+        f"{v.get('nota','')}<extra></extra>"
+        for _, v in items
+    ]
 
     fig = go.Figure(go.Bar(
         x=labels, y=values,
-        marker_color=colors,
-        text=[f"{v:.1f}" for v in values],
+        marker=_glow_bar(colors),
+        text=[f"<b>{v:.1f}</b>" for v in values],
         textposition="outside",
-        textfont=dict(size=10, color="#E2E8F0"),
+        textfont=dict(size=11, color="#E2E8F0"),
         customdata=keys,
+        hovertemplate=hover,
     ))
 
-    # Líneas de referencia AVEP
+    _add_avep_bands(fig, len(labels), y_max=100)
+
+    # Líneas de referencia AVEP sobre las bandas
     for y, label, color in [
-        (90, "Excelencia 90", "rgba(56,161,105,0.4)"),
-        (70, "Mandato 70",   "rgba(0,212,255,0.4)"),
-        (50, "Transición 50","rgba(214,158,46,0.4)"),
-        (30, "Ocurrencia 30","rgba(229,62,62,0.4)"),
+        (70, "Mandato 70",    "rgba(0,212,255,0.55)"),
+        (30, "Ruptura 30",    "rgba(229,62,62,0.55)"),
     ]:
-        fig.add_hline(y=y, line_dash="dot", line_color=color,
-                      annotation_text=label,
-                      annotation_font=dict(size=9, color=color),
-                      annotation_position="top right")
+        fig.add_hline(
+            y=y,
+            line_dash="dot",
+            line_color=color,
+            line_width=1,
+            annotation_text=label,
+            annotation_font=dict(size=9, color=color),
+            annotation_position="top left",
+        )
 
     fig.update_layout(
         **_DARK,
-        height=360,
+        height=400,
+        bargap=0.30,
         title=dict(
             text="Índices Complementarios QUIRA OS · AVEP Q1-2026"
-                 "<br><sup>Barras de referencia AVEP: Excelencia·Mandato·Transición·Ocurrencia</sup>",
-            font=dict(size=13, color="#E2E8F0"),
+                 "<br><sup>Zonas de color = bandas AVEP · pasa el cursor para detalles</sup>",
+            font=dict(size=14, color="#E2E8F0"),
+            x=0.01,
         ),
-        yaxis=dict(gridcolor="rgba(255,255,255,0.07)", zeroline=False, range=[0, 105]),
-        xaxis=dict(gridcolor="rgba(255,255,255,0.07)", tickangle=-30),
+        yaxis=dict(
+            gridcolor="rgba(255,255,255,0.05)",
+            zeroline=False,
+            range=[0, 108],
+        ),
+        xaxis=dict(gridcolor="rgba(0,0,0,0)", tickangle=-30),
         showlegend=False,
     )
     _source_annotation(fig)
@@ -458,65 +628,83 @@ def _chart_icgit_trend(data: dict) -> None:
     icgit = data.get("icgit", {})
     hist  = icgit.get("historico", {})
 
-    labels = ["2023", "2024", "2025", "Q1-2026", "Proj. 2026"]
+    labels = ["2023", "2024", "2025", "Q1-2026", "Proy. 2026"]
     values = [
-        hist.get("2023",     57.36),
-        hist.get("2024",     67.12),
-        hist.get("2025",     69.93),
-        hist.get("2026_q1",  53.56),
-        hist.get("2026_proj",65.77),
+        hist.get("2023",      57.36),
+        hist.get("2024",      67.12),
+        hist.get("2025",      69.93),
+        hist.get("2026_q1",   53.56),
+        hist.get("2026_proj", 65.77),
     ]
-    colors = ["#00D4FF", "#00D4FF", "#00D4FF", "#F6AD55", "rgba(0,212,255,0.4)"]
+    real_colors = ["#00D4FF", "#00D4FF", "#00D4FF", "#F6AD55"]
 
     fig = go.Figure()
-    # Línea principal
+
+    # Zona AVEP Mandato (70-90) — fondo
+    fig.add_shape(
+        type="rect", x0=-0.5, x1=4.5, y0=70, y1=80,
+        fillcolor="rgba(0,212,255,0.07)", line_width=0, layer="below",
+    )
+    fig.add_annotation(
+        x=4.5, y=79, text="Gestión por Mandato ≥70",
+        showarrow=False,
+        font=dict(size=8, color="rgba(0,212,255,0.55)"),
+        xanchor="right",
+    )
+
+    # Línea real
     fig.add_trace(go.Scatter(
         x=labels[:4], y=values[:4],
         mode="lines+markers+text",
-        line=dict(color="#00D4FF", width=2.5),
-        marker=dict(size=9, color=colors[:4]),
-        text=[f"{v:.2f}" for v in values[:4]],
+        line=dict(color="#00D4FF", width=3),
+        marker=dict(size=10, color=real_colors, line=dict(color="#E2E8F0", width=1.5)),
+        text=[f"<b>{v:.2f}</b>" for v in values[:4]],
         textposition="top center",
-        textfont=dict(size=11, color="#E2E8F0"),
+        textfont=dict(size=12, color="#E2E8F0"),
         name="Real",
+        hovertemplate="<b>%{x}</b><br>ICGI-T: <b>%{y:.2f}</b><extra>Real</extra>",
     ))
-    # Proyección punteada
+
+    # Línea proyección
     fig.add_trace(go.Scatter(
-        x=["Q1-2026", "Proj. 2026"], y=[values[3], values[4]],
+        x=["Q1-2026", "Proy. 2026"], y=[values[3], values[4]],
         mode="lines+markers+text",
-        line=dict(color="#F6AD55", width=2, dash="dash"),
-        marker=dict(size=8, color="#F6AD55"),
-        text=["", f"{values[4]:.2f}"],
+        line=dict(color="#F6AD55", width=2.5, dash="dash"),
+        marker=dict(size=9, color="#F6AD55", line=dict(color="#E2E8F0", width=1)),
+        text=["", f"<b>{values[4]:.2f}</b>"],
         textposition="top center",
-        textfont=dict(size=11, color="#F6AD55"),
+        textfont=dict(size=12, color="#F6AD55"),
         name="Proyección",
+        hovertemplate="<b>%{x}</b><br>ICGI-T proj.: <b>%{y:.2f}</b><extra>Proyección</extra>",
     ))
+
     # Meta Mandato
-    fig.add_hline(y=70, line_dash="dot", line_color="rgba(56,161,105,0.5)",
-                  annotation_text="Meta Mandato 70.0",
-                  annotation_font=dict(size=9, color="rgba(56,161,105,0.7)"),
-                  annotation_position="top left")
+    fig.add_hline(
+        y=70,
+        line_dash="dot",
+        line_color="rgba(56,161,105,0.55)",
+        line_width=1.5,
+        annotation_text="Meta Mandato PDOT 70.0",
+        annotation_font=dict(size=9, color="rgba(56,161,105,0.75)"),
+        annotation_position="top left",
+    )
 
     fig.update_layout(
-        **_DARK, height=310,
+        **_DARK,
+        height=380,
         title=dict(
             text="Evolución ICGI-T · 2023 → Q1-2026 → Proyección 2026"
-                 "<br><sup>🔵 Real · 🟠 Proyección · --- Meta Mandato 70.0</sup>",
-            font=dict(size=13, color="#E2E8F0"),
+                 "<br><sup>🔵 Real · 🟠 Proyección · banda azul = Gestión por Mandato</sup>",
+            font=dict(size=14, color="#E2E8F0"),
+            x=0.01,
         ),
-        yaxis=dict(gridcolor="rgba(255,255,255,0.07)", zeroline=False, range=[40, 80]),
-        xaxis=dict(gridcolor="rgba(255,255,255,0.07)"),
+        yaxis=dict(
+            gridcolor="rgba(255,255,255,0.05)",
+            zeroline=False,
+            range=[40, 82],
+        ),
+        xaxis=dict(gridcolor="rgba(0,0,0,0)"),
         showlegend=False,
     )
     _source_annotation(fig)
     st.plotly_chart(fig, use_container_width=True)
-
-
-def _source_annotation(fig) -> None:
-    fig.add_annotation(
-        text="Fuente: SIAP-ICPI Gold Master v4.1 · Q1-2026",
-        xref="paper", yref="paper",
-        x=1.0, y=-0.20, showarrow=False,
-        font=dict(size=9, color="rgba(255,255,255,0.28)"),
-        align="right",
-    )

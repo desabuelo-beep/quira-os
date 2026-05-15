@@ -314,13 +314,89 @@ def render() -> None:
   🤖 Analizar todo el Holding con SENTINEL
 </div>"""
 
+    # ── FICHA POR ENTIDAD · H71 Gold Master ──────────────────────────────────
+    def _ep_card(emoji, nombre, cod, icgi, icgi_color, icgi_c,
+                 impacto_pct, ejecutado_k, tiene_pei, pei_nota, avep_label) -> str:
+        pei_color = "green" if tiene_pei else "red"
+        pei_icon  = "✅" if tiene_pei else "❌"
+        bar_w     = min(icgi, 100)
+        bar_clr   = icgi_color
+        return (
+            f'<div style="background:var(--navy-card);border-radius:14px;padding:16px 18px;'
+            f'border:1px solid rgba({icgi_c},.22);position:relative;overflow:hidden">'
+            f'<div style="position:absolute;top:0;left:0;width:100%;height:3px;'
+            f'background:linear-gradient(90deg,{icgi_color},{icgi_color}44)"></div>'
+            f'<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">'
+            f'<div>'
+            f'<div style="font-size:13px;font-weight:800;color:var(--white)">{emoji} {nombre}</div>'
+            f'<div style="font-size:10px;color:var(--muted);margin-top:2px">{cod}</div>'
+            f'</div>'
+            f'<div style="text-align:right">'
+            f'<div style="font-size:28px;font-weight:900;font-family:var(--mono);'
+            f'color:{icgi_color};line-height:1">{icgi:.1f}%</div>'
+            f'<div style="font-size:9px;color:var(--muted);margin-top:1px">ICGI-T</div>'
+            f'</div>'
+            f'</div>'
+            f'<div style="height:5px;background:rgba(255,255,255,.07);border-radius:3px;margin-bottom:12px">'
+            f'<div style="height:100%;width:{bar_w:.1f}%;background:{bar_clr};border-radius:3px;opacity:.85"></div>'
+            f'</div>'
+            f'<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">'
+            f'<div style="text-align:center;background:rgba(255,255,255,.04);border-radius:8px;padding:8px 4px">'
+            f'<div style="font-size:15px;font-weight:800;color:var(--cyan)">{impacto_pct}%</div>'
+            f'<div style="font-size:9px;color:var(--muted);margin-top:2px">Impacto Territorial</div>'
+            f'</div>'
+            f'<div style="text-align:center;background:rgba(255,255,255,.04);border-radius:8px;padding:8px 4px">'
+            f'<div style="font-size:15px;font-weight:800;color:var(--amber)">${ejecutado_k}K</div>'
+            f'<div style="font-size:9px;color:var(--muted);margin-top:2px">Ejecutado Q1</div>'
+            f'</div>'
+            f'<div style="text-align:center;background:rgba(255,255,255,.04);border-radius:8px;padding:8px 4px">'
+            f'<div style="font-size:15px;font-weight:800;color:var(--{pei_color})">{pei_icon}</div>'
+            f'<div style="font-size:9px;color:var(--muted);margin-top:2px">PEI {pei_nota}</div>'
+            f'</div>'
+            f'</div>'
+            f'<div style="margin-top:10px;font-size:10px;color:var(--{pei_color});font-weight:700">'
+            f'AVEP: {avep_label}'
+            f'</div>'
+            f'</div>'
+        )
+
+    ficha = (
+        '<div style="margin-top:18px">'
+        '<div style="font-size:10px;font-weight:700;color:var(--cyan);text-transform:uppercase;'
+        'letter-spacing:.12em;margin-bottom:12px">'
+        '📊 Radar por Entidad · H71 Gold Master · Q1-2026</div>'
+        '<div class="grid-2" style="gap:12px">'
+        + _ep_card("🚒", "Cuerpo de Bomberos", "CB-01 · Emergencias · COESCOP",
+                   82.7, "#38A169", "56,161,105",
+                   78, 178, True, "vigente", "✅ Gestión por Mandato")
+        + _ep_card("🤝", "Patronato Municipal", "AD-01 · Desarrollo Social · LOSEP",
+                   74.1, "#38A169", "56,161,105",
+                   92, 312, True, "vigente", "✅ Gestión por Mandato")
+        + _ep_card("🗑️", "EP Aseo Municipal", "EP-01 · Residuos Sólidos · LOEP",
+                   58.4, "#D69E2E", "214,158,46",
+                   85, 245, True, "vigente", "⚡ Transición Crítica — arrastra nodo")
+        + _ep_card("🏛️", "GAD Central", "ALC-01 · 12 Direcciones · COOTAD",
+                   61.2, "#D69E2E", "214,158,46",
+                   100, 5147, False, "N/A — gobierno",  "⚡ Transición Crítica")
+        + '</div>'
+        '<div style="margin-top:10px;font-size:10px;color:var(--muted);line-height:1.5;'
+        'padding:8px 12px;background:rgba(255,255,255,.03);border-radius:8px">'
+        '💡 <strong style="color:var(--white)">Lectura HPT-M:</strong> '
+        'Impacto Territorial = % de metas PDOT con trazabilidad en territorio · '
+        'Ejecutado Q1 = devengado eSIGEF corte 2026-04-30 · '
+        'PEI = Plan Estratégico Institucional activo · '
+        'Fuente: H71_EP_ADSCRITAS · H90_PRESUPUESTO_CONSOLIDADO'
+        '</div>'
+        '</div>'
+    )
+
     # ── TECH NOTE ─────────────────────────────────────────────────────────────
     tech = ""
     if show_tech:
         tech = """
 <div style="margin-top:16px;font-size:9px;color:rgba(255,255,255,.2);
             border-top:1px solid rgba(255,255,255,.04);padding-top:8px">
-  🔧 Fuente: SIAP-ICPI H71 · H71b · HPT-M canónico · Corte Q1-2026
+  🔧 Fuente: SIAP-ICPI H71 · H71b · H90 · HPT-M canónico · Corte Q1-2026
 </div>"""
 
     # ── ASSEMBLE & RENDER ─────────────────────────────────────────────────────
@@ -328,9 +404,9 @@ def render() -> None:
         hdr + doctrina + grid4
         + sec_hdr + principio
         + bomberos + patronato + ep_aseo
-        + resumen + causalidad + tech
+        + resumen + causalidad + ficha + tech
     )
-    render_page(html, show_tech=show_tech, height=2000)
+    render_page(html, show_tech=show_tech, height=2400)
 
     # Native Streamlit CTA after iframe
     c1, c2 = st.columns(2, gap="small")
