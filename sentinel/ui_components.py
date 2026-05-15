@@ -1,7 +1,7 @@
 """
 SENTINEL · ui_components.py
-5 componentes de UI generativa — Sentinel v2 / Opción C.
-Contexto accionable post-chart: Alert · Nav · Evidence · KPI Mini · Scenario.
+Componentes de UI generativa — Sentinel v2 / Sprint 1-6.
+Alert · Nav · Evidence · KPI Mini · Scenario · Simulation · Trust · Legal · QUADRUM.
 Doctrina: Sentinel genera intención → Streamlit renderiza experiencia institucional.
 Dylus Lab © 2026
 """
@@ -315,3 +315,153 @@ def simulation_card(result: dict, query_hash: int = 0) -> None:
                      use_container_width=True):
             st.session_state["page"] = "cadena"
             st.rerun()
+
+
+# ── 7. TRUST BADGE (Sprint 5) ─────────────────────────────────────────────────
+
+def trust_badge(trust_result: dict, legal_refs: list | None = None) -> None:
+    """
+    Badge compacto de Governance Confidence Index — aparece en cada respuesta.
+    trust_result: dict de trust_engine.calculate_trust()
+    legal_refs:   lista de chunks de legal_router.find_legal_refs()
+    """
+    score  = trust_result.get("score", 0)
+    label  = trust_result.get("label", "")
+    desg   = trust_result.get("desglose", {})
+    nota   = trust_result.get("nota", "")
+    from sentinel.trust_engine import trust_label_color
+    color  = trust_label_color(score)
+
+    desg_html = " · ".join(
+        f'<span style="color:rgba(255,255,255,0.5)">{k}</span> '
+        f'<span style="color:{color};font-weight:600">{v}%</span>'
+        for k, v in desg.items()
+    )
+
+    legal_html = ""
+    if legal_refs:
+        law_labels = {"COOTAD": "COOTAD", "COPLAFIP": "COPLAFIP",
+                      "COOTAD_2026": "COOTAD 2026"}
+        citas = " · ".join(
+            f"{law_labels.get(r['law'], r['law'])} {r['article']}"
+            for r in legal_refs[:2]
+        )
+        legal_html = (
+            f'<div style="font-size:9px;color:#38A169;margin-top:4px">'
+            f'⚖ Sustento normativo: {citas}</div>'
+        )
+
+    st.markdown(f"""
+<div style="{_CARD_BASE}background:rgba(0,0,0,0.2);border:1px solid rgba(255,255,255,0.08);
+            display:flex;justify-content:space-between;align-items:center;padding:8px 14px">
+  <div>
+    <span style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.35);
+                 letter-spacing:0.07em;text-transform:uppercase">
+      🛡 CONFIANZA INSTITUCIONAL</span>
+    <div style="font-size:9px;margin-top:3px">{desg_html}</div>
+    {legal_html}
+    <div style="font-size:8px;color:rgba(255,255,255,0.22);margin-top:3px">{nota}</div>
+  </div>
+  <div style="text-align:right;min-width:56px;padding-left:12px">
+    <div style="font-size:22px;font-weight:700;color:{color}">{score}%</div>
+    <div style="font-size:9px;color:{color}">{label}</div>
+  </div>
+</div>""", unsafe_allow_html=True)
+
+
+# ── 8. LEGAL CARD (Sprint Legal) ──────────────────────────────────────────────
+
+def legal_card(refs: list[dict]) -> None:
+    """
+    Tarjeta de referencias normativas — muestra artículos relevantes de COOTAD/COPLAFIP.
+    refs: lista de chunks de legal_router.find_legal_refs()
+    """
+    if not refs:
+        return
+
+    law_labels = {
+        "COOTAD":     ("COOTAD",       "#00D4FF"),
+        "COPLAFIP":   ("COPLAFIP",     "#7C5CFC"),
+        "COOTAD_2026":("COOTAD 2026",  "#38A169"),
+    }
+
+    rows_html = ""
+    for r in refs:
+        label, color = law_labels.get(r["law"], (r["law"], "#E2E8F0"))
+        txt = r["text"][:220] + "…" if len(r["text"]) > 220 else r["text"]
+        rows_html += (
+            f'<div style="border-left:3px solid {color};padding:6px 10px;margin:5px 0;'
+            f'background:rgba(255,255,255,0.03);border-radius:0 6px 6px 0">'
+            f'<div style="font-size:9px;font-weight:700;color:{color}">'
+            f'{label} {r["article"]} — {r["topic"]}</div>'
+            f'<div style="font-size:10px;color:rgba(255,255,255,0.6);margin-top:3px;line-height:1.4">'
+            f'{txt}</div></div>'
+        )
+
+    st.markdown(f"""
+<div style="{_CARD_BASE}background:rgba(0,0,0,0.15);border:1px solid rgba(0,212,255,0.12)">
+  <div style="font-size:10px;font-weight:700;color:rgba(0,212,255,0.7);
+              letter-spacing:0.07em;text-transform:uppercase;margin-bottom:6px">
+    ⚖&nbsp;MARCO NORMATIVO APLICABLE</div>
+  {rows_html}
+</div>""", unsafe_allow_html=True)
+
+
+# ── 9. QUADRUM CARD (Sprint 6) ────────────────────────────────────────────────
+
+def quadrum_card(quadrum_result: dict) -> None:
+    """
+    Tarjeta QUADRUM — evaluación de coherencia institucional entre las 4 capas.
+    quadrum_result: dict de quadrum_engine.evaluate()
+    """
+    coherencia = quadrum_result.get("coherencia", 0)
+    coh_label  = quadrum_result.get("coherencia_label", "")
+    capas      = quadrum_result.get("capas", [])
+    recoms     = quadrum_result.get("recomendaciones", [])
+    criticos   = quadrum_result.get("criticos", 0)
+
+    coh_color = (
+        "#38A169" if coherencia >= 80 else
+        "#D69E2E" if coherencia >= 65 else
+        "#E53E3E"
+    )
+
+    estado_color = {"OK": "#38A169", "ALERTA": "#D69E2E",
+                    "CRÍTICO": "#E53E3E", "PENDIENTE": "#7C5CFC"}
+
+    capas_html = ""
+    for c in capas:
+        ec = estado_color.get(c["estado"], "#E2E8F0")
+        capas_html += (
+            f'<div style="flex:1;text-align:center;padding:6px 4px;'
+            f'background:rgba(255,255,255,0.03);border-radius:6px;margin:2px">'
+            f'<div style="font-size:8px;font-weight:700;color:{ec};text-transform:uppercase">'
+            f'{c["capa"]}</div>'
+            f'<div style="font-size:16px;font-weight:700;color:{ec}">{c["score"]}</div>'
+            f'<div style="font-size:8px;color:rgba(255,255,255,0.4)">{c["pregunta"][:22]}</div>'
+            f'</div>'
+        )
+
+    recoms_html = "".join(
+        f'<div style="font-size:10px;color:rgba(255,255,255,0.6);padding:2px 0">{r}</div>'
+        for r in recoms
+    )
+
+    st.markdown(f"""
+<div style="{_CARD_BASE}background:rgba(124,92,252,0.06);border:1px solid rgba(124,92,252,0.20)">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+    <div style="font-size:10px;font-weight:700;color:rgba(124,92,252,0.9);
+                letter-spacing:0.07em;text-transform:uppercase">
+      ◆ QUADRUM · Coherencia Institucional</div>
+    <div style="text-align:right">
+      <div style="font-size:20px;font-weight:700;color:{coh_color}">{coherencia}%</div>
+      <div style="font-size:8px;color:{coh_color}">{coh_label}</div>
+    </div>
+  </div>
+  <div style="display:flex;gap:4px;margin-bottom:8px">{capas_html}</div>
+  <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:7px;margin-top:4px">
+    <div style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.35);margin-bottom:4px">
+      RECOMENDACIONES EJECUTIVAS</div>
+    {recoms_html}
+  </div>
+</div>""", unsafe_allow_html=True)

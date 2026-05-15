@@ -11,11 +11,14 @@ import os
 from data.loader import load_all
 from data.pdot_context import build_pdot_context, pdot_context_stats
 from utils.session import get_rol, is_tecnico
-from sentinel.prompts   import build_system_prompt
-from sentinel.policies  import evaluar_seguridad, sugerir_pantallas
-from sentinel.audit     import log_interaction, get_audit_stats
-from sentinel.renderer  import parse_response, render_visual
-from sentinel           import charts as _charts
+from sentinel.prompts       import build_system_prompt
+from sentinel.policies      import evaluar_seguridad, sugerir_pantallas
+from sentinel.audit         import log_interaction, get_audit_stats
+from sentinel.renderer      import parse_response, render_visual
+from sentinel               import charts as _charts
+from sentinel.legal_router  import build_legal_prompt_block, find_legal_refs, has_legal_refs
+from sentinel.trust_engine  import calculate_trust, context_from_query
+from sentinel.ui_components import trust_badge, legal_card
 
 
 # ── COMPONENTE PRINCIPAL ──────────────────────────────────────────────────────
@@ -201,9 +204,34 @@ def _run_sentinel(
     # ── Detección temprana de visualización (omite llamada al LLM) ────────────
     template_text = _charts.get_template_text(pregunta)
     if template_text:
+        # Detectar tipo de chart para seleccionar perfil de trust
+        from sentinel.simulate_policy import detect_simulation_intent
+        _sim_intent  = detect_simulation_intent(pregunta)
+        _chart_hit   = ""
+        _q_norm      = pregunta.lower()
+        if "nbi"        in _q_norm: _chart_hit = "nbi"
+        elif "agua"     in _q_norm: _chart_hit = "agua"
+        elif "inversion" in _q_norm or "inversión" in _q_norm: _chart_hit = "inversion"
+        elif "icgi"     in _q_norm or "icgit"    in _q_norm: _chart_hit = "icgit"
+        elif "indices"  in _q_norm or "índices"  in _q_norm: _chart_hit = "indices"
+
+        _trust_ctx   = context_from_query(
+            pregunta,
+            chart_hit = _chart_hit,
+            sim_policy= _sim_intent["policy_type"] if _sim_intent else "",
+        )
+        _legal_refs  = find_legal_refs(pregunta)
+        _trust_res   = calculate_trust(
+            _trust_ctx,
+            legal_boost=bool(_legal_refs),
+        )
+
         with st.chat_message("assistant", avatar="🔮"):
             st.markdown(template_text)
             _charts.detect_and_render(pregunta)
+            trust_badge(_trust_res, _legal_refs)
+            if _legal_refs:
+                legal_card(_legal_refs)
         st.session_state["sentinel_messages"].append({
             "role":    "assistant",
             "content": template_text,
@@ -226,10 +254,14 @@ def _run_sentinel(
 
                 # Sprint 3: inyectar contexto conversacional activo en el prompt
                 from sentinel import state_memory as _mem
-                ctx_block        = _mem.build_context_prompt()
-                effective_prompt = (
-                    system_prompt + "\n\n" + ctx_block if ctx_block else system_prompt
-                )
+                ctx_block   = _mem.build_context_prompt()
+                # Sprint Legal: inyectar marco normativo cuando la query toca leyes
+                legal_block = build_legal_prompt_block(pregunta)
+                effective_prompt = system_prompt
+                if ctx_block:
+                    effective_prompt += "\n\n" + ctx_block
+                if legal_block:
+                    effective_prompt += "\n\n" + legal_block
 
                 groq_msgs = [{"role": "system", "content": effective_prompt}]
                 for msg in recent:
@@ -306,6 +338,16 @@ def _run_sentinel(
 
                 # Sprint 3: actualizar memoria conversacional tras respuesta LLM
                 _mem.update_state(pregunta)
+
+                # Sprint 5/Legal: trust badge + marco normativo bajo la respuesta LLM
+                _legal_refs_llm = find_legal_refs(pregunta)
+                _trust_res_llm  = calculate_trust(
+                    context_from_query(pregunta),
+                    legal_boost=bool(_legal_refs_llm),
+                )
+                trust_badge(_trust_res_llm, _legal_refs_llm)
+                if _legal_refs_llm:
+                    legal_card(_legal_refs_llm)
 
                 # ── Audit log ─────────────────────────────────────────────────
                 log_interaction(
