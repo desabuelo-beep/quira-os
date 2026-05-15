@@ -310,7 +310,7 @@ def render() -> None:
 
     html = hdr + resumen_html + ife_html + metas_list
 
-    render_page(html, show_tech=show_tech, height=1300)
+    render_page(html, show_tech=show_tech, height=2500)
 
     # ── CTAs Streamlit ────────────────────────────────────────────────────────
     st.markdown("---")

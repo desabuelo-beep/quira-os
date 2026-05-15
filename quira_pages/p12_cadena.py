@@ -76,10 +76,11 @@ def _nodo(label: str, ok: bool, alert: bool = False) -> str:
         col = "var(--red)"
         ico = "❌"
     return (
-        f'<div style="background:{bg};border:2px solid {brd};border-radius:10px;'
-        f'padding:10px 14px;text-align:center;min-width:100px">'
-        f'<div style="font-size:16px">{ico}</div>'
-        f'<div style="font-size:11px;font-weight:700;color:{col};margin-top:3px">{label}</div>'
+        f'<div style="background:{bg};border:2px solid {brd};border-radius:12px;'
+        f'padding:14px 18px;text-align:center;min-width:120px">'
+        f'<div style="font-size:22px">{ico}</div>'
+        f'<div style="font-size:13px;font-weight:800;color:{col};margin-top:5px'
+        f';letter-spacing:.04em">{label}</div>'
         f'</div>'
     )
 
@@ -164,59 +165,59 @@ def render() -> None:
               overflow-x:auto;flex-wrap:nowrap">
 
     <div style="background:rgba(0,212,255,.1);border:2px solid rgba(0,212,255,.4);
-                border-radius:10px;padding:12px 16px;text-align:center;min-width:110px;flex-shrink:0">
-      <div style="font-size:20px">📋</div>
-      <div style="font-size:12px;font-weight:700;color:var(--cyan)">POA</div>
-      <div style="font-size:9px;color:var(--muted)">Plan Operativo</div>
-      <div style="font-size:9px;color:var(--green);margin-top:3px">48 metas activas</div>
+                border-radius:12px;padding:16px 22px;text-align:center;min-width:130px;flex-shrink:0">
+      <div style="font-size:26px">📋</div>
+      <div style="font-size:14px;font-weight:800;color:var(--cyan);margin-top:4px">POA</div>
+      <div style="font-size:10px;color:var(--muted)">Plan Operativo</div>
+      <div style="font-size:10px;color:var(--green);margin-top:4px">48 metas activas</div>
     </div>
 
-    <div style="font-size:20px;color:rgba(255,255,255,.3);font-weight:900;flex-shrink:0">→</div>
+    <div style="font-size:22px;color:rgba(255,255,255,.3);font-weight:900;flex-shrink:0">→</div>
 
     <div style="background:rgba(255,184,0,.1);border:2px solid rgba(255,77,109,.5);
-                border-radius:10px;padding:12px 16px;text-align:center;min-width:110px;
+                border-radius:12px;padding:16px 22px;text-align:center;min-width:130px;
                 position:relative;flex-shrink:0">
-      <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);
+      <div style="position:absolute;top:-11px;left:50%;transform:translateX(-50%);
                   background:var(--red);color:white;font-size:9px;font-weight:700;
-                  padding:2px 6px;border-radius:4px;white-space:nowrap">4 cortes SAT-0</div>
-      <div style="font-size:20px">📁</div>
-      <div style="font-size:12px;font-weight:700;color:var(--amber)">PAC</div>
-      <div style="font-size:9px;color:var(--muted)">Plan Anual Compras</div>
-      <div style="font-size:9px;color:var(--red);margin-top:3px">4 metas sin contrato</div>
+                  padding:2px 8px;border-radius:4px;white-space:nowrap">4 cortes SAT-0</div>
+      <div style="font-size:26px">📁</div>
+      <div style="font-size:14px;font-weight:800;color:var(--amber);margin-top:4px">PAC</div>
+      <div style="font-size:10px;color:var(--muted)">Plan Anual Compras</div>
+      <div style="font-size:10px;color:var(--red);margin-top:4px">4 metas sin contrato</div>
     </div>
 
-    <div style="font-size:20px;color:rgba(255,77,109,.5);font-weight:900;flex-shrink:0">✂</div>
+    <div style="font-size:22px;color:rgba(255,77,109,.5);font-weight:900;flex-shrink:0">✂</div>
 
     <div style="background:rgba(255,77,109,.08);border:2px solid rgba(255,77,109,.3);
-                border-radius:10px;padding:12px 16px;text-align:center;min-width:110px;
+                border-radius:12px;padding:16px 22px;text-align:center;min-width:130px;
                 position:relative;flex-shrink:0">
-      <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);
+      <div style="position:absolute;top:-11px;left:50%;transform:translateX(-50%);
                   background:var(--red);color:white;font-size:9px;font-weight:700;
-                  padding:2px 6px;border-radius:4px;white-space:nowrap">24 sin SHA-256</div>
-      <div style="font-size:20px">🔍</div>
-      <div style="font-size:12px;font-weight:700;color:var(--red)">SERCOP</div>
-      <div style="font-size:9px;color:var(--muted)">Contratación pública</div>
-      <div style="font-size:9px;color:var(--red);margin-top:3px">Gasto Ciego C4</div>
+                  padding:2px 8px;border-radius:4px;white-space:nowrap">24 sin SHA-256</div>
+      <div style="font-size:26px">🔍</div>
+      <div style="font-size:14px;font-weight:800;color:var(--red);margin-top:4px">SERCOP</div>
+      <div style="font-size:10px;color:var(--muted)">Contratación pública</div>
+      <div style="font-size:10px;color:var(--red);margin-top:4px">Gasto Ciego C4</div>
     </div>
 
-    <div style="font-size:20px;color:rgba(255,77,109,.5);font-weight:900;flex-shrink:0">✂</div>
+    <div style="font-size:22px;color:rgba(255,77,109,.5);font-weight:900;flex-shrink:0">✂</div>
 
     <div style="background:rgba(255,77,109,.06);border:2px solid rgba(255,77,109,.2);
-                border-radius:10px;padding:12px 16px;text-align:center;min-width:110px;flex-shrink:0">
-      <div style="font-size:20px">💳</div>
-      <div style="font-size:12px;font-weight:700;color:var(--red)">eSIGEF</div>
-      <div style="font-size:9px;color:var(--muted)">Devengado MF</div>
-      <div style="font-size:9px;color:var(--red);margin-top:3px">No alcanzado</div>
+                border-radius:12px;padding:16px 22px;text-align:center;min-width:130px;flex-shrink:0">
+      <div style="font-size:26px">💳</div>
+      <div style="font-size:14px;font-weight:800;color:var(--red);margin-top:4px">eSIGEF</div>
+      <div style="font-size:10px;color:var(--muted)">Devengado MF</div>
+      <div style="font-size:10px;color:var(--red);margin-top:4px">No alcanzado</div>
     </div>
 
-    <div style="font-size:20px;color:rgba(255,255,255,.3);font-weight:900;flex-shrink:0">→</div>
+    <div style="font-size:22px;color:rgba(255,255,255,.3);font-weight:900;flex-shrink:0">→</div>
 
     <div style="background:rgba(255,77,109,.06);border:2px solid rgba(255,77,109,.2);
-                border-radius:10px;padding:12px 16px;text-align:center;min-width:110px;flex-shrink:0">
-      <div style="font-size:20px">📊</div>
-      <div style="font-size:12px;font-weight:700;color:var(--red)">Contraloría</div>
-      <div style="font-size:9px;color:var(--muted)">Auditoría externa</div>
-      <div style="font-size:9px;color:var(--red);margin-top:3px">Riesgo observación</div>
+                border-radius:12px;padding:16px 22px;text-align:center;min-width:130px;flex-shrink:0">
+      <div style="font-size:26px">📊</div>
+      <div style="font-size:14px;font-weight:800;color:var(--red);margin-top:4px">Contraloría</div>
+      <div style="font-size:10px;color:var(--muted)">Auditoría externa</div>
+      <div style="font-size:10px;color:var(--red);margin-top:4px">Riesgo observación</div>
     </div>
 
   </div>
@@ -326,7 +327,7 @@ def render() -> None:
 
     html = hdr + flujo_html + metas_html + gc_html + protocolo_html
 
-    render_page(html, show_tech=show_tech, height=1500)
+    render_page(html, show_tech=show_tech, height=1900)
 
     st.markdown("---")
     c1, c2, c3 = st.columns(3)

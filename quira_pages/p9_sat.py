@@ -228,7 +228,7 @@ def render() -> None:
 
     html = hdr + resumen_html + alerta_ctrl + sat_cards + riesgo_html
 
-    render_page(html, show_tech=show_tech, height=1300)
+    render_page(html, show_tech=show_tech, height=2200)
 
     # ── CTAs Streamlit ────────────────────────────────────────────────────────
     st.markdown("---")

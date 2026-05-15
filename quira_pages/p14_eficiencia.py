@@ -168,7 +168,7 @@ def render() -> None:
     )
 
     render_page(hdr + resumen_html + ranking_html + plan_html,
-                show_tech=show_tech, height=1200)
+                show_tech=show_tech, height=1800)
 
     st.markdown("---")
     c1, c2, c3 = st.columns(3)

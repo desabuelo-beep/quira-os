@@ -280,7 +280,7 @@ PAGES = {
     # ── ESTRATÉGICO ───────────────────────────────────────────────────────────
     "ods":          {"label": "ODS Tracker",           "icon": "🌐", "render": p11},
     "cooperacion":  {"label": "Cooperación Intern.",   "icon": "💸", "render": p18},
-    "genero":       {"label": "Género y Equidad",      "icon": "💜", "render": p19},
+    "genero":       {"label": "Género y Ambiente",      "icon": "💜", "render": p19},
     # ── IA ────────────────────────────────────────────────────────────────────
     "sentinel":     {"label": "Sentinel · IA",         "icon": "🔮", "render": _p_sentinel},
 }

@@ -576,7 +576,7 @@ def render() -> None:
         '<span class="badge badge-red">💜 PSG Ruptura Sistémica</span>',
     )
 
-    tab1, tab2 = st.tabs(["💜  Género y Equidad", "🌿  Ambiente"])
+    tab1, tab2 = st.tabs(["💜  Género", "🌿  Ambiente"])
 
     # ══════════════════════════════════════════════════════════════════════
     # TAB 1: GÉNERO Y EQUIDAD
@@ -607,7 +607,8 @@ def render() -> None:
                 st.session_state["page"] = "cooperacion"
                 st.rerun()
         with c3:
-            if st.button("🌐 Ver ODS Tracker", use_container_width=True):
+            if st.button("🌐 Ver ODS Tracker", use_container_width=True,
+                         key="btn_ods_tab1"):
                 st.session_state["page"] = "ods"
                 st.rerun()
 
@@ -755,6 +756,7 @@ def render() -> None:
                 st.session_state["page"] = "gobernanza"
                 st.rerun()
         with c3:
-            if st.button("🌐 Ver ODS Tracker", use_container_width=True):
+            if st.button("🌐 Ver ODS Tracker", use_container_width=True,
+                         key="btn_ods_tab2"):
                 st.session_state["page"] = "ods"
                 st.rerun()

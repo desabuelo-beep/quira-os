@@ -153,16 +153,17 @@ def _ods_chip(o: dict) -> str:
     bg_alpha = ".12" if o["estado"] == "CRÍTICO" else ".06"
     return (
         f'<div style="background:rgba(255,255,255,{bg_alpha});'
-        f'border:2px solid {o["color"]}40;border-radius:10px;'
-        f'padding:10px 8px;text-align:center;position:relative">'
-        f'<div style="position:absolute;top:5px;right:6px;font-size:10px">{ico}</div>'
-        f'<div style="font-size:22px;font-weight:900;color:{o["color"]};'
+        f'border:2px solid {o["color"]}55;border-radius:12px;'
+        f'padding:14px 10px;text-align:center;position:relative">'
+        f'<div style="position:absolute;top:6px;right:8px;font-size:12px">{ico}</div>'
+        f'<div style="font-size:28px;font-weight:900;color:{o["color"]};'
         f'font-family:var(--mono);line-height:1">{o["num"]}</div>'
-        f'<div style="font-size:8px;color:rgba(255,255,255,.6);margin-top:3px;'
-        f'line-height:1.2">{o["nombre"]}</div>'
-        f'<div style="height:3px;background:{o["color"]};border-radius:2px;'
-        f'margin-top:6px;width:{o["score"]}%;margin-left:auto;margin-right:auto;'
-        f'opacity:.8"></div>'
+        f'<div style="font-size:10px;color:rgba(255,255,255,.7);margin-top:5px;'
+        f'line-height:1.3;font-weight:600">{o["nombre"]}</div>'
+        f'<div style="height:5px;background:rgba(255,255,255,.1);border-radius:3px;'
+        f'margin-top:8px;overflow:hidden">'
+        f'<div style="height:5px;width:{o["score"]}%;background:{o["color"]};'
+        f'border-radius:3px;opacity:.9"></div></div>'
         f'</div>'
     )
 
@@ -257,8 +258,8 @@ def render() -> None:
     grid_html = f"""
 <div class="card">
   <div class="card-title">🌐 17 ODS · AGENDA 2030 · Estado Montecristi Q1-2026</div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));
-              gap:8px;margin-bottom:12px">
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(115px,1fr));
+              gap:10px;margin-bottom:14px">
     {chips}
   </div>
   <div style="display:flex;gap:16px;flex-wrap:wrap;font-size:9px;color:var(--muted);

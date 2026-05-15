@@ -551,13 +551,13 @@ def render() -> None:
     ])
 
     with tab1:
-        render_page(_p17_html(show_tech), show_tech=show_tech, height=900)
+        render_page(_p17_html(show_tech), show_tech=show_tech, height=1600)
 
     with tab2:
-        render_page(_p18_html(show_tech), show_tech=show_tech, height=950)
+        render_page(_p18_html(show_tech), show_tech=show_tech, height=1600)
 
     with tab3:
-        render_page(_p19_html(show_tech), show_tech=show_tech, height=950)
+        render_page(_p19_html(show_tech), show_tech=show_tech, height=1600)
 
     if st.button("🔮 Consultar SENTINEL sobre operación técnica", use_container_width=True):
         st.session_state["page"] = "sentinel"

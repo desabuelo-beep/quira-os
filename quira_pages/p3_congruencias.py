@@ -13,23 +13,26 @@ def _cong_card(numero: str, nombre: str, subtitulo: str, score: float,
                color: str, fill_class: str, detalle: str, pregunta: str,
                sentinel_txt: str) -> str:
     return f"""
-<div class="card" style="border-left:3px solid var(--{color})">
-  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+<div class="card" style="border-left:4px solid var(--{color});padding:18px 20px">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">
     <div>
-      <div style="font-size:13px;font-weight:700">{numero} {nombre}</div>
-      <div style="font-size:11px;color:var(--muted)">{subtitulo}</div>
+      <div style="font-size:15px;font-weight:800">{numero} {nombre}</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:2px">{subtitulo}</div>
     </div>
-    <div style="font-size:24px;font-weight:800;font-family:var(--mono);
-                color:var(--{color})">{score:.1f}%</div>
+    <div style="font-size:30px;font-weight:900;font-family:var(--mono);
+                color:var(--{color});line-height:1">{score:.1f}%</div>
   </div>
-  <div class="prog-bar"><div class="prog-fill {fill_class}" style="width:{score:.1f}%"></div></div>
-  <div style="font-size:11px;color:var(--muted);margin-top:6px">{detalle}</div>
-  <div style="font-size:11px;color:var(--cyan);font-style:italic;margin-top:7px;
-              padding:5px 9px;border-left:2px solid rgba(14,165,233,.4);
-              background:rgba(14,165,233,.05);border-radius:0 6px 6px 0">{pregunta}</div>
-  <div style="display:inline-block;margin-top:12px;padding:8px 12px;
-              background:rgba(0,212,255,.06);border:1px solid rgba(0,212,255,.15);
-              border-radius:8px;font-size:12px;color:var(--cyan)">
+  <div class="prog-bar" style="height:8px;margin-bottom:10px">
+    <div class="prog-fill {fill_class}" style="width:{score:.1f}%;height:8px"></div>
+  </div>
+  <div style="font-size:12px;color:var(--muted);margin-top:6px;line-height:1.5">{detalle}</div>
+  <div style="font-size:12px;color:var(--cyan);font-style:italic;margin-top:10px;
+              padding:7px 12px;border-left:3px solid rgba(14,165,233,.4);
+              background:rgba(14,165,233,.06);border-radius:0 8px 8px 0;
+              line-height:1.4">{pregunta}</div>
+  <div style="display:inline-block;margin-top:14px;padding:9px 14px;
+              background:rgba(0,212,255,.07);border:1px solid rgba(0,212,255,.18);
+              border-radius:9px;font-size:13px;color:var(--cyan)">
     💬 {sentinel_txt}
   </div>
 </div>"""
@@ -37,11 +40,14 @@ def _cong_card(numero: str, nombre: str, subtitulo: str, score: float,
 
 def _nodo_card(nodo: str, nombre: str, entidades: str, score: float, color: str) -> str:
     return (
-        f'<div style="text-align:center;padding:12px;background:var(--navy-light);border-radius:8px">'
-        f'<div style="font-size:10px;font-weight:700;color:var(--muted);margin-bottom:4px">{nodo}</div>'
-        f'<div style="font-size:13px;font-weight:700">{nombre}</div>'
-        f'<div style="font-size:11px;color:var(--muted);margin:4px 0">{entidades}</div>'
-        f'<div style="font-size:20px;font-weight:800;color:var(--{color})">{score:.1f}%</div>'
+        f'<div style="text-align:center;padding:18px 14px;background:var(--navy-light);'
+        f'border-radius:12px;border:1px solid rgba(255,255,255,.06)">'
+        f'<div style="font-size:10px;font-weight:700;color:var(--muted);'
+        f'letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px">{nodo}</div>'
+        f'<div style="font-size:16px;font-weight:800;color:var(--white)">{nombre}</div>'
+        f'<div style="font-size:12px;color:var(--muted);margin:6px 0;line-height:1.3">{entidades}</div>'
+        f'<div style="font-size:28px;font-weight:900;color:var(--{color});'
+        f'font-family:var(--mono)">{score:.1f}%</div>'
         f'</div>'
     )
 
@@ -227,7 +233,7 @@ def render() -> None:
         hdr + ife_hero + pdot_frase
         + cong_label + cong_grid + arbol + tech
     )
-    render_page(html, show_tech=show_tech, height=1350)
+    render_page(html, show_tech=show_tech, height=1600)
 
     # Native CTA
     c1, c2 = st.columns(2, gap="small")
