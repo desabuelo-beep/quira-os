@@ -296,7 +296,7 @@ def render() -> None:
   </table>
   <div style="font-size:10px;color:var(--muted);margin-top:8px;padding-top:8px;
               border-top:1px solid rgba(255,255,255,.05)">
-    📌 TPS = Tasa de Pobreza por Sistema · Cabecera $113/hab · Isabel Muentes $40/hab · Brecha 2.8×
+    📌 TPS = Tasa de Pobreza por Servicios · Cabecera $217/hab · Isabel Muentes $40/hab · Brecha 5.4× · H99 Q1-2026
   </div>
 </div>"""
 

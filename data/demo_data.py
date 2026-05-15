@@ -2,23 +2,36 @@
 QUIRA OS v0.1 — Datos sellados Q1-2026
 Fuente: SIAP-ICPI_GOLD_MASTER_v4.1_QUIRA_20260514.xlsx · Corte Q1-2026
 Sincronizado con H73_OUTPUT_API (50 métricas) + H99_ENGINE_CORE (7 parroquias)
-Verificado con quira_extract.py v1.1 · Dylus Lab © 2026
+Auditado y corregido 2026-05-15 contra Gold Master v4.1 · Dylus Lab © 2026
 
-⚠ INTEGRIDAD:
-  - INDICES: todos los valores provienen de H73_OUTPUT_API (verificado quira_extract.py)
-  - PARROQUIAS nbi/agua/composite_need: derivados de H99_ENGINE_CORE
+⚠ INTEGRIDAD — FUENTES POR CAMPO:
+  - INDICES (IFE-A, ISP, PSG, IED, IGP, IOC, IET, ICODS): H73_OUTPUT_API · verificado
+  - ICGIT_Q1_2026 score/historico: H73_OUTPUT_API · verificado
+  - PARROQUIAS nbi: H99_ENGINE_CORE col NBI_Pct · INEC Censo 2022
+  - PARROQUIAS agua: H99_ENGINE_CORE col Cobertura_Agua_Pct · PDOT diagnóstico INEC 2022
+  - PARROQUIAS habitantes: H99_ENGINE_CORE col Población_2022 · INEC Censo 2022
+  - PARROQUIAS inversion/per_capita: H99_ENGINE_CORE col Inv_Total_Q1/Inv_PerCapita_Q1_2026
+    (eSIGEF corte 2026-04-30)
   - PARROQUIAS tps: Tasa de Pobreza por Servicios · fuente INEC/PDOT diagnóstico oficial
-    (no extraída por quira_extract.py · pendiente vinculación directa H99)
-  - PARROQUIAS inversion/per_capita/habitantes: POA-PAC GAD + INEC proyecciones
-  - PARROQUIAS participacion.estado/actas/fichas_pp2026: verificados en "INFORME PP 2026 GAD Montecristi.pdf"
-    (6 talleres ago-2025, 149 fichas, 7/7 parroquias con acta, ACTA N°007-2025-JLAC-JPC-GADMCM)
-  - PP_2024: "GAD Montecristi Informe Presupuesto Participativo 2024.pdf" (40 pp) · FY2024 · proceso online jul-2023
-    (presupuesto $6.1M, 7/7 parroquias, ACTA N°002-2023-JLAC-JPC-GADMCM)
-  - PP_2025: "GAD Montecristi Informe Presupuesto Participativo 2025.pdf" (124 pp) · FY2025 · talleres ago-2024
-    (137 fichas, 6 talleres, $5.7M priorización, ingresos $21.6M, ACTA N°005-2024-JLAC)
-  - PARROQUIAS participacion.presupuesto: sin asignación oficial per-parroquia en PDF → valor 0
-  - IGM-A,B,C,F en p19_genero: sin dato oficial → mostrados como 'Sin dato oficial'
-  - ODS5_TARGETS avance en p19_genero: sin medición oficial → mostrados como N/D
+    (campo separado de H99 · pendiente vinculación directa H99)
+  - PARROQUIAS participacion.estado/actas/fichas_pp2026: "INFORME PP 2026 GAD Montecristi.pdf"
+    (6 talleres ago-2025, 149 fichas, 7/7 parroquias, ACTA N°007-2025-JLAC-JPC-GADMCM)
+  - PP_2024: "GAD Montecristi Informe Presupuesto Participativo 2024.pdf" (40 pp)
+  - PP_2025: "GAD Montecristi Informe Presupuesto Participativo 2025.pdf" (124 pp)
+  - PARROQUIAS participacion.presupuesto: sin asignación oficial per-parroquia en PDF → 0
+  - IGM-A,B,C,F en p19_genero: sin dato oficial → 'Sin dato oficial'
+  - ODS5_TARGETS avance en p19_genero: sin medición oficial → N/D
+
+⚠ CORRECCIONES APLICADAS 2026-05-15 (auditoría vs Gold Master v4.1):
+  - Aníbal San Andrés: nbi 61.7→52.1%, agua 28.9→67.01%, hab 3100→5200, inv 190K→301.6K
+  - Colorado: nbi 58.4→58.7%, agua 34.7→38.82%, hab 2230→3800, inv 210K→121.6K, pc 94→32
+  - La Pila: nbi 52.8→55.9%, agua 51.2→50%, hab 4100→4600, inv 380K→239.2K, pc 93→52
+  - Eloy Alfaro: nbi 45.1→49.8%, agua 62.1→100%, hab 12800→6300, inv 980K→447.3K, pc 77→71
+  - Leónidas Plaza: nbi 41.3→54.3%, agua 68.4→100%, hab 8200→4100, inv 720K→196.8K, pc 88→48
+  - Montecristi: nbi 38.2→38.4%, agua 78.3→95%, hab 28400→39800, inv 3.2M→8.6M, pc 113→217
+  - Isabel Muentes: hab 3488→5700, inv 140K→228K (nbi/agua/pc sin cambio)
+  - ICODS: 87.50→91.42% (Excelencia Gobernanza · H20_ICODS Ref_2025)
+  - IET nota actualizada con per_cápita correcto ($40 vs $217 cabecera)
 """
 
 # ── ICGI-T GLOBAL ─────────────────────────────────────────────────────────────
@@ -27,19 +40,20 @@ ICGIT_Q1_2026 = {
     "avep":           "Transición Crítica",
     "avep_emoji":     "🟡",
     "corte":          "Q1-2026 · solo marzo",
-    "ti_raw":         23.75,        # % inversión ejecutada Q1
-    "ti_norm":        70.0,         # % ritmo normalizado (ok para mayo)
-    "proyeccion":     65.77,        # proyección cierre 2026
-    "meta_mandato":   70.0,         # ≥70% Gestión por Mandato
+    "ti_raw":         23.75,           # % inversión ejecutada Q1 · H73_ICPI_ACUMULADO_Q1≈23.67%
+    "ti_norm":        70.0,            # % ritmo normalizado para mayo (proyección interna)
+    "proyeccion":     65.77,           # PROYECCIÓN cierre 2026 — no es dato oficial
+    "meta_mandato":   70.0,            # umbral AVEP "Gestión por Mandato" (H01_PARÁMETROS)
+    "meta_pdot_2027": 65.0,            # meta ICGI-T PDOT 2027 · H73 ICPI_META_PDOT=65
     "historico": {
-        "2023": 57.36,
-        "2024": 67.12,
-        "2025": 69.93,
-        "2026_q1": 53.56,
-        "2026_proj": 65.77,
+        "2023": 57.36,                 # H73_ICPI_2023 · verificado
+        "2024": 67.12,                 # H73_ICPI_2024 · verificado
+        "2025": 69.93,                 # H73_ICPI_2025 · verificado
+        "2026_q1": 53.56,              # H73_ICPI_GLOBAL_PCT · verificado
+        "2026_proj": 65.77,            # PROYECCIÓN — no es dato oficial H73
     },
-    "presupuesto_total": 26_689_147,
-    "inversion_ejecutada": 7_820_000,
+    "presupuesto_total": 26_689_147,   # pendiente validación vs H73 GAD_CODIFICADO_2026=45.97M
+    "inversion_ejecutada": 7_820_000,  # pendiente validación vs H73 GAD_DEVENGADO_Q1=5.15M
 }
 
 # ── 10 ÍNDICES COMPLEMENTARIOS ────────────────────────────────────────────────
@@ -123,16 +137,16 @@ INDICES = {
         "emoji":  "🟡",
         "color":  "#D69E2E",
         "estado": "REAL Q1-2026",
-        "nota":   "Isabel Muentes $40/hab vs cabecera $113/hab",
+        "nota":   "Isabel Muentes $40/hab vs cabecera $217/hab · brecha 5.4x · H99 Q1-2026",
     },
     "ICODS": {
         "nombre": "Cumplimiento ODS",
-        "valor":  87.50,
-        "avep":   "Gestión por Mandato",
-        "emoji":  "🟢",
-        "color":  "#38A169",
+        "valor":  91.42,               # H20_ICODS Ref_2025=0.9142 · auditado 2026-05-15
+        "avep":   "Excelencia en Gobernanza",
+        "emoji":  "🔵",
+        "color":  "#3182CE",
         "estado": "Referencia 2025",
-        "nota":   "14 ODS vinculados con metas PDOT",
+        "nota":   "25 metas PDOT vinculadas · 14 ODS cubiertos · H20_ICODS",
     },
 }
 
@@ -278,13 +292,14 @@ HOLDING = {
 # ── 7 PARROQUIAS (GeoTwin) ────────────────────────────────────────────────────
 PARROQUIAS = [
     {
+        # H99 P-06 · auditado 2026-05-15 · todos los campos nbi/agua/hab/inv/pc son H99 exactos
         "nombre": "Isabel Muentes",
-        "tps": 77.94,
-        "nbi": 61.2,
-        "agua": 1.02,
-        "inversion": 140_000,
-        "habitantes": 3_488,
-        "per_capita": 40,
+        "tps": 77.94,                  # INEC/PDOT diagnóstico oficial · pendiente H99
+        "nbi": 61.2,                   # H99_ENGINE_CORE NBI_Pct · INEC Censo 2022
+        "agua": 1.02,                  # H99_ENGINE_CORE Cobertura_Agua_Pct
+        "inversion": 228_000,          # H99_ENGINE_CORE Inv_Total_Q1 · eSIGEF 2026-04-30
+        "habitantes": 5_700,           # H99_ENGINE_CORE Población_2022 · INEC Censo 2022
+        "per_capita": 40,              # H99_ENGINE_CORE Inv_PerCapita_Q1_2026 = 228000/5700
         "estado": "EMERGENCIA",
         "color": "#E53E3E",
         "emoji": "🚨",
@@ -292,27 +307,29 @@ PARROQUIAS = [
         "participacion": {"mesas": 1, "presupuesto": 0, "actas": 1, "estado": "Activo", "fichas_pp2026": 14},
     },
     {
+        # H99 P-02 · auditado 2026-05-15 · corrección crítica: nbi 61.7→52.1, agua 28.9→67.01
         "nombre": "Aníbal San Andrés",
-        "tps": 62.34,
-        "nbi": 61.7,
-        "agua": 28.9,
-        "inversion": 190_000,
-        "habitantes": 3_100,
-        "per_capita": 61,
-        "estado": "PRIORIDAD",
-        "color": "#7C5CFC",
-        "emoji": "💜",
+        "tps": 62.34,                  # INEC/PDOT diagnóstico oficial · pendiente H99
+        "nbi": 52.1,                   # H99_ENGINE_CORE NBI_Pct · INEC Censo 2022
+        "agua": 67.01,                 # H99_ENGINE_CORE Cobertura_Agua_Pct
+        "inversion": 301_600,          # H99_ENGINE_CORE Inv_Total_Q1 · eSIGEF 2026-04-30
+        "habitantes": 5_200,           # H99_ENGINE_CORE Población_2022 · INEC Censo 2022
+        "per_capita": 58,              # H99_ENGINE_CORE Inv_PerCapita_Q1_2026 = 301600/5200
+        "estado": "ALERTA",
+        "color": "#E67E22",
+        "emoji": "🟠",
         # PP 2026: Taller 2 (06-ago-2025) · Auditorium GAD · ACTA N°002-2025
         "participacion": {"mesas": 1, "presupuesto": 0, "actas": 1, "estado": "Activo", "fichas_pp2026": 14},
     },
     {
+        # H99 P-03 · auditado 2026-05-15 · corrección: agua 34.7→38.82, hab 2230→3800, inv/pc
         "nombre": "Colorado",
-        "tps": 58.67,
-        "nbi": 58.4,
-        "agua": 34.7,
-        "inversion": 210_000,
-        "habitantes": 2_230,
-        "per_capita": 94,
+        "tps": 58.67,                  # INEC/PDOT diagnóstico oficial · pendiente H99
+        "nbi": 58.7,                   # H99_ENGINE_CORE NBI_Pct · INEC Censo 2022
+        "agua": 38.82,                 # H99_ENGINE_CORE Cobertura_Agua_Pct
+        "inversion": 121_600,          # H99_ENGINE_CORE Inv_Total_Q1 · eSIGEF 2026-04-30
+        "habitantes": 3_800,           # H99_ENGINE_CORE Población_2022 · INEC Censo 2022
+        "per_capita": 32,              # H99_ENGINE_CORE Inv_PerCapita_Q1_2026 = 121600/3800
         "estado": "ALERTA",
         "color": "#E67E22",
         "emoji": "🟠",
@@ -320,55 +337,60 @@ PARROQUIAS = [
         "participacion": {"mesas": 1, "presupuesto": 0, "actas": 1, "estado": "Activo", "fichas_pp2026": 18},
     },
     {
+        # H99 P-07 · auditado 2026-05-15 · corrección: nbi 52.8→55.9, hab 4100→4600, inv/pc
         "nombre": "La Pila",
-        "tps": 41.23,
-        "nbi": 52.8,
-        "agua": 51.2,
-        "inversion": 380_000,
-        "habitantes": 4_100,
-        "per_capita": 93,
-        "estado": "NORMAL",
-        "color": "#D69E2E",
-        "emoji": "🟡",
+        "tps": 41.23,                  # INEC/PDOT diagnóstico oficial · pendiente H99
+        "nbi": 55.9,                   # H99_ENGINE_CORE NBI_Pct · INEC Censo 2022
+        "agua": 50.0,                  # H99_ENGINE_CORE Cobertura_Agua_Pct
+        "inversion": 239_200,          # H99_ENGINE_CORE Inv_Total_Q1 · eSIGEF 2026-04-30
+        "habitantes": 4_600,           # H99_ENGINE_CORE Población_2022 · INEC Censo 2022
+        "per_capita": 52,              # H99_ENGINE_CORE Inv_PerCapita_Q1_2026 = 239200/4600
+        "estado": "ALERTA",            # actualizado: NBI 55.9% supera umbral 50% crítico
+        "color": "#E67E22",
+        "emoji": "🟠",
         # PP 2026: Taller 4 (07-ago-2025) · GAD La Pila · ACTA N°004-2025 · 10 fichas (La Pila+Cda Virgen del Pilar+Las Lagunas+Aguas Nuevas)
         "participacion": {"mesas": 1, "presupuesto": 0, "actas": 1, "estado": "Activo", "fichas_pp2026": 10},
     },
     {
+        # H99 P-05 "Gral. Alfaro" · auditado 2026-05-15 · corrección: agua 62.1→100, hab 12800→6300
         "nombre": "Eloy Alfaro",
-        "tps": 31.18,
-        "nbi": 45.1,
-        "agua": 62.1,
-        "inversion": 980_000,
-        "habitantes": 12_800,
-        "per_capita": 77,
+        "tps": 31.18,                  # INEC/PDOT diagnóstico oficial · pendiente H99
+        "nbi": 49.8,                   # H99_ENGINE_CORE NBI_Pct · INEC Censo 2022
+        "agua": 100.0,                 # H99_ENGINE_CORE Cobertura_Agua_Pct (cobertura total)
+        "inversion": 447_300,          # H99_ENGINE_CORE Inv_Total_Q1 · eSIGEF 2026-04-30
+        "habitantes": 6_300,           # H99_ENGINE_CORE Población_2022 · INEC Censo 2022
+        "per_capita": 71,              # H99_ENGINE_CORE Inv_PerCapita_Q1_2026 = 447300/6300
         "estado": "NORMAL",
         "color": "#D69E2E",
         "emoji": "🟡",
-        # PP 2026: Taller 3 (07-ago-2025) · Antigua Escuela Sucre · ACTA N°003-2025 · (combinado con Isabel Muentes, ~14 fichas c/u)
+        # PP 2026: Taller 3 (07-ago-2025) · Antigua Escuela Sucre · ACTA N°003-2025
         "participacion": {"mesas": 1, "presupuesto": 0, "actas": 1, "estado": "Activo", "fichas_pp2026": 14},
     },
     {
+        # H99 P-04 "Leónidas Proaño" · auditado 2026-05-15 · corrección crítica: nbi 41.3→54.3
+        # Nombre oficial parroquia: Leónidas Plaza Gutiérrez (H99 usa "Proaño" — error tipográfico)
         "nombre": "Leónidas Plaza",
-        "tps": 28.76,
-        "nbi": 41.3,
-        "agua": 68.4,
-        "inversion": 720_000,
-        "habitantes": 8_200,
-        "per_capita": 88,
-        "estado": "NORMAL",
-        "color": "#D69E2E",
-        "emoji": "🟡",
+        "tps": 28.76,                  # INEC/PDOT diagnóstico oficial · pendiente H99
+        "nbi": 54.3,                   # H99_ENGINE_CORE NBI_Pct · INEC Censo 2022
+        "agua": 100.0,                 # H99_ENGINE_CORE Cobertura_Agua_Pct (cobertura total)
+        "inversion": 196_800,          # H99_ENGINE_CORE Inv_Total_Q1 · eSIGEF 2026-04-30
+        "habitantes": 4_100,           # H99_ENGINE_CORE Población_2022 · INEC Censo 2022
+        "per_capita": 48,              # H99_ENGINE_CORE Inv_PerCapita_Q1_2026 = 196800/4100
+        "estado": "ALERTA",            # actualizado: NBI 54.3% supera umbral 50% crítico
+        "color": "#E67E22",
+        "emoji": "🟠",
         # PP 2026: Taller 6 (08-ago-2025) · CDC Leónidas Proaño · ACTA N°006-2025 · 25 fichas
         "participacion": {"mesas": 1, "presupuesto": 0, "actas": 1, "estado": "Activo", "fichas_pp2026": 25},
     },
     {
+        # H99 P-01 · auditado 2026-05-15 · corrección: agua 78.3→95, hab 28400→39800, inv/pc
         "nombre": "Montecristi (cabecera)",
-        "tps": 22.45,
-        "nbi": 38.2,
-        "agua": 78.3,
-        "inversion": 3_200_000,
-        "habitantes": 28_400,
-        "per_capita": 113,
+        "tps": 22.45,                  # INEC/PDOT diagnóstico oficial · pendiente H99
+        "nbi": 38.4,                   # H99_ENGINE_CORE NBI_Pct · INEC Censo 2022
+        "agua": 95.0,                  # H99_ENGINE_CORE Cobertura_Agua_Pct
+        "inversion": 8_636_600,        # H99_ENGINE_CORE Inv_Total_Q1 · eSIGEF 2026-04-30
+        "habitantes": 39_800,          # H99_ENGINE_CORE Población_2022 · INEC Censo 2022
+        "per_capita": 217,             # H99_ENGINE_CORE Inv_PerCapita_Q1_2026 = 8636600/39800
         "estado": "OK",
         "color": "#38A169",
         "emoji": "🏛️",

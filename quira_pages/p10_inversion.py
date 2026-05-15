@@ -148,8 +148,8 @@ def render() -> None:
       BRECHA MAYOR
     </div>
     <div style="font-size:28px;font-weight:900;color:var(--red);
-                font-family:var(--mono)">2.8×</div>
-    <div style="font-size:9px;color:var(--muted);margin-top:3px">Cabecera $113 vs Isabel M. $40</div>
+                font-family:var(--mono)">5.4×</div>
+    <div style="font-size:9px;color:var(--muted);margin-top:3px">Cabecera $217 vs Isabel M. $40 · H99</div>
   </div>
 </div>"""
 
@@ -180,7 +180,7 @@ def render() -> None:
               border-radius:7px;font-size:10px;color:var(--muted);line-height:1.6">
     ⚠️ <strong style="color:var(--red)">Agua y Saneamiento (15.7%)</strong> recibe $4.2M
     para cubrir brecha del 34.9% de cobertura.
-    Isabel Muentes, la parroquia más vulnerable (TPS 77.94%), solo recibe $140K total —
+    Isabel Muentes, la parroquia más vulnerable (TPS 77.94%, NBI 61.2%), recibe $228K total —
     insuficiente para alcanzar la meta de cobertura al 2027 sin financiamiento externo.
   </div>
 </div>"""
@@ -259,7 +259,7 @@ def render() -> None:
             st.session_state["page"] = "sentinel"
             st.session_state["sentinel_pregunta_auto"] = (
                 "El IET (Equidad Territorial) de Montecristi es 44.80%. "
-                "La brecha per cápita es 2.8×: cabecera $113/hab vs Isabel Muentes $40/hab. "
+                "La brecha per cápita es 5.4×: cabecera $217/hab vs Isabel Muentes $40/hab (H99 Q1-2026). "
                 "El PDOT tiene como meta subir la inversión rural mínima a $80/hab al 2027. "
                 "¿Qué mecanismo de redistribución presupuestaria es viable en Q2-2026 "
                 "sin incumplir el equilibrio fiscal del COOTAD?"

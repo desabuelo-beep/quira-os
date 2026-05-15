@@ -190,7 +190,7 @@ PROGRAMAS_GENERO = [
     },
     {
         "programa": "Infraestructura agua Isabel Muentes",
-        "monto": 140_000, "pct_genero": 60, "vinculo_psg": True,
+        "monto": 228_000, "pct_genero": 60, "vinculo_psg": True,  # H99 Inv_Total_Q1
         "estado": "CRÍTICO",
         "nota": "Mujeres rurales = 68% de la carga de acarreo de agua",
     },

@@ -182,7 +182,7 @@ def render() -> None:
         "③", "Congruencia Territorial",
         "Inversión ↔ Parroquias ↔ NBI ↔ TPS",
         44.8, "red", "red",
-        "Isabel Muentes (TPS 77.94) recibe solo $140K · brecha territorial crítica",
+        "Isabel Muentes (TPS 77.94, NBI 61.2%) recibe $228K · $40/hab vs $217 cabecera · H99 Q1-2026",
         "¿La inversión llega donde más se necesita?",
         "Analizar Brecha Territorial",
     )

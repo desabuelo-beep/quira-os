@@ -53,7 +53,7 @@ def render() -> None:
               border-radius:12px;padding:16px;text-align:center">
     <div style="font-size:42px;font-weight:900;color:var(--red);font-family:var(--mono)">$40</div>
     <div style="font-size:11px;font-weight:700;color:var(--red);margin-top:4px">/HAB · ISABEL MUENTES</div>
-    <div style="font-size:10px;color:var(--muted);margin-top:4px">vs $113/hab cabecera cantonal</div>
+    <div style="font-size:10px;color:var(--muted);margin-top:4px">vs $217/hab cabecera · brecha 5.4× · H99</div>
   </div>
   <div style="background:rgba(124,92,252,.08);border:1px solid rgba(124,92,252,.3);
               border-radius:12px;padding:16px;text-align:center">

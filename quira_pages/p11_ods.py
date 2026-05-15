@@ -86,7 +86,7 @@ ODS_CATALOGO = [
     {
         "num": 10, "nombre": "Reducción Desigualdades",
         "estado": "VINCULADO", "color": "#DD1367",
-        "vinculo": "IET 44.80% · Gov Twin · brecha territorial $40→$113/hab",
+        "vinculo": "IET 44.80% · Gov Twin · brecha territorial $40→$217/hab · H99 Q1-2026",
         "meta_pdot": "IET ≥ 60% · inversión mínima rural $80/hab al 2027",
         "score": 45,          # IET_PERCAPITA=44.80% · fuente H73_OUTPUT_API (redondeado)
     },

@@ -115,23 +115,24 @@ def get_template_text(query: str) -> str | None:
     if _has(q, "nbi", "necesidades basicas", "insatisfechas"):
         return (
             "**NBI por Parroquia — Distribución de Necesidades Básicas Insatisfechas**\n\n"
-            "Las 3 parroquias más críticas superan el umbral del 50%: **Aníbal San Andrés** (61.7%), "
-            "**Isabel Muentes** (61.2%) y **Colorado** (58.4%). Más de la mitad de su población "
-            "carece de acceso adecuado a servicios básicos. La brecha entre la parroquia más vulnerable "
-            "y la cabecera cantonal (38.2%) es de **23.5 puntos porcentuales**. "
+            "5 de 7 parroquias superan el umbral crítico del 50%: **Isabel Muentes** (61.2%), "
+            "**Colorado** (58.7%), **La Pila** (55.9%), **Leónidas Plaza** (54.3%) y "
+            "**Aníbal San Andrés** (52.1%). La brecha entre la parroquia más vulnerable "
+            "y la cabecera cantonal (38.4%) es de **22.8 puntos porcentuales**. "
             "Acción prioritaria: inversión AH (agua/saneamiento) en zona rural.\n\n"
-            "_Fuente: SIAP-ICPI Gold Master v4.1 · Q1-2026_"
+            "_Fuente: H99_ENGINE_CORE · SIAP-ICPI Gold Master v4.1 · INEC Censo 2022_"
         )
 
     if _has(q, "inversion per capita", "per capita", "inversion por habitante", "capita"):
         return (
             "**Inversión per Cápita — Brecha de Equidad Territorial**\n\n"
             "**Isabel Muentes** recibe **$40/hab** — la inversión más baja del cantón. "
-            "**Montecristi (cabecera)** recibe **$113/hab**. La brecha es de **2.83x**: "
-            "por cada dólar que llega a Isabel Muentes, la cabecera recibe $2.83. "
-            "El IET (Equidad Territorial) registra 44.80 — Transición Crítica. SAT-III activa. "
+            "**Montecristi (cabecera)** recibe **$217/hab**. La brecha es de **5.4x**: "
+            "por cada dólar que llega a Isabel Muentes, la cabecera recibe $5.40. "
+            "Colorado recibe apenas $32/hab (más bajo después de Isabel Muentes). "
+            "El IET (Equidad Territorial) registra 44.80 — Transición Crítica. "
             "La línea del gráfico indica el promedio cantonal.\n\n"
-            "_Fuente: SIAP-ICPI Gold Master v4.1 · Q1-2026_"
+            "_Fuente: H99_ENGINE_CORE · eSIGEF corte 2026-04-30 · INEC Censo 2022_"
         )
 
     if _has(q, "indices", "indice", "complementarios",
@@ -170,21 +171,22 @@ def get_template_text(query: str) -> str | None:
         return (
             "**Cobertura de Agua Potable por Parroquia**\n\n"
             "**Isabel Muentes** tiene cobertura de apenas **1.02%** 🔴 — prácticamente sin "
-            "acceso a agua potable. **Aníbal San Andrés** (28.9%) y **Colorado** (34.7%) "
-            "también están en situación crítica. La meta PDOT 2027 es llevar la cobertura "
-            "cantonal del 39.25% al **42.38%**. Sin intervención urgente en Isabel Muentes, "
-            "la meta es inalcanzable.\n\n"
-            "_Fuente: SIAP-ICPI Gold Master v4.1 · Q1-2026_"
+            "acceso a agua potable. **Colorado** (38.82%) en zona de alerta. "
+            "Aníbal San Andrés, Eloy Alfaro y Leónidas Plaza tienen cobertura mayor (67-100%), "
+            "pero la meta PDOT 2027 es llevar la cobertura cantonal al **42.38%**. "
+            "Sin intervención urgente en Isabel Muentes y Colorado, la meta cantonal es inalcanzable.\n\n"
+            "_Fuente: H99_ENGINE_CORE · SIAP-ICPI Gold Master v4.1 · PDOT diagnóstico INEC 2022_"
         )
 
     if _has(q, "parroquia") and _has(q, *_VIZ_TRIGGER):
         return (
             "**Análisis Territorial por Parroquia**\n\n"
-            "Las 4 parroquias rurales más vulnerables superan el 50% de NBI. "
-            "Isabel Muentes (61.2%) y Aníbal San Andrés (61.7%) son las más críticas. "
-            "La cabecera cantonal (38.2%) concentra la mayor inversión per cápita ($113/hab) "
-            "mientras Isabel Muentes recibe solo $40/hab.\n\n"
-            "_Fuente: SIAP-ICPI Gold Master v4.1 · Q1-2026_"
+            "5 de 7 parroquias superan el umbral crítico del 50% de NBI. "
+            "Isabel Muentes (61.2%) y Colorado (58.7%) son las más vulnerables. "
+            "La cabecera cantonal (38.4% NBI) concentra la mayor inversión: $217/hab "
+            "mientras Isabel Muentes recibe solo $40/hab y Colorado apenas $32/hab. "
+            "La brecha territorial es de 5.4x (cabecera vs peor parroquia).\n\n"
+            "_Fuente: H99_ENGINE_CORE · SIAP-ICPI Gold Master v4.1 · INEC Censo 2022_"
         )
 
     return None
