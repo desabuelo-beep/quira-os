@@ -15,6 +15,7 @@ from sentinel.prompts   import build_system_prompt
 from sentinel.policies  import evaluar_seguridad, sugerir_pantallas
 from sentinel.audit     import log_interaction, get_audit_stats
 from sentinel.renderer  import parse_response, render_visual
+from sentinel           import charts as _charts
 
 
 # ── COMPONENTE PRINCIPAL ──────────────────────────────────────────────────────
@@ -249,11 +250,17 @@ def _run_sentinel(
                 if not full_response:
                     raise RuntimeError(last_err or "Sin respuesta de Groq")
 
-                # ── Sentinel v1.1 — Generative UI parser ──────────────────────
+                # ── Sentinel v1.1 — Generative UI ─────────────────────────────
+                # 1. Parsea si el LLM emitió JSON (fallback/futuro)
                 clean_text, visual_data = parse_response(full_response)
                 placeholder.markdown(clean_text)
+
+                # 2. Si el LLM emitió JSON válido → renderízalo
                 if visual_data:
                     render_visual(visual_data)
+                # 3. Si no → intent-based chart desde demo_data (100% fiable)
+                elif _charts.detect_and_render(pregunta):
+                    visual_data = {"renderType": "intent_chart", "query": pregunta}
 
                 st.session_state["sentinel_messages"].append({
                     "role":    "assistant",
@@ -292,8 +299,12 @@ def _render_chat_history() -> None:
         avatar = "🔮" if role == "assistant" else "👤"
         with st.chat_message(role, avatar=avatar):
             st.markdown(msg["content"])
-            if msg.get("visual"):
-                render_visual(msg["visual"])
+            visual = msg.get("visual")
+            if visual:
+                if visual.get("renderType") == "intent_chart":
+                    _charts.detect_and_render(visual["query"])
+                else:
+                    render_visual(visual)
 
 
 def _render_suggestions() -> None:
