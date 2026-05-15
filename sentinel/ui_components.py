@@ -299,6 +299,17 @@ def simulation_card(result: dict, query_hash: int = 0) -> None:
     ⚠ {result['nota']}</div>
 </div>""", unsafe_allow_html=True)
 
+    # Nota de impacto cantonal — solo cuando el delta ICGI-T es pequeño
+    nota_cantonal = result.get("nota_impacto_cantonal", "")
+    if nota_cantonal:
+        st.markdown(
+            f'<div style="font-size:10px;color:rgba(214,158,46,0.85);'
+            f'background:rgba(214,158,46,0.07);border-left:3px solid rgba(214,158,46,0.4);'
+            f'border-radius:0 6px 6px 0;padding:6px 10px;margin:4px 0 8px">'
+            f'⚡ {nota_cantonal}</div>',
+            unsafe_allow_html=True,
+        )
+
     cols = st.columns(3)
     with cols[0]:
         if st.button("🧮 Ver Simulador", key=f"sim_go_{query_hash}",

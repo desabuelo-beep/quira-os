@@ -201,6 +201,18 @@ def simulate_policy(
 
     confidence, conf_label = _calc_confidence(policy_type, delta, parroquia)
 
+    # ── Nota de impacto cantonal — se activa cuando el delta ICGI-T parece pequeño ──
+    pop_pct = round(pop_w * 100, 1)
+    if abs(icgit_delta) < 0.5 and policy_type != "gestion_institucional":
+        nota_cantonal = (
+            f"El impacto cantonal ({icgit_delta:+.3f} pts ICGI-T) es moderado porque "
+            f"{nombre} representa el {pop_pct}% de la población cantonal. "
+            f"El efecto local sobre agua y NBI es alto; el efecto agregado es gradual "
+            f"y se potencia con intervención simultánea en otras parroquias."
+        )
+    else:
+        nota_cantonal = ""
+
     return {
         "policy_type":     policy_type,
         "policy_label":    POLICY_LABELS.get(policy_type, policy_type),
@@ -224,14 +236,16 @@ def simulate_policy(
             "icgit":       round(icgit_proj,   2),
             "icgit_delta": round(icgit_delta,  3),
         },
-        "inversion_adicional": int(inv_adicional),
-        "inversion_nueva":     int(inv_nueva),
-        "per_capita_nuevo":    pc_nuevo,
-        "confidence":          confidence,
-        "confidence_label":    conf_label,
-        "cbst_version":        CBST_VERSION,
-        "model_status":        MODEL_STATUS,
-        "calibration_basis":   CALIBRATION_BASIS,
+        "inversion_adicional":   int(inv_adicional),
+        "inversion_nueva":       int(inv_nueva),
+        "per_capita_nuevo":      pc_nuevo,
+        "pop_pct_cantonal":      pop_pct,
+        "nota_impacto_cantonal": nota_cantonal,
+        "confidence":            confidence,
+        "confidence_label":      conf_label,
+        "cbst_version":          CBST_VERSION,
+        "model_status":          MODEL_STATUS,
+        "calibration_basis":     CALIBRATION_BASIS,
         "nota": (
             f"CBST {CBST_VERSION} · {POLICY_LABELS.get(policy_type, policy_type)}. "
             f"Sujeto a calibración con datos eSIGEF Q2-Q4 2026."
