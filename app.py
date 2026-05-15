@@ -29,12 +29,35 @@ html, body, [data-testid="stAppViewContainer"] {
     color: #E2E8F0;
 }
 
-/* ── LAYOUT ANCHO TOTAL ── */
-.main .block-container {
+/* ── LAYOUT ANCHO TOTAL — Streamlit 1.35+ selectors ── */
+/* Cubre tanto la clase legacy como los data-testid modernos */
+.main .block-container,
+[data-testid="stMainBlockContainer"],
+div.block-container {
     max-width: 100% !important;
-    padding-left: 1.5rem !important;
-    padding-right: 1.5rem !important;
-    padding-top: 1rem !important;
+    width: 100% !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+}
+
+/* Iframes de components.html() — sin borde, ancho total */
+iframe {
+    width: 100% !important;
+    border: none !important;
+    display: block !important;
+}
+
+/* Streamlit añade padding-top extra al primer bloque */
+[data-testid="stAppViewBlockContainer"],
+.appview-container .main section {
+    padding-top: 0.5rem !important;
+}
+
+/* Eliminar gap entre secciones de st.container() */
+[data-testid="stVerticalBlock"] > [data-testid="stVerticalBlockBorderWrapper"] {
+    gap: 0 !important;
 }
 
 /* Header */
@@ -111,21 +134,29 @@ html, body, [data-testid="stAppViewContainer"] {
 #MainMenu { visibility: hidden; }
 footer { visibility: hidden; }
 
-/* ── ELIMINAR SCROLLBAR INTERNO DUPLICADO ── */
-/* Streamlit crea un scroll container interno que genera una barra extra.
-   Dejamos solo el scrollbar nativo del navegador. */
-html, body, .stApp {
-    overflow: auto !important;
-    height: auto !important;
+/* ── ELIMINAR SCROLLBAR DUPLICADO ── */
+/* El scrollbar REAL del iframe viene de scrolling=True en components.html().
+   Ese parámetro ahora está en False. Este CSS elimina cualquier residuo. */
+.stApp {
+    overflow: visible !important;
 }
-[data-testid="stAppViewContainer"] {
+[data-testid="stAppViewContainer"],
+[data-testid="stAppViewBlockContainer"] {
     overflow: visible !important;
     height: auto !important;
 }
+/* El contenedor principal NO tiene altura fija — el browser maneja el scroll */
 [data-testid="stMain"],
-section[data-testid="stMain"] > div:first-child {
-    overflow-y: visible !important;
+[data-testid="stMainBlockContainer"] {
+    overflow: visible !important;
     height: auto !important;
+    min-height: auto !important;
+}
+/* Forzar que el root de Streamlit no cree un segundo scroll context */
+#root > div:first-child,
+.stApp > div:first-child {
+    height: auto !important;
+    overflow: visible !important;
 }
 
 /* ── Z-INDEX STACK — evita que el sidebar se monte sobre modales/tooltips ── */

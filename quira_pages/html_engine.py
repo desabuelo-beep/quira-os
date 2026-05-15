@@ -170,7 +170,7 @@ def render_page(content: str, show_tech: bool = False,
     Soporta SVG, HTML comments, CSS Grid, variables CSS, animaciones.
     """
     html = page_frame(content, show_tech, extra_css=extra_css)
-    components.html(html, height=height, scrolling=True)
+    components.html(html, height=height, scrolling=False)
 
 
 # ── BLOQUES REUTILIZABLES ─────────────────────────────────────────────────────
