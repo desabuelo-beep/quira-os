@@ -174,6 +174,15 @@ PAGES = {
     "sentinel":     {"label": "Sentinel · IA",         "icon": "🔮", "render": _p_sentinel},
 }
 
+# ── DOCTRINA QUIRA — AGRUPACIÓN POR ESTADO COGNITIVO ──────────────────────────
+SECTIONS = [
+    ("ENTENDER",  "Ver la verdad",          ["dashboard", "pulso", "brecha", "geotwin", "inversion"]),
+    ("GOBERNAR",  "Corregir el sistema",    ["metas", "cadena", "congruencias", "sat", "eficiencia", "operacion", "holding", "ods", "cooperacion", "genero"]),
+    ("SIMULAR",   "Proyectar escenarios",   ["simulador"]),
+    ("CONFIAR",   "Defender decisiones",    ["gobernanza", "transparencia"]),
+    ("APRENDER",  "El sistema mejora",      ["sentinel"]),
+]
+
 # ── SIDEBAR ────────────────────────────────────────────────────────────────────
 with st.sidebar:
     # Logo / identidad
@@ -196,22 +205,26 @@ with st.sidebar:
 </div>
     """, unsafe_allow_html=True)
 
-    # Navegación
-    st.caption("MÓDULOS QUIRA OS")
-
+    # Navegación — Doctrina QUIRA
     current_page = st.session_state.get("page", "dashboard")
-    for key, page in PAGES.items():
-        # Etiqueta con notas especiales
-        disabled_note = " 🔒" if key == "operacion" and not is_tecnico() else ""
-        sentinel_note = " ✨" if key == "sentinel" else ""
-
-        if st.button(
-            f"{page['icon']} {page['label']}{disabled_note}{sentinel_note}",
-            key=f"nav_{key}",
-            use_container_width=True,
-        ):
-            st.session_state["page"] = key
-            st.rerun()
+    for section_id, section_label, page_keys in SECTIONS:
+        st.markdown(f"""
+<div style="font-size:9px;font-weight:700;color:rgba(0,212,255,0.55);
+            letter-spacing:0.09em;text-transform:uppercase;
+            padding:10px 2px 3px;border-top:1px solid rgba(255,255,255,0.05);
+            margin-top:2px">{section_id} <span style="color:rgba(255,255,255,0.2);font-weight:400">· {section_label}</span></div>
+        """, unsafe_allow_html=True)
+        for key in page_keys:
+            page = PAGES[key]
+            disabled_note = " 🔒" if key == "operacion" and not is_tecnico() else ""
+            sentinel_note = " ✨" if key == "sentinel" else ""
+            if st.button(
+                f"{page['icon']} {page['label']}{disabled_note}{sentinel_note}",
+                key=f"nav_{key}",
+                use_container_width=True,
+            ):
+                st.session_state["page"] = key
+                st.rerun()
 
     st.markdown("---")
 
