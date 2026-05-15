@@ -334,7 +334,7 @@ def render() -> None:
 
     html = hdr + resumen_html + grid_html + criticos_html + fondos_html + top5_html
 
-    render_page(html, show_tech=show_tech, height=1600)
+    render_page(html, show_tech=show_tech, height=3500)
 
     st.markdown("---")
     c1, c2, c3 = st.columns(3)

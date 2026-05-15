@@ -174,30 +174,49 @@ def _brecha_row(b: dict) -> str:
     brecha   = (b["icm"] - b["icpi"]) if b["icm"] is not None else None
     brecha_txt = f"{brecha:.1f} pts" if brecha is not None else "—"
     brecha_col = "amber" if brecha and brecha > 20 else "green" if brecha is not None else "muted"
+    icpi_pct = b["icpi"]
+    # Stacked bar: cyan=ICPI achieved, translucent red=gap to 100%
+    if b["icm"] is not None:
+        stacked = (
+            f'<div style="flex:1;margin-left:8px;height:14px;background:var(--divider);'
+            f'border-radius:7px;overflow:hidden;position:relative">'
+            f'<div style="position:absolute;left:0;top:0;height:100%;width:{icpi_pct:.1f}%;'
+            f'background:var(--cyan);border-radius:7px 0 0 7px;opacity:.78"></div>'
+            f'<div style="position:absolute;left:{icpi_pct:.1f}%;top:0;height:100%;'
+            f'width:{brecha:.1f}%;background:var(--red);opacity:.35"></div>'
+            f'</div>'
+        )
+    else:
+        stacked = (
+            f'<div style="flex:1;margin-left:8px;height:14px;background:var(--divider);'
+            f'border-radius:7px;overflow:hidden">'
+            f'<div style="height:100%;width:{icpi_pct:.1f}%;background:var(--cyan);'
+            f'border-radius:7px;opacity:.78"></div>'
+            f'</div>'
+        )
     return f"""
-<div style="display:flex;align-items:center;gap:6px;padding:7px 10px;
-            background:rgba(255,255,255,.02);border-radius:6px;margin-bottom:3px">
-  <div style="font-size:10px;font-weight:700;color:rgba(255,255,255,.5);
-              min-width:60px;font-family:monospace">{b["año"]}</div>
-  <div style="flex:1;display:flex;align-items:center;gap:8px">
-    <div style="text-align:center;min-width:70px">
-      <div style="font-size:12px;font-weight:800;color:var(--{icm_col});
-                  font-family:monospace">{icm_txt}</div>
-      <div style="font-size:8px;color:var(--muted)">ICM SIGAD</div>
-    </div>
-    <div style="font-size:14px;color:var(--muted)">→</div>
-    <div style="text-align:center;min-width:70px">
-      <div style="font-size:12px;font-weight:800;color:var(--cyan);
-                  font-family:monospace">{b["icpi"]:.2f}%</div>
-      <div style="font-size:8px;color:var(--muted)">ICPI Verificado</div>
-    </div>
-    <div style="font-size:14px;color:var(--muted)">=</div>
-    <div style="text-align:center;min-width:70px">
-      <div style="font-size:12px;font-weight:800;color:var(--{brecha_col});
-                  font-family:monospace">{brecha_txt}</div>
-      <div style="font-size:8px;color:var(--muted)">Brecha</div>
-    </div>
+<div style="display:flex;align-items:center;gap:10px;padding:12px 14px;
+            background:rgba(255,255,255,.02);border-radius:8px;margin-bottom:5px">
+  <div style="font-size:12px;font-weight:700;color:rgba(255,255,255,.5);
+              min-width:65px;font-family:monospace">{b["año"]}</div>
+  <div style="text-align:center;min-width:80px">
+    <div style="font-size:14px;font-weight:800;color:var(--{icm_col});
+                font-family:monospace">{icm_txt}</div>
+    <div style="font-size:8px;color:var(--muted)">ICM SIGAD</div>
   </div>
+  <div style="font-size:16px;color:var(--muted)">→</div>
+  <div style="text-align:center;min-width:86px">
+    <div style="font-size:14px;font-weight:800;color:var(--cyan);
+                font-family:monospace">{b["icpi"]:.2f}%</div>
+    <div style="font-size:8px;color:var(--muted)">ICPI Verificado</div>
+  </div>
+  <div style="font-size:16px;color:var(--muted)">=</div>
+  <div style="text-align:center;min-width:80px">
+    <div style="font-size:14px;font-weight:800;color:var(--{brecha_col});
+                font-family:monospace">{brecha_txt}</div>
+    <div style="font-size:8px;color:var(--muted)">Brecha</div>
+  </div>
+  {stacked}
 </div>"""
 
 
@@ -633,6 +652,20 @@ def render() -> None:
         alin_rows = "".join(_rdc_pp_row(r) for r in RDC_PP_ALINEACION)
         cumpl_rows = "".join(_cumpl_card(r) for r in RDC_CUMPLIMIENTOS)
 
+        _ent_colors = {"GAD Municipal": "cyan", "Patronato": "purple", "EP Aseo": "amber", "Bomberos": "green"}
+        _ent_total  = sum(n_ent.values())
+        ent_bars_html = "".join(
+            f'<div style="display:flex;align-items:center;gap:6px;margin-bottom:5px">'
+            f'<div style="font-size:9px;color:var(--muted);min-width:90px">{k}</div>'
+            f'<div style="flex:1;height:10px;background:var(--divider);border-radius:5px;overflow:hidden">'
+            f'<div style="height:10px;width:{v/_ent_total*100:.0f}%;'
+            f'background:var(--{_ent_colors.get(k,"cyan")});border-radius:5px;opacity:.85"></div></div>'
+            f'<div style="font-size:10px;font-weight:800;'
+            f'color:var(--{_ent_colors.get(k,"cyan")});font-family:monospace;min-width:24px;text-align:right">{v}</div>'
+            f'</div>'
+            for k, v in n_ent.items()
+        )
+
         rdc_hist_html = f"""
 <div class="card" style="margin-bottom:16px">
   <div class="card-title">📂 APORTES CIUDADANOS · RDC 2023-2024 · H10c_RDC_APORTES (VERIFICADO)</div>
@@ -657,16 +690,10 @@ def render() -> None:
       </div>
     </div>
     <div>
-      <div style="font-size:9px;font-weight:700;color:var(--muted);margin-bottom:6px">
+      <div style="font-size:9px;font-weight:700;color:var(--muted);margin-bottom:8px">
         POR ENTIDAD
       </div>
-      {''.join(
-        f'<div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">'
-        f'<div style="font-size:9px;color:var(--muted);flex:1">{k}</div>'
-        f'<div style="font-size:10px;font-weight:800;color:var(--cyan);font-family:monospace">{v}</div>'
-        f'</div>'
-        for k, v in n_ent.items()
-      )}
+      {ent_bars_html}
     </div>
   </div>
 
@@ -699,7 +726,7 @@ def render() -> None:
 </div>"""
 
         tab2_content = rdc_estado_html + brecha_html + ife_html + metas_html + rdc_hist_html
-        render_page(tab2_content, show_tech=show_tech, height=2800)
+        render_page(tab2_content, show_tech=show_tech, height=4000)
 
         st.markdown("---")
         c1, c2, c3 = st.columns(3)

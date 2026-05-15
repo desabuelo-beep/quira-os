@@ -20,14 +20,15 @@ def _rgb(h: str) -> str:
 def _mini_score_node(score: float, color: str, label: str, note: str) -> str:
     border_color = _rgb(color)
     return (
-        f'<div style="padding:12px 10px;background:var(--navy-card);border-radius:10px;'
-        f'border:1px solid rgba({border_color},.2);text-align:center">'
-        f'<div style="font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;'
-        f'letter-spacing:.08em;margin-bottom:6px">{label}</div>'
-        f'<div style="font-size:22px;font-weight:800;font-family:var(--mono);color:{color}">{score:.1f}%</div>'
-        f'<div style="font-size:9px;color:var(--muted);margin-top:3px">{note}</div>'
-        f'<div style="margin-top:6px;height:3px;background:var(--divider);border-radius:2px">'
-        f'<div style="height:100%;width:{min(score,100):.1f}%;background:{color};border-radius:2px"></div>'
+        f'<div style="padding:20px 14px;background:var(--navy-card);border-radius:12px;'
+        f'border:1px solid rgba({border_color},.25);text-align:center">'
+        f'<div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;'
+        f'letter-spacing:.1em;margin-bottom:8px">{label}</div>'
+        f'<div style="font-size:34px;font-weight:900;font-family:var(--mono);'
+        f'color:{color};line-height:1">{score:.1f}%</div>'
+        f'<div style="font-size:10px;color:var(--muted);margin-top:6px">{note}</div>'
+        f'<div style="margin-top:10px;height:5px;background:var(--divider);border-radius:3px">'
+        f'<div style="height:100%;width:{min(score,100):.1f}%;background:{color};border-radius:3px"></div>'
         f'</div></div>'
     )
 
@@ -46,19 +47,19 @@ def _entity_drawer(idx: int, emoji: str, nombre: str, tipo: str,
                 this.querySelector('.arrow-{idx}').textContent=d.style.display==='none'?'▼':'▲'"
        style="padding:14px 16px;cursor:pointer;display:flex;justify-content:space-between;
               align-items:center">
-    <div style="display:flex;align-items:center;gap:14px;flex:1">
-      <div style="font-size:22px">{emoji}</div>
+    <div style="display:flex;align-items:center;gap:16px;flex:1">
+      <div style="font-size:28px">{emoji}</div>
       <div style="flex:1">
-        <div style="font-size:13px;font-weight:700;color:var(--white)">{nombre}</div>
-        <div style="font-size:10px;color:var(--muted);margin-top:2px">{tipo}</div>
+        <div style="font-size:15px;font-weight:800;color:var(--white)">{nombre}</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:3px">{tipo}</div>
       </div>
-      <div style="display:flex;align-items:center;gap:10px;min-width:180px">
-        <div style="flex:1;height:6px;background:var(--divider);border-radius:3px">
-          <div style="height:100%;width:{min(score,100):.1f}%;background:{score_color};border-radius:3px"></div>
+      <div style="display:flex;align-items:center;gap:12px;min-width:220px">
+        <div style="flex:1;height:8px;background:var(--divider);border-radius:4px">
+          <div style="height:100%;width:{min(score,100):.1f}%;background:{score_color};border-radius:4px"></div>
         </div>
-        <div style="font-size:14px;font-weight:800;font-family:var(--mono);
-                    color:{score_color};min-width:44px;text-align:right">{score:.1f}%</div>
-        <span class="badge {badge_class}" style="font-size:9px;padding:2px 7px">{badge_text}</span>
+        <div style="font-size:18px;font-weight:900;font-family:var(--mono);
+                    color:{score_color};min-width:52px;text-align:right">{score:.1f}%</div>
+        <span class="badge {badge_class}" style="font-size:10px;padding:3px 9px">{badge_text}</span>
       </div>
     </div>
     <span class="arrow-{idx}" style="color:{arrow_color};font-size:11px;margin-left:12px">▼</span>
@@ -263,40 +264,40 @@ def render() -> None:
               letter-spacing:.1em;margin-bottom:12px">
     🔗 Causalidad sistémica · Cómo cada entidad impacta el ICGI-T
   </div>
-  <div style="display:flex;align-items:center;gap:4px;flex-wrap:wrap;margin-bottom:12px">
-    <div style="padding:8px 10px;background:rgba(34,197,94,.08);border-radius:8px;
-                border:1px solid rgba(34,197,94,.2);text-align:center;min-width:76px">
-      <div style="font-size:9px;color:var(--muted)">🚒 Bomberos</div>
-      <div style="font-size:15px;font-weight:800;color:var(--green)">82.7%</div>
-      <div style="font-size:8px;color:var(--green)">▲ referente</div>
+  <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:14px">
+    <div style="padding:14px 16px;background:rgba(34,197,94,.08);border-radius:10px;
+                border:1px solid rgba(34,197,94,.2);text-align:center;min-width:100px">
+      <div style="font-size:10px;color:var(--muted)">🚒 Bomberos</div>
+      <div style="font-size:24px;font-weight:900;color:var(--green);font-family:var(--mono)">82.7%</div>
+      <div style="font-size:9px;color:var(--green)">▲ referente</div>
     </div>
-    <div style="color:var(--muted);font-size:12px;padding:0 2px">+</div>
-    <div style="padding:8px 10px;background:rgba(34,197,94,.08);border-radius:8px;
-                border:1px solid rgba(34,197,94,.2);text-align:center;min-width:76px">
-      <div style="font-size:9px;color:var(--muted)">🤝 Patronato</div>
-      <div style="font-size:15px;font-weight:800;color:var(--green)">74.1%</div>
-      <div style="font-size:8px;color:var(--amber)">→ PSG gap</div>
+    <div style="color:var(--muted);font-size:20px;padding:0 2px">+</div>
+    <div style="padding:14px 16px;background:rgba(34,197,94,.08);border-radius:10px;
+                border:1px solid rgba(34,197,94,.2);text-align:center;min-width:100px">
+      <div style="font-size:10px;color:var(--muted)">🤝 Patronato</div>
+      <div style="font-size:24px;font-weight:900;color:var(--green);font-family:var(--mono)">74.1%</div>
+      <div style="font-size:9px;color:var(--amber)">→ PSG gap</div>
     </div>
-    <div style="color:var(--muted);font-size:12px;padding:0 2px">+</div>
-    <div style="padding:8px 10px;background:rgba(255,183,0,.08);border-radius:8px;
-                border:1px solid rgba(255,183,0,.3);text-align:center;min-width:76px">
-      <div style="font-size:9px;color:var(--muted)">🗑️ EP Aseo</div>
-      <div style="font-size:15px;font-weight:800;color:var(--amber)">58.4%</div>
-      <div style="font-size:8px;color:var(--red)">▼ arrastra</div>
+    <div style="color:var(--muted);font-size:20px;padding:0 2px">+</div>
+    <div style="padding:14px 16px;background:rgba(255,183,0,.08);border-radius:10px;
+                border:1px solid rgba(255,183,0,.3);text-align:center;min-width:100px">
+      <div style="font-size:10px;color:var(--muted)">🗑️ EP Aseo</div>
+      <div style="font-size:24px;font-weight:900;color:var(--amber);font-family:var(--mono)">58.4%</div>
+      <div style="font-size:9px;color:var(--red)">▼ arrastra</div>
     </div>
-    <div style="color:var(--muted);font-size:18px;padding:0 8px;font-weight:300">→</div>
-    <div style="padding:8px 10px;background:rgba(255,183,0,.06);border-radius:8px;
-                border:1px solid rgba(255,183,0,.2);text-align:center;min-width:90px">
-      <div style="font-size:9px;color:var(--muted)">Nodo Operadores</div>
-      <div style="font-size:15px;font-weight:800;color:var(--amber)">71.7%</div>
-      <div style="font-size:8px;color:var(--muted)">promedio ocultador</div>
+    <div style="color:var(--muted);font-size:22px;padding:0 8px;font-weight:300">→</div>
+    <div style="padding:14px 16px;background:rgba(255,183,0,.06);border-radius:10px;
+                border:1px solid rgba(255,183,0,.2);text-align:center;min-width:116px">
+      <div style="font-size:10px;color:var(--muted)">Nodo Operadores</div>
+      <div style="font-size:24px;font-weight:900;color:var(--amber);font-family:var(--mono)">71.7%</div>
+      <div style="font-size:9px;color:var(--muted)">promedio ocultador</div>
     </div>
-    <div style="color:var(--muted);font-size:18px;padding:0 8px;font-weight:300">→</div>
-    <div style="padding:8px 10px;background:rgba(255,77,109,.06);border-radius:8px;
-                border:1px solid rgba(255,77,109,.2);text-align:center;min-width:80px">
-      <div style="font-size:9px;color:var(--muted)">ICGI-T Global</div>
-      <div style="font-size:15px;font-weight:800;color:var(--red)">{icgit:.2f}%</div>
-      <div style="font-size:8px;color:var(--red)">Transición Crítica</div>
+    <div style="color:var(--muted);font-size:22px;padding:0 8px;font-weight:300">→</div>
+    <div style="padding:14px 16px;background:rgba(255,77,109,.06);border-radius:10px;
+                border:1px solid rgba(255,77,109,.2);text-align:center;min-width:106px">
+      <div style="font-size:10px;color:var(--muted)">ICGI-T Global</div>
+      <div style="font-size:24px;font-weight:900;color:var(--red);font-family:var(--mono)">{icgit:.2f}%</div>
+      <div style="font-size:9px;color:var(--red)">Transición Crítica</div>
     </div>
   </div>
   <div style="font-size:11px;color:var(--muted);line-height:1.6;padding-top:8px;
@@ -329,7 +330,7 @@ def render() -> None:
         + bomberos + patronato + ep_aseo
         + resumen + causalidad + tech
     )
-    render_page(html, show_tech=show_tech, height=1400)
+    render_page(html, show_tech=show_tech, height=2000)
 
     # Native Streamlit CTA after iframe
     c1, c2 = st.columns(2, gap="small")
