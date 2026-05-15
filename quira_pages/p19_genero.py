@@ -1,12 +1,172 @@
 """
-QUIRA OS v0.1 — P-19 Género y Equidad
-PSG 12.83% · ODS 5 · Gender Bond · Pin Morado · Plan género
+QUIRA OS v0.1 — P-19 Género y Equidad + Ambiente
+Tab 1 💜 Género: PSG 12.83% · ODS 5 · Gender Bond · Pin Morado · Plan género · Panel IGM 6 sub-ind.
+Tab 2 🌿 Ambiente: 6 metas FA PDOT · alineación PP 2026 · RDC aportes FA (30 = más demandado)
+FUENTE ÚNICA DE DATOS: SIAP-ICPI_GOLD_MASTER_v4.1 (H73_OUTPUT_API + H99_ENGINE_CORE + H10c_RDC)
+Indicadores sin fuente Excel marcados con valor=None → "Sin dato oficial"
 Dylus Lab © 2026
 """
 import streamlit as st
 from data.loader import load_all
 from utils.session import is_tecnico
 from quira_pages.html_engine import render_page, page_header
+
+# ── PANEL IGM · 6 SUB-INDICADORES DE GÉNERO ──────────────────────────────────
+# valor=None  → dato NO disponible en Excel · se muestra como "Sin dato oficial"
+# valor=float → dato derivable del Gold Master (IGM-D y IGM-E son estados binarios)
+INDICADORES_GENERO = [
+    {
+        "codigo": "IGM-A",
+        "nombre": "Mujeres en cargos directivos GAD",
+        "icon":   "👩‍💼",
+        "valor":  None,          # NO en Excel · pendiente certificación RRHH
+        "meta":   40.0,
+        "unidad": "%",
+        "estado": "ALERTA",
+        "color":  "amber",
+        "nota":   "Meta PDOT 40% para 2027 · ODS 5.5 · Pendiente certificación oficial RRHH",
+    },
+    {
+        "codigo": "IGM-B",
+        "nombre": "Brecha salarial mujeres/hombres (GAD)",
+        "icon":   "💰",
+        "valor":  None,          # NO en Excel · pendiente análisis nómina oficial
+        "meta":   0.0,
+        "unidad": "% diferencia",
+        "estado": "PARCIAL",
+        "color":  "amber",
+        "nota":   "ODS 8.5 · Meta: paridad salarial certificada · Pendiente análisis nómina DAF",
+    },
+    {
+        "codigo": "IGM-C",
+        "nombre": "Carga acarreo agua · mujeres rurales",
+        "icon":   "💧",
+        "valor":  None,          # NO en Excel · pendiente encuesta PNUD / INEC
+        "meta":   0.0,
+        "unidad": "% del acarreo",
+        "estado": "CRÍTICO",
+        "color":  "red",
+        "nota":   "Isabel Muentes + Colorado · cobertura agua 1.02% · Pendiente encuesta PNUD/INEC",
+    },
+    {
+        "codigo": "IGM-D",
+        "nombre": "Luminarias seguridad · Pin Morado activo",
+        "icon":   "💡",
+        "valor":  0.0,           # FUENTE: PSG=12.83%<30% (H73_OUTPUT_API) → proyecto BLOQUEADO
+        "meta":   100.0,
+        "unidad": "% avance",
+        "estado": "BLOQUEADO",
+        "color":  "red",
+        "nota":   "Aníbal San Andrés · Gov Twin aprobado · BLOQUEADO: PSG 12.83% < umbral 30% · Fuente: H73",
+    },
+    {
+        "codigo": "IGM-E",
+        "nombre": "Plan Género municipal aprobado",
+        "icon":   "📋",
+        "valor":  0.0,           # BINARIO: plan no aprobado = 0% (estado documentado en PDOT)
+        "meta":   100.0,
+        "unidad": "% aprobación",
+        "estado": "PENDIENTE",
+        "color":  "red",
+        "nota":   "Requisito ONU Mujeres · Patronato debe designar coordinadora género · Estado: no aprobado",
+    },
+    {
+        "codigo": "IGM-F",
+        "nombre": "ODS 5.5 · Representación política femenina",
+        "icon":   "🏛️",
+        "valor":  None,          # NO en Excel · requiere fuente CNE/AME oficial
+        "meta":   50.0,
+        "unidad": "%",
+        "estado": "PARCIAL",
+        "color":  "amber",
+        "nota":   "Concejo Municipal Q1-2026 · Meta paridad 2027 · Pendiente certificación CNE/AME",
+    },
+]
+
+# ODS 5 sub-metas · avance=None: sin medición oficial en Excel
+# Estado cualitativo derivado del PDOT / PSG / contexto GAD
+ODS5_TARGETS = [
+    {"id": "5.1", "desc": "Fin a discriminación legal de género",    "avance": None, "estado": "PARCIAL"},
+    {"id": "5.2", "desc": "Violencia doméstica · protocolos activos","avance": None, "estado": "ALERTA"},
+    {"id": "5.4", "desc": "Reconocimiento cuidados no remunerados",  "avance": None, "estado": "CRÍTICO"},
+    {"id": "5.5", "desc": "Liderazgo político y económico femenino", "avance": None, "estado": "PARCIAL"},
+    {"id": "5.a", "desc": "Igualdad derechos económicos / catastro", "avance": None, "estado": "PARCIAL"},
+    {"id": "5.c", "desc": "Políticas y legislación género · PSG",    "avance": None, "estado": "CRÍTICO"},
+]
+
+
+def _igm_card(ind: dict) -> str:
+    """Renderiza tarjeta IGM. valor=None → sin dato oficial (no inventado)."""
+    col   = ind["color"]
+    valor = ind["valor"]  # puede ser None
+    estado_map = {
+        "CRÍTICO":   '<span class="badge badge-red">🔴 CRÍTICO</span>',
+        "BLOQUEADO": '<span class="badge badge-red">🔴 BLOQUEADO</span>',
+        "ALERTA":    '<span class="badge badge-amber">🟠 ALERTA</span>',
+        "PARCIAL":   '<span class="badge badge-amber">🟡 PARCIAL</span>',
+        "PENDIENTE": '<span class="badge badge-red">⬜ PENDIENTE</span>',
+        "OK":        '<span class="badge badge-green">✅ OK</span>',
+    }
+    badge = estado_map.get(ind["estado"], "")
+
+    # Bloque valor: si hay dato → número; si no → etiqueta "Sin dato oficial"
+    if valor is not None:
+        valor_html = (
+            f'<div style="font-size:18px;font-weight:900;color:var(--{col});'
+            f'font-family:var(--mono)">{valor:.1f}'
+            f'<span style="font-size:10px">{ind["unidad"]}</span></div>'
+        )
+        meta_html = (
+            f'<div style="font-size:9px;color:var(--muted)">Meta: {ind["meta"]:.0f}{ind["unidad"]}</div>'
+            if ind["meta"] > 0
+            else '<div style="font-size:9px;color:var(--red)">Meta: 0 (eliminar)</div>'
+        )
+        # Barra de progreso solo si hay valor numérico
+        invert_bar = ind["meta"] == 0.0
+        bar_color  = col if not invert_bar else ("red" if valor > 30 else "amber")
+        pct_bar    = min(valor / ind["meta"] * 100, 100) if ind["meta"] > 0 else 100
+        bar_html   = (
+            f'<div style="height:4px;background:var(--divider);border-radius:2px;'
+            f'overflow:hidden;margin-bottom:5px">'
+            f'<div style="height:4px;width:{pct_bar:.0f}%;background:var(--{bar_color});'
+            f'border-radius:2px"></div></div>'
+        ) if ind["meta"] > 0 else ""
+    else:
+        # Sin dato oficial → no inventar
+        valor_html = (
+            '<div style="font-size:12px;font-weight:700;color:rgba(255,255,255,.35);'
+            'font-family:var(--mono);padding:2px 7px;background:rgba(255,255,255,.05);'
+            'border-radius:5px;border:1px solid rgba(255,255,255,.1)">Sin dato oficial</div>'
+        )
+        meta_html = (
+            f'<div style="font-size:9px;color:var(--muted)">Meta: {ind["meta"]:.0f}{ind["unidad"]}</div>'
+            if ind["meta"] > 0 else ""
+        )
+        bar_html = ""
+
+    return f"""
+<div style="background:var(--navy-card);border:1px solid var(--divider);
+            border-left:3px solid var(--{col});border-radius:9px;
+            padding:11px 13px;margin-bottom:7px">
+  <div style="display:flex;justify-content:space-between;align-items:center;
+              margin-bottom:5px;gap:8px;flex-wrap:wrap">
+    <div style="display:flex;align-items:center;gap:6px;flex:1">
+      <span style="font-size:14px">{ind["icon"]}</span>
+      <div>
+        <div style="font-size:9px;color:var(--muted);font-weight:700;letter-spacing:.06em">{ind["codigo"]}</div>
+        <div style="font-size:11px;font-weight:700;color:var(--white)">{ind["nombre"]}</div>
+      </div>
+      {badge}
+    </div>
+    <div style="text-align:right;flex-shrink:0">
+      {valor_html}
+      {meta_html}
+    </div>
+  </div>
+  {bar_html}
+  <div style="font-size:9px;color:var(--muted)">{ind["nota"]}</div>
+</div>"""
+
 
 # ── PROGRAMAS POA CON PERSPECTIVA DE GÉNERO ───────────────────────────────────
 PROGRAMAS_GENERO = [
@@ -58,6 +218,29 @@ PROGRAMAS_GENERO = [
         "estado": "NORMAL",
         "nota": "Potencial: trámites accesibles desde hogar para cuidadoras",
     },
+]
+
+# ── METAS FA (BIOFÍSICO-AMBIENTE) · H31_REPORTE_CPCCS · corte Q1-2026 ─────────
+# (codigo, nombre, desc_meta, Ti_2026, Vi_estado, color)
+FA_METAS = [
+    ("FA-I-X-01", "Gestión del Riesgo",
+     "Infraestructura susceptible reducida -10% · Plan cantonal riesgo",
+     0.70, "✅", "green"),
+    ("FA-C-X-01", "Áreas Verdes · IVU",
+     "Índice Verde Urbano 10.94→17.32 m²/hab · parques y espacios públicos",
+     0.43, "✅", "amber"),
+    ("FA-I-X-02", "Equipamiento Urbano / Aseo",
+     "Recolección residuos 91→98% · barrido · EMAIMEP · EP Aseo",
+     0.70, "✅", "green"),
+    ("FA-L-N-01", "Patrimonio Cultural-Ambiental",
+     "100% inventario · Museo Sombrero · cerro Montecristi protegido",
+     0.70, "✅", "green"),
+    ("FA-DIS-01", "Disposición Final Desechos",
+     "Capacidad disposición final 0→20% · relleno sanitario cantonal",
+     0.43, "⬜", "amber"),
+    ("FA-CC-01",  "Cambio Climático",
+     "4 planes de acción al 2027 · Q1-2026: 0 iniciados · SAT ambiental activa",
+     0.00, "⬜", "red"),
 ]
 
 _total_poa = 26_689_147
@@ -114,6 +297,39 @@ def _prog_row(p: dict) -> str:
   </div>"""
 
 
+def _fa_card(m: tuple) -> str:
+    cod, nombre, desc, ti, vi, col = m
+    ti_pct = ti * 100
+    bar_w  = min(int(ti_pct), 100)
+    vi_badge = {
+        "✅": '<span style="font-size:9px;font-weight:700;color:var(--green)">✅ Verificada</span>',
+        "⬜": '<span style="font-size:9px;font-weight:700;color:rgba(255,255,255,.35)">⬜ Sin verificar</span>',
+        "🔄": '<span style="font-size:9px;font-weight:700;color:var(--cyan)">🔄 En proceso</span>',
+    }.get(vi, "")
+    return (
+        f'<div style="background:var(--navy-card);border:1px solid var(--divider);'
+        f'border-left:3px solid var(--{col});border-radius:9px;'
+        f'padding:11px 13px;margin-bottom:7px">'
+        f'<div style="display:flex;justify-content:space-between;align-items:center;'
+        f'margin-bottom:5px;gap:8px">'
+        f'<div style="flex:1">'
+        f'<div style="font-size:9px;color:var(--muted);font-weight:700;'
+        f'letter-spacing:.06em;font-family:monospace">{cod}</div>'
+        f'<div style="font-size:11px;font-weight:700;color:var(--white)">{nombre}</div>'
+        f'</div>'
+        f'<div style="text-align:right;flex-shrink:0">'
+        f'<div style="font-size:18px;font-weight:900;color:var(--{col});'
+        f'font-family:monospace">{ti_pct:.0f}<span style="font-size:10px">% Ti</span></div>'
+        f'{vi_badge}</div></div>'
+        f'<div style="height:4px;background:var(--divider);border-radius:2px;'
+        f'overflow:hidden;margin-bottom:6px">'
+        f'<div style="height:4px;width:{bar_w}%;background:var(--{col});border-radius:2px">'
+        f'</div></div>'
+        f'<div style="font-size:9px;color:var(--muted)">{desc}</div>'
+        f'</div>'
+    )
+
+
 def render() -> None:
     data      = load_all()
     show_tech = is_tecnico()
@@ -149,6 +365,104 @@ def render() -> None:
                 font-family:var(--mono)">${(_total_genero_potencial/1000):.0f}K</div>
     <div style="font-size:10px;font-weight:700;color:var(--purple);margin-top:4px">POA RECLASIFICABLE</div>
     <div style="font-size:9px;color:var(--muted);margin-top:3px">PSG potencial {_psg_potencial:.1f}%</div>
+  </div>
+</div>"""
+
+    # ── Panel IGM ─────────────────────────────────────────────────────────────
+    igm_criticos  = sum(1 for i in INDICADORES_GENERO if i["estado"] in ("CRÍTICO", "BLOQUEADO"))
+    igm_parciales = sum(1 for i in INDICADORES_GENERO if i["estado"] in ("ALERTA", "PARCIAL"))
+    igm_ok        = sum(1 for i in INDICADORES_GENERO if i["estado"] == "OK")
+
+    # Contar indicadores con y sin dato oficial
+    igm_sin_dato = sum(1 for i in INDICADORES_GENERO if i["valor"] is None)
+
+    igm_html = f"""
+<div class="card" style="margin-bottom:16px">
+  <div class="card-title">💜 PANEL IGM · INDICADORES DE GÉNERO MUNICIPAL · {len(INDICADORES_GENERO)} dimensiones</div>
+  <div style="font-size:8px;color:var(--amber);margin-bottom:10px;
+              padding:5px 10px;background:rgba(255,184,0,.07);border-radius:5px;
+              border:1px solid rgba(255,184,0,.2);line-height:1.6">
+    ⚠ <strong>Integridad de datos:</strong>
+    {igm_sin_dato} de {len(INDICADORES_GENERO)} indicadores muestran "Sin dato oficial"
+    — valores no disponibles en el Gold Master (H73/H99).
+    IGM-D e IGM-E son estados binarios derivados del PSG 12.83% (fuente: H73_OUTPUT_API).
+    Pendiente: certificación RRHH (IGM-A), análisis nómina DAF (IGM-B),
+    encuesta PNUD/INEC (IGM-C), fuente CNE/AME (IGM-F).
+  </div>
+  <div style="display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap">
+    <div style="padding:6px 12px;background:rgba(255,77,109,.1);border-radius:7px;
+                font-size:10px;color:var(--red);font-weight:700">
+      🔴 {igm_criticos} crítico/bloqueado
+    </div>
+    <div style="padding:6px 12px;background:rgba(255,184,0,.08);border-radius:7px;
+                font-size:10px;color:var(--amber);font-weight:700">
+      🟠 {igm_parciales} alerta/parcial
+    </div>
+    <div style="padding:6px 12px;background:rgba(0,224,150,.07);border-radius:7px;
+                font-size:10px;color:var(--green);font-weight:700">
+      ✅ {igm_ok} OK
+    </div>
+    <div style="padding:6px 12px;background:rgba(255,255,255,.04);border-radius:7px;
+                font-size:10px;color:rgba(255,255,255,.4);font-weight:700">
+      📋 {igm_sin_dato} sin dato oficial
+    </div>
+  </div>
+  <div class="grid-2" style="gap:10px">
+    <div>{"".join(_igm_card(i) for i in INDICADORES_GENERO[:3])}</div>
+    <div>{"".join(_igm_card(i) for i in INDICADORES_GENERO[3:])}</div>
+  </div>
+</div>"""
+
+    # ── ODS 5 Sub-targets ─────────────────────────────────────────────────────
+    def _ods5_row(t: dict) -> str:
+        """avance=None → sin porcentaje oficial, muestra badge de estado."""
+        col_map  = {"CRÍTICO": "red", "ALERTA": "amber", "PARCIAL": "amber", "OK": "green"}
+        badge_map = {
+            "CRÍTICO": '<span style="font-size:8px;font-weight:700;color:var(--red)">🔴 CRÍTICO</span>',
+            "ALERTA":  '<span style="font-size:8px;font-weight:700;color:var(--amber)">🟠 ALERTA</span>',
+            "PARCIAL": '<span style="font-size:8px;font-weight:700;color:var(--amber)">🟡 PARCIAL</span>',
+            "OK":      '<span style="font-size:8px;font-weight:700;color:var(--green)">✅ OK</span>',
+        }
+        c       = col_map.get(t["estado"], "muted")
+        avance  = t.get("avance")
+        if avance is not None:
+            derecha_html = f"""
+    <div style="min-width:90px">
+      <div style="height:5px;background:var(--divider);border-radius:3px;overflow:hidden;margin-bottom:2px">
+        <div style="height:5px;width:{avance}%;background:var(--{c});border-radius:3px"></div>
+      </div>
+      <div style="font-size:8px;color:var(--{c});text-align:right">{avance}%</div>
+    </div>"""
+        else:
+            # Sin dato oficial → mostrar badge cualitativo
+            derecha_html = f"""
+    <div style="min-width:90px;text-align:right">
+      {badge_map.get(t["estado"], "")}
+      <div style="font-size:7px;color:var(--muted);margin-top:1px">sin medición</div>
+    </div>"""
+        return f"""
+<div style="display:flex;align-items:center;gap:10px;padding:6px 8px;
+            background:rgba(255,255,255,.02);border-radius:6px;margin-bottom:3px">
+  <span style="font-size:10px;font-weight:800;color:var(--purple);
+               min-width:28px;font-family:var(--mono)">{t["id"]}</span>
+  <div style="flex:1;font-size:9px;color:var(--white)">{t["desc"]}</div>
+  {derecha_html}
+</div>"""
+
+    ods5_html = f"""
+<div style="background:rgba(124,92,252,.05);border:1px solid rgba(124,92,252,.2);
+            border-radius:12px;padding:14px 16px;margin-bottom:16px">
+  <div style="font-size:11px;font-weight:700;color:var(--purple);margin-bottom:4px">
+    🌐 ODS 5 · SUB-METAS MONTECRISTI · Estado Q1-2026
+  </div>
+  <div style="font-size:8px;color:var(--amber);margin-bottom:8px;
+              padding:4px 8px;background:rgba(255,184,0,.07);border-radius:4px;
+              border:1px solid rgba(255,184,0,.2)">
+    ⚠ Avance % pendiente de medición oficial SENPLADES/ONU Mujeres · Estado cualitativo derivado del PDOT
+  </div>
+  {"".join(_ods5_row(t) for t in ODS5_TARGETS)}
+  <div style="margin-top:8px;font-size:9px;color:var(--muted)">
+    PSG 12.83% afecta directamente ODS 5.c · Luminarias (IGM-D) afecta ODS 5.2 · Plan género (IGM-E) afecta 5.1 y 5.5
   </div>
 </div>"""
 
@@ -255,37 +569,192 @@ def render() -> None:
 </div>"""
 
     hdr = page_header(
-        "⑮ GÉNERO Y EQUIDAD",
-        "PSG · ODS 5 · Gender Bond",
-        f"PSG {psg_val:.2f}% · Brecha {_psg_brecha:.2f} pts · Gender Bond $95K bloqueado · ONU Mujeres",
+        "GÉNERO · EQUIDAD · AMBIENTE",
+        "PSG · ODS 5 · Gender Bond · Metas FA",
+        f"PSG {psg_val:.2f}% · Brecha {_psg_brecha:.2f} pts · Gender Bond $95K · "
+        f"6 metas FA PDOT · Cambio climático sin iniciar",
         '<span class="badge badge-red">💜 PSG Ruptura Sistémica</span>',
     )
 
-    render_page(
-        hdr + resumen_html + gender_bond_html + plan_reclasificacion_html + hoja_ruta_html,
-        show_tech=show_tech, height=1400,
-    )
+    tab1, tab2 = st.tabs(["💜  Género y Equidad", "🌿  Ambiente"])
 
-    st.markdown("---")
-    c1, c2, c3 = st.columns(3)
-    with c1:
-        if st.button("🔮 Sentinel · Plan reclasificación PSG",
-                     use_container_width=True, type="primary"):
-            st.session_state["page"] = "sentinel"
-            st.session_state["sentinel_pregunta_auto"] = (
-                "El PSG de Montecristi es 12.83%. El Gender Bond BID Lab $95K "
-                "y ONU Mujeres $65K están bloqueados por este indicador. "
-                "La reclasificación de partidas en el POA podría elevar el PSG a ~16%. "
-                "¿Cuál es el procedimiento legal exacto bajo COOTAD y el reglamento SINFÍN "
-                "para reclasificar partidas presupuestarias con perspectiva de género, "
-                "quién firma la resolución y cuánto tiempo toma el registro en eSIGEF?"
-            )
-            st.rerun()
-    with c2:
-        if st.button("💸 Ver Cooperación Internacional", use_container_width=True):
-            st.session_state["page"] = "cooperacion"
-            st.rerun()
-    with c3:
-        if st.button("🌐 Ver ODS Tracker", use_container_width=True):
-            st.session_state["page"] = "ods"
-            st.rerun()
+    # ══════════════════════════════════════════════════════════════════════
+    # TAB 1: GÉNERO Y EQUIDAD
+    # ══════════════════════════════════════════════════════════════════════
+    with tab1:
+        render_page(
+            hdr + resumen_html + igm_html + ods5_html + gender_bond_html
+            + plan_reclasificacion_html + hoja_ruta_html,
+            show_tech=show_tech, height=2100,
+        )
+        st.markdown("---")
+        c1, c2, c3 = st.columns(3)
+        with c1:
+            if st.button("🔮 Sentinel · Plan reclasificación PSG",
+                         use_container_width=True, type="primary"):
+                st.session_state["page"] = "sentinel"
+                st.session_state["sentinel_pregunta_auto"] = (
+                    f"El PSG de Montecristi es {psg_val:.2f}%. El Gender Bond BID Lab $95K "
+                    "y ONU Mujeres $65K están bloqueados por este indicador. "
+                    f"La reclasificación de partidas en el POA podría elevar el PSG a ~{_psg_potencial:.1f}%. "
+                    "¿Cuál es el procedimiento legal exacto bajo COOTAD y el reglamento SINFÍN "
+                    "para reclasificar partidas presupuestarias con perspectiva de género, "
+                    "quién firma la resolución y cuánto tiempo toma el registro en eSIGEF?"
+                )
+                st.rerun()
+        with c2:
+            if st.button("💸 Ver Cooperación Internacional", use_container_width=True):
+                st.session_state["page"] = "cooperacion"
+                st.rerun()
+        with c3:
+            if st.button("🌐 Ver ODS Tracker", use_container_width=True):
+                st.session_state["page"] = "ods"
+                st.rerun()
+
+    # ══════════════════════════════════════════════════════════════════════
+    # TAB 2: AMBIENTE
+    # ══════════════════════════════════════════════════════════════════════
+    with tab2:
+        fa_ini    = sum(1 for m in FA_METAS if m[3] > 0)
+        fa_no_ini = sum(1 for m in FA_METAS if m[3] == 0)
+
+        amb_kpi_html = f"""
+<div class="grid-4" style="margin-bottom:16px">
+  <div style="background:rgba(0,224,150,.06);border:1px solid rgba(0,224,150,.2);
+              border-radius:12px;padding:14px;text-align:center">
+    <div style="font-size:34px;font-weight:900;color:var(--green);font-family:monospace">{fa_ini}<span style="font-size:14px">/{len(FA_METAS)}</span></div>
+    <div style="font-size:9px;font-weight:700;color:var(--green)">METAS FA INICIADAS</div>
+    <div style="font-size:8px;color:var(--muted)">Ti > 0% · H31_REPORTE_CPCCS</div>
+  </div>
+  <div style="background:rgba(255,77,109,.07);border:1px solid rgba(255,77,109,.2);
+              border-radius:12px;padding:14px;text-align:center">
+    <div style="font-size:34px;font-weight:900;color:var(--red);font-family:monospace">{fa_no_ini}</div>
+    <div style="font-size:9px;font-weight:700;color:var(--red)">SIN INICIAR</div>
+    <div style="font-size:8px;color:var(--muted)">CC + DIS · riesgo RDC 2026</div>
+  </div>
+  <div style="background:rgba(0,212,255,.06);border:1px solid rgba(0,212,255,.2);
+              border-radius:12px;padding:14px;text-align:center">
+    <div style="font-size:34px;font-weight:900;color:var(--cyan);font-family:monospace">74</div>
+    <div style="font-size:9px;font-weight:700;color:var(--cyan)">FICHAS PP 2026</div>
+    <div style="font-size:8px;color:var(--muted)">Aseo / Recolección / Ambiente</div>
+  </div>
+  <div style="background:rgba(0,224,150,.04);border:1px solid rgba(0,224,150,.15);
+              border-radius:12px;padding:14px;text-align:center">
+    <div style="font-size:34px;font-weight:900;color:var(--green);font-family:monospace">30</div>
+    <div style="font-size:9px;font-weight:700;color:var(--green)">APORTES RDC FA</div>
+    <div style="font-size:8px;color:var(--muted)">Componente más demandado · H10c</div>
+  </div>
+</div>"""
+
+        fa_cards = "".join(_fa_card(m) for m in FA_METAS)
+        fa_metas_html = f"""
+<div class="card" style="margin-bottom:16px">
+  <div class="card-title">🌿 6 METAS BIOFÍSICO-AMBIENTE · PDOT 2023-2027 · Estado Q1-2026</div>
+  <div style="font-size:8px;color:rgba(0,212,255,.7);margin-bottom:10px;padding:5px 10px;
+              background:rgba(0,212,255,.05);border-radius:5px;
+              border:1px solid rgba(0,212,255,.1)">
+    Fuente: H31_REPORTE_CPCCS · Ti = ejecución presupuestaria Q1-2026 ·
+    Vi = verificación documental proyectada · Meta PDOT 2027
+  </div>
+  <div class="grid-2" style="gap:10px">
+    <div>{fa_cards[:len(fa_cards)//2 + 200]}</div>
+    <div>{"".join(_fa_card(m) for m in FA_METAS[3:])}</div>
+  </div>
+</div>"""
+
+        fa_metas_html = f"""
+<div class="card" style="margin-bottom:16px">
+  <div class="card-title">🌿 6 METAS BIOFÍSICO-AMBIENTE · PDOT 2023-2027 · Estado Q1-2026</div>
+  <div style="font-size:8px;color:rgba(0,212,255,.7);margin-bottom:10px;padding:5px 10px;
+              background:rgba(0,212,255,.05);border-radius:5px;border:1px solid rgba(0,212,255,.1)">
+    Fuente: H31_REPORTE_CPCCS · Ti = ejecución presupuestaria Q1-2026 ·
+    Vi ✅ verificada / ⬜ sin verificar · Meta global al 2027
+  </div>
+  {"".join(_fa_card(m) for m in FA_METAS)}
+  <div style="margin-top:8px;padding:8px 10px;background:rgba(255,77,109,.06);
+              border:1px solid rgba(255,77,109,.15);border-radius:7px;
+              font-size:10px;color:var(--red)">
+    ⚠ <strong>Riesgo RDC 2026:</strong> FA-CC-01 (Cambio Climático) y FA-DIS-01 (Disposición Final)
+    muestran Ti=0% en Q1-2026. Sin acciones documentadas antes de junio,
+    estas metas aparecerán como incumplidas en el informe CPCCS.
+  </div>
+</div>"""
+
+        alin_html = f"""
+<div style="background:rgba(0,224,150,.04);border:1px solid rgba(0,224,150,.15);
+            border-radius:12px;padding:14px 16px;margin-bottom:16px">
+  <div style="font-size:11px;font-weight:700;color:var(--green);margin-bottom:10px">
+    🔄 CICLO VERIFICADO: RDC DEMANDAS AMBIENTE → PP 2026 PRIORIDADES
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+    <div>
+      <div style="font-size:9px;font-weight:700;color:var(--muted);margin-bottom:8px">
+        APORTES RDC 2023-2024 · COMPONENTE FA (30 registros · H10c)
+      </div>
+      {"".join(
+        f'<div style="font-size:9px;color:var(--white);padding:5px 8px;'
+        f'background:rgba(255,255,255,.02);border-radius:5px;margin-bottom:3px">'
+        f'{"🔴" if "Pepa de Huso" in t or "ladrillera" in t or "Climát" in t else "🟡"} {t}</div>'
+        for t in [
+            "Culminar ducto cajón aguas residuales (Pepa de Huso)",
+            "Recolección basura periódica en múltiples sectores",
+            "Reforestar barrio Santa Isabella",
+            "Reubicación ladrilleras en la Y",
+            "Control chancheras y empresas por mal olor",
+            "Coordinar obras destrucción cerro carretera Toalla",
+            "Visitas periódicas a empresas (control ambiental)",
+        ]
+      )}
+    </div>
+    <div>
+      <div style="font-size:9px;font-weight:700;color:var(--muted);margin-bottom:8px">
+        PP 2026 · TOP PRIORIDADES AMBIENTE
+      </div>
+      <div style="padding:10px;background:rgba(0,212,255,.06);border-radius:8px;
+                  border:1px solid rgba(0,212,255,.15);margin-bottom:6px">
+        <div style="font-size:10px;font-weight:700;color:var(--cyan)">#1 Agua Potable / Saneamiento</div>
+        <div style="font-size:28px;font-weight:900;color:var(--cyan);font-family:monospace">126 fichas</div>
+        <div style="font-size:8px;color:var(--muted)">Incluye alcantarillado y aguas servidas</div>
+      </div>
+      <div style="padding:10px;background:rgba(0,224,150,.06);border-radius:8px;
+                  border:1px solid rgba(0,224,150,.15)">
+        <div style="font-size:10px;font-weight:700;color:var(--green)">#5 Aseo / Recolección / Ambiente</div>
+        <div style="font-size:28px;font-weight:900;color:var(--green);font-family:monospace">74 fichas</div>
+        <div style="font-size:8px;color:var(--muted)">EP Aseo · EMAIMEP · gestión residuos</div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:10px;padding:6px 10px;background:rgba(0,224,150,.05);
+              border-radius:6px;font-size:9px;color:var(--green)">
+    FA fue el componente más demandado en RDC (30/95 aportes = 31.6%) →
+    Agua+Aseo son prioridades #1 y #5 en PP 2026 → el ciclo participativo está funcionando.
+  </div>
+</div>"""
+
+        tab2_content = amb_kpi_html + fa_metas_html + alin_html
+        render_page(tab2_content, show_tech=show_tech, height=1500)
+
+        st.markdown("---")
+        c1, c2, c3 = st.columns(3)
+        with c1:
+            if st.button("🔮 Sentinel · Estrategia FA metas críticas",
+                         use_container_width=True, type="primary"):
+                st.session_state["page"] = "sentinel"
+                st.session_state["sentinel_pregunta_auto"] = (
+                    "En el componente biofísico-ambiental del PDOT 2023-2027 de Montecristi, "
+                    "FA-CC-01 (Cambio Climático: 4 planes al 2027) y FA-DIS-01 (Disposición final "
+                    "desechos: 0→20%) muestran Ti=0% en Q1-2026. El componente FA fue el más "
+                    "demandado en RDC 2023-2024 con 30 aportes ciudadanos. "
+                    "¿Qué acciones concretas puede tomar el GAD en Q2-2026 para iniciar estos dos "
+                    "planes antes del informe RDC de junio, qué competencias institucionales "
+                    "intervienen y qué presupuesto mínimo requiere cada uno?"
+                )
+                st.rerun()
+        with c2:
+            if st.button("🗳️ Ver Gobernanza Participativa", use_container_width=True):
+                st.session_state["page"] = "gobernanza"
+                st.rerun()
+        with c3:
+            if st.button("🌐 Ver ODS Tracker", use_container_width=True):
+                st.session_state["page"] = "ods"
+                st.rerun()

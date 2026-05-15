@@ -1,6 +1,7 @@
 """
 QUIRA OS v0.1 — P-13 Simulador de Escenarios
 ¿Qué ICGI-T logramos si mejoramos X? · Motor de escenarios interactivo
+Tab 2: Sensibilidad IRS · Composite_Need v2.1 · Análisis del tester
 Dylus Lab © 2026
 """
 import streamlit as st
@@ -8,7 +9,6 @@ from data.loader import load_all
 from utils.session import is_tecnico
 
 # ── MODELO SIMPLIFICADO ICGI-T ────────────────────────────────────────────────
-# Pesos derivados del SIAP-ICPI v1.0222 (suma ≈ 1.0)
 _VECTORES = [
     {
         "key":     "isp",
@@ -16,8 +16,8 @@ _VECTORES = [
         "nombre":  "Salud Presupuestaria",
         "actual":  14.58,
         "meta":    65.0,
-        "peso":    0.22,     # peso en el ICGI-T
-        "impacto": -8.2,     # pts ICGI-T perdidos Q1-2026
+        "peso":    0.22,
+        "impacto": -8.2,
         "color":   "🔴",
         "accion":  "Activar coactivas + catastro predial",
     },
@@ -78,21 +78,26 @@ _VECTORES = [
     },
 ]
 
-_SCORE_BASE  = 53.56   # ICGI-T Q1-2026
-_SCORE_2025  = 69.93   # pico 2025
+_SCORE_BASE   = 53.56
 _META_MANDATO = 70.0
+
+# ── IRS SENSITIVITY DATA (Tester v2.1 · Composite_Need analysis) ──────────────
+# Columns: label, w_agua_gap(%), w_nbi(%), w_pop(%), irs_global
+_IRS_ESCENARIOS = [
+    {"label": "Base Anterior",       "w_agua": 45, "w_nbi": 30, "w_pop": 25, "irs": 78.4, "rec": False},
+    {"label": "Alto énfasis NBI",    "w_agua": 35, "w_nbi": 50, "w_pop": 15, "irs": 82.1, "rec": False},
+    {"label": "Alto énfasis Agua",   "w_agua": 60, "w_nbi": 25, "w_pop": 15, "irs": 76.9, "rec": False},
+    {"label": "★ Recomendado v2.1",  "w_agua": 50, "w_nbi": 30, "w_pop": 20, "irs": 79.7, "rec": True},
+    {"label": "Bajo énfasis NBI",    "w_agua": 50, "w_nbi": 20, "w_pop": 30, "irs": 74.3, "rec": False},
+    {"label": "Muy bajo NBI",        "w_agua": 55, "w_nbi": 15, "w_pop": 30, "irs": 71.8, "rec": False},
+]
 
 
 def _calcular_icgit(mejoras: dict) -> float:
-    """
-    Calcula el ICGI-T proyectado dado un dict {key: nuevo_valor}.
-    Modelo lineal: cada punto de mejora en el vector genera
-    (mejora_pts / rango_vector) * peso * 100 puntos de ICGI-T.
-    """
     score = _SCORE_BASE
     for v in _VECTORES:
         nuevo = mejoras.get(v["key"], v["actual"])
-        delta = nuevo - v["actual"]   # cuánto mejora el vector
+        delta = nuevo - v["actual"]
         rango = v["meta"] - v["actual"]
         if rango > 0 and delta > 0:
             fraccion = min(delta / rango, 1.0)
@@ -101,15 +106,18 @@ def _calcular_icgit(mejoras: dict) -> float:
 
 
 def _avep_label(s: float) -> tuple[str, str]:
-    if s >= 85:
-        return "Excelencia Institucional", "green"
-    if s >= 70:
-        return "Gestión por Mandato", "green"
-    if s >= 50:
-        return "Transición Crítica", "amber"
-    if s >= 30:
-        return "Gestión por Ocurrencia", "red"
+    if s >= 85: return "Excelencia Institucional", "green"
+    if s >= 70: return "Gestión por Mandato",      "green"
+    if s >= 50: return "Transición Crítica",        "amber"
+    if s >= 30: return "Gestión por Ocurrencia",    "red"
     return "Ruptura Sistémica", "red"
+
+
+def _avep_irs(v: float) -> tuple[str, str]:
+    if v >= 70: return "Muy Regresivo", "red"
+    if v >= 50: return "Regresivo",     "amber"
+    if v >= 30: return "Moderado",      "amber"
+    return "Equitativo", "green"
 
 
 def _gauge_bar(score: float, label: str, col: str) -> str:
@@ -129,11 +137,26 @@ def _gauge_bar(score: float, label: str, col: str) -> str:
 </div>"""
 
 
+def _irs_interpolado(w_nbi: float) -> float:
+    """Interpolación lineal a trozos desde los puntos validados por el tester."""
+    # Sorted by w_nbi, averaging duplicates (w_nbi=30 aparece dos veces: 78.4 y 79.7)
+    pts = [(15, 71.8), (20, 74.3), (25, 76.9), (30, 79.05), (50, 82.1)]
+    if w_nbi <= pts[0][0]:
+        return pts[0][1]
+    if w_nbi >= pts[-1][0]:
+        return round(pts[-1][1] + (w_nbi - pts[-1][0]) * 0.06, 1)
+    for i in range(len(pts) - 1):
+        x0, y0 = pts[i]
+        x1, y1 = pts[i + 1]
+        if x0 <= w_nbi <= x1:
+            return round(y0 + (y1 - y0) * (w_nbi - x0) / (x1 - x0), 1)
+    return 79.7
+
+
 def render() -> None:
-    load_all()   # caché warm-up
+    load_all()
     is_tecnico()
 
-    # ── HEADER NATIVO ─────────────────────────────────────────────────────────
     st.markdown("""
 <style>
 .sim-card {
@@ -170,76 +193,70 @@ def render() -> None:
 """, unsafe_allow_html=True)
 
     st.markdown("""
-<div style="margin-bottom:20px">
+<div style="margin-bottom:16px">
   <div style="font-size:11px;font-weight:700;color:#00D4FF;
               text-transform:uppercase;letter-spacing:.12em;margin-bottom:4px">
     ⑨ SIMULADOR DE ESCENARIOS
   </div>
-  <div style="font-size:22px;font-weight:900;color:#F0F4FF;margin-bottom:6px">
-    ¿Qué ICGI-T logramos si mejoramos X?
+  <div style="font-size:22px;font-weight:900;color:#F0F4FF;margin-bottom:4px">
+    Motor de Escenarios QUIRA OS
   </div>
   <div style="font-size:11px;color:rgba(255,255,255,0.45)">
-    Mueve los sliders para simular el impacto de cada vector sobre el ICGI-T proyectado
-    · Modelo SIAP-ICPI v1.0222 · Base Q1-2026
+    Tab 1: ICGI-T — vectores de mejora · Tab 2: IRS — sensibilidad Composite_Need v2.1
   </div>
 </div>
 """, unsafe_allow_html=True)
 
-    # ── LAYOUT: sliders izquierda · resultado derecha ─────────────────────────
-    col_sliders, col_resultado = st.columns([3, 2], gap="large")
+    tab1, tab2 = st.tabs(["📊 ICGI-T · Vectores de Mejora", "🔴 IRS · Sensibilidad Composite_Need"])
 
-    mejoras = {}
+    # ══════════════════════════════════════════════════════════════════════════
+    # TAB 1 — ICGI-T SIMULATOR (existing content)
+    # ══════════════════════════════════════════════════════════════════════════
+    with tab1:
+        col_sliders, col_resultado = st.columns([3, 2], gap="large")
+        mejoras = {}
 
-    with col_sliders:
-        st.markdown('<div class="sim-label">VECTORES DE MEJORA · MUEVE LOS SLIDERS</div>',
-                    unsafe_allow_html=True)
-
-        for v in _VECTORES:
-            st.markdown(
-                f'<div style="font-size:11px;font-weight:700;color:#E2E8F0;margin-bottom:2px">'
-                f'{v["color"]} {v["codigo"]} · {v["nombre"]}</div>'
-                f'<div style="font-size:9px;color:rgba(255,255,255,.4);margin-bottom:4px">'
-                f'Actual: {v["actual"]:.1f}% · Meta: {v["meta"]:.0f}% · '
-                f'Impacto base: {v["impacto"]:.1f} pts</div>',
-                unsafe_allow_html=True,
-            )
-            nuevo_val = st.slider(
-                label=v["codigo"],
-                min_value=float(v["actual"]),
-                max_value=float(v["meta"]),
-                value=float(v["actual"]),
-                step=0.5,
-                format="%.1f%%",
-                label_visibility="collapsed",
-                key=f"sim_{v['key']}",
-            )
-            mejoras[v["key"]] = nuevo_val
-
-            ganancia = nuevo_val - v["actual"]
-            if ganancia > 0.1:
+        with col_sliders:
+            st.markdown('<div class="sim-label">VECTORES DE MEJORA · MUEVE LOS SLIDERS</div>',
+                        unsafe_allow_html=True)
+            for v in _VECTORES:
                 st.markdown(
-                    f'<div style="font-size:9px;color:#00E096;margin-bottom:12px">'
-                    f'▲ +{ganancia:.1f} pts en {v["codigo"]} '
-                    f'→ contribuye al ICGI-T</div>',
+                    f'<div style="font-size:11px;font-weight:700;color:#E2E8F0;margin-bottom:2px">'
+                    f'{v["color"]} {v["codigo"]} · {v["nombre"]}</div>'
+                    f'<div style="font-size:9px;color:rgba(255,255,255,.4);margin-bottom:4px">'
+                    f'Actual: {v["actual"]:.1f}% · Meta: {v["meta"]:.0f}% · '
+                    f'Impacto base: {v["impacto"]:.1f} pts</div>',
                     unsafe_allow_html=True,
                 )
-            else:
-                st.markdown('<div style="margin-bottom:12px"></div>',
-                            unsafe_allow_html=True)
+                nuevo_val = st.slider(
+                    label=v["codigo"],
+                    min_value=float(v["actual"]),
+                    max_value=float(v["meta"]),
+                    value=float(v["actual"]),
+                    step=0.5,
+                    format="%.1f%%",
+                    label_visibility="collapsed",
+                    key=f"sim_{v['key']}",
+                )
+                mejoras[v["key"]] = nuevo_val
+                ganancia = nuevo_val - v["actual"]
+                if ganancia > 0.1:
+                    st.markdown(
+                        f'<div style="font-size:9px;color:#00E096;margin-bottom:12px">'
+                        f'▲ +{ganancia:.1f} pts en {v["codigo"]} → contribuye al ICGI-T</div>',
+                        unsafe_allow_html=True,
+                    )
+                else:
+                    st.markdown('<div style="margin-bottom:12px"></div>', unsafe_allow_html=True)
 
-    with col_resultado:
-        score_proj = _calcular_icgit(mejoras)
-        avep_label, avep_col = _avep_label(score_proj)
-        delta_vs_base = score_proj - _SCORE_BASE
-        delta_vs_meta = score_proj - _META_MANDATO
+        with col_resultado:
+            score_proj = _calcular_icgit(mejoras)
+            avep_label, avep_col = _avep_label(score_proj)
+            delta_vs_base = score_proj - _SCORE_BASE
+            delta_vs_meta = score_proj - _META_MANDATO
+            col_score_hex = {"green": "#00E096", "amber": "#FFB800", "red": "#FF4D6D"}[avep_col]
 
-        col_score_hex = {
-            "green": "#00E096",
-            "amber": "#FFB800",
-            "red":   "#FF4D6D",
-        }[avep_col]
-
-        st.markdown(f"""
+            st.markdown(f"""
 <div class="sim-card" style="border-top:3px solid {col_score_hex}">
   <div class="sim-label">ICGI-T PROYECTADO</div>
   <div class="sim-score" style="color:{col_score_hex}">{score_proj:.2f}<span style="font-size:28px">%</span></div>
@@ -247,20 +264,17 @@ def render() -> None:
 </div>
 """, unsafe_allow_html=True)
 
-        # Comparativas
-        st.markdown('<div class="sim-label" style="margin-top:8px">COMPARATIVAS</div>',
-                    unsafe_allow_html=True)
-        st.markdown(
-            _gauge_bar(_SCORE_BASE, "Q1-2026 (base)", "red")
-            + _gauge_bar(score_proj,  f"Proyectado ({avep_label[:10]})", avep_col)
-            + _gauge_bar(69.93,       "2025 (pico)",  "amber")
-            + _gauge_bar(70.0,        "Meta mandato", "green"),
-            unsafe_allow_html=True,
-        )
+            st.markdown('<div class="sim-label" style="margin-top:8px">COMPARATIVAS</div>',
+                        unsafe_allow_html=True)
+            st.markdown(
+                _gauge_bar(_SCORE_BASE, "Q1-2026 (base)", "red")
+                + _gauge_bar(score_proj, f"Proyectado ({avep_label[:10]})", avep_col)
+                + _gauge_bar(69.93, "2025 (pico)", "amber")
+                + _gauge_bar(70.0, "Meta mandato", "green"),
+                unsafe_allow_html=True,
+            )
 
-        # Delta badge
-        delta_col = "green" if delta_vs_base >= 0 else "red"
-        st.markdown(f"""
+            st.markdown(f"""
 <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
   <div style="background:rgba(0,224,150,.08);border:1px solid rgba(0,224,150,.25);
               border-radius:9px;padding:10px 14px;flex:1;text-align:center">
@@ -279,75 +293,331 @@ def render() -> None:
 </div>
 """, unsafe_allow_html=True)
 
-        # Mensaje contextual
-        if score_proj >= 70:
-            st.success(f"🎯 ¡Gestión por Mandato alcanzada! Con estas mejoras el GAD supera la meta al cierre 2026.")
-        elif score_proj >= 65:
-            st.warning(f"🟡 Cerca de la meta. Quedan {_META_MANDATO - score_proj:.2f} pts para Gestión por Mandato.")
-        elif score_proj > _SCORE_BASE:
-            st.info(f"📈 Mejora real vs Q1-2026. Continúa ajustando los vectores de mayor peso (ISP, IED).")
-        else:
-            st.error("⚠️ Sin cambios. Mueve los sliders para simular mejoras.")
+            if score_proj >= 70:
+                st.success("🎯 ¡Gestión por Mandato alcanzada! Con estas mejoras el GAD supera la meta al cierre 2026.")
+            elif score_proj >= 65:
+                st.warning(f"🟡 Cerca de la meta. Quedan {_META_MANDATO - score_proj:.2f} pts para Gestión por Mandato.")
+            elif score_proj > _SCORE_BASE:
+                st.info("📈 Mejora real vs Q1-2026. Continúa ajustando los vectores de mayor peso (ISP, IED).")
+            else:
+                st.error("⚠️ Sin cambios. Mueve los sliders para simular mejoras.")
 
-    # ── ESCENARIOS PREDEFINIDOS ───────────────────────────────────────────────
-    st.markdown("---")
-    st.markdown('<div class="sim-label">⚡ ESCENARIOS RÁPIDOS</div>',
-                unsafe_allow_html=True)
-
-    sc1, sc2, sc3, sc4 = st.columns(4)
-
-    escenarios = [
-        ("🔴 Solo ISP",         {"isp": 65.0}, "Resuelves deuda tributaria · ISP al 65%"),
-        ("⚡ ISP + IED",        {"isp": 65.0, "ied": 60.0}, "ISP + regularizas cadena PAC"),
-        ("🎯 Meta Q3-2026",     {"isp": 45.0, "ied": 55.0, "igp": 45.0, "psg": 22.0},
-         "Escenario realista Q3-2026"),
-        ("✨ Todos al 80%",     {v["key"]: min(v["meta"], v["actual"] + (v["meta"]-v["actual"])*0.8)
-                                 for v in _VECTORES}, "Mejora ambiciosa todos los vectores"),
-    ]
-
-    for col, (label, vals, desc) in zip([sc1, sc2, sc3, sc4], escenarios):
-        proj = _calcular_icgit({**{v["key"]: v["actual"] for v in _VECTORES}, **vals})
-        avep_l, avep_c = _avep_label(proj)
-        col_hex = {"green": "#00E096", "amber": "#FFB800", "red": "#FF4D6D"}[avep_c]
-        with col:
-            st.markdown(f"""
+        # Escenarios predefinidos
+        st.markdown("---")
+        st.markdown('<div class="sim-label">⚡ ESCENARIOS RÁPIDOS</div>', unsafe_allow_html=True)
+        sc1, sc2, sc3, sc4 = st.columns(4)
+        escenarios = [
+            ("🔴 Solo ISP",     {"isp": 65.0},                                   "Resuelves deuda tributaria"),
+            ("⚡ ISP + IED",    {"isp": 65.0, "ied": 60.0},                      "ISP + regularizas cadena PAC"),
+            ("🎯 Meta Q3-2026", {"isp": 45.0, "ied": 55.0, "igp": 45.0, "psg": 22.0}, "Escenario realista Q3"),
+            ("✨ Todos al 80%", {v["key"]: min(v["meta"], v["actual"]+(v["meta"]-v["actual"])*0.8)
+                                  for v in _VECTORES},                            "Mejora ambiciosa"),
+        ]
+        for col, (label, vals, desc) in zip([sc1, sc2, sc3, sc4], escenarios):
+            proj = _calcular_icgit({**{v["key"]: v["actual"] for v in _VECTORES}, **vals})
+            avep_l, avep_c = _avep_label(proj)
+            col_hex = {"green": "#00E096", "amber": "#FFB800", "red": "#FF4D6D"}[avep_c]
+            with col:
+                st.markdown(f"""
 <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);
             border-radius:10px;padding:14px;text-align:center;height:130px;
             display:flex;flex-direction:column;justify-content:space-between">
   <div style="font-size:11px;font-weight:700;color:#E2E8F0">{label}</div>
-  <div style="font-size:28px;font-weight:900;color:{col_hex};
-              font-family:monospace">{proj:.1f}%</div>
+  <div style="font-size:28px;font-weight:900;color:{col_hex};font-family:monospace">{proj:.1f}%</div>
   <div style="font-size:9px;color:rgba(255,255,255,.4)">{desc}</div>
 </div>
 """, unsafe_allow_html=True)
 
-    # ── CTA SENTINEL ──────────────────────────────────────────────────────────
-    st.markdown("---")
-    c1, c2, c3 = st.columns(3)
+        st.markdown("---")
+        c1, c2, c3 = st.columns(3)
+        mejoras_txt = ", ".join(
+            f"{v['codigo']} {mejoras.get(v['key'], v['actual']):.1f}%"
+            for v in _VECTORES if mejoras.get(v['key'], v['actual']) > v['actual'] + 0.1
+        ) or "ninguna mejora aún"
+        with c1:
+            if st.button("🔮 Sentinel · Validar este escenario",
+                         use_container_width=True, type="primary"):
+                st.session_state["page"] = "sentinel"
+                st.session_state["sentinel_pregunta_auto"] = (
+                    f"Estoy simulando un escenario donde el GAD de Montecristi mejora: {mejoras_txt}. "
+                    f"El modelo proyecta un ICGI-T de {score_proj:.2f}% ({avep_label}). "
+                    f"¿Es este escenario realista en el plazo Q2-Q3 2026? "
+                    f"¿Qué obstáculos concretos debo anticipar para alcanzarlo?"
+                )
+                st.rerun()
+        with c2:
+            if st.button("📉 Ver Causas de la Brecha", use_container_width=True):
+                st.session_state["page"] = "brecha"
+                st.rerun()
+        with c3:
+            if st.button("🚨 Ver Alertas SAT", use_container_width=True):
+                st.session_state["page"] = "sat"
+                st.rerun()
 
-    # Construir contexto dinámico con los valores actuales de los sliders
-    mejoras_txt = ", ".join(
-        f"{v['codigo']} {mejoras.get(v['key'], v['actual']):.1f}%"
-        for v in _VECTORES
-        if mejoras.get(v['key'], v['actual']) > v['actual'] + 0.1
-    ) or "ninguna mejora aún"
+    # ══════════════════════════════════════════════════════════════════════════
+    # TAB 2 — IRS SENSITIVITY ANALYSIS
+    # ══════════════════════════════════════════════════════════════════════════
+    with tab2:
+        st.markdown("""
+<div style="margin-bottom:20px">
+  <div style="font-size:11px;font-weight:700;color:#FF4D6D;
+              text-transform:uppercase;letter-spacing:.12em;margin-bottom:4px">
+    🔴 IRS · SENSIBILIDAD COMPOSITE_NEED
+  </div>
+  <div style="font-size:20px;font-weight:900;color:#F0F4FF;margin-bottom:6px">
+    ¿Cómo cambian IRS e IET al variar los pesos?
+  </div>
+  <div style="font-size:11px;color:rgba(255,255,255,0.45)">
+    Composite_Need = <strong style="color:#FF4D6D">w_Agua</strong>×(1-Agua/100) +
+    <strong style="color:#FF4D6D">w_NBI</strong>×(NBI/100) +
+    <strong style="color:#FF4D6D">w_Pop</strong>×(Pop/total) · suma = 100%
+    · IRS = -CORREL(Composite_Need, Inv_PerCápita) × 100
+  </div>
+</div>
+""", unsafe_allow_html=True)
 
-    with c1:
-        if st.button("🔮 Sentinel · Validar este escenario",
-                     use_container_width=True, type="primary"):
-            st.session_state["page"] = "sentinel"
-            st.session_state["sentinel_pregunta_auto"] = (
-                f"Estoy simulando un escenario donde el GAD de Montecristi mejora: {mejoras_txt}. "
-                f"El modelo proyecta un ICGI-T de {score_proj:.2f}% ({avep_label}). "
-                f"¿Es este escenario realista en el plazo Q2-Q3 2026? "
-                f"¿Qué obstáculos concretos debo anticipar para alcanzarlo?"
+        # ── Tabla de escenarios + chart ───────────────────────────────────────
+        col_t, col_c = st.columns([3, 2], gap="large")
+
+        with col_t:
+            st.markdown('<div class="sim-label">TABLA DE SENSIBILIDAD · 6 ESCENARIOS VALIDADOS</div>',
+                        unsafe_allow_html=True)
+            rows_html = ""
+            for s in _IRS_ESCENARIOS:
+                irs_col = "#00E096" if s["irs"] < 75 else ("#FFB800" if s["irs"] < 80 else "#FF4D6D")
+                rec_badge = ('<span style="font-size:8px;background:rgba(0,212,255,.15);'
+                             'color:#00D4FF;border-radius:4px;padding:1px 5px;margin-left:4px">'
+                             'OFICIAL</span>') if s["rec"] else ""
+                bg = "rgba(0,212,255,.06)" if s["rec"] else "rgba(255,255,255,.02)"
+                border = "1px solid rgba(0,212,255,.3)" if s["rec"] else "1px solid rgba(255,255,255,.07)"
+                rows_html += f"""
+<div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1.2fr;
+            gap:8px;padding:8px 10px;background:{bg};border:{border};
+            border-radius:7px;margin-bottom:4px;align-items:center">
+  <div style="font-size:10px;font-weight:700;color:#E2E8F0">
+    {s["label"]}{rec_badge}
+  </div>
+  <div style="font-size:10px;color:rgba(255,255,255,.5);text-align:center">
+    <div style="font-size:8px;color:rgba(255,255,255,.3)">Agua</div>
+    {s["w_agua"]}%
+  </div>
+  <div style="font-size:10px;color:rgba(255,255,255,.5);text-align:center">
+    <div style="font-size:8px;color:rgba(255,255,255,.3)">NBI</div>
+    {s["w_nbi"]}%
+  </div>
+  <div style="font-size:10px;color:rgba(255,255,255,.5);text-align:center">
+    <div style="font-size:8px;color:rgba(255,255,255,.3)">Pob</div>
+    {s["w_pop"]}%
+  </div>
+  <div style="font-size:14px;font-weight:900;color:{irs_col};text-align:right;
+              font-family:monospace">
+    {s["irs"]}
+  </div>
+</div>"""
+            st.markdown(rows_html, unsafe_allow_html=True)
+            st.markdown("""
+<div style="margin-top:8px;padding:8px 10px;background:rgba(255,77,109,.05);
+            border:1px solid rgba(255,77,109,.2);border-radius:7px;
+            font-size:9px;color:rgba(255,255,255,.4);line-height:1.7">
+  Fuente: Análisis de sensibilidad del tester SIAP-ICPI v2.1 · 7 parroquias Montecristi
+  · En todos los escenarios el IRS es ≥71.8% → zona <strong style="color:#FF4D6D">Muy Regresivo</strong>
+  · La inversión pública NO llega proporcionalmente a donde más se necesita
+</div>
+""", unsafe_allow_html=True)
+
+        with col_c:
+            try:
+                import plotly.graph_objects as go
+                nbi_pesos  = [s["w_nbi"] for s in _IRS_ESCENARIOS]
+                irs_vals   = [s["irs"]   for s in _IRS_ESCENARIOS]
+                rec_colors = ["#00D4FF" if s["rec"] else "#FF4D6D" for s in _IRS_ESCENARIOS]
+                rec_sizes  = [14 if s["rec"] else 8 for s in _IRS_ESCENARIOS]
+
+                # Smooth curve (interpolated)
+                nbi_range = list(range(10, 61))
+                irs_curve = [_irs_interpolado(n) for n in nbi_range]
+
+                fig = go.Figure()
+                fig.add_trace(go.Scatter(
+                    x=nbi_range, y=irs_curve,
+                    mode="lines",
+                    line=dict(color="rgba(255,77,109,0.4)", width=2, dash="dot"),
+                    showlegend=False, name="Interpolado",
+                ))
+                fig.add_trace(go.Scatter(
+                    x=nbi_pesos, y=irs_vals,
+                    mode="markers+text",
+                    marker=dict(size=rec_sizes, color=rec_colors,
+                                line=dict(width=1, color="#1A2942")),
+                    text=[f"{v:.1f}" for v in irs_vals],
+                    textposition="top center",
+                    textfont=dict(size=9, color="#E2E8F0"),
+                    showlegend=False, name="Escenarios",
+                ))
+                fig.add_annotation(
+                    x=30, y=79.7,
+                    text="★ Recomendado<br>v2.1 Oficial",
+                    showarrow=True,
+                    arrowhead=2, arrowcolor="#00D4FF", arrowwidth=1.5,
+                    font=dict(size=9, color="#00D4FF"),
+                    ax=40, ay=-30,
+                )
+                fig.update_layout(
+                    title=dict(text="IRS vs Peso NBI (%)", font=dict(size=11, color="#9BA3B2"), x=0),
+                    xaxis=dict(title="Peso NBI (%)", color="#9BA3B2",
+                               gridcolor="rgba(255,255,255,0.05)", range=[8, 58]),
+                    yaxis=dict(title="IRS Global", color="#9BA3B2",
+                               gridcolor="rgba(255,255,255,0.05)", range=[68, 86]),
+                    plot_bgcolor="#0D1B2F",
+                    paper_bgcolor="#0D1B2F",
+                    margin=dict(l=40, r=20, t=40, b=40),
+                    height=280,
+                    font=dict(color="#9BA3B2"),
+                )
+                fig.add_hrect(y0=70, y1=86, fillcolor="rgba(255,77,109,0.06)",
+                              line_width=0, annotation_text="Muy Regresivo",
+                              annotation_font=dict(size=8, color="rgba(255,77,109,0.5)"),
+                              annotation_position="top left")
+                st.plotly_chart(fig, use_container_width=True)
+            except ImportError:
+                st.info("Instalar plotly para ver el gráfico: `pip install plotly`")
+
+        # ── Modo Interactivo ──────────────────────────────────────────────────
+        st.markdown("---")
+        st.markdown("""
+<div style="font-size:11px;font-weight:700;color:#FF4D6D;
+            text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px">
+  🎛️ MODO INTERACTIVO · Mueve los pesos y ve el IRS en tiempo real
+</div>
+""", unsafe_allow_html=True)
+
+        col_sl, col_res = st.columns([2, 3], gap="large")
+
+        with col_sl:
+            w_nbi_s = st.slider(
+                "Peso NBI (%)",
+                min_value=10, max_value=60, value=30, step=5,
+                key="irs_w_nbi",
+                help="Importancia del NBI en el Composite_Need",
             )
-            st.rerun()
-    with c2:
-        if st.button("📉 Ver Causas de la Brecha", use_container_width=True):
-            st.session_state["page"] = "brecha"
-            st.rerun()
-    with c3:
-        if st.button("🚨 Ver Alertas SAT", use_container_width=True):
-            st.session_state["page"] = "sat"
-            st.rerun()
+            w_agua_s = st.slider(
+                "Peso Agua/TPS (%)",
+                min_value=10, max_value=70, value=50, step=5,
+                key="irs_w_agua",
+                help="Importancia de la brecha de cobertura de agua",
+            )
+            w_pop_s = 100 - w_nbi_s - w_agua_s
+            total_ok = w_pop_s >= 0
+
+            if total_ok:
+                st.markdown(
+                    f'<div style="font-size:10px;color:rgba(255,255,255,.5);margin-top:4px">'
+                    f'Peso Población (automático): <strong style="color:#00D4FF">{w_pop_s}%</strong>'
+                    f' · Suma total: 100%</div>',
+                    unsafe_allow_html=True,
+                )
+            else:
+                st.error(f"⚠ Suma supera 100% (exceso: {-w_pop_s}%). Reduce los pesos anteriores.")
+
+        with col_res:
+            if total_ok:
+                irs_dyn = _irs_interpolado(w_nbi_s)
+                irs_label, irs_col = _avep_irs(irs_dyn)
+                col_hex_irs = {"red": "#FF4D6D", "amber": "#FFB800", "green": "#00E096"}[irs_col]
+
+                # Find closest reference scenario
+                closest = min(_IRS_ESCENARIOS,
+                              key=lambda s: abs(s["w_nbi"] - w_nbi_s) + abs(s["w_agua"] - w_agua_s))
+                diff_ref = irs_dyn - 79.7
+
+                st.markdown(f"""
+<div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px">
+  <div style="flex:1;min-width:120px;background:rgba(255,77,109,.08);
+              border:1px solid rgba(255,77,109,.3);border-radius:12px;
+              padding:16px;text-align:center">
+    <div style="font-size:9px;color:rgba(255,255,255,.4);margin-bottom:4px">IRS SIMULADO</div>
+    <div style="font-size:44px;font-weight:900;color:{col_hex_irs};
+                font-family:monospace;line-height:1">{irs_dyn}</div>
+    <div style="font-size:10px;font-weight:700;color:{col_hex_irs};margin-top:4px">{irs_label}</div>
+  </div>
+  <div style="flex:2;display:flex;flex-direction:column;gap:8px;justify-content:center">
+    <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);
+                border-radius:8px;padding:10px 12px">
+      <div style="font-size:9px;color:rgba(255,255,255,.4);margin-bottom:3px">vs Oficial v2.1 (79.7)</div>
+      <div style="font-size:15px;font-weight:800;
+                  color:{'#00E096' if abs(diff_ref)<2 else '#FFB800'}">
+        {'+' if diff_ref>0 else ''}{diff_ref:.1f} pts
+      </div>
+    </div>
+    <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);
+                border-radius:8px;padding:10px 12px">
+      <div style="font-size:9px;color:rgba(255,255,255,.4);margin-bottom:3px">
+        Escenario más cercano
+      </div>
+      <div style="font-size:11px;font-weight:700;color:#E2E8F0">{closest["label"]}</div>
+      <div style="font-size:9px;color:rgba(255,255,255,.4)">IRS validado: {closest["irs"]}</div>
+    </div>
+  </div>
+</div>
+
+<div style="background:rgba(0,212,255,.05);border:1px solid rgba(0,212,255,.15);
+            border-radius:8px;padding:8px 12px;font-size:9px;color:rgba(255,255,255,.4)">
+  💡 Configuración actual: Agua={w_agua_s}% · NBI={w_nbi_s}% · Pob={w_pop_s}%
+  · IRS interpolado desde datos del tester v2.1
+  · <strong style="color:#00D4FF">Recomendado para reportes externos: Agua=50 / NBI=30 / Pob=20</strong>
+</div>
+""", unsafe_allow_html=True)
+
+        # ── Conclusiones del tester ───────────────────────────────────────────
+        st.markdown("""
+<div style="background:rgba(255,77,109,.05);border:1px solid rgba(255,77,109,.2);
+            border-radius:12px;padding:14px 16px;margin-top:8px">
+  <div style="font-size:11px;font-weight:700;color:#FF4D6D;margin-bottom:8px">
+    📋 CONCLUSIONES ANÁLISIS DE SENSIBILIDAD (Tester v2.1)
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+    <div style="font-size:10px;color:rgba(255,255,255,.7);line-height:1.6;
+                padding:8px;background:rgba(255,255,255,.02);border-radius:6px">
+      <strong style="color:#FF4D6D">NBI es el indicador más duro.</strong>
+      A mayor peso NBI → IRS más alto → más inequidad detectada.
+      Rango realista: 71.8–82.1 pts.
+    </div>
+    <div style="font-size:10px;color:rgba(255,255,255,.7);line-height:1.6;
+                padding:8px;background:rgba(255,255,255,.02);border-radius:6px">
+      <strong style="color:#00D4FF">En todos los escenarios</strong>
+      el GAD está en zona <strong>Muy Regresivo</strong> (IRS > 70).
+      Esto es un argumento poderoso para PNUD, BID, GEF.
+    </div>
+    <div style="font-size:10px;color:rgba(255,255,255,.7);line-height:1.6;
+                padding:8px;background:rgba(255,255,255,.02);border-radius:6px">
+      <strong style="color:#FFB800">Peso recomendado (50/30/20)</strong>
+      es el más equilibrado y defendible.
+      Usar en reportes externos y solicitudes de fondos.
+    </div>
+  </div>
+</div>
+""", unsafe_allow_html=True)
+
+        st.markdown("---")
+        c1, c2, c3 = st.columns(3)
+        with c1:
+            if st.button("🔮 Sentinel · Estrategia IRS + cooperantes",
+                         use_container_width=True, type="primary", key="sent_irs"):
+                st.session_state["page"] = "sentinel"
+                st.session_state["sentinel_pregunta_auto"] = (
+                    "El IRS de Montecristi es 79.7% (Muy Regresivo) con pesos Composite_Need "
+                    "Agua=50%, NBI=30%, Población=20%. Esto significa que la inversión pública "
+                    "NO llega proporcionalmente a donde más se necesita. "
+                    "¿Cómo presento este indicador ante PNUD, BID Lab y GEF para fortalecer "
+                    "la solicitud de fondos? ¿Qué acciones concretas en Q2-Q3 2026 reducen el IRS "
+                    "de 79.7% a menos de 65%?"
+                )
+                st.rerun()
+        with c2:
+            if st.button("🗺️ Ver GeoTwin · Territorio", use_container_width=True, key="geo_irs"):
+                st.session_state["page"] = "geotwin"
+                st.rerun()
+        with c3:
+            if st.button("💜 Ver Género y Equidad", use_container_width=True, key="gen_irs"):
+                st.session_state["page"] = "genero"
+                st.rerun()

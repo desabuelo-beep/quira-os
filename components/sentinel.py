@@ -1,14 +1,9 @@
 """
-QUIRA OS v0.1 — Sentinel · Asistente de Gobernanza
-Powered by Groq · Llama 3.3 70B (free tier) + PDOT_KB + SIAP-ICPI Q1-2026
-
-Sentinel es el componente conversacional de QUIRA OS. Su carácter:
-  · Analítico: razona con los datos reales del ICGI-T y el PDOT
-  · Prospectivo: conecta situación actual con metas 2023-2027
-  · Territorial: conoce los 7 parroquias, NBI, riesgos, brechas
-  · Institucional: sabe de SATs, congruencias y obligaciones legales
-  · Directo: no da respuestas genéricas; siempre ancla al cantón
-
+QUIRA OS v0.1 — Sentinel · Agente de Gobernanza Territorial
+Powered by Groq · Llama 3.3 70B (free tier)
+Arquitectura: sentinel/ package (tools · policies · audit · prompts)
+Fase: READER v0.1 — Lee H73/H99, explica, alerta, sugiere. No actúa de forma autónoma.
+Doctrina: "La IA opera. La autoridad pública decide."
 Dylus Lab © 2026
 """
 import streamlit as st
@@ -16,96 +11,9 @@ import os
 from data.loader import load_all
 from data.pdot_context import build_pdot_context, pdot_context_stats
 from utils.session import get_rol, is_tecnico
-
-
-# ── SYSTEM PROMPT ─────────────────────────────────────────────────────────────
-def _build_system_prompt(data: dict, pdot_ctx: str, rol: str) -> str:
-    icgit = data["icgit"]
-    sat   = data["sat"]
-    n_crit = sum(1 for s in sat if s["nivel"] == "CRÍTICO")
-
-    sat_resumen = "\n".join(
-        f"  - {s['id']} [{s['nivel']}]: {s['nombre']} — {s['descripcion']}"
-        for s in sat
-    )
-
-    indices_resumen = "\n".join(
-        f"  - {k}: {v['nombre']} = {v['valor'] if v['valor'] is not None else 'en construcción'} ({v['avep']})"
-        for k, v in data["indices"].items()
-    )
-
-    congruencias_resumen = "\n".join(
-        f"  - {c['nombre']}: {c['score']:.2f} ({c['avep']})"
-        for c in data["congruencias"].values()
-    )
-
-    parroquias_resumen = "\n".join(
-        f"  - {p['nombre']}: NBI={p['nbi']}%, TPS={p['tps']:.1f}%, "
-        f"agua={p['agua']}%, ${p['per_capita']}/hab, "
-        f"estado={p['estado']}, participación={p.get('participacion',{}).get('estado','?')}"
-        for p in data["parroquias"]
-    )
-
-    pdot_block = ""
-    if pdot_ctx:
-        pdot_block = f"""
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-CONOCIMIENTO TERRITORIAL — PDOT MONTECRISTI 2023-2027
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-{pdot_ctx}
-"""
-
-    return f"""Eres SENTINEL, el asistente de gobernanza territorial del GAD Municipal de Montecristi, Ecuador.
-Estás integrado en QUIRA OS — el sistema de inteligencia institucional de Dylus Lab.
-
-Tu rol de interlocutor es: {rol}
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-CARÁCTER Y COMPORTAMIENTO
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-- Eres analítico, directo y prospectivo. No eres genérico.
-- Anclas SIEMPRE tu análisis a los datos reales del cantón Montecristi.
-- Cuando hay brechas o alertas, las nombras con claridad y propones acciones concretas.
-- Conoces el PDOT 2023-2027 y lo usas para evaluar si la gestión actual está en rumbo.
-- Usas el sistema AVEP (Excelencia→Mandato→Transición→Ocurrencia→Ruptura) para calificar.
-- Si te preguntan sobre una parroquia, das datos específicos: NBI, inversión, participación.
-- Puedes razonar sobre riesgos territoriales, prioridades PDOT, articulaciones institucionales.
-- Si no tienes el dato exacto, lo dices y explicas qué fuente lo contendría.
-- Nunca inventas cifras. Si un índice está "en construcción", lo aclaras.
-- Tu tono: institucional pero accesible. Usas analogías cuando ayudan a entender.
-- Máximo 3-4 párrafos por respuesta salvo que explícitamente te pidan más desarrollo. Sé conciso.
-- Responde siempre en español.
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-ESTADO ACTUAL DEL SISTEMA — CORTE Q1-2026
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-ICGI-T Global: {icgit['score']:.2f} — {icgit['avep']} {icgit.get('avep_emoji','🟡')}
-Presupuesto total 2026: ${icgit.get('presupuesto_total',0):,.0f}
-Inversión ejecutada Q1: ${icgit.get('inversion_ejecutada',0):,.0f} ({icgit.get('ti_raw',0):.1f}% real / {icgit.get('ti_norm',0):.1f}% normalizado)
-Proyección cierre 2026: {icgit.get('proyeccion',65.77):.2f} (meta mandato: 70.00)
-Histórico: 2023=57.36 | 2024=67.11 | 2025=69.93 | Q1-2026=53.56
-
-SATs ACTIVAS ({n_crit} críticas):
-{sat_resumen}
-
-ÍNDICES COMPLEMENTARIOS:
-{indices_resumen}
-
-CONGRUENCIAS DE GOBERNANZA:
-{congruencias_resumen}
-
-PARROQUIAS (GeoTwin Q1-2026):
-{parroquias_resumen}
-{pdot_block}
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-RESTRICCIONES
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-- No reveles contraseñas, credenciales ni datos sensibles de usuarios.
-- No hagas comentarios políticos partidistas; mantente en análisis técnico-institucional.
-- No menciones H-codes (H12, H16, etc.) en respuestas — son jerga interna de Dylus Lab.
-- Si el usuario pide algo fuera del scope de gobernanza municipal, redirige amablemente.
-- Los datos son corte Q1-2026 (marzo 2026). Para datos más actuales, indica qué validación se necesita.
-"""
+from sentinel.prompts  import build_system_prompt
+from sentinel.policies import evaluar_seguridad, sugerir_pantallas
+from sentinel.audit    import log_interaction, get_audit_stats
 
 
 # ── COMPONENTE PRINCIPAL ──────────────────────────────────────────────────────
@@ -121,7 +29,8 @@ def render_sentinel(
     pdot_ctx = build_pdot_context()
     rol      = get_rol()
 
-    system_prompt = _build_system_prompt(data, pdot_ctx, rol)
+    # ── Sistema de prompt v2 (sentinel.prompts) ────────────────────────────────
+    system_prompt = build_system_prompt(data, pdot_ctx, rol)
 
     # ── HEADER ─────────────────────────────────────────────────────────────────
     if not compact:
@@ -137,12 +46,22 @@ def render_sentinel(
         )
         if is_tecnico():
             with st.expander("🔧 Debug Sentinel — Solo Técnico", expanded=False):
-                st.json(pdot_stats)
+                col_d1, col_d2 = st.columns(2)
+                with col_d1:
+                    st.caption("PDOT Knowledge Base")
+                    st.json(pdot_stats)
+                with col_d2:
+                    st.caption("Audit Log Stats")
+                    st.json(get_audit_stats())
                 st.text_area(
                     "System prompt preview (primeros 2000 chars):",
                     system_prompt[:2000],
                     height=200,
                 )
+                # Pantallas sugeridas por política
+                pantallas_sug = st.session_state.get("sentinel_pantallas_sugeridas", [])
+                if pantallas_sug:
+                    st.caption(f"Pantallas sugeridas por política: {pantallas_sug}")
 
     # ── API KEY CHECK ──────────────────────────────────────────────────────────
     api_key = _get_api_key()
@@ -191,7 +110,10 @@ GROQ_API_KEY = "gsk_..."
     # llamar a _run_sentinel(), dejando la pregunta "huérfana" en el historial.
     _msgs = st.session_state["sentinel_messages"]
     if _msgs and _msgs[-1]["role"] == "user":
-        _run_sentinel(api_key, system_prompt)
+        _run_sentinel(
+            api_key, system_prompt,
+            pagina_origen=st.session_state.get("page"),
+        )
         st.rerun()
 
     # ── SUGERENCIAS ───────────────────────────────────────────────────────────
@@ -200,12 +122,30 @@ GROQ_API_KEY = "gsk_..."
 
     # ── INPUT ──────────────────────────────────────────────────────────────────
     if user_input := st.chat_input("Pregunta sobre el cantón, el PDOT, las brechas, las parroquias…"):
-        st.session_state["sentinel_messages"].append({
-            "role": "user",
-            "content": user_input,
-        })
-        _run_sentinel(api_key, system_prompt)
-        st.rerun()
+        # Policy check antes de procesar
+        seguridad = evaluar_seguridad(user_input)
+        if not seguridad["permitido"]:
+            st.warning(
+                f"🛡️ **Sentinel (Reader) no puede ejecutar esa acción.**\n\n"
+                f"{seguridad['motivo']}\n\n"
+                f"El funcionario responsable debe confirmar y ejecutar esta acción en el sistema correspondiente."
+            )
+        else:
+            # Sugerir pantallas relacionadas (sidebar context)
+            pantallas = sugerir_pantallas(user_input)
+            if pantallas:
+                st.session_state["sentinel_pantallas_sugeridas"] = pantallas
+
+            st.session_state["sentinel_messages"].append({
+                "role": "user",
+                "content": user_input,
+            })
+            _run_sentinel(
+                api_key, system_prompt,
+                modo_seguro=seguridad.get("modo_seguro", False),
+                pagina_origen=st.session_state.get("page"),
+            )
+            st.rerun()
 
     # ── CONTROLES ─────────────────────────────────────────────────────────────
     if st.session_state["sentinel_messages"]:
@@ -227,12 +167,18 @@ _GROQ_MODELS     = [
 _MAX_HISTORY_MSG = 6
 
 
-def _run_sentinel(api_key: str, system_prompt: str) -> None:
-    """Llama a Groq (Llama 3.3) con streaming y fallback de modelos."""
+def _run_sentinel(
+    api_key:       str,
+    system_prompt: str,
+    modo_seguro:   bool = False,
+    pagina_origen: str | None = None,
+) -> None:
+    """Llama a Groq (Llama 3.3) con streaming, fallback de modelos y audit log."""
     import requests
     import json as _json
 
     messages = st.session_state["sentinel_messages"]
+    pregunta = messages[-1]["content"] if messages else ""
 
     with st.chat_message("assistant", avatar="🔮"):
         placeholder = st.empty()
@@ -243,26 +189,23 @@ def _run_sentinel(api_key: str, system_prompt: str) -> None:
                     "Content-Type": "application/json",
                 }
 
-                # Historial en formato OpenAI (user / assistant)
                 # Solo los últimos _MAX_HISTORY_MSG mensajes para no superar el TPM limit
-                recent = messages[-_MAX_HISTORY_MSG:] if len(messages) > _MAX_HISTORY_MSG else messages
+                recent    = messages[-_MAX_HISTORY_MSG:] if len(messages) > _MAX_HISTORY_MSG else messages
                 groq_msgs = [{"role": "system", "content": system_prompt}]
                 for msg in recent:
-                    groq_msgs.append({
-                        "role": msg["role"],          # user / assistant
-                        "content": msg["content"],
-                    })
+                    groq_msgs.append({"role": msg["role"], "content": msg["content"]})
 
                 full_response = ""
-                last_err = ""
+                last_err      = ""
+                model_usado   = None
 
                 for model_name in _GROQ_MODELS:
                     payload = {
-                        "model": model_name,
-                        "messages": groq_msgs,
-                        "max_tokens": 800,
-                        "temperature": 0.7,
-                        "stream": True,
+                        "model":       model_name,
+                        "messages":    groq_msgs,
+                        "max_tokens":  900,
+                        "temperature": 0.65,
+                        "stream":      True,
                     }
                     try:
                         with requests.post(
@@ -291,12 +234,11 @@ def _run_sentinel(api_key: str, system_prompt: str) -> None:
                                         )
                                         if delta:
                                             full_response += delta
-                                            placeholder.markdown(
-                                                full_response + "▌"
-                                            )
+                                            placeholder.markdown(full_response + "▌")
                                     except (_json.JSONDecodeError, KeyError):
                                         pass
                         if full_response:
+                            model_usado = model_name
                             break  # éxito con este modelo
                     except Exception as ex:
                         last_err = f"{model_name}: {ex}"
@@ -309,6 +251,16 @@ def _run_sentinel(api_key: str, system_prompt: str) -> None:
                     "role": "assistant",
                     "content": full_response,
                 })
+
+                # ── Audit log ─────────────────────────────────────────────────
+                log_interaction(
+                    pregunta=pregunta,
+                    respuesta=full_response,
+                    tool_usado=model_usado,
+                    confianza="baja" if modo_seguro else "media",
+                    modo_seguro=modo_seguro,
+                    pagina_origen=pagina_origen,
+                )
 
             except Exception as e:
                 err = str(e)

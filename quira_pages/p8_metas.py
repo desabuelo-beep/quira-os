@@ -1,6 +1,11 @@
 """
 QUIRA OS v0.1 — P-03 Metas PDOT
 Trazabilidad Promesa → Meta → Ejecución · Fiel al DEMO.html P-03
+FUENTE DATOS:
+  - "avance" = línea base PDOT GAD Municipal Montecristi (documento oficial publicado)
+  - "avance" M-06 (PSG 12.83%) = H73_OUTPUT_API / Gold Master v4.1
+  - "avance" M-07 (IET $40/hab) = H99_ENGINE_CORE parroquias / Gold Master v4.1
+  - Presupuestos = POA/PAC GAD Montecristi (documento público)
 Dylus Lab © 2026
 """
 import streamlit as st

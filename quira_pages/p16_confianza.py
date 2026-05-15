@@ -1,6 +1,15 @@
 """
 QUIRA OS v0.1 — P-16 Confianza Ciudadana
 IGP 27.98% · Participación parroquial · CPCCS · Índice de Confianza
+FUENTE DATOS: SIAP-ICPI_GOLD_MASTER_v4.1 (H73_OUTPUT_API → IGP=27.98%)
+Scores de mecanismos derivados de hechos cuantitativos en "avance":
+  Asambleas:   2/7   × 100 = 28.6% → 29
+  Presupuesto: 7/7   × 100 = 100%  → 100 (PP 2026: 6 talleres, 149 fichas, ACTA N°007-2025 agosto)
+  UT:          50/75 × 100 = 66.7% → 67
+  RDC:         CPCCS V=0  → 0
+  Veedurías:   3/6   × 100 = 50.0% → 50
+  Portal:      0 publicados → 0
+Fuente PP 2026: INFORME PP 2026 GAD Montecristi · $20,982,884.47 estimación ingresos
 Dylus Lab © 2026
 """
 import streamlit as st
@@ -9,48 +18,55 @@ from utils.session import is_tecnico
 from quira_pages.html_engine import render_page, page_header
 
 # ── MECANISMOS DE PARTICIPACIÓN · Estado Q1-2026 ──────────────────────────────
+# score = derivado del hecho cuantitativo declarado en "avance" (ver docstring módulo)
 MECANISMOS = [
     {
         "nombre": "Asambleas Parroquiales",
         "estado": "CRÍTICO", "color": "red",
         "avance": "2 de 7 realizadas · Isabel Muentes y Aníbal San Andrés sin convocar",
         "meta": "7/7 al Q2-2026 · COOTAD Art. 304",
-        "score": 28,
+        "score": 29,          # 2/7 × 100 = 28.6% → 29
+        "formula": "2/7 asambleas",
     },
     {
         "nombre": "Presupuesto Participativo",
-        "estado": "ALERTA", "color": "amber",
-        "avance": "$92K asignado · 4/7 parroquias con acta · $0 en 2 parroquias",
-        "meta": "7/7 parroquias · ≥$80K por zona rural",
-        "score": 45,
+        "estado": "NORMAL", "color": "green",
+        "avance": "7/7 parroquias con acta · PP 2026: 6 talleres, 149 fichas · $20.98M estimación ingresos · ACTA N°007-2025 (15 ago 2025)",
+        "meta": "Mantener 7/7 · ≥$80K inversión ejecutada por zona rural · vinculación POA 2026",
+        "score": 100,         # 7/7 parroquias con acta PP 2026 × 100 = 100% (fuente: Informe PP GAD)
+        "formula": "7/7 parroquias con acta PP 2026",
     },
     {
         "nombre": "Unidades Territoriales (UT)",
         "estado": "ALERTA", "color": "amber",
         "avance": "50 activas vs meta 75 · 2 parroquias sin UT activa",
         "meta": "75 UT activas con acta Q1-2026 vigente",
-        "score": 67,
+        "score": 67,          # 50/75 × 100 = 66.7% → 67  ✓
+        "formula": "50/75 UT activas",
     },
     {
         "nombre": "Rendición de Cuentas (RDC)",
         "estado": "CRÍTICO", "color": "red",
         "avance": "CPCCS V=0 en RDC 2025 · calificación no validada",
         "meta": "CPCCS V≥70 en RDC 2026 · convocatoria Q3",
-        "score": 12,
+        "score": 0,           # CPCCS V=0 → 0% · fuente: calificación CPCCS oficial
+        "formula": "CPCCS V=0/100",
     },
     {
         "nombre": "Veedurías Ciudadanas",
         "estado": "NORMAL", "color": "green",
         "avance": "3 veedurías activas · EP Aseo, vialidad, agua cabecera",
         "meta": "6 veedurías · cobertura inversión social",
-        "score": 72,
+        "score": 50,          # 3/6 veedurías meta × 100 = 50%
+        "formula": "3/6 veedurías",
     },
     {
         "nombre": "Portal de Denuncias y Quejas",
         "estado": "CRÍTICO", "color": "red",
         "avance": "0 estadísticas publicadas · LOTAIP Art. 7r incumplido",
         "meta": "Sistema activo + reporte mensual ciudadano",
-        "score": 8,
+        "score": 0,           # 0 publicaciones = 0% de avance
+        "formula": "0 estadísticas publicadas",
     },
 ]
 
@@ -173,6 +189,14 @@ def render() -> None:
     mecanismos_html = f"""
 <div class="card">
   <div class="card-title">🗳️ 6 MECANISMOS DE PARTICIPACIÓN · Estado Q1-2026</div>
+  <div style="font-size:8px;color:rgba(0,212,255,.7);margin-bottom:10px;
+              padding:5px 10px;background:rgba(0,212,255,.05);border-radius:5px;
+              border:1px solid rgba(0,212,255,.15)">
+    📐 <strong>Metodología scores:</strong>
+    Score = razón cuantitativa declarada en estado de avance
+    (2/7 asambleas=29%, 4/7 parroquias=57%, 50/75 UT=67%, CPCCS V=0%, 3/6 veedurías=50%, 0 publicados=0%).
+    IGP 27.98% fuente: H73_OUTPUT_API · Gold Master v4.1.
+  </div>
   {"".join(_mecanism_row(m) for m in MECANISMOS)}
 </div>"""
 

@@ -1,6 +1,15 @@
 """
 QUIRA OS v0.1 — P-11 ODS Tracker
 Agenda 2030 · Vinculación PDOT ↔ ODS · ICODS 87.5%
+FUENTE DATOS: SIAP-ICPI_GOLD_MASTER_v4.1 (H73_OUTPUT_API)
+Metodología de scores ODS:
+  4 ODS con score derivado directamente de H73_OUTPUT_API:
+    ODS  5 → PSG_EJECUCION  = 12.83% → score 13
+    ODS  6 → Cobertura agua = 34.9%  → score 35  (PDOT diagnóstico)
+    ODS 10 → IET_PERCAPITA  = 44.80% → score 45
+    ODS 16 → IGP_REF_2025   = 27.98% → score 28
+  Resto (13 ODS): score indicativo basado en estado cualitativo PDOT
+  → no confundir con medición oficial ODS SENPLADES/ONU
 Dylus Lab © 2026
 """
 import streamlit as st
@@ -44,14 +53,14 @@ ODS_CATALOGO = [
         "estado": "CRÍTICO", "color": "#FF3A21",
         "vinculo": "PSG 12.83% · bloquea Gender Bond $95K · ONU Mujeres",
         "meta_pdot": "PSG ≥ 30% al 2027 · luminarias seguridad Aníbal San Andrés",
-        "score": 23,
+        "score": 13,          # PSG_EJECUCION=12.83% · fuente H73_OUTPUT_API (redondeado)
     },
     {
         "num": 6, "nombre": "Agua Limpia y Saneamiento",
         "estado": "CRÍTICO", "color": "#26BDE2",
         "vinculo": "Isabel Muentes 1.02% agua · cobertura cantonal 34.9% · PNUD Agua Rural",
         "meta_pdot": "Cobertura agua 65% · alcantarillado 70% al 2027",
-        "score": 35,
+        "score": 35,          # Cobertura agua cantonal=34.9% · fuente PDOT diagnóstico
     },
     {
         "num": 7, "nombre": "Energía Asequible",
@@ -79,7 +88,7 @@ ODS_CATALOGO = [
         "estado": "VINCULADO", "color": "#DD1367",
         "vinculo": "IET 44.80% · Gov Twin · brecha territorial $40→$113/hab",
         "meta_pdot": "IET ≥ 60% · inversión mínima rural $80/hab al 2027",
-        "score": 45,
+        "score": 45,          # IET_PERCAPITA=44.80% · fuente H73_OUTPUT_API (redondeado)
     },
     {
         "num": 11, "nombre": "Ciudades Sostenibles",
@@ -121,7 +130,7 @@ ODS_CATALOGO = [
         "estado": "VINCULADO", "color": "#00689D",
         "vinculo": "CPCCS · IGP 27.98% · rendición de cuentas · LOTAIP",
         "meta_pdot": "IGP ≥ 60% · 75 UT activas · RDC validado CPCCS",
-        "score": 55,
+        "score": 28,          # IGP_REF_2025=27.98% · fuente H73_OUTPUT_API (redondeado)
     },
     {
         "num": 17, "nombre": "Alianzas para los Objetivos",
@@ -252,12 +261,14 @@ def render() -> None:
               gap:8px;margin-bottom:12px">
     {chips}
   </div>
-  <div style="display:flex;gap:16px;flex-wrap:wrap;font-size:10px;color:var(--muted);
+  <div style="display:flex;gap:16px;flex-wrap:wrap;font-size:9px;color:var(--muted);
               padding-top:8px;border-top:1px solid rgba(255,255,255,.05)">
     <span>✅ Vinculado = meta PDOT + indicador + presupuesto</span>
     <span>🟡 Parcial = vinculación incompleta o en proceso</span>
     <span>🔴 Crítico = brecha severa · riesgo mandato 2027</span>
-    <span>Barra inferior = score de avance</span>
+    <span style="color:rgba(255,184,0,.7)">
+      ⚠ Barra inferior: ODS 5/6/10/16 derivados de H73 · Resto indicativo PDOT · Pendiente medición oficial SENPLADES
+    </span>
   </div>
 </div>"""
 

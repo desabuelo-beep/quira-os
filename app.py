@@ -137,8 +137,7 @@ from quira_pages.p12_cadena      import render as p12
 from quira_pages.p13_simulador   import render as p13
 from quira_pages.p14_eficiencia  import render as p14
 from quira_pages.p15_transparencia import render as p15
-from quira_pages.p16_confianza   import render as p16
-from quira_pages.p17_rdc         import render as p17
+from quira_pages.p16_gobernanza  import render as p16_gobernanza
 from quira_pages.p18_cooperacion import render as p18
 from quira_pages.p19_genero      import render as p19
 from components.sentinel   import render_sentinel
@@ -165,8 +164,7 @@ PAGES = {
     "inversion":    {"label": "Inversión per Cápita",  "icon": "💰", "render": p10},
     "holding":      {"label": "Holding Municipal",     "icon": "🏛️", "render": p2},
     # ── CIUDADANÍA ────────────────────────────────────────────────────────────
-    "confianza":    {"label": "Confianza Ciudadana",   "icon": "🗳️", "render": p16},
-    "rdc":          {"label": "Rendición de Cuentas",  "icon": "📅", "render": p17},
+    "gobernanza":   {"label": "Gobernanza Participativa", "icon": "🗳️", "render": p16_gobernanza},
     "transparencia":{"label": "Transparencia LOTAIP",  "icon": "🔍", "render": p15},
     # ── ESTRATÉGICO ───────────────────────────────────────────────────────────
     "ods":          {"label": "ODS Tracker",           "icon": "🌐", "render": p11},
@@ -249,6 +247,10 @@ with st.sidebar:
 
 # ── MAIN CONTENT ───────────────────────────────────────────────────────────────
 page_key = st.session_state.get("page", "dashboard")
+# Redirect legacy keys → merged screen
+if page_key in ("confianza", "rdc"):
+    page_key = "gobernanza"
+    st.session_state["page"] = "gobernanza"
 page_cfg  = PAGES.get(page_key, PAGES["dashboard"])
 page_cfg["render"]()
 

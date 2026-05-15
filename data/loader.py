@@ -10,6 +10,7 @@ from config import get_siap_path, PDOT_PATH, AVEP
 from data.demo_data import (
     ICGIT_Q1_2026, INDICES, CONGRUENCIAS,
     SAT_ACTIVAS, HOLDING, PARROQUIAS,
+    PP_2024, PP_2025, PP_2026,
 )
 
 
@@ -150,6 +151,9 @@ def load_all() -> dict:
         "sat":          SAT_ACTIVAS,
         "holding":      holding,
         "parroquias":   parroquias,
+        "pp_2024":      PP_2024,
+        "pp_2025":      PP_2025,
+        "pp_2026":      PP_2026,
         "excel_ok":     _excel_available(),
     }
 
@@ -185,10 +189,10 @@ def get_parroquia_by_nombre(data: dict, nombre: str) -> Optional[dict]:
 
 
 def get_zonas_sin_voz(data: dict) -> list[dict]:
-    """Retorna parroquias con participación en estado 'Sin voz'."""
+    """Retorna parroquias con participación en estado 'Sin voz' o 'Bajo'."""
     return [
         p for p in data.get("parroquias", [])
-        if p.get("participacion", {}).get("estado") == "Sin voz"
+        if p.get("participacion", {}).get("estado") in ("Sin voz", "Bajo")
     ]
 
 
