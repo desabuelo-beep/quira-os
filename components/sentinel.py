@@ -150,11 +150,26 @@ GROQ_API_KEY = "gsk_..."
             st.rerun()
 
     # ── CONTROLES ─────────────────────────────────────────────────────────────
+    # ── INDICADOR CONTEXTO ACTIVO ──────────────────────────────────────────────
+    from sentinel import state_memory as _mem
+    if _mem.has_context():
+        ctx  = _mem.get_context()
+        tags = []
+        if ctx["ultima_parroquia"]:
+            tags.append(f"📍 {_mem.get_parroquia_display()}")
+        if ctx["ultimo_indicador"]:
+            tags.append(f"📊 {ctx['ultimo_indicador']}")
+        if ctx["ultimo_modo"]:
+            tags.append(f"🎯 {ctx['ultimo_modo']}")
+        if tags:
+            st.caption(f"Contexto activo: {' · '.join(tags)}")
+
     if st.session_state["sentinel_messages"]:
         col1, col2 = st.columns([3, 1])
         with col2:
             if st.button("🗑 Limpiar conversación", use_container_width=True):
                 st.session_state["sentinel_messages"] = []
+                _mem.reset()   # Sprint 3: limpia memoria junto con historial
                 st.rerun()
 
 
@@ -208,7 +223,15 @@ def _run_sentinel(
 
                 # Solo los últimos _MAX_HISTORY_MSG mensajes para no superar el TPM limit
                 recent    = messages[-_MAX_HISTORY_MSG:] if len(messages) > _MAX_HISTORY_MSG else messages
-                groq_msgs = [{"role": "system", "content": system_prompt}]
+
+                # Sprint 3: inyectar contexto conversacional activo en el prompt
+                from sentinel import state_memory as _mem
+                ctx_block        = _mem.build_context_prompt()
+                effective_prompt = (
+                    system_prompt + "\n\n" + ctx_block if ctx_block else system_prompt
+                )
+
+                groq_msgs = [{"role": "system", "content": effective_prompt}]
                 for msg in recent:
                     groq_msgs.append({"role": msg["role"], "content": msg["content"]})
 
@@ -280,6 +303,9 @@ def _run_sentinel(
                     "content": clean_text,
                     "visual":  visual_data,
                 })
+
+                # Sprint 3: actualizar memoria conversacional tras respuesta LLM
+                _mem.update_state(pregunta)
 
                 # ── Audit log ─────────────────────────────────────────────────
                 log_interaction(

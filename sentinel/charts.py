@@ -165,7 +165,9 @@ def detect_and_render(query: str) -> bool:
         _chart_nbi(data); hit = True
 
     if hit:
-        ui_router.route(query)   # ← Generative UI contextual (Opción C)
+        from sentinel import state_memory
+        state_memory.update_state(query)   # Sprint 3: persiste contexto
+        ui_router.route(query)             # Generative UI contextual (Opción C)
 
     return hit
 
