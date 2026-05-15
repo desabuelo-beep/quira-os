@@ -11,9 +11,10 @@ import os
 from data.loader import load_all
 from data.pdot_context import build_pdot_context, pdot_context_stats
 from utils.session import get_rol, is_tecnico
-from sentinel.prompts  import build_system_prompt
-from sentinel.policies import evaluar_seguridad, sugerir_pantallas
-from sentinel.audit    import log_interaction, get_audit_stats
+from sentinel.prompts   import build_system_prompt
+from sentinel.policies  import evaluar_seguridad, sugerir_pantallas
+from sentinel.audit     import log_interaction, get_audit_stats
+from sentinel.renderer  import parse_response, render_visual
 
 
 # ── COMPONENTE PRINCIPAL ──────────────────────────────────────────────────────
@@ -165,6 +166,8 @@ _GROQ_MODELS     = [
 ]
 # Máximo de mensajes del historial enviados a la API (evita 413 por acumulación)
 _MAX_HISTORY_MSG = 6
+# Tokens extra para bloque JSON de visualización (Sentinel v1.1)
+_MAX_TOKENS = 1400
 
 
 def _run_sentinel(
@@ -203,7 +206,7 @@ def _run_sentinel(
                     payload = {
                         "model":       model_name,
                         "messages":    groq_msgs,
-                        "max_tokens":  900,
+                        "max_tokens":  _MAX_TOKENS,
                         "temperature": 0.65,
                         "stream":      True,
                     }
@@ -246,10 +249,16 @@ def _run_sentinel(
                 if not full_response:
                     raise RuntimeError(last_err or "Sin respuesta de Groq")
 
-                placeholder.markdown(full_response)
+                # ── Sentinel v1.1 — Generative UI parser ──────────────────────
+                clean_text, visual_data = parse_response(full_response)
+                placeholder.markdown(clean_text)
+                if visual_data:
+                    render_visual(visual_data)
+
                 st.session_state["sentinel_messages"].append({
-                    "role": "assistant",
-                    "content": full_response,
+                    "role":    "assistant",
+                    "content": clean_text,
+                    "visual":  visual_data,
                 })
 
                 # ── Audit log ─────────────────────────────────────────────────
@@ -283,26 +292,37 @@ def _render_chat_history() -> None:
         avatar = "🔮" if role == "assistant" else "👤"
         with st.chat_message(role, avatar=avatar):
             st.markdown(msg["content"])
+            if msg.get("visual"):
+                render_visual(msg["visual"])
 
 
 def _render_suggestions() -> None:
-    sugerencias = [
-        "¿Cuáles son las parroquias con mayor urgencia de inversión?",
-        "¿Por qué el ICGI-T bajó de 69.93 en 2025 a 53.56 en Q1-2026?",
-        "¿Qué riesgos territoriales tiene mayor prioridad según el PDOT?",
-        "¿Cómo afecta la paradoja democrática de Isabel Muentes a la gobernanza?",
+    st.caption("💬 ANÁLISIS DE TEXTO")
+    sugerencias_texto = [
         "¿Qué debería hacer el GAD para alcanzar la meta de 70 al cierre 2026?",
+        "¿Cómo afecta la paradoja democrática de Isabel Muentes a la gobernanza?",
+        "¿Qué riesgos territoriales tiene mayor prioridad según el PDOT?",
         "¿Cuáles son las potencialidades económicas más relevantes del cantón?",
     ]
-    st.caption("💬 PREGUNTAS SUGERIDAS")
-    cols = st.columns(2)
-    for i, sug in enumerate(sugerencias):
-        with cols[i % 2]:
-            if st.button(f"💬 {sug}", key=f"sug_{i}", use_container_width=True):
-                st.session_state["sentinel_messages"].append({
-                    "role": "user",
-                    "content": sug,
-                })
+    cols_t = st.columns(2)
+    for i, sug in enumerate(sugerencias_texto):
+        with cols_t[i % 2]:
+            if st.button(f"💬 {sug}", key=f"sug_t_{i}", use_container_width=True):
+                st.session_state["sentinel_messages"].append({"role": "user", "content": sug})
+                st.rerun()
+
+    st.caption("📊 VISUALIZACIONES (Sentinel v1.1)")
+    sugerencias_viz = [
+        "Muéstrame el NBI por parroquia en gráfico",
+        "Compara la inversión per cápita entre las 7 parroquias",
+        "Grafica la evolución del ICGI-T de 2023 a Q1-2026",
+        "Muéstrame los índices complementarios del cantón en tabla",
+    ]
+    cols_v = st.columns(2)
+    for i, sug in enumerate(sugerencias_viz):
+        with cols_v[i % 2]:
+            if st.button(f"📊 {sug}", key=f"sug_v_{i}", use_container_width=True):
+                st.session_state["sentinel_messages"].append({"role": "user", "content": sug})
                 st.rerun()
 
 
