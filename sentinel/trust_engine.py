@@ -99,13 +99,21 @@ _PROFILES: dict[str, dict] = {
         "cumplimiento":   78,
         "nota":           "Análisis Sentinel · Groq Llama 3.3 · contexto Gold Master Q1-2026",
     },
-    # Respuesta con referencia legal activa
+    # Respuesta con referencia legal activa (COOTAD/COPLAFIP)
     "legal_reference": {
         "integridad":     90,
         "disponibilidad": 82,   # leyes pueden tener reformas recientes
         "trazabilidad":   92,   # artículo específico citado
         "cumplimiento":   96,   # fuente es la ley misma
         "nota":           "Marco legal Ecuador · COOTAD / COPLAFIP / Constitución",
+    },
+    # Respuesta con fundamento constitucional (CRE 2008)
+    "legal_reference_cre": {
+        "integridad":     95,   # Constitución = norma suprema, Art. 424 CRE
+        "disponibilidad": 90,   # vigente 2008, última reforma 2011
+        "trazabilidad":   95,   # artículo específico citado
+        "cumplimiento":   98,   # jerarquía normativa máxima
+        "nota":           "Constitución de la República del Ecuador 2008 · Norma suprema · Art. 424 CRE",
     },
 }
 

@@ -380,9 +380,10 @@ def legal_card(refs: list[dict]) -> None:
         return
 
     law_labels = {
-        "COOTAD":     ("COOTAD",       "#00D4FF"),
-        "COPLAFIP":   ("COPLAFIP",     "#7C5CFC"),
-        "COOTAD_2026":("COOTAD 2026",  "#38A169"),
+        "COOTAD":      ("COOTAD",           "#00D4FF"),
+        "COPLAFIP":    ("COPLAFIP",         "#7C5CFC"),
+        "COOTAD_2026": ("COOTAD 2026",      "#38A169"),
+        "CRE":         ("Constitución CRE", "#E67E22"),  # naranja = norma suprema
     }
 
     rows_html = ""

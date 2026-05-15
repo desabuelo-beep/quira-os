@@ -63,7 +63,41 @@ _ROUTES: list[tuple[list[str], list[tuple[str, str]]]] = [
 
     # NBI y equidad territorial
     (["nbi", "brecha territorial", "equidad", "inequidad", "iet"],
-     [("COOTAD", "Art.272"), ("COOTAD", "Art.302")]),
+     [("COOTAD", "Art.272"), ("COOTAD", "Art.302"), ("CRE", "Art.340")]),
+
+    # ── Constitución de la República del Ecuador (CRE) ─────────────────────────
+
+    # Agua — fundamento constitucional (Art. 12 CRE)
+    (["agua", "potable", "hidric", "derecho al agua", "patrimonio hidrico"],
+     [("CRE", "Art.12"), ("COOTAD", "Art.55")]),
+
+    # Ambiente, sostenibilidad y Buen Vivir
+    (["ambiente sano", "buen vivir", "sumak kawsay", "ecosistema", "sostenibilidad ambiental"],
+     [("CRE", "Art.14"), ("CRE", "Art.275")]),
+
+    # Participación ciudadana — base constitucional del PP
+    (["participacion ciudadana", "presupuesto participativo", "asambleas", "democracia participativa"],
+     [("CRE", "Art.95"), ("COOTAD", "Art.303")]),
+
+    # Competencias municipales — base constitucional del COOTAD
+    (["competencias", "gobierno municipal", "gad municipal", "constitucion"],
+     [("CRE", "Art.264"), ("COOTAD", "Art.55"), ("COOTAD", "Art.57")]),
+
+    # Competencias parroquiales rurales
+    (["parroquia rural", "gobierno parroquial", "jap", "competencias parroquial"],
+     [("CRE", "Art.267"), ("COOTAD", "Art.302")]),
+
+    # Régimen del Buen Vivir y planificación
+    (["buen vivir", "sumak kawsay", "regimen desarrollo", "desarrollo cantonal"],
+     [("CRE", "Art.275"), ("COPLAFIP", "Art.4")]),
+
+    # Equidad social, NBI y pobreza
+    (["inclusion social", "erradicacion pobreza", "proteccion integral", "sistema equidad"],
+     [("CRE", "Art.340"), ("CRE", "Art.341"), ("COOTAD", "Art.272")]),
+
+    # Salud como derecho vinculado a servicios básicos
+    (["salud", "sistema salud", "derecho salud"],
+     [("CRE", "Art.32")]),
 ]
 
 
@@ -130,9 +164,10 @@ def has_legal_refs(query: str) -> bool:
 def format_legal_citation(ref: dict) -> str:
     """Formatea una referencia como cita inline para Sentinel."""
     law_labels = {
-        "COOTAD":     "COOTAD",
-        "COPLAFIP":   "COPLAFIP",
+        "COOTAD":      "COOTAD",
+        "COPLAFIP":    "COPLAFIP",
         "COOTAD_2026": "COOTAD Reforma 2026",
+        "CRE":         "Constitución (CRE)",
     }
     label = law_labels.get(ref["law"], ref["law"])
     return f"{label} {ref['article']} — {ref['topic']}"
@@ -149,8 +184,10 @@ def build_legal_prompt_block(query: str) -> str:
 
     lines = ["MARCO NORMATIVO APLICABLE (citar si es relevante):"]
     for r in refs:
-        law_label = {"COOTAD": "COOTAD", "COPLAFIP": "COPLAFIP",
-                     "COOTAD_2026": "COOTAD Reforma 2026"}.get(r["law"], r["law"])
+        law_label = {
+            "COOTAD": "COOTAD", "COPLAFIP": "COPLAFIP",
+            "COOTAD_2026": "COOTAD Reforma 2026", "CRE": "Constitución (CRE)",
+        }.get(r["law"], r["law"])
         lines.append(f"  {law_label} {r['article']}: {r['text'][:200]}...")
     lines.append("  Al citar: indica 'conforme [LEY] [Art.X]' — no inventes artículos.")
     return "\n".join(lines)
