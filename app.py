@@ -14,7 +14,7 @@ st.set_page_config(
     page_title=f"{APP_NAME} · {GAD_NOMBRE}",
     page_icon="⬡",
     layout="wide",
-    initial_sidebar_state="expanded",
+    initial_sidebar_state="collapsed",
 )
 
 # ── ESTILOS GLOBALES ───────────────────────────────────────────────────────────
@@ -134,30 +134,8 @@ iframe {
 #MainMenu { visibility: hidden; }
 footer { visibility: hidden; }
 
-/* ── ELIMINAR SCROLLBAR DUPLICADO ── */
-/* El scrollbar REAL del iframe viene de scrolling=True en components.html().
-   Ese parámetro ahora está en False. Este CSS elimina cualquier residuo. */
-.stApp {
-    overflow: visible !important;
-}
-[data-testid="stAppViewContainer"],
-[data-testid="stAppViewBlockContainer"] {
-    overflow: visible !important;
-    height: auto !important;
-}
-/* El contenedor principal NO tiene altura fija — el browser maneja el scroll */
-[data-testid="stMain"],
-[data-testid="stMainBlockContainer"] {
-    overflow: visible !important;
-    height: auto !important;
-    min-height: auto !important;
-}
-/* Forzar que el root de Streamlit no cree un segundo scroll context */
-#root > div:first-child,
-.stApp > div:first-child {
-    height: auto !important;
-    overflow: visible !important;
-}
+/* ── SCROLLBAR DUPLICADO — eliminado desde html_engine.py (scrolling=False) ── */
+/* NO tocar overflow/height del root — rompe el scroll nativo en mobile */
 
 /* ── Z-INDEX STACK — evita que el sidebar se monte sobre modales/tooltips ── */
 [data-testid="stSidebar"] {
@@ -173,35 +151,43 @@ section.main, [data-testid="stMain"] {
     z-index: 99999 !important;
 }
 
-/* ── MOBILE: sidebar como drawer sin montar sobre el main ── */
+/* ── MOBILE: sidebar colapsado por defecto, toggle visible ── */
 @media (max-width: 768px) {
-    /* Sidebar ocupa ancho completo cuando está abierto, flota encima */
-    [data-testid="stSidebar"] {
+    /* Main sin padding extra cuando sidebar está oculto */
+    .main .block-container,
+    [data-testid="stMainBlockContainer"] {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+    /* Botón de expandir/colapsar sidebar — siempre visible y con color cyan */
+    [data-testid="collapsedControl"],
+    button[data-testid="collapsedControl"] {
+        position: fixed !important;
+        top: 8px !important;
+        left: 0 !important;
+        background: rgba(0,212,255,0.22) !important;
+        border: 1px solid rgba(0,212,255,0.4) !important;
+        border-left: none !important;
+        border-radius: 0 8px 8px 0 !important;
+        color: #00D4FF !important;
+        width: 28px !important;
+        height: 44px !important;
+        z-index: 99999 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    /* Sidebar abierto: drawer flotante */
+    [data-testid="stSidebar"][aria-expanded="true"] {
         position: fixed !important;
         top: 0 !important;
         left: 0 !important;
         height: 100dvh !important;
-        width: 85vw !important;
-        max-width: 320px !important;
+        width: 82vw !important;
+        max-width: 310px !important;
         overflow-y: auto !important;
         z-index: 9998 !important;
-        box-shadow: 4px 0 24px rgba(0,0,0,0.6) !important;
-    }
-    /* Main no queda debajo del sidebar — padding normal */
-    .main .block-container {
-        padding-left: 0.75rem !important;
-        padding-right: 0.75rem !important;
-    }
-    /* Botón de colapso del sidebar — más grande y visible en mobile */
-    [data-testid="collapsedControl"] {
-        background: rgba(0, 212, 255, 0.18) !important;
-        border: 1px solid rgba(0, 212, 255, 0.35) !important;
-        border-radius: 0 8px 8px 0 !important;
-        color: #00D4FF !important;
-        width: 36px !important;
-        height: 48px !important;
-        top: 12px !important;
-        z-index: 9999 !important;
+        box-shadow: 6px 0 32px rgba(0,0,0,0.7) !important;
     }
 }
 </style>
@@ -362,7 +348,7 @@ page_cfg  = PAGES.get(page_key, PAGES["dashboard"])
 
 # ── Quick-nav bar — fallback cuando sidebar está colapsado (mobile-first) ──────
 # 5 accesos directos siempre visibles: Tablero · Brecha · Proyector · SAT · Sentinel
-_quicknav_pages = ["dashboard", "brecha", "simulador", "sat", "sentinel"]
+_quicknav_pages = ["dashboard", "brecha", "geotwin", "simulador", "sentinel"]
 with st.container():
     _qn_cols = st.columns(len(_quicknav_pages), gap="small")
     for _col, _k in zip(_qn_cols, _quicknav_pages):
