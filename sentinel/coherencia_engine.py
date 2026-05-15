@@ -37,10 +37,21 @@ def _eval_planificacion(data: dict, query: str, territory: str | None) -> dict:
     findings = []
 
     # Alineación PDOT explícita
-    pdot_terms = ["pdot", "meta", "planificacion", "plan operativo", "poa", "2027", "objetivo estrategico"]
+    pdot_terms = [
+        "pdot", "meta", "planificacion", "plan operativo", "poa", "2027", "objetivo estrategico",
+        # Participación ciudadana — proceso PP es parte del ciclo de planificación
+        "participativo", "pp 2026", "asamblea", "asamblea local",
+        # Cumplimiento normativo — consultas de verificación implican proceso planificado
+        "cumple", "cumplimiento", "conforme al cootad", "listo para elevar",
+    ]
     if any(t in q for t in pdot_terms):
         score += 15
         findings.append("Consulta alineada con instrumentos de planificación PDOT/POA")
+        # Bonus adicional: consulta de verificación de cumplimiento (proceso ya ejecutado)
+        compliance_terms = ["cumple", "cumplimiento", "completado", "conforme", "listo para elevar"]
+        if any(t in q for t in compliance_terms):
+            score += 5
+            findings.append("Consulta de verificación de cumplimiento — proceso institucional ejecutado")
     else:
         issues.append("Sin referencia explícita a PDOT o POA — validar alineación con Planificación")
 
@@ -79,16 +90,36 @@ def _eval_planificacion(data: dict, query: str, territory: str | None) -> dict:
     }
 
 
-def _eval_presupuesto(data: dict, sim_result: dict | None, territory: str | None) -> dict:
+def _eval_presupuesto(
+    data:       dict,
+    sim_result: dict | None,
+    territory:  str | None,
+    query:      str = "",
+) -> dict:
     """
     PRESUPUESTO — ¿Existe margen presupuestario disponible?
     """
+    q      = _norm(query)
     score  = 65
     issues = []
     findings = []
+    hard_block = False
 
     icgit  = data.get("icgit", {})
     ejecucion = icgit.get("ti_raw", 0)
+
+    # ── Check ISP: bloqueo formal por salud presupuestaria ─────────────────────
+    # Se activa solo en consultas de crédito/financiamiento externo
+    _credito_terms = ["bde", "credito", "prestamo", "financiamiento externo",
+                      "perfil bde", "salud presupuestaria", "isp actual"]
+    isp_val = data.get("indices", {}).get("ISP", {}).get("valor")
+    if any(t in q for t in _credito_terms) and isp_val is not None and isp_val < 65:
+        issues.append(
+            f"⛔ ISP={isp_val:.2f}% bajo umbral COOTAD mínimo (65%) — "
+            f"bloqueo formal de acceso a crédito BDE y transferencias condicionadas"
+        )
+        score = min(score, 35)
+        hard_block = True
 
     # Ejecución presupuestaria como proxy de disponibilidad
     if ejecucion < 20:
@@ -137,16 +168,41 @@ def _eval_presupuesto(data: dict, sim_result: dict | None, territory: str | None
         "nivel":      _nivel(score),
         "issues":     issues,
         "findings":   findings,
+        "hard_block": hard_block,
     }
 
 
-def _eval_legal(legal_refs: list[dict]) -> dict:
+def _eval_legal(legal_refs: list[dict], query: str = "") -> dict:
     """
     COMPETENCIA LEGAL — ¿El GAD tiene autoridad legal para esta acción?
     """
+    q      = _norm(query)
     score  = 55
     issues = []
     findings = []
+
+    # ── Detección de bypass de proceso legal obligatorio ───────────────────────
+    # Si la consulta propone omitir PAC/SERCOP/proceso formal, la acción es ilegal
+    _bypass_terms = [
+        "sin pac", "sin incluirla en el pac", "sin incluirlo en el pac",
+        "sin incluir en el pac", "directamente sin", "sin proceso sercop",
+        "evadir", "saltarnos el pac", "sin pasar por sercop",
+    ]
+    if any(t in q for t in _bypass_terms):
+        score = min(40, score)   # bloqueo legal — acción propuesta viola LOSNCP
+        issues.append(
+            "⛔ Consulta plantea omitir proceso obligatorio (PAC/SERCOP) — "
+            "acción ilegal conforme COPLAFIP Art.100 y LOSNCP Art.4 (prohibición de fraccionamiento)"
+        )
+        findings.append("Marco normativo violado: COPLAFIP Art.100 · COOTAD Art.432 · LOSNCP Art.4")
+        return {
+            "dimension":  "Competencia Legal",
+            "pregunta":   "¿El GAD tiene autoridad legal?",
+            "score":      score,
+            "nivel":      _nivel(score),
+            "issues":     issues,
+            "findings":   findings,
+        }
 
     if not legal_refs:
         issues.append("Sin fundamento normativo identificado — consultar con Asesoría Jurídica")
@@ -324,8 +380,8 @@ def evaluate(
 
     dimensiones = [
         _eval_planificacion(data, query, territory),
-        _eval_presupuesto(data, sim_result, territory),
-        _eval_legal(legal_refs),
+        _eval_presupuesto(data, sim_result, territory, query),
+        _eval_legal(legal_refs, query),
         _eval_capacidad_operativa(data, sim_result, territory),
     ]
 
@@ -333,6 +389,11 @@ def evaluate(
     pesos = [_W_PLANIFICACION, _W_PRESUPUESTO, _W_LEGAL, _W_OPERATIVA]
     ci    = round(sum(d["score"] * w for d, w in zip(dimensiones, pesos)))
     ci    = max(30, min(99, ci))
+
+    # Hard block: si Presupuesto detectó bloqueo fiscal formal, cap global
+    hard_blocked = any(d.get("hard_block") for d in dimensiones)
+    if hard_blocked:
+        ci = min(ci, 45)
 
     # Recomendaciones ejecutivas
     all_issues  = [i for d in dimensiones for i in d["issues"]]

@@ -110,6 +110,69 @@ html, body, [data-testid="stAppViewContainer"] {
 /* ── HIDE Streamlit branding ── */
 #MainMenu { visibility: hidden; }
 footer { visibility: hidden; }
+
+/* ── ELIMINAR SCROLLBAR INTERNO DUPLICADO ── */
+/* Streamlit crea un scroll container interno que genera una barra extra.
+   Dejamos solo el scrollbar nativo del navegador. */
+html, body, .stApp {
+    overflow: auto !important;
+    height: auto !important;
+}
+[data-testid="stAppViewContainer"] {
+    overflow: visible !important;
+    height: auto !important;
+}
+[data-testid="stMain"],
+section[data-testid="stMain"] > div:first-child {
+    overflow-y: visible !important;
+    height: auto !important;
+}
+
+/* ── Z-INDEX STACK — evita que el sidebar se monte sobre modales/tooltips ── */
+[data-testid="stSidebar"] {
+    z-index: 100 !important;
+}
+section.main, [data-testid="stMain"] {
+    z-index: 10 !important;
+}
+/* Tooltips y popovers de Streamlit siempre encima */
+[data-baseweb="popover"],
+[data-baseweb="tooltip"],
+[data-testid="stPopover"] {
+    z-index: 99999 !important;
+}
+
+/* ── MOBILE: sidebar como drawer sin montar sobre el main ── */
+@media (max-width: 768px) {
+    /* Sidebar ocupa ancho completo cuando está abierto, flota encima */
+    [data-testid="stSidebar"] {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        height: 100dvh !important;
+        width: 85vw !important;
+        max-width: 320px !important;
+        overflow-y: auto !important;
+        z-index: 9998 !important;
+        box-shadow: 4px 0 24px rgba(0,0,0,0.6) !important;
+    }
+    /* Main no queda debajo del sidebar — padding normal */
+    .main .block-container {
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+    }
+    /* Botón de colapso del sidebar — más grande y visible en mobile */
+    [data-testid="collapsedControl"] {
+        background: rgba(0, 212, 255, 0.18) !important;
+        border: 1px solid rgba(0, 212, 255, 0.35) !important;
+        border-radius: 0 8px 8px 0 !important;
+        color: #00D4FF !important;
+        width: 36px !important;
+        height: 48px !important;
+        top: 12px !important;
+        z-index: 9999 !important;
+    }
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -265,6 +328,28 @@ if page_key in ("confianza", "rdc"):
     page_key = "gobernanza"
     st.session_state["page"] = "gobernanza"
 page_cfg  = PAGES.get(page_key, PAGES["dashboard"])
+
+# ── Quick-nav bar — fallback cuando sidebar está colapsado (mobile-first) ──────
+# 5 accesos directos siempre visibles: Tablero · Brecha · Proyector · SAT · Sentinel
+_quicknav_pages = ["dashboard", "brecha", "simulador", "sat", "sentinel"]
+with st.container():
+    _qn_cols = st.columns(len(_quicknav_pages), gap="small")
+    for _col, _k in zip(_qn_cols, _quicknav_pages):
+        with _col:
+            _is_active = (_k == page_key)
+            if st.button(
+                f"{PAGES[_k]['icon']} {PAGES[_k]['label'].split(' ')[0]}",
+                key=f"topnav_{_k}",
+                use_container_width=True,
+                type="primary" if _is_active else "secondary",
+            ):
+                st.session_state["page"] = _k
+                st.rerun()
+st.markdown(
+    "<div style='height:1px;background:rgba(255,255,255,0.05);margin:0 0 14px'></div>",
+    unsafe_allow_html=True,
+)
+
 page_cfg["render"]()
 
 # ── FOOTER ─────────────────────────────────────────────────────────────────────

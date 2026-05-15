@@ -1,0 +1,245 @@
+{
+  "meta": {
+    "version":         "v1.0",
+    "canton":          "Montecristi",
+    "icgit_q1_2026":   53.56,
+    "fecha_creacion":  "2026-05-15",
+    "fuente_datos":    "SIAP-ICPI_GOLD_MASTER_v4.1_QUIRA_20260514 · H73_OUTPUT_API · H99_ENGINE_CORE",
+    "purpose":         "Validación institucional Fase 4 · 10 escenarios stress test para calibrar Motor de Coherencia v1.0",
+    "uso":             "Ejecutar con run_stress_test.py · comparar CI calculado vs rango esperado · identificar desviación",
+    "doctrina":        "PLANIFICACIÓN → PRESUPUESTO → COMPETENCIA LEGAL → CAPACIDAD OPERATIVA"
+  },
+  "casos": [
+    {
+      "caso_id":     "MCT-001",
+      "nombre":      "Isabel Muentes — Inversión Hídrica Rural +20%",
+      "categoria":   "simulacion_politica",
+      "tipo_real":   "representativo",
+      "descripcion": "Escenario de inversión en agua potable en la parroquia más crítica del cantón. Isabel Muentes tiene 1.02% de cobertura hídrica (déficit extremo) y estado EMERGENCIA. Agua potable fue la prioridad #1 del PP 2026 (126 fichas ciudadanas).",
+      "contexto_real": "PP 2026 priorizó agua potable con 126 fichas (mayor frecuencia). Inversión actual Isabel Muentes: $40/hab vs $113/hab cabecera. SAT-IV activa por ISP bajo umbral.",
+      "query":       "¿Qué impacto tendría aumentar 20% la inversión en agua potable en Isabel Muentes?",
+      "territorio":  "Isabel Muentes",
+      "sim": {
+        "policy_type": "agua_rural",
+        "delta":        0.20,
+        "quality":      "infraestructura"
+      },
+      "resultado_esperado": {
+        "ci_range":              [63, 74],
+        "confianza_label":       "Moderada",
+        "dimensiones_criticas":  ["Capacidad Operativa"],
+        "dimension_alta":        ["Competencia Legal"],
+        "notas":                 "EMERGENCIA baja Capacidad Operativa. CRE Art.12+264 elevan Legal. Presupuesto ajustado por ejecución Q1."
+      },
+      "outcome_historico":   "pendiente",
+      "resultado_real":      "PP 2026 identifica agua como prioridad #1 pero sin asignación presupuestaria formal per-parroquia documentada. Inversión per cápita más baja del cantón.",
+      "riesgo_principal":    "Capacidad operativa en zona EMERGENCIA — logística de ejecución compleja",
+      "notas_calibracion":   "Verificar que CI ≈ 68%. Si Capacidad < 50, revisar base neutral. Si Legal < 80, revisar CRE routing."
+    },
+    {
+      "caso_id":     "MCT-002",
+      "nombre":      "La Pila — Gestión Institucional +25%",
+      "categoria":   "simulacion_politica",
+      "tipo_real":   "representativo",
+      "descripcion": "Escenario de mejora de capacidad de gestión institucional en La Pila. Parroquia NORMAL con ICGI-T cantonal de 53.56 (Transición Crítica). Delta conservador para una parroquia sin estado de emergencia.",
+      "contexto_real": "La Pila: NBI=52.8%, agua=51.2%, inversión=$93/hab (por encima de mínimo). Estado NORMAL. Taller PP 2026: 10 fichas (menor participación del cantón).",
+      "query":       "Si mejoramos la gestión institucional en La Pila en 25%, ¿cómo impacta el ICGI-T cantonal?",
+      "territorio":  "La Pila",
+      "sim": {
+        "policy_type": "gestion_institucional",
+        "delta":        0.25,
+        "quality":      "infraestructura"
+      },
+      "resultado_esperado": {
+        "ci_range":              [63, 74],
+        "confianza_label":       "Moderada",
+        "dimensiones_criticas":  [],
+        "dimension_baja":        ["Capacidad Operativa"],
+        "notas":                 "ICGI-T=53.56 actúa como modificador negativo en Capacidad. Impacto cantonal pequeño (La Pila=5.9% población). CI moderada es correcto — no bloqueante."
+      },
+      "outcome_historico":   "representativo",
+      "resultado_real":      "La Pila tiene la menor participación ciudadana del cantón (10 fichas PP 2026). Gestión institucional es la segunda prioridad histórica del cantón.",
+      "riesgo_principal":    "Capacidad de ejecución con ICGI-T en Transición Crítica",
+      "notas_calibracion":   "Verificar nota_impacto_cantonal se activa (La Pila ≈ 5.9% población, icgit_delta < 0.5). CI esperado: 65-70."
+    },
+    {
+      "caso_id":     "MCT-003",
+      "nombre":      "Reforma POA — Documentar SAT-0 (24 procesos sin SHA-256)",
+      "categoria":   "viabilidad_normativa",
+      "tipo_real":   "semi_real",
+      "descripcion": "SAT-0 activa: 24 procesos PAC sin evidencia SHA-256. Dirección técnica consulta si puede reformar el POA para asignar recursos a regularización documental sin reforma presupuestaria formal.",
+      "contexto_real": "SAT-0 CRÍTICO activo: '24 procesos sin evidencia SHA-256 · Gasto Ciego C4'. Impacto: −6.8 pts ICGI-T. Riesgo real de observación Contraloría. Acción requerida: Publicar evidencias PAC en portal SERCOP.",
+      "query":       "¿Podemos reformar el POA para regularizar los 24 procesos PAC sin evidencia y evitar la observación de Contraloría?",
+      "territorio":  null,
+      "sim":         null,
+      "resultado_esperado": {
+        "ci_range":              [65, 78],
+        "confianza_label":       "Moderada",
+        "dimension_media":       ["Presupuesto", "Capacidad Operativa"],
+        "dimension_alta":        ["Competencia Legal"],
+        "notas":                 "Legal activa reason_path reforma_poa (COPLAFIP Art.100+101). SAT-0 crítico baja Planificación y Capacidad. CI moderada correcta — viable con condiciones."
+      },
+      "outcome_historico":   "activo_sin_resolver",
+      "resultado_real":      "SAT-0 requiere acción en 48h según recomendación del sistema. Sin resolución formal documentada en Gold Master.",
+      "riesgo_principal":    "Observación Contraloría si no se documenta antes del corte Q2",
+      "notas_calibracion":   "Verificar que legal_router activa COPLAFIP Art.100+101 para query 'reformar POA'. Reason_path debe incluir paso de Concejo si >10%."
+    },
+    {
+      "caso_id":     "MCT-004",
+      "nombre":      "PP 2026 — Verificación de Cumplimiento COOTAD Art.238",
+      "categoria":   "coherencia_institucional",
+      "tipo_real":   "real",
+      "descripcion": "Verificación de si el proceso PP 2026 ya ejecutado cumple los requisitos del COOTAD. El PP 2026 fue completado: 149 fichas, 6 talleres, 7/7 parroquias con acta oficial.",
+      "contexto_real": "PP 2026 completado: ACTA N°007-2025-JLAC-JPC-GADMCM · 149 fichas sistematizadas · 6 talleres (6-8 agosto 2025) · 7/7 parroquias. Top prioridades: Agua Potable (126 fichas), Áreas verdes (95), Vialidad (94).",
+      "query":       "¿El proceso de presupuesto participativo 2026 cumple con el COOTAD Art.238 y está listo para elevarse al Concejo?",
+      "territorio":  null,
+      "sim":         null,
+      "resultado_esperado": {
+        "ci_range":              [72, 85],
+        "confianza_label":       "Moderada-Alta",
+        "dimension_alta":        ["Competencia Legal", "Planificación"],
+        "dimensiones_criticas":  [],
+        "notas":                 "PP completado activa bonus de planificación (participativo+cumple=+20). Capacidad=55 por ICGI-T=53+SATs limita el CI global. CI=73 Moderada-Alta es output correcto — el proceso está listo aunque la capacidad institucional global es media. Rango calibrado v1."
+      },
+      "outcome_historico":   "ejecutado",
+      "resultado_real":      "PP 2026 ejecutado exitosamente. 149 fichas, 7 parroquias, acta oficial. Pendiente: formalizar asamblea local Aníbal San Andrés e Isabel Muentes (SAT-V).",
+      "riesgo_principal":    "SAT-V: solo 2/7 parroquias con asamblea local formal (Aníbal San Andrés e Isabel Muentes pendientes)",
+      "notas_calibracion":   "Este caso debe producir el CI más alto del banco. Si CI < 74, revisar cómo Planificación detecta términos 'presupuesto participativo' y 'pdot'. Caso de referencia alta."
+    },
+    {
+      "caso_id":     "MCT-005",
+      "nombre":      "Contratación Directa Sin PAC — Colorado (SAT-I Risk)",
+      "categoria":   "viabilidad_normativa",
+      "tipo_real":   "representativo",
+      "descripcion": "Consulta problemática: contratación directa omitiendo el PAC. SAT-I activa detecta patrón de fragmentación selectiva de contratos en el cantón. Este caso debe mostrar CI bajo como señal de advertencia.",
+      "contexto_real": "SAT-I PREVENTIVA: 'Patrón de partición de contratos detectado · −3.1 pts ICGI-T potencial · riesgo LOSNCP'. Colorado: estado ALERTA, NBI=58.4%, inversión $210K, agua=34.7%.",
+      "query":       "¿Podemos contratar directamente la obra de vialidad en Colorado sin incluirla en el PAC para agilizar la ejecución?",
+      "territorio":  "Colorado",
+      "sim":         null,
+      "resultado_esperado": {
+        "ci_range":              [38, 55],
+        "confianza_label":       "Baja o Insuficiente",
+        "dimensiones_criticas":  ["Competencia Legal"],
+        "dimension_baja":        ["Planificación"],
+        "notas":                 "Omitir PAC viola COPLAFIP Art.100 + COOTAD Art.432. Legal debe caer a zona Baja/Insuficiente. Este caso sirve para validar que el motor NO avala decisiones ilegales."
+      },
+      "outcome_historico":   "riesgo_activo",
+      "resultado_real":      "SAT-I detecta patrón de fragmentación. No hay contratos directos sin PAC documentados pero el riesgo está activo. LOSNCP Art.4 prohíbe fraccionar para evadir procesos.",
+      "riesgo_principal":    "Observación Contraloría · LOSNCP · SAT-I activa por patrón previo",
+      "notas_calibracion":   "Caso de validación negativa. CI debe ser < 55. Si CI > 60, el motor está siendo demasiado permisivo con acciones ilegales. Verificar que legal_router baje Legal < 65."
+    },
+    {
+      "caso_id":     "MCT-006",
+      "nombre":      "Crédito BDE $3.5M con ISP=14.58% (Bloqueado)",
+      "categoria":   "viabilidad_normativa",
+      "tipo_real":   "real",
+      "descripcion": "El GAD necesita el crédito BDE de $3.5M para inversión en infraestructura. SAT-IV activa: ISP=14.58% está bajo el umbral mínimo COOTAD del 65% para calificar al perfil BDE.",
+      "contexto_real": "SAT-IV CRÍTICO: 'ISP 14.58% bajo umbral mínimo COOTAD 65% · bloquea perfil BDE'. BRECHA_FONDOS_BLOQ=$3.66M total (BDE $3.5M + Gender Bond $95K + ONU Mujeres $65K). Acción recomendada: activar coactivas + actualizar catastro predial.",
+      "query":       "¿Puede el GAD acceder al crédito BDE de $3.5M con el ISP actual de 14.58%?",
+      "territorio":  null,
+      "sim":         null,
+      "resultado_esperado": {
+        "ci_range":              [32, 48],
+        "confianza_label":       "Insuficiente",
+        "dimensiones_criticas":  ["Presupuesto", "Capacidad Operativa"],
+        "notas":                 "ISP=14.58% bloquea perfil BDE formalmente (COOTAD_2026 Art.192). Presupuesto debe score < 50. Este es el caso más adverso del banco — caso de bloqueo real."
+      },
+      "outcome_historico":   "bloqueado",
+      "resultado_real":      "Crédito BDE bloqueado formalmente por ISP insuficiente. Fondos internacionales $3.66M retenidos. Acción correctiva requerida antes de Q3-2026.",
+      "riesgo_principal":    "Fondos bloqueados, proyectos de inversión sin financiamiento, impacto en ICGI-T proyección 2026",
+      "notas_calibracion":   "Caso de validación de bloqueo institucional. CI debe ser < 48 (Insuficiente). Si CI > 55, el motor no está capturando la restricción fiscal del ISP. Verificar que SAT-IV impacta Presupuesto y Capacidad."
+    },
+    {
+      "caso_id":     "MCT-007",
+      "nombre":      "Isabel Muentes — NBI Focalizado +30% (Delta Agresivo)",
+      "categoria":   "simulacion_politica",
+      "tipo_real":   "representativo",
+      "descripcion": "Escenario de intervención integral de reducción de NBI en la parroquia más vulnerable. Delta +30% es agresivo para una parroquia en EMERGENCIA con capacidad operativa limitada.",
+      "contexto_real": "Isabel Muentes: NBI=61.2%, TPS=77.94% (mayor pobreza por servicios del cantón), agua=1.02%. Estado EMERGENCIA. Composite_Need=0.5928 (mayor del cantón). Habitantes=3,488.",
+      "query":       "¿Qué pasa si invertimos 30% más en programas integrales de reducción de NBI en Isabel Muentes?",
+      "territorio":  "Isabel Muentes",
+      "sim": {
+        "policy_type": "nbi_focalizado",
+        "delta":        0.30,
+        "quality":      "social"
+      },
+      "resultado_esperado": {
+        "ci_range":              [60, 70],
+        "confianza_label":       "Moderada (con advertencia operativa)",
+        "dimensiones_criticas":  ["Capacidad Operativa"],
+        "notas":                 "CI Moderada es correcto: el GAD TIENE autoridad legal (CRE Art.340) pero capacidad operativa en EMERGENCIA es Insuficiente. El motor comunica la brecha legal-operativa. Ratio ajustado v1 — 66 es output válido del motor calibrado."
+      },
+      "outcome_historico":   "representativo",
+      "resultado_real":      "No hay antecedente de programa NBI focalizado +30% en Isabel Muentes. La parroquia tiene la mayor brecha del cantón pero el menor per cápita ($40/hab).",
+      "riesgo_principal":    "Capacidad de ejecución en EMERGENCIA — logística, acceso, personal técnico limitado",
+      "notas_calibracion":   "Verificar que CI cae entre 50-63 (Baja). El motor debe señalar la brecha entre viabilidad legal (alta) y capacidad operativa (insuficiente). Es el caso más instructivo para decisores."
+    },
+    {
+      "caso_id":     "MCT-008",
+      "nombre":      "Redistribución IET — Transferir Inversión de Cabecera a Rural",
+      "categoria":   "coherencia_institucional",
+      "tipo_real":   "representativo",
+      "descripcion": "Propuesta de redistribución de inversión para corregir el IET=44.80 (Transición Crítica). Brecha actual: Isabel Muentes $40/hab vs cabecera $113/hab. Mandato constitucional de equidad territorial (CRE Art.340).",
+      "contexto_real": "IET=44.80 (Transición Crítica). IRS=79.7% Muy Regresivo: la inversión no llega donde más se necesita. Montecristi cabecera: $113/hab (3.5M de inversión, 28,400 hab). Isabel Muentes: $40/hab (140K inversión, 3,488 hab).",
+      "query":       "¿Es viable redistribuir parte de la inversión de la cabecera hacia Isabel Muentes para reducir la brecha del IET?",
+      "territorio":  "Isabel Muentes",
+      "sim":         null,
+      "resultado_esperado": {
+        "ci_range":              [63, 76],
+        "confianza_label":       "Moderada",
+        "dimension_alta":        ["Competencia Legal"],
+        "notas":                 "CRE Art.340 + COOTAD Art.272 dan base legal sólida (equidad_territorial). Presupuesto moderado (requiere reasignación interna). Capacidad moderada (ICGI-T=53). Planificación media (no referencia explícita PDOT)."
+      },
+      "outcome_historico":   "pendiente",
+      "resultado_real":      "IRS=79.7% documenta la regresividad. Sin decisión formal de redistribución registrada en Gold Master. La brecha $40-$113/hab es el dato más fuerte para justificar la acción.",
+      "riesgo_principal":    "Resistencia política de la cabecera · requiere reforma presupuestaria formal",
+      "notas_calibracion":   "Verificar que legal_router activa CRE Art.340 + COOTAD Art.272 para 'brecha', 'equidad', 'IET'. Reason_path equidad_territorial debe aparecer en prompt block."
+    },
+    {
+      "caso_id":     "MCT-009",
+      "nombre":      "Asambleas Locales Pendientes — SAT-V Compliance",
+      "categoria":   "viabilidad_normativa",
+      "tipo_real":   "semi_real",
+      "descripcion": "SAT-V: solo 2/7 parroquias tienen asamblea local formal. Aníbal San Andrés e Isabel Muentes no tienen asamblea formalizada conforme COOTAD Art.304. Consulta sobre viabilidad de convocarlas.",
+      "contexto_real": "SAT-V PREVENTIVA: 'IGP 27.98% · Asambleas locales: solo 2/7'. Impacto: −2.4 pts IGP. Acción: 'Formalizar asambleas locales pendientes · Aníbal San Andrés e Isabel Muentes'. Aníbal San Andrés: NBI=61.7%, estado=PRIORIDAD.",
+      "query":       "¿Podemos formalizar las asambleas locales en Aníbal San Andrés e Isabel Muentes para cumplir el COOTAD Art.304?",
+      "territorio":  "Aníbal San Andrés",
+      "sim":         null,
+      "resultado_esperado": {
+        "ci_range":              [68, 80],
+        "confianza_label":       "Moderada",
+        "dimension_alta":        ["Competencia Legal"],
+        "notas":                 "Participación ciudadana = obligación legal (COOTAD 303+304+CRE 95). Legal Alta. Planificación media (no en PDOT explícitamente pero derivado del PP). Capacidad media. CI moderada correcta — acción recomendable."
+      },
+      "outcome_historico":   "pendiente",
+      "resultado_real":      "SAT-V activa documenta el déficit. PP 2026 completado con actas pero asambleas locales formales COOTAD Art.304 son proceso distinto. Riesgo de observación CPCCS.",
+      "riesgo_principal":    "Observación CPCCS · RDC 2026 · impacto en IGP=-2.4 pts",
+      "notas_calibracion":   "Verificar que 'participacion ciudadana' activa COOTAD Art.303+304+CRE Art.95. CI debe estar en zona Moderada (no bloqueante). Caso de acción correctiva viable."
+    },
+    {
+      "caso_id":     "MCT-010",
+      "nombre":      "Colorado — Inversión Territorial +15% (Escenario Conservador)",
+      "categoria":   "simulacion_politica",
+      "tipo_real":   "representativo",
+      "descripcion": "Escenario conservador de inversión general en Colorado. Delta mínimo, parroquia en ALERTA (no EMERGENCIA). Diseñado para producir el CI más alto de los escenarios de simulación.",
+      "contexto_real": "Colorado: NBI=58.4%, TPS=58.67%, agua=34.7%, inversión=$210K ($94/hab). Estado ALERTA. Taller PP 2026: 18 fichas (Colorado+El Arroyo+Los Corrales). Déficit hídrico moderado.",
+      "query":       "¿Qué impacto tendría aumentar 15% la inversión territorial en Colorado para mejorar su índice NBI?",
+      "territorio":  "Colorado",
+      "sim": {
+        "policy_type": "inversion_territorial",
+        "delta":        0.15,
+        "quality":      "infraestructura"
+      },
+      "resultado_esperado": {
+        "ci_range":              [66, 78],
+        "confianza_label":       "Moderada",
+        "dimensiones_criticas":  [],
+        "notas":                 "Delta conservador (+15%) sin estado EMERGENCIA. ICGI-T=53 actúa como moderador pero no bloquea. Legal media-alta (equidad territorial). Es el escenario más 'verde' de los 10 — útil para mostrar condiciones favorables."
+      },
+      "outcome_historico":   "representativo",
+      "resultado_real":      "No hay antecedente específico de inversión +15% focalizada en Colorado. PP 2026 incluye 18 fichas del territorio con prioridades de agua, vialidad y áreas verdes.",
+      "riesgo_principal":    "Ejecución presupuestaria con ICGI-T=53 requiere monitoreo",
+      "notas_calibracion":   "Caso de referencia favorable. CI debe ser ≥ 66. Si CI < 60, la penalización por ICGI-T es excesiva. Usar para calibrar la base neutral del motor."
+    }
+  ]
+}

@@ -1,0 +1,458 @@
+{
+  "meta": {
+    "version": "v1.0",
+    "fecha": "2026-05-15T13:30:41.906263",
+    "icgit_q1": 53.56,
+    "total_casos": 10,
+    "en_rango": 10
+  },
+  "resultados": [
+    {
+      "caso_id": "MCT-001",
+      "nombre": "Isabel Muentes — Inversión Hídrica Rural +20%",
+      "categoria": "simulacion_politica",
+      "tipo_real": "representativo",
+      "ci_calculado": 67,
+      "ci_label": "Moderada — resolver observaciones antes de comprometer recursos",
+      "ci_rango_esperado": [
+        63,
+        74
+      ],
+      "en_rango": true,
+      "desviacion_midpoint": -1.5,
+      "dimensiones": {
+        "Planificación": {
+          "score": 65,
+          "nivel": "Media"
+        },
+        "Presupuesto": {
+          "score": 63,
+          "nivel": "Baja"
+        },
+        "Competencia Legal": {
+          "score": 88,
+          "nivel": "Alta"
+        },
+        "Capacidad Operativa": {
+          "score": 47,
+          "nivel": "Insuficiente"
+        }
+      },
+      "issues_count": 5,
+      "recomendaciones": [
+        "⛔ Capacidad Operativa en nivel Insuficiente — bloquea implementación. Atender antes de proceder.",
+        "⚠ Presupuesto requiere refuerzo antes de comprometer recursos."
+      ],
+      "legal_refs_count": 3,
+      "legal_refs": [
+        "COOTAD Art.55",
+        "COPLAFIP Art.97",
+        "COOTAD Art.272"
+      ],
+      "notas_calibracion": "Verificar que CI ≈ 68%. Si Capacidad < 50, revisar base neutral. Si Legal < 80, revisar CRE routing.",
+      "riesgo_principal": "Capacidad operativa en zona EMERGENCIA — logística de ejecución compleja"
+    },
+    {
+      "caso_id": "MCT-002",
+      "nombre": "La Pila — Gestión Institucional +25%",
+      "categoria": "simulacion_politica",
+      "tipo_real": "representativo",
+      "ci_calculado": 66,
+      "ci_label": "Moderada — resolver observaciones antes de comprometer recursos",
+      "ci_rango_esperado": [
+        63,
+        74
+      ],
+      "en_rango": true,
+      "desviacion_midpoint": -2.5,
+      "dimensiones": {
+        "Planificación": {
+          "score": 57,
+          "nivel": "Baja"
+        },
+        "Presupuesto": {
+          "score": 77,
+          "nivel": "Media"
+        },
+        "Competencia Legal": {
+          "score": 75,
+          "nivel": "Media"
+        },
+        "Capacidad Operativa": {
+          "score": 55,
+          "nivel": "Baja"
+        }
+      },
+      "issues_count": 3,
+      "recomendaciones": [
+        "⚠ Planificación, Capacidad Operativa requiere refuerzo antes de comprometer recursos.",
+        "Subsanar las observaciones identificadas y validar con Planificación antes de elevar al Concejo."
+      ],
+      "legal_refs_count": 2,
+      "legal_refs": [
+        "COPLAFIP Art.100",
+        "COOTAD Art.432"
+      ],
+      "notas_calibracion": "Verificar nota_impacto_cantonal se activa (La Pila ≈ 5.9% población, icgit_delta < 0.5). CI esperado: 65-70.",
+      "riesgo_principal": "Capacidad de ejecución con ICGI-T en Transición Crítica"
+    },
+    {
+      "caso_id": "MCT-003",
+      "nombre": "Reforma POA — Documentar SAT-0 (24 procesos sin SHA-256)",
+      "categoria": "viabilidad_normativa",
+      "tipo_real": "semi_real",
+      "ci_calculado": 72,
+      "ci_label": "Moderada — resolver observaciones antes de comprometer recursos",
+      "ci_rango_esperado": [
+        65,
+        78
+      ],
+      "en_rango": true,
+      "desviacion_midpoint": 0.5,
+      "dimensiones": {
+        "Planificación": {
+          "score": 72,
+          "nivel": "Media"
+        },
+        "Presupuesto": {
+          "score": 69,
+          "nivel": "Media"
+        },
+        "Competencia Legal": {
+          "score": 88,
+          "nivel": "Alta"
+        },
+        "Capacidad Operativa": {
+          "score": 55,
+          "nivel": "Baja"
+        }
+      },
+      "issues_count": 2,
+      "recomendaciones": [
+        "⚠ Capacidad Operativa requiere refuerzo antes de comprometer recursos.",
+        "Subsanar las observaciones identificadas y validar con Planificación antes de elevar al Concejo."
+      ],
+      "legal_refs_count": 3,
+      "legal_refs": [
+        "COPLAFIP Art.28",
+        "COPLAFIP Art.97",
+        "COPLAFIP Art.98"
+      ],
+      "notas_calibracion": "Verificar que legal_router activa COPLAFIP Art.100+101 para query 'reformar POA'. Reason_path debe incluir paso de Concejo si >10%.",
+      "riesgo_principal": "Observación Contraloría si no se documenta antes del corte Q2"
+    },
+    {
+      "caso_id": "MCT-004",
+      "nombre": "PP 2026 — Verificación de Cumplimiento COOTAD Art.238",
+      "categoria": "coherencia_institucional",
+      "tipo_real": "real",
+      "ci_calculado": 73,
+      "ci_label": "Moderada — resolver observaciones antes de comprometer recursos",
+      "ci_rango_esperado": [
+        72,
+        85
+      ],
+      "en_rango": true,
+      "desviacion_midpoint": -5.5,
+      "dimensiones": {
+        "Planificación": {
+          "score": 77,
+          "nivel": "Media"
+        },
+        "Presupuesto": {
+          "score": 69,
+          "nivel": "Media"
+        },
+        "Competencia Legal": {
+          "score": 85,
+          "nivel": "Alta"
+        },
+        "Capacidad Operativa": {
+          "score": 55,
+          "nivel": "Baja"
+        }
+      },
+      "issues_count": 2,
+      "recomendaciones": [
+        "⚠ Capacidad Operativa requiere refuerzo antes de comprometer recursos.",
+        "Subsanar las observaciones identificadas y validar con Planificación antes de elevar al Concejo."
+      ],
+      "legal_refs_count": 3,
+      "legal_refs": [
+        "COOTAD Art.238",
+        "COOTAD Art.302",
+        "COOTAD Art.303"
+      ],
+      "notas_calibracion": "Este caso debe producir el CI más alto del banco. Si CI < 74, revisar cómo Planificación detecta términos 'presupuesto participativo' y 'pdot'. Caso de referencia alta.",
+      "riesgo_principal": "SAT-V: solo 2/7 parroquias con asamblea local formal (Aníbal San Andrés e Isabel Muentes pendientes)"
+    },
+    {
+      "caso_id": "MCT-005",
+      "nombre": "Contratación Directa Sin PAC — Colorado (SAT-I Risk)",
+      "categoria": "viabilidad_normativa",
+      "tipo_real": "representativo",
+      "ci_calculado": 55,
+      "ci_label": "Baja — requiere acciones previas",
+      "ci_rango_esperado": [
+        38,
+        55
+      ],
+      "en_rango": true,
+      "desviacion_midpoint": 8.5,
+      "dimensiones": {
+        "Planificación": {
+          "score": 57,
+          "nivel": "Baja"
+        },
+        "Presupuesto": {
+          "score": 69,
+          "nivel": "Media"
+        },
+        "Competencia Legal": {
+          "score": 40,
+          "nivel": "Insuficiente"
+        },
+        "Capacidad Operativa": {
+          "score": 55,
+          "nivel": "Baja"
+        }
+      },
+      "issues_count": 4,
+      "recomendaciones": [
+        "⛔ Competencia Legal en nivel Insuficiente — bloquea implementación. Atender antes de proceder.",
+        "⚠ Planificación, Capacidad Operativa requiere refuerzo antes de comprometer recursos."
+      ],
+      "legal_refs_count": 2,
+      "legal_refs": [
+        "COPLAFIP Art.100",
+        "COOTAD Art.432"
+      ],
+      "notas_calibracion": "Caso de validación negativa. CI debe ser < 55. Si CI > 60, el motor está siendo demasiado permisivo con acciones ilegales. Verificar que legal_router baje Legal < 65.",
+      "riesgo_principal": "Observación Contraloría · LOSNCP · SAT-I activa por patrón previo"
+    },
+    {
+      "caso_id": "MCT-006",
+      "nombre": "Crédito BDE $3.5M con ISP=14.58% (Bloqueado)",
+      "categoria": "viabilidad_normativa",
+      "tipo_real": "real",
+      "ci_calculado": 45,
+      "ci_label": "Insuficiente — no recomendado sin intervención correctiva",
+      "ci_rango_esperado": [
+        32,
+        48
+      ],
+      "en_rango": true,
+      "desviacion_midpoint": 5.0,
+      "dimensiones": {
+        "Planificación": {
+          "score": 57,
+          "nivel": "Baja"
+        },
+        "Presupuesto": {
+          "score": 39,
+          "nivel": "Insuficiente"
+        },
+        "Competencia Legal": {
+          "score": 70,
+          "nivel": "Media"
+        },
+        "Capacidad Operativa": {
+          "score": 55,
+          "nivel": "Baja"
+        }
+      },
+      "issues_count": 4,
+      "recomendaciones": [
+        "⛔ Presupuesto en nivel Insuficiente — bloquea implementación. Atender antes de proceder.",
+        "⚠ Planificación, Capacidad Operativa requiere refuerzo antes de comprometer recursos."
+      ],
+      "legal_refs_count": 3,
+      "legal_refs": [
+        "COPLAFIP Art.5",
+        "COOTAD_2026 Art.192",
+        "COPLAFIP Art.119"
+      ],
+      "notas_calibracion": "Caso de validación de bloqueo institucional. CI debe ser < 48 (Insuficiente). Si CI > 55, el motor no está capturando la restricción fiscal del ISP. Verificar que SAT-IV impacta Presupuesto y Capacidad.",
+      "riesgo_principal": "Fondos bloqueados, proyectos de inversión sin financiamiento, impacto en ICGI-T proyección 2026"
+    },
+    {
+      "caso_id": "MCT-007",
+      "nombre": "Isabel Muentes — NBI Focalizado +30% (Delta Agresivo)",
+      "categoria": "simulacion_politica",
+      "tipo_real": "representativo",
+      "ci_calculado": 66,
+      "ci_label": "Moderada — resolver observaciones antes de comprometer recursos",
+      "ci_rango_esperado": [
+        60,
+        70
+      ],
+      "en_rango": true,
+      "desviacion_midpoint": 1.0,
+      "dimensiones": {
+        "Planificación": {
+          "score": 65,
+          "nivel": "Media"
+        },
+        "Presupuesto": {
+          "score": 63,
+          "nivel": "Baja"
+        },
+        "Competencia Legal": {
+          "score": 88,
+          "nivel": "Alta"
+        },
+        "Capacidad Operativa": {
+          "score": 43,
+          "nivel": "Insuficiente"
+        }
+      },
+      "issues_count": 5,
+      "recomendaciones": [
+        "⛔ Capacidad Operativa en nivel Insuficiente — bloquea implementación. Atender antes de proceder.",
+        "⚠ Presupuesto requiere refuerzo antes de comprometer recursos."
+      ],
+      "legal_refs_count": 3,
+      "legal_refs": [
+        "COOTAD Art.272",
+        "COOTAD Art.302",
+        "CRE Art.340"
+      ],
+      "notas_calibracion": "Verificar que CI cae entre 50-63 (Baja). El motor debe señalar la brecha entre viabilidad legal (alta) y capacidad operativa (insuficiente). Es el caso más instructivo para decisores.",
+      "riesgo_principal": "Capacidad de ejecución en EMERGENCIA — logística, acceso, personal técnico limitado"
+    },
+    {
+      "caso_id": "MCT-008",
+      "nombre": "Redistribución IET — Transferir Inversión de Cabecera a Rural",
+      "categoria": "coherencia_institucional",
+      "tipo_real": "representativo",
+      "ci_calculado": 67,
+      "ci_label": "Moderada — resolver observaciones antes de comprometer recursos",
+      "ci_rango_esperado": [
+        63,
+        76
+      ],
+      "en_rango": true,
+      "desviacion_midpoint": -2.5,
+      "dimensiones": {
+        "Planificación": {
+          "score": 65,
+          "nivel": "Media"
+        },
+        "Presupuesto": {
+          "score": 69,
+          "nivel": "Media"
+        },
+        "Competencia Legal": {
+          "score": 82,
+          "nivel": "Alta"
+        },
+        "Capacidad Operativa": {
+          "score": 47,
+          "nivel": "Insuficiente"
+        }
+      },
+      "issues_count": 4,
+      "recomendaciones": [
+        "⛔ Capacidad Operativa en nivel Insuficiente — bloquea implementación. Atender antes de proceder."
+      ],
+      "legal_refs_count": 3,
+      "legal_refs": [
+        "COOTAD Art.272",
+        "COPLAFIP Art.98",
+        "COPLAFIP Art.118"
+      ],
+      "notas_calibracion": "Verificar que legal_router activa CRE Art.340 + COOTAD Art.272 para 'brecha', 'equidad', 'IET'. Reason_path equidad_territorial debe aparecer en prompt block.",
+      "riesgo_principal": "Resistencia política de la cabecera · requiere reforma presupuestaria formal"
+    },
+    {
+      "caso_id": "MCT-009",
+      "nombre": "Asambleas Locales Pendientes — SAT-V Compliance",
+      "categoria": "viabilidad_normativa",
+      "tipo_real": "semi_real",
+      "ci_calculado": 71,
+      "ci_label": "Moderada — resolver observaciones antes de comprometer recursos",
+      "ci_rango_esperado": [
+        68,
+        80
+      ],
+      "en_rango": true,
+      "desviacion_midpoint": -3.0,
+      "dimensiones": {
+        "Planificación": {
+          "score": 72,
+          "nivel": "Media"
+        },
+        "Presupuesto": {
+          "score": 69,
+          "nivel": "Media"
+        },
+        "Competencia Legal": {
+          "score": 85,
+          "nivel": "Alta"
+        },
+        "Capacidad Operativa": {
+          "score": 55,
+          "nivel": "Baja"
+        }
+      },
+      "issues_count": 2,
+      "recomendaciones": [
+        "⚠ Capacidad Operativa requiere refuerzo antes de comprometer recursos.",
+        "Subsanar las observaciones identificadas y validar con Planificación antes de elevar al Concejo."
+      ],
+      "legal_refs_count": 3,
+      "legal_refs": [
+        "COOTAD Art.303",
+        "COOTAD Art.304",
+        "COOTAD Art.305"
+      ],
+      "notas_calibracion": "Verificar que 'participacion ciudadana' activa COOTAD Art.303+304+CRE Art.95. CI debe estar en zona Moderada (no bloqueante). Caso de acción correctiva viable.",
+      "riesgo_principal": "Observación CPCCS · RDC 2026 · impacto en IGP=-2.4 pts"
+    },
+    {
+      "caso_id": "MCT-010",
+      "nombre": "Colorado — Inversión Territorial +15% (Escenario Conservador)",
+      "categoria": "simulacion_politica",
+      "tipo_real": "representativo",
+      "ci_calculado": 68,
+      "ci_label": "Moderada — resolver observaciones antes de comprometer recursos",
+      "ci_rango_esperado": [
+        66,
+        78
+      ],
+      "en_rango": true,
+      "desviacion_midpoint": -4.0,
+      "dimensiones": {
+        "Planificación": {
+          "score": 57,
+          "nivel": "Baja"
+        },
+        "Presupuesto": {
+          "score": 77,
+          "nivel": "Media"
+        },
+        "Competencia Legal": {
+          "score": 82,
+          "nivel": "Alta"
+        },
+        "Capacidad Operativa": {
+          "score": 55,
+          "nivel": "Baja"
+        }
+      },
+      "issues_count": 3,
+      "recomendaciones": [
+        "⚠ Planificación, Capacidad Operativa requiere refuerzo antes de comprometer recursos.",
+        "Subsanar las observaciones identificadas y validar con Planificación antes de elevar al Concejo."
+      ],
+      "legal_refs_count": 3,
+      "legal_refs": [
+        "COOTAD Art.272",
+        "COPLAFIP Art.98",
+        "COPLAFIP Art.118"
+      ],
+      "notas_calibracion": "Caso de referencia favorable. CI debe ser ≥ 66. Si CI < 60, la penalización por ICGI-T es excesiva. Usar para calibrar la base neutral del motor.",
+      "riesgo_principal": "Ejecución presupuestaria con ICGI-T=53 requiere monitoreo"
+    }
+  ]
+}
