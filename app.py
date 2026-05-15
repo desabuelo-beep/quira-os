@@ -151,6 +151,37 @@ section.main, [data-testid="stMain"] {
     z-index: 99999 !important;
 }
 
+/* ── DESKTOP: sidebar siempre visible — neutraliza caché de collapsed ── */
+@media (min-width: 769px) {
+    [data-testid="stSidebar"] {
+        transform: translateX(0) !important;
+        min-width: 244px !important;
+        width: 244px !important;
+        display: flex !important;
+        visibility: visible !important;
+    }
+}
+
+/* ── QUICKNAV: forzar horizontal en pantallas pequeñas ── */
+@media (max-width: 768px) {
+    [data-testid="stHorizontalBlock"] {
+        flex-wrap: nowrap !important;
+    }
+    [data-testid="stHorizontalBlock"] > [data-testid="stColumn"] {
+        min-width: 0 !important;
+        flex: 1 1 0% !important;
+        overflow: hidden !important;
+    }
+    [data-testid="stHorizontalBlock"] .stButton > button {
+        font-size: 9px !important;
+        padding: 4px 2px !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        min-height: 36px !important;
+    }
+}
+
 /* ── MOBILE: sidebar colapsado por defecto, toggle visible ── */
 @media (max-width: 768px) {
     /* Main sin padding extra cuando sidebar está oculto */

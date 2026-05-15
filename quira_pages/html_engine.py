@@ -172,6 +172,7 @@ _AUTORESIZE_JS = """
   window.addEventListener('load', sendHeight);
   setTimeout(sendHeight, 150);
   setTimeout(sendHeight, 600);
+  setTimeout(sendHeight, 1400);
 })();
 </script>
 """

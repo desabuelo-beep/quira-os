@@ -260,7 +260,7 @@ def render() -> None:
 
     html = hdr + timeline_html + vectores_html + avep_scale + mitos_html
 
-    render_page(html, show_tech=show_tech, height=1150)
+    render_page(html, show_tech=show_tech, height=1800)
 
     # ── CTAs Streamlit ────────────────────────────────────────────────────────
     st.markdown("---")
