@@ -196,7 +196,7 @@ def render() -> None:
 <div style="margin-bottom:16px">
   <div style="font-size:11px;font-weight:700;color:#00D4FF;
               text-transform:uppercase;letter-spacing:.12em;margin-bottom:4px">
-    ⑨ SIMULADOR DE ESCENARIOS
+    ⑨ PROYECTOR DE ESCENARIOS
   </div>
   <div style="font-size:22px;font-weight:900;color:#F0F4FF;margin-bottom:4px">
     Motor de Escenarios QUIRA OS
@@ -482,96 +482,64 @@ def render() -> None:
             except ImportError:
                 st.info("Instalar plotly para ver el gráfico: `pip install plotly`")
 
-        # ── Modo Interactivo ──────────────────────────────────────────────────
+        # ── 6 Escenarios validados — Gold Master trazabilidad ─────────────────
         st.markdown("---")
         st.markdown("""
-<div style="font-size:11px;font-weight:700;color:#FF4D6D;
-            text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px">
-  🎛️ MODO INTERACTIVO · Mueve los pesos y ve el IRS en tiempo real
+<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">
+  <div>
+    <div style="font-size:11px;font-weight:700;color:#FF4D6D;
+                text-transform:uppercase;letter-spacing:.1em">
+      📋 ANÁLISIS DE SENSIBILIDAD · 6 ESCENARIOS VALIDADOS · TESTER v2.1
+    </div>
+    <div style="font-size:9px;color:rgba(255,255,255,0.35);margin-top:3px">
+      Fuente: SIAP-ICPI Gold Master v4.1 · Composite_Need_Analysis · Trazabilidad verificada
+    </div>
+  </div>
+  <div style="background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.3);
+              border-radius:8px;padding:8px 14px;text-align:center">
+    <div style="font-size:9px;color:rgba(0,212,255,0.7);font-weight:700">IRS OFICIAL</div>
+    <div style="font-size:28px;font-weight:900;color:#FF4D6D;font-family:monospace;line-height:1.1">79.7</div>
+    <div style="font-size:8px;color:rgba(255,255,255,0.4)">★ Recomendado v2.1</div>
+  </div>
 </div>
 """, unsafe_allow_html=True)
 
-        col_sl, col_res = st.columns([2, 3], gap="large")
-
-        with col_sl:
-            w_nbi_s = st.slider(
-                "Peso NBI (%)",
-                min_value=10, max_value=60, value=30, step=5,
-                key="irs_w_nbi",
-                help="Importancia del NBI en el Composite_Need",
-            )
-            w_agua_s = st.slider(
-                "Peso Agua/TPS (%)",
-                min_value=10, max_value=70, value=50, step=5,
-                key="irs_w_agua",
-                help="Importancia de la brecha de cobertura de agua",
-            )
-            w_pop_s = 100 - w_nbi_s - w_agua_s
-            total_ok = w_pop_s >= 0
-
-            if total_ok:
-                st.markdown(
-                    f'<div style="font-size:10px;color:rgba(255,255,255,.5);margin-top:4px">'
-                    f'Peso Población (automático): <strong style="color:#00D4FF">{w_pop_s}%</strong>'
-                    f' · Suma total: 100%</div>',
-                    unsafe_allow_html=True,
-                )
-            else:
-                st.error(f"⚠ Suma supera 100% (exceso: {-w_pop_s}%). Reduce los pesos anteriores.")
-
-        with col_res:
-            if total_ok:
-                irs_dyn = _irs_interpolado(w_nbi_s)
-                irs_label, irs_col = _avep_irs(irs_dyn)
-                col_hex_irs = {"red": "#FF4D6D", "amber": "#FFB800", "green": "#00E096"}[irs_col]
-
-                # Find closest reference scenario
-                closest = min(_IRS_ESCENARIOS,
-                              key=lambda s: abs(s["w_nbi"] - w_nbi_s) + abs(s["w_agua"] - w_agua_s))
-                diff_ref = irs_dyn - 79.7
-
+        # Grid de 6 escenarios en 3 columnas
+        cols_esc = st.columns(3)
+        _COL_HEX = {"red": "#FF4D6D", "amber": "#FFB800", "green": "#00E096"}
+        for i, esc in enumerate(_IRS_ESCENARIOS):
+            irs_label, irs_col = _avep_irs(esc["irs"])
+            hex_color = _COL_HEX[irs_col]
+            is_rec    = esc["rec"]
+            border    = "rgba(0,212,255,0.50)" if is_rec else "rgba(255,255,255,0.07)"
+            bg        = "rgba(0,212,255,0.07)" if is_rec else "rgba(255,255,255,0.02)"
+            badge     = '<div style="font-size:8px;font-weight:700;color:#00D4FF;margin-bottom:4px">✦ OFICIAL · USE EN REPORTES</div>' if is_rec else ""
+            with cols_esc[i % 3]:
                 st.markdown(f"""
-<div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px">
-  <div style="flex:1;min-width:120px;background:rgba(255,77,109,.08);
-              border:1px solid rgba(255,77,109,.3);border-radius:12px;
-              padding:16px;text-align:center">
-    <div style="font-size:9px;color:rgba(255,255,255,.4);margin-bottom:4px">IRS SIMULADO</div>
-    <div style="font-size:44px;font-weight:900;color:{col_hex_irs};
-                font-family:monospace;line-height:1">{irs_dyn}</div>
-    <div style="font-size:10px;font-weight:700;color:{col_hex_irs};margin-top:4px">{irs_label}</div>
+<div style="border:1px solid {border};background:{bg};border-radius:10px;
+            padding:12px 10px;margin-bottom:8px;text-align:center">
+  {badge}
+  <div style="font-size:10px;font-weight:700;color:rgba(255,255,255,0.8);margin-bottom:6px">{esc['label']}</div>
+  <div style="font-size:32px;font-weight:900;color:{hex_color};font-family:monospace;line-height:1">{esc['irs']}</div>
+  <div style="font-size:9px;font-weight:700;color:{hex_color};margin:4px 0">{irs_label}</div>
+  <div style="font-size:8px;color:rgba(255,255,255,0.3);margin-top:6px">
+    Agua {esc['w_agua']}% · NBI {esc['w_nbi']}% · Pob {esc['w_pop']}%
   </div>
-  <div style="flex:2;display:flex;flex-direction:column;gap:8px;justify-content:center">
-    <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);
-                border-radius:8px;padding:10px 12px">
-      <div style="font-size:9px;color:rgba(255,255,255,.4);margin-bottom:3px">vs Oficial v2.1 (79.7)</div>
-      <div style="font-size:15px;font-weight:800;
-                  color:{'#00E096' if abs(diff_ref)<2 else '#FFB800'}">
-        {'+' if diff_ref>0 else ''}{diff_ref:.1f} pts
-      </div>
-    </div>
-    <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);
-                border-radius:8px;padding:10px 12px">
-      <div style="font-size:9px;color:rgba(255,255,255,.4);margin-bottom:3px">
-        Escenario más cercano
-      </div>
-      <div style="font-size:11px;font-weight:700;color:#E2E8F0">{closest["label"]}</div>
-      <div style="font-size:9px;color:rgba(255,255,255,.4)">IRS validado: {closest["irs"]}</div>
-    </div>
-  </div>
-</div>
+</div>""", unsafe_allow_html=True)
 
-<div style="background:rgba(0,212,255,.05);border:1px solid rgba(0,212,255,.15);
-            border-radius:8px;padding:8px 12px;font-size:9px;color:rgba(255,255,255,.4)">
-  💡 Configuración actual: Agua={w_agua_s}% · NBI={w_nbi_s}% · Pob={w_pop_s}%
-  · IRS interpolado desde datos del tester v2.1
-  · <strong style="color:#00D4FF">Recomendado para reportes externos: Agua=50 / NBI=30 / Pob=20</strong>
+        st.markdown("""
+<div style="background:rgba(0,212,255,.05);border:1px solid rgba(0,212,255,.12);
+            border-radius:8px;padding:8px 12px;font-size:9px;color:rgba(255,255,255,.4);margin-top:4px">
+  🔒 Los pesos de ponderación son parámetros del Gold Master (SIAP-ICPI_GOLD_MASTER_v4.1).
+  El IRS oficial para reportes externos, solicitudes PNUD/BID/GEF y evidencia institucional es
+  <strong style="color:#00D4FF">79.7 pts · Escenario Recomendado v2.1 (Agua=50% · NBI=30% · Pob=20%)</strong>.
 </div>
 """, unsafe_allow_html=True)
 
-        # ── Conclusiones del tester ───────────────────────────────────────────
+        # ── Conclusiones del análisis de sensibilidad ─────────────────────────
         st.markdown("""
 <div style="background:rgba(255,77,109,.05);border:1px solid rgba(255,77,109,.2);
-            border-radius:12px;padding:14px 16px;margin-top:8px">
+            border-radius:12px;padding:14px 16px;margin-top:12px">
   <div style="font-size:11px;font-weight:700;color:#FF4D6D;margin-bottom:8px">
     📋 CONCLUSIONES ANÁLISIS DE SENSIBILIDAD (Tester v2.1)
   </div>
@@ -586,13 +554,13 @@ def render() -> None:
                 padding:8px;background:rgba(255,255,255,.02);border-radius:6px">
       <strong style="color:#00D4FF">En todos los escenarios</strong>
       el GAD está en zona <strong>Muy Regresivo</strong> (IRS > 70).
-      Esto es un argumento poderoso para PNUD, BID, GEF.
+      Argumento institucional para PNUD, BID, GEF.
     </div>
     <div style="font-size:10px;color:rgba(255,255,255,.7);line-height:1.6;
                 padding:8px;background:rgba(255,255,255,.02);border-radius:6px">
       <strong style="color:#FFB800">Peso recomendado (50/30/20)</strong>
-      es el más equilibrado y defendible.
-      Usar en reportes externos y solicitudes de fondos.
+      es el más equilibrado y defendible ante Contraloría.
+      Certificado Gold Master · Tester v2.1.
     </div>
   </div>
 </div>

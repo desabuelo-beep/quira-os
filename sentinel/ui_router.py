@@ -81,7 +81,7 @@ def _route_nbi(data: dict, qh: int) -> None:
             {"label": "GeoTwin",          "page_key": "geotwin",   "icon": "🗺️"},
             {"label": "Inversión Cápita",  "page_key": "inversion", "icon": "💰"},
             {"label": "Causas Brecha",     "page_key": "brecha",    "icon": "📉"},
-            {"label": "Simulador",         "page_key": "simulador", "icon": "🧮"},
+            {"label": "Proyector",          "page_key": "simulador", "icon": "🧮"},
         ],
         query_hash=qh,
     )

@@ -267,7 +267,7 @@ def simulation_card(result: dict, query_hash: int = 0) -> None:
     <div>
       <div style="font-size:10px;font-weight:700;color:rgba(124,92,252,0.9);
                   letter-spacing:0.07em;text-transform:uppercase">
-        🧮&nbsp;SIMULACIÓN CBST v0.1 — BETA</div>
+        🧮&nbsp;PROYECCIÓN CBST v0.1 — BETA</div>
       <div style="font-size:12px;font-weight:600;color:#E2E8F0;margin-top:3px">
         {plabel} · <b>{nombre}</b> · +{delta}%</div>
       <div style="font-size:10px;color:rgba(255,255,255,0.4);margin-top:2px">

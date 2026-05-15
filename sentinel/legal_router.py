@@ -177,6 +177,7 @@ def build_legal_prompt_block(query: str) -> str:
     """
     Genera bloque normativo para inyectar al system prompt de Groq.
     Solo se activa cuando la query toca temas legales — mantiene el prompt ligero.
+    Incluye reason_path cuando detecta consulta de viabilidad.
     """
     refs = find_legal_refs(query, max_refs=2)
     if not refs:
@@ -190,4 +191,121 @@ def build_legal_prompt_block(query: str) -> str:
         }.get(r["law"], r["law"])
         lines.append(f"  {law_label} {r['article']}: {r['text'][:200]}...")
     lines.append("  Al citar: indica 'conforme [LEY] [Art.X]' — no inventes artículos.")
+
+    # Inyectar reason_path si la query es de viabilidad normativa
+    reason = get_reason_path(query, refs)
+    if reason:
+        lines.append("")
+        lines.append("RUTA PROCEDIMENTAL APLICABLE:")
+        lines.append(f"  {reason}")
+
     return "\n".join(lines)
+
+
+# ── INTENTS — clasificación por propósito institucional ───────────────────────
+
+_INTENT_LABELS: dict[str, str] = {
+    "agua_potable":       "Prestación de servicio de agua y saneamiento",
+    "presupuesto":        "Planificación y aprobación presupuestaria",
+    "reforma_poa":        "Reforma al POA/PAC y modificaciones presupuestarias",
+    "competencias":       "Competencias constitucionales y legales del GAD",
+    "contratacion":       "Contratación pública y procesos SERCOP",
+    "participacion":      "Participación ciudadana y presupuesto participativo",
+    "gobernanza":         "Gobernanza institucional y eficiencia GAD",
+    "equidad_territorial":"Equidad territorial e inversión redistributiva",
+    "planificacion":      "Planificación territorial y PDOT",
+    "finanzas":           "Sostenibilidad fiscal y finanzas municipales",
+    "derechos":           "Derechos constitucionales y garantías",
+}
+
+# Rutas procedimentales por intent — lo que Sentinel razona, no solo cita
+_REASON_PATHS: dict[str, str] = {
+    "reforma_poa": (
+        "La reforma presupuestaria es viable. Requiere: (1) informe técnico de la Dirección "
+        "de Planificación que justifique la reasignación; (2) consistencia con metas PDOT vigentes; "
+        "(3) reforma al POA aprobada por el Alcalde; (4) si supera el 10% del presupuesto, "
+        "requiere resolución del Concejo Municipal. Riesgo: Medio."
+    ),
+    "contratacion": (
+        "La contratación debe seguir el régimen SERCOP: (1) verificar umbral (ínfima cuantía / "
+        "menor cuantía / cotización / licitación); (2) inclusión en PAC vigente o reforma PAC; "
+        "(3) certificación presupuestaria previa; (4) proceso en COMPRASPÚBLICAS. Riesgo: Bajo si "
+        "el proceso se documenta correctamente desde inicio."
+    ),
+    "agua_potable": (
+        "La inversión en agua es competencia exclusiva del GAD Municipal (CRE Art.264 + COOTAD "
+        "Art.55). El derecho constitucional al agua (CRE Art.12) genera obligación de provisión. "
+        "Puede financiarse con recursos propios, transferencias del Estado, o cooperación. "
+        "Requiere inclusión en POA/PAC y proceso de contratación. Riesgo: Bajo."
+    ),
+    "participacion": (
+        "El presupuesto participativo es obligatorio (COOTAD Art.238). Requiere: (1) convocatoria "
+        "pública documentada; (2) talleres en las 7 parroquias con acta oficial; (3) fichas de "
+        "priorización ciudadana; (4) incorporación al POA. Omitirlo genera observación de Contraloría."
+    ),
+    "equidad_territorial": (
+        "La distribución equitativa de inversión es mandato constitucional (CRE Art.340) y legal "
+        "(COOTAD Art.272). Las parroquias con mayor NBI tienen derecho preferente de inversión. "
+        "El GAD debe documentar el criterio de distribución para la RDC y ante Contraloría."
+    ),
+}
+
+
+def find_refs_by_intent(intent: str, max_refs: int = 3) -> list[dict]:
+    """Retorna artículos clasificados bajo un intent específico."""
+    chunks = _load_chunks()
+    return [c for c in chunks if c.get("intent") == intent][:max_refs]
+
+
+def get_intents_from_refs(refs: list[dict]) -> list[str]:
+    """Extrae los intents únicos presentes en una lista de referencias."""
+    seen, result = set(), []
+    for r in refs:
+        i = r.get("intent", "general")
+        if i not in seen:
+            seen.add(i)
+            result.append(i)
+    return result
+
+
+def get_reason_path(query: str, refs: list[dict] | None = None) -> str:
+    """
+    Retorna la ruta procedimental aplicable según los intents de la query.
+    Permite que Sentinel razone sobre viabilidad, no solo cite artículos.
+
+    Returns: string con la ruta procedimental, o "" si no aplica.
+    """
+    q = _norm(query)
+
+    # Detectar si es pregunta de viabilidad
+    viabilidad_triggers = [
+        "puedo", "podemos", "es posible", "esta permitido", "permite",
+        "viable", "reasignar", "modificar", "reformar", "cambiar el poa",
+        "cambiar presupuesto", "contratar", "adjudicar", "priorizar",
+    ]
+    if not any(t in q for t in viabilidad_triggers):
+        return ""
+
+    # Detección directa de intent por keywords de la query (prioridad sobre refs)
+    _QUERY_INTENTS: list[tuple[list[str], str]] = [
+        (["poa", "presupuesto", "reasignar", "reformar presupuesto", "modificar presupuesto"], "reforma_poa"),
+        (["contratar", "contratacion", "licitacion", "adjudicar", "pac"], "contratacion"),
+        (["participativo", "pp 2026", "talleres", "fichas", "asamblea"], "participacion"),
+        (["agua", "potable", "hidric", "saneamiento"], "agua_potable"),
+        (["equidad", "iet", "nbi", "brecha", "inequidad"], "equidad_territorial"),
+    ]
+    for kws, intent in _QUERY_INTENTS:
+        if any(k in q for k in kws):
+            path = _REASON_PATHS.get(intent, "")
+            if path:
+                return path
+
+    # Fallback: intent desde los refs
+    active_refs = refs or find_legal_refs(query, max_refs=3)
+    intents     = get_intents_from_refs(active_refs)
+    for intent in intents:
+        path = _REASON_PATHS.get(intent, "")
+        if path:
+            return path
+
+    return ""

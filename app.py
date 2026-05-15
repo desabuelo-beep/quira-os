@@ -150,7 +150,7 @@ PAGES = {
     "dashboard":    {"label": "Tablero Ejecutivo",     "icon": "📊", "render": p1},
     "pulso":        {"label": "Pulso Ejecutivo",       "icon": "⚡", "render": p6},
     "brecha":       {"label": "Causas de la Brecha",   "icon": "📉", "render": p7},
-    "simulador":    {"label": "Simulador ✨",           "icon": "🧮", "render": p13},
+    "simulador":    {"label": "Proyector ✨",            "icon": "🧮", "render": p13},
     # ── PLANIFICACIÓN ─────────────────────────────────────────────────────────
     "metas":        {"label": "Metas PDOT",            "icon": "🎯", "render": p8},
     "cadena":       {"label": "Cadena POA·PAC",        "icon": "🔗", "render": p12},
