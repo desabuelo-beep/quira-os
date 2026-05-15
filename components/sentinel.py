@@ -166,9 +166,8 @@ _GROQ_MODELS     = [
     "llama-3.1-8b-instant",      # fallback: más rápido si el anterior falla
 ]
 # Máximo de mensajes del historial enviados a la API (evita 413 por acumulación)
-_MAX_HISTORY_MSG = 6
-# Tokens extra para bloque JSON de visualización (Sentinel v1.1)
-_MAX_TOKENS = 1400
+_MAX_HISTORY_MSG = 3   # reducido para evitar 413 en free tier Groq
+_MAX_TOKENS      = 1200
 
 
 def _run_sentinel(
@@ -183,6 +182,20 @@ def _run_sentinel(
 
     messages = st.session_state["sentinel_messages"]
     pregunta = messages[-1]["content"] if messages else ""
+
+    # ── Detección temprana de visualización (omite llamada al LLM) ────────────
+    template_text = _charts.get_template_text(pregunta)
+    if template_text:
+        with st.chat_message("assistant", avatar="🔮"):
+            st.markdown(template_text)
+            _charts.detect_and_render(pregunta)
+        st.session_state["sentinel_messages"].append({
+            "role":    "assistant",
+            "content": template_text,
+            "visual":  {"renderType": "intent_chart", "query": pregunta},
+        })
+        log_interaction(pregunta, template_text, "charts_engine_v1.1", "alta", False, pagina_origen)
+        return
 
     with st.chat_message("assistant", avatar="🔮"):
         placeholder = st.empty()

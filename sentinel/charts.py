@@ -32,11 +32,96 @@ _DARK = dict(
     plot_bgcolor="rgba(255,255,255,0.02)",
     font=dict(color="#E2E8F0", size=11),
     margin=dict(t=58, b=44, l=10, r=10),
-    height=310,
 )
 
 
 # ── API PÚBLICA ────────────────────────────────────────────────────────────────
+
+def get_template_text(query: str) -> str | None:
+    """
+    Devuelve texto contextual de análisis para la visualización detectada.
+    Si retorna un string → componente sentinel.py OMITE la llamada al LLM.
+    Si retorna None → no hay intent visual, el LLM gestiona la respuesta.
+    """
+    q = _norm(query)
+
+    if _has(q, "nbi", "necesidades basicas", "insatisfechas"):
+        return (
+            "**NBI por Parroquia — Distribución de Necesidades Básicas Insatisfechas**\n\n"
+            "Las 3 parroquias más críticas superan el umbral del 50%: **Aníbal San Andrés** (61.7%), "
+            "**Isabel Muentes** (61.2%) y **Colorado** (58.4%). Más de la mitad de su población "
+            "carece de acceso adecuado a servicios básicos. La brecha entre la parroquia más vulnerable "
+            "y la cabecera cantonal (38.2%) es de **23.5 puntos porcentuales**. "
+            "Acción prioritaria: inversión AH (agua/saneamiento) en zona rural.\n\n"
+            "_Fuente: SIAP-ICPI Gold Master v4.1 · Q1-2026_"
+        )
+
+    if _has(q, "inversion per capita", "per capita", "inversion por habitante", "capita"):
+        return (
+            "**Inversión per Cápita — Brecha de Equidad Territorial**\n\n"
+            "**Isabel Muentes** recibe **$40/hab** — la inversión más baja del cantón. "
+            "**Montecristi (cabecera)** recibe **$113/hab**. La brecha es de **2.83x**: "
+            "por cada dólar que llega a Isabel Muentes, la cabecera recibe $2.83. "
+            "El IET (Equidad Territorial) registra 44.80 — Transición Crítica. SAT-III activa. "
+            "La línea del gráfico indica el promedio cantonal.\n\n"
+            "_Fuente: SIAP-ICPI Gold Master v4.1 · Q1-2026_"
+        )
+
+    if _has(q, "indices", "indice", "complementarios",
+             "ife", "ied", "igp", "psg", "itam", "ioc", "iet", "icods", "isp"):
+        return (
+            "**Índices Complementarios QUIRA OS — Corte Q1-2026**\n\n"
+            "En **Ruptura Sistémica** (< 30): ISP=14.58 🔴 y PSG=12.83 🔴 — el PSG bloquea "
+            "el acceso al Gender Bond de ONU Mujeres. En **Gestión por Mandato** (≥70): "
+            "ICODS=87.50 🟢 y IFE-A=72.73 🟢. IGP=27.98 🟠 — solo 50 Unidades Territoriales "
+            "activas vs meta de 75. Las líneas de referencia muestran los umbrales AVEP.\n\n"
+            "_Fuente: SIAP-ICPI Gold Master v4.1 · Q1-2026_"
+        )
+
+    if _has(q, "icgi", "evolucion", "historico", "historia") and _has(q, *_VIZ_TRIGGER):
+        return (
+            "**Evolución ICGI-T 2023 → Q1-2026 → Proyección 2026**\n\n"
+            "Tendencia positiva: **57.36** (2023) → **67.12** (2024) → **69.93** (2025). "
+            "**Q1-2026 marca 53.56** — corte de solo marzo, con ejecución del 23.75% del presupuesto "
+            "($6.3M de $26.7M), ritmo normal para el primer trimestre. "
+            "Proyección cierre 2026: **65.77** — aún por debajo de la meta Mandato (70.0). "
+            "Se requiere acelerar ejecución en Q2-Q3.\n\n"
+            "_Fuente: SIAP-ICPI Gold Master v4.1 · Q1-2026_"
+        )
+
+    if _has(q, "tps", "tasa pobreza", "pobreza por servicios"):
+        return (
+            "**TPS por Parroquia — Tasa de Pobreza por Servicios**\n\n"
+            "**Isabel Muentes** lidera con **77.94%** 🔴 — casi 8 de cada 10 personas en "
+            "situación de pobreza por servicios. **Aníbal San Andrés** (62.34%) y "
+            "**Colorado** (58.67%) también en zona crítica. La cabecera **Montecristi** "
+            "registra 22.45% 🟢. La brecha TPS cantonal es de **55.5 puntos porcentuales**.\n\n"
+            "_Fuente: INEC/PDOT diagnóstico oficial · Q1-2026_"
+        )
+
+    if _has(q, "agua", "cobertura agua", "acceso agua") and _has(q, *_VIZ_TRIGGER):
+        return (
+            "**Cobertura de Agua Potable por Parroquia**\n\n"
+            "**Isabel Muentes** tiene cobertura de apenas **1.02%** 🔴 — prácticamente sin "
+            "acceso a agua potable. **Aníbal San Andrés** (28.9%) y **Colorado** (34.7%) "
+            "también están en situación crítica. La meta PDOT 2027 es llevar la cobertura "
+            "cantonal del 39.25% al **42.38%**. Sin intervención urgente en Isabel Muentes, "
+            "la meta es inalcanzable.\n\n"
+            "_Fuente: SIAP-ICPI Gold Master v4.1 · Q1-2026_"
+        )
+
+    if _has(q, "parroquia") and _has(q, *_VIZ_TRIGGER):
+        return (
+            "**Análisis Territorial por Parroquia**\n\n"
+            "Las 4 parroquias rurales más vulnerables superan el 50% de NBI. "
+            "Isabel Muentes (61.2%) y Aníbal San Andrés (61.7%) son las más críticas. "
+            "La cabecera cantonal (38.2%) concentra la mayor inversión per cápita ($113/hab) "
+            "mientras Isabel Muentes recibe solo $40/hab.\n\n"
+            "_Fuente: SIAP-ICPI Gold Master v4.1 · Q1-2026_"
+        )
+
+    return None
+
 
 def detect_and_render(query: str) -> bool:
     """
@@ -115,7 +200,7 @@ def _chart_nbi(data: dict) -> None:
         textfont=dict(size=10, color="#E2E8F0"),
     ))
     fig.update_layout(
-        **_DARK,
+        **_DARK, height=310,
         title=dict(
             text="NBI por Parroquia · Necesidades Básicas Insatisfechas"
                  "<br><sup>🔴 ≥50% crítico · 🟠 ≥38% alerta · 🟢 <38% · Q1-2026</sup>",
@@ -162,7 +247,7 @@ def _chart_inversion(data: dict) -> None:
                   annotation_position="top right")
 
     fig.update_layout(
-        **_DARK,
+        **_DARK, height=310,
         title=dict(
             text="Inversión per Cápita por Parroquia · $/habitante"
                  "<br><sup>🔴 ≤$60 inequidad crítica · línea = promedio cantonal · Q1-2026</sup>",
@@ -201,7 +286,7 @@ def _chart_tps(data: dict) -> None:
         textfont=dict(size=10, color="#E2E8F0"),
     ))
     fig.update_layout(
-        **_DARK,
+        **_DARK, height=310,
         title=dict(
             text="TPS por Parroquia · Tasa de Pobreza por Servicios"
                  "<br><sup>🔴 ≥60% · 🟠 ≥35% · 🟢 <35% · Fuente INEC/PDOT Q1-2026</sup>",
@@ -240,7 +325,7 @@ def _chart_agua(data: dict) -> None:
         textfont=dict(size=10, color="#E2E8F0"),
     ))
     fig.update_layout(
-        **_DARK,
+        **_DARK, height=310,
         title=dict(
             text="Cobertura de Agua Potable por Parroquia"
                  "<br><sup>🔴 <30% crítico · 🟠 <60% alerta · Meta PDOT 42.38% · Q1-2026</sup>",
@@ -358,7 +443,7 @@ def _chart_icgit_trend(data: dict) -> None:
                   annotation_position="top left")
 
     fig.update_layout(
-        **_DARK,
+        **_DARK, height=310,
         title=dict(
             text="Evolución ICGI-T · 2023 → Q1-2026 → Proyección 2026"
                  "<br><sup>🔵 Real · 🟠 Proyección · --- Meta Mandato 70.0</sup>",
