@@ -209,3 +209,109 @@ def scenario_card(
     ):
         st.session_state["page"] = "simulador"
         st.rerun()
+
+
+# ── 6. SIMULATION CARD (Sprint 4) ─────────────────────────────────────────────
+
+def simulation_card(result: dict, query_hash: int = 0) -> None:
+    """
+    Tarjeta completa de resultado de simulación paramétrica (CBST v0.1).
+    result: dict devuelto por simulate_policy.simulate_policy()
+    """
+    b      = result["baseline"]
+    p      = result["proyectado"]
+    conf   = result["confidence"]
+    c_lab  = result["confidence_label"]
+    delta  = result["delta_pct"]
+    nombre = result["territorio"]
+    plabel = result["policy_label"]
+
+    # Colores confianza
+    c_color = (
+        "#38A169" if conf >= 78 else
+        "#D69E2E" if conf >= 65 else
+        "#E53E3E"
+    )
+
+    def _row(label: str, base: float, proj: float, unit: str = "%",
+             positive_is_good: bool = True) -> str:
+        d = proj - base
+        sign = "+" if d >= 0 else ""
+        color = "#38A169" if (d >= 0) == positive_is_good else "#E53E3E"
+        return (
+            f'<tr>'
+            f'<td style="padding:4px 8px;font-size:11px;color:rgba(255,255,255,0.6)">{label}</td>'
+            f'<td style="padding:4px 8px;font-size:11px;color:#E2E8F0;text-align:right">{base:.2f}{unit}</td>'
+            f'<td style="padding:4px 8px;font-size:11px;color:#00D4FF;text-align:right">{proj:.2f}{unit}</td>'
+            f'<td style="padding:4px 8px;font-size:11px;font-weight:700;color:{color};text-align:right">'
+            f'{sign}{d:.2f}{unit}</td>'
+            f'</tr>'
+        )
+
+    rows = ""
+    if p["agua_delta"] != 0:
+        rows += _row("Cobertura Agua", b["agua"], p["agua"], "%", True)
+    if p["nbi_delta"] != 0:
+        rows += _row("NBI", b["nbi"], p["nbi"], "%", False)
+    if p["tps_delta"] != 0:
+        rows += _row("TPS (Pobreza Svc)", b["tps"], p["tps"], "%", False)
+    rows += _row("ICGI-T Cantonal", b["icgit"], p["icgit"], "pts", True)
+
+    inv_add = result["inversion_adicional"]
+    inv_fmt = f"${inv_add:,}"
+
+    st.markdown(f"""
+<div style="{_CARD_BASE}background:rgba(124,92,252,0.09);
+            border:1px solid rgba(124,92,252,0.30)">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+    <div>
+      <div style="font-size:10px;font-weight:700;color:rgba(124,92,252,0.9);
+                  letter-spacing:0.07em;text-transform:uppercase">
+        🧮&nbsp;SIMULACIÓN CBST v0.1 — BETA</div>
+      <div style="font-size:12px;font-weight:600;color:#E2E8F0;margin-top:3px">
+        {plabel} · <b>{nombre}</b> · +{delta}%</div>
+      <div style="font-size:10px;color:rgba(255,255,255,0.4);margin-top:2px">
+        Inversión adicional: <b>{inv_fmt}</b>
+        ({result['per_capita_nuevo']} $/hab vs {b['per_capita']} $/hab actual)</div>
+    </div>
+    <div style="text-align:right;min-width:70px">
+      <div style="font-size:9px;color:rgba(255,255,255,0.35)">Confianza</div>
+      <div style="font-size:20px;font-weight:700;color:{c_color}">{conf}%</div>
+      <div style="font-size:9px;color:{c_color}">{c_lab}</div>
+    </div>
+  </div>
+  <table style="width:100%;border-collapse:collapse">
+    <thead>
+      <tr>
+        <th style="padding:3px 8px;font-size:9px;color:rgba(255,255,255,0.35);
+                   text-align:left;font-weight:400">Indicador</th>
+        <th style="padding:3px 8px;font-size:9px;color:rgba(255,255,255,0.35);
+                   text-align:right;font-weight:400">Actual</th>
+        <th style="padding:3px 8px;font-size:9px;color:rgba(255,255,255,0.35);
+                   text-align:right;font-weight:400">Proyectado</th>
+        <th style="padding:3px 8px;font-size:9px;color:rgba(255,255,255,0.35);
+                   text-align:right;font-weight:400">Delta</th>
+      </tr>
+    </thead>
+    <tbody>{rows}</tbody>
+  </table>
+  <div style="font-size:8px;color:rgba(255,255,255,0.22);margin-top:8px">
+    ⚠ {result['nota']}</div>
+</div>""", unsafe_allow_html=True)
+
+    cols = st.columns(3)
+    with cols[0]:
+        if st.button("🧮 Ver Simulador", key=f"sim_go_{query_hash}",
+                     use_container_width=True):
+            st.session_state["page"] = "simulador"
+            st.rerun()
+    with cols[1]:
+        if st.button("🗺️ GeoTwin", key=f"sim_geo_{query_hash}",
+                     use_container_width=True):
+            st.session_state["page"] = "geotwin"
+            st.rerun()
+    with cols[2]:
+        if st.button("🔗 Cadena POA", key=f"sim_poa_{query_hash}",
+                     use_container_width=True):
+            st.session_state["page"] = "cadena"
+            st.rerun()

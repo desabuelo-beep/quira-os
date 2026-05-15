@@ -39,11 +39,29 @@ _DARK = dict(
 
 def get_template_text(query: str) -> str | None:
     """
-    Devuelve texto contextual de análisis para la visualización detectada.
-    Si retorna un string → componente sentinel.py OMITE la llamada al LLM.
-    Si retorna None → no hay intent visual, el LLM gestiona la respuesta.
+    Devuelve texto contextual pre-escrito para queries de visualización o simulación.
+    Si retorna un string → sentinel.py OMITE la llamada al LLM.
+    Si retorna None → no hay intent reconocido, el LLM gestiona la respuesta.
     """
     q = _norm(query)
+
+    # Sprint 4: Simulación paramétrica — bypass LLM, renderizar resultado directo
+    from sentinel.simulate_policy import detect_simulation_intent, POLICY_LABELS
+    sim_intent = detect_simulation_intent(query)
+    if sim_intent:
+        pol   = POLICY_LABELS.get(sim_intent["policy_type"], sim_intent["policy_type"])
+        delta = sim_intent["delta"] * 100
+        ter   = sim_intent["territorio"].replace("_", " ").title()
+        return (
+            f"**Simulación · {pol} · +{delta:.0f}% en {ter}**\n\n"
+            f"Ejecutando CBST v0.1 (Coeficientes Beta de Simulación Territorial) "
+            f"para modelar el impacto de un incremento del {delta:.0f}% en inversión "
+            f"de {pol.lower()} en {ter}. "
+            f"Los resultados muestran proyecciones sobre agua, NBI, TPS e ICGI-T cantonal. "
+            f"Calibración: PDOT 2023-2027 + INEC 2022 + H99 Q1-2026. "
+            f"El gráfico de impacto se genera automáticamente abajo.\n\n"
+            f"_Modelo Beta · sujeto a calibración con datos eSIGEF Q2-Q4 2026_"
+        )
 
     if _has(q, "nbi", "necesidades basicas", "insatisfechas"):
         return (
@@ -125,14 +143,35 @@ def get_template_text(query: str) -> str | None:
 
 def detect_and_render(query: str) -> bool:
     """
-    Detecta intención de visualización, renderiza el chart y activa los
-    componentes contextuales via ui_router. Returns True si renderizó algo.
+    Detecta intención de visualización o simulación, renderiza componentes
+    y activa UI contextual via ui_router. Returns True si renderizó algo.
     """
     from data.loader import load_all
     from sentinel import ui_router
     data = load_all()
     q    = _norm(query)
     hit  = False
+
+    # ── Sprint 4: Simulación paramétrica (tiene prioridad sobre charts) ────────
+    from sentinel.simulate_policy import detect_simulation_intent, simulate_policy
+    from sentinel.ui_components   import simulation_card, evidence_card, nav_card
+    sim_intent = detect_simulation_intent(query)
+    if sim_intent:
+        result = simulate_policy(**sim_intent)
+        if result:
+            simulation_card(result, query_hash=hash(query) & 0xFFFF)
+            evidence_card(
+                sources=[
+                    f"CBST {result['cbst_version']} · {result['model_status']}",
+                    result["calibration_basis"],
+                    f"H99_ENGINE_CORE · {result['territorio']} Q1-2026",
+                ],
+                confidence=result["confidence_label"],
+                note=result["nota"],
+            )
+            from sentinel import state_memory
+            state_memory.update_state(query)
+            return True
 
     # NBI por parroquia
     if _has(q, "nbi", "necesidades basicas", "insatisfechas"):
