@@ -125,51 +125,49 @@ def get_template_text(query: str) -> str | None:
 
 def detect_and_render(query: str) -> bool:
     """
-    Detecta intención de visualización y renderiza el chart correspondiente.
-    Carga datos desde load_all() (cacheado). Returns True si renderizó algo.
+    Detecta intención de visualización, renderiza el chart y activa los
+    componentes contextuales via ui_router. Returns True si renderizó algo.
     """
     from data.loader import load_all
+    from sentinel import ui_router
     data = load_all()
-    q = _norm(query)
+    q    = _norm(query)
+    hit  = False
 
     # NBI por parroquia
     if _has(q, "nbi", "necesidades basicas", "insatisfechas"):
-        _chart_nbi(data)
-        return True
+        _chart_nbi(data); hit = True
 
     # Inversión per cápita
-    if _has(q, "inversion per capita", "per capita", "inversion por habitante",
-             "inversion/hab", "capita"):
-        _chart_inversion(data)
-        return True
+    elif _has(q, "inversion per capita", "per capita", "inversion por habitante",
+              "inversion/hab", "capita"):
+        _chart_inversion(data); hit = True
 
     # Cobertura de agua
-    if _has(q, "agua", "cobertura agua", "acceso agua") and _has(q, *_VIZ_TRIGGER):
-        _chart_agua(data)
-        return True
+    elif _has(q, "agua", "cobertura agua", "acceso agua") and _has(q, *_VIZ_TRIGGER):
+        _chart_agua(data); hit = True
 
-    # TPS — Tasa de Pobreza por Servicios
-    if _has(q, "tps", "tasa pobreza", "pobreza por servicios"):
-        _chart_tps(data)
-        return True
+    # TPS
+    elif _has(q, "tps", "tasa pobreza", "pobreza por servicios"):
+        _chart_tps(data); hit = True
 
     # Índices complementarios
-    if _has(q, "indices", "indice", "complementarios",
-             "ife", "ied", "igp", "psg", "itam", "ioc", "iet", "icods", "isp"):
-        _chart_indices(data)
-        return True
+    elif _has(q, "indices", "indice", "complementarios",
+              "ife", "ied", "igp", "psg", "itam", "ioc", "iet", "icods", "isp"):
+        _chart_indices(data); hit = True
 
-    # Evolución ICGI-T histórico
-    if _has(q, "icgi", "evolucion", "historico", "historia") and _has(q, *_VIZ_TRIGGER):
-        _chart_icgit_trend(data)
-        return True
+    # Evolución ICGI-T
+    elif _has(q, "icgi", "evolucion", "historico", "historia") and _has(q, *_VIZ_TRIGGER):
+        _chart_icgit_trend(data); hit = True
 
-    # Petición genérica de parroquias con trigger visual
-    if _has(q, "parroquia") and _has(q, *_VIZ_TRIGGER):
-        _chart_nbi(data)   # default: NBI es la brecha más crítica
-        return True
+    # Genérico parroquias
+    elif _has(q, "parroquia") and _has(q, *_VIZ_TRIGGER):
+        _chart_nbi(data); hit = True
 
-    return False
+    if hit:
+        ui_router.route(query)   # ← Generative UI contextual (Opción C)
+
+    return hit
 
 
 # ── CHART BUILDERS ─────────────────────────────────────────────────────────────
