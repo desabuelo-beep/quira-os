@@ -1,0 +1,151 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "fuente": "IGM Ecuador / INEC 2022 — Cantón Montecristi, Provincia Manabí",
+    "sistema": "WGS84 (EPSG:4326)",
+    "nota": "Centroides aproximados. Polígonos oficiales: INEC Cartografía Digital 2022"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "codigo": "1302",
+        "nombre": "Montecristi (cabecera)",
+        "tipo": "Urbana",
+        "emoji": "🌆",
+        "tps": 22.4,
+        "agua": 74.2,
+        "habitantes": 52340,
+        "per_capita": 113,
+        "estado": "NORMAL",
+        "icgi_rank": 1,
+        "color_hex": "#00D4FF"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-80.6578, -1.0444]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "codigo": "130251",
+        "nombre": "Eloy Alfaro",
+        "tipo": "Rural",
+        "emoji": "🌾",
+        "tps": 31.2,
+        "agua": 48.6,
+        "habitantes": 8210,
+        "per_capita": 74,
+        "estado": "ALERTA",
+        "icgi_rank": 3,
+        "color_hex": "#FFB800"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-80.7121, -0.9834]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "codigo": "130252",
+        "nombre": "Leónidas Plaza",
+        "tipo": "Rural",
+        "emoji": "🌿",
+        "tps": 28.8,
+        "agua": 52.1,
+        "habitantes": 5870,
+        "per_capita": 82,
+        "estado": "ALERTA",
+        "icgi_rank": 2,
+        "color_hex": "#FFB800"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-80.5524, -0.9713]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "codigo": "130253",
+        "nombre": "La Pila",
+        "tipo": "Rural",
+        "emoji": "🏚️",
+        "tps": 41.2,
+        "agua": 31.4,
+        "habitantes": 4320,
+        "per_capita": 58,
+        "estado": "PRIORIDAD",
+        "icgi_rank": 5,
+        "color_hex": "#FF4D6D"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-80.6891, -1.1187]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "codigo": "130254",
+        "nombre": "Colorado",
+        "tipo": "Rural",
+        "emoji": "🏔️",
+        "tps": 58.7,
+        "agua": 18.3,
+        "habitantes": 2890,
+        "per_capita": 47,
+        "estado": "EMERGENCIA",
+        "icgi_rank": 6,
+        "color_hex": "#FF4D6D"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-80.5018, -1.0728]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "codigo": "130255",
+        "nombre": "Aníbal San Andrés",
+        "tipo": "Rural",
+        "emoji": "💜",
+        "tps": 62.3,
+        "agua": 22.7,
+        "habitantes": 3150,
+        "per_capita": 41,
+        "estado": "EMERGENCIA",
+        "icgi_rank": 7,
+        "color_hex": "#7C5CFC"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-80.7312, -1.1524]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "codigo": "130256",
+        "nombre": "Isabel Muentes",
+        "tipo": "Rural",
+        "emoji": "💧",
+        "tps": 73.8,
+        "agua": 1.02,
+        "habitantes": 2140,
+        "per_capita": 40,
+        "estado": "EMERGENCIA",
+        "icgi_rank": 8,
+        "color_hex": "#FF4D6D",
+        "critica": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-80.4162, -1.1183]
+      }
+    }
+  ]
+}

@@ -1,14 +1,22 @@
 """
 QUIRA OS v0.1 — P-04 GeoTwin · Territorio
-Fiel al DEMO.html P-04 · st.components.v1.html() render
+Mapa Folium real (Leaflet) + tabla parroquias + Gov Twin
 Dylus Lab © 2026
 """
+import json
+import math
+from pathlib import Path
+
+import folium
 import streamlit as st
+from streamlit_folium import st_folium
+
 from data.loader import load_all
 from utils.session import is_tecnico
 from quira_pages.html_engine import render_page, page_header
 
-# Extra CSS for GeoTwin-specific classes not in DEMO_CSS
+_GEOJSON_PATH = Path(__file__).parent.parent / "data" / "parroquias_montecristi.geojson"
+
 _GT_CSS = """
 .gt-legend { display:flex; gap:12px; flex-wrap:wrap; margin-top:10px; }
 .gt-leg-item { display:flex; align-items:center; gap:5px; font-size:11px; color:var(--muted); }
@@ -26,9 +34,143 @@ _GT_CSS = """
 .gt-fund.priority { color:var(--cyan); }
 """
 
+def _tps_color(tps: float) -> str:
+    if tps >= 60:
+        return "#FF4D6D"
+    if tps >= 40:
+        return "#FF8C00"
+    if tps >= 28:
+        return "#FFB800"
+    return "#00D4FF"
+
+
+def _build_folium_map(parroquias: list) -> folium.Map:
+    m = folium.Map(
+        location=[-1.05, -80.62],
+        zoom_start=10,
+        tiles="CartoDB dark_matter",
+        attr="© CartoDB © OpenStreetMap",
+        prefer_canvas=True,
+    )
+
+    geojson_data = None
+    if _GEOJSON_PATH.exists():
+        geojson_data = json.loads(_GEOJSON_PATH.read_text(encoding="utf-8"))
+
+    p_lookup = {p["nombre"]: p for p in parroquias}
+    features = geojson_data["features"] if geojson_data else []
+
+    for feat in features:
+        props  = feat["properties"]
+        coords = feat["geometry"]["coordinates"]
+        lon, lat = coords[0], coords[1]
+
+        nombre  = props["nombre"]
+        data    = p_lookup.get(nombre, props)
+
+        tps     = data.get("tps", props.get("tps", 0))
+        agua    = data.get("agua", props.get("agua", 0))
+        hab     = data.get("habitantes", props.get("habitantes", 0))
+        per_cap = data.get("per_capita", props.get("per_capita", 0))
+        estado  = data.get("estado", props.get("estado", ""))
+        emoji   = props.get("emoji", "📍")
+        critica = props.get("critica", False)
+
+        color  = _tps_color(tps)
+        radius = max(8, min(22, int(math.log(max(hab, 100)) * 2.5)))
+
+        badge_colors = {
+            "EMERGENCIA": ("#FF4D6D", "#fff"),
+            "PRIORIDAD":  ("#7C5CFC", "#fff"),
+            "ALERTA":     ("#FFB800", "#000"),
+            "NORMAL":     ("#00D4FF", "#000"),
+            "OK":         ("#38A169", "#fff"),
+        }
+        bg, fg = badge_colors.get(estado, ("#333", "#fff"))
+        agua_color = "#E53E3E" if agua < 20 else ("#D69E2E" if agua < 50 else "#38A169")
+
+        popup_html = f"""
+<div style="font-family:'Inter',sans-serif;background:#0D1B35;color:#E8EDF4;
+            padding:14px 16px;border-radius:10px;min-width:210px;
+            border:1px solid rgba(0,212,255,.25);box-shadow:0 4px 20px rgba(0,0,0,.6)">
+  <div style="font-size:15px;font-weight:700;margin-bottom:8px">{emoji} {nombre}</div>
+  <div style="display:inline-block;padding:2px 8px;border-radius:12px;
+              font-size:10px;font-weight:700;background:{bg};color:{fg};margin-bottom:10px">
+    {estado}
+  </div>
+  <table style="width:100%;font-size:11px;border-collapse:collapse">
+    <tr><td style="color:#8892B0;padding:2px 0">TPS</td>
+        <td style="color:{color};font-weight:700;text-align:right">{tps:.1f}</td></tr>
+    <tr><td style="color:#8892B0;padding:2px 0">Agua potable</td>
+        <td style="color:{agua_color};font-weight:700;text-align:right">{agua:.1f}%</td></tr>
+    <tr><td style="color:#8892B0;padding:2px 0">Habitantes</td>
+        <td style="text-align:right">{hab:,}</td></tr>
+    <tr><td style="color:#8892B0;padding:2px 0">Inversión/hab</td>
+        <td style="text-align:right">${per_cap}</td></tr>
+  </table>
+  {'<div style="margin-top:8px;font-size:10px;color:#FF4D6D;font-weight:600">⚠️ Zona Crítica — intervención urgente</div>' if critica else ''}
+</div>"""
+
+        tooltip = f"{emoji} {nombre} · TPS {tps:.0f} · Agua {agua:.0f}%"
+
+        if critica:
+            icon = folium.DivIcon(
+                html=f"""
+<div style="position:relative;width:44px;height:44px;margin-left:-22px;margin-top:-22px">
+  <div style="position:absolute;top:50%;left:50%;
+              width:{radius*2}px;height:{radius*2}px;
+              margin-left:-{radius}px;margin-top:-{radius}px;
+              border-radius:50%;background:{color};opacity:.9"></div>
+  <div style="position:absolute;top:50%;left:50%;
+              width:{radius*2+10}px;height:{radius*2+10}px;
+              margin-left:-{radius+5}px;margin-top:-{radius+5}px;
+              border-radius:50%;border:2px solid {color};opacity:.4"></div>
+</div>""",
+                icon_size=(44, 44),
+            )
+            folium.Marker(
+                location=[lat, lon],
+                icon=icon,
+                tooltip=folium.Tooltip(tooltip, sticky=True),
+                popup=folium.Popup(popup_html, max_width=240),
+            ).add_to(m)
+        else:
+            folium.CircleMarker(
+                location=[lat, lon],
+                radius=radius,
+                color=color,
+                fill=True,
+                fill_color=color,
+                fill_opacity=0.85,
+                weight=2,
+                tooltip=folium.Tooltip(tooltip, sticky=True),
+                popup=folium.Popup(popup_html, max_width=240),
+            ).add_to(m)
+
+        folium.Marker(
+            location=[lat + 0.012, lon],
+            icon=folium.DivIcon(
+                html=f"""<div style="font-family:'Inter',sans-serif;font-size:10px;
+                              font-weight:700;color:#E8EDF4;white-space:nowrap;
+                              text-shadow:0 1px 3px #000,0 0 6px #000">{nombre}</div>""",
+                icon_size=(120, 16),
+                icon_anchor=(60, 0),
+            ),
+        ).add_to(m)
+
+    folium.Rectangle(
+        bounds=[[-1.25, -80.77], [-0.88, -80.38]],
+        color="#1E3A5F",
+        weight=1.5,
+        fill=False,
+        dash_array="6 4",
+        tooltip="Cantón Montecristi — límite aproximado",
+    ).add_to(m)
+
+    return m
+
 
 def _parroquia_row(p: dict) -> str:
-    """HTML row for parroquia table."""
     agua_color = "#E53E3E" if p["agua"] < 20 else ("#D69E2E" if p["agua"] < 50 else "#38A169")
     estado_badge = {
         "EMERGENCIA": '<span class="badge badge-red">EMERGENCIA</span>',
@@ -51,217 +193,124 @@ def _parroquia_row(p: dict) -> str:
 
 
 def render() -> None:
-    data      = load_all()
+    data       = load_all()
     parroquias = data.get("parroquias", [])
-    show_tech = is_tecnico()
+    show_tech  = is_tecnico()
 
-    # Sort by TPS descending (most vulnerable first)
     parroquias_sorted = sorted(parroquias, key=lambda x: x["tps"], reverse=True)
 
-    # ── HEADER ────────────────────────────────────────────────────────────────
     hdr = page_header(
         "④ EQUIDAD TERRITORIAL · GOV TWIN",
         "Territorio + Gov Twin",
         "Nexo Holding Municipal ↔ Ciudadanía · Proyectos colaborativos",
     )
+    render_page(hdr, show_tech=show_tech, height=110, extra_css=_GT_CSS)
 
-    # ── SVG MAP ───────────────────────────────────────────────────────────────
-    svg_map = """
-<div class="gt-map">
-  <svg viewBox="0 0 400 260" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-    <rect width="400" height="260" fill="#111830"/>
-    <text x="200" y="130" text-anchor="middle" fill="#1E2D50" font-size="40"
-          font-weight="800" font-family="Inter">MANABÍ</text>
-    <path d="M60,40 L340,40 L360,130 L300,220 L100,220 L40,130 Z"
-          fill="none" stroke="#1E2D50" stroke-width="2" stroke-dasharray="6,4"/>
+    col_map, col_gov = st.columns([3, 2], gap="medium")
 
-    <!-- Montecristi cabecera -->
-    <circle cx="200" cy="120" r="14" fill="#00D4FF" opacity=".9"/>
-    <text x="200" y="125" text-anchor="middle" fill="#0A1128" font-size="9" font-weight="800">MCT</text>
-    <text x="200" y="144" text-anchor="middle" fill="#F0F4FF" font-size="8">Montecristi</text>
-    <text x="200" y="154" text-anchor="middle" fill="#8892B0" font-size="7">TPS: 22.4</text>
+    with col_map:
+        st.markdown(
+            '<p style="font-size:13px;font-weight:700;color:#E8EDF4;margin-bottom:8px">'
+            '🗺️ Mapa Territorial · 7 Parroquias</p>',
+            unsafe_allow_html=True,
+        )
+        st.markdown(
+            """<div style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:8px">
+  <span style="font-size:11px;color:#8892B0"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#00D4FF;margin-right:4px"></span>Normal</span>
+  <span style="font-size:11px;color:#8892B0"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#FFB800;margin-right:4px"></span>Alerta</span>
+  <span style="font-size:11px;color:#8892B0"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#FF4D6D;margin-right:4px"></span>Emergencia</span>
+  <span style="font-size:11px;color:#8892B0">· Radio = población · Clic = detalle</span>
+</div>""",
+            unsafe_allow_html=True,
+        )
 
-    <!-- Eloy Alfaro -->
-    <circle cx="140" cy="90" r="10" fill="#FFB800" opacity=".85"/>
-    <text x="140" y="94" text-anchor="middle" fill="#0A1128" font-size="8" font-weight="700">EA</text>
-    <text x="140" y="108" text-anchor="middle" fill="#F0F4FF" font-size="7">E. Alfaro</text>
-    <text x="140" y="117" text-anchor="middle" fill="#FFB800" font-size="7">TPS: 31.2</text>
+        folium_map = _build_folium_map(parroquias)
+        st_folium(
+            folium_map,
+            width=None,
+            height=420,
+            returned_objects=[],
+            use_container_width=True,
+        )
 
-    <!-- Leónidas Plaza -->
-    <circle cx="270" cy="85" r="10" fill="#FFB800" opacity=".85"/>
-    <text x="270" y="89" text-anchor="middle" fill="#0A1128" font-size="8" font-weight="700">LP</text>
-    <text x="270" y="103" text-anchor="middle" fill="#F0F4FF" font-size="7">L. Plaza</text>
-    <text x="270" y="112" text-anchor="middle" fill="#FFB800" font-size="7">TPS: 28.8</text>
+        st.markdown(
+            '<p style="font-size:9px;color:rgba(255,255,255,.2);margin-top:4px">'
+            'CartoDB Dark Matter · Centroides IGM/INEC 2022 · EPSG:4326</p>',
+            unsafe_allow_html=True,
+        )
 
-    <!-- La Pila -->
-    <circle cx="155" cy="160" r="9" fill="#FF4D6D" opacity=".85"/>
-    <text x="155" y="164" text-anchor="middle" fill="#F0F4FF" font-size="8" font-weight="700">LP</text>
-    <text x="155" y="178" text-anchor="middle" fill="#F0F4FF" font-size="7">La Pila</text>
-    <text x="155" y="187" text-anchor="middle" fill="#FF4D6D" font-size="7">TPS: 41.2</text>
-
-    <!-- Colorado -->
-    <circle cx="290" cy="170" r="9" fill="#FF4D6D" opacity=".85"/>
-    <text x="290" y="174" text-anchor="middle" fill="#F0F4FF" font-size="8" font-weight="700">CO</text>
-    <text x="290" y="188" text-anchor="middle" fill="#F0F4FF" font-size="7">Colorado</text>
-    <text x="290" y="197" text-anchor="middle" fill="#FF4D6D" font-size="7">TPS: 58.7</text>
-
-    <!-- Aníbal San Andrés -->
-    <circle cx="100" cy="170" r="9" fill="#7C5CFC" opacity=".9"/>
-    <text x="100" y="174" text-anchor="middle" fill="#F0F4FF" font-size="8" font-weight="700">ASA</text>
-    <text x="100" y="188" text-anchor="middle" fill="#F0F4FF" font-size="7">A. San Andrés</text>
-    <text x="100" y="197" text-anchor="middle" fill="#7C5CFC" font-size="7">💜 TPS: 62.3</text>
-
-    <!-- Isabel Muentes (CRÍTICA — con pulso animado) -->
-    <circle cx="340" cy="190" r="12" fill="#FF4D6D" opacity="1"/>
-    <circle cx="340" cy="190" r="16" fill="none" stroke="#FF4D6D" stroke-width="2" opacity=".5">
-      <animate attributeName="r" values="16;22;16" dur="2s" repeatCount="indefinite"/>
-      <animate attributeName="opacity" values=".5;0;.5" dur="2s" repeatCount="indefinite"/>
-    </circle>
-    <text x="340" y="194" text-anchor="middle" fill="#F0F4FF" font-size="8" font-weight="800">IM!</text>
-    <text x="340" y="210" text-anchor="middle" fill="#FF4D6D" font-size="7" font-weight="700">Isabel Muentes</text>
-    <text x="340" y="219" text-anchor="middle" fill="#FF4D6D" font-size="7">💧 1.02% agua</text>
-
-    <text x="370" y="30" text-anchor="middle" fill="#1E2D50" font-size="12">N↑</text>
-  </svg>
-</div>
-<div class="gt-legend">
-  <div class="gt-leg-item"><div class="gt-leg-dot" style="background:var(--cyan)"></div>Cabecera</div>
-  <div class="gt-leg-item"><div class="gt-leg-dot" style="background:var(--amber)"></div>Alerta media</div>
-  <div class="gt-leg-item"><div class="gt-leg-dot" style="background:var(--red)"></div>Prioridad alta</div>
-  <div class="gt-leg-item"><div class="gt-leg-dot" style="background:var(--purple)"></div>Pin Morado 💜</div>
-</div>
-<div style="display:inline-block;margin-top:12px;padding:8px 12px;
-            background:rgba(0,212,255,.06);border:1px solid rgba(0,212,255,.15);
-            border-radius:8px;font-size:12px;color:var(--cyan)">
-  💬 Analizar prioridad territorial
-</div>"""
-
-    # ── GOV TWIN PROJECTS ─────────────────────────────────────────────────────
-    gt_projects = """
+    with col_gov:
+        st.markdown(
+            '<p style="font-size:13px;font-weight:700;color:#E8EDF4;margin-bottom:8px">'
+            '🤝 Gov Twin · Proyectos Colaborativos</p>',
+            unsafe_allow_html=True,
+        )
+        gov_twin_html = """
 <div style="font-size:12px;color:var(--muted);margin-bottom:12px;padding:8px;
             background:rgba(0,212,255,.04);border-radius:8px;border:1px solid rgba(0,212,255,.1)">
   <strong style="color:var(--cyan)">¿Qué es Gov Twin?</strong><br>
-  La línea de encuentro entre el Holding Municipal y la ciudadanía. El municipio aporta recursos
-  técnicos; el barrio aporta mano de obra y custodia. Juntos desbloquean fondos no reembolsables
-  imposibles de obtener por separado.
+  La línea de encuentro entre el Holding Municipal y la ciudadanía.
+  El municipio aporta recursos técnicos; el barrio aporta mano de obra y custodia.
+  Juntos desbloquean fondos no reembolsables imposibles de obtener por separado.
 </div>
-
 <div class="gt-project">
   <div class="gt-project-title">
     💧 Sistema Agua · Isabel Muentes
     <span class="badge badge-red" style="float:right">URGENTE</span>
   </div>
   <div class="gt-contrib">
-    <div class="gt-contrib-box">
-      <strong>🏛️ Municipio aporta:</strong>Infraestructura hidráulica + diseño técnico + fiscalización
-    </div>
-    <div class="gt-contrib-box">
-      <strong>👥 Comunidad aporta:</strong>Mano de obra local + Junta de Agua + custodia
-    </div>
+    <div class="gt-contrib-box"><strong>🏛️ Municipio aporta:</strong>Infraestructura hidráulica + diseño técnico</div>
+    <div class="gt-contrib-box"><strong>👥 Comunidad aporta:</strong>Mano de obra + Junta de Agua + custodia</div>
   </div>
   <div class="gt-fund priority">🌐 PNUD Agua Rural · $2,400,000 · Score 81/100</div>
-  <div style="font-size:11px;color:var(--amber);margin-top:4px">
-    ⚠️ Requiere Gobernanza ≥ 55% · Brecha actual: 1.44 pts
-  </div>
+  <div style="font-size:11px;color:var(--amber);margin-top:4px">⚠️ Requiere Gobernanza ≥ 55% · Brecha: 1.44 pts</div>
 </div>
-
 <div class="gt-project">
   <div class="gt-project-title">🌳 Reforestación Laderas · Colorado</div>
   <div class="gt-contrib">
-    <div class="gt-contrib-box">
-      <strong>🏛️ Municipio aporta:</strong>Plantas nativas + técnico forestal + transporte
-    </div>
-    <div class="gt-contrib-box">
-      <strong>👥 Comunidad aporta:</strong>Mano de obra + custodios del bosque
-    </div>
+    <div class="gt-contrib-box"><strong>🏛️ Municipio aporta:</strong>Plantas nativas + técnico forestal</div>
+    <div class="gt-contrib-box"><strong>👥 Comunidad aporta:</strong>Mano de obra + custodios del bosque</div>
   </div>
   <div class="gt-fund elegible">✅ Fondo Verde del Clima GEF · $180,000 · Elegible</div>
-  <div style="font-size:11px;color:var(--muted);margin-top:4px">
-    Pin Verde activo · dMRV preparado
-  </div>
 </div>
-
 <div class="gt-project">
-  <div class="gt-project-title">💜 Luminarias Seguridad · Aníbal San Andrés</div>
+  <div class="gt-project-title">💜 Luminarias · Aníbal San Andrés</div>
   <div class="gt-contrib">
-    <div class="gt-contrib-box">
-      <strong>🏛️ Municipio aporta:</strong>Postes + instalación eléctrica + diseño
-    </div>
-    <div class="gt-contrib-box">
-      <strong>👥 Comunidad aporta:</strong>Mantenimiento + veeduría + Pin Morado activo
-    </div>
+    <div class="gt-contrib-box"><strong>🏛️ Municipio aporta:</strong>Postes + instalación eléctrica</div>
+    <div class="gt-contrib-box"><strong>👥 Comunidad aporta:</strong>Mantenimiento + veeduría</div>
   </div>
-  <div class="gt-fund pending">⏳ BID Lab Gender Bond · $95,000 · Requiere PSG ≥ 30%</div>
-  <div style="font-size:11px;color:var(--amber);margin-top:4px">
-    PSG actual: 12.83% · Brecha: 17.17 pts
-  </div>
-</div>
-
-<div style="display:inline-block;padding:8px 12px;
-            background:rgba(0,212,255,.06);border:1px solid rgba(0,212,255,.15);
-            border-radius:8px;font-size:12px;color:var(--cyan)">
-  💬 Explicar Gov Twin
+  <div class="gt-fund pending">⏳ BID Lab Gender Bond · $95,000 · PSG ≥ 30% req.</div>
 </div>"""
+        render_page(gov_twin_html, show_tech=False, height=560, extra_css=_GT_CSS)
 
-    # ── 2-COL GRID ────────────────────────────────────────────────────────────
-    grid = f"""
-<div class="grid-2" style="align-items:start;gap:20px;margin-bottom:16px">
-  <div>
-    <div class="section-hdr">
-      <h3>Mapa Territorial · 7 Parroquias</h3>
-      <span class="badge badge-amber">Q1-2026</span>
-    </div>
-    {svg_map}
-  </div>
-  <div>
-    <div class="section-hdr">
-      <h3>Gov Twin · Proyectos Colaborativos</h3>
-      <span class="badge badge-cyan">Proyectos Colaborativos</span>
-    </div>
-    {gt_projects}
-  </div>
-</div>"""
-
-    # ── PARROQUIAS TABLE ──────────────────────────────────────────────────────
-    rows = "".join(_parroquia_row(p) for p in parroquias_sorted)
+    rows  = "".join(_parroquia_row(p) for p in parroquias_sorted)
     tabla = f"""
 <div class="card">
   <div class="card-title">📊 Las 7 Parroquias · Inequidad territorial documentada · Q1-2026</div>
   <table class="tbl">
-    <thead>
-      <tr>
-        <th>Parroquia</th>
-        <th>TPS ↓</th>
-        <th>Agua %</th>
-        <th>Habitantes</th>
-        <th>$/hab</th>
-        <th>Estado</th>
-      </tr>
-    </thead>
+    <thead><tr>
+      <th>Parroquia</th><th>TPS ↓</th><th>Agua %</th>
+      <th>Habitantes</th><th>$/hab</th><th>Estado</th>
+    </tr></thead>
     <tbody>{rows}</tbody>
   </table>
   <div style="font-size:10px;color:var(--muted);margin-top:8px;padding-top:8px;
               border-top:1px solid rgba(255,255,255,.05)">
-    📌 TPS = Tasa de Pobreza por Sistema (mayor TPS = mayor vulnerabilidad)
-    · Montecristi cabecera: $113/hab · Isabel Muentes: $40/hab
-    · Brecha: 2.8×
+    📌 TPS = Tasa de Pobreza por Sistema · Cabecera $113/hab · Isabel Muentes $40/hab · Brecha 2.8×
   </div>
 </div>"""
 
-    # ── TECH NOTE ─────────────────────────────────────────────────────────────
     tech = ""
     if show_tech:
         tech = """
 <div style="margin-top:16px;font-size:9px;color:rgba(255,255,255,.2);
             border-top:1px solid rgba(255,255,255,.04);padding-top:8px">
   🔧 Fuente: SIAP-ICPI H24 · GeoTwin KB · INEC 2022 · IET Q1-2026 · Corte sellado Q1-2026
+  · Mapa: Folium/Leaflet · CartoDB Dark Matter · GeoJSON centroides IGM
 </div>"""
 
-    # ── ASSEMBLE & RENDER ─────────────────────────────────────────────────────
-    html = hdr + grid + tabla + tech
-    render_page(html, show_tech=show_tech, height=1400, extra_css=_GT_CSS)
+    render_page(tabla + tech, show_tech=show_tech, height=360, extra_css=_GT_CSS)
 
-    # Native CTA
     c1, c2 = st.columns(2, gap="small")
     with c1:
         if st.button("🎯 Ver Congruencia Territorial", use_container_width=True):
