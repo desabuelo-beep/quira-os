@@ -102,7 +102,7 @@ div[data-baseweb="select"] svg { color:#8892B0 !important }
 
 
 def splash_top(corte: str) -> str:
-    """Bloque superior: logo + títulos + card abierto."""
+    """Bloque superior: logo + títulos + card — completamente auto-contenido."""
     return f"""
 <div class="ql-wrap">
   <div class="ql-logo">{QUIRA_SVG}</div>
@@ -111,58 +111,59 @@ def splash_top(corte: str) -> str:
   <div class="ql-tag1">Territorial Governance Intelligence</div>
   <div class="ql-tag2">Gobernar con evidencia · Decidir con territorio</div>
   <div class="ql-div"></div>
-  <div class="ql-loc">Montecristi · Manabí · Ecuador · {corte}</div>
+  <div class="ql-loc">Montecristi · Manabi · Ecuador · {corte}</div>
   <div class="ql-card">
-    <div class="ql-clbl">🔒 Acceso al sistema</div>
+    <div class="ql-clbl">Acceso al sistema</div>
     <div style="text-align:center">
       <span class="ql-badge">PMV · Acceso Restringido · {corte}</span>
-    </div>"""
+    </div>
+  </div>
+</div>"""
 
 
 def splash_bottom(gad: str, corte: str) -> str:
-    """Bloque inferior: trust signals + cierre del card + footer."""
+    """Trust signals + footer — completamente auto-contenido."""
     return f"""
-    <!-- Security UX Layer — señales de confianza institucional -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:16px 0 14px">
-      <div style="display:flex;align-items:center;gap:6px;background:rgba(0,224,150,.06);
-                  border:1px solid rgba(0,224,150,.15);border-radius:8px;padding:7px 10px">
-        <span style="font-size:14px">🔒</span>
-        <div>
-          <div style="font-size:9px;font-weight:700;color:#00E096;letter-spacing:.05em">ACCESO PROTEGIDO</div>
-          <div style="font-size:9px;color:#8892B0">Cifrado institucional</div>
-        </div>
-      </div>
-      <div style="display:flex;align-items:center;gap:6px;background:rgba(0,212,255,.06);
-                  border:1px solid rgba(0,212,255,.15);border-radius:8px;padding:7px 10px">
-        <span style="font-size:14px">🕒</span>
-        <div>
-          <div style="font-size:9px;font-weight:700;color:#00D4FF;letter-spacing:.05em">SESIÓN TEMPORAL</div>
-          <div style="font-size:9px;color:#8892B0">Expira en 60 minutos</div>
-        </div>
-      </div>
-      <div style="display:flex;align-items:center;gap:6px;background:rgba(124,92,252,.06);
-                  border:1px solid rgba(124,92,252,.15);border-radius:8px;padding:7px 10px">
-        <span style="font-size:14px">🛡️</span>
-        <div>
-          <div style="font-size:9px;font-weight:700;color:#7C5CFC;letter-spacing:.05em">INTENTOS MONITOREADOS</div>
-          <div style="font-size:9px;color:#8892B0">Bloqueo tras 3 fallos</div>
-        </div>
-      </div>
-      <div style="display:flex;align-items:center;gap:6px;background:rgba(255,184,0,.06);
-                  border:1px solid rgba(255,184,0,.15);border-radius:8px;padding:7px 10px">
-        <span style="font-size:14px">📋</span>
-        <div>
-          <div style="font-size:9px;font-weight:700;color:#FFB800;letter-spacing:.05em">ACTIVIDAD AUDITADA</div>
-          <div style="font-size:9px;color:#8892B0">Registro de accesos</div>
-        </div>
+<div style="max-width:390px;margin:0 auto;padding:0 4px">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:12px 0 14px">
+    <div style="display:flex;align-items:center;gap:6px;background:rgba(0,224,150,.06);
+                border:1px solid rgba(0,224,150,.15);border-radius:8px;padding:7px 10px">
+      <span style="font-size:14px">&#128274;</span>
+      <div>
+        <div style="font-size:9px;font-weight:700;color:#00E096;letter-spacing:.05em">ACCESO PROTEGIDO</div>
+        <div style="font-size:9px;color:#8892B0">Cifrado institucional</div>
       </div>
     </div>
-    <div class="ql-gad">🏛️ {gad}</div>
+    <div style="display:flex;align-items:center;gap:6px;background:rgba(0,212,255,.06);
+                border:1px solid rgba(0,212,255,.15);border-radius:8px;padding:7px 10px">
+      <span style="font-size:14px">&#128338;</span>
+      <div>
+        <div style="font-size:9px;font-weight:700;color:#00D4FF;letter-spacing:.05em">SESION TEMPORAL</div>
+        <div style="font-size:9px;color:#8892B0">Expira en 60 minutos</div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:6px;background:rgba(124,92,252,.06);
+                border:1px solid rgba(124,92,252,.15);border-radius:8px;padding:7px 10px">
+      <span style="font-size:14px">&#128737;</span>
+      <div>
+        <div style="font-size:9px;font-weight:700;color:#7C5CFC;letter-spacing:.05em">INTENTOS MONITOREADOS</div>
+        <div style="font-size:9px;color:#8892B0">Bloqueo tras 3 fallos</div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:6px;background:rgba(255,184,0,.06);
+                border:1px solid rgba(255,184,0,.15);border-radius:8px;padding:7px 10px">
+      <span style="font-size:14px">&#128203;</span>
+      <div>
+        <div style="font-size:9px;font-weight:700;color:#FFB800;letter-spacing:.05em">ACTIVIDAD AUDITADA</div>
+        <div style="font-size:9px;color:#8892B0">Registro de accesos</div>
+      </div>
+    </div>
   </div>
+  <div class="ql-gad">&#127963; {gad}</div>
   <div class="ql-foot">
-    QUIRA OS v0.1 · Dylus Lab © 2026<br>
+    QUIRA OS v0.1 · Dylus Lab 2026<br>
     Datos sellados {corte} · SIAP-ICPI v1.0222<br>
-    <span style="color:rgba(255,184,0,.35)">⚠ Entorno de demostración</span>
+    <span style="color:rgba(255,184,0,.35)">Entorno de demostracion</span>
   </div>
 </div>"""
 
