@@ -5,7 +5,8 @@ Dylus Lab © 2026
 """
 import streamlit as st
 from config import APP_NAME, APP_VERSION, GAD_NOMBRE, GAD_PERIODO, ALCALDE, CORTE
-from utils.session import init_session, is_authenticated, logout, navigate_to, is_tecnico
+from utils.session import init_session, check_session_expiry, is_authenticated, logout, navigate_to, is_tecnico
+from utils.audit_log import log_page
 from auth.login import render_login
 
 
@@ -224,8 +225,9 @@ section.main, [data-testid="stMain"] {
 </style>
 """, unsafe_allow_html=True)
 
-# ── INIT SESSION ───────────────────────────────────────────────────────────────
+# ── INIT SESSION + SEGURIDAD ──────────────────────────────────────────────────
 init_session()
+check_session_expiry()   # logout automático si la sesión expiró (60 min)
 
 # ── GATE: LOGIN ────────────────────────────────────────────────────────────────
 if not is_authenticated():
@@ -398,6 +400,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+log_page(page_key)
 page_cfg["render"]()
 
 # ── FOOTER ─────────────────────────────────────────────────────────────────────

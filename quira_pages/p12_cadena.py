@@ -36,7 +36,7 @@ METAS_SIN_PAC = [
         "presupuesto": "$95,000",
         "poa_ok": True, "pac_ok": False, "sercop_ok": False, "esigef_ok": False,
         "corte": "Proceso detenido · vinculado a Gender Bond pendiente",
-        "riesgo": "ODS 5 + ODS 16 en riesgo · brecha PSG 17.17 pts",
+        "riesgo": "ODS 5 + ODS 16 en riesgo · brecha significativa en equidad de gasto",
     },
     {
         "id": "POA-11-02",
@@ -287,7 +287,7 @@ def render() -> None:
       </div>
       <div style="font-size:11px;color:var(--white);padding:6px 10px;
                   background:rgba(0,224,150,.07);border-radius:6px">
-        <strong style="color:var(--green)">DÍA 15:</strong> SAT-0 se desactiva automáticamente · +6.8 pts IED
+        <strong style="color:var(--green)">DÍA 15:</strong> SAT-0 se desactiva automáticamente · mejora proyectada en IED
       </div>
     </div>
   </div>

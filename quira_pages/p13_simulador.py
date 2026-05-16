@@ -225,7 +225,7 @@ def render() -> None:
                     f'{v["color"]} {v["codigo"]} · {v["nombre"]}</div>'
                     f'<div style="font-size:9px;color:rgba(255,255,255,.4);margin-bottom:4px">'
                     f'Actual: {v["actual"]:.1f}% · Meta: {v["meta"]:.0f}% · '
-                    f'Impacto base: {v["impacto"]:.1f} pts</div>',
+                    f'Prioridad: {"🔴 Alta" if abs(v["impacto"]) >= 6 else "🟠 Media" if abs(v["impacto"]) >= 3 else "🟡 Normal"}</div>',
                     unsafe_allow_html=True,
                 )
                 nuevo_val = st.slider(
@@ -298,7 +298,7 @@ def render() -> None:
             elif score_proj >= 65:
                 st.warning(f"🟡 Cerca de la meta. Quedan {_META_MANDATO - score_proj:.2f} pts para Gestión por Mandato.")
             elif score_proj > _SCORE_BASE:
-                st.info("📈 Mejora real vs Q1-2026. Continúa ajustando los vectores de mayor peso (ISP, IED).")
+                st.info("📈 Mejora real vs Q1-2026. Continúa ajustando los vectores de mayor impacto para maximizar el avance.")
             else:
                 st.error("⚠️ Sin cambios. Mueve los sliders para simular mejoras.")
 
@@ -532,7 +532,7 @@ def render() -> None:
             border-radius:8px;padding:8px 12px;font-size:9px;color:rgba(255,255,255,.4);margin-top:4px">
   🔒 Los pesos de ponderación son parámetros del Gold Master (SIAP-ICPI_GOLD_MASTER_v4.1).
   El IRS oficial para reportes externos, solicitudes PNUD/BID/GEF y evidencia institucional es
-  <strong style="color:#00D4FF">79.7 pts · Escenario Recomendado v2.1 (Agua=50% · NBI=30% · Pob=20%)</strong>.
+  <strong style="color:#00D4FF">79.7 pts · Escenario Recomendado v2.1</strong>.
 </div>
 """, unsafe_allow_html=True)
 

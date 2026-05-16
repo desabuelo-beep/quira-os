@@ -43,6 +43,8 @@ def _eval_planificacion(data: dict, query: str, territory: str | None) -> dict:
         "participativo", "pp 2026", "asamblea", "asamblea local",
         # Cumplimiento normativo — consultas de verificación implican proceso planificado
         "cumple", "cumplimiento", "conforme al cootad", "listo para elevar",
+        # Equidad territorial e inversión focalizada — vocabulario nativo PDOT / CRE Art.340
+        "inversion territorial", "equidad territorial", "indice nbi", "per capita",
     ]
     if any(t in q for t in pdot_terms):
         score += 15
@@ -395,12 +397,23 @@ def evaluate(
     if hard_blocked:
         ci = min(ci, 45)
 
+    # Guardrail de nulidad: Legal ≤ 40 → bloqueo narrativo y cap de CI
+    legal_dim   = next((d for d in dimensiones if d["dimension"] == "Competencia Legal"), None)
+    legal_score = legal_dim["score"] if legal_dim else 100
+    legal_block = legal_score <= 40
+    if legal_block:
+        ci = min(ci, 40)
+
     # Recomendaciones ejecutivas
     all_issues  = [i for d in dimensiones for i in d["issues"]]
     criticas    = [d for d in dimensiones if d["nivel"] == "Insuficiente"]
     bajas       = [d for d in dimensiones if d["nivel"] == "Baja"]
     recomendaciones = []
 
+    if legal_block:
+        recomendaciones.append(
+            "⛔ Riesgo crítico de nulidad administrativa. No elevar a decisión."
+        )
     if criticas:
         recomendaciones.append(
             f"⛔ {', '.join(d['dimension'] for d in criticas)} en nivel Insuficiente — "

@@ -302,8 +302,8 @@ def render() -> None:
   </div>
   <div style="font-size:11px;color:var(--muted);line-height:1.6;padding-top:8px;
               border-top:1px solid rgba(255,255,255,.05)">
-    Si EP Aseo sube de 58.4% → 70%: el Nodo Operadores pasa a 75.6%, equivalente a
-    <strong style="color:var(--white)">+2.1 pts en el ICGI-T global</strong> —
+    Si EP Aseo sube de 58.4% → 70%: el Nodo Operadores pasa a 75.6%, con
+    <strong style="color:var(--white)">impacto positivo en el ICGI-T global</strong> —
     acercando Montecristi al umbral de
     <em style="color:var(--amber)">Gestión por Mandato (69.93%)</em> exigido por el PDOT al 2027.
   </div>

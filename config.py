@@ -52,11 +52,11 @@ GAD_PERIODO = "2023–2027"
 ALCALDE     = "Ing. Jonathan Toro Largacha"
 CORTE       = "Q1-2026"
 
-# ── CREDENCIALES PMV (v0.1 — no producción) ──────────────────────────────────
+# ── ROLES (sin contraseñas — credenciales viven en models/auth.py + st.secrets) ─
 USERS = {
-    "alcalde":  {"password": "quira2026", "rol": "Alcalde",  "emoji": "🏛️"},
-    "concejal": {"password": "quira2026", "rol": "Concejal", "emoji": "⚖️"},
-    "tecnico":  {"password": "quira2026", "rol": "Técnico",  "emoji": "⚙️"},
+    "alcalde":  {"rol": "Alcalde",  "emoji": "🏛️"},
+    "concejal": {"rol": "Concejal", "emoji": "⚖️"},
+    "tecnico":  {"rol": "Técnico",  "emoji": "⚙️"},
 }
 
 # ── AVEP — ESCALA CANÓNICA (H01_PARÁMETROS) ──────────────────────────────────

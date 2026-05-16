@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "v1.0",
-    "fecha": "2026-05-15T13:56:35.036580",
+    "fecha": "2026-05-15T19:56:33.488257",
     "icgit_q1": 53.56,
     "total_casos": 10,
     "en_rango": 10
@@ -57,21 +57,21 @@
       "nombre": "La Pila — Gestión Institucional +25%",
       "categoria": "simulacion_politica",
       "tipo_real": "representativo",
-      "ci_calculado": 66,
-      "ci_label": "Moderada — resolver observaciones antes de comprometer recursos",
+      "ci_calculado": 64,
+      "ci_label": "Baja — requiere acciones previas",
       "ci_rango_esperado": [
         63,
         74
       ],
       "en_rango": true,
-      "desviacion_midpoint": -2.5,
+      "desviacion_midpoint": -4.5,
       "dimensiones": {
         "Planificación": {
           "score": 57,
           "nivel": "Baja"
         },
         "Presupuesto": {
-          "score": 77,
+          "score": 69,
           "nivel": "Media"
         },
         "Competencia Legal": {
@@ -85,8 +85,7 @@
       },
       "issues_count": 3,
       "recomendaciones": [
-        "⚠ Planificación, Capacidad Operativa requiere refuerzo antes de comprometer recursos.",
-        "Subsanar las observaciones identificadas y validar con Planificación antes de elevar al Concejo."
+        "⚠ Planificación, Capacidad Operativa requiere refuerzo antes de comprometer recursos."
       ],
       "legal_refs_count": 2,
       "legal_refs": [
@@ -414,22 +413,22 @@
       "nombre": "Colorado — Inversión Territorial +15% (Escenario Conservador)",
       "categoria": "simulacion_politica",
       "tipo_real": "representativo",
-      "ci_calculado": 68,
+      "ci_calculado": 69,
       "ci_label": "Moderada — resolver observaciones antes de comprometer recursos",
       "ci_rango_esperado": [
         66,
         78
       ],
       "en_rango": true,
-      "desviacion_midpoint": -4.0,
+      "desviacion_midpoint": -3.0,
       "dimensiones": {
         "Planificación": {
-          "score": 57,
-          "nivel": "Baja"
+          "score": 72,
+          "nivel": "Media"
         },
         "Presupuesto": {
-          "score": 77,
-          "nivel": "Media"
+          "score": 63,
+          "nivel": "Baja"
         },
         "Competencia Legal": {
           "score": 82,
@@ -442,7 +441,7 @@
       },
       "issues_count": 3,
       "recomendaciones": [
-        "⚠ Planificación, Capacidad Operativa requiere refuerzo antes de comprometer recursos.",
+        "⚠ Presupuesto, Capacidad Operativa requiere refuerzo antes de comprometer recursos.",
         "Subsanar las observaciones identificadas y validar con Planificación antes de elevar al Concejo."
       ],
       "legal_refs_count": 3,

@@ -83,7 +83,7 @@ INDICES = {
         "emoji":  "🔴",
         "color":  "#E53E3E",
         "estado": "REAL Q1-2026",
-        "nota":   "−8.2 pts ICGI-T · SAT-IV activa",
+        "nota":   "Indicador crítico · SAT-IV activa",
     },
     "IED": {
         "nombre": "Eficiencia Direcciones",
@@ -200,7 +200,7 @@ SAT_ACTIVAS = [
         "color": "#E53E3E",
         "emoji": "🔴",
         "descripcion": "24 procesos sin evidencia SHA-256 · Gasto Ciego C4",
-        "impacto": "−6.8 pts ICGI-T · riesgo observación Contraloría",
+        "impacto": "Impacto crítico en ICGI-T · riesgo observación Contraloría",
         "accion": "Publicar evidencias PAC en portal SERCOP · plazo 48h",
     },
     {
@@ -211,7 +211,7 @@ SAT_ACTIVAS = [
         "color": "#E53E3E",
         "emoji": "🔴",
         "descripcion": "ISP 14.58% bajo umbral mínimo COOTAD 65%",
-        "impacto": "−8.2 pts ICGI-T · bloquea perfil BDE",
+        "impacto": "Impacto crítico en ICGI-T · bloquea perfil BDE",
         "accion": "Activar coactivas · actualizar catastro predial",
     },
     {
@@ -222,7 +222,7 @@ SAT_ACTIVAS = [
         "color": "#E67E22",
         "emoji": "🟠",
         "descripcion": "Patrón de partición de contratos detectado",
-        "impacto": "−3.1 pts ICGI-T potencial · riesgo LOSNCP",
+        "impacto": "Impacto potencial en ICGI-T · riesgo LOSNCP",
         "accion": "Auditar procesos de contratación DAPS-01",
     },
     {
@@ -233,7 +233,7 @@ SAT_ACTIVAS = [
         "color": "#D69E2E",
         "emoji": "🟡",
         "descripcion": "IGP 27.98% · PP 2026 completado 7/7 parroquias · Asambleas locales: solo 2/7",
-        "impacto": "−2.4 pts IGP · déficit en asambleas parroquiales formales COOTAD Art.304",
+        "impacto": "Impacto en IGP · déficit en asambleas parroquiales formales COOTAD Art.304",
         "accion": "Formalizar asambleas locales pendientes · Aníbal San Andrés e Isabel Muentes",
     },
 ]

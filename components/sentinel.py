@@ -10,6 +10,8 @@ import streamlit as st
 import os
 from data.loader import load_all
 from data.pdot_context import build_pdot_context, pdot_context_stats
+from utils.audit_log import log_sentinel_query
+from utils.input_guard import is_safe_query, check_rate_limit
 from utils.session import get_rol, is_tecnico
 from sentinel.prompts       import build_system_prompt
 from sentinel.policies      import evaluar_seguridad, sugerir_pantallas
@@ -128,7 +130,20 @@ GROQ_API_KEY = "gsk_..."
 
     # ── INPUT ──────────────────────────────────────────────────────────────────
     if user_input := st.chat_input("Pregunta sobre el cantón, el PDOT, las brechas, las parroquias…"):
-        # Policy check antes de procesar
+        # Capa 1: sanitización y anti-injection
+        _safe, _clean_or_reason = is_safe_query(user_input)
+        if not _safe:
+            st.warning("🛡️ Input bloqueado por seguridad. Reformula tu consulta.")
+            st.stop()
+        user_input = _clean_or_reason  # texto limpio y truncado
+
+        # Capa 2: rate limiting por usuario
+        _allowed, _rate_msg = check_rate_limit()
+        if not _allowed:
+            st.warning(f"⏱️ {_rate_msg}")
+            st.stop()
+
+        # Capa 3: Policy check antes de procesar
         seguridad = evaluar_seguridad(user_input)
         if not seguridad["permitido"]:
             st.warning(
@@ -137,6 +152,10 @@ GROQ_API_KEY = "gsk_..."
                 f"El funcionario responsable debe confirmar y ejecutar esta acción en el sistema correspondiente."
             )
         else:
+            log_sentinel_query(
+                module=st.session_state.get("page", "sentinel"),
+                query_len=len(user_input),
+            )
             # Sugerir pantallas relacionadas (sidebar context)
             pantallas = sugerir_pantallas(user_input)
             if pantallas:
@@ -433,13 +452,13 @@ def _get_api_key() -> str:
     """
     Obtiene Groq API Key en orden de prioridad:
     1. session_state (ingresada temporalmente en UI)
-    2. Streamlit secrets: GROQ_API_KEY
-    3. Variables de entorno
+    2. st.secrets["GROQ_API_KEY"] (top-level — formato recomendado)
+    3. Variable de entorno GROQ_API_KEY
     """
     if "temp_groq_key" in st.session_state:
         return st.session_state["temp_groq_key"]
     try:
-        key = st.secrets.get("GROQ_API_KEY", "")
+        key = st.secrets["GROQ_API_KEY"]
         if key:
             return key
     except Exception:
