@@ -188,7 +188,7 @@ def render() -> None:
 
     mecanismos_html = f"""
 <div class="card">
-  <div class="card-title">🗳️ 6 MECANISMOS DE PARTICIPACIÓN · Estado Q1-2026</div>
+  <div class="card-title">🗳️ 6 MECANISMOS DE PARTICIPACIÓN · Estado ene–mar 2026</div>
   <div style="font-size:8px;color:rgba(0,212,255,.7);margin-bottom:10px;
               padding:5px 10px;background:rgba(0,212,255,.05);border-radius:5px;
               border:1px solid rgba(0,212,255,.15)">
@@ -216,7 +216,7 @@ def render() -> None:
     hdr = page_header(
         "⑫ CONFIANZA CIUDADANA",
         "IGP · Participación · CPCCS",
-        f"IGP {igp_val:.2f}% · {n_sin_voz} parroquias sin voz · CPCCS V=0 RDC 2025 · Q1-2026",
+        f"IGP {igp_val:.2f}% · {n_sin_voz} parroquias sin voz · CPCCS V=0 RDC 2025 · ene–mar 2026",
         '<span class="badge badge-red">🔴 CPCCS V=0</span>',
     )
 
@@ -239,10 +239,10 @@ def render() -> None:
             )
             st.rerun()
     with c2:
-        if st.button("🗺️ Ver GeoTwin · Territorio", use_container_width=True):
+        if st.button("🗺️ Ver Territorio Digital", use_container_width=True):
             st.session_state["page"] = "geotwin"
             st.rerun()
     with c3:
-        if st.button("🎯 Ver Metas PDOT", use_container_width=True):
+        if st.button("🎯 Ver Metas del Plan Cantonal", use_container_width=True):
             st.session_state["page"] = "metas"
             st.rerun()

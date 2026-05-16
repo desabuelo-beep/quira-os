@@ -470,7 +470,7 @@ def render() -> None:
                 )
                 st.rerun()
         with c2:
-            if st.button("🗺️ Ver GeoTwin · Territorio", use_container_width=True):
+            if st.button("🗺️ Ver Territorio Digital", use_container_width=True):
                 st.session_state["page"] = "geotwin"
                 st.rerun()
 
@@ -574,7 +574,7 @@ def render() -> None:
 
         metas_html = f"""
 <div class="card" style="margin-bottom:16px">
-  <div class="card-title">🎯 25 METAS PDOT · Estado verificación Q1-2026 · H31_REPORTE_CPCCS</div>
+  <div class="card-title">🎯 25 METAS DEL PLAN · Estado verificación ene–mar 2026</div>
   <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap">
     <span style="padding:5px 10px;background:rgba(0,224,150,.1);border-radius:6px;
                  font-size:10px;font-weight:700;color:var(--green)">✅ {n_verif} Verificadas</span>
@@ -752,6 +752,6 @@ def render() -> None:
                 st.session_state["page"] = "transparencia"
                 st.rerun()
         with c3:
-            if st.button("🎯 Ver Metas PDOT", use_container_width=True):
+            if st.button("🎯 Ver Metas del Plan Cantonal", use_container_width=True):
                 st.session_state["page"] = "metas"
                 st.rerun()

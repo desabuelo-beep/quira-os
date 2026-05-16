@@ -76,7 +76,7 @@ def _p17_html(show_tech: bool) -> str:
                 background:rgba(124,92,252,.05);border-radius:8px;border-left:3px solid var(--purple)">
       <div style="font-size:15px;font-weight:800;color:var(--purple);min-width:20px">④</div>
       <div>
-        <div style="font-size:12px;font-weight:700;color:var(--purple)">Actualización ICGI-T</div>
+        <div style="font-size:12px;font-weight:700;color:var(--purple)">Actualización de Calificación</div>
         <div style="font-size:11px;color:var(--muted)">
           Motor SIAP-ICPI recalcula el índice. QUIRA Gov se actualiza.
           Trazabilidad SHA-256 generada.

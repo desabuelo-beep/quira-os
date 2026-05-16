@@ -31,7 +31,7 @@ def gauge_card(d: DashboardData, show_tech: bool) -> str:
     <text x="110" y="96"  text-anchor="middle" fill="{d.color}"
           font-size="32" font-weight="800" font-family="JetBrains Mono,monospace">{d.score:.2f}%</text>
     <text x="110" y="116" text-anchor="middle" fill="#8892B0"
-          font-size="10" font-family="Inter,sans-serif">ICGI-T · Montecristi 2026</text>
+          font-size="10" font-family="Inter,sans-serif">Calificación · Montecristi 2026</text>
   </svg>
 
   <div style="background:rgba({d.color_rgb},.12);border:1px solid rgba({d.color_rgb},.3);
@@ -163,7 +163,7 @@ def mandato_card(d: DashboardData) -> str:
               margin-bottom:14px;flex-wrap:wrap;gap:8px">
     <div>
       <div style="font-size:11px;font-weight:700;color:var(--cyan);text-transform:uppercase;letter-spacing:.1em">
-        📈 Curva del Mandato 2023-2027 · ICGI-T Serie Histórica
+        📈 Curva del Mandato 2023-2027 · Calificación histórica
       </div>
       <div style="font-size:11px;color:var(--muted);margin-top:2px">
         Trayectoria de Gobernanza · GAD Montecristi · Evidencia institucional auditada
@@ -246,7 +246,7 @@ def sat_card(sats: list) -> str:
     )
     return (
         '<div class="card" style="margin-top:4px">'
-        '<div class="card-title">🚨 Sistema de Alertas Tempranas (SAT) · Activas</div>'
+        '<div class="card-title">🚨 Señales de Alerta Institucional · Activas</div>'
         '<table class="tbl"><thead><tr>'
         '<th>ID</th><th>Alerta</th><th>Nivel</th><th>Impacto cuantificado</th>'
         f'</tr></thead><tbody>{rows}</tbody></table></div>'

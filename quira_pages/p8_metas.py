@@ -291,21 +291,21 @@ def render() -> None:
     # ── LISTA DE METAS ────────────────────────────────────────────────────────
     metas_list = f"""
 <div class="card">
-  <div class="card-title">📋 10 METAS PDOT 2023-2027 · Estado Q1-2026</div>
+  <div class="card-title">📋 10 METAS DEL PLAN 2023-2027 · Estado ene–mar 2026</div>
   {"".join(_meta_row(m) for m in METAS_PDOT)}
   <div style="font-size:9px;color:var(--muted);margin-top:8px;padding-top:8px;
               border-top:1px solid rgba(255,255,255,.05)">
-    📌 Fuente: PDOT Montecristi 2023-2027 · POA-PAC Q1-2026 · SIAP-ICPI v1.0222
-    · Corte sellado Q1-2026
+    📌 Fuente: PDOT Montecristi 2023-2027 · POA-PAC ene–mar 2026 · SIAP-ICPI v1.0222
+    · Corte sellado ene–mar 2026
   </div>
 </div>"""
 
     # ── ASSEMBLER ─────────────────────────────────────────────────────────────
     hdr = page_header(
-        "③ METAS PDOT",
-        "Trazabilidad PDOT 2023-2027",
-        "Promesa → Meta → POA → PAC → eSIGEF · 66 compromisos CNE · Corte Q1-2026",
-        '<span class="badge badge-real">PDOT 2023-2027</span>',
+        "③ METAS DEL PLAN",
+        "Plan Cantonal 2023-2027",
+        "Promesa → Meta → POA → PAC → eSIGEF · 66 compromisos CNE · Corte ene–mar 2026",
+        '<span class="badge badge-real">Plan 2023-2027</span>',
     )
 
     html = hdr + resumen_html + ife_html + metas_list

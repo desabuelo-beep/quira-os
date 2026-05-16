@@ -257,7 +257,7 @@ def render() -> None:
     chips = "".join(_ods_chip(o) for o in ODS_CATALOGO)
     grid_html = f"""
 <div class="card">
-  <div class="card-title">🌐 17 ODS · AGENDA 2030 · Estado Montecristi Q1-2026</div>
+  <div class="card-title">🌐 17 ODS · AGENDA 2030 · Estado Montecristi ene–mar 2026</div>
   <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(115px,1fr));
               gap:10px;margin-bottom:14px">
     {chips}
@@ -296,7 +296,7 @@ def render() -> None:
       </div>
       <div style="font-size:11px;color:var(--white);padding:6px 10px;
                   background:rgba(0,212,255,.06);border-radius:6px">
-        🌐 PNUD Agua Rural · $2.4M · ODS 6 · Requiere ICGI-T ≥ 55%
+        🌐 PNUD Agua Rural · $2.4M · ODS 6 · Requiere calificación ≥ 55%
       </div>
     </div>
     <div style="background:rgba(255,184,0,.06);border:1px solid rgba(255,184,0,.2);
@@ -326,9 +326,9 @@ def render() -> None:
 
     # ── ASSEMBLER ─────────────────────────────────────────────────────────────
     hdr = page_header(
-        "⑦ ODS TRACKER",
-        "Agenda 2030 · Vinculación PDOT",
-        f"ICODS {icods_val:.1f}% · {n_vinculado} ODS vinculados · {n_critico} críticos · Corte Q1-2026",
+        "⑦ AGENDA 2030 · ODS",
+        "Agenda 2030 · Vinculación al Plan Cantonal",
+        f"ICODS {icods_val:.1f}% · {n_vinculado} ODS vinculados · {n_critico} críticos · Corte ene–mar 2026",
         '<span class="badge badge-green">✅ Gestión por Mandato</span>',
     )
 
@@ -351,10 +351,10 @@ def render() -> None:
             )
             st.rerun()
     with c2:
-        if st.button("💰 Ver Inversión per Cápita", use_container_width=True):
+        if st.button("💰 Ver Inversión por Habitante", use_container_width=True):
             st.session_state["page"] = "inversion"
             st.rerun()
     with c3:
-        if st.button("🗺️ Ver GeoTwin · Territorio", use_container_width=True):
+        if st.button("🗺️ Ver Territorio Digital", use_container_width=True):
             st.session_state["page"] = "geotwin"
             st.rerun()

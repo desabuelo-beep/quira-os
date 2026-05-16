@@ -85,7 +85,7 @@ def _sat_card(sat: dict) -> str:
     <div style="text-align:right">
       <div style="font-size:18px;font-weight:900;color:var(--{col});
                   font-family:var(--mono)">{sat["impacto"].split("·")[0].strip()}</div>
-      <div style="font-size:9px;color:var(--muted)">impacto ICGI-T</div>
+      <div style="font-size:9px;color:var(--muted)">impacto en calificación</div>
     </div>
   </div>
 
@@ -148,29 +148,29 @@ def render() -> None:
               border-radius:12px;padding:16px;text-align:center">
     <div style="font-size:42px;font-weight:900;color:var(--red);
                 font-family:var(--mono)">{n_crit}</div>
-    <div style="font-size:10px;font-weight:700;color:var(--red);margin-top:4px">SATs CRÍTICAS</div>
+    <div style="font-size:10px;font-weight:700;color:var(--red);margin-top:4px">SEÑALES CRÍTICAS</div>
     <div style="font-size:9px;color:var(--muted);margin-top:3px">Acción inmediata requerida</div>
   </div>
   <div style="background:rgba(255,184,0,.08);border:1px solid rgba(255,184,0,.3);
               border-radius:12px;padding:16px;text-align:center">
     <div style="font-size:42px;font-weight:900;color:var(--amber);
                 font-family:var(--mono)">{n_alert}</div>
-    <div style="font-size:10px;font-weight:700;color:var(--amber);margin-top:4px">SATs ALERTA</div>
+    <div style="font-size:10px;font-weight:700;color:var(--amber);margin-top:4px">SEÑALES PREVENTIVAS</div>
     <div style="font-size:9px;color:var(--muted);margin-top:3px">Preventivas · monitoreo activo</div>
   </div>
   <div style="background:rgba(255,77,109,.06);border:1px solid rgba(255,77,109,.2);
               border-radius:12px;padding:16px;text-align:center">
     <div style="font-size:42px;font-weight:900;color:var(--white);
                 font-family:var(--mono)">{n_total}</div>
-    <div style="font-size:10px;font-weight:700;color:var(--muted);margin-top:4px">TOTAL SATs</div>
-    <div style="font-size:9px;color:var(--muted);margin-top:3px">Sistema de alertas Q1-2026</div>
+    <div style="font-size:10px;font-weight:700;color:var(--muted);margin-top:4px">TOTAL SEÑALES</div>
+    <div style="font-size:9px;color:var(--muted);margin-top:3px">Sistema ene–mar 2026</div>
   </div>
   <div style="background:rgba(255,77,109,.06);border:1px solid rgba(255,77,109,.2);
               border-radius:12px;padding:16px;text-align:center">
     <div style="font-size:42px;font-weight:900;color:var(--red);
                 font-family:var(--mono)">−16.4</div>
-    <div style="font-size:10px;font-weight:700;color:var(--red);margin-top:4px">PTS ICGI-T</div>
-    <div style="font-size:9px;color:var(--muted);margin-top:3px">Impacto acumulado SATs</div>
+    <div style="font-size:10px;font-weight:700;color:var(--red);margin-top:4px">PTS EN CALIFICACIÓN</div>
+    <div style="font-size:9px;color:var(--muted);margin-top:3px">Impacto acumulado señales</div>
   </div>
 </div>"""
 
@@ -182,10 +182,10 @@ def render() -> None:
   <div style="font-size:28px">⚠️</div>
   <div>
     <div style="font-size:12px;font-weight:700;color:var(--red);margin-bottom:4px">
-      RIESGO CONTRALORÍA GENERAL DEL ESTADO · Sin acción en Q2-2026
+      RIESGO CONTRALORÍA GENERAL DEL ESTADO · Sin acción próximo trimestre
     </div>
     <div style="font-size:11px;color:var(--muted);line-height:1.6">
-      Las SATs críticas activas (SAT-0 y SAT-IV) generan riesgo de observación formal
+      Las señales críticas activas (SAT-0 y SAT-IV) generan riesgo de observación formal
       por parte de la Contraloría. La falta de evidencias SHA-256 en 24 procesos
       y el ISP 14.58% bajo umbral COOTAD 65% pueden derivar en
       <strong style="color:var(--white)">glosas contables y bloqueo de crédito BDE</strong>
@@ -197,14 +197,14 @@ def render() -> None:
     # ── TARJETAS SAT ──────────────────────────────────────────────────────────
     sat_cards = f"""
 <div class="card">
-  <div class="card-title">🚨 SATs ACTIVAS · Detalle y Acciones</div>
+  <div class="card-title">🚨 SEÑALES ACTIVAS · Detalle y Acciones</div>
   {"".join(_sat_card(s) for s in sat_list)}
 </div>"""
 
     # ── MATRIZ RIESGO ─────────────────────────────────────────────────────────
     riesgo_html = f"""
 <div class="card" style="margin-top:16px">
-  <div class="card-title">📊 MATRIZ DE RIESGO INSTITUCIONAL · Q1-2026</div>
+  <div class="card-title">📊 MATRIZ DE RIESGO INSTITUCIONAL · ene–mar 2026</div>
   <div class="grid-2" style="gap:12px">
     {"".join(_riesgo_card(r) for r in RIESGO_MATRIX)}
   </div>
@@ -220,9 +220,9 @@ def render() -> None:
 
     # ── ASSEMBLER ─────────────────────────────────────────────────────────────
     hdr = page_header(
-        "⑤ ALERTAS SAT",
-        "Sistema de Alertas Tempranas",
-        f"{n_crit} SATs Críticas · {n_alert} SATs Alerta · Impacto acumulado −16.4 pts ICGI-T · Q1-2026",
+        "⑤ SEÑALES DE ALERTA",
+        "Señales de Alerta Institucional",
+        f"{n_crit} señales críticas · {n_alert} señales preventivas · Impacto acumulado −16.4 pts · ene–mar 2026",
         f'<span class="badge badge-red">🚨 {n_crit} CRÍTICAS ACTIVAS</span>',
     )
 
@@ -250,6 +250,6 @@ def render() -> None:
             st.session_state["page"] = "brecha"
             st.rerun()
     with c3:
-        if st.button("🎯 Ver Metas PDOT", use_container_width=True):
+        if st.button("🎯 Ver Metas del Plan Cantonal", use_container_width=True):
             st.session_state["page"] = "metas"
             st.rerun()

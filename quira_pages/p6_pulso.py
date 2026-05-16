@@ -46,7 +46,7 @@ def render() -> None:
   <div style="background:rgba(255,77,109,.08);border:1px solid rgba(255,77,109,.3);
               border-radius:12px;padding:16px;text-align:center">
     <div style="font-size:42px;font-weight:900;color:var(--red);font-family:var(--mono)">{n_crit}</div>
-    <div style="font-size:11px;font-weight:700;color:var(--red);margin-top:4px">SATs CRÍTICAS ACTIVAS</div>
+    <div style="font-size:11px;font-weight:700;color:var(--red);margin-top:4px">SEÑALES CRÍTICAS ACTIVAS</div>
     <div style="font-size:10px;color:var(--muted);margin-top:4px">Requieren acción inmediata</div>
   </div>
   <div style="background:rgba(255,77,109,.08);border:1px solid rgba(255,77,109,.3);
@@ -80,7 +80,7 @@ def render() -> None:
 
     cong_html = f"""
 <div class="card">
-  <div class="card-title">🎯 4 CONGRUENCIAS DE GOBERNANZA · HPT-M</div>
+  <div class="card-title">🎯 4 CONGRUENCIAS DE GOBERNANZA · GRUPO MUNICIPAL</div>
   <div class="grid-4">
     {_cong_card(cpol, "politica")}
     {_cong_card(cope, "operativa")}
@@ -95,7 +95,7 @@ def render() -> None:
   <div style="background:rgba(255,77,109,.06);border:1px solid rgba(255,77,109,.2);
               border-radius:12px;padding:16px">
     <div style="font-size:12px;font-weight:700;color:var(--red);margin-bottom:10px">
-      ⚠️ RIESGOS Q2-2026 — Sin acción inmediata
+      ⚠️ RIESGOS PRÓXIMO TRIMESTRE — Sin acción inmediata
     </div>
     <div style="display:flex;flex-direction:column;gap:6px">
       <div style="font-size:11px;color:var(--white);padding:6px 10px;
@@ -115,7 +115,7 @@ def render() -> None:
   <div style="background:rgba(0,224,150,.06);border:1px solid rgba(0,224,150,.2);
               border-radius:12px;padding:16px">
     <div style="font-size:12px;font-weight:700;color:var(--green);margin-bottom:10px">
-      ✅ OPORTUNIDADES Q2-2026 — Acción disponible
+      ✅ OPORTUNIDADES PRÓXIMO TRIMESTRE — Acción disponible
     </div>
     <div style="display:flex;flex-direction:column;gap:6px">
       <div style="font-size:11px;color:var(--white);padding:6px 10px;
@@ -158,15 +158,15 @@ def render() -> None:
     holding_rows = "".join(_holding_mini(e) for e in holding.get("entidades", []))
     holding_html = f"""
 <div class="card">
-  <div class="card-title">🏛️ HOLDING MUNICIPAL · RADAR RÁPIDO</div>
+  <div class="card-title">🏛️ GRUPO MUNICIPAL · RADAR RÁPIDO</div>
   {holding_rows}
 </div>"""
 
     # ── ASSEMBLER ─────────────────────────────────────────────────────────────
     hdr = page_header(
-        "① EXECUTIVE PULSE",
+        "① PULSO EJECUTIVO",
         "Pulso Ejecutivo",
-        f"ICGI-T: {score:.2f}% · {icgit.get('avep','Transición Crítica')} · Proyección 2026: {proj:.2f}% · Corte Q1-2026",
+        f"Calificación actual: {score:.2f}% · {icgit.get('avep','Transición Crítica')} · Proyección 2026: {proj:.2f}% · Corte ene–mar 2026",
         f'<span class="badge badge-{"green" if score>=70 else "amber" if score>=50 else "red"}">{icgit.get("avep_emoji","🟡")} {icgit.get("avep","")}</span>',
     )
 
@@ -192,6 +192,6 @@ def render() -> None:
             st.session_state["page"] = "brecha"
             st.rerun()
     with c3:
-        if st.button("🎯 Ver Metas PDOT", use_container_width=True):
+        if st.button("🎯 Ver Metas del Plan Cantonal", use_container_width=True):
             st.session_state["page"] = "metas"
             st.rerun()

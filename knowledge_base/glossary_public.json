@@ -1,0 +1,445 @@
+{
+  "_meta": {
+    "version": "1.0",
+    "fuente_maestra": "SIAP-ICPI_GOLD_MASTER_v4.1 — H02_GLOSARIO_QUIRA + H01_PARÁMETROS + H77_DATA_DICTIONARY",
+    "regla": "Ningún término inventado. Cada etiqueta pública tiene referencia Excel documentada.",
+    "acciones": "traducir = sigla visible solo al equipo técnico | mantener = valor institucional pero necesita contexto | ocultar = solo logs/backend",
+    "fecha": "2026-05-16"
+  },
+
+  "AVEP": {
+    "accion": "mantener",
+    "label": "Calificación de gestión",
+    "description": "Escala de 5 niveles que clasifica el resultado global del GAD, desde 'Sin funcionamiento' hasta 'Excelencia'. Es el semáforo institucional del cantón.",
+    "fuente_excel": "H01_PARÁMETROS — SECCIÓN B",
+    "visible_en": ["dashboard", "tooltip", "sentinel"]
+  },
+
+  "AVEP_nivel_5": {
+    "accion": "mantener",
+    "label": "Excelencia en Gobernanza",
+    "rango": "90–100%",
+    "emoji": "🔵",
+    "description": "El GAD supera el 90% en todos los indicadores de planificación, ejecución, transparencia y cumplimiento.",
+    "fuente_excel": "H01_PARÁMETROS!B21",
+    "visible_en": ["dashboard", "tablero", "tooltip"]
+  },
+
+  "AVEP_nivel_4": {
+    "accion": "mantener",
+    "label": "Gestión por Mandato",
+    "rango": "70–89%",
+    "emoji": "🟢",
+    "description": "El GAD cumple sus compromisos dentro de los parámetros establecidos por ley. La gestión es planificada y sistemática.",
+    "fuente_excel": "H01_PARÁMETROS!B22",
+    "visible_en": ["dashboard", "tablero", "tooltip"]
+  },
+
+  "AVEP_nivel_3": {
+    "accion": "mantener",
+    "label": "Transición Crítica",
+    "rango": "40–69%",
+    "emoji": "🟡",
+    "description": "El GAD está cumpliendo parcialmente. Existen áreas con resultados insuficientes que requieren atención prioritaria antes del cierre del mandato.",
+    "fuente_excel": "H01_PARÁMETROS!B23",
+    "visible_en": ["dashboard", "tablero", "tooltip"]
+  },
+
+  "AVEP_nivel_2": {
+    "accion": "mantener",
+    "label": "Gestión por Ocurrencia",
+    "rango": "20–39%",
+    "emoji": "🟠",
+    "description": "El GAD atiende problemas cuando ya ocurrieron, sin anticiparlos. La gestión es reactiva y sin planificación preventiva.",
+    "fuente_excel": "H01_PARÁMETROS!B24",
+    "visible_en": ["dashboard", "tablero", "tooltip"]
+  },
+
+  "AVEP_nivel_1": {
+    "accion": "mantener",
+    "label": "Ruptura Sistémica",
+    "rango": "0–19%",
+    "emoji": "🔴",
+    "description": "Hay fallas graves en la gestión institucional que requieren intervención urgente. El GAD no está cumpliendo sus obligaciones básicas.",
+    "fuente_excel": "H01_PARÁMETROS!B25",
+    "visible_en": ["dashboard", "tablero", "tooltip"]
+  },
+
+  "ICPI": {
+    "accion": "mantener",
+    "label": "Calificación de integridad municipal",
+    "description": "Nota global del GAD calculada combinando planificación, ejecución financiera, transparencia, participación ciudadana y calidad de los procesos institucionales. No es autoreportada — la calcula un algoritmo verificado. Valor 2025: 69.93%.",
+    "fuente_excel": "H02_GLOSARIO_QUIRA — 'ICPI' + H12_MOTOR_ICPI_CANÓNICO!B33",
+    "visible_en": ["dashboard", "tablero", "tooltip", "sentinel"]
+  },
+
+  "ICGI_T": {
+    "accion": "mantener",
+    "label": "Calificación de gestión territorial actual",
+    "description": "Es la calificación de integridad del GAD actualizada al trimestre en curso (datos vivos). Refleja cómo va la gestión en tiempo real, no el cierre anual.",
+    "fuente_excel": "H73_OUTPUT_API — campo ICPI_LIVE",
+    "nota": "En el código y reportes técnicos se escribe ICGI-T. En el front se muestra como 'Calificación actual'.",
+    "visible_en": ["dashboard", "tablero", "cooperacion", "tooltip"]
+  },
+
+  "ICM": {
+    "accion": "mantener",
+    "label": "Calificación oficial reportada al gobierno central",
+    "description": "Nota que el propio GAD reporta a la Secretaría Nacional de Planificación a través del sistema SIGAD. En 2025 el GAD reportó 100%. El sistema QUIRA la contrasta con la calificación verificada independientemente.",
+    "fuente_excel": "H02_GLOSARIO_QUIRA — 'ICM'",
+    "visible_en": ["dashboard", "tooltip", "brecha"]
+  },
+
+  "Q1": {
+    "accion": "traducir",
+    "label": "Primer trimestre del año",
+    "description": "Datos correspondientes al período enero–marzo del año en curso. Es el corte de información más reciente del sistema.",
+    "fuente_excel": "H01_PARÁMETROS — 'Corte_Datos: Q1 Abril 2026'",
+    "visible_en": ["dashboard", "tablero", "tooltip"]
+  },
+
+  "Q2": {
+    "accion": "traducir",
+    "label": "Segundo trimestre del año",
+    "description": "Datos correspondientes al período abril–junio del año en curso.",
+    "fuente_excel": "H01_PARÁMETROS — referencia Q2-Q4 en Trust Score D5",
+    "visible_en": ["tooltip"]
+  },
+
+  "Q3": {
+    "accion": "traducir",
+    "label": "Tercer trimestre del año",
+    "description": "Datos correspondientes al período julio–septiembre. Punto de revisión crítico para proyecciones de cierre.",
+    "fuente_excel": "H01_PARÁMETROS — SAT parámetros MMP_Umbral_Brecha nota",
+    "visible_en": ["tooltip"]
+  },
+
+  "SAT": {
+    "accion": "mantener",
+    "label": "Señal de alerta institucional",
+    "description": "Aviso preventivo que el sistema lanza cuando detecta un riesgo de gestión antes de que se convierta en un problema real. Funciona como un sistema de alerta temprana: actúa antes, no después.",
+    "fuente_excel": "H02_GLOSARIO_QUIRA — 'SAT'",
+    "visible_en": ["dashboard", "sat", "tooltip", "sentinel"]
+  },
+
+  "SAT_0": {
+    "accion": "traducir",
+    "label": "Alerta: desconexión entre plan y contrataciones",
+    "description": "Se activa cuando hay una diferencia superior al 20% entre lo que el GAD programó contratar (Plan Operativo) y lo que realmente contrató ese año. También detecta si se bajó artificialmente la categoría de una contratación para eludir controles.",
+    "fuente_excel": "H02_GLOSARIO_QUIRA — 'SAT-0' + H21b_SAT-0_COHERENCIA_PAC",
+    "visible_en": ["sat", "tablero", "tooltip"]
+  },
+
+  "SAT_I": {
+    "accion": "traducir",
+    "label": "Alerta: reporte oficial optimista con cobertura parcial",
+    "description": "Se activa cuando el GAD reporta notas muy altas al gobierno central pero solo ha actualizado una fracción pequeña de sus 25 metas del PDOT. Detecta la diferencia entre lo que se declara y lo que se puede verificar.",
+    "fuente_excel": "H02_GLOSARIO_QUIRA — 'SAT-I' + H21_SAT-I",
+    "visible_en": ["sat", "tablero", "tooltip"]
+  },
+
+  "SAT_II": {
+    "accion": "traducir",
+    "label": "Alerta: ajuste presupuestario significativo",
+    "description": "Se activa cuando el presupuesto municipal aprobado ha sido modificado en más del 5% de su valor original. Los ajustes frecuentes o importantes pueden indicar falta de planificación inicial.",
+    "fuente_excel": "H02_GLOSARIO_QUIRA — 'SAT-II' + H22_SAT-II",
+    "visible_en": ["sat", "tablero", "tooltip"]
+  },
+
+  "SAT_III": {
+    "accion": "traducir",
+    "label": "Alerta: dinero asignado sin ejecutar",
+    "description": "Se activa cuando hay metas del PDOT con menos del 10% del dinero asignado ejecutado. El presupuesto existe pero no se está usando — riesgo de perder los recursos o incumplir los compromisos.",
+    "fuente_excel": "H02_GLOSARIO_QUIRA — 'SAT-III' + H23_SAT-III",
+    "visible_en": ["sat", "tablero", "tooltip"]
+  },
+
+  "SAT_IV": {
+    "accion": "traducir",
+    "label": "Alerta: estructura de gasto fuera del límite legal",
+    "description": "La ley obliga a los municipios a destinar al menos el 65% del presupuesto a inversión. Esta señal se activa si el gasto en administración y operación supera el límite permitido por el COOTAD.",
+    "fuente_excel": "H02_GLOSARIO_QUIRA — 'SAT-IV' + H24_SAT-IV",
+    "visible_en": ["sat", "tablero", "tooltip"]
+  },
+
+  "SAT_V": {
+    "accion": "traducir",
+    "label": "Alerta: compromisos ante la ciudadanía incumplidos",
+    "description": "Se activa cuando hay una brecha superior al 30% entre los compromisos que el GAD asumió ante el Consejo de Participación Ciudadana (CPCCS) y lo que efectivamente ha cumplido.",
+    "fuente_excel": "H02_GLOSARIO_QUIRA — 'SAT-V' + H24b_SAT-V_ALERTA_CPCCS",
+    "visible_en": ["sat", "tablero", "tooltip"]
+  },
+
+  "SAT_VI": {
+    "accion": "traducir",
+    "label": "Alerta: fondos del presupuesto participativo desviados",
+    "description": "Se activa cuando los recursos aprobados en asambleas ciudadanas de presupuesto participativo se usan en fines distintos a los que la ciudadanía votó.",
+    "fuente_excel": "H02_GLOSARIO_QUIRA — 'SAT-VI' + H24c_SAT-VI_DESVÍO_PP",
+    "visible_en": ["sat", "tablero", "tooltip"]
+  },
+
+  "IFE": {
+    "accion": "traducir",
+    "label": "Coherencia entre promesas electorales y plan de gobierno",
+    "description": "Mide cuántas de las 66 promesas que el Alcalde hizo ante el CNE en 2023 se convirtieron en metas concretas dentro del Plan de Desarrollo del cantón. Resultado 2025: 72.83% (48 de 66 promesas formalizadas).",
+    "fuente_excel": "H02_GLOSARIO_QUIRA — 'IFE' + H16_IFE",
+    "visible_en": ["congruencias", "tablero", "tooltip"]
+  },
+
+  "IPE": {
+    "accion": "traducir",
+    "label": "Pertinencia del gasto de inversión",
+    "description": "Mide qué fracción del presupuesto de inversión está efectivamente vinculada a las metas del Plan de Desarrollo. Si el gasto no se puede relacionar con ninguna meta, no está cumpliendo un objetivo institucional.",
+    "fuente_excel": "H02_GLOSARIO_QUIRA — 'IPE' + H16b_IPE",
+    "visible_en": ["tablero", "tooltip"]
+  },
+
+  "PSG": {
+    "accion": "mantener",
+    "label": "Presupuesto con enfoque de género",
+    "description": "Porcentaje del presupuesto municipal destinado a metas que promueven la igualdad entre hombres y mujeres. El sistema distingue entre lo planificado (86.75%) y lo realmente ejecutado (2.80%).",
+    "fuente_excel": "H02_GLOSARIO_QUIRA — 'PSG' + H16c_PSG_PRESUPUESTO_GENERO",
+    "visible_en": ["genero", "tablero", "tooltip"]
+  },
+
+  "IED": {
+    "accion": "traducir",
+    "label": "Desempeño por dirección municipal",
+    "description": "Calificación individual de cada dirección del GAD según el cumplimiento de las metas del PDOT que le corresponden. Muestra cuáles áreas están al día y cuáles tienen retrasos. Resultado 2025: promedio 70.33%.",
+    "fuente_excel": "H02_GLOSARIO_QUIRA — 'IED' + H17_IED",
+    "visible_en": ["eficiencia", "tablero", "tooltip"]
+  },
+
+  "ITAM": {
+    "accion": "traducir",
+    "label": "Calificación de transparencia institucional",
+    "description": "Mide el cumplimiento de las obligaciones legales de publicar información en el sitio web del GAD (LOTAIP). A mayor calificación, más información está disponible para la ciudadanía. Resultado 2025: 56%.",
+    "fuente_excel": "H02_GLOSARIO_QUIRA — 'ITAM' + H18_ITAM",
+    "visible_en": ["transparencia", "tablero", "tooltip"]
+  },
+
+  "IOC": {
+    "accion": "traducir",
+    "label": "Nivel de información pública no disponible",
+    "description": "Porcentaje de la información que el GAD debería publicar por ley pero que no está disponible o tiene acceso restringido. Resultado 2025: 17.71% — equivale a 1 de cada 6 documentos que la ciudadanía no puede consultar.",
+    "fuente_excel": "H02_GLOSARIO_QUIRA — 'IOC' + H41_IOC_OPACIDAD_CRITICA",
+    "visible_en": ["transparencia", "tablero", "tooltip"]
+  },
+
+  "ISP": {
+    "accion": "traducir",
+    "label": "Salud del presupuesto",
+    "description": "Mide la coherencia entre el dinero aprobado, el disponible y lo que realmente se ejecutó. Un presupuesto sano es aquel donde lo planificado coincide con lo gastado. Resultado 2025: 58.40%.",
+    "fuente_excel": "H02_GLOSARIO_QUIRA — 'ISP' + H19_ICS_ISP",
+    "visible_en": ["tablero", "tooltip"]
+  },
+
+  "ICS": {
+    "accion": "traducir",
+    "label": "Coherencia del sistema institucional",
+    "description": "Evalúa si los diferentes instrumentos de planificación del GAD (PDOT, POA, PAC, presupuesto) están alineados entre sí y con la normativa nacional.",
+    "fuente_excel": "H19_ICS_ISP",
+    "visible_en": ["tablero", "tooltip"]
+  },
+
+  "IGP": {
+    "accion": "traducir",
+    "label": "Calidad de la participación ciudadana",
+    "description": "Evalúa la calidad de los procesos de rendición de cuentas y participación ciudadana del GAD. Incluye la frecuencia, alcance y seguimiento de los compromisos asumidos ante la ciudadanía. Resultado 2025: 27.98%.",
+    "fuente_excel": "H02_GLOSARIO_QUIRA — 'IGP' + H20b_IGP_GOBERNANZA_PARTIC",
+    "visible_en": ["gobernanza", "tablero", "tooltip"]
+  },
+
+  "ICODS": {
+    "accion": "traducir",
+    "label": "Alineación con los Objetivos de Desarrollo Sostenible",
+    "description": "Mide en qué grado las metas del Plan de Desarrollo del cantón están conectadas con la Agenda 2030 de Naciones Unidas (ODS). Evalúa si el GAD está construyendo hacia un desarrollo sostenible global.",
+    "fuente_excel": "H02_GLOSARIO_QUIRA — 'ICODS' + H20_ICODS",
+    "visible_en": ["ods", "tablero", "tooltip"]
+  },
+
+  "IEF": {
+    "accion": "traducir",
+    "label": "Capacidad de captar fondos externos",
+    "description": "Mide qué tan bien el GAD consigue recursos adicionales fuera de su presupuesto propio: fondos concursables, cooperación internacional, donaciones. A mayor IEF, más el municipio amplifica su presupuesto con gestión activa.",
+    "fuente_excel": "H02_GLOSARIO_QUIRA — 'IEF' + H20c_IEF_EFICIENCIA_FINANCIERA",
+    "visible_en": ["cooperacion", "tablero", "tooltip"]
+  },
+
+  "IET": {
+    "accion": "traducir",
+    "label": "Equidad de la inversión en el territorio",
+    "description": "Mide si la inversión municipal llega de forma justa y equilibrada a todas las parroquias del cantón — urbanas y rurales. Evalúa si los recursos llegan donde más se necesitan. Resultado 2025: 91.42%.",
+    "fuente_excel": "H02_GLOSARIO_QUIRA — 'IET' + H42_IET_EQUIDAD_TERRITORIAL",
+    "visible_en": ["geotwin", "inversion", "tablero", "tooltip"]
+  },
+
+  "MMP": {
+    "accion": "traducir",
+    "label": "Monitor de avance de metas",
+    "description": "Sistema que hace seguimiento mensual, trimestral y anual del progreso de cada una de las 25 metas del Plan de Desarrollo. Funciona como un velocímetro que muestra si el cantón va al ritmo requerido para cumplir al cierre de 2027.",
+    "fuente_excel": "H02_GLOSARIO_QUIRA — 'MMP' + H25/H26/H27",
+    "visible_en": ["metas", "tablero", "tooltip"]
+  },
+
+  "PDOT": {
+    "accion": "mantener",
+    "label": "Plan de Desarrollo y Ordenamiento Territorial",
+    "description": "Documento rector del cantón Montecristi para el período 2023–2027. Contiene las 25 metas oficiales que el GAD debe cumplir durante el mandato del Alcalde Ing. Jonathan Toro Largacha. Es el contrato de gestión con el territorio.",
+    "fuente_excel": "H02_GLOSARIO_QUIRA — 'PDOT'",
+    "visible_en": ["metas", "tablero", "brecha", "tooltip"]
+  },
+
+  "POA": {
+    "accion": "mantener",
+    "label": "Plan Operativo Anual",
+    "description": "Instrumento anual que detalla las actividades, cronograma y presupuesto necesarios para avanzar en las metas del PDOT. Es el plan de trabajo concreto de cada año.",
+    "fuente_excel": "H02_GLOSARIO_QUIRA — 'POA'",
+    "visible_en": ["cadena", "congruencias", "tooltip"]
+  },
+
+  "PAC": {
+    "accion": "mantener",
+    "label": "Plan Anual de Contratación",
+    "description": "Documento que programa todas las compras y contrataciones que el GAD realizará durante el año. Es público, obligatorio y debe publicarse en el portal del SERCOP.",
+    "fuente_excel": "H02_GLOSARIO_QUIRA — 'PAC'",
+    "visible_en": ["cadena", "congruencias", "tooltip"]
+  },
+
+  "COOTAD": {
+    "accion": "mantener",
+    "label": "Código Orgánico de Organización Territorial",
+    "description": "Ley principal que rige a todos los municipios del Ecuador. Establece sus competencias, obligaciones, límites de gasto y estructura de gobierno. Registro Oficial 303 del 19 de octubre de 2010.",
+    "fuente_excel": "H02_GLOSARIO_QUIRA — 'COOTAD'",
+    "visible_en": ["tooltip", "legal"]
+  },
+
+  "LOTAIP": {
+    "accion": "mantener",
+    "label": "Ley de Transparencia y Acceso a la Información",
+    "description": "Ley que obliga a las instituciones públicas a publicar información en sus sitios web para que cualquier ciudadano pueda consultarla sin necesidad de pedirla. Registro Oficial 337 del 18 de mayo de 2004.",
+    "fuente_excel": "H02_GLOSARIO_QUIRA — 'LOTAIP'",
+    "visible_en": ["transparencia", "tooltip", "legal"]
+  },
+
+  "CPCCS": {
+    "accion": "mantener",
+    "label": "Consejo de Participación Ciudadana y Control Social",
+    "description": "Institución que promueve la participación ciudadana y supervisa el cumplimiento de compromisos asumidos por las autoridades ante la ciudadanía.",
+    "fuente_excel": "H02_GLOSARIO_QUIRA — 'SAT-V' referencia CPCCS",
+    "visible_en": ["gobernanza", "tooltip"]
+  },
+
+  "SERCOP": {
+    "accion": "mantener",
+    "label": "Servicio Nacional de Contratación Pública",
+    "description": "Institución que regula y publica todas las compras del Estado ecuatoriano. En su portal cualquier ciudadano puede ver qué contrató cada institución y por cuánto.",
+    "fuente_excel": "H02_GLOSARIO_QUIRA — 'SERCOP'",
+    "visible_en": ["cadena", "tooltip"]
+  },
+
+  "SIGAD": {
+    "accion": "mantener",
+    "label": "Sistema nacional de reporte de metas de los GADs",
+    "description": "Plataforma del gobierno central donde los municipios reportan oficialmente el avance de sus metas. El sistema QUIRA contrasta lo reportado en SIGAD con lo verificado independientemente.",
+    "fuente_excel": "H02_GLOSARIO_QUIRA — 'SIGAD'",
+    "visible_en": ["tooltip", "brecha"]
+  },
+
+  "SNP": {
+    "accion": "mantener",
+    "label": "Secretaría Nacional de Planificación",
+    "description": "Institución rectora de la planificación en Ecuador. Reemplazó a la extinta SENPLADES en 2019. Regula los Planes de Desarrollo Territorial de todos los GADs.",
+    "fuente_excel": "H02_GLOSARIO_QUIRA — 'SNP'",
+    "visible_en": ["tooltip", "legal"]
+  },
+
+  "eSIGEF": {
+    "accion": "traducir",
+    "label": "Sistema oficial de ejecución financiera del Estado",
+    "description": "Plataforma del Ministerio de Economía y Finanzas donde se registra cada transacción presupuestaria del sector público. Es la fuente más confiable de datos de ejecución financiera real.",
+    "fuente_excel": "H02_GLOSARIO_QUIRA — 'eSIGEF'",
+    "visible_en": ["operacion", "tooltip"]
+  },
+
+  "Ti": {
+    "accion": "traducir",
+    "label": "Porcentaje de ejecución financiera de inversión",
+    "description": "Mide cuánto del presupuesto de inversión asignado a cada meta se ha ejecutado realmente. Solo cuenta el gasto en obras e infraestructura (grupos 7 y 8 del clasificador presupuestario del Estado).",
+    "fuente_excel": "H02_GLOSARIO_QUIRA — 'Ti (Ejecución de inversión)'",
+    "visible_en": ["metas", "tablero", "tooltip"]
+  },
+
+  "Vi": {
+    "accion": "traducir",
+    "label": "Nivel de evidencia verificable de una meta",
+    "description": "Indica si una meta tiene respaldo documental en los sistemas oficiales (contratos, eSIGEF, SERCOP, LOTAIP). Más sistemas que la registran = más confianza en el dato.",
+    "fuente_excel": "H02_GLOSARIO_QUIRA — 'Vi (Verificación intersistémica)'",
+    "visible_en": ["metas", "tooltip", "sentinel"]
+  },
+
+  "Ci": {
+    "accion": "traducir",
+    "label": "Calidad institucional del proceso",
+    "description": "Calificación de la calidad con que se ejecuta cada meta desde el punto de vista institucional. Parte de 100% y se reduce si hay alertas del SERCOP, observaciones de la Contraloría o retrasos en la planificación.",
+    "fuente_excel": "H02_GLOSARIO_QUIRA — 'Ci (Calidad de proceso)'",
+    "visible_en": ["metas", "tooltip", "sentinel"]
+  },
+
+  "HPTM": {
+    "accion": "mantener",
+    "label": "Holding Público Territorial Municipal",
+    "description": "Conjunto de las cuatro entidades que conforman el ecosistema institucional del cantón: el GAD Municipal de Montecristi, el Patronato Municipal, el Cuerpo de Bomberos y la Empresa Pública de Aseo Integral. Las 25 metas del PDOT se distribuyen entre estas cuatro entidades.",
+    "fuente_excel": "H01_PARÁMETROS — SECCIÓN H (ENTIDADES REGISTRADAS): ENTE-01 a ENTE-04",
+    "nota": "El término HPT-M aparece en la interfaz como encabezado de la pantalla de Congruencias. Nace de los 4 entes del holding registrados en H01.",
+    "visible_en": ["holding", "congruencias", "tooltip"]
+  },
+
+  "Brecha_ICPI_SIGAD": {
+    "accion": "traducir",
+    "label": "Diferencia entre la nota oficial y la nota verificada",
+    "description": "La diferencia entre lo que el GAD reporta al gobierno central (100% en 2025) y lo que el sistema QUIRA calcula independientemente (69.93%). Esta brecha de 30 puntos no significa que el GAD miente — significa que los sistemas de autoreporte tienen limitaciones que la verificación algorítmica ayuda a identificar.",
+    "fuente_excel": "H02_GLOSARIO_QUIRA — 'Brecha ICPI-SIGAD'",
+    "visible_en": ["dashboard", "brecha", "tooltip"]
+  },
+
+  "MFN": {
+    "accion": "traducir",
+    "label": "Verificación de narrativas institucionales",
+    "description": "Instrumento que contrasta las afirmaciones del GAD en sus rendiciones de cuentas con la evidencia documental disponible. Clasifica la información en: alta fidelidad (≥85%), media (60–84%) o baja (<60%).",
+    "fuente_excel": "H02_GLOSARIO_QUIRA — 'MFN'",
+    "visible_en": ["transparencia", "tooltip"]
+  },
+
+  "TAC": {
+    "accion": "ocultar",
+    "label": "Tablero de Accountability Ciudadana",
+    "description": "Interfaz pública de consulta de indicadores. Uso interno del sistema.",
+    "fuente_excel": "H02_GLOSARIO_QUIRA — 'TAC'",
+    "visible_en": []
+  },
+
+  "_terminos_ocultar": {
+    "accion": "ocultar",
+    "descripcion": "Estos términos son exclusivamente de backend y nunca deben aparecer en el front para usuarios no técnicos.",
+    "lista": [
+      "H01, H12, H75, H73 (referencias de hojas Excel)",
+      "Axioma de Invarianza Computacional",
+      "Mapeo Retrospectivo",
+      "Pi, Ri, Ei (variables de la fórmula ICPI)",
+      "Ti_V, Ti_Histórico, Ti_FUENTE",
+      "INTANGIBLE_FLAG",
+      "FONDO_CONCURSABLE (reemplazar por 'fondos externos concursables')",
+      "SUPERSEDED",
+      "Gold Master",
+      "MPE (Modelo de Probabilidad de Ejecución)",
+      "Ci_adaptativo, Ci_determinista",
+      "EAS (Ecosistema Algorítmico de Supervisión)",
+      "TIPO_FINANCIAMIENTO, CLASE_PRODUCTO (etiquetas internas)",
+      "session_id, Q_ROUTER, pdot_terms, legal_chunks",
+      "INF-01, INF-02, INF-03, INF-04",
+      "H77_DATA_DICTIONARY, H89_TRUST_SCORE (referencias internas)",
+      "SHA-256 (reemplazar por 'huella digital verificada')"
+    ]
+  }
+}

@@ -110,9 +110,9 @@ def render() -> None:
 
     # ── HEADER ────────────────────────────────────────────────────────────────
     hdr = page_header(
-        "⑤ HOLDING SANDBOX",
-        "Holding Sandbox · Operadores Públicos",
-        "Dónde se degrada el holding, por qué, y cómo recuperarlo · HPT-M Q1-2026",
+        "⑤ GRUPO MUNICIPAL",
+        "Grupo Municipal · Operadores Públicos",
+        "Dónde se degrada el Grupo Municipal, por qué, y cómo recuperarlo · corte ene–mar 2026",
     )
 
     # ── DOCTRINA QUIRA ────────────────────────────────────────────────────────
@@ -121,14 +121,14 @@ def render() -> None:
             background:linear-gradient(135deg,rgba(0,212,255,.07) 0%,rgba(124,92,252,.04) 100%);
             border:1px solid rgba(0,212,255,.22);border-radius:12px;margin-bottom:16px">
   <div style="font-size:10px;font-weight:700;color:var(--cyan);text-transform:uppercase;
-              letter-spacing:.12em;margin-bottom:10px">⚡ Doctrina QUIRA · Holding Público Territorial</div>
+              letter-spacing:.12em;margin-bottom:10px">⚡ Doctrina QUIRA · Grupo Municipal</div>
   <div style="font-size:15px;font-weight:800;color:var(--white);line-height:1.65;
               font-style:italic;border-left:3px solid var(--cyan);padding-left:14px">
     "Una alcaldía puede ejecutar bien y aun así fallar si sus operadores degradan el territorio."
   </div>
   <div style="font-size:11px;color:var(--muted);margin-top:10px;line-height:1.6">
     QUIRA Gov no audita solo al GAD — audita el
-    <strong style="color:var(--white)">Holding Público Territorial</strong> completo.
+    <strong style="color:var(--white)">Grupo Municipal</strong> completo.
     Expandir cada operador para ver la causalidad institucional:
     qué pasó, cómo pasó y cómo corregirlo.
   </div>
@@ -148,7 +148,7 @@ def render() -> None:
     sec_hdr = """
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
   <div style="font-size:13px;font-weight:700;color:var(--white)">Nodo Operadores · Diagnóstico por entidad</div>
-  <span class="badge badge-cyan">Sandbox HPT-M · Haz clic para expandir</span>
+  <span class="badge badge-cyan">Grupo Municipal · Haz clic para expandir</span>
 </div>
 <div style="font-size:11px;color:var(--muted);margin-bottom:10px">
   Cada entidad responde a su propia lógica de gobernanza. Expandir para ver:
@@ -163,11 +163,11 @@ def render() -> None:
             margin-bottom:14px;flex-wrap:wrap">
   <span style="font-size:10px;font-weight:700;color:var(--amber)">⚡ Principio del Holding:</span>
   <span style="font-size:10px;color:var(--muted)">
-    Una entidad bajo umbral arrastra el Nodo completo, que arrastra el ICGI-T global.
+    Una entidad bajo umbral arrastra el Nodo completo, que arrastra la calificación global.
   </span>
   <span style="font-size:11px;color:var(--white);font-family:var(--mono);
                background:rgba(0,0,0,.2);padding:3px 10px;border-radius:4px;white-space:nowrap">
-    Entidad ↓ → Nodo ↓ → ICGI-T ↓
+    Entidad ↓ → Nodo ↓ → Calificación ↓
   </span>
 </div>"""
 
@@ -180,7 +180,7 @@ def render() -> None:
         badge_class="badge-green", badge_text="✅ Referente",
         what="Bomberos lidera el Nodo Operadores con 82.7%, el único operador en nivel Gestión por Mandato. Ejecución presupuestaria al 78% a mayo 2026.",
         why="Estructura de mando único y planificación operativa propia. El POA institucional está alineado al PDOT y con PAC completo y registrado en el sistema.",
-        impact="Jala el consolidado del Nodo hacia arriba. Es el modelo de referencia interna. Su gestión documenta 3 de los 5 indicadores verificables del ICGI-T.",
+        impact="Jala el consolidado del Nodo hacia arriba. Es el modelo de referencia interna. Su gestión documenta 3 de los 5 indicadores verificables de la calificación.",
         fix=("capitalizar", "Replicar el modelo PAC-POA de Bomberos en EP Aseo. Documentar su metodología como estándar interno del Holding y usarla como evidencia ante BID/PNUD."),
         alert_html="",
         sentinel_q="Preguntar a SENTINEL sobre Bomberos",
@@ -229,7 +229,7 @@ def render() -> None:
   <div style="font-size:20px;flex-shrink:0">🧭</div>
   <div style="flex:1">
     <div style="font-size:12px;font-weight:700;color:var(--cyan);margin-bottom:6px">
-      Resumen del Nodo Operadores · Q1-2026
+      Resumen del Nodo Operadores · ene–mar 2026
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:8px">
       <div style="text-align:center;padding:6px;background:rgba(34,197,94,.06);border-radius:6px">
@@ -262,7 +262,7 @@ def render() -> None:
             border-radius:10px;border:1px solid rgba(0,212,255,.12)">
   <div style="font-size:10px;font-weight:700;color:var(--cyan);text-transform:uppercase;
               letter-spacing:.1em;margin-bottom:12px">
-    🔗 Causalidad sistémica · Cómo cada entidad impacta el ICGI-T
+    🔗 Causalidad sistémica · Cómo cada entidad impacta la calificación
   </div>
   <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:14px">
     <div style="padding:14px 16px;background:rgba(34,197,94,.08);border-radius:10px;
@@ -295,7 +295,7 @@ def render() -> None:
     <div style="color:var(--muted);font-size:22px;padding:0 8px;font-weight:300">→</div>
     <div style="padding:14px 16px;background:rgba(255,77,109,.06);border-radius:10px;
                 border:1px solid rgba(255,77,109,.2);text-align:center;min-width:106px">
-      <div style="font-size:10px;color:var(--muted)">ICGI-T Global</div>
+      <div style="font-size:10px;color:var(--muted)">Calificación Global</div>
       <div style="font-size:24px;font-weight:900;color:var(--red);font-family:var(--mono)">{icgit:.2f}%</div>
       <div style="font-size:9px;color:var(--red)">Transición Crítica</div>
     </div>
@@ -303,7 +303,7 @@ def render() -> None:
   <div style="font-size:11px;color:var(--muted);line-height:1.6;padding-top:8px;
               border-top:1px solid rgba(255,255,255,.05)">
     Si EP Aseo sube de 58.4% → 70%: el Nodo Operadores pasa a 75.6%, con
-    <strong style="color:var(--white)">impacto positivo en el ICGI-T global</strong> —
+    <strong style="color:var(--white)">impacto positivo en la calificación global</strong> —
     acercando Montecristi al umbral de
     <em style="color:var(--amber)">Gestión por Mandato (69.93%)</em> exigido por el PDOT al 2027.
   </div>
@@ -334,7 +334,7 @@ def render() -> None:
             f'<div style="text-align:right">'
             f'<div style="font-size:28px;font-weight:900;font-family:var(--mono);'
             f'color:{icgi_color};line-height:1">{icgi:.1f}%</div>'
-            f'<div style="font-size:9px;color:var(--muted);margin-top:1px">ICGI-T</div>'
+            f'<div style="font-size:9px;color:var(--muted);margin-top:1px">Calificación</div>'
             f'</div>'
             f'</div>'
             f'<div style="height:5px;background:rgba(255,255,255,.07);border-radius:3px;margin-bottom:12px">'
@@ -364,7 +364,7 @@ def render() -> None:
         '<div style="margin-top:18px">'
         '<div style="font-size:10px;font-weight:700;color:var(--cyan);text-transform:uppercase;'
         'letter-spacing:.12em;margin-bottom:12px">'
-        '📊 Radar por Entidad · H71 Gold Master · Q1-2026</div>'
+        '📊 Radar por Entidad · H71 Gold Master · ene–mar 2026</div>'
         '<div class="grid-2" style="gap:12px">'
         + _ep_card("🚒", "Cuerpo de Bomberos", "CB-01 · Emergencias · COESCOP",
                    82.7, "#38A169", "56,161,105",
@@ -381,7 +381,7 @@ def render() -> None:
         + '</div>'
         '<div style="margin-top:10px;font-size:10px;color:var(--muted);line-height:1.5;'
         'padding:8px 12px;background:rgba(255,255,255,.03);border-radius:8px">'
-        '💡 <strong style="color:var(--white)">Lectura HPT-M:</strong> '
+        '💡 <strong style="color:var(--white)">Lectura del Grupo Municipal:</strong> '
         'Impacto Territorial = % de metas PDOT con trazabilidad en territorio · '
         'Ejecutado Q1 = devengado eSIGEF corte 2026-04-30 · '
         'PEI = Plan Estratégico Institucional activo · '

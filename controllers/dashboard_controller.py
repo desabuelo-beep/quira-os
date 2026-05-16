@@ -19,7 +19,7 @@ def run() -> None:
     st.markdown("---")
     c1, c2 = st.columns(2)
     with c1:
-        if st.button("🔮 Preguntar a Sentinel sobre el ICGI-T",
+        if st.button("🔮 Preguntar a Sentinel sobre la Calificación",
                      use_container_width=True, type="primary"):
             st.session_state["page"] = "sentinel"
             st.session_state["sentinel_pregunta_auto"] = (

@@ -127,7 +127,7 @@ def render() -> None:
   <div style="background:rgba(0,224,150,.06);border:1px solid rgba(0,224,150,.2);
               border-radius:12px;padding:16px;text-align:center">
     <div style="font-size:11px;font-weight:700;color:var(--green);margin-bottom:4px">
-      EJECUTADO Q1-2026
+      EJECUTADO ene–mar 2026
     </div>
     <div style="font-size:28px;font-weight:900;color:var(--green);
                 font-family:var(--mono)">${inversion_ejec/1_000_000:.2f}M</div>
@@ -156,7 +156,7 @@ def render() -> None:
     # ── BARRAS PER CÁPITA ─────────────────────────────────────────────────────
     bars_html = f"""
 <div class="card">
-  <div class="card-title">💰 INVERSIÓN PER CÁPITA · 7 PARROQUIAS · Q1-2026</div>
+  <div class="card-title">💰 INVERSIÓN POR HABITANTE · 7 PARROQUIAS · ene–mar 2026</div>
   <div style="font-size:10px;color:var(--muted);margin-bottom:12px;
               padding:6px 10px;background:rgba(255,255,255,.03);border-radius:6px">
     🎯 Meta mínima rural: <strong style="color:var(--amber)">$80/hab</strong>
@@ -165,7 +165,7 @@ def render() -> None:
   {"".join(_parroquia_bar(p, max_cap) for p in sorted_par)}
   <div style="margin-top:12px;font-size:9px;color:var(--muted);
               border-top:1px solid rgba(255,255,255,.05);padding-top:8px">
-    📌 Inversión total cantonal estimada por parroquia basada en SIAP-ICPI Q1-2026
+    📌 Inversión total cantonal estimada por parroquia basada en SIAP-ICPI ene–mar 2026
     · TPS = Tasa de Pobreza por Sistema (mayor TPS = mayor vulnerabilidad)
   </div>
 </div>"""
@@ -215,7 +215,7 @@ def render() -> None:
   <div style="background:rgba(0,224,150,.05);border:1px solid rgba(0,224,150,.2);
               border-radius:12px;padding:16px">
     <div style="font-size:11px;font-weight:700;color:var(--green);margin-bottom:10px">
-      ✅ ACCIONES PARA REDUCIR BRECHA · Q2-2026
+      ✅ ACCIONES PARA REDUCIR BRECHA · PRÓXIMO TRIMESTRE
     </div>
     <div style="display:flex;flex-direction:column;gap:6px">
       <div style="font-size:11px;color:var(--white);padding:6px 10px;
@@ -224,7 +224,7 @@ def render() -> None:
       </div>
       <div style="font-size:11px;color:var(--white);padding:6px 10px;
                   background:rgba(0,224,150,.08);border-radius:6px">
-        🟢 Activar Gov Twin PNUD Agua Rural $2.4M · requiere ICGI-T ≥55%
+        🟢 Activar Gov Twin PNUD Agua Rural $2.4M · requiere calificación ≥55%
       </div>
       <div style="font-size:11px;color:var(--white);padding:6px 10px;
                   background:rgba(0,212,255,.08);border-radius:6px">
@@ -240,9 +240,9 @@ def render() -> None:
 
     # ── ASSEMBLER ─────────────────────────────────────────────────────────────
     hdr = page_header(
-        "⑥ INVERSIÓN PER CÁPITA",
+        "⑥ INVERSIÓN POR HABITANTE",
         "Equidad Territorial · $/hab",
-        f"Presupuesto total ${presupuesto_total/1_000_000:.2f}M · Brecha 2.8× · IET 44.80% · Corte Q1-2026",
+        f"Presupuesto total ${presupuesto_total/1_000_000:.2f}M · Brecha 2.8× · IET 44.80% · Corte ene–mar 2026",
         '<span class="badge badge-red">Brecha 2.8× Isabel Muentes</span>',
     )
 
@@ -266,10 +266,10 @@ def render() -> None:
             )
             st.rerun()
     with c2:
-        if st.button("🗺️ Ver GeoTwin · Territorio", use_container_width=True):
+        if st.button("🗺️ Ver Territorio Digital", use_container_width=True):
             st.session_state["page"] = "geotwin"
             st.rerun()
     with c3:
-        if st.button("🚨 Ver Alertas SAT", use_container_width=True):
+        if st.button("🚨 Ver Señales de Alerta", use_container_width=True):
             st.session_state["page"] = "sat"
             st.rerun()

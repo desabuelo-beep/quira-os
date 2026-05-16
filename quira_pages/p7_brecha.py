@@ -83,7 +83,7 @@ def render() -> None:
         ("2023", hist.get("2023", 57.36), "amber", "Línea base"),
         ("2024", hist.get("2024", 67.11), "green",  "Mejora sostenida"),
         ("2025", hist.get("2025", 69.93), "green",  "Casi Gestión por Mandato"),
-        ("Q1-2026", score,                 "red",    "Caída · Transición Crítica"),
+        ("ene–mar 2026", score,             "red",    "Caída · Transición Crítica"),
         ("Proj 2026", proj,                "amber",  "Proyección cierre"),
     ]
 
@@ -104,15 +104,15 @@ def render() -> None:
 
     timeline_html = f"""
 <div class="card" style="margin-bottom:16px">
-  <div class="card-title">📈 EVOLUCIÓN ICGI-T · 2023 → Q1-2026</div>
+  <div class="card-title">📈 EVOLUCIÓN DE LA CALIFICACIÓN · 2023 → ene–mar 2026</div>
   <div style="display:flex;gap:8px;align-items:flex-end;padding:8px 0">
     {"".join(_tl_item(*t) for t in timeline_items)}
   </div>
   <div style="margin-top:14px;padding:10px 12px;background:rgba(255,77,109,.06);
               border:1px solid rgba(255,77,109,.2);border-radius:8px;
               font-size:11px;color:var(--muted);line-height:1.6">
-    ⚠️ El ICGI-T subió consistentemente 2023→2025 (+12.57 pts).
-    La caída Q1-2026 (−16.37 pts vs 2025) se explica por
+    ⚠️ La calificación subió consistentemente 2023→2025 (+12.57 pts).
+    La caída ene–mar 2026 (−16.37 pts vs 2025) se explica por
     <strong style="color:var(--white)">6 vectores causales identificados</strong>,
     no por deterioro estructural del GAD. La proyección {proj:.2f}%
     es alcanzable si se activan las acciones correctoras en Q2-2026.
@@ -151,7 +151,7 @@ def render() -> None:
 
     vectores_html = f"""
 <div class="card">
-  <div class="card-title">🔍 6 VECTORES CAUSALES · Impacto en ICGI-T Q1-2026</div>
+  <div class="card-title">🔍 6 VECTORES CAUSALES · Impacto en calificación ene–mar 2026</div>
   <div style="display:flex;justify-content:space-between;align-items:center;
               margin-bottom:14px;padding:8px 12px;
               background:rgba(255,77,109,.06);border:1px solid rgba(255,77,109,.2);
@@ -227,7 +227,7 @@ def render() -> None:
   <div style="background:rgba(255,77,109,.05);border:1px solid rgba(255,77,109,.2);
               border-radius:12px;padding:16px">
     <div style="font-size:11px;font-weight:700;color:var(--red);margin-bottom:10px">
-      ⚠️ ACCIONES URGENTES Q2-2026
+      ⚠️ ACCIONES URGENTES PRÓXIMO TRIMESTRE
     </div>
     <div style="display:flex;flex-direction:column;gap:6px">
       <div style="font-size:11px;color:var(--white);padding:6px 10px;
@@ -254,7 +254,7 @@ def render() -> None:
     hdr = page_header(
         "② CAUSAS DE LA BRECHA",
         "Análisis Causal",
-        f"¿Por qué ICGI-T bajó de 69.93% (2025) a {score:.2f}% (Q1-2026)? · 6 vectores identificados",
+        f"¿Por qué la calificación bajó de 69.93% (2025) a {score:.2f}% (ene–mar 2026)? · 6 vectores identificados",
         f'<span class="badge badge-red">−{abs(score - 69.93):.2f} pts vs 2025</span>',
     )
 
@@ -280,6 +280,6 @@ def render() -> None:
             st.session_state["page"] = "pulso"
             st.rerun()
     with c3:
-        if st.button("🎯 Ver Metas PDOT", use_container_width=True):
+        if st.button("🎯 Ver Metas del Plan Cantonal", use_container_width=True):
             st.session_state["page"] = "metas"
             st.rerun()

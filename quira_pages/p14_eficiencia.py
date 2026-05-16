@@ -104,14 +104,14 @@ def render() -> None:
               border-radius:12px;padding:16px;text-align:center">
     <div style="font-size:42px;font-weight:900;color:var(--red);
                 font-family:var(--mono)">{n_sat}</div>
-    <div style="font-size:10px;font-weight:700;color:var(--red);margin-top:4px">DIRS. CON SAT</div>
+    <div style="font-size:10px;font-weight:700;color:var(--red);margin-top:4px">DIRS. CON ALERTA</div>
     <div style="font-size:9px;color:var(--muted);margin-top:3px">Alerta activa en dirección</div>
   </div>
 </div>"""
 
     ranking_html = f"""
 <div class="card">
-  <div class="card-title">📋 RANKING 12 DIRECCIONES GAD · IED Q1-2026 (mayor→menor)</div>
+  <div class="card-title">📋 RANKING 12 DIRECCIONES GAD · IED ene–mar 2026 (mayor→menor)</div>
   {"".join(_dir_row(d, i+1) for i, d in enumerate(DIRECCIONES_SORTED))}
   <div style="font-size:9px;color:var(--muted);margin-top:8px;padding-top:8px;
               border-top:1px solid rgba(255,255,255,.05)">
@@ -163,7 +163,7 @@ def render() -> None:
     hdr = page_header(
         "⑩ EFICIENCIA DIRECCIONAL",
         "Ranking 12 Direcciones · IED",
-        f"IED Global {ied_val:.2f}% · {n_ok} dirs sobre 60% · {n_crit} críticas · {n_sat} con SAT activa",
+        f"IED Global {ied_val:.2f}% · {n_ok} dirs sobre 60% · {n_crit} críticas · {n_sat} con señal activa",
         '<span class="badge badge-amber">Gestión por Ocurrencia</span>',
     )
 
@@ -188,6 +188,6 @@ def render() -> None:
             st.session_state["page"] = "cadena"
             st.rerun()
     with c3:
-        if st.button("🚨 Ver Alertas SAT", use_container_width=True):
+        if st.button("🚨 Ver Señales de Alerta", use_container_width=True):
             st.session_state["page"] = "sat"
             st.rerun()

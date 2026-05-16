@@ -17,7 +17,7 @@ FONDOS = [
         "ods": ["ODS 6", "ODS 10"],
         "estado": "ELEGIBLE",
         "color": "cyan",
-        "req_pendiente": "ICGI-T ≥ 55% (actual 53.56%) · brecha: 1.44 pts",
+        "req_pendiente": "Calificación ≥ 55% (actual 53.56%) · brecha: 1.44 pts",
         "deadline": "Q3-2026",
         "score_elegib": 81,
         "descripcion": "Sistema integral agua potable Isabel Muentes · 3,488 hab.",
@@ -214,7 +214,7 @@ def render() -> None:
 
     fondos_html = f"""
 <div class="card">
-  <div class="card-title">💸 PORTAFOLIO DE COOPERACIÓN · 6 FUENTES · Q1-2026</div>
+  <div class="card-title">💸 PORTAFOLIO DE COOPERACIÓN · 6 FUENTES · ene–mar 2026</div>
   {"".join(_fondo_card(f) for f in FONDOS)}
 </div>"""
 
@@ -244,10 +244,10 @@ def render() -> None:
             )
             st.rerun()
     with c2:
-        if st.button("🌐 Ver ODS Tracker", use_container_width=True):
+        if st.button("🌐 Ver Agenda 2030 · ODS", use_container_width=True):
             st.session_state["page"] = "ods"
             st.rerun()
     with c3:
-        if st.button("💰 Ver Inversión per Cápita", use_container_width=True):
+        if st.button("💰 Ver Inversión por Habitante", use_container_width=True):
             st.session_state["page"] = "inversion"
             st.rerun()

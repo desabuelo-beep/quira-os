@@ -607,7 +607,7 @@ def render() -> None:
                 st.session_state["page"] = "cooperacion"
                 st.rerun()
         with c3:
-            if st.button("🌐 Ver ODS Tracker", use_container_width=True,
+            if st.button("🌐 Ver Agenda 2030 · ODS", use_container_width=True,
                          key="btn_ods_tab1"):
                 st.session_state["page"] = "ods"
                 st.rerun()
@@ -650,7 +650,7 @@ def render() -> None:
         fa_cards = "".join(_fa_card(m) for m in FA_METAS)
         fa_metas_html = f"""
 <div class="card" style="margin-bottom:16px">
-  <div class="card-title">🌿 6 METAS BIOFÍSICO-AMBIENTE · PDOT 2023-2027 · Estado Q1-2026</div>
+  <div class="card-title">🌿 6 METAS BIOFÍSICO-AMBIENTE · Plan 2023-2027 · Estado ene–mar 2026</div>
   <div style="font-size:8px;color:rgba(0,212,255,.7);margin-bottom:10px;padding:5px 10px;
               background:rgba(0,212,255,.05);border-radius:5px;
               border:1px solid rgba(0,212,255,.1)">
@@ -665,7 +665,7 @@ def render() -> None:
 
         fa_metas_html = f"""
 <div class="card" style="margin-bottom:16px">
-  <div class="card-title">🌿 6 METAS BIOFÍSICO-AMBIENTE · PDOT 2023-2027 · Estado Q1-2026</div>
+  <div class="card-title">🌿 6 METAS BIOFÍSICO-AMBIENTE · Plan 2023-2027 · Estado ene–mar 2026</div>
   <div style="font-size:8px;color:rgba(0,212,255,.7);margin-bottom:10px;padding:5px 10px;
               background:rgba(0,212,255,.05);border-radius:5px;border:1px solid rgba(0,212,255,.1)">
     Fuente: H31_REPORTE_CPCCS · Ti = ejecución presupuestaria Q1-2026 ·
@@ -756,7 +756,7 @@ def render() -> None:
                 st.session_state["page"] = "gobernanza"
                 st.rerun()
         with c3:
-            if st.button("🌐 Ver ODS Tracker", use_container_width=True,
+            if st.button("🌐 Ver Agenda 2030 · ODS", use_container_width=True,
                          key="btn_ods_tab2"):
                 st.session_state["page"] = "ods"
                 st.rerun()

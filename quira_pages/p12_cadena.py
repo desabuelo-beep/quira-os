@@ -294,7 +294,7 @@ def render() -> None:
   <div style="background:rgba(255,77,109,.05);border:1px solid rgba(255,77,109,.2);
               border-radius:12px;padding:16px">
     <div style="font-size:11px;font-weight:700;color:var(--red);margin-bottom:10px">
-      ⚠️ CONSECUENCIAS SI NO SE ACTÚA (Q2-2026)
+      ⚠️ CONSECUENCIAS SI NO SE ACTÚA (PRÓXIMO TRIMESTRE)
     </div>
     <div style="display:flex;flex-direction:column;gap:6px">
       <div style="font-size:11px;color:var(--white);padding:6px 10px;
@@ -307,7 +307,7 @@ def render() -> None:
       </div>
       <div style="font-size:11px;color:var(--white);padding:6px 10px;
                   background:rgba(255,77,109,.07);border-radius:6px">
-        🔴 IED se mantiene en 33.99% · ICGI-T no supera 55% al cierre Q2
+        🔴 IED se mantiene en 33.99% · calificación no supera 55% al cierre del semestre
       </div>
       <div style="font-size:11px;color:var(--white);padding:6px 10px;
                   background:rgba(255,77,109,.07);border-radius:6px">
@@ -345,10 +345,10 @@ def render() -> None:
             )
             st.rerun()
     with c2:
-        if st.button("🚨 Ver Alertas SAT", use_container_width=True):
+        if st.button("🚨 Ver Señales de Alerta", use_container_width=True):
             st.session_state["page"] = "sat"
             st.rerun()
     with c3:
-        if st.button("🎯 Ver Metas PDOT", use_container_width=True):
+        if st.button("🎯 Ver Metas del Plan Cantonal", use_container_width=True):
             st.session_state["page"] = "metas"
             st.rerun()

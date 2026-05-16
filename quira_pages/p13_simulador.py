@@ -207,7 +207,7 @@ def render() -> None:
 </div>
 """, unsafe_allow_html=True)
 
-    tab1, tab2 = st.tabs(["📊 ICGI-T · Vectores de Mejora", "🔴 IRS · Sensibilidad Composite_Need"])
+    tab1, tab2 = st.tabs(["📊 Calificación · Vectores de Mejora", "🔴 IRS · Sensibilidad Composite_Need"])
 
     # ══════════════════════════════════════════════════════════════════════════
     # TAB 1 — ICGI-T SIMULATOR (existing content)
@@ -243,7 +243,7 @@ def render() -> None:
                 if ganancia > 0.1:
                     st.markdown(
                         f'<div style="font-size:9px;color:#00E096;margin-bottom:12px">'
-                        f'▲ +{ganancia:.1f} pts en {v["codigo"]} → contribuye al ICGI-T</div>',
+                        f'▲ +{ganancia:.1f} pts en {v["codigo"]} → mejora la calificación</div>',
                         unsafe_allow_html=True,
                     )
                 else:
@@ -258,7 +258,7 @@ def render() -> None:
 
             st.markdown(f"""
 <div class="sim-card" style="border-top:3px solid {col_score_hex}">
-  <div class="sim-label">ICGI-T PROYECTADO</div>
+  <div class="sim-label">CALIFICACIÓN PROYECTADA</div>
   <div class="sim-score" style="color:{col_score_hex}">{score_proj:.2f}<span style="font-size:28px">%</span></div>
   <div class="sim-avep" style="color:{col_score_hex}">{avep_label}</div>
 </div>
@@ -267,7 +267,7 @@ def render() -> None:
             st.markdown('<div class="sim-label" style="margin-top:8px">COMPARATIVAS</div>',
                         unsafe_allow_html=True)
             st.markdown(
-                _gauge_bar(_SCORE_BASE, "Q1-2026 (base)", "red")
+                _gauge_bar(_SCORE_BASE, "ene–mar 2026 (base)", "red")
                 + _gauge_bar(score_proj, f"Proyectado ({avep_label[:10]})", avep_col)
                 + _gauge_bar(69.93, "2025 (pico)", "amber")
                 + _gauge_bar(70.0, "Meta mandato", "green"),
@@ -281,7 +281,7 @@ def render() -> None:
     <div style="font-size:20px;font-weight:900;color:var(--{'green' if delta_vs_base>=0 else 'red'})">
       {'+' if delta_vs_base>=0 else ''}{delta_vs_base:.2f} pts
     </div>
-    <div style="font-size:9px;color:rgba(255,255,255,.4);margin-top:2px">vs Q1-2026</div>
+    <div style="font-size:9px;color:rgba(255,255,255,.4);margin-top:2px">vs ene–mar 2026</div>
   </div>
   <div style="background:rgba(255,184,0,.07);border:1px solid rgba(255,184,0,.25);
               border-radius:9px;padding:10px 14px;flex:1;text-align:center">
@@ -298,7 +298,7 @@ def render() -> None:
             elif score_proj >= 65:
                 st.warning(f"🟡 Cerca de la meta. Quedan {_META_MANDATO - score_proj:.2f} pts para Gestión por Mandato.")
             elif score_proj > _SCORE_BASE:
-                st.info("📈 Mejora real vs Q1-2026. Continúa ajustando los vectores de mayor impacto para maximizar el avance.")
+                st.info("📈 Mejora real vs ene–mar 2026. Continúa ajustando los vectores de mayor impacto para maximizar el avance.")
             else:
                 st.error("⚠️ Sin cambios. Mueve los sliders para simular mejoras.")
 
@@ -350,7 +350,7 @@ def render() -> None:
                 st.session_state["page"] = "brecha"
                 st.rerun()
         with c3:
-            if st.button("🚨 Ver Alertas SAT", use_container_width=True):
+            if st.button("🚨 Ver Señales de Alerta", use_container_width=True):
                 st.session_state["page"] = "sat"
                 st.rerun()
 
@@ -582,7 +582,7 @@ def render() -> None:
                 )
                 st.rerun()
         with c2:
-            if st.button("🗺️ Ver GeoTwin · Territorio", use_container_width=True, key="geo_irs"):
+            if st.button("🗺️ Ver Territorio Digital", use_container_width=True, key="geo_irs"):
                 st.session_state["page"] = "geotwin"
                 st.rerun()
         with c3:

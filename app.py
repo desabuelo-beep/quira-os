@@ -260,31 +260,31 @@ def _p_sentinel():
 
 PAGES = {
     # ── EJECUTIVO ─────────────────────────────────────────────────────────────
-    "dashboard":    {"label": "Tablero Ejecutivo",     "icon": "📊", "render": p1},
-    "pulso":        {"label": "Pulso Ejecutivo",       "icon": "⚡", "render": p6},
-    "brecha":       {"label": "Causas de la Brecha",   "icon": "📉", "render": p7},
-    "simulador":    {"label": "Proyector ✨",            "icon": "🧮", "render": p13},
+    "dashboard":    {"label": "Tablero Ejecutivo",        "icon": "📊", "render": p1},
+    "pulso":        {"label": "Pulso Ejecutivo",          "icon": "⚡", "render": p6},
+    "brecha":       {"label": "Causas de la Brecha",      "icon": "📉", "render": p7},
+    "simulador":    {"label": "Proyector ✨",               "icon": "🧮", "render": p13},
     # ── PLANIFICACIÓN ─────────────────────────────────────────────────────────
-    "metas":        {"label": "Metas PDOT",            "icon": "🎯", "render": p8},
-    "cadena":       {"label": "Cadena POA·PAC",        "icon": "🔗", "render": p12},
-    "congruencias": {"label": "Congruencias HPT-M",    "icon": "🔗", "render": p3},
+    "metas":        {"label": "Metas del Plan Cantonal",  "icon": "🎯", "render": p8},
+    "cadena":       {"label": "Cadena de Planificación",  "icon": "🔗", "render": p12},
+    "congruencias": {"label": "Fidelidad del Mandato",    "icon": "🔗", "render": p3},
     # ── OPERATIVO ─────────────────────────────────────────────────────────────
-    "sat":          {"label": "Alertas SAT",           "icon": "🚨", "render": p9},
-    "eficiencia":   {"label": "Eficiencia Dirs.",      "icon": "📋", "render": p14},
-    "operacion":    {"label": "Operación Técnica",     "icon": "⚙️", "render": p5},
+    "sat":          {"label": "Señales de Alerta",        "icon": "🚨", "render": p9},
+    "eficiencia":   {"label": "Eficiencia por Dirección", "icon": "📋", "render": p14},
+    "operacion":    {"label": "Operación Técnica",        "icon": "⚙️", "render": p5},
     # ── TERRITORIAL ───────────────────────────────────────────────────────────
-    "geotwin":      {"label": "GeoTwin · Territorio",  "icon": "🗺️", "render": p4},
-    "inversion":    {"label": "Inversión per Cápita",  "icon": "💰", "render": p10},
-    "holding":      {"label": "Holding Municipal",     "icon": "🏛️", "render": p2},
+    "geotwin":      {"label": "Territorio Digital",       "icon": "🗺️", "render": p4},
+    "inversion":    {"label": "Inversión por Habitante",  "icon": "💰", "render": p10},
+    "holding":      {"label": "Grupo Municipal",          "icon": "🏛️", "render": p2},
     # ── CIUDADANÍA ────────────────────────────────────────────────────────────
-    "gobernanza":   {"label": "Gobernanza Participativa", "icon": "🗳️", "render": p16_gobernanza},
-    "transparencia":{"label": "Transparencia LOTAIP",  "icon": "🔍", "render": p15},
+    "gobernanza":   {"label": "Participación Ciudadana",  "icon": "🗳️", "render": p16_gobernanza},
+    "transparencia":{"label": "Transparencia Pública",   "icon": "🔍", "render": p15},
     # ── ESTRATÉGICO ───────────────────────────────────────────────────────────
-    "ods":          {"label": "ODS Tracker",           "icon": "🌐", "render": p11},
-    "cooperacion":  {"label": "Cooperación Intern.",   "icon": "💸", "render": p18},
-    "genero":       {"label": "Género y Ambiente",      "icon": "💜", "render": p19},
+    "ods":          {"label": "Agenda 2030 · ODS",        "icon": "🌐", "render": p11},
+    "cooperacion":  {"label": "Cooperación Internacional","icon": "💸", "render": p18},
+    "genero":       {"label": "Género y Ambiente",        "icon": "💜", "render": p19},
     # ── IA ────────────────────────────────────────────────────────────────────
-    "sentinel":     {"label": "Sentinel · IA",         "icon": "🔮", "render": _p_sentinel},
+    "sentinel":     {"label": "Sentinel · IA",            "icon": "🔮", "render": _p_sentinel},
 }
 
 # ── DOCTRINA QUIRA — AGRUPACIÓN POR ESTADO COGNITIVO ──────────────────────────
@@ -365,8 +365,8 @@ with st.sidebar:
         _sat  = get_sat_counts(_data)
         if _sat["criticos"] > 0:
             st.error(
-                f"🔴 {_sat['criticos']} SAT Crítica{'s' if _sat['criticos']>1 else ''} "
-                f"Activa{'s' if _sat['criticos']>1 else ''} · Ver Tablero"
+                f"🔴 {_sat['criticos']} señal{'es' if _sat['criticos']>1 else ''} crítica{'s' if _sat['criticos']>1 else ''} "
+                f"activa{'s' if _sat['criticos']>1 else ''} · Ver Tablero"
             )
     except Exception:
         pass
@@ -380,7 +380,7 @@ if page_key in ("confianza", "rdc"):
 page_cfg  = PAGES.get(page_key, PAGES["dashboard"])
 
 # ── Quick-nav bar — fallback cuando sidebar está colapsado (mobile-first) ──────
-# 5 accesos directos siempre visibles: Tablero · Brecha · Proyector · SAT · Sentinel
+# 5 accesos directos siempre visibles: Tablero · Brecha · Territorio · Proyector · Sentinel
 _quicknav_pages = ["dashboard", "brecha", "geotwin", "simulador", "sentinel"]
 with st.container():
     _qn_cols = st.columns(len(_quicknav_pages), gap="small")
@@ -404,4 +404,4 @@ log_page(page_key)
 page_cfg["render"]()
 
 # ── FOOTER ─────────────────────────────────────────────────────────────────────
-st.caption("QUIRA OS v0.1 · Dylus Lab © 2026 · SIAP-ICPI v1.0222 · Datos sellados Q1-2026")
+st.caption("QUIRA OS v0.1 · Dylus Lab © 2026 · Datos verificados corte enero–marzo 2026")

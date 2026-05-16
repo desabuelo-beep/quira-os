@@ -317,7 +317,7 @@ def simulation_card(result: dict, query_hash: int = 0) -> None:
             st.session_state["page"] = "simulador"
             st.rerun()
     with cols[1]:
-        if st.button("🗺️ GeoTwin", key=f"sim_geo_{query_hash}",
+        if st.button("🗺️ Territorio Digital", key=f"sim_geo_{query_hash}",
                      use_container_width=True):
             st.session_state["page"] = "geotwin"
             st.rerun()

@@ -116,7 +116,7 @@ def render() -> None:
 
     lotaip_html = f"""
 <div class="card">
-  <div class="card-title">📋 21 ARTÍCULOS LOTAIP · Estado portal Q1-2026</div>
+  <div class="card-title">📋 21 ARTÍCULOS LOTAIP · Estado portal ene–mar 2026</div>
   {"".join(_art_row(a) for a in LOTAIP_ARTS)}
   <div style="margin-top:10px;padding:8px 10px;
               background:rgba(0,212,255,.04);border:1px solid rgba(0,212,255,.12);
@@ -181,7 +181,7 @@ def render() -> None:
     hdr = page_header(
         "⑪ TRANSPARENCIA",
         "LOTAIP · ITAM · Opacidad IOC",
-        f"ITAM {itam_val:.0f}% · IOC {ioc_val:.2f}% · {_cumplidos}/21 arts. LOTAIP · Portal Q1-2026",
+        f"ITAM {itam_val:.0f}% · IOC {ioc_val:.2f}% · {_cumplidos}/21 arts. LOTAIP · Portal ene–mar 2026",
         '<span class="badge badge-amber">Transición Crítica</span>',
     )
 

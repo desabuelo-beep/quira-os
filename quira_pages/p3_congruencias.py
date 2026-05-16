@@ -59,7 +59,7 @@ def render() -> None:
     # ── HEADER ────────────────────────────────────────────────────────────────
     hdr = page_header(
         "② FIDELIDAD POLÍTICA",
-        "Fidelidad Electoral · HPT-M · 4 Congruencias",
+        "Fidelidad Electoral · Grupo Municipal · 4 Congruencias",
         "Plan de Gobierno 2023 → PDOT 2023-2027 → POA → Territorio · Fidelidad de Mandato",
         '<span class="badge badge-real">REAL</span>',
     )
@@ -157,7 +157,7 @@ def render() -> None:
     cong_label = """
 <div style="font-size:10px;font-weight:700;color:var(--cyan);text-transform:uppercase;
             letter-spacing:.12em;margin-bottom:10px">
-  🔗 Las 4 congruencias del HPT-M · cadena de integridad política
+  🔗 Las 4 congruencias del Grupo Municipal · cadena de integridad política
 </div>"""
 
     cong_politica = _cong_card(
@@ -210,7 +210,7 @@ def render() -> None:
     # ── ÁRBOL HPT-M ───────────────────────────────────────────────────────────
     arbol = (
         '<div class="card" style="margin-top:4px">'
-        '<div class="card-title">Árbol HPT-M · 4 Nodos institucionales</div>'
+        '<div class="card-title">Grupo Municipal · 4 Nodos institucionales</div>'
         '<div class="grid-4">'
         + _nodo_card("NODO 1", "GOBIERNO",    "GAD Central · Alcaldía · Concejo",     61.2, "amber")
         + _nodo_card("NODO 2", "OPERADORES",  "EP Aseo · Bomberos · Patronato",        71.7, "amber")
@@ -238,7 +238,7 @@ def render() -> None:
     # Native CTA
     c1, c2 = st.columns(2, gap="small")
     with c1:
-        if st.button("🗺️ Ver GeoTwin · Territorio", use_container_width=True):
+        if st.button("🗺️ Ver Territorio Digital", use_container_width=True):
             st.session_state["page"] = "geotwin"
             st.rerun()
     with c2:

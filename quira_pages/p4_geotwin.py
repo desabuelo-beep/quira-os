@@ -286,7 +286,7 @@ def render() -> None:
     rows  = "".join(_parroquia_row(p) for p in parroquias_sorted)
     tabla = f"""
 <div class="card">
-  <div class="card-title">📊 Las 7 Parroquias · Inequidad territorial documentada · Q1-2026</div>
+  <div class="card-title">📊 Las 7 Parroquias · Inequidad territorial documentada · ene–mar 2026</div>
   <table class="tbl">
     <thead><tr>
       <th>Parroquia</th><th>TPS ↓</th><th>Agua %</th>
