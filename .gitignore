@@ -45,3 +45,11 @@ logs/
 
 # ── STREAMLIT CACHE ───────────────────────────────────────────────────────────
 .streamlit/cache/
+
+# ── FRONTEND NODE ─────────────────────────────────────────────────────────────
+frontend/node_modules/
+frontend/.next/
+frontend/.env.local
+
+# ── CLAUDE SKILLS (data CSV local — no va al repo) ───────────────────────────
+.claude/skills/ui-ux-pro-max/scripts/__pycache__/
