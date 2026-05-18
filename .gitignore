@@ -47,6 +47,11 @@ sentinel/logs/
 # ── SENTINEL VECTOR DB (artefacto generado — regenerar con ingest_kb.py) ──────
 sentinel/chroma_db/
 
+# ── SENTINEL SQLITE DB (contiene cédulas presupuestarias reales — NUNCA al repo)
+sentinel/data/
+# Nota: sentinel/data/ contiene sentinel.db (presupuesto real del GAD).
+# Para migrar a Supabase, cambiar get_connection() en sentinel/db_config.py
+
 # ── PIP ARTIFACTS (archivos =X.X.X creados por pip install mal ejecutado) ─────
 =*
 
