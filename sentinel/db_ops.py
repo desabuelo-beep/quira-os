@@ -1,19 +1,21 @@
 """
 sentinel/db_ops.py
-Operaciones de base de datos — Sprint 2.5A
+Operaciones de base de datos — Sprint 2.5A+
 
-Capa de acceso a datos para el pipeline de ingesta mensual.
-Separa la lógica SQL del parser y de la UI.
+Compatible con SQLite (local) y Supabase PostgreSQL.
+El modo se configura en .streamlit/secrets.toml — ver db_config.py.
 
 Operaciones disponibles:
-    save_cedula_upload()    → registra el documento en document_uploads
-    save_execution_lines()  → inserta las líneas de la cédula (bulk)
+    ingest_cedula()         → pipeline completo (upload + lines + kpis)
+    save_cedula_upload()    → registra documento en document_uploads
+    save_execution_lines()  → inserta líneas de cédula (bulk)
     save_monthly_kpis()     → calcula y guarda indicadores del mes
-    get_existing_hashes()   → para guardrail G4 (duplicados)
-    get_existing_periods()  → para guardrail G5 (versionado)
+    get_existing_hashes()   → SHA256 existentes (guardrail G4)
+    get_existing_periods()  → períodos existentes (guardrail G5)
     get_upload_history()    → historial de cédulas subidas
     get_kpi_history()       → serie temporal de Ti para gráficas
-    get_last_kpi()          → último KPI disponible (para Centro de Control)
+    get_last_kpi()          → último KPI disponible
+    get_cedulas_count()     → conteo total de cédulas
 
 Dylus Lab © 2026
 """
@@ -27,7 +29,6 @@ import pandas as pd
 from sentinel.db_config import get_connection, SCHEMA_VERSION
 from sentinel.cedula_parser import CedulaParseResult
 
-# Versión del agente Sentinel que genera los registros
 SENTINEL_VERSION = "2.5.0"
 
 
@@ -42,39 +43,41 @@ def save_cedula_upload(
 ) -> int:
     """
     Registra la cédula en document_uploads.
+    Usa RETURNING id — compatible con SQLite 3.35+ y PostgreSQL.
 
     Returns:
-        upload_id — ID del registro creado (FK para las demás tablas)
+        upload_id — ID del registro creado
     """
     conn = get_connection()
     c    = conn.cursor()
 
-    # Calcular versión (¿cuántas cédulas previas de este período?)
+    # Versión: ¿cuántas cédulas previas de este período?
     row = c.execute(
-        "SELECT MAX(version) FROM document_uploads "
+        "SELECT MAX(version) as max_v FROM document_uploads "
         "WHERE document_type='CEDULA' AND period_year=? AND period_month=?",
         (year, month),
     ).fetchone()
-    version = (row[0] or 0) + 1
+    version = ((row["max_v"] or 0) + 1) if row else 1
 
     status = "OK" if result.ok else "ERROR"
     ts     = time.strftime("%Y-%m-%dT%H:%M:%S")
 
-    c.execute("""
+    row_id = c.execute("""
         INSERT INTO document_uploads
             (document_type, period_year, period_month, version,
              file_name, sha256, size_bytes, uploaded_by, uploaded_at,
              validation_status, validation_notes, notes, sentinel_version)
         VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)
+        RETURNING id
     """, (
         "CEDULA", year, month, version,
         file_name, result.sha256, result.size_bytes,
         uploaded_by, ts,
         status, result.error or "",
         notes, SENTINEL_VERSION,
-    ))
+    )).fetchone()
 
-    upload_id = c.lastrowid
+    upload_id = row_id["id"]
     conn.commit()
     conn.close()
     return upload_id
@@ -87,7 +90,7 @@ def save_execution_lines(
     month:     int,
 ) -> int:
     """
-    Inserta las líneas de ejecución presupuestaria en budget_execution_lines.
+    Inserta líneas de ejecución presupuestaria (bulk).
 
     Returns:
         Número de filas insertadas.
@@ -102,18 +105,16 @@ def save_execution_lines(
     ts   = time.strftime("%Y-%m-%dT%H:%M:%S")
 
     def _s(col_name: str, row) -> str:
-        """Extrae valor como string, safe."""
         real = col.get(col_name)
         if real and real in df.columns:
             v = row[real]
             return "" if pd.isna(v) else str(v).strip()
         return ""
 
-    def _f(col_name: str, row) -> float:
-        """Extrae valor del campo canonico calculado (prefijo _)."""
-        col_calc = f"_{col_name}"
-        if col_calc in df.columns:
-            v = row[col_calc]
+    def _f(internal: str, row) -> float:
+        key = f"_{internal}"
+        if key in df.columns:
+            v = row[key]
             return 0.0 if pd.isna(v) else float(v)
         return 0.0
 
@@ -121,21 +122,21 @@ def save_execution_lines(
     for _, row in df.iterrows():
         rows_to_insert.append((
             upload_id, year, month,
-            _s("unidad", row),      # unidad_codigo — placeholder
-            _s("unidad", row),      # unidad_nombre
+            _s("unidad", row),
+            _s("unidad", row),
             _s("programa", row),
-            "",                     # subprograma — no siempre presente
+            "",
             _s("proyecto", row),
             _s("partida", row),
             _s("descripcion", row),
             _f("codificado", row),
-            0.0,                    # reformas — no siempre presente
-            _f("codificado", row),  # vigente = codificado si no hay columna vigente
-            0.0,                    # comprometido
+            0.0,
+            _f("codificado", row),   # vigente = codificado (fallback)
+            0.0,
             _f("devengado", row),
             _f("pagado", row),
-            0.0,                    # saldo — calculable pero no siempre viene
-            0.0,                    # pct_ejecucion — calculable
+            0.0,
+            0.0,
             row.get("_grupo", ""),
             1 if row.get("_es_inversion", False) else 0,
             ts,
@@ -153,7 +154,6 @@ def save_execution_lines(
     """, rows_to_insert)
 
     conn.commit()
-    n = c.rowcount
     conn.close()
     return len(rows_to_insert)
 
@@ -165,21 +165,20 @@ def save_monthly_kpis(
     month:     int,
 ) -> None:
     """
-    Calcula y guarda los KPIs del mes en monthly_kpis.
-    Incluye Ti acumulado (promedio de meses del año hasta el período).
+    Calcula y guarda KPIs del mes.
+    Ti acumulado = promedio de todos los meses del año hasta este período.
     """
     conn = get_connection()
     c    = conn.cursor()
     ts   = time.strftime("%Y-%m-%dT%H:%M:%S")
 
-    # Ti acumulado: promedio de ti_mensual_pct de todos los meses del año
     rows_year = c.execute(
-        "SELECT ti_mensual_pct FROM monthly_kpis WHERE period_year=? AND ti_mensual_pct IS NOT NULL",
+        "SELECT ti_mensual_pct FROM monthly_kpis "
+        "WHERE period_year=? AND ti_mensual_pct IS NOT NULL",
         (year,),
     ).fetchall()
-    valores_previos = [r[0] for r in rows_year if r[0] is not None]
-    valores_previos.append(result.ti_mensual_pct)
-    ti_acumulado = round(sum(valores_previos) / len(valores_previos), 2)
+    valores = [r["ti_mensual_pct"] for r in rows_year] + [result.ti_mensual_pct]
+    ti_acumulado = round(sum(valores) / len(valores), 2)
 
     c.execute("""
         INSERT INTO monthly_kpis
@@ -194,7 +193,7 @@ def save_monthly_kpis(
     """, (
         upload_id, year, month,
         result.ti_mensual_pct, "cedula_mensual",
-        None,   # IRS se calcula aparte con todas las dimensiones
+        None,
         result.codificado_total, result.devengado_total,
         result.devengado_inv, result.codificado_inv,
         result.ti_mensual_pct, ti_acumulado,
@@ -207,22 +206,22 @@ def save_monthly_kpis(
 
 # ── CONSULTAS ─────────────────────────────────────────────────────────────────
 def get_existing_hashes() -> list[str]:
-    """Retorna todos los SHA256 ya registrados (para G4)."""
+    """SHA256 ya registrados — para guardrail G4."""
     conn = get_connection()
     rows = conn.execute("SELECT sha256 FROM document_uploads").fetchall()
     conn.close()
-    return [r[0] for r in rows]
+    return [r["sha256"] for r in rows]
 
 
 def get_existing_periods() -> list[tuple]:
-    """Retorna pares (year, month) ya registrados para CEDULA (para G5)."""
+    """Pares (year, month) ya registrados — para guardrail G5."""
     conn = get_connection()
     rows = conn.execute(
         "SELECT period_year, period_month FROM document_uploads "
         "WHERE document_type='CEDULA'"
     ).fetchall()
     conn.close()
-    return [(r[0], r[1]) for r in rows]
+    return [(r["period_year"], r["period_month"]) for r in rows]
 
 
 def get_upload_history(limit: int = 20) -> list[dict]:
@@ -237,14 +236,11 @@ def get_upload_history(limit: int = 20) -> list[dict]:
         LIMIT ?
     """, (limit,)).fetchall()
     conn.close()
-    return [dict(r) for r in rows]
+    return rows   # ya son list[dict] por el wrapper
 
 
 def get_kpi_history(year: int | None = None) -> list[dict]:
-    """
-    Serie temporal de KPIs mensuales.
-    Si year se provee, filtra por ese año.
-    """
+    """Serie temporal de KPIs. Si year se provee, filtra por ese año."""
     conn = get_connection()
     if year:
         rows = conn.execute("""
@@ -272,13 +268,13 @@ def get_kpi_history(year: int | None = None) -> list[dict]:
             ORDER BY k.period_year, k.period_month
         """).fetchall()
     conn.close()
-    return [dict(r) for r in rows]
+    return rows
 
 
 def get_last_kpi() -> Optional[dict]:
-    """Último KPI disponible — usado por Centro de Control para D3 en tiempo real."""
+    """Último KPI disponible — para D3 en tiempo real en Centro de Control."""
     conn = get_connection()
-    row = conn.execute("""
+    row  = conn.execute("""
         SELECT k.period_year, k.period_month,
                k.ti_mensual_pct, k.ti_acumulado_pct,
                k.codificado_total, k.devengado_total,
@@ -291,17 +287,17 @@ def get_last_kpi() -> Optional[dict]:
         LIMIT 1
     """).fetchone()
     conn.close()
-    return dict(row) if row else None
+    return row   # dict o None
 
 
 def get_cedulas_count() -> int:
     """Número total de cédulas registradas."""
     conn = get_connection()
-    n = conn.execute(
-        "SELECT COUNT(*) FROM document_uploads WHERE document_type='CEDULA'"
-    ).fetchone()[0]
+    row  = conn.execute(
+        "SELECT COUNT(*) as n FROM document_uploads WHERE document_type='CEDULA'"
+    ).fetchone()
     conn.close()
-    return n
+    return row["n"] if row else 0
 
 
 # ── PIPELINE COMPLETO ─────────────────────────────────────────────────────────
@@ -314,24 +310,24 @@ def ingest_cedula(
     notes:       str = "",
 ) -> dict:
     """
-    Pipeline completo de ingesta:
+    Pipeline completo de ingesta en un solo paso:
       1. Registra en document_uploads
-      2. Inserta líneas de ejecución
+      2. Inserta líneas de ejecución (bulk)
       3. Calcula y guarda KPIs del mes
 
     Returns:
-        dict con upload_id, lines_inserted, ti_mensual_pct, ok
+        dict con ok, upload_id, lines_inserted, ti_mensual_pct
     """
     if not result.ok:
         return {
-            "ok":           False,
-            "error":        result.error,
-            "upload_id":    None,
+            "ok":             False,
+            "error":          result.error,
+            "upload_id":      None,
             "lines_inserted": 0,
             "ti_mensual_pct": 0.0,
         }
 
-    upload_id     = save_cedula_upload(result, year, month, file_name, uploaded_by, notes)
+    upload_id      = save_cedula_upload(result, year, month, file_name, uploaded_by, notes)
     lines_inserted = save_execution_lines(upload_id, result, year, month)
     save_monthly_kpis(upload_id, result, year, month)
 
