@@ -235,6 +235,7 @@ if not is_authenticated():
     st.stop()
 
 # ── CARGA LAZY DE PÁGINAS ──────────────────────────────────────────────────────
+from quira_pages.p_sentinel_hub  import render as p_hub
 from quira_pages.p1_dashboard    import render as p1
 from quira_pages.p2_holding      import render as p2
 from quira_pages.p3_congruencias import render as p3
@@ -259,6 +260,8 @@ def _p_sentinel():
     render_sentinel()
 
 PAGES = {
+    # ── SENTINEL HUB — Pantalla 0 real (Sprint 2.3) ────────────────────────────
+    "sentinel_hub": {"label": "Centro de Control",        "icon": "⬡",  "render": p_hub},
     # ── EJECUTIVO ─────────────────────────────────────────────────────────────
     "dashboard":    {"label": "Tablero Ejecutivo",        "icon": "📊", "render": p1},
     "pulso":        {"label": "Pulso Ejecutivo",          "icon": "⚡", "render": p6},
@@ -289,6 +292,7 @@ PAGES = {
 
 # ── DOCTRINA QUIRA — AGRUPACIÓN POR ESTADO COGNITIVO ──────────────────────────
 SECTIONS = [
+    ("CONTROL",   "Situación + prioridad",  ["sentinel_hub"]),
     ("ENTENDER",  "Ver la verdad",          ["dashboard", "pulso", "brecha", "geotwin", "inversion"]),
     ("GOBERNAR",  "Corregir el sistema",    ["metas", "cadena", "congruencias", "sat", "eficiencia", "operacion", "holding", "ods", "cooperacion", "genero"]),
     ("SIMULAR",   "Proyectar escenarios",   ["simulador"]),
@@ -372,7 +376,7 @@ with st.sidebar:
         pass
 
 # ── MAIN CONTENT ───────────────────────────────────────────────────────────────
-page_key = st.session_state.get("page", "dashboard")
+page_key = st.session_state.get("page", "sentinel_hub")
 # Redirect legacy keys → merged screen
 if page_key in ("confianza", "rdc"):
     page_key = "gobernanza"
@@ -381,7 +385,7 @@ page_cfg  = PAGES.get(page_key, PAGES["dashboard"])
 
 # ── Quick-nav bar — fallback cuando sidebar está colapsado (mobile-first) ──────
 # 5 accesos directos siempre visibles: Tablero · Brecha · Territorio · Proyector · Sentinel
-_quicknav_pages = ["dashboard", "brecha", "geotwin", "simulador", "sentinel"]
+_quicknav_pages = ["sentinel_hub", "dashboard", "brecha", "simulador", "sentinel"]
 with st.container():
     _qn_cols = st.columns(len(_quicknav_pages), gap="small")
     for _col, _k in zip(_qn_cols, _quicknav_pages):

@@ -1,0 +1,149 @@
+{
+  "pregunta": "¿Qué riesgos legales enfrenta Montecristi si D3 sigue bajo 60%?",
+  "timestamp": "2026-05-17T18:43:08.802213",
+  "metricas": {
+    "score_promedio": 0.524,
+    "score_maximo": 0.551,
+    "score_minimo": 0.504,
+    "notas_distintas": 5,
+    "tipos_distintos": 5,
+    "confianza_pct": 71.4,
+    "nivel": "🟢 Alta"
+  },
+  "cobertura_dims": {
+    "D1": {
+      "cubierta": true,
+      "score": 0.551,
+      "fuentes": [
+        "03_SENTINEL_LOGICA",
+        "ALERTA-D3_Ejecucion_Critica",
+        "COOTAD-Reforma-2026-Inversion",
+        "REGLAMENTO-LOSNCP-Contratacion"
+      ]
+    },
+    "D2": {
+      "cubierta": true,
+      "score": 0.551,
+      "fuentes": [
+        "03_SENTINEL_LOGICA",
+        "ALERTA-D3_Ejecucion_Critica",
+        "COOTAD-Reforma-2026-Inversion",
+        "REGLAMENTO-LOSNCP-Contratacion",
+        "PAC_2026_Contexto"
+      ]
+    },
+    "D3": {
+      "cubierta": true,
+      "score": 0.551,
+      "fuentes": [
+        "03_SENTINEL_LOGICA",
+        "ALERTA-D3_Ejecucion_Critica",
+        "COOTAD-Reforma-2026-Inversion",
+        "REGLAMENTO-LOSNCP-Contratacion",
+        "PAC_2026_Contexto"
+      ]
+    },
+    "D4": {
+      "cubierta": true,
+      "score": 0.551,
+      "fuentes": [
+        "03_SENTINEL_LOGICA",
+        "ALERTA-D3_Ejecucion_Critica"
+      ]
+    },
+    "D5": {
+      "cubierta": true,
+      "score": 0.551,
+      "fuentes": [
+        "03_SENTINEL_LOGICA",
+        "ALERTA-D3_Ejecucion_Critica"
+      ]
+    }
+  },
+  "territorios": [
+    "Cantonal",
+    "Isabel Muentes"
+  ],
+  "dims_cubiertas": [
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "D5"
+  ],
+  "dims_faltantes": [],
+  "reglas": {
+    "fuente": true,
+    "confianza": true,
+    "cobertura": true
+  },
+  "puede_responder": true,
+  "puede_recomendar": true,
+  "vacios": [],
+  "accion_sentinel": "RESPONDER Y RECOMENDAR: confianza alta, cobertura suficiente, citar todas las fuentes.",
+  "chunks": [
+    {
+      "nota": "03_SENTINEL_LOGICA",
+      "section": "Caso 1 — D3=59.85% CRÍTICO",
+      "tipo": "sentinel-logica",
+      "score": 0.551,
+      "dims": [
+        "D3",
+        "D5",
+        "D1",
+        "D4",
+        "D2"
+      ],
+      "preview": "[Sentinel — Lógica de Decisión] Caso 1 — D3=59.85% CRÍTICO\n```\nInput Sentinel:\n  D3 = 59.85% | PAC 2026 parcialmente publicado | eSIGEF grupos 7+8\n\nProceso:\n  ├── Elegibilidad: D5=100% → puede actuar "
+    },
+    {
+      "nota": "ALERTA-D3_Ejecucion_Critica",
+      "section": "Causas Diagnósticas (PDOT Modelo Gestión)",
+      "tipo": "alerta-tgi",
+      "score": 0.545,
+      "dims": [
+        "D3",
+        "D5",
+        "D1",
+        "D4",
+        "D2"
+      ],
+      "preview": "[ALERTA — D3 Ejecución Presupuestaria Crítica (59.85%)] Causas Diagnósticas (PDOT Modelo Gestión)\nSegún el PDOT y el análisis QUIRA, las causas típicas de D3 bajo son:\n\n| Causa | Evidencia en Montecri"
+    },
+    {
+      "nota": "COOTAD-Reforma-2026-Inversion",
+      "section": "Estado actual (antes de la Reforma):",
+      "tipo": "normativa-reforma-cootad",
+      "score": 0.513,
+      "dims": [
+        "D2",
+        "D3",
+        "D1"
+      ],
+      "preview": "[COOTAD — Reforma 2026: Regla de Asignación Mínima Prioritaria] Estado actual (antes de la Reforma):\n- D3 Ejecución = **59.85%** → categoría \"En riesgo\" (Tabla 200 PDOT)\n- Sin mecanismo de verificació"
+    },
+    {
+      "nota": "REGLAMENTO-LOSNCP-Contratacion",
+      "section": "Diagnóstico D3 desde el Reglamento LOSNCP",
+      "tipo": "normativa-reglamento-losncp",
+      "score": 0.506,
+      "dims": [
+        "D2",
+        "D3",
+        "D1"
+      ],
+      "preview": "[Reglamento LOSNCP — Fases de Contratación y PAC: Operativa del D3] Diagnóstico D3 desde el Reglamento LOSNCP\nPara Montecristi con D3=59.85%, el análisis de las 5 fases revela:\n\n```\nFASE 1 — Preparato"
+    },
+    {
+      "nota": "PAC_2026_Contexto",
+      "section": "¿Cuánto vale recuperar D3?",
+      "tipo": "contexto-operativo",
+      "score": 0.504,
+      "dims": [
+        "D2",
+        "D3"
+      ],
+      "preview": "[PAC 2026 — Contratación Pública como Palanca D3] ¿Cuánto vale recuperar D3?\nEl Motor calculó: **cada punto porcentual de D3 = ~USD 144,000** en inversión ejecutada.\n\n| Meta D3 | pp a recuperar | Inve"
+    }
+  ]
+}

@@ -1,0 +1,223 @@
+{
+  "timestamp": "2026-05-17T19:56:14.387031",
+  "run_type": "baseline",
+  "sentinel_version": "2.1.0",
+  "prompt_version": "v2.1.0",
+  "guardrail_version": "v1.7.0",
+  "index_version": "2026-05-17-01",
+  "llm_model": "claude-haiku-4-5",
+  "resultado": "BASELINE",
+  "n_cases": 20,
+  "n_ok_guardrail": 20,
+  "pct_ok_guardrail": 100.0,
+  "avg_confianza": 74.3,
+  "avg_score": 0.628,
+  "avg_dims": 4.7,
+  "avg_notas": 4.35,
+  "avg_tiempo_ms": 1299.8,
+  "bloqueos": [],
+  "advertencias": [],
+  "vs_baseline": {},
+  "cases": [
+    {
+      "idx": 1,
+      "pregunta": "¿Qué dice el COOTAD sobre las competencias del GAD Municipal?",
+      "confianza_pct": 83.6,
+      "score_promedio": 0.727,
+      "dims_cubiertas": 5,
+      "notas_distintas": 5,
+      "guardrail_ok": true,
+      "tiempo_ms": 25003.4
+    },
+    {
+      "idx": 2,
+      "pregunta": "¿Cuáles son las obligaciones legales en agua potable y alcantarillado?",
+      "confianza_pct": 71.0,
+      "score_promedio": 0.649,
+      "dims_cubiertas": 4,
+      "notas_distintas": 4,
+      "guardrail_ok": true,
+      "tiempo_ms": 67.1
+    },
+    {
+      "idx": 3,
+      "pregunta": "¿Qué reforma al COOTAD 2026 afecta la inversión municipal?",
+      "confianza_pct": 78.7,
+      "score_promedio": 0.695,
+      "dims_cubiertas": 5,
+      "notas_distintas": 4,
+      "guardrail_ok": true,
+      "tiempo_ms": 62.0
+    },
+    {
+      "idx": 4,
+      "pregunta": "¿Qué establece el COPFP sobre planificación presupuestaria?",
+      "confianza_pct": 78.7,
+      "score_promedio": 0.779,
+      "dims_cubiertas": 4,
+      "notas_distintas": 4,
+      "guardrail_ok": true,
+      "tiempo_ms": 53.7
+    },
+    {
+      "idx": 5,
+      "pregunta": "¿Cuál es el ICPI de Montecristi y qué mide?",
+      "confianza_pct": 69.3,
+      "score_promedio": 0.572,
+      "dims_cubiertas": 4,
+      "notas_distintas": 5,
+      "guardrail_ok": true,
+      "tiempo_ms": 59.4
+    },
+    {
+      "idx": 6,
+      "pregunta": "¿Qué metas del PDOT 2023-2027 están en riesgo de incumplimiento?",
+      "confianza_pct": 83.8,
+      "score_promedio": 0.731,
+      "dims_cubiertas": 5,
+      "notas_distintas": 5,
+      "guardrail_ok": true,
+      "tiempo_ms": 62.1
+    },
+    {
+      "idx": 7,
+      "pregunta": "¿Cómo funciona el sistema TGI de evaluación municipal?",
+      "confianza_pct": 67.6,
+      "score_promedio": 0.609,
+      "dims_cubiertas": 5,
+      "notas_distintas": 2,
+      "guardrail_ok": true,
+      "tiempo_ms": 47.0
+    },
+    {
+      "idx": 8,
+      "pregunta": "¿Cuál es el TGI score actual de Montecristi y qué significa?",
+      "confianza_pct": 78.9,
+      "score_promedio": 0.648,
+      "dims_cubiertas": 5,
+      "notas_distintas": 5,
+      "guardrail_ok": true,
+      "tiempo_ms": 44.7
+    },
+    {
+      "idx": 9,
+      "pregunta": "¿Por qué D3 ejecución presupuestaria está en rojo?",
+      "confianza_pct": 75.9,
+      "score_promedio": 0.649,
+      "dims_cubiertas": 5,
+      "notas_distintas": 4,
+      "guardrail_ok": true,
+      "tiempo_ms": 43.4
+    },
+    {
+      "idx": 10,
+      "pregunta": "¿Qué causas explican el bajo devengamiento del GAD Montecristi?",
+      "confianza_pct": 71.8,
+      "score_promedio": 0.53,
+      "dims_cubiertas": 5,
+      "notas_distintas": 5,
+      "guardrail_ok": true,
+      "tiempo_ms": 50.5
+    },
+    {
+      "idx": 11,
+      "pregunta": "¿Qué riesgos legales enfrenta Montecristi si D3 sigue bajo 60 por ciento?",
+      "confianza_pct": 68.8,
+      "score_promedio": 0.529,
+      "dims_cubiertas": 5,
+      "notas_distintas": 4,
+      "guardrail_ok": true,
+      "tiempo_ms": 45.0
+    },
+    {
+      "idx": 12,
+      "pregunta": "¿Cuál es la situación de Isabel Muentes en el índice de equidad territorial?",
+      "confianza_pct": 72.0,
+      "score_promedio": 0.534,
+      "dims_cubiertas": 5,
+      "notas_distintas": 5,
+      "guardrail_ok": true,
+      "tiempo_ms": 46.6
+    },
+    {
+      "idx": 13,
+      "pregunta": "¿Cómo se distribuye la equidad territorial entre las parroquias del cantón?",
+      "confianza_pct": 70.9,
+      "score_promedio": 0.648,
+      "dims_cubiertas": 4,
+      "notas_distintas": 4,
+      "guardrail_ok": true,
+      "tiempo_ms": 105.7
+    },
+    {
+      "idx": 14,
+      "pregunta": "¿Qué es el IRS y cómo se relaciona con la equidad territorial?",
+      "confianza_pct": 73.3,
+      "score_promedio": 0.554,
+      "dims_cubiertas": 5,
+      "notas_distintas": 5,
+      "guardrail_ok": true,
+      "tiempo_ms": 47.7
+    },
+    {
+      "idx": 15,
+      "pregunta": "¿Cuáles son las parroquias más críticas de Montecristi?",
+      "confianza_pct": 74.4,
+      "score_promedio": 0.573,
+      "dims_cubiertas": 5,
+      "notas_distintas": 5,
+      "guardrail_ok": true,
+      "tiempo_ms": 31.2
+    },
+    {
+      "idx": 16,
+      "pregunta": "¿Cuál es la situación de capacidad institucional del GAD?",
+      "confianza_pct": 79.2,
+      "score_promedio": 0.704,
+      "dims_cubiertas": 5,
+      "notas_distintas": 4,
+      "guardrail_ok": true,
+      "tiempo_ms": 34.4
+    },
+    {
+      "idx": 17,
+      "pregunta": "¿Qué fondos internacionales puede solicitar el GAD para proyectos de agua?",
+      "confianza_pct": 65.5,
+      "score_promedio": 0.642,
+      "dims_cubiertas": 3,
+      "notas_distintas": 4,
+      "guardrail_ok": true,
+      "tiempo_ms": 44.1
+    },
+    {
+      "idx": 18,
+      "pregunta": "¿Cuál es el estado del fondo UNESCO para gobernanza digital?",
+      "confianza_pct": 74.7,
+      "score_promedio": 0.628,
+      "dims_cubiertas": 5,
+      "notas_distintas": 4,
+      "guardrail_ok": true,
+      "tiempo_ms": 50.6
+    },
+    {
+      "idx": 19,
+      "pregunta": "¿Qué riesgos enfrenta el mandato 2023-2027 del GAD Montecristi?",
+      "confianza_pct": 75.4,
+      "score_promedio": 0.641,
+      "dims_cubiertas": 5,
+      "notas_distintas": 4,
+      "guardrail_ok": true,
+      "tiempo_ms": 55.7
+    },
+    {
+      "idx": 20,
+      "pregunta": "¿Qué dice el diagnóstico territorial sobre la situación del cantón?",
+      "confianza_pct": 71.6,
+      "score_promedio": 0.526,
+      "dims_cubiertas": 5,
+      "notas_distintas": 5,
+      "guardrail_ok": true,
+      "tiempo_ms": 41.8
+    }
+  ]
+}

@@ -41,7 +41,14 @@ desktop.ini
 
 # ── LOGS (registro institucional — NUNCA al repo) ─────────────────────────────
 logs/
+sentinel/logs/
 *.log
+
+# ── SENTINEL VECTOR DB (artefacto generado — regenerar con ingest_kb.py) ──────
+sentinel/chroma_db/
+
+# ── PIP ARTIFACTS (archivos =X.X.X creados por pip install mal ejecutado) ─────
+=*
 
 # ── STREAMLIT CACHE ───────────────────────────────────────────────────────────
 .streamlit/cache/

@@ -1,0 +1,7087 @@
+{
+  "timestamp": "2026-05-17T18:11:29.100423",
+  "vault": "C:\\Proyectos\\QUIRA\\knowledge_base\\QUIRA_KB_Montecristi",
+  "total_notas": 219,
+  "stats": {
+    "error": 107,
+    "warn": 112,
+    "total": 219,
+    "sin_yaml": 17
+  },
+  "por_carpeta": {
+    "00_CORE": {
+      "total": 17,
+      "ok": 0,
+      "warn": 0,
+      "error": 17
+    },
+    "00_Dashboard": {
+      "total": 1,
+      "ok": 0,
+      "warn": 1,
+      "error": 0
+    },
+    "01_PDOT": {
+      "total": 2,
+      "ok": 0,
+      "warn": 2,
+      "error": 0
+    },
+    "01_PDOT\\diagnostico\\ambiental": {
+      "total": 1,
+      "ok": 0,
+      "warn": 1,
+      "error": 0
+    },
+    "01_PDOT\\diagnostico\\asentamientos": {
+      "total": 7,
+      "ok": 0,
+      "warn": 7,
+      "error": 0
+    },
+    "01_PDOT\\diagnostico": {
+      "total": 1,
+      "ok": 0,
+      "warn": 1,
+      "error": 0
+    },
+    "01_PDOT\\diagnostico\\economico": {
+      "total": 2,
+      "ok": 0,
+      "warn": 2,
+      "error": 0
+    },
+    "01_PDOT\\diagnostico\\social": {
+      "total": 5,
+      "ok": 0,
+      "warn": 5,
+      "error": 0
+    },
+    "01_PDOT\\modelo_gestion_tgi": {
+      "total": 6,
+      "ok": 0,
+      "warn": 0,
+      "error": 6
+    },
+    "01_PDOT\\parroquias": {
+      "total": 7,
+      "ok": 0,
+      "warn": 7,
+      "error": 0
+    },
+    "01_PDOT\\propuesta": {
+      "total": 8,
+      "ok": 0,
+      "warn": 8,
+      "error": 0
+    },
+    "01_PDOT\\propuesta_tgi": {
+      "total": 11,
+      "ok": 0,
+      "warn": 0,
+      "error": 11
+    },
+    "01_PDOT\\puentes_tgi": {
+      "total": 5,
+      "ok": 0,
+      "warn": 0,
+      "error": 5
+    },
+    "02_NORMATIVA\\01_CONSTITUCION": {
+      "total": 5,
+      "ok": 0,
+      "warn": 4,
+      "error": 1
+    },
+    "02_NORMATIVA\\02_COOTAD": {
+      "total": 6,
+      "ok": 0,
+      "warn": 5,
+      "error": 1
+    },
+    "02_NORMATIVA\\03_COPFP": {
+      "total": 3,
+      "ok": 0,
+      "warn": 2,
+      "error": 1
+    },
+    "02_NORMATIVA\\04_REGLAMENTO_COPFP": {
+      "total": 3,
+      "ok": 0,
+      "warn": 2,
+      "error": 1
+    },
+    "02_NORMATIVA\\05_LOSNCP": {
+      "total": 2,
+      "ok": 0,
+      "warn": 1,
+      "error": 1
+    },
+    "02_NORMATIVA\\06_REGLAMENTO_LOSNCP": {
+      "total": 2,
+      "ok": 0,
+      "warn": 1,
+      "error": 1
+    },
+    "02_NORMATIVA\\07_LOSEP": {
+      "total": 2,
+      "ok": 0,
+      "warn": 1,
+      "error": 1
+    },
+    "02_NORMATIVA\\08_REGLAMENTO_LOSEP": {
+      "total": 2,
+      "ok": 0,
+      "warn": 1,
+      "error": 1
+    },
+    "02_NORMATIVA\\09_COA": {
+      "total": 2,
+      "ok": 0,
+      "warn": 1,
+      "error": 1
+    },
+    "02_NORMATIVA\\10_REGLAMENTO_COA": {
+      "total": 2,
+      "ok": 0,
+      "warn": 1,
+      "error": 1
+    },
+    "02_NORMATIVA\\11_LOTAIP": {
+      "total": 2,
+      "ok": 0,
+      "warn": 1,
+      "error": 1
+    },
+    "02_NORMATIVA\\12_REGLAMENTO_LOTAIP": {
+      "total": 2,
+      "ok": 0,
+      "warn": 1,
+      "error": 1
+    },
+    "02_NORMATIVA\\13_GUIAS_LOTAIP": {
+      "total": 2,
+      "ok": 0,
+      "warn": 1,
+      "error": 1
+    },
+    "02_NORMATIVA\\14_LOPC": {
+      "total": 2,
+      "ok": 0,
+      "warn": 1,
+      "error": 1
+    },
+    "02_NORMATIVA\\15_LOTUGS": {
+      "total": 2,
+      "ok": 0,
+      "warn": 2,
+      "error": 0
+    },
+    "02_NORMATIVA\\16_COAD": {
+      "total": 2,
+      "ok": 0,
+      "warn": 2,
+      "error": 0
+    },
+    "02_NORMATIVA\\17_LOIPEVM": {
+      "total": 2,
+      "ok": 0,
+      "warn": 2,
+      "error": 0
+    },
+    "02_NORMATIVA\\18_LEY_ECONOMIA_MUJERES": {
+      "total": 2,
+      "ok": 0,
+      "warn": 2,
+      "error": 0
+    },
+    "02_NORMATIVA\\19_CODIGO_DEMOCRACIA": {
+      "total": 2,
+      "ok": 0,
+      "warn": 2,
+      "error": 0
+    },
+    "02_NORMATIVA\\20_NORMAS_CGE": {
+      "total": 2,
+      "ok": 0,
+      "warn": 2,
+      "error": 0
+    },
+    "02_NORMATIVA\\21_LEY_TRANSFORMACION_DIGITAL": {
+      "total": 2,
+      "ok": 0,
+      "warn": 2,
+      "error": 0
+    },
+    "02_NORMATIVA\\22_RESOLUCION_CPCCS_RDC": {
+      "total": 2,
+      "ok": 0,
+      "warn": 2,
+      "error": 0
+    },
+    "02_NORMATIVA": {
+      "total": 1,
+      "ok": 0,
+      "warn": 0,
+      "error": 1
+    },
+    "03_CPFP": {
+      "total": 5,
+      "ok": 0,
+      "warn": 4,
+      "error": 1
+    },
+    "04_Constitucion": {
+      "total": 6,
+      "ok": 0,
+      "warn": 5,
+      "error": 1
+    },
+    "05_COOTAD": {
+      "total": 7,
+      "ok": 0,
+      "warn": 6,
+      "error": 1
+    },
+    "05_LOSEP": {
+      "total": 1,
+      "ok": 0,
+      "warn": 0,
+      "error": 1
+    },
+    "05_PLANES_NACIONALES\\01_PND": {
+      "total": 2,
+      "ok": 0,
+      "warn": 2,
+      "error": 0
+    },
+    "05_PLANES_NACIONALES\\02_GUIA_PDOT_SNP": {
+      "total": 2,
+      "ok": 0,
+      "warn": 2,
+      "error": 0
+    },
+    "05_PLANES_NACIONALES\\03_PAGCC": {
+      "total": 2,
+      "ok": 0,
+      "warn": 2,
+      "error": 0
+    },
+    "05_PLANES_NACIONALES": {
+      "total": 1,
+      "ok": 0,
+      "warn": 0,
+      "error": 1
+    },
+    "06_Fuentes_Financiamiento": {
+      "total": 22,
+      "ok": 0,
+      "warn": 9,
+      "error": 13
+    },
+    "06_Sentinel": {
+      "total": 1,
+      "ok": 0,
+      "warn": 0,
+      "error": 1
+    },
+    "06_Sentinel\\glosario": {
+      "total": 1,
+      "ok": 0,
+      "warn": 0,
+      "error": 1
+    },
+    "07_Indicadores": {
+      "total": 1,
+      "ok": 0,
+      "warn": 0,
+      "error": 1
+    },
+    "07_TGI_Parroquias": {
+      "total": 9,
+      "ok": 0,
+      "warn": 0,
+      "error": 9
+    },
+    "08_EJECUCION": {
+      "total": 9,
+      "ok": 0,
+      "warn": 9,
+      "error": 0
+    },
+    "08_Plantillas": {
+      "total": 5,
+      "ok": 0,
+      "warn": 0,
+      "error": 5
+    },
+    ".": {
+      "total": 18,
+      "ok": 0,
+      "warn": 0,
+      "error": 18
+    }
+  },
+  "tipos": {
+    "meta-sistema": 1,
+    "meta-framework": 1,
+    "meta-dimensiones": 1,
+    "sentinel-logica": 1,
+    "meta-metodologia": 1,
+    "meta-indicadores": 1,
+    "indice-modulo": 27,
+    "alerta-territorial": 2,
+    "alerta-tgi": 1,
+    "alerta-metodologica": 1,
+    "motor-arquitectura": 1,
+    "motor-silos": 1,
+    "motor-fuentes": 1,
+    "motor-dialectica": 1,
+    "motor-ecosistema": 1,
+    "ontologia-canonica": 1,
+    "dashboard": 2,
+    "indice": 8,
+    "diagnostico": 14,
+    "propuesta": 6,
+    "diagnostico-pugs": 1,
+    "modelo-gestion": 5,
+    "parroquia": 7,
+    "marco-plurianual-pdot": 1,
+    "propuesta-articulaciones": 1,
+    "meta-pdot": 1,
+    "propuesta-pai": 1,
+    "programa_pdot": 10,
+    "puente-eje-tgi": 4,
+    "normativa-constitucional": 4,
+    "normativa-cootad": 4,
+    "normativa-reforma-cootad": 1,
+    "normativa-cpfp": 2,
+    "normativa-reglamento-cpfp": 2,
+    "normativa-losncp": 1,
+    "normativa-reglamento-losncp": 1,
+    "normativa-losep": 1,
+    "normativa-reglamento-losep": 1,
+    "normativa-coa": 1,
+    "normativa-reglamento-coa": 1,
+    "normativa-lotaip": 1,
+    "normativa-reglamento-lotaip": 1,
+    "normativa-guia-lotaip": 1,
+    "normativa-ley-lopc": 1,
+    "indice-capa": 4,
+    "normativa-ley-lotugs": 1,
+    "normativa-codigo-administrativo": 1,
+    "normativa-ley-loipevm": 1,
+    "normativa-ley-economia-mujeres": 1,
+    "nota-normativa": 4,
+    "indice-maestro": 2,
+    "norma-curada": 4,
+    "normativa": 11,
+    "plan-nacional-desarrollo": 1,
+    "guia-metodologica-pdot": 1,
+    "plan-accion-nacional": 1,
+    "fondo": 19,
+    "catalogo": 1,
+    "referencia": 1,
+    "parroquia-tgi": 7,
+    "dashboard-cantonal": 1,
+    "registro-fuentes": 1,
+    "icm-sigad": 1,
+    "normativa-interna": 1,
+    "contexto-operativo": 2,
+    "plan-trabajo-cne": 1,
+    "rendicion-cuentas": 1,
+    "trayectoria-historica": 1,
+    "plantilla": 5,
+    "(sin tipo)": 17,
+    "redirect": 1
+  },
+  "notas": [
+    {
+      "archivo": "00_CORE\\00_QUIRA_GOV.md",
+      "carpeta": "00_CORE",
+      "estado": "ERROR",
+      "palabras": 670,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "meta-sistema",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan 3 campos: territorio, dimension_tgi, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "00_CORE\\01_TGI_FRAMEWORK.md",
+      "carpeta": "00_CORE",
+      "estado": "ERROR",
+      "palabras": 648,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "meta-framework",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'meta-framework'",
+        "Faltan 3 campos: territorio, dimension_tgi, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "00_CORE\\02_TGI_DIMENSIONES.md",
+      "carpeta": "00_CORE",
+      "estado": "ERROR",
+      "palabras": 861,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "meta-dimensiones",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'meta-dimensiones'",
+        "Faltan 3 campos: territorio, dimension_tgi, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "00_CORE\\03_SENTINEL_LOGICA.md",
+      "carpeta": "00_CORE",
+      "estado": "ERROR",
+      "palabras": 1484,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "sentinel-logica",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'sentinel-logica'",
+        "Faltan 3 campos: territorio, dimension_tgi, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "00_CORE\\03_SIAP_ICPI_METHOD.md",
+      "carpeta": "00_CORE",
+      "estado": "ERROR",
+      "palabras": 985,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre"
+      ],
+      "tipo_nota": "meta-metodologia",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'meta-metodologia'",
+        "Faltan 4 campos: territorio, dimension_tgi, estado, fuente_canonica",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre"
+      ]
+    },
+    {
+      "archivo": "00_CORE\\04_TGI_INDICADORES.md",
+      "carpeta": "00_CORE",
+      "estado": "ERROR",
+      "palabras": 927,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "meta-indicadores",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'meta-indicadores'",
+        "Faltan 3 campos: territorio, dimension_tgi, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "00_CORE\\_Índice_CORE.md",
+      "carpeta": "00_CORE",
+      "estado": "ERROR",
+      "palabras": 567,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "indice-modulo",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'indice-modulo'",
+        "Faltan 3 campos: territorio, dimension_tgi, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "00_CORE\\ALERTA-Brecha_Rural_1.79M.md",
+      "carpeta": "00_CORE",
+      "estado": "ERROR",
+      "palabras": 606,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "alerta-territorial",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'alerta-territorial'",
+        "Faltan 3 campos: territorio, dimension_tgi, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "00_CORE\\ALERTA-D3_Ejecucion_Critica.md",
+      "carpeta": "00_CORE",
+      "estado": "ERROR",
+      "palabras": 570,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "alerta-tgi",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan 3 campos: territorio, dimension_tgi, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "00_CORE\\ALERTA-Isabel_Muentes.md",
+      "carpeta": "00_CORE",
+      "estado": "ERROR",
+      "palabras": 523,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "alerta-territorial",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'alerta-territorial'",
+        "Faltan 3 campos: territorio, dimension_tgi, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "00_CORE\\ALERTA-Regresividad_IRS79.md",
+      "carpeta": "00_CORE",
+      "estado": "ERROR",
+      "palabras": 689,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "alerta-metodologica",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'alerta-metodologica'",
+        "Faltan 3 campos: territorio, dimension_tgi, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "00_CORE\\MOTOR_00_Arquitectura_Logica.md",
+      "carpeta": "00_CORE",
+      "estado": "ERROR",
+      "palabras": 992,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "motor-arquitectura",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'motor-arquitectura'",
+        "Faltan 3 campos: territorio, dimension_tgi, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "00_CORE\\MOTOR_01_Silos_Epistemicos.md",
+      "carpeta": "00_CORE",
+      "estado": "ERROR",
+      "palabras": 1196,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "motor-silos",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'motor-silos'",
+        "Faltan 3 campos: territorio, dimension_tgi, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "00_CORE\\MOTOR_02_Fuentes_Institucionales.md",
+      "carpeta": "00_CORE",
+      "estado": "ERROR",
+      "palabras": 1072,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "motor-fuentes",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'motor-fuentes'",
+        "Faltan 3 campos: territorio, dimension_tgi, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "00_CORE\\MOTOR_03_Dialectica.md",
+      "carpeta": "00_CORE",
+      "estado": "ERROR",
+      "palabras": 949,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "motor-dialectica",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'motor-dialectica'",
+        "Faltan 3 campos: territorio, dimension_tgi, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "00_CORE\\MOTOR_04_Ecosistema_Digital.md",
+      "carpeta": "00_CORE",
+      "estado": "ERROR",
+      "palabras": 1672,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "motor-ecosistema",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'motor-ecosistema'",
+        "Faltan 3 campos: territorio, dimension_tgi, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "00_CORE\\QUIRA_OS_Ontologia.md",
+      "carpeta": "00_CORE",
+      "estado": "ERROR",
+      "palabras": 1430,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "ontologia-canonica",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'ontologia-canonica'",
+        "Faltan 3 campos: territorio, dimension_tgi, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "00_Dashboard\\QUIRA - Panel Principal.md",
+      "carpeta": "00_Dashboard",
+      "estado": "WARN",
+      "palabras": 1159,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "type→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_actualizacion→fecha",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "dashboard",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: type→tipo_nota, name→nombre, etiquetas→tags, fecha_actualizacion→fecha, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\_Índice PDOT.md",
+      "carpeta": "01_PDOT",
+      "estado": "WARN",
+      "palabras": 903,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "indice",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\diagnostico\\ambiental\\DIAG-Fisico-Ambiental.md",
+      "carpeta": "01_PDOT\\diagnostico\\ambiental",
+      "estado": "WARN",
+      "palabras": 828,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "diagnostico",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\diagnostico\\asentamientos\\DIAG-Asentamientos-Rurales.md",
+      "carpeta": "01_PDOT\\diagnostico\\asentamientos",
+      "estado": "WARN",
+      "palabras": 1044,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "diagnostico",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\diagnostico\\asentamientos\\DIAG-Modelo-Gestion.md",
+      "carpeta": "01_PDOT\\diagnostico\\asentamientos",
+      "estado": "WARN",
+      "palabras": 939,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "propuesta",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'propuesta'",
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\diagnostico\\asentamientos\\DIAG-PUGS.md",
+      "carpeta": "01_PDOT\\diagnostico\\asentamientos",
+      "estado": "WARN",
+      "palabras": 1862,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "diagnostico",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\diagnostico\\asentamientos\\DIAG-Servicios-Basicos.md",
+      "carpeta": "01_PDOT\\diagnostico\\asentamientos",
+      "estado": "WARN",
+      "palabras": 811,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "diagnostico",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\diagnostico\\asentamientos\\DIAG-Vialidad.md",
+      "carpeta": "01_PDOT\\diagnostico\\asentamientos",
+      "estado": "WARN",
+      "palabras": 708,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "diagnostico",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\diagnostico\\asentamientos\\DIAG-Vivienda.md",
+      "carpeta": "01_PDOT\\diagnostico\\asentamientos",
+      "estado": "WARN",
+      "palabras": 593,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "diagnostico",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\diagnostico\\asentamientos\\PUGS_Portafolio_Proyectos.md",
+      "carpeta": "01_PDOT\\diagnostico\\asentamientos",
+      "estado": "WARN",
+      "palabras": 1174,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "diagnostico-pugs",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'diagnostico-pugs'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\diagnostico\\DIAG-Analisis-Estrategico.md",
+      "carpeta": "01_PDOT\\diagnostico",
+      "estado": "WARN",
+      "palabras": 666,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "diagnostico",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\diagnostico\\economico\\DIAG-Economico-Productivo.md",
+      "carpeta": "01_PDOT\\diagnostico\\economico",
+      "estado": "WARN",
+      "palabras": 1172,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "diagnostico",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\diagnostico\\economico\\DIAG-Institucional-Financiero.md",
+      "carpeta": "01_PDOT\\diagnostico\\economico",
+      "estado": "WARN",
+      "palabras": 1324,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "diagnostico",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\diagnostico\\social\\DIAG-Cultura-Patrimonio.md",
+      "carpeta": "01_PDOT\\diagnostico\\social",
+      "estado": "WARN",
+      "palabras": 646,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "diagnostico",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\diagnostico\\social\\DIAG-Demografia.md",
+      "carpeta": "01_PDOT\\diagnostico\\social",
+      "estado": "WARN",
+      "palabras": 1031,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "diagnostico",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\diagnostico\\social\\DIAG-Educacion.md",
+      "carpeta": "01_PDOT\\diagnostico\\social",
+      "estado": "WARN",
+      "palabras": 482,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "diagnostico",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\diagnostico\\social\\DIAG-Pobreza.md",
+      "carpeta": "01_PDOT\\diagnostico\\social",
+      "estado": "WARN",
+      "palabras": 527,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "diagnostico",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\diagnostico\\social\\DIAG-Salud.md",
+      "carpeta": "01_PDOT\\diagnostico\\social",
+      "estado": "WARN",
+      "palabras": 819,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "diagnostico",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\modelo_gestion_tgi\\MG-00_Indice_Modelo_Gestion.md",
+      "carpeta": "01_PDOT\\modelo_gestion_tgi",
+      "estado": "ERROR",
+      "palabras": 561,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fecha",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "indice-modulo",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'indice-modulo'",
+        "Faltan 4 campos: territorio, dimension_tgi, fecha, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\modelo_gestion_tgi\\MG-01_Marco_Conceptual.md",
+      "carpeta": "01_PDOT\\modelo_gestion_tgi",
+      "estado": "ERROR",
+      "palabras": 555,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fecha",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "modelo-gestion",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'modelo-gestion'",
+        "Faltan 4 campos: territorio, dimension_tgi, fecha, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\modelo_gestion_tgi\\MG-02_Formas_Gestion_Financiamiento.md",
+      "carpeta": "01_PDOT\\modelo_gestion_tgi",
+      "estado": "ERROR",
+      "palabras": 817,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fecha",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "modelo-gestion",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'modelo-gestion'",
+        "Faltan 4 campos: territorio, dimension_tgi, fecha, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\modelo_gestion_tgi\\MG-03_Responsabilidades_Herramientas.md",
+      "carpeta": "01_PDOT\\modelo_gestion_tgi",
+      "estado": "ERROR",
+      "palabras": 665,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fecha",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "modelo-gestion",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'modelo-gestion'",
+        "Faltan 4 campos: territorio, dimension_tgi, fecha, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\modelo_gestion_tgi\\MG-04_Estrategias_Transversales.md",
+      "carpeta": "01_PDOT\\modelo_gestion_tgi",
+      "estado": "ERROR",
+      "palabras": 1096,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fecha",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "modelo-gestion",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'modelo-gestion'",
+        "Faltan 4 campos: territorio, dimension_tgi, fecha, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\modelo_gestion_tgi\\MG-05_Seguimiento_Evaluacion.md",
+      "carpeta": "01_PDOT\\modelo_gestion_tgi",
+      "estado": "ERROR",
+      "palabras": 1135,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fecha",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "modelo-gestion",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'modelo-gestion'",
+        "Faltan 4 campos: territorio, dimension_tgi, fecha, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\parroquias\\Anibal San Andres.md",
+      "carpeta": "01_PDOT\\parroquias",
+      "estado": "WARN",
+      "palabras": 261,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "parroquia",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\parroquias\\Colorado.md",
+      "carpeta": "01_PDOT\\parroquias",
+      "estado": "WARN",
+      "palabras": 187,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "parroquia",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\parroquias\\General Eloy Alfaro.md",
+      "carpeta": "01_PDOT\\parroquias",
+      "estado": "WARN",
+      "palabras": 291,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "parroquia",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\parroquias\\Isabel Muentes.md",
+      "carpeta": "01_PDOT\\parroquias",
+      "estado": "WARN",
+      "palabras": 267,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "parroquia",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\parroquias\\La Pila.md",
+      "carpeta": "01_PDOT\\parroquias",
+      "estado": "WARN",
+      "palabras": 444,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "parroquia",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\parroquias\\Leonidas Proano.md",
+      "carpeta": "01_PDOT\\parroquias",
+      "estado": "WARN",
+      "palabras": 619,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "parroquia",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\parroquias\\Montecristi - Cabecera.md",
+      "carpeta": "01_PDOT\\parroquias",
+      "estado": "WARN",
+      "palabras": 432,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "parroquia",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\PDOT_Marco_Plurianual_2023_2027.md",
+      "carpeta": "01_PDOT",
+      "estado": "WARN",
+      "palabras": 1532,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "marco-plurianual-pdot",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\propuesta\\ARTICULACIONES_Institucionales.md",
+      "carpeta": "01_PDOT\\propuesta",
+      "estado": "WARN",
+      "palabras": 1273,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "propuesta-articulaciones",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'propuesta-articulaciones'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\propuesta\\META-UNESCO-Ciudad-Creativa.md",
+      "carpeta": "01_PDOT\\propuesta",
+      "estado": "WARN",
+      "palabras": 1417,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio"
+      ],
+      "campos_alias": [
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "meta-pdot",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'meta-pdot'",
+        "Faltan: territorio",
+        "Aliases no canónicos: etiquetas→tags, fecha_creacion→fecha, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\propuesta\\PAI_PDyOT_2024_2027.md",
+      "carpeta": "01_PDOT\\propuesta",
+      "estado": "WARN",
+      "palabras": 1132,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "propuesta-pai",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'propuesta-pai'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\propuesta\\PROP-Estrategias-Transversales.md",
+      "carpeta": "01_PDOT\\propuesta",
+      "estado": "WARN",
+      "palabras": 1563,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "propuesta",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'propuesta'",
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\propuesta\\PROP-Modelo-Territorial-Deseado.md",
+      "carpeta": "01_PDOT\\propuesta",
+      "estado": "WARN",
+      "palabras": 1074,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "propuesta",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'propuesta'",
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\propuesta\\PROP-Programas-Proyectos.md",
+      "carpeta": "01_PDOT\\propuesta",
+      "estado": "WARN",
+      "palabras": 1073,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "propuesta",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'propuesta'",
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\propuesta\\PROP-Seguimiento-Evaluacion.md",
+      "carpeta": "01_PDOT\\propuesta",
+      "estado": "WARN",
+      "palabras": 1124,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "propuesta",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'propuesta'",
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\propuesta\\PROP-Vision-Objetivos.md",
+      "carpeta": "01_PDOT\\propuesta",
+      "estado": "WARN",
+      "palabras": 754,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "propuesta",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'propuesta'",
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\propuesta_tgi\\_Índice_Propuesta_TGI.md",
+      "carpeta": "01_PDOT\\propuesta_tgi",
+      "estado": "ERROR",
+      "palabras": 319,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "tags",
+        "fecha"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "indice-modulo",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'indice-modulo'",
+        "Faltan 4 campos: territorio, dimension_tgi, tags, fecha",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\propuesta_tgi\\PROG-AH-01_Agua_Saneamiento.md",
+      "carpeta": "01_PDOT\\propuesta_tgi",
+      "estado": "ERROR",
+      "palabras": 675,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fecha",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "programa_pdot",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'programa_pdot'",
+        "Faltan 4 campos: territorio, dimension_tgi, fecha, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\propuesta_tgi\\PROG-AH-02_Equipamientos.md",
+      "carpeta": "01_PDOT\\propuesta_tgi",
+      "estado": "ERROR",
+      "palabras": 521,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fecha",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "programa_pdot",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'programa_pdot'",
+        "Faltan 4 campos: territorio, dimension_tgi, fecha, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\propuesta_tgi\\PROG-AH-03_Transito.md",
+      "carpeta": "01_PDOT\\propuesta_tgi",
+      "estado": "ERROR",
+      "palabras": 447,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fecha",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "programa_pdot",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'programa_pdot'",
+        "Faltan 4 campos: territorio, dimension_tgi, fecha, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\propuesta_tgi\\PROG-EP-01_Productivo_Diverso.md",
+      "carpeta": "01_PDOT\\propuesta_tgi",
+      "estado": "ERROR",
+      "palabras": 559,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fecha",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "programa_pdot",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'programa_pdot'",
+        "Faltan 4 campos: territorio, dimension_tgi, fecha, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\propuesta_tgi\\PROG-FA-01_Areas_Verdes.md",
+      "carpeta": "01_PDOT\\propuesta_tgi",
+      "estado": "ERROR",
+      "palabras": 638,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fecha",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "programa_pdot",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'programa_pdot'",
+        "Faltan 4 campos: territorio, dimension_tgi, fecha, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\propuesta_tgi\\PROG-FA-02_Gestion_Riesgo.md",
+      "carpeta": "01_PDOT\\propuesta_tgi",
+      "estado": "ERROR",
+      "palabras": 548,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fecha",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "programa_pdot",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'programa_pdot'",
+        "Faltan 4 campos: territorio, dimension_tgi, fecha, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\propuesta_tgi\\PROG-PI-01_Fortalecimiento_Institucional.md",
+      "carpeta": "01_PDOT\\propuesta_tgi",
+      "estado": "ERROR",
+      "palabras": 407,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fecha",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "programa_pdot",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'programa_pdot'",
+        "Faltan 4 campos: territorio, dimension_tgi, fecha, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\propuesta_tgi\\PROG-PI-02_Posicionamiento_Difusion.md",
+      "carpeta": "01_PDOT\\propuesta_tgi",
+      "estado": "ERROR",
+      "palabras": 342,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fecha",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "programa_pdot",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'programa_pdot'",
+        "Faltan 4 campos: territorio, dimension_tgi, fecha, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\propuesta_tgi\\PROG-SC-01_Salud_Integral.md",
+      "carpeta": "01_PDOT\\propuesta_tgi",
+      "estado": "ERROR",
+      "palabras": 561,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fecha",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "programa_pdot",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'programa_pdot'",
+        "Faltan 4 campos: territorio, dimension_tgi, fecha, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\propuesta_tgi\\PROG-SC-02_Cultura_Patrimonio.md",
+      "carpeta": "01_PDOT\\propuesta_tgi",
+      "estado": "ERROR",
+      "palabras": 501,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fecha",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "programa_pdot",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'programa_pdot'",
+        "Faltan 4 campos: territorio, dimension_tgi, fecha, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\puentes_tgi\\_Indice_Puentes_TGI.md",
+      "carpeta": "01_PDOT\\puentes_tgi",
+      "estado": "ERROR",
+      "palabras": 494,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "indice-modulo",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'indice-modulo'",
+        "Faltan 3 campos: territorio, dimension_tgi, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\puentes_tgi\\EJE-AH_Agua_Saneamiento.md",
+      "carpeta": "01_PDOT\\puentes_tgi",
+      "estado": "ERROR",
+      "palabras": 383,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "puente-eje-tgi",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'puente-eje-tgi'",
+        "Faltan 3 campos: territorio, dimension_tgi, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\puentes_tgi\\EJE-EP_Equidad_Desarrollo.md",
+      "carpeta": "01_PDOT\\puentes_tgi",
+      "estado": "ERROR",
+      "palabras": 480,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "puente-eje-tgi",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'puente-eje-tgi'",
+        "Faltan 3 campos: territorio, dimension_tgi, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\puentes_tgi\\EJE-FA_Ambiente_Riesgo.md",
+      "carpeta": "01_PDOT\\puentes_tgi",
+      "estado": "ERROR",
+      "palabras": 414,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "puente-eje-tgi",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'puente-eje-tgi'",
+        "Faltan 3 campos: territorio, dimension_tgi, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "01_PDOT\\puentes_tgi\\EJE-PI_Institucional_Ejecucion.md",
+      "carpeta": "01_PDOT\\puentes_tgi",
+      "estado": "ERROR",
+      "palabras": 469,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "puente-eje-tgi",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'puente-eje-tgi'",
+        "Faltan 3 campos: territorio, dimension_tgi, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\01_CONSTITUCION\\_Indice_Constitucion.md",
+      "carpeta": "02_NORMATIVA\\01_CONSTITUCION",
+      "estado": "ERROR",
+      "palabras": 810,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fuente_canonica"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre"
+      ],
+      "tipo_nota": "indice-modulo",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'indice-modulo'",
+        "Faltan 3 campos: territorio, dimension_tgi, fuente_canonica",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\01_CONSTITUCION\\CONST-Buen-Vivir-Servicios-Ambiente.md",
+      "carpeta": "02_NORMATIVA\\01_CONSTITUCION",
+      "estado": "WARN",
+      "palabras": 1478,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "normativa-constitucional",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'normativa-constitucional'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\01_CONSTITUCION\\CONST-Competencias-Municipales.md",
+      "carpeta": "02_NORMATIVA\\01_CONSTITUCION",
+      "estado": "WARN",
+      "palabras": 1691,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "normativa-constitucional",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'normativa-constitucional'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\01_CONSTITUCION\\CONST-Planificacion-Presupuesto.md",
+      "carpeta": "02_NORMATIVA\\01_CONSTITUCION",
+      "estado": "WARN",
+      "palabras": 1355,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "normativa-constitucional",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'normativa-constitucional'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\01_CONSTITUCION\\CONST-Principios-Estado-GAD.md",
+      "carpeta": "02_NORMATIVA\\01_CONSTITUCION",
+      "estado": "WARN",
+      "palabras": 1155,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "normativa-constitucional",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'normativa-constitucional'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\02_COOTAD\\_Indice_COOTAD.md",
+      "carpeta": "02_NORMATIVA\\02_COOTAD",
+      "estado": "ERROR",
+      "palabras": 1003,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fuente_canonica"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre"
+      ],
+      "tipo_nota": "indice-modulo",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'indice-modulo'",
+        "Faltan 3 campos: territorio, dimension_tgi, fuente_canonica",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\02_COOTAD\\COOTAD-Competencias-Sectoriales.md",
+      "carpeta": "02_NORMATIVA\\02_COOTAD",
+      "estado": "WARN",
+      "palabras": 1637,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "normativa-cootad",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'normativa-cootad'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\02_COOTAD\\COOTAD-Planificacion-Participativa.md",
+      "carpeta": "02_NORMATIVA\\02_COOTAD",
+      "estado": "WARN",
+      "palabras": 1571,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "normativa-cootad",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'normativa-cootad'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\02_COOTAD\\COOTAD-Principios-GAD-Municipal.md",
+      "carpeta": "02_NORMATIVA\\02_COOTAD",
+      "estado": "WARN",
+      "palabras": 2002,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "normativa-cootad",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'normativa-cootad'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\02_COOTAD\\COOTAD-Recursos-Presupuesto.md",
+      "carpeta": "02_NORMATIVA\\02_COOTAD",
+      "estado": "WARN",
+      "palabras": 1521,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "normativa-cootad",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'normativa-cootad'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\02_COOTAD\\COOTAD-Reforma-2026-Inversion.md",
+      "carpeta": "02_NORMATIVA\\02_COOTAD",
+      "estado": "WARN",
+      "palabras": 1380,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "normativa-reforma-cootad",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'normativa-reforma-cootad'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\03_COPFP\\_Indice_CPFP.md",
+      "carpeta": "02_NORMATIVA\\03_COPFP",
+      "estado": "ERROR",
+      "palabras": 971,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fuente_canonica"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre"
+      ],
+      "tipo_nota": "indice-modulo",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'indice-modulo'",
+        "Faltan 3 campos: territorio, dimension_tgi, fuente_canonica",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\03_COPFP\\CPFP-Ciclo-Presupuestario.md",
+      "carpeta": "02_NORMATIVA\\03_COPFP",
+      "estado": "WARN",
+      "palabras": 2078,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "normativa-cpfp",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'normativa-cpfp'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\03_COPFP\\CPFP-PDyOT-GADs-Montecristi.md",
+      "carpeta": "02_NORMATIVA\\03_COPFP",
+      "estado": "WARN",
+      "palabras": 2130,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "normativa-cpfp",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'normativa-cpfp'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\04_REGLAMENTO_COPFP\\_Indice_Reglamento_CPFP.md",
+      "carpeta": "02_NORMATIVA\\04_REGLAMENTO_COPFP",
+      "estado": "ERROR",
+      "palabras": 433,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fuente_canonica"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre"
+      ],
+      "tipo_nota": "indice-modulo",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'indice-modulo'",
+        "Faltan 3 campos: territorio, dimension_tgi, fuente_canonica",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\04_REGLAMENTO_COPFP\\REGLAMENTO-CPFP-Planificacion.md",
+      "carpeta": "02_NORMATIVA\\04_REGLAMENTO_COPFP",
+      "estado": "WARN",
+      "palabras": 1573,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "normativa-reglamento-cpfp",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'normativa-reglamento-cpfp'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\04_REGLAMENTO_COPFP\\REGLAMENTO-CPFP-Presupuesto.md",
+      "carpeta": "02_NORMATIVA\\04_REGLAMENTO_COPFP",
+      "estado": "WARN",
+      "palabras": 1631,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "normativa-reglamento-cpfp",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'normativa-reglamento-cpfp'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\05_LOSNCP\\_Indice_LOSNCP.md",
+      "carpeta": "02_NORMATIVA\\05_LOSNCP",
+      "estado": "ERROR",
+      "palabras": 528,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fuente_canonica"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre"
+      ],
+      "tipo_nota": "indice-modulo",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'indice-modulo'",
+        "Faltan 3 campos: territorio, dimension_tgi, fuente_canonica",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\05_LOSNCP\\LOSNCP-Contratacion-Publica.md",
+      "carpeta": "02_NORMATIVA\\05_LOSNCP",
+      "estado": "WARN",
+      "palabras": 1919,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "normativa-losncp",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'normativa-losncp'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\06_REGLAMENTO_LOSNCP\\_Indice_Reglamento_LOSNCP.md",
+      "carpeta": "02_NORMATIVA\\06_REGLAMENTO_LOSNCP",
+      "estado": "ERROR",
+      "palabras": 432,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fuente_canonica"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre"
+      ],
+      "tipo_nota": "indice-modulo",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'indice-modulo'",
+        "Faltan 3 campos: territorio, dimension_tgi, fuente_canonica",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\06_REGLAMENTO_LOSNCP\\REGLAMENTO-LOSNCP-Contratacion.md",
+      "carpeta": "02_NORMATIVA\\06_REGLAMENTO_LOSNCP",
+      "estado": "WARN",
+      "palabras": 1851,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "normativa-reglamento-losncp",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'normativa-reglamento-losncp'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\07_LOSEP\\_Indice_LOSEP.md",
+      "carpeta": "02_NORMATIVA\\07_LOSEP",
+      "estado": "ERROR",
+      "palabras": 522,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fuente_canonica"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre"
+      ],
+      "tipo_nota": "indice-modulo",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'indice-modulo'",
+        "Faltan 3 campos: territorio, dimension_tgi, fuente_canonica",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\07_LOSEP\\LOSEP-Talento-Humano-Desempeno.md",
+      "carpeta": "02_NORMATIVA\\07_LOSEP",
+      "estado": "WARN",
+      "palabras": 2263,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "normativa-losep",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'normativa-losep'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\08_REGLAMENTO_LOSEP\\_Indice_Reglamento_LOSEP.md",
+      "carpeta": "02_NORMATIVA\\08_REGLAMENTO_LOSEP",
+      "estado": "ERROR",
+      "palabras": 327,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fuente_canonica"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre"
+      ],
+      "tipo_nota": "indice-modulo",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'indice-modulo'",
+        "Faltan 3 campos: territorio, dimension_tgi, fuente_canonica",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\08_REGLAMENTO_LOSEP\\REGLAMENTO-LOSEP-Evaluacion-Seleccion.md",
+      "carpeta": "02_NORMATIVA\\08_REGLAMENTO_LOSEP",
+      "estado": "WARN",
+      "palabras": 1713,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "normativa-reglamento-losep",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'normativa-reglamento-losep'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\09_COA\\_Indice_COA.md",
+      "carpeta": "02_NORMATIVA\\09_COA",
+      "estado": "ERROR",
+      "palabras": 443,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fuente_canonica"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre"
+      ],
+      "tipo_nota": "indice-modulo",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'indice-modulo'",
+        "Faltan 3 campos: territorio, dimension_tgi, fuente_canonica",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\09_COA\\COA-Gestion-Ambiental-GAD-Municipal.md",
+      "carpeta": "02_NORMATIVA\\09_COA",
+      "estado": "WARN",
+      "palabras": 2234,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "normativa-coa",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'normativa-coa'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\10_REGLAMENTO_COA\\_Indice_Reglamento_COA.md",
+      "carpeta": "02_NORMATIVA\\10_REGLAMENTO_COA",
+      "estado": "ERROR",
+      "palabras": 283,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fuente_canonica"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre"
+      ],
+      "tipo_nota": "indice-modulo",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'indice-modulo'",
+        "Faltan 3 campos: territorio, dimension_tgi, fuente_canonica",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\10_REGLAMENTO_COA\\REGLAMENTO-COA-EIA-Territorial.md",
+      "carpeta": "02_NORMATIVA\\10_REGLAMENTO_COA",
+      "estado": "WARN",
+      "palabras": 1163,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "normativa-reglamento-coa",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'normativa-reglamento-coa'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\11_LOTAIP\\_Indice_LOTAIP.md",
+      "carpeta": "02_NORMATIVA\\11_LOTAIP",
+      "estado": "ERROR",
+      "palabras": 447,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fuente_canonica"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre"
+      ],
+      "tipo_nota": "indice-modulo",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'indice-modulo'",
+        "Faltan 3 campos: territorio, dimension_tgi, fuente_canonica",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\11_LOTAIP\\LOTAIP-Transparencia-GAD.md",
+      "carpeta": "02_NORMATIVA\\11_LOTAIP",
+      "estado": "WARN",
+      "palabras": 2242,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "normativa-lotaip",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'normativa-lotaip'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\12_REGLAMENTO_LOTAIP\\_Indice_Reglamento_LOTAIP.md",
+      "carpeta": "02_NORMATIVA\\12_REGLAMENTO_LOTAIP",
+      "estado": "ERROR",
+      "palabras": 448,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fuente_canonica"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre"
+      ],
+      "tipo_nota": "indice-modulo",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'indice-modulo'",
+        "Faltan 3 campos: territorio, dimension_tgi, fuente_canonica",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\12_REGLAMENTO_LOTAIP\\REGLAMENTO-LOTAIP-Comites-Transparencia.md",
+      "carpeta": "02_NORMATIVA\\12_REGLAMENTO_LOTAIP",
+      "estado": "WARN",
+      "palabras": 2084,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "normativa-reglamento-lotaip",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'normativa-reglamento-lotaip'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\13_GUIAS_LOTAIP\\_Indice_Guias_LOTAIP.md",
+      "carpeta": "02_NORMATIVA\\13_GUIAS_LOTAIP",
+      "estado": "ERROR",
+      "palabras": 474,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fuente_canonica"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre"
+      ],
+      "tipo_nota": "indice-modulo",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'indice-modulo'",
+        "Faltan 3 campos: territorio, dimension_tgi, fuente_canonica",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\13_GUIAS_LOTAIP\\GUIAS-LOTAIP-Cumplimiento-Metodologia.md",
+      "carpeta": "02_NORMATIVA\\13_GUIAS_LOTAIP",
+      "estado": "WARN",
+      "palabras": 2363,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "normativa-guia-lotaip",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'normativa-guia-lotaip'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\14_LOPC\\_Indice_LOPC.md",
+      "carpeta": "02_NORMATIVA\\14_LOPC",
+      "estado": "ERROR",
+      "palabras": 605,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fuente_canonica"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre"
+      ],
+      "tipo_nota": "indice-modulo",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'indice-modulo'",
+        "Faltan 3 campos: territorio, dimension_tgi, fuente_canonica",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\14_LOPC\\LOPC-Participacion-Presupuesto-Rendicion.md",
+      "carpeta": "02_NORMATIVA\\14_LOPC",
+      "estado": "WARN",
+      "palabras": 3098,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "normativa-ley-lopc",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'normativa-ley-lopc'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\15_LOTUGS\\_Indice_LOTUGS.md",
+      "carpeta": "02_NORMATIVA\\15_LOTUGS",
+      "estado": "WARN",
+      "palabras": 634,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "indice-capa",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'indice-capa'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\15_LOTUGS\\LOTUGS-Ordenamiento-Territorial-Suelo.md",
+      "carpeta": "02_NORMATIVA\\15_LOTUGS",
+      "estado": "WARN",
+      "palabras": 2571,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "normativa-ley-lotugs",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'normativa-ley-lotugs'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\16_COAD\\_Indice_COAD.md",
+      "carpeta": "02_NORMATIVA\\16_COAD",
+      "estado": "WARN",
+      "palabras": 742,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "indice-capa",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'indice-capa'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\16_COAD\\COAD-Procedimiento-Administrativo.md",
+      "carpeta": "02_NORMATIVA\\16_COAD",
+      "estado": "WARN",
+      "palabras": 2192,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "normativa-codigo-administrativo",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'normativa-codigo-administrativo'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\17_LOIPEVM\\_Indice_LOIPEVM.md",
+      "carpeta": "02_NORMATIVA\\17_LOIPEVM",
+      "estado": "WARN",
+      "palabras": 713,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "indice-capa",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'indice-capa'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\17_LOIPEVM\\LOIPEVM-Violencia-Mujeres-GAD.md",
+      "carpeta": "02_NORMATIVA\\17_LOIPEVM",
+      "estado": "WARN",
+      "palabras": 2199,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "normativa-ley-loipevm",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'normativa-ley-loipevm'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\18_LEY_ECONOMIA_MUJERES\\_Indice_Ley_Economia_Mujeres.md",
+      "carpeta": "02_NORMATIVA\\18_LEY_ECONOMIA_MUJERES",
+      "estado": "WARN",
+      "palabras": 719,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "indice-capa",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'indice-capa'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\18_LEY_ECONOMIA_MUJERES\\LEY-ECONOMIA-MUJERES-Emprendimiento.md",
+      "carpeta": "02_NORMATIVA\\18_LEY_ECONOMIA_MUJERES",
+      "estado": "WARN",
+      "palabras": 1741,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "normativa-ley-economia-mujeres",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'normativa-ley-economia-mujeres'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\19_CODIGO_DEMOCRACIA\\_Indice_Codigo_Democracia.md",
+      "carpeta": "02_NORMATIVA\\19_CODIGO_DEMOCRACIA",
+      "estado": "WARN",
+      "palabras": 358,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "indice-modulo",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'indice-modulo'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\19_CODIGO_DEMOCRACIA\\CODIGO-DEMOCRACIA-Electoral-Participacion.md",
+      "carpeta": "02_NORMATIVA\\19_CODIGO_DEMOCRACIA",
+      "estado": "WARN",
+      "palabras": 1181,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "nota-normativa",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'nota-normativa'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\20_NORMAS_CGE\\_Indice_Normas_CGE.md",
+      "carpeta": "02_NORMATIVA\\20_NORMAS_CGE",
+      "estado": "WARN",
+      "palabras": 442,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "indice-modulo",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'indice-modulo'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\20_NORMAS_CGE\\NORMAS-CGE-Control-Interno.md",
+      "carpeta": "02_NORMATIVA\\20_NORMAS_CGE",
+      "estado": "WARN",
+      "palabras": 1530,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "nota-normativa",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'nota-normativa'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\21_LEY_TRANSFORMACION_DIGITAL\\_Indice_Ley_Transformacion_Digital.md",
+      "carpeta": "02_NORMATIVA\\21_LEY_TRANSFORMACION_DIGITAL",
+      "estado": "WARN",
+      "palabras": 455,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "indice-modulo",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'indice-modulo'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\21_LEY_TRANSFORMACION_DIGITAL\\LEY-TRANSFORMACION-DIGITAL.md",
+      "carpeta": "02_NORMATIVA\\21_LEY_TRANSFORMACION_DIGITAL",
+      "estado": "WARN",
+      "palabras": 1597,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "nota-normativa",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'nota-normativa'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\22_RESOLUCION_CPCCS_RDC\\_Indice_Reglamento_RDC.md",
+      "carpeta": "02_NORMATIVA\\22_RESOLUCION_CPCCS_RDC",
+      "estado": "WARN",
+      "palabras": 491,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "indice-modulo",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'indice-modulo'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\22_RESOLUCION_CPCCS_RDC\\REGLAMENTO-RDC-CPCCS-2026.md",
+      "carpeta": "02_NORMATIVA\\22_RESOLUCION_CPCCS_RDC",
+      "estado": "WARN",
+      "palabras": 1596,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "nota-normativa",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'nota-normativa'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "02_NORMATIVA\\_Indice_Normativa.md",
+      "carpeta": "02_NORMATIVA",
+      "estado": "ERROR",
+      "palabras": 2371,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fuente_canonica"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre"
+      ],
+      "tipo_nota": "indice-maestro",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'indice-maestro'",
+        "Faltan 3 campos: territorio, dimension_tgi, fuente_canonica",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre"
+      ]
+    },
+    {
+      "archivo": "03_CPFP\\_Índice CPFP.md",
+      "carpeta": "03_CPFP",
+      "estado": "ERROR",
+      "palabras": 667,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fuente_canonica"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha"
+      ],
+      "tipo_nota": "indice",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan 3 campos: territorio, dimension_tgi, fuente_canonica",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha"
+      ]
+    },
+    {
+      "archivo": "03_CPFP\\CPFP-Disposiciones-Generales.md",
+      "carpeta": "03_CPFP",
+      "estado": "WARN",
+      "palabras": 1042,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "norma-curada",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'norma-curada'",
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "03_CPFP\\CPFP-Inversion-Publica-Banco-Proyectos.md",
+      "carpeta": "03_CPFP",
+      "estado": "WARN",
+      "palabras": 1326,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "norma-curada",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'norma-curada'",
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "03_CPFP\\CPFP-PDyOT-GADs-Montecristi.md",
+      "carpeta": "03_CPFP",
+      "estado": "WARN",
+      "palabras": 1404,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "norma-curada",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'norma-curada'",
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "03_CPFP\\CPFP-Sistema-Planificacion-Participativa.md",
+      "carpeta": "03_CPFP",
+      "estado": "WARN",
+      "palabras": 1261,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "norma-curada",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'norma-curada'",
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "04_Constitucion\\_Índice Constitucion.md",
+      "carpeta": "04_Constitucion",
+      "estado": "ERROR",
+      "palabras": 1161,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fuente_canonica"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha"
+      ],
+      "tipo_nota": "indice",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan 3 campos: territorio, dimension_tgi, fuente_canonica",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha"
+      ]
+    },
+    {
+      "archivo": "04_Constitucion\\CONST-Titulo-I-Estado.md",
+      "carpeta": "04_Constitucion",
+      "estado": "WARN",
+      "palabras": 712,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "normativa",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "04_Constitucion\\CONST-Titulo-II-Derechos.md",
+      "carpeta": "04_Constitucion",
+      "estado": "WARN",
+      "palabras": 1676,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "normativa",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "04_Constitucion\\CONST-Titulo-V-Organizacion-Territorial.md",
+      "carpeta": "04_Constitucion",
+      "estado": "WARN",
+      "palabras": 1787,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "normativa",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "04_Constitucion\\CONST-Titulo-VI-Regimen-Desarrollo.md",
+      "carpeta": "04_Constitucion",
+      "estado": "WARN",
+      "palabras": 1494,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "normativa",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "04_Constitucion\\CONST-Titulo-VII-Buen-Vivir.md",
+      "carpeta": "04_Constitucion",
+      "estado": "WARN",
+      "palabras": 2960,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "normativa",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "05_COOTAD\\_Índice COOTAD.md",
+      "carpeta": "05_COOTAD",
+      "estado": "ERROR",
+      "palabras": 1143,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fuente_canonica"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha"
+      ],
+      "tipo_nota": "indice",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan 3 campos: territorio, dimension_tgi, fuente_canonica",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha"
+      ]
+    },
+    {
+      "archivo": "05_COOTAD\\COOTAD-Competencias-Sectoriales.md",
+      "carpeta": "05_COOTAD",
+      "estado": "WARN",
+      "palabras": 1398,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "normativa",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "05_COOTAD\\COOTAD-GAD-Municipal.md",
+      "carpeta": "05_COOTAD",
+      "estado": "WARN",
+      "palabras": 2048,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "normativa",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "05_COOTAD\\COOTAD-Planificacion-Participacion.md",
+      "carpeta": "05_COOTAD",
+      "estado": "WARN",
+      "palabras": 1319,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "normativa",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "05_COOTAD\\COOTAD-Principios-Generales.md",
+      "carpeta": "05_COOTAD",
+      "estado": "WARN",
+      "palabras": 1148,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "normativa",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "05_COOTAD\\COOTAD-Recursos-Presupuesto.md",
+      "carpeta": "05_COOTAD",
+      "estado": "WARN",
+      "palabras": 1565,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "normativa",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "05_COOTAD\\COOTAD-Titulo-IX-Disposiciones-Municipales.md",
+      "carpeta": "05_COOTAD",
+      "estado": "WARN",
+      "palabras": 1227,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "normativa",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "05_LOSEP\\_Índice LOSEP.md",
+      "carpeta": "05_LOSEP",
+      "estado": "ERROR",
+      "palabras": 261,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fuente_canonica"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha"
+      ],
+      "tipo_nota": "indice",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan 3 campos: territorio, dimension_tgi, fuente_canonica",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha"
+      ]
+    },
+    {
+      "archivo": "05_PLANES_NACIONALES\\01_PND\\_Indice_PND.md",
+      "carpeta": "05_PLANES_NACIONALES\\01_PND",
+      "estado": "WARN",
+      "palabras": 417,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "indice-modulo",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'indice-modulo'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "05_PLANES_NACIONALES\\01_PND\\PND-2025-2029-Ecuador-No-Se-Detiene.md",
+      "carpeta": "05_PLANES_NACIONALES\\01_PND",
+      "estado": "WARN",
+      "palabras": 1492,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "plan-nacional-desarrollo",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'plan-nacional-desarrollo'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "05_PLANES_NACIONALES\\02_GUIA_PDOT_SNP\\_Indice_Guia_PDOT_SNP.md",
+      "carpeta": "05_PLANES_NACIONALES\\02_GUIA_PDOT_SNP",
+      "estado": "WARN",
+      "palabras": 313,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "indice-modulo",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'indice-modulo'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "05_PLANES_NACIONALES\\02_GUIA_PDOT_SNP\\GUIA-PDOT-SNP-2023-Metodologia.md",
+      "carpeta": "05_PLANES_NACIONALES\\02_GUIA_PDOT_SNP",
+      "estado": "WARN",
+      "palabras": 1698,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "guia-metodologica-pdot",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'guia-metodologica-pdot'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "05_PLANES_NACIONALES\\03_PAGCC\\_Indice_PAGCC.md",
+      "carpeta": "05_PLANES_NACIONALES\\03_PAGCC",
+      "estado": "WARN",
+      "palabras": 398,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "indice-modulo",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'indice-modulo'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "05_PLANES_NACIONALES\\03_PAGCC\\PAGCC-Genero-Cambio-Climatico-2024.md",
+      "carpeta": "05_PLANES_NACIONALES\\03_PAGCC",
+      "estado": "WARN",
+      "palabras": 1781,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "plan-accion-nacional",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'plan-accion-nacional'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "05_PLANES_NACIONALES\\_Indice_Planes_Nacionales.md",
+      "carpeta": "05_PLANES_NACIONALES",
+      "estado": "ERROR",
+      "palabras": 755,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fuente_canonica"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre"
+      ],
+      "tipo_nota": "indice-maestro",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'indice-maestro'",
+        "Faltan 3 campos: territorio, dimension_tgi, fuente_canonica",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre"
+      ]
+    },
+    {
+      "archivo": "06_Fuentes_Financiamiento\\_Plantilla_Fondo.md",
+      "carpeta": "06_Fuentes_Financiamiento",
+      "estado": "ERROR",
+      "palabras": 501,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "tags",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "nombre",
+        "territorio",
+        "dimension_tgi",
+        "fecha",
+        "estado"
+      ],
+      "campos_alias": [
+        "etiquetas→tags",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "fondo",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan 5 campos: nombre, territorio, dimension_tgi, fecha, estado",
+        "Aliases no canónicos: etiquetas→tags, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "06_Fuentes_Financiamiento\\_Índice_Financiamiento.md",
+      "carpeta": "06_Fuentes_Financiamiento",
+      "estado": "WARN",
+      "palabras": 1896,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "indice",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "06_Fuentes_Financiamiento\\AECID-Cooperacion-Espanola.md",
+      "carpeta": "06_Fuentes_Financiamiento",
+      "estado": "ERROR",
+      "palabras": 920,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "estado"
+      ],
+      "campos_alias": [
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "fondo",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan 3 campos: territorio, dimension_tgi, estado",
+        "Aliases no canónicos: etiquetas→tags, fecha_creacion→fecha, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "06_Fuentes_Financiamiento\\BDE-Credito-Directo.md",
+      "carpeta": "06_Fuentes_Financiamiento",
+      "estado": "WARN",
+      "palabras": 1142,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "fondo",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: etiquetas→tags, fecha_creacion→fecha, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "06_Fuentes_Financiamiento\\BDE-PremioVerde-Manglar.md",
+      "carpeta": "06_Fuentes_Financiamiento",
+      "estado": "WARN",
+      "palabras": 828,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "fondo",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: etiquetas→tags, fecha_creacion→fecha, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "06_Fuentes_Financiamiento\\BEI-PROGAPSA-Alcantarillado.md",
+      "carpeta": "06_Fuentes_Financiamiento",
+      "estado": "WARN",
+      "palabras": 955,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "fondo",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: etiquetas→tags, fecha_creacion→fecha, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "06_Fuentes_Financiamiento\\BID-Infraestructura-Clima.md",
+      "carpeta": "06_Fuentes_Financiamiento",
+      "estado": "WARN",
+      "palabras": 1052,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "fondo",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: etiquetas→tags, fecha_creacion→fecha, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "06_Fuentes_Financiamiento\\CAF-Credito-Desarrollo.md",
+      "carpeta": "06_Fuentes_Financiamiento",
+      "estado": "WARN",
+      "palabras": 928,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "fondo",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: etiquetas→tags, fecha_creacion→fecha, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "06_Fuentes_Financiamiento\\CATASTRO_Global_Fondos.md",
+      "carpeta": "06_Fuentes_Financiamiento",
+      "estado": "ERROR",
+      "palabras": 1993,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "estado"
+      ],
+      "campos_alias": [
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "catalogo",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'catalogo'",
+        "Faltan 3 campos: territorio, dimension_tgi, estado",
+        "Aliases no canónicos: etiquetas→tags, fecha_creacion→fecha, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "06_Fuentes_Financiamiento\\CELEC-Compensacion-Estudios.md",
+      "carpeta": "06_Fuentes_Financiamiento",
+      "estado": "WARN",
+      "palabras": 950,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "fondo",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: etiquetas→tags, fecha_creacion→fecha, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "06_Fuentes_Financiamiento\\COSUDE-Cooperacion-Suiza.md",
+      "carpeta": "06_Fuentes_Financiamiento",
+      "estado": "ERROR",
+      "palabras": 764,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "estado"
+      ],
+      "campos_alias": [
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "fondo",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan 3 campos: territorio, dimension_tgi, estado",
+        "Aliases no canónicos: etiquetas→tags, fecha_creacion→fecha, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "06_Fuentes_Financiamiento\\DASHBOARD_Financiamiento.md",
+      "carpeta": "06_Fuentes_Financiamiento",
+      "estado": "ERROR",
+      "palabras": 822,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "estado"
+      ],
+      "campos_alias": [
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "dashboard",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan 3 campos: territorio, dimension_tgi, estado",
+        "Aliases no canónicos: etiquetas→tags, fecha_creacion→fecha, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "06_Fuentes_Financiamiento\\Embajada-Canada-CFLI.md",
+      "carpeta": "06_Fuentes_Financiamiento",
+      "estado": "ERROR",
+      "palabras": 967,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "estado"
+      ],
+      "campos_alias": [
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "fondo",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan 3 campos: territorio, dimension_tgi, estado",
+        "Aliases no canónicos: etiquetas→tags, fecha_creacion→fecha, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "06_Fuentes_Financiamiento\\Embajada-Japon-GGP.md",
+      "carpeta": "06_Fuentes_Financiamiento",
+      "estado": "ERROR",
+      "palabras": 1159,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "estado"
+      ],
+      "campos_alias": [
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "fondo",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan 3 campos: territorio, dimension_tgi, estado",
+        "Aliases no canónicos: etiquetas→tags, fecha_creacion→fecha, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "06_Fuentes_Financiamiento\\Ford-Foundation.md",
+      "carpeta": "06_Fuentes_Financiamiento",
+      "estado": "ERROR",
+      "palabras": 1027,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "estado"
+      ],
+      "campos_alias": [
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "fondo",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan 3 campos: territorio, dimension_tgi, estado",
+        "Aliases no canónicos: etiquetas→tags, fecha_creacion→fecha, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "06_Fuentes_Financiamiento\\GCF-Fondo-Verde-Clima.md",
+      "carpeta": "06_Fuentes_Financiamiento",
+      "estado": "ERROR",
+      "palabras": 916,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "estado"
+      ],
+      "campos_alias": [
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "fondo",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan 3 campos: territorio, dimension_tgi, estado",
+        "Aliases no canónicos: etiquetas→tags, fecha_creacion→fecha, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "06_Fuentes_Financiamiento\\GEF-SGP-Pequenas-Donaciones.md",
+      "carpeta": "06_Fuentes_Financiamiento",
+      "estado": "ERROR",
+      "palabras": 961,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "estado"
+      ],
+      "campos_alias": [
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "fondo",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan 3 campos: territorio, dimension_tgi, estado",
+        "Aliases no canónicos: etiquetas→tags, fecha_creacion→fecha, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "06_Fuentes_Financiamiento\\GIZ-Cooperacion-Alemana.md",
+      "carpeta": "06_Fuentes_Financiamiento",
+      "estado": "WARN",
+      "palabras": 1048,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "fondo",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: etiquetas→tags, fecha_creacion→fecha, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "06_Fuentes_Financiamiento\\NED-Democracia-Sociedad-Civil.md",
+      "carpeta": "06_Fuentes_Financiamiento",
+      "estado": "ERROR",
+      "palabras": 972,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "estado"
+      ],
+      "campos_alias": [
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "fondo",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan 3 campos: territorio, dimension_tgi, estado",
+        "Aliases no canónicos: etiquetas→tags, fecha_creacion→fecha, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "06_Fuentes_Financiamiento\\Open-Society-Foundations.md",
+      "carpeta": "06_Fuentes_Financiamiento",
+      "estado": "ERROR",
+      "palabras": 1052,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "estado"
+      ],
+      "campos_alias": [
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "fondo",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan 3 campos: territorio, dimension_tgi, estado",
+        "Aliases no canónicos: etiquetas→tags, fecha_creacion→fecha, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "06_Fuentes_Financiamiento\\PNUD-Desarrollo-Local.md",
+      "carpeta": "06_Fuentes_Financiamiento",
+      "estado": "ERROR",
+      "palabras": 715,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "estado"
+      ],
+      "campos_alias": [
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "fondo",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan 3 campos: territorio, dimension_tgi, estado",
+        "Aliases no canónicos: etiquetas→tags, fecha_creacion→fecha, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "06_Fuentes_Financiamiento\\USAID-Gobernanza-Inclusion.md",
+      "carpeta": "06_Fuentes_Financiamiento",
+      "estado": "WARN",
+      "palabras": 1065,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi"
+      ],
+      "campos_alias": [
+        "etiquetas→tags",
+        "fecha_creacion→fecha",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "fondo",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan: territorio, dimension_tgi",
+        "Aliases no canónicos: etiquetas→tags, fecha_creacion→fecha, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "06_Sentinel\\_Índice Sentinel.md",
+      "carpeta": "06_Sentinel",
+      "estado": "ERROR",
+      "palabras": 317,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fuente_canonica"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha"
+      ],
+      "tipo_nota": "indice",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan 3 campos: territorio, dimension_tgi, fuente_canonica",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha"
+      ]
+    },
+    {
+      "archivo": "06_Sentinel\\glosario\\Glosario Institucional.md",
+      "carpeta": "06_Sentinel\\glosario",
+      "estado": "ERROR",
+      "palabras": 1100,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fuente_canonica"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha"
+      ],
+      "tipo_nota": "referencia",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'referencia'",
+        "Faltan 3 campos: territorio, dimension_tgi, fuente_canonica",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha"
+      ]
+    },
+    {
+      "archivo": "07_Indicadores\\_Índice Indicadores.md",
+      "carpeta": "07_Indicadores",
+      "estado": "ERROR",
+      "palabras": 422,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fuente_canonica"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha"
+      ],
+      "tipo_nota": "indice",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan 3 campos: territorio, dimension_tgi, fuente_canonica",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha"
+      ]
+    },
+    {
+      "archivo": "07_TGI_Parroquias\\_Índice_Parroquias.md",
+      "carpeta": "07_TGI_Parroquias",
+      "estado": "ERROR",
+      "palabras": 462,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "tags",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "indice-modulo",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'indice-modulo'",
+        "Faltan 4 campos: territorio, dimension_tgi, tags, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "07_TGI_Parroquias\\P-01_Montecristi.md",
+      "carpeta": "07_TGI_Parroquias",
+      "estado": "ERROR",
+      "palabras": 432,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "parroquia-tgi",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan 5 campos: territorio, dimension_tgi, tags, fecha, estado",
+        "Aliases no canónicos: tipo→tipo_nota, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "07_TGI_Parroquias\\P-02_Anibal_San_Andres.md",
+      "carpeta": "07_TGI_Parroquias",
+      "estado": "ERROR",
+      "palabras": 441,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "parroquia-tgi",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan 5 campos: territorio, dimension_tgi, tags, fecha, estado",
+        "Aliases no canónicos: tipo→tipo_nota, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "07_TGI_Parroquias\\P-03_Colorado.md",
+      "carpeta": "07_TGI_Parroquias",
+      "estado": "ERROR",
+      "palabras": 484,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "parroquia-tgi",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan 5 campos: territorio, dimension_tgi, tags, fecha, estado",
+        "Aliases no canónicos: tipo→tipo_nota, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "07_TGI_Parroquias\\P-04_Leonidas_Proano.md",
+      "carpeta": "07_TGI_Parroquias",
+      "estado": "ERROR",
+      "palabras": 444,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "parroquia-tgi",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan 5 campos: territorio, dimension_tgi, tags, fecha, estado",
+        "Aliases no canónicos: tipo→tipo_nota, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "07_TGI_Parroquias\\P-05_Gral_Alfaro.md",
+      "carpeta": "07_TGI_Parroquias",
+      "estado": "ERROR",
+      "palabras": 440,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "parroquia-tgi",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan 5 campos: territorio, dimension_tgi, tags, fecha, estado",
+        "Aliases no canónicos: tipo→tipo_nota, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "07_TGI_Parroquias\\P-06_Isabel_Muentes.md",
+      "carpeta": "07_TGI_Parroquias",
+      "estado": "ERROR",
+      "palabras": 491,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "parroquia-tgi",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan 5 campos: territorio, dimension_tgi, tags, fecha, estado",
+        "Aliases no canónicos: tipo→tipo_nota, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "07_TGI_Parroquias\\P-07_La_Pila.md",
+      "carpeta": "07_TGI_Parroquias",
+      "estado": "ERROR",
+      "palabras": 470,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "parroquia-tgi",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan 5 campos: territorio, dimension_tgi, tags, fecha, estado",
+        "Aliases no canónicos: tipo→tipo_nota, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "07_TGI_Parroquias\\TGI_Cantonal.md",
+      "carpeta": "07_TGI_Parroquias",
+      "estado": "ERROR",
+      "palabras": 683,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "fuente→fuente_canonica"
+      ],
+      "tipo_nota": "dashboard-cantonal",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'dashboard-cantonal'",
+        "Faltan 3 campos: territorio, dimension_tgi, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, fuente→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "08_EJECUCION\\_Índice_Ejecucion.md",
+      "carpeta": "08_EJECUCION",
+      "estado": "WARN",
+      "palabras": 469,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "indice-modulo",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'indice-modulo'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "08_EJECUCION\\FUENTES_Holding_Operativa.md",
+      "carpeta": "08_EJECUCION",
+      "estado": "WARN",
+      "palabras": 989,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "registro-fuentes",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'registro-fuentes'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "08_EJECUCION\\ICM_SIGAD_2023_2024.md",
+      "carpeta": "08_EJECUCION",
+      "estado": "WARN",
+      "palabras": 828,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "icm-sigad",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'icm-sigad'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "08_EJECUCION\\ORGANICO_040_2025.md",
+      "carpeta": "08_EJECUCION",
+      "estado": "WARN",
+      "palabras": 1200,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "normativa-interna",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'normativa-interna'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "08_EJECUCION\\PAC_2026_Contexto.md",
+      "carpeta": "08_EJECUCION",
+      "estado": "WARN",
+      "palabras": 642,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "contexto-operativo",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'contexto-operativo'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "08_EJECUCION\\Plan_CNE_Alcalde_Montecristi.md",
+      "carpeta": "08_EJECUCION",
+      "estado": "WARN",
+      "palabras": 1601,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "plan-trabajo-cne",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'plan-trabajo-cne'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "08_EJECUCION\\POA_2026_Contexto.md",
+      "carpeta": "08_EJECUCION",
+      "estado": "WARN",
+      "palabras": 566,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "contexto-operativo",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'contexto-operativo'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "08_EJECUCION\\RDC_Holding_2023_2024.md",
+      "carpeta": "08_EJECUCION",
+      "estado": "WARN",
+      "palabras": 552,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "rendicion-cuentas",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'rendicion-cuentas'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "08_EJECUCION\\TRAYECTORIA_2023_2026.md",
+      "carpeta": "08_EJECUCION",
+      "estado": "WARN",
+      "palabras": 1279,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "fuente_canonica"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "estado"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "gold_master→fuente_canonica"
+      ],
+      "tipo_nota": "trayectoria-historica",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'trayectoria-historica'",
+        "Faltan: territorio, estado",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, gold_master→fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "08_Plantillas\\Plantilla-Caso.md",
+      "carpeta": "08_Plantillas",
+      "estado": "ERROR",
+      "palabras": 232,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fuente_canonica"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha"
+      ],
+      "tipo_nota": "plantilla",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan 3 campos: territorio, dimension_tgi, fuente_canonica",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha"
+      ]
+    },
+    {
+      "archivo": "08_Plantillas\\Plantilla-Indicador.md",
+      "carpeta": "08_Plantillas",
+      "estado": "ERROR",
+      "palabras": 233,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fuente_canonica"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha"
+      ],
+      "tipo_nota": "plantilla",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan 3 campos: territorio, dimension_tgi, fuente_canonica",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha"
+      ]
+    },
+    {
+      "archivo": "08_Plantillas\\Plantilla-Meta.md",
+      "carpeta": "08_Plantillas",
+      "estado": "ERROR",
+      "palabras": 190,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fuente_canonica"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha"
+      ],
+      "tipo_nota": "plantilla",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan 3 campos: territorio, dimension_tgi, fuente_canonica",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha"
+      ]
+    },
+    {
+      "archivo": "08_Plantillas\\Plantilla-Norma.md",
+      "carpeta": "08_Plantillas",
+      "estado": "ERROR",
+      "palabras": 154,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fuente_canonica"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha"
+      ],
+      "tipo_nota": "plantilla",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan 3 campos: territorio, dimension_tgi, fuente_canonica",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha"
+      ]
+    },
+    {
+      "archivo": "08_Plantillas\\Plantilla-Parroquia.md",
+      "carpeta": "08_Plantillas",
+      "estado": "ERROR",
+      "palabras": 218,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha",
+        "estado"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "fuente_canonica"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre",
+        "etiquetas→tags",
+        "fecha_creacion→fecha"
+      ],
+      "tipo_nota": "plantilla",
+      "tipo_valido": true,
+      "problemas": [
+        "Faltan 3 campos: territorio, dimension_tgi, fuente_canonica",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre, etiquetas→tags, fecha_creacion→fecha"
+      ]
+    },
+    {
+      "archivo": "COAD-Acto-Administrativo.md",
+      "carpeta": ".",
+      "estado": "ERROR",
+      "palabras": 0,
+      "tiene_yaml": false,
+      "campos_ok": [],
+      "campos_faltantes": [
+        "tipo_nota",
+        "nombre",
+        "territorio",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_alias": [],
+      "tipo_nota": "",
+      "tipo_valido": false,
+      "problemas": [
+        "Nota vacía o casi vacía",
+        "Faltan 8 campos: tipo_nota, nombre, territorio, dimension_tgi, tags, fecha, estado, fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "Concejo Municipal de Montecristi.md",
+      "carpeta": ".",
+      "estado": "ERROR",
+      "palabras": 0,
+      "tiene_yaml": false,
+      "campos_ok": [],
+      "campos_faltantes": [
+        "tipo_nota",
+        "nombre",
+        "territorio",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_alias": [],
+      "tipo_nota": "",
+      "tipo_valido": false,
+      "problemas": [
+        "Nota vacía o casi vacía",
+        "Faltan 8 campos: tipo_nota, nombre, territorio, dimension_tgi, tags, fecha, estado, fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "COOTAD-Gobierno-Local.md",
+      "carpeta": ".",
+      "estado": "ERROR",
+      "palabras": 0,
+      "tiene_yaml": false,
+      "campos_ok": [],
+      "campos_faltantes": [
+        "tipo_nota",
+        "nombre",
+        "territorio",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_alias": [],
+      "tipo_nota": "",
+      "tipo_valido": false,
+      "problemas": [
+        "Nota vacía o casi vacía",
+        "Faltan 8 campos: tipo_nota, nombre, territorio, dimension_tgi, tags, fecha, estado, fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "COPFP-Planificacion-Finanzas.md",
+      "carpeta": ".",
+      "estado": "ERROR",
+      "palabras": 0,
+      "tiene_yaml": false,
+      "campos_ok": [],
+      "campos_faltantes": [
+        "tipo_nota",
+        "nombre",
+        "territorio",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_alias": [],
+      "tipo_nota": "",
+      "tipo_valido": false,
+      "problemas": [
+        "Nota vacía o casi vacía",
+        "Faltan 8 campos: tipo_nota, nombre, territorio, dimension_tgi, tags, fecha, estado, fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "DIAG-Ambiental.md",
+      "carpeta": ".",
+      "estado": "ERROR",
+      "palabras": 0,
+      "tiene_yaml": false,
+      "campos_ok": [],
+      "campos_faltantes": [
+        "tipo_nota",
+        "nombre",
+        "territorio",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_alias": [],
+      "tipo_nota": "",
+      "tipo_valido": false,
+      "problemas": [
+        "Nota vacía o casi vacía",
+        "Faltan 8 campos: tipo_nota, nombre, territorio, dimension_tgi, tags, fecha, estado, fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "DIAG-Demo grafia.md",
+      "carpeta": ".",
+      "estado": "ERROR",
+      "palabras": 0,
+      "tiene_yaml": false,
+      "campos_ok": [],
+      "campos_faltantes": [
+        "tipo_nota",
+        "nombre",
+        "territorio",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_alias": [],
+      "tipo_nota": "",
+      "tipo_valido": false,
+      "problemas": [
+        "Nota vacía o casi vacía",
+        "Faltan 8 campos: tipo_nota, nombre, territorio, dimension_tgi, tags, fecha, estado, fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "DIAG-Economia-Productivo.md",
+      "carpeta": ".",
+      "estado": "ERROR",
+      "palabras": 0,
+      "tiene_yaml": false,
+      "campos_ok": [],
+      "campos_faltantes": [
+        "tipo_nota",
+        "nombre",
+        "territorio",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_alias": [],
+      "tipo_nota": "",
+      "tipo_valido": false,
+      "problemas": [
+        "Nota vacía o casi vacía",
+        "Faltan 8 campos: tipo_nota, nombre, territorio, dimension_tgi, tags, fecha, estado, fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "enlace.md",
+      "carpeta": ".",
+      "estado": "ERROR",
+      "palabras": 0,
+      "tiene_yaml": false,
+      "campos_ok": [],
+      "campos_faltantes": [
+        "tipo_nota",
+        "nombre",
+        "territorio",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_alias": [],
+      "tipo_nota": "",
+      "tipo_valido": false,
+      "problemas": [
+        "Nota vacía o casi vacía",
+        "Faltan 8 campos: tipo_nota, nombre, territorio, dimension_tgi, tags, fecha, estado, fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "F-CAF.md",
+      "carpeta": ".",
+      "estado": "ERROR",
+      "palabras": 0,
+      "tiene_yaml": false,
+      "campos_ok": [],
+      "campos_faltantes": [
+        "tipo_nota",
+        "nombre",
+        "territorio",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_alias": [],
+      "tipo_nota": "",
+      "tipo_valido": false,
+      "problemas": [
+        "Nota vacía o casi vacía",
+        "Faltan 8 campos: tipo_nota, nombre, territorio, dimension_tgi, tags, fecha, estado, fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "GADM Montecristi.md",
+      "carpeta": ".",
+      "estado": "ERROR",
+      "palabras": 0,
+      "tiene_yaml": false,
+      "campos_ok": [],
+      "campos_faltantes": [
+        "tipo_nota",
+        "nombre",
+        "territorio",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_alias": [],
+      "tipo_nota": "",
+      "tipo_valido": false,
+      "problemas": [
+        "Nota vacía o casi vacía",
+        "Faltan 8 campos: tipo_nota, nombre, territorio, dimension_tgi, tags, fecha, estado, fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "Leonidas Proaño.md",
+      "carpeta": ".",
+      "estado": "ERROR",
+      "palabras": 0,
+      "tiene_yaml": false,
+      "campos_ok": [],
+      "campos_faltantes": [
+        "tipo_nota",
+        "nombre",
+        "territorio",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_alias": [],
+      "tipo_nota": "",
+      "tipo_valido": false,
+      "problemas": [
+        "Nota vacía o casi vacía",
+        "Faltan 8 campos: tipo_nota, nombre, territorio, dimension_tgi, tags, fecha, estado, fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "LOTAIP-Transparencia-Informacion-Publica.md",
+      "carpeta": ".",
+      "estado": "ERROR",
+      "palabras": 0,
+      "tiene_yaml": false,
+      "campos_ok": [],
+      "campos_faltantes": [
+        "tipo_nota",
+        "nombre",
+        "territorio",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_alias": [],
+      "tipo_nota": "",
+      "tipo_valido": false,
+      "problemas": [
+        "Nota vacía o casi vacía",
+        "Faltan 8 campos: tipo_nota, nombre, territorio, dimension_tgi, tags, fecha, estado, fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "PDyOT-Bicentenario-Montecristi.md",
+      "carpeta": ".",
+      "estado": "ERROR",
+      "palabras": 135,
+      "tiene_yaml": true,
+      "campos_ok": [
+        "tipo_nota",
+        "nombre",
+        "tags",
+        "fecha"
+      ],
+      "campos_faltantes": [
+        "territorio",
+        "dimension_tgi",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_alias": [
+        "tipo→tipo_nota",
+        "name→nombre"
+      ],
+      "tipo_nota": "redirect",
+      "tipo_valido": false,
+      "problemas": [
+        "tipo_nota desconocido: 'redirect'",
+        "Faltan 4 campos: territorio, dimension_tgi, estado, fuente_canonica",
+        "Aliases no canónicos: tipo→tipo_nota, name→nombre"
+      ]
+    },
+    {
+      "archivo": "Plan Nacional de Desarrollo.md",
+      "carpeta": ".",
+      "estado": "ERROR",
+      "palabras": 0,
+      "tiene_yaml": false,
+      "campos_ok": [],
+      "campos_faltantes": [
+        "tipo_nota",
+        "nombre",
+        "territorio",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_alias": [],
+      "tipo_nota": "",
+      "tipo_valido": false,
+      "problemas": [
+        "Nota vacía o casi vacía",
+        "Faltan 8 campos: tipo_nota, nombre, territorio, dimension_tgi, tags, fecha, estado, fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "Presupuesto General del Estado.md",
+      "carpeta": ".",
+      "estado": "ERROR",
+      "palabras": 0,
+      "tiene_yaml": false,
+      "campos_ok": [],
+      "campos_faltantes": [
+        "tipo_nota",
+        "nombre",
+        "territorio",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_alias": [],
+      "tipo_nota": "",
+      "tipo_valido": false,
+      "problemas": [
+        "Nota vacía o casi vacía",
+        "Faltan 8 campos: tipo_nota, nombre, territorio, dimension_tgi, tags, fecha, estado, fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "PUGS.md",
+      "carpeta": ".",
+      "estado": "ERROR",
+      "palabras": 0,
+      "tiene_yaml": false,
+      "campos_ok": [],
+      "campos_faltantes": [
+        "tipo_nota",
+        "nombre",
+        "territorio",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_alias": [],
+      "tipo_nota": "",
+      "tipo_valido": false,
+      "problemas": [
+        "Nota vacía o casi vacía",
+        "Faltan 8 campos: tipo_nota, nombre, territorio, dimension_tgi, tags, fecha, estado, fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "Sistema Nacional Descentralizado de Planificación Participativa.md",
+      "carpeta": ".",
+      "estado": "ERROR",
+      "palabras": 0,
+      "tiene_yaml": false,
+      "campos_ok": [],
+      "campos_faltantes": [
+        "tipo_nota",
+        "nombre",
+        "territorio",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_alias": [],
+      "tipo_nota": "",
+      "tipo_valido": false,
+      "problemas": [
+        "Nota vacía o casi vacía",
+        "Faltan 8 campos: tipo_nota, nombre, territorio, dimension_tgi, tags, fecha, estado, fuente_canonica"
+      ]
+    },
+    {
+      "archivo": "{{Nombre del programa}}.md",
+      "carpeta": ".",
+      "estado": "ERROR",
+      "palabras": 0,
+      "tiene_yaml": false,
+      "campos_ok": [],
+      "campos_faltantes": [
+        "tipo_nota",
+        "nombre",
+        "territorio",
+        "dimension_tgi",
+        "tags",
+        "fecha",
+        "estado",
+        "fuente_canonica"
+      ],
+      "campos_alias": [],
+      "tipo_nota": "",
+      "tipo_valido": false,
+      "problemas": [
+        "Nota vacía o casi vacía",
+        "Faltan 8 campos: tipo_nota, nombre, territorio, dimension_tgi, tags, fecha, estado, fuente_canonica"
+      ]
+    }
+  ]
+}

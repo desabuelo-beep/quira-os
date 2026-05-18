@@ -1,0 +1,23 @@
+# SENTINEL RAG — Dependencias adicionales
+# Instalar con: pip install -r requirements_rag.txt
+# NO reemplaza requirements.txt (Streamlit PMV) — es un addon
+
+# ── EMBEDDINGS LOCAL (gratis, sin API, español nativo) ────────────────────────
+sentence-transformers>=2.7.0
+
+# ── VECTOR DATABASE LOCAL ────────────────────────────────────────────────────
+chromadb>=0.5.0
+
+# ── API FASTAPI (puente Streamlit ↔ Next.js) ─────────────────────────────────
+fastapi>=0.111.0
+uvicorn[standard]>=0.30.0
+
+# ── LLM (Anthropic Claude — solo necesario cuando se active Phase 2) ─────────
+anthropic>=0.30.0
+
+# ── UTILS ─────────────────────────────────────────────────────────────────────
+python-dotenv>=1.0.0   # para leer ANTHROPIC_API_KEY desde .env
+
+# ── INGESTA DOCUMENTAL — Sprint 1.7 ──────────────────────────────────────────
+pypdf>=4.0.0           # extracción texto de PDFs digitales (pure Python, sin deps nativas)
+python-docx>=1.1.0     # extracción texto de DOCX / Word

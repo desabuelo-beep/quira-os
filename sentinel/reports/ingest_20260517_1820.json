@@ -1,0 +1,13 @@
+{
+  "timestamp": "2026-05-17T18:20:30.350307",
+  "index_version": "2026-05-17-01",
+  "vault": "C:\\Proyectos\\QUIRA\\knowledge_base\\QUIRA_KB_Montecristi",
+  "stats": {
+    "total": 219,
+    "procesadas": 202,
+    "saltadas": 17,
+    "chunks": 2018,
+    "errores": 0
+  },
+  "force": false
+}
