@@ -135,8 +135,9 @@ def _map_columns(df: pd.DataFrame) -> dict[str, str]:
         "vigente":      ["vigente", "vig", "codificado_vigente"],
         "saldo":        ["saldo", "sal"],
         "pct_ejecucion":["porcentaje", "pct", "ejecucion", "ejecución", "%"],
-        "partida":      ["partida", "clasificador", "cod_partida"],
+        "partida":      ["partida", "clasificador", "cod_partida", "cuenta"],
         "descripcion":  ["descripcion", "descripción", "nombre", "detalle"],
+        "categoria":    ["categoría", "categoria", "cat"],
         "programa":     ["programa", "prog"],
         "proyecto":     ["proyecto", "proy"],
         "unidad":       ["unidad", "direcc", "entidad", "responsable"],
@@ -153,11 +154,28 @@ def _map_columns(df: pd.DataFrame) -> dict[str, str]:
 
 
 def _to_float(val) -> float:
-    """Convierte valor a float de forma segura."""
+    """
+    Convierte valor a float de forma segura.
+    Maneja formatos:
+      - Europeo (eSIGEF Ecuador): '1.234.567,89' → punto=miles, coma=decimal
+      - Estándar:                 '1234567.89'
+      - Guión como cero:          '-' → 0.0
+    """
     if pd.isna(val):
         return 0.0
     try:
-        s = str(val).replace(",", ".").replace("$", "").replace("%", "").strip()
+        s = str(val).replace("$", "").replace("%", "").strip()
+        if not s or s in ("-", "—", "–", "N/A", "n/a"):
+            return 0.0
+        # Detectar formato europeo: la última coma está después del último punto
+        last_dot   = s.rfind(".")
+        last_comma = s.rfind(",")
+        if last_comma > last_dot:
+            # Formato europeo: 1.234.567,89 → quitar puntos, cambiar coma por punto
+            s = s.replace(".", "").replace(",", ".")
+        else:
+            # Formato estándar o solo punto decimal: quitar comas eventuales
+            s = s.replace(",", "")
         return float(s) if s else 0.0
     except (ValueError, TypeError):
         return 0.0
