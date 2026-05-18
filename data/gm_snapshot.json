@@ -1,0 +1,153 @@
+{
+  "_meta": {
+    "fuente": "SIAP-ICPI_GOLD_MASTER v5.4 — outputs verificados por analista Dylus Lab",
+    "fecha_corte": "2026-05-17",
+    "version_excel": "v5.4_TGI_20260517",
+    "hojas_fuente": "H01_PARÁMETROS · H07b_Ti_INVERSIÓN · H98_TGI_FRAMEWORK · H99_ENGINE_CORE · H63_S0_CNE",
+    "advertencia": "Este archivo contiene ÚNICAMENTE outputs institucionales públicos verificados. El Excel Gold Master es propiedad exclusiva de Dylus Lab y no se distribuye. Prohibido reemplazar estos valores sin validación analítica en el Excel.",
+    "proxima_actualizacion": "Con cédula presupuestaria Q2-2026"
+  },
+
+  "gad": {
+    "nombre": "GAD Municipal de Montecristi",
+    "codigo": "130801",
+    "ruc": "1360000430001",
+    "provincia": "Manabí",
+    "pais": "Ecuador",
+    "alcalde": "Ing. Jonathan Toro Largacha",
+    "periodo": "2023–2027",
+    "inicio_mandato": "2023-05-23",
+    "fin_mandato": "2027-05-23",
+    "promesas_cne": 66,
+    "metas_pdot": 25,
+    "fuente_alcalde": "H01_PARÁMETROS Sección A · H63_S0_CNE_TRAZABILIDAD"
+  },
+
+  "tgi": {
+    "score": 66.85,
+    "clasificacion": "Transición con Riesgos",
+    "rango": "65–74",
+    "color_hex": "#FFB800",
+    "meta_2027": 60.0,
+    "brecha_meta": -6.85,
+    "d1": {
+      "nombre": "Legalidad y Coherencia",
+      "codigo": "D1",
+      "valor": 83.5,
+      "peso": 0.20,
+      "fuente": "H01_PARÁMETROS!B180 — Trust_Score_Metodológico"
+    },
+    "d2": {
+      "nombre": "Fidelidad de Planificación",
+      "codigo": "D2",
+      "valor": 69.93,
+      "peso": 0.20,
+      "fuente": "H01_PARÁMETROS!B15 — ICPI_Real_2025 × 100"
+    },
+    "d3": {
+      "nombre": "Ejecución Presupuestaria",
+      "codigo": "D3",
+      "valor": 59.85,
+      "peso": 0.25,
+      "fuente": "H07b_Ti_INVERSIÓN_eSIGEF!B18 — Ti_2025 × 100 (grupos 7+8)"
+    },
+    "d4": {
+      "nombre": "Equidad Territorial",
+      "codigo": "D4",
+      "valor": 44.8,
+      "peso": 0.25,
+      "fuente": "H99_ENGINE_CORE — IET_PerCápita_adj: Isabel Muentes $40/hab vs $112 cantonal"
+    },
+    "d5": {
+      "nombre": "Capacidad Institucional",
+      "codigo": "D5",
+      "valor": 100.0,
+      "peso": 0.10,
+      "fuente": "H01_PARÁMETROS!B12 — ICM_SNP_SIGAD × 100 = 100%"
+    },
+    "irs": {
+      "valor": 79.7,
+      "clasificacion": "Muy Regresivo",
+      "meta_2027": 45.0,
+      "formula": "IRS = -CORREL(NBI_pct, Inv_PerCapita) × 100",
+      "fuente": "H99_ENGINE_CORE — escenario recomendado v2.1 (w_NBI=50% w_Agua=30% w_Pop=20%)"
+    },
+    "icpi_historico": {
+      "2023": 57.36,
+      "2024": 67.12,
+      "2025": 69.93,
+      "objetivo_2027": 70.0
+    },
+    "fuente_tgi": "H98_TGI_FRAMEWORK · H99_ENGINE_CORE"
+  },
+
+  "financiero": {
+    "presupuesto_total_gad_2026": 26689147,
+    "presupuesto_codificado_grupos78_2026": 22595464,
+    "devengado_q1_2026": 238066,
+    "ti_2025_pct": 59.85,
+    "ti_2026_raw_pct": 1.05,
+    "ti_2026_normalizada_pct": 4.21,
+    "corte_datos": "2026-03 (Q1)",
+    "fondos_bloqueados_est": 3660000,
+    "fondos_bloqueados_detalle": "BDE $3.5M + Gender Bond $95K + ONU Mujeres $65K",
+    "fuente": "H07b_Ti_INVERSIÓN_eSIGEF · H01_PARÁMETROS Sección C"
+  },
+
+  "territorial": {
+    "poblacion_census_2022": 69500,
+    "parroquias_total": 7,
+    "parroquias_rurales": 6,
+    "parroquias_urbanas": 1,
+    "nbi_rural_promedio": 55.7,
+    "cantonal_avg_inv_percapita": 112,
+    "parroquia_critica": "Isabel Muentes",
+    "fuente": "H99_ENGINE_CORE · INEC Censo 2022 · PDOT 2023-2027",
+    "nota_poblacion": "Datos Censo INEC 2022. Actualizar con proyección PDOT cuando esté disponible.",
+    "parroquias": [
+      {
+        "id": "P-01", "nombre": "Montecristi", "tipo": "Urbana",
+        "poblacion_2022": 39800, "nbi_pct": 38.4, "cobertura_agua_pct": 95.0,
+        "inv_percapita_q1": 217, "iet_local_pct": 193.75,
+        "fuente": "H99_ENGINE_CORE"
+      },
+      {
+        "id": "P-02", "nombre": "Aníbal San Andrés", "tipo": "Rural",
+        "poblacion_2022": 5200, "nbi_pct": 52.1, "cobertura_agua_pct": 67.01,
+        "inv_percapita_q1": 58, "iet_local_pct": 51.79,
+        "fuente": "H99_ENGINE_CORE"
+      },
+      {
+        "id": "P-03", "nombre": "Colorado", "tipo": "Rural",
+        "poblacion_2022": 3800, "nbi_pct": 58.7, "cobertura_agua_pct": 38.82,
+        "inv_percapita_q1": 32, "iet_local_pct": 28.57,
+        "fuente": "H99_ENGINE_CORE"
+      },
+      {
+        "id": "P-04", "nombre": "Leónidas Proaño", "tipo": "Rural",
+        "poblacion_2022": 4100, "nbi_pct": 54.3, "cobertura_agua_pct": 100.0,
+        "inv_percapita_q1": 48, "iet_local_pct": 42.86,
+        "fuente": "H99_ENGINE_CORE"
+      },
+      {
+        "id": "P-05", "nombre": "Gral. Alfaro", "tipo": "Rural",
+        "poblacion_2022": 6300, "nbi_pct": 49.8, "cobertura_agua_pct": 100.0,
+        "inv_percapita_q1": 71, "iet_local_pct": 63.39,
+        "fuente": "H99_ENGINE_CORE"
+      },
+      {
+        "id": "P-06", "nombre": "Isabel Muentes", "tipo": "Rural",
+        "poblacion_2022": 5700, "nbi_pct": 61.2, "cobertura_agua_pct": 1.02,
+        "inv_percapita_q1": 40, "iet_local_pct": 35.71,
+        "fuente": "H99_ENGINE_CORE",
+        "alerta": "Parroquia con mayor Composite_Need del cantón — déficit hídrico crítico (1.02% cobertura agua)"
+      },
+      {
+        "id": "P-07", "nombre": "La Pila", "tipo": "Rural",
+        "poblacion_2022": 4600, "nbi_pct": 55.9, "cobertura_agua_pct": 50.0,
+        "inv_percapita_q1": 52, "iet_local_pct": 46.43,
+        "fuente": "H99_ENGINE_CORE"
+      }
+    ]
+  }
+}
