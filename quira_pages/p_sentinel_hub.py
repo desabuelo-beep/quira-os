@@ -10,13 +10,15 @@ PROHIBIDO hardcodear datos institucionales en este archivo.
 Todo dato del GAD proviene exclusivamente de gm_snapshot.json,
 actualizado manualmente por el analista Dylus Lab desde el Excel Gold Master.
 
-Sprint 2.4 · Dylus Lab © 2026
+Sprint 2.4 · UX alineada con html_engine · Dylus Lab © 2026
 """
 from __future__ import annotations
 
 import requests
 import streamlit as st
+import streamlit.components.v1 as components
 
+from quira_pages.html_engine import DEMO_CSS, page_frame, page_header
 from sentinel.gm_loader import (
     load as gm_load,
     get_gad, get_tgi, get_financiero, get_territorial,
@@ -30,223 +32,6 @@ API_BASE    = "http://localhost:8100"
 API_TIMEOUT = 4
 
 
-# ── ESTILOS ────────────────────────────────────────────────────────────────────
-CSS = """
-<style>
-/* ── Variables ── */
-:root {
-  --cyan:   #00D4FF;
-  --green:  #00E096;
-  --amber:  #FFB800;
-  --orange: #FF7800;
-  --red:    #FF4D6D;
-  --muted:  rgba(255,255,255,0.30);
-  --faint:  rgba(255,255,255,0.06);
-  --border: rgba(255,255,255,0.09);
-}
-
-/* ── Bloque título ── */
-.hub-section-label {
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 1.4px;
-  text-transform: uppercase;
-  color: var(--cyan);
-  border-left: 3px solid var(--cyan);
-  padding-left: 9px;
-  margin-bottom: 14px;
-  line-height: 1;
-}
-
-/* ── Tarjeta métrica ── */
-.kpi {
-  background: var(--faint);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 13px 15px;
-  text-align: center;
-  margin-bottom: 8px;
-}
-.kpi-label {
-  font-size: 9px;
-  color: var(--muted);
-  letter-spacing: 0.7px;
-  text-transform: uppercase;
-  margin-bottom: 5px;
-}
-.kpi-val {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 22px;
-  font-weight: 700;
-  line-height: 1;
-}
-.kpi-sub {
-  font-size: 10px;
-  color: var(--muted);
-  margin-top: 4px;
-}
-
-/* ── Barra de progreso ── */
-.progress-wrap {
-  background: rgba(255,255,255,0.06);
-  border-radius: 4px;
-  height: 5px;
-  overflow: hidden;
-  margin-top: 3px;
-}
-.progress-fill {
-  height: 100%;
-  border-radius: 4px;
-  transition: width 0.8s ease;
-}
-
-/* ── Insight automático ── */
-.insight-box {
-  background: rgba(0,212,255,0.05);
-  border: 1px solid rgba(0,212,255,0.18);
-  border-radius: 10px;
-  padding: 10px 14px;
-  font-size: 11px;
-  color: rgba(255,255,255,0.65);
-  margin-top: 10px;
-  line-height: 1.5;
-}
-.insight-box b { color: #00D4FF; }
-
-/* ── Alerta parroquia crítica ── */
-.critica-box {
-  background: rgba(255,77,109,0.07);
-  border: 1px solid rgba(255,77,109,0.22);
-  border-radius: 10px;
-  padding: 11px 14px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 10px;
-}
-.critica-nombre {
-  font-size: 13px;
-  font-weight: 700;
-  color: #FF4D6D;
-}
-.critica-sub {
-  font-size: 10px;
-  color: var(--muted);
-  margin-top: 2px;
-}
-
-/* ── Ranking parroquias ── */
-.parr-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 0;
-  border-bottom: 1px solid var(--border);
-  font-size: 11px;
-}
-.parr-row:last-child { border-bottom: none; }
-.parr-nombre { flex: 1; color: #E2E8F0; }
-.parr-bar-wrap { width: 70px; }
-
-/* ── Dimensiones TGI ── */
-.dim-row {
-  margin-bottom: 9px;
-}
-.dim-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.dim-nombre { font-size: 12px; font-weight: 600; color: #E2E8F0; }
-.dim-val    { font-family: monospace; font-size: 14px; font-weight: 700; }
-.dim-sub    { font-size: 9px; color: var(--muted); margin-top: 1px; }
-
-/* ── Pill badges ── */
-.pill {
-  display: inline-block;
-  padding: 2px 9px;
-  border-radius: 20px;
-  font-size: 9px;
-  font-weight: 700;
-  font-family: monospace;
-  letter-spacing: 0.4px;
-}
-.pill-green  { background: rgba(0,224,150,0.12); color: #00E096; }
-.pill-amber  { background: rgba(255,184,0,0.12);  color: #FFB800; }
-.pill-red    { background: rgba(255,77,109,0.12); color: #FF4D6D; }
-.pill-orange { background: rgba(255,120,0,0.12);  color: #FF7800; }
-.pill-cyan   { background: rgba(0,212,255,0.10);  color: #00D4FF; }
-.pill-muted  { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.4); }
-
-/* ── Sentinel metric grid ── */
-.sent-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  margin-top: 6px;
-}
-.sent-metric {
-  background: var(--faint);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 10px 12px;
-  text-align: center;
-}
-.sent-metric-label { font-size: 9px; color: var(--muted); letter-spacing: 0.6px; text-transform: uppercase; margin-bottom: 4px; }
-.sent-metric-val   { font-family: monospace; font-size: 18px; font-weight: 700; line-height: 1; }
-.sent-metric-sub   { font-size: 9px; color: var(--muted); margin-top: 3px; }
-
-/* ── SLA table ── */
-.sla-item {
-  background: var(--faint);
-  border-radius: 8px;
-  padding: 9px 13px;
-  margin-bottom: 5px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 11px;
-}
-.sla-pregunta { flex: 1; color: #CBD5E0; font-weight: 500; }
-.sla-owner    { font-size: 10px; color: var(--muted); margin-top: 2px; }
-
-/* ── Separador ── */
-.hub-divider {
-  height: 1px;
-  background: var(--border);
-  margin: 18px 0 16px;
-}
-
-/* ── Live dot ── */
-.live-dot {
-  display: inline-block;
-  width: 7px; height: 7px;
-  border-radius: 50%;
-  background: #00E096;
-  margin-right: 5px;
-  animation: pulse 2s infinite;
-  vertical-align: middle;
-}
-@keyframes pulse {
-  0%,100% { opacity: 1; }
-  50%      { opacity: 0.35; }
-}
-
-/* ── Versiones tag ── */
-.ver-tag {
-  font-size: 9px;
-  color: var(--muted);
-  font-family: monospace;
-  background: var(--faint);
-  padding: 2px 7px;
-  border-radius: 4px;
-  margin-right: 4px;
-}
-</style>
-"""
-
-
-# ── HELPERS ───────────────────────────────────────────────────────────────────
 def _api(endpoint: str) -> dict | None:
     try:
         r = requests.get(f"{API_BASE}{endpoint}", timeout=API_TIMEOUT)
@@ -266,184 +51,244 @@ def _fetch_sentinel():
     )
 
 
+# ── CSS EXTRA (específico de esta pantalla) ───────────────────────────────────
+EXTRA_CSS = """
+.bloque-label {
+  font-size: 9px; font-weight: 700; letter-spacing: 1.2px;
+  text-transform: uppercase; color: var(--cyan);
+  border-left: 3px solid var(--cyan); padding-left: 9px;
+  margin-bottom: 14px; line-height: 1;
+}
+.kpi-mini {
+  background: var(--navy-card); border: 1px solid var(--divider);
+  border-radius: 10px; padding: 12px 14px; text-align: center;
+  margin-bottom: 8px;
+}
+.kpi-mini-label { font-size: 9px; color: var(--muted); letter-spacing: 0.6px; text-transform: uppercase; margin-bottom: 4px; }
+.kpi-mini-val   { font-family: var(--mono); font-size: 20px; font-weight: 700; line-height: 1; }
+.kpi-mini-sub   { font-size: 10px; color: var(--muted); margin-top: 4px; }
+
+.insight-box {
+  background: rgba(0,212,255,0.04); border: 1px solid rgba(0,212,255,0.15);
+  border-radius: 10px; padding: 10px 14px; font-size: 11px;
+  color: var(--muted); margin-top: 10px; line-height: 1.6;
+}
+.insight-box b { color: var(--cyan); }
+
+.parr-row {
+  display: flex; align-items: center; gap: 8px;
+  padding: 6px 0; border-bottom: 1px solid var(--divider);
+  font-size: 11px;
+}
+.parr-row:last-child { border-bottom: none; }
+.parr-nombre { flex: 1; color: var(--white); }
+
+.sla-item {
+  background: var(--navy-card); border: 1px solid var(--divider);
+  border-radius: 8px; padding: 9px 13px; margin-bottom: 6px;
+  display: flex; align-items: center; gap: 10px; font-size: 11px;
+}
+.sla-pregunta { flex: 1; color: var(--white); font-weight: 500; }
+.sla-owner    { font-size: 10px; color: var(--muted); margin-top: 2px; }
+
+.live-dot {
+  display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--green); margin-right: 5px;
+  animation: pulse 2s infinite; vertical-align: middle;
+}
+.pill-mini {
+  display: inline-block; padding: 2px 8px; border-radius: 20px;
+  font-size: 9px; font-weight: 700; font-family: var(--mono);
+}
+.pill-green  { background: rgba(0,224,150,0.12); color: var(--green); }
+.pill-amber  { background: rgba(255,184,0,0.12);  color: var(--amber); }
+.pill-red    { background: rgba(255,77,109,0.12); color: var(--red); }
+.pill-orange { background: rgba(255,120,0,0.12);  color: #FF7800; }
+.pill-muted  { background: rgba(255,255,255,0.06); color: var(--muted); }
+
+.ver-tag {
+  font-size: 9px; color: var(--muted); font-family: var(--mono);
+  background: rgba(255,255,255,0.04); padding: 2px 7px; border-radius: 4px;
+  margin-right: 4px;
+}
+.dim-row    { margin-bottom: 10px; }
+.dim-header { display: flex; justify-content: space-between; align-items: center; }
+.dim-nombre { font-size: 12px; font-weight: 600; color: var(--white); }
+.dim-val    { font-family: var(--mono); font-size: 14px; font-weight: 700; }
+.dim-sub    { font-size: 9px; color: var(--muted); margin-top: 1px; }
+
+.hub-grid-5 { display: grid; grid-template-columns: repeat(5,1fr); gap: 10px; }
+@media (max-width:600px) { .hub-grid-5 { grid-template-columns: 1fr 1fr !important; } }
+"""
+
+
+# ── HELPERS HTML ──────────────────────────────────────────────────────────────
+def _kpi(label: str, val: str, sub: str = "", color: str = "var(--white)") -> str:
+    return f"""
+<div class="kpi-mini">
+  <div class="kpi-mini-label">{label}</div>
+  <div class="kpi-mini-val" style="color:{color}">{val}</div>
+  <div class="kpi-mini-sub">{sub}</div>
+</div>"""
+
+
 def _bar(pct: float, color: str, height: int = 5) -> str:
     return f"""
-<div class="progress-wrap">
-  <div class="progress-fill" style="width:{min(pct,100):.1f}%;background:{color};height:{height}px"></div>
+<div style="background:var(--divider);border-radius:3px;height:{height}px;overflow:hidden;margin-top:3px">
+  <div style="width:{min(pct,100):.1f}%;height:100%;background:{color};border-radius:3px;transition:width .8s ease"></div>
 </div>"""
 
 
-def _kpi(label: str, val: str, sub: str = "", color: str = "#E2E8F0") -> str:
-    return f"""
-<div class="kpi">
-  <div class="kpi-label">{label}</div>
-  <div class="kpi-val" style="color:{color}">{val}</div>
-  <div class="kpi-sub">{sub}</div>
-</div>"""
-
-
-def _pill(text: str, css_cls: str = "pill-muted") -> str:
-    return f'<span class="pill {css_cls}">{text}</span>'
+def _pill(text: str, cls: str = "pill-muted") -> str:
+    return f'<span class="pill-mini {cls}">{text}</span>'
 
 
 def _dim_css(val: float) -> str:
-    if val >= 75: return "pill-green"
-    if val >= 55: return "pill-amber"
-    return "pill-red"
+    return "pill-green" if val >= 75 else ("pill-amber" if val >= 55 else "pill-red")
 
 
-# ── BLOQUE A — GOBIERNO Y MANDATO ─────────────────────────────────────────────
-def _bloque_a(gad: dict, tgi: dict, prog: dict):
-    st.markdown('<div class="hub-section-label">A · Gobierno y Mandato</div>', unsafe_allow_html=True)
-
-    col1, col2 = st.columns(2)
-    pct  = prog["pct_ejecutado"]
-    dias = prog["dias_restantes"]
+# ── BLOQUES HTML ──────────────────────────────────────────────────────────────
+def _html_bloque_a(gad: dict, tgi: dict, prog: dict) -> str:
+    pct       = prog["pct_ejecutado"]
+    dias      = prog["dias_restantes"]
     tgi_score = tgi.get("score", 0)
-    tgi_emoji = tgi_clasificacion_emoji(tgi.get("clasificacion", ""))
+    tgi_cls   = tgi.get("clasificacion", "")
+    tgi_emoji = tgi_clasificacion_emoji(tgi_cls)
     tgi_clr   = tgi_color(tgi_score)
+    icpi      = tgi.get("icpi_historico", {}).get("2025", 0)
+    objetivo  = tgi.get("meta_2027", 60)
+    brecha    = objetivo - tgi_score
 
-    with col1:
-        st.markdown(
-            _kpi("Alcaldía", gad.get("alcalde", "–")[:24], gad.get("periodo", ""), "#00D4FF") +
-            _kpi("Inicio de gestión", gad.get("inicio_mandato", "–"), "CNE Ecuador 2023"),
-            unsafe_allow_html=True,
-        )
-    with col2:
-        st.markdown(
-            _kpi("TGI Territorial", f"{tgi_score:.1f}", f"{tgi_emoji} {tgi.get('clasificacion','')}", tgi_clr) +
-            _kpi("Días restantes", f"{dias:,}", "para cierre de mandato", "#FFB800"),
-            unsafe_allow_html=True,
-        )
+    brecha_txt = (
+        f"Faltan <b>{brecha:.2f} pts</b> para meta TGI 2027 ({objetivo})."
+        if brecha > 0 else "✓ Meta TGI 2027 alcanzada."
+    )
 
-    # Barra de mandato
-    icpi = tgi.get("icpi_historico", {}).get("2025", 0)
-    brecha_icpi = pct - icpi  # brecha gestión vs metas
-
-    st.markdown(f"""
-<div style="margin-top:8px">
-  <div style="display:flex;justify-content:space-between;font-size:10px;
-              color:rgba(255,255,255,0.35);margin-bottom:5px">
-    <span>{gad.get('inicio_mandato','2023')[:4]}</span>
-    <span style="color:#00D4FF;font-weight:700">■ {pct:.1f}% mandato ejecutado</span>
-    <span>{gad.get('fin_mandato','2027')[:4]}</span>
+    return f"""
+<div class="card">
+  <div class="bloque-label">A · Gobierno y Mandato</div>
+  <div class="grid-2">
+    <div>
+      {_kpi("Alcaldía", gad.get("alcalde","–"), gad.get("periodo",""), "var(--cyan)")}
+      {_kpi("Inicio de gestión", gad.get("inicio_mandato","–"), "CNE Ecuador 2023")}
+    </div>
+    <div>
+      {_kpi("TGI Territorial", f"{tgi_score:.2f}", f"{tgi_emoji} {tgi_cls}", tgi_clr)}
+      {_kpi("Días restantes", f"{dias:,}", "para cierre de mandato", "var(--amber)")}
+    </div>
   </div>
-  {_bar(pct, 'linear-gradient(90deg,#00D4FF,#7C5CFC)', height=6)}
-</div>
-<div style="margin-top:8px;display:flex;gap:14px;flex-wrap:wrap">
-  <span style="font-size:10px;color:rgba(255,255,255,0.35)">
-    Mandato consumido: <b style="color:#FFB800">{pct:.1f}%</b>
-  </span>
-  <span style="font-size:10px;color:rgba(255,255,255,0.35)">
-    ICPI-Metas 2025: <b style="color:{'#FF4D6D' if icpi < 70 else '#00E096'}">{icpi:.2f}%</b>
-  </span>
-  <span style="font-size:10px;color:rgba(255,77,109,0.7)">
-    {'⚠ Mandato supera ritmo de metas' if brecha_icpi > 10 else ''}
-  </span>
-</div>
-""", unsafe_allow_html=True)
 
-    # Insight automático
-    objetivo = tgi.get("meta_2027", 60)
-    brecha_tgi = objetivo - tgi_score
-    st.markdown(f"""
-<div class="insight-box">
-  Han transcurrido <b>{pct:.1f}%</b> del mandato.
-  TGI territorial: <b>{tgi_score:.2f}</b> ({tgi.get('clasificacion','')}).
-  Ventana de cierre: <b>{dias} días</b>.
-  {'Faltan <b>' + str(round(brecha_tgi,2)) + ' puntos</b> para alcanzar la meta TGI 2027 (' + str(objetivo) + ').' if brecha_tgi > 0 else '✓ Meta TGI 2027 ya alcanzada.'}
-</div>
-""", unsafe_allow_html=True)
+  <div style="margin-top:10px">
+    <div style="display:flex;justify-content:space-between;font-size:10px;
+                color:var(--muted);margin-bottom:5px">
+      <span>{gad.get("inicio_mandato","2023")[:4]}</span>
+      <span style="color:var(--cyan);font-weight:700">■ {pct:.1f}% mandato ejecutado</span>
+      <span>{gad.get("fin_mandato","2027")[:4]}</span>
+    </div>
+    {_bar(pct, "linear-gradient(90deg,var(--cyan),#7C5CFC)", height=6)}
+    <div style="margin-top:8px;display:flex;gap:16px;flex-wrap:wrap">
+      <span style="font-size:10px;color:var(--muted)">
+        Mandato consumido: <b style="color:var(--amber)">{pct:.1f}%</b>
+      </span>
+      <span style="font-size:10px;color:var(--muted)">
+        ICPI-Metas 2025: <b style="color:{'var(--red)' if icpi < 70 else 'var(--green)'}">{icpi:.2f}%</b>
+      </span>
+      {'<span style="font-size:10px;color:rgba(255,77,109,.7)">⚠ Mandato supera ritmo de metas</span>' if (pct - icpi) > 10 else ''}
+    </div>
+  </div>
+
+  <div class="insight-box">
+    Han transcurrido <b>{pct:.1f}%</b> del mandato.
+    TGI territorial: <b>{tgi_score:.2f}</b> ({tgi_cls}).
+    Ventana de cierre: <b>{dias} días</b>. {brecha_txt}
+  </div>
+</div>"""
 
 
-# ── BLOQUE B — TERRITORIO Y EQUIDAD ───────────────────────────────────────────
-def _bloque_b(terr: dict, parroquias: list, critica: dict | None):
-    st.markdown('<div class="hub-section-label">B · Territorio y Equidad</div>', unsafe_allow_html=True)
+def _html_bloque_b(terr: dict, parroquias: list, critica: dict | None) -> str:
+    rurales = sorted(
+        [p for p in parroquias if p.get("tipo") == "Rural"],
+        key=lambda p: p.get("iet_local_pct", 0),
+    )
 
-    col1, col2 = st.columns(2)
-    with col1:
-        st.markdown(
-            _kpi("Población total", f"{terr.get('poblacion_census_2022', 0):,}",
-                 "Censo INEC 2022", "#00D4FF") +
-            _kpi("NBI Rural promedio", f"{terr.get('nbi_rural_promedio', 0):.1f}%",
-                 "6 parroquias rurales — INEC Censo 2022", "#FF4D6D"),
-            unsafe_allow_html=True,
-        )
-    with col2:
-        st.markdown(
-            _kpi("Parroquias", str(terr.get("parroquias_total", 7)),
-                 "1 urbana · 6 rurales", "#00E096") +
-            _kpi("Inv. per cápita cantonal", f"${terr.get('cantonal_avg_inv_percapita', 0)}/hab",
-                 "promedio ponderado Q1-2026", "#FFB800"),
-            unsafe_allow_html=True,
-        )
-
-    # Parroquia crítica
+    critica_html = ""
     if critica:
         agua = critica.get("cobertura_agua_pct", 0)
         nbi  = critica.get("nbi_pct", 0)
         iet  = critica.get("iet_local_pct", 0)
         invpc = critica.get("inv_percapita_q1", 0)
-        st.markdown(f"""
-<div class="critica-box">
-  <div style="font-size:20px">⚠</div>
+        critica_html = f"""
+<div style="margin-top:10px;background:rgba(255,77,109,.06);
+            border:1px solid rgba(255,77,109,.2);border-radius:10px;
+            padding:11px 14px;display:flex;align-items:center;gap:12px">
+  <div style="font-size:18px">⚠</div>
   <div style="flex:1">
-    <div class="critica-nombre">{critica.get('nombre','')}</div>
-    <div class="critica-sub">Parroquia con mayor brecha territorial — intervención urgente</div>
+    <div style="font-size:13px;font-weight:700;color:var(--red)">{critica.get('nombre','')}</div>
+    <div style="font-size:10px;color:var(--muted);margin-top:2px">
+      Parroquia con mayor brecha territorial · intervención urgente
+    </div>
   </div>
   <div style="display:flex;flex-direction:column;gap:4px;align-items:flex-end">
-    {_pill(f"NBI {nbi}%", "pill-red")}
-    {_pill(f"IET {iet:.0f}%", "pill-red")}
-    {_pill(f"Agua {agua}%", "pill-red")}
-    {_pill(f"${invpc}/hab", "pill-orange")}
+    {_pill(f"NBI {nbi}%","pill-red")}
+    {_pill(f"IET {iet:.0f}%","pill-red")}
+    {_pill(f"Agua {agua}%","pill-red")}
+    {_pill(f"${invpc}/hab","pill-orange")}
   </div>
-</div>
-""", unsafe_allow_html=True)
+</div>"""
 
-    # Ranking parroquias rurales por IET
-    rurales = sorted(
-        [p for p in parroquias if p.get("tipo") == "Rural"],
-        key=lambda p: p.get("iet_local_pct", 0),
-    )
-    if rurales:
-        st.markdown(
-            "<div style='margin-top:12px;font-size:9px;color:rgba(255,255,255,0.3);"
-            "letter-spacing:0.8px;text-transform:uppercase;margin-bottom:6px'>"
-            "Ranking equidad — parroquias rurales (IET local)</div>",
-            unsafe_allow_html=True,
-        )
-        for p in rurales:
-            iet = p.get("iet_local_pct", 0)
-            clr = iet_color(iet)
-            css = "pill-green" if iet >= 60 else ("pill-amber" if iet >= 40 else "pill-red")
-            st.markdown(f"""
+    ranking_rows = ""
+    for p in rurales:
+        iet  = p.get("iet_local_pct", 0)
+        clr  = iet_color(iet)
+        css  = "pill-green" if iet >= 60 else ("pill-amber" if iet >= 40 else "pill-red")
+        invpc = p.get("inv_percapita_q1", 0)
+        ranking_rows += f"""
 <div class="parr-row">
   <span class="parr-nombre">{p.get('nombre','')}</span>
-  <div class="parr-bar-wrap">
-    <div style="background:rgba(255,255,255,0.06);border-radius:3px;height:4px;overflow:hidden">
+  <div style="width:70px">
+    <div style="background:var(--divider);border-radius:3px;height:4px;overflow:hidden">
       <div style="width:{min(iet,100):.0f}%;height:100%;background:{clr};border-radius:3px"></div>
     </div>
   </div>
   {_pill(f"{iet:.0f}%", css)}
-  <span style="font-size:9px;color:rgba(255,255,255,0.3)">${p.get('inv_percapita_q1',0)}/hab</span>
-</div>
-""", unsafe_allow_html=True)
+  <span style="font-size:9px;color:var(--muted)">${invpc}/hab</span>
+</div>"""
+
+    return f"""
+<div class="card">
+  <div class="bloque-label">B · Territorio y Equidad</div>
+  <div class="grid-2">
+    <div>
+      {_kpi("Población", f"{terr.get('poblacion_census_2022',0):,}", "Censo INEC 2022", "var(--cyan)")}
+      {_kpi("NBI Rural promedio", f"{terr.get('nbi_rural_promedio',0):.1f}%",
+             "6 parroquias rurales", "var(--red)")}
+    </div>
+    <div>
+      {_kpi("Parroquias", str(terr.get('parroquias_total',7)), "1 urbana · 6 rurales", "var(--green)")}
+      {_kpi("Inv. per cápita cantonal", f"${terr.get('cantonal_avg_inv_percapita',0)}/hab",
+             "promedio ponderado Q1-2026", "var(--amber)")}
+    </div>
+  </div>
+  {critica_html}
+  <div style="margin-top:12px;font-size:9px;color:var(--muted);
+              letter-spacing:.8px;text-transform:uppercase;margin-bottom:6px">
+    Ranking equidad — parroquias rurales (IET local)
+  </div>
+  {ranking_rows}
+</div>"""
 
 
-# ── BLOQUE C — EJECUCIÓN Y RIESGO ─────────────────────────────────────────────
-def _bloque_c(tgi: dict, fin: dict):
-    st.markdown('<div class="hub-section-label">C · Ejecución y Riesgo</div>', unsafe_allow_html=True)
-
-    # Dimensiones TGI
-    dims = ["d1", "d2", "d3", "d4", "d5"]
-    for key in dims:
-        d = tgi.get(key, {})
-        val   = d.get("valor", 0)
-        clr   = dim_color(val)
-        css   = _dim_css(val)
-        peso  = int(d.get("peso", 0) * 100)
-        fuente_short = d.get("fuente", "").split("—")[0].strip()[:35]
-        st.markdown(f"""
+def _html_bloque_c(tgi: dict, fin: dict) -> str:
+    icpi_2025 = tgi.get("icpi_historico", {}).get("2025", 0)
+    dims_html = ""
+    for key in ["d1", "d2", "d3", "d4", "d5"]:
+        d    = tgi.get(key, {})
+        val  = d.get("valor", 0)
+        clr  = dim_color(val)
+        css  = _dim_css(val)
+        peso = int(d.get("peso", 0) * 100)
+        src  = d.get("fuente", "").split("—")[0].strip()[:38]
+        dims_html += f"""
 <div class="dim-row">
   <div class="dim-header">
     <span class="dim-nombre">{d.get('codigo','?')} {d.get('nombre','')}</span>
@@ -452,58 +297,45 @@ def _bloque_c(tgi: dict, fin: dict):
       <span class="dim-val" style="color:{clr}">{val:.1f}</span>
     </div>
   </div>
-  <div class="dim-sub">{fuente_short}</div>
+  <div class="dim-sub">{src}</div>
   {_bar(val, clr)}
-</div>""", unsafe_allow_html=True)
+</div>"""
 
-    st.markdown('<div style="height:8px"></div>', unsafe_allow_html=True)
-
-    # IRS + Fondos bloqueados
-    irs  = tgi.get("irs", {})
+    irs      = tgi.get("irs", {})
     irs_val  = irs.get("valor", 0)
-    irs_clr  = "#FF4D6D" if irs_val > 70 else ("#FFB800" if irs_val > 45 else "#00E096")
+    irs_clr  = "var(--red)" if irs_val > 70 else ("var(--amber)" if irs_val > 45 else "var(--green)")
     fondos   = fin.get("fondos_bloqueados_est", 0)
+    f_det    = fin.get("fondos_bloqueados_detalle", "")
 
-    col1, col2 = st.columns(2)
-    with col1:
-        st.markdown(_kpi(
-            "IRS — Regresividad Social", f"{irs_val:.1f}",
-            f"{irs.get('clasificacion','')} · Meta 2027: {irs.get('meta_2027','?')}",
-            irs_clr,
-        ), unsafe_allow_html=True)
-    with col2:
-        st.markdown(_kpi(
-            "Fondos bloqueados est.",
-            f"${fondos/1e6:.1f}M",
-            fin.get("fondos_bloqueados_detalle", ""),
-            "#FF4D6D",
-        ), unsafe_allow_html=True)
-
-    # Señales activas
-    st.markdown(f"""
-<div style="margin-top:10px;background:rgba(255,77,109,0.06);
-            border:1px solid rgba(255,77,109,0.18);border-radius:10px;
-            padding:10px 14px">
-  <div style="font-size:10px;font-weight:700;color:#FF4D6D;margin-bottom:6px">
-    Alertas TGI activas
+    return f"""
+<div class="card">
+  <div class="bloque-label">C · Ejecución y Riesgo</div>
+  {dims_html}
+  <div class="grid-2" style="margin-top:8px">
+    {_kpi("IRS — Regresividad", f"{irs_val:.1f}",
+          f"{irs.get('clasificacion','')} · Meta 2027: {irs.get('meta_2027','?')}", irs_clr)}
+    {_kpi("Fondos bloqueados est.", f"${fondos/1e6:.1f}M", f_det[:40], "var(--red)")}
   </div>
-  <div style="display:flex;gap:6px;flex-wrap:wrap">
-    {_pill("D3 Ejecución 🔴 59.85%", "pill-red")}
-    {_pill("D4 Equidad 🔴 44.8%", "pill-red")}
-    {_pill("IRS Muy Regresivo 79.7", "pill-red")}
-    {_pill("Isabel Muentes agua 1%", "pill-red")}
+  <div style="margin-top:10px;background:rgba(255,77,109,.06);
+              border:1px solid rgba(255,77,109,.2);border-radius:10px;padding:10px 14px">
+    <div style="font-size:10px;font-weight:700;color:var(--red);margin-bottom:6px">
+      Alertas TGI activas
+    </div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap">
+      {_pill("D3 Ejecución 🔴 59.85%","pill-red")}
+      {_pill("D4 Equidad 🔴 44.8%","pill-red")}
+      {_pill("IRS Muy Regresivo 79.7","pill-red")}
+      {_pill("Isabel Muentes agua 1%","pill-red")}
+    </div>
+    <div style="font-size:10px;color:var(--muted);margin-top:6px">
+      ICPI_2025: {icpi_2025:.2f}% · Objetivo 2027: ≥70%
+    </div>
   </div>
-  <div style="font-size:10px;color:rgba(255,255,255,0.35);margin-top:6px">
-    Ti_2025: {tgi.get('d3',{}).get('valor',0):.2f}% · ICPI_2025: {tgi.get('icpi_historico',{}).get('2025',0):.2f}% · Objetivo 2027: ≥70%
-  </div>
-</div>
-""", unsafe_allow_html=True)
+</div>"""
 
 
-# ── BLOQUE D — ESTADO SENTINEL ────────────────────────────────────────────────
-def _bloque_d(health: dict | None, drift: dict | None, sla_summary: dict | None, gm_meta: dict):
-    st.markdown('<div class="hub-section-label">D · Estado SENTINEL</div>', unsafe_allow_html=True)
-
+def _html_bloque_d(health: dict | None, drift: dict | None,
+                   sla_summary: dict | None, gm_meta: dict) -> str:
     api_ok   = health is not None
     chunks   = health.get("total_chunks", 0) if health else "–"
     llm_ok   = health.get("llm_disponible", False) if health else False
@@ -511,76 +343,64 @@ def _bloque_d(health: dict | None, drift: dict | None, sla_summary: dict | None,
     if sla_summary:
         disputas = sla_summary.get("vencidos", 0) + sla_summary.get("criticos", 0)
 
-    st.markdown(f"""
-<div class="sent-grid">
-  <div class="sent-metric">
-    <div class="sent-metric-label">API Status</div>
-    <div class="sent-metric-val" style="font-size:13px;color:{'#00E096' if api_ok else '#FF4D6D'}">
-      {'<span class="live-dot"></span>' if api_ok else '🔴 '} {'En línea' if api_ok else 'Offline'}
-    </div>
-    <div class="sent-metric-sub">{chunks} chunks indexados</div>
-  </div>
-  <div class="sent-metric">
-    <div class="sent-metric-label">LLM</div>
-    <div class="sent-metric-val" style="font-size:13px;color:{'#00D4FF' if llm_ok else '#FFB800'}">
-      {'Claude Haiku' if llm_ok else 'Solo RAG'}
-    </div>
-    <div class="sent-metric-sub">{'claude-haiku-4-5' if llm_ok else 'Activar API key'}</div>
-  </div>
-  <div class="sent-metric {'disputa' if disputas > 0 else ''}">
-    <div class="sent-metric-label">SLA Críticos / Vencidos</div>
-    <div class="sent-metric-val" style="color:{'#FF4D6D' if disputas > 0 else '#00E096'}">{disputas}</div>
-    <div class="sent-metric-sub">{'requieren coordinador' if disputas > 0 else 'dentro del SLA'}</div>
-  </div>
-  <div class="sent-metric">
-    <div class="sent-metric-label">Trust Drift</div>
-""", unsafe_allow_html=True)
+    live_dot = '<span class="live-dot"></span>' if api_ok else "🔴 "
 
+    drift_html = ""
     if drift:
         tend  = drift.get("tendencia", "ESTABLE")
-        tc    = {"ESTABLE":"#00E096","MEJORANDO":"#00D4FF","DEGRADANDO":"#FF4D6D"}.get(tend,"#E2E8F0")
+        tc    = {"ESTABLE":"var(--green)","MEJORANDO":"var(--cyan)","DEGRADANDO":"var(--red)"}.get(tend,"var(--white)")
         ti    = {"ESTABLE":"=","MEJORANDO":"↑","DEGRADANDO":"↓"}.get(tend,"=")
         max_r = drift.get("pct_rechazo_max", 0)
-        st.markdown(f"""
-    <div class="sent-metric-val" style="font-size:15px;color:{tc}">{ti} {tend}</div>
-    <div class="sent-metric-sub">{drift.get('n_semanas',0)} sem · rechazos máx {max_r:.0f}%</div>
-""", unsafe_allow_html=True)
+        drift_html = _kpi("Trust Drift", f"{ti} {tend}",
+                          f"{drift.get('n_semanas',0)} sem · max rechazo {max_r:.0f}%", tc)
     else:
-        st.markdown("""
-    <div class="sent-metric-val" style="font-size:13px;color:rgba(255,255,255,0.3)">–</div>
-    <div class="sent-metric-sub">API offline</div>
-""", unsafe_allow_html=True)
+        drift_html = _kpi("Trust Drift", "–", "API offline", "var(--muted)")
 
-    st.markdown("</div></div>", unsafe_allow_html=True)
-
-    # Versiones + fuente snapshot
     mi = gm_meta
-    st.markdown(f"""
-<div style="margin-top:12px;display:flex;gap:5px;flex-wrap:wrap">
-  <span class="ver-tag">SENTINEL v2.1.0</span>
-  <span class="ver-tag">PROMPT v2.1.0</span>
-  <span class="ver-tag">GUARDRAIL v1.7.0</span>
-  <span class="ver-tag">20/20 regression ✓</span>
-</div>
-<div style="margin-top:6px;font-size:9px;color:rgba(255,255,255,0.2)">
-  Datos: Gold Master {mi.get('version_excel','–')} · Corte {mi.get('fecha_corte','–')} ·
-  Próx. actualización: {mi.get('proxima_actualizacion','–')}
-</div>
-""", unsafe_allow_html=True)
+
+    return f"""
+<div class="card">
+  <div class="bloque-label">D · Estado SENTINEL</div>
+  <div class="grid-2">
+    {_kpi("API Status",
+          f"{live_dot}{'En línea' if api_ok else 'Offline'}",
+          f"{chunks} chunks indexados",
+          "var(--green)" if api_ok else "var(--red)")}
+    {_kpi("LLM",
+          "Claude Haiku" if llm_ok else "Solo RAG",
+          "claude-haiku-4-5" if llm_ok else "Activar API key",
+          "var(--cyan)" if llm_ok else "var(--amber)")}
+    {_kpi("SLA Críticos/Vencidos",
+          str(disputas),
+          "requieren coordinador" if disputas > 0 else "dentro del SLA",
+          "var(--red)" if disputas > 0 else "var(--green)")}
+    {drift_html}
+  </div>
+  <div style="margin-top:10px;display:flex;gap:5px;flex-wrap:wrap">
+    <span class="ver-tag">SENTINEL v2.1.0</span>
+    <span class="ver-tag">PROMPT v2.1.0</span>
+    <span class="ver-tag">GUARDRAIL v1.7.0</span>
+    <span class="ver-tag">20/20 regression ✓</span>
+  </div>
+  <div style="margin-top:5px;font-size:9px;color:rgba(255,255,255,.2)">
+    Gold Master {mi.get('version_excel','–')} ·
+    Corte {mi.get('fecha_corte','–')} ·
+    Próx. act.: {mi.get('proxima_actualizacion','–')}
+  </div>
+</div>"""
 
 
-# ── SLA TABLE ─────────────────────────────────────────────────────────────────
-def _sla_table(slas: list[dict]):
-    if not slas:
-        st.markdown("""
-<div style="background:rgba(0,224,150,0.05);border:1px solid rgba(0,224,150,0.13);
+def _html_sla_table(sla_list: list) -> str:
+    if not sla_list:
+        return """
+<div style="background:rgba(0,224,150,.05);border:1px solid rgba(0,224,150,.15);
             border-radius:10px;padding:14px;text-align:center;
-            color:rgba(255,255,255,0.4);font-size:12px">
+            color:var(--muted);font-size:12px">
   ✓ Sin disputas de gobernanza activas · SENTINEL opera sin conflictos
-</div>""", unsafe_allow_html=True)
-        return
+</div>"""
 
-    for sla in slas[:8]:
+    rows = ""
+    for sla in sla_list[:8]:
         icon   = sla.get("status_icon", "•")
         status = sla.get("status", "")
         owner  = sla.get("owner", "–")
@@ -588,138 +408,143 @@ def _sla_table(slas: list[dict]):
         preg   = sla.get("pregunta", "")[:58]
         prio   = sla.get("priority", "")
         css    = {"NORMAL":"pill-green","SEGUIMIENTO":"pill-amber","CRITICO":"pill-orange",
-                  "VENCIDO":"pill-red","CUMPLIDO":"pill-cyan"}.get(status,"pill-muted")
-        st.markdown(f"""
+                  "VENCIDO":"pill-red","CUMPLIDO":"pill-muted"}.get(status,"pill-muted")
+        rows += f"""
 <div class="sla-item">
-  <span style="font-size:16px">{icon}</span>
+  <span style="font-size:15px">{icon}</span>
   <div style="flex:1">
     <div class="sla-pregunta">{preg}…</div>
     <div class="sla-owner">Owner: {owner} · Prioridad: {prio}</div>
   </div>
   <div style="text-align:right">
     {_pill(status, css)}
-    <div style="font-size:9px;color:rgba(255,255,255,0.3);margin-top:3px">{hours}h restantes</div>
+    <div style="font-size:9px;color:var(--muted);margin-top:3px">{hours}h restantes</div>
   </div>
-</div>""", unsafe_allow_html=True)
+</div>"""
+    return rows
 
 
-# ── DIMENSIONES TGI FILA COMPLETA ─────────────────────────────────────────────
-def _fila_dimensiones(tgi: dict):
-    st.markdown(
-        '<div class="hub-section-label" style="margin-bottom:14px">'
-        'Dimensiones TGI — Motor SIAP-ICPI</div>',
-        unsafe_allow_html=True,
-    )
-    dims_cols = st.columns(5)
-    for i, (key, col) in enumerate(zip(["d1","d2","d3","d4","d5"], dims_cols)):
+def _html_fila_dimensiones(tgi: dict) -> str:
+    items = ""
+    for key in ["d1", "d2", "d3", "d4", "d5"]:
         d   = tgi.get(key, {})
         val = d.get("valor", 0)
         clr = dim_color(val)
-        with col:
-            st.markdown(f"""
-<div class="kpi">
-  <div class="kpi-label">{d.get('codigo','')}</div>
-  <div class="kpi-val" style="color:{clr};font-size:18px">{val:.1f}</div>
-  <div class="kpi-sub" style="font-size:9px">{d.get('nombre','')}</div>
+        items += f"""
+<div class="kpi-mini">
+  <div class="kpi-mini-label">{d.get('codigo','')}</div>
+  <div class="kpi-mini-val" style="color:{clr};font-size:18px">{val:.1f}</div>
+  <div class="kpi-mini-sub" style="font-size:9px">{d.get('nombre','')}</div>
   {_bar(val, clr)}
-</div>""", unsafe_allow_html=True)
+</div>"""
+    return f'<div class="hub-grid-5">{items}</div>'
 
 
 # ── RENDER PRINCIPAL ──────────────────────────────────────────────────────────
 def render():
-    st.markdown(CSS, unsafe_allow_html=True)
-
     # ── Cargar Gold Master snapshot ─────────────────────────────────────────
     gm = gm_load()
     if not gm.get("_loaded"):
-        st.error(f"⛔ Gold Master Snapshot no disponible: {gm.get('_error','error desconocido')}")
+        st.error(f"⛔ Gold Master Snapshot no disponible: {gm.get('_error')}")
         st.info("Contactar analista Dylus Lab para regenerar `data/gm_snapshot.json`.")
         return
 
-    gad     = get_gad(gm)
-    tgi     = get_tgi(gm)
-    fin     = get_financiero(gm)
-    terr    = get_territorial(gm)
+    gad        = get_gad(gm)
+    tgi        = get_tgi(gm)
+    fin        = get_financiero(gm)
+    terr       = get_territorial(gm)
     parroquias = get_parroquias(gm)
-    critica = get_parroquia_critica(gm)
-    prog    = mandato_progress(gm)
-    gm_meta = meta_info(gm)
+    critica    = get_parroquia_critica(gm)
+    prog       = mandato_progress(gm)
+    gm_meta    = meta_info(gm)
 
-    # ── Cargar SENTINEL API (sin bloquear si está offline) ─────────────────
+    # ── Cargar SENTINEL API ─────────────────────────────────────────────────
     with st.spinner("Conectando SENTINEL API…"):
         health, drift, sla_resp = _fetch_sentinel()
 
     sla_summary = sla_resp.get("summary") if sla_resp else None
     sla_list    = sla_resp.get("slas", []) if sla_resp else []
 
-    # ── Cabecera ────────────────────────────────────────────────────────────
-    col_t, col_btn = st.columns([3, 1])
+    # ── Botón actualizar (fuera del iframe) ─────────────────────────────────
+    col_t, col_btn = st.columns([5, 1])
     with col_t:
-        st.markdown(f"""
-<div style="margin-bottom:6px">
-  <span style="font-size:19px;font-weight:800;color:#E2E8F0;letter-spacing:-0.3px">
-    Centro de Control Territorial
-  </span>
-  <span style="font-size:10px;color:rgba(255,255,255,0.25);margin-left:12px;font-family:monospace">
-    {gad.get('nombre','GAD Montecristi')} · Sprint 2.4
-  </span>
-</div>
-<div style="font-size:11px;color:rgba(255,255,255,0.3)">
-  {'<span class="live-dot"></span> SENTINEL en línea' if health else '⚫ SENTINEL offline — datos estáticos'}
-</div>
-""", unsafe_allow_html=True)
+        api_status = "🟢 SENTINEL en línea" if health else "🔴 SENTINEL offline"
+        st.caption(f"**Centro de Control Territorial** · {gad.get('nombre', 'GAD Montecristi')} · {api_status}")
     with col_btn:
-        if st.button("↻ Actualizar", use_container_width=True):
+        if st.button("↻", use_container_width=True, help="Actualizar datos en tiempo real"):
             st.cache_data.clear()
             st.rerun()
 
     if health is None:
         st.warning(
             "SENTINEL API no responde en `localhost:8100`. "
-            "Los datos institucionales del Gold Master siguen disponibles.",
+            "Datos institucionales del Gold Master disponibles.",
             icon="⚠️",
         )
 
-    st.markdown('<div class="hub-divider"></div>', unsafe_allow_html=True)
+    # ── Construir HTML completo ─────────────────────────────────────────────
+    hdr = page_header(
+        "⬡ CONTROL",
+        "Centro de Inteligencia Territorial",
+        f"{gad.get('alcalde','–')} · {gad.get('periodo','–')} · TGI {tgi.get('score',0):.2f} — {tgi.get('clasificacion','')}",
+        f'<span class="badge badge-amber">⬡ Sprint 2.4</span>',
+    )
 
-    # ── 2×2 BLOQUES ─────────────────────────────────────────────────────────
-    col_a, col_b = st.columns(2, gap="large")
-    with col_a:
-        with st.container(border=True):
-            _bloque_a(gad, tgi, prog)
-    with col_b:
-        with st.container(border=True):
-            _bloque_b(terr, parroquias, critica)
+    # 4 bloques en 2×2
+    bloques_2x2 = f"""
+<div class="grid-2" style="margin-bottom:12px">
+  {_html_bloque_a(gad, tgi, prog)}
+  {_html_bloque_b(terr, parroquias, critica)}
+</div>
+<div class="grid-2" style="margin-bottom:12px">
+  {_html_bloque_c(tgi, fin)}
+  {_html_bloque_d(health, drift, sla_summary, gm_meta)}
+</div>"""
 
-    col_c, col_d = st.columns(2, gap="large")
-    with col_c:
-        with st.container(border=True):
-            _bloque_c(tgi, fin)
-    with col_d:
-        with st.container(border=True):
-            _bloque_d(health, drift, sla_summary, gm_meta)
+    # SLA panel
+    sla_alerta = ""
+    if sla_summary and sla_summary.get("alerta"):
+        n = sla_summary.get("vencidos", 0)
+        sla_alerta = f'<span class="badge badge-red">🔴 {n} SLA vencido{"s" if n!=1 else ""}</span>'
+    else:
+        sla_alerta = '<span class="badge badge-green">🟢 Dentro del SLA</span>'
 
-    # ── SLA PANEL ──────────────────────────────────────────────────────────
-    st.markdown('<div class="hub-divider"></div>', unsafe_allow_html=True)
+    sla_section = f"""
+<div class="card">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+    <div class="bloque-label" style="margin-bottom:0">SLA de Gobernanza · Casos activos</div>
+    {sla_alerta}
+  </div>
+  {_html_sla_table(sla_list)}
+</div>"""
 
-    col_st, col_sb = st.columns([3, 1])
-    with col_st:
-        st.markdown(
-            '<div class="hub-section-label">SLA de Gobernanza — Casos activos</div>',
-            unsafe_allow_html=True,
-        )
-    with col_sb:
-        if sla_summary:
-            n_venc = sla_summary.get("vencidos", 0)
-            if sla_summary.get("alerta"):
-                st.error(f"🔴 {n_venc} vencido{'s' if n_venc != 1 else ''}")
-            else:
-                st.success("🟢 Dentro del SLA")
-        else:
-            st.info("API offline")
+    # Fila dimensiones TGI
+    dims_section = f"""
+<div class="card">
+  <div class="bloque-label" style="margin-bottom:12px">
+    Dimensiones TGI — Motor SIAP-ICPI {gm_meta.get('version_excel','v5.4')}
+  </div>
+  {_html_fila_dimensiones(tgi)}
+</div>"""
 
-    _sla_table(sla_list)
+    html = hdr + bloques_2x2 + sla_section + dims_section
 
-    # ── FILA DIMENSIONES TGI ───────────────────────────────────────────────
-    st.markdown('<div class="hub-divider"></div>', unsafe_allow_html=True)
-    _fila_dimensiones(tgi)
+    # ── Render iframe ───────────────────────────────────────────────────────
+    full = page_frame(html, show_tech=False, extra_css=EXTRA_CSS)
+    components.html(full, height=1600, scrolling=False)
+
+    # ── Botones de navegación (fuera del iframe) ─────────────────────────────
+    st.markdown("---")
+    c1, c2, c3 = st.columns(3)
+    with c1:
+        if st.button("🔍 Análisis de Brecha", use_container_width=True):
+            st.session_state["page"] = "brecha"
+            st.rerun()
+    with c2:
+        if st.button("💬 Consultar SENTINEL", use_container_width=True, type="primary"):
+            st.session_state["page"] = "sentinel"
+            st.rerun()
+    with c3:
+        if st.button("📋 Metas del PDOT", use_container_width=True):
+            st.session_state["page"] = "metas"
+            st.rerun()
