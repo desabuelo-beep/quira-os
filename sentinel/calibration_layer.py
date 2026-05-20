@@ -578,6 +578,7 @@ def summarize_calibrated(cr: CalibratedResult) -> dict:
         "calibration_applied":   cr.calibration_applied,
         "avep_riesgo":           cr.avep_riesgo,
         "avep_score":            cr.avep_score,
+        "narrative":             cr.narrative,
     }
 
 

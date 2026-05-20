@@ -25,7 +25,7 @@ from sentinel.legal_router      import build_legal_prompt_block, find_legal_refs
 from sentinel.vault_enricher   import get_vault_normative_context, format_provenance, provenance_to_dict
 from sentinel.trust_engine      import calculate_trust, context_from_query
 from sentinel.coherencia_engine import evaluate as _coh_eval, detect_coherencia_intent
-from sentinel.ui_components     import trust_badge, legal_card, coherencia_card
+from sentinel.ui_components     import trust_badge, legal_card, coherencia_card, calibration_card
 
 
 # ── COMPONENTE PRINCIPAL ──────────────────────────────────────────────────────
@@ -422,6 +422,12 @@ def _run_sentinel(
                         territory  = _mem.get_context().get("ultima_parroquia"),
                     )
                     coherencia_card(_coh_res)
+
+                # RC-7.5: calibration_card — muestra diagnóstico RC-7.3 cuando el pipeline corrió
+                _cr_ui = st.session_state.get("rc73_calibrated")
+                if _cr_ui:
+                    _q_hash = hash(pregunta) & 0xFFFF
+                    calibration_card(_cr_ui, query_hash=_q_hash)
 
                 # ── Audit log (incluye provenance vault P3) ───────────────────
                 log_interaction(

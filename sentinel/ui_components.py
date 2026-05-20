@@ -1,7 +1,7 @@
 """
 SENTINEL · ui_components.py
-Componentes de UI generativa — Sentinel v2 / Sprint 1-6.
-Alert · Nav · Evidence · KPI Mini · Scenario · Simulation · Trust · Legal · QUADRUM.
+Componentes de UI generativa — Sentinel v2 / Sprint 1-7.
+Alert · Nav · Evidence · KPI Mini · Scenario · Simulation · Trust · Legal · QUADRUM · RC-7.3.
 Doctrina: Sentinel genera intención → Streamlit renderiza experiencia institucional.
 Dylus Lab © 2026
 """
@@ -560,3 +560,181 @@ def coherencia_card(result: dict) -> None:
     {recoms_html}
   </div>
 </div>""", unsafe_allow_html=True)
+
+
+# ── 11. CALIBRATION CARD — RC-7.3 (Sprint 7) ──────────────────────────────────
+
+# AVEP risk → color + bg
+_AVEP_PALETTE = {
+    "Ruptura Institucional":  ("#E53E3E", "rgba(229,62,62,0.10)",  "rgba(229,62,62,0.30)"),
+    "Ocurrencia Preocupante": ("#E67E22", "rgba(230,126,34,0.09)", "rgba(230,126,34,0.28)"),
+    "Transición Crítica":     ("#D69E2E", "rgba(214,158,46,0.08)", "rgba(214,158,46,0.25)"),
+    "Mandato Cumplido":       ("#00D4FF", "rgba(0,212,255,0.06)",  "rgba(0,212,255,0.20)"),
+    "Excelencia Institucional":("#38A169","rgba(56,161,105,0.07)", "rgba(56,161,105,0.22)"),
+}
+
+_CLASS_DISPLAY = {
+    "PARALISIS_ESTRUCTURAL":       "Parálisis Estructural",
+    "CONTRACCION_CRITICA":         "Contracción Crítica",
+    "Q4_CONCENTRACION_TERMINAL":   "Concentración Q4 Terminal",
+    "REFORMA_SHOCK":               "Reforma Shock",
+    "EXPANSION_TARDIA":            "Expansión Tardía",
+    "RECUPERACION_ACTIVA":         "Recuperación Activa",
+    "EXPANSION_PRESUPUESTARIA":    "Expansión Presupuestaria",
+    "EJECUCION_ESTABLE":           "Ejecución Estable",
+    "LIDER_EJECUCION":             "Líder de Ejecución",
+    "SIN_PATRON_CLARO":            "Sin Patrón Claro",
+}
+
+
+def calibration_card(cr: dict, query_hash: int = 0) -> None:
+    """
+    Tarjeta RC-7.3 — Diagnóstico Calibrado de Ejecución Presupuestaria.
+
+    Muestra: clase institucional calibrada · AVEP score · confianza raw→calibrada
+    · peso evidencial · SATs activos · reglas de calibración aplicadas.
+
+    Args:
+        cr:         dict devuelto por summarize_calibrated(CalibratedResult)
+        query_hash: int para llaves únicas de widgets Streamlit
+    """
+    if not cr:
+        return
+
+    # ── Extraer campos ──────────────────────────────────────────────────────────
+    cal_class    = cr.get("calibrated_class", "SIN_PATRON_CLARO")
+    orig_class   = cr.get("original_class", "")
+    raw_conf     = float(cr.get("raw_confidence", 0))
+    cal_conf     = float(cr.get("calibrated_confidence", 0))
+    ev_weight    = float(cr.get("evidence_weight", 0))
+    seasonal_f   = float(cr.get("seasonal_factor", 1.0))
+    baseline_gap = float(cr.get("baseline_gap", 0))
+    reform_wl    = bool(cr.get("reform_whitelisted", False))
+    sats         = cr.get("sat_codes_calibrated", [])
+    rules        = cr.get("calibration_applied", [])
+    avep_riesgo  = cr.get("avep_riesgo", "Transición Crítica")
+    avep_score   = float(cr.get("avep_score", 50))
+    narrative    = cr.get("narrative", "")
+
+    class_label  = _CLASS_DISPLAY.get(cal_class, cal_class.replace("_", " ").title())
+    reclassified = orig_class and orig_class != cal_class
+    color, bg, border = _AVEP_PALETTE.get(avep_riesgo, _AVEP_PALETTE["Transición Crítica"])
+
+    # ── Barra doble: confianza raw (pálida) → calibrada (sólida) ───────────────
+    raw_w = int(min(raw_conf * 100, 100))
+    cal_w = int((cal_conf / raw_conf * 100) if raw_conf > 0 else 0)
+
+    bar_html = (
+        f'<div style="background:rgba(255,255,255,0.07);border-radius:4px;'
+        f'height:6px;overflow:hidden;margin:5px 0 3px">'
+        f'<div style="height:6px;width:{raw_w}%;'
+        f'background:rgba(255,255,255,0.18);border-radius:4px;position:relative">'
+        f'<div style="height:6px;width:{cal_w}%;background:{color};border-radius:4px">'
+        f'</div></div></div>'
+    )
+
+    # ── Chips: reglas de calibración ────────────────────────────────────────────
+    chip_style = (
+        f"display:inline-block;font-size:8px;font-weight:600;padding:2px 7px;"
+        f"border-radius:10px;margin:2px 2px;background:rgba(255,255,255,0.06);"
+        f"border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.55)"
+    )
+    chips_html = "".join(
+        f'<span style="{chip_style}">{r.split(":")[0].strip()}</span>'
+        for r in rules
+    ) if rules else (
+        f'<span style="{chip_style}">sin ajustes adicionales</span>'
+    )
+
+    # ── SATs ────────────────────────────────────────────────────────────────────
+    sat_colors = {
+        "SAT-IX":  "#E53E3E",
+        "SAT-X-A": "#E67E22",
+        "SAT-X-B": "#D69E2E",
+        "SAT-XI":  "#D69E2E",
+        "SAT-XII": "#00D4FF",
+    }
+    if sats:
+        sats_html = " ".join(
+            f'<span style="font-size:9px;font-weight:700;color:{sat_colors.get(s,"#E2E8F0")};'
+            f'background:rgba(255,255,255,0.05);border:1px solid '
+            f'{sat_colors.get(s,"rgba(255,255,255,0.15)")};border-radius:4px;'
+            f'padding:2px 6px">{s}</span>'
+            for s in sats
+        )
+    else:
+        sats_html = (
+            '<span style="font-size:9px;color:rgba(255,255,255,0.30)">'
+            'ninguno activo · umbral: conf≥40% · ev≥50%</span>'
+        )
+
+    # ── Reclasificación badge ───────────────────────────────────────────────────
+    reclassified_html = ""
+    if reclassified:
+        orig_label = _CLASS_DISPLAY.get(orig_class, orig_class.replace("_", " ").title())
+        reclassified_html = (
+            f'<div style="font-size:9px;color:#D69E2E;margin-top:3px">'
+            f'⚡ Reclasificado: {orig_label} → {class_label}</div>'
+        )
+
+    # ── Render tarjeta principal ────────────────────────────────────────────────
+    st.markdown(f"""
+<div style="{_CARD_BASE}background:{bg};border:1px solid {border};border-left:4px solid {color}">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+    <div style="flex:1;min-width:0">
+      <div style="font-size:9px;font-weight:700;color:{color};letter-spacing:0.07em;
+                  text-transform:uppercase">📊 RC-7.3 · DIAGNÓSTICO CALIBRADO</div>
+      <div style="font-size:14px;font-weight:700;color:#E2E8F0;margin-top:3px;
+                  line-height:1.2">{class_label}</div>
+      {reclassified_html}
+    </div>
+    <div style="text-align:right;min-width:60px;padding-left:10px">
+      <div style="font-size:22px;font-weight:900;color:{color};line-height:1">{avep_score:.0f}</div>
+      <div style="font-size:8px;color:{color};white-space:nowrap">{avep_riesgo}</div>
+    </div>
+  </div>
+  <div style="font-size:11px;color:rgba(255,255,255,0.7);line-height:1.5;margin-bottom:8px">
+    {narrative[:300] if narrative else ""}</div>
+  <div style="font-size:9px;color:rgba(255,255,255,0.40)">
+    Confianza epistémica:&nbsp;
+    <span style="color:rgba(255,255,255,0.60)">{raw_conf:.0%}</span>
+    &nbsp;→&nbsp;
+    <span style="color:{color};font-weight:700">{cal_conf:.0%}</span>
+    &nbsp;·&nbsp;Peso evidencial:&nbsp;
+    <span style="color:rgba(255,255,255,0.60)">{ev_weight:.0%}</span>
+  </div>
+  {bar_html}
+  <div style="margin-top:4px">{chips_html}</div>
+  <div style="border-top:1px solid rgba(255,255,255,0.06);margin-top:8px;padding-top:6px;
+              display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+    <span style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.35);
+                 text-transform:uppercase;letter-spacing:0.06em">SATs&nbsp;</span>
+    {sats_html}
+  </div>
+</div>""", unsafe_allow_html=True)
+
+    # ── Detalle expandible: reglas completas ────────────────────────────────────
+    if rules:
+        with st.expander(f"🔬 Calibración aplicada ({len(rules)} regla{'s' if len(rules)>1 else ''})",
+                         expanded=False):
+            for rule in rules:
+                st.markdown(
+                    f'<div style="font-size:10px;color:rgba(255,255,255,0.6);'
+                    f'padding:2px 0;border-bottom:1px solid rgba(255,255,255,0.04)">'
+                    f'· {rule}</div>',
+                    unsafe_allow_html=True,
+                )
+            extras = []
+            if seasonal_f != 1.0:
+                extras.append(f"Factor estacional: {seasonal_f:.2f}")
+            if abs(baseline_gap) > 0.01:
+                sign = "+" if baseline_gap > 0 else ""
+                extras.append(f"Brecha vs baseline entidad: {sign}{baseline_gap:.0%}")
+            if reform_wl:
+                extras.append("Reforma dentro del umbral COPLAFIP Art.97 (Alcalde) — SAT-X-B suprimido")
+            for extra in extras:
+                st.markdown(
+                    f'<div style="font-size:9px;color:rgba(255,255,255,0.40);padding:2px 0">'
+                    f'  {extra}</div>',
+                    unsafe_allow_html=True,
+                )
