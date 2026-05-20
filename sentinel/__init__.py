@@ -47,7 +47,7 @@ from sentinel.d4_loader import (
     summarize_d4_pipeline, invalidate_d4_cache,
 )
 # RC-D4 Visual
-from sentinel.ui_components import d4_card, d3d4_card
+from sentinel.ui_components import d4_card, d3d4_card, inference_review_card
 # RC-D4 Normative
 from sentinel.d4_normative import (
     D4NormRef, D4NormativeBinding,
@@ -63,6 +63,31 @@ from sentinel.d3d4_engine import (
 from sentinel.d3d4_normative import (
     D3D4NormRef, D3D4NormativeBinding,
     bind_cross_from_dict, get_cross_normative_context, summarize_d3d4_normative,
+)
+# RC-CORE Registry Layer
+from sentinel.rc_registry import (
+    RC,
+    get_threshold, overwhelm_active, needs_tier_cap, get_tier_cap,
+    get_tier_language, is_prohibited_language,
+    get_pdot_meta, get_eed_class, get_cross_conf, is_observational,
+    needs_human_review, audit_registry_consistency,
+)
+# Provenance Graph
+from sentinel.provenance_graph import (
+    ProvenanceNode, ProvenanceEdge, ProvenanceGraph,
+    get_graph, reset_graph,
+    add_source_node, add_transform_node, add_inference_node,
+    add_normative_node, add_governed_by,
+    get_ancestry, get_confidence_chain, summarize_graph,
+    get_provenance_block, export_graph_json,
+    register_d3_result, register_d4_result,
+    register_cross_result, register_cross_normative,
+)
+# Human Review — RC-CORE Layer
+from sentinel.human_review import (
+    InferenceReviewFlag,
+    needs_institutional_review, flag_inference,
+    get_active_flags, acknowledge_flag,
 )
 
 __all__ = [
@@ -92,7 +117,7 @@ __all__ = [
     "load_parish_records", "run_d4_pipeline", "get_d4_context_for_query",
     "summarize_d4_pipeline", "invalidate_d4_cache",
     # RC-D4 Visual
-    "d4_card", "d3d4_card",
+    "d4_card", "d3d4_card", "inference_review_card",
     # RC-D4 Normative
     "D4NormRef", "D4NormativeBinding",
     "bind_d4_from_dict", "get_d4_normative_context", "summarize_d4_normative",
@@ -102,4 +127,23 @@ __all__ = [
     # RC-D3D4-Normative Cross Layer
     "D3D4NormRef", "D3D4NormativeBinding",
     "bind_cross_from_dict", "get_cross_normative_context", "summarize_d3d4_normative",
+    # RC-CORE Registry Layer
+    "RC",
+    "get_threshold", "overwhelm_active", "needs_tier_cap", "get_tier_cap",
+    "get_tier_language", "is_prohibited_language",
+    "get_pdot_meta", "get_eed_class", "get_cross_conf", "is_observational",
+    "needs_human_review", "audit_registry_consistency",
+    # Provenance Graph
+    "ProvenanceNode", "ProvenanceEdge", "ProvenanceGraph",
+    "get_graph", "reset_graph",
+    "add_source_node", "add_transform_node", "add_inference_node",
+    "add_normative_node", "add_governed_by",
+    "get_ancestry", "get_confidence_chain", "summarize_graph",
+    "get_provenance_block", "export_graph_json",
+    "register_d3_result", "register_d4_result",
+    "register_cross_result", "register_cross_normative",
+    # Human Review RC-CORE Layer
+    "InferenceReviewFlag",
+    "needs_institutional_review", "flag_inference",
+    "get_active_flags", "acknowledge_flag",
 ]

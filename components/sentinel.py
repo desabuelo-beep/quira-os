@@ -25,7 +25,7 @@ from sentinel.legal_router      import build_legal_prompt_block, find_legal_refs
 from sentinel.vault_enricher   import get_vault_normative_context, format_provenance, provenance_to_dict
 from sentinel.trust_engine      import calculate_trust, context_from_query
 from sentinel.coherencia_engine import evaluate as _coh_eval, detect_coherencia_intent
-from sentinel.ui_components     import trust_badge, legal_card, coherencia_card, calibration_card, d4_card, d3d4_card
+from sentinel.ui_components     import trust_badge, legal_card, coherencia_card, calibration_card, d4_card, d3d4_card, inference_review_card
 
 
 # ── COMPONENTE PRINCIPAL ──────────────────────────────────────────────────────
@@ -399,6 +399,27 @@ def _run_sentinel(
                 except Exception:
                     pass  # D3xD4 opcional — nunca bloquea el chat
 
+                # P6-Provenance — registrar cadena D3→D4→Cross en el grafo de procedencia
+                try:
+                    from sentinel.provenance_graph import (
+                        reset_graph, register_d3_result, register_d4_result,
+                        register_cross_result, register_cross_normative, summarize_graph,
+                    )
+                    # Reiniciar grafo de sesión en cada query (grafo por conversación)
+                    _sid = st.session_state.get("session_id", "default")
+                    reset_graph(_sid)
+                    _prov_d3  = register_d3_result(st.session_state.get("rc73_calibrated"))
+                    _prov_d4  = register_d4_result(st.session_state.get("d4_calibrated"))
+                    _prov_cross = register_cross_result(
+                        st.session_state.get("d3d4_cross"), _prov_d3, _prov_d4
+                    )
+                    _prov_norm = register_cross_normative(
+                        st.session_state.get("d3d4_normative"), _prov_cross
+                    )
+                    st.session_state["provenance_summary"] = summarize_graph()
+                except Exception:
+                    pass  # provenance — nunca bloquea
+
                 # P6b RC-D3D4-Normative — binding probabilistico cruzado
                 _d3d4_norm_block = ""
                 try:
@@ -414,6 +435,70 @@ def _run_sentinel(
                             st.session_state["d3d4_normative"] = summarize_d3d4_normative(_cn_binding)
                 except Exception:
                     pass  # normativo cruzado opcional — nunca bloquea
+
+                # P7 RC-CORE Human Review — detección automática de necesidad de revisión institucional
+                try:
+                    from sentinel.human_review import (
+                        needs_institutional_review, flag_inference, get_active_flags,
+                    )
+                    _cross_dict = st.session_state.get("d3d4_cross") or {}
+                    _d4_dict    = st.session_state.get("d4_calibrated") or {}
+                    _cross_pattern = _cross_dict.get("cross_pattern", "")
+                    _cross_conf    = float(_cross_dict.get("cross_confidence", 0.0))
+                    _cross_obs     = bool(_cross_dict.get("observational_only", True))
+                    _irs_val       = float(_d4_dict.get("irs", 0.0))
+                    _eed_val       = float(_cross_dict.get("eed_score", 0.0))
+                    _d4_sat_codes  = _d4_dict.get("sat_codes", [])
+                    _d4_overwhelm  = _irs_val >= 85.0
+
+                    _needs_review, _review_reason = needs_institutional_review(
+                        cross_pattern  = _cross_pattern,
+                        cross_conf     = _cross_conf,
+                        observational  = _cross_obs,
+                        irs            = _irs_val,
+                        eed            = _eed_val,
+                        d4_overwhelm   = _d4_overwhelm,
+                        d4_sat_codes   = _d4_sat_codes,
+                    )
+                    if _needs_review and _review_reason:
+                        # Evitar duplicar flags en la sesión para el mismo patrón
+                        _existing_flags = get_active_flags(
+                            session_id=st.session_state.get("session_id", "default")
+                        )
+                        _already_flagged = any(
+                            f.get("cross_pattern") == _cross_pattern
+                            for f in _existing_flags
+                        )
+                        if not _already_flagged:
+                            _new_flag = flag_inference(
+                                session_id    = st.session_state.get("session_id", "default"),
+                                engine        = "RC-D3D4",
+                                cross_pattern = _cross_pattern,
+                                cross_conf    = _cross_conf,
+                                irs           = _irs_val,
+                                eed           = _eed_val,
+                                observational = _cross_obs,
+                                reason        = _review_reason,
+                                rc_contracts  = ["RC-D3D4", "RC-D4", "PDOT", "RC-CORE"],
+                            )
+                            st.session_state["inference_review_flag"] = {
+                                "flag_id":       _new_flag.flag_id,
+                                "cross_pattern": _new_flag.cross_pattern,
+                                "cross_conf":    _new_flag.cross_conf,
+                                "irs":           _new_flag.irs,
+                                "eed":           _new_flag.eed,
+                                "observational": _new_flag.observational,
+                                "reason":        _new_flag.reason,
+                                "rc_contracts":  _new_flag.rc_contracts,
+                                "timestamp":     _new_flag.timestamp,
+                                "trigger_rule":  _new_flag.trigger_rule,
+                                "acknowledged":  False,
+                            }
+                        elif _existing_flags:
+                            # reusar flag existente para el mismo patrón
+                            st.session_state["inference_review_flag"] = _existing_flags[0]
+                except Exception:
+                    pass  # P7 human review — nunca bloquea el chat
 
                 effective_prompt = system_prompt
                 if ctx_block:
@@ -531,6 +616,11 @@ def _run_sentinel(
                     _cross_ui = st.session_state.get("d3d4_cross")
                     if _cross_ui:
                         d3d4_card(_cross_ui, query_hash=hash(pregunta) & 0xFFFF)
+
+                # P7-Visual: inference_review_card — aviso institucional si se requiere revisión humana
+                _review_flag_ui = st.session_state.get("inference_review_flag")
+                if _review_flag_ui and not _review_flag_ui.get("acknowledged", False):
+                    inference_review_card(_review_flag_ui)
 
                 # ── Audit log (incluye provenance vault P3) ───────────────────
                 log_interaction(

@@ -1,6 +1,7 @@
 """
 SENTINEL RAG · human_review.py
-Sprint 2.1 — Human Override System.
+Sprint 2.1 — Human Override System
+Sprint RC-CORE — Inference Review Flag Layer
 
 Principio rector: SENTINEL recomienda. No gobierna.
 Todo análisis puede ser revisado, observado o rechazado por un analista humano.
@@ -8,7 +9,13 @@ Todo análisis puede ser revisado, observado o rechazado por un analista humano.
 Estados: APROBAR | OBSERVAR | RECHAZAR
 Log: sentinel/logs/human_reviews.jsonl (append-only)
 
-Dylus Lab © 2026
+RC-CORE adiciones (Sprint RC-CORE):
+  InferenceReviewFlag   — bandera estructurada cuando el sistema detecta necesidad de revisión
+  needs_institutional_review() — wrapper sobre rc_registry.needs_human_review()
+  flag_inference()      — crea y persiste un flag en inference_flags.jsonl
+  get_active_flags()    — retorna flags activos de la sesión actual
+
+Dylus Lab © 2026-05-20
 """
 from __future__ import annotations
 
@@ -17,7 +24,7 @@ import time
 from dataclasses import dataclass, asdict, field
 from enum import Enum
 from pathlib import Path
-from typing import Optional
+from typing import Any, Dict, List, Optional
 
 from sentinel.rag_config import LOGS_DIR, SENTINEL_VERSION, GUARDRAIL_VERSION
 
@@ -79,6 +86,235 @@ class ReviewSummary:
     tasa_rechazo:    float   # % sobre total
     revisores:       list[str]
     ultimas_n:       int
+
+
+# ── RC-CORE: INFERENCE REVIEW FLAG ────────────────────────────────────────────
+
+FLAGS_LOG = LOGS_DIR / "inference_flags.jsonl"
+FLAGS_LOG.parent.mkdir(parents=True, exist_ok=True)
+
+
+@dataclass
+class InferenceReviewFlag:
+    """
+    Bandera estructurada que indica que una inferencia RC requiere
+    validación institucional humana antes de elevar tensión normativa.
+
+    Generada automáticamente por el sistema cuando las reglas RC-CORE
+    detectan evidencia suficientemente crítica para escalar.
+
+    El flag es INFORMATIVO — no bloquea el sistema.
+    La autoridad pública decide si actúa sobre él.
+
+    Campos:
+        flag_id       — ID único del flag (hash sesión + patrón + timestamp)
+        session_id    — ID de sesión Streamlit
+        engine        — Motor que disparó el flag (RC-D3D4, RC-D4, etc.)
+        trigger_rule  — Regla que activó el flag (1, 2 o 3 de rc_registry)
+        cross_pattern — Patrón D3xD4 detectado
+        cross_conf    — Confianza cruzada al momento del flag
+        irs           — IRS del municipio / territorio
+        eed           — EED score (divergencia temporal-territorial)
+        observational — Si la inferencia es solo observacional
+        reason        — Justificación textual del flag (de rc_registry)
+        rc_contracts  — Contratos RC que gobiernan la decisión
+        timestamp     — Timestamp ISO del flag
+        acknowledged  — Si fue reconocido por un humano
+    """
+    flag_id:       str
+    session_id:    str
+    engine:        str
+    trigger_rule:  int                 # 1: patron critico, 2: overwhelm, 3: EED severo
+    cross_pattern: str
+    cross_conf:    float
+    irs:           float
+    eed:           float
+    observational: bool
+    reason:        str
+    rc_contracts:  List[str]
+    timestamp:     str
+    acknowledged:  bool = False
+
+
+def needs_institutional_review(
+    cross_pattern:  str   = "",
+    cross_conf:     float = 0.0,
+    observational:  bool  = True,
+    irs:            float = 0.0,
+    eed:            float = 0.0,
+    d4_overwhelm:   bool  = False,
+    d4_sat_codes:   Optional[List[str]] = None,
+) -> tuple[bool, str]:
+    """
+    Wrapper sobre rc_registry.needs_human_review().
+
+    Centraliza la lógica de detección en el registro RC y expone
+    una API clara desde human_review para que sentinel.py la use.
+
+    Retorna: (necesita_revision: bool, razon: str)
+
+    Ejemplo:
+        needs, reason = needs_institutional_review(
+            cross_pattern="CRISIS_DOBLE",
+            cross_conf=0.45,
+            observational=False,
+            irs=91.0,
+            eed=28.5,
+        )
+    """
+    try:
+        from sentinel.rc_registry import needs_human_review
+        return needs_human_review(
+            cross_pattern=cross_pattern,
+            cross_conf=cross_conf,
+            observational=observational,
+            irs=irs,
+            eed=eed,
+            d4_overwhelm=d4_overwhelm,
+            d4_sat_codes=d4_sat_codes or [],
+        )
+    except ImportError:
+        return False, ""
+
+
+def flag_inference(
+    session_id:    str,
+    engine:        str,
+    cross_pattern: str,
+    cross_conf:    float,
+    irs:           float,
+    eed:           float,
+    observational: bool,
+    reason:        str,
+    trigger_rule:  int = 1,
+    rc_contracts:  Optional[List[str]] = None,
+) -> InferenceReviewFlag:
+    """
+    Crea y persiste un InferenceReviewFlag en inference_flags.jsonl.
+
+    Llamado por sentinel.py cuando needs_institutional_review() retorna True.
+    El flag se loggea en append-only; la UI puede mostrarlo con inference_review_card().
+
+    Ejemplo:
+        flag = flag_inference(
+            session_id=st.session_state.get("session_id", "default"),
+            engine="RC-D3D4",
+            cross_pattern="CRISIS_DOBLE",
+            cross_conf=0.45,
+            irs=91.0,
+            eed=28.5,
+            observational=False,
+            reason="Patron D3xD4 critico confirmado...",
+        )
+    """
+    import hashlib
+    ts = time.strftime("%Y-%m-%dT%H:%M:%S")
+    raw_id = f"{session_id}|{cross_pattern}|{cross_conf:.4f}|{ts}"
+    flag_id = "FR-" + hashlib.sha1(raw_id.encode()).hexdigest()[:8].upper()
+
+    contracts = rc_contracts or ["RC-D3D4", "PDOT", "RC-CORE"]
+
+    flag = InferenceReviewFlag(
+        flag_id       = flag_id,
+        session_id    = session_id,
+        engine        = engine,
+        trigger_rule  = trigger_rule,
+        cross_pattern = cross_pattern,
+        cross_conf    = cross_conf,
+        irs           = irs,
+        eed           = eed,
+        observational = observational,
+        reason        = reason,
+        rc_contracts  = contracts,
+        timestamp     = ts,
+        acknowledged  = False,
+    )
+
+    # Persistir en JSONL append-only
+    entry = asdict(flag)
+    with FLAGS_LOG.open("a", encoding="utf-8") as f:
+        f.write(json.dumps(entry, ensure_ascii=False) + "\n")
+
+    return flag
+
+
+def get_active_flags(session_id: Optional[str] = None, n: int = 20) -> List[Dict[str, Any]]:
+    """
+    Retorna los flags de revisión activos (no reconocidos).
+    Si session_id es None, retorna todos los no reconocidos.
+    """
+    if not FLAGS_LOG.exists():
+        return []
+
+    entries: List[Dict[str, Any]] = []
+    with FLAGS_LOG.open("r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                e = json.loads(line)
+                if session_id and e.get("session_id") != session_id:
+                    continue
+                if not e.get("acknowledged", False):
+                    entries.append(e)
+            except json.JSONDecodeError:
+                continue
+
+    return list(reversed(entries[-n:]))
+
+
+def acknowledge_flag(flag_id: str) -> bool:
+    """
+    Marca un flag como reconocido (acknowledged=True).
+    Reescribe el archivo JSONL (opera sobre flags, no sobre reviews).
+    Retorna True si encontró y marcó el flag.
+    """
+    if not FLAGS_LOG.exists():
+        return False
+
+    entries: List[Dict[str, Any]] = []
+    found = False
+    with FLAGS_LOG.open("r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                e = json.loads(line)
+                if e.get("flag_id") == flag_id:
+                    e["acknowledged"] = True
+                    found = True
+                entries.append(e)
+            except json.JSONDecodeError:
+                continue
+
+    if found:
+        with FLAGS_LOG.open("w", encoding="utf-8") as f:
+            for e in entries:
+                f.write(json.dumps(e, ensure_ascii=False) + "\n")
+
+    return found
+
+
+def format_flag(flag: InferenceReviewFlag) -> str:
+    """Formato legible de un InferenceReviewFlag para consola."""
+    obs_tag = " [OBSERVACIONAL]" if flag.observational else " [CONFIRMADO]"
+    lines = [
+        "─" * 60,
+        f"  Revision Institucional Requerida — Flag {flag.flag_id}",
+        "─" * 60,
+        f"  Patron    : {flag.cross_pattern}{obs_tag}",
+        f"  Motor     : {flag.engine}",
+        f"  Confianza : {flag.cross_conf:.4f}",
+        f"  IRS       : {flag.irs:.1f}  |  EED: {flag.eed:.1f}",
+        f"  Razon     : {flag.reason[:120]}",
+        f"  Contratos : {', '.join(flag.rc_contracts)}",
+        f"  Timestamp : {flag.timestamp}",
+        f"  Estado    : {'Reconocido' if flag.acknowledged else 'PENDIENTE DE REVISION'}",
+        "─" * 60,
+    ]
+    return "\n".join(lines)
 
 
 # ── ESCRITURA ─────────────────────────────────────────────────────────────────

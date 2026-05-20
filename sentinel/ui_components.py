@@ -1418,3 +1418,112 @@ def d3d4_card(
             '</div>',
             unsafe_allow_html=True,
         )
+
+
+# ── 14. INFERENCE REVIEW CARD (RC-CORE) ───────────────────────────────────────
+
+def inference_review_card(flag_dict: dict) -> None:
+    """
+    Tarjeta de aviso institucional: el sistema detectó que una inferencia
+    requiere validación humana antes de elevar tensión normativa.
+
+    Argumentos:
+        flag_dict — dict serializado de InferenceReviewFlag (de get_active_flags())
+
+    Doctrina: este card no toma decisiones — informa que la complejidad
+    de la evidencia supera el umbral de autonomía del sistema.
+    La autoridad institucional es quien valida.
+    """
+    if not flag_dict:
+        return
+
+    cross_pattern = flag_dict.get("cross_pattern", "DESCONOCIDO")
+    cross_conf    = float(flag_dict.get("cross_conf", 0.0))
+    irs           = float(flag_dict.get("irs", 0.0))
+    eed           = float(flag_dict.get("eed", 0.0))
+    obs           = bool(flag_dict.get("observational", True))
+    reason        = flag_dict.get("reason", "")
+    flag_id       = flag_dict.get("flag_id", "")
+    contracts     = flag_dict.get("rc_contracts", [])
+    ts            = flag_dict.get("timestamp", "")
+    rule          = int(flag_dict.get("trigger_rule", 1))
+    ack           = bool(flag_dict.get("acknowledged", False))
+
+    # Color según si ya fue reconocido
+    _bg     = "rgba(56,161,105,0.08)"  if ack else "rgba(230,126,34,0.10)"
+    _border = "rgba(56,161,105,0.35)"  if ack else "rgba(230,126,34,0.40)"
+    _color  = "#38A169"                if ack else "#E67E22"
+    _icon   = "✅"                     if ack else "⚠️"
+    _title  = "Revisión Institucional Completada" if ack else "Revisión Institucional Requerida"
+
+    obs_tag = " · OBSERVACIONAL" if obs else " · CONFIRMADO"
+    rule_labels = {
+        1: "Patrón D3×D4 crítico confirmado",
+        2: "Evidencia D4 abrumadora con SATs críticos",
+        3: "Divergencia temporal-territorial severa (EED)",
+    }
+    rule_label = rule_labels.get(rule, f"Regla {rule}")
+
+    st.markdown(
+        f'<div style="background:{_bg};border:1px solid {_border};'
+        f'border-left:4px solid {_color};border-radius:10px;'
+        f'padding:14px 16px;margin:10px 0 6px;'
+        f'font-family:Inter,-apple-system,sans-serif">'
+        # Header
+        f'<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">'
+        f'<span style="font-size:10px;font-weight:700;color:{_color};letter-spacing:.06em">'
+        f'{_icon} {_title.upper()}</span>'
+        f'<span style="font-size:8px;color:rgba(255,255,255,0.40)">'
+        f'FLAG {flag_id} · {ts[:16]}</span></div>'
+        # Patrón + regla
+        f'<div style="font-size:12px;font-weight:600;color:rgba(255,255,255,0.85);margin-bottom:4px">'
+        f'{cross_pattern}{obs_tag}</div>'
+        f'<div style="font-size:9px;color:rgba(255,255,255,0.50);margin-bottom:8px">'
+        f'Regla activada: {rule_label}</div>'
+        # Métricas
+        f'<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:8px">'
+        f'<div style="background:rgba(0,0,0,0.20);border-radius:6px;padding:6px;text-align:center">'
+        f'<div style="font-size:8px;color:rgba(255,255,255,0.40)">CROSS CONF</div>'
+        f'<div style="font-size:13px;font-weight:700;color:{_color}">{cross_conf:.2%}</div></div>'
+        f'<div style="background:rgba(0,0,0,0.20);border-radius:6px;padding:6px;text-align:center">'
+        f'<div style="font-size:8px;color:rgba(255,255,255,0.40)">IRS</div>'
+        f'<div style="font-size:13px;font-weight:700;color:#E53E3E">{irs:.1f}</div></div>'
+        f'<div style="background:rgba(0,0,0,0.20);border-radius:6px;padding:6px;text-align:center">'
+        f'<div style="font-size:8px;color:rgba(255,255,255,0.40)">EED</div>'
+        f'<div style="font-size:13px;font-weight:700;color:#00D4FF">{eed:+.1f}</div></div>'
+        f'</div>'
+        # Reason
+        f'<div style="font-size:9px;color:rgba(255,255,255,0.55);margin-bottom:8px;'
+        f'padding:6px 8px;background:rgba(0,0,0,0.15);border-radius:6px;line-height:1.5">'
+        f'{reason[:200]}{"..." if len(reason) > 200 else ""}</div>'
+        # Contratos
+        f'<div style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:8px">'
+        + "".join(
+            f'<span style="background:rgba(0,0,0,0.25);border-radius:4px;'
+            f'padding:2px 6px;font-size:7.5px;color:rgba(255,255,255,0.50)">'
+            f'{c}</span>'
+            for c in contracts
+        )
+        + f'</div>'
+        # Doctrina
+        f'<div style="font-size:8px;color:rgba(255,255,255,0.28);'
+        f'border-top:1px solid rgba(255,255,255,0.08);padding-top:6px;font-style:italic">'
+        f'El sistema informa — la autoridad publica valida y decide sobre las implicancias institucionales.'
+        f'</div></div>',
+        unsafe_allow_html=True,
+    )
+
+    # Botón de reconocimiento (fuera del HTML para interactividad Streamlit)
+    if not ack:
+        _btn_key = f"ack_{flag_id}_{id(flag_dict)}"
+        if st.button(
+            f"Reconocer flag {flag_id}",
+            key=_btn_key,
+            help="Confirmar que este aviso fue recibido y revisado por el equipo institucional.",
+        ):
+            try:
+                from sentinel.human_review import acknowledge_flag
+                acknowledge_flag(flag_id)
+                st.rerun()
+            except Exception:
+                pass
