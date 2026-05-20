@@ -1,8 +1,11 @@
 """
-QUIRA OS v0.1 — Sentinel · Agente de Gobernanza Territorial
-Powered by Groq · Llama 3.3 70B (free tier)
-Arquitectura: sentinel/ package (tools · policies · audit · prompts)
-Fase: READER v0.1 — Lee H73/H99, explica, alerta, sugiere. No actúa de forma autónoma.
+QUIRA OS — Sentinel · Agente de Gobernanza Territorial
+Powered by Claude Haiku (Anthropic) — claude-haiku-4-5
+Arquitectura: sentinel/ package (tools · policies · audit · prompts · RC-7.2)
+Loop semántico: SAT → vault_enricher → legal_router → RC-7.2 → Claude Haiku
+Fase: READER v1 — Lee H73/H99, explica, alerta, sugiere. No actúa de forma autónoma.
+RC-7.2 Longitudinal Engine: longitudinal_engine → administrative_patterns →
+  institutional_classifier → normative_binding → system prompt.
 Doctrina: "La IA opera. La autoridad pública decide."
 Dylus Lab © 2026
 """
@@ -280,11 +283,28 @@ def _run_sentinel(
                 if _vault_ctx["has_context"]:
                     st.session_state["sentinel_vault_provenance"] = provenance_to_dict(_vault_ctx)
 
+                # P4 RC-7.2 Longitudinal Engine — cierre normativo por patrón de ejecución
+                _rc72_block = ""
+                try:
+                    from sentinel.normative_binding import get_rc72_context_for_query
+                    # Pasar records longitudinales si existen en session_state
+                    _rc72_records = st.session_state.get("rc72_budget_records")
+                    _rc72_block   = get_rc72_context_for_query(pregunta, _rc72_records)
+                    if _rc72_records and _rc72_block:
+                        # Guardar binding en session para debug panel y provenance
+                        from sentinel.normative_binding import run_rc72_pipeline, summarize_binding
+                        _r, _ps, _ic, _binding = run_rc72_pipeline(_rc72_records)
+                        st.session_state["rc72_binding"] = summarize_binding(_binding)
+                except Exception:
+                    pass  # RC-7.2 opcional — nunca bloquea el chat
+
                 effective_prompt = system_prompt
                 if ctx_block:
                     effective_prompt += "\n\n" + ctx_block
                 if legal_block:
                     effective_prompt += "\n\n" + legal_block
+                if _rc72_block:
+                    effective_prompt += "\n\n" + _rc72_block
 
                 # Construir historial para Claude — solo roles user/assistant (sin system)
                 claude_msgs = []
@@ -380,10 +400,15 @@ def _run_sentinel(
                     modo_seguro=modo_seguro,
                     pagina_origen=pagina_origen,
                 )
-                # P3: guardar provenance en historial del mensaje
+                # P3: guardar provenance vault en historial del mensaje
                 if _vault_ctx["has_context"]:
                     st.session_state["sentinel_messages"][-1]["vault_provenance"] = (
                         provenance_to_dict(_vault_ctx)
+                    )
+                # P4: guardar RC-7.2 binding en historial del mensaje
+                if st.session_state.get("rc72_binding"):
+                    st.session_state["sentinel_messages"][-1]["rc72_binding"] = (
+                        st.session_state["rc72_binding"]
                     )
 
             except Exception as e:
