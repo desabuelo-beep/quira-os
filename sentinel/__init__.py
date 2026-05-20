@@ -32,6 +32,20 @@ from sentinel.budget_record_loader import (
     load_budget_records, get_primary_series, get_holding_series,
     get_crosssection_h90, summarize_available_series,
 )
+# RC-D4 Territorial Equity Engine
+from sentinel.d4_engine import (
+    ParishRecord, ParishAnalysis, D4Result, analyze_territory, summarize_d4,
+)
+from sentinel.d4_patterns import (
+    D4Pattern, D4PatternSet, detect_d4_patterns, summarize_pattern_set_d4,
+)
+from sentinel.d4_calibration import (
+    CalibratedD4Result, calibrate_d4, describe_d4_calibrated, summarize_d4_calibrated,
+)
+from sentinel.d4_loader import (
+    load_parish_records, run_d4_pipeline, get_d4_context_for_query,
+    summarize_d4_pipeline, invalidate_d4_cache,
+)
 
 __all__ = [
     # Core tools
@@ -53,4 +67,10 @@ __all__ = [
     # RC-7.4 Data Bridge
     "load_budget_records", "get_primary_series", "get_holding_series",
     "get_crosssection_h90", "summarize_available_series",
+    # RC-D4 Territorial Equity Engine
+    "ParishRecord", "ParishAnalysis", "D4Result", "analyze_territory", "summarize_d4",
+    "D4Pattern", "D4PatternSet", "detect_d4_patterns", "summarize_pattern_set_d4",
+    "CalibratedD4Result", "calibrate_d4", "describe_d4_calibrated", "summarize_d4_calibrated",
+    "load_parish_records", "run_d4_pipeline", "get_d4_context_for_query",
+    "summarize_d4_pipeline", "invalidate_d4_cache",
 ]

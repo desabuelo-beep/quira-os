@@ -1,0 +1,31 @@
+{
+  "_meta": {
+    "descripcion": "Parametros de calibracion espacial RC-D4 — QUIRA OS",
+    "version": "1.0",
+    "fecha": "2026-05-20",
+    "fuente": "Dylus Lab — revision analitica con Gold Master v5.5",
+    "doctrina": "Prudencia espacial: reduce confianza de inferencias, nunca oculta datos crudos",
+    "nota": "Modificar solo tras validacion con analista Dylus Lab. Valores fuera de rango pueden suprimir o inflar SATs D4."
+  },
+
+  "capital_effect_discount": 0.18,
+  "_capital_effect_discount_nota": "Descuento por efecto sede administrativa. El canton capital recibe prima legitima por: administracion, cortes, mercado, infraestructura de transito. Rango recomendado: 0.12–0.22",
+
+  "competence_scope_discount": 0.12,
+  "_competence_scope_discount_nota": "Descuento por alcance competencial parcial del GAD en agua potable. SENAGUA/Juntas de Agua/EMAPAM son operadores concurrentes. Rango recomendado: 0.08–0.18",
+
+  "single_period_discount": 0.08,
+  "_single_period_discount_nota": "Descuento uniforme por analisis de un solo corte temporal (snapshot Q1-2026). Se reducira cuando existan datos longitudinales parroquiales. Rango recomendado: 0.05–0.12",
+
+  "population_concentration_discount": 0.10,
+  "_population_concentration_discount_nota": "Descuento cuando la concentracion de inversion es parcialmente explicada por la concentracion demografica del capital cantonal (57% poblacion). Rango recomendado: 0.05–0.15",
+
+  "sat_d4_min_confidence": 0.45,
+  "_sat_d4_min_confidence_nota": "Umbral minimo de confianza calibrada para emitir un SAT D4. Mayor que RC-7.3 (0.40) por sensibilidad politica de los hallazgos territoriales. Rango recomendado: 0.40–0.55",
+
+  "min_floor_confidence": 0.35,
+  "_min_floor_confidence_nota": "Confianza minima garantizada — un IRS=93 con 5 parroquias al -84% NUNCA baja de este umbral. Protege contra supresion total por acumulacion de descuentos. Rango recomendado: 0.30–0.40",
+
+  "irs_overwhelm_threshold": 85.0,
+  "_irs_overwhelm_threshold_nota": "Cuando IRS supera este umbral, todos los descuentos de credibilidad se ignoran. La evidencia es abrumadora e irrefutable. Alineado con Isabel Muentes (IRS=79.7 Gold Master — umbral conservador en 85). Rango recomendado: 80–90"
+}

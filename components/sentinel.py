@@ -48,6 +48,17 @@ def render_sentinel(
         except Exception:
             st.session_state["rc72_budget_records"] = None
 
+    # ── RC-D4 Territorial Equity Engine — inicializar una vez por sesión ──────
+    # Corre el pipeline completo D4: parroquias → IRS → Gini → patrones → calibración
+    # Resultado cacheado en session_state para inyección en cada query territorial.
+    if "d4_calibrated" not in st.session_state:
+        try:
+            from sentinel.d4_loader import run_d4_pipeline, summarize_d4_calibrated
+            _d4 = run_d4_pipeline()
+            st.session_state["d4_calibrated"] = summarize_d4_calibrated(_d4) if _d4 else None
+        except Exception:
+            st.session_state["d4_calibrated"] = None
+
     data     = load_all()
     pdot_ctx = build_pdot_context()
     rol      = get_rol()
@@ -330,6 +341,14 @@ def _run_sentinel(
                 except Exception:
                     pass  # RC-7.2/7.3 opcional — nunca bloquea el chat
 
+                # P5 RC-D4 — Territorial Equity Engine (inyección condicional)
+                _d4_block = ""
+                try:
+                    from sentinel.d4_loader import get_d4_context_for_query
+                    _d4_block = get_d4_context_for_query(pregunta)
+                except Exception:
+                    pass  # D4 opcional — nunca bloquea el chat
+
                 effective_prompt = system_prompt
                 if ctx_block:
                     effective_prompt += "\n\n" + ctx_block
@@ -337,6 +356,8 @@ def _run_sentinel(
                     effective_prompt += "\n\n" + legal_block
                 if _rc72_block:
                     effective_prompt += "\n\n" + _rc72_block
+                if _d4_block:
+                    effective_prompt += "\n\n" + _d4_block
 
                 # Construir historial para Claude — solo roles user/assistant (sin system)
                 claude_msgs = []
