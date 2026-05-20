@@ -19,6 +19,7 @@ from sentinel.audit         import log_interaction, get_audit_stats
 from sentinel.renderer      import parse_response, render_visual
 from sentinel               import charts as _charts
 from sentinel.legal_router      import build_legal_prompt_block, find_legal_refs, has_legal_refs
+from sentinel.vault_enricher   import get_vault_normative_context, format_provenance, provenance_to_dict
 from sentinel.trust_engine      import calculate_trust, context_from_query
 from sentinel.coherencia_engine import evaluate as _coh_eval, detect_coherencia_intent
 from sentinel.ui_components     import trust_badge, legal_card, coherencia_card
@@ -66,6 +67,11 @@ def render_sentinel(
                     system_prompt[:2000],
                     height=200,
                 )
+                # P3: Provenance vault — ultima query procesada
+                last_provenance = st.session_state.get("sentinel_vault_provenance")
+                if last_provenance:
+                    st.caption("Vault Provenance (P3 — ultima query):")
+                    st.json(last_provenance)
                 # Pantallas sugeridas por política
                 pantallas_sug = st.session_state.get("sentinel_pantallas_sugeridas", [])
                 if pantallas_sug:
@@ -267,8 +273,13 @@ def _run_sentinel(
                 # Sprint 3: inyectar contexto conversacional activo en el system prompt
                 from sentinel import state_memory as _mem
                 ctx_block    = _mem.build_context_prompt()
-                # Sprint Legal (P3): inyectar marco normativo cuando la query toca leyes
+                # P3 Loop Semantico: marco legal estatico + contexto vault Obsidian
                 legal_block  = build_legal_prompt_block(pregunta)
+                # Capturar provenance vault para audit log y debug panel
+                _vault_ctx   = get_vault_normative_context(pregunta)
+                if _vault_ctx["has_context"]:
+                    st.session_state["sentinel_vault_provenance"] = provenance_to_dict(_vault_ctx)
+
                 effective_prompt = system_prompt
                 if ctx_block:
                     effective_prompt += "\n\n" + ctx_block
@@ -360,7 +371,7 @@ def _run_sentinel(
                     )
                     coherencia_card(_coh_res)
 
-                # ── Audit log ─────────────────────────────────────────────────
+                # ── Audit log (incluye provenance vault P3) ───────────────────
                 log_interaction(
                     pregunta=pregunta,
                     respuesta=full_response,
@@ -369,6 +380,11 @@ def _run_sentinel(
                     modo_seguro=modo_seguro,
                     pagina_origen=pagina_origen,
                 )
+                # P3: guardar provenance en historial del mensaje
+                if _vault_ctx["has_context"]:
+                    st.session_state["sentinel_messages"][-1]["vault_provenance"] = (
+                        provenance_to_dict(_vault_ctx)
+                    )
 
             except Exception as e:
                 err = str(e)

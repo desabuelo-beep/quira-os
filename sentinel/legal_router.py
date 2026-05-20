@@ -175,31 +175,56 @@ def format_legal_citation(ref: dict) -> str:
 
 def build_legal_prompt_block(query: str) -> str:
     """
-    Genera bloque normativo para inyectar al system prompt de Groq.
-    Solo se activa cuando la query toca temas legales — mantiene el prompt ligero.
-    Incluye reason_path cuando detecta consulta de viabilidad.
+    Genera bloque normativo enriquecido para inyectar al system prompt de Claude.
+
+    Dos capas (P3 — Loop Semantico):
+      1. Marco normativo estatico (COOTAD/COPLAFIP/CRE) -- keyword determinístico
+      2. Contexto vault Obsidian (notas institucionales verificadas) -- P3 bridge
+
+    Solo activa cuando la query toca temas legales o institucionales.
     """
     refs = find_legal_refs(query, max_refs=2)
-    if not refs:
-        return ""
 
-    lines = ["MARCO NORMATIVO APLICABLE (citar si es relevante):"]
-    for r in refs:
-        law_label = {
-            "COOTAD": "COOTAD", "COPLAFIP": "COPLAFIP",
-            "COOTAD_2026": "COOTAD Reforma 2026", "CRE": "Constitución (CRE)",
-        }.get(r["law"], r["law"])
-        lines.append(f"  {law_label} {r['article']}: {r['text'][:200]}...")
-    lines.append("  Al citar: indica 'conforme [LEY] [Art.X]' — no inventes artículos.")
+    # ---- Capa 1: Marco legal estatico (base inmutable) ----------------------
+    static_lines: list[str] = []
+    if refs:
+        static_lines.append("MARCO NORMATIVO APLICABLE (citar si es relevante):")
+        for r in refs:
+            law_label = {
+                "COOTAD":      "COOTAD",
+                "COPLAFIP":    "COPLAFIP",
+                "COOTAD_2026": "COOTAD Reforma 2026",
+                "CRE":         "Constitucion (CRE)",
+            }.get(r["law"], r["law"])
+            static_lines.append(
+                f"  {law_label} {r['article']}: {r['text'][:200]}..."
+            )
+        static_lines.append(
+            "  Al citar: indica 'conforme [LEY] [Art.X]' -- no inventes articulos."
+        )
 
-    # Inyectar reason_path si la query es de viabilidad normativa
-    reason = get_reason_path(query, refs)
-    if reason:
-        lines.append("")
-        lines.append("RUTA PROCEDIMENTAL APLICABLE:")
-        lines.append(f"  {reason}")
+        reason = get_reason_path(query, refs)
+        if reason:
+            static_lines.append("")
+            static_lines.append("RUTA PROCEDIMENTAL APLICABLE:")
+            static_lines.append(f"  {reason}")
 
-    return "\n".join(lines)
+    # ---- Capa 2: Contexto vault (P3 enriquecimiento) ------------------------
+    vault_block = ""
+    try:
+        from sentinel.vault_enricher import build_vault_prompt_block
+        vault_block = build_vault_prompt_block(query)
+    except Exception:
+        pass  # vault no disponible -- continua sin el
+
+    # ---- Ensamblar bloque final ---------------------------------------------
+    parts: list[str] = []
+    if static_lines:
+        parts.append("\n".join(static_lines))
+    if vault_block:
+        parts.append(vault_block)
+
+    return "\n\n".join(parts) if parts else ""
 
 
 # ── INTENTS — clasificación por propósito institucional ───────────────────────
