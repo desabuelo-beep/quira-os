@@ -12,7 +12,7 @@
   "_capital_effect_discount_nota": "Descuento por efecto sede administrativa. El canton capital recibe prima legitima por: administracion, cortes, mercado, infraestructura de transito. Rango recomendado: 0.12–0.22",
 
   "competence_scope_discount": 0.12,
-  "_competence_scope_discount_nota": "Descuento por alcance competencial parcial del GAD en agua potable. SENAGUA/Juntas de Agua/EMAPAM son operadores concurrentes. Rango recomendado: 0.08–0.18",
+  "_competence_scope_discount_nota": "Descuento por alcance competencial parcial del GAD en agua potable. El Ministerio de Ambiente y Energia (Autoridad Unica del Agua, anteriormente MAATE) regula y controla el aprovechamiento hidrico. Las Juntas de Agua Comunitarias son operadores concurrentes en areas rurales. El GAD Municipal tiene competencia exclusiva de prestacion (CRE Art. 264) pero bajo regulacion del Ministerio. Rango recomendado: 0.08–0.18",
 
   "single_period_discount": 0.08,
   "_single_period_discount_nota": "Descuento uniforme por analisis de un solo corte temporal (snapshot Q1-2026). Se reducira cuando existan datos longitudinales parroquiales. Rango recomendado: 0.05–0.12",

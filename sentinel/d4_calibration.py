@@ -49,8 +49,10 @@ _CALIB = _load_calib()
 _CAPITAL_EFFECT_DISCOUNT = _CALIB.get("capital_effect_discount", 0.18)
 
 # Factor de descuento por alcance competencial.
-# Agua: SENAGUA/Junta de Aguas/EMAPAM son competentes, no solo el GAD.
-# Aplicado a SAT-D4-D (inequidad hídrica).
+# Agua: Ministerio de Ambiente y Energia (Autoridad Unica del Agua, antes MAATE) regula
+# el recurso hidrico nacional. Juntas de Agua Comunitarias operan en areas rurales.
+# El GAD presta el servicio (competencia exclusiva CRE Art.264(4)) bajo regulacion ministerial.
+# Aplicado a SAT-D4-D (inequidad hidrica).
 _COMPETENCE_SCOPE_DISCOUNT = _CALIB.get("competence_scope_discount", 0.12)
 
 # Factor de descuento por corte único (snapshot single-period).
@@ -151,7 +153,7 @@ def _apply_competence_scope(
 
     applied.append(
         f"competence_scope: -{_COMPETENCE_SCOPE_DISCOUNT:.0%} "
-        f"(cobertura agua parcialmente fuera de competencia GAD: SENAGUA/Juntas de Agua/EMAPAM)"
+        f"(cobertura agua: competencia GAD bajo regulacion Ministerio de Ambiente y Energia — Juntas de Agua Comunitarias operan en areas rurales)"
     )
     return max(_MIN_FLOOR_CONF, conf - _COMPETENCE_SCOPE_DISCOUNT)
 

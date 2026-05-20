@@ -15,7 +15,7 @@
       "el municipio es responsable de",
       "decision ilegal"
     ],
-    "nota_competencia_agua": "La competencia en agua potable es concurrente: EMAPAM/SENAGUA/Juntas de Agua son operadores coexistentes. SAT-D4-D aplica calibracion de alcance competencial (-12%). El binding hidrico NUNCA acusa al GAD de responsabilidad exclusiva."
+    "nota_competencia_agua": "La competencia en agua potable es concurrente: el Ministerio de Ambiente y Energia (Autoridad Unica del Agua, antes MAATE) regula el recurso hidrico a nivel nacional; las Juntas de Agua Comunitarias operan en areas rurales. El GAD tiene competencia exclusiva de prestacion del servicio (CRE Art. 264(4)) bajo regulacion del Ministerio. SAT-D4-D aplica calibracion de alcance competencial (-12%). El binding hidrico NUNCA acusa al GAD de responsabilidad exclusiva."
   },
 
   "pdot_targets": {
@@ -45,7 +45,7 @@
       "patterns": ["INEQUIDAD_HIDRICA"],
       "tension_text": "en el ambito de competencia del GAD en agua potable, la cobertura observada en parroquias rurales genera una tension con la responsabilidad municipal de prestacion de servicios de agua potable establecida constitucionalmente",
       "verificado": true,
-      "nota_competencia": "Competencia concurrente: EMAPAM/SENAGUA/Juntas de Agua tambien intervienen. El binding hidrico aplica con calibracion de alcance competencial. Verificado en CRE Art. 264 numerales."
+      "nota_competencia": "Competencia concurrente: el Ministerio de Ambiente y Energia (Autoridad Unica del Agua, antes MAATE) es el ente rector nacional; las Juntas de Agua Comunitarias operan en areas rurales. El GAD Municipal presta el servicio (competencia exclusiva CRE Art. 264(4)) bajo regulacion ministerial. El binding hidrico aplica con calibracion de alcance competencial. Verificado en CRE Art. 264 numerales."
     },
     {
       "id": "COOTAD-3-equidad",
@@ -55,8 +55,8 @@
       "principle": "equidad_interterritorial_gestion",
       "patterns": ["CONCENTRACION_TERRITORIAL", "REZAGO_PERSISTENTE", "CAPTURA_CAPITAL", "SESGO_DISTRIBUTIVO"],
       "tension_text": "el patron de distribucion de inversion observado muestra una divergencia con el principio de equidad interterritorial que el COOTAD establece como rector del ejercicio de potestades publicas de los GADs",
-      "verificado": true,
-      "nota": "COOTAD Art. 3 lista principios: solidaridad, subsidiariedad, equidad interterritorial, integracion y participacion. El principio de equidad interterritorial es explicito. La letra exacta puede variar por edicion — el principio es verificado."
+      "verificado": false,
+      "nota": "Principio de equidad interterritorial bien establecido en COOTAD — pendiente de verificar numero de articulo exacto en edicion vigente. Usar con lenguaje potencial hasta confirmar en vault."
     },
     {
       "id": "COOTAD-distribucion-parroquial",

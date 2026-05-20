@@ -199,7 +199,7 @@ CONGRUENCIAS = {
         "avep": "Transición Crítica",
         "emoji": "🟡",
         "color": "#FFB700",
-        "fuente": "HPT-M · 4 entidades · Bomberos/Patronato/EP Aseo",
+        "fuente": "HPT-M · 4 entidades · Bomberos/Patronato/EMAI-EP",
     },
 }
 
@@ -290,7 +290,7 @@ HOLDING = {
         },
         {
             "id": "EP_ASEO",
-            "nombre": "EP Aseo Municipal",
+            "nombre": "Empresa Municipal de Aseo Integral Montecristi-EP",
             "tipo": "Empresa pública · residuos sólidos",
             "score": 58.40,
             "nodo": "Nodo 2",

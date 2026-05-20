@@ -210,7 +210,7 @@ def render() -> None:
 
     ep_aseo = _entity_drawer(
         idx=3, emoji="🗑️",
-        nombre="EP Aseo Municipal",
+        nombre="Empresa Municipal de Aseo Integral Montecristi-EP",
         tipo="Recolección, tratamiento y disposición final de residuos · Empresa pública",
         score=58.4, score_color="var(--amber)",
         badge_class="badge-amber", badge_text="⚠️ Alerta",
@@ -372,7 +372,7 @@ def render() -> None:
         + _ep_card("🤝", "Patronato Municipal", "AD-01 · Desarrollo Social · LOSEP",
                    74.1, "#38A169", "56,161,105",
                    92, 312, True, "vigente", "✅ Gestión por Mandato")
-        + _ep_card("🗑️", "EP Aseo Municipal", "EP-01 · Residuos Sólidos · LOEP",
+        + _ep_card("🗑️", "Empresa Municipal de Aseo Integral Montecristi-EP", "EP-01 · Residuos Sólidos · LOEP",
                    58.4, "#D69E2E", "214,158,46",
                    85, 245, True, "vigente", "⚡ Transición Crítica — arrastra nodo")
         + _ep_card("🏛️", "GAD Central", "ALC-01 · 12 Direcciones · COOTAD",

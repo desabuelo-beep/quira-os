@@ -131,8 +131,8 @@ def _p17_html(show_tech: bool) -> str:
         <td><span style="font-size:9px;color:var(--green)">Validado</span></td>
       </tr>
       <tr>
-        <td><span style="color:var(--amber);font-weight:700">🗑️ EP ASEO</span>
-            <span style="font-size:9px;color:var(--muted)"> EP Aseo Municipal</span></td>
+        <td><span style="color:var(--amber);font-weight:700">🗑️ EMAI-EP</span>
+            <span style="font-size:9px;color:var(--muted)"> Empresa Municipal de Aseo Integral Montecristi-EP</span></td>
         <td style="text-align:center;color:var(--amber)">⏳</td>
         <td style="text-align:center;color:var(--red)">❌</td>
         <td><span style="font-size:9px;color:var(--red)">Incompleto</span></td>

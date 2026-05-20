@@ -74,7 +74,9 @@ class D4NormativeBinding:
       - Nunca acusatorio
       - Siempre auditadle (refs identificadas, tiers explicitos)
       - PDOT como instrumento prioritario (autocompromiso > norma externa)
-      - Calibracion de competencia en agua (concurrente con SENAGUA/EMAPAM)
+      - Calibracion de competencia en agua: GAD presta el servicio (CRE Art.264(4)) bajo
+        regulacion del Ministerio de Ambiente y Energia (Autoridad Unica del Agua, antes MAATE).
+        Juntas de Agua Comunitarias operan en areas rurales como operadores concurrentes.
     """
     refs:             List[D4NormRef]   # referencias normativas activas
     pdot_alignment:   dict              # estado IRS vs meta PDOT 2027

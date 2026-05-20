@@ -108,9 +108,11 @@ _CROSS_NORM_DB: list[dict] = [
         ),
         "verificado": True,
         "nota_competencia": (
-            "Competencia concurrente: EMAPAM/SENAGUA/Juntas de Agua tambien intervienen. "
-            "El binding hidrico aplica con calibracion de alcance competencial. "
-            "No imputa responsabilidad exclusiva al GAD."
+            "El Ministerio de Ambiente y Energia (Autoridad Unica del Agua, antes MAATE) "
+            "regula el recurso hidrico nacional. Juntas de Agua Comunitarias operan en areas rurales. "
+            "El GAD Municipal presta el servicio de agua potable (competencia exclusiva CRE Art.264(4)) "
+            "bajo regulacion ministerial. El binding hidrico aplica con calibracion de alcance "
+            "competencial. No imputa responsabilidad exclusiva al GAD."
         ),
     },
     # ── COOTAD ────────────────────────────────────────────────────────────────
@@ -128,8 +130,8 @@ _CROSS_NORM_DB: list[dict] = [
             "muestra indicadores de tension con el principio de equidad interterritorial "
             "que el COOTAD establece como rector del ejercicio de potestades publicas de los GADs"
         ),
-        "verificado": True,
-        "nota": "COOTAD Art. 3 incluye explicitamente el principio de equidad interterritorial.",
+        "verificado": False,
+        "nota": "Principio de equidad interterritorial reconocido en COOTAD — pendiente de verificar numero de articulo exacto en edicion vigente. No usar hasta confirmar en vault.",
     },
     # ── COPLAFIP — coherencia presupuestaria y planificacion ──────────────────
     {
