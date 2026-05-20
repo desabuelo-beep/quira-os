@@ -117,6 +117,157 @@
     }
   },
 
+  "series_longitudinal": {
+    "_meta": {
+      "descripcion": "Series históricas verificadas de ejecución presupuestaria (codificado + devengado) por entidad y alcance presupuestario.",
+      "fuente_primaria": "SIAP-ICPI_GOLD_MASTER_v5.5_TGI_20260518 · eSIGEF cédulas verificadas",
+      "nota_scope": "gad_inversion_g7178 = scope D3 canonical (H07b, grupos 71-78 broad) · ep_aseo/bomberos/patronato = grupos 71-78 strict eSIGEF · h90 = todos los grupos presupuestarios",
+      "ultima_actualizacion": "2026-05-20",
+      "advertencia": "Series con 2 puntos permiten cálculo de pendiente simple. Series con 3+ puntos permiten OLS completo. Usar con calibración RC-7.3.",
+      "uso": "budget_record_loader.py → BudgetRecord → run_full_pipeline → CalibratedResult"
+    },
+    "gad_inversion_g7178": [
+      {
+        "periodo": "2025",
+        "orden": 0,
+        "temporalidad": "anual",
+        "codificado": 21295000,
+        "devengado": 12746168,
+        "reformas": 0,
+        "grupo_gasto": "G71-78",
+        "entidad": "GAD",
+        "ti_pct": 59.85,
+        "fuente": "gm_v55_d3_canonical",
+        "fuente_notas": "D3=59.85% H07b_Ti_INVERSION canonical Gold Master v5.5; dev=12,746,168 eSIGEF Dic2025 TRAYECTORIA vault; cod=21,295,000 back-calculado (dev/Ti)"
+      },
+      {
+        "periodo": "2026Q1",
+        "orden": 1,
+        "temporalidad": "trimestral",
+        "codificado": 22595464,
+        "devengado": 238066,
+        "reformas": 0,
+        "grupo_gasto": "G71-78",
+        "entidad": "GAD",
+        "ti_pct": 1.05,
+        "fuente": "gm_v55_financiero",
+        "fuente_notas": "H07b Q1-2026 raw; ti_normalizada_pct=4.21; fondos_bloqueados_est=3660000 (BDE+Gender Bond+ONU Mujeres)"
+      }
+    ],
+    "ep_aseo_g7178": [
+      {
+        "periodo": "2025",
+        "orden": 0,
+        "temporalidad": "anual",
+        "codificado": 2362835,
+        "devengado": 2137680,
+        "reformas": 0,
+        "grupo_gasto": "G71-78",
+        "entidad": "EP_ASEO",
+        "ti_pct": 90.5,
+        "fuente": "trayectoria_esigef_dic2025",
+        "fuente_notas": "Cédula presupuestaria eSIGEF Dic 2025 Aseo EP — mejor ejecución del Holding"
+      }
+    ],
+    "bomberos_g7178": [
+      {
+        "periodo": "2023S1",
+        "orden": 0,
+        "temporalidad": "semestral",
+        "codificado": 79240,
+        "devengado": 27639,
+        "reformas": 0,
+        "grupo_gasto": "G71-78",
+        "entidad": "BOMBEROS",
+        "ti_pct": 34.9,
+        "fuente": "trayectoria_poa2023",
+        "fuente_notas": "POA 2023 Bomberos Semestre 1 — único dato 2023 disponible"
+      },
+      {
+        "periodo": "2025",
+        "orden": 1,
+        "temporalidad": "anual",
+        "codificado": 285557,
+        "devengado": 46772,
+        "reformas": 0,
+        "grupo_gasto": "G71-78",
+        "entidad": "BOMBEROS",
+        "ti_pct": 16.4,
+        "fuente": "trayectoria_esigef_dic2025",
+        "fuente_notas": "Cédula presupuestaria eSIGEF Dic 2025; partida edificios/inmuebles USD 174,500 codificado con devengado=0"
+      }
+    ],
+    "patronato_g7178": [
+      {
+        "periodo": "2024",
+        "orden": 0,
+        "temporalidad": "anual",
+        "codificado": 1994568,
+        "devengado": 1072503,
+        "reformas": 0,
+        "grupo_gasto": "G71-78",
+        "entidad": "PATRONATO",
+        "ti_pct": 53.8,
+        "fuente": "trayectoria_esigef_dic2024",
+        "fuente_notas": "Cierre anual Dic 2024 Patronato Municipal — patrón sub-ejecución estructural"
+      }
+    ],
+    "h90_holding_2026q1": [
+      {
+        "periodo": "2026Q1",
+        "orden": 0,
+        "temporalidad": "trimestral",
+        "codificado": 45977894,
+        "devengado": 5147259,
+        "reformas": 6667862,
+        "grupo_gasto": "todos",
+        "entidad": "GAD",
+        "ti_pct": 11.20,
+        "fuente": "gm_v55_h90",
+        "fuente_notas": "H90_PRESUPUESTO_CONSOLIDADO todos grupos Q1-2026; cod_inicial=39,310,032; reformas_net=6,667,862"
+      },
+      {
+        "periodo": "2026Q1",
+        "orden": 0,
+        "temporalidad": "trimestral",
+        "codificado": 4341243,
+        "devengado": 849062,
+        "reformas": 0,
+        "grupo_gasto": "todos",
+        "entidad": "PATRONATO",
+        "ti_pct": 19.56,
+        "fuente": "gm_v55_h90",
+        "fuente_notas": "H90_PRESUPUESTO_CONSOLIDADO todos grupos Q1-2026"
+      },
+      {
+        "periodo": "2026Q1",
+        "orden": 0,
+        "temporalidad": "trimestral",
+        "codificado": 2438254,
+        "devengado": 442930,
+        "reformas": 0,
+        "grupo_gasto": "todos",
+        "entidad": "EP_ASEO",
+        "ti_pct": 18.17,
+        "fuente": "gm_v55_h90",
+        "fuente_notas": "H90_PRESUPUESTO_CONSOLIDADO todos grupos Q1-2026"
+      },
+      {
+        "periodo": "2026Q1",
+        "orden": 0,
+        "temporalidad": "trimestral",
+        "codificado": 1485033,
+        "devengado": 288599,
+        "reformas": 0,
+        "grupo_gasto": "todos",
+        "entidad": "BOMBEROS",
+        "ti_pct": 19.43,
+        "fuente": "gm_v55_h90",
+        "fuente_notas": "H90_PRESUPUESTO_CONSOLIDADO todos grupos Q1-2026"
+      }
+    ]
+  },
+
   "territorial": {
     "poblacion_census_2022": 69500,
     "parroquias_total": 7,

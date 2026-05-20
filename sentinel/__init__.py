@@ -27,6 +27,11 @@ from sentinel.calibration_layer import (
     CalibratedResult, calibrate, describe_calibrated, summarize_calibrated,
     run_full_pipeline,
 )
+# RC-7.4 Data Bridge
+from sentinel.budget_record_loader import (
+    load_budget_records, get_primary_series, get_holding_series,
+    get_crosssection_h90, summarize_available_series,
+)
 
 __all__ = [
     # Core tools
@@ -45,4 +50,7 @@ __all__ = [
     # RC-7.3 Calibration Layer
     "CalibratedResult", "calibrate", "describe_calibrated", "summarize_calibrated",
     "run_full_pipeline",
+    # RC-7.4 Data Bridge
+    "load_budget_records", "get_primary_series", "get_holding_series",
+    "get_crosssection_h90", "summarize_available_series",
 ]

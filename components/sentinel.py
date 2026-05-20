@@ -33,9 +33,20 @@ def render_sentinel(
     pregunta_inicial: str = "",
     compact: bool = False,
 ) -> None:
-    """Renderiza el chat Sentinel con Groq · Llama 3.3."""
+    """Renderiza el chat Sentinel · Claude Haiku (Anthropic) · RC-7.2/7.3 activo."""
     if "sentinel_messages" not in st.session_state:
         st.session_state["sentinel_messages"] = []
+
+    # ── RC-7.4 Data Bridge — inicializar una vez por sesión ───────────────────
+    # Carga series longitudinales del snapshot → BudgetRecord objects
+    # para activar el pipeline RC-7.2 + RC-7.3 en _run_sentinel().
+    if "rc72_budget_records" not in st.session_state:
+        try:
+            from sentinel.budget_record_loader import get_primary_series
+            _primary = get_primary_series()
+            st.session_state["rc72_budget_records"] = _primary if _primary else None
+        except Exception:
+            st.session_state["rc72_budget_records"] = None
 
     data     = load_all()
     pdot_ctx = build_pdot_context()
@@ -79,6 +90,19 @@ def render_sentinel(
                 pantallas_sug = st.session_state.get("sentinel_pantallas_sugeridas", [])
                 if pantallas_sug:
                     st.caption(f"Pantallas sugeridas por política: {pantallas_sug}")
+                # RC-7.4 Data Bridge status
+                st.caption("RC-7.4 Data Bridge")
+                _rc72_recs = st.session_state.get("rc72_budget_records")
+                if _rc72_recs:
+                    st.success(f"RC-7.2 activo — {len(_rc72_recs)} registro(s) cargados "
+                               f"({', '.join(r.periodo for r in _rc72_recs)})")
+                else:
+                    st.warning("RC-7.2 en modo fallback — sin series longitudinales en session_state")
+                # RC-7.3 último resultado calibrado
+                _cr_debug = st.session_state.get("rc73_calibrated")
+                if _cr_debug:
+                    st.caption("RC-7.3 Último resultado calibrado")
+                    st.json(_cr_debug)
 
     # ── API KEY CHECK ──────────────────────────────────────────────────────────
     api_key = _get_api_key()
@@ -422,6 +446,17 @@ def _run_sentinel(
                     st.session_state["sentinel_messages"][-1]["rc73_calibrated"] = (
                         st.session_state["rc73_calibrated"]
                     )
+                    # RC-7.5 preview: calibration badge (técnicos)
+                    if is_tecnico():
+                        _cr_summary = st.session_state["rc73_calibrated"]
+                        _avep_riesgo = _cr_summary.get("avep_riesgo", "")
+                        if _avep_riesgo in ("Ruptura Institucional", "Ocurrencia Preocupante", "Transición Crítica"):
+                            st.caption(
+                                f"🔴 RC-7.3 · {_cr_summary.get('calibrated_class','?')} · "
+                                f"AVEP {_cr_summary.get('avep_score','?')} ({_avep_riesgo}) · "
+                                f"conf={_cr_summary.get('calibrated_confidence','?'):.0%} · "
+                                f"SATs={_cr_summary.get('sat_codes_calibrated',[])}"
+                            )
 
             except Exception as e:
                 err = str(e)

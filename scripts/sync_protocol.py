@@ -20,6 +20,7 @@ Tipos de componente: 'code' | 'data' | 'arch' | 'calibration'
 """
 from __future__ import annotations
 
+import io
 import json
 import os
 import subprocess
@@ -27,6 +28,10 @@ import sys
 from datetime import datetime
 from pathlib import Path
 from typing import Optional
+
+# Fix Windows cp1252 console encoding for emoji/Unicode in print statements
+if sys.stdout and hasattr(sys.stdout, "buffer"):
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
 # ── RUTAS CANÓNICAS ───────────────────────────────────────────────────────────
 
