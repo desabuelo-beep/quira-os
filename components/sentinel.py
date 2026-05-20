@@ -500,6 +500,49 @@ def _run_sentinel(
                 except Exception:
                     pass  # P7 human review — nunca bloquea el chat
 
+                # P8 RC-D1 Legalidad — coherencia normativa institucional
+                _d1_block = ""
+                try:
+                    from sentinel.d1_engine import analyze_d1, summarize_d1, get_d1_context_for_query
+                    _d3_raw = st.session_state.get("rc73_calibrated") or {}
+                    _d4_raw = st.session_state.get("d4_calibrated") or {}
+                    _cross_raw = st.session_state.get("d3d4_cross") or {}
+                    _cross_conf_d1 = float(_cross_raw.get("cross_confidence", 0.0))
+                    _has_ced = bool(st.session_state.get("has_cedula_data", True))
+                    # Detectar entidad activa desde el contexto de la pregunta
+                    _entity_kw = {
+                        "EMAI-EP": ["emai", "aseo", "empresa municipal"],
+                        "BOMBEROS": ["bomberos", "bomb"],
+                        "PATRONATO": ["patronato", "pat"],
+                    }
+                    _active_entity = "GAD"
+                    _pregunta_lower = pregunta.lower()
+                    for _ent, _kws in _entity_kw.items():
+                        if any(kw in _pregunta_lower for kw in _kws):
+                            _active_entity = _ent
+                            break
+                    # Solo activar D1 si hay señal D3 o D4 relevante
+                    _d3_class = _d3_raw.get("calibrated_class", "SIN_PATRON_CLARO")
+                    _d4_patt  = _d4_raw.get("principal_pattern", "SIN_PATRON")
+                    if _d3_class != "SIN_PATRON_CLARO" or _d4_patt != "SIN_PATRON":
+                        import datetime as _dt
+                        _cur_month = _dt.date.today().month
+                        _cur_year  = _dt.date.today().year
+                        _d1_result = analyze_d1(
+                            d3_dict      = _d3_raw,
+                            d4_dict      = _d4_raw,
+                            entity_id    = _active_entity,
+                            cross_conf   = _cross_conf_d1,
+                            has_cedula   = _has_ced,
+                            current_month = _cur_month,
+                            current_year  = _cur_year,
+                        )
+                        _d1_summary = summarize_d1(_d1_result)
+                        st.session_state["d1_result"] = _d1_summary
+                        _d1_block = _d1_result.prompt_block
+                except Exception:
+                    pass  # P8 D1 — nunca bloquea el chat
+
                 effective_prompt = system_prompt
                 if ctx_block:
                     effective_prompt += "\n\n" + ctx_block
@@ -513,6 +556,8 @@ def _run_sentinel(
                     effective_prompt += "\n\n" + _d3d4_block
                 if _d3d4_norm_block:
                     effective_prompt += "\n\n" + _d3d4_norm_block
+                if _d1_block:
+                    effective_prompt += "\n\n" + _d1_block
 
                 # Construir historial para Claude — solo roles user/assistant (sin system)
                 claude_msgs = []
@@ -621,6 +666,15 @@ def _run_sentinel(
                 _review_flag_ui = st.session_state.get("inference_review_flag")
                 if _review_flag_ui and not _review_flag_ui.get("acknowledged", False):
                     inference_review_card(_review_flag_ui)
+
+                # P8-Visual: d1_card — coherencia normativa institucional RC-D1
+                _d1_ui = st.session_state.get("d1_result")
+                if _d1_ui and _d1_ui.get("status_global", "OBSERVADO") != "LEGAL":
+                    try:
+                        from sentinel.ui_components import d1_card
+                        d1_card(_d1_ui)
+                    except Exception:
+                        pass
 
                 # ── Audit log (incluye provenance vault P3) ───────────────────
                 log_interaction(

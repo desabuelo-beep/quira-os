@@ -1527,3 +1527,136 @@ def inference_review_card(flag_dict: dict) -> None:
                 st.rerun()
             except Exception:
                 pass
+
+
+# ── 15. RC-D1 LEGALIDAD CARD ──────────────────────────────────────────────────
+
+def d1_card(d1_dict: dict) -> None:
+    """
+    Tarjeta RC-D1 Legalidad — coherencia normativa institucional.
+
+    Argumentos:
+        d1_dict — output de summarize_d1() (sentinel.d1_engine)
+
+    Doctrina: D1 informa hipótesis de coherencia — no emite veredictos.
+    "El sistema informa — la autoridad pública decide."
+    """
+    if not d1_dict:
+        return
+
+    entity_id    = d1_dict.get("entity_id", "")
+    status       = d1_dict.get("status_global", "OBSERVADO")
+    confidence   = float(d1_dict.get("confidence", 0.0))
+    obs          = bool(d1_dict.get("observational", True))
+    needs_review = bool(d1_dict.get("needs_review", False))
+    d3_pattern   = d1_dict.get("d3_pattern", "")
+    d4_pattern   = d1_dict.get("d4_pattern", "")
+    sat_codes    = d1_dict.get("sat_codes", [])
+    n_risks      = int(d1_dict.get("n_risks", 0))
+    top_action   = d1_dict.get("top_action", "")
+    top_approver = d1_dict.get("top_approver", "")
+    counterfactual = d1_dict.get("top_counterfactual", "")
+    norm_refs    = d1_dict.get("top_norm_refs", [])
+    gaps         = d1_dict.get("top_evidence_gaps", [])
+    proc_overdue = d1_dict.get("proc_overdue", [])
+    narrative    = d1_dict.get("narrative", "")
+
+    # Paleta por status D1
+    _STATUS_PALETTE = {
+        "LEGAL":                   ("#38A169", "rgba(56,161,105,0.08)",  "rgba(56,161,105,0.35)",  "✅"),
+        "OBSERVADO":               ("#00D4FF", "rgba(0,212,255,0.06)",   "rgba(0,212,255,0.20)",   "ℹ️"),
+        "RIESGO_DE_EVIDENCIA":     ("#D69E2E", "rgba(214,158,46,0.08)",  "rgba(214,158,46,0.30)",  "⚡"),
+        "RIESGO_DE_PROCEDIMIENTO": ("#E67E22", "rgba(230,126,34,0.10)",  "rgba(230,126,34,0.35)",  "⚠️"),
+        "RIESGO_DE_COMPETENCIA":   ("#E53E3E", "rgba(229,62,62,0.12)",   "rgba(229,62,62,0.40)",   "🚨"),
+        "REQUIERE_REVIEW":         ("#9B59B6", "rgba(155,89,182,0.12)",  "rgba(155,89,182,0.40)",  "🔍"),
+    }
+    _color, _bg, _border, _icon = _STATUS_PALETTE.get(
+        status, ("#00D4FF", "rgba(0,212,255,0.06)", "rgba(0,212,255,0.20)", "ℹ️")
+    )
+
+    obs_tag = " [OBSERVACIONAL]" if obs else ""
+    rev_tag = " · REQUIERE REVISIÓN HUMANA" if needs_review else ""
+
+    st.markdown(
+        f'<div style="background:{_bg};border:1px solid {_border};'
+        f'border-left:4px solid {_color};border-radius:10px;'
+        f'padding:14px 16px;margin:10px 0 6px;'
+        f'font-family:Inter,-apple-system,sans-serif">'
+        # Header
+        f'<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">'
+        f'<span style="font-size:10px;font-weight:700;color:{_color};letter-spacing:.06em">'
+        f'{_icon} RC-D1 LEGALIDAD — {entity_id}</span>'
+        f'<span style="font-size:8px;color:rgba(255,255,255,0.40)">'
+        f'conf={confidence:.0%}{obs_tag}</span></div>'
+        # Status
+        f'<div style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.90);margin-bottom:2px">'
+        f'{status}{rev_tag}</div>'
+        # Patrones activadores
+        f'<div style="font-size:9px;color:rgba(255,255,255,0.45);margin-bottom:8px">'
+        f'D3: {d3_pattern} · D4: {d4_pattern}</div>'
+        # KPIs
+        f'<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:8px">'
+        f'<div style="background:rgba(0,0,0,0.20);border-radius:6px;padding:6px;text-align:center">'
+        f'<div style="font-size:8px;color:rgba(255,255,255,0.40)">RIESGOS</div>'
+        f'<div style="font-size:14px;font-weight:700;color:{_color}">{n_risks}</div></div>'
+        f'<div style="background:rgba(0,0,0,0.20);border-radius:6px;padding:6px;text-align:center">'
+        f'<div style="font-size:8px;color:rgba(255,255,255,0.40)">PROC. VENCIDOS</div>'
+        f'<div style="font-size:14px;font-weight:700;color:#E53E3E">{len(proc_overdue)}</div></div>'
+        f'<div style="background:rgba(0,0,0,0.20);border-radius:6px;padding:6px;text-align:center">'
+        f'<div style="font-size:8px;color:rgba(255,255,255,0.40)">SAT D1</div>'
+        f'<div style="font-size:10px;font-weight:700;color:#00D4FF">'
+        f'{", ".join(sat_codes[:2]) if sat_codes else "—"}</div></div>'
+        f'</div>'
+        + (
+            # Acción principal + aprobador
+            f'<div style="font-size:9px;color:rgba(255,255,255,0.60);margin-bottom:6px;'
+            f'padding:6px 8px;background:rgba(0,0,0,0.15);border-radius:6px;line-height:1.5">'
+            f'<span style="color:rgba(255,255,255,0.35)">Acción: </span>{top_action} · '
+            f'<span style="color:rgba(255,255,255,0.35)">Aprobador req.: </span>{top_approver[:40]}'
+            f'</div>'
+            if top_action else ""
+        )
+        + (
+            # Normas aplicables
+            f'<div style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:6px">'
+            + "".join(
+                f'<span style="background:rgba(0,0,0,0.25);border-radius:4px;'
+                f'padding:2px 6px;font-size:7.5px;color:rgba(255,255,255,0.50)">'
+                f'{n}</span>'
+                for n in norm_refs[:4]
+            )
+            + f'</div>'
+            if norm_refs else ""
+        )
+        + (
+            # Brechas de evidencia
+            f'<div style="font-size:8px;color:rgba(255,255,255,0.40);margin-bottom:6px;'
+            f'padding:5px 8px;background:rgba(0,0,0,0.12);border-radius:6px">'
+            f'<span style="color:rgba(255,255,255,0.30)">Brechas:</span> '
+            + " · ".join(g[:60] for g in gaps[:2])
+            + ("..." if len(gaps) > 2 else "")
+            + f'</div>'
+            if gaps else ""
+        )
+        + (
+            # Ventanas procedimentales vencidas
+            f'<div style="font-size:8px;color:#E53E3E;margin-bottom:6px;'
+            f'padding:5px 8px;background:rgba(229,62,62,0.08);border-radius:6px">'
+            f'⏰ Plazo vencido: {", ".join(proc_overdue[:3])}</div>'
+            if proc_overdue else ""
+        )
+        + (
+            # Counterfactual
+            f'<div style="font-size:8px;color:rgba(56,161,105,0.85);margin-bottom:6px;'
+            f'padding:5px 8px;background:rgba(56,161,105,0.06);border-radius:6px;line-height:1.5">'
+            f'<span style="color:rgba(56,161,105,0.60)">Ruta LEGAL: </span>'
+            f'{counterfactual[:150]}{"..." if len(counterfactual) > 150 else ""}</div>'
+            if counterfactual and status not in ("LEGAL", "OBSERVADO") else ""
+        )
+        + f'<div style="font-size:8px;color:rgba(255,255,255,0.28);'
+        f'border-top:1px solid rgba(255,255,255,0.08);padding-top:6px;font-style:italic">'
+        f'D1 produce hipótesis de coherencia normativa — no veredictos. '
+        f'El sistema informa — la autoridad pública decide.'
+        f'</div></div>',
+        unsafe_allow_html=True,
+    )

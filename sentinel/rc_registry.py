@@ -214,6 +214,52 @@ RC: dict[str, dict[str, Any]] = {
         "brecha_moderada": 10.0,   # brecha > 10 pts → moderada
     },
 
+    # ── RC-D1 Legalidad Engine ────────────────────────────────────────────────
+    "RC-D1": {
+        "description": "Motor de coherencia normativa institucional — NO es detector de infracciones",
+        # Confianza mínima para emitir estados de riesgo (no observacional)
+        "min_confidence_for_risk":    0.25,
+        # Confianza mínima para escalar a human review
+        "min_confidence_for_review":  0.40,
+        # Umbral Alcalde GAD para reforma sin Concejo (COPFP Art. 97)
+        "alcalde_reform_threshold":   10.0,
+        # Parroquias que deben cubrir el PP en Montecristi (COOTAD Art. 238)
+        "n_parroquias_montecristi":   7,
+        # Cap de status cuando observational_only=True
+        "status_cap_observational":   "OBSERVADO",
+        # Estados D1 (ordenados por severidad ascendente)
+        "status_severity": {
+            "LEGAL":                   0,
+            "OBSERVADO":               1,
+            "RIESGO_DE_EVIDENCIA":     2,
+            "RIESGO_DE_PROCEDIMIENTO": 3,
+            "RIESGO_DE_COMPETENCIA":   4,
+            "REQUIERE_REVIEW":         5,
+        },
+        # SAT codes D1
+        "sat_codes": ["SAT-D1-A", "SAT-D1-B", "SAT-D1-C"],
+        # Entidades soportadas
+        "entities": ["GAD", "EMAI-EP", "BOMBEROS", "PATRONATO"],
+        # Norms vault-verified en RC-D1.1
+        "verified_norms": [
+            "COOTAD Art. 55", "COOTAD Art. 238", "COOTAD Art. 263",
+            "COOTAD Art. 265", "COOTAD Art. 267", "COOTAD Art. 272",
+            "COOTAD Art. 432", "CRE Art. 238", "CRE Art. 264(4)",
+            "COPFP Art. 97", "LOSNCP",
+        ],
+        # Tier language D1 (tension-aware, nunca acusatorio)
+        "tier_language": {
+            "RIESGO_DE_COMPETENCIA":   "genera indicadores de potencial exceso de competencia respecto a",
+            "RIESGO_DE_PROCEDIMIENTO": "el canal aprobatorio puede no haberse seguido según",
+            "RIESGO_DE_EVIDENCIA":     "la documentación de respaldo no es verificable bajo",
+            "REQUIERE_REVIEW":         "la complejidad supera el umbral de valoración automatizada para",
+        },
+        "prohibited_language": [
+            "incumplio", "violo", "es responsable de", "decision ilegal",
+            "incumplimiento", "violacion", "responsabilidad legal",
+        ],
+    },
+
     # ── Human Review Layer ───────────────────────────────────────────────────
     "HUMAN_REVIEW": {
         "description": "Reglas para activar revision institucional humana",

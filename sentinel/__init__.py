@@ -89,6 +89,26 @@ from sentinel.human_review import (
     needs_institutional_review, flag_inference,
     get_active_flags, acknowledge_flag,
 )
+# RC-D1 Legalidad — Competency Graph
+from sentinel.d1_competency import (
+    D1Status, CompetencyContext, D1CompetencyResult,
+    D3_TO_D1_ACTION, D4_TO_D1_ACTION,
+    check_competency,
+    get_entity_competencies, get_approver, get_norm_refs,
+    get_evidence_required, get_d1_competency_block,
+)
+# RC-D1.2 Procedural Integrity
+from sentinel.d1_procedural import (
+    D1ProceduralResult, check_procedural,
+    get_time_windows, list_entities_with_windows,
+)
+# RC-D1 Engine (Orchestrator)
+from sentinel.d1_engine import (
+    D1Result, analyze_d1, summarize_d1,
+    get_d1_context_for_query,
+)
+# RC-D1 Visual
+from sentinel.ui_components import d1_card
 
 __all__ = [
     # Core tools
@@ -146,4 +166,18 @@ __all__ = [
     "InferenceReviewFlag",
     "needs_institutional_review", "flag_inference",
     "get_active_flags", "acknowledge_flag",
+    # RC-D1 Legalidad — Competency Graph
+    "D1Status", "CompetencyContext", "D1CompetencyResult",
+    "D3_TO_D1_ACTION", "D4_TO_D1_ACTION",
+    "check_competency",
+    "get_entity_competencies", "get_approver", "get_norm_refs",
+    "get_evidence_required", "get_d1_competency_block",
+    # RC-D1.2 Procedural Integrity
+    "D1ProceduralResult", "check_procedural",
+    "get_time_windows", "list_entities_with_windows",
+    # RC-D1 Engine
+    "D1Result", "analyze_d1", "summarize_d1",
+    "get_d1_context_for_query",
+    # RC-D1 Visual
+    "d1_card",
 ]
