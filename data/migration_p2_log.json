@@ -1,0 +1,1590 @@
+{
+  "timestamp": "2026-05-20T06:32:51.030761",
+  "dry_run": false,
+  "schema_version": "1.0",
+  "stats": {
+    "files_modified": 83,
+    "total_replacements": 219
+  },
+  "pre_migration": {
+    "residuales": {
+      "D3_Ejecucion_Presupuestaria": 14,
+      "D4_Equidad_Territorial": 19,
+      "D2_Fidelidad_Planificacion": 9,
+      "D5_Capacidad_Institucional": 38,
+      "D1_Legalidad": 58,
+      "D3_Ejecucion": 30,
+      "D2_Planificacion": 26,
+      "D5_Transparencia": 4,
+      "D4_Equidad": 2,
+      "D4_Equidad_Redistribucion": 17,
+      "D1_Planificacion": 1,
+      "D1_Legalidad_Coherencia": 1
+    },
+    "files": {
+      "D3_Ejecucion_Presupuestaria": [
+        "01_PDOT\\diagnostico\\asentamientos\\DIAG-PUGS.md",
+        "01_PDOT\\diagnostico\\asentamientos\\PUGS_Portafolio_Proyectos.md",
+        "01_PDOT\\propuesta\\ARTICULACIONES_Institucionales.md",
+        "01_PDOT\\propuesta\\PAI_PDyOT_2024_2027.md",
+        "02_NORMATIVA\\18_LEY_ECONOMIA_MUJERES\\_Indice_Ley_Economia_Mujeres.md",
+        "02_NORMATIVA\\18_LEY_ECONOMIA_MUJERES\\LEY-ECONOMIA-MUJERES-Emprendimiento.md",
+        "02_NORMATIVA\\20_NORMAS_CGE\\_Indice_Normas_CGE.md",
+        "02_NORMATIVA\\20_NORMAS_CGE\\NORMAS-CGE-Control-Interno.md",
+        "08_EJECUCION\\_Índice_Ejecucion.md",
+        "08_EJECUCION\\CEDULAS_HOLDING_ENE_MAR_2026.md",
+        "08_EJECUCION\\FUENTES_Holding_Operativa.md",
+        "08_EJECUCION\\PAC_2026_Contexto.md",
+        "08_EJECUCION\\POA_2026_Contexto.md",
+        "08_EJECUCION\\TRAYECTORIA_2023_2026.md"
+      ],
+      "D4_Equidad_Territorial": [
+        "01_PDOT\\diagnostico\\asentamientos\\DIAG-PUGS.md",
+        "01_PDOT\\diagnostico\\asentamientos\\PUGS_Portafolio_Proyectos.md",
+        "01_PDOT\\PDOT_Marco_Plurianual_2023_2027.md",
+        "01_PDOT\\propuesta\\ARTICULACIONES_Institucionales.md",
+        "01_PDOT\\propuesta\\META-UNESCO-Ciudad-Creativa.md",
+        "01_PDOT\\propuesta\\PAI_PDyOT_2024_2027.md",
+        "02_NORMATIVA\\01_CONSTITUCION\\CONST-Buen-Vivir-Servicios-Ambiente.md",
+        "02_NORMATIVA\\01_CONSTITUCION\\CONST-Competencias-Municipales.md",
+        "02_NORMATIVA\\01_CONSTITUCION\\CONST-Finanzas-Recursos-GAD.md",
+        "02_NORMATIVA\\01_CONSTITUCION\\CONST-Planificacion-Presupuesto.md",
+        "02_NORMATIVA\\01_CONSTITUCION\\CONST-Principios-Estado-GAD.md",
+        "02_NORMATIVA\\02_COOTAD\\COOTAD-Competencias-Municipales-SAT.md",
+        "02_NORMATIVA\\02_COOTAD\\COOTAD-Competencias-Sectoriales.md",
+        "02_NORMATIVA\\02_COOTAD\\COOTAD-Recursos-Presupuesto.md",
+        "02_NORMATIVA\\02_COOTAD\\COOTAD-Reforma-2026-Inversion.md",
+        "02_NORMATIVA\\06_GUIAS_PDOT\\SNP-Guia-PDOT-2023-Metodologia.md",
+        "02_NORMATIVA\\09_COA\\COA-Gestion-Ambiental-GAD-Municipal.md",
+        "02_NORMATIVA\\25_PAGCC\\PAGCC-Ecuador-2024-GAD.md",
+        "08_EJECUCION\\PPI_Inversiones_PDOT_2023_2027.md"
+      ],
+      "D2_Fidelidad_Planificacion": [
+        "01_PDOT\\PDOT_Marco_Plurianual_2023_2027.md",
+        "01_PDOT\\propuesta\\META-UNESCO-Ciudad-Creativa.md",
+        "08_EJECUCION\\_Índice_Ejecucion.md",
+        "08_EJECUCION\\FUENTES_Holding_Operativa.md",
+        "08_EJECUCION\\ICM_SIGAD_2023_2024.md",
+        "08_EJECUCION\\ORGANICO_040_2025.md",
+        "08_EJECUCION\\Plan_CNE_Alcalde_Montecristi.md",
+        "08_EJECUCION\\POA_2026_Contexto.md",
+        "08_EJECUCION\\TRAYECTORIA_2023_2026.md"
+      ],
+      "D5_Capacidad_Institucional": [
+        "01_PDOT\\propuesta\\ARTICULACIONES_Institucionales.md",
+        "01_PDOT\\propuesta\\META-UNESCO-Ciudad-Creativa.md",
+        "02_NORMATIVA\\01_CONSTITUCION\\CONST-Buen-Vivir-Servicios-Ambiente.md",
+        "02_NORMATIVA\\02_COOTAD\\COOTAD-Competencias-Sectoriales.md",
+        "02_NORMATIVA\\02_COOTAD\\COOTAD-Planificacion-Participativa.md",
+        "02_NORMATIVA\\03_COPFP\\CPFP-PDyOT-GADs-Montecristi.md",
+        "02_NORMATIVA\\04_REGLAMENTO_COPFP\\REGLAMENTO-CPFP-Planificacion.md",
+        "02_NORMATIVA\\06_REGLAMENTO_LOSNCP\\REGLAMENTO-LOSNCP-Contratacion.md",
+        "02_NORMATIVA\\07_LOSEP\\LOSEP-Evaluacion-Derechos-Sanciones.md",
+        "02_NORMATIVA\\07_LOSEP\\LOSEP-Talento-Humano-Desempeno.md",
+        "02_NORMATIVA\\08_REGLAMENTO_LOSEP\\REGLAMENTO-LOSEP-Evaluacion-Seleccion.md",
+        "02_NORMATIVA\\09_COA\\COA-Gestion-Ambiental-GAD-Municipal.md",
+        "02_NORMATIVA\\10_REGLAMENTO_COA\\REGLAMENTO-COA-EIA-Territorial.md",
+        "02_NORMATIVA\\11_LOTAIP\\LOTAIP-Transparencia-GAD.md",
+        "02_NORMATIVA\\12_REGLAMENTO_LOTAIP\\REGLAMENTO-LOTAIP-Comites-Transparencia.md",
+        "02_NORMATIVA\\13_GUIAS_LOTAIP\\GUIAS-LOTAIP-Cumplimiento-Metodologia.md",
+        "02_NORMATIVA\\14_LOPC\\LOPC-Participacion-Presupuesto-Rendicion.md",
+        "02_NORMATIVA\\16_COAD\\_Indice_COAD.md",
+        "02_NORMATIVA\\16_COAD\\COAD-Procedimiento-Administrativo.md",
+        "02_NORMATIVA\\17_LOIPEVM\\_Indice_LOIPEVM.md",
+        "02_NORMATIVA\\17_LOIPEVM\\LOIPEVM-Violencia-Mujeres-GAD.md",
+        "02_NORMATIVA\\20_NORMAS_CGE\\_Indice_Normas_CGE.md",
+        "02_NORMATIVA\\20_NORMAS_CGE\\NORMAS-CGE-Control-Interno.md",
+        "02_NORMATIVA\\21_LEY_TRANSFORMACION_DIGITAL\\_Indice_Ley_Transformacion_Digital.md",
+        "02_NORMATIVA\\21_LEY_TRANSFORMACION_DIGITAL\\LEY-TRANSFORMACION-DIGITAL.md",
+        "02_NORMATIVA\\22_RESOLUCION_CPCCS_RDC\\_Indice_Reglamento_RDC.md",
+        "02_NORMATIVA\\22_RESOLUCION_CPCCS_RDC\\REGLAMENTO-RDC-CPCCS-2026.md",
+        "02_NORMATIVA\\24_CNC_LINEAMIENTOS_PFI\\CNC-Lineamientos-Monitoreo-PFI.md",
+        "05_PLANES_NACIONALES\\02_GUIA_PDOT_SNP\\_Indice_Guia_PDOT_SNP.md",
+        "05_PLANES_NACIONALES\\02_GUIA_PDOT_SNP\\GUIA-PDOT-SNP-2023-Metodologia.md",
+        "08_EJECUCION\\_Índice_Ejecucion.md",
+        "08_EJECUCION\\FUENTES_Holding_Operativa.md",
+        "08_EJECUCION\\ICM_SIGAD_2023_2024.md",
+        "08_EJECUCION\\ORGANICO_040_2025.md",
+        "08_EJECUCION\\PAC_2023_2024_GADM.md",
+        "08_EJECUCION\\PATRONATO_Operativo_2023_2024.md",
+        "08_EJECUCION\\POA_2023_2024_GADM.md",
+        "08_EJECUCION\\RDC_Holding_2023_2024.md"
+      ],
+      "D1_Legalidad": [
+        "02_NORMATIVA\\01_CONSTITUCION\\CONST-Buen-Vivir-Servicios-Ambiente.md",
+        "02_NORMATIVA\\01_CONSTITUCION\\CONST-Competencias-Municipales.md",
+        "02_NORMATIVA\\01_CONSTITUCION\\CONST-Principios-Estado-GAD.md",
+        "02_NORMATIVA\\01_CONSTITUCION\\CONST-Transparencia-Control-CPCCS.md",
+        "02_NORMATIVA\\02_COOTAD\\COOTAD-Competencias-Municipales-SAT.md",
+        "02_NORMATIVA\\02_COOTAD\\COOTAD-Competencias-Sectoriales.md",
+        "02_NORMATIVA\\02_COOTAD\\COOTAD-EP-Presupuesto-Holding.md",
+        "02_NORMATIVA\\02_COOTAD\\COOTAD-Planificacion-Participativa.md",
+        "02_NORMATIVA\\02_COOTAD\\COOTAD-Principios-GAD-Municipal.md",
+        "02_NORMATIVA\\02_COOTAD\\COOTAD-Reforma-2026-Inversion.md",
+        "02_NORMATIVA\\02_COOTAD\\COOTAD-Reforma-Reprogramacion-SAT.md",
+        "02_NORMATIVA\\03_COPFP\\CPFP-Ciclo-Presupuestario.md",
+        "02_NORMATIVA\\03_COPFP\\CPFP-Ejecucion-Presupuestaria.md",
+        "02_NORMATIVA\\03_COPFP\\CPFP-PDyOT-GADs-Montecristi.md",
+        "02_NORMATIVA\\04_REGLAMENTO_COPFP\\RCPFP-Modificaciones-Presupuestarias.md",
+        "02_NORMATIVA\\04_REGLAMENTO_COPFP\\REGLAMENTO-CPFP-Planificacion.md",
+        "02_NORMATIVA\\04_REGLAMENTO_COPFP\\REGLAMENTO-CPFP-Presupuesto.md",
+        "02_NORMATIVA\\05_LOSNCP\\LOSNCP-Contratacion-Publica.md",
+        "02_NORMATIVA\\05_LOSNCP\\LOSNCP-Emergencia-Fraccionamiento-SAT.md",
+        "02_NORMATIVA\\06_REGLAMENTO_LOSNCP\\REGLAMENTO-LOSNCP-Contratacion.md",
+        "02_NORMATIVA\\07_LOSEP\\LOSEP-Evaluacion-Derechos-Sanciones.md",
+        "02_NORMATIVA\\07_LOSEP\\LOSEP-Talento-Humano-Desempeno.md",
+        "02_NORMATIVA\\08_REGLAMENTO_LOSEP\\REGLAMENTO-LOSEP-Evaluacion-Seleccion.md",
+        "02_NORMATIVA\\09_COA\\COA-Gestion-Ambiental-GAD-Municipal.md",
+        "02_NORMATIVA\\10_REGLAMENTO_COA\\REGLAMENTO-COA-EIA-Territorial.md",
+        "02_NORMATIVA\\11_LOTAIP\\LOTAIP-Transparencia-GAD.md",
+        "02_NORMATIVA\\12_REGLAMENTO_LOTAIP\\REGLAMENTO-LOTAIP-Comites-Transparencia.md",
+        "02_NORMATIVA\\13_GUIAS_LOTAIP\\GUIAS-LOTAIP-Cumplimiento-Metodologia.md",
+        "02_NORMATIVA\\15_LOTUGS\\_Indice_LOTUGS.md",
+        "02_NORMATIVA\\15_LOTUGS\\LOTUGS-Ordenamiento-Territorial-Suelo.md",
+        "02_NORMATIVA\\16_COAD\\_Indice_COAD.md",
+        "02_NORMATIVA\\16_COAD\\COAD-Procedimiento-Administrativo.md",
+        "02_NORMATIVA\\17_LOIPEVM\\_Indice_LOIPEVM.md",
+        "02_NORMATIVA\\17_LOIPEVM\\LOIPEVM-Violencia-Mujeres-GAD.md",
+        "02_NORMATIVA\\18_LEY_ECONOMIA_MUJERES\\_Indice_Ley_Economia_Mujeres.md",
+        "02_NORMATIVA\\18_LEY_ECONOMIA_MUJERES\\LEY-ECONOMIA-MUJERES-Emprendimiento.md",
+        "02_NORMATIVA\\19_CODIGO_DEMOCRACIA\\_Indice_Codigo_Democracia.md",
+        "02_NORMATIVA\\19_CODIGO_DEMOCRACIA\\CODIGO-DEMOCRACIA-Electoral-Participacion.md",
+        "02_NORMATIVA\\20_NORMAS_CGE\\_Indice_Normas_CGE.md",
+        "02_NORMATIVA\\20_NORMAS_CGE\\NORMAS-CGE-Control-Interno.md",
+        "02_NORMATIVA\\20_NORMAS_CGE\\NORMAS-CGE-Control-Presupuestario.md",
+        "02_NORMATIVA\\21_LEY_TRANSFORMACION_DIGITAL\\_Indice_Ley_Transformacion_Digital.md",
+        "02_NORMATIVA\\21_LEY_TRANSFORMACION_DIGITAL\\LEY-TRANSFORMACION-DIGITAL.md",
+        "02_NORMATIVA\\22_RESOLUCION_CPCCS_RDC\\_Indice_Reglamento_RDC.md",
+        "02_NORMATIVA\\22_RESOLUCION_CPCCS_RDC\\REGLAMENTO-RDC-CPCCS-2026.md",
+        "02_NORMATIVA\\24_CNC_LINEAMIENTOS_PFI\\CNC-Lineamientos-Monitoreo-PFI.md",
+        "02_NORMATIVA\\25_PAGCC\\PAGCC-Ecuador-2024-GAD.md",
+        "05_PLANES_NACIONALES\\01_PND\\_Indice_PND.md",
+        "05_PLANES_NACIONALES\\01_PND\\PND-2025-2029-Ecuador-No-Se-Detiene.md",
+        "05_PLANES_NACIONALES\\02_GUIA_PDOT_SNP\\_Indice_Guia_PDOT_SNP.md",
+        "05_PLANES_NACIONALES\\02_GUIA_PDOT_SNP\\GUIA-PDOT-SNP-2023-Metodologia.md",
+        "05_PLANES_NACIONALES\\03_PAGCC\\_Indice_PAGCC.md",
+        "05_PLANES_NACIONALES\\03_PAGCC\\PAGCC-Genero-Cambio-Climatico-2024.md",
+        "08_EJECUCION\\ORGANICO_040_2025.md",
+        "08_EJECUCION\\PAC_2023_2024_GADM.md",
+        "08_EJECUCION\\PAC_2026_Contexto.md",
+        "08_EJECUCION\\PATRONATO_Operativo_2023_2024.md",
+        "08_EJECUCION\\RDC_Holding_2023_2024.md"
+      ],
+      "D3_Ejecucion": [
+        "02_NORMATIVA\\01_CONSTITUCION\\CONST-Competencias-Municipales.md",
+        "02_NORMATIVA\\01_CONSTITUCION\\CONST-Finanzas-Recursos-GAD.md",
+        "02_NORMATIVA\\01_CONSTITUCION\\CONST-Planificacion-Presupuesto.md",
+        "02_NORMATIVA\\02_COOTAD\\COOTAD-Competencias-Municipales-SAT.md",
+        "02_NORMATIVA\\02_COOTAD\\COOTAD-Competencias-Sectoriales.md",
+        "02_NORMATIVA\\02_COOTAD\\COOTAD-EP-Presupuesto-Holding.md",
+        "02_NORMATIVA\\02_COOTAD\\COOTAD-Principios-GAD-Municipal.md",
+        "02_NORMATIVA\\02_COOTAD\\COOTAD-Recursos-Presupuesto.md",
+        "02_NORMATIVA\\02_COOTAD\\COOTAD-Reforma-2026-Inversion.md",
+        "02_NORMATIVA\\02_COOTAD\\COOTAD-Reforma-Reprogramacion-SAT.md",
+        "02_NORMATIVA\\03_COPFP\\CPFP-Ciclo-Presupuestario.md",
+        "02_NORMATIVA\\03_COPFP\\CPFP-Ejecucion-Presupuestaria.md",
+        "02_NORMATIVA\\04_REGLAMENTO_COPFP\\RCPFP-Modificaciones-Presupuestarias.md",
+        "02_NORMATIVA\\04_REGLAMENTO_COPFP\\REGLAMENTO-CPFP-Presupuesto.md",
+        "02_NORMATIVA\\05_LOSNCP\\LOSNCP-Contratacion-Publica.md",
+        "02_NORMATIVA\\05_LOSNCP\\LOSNCP-Emergencia-Fraccionamiento-SAT.md",
+        "02_NORMATIVA\\06_GUIAS_PDOT\\SNP-Guia-PDOT-2023-Metodologia.md",
+        "02_NORMATIVA\\06_REGLAMENTO_LOSNCP\\REGLAMENTO-LOSNCP-Contratacion.md",
+        "02_NORMATIVA\\07_LOSEP\\LOSEP-Evaluacion-Derechos-Sanciones.md",
+        "02_NORMATIVA\\20_NORMAS_CGE\\NORMAS-CGE-Control-Presupuestario.md",
+        "02_NORMATIVA\\23_CLASIFICADOR_PRESUPUESTARIO\\CLASIFICADOR-Estructura-General.md",
+        "02_NORMATIVA\\23_CLASIFICADOR_PRESUPUESTARIO\\CLASIFICADOR-Excluidos.md",
+        "02_NORMATIVA\\23_CLASIFICADOR_PRESUPUESTARIO\\CLASIFICADOR-Grupo5-Egresos-Corrientes.md",
+        "02_NORMATIVA\\23_CLASIFICADOR_PRESUPUESTARIO\\CLASIFICADOR-Grupo7-Egresos-Inversion.md",
+        "02_NORMATIVA\\23_CLASIFICADOR_PRESUPUESTARIO\\CLASIFICADOR-Grupo8-Capital-y-Amortizacion.md",
+        "02_NORMATIVA\\25_PAGCC\\PAGCC-Ecuador-2024-GAD.md",
+        "08_EJECUCION\\PAC_2023_2024_GADM.md",
+        "08_EJECUCION\\PATRONATO_Operativo_2023_2024.md",
+        "08_EJECUCION\\POA_2023_2024_GADM.md",
+        "08_EJECUCION\\PPI_Inversiones_PDOT_2023_2027.md"
+      ],
+      "D2_Planificacion": [
+        "02_NORMATIVA\\01_CONSTITUCION\\CONST-Finanzas-Recursos-GAD.md",
+        "02_NORMATIVA\\01_CONSTITUCION\\CONST-Planificacion-Presupuesto.md",
+        "02_NORMATIVA\\02_COOTAD\\COOTAD-Competencias-Municipales-SAT.md",
+        "02_NORMATIVA\\02_COOTAD\\COOTAD-Planificacion-Participativa.md",
+        "02_NORMATIVA\\02_COOTAD\\COOTAD-Principios-GAD-Municipal.md",
+        "02_NORMATIVA\\02_COOTAD\\COOTAD-Recursos-Presupuesto.md",
+        "02_NORMATIVA\\03_COPFP\\CPFP-Ciclo-Presupuestario.md",
+        "02_NORMATIVA\\03_COPFP\\CPFP-Ejecucion-Presupuestaria.md",
+        "02_NORMATIVA\\03_COPFP\\CPFP-PDyOT-GADs-Montecristi.md",
+        "02_NORMATIVA\\04_REGLAMENTO_COPFP\\REGLAMENTO-CPFP-Planificacion.md",
+        "02_NORMATIVA\\04_REGLAMENTO_COPFP\\REGLAMENTO-CPFP-Presupuesto.md",
+        "02_NORMATIVA\\05_LOSNCP\\LOSNCP-Contratacion-Publica.md",
+        "02_NORMATIVA\\06_GUIAS_PDOT\\SNP-Guia-PDOT-2023-Metodologia.md",
+        "02_NORMATIVA\\10_REGLAMENTO_COA\\REGLAMENTO-COA-EIA-Territorial.md",
+        "02_NORMATIVA\\14_LOPC\\LOPC-Participacion-Presupuesto-Rendicion.md",
+        "02_NORMATIVA\\15_LOTUGS\\_Indice_LOTUGS.md",
+        "02_NORMATIVA\\15_LOTUGS\\LOTUGS-Ordenamiento-Territorial-Suelo.md",
+        "02_NORMATIVA\\24_CNC_LINEAMIENTOS_PFI\\CNC-Lineamientos-Monitoreo-PFI.md",
+        "05_PLANES_NACIONALES\\01_PND\\_Indice_PND.md",
+        "05_PLANES_NACIONALES\\01_PND\\PND-2025-2029-Ecuador-No-Se-Detiene.md",
+        "05_PLANES_NACIONALES\\02_GUIA_PDOT_SNP\\_Indice_Guia_PDOT_SNP.md",
+        "05_PLANES_NACIONALES\\02_GUIA_PDOT_SNP\\GUIA-PDOT-SNP-2023-Metodologia.md",
+        "05_PLANES_NACIONALES\\03_PAGCC\\_Indice_PAGCC.md",
+        "05_PLANES_NACIONALES\\03_PAGCC\\PAGCC-Genero-Cambio-Climatico-2024.md",
+        "08_EJECUCION\\POA_2023_2024_GADM.md",
+        "08_EJECUCION\\PPI_Inversiones_PDOT_2023_2027.md"
+      ],
+      "D5_Transparencia": [
+        "02_NORMATIVA\\01_CONSTITUCION\\CONST-Transparencia-Control-CPCCS.md",
+        "02_NORMATIVA\\02_COOTAD\\COOTAD-EP-Presupuesto-Holding.md",
+        "02_NORMATIVA\\05_LOSNCP\\LOSNCP-Emergencia-Fraccionamiento-SAT.md",
+        "02_NORMATIVA\\20_NORMAS_CGE\\NORMAS-CGE-Control-Presupuestario.md"
+      ],
+      "D4_Equidad": [
+        "02_NORMATIVA\\07_LOSEP\\LOSEP-Talento-Humano-Desempeno.md",
+        "02_NORMATIVA\\11_LOTAIP\\LOTAIP-Transparencia-GAD.md"
+      ],
+      "D4_Equidad_Redistribucion": [
+        "02_NORMATIVA\\14_LOPC\\LOPC-Participacion-Presupuesto-Rendicion.md",
+        "02_NORMATIVA\\15_LOTUGS\\_Indice_LOTUGS.md",
+        "02_NORMATIVA\\15_LOTUGS\\LOTUGS-Ordenamiento-Territorial-Suelo.md",
+        "02_NORMATIVA\\17_LOIPEVM\\_Indice_LOIPEVM.md",
+        "02_NORMATIVA\\17_LOIPEVM\\LOIPEVM-Violencia-Mujeres-GAD.md",
+        "02_NORMATIVA\\18_LEY_ECONOMIA_MUJERES\\_Indice_Ley_Economia_Mujeres.md",
+        "02_NORMATIVA\\18_LEY_ECONOMIA_MUJERES\\LEY-ECONOMIA-MUJERES-Emprendimiento.md",
+        "02_NORMATIVA\\19_CODIGO_DEMOCRACIA\\_Indice_Codigo_Democracia.md",
+        "02_NORMATIVA\\19_CODIGO_DEMOCRACIA\\CODIGO-DEMOCRACIA-Electoral-Participacion.md",
+        "02_NORMATIVA\\22_RESOLUCION_CPCCS_RDC\\_Indice_Reglamento_RDC.md",
+        "02_NORMATIVA\\22_RESOLUCION_CPCCS_RDC\\REGLAMENTO-RDC-CPCCS-2026.md",
+        "05_PLANES_NACIONALES\\01_PND\\_Indice_PND.md",
+        "05_PLANES_NACIONALES\\01_PND\\PND-2025-2029-Ecuador-No-Se-Detiene.md",
+        "05_PLANES_NACIONALES\\03_PAGCC\\_Indice_PAGCC.md",
+        "05_PLANES_NACIONALES\\03_PAGCC\\PAGCC-Genero-Cambio-Climatico-2024.md",
+        "08_EJECUCION\\PATRONATO_Operativo_2023_2024.md",
+        "08_EJECUCION\\RDC_Holding_2023_2024.md"
+      ],
+      "D1_Planificacion": [
+        "02_NORMATIVA\\23_CLASIFICADOR_PRESUPUESTARIO\\CLASIFICADOR-Grupo7-Egresos-Inversion.md"
+      ],
+      "D1_Legalidad_Coherencia": [
+        "08_EJECUCION\\Plan_CNE_Alcalde_Montecristi.md"
+      ]
+    }
+  },
+  "post_migration": {
+    "residuales": {},
+    "files": {}
+  },
+  "changes": [
+    {
+      "file": "01_PDOT\\diagnostico\\asentamientos\\DIAG-PUGS.md",
+      "alias": "D3_Ejecucion_Presupuestaria",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "01_PDOT\\diagnostico\\asentamientos\\DIAG-PUGS.md",
+      "alias": "D4_Equidad_Territorial",
+      "canonical": "D4_EQUIDAD",
+      "count": 1
+    },
+    {
+      "file": "01_PDOT\\diagnostico\\asentamientos\\PUGS_Portafolio_Proyectos.md",
+      "alias": "D3_Ejecucion_Presupuestaria",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "01_PDOT\\diagnostico\\asentamientos\\PUGS_Portafolio_Proyectos.md",
+      "alias": "D4_Equidad_Territorial",
+      "canonical": "D4_EQUIDAD",
+      "count": 1
+    },
+    {
+      "file": "01_PDOT\\PDOT_Marco_Plurianual_2023_2027.md",
+      "alias": "D2_Fidelidad_Planificacion",
+      "canonical": "D2_PLANIFICACION",
+      "count": 1
+    },
+    {
+      "file": "01_PDOT\\PDOT_Marco_Plurianual_2023_2027.md",
+      "alias": "D4_Equidad_Territorial",
+      "canonical": "D4_EQUIDAD",
+      "count": 1
+    },
+    {
+      "file": "01_PDOT\\propuesta\\ARTICULACIONES_Institucionales.md",
+      "alias": "D3_Ejecucion_Presupuestaria",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "01_PDOT\\propuesta\\ARTICULACIONES_Institucionales.md",
+      "alias": "D5_Capacidad_Institucional",
+      "canonical": "D5_CAPACIDAD",
+      "count": 1
+    },
+    {
+      "file": "01_PDOT\\propuesta\\ARTICULACIONES_Institucionales.md",
+      "alias": "D4_Equidad_Territorial",
+      "canonical": "D4_EQUIDAD",
+      "count": 1
+    },
+    {
+      "file": "01_PDOT\\propuesta\\META-UNESCO-Ciudad-Creativa.md",
+      "alias": "D2_Fidelidad_Planificacion",
+      "canonical": "D2_PLANIFICACION",
+      "count": 1
+    },
+    {
+      "file": "01_PDOT\\propuesta\\META-UNESCO-Ciudad-Creativa.md",
+      "alias": "D5_Capacidad_Institucional",
+      "canonical": "D5_CAPACIDAD",
+      "count": 1
+    },
+    {
+      "file": "01_PDOT\\propuesta\\META-UNESCO-Ciudad-Creativa.md",
+      "alias": "D4_Equidad_Territorial",
+      "canonical": "D4_EQUIDAD",
+      "count": 1
+    },
+    {
+      "file": "01_PDOT\\propuesta\\PAI_PDyOT_2024_2027.md",
+      "alias": "D3_Ejecucion_Presupuestaria",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "01_PDOT\\propuesta\\PAI_PDyOT_2024_2027.md",
+      "alias": "D4_Equidad_Territorial",
+      "canonical": "D4_EQUIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\01_CONSTITUCION\\CONST-Buen-Vivir-Servicios-Ambiente.md",
+      "alias": "D5_Capacidad_Institucional",
+      "canonical": "D5_CAPACIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\01_CONSTITUCION\\CONST-Buen-Vivir-Servicios-Ambiente.md",
+      "alias": "D4_Equidad_Territorial",
+      "canonical": "D4_EQUIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\01_CONSTITUCION\\CONST-Buen-Vivir-Servicios-Ambiente.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\01_CONSTITUCION\\CONST-Competencias-Municipales.md",
+      "alias": "D4_Equidad_Territorial",
+      "canonical": "D4_EQUIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\01_CONSTITUCION\\CONST-Competencias-Municipales.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\01_CONSTITUCION\\CONST-Competencias-Municipales.md",
+      "alias": "D3_Ejecucion",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\01_CONSTITUCION\\CONST-Finanzas-Recursos-GAD.md",
+      "alias": "D4_Equidad_Territorial",
+      "canonical": "D4_EQUIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\01_CONSTITUCION\\CONST-Finanzas-Recursos-GAD.md",
+      "alias": "D2_Planificacion",
+      "canonical": "D2_PLANIFICACION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\01_CONSTITUCION\\CONST-Finanzas-Recursos-GAD.md",
+      "alias": "D3_Ejecucion",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\01_CONSTITUCION\\CONST-Planificacion-Presupuesto.md",
+      "alias": "D4_Equidad_Territorial",
+      "canonical": "D4_EQUIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\01_CONSTITUCION\\CONST-Planificacion-Presupuesto.md",
+      "alias": "D2_Planificacion",
+      "canonical": "D2_PLANIFICACION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\01_CONSTITUCION\\CONST-Planificacion-Presupuesto.md",
+      "alias": "D3_Ejecucion",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\01_CONSTITUCION\\CONST-Principios-Estado-GAD.md",
+      "alias": "D4_Equidad_Territorial",
+      "canonical": "D4_EQUIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\01_CONSTITUCION\\CONST-Principios-Estado-GAD.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\01_CONSTITUCION\\CONST-Transparencia-Control-CPCCS.md",
+      "alias": "D5_Transparencia",
+      "canonical": "D5_CAPACIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\01_CONSTITUCION\\CONST-Transparencia-Control-CPCCS.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\02_COOTAD\\COOTAD-Competencias-Municipales-SAT.md",
+      "alias": "D4_Equidad_Territorial",
+      "canonical": "D4_EQUIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\02_COOTAD\\COOTAD-Competencias-Municipales-SAT.md",
+      "alias": "D2_Planificacion",
+      "canonical": "D2_PLANIFICACION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\02_COOTAD\\COOTAD-Competencias-Municipales-SAT.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\02_COOTAD\\COOTAD-Competencias-Municipales-SAT.md",
+      "alias": "D3_Ejecucion",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\02_COOTAD\\COOTAD-Competencias-Sectoriales.md",
+      "alias": "D5_Capacidad_Institucional",
+      "canonical": "D5_CAPACIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\02_COOTAD\\COOTAD-Competencias-Sectoriales.md",
+      "alias": "D4_Equidad_Territorial",
+      "canonical": "D4_EQUIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\02_COOTAD\\COOTAD-Competencias-Sectoriales.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\02_COOTAD\\COOTAD-Competencias-Sectoriales.md",
+      "alias": "D3_Ejecucion",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\02_COOTAD\\COOTAD-EP-Presupuesto-Holding.md",
+      "alias": "D5_Transparencia",
+      "canonical": "D5_CAPACIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\02_COOTAD\\COOTAD-EP-Presupuesto-Holding.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\02_COOTAD\\COOTAD-EP-Presupuesto-Holding.md",
+      "alias": "D3_Ejecucion",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\02_COOTAD\\COOTAD-Planificacion-Participativa.md",
+      "alias": "D5_Capacidad_Institucional",
+      "canonical": "D5_CAPACIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\02_COOTAD\\COOTAD-Planificacion-Participativa.md",
+      "alias": "D2_Planificacion",
+      "canonical": "D2_PLANIFICACION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\02_COOTAD\\COOTAD-Planificacion-Participativa.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\02_COOTAD\\COOTAD-Principios-GAD-Municipal.md",
+      "alias": "D2_Planificacion",
+      "canonical": "D2_PLANIFICACION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\02_COOTAD\\COOTAD-Principios-GAD-Municipal.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\02_COOTAD\\COOTAD-Principios-GAD-Municipal.md",
+      "alias": "D3_Ejecucion",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\02_COOTAD\\COOTAD-Recursos-Presupuesto.md",
+      "alias": "D4_Equidad_Territorial",
+      "canonical": "D4_EQUIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\02_COOTAD\\COOTAD-Recursos-Presupuesto.md",
+      "alias": "D2_Planificacion",
+      "canonical": "D2_PLANIFICACION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\02_COOTAD\\COOTAD-Recursos-Presupuesto.md",
+      "alias": "D3_Ejecucion",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\02_COOTAD\\COOTAD-Reforma-2026-Inversion.md",
+      "alias": "D4_Equidad_Territorial",
+      "canonical": "D4_EQUIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\02_COOTAD\\COOTAD-Reforma-2026-Inversion.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\02_COOTAD\\COOTAD-Reforma-2026-Inversion.md",
+      "alias": "D3_Ejecucion",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\02_COOTAD\\COOTAD-Reforma-Reprogramacion-SAT.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\02_COOTAD\\COOTAD-Reforma-Reprogramacion-SAT.md",
+      "alias": "D3_Ejecucion",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\03_COPFP\\CPFP-Ciclo-Presupuestario.md",
+      "alias": "D2_Planificacion",
+      "canonical": "D2_PLANIFICACION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\03_COPFP\\CPFP-Ciclo-Presupuestario.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\03_COPFP\\CPFP-Ciclo-Presupuestario.md",
+      "alias": "D3_Ejecucion",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\03_COPFP\\CPFP-Ejecucion-Presupuestaria.md",
+      "alias": "D2_Planificacion",
+      "canonical": "D2_PLANIFICACION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\03_COPFP\\CPFP-Ejecucion-Presupuestaria.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\03_COPFP\\CPFP-Ejecucion-Presupuestaria.md",
+      "alias": "D3_Ejecucion",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\03_COPFP\\CPFP-PDyOT-GADs-Montecristi.md",
+      "alias": "D5_Capacidad_Institucional",
+      "canonical": "D5_CAPACIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\03_COPFP\\CPFP-PDyOT-GADs-Montecristi.md",
+      "alias": "D2_Planificacion",
+      "canonical": "D2_PLANIFICACION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\03_COPFP\\CPFP-PDyOT-GADs-Montecristi.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\04_REGLAMENTO_COPFP\\RCPFP-Modificaciones-Presupuestarias.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\04_REGLAMENTO_COPFP\\RCPFP-Modificaciones-Presupuestarias.md",
+      "alias": "D3_Ejecucion",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\04_REGLAMENTO_COPFP\\REGLAMENTO-CPFP-Planificacion.md",
+      "alias": "D5_Capacidad_Institucional",
+      "canonical": "D5_CAPACIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\04_REGLAMENTO_COPFP\\REGLAMENTO-CPFP-Planificacion.md",
+      "alias": "D2_Planificacion",
+      "canonical": "D2_PLANIFICACION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\04_REGLAMENTO_COPFP\\REGLAMENTO-CPFP-Planificacion.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\04_REGLAMENTO_COPFP\\REGLAMENTO-CPFP-Presupuesto.md",
+      "alias": "D2_Planificacion",
+      "canonical": "D2_PLANIFICACION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\04_REGLAMENTO_COPFP\\REGLAMENTO-CPFP-Presupuesto.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\04_REGLAMENTO_COPFP\\REGLAMENTO-CPFP-Presupuesto.md",
+      "alias": "D3_Ejecucion",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\05_LOSNCP\\LOSNCP-Contratacion-Publica.md",
+      "alias": "D2_Planificacion",
+      "canonical": "D2_PLANIFICACION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\05_LOSNCP\\LOSNCP-Contratacion-Publica.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\05_LOSNCP\\LOSNCP-Contratacion-Publica.md",
+      "alias": "D3_Ejecucion",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\05_LOSNCP\\LOSNCP-Emergencia-Fraccionamiento-SAT.md",
+      "alias": "D5_Transparencia",
+      "canonical": "D5_CAPACIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\05_LOSNCP\\LOSNCP-Emergencia-Fraccionamiento-SAT.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\05_LOSNCP\\LOSNCP-Emergencia-Fraccionamiento-SAT.md",
+      "alias": "D3_Ejecucion",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\06_GUIAS_PDOT\\SNP-Guia-PDOT-2023-Metodologia.md",
+      "alias": "D4_Equidad_Territorial",
+      "canonical": "D4_EQUIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\06_GUIAS_PDOT\\SNP-Guia-PDOT-2023-Metodologia.md",
+      "alias": "D2_Planificacion",
+      "canonical": "D2_PLANIFICACION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\06_GUIAS_PDOT\\SNP-Guia-PDOT-2023-Metodologia.md",
+      "alias": "D3_Ejecucion",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\06_REGLAMENTO_LOSNCP\\REGLAMENTO-LOSNCP-Contratacion.md",
+      "alias": "D5_Capacidad_Institucional",
+      "canonical": "D5_CAPACIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\06_REGLAMENTO_LOSNCP\\REGLAMENTO-LOSNCP-Contratacion.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\06_REGLAMENTO_LOSNCP\\REGLAMENTO-LOSNCP-Contratacion.md",
+      "alias": "D3_Ejecucion",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\07_LOSEP\\LOSEP-Evaluacion-Derechos-Sanciones.md",
+      "alias": "D5_Capacidad_Institucional",
+      "canonical": "D5_CAPACIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\07_LOSEP\\LOSEP-Evaluacion-Derechos-Sanciones.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\07_LOSEP\\LOSEP-Evaluacion-Derechos-Sanciones.md",
+      "alias": "D3_Ejecucion",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\07_LOSEP\\LOSEP-Talento-Humano-Desempeno.md",
+      "alias": "D5_Capacidad_Institucional",
+      "canonical": "D5_CAPACIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\07_LOSEP\\LOSEP-Talento-Humano-Desempeno.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\07_LOSEP\\LOSEP-Talento-Humano-Desempeno.md",
+      "alias": "D4_Equidad",
+      "canonical": "D4_EQUIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\08_REGLAMENTO_LOSEP\\REGLAMENTO-LOSEP-Evaluacion-Seleccion.md",
+      "alias": "D5_Capacidad_Institucional",
+      "canonical": "D5_CAPACIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\08_REGLAMENTO_LOSEP\\REGLAMENTO-LOSEP-Evaluacion-Seleccion.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\09_COA\\COA-Gestion-Ambiental-GAD-Municipal.md",
+      "alias": "D5_Capacidad_Institucional",
+      "canonical": "D5_CAPACIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\09_COA\\COA-Gestion-Ambiental-GAD-Municipal.md",
+      "alias": "D4_Equidad_Territorial",
+      "canonical": "D4_EQUIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\09_COA\\COA-Gestion-Ambiental-GAD-Municipal.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\10_REGLAMENTO_COA\\REGLAMENTO-COA-EIA-Territorial.md",
+      "alias": "D5_Capacidad_Institucional",
+      "canonical": "D5_CAPACIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\10_REGLAMENTO_COA\\REGLAMENTO-COA-EIA-Territorial.md",
+      "alias": "D2_Planificacion",
+      "canonical": "D2_PLANIFICACION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\10_REGLAMENTO_COA\\REGLAMENTO-COA-EIA-Territorial.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\11_LOTAIP\\LOTAIP-Transparencia-GAD.md",
+      "alias": "D5_Capacidad_Institucional",
+      "canonical": "D5_CAPACIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\11_LOTAIP\\LOTAIP-Transparencia-GAD.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\11_LOTAIP\\LOTAIP-Transparencia-GAD.md",
+      "alias": "D4_Equidad",
+      "canonical": "D4_EQUIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\12_REGLAMENTO_LOTAIP\\REGLAMENTO-LOTAIP-Comites-Transparencia.md",
+      "alias": "D5_Capacidad_Institucional",
+      "canonical": "D5_CAPACIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\12_REGLAMENTO_LOTAIP\\REGLAMENTO-LOTAIP-Comites-Transparencia.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\13_GUIAS_LOTAIP\\GUIAS-LOTAIP-Cumplimiento-Metodologia.md",
+      "alias": "D5_Capacidad_Institucional",
+      "canonical": "D5_CAPACIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\13_GUIAS_LOTAIP\\GUIAS-LOTAIP-Cumplimiento-Metodologia.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\14_LOPC\\LOPC-Participacion-Presupuesto-Rendicion.md",
+      "alias": "D5_Capacidad_Institucional",
+      "canonical": "D5_CAPACIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\14_LOPC\\LOPC-Participacion-Presupuesto-Rendicion.md",
+      "alias": "D4_Equidad_Redistribucion",
+      "canonical": "D4_EQUIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\14_LOPC\\LOPC-Participacion-Presupuesto-Rendicion.md",
+      "alias": "D2_Planificacion",
+      "canonical": "D2_PLANIFICACION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\15_LOTUGS\\_Indice_LOTUGS.md",
+      "alias": "D4_Equidad_Redistribucion",
+      "canonical": "D4_EQUIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\15_LOTUGS\\_Indice_LOTUGS.md",
+      "alias": "D2_Planificacion",
+      "canonical": "D2_PLANIFICACION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\15_LOTUGS\\_Indice_LOTUGS.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\15_LOTUGS\\LOTUGS-Ordenamiento-Territorial-Suelo.md",
+      "alias": "D4_Equidad_Redistribucion",
+      "canonical": "D4_EQUIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\15_LOTUGS\\LOTUGS-Ordenamiento-Territorial-Suelo.md",
+      "alias": "D2_Planificacion",
+      "canonical": "D2_PLANIFICACION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\15_LOTUGS\\LOTUGS-Ordenamiento-Territorial-Suelo.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\16_COAD\\_Indice_COAD.md",
+      "alias": "D5_Capacidad_Institucional",
+      "canonical": "D5_CAPACIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\16_COAD\\_Indice_COAD.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\16_COAD\\COAD-Procedimiento-Administrativo.md",
+      "alias": "D5_Capacidad_Institucional",
+      "canonical": "D5_CAPACIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\16_COAD\\COAD-Procedimiento-Administrativo.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\17_LOIPEVM\\_Indice_LOIPEVM.md",
+      "alias": "D5_Capacidad_Institucional",
+      "canonical": "D5_CAPACIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\17_LOIPEVM\\_Indice_LOIPEVM.md",
+      "alias": "D4_Equidad_Redistribucion",
+      "canonical": "D4_EQUIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\17_LOIPEVM\\_Indice_LOIPEVM.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\17_LOIPEVM\\LOIPEVM-Violencia-Mujeres-GAD.md",
+      "alias": "D5_Capacidad_Institucional",
+      "canonical": "D5_CAPACIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\17_LOIPEVM\\LOIPEVM-Violencia-Mujeres-GAD.md",
+      "alias": "D4_Equidad_Redistribucion",
+      "canonical": "D4_EQUIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\17_LOIPEVM\\LOIPEVM-Violencia-Mujeres-GAD.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\18_LEY_ECONOMIA_MUJERES\\_Indice_Ley_Economia_Mujeres.md",
+      "alias": "D3_Ejecucion_Presupuestaria",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\18_LEY_ECONOMIA_MUJERES\\_Indice_Ley_Economia_Mujeres.md",
+      "alias": "D4_Equidad_Redistribucion",
+      "canonical": "D4_EQUIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\18_LEY_ECONOMIA_MUJERES\\_Indice_Ley_Economia_Mujeres.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\18_LEY_ECONOMIA_MUJERES\\LEY-ECONOMIA-MUJERES-Emprendimiento.md",
+      "alias": "D3_Ejecucion_Presupuestaria",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\18_LEY_ECONOMIA_MUJERES\\LEY-ECONOMIA-MUJERES-Emprendimiento.md",
+      "alias": "D4_Equidad_Redistribucion",
+      "canonical": "D4_EQUIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\18_LEY_ECONOMIA_MUJERES\\LEY-ECONOMIA-MUJERES-Emprendimiento.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\19_CODIGO_DEMOCRACIA\\_Indice_Codigo_Democracia.md",
+      "alias": "D4_Equidad_Redistribucion",
+      "canonical": "D4_EQUIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\19_CODIGO_DEMOCRACIA\\_Indice_Codigo_Democracia.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\19_CODIGO_DEMOCRACIA\\CODIGO-DEMOCRACIA-Electoral-Participacion.md",
+      "alias": "D4_Equidad_Redistribucion",
+      "canonical": "D4_EQUIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\19_CODIGO_DEMOCRACIA\\CODIGO-DEMOCRACIA-Electoral-Participacion.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\20_NORMAS_CGE\\_Indice_Normas_CGE.md",
+      "alias": "D3_Ejecucion_Presupuestaria",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\20_NORMAS_CGE\\_Indice_Normas_CGE.md",
+      "alias": "D5_Capacidad_Institucional",
+      "canonical": "D5_CAPACIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\20_NORMAS_CGE\\_Indice_Normas_CGE.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\20_NORMAS_CGE\\NORMAS-CGE-Control-Interno.md",
+      "alias": "D3_Ejecucion_Presupuestaria",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\20_NORMAS_CGE\\NORMAS-CGE-Control-Interno.md",
+      "alias": "D5_Capacidad_Institucional",
+      "canonical": "D5_CAPACIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\20_NORMAS_CGE\\NORMAS-CGE-Control-Interno.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\20_NORMAS_CGE\\NORMAS-CGE-Control-Presupuestario.md",
+      "alias": "D5_Transparencia",
+      "canonical": "D5_CAPACIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\20_NORMAS_CGE\\NORMAS-CGE-Control-Presupuestario.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\20_NORMAS_CGE\\NORMAS-CGE-Control-Presupuestario.md",
+      "alias": "D3_Ejecucion",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\21_LEY_TRANSFORMACION_DIGITAL\\_Indice_Ley_Transformacion_Digital.md",
+      "alias": "D5_Capacidad_Institucional",
+      "canonical": "D5_CAPACIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\21_LEY_TRANSFORMACION_DIGITAL\\_Indice_Ley_Transformacion_Digital.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\21_LEY_TRANSFORMACION_DIGITAL\\LEY-TRANSFORMACION-DIGITAL.md",
+      "alias": "D5_Capacidad_Institucional",
+      "canonical": "D5_CAPACIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\21_LEY_TRANSFORMACION_DIGITAL\\LEY-TRANSFORMACION-DIGITAL.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\22_RESOLUCION_CPCCS_RDC\\_Indice_Reglamento_RDC.md",
+      "alias": "D5_Capacidad_Institucional",
+      "canonical": "D5_CAPACIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\22_RESOLUCION_CPCCS_RDC\\_Indice_Reglamento_RDC.md",
+      "alias": "D4_Equidad_Redistribucion",
+      "canonical": "D4_EQUIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\22_RESOLUCION_CPCCS_RDC\\_Indice_Reglamento_RDC.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\22_RESOLUCION_CPCCS_RDC\\REGLAMENTO-RDC-CPCCS-2026.md",
+      "alias": "D5_Capacidad_Institucional",
+      "canonical": "D5_CAPACIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\22_RESOLUCION_CPCCS_RDC\\REGLAMENTO-RDC-CPCCS-2026.md",
+      "alias": "D4_Equidad_Redistribucion",
+      "canonical": "D4_EQUIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\22_RESOLUCION_CPCCS_RDC\\REGLAMENTO-RDC-CPCCS-2026.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\23_CLASIFICADOR_PRESUPUESTARIO\\CLASIFICADOR-Estructura-General.md",
+      "alias": "D3_Ejecucion",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\23_CLASIFICADOR_PRESUPUESTARIO\\CLASIFICADOR-Excluidos.md",
+      "alias": "D3_Ejecucion",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\23_CLASIFICADOR_PRESUPUESTARIO\\CLASIFICADOR-Grupo5-Egresos-Corrientes.md",
+      "alias": "D3_Ejecucion",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\23_CLASIFICADOR_PRESUPUESTARIO\\CLASIFICADOR-Grupo7-Egresos-Inversion.md",
+      "alias": "D1_Planificacion",
+      "canonical": "D2_PLANIFICACION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\23_CLASIFICADOR_PRESUPUESTARIO\\CLASIFICADOR-Grupo7-Egresos-Inversion.md",
+      "alias": "D3_Ejecucion",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\23_CLASIFICADOR_PRESUPUESTARIO\\CLASIFICADOR-Grupo8-Capital-y-Amortizacion.md",
+      "alias": "D3_Ejecucion",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\24_CNC_LINEAMIENTOS_PFI\\CNC-Lineamientos-Monitoreo-PFI.md",
+      "alias": "D5_Capacidad_Institucional",
+      "canonical": "D5_CAPACIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\24_CNC_LINEAMIENTOS_PFI\\CNC-Lineamientos-Monitoreo-PFI.md",
+      "alias": "D2_Planificacion",
+      "canonical": "D2_PLANIFICACION",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\24_CNC_LINEAMIENTOS_PFI\\CNC-Lineamientos-Monitoreo-PFI.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\25_PAGCC\\PAGCC-Ecuador-2024-GAD.md",
+      "alias": "D4_Equidad_Territorial",
+      "canonical": "D4_EQUIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\25_PAGCC\\PAGCC-Ecuador-2024-GAD.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "02_NORMATIVA\\25_PAGCC\\PAGCC-Ecuador-2024-GAD.md",
+      "alias": "D3_Ejecucion",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "05_PLANES_NACIONALES\\01_PND\\_Indice_PND.md",
+      "alias": "D4_Equidad_Redistribucion",
+      "canonical": "D4_EQUIDAD",
+      "count": 1
+    },
+    {
+      "file": "05_PLANES_NACIONALES\\01_PND\\_Indice_PND.md",
+      "alias": "D2_Planificacion",
+      "canonical": "D2_PLANIFICACION",
+      "count": 1
+    },
+    {
+      "file": "05_PLANES_NACIONALES\\01_PND\\_Indice_PND.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "05_PLANES_NACIONALES\\01_PND\\PND-2025-2029-Ecuador-No-Se-Detiene.md",
+      "alias": "D4_Equidad_Redistribucion",
+      "canonical": "D4_EQUIDAD",
+      "count": 1
+    },
+    {
+      "file": "05_PLANES_NACIONALES\\01_PND\\PND-2025-2029-Ecuador-No-Se-Detiene.md",
+      "alias": "D2_Planificacion",
+      "canonical": "D2_PLANIFICACION",
+      "count": 1
+    },
+    {
+      "file": "05_PLANES_NACIONALES\\01_PND\\PND-2025-2029-Ecuador-No-Se-Detiene.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "05_PLANES_NACIONALES\\02_GUIA_PDOT_SNP\\_Indice_Guia_PDOT_SNP.md",
+      "alias": "D5_Capacidad_Institucional",
+      "canonical": "D5_CAPACIDAD",
+      "count": 1
+    },
+    {
+      "file": "05_PLANES_NACIONALES\\02_GUIA_PDOT_SNP\\_Indice_Guia_PDOT_SNP.md",
+      "alias": "D2_Planificacion",
+      "canonical": "D2_PLANIFICACION",
+      "count": 1
+    },
+    {
+      "file": "05_PLANES_NACIONALES\\02_GUIA_PDOT_SNP\\_Indice_Guia_PDOT_SNP.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "05_PLANES_NACIONALES\\02_GUIA_PDOT_SNP\\GUIA-PDOT-SNP-2023-Metodologia.md",
+      "alias": "D5_Capacidad_Institucional",
+      "canonical": "D5_CAPACIDAD",
+      "count": 1
+    },
+    {
+      "file": "05_PLANES_NACIONALES\\02_GUIA_PDOT_SNP\\GUIA-PDOT-SNP-2023-Metodologia.md",
+      "alias": "D2_Planificacion",
+      "canonical": "D2_PLANIFICACION",
+      "count": 1
+    },
+    {
+      "file": "05_PLANES_NACIONALES\\02_GUIA_PDOT_SNP\\GUIA-PDOT-SNP-2023-Metodologia.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "05_PLANES_NACIONALES\\03_PAGCC\\_Indice_PAGCC.md",
+      "alias": "D4_Equidad_Redistribucion",
+      "canonical": "D4_EQUIDAD",
+      "count": 1
+    },
+    {
+      "file": "05_PLANES_NACIONALES\\03_PAGCC\\_Indice_PAGCC.md",
+      "alias": "D2_Planificacion",
+      "canonical": "D2_PLANIFICACION",
+      "count": 1
+    },
+    {
+      "file": "05_PLANES_NACIONALES\\03_PAGCC\\_Indice_PAGCC.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "05_PLANES_NACIONALES\\03_PAGCC\\PAGCC-Genero-Cambio-Climatico-2024.md",
+      "alias": "D4_Equidad_Redistribucion",
+      "canonical": "D4_EQUIDAD",
+      "count": 1
+    },
+    {
+      "file": "05_PLANES_NACIONALES\\03_PAGCC\\PAGCC-Genero-Cambio-Climatico-2024.md",
+      "alias": "D2_Planificacion",
+      "canonical": "D2_PLANIFICACION",
+      "count": 1
+    },
+    {
+      "file": "05_PLANES_NACIONALES\\03_PAGCC\\PAGCC-Genero-Cambio-Climatico-2024.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "08_EJECUCION\\_Índice_Ejecucion.md",
+      "alias": "D3_Ejecucion_Presupuestaria",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "08_EJECUCION\\_Índice_Ejecucion.md",
+      "alias": "D2_Fidelidad_Planificacion",
+      "canonical": "D2_PLANIFICACION",
+      "count": 1
+    },
+    {
+      "file": "08_EJECUCION\\_Índice_Ejecucion.md",
+      "alias": "D5_Capacidad_Institucional",
+      "canonical": "D5_CAPACIDAD",
+      "count": 1
+    },
+    {
+      "file": "08_EJECUCION\\CEDULAS_HOLDING_ENE_MAR_2026.md",
+      "alias": "D3_Ejecucion_Presupuestaria",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "08_EJECUCION\\FUENTES_Holding_Operativa.md",
+      "alias": "D3_Ejecucion_Presupuestaria",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "08_EJECUCION\\FUENTES_Holding_Operativa.md",
+      "alias": "D2_Fidelidad_Planificacion",
+      "canonical": "D2_PLANIFICACION",
+      "count": 1
+    },
+    {
+      "file": "08_EJECUCION\\FUENTES_Holding_Operativa.md",
+      "alias": "D5_Capacidad_Institucional",
+      "canonical": "D5_CAPACIDAD",
+      "count": 1
+    },
+    {
+      "file": "08_EJECUCION\\ICM_SIGAD_2023_2024.md",
+      "alias": "D2_Fidelidad_Planificacion",
+      "canonical": "D2_PLANIFICACION",
+      "count": 1
+    },
+    {
+      "file": "08_EJECUCION\\ICM_SIGAD_2023_2024.md",
+      "alias": "D5_Capacidad_Institucional",
+      "canonical": "D5_CAPACIDAD",
+      "count": 1
+    },
+    {
+      "file": "08_EJECUCION\\ORGANICO_040_2025.md",
+      "alias": "D2_Fidelidad_Planificacion",
+      "canonical": "D2_PLANIFICACION",
+      "count": 1
+    },
+    {
+      "file": "08_EJECUCION\\ORGANICO_040_2025.md",
+      "alias": "D5_Capacidad_Institucional",
+      "canonical": "D5_CAPACIDAD",
+      "count": 1
+    },
+    {
+      "file": "08_EJECUCION\\ORGANICO_040_2025.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "08_EJECUCION\\PAC_2023_2024_GADM.md",
+      "alias": "D5_Capacidad_Institucional",
+      "canonical": "D5_CAPACIDAD",
+      "count": 1
+    },
+    {
+      "file": "08_EJECUCION\\PAC_2023_2024_GADM.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "08_EJECUCION\\PAC_2023_2024_GADM.md",
+      "alias": "D3_Ejecucion",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "08_EJECUCION\\PAC_2026_Contexto.md",
+      "alias": "D3_Ejecucion_Presupuestaria",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "08_EJECUCION\\PAC_2026_Contexto.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "08_EJECUCION\\PATRONATO_Operativo_2023_2024.md",
+      "alias": "D5_Capacidad_Institucional",
+      "canonical": "D5_CAPACIDAD",
+      "count": 1
+    },
+    {
+      "file": "08_EJECUCION\\PATRONATO_Operativo_2023_2024.md",
+      "alias": "D4_Equidad_Redistribucion",
+      "canonical": "D4_EQUIDAD",
+      "count": 1
+    },
+    {
+      "file": "08_EJECUCION\\PATRONATO_Operativo_2023_2024.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "08_EJECUCION\\PATRONATO_Operativo_2023_2024.md",
+      "alias": "D3_Ejecucion",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "08_EJECUCION\\Plan_CNE_Alcalde_Montecristi.md",
+      "alias": "D2_Fidelidad_Planificacion",
+      "canonical": "D2_PLANIFICACION",
+      "count": 1
+    },
+    {
+      "file": "08_EJECUCION\\Plan_CNE_Alcalde_Montecristi.md",
+      "alias": "D1_Legalidad_Coherencia",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "08_EJECUCION\\POA_2023_2024_GADM.md",
+      "alias": "D5_Capacidad_Institucional",
+      "canonical": "D5_CAPACIDAD",
+      "count": 1
+    },
+    {
+      "file": "08_EJECUCION\\POA_2023_2024_GADM.md",
+      "alias": "D2_Planificacion",
+      "canonical": "D2_PLANIFICACION",
+      "count": 1
+    },
+    {
+      "file": "08_EJECUCION\\POA_2023_2024_GADM.md",
+      "alias": "D3_Ejecucion",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "08_EJECUCION\\POA_2026_Contexto.md",
+      "alias": "D3_Ejecucion_Presupuestaria",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "08_EJECUCION\\POA_2026_Contexto.md",
+      "alias": "D2_Fidelidad_Planificacion",
+      "canonical": "D2_PLANIFICACION",
+      "count": 1
+    },
+    {
+      "file": "08_EJECUCION\\PPI_Inversiones_PDOT_2023_2027.md",
+      "alias": "D4_Equidad_Territorial",
+      "canonical": "D4_EQUIDAD",
+      "count": 1
+    },
+    {
+      "file": "08_EJECUCION\\PPI_Inversiones_PDOT_2023_2027.md",
+      "alias": "D2_Planificacion",
+      "canonical": "D2_PLANIFICACION",
+      "count": 1
+    },
+    {
+      "file": "08_EJECUCION\\PPI_Inversiones_PDOT_2023_2027.md",
+      "alias": "D3_Ejecucion",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "08_EJECUCION\\RDC_Holding_2023_2024.md",
+      "alias": "D5_Capacidad_Institucional",
+      "canonical": "D5_CAPACIDAD",
+      "count": 1
+    },
+    {
+      "file": "08_EJECUCION\\RDC_Holding_2023_2024.md",
+      "alias": "D4_Equidad_Redistribucion",
+      "canonical": "D4_EQUIDAD",
+      "count": 1
+    },
+    {
+      "file": "08_EJECUCION\\RDC_Holding_2023_2024.md",
+      "alias": "D1_Legalidad",
+      "canonical": "D1_LEGALIDAD",
+      "count": 1
+    },
+    {
+      "file": "08_EJECUCION\\TRAYECTORIA_2023_2026.md",
+      "alias": "D3_Ejecucion_Presupuestaria",
+      "canonical": "D3_EJECUCION",
+      "count": 1
+    },
+    {
+      "file": "08_EJECUCION\\TRAYECTORIA_2023_2026.md",
+      "alias": "D2_Fidelidad_Planificacion",
+      "canonical": "D2_PLANIFICACION",
+      "count": 1
+    }
+  ]
+}

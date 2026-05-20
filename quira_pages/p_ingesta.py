@@ -1,6 +1,6 @@
 """
 QUIRA OS · p_ingesta.py
-Centro de Ingesta Mensual — Sprint 2.5A
+Centro de Ingesta Mensual — Sprint 2.5B
 
 Flujo:
   1. Analista sube la cédula presupuestaria (.xlsx/.xls) desde eSIGEF/LOTAIP
@@ -39,6 +39,15 @@ MESES = {
     1: "Enero", 2: "Febrero", 3: "Marzo",    4: "Abril",
     5: "Mayo",  6: "Junio",   7: "Julio",    8: "Agosto",
     9: "Septiembre", 10: "Octubre", 11: "Noviembre", 12: "Diciembre",
+}
+
+ENTIDADES = ["GAD", "BOMBEROS", "EMAI-EP", "PATRONATO"]
+
+ENTIDAD_LABELS = {
+    "GAD":       "GAD Municipal de Montecristi",
+    "BOMBEROS":  "Cuerpo de Bomberos de Montecristi",
+    "EMAI-EP":   "Empresa Municipal de Aseo Integral",
+    "PATRONATO": "Patronato Municipal de Amparo Social",
 }
 
 EXTRA_CSS = """
@@ -214,18 +223,21 @@ def _panel_history(history: list[dict], kpis: list[dict]) -> str:
         mes_str  = f"{MESES.get(h.get('period_month'), '?')[:3]} {h.get('period_year', '–')}"
         version  = h.get("version", 1)
         status   = h.get("validation_status", "")
+        entidad  = h.get("entidad", "GAD")
         pill_cls = "pill-ok" if status == "OK" else "pill-err"
         v_cls    = "pill-v2" if version > 1 else ""
         v_str    = f'<span class="pill {v_cls}">v{version}</span>' if version > 1 else ""
         ti_val   = ti_lookup.get((h.get("period_year"), h.get("period_month")))
         ti_str   = f"Ti {ti_val:.1f}%" if ti_val is not None else ""
-        fname    = h.get("file_name", "–")[:32]
+        fname    = h.get("file_name", "–")[:28]
         ts       = h.get("uploaded_at", "–")[:16]
 
         rows += f"""
 <div class="hist-row">
   <div>
-    <b style="color:var(--white)">{mes_str}</b> {v_str}
+    <b style="color:var(--white)">{mes_str}</b>
+    <span style="color:var(--cyan);font-size:10px;margin-left:6px">{entidad}</span>
+    {v_str}
     <span style="color:var(--muted);margin-left:8px">{fname}</span>
   </div>
   <div style="display:flex;gap:8px;align-items:center">
@@ -296,7 +308,17 @@ def render() -> None:
 </div>
 """, unsafe_allow_html=True)
 
-    col_f, col_y, col_m, col_u = st.columns([3, 1, 1.5, 1.5])
+    col_e, col_f = st.columns([2, 3])
+
+    with col_e:
+        entidad_labels = [f"{k} — {v}" for k, v in ENTIDAD_LABELS.items()]
+        entidad_sel = st.selectbox(
+            "Entidad del holding",
+            entidad_labels,
+            index=0,
+            label_visibility="visible",
+        )
+        entidad = entidad_sel.split(" — ")[0]
 
     with col_f:
         uploaded_file = st.file_uploader(
@@ -305,6 +327,8 @@ def render() -> None:
             label_visibility="collapsed",
             help="Archivo oficial eSIGEF/LOTAIP — cédula presupuestaria mensual",
         )
+
+    col_y, col_m, col_u = st.columns([1, 1.5, 2])
 
     with col_y:
         year = st.number_input(
@@ -329,7 +353,7 @@ def render() -> None:
         content = uploaded_file.read()
 
         # Cachear resultado en session para no re-parsear
-        cache_key = f"parse_{uploaded_file.name}_{year}_{month}"
+        cache_key = f"parse_{uploaded_file.name}_{year}_{month}_{entidad}"
         if st.session_state.get("_ingesta_cache_key") != cache_key:
             with st.spinner("Analizando cédula…"):
                 result = parse_cedula(
@@ -375,6 +399,7 @@ def render() -> None:
                         file_name   = uploaded_file.name,
                         uploaded_by = usuario,
                         notes       = notas,
+                        entidad     = entidad,
                     )
 
                 if ingesta["ok"]:
@@ -384,9 +409,38 @@ def render() -> None:
                         f"{ingesta['lines_inserted']} líneas · "
                         f"Ti = {ingesta['ti_mensual_pct']:.1f}%"
                     )
+                    # Invalidar caches de congruencia, integridad y alertas
+                    st.session_state.pop("congruencia_result", None)
+                    st.session_state.pop("integrity_result", None)
+                    st.session_state.pop("alertas_result", None)
+                    # Auto-resolver alertas que esta ingesta puede haber corregido
+                    try:
+                        from sentinel.alert_engine import auto_resolve_alerts
+                        _yr  = int(year)
+                        _mo  = int(month)
+                        _ref = f"upload_id:{ingesta['upload_id']}"
+                        _ti  = ingesta.get("ti_mensual_pct", 0)
+                        # Resolver cobertura siempre (ya existe el documento)
+                        auto_resolve_alerts(entidad, _yr, _mo, "cobertura", _ref)
+                        # Resolver ejecución solo si Ti superó umbral crítico
+                        if _ti >= 15.0:
+                            auto_resolve_alerts(entidad, _yr, _mo, "ejecucion", _ref)
+                    except Exception:
+                        pass
+                    # Ejecutar check de integridad post-ingesta
+                    try:
+                        from sentinel.integrity_engine import run_integrity_check
+                        int_result = run_integrity_check()
+                        st.session_state["integrity_result"] = int_result
+                        _emoji = int_result.get("emoji", "")
+                        _lbl   = int_result.get("label", "")
+                        _sub   = int_result.get("sublabel", "")
+                        st.info(f"{_emoji} Integridad Semántica: **{_lbl}** — {_sub}")
+                    except Exception:
+                        pass
                     # Limpiar caché para refrescar vista
                     st.session_state.pop("_ingesta_cache_key", None)
-                    time.sleep(1)
+                    time.sleep(1.5)
                     st.rerun()
                 else:
                     st.error(f"Error al guardar: {ingesta.get('error', '–')}")

@@ -234,9 +234,30 @@ if not is_authenticated():
     render_login()
     st.stop()
 
+# ── RC-2B: SCHEDULER INSTITUCIONAL (tick silencioso) ─────────────────────────
+# Se ejecuta una vez por sesión autenticada, después del gate de auth.
+# Si la tarea ya corrió dentro del intervalo configurado, no hace nada.
+# Silencioso: cualquier error es absorbido sin afectar la UI.
+try:
+    from sentinel.scheduler  import tick as _scheduler_tick
+    from sentinel.db_config  import get_connection as _get_db
+    _sched_conn = _get_db()
+    _scheduler_tick(_sched_conn)
+    _sched_conn.close()
+except Exception:
+    pass
+
 # ── CARGA LAZY DE PÁGINAS ──────────────────────────────────────────────────────
 from quira_pages.p_sentinel_hub  import render as p_hub
 from quira_pages.p_ingesta       import render as p_ingesta
+from quira_pages.p_historico     import render as p_historico
+from quira_pages.p_congruencia   import render as p_congruencia
+from quira_pages.p_alertas       import render as p_alertas
+from quira_pages.p_seguimiento   import render as p_seguimiento
+from quira_pages.p_reportes      import render as p_reportes
+from quira_pages.p_aprendizaje   import render as p_aprendizaje
+from quira_pages.p_gestion       import render as p_gestion
+from quira_pages.p_ejecutivo     import render as p_ejecutivo
 from quira_pages.p1_dashboard    import render as p1
 from quira_pages.p2_holding      import render as p2
 from quira_pages.p3_congruencias import render as p3
@@ -264,6 +285,14 @@ PAGES = {
     # ── SENTINEL HUB — Pantalla 0 real (Sprint 2.3) ────────────────────────────
     "sentinel_hub": {"label": "Centro de Control",        "icon": "⬡",  "render": p_hub},
     "ingesta":      {"label": "Ingesta Mensual",          "icon": "📥", "render": p_ingesta},
+    "historico":    {"label": "Inteligencia Histórica",   "icon": "📈", "render": p_historico},
+    "congruencia":  {"label": "Congruencia Institucional","icon": "🔗", "render": p_congruencia},
+    "alertas":      {"label": "Alertas de Cumplimiento",  "icon": "🔔", "render": p_alertas},
+    "seguimiento":  {"label": "Seguimiento Institucional","icon": "📊", "render": p_seguimiento},
+    "reportes":     {"label": "Reportes Institucionales", "icon": "📄", "render": p_reportes},
+    "aprendizaje":  {"label": "Aprendizaje Institucional","icon": "🧠", "render": p_aprendizaje},
+    "gestion":      {"label": "Ruta de Atención",        "icon": "🗓", "render": p_gestion},
+    "ejecutivo":    {"label": "Vista Ejecutiva",         "icon": "🏛", "render": p_ejecutivo},
     # ── EJECUTIVO ─────────────────────────────────────────────────────────────
     "dashboard":    {"label": "Tablero Ejecutivo",        "icon": "📊", "render": p1},
     "pulso":        {"label": "Pulso Ejecutivo",          "icon": "⚡", "render": p6},
@@ -294,7 +323,7 @@ PAGES = {
 
 # ── DOCTRINA QUIRA — AGRUPACIÓN POR ESTADO COGNITIVO ──────────────────────────
 SECTIONS = [
-    ("CONTROL",   "Situación + prioridad",  ["sentinel_hub", "ingesta"]),
+    ("CONTROL",   "Situación + prioridad",  ["ejecutivo", "sentinel_hub", "ingesta", "historico", "congruencia", "alertas", "seguimiento", "reportes", "aprendizaje", "gestion"]),
     ("ENTENDER",  "Ver la verdad",          ["dashboard", "pulso", "brecha", "geotwin", "inversion"]),
     ("GOBERNAR",  "Corregir el sistema",    ["metas", "cadena", "congruencias", "sat", "eficiencia", "operacion", "holding", "ods", "cooperacion", "genero"]),
     ("SIMULAR",   "Proyectar escenarios",   ["simulador"]),
@@ -410,4 +439,4 @@ log_page(page_key)
 page_cfg["render"]()
 
 # ── FOOTER ─────────────────────────────────────────────────────────────────────
-st.caption("QUIRA OS v0.1 · Dylus Lab © 2026 · Datos verificados corte enero–marzo 2026")
+st.caption("QUIRA OS · Plataforma de Gobernanza Municipal · Dylus Lab © 2026 · Datos verificados corte enero–marzo 2026")

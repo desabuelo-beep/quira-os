@@ -40,6 +40,7 @@ def save_cedula_upload(
     file_name:   str,
     uploaded_by: str = "analista",
     notes:       str = "",
+    entidad:     str = "GAD",
 ) -> int:
     """
     Registra la cédula en document_uploads.
@@ -54,8 +55,8 @@ def save_cedula_upload(
     # Versión: ¿cuántas cédulas previas de este período?
     row = c.execute(
         "SELECT MAX(version) as max_v FROM document_uploads "
-        "WHERE document_type='CEDULA' AND period_year=? AND period_month=?",
-        (year, month),
+        "WHERE document_type='CEDULA' AND period_year=? AND period_month=? AND entidad=?",
+        (year, month, entidad),
     ).fetchone()
     version = ((row["max_v"] or 0) + 1) if row else 1
 
@@ -66,15 +67,15 @@ def save_cedula_upload(
         INSERT INTO document_uploads
             (document_type, period_year, period_month, version,
              file_name, sha256, size_bytes, uploaded_by, uploaded_at,
-             validation_status, validation_notes, notes, sentinel_version)
-        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)
+             validation_status, validation_notes, notes, entidad, sentinel_version)
+        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)
         RETURNING id
     """, (
         "CEDULA", year, month, version,
         file_name, result.sha256, result.size_bytes,
         uploaded_by, ts,
         status, result.error or "",
-        notes, SENTINEL_VERSION,
+        notes, entidad, SENTINEL_VERSION,
     )).fetchone()
 
     upload_id = row_id["id"]
@@ -163,6 +164,7 @@ def save_monthly_kpis(
     result:    CedulaParseResult,
     year:      int,
     month:     int,
+    entidad:   str = "GAD",
 ) -> None:
     """
     Calcula y guarda KPIs del mes.
@@ -174,24 +176,24 @@ def save_monthly_kpis(
 
     rows_year = c.execute(
         "SELECT ti_mensual_pct FROM monthly_kpis "
-        "WHERE period_year=? AND ti_mensual_pct IS NOT NULL",
-        (year,),
+        "WHERE period_year=? AND entidad=? AND ti_mensual_pct IS NOT NULL",
+        (year, entidad),
     ).fetchall()
     valores = [r["ti_mensual_pct"] for r in rows_year] + [result.ti_mensual_pct]
     ti_acumulado = round(sum(valores) / len(valores), 2)
 
     c.execute("""
         INSERT INTO monthly_kpis
-            (upload_id, period_year, period_month,
+            (upload_id, period_year, period_month, entidad,
              d3_ejecucion, d3_source,
              irs_valor,
              codificado_total, devengado_total,
              devengado_inv, codificado_inv,
              ti_mensual_pct, ti_acumulado_pct,
              calculated_at, sentinel_version)
-        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
     """, (
-        upload_id, year, month,
+        upload_id, year, month, entidad,
         result.ti_mensual_pct, "cedula_mensual",
         None,
         result.codificado_total, result.devengado_total,
@@ -230,7 +232,7 @@ def get_upload_history(limit: int = 20) -> list[dict]:
     rows = conn.execute("""
         SELECT id, document_type, period_year, period_month, version,
                file_name, sha256, size_bytes, uploaded_by, uploaded_at,
-               validation_status, notes
+               validation_status, notes, entidad
         FROM document_uploads
         ORDER BY id DESC
         LIMIT ?
@@ -308,6 +310,7 @@ def ingest_cedula(
     file_name:   str,
     uploaded_by: str = "analista",
     notes:       str = "",
+    entidad:     str = "GAD",
 ) -> dict:
     """
     Pipeline completo de ingesta en un solo paso:
@@ -327,9 +330,9 @@ def ingest_cedula(
             "ti_mensual_pct": 0.0,
         }
 
-    upload_id      = save_cedula_upload(result, year, month, file_name, uploaded_by, notes)
+    upload_id      = save_cedula_upload(result, year, month, file_name, uploaded_by, notes, entidad)
     lines_inserted = save_execution_lines(upload_id, result, year, month)
-    save_monthly_kpis(upload_id, result, year, month)
+    save_monthly_kpis(upload_id, result, year, month, entidad)
 
     return {
         "ok":             True,

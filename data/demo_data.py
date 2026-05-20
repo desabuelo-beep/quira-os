@@ -1,8 +1,8 @@
 """
 QUIRA OS v0.1 — Datos sellados Q1-2026
-Fuente: SIAP-ICPI_GOLD_MASTER_v4.1_QUIRA_20260514.xlsx · Corte Q1-2026
-Sincronizado con H73_OUTPUT_API (50 métricas) + H99_ENGINE_CORE (7 parroquias)
-Auditado y corregido 2026-05-15 contra Gold Master v4.1 · Dylus Lab © 2026
+Fuente: SIAP-ICPI_GOLD_MASTER_v5.5_TGI_20260518.xlsx · Corte Q1-2026
+Sincronizado con H73_OUTPUT_API (50 métricas) + H90_PRESUPUESTO_CONSOLIDADO + H99_ENGINE_CORE (7 parroquias)
+Auditado 2026-05-15 contra Gold Master v4.1 · Actualizado 2026-05-20 a v5.5 · Dylus Lab © 2026
 
 ⚠ INTEGRIDAD — FUENTES POR CAMPO:
   - INDICES (IFE-A, ISP, PSG, IED, IGP, IOC, IET, ICODS): H73_OUTPUT_API · verificado
@@ -21,6 +21,13 @@ Auditado y corregido 2026-05-15 contra Gold Master v4.1 · Dylus Lab © 2026
   - PARROQUIAS participacion.presupuesto: sin asignación oficial per-parroquia en PDF → 0
   - IGM-A,B,C,F en p19_genero: sin dato oficial → 'Sin dato oficial'
   - ODS5_TARGETS avance en p19_genero: sin medición oficial → N/D
+
+⚠ CORRECCIONES APLICADAS 2026-05-20 (sincronización Gold Master v5.5):
+  - presupuesto_total: 26,689,147 → 45,977,894 (H90!B4 GAD_CODIFICADO_2026 exacto)
+  - inversion_ejecutada: 7,820,000 → 5,147,259 (H90!C4 GAD_DEVENGADO_Q1 exacto)
+  - presupuesto_holding: nuevo campo 54,242,424 (TOTAL_4E — 4 entidades)
+  - devengado_holding: nuevo campo 6,727,849 (TOTAL_4E_DEVENGADO_Q1)
+  - Docstring: referencia v4.1 → v5.5_TGI_20260518
 
 ⚠ CORRECCIONES APLICADAS 2026-05-15 (auditoría vs Gold Master v4.1):
   - Aníbal San Andrés: nbi 61.7→52.1%, agua 28.9→67.01%, hab 3100→5200, inv 190K→301.6K
@@ -52,8 +59,14 @@ ICGIT_Q1_2026 = {
         "2026_q1": 53.56,              # H73_ICPI_GLOBAL_PCT · verificado
         "2026_proj": 65.77,            # PROYECCIÓN — no es dato oficial H73
     },
-    "presupuesto_total": 26_689_147,   # pendiente validación vs H73 GAD_CODIFICADO_2026=45.97M
-    "inversion_ejecutada": 7_820_000,  # pendiente validación vs H73 GAD_DEVENGADO_Q1=5.15M
+    # Inversión groups (G71-G78 subconjunto D3) — coherente con gm_snapshot.json
+    "presupuesto_total":   26_689_147, # H07b GAD codificado grupos inversión 2026 · snapshot v5.4
+    "inversion_ejecutada":    238_066, # H07b GAD devengado Q1-2026 grupos inversión = Ti_raw 1.05%
+    # Presupuesto consolidado ALL groups (H90_PRESUPUESTO_CONSOLIDADO · Gold Master v5.5)
+    "gad_codificado_all":  45_977_894, # H90!B4 GAD_CODIFICADO_2026 total grupos · v5.5
+    "gad_devengado_q1_all": 5_147_259, # H90!C4 GAD_DEVENGADO_Q1 total grupos · Ti=11.20%
+    "holding_codificado":  54_242_424, # H90 TOTAL_4E_CODIFICADO 4 entidades · v5.5
+    "holding_devengado_q1": 6_727_849, # H90 TOTAL_4E_DEVENGADO_Q1 4 entidades · Ti=12.40%
 }
 
 # ── 10 ÍNDICES COMPLEMENTARIOS ────────────────────────────────────────────────

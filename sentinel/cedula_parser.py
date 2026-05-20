@@ -122,25 +122,43 @@ def _find_header_row(df_raw: pd.DataFrame) -> int:
     return best_row
 
 
+def _looks_like_partida(series: pd.Series) -> bool:
+    """
+    Valida que una columna contiene códigos de partida presupuestaria.
+    Una partida válida empieza con dígito (ej: '510105', '73.01.01', '7').
+    Al menos el 60% de los valores no-nulos deben cumplir esto.
+    """
+    sample = series.dropna().astype(str).str.strip().head(20)
+    if len(sample) == 0:
+        return False
+    numeric_first = sample.str[0].str.isdigit().sum()
+    return numeric_first >= max(1, len(sample) * 0.6)
+
+
 def _map_columns(df: pd.DataFrame) -> dict[str, str]:
     """
     Mapea columnas del DataFrame a nombres canónicos.
     Retorna dict: nombre_canonico → nombre_real_en_df
+
+    Maneja formatos distintos de eSIGEF:
+      - GAD / Bomberos: 'Cuenta'=partida numérica, 'Categoría'=descripción grupo
+      - EMAI-EP: 'Cuenta'=nombre categoría, 'Categoría'=partida numérica (invertido)
+    Detecta el caso invertido validando los valores reales de cada columna.
     """
     canon_map = {
-        "codificado":   ["codificado", "cod_vigente", "codif"],
-        "devengado":    ["devengado", "deveng"],
-        "pagado":       ["pagado", "pag"],
-        "comprometido": ["comprometido", "comp"],
-        "vigente":      ["vigente", "vig", "codificado_vigente"],
-        "saldo":        ["saldo", "sal"],
-        "pct_ejecucion":["porcentaje", "pct", "ejecucion", "ejecución", "%"],
-        "partida":      ["partida", "clasificador", "cod_partida", "cuenta"],
-        "descripcion":  ["descripcion", "descripción", "nombre", "detalle"],
-        "categoria":    ["categoría", "categoria", "cat"],
-        "programa":     ["programa", "prog"],
-        "proyecto":     ["proyecto", "proy"],
-        "unidad":       ["unidad", "direcc", "entidad", "responsable"],
+        "codificado":    ["codificado", "cod_vigente", "codif"],
+        "devengado":     ["devengado", "deveng"],
+        "pagado":        ["pagado", "pag"],
+        "comprometido":  ["comprometido", "comp"],
+        "vigente":       ["vigente", "vig", "codificado_vigente"],
+        "saldo":         ["saldo", "sal"],
+        "pct_ejecucion": ["porcentaje", "pct", "ejecucion", "ejecución", "%"],
+        "partida":       ["partida", "clasificador", "cod_partida", "cuenta"],
+        "descripcion":   ["descripcion", "descripción", "nombre", "detalle"],
+        "categoria":     ["categoría", "categoria", "cat"],
+        "programa":      ["programa", "prog"],
+        "proyecto":      ["proyecto", "proy"],
+        "unidad":        ["unidad", "direcc", "responsable"],
     }
     col_lower = {c.lower().strip(): c for c in df.columns}
     result = {}
@@ -150,6 +168,23 @@ def _map_columns(df: pd.DataFrame) -> dict[str, str]:
             if matches:
                 result[canon] = matches[0]
                 break
+
+    # ── Validación de partida: ¿los valores son realmente códigos numéricos? ──
+    # Si no, buscar otra columna candidata (caso EMAI-EP con columnas invertidas)
+    if "partida" in result:
+        if not _looks_like_partida(df[result["partida"]]):
+            # La columna mapeada como 'partida' no tiene códigos numéricos.
+            # Buscar la primera columna no usada que sí los tenga.
+            used = set(result.values())
+            for col in df.columns:
+                if col not in used and _looks_like_partida(df[col]):
+                    # Antes de reasignar, mover la columna actual a 'descripcion'
+                    # si 'descripcion' aún no está mapeada (tiene texto descriptivo)
+                    if "descripcion" not in result:
+                        result["descripcion"] = result["partida"]
+                    result["partida"] = col
+                    break
+
     return result
 
 

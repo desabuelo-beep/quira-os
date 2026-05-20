@@ -51,6 +51,15 @@ def _fetch_sentinel():
     )
 
 
+@st.cache_data(ttl=300, show_spinner=False)
+def _fetch_parity() -> dict | None:
+    try:
+        from sentinel.parity_engine import get_congruencia_status
+        return get_congruencia_status()
+    except Exception:
+        return None
+
+
 # ── CSS EXTRA (específico de esta pantalla) ───────────────────────────────────
 EXTRA_CSS = """
 .bloque-label {
@@ -334,8 +343,55 @@ def _html_bloque_c(tgi: dict, fin: dict) -> str:
 </div>"""
 
 
+def _parity_panel(parity: dict | None) -> str:
+    if not parity:
+        return ""
+    g_label = parity.get("global_label", "–")
+    g_emoji = parity.get("global_emoji", "⬜")
+    g_color = parity.get("global_color", "#888")
+    g_ts    = parity.get("checked_display", "–")
+    g_st    = parity.get("global_status", "error")
+    fuente  = parity.get("fuente", {})
+    memoria = parity.get("memoria", {})
+    motor   = parity.get("motor", {})
+
+    def _clr(s):
+        return "var(--green)" if s == "ok" else ("var(--amber)" if s == "warning" else "var(--red)")
+
+    bg  = "rgba(0,224,150,.06)"  if g_st == "ok" else \
+          "rgba(255,184,0,.06)"  if g_st == "warning" else \
+          "rgba(255,77,109,.06)"
+    brd = "rgba(0,224,150,.2)"   if g_st == "ok" else \
+          "rgba(255,184,0,.2)"   if g_st == "warning" else \
+          "rgba(255,77,109,.2)"
+
+    def _row(label, s):
+        icon = {"ok": "✓", "warning": "⚠", "error": "✗"}.get(s, "?")
+        return f"""
+<div style="display:flex;justify-content:space-between;font-size:11px;padding:3px 0">
+  <span style="color:var(--muted)">{label}</span>
+  <span style="color:{_clr(s)};font-weight:700">{icon}</span>
+</div>"""
+
+    return f"""
+<div style="background:{bg};border:1px solid {brd};border-radius:10px;
+            padding:12px 14px;margin-bottom:10px">
+  <div style="font-size:12px;font-weight:800;color:{g_color};margin-bottom:8px">
+    {g_emoji} {g_label}
+  </div>
+  {_row("Fuente Operativa",      fuente.get("status","error"))}
+  {_row("Memoria Institucional", memoria.get("status","error"))}
+  {_row("Motor Analítico",       motor.get("status","error"))}
+  <div style="font-size:9px;color:rgba(255,255,255,.2);margin-top:8px;padding-top:6px;
+              border-top:1px solid rgba(255,255,255,.05)">
+    Última sincronización: {g_ts}
+  </div>
+</div>"""
+
+
 def _html_bloque_d(health: dict | None, drift: dict | None,
-                   sla_summary: dict | None, gm_meta: dict) -> str:
+                   sla_summary: dict | None, gm_meta: dict,
+                   parity: dict | None = None) -> str:
     api_ok   = health is not None
     chunks   = health.get("total_chunks", 0) if health else "–"
     llm_ok   = health.get("llm_disponible", False) if health else False
@@ -351,26 +407,27 @@ def _html_bloque_d(health: dict | None, drift: dict | None,
         tc    = {"ESTABLE":"var(--green)","MEJORANDO":"var(--cyan)","DEGRADANDO":"var(--red)"}.get(tend,"var(--white)")
         ti    = {"ESTABLE":"=","MEJORANDO":"↑","DEGRADANDO":"↓"}.get(tend,"=")
         max_r = drift.get("pct_rechazo_max", 0)
-        drift_html = _kpi("Trust Drift", f"{ti} {tend}",
-                          f"{drift.get('n_semanas',0)} sem · max rechazo {max_r:.0f}%", tc)
+        drift_html = _kpi("Tendencia Operativa", f"{ti} {tend}",
+                          f"{drift.get('n_semanas',0)} sem · variación máx {max_r:.0f}%", tc)
     else:
-        drift_html = _kpi("Trust Drift", "–", "API offline", "var(--muted)")
+        drift_html = _kpi("Tendencia Operativa", "–", "Sistema analítico sin conexión", "var(--muted)")
 
     mi = gm_meta
 
     return f"""
 <div class="card">
-  <div class="bloque-label">D · Estado SENTINEL</div>
+  <div class="bloque-label">D · Estado del Sistema Institucional</div>
+  {_parity_panel(parity)}
   <div class="grid-2">
-    {_kpi("API Status",
-          f"{live_dot}{'En línea' if api_ok else 'Offline'}",
-          f"{chunks} chunks indexados",
+    {_kpi("Sistema Analítico",
+          f"{live_dot}{'Operativo' if api_ok else 'No disponible'}",
+          f"{chunks} documentos indexados",
           "var(--green)" if api_ok else "var(--red)")}
-    {_kpi("LLM",
-          "Claude Haiku" if llm_ok else "Solo RAG",
-          "claude-haiku-4-5" if llm_ok else "Activar API key",
+    {_kpi("Motor de Consulta",
+          "Activo" if llm_ok else "Modo básico",
+          "Análisis institucional habilitado" if llm_ok else "Consultas limitadas",
           "var(--cyan)" if llm_ok else "var(--amber)")}
-    {_kpi("SLA Críticos/Vencidos",
+    {_kpi("Alertas sin atender",
           str(disputas),
           "requieren coordinador" if disputas > 0 else "dentro del SLA",
           "var(--red)" if disputas > 0 else "var(--green)")}
@@ -445,8 +502,8 @@ def render():
     # ── Cargar Gold Master snapshot ─────────────────────────────────────────
     gm = gm_load()
     if not gm.get("_loaded"):
-        st.error(f"⛔ Gold Master Snapshot no disponible: {gm.get('_error')}")
-        st.info("Contactar analista Dylus Lab para regenerar `data/gm_snapshot.json`.")
+        st.error("Datos institucionales no disponibles. El sistema no puede mostrar indicadores.")
+        st.info("Contactar al equipo técnico para actualizar la base de datos institucional.")
         return
 
     gad        = get_gad(gm)
@@ -461,6 +518,9 @@ def render():
     # ── Cargar SENTINEL API ─────────────────────────────────────────────────
     with st.spinner("Conectando SENTINEL API…"):
         health, drift, sla_resp = _fetch_sentinel()
+
+    # ── Congruencia Institucional (Sprint 2.5C) ─────────────────────────────
+    parity = _fetch_parity()
 
     sla_summary = sla_resp.get("summary") if sla_resp else None
     sla_list    = sla_resp.get("slas", []) if sla_resp else []
@@ -487,7 +547,7 @@ def render():
         "⬡ CONTROL",
         "Centro de Inteligencia Territorial",
         f"{gad.get('alcalde','–')} · {gad.get('periodo','–')} · TGI {tgi.get('score',0):.2f} — {tgi.get('clasificacion','')}",
-        f'<span class="badge badge-amber">⬡ Sprint 2.4</span>',
+        f'<span class="badge badge-amber">⬡ v1.0 RC</span>',
     )
 
     # 4 bloques en 2×2
@@ -498,7 +558,7 @@ def render():
 </div>
 <div class="grid-2" style="margin-bottom:12px">
   {_html_bloque_c(tgi, fin)}
-  {_html_bloque_d(health, drift, sla_summary, gm_meta)}
+  {_html_bloque_d(health, drift, sla_summary, gm_meta, parity=parity)}
 </div>"""
 
     # SLA panel
@@ -533,8 +593,65 @@ def render():
     full = page_frame(html, show_tech=False, extra_css=EXTRA_CSS)
     components.html(full, height=1600, scrolling=False)
 
-    # ── Botones de navegación (fuera del iframe) ─────────────────────────────
+    # ── Snapshot Institucional Mensual ──────────────────────────────────────
     st.markdown("---")
+    with st.expander("📊 Registro de Estado Institucional Mensual", expanded=False):
+        st.caption(
+            "Genera un registro oficial del estado del municipio al cierre del período. "
+            "Incluye congruencia documental, validación de indicadores y alertas activas. "
+            "Apto para **LOTAIP**, rendición de cuentas y transición administrativa."
+        )
+        sc1, sc2, sc3 = st.columns([2, 2, 3])
+        snap_year  = sc1.number_input("Año", min_value=2024, max_value=2030,
+                                      value=2026, step=1, label_visibility="visible")
+        snap_month = sc2.number_input("Mes", min_value=1, max_value=12,
+                                      value=3, step=1, label_visibility="visible")
+        snap_notas = sc3.text_input("Notas (opcional)",
+                                    placeholder="Cierre Q1 / Rendición ordinaria",
+                                    label_visibility="visible")
+
+        if st.button("📊 Registrar Estado Institucional", use_container_width=True, type="primary"):
+            with st.spinner("Consolidando estado institucional…"):
+                from sentinel.snapshot_engine import generate_snapshot, get_snapshots, export_snapshot_xlsx
+                snap = generate_snapshot(int(snap_year), int(snap_month),
+                                         triggered_by="manual_hub", notas=snap_notas)
+            if snap.get("saved"):
+                st.success(
+                    f"Registro **{snap['period_label']}** generado. "
+                    f"Congruencia documental: `{snap['congruencia_status']}` · "
+                    f"Validación indicadores: `{snap['integridad_n_ok']}/{snap['integridad_n_total']}` · "
+                    f"Alertas críticas: `{snap['alertas_criticas']}`"
+                )
+                xlsx_snap = export_snapshot_xlsx(snap, [])
+                if xlsx_snap:
+                    from datetime import date as _d
+                    st.download_button(
+                        label="📊 Descargar Registro Excel",
+                        data=xlsx_snap,
+                        file_name=f"estado_institucional_{snap_year}{snap_month:02d}_{_d.today().strftime('%Y%m%d')}.xlsx",
+                        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                    )
+            else:
+                st.warning("Registro generado pero no guardado. Verificar conexión institucional.")
+
+        # Registros anteriores
+        from sentinel.snapshot_engine import get_snapshots
+        snaps = get_snapshots(limit=12)
+        if snaps:
+            st.markdown("**Registros anteriores**")
+            _LABEL = {"ok": "✓ Operativo", "warning": "⚠ Atención", "error": "✗ Revisión"}
+            snap_rows = []
+            for s in snaps:
+                snap_rows.append({
+                    "Período":       s.get("period_label", ""),
+                    "Congruencia":   _LABEL.get(s.get("congruencia_status", ""), "–"),
+                    "Integridad":    f"{s.get('integridad_n_ok',0)}/{s.get('integridad_n_total',0)}",
+                    "Alertas Crit.": s.get("alertas_criticas", 0),
+                    "Generado":      (s.get("generated_at") or "")[:16],
+                })
+            st.dataframe(snap_rows, use_container_width=True, hide_index=True)
+
+    # ── Botones de navegación (fuera del iframe) ─────────────────────────────
     c1, c2, c3 = st.columns(3)
     with c1:
         if st.button("🔍 Análisis de Brecha", use_container_width=True):

@@ -1,11 +1,12 @@
 {
   "_meta": {
-    "fuente": "SIAP-ICPI_GOLD_MASTER v5.4 — outputs verificados por analista Dylus Lab",
-    "fecha_corte": "2026-05-17",
-    "version_excel": "v5.4_TGI_20260517",
-    "hojas_fuente": "H01_PARÁMETROS · H07b_Ti_INVERSIÓN · H98_TGI_FRAMEWORK · H99_ENGINE_CORE · H63_S0_CNE",
+    "fuente": "SIAP-ICPI_GOLD_MASTER_v5.5_TGI_20260518 — outputs verificados por analista Dylus Lab",
+    "fecha_corte": "2026-05-18",
+    "version_excel": "v5.5_TGI_20260518",
+    "hojas_fuente": "H01_PARÁMETROS · H07b_Ti_INVERSIÓN · H90_PRESUPUESTO_CONSOLIDADO · H98_TGI_FRAMEWORK · H99_ENGINE_CORE · H63_S0_CNE",
     "advertencia": "Este archivo contiene ÚNICAMENTE outputs institucionales públicos verificados. El Excel Gold Master es propiedad exclusiva de Dylus Lab y no se distribuye. Prohibido reemplazar estos valores sin validación analítica en el Excel.",
-    "proxima_actualizacion": "Con cédula presupuestaria Q2-2026"
+    "proxima_actualizacion": "Con cédula presupuestaria Q2-2026",
+    "sincronizado": "2026-05-20 — actualizado a v5.5 por QUIRA-OS config.py bridge"
   },
 
   "gad": {
@@ -82,6 +83,7 @@
   },
 
   "financiero": {
+    "_nota_scope": "Dos vistas: 'grupos_inv' = grupos G71-G78 (base D3) · 'all_groups' = H90 consolidado todos grupos",
     "presupuesto_total_gad_2026": 26689147,
     "presupuesto_codificado_grupos78_2026": 22595464,
     "devengado_q1_2026": 238066,
@@ -91,7 +93,28 @@
     "corte_datos": "2026-03 (Q1)",
     "fondos_bloqueados_est": 3660000,
     "fondos_bloqueados_detalle": "BDE $3.5M + Gender Bond $95K + ONU Mujeres $65K",
-    "fuente": "H07b_Ti_INVERSIÓN_eSIGEF · H01_PARÁMETROS Sección C"
+    "fuente": "H07b_Ti_INVERSIÓN_eSIGEF · H01_PARÁMETROS Sección C",
+    "h90_consolidado": {
+      "gad_codificado_vigente_2026": 45977893.81,
+      "gad_devengado_q1": 5147258.86,
+      "gad_ti_q1_pct": 11.20,
+      "gad_cod_inicial": 39310032.02,
+      "gad_reformas_net": 6667861.79,
+      "patronato_codificado": 4341242.62,
+      "patronato_devengado_q1": 849061.75,
+      "patronato_ti_q1_pct": 19.56,
+      "ep_aseo_codificado": 2438254.45,
+      "ep_aseo_devengado_q1": 442929.52,
+      "ep_aseo_ti_q1_pct": 18.17,
+      "bomberos_codificado": 1485033.40,
+      "bomberos_devengado_q1": 288599.28,
+      "bomberos_ti_q1_pct": 19.43,
+      "holding_total_codificado": 54242424.28,
+      "holding_total_devengado_q1": 6727849.41,
+      "holding_ti_q1_pct": 12.40,
+      "fuente": "H90_PRESUPUESTO_CONSOLIDADO_202 · Gold Master v5.5_TGI_20260518",
+      "corte": "2026-03-31"
+    }
   },
 
   "territorial": {

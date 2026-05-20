@@ -146,6 +146,7 @@ _SCHEMA_SQLITE = [
         validation_status TEXT  NOT NULL DEFAULT 'PENDIENTE',
         validation_notes  TEXT,
         notes           TEXT,
+        entidad         TEXT    NOT NULL DEFAULT 'GAD',
         sentinel_version TEXT   NOT NULL DEFAULT '2.5.0'
     )""",
     """CREATE TABLE IF NOT EXISTS budget_execution_lines (
@@ -177,6 +178,7 @@ _SCHEMA_SQLITE = [
         upload_id       INTEGER NOT NULL REFERENCES document_uploads(id),
         period_year     INTEGER NOT NULL,
         period_month    INTEGER NOT NULL,
+        entidad         TEXT    NOT NULL DEFAULT 'GAD',
         d3_ejecucion    REAL,
         d3_source       TEXT,
         irs_valor       REAL,
@@ -201,6 +203,56 @@ _SCHEMA_SQLITE = [
         overall_status  TEXT    NOT NULL DEFAULT 'PENDIENTE',
         notes           TEXT,
         run_at          TEXT    NOT NULL
+    )""",
+    """CREATE TABLE IF NOT EXISTS alerts_history (
+        id              INTEGER PRIMARY KEY AUTOINCREMENT,
+        detected_at     TEXT    NOT NULL,
+        period_year     INTEGER NOT NULL,
+        period_month    INTEGER NOT NULL,
+        entidad         TEXT    NOT NULL,
+        tipo            TEXT    NOT NULL,
+        status          TEXT    NOT NULL,
+        severidad       TEXT    NOT NULL,
+        titulo          TEXT    NOT NULL,
+        detalle         TEXT,
+        accion          TEXT,
+        valor           REAL,
+        estado          TEXT    NOT NULL DEFAULT 'pendiente',
+        resuelta_en     TEXT,
+        resuelta_ref    TEXT,
+        UNIQUE(period_year, period_month, entidad, tipo)
+    )""",
+    """CREATE TABLE IF NOT EXISTS monthly_snapshots (
+        id                      INTEGER PRIMARY KEY AUTOINCREMENT,
+        period_year             INTEGER NOT NULL,
+        period_month            INTEGER NOT NULL,
+        generated_at            TEXT    NOT NULL,
+        triggered_by            TEXT    NOT NULL DEFAULT 'manual',
+        congruencia_status      TEXT,
+        integridad_status       TEXT,
+        integridad_n_ok         INTEGER,
+        integridad_n_total      INTEGER,
+        alertas_criticas        INTEGER,
+        alertas_advertencias    INTEGER,
+        alertas_resueltas_mes   INTEGER,
+        alertas_dias_max        INTEGER,
+        fuente_status           TEXT,
+        memoria_status          TEXT,
+        motor_status            TEXT,
+        notas                   TEXT,
+        UNIQUE(period_year, period_month)
+    )""",
+    """CREATE TABLE IF NOT EXISTS resolution_patterns (
+        id                      INTEGER PRIMARY KEY AUTOINCREMENT,
+        categoria               TEXT    NOT NULL UNIQUE,
+        label_display           TEXT    NOT NULL,
+        frecuencia              INTEGER NOT NULL DEFAULT 0,
+        tiempo_promedio_dias    REAL    DEFAULT 0,
+        entidades_afectadas     TEXT,
+        ejemplos                TEXT,
+        primera_vez             TEXT,
+        ultima_vez              TEXT,
+        updated_at              TEXT    NOT NULL
     )""",
 ]
 
@@ -219,6 +271,7 @@ _SCHEMA_POSTGRES = [
         validation_status TEXT  NOT NULL DEFAULT 'PENDIENTE',
         validation_notes  TEXT,
         notes           TEXT,
+        entidad         TEXT    NOT NULL DEFAULT 'GAD',
         sentinel_version TEXT   NOT NULL DEFAULT '2.5.0'
     )""",
     """CREATE TABLE IF NOT EXISTS budget_execution_lines (
@@ -250,6 +303,7 @@ _SCHEMA_POSTGRES = [
         upload_id       BIGINT  NOT NULL REFERENCES document_uploads(id),
         period_year     INTEGER NOT NULL,
         period_month    INTEGER NOT NULL,
+        entidad         TEXT    NOT NULL DEFAULT 'GAD',
         d3_ejecucion    REAL,
         d3_source       TEXT,
         irs_valor       REAL,
@@ -275,13 +329,383 @@ _SCHEMA_POSTGRES = [
         notes           TEXT,
         run_at          TEXT    NOT NULL
     )""",
+    """CREATE TABLE IF NOT EXISTS alerts_history (
+        id              BIGSERIAL PRIMARY KEY,
+        detected_at     TEXT    NOT NULL,
+        period_year     INTEGER NOT NULL,
+        period_month    INTEGER NOT NULL,
+        entidad         TEXT    NOT NULL,
+        tipo            TEXT    NOT NULL,
+        status          TEXT    NOT NULL,
+        severidad       TEXT    NOT NULL,
+        titulo          TEXT    NOT NULL,
+        detalle         TEXT,
+        accion          TEXT,
+        valor           REAL,
+        estado          TEXT    NOT NULL DEFAULT 'pendiente',
+        resuelta_en     TEXT,
+        resuelta_ref    TEXT,
+        UNIQUE(period_year, period_month, entidad, tipo)
+    )""",
+    """CREATE TABLE IF NOT EXISTS monthly_snapshots (
+        id                      BIGSERIAL PRIMARY KEY,
+        period_year             INTEGER NOT NULL,
+        period_month            INTEGER NOT NULL,
+        generated_at            TEXT    NOT NULL,
+        triggered_by            TEXT    NOT NULL DEFAULT 'manual',
+        congruencia_status      TEXT,
+        integridad_status       TEXT,
+        integridad_n_ok         INTEGER,
+        integridad_n_total      INTEGER,
+        alertas_criticas        INTEGER,
+        alertas_advertencias    INTEGER,
+        alertas_resueltas_mes   INTEGER,
+        alertas_dias_max        INTEGER,
+        fuente_status           TEXT,
+        memoria_status          TEXT,
+        motor_status            TEXT,
+        notas                   TEXT,
+        UNIQUE(period_year, period_month)
+    )""",
+    """CREATE TABLE IF NOT EXISTS resolution_patterns (
+        id                      BIGSERIAL PRIMARY KEY,
+        categoria               TEXT    NOT NULL UNIQUE,
+        label_display           TEXT    NOT NULL,
+        frecuencia              INTEGER NOT NULL DEFAULT 0,
+        tiempo_promedio_dias    REAL    DEFAULT 0,
+        entidades_afectadas     TEXT,
+        ejemplos                TEXT,
+        primera_vez             TEXT,
+        ultima_vez              TEXT,
+        updated_at              TEXT    NOT NULL
+    )""",
 ]
 
 _INDEXES = [
-    "CREATE INDEX IF NOT EXISTS idx_uploads_period ON document_uploads(period_year, period_month)",
-    "CREATE INDEX IF NOT EXISTS idx_lines_upload   ON budget_execution_lines(upload_id)",
-    "CREATE INDEX IF NOT EXISTS idx_kpis_period    ON monthly_kpis(period_year, period_month)",
+    "CREATE INDEX IF NOT EXISTS idx_uploads_period  ON document_uploads(period_year, period_month)",
+    "CREATE INDEX IF NOT EXISTS idx_lines_upload    ON budget_execution_lines(upload_id)",
+    "CREATE INDEX IF NOT EXISTS idx_kpis_period     ON monthly_kpis(period_year, period_month)",
+    "CREATE INDEX IF NOT EXISTS idx_alerts_period   ON alerts_history(period_year, period_month)",
+    "CREATE INDEX IF NOT EXISTS idx_alerts_entidad  ON alerts_history(entidad, estado)",
+    "CREATE INDEX IF NOT EXISTS idx_snapshots_period ON monthly_snapshots(period_year, period_month)",
 ]
+
+
+def _migrate_alerts_history(conn: "DbConn") -> None:
+    """
+    Crea alerts_history si no existe (instancias previas al Sprint 2.6.1).
+    Idempotente.
+    """
+    c = conn.cursor()
+    if conn.mode == "supabase":
+        stmt = """CREATE TABLE IF NOT EXISTS alerts_history (
+            id              BIGSERIAL PRIMARY KEY,
+            detected_at     TEXT    NOT NULL,
+            period_year     INTEGER NOT NULL,
+            period_month    INTEGER NOT NULL,
+            entidad         TEXT    NOT NULL,
+            tipo            TEXT    NOT NULL,
+            status          TEXT    NOT NULL,
+            severidad       TEXT    NOT NULL,
+            titulo          TEXT    NOT NULL,
+            detalle         TEXT,
+            accion          TEXT,
+            valor           REAL,
+            estado          TEXT    NOT NULL DEFAULT 'pendiente',
+            resuelta_en     TEXT,
+            resuelta_ref    TEXT,
+            UNIQUE(period_year, period_month, entidad, tipo)
+        )"""
+    else:
+        stmt = """CREATE TABLE IF NOT EXISTS alerts_history (
+            id              INTEGER PRIMARY KEY AUTOINCREMENT,
+            detected_at     TEXT    NOT NULL,
+            period_year     INTEGER NOT NULL,
+            period_month    INTEGER NOT NULL,
+            entidad         TEXT    NOT NULL,
+            tipo            TEXT    NOT NULL,
+            status          TEXT    NOT NULL,
+            severidad       TEXT    NOT NULL,
+            titulo          TEXT    NOT NULL,
+            detalle         TEXT,
+            accion          TEXT,
+            valor           REAL,
+            estado          TEXT    NOT NULL DEFAULT 'pendiente',
+            resuelta_en     TEXT,
+            resuelta_ref    TEXT,
+            UNIQUE(period_year, period_month, entidad, tipo)
+        )"""
+    try:
+        c.execute(stmt)
+        conn.commit()
+    except Exception:
+        pass
+
+
+def _migrate_monthly_snapshots(conn: "DbConn") -> None:
+    """Crea monthly_snapshots si no existe. Idempotente."""
+    c    = conn.cursor()
+    pk   = "BIGSERIAL" if conn.mode == "supabase" else "INTEGER"
+    auto = "" if conn.mode == "supabase" else "AUTOINCREMENT"
+    try:
+        c.execute(f"""CREATE TABLE IF NOT EXISTS monthly_snapshots (
+            id                      {pk} PRIMARY KEY {auto},
+            period_year             INTEGER NOT NULL,
+            period_month            INTEGER NOT NULL,
+            generated_at            TEXT    NOT NULL,
+            triggered_by            TEXT    NOT NULL DEFAULT 'manual',
+            congruencia_status      TEXT,
+            integridad_status       TEXT,
+            integridad_n_ok         INTEGER,
+            integridad_n_total      INTEGER,
+            alertas_criticas        INTEGER,
+            alertas_advertencias    INTEGER,
+            alertas_resueltas_mes   INTEGER,
+            alertas_dias_max        INTEGER,
+            fuente_status           TEXT,
+            memoria_status          TEXT,
+            motor_status            TEXT,
+            notas                   TEXT,
+            UNIQUE(period_year, period_month)
+        )""")
+        conn.commit()
+    except Exception:
+        pass
+
+
+def _migrate_alerts_v2(conn: "DbConn") -> None:
+    """
+    Añade columnas extendidas a alerts_history (Sprint 2.6.1 v2).
+    Idempotente — cada ALTER TABLE va en su propio try/except.
+    """
+    c = conn.cursor()
+    cols = [
+        ("hash_alerta",      "TEXT"),
+        ("umbral",           "REAL"),
+        ("fuente_datos",     "TEXT"),
+        ("rol_que_consume",  "TEXT DEFAULT 'ANALISTA'"),
+        ("resolucion",       "TEXT"),
+    ]
+    for col, typedef in cols:
+        try:
+            if conn.mode == "supabase":
+                c.execute(f"ALTER TABLE alerts_history ADD COLUMN IF NOT EXISTS {col} {typedef}")
+            else:
+                c.execute(f"ALTER TABLE alerts_history ADD COLUMN {col} {typedef}")
+        except Exception:
+            pass  # columna ya existe
+    conn.commit()
+
+
+def _migrate_entidad(conn: "DbConn") -> None:
+    """
+    Migración incremental: añade columna 'entidad' a tablas existentes.
+    Idempotente — si la columna ya existe no falla.
+    """
+    c = conn.cursor()
+    for table in ("document_uploads", "monthly_kpis"):
+        try:
+            if conn.mode == "supabase":
+                c.execute(f"ALTER TABLE {table} ADD COLUMN IF NOT EXISTS entidad TEXT NOT NULL DEFAULT 'GAD'")
+            else:
+                c.execute(f"ALTER TABLE {table} ADD COLUMN entidad TEXT NOT NULL DEFAULT 'GAD'")
+        except Exception:
+            pass  # Columna ya existe — ignorar
+    conn.commit()
+
+
+def _migrate_ownership_fields(conn: "DbConn") -> None:
+    """Añade columnas de ownership/escalamiento a alerts_history (Sprint 2.9A). Idempotente."""
+    c    = conn.cursor()
+    cols = [
+        ("owner_actual",       "TEXT"),
+        ("owner_anterior",     "TEXT"),
+        ("fecha_asignacion",   "TEXT"),
+        ("escalada",           "INTEGER DEFAULT 0"),
+        ("nivel_escalamiento", "TEXT"),
+    ]
+    for col, typedef in cols:
+        try:
+            if conn.mode == "supabase":
+                c.execute(f"ALTER TABLE alerts_history ADD COLUMN IF NOT EXISTS {col} {typedef}")
+            else:
+                c.execute(f"ALTER TABLE alerts_history ADD COLUMN {col} {typedef}")
+        except Exception:
+            pass
+    conn.commit()
+
+
+def _migrate_alert_timeline(conn: "DbConn") -> None:
+    """Crea tabla alert_timeline — bitácora inmutable de eventos (Sprint 2.9A). Idempotente."""
+    pk   = "BIGSERIAL" if conn.mode == "supabase" else "INTEGER"
+    auto = "" if conn.mode == "supabase" else "AUTOINCREMENT"
+    try:
+        conn.cursor().execute(f"""CREATE TABLE IF NOT EXISTS alert_timeline (
+            id           {pk} PRIMARY KEY {auto},
+            alert_id     INTEGER NOT NULL,
+            timestamp    TEXT    NOT NULL,
+            actor        TEXT    NOT NULL DEFAULT 'sistema',
+            evento       TEXT    NOT NULL,
+            estado_desde TEXT,
+            estado_hasta TEXT,
+            nota         TEXT,
+            nivel        TEXT    NOT NULL DEFAULT 'analista'
+        )""")
+        conn.commit()
+    except Exception:
+        pass
+    try:
+        conn.cursor().execute(
+            "CREATE INDEX IF NOT EXISTS idx_timeline_alert ON alert_timeline(alert_id)"
+        )
+        conn.commit()
+    except Exception:
+        pass
+
+
+def _migrate_suggestion_fields(conn: "DbConn") -> None:
+    """
+    Añade columnas de trazabilidad de sugerencias a alerts_history (Sprint 2.8C).
+    Idempotente — cada ALTER va en su propio try/except.
+    """
+    c    = conn.cursor()
+    cols = [
+        ("suggestion_used",       "INTEGER DEFAULT 0"),
+        ("suggestion_category",   "TEXT"),
+        ("suggestion_confidence", "REAL"),
+        ("edited_before_submit",  "INTEGER DEFAULT 0"),
+    ]
+    for col, typedef in cols:
+        try:
+            if conn.mode == "supabase":
+                c.execute(f"ALTER TABLE alerts_history ADD COLUMN IF NOT EXISTS {col} {typedef}")
+            else:
+                c.execute(f"ALTER TABLE alerts_history ADD COLUMN {col} {typedef}")
+        except Exception:
+            pass  # columna ya existe
+    conn.commit()
+
+
+def _migrate_sla_config(conn: "DbConn") -> None:
+    """
+    Crea tabla sla_config e inserta configuración institucional por defecto.
+    RC-2A — SLA Institucional. Idempotente.
+    """
+    c   = conn.cursor()
+    pk  = "BIGSERIAL" if conn.mode == "supabase" else "INTEGER"
+    auto = "" if conn.mode == "supabase" else "AUTOINCREMENT"
+    try:
+        c.execute(f"""CREATE TABLE IF NOT EXISTS sla_config (
+            id           {pk} PRIMARY KEY {auto},
+            entidad      TEXT    NOT NULL DEFAULT '*',
+            severidad    TEXT    NOT NULL,
+            target_hours INTEGER NOT NULL,
+            descripcion  TEXT,
+            activo       BOOLEAN NOT NULL DEFAULT TRUE,
+            created_at   TEXT    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            UNIQUE(entidad, severidad)
+        )""")
+        conn.commit()
+    except Exception:
+        pass
+    # Insertar configuración por defecto (idempotente)
+    defaults = [
+        ("*", "CRITICA",     48,  "SLA global alertas criticas — 48 horas"),
+        ("*", "ADVERTENCIA", 120, "SLA global advertencias institucionales — 120 horas"),
+    ]
+    for entidad, severidad, hours, desc in defaults:
+        try:
+            if conn.mode == "supabase":
+                c.execute(
+                    "INSERT INTO sla_config (entidad, severidad, target_hours, descripcion) "
+                    "VALUES (%s, %s, %s, %s) ON CONFLICT (entidad, severidad) DO NOTHING",
+                    (entidad, severidad, hours, desc),
+                )
+            else:
+                c.execute(
+                    "INSERT OR IGNORE INTO sla_config "
+                    "(entidad, severidad, target_hours, descripcion) VALUES (?, ?, ?, ?)",
+                    (entidad, severidad, hours, desc),
+                )
+        except Exception:
+            pass
+    try:
+        conn.commit()
+    except Exception:
+        pass
+
+
+def _migrate_sla_fields(conn: "DbConn") -> None:
+    """
+    Añade columnas SLA a alerts_history (RC-2A). Idempotente.
+    Columnas: sla_target_hours, sla_due_at, sla_status, sla_breach_reason.
+    """
+    c    = conn.cursor()
+    cols = [
+        ("sla_target_hours", "INTEGER"),
+        ("sla_due_at",       "TEXT"),
+        ("sla_status",       "TEXT DEFAULT 'EN_TIEMPO'"),
+        ("sla_breach_reason","TEXT"),
+    ]
+    for col, typedef in cols:
+        try:
+            if conn.mode == "supabase":
+                c.execute(
+                    f"ALTER TABLE alerts_history ADD COLUMN IF NOT EXISTS {col} {typedef}"
+                )
+            else:
+                c.execute(f"ALTER TABLE alerts_history ADD COLUMN {col} {typedef}")
+        except Exception:
+            pass  # columna ya existe
+    try:
+        conn.commit()
+    except Exception:
+        pass
+
+
+def _migrate_resolution_patterns(conn: "DbConn") -> None:
+    """Crea resolution_patterns si no existe (instancias previas al Sprint 2.8A). Idempotente."""
+    c   = conn.cursor()
+    pk  = "BIGSERIAL" if conn.mode == "supabase" else "INTEGER"
+    auto = "" if conn.mode == "supabase" else "AUTOINCREMENT"
+    try:
+        c.execute(f"""CREATE TABLE IF NOT EXISTS resolution_patterns (
+            id                      {pk} PRIMARY KEY {auto},
+            categoria               TEXT    NOT NULL UNIQUE,
+            label_display           TEXT    NOT NULL,
+            frecuencia              INTEGER NOT NULL DEFAULT 0,
+            tiempo_promedio_dias    REAL    DEFAULT 0,
+            entidades_afectadas     TEXT,
+            ejemplos                TEXT,
+            primera_vez             TEXT,
+            ultima_vez              TEXT,
+            updated_at              TEXT    NOT NULL
+        )""")
+        conn.commit()
+    except Exception:
+        pass
+
+
+def _migrate_scheduler_log(conn: "DbConn") -> None:
+    """
+    Crea tabla scheduler_log para el scheduler institucional (RC-2B).
+    Registra última ejecución, estado y resultado de cada tarea programada.
+    Idempotente.
+    """
+    pk   = "BIGSERIAL" if conn.mode == "supabase" else "INTEGER"
+    auto = "" if conn.mode == "supabase" else "AUTOINCREMENT"
+    try:
+        conn.cursor().execute(f"""CREATE TABLE IF NOT EXISTS scheduler_log (
+            id          {pk} PRIMARY KEY {auto},
+            task_name   TEXT NOT NULL UNIQUE,
+            last_run    TEXT,
+            status      TEXT NOT NULL DEFAULT 'PENDING',
+            result_msg  TEXT,
+            runs_total  INTEGER NOT NULL DEFAULT 0
+        )""")
+        conn.commit()
+    except Exception:
+        pass
 
 
 def init_db() -> None:
@@ -300,6 +724,36 @@ def init_db() -> None:
             pass  # Índice ya existe
 
     conn.commit()
+
+    # Migración incremental: entidad (Sprint 2.5B)
+    _migrate_entidad(conn)
+
+    # Migración incremental: alerts_history (Sprint 2.6.1)
+    _migrate_alerts_history(conn)
+
+    # Migración incremental: alerts_history v2 — campos extendidos
+    _migrate_alerts_v2(conn)
+
+    # Migración incremental: monthly_snapshots (Sprint 2.7)
+    _migrate_monthly_snapshots(conn)
+
+    # Migración incremental: resolution_patterns (Sprint 2.8A)
+    _migrate_resolution_patterns(conn)
+
+    # Migración incremental: trazabilidad sugerencias (Sprint 2.8C)
+    _migrate_suggestion_fields(conn)
+
+    # Migración incremental: ownership + timeline (Sprint 2.9A)
+    _migrate_ownership_fields(conn)
+    _migrate_alert_timeline(conn)
+
+    # Migración incremental: SLA institucional (RC-2A)
+    _migrate_sla_config(conn)
+    _migrate_sla_fields(conn)
+
+    # Migración incremental: Scheduler institucional (RC-2B)
+    _migrate_scheduler_log(conn)
+
     conn.close()
 
 

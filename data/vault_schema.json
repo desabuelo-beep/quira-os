@@ -1,0 +1,66 @@
+{
+  "SCHEMA_VAULT_VERSION": "1.0",
+  "fecha_congelamiento": "2026-05-20",
+  "nota": "IDs semánticos canónicos para el vault QUIRA_KB_Montecristi. Uppercase, sin tildes, sin sufijos libres. Congelados en bridge_v1 — cambios requieren bump de versión.",
+
+  "dimensiones": {
+    "D1_LEGALIDAD": {
+      "nombre_oficial": "Legalidad y Coherencia Normativa",
+      "peso_tgi": 0.20,
+      "codigo_tgi": "D1",
+      "descripcion": "Coherencia del GAD con el marco normativo: COOTAD, COPFP, Constitución. Incluye trazabilidad jurídica, transparencia y control social.",
+      "gold_master_ref": "H98_TGI_FRAMEWORK!D1"
+    },
+    "D2_PLANIFICACION": {
+      "nombre_oficial": "Fidelidad de Planificación",
+      "peso_tgi": 0.20,
+      "codigo_tgi": "D2",
+      "descripcion": "Grado en que PDyOT, POA y PAC se materializan en ejecución. ICPI_2025=69.93%. Incluye congruencia POA→PAC→eSIGEF.",
+      "gold_master_ref": "H98_TGI_FRAMEWORK!D2"
+    },
+    "D3_EJECUCION": {
+      "nombre_oficial": "Ejecución Presupuestaria",
+      "peso_tgi": 0.25,
+      "codigo_tgi": "D3",
+      "descripcion": "Ti = Devengado / Codificado grupos inversión. D3 = Ti_2025 = 59.85% (CRITICO). Incluye series mensuales Holding.",
+      "gold_master_ref": "H98_TGI_FRAMEWORK!D3"
+    },
+    "D4_EQUIDAD": {
+      "nombre_oficial": "Equidad y Redistribución Territorial",
+      "peso_tgi": 0.25,
+      "codigo_tgi": "D4",
+      "descripcion": "Distribución territorial de inversión por parroquia. IRS=79.7 (Muy Regresivo). Brecha Isabel Muentes $40/hab vs $217 cabecera.",
+      "gold_master_ref": "H98_TGI_FRAMEWORK!D4"
+    },
+    "D5_CAPACIDAD": {
+      "nombre_oficial": "Capacidad Institucional",
+      "peso_tgi": 0.10,
+      "codigo_tgi": "D5",
+      "descripcion": "ICM SIGAD + estructura orgánica + transparencia. D5=100% (ICM=1.00 en 2023 y 2024). Incluye LOTAIP, CPCCS, ORGANICO_040.",
+      "gold_master_ref": "H98_TGI_FRAMEWORK!D5"
+    }
+  },
+
+  "alias_map": {
+    "D1_Legalidad":              "D1_LEGALIDAD",
+    "D1_Legalidad_Coherencia":   "D1_LEGALIDAD",
+    "D1_Planificacion":          "D2_PLANIFICACION",
+    "D2_Fidelidad_Planificacion":"D2_PLANIFICACION",
+    "D2_Planificacion":          "D2_PLANIFICACION",
+    "D3_Ejecucion":              "D3_EJECUCION",
+    "D3_Ejecucion_Presupuestaria":"D3_EJECUCION",
+    "D4_Equidad":                "D4_EQUIDAD",
+    "D4_Equidad_Redistribucion": "D4_EQUIDAD",
+    "D4_Equidad_Territorial":    "D4_EQUIDAD",
+    "D5_Capacidad_Institucional":"D5_CAPACIDAD",
+    "D5_Transparencia":          "D5_CAPACIDAD"
+  },
+
+  "reglas_nuevas_notas": {
+    "dimension_tgi": "SOLO valores de la lista: [D1_LEGALIDAD, D2_PLANIFICACION, D3_EJECUCION, D4_EQUIDAD, D5_CAPACIDAD]",
+    "formato": "Lista YAML cuando múltiples dimensiones. String simple cuando una sola.",
+    "prohibido": "Cualquier sufijo libre (_Coherencia, _Territorial, _Redistribucion, _Fidelidad, _Transparencia, _Presupuestaria)",
+    "tildes": "PROHIBIDAS en IDs de dimensión",
+    "case": "UPPERCASE para IDs canónicos"
+  }
+}

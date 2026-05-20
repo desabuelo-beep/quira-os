@@ -11,20 +11,35 @@ IS_CLOUD = not os.path.exists(r"C:\Users\DELL")
 
 # ── PATHS EXCEL (solo relevante en desarrollo local) ──────────────────────────
 BASE_EXCEL = r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT"
-SIAP_PATH  = os.path.join(BASE_EXCEL, "Dylus Lab - Sistema de Integridad Algorítmica Predictivo (SIAP-ICPI v1.0)222.xlsx")
-PDOT_PATH  = os.path.join(BASE_EXCEL, "PDOT_MONTECRISTI_KB.xlsx")
 
-SIAP_PATH_ALT = os.path.join(BASE_EXCEL, "quira-data",
+# Gold Master canónico (v5.5 — 2026-05-18) — fuente de verdad
+GOLD_MASTER_VERSION = "v5.5_TGI_20260518"
+SIAP_PATH = os.path.join(BASE_EXCEL, "SIAP-ICPI_GOLD_MASTER_v5.5_TGI_20260518.xlsx")
+
+# Nombre legacy del archivo (v4.1 y anteriores) — fallback compatibilidad
+SIAP_PATH_LEGACY = os.path.join(BASE_EXCEL,
     "Dylus Lab - Sistema de Integridad Algorítmica Predictivo (SIAP-ICPI v1.0)222.xlsx")
+SIAP_PATH_ALT = os.path.join(BASE_EXCEL, "quira-data",
+    "SIAP-ICPI_GOLD_MASTER_v5.5_TGI_20260518.xlsx")
+
+PDOT_PATH = os.path.join(BASE_EXCEL, "PDOT_MONTECRISTI_KB.xlsx")
 
 
 def get_siap_path() -> str:
-    """Retorna la ruta del Excel SIAP-ICPI. Lanza FileNotFoundError si no existe."""
+    """
+    Retorna la ruta del Excel SIAP-ICPI Gold Master.
+    Orden de búsqueda: v5.5 canónico → alt → legacy v4.1.
+    Lanza FileNotFoundError si ninguno existe → la app usa demo_data.py.
+    """
     if os.path.exists(SIAP_PATH):
         return SIAP_PATH
     if os.path.exists(SIAP_PATH_ALT):
         return SIAP_PATH_ALT
-    raise FileNotFoundError("SIAP-ICPI Excel no encontrado — usando datos demo.")
+    if os.path.exists(SIAP_PATH_LEGACY):
+        return SIAP_PATH_LEGACY
+    raise FileNotFoundError(
+        f"Gold Master no encontrado [{GOLD_MASTER_VERSION}] — modo demo activado."
+    )
 
 
 def get_pdot_path() -> str:

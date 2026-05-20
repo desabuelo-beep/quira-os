@@ -50,7 +50,7 @@ def render_sentinel(
         st.subheader("🔮 Sentinel · Asistente de Gobernanza")
         st.caption(
             f"Análisis territorial · Prospectiva · PDOT 2023-2027 · ICGI-T Q1-2026"
-            f"   |   {pdot_status}   |   ⚡ Groq · Llama 3.3 70B"
+            f"   |   {pdot_status}   |   ⚡ Claude Haiku · Anthropic"
         )
         if is_tecnico():
             with st.expander("🔧 Debug Sentinel — Solo Técnico", expanded=False):
@@ -74,26 +74,28 @@ def render_sentinel(
     # ── API KEY CHECK ──────────────────────────────────────────────────────────
     api_key = _get_api_key()
     if not api_key:
-        st.error("🔑 **Groq API Key no configurada** — Sentinel requiere una Groq API Key (gratis, sin tarjeta).")
+        st.error("🔑 **Anthropic API Key no configurada** — Sentinel requiere una API Key de Anthropic.")
         with st.expander("Ver instrucciones"):
             st.markdown("""
-**Cómo obtener la API Key (100% gratis, sin tarjeta de crédito):**
-1. Ve a [console.groq.com](https://console.groq.com) → crea cuenta → **API Keys** → **Create API Key**
-2. Copia la clave (empieza con `gsk_`)
+**Cómo obtener la API Key:**
+1. Ve a [console.anthropic.com](https://console.anthropic.com) → **API Keys** → **Create Key**
+2. Copia la clave (empieza con `sk-ant-`)
 
 **Configura en Streamlit Cloud:**
 En tu app → ⋮ → **Settings → Secrets** → agrega:
 ```toml
-GROQ_API_KEY = "gsk_..."
+ANTHROPIC_API_KEY = "sk-ant-..."
 ```
+
+**En desarrollo local:** crea `.streamlit/secrets.toml` con la misma clave.
             """)
         temp_key = st.text_input(
             "O ingresa la API Key para esta sesión:",
             type="password",
-            placeholder="gsk_...",
+            placeholder="sk-ant-...",
         )
-        if temp_key and temp_key.startswith("gsk_"):
-            st.session_state["temp_groq_key"] = temp_key
+        if temp_key and temp_key.startswith("sk-ant-"):
+            st.session_state["temp_claude_key"] = temp_key
             st.rerun()
         return
 
@@ -197,14 +199,10 @@ GROQ_API_KEY = "gsk_..."
 
 
 # ── HELPERS ────────────────────────────────────────────────────────────────────
-# Groq: free tier real (sin billing), OpenAI-compatible, ~30 RPM, 6k TPM
-_GROQ_URL        = "https://api.groq.com/openai/v1/chat/completions"
-_GROQ_MODELS     = [
-    "llama-3.3-70b-versatile",   # Llama 3.3 70B — calidad alta, free
-    "llama-3.1-8b-instant",      # fallback: más rápido si el anterior falla
-]
-# Máximo de mensajes del historial enviados a la API (evita 413 por acumulación)
-_MAX_HISTORY_MSG = 3   # reducido para evitar 413 en free tier Groq
+# Claude Haiku — motor LLM de QUIRA OS · Anthropic API
+_CLAUDE_MODEL    = "claude-haiku-4-5"          # rápido · gobernanza · Dylus Lab 2026
+_CLAUDE_FALLBACK = "claude-3-5-haiku-20241022" # fallback si haiku-4-5 no disponible
+_MAX_HISTORY_MSG = 6    # Claude gestiona contexto mayor que Groq free tier
 _MAX_TOKENS      = 1200
 
 
@@ -214,9 +212,8 @@ def _run_sentinel(
     modo_seguro:   bool = False,
     pagina_origen: str | None = None,
 ) -> None:
-    """Llama a Groq (Llama 3.3) con streaming, fallback de modelos y audit log."""
-    import requests
-    import json as _json
+    """Llama a Claude Haiku (Anthropic) con streaming y audit log. Dylus Lab 2026."""
+    import anthropic
 
     messages = st.session_state["sentinel_messages"]
     pregunta = messages[-1]["content"] if messages else ""
@@ -264,79 +261,63 @@ def _run_sentinel(
         placeholder = st.empty()
         with st.spinner("Sentinel analizando…"):
             try:
-                headers = {
-                    "Authorization": f"Bearer {api_key}",
-                    "Content-Type": "application/json",
-                }
+                # Solo los últimos _MAX_HISTORY_MSG mensajes del historial
+                recent = messages[-_MAX_HISTORY_MSG:] if len(messages) > _MAX_HISTORY_MSG else messages
 
-                # Solo los últimos _MAX_HISTORY_MSG mensajes para no superar el TPM limit
-                recent    = messages[-_MAX_HISTORY_MSG:] if len(messages) > _MAX_HISTORY_MSG else messages
-
-                # Sprint 3: inyectar contexto conversacional activo en el prompt
+                # Sprint 3: inyectar contexto conversacional activo en el system prompt
                 from sentinel import state_memory as _mem
-                ctx_block   = _mem.build_context_prompt()
-                # Sprint Legal: inyectar marco normativo cuando la query toca leyes
-                legal_block = build_legal_prompt_block(pregunta)
+                ctx_block    = _mem.build_context_prompt()
+                # Sprint Legal (P3): inyectar marco normativo cuando la query toca leyes
+                legal_block  = build_legal_prompt_block(pregunta)
                 effective_prompt = system_prompt
                 if ctx_block:
                     effective_prompt += "\n\n" + ctx_block
                 if legal_block:
                     effective_prompt += "\n\n" + legal_block
 
-                groq_msgs = [{"role": "system", "content": effective_prompt}]
+                # Construir historial para Claude — solo roles user/assistant (sin system)
+                claude_msgs = []
                 for msg in recent:
-                    groq_msgs.append({"role": msg["role"], "content": msg["content"]})
+                    if msg["role"] in ("user", "assistant"):
+                        claude_msgs.append({
+                            "role":    msg["role"],
+                            "content": msg["content"],
+                        })
+
+                # Asegurar que el historial empiece con un mensaje user
+                if claude_msgs and claude_msgs[0]["role"] != "user":
+                    claude_msgs = claude_msgs[1:]
 
                 full_response = ""
-                last_err      = ""
                 model_usado   = None
 
-                for model_name in _GROQ_MODELS:
-                    payload = {
-                        "model":       model_name,
-                        "messages":    groq_msgs,
-                        "max_tokens":  _MAX_TOKENS,
-                        "temperature": 0.65,
-                        "stream":      True,
-                    }
+                # Intentar con modelo primario, fallback si falla
+                for model_name in [_CLAUDE_MODEL, _CLAUDE_FALLBACK]:
                     try:
-                        with requests.post(
-                            _GROQ_URL, headers=headers, json=payload,
-                            stream=True, timeout=45
-                        ) as resp:
-                            if resp.status_code != 200:
-                                last_err = (
-                                    f"HTTP {resp.status_code} [{model_name}]: "
-                                    f"{resp.text[:300]}"
-                                )
-                                continue
-
-                            for line in resp.iter_lines():
-                                if not line:
-                                    continue
-                                decoded = line.decode("utf-8")
-                                if decoded == "data: [DONE]":
-                                    break
-                                if decoded.startswith("data: "):
-                                    try:
-                                        chunk = _json.loads(decoded[6:])
-                                        delta = (
-                                            chunk["choices"][0]["delta"]
-                                            .get("content", "")
-                                        )
-                                        if delta:
-                                            full_response += delta
-                                            placeholder.markdown(full_response + "▌")
-                                    except (_json.JSONDecodeError, KeyError):
-                                        pass
+                        client = anthropic.Anthropic(api_key=api_key)
+                        with client.messages.stream(
+                            model      = model_name,
+                            max_tokens = _MAX_TOKENS,
+                            system     = effective_prompt,
+                            messages   = claude_msgs,
+                        ) as stream:
+                            for text in stream.text_stream:
+                                full_response += text
+                                placeholder.markdown(full_response + "▌")
                         if full_response:
                             model_usado = model_name
-                            break  # éxito con este modelo
-                    except Exception as ex:
-                        last_err = f"{model_name}: {ex}"
+                            break
+                    except anthropic.AuthenticationError:
+                        raise RuntimeError("API Key de Anthropic inválida o expirada.")
+                    except anthropic.RateLimitError:
+                        raise RuntimeError("Límite de Claude alcanzado — intenta en unos segundos.")
+                    except anthropic.APIStatusError as ex:
+                        if model_name == _CLAUDE_FALLBACK:
+                            raise RuntimeError(f"Error Claude API: {ex.message[:300]}")
+                        continue  # intenta fallback
 
                 if not full_response:
-                    raise RuntimeError(last_err or "Sin respuesta de Groq")
+                    raise RuntimeError("Sin respuesta de Claude — revisa la API Key.")
 
                 # ── Sentinel v1.1 — Generative UI ─────────────────────────────
                 # 1. Parsea si el LLM emitió JSON (fallback/futuro)
@@ -391,10 +372,13 @@ def _run_sentinel(
 
             except Exception as e:
                 err = str(e)
-                if "401" in err or "invalid_api_key" in err.lower() or "authentication" in err.lower():
-                    error_msg = "⚠️ **Groq API Key inválida.** Verifica en [console.groq.com/keys](https://console.groq.com/keys)."
-                elif "429" in err or "rate_limit" in err.lower():
-                    error_msg = "⚠️ **Límite de Groq alcanzado.** Espera unos segundos e intenta de nuevo."
+                if "API Key de Anthropic" in err or "authentication" in err.lower():
+                    error_msg = (
+                        "⚠️ **API Key de Anthropic inválida.** "
+                        "Configura `ANTHROPIC_API_KEY` en Streamlit Secrets o como variable de entorno."
+                    )
+                elif "Límite de Claude" in err or "rate_limit" in err.lower() or "overloaded" in err.lower():
+                    error_msg = "⚠️ **Claude temporalmente ocupado.** Espera unos segundos e intenta de nuevo."
                 else:
                     error_msg = f"⚠️ **Error Sentinel:**\n```\n{err[:500]}\n```"
                 placeholder.markdown(error_msg)
@@ -450,17 +434,17 @@ def _render_suggestions() -> None:
 
 def _get_api_key() -> str:
     """
-    Obtiene Groq API Key en orden de prioridad:
+    Obtiene Anthropic API Key en orden de prioridad:
     1. session_state (ingresada temporalmente en UI)
-    2. st.secrets["GROQ_API_KEY"] (top-level — formato recomendado)
-    3. Variable de entorno GROQ_API_KEY
+    2. st.secrets["ANTHROPIC_API_KEY"] (recomendado para Streamlit Cloud)
+    3. Variable de entorno ANTHROPIC_API_KEY
     """
-    if "temp_groq_key" in st.session_state:
-        return st.session_state["temp_groq_key"]
+    if "temp_claude_key" in st.session_state:
+        return st.session_state["temp_claude_key"]
     try:
-        key = st.secrets["GROQ_API_KEY"]
+        key = st.secrets["ANTHROPIC_API_KEY"]
         if key:
             return key
     except Exception:
         pass
-    return os.environ.get("GROQ_API_KEY", "")
+    return os.environ.get("ANTHROPIC_API_KEY", "")
