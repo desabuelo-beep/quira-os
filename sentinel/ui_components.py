@@ -1087,3 +1087,274 @@ def d4_card(cr: dict, query_hash: int = 0) -> None:
                 )
         except ImportError:
             pass  # d4_normative aun no disponible
+
+
+# ── 13. D3xD4 CROSS-INFERENCE CARD ───────────────────────────────────────────
+
+# Colores por severidad D3xD4
+_D3D4_SEV_COLORS: dict[str, tuple] = {
+    "CRITICO":      ("#E53E3E", "rgba(229,62,62,0.12)",  "rgba(229,62,62,0.40)"),
+    "ALTO":         ("#E67E22", "rgba(230,126,34,0.10)", "rgba(230,126,34,0.35)"),
+    "MEDIO":        ("#D69E2E", "rgba(214,158,46,0.08)", "rgba(214,158,46,0.28)"),
+    "OBSERVACIONAL":("#00D4FF", "rgba(0,212,255,0.06)",  "rgba(0,212,255,0.22)"),
+}
+
+# Colores por clase EED
+_EED_CLASS_COLORS: dict[str, str] = {
+    "expansion_concentrada": "#E53E3E",
+    "rezago_distributivo":   "#E67E22",
+    "alineado":              "#38A169",
+}
+
+# Etiquetas de patron cruzado en espanol
+_CROSS_LABELS: dict[str, str] = {
+    "EXPANSION_CONCENTRADA":     "Expansion Concentrada",
+    "EXPANSION_CON_EXCLUSION":   "Expansion con Exclusion",
+    "CRISIS_DOBLE":              "Crisis Doble",
+    "EXCLUSION_PERIFERICA":      "Exclusion Periferica",
+    "VULNERABILIDAD_HIDRICA":    "Vulnerabilidad Hidrica",
+    "MAQUILLAJE_TERRITORIAL":    "Maquillaje Territorial",
+    "REDISTRIBUCION_REGRESIVA":  "Redistribucion Regresiva",
+    "CONVERGENCIA_CRITICA":      "Convergencia Critica",
+    "SIN_CRUCE_CONFIRMADO":      "Sin Cruce Confirmado",
+}
+
+
+def d3d4_card(
+    cross_dict:  dict,
+    query_hash:  int = 0,
+) -> None:
+    """
+    Componente 13 — Tarjeta de inferencia cruzada D3xD4.
+    cross_dict: output de summarize_cross() — sentinel.d3d4_engine
+
+    Muestra:
+      - Header: patron cruzado + severidad + badge observacional
+      - EED gauge (barometro temporal-territorial)
+      - Dos columnas: estado D3 | estado D4
+      - Narrativa del patron
+      - Expander: evidencias auditables
+    """
+    if not cross_dict:
+        return
+
+    cross_pattern = cross_dict.get("cross_pattern",      "SIN_CRUCE_CONFIRMADO")
+    severity      = cross_dict.get("severity",           "OBSERVACIONAL")
+    observational = cross_dict.get("observational_only", True)
+    eed_score     = float(cross_dict.get("eed_score",    0.0))
+    eed_class     = cross_dict.get("eed_class",          "alineado")
+    narrative     = cross_dict.get("narrative",          "")
+    sat_codes     = cross_dict.get("sat_codes",          [])
+    d3_s          = cross_dict.get("d3_state",           {})
+    d4_s          = cross_dict.get("d4_state",           {})
+    cross_conf    = float(cross_dict.get("cross_confidence", 0.0))
+    evidence      = cross_dict.get("evidence",           [])
+
+    color, bg, border = _D3D4_SEV_COLORS.get(severity, _D3D4_SEV_COLORS["OBSERVACIONAL"])
+    label         = _CROSS_LABELS.get(cross_pattern, cross_pattern.replace("_", " "))
+    eed_color     = _EED_CLASS_COLORS.get(eed_class, "#E2E8F0")
+
+    # Badge observacional
+    obs_badge = ""
+    if observational:
+        obs_badge = (
+            '<span style="background:rgba(0,212,255,0.15);color:#00D4FF;'
+            'border:1px solid rgba(0,212,255,0.40);border-radius:4px;'
+            'font-size:8px;font-weight:700;padding:1px 5px;margin-left:6px;'
+            'letter-spacing:0.05em">OBSERVACIONAL</span>'
+        )
+
+    # SAT chips D3D4
+    sat_html = ""
+    if sat_codes:
+        chips = "".join(
+            f'<span style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);'
+            f'border-radius:4px;font-size:8px;font-weight:700;color:{color};padding:1px 6px;'
+            f'margin-right:4px">{s}</span>'
+            for s in sat_codes
+        )
+        sat_html = f'<div style="margin-top:5px">{chips}</div>'
+
+    # EED gauge bar — centro = 0, escala -80 a +80
+    eed_clamped = max(-80, min(80, eed_score))
+    eed_pct_center = 50.0
+    eed_pct_fill   = eed_clamped / 1.6   # -80→-50, 0→0, +80→+50 offset from center
+    if eed_score >= 0:
+        bar_left  = eed_pct_center
+        bar_width = abs(eed_pct_fill)
+        bar_color = "#E53E3E" if eed_class == "expansion_concentrada" else "#D69E2E"
+    else:
+        bar_left  = eed_pct_center + eed_pct_fill
+        bar_width = abs(eed_pct_fill)
+        bar_color = "#E67E22"
+
+    eed_gauge_html = f"""
+<div style="margin:8px 0 6px 0">
+  <div style="display:flex;justify-content:space-between;margin-bottom:2px">
+    <span style="font-size:8px;color:rgba(255,255,255,0.35)">Rezago Distributivo</span>
+    <span style="font-size:9px;font-weight:700;color:{eed_color}">
+      EED {eed_score:+.1f} pts</span>
+    <span style="font-size:8px;color:rgba(255,255,255,0.35)">Expansion Concentrada</span>
+  </div>
+  <div style="background:rgba(255,255,255,0.08);border-radius:4px;height:6px;position:relative;overflow:hidden">
+    <div style="position:absolute;top:0;left:49.5%;width:1px;height:100%;
+                background:rgba(255,255,255,0.25)"></div>
+    <div style="position:absolute;top:0;left:{bar_left:.1f}%;width:{bar_width:.1f}%;
+                height:100%;background:{bar_color};border-radius:4px;
+                transition:width 0.4s ease"></div>
+  </div>
+</div>"""
+
+    # ── Header card ──────────────────────────────────────────────────────────
+    st.markdown(f"""
+<div style="{_CARD_BASE}background:{bg};border:1px solid {border};border-left:4px solid {color}">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px">
+    <div style="flex:1;min-width:0">
+      <div style="font-size:9px;font-weight:700;color:{color};letter-spacing:0.07em;
+                  text-transform:uppercase">&#128202; D3&times;D4 &middot; INFERENCIA CRUZADA
+        {obs_badge}
+      </div>
+      <div style="font-size:13px;font-weight:700;color:#E2E8F0;margin-top:3px;line-height:1.2">
+        {label}</div>
+      {sat_html}
+    </div>
+    <div style="text-align:right;min-width:72px;padding-left:10px">
+      <div style="font-size:10px;font-weight:700;color:{color};letter-spacing:0.04em">
+        {severity}</div>
+      <div style="font-size:11px;font-weight:700;color:{eed_color};margin-top:2px">
+        {eed_score:+.1f}</div>
+      <div style="font-size:8px;color:rgba(255,255,255,0.35)">EED pts</div>
+      <div style="font-size:9px;color:rgba(255,255,255,0.40);margin-top:2px">
+        conf {cross_conf:.0%}</div>
+    </div>
+  </div>
+  {eed_gauge_html}
+</div>""", unsafe_allow_html=True)
+
+    # ── Dos columnas: D3 state | D4 state ────────────────────────────────────
+    col_d3, col_d4 = st.columns(2)
+
+    d3_conf   = float(d3_s.get("confidence",  0.0))
+    d3_class  = d3_s.get("avep_class",  "SIN_PATRON_CLARO")
+    d3_score  = float(d3_s.get("avep_score",  52.0))
+    d3_riesgo = d3_s.get("avep_riesgo", "Transicion Critica")
+    d3_ew     = float(d3_s.get("evidence_wt", 0.0))
+    d3_sats   = d3_s.get("sat_codes",   [])
+
+    d4_conf   = float(d4_s.get("confidence",   0.0))
+    d4_pat    = d4_s.get("principal_pattern", "SIN_PATRON")
+    d4_irs    = float(d4_s.get("irs",           0.0))
+    d4_score  = float(d4_s.get("avep_d4_score", 100.0))
+    d4_riesgo = d4_s.get("avep_d4_riesgo",     "Equidad Territorial")
+    d4_ncrit  = int(d4_s.get("n_critical",     0))
+
+    # Colores confianza
+    _conf_color = lambda c: (
+        "#E53E3E" if c < 0.25 else
+        "#E67E22" if c < 0.50 else
+        "#D69E2E" if c < 0.75 else
+        "#38A169"
+    )
+
+    with col_d3:
+        d3_cc = _conf_color(d3_conf)
+        d3_has = d3_s.get("confidence", None) is not None and d3_conf > 0
+        d3_insuf_note = (
+            '<div style="font-size:8px;color:#00D4FF;margin-top:3px">'
+            '&#9432; Datos insuficientes — periodo(s) incompleto(s)</div>'
+        ) if (not d3_has or d3_conf < 0.20) else ""
+        st.markdown(f"""
+<div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.10);
+            border-radius:8px;padding:10px 12px">
+  <div style="font-size:8px;font-weight:700;color:rgba(255,255,255,0.35);
+              text-transform:uppercase;letter-spacing:0.06em">D3 Temporal</div>
+  <div style="font-size:11px;font-weight:700;color:#E2E8F0;margin-top:4px;line-height:1.3">
+    {d3_class.replace("_"," ")}</div>
+  <div style="font-size:10px;color:rgba(255,255,255,0.50);margin-top:2px">{d3_riesgo}</div>
+  <div style="display:flex;gap:8px;margin-top:6px">
+    <div>
+      <div style="font-size:8px;color:rgba(255,255,255,0.30)">AVEP-D3</div>
+      <div style="font-size:14px;font-weight:700;color:#E2E8F0">{d3_score:.0f}</div>
+    </div>
+    <div>
+      <div style="font-size:8px;color:rgba(255,255,255,0.30)">conf</div>
+      <div style="font-size:14px;font-weight:700;color:{d3_cc}">{d3_conf:.0%}</div>
+    </div>
+    <div>
+      <div style="font-size:8px;color:rgba(255,255,255,0.30)">ew</div>
+      <div style="font-size:12px;font-weight:600;color:rgba(255,255,255,0.55)">{d3_ew:.0%}</div>
+    </div>
+  </div>
+  {d3_insuf_note}
+</div>""", unsafe_allow_html=True)
+
+    with col_d4:
+        d4_cc = _conf_color(d4_conf)
+        irs_color = (
+            "#E53E3E" if d4_irs >= 70 else
+            "#E67E22" if d4_irs >= 50 else
+            "#D69E2E" if d4_irs >= 30 else
+            "#38A169"
+        )
+        st.markdown(f"""
+<div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.10);
+            border-radius:8px;padding:10px 12px">
+  <div style="font-size:8px;font-weight:700;color:rgba(255,255,255,0.35);
+              text-transform:uppercase;letter-spacing:0.06em">D4 Territorial</div>
+  <div style="font-size:11px;font-weight:700;color:#E2E8F0;margin-top:4px;line-height:1.3">
+    {d4_pat.replace("_"," ")}</div>
+  <div style="font-size:10px;color:rgba(255,255,255,0.50);margin-top:2px">{d4_riesgo}</div>
+  <div style="display:flex;gap:8px;margin-top:6px">
+    <div>
+      <div style="font-size:8px;color:rgba(255,255,255,0.30)">IRS</div>
+      <div style="font-size:14px;font-weight:700;color:{irs_color}">{d4_irs:.1f}</div>
+    </div>
+    <div>
+      <div style="font-size:8px;color:rgba(255,255,255,0.30)">AVEP-D4</div>
+      <div style="font-size:14px;font-weight:700;color:#E2E8F0">{d4_score:.0f}</div>
+    </div>
+    <div>
+      <div style="font-size:8px;color:rgba(255,255,255,0.30)">conf</div>
+      <div style="font-size:14px;font-weight:700;color:{d4_cc}">{d4_conf:.0%}</div>
+    </div>
+  </div>
+  <div style="font-size:8px;color:rgba(255,255,255,0.35);margin-top:3px">
+    Rezago critico: {d4_ncrit} parroquia(s)</div>
+</div>""", unsafe_allow_html=True)
+
+    # ── Narrativa ─────────────────────────────────────────────────────────────
+    if narrative:
+        st.markdown(
+            f'<div style="font-size:10px;color:rgba(255,255,255,0.60);'
+            f'padding:7px 10px;margin:5px 0 2px;'
+            f'background:rgba(255,255,255,0.02);border-radius:6px;line-height:1.5">'
+            f'{narrative[:400]}</div>',
+            unsafe_allow_html=True,
+        )
+
+    # ── Expander: evidencias auditables ───────────────────────────────────────
+    with st.expander(
+        f"Evidencias D3xD4 · EED={eed_score:+.1f} · conf_cruce={cross_conf:.0%}",
+        expanded=False,
+    ):
+        if evidence:
+            st.markdown(
+                '<div style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.30);'
+                'margin-bottom:4px">CADENA DE EVIDENCIA (auditable)</div>',
+                unsafe_allow_html=True,
+            )
+            for ev in evidence:
+                st.markdown(
+                    f'<div style="font-size:10px;color:rgba(255,255,255,0.55);'
+                    f'padding:2px 0;border-bottom:1px solid rgba(255,255,255,0.04)">'
+                    f'· {ev}</div>',
+                    unsafe_allow_html=True,
+                )
+        st.markdown(
+            '<div style="font-size:8px;color:rgba(255,255,255,0.22);margin-top:6px;'
+            'font-style:italic">'
+            'El cruce D3xD4 produce hipotesis institucionales — no veredictos. '
+            'La autoridad publica determina implicancias y acciones correctivas.'
+            '</div>',
+            unsafe_allow_html=True,
+        )

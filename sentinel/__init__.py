@@ -1,7 +1,7 @@
 """
 SENTINEL Agent Package · QUIRA OS v0.1
-Fase: Reader · Lee H73/H99, explica, sugiere pantallas, detecta anomalías.
-NO ejecuta acciones autónomas — La autoridad pública decide.
+Fase: Reader · Lee H73/H99, explica, sugiere pantallas, detecta anomalias.
+NO ejecuta acciones autonomas — La autoridad publica decide.
 Dylus Lab © 2026
 """
 from sentinel.tools   import get_indicator, get_parroquia, get_sat_alerts, get_budget_gap
@@ -47,12 +47,17 @@ from sentinel.d4_loader import (
     summarize_d4_pipeline, invalidate_d4_cache,
 )
 # RC-D4 Visual
-from sentinel.ui_components import d4_card
+from sentinel.ui_components import d4_card, d3d4_card
 # RC-D4 Normative
 from sentinel.d4_normative import (
     D4NormRef, D4NormativeBinding,
     bind_d4_from_dict, get_d4_normative_context,
     summarize_d4_normative,
+)
+# RC-D3D4 Cross-Inference Engine
+from sentinel.d3d4_engine import (
+    D3State, D4State, D3D4CrossResult,
+    analyze_cross, get_cross_context_for_query, summarize_cross,
 )
 
 __all__ = [
@@ -82,8 +87,11 @@ __all__ = [
     "load_parish_records", "run_d4_pipeline", "get_d4_context_for_query",
     "summarize_d4_pipeline", "invalidate_d4_cache",
     # RC-D4 Visual
-    "d4_card",
+    "d4_card", "d3d4_card",
     # RC-D4 Normative
     "D4NormRef", "D4NormativeBinding",
     "bind_d4_from_dict", "get_d4_normative_context", "summarize_d4_normative",
+    # RC-D3D4 Cross-Inference Engine
+    "D3State", "D4State", "D3D4CrossResult",
+    "analyze_cross", "get_cross_context_for_query", "summarize_cross",
 ]

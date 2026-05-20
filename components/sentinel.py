@@ -25,7 +25,7 @@ from sentinel.legal_router      import build_legal_prompt_block, find_legal_refs
 from sentinel.vault_enricher   import get_vault_normative_context, format_provenance, provenance_to_dict
 from sentinel.trust_engine      import calculate_trust, context_from_query
 from sentinel.coherencia_engine import evaluate as _coh_eval, detect_coherencia_intent
-from sentinel.ui_components     import trust_badge, legal_card, coherencia_card, calibration_card, d4_card
+from sentinel.ui_components     import trust_badge, legal_card, coherencia_card, calibration_card, d4_card, d3d4_card
 
 
 # ── COMPONENTE PRINCIPAL ──────────────────────────────────────────────────────
@@ -58,6 +58,24 @@ def render_sentinel(
             st.session_state["d4_calibrated"] = summarize_d4_calibrated(_d4) if _d4 else None
         except Exception:
             st.session_state["d4_calibrated"] = None
+
+    # ── RC-D3D4 Cross-Inference Engine — inicializar una vez por sesión ───────
+    # Cruza el diagnóstico temporal (D3) con el territorial (D4).
+    # Solo calcula si ambos dicts están disponibles en session_state.
+    # El resultado se actualiza en cada query (ver P6 en _run_sentinel).
+    if "d3d4_cross" not in st.session_state:
+        try:
+            from sentinel.d3d4_engine import analyze_cross, summarize_cross
+            _d3_init = st.session_state.get("rc73_calibrated")
+            _d4_init = st.session_state.get("d4_calibrated")
+            # Solo inicializar si D4 disponible (D3 puede ser None — resultado observacional)
+            if _d4_init:
+                _cross_init = analyze_cross(_d3_init, _d4_init)
+                st.session_state["d3d4_cross"] = summarize_cross(_cross_init)
+            else:
+                st.session_state["d3d4_cross"] = None
+        except Exception:
+            st.session_state["d3d4_cross"] = None
 
     data     = load_all()
     pdot_ctx = build_pdot_context()
@@ -366,6 +384,22 @@ def _run_sentinel(
                 except Exception:
                     pass  # D4 opcional — nunca bloquea el chat
 
+                # P6 RC-D3D4 — Cross-Inference Engine (temporal × territorial)
+                _d3d4_block = ""
+                try:
+                    from sentinel.d3d4_engine import (
+                        analyze_cross, get_cross_context_for_query, summarize_cross,
+                    )
+                    _d3_dict = st.session_state.get("rc73_calibrated")
+                    _d4_dict = st.session_state.get("d4_calibrated")
+                    _d3d4_block = get_cross_context_for_query(pregunta, _d3_dict, _d4_dict)
+                    if _d3d4_block:
+                        # Actualizar session_state con resultado del cruce para esta query
+                        _cross_result = analyze_cross(_d3_dict, _d4_dict)
+                        st.session_state["d3d4_cross"] = summarize_cross(_cross_result)
+                except Exception:
+                    pass  # D3xD4 opcional — nunca bloquea el chat
+
                 effective_prompt = system_prompt
                 if ctx_block:
                     effective_prompt += "\n\n" + ctx_block
@@ -375,6 +409,8 @@ def _run_sentinel(
                     effective_prompt += "\n\n" + _rc72_block
                 if _d4_block:
                     effective_prompt += "\n\n" + _d4_block
+                if _d3d4_block:
+                    effective_prompt += "\n\n" + _d3d4_block
 
                 # Construir historial para Claude — solo roles user/assistant (sin system)
                 claude_msgs = []
@@ -472,6 +508,12 @@ def _run_sentinel(
                     _d4_ui = st.session_state.get("d4_calibrated")
                     if _d4_ui:
                         d4_card(_d4_ui, query_hash=(_q_hash if _cr_ui else hash(pregunta) & 0xFFFF))
+
+                # RC-D3D4-Visual: d3d4_card — inferencia cruzada temporal×territorial
+                if _d3d4_block:
+                    _cross_ui = st.session_state.get("d3d4_cross")
+                    if _cross_ui:
+                        d3d4_card(_cross_ui, query_hash=hash(pregunta) & 0xFFFF)
 
                 # ── Audit log (incluye provenance vault P3) ───────────────────
                 log_interaction(
