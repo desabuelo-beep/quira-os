@@ -109,8 +109,13 @@ class CalibratedD4Result:
     # ── Narrativa institucional ────────────────────────────────────────────────
     narrative:             str
 
+    # ── Métricas adicionales (para d4_card visual) ────────────────────────────
+    gini:                  float        # Gini de inversión per cápita ponderado por pop
+    cr2:                   float        # Concentración top-2 parroquias
+
     # ── Para serialización ────────────────────────────────────────────────────
-    patterns_summary:      List[dict]
+    patterns_summary:          List[dict]
+    parish_analyses_summary:   List[dict]  # tabla parroquial para d4_card()
 
 
 # ── MECANISMOS DE CALIBRACIÓN ──────────────────────────────────────────────────
@@ -251,6 +256,28 @@ def _build_d4_narrative(result: D4Result, ps: D4PatternSet, conf: float) -> str:
     return f"{base} [Confianza calibrada: {conf:.0%}]"
 
 
+# ── SERIALIZACIÓN PARROQUIAL ───────────────────────────────────────────────────
+
+def _serialize_parishes(result: D4Result) -> List[dict]:
+    """
+    Serializa parish_analyses para d4_card() visual.
+    Orden: gap_pct ascendente (más sub-financiada primero).
+    """
+    return [
+        {
+            "id":     a.id,
+            "nombre": a.nombre,
+            "tipo":   a.tipo,          # "Urbana" | "Rural"
+            "cn":     round(a.composite_need, 1),
+            "inv":    round(a.actual_inv_percapita),
+            "exp":    round(a.expected_inv_percapita),
+            "gap":    round(a.gap_pct, 4),   # fracción: -0.84 = -84%
+            "over":   a.overfunded,
+        }
+        for a in sorted(result.parish_analyses, key=lambda a: a.gap_pct)
+    ]
+
+
 # ── API PRINCIPAL ──────────────────────────────────────────────────────────────
 
 def calibrate_d4(result: D4Result, ps: D4PatternSet) -> CalibratedD4Result:
@@ -274,20 +301,23 @@ def calibrate_d4(result: D4Result, ps: D4PatternSet) -> CalibratedD4Result:
     if not ps.patterns:
         avep_score, avep_riesgo = _compute_avep_d4(result.irs)
         return CalibratedD4Result(
-            principal_pattern      = "SIN_PATRON",
-            sat_codes_calibrated   = [],
-            raw_confidence         = 0.0,
-            calibrated_confidence  = 0.0,
-            adjustments_applied    = [],
-            irs                    = result.irs,
-            capital_ratio          = result.capital_ratio,
-            n_critical_underfunded = result.n_critical_underfunded,
-            most_underfunded       = result.most_underfunded,
-            cr1                    = result.cr1,
-            avep_d4_score          = avep_score,
-            avep_d4_riesgo         = avep_riesgo,
-            narrative              = "Sin patrones D4 detectados.",
-            patterns_summary       = [],
+            principal_pattern          = "SIN_PATRON",
+            sat_codes_calibrated       = [],
+            raw_confidence             = 0.0,
+            calibrated_confidence      = 0.0,
+            adjustments_applied        = [],
+            irs                        = result.irs,
+            capital_ratio              = result.capital_ratio,
+            n_critical_underfunded     = result.n_critical_underfunded,
+            most_underfunded           = result.most_underfunded,
+            cr1                        = result.cr1,
+            avep_d4_score              = avep_score,
+            avep_d4_riesgo             = avep_riesgo,
+            narrative                  = "Sin patrones D4 detectados.",
+            gini                       = result.gini,
+            cr2                        = result.cr2,
+            patterns_summary           = [],
+            parish_analyses_summary    = _serialize_parishes(result),
         )
 
     # Trabajar con el patrón principal para la confianza global
@@ -350,20 +380,23 @@ def calibrate_d4(result: D4Result, ps: D4PatternSet) -> CalibratedD4Result:
     ]
 
     return CalibratedD4Result(
-        principal_pattern      = principal.nombre,
-        sat_codes_calibrated   = list(dict.fromkeys(sat_calibrated)),
-        raw_confidence         = raw_conf,
-        calibrated_confidence  = round(cal_conf, 3),
-        adjustments_applied    = applied,
-        irs                    = result.irs,
-        capital_ratio          = result.capital_ratio,
-        n_critical_underfunded = result.n_critical_underfunded,
-        most_underfunded       = result.most_underfunded,
-        cr1                    = result.cr1,
-        avep_d4_score          = avep_score,
-        avep_d4_riesgo         = avep_riesgo,
-        narrative              = narrative,
-        patterns_summary       = patterns_summary,
+        principal_pattern          = principal.nombre,
+        sat_codes_calibrated       = list(dict.fromkeys(sat_calibrated)),
+        raw_confidence             = raw_conf,
+        calibrated_confidence      = round(cal_conf, 3),
+        adjustments_applied        = applied,
+        irs                        = result.irs,
+        capital_ratio              = result.capital_ratio,
+        n_critical_underfunded     = result.n_critical_underfunded,
+        most_underfunded           = result.most_underfunded,
+        cr1                        = result.cr1,
+        avep_d4_score              = avep_score,
+        avep_d4_riesgo             = avep_riesgo,
+        narrative                  = narrative,
+        gini                       = result.gini,
+        cr2                        = result.cr2,
+        patterns_summary           = patterns_summary,
+        parish_analyses_summary    = _serialize_parishes(result),
     )
 
 
@@ -401,5 +434,8 @@ def summarize_d4_calibrated(cr: CalibratedD4Result) -> dict:
         "avep_d4_score":          cr.avep_d4_score,
         "avep_d4_riesgo":         cr.avep_d4_riesgo,
         "narrative":              cr.narrative,
+        "gini":                   cr.gini,
+        "cr2":                    cr.cr2,
         "patterns_summary":       cr.patterns_summary,
+        "parish_analyses_summary": cr.parish_analyses_summary,
     }

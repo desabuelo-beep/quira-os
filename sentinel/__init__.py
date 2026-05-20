@@ -46,6 +46,8 @@ from sentinel.d4_loader import (
     load_parish_records, run_d4_pipeline, get_d4_context_for_query,
     summarize_d4_pipeline, invalidate_d4_cache,
 )
+# RC-D4 Visual
+from sentinel.ui_components import d4_card
 
 __all__ = [
     # Core tools
@@ -73,4 +75,6 @@ __all__ = [
     "CalibratedD4Result", "calibrate_d4", "describe_d4_calibrated", "summarize_d4_calibrated",
     "load_parish_records", "run_d4_pipeline", "get_d4_context_for_query",
     "summarize_d4_pipeline", "invalidate_d4_cache",
+    # RC-D4 Visual
+    "d4_card",
 ]

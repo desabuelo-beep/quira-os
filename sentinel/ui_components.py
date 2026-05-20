@@ -1,7 +1,7 @@
 """
 SENTINEL · ui_components.py
-Componentes de UI generativa — Sentinel v2 / Sprint 1-7.
-Alert · Nav · Evidence · KPI Mini · Scenario · Simulation · Trust · Legal · QUADRUM · RC-7.3.
+Componentes de UI generativa — Sentinel v2 / Sprint 1-8.
+Alert · Nav · Evidence · KPI Mini · Scenario · Simulation · Trust · Legal · QUADRUM · RC-7.3 · RC-D4.
 Doctrina: Sentinel genera intención → Streamlit renderiza experiencia institucional.
 Dylus Lab © 2026
 """
@@ -738,3 +738,281 @@ def calibration_card(cr: dict, query_hash: int = 0) -> None:
                     f'  {extra}</div>',
                     unsafe_allow_html=True,
                 )
+
+
+# ── 12. D4 CARD — RC-D4 Equidad Territorial (Sprint 8) ───────────────────────
+
+# AVEP D4 → (text_color, bg, border)
+_D4_AVEP_PALETTE = {
+    "Ruptura Territorial":    ("#E53E3E", "rgba(229,62,62,0.10)",  "rgba(229,62,62,0.35)"),
+    "Inequidad Estructural":  ("#E67E22", "rgba(230,126,34,0.09)", "rgba(230,126,34,0.30)"),
+    "Sesgo Distributivo":     ("#D69E2E", "rgba(214,158,46,0.08)", "rgba(214,158,46,0.25)"),
+    "Distribución Aceptable": ("#48BB78", "rgba(72,187,120,0.07)", "rgba(72,187,120,0.22)"),
+    "Equidad Territorial":    ("#38A169", "rgba(56,161,105,0.07)", "rgba(56,161,105,0.22)"),
+}
+
+_D4_IRS_META_2027 = 45.0   # objetivo institucional: IRS ≤ 45
+
+
+def d4_card(cr: dict, query_hash: int = 0) -> None:
+    """
+    Componente 12 — Panel de Equidad Territorial RC-D4.
+
+    Muestra: AVEP D4 · IRS gauge con meta-2027 · tabla parroquial (need vs actual)
+    · señal triple territorial · SAT-D4 chips · prudencia espacial aplicada.
+
+    Args:
+        cr:         dict de summarize_d4_calibrated(CalibratedD4Result)
+        query_hash: int para llaves únicas de widgets Streamlit
+    """
+    if not cr:
+        return
+
+    # ── Extraer campos ─────────────────────────────────────────────────────────
+    avep_riesgo  = cr.get("avep_d4_riesgo", "Distribución Aceptable")
+    avep_score   = float(cr.get("avep_d4_score", 60))
+    irs          = float(cr.get("irs", 0))
+    gini         = float(cr.get("gini", 0))
+    cr1          = float(cr.get("cr1", 0))
+    cr2          = float(cr.get("cr2", 0))
+    cap_ratio    = float(cr.get("capital_ratio", 0))
+    n_crit       = int(cr.get("n_critical_underfunded", 0))
+    narrative    = cr.get("narrative", "")
+    raw_conf     = float(cr.get("raw_confidence", 0))
+    cal_conf     = float(cr.get("calibrated_confidence", 0))
+    adj          = cr.get("adjustments_applied", [])
+    patterns     = cr.get("patterns_summary", [])
+    parishes     = cr.get("parish_analyses_summary", [])
+    sat_codes    = cr.get("sat_codes_calibrated", [])
+
+    color, bg, border = _D4_AVEP_PALETTE.get(avep_riesgo, _D4_AVEP_PALETTE["Sesgo Distributivo"])
+    overwhelm    = irs >= 85.0
+
+    # ── Triple señal territorial (hiperconcentración institucionalizada) ────────
+    triple_signal = irs >= 70 and cr1 >= 0.65 and cap_ratio >= 3.0
+    triple_html   = ""
+    if triple_signal:
+        triple_html = (
+            '<div style="background:rgba(229,62,62,0.15);border:1px solid rgba(229,62,62,0.35);'
+            'border-radius:4px;padding:4px 8px;margin-top:5px;font-size:9px;'
+            'color:#FC8181;font-weight:700;letter-spacing:0.04em">'
+            '&#9888; ASIMETRÍA TERRITORIAL TRIPLE: IRS crítico · CR1 extremo · captura capital'
+            '</div>'
+        )
+
+    overwhelm_html = ""
+    if overwhelm:
+        overwhelm_html = (
+            '<div style="background:rgba(229,62,62,0.20);border-left:3px solid #E53E3E;'
+            'border-radius:0 4px 4px 0;padding:3px 8px;margin-top:4px;font-size:9px;'
+            'color:#FC8181;font-weight:700">'
+            '&#9889; EVIDENCIA ABRUMADORA (IRS ≥ 85) — calibración máxima: descuentos omitidos'
+            '</div>'
+        )
+
+    # ── IRS gauge HTML ─────────────────────────────────────────────────────────
+    irs_frac   = min(1.0, irs / 100.0)
+    meta_frac  = _D4_IRS_META_2027 / 100.0
+    gauge_color = (
+        "#E53E3E" if irs >= 80 else
+        "#E67E22" if irs >= 60 else
+        "#D69E2E" if irs >= 40 else
+        "#48BB78" if irs >= 20 else
+        "#38A169"
+    )
+    brecha_meta = irs - _D4_IRS_META_2027
+    gauge_html = (
+        f'<div style="margin:8px 0 4px 0">'
+        f'<div style="display:flex;justify-content:space-between;'
+        f'font-size:9px;color:rgba(255,255,255,0.30);margin-bottom:3px">'
+        f'<span>0 — Equidad plena</span>'
+        f'<span style="color:#63B3ED">Meta 2027: {_D4_IRS_META_2027:.0f}</span>'
+        f'<span>100 — Máx. regresivo</span></div>'
+        f'<div style="background:rgba(255,255,255,0.07);border-radius:4px;'
+        f'height:8px;position:relative;overflow:visible">'
+        f'<div style="height:8px;width:{irs_frac*100:.1f}%;background:{gauge_color};'
+        f'border-radius:4px;transition:width 0.3s"></div>'
+        f'<div style="position:absolute;top:-4px;left:{meta_frac*100:.1f}%;'
+        f'width:2px;height:16px;background:#63B3ED;border-radius:1px" '
+        f'title="Meta IRS 2027"></div>'
+        f'</div>'
+        f'<div style="font-size:9px;color:rgba(255,255,255,0.35);'
+        f'text-align:right;margin-top:3px">'
+        f'Brecha a meta 2027: <span style="color:{gauge_color};font-weight:700">'
+        f'{brecha_meta:+.1f} puntos IRS</span></div>'
+        f'</div>'
+    )
+
+    # ── SAT-D4 chips ───────────────────────────────────────────────────────────
+    _SAT_D4_COLORS = {
+        "SAT-D4-A": "#E53E3E",
+        "SAT-D4-B": "#E67E22",
+        "SAT-D4-C": "#D69E2E",
+        "SAT-D4-D": "#00D4FF",
+        "SAT-D4-E": "#7C5CFC",
+    }
+    if sat_codes:
+        sats_html = " ".join(
+            f'<span style="font-size:9px;font-weight:700;'
+            f'color:{_SAT_D4_COLORS.get(s,"#E2E8F0")};'
+            f'background:rgba(255,255,255,0.05);'
+            f'border:1px solid {_SAT_D4_COLORS.get(s,"rgba(255,255,255,0.15)")};'
+            f'border-radius:4px;padding:2px 6px">{s}</span>'
+            for s in sat_codes
+        )
+    else:
+        sats_html = (
+            '<span style="font-size:9px;color:rgba(255,255,255,0.30)">'
+            'ninguno activo</span>'
+        )
+
+    # ── Render tarjeta principal ───────────────────────────────────────────────
+    st.markdown(f"""
+<div style="{_CARD_BASE}background:{bg};border:1px solid {border};border-left:4px solid {color}">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px">
+    <div style="flex:1;min-width:0">
+      <div style="font-size:9px;font-weight:700;color:{color};letter-spacing:0.07em;
+                  text-transform:uppercase">&#127760; RC-D4 &middot; EQUIDAD TERRITORIAL</div>
+      <div style="font-size:13px;font-weight:700;color:#E2E8F0;margin-top:3px;line-height:1.2">
+        {avep_riesgo}</div>
+      <div style="font-size:10px;color:rgba(255,255,255,0.55);margin-top:4px;line-height:1.5">
+        {narrative[:220] if narrative else ""}</div>
+      {triple_html}
+      {overwhelm_html}
+    </div>
+    <div style="text-align:right;min-width:64px;padding-left:10px">
+      <div style="font-size:28px;font-weight:900;color:{color};line-height:1">
+        {irs:.0f}</div>
+      <div style="font-size:8px;color:rgba(255,255,255,0.35);margin-top:1px">IRS</div>
+      <div style="font-size:16px;font-weight:700;color:{color};margin-top:4px;line-height:1">
+        {avep_score:.0f}</div>
+      <div style="font-size:8px;color:rgba(255,255,255,0.35)">AVEP</div>
+    </div>
+  </div>
+
+  {gauge_html}
+
+  <div style="display:flex;gap:8px;margin:8px 0 6px 0;flex-wrap:wrap">
+    <div style="background:rgba(255,255,255,0.04);border-radius:6px;padding:5px 10px;flex:1;min-width:60px">
+      <div style="font-size:8px;color:rgba(255,255,255,0.30);text-transform:uppercase">Gini inv.</div>
+      <div style="font-size:16px;font-weight:700;color:{color}">{gini:.3f}</div>
+    </div>
+    <div style="background:rgba(255,255,255,0.04);border-radius:6px;padding:5px 10px;flex:1;min-width:60px">
+      <div style="font-size:8px;color:rgba(255,255,255,0.30);text-transform:uppercase">CR1</div>
+      <div style="font-size:16px;font-weight:700;color:{color}">{cr1:.0%}</div>
+    </div>
+    <div style="background:rgba(255,255,255,0.04);border-radius:6px;padding:5px 10px;flex:1;min-width:60px">
+      <div style="font-size:8px;color:rgba(255,255,255,0.30);text-transform:uppercase">Cap.&times;</div>
+      <div style="font-size:16px;font-weight:700;color:{color}">{cap_ratio:.1f}x</div>
+    </div>
+    <div style="background:rgba(255,255,255,0.04);border-radius:6px;padding:5px 10px;flex:1;min-width:60px">
+      <div style="font-size:8px;color:rgba(255,255,255,0.30);text-transform:uppercase">Rezago&nbsp;cr.</div>
+      <div style="font-size:16px;font-weight:700;color:{color}">{n_crit}</div>
+    </div>
+  </div>
+
+  <div style="border-top:1px solid rgba(255,255,255,0.06);margin-top:6px;padding-top:5px;
+              display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+    <span style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.35);
+                 text-transform:uppercase;letter-spacing:0.06em">SAT-D4&nbsp;</span>
+    {sats_html}
+  </div>
+</div>""", unsafe_allow_html=True)
+
+    # ── Tabla parroquial — el "oro institucional" ──────────────────────────────
+    if parishes:
+        def _gap_color(gap: float) -> str:
+            if gap < -0.60: return "#FC8181"    # rojo claro — rezago crítico
+            if gap < -0.30: return "#F6AD55"    # naranja
+            if gap < 0.0:   return "#F6E05E"    # ámbar
+            return "#68D391"                    # verde — sobre baseline
+
+        rows_html = ""
+        for p in parishes:
+            tipo_icon = "&#127970;" if p["tipo"] == "Urbana" else "&#127807;"
+            gc = _gap_color(p["gap"])
+            inv_vs_exp = "&#9650;" if p["over"] else "&#9660;"   # ▲ ▼
+            rows_html += (
+                f'<tr style="border-bottom:1px solid rgba(255,255,255,0.04)">'
+                f'<td style="padding:4px 6px;font-size:10px;color:rgba(255,255,255,0.80)">'
+                f'{tipo_icon} {p["nombre"]}</td>'
+                f'<td style="padding:4px 6px;font-size:10px;color:rgba(255,255,255,0.45);'
+                f'text-align:right">{p["cn"]:.0f}</td>'
+                f'<td style="padding:4px 6px;font-size:10px;color:rgba(255,255,255,0.70);'
+                f'text-align:right">${p["inv"]}</td>'
+                f'<td style="padding:4px 6px;font-size:10px;color:rgba(255,255,255,0.45);'
+                f'text-align:right">${p["exp"]}</td>'
+                f'<td style="padding:4px 6px;font-size:10px;font-weight:700;color:{gc};'
+                f'text-align:right">{inv_vs_exp} {p["gap"]:+.0%}</td>'
+                f'</tr>'
+            )
+
+        st.markdown(
+            f'<div style="{_CARD_BASE}background:rgba(0,0,0,0.20);'
+            f'border:1px solid rgba(255,255,255,0.07);padding:8px 0 4px 0">'
+            f'<div style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.30);'
+            f'letter-spacing:0.07em;text-transform:uppercase;padding:0 10px 5px 10px">'
+            f'PARROQUIAS — necesidad compuesta vs inversión real</div>'
+            f'<table style="width:100%;border-collapse:collapse">'
+            f'<thead><tr style="background:rgba(255,255,255,0.04)">'
+            f'<th style="padding:3px 6px;font-size:9px;color:rgba(255,255,255,0.30);'
+            f'font-weight:600;text-align:left">Parroquia</th>'
+            f'<th style="padding:3px 6px;font-size:9px;color:rgba(255,255,255,0.30);'
+            f'font-weight:600;text-align:right">CN</th>'
+            f'<th style="padding:3px 6px;font-size:9px;color:rgba(255,255,255,0.30);'
+            f'font-weight:600;text-align:right">Real $/hab</th>'
+            f'<th style="padding:3px 6px;font-size:9px;color:rgba(255,255,255,0.30);'
+            f'font-weight:600;text-align:right">Equit. $/hab</th>'
+            f'<th style="padding:3px 6px;font-size:9px;color:rgba(255,255,255,0.30);'
+            f'font-weight:600;text-align:right">Brecha</th>'
+            f'</tr></thead>'
+            f'<tbody>{rows_html}</tbody>'
+            f'</table>'
+            f'<div style="font-size:8px;color:rgba(255,255,255,0.20);padding:4px 10px">'
+            f'CN = Composite Need (0.5×NBI + 0.3×déficit agua + 0.2×pop_share) &middot; '
+            f'Equit. = baseline de distribución proporcional a necesidad</div>'
+            f'</div>',
+            unsafe_allow_html=True,
+        )
+
+    # ── Detalle expandible: calibración espacial ───────────────────────────────
+    exp_label = (
+        f"🌍 Prudencia espacial D4"
+        + (f" ({len(adj)} ajuste{'s' if len(adj)>1 else ''})" if adj else " — sin ajustes")
+    )
+    with st.expander(exp_label, expanded=False):
+        if adj:
+            for a in adj:
+                st.markdown(
+                    f'<div style="font-size:10px;color:rgba(255,255,255,0.6);'
+                    f'padding:2px 0;border-bottom:1px solid rgba(255,255,255,0.04)">'
+                    f'· {a}</div>',
+                    unsafe_allow_html=True,
+                )
+        else:
+            st.caption("Sin ajustes de calibración registrados.")
+
+        if patterns:
+            st.markdown(
+                '<div style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.30);'
+                'margin-top:8px;margin-bottom:3px">PATRONES DETECTADOS</div>',
+                unsafe_allow_html=True,
+            )
+            for p in patterns:
+                risk_color = {"CRITICO": "#E53E3E", "ALTO": "#E67E22",
+                              "MEDIO": "#D69E2E", "BAJO": "#48BB78"}.get(p.get("risk",""), "#E2E8F0")
+                st.markdown(
+                    f'<div style="font-size:10px;color:rgba(255,255,255,0.6);padding:2px 0">'
+                    f'<span style="color:{risk_color};font-weight:700">[{p.get("risk","")}]</span>'
+                    f' {p.get("nombre","").replace("_"," ")} &middot; '
+                    f'{p.get("sat_hint","")} &middot; conf={p.get("confianza",0):.0%}'
+                    f'</div>',
+                    unsafe_allow_html=True,
+                )
+
+        extras_md = []
+        extras_md.append(f"Confianza: {raw_conf:.0%} → {cal_conf:.0%}")
+        extras_md.append(f"CR2 (top-2 parroquias): {cr2:.0%}")
+        extras_md.append(f"Overwhelm bypass: {'ACTIVO — IRS ≥ 85, descuentos omitidos' if overwhelm else 'inactivo'}")
+        for line in extras_md:
+            st.caption(line)

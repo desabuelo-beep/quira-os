@@ -25,7 +25,7 @@ from sentinel.legal_router      import build_legal_prompt_block, find_legal_refs
 from sentinel.vault_enricher   import get_vault_normative_context, format_provenance, provenance_to_dict
 from sentinel.trust_engine      import calculate_trust, context_from_query
 from sentinel.coherencia_engine import evaluate as _coh_eval, detect_coherencia_intent
-from sentinel.ui_components     import trust_badge, legal_card, coherencia_card, calibration_card
+from sentinel.ui_components     import trust_badge, legal_card, coherencia_card, calibration_card, d4_card
 
 
 # ── COMPONENTE PRINCIPAL ──────────────────────────────────────────────────────
@@ -449,6 +449,12 @@ def _run_sentinel(
                 if _cr_ui:
                     _q_hash = hash(pregunta) & 0xFFFF
                     calibration_card(_cr_ui, query_hash=_q_hash)
+
+                # RC-D4-Visual: d4_card — muestra equidad territorial cuando la query es espacial
+                if _d4_block:   # _d4_block non-empty ↔ query fue territorialmente relevante
+                    _d4_ui = st.session_state.get("d4_calibrated")
+                    if _d4_ui:
+                        d4_card(_d4_ui, query_hash=(_q_hash if _cr_ui else hash(pregunta) & 0xFFFF))
 
                 # ── Audit log (incluye provenance vault P3) ───────────────────
                 log_interaction(
