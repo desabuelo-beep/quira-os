@@ -1,0 +1,125 @@
+{
+  "_meta": {
+    "version": "RC-7.3",
+    "fecha": "2026-05-20",
+    "fuente": "Gold Master v5.5_TGI_20260518 + COPLAFIP Art.97-100 + COOTAD Art.432",
+    "descripcion": "Parámetros de calibración epistemológica para RC-7.2 Longitudinal Engine",
+    "doctrina": "Mismo input → mismo output. Todo umbral debe poder defenderse ante Contraloría."
+  },
+
+  "confidence_decay": {
+    "n_periodos_min_full":   4,
+    "n_periodos_min_basic":  2,
+    "decay_1_period":        0.40,
+    "decay_2_periods":       0.65,
+    "decay_3_periods":       0.82,
+    "decay_4plus_periods":   1.00,
+    "decay_no_grupo_gasto":  0.88,
+    "decay_mixed_frequency": 0.75,
+    "description": "Factores multiplicativos sobre confianza base del clasificador"
+  },
+
+  "evidence_weighting": {
+    "weight_1_period":       0.30,
+    "weight_2_periods":      0.55,
+    "weight_3_periods":      0.75,
+    "weight_4plus_periods":  0.90,
+    "weight_vault_confirm":  0.15,
+    "weight_legal_confirm":  0.10,
+    "description": "Peso probatorio relativo de la evidencia longitudinal"
+  },
+
+  "seasonal_normalization": {
+    "q1_groups_inversion": {
+      "grupos":            ["71", "72", "73", "74", "75", "77", "78", "84"],
+      "ti_expected_pct":   2.5,
+      "ti_tolerance_pct":  5.0,
+      "decay_if_q1":       0.55,
+      "description": "En Q1, inversión pública típicamente < 5%. Ti=1% en Q1 G71-78 ≠ FREEZE."
+    },
+    "q1_groups_corrientes": {
+      "grupos":            ["51", "53", "56", "57", "58"],
+      "ti_expected_pct":   22.0,
+      "ti_tolerance_pct":  8.0,
+      "decay_if_q1":       1.00,
+      "description": "Gastos corrientes deben ejecutar ~25% en Q1. Baja ejecución Q1 sí es señal."
+    },
+    "q4_boost_threshold": 15.0,
+    "period_markers_q1":  ["Q1", "M01", "M02", "M03", "ENE", "FEB", "MAR"],
+    "period_markers_q4":  ["Q4", "M10", "M11", "M12", "OCT", "NOV", "DIC"]
+  },
+
+  "entity_baselines": {
+    "GAD": {
+      "ti_annual_expected":  75.0,
+      "ti_q1_g7178":          2.5,
+      "ti_q1_g5157":         22.0,
+      "reform_freq_anual":    1.5,
+      "codificado_typical":  26000000,
+      "description": "GAD Municipal Montecristi — baseline Gold Master 2023-2025"
+    },
+    "BOMB": {
+      "ti_annual_expected":  87.0,
+      "ti_q1_g7178":          5.0,
+      "ti_q1_g5157":         28.0,
+      "reform_freq_anual":    0.7,
+      "codificado_typical":   950000,
+      "description": "Cuerpo de Bomberos Montecristi — baseline operativo 2023-2025"
+    },
+    "PAT": {
+      "ti_annual_expected":  80.0,
+      "ti_q1_g7178":          3.0,
+      "ti_q1_g5157":         25.0,
+      "reform_freq_anual":    1.0,
+      "codificado_typical":  1200000,
+      "description": "Patronato Municipal Montecristi — baseline social 2023-2025"
+    },
+    "EP_ASEO": {
+      "ti_annual_expected":  72.0,
+      "ti_q1_g7178":          4.0,
+      "ti_q1_g5157":         24.0,
+      "reform_freq_anual":    0.9,
+      "codificado_typical":  2100000,
+      "description": "EP Aseo Municipal Montecristi — baseline servicio 2023-2025"
+    },
+    "HOLDING": {
+      "ti_annual_expected":  76.0,
+      "ti_q1_g7178":          3.0,
+      "ti_q1_g5157":         23.0,
+      "reform_freq_anual":    2.0,
+      "codificado_typical": 54242424,
+      "description": "Holding Municipal consolidado — baseline Q1-2026"
+    }
+  },
+
+  "reform_whitelist": {
+    "alcalde_threshold_pct":     10.0,
+    "concejo_required_above_pct": 10.0,
+    "losncp_infima_cuantia":       6930,
+    "losncp_menor_cuantia":      139200,
+    "description": "COPLAFIP Art.97 + COOTAD Art.432: umbral 10% para reforma sin Concejo"
+  },
+
+  "class_suppression_rules": {
+    "PARALISIS_ESTRUCTURAL_q1_g7178": {
+      "condition": "is_q1 AND grupo_gasto_inversion AND ti_last < ti_q1_expected * 3",
+      "action": "reclassify_to_EXPANSION_TARDIA",
+      "confidence_override": 0.45,
+      "flag": "Q1_SEASONAL_NORMALIZATION_APPLIED",
+      "description": "PARALISIS en Q1 G71-78 casi siempre es estacional, no estructural"
+    },
+    "REFORM_SHOCK_whitelisted": {
+      "condition": "reforma_net_pct < alcalde_threshold AND NOT burst AND NOT q4_push",
+      "action": "reclassify_to_REFORMA_LEGITIMA",
+      "confidence_override": 0.70,
+      "flag": "REFORM_WHITELIST_APPLIED",
+      "description": "Reforma dentro del 10% del Alcalde no activa SAT-X-B"
+    }
+  },
+
+  "sat_suppression_thresholds": {
+    "min_confidence_for_sat":  0.40,
+    "min_evidence_weight":     0.50,
+    "description": "SAT solo se emite si confianza calibrada ≥ 0.40 Y peso probatorio ≥ 0.50"
+  }
+}

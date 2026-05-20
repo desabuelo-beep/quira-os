@@ -283,20 +283,28 @@ def _run_sentinel(
                 if _vault_ctx["has_context"]:
                     st.session_state["sentinel_vault_provenance"] = provenance_to_dict(_vault_ctx)
 
-                # P4 RC-7.2 Longitudinal Engine — cierre normativo por patrón de ejecución
+                # P4 RC-7.2 + RC-7.3 — Longitudinal Engine + Calibration Layer
                 _rc72_block = ""
                 try:
-                    from sentinel.normative_binding import get_rc72_context_for_query
-                    # Pasar records longitudinales si existen en session_state
                     _rc72_records = st.session_state.get("rc72_budget_records")
-                    _rc72_block   = get_rc72_context_for_query(pregunta, _rc72_records)
-                    if _rc72_records and _rc72_block:
-                        # Guardar binding en session para debug panel y provenance
-                        from sentinel.normative_binding import run_rc72_pipeline, summarize_binding
-                        _r, _ps, _ic, _binding = run_rc72_pipeline(_rc72_records)
-                        st.session_state["rc72_binding"] = summarize_binding(_binding)
+                    if _rc72_records:
+                        # Pipeline completo: raw → patrones → clase → normativo → calibración
+                        from sentinel.calibration_layer import run_full_pipeline, describe_calibrated, summarize_calibrated
+                        from sentinel.normative_binding import summarize_binding
+                        _r, _ps, _ic, _binding, _cr = run_full_pipeline(_rc72_records)
+                        # Bloque normativo + diagnóstico calibrado para Claude Haiku
+                        _rc72_block  = _binding.full_context
+                        if _rc72_block:
+                            _rc72_block += "\n\n" + describe_calibrated(_cr)
+                        # Guardar en session para debug panel
+                        st.session_state["rc72_binding"]    = summarize_binding(_binding)
+                        st.session_state["rc73_calibrated"] = summarize_calibrated(_cr)
+                    else:
+                        # Fallback: solo routing normativo estático (sin datos longitudinales)
+                        from sentinel.normative_binding import get_rc72_context_for_query
+                        _rc72_block = get_rc72_context_for_query(pregunta)
                 except Exception:
-                    pass  # RC-7.2 opcional — nunca bloquea el chat
+                    pass  # RC-7.2/7.3 opcional — nunca bloquea el chat
 
                 effective_prompt = system_prompt
                 if ctx_block:
@@ -405,10 +413,14 @@ def _run_sentinel(
                     st.session_state["sentinel_messages"][-1]["vault_provenance"] = (
                         provenance_to_dict(_vault_ctx)
                     )
-                # P4: guardar RC-7.2 binding en historial del mensaje
+                # P4: guardar RC-7.2 + RC-7.3 en historial del mensaje
                 if st.session_state.get("rc72_binding"):
                     st.session_state["sentinel_messages"][-1]["rc72_binding"] = (
                         st.session_state["rc72_binding"]
+                    )
+                if st.session_state.get("rc73_calibrated"):
+                    st.session_state["sentinel_messages"][-1]["rc73_calibrated"] = (
+                        st.session_state["rc73_calibrated"]
                     )
 
             except Exception as e:

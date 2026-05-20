@@ -22,6 +22,11 @@ from sentinel.normative_binding import (
     NormativeBinding, bind, run_rc72_pipeline, build_rc72_prompt_block,
     get_rc72_context_for_query, summarize_binding,
 )
+# RC-7.3 Calibration Layer
+from sentinel.calibration_layer import (
+    CalibratedResult, calibrate, describe_calibrated, summarize_calibrated,
+    run_full_pipeline,
+)
 
 __all__ = [
     # Core tools
@@ -37,4 +42,7 @@ __all__ = [
     # RC-7.2 sub-motor 4
     "NormativeBinding", "bind", "run_rc72_pipeline", "build_rc72_prompt_block",
     "get_rc72_context_for_query", "summarize_binding",
+    # RC-7.3 Calibration Layer
+    "CalibratedResult", "calibrate", "describe_calibrated", "summarize_calibrated",
+    "run_full_pipeline",
 ]
