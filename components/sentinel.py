@@ -394,11 +394,26 @@ def _run_sentinel(
                     _d4_dict = st.session_state.get("d4_calibrated")
                     _d3d4_block = get_cross_context_for_query(pregunta, _d3_dict, _d4_dict)
                     if _d3d4_block:
-                        # Actualizar session_state con resultado del cruce para esta query
                         _cross_result = analyze_cross(_d3_dict, _d4_dict)
                         st.session_state["d3d4_cross"] = summarize_cross(_cross_result)
                 except Exception:
                     pass  # D3xD4 opcional — nunca bloquea el chat
+
+                # P6b RC-D3D4-Normative — binding probabilistico cruzado
+                _d3d4_norm_block = ""
+                try:
+                    if _d3d4_block:   # solo si el cruce fue relevante para esta query
+                        from sentinel.d3d4_normative import (
+                            bind_cross_from_dict, get_cross_normative_context,
+                            summarize_d3d4_normative,
+                        )
+                        _cross_dict = st.session_state.get("d3d4_cross")
+                        _d3d4_norm_block = get_cross_normative_context(pregunta, _cross_dict)
+                        if _d3d4_norm_block and _cross_dict:
+                            _cn_binding = bind_cross_from_dict(_cross_dict)
+                            st.session_state["d3d4_normative"] = summarize_d3d4_normative(_cn_binding)
+                except Exception:
+                    pass  # normativo cruzado opcional — nunca bloquea
 
                 effective_prompt = system_prompt
                 if ctx_block:
@@ -411,6 +426,8 @@ def _run_sentinel(
                     effective_prompt += "\n\n" + _d4_block
                 if _d3d4_block:
                     effective_prompt += "\n\n" + _d3d4_block
+                if _d3d4_norm_block:
+                    effective_prompt += "\n\n" + _d3d4_norm_block
 
                 # Construir historial para Claude — solo roles user/assistant (sin system)
                 claude_msgs = []

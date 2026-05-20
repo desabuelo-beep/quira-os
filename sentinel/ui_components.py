@@ -1350,6 +1350,66 @@ def d3d4_card(
                     f'· {ev}</div>',
                     unsafe_allow_html=True,
                 )
+        # ── Marco normativo cruzado D3xD4 ────────────────────────────────────
+        try:
+            from sentinel.d3d4_normative import bind_cross_from_dict, summarize_d3d4_normative
+            _cnorm = bind_cross_from_dict(cross_dict)
+            if _cnorm.overall_tier != "sin_tension":
+                _tier_colors = {
+                    "severa":    "#E53E3E",
+                    "moderada":  "#E67E22",
+                    "potencial": "#D69E2E",
+                }
+                _tc = _tier_colors.get(_cnorm.overall_tier, "#D69E2E")
+
+                st.markdown(
+                    f'<div style="font-size:9px;font-weight:700;color:{_tc};'
+                    f'margin-top:10px;margin-bottom:4px;letter-spacing:0.06em">'
+                    f'MARCO NORMATIVO D3xD4 — {_cnorm.overall_tier.upper()}'
+                    + (' [OBSERVACIONAL]' if _cnorm.observational_only else '') +
+                    '</div>',
+                    unsafe_allow_html=True,
+                )
+
+                # Referencias normativas
+                for r in _cnorm.refs:
+                    _rv_color = "#48BB78" if r.verificado else "rgba(255,255,255,0.35)"
+                    _rv_badge = "✓" if r.verificado else "?"
+                    _ref_tc   = _tier_colors.get(r.tier, "#D69E2E")
+                    st.markdown(
+                        f'<div style="border-left:3px solid {_ref_tc};padding:4px 8px;'
+                        f'margin:3px 0;background:rgba(255,255,255,0.02);border-radius:0 4px 4px 0">'
+                        f'<span style="font-size:8px;font-weight:700;color:{_ref_tc}">'
+                        f'{r.law} {r.article}</span>'
+                        f'<span style="font-size:7px;color:{_rv_color};margin-left:5px">{_rv_badge}</span>'
+                        f'<div style="font-size:9px;color:rgba(255,255,255,0.55);margin-top:1px">'
+                        f'{r.topic}</div></div>',
+                        unsafe_allow_html=True,
+                    )
+
+                # Matriz PDOT contradicción
+                _pdot_c = _cnorm.pdot_contradiction
+                if _pdot_c.get("rows"):
+                    st.markdown(
+                        '<div style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.30);'
+                        'margin-top:8px;margin-bottom:3px">MATRIZ PDOT — CONTRADICCION</div>',
+                        unsafe_allow_html=True,
+                    )
+                    for _row in _pdot_c["rows"]:
+                        _row_color = _tier_colors.get(_row["nivel"], "rgba(255,255,255,0.35)")
+                        st.markdown(
+                            f'<div style="display:flex;justify-content:space-between;'
+                            f'padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.05)">'
+                            f'<span style="font-size:8px;color:rgba(255,255,255,0.40)">'
+                            f'{_row["dimension"]}</span>'
+                            f'<span style="font-size:8px;font-weight:700;color:{_row_color}">'
+                            f'{_row["brecha"]}</span></div>',
+                            unsafe_allow_html=True,
+                        )
+
+        except ImportError:
+            pass  # d3d4_normative aun no disponible
+
         st.markdown(
             '<div style="font-size:8px;color:rgba(255,255,255,0.22);margin-top:6px;'
             'font-style:italic">'

@@ -59,6 +59,11 @@ from sentinel.d3d4_engine import (
     D3State, D4State, D3D4CrossResult,
     analyze_cross, get_cross_context_for_query, summarize_cross,
 )
+# RC-D3D4-Normative Cross Layer
+from sentinel.d3d4_normative import (
+    D3D4NormRef, D3D4NormativeBinding,
+    bind_cross_from_dict, get_cross_normative_context, summarize_d3d4_normative,
+)
 
 __all__ = [
     # Core tools
@@ -94,4 +99,7 @@ __all__ = [
     # RC-D3D4 Cross-Inference Engine
     "D3State", "D4State", "D3D4CrossResult",
     "analyze_cross", "get_cross_context_for_query", "summarize_cross",
+    # RC-D3D4-Normative Cross Layer
+    "D3D4NormRef", "D3D4NormativeBinding",
+    "bind_cross_from_dict", "get_cross_normative_context", "summarize_d3d4_normative",
 ]
