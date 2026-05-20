@@ -48,6 +48,12 @@ from sentinel.d4_loader import (
 )
 # RC-D4 Visual
 from sentinel.ui_components import d4_card
+# RC-D4 Normative
+from sentinel.d4_normative import (
+    D4NormRef, D4NormativeBinding,
+    bind_d4_from_dict, get_d4_normative_context,
+    summarize_d4_normative,
+)
 
 __all__ = [
     # Core tools
@@ -77,4 +83,7 @@ __all__ = [
     "summarize_d4_pipeline", "invalidate_d4_cache",
     # RC-D4 Visual
     "d4_card",
+    # RC-D4 Normative
+    "D4NormRef", "D4NormativeBinding",
+    "bind_d4_from_dict", "get_d4_normative_context", "summarize_d4_normative",
 ]

@@ -1,0 +1,84 @@
+{
+  "_meta": {
+    "descripcion": "Base normativa RC-D4 — Equidad Territorial QUIRA OS",
+    "version": "1.0",
+    "fecha": "2026-05-20",
+    "doctrina": "binding de tension, no de acusacion — el sistema senala divergencia, la autoridad publica decide",
+    "lenguaje_canonico": {
+      "severa":    "presenta una divergencia estructural significativa respecto a",
+      "moderada":  "muestra patrones que ameritan revision a la luz de",
+      "potencial": "genera indicadores de tension potencial en relacion con"
+    },
+    "prohibido": [
+      "incumplio el articulo X",
+      "violo el principio Y",
+      "el municipio es responsable de",
+      "decision ilegal"
+    ],
+    "nota_competencia_agua": "La competencia en agua potable es concurrente: EMAPAM/SENAGUA/Juntas de Agua son operadores coexistentes. SAT-D4-D aplica calibracion de alcance competencial (-12%). El binding hidrico NUNCA acusa al GAD de responsabilidad exclusiva."
+  },
+
+  "pdot_targets": {
+    "irs_meta_2027": 45.0,
+    "fuente": "PDOT Montecristi 2023-2027 — D4_EQUIDAD meta institucional",
+    "nota": "Autocompromiso del GAD en su propio plan de desarrollo. Analiticamante mas fuerte que tension normativa externa: el municipio se comprometio con una meta que la distribucion actual contradice."
+  },
+
+  "articles": [
+    {
+      "id": "CRE-238",
+      "law": "CRE",
+      "article": "Art. 238",
+      "topic": "Autonomia y principio de equidad interterritorial de los GADs",
+      "principle": "equidad_interterritorial",
+      "patterns": ["CONCENTRACION_TERRITORIAL", "REZAGO_PERSISTENTE", "SESGO_DISTRIBUTIVO"],
+      "tension_text": "la distribucion de inversion per capita observada presenta una divergencia con el principio constitucional de equidad interterritorial que rige el ejercicio autonomo de los GADs",
+      "verificado": true,
+      "nota": "CRE Art. 238 establece que los GADs se rigen por principios de equidad interterritorial entre otros. Articulo verificado en Constitucion vigente."
+    },
+    {
+      "id": "CRE-264-4",
+      "law": "CRE",
+      "article": "Art. 264(4)",
+      "topic": "Competencia municipal en servicios de agua potable y saneamiento",
+      "principle": "agua_competencia_gad",
+      "patterns": ["INEQUIDAD_HIDRICA"],
+      "tension_text": "en el ambito de competencia del GAD en agua potable, la cobertura observada en parroquias rurales genera una tension con la responsabilidad municipal de prestacion de servicios de agua potable establecida constitucionalmente",
+      "verificado": true,
+      "nota_competencia": "Competencia concurrente: EMAPAM/SENAGUA/Juntas de Agua tambien intervienen. El binding hidrico aplica con calibracion de alcance competencial. Verificado en CRE Art. 264 numerales."
+    },
+    {
+      "id": "COOTAD-3-equidad",
+      "law": "COOTAD",
+      "article": "Art. 3 (principios)",
+      "topic": "Principio de equidad interterritorial en la gestion de los GADs",
+      "principle": "equidad_interterritorial_gestion",
+      "patterns": ["CONCENTRACION_TERRITORIAL", "REZAGO_PERSISTENTE", "CAPTURA_CAPITAL", "SESGO_DISTRIBUTIVO"],
+      "tension_text": "el patron de distribucion de inversion observado muestra una divergencia con el principio de equidad interterritorial que el COOTAD establece como rector del ejercicio de potestades publicas de los GADs",
+      "verificado": true,
+      "nota": "COOTAD Art. 3 lista principios: solidaridad, subsidiariedad, equidad interterritorial, integracion y participacion. El principio de equidad interterritorial es explicito. La letra exacta puede variar por edicion — el principio es verificado."
+    },
+    {
+      "id": "COOTAD-distribucion-parroquial",
+      "law": "COOTAD",
+      "article": "Distribucion territorial cantonal",
+      "topic": "Distribucion equitativa de inversion entre parroquias urbanas y rurales",
+      "principle": "distribucion_equitativa_parroquial",
+      "patterns": ["CAPTURA_CAPITAL", "REZAGO_PERSISTENTE"],
+      "tension_text": "la concentracion de inversion en la cabecera cantonal observada presenta una tension con el principio de distribucion equitativa de recursos entre parroquias urbanas y rurales establecido en el marco juridico del COOTAD",
+      "verificado": false,
+      "nota": "Principio bien establecido en el marco COOTAD — verificar articulo exacto sobre distribucion parroquial. Usar con lenguaje potencial hasta verificacion."
+    },
+    {
+      "id": "PDOT-irs-meta-2027",
+      "law": "PDOT",
+      "article": "Meta D4 Equidad Territorial 2023-2027",
+      "topic": "Objetivo IRS <= 45 establecido en el propio plan de desarrollo municipal",
+      "principle": "autocompromiso_pdot_equidad",
+      "patterns": ["CONCENTRACION_TERRITORIAL", "REZAGO_PERSISTENTE", "CAPTURA_CAPITAL", "SESGO_DISTRIBUTIVO"],
+      "tension_text": "la distribucion territorial observada contrasta con el objetivo de equidad que el propio municipio establecio en su PDOT 2023-2027 — la trayectoria actual es divergente respecto al autocompromiso institucional",
+      "verificado": true,
+      "nota": "Este es el instrumento normativo mas fuerte para D4: el GAD se comprometio con meta IRS <= 45 para 2027. La brecha observable entre esa meta y el IRS actual no requiere interpretacion normativa externa — es un autocompromiso verificable directamente en el PDOT Montecristi 2023-2027."
+    }
+  ]
+}

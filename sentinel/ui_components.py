@@ -975,27 +975,17 @@ def d4_card(cr: dict, query_hash: int = 0) -> None:
             unsafe_allow_html=True,
         )
 
-    # ── Detalle expandible: calibración espacial ───────────────────────────────
+    # ── Detalle expandible: calibración espacial + marco normativo ────────────
     exp_label = (
-        f"🌍 Prudencia espacial D4"
-        + (f" ({len(adj)} ajuste{'s' if len(adj)>1 else ''})" if adj else " — sin ajustes")
+        f"🌍 Análisis D4 — prudencia espacial"
+        + (f" · {len(adj)} ajuste{'s' if len(adj)>1 else ''}" if adj else "")
     )
     with st.expander(exp_label, expanded=False):
-        if adj:
-            for a in adj:
-                st.markdown(
-                    f'<div style="font-size:10px;color:rgba(255,255,255,0.6);'
-                    f'padding:2px 0;border-bottom:1px solid rgba(255,255,255,0.04)">'
-                    f'· {a}</div>',
-                    unsafe_allow_html=True,
-                )
-        else:
-            st.caption("Sin ajustes de calibración registrados.")
-
+        # ── Patrones detectados ────────────────────────────────────────────────
         if patterns:
             st.markdown(
                 '<div style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.30);'
-                'margin-top:8px;margin-bottom:3px">PATRONES DETECTADOS</div>',
+                'margin-bottom:3px">PATRONES ACTIVOS</div>',
                 unsafe_allow_html=True,
             )
             for p in patterns:
@@ -1010,9 +1000,90 @@ def d4_card(cr: dict, query_hash: int = 0) -> None:
                     unsafe_allow_html=True,
                 )
 
-        extras_md = []
-        extras_md.append(f"Confianza: {raw_conf:.0%} → {cal_conf:.0%}")
-        extras_md.append(f"CR2 (top-2 parroquias): {cr2:.0%}")
-        extras_md.append(f"Overwhelm bypass: {'ACTIVO — IRS ≥ 85, descuentos omitidos' if overwhelm else 'inactivo'}")
-        for line in extras_md:
-            st.caption(line)
+        # ── Calibración espacial ───────────────────────────────────────────────
+        if adj:
+            st.markdown(
+                '<div style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.30);'
+                'margin-top:8px;margin-bottom:3px">PRUDENCIA ESPACIAL</div>',
+                unsafe_allow_html=True,
+            )
+            for a in adj:
+                st.markdown(
+                    f'<div style="font-size:10px;color:rgba(255,255,255,0.55);'
+                    f'padding:2px 0;border-bottom:1px solid rgba(255,255,255,0.04)">'
+                    f'· {a}</div>',
+                    unsafe_allow_html=True,
+                )
+
+        st.caption(
+            f"Confianza: {raw_conf:.0%} → {cal_conf:.0%}  "
+            f"| CR2: {cr2:.0%}  "
+            f"| Bypass: {'ACTIVO (IRS≥85)' if overwhelm else 'inactivo'}"
+        )
+
+        # ── Marco normativo (D4-Normative) ────────────────────────────────────
+        try:
+            from sentinel.d4_normative import bind_d4_from_dict
+            _norm = bind_d4_from_dict(cr)
+            if _norm.overall_tier != "sin_tension":
+                _tier_color = {
+                    "severa":    "#E53E3E",
+                    "moderada":  "#E67E22",
+                    "potencial": "#D69E2E",
+                }.get(_norm.overall_tier, "#E2E8F0")
+                st.markdown(
+                    f'<div style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.30);'
+                    f'margin-top:10px;margin-bottom:3px">MARCO NORMATIVO D4</div>',
+                    unsafe_allow_html=True,
+                )
+                st.markdown(
+                    f'<div style="font-size:9px;font-weight:700;color:{_tier_color};'
+                    f'margin-bottom:4px">Nivel de tension: {_norm.overall_tier.upper()}</div>',
+                    unsafe_allow_html=True,
+                )
+                for ref in _norm.refs:
+                    verif_badge = (
+                        '<span style="color:#48BB78;font-size:8px"> verificado</span>'
+                        if ref.verificado else
+                        '<span style="color:#D69E2E;font-size:8px"> pendiente verificacion</span>'
+                    )
+                    st.markdown(
+                        f'<div style="border-left:2px solid {_tier_color};padding:3px 8px;'
+                        f'margin:3px 0;background:rgba(255,255,255,0.02);border-radius:0 4px 4px 0">'
+                        f'<div style="font-size:9px;font-weight:700;color:{_tier_color}">'
+                        f'{ref.law} {ref.article}{verif_badge}</div>'
+                        f'<div style="font-size:9px;color:rgba(255,255,255,0.45);margin-top:1px">'
+                        f'{ref.topic}</div>'
+                        f'</div>',
+                        unsafe_allow_html=True,
+                    )
+
+                # PDOT alignment — instrumento prioritario
+                pdot = _norm.pdot_alignment
+                if pdot["nivel"] != "cumplido":
+                    pdot_color = {"severa": "#E53E3E", "moderada": "#E67E22",
+                                  "potencial": "#D69E2E"}.get(pdot["nivel"], "#E2E8F0")
+                    st.markdown(
+                        f'<div style="margin-top:5px;background:rgba(255,255,255,0.03);'
+                        f'border:1px solid rgba(255,255,255,0.08);border-radius:4px;'
+                        f'padding:5px 8px;font-size:9px">'
+                        f'<span style="color:{pdot_color};font-weight:700">PDOT 2023-2027</span>'
+                        f'<span style="color:rgba(255,255,255,0.35)"> brecha: </span>'
+                        f'<span style="color:{pdot_color};font-weight:700">'
+                        f'{pdot["brecha"]:+.1f} pts IRS</span>'
+                        f'<span style="color:rgba(255,255,255,0.40)"> vs meta <= '
+                        f'{pdot["meta"]:.0f}</span>'
+                        f'</div>',
+                        unsafe_allow_html=True,
+                    )
+
+                st.markdown(
+                    '<div style="font-size:8px;color:rgba(255,255,255,0.25);margin-top:5px;'
+                    'font-style:italic">'
+                    'El sistema senala divergencias observables. '
+                    'La autoridad publica determina implicancias juridicas.'
+                    '</div>',
+                    unsafe_allow_html=True,
+                )
+        except ImportError:
+            pass  # d4_normative aun no disponible

@@ -341,11 +341,28 @@ def _run_sentinel(
                 except Exception:
                     pass  # RC-7.2/7.3 opcional — nunca bloquea el chat
 
-                # P5 RC-D4 — Territorial Equity Engine (inyección condicional)
+                # P5 RC-D4 — Territorial Equity Engine (espacial + normativo)
                 _d4_block = ""
                 try:
                     from sentinel.d4_loader import get_d4_context_for_query
                     _d4_block = get_d4_context_for_query(pregunta)
+                    if _d4_block:
+                        # P5b: D4 Normative Binding — binding probabilístico tension-aware
+                        try:
+                            from sentinel.d4_normative import (
+                                get_d4_normative_context, bind_d4_from_dict,
+                                summarize_d4_normative,
+                            )
+                            _d4_cr_dict = st.session_state.get("d4_calibrated")
+                            _d4_norm_block = get_d4_normative_context(pregunta, _d4_cr_dict)
+                            if _d4_norm_block:
+                                _d4_block += "\n\n" + _d4_norm_block
+                                # Guardar para debug panel
+                                if _d4_cr_dict:
+                                    _binding = bind_d4_from_dict(_d4_cr_dict)
+                                    st.session_state["d4_normative"] = summarize_d4_normative(_binding)
+                        except Exception:
+                            pass  # normativo opcional — nunca bloquea
                 except Exception:
                     pass  # D4 opcional — nunca bloquea el chat
 
