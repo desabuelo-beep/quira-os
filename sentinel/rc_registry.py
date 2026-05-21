@@ -260,6 +260,46 @@ RC: dict[str, dict[str, Any]] = {
         ],
     },
 
+    # ── RC-D1.3 Normative Coherence ──────────────────────────────────────────
+    "RC-D1.3": {
+        "description": "Coherencia estratégica: PDOT ↔ POA ↔ PAI ↔ presupuesto ↔ ejecucion ↔ territorio",
+        # Meta PDOT vault-verified
+        "irs_meta_pdot_2027":       45.0,      # PDOT Montecristi 2023-2027 (data/d4_normative.json)
+        # Umbrales de brecha compuesta
+        "threshold_critica_composite":    0.60,
+        "threshold_critica_territorial":  0.60,   # Ruta B: brecha territorial extrema
+        "threshold_estrategica_composite":0.40,
+        "threshold_menor":                0.15,
+        # Confianza mínima para estados severos
+        "min_conf_critica":     0.40,
+        "min_conf_estrategica": 0.25,
+        # SAT D1.3
+        "sat_codes": ["SAT-D1-D"],
+        # Estados (5 — incluye EVIDENCIA_INSUFICIENTE heredando prudencia RC-CORE)
+        "states": [
+            "ALINEADO", "DESVIACION_MENOR", "DESVIACION_ESTRATEGICA",
+            "CONTRADICCION_CRITICA", "EVIDENCIA_INSUFICIENTE",
+        ],
+        # Compromisos vault-verified activos
+        "commitments_verified": [
+            "PDOT-EQUIDAD-01",  # IRS ≤ 45 para 2027
+            "PDOT-AGUA-01",     # cobertura agua rural (CRE 264(4))
+            "PDOT-PP-01",       # PP 7 parroquias (COOTAD 238)
+            "PDOT-DIST-01",     # distribución equitativa (COOTAD 272)
+        ],
+        # Entidades con PDOT propio (solo GAD)
+        "entities_with_pdot": ["GAD"],
+        # Tier language (tension-aware)
+        "tier_language": {
+            "CONTRADICCION_CRITICA":  "presenta divergencia estructural entre compromiso declarado y comportamiento material en relacion con",
+            "DESVIACION_ESTRATEGICA": "genera indicadores de desacople estrategico sostenido respecto a",
+            "DESVIACION_MENOR":       "muestra gap marginal respecto a",
+        },
+        "prohibited_language": [
+            "incumplio", "violo", "es responsable de", "fraude", "corrupcion",
+        ],
+    },
+
     # ── Human Review Layer ───────────────────────────────────────────────────
     "HUMAN_REVIEW": {
         "description": "Reglas para activar revision institucional humana",

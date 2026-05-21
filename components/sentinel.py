@@ -543,6 +543,36 @@ def _run_sentinel(
                 except Exception:
                     pass  # P8 D1 — nunca bloquea el chat
 
+                # P8b RC-D1.3 Normative Coherence — coherencia estratégica PDOT ↔ ejecución
+                _d13_block = ""
+                try:
+                    from sentinel.d1_coherence import (
+                        analyze_coherence, summarize_coherence, get_coherence_prompt_block,
+                    )
+                    _d3_raw   = st.session_state.get("rc73_calibrated") or {}
+                    _d4_raw   = st.session_state.get("d4_calibrated") or {}
+                    _cross_d1 = float((st.session_state.get("d3d4_cross") or {}).get("cross_confidence", 0.0))
+                    _n_per    = int(_d3_raw.get("n_periodos", 1))
+                    _has_ced  = bool(st.session_state.get("has_cedula_data", True))
+                    # D1.3 solo activo si D4 tiene señal territorial
+                    _d4_pat = _d4_raw.get("principal_pattern", "SIN_PATRON")
+                    if _d4_pat != "SIN_PATRON":
+                        _d13_result = analyze_coherence(
+                            entity_id  = _active_entity,
+                            d3_dict    = _d3_raw,
+                            d4_dict    = _d4_raw,
+                            cross_conf = _cross_d1,
+                            n_periods  = _n_per,
+                            has_data   = _has_ced,
+                        )
+                        _d13_summary = summarize_coherence(_d13_result)
+                        st.session_state["d13_result"] = _d13_summary
+                        # Solo inyectar en prompt si hay desviación real
+                        if _d13_result.status.value not in ("ALINEADO", "EVIDENCIA_INSUFICIENTE"):
+                            _d13_block = get_coherence_prompt_block(_d13_result)
+                except Exception:
+                    pass  # P8b D1.3 — nunca bloquea el chat
+
                 effective_prompt = system_prompt
                 if ctx_block:
                     effective_prompt += "\n\n" + ctx_block
@@ -558,6 +588,8 @@ def _run_sentinel(
                     effective_prompt += "\n\n" + _d3d4_norm_block
                 if _d1_block:
                     effective_prompt += "\n\n" + _d1_block
+                if _d13_block:
+                    effective_prompt += "\n\n" + _d13_block
 
                 # Construir historial para Claude — solo roles user/assistant (sin system)
                 claude_msgs = []
@@ -673,6 +705,15 @@ def _run_sentinel(
                     try:
                         from sentinel.ui_components import d1_card
                         d1_card(_d1_ui)
+                    except Exception:
+                        pass
+
+                # P8b-Visual: d1_coherence_card — coherencia estratégica PDOT ↔ ejecución
+                _d13_ui = st.session_state.get("d13_result")
+                if _d13_ui and _d13_ui.get("status") not in ("ALINEADO", "EVIDENCIA_INSUFICIENTE"):
+                    try:
+                        from sentinel.ui_components import d1_coherence_card
+                        d1_coherence_card(_d13_ui)
                     except Exception:
                         pass
 

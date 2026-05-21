@@ -1660,3 +1660,117 @@ def d1_card(d1_dict: dict) -> None:
         f'</div></div>',
         unsafe_allow_html=True,
     )
+
+
+# ── 16. RC-D1.3 COHERENCIA ESTRATÉGICA CARD ──────────────────────────────────
+
+def d1_coherence_card(d13_dict: dict) -> None:
+    """
+    Tarjeta RC-D1.3 Normative Coherence — coherencia estratégica PDOT ↔ ejecución.
+
+    Argumentos:
+        d13_dict — output de summarize_coherence() (sentinel.d1_coherence)
+
+    Núcleo: detecta si el municipio ejecuta lo que dijo que era prioritario.
+    "El sistema informa — la autoridad pública decide."
+    """
+    if not d13_dict:
+        return
+    status       = d13_dict.get("status", "EVIDENCIA_INSUFICIENTE")
+    confidence   = float(d13_dict.get("confidence", 0.0))
+    obs          = bool(d13_dict.get("observational", True))
+    irs_actual   = float(d13_dict.get("irs_actual", 0.0))
+    irs_meta     = float(d13_dict.get("irs_meta", 45.0))
+    irs_delta    = float(d13_dict.get("irs_delta", 0.0))
+    comp_gap     = float(d13_dict.get("composite_gap", 0.0))
+    t_gap        = float(d13_dict.get("territorial_gap", 0.0))
+    e_gap        = float(d13_dict.get("execution_gap", 0.0))
+    n_commit     = int(d13_dict.get("n_commitments", 0))
+    sat_code     = d13_dict.get("sat_code", "")
+    hypothesis   = d13_dict.get("hypothesis", "")
+    counterfactual = d13_dict.get("counterfactual", "")
+    entity_id    = d13_dict.get("entity_id", "")
+    d3_pattern   = d13_dict.get("d3_pattern", "")
+    d4_pattern   = d13_dict.get("d4_pattern", "")
+
+    _STATUS_PALETTE = {
+        "ALINEADO":               ("#38A169", "rgba(56,161,105,0.08)",  "rgba(56,161,105,0.35)",  "✅"),
+        "EVIDENCIA_INSUFICIENTE": ("#718096", "rgba(113,128,150,0.08)", "rgba(113,128,150,0.30)", "📋"),
+        "DESVIACION_MENOR":       ("#D69E2E", "rgba(214,158,46,0.08)",  "rgba(214,158,46,0.30)",  "⚡"),
+        "DESVIACION_ESTRATEGICA": ("#E67E22", "rgba(230,126,34,0.10)",  "rgba(230,126,34,0.35)",  "⚠️"),
+        "CONTRADICCION_CRITICA":  ("#E53E3E", "rgba(229,62,62,0.12)",   "rgba(229,62,62,0.40)",   "🚨"),
+    }
+    _color, _bg, _border, _icon = _STATUS_PALETTE.get(
+        status, ("#718096", "rgba(113,128,150,0.08)", "rgba(113,128,150,0.30)", "📋")
+    )
+    obs_tag   = " [OBS]" if obs else ""
+    delta_str = f"{irs_delta:+.1f}" if irs_delta != 0 else "0.0"
+    delta_col = "#E53E3E" if irs_delta > 0 else "#38A169"
+
+    st.markdown(
+        f'<div style="background:{_bg};border:1px solid {_border};'
+        f'border-left:4px solid {_color};border-radius:10px;'
+        f'padding:14px 16px;margin:10px 0 6px;'
+        f'font-family:Inter,-apple-system,sans-serif">'
+        # Header
+        f'<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">'
+        f'<span style="font-size:10px;font-weight:700;color:{_color};letter-spacing:.06em">'
+        f'{_icon} RC-D1.3 COHERENCIA PDOT — {entity_id}</span>'
+        f'<span style="font-size:8px;color:rgba(255,255,255,0.40)">conf={confidence:.0%}{obs_tag}</span>'
+        f'</div>'
+        # Status
+        f'<div style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.90);margin-bottom:2px">'
+        f'{status}</div>'
+        f'<div style="font-size:9px;color:rgba(255,255,255,0.45);margin-bottom:10px">'
+        f'D3: {d3_pattern} · D4: {d4_pattern}</div>'
+        # KPIs: IRS actual / meta / delta
+        f'<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-bottom:10px">'
+        f'<div style="background:rgba(0,0,0,0.20);border-radius:6px;padding:6px;text-align:center">'
+        f'<div style="font-size:7.5px;color:rgba(255,255,255,0.40)">IRS ACTUAL</div>'
+        f'<div style="font-size:14px;font-weight:700;color:#E53E3E">{irs_actual:.1f}</div></div>'
+        f'<div style="background:rgba(0,0,0,0.20);border-radius:6px;padding:6px;text-align:center">'
+        f'<div style="font-size:7.5px;color:rgba(255,255,255,0.40)">META PDOT 2027</div>'
+        f'<div style="font-size:14px;font-weight:700;color:#38A169">≤{irs_meta:.0f}</div></div>'
+        f'<div style="background:rgba(0,0,0,0.20);border-radius:6px;padding:6px;text-align:center">'
+        f'<div style="font-size:7.5px;color:rgba(255,255,255,0.40)">DELTA</div>'
+        f'<div style="font-size:14px;font-weight:700;color:{delta_col}">{delta_str}</div></div>'
+        f'<div style="background:rgba(0,0,0,0.20);border-radius:6px;padding:6px;text-align:center">'
+        f'<div style="font-size:7.5px;color:rgba(255,255,255,0.40)">GAP COMP.</div>'
+        f'<div style="font-size:14px;font-weight:700;color:{_color}">{comp_gap:.0%}</div></div>'
+        f'</div>'
+        # Barra de brechas
+        f'<div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:8px">'
+        f'<div style="font-size:8px;color:rgba(255,255,255,0.45)">'
+        f'Brecha territorial: <span style="color:{_color};font-weight:600">{t_gap:.0%}</span></div>'
+        f'<div style="font-size:8px;color:rgba(255,255,255,0.45)">'
+        f'Brecha ejecución: <span style="color:{_color};font-weight:600">{e_gap:.0%}</span></div>'
+        f'<div style="font-size:8px;color:rgba(255,255,255,0.45)">'
+        f'Compromisos PDOT activos: <span style="color:#00D4FF;font-weight:600">{n_commit}</span></div>'
+        f'<div style="font-size:8px;color:rgba(255,255,255,0.45)">'
+        f'SAT D1.3: <span style="color:#E67E22;font-weight:600">{sat_code if sat_code else "—"}</span></div>'
+        f'</div>'
+        + (
+            # Hipótesis institucional (el corazón de D1.3)
+            f'<div style="font-size:9px;color:rgba(255,255,255,0.75);margin-bottom:8px;'
+            f'padding:8px 10px;background:rgba(0,0,0,0.18);border-radius:6px;'
+            f'border-left:3px solid {_color};line-height:1.6">'
+            f'<span style="font-size:7.5px;color:rgba(255,255,255,0.35);display:block;margin-bottom:3px">'
+            f'HIPOTESIS INSTITUCIONAL</span>'
+            f'{hypothesis[:250]}{"..." if len(hypothesis) > 250 else ""}</div>'
+            if hypothesis and status not in ("ALINEADO", "EVIDENCIA_INSUFICIENTE") else ""
+        )
+        + (
+            # Ruta de alineamiento
+            f'<div style="font-size:8px;color:rgba(56,161,105,0.85);margin-bottom:6px;'
+            f'padding:6px 8px;background:rgba(56,161,105,0.06);border-radius:6px;line-height:1.5">'
+            f'<span style="color:rgba(56,161,105,0.60)">Ruta PDOT: </span>'
+            f'{counterfactual[:180]}{"..." if len(counterfactual) > 180 else ""}</div>'
+            if counterfactual and status not in ("ALINEADO", "EVIDENCIA_INSUFICIENTE") else ""
+        )
+        + f'<div style="font-size:8px;color:rgba(255,255,255,0.28);'
+        f'border-top:1px solid rgba(255,255,255,0.08);padding-top:6px;font-style:italic">'
+        f'D1.3 detecta contradicciones institucionales entre compromisos PDOT y comportamiento material. '
+        f'No acusa — produce hipótesis auditadas. El sistema informa — la autoridad decide.'
+        f'</div></div>',
+        unsafe_allow_html=True,
+    )

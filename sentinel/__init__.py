@@ -107,8 +107,14 @@ from sentinel.d1_engine import (
     D1Result, analyze_d1, summarize_d1,
     get_d1_context_for_query,
 )
+# RC-D1.3 Normative Coherence
+from sentinel.d1_coherence import (
+    D13Status, StrategicCommitment, AlignmentGaps, D13CoherenceResult,
+    analyze_coherence, summarize_coherence,
+    get_coherence_prompt_block, get_all_commitments, get_irs_meta,
+)
 # RC-D1 Visual
-from sentinel.ui_components import d1_card
+from sentinel.ui_components import d1_card, d1_coherence_card
 
 __all__ = [
     # Core tools
@@ -178,6 +184,10 @@ __all__ = [
     # RC-D1 Engine
     "D1Result", "analyze_d1", "summarize_d1",
     "get_d1_context_for_query",
+    # RC-D1.3 Normative Coherence
+    "D13Status", "StrategicCommitment", "AlignmentGaps", "D13CoherenceResult",
+    "analyze_coherence", "summarize_coherence",
+    "get_coherence_prompt_block", "get_all_commitments", "get_irs_meta",
     # RC-D1 Visual
-    "d1_card",
+    "d1_card", "d1_coherence_card",
 ]
