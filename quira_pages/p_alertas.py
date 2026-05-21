@@ -506,7 +506,8 @@ def render() -> None:
                             f"Categoría: {suggestion['label_probable']}</span>",
                             unsafe_allow_html=True,
                         )
-                        borrador_preview = suggestion["borrador_resolucion"][:140] + "…"
+                        _borrador = suggestion.get("borrador_resolucion", "")
+                        borrador_preview = _borrador[:140] + ("…" if len(_borrador) > 140 else "")
                         st.caption(f"_{borrador_preview}_")
 
                         key_sug   = f"sug_used_{a['id']}"
@@ -516,11 +517,11 @@ def render() -> None:
                             key=f"ins_{a['id']}",
                             help="Carga el borrador en el campo de justificación. Edítalo libremente antes de confirmar.",
                         ):
-                            st.session_state[f"res_{a['id']}"] = suggestion["borrador_resolucion"]
+                            st.session_state[f"res_{a['id']}"] = _borrador
                             st.session_state[key_sug]  = True
-                            st.session_state[key_bor]  = suggestion["borrador_resolucion"]
-                            st.session_state[f"sug_cat_{a['id']}"]  = suggestion["categoria_probable"]
-                            st.session_state[f"sug_conf_{a['id']}"] = suggestion["confianza"]
+                            st.session_state[key_bor]  = _borrador
+                            st.session_state[f"sug_cat_{a['id']}"]  = suggestion.get("categoria_probable", "")
+                            st.session_state[f"sug_conf_{a['id']}"] = suggestion.get("confianza", 0.0)
                             st.rerun()
                         st.caption(
                             "_Antecedente comparable — editable libremente — "
