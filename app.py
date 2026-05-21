@@ -249,6 +249,7 @@ except Exception:
 
 # ── CARGA LAZY DE PÁGINAS ──────────────────────────────────────────────────────
 from quira_pages.p_sentinel_hub  import render as p_hub
+from quira_pages.p_carga         import render as p_carga
 from quira_pages.p_ingesta       import render as p_ingesta
 from quira_pages.p_historico     import render as p_historico
 from quira_pages.p_congruencia   import render as p_congruencia
@@ -284,6 +285,7 @@ def _p_sentinel():
 PAGES = {
     # ── SENTINEL HUB — Pantalla 0 real (Sprint 2.3) ────────────────────────────
     "sentinel_hub": {"label": "Centro de Control",        "icon": "⬡",  "render": p_hub},
+    "carga":        {"label": "Panel de Carga",           "icon": "⬆️", "render": p_carga},
     "ingesta":      {"label": "Ingesta Mensual",          "icon": "📥", "render": p_ingesta},
     "historico":    {"label": "Inteligencia Histórica",   "icon": "📈", "render": p_historico},
     "congruencia":  {"label": "Congruencia Institucional","icon": "🔗", "render": p_congruencia},
@@ -323,7 +325,7 @@ PAGES = {
 
 # ── DOCTRINA QUIRA — AGRUPACIÓN POR ESTADO COGNITIVO ──────────────────────────
 SECTIONS = [
-    ("CONTROL",   "Situación + prioridad",  ["ejecutivo", "sentinel_hub", "ingesta", "historico", "congruencia", "alertas", "seguimiento", "reportes", "aprendizaje", "gestion"]),
+    ("CONTROL",   "Situación + prioridad",  ["ejecutivo", "sentinel_hub", "carga", "ingesta", "historico", "congruencia", "alertas", "seguimiento", "reportes", "aprendizaje", "gestion"]),
     ("ENTENDER",  "Ver la verdad",          ["dashboard", "pulso", "brecha", "geotwin", "inversion"]),
     ("GOBERNAR",  "Corregir el sistema",    ["metas", "cadena", "congruencias", "sat", "eficiencia", "operacion", "holding", "ods", "cooperacion", "genero"]),
     ("SIMULAR",   "Proyectar escenarios",   ["simulador"]),

@@ -4,6 +4,7 @@ Módulos auxiliares de soporte transversal.
 Dylus Lab © 2026
 """
 from utils.display_names import tech_to_admin, source_label, indicator_label, INDICATOR_LABELS
+from utils.snapshot_io   import validate_snapshot, save_snapshot, load_snapshot, list_snapshots
 from utils.page_guards   import (
     sget, sget_nested, require_data, safe_dict_get,
     empty_notice, data_stale_notice, auth_required_notice, guard_suggestion,

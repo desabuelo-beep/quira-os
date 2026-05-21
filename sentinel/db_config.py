@@ -708,6 +708,36 @@ def _migrate_scheduler_log(conn: "DbConn") -> None:
         pass
 
 
+def _migrate_municipality_snapshots(conn: "DbConn") -> None:
+    """
+    Crea municipality_snapshots — tabla maestra de snapshots por municipio.
+    Sprint RC-CARGA · Idempotente.
+
+    Permite subir gm_snapshot.json desde el browser y que el app lo lea desde
+    Supabase en lugar del archivo JSON estático del repo. Multi-municipio ready.
+    """
+    pk   = "BIGSERIAL" if conn.mode == "supabase" else "INTEGER"
+    auto = "" if conn.mode == "supabase" else "AUTOINCREMENT"
+    try:
+        conn.cursor().execute(f"""CREATE TABLE IF NOT EXISTS municipality_snapshots (
+            id              {pk} PRIMARY KEY {auto},
+            municipio_code  TEXT    NOT NULL,
+            municipio_name  TEXT    NOT NULL,
+            version         TEXT    NOT NULL,
+            fecha_corte     TEXT    NOT NULL,
+            uploaded_at     TEXT    NOT NULL,
+            uploaded_by     TEXT    NOT NULL DEFAULT 'sistema',
+            is_active       BOOLEAN NOT NULL DEFAULT TRUE,
+            snapshot_json   TEXT    NOT NULL,
+            checksum_sha256 TEXT,
+            notas           TEXT,
+            UNIQUE(municipio_code, version)
+        )""")
+        conn.commit()
+    except Exception:
+        pass
+
+
 def init_db() -> None:
     """Inicializa el esquema completo. Idempotente — seguro ejecutar múltiples veces."""
     conn   = get_connection()
@@ -753,6 +783,9 @@ def init_db() -> None:
 
     # Migración incremental: Scheduler institucional (RC-2B)
     _migrate_scheduler_log(conn)
+
+    # Migración incremental: Snapshots de municipios (RC-CARGA)
+    _migrate_municipality_snapshots(conn)
 
     conn.close()
 
