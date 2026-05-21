@@ -1895,8 +1895,151 @@ def synthesis_card(synth_dict: dict) -> None:
         + action_html
         + f'<div style="font-size:8px;color:rgba(255,255,255,0.22);'
         f'border-top:1px solid rgba(255,255,255,0.07);padding-top:8px;margin-top:8px;font-style:italic">'
-        f'SENTINEL-SYNTHESIS: 8 motores → max 3 señales accionables. '
+        f'SENTINEL-SYNTHESIS: 8 motores &#x2192; max 3 señales accionables. '
         f'La dimension con mayor evidencia domina. El sistema informa — la autoridad decide.'
+        f'</div></div>',
+        unsafe_allow_html=True,
+    )
+
+
+# ── COMPONENT 18: D5 PROPAGATION CARD ────────────────────────────────────────
+
+def d5_propagation_card(d5_dict: dict) -> None:
+    """
+    Visualiza el resultado del motor RC-D5 Tension Propagation Engine.
+
+    Muestra:
+      - Tipo de cascada con paleta cromática (CASCADA_TOTAL → rojo / LINEAL → amarillo)
+      - Red de dimensiones involucradas (grafo textual de flechas)
+      - Caminos activos (fuente → destino, intensidad)
+      - Riesgo emergente (texto institucional)
+      - SAT codes D5
+
+    Solo renderizar cuando cascade_type != "NINGUNA".
+    """
+    if not d5_dict:
+        return
+
+    cascade_type = d5_dict.get("cascade_type", "NINGUNA")
+    if cascade_type == "NINGUNA":
+        return
+
+    # ── Paleta cromática por tipo de cascada ──────────────────────────────────
+    _CASCADE_PALETTE = {
+        "CASCADA_TOTAL":     ("#7f0000", "#ff4444", "#ff6666"),  # rojo intenso
+        "RETROALIMENTACION": ("#7a3500", "#ff6a00", "#ff8c33"),  # naranja-rojo
+        "CASCADA_DOBLE":     ("#7a5200", "#ffaa00", "#ffc233"),  # naranja
+        "LINEAL":            ("#6b5f00", "#e6c200", "#f0d533"),  # amarillo
+    }
+    bg_dark, accent, text_accent = _CASCADE_PALETTE.get(
+        cascade_type, ("#1a1a2e", "#7b7bff", "#9999ff")
+    )
+
+    severity       = d5_dict.get("severity", 0)
+    confidence     = d5_dict.get("confidence", 0.0)
+    entity_id      = d5_dict.get("entity_id", "GAD")
+    dims_involved  = d5_dict.get("dims_involved", [])
+    emergent_risk  = d5_dict.get("emergent_risk", "")
+    sat_codes      = d5_dict.get("sat_codes", [])
+    n_paths        = d5_dict.get("n_paths", 0)
+    active_paths   = d5_dict.get("active_paths", [])
+
+    # ── Grafo textual de dimensiones ─────────────────────────────────────────
+    # Flecha simple entre dimensiones involucradas
+    dim_flow = " &#x2192; ".join(dims_involved) if dims_involved else "—"
+
+    # ── SAT codes ─────────────────────────────────────────────────────────────
+    sat_html = ""
+    for code in sat_codes:
+        sat_html += (
+            f'<span style="background:rgba(255,255,255,0.08);'
+            f'border:1px solid rgba(255,255,255,0.15);'
+            f'border-radius:3px;padding:1px 5px;'
+            f'font-size:8px;font-family:monospace;margin-right:4px">'
+            f'{code}</span>'
+        )
+
+    # ── Caminos activos (max 4) ───────────────────────────────────────────────
+    paths_html = ""
+    for p in active_paths[:4]:
+        intensity = p.get("intensity", 0.0)
+        # Barra de intensidad proporcional
+        bar_w = max(8, int(intensity * 80))
+        obs_tag = '<span style="font-size:7px;opacity:0.5">[obs]</span> ' if p.get("observational") else ""
+        feedback_tag = ' <span style="font-size:7px;color:#ff9966">[&#x21BB;]</span>' if p.get("feedback") else ""
+        paths_html += (
+            f'<div style="margin-bottom:5px">'
+            f'  <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px">'
+            f'    <span style="font-size:8.5px;color:rgba(255,255,255,0.75);font-family:monospace">'
+            f'      {obs_tag}{p.get("source_dim","?")}:{p.get("source_state","?")[:22]}'
+            f'      &#x2192; {p.get("target_dim","?")}:{p.get("target_state","?")[:22]}'
+            f'      {feedback_tag}'
+            f'    </span>'
+            f'  </div>'
+            f'  <div style="display:flex;align-items:center;gap:6px">'
+            f'    <div style="width:{bar_w}px;height:3px;background:{accent};'
+            f'         border-radius:2px;opacity:0.85"></div>'
+            f'    <span style="font-size:8px;color:{text_accent}">{intensity:.0%}</span>'
+            f'    <span style="font-size:7.5px;color:rgba(255,255,255,0.28)">'
+            f'      {p.get("norm_context","")[:40]}'
+            f'    </span>'
+            f'  </div>'
+            f'</div>'
+        )
+
+    # ── Render ────────────────────────────────────────────────────────────────
+    import streamlit as st
+
+    st.markdown(
+        f'<div style="background:linear-gradient(135deg,{bg_dark} 0%,rgba(10,10,20,0.95) 100%);'
+        f'border:1px solid {accent};border-radius:8px;padding:12px 14px;margin:6px 0;'
+        f'border-left:3px solid {accent}">'
+        # Header
+        f'<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">'
+        f'  <div>'
+        f'    <span style="font-size:7.5px;color:rgba(255,255,255,0.35);'
+        f'    letter-spacing:.1em;font-weight:600">RC-D5 PROPAGACION · {entity_id}</span><br>'
+        f'    <span style="font-size:13px;font-weight:700;color:{text_accent};'
+        f'    letter-spacing:.03em">{cascade_type.replace("_"," ")}</span>'
+        f'  </div>'
+        f'  <div style="text-align:right">'
+        f'    <div style="font-size:18px;font-weight:700;color:{accent}">{severity}<span style="font-size:9px;color:rgba(255,255,255,0.3)">/5</span></div>'
+        f'    <div style="font-size:8px;color:rgba(255,255,255,0.35)">amp={confidence:.0%}</div>'
+        f'  </div>'
+        f'</div>'
+        # Flujo dimensional
+        + f'<div style="background:rgba(255,255,255,0.04);border-radius:5px;padding:6px 8px;margin-bottom:8px">'
+        f'  <div style="font-size:7.5px;color:rgba(255,255,255,0.35);margin-bottom:3px;'
+        f'  font-weight:600;letter-spacing:.07em">RED DE PROPAGACION ({n_paths} caminos)</div>'
+        f'  <div style="font-size:9.5px;font-family:monospace;color:{text_accent};letter-spacing:.02em">'
+        f'    {dim_flow}</div>'
+        f'</div>'
+        # Caminos activos
+        + f'<div style="font-size:7.5px;color:rgba(255,255,255,0.35);margin-bottom:5px;'
+        f'font-weight:600;letter-spacing:.07em">CAMINOS DE AMPLIFICACION</div>'
+        + paths_html
+        # Riesgo emergente
+        + (
+            f'<div style="background:rgba({int(accent[1:3],16)},{int(accent[3:5],16)},{int(accent[5:7],16)},0.10);'
+            f'border-left:2px solid {accent};border-radius:0 4px 4px 0;'
+            f'padding:6px 8px;margin:8px 0;'
+            f'font-size:8.5px;color:rgba(255,255,255,0.70);font-style:italic;line-height:1.5">'
+            f'<span style="font-size:7px;color:{accent};font-weight:600;font-style:normal">'
+            f'RIESGO EMERGENTE</span><br>'
+            f'{emergent_risk[:280]}'
+            f'</div>'
+            if emergent_risk else ""
+        )
+        # SAT codes
+        + (
+            f'<div style="margin-top:6px">{sat_html}</div>'
+            if sat_html else ""
+        )
+        # Footer doctrinal
+        + f'<div style="font-size:7.5px;color:rgba(255,255,255,0.20);'
+        f'border-top:1px solid rgba(255,255,255,0.06);padding-top:7px;margin-top:8px;font-style:italic">'
+        f'RC-D5: Una tension aislada es anomalia. Una cascada es disfuncion estructural. '
+        f'El sistema informa — la autoridad decide.'
         f'</div></div>',
         unsafe_allow_html=True,
     )

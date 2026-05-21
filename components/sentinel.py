@@ -573,7 +573,32 @@ def _run_sentinel(
                 except Exception:
                     pass  # P8b D1.3 — nunca bloquea el chat
 
+                # P10 RC-D5 Tension Propagation — motor de cascadas institucionales
+                _d5_block = ""
+                try:
+                    from sentinel.d5_propagation import (
+                        analyze_propagation, summarize_propagation,
+                        get_propagation_prompt_block,
+                    )
+                    _d5_data = {
+                        "rc73_calibrated":       st.session_state.get("rc73_calibrated"),
+                        "d4_calibrated":         st.session_state.get("d4_calibrated"),
+                        "d3d4_cross":            st.session_state.get("d3d4_cross"),
+                        "d1_result":             st.session_state.get("d1_result"),
+                        "d13_result":            st.session_state.get("d13_result"),
+                        "inference_review_flag": None,
+                    }
+                    _d5_result  = analyze_propagation(_d5_data, _active_entity)
+                    _d5_summary = summarize_propagation(_d5_result)
+                    st.session_state["d5_propagation"] = _d5_summary
+                    # Solo inyectar en prompt si hay cascada activa
+                    if _d5_result.cascade_type != "NINGUNA":
+                        _d5_block = get_propagation_prompt_block(_d5_result)
+                except Exception:
+                    pass  # P10 D5 — nunca bloquea el chat
+
                 # P9 RC-SYNTHESIS — Meta-orquestador epistemológico
+                # Incluye d5_propagation como fuente de señal adicional
                 _synthesis_block = ""
                 try:
                     from sentinel.synthesis_engine import (
@@ -585,6 +610,7 @@ def _run_sentinel(
                         "d3d4_cross":            st.session_state.get("d3d4_cross"),
                         "d1_result":             st.session_state.get("d1_result"),
                         "d13_result":            st.session_state.get("d13_result"),
+                        "d5_propagation":        st.session_state.get("d5_propagation"),
                         "inference_review_flag": st.session_state.get("inference_review_flag"),
                     }
                     # Solo sintetizar si al menos un motor produjo señal
@@ -619,6 +645,8 @@ def _run_sentinel(
                     effective_prompt += "\n\n" + _d1_block
                 if _d13_block:
                     effective_prompt += "\n\n" + _d13_block
+                if _d5_block:
+                    effective_prompt += "\n\n" + _d5_block
                 if _synthesis_block:
                     effective_prompt += "\n\n" + _synthesis_block
 
@@ -745,6 +773,15 @@ def _run_sentinel(
                     try:
                         from sentinel.ui_components import d1_coherence_card
                         d1_coherence_card(_d13_ui)
+                    except Exception:
+                        pass
+
+                # P10-Visual: d5_propagation_card — cascadas de tensión RC-D5
+                _d5_ui = st.session_state.get("d5_propagation")
+                if _d5_ui and _d5_ui.get("cascade_type", "NINGUNA") != "NINGUNA":
+                    try:
+                        from sentinel.ui_components import d5_propagation_card
+                        d5_propagation_card(_d5_ui)
                     except Exception:
                         pass
 

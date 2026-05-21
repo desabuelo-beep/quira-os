@@ -192,7 +192,26 @@ def _template_coherencia_positiva(
     )
 
 
+def _template_cascada_sistemica(
+    signals: List["Signal"], entity: str, ctx: Dict[str, Any]
+) -> str:
+    """Template para cascada sistemica detectada por D5."""
+    d5_sig = next((s for s in signals if s.source == "D5"), None)
+    cascade = d5_sig.label if d5_sig else "CASCADA_TOTAL"
+    n_dims  = len(set(s.source for s in signals))
+    return (
+        f"El motor de propagacion RC-D5 detecta en {entity} una {cascade} "
+        f"que conecta {n_dims} dimensiones del sistema simultaneamente. "
+        f"El riesgo emergente supera lo observable en cualquier dimension aislada: "
+        f"las tensiones temporal (D3), territorial (D4), normativa (D1.3) y "
+        f"procedimental (D1) se amplifican mutuamente. "
+        f"Esta disfuncion sistemica requiere intervencion coordinada antes del "
+        f"proximo ciclo presupuestario — no es resoluble dimension por dimension."
+    )
+
+
 _TEMPLATE_MAP = {
+    "CASCADA_SISTEMICA":                _template_cascada_sistemica,
     "EXPANSION_REGRESIVA":              _template_expansion_regresiva,
     "BLOQUEO_INSTITUCIONAL":            _template_bloqueo_institucional,
     "DESACOPLE_ESTRATEGICO":            _template_desacople_estrategico,
@@ -276,7 +295,16 @@ def _action_default(signals, entity):
         "Actualizar análisis con datos del próximo período para confirmar tendencias",
     ]
 
+def _action_cascada_sistemica(signals, entity):
+    return [
+        "Convocar mesa tecnica interdimensional: Planificacion + Finanzas + Catastro para revision integrada",
+        "Solicitar informe de propagacion territorial: como la paralisis ejecutiva afecta distribucion parroquial",
+        "Revisar POA proximo ciclo con enfoque sistemico — corregir todas las dimensiones en paralelo",
+    ]
+
+
 _ACTION_MAP = {
+    "CASCADA_SISTEMICA":                _action_cascada_sistemica,
     "EXPANSION_REGRESIVA":              _action_expansion,
     "BLOQUEO_INSTITUCIONAL":            _action_bloqueo,
     "DESACOPLE_ESTRATEGICO":            _action_desacople,

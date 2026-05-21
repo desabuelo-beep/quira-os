@@ -115,6 +115,16 @@ from sentinel.d1_coherence import (
 )
 # RC-D1 Visual
 from sentinel.ui_components import d1_card, d1_coherence_card
+# RC-D5 Tension Propagation Engine
+from sentinel.d5_graph import (
+    PropagationEdge, PROPAGATION_EDGES, EDGES_BY_SOURCE,
+    get_edges_from, get_edge, get_all_source_dims, count_edges,
+)
+from sentinel.d5_propagation import (
+    ActivePath, D5PropagationResult,
+    analyze_propagation, summarize_propagation, get_propagation_prompt_block,
+)
+from sentinel.ui_components import d5_propagation_card
 # RC-SYNTHESIS Meta-Orquestador Epistemologico
 from sentinel.synthesis_prioritizer import (
     Signal,
@@ -202,6 +212,14 @@ __all__ = [
     "get_coherence_prompt_block", "get_all_commitments", "get_irs_meta",
     # RC-D1 Visual
     "d1_card", "d1_coherence_card",
+    # RC-D5 Tension Propagation — Graph
+    "PropagationEdge", "PROPAGATION_EDGES", "EDGES_BY_SOURCE",
+    "get_edges_from", "get_edge", "get_all_source_dims", "count_edges",
+    # RC-D5 Tension Propagation — Engine
+    "ActivePath", "D5PropagationResult",
+    "analyze_propagation", "summarize_propagation", "get_propagation_prompt_block",
+    # RC-D5 Visual
+    "d5_propagation_card",
     # RC-SYNTHESIS Meta-Orquestador Epistemologico
     "Signal",
     "build_signals", "prioritize_signals", "determine_dominant_tension",

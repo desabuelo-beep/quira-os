@@ -36,8 +36,10 @@ from typing import Any, Dict, List, Optional, Tuple
 # D3×D4 es el cruce más informativo; D4 territorial tiene alta densidad.
 # D3 longitudinal puede tener baja conf por períodos cortos.
 # D1/D1.3 legales son más deterministas pero requieren cédula confirmada.
+# D5 Propagación: por encima de D4 individual — detecta dinámica sistémica.
 _ENGINE_WEIGHTS: Dict[str, float] = {
     "D3xD4":       1.20,   # cruce es más que suma de partes
+    "D5":          1.15,   # propagación — detecta cascadas sistémicas
     "D4":          1.10,   # territorial — alta densidad datos
     "D1.3":        1.05,   # estratégico — vault-verified PDOT
     "D3":          1.00,   # temporal — puede tener pocos períodos
@@ -97,6 +99,15 @@ _D13_SEVERITY: Dict[str, int] = {
     "ALINEADO":               0,
 }
 
+# D5 — cascade type → severity cardinal
+_D5_SEVERITY: Dict[str, int] = {
+    "CASCADA_TOTAL":     5,   # 4+ dims involucradas
+    "RETROALIMENTACION": 4,   # ciclo auto-reforzante
+    "CASCADA_DOBLE":     4,   # cadena de 3 dimensiones
+    "LINEAL":            2,   # 1 camino activo
+    "NINGUNA":           0,
+}
+
 
 # ── SIGNAL ────────────────────────────────────────────────────────────────────
 
@@ -138,6 +149,7 @@ class Signal:
 # No son scores — son tipos institucionales emergentes de combinaciones de señales.
 
 DOMINANT_TENSIONS = {
+    "CASCADA_SISTEMICA":           "Red de propagacion activa en multiples dimensiones — disfuncion estructural emergente",
     "EXPANSION_REGRESIVA":         "Expansion presupuestaria sin correccion distributiva territorial",
     "BLOQUEO_INSTITUCIONAL":       "Paralisis ejecutiva con concentracion territorial persistente",
     "DESACOPLE_ESTRATEGICO":       "Divergencia entre compromiso PDOT declarado y comportamiento material",
@@ -169,6 +181,16 @@ def determine_dominant_tension(top_signals: List[Signal]) -> str:
     all_benign = all(s.severity <= 1 for s in top_signals)
     if all_benign:
         return "COHERENCIA_POSITIVA"
+
+    # ── D5 Propagación como señal dominante ───────────────────────────────────
+    # Solo domina cuando hay cascada sistémica confirmada.
+    # También activa CASCADA_SISTEMICA cuando D5 está en top-3 con cascada >= DOBLE.
+    if top.source == "D5" and top.status in ("CASCADA_TOTAL", "RETROALIMENTACION", "CASCADA_DOBLE"):
+        return "CASCADA_SISTEMICA"
+    d5_in_top = next((s for s in top_signals if s.source == "D5"), None)
+    if d5_in_top and d5_in_top.status in ("CASCADA_TOTAL", "RETROALIMENTACION"):
+        # D5 sistémica confirma el patrón aunque no sea señal top
+        return "CASCADA_SISTEMICA"
 
     # ── D3×D4 como señal dominante ────────────────────────────────────────────
     if top.source == "D3xD4":
@@ -323,6 +345,31 @@ def build_signals(data: Dict[str, Any]) -> List[Signal]:
                     f"Coherencia PDOT: {d13_st} "
                     f"(IRS={d13.get('irs_actual', 0):.1f} vs meta<={d13.get('irs_meta', 45):.0f}, "
                     f"delta={d13.get('irs_delta', 0):+.1f})"
+                ),
+            ))
+
+    # ── D5 Propagación de Tensiones ──────────────────────────────────────────
+    d5 = data.get("d5_propagation") or {}
+    if d5:
+        d5_cascade = d5.get("cascade_type", "NINGUNA")
+        d5_sev     = _D5_SEVERITY.get(d5_cascade, d5.get("severity", 0))
+        d5_conf    = float(d5.get("confidence", 0.0))
+        d5_obs     = bool(d5.get("observational", True))
+        # D5 solo entra al stack si tiene severidad real (cascada activa)
+        if d5_sev >= 2 and d5_conf > 0.10:
+            n_paths = d5.get("n_paths", 0)
+            dims    = ", ".join(d5.get("dims_involved", [])[:4])
+            signals.append(Signal(
+                source        = "D5",
+                label         = d5_cascade,
+                status        = d5_cascade,
+                confidence    = d5_conf,
+                severity      = d5_sev,
+                observational = d5_obs,
+                sat_codes     = d5.get("sat_codes", []),
+                description   = (
+                    f"Cascada propagacion: {d5_cascade} "
+                    f"({n_paths} caminos, dims: {dims})"
                 ),
             ))
 

@@ -300,17 +300,58 @@ RC: dict[str, dict[str, Any]] = {
         ],
     },
 
+    # ── RC-D5 Tension Propagation Engine ─────────────────────────────────────
+    "RC-D5": {
+        "description": "Motor de propagacion de tensiones — grafo causal institucional",
+        # Entidades con PDOT propio (D5 solo aplica a estas)
+        "entities_with_pdot": ["GAD"],
+        # Peso en la formula de ranking SYNTHESIS
+        "engine_weight": 1.15,
+        # Confianza minima de la dimension origen para activar una arista
+        "default_min_source_conf": 0.30,
+        # Piso de intensidad para incluir un camino en el resultado
+        "min_path_intensity": 0.20,
+        # Umbrales de severidad segun tipo de cascada
+        "severity_cascada_total_amp_high": 5,    # CASCADA_TOTAL + amp >= 0.70
+        "severity_cascada_total":          4,    # CASCADA_TOTAL + amp < 0.70
+        "severity_retroalimentacion":      4,
+        "severity_cascada_doble":          4,
+        "severity_lineal_high":            3,    # LINEAL + amp >= 0.50
+        "severity_lineal_low":             2,    # LINEAL + amp < 0.50
+        "severity_observacional":          1,
+        # Umbral de amplificacion para severidad maxima en CASCADA_TOTAL
+        "amp_high_threshold": 0.70,
+        # Umbral de intensidad lineal para severity 3 vs 2
+        "lineal_high_amp": 0.50,
+        # Tipos de cascada en orden de gravedad
+        "cascade_taxonomy": [
+            "NINGUNA",
+            "LINEAL",
+            "CASCADA_DOBLE",
+            "RETROALIMENTACION",
+            "CASCADA_TOTAL",
+        ],
+        # SAT codes D5
+        "sat_codes": {
+            "SAT-D5-A": "Propagacion lineal confirmada (1+ camino activo)",
+            "SAT-D5-B": "Cascada doble — cadena de 3 dimensiones",
+            "SAT-D5-C": "Retroalimentacion — ciclo auto-reforzante detectado",
+            "SAT-D5-D": "Cascada total — 4+ dimensiones en red de propagacion",
+        },
+    },
+
     # ── RC-SYNTHESIS Meta-Orquestador Epistemologico ─────────────────────────
     "RC-SYNTHESIS": {
         "description": "Contratos del meta-orquestador epistemologico SENTINEL-SYNTHESIS",
         # Pesos por motor (mayor peso = mayor autoridad epistemica)
         "engine_weights": {
-            "D3xD4":       1.20,   # Cross-dimensional — mayor evidencia combinada
-            "D4":          1.10,   # Territorial — alta especificidad
-            "D1.3":        1.05,   # Normative coherence — PDOT verificado
-            "D3":          1.00,   # Temporal — base epistemica
-            "D1":          0.90,   # Procedural — evidencia documental
-            "HUMAN_REVIEW":0.80,   # Revision humana — activada externamente
+            "D3xD4":        1.20,   # Cross-dimensional — mayor evidencia combinada
+            "D5":           1.15,   # Propagacion — detecta cascadas sistemicas
+            "D4":           1.10,   # Territorial — alta especificidad
+            "D1.3":         1.05,   # Normative coherence — PDOT verificado
+            "D3":           1.00,   # Temporal — base epistemica
+            "D1":           0.90,   # Procedural — evidencia documental
+            "HUMAN_REVIEW": 0.80,   # Revision humana — activada externamente
         },
         # Penalizacion epistemica por observacional
         "observational_penalty": 0.40,
@@ -325,6 +366,7 @@ RC: dict[str, dict[str, Any]] = {
         "signal_min_confidence":            0.05,
         # Tensiones dominantes semanticas registradas
         "dominant_tensions": [
+            "CASCADA_SISTEMICA",
             "EXPANSION_REGRESIVA",
             "BLOQUEO_INSTITUCIONAL",
             "DESACOPLE_ESTRATEGICO",
