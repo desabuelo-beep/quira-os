@@ -573,6 +573,35 @@ def _run_sentinel(
                 except Exception:
                     pass  # P8b D1.3 — nunca bloquea el chat
 
+                # P9 RC-SYNTHESIS — Meta-orquestador epistemológico
+                _synthesis_block = ""
+                try:
+                    from sentinel.synthesis_engine import (
+                        synthesize, summarize_synthesis, get_synthesis_prompt_block,
+                    )
+                    _synth_data = {
+                        "rc73_calibrated":       st.session_state.get("rc73_calibrated"),
+                        "d4_calibrated":         st.session_state.get("d4_calibrated"),
+                        "d3d4_cross":            st.session_state.get("d3d4_cross"),
+                        "d1_result":             st.session_state.get("d1_result"),
+                        "d13_result":            st.session_state.get("d13_result"),
+                        "inference_review_flag": st.session_state.get("inference_review_flag"),
+                    }
+                    # Solo sintetizar si al menos un motor produjo señal
+                    _any_signal = any(
+                        bool(v) for k, v in _synth_data.items()
+                        if k != "inference_review_flag"
+                    )
+                    if _any_signal:
+                        _synth_result  = synthesize(_synth_data, _active_entity)
+                        _synth_summary = summarize_synthesis(_synth_result)
+                        st.session_state["synthesis"] = _synth_summary
+                        # Inyectar en prompt solo si hay señal real (no NINGUNA)
+                        if _synth_result.severity != "NINGUNA":
+                            _synthesis_block = get_synthesis_prompt_block(_synth_result)
+                except Exception:
+                    pass  # P9 SYNTHESIS — nunca bloquea el chat
+
                 effective_prompt = system_prompt
                 if ctx_block:
                     effective_prompt += "\n\n" + ctx_block
@@ -590,6 +619,8 @@ def _run_sentinel(
                     effective_prompt += "\n\n" + _d1_block
                 if _d13_block:
                     effective_prompt += "\n\n" + _d13_block
+                if _synthesis_block:
+                    effective_prompt += "\n\n" + _synthesis_block
 
                 # Construir historial para Claude — solo roles user/assistant (sin system)
                 claude_msgs = []
@@ -714,6 +745,15 @@ def _run_sentinel(
                     try:
                         from sentinel.ui_components import d1_coherence_card
                         d1_coherence_card(_d13_ui)
+                    except Exception:
+                        pass
+
+                # P9-Visual: synthesis_card — SENTINEL-SYNTHESIS meta-orquestador
+                _synth_ui = st.session_state.get("synthesis")
+                if _synth_ui and _synth_ui.get("severity", "NINGUNA") != "NINGUNA":
+                    try:
+                        from sentinel.ui_components import synthesis_card
+                        synthesis_card(_synth_ui)
                     except Exception:
                         pass
 

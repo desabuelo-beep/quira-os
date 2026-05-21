@@ -1774,3 +1774,129 @@ def d1_coherence_card(d13_dict: dict) -> None:
         f'</div></div>',
         unsafe_allow_html=True,
     )
+
+
+# ── 17. RC-SYNTHESIS CARD — Meta-Orquestador Epistemológico ──────────────────
+
+def synthesis_card(synth_dict: dict) -> None:
+    """
+    Tarjeta RC-SYNTHESIS — síntesis priorizada del stack completo.
+
+    Argumentos:
+        synth_dict — output de summarize_synthesis() (sentinel.synthesis_engine)
+
+    Esta es la tarjeta más importante del sistema:
+    convierte 8 motores en 1-3 señales accionables.
+    Doctrina: máximo 3 señales. Siempre.
+    """
+    if not synth_dict:
+        return
+
+    dominant   = synth_dict.get("dominant_tension", "SIN_TENSION_DOMINANTE")
+    severity   = synth_dict.get("severity", "NINGUNA")
+    confidence = float(synth_dict.get("confidence", 0.0))
+    obs        = bool(synth_dict.get("observational", True))
+    needs_rev  = bool(synth_dict.get("needs_human_review", False))
+    hypothesis = synth_dict.get("institutional_hypothesis", "")
+    action_rte = synth_dict.get("action_route", [])
+    top_sigs   = synth_dict.get("top_signals", [])
+    suppressed = synth_dict.get("suppressed_dimensions", [])
+    entity_id  = synth_dict.get("entity_id", "")
+    evidence   = synth_dict.get("evidence_summary", "")
+
+    _SEV_PALETTE = {
+        "CRITICA":  ("#E53E3E", "rgba(229,62,62,0.12)",   "rgba(229,62,62,0.45)",  "🚨"),
+        "ALTA":     ("#E67E22", "rgba(230,126,34,0.10)",  "rgba(230,126,34,0.40)", "⚠️"),
+        "MEDIA":    ("#D69E2E", "rgba(214,158,46,0.08)",  "rgba(214,158,46,0.30)", "⚡"),
+        "BAJA":     ("#00D4FF", "rgba(0,212,255,0.06)",   "rgba(0,212,255,0.20)",  "ℹ️"),
+        "NINGUNA":  ("#38A169", "rgba(56,161,105,0.08)",  "rgba(56,161,105,0.25)", "✅"),
+    }
+    _color, _bg, _border, _icon = _SEV_PALETTE.get(
+        severity, ("#718096", "rgba(113,128,150,0.08)", "rgba(113,128,150,0.25)", "📋")
+    )
+
+    obs_tag = " [OBSERVACIONAL]" if obs else ""
+    rev_tag = " · REVISIÓN INSTITUCIONAL" if needs_rev else ""
+    n_sup   = len([s for s in suppressed if s])
+
+    # Señales individuales
+    sig_html = ""
+    for i, sig in enumerate(top_sigs[:3], 1):
+        s_obs = " [OBS]" if sig.get("observational") else ""
+        s_conf = sig.get("confidence", 0)
+        s_sev  = sig.get("severity", 0)
+        s_src  = sig.get("source", "")
+        s_lbl  = sig.get("label", "")
+        s_desc = sig.get("description", "")
+        # Color de severidad de la señal
+        _s_col = (
+            "#E53E3E" if s_sev >= 5 else
+            "#E67E22" if s_sev >= 4 else
+            "#D69E2E" if s_sev >= 3 else
+            "#00D4FF"
+        )
+        sig_html += (
+            f'<div style="display:flex;align-items:center;gap:8px;'
+            f'padding:5px 8px;background:rgba(0,0,0,0.15);border-radius:6px;margin-bottom:4px">'
+            f'<span style="font-size:8px;font-weight:700;color:{_s_col};min-width:36px">'
+            f'#{i} {s_src}</span>'
+            f'<span style="font-size:9px;color:rgba(255,255,255,0.80);flex:1">'
+            f'{s_lbl}{s_obs}</span>'
+            f'<span style="font-size:8px;color:rgba(255,255,255,0.40)">'
+            f'conf={s_conf:.0%} sev={s_sev}</span>'
+            f'</div>'
+        )
+
+    # Acciones
+    action_html = ""
+    for j, act in enumerate(action_rte[:3], 1):
+        action_html += (
+            f'<div style="padding:4px 0;font-size:9px;color:rgba(255,255,255,0.70);'
+            f'border-bottom:1px solid rgba(255,255,255,0.05);line-height:1.5">'
+            f'<span style="color:{_color};font-weight:600">{j}.</span> {act[:100]}'
+            f'{"..." if len(act) > 100 else ""}</div>'
+        )
+
+    st.markdown(
+        f'<div style="background:{_bg};border:1px solid {_border};'
+        f'border-left:5px solid {_color};border-radius:12px;'
+        f'padding:16px 18px;margin:12px 0 8px;'
+        f'font-family:Inter,-apple-system,sans-serif">'
+        # Header
+        f'<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">'
+        f'<span style="font-size:11px;font-weight:800;color:{_color};letter-spacing:.06em">'
+        f'{_icon} SENTINEL-SYNTHESIS — {entity_id}</span>'
+        f'<span style="font-size:8px;color:rgba(255,255,255,0.40)">'
+        f'conf={confidence:.0%}{obs_tag}</span></div>'
+        # Tensión dominante
+        f'<div style="font-size:15px;font-weight:800;color:rgba(255,255,255,0.95);margin-bottom:2px">'
+        f'{severity}{rev_tag}</div>'
+        f'<div style="font-size:10px;font-weight:600;color:{_color};margin-bottom:10px">'
+        f'{dominant}</div>'
+        # Hipótesis institucional (el núcleo)
+        f'<div style="font-size:9.5px;color:rgba(255,255,255,0.80);margin-bottom:10px;'
+        f'padding:10px 12px;background:rgba(0,0,0,0.22);border-radius:8px;'
+        f'border-left:3px solid {_color};line-height:1.7">'
+        f'<span style="font-size:7.5px;color:rgba(255,255,255,0.35);display:block;margin-bottom:4px;'
+        f'font-weight:700;letter-spacing:.05em">HIPOTESIS INSTITUCIONAL</span>'
+        f'{hypothesis[:300]}{"..." if len(hypothesis) > 300 else ""}</div>'
+        # Señales priorizadas (máximo 3)
+        f'<div style="font-size:8px;color:rgba(255,255,255,0.35);margin-bottom:5px;'
+        f'font-weight:600;letter-spacing:.05em">SEÑALES PRIORIZADAS (max. 3)</div>'
+        + sig_html
+        + (
+            f'<div style="font-size:7.5px;color:rgba(255,255,255,0.25);margin:4px 0 8px">'
+            f'Suprimidas ({n_sup}): {", ".join(suppressed[:4])}</div>'
+            if suppressed else '<div style="margin-bottom:8px"></div>'
+        )
+        # Ruta de acción
+        + f'<div style="font-size:8px;color:rgba(255,255,255,0.35);margin:8px 0 5px;'
+        f'font-weight:600;letter-spacing:.05em">RUTA DE ACCION INSTITUCIONAL</div>'
+        + action_html
+        + f'<div style="font-size:8px;color:rgba(255,255,255,0.22);'
+        f'border-top:1px solid rgba(255,255,255,0.07);padding-top:8px;margin-top:8px;font-style:italic">'
+        f'SENTINEL-SYNTHESIS: 8 motores → max 3 señales accionables. '
+        f'La dimension con mayor evidencia domina. El sistema informa — la autoridad decide.'
+        f'</div></div>',
+        unsafe_allow_html=True,
+    )

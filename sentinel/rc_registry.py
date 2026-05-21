@@ -300,6 +300,50 @@ RC: dict[str, dict[str, Any]] = {
         ],
     },
 
+    # ── RC-SYNTHESIS Meta-Orquestador Epistemologico ─────────────────────────
+    "RC-SYNTHESIS": {
+        "description": "Contratos del meta-orquestador epistemologico SENTINEL-SYNTHESIS",
+        # Pesos por motor (mayor peso = mayor autoridad epistemica)
+        "engine_weights": {
+            "D3xD4":       1.20,   # Cross-dimensional — mayor evidencia combinada
+            "D4":          1.10,   # Territorial — alta especificidad
+            "D1.3":        1.05,   # Normative coherence — PDOT verificado
+            "D3":          1.00,   # Temporal — base epistemica
+            "D1":          0.90,   # Procedural — evidencia documental
+            "HUMAN_REVIEW":0.80,   # Revision humana — activada externamente
+        },
+        # Penalizacion epistemica por observacional
+        "observational_penalty": 0.40,
+        # Maximo de señales accionables (doctrina inmutable)
+        "max_signals": 3,
+        # Umbrales de severidad global
+        "severity_critica_min_severity":    5,
+        "severity_critica_min_conf":        0.40,
+        "severity_alta_min_severity":       4,
+        "severity_alta_min_conf":           0.35,
+        # Piso de confianza para incluir señal en top-3
+        "signal_min_confidence":            0.05,
+        # Tensiones dominantes semanticas registradas
+        "dominant_tensions": [
+            "EXPANSION_REGRESIVA",
+            "BLOQUEO_INSTITUCIONAL",
+            "DESACOPLE_ESTRATEGICO",
+            "CRISIS_TERRITORIAL_CRITICA",
+            "VULNERABILIDAD_HIDRICA_SISTEMICA",
+            "MAQUILLAJE_INSTITUCIONAL",
+            "FRICCION_PROCEDIMENTAL",
+            "SIN_TENSION_DOMINANTE",
+            "COHERENCIA_POSITIVA",
+            "TENSION_COMPUESTA",
+        ],
+        # Doctrina inmutable (3 reglas del colega)
+        "doctrine": [
+            "Nunca sumar tensiones linealmente — tipos institucionales emergentes",
+            "La dimension con mayor evidencia domina — conf es primaria en ranking",
+            "Maximo 3 senales — siempre; sin excepciones",
+        ],
+    },
+
     # ── Human Review Layer ───────────────────────────────────────────────────
     "HUMAN_REVIEW": {
         "description": "Reglas para activar revision institucional humana",

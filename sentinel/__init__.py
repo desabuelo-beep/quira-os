@@ -115,6 +115,18 @@ from sentinel.d1_coherence import (
 )
 # RC-D1 Visual
 from sentinel.ui_components import d1_card, d1_coherence_card
+# RC-SYNTHESIS Meta-Orquestador Epistemologico
+from sentinel.synthesis_prioritizer import (
+    Signal,
+    build_signals, prioritize_signals, determine_dominant_tension,
+    DOMINANT_TENSIONS,
+)
+from sentinel.synthesis_templates import build_hypothesis, build_action_route
+from sentinel.synthesis_engine import (
+    SynthesisResult,
+    synthesize, summarize_synthesis, get_synthesis_prompt_block,
+)
+from sentinel.ui_components import synthesis_card
 
 __all__ = [
     # Core tools
@@ -190,4 +202,15 @@ __all__ = [
     "get_coherence_prompt_block", "get_all_commitments", "get_irs_meta",
     # RC-D1 Visual
     "d1_card", "d1_coherence_card",
+    # RC-SYNTHESIS Meta-Orquestador Epistemologico
+    "Signal",
+    "build_signals", "prioritize_signals", "determine_dominant_tension",
+    "DOMINANT_TENSIONS",
+    # RC-SYNTHESIS Templates
+    "build_hypothesis", "build_action_route",
+    # RC-SYNTHESIS Engine
+    "SynthesisResult",
+    "synthesize", "summarize_synthesis", "get_synthesis_prompt_block",
+    # RC-SYNTHESIS Visual
+    "synthesis_card",
 ]
