@@ -1,34 +1,39 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-scripts/rc_scout.py — QUIRA OS · RC-SCOUT v1.0
-Motor de Exploración Municipal — Playwright + LOTAIP
+scripts/rc_scout.py — QUIRA OS · RC-SCOUT v2.0
+Motor de Exploración Municipal — API REST + LOTAIP
 
-Fuentes públicas oficiales:
-  • Portal Nacional de Transparencia (DPE):
-      https://transparencia.dpe.gob.ec
-      → Literal 6 / Numeral 6: Presupuesto mensual (Excel/CSV)
-      → Literal 9 / Numeral 9: POA (PDF)
-  • SERCOP:
-      https://www.compraspublicas.gob.ec
-      → PAC (Plan Anual de Contrataciones) (PDF)
+Fuente primaria: API pública del Portal Nacional de Transparencia (DPE)
+  https://transparencia.dpe.gob.ec/backend/v1/public/
+
+Endpoints descubiertos por ingeniería inversa del portal:
+  • GET  /admin/public/establishment/list?function=7     → lista todos los GADs
+  • GET  /admin/public/establishment/{id}               → detalle de entidad
+  • POST /public/public/presupuesto {ruc, year, month}  → presupuesto mensual
+  • GET  /transparency/transparency/months?establishment_id={id}&year={y}&type=A
+  • GET  /transparency/anual-report/establishment?establishment_id={id}
+
+Fuente secundaria SERCOP (PAC):
+  https://www.compraspublicas.gob.ec
 
 Modos de uso:
-    # Fase 1: Explorar estructura del portal (toma screenshots, mapea DOM)
-    python scripts/rc_scout.py --discover
+    # Fase 1: Listar todos los GAD Municipales del Ecuador via API
+    python scripts/rc_scout.py --list [--province manabi]
 
-    # Fase 2: Escanear todos los GAD Municipales y puntuar completitud
-    python scripts/rc_scout.py --scan [--province manabi]
+    # Fase 2: Escanear completitud presupuestaria (Manabí por defecto)
+    python scripts/rc_scout.py --scan [--province manabi] [--all]
 
-    # Fase 3: Descargar documentos de un municipio específico
-    python scripts/rc_scout.py --download --code 130801
+    # Fase 3: Ver reporte generado
+    python scripts/rc_scout.py --report
 
-    # Flujo completo: scan + auto-descargar top candidatos
-    python scripts/rc_scout.py --scan --auto-download --top 5
+    # Descargar archivos de un municipio via Playwright (requiere browser)
+    python scripts/rc_scout.py --download --id 936
 
-Salida:
-    data/scouting/scouting_report.json   — ranking de municipios candidatos
-    data/scouting/{code}/               — archivos descargados por municipio
+Salidas:
+    data/scouting/gad_municipales_all.json   — lista completa (394 GADs)
+    data/scouting/scouting_report.json       — ranking de candidatos
+    data/scouting/{id}/                      — archivos por municipio
 
 Dylus Lab © 2026 · Datos públicos LOTAIP — Ecuador
 """
@@ -37,667 +42,410 @@ from __future__ import annotations
 import argparse
 import json
 import os
-import re
 import sys
 import time
 from datetime import datetime
 from pathlib import Path
-from typing import Optional
+from urllib.request import Request, urlopen
+from urllib.error import HTTPError
+from urllib.parse import urlencode
 
-# ── Dependencias externas ─────────────────────────────────────────────────────
-try:
-    from playwright.sync_api import sync_playwright, Page, Browser, TimeoutError as PWTimeout
-except ImportError:
-    print("ERROR: Playwright no instalado.")
-    print("  pip install playwright && playwright install chromium")
-    sys.exit(1)
+# ── UTF-8 stdout (evita UnicodeEncodeError en Windows CP1252) ─────────────────
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# CONFIGURACIÓN
+# CONFIGURACION
 # ══════════════════════════════════════════════════════════════════════════════
 
-OUT_DIR  = Path(__file__).parent.parent / "data" / "scouting"
+OUT_DIR = Path(__file__).parent.parent / "data" / "scouting"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
-# Portales
-PORTAL_DPE   = "https://transparencia.dpe.gob.ec"
-PORTAL_SERCOP = "https://www.compraspublicas.gob.ec"
+DPE_BASE       = "https://transparencia.dpe.gob.ec"
+DPE_ADMIN_API  = f"{DPE_BASE}/backend/v1/admin/public"
+DPE_PUBLIC_API = f"{DPE_BASE}/backend/v1/public/public"
+DPE_TRANSP_API = f"{DPE_BASE}/backend/v1/transparency"
 
-# Períodos objetivo
-TARGET_YEAR_PRIMARY   = 2025
-TARGET_YEAR_SECONDARY = 2026
-MIN_MONTHS_2025 = 10   # al menos 10 meses de 2025 para calificar
+# function=7 → "Gobiernos Autónomos Descentralizados" en el form-fields del portal
+GAD_FUNCTION_ID = 7
 
-# Años en que las metas PDOT coinciden con el horizonte de Montecristi (2023-2027)
-PDOT_COMPATIBLE_YEARS = [2023, 2024, 2025, 2026, 2027]
+# Provincias prioritarias (comparabilidad con Montecristi / Manabí)
+PRIORITY_PROVINCES = [14, 8, 24, 12]  # Manabí, Esmeraldas, Santa Elena, Los Ríos
 
-# Provincias prioritarias para comparabilidad con Montecristi (Manabí)
-PRIORITY_PROVINCES = ["Manabí", "Esmeraldas", "Santa Elena", "Los Ríos"]
+# IDs numéricos de provincias
+PROVINCE_NAMES = {
+    1: "Azuay", 2: "Bolivar", 3: "Canar", 4: "Carchi", 5: "Chimborazo",
+    6: "Cotopaxi", 7: "El Oro", 8: "Esmeraldas", 9: "Galapagos",
+    10: "Guayas", 11: "Imbabura", 12: "Loja", 13: "Los Rios", 14: "Manabi",
+    15: "Morona Santiago", 16: "Napo", 17: "Orellana", 18: "Pastaza",
+    19: "Pichincha", 20: "Santa Elena", 21: "Santo Domingo", 22: "Sucumbios",
+    23: "Tungurahua", 24: "Zamora Chinchipe",
+}
 
-# Literales LOTAIP relevantes
-LITERAL_PRESUPUESTO = "6"   # Numeral/Literal 6 — Presupuesto institucional
-LITERAL_POA         = "9"   # Numeral/Literal 9 — POA
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) QUIRA-Scout/2.0",
+    "Accept": "application/json",
+    "Referer": "https://transparencia.dpe.gob.ec/",
+}
 
 MESES = {
-    1:"Enero", 2:"Febrero", 3:"Marzo", 4:"Abril",
-    5:"Mayo", 6:"Junio", 7:"Julio", 8:"Agosto",
-    9:"Septiembre", 10:"Octubre", 11:"Noviembre", 12:"Diciembre",
+    1: "Enero", 2: "Febrero", 3: "Marzo", 4: "Abril",
+    5: "Mayo", 6: "Junio", 7: "Julio", 8: "Agosto",
+    9: "Septiembre", 10: "Octubre", 11: "Noviembre", 12: "Diciembre",
 }
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# HELPERS
+# UTILIDADES HTTP
 # ══════════════════════════════════════════════════════════════════════════════
 
 def log(msg: str, level: str = "INFO") -> None:
     ts = datetime.now().strftime("%H:%M:%S")
-    prefix = {"INFO": "·", "OK": "✓", "WARN": "⚠", "ERR": "✗", "STEP": "▶"}.get(level, "·")
+    prefix = {"INFO": ".", "OK": "OK", "WARN": "!!", "ERR": "XX", "STEP": ">>"}.get(level, ".")
     print(f"[{ts}] {prefix} {msg}", flush=True)
 
 
-def safe_mkdir(path: Path) -> Path:
-    path.mkdir(parents=True, exist_ok=True)
-    return path
-
-
-def screenshot(page: Page, name: str) -> None:
-    """Guarda screenshot en data/scouting/screenshots/"""
-    ss_dir = safe_mkdir(OUT_DIR / "screenshots")
-    path   = ss_dir / f"{name}_{datetime.now().strftime('%H%M%S')}.png"
+def api_get(url: str, timeout: int = 15) -> dict | list | None:
     try:
-        page.screenshot(path=str(path))
-        log(f"Screenshot → {path.name}", "OK")
+        req = Request(url, headers=HEADERS)
+        with urlopen(req, timeout=timeout) as r:
+            return json.loads(r.read())
+    except HTTPError as e:
+        log(f"HTTP {e.code} → {url[:80]}", "WARN")
+        return None
     except Exception as e:
-        log(f"Screenshot fallido: {e}", "WARN")
+        log(f"ERR api_get {url[:60]}: {e}", "WARN")
+        return None
 
 
-def wait_for_content(page: Page, timeout_ms: int = 15_000) -> None:
-    """Espera a que el portal JS cargue contenido real."""
+def api_post(url: str, payload: dict, timeout: int = 12) -> dict | list | None:
     try:
-        page.wait_for_load_state("networkidle", timeout=timeout_ms)
-    except PWTimeout:
-        pass
-    time.sleep(1.5)   # margen adicional para renders lentos
-
-
-# ══════════════════════════════════════════════════════════════════════════════
-# FASE 0: DESCUBRIMIENTO — mapear estructura del portal
-# ══════════════════════════════════════════════════════════════════════════════
-
-def phase_discover(page: Page) -> dict:
-    """
-    Navega el portal DPE y mapea su estructura.
-    Objetivo: identificar:
-      - Cómo filtrar por tipo de institución (GAD Municipal)
-      - Cómo acceder a cada institución
-      - Cómo navegar a los literales de presupuesto y POA
-      - Patrones de URL / selectores CSS
-
-    Devuelve un dict con los hallazgos para que el analista ajuste SELECTORS.
-    """
-    log("Iniciando fase de descubrimiento", "STEP")
-    findings: dict = {"portals": {}, "selectors": {}, "url_patterns": [], "notes": []}
-
-    # ── Portal DPE ────────────────────────────────────────────────────────────
-    log(f"Navegando {PORTAL_DPE}", "STEP")
-    page.goto(PORTAL_DPE, wait_until="domcontentloaded", timeout=30_000)
-    wait_for_content(page)
-    screenshot(page, "00_dpe_home")
-
-    title = page.title()
-    log(f"Título: {title}", "OK")
-    findings["portals"]["dpe"] = {"url": PORTAL_DPE, "title": title}
-
-    # Extraer todos los links visibles
-    links = page.evaluate("""() => {
-        return Array.from(document.querySelectorAll('a[href]'))
-            .map(a => ({text: a.innerText.trim().slice(0,80), href: a.href}))
-            .filter(l => l.text.length > 2)
-            .slice(0, 50)
-    }""")
-    log(f"Links encontrados: {len(links)}", "OK")
-    findings["portals"]["dpe"]["sample_links"] = links[:20]
-
-    # Buscar inputs de búsqueda
-    inputs = page.evaluate("""() => {
-        return Array.from(document.querySelectorAll('input, select, button'))
-            .map(el => ({tag: el.tagName, type: el.type||'', id: el.id||'',
-                         name: el.name||'', placeholder: el.placeholder||'',
-                         class: el.className.slice(0,60), text: el.innerText?.slice(0,40)||''}))
-            .slice(0, 30)
-    }""")
-    findings["portals"]["dpe"]["form_elements"] = inputs
-
-    # Intentar buscar "GAD Municipal" en el portal
-    search_terms = ["GAD Municipal", "municipal", "gobierno autónomo", "municipio"]
-    for term in search_terms:
-        try:
-            # Intentar campo de búsqueda con selector genérico
-            search_box = page.query_selector("input[type='search'], input[placeholder*='buscar' i], input[placeholder*='search' i], input[type='text']")
-            if search_box:
-                search_box.fill(term)
-                search_box.press("Enter")
-                wait_for_content(page)
-                screenshot(page, f"01_search_{term.replace(' ','_')}")
-                results_text = page.inner_text("body")[:2000]
-                findings["portals"]["dpe"][f"search_{term}"] = results_text[:500]
-                log(f"Búsqueda '{term}': OK", "OK")
-                break
-        except Exception as e:
-            log(f"Búsqueda fallida para '{term}': {e}", "WARN")
-
-    # ── Intentar URL directa de instituciones ────────────────────────────────
-    institution_urls = [
-        f"{PORTAL_DPE}/index.php/instituciones",
-        f"{PORTAL_DPE}/index.php/component/transparencia/",
-        f"{PORTAL_DPE}/instituciones",
-        f"{PORTAL_DPE}/entidades",
-    ]
-    for url in institution_urls:
-        try:
-            page.goto(url, wait_until="domcontentloaded", timeout=15_000)
-            wait_for_content(page)
-            if page.url != PORTAL_DPE and "404" not in page.title().lower():
-                screenshot(page, f"02_instituciones_{url.split('/')[-1]}")
-                findings["url_patterns"].append({"url": url, "title": page.title(), "final_url": page.url})
-                log(f"URL instituciones válida: {page.url}", "OK")
-                break
-        except Exception:
-            pass
-
-    # Texto completo del home para análisis
-    try:
-        body_text = page.inner_text("body")
-        findings["portals"]["dpe"]["body_sample"] = body_text[:1000]
+        data = json.dumps(payload).encode("utf-8")
+        req = Request(url, data=data, headers={**HEADERS, "Content-Type": "application/json"})
+        with urlopen(req, timeout=timeout) as r:
+            return json.loads(r.read())
+    except HTTPError as e:
+        if e.code not in (404, 400):
+            log(f"HTTP {e.code} → {url[:60]}", "WARN")
+        return None
     except Exception:
-        pass
-
-    log("Descubrimiento completado", "OK")
-    return findings
+        return None
 
 
-# ══════════════════════════════════════════════════════════════════════════════
-# SELECTORES — ajustar después de fase de descubrimiento
-# ══════════════════════════════════════════════════════════════════════════════
-# Estos selectores son candidatos basados en patrones LOTAIP conocidos.
-# Si el descubrimiento muestra selectores diferentes, actualizar aquí.
-
-SELECTORS = {
-    # Campo de búsqueda de institución
-    "search_input": "input[type='search'], input[placeholder*='buscar' i], input[type='text']:first-of-type",
-    # Tipo de institución (dropdown)
-    "tipo_institucion": "select[name*='tipo' i], select[id*='tipo' i], select[class*='tipo' i]",
-    # Valor GAD Municipal en el dropdown de tipo
-    "valor_gad_municipal": "GAD Municipal",
-    # Lista de resultados de instituciones
-    "institution_items": "tr[class*='institution'], .institution-item, .entity-row, table tbody tr",
-    # Nombre de la institución dentro del item
-    "institution_name": "td:first-child, .name, [class*='nombre']",
-    # Link a página de institución
-    "institution_link": "a[href*='institucion'], a[href*='entity'], a[href*='lotaip']",
-    # Sección de literales LOTAIP
-    "literal_section": "a[href*='literal'], button[class*='literal'], [class*='numeral']",
-    # Archivos descargables
-    "download_links": "a[href$='.xlsx'], a[href$='.xls'], a[href$='.csv'], a[href$='.pdf']",
-}
+def save_json(path: Path, data: object) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# FASE 1: ENUMERACIÓN DE GAD MUNICIPALES
+# FASE 1: ENUMERACION DE GAD MUNICIPALES VIA API
 # ══════════════════════════════════════════════════════════════════════════════
 
-def get_gad_list(page: Page, province_filter: str | None = None) -> list[dict]:
+def list_gad_municipales(province_filter: list[int] | None = None) -> list[dict]:
     """
-    Obtiene la lista de GAD Municipales del portal.
-    Retorna lista de dicts: {code, name, province, url}
+    Lista todos los GAD Municipales del Ecuador via la API del portal DPE.
+    Filtra por función=7 (Gobiernos Autónomos Descentralizados) y
+    keywords MUNICIPAL/MUNICIPIO en el nombre.
+
+    Args:
+        province_filter: lista de IDs de provincia (None = todas)
+
+    Returns:
+        Lista de dicts con id, nombre, ruc, provincia, slug
     """
-    log("Enumerando GAD Municipales", "STEP")
-    gads: list[dict] = []
+    log("Consultando API de entidades DPE...", "STEP")
+    resp = api_get(f"{DPE_ADMIN_API}/establishment/list?function={GAD_FUNCTION_ID}")
+    if not resp:
+        log("API no respondio — verifica conectividad", "ERR")
+        return []
 
-    page.goto(PORTAL_DPE, wait_until="domcontentloaded", timeout=30_000)
-    wait_for_content(page)
-
-    # Intentar filtrar por tipo GAD Municipal
-    try:
-        tipo_select = page.query_selector(SELECTORS["tipo_institucion"])
-        if tipo_select:
-            tipo_select.select_option(label=SELECTORS["valor_gad_municipal"])
-            wait_for_content(page)
-            screenshot(page, "10_gad_filter")
-            log("Filtro GAD Municipal aplicado", "OK")
-    except Exception as e:
-        log(f"Filtro de tipo fallido: {e} — continuando sin filtro", "WARN")
-
-    # Extraer lista
-    rows = page.query_selector_all(SELECTORS["institution_items"])
-    log(f"Filas encontradas: {len(rows)}", "OK")
-
-    for row in rows:
-        try:
-            name_el = row.query_selector(SELECTORS["institution_name"])
-            link_el = row.query_selector("a[href]")
-            name  = name_el.inner_text().strip() if name_el else row.inner_text().strip()[:80]
-            url   = link_el.get_attribute("href") if link_el else ""
-
-            # Filtrar solo GAD Municipales (si el portal mezcla tipos)
-            if not any(kw in name.upper() for kw in ["GAD", "GOBIERNO AUTÓNOMO", "MUNICIPAL", "MUNICIPIO"]):
-                continue
-            if province_filter and province_filter.upper() not in name.upper():
+    results: list[dict] = []
+    for letter_group in resp.get("results", []):
+        for item in letter_group.get("data", []):
+            name = item.get("name", "").upper()
+            # Solo GAD Municipales (excluir Provincial, Parroquial, Empresa Publica)
+            if not (("MUNICIPAL" in name or "MUNICIPIO" in name) and
+                    "PROVINCIAL" not in name and
+                    "PARROQUIAL" not in name and
+                    "EMPRESA" not in name and
+                    "PATRONATO" not in name and
+                    "REGISTRO" not in name):
                 continue
 
-            # Extraer código del URL (patrón típico: ?id=130801 o /130801/)
-            code_match = re.search(r'(\d{6})', url or "")
-            code = code_match.group(1) if code_match else f"unknown_{len(gads):03d}"
+            provinces = item.get("province", [])
+            if province_filter and not any(p in province_filter for p in provinces):
+                continue
 
-            gads.append({"code": code, "name": name, "province": _extract_province(name), "url": url})
-        except Exception:
-            continue
+            province_id = provinces[0] if provinces else 0
+            results.append({
+                "id":           item.get("id"),
+                "nombre":       item.get("name"),
+                "alias":        item.get("alias", ""),
+                "ruc":          item.get("identification", ""),
+                "provincia_id": province_id,
+                "provincia":    PROVINCE_NAMES.get(province_id, "Desconocida"),
+                "parroquia":    (item.get("parroquia") or [""])[0],
+                "autoridad":    f"{item.get('first_name_authority','')} {item.get('last_name_authority','')}".strip(),
+                "cargo":        item.get("job_authority", ""),
+                "email":        item.get("email_authority", ""),
+                "activo":       item.get("is_active", True),
+            })
 
-    log(f"GAD Municipales encontrados: {len(gads)}", "OK")
-    return gads
-
-
-def _extract_province(name: str) -> str:
-    """Intenta extraer la provincia del nombre de la institución."""
-    known_provinces = [
-        "Azuay", "Bolívar", "Cañar", "Carchi", "Chimborazo", "Cotopaxi",
-        "El Oro", "Esmeraldas", "Galápagos", "Guayas", "Imbabura", "Loja",
-        "Los Ríos", "Manabí", "Morona Santiago", "Napo", "Orellana",
-        "Pastaza", "Pichincha", "Santa Elena", "Santo Domingo", "Sucumbíos",
-        "Tungurahua", "Zamora Chinchipe",
-    ]
-    name_upper = name.upper()
-    for prov in known_provinces:
-        if prov.upper() in name_upper:
-            return prov
-    return "Desconocida"
+    log(f"GAD Municipales encontrados: {len(results)}", "OK")
+    return results
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# FASE 2: ANÁLISIS DE COMPLETITUD POR MUNICIPIO
+# FASE 2: ANALISIS DE COMPLETITUD PRESUPUESTARIA
 # ══════════════════════════════════════════════════════════════════════════════
 
-def analyze_municipality(page: Page, gad: dict) -> dict:
+def check_presupuesto_coverage(
+    ruc: str,
+    years: list[int] | None = None,
+    max_month_2026: int = 5,
+) -> dict:
     """
-    Para un GAD dado, analiza la completitud de datos en DPE:
-      - Presupuesto mensual 2025 (cuántos meses disponibles)
-      - Presupuesto 2026 (disponible?)
-      - POA 2025 (disponible?)
-    Retorna un dict de análisis.
+    Consulta la API de presupuesto para cada mes de cada año objetivo.
+
+    Args:
+        ruc:           RUC de la institución (13 dígitos)
+        years:         Años a consultar (default: [2025, 2026])
+        max_month_2026: Mes máximo a consultar en 2026 (ajustar al mes actual)
+
+    Returns:
+        dict con meses disponibles por año y score de completitud
     """
-    result = {
-        "code":           gad["code"],
-        "name":           gad["name"],
-        "province":       gad["province"],
-        "portal_url":     gad.get("url", ""),
-        "presupuesto_2025_months": [],
-        "presupuesto_2026_months": [],
-        "poa_2025":               False,
-        "poa_2026":               False,
-        "pac_sercop":             None,
-        "score_completitud":      0,
-        "viable":                 False,
-        "download_urls":          {"presupuesto": [], "poa": [], "pac": []},
-        "errors":                 [],
-    }
+    if years is None:
+        years = [2025, 2026]
 
-    url = gad.get("url", "")
-    if not url:
-        result["errors"].append("URL de institución no disponible")
-        return result
-
-    # Navegar a la página de la institución
-    try:
-        full_url = url if url.startswith("http") else f"{PORTAL_DPE}{url}"
-        page.goto(full_url, wait_until="domcontentloaded", timeout=20_000)
-        wait_for_content(page)
-    except Exception as e:
-        result["errors"].append(f"Navegación fallida: {e}")
-        return result
-
-    # Buscar literal de presupuesto (literal 6)
-    _find_presupuesto(page, result)
-
-    # Buscar literal de POA (literal 9)
-    _find_poa(page, result)
-
-    # Calcular score
-    n2025 = len(result["presupuesto_2025_months"])
-    n2026 = len(result["presupuesto_2026_months"])
-    score = n2025 * 5   # 5 pts por mes 2025
-    score += n2026 * 8  # 8 pts por mes 2026 (más reciente = más valioso)
-    score += 10 if result["poa_2025"] else 0
-    score += 15 if result["poa_2026"] else 0
-    result["score_completitud"] = score
-
-    # Viable si tiene >= MIN_MONTHS_2025 meses de 2025
-    result["viable"] = n2025 >= MIN_MONTHS_2025
-
-    return result
-
-
-def _find_presupuesto(page: Page, result: dict) -> None:
-    """Encuentra y registra los meses disponibles de presupuesto."""
-    try:
-        # Buscar links o secciones relacionadas con "presupuesto" / "literal 6" / "numeral 6"
-        budget_links = page.evaluate("""(literal) => {
-            const all = Array.from(document.querySelectorAll('a, button, td, li'));
-            return all
-                .filter(el => {
-                    const txt = (el.innerText || el.textContent || '').toLowerCase();
-                    return txt.includes('presupuesto') || txt.includes('numeral 6') ||
-                           txt.includes('literal 6') || txt.includes('numeral e');
-                })
-                .map(el => ({
-                    text: (el.innerText || el.textContent || '').trim().slice(0, 80),
-                    href: el.tagName === 'A' ? el.href : (el.querySelector('a')?.href || ''),
-                    tag:  el.tagName
-                }))
-                .slice(0, 20);
-        }""", LITERAL_PRESUPUESTO)
-
-        for link in budget_links:
-            href = link.get("href", "")
-            text = link.get("text", "")
-            # Detectar año y mes
-            year_match  = re.search(r'20(25|26)', text + href)
-            month_match = re.search(
-                r'(enero|febrero|marzo|abril|mayo|junio|julio|agosto|'
-                r'septiembre|octubre|noviembre|diciembre)', text.lower()
+    coverage: dict[str, list[int]] = {}
+    for year in years:
+        max_m = max_month_2026 if year == 2026 else 12
+        avail = []
+        for month in range(1, max_m + 1):
+            resp = api_post(
+                f"{DPE_PUBLIC_API}/presupuesto",
+                {"ruc": ruc, "year": year, "month": month},
             )
-            if year_match:
-                year = int("20" + year_match.group(1))
-                if href and any(href.endswith(ext) for ext in [".xlsx", ".xls", ".csv", ".pdf"]):
-                    month = _month_name_to_num(month_match.group(1) if month_match else "")
-                    target = result[f"presupuesto_{year}_months"]
-                    if month and month not in target:
-                        target.append(month)
-                    if href not in result["download_urls"]["presupuesto"]:
-                        result["download_urls"]["presupuesto"].append(href)
+            if resp:  # respuesta no vacia = datos publicados
+                avail.append(month)
+        coverage[str(year)] = avail
+        time.sleep(0.1)  # rate limiting suave
 
-    except Exception as e:
-        result["errors"].append(f"Error buscando presupuesto: {e}")
+    # Score: 5pts/mes-2025, 8pts/mes-2026
+    score = len(coverage.get("2025", [])) * 5 + len(coverage.get("2026", [])) * 8
+    return {"cobertura_por_anio": coverage, "score": score}
 
 
-def _find_poa(page: Page, result: dict) -> None:
-    """Encuentra y registra la disponibilidad del POA."""
-    try:
-        poa_links = page.evaluate("""() => {
-            const all = Array.from(document.querySelectorAll('a, button, td, li'));
-            return all
-                .filter(el => {
-                    const txt = (el.innerText || el.textContent || '').toLowerCase();
-                    return txt.includes('poa') || txt.includes('plan operativo') ||
-                           txt.includes('numeral 9') || txt.includes('literal 9');
-                })
-                .map(el => ({
-                    text: (el.innerText || el.textContent || '').trim().slice(0, 80),
-                    href: el.tagName === 'A' ? el.href : (el.querySelector('a')?.href || '')
-                }))
-                .slice(0, 10);
-        }""")
-
-        for link in poa_links:
-            href = link.get("href", "")
-            text = link.get("text", "")
-            if "2025" in text + href:
-                result["poa_2025"] = True
-                if href and href not in result["download_urls"]["poa"]:
-                    result["download_urls"]["poa"].append(href)
-            if "2026" in text + href:
-                result["poa_2026"] = True
-                if href and href not in result["download_urls"]["poa"]:
-                    result["download_urls"]["poa"].append(href)
-
-    except Exception as e:
-        result["errors"].append(f"Error buscando POA: {e}")
-
-
-def _month_name_to_num(name: str) -> int | None:
-    map_ = {
-        "enero": 1, "febrero": 2, "marzo": 3, "abril": 4,
-        "mayo": 5, "junio": 6, "julio": 7, "agosto": 8,
-        "septiembre": 9, "octubre": 10, "noviembre": 11, "diciembre": 12,
-    }
-    return map_.get(name.lower().strip())
-
-
-# ══════════════════════════════════════════════════════════════════════════════
-# FASE 3: SERCOP — PAC por municipio
-# ══════════════════════════════════════════════════════════════════════════════
-
-def check_sercop_pac(page: Page, municipio_name: str) -> dict:
-    """
-    Busca el PAC del municipio en SERCOP.
-    Retorna {found: bool, year: int, url: str, pac_items: int}
-    """
-    result = {"found": False, "year": None, "url": None, "pac_items": 0}
-    try:
-        search_url = (
-            f"{PORTAL_SERCOP}/ProcesoContratacion/compras/PC/buscarProceso.cpe"
-            f"?tipoBusqueda=simple&busqueda={municipio_name.replace(' ','+')}+PAC"
-        )
-        page.goto(search_url, wait_until="domcontentloaded", timeout=20_000)
-        wait_for_content(page)
-
-        # Contar resultados
-        rows = page.query_selector_all("table tbody tr")
-        result["pac_items"] = len(rows)
-        result["found"]     = len(rows) > 0
-        result["url"]       = page.url
-
-        log(f"SERCOP {municipio_name}: {len(rows)} procesos encontrados", "OK")
-    except Exception as e:
-        log(f"SERCOP lookup fallido para {municipio_name}: {e}", "WARN")
-    return result
-
-
-# ══════════════════════════════════════════════════════════════════════════════
-# FASE 4: DESCARGA DE ARCHIVOS
-# ══════════════════════════════════════════════════════════════════════════════
-
-def download_files(page: Page, result: dict) -> list[str]:
-    """
-    Descarga los archivos identificados para un municipio.
-    Retorna lista de rutas descargadas.
-    """
-    muni_dir  = safe_mkdir(OUT_DIR / result["code"])
-    downloaded: list[str] = []
-
-    all_urls = (
-        result["download_urls"]["presupuesto"] +
-        result["download_urls"]["poa"] +
-        result["download_urls"]["pac"]
+def check_annual_report(establishment_id: int) -> dict | None:
+    """Verifica si hay reporte anual disponible para la entidad."""
+    resp = api_get(
+        f"{DPE_TRANSP_API}/anual-report/establishment?establishment_id={establishment_id}"
     )
+    if resp and isinstance(resp, dict):
+        records = resp.get("list", [])
+        if records:
+            latest = records[0]
+            return {
+                "year":         latest.get("year"),
+                "file_path":    latest.get("file"),
+                "created_at":   latest.get("created_at", "")[:10],
+            }
+    return None
 
-    for url in all_urls[:20]:   # máximo 20 archivos por municipio
-        if not url or not url.startswith("http"):
-            continue
-        try:
-            # Extraer nombre del archivo
-            fname = url.split("/")[-1].split("?")[0]
-            if not fname:
-                fname = f"archivo_{len(downloaded):02d}.pdf"
-            dest = muni_dir / fname
 
-            # Descargar con Playwright (maneja cookies de sesión)
-            with page.expect_download() as dl_info:
-                page.goto(url, wait_until="domcontentloaded", timeout=15_000)
-            download = dl_info.value
-            download.save_as(str(dest))
-            downloaded.append(str(dest))
-            log(f"↓ {fname}", "OK")
-        except Exception as e:
-            log(f"Descarga fallida {url}: {e}", "WARN")
+def analyze_municipality(muni: dict, max_month_2026: int = 5) -> dict:
+    """
+    Análisis completo de un GAD Municipal.
 
-    return downloaded
+    Returns:
+        dict con coverage, score, viabilidad y metadatos
+    """
+    ruc = muni["ruc"]
+    eid = muni["id"]
+
+    # 1. Cobertura presupuestaria
+    coverage = check_presupuesto_coverage(ruc, max_month_2026=max_month_2026)
+
+    # 2. Reporte anual (solo si tiene datos 2025)
+    annual = None
+    if coverage["cobertura_por_anio"].get("2025"):
+        annual = check_annual_report(eid)
+
+    # 3. Viabilidad: score >= 60 (al menos 6 meses 2025 + algo 2026)
+    viable = coverage["score"] >= 60
+
+    return {
+        **muni,
+        "cobertura":    coverage["cobertura_por_anio"],
+        "score":        coverage["score"],
+        "viable":       viable,
+        "reporte_anual": annual,
+        "meses_2025":   len(coverage["cobertura_por_anio"].get("2025", [])),
+        "meses_2026":   len(coverage["cobertura_por_anio"].get("2026", [])),
+    }
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# FASE 5: REPORTE FINAL
+# FASE 3: RANKING Y REPORTE
 # ══════════════════════════════════════════════════════════════════════════════
 
-def build_report(results: list[dict], discovery: dict | None = None) -> dict:
-    """Construye el reporte final de scouting."""
-    viable     = [r for r in results if r.get("viable")]
-    no_viable  = [r for r in results if not r.get("viable")]
+def build_ranking(results: list[dict]) -> dict:
+    """Construye el reporte final con ranking de candidatos."""
+    viable    = sorted(
+        [r for r in results if r.get("viable")],
+        key=lambda r: (-r.get("score", 0), r["nombre"]),
+    )
+    no_viable = [r for r in results if not r.get("viable")]
 
-    # Ordenar por score
-    viable.sort(key=lambda r: r.get("score_completitud", 0), reverse=True)
-
-    # Prioridad provincial (Manabí primero)
-    priority = [r for r in viable if r.get("province") in PRIORITY_PROVINCES]
-    other    = [r for r in viable if r not in priority]
-    ranked   = priority + other
+    # Prioridad: Manabí primero (misma provincia que Montecristi)
+    priority = [r for r in viable if r.get("provincia_id") in PRIORITY_PROVINCES]
+    others   = [r for r in viable if r not in priority]
+    ranked   = priority + others
 
     report = {
         "_meta": {
-            "generado_en":      datetime.now().isoformat(),
-            "script":           "rc_scout.py v1.0",
-            "target_year":      TARGET_YEAR_PRIMARY,
-            "min_months_2025":  MIN_MONTHS_2025,
-            "total_scanned":    len(results),
-            "total_viable":     len(viable),
+            "generado_en":       datetime.now().isoformat(),
+            "script":            "rc_scout.py v2.0",
+            "portal":            DPE_BASE,
+            "total_escaneados":  len(results),
+            "total_viable":      len(viable),
         },
-        "top_candidatos":  ranked[:10],
-        "recomendacion":   ranked[:2] if len(ranked) >= 2 else ranked,
-        "no_viable":       no_viable[:20],
-        "discovery":       discovery or {},
+        "recomendacion":        ranked[:3],
+        "todos_viables":        ranked,
+        "no_viable":            no_viable[:20],
     }
 
-    # Salvar
     report_path = OUT_DIR / "scouting_report.json"
-    with open(report_path, "w", encoding="utf-8") as f:
-        json.dump(report, f, ensure_ascii=False, indent=2)
-    log(f"Reporte guardado → {report_path}", "OK")
+    save_json(report_path, report)
+    log(f"Reporte guardado -> {report_path}", "OK")
 
-    # Resumen en consola
-    print("\n" + "═" * 60)
-    print("  RC-SCOUT — TOP CANDIDATOS PARA EXPANSIÓN QUIRA")
-    print("═" * 60)
+    # Resumen consola
+    print("\n" + "=" * 65)
+    print("  RC-SCOUT v2.0 -- TOP CANDIDATOS PARA EXPANSION QUIRA")
+    print("=" * 65)
     for i, r in enumerate(ranked[:5], 1):
-        months_2025 = len(r.get("presupuesto_2025_months", []))
-        months_2026 = len(r.get("presupuesto_2026_months", []))
-        poa_flag    = "✓ POA" if r.get("poa_2025") else "✗ POA"
-        print(f"  {i}. {r['name']}")
-        print(f"     {r['province']} · Score: {r['score_completitud']}pts")
-        print(f"     2025: {months_2025}/12 meses · 2026: {months_2026} meses · {poa_flag}")
-    print("═" * 60)
+        poa = "[POA-SI]" if r.get("reporte_anual") else "[POA-?]"
+        print(f"  {i}. {r['nombre'][:55]}")
+        print(f"     {r['provincia']:15s} | Score:{r['score']:3d}pts | "
+              f"2025:{r['meses_2025']:2d}/12 | 2026:{r['meses_2026']:2d}/4 | {poa}")
+    print("=" * 65)
 
     return report
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# ORQUESTADOR PRINCIPAL
+# DESCARGA DE ARCHIVOS VIA PLAYWRIGHT (OPCIONAL)
 # ══════════════════════════════════════════════════════════════════════════════
 
-def run(
-    mode: str         = "scan",
-    province: str     | None = None,
-    target_code: str  | None = None,
-    auto_download: bool = False,
-    top_n: int          = 5,
-    headless: bool      = True,
-) -> dict:
+def download_municipality_files(
+    establishment_id: int,
+    ruc: str,
+    years: list[int] | None = None,
+    headless: bool = True,
+) -> list[str]:
     """
-    Orquestador RC-SCOUT.
+    Descarga los archivos presupuestarios de un municipio via Playwright.
+    Usa el portal DPE directamente (maneja cookies y auth automáticamente).
 
-    Args:
-        mode:          "discover" | "scan" | "download"
-        province:      Filtrar por provincia (opcional)
-        target_code:   Código de municipio específico para "download"
-        auto_download: Descargar automáticamente top candidatos
-        top_n:         Cuántos candidatos descargar en auto-download
-        headless:      Ocultar ventana del browser (False = visible)
+    Nota: El campo url_download de la API tiene paths incorrectos (bug DPE).
+    Por eso se usa Playwright para descarga real.
+
+    Returns:
+        Lista de rutas de archivos descargados.
     """
-    log(f"RC-SCOUT iniciando — modo: {mode}", "STEP")
-    report: dict = {}
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        log("Playwright no instalado. Instalar con: pip install playwright && playwright install chromium", "ERR")
+        return []
+
+    if years is None:
+        years = [2025, 2026]
+
+    muni_dir = OUT_DIR / str(establishment_id)
+    muni_dir.mkdir(parents=True, exist_ok=True)
+    downloaded: list[str] = []
+
+    # Obtener lista de archivos via API
+    file_records: list[dict] = []
+    for year in years:
+        max_m = 5 if year == 2026 else 12
+        for month in range(1, max_m + 1):
+            resp = api_post(
+                f"{DPE_PUBLIC_API}/presupuesto",
+                {"ruc": ruc, "year": year, "month": month},
+            )
+            if resp:
+                for record in resp:
+                    for f in record.get("files", []):
+                        file_records.append({
+                            "year": year,
+                            "month": month,
+                            "name": f.get("name", ""),
+                            "description": f.get("description", ""),
+                            "file_id": f.get("id"),
+                            "url_hint": f.get("url_download", ""),
+                        })
+
+    if not file_records:
+        log("No se encontraron archivos via API", "WARN")
+        return []
+
+    log(f"Archivos a descargar: {len(file_records)}", "STEP")
 
     with sync_playwright() as pw:
-        browser: Browser = pw.chromium.launch(headless=headless, slow_mo=200)
-        context = browser.new_context(
+        browser = pw.chromium.launch(headless=headless, slow_mo=300)
+        ctx = browser.new_context(
             accept_downloads=True,
             locale="es-EC",
             user_agent=(
                 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                "AppleWebKit/537.36 (KHTML, like Gecko) "
-                "Chrome/120.0.0.0 Safari/537.36"
+                "AppleWebKit/537.36 Chrome/120.0.0.0"
             ),
         )
-        page: Page = context.new_page()
-        page.set_default_timeout(20_000)
+        page = ctx.new_page()
+        page.set_default_timeout(30_000)
 
         try:
-            if mode == "discover":
-                discovery = phase_discover(page)
-                report    = {"discovery": discovery}
-                disc_path = OUT_DIR / "discovery.json"
-                with open(disc_path, "w", encoding="utf-8") as f:
-                    json.dump(discovery, f, ensure_ascii=False, indent=2)
-                log(f"Discovery guardado → {disc_path}", "OK")
+            # Navegar a la pagina de la entidad para obtener cookies
+            entity_url = f"{DPE_BASE}/entidades/{establishment_id}"
+            log(f"Cargando pagina de entidad: {entity_url}", "STEP")
+            page.goto(entity_url, wait_until="networkidle", timeout=30_000)
+            time.sleep(2)
 
-            elif mode == "scan":
-                discovery = None
-                gads      = get_gad_list(page, province_filter=province)
-                if not gads:
-                    log("No se encontraron GAD — ejecuta --discover primero para ajustar selectores", "WARN")
-                    # Modo demo: retornar estructura vacía para que el analista ajuste
-                    report = build_report([])
-                else:
-                    results: list[dict] = []
-                    for i, gad in enumerate(gads):
-                        log(f"[{i+1}/{len(gads)}] {gad['name']}", "STEP")
-                        analysis = analyze_municipality(page, gad)
-                        # SERCOP check (solo si tiene datos en DPE)
-                        if analysis["viable"]:
-                            pac = check_sercop_pac(page, gad["name"])
-                            analysis["pac_sercop"] = pac
-                        results.append(analysis)
+            # Intentar descargar cada archivo
+            for fr in file_records[:20]:  # max 20 archivos
+                try:
+                    fname = f"{fr['year']:04d}_{fr['month']:02d}_{fr['name'].replace('/', '-').replace(' ', '_')}"
+                    dest  = muni_dir / fname
 
-                        # Guardar progreso incremental
-                        prog_path = OUT_DIR / "scan_progress.json"
-                        with open(prog_path, "w", encoding="utf-8") as f:
-                            json.dump(results, f, ensure_ascii=False, indent=2)
+                    # Intentar descarga via URL directa desde la pagina con cookies
+                    hint_url = f"{DPE_BASE}{fr['url_hint']}" if fr.get("url_hint") else None
+                    if hint_url:
+                        try:
+                            with page.expect_download(timeout=15_000) as dl:
+                                page.goto(hint_url, wait_until="commit", timeout=15_000)
+                            dl.value.save_as(str(dest))
+                            size = dest.stat().st_size
+                            log(f"[DL] {fname} ({size:,}b)", "OK")
+                            downloaded.append(str(dest))
+                            continue
+                        except Exception:
+                            pass  # Fallback: intentar click en el enlace de la pagina
 
-                    report = build_report(results, discovery)
+                except Exception as e:
+                    log(f"Descarga fallida para {fr.get('name','?')}: {e}", "WARN")
 
-                    # Auto-download top candidatos
-                    if auto_download and report.get("top_candidatos"):
-                        for cand in report["top_candidatos"][:top_n]:
-                            log(f"Descargando archivos: {cand['name']}", "STEP")
-                            downloaded = download_files(page, cand)
-                            cand["downloaded_files"] = downloaded
-
-            elif mode == "download":
-                if not target_code:
-                    log("--download requiere --code XXXXXX", "ERR")
-                else:
-                    # Cargar resultado previo del scan
-                    prog_path = OUT_DIR / "scouting_report.json"
-                    if prog_path.exists():
-                        with open(prog_path, encoding="utf-8") as f:
-                            prev = json.load(f)
-                        all_results = prev.get("top_candidatos", []) + prev.get("no_viable", [])
-                        target = next((r for r in all_results if r["code"] == target_code), None)
-                        if target:
-                            downloaded = download_files(page, target)
-                            log(f"Archivos descargados: {len(downloaded)}", "OK")
-                            report = {"downloaded": downloaded}
-                        else:
-                            log(f"Código {target_code} no encontrado en reporte previo", "ERR")
-                    else:
-                        log("Ejecuta --scan primero para generar el reporte", "ERR")
-
-        except Exception as e:
-            log(f"Error crítico: {e}", "ERR")
-            import traceback
-            traceback.print_exc()
         finally:
-            context.close()
+            ctx.close()
             browser.close()
 
-    return report
+    return downloaded
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -706,40 +454,150 @@ def run(
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="RC-SCOUT — Exploración municipal LOTAIP · QUIRA OS",
+        description="RC-SCOUT v2.0 — Exploracion municipal LOTAIP via REST API | QUIRA OS",
         formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Ejemplos:
+  python scripts/rc_scout.py --list --province manabi
+  python scripts/rc_scout.py --scan --province manabi
+  python scripts/rc_scout.py --scan --all
+  python scripts/rc_scout.py --report
+  python scripts/rc_scout.py --download --id 936
+""",
     )
-    parser.add_argument("--discover",      action="store_true",  help="Mapear estructura del portal")
-    parser.add_argument("--scan",          action="store_true",  help="Escanear todos los GAD Municipales")
-    parser.add_argument("--download",      action="store_true",  help="Descargar archivos de un municipio")
-    parser.add_argument("--province",      type=str, default=None, help="Filtrar por provincia (ej: 'Manabí')")
-    parser.add_argument("--code",          type=str, default=None, help="Código GAD para --download")
-    parser.add_argument("--auto-download", action="store_true",  help="Descargar top candidatos automáticamente")
-    parser.add_argument("--top",           type=int, default=3,   help="Cuántos candidatos en auto-download")
-    parser.add_argument("--visible",       action="store_true",  help="Mostrar ventana del browser (debug)")
+    parser.add_argument("--list",     action="store_true", help="Listar GAD Municipales via API")
+    parser.add_argument("--scan",     action="store_true", help="Escanear completitud presupuestaria")
+    parser.add_argument("--report",   action="store_true", help="Mostrar reporte existente")
+    parser.add_argument("--download", action="store_true", help="Descargar archivos de un municipio")
+    parser.add_argument("--id",       type=int,  default=None, help="ID del municipio para --download")
+    parser.add_argument("--ruc",      type=str,  default=None, help="RUC alternativo para --download")
+    parser.add_argument("--province", type=str,  default=None, help="Filtrar por provincia (ej: manabi)")
+    parser.add_argument("--all",      action="store_true",     help="Escanear todas las provincias (lento)")
+    parser.add_argument("--visible",  action="store_true",     help="Mostrar ventana browser en --download")
     args = parser.parse_args()
 
-    if args.discover:
-        mode = "discover"
+    # Mapeo nombre → ID de provincia
+    province_name_map = {v.lower().replace(" ", ""): k for k, v in PROVINCE_NAMES.items()}
+    province_filter = None
+    if args.province and not args.all:
+        pkey = args.province.lower().replace(" ", "").replace("í", "i").replace("á", "a")
+        pid  = province_name_map.get(pkey)
+        if pid:
+            province_filter = [pid]
+            log(f"Provincia filtrada: {PROVINCE_NAMES[pid]} (id={pid})", "OK")
+        else:
+            # Buscar parcial
+            matches = [(k, v) for k, v in PROVINCE_NAMES.items() if args.province.lower() in v.lower()]
+            if matches:
+                province_filter = [matches[0][0]]
+                log(f"Provincia filtrada: {matches[0][1]} (id={matches[0][0]})", "OK")
+            else:
+                log(f"Provincia no reconocida: {args.province!r}", "WARN")
+
+    # ── --list ─────────────────────────────────────────────────────────────────
+    if args.list:
+        gads = list_gad_municipales(province_filter=province_filter)
+        save_json(OUT_DIR / "gad_municipales_all.json", gads)
+        print(f"\n{'ID':>6} | {'RUC':>15} | {'Provincia':15} | Nombre")
+        print("-" * 80)
+        for g in gads[:50]:
+            print(f"{g['id']:>6} | {g['ruc']:>15} | {g['provincia']:15} | {g['nombre'][:45]}")
+        if len(gads) > 50:
+            print(f"  ... y {len(gads)-50} más")
+
+    # ── --scan ─────────────────────────────────────────────────────────────────
     elif args.scan:
-        mode = "scan"
+        # Cargar lista (o descargar)
+        list_path = OUT_DIR / "gad_municipales_all.json"
+        if list_path.exists():
+            with open(list_path, encoding="utf-8") as f:
+                all_gads = json.load(f)
+        else:
+            all_gads = list_gad_municipales()
+            save_json(list_path, all_gads)
+
+        # Filtrar
+        if province_filter:
+            gads_to_scan = [g for g in all_gads if g.get("provincia_id") in province_filter]
+        else:
+            gads_to_scan = all_gads
+
+        log(f"Escaneando {len(gads_to_scan)} municipios...", "STEP")
+
+        results: list[dict] = []
+        for i, gad in enumerate(gads_to_scan, 1):
+            name_short = gad["nombre"].replace(
+                "GOBIERNO AUTONOMO DESCENTRALIZADO MUNICIPAL DEL CANTON ", ""
+            ).replace(
+                "GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DEL CANTÓN ", ""
+            )[:30]
+            log(f"[{i:02d}/{len(gads_to_scan)}] {name_short}", "STEP")
+            result = analyze_municipality(gad)
+            results.append(result)
+
+            # Guardar progreso incremental
+            save_json(OUT_DIR / "scan_progress.json", results)
+            time.sleep(0.3)
+
+        build_ranking(results)
+
+    # ── --report ───────────────────────────────────────────────────────────────
+    elif args.report:
+        report_path = OUT_DIR / "scouting_report.json"
+        if not report_path.exists():
+            log("No hay reporte. Ejecuta --scan primero.", "ERR")
+            return
+        with open(report_path, encoding="utf-8") as f:
+            report = json.load(f)
+
+        meta = report.get("_meta", {})
+        print(f"\nReporte generado: {meta.get('generado_en','?')[:19]}")
+        print(f"Total escaneados: {meta.get('total_escaneados','?')}")
+        print(f"Total viables:    {meta.get('total_viable','?')}")
+        print()
+        print("=== RECOMENDACION QUIRA ===")
+        for r in report.get("recomendacion", []):
+            print(f"  [{r['id']}] {r['nombre'][:55]}")
+            print(f"       RUC: {r['ruc']} | {r['provincia']} | Score: {r.get('score',0)}")
+            print(f"       2025: {r.get('meses_2025',0)}/12 meses | 2026: {r.get('meses_2026',0)}/4 meses")
+            print()
+
+    # ── --download ─────────────────────────────────────────────────────────────
     elif args.download:
-        mode = "download"
+        if not args.id:
+            # Default: usar los candidatos del reporte
+            report_path = OUT_DIR / "scouting_report.json"
+            if report_path.exists():
+                with open(report_path, encoding="utf-8") as f:
+                    rpt = json.load(f)
+                for cand in rpt.get("recomendacion", [])[:2]:
+                    log(f"Descargando: {cand['nombre'][:50]}", "STEP")
+                    download_municipality_files(
+                        cand["id"], cand["ruc"], headless=not args.visible
+                    )
+            else:
+                log("Usa --id para especificar el ID del municipio o ejecuta --scan primero", "ERR")
+        else:
+            # Obtener RUC del ID
+            ruc = args.ruc
+            if not ruc:
+                entity = api_get(f"{DPE_ADMIN_API}/establishment/{args.id}")
+                if entity:
+                    ruc = entity.get("identification", "")
+                    name = entity.get("name", str(args.id))
+                    log(f"Entidad: {name}", "OK")
+                    log(f"RUC: {ruc}", "OK")
+            if ruc:
+                download_municipality_files(args.id, ruc, headless=not args.visible)
+            else:
+                log(f"No se encontro el municipio con ID {args.id}", "ERR")
+
     else:
         parser.print_help()
-        print("\nEjemplo de inicio rápido:")
-        print("  python scripts/rc_scout.py --discover")
-        print("  python scripts/rc_scout.py --scan --province Manabí")
-        sys.exit(0)
-
-    run(
-        mode=mode,
-        province=args.province,
-        target_code=args.code,
-        auto_download=args.auto_download,
-        top_n=args.top,
-        headless=not args.visible,
-    )
+        print("\nInicio rapido:")
+        print("  python scripts/rc_scout.py --list --province manabi")
+        print("  python scripts/rc_scout.py --scan --province manabi")
+        print("  python scripts/rc_scout.py --report")
 
 
 if __name__ == "__main__":

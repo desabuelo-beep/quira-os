@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-pt-10">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/transparencia.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <meta name="robots" content="nofollow" />
+    <title>Portal Nacional de Transparencia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
+
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+    <script type="module" crossorigin src="/assets/index-XeqQXmvS.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Dq10JZPE.css">
+  </head>
+  <body id="root" class="mx-auto min-h-screen w-full overflow-x-hidden bg-white text-black">
+    <script src="/node_modules/flowbite/dist/flowbite.min.js" defer></script>
+    <!--<script async defer src="http://192.168.10.98:9090/tracker.js" data-website-id="cm8ewexu20004s3hu2nnqdvcu"></script>-->
+    <script async defer src="http://192.168.61.97:9090/tracker.js" data-website-id="cm4s2ca2e00017jz6xyeho0bx"></script>
+    <!-- <script async defer src="http://192.168.61.97:9090/tracker.js" data-website-id="cmh2g1zqi0dht78n9kfl69c60"></script> -->
+  </body>
+</html>

@@ -1,0 +1,1193 @@
+[
+  {
+    "id": 944,
+    "name": "GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DEL CANTÓN 24 DE MAYO",
+    "name_short": "24 DE MAYO",
+    "ruc": "1360001600001",
+    "months_2025": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "months_2026": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "score": 92
+  },
+  {
+    "id": 936,
+    "name": "GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DEL CANTÓN MANTA",
+    "name_short": "MANTA",
+    "ruc": "1360000980001",
+    "months_2025": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "months_2026": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "score": 92
+  },
+  {
+    "id": 929,
+    "name": "GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DEL CANTÓN PORTOVIEJO",
+    "name_short": "PORTOVIEJO",
+    "ruc": "1360000200001",
+    "months_2025": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "months_2026": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "score": 92
+  },
+  {
+    "id": 934,
+    "name": "GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DEL CANTÓN JIPIJAPA",
+    "name_short": "JIPIJAPA",
+    "ruc": "1360000630001",
+    "months_2025": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "months_2026": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "score": 92
+  },
+  {
+    "id": 935,
+    "name": "GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DEL CANTÓN JUNIN",
+    "name_short": "JUNIN",
+    "ruc": "1360000710001",
+    "months_2025": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "months_2026": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "score": 92
+  },
+  {
+    "id": 939,
+    "name": "GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DEL CANTÓN PICHINCHA",
+    "name_short": "PICHINCHA",
+    "ruc": "1360001870001",
+    "months_2025": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "months_2026": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "score": 92
+  },
+  {
+    "id": 948,
+    "name": "GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DEL CANTÓN JAMA",
+    "name_short": "JAMA",
+    "ruc": "1360020740001",
+    "months_2025": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "months_2026": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "score": 92
+  },
+  {
+    "id": 938,
+    "name": "GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DEL CANTÓN PAJAN",
+    "name_short": "PAJAN",
+    "ruc": "1360001280001",
+    "months_2025": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "months_2026": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "score": 92
+  },
+  {
+    "id": 941,
+    "name": "GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DEL CANTÓN SANTA ANA",
+    "name_short": "SANTA ANA",
+    "ruc": "1360001440001",
+    "months_2025": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "months_2026": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "score": 92
+  },
+  {
+    "id": 932,
+    "name": "GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DE EL CARMEN",
+    "name_short": "GOBIERNO AUTÓNOMO DESCENTRALIZ",
+    "ruc": "1360000550001",
+    "months_2025": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "months_2026": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "score": 92
+  },
+  {
+    "id": 1269,
+    "name": "EMPRESA MUNICIPAL DE VIVIENDA Y DESARROLLO URBANO \"SI VIVIENDA-EP\"",
+    "name_short": "EMPRESA MUNICIPAL DE VIVIENDA ",
+    "ruc": "1360065170001",
+    "months_2025": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "months_2026": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "score": 92
+  },
+  {
+    "id": 1403,
+    "name": "EMPRESA PÚBLICA MUNICIPAL DE TRANSPORTE TERRESTRE, TRANSITO Y SEGURIDAD VIAL DEL CANTÓN PORTOVIEJO EP, PORTOVIAL EP",
+    "name_short": "EMPRESA PÚBLICA MUNICIPAL DE T",
+    "ruc": "1360076020001",
+    "months_2025": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "months_2026": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "score": 92
+  },
+  {
+    "id": 1336,
+    "name": "EMPRESA PÚBLICA MUNICIPAL MOVILIDAD DE MANTA-EP",
+    "name_short": "EMPRESA PÚBLICA MUNICIPAL MOVI",
+    "ruc": "1360074080001",
+    "months_2025": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "months_2026": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "score": 92
+  },
+  {
+    "id": 1246,
+    "name": "EMPRESA PÚBLICA CORPORACIÓN DE SERVICIOS PÚBLICOS MUNICIPALES DE JIPIJAPA- EP",
+    "name_short": "EMPRESA PÚBLICA CORPORACIÓN DE",
+    "ruc": "1360069910001",
+    "months_2025": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "months_2026": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "score": 92
+  },
+  {
+    "id": 1139,
+    "name": "EMPRESA PÚBLICA MUNICIPAL DE AGUA POTABLE Y ALCANTARILLADO SANITARIO DEL CANTÓN JIPIJAPA",
+    "name_short": "EMPRESA PÚBLICA MUNICIPAL DE A",
+    "ruc": "1360073860001",
+    "months_2025": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "months_2026": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "score": 92
+  },
+  {
+    "id": 1749,
+    "name": "EMPRESA PÚBLICA MUNICIPAL DE VIVIENDA DEL CANTÓN PORTOVIEJO",
+    "name_short": "EMPRESA PÚBLICA MUNICIPAL DE V",
+    "ruc": "1360084470001",
+    "months_2025": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "months_2026": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "score": 92
+  },
+  {
+    "id": 1424,
+    "name": "EMPRESA PÚBLICA MUNICIPAL DE ASEO, RECOLECCIÓN Y DISPOSICIÓN FINAL DE DESECHOS SOLIDOS (EPMARYDDS) DEL CANTÓN JAMA",
+    "name_short": "EMPRESA PÚBLICA MUNICIPAL DE A",
+    "ruc": "1360072380001",
+    "months_2025": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "months_2026": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "score": 92
+  },
+  {
+    "id": 1639,
+    "name": "EMPRESA PÚBLICA MUNICIPAL DE INFORMACIÓN Y COMUNICACIÓN DEL CANTÓN SANTA ANA EPMICSA",
+    "name_short": "EMPRESA PÚBLICA MUNICIPAL DE I",
+    "ruc": "1360067380001",
+    "months_2025": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "months_2026": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "score": 92
+  },
+  {
+    "id": 1251,
+    "name": "EMPRESA PÚBLICA MUNICIPAL DEL MINI TERMINAL TERRESTRE DE LA CIUDAD DE BAHÍA DE CARÁQUEZ EMTTBC EP",
+    "name_short": "EMPRESA PÚBLICA MUNICIPAL DEL ",
+    "ruc": "1360064950001",
+    "months_2025": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "months_2026": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "score": 92
+  },
+  {
+    "id": 1736,
+    "name": "EMPRESA PÚBLICA MUNICIPAL DE PARQUES, CEMENTERIOS, ÁREAS VERDES, ZONAS DE RECREACIÓN Y ESPACIOS CULTURALES DE PORTOVIEJO",
+    "name_short": "EMPRESA PÚBLICA MUNICIPAL DE P",
+    "ruc": "1360084630001",
+    "months_2025": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "months_2026": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "score": 92
+  },
+  {
+    "id": 1555,
+    "name": "EMPRESA PÚBLICA MUNICIPAL REGISTRO DE LA PROPIEDAD DEL CANTÓN PORTOVIEJO",
+    "name_short": "EMPRESA PÚBLICA MUNICIPAL REGI",
+    "ruc": "1360086410001",
+    "months_2025": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "months_2026": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "score": 92
+  },
+  {
+    "id": 1629,
+    "name": "EMPRESA MUNICIPAL DE ASEO INTEGRAL MONTECRISTI-EP",
+    "name_short": "EMPRESA MUNICIPAL DE ASEO INTE",
+    "ruc": "1360086760001",
+    "months_2025": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "months_2026": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "score": 92
+  },
+  {
+    "id": 1213,
+    "name": "EMPRESA PÚBLICA MUNICIPAL DE AGUA POTABLE Y SANEAMIENTO DE PORTOVIEJO EP",
+    "name_short": "EMPRESA PÚBLICA MUNICIPAL DE A",
+    "ruc": "1360066300001",
+    "months_2025": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "months_2026": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "score": 92
+  },
+  {
+    "id": 1784,
+    "name": "EMPRESA PÚBLICA MUNICIPAL DE CENTROS COMERCIALES, TERMINAL TERRESTRE, MERCADOS Y CAMALES DEL CANTÓN PORTOVIEJO PORTOCOMERCIO EP.",
+    "name_short": "EMPRESA PÚBLICA MUNICIPAL DE C",
+    "ruc": "1360084390001",
+    "months_2025": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "months_2026": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "score": 92
+  },
+  {
+    "id": 1233,
+    "name": "EMPRESA PÚBLICA MUNICIPAL MANCOMUNADA DE ASEO INTEGRAL DE LOS CANTONES DE 24 DE MAYO, SANTA ANA Y OLMEDO",
+    "name_short": "EMPRESA PÚBLICA MUNICIPAL MANC",
+    "ruc": "1360065680001",
+    "months_2025": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "months_2026": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "score": 92
+  },
+  {
+    "id": 1531,
+    "name": "PATRONATO MUNICIPAL DE AMPARO SOCIAL DE MONTECRISTI",
+    "name_short": "PATRONATO MUNICIPAL DE AMPARO ",
+    "ruc": "1360059440001",
+    "months_2025": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "months_2026": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "score": 92
+  },
+  {
+    "id": 1192,
+    "name": "EMPRESA PÚBLICA MUNICIPAL DE AGUA POTABLE, ALCANTARILLADO, MANEJO PLUVIAL Y DEPURACIÓN DE RESIDUOS LÍQUIDOS DEL CANTÓN MANTA",
+    "name_short": "EMPRESA PÚBLICA MUNICIPAL DE A",
+    "ruc": "1360064440001",
+    "months_2025": [
+      1,
+      2,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "months_2026": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "score": 87
+  },
+  {
+    "id": 942,
+    "name": "GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DEL CANTÓN SUCRE",
+    "name_short": "SUCRE",
+    "ruc": "1360001520001",
+    "months_2025": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "months_2026": [
+      1,
+      2,
+      3
+    ],
+    "score": 84
+  },
+  {
+    "id": 1614,
+    "name": "REGISTRO MUNICIPAL DE LA PROPIEDAD Y MERCANTIL DEL CANTÓN SANTA ANA",
+    "name_short": "REGISTRO MUNICIPAL DE LA PROPI",
+    "ruc": "1360088030001",
+    "months_2025": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "months_2026": [
+      1,
+      2,
+      4
+    ],
+    "score": 84
+  },
+  {
+    "id": 1691,
+    "name": "Empresa Pública Municipal de Hábitat y Vivienda del Cantón Montecristi Montehogar-EP",
+    "name_short": "Empresa Pública Municipal de H",
+    "ruc": "1360087650001",
+    "months_2025": [
+      1,
+      2,
+      3,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "months_2026": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "score": 82
+  },
+  {
+    "id": 1475,
+    "name": "EMPRESA PÚBLICA MUNICIPAL DE AGUA POTABLE Y ALCANTARILLADO DEL CANTÓN PUERTO LOPEZ",
+    "name_short": "EMPRESA PÚBLICA MUNICIPAL DE A",
+    "ruc": "1360073430001",
+    "months_2025": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "months_2026": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "score": 82
+  },
+  {
+    "id": 950,
+    "name": "GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DEL CANTÓN SAN VICENTE",
+    "name_short": "SAN VICENTE",
+    "ruc": "1360014850001",
+    "months_2025": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      12
+    ],
+    "months_2026": [
+      2,
+      3,
+      4
+    ],
+    "score": 79
+  },
+  {
+    "id": 1518,
+    "name": "EMPRESA PÚBLICA MUNICIPAL DE SERVICIOS HIDROSANITARIOS DEL CANTÓN JARAMIJÓ HIDROJAR-EP",
+    "name_short": "EMPRESA PÚBLICA MUNICIPAL DE S",
+    "ruc": "1360087060001",
+    "months_2025": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "months_2026": [
+      1,
+      2,
+      3
+    ],
+    "score": 79
+  },
+  {
+    "id": 1411,
+    "name": "EMPRESA PÚBLICA MUNICIPAL DE AGUA POTABLE Y ALCANTARILLADO DE JAMA",
+    "name_short": "EMPRESA PÚBLICA MUNICIPAL DE A",
+    "ruc": "1360067030001",
+    "months_2025": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      12
+    ],
+    "months_2026": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "score": 77
+  },
+  {
+    "id": 931,
+    "name": "GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DEL CANTÓN CHONE",
+    "name_short": "CHONE",
+    "ruc": "1360000470001",
+    "months_2025": [
+      1,
+      2,
+      3,
+      4,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "months_2026": [
+      1,
+      2,
+      3
+    ],
+    "score": 74
+  },
+  {
+    "id": 945,
+    "name": "GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DEL CANTÓN PEDERNALES",
+    "name_short": "PEDERNALES",
+    "ruc": "1360002920001",
+    "months_2025": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10
+    ],
+    "months_2026": [
+      2,
+      3,
+      4
+    ],
+    "score": 69
+  },
+  {
+    "id": 943,
+    "name": "GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DEL CANTÓN TOSAGUA",
+    "name_short": "TOSAGUA",
+    "ruc": "1360001790001",
+    "months_2025": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "months_2026": [
+      3
+    ],
+    "score": 68
+  },
+  {
+    "id": 1327,
+    "name": "EMPRESA PÚBLICA MUNICIPAL MANCOMUNADA DE AGUA POTABLE DE LOS CANTONES BOLIVAR, JUNÍN, SAN VICENTE, SUCRE Y TOSAGUA EMMAP-EP",
+    "name_short": "EMPRESA PÚBLICA MUNICIPAL MANC",
+    "ruc": "1360068940001",
+    "months_2025": [
+      1,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "months_2026": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "score": 67
+  },
+  {
+    "id": 1225,
+    "name": "EMPRESA PÚBLICA MUNICIPAL DE AGUA POTABLE Y ALCANTARILLADO DE PEDERNALES EPMAPA - PED",
+    "name_short": "EMPRESA PÚBLICA MUNICIPAL DE A",
+    "ruc": "1360067110001",
+    "months_2025": [
+      1,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "months_2026": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "score": 67
+  },
+  {
+    "id": 1353,
+    "name": "EMPRESA PÚBLICA MUNICIPAL DE AGUA POTABLE Y ALCANTARILLADO DE CHONE",
+    "name_short": "EMPRESA PÚBLICA MUNICIPAL DE A",
+    "ruc": "1360074590001",
+    "months_2025": [
+      1,
+      2,
+      5,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "months_2026": [
+      1,
+      2,
+      3
+    ],
+    "score": 64
+  },
+  {
+    "id": 947,
+    "name": "GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DEL CANTÓN PUERTO LOPEZ",
+    "name_short": "PUERTO LOPEZ",
+    "ruc": "1360003300001",
+    "months_2025": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      12
+    ],
+    "months_2026": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "score": 62
+  },
+  {
+    "id": 940,
+    "name": "GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DEL CANTÓN ROCAFUERTE",
+    "name_short": "ROCAFUERTE",
+    "ruc": "1360001360001",
+    "months_2025": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      12
+    ],
+    "months_2026": [
+      1
+    ],
+    "score": 58
+  },
+  {
+    "id": 946,
+    "name": "GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DEL CANTÓN OLMEDO-MANABÍ",
+    "name_short": "OLMEDO-MANABÍ",
+    "ruc": "1360003220001",
+    "months_2025": [
+      1,
+      2,
+      3,
+      6,
+      7,
+      11
+    ],
+    "months_2026": [
+      2,
+      3,
+      4
+    ],
+    "score": 54
+  },
+  {
+    "id": 937,
+    "name": "GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DEL CANTÓN MONTECRISTI",
+    "name_short": "MONTECRISTI",
+    "ruc": "1360001010001",
+    "months_2025": [
+      10,
+      11,
+      12
+    ],
+    "months_2026": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "score": 47
+  },
+  {
+    "id": 1889,
+    "name": "EMPRESA PÚBLICA MUNICIPAL DE MOVILIDAD, TRANSPORTE TERRESTRE, TRANSITO, SEGURIDAD VIAL Y TERMINALES TERRESTRES DE CHONE EP",
+    "name_short": "EMPRESA PÚBLICA MUNICIPAL DE M",
+    "ruc": "1390088562001",
+    "months_2025": [
+      9,
+      10,
+      12
+    ],
+    "months_2026": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "score": 47
+  },
+  {
+    "id": 930,
+    "name": "GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DEL CANTÓN BOLIVAR",
+    "name_short": "BOLIVAR",
+    "ruc": "1360000390001",
+    "months_2025": [
+      11
+    ],
+    "months_2026": [
+      1,
+      2,
+      3
+    ],
+    "score": 29
+  },
+  {
+    "id": 933,
+    "name": "GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DEL CANTÓN FLAVIO ALFARO",
+    "name_short": "FLAVIO ALFARO",
+    "ruc": "1360002840001",
+    "months_2025": [],
+    "months_2026": [],
+    "score": 0
+  },
+  {
+    "id": 1867,
+    "name": "EMPRESA PÚBLICA MUNICIPAL VIAL DE CONSTRUCCIONES DE URBANIZACIÓN Y VIVIENDA DEL CANTÓN SAN VICENTE",
+    "name_short": "EMPRESA PÚBLICA MUNICIPAL VIAL",
+    "ruc": "1360086250001",
+    "months_2025": [],
+    "months_2026": [],
+    "score": 0
+  },
+  {
+    "id": 1908,
+    "name": "EMPRESA PUBLICA MUNICIPAL DE AGUA POTABLE, ALCANTARILLADO, MANEJO PLUVIAL Y DEPURACION DE RESIDUOS LIQUIDOS DEL CANTON SUCRE, EP AGUAS DE SUCRE, EPAS",
+    "name_short": "EMPRESA PUBLICA MUNICIPAL DE A",
+    "ruc": "1390088848001",
+    "months_2025": [],
+    "months_2026": [],
+    "score": 0
+  },
+  {
+    "id": 1190,
+    "name": "EMPRESA PÚBLICA MUNICIPAL DE AGUA POTABLE Y ALCANTARILLADO DEL CANTÓN PICHINCHA",
+    "name_short": "EMPRESA PÚBLICA MUNICIPAL DE A",
+    "ruc": "1360027910001",
+    "months_2025": [],
+    "months_2026": [],
+    "score": 0
+  }
+]

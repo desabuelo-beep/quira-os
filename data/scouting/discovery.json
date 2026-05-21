@@ -1,0 +1,130 @@
+{
+  "portals": {
+    "dpe": {
+      "url": "https://transparencia.dpe.gob.ec",
+      "title": "Portal Nacional de Transparencia",
+      "sample_links": [
+        {
+          "text": "Logo de la Defensoría del Pueblo",
+          "href": "https://transparencia.dpe.gob.ec/"
+        },
+        {
+          "text": "Inicio",
+          "href": "https://transparencia.dpe.gob.ec/"
+        },
+        {
+          "text": "Listado de Entidades",
+          "href": "https://transparencia.dpe.gob.ec/entidades"
+        },
+        {
+          "text": "API",
+          "href": "https://transparencia.dpe.gob.ec/backend/v1/public/swagger/"
+        },
+        {
+          "text": "Informe Anual",
+          "href": "https://transparencia.dpe.gob.ec/informe-anual-general"
+        },
+        {
+          "text": "Acerca de",
+          "href": "https://transparencia.dpe.gob.ec/acerca-de"
+        },
+        {
+          "text": "Ingresar al Portal",
+          "href": "https://transparencia.dpe.gob.ec/ingreso"
+        },
+        {
+          "text": "Personal y Remuneraciones\nMás información",
+          "href": "https://transparencia.dpe.gob.ec/#"
+        },
+        {
+          "text": "Presupuestos por Instituciones\nMás información",
+          "href": "https://transparencia.dpe.gob.ec/#"
+        },
+        {
+          "text": "Audiencias y Reuniones\nMás información",
+          "href": "https://transparencia.dpe.gob.ec/#"
+        },
+        {
+          "text": "Formularios y Solicitudes\nMás información",
+          "href": "https://transparencia.dpe.gob.ec/#"
+        },
+        {
+          "text": "Gobierno Abierto Ecuador",
+          "href": "https://www.gobiernoabierto.ec/'"
+        },
+        {
+          "text": "Estado Abierto Ecuador",
+          "href": "https://www.gobiernoabierto.ec/"
+        },
+        {
+          "text": "Conoce más",
+          "href": "https://www.gobiernoabierto.ec/"
+        },
+        {
+          "text": "Función Ejecutiva",
+          "href": "https://transparencia.dpe.gob.ec/entidades?tipo=Funci%C3%B3n%20Ejecutiva"
+        },
+        {
+          "text": "Función Legislativa",
+          "href": "https://transparencia.dpe.gob.ec/entidades?tipo=Funci%C3%B3n%20Legislativa"
+        },
+        {
+          "text": "Función Judicial",
+          "href": "https://transparencia.dpe.gob.ec/entidades?tipo=Funcion%20Judicial"
+        },
+        {
+          "text": "Función de Transparencia",
+          "href": "https://transparencia.dpe.gob.ec/entidades?tipo=Funcion%20de%20Transparencia%20y%20Control%20social"
+        },
+        {
+          "text": "Gobiernos Autónomos Descentralizados",
+          "href": "https://transparencia.dpe.gob.ec/entidades?tipo=Gobiernos%20Aut%C3%B3nomos%20Descentralizados"
+        },
+        {
+          "text": "Empresas Públicas",
+          "href": "https://transparencia.dpe.gob.ec/entidades?tipo=OTRAS%20INSTITUCIONES%20P%C3%9ABLICAS"
+        }
+      ],
+      "form_elements": [
+        {
+          "tag": "BUTTON",
+          "type": "button",
+          "id": "header-menu-btn",
+          "name": "",
+          "placeholder": "",
+          "class": "inline-flex h-11 w-11 items-center justify-center rounded-md",
+          "text": "abrir menú de navegación"
+        },
+        {
+          "tag": "INPUT",
+          "type": "search",
+          "id": "",
+          "name": "",
+          "placeholder": "Escribe nombre de la institución a consultar",
+          "class": "text-black-medium m-2 w-3/4 rounded-md border-none p-2 px-4 ",
+          "text": ""
+        },
+        {
+          "tag": "BUTTON",
+          "type": "button",
+          "id": "",
+          "name": "",
+          "placeholder": "",
+          "class": "flex w-1/4 items-center justify-center gap-x-4 rounded-r-ful",
+          "text": "Buscar"
+        }
+      ],
+      "search_GAD Municipal": "Logo de la Defensoría del Pueblo\nInicio\nListado de Entidades\nAPI\nInforme Anual\nAcerca de\nIngresar al Portal\nAccede a la información que publican las entidades del Estado ecuatoriano en cumplimiento de la LOTAIP\nGOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DE ZARUMA GAD MUNICIPAL DE ZARUMA\nUNIDAD DE TERMINALES COMO ENTIDAD OPERATIVA DESCONCENTRADA DEL GAD MUNICIPALIDAD AMBATO\nBuscar\n\nContamos con 2103427 conjuntos de datos registrados de 1913 instituciones\n\n¿Qué puedo hacer en este portal?\n\nConsul",
+      "body_sample": "Sitio no Encontrado\nIr a Inicio"
+    }
+  },
+  "selectors": {},
+  "url_patterns": [
+    {
+      "url": "https://transparencia.dpe.gob.ec/index.php/instituciones",
+      "title": "Portal Nacional de Transparencia",
+      "final_url": "https://transparencia.dpe.gob.ec/index.php/instituciones"
+    }
+  ],
+  "notes": []
+}

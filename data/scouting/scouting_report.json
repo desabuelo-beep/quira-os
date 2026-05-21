@@ -1,0 +1,1587 @@
+{
+  "_meta": {
+    "generado_en": "2026-05-21T00:35:58.266700",
+    "script": "rc_scout.py v2.0",
+    "portal": "https://transparencia.dpe.gob.ec",
+    "total_escaneados": 50,
+    "total_viable": 16
+  },
+  "recomendacion": [
+    {
+      "id": 932,
+      "nombre": "GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DE EL CARMEN",
+      "alias": "",
+      "ruc": "1360000550001",
+      "provincia_id": 14,
+      "provincia": "Manabi",
+      "parroquia": "",
+      "autoridad": "",
+      "cargo": "",
+      "email": "",
+      "activo": true,
+      "cobertura": {
+        "2025": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "2026": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "score": 92,
+      "viable": true,
+      "meses_2025": 12,
+      "meses_2026": 4,
+      "reporte_anual": null
+    },
+    {
+      "id": 944,
+      "nombre": "GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DEL CANTÓN 24 DE MAYO",
+      "alias": "",
+      "ruc": "1360001600001",
+      "provincia_id": 14,
+      "provincia": "Manabi",
+      "parroquia": "",
+      "autoridad": "",
+      "cargo": "",
+      "email": "",
+      "activo": true,
+      "cobertura": {
+        "2025": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "2026": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "score": 92,
+      "viable": true,
+      "meses_2025": 12,
+      "meses_2026": 4,
+      "reporte_anual": null
+    },
+    {
+      "id": 948,
+      "nombre": "GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DEL CANTÓN JAMA",
+      "alias": "",
+      "ruc": "1360020740001",
+      "provincia_id": 14,
+      "provincia": "Manabi",
+      "parroquia": "",
+      "autoridad": "",
+      "cargo": "",
+      "email": "",
+      "activo": true,
+      "cobertura": {
+        "2025": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "2026": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "score": 92,
+      "viable": true,
+      "meses_2025": 12,
+      "meses_2026": 4,
+      "reporte_anual": null
+    }
+  ],
+  "todos_viables": [
+    {
+      "id": 932,
+      "nombre": "GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DE EL CARMEN",
+      "alias": "",
+      "ruc": "1360000550001",
+      "provincia_id": 14,
+      "provincia": "Manabi",
+      "parroquia": "",
+      "autoridad": "",
+      "cargo": "",
+      "email": "",
+      "activo": true,
+      "cobertura": {
+        "2025": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "2026": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "score": 92,
+      "viable": true,
+      "meses_2025": 12,
+      "meses_2026": 4,
+      "reporte_anual": null
+    },
+    {
+      "id": 944,
+      "nombre": "GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DEL CANTÓN 24 DE MAYO",
+      "alias": "",
+      "ruc": "1360001600001",
+      "provincia_id": 14,
+      "provincia": "Manabi",
+      "parroquia": "",
+      "autoridad": "",
+      "cargo": "",
+      "email": "",
+      "activo": true,
+      "cobertura": {
+        "2025": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "2026": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "score": 92,
+      "viable": true,
+      "meses_2025": 12,
+      "meses_2026": 4,
+      "reporte_anual": null
+    },
+    {
+      "id": 948,
+      "nombre": "GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DEL CANTÓN JAMA",
+      "alias": "",
+      "ruc": "1360020740001",
+      "provincia_id": 14,
+      "provincia": "Manabi",
+      "parroquia": "",
+      "autoridad": "",
+      "cargo": "",
+      "email": "",
+      "activo": true,
+      "cobertura": {
+        "2025": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "2026": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "score": 92,
+      "viable": true,
+      "meses_2025": 12,
+      "meses_2026": 4,
+      "reporte_anual": null
+    },
+    {
+      "id": 934,
+      "nombre": "GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DEL CANTÓN JIPIJAPA",
+      "alias": "",
+      "ruc": "1360000630001",
+      "provincia_id": 14,
+      "provincia": "Manabi",
+      "parroquia": "",
+      "autoridad": "",
+      "cargo": "",
+      "email": "",
+      "activo": true,
+      "cobertura": {
+        "2025": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "2026": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "score": 92,
+      "viable": true,
+      "meses_2025": 12,
+      "meses_2026": 4,
+      "reporte_anual": null
+    },
+    {
+      "id": 935,
+      "nombre": "GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DEL CANTÓN JUNIN",
+      "alias": "",
+      "ruc": "1360000710001",
+      "provincia_id": 14,
+      "provincia": "Manabi",
+      "parroquia": "",
+      "autoridad": "",
+      "cargo": "",
+      "email": "",
+      "activo": true,
+      "cobertura": {
+        "2025": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "2026": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "score": 92,
+      "viable": true,
+      "meses_2025": 12,
+      "meses_2026": 4,
+      "reporte_anual": null
+    },
+    {
+      "id": 936,
+      "nombre": "GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DEL CANTÓN MANTA",
+      "alias": "",
+      "ruc": "1360000980001",
+      "provincia_id": 14,
+      "provincia": "Manabi",
+      "parroquia": "",
+      "autoridad": "",
+      "cargo": "",
+      "email": "",
+      "activo": true,
+      "cobertura": {
+        "2025": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "2026": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "score": 92,
+      "viable": true,
+      "meses_2025": 12,
+      "meses_2026": 4,
+      "reporte_anual": null
+    },
+    {
+      "id": 938,
+      "nombre": "GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DEL CANTÓN PAJAN",
+      "alias": "",
+      "ruc": "1360001280001",
+      "provincia_id": 14,
+      "provincia": "Manabi",
+      "parroquia": "",
+      "autoridad": "",
+      "cargo": "",
+      "email": "",
+      "activo": true,
+      "cobertura": {
+        "2025": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "2026": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "score": 92,
+      "viable": true,
+      "meses_2025": 12,
+      "meses_2026": 4,
+      "reporte_anual": null
+    },
+    {
+      "id": 939,
+      "nombre": "GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DEL CANTÓN PICHINCHA",
+      "alias": "",
+      "ruc": "1360001870001",
+      "provincia_id": 14,
+      "provincia": "Manabi",
+      "parroquia": "",
+      "autoridad": "",
+      "cargo": "",
+      "email": "",
+      "activo": true,
+      "cobertura": {
+        "2025": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "2026": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "score": 92,
+      "viable": true,
+      "meses_2025": 12,
+      "meses_2026": 4,
+      "reporte_anual": null
+    },
+    {
+      "id": 929,
+      "nombre": "GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DEL CANTÓN PORTOVIEJO",
+      "alias": "",
+      "ruc": "1360000200001",
+      "provincia_id": 14,
+      "provincia": "Manabi",
+      "parroquia": "",
+      "autoridad": "",
+      "cargo": "",
+      "email": "",
+      "activo": true,
+      "cobertura": {
+        "2025": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "2026": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "score": 92,
+      "viable": true,
+      "meses_2025": 12,
+      "meses_2026": 4,
+      "reporte_anual": null
+    },
+    {
+      "id": 941,
+      "nombre": "GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DEL CANTÓN SANTA ANA",
+      "alias": "",
+      "ruc": "1360001440001",
+      "provincia_id": 14,
+      "provincia": "Manabi",
+      "parroquia": "",
+      "autoridad": "",
+      "cargo": "",
+      "email": "",
+      "activo": true,
+      "cobertura": {
+        "2025": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "2026": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "score": 92,
+      "viable": true,
+      "meses_2025": 12,
+      "meses_2026": 4,
+      "reporte_anual": null
+    },
+    {
+      "id": 942,
+      "nombre": "GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DEL CANTÓN SUCRE",
+      "alias": "",
+      "ruc": "1360001520001",
+      "provincia_id": 14,
+      "provincia": "Manabi",
+      "parroquia": "",
+      "autoridad": "",
+      "cargo": "",
+      "email": "",
+      "activo": true,
+      "cobertura": {
+        "2025": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "2026": [
+          1,
+          2,
+          3
+        ]
+      },
+      "score": 84,
+      "viable": true,
+      "meses_2025": 12,
+      "meses_2026": 3,
+      "reporte_anual": null
+    },
+    {
+      "id": 950,
+      "nombre": "GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DEL CANTÓN SAN VICENTE",
+      "alias": "",
+      "ruc": "1360014850001",
+      "provincia_id": 14,
+      "provincia": "Manabi",
+      "parroquia": "",
+      "autoridad": "",
+      "cargo": "",
+      "email": "",
+      "activo": true,
+      "cobertura": {
+        "2025": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          12
+        ],
+        "2026": [
+          2,
+          3,
+          4
+        ]
+      },
+      "score": 79,
+      "viable": true,
+      "meses_2025": 11,
+      "meses_2026": 3,
+      "reporte_anual": null
+    },
+    {
+      "id": 931,
+      "nombre": "GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DEL CANTÓN CHONE",
+      "alias": "",
+      "ruc": "1360000470001",
+      "provincia_id": 14,
+      "provincia": "Manabi",
+      "parroquia": "",
+      "autoridad": "",
+      "cargo": "",
+      "email": "",
+      "activo": true,
+      "cobertura": {
+        "2025": [
+          1,
+          2,
+          3,
+          4,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "2026": [
+          1,
+          2,
+          3
+        ]
+      },
+      "score": 74,
+      "viable": true,
+      "meses_2025": 10,
+      "meses_2026": 3,
+      "reporte_anual": null
+    },
+    {
+      "id": 945,
+      "nombre": "GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DEL CANTÓN PEDERNALES",
+      "alias": "",
+      "ruc": "1360002920001",
+      "provincia_id": 14,
+      "provincia": "Manabi",
+      "parroquia": "",
+      "autoridad": "",
+      "cargo": "",
+      "email": "",
+      "activo": true,
+      "cobertura": {
+        "2025": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          10
+        ],
+        "2026": [
+          2,
+          3,
+          4
+        ]
+      },
+      "score": 69,
+      "viable": true,
+      "meses_2025": 9,
+      "meses_2026": 3,
+      "reporte_anual": null
+    },
+    {
+      "id": 943,
+      "nombre": "GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DEL CANTÓN TOSAGUA",
+      "alias": "",
+      "ruc": "1360001790001",
+      "provincia_id": 14,
+      "provincia": "Manabi",
+      "parroquia": "",
+      "autoridad": "",
+      "cargo": "",
+      "email": "",
+      "activo": true,
+      "cobertura": {
+        "2025": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "2026": [
+          3
+        ]
+      },
+      "score": 68,
+      "viable": true,
+      "meses_2025": 12,
+      "meses_2026": 1,
+      "reporte_anual": null
+    },
+    {
+      "id": 947,
+      "nombre": "GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DEL CANTÓN PUERTO LOPEZ",
+      "alias": "",
+      "ruc": "1360003300001",
+      "provincia_id": 14,
+      "provincia": "Manabi",
+      "parroquia": "",
+      "autoridad": "",
+      "cargo": "",
+      "email": "",
+      "activo": true,
+      "cobertura": {
+        "2025": [
+          1,
+          2,
+          3,
+          4,
+          6,
+          12
+        ],
+        "2026": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "score": 62,
+      "viable": true,
+      "meses_2025": 6,
+      "meses_2026": 4,
+      "reporte_anual": null
+    }
+  ],
+  "no_viable": [
+    {
+      "id": 1269,
+      "nombre": "EMPRESA MUNICIPAL DE VIVIENDA Y DESARROLLO URBANO \"SI VIVIENDA-EP\"",
+      "alias": "",
+      "ruc": "1360065170001",
+      "provincia_id": 14,
+      "provincia": "Manabi",
+      "parroquia": "",
+      "autoridad": "",
+      "cargo": "",
+      "email": "",
+      "activo": true,
+      "cobertura": {
+        "2025": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "2026": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "score": 92,
+      "viable": false,
+      "meses_2025": 12,
+      "meses_2026": 4,
+      "reporte_anual": null
+    },
+    {
+      "id": 1403,
+      "nombre": "EMPRESA PÚBLICA MUNICIPAL DE TRANSPORTE TERRESTRE, TRANSITO Y SEGURIDAD VIAL DEL CANTÓN PORTOVIEJO EP, PORTOVIAL EP",
+      "alias": "",
+      "ruc": "1360076020001",
+      "provincia_id": 14,
+      "provincia": "Manabi",
+      "parroquia": "",
+      "autoridad": "",
+      "cargo": "",
+      "email": "",
+      "activo": true,
+      "cobertura": {
+        "2025": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "2026": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "score": 92,
+      "viable": false,
+      "meses_2025": 12,
+      "meses_2026": 4,
+      "reporte_anual": null
+    },
+    {
+      "id": 1336,
+      "nombre": "EMPRESA PÚBLICA MUNICIPAL MOVILIDAD DE MANTA-EP",
+      "alias": "",
+      "ruc": "1360074080001",
+      "provincia_id": 14,
+      "provincia": "Manabi",
+      "parroquia": "",
+      "autoridad": "",
+      "cargo": "",
+      "email": "",
+      "activo": true,
+      "cobertura": {
+        "2025": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "2026": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "score": 92,
+      "viable": false,
+      "meses_2025": 12,
+      "meses_2026": 4,
+      "reporte_anual": null
+    },
+    {
+      "id": 1246,
+      "nombre": "EMPRESA PÚBLICA CORPORACIÓN DE SERVICIOS PÚBLICOS MUNICIPALES DE JIPIJAPA- EP",
+      "alias": "",
+      "ruc": "1360069910001",
+      "provincia_id": 14,
+      "provincia": "Manabi",
+      "parroquia": "",
+      "autoridad": "",
+      "cargo": "",
+      "email": "",
+      "activo": true,
+      "cobertura": {
+        "2025": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "2026": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "score": 92,
+      "viable": false,
+      "meses_2025": 12,
+      "meses_2026": 4,
+      "reporte_anual": null
+    },
+    {
+      "id": 1139,
+      "nombre": "EMPRESA PÚBLICA MUNICIPAL DE AGUA POTABLE Y ALCANTARILLADO SANITARIO DEL CANTÓN JIPIJAPA",
+      "alias": "",
+      "ruc": "1360073860001",
+      "provincia_id": 14,
+      "provincia": "Manabi",
+      "parroquia": "",
+      "autoridad": "",
+      "cargo": "",
+      "email": "",
+      "activo": true,
+      "cobertura": {
+        "2025": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "2026": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "score": 92,
+      "viable": false,
+      "meses_2025": 12,
+      "meses_2026": 4,
+      "reporte_anual": null
+    },
+    {
+      "id": 1749,
+      "nombre": "EMPRESA PÚBLICA MUNICIPAL DE VIVIENDA DEL CANTÓN PORTOVIEJO",
+      "alias": "",
+      "ruc": "1360084470001",
+      "provincia_id": 14,
+      "provincia": "Manabi",
+      "parroquia": "",
+      "autoridad": "",
+      "cargo": "",
+      "email": "",
+      "activo": true,
+      "cobertura": {
+        "2025": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "2026": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "score": 92,
+      "viable": false,
+      "meses_2025": 12,
+      "meses_2026": 4,
+      "reporte_anual": null
+    },
+    {
+      "id": 1424,
+      "nombre": "EMPRESA PÚBLICA MUNICIPAL DE ASEO, RECOLECCIÓN Y DISPOSICIÓN FINAL DE DESECHOS SOLIDOS (EPMARYDDS) DEL CANTÓN JAMA",
+      "alias": "",
+      "ruc": "1360072380001",
+      "provincia_id": 14,
+      "provincia": "Manabi",
+      "parroquia": "",
+      "autoridad": "",
+      "cargo": "",
+      "email": "",
+      "activo": true,
+      "cobertura": {
+        "2025": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "2026": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "score": 92,
+      "viable": false,
+      "meses_2025": 12,
+      "meses_2026": 4,
+      "reporte_anual": null
+    },
+    {
+      "id": 1639,
+      "nombre": "EMPRESA PÚBLICA MUNICIPAL DE INFORMACIÓN Y COMUNICACIÓN DEL CANTÓN SANTA ANA EPMICSA",
+      "alias": "",
+      "ruc": "1360067380001",
+      "provincia_id": 14,
+      "provincia": "Manabi",
+      "parroquia": "",
+      "autoridad": "",
+      "cargo": "",
+      "email": "",
+      "activo": true,
+      "cobertura": {
+        "2025": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "2026": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "score": 92,
+      "viable": false,
+      "meses_2025": 12,
+      "meses_2026": 4,
+      "reporte_anual": null
+    },
+    {
+      "id": 1251,
+      "nombre": "EMPRESA PÚBLICA MUNICIPAL DEL MINI TERMINAL TERRESTRE DE LA CIUDAD DE BAHÍA DE CARÁQUEZ EMTTBC EP",
+      "alias": "",
+      "ruc": "1360064950001",
+      "provincia_id": 14,
+      "provincia": "Manabi",
+      "parroquia": "",
+      "autoridad": "",
+      "cargo": "",
+      "email": "",
+      "activo": true,
+      "cobertura": {
+        "2025": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "2026": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "score": 92,
+      "viable": false,
+      "meses_2025": 12,
+      "meses_2026": 4,
+      "reporte_anual": null
+    },
+    {
+      "id": 1736,
+      "nombre": "EMPRESA PÚBLICA MUNICIPAL DE PARQUES, CEMENTERIOS, ÁREAS VERDES, ZONAS DE RECREACIÓN Y ESPACIOS CULTURALES DE PORTOVIEJO",
+      "alias": "",
+      "ruc": "1360084630001",
+      "provincia_id": 14,
+      "provincia": "Manabi",
+      "parroquia": "",
+      "autoridad": "",
+      "cargo": "",
+      "email": "",
+      "activo": true,
+      "cobertura": {
+        "2025": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "2026": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "score": 92,
+      "viable": false,
+      "meses_2025": 12,
+      "meses_2026": 4,
+      "reporte_anual": null
+    },
+    {
+      "id": 1555,
+      "nombre": "EMPRESA PÚBLICA MUNICIPAL REGISTRO DE LA PROPIEDAD DEL CANTÓN PORTOVIEJO",
+      "alias": "",
+      "ruc": "1360086410001",
+      "provincia_id": 14,
+      "provincia": "Manabi",
+      "parroquia": "",
+      "autoridad": "",
+      "cargo": "",
+      "email": "",
+      "activo": true,
+      "cobertura": {
+        "2025": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "2026": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "score": 92,
+      "viable": false,
+      "meses_2025": 12,
+      "meses_2026": 4,
+      "reporte_anual": null
+    },
+    {
+      "id": 1629,
+      "nombre": "EMPRESA MUNICIPAL DE ASEO INTEGRAL MONTECRISTI-EP",
+      "alias": "",
+      "ruc": "1360086760001",
+      "provincia_id": 14,
+      "provincia": "Manabi",
+      "parroquia": "",
+      "autoridad": "",
+      "cargo": "",
+      "email": "",
+      "activo": true,
+      "cobertura": {
+        "2025": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "2026": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "score": 92,
+      "viable": false,
+      "meses_2025": 12,
+      "meses_2026": 4,
+      "reporte_anual": null
+    },
+    {
+      "id": 1213,
+      "nombre": "EMPRESA PÚBLICA MUNICIPAL DE AGUA POTABLE Y SANEAMIENTO DE PORTOVIEJO EP",
+      "alias": "",
+      "ruc": "1360066300001",
+      "provincia_id": 14,
+      "provincia": "Manabi",
+      "parroquia": "",
+      "autoridad": "",
+      "cargo": "",
+      "email": "",
+      "activo": true,
+      "cobertura": {
+        "2025": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "2026": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "score": 92,
+      "viable": false,
+      "meses_2025": 12,
+      "meses_2026": 4,
+      "reporte_anual": null
+    },
+    {
+      "id": 1784,
+      "nombre": "EMPRESA PÚBLICA MUNICIPAL DE CENTROS COMERCIALES, TERMINAL TERRESTRE, MERCADOS Y CAMALES DEL CANTÓN PORTOVIEJO PORTOCOMERCIO EP.",
+      "alias": "",
+      "ruc": "1360084390001",
+      "provincia_id": 14,
+      "provincia": "Manabi",
+      "parroquia": "",
+      "autoridad": "",
+      "cargo": "",
+      "email": "",
+      "activo": true,
+      "cobertura": {
+        "2025": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "2026": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "score": 92,
+      "viable": false,
+      "meses_2025": 12,
+      "meses_2026": 4,
+      "reporte_anual": null
+    },
+    {
+      "id": 1233,
+      "nombre": "EMPRESA PÚBLICA MUNICIPAL MANCOMUNADA DE ASEO INTEGRAL DE LOS CANTONES DE 24 DE MAYO, SANTA ANA Y OLMEDO",
+      "alias": "",
+      "ruc": "1360065680001",
+      "provincia_id": 14,
+      "provincia": "Manabi",
+      "parroquia": "",
+      "autoridad": "",
+      "cargo": "",
+      "email": "",
+      "activo": true,
+      "cobertura": {
+        "2025": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "2026": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "score": 92,
+      "viable": false,
+      "meses_2025": 12,
+      "meses_2026": 4,
+      "reporte_anual": null
+    },
+    {
+      "id": 1531,
+      "nombre": "PATRONATO MUNICIPAL DE AMPARO SOCIAL DE MONTECRISTI",
+      "alias": "",
+      "ruc": "1360059440001",
+      "provincia_id": 14,
+      "provincia": "Manabi",
+      "parroquia": "",
+      "autoridad": "",
+      "cargo": "",
+      "email": "",
+      "activo": true,
+      "cobertura": {
+        "2025": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "2026": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "score": 92,
+      "viable": false,
+      "meses_2025": 12,
+      "meses_2026": 4,
+      "reporte_anual": null
+    },
+    {
+      "id": 1192,
+      "nombre": "EMPRESA PÚBLICA MUNICIPAL DE AGUA POTABLE, ALCANTARILLADO, MANEJO PLUVIAL Y DEPURACIÓN DE RESIDUOS LÍQUIDOS DEL CANTÓN MANTA",
+      "alias": "",
+      "ruc": "1360064440001",
+      "provincia_id": 14,
+      "provincia": "Manabi",
+      "parroquia": "",
+      "autoridad": "",
+      "cargo": "",
+      "email": "",
+      "activo": true,
+      "cobertura": {
+        "2025": [
+          1,
+          2,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "2026": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "score": 87,
+      "viable": false,
+      "meses_2025": 11,
+      "meses_2026": 4,
+      "reporte_anual": null
+    },
+    {
+      "id": 1614,
+      "nombre": "REGISTRO MUNICIPAL DE LA PROPIEDAD Y MERCANTIL DEL CANTÓN SANTA ANA",
+      "alias": "",
+      "ruc": "1360088030001",
+      "provincia_id": 14,
+      "provincia": "Manabi",
+      "parroquia": "",
+      "autoridad": "",
+      "cargo": "",
+      "email": "",
+      "activo": true,
+      "cobertura": {
+        "2025": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "2026": [
+          1,
+          2,
+          4
+        ]
+      },
+      "score": 84,
+      "viable": false,
+      "meses_2025": 12,
+      "meses_2026": 3,
+      "reporte_anual": null
+    },
+    {
+      "id": 1691,
+      "nombre": "Empresa Pública Municipal de Hábitat y Vivienda del Cantón Montecristi Montehogar-EP",
+      "alias": "",
+      "ruc": "1360087650001",
+      "provincia_id": 14,
+      "provincia": "Manabi",
+      "parroquia": "",
+      "autoridad": "",
+      "cargo": "",
+      "email": "",
+      "activo": true,
+      "cobertura": {
+        "2025": [
+          1,
+          2,
+          3,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "2026": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "score": 82,
+      "viable": false,
+      "meses_2025": 10,
+      "meses_2026": 4,
+      "reporte_anual": null
+    },
+    {
+      "id": 1475,
+      "nombre": "EMPRESA PÚBLICA MUNICIPAL DE AGUA POTABLE Y ALCANTARILLADO DEL CANTÓN PUERTO LOPEZ",
+      "alias": "",
+      "ruc": "1360073430001",
+      "provincia_id": 14,
+      "provincia": "Manabi",
+      "parroquia": "",
+      "autoridad": "",
+      "cargo": "",
+      "email": "",
+      "activo": true,
+      "cobertura": {
+        "2025": [
+          1,
+          2,
+          3,
+          4,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "2026": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "score": 82,
+      "viable": false,
+      "meses_2025": 10,
+      "meses_2026": 4,
+      "reporte_anual": null
+    }
+  ],
+  "seleccion_estrategica_quira": {
+    "descripcion": "Municipios seleccionados para expansion QUIRA (2 de 16 viables)",
+    "criterios": [
+      "Perfil costero comparable a Montecristi",
+      "12/12 meses 2025 + 4/4 meses 2026 disponibles en DPE",
+      "Tamano y tipo GAD complementario (grande + mediano)",
+      "Manabi — misma provincia para coherencia regional"
+    ],
+    "municipios": [
+      {
+        "nombre": "GAD Municipal del Canton Manta",
+        "establishment_id": 936,
+        "ruc": "1360000980001",
+        "razon": "Mayor GAD costero de Manabi. Ciudad puerto con perfil fiscal urbano. Demuestra escalabilidad QUIRA a municipios grandes.",
+        "alcaldesa": "Marciana Auxiliadora Valdivieso Zamora",
+        "email": "marciana_valdivieso@manta.gob.ec",
+        "meses_2025": 12,
+        "meses_2026": 4
+      },
+      {
+        "nombre": "GAD Municipal del Canton Jipijapa",
+        "establishment_id": 934,
+        "ruc": "1360000630001",
+        "razon": "Tamano y perfil similar a Montecristi. Corredor Manabi-Sur. Permite benchmarking entre municipios comparables.",
+        "meses_2025": 12,
+        "meses_2026": 4
+      }
+    ]
+  },
+  "notas_tecnicas": [
+    "API REST: GET /backend/v1/admin/public/establishment/list?function=7 -> lista todos los GADs",
+    "API REST: POST /backend/v1/public/public/presupuesto {ruc,year,month} -> verifica datos disponibles",
+    "url_download en respuesta presupuesto API tiene paths incorrectos (bug DPE) -> descargar via Playwright",
+    "Archivos presupuesto son CSV (3 archivos/mes): Conjunto de datos, Diccionario, Metadatos",
+    "Annual report disponible via GET /backend/v1/transparency/anual-report/establishment?establishment_id={id}",
+    "OpenAPI spec publica: GET /backend/v1/public/swagger/?format=openapi&lang=es"
+  ]
+}
