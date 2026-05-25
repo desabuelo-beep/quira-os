@@ -14,7 +14,7 @@ SESSION_DEFAULTS: dict = {
     "usuario":       None,
     "rol":           None,
     "rol_emoji":     None,
-    "page":          "dashboard",
+    "page":          "inicio",
     "data_loaded":   False,
     "show_tech":     False,
     "login_time":    0,        # timestamp de login — para expiración

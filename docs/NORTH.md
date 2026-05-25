@@ -121,9 +121,18 @@ El Gold Master (motor matemático TGI/ICPI/D1-D5) NO se modifica.
 - [x] `app/services/sat_evaluator.py` — evaluador SAT con triple ancla legal+operativa+doctrinal
 - [x] Pipeline ampliado a 11 pasos — ICPI=53.56%, SAT RIESGO=ALTO, 3 alertas activas
 - [x] Supabase: snapshot guardado sin errores de validación (fix tgi.score Q1)
+- [x] Frontend integral restructurado — `app.py` + `p0_inicio.py`:
+  - PAGES: 31 → 24 páginas con control de acceso por rol (roles=[...])
+  - Fase 2+ desregistradas (geotwin, ods, cooperacion, genero)
+  - Alcalde: 10 páginas visibles (sin páginas técnicas bloqueadas)
+  - Sidebar filtra por rol: páginas inaccesibles NO aparecen
+  - QuickNav duplicado eliminado
+  - `p0_inicio.py` — pantalla de entrada con ICPI + SAT activas del snapshot
+  - SECTIONS reorganizadas: SITUACIÓN / ALERTAS / MUNICIPAL / PROYECCIÓN / ANÁLISIS / CONTROL / IA
+  - Default landing: `inicio` (era `dashboard`)
 - [ ] Logging y manejo de errores centralizado
 - [ ] Tests básicos de pipeline
-- [ ] Dashboard ejecutivo: ICPI + SAT + D5 + longitudinalidad
+- [ ] Dashboard ejecutivo completo: D1-D5 + longitudinalidad (p_ejecutivo.py wired to snapshot)
 
 ### FASE 2 — Recuperación Semántica (Sep–Dic 2026)
 - RAG sobre PDOT, POA, PAC, contratos, SERCOP, CPCCS

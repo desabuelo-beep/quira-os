@@ -30,8 +30,7 @@ html, body, [data-testid="stAppViewContainer"] {
     color: #E2E8F0;
 }
 
-/* ── LAYOUT ANCHO TOTAL — Streamlit 1.35+ selectors ── */
-/* Cubre tanto la clase legacy como los data-testid modernos */
+/* ── LAYOUT ANCHO TOTAL ── */
 .main .block-container,
 [data-testid="stMainBlockContainer"],
 div.block-container {
@@ -43,20 +42,17 @@ div.block-container {
     padding-bottom: 0.5rem !important;
 }
 
-/* Iframes de components.html() — sin borde, ancho total */
 iframe {
     width: 100% !important;
     border: none !important;
     display: block !important;
 }
 
-/* Streamlit añade padding-top extra al primer bloque */
 [data-testid="stAppViewBlockContainer"],
 .appview-container .main section {
     padding-top: 0.5rem !important;
 }
 
-/* Eliminar gap entre secciones de st.container() */
 [data-testid="stVerticalBlock"] > [data-testid="stVerticalBlockBorderWrapper"] {
     gap: 0 !important;
 }
@@ -73,6 +69,13 @@ iframe {
 [data-testid="stSidebar"] [data-testid="stMarkdown"] p {
     color: rgba(255,255,255,0.65);
     font-size: 12px;
+}
+
+/* ── NAV BUTTONS — estado activo ── */
+.nav-active > button {
+    background: rgba(0,212,255,0.12) !important;
+    border-color: rgba(0,212,255,0.3) !important;
+    color: #00D4FF !important;
 }
 
 /* ── TABS ── */
@@ -135,24 +138,14 @@ iframe {
 #MainMenu { visibility: hidden; }
 footer { visibility: hidden; }
 
-/* ── SCROLLBAR DUPLICADO — eliminado desde html_engine.py (scrolling=False) ── */
-/* NO tocar overflow/height del root — rompe el scroll nativo en mobile */
-
-/* ── Z-INDEX STACK — evita que el sidebar se monte sobre modales/tooltips ── */
-[data-testid="stSidebar"] {
-    z-index: 100 !important;
-}
-section.main, [data-testid="stMain"] {
-    z-index: 10 !important;
-}
-/* Tooltips y popovers de Streamlit siempre encima */
+/* ── Z-INDEX ── */
+[data-testid="stSidebar"] { z-index: 100 !important; }
+section.main, [data-testid="stMain"] { z-index: 10 !important; }
 [data-baseweb="popover"],
 [data-baseweb="tooltip"],
-[data-testid="stPopover"] {
-    z-index: 99999 !important;
-}
+[data-testid="stPopover"] { z-index: 99999 !important; }
 
-/* ── DESKTOP: sidebar siempre visible — neutraliza caché de collapsed ── */
+/* ── DESKTOP: sidebar siempre visible ── */
 @media (min-width: 769px) {
     [data-testid="stSidebar"] {
         transform: translateX(0) !important;
@@ -163,35 +156,13 @@ section.main, [data-testid="stMain"] {
     }
 }
 
-/* ── QUICKNAV: forzar horizontal en pantallas pequeñas ── */
+/* ── MOBILE ── */
 @media (max-width: 768px) {
-    [data-testid="stHorizontalBlock"] {
-        flex-wrap: nowrap !important;
-    }
-    [data-testid="stHorizontalBlock"] > [data-testid="stColumn"] {
-        min-width: 0 !important;
-        flex: 1 1 0% !important;
-        overflow: hidden !important;
-    }
-    [data-testid="stHorizontalBlock"] .stButton > button {
-        font-size: 9px !important;
-        padding: 4px 2px !important;
-        white-space: nowrap !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-        min-height: 36px !important;
-    }
-}
-
-/* ── MOBILE: sidebar colapsado por defecto, toggle visible ── */
-@media (max-width: 768px) {
-    /* Main sin padding extra cuando sidebar está oculto */
     .main .block-container,
     [data-testid="stMainBlockContainer"] {
         padding-left: 0.5rem !important;
         padding-right: 0.5rem !important;
     }
-    /* Botón de expandir/colapsar sidebar — siempre visible y con color cyan */
     [data-testid="collapsedControl"],
     button[data-testid="collapsedControl"] {
         position: fixed !important;
@@ -209,7 +180,6 @@ section.main, [data-testid="stMain"] {
         align-items: center !important;
         justify-content: center !important;
     }
-    /* Sidebar abierto: drawer flotante */
     [data-testid="stSidebar"][aria-expanded="true"] {
         position: fixed !important;
         top: 0 !important;
@@ -227,125 +197,269 @@ section.main, [data-testid="stMain"] {
 
 # ── INIT SESSION + SEGURIDAD ──────────────────────────────────────────────────
 init_session()
-check_session_expiry()   # logout automático si la sesión expiró (60 min)
+check_session_expiry()
 
 # ── GATE: LOGIN ────────────────────────────────────────────────────────────────
 if not is_authenticated():
     render_login()
     st.stop()
 
-# ── RC-2B: SCHEDULER INSTITUCIONAL (tick silencioso) ─────────────────────────
-# Se ejecuta una vez por sesión autenticada, después del gate de auth.
-# Si la tarea ya corrió dentro del intervalo configurado, no hace nada.
-# Silencioso: cualquier error es absorbido sin afectar la UI.
+# ── RC-2B: SCHEDULER INSTITUCIONAL (silencioso) ───────────────────────────────
 try:
-    from sentinel.scheduler  import tick as _scheduler_tick
-    from sentinel.db_config  import get_connection as _get_db
+    from sentinel.scheduler import tick as _scheduler_tick
+    from sentinel.db_config import get_connection as _get_db
     _sched_conn = _get_db()
     _scheduler_tick(_sched_conn)
     _sched_conn.close()
 except Exception:
     pass
 
-# ── CARGA LAZY DE PÁGINAS ──────────────────────────────────────────────────────
+# ── CARGA DE PÁGINAS ───────────────────────────────────────────────────────────
+# Fase 1 — Inicio (nuevo, Sprint 2)
+from quira_pages.p0_inicio       import render as p0
+
+# Técnico / Operativo
 from quira_pages.p_sentinel_hub  import render as p_hub
 from quira_pages.p_carga         import render as p_carga
 from quira_pages.p_ingesta       import render as p_ingesta
 from quira_pages.p_historico     import render as p_historico
-from quira_pages.p_congruencia   import render as p_congruencia
 from quira_pages.p_alertas       import render as p_alertas
 from quira_pages.p_seguimiento   import render as p_seguimiento
 from quira_pages.p_reportes      import render as p_reportes
-from quira_pages.p_aprendizaje   import render as p_aprendizaje
 from quira_pages.p_gestion       import render as p_gestion
+
+# Ejecutivo / Directivo
 from quira_pages.p_ejecutivo     import render as p_ejecutivo
 from quira_pages.p1_dashboard    import render as p1
-from quira_pages.p2_holding      import render as p2
-from quira_pages.p3_congruencias import render as p3
-from quira_pages.p4_geotwin      import render as p4
-from quira_pages.p5_operacion    import render as p5
 from quira_pages.p6_pulso        import render as p6
 from quira_pages.p7_brecha       import render as p7
+
+# Análisis institucional
+from quira_pages.p2_holding      import render as p2
 from quira_pages.p8_metas        import render as p8
 from quira_pages.p9_sat          import render as p9
 from quira_pages.p10_inversion   import render as p10
-from quira_pages.p11_ods         import render as p11
 from quira_pages.p12_cadena      import render as p12
-from quira_pages.p13_simulador   import render as p13
 from quira_pages.p14_eficiencia  import render as p14
+from quira_pages.p5_operacion    import render as p5
+
+# Ciudadanía / Respaldo
 from quira_pages.p15_transparencia import render as p15
 from quira_pages.p16_gobernanza  import render as p16_gobernanza
-from quira_pages.p18_cooperacion import render as p18
-from quira_pages.p19_genero      import render as p19
-from components.sentinel   import render_sentinel
+
+# Proyección
+from quira_pages.p13_simulador   import render as p13
+
+# IA
+from components.sentinel         import render_sentinel
+
+# Fase 2+ (importar pero NO registrar en PAGES — se activarán en Sprint 3)
+# from quira_pages.p4_geotwin    import render as p4   # Fase 2 — GeoTwin
+# from quira_pages.p11_ods       import render as p11  # Fase 2 — ODS
+# from quira_pages.p18_cooperacion import render as p18  # Fase 2
+# from quira_pages.p19_genero    import render as p19  # Fase 2
 
 def _p_sentinel():
     render_sentinel()
 
+
+# ── CATÁLOGO DE PÁGINAS CON CONTROL DE ACCESO ─────────────────────────────────
+# roles: lista de roles que pueden ver esta página.
+# Roles disponibles: "Alcalde", "Concejal", "Técnico"
 PAGES = {
-    # ── SENTINEL HUB — Pantalla 0 real (Sprint 2.3) ────────────────────────────
-    "sentinel_hub": {"label": "Centro de Control",        "icon": "⬡",  "render": p_hub},
-    "carga":        {"label": "Panel de Carga",           "icon": "⬆️", "render": p_carga},
-    "ingesta":      {"label": "Ingesta Mensual",          "icon": "📥", "render": p_ingesta},
-    "historico":    {"label": "Inteligencia Histórica",   "icon": "📈", "render": p_historico},
-    "congruencia":  {"label": "Congruencia Institucional","icon": "🔗", "render": p_congruencia},
-    "alertas":      {"label": "Alertas de Cumplimiento",  "icon": "🔔", "render": p_alertas},
-    "seguimiento":  {"label": "Seguimiento Institucional","icon": "📊", "render": p_seguimiento},
-    "reportes":     {"label": "Reportes Institucionales", "icon": "📄", "render": p_reportes},
-    "aprendizaje":  {"label": "Aprendizaje Institucional","icon": "🧠", "render": p_aprendizaje},
-    "gestion":      {"label": "Ruta de Atención",        "icon": "🗓", "render": p_gestion},
-    "ejecutivo":    {"label": "Vista Ejecutiva",         "icon": "🏛", "render": p_ejecutivo},
-    # ── EJECUTIVO ─────────────────────────────────────────────────────────────
-    "dashboard":    {"label": "Tablero Ejecutivo",        "icon": "📊", "render": p1},
-    "pulso":        {"label": "Pulso Ejecutivo",          "icon": "⚡", "render": p6},
-    "brecha":       {"label": "Causas de la Brecha",      "icon": "📉", "render": p7},
-    "simulador":    {"label": "Proyector ✨",               "icon": "🧮", "render": p13},
-    # ── PLANIFICACIÓN ─────────────────────────────────────────────────────────
-    "metas":        {"label": "Metas del Plan Cantonal",  "icon": "🎯", "render": p8},
-    "cadena":       {"label": "Cadena de Planificación",  "icon": "🔗", "render": p12},
-    "congruencias": {"label": "Fidelidad del Mandato",    "icon": "🔗", "render": p3},
-    # ── OPERATIVO ─────────────────────────────────────────────────────────────
-    "sat":          {"label": "Señales de Alerta",        "icon": "🚨", "render": p9},
-    "eficiencia":   {"label": "Eficiencia por Dirección", "icon": "📋", "render": p14},
-    "operacion":    {"label": "Operación Técnica",        "icon": "⚙️", "render": p5},
-    # ── TERRITORIAL ───────────────────────────────────────────────────────────
-    "geotwin":      {"label": "Territorio Digital",       "icon": "🗺️", "render": p4},
-    "inversion":    {"label": "Inversión por Habitante",  "icon": "💰", "render": p10},
-    "holding":      {"label": "Grupo Municipal",          "icon": "🏛️", "render": p2},
-    # ── CIUDADANÍA ────────────────────────────────────────────────────────────
-    "gobernanza":   {"label": "Participación Ciudadana",  "icon": "🗳️", "render": p16_gobernanza},
-    "transparencia":{"label": "Transparencia Pública",   "icon": "🔍", "render": p15},
-    # ── ESTRATÉGICO ───────────────────────────────────────────────────────────
-    "ods":          {"label": "Agenda 2030 · ODS",        "icon": "🌐", "render": p11},
-    "cooperacion":  {"label": "Cooperación Internacional","icon": "💸", "render": p18},
-    "genero":       {"label": "Género y Ambiente",        "icon": "💜", "render": p19},
-    # ── IA ────────────────────────────────────────────────────────────────────
-    "sentinel":     {"label": "Sentinel · IA",            "icon": "🔮", "render": _p_sentinel},
+    # ── INICIO (todos los roles) ───────────────────────────────────────────
+    "inicio": {
+        "label":  "Estado del Municipio",
+        "icon":   "⬡",
+        "render": p0,
+        "roles":  ["Alcalde", "Concejal", "Técnico"],
+    },
+
+    # ── VISIÓN EJECUTIVA ───────────────────────────────────────────────────
+    "ejecutivo": {
+        "label":  "Vista Ejecutiva",
+        "icon":   "🏛",
+        "render": p_ejecutivo,
+        "roles":  ["Alcalde", "Concejal", "Técnico"],
+    },
+    "pulso": {
+        "label":  "Pulso del Municipio",
+        "icon":   "⚡",
+        "render": p6,
+        "roles":  ["Alcalde", "Concejal", "Técnico"],
+    },
+    "brecha": {
+        "label":  "Causas de la Brecha",
+        "icon":   "📉",
+        "render": p7,
+        "roles":  ["Alcalde", "Concejal", "Técnico"],
+    },
+
+    # ── ALERTAS ───────────────────────────────────────────────────────────
+    "sat": {
+        "label":  "Señales de Alerta SAT",
+        "icon":   "🚨",
+        "render": p9,
+        "roles":  ["Alcalde", "Concejal", "Técnico"],
+    },
+    "metas": {
+        "label":  "Metas del Plan Cantonal",
+        "icon":   "🎯",
+        "render": p8,
+        "roles":  ["Concejal", "Técnico"],
+    },
+
+    # ── MUNICIPAL ─────────────────────────────────────────────────────────
+    "holding": {
+        "label":  "Grupo Municipal",
+        "icon":   "🏛️",
+        "render": p2,
+        "roles":  ["Alcalde", "Concejal", "Técnico"],
+    },
+    "inversion": {
+        "label":  "Inversión por Habitante",
+        "icon":   "💰",
+        "render": p10,
+        "roles":  ["Alcalde", "Concejal", "Técnico"],
+    },
+    "gobernanza": {
+        "label":  "Participación Ciudadana",
+        "icon":   "🗳️",
+        "render": p16_gobernanza,
+        "roles":  ["Alcalde", "Concejal", "Técnico"],
+    },
+    "transparencia": {
+        "label":  "Transparencia Pública",
+        "icon":   "🔍",
+        "render": p15,
+        "roles":  ["Alcalde", "Concejal", "Técnico"],
+    },
+
+    # ── PROYECCIÓN ────────────────────────────────────────────────────────
+    "simulador": {
+        "label":  "Proyector ✨",
+        "icon":   "🧮",
+        "render": p13,
+        "roles":  ["Alcalde", "Concejal", "Técnico"],
+    },
+
+    # ── OPERATIVO (Técnico + Concejal) ────────────────────────────────────
+    "dashboard": {
+        "label":  "Tablero Técnico",
+        "icon":   "📊",
+        "render": p1,
+        "roles":  ["Concejal", "Técnico"],
+    },
+    "eficiencia": {
+        "label":  "Eficiencia por Dirección",
+        "icon":   "📋",
+        "render": p14,
+        "roles":  ["Concejal", "Técnico"],
+    },
+    "cadena": {
+        "label":  "Cadena de Planificación",
+        "icon":   "🔗",
+        "render": p12,
+        "roles":  ["Técnico"],
+    },
+    "operacion": {
+        "label":  "Operación Técnica",
+        "icon":   "⚙️",
+        "render": p5,
+        "roles":  ["Técnico"],
+    },
+
+    # ── CONTROL (solo Técnico) ────────────────────────────────────────────
+    "sentinel_hub": {
+        "label":  "Centro de Control",
+        "icon":   "⬡",
+        "render": p_hub,
+        "roles":  ["Técnico"],
+    },
+    "carga": {
+        "label":  "Panel de Carga",
+        "icon":   "⬆️",
+        "render": p_carga,
+        "roles":  ["Técnico"],
+    },
+    "ingesta": {
+        "label":  "Ingesta Mensual",
+        "icon":   "📥",
+        "render": p_ingesta,
+        "roles":  ["Técnico"],
+    },
+    "historico": {
+        "label":  "Historial de Snapshots",
+        "icon":   "📈",
+        "render": p_historico,
+        "roles":  ["Técnico"],
+    },
+    "alertas": {
+        "label":  "Monitor de Alertas",
+        "icon":   "🔔",
+        "render": p_alertas,
+        "roles":  ["Técnico"],
+    },
+    "seguimiento": {
+        "label":  "Seguimiento",
+        "icon":   "📊",
+        "render": p_seguimiento,
+        "roles":  ["Técnico"],
+    },
+    "reportes": {
+        "label":  "Reportes",
+        "icon":   "📄",
+        "render": p_reportes,
+        "roles":  ["Técnico"],
+    },
+    "gestion": {
+        "label":  "Gestión de Tareas",
+        "icon":   "🗓",
+        "render": p_gestion,
+        "roles":  ["Técnico"],
+    },
+
+    # ── IA (solo Técnico) ─────────────────────────────────────────────────
+    "sentinel": {
+        "label":  "Sentinel · IA",
+        "icon":   "🔮",
+        "render": _p_sentinel,
+        "roles":  ["Técnico"],
+    },
 }
 
-# ── DOCTRINA QUIRA — AGRUPACIÓN POR ESTADO COGNITIVO ──────────────────────────
+# ── SECCIONES POR ROL ──────────────────────────────────────────────────────────
+# Cada sección define qué páginas agrupa. El sidebar filtra automáticamente
+# por rol antes de renderizar — si la sección queda vacía, no se muestra.
 SECTIONS = [
-    ("CONTROL",   "Situación + prioridad",  ["ejecutivo", "sentinel_hub", "carga", "ingesta", "historico", "congruencia", "alertas", "seguimiento", "reportes", "aprendizaje", "gestion"]),
-    ("ENTENDER",  "Ver la verdad",          ["dashboard", "pulso", "brecha", "geotwin", "inversion"]),
-    ("GOBERNAR",  "Corregir el sistema",    ["metas", "cadena", "congruencias", "sat", "eficiencia", "operacion", "holding", "ods", "cooperacion", "genero"]),
-    ("SIMULAR",   "Proyectar escenarios",   ["simulador"]),
-    ("CONFIAR",   "Defender decisiones",    ["gobernanza", "transparencia"]),
-    ("APRENDER",  "El sistema mejora",      ["sentinel"]),
+    ("SITUACIÓN",   "Estado y prioridades",   ["inicio", "ejecutivo", "pulso", "brecha"]),
+    ("ALERTAS",     "Señales activas",         ["sat", "metas", "inversion"]),
+    ("MUNICIPAL",   "Organización del GAD",    ["holding", "gobernanza", "transparencia"]),
+    ("PROYECCIÓN",  "Escenarios",              ["simulador"]),
+    ("ANÁLISIS",    "Datos y métricas",        ["dashboard", "eficiencia", "cadena", "operacion"]),
+    ("CONTROL",     "Operación interna",       ["sentinel_hub", "carga", "ingesta", "historico", "alertas", "seguimiento", "reportes", "gestion"]),
+    ("IA",          "Inteligencia artificial", ["sentinel"]),
 ]
+
+
+# ── HELPER: páginas accesibles para el rol actual ─────────────────────────────
+def _accessible_pages() -> set[str]:
+    rol = st.session_state.get("rol", "")
+    return {k for k, v in PAGES.items() if rol in v.get("roles", [])}
+
 
 # ── SIDEBAR ────────────────────────────────────────────────────────────────────
 with st.sidebar:
-    # Logo / identidad
-    rol        = st.session_state.get("rol", "")
-    rol_emoji  = st.session_state.get("rol_emoji", "")
-    usuario    = st.session_state.get("usuario", "")
+    rol       = st.session_state.get("rol", "")
+    rol_emoji = st.session_state.get("rol_emoji", "")
 
+    # Logo + identidad
     st.markdown(f"""
 <div style="padding:16px 0 20px">
     <div style="font-size:1.4rem;font-weight:900;color:#00D4FF;letter-spacing:-0.03em;
                 margin-bottom:2px">⬡ {APP_NAME}</div>
     <div style="font-size:0.65rem;color:rgba(255,255,255,0.35);letter-spacing:0.05em;
-                text-transform:uppercase">{APP_VERSION} · Sistema de Gobernanza</div>
+                text-transform:uppercase">{APP_VERSION} · Gobernanza Municipal</div>
 </div>
 <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);
             border-radius:10px;padding:10px 12px;margin-bottom:20px">
@@ -355,23 +469,34 @@ with st.sidebar:
 </div>
     """, unsafe_allow_html=True)
 
-    # Navegación — Doctrina QUIRA
-    current_page = st.session_state.get("page", "dashboard")
+    # Navegación filtrada por rol
+    current_page = st.session_state.get("page", "inicio")
+    accessible   = _accessible_pages()
+
     for section_id, section_label, page_keys in SECTIONS:
+        # Solo mostrar páginas accesibles para este rol
+        visible = [k for k in page_keys if k in accessible and k in PAGES]
+        if not visible:
+            continue  # sección no visible para este rol
+
         st.markdown(f"""
 <div style="font-size:9px;font-weight:700;color:rgba(0,212,255,0.55);
             letter-spacing:0.09em;text-transform:uppercase;
             padding:10px 2px 3px;border-top:1px solid rgba(255,255,255,0.05);
-            margin-top:2px">{section_id} <span style="color:rgba(255,255,255,0.2);font-weight:400">· {section_label}</span></div>
+            margin-top:2px">{section_id}
+    <span style="color:rgba(255,255,255,0.2);font-weight:400"> · {section_label}</span>
+</div>
         """, unsafe_allow_html=True)
-        for key in page_keys:
+
+        for key in visible:
             page = PAGES[key]
-            disabled_note = " 🔒" if key == "operacion" and not is_tecnico() else ""
-            sentinel_note = " ✨" if key == "sentinel" else ""
+            is_active = (key == current_page)
+            btn_style = "primary" if is_active else "secondary"
             if st.button(
-                f"{page['icon']} {page['label']}{disabled_note}{sentinel_note}",
+                f"{page['icon']} {page['label']}",
                 key=f"nav_{key}",
                 use_container_width=True,
+                type=btn_style,
             ):
                 st.session_state["page"] = key
                 st.rerun()
@@ -386,7 +511,7 @@ with st.sidebar:
     👤 {ALCALDE}<br>
     📊 Corte {CORTE}<br>
     <br>
-    <span style="color:rgba(255,180,0,0.5)">⚠ Entorno PMV · no producción</span>
+    <span style="color:rgba(255,180,0,0.5)">⚠ Entorno PMV · Sprint 2</span>
 </div>
     """, unsafe_allow_html=True)
 
@@ -395,50 +520,53 @@ with st.sidebar:
         logout()
         st.rerun()
 
-    # SAT badge rápido
+    # SAT badge rápido (solo si hay alertas críticas)
     from data.loader import load_all, get_sat_counts
     try:
         _data = load_all()
         _sat  = get_sat_counts(_data)
         if _sat["criticos"] > 0:
+            n = _sat["criticos"]
             st.error(
-                f"🔴 {_sat['criticos']} señal{'es' if _sat['criticos']>1 else ''} crítica{'s' if _sat['criticos']>1 else ''} "
-                f"activa{'s' if _sat['criticos']>1 else ''} · Ver Tablero"
+                f"🔴 {n} señal{'es' if n > 1 else ''} crítica{'s' if n > 1 else ''} activa{'s' if n > 1 else ''}"
             )
     except Exception:
         pass
 
-# ── MAIN CONTENT ───────────────────────────────────────────────────────────────
-page_key = st.session_state.get("page", "sentinel_hub")
-# Redirect legacy keys → merged screen
-if page_key in ("confianza", "rdc"):
-    page_key = "gobernanza"
-    st.session_state["page"] = "gobernanza"
-page_cfg  = PAGES.get(page_key, PAGES["dashboard"])
 
-# ── Quick-nav bar — fallback cuando sidebar está colapsado (mobile-first) ──────
-# 5 accesos directos siempre visibles: Tablero · Brecha · Territorio · Proyector · Sentinel
-_quicknav_pages = ["sentinel_hub", "dashboard", "brecha", "simulador", "sentinel"]
-with st.container():
-    _qn_cols = st.columns(len(_quicknav_pages), gap="small")
-    for _col, _k in zip(_qn_cols, _quicknav_pages):
-        with _col:
-            _is_active = (_k == page_key)
-            if st.button(
-                f"{PAGES[_k]['icon']} {PAGES[_k]['label'].split(' ')[0]}",
-                key=f"topnav_{_k}",
-                use_container_width=True,
-                type="primary" if _is_active else "secondary",
-            ):
-                st.session_state["page"] = _k
-                st.rerun()
-st.markdown(
-    "<div style='height:1px;background:rgba(255,255,255,0.05);margin:0 0 14px'></div>",
-    unsafe_allow_html=True,
-)
+# ── MAIN CONTENT ───────────────────────────────────────────────────────────────
+# Resolver claves legacy → página correcta
+_LEGACY_KEYS: dict[str, str] = {
+    "confianza":    "gobernanza",
+    "rdc":          "gobernanza",
+    "sentinel_hub": "sentinel_hub",  # mantener si el usuario navega directo
+    "aprendizaje":  "sentinel",
+    "congruencia":  "sat",
+    "congruencias": "sat",
+    "dashboard":    "dashboard",
+    "ejecutivo":    "ejecutivo",
+}
+
+page_key = st.session_state.get("page", "inicio")
+
+# Aplicar mapa legacy
+if page_key in _LEGACY_KEYS and page_key not in PAGES:
+    page_key = _LEGACY_KEYS[page_key]
+    st.session_state["page"] = page_key
+
+# Si la página no es accesible para el rol, redirigir a inicio
+accessible = _accessible_pages()
+if page_key not in accessible or page_key not in PAGES:
+    page_key = "inicio"
+    st.session_state["page"] = page_key
+
+page_cfg = PAGES[page_key]
 
 log_page(page_key)
 page_cfg["render"]()
 
 # ── FOOTER ─────────────────────────────────────────────────────────────────────
-st.caption("QUIRA OS · Plataforma de Gobernanza Municipal · Dylus Lab © 2026 · Datos verificados corte enero–marzo 2026")
+st.caption(
+    "QUIRA OS · Gobernanza Municipal · Dylus Lab © 2026 · "
+    "Datos verificados corte enero–marzo 2026 · Sprint 2"
+)
