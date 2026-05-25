@@ -1,8 +1,15 @@
 """
-QUIRA OS v0.1 — Configuración central
+QUIRA OS — Configuración central
+Sprint 1 — Consolidación Base (Junio–Agosto 2026)
+
+Doctrina: QUIRA = infraestructura operativa de observación y validación
+territorial. Stack técnico (Streamlit, Supabase, etc.) es reemplazable.
+Este config.py abstrae esa reemplazabilidad.
+
 Dylus Lab © 2026
 """
 import os
+from pathlib import Path
 
 # ── MODO CLOUD ────────────────────────────────────────────────────────────────
 # En Streamlit Community Cloud no hay Excel local.
@@ -90,3 +97,83 @@ GREEN  = "#00E096"
 RED    = "#FF4D6D"
 PURPLE = "#7C5CFC"
 NAVY   = "#0A1628"
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# SPRINT 1 — Consolidación Base — Configuración Pipeline Territorial
+# ══════════════════════════════════════════════════════════════════════════════
+
+# ── Rutas Sprint 1 ────────────────────────────────────────────────────────────
+_BASE_DIR      = Path(__file__).parent
+DATA_DIR       = _BASE_DIR / "data"
+DOCTRINAL_DIR  = DATA_DIR / "doctrinal"    # Gold Master (lectura)
+SNAPSHOTS_DIR  = DATA_DIR / "snapshots"    # longitudinalidad
+RAW_DIR        = DATA_DIR / "raw"           # CSVs DPE sin procesar
+SCOUTING_DIR   = DATA_DIR / "scouting"
+REGISTRY_PATH  = DATA_DIR / "municipality_registry.json"
+
+# ── Municipio canónico Sprint 1 ───────────────────────────────────────────────
+CANONICAL_MUNICIPIO_CODE = "130801"
+CANONICAL_MUNICIPIO_NAME = "GAD Municipal de Montecristi"
+CANONICAL_RUC            = "1360000430001"
+
+# ── Versión pipeline ──────────────────────────────────────────────────────────
+PIPELINE_VERSION = "1.0.0-sprint1"
+SNAPSHOT_SCHEMA  = "1.0"
+
+# ── Doctrina TGI (namespace permanente — NO CAMBIAR) ─────────────────────────
+DOCTRINE = {
+    "framework":    "TGI Territorial",
+    "dimensions":   ["D1", "D2", "D3", "D4", "D5"],
+    "sat_enabled":  True,
+    "icpi_enabled": True,
+    "rc_m_enabled": False,   # Fase 4
+    "quira_layer":  "Q1",    # Observación
+}
+
+# ── Fuentes habilitadas ───────────────────────────────────────────────────────
+ENABLE_DPE    = True
+ENABLE_SERCOP = True
+ENABLE_CPCCS  = True
+ENABLE_SOCIAL = False   # manual — Fase 2
+
+# ── Source Reliability Weights ────────────────────────────────────────────────
+SOURCE_RELIABILITY = {
+    "dpe":      0.95,
+    "sercop":   0.95,
+    "cpccs":    0.80,
+    "youtube":  0.65,
+    "facebook": 0.45,
+}
+
+# ── Pipeline weights para TRACEABILITY_SCORE (suma = 1.0) ────────────────────
+PIPELINE_WEIGHTS = {
+    "dpe":    0.40,
+    "sercop": 0.35,
+    "cpccs":  0.25,
+}
+
+# ── Thresholds SAT (Base Legal: COPFP, LOCP, COOTAD, SERCOP) ─────────────────
+SAT_THRESHOLDS = {
+    "ejecucion_critica":  0.60,   # COPFP Art. 113 — crítico
+    "ejecucion_alerta":   0.75,   # LOCP Art. 92 — alerta
+    "cancelados_alerta":  0.15,   # SERCOP — >15% cancelados
+    "paralisis_dias":     90,     # SERCOP — parálisis
+    "emergencias_alerta": 0.10,   # SERCOP — >10% emergencias
+    "rdc_score_minimo":   50,     # CPCCS — RdC parcial mínima
+}
+
+# ── URLs APIs externas ────────────────────────────────────────────────────────
+DPE_API_BASE    = "https://api.transparencia.dpe.gob.ec/backend/v1"
+SERCOP_API_BASE = "https://datosabiertos.compraspublicas.gob.ec/PLATAFORMA/api/v1"
+CPCCS_API_BASE  = "https://rendiciondecuentas.cpccs.gob.ec/api/v1"
+
+# ── Supabase ──────────────────────────────────────────────────────────────────
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+SUPABASE_KEY = os.getenv("SUPABASE_KEY")
+
+
+def ensure_sprint1_dirs() -> None:
+    """Crea directorios Sprint 1 si no existen."""
+    for d in [DOCTRINAL_DIR, SNAPSHOTS_DIR, RAW_DIR, SCOUTING_DIR]:
+        d.mkdir(parents=True, exist_ok=True)
