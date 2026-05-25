@@ -159,6 +159,34 @@ def _get_thresholds() -> dict:
 
 
 # ══════════════════════════════════════════════════════════════════════════════
+# Clasificación de riesgo (helper público — usado en tests y en evaluate_sat)
+# ══════════════════════════════════════════════════════════════════════════════
+
+def _classify_risk(riesgo: float) -> str:
+    """Clasifica el riesgo ponderado SAT en niveles canónicos.
+
+    Umbrales (base doctrinal QUIRA):
+        < 0.15  → BAJO
+        < 0.30  → MEDIO
+        < 0.50  → ALTO
+        >= 0.50 → CRÍTICO
+
+    Args:
+        riesgo: float en [0, 1] — riesgo ponderado acumulado.
+
+    Returns:
+        str — "BAJO" | "MEDIO" | "ALTO" | "CRÍTICO"
+    """
+    if riesgo < 0.15:
+        return "BAJO"
+    if riesgo < 0.30:
+        return "MEDIO"
+    if riesgo < 0.50:
+        return "ALTO"
+    return "CRÍTICO"
+
+
+# ══════════════════════════════════════════════════════════════════════════════
 # Evaluador principal
 # ══════════════════════════════════════════════════════════════════════════════
 
@@ -422,14 +450,7 @@ def evaluate_sat(snapshot: dict) -> dict:
             activas.append(codigo)
 
     # ── Clasificación de riesgo ────────────────────────────────────────────────
-    if riesgo_acum < 0.15:
-        clasif = "BAJO"
-    elif riesgo_acum < 0.30:
-        clasif = "MEDIO"
-    elif riesgo_acum < 0.50:
-        clasif = "ALTO"
-    else:
-        clasif = "CRÍTICO"
+    clasif = _classify_risk(riesgo_acum)
 
     sat_score = round((1 - riesgo_acum) * 100, 1)
 
@@ -445,6 +466,7 @@ def evaluate_sat(snapshot: dict) -> dict:
     return {
         "alertas":              alertas,
         "activas":              activas,
+        "alertas_activas":      activas,   # alias canónico para p0_inicio y dashboard
         "riesgo_ponderado":     round(riesgo_acum, 4),
         "clasif_riesgo":        clasif,
         "sat_score":            sat_score,

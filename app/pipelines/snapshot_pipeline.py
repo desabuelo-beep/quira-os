@@ -27,7 +27,6 @@ Dylus Lab © 2026
 from __future__ import annotations
 
 import json
-import logging
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -38,10 +37,10 @@ _ROOT = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(_ROOT))
 
 import config as cfg
+from utils.logger import get_logger, configure_root
 
-logger = logging.getLogger(__name__)
-logging.basicConfig(level=cfg.LOG_LEVEL if hasattr(cfg, "LOG_LEVEL") else "INFO",
-                    format="%(asctime)s | %(levelname)s | %(name)s | %(message)s")
+configure_root()  # silenciar librerías externas (httpx, urllib3…)
+logger = get_logger(__name__, level=getattr(cfg, "LOG_LEVEL", "INFO"))
 
 
 # ══════════════════════════════════════════════════════════════════════════════

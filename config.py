@@ -118,8 +118,12 @@ CANONICAL_MUNICIPIO_NAME = "GAD Municipal de Montecristi"
 CANONICAL_RUC            = "1360000430001"
 
 # ── Versión pipeline ──────────────────────────────────────────────────────────
-PIPELINE_VERSION = "1.0.0-sprint1"
+PIPELINE_VERSION = "1.0.0-sprint2"
 SNAPSHOT_SCHEMA  = "1.0"
+
+# ── Logging ───────────────────────────────────────────────────────────────────
+LOG_LEVEL = "INFO"    # consola: DEBUG | INFO | WARNING | ERROR
+LOG_DIR   = Path(__file__).parent / "logs"
 
 # ── Doctrina TGI (namespace permanente — NO CAMBIAR) ─────────────────────────
 DOCTRINE = {

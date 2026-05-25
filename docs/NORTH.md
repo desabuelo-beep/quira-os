@@ -130,9 +130,12 @@ El Gold Master (motor matemático TGI/ICPI/D1-D5) NO se modifica.
   - `p0_inicio.py` — pantalla de entrada con ICPI + SAT activas del snapshot
   - SECTIONS reorganizadas: SITUACIÓN / ALERTAS / MUNICIPAL / PROYECCIÓN / ANÁLISIS / CONTROL / IA
   - Default landing: `inicio` (era `dashboard`)
-- [ ] Logging y manejo de errores centralizado
-- [ ] Tests básicos de pipeline
-- [ ] Dashboard ejecutivo completo: D1-D5 + longitudinalidad (p_ejecutivo.py wired to snapshot)
+- [x] Logging centralizado — `utils/logger.py` (RotatingFileHandler 5MB×5 + consola, config via LOG_LEVEL)
+- [x] Tests básicos del pipeline — `tests/` — 49 tests en verde:
+  - `test_snapshot_validation.py` — 14 tests: esquema canónico, límites TGI, GAD código
+  - `test_sat_evaluator.py` — 24 tests: catálogo SAT, clasificación riesgo, evaluate_sat
+  - `test_pipeline_smoke.py` — 11 tests: dry_run completo con mocks de conectores + logger
+- [x] Dashboard ejecutivo — `p_ejecutivo.py` sección Q1 wired al snapshot: ICPI + SAT activas + nivel riesgo
 
 ### FASE 2 — Recuperación Semántica (Sep–Dic 2026)
 - RAG sobre PDOT, POA, PAC, contratos, SERCOP, CPCCS

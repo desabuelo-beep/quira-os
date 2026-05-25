@@ -22,6 +22,36 @@ from sentinel.alert_engine   import get_alert_kpis, ENTITY_LABELS
 from sentinel.sla_db         import get_sla_summary
 from sentinel.db_config      import get_connection
 
+# SAT descriptores para la sección Q1
+_SAT_NOMBRES = {
+    "SAT-0":   "Coherencia POA-PAC",
+    "SAT-I":   "Fragmentación Selectiva",
+    "SAT-II":  "Reforma Tardía",
+    "SAT-III": "Parálisis Presupuestaria",
+    "SAT-IV":  "Alerta Fiscal COOTAD",
+    "SAT-V":   "Brecha Compromiso CPCCS",
+    "SAT-VI":  "Desvío Presupuesto Participativo",
+    "SAT-VII": "Pulso Sináptico",
+    "SAT-VIII":"Equidad Territorial",
+}
+_SAT_LEYES = {
+    "SAT-III": "COPFP Art. 113",
+    "SAT-IV":  "COOTAD Art. 192",
+    "SAT-V":   "COOTAD Art. 302",
+}
+_ICPI_COLOR = {
+    "Excelente":         "#22C55E",
+    "Saludable":         "#84CC16",
+    "En Construcción":   "#F59E0B",
+    "Ruptura Sistémica": "#EF4444",
+}
+_RIESGO_COLOR = {
+    "BAJO":    "#22C55E",
+    "MEDIO":   "#F59E0B",
+    "ALTO":    "#F97316",
+    "CRÍTICO": "#EF4444",
+}
+
 _MESES = {
     1:"Enero", 2:"Febrero", 3:"Marzo", 4:"Abril",
     5:"Mayo", 6:"Junio", 7:"Julio", 8:"Agosto",
@@ -66,11 +96,100 @@ def _atencion_card(titulo: str, entidad: str, periodo: str) -> str:
 </div>"""
 
 
+def _render_q1_panel() -> None:
+    """Sección Q1 — datos reales del último snapshot pipeline."""
+    try:
+        from utils.snapshot_io import load_snapshot
+        snap, meta = load_snapshot(municipio_code="130801")
+    except Exception:
+        snap, meta = None, None
+
+    if not snap:
+        st.info(
+            "💡 Sin snapshot Q1 activo. El panel de diagnóstico territorial "
+            "se habilitará después de ejecutar el pipeline desde **Panel de Carga**."
+        )
+        return
+
+    icpi = snap.get("icpi", {})
+    sat  = snap.get("sat",  {})
+
+    icpi_pct    = icpi.get("global_pct") or icpi.get("global")
+    icpi_clasif = icpi.get("clasificacion", "—")
+    activas     = sat.get("alertas_activas", sat.get("activas", []))
+    clasif_riesgo = sat.get("clasif_riesgo", "—").upper()
+    riesgo_pond = sat.get("riesgo_ponderado", 0.0)
+    fecha       = snap.get("_meta", {}).get("fecha_corte", "")
+
+    icpi_str  = f"{icpi_pct:.1f}%" if icpi_pct is not None else "—"
+    ic        = _ICPI_COLOR.get(icpi_clasif, "#F59E0B")
+    rc        = _RIESGO_COLOR.get(clasif_riesgo, "#F97316")
+
+    # ── Banner ICPI + Riesgo ──────────────────────────────────────────────────
+    st.markdown(f"""
+<div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px">
+  <div style="flex:1;min-width:160px;background:rgba(255,255,255,0.04);
+              border:1px solid rgba(255,255,255,0.09);border-radius:14px;
+              padding:16px 20px">
+    <div style="font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:.07em;
+                text-transform:uppercase;margin-bottom:4px">ICPI Global · Q1</div>
+    <div style="font-size:2rem;font-weight:900;color:{ic};line-height:1">{icpi_str}</div>
+    <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:4px">{icpi_clasif}</div>
+  </div>
+  <div style="flex:1;min-width:160px;background:rgba(255,255,255,0.04);
+              border:1px solid rgba(255,255,255,0.09);border-radius:14px;
+              padding:16px 20px">
+    <div style="font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:.07em;
+                text-transform:uppercase;margin-bottom:4px">Nivel de Riesgo SAT</div>
+    <div style="font-size:2rem;font-weight:900;color:{rc};line-height:1">{clasif_riesgo}</div>
+    <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:4px">
+      {len(activas)} señal{'es' if len(activas)!=1 else ''} activa{'s' if len(activas)!=1 else ''}
+    </div>
+  </div>
+</div>
+""", unsafe_allow_html=True)
+
+    # ── Alertas SAT activas ───────────────────────────────────────────────────
+    if activas:
+        rows = ""
+        for cod in activas:
+            nombre = _SAT_NOMBRES.get(cod, cod)
+            ley    = _SAT_LEYES.get(cod, "")
+            col    = _RIESGO_COLOR.get("ALTO", "#F97316")
+            rows += (
+                f'<div style="display:flex;align-items:center;gap:10px;padding:8px 12px;'
+                f'background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);'
+                f'border-left:3px solid {col};border-radius:8px;margin-bottom:5px">'
+                f'<span style="font-weight:800;color:{col};font-size:11px;min-width:56px">{cod}</span>'
+                f'<span style="flex:1;font-size:11px;color:#E2E8F0">{nombre}</span>'
+                f'<span style="font-size:10px;color:rgba(255,255,255,0.35)">{ley}</span>'
+                f'</div>'
+            )
+        st.markdown(
+            f'<div style="margin-bottom:4px;font-size:11px;font-weight:700;'
+            f'color:rgba(255,255,255,0.5);letter-spacing:.07em;text-transform:uppercase">'
+            f'🚨 Señales SAT Activas</div>{rows}',
+            unsafe_allow_html=True,
+        )
+    else:
+        st.success("✅ Sin alertas SAT activas en el período Q1.", icon="🟢")
+
+    st.markdown(
+        f'<div style="font-size:9px;color:rgba(255,255,255,0.2);margin-top:4px">'
+        f'Pipeline Q1 · Corte {fecha} · Gold Master v5.5</div>',
+        unsafe_allow_html=True,
+    )
+    st.markdown("---")
+
+
 def render() -> None:
     today = date.today()
     year, month = today.year, today.month
 
     st.caption("**Vista Ejecutiva** · Estado institucional del Holding Municipal")
+
+    # ── Panel Q1 — snapshot pipeline real ────────────────────────────────────
+    _render_q1_panel()
 
     # ── Selector de período ───────────────────────────────────────────────────
     c1, c2, _ = st.columns([1, 1, 3])
