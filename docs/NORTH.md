@@ -116,7 +116,11 @@ El Gold Master (motor matemático TGI/ICPI/D1-D5) NO se modifica.
 - [ ] Guardar primeros snapshots históricos en `data/snapshots/130801/`
 
 **Sprint 2 — Estabilización (semanas 3-4):**
-- [ ] `SAT_Catalogo` en Gold Master (nueva hoja)
+- [x] `SAT_Catalogo` en Gold Master — hoja puente Q1→SAT_ENGINE (SAT-0 a SAT-VIII, triple ancla)
+- [x] `app/connectors/gold_master.py` — conector H73_OUTPUT_API (51 métricas, reliability=0.99)
+- [x] `app/services/sat_evaluator.py` — evaluador SAT con triple ancla legal+operativa+doctrinal
+- [x] Pipeline ampliado a 11 pasos — ICPI=53.56%, SAT RIESGO=ALTO, 3 alertas activas
+- [x] Supabase: snapshot guardado sin errores de validación (fix tgi.score Q1)
 - [ ] Logging y manejo de errores centralizado
 - [ ] Tests básicos de pipeline
 - [ ] Dashboard ejecutivo: ICPI + SAT + D5 + longitudinalidad

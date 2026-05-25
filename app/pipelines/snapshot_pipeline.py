@@ -1,19 +1,21 @@
 """
-app/pipelines/snapshot_pipeline.py — QUIRA OS · Sprint 1
+app/pipelines/snapshot_pipeline.py — QUIRA OS · Sprint 2
 Orquestador Snapshot Pipeline Territorial
 
-Este es el corazón operacional de QUIRA en Fase 1.
+Este es el corazón operacional de QUIRA en Fase 1-2.
 
 Funciones:
   1. fetch_dpe()            → datos presupuestarios DPE API
   2. fetch_sercop()         → contratación viva SERCOP OCDS
   3. fetch_rdc()            → rendición de cuentas CPCCS
   4. fetch_social()         → evidencia pública (placeholder)
-  5. normalize_sources()    → merge y normalización
-  6. build_snapshot()       → ensamble snapshot canónico
-  7. validate_snapshot()    → validación doctrinaria
-  8. save_snapshot()        → persistencia Supabase/JSON
-  9. emit_provenance()      → trazabilidad auditable
+  5. fetch_gold_master()    → métricas canónicas Gold Master (fallback + TGI)
+  6. normalize_sources()    → merge y normalización
+  7. build_snapshot()       → ensamble snapshot canónico
+  8. eval_sat()             → evaluación SAT (triple ancla legal+operativa+doctrinal)
+  9. validate_snapshot()    → validación doctrinaria
+  10. save_snapshot()        → persistencia Supabase/JSON
+  11. emit_provenance()      → trazabilidad auditable
 
 Flujo doctrinal: OBSERVAR → ENTENDER → VALIDAR → MEMORIZAR
 Territorio canónico: Montecristi (código 130801)
@@ -111,24 +113,33 @@ class SnapshotPipeline:
         rdc_result     = self._step_fetch_rdc()
         social_result  = self._step_fetch_social()
 
-        # ── PASO 5: Normalización ─────────────────────────────────────────────
-        sources = self._step_normalize_sources(dpe_result, sercop_result, rdc_result, social_result)
+        # ── PASO 5: Gold Master (métricas canónicas + TGI fallback) ──────────
+        gm_result = self._step_fetch_gold_master()
 
-        # ── PASO 6: Ensamble snapshot ─────────────────────────────────────────
+        # ── PASO 6: Normalización ─────────────────────────────────────────────
+        sources = self._step_normalize_sources(
+            dpe_result, sercop_result, rdc_result, social_result, gm_result
+        )
+
+        # ── PASO 7: Ensamble snapshot ─────────────────────────────────────────
         snapshot = self._step_build_snapshot(sources)
 
-        # ── PASO 7: Validación ────────────────────────────────────────────────
+        # ── PASO 8: Evaluación SAT ────────────────────────────────────────────
+        sat_result = self._step_eval_sat(snapshot)
+        snapshot["sat"] = sat_result
+
+        # ── PASO 9: Validación ────────────────────────────────────────────────
         validation = self._step_validate_snapshot(snapshot)
         snapshot["_pipeline"]["validation"] = validation
 
-        # ── PASO 8: Persistencia ──────────────────────────────────────────────
+        # ── PASO 10: Persistencia ─────────────────────────────────────────────
         if not dry_run:
             save_result = self._step_save_snapshot(snapshot)
             snapshot["_pipeline"]["save_result"] = save_result
         else:
             snapshot["_pipeline"]["save_result"] = {"status": "skipped", "reason": "dry_run"}
 
-        # ── PASO 9: Provenance ────────────────────────────────────────────────
+        # ── PASO 11: Provenance ───────────────────────────────────────────────
         provenance = self._step_emit_provenance(snapshot, dry_run)
         snapshot["_pipeline"]["provenance_path"] = str(provenance) if provenance else None
 
@@ -206,72 +217,166 @@ class SnapshotPipeline:
         self._results["social"] = result
         return result
 
-    def _step_normalize_sources(self, dpe, sercop, rdc, social) -> dict:
-        """Normaliza y merges los resultados de los 4 conectores."""
-        logger.info("PASO 5 → normalize_sources()")
+    def _step_fetch_gold_master(self) -> dict:
+        """PASO 5 — Lee métricas canónicas del Gold Master (H73_OUTPUT_API).
+
+        Actúa como fuente de verdad TGI cuando las APIs institucionales
+        no están disponibles, y siempre provee el score TGI certificado.
+        """
+        logger.info("PASO 5 → fetch_gold_master()")
+        try:
+            from app.connectors.gold_master import fetch_gold_master_data
+            gm_path = getattr(cfg, "GOLD_MASTER_PATH", None)
+            result = fetch_gold_master_data(gold_master_path=gm_path)
+        except Exception as exc:
+            logger.error(f"  fetch_gold_master error: {exc}")
+            result = {
+                "status": "failed", "source_id": "gold_master",
+                "reliability": 0.0, "data": {}, "error": str(exc),
+            }
+        self._results["gold_master"] = result
+        logger.info(
+            f"  GoldMaster → {result['status']} | rows={result.get('sheet_rows', 0)} | "
+            f"reliability={result.get('reliability', 0)}"
+        )
+        return result
+
+    def _step_eval_sat(self, snapshot: dict) -> dict:
+        """PASO 8 — Evalúa el catálogo SAT completo contra el snapshot.
+
+        Produce alertas con triple ancla: Base Legal + Operativa + Doctrinal QUIRA.
+        Clasificación: BAJO / MEDIO / ALTO / CRÍTICO
+        """
+        logger.info("PASO 8 → eval_sat()")
+        try:
+            from app.services.sat_evaluator import evaluate_sat
+            result = evaluate_sat(snapshot)
+            logger.info(
+                f"  SAT → activas: {result['total_activas']}/{result['total_evaluadas']} | "
+                f"riesgo: {result['riesgo_ponderado']:.3f} → {result['clasif_riesgo']} | "
+                f"sin datos: {len(result['datos_insuficientes'])}"
+            )
+        except Exception as exc:
+            logger.error(f"  eval_sat error: {exc}")
+            result = {
+                "alertas": [], "activas": [], "riesgo_ponderado": 0.0,
+                "clasif_riesgo": "SIN_DATOS", "sat_score": 0.0,
+                "datos_insuficientes": [], "total_evaluadas": 0, "total_activas": 0,
+                "error": str(exc),
+            }
+        return result
+
+    def _step_normalize_sources(self, dpe, sercop, rdc, social, gold_master=None) -> dict:
+        """Normaliza y merges los resultados de los conectores."""
+        logger.info("PASO 6 → normalize_sources()")
         return {
-            "dpe":    dpe,
-            "sercop": sercop,
-            "cpccs":  rdc,
-            "social": social,
+            "dpe":         dpe,
+            "sercop":      sercop,
+            "cpccs":       rdc,
+            "social":      social,
+            "gold_master": gold_master or {},
         }
 
     def _step_build_snapshot(self, sources: dict) -> dict:
         """Ensambla el snapshot canónico con namespace doctrinal."""
-        logger.info("PASO 6 → build_snapshot()")
+        logger.info("PASO 7 → build_snapshot()")
 
         traceability = self._calculate_traceability(sources)
         coverage     = self._calculate_coverage(sources)
         missing_dims = self._calculate_missing_dimensions(sources)
 
-        # ── Namespace doctrinal (AJUSTE 2 del Sprint 1) ───────────────────────
+        # ── Gold Master data (métricas canónicas certificadas) ─────────────────
+        gm_data = sources.get("gold_master", {}).get("data", {}) or {}
+        gm_icpi = gm_data.get("icpi", {})
+        gm_tgi  = gm_data.get("tgi", {})
+        gm_fin  = gm_data.get("financiero", {})
+        gm_cont = gm_data.get("contratacion", {})
+        gm_acc  = gm_data.get("accountability", {})
+        gm_sat  = gm_data.get("sat_engine", {})
+
+        # ── TGI: desde Gold Master si disponible ───────────────────────────────
+        tgi_score = gm_tgi.get("score")
+        tgi_block = {
+            "score":  tgi_score,
+            "d1":     gm_tgi.get("d1"),
+            "d2":     gm_tgi.get("d2"),
+            "d3":     gm_tgi.get("d3"),
+            "d4":     gm_tgi.get("d4"),
+            "d5":     gm_tgi.get("d5"),
+            "nota":   ("Calculado desde Gold Master H73_OUTPUT_API"
+                       if tgi_score is not None
+                       else "TGI requiere Gold Master Excel — este snapshot es Q1-Observación"),
+            "fuente": "gold_master_h73" if tgi_score is not None else "pendiente",
+        }
+
+        # ── ICPI: desde Gold Master ────────────────────────────────────────────
+        icpi_block = {
+            "global":        gm_icpi.get("global"),
+            "global_pct":    gm_icpi.get("global_pct"),
+            "clasificacion": gm_icpi.get("clasificacion"),
+            "historico":     gm_icpi.get("historico", {}),
+            "acumulado_q1":  gm_icpi.get("acumulado_q1"),
+            "fuente":        "gold_master_h73" if gm_icpi.get("global") is not None else "pendiente",
+        }
+
+        # ── Financiero: pipeline API primero, Gold Master como fallback ────────
+        api_fin = sources.get("dpe", {}).get("data", {}) or {}
+        financiero_block = {
+            **gm_fin,           # base desde Gold Master
+            **api_fin,          # sobreescribir con datos API si disponibles
+            "fuente_primaria": "dpe_api" if api_fin else "gold_master_h73",
+        }
+
+        # ── Namespace doctrinal ────────────────────────────────────────────────
         snapshot = {
             "_meta": {
-                "schema_version": cfg.SNAPSHOT_SCHEMA if hasattr(cfg, "SNAPSHOT_SCHEMA") else "1.0",
-                "pipeline_version": cfg.PIPELINE_VERSION if hasattr(cfg, "PIPELINE_VERSION") else "1.0",
-                "generated_at": self.timestamp.isoformat(),
-                "year": self.year,
-                "fecha_corte": self.timestamp.date().isoformat(),
-                "version_excel": "pipeline-generated",
+                "schema_version":  getattr(cfg, "SNAPSHOT_SCHEMA", "1.0"),
+                "pipeline_version": getattr(cfg, "PIPELINE_VERSION", "1.0.0-sprint2"),
+                "generated_at":    self.timestamp.isoformat(),
+                "year":            self.year,
+                "fecha_corte":     self.timestamp.date().isoformat(),
+                "version_excel":   "SIAP-ICPI_GOLD_MASTER_v5.5_TGI_20260518",
+                "gold_master_ok":  sources.get("gold_master", {}).get("status") == "ok",
             },
             "gad": {
                 "codigo": self.municipio_code,
                 "nombre": self.municipio_name,
                 "ruc":    self.ruc,
             },
-            "doctrine": cfg.DOCTRINE if hasattr(cfg, "DOCTRINE") else {
+            "doctrine": getattr(cfg, "DOCTRINE", {
                 "framework":   "TGI Territorial",
                 "dimensions":  ["D1", "D2", "D3", "D4", "D5"],
                 "sat_enabled": True,
-            },
-            "tgi": {
-                "score": None,   # calculado desde Gold Master Excel
-                "nota":  "TGI requiere Gold Master Excel — este snapshot es Q1-Observación",
-            },
-            "financiero": {
-                "nota": "Datos financieros cargados desde Gold Master Excel o DPE CSV",
-            },
+            }),
+            "tgi":      tgi_block,
+            "icpi":     icpi_block,
+            "financiero":      financiero_block,
             "series_longitudinal": {},
-            "territorial": {},
-            "contratacion": sources["sercop"].get("data", {}),
+            "territorial":    {},
+            "contratacion":   {**gm_cont, **(sources["sercop"].get("data", {}) or {})},
             "accountability": {
-                "rdc": sources["cpccs"].get("data", {}),
+                "rdc":  sources["cpccs"].get("data", {}),
+                "gold_master": gm_acc,
             },
+            "gold_master_data": gm_data,   # preservado para SAT evaluator
             "sources": {k: {
-                "status":      v.get("status"),
-                "reliability": v.get("reliability"),
-                "error":       v.get("error"),
+                "status":      v.get("status") if isinstance(v, dict) else None,
+                "reliability": v.get("reliability") if isinstance(v, dict) else None,
+                "error":       v.get("error") if isinstance(v, dict) else None,
             } for k, v in sources.items()},
-            "traceability_score":  traceability,
-            "coverage_score":      coverage,
-            "source_confidence":   round(
-                sum(v.get("reliability", 0) * cfg.PIPELINE_WEIGHTS.get(v.get("source_id", ""), 0)
-                    for v in [sources["dpe"], sources["sercop"], sources["cpccs"]]), 3
-            ) if hasattr(cfg, "PIPELINE_WEIGHTS") else 0.0,
-            "missing_dimensions":  missing_dims,
+            "traceability_score": traceability,
+            "coverage_score":     coverage,
+            "source_confidence":  round(
+                sum(
+                    sources.get(sid, {}).get("reliability", 0)
+                    * getattr(cfg, "PIPELINE_WEIGHTS", {"dpe": 0.40, "sercop": 0.35, "cpccs": 0.25}).get(sid, 0)
+                    for sid in ("dpe", "sercop", "cpccs")
+                ), 3
+            ),
+            "missing_dimensions": missing_dims,
             "_pipeline": {
-                "run_id":    f"{self.municipio_code}_{self.timestamp.strftime('%Y%m%d_%H%M%S')}",
-                "dry_run":   False,
+                "run_id":  f"{self.municipio_code}_{self.timestamp.strftime('%Y%m%d_%H%M%S')}",
+                "dry_run": False,
             },
         }
         return snapshot
@@ -402,12 +507,29 @@ class SnapshotPipeline:
         return sorted(set(missing))
 
     def _log_summary(self, snapshot: dict) -> None:
+        sat  = snapshot.get("sat", {})
+        icpi = snapshot.get("icpi", {})
+        tgi  = snapshot.get("tgi", {})
         logger.info("─" * 60)
         logger.info(f"  QUIRA Snapshot — {self.municipio_name} ({self.municipio_code})")
         logger.info(f"  Año: {self.year} | Generado: {self.timestamp.strftime('%Y-%m-%d %H:%M UTC')}")
         logger.info(f"  TRACEABILITY SCORE : {snapshot.get('traceability_score', 0):.1f}/100")
         logger.info(f"  COVERAGE SCORE     : {snapshot.get('coverage_score', 0):.0%}")
         logger.info(f"  SOURCE CONFIDENCE  : {snapshot.get('source_confidence', 0):.3f}")
+        # TGI / ICPI desde Gold Master
+        if icpi.get("global_pct") is not None:
+            logger.info(f"  ICPI GLOBAL        : {icpi['global_pct']:.2f}% → {icpi.get('clasificacion', '?')}")
+        if tgi.get("score") is not None:
+            logger.info(f"  TGI SCORE          : {tgi['score']:.4f}")
+        # SAT
+        if sat.get("total_evaluadas", 0) > 0:
+            logger.info(
+                f"  SAT RIESGO         : {sat.get('riesgo_ponderado', 0):.3f} → "
+                f"{sat.get('clasif_riesgo', '?')} | "
+                f"Activas: {sat.get('total_activas', 0)}/{sat.get('total_evaluadas', 0)}"
+            )
+            if sat.get("activas"):
+                logger.warning(f"  SAT ALERTAS        : {sat['activas']}")
         logger.info(f"  MISSING DIMENSIONS : {snapshot.get('missing_dimensions', [])}")
         logger.info(f"  VALIDATION         : {snapshot['_pipeline'].get('validation', {}).get('status', '?')}")
         logger.info("─" * 60)

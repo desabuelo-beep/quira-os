@@ -63,9 +63,13 @@ def validate_snapshot(data: dict) -> tuple[bool, list[str]]:
 
     tgi = data.get("tgi", {})
     score = tgi.get("score")
-    if score is None:
+    # tgi.score puede ser None en snapshots Q1 (pipeline sin Gold Master TGI calculado).
+    # Solo es error si tiene valor pero está fuera de rango.
+    # Si fuente="pendiente" → snapshot Q1, score null es esperado.
+    tgi_fuente = tgi.get("fuente", "")
+    if score is None and tgi_fuente not in ("pendiente", "gold_master_h73"):
         errors.append("tgi.score ausente")
-    elif not isinstance(score, (int, float)) or not (0 <= float(score) <= 100):
+    elif score is not None and (not isinstance(score, (int, float)) or not (0 <= float(score) <= 100)):
         errors.append(f"tgi.score debe ser número 0-100 (recibido: {score})")
 
     return (len(errors) == 0), errors
