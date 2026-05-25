@@ -102,7 +102,7 @@ El Gold Master (motor matemático TGI/ICPI/D1-D5) NO se modifica.
 - Congelar doctrinas experimentales
 - QUIRA dejó de "mutar" cada semana
 
-### FASE 1 — Consolidación del Núcleo (Jun–Ago 2026) 🔄 EN PROGRESO
+### FASE 1 — Consolidación del Núcleo (Jun–Ago 2026) ✅ SPRINT 1-2 COMPLETOS · Sprint 3 iniciado
 **Sprint 1 — Consolidación Base (semanas 1-2):**
 - [x] `municipality_registry.json` — registro canónico 17 municipios
 - [x] `scripts/registry.py` — CRUD module
@@ -136,6 +136,17 @@ El Gold Master (motor matemático TGI/ICPI/D1-D5) NO se modifica.
   - `test_sat_evaluator.py` — 24 tests: catálogo SAT, clasificación riesgo, evaluate_sat
   - `test_pipeline_smoke.py` — 11 tests: dry_run completo con mocks de conectores + logger
 - [x] Dashboard ejecutivo — `p_ejecutivo.py` sección Q1 wired al snapshot: ICPI + SAT activas + nivel riesgo
+
+### SPRINT 3 — Consolidación Operacional (Jul–Ago 2026) → ver `docs/SPRINT3.md`
+- [ ] Longitudinal Engine (RC-M) — trayectoria ICPI · D3 · SAT
+- [ ] Snapshot Diff Engine — deterioro / mejora / reincidencia
+- [ ] Source Reliability Governance — trazabilidad longitudinal
+- [ ] Gold Master Governance Layer — versionado, changelog, backup
+- [ ] QUIRA CIV namespace — separación conceptual (sin segunda app todavía)
+
+**Regla arquitectural permanente (Sprint 3+):**
+> Sidebar max 7 módulos. Nuevas vistas = tabs dentro del módulo.
+> Nunca un nuevo item de sidebar para una sub-feature.
 
 ### FASE 2 — Recuperación Semántica (Sep–Dic 2026)
 - RAG sobre PDOT, POA, PAC, contratos, SERCOP, CPCCS
