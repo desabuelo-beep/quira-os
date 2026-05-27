@@ -1,6 +1,6 @@
 """
-QUIRA Intelligence — Vista Ejecutiva · Sprint C.1
-Jerarquía de Atención Institucional · p_vista_ejecutiva.py
+QUIRA Intelligence — Vista Ejecutiva · Sprint C.3
+Jerarquía de Atención + Observabilidad Viva · p_vista_ejecutiva.py
 
 Doctrina: "QUIRA no muestra todo al mismo nivel.
            QUIRA organiza la atención institucional según criticidad sistémica."
@@ -482,7 +482,11 @@ def _alerta_card(codigo: str, sat_info: dict, ti_raw: float) -> str:
 # CONSTRUCTORES DE ZONA — HTML puro, sin st.*
 # ══════════════════════════════════════════════════════════════════════════════
 
-def _html_header(data: dict) -> str:
+def _html_header(data: dict, ts: str = "") -> str:
+    """
+    Header institucional. Sprint C.3: indicador SISTEMA VIVO con timestamp.
+    ts — timestamp de render (HH:MM · DD/MM) inyectado desde render().
+    """
     tgi       = data.get("tgi", {})
     score     = tgi.get("score", 0.0)
     color_tgi = tgi.get("color_hex", "#FFB700")
@@ -493,6 +497,24 @@ def _html_header(data: dict) -> str:
 
     sc = {"BAJO": "#22C55E", "MEDIO": "#F59E0B",
           "ALTO": "#F97316", "CRÍTICO": "#EF4444"}.get(clasif, "#F97316")
+
+    # Sprint C.3 — SISTEMA VIVO: pulsing dot + timestamp
+    ts_line = (
+        f'<div style="font:400 7px/1 JetBrains Mono,monospace;'
+        f'color:rgba(255,255,255,.18);margin-top:2px">{ts}</div>'
+    ) if ts else ""
+
+    vivo_chip = (
+        f'<div style="display:flex;align-items:center;gap:6px;'
+        f'padding:5px 10px;background:rgba(34,197,94,.06);'
+        f'border:1px solid rgba(34,197,94,.18);border-radius:8px">'
+        f'<div class="ve-live-dot"></div>'
+        f'<div>'
+        f'<div style="font:700 7px/1 Inter,sans-serif;color:rgba(34,197,94,.75);'
+        f'letter-spacing:.08em;text-transform:uppercase;white-space:nowrap">SISTEMA VIVO</div>'
+        f'{ts_line}'
+        f'</div></div>'
+    )
 
     return (
         f'<div style="display:flex;align-items:center;justify-content:space-between;'
@@ -509,7 +531,7 @@ def _html_header(data: dict) -> str:
         f'margin-top:2px">QUIRA Institucional · Vista Ejecutiva · Corte {CORTE}</div>'
         f'</div></div>'
 
-        # Right: KPI chips
+        # Right: KPI chips + VIVO
         f'<div style="display:flex;align-items:center;gap:8px">'
 
         # TGI
@@ -539,7 +561,10 @@ def _html_header(data: dict) -> str:
         f'{apellido}</div>'
         f'</div>'
 
-        f'</div></div>'
+        # SISTEMA VIVO — Sprint C.3
+        + vivo_chip
+
+        + f'</div></div>'
     )
 
 
@@ -579,8 +604,11 @@ def _html_z1_pulso(data: dict, gad_top: dict | None = None) -> str:
         g_diag  = gad_top.get("diagnostico", "Intervención urgente requerida.")
         g_icono = gad_top.get("icono", "🔴")
 
+        # Sprint C.3: animar el bloque ruptura (solo si aplica)
+        pulse_class = ' ve-ruptura-pulse' if g_cat == "RUPTURA" else ''
+
         top_signal = (
-            f'<div style="background:{g_color}10;border:1.5px solid {g_color}40;'
+            f'<div class="ve-zone{pulse_class}" style="background:{g_color}10;border:1.5px solid {g_color}40;'
             f'border-left:4px solid {g_color};'
             f'border-radius:10px;padding:14px 15px;margin-bottom:16px">'
 
@@ -641,15 +669,20 @@ def _html_z1_pulso(data: dict, gad_top: dict | None = None) -> str:
 def _html_briefing_strip(eco: list[dict], narrative: str) -> str:
     """
     Sprint C.1 — Briefing Ejecutivo Diario (capa 8-15s).
+    Sprint C.3 — borde animado cuando GAD en ruptura.
     Situación de sala de mando: 2 oraciones, sin chatbot, sin adornos.
     Aparece ANTES del grid, full-width, siempre visible.
     """
     gad    = eco[0]
     color  = gad.get("color", "#EF4444")
     brief  = _briefing_sentence(narrative)
+    cat    = gad.get("categoria", "ruptura")
+
+    # Sprint C.3: animar borde en ruptura
+    live_class = " ve-briefing-live" if cat == "ruptura" else ""
 
     return (
-        f'<div style="display:flex;align-items:center;gap:14px;'
+        f'<div class="ve-root{live_class}" style="display:flex;align-items:center;gap:14px;'
         f'padding:12px 18px;margin-bottom:14px;'
         f'background:rgba(0,0,0,.22);'
         f'border:1px solid rgba(255,255,255,.07);'
@@ -1088,6 +1121,48 @@ _CSS = """<style>
     border-color: rgba(255,255,255,.06);
 }
 
+/* ── Sprint C.3 — Observabilidad Viva ──────────────────────────────────────
+   El sistema respira. Pulsos mínimos — señal, no ruido.
+   ───────────────────────────────────────────────────────────────────────── */
+
+/* Ruptura badge glow — 2.8s · solo cuando categoría RUPTURA */
+@keyframes ve-ruptura-glow {
+    0%, 100% { box-shadow: 0 0 0 0 transparent; }
+    50%       { box-shadow: 0 0 0 5px rgba(239,68,68,.14),
+                            0 0 22px rgba(239,68,68,.22); }
+}
+
+/* Heartbeat del sistema vivo — live dot en header */
+@keyframes ve-live-beat {
+    0%, 100% { opacity: 1;  transform: scale(1.0); }
+    50%       { opacity: .28; transform: scale(.58); }
+}
+
+/* Briefing strip border pulse — solo en ruptura GAD */
+@keyframes ve-briefing-glow {
+    0%, 100% { border-left-color: rgba(239,68,68,.60); }
+    50%       { border-left-color: rgba(239,68,68,1.00); }
+}
+
+/* Utility classes */
+.ve-ruptura-pulse {
+    animation: ve-ruptura-glow 2.8s ease-in-out infinite;
+}
+
+.ve-live-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #22C55E;
+    display: inline-block;
+    flex-shrink: 0;
+    animation: ve-live-beat 1.8s ease-in-out infinite;
+}
+
+.ve-briefing-live {
+    animation: ve-briefing-glow 3.2s ease-in-out infinite;
+}
+
 /* Responsive: mobile stack */
 @media (max-width: 900px) {
     .ve-grid {
@@ -1112,15 +1187,19 @@ _CSS = """<style>
 
 def render() -> None:
     """
-    Vista Ejecutiva v2 — Sprint C.1 Jerarquía de Atención Institucional.
+    Vista Ejecutiva · Sprint C.3 Observabilidad Viva.
     Llamado desde env_gov.py cuando el rol activo es 'ejecutivo'.
 
     Estructura de atención (3 capas):
-      CAPA 1 → Header + Briefing strip (identidad + situación)
-      CAPA 2 → Z1 (dominante) + Z2 (alto) + Z34 (compacto)
+      CAPA 1 → Header VIVO + Briefing strip animado (identidad + situación)
+      CAPA 2 → Z1 ruptura pulsante (dominante) + Z2 (alto) + Z34 (compacto)
       CAPA 3 → Z5 (ecosistema) + Z6 (IA + oportunidades)
+
+    Sprint C.3: CSS @keyframes · ve-ruptura-pulse · ve-live-dot · ve-briefing-live
     """
-    data = _load()
+    from datetime import datetime
+    data      = _load()
+    ts_render = datetime.now().strftime("%H:%M · %d/%m")
 
     # ── Computaciones Python (puras, deterministas) ───────────────────────────
     eco       = _compute_ecosistema(data)
@@ -1130,9 +1209,9 @@ def render() -> None:
     # ── CSS ───────────────────────────────────────────────────────────────────
     st.markdown(_CSS, unsafe_allow_html=True)
 
-    # ── Header institucional ──────────────────────────────────────────────────
+    # ── Header institucional + SISTEMA VIVO ──────────────────────────────────
     st.markdown(
-        f'<div class="ve-root">{_html_header(data)}</div>',
+        f'<div class="ve-root">{_html_header(data, ts=ts_render)}</div>',
         unsafe_allow_html=True,
     )
 
@@ -1171,10 +1250,12 @@ def render() -> None:
 
     # ── Footer ────────────────────────────────────────────────────────────────
     st.markdown(
-        '<div style="margin-top:10px;font:400 8px/1 JetBrains Mono,monospace;'
-        'color:rgba(255,255,255,.1);text-align:right">'
-        'QUIRA Intelligence · Sprint C.1 Jerarquía de Atención · '
-        'Gold Master v5.5_TGI · Corte Q1-2026 · Dylus Lab © 2026'
-        '</div>',
+        f'<div style="margin-top:10px;font:400 8px/1 JetBrains Mono,monospace;'
+        f'color:rgba(255,255,255,.1);text-align:right;display:flex;'
+        f'justify-content:space-between;align-items:center">'
+        f'<span style="color:rgba(255,255,255,.07)">Cache datos: 5 min · TTL activo</span>'
+        f'<span>QUIRA Intelligence · Sprint C.3 Observabilidad Viva · '
+        f'Gold Master v5.5_TGI · Corte Q1-2026 · Dylus Lab © 2026</span>'
+        f'</div>',
         unsafe_allow_html=True,
     )
