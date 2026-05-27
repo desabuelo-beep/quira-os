@@ -1,23 +1,25 @@
 """
-QUIRA Intelligence — Vista Ejecutiva · Motor Predictivo Institucional v1
-Sprint B · p_vista_ejecutiva.py
+QUIRA Intelligence — Vista Ejecutiva · Sprint C.1
+Jerarquía de Atención Institucional · p_vista_ejecutiva.py
 
-6 zonas · CSS Grid · TOP semafórico · Ecosistema Municipal
-Doctrina QUIRA_DOCTRINE_v1.3: "El alcalde no navega. El alcalde interpreta."
-El alcalde entiende el estado del municipio + ecosistema en 30 segundos.
+Doctrina: "QUIRA no muestra todo al mismo nivel.
+           QUIRA organiza la atención institucional según criticidad sistémica."
 
-━━━ ARQUITECTURA ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  HEADER       — Barra institucional: GAD · TGI · SAT · Alcalde
-  Zona 1       — Pulso Institucional: TGI + D1-D5 + ICPI
-  Zona 2       — Lo Urgente: SAT sistémicas (causa + acción + ley)
-  Zona 3       — Compromisos: RDC · PDOT · IFE (honesto) · Q2 cierre
-  Zona 4       — Territorio: IRS · 7 parroquias · brecha rural
-  Zona 5       — Ecosistema Municipal: Patronato · EP Aseo · Bomberos · GAD
-  Zona 6       — QUIRA IA: brief ejecutivo + oportunidades
+━━━ ARQUITECTURA · JERARQUÍA DE ATENCIÓN (3 capas) ━━━━━━━━━━━━━━━━━━━━━
+  HEADER        — Identidad institucional: GAD · TGI · SAT · Alcalde
+  BRIEFING STRIP — Brief ejecutivo 2 líneas (8-15s) — situación + acción
+  ─────────────────────────────────────────────────────── CAPA 1 (DOMINANTE)
+  Zona 1        — Pulso + SEÑAL CRÍTICA: TOP GAD RUPTURA → TGI → D1-D5
+  Zona 2        — Lo Urgente: SAT sistémicas (causa + acción + ley)
+  ─────────────────────────────────────────────────────── CAPA 2 (CONTEXTO)
+  Zona 3+4      — Compromisos compactos · Territorio compacto (sub-grid)
+  ─────────────────────────────────────────────────────── CAPA 3 (SOPORTE)
+  Zona 5        — Ecosistema Municipal: 4 entidades · TOP · contraste
+  Zona 6        — QUIRA IA + Oportunidades (lectura profunda, 15-30s)
 
-  Layout: CSS Grid 2-col (Z1+Z2 · Z3+Z4) → full-width (Z5 · Z6)
-  TOP: utils/top.py — Trayectoria Operativa Proyectada (NOMENCLATURA 7.2)
-  Datos: financiero.h90_consolidado del Gold Master v5.5
+  Grid: Z1 span-2-rows (dominante) | Z2 · Z34 (sub-grid compacto)
+  Lectura 3s: TOP RUPTURA rojo → TGI contexto → SAT urgente → acción
+  TOP: utils/top.py · W_Q calibrado eSIGEF Ecuador · NOMENCLATURA 7.2
 
 Dylus Lab © 2026
 """
@@ -165,6 +167,8 @@ def _compute_ecosistema(data: dict) -> list[dict]:
     for s in specs:
         td = top_entidad(s["ti_pct"], CORTE, s["nombre"])
         td.update({k: s[k] for k in ("emoji", "nota_ti", "codificado", "devengado")})
+        # Alias: top_entidad retorna "entidad"; código HTML usa "nombre"
+        td["nombre"] = td.get("entidad", s["nombre"])
         result.append(td)
     return result
 
@@ -215,6 +219,17 @@ def _compose_quira_ia(data: dict, eco: list[dict]) -> str:
     )
 
     return " ".join(partes)
+
+
+def _briefing_sentence(narrative: str) -> str:
+    """
+    Extrae las 2 primeras oraciones del narrative para el Briefing Strip.
+    Máximo 280 caracteres — lectura de 8-15s.
+    """
+    import re
+    partes = re.split(r'(?<=\.)\s+', narrative.strip())
+    texto  = " ".join(partes[:2])
+    return texto if len(texto) <= 280 else texto[:277] + "…"
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -528,7 +543,12 @@ def _html_header(data: dict) -> str:
     )
 
 
-def _html_z1_pulso(data: dict) -> str:
+def _html_z1_pulso(data: dict, gad_top: dict | None = None) -> str:
+    """
+    Sprint C.1 — Jerarquía de Atención.
+    Señal crítica TOP GAD primero (dominante), TGI como contexto, barras como soporte.
+    El alcalde ve el problema en 0-3 segundos antes de leer cualquier texto.
+    """
     tgi       = data.get("tgi", {})
     score     = tgi.get("score", 0.0)
     clasif    = tgi.get("clasificacion", "—")
@@ -544,26 +564,68 @@ def _html_z1_pulso(data: dict) -> str:
     d5 = tgi.get("d5", {}).get("valor", 0.0)
 
     bars = (
-        _mini_bar("D1 — Legalidad",         "Marco normativo · COOTAD · PAC publicado", d1) +
-        _mini_bar("D2 — Planificación",      "Fidelidad PDOT · metas en trayectoria", d2) +
-        _mini_bar("D3 — Ejecución",          "Ti inversión Q1-2026 · activación pendiente", d3) +
+        _mini_bar("D1 — Legalidad",          "Marco normativo · COOTAD · PAC publicado", d1) +
+        _mini_bar("D2 — Planificación",       "Fidelidad PDOT · metas en trayectoria", d2) +
+        _mini_bar("D3 — Ejecución",           "Ti inversión Q1-2026 · activación pendiente", d3) +
         _mini_bar("D4 — Equidad Territorial", "IRS 79.7 — inversión concentrada urbana", d4) +
-        _mini_bar("D5 — Capacidad",          "SIGAD · SNP certificados al 100%", d5)
+        _mini_bar("D5 — Capacidad",           "SIGAD · SNP certificados al 100%", d5)
     )
+
+    # ── Señal crítica TOP (capa dominante — 0-3s) ────────────────────────────
+    if gad_top:
+        g_color = gad_top.get("color", "#EF4444")
+        g_cat   = gad_top.get("categoria", "ruptura").upper()
+        g_top   = gad_top.get("top", 8.1)
+        g_diag  = gad_top.get("diagnostico", "Intervención urgente requerida.")
+        g_icono = gad_top.get("icono", "🔴")
+
+        top_signal = (
+            f'<div style="background:{g_color}10;border:1.5px solid {g_color}40;'
+            f'border-left:4px solid {g_color};'
+            f'border-radius:10px;padding:14px 15px;margin-bottom:16px">'
+
+            f'<div style="display:flex;align-items:center;justify-content:space-between;'
+            f'margin-bottom:8px">'
+            f'<div style="font:800 8px/1 Inter,sans-serif;color:{g_color};'
+            f'letter-spacing:.1em;text-transform:uppercase">'
+            f'⚡ Inversión GAD · Señal Crítica</div>'
+            f'<span style="font:800 8px/1 Inter,sans-serif;color:{g_color};'
+            f'background:{g_color}20;padding:2px 9px;border-radius:4px;'
+            f'letter-spacing:.08em">{g_icono} {g_cat}</span>'
+            f'</div>'
+
+            # TOP value — dominante visual
+            f'<div style="font:900 3rem/1 Inter,sans-serif;color:{g_color};'
+            f'letter-spacing:-.04em;margin-bottom:4px">{g_top:.1f}<span style="font-size:1.4rem">%</span></div>'
+
+            f'<div style="font:600 10px/1 Inter,sans-serif;color:rgba(255,255,255,.4);'
+            f'margin-bottom:3px">TOP · Trayectoria Operativa Proyectada · {CORTE}</div>'
+            f'<div style="font:400 9px/1.4 Inter,sans-serif;color:rgba(255,255,255,.28)">'
+            f'{g_diag}</div>'
+            f'</div>'
+        )
+    else:
+        top_signal = ""
 
     return (
         _zt("◉", "Pulso del Municipio",
-            "Índice de Gobernanza Institucional · 5 dimensiones") +
+            "Señal Crítica → TGI · D1–D5 · Motor Predictivo") +
 
-        f'<div style="font:900 3.4rem/1 Inter,sans-serif;color:{color_tgi};'
-        f'letter-spacing:-.05em;margin-bottom:3px">{score:.1f}</div>'
-        f'<div style="font:700 12px/1 Inter,sans-serif;color:{color_tgi};'
-        f'margin-bottom:2px">{clasif}</div>'
-        f'<div style="font:400 9px/1 Inter,sans-serif;color:rgba(255,255,255,.25);'
-        f'margin-bottom:12px">TGI · Gobernanza Integral · Escala 0–100</div>'
+        # Señal crítica TOP — PRIMERO (dominante cognitivo)
+        top_signal +
 
-        f'<div style="font:600 10px/1 Inter,sans-serif;color:#22C55E;'
-        f'margin-bottom:16px">↗ Tendencia positiva 2023–2025 (ICPI: 57→67→70)</div>'
+        # TGI como contexto (segundo) — más compacto que Sprint B
+        f'<div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px">'
+        f'<div style="font:900 2.8rem/1 Inter,sans-serif;color:{color_tgi};'
+        f'letter-spacing:-.05em">{score:.1f}</div>'
+        f'<div>'
+        f'<div style="font:700 11px/1 Inter,sans-serif;color:{color_tgi}">{clasif}</div>'
+        f'<div style="font:400 8px/1 Inter,sans-serif;color:rgba(255,255,255,.22)">'
+        f'TGI · Gobernanza Integral · 0–100</div>'
+        f'</div></div>'
+
+        f'<div style="font:600 9px/1 Inter,sans-serif;color:#22C55E;'
+        f'margin-bottom:14px;margin-top:4px">↗ Tendencia positiva 2023–2025</div>'
 
         + bars +
 
@@ -573,6 +635,43 @@ def _html_z1_pulso(data: dict) -> str:
         f'ICPI (velocidad de ejecución) — '
         f'<span style="color:rgba(255,255,255,.45)">{icpi_pct:.1f}%</span> · {icpi_cl}'
         f'</div></div>'
+    )
+
+
+def _html_briefing_strip(eco: list[dict], narrative: str) -> str:
+    """
+    Sprint C.1 — Briefing Ejecutivo Diario (capa 8-15s).
+    Situación de sala de mando: 2 oraciones, sin chatbot, sin adornos.
+    Aparece ANTES del grid, full-width, siempre visible.
+    """
+    gad    = eco[0]
+    color  = gad.get("color", "#EF4444")
+    brief  = _briefing_sentence(narrative)
+
+    return (
+        f'<div style="display:flex;align-items:center;gap:14px;'
+        f'padding:12px 18px;margin-bottom:14px;'
+        f'background:rgba(0,0,0,.22);'
+        f'border:1px solid rgba(255,255,255,.07);'
+        f'border-left:3px solid {color};border-radius:12px">'
+
+        # Label
+        f'<div style="flex-shrink:0;white-space:nowrap">'
+        f'<div style="font:800 7px/1 Inter,sans-serif;color:{color};'
+        f'letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px">'
+        f'◆ BRIEFING EJECUTIVO</div>'
+        f'<div style="font:400 7px/1 JetBrains Mono,monospace;'
+        f'color:rgba(255,255,255,.2)">QUIRA IA · {CORTE}</div>'
+        f'</div>'
+
+        # Separador
+        f'<div style="width:1px;height:28px;background:rgba(255,255,255,.08);flex-shrink:0"></div>'
+
+        # Brief text
+        f'<div style="font:400 11px/1.6 Inter,sans-serif;'
+        f'color:rgba(255,255,255,.62);flex:1">{brief}</div>'
+
+        f'</div>'
     )
 
 
@@ -699,6 +798,99 @@ def _html_z4_territorio(data: dict) -> str:
         f'IET: Índice de Equidad Territorial (100% = paridad)</div>'
 
         + filas
+    )
+
+
+def _html_z3z4_compact(data: dict) -> str:
+    """
+    Sprint C.1 — Compromisos + Territorio compactos en sub-grid 2-col.
+    Ocupa la columna derecha fila-2 (debajo de Z2).
+    Solo los 2-3 items más críticos de cada zona — sin ruido.
+    """
+    # ── Z3 compact — Compromisos urgentes ─────────────────────────────────────
+    fin          = data.get("financiero", {})
+    ti_raw       = fin.get("ti_2026_raw_pct", 1.05)
+    gad_d        = data.get("gad", {})
+    promesas_cne = gad_d.get("promesas_cne", 66)
+
+    z3 = (
+        f'<div style="font:800 8px/1 Inter,sans-serif;color:rgba(255,255,255,.25);'
+        f'text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px">'
+        f'📅 Compromisos clave</div>'
+
+        # Q2 cierre — crítico
+        + _compromiso_row(
+            "💰", "Cierre Q2",
+            "30 Jun", "#F97316",
+            f"Ti actual {ti_raw:.2f}% · Riesgo COPFP Art. 113",
+            "~45 días", "#EF4444"
+        )
+        # RDC CPCCS
+        + _compromiso_row(
+            "📋", "RDC CPCCS",
+            "Pendiente", "#F59E0B",
+            "Validación ciudadana · Plazo legal próximo"
+        )
+        # IFE
+        + f'<div style="padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04)">'
+        f'<div style="font:700 10px/1 Inter,sans-serif;color:rgba(255,255,255,.35)">'
+        f'📜 Plan CNE <span style="color:rgba(255,255,255,.2)">'
+        f'{promesas_cne} compromisos — IFE en desarrollo</span></div>'
+        f'</div>'
+    )
+
+    # ── Z4 compact — Territorio crítico ───────────────────────────────────────
+    tgi        = data.get("tgi", {})
+    irs_val    = tgi.get("irs", {}).get("valor", 79.7)
+    irs_cl     = tgi.get("irs", {}).get("clasificacion", "Muy Regresivo")
+    d4_val     = tgi.get("d4", {}).get("valor", 66.85)
+    brecha_usd = tgi.get("brecha_rural_usd", 1791935)
+    d4c        = _sem(d4_val)
+
+    # Solo parroquias críticas (IET < 50 = rojo)
+    parroquias = data.get("territorial", {}).get("parroquias", _FALLBACK["territorial"]["parroquias"])
+    criticas   = [p for p in parroquias if p.get("iet_local_pct", 100) < 50][:3]
+
+    z4_rows = "".join(_parroquia_row(p) for p in criticas) if criticas else ""
+
+    z4 = (
+        f'<div style="font:800 8px/1 Inter,sans-serif;color:rgba(255,255,255,.25);'
+        f'text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px">'
+        f'🗺 Territorio</div>'
+
+        # KPIs rápidos
+        f'<div style="display:flex;gap:6px;margin-bottom:10px">'
+        f'<div style="flex:1;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.18);'
+        f'border-radius:7px;padding:7px;text-align:center">'
+        f'<div style="font:900 1.2rem/1 Inter,sans-serif;color:#EF4444">{irs_val:.0f}</div>'
+        f'<div style="font:400 7px/1.3 Inter,sans-serif;color:rgba(255,255,255,.3);'
+        f'margin-top:2px">IRS · {irs_cl}</div>'
+        f'</div>'
+        f'<div style="flex:1;background:{d4c}0D;border:1px solid {d4c}20;'
+        f'border-radius:7px;padding:7px;text-align:center">'
+        f'<div style="font:900 1.2rem/1 Inter,sans-serif;color:{d4c}">${brecha_usd/1_000_000:.2f}M</div>'
+        f'<div style="font:400 7px/1.3 Inter,sans-serif;color:rgba(255,255,255,.3);'
+        f'margin-top:2px">Brecha rural</div>'
+        f'</div>'
+        f'</div>'
+
+        # Parroquias críticas
+        + (
+            f'<div style="font:700 7px/1 Inter,sans-serif;color:rgba(255,255,255,.18);'
+            f'text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px">'
+            f'Parroquias bajo IET 50%</div>'
+            + z4_rows
+            if criticas else
+            f'<div style="font:400 9px/1 Inter,sans-serif;color:rgba(255,255,255,.2)">'
+            f'Sin parroquias críticas en este corte.</div>'
+        )
+    )
+
+    return (
+        f'<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;height:100%">'
+        f'<div>{z3}</div>'
+        f'<div>{z4}</div>'
+        f'</div>'
     )
 
 
@@ -829,14 +1021,42 @@ _CSS = """<style>
 
 .ve-root * { box-sizing: border-box; font-family: 'Inter', sans-serif; }
 
-/* Main grid: 2-col para Z1-Z4, full-width para Z5 y Z6 */
+/* ── Sprint C.1 — Jerarquía de Atención ────────────────────────────────────
+   Grid asimétrico: Z1 domina (span 2 filas, col ancha).
+   Peso visual: Z1 🔴 Máximo → Z2 🔴 Alto → Z34 🟡 Medio → Z5/Z6 🟢 Soporte
+   ───────────────────────────────────────────────────────────────────────── */
+
 .ve-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.45fr 1fr;
+    grid-template-rows: auto auto;
     gap: 14px;
     margin-bottom: 10px;
 }
-.ve-z5, .ve-z6 { grid-column: 1 / -1; }
+
+/* Z1 — DOMINANTE: ocupa columna izquierda, ambas filas */
+.ve-z1 {
+    grid-column: 1;
+    grid-row: 1 / 3;
+}
+
+/* Z2 — ALTO: columna derecha, fila 1 */
+.ve-z2 {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+/* Z34 — MEDIO: columna derecha, fila 2 (sub-grid interno 2-col) */
+.ve-z34 {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+/* Z5 — SOPORTE: full width */
+.ve-z5 { grid-column: 1 / -1; }
+
+/* Z6 — SOPORTE: full width */
+.ve-z6 { grid-column: 1 / -1; }
 
 /* Zone card base */
 .ve-zone {
@@ -846,21 +1066,38 @@ _CSS = """<style>
     padding: 20px;
 }
 
-/* Zona 5: ecosistema — fondo ligeramente más oscuro */
+/* Z1 — borde sutil diferenciado: dominante institucional */
+.ve-z1 {
+    border-color: rgba(255,255,255,.09);
+}
+
+/* Z34 — padding reducido: zona compacta */
+.ve-z34 {
+    padding: 14px 16px;
+}
+
+/* Z5 ecosistema — identidad holding */
 .ve-z5 {
     background: rgba(0,212,255,.02);
     border-color: rgba(0,212,255,.12);
 }
 
-/* Zona 6: IA — fondo neutral */
+/* Z6 IA — fondo neutro */
 .ve-z6 {
     background: rgba(255,255,255,.02);
     border-color: rgba(255,255,255,.06);
 }
 
 /* Responsive: mobile stack */
-@media (max-width: 768px) {
-    .ve-grid { grid-template-columns: 1fr; }
+@media (max-width: 900px) {
+    .ve-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+    .ve-z1, .ve-z2, .ve-z34, .ve-z5, .ve-z6 {
+        grid-column: 1;
+        grid-row: auto;
+    }
     .eco-grid { grid-template-columns: repeat(2, 1fr) !important; }
 }
 @media (max-width: 480px) {
@@ -875,36 +1112,59 @@ _CSS = """<style>
 
 def render() -> None:
     """
-    Vista Ejecutiva v2 — Motor Predictivo Institucional v1.
+    Vista Ejecutiva v2 — Sprint C.1 Jerarquía de Atención Institucional.
     Llamado desde env_gov.py cuando el rol activo es 'ejecutivo'.
-    No renderiza header GOV — tiene su propio header institucional.
+
+    Estructura de atención (3 capas):
+      CAPA 1 → Header + Briefing strip (identidad + situación)
+      CAPA 2 → Z1 (dominante) + Z2 (alto) + Z34 (compacto)
+      CAPA 3 → Z5 (ecosistema) + Z6 (IA + oportunidades)
     """
     data = _load()
 
     # ── Computaciones Python (puras, deterministas) ───────────────────────────
     eco       = _compute_ecosistema(data)
+    gad_top   = eco[0]                        # GAD siempre índice 0
     narrative = _compose_quira_ia(data, eco)
 
     # ── CSS ───────────────────────────────────────────────────────────────────
     st.markdown(_CSS, unsafe_allow_html=True)
 
-    # ── Header ────────────────────────────────────────────────────────────────
+    # ── Header institucional ──────────────────────────────────────────────────
     st.markdown(
         f'<div class="ve-root">{_html_header(data)}</div>',
         unsafe_allow_html=True,
     )
 
-    # ── Grid principal: 6 zonas ───────────────────────────────────────────────
+    # ── Briefing strip + Grid principal ──────────────────────────────────────
+    # Briefing strip: full-width, antes del grid (capa 8-15s)
+    # Z1 domina (span 2 filas) | Z2 + Z34 en columna derecha
+    # Z5 ecosistema full-width | Z6 IA + oportunidades full-width
     grid_html = f"""
 <div class="ve-root">
-<div class="ve-grid">
-  <div class="ve-zone ve-z1">{_html_z1_pulso(data)}</div>
-  <div class="ve-zone ve-z2">{_html_z2_urgente(data)}</div>
-  <div class="ve-zone ve-z3">{_html_z3_compromisos(data)}</div>
-  <div class="ve-zone ve-z4">{_html_z4_territorio(data)}</div>
-  <div class="ve-zone ve-z5">{_html_z5_ecosistema(eco)}</div>
-  <div class="ve-zone ve-z6">{_html_z6_ia(data, eco, narrative)}</div>
-</div>
+
+  <!-- BRIEFING STRIP — primera lectura ejecutiva (8-15s) -->
+  {_html_briefing_strip(eco, narrative)}
+
+  <!-- GRID PRINCIPAL — jerarquía asimétrica Sprint C.1 -->
+  <div class="ve-grid">
+
+    <!-- Z1 — CAPA DOMINANTE (span 2 filas, col izquierda) -->
+    <div class="ve-zone ve-z1">{_html_z1_pulso(data, gad_top)}</div>
+
+    <!-- Z2 — CAPA ALTA (col derecha, fila 1) -->
+    <div class="ve-zone ve-z2">{_html_z2_urgente(data)}</div>
+
+    <!-- Z34 — CAPA MEDIA (col derecha, fila 2 — sub-grid compacto) -->
+    <div class="ve-zone ve-z34">{_html_z3z4_compact(data)}</div>
+
+    <!-- Z5 — SOPORTE (ecosistema, full-width) -->
+    <div class="ve-zone ve-z5">{_html_z5_ecosistema(eco)}</div>
+
+    <!-- Z6 — SOPORTE (IA + oportunidades, full-width) -->
+    <div class="ve-zone ve-z6">{_html_z6_ia(data, eco, narrative)}</div>
+
+  </div>
 </div>
 """
     st.markdown(grid_html, unsafe_allow_html=True)
@@ -913,7 +1173,7 @@ def render() -> None:
     st.markdown(
         '<div style="margin-top:10px;font:400 8px/1 JetBrains Mono,monospace;'
         'color:rgba(255,255,255,.1);text-align:right">'
-        'QUIRA Intelligence · Motor Predictivo Institucional v1 · '
+        'QUIRA Intelligence · Sprint C.1 Jerarquía de Atención · '
         'Gold Master v5.5_TGI · Corte Q1-2026 · Dylus Lab © 2026'
         '</div>',
         unsafe_allow_html=True,
