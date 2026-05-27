@@ -1,19 +1,34 @@
-# QUIRA OS — Norte y Hoja de Ruta Definitiva
+# QUIRA Intelligence — Norte y Hoja de Ruta Definitiva
 **CANON OFICIAL — No modificar sin validación del equipo**
-*Última actualización: 2026-05-25 — Sprint 1 Ejecutado*
+*Última actualización: 2026-05-25 — Sprint 3 · Pivot QUIRA Intelligence*
+
+---
+
+## 0. Decisión Estratégica — 2026-05-25
+
+**QUIRA Intelligence** es el nombre canónico del núcleo único de la plataforma.
+
+**Modelo PMV aprobado:** Intelligence Layer operado centralmente por el equipo QUIRA.
+- El municipio es actor observado y colaborador documental — no operador.
+- Los roles institucionales municipales (Alcalde/Concejal/Técnico) están **deprecated**.
+- Los roles del sistema son: Viewer / Analyst / Operator / Admin.
+- La plataforma tiene **4 ambientes**: GOV · Civic · Impact · Ops.
+- GOV y Ops se construyen en PMV. Civic e Impact son placeholders.
+
+**Documento de arquitectura:** `docs/QUIRA_INTELLIGENCE.md`
 
 ---
 
 ## 1. Identidad Estratégica
 
-**QUIRA** es una **infraestructura operativa de inteligencia institucional** para Gobiernos Autónomos Descentralizados del Ecuador.
+**QUIRA Intelligence** es una **infraestructura de monitoreo institucional preventivo y prospectivo** para Gobiernos Autónomos Descentralizados del Ecuador.
 
-Su función NO es "automatizar gobiernos". Es aumentar:
-- **observabilidad** institucional
-- **coherencia** entre planificación, contratación y ejecución
-- **trazabilidad** documental y normativa
-- **memoria longitudinal** territorial
-- **validación** explicable y auditable
+Su función NO es "automatizar gobiernos" ni construir un ERP municipal. Es:
+- **detectar deterioro** institucional antes de que se convierta en crisis
+- **construir memoria longitudinal** observable y accionable
+- **trazabilidad** documental y normativa verificable
+- **validación** explicable, auditable, con base legal
+- **prospectiva contextual limitada** — escenarios acotados, no simulación total
 
 **Flujo doctrinal permanente:**
 ```
@@ -137,16 +152,40 @@ El Gold Master (motor matemático TGI/ICPI/D1-D5) NO se modifica.
   - `test_pipeline_smoke.py` — 11 tests: dry_run completo con mocks de conectores + logger
 - [x] Dashboard ejecutivo — `p_ejecutivo.py` sección Q1 wired al snapshot: ICPI + SAT activas + nivel riesgo
 
-### SPRINT 3 — Consolidación Operacional (Jul–Ago 2026) → ver `docs/SPRINT3.md`
-- [ ] Longitudinal Engine (RC-M) — trayectoria ICPI · D3 · SAT
-- [ ] Snapshot Diff Engine — deterioro / mejora / reincidencia
-- [ ] Source Reliability Governance — trazabilidad longitudinal
-- [ ] Gold Master Governance Layer — versionado, changelog, backup
-- [ ] QUIRA CIV namespace — separación conceptual (sin segunda app todavía)
+### SPRINT 3 — Consolidación Operacional + Pivot QUIRA Intelligence
+→ ver `docs/SPRINT3.md` · `docs/QUIRA_INTELLIGENCE.md`
+
+**Sprint 3 P1–P2 (completados):**
+- [x] Longitudinal Engine (RC-M) — `longitudinal_engine.py` · 53 tests · tabla RC-M + gráfico Plotly
+- [x] Snapshot Diff Engine — `snapshot_diff.py` · 109 tests · 6 clasificaciones + SAT-III reincidencia
+
+**Sprint 3 Pivot (COMPLETO — 2026-05-25):**
+- [x] `docs/QUIRA_INTELLIGENCE.md` — arquitectura canónica 4 ambientes + contención doctrinal
+- [x] `docs/NORTH.md` — actualizado con pivot Intelligence Layer
+- [x] Frontend restructura integral — 4 ambientes: GOV / Civic / Impact / Ops
+  - `quira_pages/env_gov.py` — 6 tabs: Estado Municipal · RC-M · SAT · Comparación · Ejecución · Trazabilidad
+  - `quira_pages/env_civic.py` — placeholder "próximamente"
+  - `quira_pages/env_impact.py` — placeholder "próximamente"
+  - `quira_pages/env_ops.py` — 5 tabs: Pipeline · Snapshots · Reliability · Gold Master · Config
+  - `app.py` — reescrito con 4-environment selector, branding QUIRA Intelligence
+- [x] Roles migrados: Viewer / Analyst / Operator / Admin (deprecated: Alcalde/Concejal/Técnico)
+  - `models/auth.py` — _FALLBACK_HASHES + _USER_META + rol_options() actualizados
+  - `utils/session.py` — is_operator() + is_analyst() + is_viewer() + aliases deprecated
+
+**Sprint 3 P3–P4 (en ejecución):**
+- [x] `docs/MONTHLY_CYCLE.md` — ciclo mensual operativo formalizado como doctrina
+- [x] Source Reliability Governance — `app/services/reliability_tracker.py` · 58 tests
+- [x] Gold Master v6.0 completado — `TGI_GOLD_MASTER_v6.0_20260525.xlsx` · 34 hojas · todas las G3.x+G4.x+G5.2+G6.1 con datos canónicos
+  - G3.1–G3.7: hojas de cálculo D1-D5 con datos institucionales eSIGEF/SERCOP/CPCCS
+  - G4.1 ICPI=66.85% · G4.2 TGI=66.85% · G5.2 SAT activas (SAT-I+SAT-IV)
+  - G6.1_OUTPUT_API actualizado · `data/gm_snapshot.json` sincronizado a v6.0
+- [x] Gold Master Governance Layer — `app/services/gold_master_governance.py` · versionado, changelog, backup SHA-256 · 58 tests · 327 totales acumulados
+- [x] `docs/ARQUITECTURA_CANONICA.md` — contrato arquitectónico permanente de las 6 capas · flujo canónico · reglas de comunicación inter-capa · inventario de módulos · anti-patrones · métricas de salud
 
 **Regla arquitectural permanente (Sprint 3+):**
-> Sidebar max 7 módulos. Nuevas vistas = tabs dentro del módulo.
-> Nunca un nuevo item de sidebar para una sub-feature.
+> 4 ambientes: GOV · Civic · Impact · Ops. Nada vive fuera de estos 4.
+> Nuevas vistas dentro de GOV = tabs. Nunca un quinto ambiente para una sub-feature.
+> Civic e Impact son placeholders hasta estar en roadmap con fecha.
 
 ### FASE 2 — Recuperación Semántica (Sep–Dic 2026)
 - RAG sobre PDOT, POA, PAC, contratos, SERCOP, CPCCS

@@ -48,12 +48,9 @@ _ICPI_COLOR: dict[str, str] = {
 
 # ─────────────────────────────────────────────────────────────────────────────
 def _load_snapshot() -> tuple[dict | None, dict | None]:
-    """Carga el snapshot activo de Montecristi desde Supabase o JSON estático."""
-    try:
-        from utils.snapshot_io import load_snapshot
-        return load_snapshot(municipio_code="130801")
-    except Exception:
-        return None, None
+    """Carga el snapshot activo de Montecristi con cache de 5 minutos."""
+    from utils.cache_quira import cargar_snapshot
+    return cargar_snapshot(municipio_code="130801")
 
 
 def _badge(text: str, color: str, bg: str = "") -> str:
@@ -138,27 +135,33 @@ def render() -> None:
     clasif_sat  = sat_data.get("clasif_riesgo", "—").upper()
     alertas_act = sat_data.get("alertas_activas", [])
     n_activas   = sat_data.get("total_activas", len(alertas_act))
-    tgi_score   = tgi_data.get("score")
+
+    # TGI: índice principal v6.0 — leer del snapshot; fallback a gm_snapshot.json
+    tgi_score = tgi_data.get("score")
+    if tgi_score is None:
+        from utils.cache_quira import cargar_gm_snapshot
+        _gm = cargar_gm_snapshot()
+        tgi_score = _gm.get("tgi", {}).get("score")
 
     fecha_corte = meta_snap.get("fecha_corte", "")
     source_lbl  = (meta or {}).get("source", "supabase")
     source_note = "Supabase" if source_lbl == "supabase" else "archivo local"
 
-    icpi_str    = f"{icpi_pct:.1f}%" if icpi_pct is not None else "—"
-    tgi_str     = f"{tgi_score:.1f}" if tgi_score is not None else "—"
-    riesgo_str  = f"{riesgo_pond * 100:.1f}%" if riesgo_pond else "—"
+    icpi_str   = f"{icpi_pct:.1f}%" if icpi_pct is not None else "—"
+    tgi_str    = f"{tgi_score:.2f}%" if tgi_score is not None else "—"
+    riesgo_str = f"{riesgo_pond * 100:.1f}%" if riesgo_pond else "—"
 
-    icpi_color  = _ICPI_COLOR.get(icpi_clasif, "#F59E0B")
-    riesgo_col  = _RIESGO_COLOR.get(clasif_sat, "#F97316")
+    icpi_color = _ICPI_COLOR.get(icpi_clasif, "#F59E0B")
+    riesgo_col = _RIESGO_COLOR.get(clasif_sat, "#F97316")
 
-    # ── Métricas principales ──────────────────────────────────────────────
-    m_icpi  = _card_metric("ICPI Global", icpi_str,    icpi_clasif,     icpi_color)
-    m_riesg = _card_metric("Riesgo SAT",  clasif_sat,  f"{n_activas} alertas activas", riesgo_col)
-    m_tgi   = _card_metric("TGI Score",   tgi_str,     "Índice TGI D1-D5", "#64748B" if tgi_str == "—" else "#00D4FF")
+    # ── Métricas principales: TGI primero (índice canónico v6.0), SAT, ICPI ──
+    m_tgi   = _card_metric("TGI",        tgi_str,   "Gobernanza Institucional D1-D5", "#00D4FF" if tgi_score else "#64748B")
+    m_riesg = _card_metric("Riesgo SAT", clasif_sat, f"{n_activas} alertas activas",  riesgo_col)
+    m_icpi  = _card_metric("ICPI",       icpi_str,   icpi_clasif,                     icpi_color)
 
     st.markdown(f"""
 <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px">
-    {m_icpi}{m_riesg}{m_tgi}
+    {m_tgi}{m_riesg}{m_icpi}
 </div>
 """, unsafe_allow_html=True)
 
