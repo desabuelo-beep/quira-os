@@ -1,28 +1,45 @@
 """
-QUIRA Intelligence — Ambiente 🏛 GOV  (Router v3 · Sprint A · 2026-05-27)
+QUIRA Intelligence — Ambiente 🏛 GOV  (Router v4 · Sprint A+ · 2026-05-27)
 QUIRA Institucional — Monitoreo preventivo para GADs del Ecuador.
 
 Regla doctrinal permanente:
   env_gov.py ES UN ROUTER. No contiene contenido ni lógica de negocio.
-  El contenido vive en m1-m4 y p0_inicio.
+  El contenido vive en m1-m5 y p0-p19 y p_*.
   Módulos nuevos = archivo nuevo + una línea aquí.
   Nunca agregar HTML, métricas ni tabs directamente en este archivo.
 
-Módulos activos:
-  inicio    → p0_inicio.py       (todos los roles GOV)
-  situacion → m1_situacion.py    (todos los roles GOV)
-  alertas   → m2_alertas.py      (todos los roles GOV)
-  municipal → m3_municipal.py    (todos los roles GOV)
-  analisis  → m4_analisis.py     (Técnico, Operador, Administrador)
+━━━ MAPA COMPLETO DE MÓDULOS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Navegación:
-  - app.py llama render_sidebar_nav() para inyectar el menú en el sidebar.
-  - app.py llama render() para mostrar el contenido del módulo activo.
+  SECCIÓN EJECUTIVA — todos los roles GOV (Directivo, Técnico, Administrador)
+  ─────────────────────────────────────────────────────────────────────────────
+  inicio       → p0_inicio.py          Dashboard de entrada · ICPI · SAT · riesgo
+  situacion    → m1_situacion.py       Vista Ejecutiva + Pulso + Brecha
+  alertas      → m2_alertas.py         SAT Activas + Evolución Longitudinal
+  municipal    → m3_municipal.py       Holding + Gobernanza + Transparencia + Inversión
+  ods          → p11_ods.py            ODS Tracker · Agenda 2030 ↔ PDOT
+  confianza    → p16_confianza.py      IGP · Participación parroquial · CPCCS
+  rdc          → p17_rdc.py            Rendición de Cuentas · CPCCS · Checklist
+  cooperacion  → p18_cooperacion.py    Fondos BID · CAF · PNUD · ONU Mujeres
+  genero       → p19_genero.py         PSG 12.83% · ODS 5 · Ambiente · FA PDOT
 
-Roles GOV:
-  Directivo    → ve: inicio, situacion, alertas, municipal
-  Técnico      → ve: inicio, situacion, alertas, municipal, analisis
-  Administrador→ ve: todo (verificación cruzada)
+  SECCIÓN TÉCNICA — solo Técnico, Operador, Administrador (is_tecnico())
+  ─────────────────────────────────────────────────────────────────────────────
+  analisis     → m4_analisis.py        Tablero Técnico + Eficiencia + Metas + Cadena + Operación
+  geotwin      → p4_geotwin.py         GeoTwin Territorio · Mapa Folium · Parroquias
+  congruencias → p3_congruencias.py    Congruencias HPT-M · PDOT
+  simulador    → p13_simulador.py      Simulador de Escenarios · Análisis de sensibilidad
+  control      → m5_control.py         Centro de Control + Carga + Ingesta + Historial + Sentinel
+
+━━━ ROLES ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Directivo    → ve: SECCIÓN EJECUTIVA (9 módulos)
+  Técnico      → ve: SECCIÓN EJECUTIVA + SECCIÓN TÉCNICA (14 módulos)
+  Administrador→ ve: todo (igual que Técnico — verificación cruzada)
+
+━━━ NAVEGACIÓN ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  app.py llama render_sidebar_nav() para inyectar el menú en el sidebar.
+  app.py llama render() para mostrar el contenido del módulo activo.
 
 Dylus Lab © 2026
 """
@@ -32,22 +49,39 @@ import streamlit as st
 from utils.session import is_tecnico, is_admin, get_rol
 
 
-# ── Catálogo de módulos GOV ──────────────────────────────────────────────────
-# (key, icon, label, visible_para_tecnico+, visible_para_admin)
-_GOV_MODULES: list[tuple[str, str, str]] = [
-    ("inicio",     "🏠",  "Inicio"),
-    ("situacion",  "📊",  "Situación Institucional"),
-    ("alertas",    "🚨",  "Alertas y Riesgos"),
-    ("municipal",  "🏛",  "Gestión Municipal"),
-    ("analisis",   "📈",  "Análisis Estratégico"),   # solo Técnico+
+# ── Catálogo de módulos GOV ───────────────────────────────────────────────────
+# (key, icon, label, tecnico_only)
+# tecnico_only=True → solo visible para Técnico, Operador, Administrador
+_GOV_MODULES: list[tuple[str, str, str, bool]] = [
+    # ── Sección Ejecutiva (todos los roles GOV) ────────────────────────────
+    ("inicio",       "🏠",  "Inicio",                      False),
+    ("situacion",    "📊",  "Situación Institucional",      False),
+    ("alertas",      "🚨",  "Alertas y Riesgos SAT",        False),
+    ("municipal",    "🏛",  "Gestión Municipal",             False),
+    ("ods",          "🌐",  "ODS y Metas PDOT",              False),
+    ("confianza",    "🤝",  "Confianza Ciudadana",           False),
+    ("rdc",          "📋",  "Rendición de Cuentas",          False),
+    ("cooperacion",  "🌍",  "Cooperación Internacional",     False),
+    ("genero",       "💜",  "Género y Ambiente",             False),
+    # ── Sección Técnica (Técnico, Operador, Administrador) ─────────────────
+    ("analisis",     "📈",  "Análisis Estratégico",          True),
+    ("geotwin",      "🗺",  "GeoTwin Territorio",            True),
+    ("congruencias", "🔗",  "Congruencias PDOT",             True),
+    ("simulador",    "🎮",  "Simulador de Escenarios",       True),
+    ("control",      "⚙",  "Centro de Control",             True),
 ]
+
+# Claves de módulos exclusivos de la sección técnica
+_TECNICO_MODULES: frozenset[str] = frozenset(
+    key for key, *_, tec_only in _GOV_MODULES if tec_only
+)
 
 
 def _can_see(module_key: str) -> bool:
     """Determina si el rol actual puede ver este módulo."""
-    if module_key == "analisis":
+    if module_key in _TECNICO_MODULES:
         return is_tecnico() or is_admin()
-    return True  # todos los roles GOV ven el resto
+    return True  # todos los roles GOV ven la sección ejecutiva
 
 
 def _current_module() -> str:
@@ -67,33 +101,16 @@ def render_sidebar_nav() -> None:
     """
     Inyecta la navegación modular de GOV en el sidebar.
     Solo se llama desde app.py cuando el ambiente activo es GOV.
+    Muestra sección ejecutiva para todos los roles y sección técnica
+    solo para Técnico / Operador / Administrador.
     """
     current_mod = _current_module()
+    tiene_tecnico = is_tecnico() or is_admin()
 
-    st.sidebar.markdown(
-        '<div style="font-size:9px;color:rgba(255,255,255,.25);letter-spacing:.08em;'
-        'text-transform:uppercase;margin:12px 0 6px">MÓDULOS GOV</div>',
-        unsafe_allow_html=True,
-    )
-
-    for key, icon, label in _GOV_MODULES:
-        if not _can_see(key):
-            continue
-
+    def _btn(key: str, icon: str, label: str) -> None:
         is_active = (key == current_mod)
-        btn_style = ""
-        if is_active:
-            btn_style = (
-                "background:rgba(0,212,255,.12)!important;"
-                "border-color:rgba(0,212,255,.35)!important;"
-                "color:#00D4FF!important;"
-            )
-
-        # Label con punto activo para el módulo seleccionado
-        display = f"{icon}  {label}"
-
         if st.sidebar.button(
-            display,
+            f"{icon}  {label}",
             key=f"gov_mod_{key}",
             use_container_width=True,
             type="primary" if is_active else "secondary",
@@ -101,6 +118,29 @@ def render_sidebar_nav() -> None:
         ):
             st.session_state["gov_module"] = key
             st.rerun()
+
+    # ── Sección Ejecutiva ─────────────────────────────────────────────────
+    st.sidebar.markdown(
+        '<div style="font-size:9px;color:rgba(0,212,255,.35);letter-spacing:.1em;'
+        'text-transform:uppercase;margin:12px 0 5px;font-weight:700">EJECUTIVO</div>',
+        unsafe_allow_html=True,
+    )
+    for key, icon, label, tec_only in _GOV_MODULES:
+        if tec_only:
+            continue
+        _btn(key, icon, label)
+
+    # ── Sección Técnica (solo si el rol lo permite) ───────────────────────
+    if tiene_tecnico:
+        st.sidebar.markdown(
+            '<div style="font-size:9px;color:rgba(34,197,94,.35);letter-spacing:.1em;'
+            'text-transform:uppercase;margin:14px 0 5px;font-weight:700">TÉCNICO</div>',
+            unsafe_allow_html=True,
+        )
+        for key, icon, label, tec_only in _GOV_MODULES:
+            if not tec_only:
+                continue
+            _btn(key, icon, label)
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -138,8 +178,10 @@ def _render_gov_header(module_label: str) -> None:
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# Render de cada módulo
+# Renderers — uno por módulo, todos con try/except defensivo
 # ══════════════════════════════════════════════════════════════════════════════
+
+# ── Sección Ejecutiva ─────────────────────────────────────────────────────────
 
 def _render_inicio() -> None:
     try:
@@ -173,6 +215,48 @@ def _render_municipal() -> None:
         st.error(f"Módulo Municipal no disponible: {e}")
 
 
+def _render_ods() -> None:
+    try:
+        from quira_pages.p11_ods import render as _r
+        _r()
+    except Exception as e:
+        st.error(f"Módulo ODS no disponible: {e}")
+
+
+def _render_confianza() -> None:
+    try:
+        from quira_pages.p16_confianza import render as _r
+        _r()
+    except Exception as e:
+        st.error(f"Módulo Confianza Ciudadana no disponible: {e}")
+
+
+def _render_rdc() -> None:
+    try:
+        from quira_pages.p17_rdc import render as _r
+        _r()
+    except Exception as e:
+        st.error(f"Módulo Rendición de Cuentas no disponible: {e}")
+
+
+def _render_cooperacion() -> None:
+    try:
+        from quira_pages.p18_cooperacion import render as _r
+        _r()
+    except Exception as e:
+        st.error(f"Módulo Cooperación Internacional no disponible: {e}")
+
+
+def _render_genero() -> None:
+    try:
+        from quira_pages.p19_genero import render as _r
+        _r()
+    except Exception as e:
+        st.error(f"Módulo Género y Ambiente no disponible: {e}")
+
+
+# ── Sección Técnica ───────────────────────────────────────────────────────────
+
 def _render_analisis() -> None:
     try:
         from quira_pages.m4_analisis import render as _r
@@ -181,13 +265,56 @@ def _render_analisis() -> None:
         st.error(f"Módulo Análisis no disponible: {e}")
 
 
-# ── Mapa key → renderer ───────────────────────────────────────────────────────
-_MODULE_RENDER = {
-    "inicio":    (_render_inicio,    "Inicio"),
-    "situacion": (_render_situacion, "Situación Institucional"),
-    "alertas":   (_render_alertas,   "Alertas y Riesgos"),
-    "municipal": (_render_municipal, "Gestión Municipal"),
-    "analisis":  (_render_analisis,  "Análisis Estratégico"),
+def _render_geotwin() -> None:
+    try:
+        from quira_pages.p4_geotwin import render as _r
+        _r()
+    except Exception as e:
+        st.error(f"Módulo GeoTwin no disponible: {e}")
+
+
+def _render_congruencias() -> None:
+    try:
+        from quira_pages.p3_congruencias import render as _r
+        _r()
+    except Exception as e:
+        st.error(f"Módulo Congruencias no disponible: {e}")
+
+
+def _render_simulador() -> None:
+    try:
+        from quira_pages.p13_simulador import render as _r
+        _r()
+    except Exception as e:
+        st.error(f"Módulo Simulador no disponible: {e}")
+
+
+def _render_control() -> None:
+    try:
+        from quira_pages.m5_control import render as _r
+        _r()
+    except Exception as e:
+        st.error(f"Módulo Centro de Control no disponible: {e}")
+
+
+# ── Mapa key → (renderer, label) ─────────────────────────────────────────────
+_MODULE_RENDER: dict[str, tuple] = {
+    # Sección Ejecutiva
+    "inicio":       (_render_inicio,       "Inicio"),
+    "situacion":    (_render_situacion,    "Situación Institucional"),
+    "alertas":      (_render_alertas,      "Alertas y Riesgos SAT"),
+    "municipal":    (_render_municipal,    "Gestión Municipal"),
+    "ods":          (_render_ods,          "ODS y Metas PDOT"),
+    "confianza":    (_render_confianza,    "Confianza Ciudadana"),
+    "rdc":          (_render_rdc,          "Rendición de Cuentas"),
+    "cooperacion":  (_render_cooperacion,  "Cooperación Internacional"),
+    "genero":       (_render_genero,       "Género y Ambiente"),
+    # Sección Técnica
+    "analisis":     (_render_analisis,     "Análisis Estratégico"),
+    "geotwin":      (_render_geotwin,      "GeoTwin Territorio"),
+    "congruencias": (_render_congruencias, "Congruencias PDOT"),
+    "simulador":    (_render_simulador,    "Simulador de Escenarios"),
+    "control":      (_render_control,      "Centro de Control"),
 }
 
 
@@ -196,9 +323,8 @@ _MODULE_RENDER = {
 # ══════════════════════════════════════════════════════════════════════════════
 
 def render() -> None:
-    """Renderiza el módulo GOV activo."""
+    """Renderiza el módulo GOV activo con header de identidad."""
     module_key = _current_module()
     fn, label  = _MODULE_RENDER.get(module_key, (_render_inicio, "Inicio"))
-
     _render_gov_header(label)
     fn()
