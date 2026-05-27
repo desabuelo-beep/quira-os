@@ -1,5 +1,5 @@
 # QUIRA Intelligence — Nomenclatura Canónica
-**FREEZE TOTAL — Aprobado 2026-05-27 · Dylus Lab**
+**FREEZE TOTAL — Última revisión 2026-05-27 · Dylus Lab**
 
 > Un cambio de nombre en este documento rompe decenas de archivos.
 > Cualquier modificación requiere revisión formal del equipo Dylus Lab.
@@ -149,6 +149,86 @@ administrador_hash = "<PBKDF2-SHA256 del password>"
 ---
 
 ## 6. Nodos de Configuración
+
+---
+
+## 7. Ecosistema Municipal
+
+> **Corrección arquitectónica v2 — 2026-05-27**
+> QUIRA no modela "el municipio" = GAD. QUIRA modela el **ecosistema institucional municipal**.
+> El GAD es el núcleo dominante. Las entidades son la capa periférica de gobernanza del alcalde.
+
+### Término canónico
+
+| Término | Usar | Razón |
+|---|---|---|
+| `Ecosistema Municipal` | ✅ SIEMPRE | Comunica sistema vivo. El alcalde piensa en su sistema, no en su holding. |
+| `Holding Municipal` | ⚠ Solo internamente | Correcto técnicamente, frío cognitivamente. Nunca en UI. |
+| `Adscritas` | ❌ Nunca en UI | Incompleto — no incluye EPs ni Bomberos. |
+| `Dependencias` | ❌ Nunca | Errado institucionalmente. |
+| `Entidades` | ⚠ Neutral | Aceptable en contexto técnico, no en interfaz. |
+
+### Catálogo canónico de entidades — Montecristi
+
+| Key interno | Nombre display | Tipo | Prioridad visual | Estado datos |
+|---|---|---|---|---|
+| `gad` | GAD Municipal | Núcleo / Matriz | 🔴 Dominante | ✅ Gold Master completo |
+| `patronato` | Patronato Municipal | Adscrita social | 🟡 Secundaria | ✅ 12 meses 2025 |
+| `ep_aseo` | EP Aseo Municipal | Empresa pública | 🟡 Secundaria | ✅ 12 meses 2025 |
+| `bomberos` | Cuerpo de Bomberos | Adscrita operacional | 🟡 Secundaria | ✅ 12 meses 2025 |
+
+**Reglas de keys internos:**
+- Minúsculas, sin tildes, sin espacios, sin guiones dobles
+- `gad` = siempre el GAD matriz (no el municipio en general)
+- Entidades futuras siguen el patrón: `ep_agua`, `ep_movilidad`, `fundacion_x`
+
+### Jerarquía de visibilidad en Vista Ejecutiva v2
+
+```
+Header    → GAD (nombre) · TGI · SAT activas · Alcalde
+Zona 1    → Pulso Institucional GAD (TGI · D1-D5 · ICPI)
+Zona 2    → Lo Urgente — SAT sistémicas GAD
+Zona 3    → Compromisos GAD (RDC · PDOT · IFE)
+Zona 4    → Territorio (parroquias · IRS · brecha)
+Zona 5    → Ecosistema Municipal (Patronato · EP Aseo · Bomberos)
+Zona 6    → Oportunidades + QUIRA IA
+```
+
+### Indicadores canónicos mínimos por entidad del ecosistema
+
+| Indicador | Obligatorio | Descripción |
+|---|---|---|
+| Estado semafórico | ✅ | 🟢 Estable / 🟡 Atención / 🔴 Riesgo |
+| Ti (ejecución) | ✅ | % devengado sobre codificado |
+| Señal operativa | ✅ | El dato más relevante del tipo de entidad |
+| Acción recomendada | Si riesgo | Qué debe hacer el alcalde |
+
+**Señal operativa por tipo:**
+
+| Tipo entidad | Señal operativa canónica |
+|---|---|
+| Adscrita social (Patronato) | Cobertura de beneficiarios · calidad evidencia IMN |
+| Empresa pública (EP Aseo) | Cobertura territorial de servicio |
+| Adscrita operacional (Bomberos) | Capacidad operativa · tiempos de respuesta |
+
+### Jerarquía SAT en el ecosistema
+
+| Nivel SAT | Nombre | Origen | Vista |
+|---|---|---|---|
+| SAT sistémica (I-VIII+) | SAT del municipio | GAD | Zona 2 — Lo Urgente · afecta ICPI |
+| SAT operativa sectorial | SAT de entidad | Patronato / EP / Bomberos | Zona 5 — Ecosistema · no contamina ICPI |
+
+**Regla:** Las SAT sistémicas del GAD NUNCA se mezclan visualmente con las señales del ecosistema.
+Son cualitativamente distintas. Una SAT sistémica activa implica riesgo legal municipal.
+Una señal de ecosistema implica deterioro operativo periférico que el alcalde debe monitorear.
+
+### Prohibiciones del Ecosistema
+
+- ❌ Mostrar el GAD y las entidades del ecosistema como si fueran iguales en peso visual
+- ❌ Llamar "Holding" a la Zona 5 en la UI
+- ❌ Inventar datos de entidades — si no hay dato, mostrar "Sin datos Q1"
+- ❌ Activar SAT sistémicas desde datos de entidades adscritas (solo el GAD activa SAT sistémicas)
+- ❌ Mostrar una zona Ecosistema sin al menos estado semafórico y Ti de cada entidad
 
 | Archivo | Responsabilidad |
 |---|---|

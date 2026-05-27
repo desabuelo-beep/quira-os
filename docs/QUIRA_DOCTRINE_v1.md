@@ -1,4 +1,4 @@
-# QUIRA — Doctrina Fundacional v1.1
+# QUIRA — Doctrina Fundacional v1.2
 **Sistema Operativo de Coherencia Institucional Municipal**
 *Dylus Lab © 2026 — Documento Canónico Confidencial*
 
@@ -23,6 +23,15 @@ coherente y acumulativa.
 
 **La frase que resume el paradigma:**
 > "QUIRA evita que el municipio improvise institucionalmente."
+
+**La corrección de cimiento (2026-05-27):**
+> QUIRA no modela "el municipio".
+> QUIRA modela **el ecosistema institucional municipal**.
+>
+> Municipio ≠ GAD.
+> Municipio = GAD (núcleo) + entidades adscritas + EPs + Bomberos + Patronatos + desconcentradas + sus relaciones.
+>
+> Un sistema que solo ve el GAD está ciego al 30-40% del riesgo institucional real del alcalde.
 
 Todo gira alrededor de coherencia en seis dimensiones simultáneas:
 - **Coherencia temporal** — lo que se prometió vs. lo que se ejecutó en el tiempo
@@ -113,6 +122,67 @@ El GAD ve los resultados: índices, alertas, narrativas.
 La metodología opera en silencio, sin nombrarse.
 
 ### 1.4 La unidad mínima no es la pantalla. Es el protocolo.
+
+### 1.5 QUIRA modela el ecosistema institucional municipal — no el municipio
+
+Esta distinción es tan crítica como la de sección 1.0.
+
+**El error que casi ocurre:**
+```
+Municipio = GAD
+```
+
+**La verdad institucional:**
+```
+ECOSISTEMA INSTITUCIONAL MUNICIPAL
+│
+├── GAD (núcleo / dominante)
+│     Presupuesto · PDOT · POA · PAC · CNE
+│     SAT sistémicas · legitimidad política central
+│     ← concentra el 70-80% de la masa institucional
+│
+└── Entidades del Ecosistema
+      ├── Patronato Municipal   (adscrita social)
+      ├── EP Aseo               (empresa pública)
+      ├── Cuerpo de Bomberos    (adscrita operacional)
+      └── [extensible: EP Agua, movilidad, tránsito, fundaciones, etc.]
+```
+
+**Por qué importa:**
+Si QUIRA solo modela el GAD, el sistema queda ciego a:
+- Deterioro operativo periférico (EP con ejecución crítica antes de que explote)
+- Crisis sociales adscritas (Patronato sin evidencia = CPCCS alerta)
+- Presión territorial indirecta (Bomberos con capacidad deteriorada = riesgo ciudadano)
+- Captura incompleta del riesgo institucional sistémico del alcalde
+
+**El alcalde gobierna el ecosistema completo. QUIRA también debe verlo.**
+
+**Pero la jerarquía visual es inmutable:**
+El GAD domina la Vista Ejecutiva. Las entidades del ecosistema son una capa de
+salud sistémica — visibles, accionables, pero secundarias en peso visual y cognitivo.
+Esto se llama **jerarquía institucional en la experiencia**, no igualdad de pantalla.
+
+**Nomenclatura canónica:**
+El conjunto se llama **Ecosistema Municipal** — no "Holding" (técnicamente correcto
+pero cognitivamente frío), no "Adscritas" (incompleto), no "Dependencias" (errado).
+*Ecosistema Municipal* comunica sistema vivo institucional. El alcalde piensa
+"¿cómo está mi sistema municipal?", no "¿cómo está mi holding?".
+
+**Escalabilidad por diseño:**
+La arquitectura del Ecosistema debe existir desde el primer sprint,
+aunque no todos los datos estén disponibles. La arquitectura precede la completitud del dato.
+Mañana: EP Agua, movilidad, hospital municipal, fundaciones.
+La zona Ecosistema acepta N entidades sin rediseño.
+
+**SAT: dos niveles en el ecosistema:**
+
+| Nivel | Tipo | Dónde vive |
+|---|---|---|
+| SAT sistémicas (I-VIII+) | GAD · afectan al municipio completo | Zona 2 — Lo Urgente · ICPI |
+| SAT operativas sectoriales | Entidad específica · deterioro periférico | Zona Ecosistema · señales de salud |
+
+Las SAT sistémicas pertenecen al núcleo GAD y nunca se diluyen en el ecosistema.
+Las SAT sectoriales alertan al alcalde sobre entidades específicas sin contaminar el índice central.
 
 Un ERP piensa en módulos.
 Un BI piensa en gráficas.
@@ -406,41 +476,68 @@ El sistema asigna la vista por rol al login.
 El Técnico puede abrir Vista Ejecutiva para validar qué ve el alcalde.
 El Administrador accede a todo.
 
-### 6.2 Vista Ejecutiva — Terminal de Estado
+### 6.2 Vista Ejecutiva v2 — Terminal de Estado del Ecosistema
 
 **Referente**: Palantir Foundry / Bloomberg Terminal para sector público.
 
 No módulos. No menú lateral. **Una sola pantalla. Sin scroll en laptop.**
 
+**Corrección arquitectónica v2 (2026-05-27):**
+Vista Ejecutiva v1 modelaba solo el GAD. Vista Ejecutiva v2 modela el ecosistema completo
+con jerarquía institucional: GAD dominante (4 zonas) + Ecosistema (1 zona) + Oportunidades (1 zona).
+
 ```
-╔══════════════════════════════╦══════════════════════════════╗
-║  ZONA 1 — PULSO GLOBAL       ║  ZONA 2 — LO URGENTE         ║
-║  Estado · Riesgo · Tendencia ║  3 alertas priorizadas        ║
-║  Un número maestro           ║  Cada una: qué · por qué ·   ║
-║  con color semafórico        ║  cuánto tiempo · qué hago     ║
-╠══════════════════════════════╬══════════════════════════════╣
+╔══════════════════════════════════════════════════════════════╗
+║  HEADER — Identidad GAD · TGI · SAT activas · Ejecutivo     ║
+╠══════════════════════════════╦═══════════════════════════════╣
+║  ZONA 1 — PULSO INSTITUCIONAL║  ZONA 2 — LO URGENTE         ║
+║  TGI · D1-D5 con narrativa   ║  SAT sistémicas activas      ║
+║  ICPI · tendencia 3 años     ║  Cada una: causa · tiempo ·  ║
+║  GAD como núcleo             ║  acción · base legal         ║
+╠══════════════════════════════╬═══════════════════════════════╣
 ║  ZONA 3 — COMPROMISOS        ║  ZONA 4 — TERRITORIO         ║
-║  Próximos 60 días            ║  Parroquias · Servicios       ║
-║  RDC · PDOT · Presupuesto    ║  Presión ciudadana            ║
-║  IFE — Fidelidad mandato     ║  Inequidad territorial        ║
-╠══════════════════════════════╩══════════════════════════════╣
-║  ZONA 5 — OPORTUNIDADES                  [QUIRA IA  ●]     ║
-║  Cooperación activa · CAF · BID · PP pendiente              ║
-╚═════════════════════════════════════════════════════════════╝
+║  RDC · PDOT · Q2 presupuesto ║  Parroquias · IRS · brecha   ║
+║  IFE — en construcción       ║  inequidad territorial        ║
+╠══════════════════════════════╩═══════════════════════════════╣
+║  ZONA 5 — ECOSISTEMA MUNICIPAL                               ║
+║  Patronato 🟡 · EP Aseo 🔴 · Bomberos 🟢                   ║
+║  Estado · Ti · riesgo operativo · acción requerida          ║
+╠══════════════════════════════════════════════════════════════╣
+║  ZONA 6 — OPORTUNIDADES + QUIRA IA              [● QUIRA IA]║
+║  Fondos bloqueados · Cooperación · IED · análisis preventivo ║
+╚══════════════════════════════════════════════════════════════╝
 ```
 
 **Contratos cognitivos por zona:**
 
-| Zona | Pregunta que responde | Lenguaje |
-|---|---|---|
-| Pulso global | ¿Cómo está el municipio hoy? | Político-institucional. Un número, un color, una frase. |
-| Lo urgente | ¿Qué me puede explotar? | Riesgo con temporalidad. "Tienes X días." |
-| Compromisos | ¿Qué debo cumplir y cuándo? | Plazos, nombres, consecuencias. |
-| Territorio | ¿Dónde está la presión ciudadana? | Parroquias, servicios, inequidad visible. |
-| Oportunidades | ¿Qué puedo activar ahora? | Fondos, cooperación, ventanas abiertas. |
+| Zona | Pregunta que responde | Lenguaje | Fuente |
+|---|---|---|---|
+| Pulso Institucional | ¿Cómo está el GAD hoy? | Un número, un color, una frase. D1-D5 explicadas. | TGI · ICPI |
+| Lo Urgente | ¿Qué me puede explotar? | Riesgo con temporalidad. "Tienes X días." | SAT sistémicas |
+| Compromisos | ¿Qué debo cumplir y cuándo? | Plazos, nombres, consecuencias legales. | RDC · PDOT · IFE |
+| Territorio | ¿Dónde está la presión ciudadana? | Parroquias, inequidad territorial visible. | IRS · D4 |
+| **Ecosistema** | **¿Cómo están mis entidades?** | **Mini-cards con semáforo. Deterioro visible antes de que explote.** | **Ti · IMN adscritas** |
+| Oportunidades | ¿Qué puedo activar ahora? | Fondos, cooperación, ventanas abiertas. | Financiero · IED |
 
-**Cada zona es clickable** → abre profundización contextual → los 40 archivos existentes
-se convierten en capas de profundidad, no en módulos planos.
+**Zona Ecosistema — diseño cognitivo:**
+```
+Mini-card por entidad:
+┌─────────────────────────────────────────────┐
+│ [Entidad]              🟡 Atención           │
+│ [Un dato clave]                             │
+│ [Una acción concreta si hay riesgo]         │
+└─────────────────────────────────────────────┘
+```
+No tablas. No KPIs fríos. Tres cards máximo en la primera versión.
+Escalable a N entidades sin rediseño.
+
+**Indicadores mínimos por entidad del ecosistema:**
+- Estado general (🟢 Estable / 🟡 Atención / 🔴 Riesgo)
+- Ti / ejecución institucional (% devengado)
+- Señal operativa principal (cobertura, capacidad, beneficiarios)
+- Acción recomendada si hay deterioro
+
+**Cada zona es clickable** → abre profundización contextual.
 
 **Lo que la Vista Ejecutiva NUNCA muestra:**
 - Siglas técnicas sin explicar (ICPI, SAT, TGI, POA sin contexto)
@@ -448,6 +545,7 @@ se convierten en capas de profundidad, no en módulos planos.
 - Menús de navegación lateral
 - Gráficas decorativas sin criterio
 - ODS con scores no verificables
+- Datos inventados o no verificados en el Gold Master
 
 ### 6.3 Vista Técnica — Centro Analítico y de Gestión
 
@@ -645,6 +743,19 @@ Eso es lo que hace que QUIRA sea infraestructura pública, no un dashboard.
 
 ## Apéndice — Lo que está pendiente de definir (backlog doctrinal)
 
+**Pendientes del Ecosistema Municipal (nuevos — 2026-05-27):**
+
+| Decisión pendiente | Impacto | Prioridad |
+|---|---|---|
+| Catálogo canónico de entidades del ecosistema para Montecristi (¿hay más allá de EP Aseo · Patronato · Bomberos?) | Zona Ecosistema Vista Ejecutiva | Alta |
+| Definir indicadores canónicos mínimos por tipo de entidad (adscrita social vs EP vs operacional) | Data model ecosistema | Alta |
+| SAT operativas sectoriales: umbral de activación por entidad (Ti < X% = señal roja) | Alertas sectoriales | Media |
+| IMN de entidades adscritas: ¿mismo formato que GAD o protocolo simplificado? | Carga mensual | Media |
+| Key interno canónico para cada entidad (`ep_aseo`, `patronato`, `bomberos`) | Nomenclatura código | Alta |
+| Datos de Holding en gm_snapshot.json: ¿están suficientemente estructurados para Zona Ecosistema? | Data pipeline | Alta |
+
+**Pendientes previos (sin cambios):**
+
 | Decisión pendiente | Impacto | Prioridad |
 |---|---|---|
 | Estructura detallada del IMN por tipo de dirección (financiero vs social vs técnico) | Vista Técnica Modo B | Alta |
@@ -657,6 +768,8 @@ Eso es lo que hace que QUIRA sea infraestructura pública, no un dashboard.
 
 ---
 
-*QUIRA_DOCTRINE_v1.1 — CANONICAL. Congelado para construir. Abierto para iterar versionado.*
-*Próxima versión: v1.2 tras Sprint B — incorporar decisiones de experiencia UX*
+*QUIRA_DOCTRINE_v1.2 — CANONICAL. Congelado para construir. Abierto para iterar versionado.*
+*v1.2 — 2026-05-27: Corrección de cimiento — QUIRA modela el Ecosistema Institucional Municipal.*
+*Agrega: Sección 1.5 (Ecosistema), Vista Ejecutiva v2 (6 zonas), SAT dos niveles, backlog ecosistema.*
+*Próxima versión: v1.3 tras Sprint B — incorporar decisiones de experiencia UX post-construcción.*
 *Dylus Lab © 2026 — Confidencial*
