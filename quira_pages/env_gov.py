@@ -102,11 +102,43 @@ def render_sidebar_nav() -> None:
     Inyecta la navegación modular de GOV en el sidebar.
     Solo se llama desde app.py cuando el ambiente activo es GOV.
 
-    Ejecutivo: sin navegación — la Vista Ejecutiva es pantalla única.
+    Ejecutivo: micro-switcher de 2 modos (Vista Ejecutiva / Concejo).
+               No es navegación clásica — es cambio de modo de operación.
     Técnico / Administrador: EJECUTIVO + TÉCNICO secciones.
     """
-    # El Ejecutivo no navega módulos — su pantalla es única, sin sidebar de módulos.
+    # ── Ejecutivo: micro-switcher modo (Sprint C.2) ───────────────────────────
     if is_ejecutivo():
+        modo_actual = st.session_state.get("ejecutivo_modo", "vista")
+
+        st.sidebar.markdown(
+            '<div style="font-size:9px;color:rgba(245,158,11,.4);letter-spacing:.1em;'
+            'text-transform:uppercase;margin:12px 0 8px;font-weight:800">MODO ACTIVO</div>',
+            unsafe_allow_html=True,
+        )
+
+        if st.sidebar.button(
+            "🏛  Vista Ejecutiva",
+            key="modo_vista",
+            use_container_width=True,
+            type="primary" if modo_actual == "vista" else "secondary",
+        ):
+            st.session_state["ejecutivo_modo"] = "vista"
+            st.rerun()
+
+        if st.sidebar.button(
+            "⚖  Sala de Mando · Concejo",
+            key="modo_concejo",
+            use_container_width=True,
+            type="primary" if modo_actual == "concejo" else "secondary",
+        ):
+            st.session_state["ejecutivo_modo"] = "concejo"
+            st.rerun()
+
+        st.sidebar.markdown(
+            '<div style="font-size:8px;color:rgba(255,255,255,.15);'
+            'margin-top:8px;line-height:1.5">Sprint C.2 · QUIRA Intelligence</div>',
+            unsafe_allow_html=True,
+        )
         return
 
     current_mod = _current_module()
@@ -334,14 +366,21 @@ def render() -> None:
     Ejecutivo → Vista Ejecutiva Bloomberg-style (pantalla única, sin header GOV).
     Técnico / Administrador → módulo activo con header de identidad GOV.
     """
-    # ── Ejecutivo: Vista Ejecutiva directa ───────────────────────────────────
+    # ── Ejecutivo: Vista Ejecutiva o Sala de Mando Concejo (Sprint C.2) ─────
     if is_ejecutivo():
-        try:
-            from quira_pages.p_vista_ejecutiva import render as _ve
-            _ve()
-        except Exception as e:
-            import streamlit as st
-            st.error(f"Vista Ejecutiva no disponible: {e}")
+        modo = st.session_state.get("ejecutivo_modo", "vista")
+        if modo == "concejo":
+            try:
+                from quira_pages.p_concejo import render as _c
+                _c()
+            except Exception as e:
+                st.error(f"Sala de Mando Concejo no disponible: {e}")
+        else:
+            try:
+                from quira_pages.p_vista_ejecutiva import render as _ve
+                _ve()
+            except Exception as e:
+                st.error(f"Vista Ejecutiva no disponible: {e}")
         return
 
     # ── Técnico / Administrador: módulo activo con header GOV ─────────────────
