@@ -46,7 +46,7 @@ Dylus Lab © 2026
 from __future__ import annotations
 
 import streamlit as st
-from utils.session import is_tecnico, is_admin, get_rol
+from utils.session import is_tecnico, is_admin, is_ejecutivo, get_rol
 
 
 # ── Catálogo de módulos GOV ───────────────────────────────────────────────────
@@ -101,9 +101,14 @@ def render_sidebar_nav() -> None:
     """
     Inyecta la navegación modular de GOV en el sidebar.
     Solo se llama desde app.py cuando el ambiente activo es GOV.
-    Muestra sección ejecutiva para todos los roles y sección técnica
-    solo para Técnico / Operador / Administrador.
+
+    Ejecutivo: sin navegación — la Vista Ejecutiva es pantalla única.
+    Técnico / Administrador: EJECUTIVO + TÉCNICO secciones.
     """
+    # El Ejecutivo no navega módulos — su pantalla es única, sin sidebar de módulos.
+    if is_ejecutivo():
+        return
+
     current_mod = _current_module()
     tiene_tecnico = is_tecnico() or is_admin()
 
@@ -323,7 +328,23 @@ _MODULE_RENDER: dict[str, tuple] = {
 # ══════════════════════════════════════════════════════════════════════════════
 
 def render() -> None:
-    """Renderiza el módulo GOV activo con header de identidad."""
+    """
+    Renderiza el contenido GOV según el rol activo.
+
+    Ejecutivo → Vista Ejecutiva Bloomberg-style (pantalla única, sin header GOV).
+    Técnico / Administrador → módulo activo con header de identidad GOV.
+    """
+    # ── Ejecutivo: Vista Ejecutiva directa ───────────────────────────────────
+    if is_ejecutivo():
+        try:
+            from quira_pages.p_vista_ejecutiva import render as _ve
+            _ve()
+        except Exception as e:
+            import streamlit as st
+            st.error(f"Vista Ejecutiva no disponible: {e}")
+        return
+
+    # ── Técnico / Administrador: módulo activo con header GOV ─────────────────
     module_key = _current_module()
     fn, label  = _MODULE_RENDER.get(module_key, (_render_inicio, "Inicio"))
     _render_gov_header(label)
