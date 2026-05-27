@@ -1,0 +1,154 @@
+{
+  "_meta": {
+    "generado_en": "2026-05-26T01:42:47.873328",
+    "municipio_code": "130801",
+    "municipio_nombre": "GAD Municipal de Montecristi",
+    "periodo": "2026-05",
+    "quira_version": "v6.0",
+    "script": "scripts/generar_informe_mensual.py",
+    "gold_master_version": "v6.0_TGI_20260525"
+  },
+  "resumen_ejecutivo": {
+    "icpi_global_pct": 53.56,
+    "icpi_clasificacion": "Ruptura Sistémica",
+    "tgi_score": 68.82,
+    "sat_riesgo": "ALTO",
+    "sat_label": "Riesgo Alto — intervención institucional requerida",
+    "sat_activas": 3,
+    "n_periodos_rcm": 1,
+    "icpi_trend": "INSUFICIENTE_DATOS",
+    "diagnostico_global": "ICPI=53.56% (Ruptura Sistémica). El municipio opera por debajo del umbral mínimo de coherencia institucional. Se requiere intervención estructural urgente. 3 alerta(s) SAT activa(s) requieren atención — Riesgo ALTO."
+  },
+  "rc_m": [
+    {
+      "periodo": "May 2026",
+      "icpi_pct": 53.56,
+      "d3_ti_pct": 14.58,
+      "sat_iv": "ACTIVA",
+      "riesgo": "ALTO",
+      "fecha_corte": "2026-05-25"
+    }
+  ],
+  "dimensiones_tgi": [
+    {
+      "codigo": "D1",
+      "nombre": "Legalidad y Coherencia Normativa",
+      "valor": 83.5,
+      "peso": 0.2,
+      "fuente": "G3.1_D1 · H01_PARÁMETROS!B180 — Trust_Score_Metodológico"
+    },
+    {
+      "codigo": "D2",
+      "nombre": "Fidelidad de Planificación",
+      "valor": 69.93,
+      "peso": 0.2,
+      "fuente": "G3.2_D2 · PSG_FIDELIDAD — % metas PDOT cumplidas (D2_Score)"
+    },
+    {
+      "codigo": "D3",
+      "nombre": "Ejecución Presupuestaria",
+      "valor": 14.58,
+      "peso": 0.25,
+      "fuente": "G3.5_D3 · Ti Holding Municipal Q1-2026 — ratio estricto grupos 7+8"
+    },
+    {
+      "codigo": "D4",
+      "nombre": "Equidad Territorial",
+      "valor": 66.85,
+      "peso": 0.25,
+      "fuente": "G3.6_D4 · TGI rural promedio ponderado por parroquia"
+    },
+    {
+      "codigo": "D5",
+      "nombre": "Capacidad Institucional",
+      "valor": 100.0,
+      "peso": 0.1,
+      "fuente": "G3.7_D5 · H01_PARÁMETROS!B12 — ICM_SNP_SIGAD × 100 = 100%"
+    }
+  ],
+  "alertas_sat_activas": [
+    {
+      "codigo": "SAT-III",
+      "nombre": "Paralisis Presupuestaria",
+      "tipo": "critica",
+      "base_legal": "COPFP Art. 113",
+      "dimension": "D3",
+      "valor_obs": 0.1458,
+      "umbral": "Ti < 60%",
+      "detalle": "Ti = 14.58% < umbral crítico 60% — parálisis presupuestaria — COPFP Art.113"
+    },
+    {
+      "codigo": "SAT-IV",
+      "nombre": "Alerta Fiscal COOTAD",
+      "tipo": "legal",
+      "base_legal": "COOTAD Art. 192",
+      "dimension": "D3",
+      "valor_obs": 0.1458,
+      "umbral": ">= 65% (COOTAD Art.192)",
+      "detalle": "Inversión = 14.58% < meta 65% — brecha = 50.42% — COOTAD Art.192 INCUMPLIDO"
+    },
+    {
+      "codigo": "SAT-V",
+      "nombre": "Brecha Compromiso CPCCS",
+      "tipo": "alerta",
+      "base_legal": "COOTAD Art. 302",
+      "dimension": "D5",
+      "valor_obs": 0,
+      "umbral": ">= 50/100",
+      "detalle": "Score RdC = 0/100 < mínimo 50 — brecha compromiso CPCCS — COOTAD Art.302"
+    }
+  ],
+  "financiero": {
+    "presupuesto_total_2026": 26689147,
+    "presupuesto_codificado_inv": 22595464,
+    "devengado_q1_2026": 238066,
+    "ti_2025_pct": 59.85,
+    "ti_2026_raw_pct": 1.05,
+    "ti_2026_normalizada_pct": 4.21,
+    "corte_datos": "2026-03 (Q1)",
+    "fondos_bloqueados_est": 3660000,
+    "fuente": "H07b_Ti_INVERSIÓN_eSIGEF · H01_PARÁMETROS Sección C"
+  },
+  "trazabilidad": {
+    "traceability_score": 41.62,
+    "coverage_score": 0.25,
+    "source_confidence": 0.416,
+    "fuentes": {
+      "dpe": {
+        "estado": "partial",
+        "reliability": 0.475
+      },
+      "sercop": {
+        "estado": "partial",
+        "reliability": 0.475
+      },
+      "cpccs": {
+        "estado": "partial",
+        "reliability": 0.24
+      },
+      "social": {
+        "estado": "placeholder",
+        "reliability": 0.0
+      },
+      "gold_master": {
+        "estado": "ok",
+        "reliability": 0.99
+      }
+    }
+  },
+  "longitudinal_summary": {
+    "n_periodos": 1,
+    "icpi_trend": "INSUFICIENTE_DATOS",
+    "riesgo_trend": "INSUFICIENTE_DATOS",
+    "last_period": "May 2026",
+    "last_icpi_pct": 53.56,
+    "last_riesgo": "ALTO",
+    "last_sat_activas": 3,
+    "icpi_series": [
+      [
+        "May 2026",
+        53.56
+      ]
+    ]
+  }
+}

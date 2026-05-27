@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "descripcion": "Historial de versiones del Gold Master TGI — registro doctrinal canónico",
+    "doctrina": "Cada versión del Gold Master es un hito epistemológico del proyecto QUIRA Intelligence. Este archivo registra los cambios metodológicos, no solo técnicos.",
+    "fuente": "Dylus Lab — actualizado manualmente por equipo QUIRA",
+    "ultima_actualizacion": "2026-05-26"
+  },
+  "versiones": [
+    {
+      "version": "v6.0",
+      "fecha": "2026-05-25",
+      "archivo": "TGI_GOLD_MASTER_v6.0_20260525.xlsx",
+      "estado": "ACTIVO",
+      "hojas": 34,
+      "cambios_metodologicos": [
+        "Nueva arquitectura G1.x-G7.x (34 hojas) reemplaza H01-H99 de v5.5",
+        "D4 actualizado: IET_adj (44.8%) → promedio territorial (66.85%)",
+        "D3 scope ampliado: G3.3 GAD + G3.4 Holding + G3.5 Consolidado",
+        "G5.1_SAT_CATALOGO formalizado como hoja canónica (SAT-0 a SAT-VI)",
+        "G6.1_OUTPUT_API como contrato estable con conector Python",
+        "G7.1_GOBERNANZA_SOD y G7.2_POLITICA_INTEGRIDAD añadidos",
+        "Roles migrados: Alcalde/Concejal/Técnico → Viewer/Analyst/Operator/Admin"
+      ],
+      "metricas_clave": {
+        "ICPI_GLOBAL_PCT": 66.85,
+        "TGI_SCORE": 66.85,
+        "TGI_D1": 83.5,
+        "TGI_D2": 69.93,
+        "TGI_D3": 59.85,
+        "TGI_D4": 66.85,
+        "TGI_D5": 100.0,
+        "SAT_ACTIVAS": 2,
+        "SAT_CLASIF_RIESGO": "ALTO"
+      },
+      "autor": "Dylus Lab — equipo QUIRA Intelligence",
+      "sha256": null,
+      "notas": "Primera versión con arquitectura G-numerada. G3.x completadas 2026-05-26. OUTPUT_API estable."
+    },
+    {
+      "version": "v5.5",
+      "fecha": "2026-05-18",
+      "archivo": "SIAP-ICPI_GOLD_MASTER_v5.5_TGI_20260518.xlsx",
+      "estado": "CONGELADO",
+      "hojas": 123,
+      "cambios_metodologicos": [
+        "Versión canónica de referencia Sprint 1-2",
+        "123 hojas H01-H99 con nomenclatura SIAP-ICPI",
+        "H73_OUTPUT_API como interfaz de salida",
+        "D4=44.8% IET_adj — metodología original",
+        "ICPI denominado como ICPI_Real_2025 = D2_Score"
+      ],
+      "metricas_clave": {
+        "TGI_SCORE": 66.85,
+        "TGI_D3": 59.85,
+        "TGI_D4": 44.8,
+        "ICPI_REAL_2025": 69.93
+      },
+      "autor": "Dylus Lab — equipo QUIRA Intelligence",
+      "sha256": null,
+      "notas": "CONGELADO — referencia histórica. No modificar. Usar v6.0 para operación."
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "_meta": {
+    "schema_version": "1.0",
+    "pipeline_version": "1.0.0-sprint1",
+    "generated_at": "2026-05-25T20:04:23.287270+00:00",
+    "year": 2026,
+    "fecha_corte": "2026-05-25",
+    "version_excel": "pipeline-generated"
+  },
+  "gad": {
+    "codigo": "130801",
+    "nombre": "GAD Municipal de Montecristi",
+    "ruc": "1360000430001"
+  },
+  "doctrine": {
+    "framework": "TGI Territorial",
+    "dimensions": [
+      "D1",
+      "D2",
+      "D3",
+      "D4",
+      "D5"
+    ],
+    "sat_enabled": true,
+    "icpi_enabled": true,
+    "rc_m_enabled": false,
+    "quira_layer": "Q1"
+  },
+  "tgi": {
+    "score": null,
+    "nota": "TGI requiere Gold Master Excel — este snapshot es Q1-Observación"
+  },
+  "financiero": {
+    "nota": "Datos financieros cargados desde Gold Master Excel o DPE CSV"
+  },
+  "series_longitudinal": {},
+  "territorial": {},
+  "contratacion": {},
+  "accountability": {
+    "rdc": {
+      "year": 2025,
+      "componente_a": {
+        "n_informe_cpccs": null,
+        "fecha_ingreso": null,
+        "en_periodo_cpccs": null,
+        "asistentes": null,
+        "lugar": null,
+        "zona_rural": null,
+        "plan_trabajo_publicado": null,
+        "publicado_lotaip": null,
+        "score": 0,
+        "fuente": "Manual requerido — https://rendiciondecuentas.cpccs.gob.ec/busqueda?ruc=1360000430001&anio=2025",
+        "portal_url_manual": "https://rendiciondecuentas.cpccs.gob.ec/busqueda?ruc=1360000430001&anio=2025"
+      },
+      "componente_b": {
+        "video_url": null,
+        "fecha_video": null,
+        "plataforma": null,
+        "duracion_min": null,
+        "vistas": null,
+        "score": 0,
+        "fuente": "Pendiente — verificación manual en redes oficiales",
+        "instrucciones_verificacion": "1. Buscar en YouTube: 'Gad Municipal De Montecristi rendicion de cuentas 2025'\n2. Buscar en Facebook: página oficial 'GAD Gad Municipal De Montecristi' → Videos\n3. Verificar que la fecha del video coincida con la fecha en el informe CPCCS\n4. Registrar: URL, plataforma, fecha, duración en minutos, vistas\n5. El discurso del alcalde/alcaldesa debe estar presente en el video"
+      },
+      "score_total": 0,
+      "clasificacion": "Sin rendición de cuentas verificada",
+      "nota": "Componente A (portal CPCCS) = informe formal auto-declarativo. Componente B (redes sociales) = evidencia independiente del evento. Ambos son necesarios para validar la RdC completa. Si A=0 → no presentó informe → score total no representa cumplimiento."
+    }
+  },
+  "sources": {
+    "dpe": {
+      "status": "partial",
+      "reliability": 0.475,
+      "error": null
+    },
+    "sercop": {
+      "status": "partial",
+      "reliability": 0.475,
+      "error": null
+    },
+    "cpccs": {
+      "status": "partial",
+      "reliability": 0.24,
+      "error": null
+    },
+    "social": {
+      "status": "placeholder",
+      "reliability": 0.0,
+      "error": null
+    }
+  },
+  "traceability_score": 41.62,
+  "coverage_score": 0.0,
+  "source_confidence": 0.416,
+  "missing_dimensions": [
+    "D5-evidencia-publica"
+  ],
+  "_pipeline": {
+    "run_id": "130801_20260525_200423",
+    "dry_run": false,
+    "validation": {
+      "status": "warnings",
+      "errors": [
+        "tgi.score ausente"
+      ]
+    }
+  }
+}

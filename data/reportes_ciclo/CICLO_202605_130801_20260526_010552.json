@@ -1,0 +1,474 @@
+{
+  "_meta": {
+    "generado_en": "2026-05-26T01:05:52.770128",
+    "municipio_code": "130801",
+    "periodo": "2026-05",
+    "script": "scripts/ejecutar_ciclo_mensual.py",
+    "quira_version": "v6.0"
+  },
+  "pasos": {
+    "validacion_gm": {
+      "estado": "OK",
+      "total_reglas": 44,
+      "errores": 0,
+      "alertas": 0,
+      "detalle_errores": [],
+      "detalle_alertas": []
+    },
+    "respaldo_gm": {
+      "estado": "ok",
+      "ruta_respaldo": "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\data\\backups\\GM_BACKUP_20260526_010545.xlsx",
+      "sha256": "e76a11ec43f11aecd52c510e28c0d189a35e20d6473008bb62d3fb754c82d221",
+      "tamano_bytes": 39265,
+      "fecha_respaldo": "2026-05-26T01:05:45.512476",
+      "error": null
+    },
+    "pipeline": {
+      "_meta": {
+        "schema_version": "1.0",
+        "pipeline_version": "1.0.0-sprint2",
+        "generated_at": "2026-05-26T06:05:45.515154+00:00",
+        "year": 2026,
+        "fecha_corte": "2026-05-26",
+        "version_excel": "SIAP-ICPI_GOLD_MASTER_v5.5_TGI_20260518",
+        "gold_master_ok": true
+      },
+      "gad": {
+        "codigo": "130801",
+        "nombre": "GAD Municipal de Montecristi",
+        "ruc": "1360000430001"
+      },
+      "doctrine": {
+        "framework": "TGI Territorial",
+        "dimensions": [
+          "D1",
+          "D2",
+          "D3",
+          "D4",
+          "D5"
+        ],
+        "sat_enabled": true,
+        "icpi_enabled": true,
+        "rc_m_enabled": false,
+        "quira_layer": "Q1"
+      },
+      "tgi": {
+        "score": 68.82,
+        "d1": 83.5,
+        "d2": 69.93,
+        "d3": 14.58,
+        "d4": 66.85,
+        "d5": 100.0,
+        "nota": "Calculado desde Gold Master H73_OUTPUT_API",
+        "fuente": "gold_master_h73"
+      },
+      "icpi": {
+        "global": 0.5356,
+        "global_pct": 53.56,
+        "clasificacion": "Ruptura Sistémica",
+        "historico": {
+          "2023": null,
+          "2024": null,
+          "2025": null
+        },
+        "acumulado_q1": 0.5356,
+        "fuente": "gold_master_h73"
+      },
+      "financiero": {
+        "isp_salud_presup": null,
+        "isp_meta": 0.75,
+        "isp_brecha_pp": null,
+        "psg_ejecucion": 0.5985,
+        "psg_fidelidad": 0.6993,
+        "ife_inversion": null,
+        "ife_meta": null,
+        "cobertura": {},
+        "meses_publicados_actual": 0,
+        "meses_publicados_anterior": 0,
+        "cobertura_pct": 0.0,
+        "fuente_primaria": "dpe_api"
+      },
+      "series_longitudinal": {},
+      "territorial": {},
+      "contratacion": {
+        "pac_publicado": true,
+        "procesos_adjudicados": null,
+        "procesos_cancelados": null,
+        "cancelados_pct": null
+      },
+      "accountability": {
+        "rdc": {
+          "year": 2025,
+          "componente_a": {
+            "n_informe_cpccs": null,
+            "fecha_ingreso": null,
+            "en_periodo_cpccs": null,
+            "asistentes": null,
+            "lugar": null,
+            "zona_rural": null,
+            "plan_trabajo_publicado": null,
+            "publicado_lotaip": null,
+            "score": 0,
+            "fuente": "Manual requerido — https://rendiciondecuentas.cpccs.gob.ec/busqueda?ruc=1360000430001&anio=2025",
+            "portal_url_manual": "https://rendiciondecuentas.cpccs.gob.ec/busqueda?ruc=1360000430001&anio=2025"
+          },
+          "componente_b": {
+            "video_url": null,
+            "fecha_video": null,
+            "plataforma": null,
+            "duracion_min": null,
+            "vistas": null,
+            "score": 0,
+            "fuente": "Pendiente — verificación manual en redes oficiales",
+            "instrucciones_verificacion": "1. Buscar en YouTube: 'Montecristi rendicion de cuentas 2025'\n2. Buscar en Facebook: página oficial 'GAD Montecristi' → Videos\n3. Verificar que la fecha del video coincida con la fecha en el informe CPCCS\n4. Registrar: URL, plataforma, fecha, duración en minutos, vistas\n5. El discurso del alcalde/alcaldesa debe estar presente en el video"
+          },
+          "score_total": 0,
+          "clasificacion": "Sin rendición de cuentas verificada",
+          "nota": "Componente A (portal CPCCS) = informe formal auto-declarativo. Componente B (redes sociales) = evidencia independiente del evento. Ambos son necesarios para validar la RdC completa. Si A=0 → no presentó informe → score total no representa cumplimiento."
+        },
+        "gold_master": {
+          "rdc_score": null,
+          "rdc_clasificacion": null
+        }
+      },
+      "gold_master_data": {
+        "icpi": {
+          "global": 0.5356,
+          "global_pct": 53.56,
+          "clasificacion": "Ruptura Sistémica",
+          "historico": {
+            "2023": null,
+            "2024": null,
+            "2025": null
+          },
+          "acumulado_q1": 0.5356
+        },
+        "tgi": {
+          "score": 68.82,
+          "d1": 83.5,
+          "d2": 69.93,
+          "d3": 14.58,
+          "d4": 66.85,
+          "d5": 100.0
+        },
+        "financiero": {
+          "isp_salud_presup": null,
+          "isp_meta": 0.75,
+          "isp_brecha_pp": null,
+          "psg_ejecucion": 0.5985,
+          "psg_fidelidad": 0.6993,
+          "ife_inversion": null,
+          "ife_meta": null
+        },
+        "contratacion": {
+          "pac_publicado": true,
+          "procesos_adjudicados": null,
+          "procesos_cancelados": null,
+          "cancelados_pct": null
+        },
+        "accountability": {
+          "rdc_score": null,
+          "rdc_clasificacion": null
+        },
+        "sat_engine": {
+          "riesgo_total": 0.72,
+          "clasif_riesgo": "ALTO",
+          "activas_count": 3.0
+        },
+        "_raw_h73": {
+          "Contrato H73 preservado. Columna A = clave · Columna B = valor · Columna C = descripción": null,
+          "CLAVE": "VALOR",
+          "ICPI_GLOBAL": 0.5356,
+          "ICPI_GLOBAL_PCT": 53.56,
+          "ICPI_CLASIFICACION": "Ruptura Sistémica",
+          "ICPI_2023": null,
+          "ICPI_2024": null,
+          "ICPI_2025": null,
+          "ICPI_ACUMULADO_Q1": 0.5356,
+          "ISP_SALUD_PRESUP": null,
+          "ISP_META": 0.75,
+          "ISP_BRECHA_PP": null,
+          "PSG_EJECUCION": 0.5985,
+          "PSG_FIDELIDAD": 0.6993,
+          "IFE_INVERSION_PUBLICA": null,
+          "IFE_META": null,
+          "PAC_PUBLICADO": true,
+          "PROCESOS_ADJUDICADOS": null,
+          "PROCESOS_CANCELADOS": null,
+          "PROCESOS_CANCELADOS_PCT": null,
+          "RDC_SCORE": null,
+          "RDC_CLASIFICACION": null,
+          "SAT_RIESGO_TOTAL": 0.72,
+          "SAT_CLASIF_RIESGO": "ALTO",
+          "SAT_ACTIVAS_COUNT": 3,
+          "TGI_SCORE": 68.82,
+          "TGI_D1": 83.5,
+          "TGI_D2": 69.93,
+          "TGI_D3": 14.58,
+          "TGI_D4": 66.85,
+          "TGI_D5": 100,
+          "IED_GLOBAL": 31.14,
+          "IED_DIRECCIONES_N": 11,
+          "MMP_AVANCE_PCT": null,
+          "IRS_GLOBAL": 79.7,
+          "BRECHA_RURAL_USD": 1791935,
+          "CONTRATO API: El conector Python gold_master.py lee esta hoja con data_only=True. Columna A = clave, Columna B = valor calculado. NO modificar claves sin actualizar el conector.": null
+        }
+      },
+      "sources": {
+        "dpe": {
+          "status": "partial",
+          "reliability": 0.475,
+          "error": null
+        },
+        "sercop": {
+          "status": "partial",
+          "reliability": 0.475,
+          "error": null
+        },
+        "cpccs": {
+          "status": "partial",
+          "reliability": 0.24,
+          "error": null
+        },
+        "social": {
+          "status": "placeholder",
+          "reliability": 0.0,
+          "error": null
+        },
+        "gold_master": {
+          "status": "ok",
+          "reliability": 0.99,
+          "error": null
+        }
+      },
+      "traceability_score": 41.62,
+      "coverage_score": 0.25,
+      "source_confidence": 0.416,
+      "missing_dimensions": [
+        "D5-evidencia-publica"
+      ],
+      "_pipeline": {
+        "run_id": "130801_20260526_060545",
+        "dry_run": false,
+        "validation": {
+          "status": "ok",
+          "errors": []
+        },
+        "save_result": {
+          "status": "skipped",
+          "reason": "dry_run"
+        },
+        "provenance_path": "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\data\\snapshots\\130801\\provenance\\provenance_130801_20260526_060545.json"
+      },
+      "sat": {
+        "alertas": [
+          {
+            "codigo": "SAT-0",
+            "nombre": "Coherencia POA-PAC",
+            "dimension": "D2",
+            "tipo": "preventiva",
+            "peso_severidad": 0.2,
+            "base_legal_art": "LOSNCP Art. 22",
+            "base_legal_desc": "Obliga a que el PAC refleje los procesos de contratación previstos en el POA.",
+            "base_doctrinal": "D2-Planificación: ausencia de coherencia planificación-contratación.",
+            "ref_engine": "H75_SAT_ENGINE + H21b_SAT-0",
+            "estado": "OK",
+            "activa": false,
+            "valor_observado": true,
+            "umbral": "pac_publicado = True",
+            "detalle": "PAC publicado — coherencia PAC requerida verificada"
+          },
+          {
+            "codigo": "SAT-I",
+            "nombre": "Fragmentacion Selectiva",
+            "dimension": "D3",
+            "tipo": "critica",
+            "peso_severidad": 0.25,
+            "base_legal_art": "COPFP Art. 54",
+            "base_legal_desc": "Entidades deben reportar avances de TODAS las metas en el SIGAD.",
+            "base_doctrinal": "D3-Ejecución: calificación alta con universo de metas mínimo = señal de fragmentación.",
+            "ref_engine": "H75_SAT_ENGINE + H21_SAT-I",
+            "estado": "SIN_DATOS",
+            "activa": false,
+            "valor_observado": null,
+            "umbral": null,
+            "detalle": "ICM / cobertura metas no disponible (requiere SIGAD)"
+          },
+          {
+            "codigo": "SAT-II",
+            "nombre": "Reforma Significativa Tardia",
+            "dimension": "D2",
+            "tipo": "alerta",
+            "peso_severidad": 0.15,
+            "base_legal_art": "COPFP Art. 115 / Acuerdo MEF 067",
+            "base_legal_desc": "Reformas presupuestarias deben justificarse. Reformas tardías evidencian planificación reactiva.",
+            "base_doctrinal": "D2-Planificación: reformas post-Q2 > 5% codificado base = planificación reactiva.",
+            "ref_engine": "H75_SAT_ENGINE + H22_SAT-II",
+            "estado": "SIN_DATOS",
+            "activa": false,
+            "valor_observado": null,
+            "umbral": null,
+            "detalle": "Reformas presupuestarias no disponibles en pipeline"
+          },
+          {
+            "codigo": "SAT-III",
+            "nombre": "Paralisis Presupuestaria",
+            "dimension": "D3",
+            "tipo": "critica",
+            "peso_severidad": 0.2,
+            "base_legal_art": "COPFP Art. 113",
+            "base_legal_desc": "Obliga evaluación periódica de ejecución presupuestaria por período.",
+            "base_doctrinal": "D3-Ejecución: Ti < umbral por persistencia longitudinal = riesgo SAT-D3 CRÍTICO.",
+            "ref_engine": "H75_SAT_ENGINE + H23_SAT-III",
+            "estado": "SIN_DATOS",
+            "activa": false,
+            "valor_observado": null,
+            "umbral": null,
+            "detalle": "Ejecución presupuestaria Ti no disponible en pipeline"
+          },
+          {
+            "codigo": "SAT-IV",
+            "nombre": "Alerta Fiscal COOTAD",
+            "dimension": "D3",
+            "tipo": "legal",
+            "peso_severidad": 0.1,
+            "base_legal_art": "COOTAD Art. 192",
+            "base_legal_desc": "GAD debe destinar mínimo 65% de ingresos propios a inversión pública.",
+            "base_doctrinal": "D3-Ejecución + D1-Legalidad: incumplimiento directo de mandato legal con magnitud medible.",
+            "ref_engine": "H75_SAT_ENGINE + H24_SAT-IV + H16_IFE",
+            "estado": "SIN_DATOS",
+            "activa": false,
+            "valor_observado": null,
+            "umbral": null,
+            "detalle": "Inversión pública (%) no disponible en pipeline"
+          },
+          {
+            "codigo": "SAT-V",
+            "nombre": "Brecha Compromiso CPCCS",
+            "dimension": "D5",
+            "tipo": "alerta",
+            "peso_severidad": 0.05,
+            "base_legal_art": "COOTAD Art. 302",
+            "base_legal_desc": "GAD debe realizar RdC anual y cumplir compromisos declarados.",
+            "base_doctrinal": "D5-Capacidad Institucional: brecha compromiso-cumplimiento erosiona credibilidad.",
+            "ref_engine": "H75_SAT_ENGINE + H24b_SAT-V_ALERTA_CPCCS",
+            "estado": "ACTIVA",
+            "activa": true,
+            "valor_observado": 0,
+            "umbral": ">= 50/100",
+            "detalle": "Score RdC = 0/100 < mínimo 50 — brecha compromiso CPCCS — COOTAD Art.302"
+          },
+          {
+            "codigo": "SAT-VI",
+            "nombre": "Desvio Presupuesto Participativo",
+            "dimension": "D4",
+            "tipo": "alerta",
+            "peso_severidad": 0.05,
+            "base_legal_art": "COOTAD Art. 238 / Reglamento PP",
+            "base_legal_desc": "PP debe ejecutarse según lo acordado. Desvíos requieren justificación.",
+            "base_doctrinal": "D4-Equidad Territorial: PP es el mecanismo de inversión territorial equitativa.",
+            "ref_engine": "H75_SAT_ENGINE + H24c_SAT-VI_DESVÍO_PP",
+            "estado": "SIN_DATOS",
+            "activa": false,
+            "valor_observado": null,
+            "umbral": null,
+            "detalle": "PP registrado/ejecutado no disponible (requiere partida presupuestaria)"
+          },
+          {
+            "codigo": "SAT-VII",
+            "nombre": "Vi Sinaptico Pulso",
+            "dimension": "D3",
+            "tipo": "informacional",
+            "peso_severidad": 0.0,
+            "base_legal_art": "COPFP Art. 54 (referencial)",
+            "base_legal_desc": "Entidades deben reportar avances mensualmente en el SIGAD.",
+            "base_doctrinal": "D3-Ejecución: pulso sináptico mide vitalidad operativa del plan. Peso=0.",
+            "ref_engine": "H75_SAT_ENGINE (peso=0, informacional)",
+            "estado": "SIN_DATOS",
+            "activa": false,
+            "valor_observado": null,
+            "umbral": null,
+            "detalle": "Vi promedio metas PDOT no disponible (informacional)"
+          },
+          {
+            "codigo": "SAT-VIII",
+            "nombre": "Equidad Territorial",
+            "dimension": "D4",
+            "tipo": "informacional",
+            "peso_severidad": 0.0,
+            "base_legal_art": "COOTAD Art. 249 (referencial)",
+            "base_legal_desc": "GAD debe garantizar equidad en la inversión territorial.",
+            "base_doctrinal": "D4-Equidad Territorial: IET mide equilibrio de inversión. Peso=0.",
+            "ref_engine": "H75_SAT_ENGINE (peso=0, informacional) + H42_IET",
+            "estado": "SIN_DATOS",
+            "activa": false,
+            "valor_observado": null,
+            "umbral": null,
+            "detalle": "IET desviación no disponible (requiere datos geolocalizados — Fase 2)"
+          }
+        ],
+        "activas": [
+          "SAT-V"
+        ],
+        "alertas_activas": [
+          "SAT-V"
+        ],
+        "riesgo_ponderado": 0.05,
+        "clasif_riesgo": "BAJO",
+        "sat_score": 95.0,
+        "datos_insuficientes": [
+          "SAT-I",
+          "SAT-II",
+          "SAT-III",
+          "SAT-IV",
+          "SAT-VI",
+          "SAT-VII",
+          "SAT-VIII"
+        ],
+        "evaluated_at": "2026-05-26T06:05:52.765056+00:00",
+        "fuente_datos": "gold_master",
+        "total_evaluadas": 9,
+        "total_activas": 1
+      }
+    },
+    "verificacion_snapshot": {
+      "aprobado": true,
+      "verificaciones": [
+        {
+          "nombre": "icpi_presente",
+          "estado": "OK",
+          "detalle": "ICPI=53.56%"
+        },
+        {
+          "nombre": "icpi_en_rango",
+          "estado": "OK",
+          "detalle": "ICPI=53.56% — debe estar en [0,100]"
+        },
+        {
+          "nombre": "tgi_presente",
+          "estado": "OK",
+          "detalle": "TGI=68.82%"
+        },
+        {
+          "nombre": "municipio_code_presente",
+          "estado": "OK",
+          "detalle": "código=130801"
+        },
+        {
+          "nombre": "periodo_presente",
+          "estado": "OK",
+          "detalle": "período=2026-05-26"
+        },
+        {
+          "nombre": "persistencia",
+          "estado": "OK",
+          "detalle": "guardado=skipped"
+        }
+      ],
+      "total_ok": 6,
+      "total_falla": 0
+    }
+  },
+  "estado_global": "OK"
+}
