@@ -13,11 +13,13 @@ from views.login_view import CSS, splash_top, splash_bottom
 
 def run() -> None:
     st.markdown(CSS, unsafe_allow_html=True)
+    # Header: logo + branding (sin card, sin min-height)
     st.markdown(splash_top(CORTE), unsafe_allow_html=True)
 
-    _, col, _ = st.columns([0.05, 1, 0.05])
+    # Columnas estrechas para centrar el card-form
+    _, col, _ = st.columns([1, 2, 1])
     with col:
-        # Mostrar estado de bloqueo ANTES del formulario
+        # Mostrar bloqueo ANTES del formulario
         locked, secs_left = is_locked()
         if locked:
             mins = secs_left // 60
@@ -27,13 +29,24 @@ def run() -> None:
                 f"Espera **{mins}m {segs}s** antes de volver a intentarlo."
             )
             st.markdown(splash_bottom(GAD_NOMBRE, CORTE), unsafe_allow_html=True)
-            return  # No mostrar el formulario mientras esté bloqueado
+            return
 
         opts = rol_options()
+        # El form de Streamlit es el card visual (estilado via CSS)
         with st.form("login_form", border=False):
+            # Badge de acceso dentro del card
+            st.markdown(
+                f'<div class="ql-clbl">Acceso al sistema</div>'
+                f'<div style="text-align:center">'
+                f'<span class="ql-badge">PMV · Acceso Restringido · {CORTE}</span>'
+                f'</div>',
+                unsafe_allow_html=True,
+            )
             rol_display = st.selectbox("ROL DE ACCESO", list(opts.keys()))
             password    = st.text_input("CONTRASEÑA", type="password", placeholder="••••••••")
-            submitted   = st.form_submit_button("ACCEDER →", use_container_width=True)
+            submitted   = st.form_submit_button("ACCEDER →", use_container_width=True, type="primary")
+
+        st.markdown(splash_bottom(GAD_NOMBRE, CORTE), unsafe_allow_html=True)
 
     if submitted:
         rol_key = opts[rol_display]
@@ -48,5 +61,3 @@ def run() -> None:
         except AuthError as e:
             log_login_fail(rol_key, motivo=str(e))
             st.warning(str(e))
-
-    st.markdown(splash_bottom(GAD_NOMBRE, CORTE), unsafe_allow_html=True)

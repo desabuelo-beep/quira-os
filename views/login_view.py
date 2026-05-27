@@ -27,37 +27,50 @@ CSS = """<style>
 [data-testid="stHeader"],[data-testid="stToolbar"],
 [data-testid="stDecoration"],footer { display:none !important }
 
-[data-testid="stAppViewContainer"] { background:#0A1128 !important }
+/* Fondo de página con gradiente — sin min-height en bloques hijos */
+[data-testid="stAppViewContainer"] {
+    background: radial-gradient(ellipse 70% 40% at 50% 0%, rgba(0,212,255,.09) 0%, transparent 60%), #0A1128 !important;
+    min-height: 100vh;
+}
 [data-testid="stMain"] .block-container { padding:0 !important; max-width:100% !important }
 
-/* splash */
-.ql-wrap { min-height:100vh; display:flex; flex-direction:column; align-items:center;
-  justify-content:center; padding:32px 16px 48px; gap:0;
-  background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(0,212,255,.08) 0%,transparent 65%),#0A1128; }
+/* Bloque header: logo + títulos — solo padding, sin capturar altura */
+.ql-wrap {
+    display:flex; flex-direction:column; align-items:center;
+    padding:48px 16px 24px; gap:0;
+    text-align:center;
+}
 
 .ql-logo  { color:#00D4FF; animation:ql-glow 2.4s ease-in-out infinite; margin-bottom:18px; }
 @keyframes ql-glow { 0%,100%{filter:drop-shadow(0 0 20px rgba(0,212,255,.5))}
                      50%{filter:drop-shadow(0 0 42px rgba(0,212,255,.9))} }
 
 .ql-title { font:800 34px/1 'Inter',sans-serif; color:#F0F4FF; letter-spacing:-.02em;
-  white-space:nowrap; margin-bottom:6px; text-align:center }
+  white-space:nowrap; margin-bottom:6px }
 .ql-pow   { font:700 11px/1 'Inter',sans-serif; color:#00D4FF; letter-spacing:.1em;
-  text-transform:uppercase; text-align:center; margin-bottom:16px }
-.ql-tag1  { font:700 15px/1 'Inter',sans-serif; color:#F0F4FF; white-space:nowrap; text-align:center }
-.ql-tag2  { font:400 13px/1 'Inter',sans-serif; color:#8892B0; text-align:center; margin-bottom:16px }
-.ql-div   { width:260px; height:1px; background:#1E2D50; margin:0 auto 12px }
+  text-transform:uppercase; margin-bottom:16px }
+.ql-tag1  { font:700 15px/1 'Inter',sans-serif; color:#F0F4FF; white-space:nowrap }
+.ql-tag2  { font:400 13px/1 'Inter',sans-serif; color:#8892B0; margin-bottom:16px }
+.ql-div   { width:260px; height:1px; background:#1E2D50; margin:8px auto 12px }
 .ql-loc   { font:400 11px/1 'JetBrains Mono',monospace; color:#8892B0; letter-spacing:.1em;
-  text-transform:uppercase; text-align:center; margin-bottom:28px }
+  text-transform:uppercase; }
 
-/* card */
-.ql-card  { background:rgba(13,22,56,.75); border:1px solid rgba(0,212,255,.16);
-  border-radius:16px; padding:26px 28px 22px; width:100%; max-width:390px;
-  backdrop-filter:blur(10px) }
+/* El form de Streamlit ES el card de acceso */
+div[data-testid="stForm"] {
+    background: rgba(13,22,56,.8) !important;
+    border: 1px solid rgba(0,212,255,.18) !important;
+    border-radius: 16px !important;
+    padding: 24px 28px 20px !important;
+    backdrop-filter: blur(12px) !important;
+    margin-top: 0 !important;
+}
+
+/* Etiqueta y badge dentro del form */
 .ql-clbl  { font:700 10px/1 'Inter',sans-serif; color:#8892B0; text-transform:uppercase;
-  letter-spacing:.1em; text-align:center; margin-bottom:16px }
+  letter-spacing:.1em; text-align:center; margin-bottom:14px }
 .ql-badge { display:inline-block; background:rgba(0,212,255,.08); border:1px solid rgba(0,212,255,.2);
   border-radius:20px; padding:3px 12px; font:500 10px/1 'JetBrains Mono',monospace;
-  color:#00D4FF; margin:0 auto 18px; text-align:center }
+  color:#00D4FF; margin:0 auto 20px; display:block; width:fit-content; }
 .ql-gad   { font:400 11px/1 'Inter',sans-serif; color:rgba(240,244,255,.5);
   text-align:center; border-top:1px solid rgba(255,255,255,.05); padding-top:14px; margin-top:4px }
 
@@ -72,12 +85,15 @@ div[data-testid="stTextInput"]  label { color:#8892B0 !important; font-size:10px
   font-weight:700 !important; text-transform:uppercase !important; letter-spacing:.08em !important }
 div[data-baseweb="select"] svg { color:#8892B0 !important }
 
-/* botón */
-.stButton > button { background:linear-gradient(135deg,#00D4FF,#7C5CFC) !important;
-  color:#0A1128 !important; font-weight:800 !important; font-size:13px !important;
-  border:none !important; border-radius:10px !important; padding:.6rem 1rem !important;
-  width:100% !important; letter-spacing:.05em !important }
-.stButton > button:hover { opacity:.88 !important; transform:translateY(-1px) !important }
+/* botón login */
+div[data-testid="stForm"] button[kind="primaryFormSubmit"],
+div[data-testid="stForm"] button[data-testid="baseButton-primaryFormSubmit"] {
+    background: linear-gradient(135deg,#00D4FF,#7C5CFC) !important;
+    color: #0A1128 !important; font-weight:800 !important; font-size:13px !important;
+    border:none !important; border-radius:10px !important; padding:.6rem 1rem !important;
+    width:100% !important; letter-spacing:.05em !important;
+}
+div[data-testid="stForm"] button:hover { opacity:.88 !important }
 
 /* footer */
 .ql-foot { margin-top:24px; font:400 10px/1.8 'JetBrains Mono',monospace;
@@ -85,7 +101,8 @@ div[data-baseweb="select"] svg { color:#8892B0 !important }
 
 @media(max-width:600px) {
   .ql-title { font-size:26px } .ql-tag1 { white-space:normal; font-size:14px }
-  .ql-card  { padding:20px 16px } .ql-div { width:180px }
+  div[data-testid="stForm"] { padding:20px 16px !important }
+  .ql-div { width:180px }
 }
 </style>
 
@@ -102,22 +119,18 @@ div[data-baseweb="select"] svg { color:#8892B0 !important }
 
 
 def splash_top(corte: str) -> str:
-    """Bloque superior: logo + títulos + card — completamente auto-contenido."""
+    """Bloque superior: logo + títulos — completamente auto-contenido.
+    El card visual es el propio stForm, estilado via CSS.
+    """
     return f"""
 <div class="ql-wrap">
   <div class="ql-logo">{QUIRA_SVG}</div>
-  <div class="ql-title">QUIRA Gov</div>
+  <div class="ql-title">QUIRA Intelligence</div>
   <div class="ql-pow">Powered by Dylus Lab</div>
   <div class="ql-tag1">Territorial Governance Intelligence</div>
   <div class="ql-tag2">Gobernar con evidencia · Decidir con territorio</div>
   <div class="ql-div"></div>
   <div class="ql-loc">Montecristi · Manabi · Ecuador · {corte}</div>
-  <div class="ql-card">
-    <div class="ql-clbl">Acceso al sistema</div>
-    <div style="text-align:center">
-      <span class="ql-badge">PMV · Acceso Restringido · {corte}</span>
-    </div>
-  </div>
 </div>"""
 
 
@@ -161,9 +174,9 @@ def splash_bottom(gad: str, corte: str) -> str:
   </div>
   <div class="ql-gad">&#127963; {gad}</div>
   <div class="ql-foot">
-    QUIRA OS v0.1 · Dylus Lab 2026<br>
-    Datos sellados {corte} · SIAP-ICPI v1.0222<br>
-    <span style="color:rgba(255,184,0,.35)">Entorno de demostracion</span>
+    QUIRA Intelligence · Dylus Lab © 2026<br>
+    Gold Master v5.5_TGI · Corte {corte}<br>
+    <span style="color:rgba(255,184,0,.35)">Acceso institucional restringido</span>
   </div>
 </div>"""
 

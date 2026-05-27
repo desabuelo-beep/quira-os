@@ -1,26 +1,28 @@
 """
-QUIRA OS v0.1 — Entry Point · Arquitectura Modular Sprint 3
-Sistema de Gobernanza Municipal · GAD Montecristi · Dylus Lab © 2026
+QUIRA Intelligence — Entry Point · 2026-05-26
+Infraestructura de monitoreo institucional preventivo para GADs del Ecuador.
+Dylus Lab © 2026
 
-REGLA ARQUITECTURAL PERMANENTE:
-  El sidebar tiene MÁXIMO 7 items por rol.
-  Nuevas vistas = tabs dentro del módulo correspondiente.
-  Nunca crear un nuevo item de sidebar para una sub-feature.
+ARQUITECTURA 4 AMBIENTES (regla canónica permanente — no negociable):
+  🏛 GOV    — Monitoreo institucional · el producto hoy · ACTIVO
+  🌎 Civic  — Ciudadanía · acceso público sin login · EN CONSTRUCCIÓN
+  📑 Impact — Cooperación internacional · roadmap futuro
+  ⚙  Ops   — Infraestructura interna · solo equipo QUIRA
 
-Módulos:
-  M0 · Inicio         → Estado del Municipio (snapshot Q1)
-  M1 · Situación      → Vista Ejecutiva | Pulso | Brecha
-  M2 · Alertas        → SAT activas | Longitudinal (Sprint 3)
-  M3 · Municipal      → Grupo | Participación | Transparencia | Inversión
-  M4 · Análisis       → Tablero | Eficiencia | Metas | [Cadena | Op. Tec.]
-  M5 · Control        → Pipeline + 9 herramientas operativas (solo Técnico)
-  M6 · Proyector      → Simulador (todos los roles)
+REGLAS ARQUITECTURALES PERMANENTES:
+  · Un solo dominio: quiraholding.streamlit.app
+  · Nada vive fuera de estos 4 ambientes. Sin subdominios separados.
+  · GOV recibe vistas nuevas como tabs — nunca un quinto ambiente.
+  · Civic: acceso público sin autenticación (ciudadanos).
+  · Impact: placeholder hasta que haya 6 meses de datos longitudinales.
+  · Roles institucionales: Viewer / Analyst / Operator / Admin.
+  · Civic no requiere credenciales institucionales.
 """
 import streamlit as st
 from config import APP_NAME, APP_VERSION, GAD_NOMBRE, GAD_PERIODO, ALCALDE, CORTE
 from utils.session import (
     init_session, check_session_expiry, is_authenticated,
-    logout, navigate_to, is_tecnico, get_rol,
+    logout, is_operator, get_rol,
 )
 from utils.audit_log import log_page
 from auth.login import render_login
@@ -28,7 +30,7 @@ from auth.login import render_login
 
 # ── CONFIGURACIÓN ─────────────────────────────────────────────────────────────
 st.set_page_config(
-    page_title=f"{APP_NAME} · {GAD_NOMBRE}",
+    page_title=f"QUIRA Intelligence · {GAD_NOMBRE}",
     page_icon="⬡",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -223,112 +225,105 @@ try:
 except Exception:
     pass
 
-# ── MÓDULOS — imports lazy (solo los 6 módulos + inicio) ─────────────────────
-from quira_pages.p0_inicio    import render as m0_inicio
-from quira_pages.m1_situacion import render as m1_situacion
-from quira_pages.m2_alertas   import render as m2_alertas
-from quira_pages.m3_municipal import render as m3_municipal
-from quira_pages.m4_analisis  import render as m4_analisis
-from quira_pages.m5_control   import render as m5_control
-from quira_pages.p13_simulador import render as m6_proyector
+# ── IMPORTS LAZY — 4 ambientes ────────────────────────────────────────────────
+from quira_pages.env_gov    import render as _render_gov
+from quira_pages.env_civic  import render as _render_civic
+from quira_pages.env_impact import render as _render_impact
+from quira_pages.env_ops    import render as _render_ops
 
 
-# ── CATÁLOGO DE MÓDULOS ───────────────────────────────────────────────────────
-# Max 7 items en sidebar. roles=[...] controla visibilidad.
-# ¡NO añadir aquí sin quitar algo o convertirlo en tab de un módulo existente!
-MODULES = {
-    "inicio": {
-        "label":  "Estado del Municipio",
-        "icon":   "⬡",
-        "render": m0_inicio,
-        "roles":  ["Alcalde", "Concejal", "Técnico"],
-        "desc":   "ICPI · SAT activas · Alertas Q1",
+# ── CATÁLOGO DE AMBIENTES ─────────────────────────────────────────────────────
+# Ambiente primero, rol después.
+# GOV / Civic / Impact: todos los roles autenticados.
+# Ops: solo Operator / Admin.
+
+ENVIRONMENTS = {
+    "gov": {
+        "label":       "GOV",
+        "icon":        "🏛",
+        "render":      _render_gov,
+        "roles":       ["Viewer", "Analyst", "Operator", "Admin"],
+        "desc":        "Monitoreo Institucional",
+        "badge_color": "#00D4FF",
+        "ops_only":    False,
     },
-    "situacion": {
-        "label":  "Situación",
-        "icon":   "🏛",
-        "render": m1_situacion,
-        "roles":  ["Alcalde", "Concejal", "Técnico"],
-        "desc":   "Vista Ejecutiva · Pulso · Brecha",
+    "civic": {
+        "label":       "Civic",
+        "icon":        "🌎",
+        "render":      _render_civic,
+        "roles":       ["Viewer", "Analyst", "Operator", "Admin"],
+        "desc":        "Ciudadanía · Próximamente",
+        "badge_color": "#22C55E",
+        "ops_only":    False,
     },
-    "alertas": {
-        "label":  "Alertas",
-        "icon":   "🚨",
-        "render": m2_alertas,
-        "roles":  ["Alcalde", "Concejal", "Técnico"],
-        "desc":   "SAT activas · Evolución longitudinal",
+    "impact": {
+        "label":       "Impact",
+        "icon":        "📑",
+        "render":      _render_impact,
+        "roles":       ["Viewer", "Analyst", "Operator", "Admin"],
+        "desc":        "Cooperación · Próximamente",
+        "badge_color": "#A855F7",
+        "ops_only":    False,
     },
-    "municipal": {
-        "label":  "Municipal",
-        "icon":   "🏛️",
-        "render": m3_municipal,
-        "roles":  ["Alcalde", "Concejal", "Técnico"],
-        "desc":   "Grupo · Participación · Transparencia · Inversión",
-    },
-    "analisis": {
-        "label":  "Análisis",
-        "icon":   "📊",
-        "render": m4_analisis,
-        "roles":  ["Concejal", "Técnico"],
-        "desc":   "Tablero · Eficiencia · Metas · Cadena",
-    },
-    "control": {
-        "label":  "Control",
-        "icon":   "⚙️",
-        "render": m5_control,
-        "roles":  ["Técnico"],
-        "desc":   "Pipeline · Carga · Ingesta · Sentinel IA",
-    },
-    "proyector": {
-        "label":  "Proyector ✨",
-        "icon":   "🧮",
-        "render": m6_proyector,
-        "roles":  ["Alcalde", "Concejal", "Técnico"],
-        "desc":   "Simulador de escenarios",
+    "ops": {
+        "label":       "Ops",
+        "icon":        "⚙",
+        "render":      _render_ops,
+        "roles":       ["Operator", "Admin"],
+        "desc":        "Infraestructura Interna",
+        "badge_color": "#F97316",
+        "ops_only":    True,
     },
 }
 
-# Orden de aparición en sidebar
-_NAV_ORDER = ["inicio", "situacion", "alertas", "municipal", "analisis", "control", "proyector"]
+_ENV_ORDER = ["gov", "civic", "impact", "ops"]
 
-# Mapa de claves legacy → módulo nuevo (para no romper bookmarks)
+# Mapa legacy: cualquier ruta del Sprint 1-2 → su ambiente correcto
 _LEGACY: dict[str, str] = {
-    # páginas planas anteriores → módulo que las contiene ahora
-    "ejecutivo":    "situacion",
-    "pulso":        "situacion",
-    "brecha":       "situacion",
-    "dashboard":    "analisis",
-    "sat":          "alertas",
-    "metas":        "analisis",
-    "eficiencia":   "analisis",
-    "cadena":       "analisis",
-    "operacion":    "analisis",
-    "holding":      "municipal",
-    "gobernanza":   "municipal",
-    "transparencia":"municipal",
-    "inversion":    "municipal",
-    "sentinel_hub": "control",
-    "carga":        "control",
-    "ingesta":      "control",
-    "historico":    "control",
-    "alertas_sys":  "control",
-    "seguimiento":  "control",
-    "reportes":     "control",
-    "gestion":      "control",
-    "sentinel":     "control",
-    "simulador":    "proyector",
-    # legacy Sprint 1
-    "confianza":    "municipal",
-    "rdc":          "municipal",
-    "congruencia":  "alertas",
-    "congruencias": "alertas",
-    "aprendizaje":  "control",
+    # Módulos Sprint 2 → GOV
+    "inicio":       "gov",
+    "situacion":    "gov",
+    "alertas":      "gov",
+    "municipal":    "gov",
+    "analisis":     "gov",
+    "proyector":    "gov",
+    # Páginas planas → GOV
+    "ejecutivo":    "gov",
+    "pulso":        "gov",
+    "brecha":       "gov",
+    "dashboard":    "gov",
+    "sat":          "gov",
+    "metas":        "gov",
+    "eficiencia":   "gov",
+    "cadena":       "gov",
+    "operacion":    "gov",
+    "holding":      "gov",
+    "gobernanza":   "gov",
+    "transparencia":"gov",
+    "inversion":    "gov",
+    "confianza":    "gov",
+    "rdc":          "gov",
+    "congruencia":  "gov",
+    "congruencias": "gov",
+    "simulador":    "gov",
+    # Control → Ops
+    "control":      "ops",
+    "sentinel_hub": "ops",
+    "carga":        "ops",
+    "ingesta":      "ops",
+    "historico":    "ops",
+    "alertas_sys":  "ops",
+    "seguimiento":  "ops",
+    "reportes":     "ops",
+    "gestion":      "ops",
+    "sentinel":     "ops",
+    "aprendizaje":  "ops",
 }
 
 
 def _accessible() -> set[str]:
     rol = st.session_state.get("rol", "")
-    return {k for k, v in MODULES.items() if rol in v.get("roles", [])}
+    return {k for k, v in ENVIRONMENTS.items() if rol in v.get("roles", [])}
 
 
 # ── SIDEBAR ───────────────────────────────────────────────────────────────────
@@ -336,17 +331,19 @@ with st.sidebar:
     rol       = st.session_state.get("rol", "")
     rol_emoji = st.session_state.get("rol_emoji", "")
 
-    # ── Identidad QUIRA GOV ───────────────────────────────────────────────────
+    # ── Identidad QUIRA Intelligence ─────────────────────────────────────────
     st.markdown(f"""
 <div style="padding:16px 0 12px">
     <div style="font-size:1.4rem;font-weight:900;color:#00D4FF;letter-spacing:-0.03em;
-                margin-bottom:1px">⬡ {APP_NAME}</div>
+                margin-bottom:1px">⬡ QUIRA Intelligence</div>
+    <div style="font-size:9px;color:rgba(255,255,255,.25);letter-spacing:.04em;margin-top:1px">
+        GOV · CIVIC · IMPACT · OPS</div>
     <div style="display:flex;align-items:center;gap:6px;margin-top:3px">
         <span style="font-size:9px;font-weight:700;color:#00D4FF;background:rgba(0,212,255,0.12);
                      border:1px solid rgba(0,212,255,0.25);border-radius:4px;
-                     padding:1px 6px;letter-spacing:.06em">GOV</span>
+                     padding:1px 6px;letter-spacing:.06em">INTELLIGENCE</span>
         <span style="font-size:9px;color:rgba(255,255,255,0.3);letter-spacing:.05em">
-            {APP_VERSION} · Gobernanza Municipal</span>
+            {APP_VERSION} · {GAD_NOMBRE}</span>
     </div>
 </div>
 <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);
@@ -357,23 +354,45 @@ with st.sidebar:
 </div>
     """, unsafe_allow_html=True)
 
-    # ── Navegación — máx 7 módulos visibles ──────────────────────────────────
-    current = st.session_state.get("page", "inicio")
+    # ── Selector de Ambientes ─────────────────────────────────────────────────
+    st.markdown(
+        '<div style="font-size:9px;color:rgba(255,255,255,.35);letter-spacing:.08em;'
+        'text-transform:uppercase;margin-bottom:6px">AMBIENTES</div>',
+        unsafe_allow_html=True,
+    )
+
+    current = st.session_state.get("page", "gov")
     acc     = _accessible()
 
-    for key in _NAV_ORDER:
-        if key not in acc:
+    for env_key in _ENV_ORDER:
+        if env_key not in acc:
             continue
-        mod = MODULES[key]
-        is_active = (key == current)
+        env = ENVIRONMENTS[env_key]
+        is_active = (env_key == current)
+        badge_color = env["badge_color"]
+
+        # Badge de ambiente
+        badge_html = (
+            f'<span style="font-size:8px;font-weight:700;color:{badge_color};'
+            f'background:{badge_color}18;border:1px solid {badge_color}33;'
+            f'border-radius:3px;padding:1px 5px;margin-left:4px;letter-spacing:.04em">'
+            f'{env["label"]}</span>'
+        )
+
+        # Nota "próximamente" para Civic e Impact
+        coming_soon = env_key in ("civic", "impact")
+        label_text = f"{env['icon']}  {env['label']}"
+        if coming_soon:
+            label_text += "  ·  Próx."
+
         if st.button(
-            f"{mod['icon']}  {mod['label']}",
-            key=f"nav_{key}",
+            label_text,
+            key=f"nav_env_{env_key}",
             use_container_width=True,
             type="primary" if is_active else "secondary",
-            help=mod["desc"],
+            help=env["desc"],
         ):
-            st.session_state["page"] = key
+            st.session_state["page"] = env_key
             st.rerun()
 
     st.markdown("---")
@@ -392,35 +411,36 @@ with st.sidebar:
         logout()
         st.rerun()
 
-    # SAT badge rápido
-    try:
-        from data.loader import load_all, get_sat_counts
-        _sat = get_sat_counts(load_all())
-        if _sat.get("criticos", 0) > 0:
-            n = _sat["criticos"]
-            st.error(f"🔴 {n} señal{'es' if n > 1 else ''} crítica{'s' if n > 1 else ''}")
-    except Exception:
-        pass
+    # SAT badge rápido — solo en GOV
+    if current == "gov":
+        try:
+            from data.loader import load_all, get_sat_counts
+            _sat = get_sat_counts(load_all())
+            if _sat.get("criticos", 0) > 0:
+                n = _sat["criticos"]
+                st.error(f"🔴 {n} señal{'es' if n > 1 else ''} crítica{'s' if n > 1 else ''}")
+        except Exception:
+            pass
 
 
 # ── ROUTER PRINCIPAL ──────────────────────────────────────────────────────────
-page_key = st.session_state.get("page", "inicio")
+page_key = st.session_state.get("page", "gov")
 
 # Resolver legacy
 if page_key in _LEGACY:
     page_key = _LEGACY[page_key]
     st.session_state["page"] = page_key
 
-# Guard de acceso
+# Resolver acceso — fallback a GOV
 acc = _accessible()
-if page_key not in acc or page_key not in MODULES:
-    page_key = "inicio"
+if page_key not in acc or page_key not in ENVIRONMENTS:
+    page_key = "gov"
     st.session_state["page"] = page_key
 
 log_page(page_key)
-MODULES[page_key]["render"]()
+ENVIRONMENTS[page_key]["render"]()
 
 st.caption(
-    "QUIRA OS · Gobernanza Municipal · Dylus Lab © 2026 · "
-    "Corte enero–marzo 2026 · Sprint 2"
+    f"QUIRA Intelligence · {GAD_NOMBRE} · Dylus Lab © 2026 · "
+    f"Gold Master v5.5_TGI · Corte {CORTE}"
 )
