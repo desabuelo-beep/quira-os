@@ -4,19 +4,19 @@ Infraestructura de monitoreo institucional preventivo para GADs del Ecuador.
 Dylus Lab © 2026
 
 ARQUITECTURA 4 AMBIENTES (regla canónica permanente — ver docs/NOMENCLATURA_CANONICA.md):
-  🏛 GOV    — QUIRA Institucional · Directivo + Técnico · ACTIVO
+  🏛 GOV    — QUIRA Institucional · Ejecutivo + Técnico · ACTIVO
   🌎 Civic  — QUIRA Ciudadano · acceso público · Fase 3
   📑 Impact — QUIRA Cooperación · academia/cooperación · Placeholder
   ⚙  OPS   — Operaciones · Operador + Administrador · ACTIVO
 
 ROLES (CONGELADOS — no cambiar sin revisión doctrinal):
-  directivo    → GOV (vista ejecutiva: alcalde, concejales, director)
+  ejecutivo    → GOV (vista ejecutiva: alcalde, concejales)
   tecnico      → GOV (vista técnica: planificación)
   operador     → OPS (infraestructura: equipo Dylus Lab)
   administrador→ OPS + GOV verificación (admin total)
 
 ROUTING POST-LOGIN:
-  directivo / tecnico    → GOV
+  ejecutivo / tecnico    → GOV
   operador / administrador → OPS
 """
 import streamlit as st
@@ -243,8 +243,8 @@ ENVIRONMENTS = {
         "label":       "GOV",
         "icon":        "🏛",
         "render":      _render_gov,
-        # Directivo + Técnico: usuarios del producto. Administrador: verificación cruzada.
-        "roles":       ["Directivo", "Técnico", "Administrador"],
+        # Ejecutivo + Técnico: usuarios del producto. Administrador: verificación cruzada.
+        "roles":       ["Ejecutivo", "Técnico", "Administrador"],
         "desc":        "QUIRA Institucional",
         "badge_color": "#00D4FF",
         "ops_only":    False,
@@ -253,7 +253,7 @@ ENVIRONMENTS = {
         "label":       "Civic",
         "icon":        "🌎",
         "render":      _render_civic,
-        "roles":       ["Directivo", "Técnico", "Operador", "Administrador"],
+        "roles":       ["Ejecutivo", "Técnico", "Operador", "Administrador"],
         "desc":        "QUIRA Ciudadano · Fase 3",
         "badge_color": "#22C55E",
         "ops_only":    False,
@@ -262,7 +262,7 @@ ENVIRONMENTS = {
         "label":       "Impact",
         "icon":        "📑",
         "render":      _render_impact,
-        "roles":       ["Directivo", "Técnico", "Operador", "Administrador"],
+        "roles":       ["Ejecutivo", "Técnico", "Operador", "Administrador"],
         "desc":        "QUIRA Cooperación · Placeholder",
         "badge_color": "#7C5CFC",
         "ops_only":    False,
@@ -357,39 +357,8 @@ with st.sidebar:
 </div>
     """, unsafe_allow_html=True)
 
-    # ── Selector de Ambientes ─────────────────────────────────────────────────
-    st.markdown(
-        '<div style="font-size:9px;color:rgba(255,255,255,.35);letter-spacing:.08em;'
-        'text-transform:uppercase;margin-bottom:6px">PLATAFORMA</div>',
-        unsafe_allow_html=True,
-    )
-
     current = st.session_state.get("page", "gov")
     acc     = _accessible()
-
-    for env_key in _ENV_ORDER:
-        if env_key not in acc:
-            continue
-        env = ENVIRONMENTS[env_key]
-        is_active = (env_key == current)
-        badge_color = env["badge_color"]
-
-        coming_soon = env_key in ("civic", "impact")
-        label_text  = f"{env['icon']}  {env['label']}"
-        if coming_soon:
-            label_text += "  ·  Próx."
-
-        if st.button(
-            label_text,
-            key=f"nav_env_{env_key}",
-            use_container_width=True,
-            type="primary" if is_active else "secondary",
-            help=env["desc"],
-        ):
-            st.session_state["page"] = env_key
-            if env_key == "gov":
-                st.session_state["gov_module"] = "inicio"
-            st.rerun()
 
     # ── Navegación interna GOV (aparece solo cuando GOV está activo) ──────────
     if current == "gov":

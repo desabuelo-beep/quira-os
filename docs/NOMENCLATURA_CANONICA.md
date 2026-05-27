@@ -13,14 +13,14 @@
 
 | Key interno | Display UI | Emoji | Audiencia | Plataforma principal |
 |---|---|---|---|---|
-| `directivo` | Directivo | 🏛 | Alcalde, concejales, director ejecutivo | GOV (vista ejecutiva) |
+| `ejecutivo` | Ejecutivo | 🏛 | Alcalde, concejales (COOTAD: función ejecutiva) | GOV (vista ejecutiva) |
 | `tecnico` | Técnico | 📐 | Técnico de planificación, analista municipal | GOV (vista técnica) |
 | `operador` | Operador | ⚙️ | Equipo Dylus Lab — operación del sistema | OPS |
 | `administrador` | Administrador | 🔑 | Equipo Dylus Lab — acceso total | OPS + GOV (verificación) |
 
 ### Reglas de roles
 
-- `directivo` y `tecnico` son **usuarios del producto GOV** (municipio).
+- `ejecutivo` y `tecnico` son **usuarios del producto GOV** (municipio).
 - `operador` y `administrador` son **operadores del sistema OPS** (Dylus Lab).
 - `administrador` puede acceder a GOV para verificación cruzada, pero **entra por OPS**.
 - Los keys internos son en minúsculas, sin tildes, sin espacios.
@@ -31,7 +31,7 @@
 
 ```toml
 [auth]
-directivo_hash     = "<PBKDF2-SHA256 del password>"
+ejecutivo_hash     = "<PBKDF2-SHA256 del password>"
 tecnico_hash       = "<PBKDF2-SHA256 del password>"
 operador_hash      = "<PBKDF2-SHA256 del password>"
 administrador_hash = "<PBKDF2-SHA256 del password>"
@@ -41,11 +41,11 @@ administrador_hash = "<PBKDF2-SHA256 del password>"
 
 | Función | True cuando el rol es... |
 |---|---|
-| `is_directivo()` | `directivo` |
+| `is_ejecutivo()` | `ejecutivo` |
 | `is_tecnico()` | `tecnico`, `operador`, `administrador` |
 | `is_operador()` | `operador`, `administrador` |
 | `is_admin()` | `administrador` |
-| `is_gov_user()` | `directivo`, `tecnico`, `administrador` |
+| `is_gov_user()` | `ejecutivo`, `tecnico`, `administrador` |
 | `is_ops_user()` | `operador`, `administrador` |
 
 ---
@@ -56,7 +56,7 @@ administrador_hash = "<PBKDF2-SHA256 del password>"
 
 | Key interno | Label sidebar | Nombre público | Audiencia | Estado |
 |---|---|---|---|---|
-| `gov` | GOV | QUIRA Institucional | Directivo, Técnico (+ Admin para verificación) | ✅ Activo |
+| `gov` | GOV | QUIRA Institucional | Ejecutivo, Técnico (+ Admin para verificación) | ✅ Activo |
 | `civic` | Civic | QUIRA Ciudadano | Ciudadanía, academia, ONGs | 🔄 Fase 3 |
 | `impact` | Impact | QUIRA Cooperación | Cooperación internacional, investigadores | ⏳ Placeholder |
 | `ops` | OPS | Operaciones | Equipo Dylus Lab | ✅ Activo |
@@ -73,19 +73,35 @@ administrador_hash = "<PBKDF2-SHA256 del password>"
 
 ## 3. Módulos GOV (navegación interna)
 
-| Key módulo | Label sidebar | Módulo | Roles que lo ven |
-|---|---|---|---|
-| `inicio` | 🏠 Inicio | `p0_inicio.py` | Todos (GOV) |
-| `situacion` | 📊 Situación Institucional | `m1_situacion.py` | Todos (GOV) |
-| `alertas` | 🚨 Alertas y Riesgos | `m2_alertas.py` | Todos (GOV) |
-| `municipal` | 🏛 Gestión Municipal | `m3_municipal.py` | Todos (GOV) |
-| `analisis` | 📈 Análisis Estratégico | `m4_analisis.py` | Técnico, Operador, Administrador |
+### Sección Ejecutiva — visible para todos los roles GOV
+
+| Key módulo | Label sidebar | Módulo |
+|---|---|---|
+| `inicio` | 🏠 Inicio | `p0_inicio.py` |
+| `situacion` | 📊 Situación Institucional | `m1_situacion.py` |
+| `alertas` | 🚨 Alertas y Riesgos SAT | `m2_alertas.py` |
+| `municipal` | 🏛 Gestión Municipal | `m3_municipal.py` |
+| `ods` | 🌐 ODS y Metas PDOT | `p11_ods.py` |
+| `confianza` | 🤝 Confianza Ciudadana | `p16_confianza.py` |
+| `rdc` | 📋 Rendición de Cuentas | `p17_rdc.py` |
+| `cooperacion` | 🌍 Cooperación Internacional | `p18_cooperacion.py` |
+| `genero` | 💜 Género y Ambiente | `p19_genero.py` |
+
+### Sección Técnica — solo Técnico, Operador, Administrador
+
+| Key módulo | Label sidebar | Módulo |
+|---|---|---|
+| `analisis` | 📈 Análisis Estratégico | `m4_analisis.py` |
+| `geotwin` | 🗺 GeoTwin Territorio | `p4_geotwin.py` |
+| `congruencias` | 🔗 Congruencias PDOT | `p3_congruencias.py` |
+| `simulador` | 🎮 Simulador de Escenarios | `p13_simulador.py` |
+| `control` | ⚙ Centro de Control | `m5_control.py` |
 
 ### Regla de módulos
 
 > **env_gov.py es un router, nunca un dashboard.**
-> El contenido vive en m1-m4 y p0. env_gov.py solo decide qué mostrar.
-> Módulos nuevos = archivo nuevo (m6, m7...) + una línea en env_gov.py.
+> El contenido vive en m1-m5 y p0-p19. env_gov.py solo decide qué mostrar.
+> Módulos nuevos = archivo nuevo + una línea en env_gov.py.
 > Nunca agregar contenido directamente en env_gov.py.
 
 ---
@@ -111,13 +127,16 @@ administrador_hash = "<PBKDF2-SHA256 del password>"
 ## 5. Prohibiciones Formales
 
 ### Nomenclatura
+- ❌ `Directivo` / `directivo` — RENOMBRADO A `ejecutivo`. Nunca volver a usar.
 - ❌ `Viewer`, `Analyst`, `Operator`, `Admin` — ELIMINADOS. Nunca volver a usar.
 - ❌ `Alcalde`, `Concejal`, `Técnico Municipal` — modelo SaaS v1, descartado.
+- ❌ `is_directivo()` — RENOMBRADO A `is_ejecutivo()`. Nunca volver a usar.
 - ❌ `Sentinel` como nombre de módulo de IA — usar `QUIRA IA`.
 - ❌ `H73_OUTPUT_API` en código nuevo — usar `G6.1_OUTPUT_API` o la capa canónica.
 - ❌ Mezclar key interno con display en lógica de negocio.
 
 ### Arquitectura
+- ❌ Sección PLATAFORMA en el sidebar — ELIMINADA. No reintroducir.
 - ❌ Agregar un 5to ambiente al router principal.
 - ❌ Agregar contenido directamente en `env_gov.py` (debe ser router puro).
 - ❌ `env_civic.py` leyendo datos del núcleo soberano (Gold Master, snapshots operacionales).

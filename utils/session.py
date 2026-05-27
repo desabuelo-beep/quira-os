@@ -1,6 +1,6 @@
 """
 QUIRA Intelligence — Gestión de sesión segura (v3 · Nomenclatura canónica 2026-05-27)
-  · Roles congelados en español: directivo / tecnico / operador / administrador
+  · Roles congelados en español: ejecutivo / tecnico / operador / administrador
   · Helpers de rol actualizados — elimina chequeos en inglés
   · check_session_expiry() llamado al inicio de cada request
   · Expiración de sesión: logout automático a los 60 minutos
@@ -58,10 +58,10 @@ def get_usuario() -> str:
 def set_user(usuario: str, rol: str, emoji: str) -> None:
     """
     Registra la sesión autenticada y determina la página de entrada.
-    Directivo / Técnico → GOV
+    Ejecutivo / Técnico → GOV
     Operador / Administrador → OPS
     """
-    from models.auth import ROLE_DIRECTIVO, ROLE_TECNICO, ROLE_OPERADOR, ROLE_ADMINISTRADOR
+    from models.auth import ROLE_TECNICO, ROLE_OPERADOR, ROLE_ADMINISTRADOR
 
     # Determinar página de entrada según rol
     rol_lower = rol.lower()
@@ -102,9 +102,9 @@ def _rol() -> str:
     return st.session_state.get("rol", "").lower()
 
 
-def is_directivo() -> bool:
-    """True solo para Directivo — alcalde, concejales, director."""
-    return _rol() == "directivo"
+def is_ejecutivo() -> bool:
+    """True solo para Ejecutivo — alcalde, concejales. (COOTAD: el alcalde es el Ejecutivo.)"""
+    return _rol() == "ejecutivo"
 
 
 def is_tecnico() -> bool:
@@ -124,7 +124,7 @@ def is_admin() -> bool:
 
 def is_gov_user() -> bool:
     """True para roles con acceso a GOV: Directivo, Técnico, Administrador."""
-    return _rol() in ("directivo", "tecnico", "administrador")
+    return _rol() in ("ejecutivo", "tecnico", "administrador")
 
 
 def is_ops_user() -> bool:
@@ -134,7 +134,7 @@ def is_ops_user() -> bool:
 
 def is_viewer() -> bool:
     """True para cualquier rol autenticado (mínimo privilegio)."""
-    return _rol() in ("directivo", "tecnico", "operador", "administrador")
+    return _rol() in ("ejecutivo", "tecnico", "operador", "administrador")
 
 
 def is_analyst() -> bool:
@@ -151,5 +151,5 @@ def is_operator() -> bool:
 
 
 def is_alcalde() -> bool:
-    """DEPRECATED → usar is_directivo()"""
-    return is_directivo()
+    """DEPRECATED → usar is_ejecutivo()"""
+    return is_ejecutivo()

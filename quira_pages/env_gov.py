@@ -151,7 +151,7 @@ def _render_gov_header(module_label: str) -> None:
     """Banda superior con identidad GOV y módulo activo."""
     rol = get_rol()
     rol_badge_color = {
-        "Directivo":     "#00D4FF",
+        "Ejecutivo":     "#00D4FF",
         "Técnico":       "#22C55E",
         "Administrador": "#F97316",
     }.get(rol, "#64748B")

@@ -1,10 +1,11 @@
-# QUIRA — Doctrina Fundacional v1.0
-**Gobernanza Municipal Algorítmica Preventiva**
+# QUIRA — Doctrina Fundacional v1.1
+**Sistema Operativo de Coherencia Institucional Municipal**
 *Dylus Lab © 2026 — Documento Canónico Confidencial*
 
 > Este documento es la referencia doctrinal suprema de QUIRA.
 > Todo Sprint, toda pantalla, toda línea de código debe poder trazarse hasta un principio aquí definido.
 > Nada se construye sin que este documento lo ampare.
+> Estado: **CANONICAL** — Congelado para construcción. Abierto para iteración versionada.
 
 ---
 
@@ -13,10 +14,27 @@
 QUIRA no es un dashboard.
 No es un ERP.
 No es una plataforma de transparencia.
+No es software municipal.
 
-QUIRA es un **Sistema Operativo Institucional Municipal** que transforma
+QUIRA es un **Sistema Operativo de Coherencia Institucional Municipal**:
+infraestructura de gobernanza preventiva longitudinal que transforma
 la operación mensual de un GAD en gobernanza pública verificable,
-longitudinal y preventiva.
+coherente y acumulativa.
+
+**La frase que resume el paradigma:**
+> "QUIRA evita que el municipio improvise institucionalmente."
+
+Todo gira alrededor de coherencia en seis dimensiones simultáneas:
+- **Coherencia temporal** — lo que se prometió vs. lo que se ejecutó en el tiempo
+- **Coherencia normativa** — lo que la ley exige vs. lo que el municipio hace
+- **Coherencia territorial** — lo que se invirtió vs. dónde está la brecha
+- **Coherencia democrática** — lo que el mandato decía vs. lo que el gobierno hace
+- **Coherencia presupuestaria** — lo que se codificó vs. lo que se ejecutó
+- **Coherencia operativa** — lo que la dirección reporta vs. lo que el territorio verifica
+
+La mayoría de GovTech en LATAM automatiza trámites.
+QUIRA automatiza coherencia institucional.
+Eso es otra categoría.
 
 **La diferencia crítica con todo lo que existe:**
 
@@ -35,6 +53,31 @@ longitudinal y preventiva.
 ---
 
 ## 1. Filosofía doctrinal — lo que nunca cambia
+
+### 1.0 QUIRA NO mide gasto. Mide coherencia.
+
+Esta distinción es doctrinalmente crítica y debe penetrar cada pantalla,
+cada alerta y cada métrica del sistema.
+
+| En Ecuador se confunde... | QUIRA diferencia... |
+|---|---|
+| Ejecución presupuestaria = éxito | Gasto ≠ transformación territorial |
+| Devengar = gobernar | Ejecutar ≠ cumplir mandato |
+| % de ejecución = desempeño | Ejecución financiera ≠ capacidad institucional efectiva |
+
+Un municipio puede ejecutar el 90% del presupuesto y fracasar territorialmente.
+Puede ejecutar el 65% y cerrar brechas, cumplir participación, sostener cohesión.
+
+QUIRA mide:
+- **Coherencia** entre compromiso y ejecución
+- **Cumplimiento** de mandato democrático y normativo
+- **Continuidad** operativa institucional
+- **Trazabilidad** de decisión a territorio
+- **Capacidad** de sostener el mandato a lo largo del tiempo
+
+No solo ejecución financiera. Esa diferencia es gigantesca.
+
+---
 
 ### 1.1 Preventivo-predictivo. Nunca punitivo.
 
@@ -164,6 +207,21 @@ complementando los diagnósticos con perspectiva longitudinal operativa.
 | **IFE** | Índice de Fidelidad Electoral | Coherencia entre Plan de Gobierno (CNE, mandato democrático) y ejecución real mensual/anual. Mide la promesa original del alcalde vs. lo que el municipio está ejecutando. Visible en GOV (introspección ejecutiva) y Ciudadana (memoria democrática pública). |
 | **IMN Score** | Score de Calidad Operativa | Calidad, completitud y temporalidad del Informe Mensual Normalizado por dirección. Mide disciplina institucional de reporte. |
 
+> **Nota doctrinal — IPPT:**
+> El IPPT es potencialmente el índice más disruptivo de QUIRA porque cierra el circuito completo
+> que ningún sistema en LAC ha integrado: asamblea barrial → compromiso formal → POA →
+> presupuesto → ejecución física → ciudadanía verifica.
+> No es un indicador de gasto. Es **trazabilidad de promesa pública**.
+> Ese circuito cerrado, longitudinal y verificable no existe en ningún municipio de Ecuador.
+
+> **Blindaje doctrinal — IED:**
+> El IED es una herramienta de gestión **preventivo-operacional**. Mide capacidad institucional,
+> no intención. Es técnico, cuantitativo, objetivo — jamás subjetivo.
+> **El IED NUNCA es herramienta disciplinaria ni laboral. Sin excepciones.**
+> No se usa para sancionar funcionarios. No reemplaza a la Contraloría. No es auditoría.
+> Su único propósito: detectar deterioro institucional antes de que sea irreversible,
+> para que el municipio pueda corregir a tiempo. Eso distingue a QUIRA de todo lo que existe.
+
 ### 4.3 Regla del índice único para Vista Ejecutiva
 
 El Ejecutivo ve **un número maestro** (ICPI o TGI según contexto).
@@ -189,6 +247,21 @@ que el sistema democrático ya exige pero nadie mide en Ecuador.
 El IFE aparece en **GOV** como herramienta de gestión ejecutiva
 y en **Ciudadana** como memoria democrática territorial.
 Son el mismo dato con dos marcos de lectura distintos.
+
+**Potencial académico e internacional del IFE:**
+
+No existe en América Latina ningún sistema que mida públicamente la coherencia entre
+mandato democrático (Plan de Gobierno CNE) y ejecución ejecutiva mensualizada, con
+datos verificables, longitudinalidad y trazabilidad metodológica auditada.
+
+El IFE de QUIRA abre posibilidades de:
+- Paper académico internacional (gobernanza algorítmica, democracia deliberativa con evidencia)
+- Colaboración con organismos como CLAD, BID, ONU Hábitat, PNUD
+- Reconocimiento como innovación en accountability democrático municipal en LAC
+- Referente regional para otros países con elecciones sub-nacionales y planes de gobierno CNE
+
+Esto convierte al IFE en algo más que un índice de QUIRA:
+es la semilla de un estándar regional de **fidelidad democrática verificable**.
 
 ---
 
@@ -584,6 +657,6 @@ Eso es lo que hace que QUIRA sea infraestructura pública, no un dashboard.
 
 ---
 
-*QUIRA_DOCTRINE_v1.0 — Cerrado para debatir, abierto para iterar*
-*Próxima versión: v1.1 tras Sprint B — incorporar decisiones de experiencia*
+*QUIRA_DOCTRINE_v1.1 — CANONICAL. Congelado para construir. Abierto para iterar versionado.*
+*Próxima versión: v1.2 tras Sprint B — incorporar decisiones de experiencia UX*
 *Dylus Lab © 2026 — Confidencial*

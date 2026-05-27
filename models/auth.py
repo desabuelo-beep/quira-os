@@ -7,7 +7,7 @@ Capa de autenticación segura:
   · Expiración de sesión: logout automático a los 60 minutos
 
 Roles CONGELADOS (ver docs/NOMENCLATURA_CANONICA.md):
-  directivo    — Alcalde, concejales, director ejecutivo → GOV (vista ejecutiva)
+  ejecutivo    — Alcalde, concejales, director ejecutivo → GOV (vista ejecutiva)
   tecnico      — Técnico de planificación → GOV (vista técnica)
   operador     — Equipo Dylus Lab (operación) → OPS
   administrador— Equipo Dylus Lab (admin total) → OPS + GOV verificación
@@ -38,7 +38,7 @@ _PBKDF2_ITERS  = 260_000    # iteraciones PBKDF2 (OWASP 2024)
 _APP_SALT = b"QUIRA_OS_v1_Dylus_Lab_2026"
 
 # ── Constantes de roles (usar estas, nunca strings literales en código) ───────
-ROLE_DIRECTIVO     = "directivo"
+ROLE_EJECUTIVO     = "ejecutivo"
 ROLE_TECNICO       = "tecnico"
 ROLE_OPERADOR      = "operador"
 ROLE_ADMINISTRADOR = "administrador"
@@ -62,21 +62,21 @@ def _safe_eq(a: str, b: str) -> bool:
 # ── Credenciales ──────────────────────────────────────────────────────────────
 # En Streamlit Cloud → Settings → Secrets → TOML:
 #   [auth]
-#   directivo_hash     = "<resultado de _hash('tu_password')>"
+#   ejecutivo_hash     = "<resultado de _hash('tu_password')>"
 #   tecnico_hash       = "<resultado de _hash('tu_password')>"
 #   operador_hash      = "<resultado de _hash('tu_password')>"
 #   administrador_hash = "<resultado de _hash('tu_password')>"
 
 _FALLBACK_HASHES: dict[str, str] = {
     # Generados con _hash("quira2026") — cambiar en producción
-    ROLE_DIRECTIVO:     _hash("quira2026"),
+    ROLE_EJECUTIVO:     _hash("quira2026"),
     ROLE_TECNICO:       _hash("quira2026"),
     ROLE_OPERADOR:      _hash("quira2026"),
     ROLE_ADMINISTRADOR: _hash("quira2026"),
 }
 
 _USER_META: dict[str, dict] = {
-    ROLE_DIRECTIVO:     {"rol": "Directivo",     "emoji": "🏛"},
+    ROLE_EJECUTIVO:     {"rol": "Ejecutivo",     "emoji": "🏛"},
     ROLE_TECNICO:       {"rol": "Técnico",        "emoji": "📐"},
     ROLE_OPERADOR:      {"rol": "Operador",       "emoji": "⚙️"},
     ROLE_ADMINISTRADOR: {"rol": "Administrador",  "emoji": "🔑"},
@@ -158,7 +158,7 @@ def is_session_expired() -> bool:
 def rol_options() -> dict[str, str]:
     """Opciones para el dropdown de login. Display → key interno."""
     return {
-        "🏛 Directivo":     ROLE_DIRECTIVO,
+        "🏛 Ejecutivo":      ROLE_EJECUTIVO,
         "📐 Técnico":       ROLE_TECNICO,
         "⚙️ Operador":      ROLE_OPERADOR,
         "🔑 Administrador": ROLE_ADMINISTRADOR,
