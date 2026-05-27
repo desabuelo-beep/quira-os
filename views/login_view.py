@@ -129,8 +129,6 @@ def splash_top(corte: str) -> str:
   <div class="ql-pow">Powered by Dylus Lab</div>
   <div class="ql-tag1">Territorial Governance Intelligence</div>
   <div class="ql-tag2">Gobernar con evidencia · Decidir con territorio</div>
-  <div class="ql-div"></div>
-  <div class="ql-loc">Montecristi · Manabi · Ecuador · {corte}</div>
 </div>"""
 
 

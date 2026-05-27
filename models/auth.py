@@ -7,10 +7,10 @@ Capa de autenticación segura:
   · Expiración de sesión: logout automático a los 60 minutos
 
 Roles PMV (Sprint 3 · 2026-05-25):
-  Viewer   — Consulta análisis y reportes (GOV, Impact)
-  Analyst  — Análisis avanzado, comparativos longitudinales (GOV, Impact)
-  Operator — Ejecuta pipeline, gestiona snapshots (GOV, Ops)
-  Admin    — Configuración total, governance, Gold Master (todos)
+  Visualizador  — Consulta análisis y reportes (GOV, Impact)
+  Analista      — Análisis avanzado, comparativos longitudinales (GOV, Impact)
+  Operador      — Ejecuta pipeline, gestiona snapshots (GOV, Ops)
+  Administrador — Configuración total, governance, Gold Master (todos)
 
 DEPRECATED: Alcalde / Concejal / Técnico — modelo SaaS municipal descartado.
 No usar, no recuperar, no reintroducir.
@@ -74,10 +74,10 @@ _FALLBACK_HASHES: dict[str, str] = {
 }
 
 _USER_META: dict[str, dict] = {
-    "viewer":   {"rol": "Viewer",   "emoji": "👁"},
-    "analyst":  {"rol": "Analyst",  "emoji": "📊"},
-    "operator": {"rol": "Operator", "emoji": "⚙️"},
-    "admin":    {"rol": "Admin",    "emoji": "🔑"},
+    "viewer":   {"rol": "Visualizador",  "emoji": "👁"},
+    "analyst":  {"rol": "Analista",      "emoji": "📊"},
+    "operator": {"rol": "Operador",      "emoji": "⚙️"},
+    "admin":    {"rol": "Administrador", "emoji": "🔑"},
 }
 
 
@@ -155,8 +155,8 @@ def is_session_expired() -> bool:
 
 def rol_options() -> dict[str, str]:
     return {
-        "👁 Viewer":   "viewer",
-        "📊 Analyst":  "analyst",
-        "⚙️ Operator": "operator",
-        "🔑 Admin":    "admin",
+        "👁 Visualizador":   "viewer",
+        "📊 Analista":       "analyst",
+        "⚙️ Operador":       "operator",
+        "🔑 Administrador":  "admin",
     }
