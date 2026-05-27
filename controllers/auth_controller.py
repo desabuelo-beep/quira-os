@@ -5,8 +5,7 @@ Orquesta View + Model. Muestra errores de rate limiting y sesión.
 Dylus Lab © 2026
 """
 import streamlit as st
-from config import GAD_NOMBRE, CORTE
-from models.auth import validate, rol_options, AuthError, LockedError, is_locked
+from models.auth import validate_any, AuthError, LockedError, is_locked
 from utils.session import set_user
 from utils.audit_log import log_login_ok, log_login_fail, log_lockout
 from views.login_view import (
@@ -94,11 +93,9 @@ def run() -> None:
         else:
             _, col_form, _ = st.columns([1, 2, 1])
             with col_form:
-                opts = rol_options()
                 with st.form("login_form", border=False):
-                    st.markdown(form_header(CORTE), unsafe_allow_html=True)
-                    rol_display = st.selectbox("ROL DE ACCESO", list(opts.keys()))
-                    password    = st.text_input(
+                    st.markdown(form_header(), unsafe_allow_html=True)
+                    password  = st.text_input(
                         "CONTRASEÑA", type="password", placeholder="••••••••"
                     )
                     submitted = st.form_submit_button(
@@ -106,23 +103,22 @@ def run() -> None:
                     )
 
             if submitted:
-                rol_key = opts[rol_display]
                 try:
-                    user = validate(rol_key=rol_key, password=password)
-                    log_login_ok(rol_key)
+                    user = validate_any(password=password)
+                    log_login_ok(user.key)
                     set_user(usuario=user.key, rol=user.rol, emoji=user.emoji)
                     st.session_state[_SEL] = ""  # limpiar estado de landing
                     st.rerun()
                 except LockedError as e:
-                    log_lockout(rol_key)
+                    log_lockout("unknown")
                     st.error(f"🔒 Cuenta bloqueada temporalmente. Espera {e.seconds_left // 60}m.")
                 except AuthError as e:
-                    log_login_fail(rol_key, motivo=str(e))
+                    log_login_fail("unknown", motivo=str(e))
                     st.warning(str(e))
 
     # ── Trust badges + footer ─────────────────────────────────────────────────
     st.markdown(trust_badges(), unsafe_allow_html=True)
-    st.markdown(footer(GAD_NOMBRE, CORTE), unsafe_allow_html=True)
+    st.markdown(footer(), unsafe_allow_html=True)
 
     # ── Acceso operacional (link discreto — solo equipo Dylus Lab) ─────────────
     st.markdown(

@@ -1,4 +1,4 @@
-# QUIRA — Doctrina Fundacional v1.2
+# QUIRA — Doctrina Fundacional v1.3
 **Sistema Operativo de Coherencia Institucional Municipal**
 *Dylus Lab © 2026 — Documento Canónico Confidencial*
 
@@ -124,6 +124,65 @@ La metodología opera en silencio, sin nombrarse.
 ### 1.4 La unidad mínima no es la pantalla. Es el protocolo.
 
 ### 1.5 QUIRA modela el ecosistema institucional municipal — no el municipio
+
+### 1.6 TOP: el sistema vectoriza trayectorias — no fotografía estados
+
+Esta distinción es la más técnicamente sofisticada de la doctrina QUIRA.
+
+**El error que comete todo GovTech:**
+```
+Ti = 19% en Q1  →  🔴 Rojo  (ejecución baja)
+```
+
+**La verdad institucional con TOP:**
+```
+Ti = 19% en Q1  →  TOP = 19% / 0.13 = 150%  →  🟢 Sobre ritmo esperado
+```
+
+El primer sistema está midiendo el pasado. El segundo está calculando el futuro.
+
+**La fórmula canónica:**
+```
+TOP = Ti_acumulado / W_Q
+```
+Donde W_Q es la fracción histórica esperada del presupuesto anual devengado al cierre del trimestre actual, según la curva real del eSIGEF ecuatoriano.
+
+**Por qué W_Q es necesario:**
+El gasto público en Ecuador no es lineal. La curva estacional real:
+- Q1 (Ene-Mar): ~13% — letargo administrativo, reformas SERCOP
+- Q2 (Abr-Jun): ~35% — contratos activos, primera ola de obra
+- Q3 (Jul-Sep): ~60% — avance de obras, devengados parciales
+- Q4 (Oct-Dic): ~100% — explosión final; 40% del presupuesto en los últimos 45 días
+
+Aplicar un semáforo absoluto (< 30% = rojo) en Q1 generaría falsos rojos para
+instituciones saludables y diluiría el rojo real (GAD inversión 1.05% = TOP 8% = 🔴 RUPTURA).
+
+**El Contrato de Autoridad del Alcalde:**
+Cuando un concejal de oposición cuestiona al Patronato por "solo el 19% ejecutado",
+el alcalde no improvisa. QUIRA le da autoridad algorítmica con base doctrinal:
+
+> "El Patronato registra Ti del 19.56% en Q1-2026. Bajo el modelo predictivo institucional
+> de QUIRA, eso representa una trayectoria operativa sobre el ritmo histórico esperado
+> para este trimestre. El proceso está asegurado y la evidencia SHA-256 está disponible.
+> Siguiente punto del día."
+
+QUIRA no es software de reporte. **QUIRA es infraestructura de autoridad institucional.**
+
+**TOP en la arquitectura del sistema:**
+```
+Gold Master    → produce Ti_acumulado (raw, per entidad)
+gm_snapshot    → almacena Ti por entidad y período
+utils/top.py   → calcula TOP = Ti / W_Q (determinista, puro, sin efectos secundarios)
+Vista Ejecutiva → renderiza TOP con semáforo correcto
+QUIRA IA       → usa TOP en narrativa de brief institucional ejecutivo
+```
+
+**Nota de calibración:**
+Los valores W_Q actuales son la curva nacional eSIGEF. Se calibrarán con serie histórica
+real de Montecristi en el año 2 de datos Gold Master. En multiGAD: calibración por región.
+
+**El nombre es inamovible:** TOP — Trayectoria Operativa Proyectada.
+Ver implementación en `utils/top.py` y umbrales en NOMENCLATURA_CANONICA.md Sección 7.2.
 
 Esta distinción es tan crítica como la de sección 1.0.
 
@@ -458,6 +517,24 @@ no memoria presupuestaria, sino memoria de compromiso público.
 
 ## 6. Arquitectura de experiencia — QUIRA Institucional
 
+### 6.0 Nombre del motor — Motor Predictivo Institucional v1
+
+Sprint B de QUIRA no es "Vista Ejecutiva mejorada".
+Sprint B es el **Motor Predictivo Institucional v1**.
+
+No mide lo que pasó. Vectoriza hacia dónde va la institución.
+
+Sus componentes son:
+- **TOP** — Trayectoria Operativa Proyectada (coherencia temporal)
+- **Ecosistema Municipal** — salud sistémica de las 4 entidades
+- **SAT sistémicas** — alertas preventivas del núcleo GAD
+- **TGI + D1-D5** — diagnóstico de gobernanza con narrativa ejecutiva
+- **QUIRA IA** — brief institucional ejecutivo (no chatbot)
+- **Contrato de Autoridad** — el alcalde sale de cada sesión blindado
+
+El frontend del piloto es Streamlit. El motor es permanente.
+La lógica TOP y la arquitectura del Ecosistema sobrevivirán cualquier migración de frontend.
+
 ### 6.1 El modelo cognitivo correcto
 
 ```
@@ -768,8 +845,10 @@ Eso es lo que hace que QUIRA sea infraestructura pública, no un dashboard.
 
 ---
 
-*QUIRA_DOCTRINE_v1.2 — CANONICAL. Congelado para construir. Abierto para iterar versionado.*
-*v1.2 — 2026-05-27: Corrección de cimiento — QUIRA modela el Ecosistema Institucional Municipal.*
-*Agrega: Sección 1.5 (Ecosistema), Vista Ejecutiva v2 (6 zonas), SAT dos niveles, backlog ecosistema.*
-*Próxima versión: v1.3 tras Sprint B — incorporar decisiones de experiencia UX post-construcción.*
+*QUIRA_DOCTRINE_v1.3 — CANONICAL. Congelado para construir. Abierto para iterar versionado.*
+*v1.2 — 2026-05-27: Ecosistema Institucional Municipal. Vista Ejecutiva 6 zonas.*
+*v1.3 — 2026-05-27: TOP (Trayectoria Operativa Proyectada). Motor Predictivo Institucional v1.*
+*  Agrega: Sección 1.6 (TOP + Contrato de Autoridad), Sección 6.0 (Motor Predictivo nombre).*
+*  Implementación: utils/top.py — determinista, puro, sin efectos secundarios.*
+*Próxima versión: v1.4 tras primera validación política real en Concejo Municipal.*
 *Dylus Lab © 2026 — Confidencial*

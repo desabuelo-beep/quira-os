@@ -273,13 +273,13 @@ def platform_cards(selected: str = "") -> str:
 </div>"""
 
 
-def form_header(corte: str) -> str:
+def form_header() -> str:
     """Badge + etiqueta dentro del card de login."""
     return (
-        f'<div class="ql-form-title">Acceso institucional</div>'
-        f'<div style="text-align:center">'
-        f'<span class="ql-badge">Acceso Restringido · {corte}</span>'
-        f'</div>'
+        '<div class="ql-form-title">Acceso institucional</div>'
+        '<div style="text-align:center">'
+        '<span class="ql-badge">Acceso Restringido</span>'
+        '</div>'
     )
 
 
@@ -302,27 +302,25 @@ def trust_badges() -> str:
     return f'<div class="ql-trust">{items}</div>'
 
 
-def footer(gad: str, corte: str) -> str:
-    """Footer institucional."""
-    return f"""
+def footer() -> str:
+    """Footer institucional — genérico, sin datos GAD-específicos (multi-GAD)."""
+    return """
 <div class="ql-footer">
-  <div class="ql-gad">&#127963; {gad}</div>
   QUIRA Intelligence · Dylus Lab © 2026<br>
-  Gold Master v5.5_TGI · Corte {corte}<br>
   <span style="color:rgba(255,184,0,.3)">Acceso institucional restringido</span>
 </div>"""
 
 
 # ── Compatibilidad con código anterior (splash_top / splash_bottom) ───────────
 
-def splash_top(corte: str) -> str:
+def splash_top(corte: str = "") -> str:
     """Alias de landing_hero() para compatibilidad."""
     return landing_hero()
 
 
-def splash_bottom(gad: str, corte: str) -> str:
+def splash_bottom(gad: str = "", corte: str = "") -> str:
     """Alias de footer() para compatibilidad."""
-    return footer(gad, corte)
+    return footer()
 
 
 def error_html(msg: str) -> str:

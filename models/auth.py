@@ -163,3 +163,43 @@ def rol_options() -> dict[str, str]:
         "⚙️ Operador":      ROLE_OPERADOR,
         "🔑 Administrador": ROLE_ADMINISTRADOR,
     }
+
+
+def validate_any(password: str) -> AuthUser:
+    """
+    Valida la contraseña contra todos los roles — el sistema detecta el rol.
+    Orden de prueba: ejecutivo → tecnico → operador → administrador.
+    En producción, cada rol tiene un hash único; el primero que coincida es el rol.
+
+    Nota dev: los fallbacks usan el mismo hash ("quira2026"), por lo que en
+    entornos de desarrollo siempre se autenticará como 'ejecutivo'. Usar
+    validate(rol_key, password) para probar roles específicos en dev.
+
+    Lanza LockedError si está bloqueado, AuthError si ningún rol coincide.
+    """
+    locked, secs = is_locked()
+    if locked:
+        raise LockedError(secs)
+
+    pw_hash = _hash(password)
+    for rol_key in (ROLE_EJECUTIVO, ROLE_TECNICO, ROLE_OPERADOR, ROLE_ADMINISTRADOR):
+        stored = _stored_hash(rol_key)
+        if stored and _safe_eq(pw_hash, stored):
+            # Login exitoso — resetear contadores
+            st.session_state[_tries_key()] = 0
+            st.session_state[_lock_key()]  = 0
+            meta = _USER_META.get(rol_key, {})
+            return AuthUser(
+                key=rol_key,
+                rol=meta.get("rol", rol_key),
+                emoji=meta.get("emoji", ""),
+            )
+
+    # Contraseña no coincide con ningún rol
+    tries = st.session_state.get(_tries_key(), 0) + 1
+    st.session_state[_tries_key()] = tries
+    if tries >= _MAX_ATTEMPTS:
+        st.session_state[_lock_key()]  = time.time() + _LOCKOUT_SECS
+        st.session_state[_tries_key()] = 0
+        raise LockedError(_LOCKOUT_SECS)
+    raise AuthError(f"Contraseña incorrecta ({tries}/{_MAX_ATTEMPTS} intentos)")

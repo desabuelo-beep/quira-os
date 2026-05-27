@@ -230,6 +230,94 @@ Una señal de ecosistema implica deterioro operativo periférico que el alcalde 
 - ❌ Activar SAT sistémicas desde datos de entidades adscritas (solo el GAD activa SAT sistémicas)
 - ❌ Mostrar una zona Ecosistema sin al menos estado semafórico y Ti de cada entidad
 
+---
+
+## 7.2 TOP — Trayectoria Operativa Proyectada
+
+> **Principio doctrinal central (QUIRA_DOCTRINE_v1.3):**
+> QUIRA no mide ejecución acumulada. QUIRA vectoriza la trayectoria institucional.
+> El semáforo representa hacia dónde va la institución — no dónde está.
+
+### Nombre canónico
+
+**TOP — Trayectoria Operativa Proyectada**
+
+| Término | Usar | Razón |
+|---|---|---|
+| `TOP` | ✅ SIEMPRE | Nombre oficial. Vector + trayectoria + proyección. |
+| `RIP` | ❌ NUNCA | Semántica fúnebre en español. |
+| `VIP` | ❌ NUNCA | Sonido comercial superficial, pierde rigor público. |
+| "ejecución acumulada" | ❌ No como semáforo | Describe el pasado, no la trayectoria. |
+
+### Fórmula canónica
+
+```
+TOP = Ti_acumulado / W_Q
+```
+
+Donde `W_Q` es la fracción histórica esperada del presupuesto anual devengado al cierre de ese trimestre, según la curva real del eSIGEF ecuatoriano.
+
+### Constantes W_Q (curva eSIGEF — GADs Ecuador tamaño intermedio)
+
+| Quarter | W_Q | Comportamiento institucional |
+|---|---|---|
+| Q1 | 0.13 | Letargo administrativo — liquidación año anterior, reformas, SERCOP |
+| Q2 | 0.35 | Contratos activados — primera ola de obra pública |
+| Q3 | 0.60 | Avance de obras — devengados parciales acumulados |
+| Q4 | 1.00 | Explosión final — ~40% del presupuesto en los últimos 45 días |
+
+**Calibración:** Valores actuales son la curva nacional. Se calibrarán con serie histórica real de Montecristi a partir del año 2 del Gold Master.
+
+### Umbrales canónicos del semáforo TOP
+
+| TOP proyectado | Color | Hex | Diagnóstico doctrinal |
+|---|---|---|---|
+| ≥ 75% | 🟢 Sostenible | `#22C55E` | Gobernanza por Mandato — cumplimiento PDOT garantizado |
+| ≥ 55% | 🟡 Atención | `#F59E0B` | Desaceleración leve — monitorear Q siguiente |
+| ≥ 35% | 🟠 Alerta Institucional | `#F97316` | Intervención requerida — reforma presupuestaria |
+| < 35% | 🔴 Ruptura de Trayectoria | `#EF4444` | Riesgo Contraloría — acción ejecutiva urgente |
+
+### Regla de display — cap de TOP
+
+| TOP matemático | Mostrar en UI | Razón |
+|---|---|---|
+| > 100% | Label narrativo: "Sobre ritmo esperado" | Numéricamente exacto pero políticamente confuso |
+| ≤ 100% | Porcentaje: "78%" | Cognitivamente directo |
+
+**NUNCA mostrar "150%" en UI.** El valor matemático se preserva internamente para QUIRA IA y cálculos.
+
+### Scope de TOP — indicadores tiempo-dependientes
+
+TOP aplica a TODO indicador que tenga ciclo anual y corte temporal:
+
+| Indicador | Aplicación TOP | Estado |
+|---|---|---|
+| Ti presupuestario (GAD + Ecosistema) | `top_entidad()` en `utils/top.py` | ✅ Sprint B |
+| Cobertura de servicios (EP Aseo, etc.) | TOP de avance vs. meta anual | 📅 Sprint C |
+| Velocidad de respuesta SAT | TOP del tiempo de resolución | 📅 Sprint C |
+| IFE — fidelidad electoral | TOP de promesas con proceso contractual | 📅 Sprint D |
+| IMN Score por dirección | TOP de calidad de reporte acumulada | 📅 Sprint C |
+
+### Implementación
+
+```
+utils/top.py
+├── WQ                            constantes estacionales
+├── calcular_top(ti, quarter)     función pura determinista
+├── calcular_top_desde_corte()    conveniencia con corte canónico
+├── clasificar_top(top)           ficha institucional completa para UI + IA
+├── top_entidad(ti, corte, nombre) conveniencia para Ecosistema Municipal
+└── narrativa_ia(entidad_dict)    brief institucional ejecutivo para QUIRA IA
+```
+
+### Prohibiciones del TOP
+
+- ❌ Usar semáforo de valor absoluto acumulado (19% ≠ rojo en Q1)
+- ❌ Proyectar linealmente sin W_Q estacional
+- ❌ Mostrar valores TOP > 100% como números en UI
+- ❌ Activar SAT sistémica solo por TOP bajo de una entidad del ecosistema
+- ❌ Calcular TOP sin dato de Ti verificado en Gold Master
+
 | Archivo | Responsabilidad |
 |---|---|
 | `config.py` | Parámetros del GAD: nombre, período, alcalde, corte |
