@@ -1,19 +1,19 @@
 """
-QUIRA Intelligence — Model: Auth  (Seguridad v2)
+QUIRA Intelligence — Model: Auth  (Seguridad v3 · Nomenclatura canónica 2026-05-27)
 Capa de autenticación segura:
   · Contraseñas hasheadas PBKDF2-SHA256 — nunca texto plano
   · Credenciales en st.secrets (producción) o variables de entorno (dev)
   · Rate limiting: bloqueo tras 3 intentos fallidos por 5 minutos
   · Expiración de sesión: logout automático a los 60 minutos
 
-Roles PMV (Sprint 3 · 2026-05-25):
-  Visualizador  — Consulta análisis y reportes (GOV, Impact)
-  Analista      — Análisis avanzado, comparativos longitudinales (GOV, Impact)
-  Operador      — Ejecuta pipeline, gestiona snapshots (GOV, Ops)
-  Administrador — Configuración total, governance, Gold Master (todos)
+Roles CONGELADOS (ver docs/NOMENCLATURA_CANONICA.md):
+  directivo    — Alcalde, concejales, director ejecutivo → GOV (vista ejecutiva)
+  tecnico      — Técnico de planificación → GOV (vista técnica)
+  operador     — Equipo Dylus Lab (operación) → OPS
+  administrador— Equipo Dylus Lab (admin total) → OPS + GOV verificación
 
-DEPRECATED: Alcalde / Concejal / Técnico — modelo SaaS municipal descartado.
-No usar, no recuperar, no reintroducir.
+ELIMINADOS DEFINITIVAMENTE: viewer / analyst / operator / admin (inglés v1-v2)
+No usar. No recuperar. No reintroducir.
 
 Sin imports de Streamlit salvo para leer secrets. Sin HTML.
 Dylus Lab © 2026
@@ -34,8 +34,14 @@ _LOCKOUT_SECS  = 300        # 5 minutos de bloqueo
 _SESSION_SECS  = 3600       # 60 minutos → logout automático
 _PBKDF2_ITERS  = 260_000    # iteraciones PBKDF2 (OWASP 2024)
 
-# Salt fijo de la aplicación (añade entropía al hash incluso si la BD se filtra)
+# Salt fijo de la aplicación
 _APP_SALT = b"QUIRA_OS_v1_Dylus_Lab_2026"
+
+# ── Constantes de roles (usar estas, nunca strings literales en código) ───────
+ROLE_DIRECTIVO     = "directivo"
+ROLE_TECNICO       = "tecnico"
+ROLE_OPERADOR      = "operador"
+ROLE_ADMINISTRADOR = "administrador"
 
 
 # ── Hashing ───────────────────────────────────────────────────────────────────
@@ -54,30 +60,26 @@ def _safe_eq(a: str, b: str) -> bool:
 
 
 # ── Credenciales ──────────────────────────────────────────────────────────────
-# Orden de búsqueda:
-#   1. st.secrets (Streamlit Cloud → Settings → Secrets)
-#   2. Hashes embebidos de fallback (sólo para dev local)
-#
-# Para producción, en Streamlit Cloud añade en Secrets:
+# En Streamlit Cloud → Settings → Secrets → TOML:
 #   [auth]
-#   viewer_hash   = "<resultado de _hash('tu_password')>"
-#   analyst_hash  = "<resultado de _hash('tu_password')>"
-#   operator_hash = "<resultado de _hash('tu_password')>"
-#   admin_hash    = "<resultado de _hash('tu_password')>"
+#   directivo_hash     = "<resultado de _hash('tu_password')>"
+#   tecnico_hash       = "<resultado de _hash('tu_password')>"
+#   operador_hash      = "<resultado de _hash('tu_password')>"
+#   administrador_hash = "<resultado de _hash('tu_password')>"
 
 _FALLBACK_HASHES: dict[str, str] = {
     # Generados con _hash("quira2026") — cambiar en producción
-    "viewer":   _hash("quira2026"),
-    "analyst":  _hash("quira2026"),
-    "operator": _hash("quira2026"),
-    "admin":    _hash("quira2026"),
+    ROLE_DIRECTIVO:     _hash("quira2026"),
+    ROLE_TECNICO:       _hash("quira2026"),
+    ROLE_OPERADOR:      _hash("quira2026"),
+    ROLE_ADMINISTRADOR: _hash("quira2026"),
 }
 
 _USER_META: dict[str, dict] = {
-    "viewer":   {"rol": "Visualizador",  "emoji": "👁"},
-    "analyst":  {"rol": "Analista",      "emoji": "📊"},
-    "operator": {"rol": "Operador",      "emoji": "⚙️"},
-    "admin":    {"rol": "Administrador", "emoji": "🔑"},
+    ROLE_DIRECTIVO:     {"rol": "Directivo",     "emoji": "🏛"},
+    ROLE_TECNICO:       {"rol": "Técnico",        "emoji": "📐"},
+    ROLE_OPERADOR:      {"rol": "Operador",       "emoji": "⚙️"},
+    ROLE_ADMINISTRADOR: {"rol": "Administrador",  "emoji": "🔑"},
 }
 
 
@@ -148,15 +150,16 @@ def validate(rol_key: str, password: str) -> AuthUser:
 
 
 def is_session_expired() -> bool:
-    """True si la sesión superó los 60 minutos de inactividad."""
+    """True si la sesión superó los 60 minutos."""
     login_time = st.session_state.get("login_time", 0)
     return login_time > 0 and (time.time() - login_time) > _SESSION_SECS
 
 
 def rol_options() -> dict[str, str]:
+    """Opciones para el dropdown de login. Display → key interno."""
     return {
-        "👁 Visualizador":   "viewer",
-        "📊 Analista":       "analyst",
-        "⚙️ Operador":       "operator",
-        "🔑 Administrador":  "admin",
+        "🏛 Directivo":     ROLE_DIRECTIVO,
+        "📐 Técnico":       ROLE_TECNICO,
+        "⚙️ Operador":      ROLE_OPERADOR,
+        "🔑 Administrador": ROLE_ADMINISTRADOR,
     }

@@ -29,7 +29,7 @@ def run() -> None:
     # ── Estado del flow: qué plataforma seleccionó el usuario ────────────────
     _SEL = _st_key("platform_selected")
     if _SEL not in st.session_state:
-        st.session_state[_SEL] = ""   # '' | 'institucional' | 'ciudadano'
+        st.session_state[_SEL] = ""   # '' | 'institucional' | 'ciudadano' | 'cooperacion'
 
     selected = st.session_state[_SEL]
 
@@ -54,8 +54,29 @@ def run() -> None:
             st.rerun()
 
     with col3:
-        st.button("Próximamente", key="btn_cooperacion",
-                  use_container_width=True, disabled=True)
+        if st.button("Solicitar acceso", key="btn_cooperacion",
+                     use_container_width=True):
+            st.session_state[_SEL] = "cooperacion"
+            st.rerun()
+
+    # ── Si seleccionó COOPERACIÓN: mostrar contacto ───────────────────────────
+    if selected == "cooperacion":
+        st.markdown("<div style='height:8px'></div>", unsafe_allow_html=True)
+        _, col_coop, _ = st.columns([1, 2, 1])
+        with col_coop:
+            st.markdown("""
+<div style="background:rgba(124,92,252,.07);border:1px solid rgba(124,92,252,.18);
+            border-radius:12px;padding:20px 24px;text-align:center;
+            font-family:Inter,sans-serif;margin-bottom:4px">
+  <div style="font-size:22px;margin-bottom:10px">📑</div>
+  <div style="font:700 13px/1.2 Inter,sans-serif;color:#E2E8F0;margin-bottom:8px">
+    Acceso para cooperación e investigación</div>
+  <div style="font:400 11px/1.6 Inter,sans-serif;color:#8892B0;margin-bottom:14px">
+    Disponible para academia, ONGs y organismos<br>de cooperación internacional.
+    Datos longitudinales verificados.</div>
+  <div style="font:600 11px/1 'JetBrains Mono',monospace;
+              color:#9B79FF;letter-spacing:.04em">acceso@quira.ec</div>
+</div>""", unsafe_allow_html=True)
 
     # ── Si seleccionó INSTITUCIONAL: mostrar formulario de login ─────────────
     if selected == "institucional":
@@ -102,3 +123,22 @@ def run() -> None:
     # ── Trust badges + footer ─────────────────────────────────────────────────
     st.markdown(trust_badges(), unsafe_allow_html=True)
     st.markdown(footer(GAD_NOMBRE, CORTE), unsafe_allow_html=True)
+
+    # ── Acceso operacional (link discreto — solo equipo Dylus Lab) ─────────────
+    st.markdown(
+        '<div style="text-align:center;padding:4px 0 6px;'
+        "font:400 9px/1 'JetBrains Mono',monospace;"
+        'color:rgba(136,146,176,.12);letter-spacing:.1em">· · ·</div>',
+        unsafe_allow_html=True,
+    )
+    _, col_ops, _ = st.columns([4, 1, 4])
+    with col_ops:
+        if st.button(
+            "⚙ acceso operacional",
+            key="btn_ops_access",
+            use_container_width=True,
+            type="secondary",
+            help="Acceso exclusivo Dylus Lab — Equipo operativo",
+        ):
+            st.session_state[_SEL] = "institucional"
+            st.rerun()

@@ -178,6 +178,30 @@ div[data-testid="stForm"] button:hover { opacity:.88 !important }
     .ql-hero { padding:36px 16px 24px }
     div[data-testid="stForm"] { padding:20px 16px !important }
 }
+
+/* ── COOPERACIÓN btn ── */
+.ql-card-btn.btn-purple {
+    background:rgba(124,92,252,.1);border-color:rgba(124,92,252,.28);
+    color:#9B79FF;
+}
+
+/* ── ACCESO OPERACIONAL ghost btn ── */
+.ql-ops-section { display:flex;justify-content:center; }
+.ql-ops-btn {
+    background:transparent !important;
+    border:1px solid rgba(255,255,255,.06) !important;
+    color:rgba(136,146,176,.26) !important;
+    font:500 9px/1 'JetBrains Mono',monospace !important;
+    letter-spacing:.07em !important;
+    border-radius:6px !important;
+    padding:5px 14px !important;
+    transition:color .2s,border-color .2s,background .2s !important;
+}
+.ql-ops-btn:hover {
+    border-color:rgba(249,115,22,.28) !important;
+    color:rgba(249,115,22,.55) !important;
+    background:rgba(249,115,22,.03) !important;
+}
 </style>
 
 <script>
@@ -187,6 +211,18 @@ div[data-testid="stForm"] button:hover { opacity:.88 !important }
     if(p){p.autocomplete='current-password';o.disconnect();}
   });
   o.observe(document.body,{childList:true,subtree:true});
+})();
+(function(){
+  function _tagOps(){
+    document.querySelectorAll('[data-testid="stButton"] button').forEach(function(b){
+      if((b.innerText||'').trim().toLowerCase().indexOf('acceso operacional')!==-1){
+        b.classList.add('ql-ops-btn');
+        var w=b.closest('[data-testid="stButton"]');if(w)w.classList.add('ql-ops-section');
+      }
+    });
+  }
+  var _o2=new MutationObserver(_tagOps);
+  _o2.observe(document.body,{childList:true,subtree:true});
 })();
 </script>"""
 
@@ -226,12 +262,12 @@ def platform_cards(selected: str = "") -> str:
     <span class="ql-card-btn btn-green">Acceso público</span>
   </div>
 
-  <div class="ql-card disabled">
+  <div class="ql-card {_active('cooperacion')}">
     <span class="ql-card-icon">📑</span>
     <div class="ql-card-name">QUIRA Cooperación</div>
     <div class="ql-card-desc">Para academia, ONGs y cooperación<br>
       internacional. Datos longitudinales.</div>
-    <span class="ql-card-btn btn-gray">Próximamente</span>
+    <span class="ql-card-btn btn-purple">Solicitar acceso</span>
   </div>
 
 </div>"""

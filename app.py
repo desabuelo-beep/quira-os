@@ -1,22 +1,23 @@
 """
-QUIRA Intelligence — Entry Point · 2026-05-26
+QUIRA Intelligence — Entry Point · 2026-05-27
 Infraestructura de monitoreo institucional preventivo para GADs del Ecuador.
 Dylus Lab © 2026
 
-ARQUITECTURA 4 AMBIENTES (regla canónica permanente — no negociable):
-  🏛 GOV    — Monitoreo institucional · el producto hoy · ACTIVO
-  🌎 Civic  — Ciudadanía · acceso público sin login · EN CONSTRUCCIÓN
-  📑 Impact — Cooperación internacional · roadmap futuro
-  ⚙  Ops   — Infraestructura interna · solo equipo QUIRA
+ARQUITECTURA 4 AMBIENTES (regla canónica permanente — ver docs/NOMENCLATURA_CANONICA.md):
+  🏛 GOV    — QUIRA Institucional · Directivo + Técnico · ACTIVO
+  🌎 Civic  — QUIRA Ciudadano · acceso público · Fase 3
+  📑 Impact — QUIRA Cooperación · academia/cooperación · Placeholder
+  ⚙  OPS   — Operaciones · Operador + Administrador · ACTIVO
 
-REGLAS ARQUITECTURALES PERMANENTES:
-  · Un solo dominio: quiraholding.streamlit.app
-  · Nada vive fuera de estos 4 ambientes. Sin subdominios separados.
-  · GOV recibe vistas nuevas como tabs — nunca un quinto ambiente.
-  · Civic: acceso público sin autenticación (ciudadanos).
-  · Impact: placeholder hasta que haya 6 meses de datos longitudinales.
-  · Roles institucionales: Viewer / Analyst / Operator / Admin.
-  · Civic no requiere credenciales institucionales.
+ROLES (CONGELADOS — no cambiar sin revisión doctrinal):
+  directivo    → GOV (vista ejecutiva: alcalde, concejales, director)
+  tecnico      → GOV (vista técnica: planificación)
+  operador     → OPS (infraestructura: equipo Dylus Lab)
+  administrador→ OPS + GOV verificación (admin total)
+
+ROUTING POST-LOGIN:
+  directivo / tecnico    → GOV
+  operador / administrador → OPS
 """
 import streamlit as st
 from config import APP_NAME, APP_VERSION, GAD_NOMBRE, GAD_PERIODO, ALCALDE, CORTE
@@ -242,8 +243,9 @@ ENVIRONMENTS = {
         "label":       "GOV",
         "icon":        "🏛",
         "render":      _render_gov,
-        "roles":       ["Visualizador", "Analista", "Operador", "Administrador"],
-        "desc":        "Monitoreo Institucional",
+        # Directivo + Técnico: usuarios del producto. Administrador: verificación cruzada.
+        "roles":       ["Directivo", "Técnico", "Administrador"],
+        "desc":        "QUIRA Institucional",
         "badge_color": "#00D4FF",
         "ops_only":    False,
     },
@@ -251,8 +253,8 @@ ENVIRONMENTS = {
         "label":       "Civic",
         "icon":        "🌎",
         "render":      _render_civic,
-        "roles":       ["Visualizador", "Analista", "Operador", "Administrador"],
-        "desc":        "Ciudadanía · Próximamente",
+        "roles":       ["Directivo", "Técnico", "Operador", "Administrador"],
+        "desc":        "QUIRA Ciudadano · Fase 3",
         "badge_color": "#22C55E",
         "ops_only":    False,
     },
@@ -260,17 +262,18 @@ ENVIRONMENTS = {
         "label":       "Impact",
         "icon":        "📑",
         "render":      _render_impact,
-        "roles":       ["Visualizador", "Analista", "Operador", "Administrador"],
-        "desc":        "Cooperación · Próximamente",
-        "badge_color": "#A855F7",
+        "roles":       ["Directivo", "Técnico", "Operador", "Administrador"],
+        "desc":        "QUIRA Cooperación · Placeholder",
+        "badge_color": "#7C5CFC",
         "ops_only":    False,
     },
     "ops": {
-        "label":       "Ops",
+        "label":       "OPS",
         "icon":        "⚙",
         "render":      _render_ops,
+        # Operador + Administrador: equipo Dylus Lab. Solo ellos ven este ambiente.
         "roles":       ["Operador", "Administrador"],
-        "desc":        "Infraestructura Interna",
+        "desc":        "Operaciones — infraestructura crítica",
         "badge_color": "#F97316",
         "ops_only":    True,
     },
@@ -357,7 +360,7 @@ with st.sidebar:
     # ── Selector de Ambientes ─────────────────────────────────────────────────
     st.markdown(
         '<div style="font-size:9px;color:rgba(255,255,255,.35);letter-spacing:.08em;'
-        'text-transform:uppercase;margin-bottom:6px">AMBIENTES</div>',
+        'text-transform:uppercase;margin-bottom:6px">PLATAFORMA</div>',
         unsafe_allow_html=True,
     )
 
@@ -371,17 +374,8 @@ with st.sidebar:
         is_active = (env_key == current)
         badge_color = env["badge_color"]
 
-        # Badge de ambiente
-        badge_html = (
-            f'<span style="font-size:8px;font-weight:700;color:{badge_color};'
-            f'background:{badge_color}18;border:1px solid {badge_color}33;'
-            f'border-radius:3px;padding:1px 5px;margin-left:4px;letter-spacing:.04em">'
-            f'{env["label"]}</span>'
-        )
-
-        # Nota "próximamente" para Civic e Impact
         coming_soon = env_key in ("civic", "impact")
-        label_text = f"{env['icon']}  {env['label']}"
+        label_text  = f"{env['icon']}  {env['label']}"
         if coming_soon:
             label_text += "  ·  Próx."
 
@@ -393,7 +387,17 @@ with st.sidebar:
             help=env["desc"],
         ):
             st.session_state["page"] = env_key
+            if env_key == "gov":
+                st.session_state["gov_module"] = "inicio"
             st.rerun()
+
+    # ── Navegación interna GOV (aparece solo cuando GOV está activo) ──────────
+    if current == "gov":
+        try:
+            from quira_pages.env_gov import render_sidebar_nav
+            render_sidebar_nav()
+        except Exception:
+            pass
 
     st.markdown("---")
 
@@ -411,17 +415,6 @@ with st.sidebar:
         logout()
         st.rerun()
 
-    # SAT badge rápido — solo en GOV
-    if current == "gov":
-        try:
-            from data.loader import load_all, get_sat_counts
-            _sat = get_sat_counts(load_all())
-            if _sat.get("criticos", 0) > 0:
-                n = _sat["criticos"]
-                st.error(f"🔴 {n} señal{'es' if n > 1 else ''} crítica{'s' if n > 1 else ''}")
-        except Exception:
-            pass
-
 
 # ── ROUTER PRINCIPAL ──────────────────────────────────────────────────────────
 page_key = st.session_state.get("page", "gov")
@@ -431,10 +424,11 @@ if page_key in _LEGACY:
     page_key = _LEGACY[page_key]
     st.session_state["page"] = page_key
 
-# Resolver acceso — fallback a GOV
+# Resolver acceso — fallback según el rol
 acc = _accessible()
 if page_key not in acc or page_key not in ENVIRONMENTS:
-    page_key = "gov"
+    from utils.session import is_ops_user
+    page_key = "ops" if is_ops_user() else "gov"
     st.session_state["page"] = page_key
 
 log_page(page_key)

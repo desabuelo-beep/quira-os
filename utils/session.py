@@ -1,8 +1,9 @@
 """
-QUIRA Intelligence — Gestión de sesión segura
-  · Registro de login_time para expiración
+QUIRA Intelligence — Gestión de sesión segura (v3 · Nomenclatura canónica 2026-05-27)
+  · Roles congelados en español: directivo / tecnico / operador / administrador
+  · Helpers de rol actualizados — elimina chequeos en inglés
   · check_session_expiry() llamado al inicio de cada request
-  · Roles: Viewer / Analyst / Operator / Admin (Sprint 3 · 2026-05-25)
+  · Expiración de sesión: logout automático a los 60 minutos
 Dylus Lab © 2026
 """
 import secrets
@@ -15,11 +16,11 @@ SESSION_DEFAULTS: dict = {
     "usuario":       None,
     "rol":           None,
     "rol_emoji":     None,
-    "page":          "inicio",
+    "page":          "gov",       # default landing tras login
+    "gov_module":    "inicio",    # módulo activo dentro de GOV
     "data_loaded":   False,
-    "show_tech":     False,
-    "login_time":    0,        # timestamp de login — para expiración
-    "session_id":    None,     # correlation ID para trazabilidad forense
+    "login_time":    0,
+    "session_id":    None,
 }
 
 _SESSION_TTL = 3600  # 60 minutos
@@ -55,11 +56,26 @@ def get_usuario() -> str:
 
 
 def set_user(usuario: str, rol: str, emoji: str) -> None:
+    """
+    Registra la sesión autenticada y determina la página de entrada.
+    Directivo / Técnico → GOV
+    Operador / Administrador → OPS
+    """
+    from models.auth import ROLE_DIRECTIVO, ROLE_TECNICO, ROLE_OPERADOR, ROLE_ADMINISTRADOR
+
+    # Determinar página de entrada según rol
+    rol_lower = rol.lower()
+    if rol_lower in (ROLE_OPERADOR, ROLE_ADMINISTRADOR):
+        default_page = "ops"
+    else:
+        default_page = "gov"
+
     st.session_state["authenticated"] = True
     st.session_state["usuario"]       = usuario
     st.session_state["rol"]           = rol
     st.session_state["rol_emoji"]     = emoji
-    st.session_state["show_tech"]     = (rol in ("Operator", "Admin"))
+    st.session_state["page"]          = default_page
+    st.session_state["gov_module"]    = "inicio"
     st.session_state["login_time"]    = time.time()
     st.session_state["session_id"]    = "sess_" + secrets.token_hex(8)
 
@@ -79,32 +95,61 @@ def navigate_to(page: str) -> None:
     st.rerun()
 
 
-def is_operator() -> bool:
-    """True para Operator o Admin — puede ejecutar pipeline y acceder a Ops."""
-    return st.session_state.get("rol") in ("Operator", "Admin")
+# ── Helpers de rol (nomenclatura canónica v3) ────────────────────────────────
+
+def _rol() -> str:
+    """Devuelve el rol actual en minúsculas para comparación robusta."""
+    return st.session_state.get("rol", "").lower()
 
 
-def is_analyst() -> bool:
-    """True para Analyst o Admin — puede ver análisis avanzados."""
-    return st.session_state.get("rol") in ("Analyst", "Operator", "Admin")
+def is_directivo() -> bool:
+    """True solo para Directivo — alcalde, concejales, director."""
+    return _rol() == "directivo"
+
+
+def is_tecnico() -> bool:
+    """True para Técnico y roles de mayor privilegio (incluye OPS)."""
+    return _rol() in ("tecnico", "operador", "administrador")
+
+
+def is_operador() -> bool:
+    """True para Operador o Administrador — acceso OPS."""
+    return _rol() in ("operador", "administrador")
 
 
 def is_admin() -> bool:
-    """True solo para Admin — acceso total."""
-    return st.session_state.get("rol") == "Admin"
+    """True solo para Administrador — acceso total."""
+    return _rol() == "administrador"
+
+
+def is_gov_user() -> bool:
+    """True para roles con acceso a GOV: Directivo, Técnico, Administrador."""
+    return _rol() in ("directivo", "tecnico", "administrador")
+
+
+def is_ops_user() -> bool:
+    """True para roles con acceso a OPS: Operador, Administrador."""
+    return _rol() in ("operador", "administrador")
 
 
 def is_viewer() -> bool:
     """True para cualquier rol autenticado (mínimo privilegio)."""
-    return st.session_state.get("rol") in ("Viewer", "Analyst", "Operator", "Admin")
+    return _rol() in ("directivo", "tecnico", "operador", "administrador")
 
 
-# ── Aliases deprecated — compatibilidad con páginas legacy ─────────────────
-def is_tecnico() -> bool:
-    """DEPRECATED. Usar is_operator()."""
-    return is_operator()
+def is_analyst() -> bool:
+    """True para Técnico y roles de mayor privilegio — análisis avanzado."""
+    return _rol() in ("tecnico", "operador", "administrador")
+
+
+# ── Aliases deprecated — solo para compatibilidad con módulos legacy ─────────
+# Eliminar progresivamente en Sprint B
+
+def is_operator() -> bool:
+    """DEPRECATED → usar is_operador()"""
+    return is_operador()
 
 
 def is_alcalde() -> bool:
-    """DEPRECATED. Usar is_viewer()."""
-    return is_viewer()
+    """DEPRECATED → usar is_directivo()"""
+    return is_directivo()
