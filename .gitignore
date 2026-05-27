@@ -69,3 +69,14 @@ frontend/.env.local
 
 # ── CLAUDE SKILLS (data CSV local — no va al repo) ───────────────────────────
 .claude/skills/ui-ux-pro-max/scripts/__pycache__/
+.gstack/
+
+# ── CODEGRAPH (índice generado localmente — no va al repo) ────────────────────
+.codegraph/
+
+# ── VAULT OBSIDIAN BACKUP (grande, gestión local) ─────────────────────────────
+data/vault_backup_p2/
+
+# ── REPORTES Y ARCHIVOS INTERMEDIOS PDF (artefactos generados localmente) ─────
+*.pdf
+test_reporte.pdf
