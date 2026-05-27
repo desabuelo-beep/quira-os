@@ -1,7 +1,8 @@
 """
-QUIRA OS — Gestión de sesión segura
+QUIRA Intelligence — Gestión de sesión segura
   · Registro de login_time para expiración
   · check_session_expiry() llamado al inicio de cada request
+  · Roles: Viewer / Analyst / Operator / Admin (Sprint 3 · 2026-05-25)
 Dylus Lab © 2026
 """
 import secrets
@@ -58,7 +59,7 @@ def set_user(usuario: str, rol: str, emoji: str) -> None:
     st.session_state["usuario"]       = usuario
     st.session_state["rol"]           = rol
     st.session_state["rol_emoji"]     = emoji
-    st.session_state["show_tech"]     = (rol == "Técnico")
+    st.session_state["show_tech"]     = (rol in ("Operator", "Admin"))
     st.session_state["login_time"]    = time.time()
     st.session_state["session_id"]    = "sess_" + secrets.token_hex(8)
 
@@ -78,9 +79,32 @@ def navigate_to(page: str) -> None:
     st.rerun()
 
 
+def is_operator() -> bool:
+    """True para Operator o Admin — puede ejecutar pipeline y acceder a Ops."""
+    return st.session_state.get("rol") in ("Operator", "Admin")
+
+
+def is_analyst() -> bool:
+    """True para Analyst o Admin — puede ver análisis avanzados."""
+    return st.session_state.get("rol") in ("Analyst", "Operator", "Admin")
+
+
+def is_admin() -> bool:
+    """True solo para Admin — acceso total."""
+    return st.session_state.get("rol") == "Admin"
+
+
+def is_viewer() -> bool:
+    """True para cualquier rol autenticado (mínimo privilegio)."""
+    return st.session_state.get("rol") in ("Viewer", "Analyst", "Operator", "Admin")
+
+
+# ── Aliases deprecated — compatibilidad con páginas legacy ─────────────────
 def is_tecnico() -> bool:
-    return st.session_state.get("rol") == "Técnico"
+    """DEPRECATED. Usar is_operator()."""
+    return is_operator()
 
 
 def is_alcalde() -> bool:
-    return st.session_state.get("rol") == "Alcalde"
+    """DEPRECATED. Usar is_viewer()."""
+    return is_viewer()

@@ -15,8 +15,8 @@ try:
 except ImportError:
     sys.exit("ERROR: openpyxl not installed. Run: pip install openpyxl")
 
-SRC = r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT\SIAP-ICPI_GOLD_MASTER_v5.5_TGI_20260518.xlsx"
-BAK = r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT\SIAP-ICPI_GOLD_MASTER_v5.5_TGI_20260518_BACKUP_PRE_RC1.xlsx"
+SRC = r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT\SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx"
+BAK = r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT\SIAP-ICPI_GOLD_MASTER_v5.5_TGI_BACKUP_PRE_RC1.xlsx"
 
 # ── 1. BACKUP ─────────────────────────────────────────────────────────────────
 shutil.copy2(SRC, BAK)

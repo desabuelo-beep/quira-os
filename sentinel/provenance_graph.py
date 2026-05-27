@@ -124,7 +124,7 @@ def add_source_node(
         src_id = add_source_node(
             label="SIAP-ICPI Gold Master v5.5",
             engine="RC-7.4",
-            source_file="SIAP-ICPI_GOLD_MASTER_v5.5_TGI_20260518.xlsx",
+            source_file="SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx",
             record_count=48,
         )
     """
@@ -437,7 +437,7 @@ def register_d3_result(d3_dict: Optional[dict]) -> Optional[str]:
     src_id = add_source_node(
         label="Gold Master Excel — Series Presupuestarias",
         engine="RC-7.4",
-        source_file="SIAP-ICPI_GOLD_MASTER_v5.5_TGI_20260518.xlsx",
+        source_file="SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx",
         confidence=1.0,
     )
     add_governed_by(src_id, "RC-7.4")
@@ -484,7 +484,7 @@ def register_d4_result(d4_dict: Optional[dict]) -> Optional[str]:
     src_id = add_source_node(
         label="Gold Master Excel — Datos Parroquiales",
         engine="RC-7.4",
-        source_file="SIAP-ICPI_GOLD_MASTER_v5.5_TGI_20260518.xlsx",
+        source_file="SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx",
         confidence=1.0,
     )
     add_governed_by(src_id, "RC-7.4")

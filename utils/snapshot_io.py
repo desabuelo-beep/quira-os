@@ -180,7 +180,7 @@ def load_snapshot(
     close_after = False
     if conn is None:
         try:
-            from sentinel.db_config import get_connection
+            from sentinel.db_config import get_connection  # noqa: QUIRA-DEPR — migrar a utils.db_config en v7.0
             conn = get_connection()
             close_after = True
         except Exception:
@@ -243,7 +243,7 @@ def list_snapshots(conn=None) -> list[dict]:
     close_after = False
     if conn is None:
         try:
-            from sentinel.db_config import get_connection
+            from sentinel.db_config import get_connection  # noqa: QUIRA-DEPR — migrar a utils.db_config en v7.0
             conn = get_connection()
             close_after = True
         except Exception:

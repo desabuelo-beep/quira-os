@@ -19,15 +19,16 @@ IS_CLOUD = not os.path.exists(r"C:\Users\DELL")
 # ── PATHS EXCEL (solo relevante en desarrollo local) ──────────────────────────
 BASE_EXCEL = r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT"
 
-# Gold Master canónico (v5.5 — 2026-05-18) — fuente de verdad
-GOLD_MASTER_VERSION = "v5.5_TGI_20260518"
-SIAP_PATH = os.path.join(BASE_EXCEL, "SIAP-ICPI_GOLD_MASTER_v5.5_TGI_20260518.xlsx")
+# Gold Master canónico (v5.5 — bautizado 2026-05-26) — fuente de verdad absoluta
+GOLD_MASTER_VERSION = "v5.5_TGI"
+SIAP_PATH = os.path.join(BASE_EXCEL, "SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx")
+GOLD_MASTER_PATH = SIAP_PATH  # alias explícito para gold_master_governance.py
 
-# Nombre legacy del archivo (v4.1 y anteriores) — fallback compatibilidad
+# Fallback por nombre con fecha (copia de trabajo previa — 2026-05-18)
 SIAP_PATH_LEGACY = os.path.join(BASE_EXCEL,
     "Dylus Lab - Sistema de Integridad Algorítmica Predictivo (SIAP-ICPI v1.0)222.xlsx")
 SIAP_PATH_ALT = os.path.join(BASE_EXCEL, "quira-data",
-    "SIAP-ICPI_GOLD_MASTER_v5.5_TGI_20260518.xlsx")
+    "SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx")
 
 PDOT_PATH = os.path.join(BASE_EXCEL, "PDOT_MONTECRISTI_KB.xlsx")
 

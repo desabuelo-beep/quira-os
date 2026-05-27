@@ -18,6 +18,7 @@ Dylus Lab © 2026
 
 _TECH_MAP: dict[str, str] = {
     # Archivos / sistema
+    "SIAP-ICPI_GOLD_MASTER_v5.5_TGI":          "Sistema de Información Institucional QUIRA v5.5",
     "SIAP-ICPI_GOLD_MASTER_v5.5_TGI_20260518": "Sistema de Información Institucional QUIRA v5.5",
     "SIAP-ICPI_GOLD_MASTER_v4.1":              "Sistema de Información Institucional QUIRA",
     "SIAP-ICPI_GOLD_MASTER":                   "Sistema de Información Institucional QUIRA",

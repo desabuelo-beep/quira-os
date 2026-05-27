@@ -1,8 +1,16 @@
 """
-SENTINEL Agent Package · QUIRA OS v0.1
-Fase: Reader · Lee H73/H99, explica, sugiere pantallas, detecta anomalias.
-NO ejecuta acciones autonomas — La autoridad publica decide.
-Dylus Lab © 2026
+sentinel/ — Paquete legado QUIRA OS (Sprint 1-2)
+
+ESTADO: LEGADO — en proceso de absorción gradual por la arquitectura QUIRA v6.0
+  - sentinel/db_config.py → se migrará a utils/db_config.py en v7.0
+  - sentinel/[engines]   → funcionalidad migrada a app/services/ (Sprint 3+)
+  - sentinel/[scripts]   → scripts de migración histórica, no para producción nueva
+
+El paquete se mantiene activo para compatibilidad hacia atrás.
+No agregar funcionalidad nueva aquí. Todo código nuevo va en app/services/.
+
+Ver: docs/ARQUITECTURA_CANONICA.md · Sección 6.2 "Branding: Sentinel → QUIRA"
+Dylus Lab © 2026 — QUIRA Intelligence
 """
 from sentinel.tools   import get_indicator, get_parroquia, get_sat_alerts, get_budget_gap
 from sentinel.policies import PUEDE, NO_PUEDE, evaluar_seguridad

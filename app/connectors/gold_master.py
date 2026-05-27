@@ -1,16 +1,26 @@
 """
-app/connectors/gold_master.py — QUIRA OS · Sprint 2
-Conector institucional: Gold Master Excel (H73_OUTPUT_API)
+app/connectors/gold_master.py — QUIRA OS · Sprint 3
+Conector institucional: Gold Master TGI (H73_OUTPUT_API)
 
-Lee los valores calculados del motor ICPI/TGI/SAT desde la hoja
-H73_OUTPUT_API del Gold Master. Actúa como fuente de verdad cuando
-los APIs institucionales (DPE/SERCOP/CPCCS) no están disponibles.
+Lee los valores calculados del Motor TGI desde la hoja H73_OUTPUT_API
+del Gold Master v5.5 canónico. Actúa como fuente de verdad cuando los APIs
+institucionales (DPE/SERCOP/CPCCS) no están disponibles.
 
 Doctrina: Gold Master es el único cálculo canónico. El pipeline Q1
 observa APIs; el Gold Master valida y certifica. Esta interfaz
 SOLO LEE — nunca modifica el Excel.
 
-Fuente: SIAP-ICPI_GOLD_MASTER_v5.5_TGI_20260518.xlsx → H73_OUTPUT_API
+DECISIÓN ARQUITECTÓNICA (2026-05-26):
+  v5.5 es el Gold Master canónico activo — 123 hojas · 931 KB · audit trail completo.
+  TGI Framework v6.0 fue incorporado como extensión de H73 (claves TGI_SCORE, TGI_D1-D5,
+  SAT_CLASIF_RIESGO añadidas canónicamente). El archivo TGI_GOLD_MASTER_v6.0_20260525.xlsx
+  es un template de referencia — no tiene los datos de soporte para auditoría.
+
+Versiones soportadas:
+  v5.5 (ACTIVO):    SIAP-ICPI_GOLD_MASTER_v5.5_TGI_20260518.xlsx → H73_OUTPUT_API
+  v6.0 (template):  TGI_GOLD_MASTER_v6.0_20260525.xlsx → G6.1_OUTPUT_API (fallback)
+
+El conector lee v5.5 primero; si no existe, cae a v6.0 automáticamente.
 Dylus Lab © 2026
 """
 from __future__ import annotations
@@ -24,14 +34,21 @@ logger = logging.getLogger(__name__)
 SOURCE_ID   = "gold_master"
 RELIABILITY = 0.99   # Fuente máxima confiabilidad — datos certificados
 
-# Ruta canónica (se puede sobreescribir por config)
-_DEFAULT_GOLD_MASTER = Path(
+# Rutas canónicas (se pueden sobreescribir por config)
+_DEFAULT_GOLD_MASTER_V6 = Path(
     r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT"
-    r"\SIAP-ICPI_GOLD_MASTER_v5.5_TGI_20260518.xlsx"
+    r"\TGI_GOLD_MASTER_v6.0_20260525.xlsx"
 )
+_DEFAULT_GOLD_MASTER_V55 = Path(
+    r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT"
+    r"\SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx"
+)
+# v5.5 es el Gold Master canónico activo
+_DEFAULT_GOLD_MASTER = _DEFAULT_GOLD_MASTER_V55
 
-# Columnas de H73_OUTPUT_API: A=clave, B=valor
-_H73_SHEET = "H73_OUTPUT_API"
+# Hoja de salida API — v5.5 canónico (v6.0 template como fallback)
+_OUTPUT_API_SHEET     = "H73_OUTPUT_API"    # v5.5 canónico activo
+_OUTPUT_API_SHEET_V6  = "G6.1_OUTPUT_API"  # v6.0 fallback (template)
 
 # Claves que el pipeline extrae de H73
 _KEYS_OF_INTEREST = {
@@ -91,18 +108,27 @@ def fetch_gold_master_data(
         logger.warning(f"[GoldMaster] Archivo no encontrado: {path}")
         return result
 
-    # ── Leer H73_OUTPUT_API ────────────────────────────────────────────────
+    # ── Leer H73_OUTPUT_API (v5.5 canónico) o G6.1_OUTPUT_API (v6.0 fallback) ──
     try:
         import openpyxl
         wb = openpyxl.load_workbook(str(path), data_only=True, read_only=True)
 
-        if _H73_SHEET not in wb.sheetnames:
-            result["status"]  = "failed"
-            result["error"]   = f"Hoja {_H73_SHEET} no encontrada"
-            wb.close()
-            return result
+        # Detectar hoja disponible (v5.5 H73 preferido, v6.0 G6.1 fallback)
+        sheet_name = _OUTPUT_API_SHEET
+        if sheet_name not in wb.sheetnames:
+            if _OUTPUT_API_SHEET_V6 in wb.sheetnames:
+                sheet_name = _OUTPUT_API_SHEET_V6
+                logger.info(f"[GoldMaster] H73 no encontrado, usando G6.1_OUTPUT_API (v6.0 template)")
+            else:
+                result["status"]  = "failed"
+                result["error"]   = (
+                    f"Hoja de output no encontrada. "
+                    f"Buscado: {_OUTPUT_API_SHEET} | {_OUTPUT_API_SHEET_V6}"
+                )
+                wb.close()
+                return result
 
-        ws    = wb[_H73_SHEET]
+        ws    = wb[sheet_name]
         data  = {}
         rows  = 0
 
@@ -122,7 +148,7 @@ def fetch_gold_master_data(
         result["reliability"] = RELIABILITY if result["status"] == "ok" else RELIABILITY * 0.5
 
         logger.info(
-            f"[GoldMaster] {path.name} → {rows} métricas H73 | "
+            f"[GoldMaster] {path.name} [{sheet_name}] → {rows} métricas | "
             f"ICPI={data.get('ICPI_GLOBAL_PCT', 'N/A')} | "
             f"TGI={data.get('TGI_SCORE', 'N/A')}"
         )
@@ -137,7 +163,10 @@ def fetch_gold_master_data(
 
 
 def _resolve_path() -> Path | None:
-    """Resuelve la ruta del Gold Master desde config o usa la canónica."""
+    """Resuelve la ruta del Gold Master desde config o usa la canónica.
+
+    Prioridad: config.py → v5.5 canónico activo → v6.0 template (fallback).
+    """
     try:
         import config as cfg
         gm_path = getattr(cfg, "GOLD_MASTER_PATH", None)
@@ -145,7 +174,14 @@ def _resolve_path() -> Path | None:
             return Path(gm_path)
     except ImportError:
         pass
-    return _DEFAULT_GOLD_MASTER
+    # v5.5 es el Gold Master canónico activo
+    if _DEFAULT_GOLD_MASTER_V55.exists():
+        return _DEFAULT_GOLD_MASTER_V55
+    # v6.0 como fallback (template de referencia)
+    if _DEFAULT_GOLD_MASTER_V6.exists():
+        logger.warning("[GoldMaster] Usando v6.0 template como fallback — v5.5 no encontrado")
+        return _DEFAULT_GOLD_MASTER_V6
+    return None
 
 
 def _normalize_h73(raw: dict) -> dict:

@@ -37,7 +37,7 @@ if sys.stdout and hasattr(sys.stdout, "buffer"):
 
 _ROOT          = Path(__file__).parent.parent
 _VAULT_ROOT    = Path(r"C:\Proyectos\QUIRA\knowledge_base\QUIRA_KB_Montecristi")
-_GM_PATH       = Path(r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT\SIAP-ICPI_GOLD_MASTER_v5.5_TGI_20260518.xlsx")
+_GM_PATH       = Path(r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT\SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx")
 _VAULT_MODULE  = _VAULT_ROOT / "08_EJECUCION"   # D3_EJECUCION — motor analítico
 _ARCH_MODULE   = _VAULT_ROOT / "00_CORE"          # meta-arquitectura
 
@@ -111,7 +111,7 @@ keywords: [{name}, RC-7, longitudinal, calibracion, ejecucion presupuestaria]
 ## Integración con el loop semántico
 
 ```
-Gold Master (v5.5_TGI_20260518)
+Gold Master (v5.5_TGI)
   ↓
 {name}
   ↓

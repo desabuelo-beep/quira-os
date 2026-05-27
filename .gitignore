@@ -4,8 +4,12 @@
 .env.*
 
 # ── EXCEL PRIVADO (metodología propietaria Dylus Lab — NUNCA al repo) ─────────
+# Gold Master: datos institucionales propietarios — Streamlit usa gm_snapshot.json
+TGI_GOLD_MASTER*.xlsx
 *SIAP-ICPI*.xlsx
 *SIAP*.xlsx
+# Backups locales del Gold Master (firmados SHA-256 — gestión local Dylus Lab)
+data/backups/
 
 # ── PDOT_MONTECRISTI_KB.xlsx → SÍ va al repo (datos oficiales públicos) ───────
 # (no se excluye)

@@ -1,10 +1,20 @@
 """
-QUIRA OS — Model: Auth  (Seguridad v2)
+QUIRA Intelligence — Model: Auth  (Seguridad v2)
 Capa de autenticación segura:
   · Contraseñas hasheadas PBKDF2-SHA256 — nunca texto plano
   · Credenciales en st.secrets (producción) o variables de entorno (dev)
   · Rate limiting: bloqueo tras 3 intentos fallidos por 5 minutos
   · Expiración de sesión: logout automático a los 60 minutos
+
+Roles PMV (Sprint 3 · 2026-05-25):
+  Viewer   — Consulta análisis y reportes (GOV, Impact)
+  Analyst  — Análisis avanzado, comparativos longitudinales (GOV, Impact)
+  Operator — Ejecuta pipeline, gestiona snapshots (GOV, Ops)
+  Admin    — Configuración total, governance, Gold Master (todos)
+
+DEPRECATED: Alcalde / Concejal / Técnico — modelo SaaS municipal descartado.
+No usar, no recuperar, no reintroducir.
+
 Sin imports de Streamlit salvo para leer secrets. Sin HTML.
 Dylus Lab © 2026
 """
@@ -50,21 +60,24 @@ def _safe_eq(a: str, b: str) -> bool:
 #
 # Para producción, en Streamlit Cloud añade en Secrets:
 #   [auth]
-#   alcalde_hash  = "<resultado de _hash('tu_password')>"
-#   concejal_hash = "<resultado de _hash('tu_password')>"
-#   tecnico_hash  = "<resultado de _hash('tu_password')>"
+#   viewer_hash   = "<resultado de _hash('tu_password')>"
+#   analyst_hash  = "<resultado de _hash('tu_password')>"
+#   operator_hash = "<resultado de _hash('tu_password')>"
+#   admin_hash    = "<resultado de _hash('tu_password')>"
 
 _FALLBACK_HASHES: dict[str, str] = {
-    # Generados con _hash("quira2026") — cámbia las passwords en producción
-    "alcalde":  _hash("quira2026"),
-    "concejal": _hash("quira2026"),
-    "tecnico":  _hash("quira2026"),
+    # Generados con _hash("quira2026") — cambiar en producción
+    "viewer":   _hash("quira2026"),
+    "analyst":  _hash("quira2026"),
+    "operator": _hash("quira2026"),
+    "admin":    _hash("quira2026"),
 }
 
 _USER_META: dict[str, dict] = {
-    "alcalde":  {"rol": "Alcalde",  "emoji": "🏛️"},
-    "concejal": {"rol": "Concejal", "emoji": "⚖️"},
-    "tecnico":  {"rol": "Técnico",  "emoji": "⚙️"},
+    "viewer":   {"rol": "Viewer",   "emoji": "👁"},
+    "analyst":  {"rol": "Analyst",  "emoji": "📊"},
+    "operator": {"rol": "Operator", "emoji": "⚙️"},
+    "admin":    {"rol": "Admin",    "emoji": "🔑"},
 }
 
 
@@ -142,7 +155,8 @@ def is_session_expired() -> bool:
 
 def rol_options() -> dict[str, str]:
     return {
-        "🏛️ Alcalde":  "alcalde",
-        "⚖️ Concejal": "concejal",
-        "⚙️ Técnico":  "tecnico",
+        "👁 Viewer":   "viewer",
+        "📊 Analyst":  "analyst",
+        "⚙️ Operator": "operator",
+        "🔑 Admin":    "admin",
     }

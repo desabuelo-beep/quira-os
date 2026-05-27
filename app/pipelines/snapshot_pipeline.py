@@ -334,7 +334,7 @@ class SnapshotPipeline:
                 "generated_at":    self.timestamp.isoformat(),
                 "year":            self.year,
                 "fecha_corte":     self.timestamp.date().isoformat(),
-                "version_excel":   "SIAP-ICPI_GOLD_MASTER_v5.5_TGI_20260518",
+                "version_excel":   "SIAP-ICPI_GOLD_MASTER_v5.5_TGI",
                 "gold_master_ok":  sources.get("gold_master", {}).get("status") == "ok",
             },
             "gad": {
@@ -414,7 +414,7 @@ class SnapshotPipeline:
         # ── Intentar Supabase ─────────────────────────────────────────────────
         supabase_result = {"status": "skipped", "reason": "no connection configured"}
         try:
-            from sentinel.db_config import get_connection
+            from sentinel.db_config import get_connection  # noqa: QUIRA-DEPR — migrar a utils.db_config en v7.0
             conn = get_connection()
             from utils.snapshot_io import save_snapshot
             ok, msg = save_snapshot(conn, snapshot, uploaded_by="pipeline", notas="auto-pipeline")
