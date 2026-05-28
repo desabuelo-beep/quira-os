@@ -387,10 +387,10 @@ def render() -> None:
                 st.error(f"Panel Estratégico no disponible: {e}")
         else:
             try:
-                from quira_pages.p_vista_ejecutiva import render as _ve
+                from quira_pages.p_command_center import render as _ve
                 _ve()
             except Exception as e:
-                st.error(f"Vista Ejecutiva no disponible: {e}")
+                st.error(f"Centro de Mando no disponible: {e}")
         return
 
     # ── Técnico / Administrador: módulo activo con header GOV ─────────────────
