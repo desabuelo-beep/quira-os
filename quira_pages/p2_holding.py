@@ -34,10 +34,14 @@ def _load_sercop_data() -> dict:
     Carga y agrega datos de sercop_contratos.
     Cache 30 min — refreshable vía st.cache_data.clear().
     """
+    from sentinel.db_config import get_connection, init_db
     try:
-        from sentinel.db_config import get_connection, init_db
         init_db()
-        conn = get_connection()
+    except Exception:
+        pass  # init es idempotente — no bloquear si ya existe
+
+    conn = get_connection()
+    try:
         c    = conn.cursor()
 
         # ① Totales por entidad
@@ -93,8 +97,6 @@ def _load_sercop_data() -> dict:
                 "adj":  float(r["adj"] or 0),
             })
 
-        conn.close()
-
         total_proc = sum(v["procesos"]   for v in by_entity.values())
         total_adj  = sum(v["adjudicado"] for v in by_entity.values())
 
@@ -108,6 +110,8 @@ def _load_sercop_data() -> dict:
         }
     except Exception as exc:
         return {"ok": False, "error": str(exc), "by_entity": {}, "by_year": {}, "tipos": {}}
+    finally:
+        conn.close()  # garantizado — nunca leakea conexión psycopg2
 
 
 # ── FORMATTERS ─────────────────────────────────────────────────────────────────
