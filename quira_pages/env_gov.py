@@ -103,43 +103,13 @@ def render_sidebar_nav() -> None:
     Inyecta la navegación modular de GOV en el sidebar.
     Solo se llama desde app.py cuando el ambiente activo es GOV.
 
-    Ejecutivo: micro-switcher de 2 modos (Vista Ejecutiva / Concejo).
-               No es navegación clásica — es cambio de modo de operación.
+    Ejecutivo (Sprint 1.2): sidebar ELIMINADO — navegación por HTML canvas.
     Técnico / Administrador: EJECUTIVO + TÉCNICO secciones.
     """
-    # ── Ejecutivo: micro-switcher modo (Sprint C.2) ───────────────────────────
+    # ── Ejecutivo: sin sidebar — el Centro de Mando es el canvas completo ──────
     if is_ejecutivo():
-        modo_actual = st.session_state.get("ejecutivo_modo", "vista")
-
-        st.sidebar.markdown(
-            '<div style="font-size:9px;color:rgba(245,158,11,.4);letter-spacing:.1em;'
-            'text-transform:uppercase;margin:12px 0 8px;font-weight:800">MODO ACTIVO</div>',
-            unsafe_allow_html=True,
-        )
-
-        if st.sidebar.button(
-            "🏛  Vista Ejecutiva",
-            key="modo_vista",
-            use_container_width=True,
-            type="primary" if modo_actual == "vista" else "secondary",
-        ):
-            st.session_state["ejecutivo_modo"] = "vista"
-            st.rerun()
-
-        if st.sidebar.button(
-            "🏛  Panel Estratégico",
-            key="modo_concejo",
-            use_container_width=True,
-            type="primary" if modo_actual == "concejo" else "secondary",
-        ):
-            st.session_state["ejecutivo_modo"] = "concejo"
-            st.rerun()
-
-        st.sidebar.markdown(
-            '<div style="font-size:8px;color:rgba(255,255,255,.15);'
-            'margin-top:8px;line-height:1.5">Sprint C.2 · QUIRA Intelligence</div>',
-            unsafe_allow_html=True,
-        )
+        # El sidebar se oculta por CSS en p_command_center.py.
+        # Aquí solo evitamos renderizar botones que aparecerían si el CSS falla.
         return
 
     current_mod = _current_module()
@@ -343,6 +313,15 @@ def _render_control() -> None:
         st.error(f"Módulo Centro de Control no disponible: {e}")
 
 
+def _render_concejo() -> None:
+    """Panel Estratégico — dominio político dentro del Centro de Mando."""
+    try:
+        from quira_pages.p_concejo import render as _r
+        _r()
+    except Exception as e:
+        st.error(f"Panel Estratégico no disponible: {e}")
+
+
 # ── Mapa key → (renderer, label) ─────────────────────────────────────────────
 _MODULE_RENDER: dict[str, tuple] = {
     # Sección Ejecutiva
@@ -373,56 +352,87 @@ def render() -> None:
     """
     Renderiza el contenido GOV según el rol activo.
 
-    Ejecutivo → Centro de Mando (inicio) o Panel Estratégico (concejo).
-                Si gov_module está activo (drill-in desde Centro de Mando),
-                renderiza ese módulo con botón de retorno.
+    Ejecutivo (Sprint 1.2):
+      · Centro de Mando único = pantalla principal (HTML canvas full)
+      · Sidebar eliminado — navegación por tarjetas onclick
+      · drill-in de dominio → módulo + banda de retorno "← Centro de Mando"
+      · 'concejo' = Panel Estratégico como dominio (no view separada)
+
     Directivo / Administrador → módulo activo con header de identidad GOV.
     """
-    # ── Ejecutivo: Centro de Mando · Panel Estratégico · drill-in de dominio ──
+    # ── Ejecutivo: teatro operacional único ──────────────────────────────────
     if is_ejecutivo():
         gov_mod = st.session_state.get("gov_module", "inicio")
 
-        # D.3b: drill-in — el alcalde navegó desde el Centro de Mando a un dominio
-        if gov_mod != "inicio" and gov_mod in _MODULE_RENDER:
-            fn, label = _MODULE_RENDER[gov_mod]
+        # drill-in — navegó a un dominio desde el Centro de Mando
+        # 'concejo' se maneja igual que cualquier módulo (Panel Estratégico)
+        drill_targets = set(_MODULE_RENDER.keys()) | {"concejo"}
+        if gov_mod != "inicio" and gov_mod in drill_targets:
 
-            # Banda de retorno — fina, discreta, orientadora
+            # Mostrar el módulo con banda de retorno
+            if gov_mod == "concejo":
+                fn_drill, label_drill = _render_concejo, "Panel Estratégico"
+            else:
+                fn_drill, label_drill = _MODULE_RENDER.get(
+                    gov_mod, (_render_inicio, "Inicio"))
+
+            # ── CSS: restablecer sidebar si el drill-down lo necesita ────────
+            st.markdown("""
+<style>
+/* Drill-down: sidebar sigue oculto, área main permanece 100% */
+[data-testid="stSidebar"],
+[data-testid="collapsedControl"],
+button[data-testid="collapsedControl"] {
+  display: none !important;
+  width: 0 !important;
+  min-width: 0 !important;
+}
+.main .block-container,
+[data-testid="stMainBlockContainer"] {
+  max-width: 100% !important;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+</style>
+""", unsafe_allow_html=True)
+
+            # Banda de retorno contextual
             st.markdown(f"""
-<div style="display:flex;align-items:center;gap:8px;margin-bottom:16px">
-  <button onclick="void(0)" style="
-    background:rgba(0,212,255,.07);border:1px solid rgba(0,212,255,.18);
-    border-radius:7px;color:rgba(0,212,255,.75);font-size:10px;font-weight:700;
-    letter-spacing:.05em;padding:5px 14px;cursor:pointer;
-    font-family:Inter,system-ui,sans-serif">← CENTRO DE MANDO</button>
-  <span style="font-size:9px;color:rgba(255,255,255,.2);letter-spacing:.08em;
-               text-transform:uppercase">/</span>
-  <span style="font-size:9px;color:rgba(255,255,255,.35);letter-spacing:.06em;
-               text-transform:uppercase;font-weight:600">{label}</span>
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;
+            padding:8px 14px;background:rgba(0,212,255,.04);
+            border:1px solid rgba(0,212,255,.10);border-radius:8px">
+  <span style="font-size:9px;color:rgba(0,212,255,.55);font-weight:700;
+               letter-spacing:.08em;text-transform:uppercase">⬡ QUIRA</span>
+  <span style="font-size:9px;color:rgba(255,255,255,.20)">›</span>
+  <span style="font-size:9px;color:rgba(255,255,255,.35);font-weight:700;
+               letter-spacing:.06em;text-transform:uppercase">Centro de Mando</span>
+  <span style="font-size:9px;color:rgba(255,255,255,.20)">›</span>
+  <span style="font-size:9px;color:#E2E8F0;font-weight:700;
+               letter-spacing:.06em;text-transform:uppercase">{label_drill}</span>
+  <div style="margin-left:auto">
+    <span id="__back_hint__"
+          style="font-size:9px;color:rgba(0,212,255,.45);cursor:default">
+      ← volver</span>
+  </div>
 </div>
 """, unsafe_allow_html=True)
 
-            # Botón funcional de retorno (Streamlit)
-            if st.button("← Volver al Centro de Mando", key="exec_back_centro"):
+            # Botón funcional de retorno
+            if st.button("← Centro de Mando", key="exec_back_centro",
+                         use_container_width=False):
                 st.session_state["gov_module"] = "inicio"
+                st.session_state.pop("ejecutivo_modo", None)
                 st.rerun()
 
-            fn()
+            fn_drill()
             return
 
-        # Vista normal Ejecutivo: Centro de Mando o Panel Estratégico
-        modo = st.session_state.get("ejecutivo_modo", "vista")
-        if modo == "concejo":
-            try:
-                from quira_pages.p_concejo import render as _c
-                _c()
-            except Exception as e:
-                st.error(f"Panel Estratégico no disponible: {e}")
-        else:
-            try:
-                from quira_pages.p_command_center import render as _ve
-                _ve()
-            except Exception as e:
-                st.error(f"Centro de Mando no disponible: {e}")
+        # ── Landing Ejecutivo: Centro de Mando (HTML canvas) ─────────────────
+        try:
+            from quira_pages.p_command_center import render as _ve
+            _ve()
+        except Exception as e:
+            st.error(f"Centro de Mando no disponible: {e}")
         return
 
     # ── Directivo / Administrador: módulo activo con header GOV ──────────────
