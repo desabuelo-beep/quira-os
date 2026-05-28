@@ -708,6 +708,82 @@ def _html_briefing_strip(eco: list[dict], narrative: str) -> str:
     )
 
 
+def _html_decisiones_strip(data: dict) -> str:
+    """
+    Sprint E.3 — CAPA 1: franja de decisiones urgentes.
+    Transforma QUIRA de sistema de monitoreo a sistema de decisión.
+    Solo aparece cuando hay ≥1 decisión. No es decorativa — es operativa.
+    """
+    fin        = data.get("financiero", {})
+    tgi        = data.get("tgi", {})
+    sat        = data.get("sat_gm", {})
+    psg        = data.get("psg", {})
+
+    ti         = fin.get("ti_2026_raw_pct", 1.05)
+    bloqueados = fin.get("fondos_bloqueados_est", 0)
+    n_sat      = sat.get("activas_count", 0)
+    d2_val     = tgi.get("d2", {}).get("valor", 69.93)
+    pac_pub    = psg.get("pac_publicado", True)
+
+    decisiones: list[tuple[str, str, str]] = []  # (icon, texto, color)
+
+    if ti < 15:
+        decisiones.append((
+            "💰",
+            f"Ti Q1-2026: {ti:.2f}% · Plan de aceleración presupuestaria antes del 30 Jun",
+            "#EF4444",
+        ))
+    if bloqueados > 500_000:
+        m = bloqueados / 1_000_000
+        decisiones.append((
+            "🔒",
+            f"${m:.2f}M fondos bloqueados · BDE + ONU Mujeres · gestión urgente",
+            "#F97316",
+        ))
+    if n_sat > 0:
+        decisiones.append((
+            "⚠",
+            f"{n_sat} alertas SAT activas · informe ejecutivo requerido",
+            "#F59E0B",
+        ))
+    if d2_val < 70:
+        decisiones.append((
+            "🎯",
+            f"D2 Planificación: {d2_val:.1f}% · revisar metas PDOT rezagadas",
+            "#F59E0B",
+        ))
+
+    n = len(decisiones)
+    if n == 0:
+        return ""
+
+    items_html = "".join(
+        f'<div style="display:flex;align-items:flex-start;gap:5px;padding:0 12px;'
+        f'border-left:2px solid {c};flex-shrink:0;max-width:260px">'
+        f'<span style="font-size:9px;margin-top:1px">{icon}</span>'
+        f'<span style="font:400 9px/1.4 Inter,sans-serif;color:rgba(255,255,255,.52)">{text}</span>'
+        f'</div>'
+        for icon, text, c in decisiones
+    )
+
+    return (
+        f'<div style="display:flex;align-items:center;padding:10px 16px;'
+        f'background:rgba(239,68,68,.035);'
+        f'border:1px solid rgba(239,68,68,.14);'
+        f'border-radius:10px;margin-bottom:10px;overflow-x:hidden;gap:0">'
+        f'<div style="flex-shrink:0;min-width:110px;margin-right:12px">'
+        f'<div style="font:800 8px/1 Inter,sans-serif;color:#EF4444;'
+        f'letter-spacing:.1em;text-transform:uppercase">⚡ {n} DECISIONES</div>'
+        f'<div style="font:400 7px/1 JetBrains Mono,monospace;'
+        f'color:rgba(255,255,255,.2);margin-top:3px">Requieren acción ejecutiva</div>'
+        f'</div>'
+        f'<div style="width:1px;height:32px;background:rgba(255,255,255,.07);'
+        f'flex-shrink:0;margin-right:12px"></div>'
+        f'<div style="display:flex;gap:0;flex:1;flex-wrap:wrap;gap:6px">{items_html}</div>'
+        f'</div>'
+    )
+
+
 def _html_z2_urgente(data: dict) -> str:
     sat     = data.get("sat_gm", {})
     clasif  = sat.get("clasif_riesgo", "ALTO")
@@ -834,45 +910,131 @@ def _html_z4_territorio(data: dict) -> str:
     )
 
 
-def _html_z3z4_compact(data: dict) -> str:
+def _html_z3_poa_pac(data: dict) -> str:
     """
-    Sprint C.1 — Compromisos + Territorio compactos en sub-grid 2-col.
-    Ocupa la columna derecha fila-2 (debajo de Z2).
-    Solo los 2-3 items más críticos de cada zona — sin ruido.
+    Sprint E.3 — CAPA 2: POA / Metas PDOT + Estado PAC.
+    D2=Fidelidad Planificación · pac_publicado · metas sin PAC.
     """
-    # ── Z3 compact — Compromisos urgentes ─────────────────────────────────────
-    fin          = data.get("financiero", {})
-    ti_raw       = fin.get("ti_2026_raw_pct", 1.05)
-    gad_d        = data.get("gad", {})
-    promesas_cne = gad_d.get("promesas_cne", 66)
+    tgi     = data.get("tgi", {})
+    psg     = data.get("psg", {})
+    fin     = data.get("financiero", {})
 
-    z3 = (
+    d2_val  = tgi.get("d2", {}).get("valor", 69.93)
+    d2_col  = _sem(d2_val)
+
+    pac_pub      = psg.get("pac_publicado", True)
+    pac_col      = "#22C55E" if pac_pub else "#EF4444"
+    pac_lbl      = "Publicado" if pac_pub else "Pendiente"
+
+    metas_sin_pac = 4           # dato canónico p12_cadena — CHK-08
+    mp_col        = "#F97316" if metas_sin_pac > 0 else "#22C55E"
+
+    # Fechas críticas
+    ti_raw = fin.get("ti_2026_raw_pct", 1.05)
+
+    return (
         f'<div style="font:800 8px/1 Inter,sans-serif;color:rgba(255,255,255,.25);'
-        f'text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px">'
-        f'📅 Compromisos clave</div>'
+        f'text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">'
+        f'🎯 POA · Metas PDOT</div>'
 
-        # Q2 cierre — crítico
-        + _compromiso_row(
-            "💰", "Cierre Q2",
-            "30 Jun", "#F97316",
-            f"Ti actual {ti_raw:.2f}% · Riesgo COPFP Art. 113",
-            "~45 días", "#EF4444"
-        )
-        # RDC CPCCS
-        + _compromiso_row(
-            "📋", "RDC CPCCS",
-            "Pendiente", "#F59E0B",
-            "Validación ciudadana · Plazo legal próximo"
-        )
-        # IFE
-        + f'<div style="padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04)">'
-        f'<div style="font:700 10px/1 Inter,sans-serif;color:rgba(255,255,255,.35)">'
-        f'📜 Plan CNE <span style="color:rgba(255,255,255,.2)">'
-        f'{promesas_cne} compromisos — IFE en desarrollo</span></div>'
+        # D2 metric principal
+        f'<div style="background:{d2_col}10;border:1px solid {d2_col}22;'
+        f'border-radius:8px;padding:8px 10px;margin-bottom:7px;'
+        f'display:flex;justify-content:space-between;align-items:center">'
+        f'<div>'
+        f'<div style="font:900 1.4rem/1 Inter,sans-serif;color:{d2_col}">{d2_val:.0f}%</div>'
+        f'<div style="font:400 7px/1 Inter,sans-serif;color:rgba(255,255,255,.3);margin-top:3px">'
+        f'D2 · Fidelidad Planificación</div>'
+        f'</div>'
+        f'<div style="font:700 7px/1 Inter,sans-serif;color:{d2_col};'
+        f'padding:2px 6px;border:1px solid {d2_col}44;border-radius:4px;text-transform:uppercase">'
+        f'{"OK" if d2_val >= 70 else "ALERTA"}</div>'
+        f'</div>'
+
+        # PAC + Metas sin PAC
+        f'<div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:7px">'
+        f'<div style="padding:6px 7px;background:rgba(255,255,255,.025);'
+        f'border:1px solid rgba(255,255,255,.06);border-radius:7px;text-align:center">'
+        f'<div style="font:700 9px/1 Inter,sans-serif;color:{pac_col}">{pac_lbl} ✓</div>'
+        f'<div style="font:400 7px/1 Inter,sans-serif;color:rgba(255,255,255,.2);margin-top:2px">'
+        f'PAC 2026</div>'
+        f'</div>'
+        f'<div style="padding:6px 7px;background:rgba(255,255,255,.025);'
+        f'border:1px solid {mp_col}22;border-radius:7px;text-align:center">'
+        f'<div style="font:700 9px/1 Inter,sans-serif;color:{mp_col}">{metas_sin_pac} sin PAC</div>'
+        f'<div style="font:400 7px/1 Inter,sans-serif;color:rgba(255,255,255,.2);margin-top:2px">'
+        f'Metas bloqueadas</div>'
+        f'</div>'
+        f'</div>'
+
+        # Q2 deadline
+        f'<div style="display:flex;align-items:center;gap:6px;padding:5px 7px;'
+        f'background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12);border-radius:6px">'
+        f'<div style="width:5px;height:5px;border-radius:50%;background:#EF4444;flex-shrink:0"></div>'
+        f'<div style="font:400 8px/1.3 Inter,sans-serif;color:rgba(255,255,255,.4)">'
+        f'Ti: <span style="color:#EF4444;font-weight:700">{ti_raw:.2f}%</span> '
+        f'· Cierre Q2 <span style="color:#F97316">30 Jun</span> · COPFP Art. 113</div>'
         f'</div>'
     )
 
-    # ── Z4 compact — Territorio crítico ───────────────────────────────────────
+
+def _html_z4_inst(data: dict) -> str:
+    """
+    Sprint E.3 — CAPA 2: Transparencia institucional.
+    LOTAIP · RdC CPCCS · D5 Capacidad Institucional.
+    Conservative: LOTAIP sin dato en snapshot → ALERTA hasta confirmar.
+    """
+    tgi     = data.get("tgi", {})
+    d5_val  = tgi.get("d5", {}).get("valor", 100.0)
+    d5_col  = _sem(d5_val)
+
+    items = [
+        ("#F59E0B", "LOTAIP",        "Actualización mensual · verificar cumplimiento"),
+        ("#F59E0B", "RdC CPCCS",     "Validación ciudadana · plazo legal próximo"),
+        ("#22C55E", "SNP / SIGAD",   f"D5 {d5_val:.0f}% · Capacidad Institucional OK"),
+    ]
+
+    rows = "".join(
+        f'<div style="display:flex;align-items:flex-start;gap:7px;padding:5px 0;'
+        f'border-bottom:1px solid rgba(255,255,255,.035)">'
+        f'<div style="width:5px;height:5px;border-radius:50%;background:{c};'
+        f'flex-shrink:0;margin-top:3px"></div>'
+        f'<div>'
+        f'<div style="font:700 8px/1 Inter,sans-serif;color:{c}">{lbl}</div>'
+        f'<div style="font:400 7px/1.3 Inter,sans-serif;color:rgba(255,255,255,.32);margin-top:1px">{det}</div>'
+        f'</div>'
+        f'</div>'
+        for c, lbl, det in items
+    )
+
+    return (
+        f'<div style="font:800 8px/1 Inter,sans-serif;color:rgba(255,255,255,.25);'
+        f'text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">'
+        f'🏛 Transparencia</div>'
+
+        # D5 headline
+        f'<div style="background:{d5_col}10;border:1px solid {d5_col}22;'
+        f'border-radius:8px;padding:8px 10px;margin-bottom:7px;'
+        f'display:flex;justify-content:space-between;align-items:center">'
+        f'<div>'
+        f'<div style="font:900 1.4rem/1 Inter,sans-serif;color:{d5_col}">{d5_val:.0f}%</div>'
+        f'<div style="font:400 7px/1 Inter,sans-serif;color:rgba(255,255,255,.3);margin-top:3px">'
+        f'D5 · Capacidad Institucional</div>'
+        f'</div>'
+        f'<div style="font:700 7px/1 Inter,sans-serif;color:{d5_col};'
+        f'padding:2px 6px;border:1px solid {d5_col}44;border-radius:4px;text-transform:uppercase">'
+        f'SNP OK</div>'
+        f'</div>'
+
+        + rows
+    )
+
+
+def _html_z4_territorio(data: dict) -> str:
+    """
+    Sprint E.3 — CAPA 2: Territorio · Equidad.
+    Extraído de _html_z3z4_compact para modularidad.
+    """
     tgi        = data.get("tgi", {})
     irs_val    = tgi.get("irs", {}).get("valor", 79.7)
     irs_cl     = tgi.get("irs", {}).get("clasificacion", "Muy Regresivo")
@@ -880,49 +1042,54 @@ def _html_z3z4_compact(data: dict) -> str:
     brecha_usd = tgi.get("brecha_rural_usd", 1791935)
     d4c        = _sem(d4_val)
 
-    # Solo parroquias críticas (IET < 50 = rojo)
     parroquias = data.get("territorial", {}).get("parroquias", _FALLBACK["territorial"]["parroquias"])
     criticas   = [p for p in parroquias if p.get("iet_local_pct", 100) < 50][:3]
+    z4_rows    = "".join(_parroquia_row(p) for p in criticas) if criticas else ""
 
-    z4_rows = "".join(_parroquia_row(p) for p in criticas) if criticas else ""
-
-    z4 = (
+    return (
         f'<div style="font:800 8px/1 Inter,sans-serif;color:rgba(255,255,255,.25);'
-        f'text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px">'
+        f'text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">'
         f'🗺 Territorio</div>'
 
-        # KPIs rápidos
-        f'<div style="display:flex;gap:6px;margin-bottom:10px">'
-        f'<div style="flex:1;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.18);'
+        # KPIs
+        f'<div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:8px">'
+        f'<div style="background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.18);'
         f'border-radius:7px;padding:7px;text-align:center">'
         f'<div style="font:900 1.2rem/1 Inter,sans-serif;color:#EF4444">{irs_val:.0f}</div>'
-        f'<div style="font:400 7px/1.3 Inter,sans-serif;color:rgba(255,255,255,.3);'
-        f'margin-top:2px">IRS · {irs_cl}</div>'
+        f'<div style="font:400 7px/1.3 Inter,sans-serif;color:rgba(255,255,255,.3);margin-top:2px">'
+        f'IRS · {irs_cl}</div>'
         f'</div>'
-        f'<div style="flex:1;background:{d4c}0D;border:1px solid {d4c}20;'
+        f'<div style="background:{d4c}0D;border:1px solid {d4c}20;'
         f'border-radius:7px;padding:7px;text-align:center">'
-        f'<div style="font:900 1.2rem/1 Inter,sans-serif;color:{d4c}">${brecha_usd/1_000_000:.2f}M</div>'
-        f'<div style="font:400 7px/1.3 Inter,sans-serif;color:rgba(255,255,255,.3);'
-        f'margin-top:2px">Brecha rural</div>'
+        f'<div style="font:900 1rem/1 Inter,sans-serif;color:{d4c}">${brecha_usd/1_000_000:.2f}M</div>'
+        f'<div style="font:400 7px/1.3 Inter,sans-serif;color:rgba(255,255,255,.3);margin-top:2px">'
+        f'Brecha rural</div>'
         f'</div>'
         f'</div>'
 
-        # Parroquias críticas
         + (
             f'<div style="font:700 7px/1 Inter,sans-serif;color:rgba(255,255,255,.18);'
             f'text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px">'
             f'Parroquias bajo IET 50%</div>'
             + z4_rows
             if criticas else
-            f'<div style="font:400 9px/1 Inter,sans-serif;color:rgba(255,255,255,.2)">'
+            f'<div style="font:400 8px/1 Inter,sans-serif;color:rgba(255,255,255,.2)">'
             f'Sin parroquias críticas en este corte.</div>'
         )
     )
 
+
+def _html_z3z4_compact(data: dict) -> str:
+    """
+    Sprint E.3 — CAPA 2: Control Estratégico.
+    3 columnas: POA/Metas · Transparencia · Territorio.
+    Cada columna es una zona clickeable que lleva a su módulo técnico.
+    """
     return (
-        f'<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;height:100%">'
-        f'<div>{z3}</div>'
-        f'<div>{z4}</div>'
+        f'<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;height:100%">'
+        f'<div>{_html_z3_poa_pac(data)}</div>'
+        f'<div>{_html_z4_inst(data)}</div>'
+        f'<div>{_html_z4_territorio(data)}</div>'
         f'</div>'
     )
 
@@ -1222,6 +1389,7 @@ def render() -> None:
     grid_html = (
         f'<div class="ve-root">'
         f'{_html_briefing_strip(eco, narrative)}'
+        f'{_html_decisiones_strip(data)}'
         f'<div class="ve-grid">'
         f'<div class="ve-zone ve-z1">{_html_z1_pulso(data, gad_top)}</div>'
         f'<div class="ve-zone ve-z2">{_html_z2_urgente(data)}</div>'
@@ -1248,13 +1416,14 @@ def render() -> None:
         unsafe_allow_html=True,
     )
 
-    nav_cols = st.columns(5)
+    nav_cols = st.columns(6)
     _drill_map = [
-        ("📊 TGI Completo",     "tgi",         "cadena"     if _is_tec() else None),
-        ("🚨 SAT · Alertas",    "sat",         "alertas"    if _is_tec() else None),
-        ("🏛 Ecosistema",       "ecosistema",  "municipal"  if _is_tec() else None),
-        ("🗺 Territorio",       "territorio",  "geotwin"    if _is_tec() else None),
-        ("🤖 QUIRA IA",         "ia",          "analisis"   if _is_tec() else None),
+        ("🎯 Metas · POA",      "poa",         "analisis"       if _is_tec() else None),
+        ("📊 TGI Completo",     "tgi",         "cadena"         if _is_tec() else None),
+        ("🚨 SAT · Alertas",    "sat",         "alertas"        if _is_tec() else None),
+        ("🏛 Transparencia",    "lotaip",      "transparencia"  if _is_tec() else None),
+        ("🏢 Ecosistema",       "ecosistema",  "municipal"      if _is_tec() else None),
+        ("🤖 QUIRA IA",         "ia",          "analisis"       if _is_tec() else None),
     ]
 
     for i, (label, drill_key, mod_key) in enumerate(_drill_map):
@@ -1326,6 +1495,60 @@ def render() -> None:
                     f'</div>',
                     unsafe_allow_html=True,
                 )
+        elif drill == "poa":
+            # Metas POA / PDOT expandido
+            tgi = data.get("tgi", {})
+            psg = data.get("psg", {})
+            fin = data.get("financiero", {})
+            dims_poa = [
+                ("D1", "Legalidad y Coherencia", tgi.get("d1", {}).get("valor", 83.5)),
+                ("D2", "Fidelidad Planificación", tgi.get("d2", {}).get("valor", 69.93)),
+                ("D3", "Ejecución Presupuestaria", tgi.get("d3", {}).get("valor", 14.58)),
+            ]
+            for cod, nombre, val in dims_poa:
+                col = "#22C55E" if val >= 70 else "#F59E0B" if val >= 50 else "#EF4444"
+                st.markdown(
+                    f'<div style="display:flex;justify-content:space-between;align-items:center;'
+                    f'padding:8px 12px;background:rgba(255,255,255,.02);border-radius:8px;margin-bottom:4px">'
+                    f'<div><span style="font:700 10px/1 Inter,sans-serif;color:rgba(255,255,255,.7)">'
+                    f'{cod} — {nombre}</span></div>'
+                    f'<span style="font:900 14px/1 Inter,sans-serif;color:{col}">{val:.1f}%</span>'
+                    f'</div>',
+                    unsafe_allow_html=True,
+                )
+            pac_pub = psg.get("pac_publicado", True)
+            ti_raw  = fin.get("ti_2026_raw_pct", 1.05)
+            st.markdown(
+                f'<div style="padding:10px 14px;background:rgba(245,158,11,.04);'
+                f'border:1px solid rgba(245,158,11,.16);border-radius:8px;margin-top:6px">'
+                f'<div style="font:700 9px/1.4 Inter,sans-serif;color:rgba(255,255,255,.6)">'
+                f'PAC 2026: <span style="color:{"#22C55E" if pac_pub else "#EF4444"}">'
+                f'{"Publicado" if pac_pub else "Pendiente"}</span> · '
+                f'4 metas sin PAC (bloqueadas) · Ti Q1: <span style="color:#EF4444">{ti_raw:.2f}%</span>'
+                f'</div></div>',
+                unsafe_allow_html=True,
+            )
+        elif drill == "lotaip":
+            # Transparencia + RdC expandido
+            tgi   = data.get("tgi", {})
+            d5_v  = tgi.get("d5", {}).get("valor", 100.0)
+            items_lotaip = [
+                ("#F59E0B", "LOTAIP",    "Actualización mensual · verificar cumplimiento en portal MAAP"),
+                ("#F59E0B", "RdC CPCCS", "Rendición de cuentas ciudadana · plazo legal próximo"),
+                ("#22C55E", "D5 Capacidad Institucional", f"{d5_v:.0f}% · SNP · SIGAD al día"),
+                ("#22C55E", "PAC Publicado", "Plan Anual de Contratación publicado en SERCOP"),
+            ]
+            for col, lbl, det in items_lotaip:
+                st.markdown(
+                    f'<div style="display:flex;align-items:flex-start;gap:8px;padding:8px 12px;'
+                    f'background:rgba(255,255,255,.02);border-radius:8px;margin-bottom:4px">'
+                    f'<div style="width:7px;height:7px;border-radius:50%;background:{col};'
+                    f'flex-shrink:0;margin-top:3px"></div>'
+                    f'<div><div style="font:700 9px/1 Inter,sans-serif;color:{col}">{lbl}</div>'
+                    f'<div style="font:400 8px/1.4 Inter,sans-serif;color:rgba(255,255,255,.4);margin-top:2px">'
+                    f'{det}</div></div></div>',
+                    unsafe_allow_html=True,
+                )
         elif drill == "ecosistema":
             for ent in eco:
                 col = ent.get("color", "#F97316")
@@ -1383,7 +1606,7 @@ def render() -> None:
         f'color:rgba(255,255,255,.1);text-align:right;display:flex;'
         f'justify-content:space-between;align-items:center">'
         f'<span style="color:rgba(255,255,255,.07)">Cache datos: 5 min · TTL activo</span>'
-        f'<span>QUIRA Intelligence · Sprint C.3/E.1 · '
+        f'<span>QUIRA Intelligence · Sprint E.3 · '
         f'Gold Master v5.5_TGI · Corte Q1-2026 · Dylus Lab © 2026</span>'
         f'</div>',
         unsafe_allow_html=True,
