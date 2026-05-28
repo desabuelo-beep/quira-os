@@ -97,9 +97,6 @@ def _load_sercop_data() -> dict:
 
         total_proc = sum(v["procesos"]   for v in by_entity.values())
         total_adj  = sum(v["adjudicado"] for v in by_entity.values())
-        total_prov = len(set(
-            r["tipo"] for lista in tipos.values() for r in lista
-        ))
 
         return {
             "ok":              True,
@@ -197,7 +194,7 @@ def _tipos_html(lista: list, color: str, total_adj: float) -> str:
 
 
 # ── CAJÓN DE ENTIDAD ───────────────────────────────────────────────────────────
-def _cajón(idx: int, cod: str, stats: dict, by_year: dict, tipos: dict) -> str:
+def _cajon(idx: int, cod: str, stats: dict, by_year: dict, tipos: dict) -> str:
     meta  = _ENTIDADES[cod]
     color = meta["color"]
     rgb   = meta["rgb"]
@@ -343,7 +340,7 @@ def render() -> None:
     hdr = page_header(
         "⑤ HOLDING MUNICIPAL",
         "Contratación Pública · 5 Entidades · 2023-2026",
-        "Observatorio SERCOP — datos reales verificados · 772 procesos únicos · $12.3M adjudicados",
+        f"Observatorio SERCOP — datos reales verificados · {total_proc} procesos únicos · {_fmt(total_adj)} adjudicados",
     )
 
     # ── BANNER FUENTE ─────────────────────────────────────────────────────────
@@ -368,7 +365,6 @@ def render() -> None:
     # ── KPI STRIP ─────────────────────────────────────────────────────────────
     entidades_activas = sum(1 for cod in _ENTIDADES if by_entity.get(cod, {}).get("procesos", 0) > 0)
     gad_share = by_entity.get("GAD", {}).get("adjudicado", 0) / total_adj * 100 if total_adj > 0 else 0
-    patronato_proc = by_entity.get("PATRONATO", {}).get("procesos", 0)
     ticket_global = total_adj / total_proc if total_proc > 0 else 0
 
     def _kpi(label: str, value: str, sub: str, color: str = "var(--white)") -> str:
@@ -408,14 +404,13 @@ def render() -> None:
     cajones = ""
     for i, cod in enumerate(["GAD", "PATRONATO", "BOMBEROS", "EMAI", "HABITAT"], start=1):
         stats = by_entity.get(cod, {"procesos": 0, "adjudicado": 0, "presupuestado": 0, "proveedores": 0})
-        cajones += _cajón(i, cod, stats, by_year, tipos)
+        cajones += _cajon(i, cod, stats, by_year, tipos)
 
     # ── INSIGHTS AUTOMÁTICOS ──────────────────────────────────────────────────
-    gad_adj    = by_entity.get("GAD",      {}).get("adjudicado", 0)
-    emai_adj   = by_entity.get("EMAI",     {}).get("adjudicado", 0)
-    pat_proc   = by_entity.get("PATRONATO",{}).get("procesos",   0)
-    bom_proc   = by_entity.get("BOMBEROS", {}).get("procesos",   0)
-    emai_proc  = by_entity.get("EMAI",     {}).get("procesos",   0)
+    gad_adj   = by_entity.get("GAD",      {}).get("adjudicado", 0)
+    emai_adj  = by_entity.get("EMAI",     {}).get("adjudicado", 0)
+    pat_proc  = by_entity.get("PATRONATO",{}).get("procesos",   0)
+    emai_proc = by_entity.get("EMAI",     {}).get("procesos",   0)
     emai_tick  = emai_adj / emai_proc if emai_proc > 0 else 0
 
     gad_24 = by_year.get(("GAD", 2024), {}).get("cnt", 0)
@@ -438,7 +433,7 @@ def render() -> None:
         'letter-spacing:.1em;margin-bottom:10px">🔍 Señales detectadas · datos SERCOP</div>'
         '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">'
         + _insight(
-            "🏛️", "GAD concentra el 68% del gasto del Holding",
+            "🏛️", f"GAD concentra el {gad_share:.0f}% del gasto del Holding",
             f"De los {_fmt(total_adj)} adjudicados totales, el GAD Municipal representa "
             f"{_fmt(gad_adj)} ({gad_share:.0f}%). Alta concentración presupuestaria en "
             f"la administración central. Las entidades operadoras suman solo el {100-gad_share:.0f}% restante.",
@@ -482,16 +477,16 @@ def render() -> None:
     # ── TABLA COMPARATIVA ─────────────────────────────────────────────────────
     tabla_rows = ""
     for cod in ["GAD", "PATRONATO", "BOMBEROS", "EMAI", "HABITAT"]:
-        meta  = _ENTIDADES[cod]
-        st    = by_entity.get(cod, {"procesos": 0, "adjudicado": 0.0, "proveedores": 0})
-        proc  = st["procesos"]
-        adj   = st["adjudicado"]
-        prov  = st["proveedores"]
-        tick  = adj / proc if proc > 0 else 0
-        share = adj / total_adj * 100 if total_adj > 0 else 0
-        top   = tipos.get(cod, [{}])[0].get("tipo", "—") if tipos.get(cod) else "—"
-        top   = (top[:35] + "…") if len(top) > 35 else top
-        color = meta["color"]
+        meta   = _ENTIDADES[cod]
+        estat  = by_entity.get(cod, {"procesos": 0, "adjudicado": 0.0, "proveedores": 0})
+        proc   = estat["procesos"]
+        adj    = estat["adjudicado"]
+        prov   = estat["proveedores"]
+        tick   = adj / proc if proc > 0 else 0
+        share  = adj / total_adj * 100 if total_adj > 0 else 0
+        top    = tipos.get(cod, [{}])[0].get("tipo", "—") if tipos.get(cod) else "—"
+        top    = (top[:35] + "…") if len(top) > 35 else top
+        color  = meta["color"]
         tabla_rows += (
             f'<tr>'
             f'<td style="padding:8px 10px;font-size:11px;font-weight:700;color:var(--white)">'
