@@ -97,6 +97,24 @@ def _load_sercop_data() -> dict:
                 "adj":  float(r["adj"] or 0),
             })
 
+        # ④ Concentración de proveedores por entidad
+        prov_by_entity: dict[str, list] = {}
+        rows4 = c.execute("""
+            SELECT entidad_codigo, proveedor,
+                   COUNT(*) AS cnt, SUM(monto_adjudicado) AS adj
+            FROM sercop_contratos
+            WHERE proveedor IS NOT NULL AND proveedor != ''
+            GROUP BY entidad_codigo, proveedor
+            ORDER BY entidad_codigo, adj DESC
+        """).fetchall()
+        for r in rows4:
+            cod = r["entidad_codigo"]
+            prov_by_entity.setdefault(cod, []).append({
+                "proveedor": r["proveedor"],
+                "cnt":       int(r["cnt"] or 0),
+                "adj":       float(r["adj"] or 0),
+            })
+
         total_proc = sum(v["procesos"]   for v in by_entity.values())
         total_adj  = sum(v["adjudicado"] for v in by_entity.values())
 
@@ -105,11 +123,15 @@ def _load_sercop_data() -> dict:
             "by_entity":       by_entity,
             "by_year":         by_year,
             "tipos":           tipos,
+            "prov_by_entity":  prov_by_entity,
             "total_procesos":  total_proc,
             "total_adjudicado":total_adj,
         }
     except Exception as exc:
-        return {"ok": False, "error": str(exc), "by_entity": {}, "by_year": {}, "tipos": {}}
+        return {
+            "ok": False, "error": str(exc),
+            "by_entity": {}, "by_year": {}, "tipos": {}, "prov_by_entity": {},
+        }
     finally:
         conn.close()  # garantizado — nunca leakea conexión psycopg2
 
@@ -329,14 +351,279 @@ def _cajon(idx: int, cod: str, stats: dict, by_year: dict, tipos: dict) -> str:
 </div>"""
 
 
+# ── CAJÓN 2: CONCENTRACIÓN DE PROVEEDORES ─────────────────────────────────────
+# Metodología inspirada en cali-monitor (github.com/cardonanl/cali-monitor)
+# Créditos al autor: @cardonanl · SECOP II analysis logic
+# Adaptado para SERCOP Ecuador y arquitectura QUIRA OS · Dylus Lab © 2026
+
+def _concentracion_stats(cod: str, prov_by_entity: dict, total_adj_entity: float) -> dict:
+    """Calcula % concentración y HHI para una entidad."""
+    lista = prov_by_entity.get(cod, [])
+    if not lista or total_adj_entity <= 0:
+        return {"top_proveedor": "—", "top_adj": 0.0, "top_pct": 0.0,
+                "hhi": 0.0, "semaforo": "gris", "top5": []}
+
+    top5    = lista[:5]
+    top_adj = top5[0]["adj"] if top5 else 0.0
+    top_pct = top_adj / total_adj_entity * 100 if total_adj_entity > 0 else 0.0
+
+    # HHI: Índice Herfindahl-Hirschman (suma de cuadrados de market-shares)
+    hhi = sum((r["adj"] / total_adj_entity * 100) ** 2 for r in lista)
+
+    if top_pct >= 50:
+        semaforo = "rojo"
+    elif top_pct >= 30:
+        semaforo = "amarillo"
+    else:
+        semaforo = "verde"
+
+    return {
+        "top_proveedor": top5[0]["proveedor"] if top5 else "—",
+        "top_adj":       top_adj,
+        "top_pct":       top_pct,
+        "hhi":           hhi,
+        "semaforo":      semaforo,
+        "top5":          top5,
+    }
+
+
+def _semaforo_badge(semaforo: str) -> tuple[str, str]:
+    return {
+        "rojo":     ("badge-red",   "🔴 Concentración alta"),
+        "amarillo": ("badge-amber", "🟡 Concentración media"),
+        "verde":    ("badge-green", "🟢 Diversificado"),
+        "gris":     ("badge-red",   "⚫ Sin datos"),
+    }.get(semaforo, ("badge-cyan", semaforo))
+
+
+def _prov_bars(top5: list, color: str, total_adj: float) -> str:
+    """Top 5 proveedores con barras proporcionales."""
+    if not top5:
+        return '<div style="font-size:11px;color:var(--muted)">Sin proveedores registrados</div>'
+    rows = ""
+    for t in top5:
+        bar_w  = min(t["adj"] / total_adj * 100, 100) if total_adj > 0 else 0
+        nombre = (t["proveedor"] or "—")[:42]
+        if len(t["proveedor"] or "") > 42:
+            nombre += "…"
+        rows += (
+            f'<div style="margin-bottom:7px">'
+            f'  <div style="display:flex;justify-content:space-between;'
+            f'              align-items:center;margin-bottom:3px">'
+            f'    <div style="font-size:10px;color:var(--white);flex:1;min-width:0;'
+            f'                white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'
+            f'      {nombre}</div>'
+            f'    <div style="font-size:10px;font-weight:700;color:{color};'
+            f'                margin-left:8px;flex-shrink:0">'
+            f'      {_fmt(t["adj"])} · {bar_w:.0f}%</div>'
+            f'  </div>'
+            f'  <div style="height:4px;background:rgba(255,255,255,.06);border-radius:2px">'
+            f'    <div style="height:100%;width:{bar_w:.1f}%;background:{color};'
+            f'                border-radius:2px;opacity:.85"></div>'
+            f'  </div>'
+            f'</div>'
+        )
+    return rows
+
+
+def _conc_entity_card(cod: str, conc: dict, by_entity: dict) -> str:
+    """Card de concentración por entidad para el grid de Cajón 2."""
+    meta  = _ENTIDADES[cod]
+    color = meta["color"]
+    rgb   = meta["rgb"]
+    adj   = by_entity.get(cod, {}).get("adjudicado", 0.0)
+
+    # Caso especial: HABITAT sin datos
+    if cod == "HABITAT":
+        return (
+            f'<div style="background:rgba(255,77,109,.04);border:1px solid rgba(255,77,109,.18);'
+            f'border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:8px">'
+            f'  <div style="display:flex;justify-content:space-between;align-items:center">'
+            f'    <div style="font-size:12px;font-weight:700;color:var(--white)">'
+            f'      {meta["emoji"]} {meta["nombre"]}</div>'
+            f'    <span class="badge badge-red" style="font-size:9px">⚫ Sin procesos</span>'
+            f'  </div>'
+            f'  <div style="font-size:10px;color:var(--muted)">'
+            f'    EP Hábitat no registra proveedores en SERCOP 2023-2026. '
+            f'    Imposible calcular concentración.</div>'
+            f'</div>'
+        )
+
+    badge_cls, badge_txt = _semaforo_badge(conc["semaforo"])
+    nombre_prov = (conc["top_proveedor"] or "—")[:46]
+    if len(conc["top_proveedor"] or "") > 46:
+        nombre_prov += "…"
+
+    # HHI label
+    hhi = conc["hhi"]
+    if hhi > 2500:
+        hhi_label, hhi_color = "Mercado concentrado", "var(--red)"
+    elif hhi > 1500:
+        hhi_label, hhi_color = "Concentración media", "var(--amber)"
+    else:
+        hhi_label, hhi_color = "Mercado competitivo", "var(--green)"
+
+    return (
+        f'<div style="background:rgba({rgb},.04);border:1px solid rgba({rgb},.2);'
+        f'border-radius:10px;padding:14px">'
+        f'  <div style="display:flex;justify-content:space-between;'
+        f'              align-items:center;margin-bottom:10px">'
+        f'    <div style="font-size:12px;font-weight:700;color:var(--white)">'
+        f'      {meta["emoji"]} {meta["nombre"]}</div>'
+        f'    <span class="badge {badge_cls}" style="font-size:9px;padding:3px 8px">'
+        f'      {badge_txt}</span>'
+        f'  </div>'
+        f'  <div style="display:flex;align-items:flex-end;gap:10px;margin-bottom:8px">'
+        f'    <div style="font-size:32px;font-weight:900;font-family:var(--mono);'
+        f'                color:{color};line-height:1">{conc["top_pct"]:.0f}%</div>'
+        f'    <div style="padding-bottom:4px">'
+        f'      <div style="font-size:10px;font-weight:700;color:var(--muted)">'
+        f'        del total al proveedor líder</div>'
+        f'      <div style="font-size:10px;color:var(--white);margin-top:1px">'
+        f'        {nombre_prov}</div>'
+        f'    </div>'
+        f'  </div>'
+        f'  <div style="margin-bottom:10px">'
+        f'    {_prov_bars(conc["top5"], color, adj)}'
+        f'  </div>'
+        f'  <div style="font-size:9px;color:var(--muted);display:flex;gap:14px;'
+        f'              padding-top:8px;border-top:1px solid rgba(255,255,255,.05)">'
+        f'    <span>HHI: {hhi:.0f}</span>'
+        f'    <span style="color:{hhi_color}">{hhi_label}</span>'
+        f'    <span>{len(conc["top5"])} prov. en top-5</span>'
+        f'  </div>'
+        f'</div>'
+    )
+
+
+def _cajon2(prov_by_entity: dict, by_entity: dict) -> str:
+    """
+    Cajón 2 — Concentración de Proveedores SERCOP.
+    Detecta riesgo de dependencia institucional: un solo proveedor dominante
+    puede indicar mercado cautivo, ausencia de competencia o riesgo de colusión.
+
+    Metodología inspirada en cali-monitor (github.com/cardonanl/cali-monitor)
+    Créditos al autor @cardonanl — adaptado para SERCOP Ecuador · QUIRA OS.
+    """
+    # Concentración por entidad
+    conc: dict[str, dict] = {}
+    for cod in _ENTIDADES:
+        adj = by_entity.get(cod, {}).get("adjudicado", 0.0)
+        conc[cod] = _concentracion_stats(cod, prov_by_entity, adj)
+
+    # Entidades en zona roja (excluye HABITAT que no tiene datos)
+    entidades_rojas = [
+        cod for cod in ["GAD", "PATRONATO", "BOMBEROS", "EMAI"]
+        if conc[cod]["semaforo"] == "rojo"
+    ]
+
+    # Alerta global
+    alert_global = ""
+    if entidades_rojas:
+        nombres = " · ".join(_ENTIDADES[c]["nombre"] for c in entidades_rojas)
+        alert_global = (
+            f'<div style="padding:10px 14px;background:rgba(255,77,109,.08);'
+            f'border-left:3px solid #FF4D6D;border-radius:0 8px 8px 0;'
+            f'margin-bottom:14px;font-size:11px;color:#FF4D6D">'
+            f'🚨 <strong>Riesgo de concentración detectado</strong> en: {nombres}. '
+            f'Un solo proveedor concentra &gt;50% del total adjudicado. '
+            f'Recomendación: ampliar registro de proveedores y revisar mecanismos de competencia.'
+            f'</div>'
+        )
+
+    # Grid 2×2 para las 4 entidades activas
+    cards = ""
+    for cod in ["GAD", "PATRONATO", "BOMBEROS", "EMAI"]:
+        cards += f'<div>{_conc_entity_card(cod, conc[cod], by_entity)}</div>'
+
+    habitat_card = _conc_entity_card("HABITAT", conc["HABITAT"], by_entity)
+
+    # Insight automático: más concentrada vs más diversificada
+    activas = {
+        cod: conc[cod] for cod in ["GAD", "PATRONATO", "BOMBEROS", "EMAI"]
+        if conc[cod]["semaforo"] != "gris"
+    }
+    insight_txt = ""
+    if len(activas) >= 2:
+        mas_conc = max(activas, key=lambda x: activas[x]["top_pct"])
+        mas_div  = min(activas, key=lambda x: activas[x]["top_pct"])
+        mc = conc[mas_conc]
+        md = conc[mas_div]
+        insight_txt = (
+            f'<div style="margin-top:12px;padding:10px 14px;'
+            f'background:rgba(255,255,255,.02);border-radius:8px;'
+            f'border-left:3px solid var(--purple);font-size:11px">'
+            f'  <span style="color:var(--purple);font-weight:700">📊 Señal automática · </span>'
+            f'  <span style="color:var(--white)">'
+            f'    {_ENTIDADES[mas_conc]["nombre"]} es la entidad más concentrada: '
+            f'    {mc["top_pct"]:.0f}% en 1 proveedor ({(mc["top_proveedor"] or "")[:35]}). '
+            f'    {_ENTIDADES[mas_div]["nombre"]} es la más diversificada: '
+            f'    solo {md["top_pct"]:.0f}% en el proveedor líder.'
+            f'  </span>'
+            f'</div>'
+        )
+
+    # Header badge
+    if entidades_rojas:
+        hdr_badge_cls = "badge-red"
+        hdr_badge_txt = f"⚠️ {len(entidades_rojas)} entidad(es) en riesgo"
+    else:
+        hdr_badge_cls = "badge-green"
+        hdr_badge_txt = "✅ Sin alertas de concentración"
+
+    return f"""
+<div style="margin-bottom:10px;border:1px solid rgba(124,92,252,.25);border-radius:12px;
+            overflow:hidden;background:var(--navy-card)">
+  <div onclick="var d=document.getElementById('cajon2body');
+                var open=d.style.display!=='none';
+                d.style.display=open?'none':'block';
+                this.querySelector('.arrc2').textContent=open?'▼':'▲'"
+       style="padding:14px 16px;cursor:pointer;display:flex;
+              justify-content:space-between;align-items:center;
+              border-bottom:1px solid rgba(124,92,252,.1)">
+    <div style="display:flex;align-items:center;gap:14px">
+      <div style="font-size:22px">🔍</div>
+      <div>
+        <div style="font-size:15px;font-weight:800;color:var(--white)">
+          Cajón 2 · Concentración de Proveedores</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:2px">
+          Riesgo de dependencia institucional · Índice HHI · SERCOP 2023-2026</div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
+      <span class="badge {hdr_badge_cls}">{hdr_badge_txt}</span>
+      <span class="arrc2" style="color:var(--muted);font-size:11px;margin-left:4px">▼</span>
+    </div>
+  </div>
+
+  <div id="cajon2body" style="display:none;padding:14px 16px 16px">
+    {alert_global}
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
+      {cards}
+    </div>
+    {habitat_card}
+    {insight_txt}
+    <div style="margin-top:10px;font-size:9px;color:rgba(255,255,255,.18);line-height:1.6">
+      📐 <strong>Método:</strong> % del monto adjudicado total al proveedor líder ·
+      HHI (Herfindahl-Hirschman): suma de cuadrados de market-shares ·
+      Umbrales: 🟢 &lt;30% · 🟡 30-50% · 🔴 &gt;50% ·
+      Inspiración metodológica: <em>cali-monitor</em>
+      (github.com/cardonanl/cali-monitor — créditos al autor @cardonanl).
+      Adaptado para SERCOP Ecuador · Sprint 0 QUIRA OS.
+    </div>
+  </div>
+</div>"""
+
+
 # ── RENDER PRINCIPAL ───────────────────────────────────────────────────────────
 def render() -> None:
     sd        = _load_sercop_data()
     show_tech = is_tecnico()
 
-    by_entity = sd.get("by_entity", {})
-    by_year   = sd.get("by_year",   {})
-    tipos     = sd.get("tipos",     {})
+    by_entity      = sd.get("by_entity",      {})
+    by_year        = sd.get("by_year",        {})
+    tipos          = sd.get("tipos",          {})
+    prov_by_entity = sd.get("prov_by_entity", {})
     total_proc = sd.get("total_procesos",   0)
     total_adj  = sd.get("total_adjudicado", 0.0)
 
@@ -563,13 +850,17 @@ def render() -> None:
   Actualizar: <code>python scripts/sercop_sprint0.py --year YYYY</code>
 </div>"""
 
+    # ── CAJÓN 2 — Concentración de Proveedores ───────────────────────────────
+    cajon2_html = _cajon2(prov_by_entity, by_entity)
+
     # ── ASSEMBLE ──────────────────────────────────────────────────────────────
     html = (
         hdr + banner + kpi_strip
         + sec_hdr + cajones
+        + cajon2_html
         + insights + tabla + tech
     )
-    render_page(html, show_tech=show_tech, height=3000)
+    render_page(html, show_tech=show_tech, height=4200)
 
     # CTA nativo Streamlit
     c1, c2 = st.columns(2, gap="small")
