@@ -92,8 +92,9 @@ body.tecnico .td-tech { display: table-cell; }
 .badge-green { background:rgba(0,224,150,.1);  color:var(--green); border:1px solid rgba(0,224,150,.2); }
 .badge-red   { background:rgba(255,77,109,.1); color:var(--red);   border:1px solid rgba(255,77,109,.2); }
 .badge-cyan  { background:rgba(0,212,255,.1);  color:var(--cyan);  border:1px solid rgba(0,212,255,.2); }
-.badge-real  { background:rgba(0,224,150,.1);  color:var(--green); border:1px solid rgba(0,224,150,.2); }
-.badge-proj  { background:rgba(255,183,0,.1);  color:var(--amber); border:1px solid rgba(255,183,0,.2); }
+.badge-real  { background:rgba(0,224,150,.1);  color:var(--green);  border:1px solid rgba(0,224,150,.2); }
+.badge-proj  { background:rgba(255,183,0,.1);  color:var(--amber);  border:1px solid rgba(255,183,0,.2); }
+.badge-purple{ background:rgba(124,92,252,.1); color:var(--purple); border:1px solid rgba(124,92,252,.2); }
 
 /* PROGRESS */
 .prog-wrap { margin-bottom: 12px; }

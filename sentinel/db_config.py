@@ -708,6 +708,62 @@ def _migrate_scheduler_log(conn: "DbConn") -> None:
         pass
 
 
+def _migrate_sercop_contratos(conn: "DbConn") -> None:
+    """
+    Crea tabla sercop_contratos — ingesta OCDS API SERCOP por entidad.
+    Sprint 0: Contratación pública verificada 2023-2026 para las 5 entidades del Holding.
+    Idempotente.
+    """
+    pk   = "BIGSERIAL" if conn.mode == "supabase" else "INTEGER"
+    auto = "" if conn.mode == "supabase" else "AUTOINCREMENT"
+    try:
+        conn.cursor().execute(f"""CREATE TABLE IF NOT EXISTS sercop_contratos (
+            id                  {pk} PRIMARY KEY {auto},
+            -- Identificación del proceso
+            sercop_id           INTEGER,
+            ocid                TEXT    NOT NULL,
+            -- Entidad del Holding
+            entidad_codigo      TEXT    NOT NULL,
+            entidad_nombre      TEXT    NOT NULL,
+            entidad_ruc         TEXT,
+            -- Datos del proceso
+            anio                INTEGER NOT NULL,
+            mes                 INTEGER,
+            tipo_contratacion   TEXT,
+            tipo_metodo         TEXT,
+            estado              TEXT,
+            -- Montos
+            monto_presupuestado REAL    DEFAULT 0,
+            monto_adjudicado    REAL    DEFAULT 0,
+            -- Descripción
+            titulo              TEXT,
+            descripcion         TEXT,
+            proveedor           TEXT,
+            localidad           TEXT,
+            -- Fechas
+            fecha_publicacion   TEXT,
+            -- Trazabilidad
+            url_proceso         TEXT,
+            fecha_ingesta       TEXT    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            fuente              TEXT    NOT NULL DEFAULT 'SERCOP_OCDS_API',
+            UNIQUE(ocid)
+        )""")
+        conn.commit()
+    except Exception:
+        pass
+    # Índices para queries frecuentes
+    for idx_sql in [
+        "CREATE INDEX IF NOT EXISTS idx_sercop_entidad ON sercop_contratos(entidad_codigo)",
+        "CREATE INDEX IF NOT EXISTS idx_sercop_anio    ON sercop_contratos(anio)",
+        "CREATE INDEX IF NOT EXISTS idx_sercop_tipo    ON sercop_contratos(tipo_contratacion)",
+    ]:
+        try:
+            conn.cursor().execute(idx_sql)
+            conn.commit()
+        except Exception:
+            pass
+
+
 def _migrate_municipality_snapshots(conn: "DbConn") -> None:
     """
     Crea municipality_snapshots — tabla maestra de snapshots por municipio.
@@ -786,6 +842,9 @@ def init_db() -> None:
 
     # Migración incremental: Snapshots de municipios (RC-CARGA)
     _migrate_municipality_snapshots(conn)
+
+    # Migración incremental: SERCOP contratación pública (Sprint 0)
+    _migrate_sercop_contratos(conn)
 
     conn.close()
 

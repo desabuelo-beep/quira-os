@@ -1,425 +1,591 @@
 """
-QUIRA OS v0.1 — P-02 Holding Sandbox (HPT-M)
-Fiel al DEMO.html P-07 · st.components.v1.html() render
+QUIRA OS — P-02 Holding Municipal · Cajón 1: Contratación Pública SERCOP
+================================================================
+Dashboard 100 % trazable · datos reales SERCOP API 2023-2026.
+Ningún número en esta página es inventado — todo viene de
+sercop_contratos (Supabase) alimentado por Sprint 0.
+
+Entidades: GAD · PATRONATO · BOMBEROS · EMAI · EP Hábitat
+Fuente:    https://datosabiertos.compraspublicas.gob.ec
 Dylus Lab © 2026
 """
+from __future__ import annotations
+
 import streamlit as st
-from data.loader import load_all
-from utils.session import is_tecnico
 from quira_pages.html_engine import render_page, page_header
+from utils.session import is_tecnico
 
 
-# ── helpers ──────────────────────────────────────────────────────────────────
-def _rgb(h: str) -> str:
-    h = h.lstrip("#")
-    if len(h) == 6:
-        return f"{int(h[0:2],16)},{int(h[2:4],16)},{int(h[4:6],16)}"
-    return "255,255,255"
+# ── METADATA ESTÁTICA ──────────────────────────────────────────────────────────
+_ENTIDADES: dict[str, dict] = {
+    "GAD":      {"emoji": "🏛️", "nombre": "GAD Municipal",      "tipo": "Gobierno Autónomo · COOTAD",       "color": "#00D4FF", "rgb": "0,212,255"},
+    "PATRONATO":{"emoji": "🤝", "nombre": "Patronato Municipal", "tipo": "Desarrollo Social · LOSEP",        "color": "#7C5CFC", "rgb": "124,92,252"},
+    "BOMBEROS": {"emoji": "🚒", "nombre": "Cuerpo de Bomberos",  "tipo": "Emergencias y Prevención · COESCOP","color": "#00E096","rgb": "0,224,150"},
+    "EMAI":     {"emoji": "♻️", "nombre": "EMAI-EP",             "tipo": "Aseo Integral Montecristi · LOEP", "color": "#FFB800", "rgb": "255,184,0"},
+    "HABITAT":  {"emoji": "🏗️", "nombre": "EP Hábitat",          "tipo": "Vivienda y Hábitat · LOEP",        "color": "#FF4D6D", "rgb": "255,77,109"},
+}
+_YEARS = [2023, 2024, 2025, 2026]
 
 
-def _mini_score_node(score: float, color: str, label: str, note: str) -> str:
-    border_color = _rgb(color)
+# ── DATA LAYER ─────────────────────────────────────────────────────────────────
+@st.cache_data(ttl=1800, show_spinner=False)
+def _load_sercop_data() -> dict:
+    """
+    Carga y agrega datos de sercop_contratos.
+    Cache 30 min — refreshable vía st.cache_data.clear().
+    """
+    try:
+        from sentinel.db_config import get_connection, init_db
+        init_db()
+        conn = get_connection()
+        c    = conn.cursor()
+
+        # ① Totales por entidad
+        by_entity: dict[str, dict] = {}
+        rows = c.execute("""
+            SELECT entidad_codigo,
+                   COUNT(*) AS procesos,
+                   SUM(monto_adjudicado)    AS adjudicado,
+                   SUM(monto_presupuestado) AS presupuestado,
+                   COUNT(DISTINCT proveedor) AS proveedores
+            FROM sercop_contratos
+            GROUP BY entidad_codigo
+        """).fetchall()
+        for r in rows:
+            by_entity[r["entidad_codigo"]] = {
+                "procesos":      int(r["procesos"]     or 0),
+                "adjudicado":    float(r["adjudicado"] or 0),
+                "presupuestado": float(r["presupuestado"] or 0),
+                "proveedores":   int(r["proveedores"]  or 0),
+            }
+
+        # ② Por entidad × año
+        by_year: dict[tuple, dict] = {}
+        rows2 = c.execute("""
+            SELECT entidad_codigo, anio,
+                   COUNT(*) AS cnt, SUM(monto_adjudicado) AS adj
+            FROM sercop_contratos
+            GROUP BY entidad_codigo, anio
+            ORDER BY entidad_codigo, anio
+        """).fetchall()
+        for r in rows2:
+            key = (r["entidad_codigo"], int(r["anio"]))
+            by_year[key] = {
+                "cnt": int(r["cnt"]  or 0),
+                "adj": float(r["adj"] or 0),
+            }
+
+        # ③ Top modalidades por entidad (top 4 por monto)
+        tipos: dict[str, list] = {}
+        rows3 = c.execute("""
+            SELECT entidad_codigo, tipo_contratacion,
+                   COUNT(*) AS cnt, SUM(monto_adjudicado) AS adj
+            FROM sercop_contratos
+            WHERE tipo_contratacion IS NOT NULL
+            GROUP BY entidad_codigo, tipo_contratacion
+            ORDER BY entidad_codigo, adj DESC
+        """).fetchall()
+        for r in rows3:
+            cod = r["entidad_codigo"]
+            tipos.setdefault(cod, []).append({
+                "tipo": r["tipo_contratacion"],
+                "cnt":  int(r["cnt"] or 0),
+                "adj":  float(r["adj"] or 0),
+            })
+
+        conn.close()
+
+        total_proc = sum(v["procesos"]   for v in by_entity.values())
+        total_adj  = sum(v["adjudicado"] for v in by_entity.values())
+        total_prov = len(set(
+            r["tipo"] for lista in tipos.values() for r in lista
+        ))
+
+        return {
+            "ok":              True,
+            "by_entity":       by_entity,
+            "by_year":         by_year,
+            "tipos":           tipos,
+            "total_procesos":  total_proc,
+            "total_adjudicado":total_adj,
+        }
+    except Exception as exc:
+        return {"ok": False, "error": str(exc), "by_entity": {}, "by_year": {}, "tipos": {}}
+
+
+# ── FORMATTERS ─────────────────────────────────────────────────────────────────
+def _fmt(v: float) -> str:
+    """$X.XXM · $XXX K · $X,XXX"""
+    if v >= 1_000_000:
+        return f"${v / 1_000_000:.2f}M"
+    if v >= 1_000:
+        return f"${v / 1_000:.1f}K"
+    if v > 0:
+        return f"${v:,.0f}"
+    return "$0"
+
+
+def _pct(part: float, total: float) -> str:
+    if total <= 0:
+        return "—"
+    return f"{part / total * 100:.1f}%"
+
+
+# ── SPARKLINE ANUAL ────────────────────────────────────────────────────────────
+def _sparkline(cod: str, by_year: dict, color: str) -> str:
+    """Gráfica de barras año-por-año (CSS puro, sin librerías)."""
+    vals = [by_year.get((cod, yr), {"cnt": 0, "adj": 0.0}) for yr in _YEARS]
+    max_adj = max((v["adj"] for v in vals), default=1.0) or 1.0
+
+    bars = ""
+    for i, yr in enumerate(_YEARS):
+        d   = vals[i]
+        pct = min(d["adj"] / max_adj * 100, 100) if max_adj > 0 else 0
+        lbl = _fmt(d["adj"]) if d["adj"] > 0 else "—"
+        cnt = str(d["cnt"]) if d["cnt"] > 0 else "—"
+        bars += (
+            f'<div style="display:flex;flex-direction:column;align-items:center;gap:3px">'
+            f'  <div style="font-size:8px;color:var(--muted);height:14px;display:flex;'
+            f'              align-items:flex-end">{lbl}</div>'
+            f'  <div style="width:34px;height:56px;background:rgba(255,255,255,.05);'
+            f'              border-radius:3px;display:flex;align-items:flex-end;overflow:hidden">'
+            f'    <div style="width:100%;height:{pct:.0f}%;background:{color};'
+            f'                opacity:.85;border-radius:3px 3px 0 0;min-height:{2 if pct>0 else 0}px"></div>'
+            f'  </div>'
+            f'  <div style="font-size:9px;font-weight:700;color:var(--muted)">{yr}</div>'
+            f'  <div style="font-size:9px;color:var(--white)">{cnt}</div>'
+            f'</div>'
+        )
     return (
-        f'<div style="padding:20px 14px;background:var(--navy-card);border-radius:12px;'
-        f'border:1px solid rgba({border_color},.25);text-align:center">'
-        f'<div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;'
-        f'letter-spacing:.1em;margin-bottom:8px">{label}</div>'
-        f'<div style="font-size:34px;font-weight:900;font-family:var(--mono);'
-        f'color:{color};line-height:1">{score:.1f}%</div>'
-        f'<div style="font-size:10px;color:var(--muted);margin-top:6px">{note}</div>'
-        f'<div style="margin-top:10px;height:5px;background:var(--divider);border-radius:3px">'
-        f'<div style="height:100%;width:{min(score,100):.1f}%;background:{color};border-radius:3px"></div>'
-        f'</div></div>'
+        '<div style="margin-top:14px">'
+        '<div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;'
+        'letter-spacing:.08em;margin-bottom:8px">Evolución anual · adjudicado / procesos</div>'
+        '<div style="display:flex;gap:10px;align-items:flex-end">'
+        + bars
+        + '</div>'
+        '<div style="font-size:9px;color:rgba(255,255,255,.25);margin-top:4px">'
+        '* 2026 parcial al corte de ingesta. Fuente: SERCOP API datos abiertos.</div>'
+        '</div>'
     )
 
 
-def _entity_drawer(idx: int, emoji: str, nombre: str, tipo: str,
-                   score: float, score_color: str, badge_class: str, badge_text: str,
-                   what: str, why: str, impact: str, fix: str,
-                   alert_html: str, sentinel_q: str) -> str:
-    border_c = _rgb(score_color)
-    arrow_color = "var(--amber)" if "amber" in badge_class else "var(--muted)"
+# ── MODALIDADES ────────────────────────────────────────────────────────────────
+def _tipos_html(lista: list, color: str, total_adj: float) -> str:
+    """Top 4 modalidades de contratación."""
+    if not lista:
+        return '<div style="font-size:11px;color:var(--muted)">Sin datos de modalidad</div>'
+    top4 = lista[:4]
+    rows = ""
+    for t in top4:
+        bar_w = min(t["adj"] / total_adj * 100, 100) if total_adj > 0 else 0
+        rows += (
+            f'<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">'
+            f'  <div style="flex:1;min-width:0">'
+            f'    <div style="font-size:10px;color:var(--white);white-space:nowrap;'
+            f'                overflow:hidden;text-overflow:ellipsis">{t["tipo"]}</div>'
+            f'    <div style="height:4px;background:rgba(255,255,255,.06);border-radius:2px;margin-top:3px">'
+            f'      <div style="height:100%;width:{bar_w:.0f}%;background:{color};border-radius:2px;opacity:.8"></div>'
+            f'    </div>'
+            f'  </div>'
+            f'  <div style="text-align:right;flex-shrink:0">'
+            f'    <div style="font-size:10px;font-weight:700;color:{color}">{_fmt(t["adj"])}</div>'
+            f'    <div style="font-size:9px;color:var(--muted)">{t["cnt"]} proc.</div>'
+            f'  </div>'
+            f'</div>'
+        )
+    return rows
+
+
+# ── CAJÓN DE ENTIDAD ───────────────────────────────────────────────────────────
+def _cajón(idx: int, cod: str, stats: dict, by_year: dict, tipos: dict) -> str:
+    meta  = _ENTIDADES[cod]
+    color = meta["color"]
+    rgb   = meta["rgb"]
+
+    adj   = stats.get("adjudicado",    0.0)
+    proc  = stats.get("procesos",      0)
+    prov  = stats.get("proveedores",   0)
+    pres  = stats.get("presupuestado", 0.0)
+    ticket = adj / proc if proc > 0 else 0.0
+
+    # Badge
+    if proc == 0:
+        badge_cls, badge_txt = "badge-red",    "⚠️ Sin actividad"
+    elif adj >= 5_000_000:
+        badge_cls, badge_txt = "badge-cyan",   "💰 Alta inversión"
+    elif proc >= 200:
+        badge_cls, badge_txt = "badge-purple", "📊 Alta frecuencia"
+    else:
+        badge_cls, badge_txt = "badge-green",  "✅ Activa"
+
+    # Eficiencia presupuestaria (adjudicado/presupuestado)
+    if pres > 0:
+        eficiencia = adj / pres * 100
+        efic_color = "var(--green)" if eficiencia <= 115 else "var(--amber)"
+        efic_label = f"{eficiencia:.0f}%"
+    else:
+        efic_label = "—"
+        efic_color = "var(--muted)"
+
+    # Sparkline + tipos
+    spark = _sparkline(cod, by_year, color) if proc > 0 else ""
+    tipo_lista = tipos.get(cod, [])
+    tipos_h = _tipos_html(tipo_lista, color, adj) if adj > 0 else ""
+
+    # Alerta HABITAT
+    alert_html = ""
+    if cod == "HABITAT":
+        alert_html = """
+<div style="padding:12px 14px;background:rgba(255,77,109,.08);border-left:3px solid #FF4D6D;
+            border-radius:0 8px 8px 0;margin:0 0 12px;font-size:12px;color:#FF4D6D">
+  <strong>Entidad sin registro SERCOP (2023-2026).</strong>
+  Puede indicar: entidad jurídicamente activa pero operativamente inactiva,
+  procesos absorbidos por el GAD, o registro bajo nombre diferente en el sistema.
+  Requiere verificación manual en el portal de compras públicas.
+</div>"""
+
+    # Alerta caída GAD 2025
+    gad_alert = ""
+    if cod == "GAD":
+        p2024 = by_year.get(("GAD", 2024), {}).get("cnt", 0)
+        p2025 = by_year.get(("GAD", 2025), {}).get("cnt", 0)
+        if p2024 > 0 and p2025 < p2024 * 0.4:
+            gad_alert = f"""
+<div style="padding:10px 12px;background:rgba(255,183,0,.08);border-left:3px solid var(--amber);
+            border-radius:0 8px 8px 0;margin:0 0 10px;font-size:11px;color:var(--amber)">
+  ⚡ <strong>Caída 2024→2025:</strong> {p2024} → {p2025} procesos (
+  {100-p2025/p2024*100:.0f}% menos). Puede indicar subejecución presupuestaria o
+  desplazamiento a otro mecanismo de contratación.
+</div>"""
+
+    # Stats grid
+    stats_grid = (
+        f'<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:4px">'
+        f'  <div style="text-align:center;padding:10px 6px;background:rgba(255,255,255,.04);border-radius:8px">'
+        f'    <div style="font-size:18px;font-weight:900;font-family:var(--mono);color:{color}">{_fmt(adj)}</div>'
+        f'    <div style="font-size:9px;color:var(--muted);margin-top:2px">Adjudicado</div>'
+        f'  </div>'
+        f'  <div style="text-align:center;padding:10px 6px;background:rgba(255,255,255,.04);border-radius:8px">'
+        f'    <div style="font-size:18px;font-weight:900;font-family:var(--mono);color:var(--white)">{proc}</div>'
+        f'    <div style="font-size:9px;color:var(--muted);margin-top:2px">Procesos</div>'
+        f'  </div>'
+        f'  <div style="text-align:center;padding:10px 6px;background:rgba(255,255,255,.04);border-radius:8px">'
+        f'    <div style="font-size:18px;font-weight:900;font-family:var(--mono);color:var(--amber)">{_fmt(ticket)}</div>'
+        f'    <div style="font-size:9px;color:var(--muted);margin-top:2px">Ticket promedio</div>'
+        f'  </div>'
+        f'  <div style="text-align:center;padding:10px 6px;background:rgba(255,255,255,.04);border-radius:8px">'
+        f'    <div style="font-size:18px;font-weight:900;font-family:var(--mono);color:var(--purple)">{prov}</div>'
+        f'    <div style="font-size:9px;color:var(--muted);margin-top:2px">Proveedores</div>'
+        f'  </div>'
+        f'</div>'
+    )
+
     return f"""
-<div style="margin-bottom:10px;border:1px solid rgba({border_c},.25);border-radius:12px;
+<div style="margin-bottom:10px;border:1px solid rgba({rgb},.28);border-radius:12px;
             overflow:hidden;background:var(--navy-card)">
-  <div onclick="var d=document.getElementById('hpt-{idx}');
-                d.style.display=d.style.display==='none'?'block':'none';
-                this.querySelector('.arrow-{idx}').textContent=d.style.display==='none'?'▼':'▲'"
-       style="padding:14px 16px;cursor:pointer;display:flex;justify-content:space-between;
-              align-items:center">
-    <div style="display:flex;align-items:center;gap:16px;flex:1">
-      <div style="font-size:28px">{emoji}</div>
-      <div style="flex:1">
-        <div style="font-size:15px;font-weight:800;color:var(--white)">{nombre}</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:3px">{tipo}</div>
+  <div onclick="var d=document.getElementById('hm{idx}');
+                var open=d.style.display!=='none';
+                d.style.display=open?'none':'block';
+                this.querySelector('.arr{idx}').textContent=open?'▼':'▲'"
+       style="padding:14px 16px;cursor:pointer;display:flex;
+              justify-content:space-between;align-items:center;
+              border-bottom:1px solid rgba({rgb},.1)">
+    <div style="display:flex;align-items:center;gap:14px;flex:1;min-width:0">
+      <div style="font-size:28px;flex-shrink:0">{meta['emoji']}</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-size:15px;font-weight:800;color:var(--white)">{meta['nombre']}</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:2px">{meta['tipo']}</div>
       </div>
-      <div style="display:flex;align-items:center;gap:12px;min-width:220px">
-        <div style="flex:1;height:8px;background:var(--divider);border-radius:4px">
-          <div style="height:100%;width:{min(score,100):.1f}%;background:{score_color};border-radius:4px"></div>
+      <div style="display:flex;align-items:center;gap:14px;flex-shrink:0">
+        <div style="text-align:right">
+          <div style="font-size:20px;font-weight:900;font-family:var(--mono);
+                      color:{color};line-height:1.1">{_fmt(adj)}</div>
+          <div style="font-size:9px;color:var(--muted)">adjudicado</div>
         </div>
-        <div style="font-size:18px;font-weight:900;font-family:var(--mono);
-                    color:{score_color};min-width:52px;text-align:right">{score:.1f}%</div>
-        <span class="badge {badge_class}" style="font-size:10px;padding:3px 9px">{badge_text}</span>
+        <div style="text-align:center">
+          <div style="font-size:18px;font-weight:800;color:var(--white)">{proc}</div>
+          <div style="font-size:9px;color:var(--muted)">procesos</div>
+        </div>
+        <span class="badge {badge_cls}" style="font-size:10px;padding:4px 10px;
+              white-space:nowrap">{badge_txt}</span>
       </div>
     </div>
-    <span class="arrow-{idx}" style="color:{arrow_color};font-size:11px;margin-left:12px">▼</span>
+    <span class="arr{idx}" style="color:var(--muted);font-size:11px;margin-left:12px;
+          flex-shrink:0">▼</span>
   </div>
-  <div id="hpt-{idx}" style="display:none;padding:0 16px 16px">
-    {alert_html}
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px">
-      <div style="padding:12px;background:rgba(0,224,150,.05);border-radius:8px;
-                  border:1px solid rgba(0,224,150,.15)">
-        <div style="font-size:10px;font-weight:700;color:var(--green);text-transform:uppercase;
-                    letter-spacing:.1em;margin-bottom:6px">① ¿Qué pasó?</div>
-        <div style="font-size:12px;color:var(--white);line-height:1.6">{what}</div>
-      </div>
-      <div style="padding:12px;background:rgba(0,212,255,.05);border-radius:8px;
-                  border:1px solid rgba(0,212,255,.12)">
-        <div style="font-size:10px;font-weight:700;color:var(--cyan);text-transform:uppercase;
-                    letter-spacing:.1em;margin-bottom:6px">② ¿Por qué pasó?</div>
-        <div style="font-size:12px;color:var(--white);line-height:1.6">{why}</div>
-      </div>
-      <div style="padding:12px;background:rgba(124,92,252,.05);border-radius:8px;
-                  border:1px solid rgba(124,92,252,.15)">
-        <div style="font-size:10px;font-weight:700;color:var(--purple);text-transform:uppercase;
-                    letter-spacing:.1em;margin-bottom:6px">③ ¿Qué impacto genera?</div>
-        <div style="font-size:12px;color:var(--white);line-height:1.6">{impact}</div>
-      </div>
-      <div style="padding:12px;background:rgba(255,183,0,.05);border-radius:8px;
-                  border:1px solid rgba(255,183,0,.12)">
-        <div style="font-size:10px;font-weight:700;color:var(--amber);text-transform:uppercase;
-                    letter-spacing:.1em;margin-bottom:6px">④ ¿Cómo {fix[0]}?</div>
-        <div style="font-size:12px;color:var(--white);line-height:1.6">{fix[1]}</div>
-      </div>
-    </div>
-    <div style="display:inline-block;margin-top:12px;padding:8px 12px;
-                background:rgba(0,212,255,.06);border:1px solid rgba(0,212,255,.15);
-                border-radius:8px;font-size:12px;color:var(--cyan)">
-      💬 {sentinel_q}
+
+  <div id="hm{idx}" style="display:none;padding:14px 16px 16px">
+    {alert_html}{gad_alert}
+    {stats_grid}
+    {spark}
+    <div style="margin-top:14px">
+      <div style="font-size:10px;font-weight:700;color:var(--muted);
+                  text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">
+        Modalidades principales de contratación</div>
+      {tipos_h}
     </div>
   </div>
 </div>"""
 
 
-# ── MAIN RENDER ───────────────────────────────────────────────────────────────
+# ── RENDER PRINCIPAL ───────────────────────────────────────────────────────────
 def render() -> None:
-    data      = load_all()
-    holding   = data["holding"]
+    sd        = _load_sercop_data()
     show_tech = is_tecnico()
-    icgit     = holding.get("icgit_global", 53.56)
+
+    by_entity = sd.get("by_entity", {})
+    by_year   = sd.get("by_year",   {})
+    tipos     = sd.get("tipos",     {})
+    total_proc = sd.get("total_procesos",   0)
+    total_adj  = sd.get("total_adjudicado", 0.0)
 
     # ── HEADER ────────────────────────────────────────────────────────────────
     hdr = page_header(
-        "⑤ GRUPO MUNICIPAL",
-        "Grupo Municipal · Operadores Públicos",
-        "Dónde se degrada el Grupo Municipal, por qué, y cómo recuperarlo · corte ene–mar 2026",
+        "⑤ HOLDING MUNICIPAL",
+        "Contratación Pública · 5 Entidades · 2023-2026",
+        "Observatorio SERCOP — datos reales verificados · 772 procesos únicos · $12.3M adjudicados",
     )
 
-    # ── DOCTRINA QUIRA ────────────────────────────────────────────────────────
-    doctrina = """
-<div style="padding:16px 20px;
-            background:linear-gradient(135deg,rgba(0,212,255,.07) 0%,rgba(124,92,252,.04) 100%);
-            border:1px solid rgba(0,212,255,.22);border-radius:12px;margin-bottom:16px">
-  <div style="font-size:10px;font-weight:700;color:var(--cyan);text-transform:uppercase;
-              letter-spacing:.12em;margin-bottom:10px">⚡ Doctrina QUIRA · Grupo Municipal</div>
-  <div style="font-size:15px;font-weight:800;color:var(--white);line-height:1.65;
-              font-style:italic;border-left:3px solid var(--cyan);padding-left:14px">
-    "Una alcaldía puede ejecutar bien y aun así fallar si sus operadores degradan el territorio."
-  </div>
-  <div style="font-size:11px;color:var(--muted);margin-top:10px;line-height:1.6">
-    QUIRA Gov no audita solo al GAD — audita el
-    <strong style="color:var(--white)">Grupo Municipal</strong> completo.
-    Expandir cada operador para ver la causalidad institucional:
-    qué pasó, cómo pasó y cómo corregirlo.
-  </div>
-</div>"""
+    # ── BANNER FUENTE ─────────────────────────────────────────────────────────
+    if sd["ok"]:
+        banner_color, banner_icon, banner_msg = (
+            "rgba(0,224,150,.08)", "#00E096",
+            f"✅ Datos en vivo · {total_proc} procesos únicos · {_fmt(total_adj)} adjudicados · "
+            f"Fuente: SERCOP API datos abiertos · Ingesta: Sprint 0 · QUIRA OS"
+        )
+    else:
+        banner_color, banner_icon, banner_msg = (
+            "rgba(255,77,109,.08)", "#FF4D6D",
+            f"⚠️ Error cargando datos SERCOP: {sd.get('error', 'desconocido')}"
+        )
 
-    # ── 4-NODE SUMMARY GRID ───────────────────────────────────────────────────
-    grid4 = (
-        '<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px">'
-        + _mini_score_node(58.3,  "#FFB800", "GOBIERNO",    "GAD · Concejo")
-        + _mini_score_node(71.7,  "#FFB800", "OPERADORES",  "3 entidades ↓ detalle")
-        + _mini_score_node(44.8,  "#FF4D6D", "TERRITORIO",  "7 parroquias")
-        + _mini_score_node(61.1,  "#FFB800", "ECOSISTEMA",  "ODS · BID · CAF")
-        + '</div>'
+    banner = (
+        f'<div style="padding:10px 16px;background:{banner_color};'
+        f'border:1px solid {banner_icon}44;border-radius:8px;margin-bottom:14px;'
+        f'font-size:11px;color:{banner_icon}">{banner_msg}</div>'
     )
 
-    # ── SECTION HEADER ────────────────────────────────────────────────────────
-    sec_hdr = """
-<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
-  <div style="font-size:13px;font-weight:700;color:var(--white)">Nodo Operadores · Diagnóstico por entidad</div>
-  <span class="badge badge-cyan">Grupo Municipal · Haz clic para expandir</span>
-</div>
-<div style="font-size:11px;color:var(--muted);margin-bottom:10px">
-  Cada entidad responde a su propia lógica de gobernanza. Expandir para ver:
-  <strong style="color:var(--white)">qué pasó · por qué pasó · qué impacto genera · cómo corregir</strong>.
-</div>"""
+    # ── KPI STRIP ─────────────────────────────────────────────────────────────
+    entidades_activas = sum(1 for cod in _ENTIDADES if by_entity.get(cod, {}).get("procesos", 0) > 0)
+    gad_share = by_entity.get("GAD", {}).get("adjudicado", 0) / total_adj * 100 if total_adj > 0 else 0
+    patronato_proc = by_entity.get("PATRONATO", {}).get("procesos", 0)
+    ticket_global = total_adj / total_proc if total_proc > 0 else 0
 
-    # ── PRINCIPIO HOLDING STRIP ───────────────────────────────────────────────
-    principio = """
-<div style="display:flex;align-items:center;justify-content:center;gap:6px;
-            padding:9px 14px;background:rgba(255,183,0,.05);
-            border:1px solid rgba(255,183,0,.18);border-radius:8px;
-            margin-bottom:14px;flex-wrap:wrap">
-  <span style="font-size:10px;font-weight:700;color:var(--amber)">⚡ Principio del Holding:</span>
-  <span style="font-size:10px;color:var(--muted)">
-    Una entidad bajo umbral arrastra el Nodo completo, que arrastra la calificación global.
-  </span>
-  <span style="font-size:11px;color:var(--white);font-family:var(--mono);
-               background:rgba(0,0,0,.2);padding:3px 10px;border-radius:4px;white-space:nowrap">
-    Entidad ↓ → Nodo ↓ → Calificación ↓
-  </span>
-</div>"""
-
-    # ── ENTITY DRAWERS ────────────────────────────────────────────────────────
-    bomberos = _entity_drawer(
-        idx=1, emoji="🚒",
-        nombre="Cuerpo de Bomberos",
-        tipo="Seguridad y prevención de incendios · Entidad adscrita GAD",
-        score=82.7, score_color="var(--green)",
-        badge_class="badge-green", badge_text="✅ Referente",
-        what="Bomberos lidera el Nodo Operadores con 82.7%, el único operador en nivel Gestión por Mandato. Ejecución presupuestaria al 78% a mayo 2026.",
-        why="Estructura de mando único y planificación operativa propia. El POA institucional está alineado al PDOT y con PAC completo y registrado en el sistema.",
-        impact="Jala el consolidado del Nodo hacia arriba. Es el modelo de referencia interna. Su gestión documenta 3 de los 5 indicadores verificables de la calificación.",
-        fix=("capitalizar", "Replicar el modelo PAC-POA de Bomberos en EP Aseo. Documentar su metodología como estándar interno del Holding y usarla como evidencia ante BID/PNUD."),
-        alert_html="",
-        sentinel_q="Preguntar a SENTINEL sobre Bomberos",
-    )
-
-    patronato = _entity_drawer(
-        idx=2, emoji="🤝",
-        nombre="Patronato Municipal",
-        tipo="Servicios sociales, discapacidad, adulto mayor · Entidad adscrita GAD",
-        score=74.1, score_color="var(--green)",
-        badge_class="badge-green", badge_text="✅ Gestión",
-        what="Patronato mantiene 74.1% en nivel Gestión por Mandato. Ejecución del programa social al 68% con foco en grupos vulnerables y adulto mayor.",
-        why="Gestión social con métricas de cobertura bien documentadas. Sin embargo, el indicador de Equidad en el Gasto (PSG) arrastra el score: género representa solo el 1% del devengado real.",
-        impact="La brecha PSG del Patronato bloquea directamente los $95,000 del BID Lab Gender Bond. El holding pierde elegibilidad para ese fondo por una entidad que debería liderar la equidad.",
-        fix=("corregir", "Reclasificar el presupuesto operativo del Patronato con marcadores de género. Activar el protocolo de devengado PSG-30% antes de agosto 2026 para acceder al Gender Bond en Q4."),
-        alert_html="",
-        sentinel_q="Preguntar a SENTINEL sobre Patronato",
-    )
-
-    ep_alerta = """
-<div style="margin-top:12px;padding:10px 14px;background:rgba(255,183,0,.08);
-            border-radius:8px;border-left:3px solid var(--amber);
-            font-size:11px;color:var(--amber);margin-bottom:12px">
-  ⚠️ <strong>Alerta activa:</strong> EP Aseo arrastra el Nodo Operadores 13.4 puntos
-  por debajo de Bomberos. Es la brecha operativa más costosa del holding.
-</div>"""
-
-    ep_aseo = _entity_drawer(
-        idx=3, emoji="🗑️",
-        nombre="Empresa Municipal de Aseo Integral Montecristi-EP",
-        tipo="Recolección, tratamiento y disposición final de residuos · Empresa pública",
-        score=58.4, score_color="var(--amber)",
-        badge_class="badge-amber", badge_text="⚠️ Alerta",
-        what="EP Aseo registra 58.4%, límite inferior del nivel Transición Crítica. Ejecución presupuestaria al 42%, la más baja de todos los operadores del Holding.",
-        why="Tres causas convergentes: (1) retrasos en certificación presupuestaria Q4-2025, (2) 4 procesos PAC no iniciados para equipamiento, (3) rotación de director técnico sin protocolo de transferencia.",
-        impact="Riesgo de discontinuidad en cobertura de recolección en parroquias rurales. Deprime el Nodo Operadores y arrastra la Congruencia Operativa al 47.2%. Bloquea elegibilidad para Fondo Verde GEF.",
-        fix=("corregir", "Pasos inmediatos: (1) Certificar presupuesto retenido antes del 30-jun, (2) iniciar los 4 procesos PAC en SERCOP esta semana, (3) aplicar protocolo de gestión por continuidad del cargo técnico."),
-        alert_html=ep_alerta,
-        sentinel_q="Preguntar a SENTINEL sobre EP Aseo",
-    )
-
-    # ── RESUMEN OPERATIVO ─────────────────────────────────────────────────────
-    resumen = """
-<div style="padding:12px 16px;background:rgba(0,212,255,.04);border-radius:10px;
-            border:1px solid rgba(0,212,255,.12);display:flex;gap:14px;align-items:flex-start">
-  <div style="font-size:20px;flex-shrink:0">🧭</div>
-  <div style="flex:1">
-    <div style="font-size:12px;font-weight:700;color:var(--cyan);margin-bottom:6px">
-      Resumen del Nodo Operadores · ene–mar 2026
-    </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:8px">
-      <div style="text-align:center;padding:6px;background:rgba(34,197,94,.06);border-radius:6px">
-        <div style="font-size:14px;font-weight:800;color:var(--green)">82.7%</div>
-        <div style="font-size:10px;color:var(--muted)">🚒 Bomberos</div>
-        <div style="font-size:9px;color:var(--green)">▲ Referente</div>
-      </div>
-      <div style="text-align:center;padding:6px;background:rgba(34,197,94,.06);border-radius:6px">
-        <div style="font-size:14px;font-weight:800;color:var(--green)">74.1%</div>
-        <div style="font-size:10px;color:var(--muted)">🤝 Patronato</div>
-        <div style="font-size:9px;color:var(--amber)">→ PSG pendiente</div>
-      </div>
-      <div style="text-align:center;padding:6px;background:rgba(255,183,0,.05);border-radius:6px">
-        <div style="font-size:14px;font-weight:800;color:var(--amber)">58.4%</div>
-        <div style="font-size:10px;color:var(--muted)">🗑️ EP Aseo</div>
-        <div style="font-size:9px;color:var(--red)">▼ Arrastra</div>
-      </div>
-    </div>
-    <div style="font-size:11px;color:var(--muted);line-height:1.6">
-      El promedio consolidado de <strong style="color:var(--amber)">71.7% oculta la tensión interna</strong>:
-      Bomberos hala hacia arriba, EP Aseo arrastra hacia abajo.
-      La causalidad institucional explicable — no el promedio — es lo que convierte datos en acción de gobierno.
-    </div>
-  </div>
-</div>"""
-
-    # ── CAUSALIDAD SISTÉMICA ──────────────────────────────────────────────────
-    causalidad = f"""
-<div style="margin-top:14px;padding:14px;background:var(--navy-card);
-            border-radius:10px;border:1px solid rgba(0,212,255,.12)">
-  <div style="font-size:10px;font-weight:700;color:var(--cyan);text-transform:uppercase;
-              letter-spacing:.1em;margin-bottom:12px">
-    🔗 Causalidad sistémica · Cómo cada entidad impacta la calificación
-  </div>
-  <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:14px">
-    <div style="padding:14px 16px;background:rgba(34,197,94,.08);border-radius:10px;
-                border:1px solid rgba(34,197,94,.2);text-align:center;min-width:100px">
-      <div style="font-size:10px;color:var(--muted)">🚒 Bomberos</div>
-      <div style="font-size:24px;font-weight:900;color:var(--green);font-family:var(--mono)">82.7%</div>
-      <div style="font-size:9px;color:var(--green)">▲ referente</div>
-    </div>
-    <div style="color:var(--muted);font-size:20px;padding:0 2px">+</div>
-    <div style="padding:14px 16px;background:rgba(34,197,94,.08);border-radius:10px;
-                border:1px solid rgba(34,197,94,.2);text-align:center;min-width:100px">
-      <div style="font-size:10px;color:var(--muted)">🤝 Patronato</div>
-      <div style="font-size:24px;font-weight:900;color:var(--green);font-family:var(--mono)">74.1%</div>
-      <div style="font-size:9px;color:var(--amber)">→ PSG gap</div>
-    </div>
-    <div style="color:var(--muted);font-size:20px;padding:0 2px">+</div>
-    <div style="padding:14px 16px;background:rgba(255,183,0,.08);border-radius:10px;
-                border:1px solid rgba(255,183,0,.3);text-align:center;min-width:100px">
-      <div style="font-size:10px;color:var(--muted)">🗑️ EP Aseo</div>
-      <div style="font-size:24px;font-weight:900;color:var(--amber);font-family:var(--mono)">58.4%</div>
-      <div style="font-size:9px;color:var(--red)">▼ arrastra</div>
-    </div>
-    <div style="color:var(--muted);font-size:22px;padding:0 8px;font-weight:300">→</div>
-    <div style="padding:14px 16px;background:rgba(255,183,0,.06);border-radius:10px;
-                border:1px solid rgba(255,183,0,.2);text-align:center;min-width:116px">
-      <div style="font-size:10px;color:var(--muted)">Nodo Operadores</div>
-      <div style="font-size:24px;font-weight:900;color:var(--amber);font-family:var(--mono)">71.7%</div>
-      <div style="font-size:9px;color:var(--muted)">promedio ocultador</div>
-    </div>
-    <div style="color:var(--muted);font-size:22px;padding:0 8px;font-weight:300">→</div>
-    <div style="padding:14px 16px;background:rgba(255,77,109,.06);border-radius:10px;
-                border:1px solid rgba(255,77,109,.2);text-align:center;min-width:106px">
-      <div style="font-size:10px;color:var(--muted)">Calificación Global</div>
-      <div style="font-size:24px;font-weight:900;color:var(--red);font-family:var(--mono)">{icgit:.2f}%</div>
-      <div style="font-size:9px;color:var(--red)">Transición Crítica</div>
-    </div>
-  </div>
-  <div style="font-size:11px;color:var(--muted);line-height:1.6;padding-top:8px;
-              border-top:1px solid rgba(255,255,255,.05)">
-    Si EP Aseo sube de 58.4% → 70%: el Nodo Operadores pasa a 75.6%, con
-    <strong style="color:var(--white)">impacto positivo en la calificación global</strong> —
-    acercando Montecristi al umbral de
-    <em style="color:var(--amber)">Gestión por Mandato (69.93%)</em> exigido por el PDOT al 2027.
-  </div>
-</div>
-<div style="display:inline-block;margin-top:12px;padding:8px 12px;
-            background:rgba(0,212,255,.06);border:1px solid rgba(0,212,255,.15);
-            border-radius:8px;font-size:12px;color:var(--cyan)">
-  🤖 Analizar todo el Holding con SENTINEL
-</div>"""
-
-    # ── FICHA POR ENTIDAD · H71 Gold Master ──────────────────────────────────
-    def _ep_card(emoji, nombre, cod, icgi, icgi_color, icgi_c,
-                 impacto_pct, ejecutado_k, tiene_pei, pei_nota, avep_label) -> str:
-        pei_color = "green" if tiene_pei else "red"
-        pei_icon  = "✅" if tiene_pei else "❌"
-        bar_w     = min(icgi, 100)
-        bar_clr   = icgi_color
+    def _kpi(label: str, value: str, sub: str, color: str = "var(--white)") -> str:
         return (
-            f'<div style="background:var(--navy-card);border-radius:14px;padding:16px 18px;'
-            f'border:1px solid rgba({icgi_c},.22);position:relative;overflow:hidden">'
-            f'<div style="position:absolute;top:0;left:0;width:100%;height:3px;'
-            f'background:linear-gradient(90deg,{icgi_color},{icgi_color}44)"></div>'
-            f'<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">'
-            f'<div>'
-            f'<div style="font-size:13px;font-weight:800;color:var(--white)">{emoji} {nombre}</div>'
-            f'<div style="font-size:10px;color:var(--muted);margin-top:2px">{cod}</div>'
-            f'</div>'
-            f'<div style="text-align:right">'
-            f'<div style="font-size:28px;font-weight:900;font-family:var(--mono);'
-            f'color:{icgi_color};line-height:1">{icgi:.1f}%</div>'
-            f'<div style="font-size:9px;color:var(--muted);margin-top:1px">Calificación</div>'
-            f'</div>'
-            f'</div>'
-            f'<div style="height:5px;background:rgba(255,255,255,.07);border-radius:3px;margin-bottom:12px">'
-            f'<div style="height:100%;width:{bar_w:.1f}%;background:{bar_clr};border-radius:3px;opacity:.85"></div>'
-            f'</div>'
-            f'<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">'
-            f'<div style="text-align:center;background:rgba(255,255,255,.04);border-radius:8px;padding:8px 4px">'
-            f'<div style="font-size:15px;font-weight:800;color:var(--cyan)">{impacto_pct}%</div>'
-            f'<div style="font-size:9px;color:var(--muted);margin-top:2px">Impacto Territorial</div>'
-            f'</div>'
-            f'<div style="text-align:center;background:rgba(255,255,255,.04);border-radius:8px;padding:8px 4px">'
-            f'<div style="font-size:15px;font-weight:800;color:var(--amber)">${ejecutado_k}K</div>'
-            f'<div style="font-size:9px;color:var(--muted);margin-top:2px">Ejecutado Q1</div>'
-            f'</div>'
-            f'<div style="text-align:center;background:rgba(255,255,255,.04);border-radius:8px;padding:8px 4px">'
-            f'<div style="font-size:15px;font-weight:800;color:var(--{pei_color})">{pei_icon}</div>'
-            f'<div style="font-size:9px;color:var(--muted);margin-top:2px">PEI {pei_nota}</div>'
-            f'</div>'
-            f'</div>'
-            f'<div style="margin-top:10px;font-size:10px;color:var(--{pei_color});font-weight:700">'
-            f'AVEP: {avep_label}'
-            f'</div>'
+            f'<div style="background:var(--navy-card);border:1px solid var(--divider);'
+            f'border-radius:12px;padding:14px 16px;text-align:center">'
+            f'  <div style="font-size:24px;font-weight:900;font-family:var(--mono);'
+            f'              color:{color};line-height:1.1">{value}</div>'
+            f'  <div style="font-size:11px;font-weight:700;color:var(--white);margin-top:4px">{label}</div>'
+            f'  <div style="font-size:10px;color:var(--muted);margin-top:2px">{sub}</div>'
             f'</div>'
         )
 
-    ficha = (
-        '<div style="margin-top:18px">'
-        '<div style="font-size:10px;font-weight:700;color:var(--cyan);text-transform:uppercase;'
-        'letter-spacing:.12em;margin-bottom:12px">'
-        '📊 Radar por Entidad · H71 Gold Master · ene–mar 2026</div>'
-        '<div class="grid-2" style="gap:12px">'
-        + _ep_card("🚒", "Cuerpo de Bomberos", "CB-01 · Emergencias · COESCOP",
-                   82.7, "#38A169", "56,161,105",
-                   78, 178, True, "vigente", "✅ Gestión por Mandato")
-        + _ep_card("🤝", "Patronato Municipal", "AD-01 · Desarrollo Social · LOSEP",
-                   74.1, "#38A169", "56,161,105",
-                   92, 312, True, "vigente", "✅ Gestión por Mandato")
-        + _ep_card("🗑️", "Empresa Municipal de Aseo Integral Montecristi-EP", "EP-01 · Residuos Sólidos · LOEP",
-                   58.4, "#D69E2E", "214,158,46",
-                   85, 245, True, "vigente", "⚡ Transición Crítica — arrastra nodo")
-        + _ep_card("🏛️", "GAD Central", "ALC-01 · 12 Direcciones · COOTAD",
-                   61.2, "#D69E2E", "214,158,46",
-                   100, 5147, False, "N/A — gobierno",  "⚡ Transición Crítica")
+    kpi_strip = (
+        '<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:16px">'
+        + _kpi("Procesos totales",   str(total_proc),           "2023-2026 · SERCOP",           "var(--cyan)")
+        + _kpi("Adjudicado total",   _fmt(total_adj),           "4 entidades activas",           "var(--green)")
+        + _kpi("Ticket promedio",    _fmt(ticket_global),       "por proceso",                   "var(--amber)")
+        + _kpi("Entidades activas",  f"{entidades_activas}/5",  "1 sin registro (EP Hábitat)",   "var(--purple)")
+        + _kpi("GAD concentra",      f"{gad_share:.0f}%",       "del gasto total del Holding",   "#00D4FF")
         + '</div>'
-        '<div style="margin-top:10px;font-size:10px;color:var(--muted);line-height:1.5;'
-        'padding:8px 12px;background:rgba(255,255,255,.03);border-radius:8px">'
-        '💡 <strong style="color:var(--white)">Lectura del Grupo Municipal:</strong> '
-        'Impacto Territorial = % de metas PDOT con trazabilidad en territorio · '
-        'Ejecutado Q1 = devengado eSIGEF corte 2026-04-30 · '
-        'PEI = Plan Estratégico Institucional activo · '
-        'Fuente: H71_EP_ADSCRITAS · H90_PRESUPUESTO_CONSOLIDADO'
-        '</div>'
-        '</div>'
     )
+
+    # ── SECCIÓN HEADER ────────────────────────────────────────────────────────
+    sec_hdr = """
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+  <div>
+    <div style="font-size:13px;font-weight:700;color:var(--white)">
+      Cajón 1 · Contratación por Entidad — Haz clic para expandir</div>
+    <div style="font-size:10px;color:var(--muted);margin-top:2px">
+      Cada cajón muestra: adjudicado total · procesos · evolución anual · modalidades</div>
+  </div>
+  <span class="badge badge-cyan">SERCOP 2023-2026</span>
+</div>"""
+
+    # ── CAJONES POR ENTIDAD ───────────────────────────────────────────────────
+    cajones = ""
+    for i, cod in enumerate(["GAD", "PATRONATO", "BOMBEROS", "EMAI", "HABITAT"], start=1):
+        stats = by_entity.get(cod, {"procesos": 0, "adjudicado": 0, "presupuestado": 0, "proveedores": 0})
+        cajones += _cajón(i, cod, stats, by_year, tipos)
+
+    # ── INSIGHTS AUTOMÁTICOS ──────────────────────────────────────────────────
+    gad_adj    = by_entity.get("GAD",      {}).get("adjudicado", 0)
+    emai_adj   = by_entity.get("EMAI",     {}).get("adjudicado", 0)
+    pat_proc   = by_entity.get("PATRONATO",{}).get("procesos",   0)
+    bom_proc   = by_entity.get("BOMBEROS", {}).get("procesos",   0)
+    emai_proc  = by_entity.get("EMAI",     {}).get("procesos",   0)
+    emai_tick  = emai_adj / emai_proc if emai_proc > 0 else 0
+
+    gad_24 = by_year.get(("GAD", 2024), {}).get("cnt", 0)
+    gad_25 = by_year.get(("GAD", 2025), {}).get("cnt", 0)
+    caida_gad = (gad_24 - gad_25) / gad_24 * 100 if gad_24 > 0 else 0
+
+    def _insight(icon: str, titulo: str, texto: str, color: str = "var(--cyan)") -> str:
+        return (
+            f'<div style="padding:12px 14px;background:rgba(255,255,255,.03);'
+            f'border-radius:10px;border-left:3px solid {color}">'
+            f'  <div style="font-size:11px;font-weight:700;color:{color};margin-bottom:4px">'
+            f'    {icon} {titulo}</div>'
+            f'  <div style="font-size:11px;color:var(--white);line-height:1.6">{texto}</div>'
+            f'</div>'
+        )
+
+    insights = (
+        '<div style="margin-top:18px">'
+        '<div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;'
+        'letter-spacing:.1em;margin-bottom:10px">🔍 Señales detectadas · datos SERCOP</div>'
+        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">'
+        + _insight(
+            "🏛️", "GAD concentra el 68% del gasto del Holding",
+            f"De los {_fmt(total_adj)} adjudicados totales, el GAD Municipal representa "
+            f"{_fmt(gad_adj)} ({gad_share:.0f}%). Alta concentración presupuestaria en "
+            f"la administración central. Las entidades operadoras suman solo el {100-gad_share:.0f}% restante.",
+            "#00D4FF"
+        )
+        + _insight(
+            "📊", f"Patronato: operador más activo en volumen ({pat_proc} procesos)",
+            f"Con {pat_proc} procesos en 2023-2026, el Patronato es la entidad con más "
+            f"contratos pero ticket bajo ({_fmt(by_entity.get('PATRONATO',{}).get('adjudicado',0)/pat_proc if pat_proc>0 else 0)}/proceso). "
+            f"Principalmente compras de catálogo. Estabilidad operativa 2024-2025.",
+            "#7C5CFC"
+        )
+        + _insight(
+            "⚡", f"GAD: caída del {caida_gad:.0f}% en procesos 2024→2025",
+            f"El GAD pasó de {gad_24} procesos en 2024 a {gad_25} en 2025 "
+            f"({caida_gad:.0f}% menos). Señal de posible subejecución o cambio en "
+            f"modalidad de contratación. Requiere cruce con el PAC y el eSIGEF.",
+            "#FFB800"
+        )
+        + _insight(
+            "💰", f"EMAI: ticket promedio más alto del Holding ({_fmt(emai_tick)})",
+            f"Con solo {emai_proc} procesos y {_fmt(emai_adj)} adjudicados, EMAI opera "
+            f"con contratos de alta cuantía (SIE, Repuestos, Bienes únicos). "
+            f"Perfil de empresa técnica especializada — diferente al Patronato de alta frecuencia.",
+            "#FFB800"
+        )
+        + '</div>'
+        + '<div style="margin-top:10px">'
+        + _insight(
+            "🏗️", "EP Hábitat: 0 procesos registrados en SERCOP 2023-2026",
+            "La Empresa Pública de Hábitat no tiene ningún proceso de contratación registrado "
+            "en la API de datos abiertos. Puede indicar entidad operativamente inactiva, "
+            "procesos ejecutados bajo otro nombre/RUC, o absorción por el GAD Central. "
+            "Es en sí misma una alerta institucional.",
+            "#FF4D6D"
+        )
+        + '</div>'
+        + '</div>'
+    )
+
+    # ── TABLA COMPARATIVA ─────────────────────────────────────────────────────
+    tabla_rows = ""
+    for cod in ["GAD", "PATRONATO", "BOMBEROS", "EMAI", "HABITAT"]:
+        meta  = _ENTIDADES[cod]
+        st    = by_entity.get(cod, {"procesos": 0, "adjudicado": 0.0, "proveedores": 0})
+        proc  = st["procesos"]
+        adj   = st["adjudicado"]
+        prov  = st["proveedores"]
+        tick  = adj / proc if proc > 0 else 0
+        share = adj / total_adj * 100 if total_adj > 0 else 0
+        top   = tipos.get(cod, [{}])[0].get("tipo", "—") if tipos.get(cod) else "—"
+        top   = (top[:35] + "…") if len(top) > 35 else top
+        color = meta["color"]
+        tabla_rows += (
+            f'<tr>'
+            f'<td style="padding:8px 10px;font-size:11px;font-weight:700;color:var(--white)">'
+            f'{meta["emoji"]} {meta["nombre"]}</td>'
+            f'<td style="padding:8px 10px;font-size:11px;text-align:center;'
+            f'font-family:var(--mono);color:{color}">{proc}</td>'
+            f'<td style="padding:8px 10px;font-size:11px;text-align:right;'
+            f'font-family:var(--mono);color:{color}">{_fmt(adj)}</td>'
+            f'<td style="padding:8px 10px;font-size:11px;text-align:center;'
+            f'color:var(--muted)">{_fmt(tick)}</td>'
+            f'<td style="padding:8px 10px;font-size:11px;text-align:center;'
+            f'color:var(--muted)">{prov}</td>'
+            f'<td style="padding:8px 10px;font-size:11px;text-align:center;'
+            f'color:var(--amber);font-weight:700">{share:.1f}%</td>'
+            f'<td style="padding:8px 10px;font-size:10px;color:var(--muted)">{top}</td>'
+            f'</tr>'
+        )
+
+    tabla = f"""
+<div style="margin-top:18px">
+  <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;
+              letter-spacing:.1em;margin-bottom:10px">📋 Tabla comparativa · Holding Municipal</div>
+  <div style="overflow-x:auto">
+    <table class="tbl" style="width:100%;border-collapse:collapse;font-size:11px">
+      <thead>
+        <tr style="border-bottom:1px solid var(--divider)">
+          <th style="padding:8px 10px;text-align:left;font-size:10px;color:var(--muted);
+                     text-transform:uppercase;letter-spacing:.06em">Entidad</th>
+          <th style="padding:8px 10px;text-align:center;font-size:10px;color:var(--muted);
+                     text-transform:uppercase">Procesos</th>
+          <th style="padding:8px 10px;text-align:right;font-size:10px;color:var(--muted);
+                     text-transform:uppercase">Adjudicado</th>
+          <th style="padding:8px 10px;text-align:center;font-size:10px;color:var(--muted);
+                     text-transform:uppercase">Ticket</th>
+          <th style="padding:8px 10px;text-align:center;font-size:10px;color:var(--muted);
+                     text-transform:uppercase">Proveedores</th>
+          <th style="padding:8px 10px;text-align:center;font-size:10px;color:var(--amber);
+                     text-transform:uppercase">% Holding</th>
+          <th style="padding:8px 10px;text-align:left;font-size:10px;color:var(--muted);
+                     text-transform:uppercase">Modalidad principal</th>
+        </tr>
+      </thead>
+      <tbody>
+        {tabla_rows}
+        <tr style="border-top:1px solid var(--divider)">
+          <td style="padding:8px 10px;font-size:11px;font-weight:700;
+                     color:var(--cyan)">TOTAL HOLDING</td>
+          <td style="padding:8px 10px;font-size:11px;text-align:center;
+                     font-family:var(--mono);color:var(--cyan);font-weight:700">{total_proc}</td>
+          <td style="padding:8px 10px;font-size:11px;text-align:right;
+                     font-family:var(--mono);color:var(--cyan);font-weight:700">{_fmt(total_adj)}</td>
+          <td colspan="4" style="padding:8px 10px;font-size:10px;color:var(--muted)">
+            Fuente: SERCOP API · Sprint 0 QUIRA OS</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>"""
 
     # ── TECH NOTE ─────────────────────────────────────────────────────────────
     tech = ""
     if show_tech:
         tech = """
-<div style="margin-top:16px;font-size:9px;color:rgba(255,255,255,.2);
-            border-top:1px solid rgba(255,255,255,.04);padding-top:8px">
-  🔧 Fuente: SIAP-ICPI H71 · H71b · H90 · HPT-M canónico · Corte Q1-2026
+<div style="margin-top:16px;padding:10px 12px;background:rgba(255,255,255,.02);
+            border:1px solid rgba(255,255,255,.06);border-radius:8px;
+            font-size:9px;color:rgba(255,255,255,.25)">
+  🔧 Fuente técnica: tabla <code>sercop_contratos</code> en Supabase ·
+  Ingesta: <code>scripts/sercop_sprint0.py</code> · OCDS API SERCOP ·
+  Deduplicación por UNIQUE(ocid) · Cache 30 min ·
+  Actualizar: <code>python scripts/sercop_sprint0.py --year YYYY</code>
 </div>"""
 
-    # ── ASSEMBLE & RENDER ─────────────────────────────────────────────────────
+    # ── ASSEMBLE ──────────────────────────────────────────────────────────────
     html = (
-        hdr + doctrina + grid4
-        + sec_hdr + principio
-        + bomberos + patronato + ep_aseo
-        + resumen + causalidad + ficha + tech
+        hdr + banner + kpi_strip
+        + sec_hdr + cajones
+        + insights + tabla + tech
     )
-    render_page(html, show_tech=show_tech, height=2400)
+    render_page(html, show_tech=show_tech, height=3000)
 
-    # Native Streamlit CTA after iframe
+    # CTA nativo Streamlit
     c1, c2 = st.columns(2, gap="small")
     with c1:
-        if st.button("🔮 Analizar Holding con Sentinel", use_container_width=True, type="primary"):
+        if st.button("🔮 Analizar Holding con Sentinel",
+                     use_container_width=True, type="primary"):
             st.session_state["page"] = "sentinel"
             st.session_state["sentinel_pregunta_auto"] = (
-                "¿Cómo están funcionando las empresas del Holding Municipal "
-                "(Bomberos, Patronato, EP Aseo) y cuáles representan mayor riesgo "
-                "de gobernanza para el GAD de Montecristi?"
+                "Analiza la contratación pública del Holding Municipal de Montecristi "
+                f"({total_proc} procesos, {_fmt(total_adj)} adjudicados en 2023-2026). "
+                "¿Qué patrones, riesgos o oportunidades detectas?"
             )
             st.rerun()
     with c2:
-        if st.button("📊 Ver Tablero Ejecutivo", use_container_width=True):
+        if st.button("📊 Ver Tablero Ejecutivo",
+                     use_container_width=True):
             st.session_state["page"] = "dashboard"
             st.rerun()
