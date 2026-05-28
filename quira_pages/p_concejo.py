@@ -159,10 +159,10 @@ def _html_header_concejo() -> str:
         f'border:1px solid rgba(245,158,11,.18);border-radius:12px;margin-bottom:16px">'
 
         f'<div style="display:flex;align-items:center;gap:12px">'
-        f'<span style="font-size:20px">⚖</span>'
+        f'<span style="font-size:20px">🏛</span>'
         f'<div>'
         f'<div style="font:900 14px/1 Inter,sans-serif;color:#E2E8F0;letter-spacing:-.01em">'
-        f'Sala de Mando · Concejo Municipal</div>'
+        f'Gabinete Municipal</div>'
         f'<div style="font:400 9px/1 Inter,sans-serif;color:rgba(255,255,255,.28);margin-top:2px">'
         f'{GAD_NOMBRE} · QUIRA Intelligence · Corte {CORTE}</div>'
         f'</div></div>'
@@ -216,7 +216,7 @@ def _html_checklist(ctx: dict) -> str:
         f'border-radius:12px;padding:16px 18px;margin-bottom:14px">'
         f'<div style="font:800 9px/1 Inter,sans-serif;color:#22C55E;'
         f'letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px">'
-        f'✓ Checklist Pre-Concejo — {CORTE}</div>'
+        f'✓ Checklist Gabinete — {CORTE}</div>'
         + filas +
         f'</div>'
     )
@@ -547,7 +547,7 @@ def render() -> None:
     st.markdown(
         '<div style="margin-top:8px;font:400 8px/1 JetBrains Mono,monospace;'
         'color:rgba(255,255,255,.1);text-align:right">'
-        'QUIRA Intelligence · Sala de Mando Concejo · Sprint C.2 · '
+        'QUIRA Intelligence · Gabinete Municipal · Sprint E.1 · '
         'Gold Master v5.5_TGI · Dylus Lab © 2026'
         '</div>',
         unsafe_allow_html=True,

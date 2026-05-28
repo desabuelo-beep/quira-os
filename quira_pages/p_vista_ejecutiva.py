@@ -1233,13 +1233,157 @@ def render() -> None:
     )
     st.markdown(grid_html, unsafe_allow_html=True)
 
+    # ── Drill-down — Navegación Rápida (Sprint E.1) ───────────────────────────
+    # Botones nativos Streamlit → no dependen de HTML clickeable.
+    # Para el Ejecutivo abren vistas expandidas inline.
+    # Para el Técnico navegan al módulo técnico correspondiente.
+    from utils.session import is_tecnico as _is_tec
+    drill = st.session_state.get("ve_drill", None)
+
+    st.markdown(
+        '<div style="margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,.06)">'
+        '<div style="font:700 8px/1 Inter,sans-serif;color:rgba(255,255,255,.18);'
+        'letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px">VER EN DETALLE →</div>'
+        '</div>',
+        unsafe_allow_html=True,
+    )
+
+    nav_cols = st.columns(5)
+    _drill_map = [
+        ("📊 TGI Completo",     "tgi",         "cadena"     if _is_tec() else None),
+        ("🚨 SAT · Alertas",    "sat",         "alertas"    if _is_tec() else None),
+        ("🏛 Ecosistema",       "ecosistema",  "municipal"  if _is_tec() else None),
+        ("🗺 Territorio",       "territorio",  "geotwin"    if _is_tec() else None),
+        ("🤖 QUIRA IA",         "ia",          "analisis"   if _is_tec() else None),
+    ]
+
+    for i, (label, drill_key, mod_key) in enumerate(_drill_map):
+        with nav_cols[i]:
+            is_active = (drill == drill_key)
+            if st.button(
+                label,
+                key=f"ve_nav_{drill_key}",
+                use_container_width=True,
+                type="primary" if is_active else "secondary",
+            ):
+                if is_active:
+                    # Toggle off
+                    st.session_state["ve_drill"] = None
+                elif mod_key and _is_tec():
+                    # Técnico → navega al módulo dedicado
+                    st.session_state["gov_module"] = mod_key
+                    st.session_state["ve_drill"] = None
+                else:
+                    # Ejecutivo → expansión inline
+                    st.session_state["ve_drill"] = drill_key
+                st.rerun()
+
+    # ── Expansión inline (Ejecutivo sin acceso a módulos técnicos) ────────────
+    drill = st.session_state.get("ve_drill", None)
+    if drill:
+        st.markdown(
+            f'<div style="background:rgba(0,212,255,.04);border:1px solid rgba(0,212,255,.12);'
+            f'border-radius:12px;padding:16px 18px;margin-top:8px">'
+            f'<div style="font:800 9px/1 Inter,sans-serif;color:rgba(0,212,255,.7);'
+            f'letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px">'
+            f'🔍 Detalle: {drill.upper()}</div></div>',
+            unsafe_allow_html=True,
+        )
+        if drill == "tgi":
+            # D1-D5 expandido
+            tgi = data.get("tgi", {})
+            dims = [("D1","Legalidad","Marco normativo"),
+                    ("D2","Planificación","PDOT · PSG"),
+                    ("D3","Inversión","eSIGEF · ejecución"),
+                    ("D4","Equidad","Territorio · NBI"),
+                    ("D5","Institucional","Capacidad interna")]
+            for k, nombre, desc in dims:
+                val = tgi.get(k, {}).get("valor", 0)
+                col = "#22C55E" if val >= 70 else "#F59E0B" if val >= 50 else "#EF4444"
+                st.markdown(
+                    f'<div style="display:flex;justify-content:space-between;align-items:center;'
+                    f'padding:8px 12px;background:rgba(255,255,255,.02);border-radius:8px;'
+                    f'margin-bottom:4px"><div><span style="font:700 10px/1 Inter,sans-serif;'
+                    f'color:rgba(255,255,255,.7)">{k} — {nombre}</span>'
+                    f'<span style="font:400 8px/1 Inter,sans-serif;color:rgba(255,255,255,.3);'
+                    f'margin-left:8px">{desc}</span></div>'
+                    f'<span style="font:900 14px/1 Inter,sans-serif;color:{col}">{val:.1f}%</span>'
+                    f'</div>',
+                    unsafe_allow_html=True,
+                )
+        elif drill == "sat":
+            sat = data.get("sat_gm", {})
+            activas = sat.get("sat_activas_detalle", {})
+            for cod, info in activas.items():
+                st.markdown(
+                    f'<div style="padding:10px 14px;background:rgba(239,68,68,.06);'
+                    f'border:1px solid rgba(239,68,68,.2);border-radius:8px;margin-bottom:6px">'
+                    f'<div style="font:800 9px/1 Inter,sans-serif;color:#EF4444">{cod}</div>'
+                    f'<div style="font:400 9px/1.4 Inter,sans-serif;color:rgba(255,255,255,.55);'
+                    f'margin-top:3px">{info.get("descripcion","")}</div>'
+                    f'<div style="font:700 8px/1 Inter,sans-serif;color:rgba(255,255,255,.3);'
+                    f'margin-top:4px">Peso: {info.get("peso",0)*100:.0f}%</div>'
+                    f'</div>',
+                    unsafe_allow_html=True,
+                )
+        elif drill == "ecosistema":
+            for ent in eco:
+                col = ent.get("color", "#F97316")
+                ti  = ent.get("ti_pct", 0)
+                top = ent.get("top", 0)
+                st.markdown(
+                    f'<div style="display:flex;justify-content:space-between;align-items:center;'
+                    f'padding:10px 14px;background:rgba(255,255,255,.02);border-radius:8px;'
+                    f'margin-bottom:4px">'
+                    f'<div style="font:600 10px/1 Inter,sans-serif;color:rgba(255,255,255,.7)">'
+                    f'{ent.get("emoji","")} {ent.get("nombre","")}</div>'
+                    f'<div style="display:flex;gap:16px;align-items:center">'
+                    f'<div style="font:400 8px/1 Inter,sans-serif;color:rgba(255,255,255,.35)">'
+                    f'Ti: {ti:.2f}%</div>'
+                    f'<div style="font:900 13px/1 Inter,sans-serif;color:{col}">'
+                    f'TOP {top:.1f}%</div>'
+                    f'</div></div>',
+                    unsafe_allow_html=True,
+                )
+        elif drill == "ia":
+            st.markdown(
+                f'<div style="font:400 11px/1.6 Inter,sans-serif;'
+                f'color:rgba(255,255,255,.6);padding:4px 0">{narrative}</div>',
+                unsafe_allow_html=True,
+            )
+        elif drill == "territorio":
+            parroquias = data.get("territorial", {}).get("parroquias", [])
+            for p in parroquias:
+                nbi = p.get("nbi_pct", 0)
+                col = "#EF4444" if nbi > 55 else "#F59E0B" if nbi > 40 else "#22C55E"
+                st.markdown(
+                    f'<div style="display:flex;justify-content:space-between;align-items:center;'
+                    f'padding:8px 12px;background:rgba(255,255,255,.02);border-radius:8px;'
+                    f'margin-bottom:4px">'
+                    f'<div style="font:600 10px/1 Inter,sans-serif;color:rgba(255,255,255,.7)">'
+                    f'{"🏙" if p.get("tipo")=="Urbana" else "🌿"} {p.get("nombre","")}'
+                    f'<span style="font:400 8px/1 Inter,sans-serif;color:rgba(255,255,255,.3);'
+                    f'margin-left:6px">{p.get("tipo","")}</span></div>'
+                    f'<div style="display:flex;gap:14px">'
+                    f'<div style="font:400 8px/1 Inter,sans-serif;color:rgba(255,255,255,.35)">'
+                    f'NBI: <span style="color:{col};font-weight:700">{nbi:.1f}%</span></div>'
+                    f'<div style="font:400 8px/1 Inter,sans-serif;color:rgba(255,255,255,.35)">'
+                    f'${p.get("inv_percapita_q1",0)}/hab</div>'
+                    f'</div></div>',
+                    unsafe_allow_html=True,
+                )
+
+        if st.button("✕ Cerrar detalle", key="ve_close_drill", type="secondary"):
+            st.session_state["ve_drill"] = None
+            st.rerun()
+
     # ── Footer ────────────────────────────────────────────────────────────────
     st.markdown(
         f'<div style="margin-top:10px;font:400 8px/1 JetBrains Mono,monospace;'
         f'color:rgba(255,255,255,.1);text-align:right;display:flex;'
         f'justify-content:space-between;align-items:center">'
         f'<span style="color:rgba(255,255,255,.07)">Cache datos: 5 min · TTL activo</span>'
-        f'<span>QUIRA Intelligence · Sprint C.3 Observabilidad Viva · '
+        f'<span>QUIRA Intelligence · Sprint C.3/E.1 · '
         f'Gold Master v5.5_TGI · Corte Q1-2026 · Dylus Lab © 2026</span>'
         f'</div>',
         unsafe_allow_html=True,

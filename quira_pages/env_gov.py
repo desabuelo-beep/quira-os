@@ -64,6 +64,7 @@ _GOV_MODULES: list[tuple[str, str, str, bool]] = [
     ("cooperacion",  "🌍",  "Cooperación Internacional",     False),
     ("genero",       "💜",  "Género y Ambiente",             False),
     # ── Sección Técnica (Técnico, Operador, Administrador) ─────────────────
+    ("cadena",       "🔗",  "Cadena Institucional",          True),   # Sprint E.1
     ("analisis",     "📈",  "Análisis Estratégico",          True),
     ("geotwin",      "🗺",  "GeoTwin Territorio",            True),
     ("congruencias", "🔗",  "Congruencias PDOT",             True),
@@ -126,7 +127,7 @@ def render_sidebar_nav() -> None:
             st.rerun()
 
         if st.sidebar.button(
-            "⚖  Sala de Mando · Concejo",
+            "🏛  Gabinete Municipal",
             key="modo_concejo",
             use_container_width=True,
             type="primary" if modo_actual == "concejo" else "secondary",
@@ -294,6 +295,14 @@ def _render_genero() -> None:
 
 # ── Sección Técnica ───────────────────────────────────────────────────────────
 
+def _render_cadena() -> None:
+    try:
+        from quira_pages.p_cadena_institucional import render as _r
+        _r()
+    except Exception as e:
+        st.error(f"Módulo Cadena Institucional no disponible: {e}")
+
+
 def _render_analisis() -> None:
     try:
         from quira_pages.m4_analisis import render as _r
@@ -347,6 +356,7 @@ _MODULE_RENDER: dict[str, tuple] = {
     "cooperacion":  (_render_cooperacion,  "Cooperación Internacional"),
     "genero":       (_render_genero,       "Género y Ambiente"),
     # Sección Técnica
+    "cadena":       (_render_cadena,       "Cadena Institucional"),   # Sprint E.1
     "analisis":     (_render_analisis,     "Análisis Estratégico"),
     "geotwin":      (_render_geotwin,      "GeoTwin Territorio"),
     "congruencias": (_render_congruencias, "Congruencias PDOT"),
