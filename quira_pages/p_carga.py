@@ -82,9 +82,9 @@ _GUIDE = """
 def render() -> None:
     # ── Gate: solo Técnico ────────────────────────────────────────────────────
     rol = st.session_state.get("rol", "")
-    if rol != "Técnico":
+    if rol not in ("Directivo", "Operador", "Administrador"):
         st.warning(
-            "🔒 Acceso restringido — esta sección es exclusiva del rol **Técnico**.",
+            "🔒 Acceso restringido — esta sección es exclusiva del rol **Directivo**.",
             icon="⚙️",
         )
         return

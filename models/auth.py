@@ -8,7 +8,7 @@ Capa de autenticación segura:
 
 Roles CONGELADOS (ver docs/NOMENCLATURA_CANONICA.md):
   ejecutivo    — Alcalde, concejales, director ejecutivo → GOV (vista ejecutiva)
-  tecnico      — Técnico de planificación → GOV (vista técnica)
+  tecnico      — Directivo de planificación → GOV (vista técnica)
   operador     — Equipo Dylus Lab (operación) → OPS
   administrador— Equipo Dylus Lab (admin total) → OPS + GOV verificación
 
@@ -77,7 +77,7 @@ _FALLBACK_HASHES: dict[str, str] = {
 
 _USER_META: dict[str, dict] = {
     ROLE_EJECUTIVO:     {"rol": "Ejecutivo",     "emoji": "🏛"},
-    ROLE_TECNICO:       {"rol": "Técnico",        "emoji": "📐"},
+    ROLE_TECNICO:       {"rol": "Directivo",       "emoji": "📐"},
     ROLE_OPERADOR:      {"rol": "Operador",       "emoji": "⚙️"},
     ROLE_ADMINISTRADOR: {"rol": "Administrador",  "emoji": "🔑"},
 }
@@ -159,7 +159,7 @@ def rol_options() -> dict[str, str]:
     """Opciones para el dropdown de login. Display → key interno."""
     return {
         "🏛 Ejecutivo":      ROLE_EJECUTIVO,
-        "📐 Técnico":       ROLE_TECNICO,
+        "📐 Directivo":     ROLE_TECNICO,
         "⚙️ Operador":      ROLE_OPERADOR,
         "🔑 Administrador": ROLE_ADMINISTRADOR,
     }

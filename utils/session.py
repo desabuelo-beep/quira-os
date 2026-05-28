@@ -98,8 +98,12 @@ def navigate_to(page: str) -> None:
 # ── Helpers de rol (nomenclatura canónica v3) ────────────────────────────────
 
 def _rol() -> str:
-    """Devuelve el rol actual en minúsculas para comparación robusta."""
-    return st.session_state.get("rol", "").lower()
+    """Devuelve el rol canónico (key) en minúsculas para comparación robusta.
+    Mapea el nombre visible ('Directivo') al key interno ('tecnico').
+    """
+    raw = st.session_state.get("rol", "").lower()
+    # "directivo" es el display del ROLE_TECNICO — normalizar para comparaciones
+    return "tecnico" if raw == "directivo" else raw
 
 
 def is_ejecutivo() -> bool:

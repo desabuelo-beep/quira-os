@@ -175,7 +175,7 @@ def _html_header() -> str:
         f'<div style="font:900 15px/1 Inter,sans-serif;color:#E2E8F0;letter-spacing:-.02em">'
         f'🔗 Cadena Institucional</div>'
         f'<div style="font:400 9px/1 Inter,sans-serif;color:rgba(255,255,255,.35);margin-top:4px">'
-        f'{GAD_NOMBRE} · QUIRA Técnico · Corte {CORTE}</div>'
+        f'{GAD_NOMBRE} · QUIRA Directivo · Corte {CORTE}</div>'
         f'</div>'
         f'<div style="display:flex;align-items:center;gap:10px">'
         f'<div style="text-align:right">'
@@ -352,11 +352,11 @@ def render() -> None:
     Orquesta CNE → PDOT → POA/PAC → Presupuesto → PP → RdC → LOTAIP
     con capa HITL de validación por eslabón.
 
-    Solo visible para Técnico y Administrador (enforced en env_gov).
+    Solo visible para Directivo y Administrador (enforced en env_gov).
     """
     from utils.session import is_tecnico
     if not is_tecnico():
-        st.warning("Vista restringida al rol Técnico.")
+        st.warning("Vista restringida al rol Directivo.")
         return
 
     # ── CSS + Header ────────────────────────────────────────────────────────

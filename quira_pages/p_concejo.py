@@ -1,15 +1,15 @@
 """
-QUIRA Intelligence — Sala de Mando · Concejo Municipal
+QUIRA Intelligence — Panel Estratégico
 Sprint C.2 · p_concejo.py
 
-"El alcalde entra a Concejo con datos, no con opiniones."
+"El alcalde entra a sesión con datos, no con opiniones."
 
 Módulo de preparación política basado en datos reales del Gold Master v5.5.
 6 vectores de ataque de oposición → respuestas con autoridad algorítmica.
 
 ━━━ ESTRUCTURA ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  HEADER        — Modo Concejo activado · corte · ejecutivo
-  CHECKLIST     — 5 puntos de preparación pre-Concejo
+  HEADER        — Panel Estratégico activado · corte · ejecutivo
+  CHECKLIST     — 5 puntos de preparación pre-sesión
   ATAQUES       — 6 vectores canónicos · datos + respuesta + reencuadre
   ARGUMENTARIO  — 4 puntos de ofensiva institucional
   PIE           — Fuentes y doctrina
@@ -72,7 +72,7 @@ def _load() -> dict:
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# CSS — Sala de Mando (paleta ámbar · modo preparación)
+# CSS — Panel Estratégico (paleta ámbar · modo preparación)
 # ══════════════════════════════════════════════════════════════════════════════
 
 _CSS = """<style>
@@ -162,7 +162,7 @@ def _html_header_concejo() -> str:
         f'<span style="font-size:20px">🏛</span>'
         f'<div>'
         f'<div style="font:900 14px/1 Inter,sans-serif;color:#E2E8F0;letter-spacing:-.01em">'
-        f'Gabinete Municipal</div>'
+        f'Panel Estratégico</div>'
         f'<div style="font:400 9px/1 Inter,sans-serif;color:rgba(255,255,255,.28);margin-top:2px">'
         f'{GAD_NOMBRE} · QUIRA Intelligence · Corte {CORTE}</div>'
         f'</div></div>'
@@ -173,7 +173,7 @@ def _html_header_concejo() -> str:
         f'<div style="font:700 7px/1 Inter,sans-serif;color:rgba(245,158,11,.6);'
         f'letter-spacing:.07em;text-transform:uppercase">Modo</div>'
         f'<div style="font:800 11px/1.3 Inter,sans-serif;color:#F59E0B;margin-top:1px">'
-        f'Pre-Concejo</div>'
+        f'Estratégico</div>'
         f'</div>'
         f'<div style="text-align:center;padding:5px 12px;'
         f'background:rgba(0,212,255,.07);border:1px solid rgba(0,212,255,.18);border-radius:8px">'
@@ -216,7 +216,7 @@ def _html_checklist(ctx: dict) -> str:
         f'border-radius:12px;padding:16px 18px;margin-bottom:14px">'
         f'<div style="font:800 9px/1 Inter,sans-serif;color:#22C55E;'
         f'letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px">'
-        f'✓ Checklist Gabinete — {CORTE}</div>'
+        f'✓ Checklist Panel Estratégico — {CORTE}</div>'
         + filas +
         f'</div>'
     )
@@ -514,8 +514,8 @@ def _html_argumentario(ctx: dict) -> str:
 
 def render() -> None:
     """
-    Sala de Mando Concejo Municipal — Sprint C.2.
-    Prepara al alcalde con datos reales para responder a la oposición.
+    Panel Estratégico — Sprint C.2.
+    Prepara al ejecutivo con datos reales para responder a la oposición.
     Accesible desde el modo ejecutivo via env_gov.py.
     """
     data = _load()
@@ -547,7 +547,7 @@ def render() -> None:
     st.markdown(
         '<div style="margin-top:8px;font:400 8px/1 JetBrains Mono,monospace;'
         'color:rgba(255,255,255,.1);text-align:right">'
-        'QUIRA Intelligence · Gabinete Municipal · Sprint E.1 · '
+        'QUIRA Intelligence · Panel Estratégico · Sprint E.1 · '
         'Gold Master v5.5_TGI · Dylus Lab © 2026'
         '</div>',
         unsafe_allow_html=True,

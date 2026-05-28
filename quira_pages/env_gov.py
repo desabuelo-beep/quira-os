@@ -127,7 +127,7 @@ def render_sidebar_nav() -> None:
             st.rerun()
 
         if st.sidebar.button(
-            "🏛  Gabinete Municipal",
+            "🏛  Panel Estratégico",
             key="modo_concejo",
             use_container_width=True,
             type="primary" if modo_actual == "concejo" else "secondary",
@@ -190,7 +190,7 @@ def _render_gov_header(module_label: str) -> None:
     rol = get_rol()
     rol_badge_color = {
         "Ejecutivo":     "#00D4FF",
-        "Técnico":       "#22C55E",
+        "Directivo":     "#22C55E",
         "Administrador": "#F97316",
     }.get(rol, "#64748B")
 
@@ -374,9 +374,9 @@ def render() -> None:
     Renderiza el contenido GOV según el rol activo.
 
     Ejecutivo → Vista Ejecutiva Bloomberg-style (pantalla única, sin header GOV).
-    Técnico / Administrador → módulo activo con header de identidad GOV.
+    Directivo / Administrador → módulo activo con header de identidad GOV.
     """
-    # ── Ejecutivo: Vista Ejecutiva o Sala de Mando Concejo (Sprint C.2) ─────
+    # ── Ejecutivo: Vista Ejecutiva o Panel Estratégico (Sprint C.2) ─────────
     if is_ejecutivo():
         modo = st.session_state.get("ejecutivo_modo", "vista")
         if modo == "concejo":
@@ -384,7 +384,7 @@ def render() -> None:
                 from quira_pages.p_concejo import render as _c
                 _c()
             except Exception as e:
-                st.error(f"Sala de Mando Concejo no disponible: {e}")
+                st.error(f"Panel Estratégico no disponible: {e}")
         else:
             try:
                 from quira_pages.p_vista_ejecutiva import render as _ve

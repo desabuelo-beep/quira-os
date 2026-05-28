@@ -243,8 +243,8 @@ ENVIRONMENTS = {
         "label":       "GOV",
         "icon":        "🏛",
         "render":      _render_gov,
-        # Ejecutivo + Técnico: usuarios del producto. Administrador: verificación cruzada.
-        "roles":       ["Ejecutivo", "Técnico", "Administrador"],
+        # Ejecutivo + Directivo: usuarios del producto. Administrador: verificación cruzada.
+        "roles":       ["Ejecutivo", "Directivo", "Administrador"],
         "desc":        "QUIRA Institucional",
         "badge_color": "#00D4FF",
         "ops_only":    False,
@@ -253,7 +253,7 @@ ENVIRONMENTS = {
         "label":       "Civic",
         "icon":        "🌎",
         "render":      _render_civic,
-        "roles":       ["Ejecutivo", "Técnico", "Operador", "Administrador"],
+        "roles":       ["Ejecutivo", "Directivo", "Operador", "Administrador"],
         "desc":        "QUIRA Ciudadano · Fase 3",
         "badge_color": "#22C55E",
         "ops_only":    False,
@@ -262,7 +262,7 @@ ENVIRONMENTS = {
         "label":       "Impact",
         "icon":        "📑",
         "render":      _render_impact,
-        "roles":       ["Ejecutivo", "Técnico", "Operador", "Administrador"],
+        "roles":       ["Ejecutivo", "Directivo", "Operador", "Administrador"],
         "desc":        "QUIRA Cooperación · Placeholder",
         "badge_color": "#7C5CFC",
         "ops_only":    False,
