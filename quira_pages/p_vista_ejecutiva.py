@@ -1216,36 +1216,21 @@ def render() -> None:
     )
 
     # ── Briefing strip + Grid principal ──────────────────────────────────────
-    # Briefing strip: full-width, antes del grid (capa 8-15s)
-    # Z1 domina (span 2 filas) | Z2 + Z34 en columna derecha
-    # Z5 ecosistema full-width | Z6 IA + oportunidades full-width
-    grid_html = f"""
-<div class="ve-root">
-
-  <!-- BRIEFING STRIP — primera lectura ejecutiva (8-15s) -->
-  {_html_briefing_strip(eco, narrative)}
-
-  <!-- GRID PRINCIPAL — jerarquía asimétrica Sprint C.1 -->
-  <div class="ve-grid">
-
-    <!-- Z1 — CAPA DOMINANTE (span 2 filas, col izquierda) -->
-    <div class="ve-zone ve-z1">{_html_z1_pulso(data, gad_top)}</div>
-
-    <!-- Z2 — CAPA ALTA (col derecha, fila 1) -->
-    <div class="ve-zone ve-z2">{_html_z2_urgente(data)}</div>
-
-    <!-- Z34 — CAPA MEDIA (col derecha, fila 2 — sub-grid compacto) -->
-    <div class="ve-zone ve-z34">{_html_z3z4_compact(data)}</div>
-
-    <!-- Z5 — SOPORTE (ecosistema, full-width) -->
-    <div class="ve-zone ve-z5">{_html_z5_ecosistema(eco)}</div>
-
-    <!-- Z6 — SOPORTE (IA + oportunidades, full-width) -->
-    <div class="ve-zone ve-z6">{_html_z6_ia(data, eco, narrative)}</div>
-
-  </div>
-</div>
-"""
+    # IMPORTANTE: sin líneas en blanco dentro del string HTML —
+    # el parser Markdown de Streamlit termina bloques HTML en blank lines.
+    # Usar concatenación de f-strings sin triple-quote con saltos vacíos.
+    grid_html = (
+        f'<div class="ve-root">'
+        f'{_html_briefing_strip(eco, narrative)}'
+        f'<div class="ve-grid">'
+        f'<div class="ve-zone ve-z1">{_html_z1_pulso(data, gad_top)}</div>'
+        f'<div class="ve-zone ve-z2">{_html_z2_urgente(data)}</div>'
+        f'<div class="ve-zone ve-z34">{_html_z3z4_compact(data)}</div>'
+        f'<div class="ve-zone ve-z5">{_html_z5_ecosistema(eco)}</div>'
+        f'<div class="ve-zone ve-z6">{_html_z6_ia(data, eco, narrative)}</div>'
+        f'</div>'
+        f'</div>'
+    )
     st.markdown(grid_html, unsafe_allow_html=True)
 
     # ── Footer ────────────────────────────────────────────────────────────────
