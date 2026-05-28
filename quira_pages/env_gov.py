@@ -54,7 +54,7 @@ from utils.session import is_tecnico, is_admin, is_ejecutivo, get_rol
 # tecnico_only=True → solo visible para Técnico, Operador, Administrador
 _GOV_MODULES: list[tuple[str, str, str, bool]] = [
     # ── Sección Ejecutiva (todos los roles GOV) ────────────────────────────
-    ("inicio",       "🏠",  "Inicio",                      False),
+    ("inicio",       "🏛",  "Centro de Mando",               False),
     ("situacion",    "📊",  "Situación Institucional",      False),
     ("alertas",      "🚨",  "Alertas y Riesgos SAT",        False),
     ("municipal",    "🏛",  "Gestión Municipal",             False),
@@ -223,10 +223,10 @@ def _render_gov_header(module_label: str) -> None:
 
 def _render_inicio() -> None:
     try:
-        from quira_pages.p0_inicio import render as _r
+        from quira_pages.p_command_center import render as _r
         _r()
     except Exception as e:
-        st.error(f"Módulo Inicio no disponible: {e}")
+        st.error(f"Centro de Mando no disponible: {e}")
 
 
 def _render_situacion() -> None:
@@ -346,7 +346,7 @@ def _render_control() -> None:
 # ── Mapa key → (renderer, label) ─────────────────────────────────────────────
 _MODULE_RENDER: dict[str, tuple] = {
     # Sección Ejecutiva
-    "inicio":       (_render_inicio,       "Inicio"),
+    "inicio":       (_render_inicio,       "Centro de Mando"),
     "situacion":    (_render_situacion,    "Situación Institucional"),
     "alertas":      (_render_alertas,      "Alertas y Riesgos SAT"),
     "municipal":    (_render_municipal,    "Gestión Municipal"),
