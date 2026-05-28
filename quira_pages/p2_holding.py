@@ -853,29 +853,109 @@ def render() -> None:
     # ── CAJÓN 2 — Concentración de Proveedores ───────────────────────────────
     cajon2_html = _cajon2(prov_by_entity, by_entity)
 
+    # ── CTAs NAVALES (dentro del canvas HTML — sin saltar al lenguaje Streamlit) ──
+    sentinel_query = (
+        f"Analiza la contratación pública del Holding Municipal de Montecristi "
+        f"({total_proc} procesos, {_fmt(total_adj)} adjudicados en 2023-2026). "
+        f"¿Qué patrones, riesgos o oportunidades detectas?"
+    ).replace("'", "\\'")
+
+    ctas_html = f"""
+<div style="margin-top:20px;padding:14px 0 4px;
+            border-top:1px solid rgba(255,255,255,.06);display:flex;gap:10px">
+  <button
+    onclick="window.parent.postMessage({{type:'quira_nav',dest:'sentinel',q:'{sentinel_query}'}}, '*')"
+    style="flex:1;padding:12px 16px;background:rgba(0,212,255,.1);
+           border:1px solid rgba(0,212,255,.3);border-radius:8px;cursor:pointer;
+           font-size:11px;font-weight:700;color:#00D4FF;letter-spacing:.06em;
+           font-family:var(--mono);text-transform:uppercase;
+           transition:background .2s,border-color .2s"
+    onmouseover="this.style.background='rgba(0,212,255,.18)'"
+    onmouseout="this.style.background='rgba(0,212,255,.1)'">
+    🔮 Analizar Holding con Sentinel
+  </button>
+  <button
+    onclick="window.parent.postMessage({{type:'quira_nav',dest:'dashboard'}}, '*')"
+    style="flex:1;padding:12px 16px;background:rgba(255,255,255,.04);
+           border:1px solid rgba(255,255,255,.1);border-radius:8px;cursor:pointer;
+           font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.06em;
+           font-family:var(--mono);text-transform:uppercase;
+           transition:background .2s"
+    onmouseover="this.style.background='rgba(255,255,255,.08)'"
+    onmouseout="this.style.background='rgba(255,255,255,.04)'">
+    📊 Ver Tablero Ejecutivo
+  </button>
+</div>"""
+
     # ── ASSEMBLE ──────────────────────────────────────────────────────────────
     html = (
         hdr + banner + kpi_strip
         + sec_hdr + cajones
         + cajon2_html
         + insights + tabla + tech
+        + ctas_html   # CTAs dentro del canvas naval — sin ruptura visual
     )
-    render_page(html, show_tech=show_tech, height=4200)
+    render_page(html, show_tech=show_tech, height=4400)
 
-    # CTA nativo Streamlit
-    c1, c2 = st.columns(2, gap="small")
-    with c1:
-        if st.button("🔮 Analizar Holding con Sentinel",
-                     use_container_width=True, type="primary"):
+    # ── BRIDGE JS ↔ STREAMLIT ──────────────────────────────────────────────────
+    # Captura postMessage de los CTAs navales y dispara botones Streamlit ocultos.
+    # El usuario solo ve el HTML naval; el routing lo hacen los botones debajo.
+    import streamlit.components.v1 as _cv1
+    _cv1.html("""<script>
+(function () {
+  // Escuchar mensajes de navegación del iframe principal
+  window.addEventListener("message", function (e) {
+    if (!e.data || e.data.type !== "quira_nav") return;
+    var dest   = e.data.dest;
+    var target = dest === "sentinel" ? "__QNAVS__" : "__QNAVD__";
+    // Buscar el botón funcional oculto y dispararlo
+    var btns = window.parent.document.querySelectorAll(
+      '[data-testid="stBaseButton-secondary"]'
+    );
+    for (var i = 0; i < btns.length; i++) {
+      if (btns[i].innerText.trim() === target) {
+        btns[i].click();
+        return;
+      }
+    }
+  });
+
+  // Ocultar los botones funcionales (son solo mecanismo de routing)
+  function hideNavBtns() {
+    var btns = window.parent.document.querySelectorAll(
+      '[data-testid="stBaseButton-secondary"]'
+    );
+    for (var i = 0; i < btns.length; i++) {
+      var t = btns[i].innerText.trim();
+      if (t === "__QNAVS__" || t === "__QNAVD__") {
+        btns[i].style.cssText =
+          "width:0!important;height:0!important;padding:0!important;" +
+          "margin:0!important;border:none!important;overflow:hidden!important;" +
+          "position:absolute!important;opacity:0!important;pointer-events:none!important";
+        if (btns[i].parentElement) {
+          btns[i].parentElement.style.cssText =
+            "width:0!important;height:0!important;overflow:hidden!important";
+        }
+      }
+    }
+  }
+  setTimeout(hideNavBtns, 80);
+  setTimeout(hideNavBtns, 350);
+})();
+</script>""", height=0)
+
+    # Botones funcionales ocultos (routing real — el bridge JS los dispara)
+    _c1, _c2 = st.columns(2)
+    with _c1:
+        if st.button("__QNAVS__", key="_quira_nav_s", use_container_width=True):
             st.session_state["page"] = "sentinel"
             st.session_state["sentinel_pregunta_auto"] = (
-                "Analiza la contratación pública del Holding Municipal de Montecristi "
+                f"Analiza la contratación pública del Holding Municipal de Montecristi "
                 f"({total_proc} procesos, {_fmt(total_adj)} adjudicados en 2023-2026). "
-                "¿Qué patrones, riesgos o oportunidades detectas?"
+                f"¿Qué patrones, riesgos o oportunidades detectas?"
             )
             st.rerun()
-    with c2:
-        if st.button("📊 Ver Tablero Ejecutivo",
-                     use_container_width=True):
+    with _c2:
+        if st.button("__QNAVD__", key="_quira_nav_d", use_container_width=True):
             st.session_state["page"] = "dashboard"
             st.rerun()
