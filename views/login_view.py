@@ -1,7 +1,14 @@
 """
-QUIRA OS — View: Landing + Login
-Landing pública con 3 plataformas + formulario de acceso institucional.
-Responsabilidad única: HTML/CSS listos para renderizar.
+QUIRA OS — View: Landing + Login  (Sprint Landing v2 · 2026-05-27)
+Pantalla cero: identidad institucional, jerarquía doctrinal, sin ruido visual.
+
+Cambios v2:
+  · Tagline → "Sistema Operativo de Coherencia Institucional"
+  · QUIRA Institucional: card dominante (visual primer plano)
+  · QUIRA Operations: 4to módulo (sala situacional, En construcción)
+  · Sin botones redundantes — cada card es su propio CTA
+  · Lenguaje institucional (Bloomberg / Palantir gov / Centro de Mando)
+
 Sin imports de Streamlit. Sin lógica de negocio. Solo presentación.
 Dylus Lab © 2026
 """
@@ -10,7 +17,7 @@ from __future__ import annotations
 # ── SVG del logo QUIRA ────────────────────────────────────────────────────────
 QUIRA_SVG = (
     '<svg viewBox="0 0 100 118" xmlns="http://www.w3.org/2000/svg" '
-    'fill="currentColor" style="width:60px;height:71px">'
+    'fill="currentColor" style="width:56px;height:66px">'
     '<rect x="6"  y="107" width="88" height="11" rx="4"/>'
     '<rect x="44" y="75"  width="12" height="32" rx="3"/>'
     '<path d="M14,80 L14,44 A36,36 0 0,1 86,44 L86,80 L74,80 L74,44 A24,24 0 0,0 26,44 L26,80 Z"/>'
@@ -20,19 +27,23 @@ QUIRA_SVG = (
     '</svg>'
 )
 
+
 # ── CSS landing + login ───────────────────────────────────────────────────────
 CSS = """<style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
 
-/* Chrome */
+/* ── CHROME HIDE ── */
 [data-testid="stHeader"],[data-testid="stToolbar"],
 [data-testid="stDecoration"],footer { display:none !important }
 
-/* Fondo */
+/* ── FONDO ── */
 [data-testid="stAppViewContainer"] {
-    background: radial-gradient(ellipse 80% 50% at 50% -10%,
-        rgba(0,212,255,.08) 0%, transparent 55%),
-        #09101F !important;
+    background:
+        radial-gradient(ellipse 80% 45% at 50% -5%,
+            rgba(0,212,255,.065) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 30% at 82% 85%,
+            rgba(124,92,252,.04) 0%, transparent 60%),
+        #080F1E !important;
     min-height:100vh;
 }
 [data-testid="stMain"] .block-container {
@@ -42,182 +53,290 @@ CSS = """<style>
 /* ── HERO ── */
 .ql-hero {
     display:flex; flex-direction:column; align-items:center;
-    padding:52px 20px 36px; text-align:center;
+    padding:48px 20px 26px; text-align:center;
 }
-.ql-logo { color:#00D4FF; margin-bottom:16px;
-    animation:ql-glow 2.6s ease-in-out infinite; }
+.ql-logo {
+    color:#00D4FF; margin-bottom:14px;
+    animation:ql-glow 2.8s ease-in-out infinite;
+}
 @keyframes ql-glow {
-    0%,100%{filter:drop-shadow(0 0 18px rgba(0,212,255,.45))}
-    50%{filter:drop-shadow(0 0 38px rgba(0,212,255,.85))} }
-.ql-brand   { font:800 32px/1 'Inter',sans-serif; color:#F0F4FF;
-    letter-spacing:-.02em; margin-bottom:6px }
-.ql-pow     { font:700 10px/1 'Inter',sans-serif; color:#00D4FF;
-    letter-spacing:.12em; text-transform:uppercase; margin-bottom:10px }
-.ql-tagline { font:500 14px/1.4 'Inter',sans-serif; color:#8892B0; margin-bottom:0 }
-
-/* ── PLATAFORMAS ── */
-.ql-platforms {
-    display:grid; grid-template-columns:repeat(3,1fr);
-    gap:14px; max-width:860px; margin:0 auto; padding:0 20px 32px;
+    0%,100%{filter:drop-shadow(0 0 16px rgba(0,212,255,.4))}
+    50%{filter:drop-shadow(0 0 34px rgba(0,212,255,.78))}
 }
+.ql-brand {
+    font:900 34px/1 'Inter',sans-serif;
+    color:#F0F4FF; letter-spacing:-.03em; margin-bottom:7px;
+}
+.ql-os {
+    font:600 15px/1.3 'Inter',sans-serif;
+    color:rgba(240,244,255,.72);
+    letter-spacing:-.005em; margin-bottom:6px;
+}
+.ql-pow {
+    font:500 8px/1 'JetBrains Mono',monospace;
+    color:rgba(0,212,255,.5);
+    letter-spacing:.14em; text-transform:uppercase; margin-bottom:10px;
+}
+.ql-tagline {
+    font:400 11px/1.5 'Inter',sans-serif;
+    color:rgba(136,146,176,.6); margin-bottom:0;
+}
+
+/* ── CARD DOMINANTE — INSTITUCIONAL ── */
+.ql-card-inst {
+    background:linear-gradient(135deg,
+        rgba(0,212,255,.032) 0%, rgba(8,15,35,.8) 100%);
+    border:1px solid rgba(0,212,255,.18);
+    border-left:3px solid rgba(0,212,255,.52);
+    border-radius:16px;
+    padding:24px 26px 18px;
+    margin-bottom:0;
+    transition:border-color .2s, box-shadow .2s;
+}
+.ql-card-inst:hover {
+    border-color:rgba(0,212,255,.3);
+    box-shadow:0 0 28px rgba(0,212,255,.06);
+}
+.ql-card-inst.active {
+    border-color:rgba(0,212,255,.45) !important;
+    background:rgba(0,212,255,.05) !important;
+}
+.ql-card-inst-badge {
+    display:inline-block;
+    font:700 7px/1 'JetBrains Mono',monospace;
+    color:rgba(0,212,255,.48); letter-spacing:.12em;
+    text-transform:uppercase;
+    background:rgba(0,212,255,.06);
+    border:1px solid rgba(0,212,255,.13);
+    border-radius:4px; padding:3px 8px; margin-bottom:12px;
+}
+.ql-card-inst-icon { font-size:38px; display:block; margin-bottom:8px; }
+.ql-card-inst-name {
+    font:800 21px/1 'Inter',sans-serif;
+    color:#F0F4FF; letter-spacing:-.02em; margin-bottom:7px;
+}
+.ql-card-inst-desc {
+    font:400 12px/1.55 'Inter',sans-serif;
+    color:rgba(240,244,255,.62); margin-bottom:6px;
+}
+.ql-card-inst-meta {
+    font:500 9px/1 'JetBrains Mono',monospace;
+    color:rgba(0,212,255,.35); letter-spacing:.06em;
+}
+
+/* ── DIVIDER INSTITUCIONAL / SECUNDARIO ── */
+.ql-divider {
+    border:none;
+    border-top:1px solid rgba(255,255,255,.04);
+    margin:10px 0 6px;
+}
+
+/* ── CARDS SECUNDARIAS ── */
 .ql-card {
-    background:rgba(13,22,56,.65);
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:16px; padding:28px 22px 24px;
-    backdrop-filter:blur(10px);
-    transition:border-color .2s, transform .2s;
-    cursor:pointer; text-align:center;
+    background:rgba(8,14,32,.75);
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:14px;
+    padding:20px 16px 16px;
+    text-align:center;
+    margin-bottom:0;
+    min-height:132px;
+    transition:border-color .2s;
 }
-.ql-card:hover { border-color:rgba(0,212,255,.3); transform:translateY(-2px) }
-.ql-card.active  {
-    border-color:rgba(0,212,255,.5) !important;
-    background:rgba(0,212,255,.06) !important;
+.ql-card:hover { border-color:rgba(255,255,255,.13); }
+.ql-card.active {
+    border-color:rgba(0,212,255,.3) !important;
+    background:rgba(0,212,255,.04) !important;
 }
-.ql-card.disabled { opacity:.45; cursor:default }
-.ql-card.disabled:hover { transform:none; border-color:rgba(255,255,255,.08) }
-
-.ql-card-icon { font-size:34px; margin-bottom:12px; display:block }
-.ql-card-name { font:700 15px/1 'Inter',sans-serif; color:#F0F4FF;
-    margin-bottom:7px; letter-spacing:-.01em }
-.ql-card-desc { font:400 11px/1.5 'Inter',sans-serif; color:#8892B0;
-    margin-bottom:16px }
-.ql-card-btn {
-    display:inline-block; border-radius:8px; padding:7px 18px;
-    font:700 11px/1 'Inter',sans-serif; letter-spacing:.05em;
-    text-transform:uppercase; border:1px solid;
+.ql-card.ops {
+    border-color:rgba(249,115,22,.1) !important;
+    background:rgba(249,115,22,.02) !important;
 }
-.ql-card-btn.btn-cyan {
-    background:rgba(0,212,255,.12); border-color:rgba(0,212,255,.35);
-    color:#00D4FF;
+.ql-card-icon { font-size:28px; margin-bottom:9px; display:block; }
+.ql-card-name {
+    font:700 13px/1 'Inter',sans-serif;
+    color:#F0F4FF; margin-bottom:6px; letter-spacing:-.01em;
 }
-.ql-card-btn.btn-green {
-    background:rgba(0,224,150,.12); border-color:rgba(0,224,150,.35);
-    color:#00E096;
-}
-.ql-card-btn.btn-gray {
-    background:rgba(255,255,255,.05); border-color:rgba(255,255,255,.15);
-    color:#8892B0;
+.ql-card-desc {
+    font:400 10px/1.5 'Inter',sans-serif;
+    color:rgba(136,146,176,.7);
 }
 
-/* ── FORM de login (dentro del stForm) ── */
+/* ── BOTONES ── */
+
+/* Primary — ENTRAR AL SISTEMA */
+[data-testid="stButton"] button[kind="primary"],
+[data-testid="stButton"] button[data-testid="baseButton-primary"] {
+    background:linear-gradient(135deg,
+        rgba(0,6,20,1) 0%, rgba(0,212,255,.08) 100%) !important;
+    border:1px solid rgba(0,212,255,.3) !important;
+    color:#00D4FF !important;
+    font:800 11px/1 'Inter',sans-serif !important;
+    border-radius:10px !important;
+    letter-spacing:.08em !important;
+    padding:15px 20px !important;
+    height:auto !important;
+    text-transform:uppercase !important;
+    transition:all .2s ease !important;
+    width:100% !important;
+}
+[data-testid="stButton"] button[kind="primary"]:hover,
+[data-testid="stButton"] button[data-testid="baseButton-primary"]:hover {
+    background:linear-gradient(135deg,
+        rgba(0,212,255,.13) 0%, rgba(124,92,252,.13) 100%) !important;
+    border-color:rgba(0,212,255,.6) !important;
+    box-shadow:0 0 22px rgba(0,212,255,.1) !important;
+}
+
+/* Secondary — card CTAs */
+[data-testid="stButton"] button[kind="secondary"],
+[data-testid="stButton"] button[data-testid="baseButton-secondary"] {
+    background:rgba(255,255,255,.04) !important;
+    border:1px solid rgba(255,255,255,.09) !important;
+    color:rgba(240,244,255,.48) !important;
+    font:600 10px/1 'Inter',sans-serif !important;
+    border-radius:8px !important;
+    letter-spacing:.04em !important;
+    padding:10px 14px !important;
+    height:auto !important;
+    transition:all .2s !important;
+}
+[data-testid="stButton"] button[kind="secondary"]:hover {
+    background:rgba(255,255,255,.08) !important;
+    border-color:rgba(255,255,255,.18) !important;
+    color:rgba(240,244,255,.82) !important;
+}
+[data-testid="stButton"] button:disabled {
+    opacity:.28 !important;
+    cursor:default !important;
+}
+
+/* Ops ghost button override (JS adds .ql-ops-btn) */
+button.ql-ops-btn,
+.ql-ops-section button {
+    background:transparent !important;
+    border:1px solid rgba(255,255,255,.05) !important;
+    color:rgba(136,146,176,.18) !important;
+    font:500 8px/1 'JetBrains Mono',monospace !important;
+    letter-spacing:.07em !important;
+    border-radius:5px !important;
+    padding:5px 12px !important;
+}
+button.ql-ops-btn:hover,
+.ql-ops-section button:hover {
+    border-color:rgba(249,115,22,.22) !important;
+    color:rgba(249,115,22,.42) !important;
+    background:transparent !important;
+}
+
+/* ── FORM DE LOGIN ── */
 div[data-testid="stForm"] {
-    background: rgba(10,17,40,.85) !important;
-    border: 1px solid rgba(0,212,255,.2) !important;
-    border-radius: 16px !important;
-    padding: 26px 30px 22px !important;
-    backdrop-filter: blur(16px) !important;
+    background:rgba(6,12,26,.92) !important;
+    border:1px solid rgba(0,212,255,.17) !important;
+    border-radius:16px !important;
+    padding:22px 26px 18px !important;
+    backdrop-filter:blur(16px) !important;
     margin-top:0 !important;
 }
 .ql-form-title {
-    font:700 11px/1 'Inter',sans-serif; color:#8892B0;
+    font:700 10px/1 'Inter',sans-serif; color:rgba(136,146,176,.7);
     text-transform:uppercase; letter-spacing:.1em;
-    text-align:center; margin-bottom:12px;
+    text-align:center; margin-bottom:10px;
 }
 .ql-badge {
-    display:block; width:fit-content; margin:0 auto 20px;
-    background:rgba(0,212,255,.08); border:1px solid rgba(0,212,255,.22);
+    display:block; width:fit-content; margin:0 auto 16px;
+    background:rgba(0,212,255,.06); border:1px solid rgba(0,212,255,.18);
     border-radius:20px; padding:4px 14px;
-    font:500 10px/1 'JetBrains Mono',monospace; color:#00D4FF;
+    font:500 8px/1 'JetBrains Mono',monospace; color:rgba(0,212,255,.7);
 }
 
 /* Inputs */
 div[data-testid="stTextInput"] input,
 div[data-baseweb="select"] > div {
-    background:#060E1C !important; border:1px solid #1A2844 !important;
+    background:#030A18 !important;
+    border:1px solid rgba(255,255,255,.1) !important;
     color:#F0F4FF !important; border-radius:8px !important;
 }
-div[data-testid="stTextInput"] input:focus,
-div[data-baseweb="select"] > div:focus-within { border-color:#00D4FF !important }
+div[data-testid="stTextInput"] input:focus {
+    border-color:rgba(0,212,255,.5) !important;
+    box-shadow:0 0 0 1px rgba(0,212,255,.15) !important;
+}
 div[data-testid="stSelectbox"] label,
-div[data-testid="stTextInput"]  label {
-    color:#8892B0 !important; font-size:10px !important;
+div[data-testid="stTextInput"] label {
+    color:rgba(136,146,176,.7) !important; font-size:10px !important;
     font-weight:700 !important; text-transform:uppercase !important;
     letter-spacing:.08em !important;
 }
 div[data-baseweb="select"] svg { color:#8892B0 !important }
 
-/* Botón login */
+/* Botón submit del form */
 div[data-testid="stForm"] button[kind="primaryFormSubmit"],
 div[data-testid="stForm"] button[data-testid="baseButton-primaryFormSubmit"] {
-    background: linear-gradient(135deg,#00D4FF,#7C5CFC) !important;
-    color: #09101F !important; font-weight:800 !important;
+    background:linear-gradient(135deg,#00D4FF 0%,#7C5CFC 100%) !important;
+    color:#060E1C !important; font-weight:900 !important;
     font-size:12px !important; border:none !important;
-    border-radius:10px !important; letter-spacing:.06em !important;
-    width:100% !important;
+    border-radius:10px !important; letter-spacing:.07em !important;
+    width:100% !important; padding:14px !important;
+    text-transform:uppercase !important;
 }
 div[data-testid="stForm"] button:hover { opacity:.88 !important }
 
 /* ── TRUST BADGES ── */
 .ql-trust {
-    display:grid; grid-template-columns:1fr 1fr; gap:8px;
-    max-width:390px; margin:0 auto 16px;
+    display:grid; grid-template-columns:1fr 1fr; gap:6px;
+    max-width:370px; margin:14px auto 12px;
 }
 .ql-trust-item {
-    display:flex; align-items:center; gap:8px;
-    background:rgba(255,255,255,.03);
-    border:1px solid rgba(255,255,255,.07);
-    border-radius:8px; padding:8px 10px;
+    display:flex; align-items:center; gap:7px;
+    background:rgba(255,255,255,.02);
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:8px; padding:7px 10px;
 }
-.ql-trust-label { font:700 9px/1 'Inter',sans-serif;
-    text-transform:uppercase; letter-spacing:.05em }
-.ql-trust-sub   { font:400 9px/1 'Inter',sans-serif; color:#8892B0 }
+.ql-trust-label {
+    font:700 8px/1 'Inter',sans-serif;
+    text-transform:uppercase; letter-spacing:.05em;
+}
+.ql-trust-sub { font:400 8px/1 'Inter',sans-serif; color:#8892B0; }
 
 /* ── FOOTER ── */
 .ql-footer {
-    text-align:center; padding:16px 20px 32px;
-    font:400 10px/1.8 'JetBrains Mono',monospace;
-    color:rgba(136,146,176,.25);
+    text-align:center; padding:10px 20px 26px;
+    font:400 9px/1.8 'JetBrains Mono',monospace;
+    color:rgba(136,146,176,.18);
 }
-.ql-gad { font:400 11px/1 'Inter',sans-serif;
-    color:rgba(240,244,255,.4); text-align:center; margin-bottom:8px; }
 
 /* ── MOBILE ── */
-@media(max-width:680px) {
-    .ql-platforms { grid-template-columns:1fr; max-width:380px; gap:10px }
+@media(max-width:680px){
     .ql-brand { font-size:26px }
-    .ql-hero { padding:36px 16px 24px }
-    div[data-testid="stForm"] { padding:20px 16px !important }
+    .ql-os { font-size:13px }
+    .ql-hero { padding:30px 16px 18px }
+    div[data-testid="stForm"] { padding:18px 14px !important }
+    .ql-card-inst { padding:18px 18px 14px }
+    .ql-card { min-height:auto }
 }
 
-/* ── COOPERACIÓN btn ── */
-.ql-card-btn.btn-purple {
-    background:rgba(124,92,252,.1);border-color:rgba(124,92,252,.28);
-    color:#9B79FF;
-}
-
-/* ── ACCESO OPERACIONAL ghost btn ── */
-.ql-ops-section { display:flex;justify-content:center; }
-.ql-ops-btn {
-    background:transparent !important;
-    border:1px solid rgba(255,255,255,.06) !important;
-    color:rgba(136,146,176,.26) !important;
-    font:500 9px/1 'JetBrains Mono',monospace !important;
-    letter-spacing:.07em !important;
-    border-radius:6px !important;
-    padding:5px 14px !important;
-    transition:color .2s,border-color .2s,background .2s !important;
-}
-.ql-ops-btn:hover {
-    border-color:rgba(249,115,22,.28) !important;
-    color:rgba(249,115,22,.55) !important;
-    background:rgba(249,115,22,.03) !important;
+/* ── STRIP GAPS ── */
+[data-testid="stVerticalBlock"]>[data-testid="stVerticalBlockBorderWrapper"] {
+    gap:0 !important;
 }
 </style>
 
 <script>
 (function(){
-  var o=new MutationObserver(function(){
+  /* autocomplete password */
+  var _o1=new MutationObserver(function(){
     var p=document.querySelector('input[type=password]');
-    if(p){p.autocomplete='current-password';o.disconnect();}
+    if(p){p.autocomplete='current-password';_o1.disconnect();}
   });
-  o.observe(document.body,{childList:true,subtree:true});
+  _o1.observe(document.body,{childList:true,subtree:true});
 })();
 (function(){
+  /* tag ops ghost button so CSS can target it */
   function _tagOps(){
     document.querySelectorAll('[data-testid="stButton"] button').forEach(function(b){
       if((b.innerText||'').trim().toLowerCase().indexOf('acceso operacional')!==-1){
         b.classList.add('ql-ops-btn');
-        var w=b.closest('[data-testid="stButton"]');if(w)w.classList.add('ql-ops-section');
+        var w=b.closest('[data-testid="stButton"]');
+        if(w) w.classList.add('ql-ops-section');
       }
     });
   }
@@ -227,99 +346,137 @@ div[data-testid="stForm"] button:hover { opacity:.88 !important }
 </script>"""
 
 
+# ── Hero ─────────────────────────────────────────────────────────────────────
+
 def landing_hero() -> str:
-    """Bloque hero: logo + marca + tagline."""
-    return f"""
-<div class="ql-hero">
-  <div class="ql-logo">{QUIRA_SVG}</div>
-  <div class="ql-brand">QUIRA Intelligence</div>
-  <div class="ql-pow">Powered by Dylus Lab</div>
-  <div class="ql-tagline">Inteligencia Territorial · Gobernanza con evidencia · Decisiones con territorio</div>
-</div>"""
+    """Bloque hero: logo + marca + OS tagline institucional."""
+    return (
+        f'<div class="ql-hero">'
+        f'<div class="ql-logo">{QUIRA_SVG}</div>'
+        f'<div class="ql-brand">QUIRA Intelligence</div>'
+        f'<div class="ql-os">Sistema Operativo de Coherencia Institucional</div>'
+        f'<div class="ql-pow">Development by Dylus Lab</div>'
+        f'<div class="ql-tagline">'
+        f'Observabilidad territorial · Riesgo institucional · Decisión ejecutiva'
+        f'</div>'
+        f'</div>'
+    )
 
 
-def platform_cards(selected: str = "") -> str:
-    """Tres cajas de plataforma. selected: '' | 'institucional' | 'ciudadano' | 'cooperacion'."""
-    def _active(key: str) -> str:
-        return "active" if selected == key else ""
+# ── Cards individuales ────────────────────────────────────────────────────────
 
-    return f"""
-<div class="ql-platforms">
+def card_institucional_html(active: bool = False) -> str:
+    """Card dominante — QUIRA Institucional (primer plano visual)."""
+    cls = "ql-card-inst" + (" active" if active else "")
+    return (
+        f'<div class="{cls}">'
+        f'<div class="ql-card-inst-badge">Sistema activo · Acceso restringido</div>'
+        f'<div class="ql-card-inst-icon">🏛</div>'
+        f'<div class="ql-card-inst-name">QUIRA Institucional</div>'
+        f'<div class="ql-card-inst-desc">'
+        f'Centro de comando institucional para Alcaldía y Holding Municipal. '
+        f'Observabilidad ejecutiva para decisión pública en tiempo real.'
+        f'</div>'
+        f'<div class="ql-card-inst-meta">'
+        f'TGI · ICPI · SAT · POA · PAC · LOTAIP · Holding Municipal'
+        f'</div>'
+        f'</div>'
+    )
 
-  <div class="ql-card {_active('institucional')}">
-    <span class="ql-card-icon">🏛</span>
-    <div class="ql-card-name">QUIRA Institucional</div>
-    <div class="ql-card-desc">Dashboard de gobernanza municipal.<br>
-      Indicadores ICPI · Alertas SAT · Trazabilidad evidencial.</div>
-    <span class="ql-card-btn btn-cyan">Acceso restringido</span>
-  </div>
 
-  <div class="ql-card {_active('ciudadano')}">
-    <span class="ql-card-icon">🌎</span>
-    <div class="ql-card-name">QUIRA Ciudadano</div>
-    <div class="ql-card-desc">Transparencia activa y rendición<br>
-      de cuentas para toda la ciudadanía.</div>
-    <span class="ql-card-btn btn-green">Acceso público</span>
-  </div>
+def card_ciudadano_html(active: bool = False) -> str:
+    """Card secundaria — QUIRA Ciudadano."""
+    cls = "ql-card" + (" active" if active else "")
+    return (
+        f'<div class="{cls}">'
+        f'<span class="ql-card-icon">🌎</span>'
+        f'<div class="ql-card-name">QUIRA Ciudadano</div>'
+        f'<div class="ql-card-desc">'
+        f'Transparencia territorial, ejecución pública y seguimiento ciudadano.'
+        f'</div>'
+        f'</div>'
+    )
 
-  <div class="ql-card {_active('cooperacion')}">
-    <span class="ql-card-icon">📑</span>
-    <div class="ql-card-name">QUIRA Cooperación</div>
-    <div class="ql-card-desc">Para academia, ONGs y cooperación<br>
-      internacional. Datos longitudinales.</div>
-    <span class="ql-card-btn btn-purple">Solicitar acceso</span>
-  </div>
 
-</div>"""
+def card_cooperacion_html(active: bool = False) -> str:
+    """Card secundaria — QUIRA Cooperación."""
+    cls = "ql-card" + (" active" if active else "")
+    return (
+        f'<div class="{cls}">'
+        f'<span class="ql-card-icon">📑</span>'
+        f'<div class="ql-card-name">QUIRA Cooperación</div>'
+        f'<div class="ql-card-desc">'
+        f'Datos longitudinales y evidencia territorial para investigación y cooperación.'
+        f'</div>'
+        f'</div>'
+    )
 
+
+def card_operations_html() -> str:
+    """Card secundaria — QUIRA Operations (en construcción)."""
+    return (
+        f'<div class="ql-card ops">'
+        f'<span class="ql-card-icon">⚡</span>'
+        f'<div class="ql-card-name">QUIRA Operations</div>'
+        f'<div class="ql-card-desc">'
+        f'Monitoreo institucional en tiempo real y gestión situacional.'
+        f'</div>'
+        f'</div>'
+    )
+
+
+# ── Form + Badges + Footer ────────────────────────────────────────────────────
 
 def form_header() -> str:
     """Badge + etiqueta dentro del card de login."""
     return (
-        '<div class="ql-form-title">Acceso institucional</div>'
+        '<div class="ql-form-title">Acceso Institucional</div>'
         '<div style="text-align:center">'
-        '<span class="ql-badge">Acceso Restringido</span>'
+        '<span class="ql-badge">Acceso Restringido · QUIRA Institucional</span>'
         '</div>'
     )
 
 
 def trust_badges() -> str:
-    """Mini-badges de seguridad debajo del formulario."""
+    """Mini-badges de seguridad."""
     badges = [
-        ("#00E096", "ACCESO PROTEGIDO", "Cifrado institucional"),
-        ("#00D4FF", "SESIÓN TEMPORAL",  "Expira en 60 minutos"),
-        ("#7C5CFC", "INTENTOS MONITOREADOS", "Bloqueo tras 3 fallos"),
-        ("#FFB800", "ACTIVIDAD AUDITADA", "Registro de accesos"),
+        ("#00E096", "ACCESO PROTEGIDO",        "Cifrado institucional"),
+        ("#00D4FF", "SESIÓN TEMPORAL",          "Expira en 60 minutos"),
+        ("#7C5CFC", "INTENTOS MONITOREADOS",    "Bloqueo tras 3 fallos"),
+        ("#FFB800", "ACTIVIDAD AUDITADA",       "Registro de accesos"),
     ]
-    items = ""
-    for color, label, sub in badges:
-        items += (
-            f'<div class="ql-trust-item">'
-            f'<div><div class="ql-trust-label" style="color:{color}">{label}</div>'
-            f'<div class="ql-trust-sub">{sub}</div></div>'
-            f'</div>'
-        )
+    items = "".join(
+        f'<div class="ql-trust-item">'
+        f'<div><div class="ql-trust-label" style="color:{c}">{lbl}</div>'
+        f'<div class="ql-trust-sub">{sub}</div></div>'
+        f'</div>'
+        for c, lbl, sub in badges
+    )
     return f'<div class="ql-trust">{items}</div>'
 
 
 def footer() -> str:
-    """Footer institucional — genérico, sin datos GAD-específicos (multi-GAD)."""
-    return """
-<div class="ql-footer">
-  QUIRA Intelligence · Dylus Lab © 2026<br>
-  <span style="color:rgba(255,184,0,.3)">Acceso institucional restringido</span>
-</div>"""
+    """Footer institucional genérico (multi-GAD)."""
+    return (
+        '<div class="ql-footer">'
+        'QUIRA Intelligence · Dylus Lab © 2026<br>'
+        '<span style="color:rgba(255,184,0,.22)">Infraestructura de gobernanza pública</span>'
+        '</div>'
+    )
 
 
-# ── Compatibilidad con código anterior (splash_top / splash_bottom) ───────────
+# ── Backward compat ───────────────────────────────────────────────────────────
+
+def platform_cards(selected: str = "") -> str:
+    """Deprecated — usar card_*_html() individuales. Retorna vacío."""
+    return ""
+
 
 def splash_top(corte: str = "") -> str:
-    """Alias de landing_hero() para compatibilidad."""
     return landing_hero()
 
 
 def splash_bottom(gad: str = "", corte: str = "") -> str:
-    """Alias de footer() para compatibilidad."""
     return footer()
 
 
@@ -327,6 +484,5 @@ def error_html(msg: str) -> str:
     return (
         f'<div style="background:rgba(255,77,109,.1);border:1px solid rgba(255,77,109,.3);'
         f'border-radius:8px;padding:10px 14px;color:#FF8FA3;font-size:12px;'
-        f'font-family:Inter,sans-serif;margin-top:4px">'
-        f'⚠️ {msg}</div>'
+        f'font-family:Inter,sans-serif;margin-top:4px">⚠️ {msg}</div>'
     )
