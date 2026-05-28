@@ -373,11 +373,43 @@ def render() -> None:
     """
     Renderiza el contenido GOV según el rol activo.
 
-    Ejecutivo → Vista Ejecutiva Bloomberg-style (pantalla única, sin header GOV).
+    Ejecutivo → Centro de Mando (inicio) o Panel Estratégico (concejo).
+                Si gov_module está activo (drill-in desde Centro de Mando),
+                renderiza ese módulo con botón de retorno.
     Directivo / Administrador → módulo activo con header de identidad GOV.
     """
-    # ── Ejecutivo: Vista Ejecutiva o Panel Estratégico (Sprint C.2) ─────────
+    # ── Ejecutivo: Centro de Mando · Panel Estratégico · drill-in de dominio ──
     if is_ejecutivo():
+        gov_mod = st.session_state.get("gov_module", "inicio")
+
+        # D.3b: drill-in — el alcalde navegó desde el Centro de Mando a un dominio
+        if gov_mod != "inicio" and gov_mod in _MODULE_RENDER:
+            fn, label = _MODULE_RENDER[gov_mod]
+
+            # Banda de retorno — fina, discreta, orientadora
+            st.markdown(f"""
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:16px">
+  <button onclick="void(0)" style="
+    background:rgba(0,212,255,.07);border:1px solid rgba(0,212,255,.18);
+    border-radius:7px;color:rgba(0,212,255,.75);font-size:10px;font-weight:700;
+    letter-spacing:.05em;padding:5px 14px;cursor:pointer;
+    font-family:Inter,system-ui,sans-serif">← CENTRO DE MANDO</button>
+  <span style="font-size:9px;color:rgba(255,255,255,.2);letter-spacing:.08em;
+               text-transform:uppercase">/</span>
+  <span style="font-size:9px;color:rgba(255,255,255,.35);letter-spacing:.06em;
+               text-transform:uppercase;font-weight:600">{label}</span>
+</div>
+""", unsafe_allow_html=True)
+
+            # Botón funcional de retorno (Streamlit)
+            if st.button("← Volver al Centro de Mando", key="exec_back_centro"):
+                st.session_state["gov_module"] = "inicio"
+                st.rerun()
+
+            fn()
+            return
+
+        # Vista normal Ejecutivo: Centro de Mando o Panel Estratégico
         modo = st.session_state.get("ejecutivo_modo", "vista")
         if modo == "concejo":
             try:
@@ -393,7 +425,7 @@ def render() -> None:
                 st.error(f"Centro de Mando no disponible: {e}")
         return
 
-    # ── Técnico / Administrador: módulo activo con header GOV ─────────────────
+    # ── Directivo / Administrador: módulo activo con header GOV ──────────────
     module_key = _current_module()
     fn, label  = _MODULE_RENDER.get(module_key, (_render_inicio, "Inicio"))
     _render_gov_header(label)

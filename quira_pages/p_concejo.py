@@ -512,11 +512,18 @@ def _html_argumentario(ctx: dict) -> str:
 # ENTRY POINT
 # ══════════════════════════════════════════════════════════════════════════════
 
+def _nav_btn(label: str, mod: str, key: str) -> None:
+    """Botón de navegación al módulo GOV correspondiente."""
+    if st.button(label, key=key, use_container_width=True):
+        st.session_state["gov_module"] = mod
+        st.rerun()
+
+
 def render() -> None:
     """
-    Panel Estratégico — Sprint C.2.
-    Prepara al ejecutivo con datos reales para responder a la oposición.
-    Accesible desde el modo ejecutivo via env_gov.py.
+    Panel Estratégico — Sprint D.3b.
+    Prepara al ejecutivo con datos reales. Cada sección tiene
+    accesos directos clickeables a los módulos de análisis.
     """
     data = _load()
     ctx  = _compute_contexto(data)
@@ -528,26 +535,84 @@ def render() -> None:
         unsafe_allow_html=True,
     )
 
+    # ── Checklist pre-sesión ───────────────────────────────────────────────────
     st.markdown(
         f'<div class="cm-root">{_html_checklist(ctx)}</div>',
         unsafe_allow_html=True,
     )
 
+    # Accesos rápidos — Checklist
+    st.markdown(
+        '<div style="font-size:8px;font-weight:700;letter-spacing:.09em;'
+        'text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:6px">'
+        'Ir al análisis detallado</div>',
+        unsafe_allow_html=True,
+    )
+    ca1, ca2, ca3, ca4 = st.columns(4, gap="small")
+    with ca1:
+        _nav_btn("Ver Inversión GAD →",      "municipal",    "pe_c_inv")
+    with ca2:
+        _nav_btn("Ver Holding Municipal →",  "municipal",    "pe_c_hold")
+    with ca3:
+        _nav_btn("Ver Fondos Bloqueados →",  "cooperacion",  "pe_c_fondos")
+    with ca4:
+        _nav_btn("Ver Situación →",          "situacion",    "pe_c_sit")
+
+    st.markdown("<div style='height:10px'></div>", unsafe_allow_html=True)
+
+    # ── Vectores de Ataque ─────────────────────────────────────────────────────
     st.markdown(
         f'<div class="cm-root">{_html_ataques(ctx)}</div>',
         unsafe_allow_html=True,
     )
 
+    # Accesos rápidos — Ataques
+    st.markdown(
+        '<div style="font-size:8px;font-weight:700;letter-spacing:.09em;'
+        'text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:6px">'
+        'Datos de respaldo para los vectores</div>',
+        unsafe_allow_html=True,
+    )
+    cb1, cb2, cb3, cb4 = st.columns(4, gap="small")
+    with cb1:
+        _nav_btn("Análisis Inversión →",        "municipal",    "pe_a_inv")
+    with cb2:
+        _nav_btn("Equidad Territorial →",       "situacion",    "pe_a_terr")
+    with cb3:
+        _nav_btn("Cooperación Internacional →", "cooperacion",  "pe_a_coop")
+    with cb4:
+        _nav_btn("Rendición de Cuentas →",      "rdc",          "pe_a_rdc")
+
+    st.markdown("<div style='height:10px'></div>", unsafe_allow_html=True)
+
+    # ── Argumentario de Ofensiva ───────────────────────────────────────────────
     st.markdown(
         f'<div class="cm-root">{_html_argumentario(ctx)}</div>',
         unsafe_allow_html=True,
     )
 
+    # Accesos rápidos — Argumentario
+    st.markdown(
+        '<div style="font-size:8px;font-weight:700;letter-spacing:.09em;'
+        'text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:6px">'
+        'Profundizar en cada argumento</div>',
+        unsafe_allow_html=True,
+    )
+    cc1, cc2, cc3, cc4 = st.columns(4, gap="small")
+    with cc1:
+        _nav_btn("Ecosistema Municipal →",      "municipal",    "pe_arg_eco")
+    with cc2:
+        _nav_btn("Alertas y Riesgos →",         "alertas",      "pe_arg_sat")
+    with cc3:
+        _nav_btn("Fondos BDE →",                "cooperacion",  "pe_arg_bde")
+    with cc4:
+        _nav_btn("Situación Institucional →",   "situacion",    "pe_arg_sit")
+
     # Footer
     st.markdown(
-        '<div style="margin-top:8px;font:400 8px/1 JetBrains Mono,monospace;'
+        '<div style="margin-top:16px;font:400 8px/1 JetBrains Mono,monospace;'
         'color:rgba(255,255,255,.1);text-align:right">'
-        'QUIRA Intelligence · Panel Estratégico · Sprint E.1 · '
+        'QUIRA Intelligence · Panel Estratégico · D.3b · '
         'Gold Master v5.5_TGI · Dylus Lab © 2026'
         '</div>',
         unsafe_allow_html=True,
