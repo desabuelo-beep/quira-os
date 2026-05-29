@@ -1,23 +1,23 @@
 """
-QUIRA Intelligence — Centro de Mando  (Sprint 1.2 · Unificación Visual)
-Teatro Operacional Único · GAD Montecristi
+QUIRA Intelligence — Centro de Mando  (Sprint D.3 · 12 Dominios Canónicos)
+Teatro Operacional · GAD Montecristi · Holding Municipal
 
-Arquitectura Sprint 1.2:
-  · CERO widgets Streamlit visibles — Streamlit = runtime invisible
-  · HTML Canvas full-viewport como único plano visual
-  · Layout operacional: KPI band → [GeoTwin Rail | Domain Grid] → Bottom band
-  · GeoTwin al left rail (inspiración Palantir Gotham / C4ISR)
-  · Navigation por onclick → JS bridge → hidden st.button → st.rerun()
-  · Sidebar oculto por CSS — no existe para el Ejecutivo
+Arquitectura D.3:
+  · 12 dominios canónicos en grilla 4×3 — sin capas improvisadas
+  · GeoTwin = card 10 con SVG estático (no Folium en canvas)
+  · Glow pulsante en cards críticas: 04 / 06 / 12
+  · Card 11 dimmed — Ecosistema Productivo en construcción
+  · KPI band corregida: "Cumplimiento Institucional"
+  · Left rail eliminado — domain grid ocupa 100% del ancho
+  · QUIRA AI = botón invocable en status bar (no panel fijo)
+  · No scroll · HTML Canvas full-viewport · postMessage bridge
 
-"QUIRA no es un conjunto de páginas. QUIRA es un teatro operacional vivo."
+"QUIRA entiende relaciones institucionales."
 Dylus Lab © 2026
 """
 from __future__ import annotations
 
-import base64
 import json
-from pathlib import Path
 from typing import Any
 
 import streamlit as st
@@ -25,11 +25,8 @@ import streamlit.components.v1 as _cv1
 
 from utils.cache_quira import cargar_gm_snapshot, cargar_snapshot
 from utils.css_tokens import C
-from utils.session import get_rol, is_tecnico, logout
+from utils.session import get_rol, logout
 
-# ── Rutas ─────────────────────────────────────────────────────────────────────
-_DATA_DIR = Path(__file__).parent.parent / "data"
-_GEOJSON  = _DATA_DIR / "parroquias_montecristi.geojson"
 
 # ══════════════════════════════════════════════════════════════════════════════
 # PALETA DE TEMPERATURA
@@ -40,72 +37,174 @@ _TEMP: dict[str, dict[str, str]] = {
     "normal":  {"bg": "rgba(0,212,255,.05)",   "bd": "rgba(0,212,255,.16)",   "c": "#00D4FF"},
     "verde":   {"bg": "rgba(34,197,94,.07)",   "bd": "rgba(34,197,94,.24)",   "c": "#22C55E"},
     "funds":   {"bg": "rgba(124,92,252,.10)",  "bd": "rgba(124,92,252,.32)",  "c": "#7C5CFC"},
+    "dim":     {"bg": "rgba(255,255,255,.02)", "bd": "rgba(255,255,255,.07)", "c": "#64748B"},
 }
 
 # ══════════════════════════════════════════════════════════════════════════════
-# CAPAS Y DOMINIOS INSTITUCIONALES
-# mod = destino de navegación (gov_module key)
+# SVG ESTÁTICO — Cantón Montecristi (7 parroquias)
+# Thumbnail inline para la card Dom 10 — no Folium, no dependencias externas
 # ══════════════════════════════════════════════════════════════════════════════
-_CAPAS: list[dict] = [
-    {"id": "politica",    "label": "POLÍTICA",     "accent": "#00D4FF"},
-    {"id": "ejecutiva",   "label": "EJECUTIVA",    "accent": "#F97316"},
-    {"id": "rendicion",   "label": "RENDICIÓN",    "accent": "#7C5CFC"},
-    {"id": "territorial", "label": "TERRITORIAL",  "accent": "#22C55E"},
-]
+_CANTON_SVG = """
+<svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg"
+     style="width:100%;height:80px;display:block;margin:4px 0">
+  <defs>
+    <radialGradient id="bg_grd" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#0f2040" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#060d1a" stop-opacity="1"/>
+    </radialGradient>
+  </defs>
+  <!-- Fondo -->
+  <rect width="200" height="160" fill="url(#bg_grd)" rx="6"/>
+  <!-- Silueta simplificada cantón -->
+  <polygon points="30,120 50,95 45,70 65,55 90,50 120,48 145,55 160,75 155,100 140,120 110,130 80,132 55,128"
+           fill="rgba(0,140,255,.12)" stroke="rgba(0,140,255,.35)" stroke-width="1.2"/>
+  <!-- Parroquias — puntos con color por estado -->
+  <!-- Montecristi cabecera — ALERTA -->
+  <circle cx="95" cy="88" r="7" fill="#F97316" fill-opacity=".75"/>
+  <circle cx="95" cy="88" r="11" fill="none" stroke="#F97316" stroke-width="1" stroke-opacity=".35"/>
+  <!-- Crucita — NORMAL -->
+  <circle cx="50" cy="80" r="4" fill="#00D4FF" fill-opacity=".65"/>
+  <!-- La Pila — NORMAL -->
+  <circle cx="70" cy="65" r="3.5" fill="#00D4FF" fill-opacity=".60"/>
+  <!-- Chirijos — PRIORIDAD -->
+  <circle cx="125" cy="70" r="4.5" fill="#EF4444" fill-opacity=".70"/>
+  <!-- Noboa — NORMAL -->
+  <circle cx="140" cy="95" r="3.5" fill="#00D4FF" fill-opacity=".55"/>
+  <!-- San Sebastián — ALERTA -->
+  <circle cx="108" cy="110" r="4" fill="#F97316" fill-opacity=".65"/>
+  <!-- Leonidas Plaza — NORMAL -->
+  <circle cx="60" cy="108" r="3" fill="#00D4FF" fill-opacity=".55"/>
+  <!-- Labels -->
+  <text x="95" y="82" text-anchor="middle" font-size="7" fill="#E2E8F0"
+        font-family="Inter,system-ui,sans-serif" font-weight="700">MCR</text>
+  <text x="50" y="74" text-anchor="middle" font-size="5.5" fill="rgba(255,255,255,.55)"
+        font-family="Inter,system-ui,sans-serif">Crucita</text>
+  <text x="125" y="64" text-anchor="middle" font-size="5.5" fill="rgba(255,255,255,.55)"
+        font-family="Inter,system-ui,sans-serif">Chirijos</text>
+  <!-- Título -->
+  <text x="100" y="150" text-anchor="middle" font-size="7.5" fill="rgba(0,212,255,.55)"
+        font-family="Inter,system-ui,sans-serif" font-weight="600" letter-spacing=".05em">
+    CANTÓN MONTECRISTI · 7 PARROQUIAS</text>
+</svg>
+"""
 
-_DOMAINS: list[dict] = [
-    # ── CAPA POLÍTICA ─────────────────────────────────────────────────────────
-    {"id":"d01","capa":"politica","nombre":"Salud Institucional",
-     "metric":"17.4%","nota":"Índice cumplimiento · umbral 65%",
-     "temp":"critico","grav":3,"act":"activo","mod":"situacion"},
-    {"id":"d02","capa":"politica","nombre":"Fidelidad Política",
-     "metric":"44/66","nota":"Compromisos CNE cumplidos",
-     "temp":"normal","grav":1,"act":"pasivo","mod":"situacion"},
-    {"id":"d03","capa":"politica","nombre":"Panel Estratégico",
-     "metric":"6 vectores","nota":"Preparación · respuesta política",
-     "temp":"alerta","grav":2,"act":"activo","mod":"concejo"},
-    # ── CAPA EJECUTIVA ─────────────────────────────────────────────────────────
-    {"id":"d04","capa":"ejecutiva","nombre":"Holding Municipal",
-     "metric":"68.7%","nota":"Promedio 4 entidades",
-     "temp":"alerta","grav":3,"act":"activo","mod":"municipal"},
-    {"id":"d05","capa":"ejecutiva","nombre":"Eficiencia Operacional",
-     "metric":"—","nota":"Rendimiento relativo por entidad",
-     "temp":"normal","grav":1,"act":"monitoreo","mod":"analisis","tec":True},
-    {"id":"d06","capa":"ejecutiva","nombre":"Equidad Territorial",
-     "metric":"$40/hab","nota":"Rural vs $217 cabecera",
-     "temp":"alerta","grav":2,"act":"activo","mod":"geotwin","tec":True},
-    # ── CAPA RENDICIÓN ─────────────────────────────────────────────────────────
-    {"id":"d07","capa":"rendicion","nombre":"Transparencia",
-     "metric":"—","nota":"Gobierno abierto · CPCCS · LOTAIP",
-     "temp":"normal","grav":1,"act":"pasivo","mod":"rdc"},
-    {"id":"d08","capa":"rendicion","nombre":"Participación Ciudadana",
-     "metric":"—","nota":"Presupuesto participativo · IGP",
-     "temp":"normal","grav":1,"act":"pasivo","mod":"confianza"},
-    {"id":"d09","capa":"rendicion","nombre":"Género y Equidad Social",
-     "metric":"12.83%","nota":"Presupuesto género · umbral 30%",
-     "temp":"critico","grav":2,"act":"activo","mod":"genero"},
-    {"id":"d10","capa":"rendicion","nombre":"Ambiente y Sostenibilidad",
-     "metric":"0%","nota":"Metas FA-CC · FA-DIS sin ejecución",
-     "temp":"critico","grav":2,"act":"activo","mod":"genero"},
-    # ── CAPA TERRITORIAL ───────────────────────────────────────────────────────
-    {"id":"d11","capa":"territorial","nombre":"Cooperación Internacional",
-     "metric":"$3.66M","nota":"Fondos condicionados · 3 fuentes activas",
-     "temp":"funds","grav":3,"act":"activo","mod":"cooperacion"},
-    {"id":"d12","capa":"territorial","nombre":"Agenda 2030",
-     "metric":"—","nota":"ODS ↔ PDOT · alineación activa",
-     "temp":"normal","grav":1,"act":"monitoreo","mod":"ods"},
-    {"id":"d13","capa":"territorial","nombre":"Observabilidad Longitudinal",
-     "metric":"1 punto","nota":"Sistema activo · histórico iniciado",
-     "temp":"verde","grav":1,"act":"pasivo","mod":"control","tec":True},
+# ══════════════════════════════════════════════════════════════════════════════
+# 12 DOMINIOS CANÓNICOS
+# Arquitectura: architecture_quira_v1.md v2.0 (CONGELADO 2026-05-29)
+# Regla: ningún nombre interno en labels públicos (ICPI, TGI, SAT, Ti, H73...)
+# ══════════════════════════════════════════════════════════════════════════════
+_DOMAINS_12: list[dict] = [
+    # ── Fila 1 ────────────────────────────────────────────────────────────────
+    {
+        "id": "d01", "num": "01",
+        "nombre": "Planificación Estratégica",
+        "metric": "17 ODS activos",
+        "nota": "PDOT 2023–2027 · en seguimiento",
+        "temp": "verde",
+        "mod": "ods",
+    },
+    {
+        "id": "d02", "num": "02",
+        "nombre": "Presupuesto & Financiamiento",
+        "metric": "$3.66M",
+        "nota": "Fondos condicionados · 3 fuentes activas",
+        "temp": "funds",
+        "mod": "cooperacion",
+    },
+    {
+        "id": "d03", "num": "03",
+        "nombre": "Seguimiento de Metas",
+        "metric": "en carga…",
+        "nota": "56 metas canónicas PDOT",
+        "temp": "alerta",
+        "mod": "situacion",
+        "pending": True,
+    },
+    # ── Fila 2 ────────────────────────────────────────────────────────────────
+    {
+        "id": "d04", "num": "04",
+        "nombre": "Alertas Institucionales",
+        "metric_key": "n_alertas",
+        "metric_suffix": " activas",
+        "nota": "Intervención inmediata requerida",
+        "temp": "critico",
+        "mod": "alertas",
+        "glow": True,
+    },
+    {
+        "id": "d05", "num": "05",
+        "nombre": "Holding Municipal",
+        "metric_key": "hold_avg",
+        "metric_suffix": "%",
+        "nota": "EP Aseo · Bomberos · Patronato · GAD",
+        "temp": "alerta",
+        "mod": "municipal",
+    },
+    {
+        "id": "d06", "num": "06",
+        "nombre": "Salud Institucional",
+        "metric_key": "icpi_pct",
+        "metric_suffix": "%",
+        "nota": "Brecha de ejecución · umbral 65%",
+        "temp": "critico",
+        "mod": "situacion",
+        "glow": True,
+        "featured": True,
+    },
+    # ── Fila 3 ────────────────────────────────────────────────────────────────
+    {
+        "id": "d07", "num": "07",
+        "nombre": "Transparencia",
+        "metric": "21 art. LOTAIP",
+        "nota": "Gobierno abierto · publicación activa",
+        "temp": "normal",
+        "mod": "municipal",
+    },
+    {
+        "id": "d08", "num": "08",
+        "nombre": "Participación Ciudadana",
+        "metric": "27.98%",
+        "nota": "Gestión participativa · 6 mecanismos",
+        "temp": "alerta",
+        "mod": "confianza",
+    },
+    {
+        "id": "d09", "num": "09",
+        "nombre": "Rendición de Cuentas",
+        "metric": "Agosto 2026",
+        "nota": "Preparación en curso · CPCCS",
+        "temp": "alerta",
+        "mod": "rdc",
+    },
+    # ── Fila 4 ────────────────────────────────────────────────────────────────
+    {
+        "id": "d10", "num": "10",
+        "nombre": "Territorio & Cobertura",
+        "metric": "$40/hab rural",
+        "nota": "7 parroquias · brecha territorial activa",
+        "temp": "critico",
+        "mod": "geotwin",
+        "has_map": True,
+    },
+    {
+        "id": "d11", "num": "11",
+        "nombre": "Ecosistema Productivo Territorial",
+        "metric": "—",
+        "nota": "Datos en construcción",
+        "temp": "dim",
+        "mod": None,
+        "disabled": True,
+    },
+    {
+        "id": "d12", "num": "12",
+        "nombre": "Protección Social & Grupos Prioritarios",
+        "metric": "12.83%",
+        "nota": "Presupuesto social · umbral 30% · Art. 35",
+        "temp": "critico",
+        "mod": "genero",
+        "glow": True,
+    },
 ]
-
-# Mapa estado parroquia → estilos Folium
-_MAP_ESTADO: dict[str, dict] = {
-    "NORMAL":     {"c": "#0284C7", "fo": 0.55, "r": 20},
-    "ALERTA":     {"c": "#EA580C", "fo": 0.60, "r": 17},
-    "PRIORIDAD":  {"c": "#DC2626", "fo": 0.65, "r": 22},
-    "EMERGENCIA": {"c": "#7F1D1D", "fo": 0.72, "r": 18},
-}
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -139,121 +238,11 @@ def _load_data() -> dict[str, Any]:
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# GEOTWIN — genera HTML Folium y lo convierte a base64 iframe
-# ══════════════════════════════════════════════════════════════════════════════
-
-def _get_map_html() -> str | None:
-    """Genera el mapa Folium como string HTML base64-encoded para iframe."""
-    try:
-        import folium
-    except ImportError:
-        return None
-
-    if not _GEOJSON.exists():
-        return None
-
-    try:
-        gj_data = json.loads(_GEOJSON.read_text(encoding="utf-8"))
-    except Exception:
-        return None
-
-    m = folium.Map(
-        location=[-1.065, -80.625],
-        zoom_start=11,
-        tiles=None,
-        scrollWheelZoom=True,
-        zoom_control=True,
-        prefer_canvas=True,
-        attributionControl=False,
-    )
-    folium.TileLayer(
-        tiles="https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
-        attr="© OpenStreetMap © CARTO",
-        max_zoom=18,
-        opacity=1.0,
-    ).add_to(m)
-
-    for feat in gj_data.get("features", []):
-        props  = feat.get("properties", {})
-        coords = feat["geometry"]["coordinates"]
-        nombre = props.get("nombre", "")
-        estado = props.get("estado", "NORMAL")
-        tipo   = props.get("tipo", "")
-        hab    = props.get("habitantes", 0)
-        pc     = props.get("per_capita", 0)
-        agua   = props.get("agua", 0)
-
-        lat, lng = coords[1], coords[0]
-        sty    = _MAP_ESTADO.get(estado, {"c": "#475569", "fo": 0.45, "r": 14})
-        color  = sty["c"]
-        radius = sty["r"]
-        is_cab = "cabecera" in nombre.lower()
-        if is_cab:
-            radius = 30
-
-        tooltip_body = f"""
-<div style="font-family:Inter,system-ui,sans-serif;background:#0F172A;color:#E2E8F0;
-            border:1px solid rgba(255,255,255,.12);border-radius:8px;
-            padding:10px 14px;min-width:180px;box-shadow:0 4px 20px rgba(0,0,0,.45)">
-  <div style="font-size:12px;font-weight:700;margin-bottom:4px">{nombre}</div>
-  <div style="font-size:9px;color:{color};font-weight:700;letter-spacing:.08em;
-              text-transform:uppercase;margin-bottom:8px">{estado} · {tipo}</div>
-  <div style="font-size:10px;color:rgba(255,255,255,.50);line-height:1.65">
-    {f'{hab:,} hab.' if hab else ''}
-    {f'<br>Inversión: ${pc}/hab' if pc else ''}
-    {f'<br>Agua: {agua}%' if agua else ''}
-  </div>
-</div>"""
-
-        if estado in ("EMERGENCIA", "PRIORIDAD"):
-            folium.CircleMarker(
-                location=[lat, lng], radius=radius + 14,
-                color=color, fill=True, fill_color=color,
-                fill_opacity=0.10, weight=0.5, interactive=False,
-            ).add_to(m)
-
-        folium.CircleMarker(
-            location=[lat, lng], radius=radius,
-            color=color, fill=True, fill_color=color,
-            fill_opacity=sty["fo"], weight=2.0,
-            tooltip=folium.Tooltip(tooltip_body, sticky=False, parse_html=True),
-        ).add_to(m)
-
-        nombre_corto = nombre.replace(" (cabecera)", "").replace("Parroquia ", "")
-        lbl_mt = radius + 8 if not is_cab else radius + 6
-        folium.Marker(
-            location=[lat, lng],
-            icon=folium.DivIcon(
-                html=f"""<div style="font-family:Inter,system-ui;font-size:10px;
-                    font-weight:700;color:#1e293b;white-space:nowrap;
-                    text-align:center;margin-top:{lbl_mt}px;
-                    text-shadow:0 0 3px #fff,0 0 3px #fff,1px 1px 4px rgba(255,255,255,.8)">
-                    {nombre_corto}</div>""",
-                icon_size=(160, 22), icon_anchor=(80, 0),
-            ),
-            tooltip=folium.Tooltip(tooltip_body, sticky=False, parse_html=True),
-        ).add_to(m)
-
-    try:
-        html_str = m.get_root().render()
-        # Inyectar CSS para fondo oscuro consistente con el canvas
-        dark_bg = """<style>
-html,body{background:#0a0f1e!important;margin:0;padding:0}
-.leaflet-container{background:#0a0f1e!important}
-</style>"""
-        html_str = html_str.replace("</head>", dark_bg + "</head>", 1)
-        b64 = base64.b64encode(html_str.encode("utf-8")).decode("ascii")
-        return f"data:text/html;base64,{b64}"
-    except Exception:
-        return None
-
-
-# ══════════════════════════════════════════════════════════════════════════════
-# HTML BUILDERS
+# KPI BAND — 4 tiles superiores (fuente canónica de métricas)
 # ══════════════════════════════════════════════════════════════════════════════
 
 def _kpi_band(d: dict) -> str:
-    """Banda Vital Superior — 4 KPIs con onclick al módulo correcto."""
+    """Banda de 4 KPI tiles con onclick → módulo."""
     icpi_pct  = d.get("icpi_pct")
     n_alertas = d.get("n_alertas", 0)
     riesgo_cl = d.get("riesgo_clasif", "—")
@@ -263,177 +252,221 @@ def _kpi_band(d: dict) -> str:
     alert_color = "#EF4444" if n_alertas > 0 else "#22C55E"
     hold_color  = C.sem(hold_avg)
 
-    icpi_str  = f"{icpi_pct:.1f}%" if icpi_pct is not None else "17.4%"
-    alert_str = str(n_alertas) if n_alertas >= 0 else "0"
+    icpi_str   = f"{icpi_pct:.1f}%" if icpi_pct is not None else "17.4%"
+    alert_str  = str(n_alertas) if n_alertas >= 0 else "0"
     riesgo_str = riesgo_cl if riesgo_cl not in ("—", "") else "Sin alertas críticas"
 
-    def _kpi(label: str, val: str, color: str, sub: str,
-             dest: str, size: str = "lg") -> str:
-        fs = "2.1rem" if size == "lg" else "1.55rem"
-        pt = "18px 20px 14px" if size == "lg" else "14px 16px 11px"
+    def _tile(label: str, val: str, color: str, sub: str,
+              dest: str, size: str = "lg") -> str:
+        fs = "2.0rem" if size == "lg" else "1.5rem"
+        pt = "16px 18px 12px" if size == "lg" else "13px 15px 10px"
         return f"""
 <div onclick="qNav('{dest}')"
      style="background:rgba(8,13,24,.97);border:1px solid {color}28;
             border-top:2px solid {color};border-radius:10px;
             padding:{pt};cursor:pointer;flex:1;min-width:0;
             transition:border-color .18s,background .18s"
-     onmouseover="this.style.background='rgba(0,212,255,.04)';this.style.borderColor='{color}55'"
-     onmouseout="this.style.background='rgba(8,13,24,.97)';this.style.borderTopColor='{color}';this.style.borderLeftColor='{color}28';this.style.borderRightColor='{color}28';this.style.borderBottomColor='{color}28'">
-  <div style="font-size:8px;font-weight:700;letter-spacing:.10em;
+     onmouseover="this.style.background='rgba(0,212,255,.04)'"
+     onmouseout="this.style.background='rgba(8,13,24,.97)'">
+  <div style="font-size:7.5px;font-weight:700;letter-spacing:.10em;
               text-transform:uppercase;color:rgba(255,255,255,.28);
-              margin-bottom:10px">{label}</div>
+              margin-bottom:9px">{label}</div>
   <div style="font-size:{fs};font-weight:900;color:{color};
               font-family:'JetBrains Mono',monospace;
               letter-spacing:-.04em;line-height:1;
-              margin-bottom:8px">{val}</div>
-  <div style="font-size:9px;color:rgba(255,255,255,.26);
+              margin-bottom:7px">{val}</div>
+  <div style="font-size:8.5px;color:rgba(255,255,255,.28);
               letter-spacing:.01em;line-height:1.4">{sub}</div>
 </div>"""
 
     return f"""
 <div style="display:flex;gap:10px;margin-bottom:12px">
-  {_kpi("Cumplimiento Municipal", icpi_str, icpi_color,
-        d.get("icpi_clasif","—") + " · umbral 65%", "situacion", "lg")}
-  {_kpi("Fondos en Riesgo", "$3.66M", "#7C5CFC",
-        "3 fuentes condicionadas · acción requerida", "cooperacion", "lg")}
-  {_kpi("Alertas Activas", alert_str, alert_color, riesgo_str, "alertas", "sm")}
-  {_kpi("Holding Municipal", f"{hold_avg:.1f}%", hold_color,
-        "Promedio 4 entidades", "municipal", "sm")}
+  {_tile("Cumplimiento Institucional", icpi_str, icpi_color,
+         d.get("icpi_clasif","—") + " · umbral 65%", "situacion", "lg")}
+  {_tile("Fondos en Riesgo", "$3.66M", "#7C5CFC",
+         "3 fuentes condicionadas · acción requerida", "cooperacion", "lg")}
+  {_tile("Alertas Activas", alert_str, alert_color, riesgo_str, "alertas", "sm")}
+  {_tile("Holding Municipal", f"{hold_avg:.1f}%", hold_color,
+         "Promedio entidades · click para detalle", "municipal", "sm")}
 </div>"""
 
 
-def _domain_card(dom: dict, accessible: bool) -> str:
-    """Tarjeta de dominio HTML con onclick navigation."""
-    t    = _TEMP.get(dom["temp"], _TEMP["normal"])
-    grav = dom["grav"]
-    act  = dom["act"]
-    mod  = dom["mod"]
+# ══════════════════════════════════════════════════════════════════════════════
+# DOMAIN CARD — una tarjeta por dominio
+# ══════════════════════════════════════════════════════════════════════════════
 
-    pad     = {3: "14px 13px 12px", 2: "11px 12px 10px", 1: "9px 11px 8px"}[grav]
-    nomb_fs = {3: "12px",           2: "11.5px",          1: "11px"}[grav]
-    nota_fs = {3: "9px",            2: "8.5px",           1: "8px"}[grav]
-    met_fs  = {3: "1.4rem",         2: "1.15rem",         1: ".95rem"}[grav]
+def _resolve_metric(dom: dict, data: dict) -> str:
+    """Resuelve el valor de métrica: fijo o desde snapshot."""
+    key = dom.get("metric_key")
+    if key:
+        val = data.get(key)
+        if val is not None:
+            suffix = dom.get("metric_suffix", "")
+            if isinstance(val, float):
+                return f"{val:.1f}{suffix}"
+            return f"{val}{suffix}"
+    return dom.get("metric", "—")
 
-    metric  = dom.get("metric", "—")
-    met_html = (
-        f'<div style="font-size:{met_fs};font-weight:900;color:{t["c"]};'
-        f'font-family:"JetBrains Mono",monospace;letter-spacing:-.03em;'
-        f'line-height:1;margin:6px 0 5px">{metric}</div>'
-        if metric != "—" else '<div style="height:4px"></div>'
+
+def _domain_card(dom: dict, data: dict) -> str:
+    """Genera el HTML de una tarjeta de dominio."""
+    t        = _TEMP.get(dom["temp"], _TEMP["normal"])
+    mod      = dom.get("mod")
+    disabled = dom.get("disabled", False)
+    has_map  = dom.get("has_map", False)
+    glow     = dom.get("glow", False)
+    featured = dom.get("featured", False)
+    pending  = dom.get("pending", False)
+
+    metric = _resolve_metric(dom, data)
+
+    num_badge = (
+        f'<span style="font-size:7px;font-weight:800;color:{t["c"]};'
+        f'background:{t["c"]}1A;border:1px solid {t["c"]}33;'
+        f'border-radius:4px;padding:1px 5px;flex-shrink:0;'
+        f'letter-spacing:.04em">{dom["num"]}</span>'
     )
 
-    dot_anim = (
-        f'animation:qcc-pulse 1.9s ease-in-out infinite' if act == "activo" else ""
+    nombre_html = (
+        f'<div style="font-size:11.5px;font-weight:700;color:#DDE4EE;'
+        f'line-height:1.25;flex:1">{dom["nombre"]}</div>'
     )
-    dot_opacity = "1" if act in ("activo", "monitoreo") else "0.25"
+
+    # Métrica — solo si existe y no es placeholder
+    if metric != "—" and not pending:
+        met_html = (
+            f'<div style="font-size:1.25rem;font-weight:900;color:{t["c"]};'
+            f'font-family:"JetBrains Mono",monospace;letter-spacing:-.03em;'
+            f'line-height:1;margin:6px 0 5px">{metric}</div>'
+        )
+    else:
+        met_html = '<div style="height:6px"></div>'
+
+    nota_html = (
+        f'<div style="font-size:8.5px;color:rgba(255,255,255,.32);'
+        f'line-height:1.45;margin-top:2px">{dom["nota"]}</div>'
+    )
+
+    # SVG mapa para Dom 10
+    map_html = _CANTON_SVG if has_map else ""
+
+    # Dot de estado
     dot = (
-        f'<span style="display:inline-block;width:5px;height:5px;border-radius:50%;'
-        f'background:{t["c"]};flex-shrink:0;margin-top:3px;opacity:{dot_opacity};'
-        f'{dot_anim}"></span>'
+        f'<span style="width:5px;height:5px;border-radius:50%;'
+        f'background:{t["c"]};display:inline-block;flex-shrink:0;'
+        f'margin-top:3px;opacity:{"1" if not disabled else "0.3"};'
+        f'{"animation:qcc-pulse 2s ease-in-out infinite" if not disabled else ""}"></span>'
     )
 
-    if not accessible:
+    # Card deshabilitada (Dom 11)
+    if disabled:
         return f"""
-<div style="background:{t['bg']};border:1px solid {t['bd']};border-radius:9px;
-            padding:{pad};margin-bottom:8px;opacity:.35;cursor:not-allowed">
-  <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:6px">
-    <div style="font-size:{nomb_fs};font-weight:700;color:#DDE4EE;line-height:1.2;flex:1">
-      {dom['nombre']}</div>{dot}
+<div style="background:{t["bg"]};border:1px solid {t["bd"]};
+            border-radius:9px;padding:11px 12px 10px;
+            opacity:.38;cursor:not-allowed;min-height:80px">
+  <div style="display:flex;align-items:flex-start;
+              justify-content:space-between;gap:5px;margin-bottom:5px">
+    {num_badge}{nombre_html}{dot}
   </div>
-  {met_html}
-  <div style="font-size:{nota_fs};color:rgba(255,255,255,.30);line-height:1.4">
-    {dom['nota']}</div>
-  <div style="font-size:8px;color:rgba(255,255,255,.16);margin-top:3px;
-              letter-spacing:.04em;text-transform:uppercase">Sección técnica</div>
+  {nota_html}
+  <div style="font-size:7.5px;color:rgba(255,255,255,.18);margin-top:5px;
+              text-transform:uppercase;letter-spacing:.06em">En construcción</div>
 </div>"""
+
+    # Glow keyframe via style attr (cards 04, 06, 12)
+    glow_style = (
+        'animation:qcc-glow 2.2s ease-in-out infinite;'
+        if glow else ""
+    )
+    strong_glow = (
+        'animation:qcc-glow-strong 2s ease-in-out infinite;'
+        if featured else ""
+    )
 
     return f"""
 <div onclick="qNav('{mod}')"
-     style="background:{t['bg']};border:1px solid {t['bd']};border-radius:9px;
-            padding:{pad};margin-bottom:8px;cursor:pointer;
-            transition:border-color .15s,background .15s,transform .12s"
-     onmouseover="this.style.borderColor='{t['c']}';this.style.background='{t['bg'].replace('.10',',.16').replace('.09',',.14').replace('.07',',.12').replace('.05',',.10')}'"
-     onmouseout="this.style.borderColor='{t['bd']}';this.style.background='{t['bg']}'">
-  <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:6px">
-    <div style="font-size:{nomb_fs};font-weight:700;color:#DDE4EE;line-height:1.2;flex:1">
-      {dom['nombre']}</div>{dot}
+     style="background:{t["bg"]};border:1px solid {t["bd"]};
+            border-radius:9px;padding:11px 12px 10px;
+            cursor:pointer;min-height:80px;
+            transition:border-color .15s,background .15s;
+            {glow_style}{strong_glow}"
+     onmouseover="this.style.borderColor='{t["c"]}80';this.style.background='{t["bg"].replace("rgba(","rgba(").replace(".10",",.18").replace(".09",",.16").replace(".07",",.13").replace(".05",",.11").replace(".02",",.07")}'"
+     onmouseout="this.style.borderColor='{t["bd"]}';this.style.background='{t["bg"]}'">
+  <div style="display:flex;align-items:flex-start;
+              justify-content:space-between;gap:5px;margin-bottom:5px">
+    {num_badge}{nombre_html}{dot}
   </div>
+  {map_html}
   {met_html}
-  <div style="font-size:{nota_fs};color:rgba(255,255,255,.32);line-height:1.4">
-    {dom['nota']}</div>
+  {nota_html}
 </div>"""
 
 
-def _domain_grid() -> str:
-    """4 columnas de dominios (una por capa)."""
-    cols_html = []
-    is_tec = is_tecnico()
+# ══════════════════════════════════════════════════════════════════════════════
+# DOMAIN GRID — grilla 4×3 (4 filas · 3 columnas)
+# ══════════════════════════════════════════════════════════════════════════════
 
-    for capa_cfg in _CAPAS:
-        accent = capa_cfg["accent"]
-        capa_doms = [d for d in _DOMAINS if d["capa"] == capa_cfg["id"]]
-        cards = "".join(
-            _domain_card(dom, accessible=not dom.get("tec", False) or is_tec)
-            for dom in capa_doms
-        )
-        cols_html.append(f"""
-<div style="flex:1;min-width:0">
-  <div style="font-size:8px;font-weight:800;letter-spacing:.14em;
-              text-transform:uppercase;color:{accent};
-              border-bottom:1px solid {accent}28;
-              padding-bottom:7px;margin-bottom:9px">{capa_cfg['label']}</div>
+def _domain_grid(data: dict) -> str:
+    """Genera la grilla 4×3 de los 12 dominios canónicos."""
+    # Agrupar en filas de 3
+    rows_html = []
+    for row_start in range(0, 12, 3):
+        row_doms = _DOMAINS_12[row_start: row_start + 3]
+        cards = "".join(_domain_card(dom, data) for dom in row_doms)
+        rows_html.append(f"""
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px;
+            margin-bottom:9px">
   {cards}
 </div>""")
 
-    return f"""
-<div style="display:flex;gap:10px">
-  {''.join(cols_html)}
-</div>"""
+    return "".join(rows_html)
 
+
+# ══════════════════════════════════════════════════════════════════════════════
+# BOTTOM BAND
+# ══════════════════════════════════════════════════════════════════════════════
 
 def _bottom_band() -> str:
-    """Banda inferior dinámica — sparklines + sistema + corte."""
     from config import GAD_NOMBRE, CORTE
     return f"""
 <div style="display:flex;align-items:center;justify-content:space-between;
-            margin-top:10px;padding:10px 14px;
+            margin-top:10px;padding:9px 13px;
             background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);
             border-radius:8px">
-  <div style="display:flex;align-items:center;gap:16px">
-    <div style="display:flex;align-items:center;gap:6px">
+  <div style="display:flex;align-items:center;gap:14px">
+    <div style="display:flex;align-items:center;gap:5px">
       <span style="width:6px;height:6px;border-radius:50%;background:#22C55E;
                    display:inline-block;animation:qcc-pulse 2s ease-in-out infinite"></span>
-      <span style="font-size:9px;color:rgba(255,255,255,.35);letter-spacing:.04em">
+      <span style="font-size:8.5px;color:rgba(255,255,255,.35);letter-spacing:.04em">
         Sistema operativo</span>
     </div>
-    <span style="font-size:9px;color:rgba(255,255,255,.18)">·</span>
-    <span style="font-size:9px;color:rgba(255,255,255,.28);font-family:'JetBrains Mono',monospace">
-      {GAD_NOMBRE}</span>
-    <span style="font-size:9px;color:rgba(255,255,255,.18)">·</span>
-    <span style="font-size:9px;color:rgba(255,255,255,.25);letter-spacing:.04em">
+    <span style="font-size:8.5px;color:rgba(255,255,255,.18)">·</span>
+    <span style="font-size:8.5px;color:rgba(255,255,255,.30);
+                 font-family:'JetBrains Mono',monospace">{GAD_NOMBRE}</span>
+    <span style="font-size:8.5px;color:rgba(255,255,255,.18)">·</span>
+    <span style="font-size:8.5px;color:rgba(255,255,255,.26);letter-spacing:.04em">
       Corte {CORTE}</span>
   </div>
   <div style="display:flex;align-items:center;gap:8px">
-    <span style="font-size:8px;color:rgba(255,255,255,.18);letter-spacing:.06em;
+    <span style="font-size:7.5px;color:rgba(255,255,255,.18);letter-spacing:.06em;
                  text-transform:uppercase">QUIRA Intelligence</span>
-    <span style="font-size:8px;color:rgba(255,255,255,.12)">·</span>
-    <span style="font-size:8px;color:rgba(255,255,255,.14);font-family:'JetBrains Mono',monospace">
-      Dylus Lab © 2026</span>
+    <span style="font-size:7.5px;color:rgba(255,255,255,.12)">·</span>
+    <span style="font-size:7.5px;color:rgba(255,255,255,.15);
+                 font-family:'JetBrains Mono',monospace">Dylus Lab © 2026</span>
   </div>
 </div>"""
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# CSS — Teatro Operacional
+# CSS — Teatro Operacional D.3
 # ══════════════════════════════════════════════════════════════════════════════
 
 _CANVAS_CSS = """
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
 :root {
-  --navy:#0A1128; --navy-card:#0d1430; --cyan:#00D4FF;
+  --navy:#0A1128; --cyan:#00D4FF;
   --green:#00E096; --amber:#FFB800; --red:#FF4D6D;
   --purple:#7C5CFC; --white:#E2E8F0; --muted:rgba(255,255,255,.30);
-  --divider:rgba(255,255,255,.06);
 }
 *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
 html,body {
@@ -446,9 +479,9 @@ html,body {
   -ms-overflow-style:none;
 }
 html::-webkit-scrollbar,body::-webkit-scrollbar { display:none; }
-body { padding:12px 14px 16px; }
+body { padding:12px 14px 14px; }
 
-/* Animación pulso */
+/* Animaciones */
 @keyframes qcc-pulse {
   0%,100%{opacity:1;transform:scale(1)}
   50%{opacity:.25;transform:scale(.7)}
@@ -456,92 +489,69 @@ body { padding:12px 14px 16px; }
 @keyframes fadeIn {
   from{opacity:0;transform:translateY(4px)} to{opacity:1;transform:none}
 }
-
-/* Layout principal */
-.cc-middle {
-  display:flex;
-  gap:10px;
-  min-height:420px;
+@keyframes qcc-glow {
+  0%,100%{box-shadow:0 0 6px rgba(239,68,68,.30)}
+  50%{box-shadow:0 0 16px rgba(239,68,68,.60),0 0 6px rgba(239,68,68,.25)}
 }
-.cc-left-rail {
-  width:310px;
-  min-width:280px;
-  flex-shrink:0;
-  display:flex;
-  flex-direction:column;
-  gap:8px;
-}
-.cc-right {
-  flex:1;
-  min-width:0;
-  overflow:hidden;
-}
-
-/* GeoTwin iframe */
-.geotwin-frame {
-  width:100%;
-  height:100%;
-  min-height:360px;
-  border:1px solid rgba(0,212,255,.12);
-  border-radius:10px;
-  background:#0a0f1e;
-}
-
-/* Rail header */
-.rail-hdr {
-  display:flex;
-  align-items:center;
-  gap:8px;
-  padding:8px 10px;
-  background:rgba(0,212,255,.04);
-  border:1px solid rgba(0,212,255,.10);
-  border-radius:8px;
+@keyframes qcc-glow-strong {
+  0%,100%{box-shadow:0 0 10px rgba(239,68,68,.40),0 0 20px rgba(239,68,68,.15)}
+  50%{box-shadow:0 0 22px rgba(239,68,68,.75),0 0 40px rgba(239,68,68,.20)}
 }
 
 /* Botón logout */
 .btn-logout {
-  display:inline-flex;
-  align-items:center;
-  gap:5px;
-  padding:5px 12px;
+  display:inline-flex;align-items:center;gap:5px;
+  padding:4px 11px;
   background:rgba(255,255,255,.04);
   border:1px solid rgba(255,255,255,.08);
   border-radius:6px;
-  font-size:9px;
-  font-weight:600;
-  color:rgba(255,255,255,.35);
-  letter-spacing:.04em;
-  cursor:pointer;
+  font-size:8.5px;font-weight:600;
+  color:rgba(255,255,255,.32);
+  letter-spacing:.04em;cursor:pointer;
   text-transform:uppercase;
   transition:background .15s,color .15s;
 }
 .btn-logout:hover {
   background:rgba(239,68,68,.08);
-  border-color:rgba(239,68,68,.25);
+  border-color:rgba(239,68,68,.22);
   color:#EF4444;
+}
+
+/* Botón QUIRA AI */
+.btn-quira-ai {
+  display:inline-flex;align-items:center;gap:5px;
+  padding:4px 11px;
+  background:rgba(0,212,255,.06);
+  border:1px solid rgba(0,212,255,.18);
+  border-radius:6px;
+  font-size:8.5px;font-weight:600;
+  color:rgba(0,212,255,.65);
+  letter-spacing:.04em;cursor:pointer;
+  transition:background .15s,color .15s;
+}
+.btn-quira-ai:hover {
+  background:rgba(0,212,255,.12);
+  color:#00D4FF;
 }
 
 /* Mobile */
 @media (max-width:768px) {
-  .cc-middle { flex-direction:column; }
-  .cc-left-rail { width:100%; min-width:0; }
-  .geotwin-frame { min-height:260px; }
+  body { padding:8px 10px 10px; }
 }
 """
 
 _BRIDGE_JS = """
 <script>
 function qNav(dest) {
+  if(!dest) return;
   window.parent.postMessage({type:'quira_nav', dest:dest}, '*');
 }
 function qLogout() {
   window.parent.postMessage({type:'quira_action', action:'logout'}, '*');
 }
-
-// Recibe mensajes del puente JS externo (por si el bridge usa este frame como relay)
-window.addEventListener('message', function(e) {
-  if (!e.data) return;
-});
+function qQuiraAI() {
+  window.parent.postMessage({type:'quira_action', action:'quira_ai'}, '*');
+}
 </script>
 """
 
@@ -551,96 +561,80 @@ window.addEventListener('message', function(e) {
 # ══════════════════════════════════════════════════════════════════════════════
 
 def _build_canvas(d: dict) -> str:
-    """Ensambla el HTML del teatro operacional completo."""
+    """Ensambla el HTML del teatro operacional completo — D.3."""
     from config import GAD_NOMBRE, ALCALDE, CORTE
 
-    map_src = _get_map_html()
-
-    # Header del rail — identidad territorial
     rol = get_rol()
+
+    # ── Header ────────────────────────────────────────────────────────────────
     header_html = f"""
 <div style="display:flex;align-items:center;justify-content:space-between;
-            margin-bottom:8px;padding:0 2px">
-  <div style="display:flex;align-items:center;gap:8px">
-    <span style="font-size:14px;font-weight:900;color:#00D4FF;letter-spacing:-.02em">
+            margin-bottom:10px;padding:0 2px">
+  <div style="display:flex;align-items:center;gap:10px">
+    <span style="font-size:15px;font-weight:900;color:#00D4FF;letter-spacing:-.02em">
       ⬡ QUIRA</span>
-    <span style="font-size:9px;color:rgba(255,255,255,.30);letter-spacing:.06em;
+    <span style="font-size:8.5px;color:rgba(255,255,255,.28);letter-spacing:.06em;
                  text-transform:uppercase">Intelligence</span>
-    <span style="font-size:9px;font-weight:700;color:#00D4FF;
+    <span style="font-size:9px;color:rgba(255,255,255,.18)">·</span>
+    <span style="font-size:8.5px;color:rgba(255,255,255,.35);font-weight:600;
+                 letter-spacing:.04em">Centro de Mando</span>
+    <span style="font-size:9px;color:rgba(255,255,255,.18)">·</span>
+    <span style="font-size:8.5px;color:rgba(255,255,255,.28);
+                 font-family:'JetBrains Mono',monospace">{GAD_NOMBRE}</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:8px">
+    <button class="btn-quira-ai" onclick="qQuiraAI()">
+      ◎ Preguntar a QUIRA ▼</button>
+    <span style="font-size:8.5px;font-weight:700;color:#00D4FF;
                  background:rgba(0,212,255,.10);border:1px solid rgba(0,212,255,.20);
                  border-radius:5px;padding:2px 8px;letter-spacing:.04em">{rol}</span>
-  </div>
-  <button class="btn-logout" onclick="qLogout()">⎋ Cerrar Sesión</button>
-</div>"""
-
-    # GeoTwin rail content
-    if map_src:
-        geotwin_html = f"""
-<div style="font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-            color:rgba(0,212,255,.50);margin-bottom:6px;display:flex;
-            align-items:center;gap:6px">
-  <span style="width:2px;height:10px;background:#00D4FF;border-radius:1px;
-               display:inline-block"></span>
-  TERRITORIO MUNICIPAL
-  <span style="color:rgba(255,255,255,.18);margin-left:auto;
-               font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:400">
-    7 parroquias</span>
-</div>
-<iframe src="{map_src}"
-        class="geotwin-frame"
-        frameborder="0"
-        scrolling="no"
-        style="flex:1"
-        title="GeoTwin Montecristi"></iframe>"""
-    else:
-        geotwin_html = """
-<div style="flex:1;min-height:360px;display:flex;align-items:center;
-            justify-content:center;background:rgba(255,255,255,.02);
-            border:1px solid rgba(255,255,255,.06);border-radius:10px;
-            flex-direction:column;gap:8px">
-  <span style="font-size:20px;opacity:.25">🗺</span>
-  <span style="font-size:11px;color:rgba(255,255,255,.22)">Mapa no disponible</span>
-</div>"""
-
-    # Meta-info bajo el mapa
-    meta_html = f"""
-<div style="padding:8px 10px;background:rgba(0,212,255,.03);
-            border:1px solid rgba(0,212,255,.08);border-radius:8px">
-  <div style="font-size:9px;font-weight:700;color:rgba(255,255,255,.50);
-              margin-bottom:4px">{GAD_NOMBRE}</div>
-  <div style="font-size:8px;color:rgba(255,255,255,.28);line-height:1.6">
-    {ALCALDE}<br>
-    <span style="color:rgba(0,212,255,.45);font-family:'JetBrains Mono',monospace">
-      Corte {CORTE}</span>
+    <button class="btn-logout" onclick="qLogout()">⎋ Salir</button>
   </div>
 </div>"""
 
-    # Sección de capas — encabezado
-    capas_hdr = """
-<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
-  <span style="width:2px;height:12px;background:#7C5CFC;border-radius:1px;
+    # ── Status bar ────────────────────────────────────────────────────────────
+    status_bar = f"""
+<div style="display:flex;align-items:center;gap:14px;
+            padding:5px 12px;margin-bottom:12px;
+            background:rgba(255,255,255,.015);
+            border:1px solid rgba(255,255,255,.04);border-radius:7px">
+  <div style="display:flex;align-items:center;gap:5px">
+    <span style="width:5px;height:5px;border-radius:50%;background:#22C55E;
+                 display:inline-block;animation:qcc-pulse 2s ease-in-out infinite"></span>
+    <span style="font-size:8px;color:rgba(255,255,255,.32);letter-spacing:.04em">
+      EN LÍNEA</span>
+  </div>
+  <span style="font-size:8px;color:rgba(255,255,255,.15)">·</span>
+  <span style="font-size:8px;color:rgba(255,255,255,.25);
+               font-family:'JetBrains Mono',monospace">Corte {CORTE}</span>
+  <span style="font-size:8px;color:rgba(255,255,255,.15)">·</span>
+  <span style="font-size:8px;color:rgba(255,255,255,.22);letter-spacing:.04em">
+    {ALCALDE}</span>
+  <div style="margin-left:auto;font-size:7.5px;color:rgba(255,255,255,.18);
+              letter-spacing:.06em;text-transform:uppercase">
+    12 dominios · click para explorar</div>
+</div>"""
+
+    # ── Sección label dominios ─────────────────────────────────────────────────
+    dom_header = """
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+  <span style="width:2px;height:10px;background:#7C5CFC;border-radius:1px;
                display:inline-block"></span>
-  <span style="font-size:8px;font-weight:800;letter-spacing:.14em;
-               text-transform:uppercase;color:rgba(255,255,255,.35)">
-    CAPAS OPERACIONALES</span>
-  <span style="font-size:8px;color:rgba(255,255,255,.16);margin-left:auto;
-               font-family:'JetBrains Mono',monospace">13 dominios · click para abrir</span>
+  <span style="font-size:7.5px;font-weight:800;letter-spacing:.14em;
+               text-transform:uppercase;color:rgba(255,255,255,.32)">
+    DOMINIOS OPERACIONALES</span>
+  <span style="font-size:7.5px;color:rgba(255,255,255,.14);margin-left:auto;
+               font-family:'JetBrains Mono',monospace">
+    Holding Municipal Montecristi · Q1-2026</span>
 </div>"""
 
     canvas = f"""
 <div style="animation:fadeIn .22s ease">
   {header_html}
   {_kpi_band(d)}
-  <div class="cc-middle">
-    <div class="cc-left-rail">
-      {geotwin_html}
-      {meta_html}
-    </div>
-    <div class="cc-right">
-      {capas_hdr}
-      {_domain_grid()}
-    </div>
-  </div>
+  {status_bar}
+  {dom_header}
+  {_domain_grid(d)}
   {_bottom_band()}
 </div>"""
 
@@ -651,7 +645,6 @@ def _build_canvas(d: dict) -> str:
         f"<style>{_CANVAS_CSS}</style>"
         "</head>"
         f"<body>{canvas}{_BRIDGE_JS}"
-        # Auto-resize
         """<script>
 (function(){
   function h(){
@@ -663,7 +656,7 @@ def _build_canvas(d: dict) -> str:
   }
   h(); document.addEventListener('DOMContentLoaded',h);
   window.addEventListener('load',h);
-  setTimeout(h,150); setTimeout(h,600); setTimeout(h,1400);
+  setTimeout(h,120); setTimeout(h,500); setTimeout(h,1200);
 })();
 </script>"""
         "</body></html>"
@@ -675,7 +668,7 @@ def _build_canvas(d: dict) -> str:
 # ══════════════════════════════════════════════════════════════════════════════
 
 _NAV_TARGETS = [
-    "situacion", "cooperacion", "alertas", "municipal", "concejo",
+    "situacion", "cooperacion", "alertas", "municipal",
     "analisis", "geotwin", "rdc", "confianza", "genero",
     "ods", "control",
 ]
@@ -694,10 +687,12 @@ _BRIDGE_SCRIPT = """
   window.addEventListener('message', function(e){
     if(!e.data) return;
     if(e.data.type === 'quira_nav')    dispatch(e.data.dest, 'nav');
-    if(e.data.type === 'quira_action') dispatch(null, e.data.action);
+    if(e.data.type === 'quira_action') {
+      if(e.data.action === 'logout') dispatch(null, 'logout');
+    }
   });
 
-  // Ocultar todos los botones funcionales ocultos
+  // Ocultar botones funcionales del DOM visible
   function hideHidden(){
     var btns = window.parent.document.querySelectorAll(
       '[data-testid="stBaseButton-secondary"]');
@@ -731,19 +726,17 @@ _BRIDGE_SCRIPT = """
 # ══════════════════════════════════════════════════════════════════════════════
 
 def render() -> None:
-    """Renderiza el Centro de Mando Unificado — teatro operacional único."""
+    """Renderiza el Centro de Mando — 12 dominios canónicos · Sprint D.3."""
 
-    # ── Ocultar sidebar completamente para el Ejecutivo ───────────────────────
+    # CSS Streamlit: sidebar invisible, main 100%
     st.markdown("""
 <style>
-/* Sprint 1.2: Sidebar invisible — Streamlit como runtime, no como UI */
 [data-testid="stSidebar"] {
   display: none !important;
   width: 0 !important;
   min-width: 0 !important;
   overflow: hidden !important;
 }
-/* Expandir main al 100% del viewport sin sidebar */
 .main .block-container,
 [data-testid="stMainBlockContainer"],
 div.block-container {
@@ -753,43 +746,34 @@ div.block-container {
   padding-right: 0.5rem !important;
   padding-top: 0.25rem !important;
 }
-/* Quitar el botón de colapsar sidebar */
 [data-testid="collapsedControl"],
 button[data-testid="collapsedControl"] {
   display: none !important;
 }
-/* Quitar padding top de Streamlit */
 section[data-testid="stMainBlockContainer"] > div:first-child {
   padding-top: 4px !important;
 }
 </style>
 """, unsafe_allow_html=True)
 
-    # ── Datos ─────────────────────────────────────────────────────────────────
+    # Datos
     data = _load_data()
 
-    # ── Canvas HTML principal ─────────────────────────────────────────────────
+    # Canvas HTML
     html = _build_canvas(data)
-    _cv1.html(html, height=820, scrolling=False)
+    _cv1.html(html, height=860, scrolling=False)
 
-    # ── Bridge JS — escucha postMessage del canvas ────────────────────────────
+    # Bridge JS
     _cv1.html(_BRIDGE_SCRIPT, height=0)
 
-    # ── Botones funcionales ocultos — dispatch real de navegación ─────────────
-    # Cada destino tiene su token __QNAV_xxx__
-    # El bridge JS encuentra el token y hace click
+    # Botones funcionales ocultos — dispatch de navegación
     _cols = st.columns(len(_NAV_TARGETS) + 1)
     for i, dest in enumerate(_NAV_TARGETS):
         with _cols[i]:
             if st.button(f"__QNAV_{dest}__", key=f"_qnav_{dest}",
                          use_container_width=True):
-                if dest == "concejo":
-                    # Panel Estratégico: cambiar modo dentro del flujo ejecutivo
-                    st.session_state["ejecutivo_modo"] = "concejo"
-                    st.session_state["gov_module"] = "inicio"
-                else:
-                    st.session_state["gov_module"] = dest
-                    st.session_state["ejecutivo_modo"] = "vista"
+                st.session_state["gov_module"] = dest
+                st.session_state["ejecutivo_modo"] = "vista"
                 st.rerun()
 
     with _cols[-1]:

@@ -47,6 +47,82 @@ from __future__ import annotations
 
 import streamlit as st
 from utils.session import is_tecnico, is_admin, is_ejecutivo, get_rol
+from utils.cache_quira import cargar_snapshot, cargar_gm_snapshot
+from utils.css_tokens import C
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# KPI BAND PERSISTENTE — visible en drill-down del Ejecutivo
+# Mantiene contexto de los 4 KPIs mientras el operador explora un dominio
+# ══════════════════════════════════════════════════════════════════════════════
+
+def _render_mini_kpi_band() -> None:
+    """
+    Banda compacta de 4 KPI tiles — persiste en drill-down del Ejecutivo.
+    Misma fuente de datos que p_command_center.py · misma doctrina de labels.
+    Regla: ningún nombre interno (ICPI, TGI, SAT, Ti) en labels públicos.
+    """
+    try:
+        snap, _ = cargar_snapshot()
+        gm      = cargar_gm_snapshot()
+
+        icpi_pct    = None
+        icpi_clasif = "—"
+        n_alertas   = 0
+        hold_avg    = 68.7
+
+        if snap:
+            icpi_d      = snap.get("icpi", {})
+            icpi_pct    = icpi_d.get("global_pct") or icpi_d.get("global")
+            icpi_clasif = icpi_d.get("clasificacion", "—")
+            sat_d       = snap.get("sat", {})
+            n_alertas   = sat_d.get("total_activas", 0)
+
+        if gm and icpi_pct is None:
+            icpi_gm     = gm.get("icpi", {})
+            icpi_pct    = icpi_gm.get("global_pct") or icpi_gm.get("global")
+            icpi_clasif = icpi_gm.get("clasificacion", "—")
+
+        icpi_color  = C.sem(icpi_pct) if icpi_pct is not None else "#EF4444"
+        alert_color = "#EF4444" if n_alertas > 0 else "#22C55E"
+        hold_color  = C.sem(hold_avg)
+        icpi_str    = f"{icpi_pct:.1f}%" if icpi_pct is not None else "17.4%"
+
+        def _t(label: str, val: str, color: str, sub: str) -> str:
+            return f"""
+<div style="flex:1;min-width:0;padding:8px 12px;
+            background:rgba(8,13,24,.97);border:1px solid {color}22;
+            border-top:2px solid {color};border-radius:8px">
+  <div style="font-size:7px;font-weight:700;letter-spacing:.09em;
+              text-transform:uppercase;color:rgba(255,255,255,.25);
+              margin-bottom:5px">{label}</div>
+  <div style="font-size:1.1rem;font-weight:900;color:{color};
+              font-family:'JetBrains Mono',monospace;letter-spacing:-.03em;
+              line-height:1;margin-bottom:4px">{val}</div>
+  <div style="font-size:7.5px;color:rgba(255,255,255,.26);
+              line-height:1.35">{sub}</div>
+</div>"""
+
+        tiles_html = (
+            _t("Cumplimiento Institucional", icpi_str, icpi_color,
+               icpi_clasif + " · umbral 65%") +
+            _t("Fondos en Riesgo", "$3.66M", "#7C5CFC",
+               "3 fuentes condicionadas") +
+            _t("Alertas Activas", str(n_alertas), alert_color,
+               "Sistema activo") +
+            _t("Holding Municipal", f"{hold_avg:.1f}%", hold_color,
+               "Promedio entidades")
+        )
+
+        st.markdown(f"""
+<div style="display:flex;gap:8px;margin-bottom:14px;padding:0 2px">
+  {tiles_html}
+</div>
+""", unsafe_allow_html=True)
+
+    except Exception:
+        # Falla silenciosa — el KPI band es contextual, no bloquea el drill-down
+        pass
 
 
 # ── Catálogo de módulos GOV ───────────────────────────────────────────────────
@@ -423,6 +499,9 @@ button[data-testid="collapsedControl"] {
                 st.session_state["gov_module"] = "inicio"
                 st.session_state.pop("ejecutivo_modo", None)
                 st.rerun()
+
+            # KPI band persistente — contexto superior antes del módulo
+            _render_mini_kpi_band()
 
             fn_drill()
             return
