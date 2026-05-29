@@ -1,16 +1,15 @@
 """
-QUIRA Intelligence — Centro de Mando  (Sprint D.3 · 12 Dominios Canónicos)
+QUIRA Intelligence — Centro de Mando  (Sprint D.3.1 · Visual Upgrade)
 Teatro Operacional · GAD Montecristi · Holding Municipal
 
-Arquitectura D.3:
-  · 12 dominios canónicos en grilla 4×3 — sin capas improvisadas
-  · GeoTwin = card 10 con SVG estático (no Folium en canvas)
-  · Glow pulsante en cards críticas: 04 / 06 / 12
-  · Card 11 dimmed — Ecosistema Productivo en construcción
-  · KPI band corregida: "Cumplimiento Institucional"
-  · Left rail eliminado — domain grid ocupa 100% del ancho
-  · QUIRA AI = botón invocable en status bar (no panel fijo)
-  · No scroll · HTML Canvas full-viewport · postMessage bridge
+Mejoras D.3.1:
+  · Botones QNAV ocultos via CSS Streamlit (no flicker)
+  · Contraste tipográfico: labels al 65%, notas al 58%
+  · Fuentes más grandes: nombres 13px, notas 10px, métricas 1.4rem
+  · Status bar redundante eliminado
+  · Dom 10 SVG contenido a 64px fijo — filas uniformes
+  · Grilla con align-items:stretch para altura uniforme por fila
+  · Notas específicas Montecristi, no genéricas
 
 "QUIRA entiende relaciones institucionales."
 Dylus Lab © 2026
@@ -32,66 +31,65 @@ from utils.session import get_rol, logout
 # PALETA DE TEMPERATURA
 # ══════════════════════════════════════════════════════════════════════════════
 _TEMP: dict[str, dict[str, str]] = {
-    "critico": {"bg": "rgba(239,68,68,.10)",   "bd": "rgba(239,68,68,.35)",   "c": "#EF4444"},
-    "alerta":  {"bg": "rgba(249,115,22,.09)",  "bd": "rgba(249,115,22,.30)",  "c": "#F97316"},
-    "normal":  {"bg": "rgba(0,212,255,.05)",   "bd": "rgba(0,212,255,.16)",   "c": "#00D4FF"},
-    "verde":   {"bg": "rgba(34,197,94,.07)",   "bd": "rgba(34,197,94,.24)",   "c": "#22C55E"},
-    "funds":   {"bg": "rgba(124,92,252,.10)",  "bd": "rgba(124,92,252,.32)",  "c": "#7C5CFC"},
-    "dim":     {"bg": "rgba(255,255,255,.02)", "bd": "rgba(255,255,255,.07)", "c": "#64748B"},
+    "critico": {"bg": "rgba(239,68,68,.11)",   "bd": "rgba(239,68,68,.40)",   "c": "#EF4444"},
+    "alerta":  {"bg": "rgba(249,115,22,.10)",  "bd": "rgba(249,115,22,.35)",  "c": "#F97316"},
+    "normal":  {"bg": "rgba(0,212,255,.06)",   "bd": "rgba(0,212,255,.18)",   "c": "#00D4FF"},
+    "verde":   {"bg": "rgba(34,197,94,.08)",   "bd": "rgba(34,197,94,.28)",   "c": "#22C55E"},
+    "funds":   {"bg": "rgba(124,92,252,.11)",  "bd": "rgba(124,92,252,.38)",  "c": "#7C5CFC"},
+    "dim":     {"bg": "rgba(255,255,255,.025)","bd": "rgba(255,255,255,.08)", "c": "#64748B"},
 }
 
 # ══════════════════════════════════════════════════════════════════════════════
-# SVG ESTÁTICO — Cantón Montecristi (7 parroquias)
-# Thumbnail inline para la card Dom 10 — no Folium, no dependencias externas
+# SVG ESTÁTICO — Cantón Montecristi · 7 parroquias
+# Contenido a 64px fijo — no desborda la card
 # ══════════════════════════════════════════════════════════════════════════════
 _CANTON_SVG = """
-<svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg"
-     style="width:100%;height:80px;display:block;margin:4px 0">
+<svg viewBox="0 0 240 100" xmlns="http://www.w3.org/2000/svg"
+     style="width:100%;height:64px;display:block;margin:5px 0 4px;flex-shrink:0">
   <defs>
-    <radialGradient id="bg_grd" cx="50%" cy="50%" r="60%">
-      <stop offset="0%" stop-color="#0f2040" stop-opacity="1"/>
-      <stop offset="100%" stop-color="#060d1a" stop-opacity="1"/>
+    <radialGradient id="bg_g" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#0f2040"/>
+      <stop offset="100%" stop-color="#060c18"/>
     </radialGradient>
   </defs>
-  <!-- Fondo -->
-  <rect width="200" height="160" fill="url(#bg_grd)" rx="6"/>
-  <!-- Silueta simplificada cantón -->
-  <polygon points="30,120 50,95 45,70 65,55 90,50 120,48 145,55 160,75 155,100 140,120 110,130 80,132 55,128"
-           fill="rgba(0,140,255,.12)" stroke="rgba(0,140,255,.35)" stroke-width="1.2"/>
-  <!-- Parroquias — puntos con color por estado -->
-  <!-- Montecristi cabecera — ALERTA -->
-  <circle cx="95" cy="88" r="7" fill="#F97316" fill-opacity=".75"/>
-  <circle cx="95" cy="88" r="11" fill="none" stroke="#F97316" stroke-width="1" stroke-opacity=".35"/>
-  <!-- Crucita — NORMAL -->
-  <circle cx="50" cy="80" r="4" fill="#00D4FF" fill-opacity=".65"/>
-  <!-- La Pila — NORMAL -->
-  <circle cx="70" cy="65" r="3.5" fill="#00D4FF" fill-opacity=".60"/>
-  <!-- Chirijos — PRIORIDAD -->
-  <circle cx="125" cy="70" r="4.5" fill="#EF4444" fill-opacity=".70"/>
-  <!-- Noboa — NORMAL -->
-  <circle cx="140" cy="95" r="3.5" fill="#00D4FF" fill-opacity=".55"/>
-  <!-- San Sebastián — ALERTA -->
-  <circle cx="108" cy="110" r="4" fill="#F97316" fill-opacity=".65"/>
-  <!-- Leonidas Plaza — NORMAL -->
-  <circle cx="60" cy="108" r="3" fill="#00D4FF" fill-opacity=".55"/>
-  <!-- Labels -->
-  <text x="95" y="82" text-anchor="middle" font-size="7" fill="#E2E8F0"
-        font-family="Inter,system-ui,sans-serif" font-weight="700">MCR</text>
-  <text x="50" y="74" text-anchor="middle" font-size="5.5" fill="rgba(255,255,255,.55)"
-        font-family="Inter,system-ui,sans-serif">Crucita</text>
-  <text x="125" y="64" text-anchor="middle" font-size="5.5" fill="rgba(255,255,255,.55)"
-        font-family="Inter,system-ui,sans-serif">Chirijos</text>
-  <!-- Título -->
-  <text x="100" y="150" text-anchor="middle" font-size="7.5" fill="rgba(0,212,255,.55)"
-        font-family="Inter,system-ui,sans-serif" font-weight="600" letter-spacing=".05em">
+  <rect width="240" height="100" fill="url(#bg_g)" rx="5"/>
+  <!-- Silueta cantón -->
+  <polygon points="30,80 52,60 48,42 72,30 100,26 135,25 162,33 178,52 172,72 155,84 122,90 88,92 60,86"
+           fill="rgba(0,130,255,.10)" stroke="rgba(0,150,255,.30)" stroke-width="1.2"/>
+  <!-- Montecristi cabecera -->
+  <circle cx="108" cy="56" r="8" fill="#F97316" fill-opacity=".80"/>
+  <circle cx="108" cy="56" r="13" fill="none" stroke="#F97316" stroke-width="1" stroke-opacity=".30"/>
+  <text x="108" y="51" text-anchor="middle" font-size="7" fill="#fff"
+        font-family="Inter,sans-serif" font-weight="800">MCR</text>
+  <!-- Crucita -->
+  <circle cx="50" cy="55" r="4.5" fill="#00D4FF" fill-opacity=".70"/>
+  <text x="50" y="50" text-anchor="middle" font-size="5.5" fill="rgba(255,255,255,.65)"
+        font-family="Inter,sans-serif">Crucita</text>
+  <!-- La Pila -->
+  <circle cx="78" cy="40" r="3.5" fill="#00D4FF" fill-opacity=".60"/>
+  <text x="78" y="35" text-anchor="middle" font-size="5" fill="rgba(255,255,255,.55)"
+        font-family="Inter,sans-serif">La Pila</text>
+  <!-- Chirijos -->
+  <circle cx="148" cy="45" r="5" fill="#EF4444" fill-opacity=".75"/>
+  <text x="148" y="40" text-anchor="middle" font-size="5.5" fill="rgba(255,255,255,.65)"
+        font-family="Inter,sans-serif">Chirijos</text>
+  <!-- Noboa -->
+  <circle cx="160" cy="65" r="3.5" fill="#00D4FF" fill-opacity=".60"/>
+  <!-- San Sebastián -->
+  <circle cx="122" cy="76" r="4" fill="#F97316" fill-opacity=".68"/>
+  <!-- Leonidas Plaza -->
+  <circle cx="62" cy="72" r="3" fill="#00D4FF" fill-opacity=".55"/>
+  <!-- Leyenda -->
+  <text x="120" y="97" text-anchor="middle" font-size="7" fill="rgba(0,212,255,.50)"
+        font-family="Inter,sans-serif" font-weight="600" letter-spacing=".06em">
     CANTÓN MONTECRISTI · 7 PARROQUIAS</text>
 </svg>
 """
 
 # ══════════════════════════════════════════════════════════════════════════════
 # 12 DOMINIOS CANÓNICOS
-# Arquitectura: architecture_quira_v1.md v2.0 (CONGELADO 2026-05-29)
-# Regla: ningún nombre interno en labels públicos (ICPI, TGI, SAT, Ti, H73...)
+# architecture_quira_v1.md v2.0 · CONGELADO 2026-05-29
+# Notas específicas a Montecristi — no genéricas
 # ══════════════════════════════════════════════════════════════════════════════
 _DOMAINS_12: list[dict] = [
     # ── Fila 1 ────────────────────────────────────────────────────────────────
@@ -99,26 +97,22 @@ _DOMAINS_12: list[dict] = [
         "id": "d01", "num": "01",
         "nombre": "Planificación Estratégica",
         "metric": "17 ODS activos",
-        "nota": "PDOT 2023–2027 · en seguimiento",
-        "temp": "verde",
-        "mod": "ods",
+        "nota": "PDOT 2023–2027 · 4 ejes · 56 metas canónicas",
+        "temp": "verde", "mod": "ods",
     },
     {
         "id": "d02", "num": "02",
         "nombre": "Presupuesto & Financiamiento",
         "metric": "$3.66M",
-        "nota": "Fondos condicionados · 3 fuentes activas",
-        "temp": "funds",
-        "mod": "cooperacion",
+        "nota": "BID · CAF · PNUD · fondos condicionados activos",
+        "temp": "funds", "mod": "cooperacion",
     },
     {
         "id": "d03", "num": "03",
         "nombre": "Seguimiento de Metas",
-        "metric": "en carga…",
-        "nota": "56 metas canónicas PDOT",
-        "temp": "alerta",
-        "mod": "situacion",
-        "pending": True,
+        "metric": "56 metas",
+        "nota": "4 áreas estratégicas · trayectoria en cálculo",
+        "temp": "alerta", "mod": "situacion", "pending": True,
     },
     # ── Fila 2 ────────────────────────────────────────────────────────────────
     {
@@ -126,10 +120,8 @@ _DOMAINS_12: list[dict] = [
         "nombre": "Alertas Institucionales",
         "metric_key": "n_alertas",
         "metric_suffix": " activas",
-        "nota": "Intervención inmediata requerida",
-        "temp": "critico",
-        "mod": "alertas",
-        "glow": True,
+        "nota": "Monitoreo preventivo · 7 tipos de señal",
+        "temp": "critico", "mod": "alertas", "glow": True,
     },
     {
         "id": "d05", "num": "05",
@@ -137,72 +129,59 @@ _DOMAINS_12: list[dict] = [
         "metric_key": "hold_avg",
         "metric_suffix": "%",
         "nota": "EP Aseo · Bomberos · Patronato · GAD",
-        "temp": "alerta",
-        "mod": "municipal",
+        "temp": "alerta", "mod": "municipal",
     },
     {
         "id": "d06", "num": "06",
         "nombre": "Salud Institucional",
         "metric_key": "icpi_pct",
         "metric_suffix": "%",
-        "nota": "Brecha de ejecución · umbral 65%",
-        "temp": "critico",
-        "mod": "situacion",
-        "glow": True,
-        "featured": True,
+        "nota": "Brecha activa · umbral institucional 65%",
+        "temp": "critico", "mod": "situacion", "glow": True, "featured": True,
     },
     # ── Fila 3 ────────────────────────────────────────────────────────────────
     {
         "id": "d07", "num": "07",
         "nombre": "Transparencia",
         "metric": "21 art. LOTAIP",
-        "nota": "Gobierno abierto · publicación activa",
-        "temp": "normal",
-        "mod": "municipal",
+        "nota": "Publicación activa · CPCCS · gobierno abierto",
+        "temp": "normal", "mod": "municipal",
     },
     {
         "id": "d08", "num": "08",
         "nombre": "Participación Ciudadana",
         "metric": "27.98%",
-        "nota": "Gestión participativa · 6 mecanismos",
-        "temp": "alerta",
-        "mod": "confianza",
+        "nota": "Presupuesto participativo · 6 mecanismos activos",
+        "temp": "alerta", "mod": "confianza",
     },
     {
         "id": "d09", "num": "09",
         "nombre": "Rendición de Cuentas",
         "metric": "Agosto 2026",
-        "nota": "Preparación en curso · CPCCS",
-        "temp": "alerta",
-        "mod": "rdc",
+        "nota": "CPCCS · 20 ítems · preparación Q2 en curso",
+        "temp": "alerta", "mod": "rdc",
     },
     # ── Fila 4 ────────────────────────────────────────────────────────────────
     {
         "id": "d10", "num": "10",
         "nombre": "Territorio & Cobertura",
         "metric": "$40/hab rural",
-        "nota": "7 parroquias · brecha territorial activa",
-        "temp": "critico",
-        "mod": "geotwin",
-        "has_map": True,
+        "nota": "vs $217 cabecera · brecha 5.4× · 7 parroquias",
+        "temp": "critico", "mod": "geotwin", "has_map": True,
     },
     {
         "id": "d11", "num": "11",
         "nombre": "Ecosistema Productivo Territorial",
         "metric": "—",
-        "nota": "Datos en construcción",
-        "temp": "dim",
-        "mod": None,
-        "disabled": True,
+        "nota": "Empleo · industria · turismo · en construcción",
+        "temp": "dim", "mod": None, "disabled": True,
     },
     {
         "id": "d12", "num": "12",
         "nombre": "Protección Social & Grupos Prioritarios",
         "metric": "12.83%",
-        "nota": "Presupuesto social · umbral 30% · Art. 35",
-        "temp": "critico",
-        "mod": "genero",
-        "glow": True,
+        "nota": "Presupuesto social · umbral 30% · Art. 35 CRE",
+        "temp": "critico", "mod": "genero", "glow": True,
     },
 ]
 
@@ -238,11 +217,10 @@ def _load_data() -> dict[str, Any]:
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# KPI BAND — 4 tiles superiores (fuente canónica de métricas)
+# KPI BAND — 4 tiles superiores
 # ══════════════════════════════════════════════════════════════════════════════
 
 def _kpi_band(d: dict) -> str:
-    """Banda de 4 KPI tiles con onclick → módulo."""
     icpi_pct  = d.get("icpi_pct")
     n_alertas = d.get("n_alertas", 0)
     riesgo_cl = d.get("riesgo_clasif", "—")
@@ -258,45 +236,45 @@ def _kpi_band(d: dict) -> str:
 
     def _tile(label: str, val: str, color: str, sub: str,
               dest: str, size: str = "lg") -> str:
-        fs = "2.0rem" if size == "lg" else "1.5rem"
-        pt = "16px 18px 12px" if size == "lg" else "13px 15px 10px"
+        fs = "2.2rem" if size == "lg" else "1.65rem"
+        pt = "15px 18px 13px" if size == "lg" else "12px 15px 10px"
         return f"""
 <div onclick="qNav('{dest}')"
-     style="background:rgba(8,13,24,.97);border:1px solid {color}28;
-            border-top:2px solid {color};border-radius:10px;
+     style="background:rgba(8,13,24,.98);border:1px solid {color}30;
+            border-top:2.5px solid {color};border-radius:10px;
             padding:{pt};cursor:pointer;flex:1;min-width:0;
             transition:border-color .18s,background .18s"
-     onmouseover="this.style.background='rgba(0,212,255,.04)'"
-     onmouseout="this.style.background='rgba(8,13,24,.97)'">
-  <div style="font-size:7.5px;font-weight:700;letter-spacing:.10em;
-              text-transform:uppercase;color:rgba(255,255,255,.28);
+     onmouseover="this.style.background='rgba(0,212,255,.05)'"
+     onmouseout="this.style.background='rgba(8,13,24,.98)'">
+  <div style="font-size:9px;font-weight:700;letter-spacing:.10em;
+              text-transform:uppercase;color:rgba(255,255,255,.55);
               margin-bottom:9px">{label}</div>
   <div style="font-size:{fs};font-weight:900;color:{color};
               font-family:'JetBrains Mono',monospace;
               letter-spacing:-.04em;line-height:1;
               margin-bottom:7px">{val}</div>
-  <div style="font-size:8.5px;color:rgba(255,255,255,.28);
+  <div style="font-size:9.5px;color:rgba(255,255,255,.50);
               letter-spacing:.01em;line-height:1.4">{sub}</div>
 </div>"""
 
+    icpi_sub = (d.get("icpi_clasif", "—") + " · umbral 65%") if d.get("icpi_clasif") else "umbral 65%"
+
     return f"""
-<div style="display:flex;gap:10px;margin-bottom:12px">
-  {_tile("Cumplimiento Institucional", icpi_str, icpi_color,
-         d.get("icpi_clasif","—") + " · umbral 65%", "situacion", "lg")}
+<div style="display:flex;gap:10px;margin-bottom:14px">
+  {_tile("Cumplimiento Institucional", icpi_str, icpi_color, icpi_sub, "situacion", "lg")}
   {_tile("Fondos en Riesgo", "$3.66M", "#7C5CFC",
-         "3 fuentes condicionadas · acción requerida", "cooperacion", "lg")}
+         "BID · CAF · PNUD condicionados", "cooperacion", "lg")}
   {_tile("Alertas Activas", alert_str, alert_color, riesgo_str, "alertas", "sm")}
   {_tile("Holding Municipal", f"{hold_avg:.1f}%", hold_color,
-         "Promedio entidades · click para detalle", "municipal", "sm")}
+         "Promedio 4 entidades holding", "municipal", "sm")}
 </div>"""
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# DOMAIN CARD — una tarjeta por dominio
+# DOMAIN CARD
 # ══════════════════════════════════════════════════════════════════════════════
 
 def _resolve_metric(dom: dict, data: dict) -> str:
-    """Resuelve el valor de métrica: fijo o desde snapshot."""
     key = dom.get("metric_key")
     if key:
         val = data.get(key)
@@ -309,7 +287,6 @@ def _resolve_metric(dom: dict, data: dict) -> str:
 
 
 def _domain_card(dom: dict, data: dict) -> str:
-    """Genera el HTML de una tarjeta de dominio."""
     t        = _TEMP.get(dom["temp"], _TEMP["normal"])
     mod      = dom.get("mod")
     disabled = dom.get("disabled", False)
@@ -320,80 +297,80 @@ def _domain_card(dom: dict, data: dict) -> str:
 
     metric = _resolve_metric(dom, data)
 
+    # Badge numérico
     num_badge = (
-        f'<span style="font-size:7px;font-weight:800;color:{t["c"]};'
-        f'background:{t["c"]}1A;border:1px solid {t["c"]}33;'
-        f'border-radius:4px;padding:1px 5px;flex-shrink:0;'
-        f'letter-spacing:.04em">{dom["num"]}</span>'
+        f'<span style="font-size:8px;font-weight:800;color:{t["c"]};'
+        f'background:{t["c"]}1A;border:1px solid {t["c"]}35;'
+        f'border-radius:4px;padding:2px 6px;flex-shrink:0;'
+        f'letter-spacing:.03em">{dom["num"]}</span>'
     )
 
+    # Nombre
     nombre_html = (
-        f'<div style="font-size:11.5px;font-weight:700;color:#DDE4EE;'
+        f'<div style="font-size:13px;font-weight:700;color:#E8EDF5;'
         f'line-height:1.25;flex:1">{dom["nombre"]}</div>'
     )
 
-    # Métrica — solo si existe y no es placeholder
+    # Métrica
     if metric != "—" and not pending:
         met_html = (
-            f'<div style="font-size:1.25rem;font-weight:900;color:{t["c"]};'
+            f'<div style="font-size:1.40rem;font-weight:900;color:{t["c"]};'
             f'font-family:"JetBrains Mono",monospace;letter-spacing:-.03em;'
-            f'line-height:1;margin:6px 0 5px">{metric}</div>'
+            f'line-height:1;margin:7px 0 5px">{metric}</div>'
         )
     else:
-        met_html = '<div style="height:6px"></div>'
+        met_html = '<div style="height:5px"></div>'
 
+    # Nota
     nota_html = (
-        f'<div style="font-size:8.5px;color:rgba(255,255,255,.32);'
+        f'<div style="font-size:10px;color:rgba(255,255,255,.58);'
         f'line-height:1.45;margin-top:2px">{dom["nota"]}</div>'
     )
 
-    # SVG mapa para Dom 10
+    # SVG mapa (solo Dom 10)
     map_html = _CANTON_SVG if has_map else ""
 
-    # Dot de estado
+    # Dot estado
     dot = (
         f'<span style="width:5px;height:5px;border-radius:50%;'
         f'background:{t["c"]};display:inline-block;flex-shrink:0;'
-        f'margin-top:3px;opacity:{"1" if not disabled else "0.3"};'
-        f'{"animation:qcc-pulse 2s ease-in-out infinite" if not disabled else ""}"></span>'
+        f'margin-top:4px;'
+        f'{"animation:qcc-pulse 2s ease-in-out infinite" if not disabled else "opacity:.25"}"></span>'
     )
 
     # Card deshabilitada (Dom 11)
     if disabled:
         return f"""
 <div style="background:{t["bg"]};border:1px solid {t["bd"]};
-            border-radius:9px;padding:11px 12px 10px;
-            opacity:.38;cursor:not-allowed;min-height:80px">
+            border-radius:10px;padding:13px 14px 12px;
+            opacity:.35;cursor:not-allowed;">
   <div style="display:flex;align-items:flex-start;
-              justify-content:space-between;gap:5px;margin-bottom:5px">
+              justify-content:space-between;gap:6px;margin-bottom:6px">
     {num_badge}{nombre_html}{dot}
   </div>
   {nota_html}
-  <div style="font-size:7.5px;color:rgba(255,255,255,.18);margin-top:5px;
+  <div style="font-size:8.5px;color:rgba(255,255,255,.22);margin-top:6px;
               text-transform:uppercase;letter-spacing:.06em">En construcción</div>
 </div>"""
 
-    # Glow keyframe via style attr (cards 04, 06, 12)
-    glow_style = (
-        'animation:qcc-glow 2.2s ease-in-out infinite;'
-        if glow else ""
-    )
-    strong_glow = (
-        'animation:qcc-glow-strong 2s ease-in-out infinite;'
-        if featured else ""
-    )
+    # Glow para cards críticas
+    glow_style = "animation:qcc-glow 2.2s ease-in-out infinite;" if glow else ""
+    strong_glow = "animation:qcc-glow-strong 2s ease-in-out infinite;" if featured else ""
+
+    # hover: intensifica bg y borde
+    bg_hover = t["bg"].replace(".11", ",.20").replace(".10", ",.18").replace(".08", ",.15").replace(".06", ",.13").replace(".025", ",.06")
 
     return f"""
 <div onclick="qNav('{mod}')"
      style="background:{t["bg"]};border:1px solid {t["bd"]};
-            border-radius:9px;padding:11px 12px 10px;
-            cursor:pointer;min-height:80px;
+            border-radius:10px;padding:13px 14px 12px;
+            cursor:pointer;
             transition:border-color .15s,background .15s;
             {glow_style}{strong_glow}"
-     onmouseover="this.style.borderColor='{t["c"]}80';this.style.background='{t["bg"].replace("rgba(","rgba(").replace(".10",",.18").replace(".09",",.16").replace(".07",",.13").replace(".05",",.11").replace(".02",",.07")}'"
+     onmouseover="this.style.borderColor='{t["c"]}90';this.style.background='{bg_hover}'"
      onmouseout="this.style.borderColor='{t["bd"]}';this.style.background='{t["bg"]}'">
   <div style="display:flex;align-items:flex-start;
-              justify-content:space-between;gap:5px;margin-bottom:5px">
+              justify-content:space-between;gap:6px;margin-bottom:6px">
     {num_badge}{nombre_html}{dot}
   </div>
   {map_html}
@@ -403,140 +380,115 @@ def _domain_card(dom: dict, data: dict) -> str:
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# DOMAIN GRID — grilla 4×3 (4 filas · 3 columnas)
+# DOMAIN GRID — 4 filas × 3 columnas · altura uniforme por fila
 # ══════════════════════════════════════════════════════════════════════════════
 
 def _domain_grid(data: dict) -> str:
-    """Genera la grilla 4×3 de los 12 dominios canónicos."""
-    # Agrupar en filas de 3
     rows_html = []
     for row_start in range(0, 12, 3):
         row_doms = _DOMAINS_12[row_start: row_start + 3]
         cards = "".join(_domain_card(dom, data) for dom in row_doms)
         rows_html.append(f"""
-<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px;
-            margin-bottom:9px">
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;
+            grid-auto-rows:1fr;align-items:stretch;
+            gap:9px;margin-bottom:9px">
   {cards}
 </div>""")
-
     return "".join(rows_html)
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# BOTTOM BAND
+# FOOTER — banda inferior mínima
 # ══════════════════════════════════════════════════════════════════════════════
 
-def _bottom_band() -> str:
+def _footer() -> str:
     from config import GAD_NOMBRE, CORTE
     return f"""
 <div style="display:flex;align-items:center;justify-content:space-between;
-            margin-top:10px;padding:9px 13px;
-            background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);
-            border-radius:8px">
-  <div style="display:flex;align-items:center;gap:14px">
-    <div style="display:flex;align-items:center;gap:5px">
-      <span style="width:6px;height:6px;border-radius:50%;background:#22C55E;
-                   display:inline-block;animation:qcc-pulse 2s ease-in-out infinite"></span>
-      <span style="font-size:8.5px;color:rgba(255,255,255,.35);letter-spacing:.04em">
-        Sistema operativo</span>
-    </div>
-    <span style="font-size:8.5px;color:rgba(255,255,255,.18)">·</span>
-    <span style="font-size:8.5px;color:rgba(255,255,255,.30);
+            margin-top:8px;padding:7px 12px;
+            border-top:1px solid rgba(255,255,255,.05)">
+  <div style="display:flex;align-items:center;gap:12px">
+    <span style="width:5px;height:5px;border-radius:50%;background:#22C55E;
+                 display:inline-block;animation:qcc-pulse 2s ease-in-out infinite"></span>
+    <span style="font-size:9px;color:rgba(255,255,255,.42);letter-spacing:.03em">
+      Sistema operativo</span>
+    <span style="font-size:9px;color:rgba(255,255,255,.18)">·</span>
+    <span style="font-size:9px;color:rgba(255,255,255,.38);
                  font-family:'JetBrains Mono',monospace">{GAD_NOMBRE}</span>
-    <span style="font-size:8.5px;color:rgba(255,255,255,.18)">·</span>
-    <span style="font-size:8.5px;color:rgba(255,255,255,.26);letter-spacing:.04em">
-      Corte {CORTE}</span>
+    <span style="font-size:9px;color:rgba(255,255,255,.18)">·</span>
+    <span style="font-size:9px;color:rgba(255,255,255,.35)">Corte {CORTE}</span>
   </div>
-  <div style="display:flex;align-items:center;gap:8px">
-    <span style="font-size:7.5px;color:rgba(255,255,255,.18);letter-spacing:.06em;
-                 text-transform:uppercase">QUIRA Intelligence</span>
-    <span style="font-size:7.5px;color:rgba(255,255,255,.12)">·</span>
-    <span style="font-size:7.5px;color:rgba(255,255,255,.15);
-                 font-family:'JetBrains Mono',monospace">Dylus Lab © 2026</span>
-  </div>
+  <span style="font-size:8.5px;color:rgba(255,255,255,.18);
+               font-family:'JetBrains Mono',monospace">Dylus Lab © 2026</span>
 </div>"""
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# CSS — Teatro Operacional D.3
+# CSS — Teatro Operacional D.3.1
 # ══════════════════════════════════════════════════════════════════════════════
 
 _CANVAS_CSS = """
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
-:root {
-  --navy:#0A1128; --cyan:#00D4FF;
-  --green:#00E096; --amber:#FFB800; --red:#FF4D6D;
-  --purple:#7C5CFC; --white:#E2E8F0; --muted:rgba(255,255,255,.30);
-}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
 *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
 html,body {
-  background:#0a0f1e;
-  color:var(--white);
-  font-family:'Inter',sans-serif;
+  background:#080D18;
+  color:#E8EDF5;
+  font-family:'Inter',system-ui,sans-serif;
   font-size:13px;
-  overflow-x:hidden;
+  overflow:hidden;
   scrollbar-width:none;
-  -ms-overflow-style:none;
 }
-html::-webkit-scrollbar,body::-webkit-scrollbar { display:none; }
-body { padding:12px 14px 14px; }
+html::-webkit-scrollbar { display:none; }
+body { padding:14px 16px 12px; }
 
 /* Animaciones */
 @keyframes qcc-pulse {
   0%,100%{opacity:1;transform:scale(1)}
-  50%{opacity:.25;transform:scale(.7)}
+  50%{opacity:.2;transform:scale(.65)}
 }
 @keyframes fadeIn {
-  from{opacity:0;transform:translateY(4px)} to{opacity:1;transform:none}
+  from{opacity:0;transform:translateY(5px)}
+  to{opacity:1;transform:none}
 }
 @keyframes qcc-glow {
-  0%,100%{box-shadow:0 0 6px rgba(239,68,68,.30)}
-  50%{box-shadow:0 0 16px rgba(239,68,68,.60),0 0 6px rgba(239,68,68,.25)}
+  0%,100%{box-shadow:0 0 8px rgba(239,68,68,.32),inset 0 0 0 1px rgba(239,68,68,.20)}
+  50%{box-shadow:0 0 20px rgba(239,68,68,.58),inset 0 0 0 1px rgba(239,68,68,.35)}
 }
 @keyframes qcc-glow-strong {
-  0%,100%{box-shadow:0 0 10px rgba(239,68,68,.40),0 0 20px rgba(239,68,68,.15)}
-  50%{box-shadow:0 0 22px rgba(239,68,68,.75),0 0 40px rgba(239,68,68,.20)}
+  0%,100%{box-shadow:0 0 12px rgba(239,68,68,.45),0 0 30px rgba(239,68,68,.15),inset 0 0 0 1px rgba(239,68,68,.30)}
+  50%{box-shadow:0 0 25px rgba(239,68,68,.75),0 0 50px rgba(239,68,68,.22),inset 0 0 0 1px rgba(239,68,68,.50)}
 }
 
 /* Botón logout */
-.btn-logout {
+.btn-action {
   display:inline-flex;align-items:center;gap:5px;
-  padding:4px 11px;
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.08);
+  padding:5px 12px;
   border-radius:6px;
-  font-size:8.5px;font-weight:600;
-  color:rgba(255,255,255,.32);
+  font-size:9px;font-weight:600;
   letter-spacing:.04em;cursor:pointer;
   text-transform:uppercase;
-  transition:background .15s,color .15s;
+  transition:background .15s,color .15s,border-color .15s;
+}
+.btn-logout {
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.10);
+  color:rgba(255,255,255,.45);
 }
 .btn-logout:hover {
-  background:rgba(239,68,68,.08);
-  border-color:rgba(239,68,68,.22);
+  background:rgba(239,68,68,.10);
+  border-color:rgba(239,68,68,.28);
   color:#EF4444;
 }
-
-/* Botón QUIRA AI */
-.btn-quira-ai {
-  display:inline-flex;align-items:center;gap:5px;
-  padding:4px 11px;
-  background:rgba(0,212,255,.06);
-  border:1px solid rgba(0,212,255,.18);
-  border-radius:6px;
-  font-size:8.5px;font-weight:600;
-  color:rgba(0,212,255,.65);
-  letter-spacing:.04em;cursor:pointer;
-  transition:background .15s,color .15s;
+.btn-ai {
+  background:rgba(0,212,255,.07);
+  border:1px solid rgba(0,212,255,.22);
+  color:rgba(0,212,255,.75);
 }
-.btn-quira-ai:hover {
-  background:rgba(0,212,255,.12);
+.btn-ai:hover {
+  background:rgba(0,212,255,.14);
+  border-color:rgba(0,212,255,.45);
   color:#00D4FF;
-}
-
-/* Mobile */
-@media (max-width:768px) {
-  body { padding:8px 10px 10px; }
 }
 """
 
@@ -549,19 +501,15 @@ function qNav(dest) {
 function qLogout() {
   window.parent.postMessage({type:'quira_action', action:'logout'}, '*');
 }
-function qQuiraAI() {
-  window.parent.postMessage({type:'quira_action', action:'quira_ai'}, '*');
-}
 </script>
 """
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# ENSAMBLADO DE CANVAS
+# CANVAS COMPLETO
 # ══════════════════════════════════════════════════════════════════════════════
 
 def _build_canvas(d: dict) -> str:
-    """Ensambla el HTML del teatro operacional completo — D.3."""
     from config import GAD_NOMBRE, ALCALDE, CORTE
 
     rol = get_rol()
@@ -569,73 +517,56 @@ def _build_canvas(d: dict) -> str:
     # ── Header ────────────────────────────────────────────────────────────────
     header_html = f"""
 <div style="display:flex;align-items:center;justify-content:space-between;
-            margin-bottom:10px;padding:0 2px">
-  <div style="display:flex;align-items:center;gap:10px">
-    <span style="font-size:15px;font-weight:900;color:#00D4FF;letter-spacing:-.02em">
-      ⬡ QUIRA</span>
-    <span style="font-size:8.5px;color:rgba(255,255,255,.28);letter-spacing:.06em;
-                 text-transform:uppercase">Intelligence</span>
-    <span style="font-size:9px;color:rgba(255,255,255,.18)">·</span>
-    <span style="font-size:8.5px;color:rgba(255,255,255,.35);font-weight:600;
-                 letter-spacing:.04em">Centro de Mando</span>
-    <span style="font-size:9px;color:rgba(255,255,255,.18)">·</span>
-    <span style="font-size:8.5px;color:rgba(255,255,255,.28);
-                 font-family:'JetBrains Mono',monospace">{GAD_NOMBRE}</span>
+            margin-bottom:12px;padding:0 2px">
+  <div style="display:flex;align-items:center;gap:12px">
+    <span style="font-size:16px;font-weight:900;color:#00D4FF;
+                 letter-spacing:-.02em;line-height:1">⬡ QUIRA</span>
+    <span style="width:1px;height:16px;background:rgba(255,255,255,.10);
+                 display:inline-block"></span>
+    <div>
+      <div style="font-size:11px;font-weight:700;color:#E8EDF5;letter-spacing:.02em">
+        Centro de Mando</div>
+      <div style="font-size:9px;color:rgba(255,255,255,.50);letter-spacing:.04em;
+                  margin-top:1px">{GAD_NOMBRE} · Corte {CORTE}</div>
+    </div>
   </div>
   <div style="display:flex;align-items:center;gap:8px">
-    <button class="btn-quira-ai" onclick="qQuiraAI()">
-      ◎ Preguntar a QUIRA ▼</button>
-    <span style="font-size:8.5px;font-weight:700;color:#00D4FF;
-                 background:rgba(0,212,255,.10);border:1px solid rgba(0,212,255,.20);
-                 border-radius:5px;padding:2px 8px;letter-spacing:.04em">{rol}</span>
-    <button class="btn-logout" onclick="qLogout()">⎋ Salir</button>
+    <div style="display:flex;align-items:center;gap:5px;
+                padding:4px 10px;background:rgba(34,197,94,.06);
+                border:1px solid rgba(34,197,94,.18);border-radius:6px">
+      <span style="width:5px;height:5px;border-radius:50%;background:#22C55E;
+                   display:inline-block;animation:qcc-pulse 2.2s ease-in-out infinite"></span>
+      <span style="font-size:8.5px;color:rgba(255,255,255,.60);
+                   letter-spacing:.05em;font-weight:600">EN LÍNEA</span>
+    </div>
+    <span style="font-size:9px;font-weight:700;color:#00D4FF;
+                 background:rgba(0,212,255,.10);border:1px solid rgba(0,212,255,.22);
+                 border-radius:6px;padding:3px 10px;letter-spacing:.04em">{rol}</span>
+    <button class="btn-action btn-ai" onclick="void(0)">◎ Preguntar a QUIRA</button>
+    <button class="btn-action btn-logout" onclick="qLogout()">⎋ Salir</button>
   </div>
 </div>"""
 
-    # ── Status bar ────────────────────────────────────────────────────────────
-    status_bar = f"""
-<div style="display:flex;align-items:center;gap:14px;
-            padding:5px 12px;margin-bottom:12px;
-            background:rgba(255,255,255,.015);
-            border:1px solid rgba(255,255,255,.04);border-radius:7px">
-  <div style="display:flex;align-items:center;gap:5px">
-    <span style="width:5px;height:5px;border-radius:50%;background:#22C55E;
-                 display:inline-block;animation:qcc-pulse 2s ease-in-out infinite"></span>
-    <span style="font-size:8px;color:rgba(255,255,255,.32);letter-spacing:.04em">
-      EN LÍNEA</span>
-  </div>
-  <span style="font-size:8px;color:rgba(255,255,255,.15)">·</span>
-  <span style="font-size:8px;color:rgba(255,255,255,.25);
-               font-family:'JetBrains Mono',monospace">Corte {CORTE}</span>
-  <span style="font-size:8px;color:rgba(255,255,255,.15)">·</span>
-  <span style="font-size:8px;color:rgba(255,255,255,.22);letter-spacing:.04em">
-    {ALCALDE}</span>
-  <div style="margin-left:auto;font-size:7.5px;color:rgba(255,255,255,.18);
-              letter-spacing:.06em;text-transform:uppercase">
-    12 dominios · click para explorar</div>
-</div>"""
-
-    # ── Sección label dominios ─────────────────────────────────────────────────
+    # ── Divisor + label dominios ───────────────────────────────────────────────
     dom_header = """
-<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
-  <span style="width:2px;height:10px;background:#7C5CFC;border-radius:1px;
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:9px">
+  <span style="width:2px;height:12px;background:#7C5CFC;border-radius:2px;
                display:inline-block"></span>
-  <span style="font-size:7.5px;font-weight:800;letter-spacing:.14em;
-               text-transform:uppercase;color:rgba(255,255,255,.32)">
+  <span style="font-size:9px;font-weight:800;letter-spacing:.14em;
+               text-transform:uppercase;color:rgba(255,255,255,.50)">
     DOMINIOS OPERACIONALES</span>
-  <span style="font-size:7.5px;color:rgba(255,255,255,.14);margin-left:auto;
+  <span style="font-size:8.5px;color:rgba(255,255,255,.18);margin-left:auto;
                font-family:'JetBrains Mono',monospace">
-    Holding Municipal Montecristi · Q1-2026</span>
+    Holding Municipal · Montecristi · 12 dominios · click para abrir</span>
 </div>"""
 
     canvas = f"""
-<div style="animation:fadeIn .22s ease">
+<div style="animation:fadeIn .20s ease">
   {header_html}
   {_kpi_band(d)}
-  {status_bar}
   {dom_header}
   {_domain_grid(d)}
-  {_bottom_band()}
+  {_footer()}
 </div>"""
 
     return (
@@ -654,9 +585,10 @@ def _build_canvas(d: dict) -> str:
     if(s>0) window.parent.postMessage(
       {isStreamlitMessage:true,type:'streamlit:setFrameHeight',height:s},'*');
   }
-  h(); document.addEventListener('DOMContentLoaded',h);
+  h();
+  document.addEventListener('DOMContentLoaded',h);
   window.addEventListener('load',h);
-  setTimeout(h,120); setTimeout(h,500); setTimeout(h,1200);
+  setTimeout(h,100); setTimeout(h,450); setTimeout(h,1100);
 })();
 </script>"""
         "</body></html>"
@@ -664,7 +596,7 @@ def _build_canvas(d: dict) -> str:
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# JS BRIDGE — escucha postMessage del canvas y dispara botones ocultos
+# JS BRIDGE — postMessage → botones ocultos Streamlit
 # ══════════════════════════════════════════════════════════════════════════════
 
 _NAV_TARGETS = [
@@ -687,35 +619,9 @@ _BRIDGE_SCRIPT = """
   window.addEventListener('message', function(e){
     if(!e.data) return;
     if(e.data.type === 'quira_nav')    dispatch(e.data.dest, 'nav');
-    if(e.data.type === 'quira_action') {
-      if(e.data.action === 'logout') dispatch(null, 'logout');
-    }
+    if(e.data.type === 'quira_action' && e.data.action === 'logout')
+      dispatch(null, 'logout');
   });
-
-  // Ocultar botones funcionales del DOM visible
-  function hideHidden(){
-    var btns = window.parent.document.querySelectorAll(
-      '[data-testid="stBaseButton-secondary"]');
-    for(var i=0;i<btns.length;i++){
-      var t = btns[i].innerText.trim();
-      if(t.startsWith('__Q') && t.endsWith('__')){
-        var b = btns[i];
-        b.style.cssText=[
-          'width:0!important','height:0!important',
-          'padding:0!important','margin:0!important',
-          'border:none!important','overflow:hidden!important',
-          'position:absolute!important','opacity:0!important',
-          'pointer-events:none!important'
-        ].join(';');
-        if(b.parentElement)
-          b.parentElement.style.cssText=
-            'width:0!important;height:0!important;overflow:hidden!important';
-      }
-    }
-  }
-  setTimeout(hideHidden, 80);
-  setTimeout(hideHidden, 350);
-  setTimeout(hideHidden, 900);
 })();
 </script>
 """
@@ -726,47 +632,57 @@ _BRIDGE_SCRIPT = """
 # ══════════════════════════════════════════════════════════════════════════════
 
 def render() -> None:
-    """Renderiza el Centro de Mando — 12 dominios canónicos · Sprint D.3."""
+    """Centro de Mando — 12 dominios canónicos · Sprint D.3.1."""
 
-    # CSS Streamlit: sidebar invisible, main 100%
+    # ── CSS Streamlit: sidebar invisible + botones QNAV ocultos ──────────────
     st.markdown("""
 <style>
-[data-testid="stSidebar"] {
+/* Sidebar invisible */
+[data-testid="stSidebar"],
+[data-testid="collapsedControl"],
+button[data-testid="collapsedControl"] {
   display: none !important;
   width: 0 !important;
   min-width: 0 !important;
   overflow: hidden !important;
 }
+/* Main 100% */
 .main .block-container,
 [data-testid="stMainBlockContainer"],
 div.block-container {
   max-width: 100% !important;
   width: 100% !important;
-  padding-left: 0.5rem !important;
-  padding-right: 0.5rem !important;
-  padding-top: 0.25rem !important;
-}
-[data-testid="collapsedControl"],
-button[data-testid="collapsedControl"] {
-  display: none !important;
+  padding-left: 0.4rem !important;
+  padding-right: 0.4rem !important;
+  padding-top: 0.2rem !important;
 }
 section[data-testid="stMainBlockContainer"] > div:first-child {
-  padding-top: 4px !important;
+  padding-top: 3px !important;
+}
+/* QNAV bridge buttons — funcionales pero completamente invisibles */
+div[data-testid="stHorizontalBlock"] {
+  display: none !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  position: absolute !important;
+  pointer-events: none !important;
 }
 </style>
 """, unsafe_allow_html=True)
 
-    # Datos
+    # ── Datos ─────────────────────────────────────────────────────────────────
     data = _load_data()
 
-    # Canvas HTML
+    # ── Canvas HTML ───────────────────────────────────────────────────────────
     html = _build_canvas(data)
-    _cv1.html(html, height=860, scrolling=False)
+    _cv1.html(html, height=870, scrolling=False)
 
-    # Bridge JS
+    # ── Bridge JS (iframe height=0) ───────────────────────────────────────────
     _cv1.html(_BRIDGE_SCRIPT, height=0)
 
-    # Botones funcionales ocultos — dispatch de navegación
+    # ── Botones ocultos — dispatch de navegación ──────────────────────────────
+    # stHorizontalBlock está oculto por CSS — son funcionales, no visibles
     _cols = st.columns(len(_NAV_TARGETS) + 1)
     for i, dest in enumerate(_NAV_TARGETS):
         with _cols[i]:
