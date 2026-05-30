@@ -100,22 +100,25 @@ _DOMAINS_12: list[dict] = [
     {
         "id": "d01", "num": "01",
         "nombre": "Planificación Estratégica",
-        "metric": "17 ODS activos",
-        "nota": "4 ejes estratégicos · 56 metas PDOT 2023–2027 · avance por parroquia",
+        "estado": "EN RUTA",
+        "metric": "56/56",
+        "narrativa": "Montecristi ejecuta el PDOT 2023–2027 en 4 ejes con seguimiento activo en 7 parroquias.",
         "temp": "verde", "mod": "ods",
     },
     {
         "id": "d02", "num": "02",
         "nombre": "Presupuesto & Financiamiento",
+        "estado": "CONDICIONADO",
         "metric": "$3.66M",
-        "nota": "BID $1.2M · CAF $0.9M · PNUD $1.56M · desembolso condicionado",
+        "narrativa": "Tres fondos internacionales activos — desembolso condicionado a hitos de Q2-2026.",
         "temp": "funds", "mod": "cooperacion",
     },
     {
         "id": "d03", "num": "03",
         "nombre": "Seguimiento de Metas",
-        "metric": "56 metas",
-        "nota": "Q1-2026 en actualización · 3 metas con rezago identificado",
+        "estado": "EN RUTA",
+        "metric": "94.6%",
+        "narrativa": "53 de 56 metas avanzan en cronograma · rezago en Agua Potable y Vialidad Rural.",
         "temp": "alerta", "mod": "situacion",
     },
     # ── Fila 2 ────────────────────────────────────────────────────────────────
@@ -124,67 +127,77 @@ _DOMAINS_12: list[dict] = [
         "nombre": "Alertas Institucionales",
         "metric_key": "n_alertas",
         "metric_suffix": " activas",
-        "nota": "7 tipos de señal preventiva · protocolos de intervención activos",
+        "narrativa_ok": "Sin señales activas en este corte · 7 tipos monitoreados continuamente.",
+        "narrativa_alerta": "Señales activas requieren atención · protocolos de intervención activados.",
         "temp": "critico", "mod": "alertas", "glow": True,
     },
     {
         "id": "d05", "num": "05",
         "nombre": "Holding Municipal",
+        "estado": "BAJO OBJETIVO",
         "metric_key": "hold_avg",
         "metric_suffix": "%",
-        "nota": "EP Aseo 82% · Bomberos 71% · Patronato 68% · GAD 54%",
+        "narrativa": "EP Aseo lidera con 82% · GAD en rezago — promedio 4 entidades bajo objetivo 75%.",
         "temp": "alerta", "mod": "municipal",
     },
     {
         "id": "d06", "num": "06",
         "nombre": "Salud Institucional",
+        "estado": "BAJO UMBRAL",
         "metric_key": "icpi_pct",
         "metric_suffix": "%",
-        "nota": "Brecha activa · 11.4 puntos bajo umbral · 41 métricas en seguimiento",
+        "narrativa": "11.4 puntos bajo umbral institucional · 41 métricas en seguimiento activo Q1-2026.",
         "temp": "critico", "mod": "situacion", "glow": True, "featured": True,
     },
     # ── Fila 3 ────────────────────────────────────────────────────────────────
     {
         "id": "d07", "num": "07",
         "nombre": "Transparencia",
-        "metric": "21 art. LOTAIP",
-        "nota": "Publicación activa 2025 · CPCCS verificado · sin opacidad registrada",
+        "estado": "OBSERVADO",
+        "metric": "21/21",
+        "narrativa": "21 artículos LOTAIP publicados y verificados · sin sanciones CPCCS registradas.",
         "temp": "normal", "mod": "municipal",
     },
     {
         "id": "d08", "num": "08",
         "nombre": "Participación Ciudadana",
+        "estado": "BAJO OBJETIVO",
         "metric": "27.98%",
-        "nota": "6 mecanismos activos · presupuesto participativo habilitado",
+        "narrativa": "6 mecanismos activos en 7 parroquias · presupuesto participativo habilitado · objetivo 40%.",
         "temp": "alerta", "mod": "confianza",
     },
     {
         "id": "d09", "num": "09",
         "nombre": "Rendición de Cuentas",
-        "metric": "Agosto 2026",
-        "nota": "CPCCS · 20 ítems requeridos · preparación Q2 en curso",
+        "estado": "EN PREPARACIÓN",
+        "metric_key": "dias_rdc",
+        "metric_suffix": " días",
+        "narrativa": "Presentación ante CPCCS en agosto · 20 ítems requeridos · preparación Q2 en curso.",
         "temp": "alerta", "mod": "rdc",
     },
     # ── Fila 4 ────────────────────────────────────────────────────────────────
     {
         "id": "d10", "num": "10",
         "nombre": "Territorio & Cobertura",
-        "metric": "$40/hab rural",
-        "nota": "vs $217 cabecera · brecha 5.4× · 3 parroquias en nivel crítico",
-        "temp": "critico", "mod": "geotwin", "has_map": True,
+        "estado": "BRECHA CRÍTICA",
+        "metric": "$40/hab",
+        "narrativa": "Inversión rural 5.4× menor a cabecera cantonal · Chirijos, Noboa y La Pila en nivel crítico.",
+        "temp": "critico", "mod": "geotwin",
     },
     {
         "id": "d11", "num": "11",
         "nombre": "Ecosistema Productivo Territorial",
+        "estado": "EN CONSTRUCCIÓN",
         "metric": "—",
-        "nota": "Empleo · industria · turismo · ZEDE · en construcción",
+        "narrativa": "Módulo en diseño — empleo, industria, turismo y ZEDE en proceso de estructuración.",
         "temp": "dim", "mod": None, "disabled": True,
     },
     {
         "id": "d12", "num": "12",
         "nombre": "Protección Social & Grupos Prioritarios",
+        "estado": "CRÍTICO",
         "metric": "12.83%",
-        "nota": "vs umbral 30% · brecha $2.1M · Art. 35 CRE · Patronato activo",
+        "narrativa": "Inversión social 17.2 puntos bajo umbral Art. 35 CRE · brecha estimada $2.1M · Patronato activo.",
         "temp": "critico", "mod": "genero", "glow": True,
     },
 ]
@@ -216,6 +229,9 @@ def _load_data() -> dict[str, Any]:
         icpi_gm = gm.get("icpi", {})
         d["icpi_pct"]    = icpi_gm.get("global_pct") or icpi_gm.get("global")
         d["icpi_clasif"] = icpi_gm.get("clasificacion", "—")
+
+    from datetime import date as _date
+    d["dias_rdc"] = max(0, (_date(2026, 8, 1) - _date.today()).days)
 
     return d
 
@@ -302,15 +318,15 @@ def _card_viz(dom_id: str, data: dict) -> str:
         </div>"""
 
     if dom_id == "d04":
-        return f"""<div class="card-viz card-viz-signals">
-          <div class="sig-type sig-red">SAT</div>
-          <div class="sig-type sig-red">TOP</div>
-          <div class="sig-type sig-orange">MMP</div>
-          <div class="sig-type sig-orange">RDC</div>
-          <div class="sig-type sig-orange">FIN</div>
-          <div class="sig-type sig-amber">CTIC</div>
-          <div class="sig-type sig-amber">PAR</div>
-        </div>"""
+        _n = int(n_alertas)
+        if _n == 0:
+            _types = [("SAT","sig-dim"),("TOP","sig-dim"),("MMP","sig-dim"),
+                      ("RDC","sig-dim"),("FIN","sig-dim"),("CTIC","sig-dim"),("PAR","sig-dim")]
+        else:
+            _types = [("SAT","sig-red"),("TOP","sig-red"),("MMP","sig-orange"),
+                      ("RDC","sig-orange"),("FIN","sig-orange"),("CTIC","sig-amber"),("PAR","sig-amber")]
+        _pills = "".join(f'<div class="sig-type {c}">{l}</div>' for l, c in _types)
+        return f'<div class="card-viz card-viz-signals">{_pills}</div>'
 
     if dom_id == "d05":
         entities = [
@@ -420,13 +436,28 @@ def _resolve_metric(dom: dict, data: dict) -> str:
 
 
 def _domain_card(dom: dict, data: dict) -> str:
-    t        = _TEMP.get(dom["temp"], _TEMP["normal"])
+    # Temperatura base — override dinámico para d04
+    temp_key  = dom["temp"]
+    n_alertas = int(data.get("n_alertas", 0) or 0)
+    if dom["id"] == "d04":
+        temp_key = "verde" if n_alertas == 0 else "critico"
+
+    t        = _TEMP.get(temp_key, _TEMP["normal"])
     mod      = dom.get("mod")
     disabled = dom.get("disabled", False)
-    glow     = dom.get("glow", False)
+    glow     = dom.get("glow", False) and not (dom["id"] == "d04" and n_alertas == 0)
     featured = dom.get("featured", False)
 
     metric = _resolve_metric(dom, data)
+
+    # Estado y narrativa — estáticos o dinámicos (d04)
+    if dom["id"] == "d04":
+        estado    = "SIN ALERTAS" if n_alertas == 0 else f"{n_alertas} ACTIVAS"
+        narrativa = (dom.get("narrativa_ok", "") if n_alertas == 0
+                     else dom.get("narrativa_alerta", ""))
+    else:
+        estado    = dom.get("estado", "")
+        narrativa = dom.get("narrativa", "")
 
     num_html = (
         f'<span class="card-num" style="color:{t["c"]};'
@@ -437,14 +468,20 @@ def _domain_card(dom: dict, data: dict) -> str:
     if disabled:
         return f"""
 <div class="domain-card" style="background:{t["bg"]};border-color:{t["bd"]};
-     opacity:.32;cursor:not-allowed;">
+     border-left-color:{t["c"]};border-left-width:3px;
+     opacity:.30;cursor:not-allowed;">
   <div class="card-top">
     {num_html}
     <div class="card-name" style="color:#8899AA">{dom["nombre"]}</div>
   </div>
-  <div class="card-metric" style="color:{t["c"]};font-size:1.4rem">{metric}</div>
-  <div class="card-nota" style="color:rgba(255,255,255,.38)">{dom["nota"]}</div>
-  <div class="card-footer" style="color:rgba(255,255,255,.18)">En construcción</div>
+  <div class="card-estado-row">
+    <div class="card-estado" style="background:rgba(255,255,255,.04);
+         border-color:rgba(255,255,255,.08);color:rgba(255,255,255,.28)">
+      <span class="estado-dot" style="background:rgba(255,255,255,.28)"></span>{estado}
+    </div>
+  </div>
+  <div class="card-metric" style="color:{t["c"]}80;font-size:1.3rem">{metric}</div>
+  <div class="card-narrativa" style="color:rgba(255,255,255,.30)">{narrativa}</div>
 </div>"""
 
     glow_anim = (
@@ -457,7 +494,8 @@ def _domain_card(dom: dict, data: dict) -> str:
 
     return f"""
 <div class="domain-card" onclick="qNav('{mod}')"
-     style="background:{t["bg"]};border-color:{t["bd"]};{glow_anim}"
+     style="background:{t["bg"]};border-color:{t["bd"]};
+            border-left-color:{t["c"]};border-left-width:3px;{glow_anim}"
      onmouseover="this.classList.add('hovered')"
      onmouseout="this.classList.remove('hovered')">
   <div class="card-top">
@@ -465,10 +503,14 @@ def _domain_card(dom: dict, data: dict) -> str:
     <div class="card-name">{dom["nombre"]}</div>
     <span class="card-dot" style="background:{t["c"]}"></span>
   </div>
+  <div class="card-estado-row">
+    <div class="card-estado" style="background:{t["c"]}18;border-color:{t["c"]}38;color:{t["c"]}">
+      <span class="estado-dot" style="background:{t["c"]}"></span>{estado}
+    </div>
+  </div>
   <div class="card-metric" style="color:{t["c"]}">{metric}</div>
-  <div class="card-nota">{dom["nota"]}</div>
+  <div class="card-narrativa">{narrativa}</div>
   {viz_html}
-  <div class="card-footer" style="color:{t["c"]}80">→ Ver detalle</div>
 </div>"""
 
 
@@ -716,6 +758,27 @@ body {
   margin-top:6px;flex-shrink:0;
   text-transform:uppercase;
 }
+
+/* ── ESTADO BADGE — veredicto observable ── */
+.card-estado-row { margin:5px 0 1px;flex-shrink:0; }
+.card-estado {
+  display:inline-flex;align-items:center;gap:5px;
+  padding:4px 11px 4px 7px;
+  border-radius:4px;border:1px solid;
+  font-size:9px;font-weight:800;letter-spacing:.10em;
+  text-transform:uppercase;line-height:1;
+}
+.estado-dot {
+  width:5px;height:5px;border-radius:50%;flex-shrink:0;
+  animation:qcc-pulse 2.1s ease-in-out infinite;
+}
+/* ── NARRATIVA — oración ejecutiva única ── */
+.card-narrativa {
+  font-size:10px;color:rgba(255,255,255,.62);
+  line-height:1.5;flex-shrink:0;margin:3px 0 2px;
+}
+/* ── SIG DIM — tipo señal sin activar ── */
+.sig-dim { background:rgba(255,255,255,.04);color:rgba(255,255,255,.28);border:1px solid rgba(255,255,255,.08); }
 
 /* ── CARD VIZ — mini visualizaciones dentro de cada cajón ── */
 .card-viz {
