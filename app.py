@@ -74,7 +74,7 @@ iframe {
 }
 
 /* ── CHROME ── */
-[data-testid="stHeader"] { background: transparent !important; }
+[data-testid="stHeader"] { display: none !important; }
 [data-testid="stToolbar"] { display: none !important; }
 #MainMenu { visibility: hidden; }
 footer { visibility: hidden; }
@@ -402,8 +402,3 @@ if page_key not in acc or page_key not in ENVIRONMENTS:
 
 log_page(page_key)
 ENVIRONMENTS[page_key]["render"]()
-
-st.caption(
-    f"QUIRA Intelligence · {GAD_NOMBRE} · Dylus Lab © 2026 · "
-    f"Gold Master v5.5_TGI · Corte {CORTE}"
-)

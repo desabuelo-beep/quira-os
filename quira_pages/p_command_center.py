@@ -38,35 +38,57 @@ _TEMP: dict[str, dict[str, str]] = {
 }
 
 # ══════════════════════════════════════════════════════════════════════════════
-# SVG ESTÁTICO — Cantón Montecristi
+# SVG 3D — Cantón Montecristi (volumen sólido isométrico)
 # ══════════════════════════════════════════════════════════════════════════════
-_CANTON_SVG = """
-<svg viewBox="0 0 240 88" xmlns="http://www.w3.org/2000/svg"
-     style="width:100%;height:58px;display:block;flex-shrink:0;margin:4px 0">
+_CANTON_3D_SVG = """
+<svg viewBox="0 0 220 106" xmlns="http://www.w3.org/2000/svg"
+     style="width:100%;height:100%;display:block;overflow:visible">
   <defs>
-    <radialGradient id="bg_g" cx="50%" cy="50%" r="60%">
-      <stop offset="0%" stop-color="#0f2040"/>
-      <stop offset="100%" stop-color="#060c18"/>
-    </radialGradient>
+    <linearGradient id="g3_top" x1="10%" y1="0%" x2="90%" y2="100%">
+      <stop offset="0%" stop-color="#1a56cc"/>
+      <stop offset="100%" stop-color="#0b329e"/>
+    </linearGradient>
+    <linearGradient id="g3_side" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#081e5a"/>
+      <stop offset="100%" stop-color="#040c26"/>
+    </linearGradient>
+    <filter id="g3_glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
   </defs>
-  <rect width="240" height="88" fill="url(#bg_g)" rx="4"/>
-  <polygon points="28,72 50,54 46,36 70,26 100,22 136,21 162,28 178,46 170,64 152,76 120,82 86,83 58,78"
-           fill="rgba(0,120,255,.10)" stroke="rgba(0,150,255,.28)" stroke-width="1.1"/>
-  <circle cx="108" cy="50" r="8" fill="#F97316" fill-opacity=".82"/>
-  <circle cx="108" cy="50" r="13" fill="none" stroke="#F97316" stroke-width=".8" stroke-opacity=".28"/>
-  <text x="108" y="45.5" text-anchor="middle" font-size="6.5" fill="#fff" font-family="Inter,sans-serif" font-weight="800">MCR</text>
-  <circle cx="50" cy="50" r="4" fill="#00D4FF" fill-opacity=".70"/>
-  <text x="50" y="44" text-anchor="middle" font-size="5" fill="rgba(255,255,255,.60)" font-family="Inter,sans-serif">Crucita</text>
-  <circle cx="76" cy="35" r="3.5" fill="#00D4FF" fill-opacity=".60"/>
-  <text x="76" y="29" text-anchor="middle" font-size="5" fill="rgba(255,255,255,.55)" font-family="Inter,sans-serif">La Pila</text>
-  <circle cx="148" cy="40" r="5" fill="#EF4444" fill-opacity=".75"/>
-  <text x="148" y="34" text-anchor="middle" font-size="5" fill="rgba(255,255,255,.60)" font-family="Inter,sans-serif">Chirijos</text>
-  <circle cx="158" cy="58" r="3.5" fill="#00D4FF" fill-opacity=".60"/>
-  <text x="164" y="70" text-anchor="middle" font-size="5" fill="rgba(255,255,255,.50)" font-family="Inter,sans-serif">Noboa</text>
-  <circle cx="120" cy="68" r="3.5" fill="#F97316" fill-opacity=".65"/>
-  <circle cx="62" cy="66" r="3" fill="#00D4FF" fill-opacity=".55"/>
-  <text x="120" y="85" text-anchor="middle" font-size="6.5" fill="rgba(0,212,255,.48)"
-        font-family="Inter,sans-serif" font-weight="600" letter-spacing=".06em">7 PARROQUIAS</text>
+  <!-- Back/shadow face — offset (+10,+13) from top face -->
+  <polygon
+    points="40,65 56,39 78,23 106,17 132,23 154,19 174,33 184,53 178,77 160,91 130,98 88,95 62,87 44,72"
+    fill="url(#g3_side)" stroke="rgba(0,60,160,.30)" stroke-width=".6"/>
+  <!-- Top face — approximate Montecristi canton silhouette -->
+  <polygon
+    points="30,52 46,26 68,10 96,4 122,10 144,6 164,20 174,40 168,64 150,78 120,85 78,82 52,74 34,59"
+    fill="url(#g3_top)" stroke="rgba(20,140,255,.55)" stroke-width="1.1"/>
+  <!-- Edge glow -->
+  <polygon
+    points="30,52 46,26 68,10 96,4 122,10 144,6 164,20 174,40 168,64 150,78 120,85 78,82 52,74 34,59"
+    fill="none" stroke="rgba(0,212,255,.88)" stroke-width="1.8"
+    filter="url(#g3_glow)"/>
+  <!-- Montecristi cabecera -->
+  <circle cx="102" cy="46" r="5.5" fill="#00D4FF" opacity=".92"/>
+  <circle cx="102" cy="46" r="11" fill="none" stroke="#00D4FF" stroke-width="1" opacity=".28"/>
+  <text x="102" y="42.5" text-anchor="middle" font-size="5.5" fill="#fff"
+        font-family="Inter,sans-serif" font-weight="900">MCR</text>
+  <!-- Parroquia dots -->
+  <circle cx="48" cy="52" r="3" fill="rgba(0,212,255,.65)"/>
+  <text x="48" y="46" text-anchor="middle" font-size="4.8" fill="rgba(255,255,255,.52)" font-family="Inter,sans-serif">Crucita</text>
+  <circle cx="74" cy="36" r="2.6" fill="rgba(0,212,255,.55)"/>
+  <text x="74" y="30.5" text-anchor="middle" font-size="4.8" fill="rgba(255,255,255,.48)" font-family="Inter,sans-serif">La Pila</text>
+  <circle cx="144" cy="36" r="3.2" fill="rgba(239,68,68,.80)"/>
+  <text x="144" y="30" text-anchor="middle" font-size="4.8" fill="rgba(255,255,255,.55)" font-family="Inter,sans-serif">Chirijos</text>
+  <circle cx="152" cy="58" r="2.6" fill="rgba(0,212,255,.55)"/>
+  <circle cx="120" cy="68" r="2.8" fill="rgba(249,115,22,.68)"/>
+  <circle cx="62" cy="66" r="2.4" fill="rgba(0,212,255,.50)"/>
+  <!-- Footer label -->
+  <text x="110" y="102" text-anchor="middle" font-size="6.5"
+        fill="rgba(0,212,255,.52)" font-family="Inter,sans-serif"
+        font-weight="700" letter-spacing=".09em">CANTÓN MONTECRISTI · 7 PARROQUIAS</text>
 </svg>
 """
 
@@ -241,6 +263,149 @@ def _kpi_band(d: dict) -> str:
 
 
 # ══════════════════════════════════════════════════════════════════════════════
+# CARD VIZ — mini visualización por dominio
+# ══════════════════════════════════════════════════════════════════════════════
+
+def _card_viz(dom_id: str, data: dict) -> str:
+    """Retorna HTML de mini-visualización para el espacio interno del cajón."""
+    icpi_pct  = data.get("icpi_pct", 17.4) or 17.4
+    hold_avg  = data.get("hold_avg", 68.7)
+    n_alertas = data.get("n_alertas", 0)
+
+    if dom_id == "d01":
+        return """<div class="card-viz card-viz-pills">
+          <span class="viz-pill vp-green">● Eje Social</span>
+          <span class="viz-pill vp-green">● Eje Económico</span>
+          <span class="viz-pill vp-green">● Eje Ambiental</span>
+          <span class="viz-pill vp-green">● Eje Institucional</span>
+        </div>"""
+
+    if dom_id == "d02":
+        return """<div class="card-viz card-viz-bars">
+          <div class="vb-row"><span class="vb-lbl">BID</span>
+            <div class="vb-track"><div class="vb-fill" style="width:32.8%;background:#7C5CFC"></div></div>
+            <span class="vb-val">$1.2M</span></div>
+          <div class="vb-row"><span class="vb-lbl">CAF</span>
+            <div class="vb-track"><div class="vb-fill" style="width:24.6%;background:#7C5CFC"></div></div>
+            <span class="vb-val">$0.9M</span></div>
+          <div class="vb-row"><span class="vb-lbl">PNUD</span>
+            <div class="vb-track"><div class="vb-fill" style="width:42.6%;background:#9B72FF"></div></div>
+            <span class="vb-val">$1.56M</span></div>
+        </div>"""
+
+    if dom_id == "d03":
+        return """<div class="card-viz card-viz-pills">
+          <span class="viz-pill vp-green">✓ 53 en ruta</span>
+          <span class="viz-pill vp-orange">⚑ 3 rezago</span>
+          <span class="viz-pill vp-dim">PDOT 2023–2027</span>
+          <span class="viz-pill vp-dim">Q1-2026 activo</span>
+        </div>"""
+
+    if dom_id == "d04":
+        return f"""<div class="card-viz card-viz-signals">
+          <div class="sig-type sig-red">SAT</div>
+          <div class="sig-type sig-red">TOP</div>
+          <div class="sig-type sig-orange">MMP</div>
+          <div class="sig-type sig-orange">RDC</div>
+          <div class="sig-type sig-orange">FIN</div>
+          <div class="sig-type sig-amber">CTIC</div>
+          <div class="sig-type sig-amber">PAR</div>
+        </div>"""
+
+    if dom_id == "d05":
+        entities = [
+            ("EP Aseo",   82, "#22C55E"),
+            ("Bomberos",  71, "#FFB700"),
+            ("Patronato", 68, "#FFB700"),
+            ("GAD",       54, "#F97316"),
+        ]
+        rows = "".join(
+            f'<div class="vb-row"><span class="vb-lbl">{n}</span>'
+            f'<div class="vb-track"><div class="vb-fill" style="width:{v}%;background:{c}"></div></div>'
+            f'<span class="vb-val">{v}%</span></div>'
+            for n, v, c in entities
+        )
+        return f'<div class="card-viz card-viz-bars">{rows}</div>'
+
+    if dom_id == "d06":
+        pct      = float(icpi_pct)
+        fill_pct = min(pct, 100)
+        brecha   = max(0.0, 65.0 - pct)
+        return f"""<div class="card-viz card-viz-progress">
+          <div class="vp-row-top">
+            <span class="vp-row-top-val" style="color:#EF4444">{pct:.1f}%</span>
+            <span class="vp-row-top-sub">umbral: 65%</span>
+          </div>
+          <div class="vp-track">
+            <div class="vp-fill" style="width:{fill_pct:.1f}%;background:#EF4444"></div>
+            <div class="vp-umbral" style="left:65%"></div>
+          </div>
+          <div class="vp-gap">Brecha activa: {brecha:.1f} puntos</div>
+        </div>"""
+
+    if dom_id == "d07":
+        return """<div class="card-viz card-viz-pills">
+          <span class="viz-pill vp-cyan">LOTAIP ✓</span>
+          <span class="viz-pill vp-cyan">CPCCS ✓</span>
+          <span class="viz-pill vp-cyan">SAIP ✓</span>
+          <span class="viz-pill vp-cyan">OCP ✓</span>
+          <span class="viz-pill vp-dim">21 artículos</span>
+        </div>"""
+
+    if dom_id == "d08":
+        return """<div class="card-viz card-viz-pills">
+          <span class="viz-pill vp-orange">Presup. Participativo</span>
+          <span class="viz-pill vp-orange">Cabildos</span>
+          <span class="viz-pill vp-orange">Consultas</span>
+          <span class="viz-pill vp-dim">Veedurías</span>
+          <span class="viz-pill vp-dim">Asambleas</span>
+          <span class="viz-pill vp-dim">Silla Vacía</span>
+        </div>"""
+
+    if dom_id == "d09":
+        return """<div class="card-viz card-viz-timeline">
+          <div class="vt-step vt-done">
+            <span class="vt-tag">✓</span>
+            <span>Q1</span>
+            <span class="vt-sub">CERRADO</span>
+          </div>
+          <div class="vt-line"></div>
+          <div class="vt-step vt-active">
+            <span class="vt-tag">●</span>
+            <span>Q2</span>
+            <span class="vt-sub">EN CURSO</span>
+          </div>
+          <div class="vt-line"></div>
+          <div class="vt-step vt-future">
+            <span class="vt-tag">○</span>
+            <span>AGO</span>
+            <span class="vt-sub">CPCCS</span>
+          </div>
+        </div>"""
+
+    if dom_id == "d10":
+        return f'<div class="card-viz card-viz-map">{_CANTON_3D_SVG}</div>'
+
+    if dom_id == "d12":
+        pct    = 12.83
+        umbral = 30.0
+        brecha = umbral - pct
+        return f"""<div class="card-viz card-viz-progress">
+          <div class="vp-row-top">
+            <span class="vp-row-top-val" style="color:#EF4444">{pct}%</span>
+            <span class="vp-row-top-sub">umbral: {umbral:.0f}%</span>
+          </div>
+          <div class="vp-track">
+            <div class="vp-fill" style="width:{pct:.2f}%;background:#EF4444"></div>
+            <div class="vp-umbral" style="left:{umbral:.0f}%"></div>
+          </div>
+          <div class="vp-gap">Brecha: {brecha:.2f} puntos · Art. 35 CRE</div>
+        </div>"""
+
+    return ""
+
+
+# ══════════════════════════════════════════════════════════════════════════════
 # DOMAIN CARD — número duro + nota de enganche + flecha
 # ══════════════════════════════════════════════════════════════════════════════
 
@@ -258,7 +423,6 @@ def _domain_card(dom: dict, data: dict) -> str:
     t        = _TEMP.get(dom["temp"], _TEMP["normal"])
     mod      = dom.get("mod")
     disabled = dom.get("disabled", False)
-    has_map  = dom.get("has_map", False)
     glow     = dom.get("glow", False)
     featured = dom.get("featured", False)
 
@@ -289,7 +453,7 @@ def _domain_card(dom: dict, data: dict) -> str:
         else ""
     )
 
-    map_html = _CANTON_SVG if has_map else ""
+    viz_html = _card_viz(dom["id"], data)
 
     return f"""
 <div class="domain-card" onclick="qNav('{mod}')"
@@ -301,9 +465,9 @@ def _domain_card(dom: dict, data: dict) -> str:
     <div class="card-name">{dom["nombre"]}</div>
     <span class="card-dot" style="background:{t["c"]}"></span>
   </div>
-  {map_html}
   <div class="card-metric" style="color:{t["c"]}">{metric}</div>
   <div class="card-nota">{dom["nota"]}</div>
+  {viz_html}
   <div class="card-footer" style="color:{t["c"]}80">→ Ver detalle</div>
 </div>"""
 
@@ -545,13 +709,80 @@ body {
 }
 .card-nota {
   font-size:10px;color:rgba(255,255,255,.60);
-  line-height:1.45;flex:1;
+  line-height:1.45;flex-shrink:0;
 }
 .card-footer {
   font-size:9px;font-weight:600;letter-spacing:.04em;
   margin-top:6px;flex-shrink:0;
   text-transform:uppercase;
 }
+
+/* ── CARD VIZ — mini visualizaciones dentro de cada cajón ── */
+.card-viz {
+  flex:1;min-height:0;
+  display:flex;flex-direction:column;
+  justify-content:center;
+  margin:5px 0 3px;
+  overflow:hidden;
+}
+
+/* Pills */
+.card-viz-pills {
+  flex-direction:row;flex-wrap:wrap;
+  gap:4px;align-content:flex-start;
+  padding-top:2px;
+}
+.viz-pill {
+  font-size:8.5px;font-weight:700;letter-spacing:.04em;
+  border-radius:4px;padding:3px 8px;white-space:nowrap;
+}
+.vp-green  { background:rgba(34,197,94,.12);color:#22C55E;border:1px solid rgba(34,197,94,.28); }
+.vp-orange { background:rgba(249,115,22,.12);color:#F97316;border:1px solid rgba(249,115,22,.28); }
+.vp-amber  { background:rgba(255,183,0,.12);color:#FFB700;border:1px solid rgba(255,183,0,.28); }
+.vp-cyan   { background:rgba(0,212,255,.10);color:#00D4FF;border:1px solid rgba(0,212,255,.25); }
+.vp-red    { background:rgba(239,68,68,.12);color:#EF4444;border:1px solid rgba(239,68,68,.28); }
+.vp-dim    { background:rgba(255,255,255,.05);color:rgba(255,255,255,.38);border:1px solid rgba(255,255,255,.10); }
+
+/* Bar rows */
+.card-viz-bars { gap:5px;justify-content:center; }
+.vb-row { display:flex;align-items:center;gap:6px; }
+.vb-lbl { font-size:8px;color:rgba(255,255,255,.48);width:52px;flex-shrink:0;letter-spacing:.01em; }
+.vb-track { flex:1;height:5px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden; }
+.vb-fill  { height:100%;border-radius:3px; }
+.vb-val   { font-size:8px;color:rgba(255,255,255,.55);width:36px;text-align:right;
+             flex-shrink:0;font-family:'JetBrains Mono',monospace;font-weight:600; }
+
+/* Progress bar (single metric vs umbral) */
+.card-viz-progress { gap:5px;justify-content:center; }
+.vp-row-top { display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px; }
+.vp-row-top-val { font-size:11px;font-weight:900;font-family:'JetBrains Mono',monospace;letter-spacing:-.02em; }
+.vp-row-top-sub { font-size:8px;color:rgba(255,255,255,.35); }
+.vp-track { position:relative;height:7px;background:rgba(255,255,255,.07);border-radius:4px;overflow:visible; }
+.vp-fill  { position:absolute;top:0;left:0;height:100%;border-radius:4px; }
+.vp-umbral { position:absolute;top:-4px;bottom:-4px;width:2px;background:rgba(255,255,255,.42);border-radius:2px; }
+.vp-gap { font-size:8px;color:rgba(255,255,255,.32);margin-top:4px; }
+
+/* Signal type grid (Dom 04) */
+.card-viz-signals { flex-direction:row;flex-wrap:wrap;gap:4px;align-content:flex-start;padding-top:2px; }
+.sig-type { font-size:8px;font-weight:800;letter-spacing:.07em;
+  border-radius:4px;padding:3px 8px; }
+.sig-red    { background:rgba(239,68,68,.15);color:#EF4444;border:1px solid rgba(239,68,68,.30); }
+.sig-orange { background:rgba(249,115,22,.12);color:#F97316;border:1px solid rgba(249,115,22,.28); }
+.sig-amber  { background:rgba(255,183,0,.12);color:#FFB700;border:1px solid rgba(255,183,0,.25); }
+
+/* Timeline (Dom 09) */
+.card-viz-timeline { flex-direction:row;align-items:center;justify-content:center; }
+.vt-step { display:flex;flex-direction:column;align-items:center;gap:3px;
+  font-size:9px;font-weight:800;min-width:44px;text-align:center; }
+.vt-done   { color:#22C55E; }
+.vt-active { color:#F97316; }
+.vt-future { color:rgba(255,255,255,.28); }
+.vt-tag  { font-size:10px; }
+.vt-sub  { font-size:7px;font-weight:600;letter-spacing:.04em;opacity:.70; }
+.vt-line { flex:1;height:1.5px;background:rgba(255,255,255,.12);margin:0 2px; }
+
+/* Map (Dom 10) */
+.card-viz-map { padding-top:2px; }
 
 /* ── FOOTER ── */
 .cc-footer {
