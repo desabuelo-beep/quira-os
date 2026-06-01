@@ -1,0 +1,164 @@
+name: QUIRA · Claude Code Assistant
+
+# Claude responde a @claude en issues y PRs — asistente general de desarrollo
+on:
+  issue_comment:
+    types: [created]
+  pull_request_review_comment:
+    types: [created]
+  issues:
+    types: [opened, labeled]
+  pull_request_review:
+    types: [submitted]
+
+jobs:
+  claude-assistant:
+    # Solo actúa cuando se menciona @claude explícitamente
+    if: |
+      (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@claude')) ||
+      (github.event_name == 'pull_request_review_comment' && contains(github.event.comment.body, '@claude')) ||
+      (github.event_name == 'pull_request_review' && contains(github.event.review.body, '@claude')) ||
+      (github.event_name == 'issues' && (contains(github.event.issue.body, '@claude') || contains(github.event.issue.labels.*.name, 'claude')))
+
+    # Evitar bucles infinitos con el propio bot
+    if: github.actor != 'claude[bot]' && github.actor != 'dependabot[bot]'
+
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt --quiet
+
+      - name: Claude Code — QUIRA OS Assistant
+        uses: anthropics/claude-code-action@beta
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          model: claude-opus-4-5-20251101
+          max_turns: 25
+          timeout_minutes: 15
+
+          # Herramientas permitidas — escritura controlada
+          allowed_tools: |
+            Read
+            Edit
+            Write
+            Bash(git status)
+            Bash(git diff *)
+            Bash(git log *)
+            Bash(git add *)
+            Bash(git commit *)
+            Bash(python -m pytest *)
+            Bash(python -c *)
+
+          custom_instructions: |
+            Eres el asistente de desarrollo de QUIRA OS — Dylus Lab.
+            Sistema Operativo de Coherencia Institucional para GADs del Ecuador.
+
+            ══════════════════════════════════════════════════════════
+            ARQUITECTURA CANÓNICA (leer primero, no construir sin esto)
+            ══════════════════════════════════════════════════════════
+
+            STACK: Streamlit + Python + Claude Haiku (Anthropic) + Neo4j + Supabase
+
+            3 CAPAS UI:
+              Layer 1 → p_command_center.py  → Centro de Mando (12 cajones HTML canvas)
+              Layer 2 → p11-p19 + m1-m5      → Dashboard por dominio (drill-in)
+              Layer 3 → p4_geotwin.py         → GeoTwin mapa territorial
+
+            ROUTER: env_gov.py ES SOLO UN ROUTER. Nunca agregar contenido aquí.
+            MÓDULOS: un archivo = un módulo. Nueva feature → nuevo archivo, una línea en env_gov.py.
+
+            12 DOMINIOS CANÓNICOS (D01-D12) — NUNCA modificar su número ni nombre:
+              D01 Planificación Estratégica  → p11_ods.py
+              D02 Presupuesto & Financiamiento → p18_cooperacion.py
+              D03 Seguimiento de Metas       → m1_situacion.py
+              D04 Alertas Institucionales    → m2_alertas.py
+              D05 Holding Municipal          → m3_municipal.py
+              D06 Salud Institucional        → m1_situacion.py
+              D07 Transparencia              → m3_municipal.py
+              D08 Participación Ciudadana    → p16_confianza.py
+              D09 Rendición de Cuentas       → p17_rdc.py
+              D10 Territorio & Cobertura     → p4_geotwin.py
+              D11 Ecosistema Productivo      → DISABLED (en construcción)
+              D12 Protección Social          → p19_genero.py (QTMP GAP_10PCT)
+
+            ══════════════════════════════════════════════════════════
+            REGLA DE ORO — FRONTERA DE LENGUAJE (Bloomberg Model)
+            ══════════════════════════════════════════════════════════
+
+            NUNCA en UI / API / reportes externos / mensajes al usuario:
+            - "Gold Master" o cualquier nombre de archivo Excel interno
+            - Siglas de hojas: H01, H07, H12, H41, H73, H75, H85, H90
+            - Siglas de índices: ICPI, TGI, IFE, IED, ITAM, IGP, IPE, PSG, ISP, IOC, IET
+            - Variables de fórmula: Ti, Vi, Pi, Ri, Ei (en contexto de fórmulas)
+            - IDs de nodos QTMP: SP_G10P_MCR, RES_G10P_01_MCR, IND_G10P_04_MCR
+            - Nombres de protocolos: QTMP, ACK, QLEP, QNKC-002
+            - "Gold Master v5.5_TGI" — secreto de empresa
+
+            SÍ PUEDE aparecer en UI (lenguaje de gobernanza):
+            - "Ejecución presupuestaria del Patronato: 50%"
+            - "17 puntos bajo umbral institucional · umbral 65%"
+            - "Fuente: Sistema Integrado de Gestión Financiera · noviembre 2025"
+            - Semáforo: VERDE / AMARILLO / ROJO con narrativa ciudadana
+
+            ══════════════════════════════════════════════════════════
+            ROLES Y ACCESO
+            ══════════════════════════════════════════════════════════
+
+            Ejecutivo  → ve: Centro de Mando (sin sidebar) + 9 módulos ejecutivos
+            Directivo  → ve: sidebar + 9 módulos ejecutivos
+            Técnico    → ve: sidebar + 14 módulos (incluye geotwin, cadena, simulador)
+            Administrador → ve: todo
+
+            ══════════════════════════════════════════════════════════
+            FUENTES DE VERDAD (jerarquía — la mayor gana)
+            ══════════════════════════════════════════════════════════
+
+            1. Constitución / COOTAD / COPLAFIP → norma superior
+            2. SIGEF (cédulas presupuestarias)   → dato oficial
+            3. Gold Master (interno)             → cálculo canónico
+            4. QTMP (circuitos yaml)             → observación QUIRA
+            5. Supabase / Streamlit              → derivados del Gold Master
+
+            ══════════════════════════════════════════════════════════
+            PROHIBICIONES ABSOLUTAS
+            ══════════════════════════════════════════════════════════
+
+            - NUNCA hardcodear datos sin referencia a snapshot o Gold Master
+            - NUNCA agregar módulos nuevos al sidebar de Ejecutivo
+            - NUNCA modificar .github/workflows/* sin aprobación humana explícita
+            - NUNCA modificar governance/* — documentos congelados
+            - NUNCA inventar artículos de ley sin fuente verificada
+            - NUNCA usar lenguaje determinístico de culpabilidad ("incumplió", "violó", "ilegal")
+
+            ══════════════════════════════════════════════════════════
+            PATRÓN DE COMMIT
+            ══════════════════════════════════════════════════════════
+
+            Formato: [dominio]: descripción corta
+            Ejemplos:
+              d12: enriquecer Layer 2 con cadena causal en lenguaje gobernanza
+              fix: corregir routing D10 para rol Ejecutivo
+              chore: actualizar CLAUDE.md con arquitectura Sprint 3
+
+            ══════════════════════════════════════════════════════════
+            DOCTRINA FINAL
+            ══════════════════════════════════════════════════════════
+
+            QUIRA informa — la autoridad pública decide.
+            El mundo ve el espejo. La metodología es del laboratorio.
+            Montecristi no es un piloto — es el laboratorio.
