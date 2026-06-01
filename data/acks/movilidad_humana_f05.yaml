@@ -1,0 +1,258 @@
+# ============================================================
+# QUIRA Gov — F0.5 Bloque GAP: Ley de Movilidad Humana
+# ============================================================
+# Norma:     Ley Orgánica de Movilidad Humana
+# Sigla:     LOMH
+# Jerarquía: 1 (Ley Orgánica)
+# Registro Oficial: Suplemento 938 — 06-feb-2017
+# Ámbito GAD Municipal: parcial — competencias específicas Arts. 165, 166, 167
+# Atoms:     3 (Art.165 · Art.166 · Art.167)
+# Propósito: Completar Dom12 — obligaciones GAD en movilidad humana y migración
+# ============================================================
+
+ACK_ID: LOMH_165
+CLASE: ACK_OBLIGACION
+TIPO: competencia_concurrente
+NOMBRE: Competencias GAD Municipal en movilidad humana — normativa, integración y PDOT
+
+FUENTE:
+  norma: Ley Orgánica de Movilidad Humana
+  sigla: LOMH
+  jerarquia: 1
+  articulo: "165"
+  inciso: ""
+  fecha_vigencia: "2017-02-06"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+
+ACTOR_BENEFICIARIO:
+  - Personas en movilidad humana (migrantes, refugiados, retornados)
+  - Comunidades extranjeras en el cantón
+
+OBLIGACION: >
+  Los gobiernos autónomos descentralizados municipales en coordinación con la autoridad
+  de movilidad humana tienen competencia para:
+  (1) Crear normativa para la integración social, económica, productiva, laboral y el
+  respeto a los derechos humanos de las personas en movilidad humana y en particular
+  de las personas migrantes retornadas.
+  (2) Coordinar con las instituciones públicas y privadas la atención integral para la
+  población en movilidad humana.
+  (3) Integrar en su planificación de desarrollo y ordenamiento territorial (PDOT)
+  acciones, política pública, planes, programas y proyectos que permitan asegurar el
+  ejercicio efectivo de los derechos de las personas en movilidad humana.
+  (4) Participar en los espacios de diálogo y coordinación interinstitucional en
+  materia de movilidad humana.
+  (5) Prevenir la trata de personas y el tráfico ilícito de migrantes en coordinación
+  con la autoridad de movilidad humana.
+
+EVIDENCIA:
+  - PDOT — componente de movilidad humana/migración (verificar inclusión)
+  - Ordenanzas de integración de población migrante (si existen)
+  - Convenios con Ministerio de Relaciones Exteriores / autoridad de movilidad
+  - POA — programas de atención a población migrante/retornada
+  - LOTAIP_19_10 — componente de planificación con enfoque movilidad humana
+
+CONSECUENCIA:
+  descripcion: >
+    La omisión de integrar movilidad humana en el PDOT constituye incumplimiento
+    del mandato LOMH_167 (transversalización). Responsabilidad administrativa del
+    Director de Planificación. La no-participación en espacios de coordinación
+    puede generar observaciones del ente rector.
+  tipo: responsabilidad-administrativa
+  organo_sancionador:
+    - MREMH
+    - CGE
+
+APLICABILIDAD:
+  nacional: false
+  municipal: true
+  condicion:
+    - ninguna
+  # Aplica con especial fuerza a cantones fronterizos o con alta población migrante
+  # Montecristi (Costa): aplica por flujos migratorios internos y retornados
+
+DOMINIOS_QUIRA:
+  - Dom12
+  - Dom09
+  - Dom04
+
+RELACIONES:
+  - CE_35
+  - CE_40
+  - CE_41
+  - COOTAD_55
+  - LOMH_166
+  - LOMH_167
+
+VIGENCIA:
+  estado: vigente
+
+CADENA_TERRITORIAL:
+  capa: 2
+  circuito_id: pendiente
+  activa:
+    - LOMH_166
+    - LOMH_167
+  mide_en: "pendiente — TGI Dom12 no incluye indicador de movilidad humana aún"
+
+META:
+  estado: v1.4
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.4
+  revisado_por_experto: true
+
+---
+
+ACK_ID: LOMH_166
+CLASE: ACK_OBLIGACION
+TIPO: obligacion
+NOMBRE: Corresponsabilidad nivel local — políticas de inclusión, prevención trata, reinserción migrante
+
+FUENTE:
+  norma: Ley Orgánica de Movilidad Humana
+  sigla: LOMH
+  jerarquia: 1
+  articulo: "166"
+  inciso: ""
+  fecha_vigencia: "2017-02-06"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+
+ACTOR_BENEFICIARIO:
+  - Personas en movilidad humana en el cantón
+  - Comunidad extranjera residente
+  - Víctimas de trata de personas
+
+OBLIGACION: >
+  Los gobiernos autónomos descentralizados municipales en coordinación con la autoridad
+  de movilidad humana y la autoridad de control migratorio deberán:
+  (1) Generar políticas de inclusión y desarrollo tendientes a prevenir la migración
+  riesgosa, en el ámbito de su competencia, así como apoyar en la reinserción de
+  víctimas de trata de personas y tráfico ilícito de personas.
+  (2) Crear políticas y programas para la inclusión de la comunidad extranjera y
+  de la convivencia pacífica.
+  (3) Planificar en el mediano y largo plazo la integración social y económica de
+  la comunidad migrante retornada.
+
+EVIDENCIA:
+  - POA — programa de inclusión comunidad extranjera / migrante retornado
+  - Convenios interinstitucionales para prevención de trata de personas
+  - Política pública de convivencia pacífica (ordenanza o resolución)
+  - PDOT — componente de integración migrante a mediano y largo plazo
+  - LOTAIP_19_6 — ejecución de partidas de movilidad humana
+
+CONSECUENCIA:
+  descripcion: >
+    La omisión de políticas de inclusión y prevención de trata es incumplimiento del
+    mandato LOMH_166. Responsabilidad administrativa del Alcalde y Director de Planificación.
+    En casos de trata vinculados a omisión del GAD, puede activarse responsabilidad penal.
+  tipo: responsabilidad-administrativa
+  organo_sancionador:
+    - MREMH
+    - Fiscalía
+    - CGE
+
+APLICABILIDAD:
+  nacional: false
+  municipal: true
+  condicion:
+    - ninguna
+
+DOMINIOS_QUIRA:
+  - Dom12
+  - Dom09
+
+RELACIONES:
+  - CE_35
+  - CE_40
+  - CE_41
+  - LOMH_165
+  - LOMH_167
+  - COOTAD_55
+
+VIGENCIA:
+  estado: vigente
+
+META:
+  estado: v1.4
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.4
+  revisado_por_experto: true
+
+---
+
+ACK_ID: LOMH_167
+CLASE: ACK_OBLIGACION
+TIPO: obligacion
+NOMBRE: Transversalización enfoque movilidad humana en todas las entidades públicas y GADs
+
+FUENTE:
+  norma: Ley Orgánica de Movilidad Humana
+  sigla: LOMH
+  jerarquia: 1
+  articulo: "167"
+  inciso: ""
+  fecha_vigencia: "2017-02-06"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+  - Director-Planificacion
+
+ACTOR_BENEFICIARIO:
+  - Personas en movilidad humana
+
+OBLIGACION: >
+  Todas las entidades del sector público, en todos los niveles de gobierno, incluirán
+  el enfoque de movilidad humana en sus políticas, planes, programas, proyectos y servicios.
+  El GAD Municipal debe garantizar que su PDOT, POA, presupuesto y servicios institucionales
+  incorporen el enfoque de movilidad humana de manera transversal.
+
+EVIDENCIA:
+  - PDOT vigente — verificar si incluye análisis de flujos migratorios y política pública
+  - POA — presencia de al menos un programa/proyecto con enfoque movilidad humana
+  - Servicios municipales — verificar si el acceso es efectivo para personas en movilidad
+  - LOTAIP_19_10 — componente de planificación (PDOT con enfoque transversal)
+
+CONSECUENCIA:
+  descripcion: >
+    La omisión del enfoque transversal en el PDOT y POA constituye incumplimiento de
+    planificación pública con consecuencia de responsabilidad administrativa del
+    Director de Planificación y del Alcalde. Si la omisión es sistémica y verificada
+    por ente de control, aplica observación formal y corrección obligatoria del PDOT.
+  tipo: responsabilidad-administrativa
+  organo_sancionador:
+    - MREMH
+    - SENPLADES-PLANIFICA
+    - CGE
+
+APLICABILIDAD:
+  nacional: true
+  municipal: true
+  condicion:
+    - ninguna
+
+DOMINIOS_QUIRA:
+  - Dom12
+  - Dom09
+  - Dom04
+
+RELACIONES:
+  - CE_35
+  - CE_40
+  - LOMH_165
+  - LOMH_166
+  - COOTAD_55
+  - COOTAD_192
+
+VIGENCIA:
+  estado: vigente
+
+META:
+  estado: v1.4
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.4
+  revisado_por_experto: true

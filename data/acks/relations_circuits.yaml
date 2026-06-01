@@ -1,0 +1,430 @@
+# ============================================================
+# QUIRA Gov — ACK_RELATIONS: Circuitos Causales Cerrados
+# ============================================================
+# Archivo:  relations_circuits.yaml
+# Versión:  1.0 (pilot — 13 REL atoms · 6 circuitos)
+# Schema:   QLEP v1.4
+# Propósito: Formalizar las aristas Neo4j de los circuitos causales
+#            verificados en F0.1–F0.4. Sin este artefacto, las relaciones
+#            se infieren en tiempo de consulta. Con este artefacto, se
+#            generan automáticamente al cargar el grafo.
+#
+# Corpus base: 74 ACK atoms (F0.1=30 · F0.2=14 · F0.3=14 · F0.4=16)
+# Circuitos:   6 cerrados (4 F0.1-3 · 2 F0.4)
+# Fecha:       2026-05-30
+# Extractor:   QLEP-v1.4 / QUIRA Gov · Dylus Lab
+# ============================================================
+#
+# CADENA QNKC-001 (capas de referencia):
+#   1=Derecho · 2=Competencia · 3=Función · 4=Servicio
+#   5=Actor · 6=Proceso · 7=Evidencia · 8=Indicador · 9=Territorio
+#
+# TIPO taxonomy:
+#   HABILITA · DESARROLLA · FUNDAMENTA · OBSERVA · SANCIONA
+#   COMPLEMENTA · SUSTITUYE · CONCURRENTE · FINANCIA · MIDE
+#
+# FUERZA:
+#   DIRECTA   → relación explícita en el texto de la norma
+#   SISTEMICA → relación emerge del ordenamiento como sistema
+#   CAUSAL    → causa-efecto verificable en el resultado
+# ============================================================
+
+# ─────────────────────────────────────────────────────────────
+# CIRCUITO 1: AGUA_POTABLE
+# Cadena: CE_12 (C1) → CE_264 (C2) → COOTAD_137 (C3) → COOTAD_198 (C6) → LOTAIP_19_6 (C7) → TGI Dom04
+# ─────────────────────────────────────────────────────────────
+
+- REL_ID: CE12_FUNDAMENTA_CE264
+  ORIGEN: CE_12
+  DESTINO: CE_264
+  TIPO: FUNDAMENTA
+  FUERZA: SISTEMICA
+  EVIDENCIA:
+    - CE_12
+    - CE_264
+  CIRCUITO:
+    id: AGUA_POTABLE
+    capa_origen: 1
+    capa_destino: 2
+  META:
+    estado: v1.4
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.4
+    revisado_por_experto: true
+  NOTA: >
+    El derecho humano al agua y saneamiento (CE Art. 12) fundamenta el sistema
+    de competencias exclusivas del GAD Municipal en agua potable (CE Art. 264.4).
+    La relación es sistémica — el derecho justifica la asignación competencial
+    al nivel más cercano al territorio — no hay cita cruzada explícita entre estos dos artículos.
+
+- REL_ID: CE264_HABILITA_COOTAD137
+  ORIGEN: CE_264
+  DESTINO: COOTAD_137
+  TIPO: HABILITA
+  FUERZA: DIRECTA
+  EVIDENCIA:
+    - CE_264
+    - COOTAD_137
+  CIRCUITO:
+    id: AGUA_POTABLE
+    capa_origen: 2
+    capa_destino: 3
+  META:
+    estado: v1.4
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.4
+    revisado_por_experto: true
+  NOTA: >
+    COOTAD Art. 137 desarrolla la competencia del GAD Municipal en agua potable
+    en ejercicio directo de la habilitación constitucional del Art. 264 numeral 4.
+    La cita es directa: COOTAD_137 dice "en el marco de la Constitución".
+
+- REL_ID: LOTAIP19_6_OBSERVA_COOTAD198
+  ORIGEN: LOTAIP_19_6
+  DESTINO: COOTAD_198
+  TIPO: OBSERVA
+  FUERZA: SISTEMICA
+  EVIDENCIA:
+    - LOTAIP_19_6
+    - COOTAD_198
+  CIRCUITO:
+    id: AGUA_POTABLE
+    capa_origen: 7
+    capa_destino: 6
+  META:
+    estado: v1.4
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.4
+    revisado_por_experto: true
+  NOTA: >
+    LOTAIP Art. 19 numeral 6 exige publicación mensual de la ejecución presupuestaria.
+    COOTAD Art. 198 es la fuente de la obligación sustantiva de ejecución.
+    LOTAIP_19_6 no crea la obligación de ejecutar — crea la ventana observacional
+    que permite verificar si COOTAD_198 se cumplió. Relación sistémica.
+    Dato Montecristi: Isabel Muentes — agua potable = 1.02% ejecución (brecha $1,791,935).
+
+# ─────────────────────────────────────────────────────────────
+# CIRCUITO 2: GAP_10PCT
+# Cadena: CE_35 (C1) → CE_11_3 (C1) → COOTAD_249 (C2) → LOTAIP_19_6 (C7) → TGI Dom12
+# ─────────────────────────────────────────────────────────────
+
+- REL_ID: CE35_FUNDAMENTA_COOTAD249
+  ORIGEN: CE_35
+  DESTINO: COOTAD_249
+  TIPO: FUNDAMENTA
+  FUERZA: DIRECTA
+  EVIDENCIA:
+    - CE_35
+    - COOTAD_249
+  CIRCUITO:
+    id: GAP_10PCT
+    capa_origen: 1
+    capa_destino: 2
+  META:
+    estado: v1.4
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.4
+    revisado_por_experto: true
+  NOTA: >
+    COOTAD Art. 249 cita explícitamente "grupos de atención prioritaria" (CE Art. 35)
+    como fundamento del mandato del 10%. La relación es directa y verificada en el texto.
+
+- REL_ID: CE11_3_HABILITA_COOTAD249
+  ORIGEN: CE_11_3
+  DESTINO: COOTAD_249
+  TIPO: HABILITA
+  FUERZA: SISTEMICA
+  EVIDENCIA:
+    - CE_11_3
+    - CE_35
+    - COOTAD_249
+  CIRCUITO:
+    id: GAP_10PCT
+    capa_origen: 1
+    capa_destino: 2
+  META:
+    estado: v1.4
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.4
+    revisado_por_experto: true
+  NOTA: >
+    CE Art. 11 numeral 3 establece la igualdad formal, material y no-discriminación,
+    y habilita la discriminación positiva como mecanismo de igualación real.
+    COOTAD_249 es la concreción presupuestaria de esa discriminación positiva.
+    Sin CE_11_3, COOTAD_249 no tendría fundamento para imponer una asignación mínima obligatoria.
+
+- REL_ID: COOTAD249_FINANCIA_CE35
+  ORIGEN: COOTAD_249
+  DESTINO: CE_35
+  TIPO: FINANCIA
+  FUERZA: CAUSAL
+  EVIDENCIA:
+    - COOTAD_249
+    - CE_35
+    - CE_11_3
+  CIRCUITO:
+    id: GAP_10PCT
+    capa_origen: 2
+    capa_destino: 1
+  META:
+    estado: v1.4
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.4
+    revisado_por_experto: true
+  NOTA: >
+    El mandato de asignar mínimo el 10% del presupuesto a grupos de atención prioritaria
+    (COOTAD_249) es el mecanismo causal que habilita el ejercicio material de los derechos
+    de CE_35. Sin financiamiento territorial, el derecho es declarativo.
+    Relación inversa y causal — no hay cita, pero es la única dirección funcional del circuito.
+
+# ─────────────────────────────────────────────────────────────
+# CIRCUITO 3: EQUIDAD
+# Cadena: CE_241 (C1) → COOTAD_215 (C2) → COOTAD_228 (C2) → IRS=79.7 → TGI Dom04
+# ─────────────────────────────────────────────────────────────
+
+- REL_ID: CE241_FUNDAMENTA_COOTAD215
+  ORIGEN: CE_241
+  DESTINO: COOTAD_215
+  TIPO: FUNDAMENTA
+  FUERZA: SISTEMICA
+  EVIDENCIA:
+    - CE_241
+    - COOTAD_215
+  CIRCUITO:
+    id: EQUIDAD
+    capa_origen: 1
+    capa_destino: 2
+  META:
+    estado: v1.4
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.4
+    revisado_por_experto: true
+  NOTA: >
+    CE Art. 241 establece que la planificación garantizará el ordenamiento territorial
+    y el desarrollo equitativo. COOTAD Art. 215 es el mecanismo de distribución proporcional
+    de recursos entre niveles parroquiales — la concreción del mandato de equidad.
+    Relación sistémica — no hay cita cruzada explícita, pero el propósito es idéntico.
+    Dato Montecristi: IRS=79.7 — la regresividad confirma que el circuito funciona imperfectamente.
+
+- REL_ID: COOTAD215_COMPLEMENTA_COOTAD228
+  ORIGEN: COOTAD_215
+  DESTINO: COOTAD_228
+  TIPO: COMPLEMENTA
+  FUERZA: DIRECTA
+  EVIDENCIA:
+    - COOTAD_215
+    - COOTAD_228
+  CIRCUITO:
+    id: EQUIDAD
+    capa_origen: 2
+    capa_destino: 2
+  META:
+    estado: v1.4
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.4
+    revisado_por_experto: true
+  NOTA: >
+    COOTAD Art. 228 introduce el Índice de Reforma del Sistema (IRS) como
+    instrumento de progresividad — mide el avance hacia la equidad plena.
+    COOTAD_215 establece la distribución proporcional base. Ambos artículos
+    operan en la misma capa competencial y se complementan directamente.
+    La distinción es funcional: 215=distribución · 228=progresividad/reforma.
+
+# ─────────────────────────────────────────────────────────────
+# CIRCUITO 4: PARTICIPACION
+# Cadena: COOTAD_302 (C6) + COOTAD_304 (C6) → TGI Dom08
+# ─────────────────────────────────────────────────────────────
+
+- REL_ID: COOTAD302_COMPLEMENTA_COOTAD304
+  ORIGEN: COOTAD_302
+  DESTINO: COOTAD_304
+  TIPO: COMPLEMENTA
+  FUERZA: SISTEMICA
+  EVIDENCIA:
+    - COOTAD_302
+    - COOTAD_304
+  CIRCUITO:
+    id: PARTICIPACION
+    capa_origen: 6
+    capa_destino: 6
+  META:
+    estado: v1.4
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.4
+    revisado_por_experto: true
+  NOTA: >
+    COOTAD Art. 302 regula la rendición de cuentas obligatoria del Alcalde al Concejo.
+    COOTAD Art. 304 regula el presupuesto participativo por parroquia.
+    Ambos son instrumentos de accountability democrático-territorial — se complementan
+    en el mismo ciclo de gobernanza: el PP fija las metas · la RDC verifica el cumplimiento.
+    El circuito cierra en TGI Dom08 (Participación Ciudadana).
+
+# ─────────────────────────────────────────────────────────────
+# CIRCUITO 5: CONTROL_LEGAL
+# Cadena: LOC-CGE_12 (C2) → NCI_400_01 (C6) → LOC-CGE_45 (C2) → LOTAIP_19_12 (C7) → TGI Dom01
+# ─────────────────────────────────────────────────────────────
+
+- REL_ID: LOCCGE12_HABILITA_NCI400_01
+  ORIGEN: LOC-CGE_12
+  DESTINO: NCI_400_01
+  TIPO: HABILITA
+  FUERZA: DIRECTA
+  EVIDENCIA:
+    - LOC-CGE_12
+    - NCI_GEN_CI
+    - NCI_400_01
+  CIRCUITO:
+    id: CONTROL_LEGAL
+    capa_origen: 2
+    capa_destino: 6
+  META:
+    estado: v1.4
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.4
+    revisado_por_experto: true
+  NOTA: >
+    LOC-CGE Art. 12 atribuye a la Contraloría la facultad de emitir normas de control interno.
+    NCI_400_01 (segregación de funciones) es una norma emitida en ejercicio directo de esa facultad.
+    La relación es directa: sin LOC-CGE_12, la CGE no tendría potestad normativa para emitir NCI.
+
+- REL_ID: LOCCGE45_SANCIONA_NCI400_01
+  ORIGEN: LOC-CGE_45
+  DESTINO: NCI_400_01
+  TIPO: SANCIONA
+  FUERZA: DIRECTA
+  EVIDENCIA:
+    - LOC-CGE_45
+    - NCI_400_01
+  CIRCUITO:
+    id: CONTROL_LEGAL
+    capa_origen: 2
+    capa_destino: 6
+  META:
+    estado: v1.4
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.4
+    revisado_por_experto: true
+  NOTA: >
+    LOC-CGE Art. 45 establece la responsabilidad administrativa culposa en 14 causales.
+    La causal j) incluye explícitamente el incumplimiento de normas de control interno (NCI).
+    NCI_400_01 (segregación de funciones) es por tanto una norma cuyo incumplimiento
+    activa LOC-CGE_45 directamente. Sanción: multa 1-20 RBU.
+    Brecha GADMCM: segregación de funciones no verificada documentalmente — riesgo activo.
+
+- REL_ID: LOTAIP19_12_OBSERVA_LOCCGE45
+  ORIGEN: LOTAIP_19_12
+  DESTINO: LOC-CGE_45
+  TIPO: OBSERVA
+  FUERZA: SISTEMICA
+  EVIDENCIA:
+    - LOTAIP_19_12
+    - LOC-CGE_45
+  CIRCUITO:
+    id: CONTROL_LEGAL
+    capa_origen: 7
+    capa_destino: 2
+  META:
+    estado: v1.4
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.4
+    revisado_por_experto: true
+  NOTA: >
+    LOTAIP Art. 19 numeral 12 exige publicar los informes de auditoría y exámenes
+    especiales de la Contraloría. Esos informes son el instrumento formal que
+    documenta el incumplimiento de LOC-CGE_45 (responsabilidad administrativa).
+    LOTAIP_19_12 no sanciona — crea la ventana observacional que evidencia si
+    LOC-CGE_45 fue aplicado. La relación es sistémica: no hay cita directa entre ambos.
+
+# ─────────────────────────────────────────────────────────────
+# CIRCUITO 6: CONTROL_PREV
+# Cadena: LOC-CGE_12 (C2) → NCI_PRE_COMPROMISO (C6) → NCI_PRE_DEVENGADO (C6) → D3=59.85% → TGI Dom02
+# ─────────────────────────────────────────────────────────────
+
+- REL_ID: LOCCGE12_HABILITA_NCI_PRE_COMPROMISO
+  ORIGEN: LOC-CGE_12
+  DESTINO: NCI_PRE_COMPROMISO
+  TIPO: HABILITA
+  FUERZA: DIRECTA
+  EVIDENCIA:
+    - LOC-CGE_12
+    - NCI_GEN_CI
+    - NCI_PRE_COMPROMISO
+  CIRCUITO:
+    id: CONTROL_PREV
+    capa_origen: 2
+    capa_destino: 6
+  META:
+    estado: v1.4
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.4
+    revisado_por_experto: true
+  NOTA: >
+    LOC-CGE Art. 12 otorga a la CGE la potestad de emitir normas de control interno
+    que incluyen el control previo al compromiso presupuestario.
+    NCI_PRE_COMPROMISO implementa esa potestad con triple verificación obligatoria:
+    (1) en POA y presupuesto (2) cumple requisitos legales (3) existe partida disponible.
+    Dato Montecristi: D3=59.85% de ejecución — la triple verificación no evitó la sub-ejecución.
+
+- REL_ID: NCI_PRE_COMPROMISO_COMPLEMENTA_NCI_PRE_DEVENGADO
+  ORIGEN: NCI_PRE_COMPROMISO
+  DESTINO: NCI_PRE_DEVENGADO
+  TIPO: COMPLEMENTA
+  FUERZA: SISTEMICA
+  EVIDENCIA:
+    - NCI_PRE_COMPROMISO
+    - NCI_PRE_DEVENGADO
+    - LOC-CGE_12
+  CIRCUITO:
+    id: CONTROL_PREV
+    capa_origen: 6
+    capa_destino: 6
+  META:
+    estado: v1.4
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.4
+    revisado_por_experto: true
+  NOTA: >
+    El control presupuestario tiene dos fases secuenciales y complementarias:
+    COMPROMISO (cuando se decide el gasto) y DEVENGADO (cuando se reconoce la obligación de pago).
+    NCI_PRE_COMPROMISO opera antes de comprometer; NCI_PRE_DEVENGADO antes de devengar.
+    Ambas forman el ciclo de control previo completo — una sin la otra es control parcial.
+    El D3=59.85% de Montecristi sugiere que alguna de las fases falla sistemáticamente.
+
+# ─────────────────────────────────────────────────────────────
+# ÍNDICE DE REL ATOMS
+# ─────────────────────────────────────────────────────────────
+# Total: 14 REL atoms · 6 circuitos causales cerrados
+#
+# CIRCUITO 1 — AGUA_POTABLE (3 REL):
+#   CE12_FUNDAMENTA_CE264
+#   CE264_HABILITA_COOTAD137
+#   LOTAIP19_6_OBSERVA_COOTAD198
+#
+# CIRCUITO 2 — GAP_10PCT (3 REL):
+#   CE35_FUNDAMENTA_COOTAD249
+#   CE11_3_HABILITA_COOTAD249
+#   COOTAD249_FINANCIA_CE35
+#
+# CIRCUITO 3 — EQUIDAD (2 REL):
+#   CE241_FUNDAMENTA_COOTAD215
+#   COOTAD215_COMPLEMENTA_COOTAD228
+#
+# CIRCUITO 4 — PARTICIPACION (1 REL):
+#   COOTAD302_COMPLEMENTA_COOTAD304
+#
+# CIRCUITO 5 — CONTROL_LEGAL (3 REL):
+#   LOCCGE12_HABILITA_NCI400_01
+#   LOCCGE45_SANCIONA_NCI400_01
+#   LOTAIP19_12_OBSERVA_LOCCGE45
+#
+# CIRCUITO 6 — CONTROL_PREV (2 REL):
+#   LOCCGE12_HABILITA_NCI_PRE_COMPROMISO
+#   NCI_PRE_COMPROMISO_COMPLEMENTA_NCI_PRE_DEVENGADO
+#
+# Cypher de carga (plantilla):
+#   MATCH (a:Atom {id: $origen}), (b:Atom {id: $destino})
+#   MERGE (a)-[r:RELATES {tipo: $tipo, fuerza: $fuerza, circuito: $circuito_id}]->(b)
+#   SET r.evidencia = $evidencia, r.extractor = 'QLEP-v1.4'
+#
+# Siguiente: F0.5 — CONA + Ley Discapacidades + Ley Adulto Mayor + Ley Movilidad Humana
+# ─────────────────────────────────────────────────────────────

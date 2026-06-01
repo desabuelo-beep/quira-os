@@ -1,0 +1,280 @@
+# ============================================================
+# QUIRA Gov — REL-H3: Circuitos Horizontales (Sprint H3)
+# ============================================================
+# Sprint:    REL-H3 — Relaciones inter-dominio derivadas de F0.6 (LOSNCP + LOSEP)
+# Versión:   QLEP v1.5 / QNKC-002
+# Fecha:     2026-05-30
+# Propósito: Materializar las relaciones que el Bloque Operativo F0.6 genera.
+#            Los átomos LOSNCP/LOSEP son valiosos por las REL que habilitan,
+#            no solo por la cobertura normativa que representan.
+#
+# Principio de diseño de este sprint:
+#   Cada REL aquí responde a una pregunta causal NUEVA que el grafo antes no podía contestar:
+#   H11: "¿La certificación presupuestaria precontractual predice la calidad de ejecución?"
+#   H3+: "¿El proceso participativo realmente se refleja en el PAC publicado?"
+#   H4+: "¿La estructura de personal LOSEP explica la capacidad de ejecución presupuestaria?"
+#   H4+: "¿La sanción LOSEP es el enforcement que hace real la obligación de ejecución?"
+#
+# Circuitos cubiertos:
+#   H11: Dom03↔Dom02 — Contratación explica/condiciona la ejecución presupuestaria (2 REL)
+#   H3+: Dom03↔Dom08 — Densificación del circuito existente desde LOSNCP (2 REL)
+#   H4+: Dom05↔Dom02 — Densificación del circuito institucional desde LOSEP (2 REL)
+#
+# Total: 6 REL atoms horizontales de densificación y nuevo circuito
+# ============================================================
+
+
+# ============================================================
+# CIRCUITO H11 (NUEVO): CONTRATACION_PRESUPUESTO — Dom03 ↔ Dom02
+# Pregunta: ¿La calidad del proceso contractual condiciona la ejecución presupuestaria?
+# ============================================================
+
+- REL_ID: LOSNCP22_COMPLEMENTA_COOTAD215
+  ORIGEN: LOSNCP_22
+  DESTINO: COOTAD_215
+  TIPO: COMPLEMENTA
+  FUERZA: CAUSAL
+  EVIDENCIA:
+    - LOSNCP_22
+    - COOTAD_215
+    - NCI_PRE_DEVENGADO
+  CIRCUITO:
+    id: H11_CONTRATACION_PRESUPUESTO
+    tipo: horizontal
+    dominios_cruzados: [Dom03, Dom02]
+    capa_origen: "C4"
+    capa_destino: "C4"
+  META:
+    estado: v1.5
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.5
+    revisado_por_experto: true
+  NOTA: >
+    La certificación presupuestaria previa (LOSNCP_22 — Dom03) es la condición legal
+    que habilita el gasto antes de que el proceso contractual inicie. COOTAD_215 (Dom02)
+    regula la ejecución del gasto una vez comprometido. El eslabón causal es directo:
+    sin certificación válida, no hay contrato; sin contrato, no hay devengado; sin
+    devengado, el presupuesto no ejecuta. La tasa de procesos sin certificación en
+    un GAD es un indicador predictivo de la brecha de ejecución al cierre del ejercicio.
+    Observable: auditoría de expedientes de contratación (presencia/ausencia de cert.).
+
+---
+
+- REL_ID: COOTAD215_HABILITA_LOSNCP21
+  ORIGEN: COOTAD_215
+  DESTINO: LOSNCP_21
+  TIPO: HABILITA
+  FUERZA: SISTEMICA
+  EVIDENCIA:
+    - COOTAD_215
+    - LOSNCP_21
+    - COOTAD_198
+  CIRCUITO:
+    id: H11_CONTRATACION_PRESUPUESTO
+    tipo: horizontal
+    dominios_cruzados: [Dom02, Dom03]
+    capa_origen: "C4"
+    capa_destino: "C2"
+  META:
+    estado: v1.5
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.5
+    revisado_por_experto: true
+  NOTA: >
+    La disponibilidad presupuestaria ejecutable (COOTAD_215 — Dom02) es la precondición
+    estructural que hace posible el Plan Anual de Contratación (LOSNCP_21 — Dom03).
+    Un presupuesto sin aprobación oportuna del Concejo, o con partidas bloqueadas por
+    CGE, vacía materialmente el PAC de contenido ejecutable. Relación de habilitación
+    sistémica: el Dom02 "autoriza" el volumen y velocidad de contratación Dom03.
+    Señal predictiva inversa: un PAC sobredimensionado respecto del presupuesto aprobado
+    es indicador de planificación irreal, observable comparando totales PAC vs. cédula.
+
+---
+
+# ============================================================
+# CIRCUITO H3 DENSIFICADO: CONTRATACION_PARTICIPACION — Dom03 ↔ Dom08
+# Nuevos átomos que refuerzan el circuito con la dimensión LOSNCP
+# ============================================================
+
+- REL_ID: COOTAD304_COMPLEMENTA_LOSNCP21
+  ORIGEN: COOTAD_304
+  DESTINO: LOSNCP_21
+  TIPO: COMPLEMENTA
+  FUERZA: CAUSAL
+  EVIDENCIA:
+    - COOTAD_304
+    - LOSNCP_21
+    - LOTAIP_19_21
+  CIRCUITO:
+    id: H3_CONTRATACION_PARTICIPACION
+    tipo: horizontal
+    dominios_cruzados: [Dom08, Dom03]
+    capa_origen: "C2"
+    capa_destino: "C2"
+  META:
+    estado: v1.5
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.5
+    revisado_por_experto: true
+  NOTA: >
+    El proceso de presupuesto participativo (COOTAD_304 — Dom08) genera una lista de
+    prioridades validadas por la ciudadanía. El PAC (LOSNCP_21 — Dom03) es el instrumento
+    jurídico donde esas prioridades deben materializarse como procesos de contratación
+    planificados. La distancia entre las prioridades aprobadas en el participativo y los
+    ítems del PAC publicado es la métrica más precisa de captura institucional: si el PAC
+    no refleja el participativo, el proceso Dom08 fue cosmético. Observable cruzando:
+    Acta Asamblea Ciudadana (Dom08) vs. PAC publicado en SERCOP (Dom03/LOTAIP_19_21).
+
+---
+
+- REL_ID: LOSNCP21_OBSERVA_COOTAD302
+  ORIGEN: LOSNCP_21
+  DESTINO: COOTAD_302
+  TIPO: OBSERVA
+  FUERZA: SISTEMICA
+  EVIDENCIA:
+    - LOSNCP_21
+    - COOTAD_302
+    - LOTAIP_19_8
+  CIRCUITO:
+    id: H3_CONTRATACION_PARTICIPACION
+    tipo: horizontal
+    dominios_cruzados: [Dom03, Dom08]
+    capa_origen: "C7"
+    capa_destino: "C2"
+  META:
+    estado: v1.5
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.5
+    revisado_por_experto: true
+  NOTA: >
+    El PAC publicado (LOSNCP_21 — Dom03/C7) es el insumo observable que la rendición
+    de cuentas participativa (COOTAD_302 — Dom08) necesita para que los ciudadanos
+    puedan comparar prioridades prometidas vs. contratos adjudicados. LOSNCP_21
+    "observa" el ciclo Dom08 al exponer públicamente qué se va a contratar. Sin PAC
+    publicado, la rendición de cuentas Dom08 pierde su referente contractual. Esta
+    relación hace al PAC un artefacto de accountability bidireccional: transparencia
+    hacia afuera (Dom07) y herramienta de verificación participativa (Dom08).
+
+---
+
+# ============================================================
+# CIRCUITO H4 DENSIFICADO: INSTITUCION_EJECUCION — Dom05 ↔ Dom02
+# Nuevos átomos desde LOSEP que refuerzan la cadena institucional
+# ============================================================
+
+- REL_ID: LOSEP4_COMPLEMENTA_COOTAD198
+  ORIGEN: LOSEP_4
+  DESTINO: COOTAD_198
+  TIPO: COMPLEMENTA
+  FUERZA: SISTEMICA
+  EVIDENCIA:
+    - LOSEP_4
+    - COOTAD_198
+    - LOSEP_22
+  CIRCUITO:
+    id: H4_INSTITUCION_EJECUCION
+    tipo: horizontal
+    dominios_cruzados: [Dom05, Dom02]
+    capa_origen: "C1"
+    capa_destino: "C3"
+  META:
+    estado: v1.5
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.5
+    revisado_por_experto: true
+  NOTA: >
+    El ámbito de la LOSEP (Art. 4 — Dom05) determina la estructura de la planta de
+    personal del GAD: cuántos servidores, en qué categorías y con qué remuneraciones.
+    COOTAD_198 (Dom02) regula el presupuesto municipal, cuya partida de gasto de
+    personal (grupo 51) es históricamente la mayor del ejercicio. La relación es
+    sistémica: el régimen LOSEP codifica la estructura que genera el 50-65% del gasto
+    municipal. Toda reforma de planta (fusión de direcciones, reclasificación de
+    puestos, nuevos nombramientos) tiene impacto estructural directo en Dom02.
+    Observable: nómina institucional (SIGEF) vs. clasificación de puestos LOSEP.
+
+---
+
+- REL_ID: LOSEP42_COMPLEMENTA_COOTAD215
+  ORIGEN: LOSEP_42
+  DESTINO: COOTAD_215
+  TIPO: COMPLEMENTA
+  FUERZA: CAUSAL
+  EVIDENCIA:
+    - LOSEP_42
+    - COOTAD_215
+    - LOC-CGE_45
+  CIRCUITO:
+    id: H4_INSTITUCION_EJECUCION
+    tipo: horizontal
+    dominios_cruzados: [Dom05, Dom02]
+    capa_origen: "C6"
+    capa_destino: "C4"
+  META:
+    estado: v1.5
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.5
+    revisado_por_experto: true
+  NOTA: >
+    El régimen disciplinario LOSEP (Art. 42 — Dom05/C6) es el mecanismo de enforcement
+    de la obligación de ejecución presupuestaria (COOTAD_215 — Dom02/C4). Sin la amenaza
+    de consecuencia real para el servidor que no ejecuta el presupuesto asignado, la
+    obligación de COOTAD_215 es normativa sin dientes. Este es el enlace que cierra el
+    circuito H4: la densidad institucional Dom05 (cadena de responsabilidades LOSEP_42)
+    explica directamente la calidad de la ejecución Dom02. Un GAD con sumarios activos
+    y sanciones aplicadas tiene mayor ejecución presupuestaria que uno donde el régimen
+    disciplinario es letra muerta. Causal Dom05→Dom02: la credibilidad de la amenaza
+    de sanción predice la velocidad y calidad de ejecución.
+
+---
+
+# ============================================================
+# ÍNDICE REL-H3 — 6 átomos horizontales
+# ============================================================
+#
+# H11: CONTRATACION_PRESUPUESTO (Dom03↔Dom02) — NUEVO CIRCUITO
+#   LOSNCP22_COMPLEMENTA_COOTAD215     — C4/Dom03 → C4/Dom02 — CAUSAL
+#   COOTAD215_HABILITA_LOSNCP21        — C4/Dom02 → C2/Dom03 — SISTEMICA
+#
+# H3+: CONTRATACION_PARTICIPACION (Dom03↔Dom08) — DENSIFICACIÓN
+#   COOTAD304_COMPLEMENTA_LOSNCP21     — C2/Dom08 → C2/Dom03 — CAUSAL
+#   LOSNCP21_OBSERVA_COOTAD302         — C7/Dom03 → C2/Dom08 — SISTEMICA
+#
+# H4+: INSTITUCION_EJECUCION (Dom05↔Dom02) — DENSIFICACIÓN
+#   LOSEP4_COMPLEMENTA_COOTAD198       — C1/Dom05 → C3/Dom02 — SISTEMICA
+#   LOSEP42_COMPLEMENTA_COOTAD215      — C6/Dom05 → C4/Dom02 — CAUSAL
+#
+# Valor estratégico de estos 6 átomos:
+#   1. H11 cierra el ciclo Dom03↔Dom02 completando el "cuadrado" de finanzas-contratación
+#   2. COOTAD304→LOSNCP21 hace OBSERVABLE la captura institucional del proceso participativo
+#   3. LOSNCP21→COOTAD302 convierte el PAC en herramienta de accountability ciudadana
+#   4. LOSEP4→COOTAD198 cuantifica el impacto fiscal de la estructura institucional
+#   5. LOSEP42→COOTAD215 cierra el circuito enforcement: "la sanción hace real la norma"
+#
+# Preguntas causal-predictivas ahora respondibles:
+#   "¿El PAC 2025 refleja las prioridades del proceso participativo?"
+#     → cruzar COOTAD_304 (Actas asamblea) vs. LOSNCP_21 (PAC SERCOP)
+#   "¿El incumplimiento de ejecución tiene consecuencias institucionales reales?"
+#     → cruzar LOSEP_42 (sumarios abiertos) vs. COOTAD_215 (brecha ejecución)
+#   "¿La estructura de personal explica la capacidad de gasto?"
+#     → cruzar LOSEP_4 (tamaño/estructura planta) vs. COOTAD_198 (ejecución nómina)
+#
+# Corpus total post-REL-H3:
+#   93 ACK + 14 REL-V + 29 REL-H (23+6) = 136 artefactos
+#
+# Dominio graf coverage (REL-H por dominio):
+#   Dom01: H4+, H5, H9 → 7 REL-H
+#   Dom02: H1, H4, H5, H7, H11, H4+, H4+ → 9 REL-H
+#   Dom03: H3, H3+, H11 → 5 REL-H
+#   Dom04: H2, H7, H10 → 5 REL-H
+#   Dom05: H4, H4+, H4+ → 4 REL-H
+#   Dom07: H6, H9 → 4 REL-H
+#   Dom08: H3, H6, H8, H3+, H3+ → 6 REL-H
+#   Dom09: H10 → 1 REL-H
+#   Dom12: H1, H2, H8, H10 → 6 REL-H
+#
+# Brechas REL-H identificadas (candidatos próximo sprint):
+#   Dom06 (Ambiente) → 0 REL-H → conectar con Dom04 (Territorial) y Dom02 (Presupuesto)
+#   Dom09 (Planificación) → solo H10 → conectar con Dom03 y Dom02
+#   Dom11 (Ecosistema Productivo) → 0 REL-H → conectar con Dom04 y Dom02
+# ============================================================

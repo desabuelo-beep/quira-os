@@ -1,0 +1,149 @@
+# ============================================================
+# QUIRA Gov — F0.6 Bloque Operativo: COA
+# Código Orgánico Administrativo
+# ============================================================
+# Norma:     Código Orgánico Administrativo
+# Sigla:     COA
+# Jerarquía: 1 (Código Orgánico = Ley Orgánica)
+# RO:        Suplemento 31 — 07-jul-2017
+# Vigente:   desde 2017, gradualmente (Art. 326 — 2 años para adaptación)
+# Ámbito GAD Municipal: TOTAL — regula procedimientos y organización de toda la
+#                        administración pública, incluyendo GADs
+# Atoms:     1 (Art.14)
+# Propósito: Resolver forward reference COA_14 (de ce_art226_264.yaml línea 68)
+#            Completar el nodo base del principio de legalidad en sede administrativa
+# ============================================================
+# Nota arquitectónica: El COA es el código procesal de la administración pública.
+# Para QUIRA, su relevancia es dual:
+#   (1) Marco procedimental que da forma legal a los actos del GAD (Dom01)
+#   (2) Capítulo de participación ciudadana que conecta con Dom08
+# El Art. 14 es el punto de entrada del COA al corpus porque CE_226 lo referencia
+# como el desarrollo operativo del principio de legalidad constitucional.
+# ============================================================
+
+ACK_ID: COA_14
+CLASE: ACK_PRINCIPIO
+TIPO: principio
+NOMBRE: Principio de Legalidad Administrativa — COA como Desarrollo Operativo de CE_226
+
+FUENTE:
+  norma: Código Orgánico Administrativo
+  sigla: COA
+  jerarquia: 1
+  articulo: "14"
+  inciso: ""
+  fecha_vigencia: "2017-07-07"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+  - Administración-Pública
+  - Todo servidor que emite actos administrativos
+
+ACTOR_BENEFICIARIO:
+  - Ciudadanía
+  - Administrados (personas que interactúan con la administración)
+
+OBLIGACION: >
+  [PENDIENTE VERIFICACIÓN LITERAL — Art. 14 COA] En concordancia con el principio
+  constitucional de legalidad (CE Art. 226), el COA Art. 14 desarrolla en sede
+  procedimental el mandato de que la administración pública solo puede actuar dentro
+  del ámbito de sus competencias atribuidas. Todo acto administrativo del GAD Municipal
+  debe: (a) estar habilitado por norma legal expresa; (b) ser emitido por el servidor
+  competente; (c) seguir el procedimiento previsto; (d) tener fundamento fáctico y
+  jurídico verificable. La actuación fuera de la competencia atribuida o sin habilitación
+  legal genera nulidad absoluta del acto.
+
+EVIDENCIA:
+  - Actos administrativos con cita expresa de la norma habilitante
+  - Informes jurídicos previos a actos de relevancia institucional
+  - Resoluciones y ordenanzas con base legal correcta
+  - Ausencia de pronunciamientos PGE que declaren nulidad de actos GAD
+
+CONSECUENCIA:
+  descripcion: >
+    Los actos administrativos dictados fuera de competencia o sin habilitación legal
+    son nulos de pleno derecho. La nulidad puede declararse de oficio o a petición de
+    parte ante los Tribunales de lo Contencioso Administrativo. El servidor que emite
+    el acto nulo incurre en responsabilidad administrativa (LOSEP_42) y puede activar
+    acción de repetición contra su patrimonio personal (CE Art. 11.9).
+  tipo: nulidad
+  organo_sancionador:
+    - Judicatura
+    - PGE
+    - CGE
+
+APLICABILIDAD:
+  nacional: true
+  municipal: true
+  condicion:
+    - Todo acto administrativo del GAD Municipal sin excepción
+
+OBSERVA_CAPA: "C1"
+
+DOMINIOS_QUIRA:
+  - Dom01
+
+RELACIONES:
+  - CE_226
+  - CE_227
+  - LOC-CGE_21
+  - LOSEP_4
+  - LOSEP_42
+
+VIGENCIA:
+  estado: vigente
+
+CADENA_TERRITORIAL:
+  circuito_id: H4_INSTITUCION_EJECUCION
+  capa_inicio: "C1"
+  capa_fin: "C1"
+  servicio_publico: >
+    Legitimidad jurídica de todos los actos administrativos del GAD, condición
+    sine qua non de la seguridad jurídica institucional y la confianza ciudadana.
+  proceso_referencia: >
+    Identificación competencia legal → dictado del acto habilitado → registro y
+    notificación → efectos jurídicos → control de legalidad PGE/CGE.
+  indicador_referencia: >
+    TGI Dom01 — proporción de actos administrativos con sustento jurídico correcto /
+    número de nulidades declaradas o pronunciamientos PGE adversos.
+
+IMPLEMENTACION_LOCAL:
+  actor_local: >
+    pendiente — Procurador/a Síndico Municipal GADMCM (garante de la legalidad de
+    todos los actos administrativos del GAD)
+  institucion_local: >
+    GAD-Municipal-Montecristi — Procuraduría Síndica Municipal / Asesoría Jurídica
+  fuente_organica: >
+    Ordenanza Orgánica GADMCM — competencias de la Procuraduría Síndica Municipal
+
+META:
+  estado: v1.5
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.5
+  revisado_por_experto: false
+
+---
+
+# ============================================================
+# ÍNDICE F0.6 COA — 1 átomo
+# ============================================================
+#
+# COA_14 — Art. 14 — Principio de legalidad administrativa — Dom01 — revisado: false
+#
+# Forward references resueltas:
+#   COA_14 (de ce_art226_264.yaml línea 68) → resuelto
+#
+# Átomos COA pendientes para sprints futuros:
+#   COA participación ciudadana — relevante para Dom08
+#   COA silencio administrativo — relevante para Dom01/Dom08 (derechos del administrado)
+#   COA recursos administrativos — relevante para Dom01
+#   COA procedimiento administrativo sancionador — enlaza con LOSEP_42
+#
+# Nota: El COA tiene ~450 artículos. Los más relevantes para QUIRA y que
+# generarían nuevas REL-H son los del capítulo de participación ciudadana
+# (que densificarían H3 y H6) y el silencio administrativo (Dom01↔Dom08).
+# Se recomienda sprint específico COA antes de QTMP mínimo.
+#
+# Corpus post-F0.6 COMPLETO: 92+1 = 93 ACK + 14 REL-V + 23 REL-H = 130 artefactos
+# ============================================================

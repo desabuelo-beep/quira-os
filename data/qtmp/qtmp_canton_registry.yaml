@@ -1,0 +1,1775 @@
+# ============================================================
+# QUIRA — QTMP Canton Registry
+# Registro Nacional de Cantones Ecuador
+# ============================================================
+# Versión:   1.0
+# Fecha:     2026-05-30
+# Fuente:    INEC DPA 2024 (División Política Administrativa)
+# Propósito: Nodo base (Canton) para el grafo Neo4j QUIRA.
+#            Toda instancia QTMP referencia un CANTON_ID de este registro.
+#            Un cantón debe existir aquí antes de crear cualquier QTMP instance.
+#
+# Convención CANTON_ID:
+#   ECU-{CODIGO_PROVINCIA}-{NOMBRE_NORMALIZADO}
+#   Normalización: MAYÚSCULAS · sin tildes · espacios → guiones bajos
+#   Á→A · É→E · Í→I · Ó→O · Ú→U · Ñ→N
+#   Ejemplo: "Montecristi" → ECU-13-MONTECRISTI
+#
+# Estado QTMP:
+#   activo    → al menos una instancia QTMP creada y operativa
+#   pendiente → cantón registrado, sin instancia QTMP todavía
+#
+# canton_short:
+#   Código único 3-5 chars para filenames, Neo4j labels, y CLI
+#   Ejemplo: MCR=Montecristi, GYE=Guayaquil, UIO=Quito
+#
+# Cypher Neo4j:
+#   MERGE (c:Canton {id: $CANTON_ID})
+#   SET c.nombre = $nombre, c.provincia = $provincia,
+#       c.codigo_provincia = $codigo_provincia,
+#       c.canton_short = $canton_short,
+#       c.estado_qtmp = $estado_qtmp
+#
+# Total: 221 cantones — 24 provincias
+# ============================================================
+
+version: "1.0"
+fecha_creacion: "2026-05-30"
+fecha_actualizacion: "2026-05-30"
+total_cantones: 221
+provincias: 24
+fuente: "INEC DPA 2024"
+nota: >
+  La Concordia registrada bajo Provincia 23 (Santo Domingo de los Tsáchilas)
+  conforme a la resolución DPA más reciente. Cantón Montecristi (ECU-13-MONTECRISTI)
+  es el único activo — primer piloto QTMP operativo del sistema QUIRA.
+
+estadisticas:
+  activos: 1
+  pendientes: 220
+  instancias_qtmp_total: 3
+  por_provincia:
+    "01_Azuay": 15
+    "02_Bolivar": 7
+    "03_Canar": 7
+    "04_Carchi": 6
+    "05_Cotopaxi": 7
+    "06_Chimborazo": 10
+    "07_El_Oro": 14
+    "08_Esmeraldas": 7
+    "09_Guayas": 25
+    "10_Imbabura": 6
+    "11_Loja": 16
+    "12_Los_Rios": 13
+    "13_Manabi": 22
+    "14_Morona_Santiago": 12
+    "15_Napo": 5
+    "16_Pastaza": 4
+    "17_Pichincha": 8
+    "18_Tungurahua": 9
+    "19_Zamora_Chinchipe": 9
+    "20_Galapagos": 3
+    "21_Sucumbios": 7
+    "22_Orellana": 4
+    "23_Santo_Domingo_Tsachilas": 2
+    "24_Santa_Elena": 3
+
+cantones:
+
+  # ─────────────────────────────────────────────────────────
+  # PROVINCIA 01: AZUAY — 15 cantones | Capital: Cuenca
+  # ─────────────────────────────────────────────────────────
+
+  - id: ECU-01-CUENCA
+    nombre: Cuenca
+    provincia: Azuay
+    codigo_provincia: "01"
+    canton_short: CUE
+    estado_qtmp: pendiente
+
+  - id: ECU-01-GIRON
+    nombre: Girón
+    provincia: Azuay
+    codigo_provincia: "01"
+    canton_short: GIR
+    estado_qtmp: pendiente
+
+  - id: ECU-01-GUALACEO
+    nombre: Gualaceo
+    provincia: Azuay
+    codigo_provincia: "01"
+    canton_short: GLC
+    estado_qtmp: pendiente
+
+  - id: ECU-01-NABON
+    nombre: Nabón
+    provincia: Azuay
+    codigo_provincia: "01"
+    canton_short: NAB
+    estado_qtmp: pendiente
+
+  - id: ECU-01-PAUTE
+    nombre: Paute
+    provincia: Azuay
+    codigo_provincia: "01"
+    canton_short: PAU
+    estado_qtmp: pendiente
+
+  - id: ECU-01-PUCARA
+    nombre: Pucará
+    provincia: Azuay
+    codigo_provincia: "01"
+    canton_short: PUC
+    estado_qtmp: pendiente
+
+  - id: ECU-01-SAN_FERNANDO
+    nombre: San Fernando
+    provincia: Azuay
+    codigo_provincia: "01"
+    canton_short: SFN
+    estado_qtmp: pendiente
+
+  - id: ECU-01-SANTA_ISABEL
+    nombre: Santa Isabel
+    provincia: Azuay
+    codigo_provincia: "01"
+    canton_short: STI
+    estado_qtmp: pendiente
+
+  - id: ECU-01-SIGSIG
+    nombre: Sígsig
+    provincia: Azuay
+    codigo_provincia: "01"
+    canton_short: SGS
+    estado_qtmp: pendiente
+
+  - id: ECU-01-ONA
+    nombre: Oña
+    provincia: Azuay
+    codigo_provincia: "01"
+    canton_short: ONA
+    estado_qtmp: pendiente
+
+  - id: ECU-01-CHORDELEG
+    nombre: Chordeleg
+    provincia: Azuay
+    codigo_provincia: "01"
+    canton_short: CHD
+    estado_qtmp: pendiente
+
+  - id: ECU-01-EL_PAN
+    nombre: El Pan
+    provincia: Azuay
+    codigo_provincia: "01"
+    canton_short: EPN
+    estado_qtmp: pendiente
+
+  - id: ECU-01-SEVILLA_DE_ORO
+    nombre: Sevilla de Oro
+    provincia: Azuay
+    codigo_provincia: "01"
+    canton_short: SVO
+    estado_qtmp: pendiente
+
+  - id: ECU-01-GUACHAPALA
+    nombre: Guachapala
+    provincia: Azuay
+    codigo_provincia: "01"
+    canton_short: GCH
+    estado_qtmp: pendiente
+
+  - id: ECU-01-CAMILO_PONCE_ENRIQUEZ
+    nombre: Camilo Ponce Enríquez
+    provincia: Azuay
+    codigo_provincia: "01"
+    canton_short: CPE
+    estado_qtmp: pendiente
+
+  # ─────────────────────────────────────────────────────────
+  # PROVINCIA 02: BOLÍVAR — 7 cantones | Capital: Guaranda
+  # ─────────────────────────────────────────────────────────
+
+  - id: ECU-02-GUARANDA
+    nombre: Guaranda
+    provincia: Bolívar
+    codigo_provincia: "02"
+    canton_short: GUA
+    estado_qtmp: pendiente
+
+  - id: ECU-02-CHILLANES
+    nombre: Chillanes
+    provincia: Bolívar
+    codigo_provincia: "02"
+    canton_short: CHL
+    estado_qtmp: pendiente
+
+  - id: ECU-02-CHIMBO
+    nombre: Chimbo
+    provincia: Bolívar
+    codigo_provincia: "02"
+    canton_short: CHB
+    estado_qtmp: pendiente
+
+  - id: ECU-02-ECHEANDÍA
+    nombre: Echeandía
+    provincia: Bolívar
+    codigo_provincia: "02"
+    canton_short: ECH
+    estado_qtmp: pendiente
+
+  - id: ECU-02-SAN_MIGUEL
+    nombre: San Miguel
+    provincia: Bolívar
+    codigo_provincia: "02"
+    canton_short: SMG
+    estado_qtmp: pendiente
+
+  - id: ECU-02-CALUMA
+    nombre: Caluma
+    provincia: Bolívar
+    codigo_provincia: "02"
+    canton_short: CAL
+    estado_qtmp: pendiente
+
+  - id: ECU-02-LAS_NAVES
+    nombre: Las Naves
+    provincia: Bolívar
+    codigo_provincia: "02"
+    canton_short: LNV
+    estado_qtmp: pendiente
+
+  # ─────────────────────────────────────────────────────────
+  # PROVINCIA 03: CAÑAR — 7 cantones | Capital: Azogues
+  # ─────────────────────────────────────────────────────────
+
+  - id: ECU-03-AZOGUES
+    nombre: Azogues
+    provincia: Cañar
+    codigo_provincia: "03"
+    canton_short: AZO
+    estado_qtmp: pendiente
+
+  - id: ECU-03-BIBLIAN
+    nombre: Biblián
+    provincia: Cañar
+    codigo_provincia: "03"
+    canton_short: BIB
+    estado_qtmp: pendiente
+
+  - id: ECU-03-CANAR
+    nombre: Cañar
+    provincia: Cañar
+    codigo_provincia: "03"
+    canton_short: CAN
+    estado_qtmp: pendiente
+
+  - id: ECU-03-LA_TRONCAL
+    nombre: La Troncal
+    provincia: Cañar
+    codigo_provincia: "03"
+    canton_short: LTR
+    estado_qtmp: pendiente
+
+  - id: ECU-03-EL_TAMBO
+    nombre: El Tambo
+    provincia: Cañar
+    codigo_provincia: "03"
+    canton_short: ETM
+    estado_qtmp: pendiente
+
+  - id: ECU-03-DELEG
+    nombre: Déleg
+    provincia: Cañar
+    codigo_provincia: "03"
+    canton_short: DEL
+    estado_qtmp: pendiente
+
+  - id: ECU-03-SUSCAL
+    nombre: Suscal
+    provincia: Cañar
+    codigo_provincia: "03"
+    canton_short: SUS
+    estado_qtmp: pendiente
+
+  # ─────────────────────────────────────────────────────────
+  # PROVINCIA 04: CARCHI — 6 cantones | Capital: Tulcán
+  # ─────────────────────────────────────────────────────────
+
+  - id: ECU-04-TULCAN
+    nombre: Tulcán
+    provincia: Carchi
+    codigo_provincia: "04"
+    canton_short: TUL
+    estado_qtmp: pendiente
+
+  - id: ECU-04-BOLIVAR
+    nombre: Bolívar
+    provincia: Carchi
+    codigo_provincia: "04"
+    canton_short: BLC
+    estado_qtmp: pendiente
+
+  - id: ECU-04-ESPEJO
+    nombre: Espejo
+    provincia: Carchi
+    codigo_provincia: "04"
+    canton_short: ESP
+    estado_qtmp: pendiente
+
+  - id: ECU-04-MIRA
+    nombre: Mira
+    provincia: Carchi
+    codigo_provincia: "04"
+    canton_short: MIR
+    estado_qtmp: pendiente
+
+  - id: ECU-04-MONTUFAR
+    nombre: Montúfar
+    provincia: Carchi
+    codigo_provincia: "04"
+    canton_short: MTF
+    estado_qtmp: pendiente
+
+  - id: ECU-04-SAN_PEDRO_DE_HUACA
+    nombre: San Pedro de Huaca
+    provincia: Carchi
+    codigo_provincia: "04"
+    canton_short: SPH
+    estado_qtmp: pendiente
+
+  # ─────────────────────────────────────────────────────────
+  # PROVINCIA 05: COTOPAXI — 7 cantones | Capital: Latacunga
+  # ─────────────────────────────────────────────────────────
+
+  - id: ECU-05-LATACUNGA
+    nombre: Latacunga
+    provincia: Cotopaxi
+    codigo_provincia: "05"
+    canton_short: LAT
+    estado_qtmp: pendiente
+
+  - id: ECU-05-LA_MANA
+    nombre: La Maná
+    provincia: Cotopaxi
+    codigo_provincia: "05"
+    canton_short: LMN
+    estado_qtmp: pendiente
+
+  - id: ECU-05-PANGUA
+    nombre: Pangua
+    provincia: Cotopaxi
+    codigo_provincia: "05"
+    canton_short: PNK
+    estado_qtmp: pendiente
+
+  - id: ECU-05-PUJILI
+    nombre: Pujilí
+    provincia: Cotopaxi
+    codigo_provincia: "05"
+    canton_short: PUJ
+    estado_qtmp: pendiente
+
+  - id: ECU-05-SALCEDO
+    nombre: Salcedo
+    provincia: Cotopaxi
+    codigo_provincia: "05"
+    canton_short: SLD
+    estado_qtmp: pendiente
+
+  - id: ECU-05-SAQUISILI
+    nombre: Saquisilí
+    provincia: Cotopaxi
+    codigo_provincia: "05"
+    canton_short: SAQ
+    estado_qtmp: pendiente
+
+  - id: ECU-05-SIGCHOS
+    nombre: Sigchos
+    provincia: Cotopaxi
+    codigo_provincia: "05"
+    canton_short: SGC
+    estado_qtmp: pendiente
+
+  # ─────────────────────────────────────────────────────────
+  # PROVINCIA 06: CHIMBORAZO — 10 cantones | Capital: Riobamba
+  # ─────────────────────────────────────────────────────────
+
+  - id: ECU-06-RIOBAMBA
+    nombre: Riobamba
+    provincia: Chimborazo
+    codigo_provincia: "06"
+    canton_short: RIO
+    estado_qtmp: pendiente
+
+  - id: ECU-06-ALAUSI
+    nombre: Alausí
+    provincia: Chimborazo
+    codigo_provincia: "06"
+    canton_short: ALS
+    estado_qtmp: pendiente
+
+  - id: ECU-06-COLTA
+    nombre: Colta
+    provincia: Chimborazo
+    codigo_provincia: "06"
+    canton_short: CLT
+    estado_qtmp: pendiente
+
+  - id: ECU-06-CHAMBO
+    nombre: Chambo
+    provincia: Chimborazo
+    codigo_provincia: "06"
+    canton_short: CMB
+    estado_qtmp: pendiente
+
+  - id: ECU-06-CHUNCHI
+    nombre: Chunchi
+    provincia: Chimborazo
+    codigo_provincia: "06"
+    canton_short: CHN
+    estado_qtmp: pendiente
+
+  - id: ECU-06-GUAMOTE
+    nombre: Guamote
+    provincia: Chimborazo
+    codigo_provincia: "06"
+    canton_short: GMO
+    estado_qtmp: pendiente
+
+  - id: ECU-06-GUANO
+    nombre: Guano
+    provincia: Chimborazo
+    codigo_provincia: "06"
+    canton_short: GNO
+    estado_qtmp: pendiente
+
+  - id: ECU-06-PALLATANGA
+    nombre: Pallatanga
+    provincia: Chimborazo
+    codigo_provincia: "06"
+    canton_short: PLG
+    estado_qtmp: pendiente
+
+  - id: ECU-06-PENIPE
+    nombre: Penipe
+    provincia: Chimborazo
+    codigo_provincia: "06"
+    canton_short: PNP
+    estado_qtmp: pendiente
+
+  - id: ECU-06-CUMANDA
+    nombre: Cumandá
+    provincia: Chimborazo
+    codigo_provincia: "06"
+    canton_short: CUM
+    estado_qtmp: pendiente
+
+  # ─────────────────────────────────────────────────────────
+  # PROVINCIA 07: EL ORO — 14 cantones | Capital: Machala
+  # ─────────────────────────────────────────────────────────
+
+  - id: ECU-07-MACHALA
+    nombre: Machala
+    provincia: El Oro
+    codigo_provincia: "07"
+    canton_short: MCH
+    estado_qtmp: pendiente
+
+  - id: ECU-07-ARENILLAS
+    nombre: Arenillas
+    provincia: El Oro
+    codigo_provincia: "07"
+    canton_short: ARE
+    estado_qtmp: pendiente
+
+  - id: ECU-07-ATAHUALPA
+    nombre: Atahualpa
+    provincia: El Oro
+    codigo_provincia: "07"
+    canton_short: ATH
+    estado_qtmp: pendiente
+
+  - id: ECU-07-BALSAS
+    nombre: Balsas
+    provincia: El Oro
+    codigo_provincia: "07"
+    canton_short: BLS
+    estado_qtmp: pendiente
+
+  - id: ECU-07-CHILLA
+    nombre: Chilla
+    provincia: El Oro
+    codigo_provincia: "07"
+    canton_short: CHI
+    estado_qtmp: pendiente
+
+  - id: ECU-07-EL_GUABO
+    nombre: El Guabo
+    provincia: El Oro
+    codigo_provincia: "07"
+    canton_short: EGB
+    estado_qtmp: pendiente
+
+  - id: ECU-07-HUAQUILLAS
+    nombre: Huaquillas
+    provincia: El Oro
+    codigo_provincia: "07"
+    canton_short: HUQ
+    estado_qtmp: pendiente
+
+  - id: ECU-07-MARCABELI
+    nombre: Marcabelí
+    provincia: El Oro
+    codigo_provincia: "07"
+    canton_short: MRC
+    estado_qtmp: pendiente
+
+  - id: ECU-07-PASAJE
+    nombre: Pasaje
+    provincia: El Oro
+    codigo_provincia: "07"
+    canton_short: PAS
+    estado_qtmp: pendiente
+
+  - id: ECU-07-PINAS
+    nombre: Piñas
+    provincia: El Oro
+    codigo_provincia: "07"
+    canton_short: PIN
+    estado_qtmp: pendiente
+
+  - id: ECU-07-PORTOVELO
+    nombre: Portovelo
+    provincia: El Oro
+    codigo_provincia: "07"
+    canton_short: PVL
+    estado_qtmp: pendiente
+
+  - id: ECU-07-SANTA_ROSA
+    nombre: Santa Rosa
+    provincia: El Oro
+    codigo_provincia: "07"
+    canton_short: SRO
+    estado_qtmp: pendiente
+
+  - id: ECU-07-ZARUMA
+    nombre: Zaruma
+    provincia: El Oro
+    codigo_provincia: "07"
+    canton_short: ZAR
+    estado_qtmp: pendiente
+
+  - id: ECU-07-LAS_LAJAS
+    nombre: Las Lajas
+    provincia: El Oro
+    codigo_provincia: "07"
+    canton_short: LLJ
+    estado_qtmp: pendiente
+
+  # ─────────────────────────────────────────────────────────
+  # PROVINCIA 08: ESMERALDAS — 7 cantones | Capital: Esmeraldas
+  # ─────────────────────────────────────────────────────────
+
+  - id: ECU-08-ESMERALDAS
+    nombre: Esmeraldas
+    provincia: Esmeraldas
+    codigo_provincia: "08"
+    canton_short: ESM
+    estado_qtmp: pendiente
+
+  - id: ECU-08-ATACAMES
+    nombre: Atacames
+    provincia: Esmeraldas
+    codigo_provincia: "08"
+    canton_short: ATC
+    estado_qtmp: pendiente
+
+  - id: ECU-08-ELOY_ALFARO
+    nombre: Eloy Alfaro
+    provincia: Esmeraldas
+    codigo_provincia: "08"
+    canton_short: EAL
+    estado_qtmp: pendiente
+
+  - id: ECU-08-MUISNE
+    nombre: Muisne
+    provincia: Esmeraldas
+    codigo_provincia: "08"
+    canton_short: MUI
+    estado_qtmp: pendiente
+
+  - id: ECU-08-QUININDE
+    nombre: Quinindé
+    provincia: Esmeraldas
+    codigo_provincia: "08"
+    canton_short: QND
+    estado_qtmp: pendiente
+
+  - id: ECU-08-SAN_LORENZO
+    nombre: San Lorenzo
+    provincia: Esmeraldas
+    codigo_provincia: "08"
+    canton_short: SLZ
+    estado_qtmp: pendiente
+
+  - id: ECU-08-RIOVERDE
+    nombre: Rioverde
+    provincia: Esmeraldas
+    codigo_provincia: "08"
+    canton_short: RVD
+    estado_qtmp: pendiente
+
+  # ─────────────────────────────────────────────────────────
+  # PROVINCIA 09: GUAYAS — 25 cantones | Capital: Guayaquil
+  # ─────────────────────────────────────────────────────────
+
+  - id: ECU-09-GUAYAQUIL
+    nombre: Guayaquil
+    provincia: Guayas
+    codigo_provincia: "09"
+    canton_short: GYE
+    estado_qtmp: pendiente
+
+  - id: ECU-09-ALFREDO_BAQUERIZO_MORENO
+    nombre: Alfredo Baquerizo Moreno
+    provincia: Guayas
+    codigo_provincia: "09"
+    canton_short: ABM
+    estado_qtmp: pendiente
+
+  - id: ECU-09-BALAO
+    nombre: Balao
+    provincia: Guayas
+    codigo_provincia: "09"
+    canton_short: BAO
+    estado_qtmp: pendiente
+
+  - id: ECU-09-BALZAR
+    nombre: Balzar
+    provincia: Guayas
+    codigo_provincia: "09"
+    canton_short: BLZ
+    estado_qtmp: pendiente
+
+  - id: ECU-09-COLIMES
+    nombre: Colimes
+    provincia: Guayas
+    codigo_provincia: "09"
+    canton_short: COL
+    estado_qtmp: pendiente
+
+  - id: ECU-09-DAULE
+    nombre: Daule
+    provincia: Guayas
+    codigo_provincia: "09"
+    canton_short: DAU
+    estado_qtmp: pendiente
+
+  - id: ECU-09-DURAN
+    nombre: Durán
+    provincia: Guayas
+    codigo_provincia: "09"
+    canton_short: DUR
+    estado_qtmp: pendiente
+
+  - id: ECU-09-EL_EMPALME
+    nombre: El Empalme
+    provincia: Guayas
+    codigo_provincia: "09"
+    canton_short: EEP
+    estado_qtmp: pendiente
+
+  - id: ECU-09-EL_TRIUNFO
+    nombre: El Triunfo
+    provincia: Guayas
+    codigo_provincia: "09"
+    canton_short: ETR
+    estado_qtmp: pendiente
+
+  - id: ECU-09-MILAGRO
+    nombre: Milagro
+    provincia: Guayas
+    codigo_provincia: "09"
+    canton_short: MIL
+    estado_qtmp: pendiente
+
+  - id: ECU-09-NARANJAL
+    nombre: Naranjal
+    provincia: Guayas
+    codigo_provincia: "09"
+    canton_short: NJL
+    estado_qtmp: pendiente
+
+  - id: ECU-09-NARANJITO
+    nombre: Naranjito
+    provincia: Guayas
+    codigo_provincia: "09"
+    canton_short: NJT
+    estado_qtmp: pendiente
+
+  - id: ECU-09-PALESTINA
+    nombre: Palestina
+    provincia: Guayas
+    codigo_provincia: "09"
+    canton_short: PAL
+    estado_qtmp: pendiente
+
+  - id: ECU-09-PEDRO_CARBO
+    nombre: Pedro Carbo
+    provincia: Guayas
+    codigo_provincia: "09"
+    canton_short: PCR
+    estado_qtmp: pendiente
+
+  - id: ECU-09-SAMBORONDON
+    nombre: Samborondón
+    provincia: Guayas
+    codigo_provincia: "09"
+    canton_short: SAM
+    estado_qtmp: pendiente
+
+  - id: ECU-09-SANTA_LUCIA
+    nombre: Santa Lucía
+    provincia: Guayas
+    codigo_provincia: "09"
+    canton_short: STL
+    estado_qtmp: pendiente
+
+  - id: ECU-09-SALITRE
+    nombre: Salitre (Urbina Jado)
+    provincia: Guayas
+    codigo_provincia: "09"
+    canton_short: SLT
+    estado_qtmp: pendiente
+
+  - id: ECU-09-SAN_JACINTO_DE_YAGUACHI
+    nombre: San Jacinto de Yaguachi
+    provincia: Guayas
+    codigo_provincia: "09"
+    canton_short: SJY
+    estado_qtmp: pendiente
+
+  - id: ECU-09-GENERAL_VILLAMIL
+    nombre: General Villamil (Playas)
+    provincia: Guayas
+    codigo_provincia: "09"
+    canton_short: GVP
+    estado_qtmp: pendiente
+
+  - id: ECU-09-SIMON_BOLIVAR
+    nombre: Simón Bolívar
+    provincia: Guayas
+    codigo_provincia: "09"
+    canton_short: SBV
+    estado_qtmp: pendiente
+
+  - id: ECU-09-CORONEL_MARCELINO_MARIDUENA
+    nombre: Coronel Marcelino Maridueña
+    provincia: Guayas
+    codigo_provincia: "09"
+    canton_short: CMM
+    estado_qtmp: pendiente
+
+  - id: ECU-09-LOMAS_DE_SARGENTILLO
+    nombre: Lomas de Sargentillo
+    provincia: Guayas
+    codigo_provincia: "09"
+    canton_short: LSG
+    estado_qtmp: pendiente
+
+  - id: ECU-09-NOBOL
+    nombre: Nobol
+    provincia: Guayas
+    codigo_provincia: "09"
+    canton_short: NOB
+    estado_qtmp: pendiente
+
+  - id: ECU-09-GENERAL_ANTONIO_ELIZALDE
+    nombre: General Antonio Elizalde
+    provincia: Guayas
+    codigo_provincia: "09"
+    canton_short: GAE
+    estado_qtmp: pendiente
+
+  - id: ECU-09-ISIDRO_AYORA
+    nombre: Isidro Ayora
+    provincia: Guayas
+    codigo_provincia: "09"
+    canton_short: ISA
+    estado_qtmp: pendiente
+
+  # ─────────────────────────────────────────────────────────
+  # PROVINCIA 10: IMBABURA — 6 cantones | Capital: Ibarra
+  # ─────────────────────────────────────────────────────────
+
+  - id: ECU-10-IBARRA
+    nombre: Ibarra
+    provincia: Imbabura
+    codigo_provincia: "10"
+    canton_short: IBA
+    estado_qtmp: pendiente
+
+  - id: ECU-10-ANTONIO_ANTE
+    nombre: Antonio Ante
+    provincia: Imbabura
+    codigo_provincia: "10"
+    canton_short: ANT
+    estado_qtmp: pendiente
+
+  - id: ECU-10-COTACACHI
+    nombre: Cotacachi
+    provincia: Imbabura
+    codigo_provincia: "10"
+    canton_short: COT
+    estado_qtmp: pendiente
+
+  - id: ECU-10-OTAVALO
+    nombre: Otavalo
+    provincia: Imbabura
+    codigo_provincia: "10"
+    canton_short: OTA
+    estado_qtmp: pendiente
+
+  - id: ECU-10-PIMAMPIRO
+    nombre: Pimampiro
+    provincia: Imbabura
+    codigo_provincia: "10"
+    canton_short: PIM
+    estado_qtmp: pendiente
+
+  - id: ECU-10-SAN_MIGUEL_DE_URCUQUI
+    nombre: San Miguel de Urcuquí
+    provincia: Imbabura
+    codigo_provincia: "10"
+    canton_short: URQ
+    estado_qtmp: pendiente
+
+  # ─────────────────────────────────────────────────────────
+  # PROVINCIA 11: LOJA — 16 cantones | Capital: Loja
+  # ─────────────────────────────────────────────────────────
+
+  - id: ECU-11-LOJA
+    nombre: Loja
+    provincia: Loja
+    codigo_provincia: "11"
+    canton_short: LOJ
+    estado_qtmp: pendiente
+
+  - id: ECU-11-CALVAS
+    nombre: Calvas
+    provincia: Loja
+    codigo_provincia: "11"
+    canton_short: CLV
+    estado_qtmp: pendiente
+
+  - id: ECU-11-CATAMAYO
+    nombre: Catamayo
+    provincia: Loja
+    codigo_provincia: "11"
+    canton_short: CAT
+    estado_qtmp: pendiente
+
+  - id: ECU-11-CELICA
+    nombre: Celica
+    provincia: Loja
+    codigo_provincia: "11"
+    canton_short: CEL
+    estado_qtmp: pendiente
+
+  - id: ECU-11-CHAGUARPAMBA
+    nombre: Chaguarpamba
+    provincia: Loja
+    codigo_provincia: "11"
+    canton_short: CGP
+    estado_qtmp: pendiente
+
+  - id: ECU-11-ESPINDOLA
+    nombre: Espíndola
+    provincia: Loja
+    codigo_provincia: "11"
+    canton_short: EPI
+    estado_qtmp: pendiente
+
+  - id: ECU-11-GONZANAMA
+    nombre: Gonzanamá
+    provincia: Loja
+    codigo_provincia: "11"
+    canton_short: GON
+    estado_qtmp: pendiente
+
+  - id: ECU-11-MACARA
+    nombre: Macará
+    provincia: Loja
+    codigo_provincia: "11"
+    canton_short: MAC
+    estado_qtmp: pendiente
+
+  - id: ECU-11-PALTAS
+    nombre: Paltas
+    provincia: Loja
+    codigo_provincia: "11"
+    canton_short: PLT
+    estado_qtmp: pendiente
+
+  - id: ECU-11-PUYANGO
+    nombre: Puyango
+    provincia: Loja
+    codigo_provincia: "11"
+    canton_short: PYG
+    estado_qtmp: pendiente
+
+  - id: ECU-11-SARAGURO
+    nombre: Saraguro
+    provincia: Loja
+    codigo_provincia: "11"
+    canton_short: SGR
+    estado_qtmp: pendiente
+
+  - id: ECU-11-SOZORANGA
+    nombre: Sozoranga
+    provincia: Loja
+    codigo_provincia: "11"
+    canton_short: SOZ
+    estado_qtmp: pendiente
+
+  - id: ECU-11-ZAPOTILLO
+    nombre: Zapotillo
+    provincia: Loja
+    codigo_provincia: "11"
+    canton_short: ZAP
+    estado_qtmp: pendiente
+
+  - id: ECU-11-PINDAL
+    nombre: Pindal
+    provincia: Loja
+    codigo_provincia: "11"
+    canton_short: PDL
+    estado_qtmp: pendiente
+
+  - id: ECU-11-QUILANGA
+    nombre: Quilanga
+    provincia: Loja
+    codigo_provincia: "11"
+    canton_short: QIL
+    estado_qtmp: pendiente
+
+  - id: ECU-11-OLMEDO
+    nombre: Olmedo
+    provincia: Loja
+    codigo_provincia: "11"
+    canton_short: OLM
+    estado_qtmp: pendiente
+
+  # ─────────────────────────────────────────────────────────
+  # PROVINCIA 12: LOS RÍOS — 13 cantones | Capital: Babahoyo
+  # ─────────────────────────────────────────────────────────
+
+  - id: ECU-12-BABAHOYO
+    nombre: Babahoyo
+    provincia: Los Ríos
+    codigo_provincia: "12"
+    canton_short: BAB
+    estado_qtmp: pendiente
+
+  - id: ECU-12-BABA
+    nombre: Baba
+    provincia: Los Ríos
+    codigo_provincia: "12"
+    canton_short: BBA
+    estado_qtmp: pendiente
+
+  - id: ECU-12-MONTALVO
+    nombre: Montalvo
+    provincia: Los Ríos
+    codigo_provincia: "12"
+    canton_short: MON
+    estado_qtmp: pendiente
+
+  - id: ECU-12-PUEBLOVIEJO
+    nombre: Puebloviejo
+    provincia: Los Ríos
+    codigo_provincia: "12"
+    canton_short: PVJ
+    estado_qtmp: pendiente
+
+  - id: ECU-12-QUEVEDO
+    nombre: Quevedo
+    provincia: Los Ríos
+    codigo_provincia: "12"
+    canton_short: QVD
+    estado_qtmp: pendiente
+
+  - id: ECU-12-URDANETA
+    nombre: Urdaneta
+    provincia: Los Ríos
+    codigo_provincia: "12"
+    canton_short: URD
+    estado_qtmp: pendiente
+
+  - id: ECU-12-VENTANAS
+    nombre: Ventanas
+    provincia: Los Ríos
+    codigo_provincia: "12"
+    canton_short: VEN
+    estado_qtmp: pendiente
+
+  - id: ECU-12-VINCES
+    nombre: Vínces
+    provincia: Los Ríos
+    codigo_provincia: "12"
+    canton_short: VNC
+    estado_qtmp: pendiente
+
+  - id: ECU-12-PALENQUE
+    nombre: Palenque
+    provincia: Los Ríos
+    codigo_provincia: "12"
+    canton_short: PLQ
+    estado_qtmp: pendiente
+
+  - id: ECU-12-BUENA_FE
+    nombre: Buena Fé
+    provincia: Los Ríos
+    codigo_provincia: "12"
+    canton_short: BFE
+    estado_qtmp: pendiente
+
+  - id: ECU-12-VALENCIA
+    nombre: Valencia
+    provincia: Los Ríos
+    codigo_provincia: "12"
+    canton_short: VLC
+    estado_qtmp: pendiente
+
+  - id: ECU-12-MOCACHE
+    nombre: Mocache
+    provincia: Los Ríos
+    codigo_provincia: "12"
+    canton_short: MCK
+    estado_qtmp: pendiente
+
+  - id: ECU-12-QUINSALOMA
+    nombre: Quinsaloma
+    provincia: Los Ríos
+    codigo_provincia: "12"
+    canton_short: QSL
+    estado_qtmp: pendiente
+
+  # ─────────────────────────────────────────────────────────
+  # PROVINCIA 13: MANABÍ — 22 cantones | Capital: Portoviejo
+  # NOTA: Montecristi (ECU-13-MONTECRISTI) es el cantón piloto QTMP
+  # ─────────────────────────────────────────────────────────
+
+  - id: ECU-13-PORTOVIEJO
+    nombre: Portoviejo
+    provincia: Manabí
+    codigo_provincia: "13"
+    canton_short: PTV
+    estado_qtmp: pendiente
+
+  - id: ECU-13-BOLIVAR
+    nombre: Bolívar
+    provincia: Manabí
+    codigo_provincia: "13"
+    canton_short: BLM
+    estado_qtmp: pendiente
+
+  - id: ECU-13-CHONE
+    nombre: Chone
+    provincia: Manabí
+    codigo_provincia: "13"
+    canton_short: CHO
+    estado_qtmp: pendiente
+
+  - id: ECU-13-EL_CARMEN
+    nombre: El Carmen
+    provincia: Manabí
+    codigo_provincia: "13"
+    canton_short: ECM
+    estado_qtmp: pendiente
+
+  - id: ECU-13-FLAVIO_ALFARO
+    nombre: Flavio Alfaro
+    provincia: Manabí
+    codigo_provincia: "13"
+    canton_short: FAL
+    estado_qtmp: pendiente
+
+  - id: ECU-13-JIPIJAPA
+    nombre: Jipijapa
+    provincia: Manabí
+    codigo_provincia: "13"
+    canton_short: JIP
+    estado_qtmp: pendiente
+
+  - id: ECU-13-JUNIN
+    nombre: Junín
+    provincia: Manabí
+    codigo_provincia: "13"
+    canton_short: JUN
+    estado_qtmp: pendiente
+
+  - id: ECU-13-MANTA
+    nombre: Manta
+    provincia: Manabí
+    codigo_provincia: "13"
+    canton_short: MNT
+    estado_qtmp: pendiente
+
+  - id: ECU-13-MONTECRISTI
+    nombre: Montecristi
+    provincia: Manabí
+    codigo_provincia: "13"
+    canton_short: MCR
+    estado_qtmp: activo
+    qtmp_instancias:
+      - circuito: AGUA_POTABLE
+        archivo: qtmp_ECU-13-MONTECRISTI_AGUA_POTABLE.yaml
+        version: "1.0"
+        estado: desarrollo
+        fecha_creacion: "2026-05-30"
+      - circuito: GAP_10PCT
+        archivo: qtmp_ECU-13-MONTECRISTI_GAP_10PCT.yaml
+        version: "1.0"
+        estado: desarrollo
+        fecha_creacion: "2026-05-30"
+      - circuito: EQUIDAD
+        archivo: qtmp_ECU-13-MONTECRISTI_EQUIDAD.yaml
+        version: "1.0"
+        estado: desarrollo
+        fecha_creacion: "2026-05-30"
+    nota: >
+      Cantón piloto QUIRA Gov. GAD Municipal Montecristi (GADMCM).
+      Alcalde: Ing. Luis Jonathan Toro Largacha (período 2023-2027).
+      Fuente orgánica local: Estatuto Orgánico 040-2025.
+
+  - id: ECU-13-PAJAN
+    nombre: Paján
+    provincia: Manabí
+    codigo_provincia: "13"
+    canton_short: PAJ
+    estado_qtmp: pendiente
+
+  - id: ECU-13-PICHINCHA
+    nombre: Pichincha
+    provincia: Manabí
+    codigo_provincia: "13"
+    canton_short: PCM
+    estado_qtmp: pendiente
+
+  - id: ECU-13-ROCAFUERTE
+    nombre: Rocafuerte
+    provincia: Manabí
+    codigo_provincia: "13"
+    canton_short: ROC
+    estado_qtmp: pendiente
+
+  - id: ECU-13-SANTA_ANA
+    nombre: Santa Ana
+    provincia: Manabí
+    codigo_provincia: "13"
+    canton_short: SNA
+    estado_qtmp: pendiente
+
+  - id: ECU-13-SUCRE
+    nombre: Sucre
+    provincia: Manabí
+    codigo_provincia: "13"
+    canton_short: SCR
+    estado_qtmp: pendiente
+
+  - id: ECU-13-TOSAGUA
+    nombre: Tosagua
+    provincia: Manabí
+    codigo_provincia: "13"
+    canton_short: TOS
+    estado_qtmp: pendiente
+
+  - id: ECU-13-24_DE_MAYO
+    nombre: 24 de Mayo
+    provincia: Manabí
+    codigo_provincia: "13"
+    canton_short: MAYO
+    estado_qtmp: pendiente
+
+  - id: ECU-13-PEDERNALES
+    nombre: Pedernales
+    provincia: Manabí
+    codigo_provincia: "13"
+    canton_short: PED
+    estado_qtmp: pendiente
+
+  - id: ECU-13-OLMEDO
+    nombre: Olmedo
+    provincia: Manabí
+    codigo_provincia: "13"
+    canton_short: OLB
+    estado_qtmp: pendiente
+
+  - id: ECU-13-PUERTO_LOPEZ
+    nombre: Puerto López
+    provincia: Manabí
+    codigo_provincia: "13"
+    canton_short: PLP
+    estado_qtmp: pendiente
+
+  - id: ECU-13-JAMA
+    nombre: Jama
+    provincia: Manabí
+    codigo_provincia: "13"
+    canton_short: JAM
+    estado_qtmp: pendiente
+
+  - id: ECU-13-JARAMIJO
+    nombre: Jaramijó
+    provincia: Manabí
+    codigo_provincia: "13"
+    canton_short: JRM
+    estado_qtmp: pendiente
+
+  - id: ECU-13-SAN_VICENTE
+    nombre: San Vicente
+    provincia: Manabí
+    codigo_provincia: "13"
+    canton_short: SVI
+    estado_qtmp: pendiente
+
+  # ─────────────────────────────────────────────────────────
+  # PROVINCIA 14: MORONA SANTIAGO — 12 cantones | Capital: Macas
+  # ─────────────────────────────────────────────────────────
+
+  - id: ECU-14-MORONA
+    nombre: Morona
+    provincia: Morona Santiago
+    codigo_provincia: "14"
+    canton_short: MOR
+    estado_qtmp: pendiente
+
+  - id: ECU-14-GUALAQUIZA
+    nombre: Gualaquiza
+    provincia: Morona Santiago
+    codigo_provincia: "14"
+    canton_short: GUQ
+    estado_qtmp: pendiente
+
+  - id: ECU-14-LIMON_INDANZA
+    nombre: Limón Indanza
+    provincia: Morona Santiago
+    codigo_provincia: "14"
+    canton_short: LIM
+    estado_qtmp: pendiente
+
+  - id: ECU-14-PALORA
+    nombre: Palora
+    provincia: Morona Santiago
+    codigo_provincia: "14"
+    canton_short: PLO
+    estado_qtmp: pendiente
+
+  - id: ECU-14-SANTIAGO
+    nombre: Santiago
+    provincia: Morona Santiago
+    codigo_provincia: "14"
+    canton_short: STG
+    estado_qtmp: pendiente
+
+  - id: ECU-14-SUCUA
+    nombre: Sucúa
+    provincia: Morona Santiago
+    codigo_provincia: "14"
+    canton_short: SCU
+    estado_qtmp: pendiente
+
+  - id: ECU-14-HUAMBOYA
+    nombre: Huamboya
+    provincia: Morona Santiago
+    codigo_provincia: "14"
+    canton_short: HMB
+    estado_qtmp: pendiente
+
+  - id: ECU-14-SAN_JUAN_BOSCO
+    nombre: San Juan Bosco
+    provincia: Morona Santiago
+    codigo_provincia: "14"
+    canton_short: SJB
+    estado_qtmp: pendiente
+
+  - id: ECU-14-TAISHA
+    nombre: Taisha
+    provincia: Morona Santiago
+    codigo_provincia: "14"
+    canton_short: TAI
+    estado_qtmp: pendiente
+
+  - id: ECU-14-LOGRONYO
+    nombre: Logroño
+    provincia: Morona Santiago
+    codigo_provincia: "14"
+    canton_short: LOG
+    estado_qtmp: pendiente
+
+  - id: ECU-14-PABLO_SEXTO
+    nombre: Pablo Sexto
+    provincia: Morona Santiago
+    codigo_provincia: "14"
+    canton_short: PBX
+    estado_qtmp: pendiente
+
+  - id: ECU-14-TIWINTZA
+    nombre: Tiwintza
+    provincia: Morona Santiago
+    codigo_provincia: "14"
+    canton_short: TWZ
+    estado_qtmp: pendiente
+
+  # ─────────────────────────────────────────────────────────
+  # PROVINCIA 15: NAPO — 5 cantones | Capital: Tena
+  # ─────────────────────────────────────────────────────────
+
+  - id: ECU-15-TENA
+    nombre: Tena
+    provincia: Napo
+    codigo_provincia: "15"
+    canton_short: TEN
+    estado_qtmp: pendiente
+
+  - id: ECU-15-ARCHIDONA
+    nombre: Archidona
+    provincia: Napo
+    codigo_provincia: "15"
+    canton_short: ARC
+    estado_qtmp: pendiente
+
+  - id: ECU-15-EL_CHACO
+    nombre: El Chaco
+    provincia: Napo
+    codigo_provincia: "15"
+    canton_short: ELC
+    estado_qtmp: pendiente
+
+  - id: ECU-15-QUIJOS
+    nombre: Quijos
+    provincia: Napo
+    codigo_provincia: "15"
+    canton_short: QIJ
+    estado_qtmp: pendiente
+
+  - id: ECU-15-CARLOS_JULIO_AROSEMENA_TOLA
+    nombre: Carlos Julio Arosemena Tola
+    provincia: Napo
+    codigo_provincia: "15"
+    canton_short: CJT
+    estado_qtmp: pendiente
+
+  # ─────────────────────────────────────────────────────────
+  # PROVINCIA 16: PASTAZA — 4 cantones | Capital: Puyo
+  # ─────────────────────────────────────────────────────────
+
+  - id: ECU-16-PASTAZA
+    nombre: Pastaza
+    provincia: Pastaza
+    codigo_provincia: "16"
+    canton_short: PYO
+    estado_qtmp: pendiente
+
+  - id: ECU-16-MERA
+    nombre: Mera
+    provincia: Pastaza
+    codigo_provincia: "16"
+    canton_short: MER
+    estado_qtmp: pendiente
+
+  - id: ECU-16-SANTA_CLARA
+    nombre: Santa Clara
+    provincia: Pastaza
+    codigo_provincia: "16"
+    canton_short: SCL
+    estado_qtmp: pendiente
+
+  - id: ECU-16-ARAJUNO
+    nombre: Arajuno
+    provincia: Pastaza
+    codigo_provincia: "16"
+    canton_short: ARJ
+    estado_qtmp: pendiente
+
+  # ─────────────────────────────────────────────────────────
+  # PROVINCIA 17: PICHINCHA — 8 cantones | Capital: Quito
+  # ─────────────────────────────────────────────────────────
+
+  - id: ECU-17-QUITO
+    nombre: Quito
+    provincia: Pichincha
+    codigo_provincia: "17"
+    canton_short: UIO
+    estado_qtmp: pendiente
+
+  - id: ECU-17-CAYAMBE
+    nombre: Cayambe
+    provincia: Pichincha
+    codigo_provincia: "17"
+    canton_short: CAY
+    estado_qtmp: pendiente
+
+  - id: ECU-17-MEJIA
+    nombre: Mejía
+    provincia: Pichincha
+    codigo_provincia: "17"
+    canton_short: MEJ
+    estado_qtmp: pendiente
+
+  - id: ECU-17-PEDRO_MONCAYO
+    nombre: Pedro Moncayo
+    provincia: Pichincha
+    codigo_provincia: "17"
+    canton_short: PMO
+    estado_qtmp: pendiente
+
+  - id: ECU-17-RUMINAHUI
+    nombre: Rumiñahui
+    provincia: Pichincha
+    codigo_provincia: "17"
+    canton_short: RUM
+    estado_qtmp: pendiente
+
+  - id: ECU-17-SAN_MIGUEL_DE_LOS_BANCOS
+    nombre: San Miguel de los Bancos
+    provincia: Pichincha
+    codigo_provincia: "17"
+    canton_short: SMB
+    estado_qtmp: pendiente
+
+  - id: ECU-17-PEDRO_VICENTE_MALDONADO
+    nombre: Pedro Vicente Maldonado
+    provincia: Pichincha
+    codigo_provincia: "17"
+    canton_short: PVM
+    estado_qtmp: pendiente
+
+  - id: ECU-17-PUERTO_QUITO
+    nombre: Puerto Quito
+    provincia: Pichincha
+    codigo_provincia: "17"
+    canton_short: PQO
+    estado_qtmp: pendiente
+
+  # ─────────────────────────────────────────────────────────
+  # PROVINCIA 18: TUNGURAHUA — 9 cantones | Capital: Ambato
+  # ─────────────────────────────────────────────────────────
+
+  - id: ECU-18-AMBATO
+    nombre: Ambato
+    provincia: Tungurahua
+    codigo_provincia: "18"
+    canton_short: AMB
+    estado_qtmp: pendiente
+
+  - id: ECU-18-BANOS_DE_AGUA_SANTA
+    nombre: Baños de Agua Santa
+    provincia: Tungurahua
+    codigo_provincia: "18"
+    canton_short: BNS
+    estado_qtmp: pendiente
+
+  - id: ECU-18-CEVALLOS
+    nombre: Cevallos
+    provincia: Tungurahua
+    codigo_provincia: "18"
+    canton_short: CEV
+    estado_qtmp: pendiente
+
+  - id: ECU-18-MOCHA
+    nombre: Mocha
+    provincia: Tungurahua
+    codigo_provincia: "18"
+    canton_short: MCO
+    estado_qtmp: pendiente
+
+  - id: ECU-18-PATATE
+    nombre: Patate
+    provincia: Tungurahua
+    codigo_provincia: "18"
+    canton_short: PTT
+    estado_qtmp: pendiente
+
+  - id: ECU-18-QUERO
+    nombre: Quero
+    provincia: Tungurahua
+    codigo_provincia: "18"
+    canton_short: QRO
+    estado_qtmp: pendiente
+
+  - id: ECU-18-SAN_PEDRO_DE_PELILEO
+    nombre: San Pedro de Pelileo
+    provincia: Tungurahua
+    codigo_provincia: "18"
+    canton_short: SPP
+    estado_qtmp: pendiente
+
+  - id: ECU-18-SANTIAGO_DE_PILLARO
+    nombre: Santiago de Píllaro
+    provincia: Tungurahua
+    codigo_provincia: "18"
+    canton_short: SDP
+    estado_qtmp: pendiente
+
+  - id: ECU-18-TISALEO
+    nombre: Tisaleo
+    provincia: Tungurahua
+    codigo_provincia: "18"
+    canton_short: TIS
+    estado_qtmp: pendiente
+
+  # ─────────────────────────────────────────────────────────
+  # PROVINCIA 19: ZAMORA CHINCHIPE — 9 cantones | Capital: Zamora
+  # ─────────────────────────────────────────────────────────
+
+  - id: ECU-19-ZAMORA
+    nombre: Zamora
+    provincia: Zamora Chinchipe
+    codigo_provincia: "19"
+    canton_short: ZAM
+    estado_qtmp: pendiente
+
+  - id: ECU-19-CHINCHIPE
+    nombre: Chinchipe
+    provincia: Zamora Chinchipe
+    codigo_provincia: "19"
+    canton_short: CHC
+    estado_qtmp: pendiente
+
+  - id: ECU-19-NANGARITZA
+    nombre: Nangaritza
+    provincia: Zamora Chinchipe
+    codigo_provincia: "19"
+    canton_short: NNG
+    estado_qtmp: pendiente
+
+  - id: ECU-19-YACUAMBI
+    nombre: Yacuambi
+    provincia: Zamora Chinchipe
+    codigo_provincia: "19"
+    canton_short: YCB
+    estado_qtmp: pendiente
+
+  - id: ECU-19-YANTZAZA
+    nombre: Yantzaza
+    provincia: Zamora Chinchipe
+    codigo_provincia: "19"
+    canton_short: YNZ
+    estado_qtmp: pendiente
+
+  - id: ECU-19-EL_PANGUI
+    nombre: El Pangui
+    provincia: Zamora Chinchipe
+    codigo_provincia: "19"
+    canton_short: EPG
+    estado_qtmp: pendiente
+
+  - id: ECU-19-CENTINELA_DEL_CONDOR
+    nombre: Centinela del Cóndor
+    provincia: Zamora Chinchipe
+    codigo_provincia: "19"
+    canton_short: CDC
+    estado_qtmp: pendiente
+
+  - id: ECU-19-PALANDA
+    nombre: Palanda
+    provincia: Zamora Chinchipe
+    codigo_provincia: "19"
+    canton_short: PLD
+    estado_qtmp: pendiente
+
+  - id: ECU-19-PAQUISHA
+    nombre: Paquisha
+    provincia: Zamora Chinchipe
+    codigo_provincia: "19"
+    canton_short: PQS
+    estado_qtmp: pendiente
+
+  # ─────────────────────────────────────────────────────────
+  # PROVINCIA 20: GALÁPAGOS — 3 cantones | Capital: Puerto Baquerizo Moreno
+  # ─────────────────────────────────────────────────────────
+
+  - id: ECU-20-SAN_CRISTOBAL
+    nombre: San Cristóbal
+    provincia: Galápagos
+    codigo_provincia: "20"
+    canton_short: SCB
+    estado_qtmp: pendiente
+
+  - id: ECU-20-ISABELA
+    nombre: Isabela
+    provincia: Galápagos
+    codigo_provincia: "20"
+    canton_short: ISB
+    estado_qtmp: pendiente
+
+  - id: ECU-20-SANTA_CRUZ
+    nombre: Santa Cruz
+    provincia: Galápagos
+    codigo_provincia: "20"
+    canton_short: SCZ
+    estado_qtmp: pendiente
+
+  # ─────────────────────────────────────────────────────────
+  # PROVINCIA 21: SUCUMBÍOS — 7 cantones | Capital: Nueva Loja (Lago Agrio)
+  # ─────────────────────────────────────────────────────────
+
+  - id: ECU-21-LAGO_AGRIO
+    nombre: Nueva Loja (Lago Agrio)
+    provincia: Sucumbíos
+    codigo_provincia: "21"
+    canton_short: LGO
+    estado_qtmp: pendiente
+
+  - id: ECU-21-GONZALO_PIZARRO
+    nombre: Gonzalo Pizarro
+    provincia: Sucumbíos
+    codigo_provincia: "21"
+    canton_short: GPZ
+    estado_qtmp: pendiente
+
+  - id: ECU-21-PUTUMAYO
+    nombre: Putumayo
+    provincia: Sucumbíos
+    codigo_provincia: "21"
+    canton_short: PUT
+    estado_qtmp: pendiente
+
+  - id: ECU-21-SHUSHUFINDI
+    nombre: Shushufindi
+    provincia: Sucumbíos
+    codigo_provincia: "21"
+    canton_short: SHU
+    estado_qtmp: pendiente
+
+  - id: ECU-21-SUCUMBIOS
+    nombre: Sucumbíos
+    provincia: Sucumbíos
+    codigo_provincia: "21"
+    canton_short: SUC
+    estado_qtmp: pendiente
+
+  - id: ECU-21-CASCALES
+    nombre: Cascales
+    provincia: Sucumbíos
+    codigo_provincia: "21"
+    canton_short: CAS
+    estado_qtmp: pendiente
+
+  - id: ECU-21-CUYABENO
+    nombre: Cuyabeno
+    provincia: Sucumbíos
+    codigo_provincia: "21"
+    canton_short: CYB
+    estado_qtmp: pendiente
+
+  # ─────────────────────────────────────────────────────────
+  # PROVINCIA 22: ORELLANA — 4 cantones | Capital: Francisco de Orellana
+  # ─────────────────────────────────────────────────────────
+
+  - id: ECU-22-FRANCISCO_DE_ORELLANA
+    nombre: Francisco de Orellana
+    provincia: Orellana
+    codigo_provincia: "22"
+    canton_short: FDO
+    estado_qtmp: pendiente
+
+  - id: ECU-22-AGUARICO
+    nombre: Aguarico
+    provincia: Orellana
+    codigo_provincia: "22"
+    canton_short: AGU
+    estado_qtmp: pendiente
+
+  - id: ECU-22-LA_JOYA_DE_LOS_SACHAS
+    nombre: La Joya de los Sachas
+    provincia: Orellana
+    codigo_provincia: "22"
+    canton_short: LJS
+    estado_qtmp: pendiente
+
+  - id: ECU-22-LORETO
+    nombre: Loreto
+    provincia: Orellana
+    codigo_provincia: "22"
+    canton_short: LOR
+    estado_qtmp: pendiente
+
+  # ─────────────────────────────────────────────────────────
+  # PROVINCIA 23: SANTO DOMINGO DE LOS TSÁCHILAS — 2 cantones
+  # Capital de provincia: Santo Domingo
+  # ─────────────────────────────────────────────────────────
+
+  - id: ECU-23-SANTO_DOMINGO
+    nombre: Santo Domingo
+    provincia: Santo Domingo de los Tsáchilas
+    codigo_provincia: "23"
+    canton_short: STD
+    estado_qtmp: pendiente
+
+  - id: ECU-23-LA_CONCORDIA
+    nombre: La Concordia
+    provincia: Santo Domingo de los Tsáchilas
+    codigo_provincia: "23"
+    canton_short: LCO
+    estado_qtmp: pendiente
+
+  # ─────────────────────────────────────────────────────────
+  # PROVINCIA 24: SANTA ELENA — 3 cantones | Capital: Santa Elena
+  # ─────────────────────────────────────────────────────────
+
+  - id: ECU-24-SANTA_ELENA
+    nombre: Santa Elena
+    provincia: Santa Elena
+    codigo_provincia: "24"
+    canton_short: STE
+    estado_qtmp: pendiente
+
+  - id: ECU-24-LA_LIBERTAD
+    nombre: La Libertad
+    provincia: Santa Elena
+    codigo_provincia: "24"
+    canton_short: LLB
+    estado_qtmp: pendiente
+
+  - id: ECU-24-SALINAS
+    nombre: Salinas
+    provincia: Santa Elena
+    codigo_provincia: "24"
+    canton_short: SAL
+    estado_qtmp: pendiente
+
+# ============================================================
+# ÍNDICE QTMP — Estado de instancias por cantón
+# ============================================================
+#
+# ACTIVOS (1):
+#   ECU-13-MONTECRISTI (MCR) — Manabí
+#     → AGUA_POTABLE: qtmp_ECU-13-MONTECRISTI_AGUA_POTABLE.yaml [desarrollo]
+#     → GAP_10PCT:    qtmp_ECU-13-MONTECRISTI_GAP_10PCT.yaml    [desarrollo]
+#     → EQUIDAD:      qtmp_ECU-13-MONTECRISTI_EQUIDAD.yaml      [desarrollo]
+#
+# PENDIENTES PRIORITARIOS (candidatos siguiente oleada):
+#   ECU-09-GUAYAQUIL   (GYE) — Guayas         → alta escala, piloto región Costa
+#   ECU-17-QUITO       (UIO) — Pichincha       → alta escala, piloto región Sierra
+#   ECU-13-MANTA       (MNT) — Manabí          → contiguo Montecristi, mismos datos
+#   ECU-13-PORTOVIEJO  (PTV) — Manabí          → capital provincial, datos similares
+#   ECU-10-IBARRA      (IBA) — Imbabura        → piloto región norte Sierra
+#   ECU-06-RIOBAMBA    (RIO) — Chimborazo      → piloto Sierra centro
+#   ECU-07-MACHALA     (MCH) — El Oro          → piloto región sur Costa
+#   ECU-11-LOJA        (LOJ) — Loja            → piloto sur Sierra-Amazonía
+#
+# Circuitos candidatos primer sprint multi-cantón:
+#   AGUA_POTABLE        → todos los cantones con EP de Agua o OOPP responsable
+#   GAP_10PCT           → todos los cantones con Patronato activo y datos SIGEF
+#   TRANSPARENCIA_LOTAIP → todos los cantones con portal LOTAIP verificable
+#
+# Corpus Neo4j post-registry:
+#   221 nodos (Canton) creados como base del grafo territorial
+#   Cada nodo Canton es el ancla de todos los nodos C3-C9 de su circuito
+#   Query canónica: MATCH (c:Canton {id: 'ECU-13-MONTECRISTI'})
+#                   MATCH (c)<-[:REGISTRA]-(r:C9ResultadoTerritorial)
+#                   RETURN c, r
+# ============================================================

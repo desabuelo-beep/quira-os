@@ -1,0 +1,842 @@
+# QLEP v1.2 — F0.1B — Constitución del Ecuador Art. 10-35
+# Derechos del Buen Vivir + Grupos de Atención Prioritaria
+# 13 ACK atoms — schema v1.2
+# Extractor: QLEP-v1.2 · Fecha: 2026-05-30
+# QNKC-001: IMPLEMENTACION_TERRITORIAL.funcion_publica es universal;
+#            actor_local SIEMPRE pendiente hasta que el QTMP lo complete desde el orgánico.
+
+---
+ACK_ID: CE_10
+CLASE: ACK_PRINCIPIO
+TIPO: principio
+NOMBRE: Titularidad Universal de Derechos — Personas, Comunidades, Naturaleza
+FUENTE:
+  norma: Constitución de la República del Ecuador
+  sigla: CE
+  jerarquia: 0
+  articulo: "10"
+  inciso: ""
+  fecha_vigencia: "2008-10-20"
+ACTOR_OBLIGADO:
+  - Estado (todos sus niveles, incluido GAD-Municipal)
+ACTOR_BENEFICIARIO:
+  - Personas naturales
+  - Comunidades, pueblos, nacionalidades
+  - Colectivos
+  - Naturaleza (derechos que la Constitución le reconoce)
+OBLIGACION: >
+  El Estado — incluyendo el GAD Municipal — debe reconocer como titulares de
+  derechos a las personas, comunidades, pueblos, nacionalidades y colectivos, y
+  garantizarles los derechos establecidos en la CE y en los instrumentos
+  internacionales. La naturaleza es sujeto de los derechos que la CE le reconoce.
+EVIDENCIA:
+  - Ordenanzas que reconocen derechos colectivos
+  - Políticas municipales de atención no discriminatoria
+CONSECUENCIA:
+  descripcion: >
+    Todo acto del GAD que desconozca la titularidad de derechos de alguno de
+    estos sujetos es inconstitucional y accionable.
+  tipo: accion-constitucional
+  organo_sancionador:
+    - Corte-Constitucional
+    - DPE
+DOMINIOS_QUIRA:
+  - Dom01
+  - Dom08
+  - Dom12
+APLICABILIDAD:
+  nacional: true
+  municipal: true
+  condicion:
+    - ninguna
+RELACIONES:
+  - CE_11
+  - CE_35
+  - COOTAD
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: CE_11_2
+CLASE: ACK_PRINCIPIO
+TIPO: prohibicion
+NOMBRE: Prohibición de Discriminación en Servicios Públicos del GAD
+FUENTE:
+  norma: Constitución de la República del Ecuador
+  sigla: CE
+  jerarquia: 0
+  articulo: "11"
+  inciso: "2"
+  fecha_vigencia: "2008-10-20"
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+  - Servidores-Publicos
+ACTOR_BENEFICIARIO:
+  - Toda persona sin distinción de etnia, lugar de nacimiento, edad, sexo,
+    identidad de género, condición migratoria, orientación sexual, estado de
+    salud, portar VIH, discapacidad u otra condición
+OBLIGACION: >
+  El GAD Municipal y sus servidores NO PUEDEN discriminar a ninguna persona
+  en la prestación de servicios públicos ni en el acceso a programas
+  municipales por ninguna de las razones enumeradas en el Art. 11.2 CE.
+  La ley sanciona toda forma de discriminación.
+EVIDENCIA:
+  - Quejas por discriminación ante DPE (ausencia = cumplimiento)
+  - LOTAIP Numeral 21 (políticas de igualdad)
+CONSECUENCIA:
+  descripcion: >
+    Todo acto discriminatorio activa responsabilidad administrativa (LOSEP)
+    y puede dar lugar a acción de protección ante la DPE.
+  tipo: responsabilidad-administrativa
+  organo_sancionador:
+    - DPE
+    - CPCCS
+    - Corte-Constitucional
+DOMINIOS_QUIRA:
+  - Dom01
+  - Dom07
+  - Dom12
+APLICABILIDAD:
+  nacional: true
+  municipal: true
+  condicion:
+    - ninguna
+RELACIONES:
+  - CE_11_3
+  - CE_35
+  - LOSEP
+  - CONA
+  - Ley-Discapacidades
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: CE_11_3
+CLASE: ACK_OBLIGACION
+TIPO: obligacion
+NOMBRE: Acción Afirmativa para Grupos en Situación de Desigualdad
+FUENTE:
+  norma: Constitución de la República del Ecuador
+  sigla: CE
+  jerarquia: 0
+  articulo: "11"
+  inciso: "3"
+  fecha_vigencia: "2008-10-20"
+ACTOR_OBLIGADO:
+  - Estado (todos sus niveles, incluido GAD-Municipal)
+  - Alcalde
+ACTOR_BENEFICIARIO:
+  - Titulares de derechos en situación de desigualdad (GAP, mujeres,
+    personas con discapacidad, pueblos indígenas, movilidad humana)
+OBLIGACION: >
+  El GAD Municipal debe adoptar medidas de acción afirmativa que promuevan
+  la igualdad real en favor de los titulares de derechos que se encuentren
+  en situación de desigualdad. No basta la igualdad formal.
+EVIDENCIA:
+  - POA con programas diferenciados para GAP
+  - COOTAD Art. 249 (10% ingresos no tributarios → GAP)
+  - LOTAIP Numeral 22 (rendición de cuentas acciones afirmativas)
+  - Informe Rendición de Cuentas CPCC (sección GAP)
+CONSECUENCIA:
+  descripcion: >
+    Omisión de acciones afirmativas configura violación constitucional
+    accionable ante DPE y puede derivar en dictamen correctivo.
+  tipo: dictamen-dpe
+  organo_sancionador:
+    - DPE
+    - CPCCS
+DOMINIOS_QUIRA:
+  - Dom12
+  - Dom02
+  - Dom01
+APLICABILIDAD:
+  nacional: true
+  municipal: true
+  condicion:
+    - ninguna
+RELACIONES:
+  - CE_35
+  - COOTAD_249
+  - CE_11_2
+  - CONA
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: CE_11_4
+CLASE: ACK_PRINCIPIO
+TIPO: principio
+NOMBRE: Aplicación Directa e Inmediata de Derechos por Servidores Públicos
+FUENTE:
+  norma: Constitución de la República del Ecuador
+  sigla: CE
+  jerarquia: 0
+  articulo: "11"
+  inciso: "4"
+  fecha_vigencia: "2008-10-20"
+ACTOR_OBLIGADO:
+  - Servidores-Publicos (todos los del GAD)
+  - Alcalde
+  - Director (nivel directivo)
+ACTOR_BENEFICIARIO:
+  - Toda persona en relación con el GAD
+OBLIGACION: >
+  Los derechos garantizados en la CE e instrumentos internacionales son de
+  directa e inmediata aplicación por cualquier servidor del GAD, de oficio
+  o a petición de parte. Ningún servidor puede alegar falta de reglamento
+  para no garantizar derechos.
+EVIDENCIA:
+  - Actos administrativos del GAD no pueden negar derechos por falta de reglamento
+  - Protocolos internos alineados a derechos constitucionales
+CONSECUENCIA:
+  descripcion: >
+    Servidor que alega falta de norma para negar derechos viola Art. 11.4
+    y puede ser sancionado (LOSEP) y generará responsabilidad del Estado (Art. 11.13).
+  tipo: responsabilidad-administrativa
+  organo_sancionador:
+    - DPE
+    - LOSEP (sumario)
+DOMINIOS_QUIRA:
+  - Dom01
+APLICABILIDAD:
+  nacional: true
+  municipal: true
+  condicion:
+    - ninguna
+RELACIONES:
+  - CE_11_13
+  - LOSEP
+  - CE_226
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: CE_11_11
+CLASE: ACK_PRINCIPIO
+TIPO: principio
+NOMBRE: Progresividad y Prohibición de Regresividad de Derechos
+FUENTE:
+  norma: Constitución de la República del Ecuador
+  sigla: CE
+  jerarquia: 0
+  articulo: "11"
+  inciso: "11"
+  fecha_vigencia: "2008-10-20"
+ACTOR_OBLIGADO:
+  - Estado (todos sus niveles, incluido GAD-Municipal)
+  - Concejo-Municipal (al aprobar presupuesto)
+  - Alcalde
+ACTOR_BENEFICIARIO:
+  - Toda la ciudadanía
+OBLIGACION: >
+  Los derechos se desarrollan de manera progresiva. Será inconstitucional
+  cualquier acción u omisión de carácter regresivo que disminuya, menoscabe
+  o anule injustificadamente el ejercicio de los derechos. El GAD no puede
+  reducir presupuesto de programas GAP, servicios básicos o participación
+  ciudadana sin justificación suficiente.
+EVIDENCIA:
+  - Serie temporal del presupuesto GAP (COOTAD 249 — 10% debe mantenerse o crecer)
+  - Comparativo interanual de servicios municipales (Dom02 + Dom12)
+  - LOTAIP Numeral 6 (presupuesto y ejecución visible públicamente)
+CONSECUENCIA:
+  descripcion: >
+    Reducción injustificada de derechos activa acción de protección o
+    inconstitucionalidad. Es señal crítica en Dom02 cuando Ti GAP baja.
+  tipo: accion-constitucional
+  organo_sancionador:
+    - Corte-Constitucional
+    - DPE
+DOMINIOS_QUIRA:
+  - Dom01
+  - Dom02
+  - Dom12
+APLICABILIDAD:
+  nacional: true
+  municipal: true
+  condicion:
+    - ninguna
+RELACIONES:
+  - COOTAD_249
+  - CE_11_3
+  - CE_35
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: CE_11_13
+CLASE: ACK_OBLIGACION
+TIPO: obligacion
+NOMBRE: Responsabilidad del Estado por Deficiencia en Servicios Públicos
+FUENTE:
+  norma: Constitución de la República del Ecuador
+  sigla: CE
+  jerarquia: 0
+  articulo: "11"
+  inciso: "13"
+  fecha_vigencia: "2008-10-20"
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+  - Servidores-Publicos
+ACTOR_BENEFICIARIO:
+  - Personas cuyos derechos son violados por omisión o deficiencia del GAD
+OBLIGACION: >
+  El GAD Municipal, sus delegatarios, concesionarios y funcionarios están
+  obligados a reparar integralmente las violaciones a los derechos causadas
+  por falta o deficiencia en la prestación de los servicios públicos
+  municipales. El Estado ejercerá de forma inmediata el derecho de repetición
+  contra el funcionario responsable.
+EVIDENCIA:
+  - Registro de quejas ciudadanas por deficiencia de servicios (Dom07)
+  - Resoluciones de la DPE sobre quejas vs GAD
+  - Procesos de repetición iniciados por el GAD
+CONSECUENCIA:
+  descripcion: >
+    El GAD debe reparar integralmente. El funcionario responsable enfrenta
+    derecho de repetición (responsabilidad civil personal) + proceso LOSEP.
+  tipo: responsabilidad-administrativa
+  organo_sancionador:
+    - DPE
+    - CGE
+    - Judicatura (acción de repetición)
+DOMINIOS_QUIRA:
+  - Dom01
+  - Dom07
+APLICABILIDAD:
+  nacional: true
+  municipal: true
+  condicion:
+    - ninguna
+RELACIONES:
+  - LOSEP
+  - LOC-CGE
+  - CE_11_4
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: CE_12
+CLASE: ACK_DERECHO
+TIPO: derecho
+NOMBRE: Derecho Humano al Agua — Competencia GAD Municipal
+FUENTE:
+  norma: Constitución de la República del Ecuador
+  sigla: CE
+  jerarquia: 0
+  articulo: "12"
+  inciso: ""
+  fecha_vigencia: "2008-10-20"
+ACTOR_OBLIGADO:
+  - GAD-Municipal (competencia agua potable y alcantarillado — CE 264.4)
+  - Estado (rector)
+ACTOR_BENEFICIARIO:
+  - Toda la población del cantón (parroquias urbanas y rurales)
+OBLIGACION: >
+  El derecho humano al agua es fundamental e irrenunciable. El GAD Municipal
+  tiene la competencia exclusiva de proveer agua potable y alcantarillado
+  (CE Art. 264.4). La omisión o deficiencia en esta prestación viola
+  directamente este derecho constitucional.
+EVIDENCIA:
+  - Cobertura agua potable por parroquia (dato PDOT)
+  - Ejecución presupuestaria en agua y saneamiento (Dom02)
+  - LOTAIP Numeral 6 (cédula presupuestaria agua)
+  - LOTAIP Numeral 10 (plan de cobertura)
+CONSECUENCIA:
+  descripcion: >
+    Deficiencia en agua potable genera responsabilidad del GAD (CE 11.13),
+    acción de protección ciudadana.
+  tipo: accion-constitucional
+  organo_sancionador:
+    - DPE
+    - Corte-Constitucional
+DOMINIOS_QUIRA:
+  - Dom04
+APLICABILIDAD:
+  nacional: true
+  municipal: true
+  condicion:
+    - ninguna
+IMPLEMENTACION_TERRITORIAL:
+  funcion_publica: >
+    Provisión de agua potable domiciliaria segura y continua + alcantarillado +
+    tratamiento de aguas residuales + manejo de desechos sólidos
+  actor_local: >
+    pendiente — verificar Resolución Orgánica GADM Montecristi + Gold Master.
+    Nota: No existe EP de agua en Montecristi. Forma de ejecución: municipal directa
+    (Dirección o Unidad competente según orgánico). NUNCA inferir actor desde la competencia.
+  instrumento: pendiente-verificar-orgánico
+  evidencia:
+    - LOTAIP_06
+    - LOTAIP_10
+    - LOTAIP_11
+  indicador:
+    - DOM04_COBERTURA_AGUA_PAR
+  nota_lac: >
+    Colombia=ESP-Ley142 / Perú=EPS / México=SAPAM-ODAPAS / Chile=sanitaria-concesionada.
+    La función es la misma; el actor y el marco normativo varían.
+  gap_conocido: >
+    Parroquia Isabel Muentes (NBI=61.2%) — cobertura no cuantificada aún en Gold Master.
+    Pendiente cuantificación en PDOT.
+RELACIONES:
+  - CE_264
+  - CE_32
+  - CE_11_13
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: CE_14
+CLASE: ACK_DERECHO
+TIPO: derecho
+NOMBRE: Derecho al Ambiente Sano y Gestión Ambiental Municipal
+FUENTE:
+  norma: Constitución de la República del Ecuador
+  sigla: CE
+  jerarquia: 0
+  articulo: "14"
+  inciso: ""
+  fecha_vigencia: "2008-10-20"
+ACTOR_OBLIGADO:
+  - GAD-Municipal (competencia ambiental municipal — COOTAD 55.h)
+  - Estado
+ACTOR_BENEFICIARIO:
+  - Población del cantón y ecosistemas
+OBLIGACION: >
+  La población tiene derecho a vivir en ambiente sano y ecológicamente
+  equilibrado. El GAD Municipal tiene responsabilidad en gestión ambiental
+  dentro de su jurisdicción (COOTAD 55.h).
+EVIDENCIA:
+  - Plan Ambiental Municipal o sección ambiental del PDOT
+  - Ordenanza de gestión de residuos sólidos
+  - LOTAIP Numeral 10 (planes en ejecución — incluye planes ambientales)
+CONSECUENCIA:
+  descripcion: >
+    Omisión en gestión ambiental genera responsabilidad administrativa del GAD
+    y puede activar acción de protección.
+  tipo: responsabilidad-administrativa
+  organo_sancionador:
+    - MAATE
+    - DPE
+    - Judicatura
+DOMINIOS_QUIRA:
+  - Dom04
+APLICABILIDAD:
+  nacional: true
+  municipal: true
+  condicion:
+    - ninguna
+IMPLEMENTACION_TERRITORIAL:
+  funcion_publica: >
+    Gestión ambiental local: manejo de residuos sólidos, saneamiento ambiental,
+    preservación de ecosistemas en jurisdicción municipal
+  actor_local: >
+    pendiente — verificar orgánico GADM. En Montecristi: posiblemente EP Aseo
+    o Dirección equivalente. Verificar Gold Master antes de asignar.
+  instrumento: pendiente-verificar-orgánico
+  evidencia:
+    - LOTAIP_06
+    - LOTAIP_10
+  indicador:
+    - DOM04_GESTION_AMBIENTAL
+RELACIONES:
+  - COOTAD_55
+  - CE_11_13
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: CE_18_2
+CLASE: ACK_DERECHO
+TIPO: derecho
+NOMBRE: Acceso Libre a Información de Entidades Públicas — Base Constitucional LOTAIP
+FUENTE:
+  norma: Constitución de la República del Ecuador
+  sigla: CE
+  jerarquia: 0
+  articulo: "18"
+  inciso: "2"
+  fecha_vigencia: "2008-10-20"
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Todas las entidades del Holding Municipal que manejen fondos del Estado
+ACTOR_BENEFICIARIO:
+  - Toda persona
+OBLIGACION: >
+  Toda persona tiene derecho a acceder libremente a la información generada
+  en entidades públicas o privadas que manejen fondos del Estado. No existirá
+  reserva de información excepto en los casos expresamente establecidos en la
+  ley. En caso de violación de DDHH, NINGUNA entidad puede negar información.
+EVIDENCIA:
+  - Portal LOTAIP actualizado mensualmente (24 ítems Art. 19 LOTAIP)
+  - Respuestas a solicitudes de acceso a la información (Art. 34 LOTAIP — 10 días)
+  - Ausencia de sanciones DPE por negativa de información
+CONSECUENCIA:
+  descripcion: >
+    Negativa de información activa gestión defensoría Art. 26 Reglamento
+    LOTAIP → dictamen correctivo → informe vinculante → sanción LOSEP Art. 42.
+  tipo: dictamen-dpe
+  organo_sancionador:
+    - DPE
+    - CPCCS
+    - LOSEP
+DOMINIOS_QUIRA:
+  - Dom07
+APLICABILIDAD:
+  nacional: true
+  municipal: true
+  condicion:
+    - ninguna
+IMPLEMENTACION_TERRITORIAL:
+  funcion_publica: >
+    Transparencia activa: publicación proactiva y permanente de información
+    pública institucional del GAD y entidades del Holding Municipal
+  actor_local: >
+    Comité de Transparencia del GADM (Art. 6 Reglamento LOTAIP) o Oficial de
+    Transparencia designado. Verificar si existe Comité formalmente constituido.
+  instrumento: Portal-web-LOTAIP + Sistema-DPE
+  evidencia:
+    - LOTAIP_01_al_24
+  indicador:
+    - DOM07_CUMPLIMIENTO_LOTAIP
+  nota_lac: >
+    Equivalentes LAC: Colombia=Ley1712-Transparencia / Perú=Ley27806 /
+    México=LGTAIP / Chile=Ley20285. La función de transparencia activa
+    es universal; el mecanismo legal varía.
+RELACIONES:
+  - LOTAIP
+  - Reglamento-LOTAIP
+  - CE_11_4
+  - CE_11_13
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: CE_30
+CLASE: ACK_DERECHO
+TIPO: derecho
+NOMBRE: Derecho a Hábitat Seguro y Vivienda Digna — Ordenamiento Territorial GAD
+FUENTE:
+  norma: Constitución de la República del Ecuador
+  sigla: CE
+  jerarquia: 0
+  articulo: "30"
+  inciso: ""
+  fecha_vigencia: "2008-10-20"
+ACTOR_OBLIGADO:
+  - GAD-Municipal (ordenamiento territorial y asentamientos humanos — CE 264.1-2)
+ACTOR_BENEFICIARIO:
+  - Toda persona, con independencia de su situación socioeconómica
+OBLIGACION: >
+  Las personas tienen derecho a un hábitat seguro y saludable, y a una vivienda
+  adecuada y digna. El GAD Municipal, a través del PDOT, debe garantizar que
+  los asentamientos humanos sean seguros, con acceso a servicios básicos.
+EVIDENCIA:
+  - Catastro municipal actualizado
+  - PDOT con mapa de riesgo y asentamientos
+  - POA con obras de mejoramiento de hábitat
+  - LOTAIP Numeral 10 (planes de asentamientos)
+CONSECUENCIA:
+  descripcion: >
+    Omisión en ordenamiento de hábitat genera responsabilidad constitucional
+    (CE 11.13). Asentamientos sin servicios = violación Art. 30.
+  tipo: accion-constitucional
+  organo_sancionador:
+    - DPE
+    - MIDUVI
+DOMINIOS_QUIRA:
+  - Dom04
+APLICABILIDAD:
+  nacional: true
+  municipal: true
+  condicion:
+    - ninguna
+IMPLEMENTACION_TERRITORIAL:
+  funcion_publica: >
+    Ordenamiento territorial de asentamientos humanos — garantía de hábitat
+    seguro con acceso a servicios básicos en todo el cantón
+  actor_local: pendiente-verificar-orgánico
+  instrumento: PDOT + Catastro + Ordenanza-uso-suelo
+  evidencia:
+    - LOTAIP_10
+    - LOTAIP_06
+  indicador:
+    - DOM04_COBERTURA_HABITAT
+RELACIONES:
+  - COOTAD_264
+  - COOTAD_55
+  - CE_31
+  - CE_12
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: CE_31
+CLASE: ACK_DERECHO
+TIPO: derecho
+NOMBRE: Derecho a la Ciudad y Gestión Democrática del Espacio Público
+FUENTE:
+  norma: Constitución de la República del Ecuador
+  sigla: CE
+  jerarquia: 0
+  articulo: "31"
+  inciso: ""
+  fecha_vigencia: "2008-10-20"
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+  - Concejo-Municipal
+ACTOR_BENEFICIARIO:
+  - Toda la ciudadanía (urbana y rural)
+OBLIGACION: >
+  Las personas tienen derecho al disfrute pleno de la ciudad y sus espacios
+  públicos bajo principios de sustentabilidad y justicia social. El GAD gestiona
+  democráticamente el espacio público.
+EVIDENCIA:
+  - Inventario y mantenimiento de espacio público municipal
+  - Ordenanza de uso de suelo y función social de la propiedad
+  - Actas de presupuesto participativo (LOPC)
+  - LOTAIP Numeral 10
+CONSECUENCIA:
+  descripcion: >
+    Privatización o restricción injustificada del espacio público viola Art. 31.
+  tipo: accion-constitucional
+  organo_sancionador:
+    - DPE
+    - Judicatura
+DOMINIOS_QUIRA:
+  - Dom04
+  - Dom08
+APLICABILIDAD:
+  nacional: true
+  municipal: true
+  condicion:
+    - ninguna
+IMPLEMENTACION_TERRITORIAL:
+  funcion_publica: >
+    Gestión del espacio público municipal — garantía de acceso, mantenimiento
+    y uso democrático de parques, plazas, vías y equipamientos públicos
+  actor_local: pendiente-verificar-orgánico
+  instrumento: Ordenanza-espacio-publico + Presupuesto-participativo
+  evidencia:
+    - LOTAIP_10
+    - LOTAIP_06
+  indicador:
+    - DOM04_ESPACIO_PUBLICO
+    - DOM08_PARTICIPACION_PP
+RELACIONES:
+  - LOPC
+  - COOTAD_264
+  - CE_30
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: CE_32
+CLASE: ACK_DERECHO
+TIPO: competencia_concurrente
+NOMBRE: Derecho a la Salud — Competencia Concurrente para Servicios GAP
+FUENTE:
+  norma: Constitución de la República del Ecuador
+  sigla: CE
+  jerarquia: 0
+  articulo: "32"
+  inciso: ""
+  fecha_vigencia: "2008-10-20"
+ACTOR_OBLIGADO:
+  - Estado (rector — MSP)
+  - GAD-Municipal (a través de unidad habilitada con ordenanza — CE 260 + COOTAD 138)
+ACTOR_BENEFICIARIO:
+  - Toda la población, con énfasis en GAP
+OBLIGACION: >
+  La salud es un derecho que garantiza el Estado bajo principios de equidad,
+  universalidad y solidaridad. El GAD puede proveer servicios de salud para
+  GAP a través de unidad con ordenanza habilitante (competencia concurrente
+  CE 260 + COOTAD 138 — confirmado por Pronunciamiento PGE Patronato Manta 2018).
+EVIDENCIA:
+  - Ordenanza de constitución de la unidad con servicios de salud (si aplica)
+  - Registros de atención (Centro del Buen Vivir u equivalente)
+  - Presupuesto asignado a salud para GAP (COOTAD 249 vinculado)
+  - LOTAIP Numeral 5 (catálogo de servicios)
+CONSECUENCIA:
+  descripcion: >
+    Si la unidad ofrece servicios de salud con ordenanza habilitante y los
+    interrumpe sin justificación, viola CE 32 + principio no regresividad
+    (CE 11.11). El GAD es responsable (CE 11.13).
+  tipo: accion-constitucional
+  organo_sancionador:
+    - DPE
+    - MSP
+    - Judicatura
+DOMINIOS_QUIRA:
+  - Dom12
+APLICABILIDAD:
+  nacional: true
+  municipal: true
+  condicion:
+    - gad-con-patronato
+IMPLEMENTACION_TERRITORIAL:
+  funcion_publica: >
+    Provisión de servicios de salud básica para Grupos de Atención Prioritaria
+    (adultos mayores, NNA, discapacidad, mujeres embarazadas, enfermedades
+    catastróficas) a través de la unidad municipal habilitada
+  actor_local: >
+    pendiente — verificar Resolución Orgánica GADM Montecristi + Gold Master.
+    Posible: Patronato Municipal + Centro del Buen Vivir. Verificar si existe
+    ordenanza habilitante antes de asignar competencia de salud.
+  instrumento: Convenio-MSP-MIES + Ordenanza-habilitante
+  evidencia:
+    - LOTAIP_05
+    - LOTAIP_18
+    - LOTAIP_22
+  indicador:
+    - DOM12_IGD_GAP
+    - DOM12_COBERTURA_SALUD_GAP
+  nota_lac: >
+    Equivalentes LAC: Colombia=Patronatos-municipales-salud /
+    Perú=SIS-municipal / México=DIF-municipal. La función de salud para GAP
+    por municipio es concurrente en todos los sistemas; el actor varía.
+RELACIONES:
+  - CE_260
+  - COOTAD_138
+  - COOTAD_249
+  - CE_35
+  - CE_11_11
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: CE_35
+CLASE: ACK_PRINCIPIO
+TIPO: principio
+NOMBRE: Grupos de Atención Prioritaria — Artículo Fundacional Dom12
+FUENTE:
+  norma: Constitución de la República del Ecuador
+  sigla: CE
+  jerarquia: 0
+  articulo: "35"
+  inciso: ""
+  fecha_vigencia: "2008-10-20"
+ACTOR_OBLIGADO:
+  - Estado (todos los niveles — público y privado)
+  - GAD-Municipal
+  - Alcalde
+  - Unidad responsable de servicios sociales (verificar orgánico)
+ACTOR_BENEFICIARIO:
+  - Adultos mayores
+  - Niñas, niños y adolescentes (NNA)
+  - Mujeres embarazadas
+  - Personas con discapacidad
+  - Personas privadas de libertad
+  - Personas con enfermedades catastróficas o de alta complejidad
+  - Personas en situación de riesgo
+  - Víctimas de violencia doméstica y sexual, maltrato infantil
+  - Afectados por desastres naturales o antropogénicos
+  - Personas en condición de doble vulnerabilidad
+OBLIGACION: >
+  Los Grupos de Atención Prioritaria (GAP) recibirán atención PRIORITARIA
+  Y ESPECIALIZADA en los ámbitos público y privado. El GAD Municipal debe
+  garantizar esta atención en todos los servicios que presta y en los
+  programas que gestiona, independientemente de qué unidad institucional
+  los ejecute (según orgánico vigente del cantón).
+EVIDENCIA:
+  - POA con programas explícitos para cada subgrupo GAP
+  - Presupuesto GAP ≥ 10% ingresos no tributarios (COOTAD 249)
+  - LOTAIP Numeral 5 (catálogo servicios GAP)
+  - LOTAIP Numeral 18 (convenios MIES/MSP/MIDUVI)
+  - LOTAIP Numeral 22 (rendición de cuentas GAP)
+  - Informe Rendición de Cuentas CPCC (sección GAP)
+CONSECUENCIA:
+  descripcion: >
+    Ausencia de atención prioritaria y especializada a GAP viola Art. 35 CE
+    directamente. Activa acción de protección (DPE), dictamen correctivo
+    por incumplimiento de funciones COOTAD, y responsabilidad del Alcalde.
+    El indicador IGD_GAP de Dom12 mide directamente este cumplimiento.
+  tipo: accion-constitucional
+  organo_sancionador:
+    - DPE
+    - CPCCS
+    - Corte-Constitucional
+DOMINIOS_QUIRA:
+  - Dom12
+  - Dom02
+  - Dom01
+APLICABILIDAD:
+  nacional: true
+  municipal: true
+  condicion:
+    - ninguna
+IMPLEMENTACION_TERRITORIAL:
+  funcion_publica: >
+    Atención prioritaria y especializada a todos los subgrupos GAP en el territorio
+    cantonal — función permanente del GAD independiente de la forma institucional
+    que adopte en su orgánico (Patronato / Dirección / Unidad / Convenio MIES-MSP)
+  actor_local: >
+    pendiente — verificar Resolución Orgánica GADM Montecristi + Gold Master.
+    La forma ejecutora varía por cantón: puede ser Patronato, Dirección de
+    Desarrollo Social, Unidad de Protección Social, o combinación.
+    QNKC-001: la función GAP es permanente; el actor es contingente.
+  instrumento: POA-GAP + Convenio-MIES + Convenio-MSP + Convenio-MIDUVI
+  evidencia:
+    - LOTAIP_05
+    - LOTAIP_18
+    - LOTAIP_22
+  indicador:
+    - DOM12_IGD_GAP
+    - DOM12_PRESUPUESTO_GAP_PCT
+  nota_lac: >
+    Equivalentes LAC: Colombia=poblacion-vulnerable-municipio /
+    Perú=MIMP-programas-locales / México=DIF-municipal / Chile=programas-SENAME-IND.
+    El Art. 35 CE es la expresión más explícita de un principio universal en LAC:
+    el municipio como primer responsable de atención a grupos vulnerables.
+RELACIONES:
+  - COOTAD_249
+  - CONA
+  - Ley-Discapacidades
+  - Ley-Adulto-Mayor
+  - Ley-Movilidad-Humana
+  - CE_32
+  - CE_11_3
+  - CE_11_11
+  - LOTAIP_19
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false

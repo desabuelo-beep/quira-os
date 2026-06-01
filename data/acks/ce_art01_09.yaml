@@ -1,0 +1,311 @@
+# QUIRA OS — ACK Atoms · Bloque F0.1A
+# Fuente: Constitución de la República del Ecuador (2008)
+# Artículos 1-9 — Principios Fundacionales del Estado
+# Schema: v1.1 · QLEP · 2026-05-30
+# Extractor: QLEP-v1.1
+# Nota: todos son ACK_PRINCIPIO — marcos interpretativos que rigen la administración pública
+
+---
+ACK_ID: CE_1
+CLASE: ACK_PRINCIPIO
+TIPO: principio
+NOMBRE: Estado constitucional plurinacional descentralizado
+FUENTE:
+  norma: Constitución de la República del Ecuador
+  sigla: CE
+  jerarquia: 0
+  articulo: "1"
+  inciso: ""
+  fecha_vigencia: "2008-10-20"
+ACTOR_OBLIGADO:
+  - Estado ecuatoriano
+  - GAD-Municipal
+ACTOR_BENEFICIARIO:
+  - Ciudadanía ecuatoriana
+OBLIGACION: >
+  El Ecuador es un Estado constitucional de derechos y justicia, social, democrático,
+  soberano, independiente, unitario, intercultural, plurinacional y laico. Se organiza
+  en forma de república y se gobierna de manera descentralizada.
+EVIDENCIA:
+  - Ordenanzas municipales
+  - Actos administrativos
+  - PDOT
+CONSECUENCIA:
+  descripcion: >
+    Todo acto que contradiga la naturaleza descentralizada, plurinacional o de derechos
+    del Estado es nulo de pleno derecho.
+  tipo: nulidad
+  organo_sancionador:
+    - Corte-Constitucional
+    - PGE
+APLICABILIDAD:
+  nacional: true
+  municipal: true
+  condicion:
+    - ninguna
+DOMINIOS_QUIRA:
+  - Dom01
+  - Dom04
+RELACIONES:
+  - COOTAD
+  - COA
+META:
+  estado: v1.1
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.1
+  revisado_por_experto: false
+
+---
+ACK_ID: CE_3_1
+CLASE: ACK_PRINCIPIO
+TIPO: principio
+NOMBRE: Deber de garantizar derechos sin discriminación
+FUENTE:
+  norma: Constitución de la República del Ecuador
+  sigla: CE
+  jerarquia: 0
+  articulo: "3"
+  inciso: "1"
+  fecha_vigencia: "2008-10-20"
+ACTOR_OBLIGADO:
+  - Estado ecuatoriano
+  - GAD-Municipal
+ACTOR_BENEFICIARIO:
+  - Habitantes del Ecuador
+OBLIGACION: >
+  Garantizar sin discriminación alguna el efectivo goce de los derechos establecidos en
+  la Constitución y en los instrumentos internacionales, en particular la educación, la
+  salud, la alimentación, la seguridad social y el agua para sus habitantes.
+EVIDENCIA:
+  - POA
+  - Presupuesto
+  - LOTAIP
+  - Informes sectoriales
+CONSECUENCIA:
+  descripcion: >
+    La omisión del Estado en garantizar derechos fundamentales activa la acción de
+    protección y responsabilidad estatal.
+  tipo: accion-constitucional
+  organo_sancionador:
+    - Corte-Constitucional
+    - DPE
+APLICABILIDAD:
+  nacional: true
+  municipal: true
+  condicion:
+    - ninguna
+DOMINIOS_QUIRA:
+  - Dom01
+  - Dom12
+RELACIONES:
+  - CE_35
+  - CE_45
+  - COOTAD
+META:
+  estado: v1.1
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.1
+  revisado_por_experto: false
+
+---
+ACK_ID: CE_3_5
+CLASE: ACK_PRINCIPIO
+TIPO: principio
+NOMBRE: Deber de planificar el desarrollo y redistribuir riqueza
+FUENTE:
+  norma: Constitución de la República del Ecuador
+  sigla: CE
+  jerarquia: 0
+  articulo: "3"
+  inciso: "5"
+  fecha_vigencia: "2008-10-20"
+ACTOR_OBLIGADO:
+  - Estado ecuatoriano
+  - GAD-Municipal
+ACTOR_BENEFICIARIO:
+  - Habitantes del Ecuador
+OBLIGACION: >
+  Planificar el desarrollo nacional, erradicar la pobreza, promover el desarrollo
+  sustentable y la redistribución equitativa de los recursos y la riqueza, para acceder
+  al buen vivir.
+EVIDENCIA:
+  - PDOT
+  - POA
+  - Presupuesto
+  - PND
+CONSECUENCIA:
+  descripcion: >
+    La ausencia de planificación territorial vinculante constituye omisión del deber
+    constitucional; activable vía acción de protección.
+  tipo: accion-constitucional
+  organo_sancionador:
+    - Corte-Constitucional
+    - DPE
+APLICABILIDAD:
+  nacional: true
+  municipal: true
+  condicion:
+    - ninguna
+DOMINIOS_QUIRA:
+  - Dom01
+  - Dom02
+  - Dom04
+RELACIONES:
+  - COOTAD_264
+  - COPLAFIP
+  - CE_275
+META:
+  estado: v1.1
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.1
+  revisado_por_experto: false
+
+---
+ACK_ID: CE_3_6
+CLASE: ACK_PRINCIPIO
+TIPO: distribucion
+NOMBRE: Deber de promover descentralización y autonomías territoriales
+FUENTE:
+  norma: Constitución de la República del Ecuador
+  sigla: CE
+  jerarquia: 0
+  articulo: "3"
+  inciso: "6"
+  fecha_vigencia: "2008-10-20"
+ACTOR_OBLIGADO:
+  - Estado ecuatoriano
+ACTOR_BENEFICIARIO:
+  - GAD-Municipal
+  - Territorios locales
+OBLIGACION: >
+  Promover el desarrollo equitativo y solidario de todo el territorio, mediante el
+  fortalecimiento del proceso de autonomías y descentralización.
+EVIDENCIA:
+  - COOTAD
+  - Resoluciones CNC
+  - Ordenanzas
+CONSECUENCIA:
+  descripcion: >
+    La centralización excesiva que impida el ejercicio autonómico del GAD puede ser
+    impugnada por inconstitucionalidad.
+  tipo: accion-constitucional
+  organo_sancionador:
+    - Corte-Constitucional
+APLICABILIDAD:
+  nacional: true
+  municipal: true
+  condicion:
+    - ninguna
+DOMINIOS_QUIRA:
+  - Dom01
+  - Dom04
+RELACIONES:
+  - COOTAD
+  - CE_238
+  - CE_240
+META:
+  estado: v1.1
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.1
+  revisado_por_experto: false
+
+---
+ACK_ID: CE_3_8
+CLASE: ACK_PRINCIPIO
+TIPO: principio
+NOMBRE: Deber de garantizar cultura de paz y seguridad integral
+FUENTE:
+  norma: Constitución de la República del Ecuador
+  sigla: CE
+  jerarquia: 0
+  articulo: "3"
+  inciso: "8"
+  fecha_vigencia: "2008-10-20"
+ACTOR_OBLIGADO:
+  - Estado ecuatoriano
+  - GAD-Municipal
+ACTOR_BENEFICIARIO:
+  - Habitantes del Ecuador
+OBLIGACION: >
+  Garantizar a sus habitantes el derecho a una cultura de paz, a la seguridad integral
+  y a vivir en una sociedad democrática y libre de corrupción.
+EVIDENCIA:
+  - Planes de seguridad ciudadana
+  - Informes anticorrupción
+  - RDC
+CONSECUENCIA:
+  descripcion: >
+    La omisión en garantizar seguridad ciudadana o tolerar corrupción institucional
+    activa acción de protección y responsabilidad del Estado.
+  tipo: accion-constitucional
+  organo_sancionador:
+    - Corte-Constitucional
+    - Fiscalía
+    - CPCCS
+APLICABILIDAD:
+  nacional: true
+  municipal: true
+  condicion:
+    - ninguna
+DOMINIOS_QUIRA:
+  - Dom01
+  - Dom07
+RELACIONES:
+  - CE_393
+  - CE_83
+  - COIP
+META:
+  estado: v1.1
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.1
+  revisado_por_experto: false
+
+---
+ACK_ID: CE_9
+CLASE: ACK_PRINCIPIO
+TIPO: principio
+NOMBRE: Igualdad de derechos y deberes para personas extranjeras
+FUENTE:
+  norma: Constitución de la República del Ecuador
+  sigla: CE
+  jerarquia: 0
+  articulo: "9"
+  inciso: ""
+  fecha_vigencia: "2008-10-20"
+ACTOR_OBLIGADO:
+  - Estado ecuatoriano
+  - GAD-Municipal
+ACTOR_BENEFICIARIO:
+  - Personas extranjeras en territorio ecuatoriano
+OBLIGACION: >
+  Las personas extranjeras que se encuentren en el territorio ecuatoriano tendrán los
+  mismos derechos y deberes que las ecuatorianas, de acuerdo con la Constitución.
+EVIDENCIA:
+  - Registros de atención a migrantes
+  - Informes LOTAIP
+  - Planes de inclusión
+CONSECUENCIA:
+  descripcion: >
+    La discriminación contra personas extranjeras en el ejercicio de sus derechos
+    constitucionales activa acción de protección.
+  tipo: accion-constitucional
+  organo_sancionador:
+    - Corte-Constitucional
+    - DPE
+APLICABILIDAD:
+  nacional: true
+  municipal: true
+  condicion:
+    - movilidad-humana
+DOMINIOS_QUIRA:
+  - Dom01
+  - Dom12
+RELACIONES:
+  - CE_40
+  - CE_41
+  - Ley-Movilidad-Humana
+META:
+  estado: v1.1
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.1
+  revisado_por_experto: false

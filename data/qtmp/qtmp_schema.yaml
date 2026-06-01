@@ -1,0 +1,521 @@
+# ============================================================
+# QUIRA Gov — QTMP Schema Universal v1.1
+# QUIRA Territorial Materialization Protocol
+# ============================================================
+# Versión:   QTMP v1.1 / QNKC-002
+# Fecha:     2026-05-31
+# Cambios v1.1 (2026-05-31):
+#   - estado_dato: taxonomy expandida a 5 estados (antes 3)
+#   - naturaleza_valor: nuevo campo epistemológico en C9
+#   - proxy_de: nuevo subbloque de trazabilidad para proxies
+#   - nivel_territorial: añadidos zona_inec y sector_censal
+#   Motivación: Montecristi demostró que parroquia ≠ realidad territorial
+#   y que dato confirmado ≠ proxy metodológico. La distinción es
+#   fundamental para auditoría, QUIRA Impact y escudo metodológico.
+# Propósito: Schema canónico universal para materializar los circuitos
+#            causales C3-C9 de cualquier cantón de Ecuador (y LAC).
+#
+# Principio fundacional:
+#   El corpus normativo (QLEP — C1-C2) es NACIONAL y compartido por los 221 municipios.
+#   La materialización territorial (QTMP — C3-C9) es MUNICIPAL y específica por cantón.
+#   Un mismo schema. 221 instancias. Mismo grafo Neo4j.
+#
+# Relación con QLEP:
+#   QLEP extrae: Norma → ACK (átomo canónico)
+#   QTMP conecta: ACK → ServicioPublico → Proceso → Evidencia → Control →
+#                       Observabilidad → Indicador → ResultadoTerritorial
+#
+# Relación con QNKC-002:
+#   La cadena causal C1-C9 está definida en QNKC-002.
+#   QTMP IMPLEMENTA esa cadena con datos reales de un cantón.
+#   El Actor lateral (QNKC-002) se resuelve en IMPLEMENTACION_LOCAL.
+#
+# El objeto raíz no es "agua_potable" ni "servicio".
+# El objeto raíz es "circuito_publico" — materialización de una función pública
+# territorial. Esto hace el schema generalizable a cualquier circuito de cualquier cantón.
+#
+# Archivos de instancia: qtmp_{CANTON_ID}_{CIRCUITO_ID}.yaml
+#   Ejemplo: qtmp_ECU-13-MONTECRISTI_AGUA_POTABLE.yaml
+#
+# ESCALA:
+#   Ecuador:   221 cantones
+#   LAC:       ~6000 municipios (mismo schema C3-C9 / diferente corpus C1-C2)
+# ============================================================
+
+
+# ============================================================
+# NIVEL 0 — IDENTIDAD DEL CIRCUITO MATERIALIZADO
+# ============================================================
+# Todo campo en MAYÚSCULAS = campo del schema.
+# Ejemplo entre corchetes = valor esperado.
+
+QTMP_ID: "QTMP_{CIRCUITO_ID}_{CANTON_SHORT}"
+# Ejemplo: QTMP_AGUA_MCR / QTMP_GAP10_MCR / QTMP_AGUA_GYE
+# CANTON_SHORT: código corto de 3 letras del cantón
+
+CIRCUITO_ID: "[AGUA_POTABLE | GAP_10PCT | EQUIDAD | PARTICIPACION | CONTROL_LEGAL | CONTROL_PREV]"
+# Debe coincidir con el circuito_id del ACK CADENA_TERRITORIAL.
+# Los 6 circuitos verticales cerrados son el punto de entrada.
+
+CANTON_ID: "[ECU-{CODIGO_PROVINCIA}-{NOMBRE_CANTON}]"
+# Ejemplo: ECU-13-MONTECRISTI / ECU-09-GUAYAQUIL / ECU-17-QUITO
+# Debe existir en qtmp_canton_registry.yaml
+
+VERSION: "1.0"
+
+ESTADO: "[desarrollo | operativo | auditado]"
+# desarrollo:  schema creado, datos parciales o pendientes
+# operativo:   datos completos, grafo Neo4j cargado
+# auditado:    validado por experto territorial del cantón
+
+META:
+  fecha_creacion: "YYYY-MM-DD"
+  creado_por: "QTMP-v1.0"
+  canton_responsable: "[Nombre del responsable que validó los datos territoriales]"
+  fuente_organica: "[Resolución Orgánica del cantón — documento fuente]"
+  revisado: false
+
+
+# ============================================================
+# C3 — SERVICIO PÚBLICO
+# Materialización de la competencia normativa como servicio concreto
+# Link: ACK C1-C2 → ServicioPublico C3
+# ============================================================
+
+SERVICIO_PUBLICO:
+  id: "SP_{CIRCUITO}_{CANTON_SHORT}"
+  # Ejemplo: SP_AGUA_MCR
+
+  nombre: "[Nombre del servicio público en el cantón]"
+  # Ejemplo: "Agua potable domiciliaria — Cantón Montecristi"
+
+  dominio_tgi: "[Dom01 | Dom02 | Dom03 | Dom04 | Dom05 | Dom06 | Dom07 | Dom08 | Dom09 | Dom10 | Dom11 | Dom12]"
+
+  competencia_fuente:
+    - "[ACK_ID_1]"
+    - "[ACK_ID_2]"
+    # Ejemplo: CE_12 / CE_264_4 / COOTAD_137
+    # Son los átomos C1-C2 que HABILITAN este servicio.
+    # Deben existir en el corpus QLEP.
+
+  descripcion: >
+    [Descripción del servicio tal como se presta en el cantón. 2-3 oraciones.
+    Incluir modalidad de prestación: directa, EP, concesión, convenio.]
+
+  modalidad: "[GAD-directo | EP-municipal | concesion | convenio-intercantonal | mixto]"
+
+  cobertura_actual_pct: null
+  # Valor numérico si se conoce (ej: 67.3). null si pendiente.
+
+
+# ============================================================
+# IMPLEMENTACION_LOCAL — Actor lateral (QNKC-002)
+# NO es parte de la cadena causal. Es quién ejecuta el Proceso.
+# Neo4j: (Proceso:C4)-[:EJECUTADO_POR]->(Actor)-[:PERTENECE_A]->(Institucion)
+# ============================================================
+
+IMPLEMENTACION_LOCAL:
+  actor_local:
+    nombre: "[Cargo del ejecutor principal]"
+    # Ejemplo: "Director/a de Obras Públicas" / "Gerente EP-Agua"
+    tipo: "[GAD-Alcalde | GAD-Director | GAD-Tecnico | EP-Gerente | Patronato | Concesionario]"
+
+  institucion_local:
+    nombre: "[Nombre de la institución ejecutora]"
+    # Ejemplo: "GADM Montecristi — Dirección de Infraestructura y Servicios"
+    tipo: "[GAD-Direccion | EP-Municipal | Patronato | Empresa-Privada-Concesionaria]"
+    ruc: null
+    # RUC de EP si aplica. null para direcciones GAD.
+
+  fuente_organica:
+    documento: "[Resolución / Estatuto / Convenio que habilita al actor]"
+    fecha: "YYYY-MM-DD"
+    articulo: "[Art. X si aplica]"
+
+  validado: false
+  # true cuando el Director/Responsable del cantón confirma los datos del Actor lateral.
+
+
+# ============================================================
+# C4 — PROCESOS
+# Lista de procesos que ejecutan el Servicio Público en el cantón
+# Neo4j: (ServicioPublico:C3)-[:SE_EJECUTA_EN]->(Proceso:C4)
+# ============================================================
+
+PROCESOS:
+  - id: "PROC_{CIRCUITO}_{N}_{CANTON_SHORT}"
+    # Ejemplo: PROC_AP_001_MCR (Ampliación red / Montecristi)
+
+    nombre: "[Nombre del proceso]"
+    # Ejemplo: "Ampliación de red de distribución"
+
+    tipo_proceso: "[obra | compra | servicio | tramite | regulacion | planificacion]"
+
+    descripcion: >
+      [Qué hace este proceso. 1-2 oraciones.]
+
+    actor_ref: "[id del Actor en IMPLEMENTACION_LOCAL]"
+    # Por convención: ACTOR_{CANTON_SHORT}_{TIPO}
+    # Ejemplo: ACTOR_MCR_DOOPP
+
+    estado: "[planificado | en_ejecucion | completado | suspendido | pendiente]"
+
+    anio_poa: null
+    # Año del POA donde aparece este proceso. null si no está en POA vigente.
+
+    partida_presupuestaria: null
+    # Ejemplo: "73.01.05.001" (infraestructura agua potable)
+
+
+# ============================================================
+# C5 — EVIDENCIAS
+# Lo que documenta la ejecución de cada Proceso
+# Neo4j: (Proceso:C4)-[:GENERA]->(Evidencia:C5)
+# ============================================================
+
+EVIDENCIAS:
+  - id: "EV_{CIRCUITO}_{N}_{CANTON_SHORT}"
+    # Ejemplo: EV_AP_001_MCR
+
+    tipo: "[contrato | planilla | acta_recepcion | informe | ordenanza | resolucion | acta_cabildo | certificacion | factura | informe_cge]"
+
+    descripcion: "[Qué acredita esta evidencia]"
+    # Ejemplo: "Contrato de obra para ampliación red sector norte Montecristi"
+
+    proceso_ref: "[id del Proceso al que pertenece]"
+
+    obligatoria: "[true | false]"
+    # true: su ausencia implica incumplimiento legal
+
+    fuente_sistema: "[SIGEF | SERCOP | LOTAIP | fisico | SIGOB | SNPD | INEC | registro-propio]"
+
+    vinculo_ack: "[ACK_ID que exige esta evidencia]"
+    # Ejemplo: LOSNCP_22 exige el contrato / LOSNCP_21 exige estar en PAC
+
+    url: null
+    # URL de acceso público si está disponible. null si no.
+
+    estado_documento: "[disponible | no-disponible | pendiente-digitalizar]"
+
+
+# ============================================================
+# C6 — CONTROLES
+# Mecanismos que validan, certifican o sancionan la ejecución
+# Neo4j: (Evidencia:C5)-[:CONTROLADA_POR]->(Control:C6)
+# ============================================================
+
+CONTROLES:
+  - id: "CTRL_{CIRCUITO}_{N}_{CANTON_SHORT}"
+    # Ejemplo: CTRL_AP_001_MCR
+
+    nombre: "[Nombre del control]"
+    # Ejemplo: "Certificación presupuestaria precontractual"
+
+    tipo_control: "[pre-compromiso | pre-devengado | concurrente | ex-post | auditoria-cge | control-interno]"
+
+    fuente:
+      - "[ACK_ID del control normativo]"
+      # Ejemplo: NCI_PRE_COMPROMISO / LOC-CGE_12 / NCI_600_01
+
+    organo_control: "[Director-Financiero | CGE | SERCOP | Alcalde | Concejo | Ciudadanía | DPE]"
+
+    descripcion: "[Qué verifica este control]"
+
+    estado_control: "[activo | inactivo | pendiente-implementar]"
+
+
+# ============================================================
+# C7 — OBSERVABILIDAD
+# Lo que se publica y hace visible la ejecución
+# Neo4j: (Control:C6)-[:EXPONE_A]->(Observabilidad:C7)
+# ============================================================
+
+OBSERVABILIDAD:
+  - id: "OBS_{CIRCUITO}_{N}_{CANTON_SHORT}"
+    # Ejemplo: OBS_AP_001_MCR
+
+    fuente_ack: "[ACK_ID del mandato de publicación]"
+    # Ejemplo: LOTAIP_19_6 / LOTAIP_19_8 / LOTAIP_19_21
+
+    tipo_publicacion: "[mensual | anual | por-proceso | por-evento | permanente]"
+
+    descripcion: "[Qué información se publica]"
+    # Ejemplo: "Ejecución presupuestaria mensual por partida — LOTAIP Art. 19 lit. 6"
+
+    url_portal: null
+    # URL del portal de transparencia del cantón. null si no se conoce.
+
+    frecuencia_real: "[al-dia | con-retraso | incompleto | no-publicado]"
+    # Estado real de publicación (observable). null si no verificado.
+
+
+# ============================================================
+# C8 — INDICADORES
+# Métricas que miden el resultado del circuito
+# Neo4j: (Observabilidad:C7)-[:MIDE]->(Indicador:C8)
+# ============================================================
+
+INDICADORES:
+  - id: "IND_{CIRCUITO}_{N}_{CANTON_SHORT}"
+    # Ejemplo: IND_AP_001_MCR
+
+    nombre: "[Nombre del indicador]"
+    # Ejemplo: "Cobertura de agua potable — Cantón Montecristi"
+
+    dominio_tgi: "[DomXX]"
+
+    formula: >
+      [Cómo se calcula. Fórmula o descripción precisa.]
+      # Ejemplo: "(Conexiones domiciliarias activas / Hogares totales) × 100"
+
+    fuente_dato: "[POA | SIGEF | INEC | BCE | levantamiento-propio | SERCOP | SIGAD | SNP]"
+
+    frecuencia: "[anual | semestral | mensual | trimestral | puntual]"
+
+    unidad: "[porcentaje | numero | horas-por-dia | km | m3 | USD | indice]"
+
+    valor_linea_base: null
+    # Valor actual conocido. null si pendiente.
+
+    meta_anual: null
+    # Meta del POA/PDOT vigente. null si no definida.
+
+    umbral_verde: null
+    # >= este valor → verde (cumplimiento)
+
+    umbral_amarillo: null
+    # >= este valor y < verde → amarillo (alerta)
+
+    umbral_rojo: null
+    # < este valor → rojo (incumplimiento)
+
+    tgi_dimension: "[D1 | D2 | D3 | D4 | D5 | D6 | D7 | D8 | D9]"
+    # Dimensión TGI a la que aporta este indicador
+
+
+# ============================================================
+# C9 — RESULTADOS TERRITORIALES
+# Lo que ocurre realmente en el territorio
+# Neo4j: (Indicador:C8)-[:REGISTRA]->(ResultadoTerritorial:C9)
+# ============================================================
+
+RESULTADOS:
+  - id: "RES_{CIRCUITO}_{N}_{CANTON_SHORT}"
+    # Ejemplo: RES_AP_001_MCR_ISABEL
+
+    nivel_territorial: >
+      Nivel 1 — Zona INEC (distinto de COOTAD):
+        zona_inec        (area_urbana | area_rural — clasificación censal INEC;
+                          NO coincide 1:1 con tipo de parroquia COOTAD.
+                          Montecristi: NBI urbana 21.3% / rural 53.3% aplica
+                          a zonas INEC, no a parroquias. Ver v1.1 nota.)
+      Nivel 2 (entrada QTMP):
+        canton
+      Nivel 3:
+        parroquia
+      Nivel 3b — Sector Censal INEC:
+        sector_censal    (unidad básica del censo INEC — ~200 viviendas;
+                          permite NBI parroquial real sin proxy cantonal;
+                          fuente requerida: INEC microdatos DPA 2022)
+      Nivel 4 — Track Urbano:
+        barrio           (COOTAD Art.306 — unidad base participación / Comité Barrial)
+        ciudadela        (urbanismo formal; para COOTAD = barrio)
+        urbanizacion     (pública o privada; para COOTAD = barrio)
+      Nivel 4 — Track Rural:
+        recinto          (geográfico — Costa/Manabí; sin personería jurídica propia)
+        sitio            (geográfico — Costa/Manabí; similar a recinto)
+        caserio          (geográfico — Sierra; pequeño asentamiento rural)
+        comuna           (Ley de Comunas — Cabildo reconocido; puede titular tierra)
+        comunidad_ancestral  (CE Art.57 — derechos colectivos; consulta previa obligatoria)
+      # NOTA v1.1: Una parroquia COOTAD tipo "urbana" puede contener sectores
+      # censales INEC clasificados como "rurales". Ejemplo: Colorado (urbana) →
+      # comunas El Arroyo y El Chorrillo con características rurales según INEC.
+      # El nivel zona_inec y sector_censal permiten capturar esta realidad.
+      # COOTAD clasifica función administrativa. INEC clasifica realidad censal.
+      # revisado_por_experto recomendado al usar zona_inec o nivel 4.
+
+    territorio: "[nombre del territorio específico — string libre]"
+    # Para Nivel 2: nombre del cantón
+    # Para Nivel 3: nombre de la parroquia
+    # Para Nivel 4 Urbano: nombre del barrio / ciudadela / urbanización
+    # Para Nivel 4 Rural: nombre del recinto / sitio / caserío / comuna / comunidad
+
+    parroquia_id: null
+    # ECU-{PP}-{CANTON}-{PAR_SHORT} si nivel_territorial = parroquia. null si cantonal.
+    # Ejemplo: ECU-13-MONTECRISTI-LPL
+
+    nivel4_id: null
+    # Identificador del territorio Nivel 4 si aplica.
+    # Formato: ECU-{PP}-{CANTON}-{PAR_SHORT}-{N4_SHORT}
+    # Ejemplo: ECU-13-MONTECRISTI-LPL-LPIL01 (recinto dentro de La Pila)
+    # null si nivel_territorial <= parroquia
+
+    indicador_ref: "[id del Indicador C8 al que corresponde]"
+
+    valor:
+      cobertura_pct: null
+      # Valor numérico. null si pendiente. Usar el campo que aplique al indicador.
+
+    periodo:
+      anio: null
+      # Ejemplo: 2025 o 2026
+      corte: "YYYY-MM-DD"
+      # Fecha de corte del dato.
+
+    fuente_verificacion: "[De dónde viene este dato — SIGEF, INEC, levantamiento, etc.]"
+
+    fuente_requerida: null
+    # Cuando estado_dato ∈ {pendiente_validacion, pendiente_microdato}:
+    # especificar la fuente que resolverá el dato pendiente.
+    # Ejemplo: "INEC_DPA_PARROQUIAL" / "SIGAD_GADMCM_2025" / "Gold Master Tab H73"
+
+    estado_dato: "[confirmado | pendiente_validacion | pendiente_microdato | estimado | proxy]"
+    # confirmado:           dato verificado con fuente primaria oficial
+    #                       (INEC Censo, PDOT aprobado, SIGAD, SERCOP, Gold Master)
+    # pendiente_validacion: dato existe en fuente secundaria pero requiere
+    #                       cruce con fuente primaria oficial
+    # pendiente_microdato:  dato cantonal existe; desagregado parroquial o
+    #                       sectorial requiere microdatos INEC DPA 2022
+    # estimado:             valor calculado por proyección estadística o
+    #                       interpolación con metodología documentada y
+    #                       supuesto explícito
+    # proxy:                valor inferido desde indicador correlacionado de
+    #                       nivel superior — NO es el dato real del territorio;
+    #                       requiere campo proxy_de obligatorio
+
+    naturaleza_valor: "[observado | calculado | derivado | proxy]"
+    # observado:  medido directamente de la fuente primaria
+    #             (censo, registro oficial, auditoría)
+    # calculado:  derivado por fórmula matemática de valores observados
+    #             (suma, promedio, porcentaje de dos observados)
+    # derivado:   obtenido por transformación metodológica propietaria
+    #             (normalización, ponderación, índice compuesto)
+    # proxy:      inferido desde indicador correlacionado de nivel distinto;
+    #             SIEMPRE requiere proxy_de con el supuesto explícito
+
+    proxy_de:
+    # Obligatorio cuando naturaleza_valor: proxy.
+    # Documenta exactamente QUÉ se está usando como proxy y CON QUÉ SUPUESTO.
+    # Esto es el núcleo de la trazabilidad para QUIRA Impact y QUIRA Lab.
+      fuente_valor: null
+      # Indicador o dato del que se infiere el proxy.
+      # Ejemplo: "NBI zona urbana cantonal INEC 2022 = 21.3%"
+      nivel_fuente: null
+      # Nivel territorial del valor fuente.
+      # Ejemplo: canton / zona_inec
+      valor_fuente: null
+      # Valor numérico del indicador fuente. Ejemplo: 21.3
+      supuesto: null
+      # El supuesto metodológico que habilita el proxy — DEBE ser explícito.
+      # Ejemplo: "parroquia urbana hereda promedio de zona_inec urbana cantonal
+      #           — supuesto no verificado; sujeto a revisión con microdatos"
+      validez: "[provisional | conservador | metodologicamente_justificado]"
+      # provisional:                  supuesto no verificado, usar con cautela
+      # conservador:                  supuesto que subestima el problema real
+      # metodologicamente_justificado: supuesto respaldado por literatura o
+      #                                metodología académica documentada
+
+
+# ============================================================
+# CYPHER CANÓNICO — Generación Neo4j desde QTMP
+# ============================================================
+#
+# // 1. Nodo Cantón (del registro)
+# MATCH (canton:Canton {id: $CANTON_ID})
+#
+# // 2. C3 — Servicio Público
+# MERGE (sp:ServicioPublico:C3 {id: $sp_id})
+# SET sp.nombre = $sp_nombre, sp.dominio_tgi = $dominio, sp.canton_id = $CANTON_ID
+# MERGE (canton)-[:TIENE_SERVICIO]->(sp)
+#
+# // Link al ACK atom que habilita el servicio (QLEP corpus)
+# MATCH (ack:Atom {id: $competencia_fuente_id})
+# MERGE (ack)-[:MATERIALIZA_VIA]->(sp)
+#
+# // 3. Actor lateral (QNKC-002 — fuera de la cadena causal)
+# MERGE (act:Actor {id: $actor_id, canton_id: $CANTON_ID})
+# SET act.nombre = $actor_nombre, act.tipo = $actor_tipo
+# MERGE (inst:Institucion {id: $institucion_id})
+# MERGE (act)-[:PERTENECE_A]->(inst)
+# MERGE (fo:FuenteOrganica {documento: $fuente_organica})
+# MERGE (inst)-[:TIENE_ORGANICO]->(fo)
+#
+# // 4. C4 — Proceso
+# MERGE (proc:Proceso:C4 {id: $proc_id})
+# SET proc.nombre = $proc_nombre, proc.tipo = $tipo_proceso, proc.canton_id = $CANTON_ID
+# MERGE (sp)-[:SE_EJECUTA_EN]->(proc)
+# MERGE (proc)-[:EJECUTADO_POR]->(act)  // ← Actor lateral
+#
+# // 5. C5 → C6 → C7 → C8 → C9
+# MERGE (ev:Evidencia:C5 {id: $ev_id}) SET ev.canton_id = $CANTON_ID
+# MERGE (proc)-[:GENERA]->(ev)
+#
+# MERGE (ctrl:Control:C6 {id: $ctrl_id}) SET ctrl.canton_id = $CANTON_ID
+# MERGE (ev)-[:CONTROLADA_POR]->(ctrl)
+#
+# MERGE (obs:Observabilidad:C7 {id: $obs_id}) SET obs.canton_id = $CANTON_ID
+# MERGE (ctrl)-[:EXPONE_A]->(obs)
+#
+# MERGE (ind:Indicador:C8 {id: $ind_id}) SET ind.canton_id = $CANTON_ID
+# MERGE (obs)-[:MIDE]->(ind)
+#
+# MERGE (res:ResultadoTerritorial:C9 {id: $res_id}) SET res.canton_id = $CANTON_ID
+# MERGE (ind)-[:REGISTRA]->(res)
+#
+# // Resultado final: la consulta causal completa
+# MATCH path = (ack:Atom {id: 'CE_12'})
+#   -[:MATERIALIZA_VIA]->(:C3ServicioPublico)
+#   -[:SE_EJECUTA_EN]->(:C4Proceso)
+#   -[:GENERA]->(:C5Evidencia)
+#   -[:CONTROLADA_POR]->(:C6Control)
+#   -[:EXPONE_A]->(:C7Observabilidad)
+#   -[:MIDE]->(:C8Indicador)
+#   -[:REGISTRA]->(res:C9ResultadoTerritorial {canton_id: $CANTON_ID})
+# RETURN path
+# ============================================================
+
+
+# ============================================================
+# CONVENCIONES DE NAMING
+# ============================================================
+#
+# CIRCUITO_ID (uppercase):
+#   AGUA_POTABLE / GAP_10PCT / EQUIDAD / PARTICIPACION / CONTROL_LEGAL / CONTROL_PREV
+#
+# CANTON_ID:
+#   ECU-{CODIGO_PROVINCIA}-{NOMBRE_NORMALIZADO}
+#   Código provincia: 2 dígitos (01-24) según DPA INEC
+#   Nombre: mayúsculas, sin tildes, guiones en lugar de espacios
+#   Ejemplo: ECU-13-MONTECRISTI / ECU-09-GUAYAQUIL / ECU-17-QUITO
+#
+# CANTON_SHORT (3-5 letras):
+#   MCR = Montecristi / GYE = Guayaquil / UIO = Quito / CUE = Cuenca
+#   MNT = Manta / AMB = Ambato / RIO = Riobamba / GYR = Guayaquil
+#
+# IDs de nodos C3-C9:
+#   {TIPO}_{CIRCUITO_SHORT}_{N}_{CANTON_SHORT}
+#   Ejemplo: SP_AGUA_MCR / PROC_AP_001_MCR / EV_AP_001_MCR
+#
+# ============================================================
+# CORPUS QTMP v1.0 — Estado inicial
+# ============================================================
+#
+# Schema:   qtmp_schema.yaml          ← este archivo (v1.1)
+# Registro: qtmp_canton_registry.yaml ← 221 cantones Ecuador
+# Piloto:   qtmp_ECU-13-MONTECRISTI_AGUA_POTABLE.yaml ← primera instancia
+#           qtmp_ECU-13-MONTECRISTI_EQUIDAD.yaml      ← segunda instancia
+#
+# Circuitos verticales cerrados (targets QTMP):
+#   1. AGUA_POTABLE    ← activo — datos confirmados
+#   2. GAP_10PCT       ← en construcción (P2 Patronato)
+#   3. EQUIDAD         ← activo — brecha NBI confirmada, parroquiales proxy
+#   4. PARTICIPACION   ← pendiente
+#   5. CONTROL_LEGAL   ← pendiente
+#   6. CONTROL_PREV    ← pendiente
+#
+# Nota epistemológica v1.1:
+#   Los campos estado_dato + naturaleza_valor + proxy_de forman juntos
+#   la cadena de integridad del dato C9.
+#   Un nodo C9 con naturaleza_valor: proxy y proxy_de vacío es un error
+#   de gobernanza del conocimiento — no debe ingresar al grafo Neo4j.
+# ============================================================

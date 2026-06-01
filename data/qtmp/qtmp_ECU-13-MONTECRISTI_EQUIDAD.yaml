@@ -1,0 +1,1498 @@
+# ============================================================
+# QUIRA — QTMP Instance
+# Protocolo de Materialización Territorial QNKC-002
+# ============================================================
+# QTMP_ID:     QTMP_EQUIDAD_MCR
+# CIRCUITO_ID: EQUIDAD
+# CANTON_ID:   ECU-13-MONTECRISTI
+# CANTON_SHORT: MCR
+# VERSION:     1.0
+# ESTADO:      desarrollo
+# FECHA:       2026-05-30
+# ============================================================
+#
+# CADENA CAUSAL QNKC-002:
+#
+#   C1:Jurídica ──────→ C2:Competencial ─────────────────────→
+#     CE_274 (IRS)         COOTAD_215 (ejecución presup.)
+#     CE_3 (igualdad)      COOTAD_228 (distribución territorial)
+#     CE_276 (equid.)      COOTAD_239 (planif. parroquial)
+#                          COPLAFIP_83 (gestión presupuestaria)
+#
+#   → C3:ServicioPublico ──→ C4:Proceso ──→ C5:Evidencia ──→
+#         SP_EQUD_MCR          6 procesos     8 evidencias
+#
+#   → C6:Control ──→ C7:Observabilidad ──→ C8:Indicador ──→
+#       5 órganos       5 obs nodes            6 indicadores
+#
+#   → C9:ResultadoTerritorial
+#       IRS_CANTON: 79.7 (dato disponible, fuente: INEC/SNP)
+#       Brecha urbano-rural: pendiente_validacion
+#
+#   Actor Lateral:
+#   (C4:Proceso)-[:EJECUTADO_POR]->(Actor:Unidad_de_Planificacion)
+#   (Actor)-[:PERTENECE_A]->(GADMCM)
+#
+# NOTA: EQUIDAD es el circuito transversal QUIRA.
+#   Conecta Dom02 (Presupuesto) con Dom04 (Territorio) y Dom12 (Social).
+#   El IRS es la señal de inequidad estructural del cantón.
+#   COOTAD_228 obliga a criterios de equidad en la distribución interna.
+#   Este circuito habilita explicación causal de brechas intra-cantonales.
+# ============================================================
+
+QTMP_ID: QTMP_EQUIDAD_MCR
+CIRCUITO_ID: EQUIDAD
+CIRCUITO_SHORT: EQUD
+CANTON_ID: ECU-13-MONTECRISTI
+CANTON_SHORT: MCR
+VERSION: "1.0"
+ESTADO: desarrollo
+FECHA_CREACION: "2026-05-30"
+FECHA_ACTUALIZACION: "2026-05-30"
+EXTRACTOR: QTMP-v1.0
+
+NORMAS_FUENTE:
+  - sigla: CE_274
+    nombre: >
+      Constitución del Ecuador, Art. 274 — Criterio equidad
+      para asignación de recursos a gobiernos subnacionales
+    revisado_por_experto: false
+  - sigla: CE_3
+    nombre: >
+      Constitución del Ecuador, Art. 3 — Deberes del Estado:
+      garantizar sin discriminación el goce efectivo de derechos
+    revisado_por_experto: false
+  - sigla: CE_276
+    nombre: >
+      Constitución del Ecuador, Art. 276 — Objetivos del régimen
+      de desarrollo: distribución equitativa de beneficios
+    revisado_por_experto: false
+  - sigla: COOTAD_215
+    nombre: >
+      COOTAD Art. 215 — Presupuesto GAD: elaboración, ejecución,
+      evaluación y liquidación del presupuesto
+    revisado_por_experto: false
+  - sigla: COOTAD_228
+    nombre: >
+      COOTAD Art. 228 — Criterios de distribución territorial
+      de la inversión pública local: densidad poblacional,
+      necesidades básicas insatisfechas, logros de desarrollo
+    revisado_por_experto: false
+    nota: >
+      NORMA CLAVE del circuito EQUIDAD. Obliga al GAD a aplicar
+      criterios objetivos en la distribución geográfica del gasto.
+      Incumplimiento → inequidad territorial observable → IRS bajo.
+  - sigla: COOTAD_239
+    nombre: >
+      COOTAD Art. 239 — Planificación del desarrollo cantonal:
+      coordinación con parroquias rurales
+    revisado_por_experto: false
+  - sigla: COPLAFIP_83
+    nombre: >
+      COPLAFIP Art. 83 — Programación presupuestaria:
+      vinculación con el Plan de Desarrollo
+    revisado_por_experto: false
+
+# ============================================================
+# C3 — SERVICIO PÚBLICO (raíz del circuito)
+# ============================================================
+# Nota: EQUIDAD no es un servicio en sentido estricto; es una
+# dimensión transversal. El C3 modela el proceso de planificación
+# y distribución territorial de la inversión como servicio
+# constitucional exigible (CE_274, CE_276).
+# ============================================================
+
+SERVICIO_PUBLICO:
+  id: SP_EQUD_MCR
+  nombre: Equidad Territorial de la Inversión Pública Cantonal — Montecristi
+  descripcion: >
+    Proceso de planificación, distribución y ejecución de la inversión
+    pública del GADMCM garantizando criterios de equidad territorial:
+    densidad poblacional, NBI, logros de desarrollo y brechas urbano-rurales.
+    Medido a través del Índice de Redistribución Social (IRS) cantonal.
+  dominio_tgi: Dom04
+  dominio_tgi_secundario: Dom02
+  dominio_tgi_terciario: Dom12
+  tgi_dimension: D4_TERRITORIO
+  tgi_dimension_secundaria: D2_FINANZAS
+  tgi_dimension_terciaria: D12_SOCIAL
+  competencia_fuente: COOTAD_228
+  competencias_concurrentes:
+    - CE_274
+    - CE_3
+    - CE_276
+    - COOTAD_215
+    - COOTAD_239
+    - COPLAFIP_83
+  modalidad: directa
+  nota_modalidad: >
+    La equidad territorial no es gestionada por EP sino por las
+    unidades de Planificación y Presupuesto del GADMCM, directamente
+    vinculadas a la Alcaldía. El PDOT cantonal es el instrumento
+    rector de la distribución territorial (COOTAD_239 + COPLAFIP_83).
+  estado_dato: pendiente_validacion
+  nota_estado: >
+    El IRS cantonal 79.7 está disponible (fuente INEC/SNP).
+    La brecha urbano-rural de inversión y los datos parroquiales
+    de distribución presupuestaria requieren acceso al Gold Master
+    y al PDOT Montecristi para ser confirmados.
+
+# ============================================================
+# C4 — PROCESOS (cómo se materializa la equidad)
+# ============================================================
+
+PROCESOS:
+
+  - id: PRC_EQUD_01_MCR
+    nombre: Formulación del PDOT con Enfoque Territorial de Equidad
+    descripcion: >
+      Elaboración o actualización del Plan de Desarrollo y Ordenamiento
+      Territorial incorporando diagnóstico de brechas urbano-rurales,
+      NBI por parroquia, índices de cobertura de servicios y metas
+      diferenciadas por zona geográfica (CE_279, COOTAD_295).
+    actor_lateral:
+      nombre: Director/a de Planificación y Desarrollo Institucional GADMCM
+      institucion: GADMCM — Dirección de Planificación y Desarrollo Institucional
+      validado: false
+    evidencia_esperada: EVD_EQUD_01_MCR
+    plazo: cuatrienal (actualización obligatoria cada período de gobierno)
+    norma_activadora: COOTAD_239
+
+  - id: PRC_EQUD_02_MCR
+    nombre: Programación Presupuestaria Vinculada al PDOT
+    descripcion: >
+      Elaboración del POA y presupuesto anual con distribución
+      territorial de la inversión según criterios COOTAD_228:
+      densidad poblacional, NBI parroquial, logros de desarrollo.
+      Obliga a desagregar la inversión por zonas geográficas
+      (parroquias rurales vs área urbana Montecristi).
+    actor_lateral:
+      nombre: Director/a Financiero/a GADMCM
+      institucion: GADMCM — Dirección Financiera
+      validado: false
+    evidencia_esperada: EVD_EQUD_02_MCR
+    plazo: anual (hasta 20 de octubre del año anterior — Art. 233 COOTAD)
+    norma_activadora: COOTAD_215
+
+  - id: PRC_EQUD_03_MCR
+    nombre: Ejecución Diferenciada de Inversión Urbana vs Rural
+    descripcion: >
+      Ejecución presupuestaria de obras e inversiones desagregada
+      por territorio: Montecristi urbano vs parroquias rurales
+      (Montecristi rural, La Pila, otros). Trazabilidad entre
+      partida presupuestaria → obra → zona geográfica.
+    actor_lateral:
+      nombre: Director/a de Obras Públicas e Infraestructura GADMCM
+      institucion: GADMCM — Dirección de Obras Públicas e Infraestructura
+      validado: false
+    evidencia_esperada: EVD_EQUD_03_MCR
+    plazo: continuo durante el ejercicio fiscal
+    norma_activadora: COOTAD_228
+
+  - id: PRC_EQUD_04_MCR
+    nombre: Evaluación y Seguimiento de Brechas Territoriales
+    descripcion: >
+      Monitoreo periódico de indicadores de equidad:
+      cobertura de servicios por parroquia, brecha NBI urbano-rural,
+      avance de metas PDOT por zona geográfica. Informe de
+      evaluación semestral y anual al Concejo Municipal.
+    actor_lateral:
+      nombre: Director/a de Planificación y Desarrollo Institucional GADMCM
+      institucion: GADMCM — Dirección de Planificación y Desarrollo Institucional
+      validado: false
+    evidencia_esperada: EVD_EQUD_04_MCR
+    plazo: semestral
+    norma_activadora: COPLAFIP_83
+
+  - id: PRC_EQUD_05_MCR
+    nombre: Rendición de Cuentas con Desagregación Territorial
+    descripcion: >
+      Presentación anual ante la ciudadanía de los resultados
+      de inversión con desagregación por parroquia y zona geográfica.
+      Incluye mapa de obras e inversiones geolocalizadas.
+      Obligación LOTAIP + CPCCS (Art. 92 COOTAD).
+    actor_lateral:
+      nombre: Alcalde GADMCM
+      institucion: GADMCM
+      validado: true
+    evidencia_esperada: EVD_EQUD_05_MCR
+    plazo: anual (primer trimestre año siguiente)
+    norma_activadora: COOTAD_92
+    nota: >
+      Actor validado: Alcalde Ing. Luis Jonathan Toro Largacha
+      (Estatuto Orgánico 040-2025). Responsable institucional visible
+      de la rendición de cuentas.
+
+  - id: PRC_EQUD_06_MCR
+    nombre: Participación Ciudadana Parroquial en Priorización
+    descripcion: >
+      Asambleas de priorización de inversión en parroquias rurales.
+      Vincula la demanda ciudadana parroquial con el presupuesto
+      participativo y el POA (COOTAD_302 + COOTAD_304).
+      Garantiza que la voz rural tenga representación en la
+      distribución territorial de recursos.
+    actor_lateral:
+      nombre: Junta Parroquial Rural (entidad autónoma) + GADMCM Planificación
+      institucion: Juntas Parroquiales Rurales del Cantón Montecristi
+      validado: false
+    evidencia_esperada: EVD_EQUD_06_MCR
+    plazo: anual (previo a formulación presupuestaria)
+    norma_activadora: COOTAD_302
+    nota: >
+      Las Juntas Parroquiales son entidades autónomas (GAD Parroquial).
+      Su participación en la priorización con el GAD Municipal es
+      de coordinación, no de subordinación. Actor lateral complejo:
+      doble institución.
+
+# ============================================================
+# C5 — EVIDENCIAS (documentos que prueban el cumplimiento)
+# ============================================================
+
+EVIDENCIAS:
+
+  - id: EVD_EQUD_01_MCR
+    nombre: PDOT Montecristi con Diagnóstico de Brechas Parroquiales
+    tipo: PDOT
+    formato: PDF / SIGAD
+    fuente_responsable: GADMCM — Dirección de Planificación
+    contenido_esperado: >
+      Diagnóstico territorial desagregado por parroquia: NBI,
+      cobertura servicios, población, déficit habitacional.
+      Metas diferenciadas por zona y período de cumplimiento.
+    estado_dato: pendiente_validacion
+    nota_fuentes_datos: >
+      PRINCIPIO QUIRA: El diagnóstico del PDOT de Montecristi —
+      como el de la mayoría de municipios ecuatorianos — está
+      construido principalmente con fuentes nacionales: INEC
+      (Censo, ECV, NBI), Banco Central del Ecuador (BCE),
+      y datos sectoriales de ministerios (MIDUVI, MSP, etc.).
+      El GAD Municipal NO genera estadística propia ni
+      levantamientos sistemáticos de datos. Por tanto:
+      - La fuente responsable del PDOT (GADMCM Planificación)
+        es quien COMPILA y SINTETIZA, no quien GENERA los datos.
+      - Para C9 real: ir directamente a INEC/BCE, no al GADMCM.
+      - El PDOT es evidencia de C5 (documenta compromisos y
+        diagnóstico), no fuente primaria de datos estadísticos.
+    nota_operativa: >
+      PDOT Montecristi existe y ha sido leído en sesión.
+      Verificar si tiene desagregación parroquial explícita
+      con datos NBI y cobertura por parroquia.
+
+  - id: EVD_EQUD_02_MCR
+    nombre: Cédula Presupuestaria con Distribución por Zona Geográfica
+    tipo: CÉDULA_SIGEF
+    formato: SIGEF / Gold Master
+    fuente_responsable: Ministerio de Finanzas / GADMCM Financiero
+    contenido_esperado: >
+      Partidas de inversión desagregadas por ubicación geográfica
+      (parroquia / zona). Permite calcular inversión per cápita
+      urbana vs rural y verificar equidad en distribución.
+    estado_dato: pendiente_validacion
+    nota: >
+      PRIORIDAD: El Gold Master (SIAP-ICPI_GOLD_MASTER_v5.5_TGI)
+      tiene datos GADMCM presupuestarios. Verificar si la cédula
+      incluye clasificación por parroquia o si es solo nivel cantonal.
+
+  - id: EVD_EQUD_03_MCR
+    nombre: Mapa de Inversión Pública Georreferenciada
+    tipo: MAPA_GEOINFO
+    formato: GIS / Shapefile / Google Maps
+    fuente_responsable: GADMCM — Obras Públicas / Planificación
+    contenido_esperado: >
+      Ubicación georreferenciada de obras ejecutadas 2023-2025.
+      Permite visualizar concentración espacial de inversión
+      y detectar zonas con baja cobertura histórica.
+    estado_dato: pendiente_validacion
+    nota: >
+      Dato estratégico para GeoTwin QUIRA. Alta prioridad para
+      integrar en el módulo espacial. Fuente probable: GADMCM OOPP
+      o SENAGUA / SNP sistema SIGAD.
+
+  - id: EVD_EQUD_04_MCR
+    nombre: Informe de Evaluación PDOT (Cumplimiento Metas Parroquiales)
+    tipo: INFORME_EVALUACION
+    formato: PDF / SIGAD
+    fuente_responsable: GADMCM — Dirección de Planificación
+    contenido_esperado: >
+      Evaluación anual o semestral del avance de metas PDOT
+      desagregadas por parroquia. Semáforo de cumplimiento
+      por zona geográfica. Fundamento para C8 EQUD_03.
+    estado_dato: pendiente_validacion
+
+  - id: EVD_EQUD_05_MCR
+    nombre: Informe de Rendición de Cuentas con Inversión Parroquial
+    tipo: INFORME_RDC
+    formato: PDF / CPCCS Portal
+    fuente_responsable: Alcaldía GADMCM
+    contenido_esperado: >
+      Informe anual RDC que incluya tabla de inversión por parroquia.
+      Disponible en portal CPCCS o LOTAIP.
+    estado_dato: pendiente_validacion
+    nota: >
+      Disponible en portal CPCCS (http://rendicion.cpccs.gob.ec).
+      Buscar bajo: GAD Municipal Montecristi.
+
+  - id: EVD_EQUD_06_MCR
+    nombre: Actas de Asambleas Parroquiales de Priorización
+    tipo: ACTAS
+    formato: PDF físico / GADMCM archivo
+    fuente_responsable: Juntas Parroquiales + GADMCM Participación
+    contenido_esperado: >
+      Actas firmadas de asambleas de presupuesto participativo
+      parroquiales. Listado de proyectos priorizados por
+      comunidad con montos aprobados.
+    estado_dato: pendiente_validacion
+    nota: >
+      Dato más difícil de obtener digitalmente. Puede estar
+      en archivos físicos GADMCM o en portales de Juntas Parroquiales.
+
+  - id: EVD_EQUD_07_MCR
+    nombre: Datos NBI y Pobreza por Parroquia (INEC)
+    tipo: ESTADISTICA_INEC
+    formato: CSV / INEC portal
+    fuente_responsable: INEC — Encuesta Condiciones de Vida / Censo 2022
+    contenido_esperado: >
+      NBI por parroquia: Montecristi urbano vs La Pila vs zona rural.
+      Índice de pobreza por consumo. Permite calcular IRS
+      y verificar si inversión GAD se alinea con necesidades.
+    estado_dato: pendiente_validacion
+    nota: >
+      Dato externo (INEC) — no depende del GADMCM.
+      IRS cantonal = 79.7 confirmado. Desagregación parroquial
+      del IRS requiere acceso a microdatos Censo 2022 o ECV.
+
+  - id: EVD_EQUD_08_MCR
+    nombre: IRS Cantonal Montecristi (Índice de Redistribución Social)
+    tipo: INDICADOR_EXTERNO
+    formato: Reporte SNP / BDE
+    fuente_responsable: SNP / Banco de Desarrollo del Ecuador
+    contenido_esperado: >
+      IRS = 79.7 para cantón Montecristi.
+      Metodología: proporción de recursos asignados al quintil
+      más pobre del cantón. 100 = máxima equidad redistributiva.
+      79.7 = ligera concentración en quintiles medios-altos.
+    estado_dato: confirmado
+    valor_confirmado: "79.7"
+    fuente_dato: INEC / SNP — dato disponible en corpus QUIRA
+    nota: >
+      ÚNICO C5 con estado_dato=confirmado en este circuito.
+      El IRS 79.7 alimenta directamente C9 EQUD_01.
+      Interpretación: el 79.7% de la inversión llega a los
+      sectores más vulnerables. Gap de 20.3% hacia equidad total.
+
+# ============================================================
+# C6 — CONTROL (quién fiscaliza la equidad territorial)
+# ============================================================
+
+CONTROLES:
+
+  - id: CTL_EQUD_01_MCR
+    nombre: Control CGE — Auditoría de Obras e Inversión Territorial
+    tipo: control_externo
+    organo: Contraloría General del Estado
+    mecanismo: >
+      Examen especial de obras e inversiones: verifica si
+      la ejecución presupuestaria corresponde a los planes
+      aprobados y si hay criterios de equidad en distribución.
+      Glosa potencial por inversión sin sustento técnico o
+      concentración injustificada en zonas específicas.
+    norma_habilitante: LOC_CGE_Art_31
+    periodicidad: irregular (bajo planificación CGE)
+    estado_dato: pendiente_validacion
+
+  - id: CTL_EQUD_02_MCR
+    nombre: Control Concejo Municipal — Aprobación Presupuesto y POA
+    tipo: control_interno_politico
+    organo: Concejo Municipal de Montecristi
+    mecanismo: >
+      Aprobación anual del POA y presupuesto (COOTAD_215).
+      El Concejo puede rechazar presupuestos que no apliquen
+      criterios de equidad territorial o vinculación PDOT.
+      Control político sobre la distribución de la inversión.
+    norma_habilitante: COOTAD_215
+    periodicidad: anual
+    estado_dato: pendiente_validacion
+
+  - id: CTL_EQUD_03_MCR
+    nombre: Control CPCCS — Rendición de Cuentas
+    tipo: control_externo_social
+    organo: Consejo de Participación Ciudadana y Control Social
+    mecanismo: >
+      Evaluación de la rendición de cuentas anual del Alcalde.
+      El CPCCS verifica si la RDC incluye información
+      desagregada por territorio y si hay indicadores
+      de equidad en la distribución de recursos.
+    norma_habilitante: CE_208
+    periodicidad: anual
+    estado_dato: pendiente_validacion
+
+  - id: CTL_EQUD_04_MCR
+    nombre: Control SNP — Evaluación PDOT y Metas Territoriales
+    tipo: control_externo_tecnico
+    organo: SNP — Secretaría Nacional de Planificación
+    mecanismo: >
+      Evaluación del cumplimiento de las metas del PDOT
+      en el SIGAD. Seguimiento de indicadores de equidad
+      territorial y NBI por parroquia. Informa el diagnóstico
+      de brechas cantonales y el avance de metas nacionales.
+    norma_habilitante: COPLAFIP_83
+    periodicidad: anual
+    estado_dato: pendiente_validacion
+    revisado_por_experto: false
+
+  - id: CTL_EQUD_05_MCR
+    nombre: Control Social Parroquial — Veeduría Ciudadana
+    tipo: control_social
+    organo: Ciudadanía organizada / Comité de Veeduría
+    mecanismo: >
+      Seguimiento ciudadano a la ejecución de obras en
+      parroquias rurales. Veedurías habilitadas por CPCCS
+      o por la propia ciudadanía (CE_207).
+      Alertas sobre obras incompletas, baja inversión
+      rural o concentración en zona urbana.
+    norma_habilitante: CE_207
+    periodicidad: continuo
+    estado_dato: pendiente_validacion
+
+# ============================================================
+# C7 — OBSERVABILIDAD (cómo QUIRA monitorea la equidad)
+# ============================================================
+
+OBSERVABILIDAD:
+
+  - id: OBS_EQUD_01_MCR
+    nombre: IRS Cantonal — Señal de Inequidad Estructural
+    tipo: indicador_externo
+    fuente_dato: SNP / INEC / BDE
+    mecanismo: >
+      El IRS (Índice de Redistribución Social) es la señal
+      de desempeño redistributivo del cantón. QUIRA lo usa
+      como ancla de calibración: si IRS < umbral → activar
+      análisis de distribución presupuestaria (C4/C5 EQUD).
+    variable_observada: IRS_cantonal
+    valor_actual: 79.7
+    tendencia: pendiente_validacion
+    actualiza_nodo: IND_EQUD_01_MCR
+    estado_dato: confirmado
+
+  - id: OBS_EQUD_02_MCR
+    nombre: Gold Master — Partidas de Inversión por Zona
+    tipo: sistema_informacion_interno
+    fuente_dato: SIAP-ICPI_GOLD_MASTER_v5.5_TGI
+    mecanismo: >
+      Tabla de partidas presupuestarias GADMCM por programa/proyecto.
+      Identificar si hay clasificación geográfica interna
+      (parroquia, zona, proyecto rural vs urbano).
+      Permite calcular ratio inversión-rural / inversión-total.
+    variable_observada: inversion_rural_pct
+    actualiza_nodo: IND_EQUD_02_MCR
+    estado_dato: pendiente_validacion
+    nota: >
+      ACCIÓN: Abrir Gold Master. Verificar si cédula presupuestaria
+      tiene columna de zona geográfica o código de parroquia.
+      Si no → calcular proxy vía proyectos identificados
+      como rurales por nombre/código.
+
+  - id: OBS_EQUD_03_MCR
+    nombre: SIGAD — Cumplimiento Metas PDOT Parroquiales
+    tipo: sistema_informacion_externo
+    fuente_dato: SNP / SIGAD (sigad.gob.ec)
+    mecanismo: >
+      Sistema de Información para los Gobiernos Autónomos
+      Descentralizados. Contiene el avance de cumplimiento
+      de metas PDOT por parroquia. Permite medir brecha
+      de desarrollo rural vs urbano en Montecristi.
+    variable_observada: cumplimiento_metas_pdot_parroquial
+    actualiza_nodo: IND_EQUD_03_MCR
+    estado_dato: pendiente_validacion
+
+  - id: OBS_EQUD_04_MCR
+    nombre: INEC Censo 2022 — NBI por Parroquia Montecristi
+    tipo: estadistica_oficial
+    fuente_dato: INEC Censo de Población y Vivienda 2022
+    mecanismo: >
+      Datos censales de Necesidades Básicas Insatisfechas
+      por parroquia: Montecristi urbano, La Pila, Montecristi
+      rural, otras parroquias. Referencia estructural para
+      evaluar si la inversión responde a las necesidades.
+    variable_observada: nbi_parroquial
+    actualiza_nodo: IND_EQUD_04_MCR
+    estado_dato: pendiente_validacion
+    nota: >
+      Datos Censo 2022 disponibles en INEC portal.
+      URL: https://www.ecuadorencifras.gob.ec/censo-de-poblacion-y-vivienda/
+
+  - id: OBS_EQUD_05_MCR
+    nombre: LOTAIP — Información Pública Geolocalizada de Obras
+    tipo: transparencia_activa
+    fuente_dato: Portal LOTAIP GADMCM
+    mecanismo: >
+      Listado público de obras ejecutadas con ubicación
+      geográfica (LOTAIP lit. k y lit. m).
+      Cruzar obras ejecutadas con zona geográfica para
+      calcular distribución territorial de la inversión.
+    variable_observada: obras_ejecutadas_por_zona
+    actualiza_nodo: IND_EQUD_02_MCR
+    estado_dato: pendiente_validacion
+
+# ============================================================
+# C8 — INDICADORES (métricas del circuito EQUIDAD)
+# ============================================================
+
+INDICADORES:
+
+  - id: IND_EQUD_01_MCR
+    nombre: IRS Cantonal — Índice de Redistribución Social
+    descripcion: >
+      Proporción de la inversión pública que llega a los
+      quintiles más pobres del cantón. Señal estructural
+      de equidad redistributiva. Fuente: SNP/INEC.
+    formula: "(inversion_en_quintiles_pobres / inversion_total_canton) * 100"
+    unidad: "%"
+    meta_referencia: ">= 85"
+    valor_actual: "79.7"
+    estado_dato: confirmado
+    fuente_dato: SNP / INEC — corpus QUIRA
+    umbral_verde: ">= 85"
+    umbral_amarillo: ">= 70 y < 85"
+    umbral_rojo: "< 70"
+    semaforo_actual: amarillo
+    nota: >
+      IRS 79.7 = AMARILLO. El cantón tiene redistribución
+      por encima del mínimo pero por debajo del óptimo.
+      Correlacionar con IND_EQUD_02 (inversión rural) para
+      determinar si la inequidad es geográfica o por quintil.
+    dominio_tgi: Dom04
+    tgi_codigo: D4_TERRITORIO
+
+  - id: IND_EQUD_02_MCR
+    nombre: Tasa de Inversión Rural vs Total
+    descripcion: >
+      Porcentaje de la inversión GADMCM ejecutada en
+      parroquias rurales sobre la inversión total cantonal.
+      Proxy de equidad geográfica intra-cantonal.
+      Idealmente proporcional a la población rural.
+    formula: "(inversion_ejecutada_rural / inversion_total_ejecutada) * 100"
+    unidad: "%"
+    meta_referencia: ">= poblacion_rural_pct (proporcionalidad)"
+    meta_referencia_nota: >
+      La meta NO es una cifra fija. Es proporcionalidad:
+      si el 40% de la población vive en zona rural →
+      meta = 40% de inversión en zona rural.
+      Desviación > 10pp hacia zona urbana = inequidad observable.
+    estado_dato: pendiente_validacion
+    umbral_verde: "Diferencia < 5pp respecto a pct_poblacion_rural"
+    umbral_amarillo: "Diferencia 5-15pp respecto a pct_poblacion_rural"
+    umbral_rojo: "Diferencia > 15pp respecto a pct_poblacion_rural (subinversión rural)"
+    dominio_tgi: Dom04
+    tgi_codigo: D4_TERRITORIO
+
+  - id: IND_EQUD_03_MCR
+    nombre: Cumplimiento Metas PDOT Parroquiales (% promedio)
+    descripcion: >
+      Promedio del porcentaje de cumplimiento de metas PDOT
+      en parroquias rurales. Permite comparar si el avance
+      en parroquias rurales es similar al de la cabecera cantonal
+      (equidad en calidad del servicio, no solo en inversión).
+    formula: "promedio(cumplimiento_meta_parroquia_i) para i en parroquias_rurales"
+    unidad: "%"
+    meta_referencia: ">= 70"
+    estado_dato: pendiente_validacion
+    umbral_verde: ">= 70"
+    umbral_amarillo: ">= 50 y < 70"
+    umbral_rojo: "< 50"
+    dominio_tgi: Dom04
+    tgi_codigo: D4_TERRITORIO
+
+  - id: IND_EQUD_04_MCR
+    nombre: Brecha NBI Urbano-Rural
+    descripcion: >
+      Diferencia en puntos porcentuales del NBI entre
+      la parroquia urbana (Montecristi) y las parroquias
+      rurales. Indicador de inequidad estructural que el
+      GAD debe reducir mediante inversión diferenciada.
+    formula: "NBI_parroquias_rurales_promedio - NBI_parroquia_urbana"
+    unidad: "pp (puntos porcentuales)"
+    meta_referencia: "Reduccion > 0 en cada período"
+    meta_referencia_nota: >
+      La meta no es alcanzar NBI=0 (estructural/externo).
+      Es reducir la brecha respecto al período anterior.
+      Brecha estancada o creciente = inversión no equitativa.
+    estado_dato: pendiente_validacion
+    umbral_verde: "Brecha reduciéndose > 2pp vs período anterior"
+    umbral_amarillo: "Brecha estable (variación < 2pp)"
+    umbral_rojo: "Brecha creciente (zona rural empeora vs urbana)"
+    dominio_tgi: Dom12
+    tgi_codigo: D12_SOCIAL
+
+  - id: IND_EQUD_05_MCR
+    nombre: Vinculación POA-PDOT (Equidad Territorial)
+    descripcion: >
+      Porcentaje de proyectos del POA que tienen referencia
+      explícita a zonas rurales o parroquiales del PDOT.
+      Mide si la planificación operativa respeta los
+      criterios de distribución territorial del PDOT.
+    formula: "(proyectos_poa_con_referencia_pdot_territorial / total_proyectos_poa) * 100"
+    unidad: "%"
+    meta_referencia: ">= 80"
+    estado_dato: pendiente_validacion
+    umbral_verde: ">= 80"
+    umbral_amarillo: ">= 50 y < 80"
+    umbral_rojo: "< 50"
+    dominio_tgi: Dom02
+    tgi_codigo: D2_FINANZAS
+
+  - id: IND_EQUD_06_MCR
+    nombre: Cobertura Rendición de Cuentas por Parroquia
+    descripcion: >
+      Número de parroquias rurales donde se realizó rendición
+      de cuentas o presentación de resultados en el último año.
+      Mide si la transparencia territorial alcanza las zonas
+      rurales o se concentra en la cabecera cantonal.
+    formula: "parroquias_con_rdc / total_parroquias_rurales_canton"
+    unidad: "fracción o número entero"
+    meta_referencia: "= total_parroquias_rurales (100% cobertura)"
+    estado_dato: pendiente_validacion
+    umbral_verde: "= total parroquias rurales"
+    umbral_amarillo: ">= 50% de parroquias rurales cubiertas"
+    umbral_rojo: "< 50% (acceso asimétrico a rendición de cuentas)"
+    dominio_tgi: Dom07
+    tgi_codigo: D7_TRANSPARENCIA
+
+# ============================================================
+# C9 — RESULTADO TERRITORIAL (medición del impacto real)
+# ============================================================
+
+RESULTADO_TERRITORIAL:
+
+  - id: RES_EQUD_01_MCR
+    nombre: IRS Montecristi — Línea Base
+    indicador: IND_EQUD_01_MCR
+    valor: "79.7"
+    fecha_medicion: "2022"
+    periodo_referencia: "Censo 2022 / ECV"
+    fuente_dato: SNP / INEC
+    estado_dato: confirmado
+    naturaleza_valor: derivado
+    interpretacion: >
+      El 79.7% de la inversión pública en Montecristi llega a
+      los sectores más vulnerables (quintiles 1-3). El 20.3%
+      restante se concentra en quintiles medios-altos.
+      Comparado con el promedio nacional (estimado ~75-80),
+      Montecristi está en rango esperado pero con margen
+      de mejora hacia el umbral verde (>= 85).
+    semaforo: amarillo
+    accion_quira: >
+      QUIRA debe rastrear si la inversión GADMCM 2023-2025
+      ha movido este indicador. Requiere IRS actualizado
+      post-Censo 2022 o estimación metodológica.
+
+  - id: RES_EQUD_02_MCR
+    nombre: Inversión Rural vs Total — Ejercicio 2024
+    indicador: IND_EQUD_02_MCR
+    valor: pendiente
+    periodo_referencia: "2024"
+    fuente_dato: Gold Master / SIGEF
+    estado_dato: pendiente_validacion
+    interpretacion: pendiente
+    nota: >
+      ACCIÓN PRIORITARIA:
+      1. Abrir SIAP-ICPI_GOLD_MASTER_v5.5_TGI → tab GADMCM
+      2. Filtrar proyectos/obras con código o nombre que
+         indiquen ubicación rural (parroquia La Pila, etc.)
+      3. Suma inversión rural / suma inversión total = ratio
+      4. Comparar con % población rural Montecristi (INEC)
+
+  - id: RES_EQUD_03_MCR
+    nombre: Cumplimiento Metas PDOT Parroquiales 2024
+    indicador: IND_EQUD_03_MCR
+    valor: pendiente
+    periodo_referencia: "2024"
+    fuente_dato: SIGAD / Informes GADMCM Planificación
+    estado_dato: pendiente_validacion
+    nota: >
+      Requiere acceso al SIGAD o al informe de evaluación
+      PDOT del GADMCM. Verificar en LOTAIP GADMCM
+      (numeral j: informes de rendición de cuentas).
+
+  - id: RES_EQUD_04_MCR
+    nombre: Brecha NBI Montecristi Urbano vs Parroquias Rurales
+    indicador: IND_EQUD_04_MCR
+    valor: 32.0
+    unidad: "pp (puntos porcentuales NBI rural - NBI urbana)"
+    periodo_referencia: "Censo 2022"
+    fuente_dato: INEC Censo 2022 / PDOT Montecristi 2023-2027
+    estado_dato: confirmado
+    naturaleza_valor: calculado
+    semaforo: rojo
+    detalle:
+      nbi_area_urbana_2022: 21.3
+      nbi_area_rural_2022: 53.3
+      brecha_pp: 32.0
+      pobreza_multidimensional_urbana_2022: 23.0
+      pobreza_multidimensional_rural_2022: 67.9
+      pobreza_extrema_multidimensional_urbana_2022: 4.8
+      pobreza_extrema_multidimensional_rural_2022: 40.2
+      fuente: "INEC Censo 2022 / PDOT Bicentenario págs. 316 y 375"
+    interpretacion: >
+      Brecha de 32 puntos porcentuales entre NBI urbana (21.3%) y NBI
+      rural (53.3%) — SEMAFORO ROJO. Inequidad territorial estructural
+      alta. La zona rural multiplica por 2.5x la pobreza por NBI de la
+      zona urbana. La brecha en pobreza multidimensional es aún mayor:
+      67.9% vs 23.0% = 44.9pp. Señal de que la inversión históricamente
+      ha favorecido la cabecera cantonal. Fuente: PDOT Sintesis T130 =
+      "Alta brecha urbana-rural en NBI (21% vs 53% en 2022)".
+    nota: >
+      Dato confirmado desde PDOT KB (KB_NBI + KB_SINTESIS T130 + T130).
+      La brecha de 32pp es a nivel de ZONA (urbana vs rural), no por
+      parroquia individual. Parroquial NBI requiere microdatos INEC
+      (https://www.ecuadorencifras.gob.ec/censo-de-poblacion-y-vivienda/).
+      Pobreza por ingresos 2022: urbana 18.4%, rural 42.2%.
+
+  - id: RES_EQUD_05_MCR
+    nombre: D2-D12 Coeficiente de Equidad QUIRA
+    descripcion: >
+      Índice compuesto QUIRA que integra múltiples señales
+      del circuito EQUIDAD: IRS + inversión rural + NBI
+      + cumplimiento PDOT. Señal consolidada de equidad
+      territorial para el Centro de Mando.
+    valor: pendiente
+    formula_compuesta: >
+      (IND_EQUD_01_MCR * 0.35) +
+      (IND_EQUD_02_ratio * 0.30) +
+      (IND_EQUD_03_MCR * 0.20) +
+      (brecha_NBI_reduccion_factor * 0.15)
+    ponderacion_nota: >
+      Ponderación preliminar. IRS tiene mayor peso (0.35)
+      por ser el indicador externo más robusto.
+      Inversión rural (0.30) es el indicador más accionable.
+      Requiere validación metodológica experta.
+    estado_dato: pendiente_validacion
+    semaforo: pendiente
+    dominio_tgi: Dom04
+
+# ============================================================
+# JERARQUÍA TERRITORIAL — PARROQUIAS DEL CANTÓN MONTECRISTI
+# Nivel 3 en la escala QUIRA (Cantón=Nivel 2 → Parroquia=Nivel 3)
+# ============================================================
+# Fuente: PDOT Montecristi / INEC DPA 2024
+# revisado_por_experto: false — verificar Aníbal San Andrés
+# (puede ser recinto en lugar de parroquia autónoma)
+# ============================================================
+
+PARROQUIAS_CANTON:
+  canton_id: ECU-13-MONTECRISTI
+  nivel_jerarquia: 3
+  revisado_por_experto: false
+  unidades:
+    - id: ECU-13-MONTECRISTI-MCU
+      nombre: Montecristi
+      parroquia_short: MCU
+      tipo: urbana
+      participacion_especial: false
+      nota: >
+        Cabecera cantonal. Baseline comparativo para brechas.
+        Nivel 4 bajo esta parroquia: barrios y ciudadelas
+        (COOTAD Art.306 — Comités Barriales como actores Dom08).
+        Subdivisión pendiente para futuro sprint Nivel 4.
+
+    - id: ECU-13-MONTECRISTI-LPL
+      nombre: La Pila
+      parroquia_short: LPL
+      tipo: rural
+      participacion_especial: false
+      nota: >
+        Conocida por artesanías de barro.
+        Nivel 4 bajo esta parroquia: sitios y recintos
+        (denominaciones geográficas Costa/Manabí — sin personería
+        jurídica propia). Subdivisión pendiente para futuro sprint.
+
+    - id: ECU-13-MONTECRISTI-CLR
+      nombre: Colorado
+      parroquia_short: CLR
+      tipo: urbana
+      participacion_especial: false
+      nota: >
+        Parroquia urbana. Servicio de agua: 1 vez cada 15 días
+        (zona compartida con Leónidas Proaño y General Eloy Alfaro).
+
+    - id: ECU-13-MONTECRISTI-PRN
+      nombre: Leonidas Proaño
+      parroquia_short: PRN
+      tipo: urbana
+      participacion_especial: false
+      nota: >
+        Parroquia urbana. Servicio de agua: 1 vez cada 15 días.
+
+    - id: ECU-13-MONTECRISTI-ANS
+      nombre: Aníbal San Andrés
+      parroquia_short: ANS
+      tipo: urbana
+      participacion_especial: false
+      nota: >
+        Parroquia urbana. Servicio de agua: 1 vez por semana
+        (misma zona que cabecera cantonal).
+
+    - id: ECU-13-MONTECRISTI-GEA
+      nombre: General Eloy Alfaro
+      parroquia_short: GEA
+      tipo: urbana
+      participacion_especial: false
+      nota: >
+        Parroquia urbana. Servicio de agua: 1 vez cada 15 días.
+        Cobertura desechos sólidos: 95% (MONTECRISTI-EP).
+
+    - id: ECU-13-MONTECRISTI-ISM
+      nombre: Isabel Muentes
+      parroquia_short: ISM
+      tipo: urbana
+      participacion_especial: false
+      nota: >
+        Parroquia urbana. Cobertura desechos sólidos: 70% —
+        la más baja del cantón (fuente: MONTECRISTI-EP / PDOT).
+
+# ============================================================
+# C9 — RESULTADO TERRITORIAL PARROQUIAL (Nivel 3)
+# Extiende C9 cantonal con desagregación parroquial.
+# Nodo padre: RES_EQUD_NN_MCR -[:DESAGREGA_EN]-> RES_EQUD_NN_PAR
+# Indicadores cubiertos: EQUD_01 (NBI/IRS) · EQUD_04 (NBI absoluto)
+#                        EQUD_02 (inversión por parroquia)
+# ============================================================
+
+RESULTADO_TERRITORIAL_PARROQUIAL:
+
+  # ─── IND_EQUD_01: NBI/IRS — nivel parroquial ─────────────
+  # Fuente: INEC Censo 2022 microdatos parroquiales
+  # Permite comparar redistribución por zona y testear HIP_EQUD_01
+
+  - id: RES_EQUD_01_MCU
+    nombre: NBI/Redistribución — Montecristi Urbano
+    indicador: IND_EQUD_01_MCR
+    nivel_territorial: parroquia
+    territorio: Montecristi Urbano
+    parroquia_id: ECU-13-MONTECRISTI-MCU
+    canton_id: ECU-13-MONTECRISTI
+    nodo_padre: RES_EQUD_01_MCR
+    relacion_padre: DESAGREGA_EN
+    valor: null
+    periodo_referencia: "Censo 2022"
+    fuente_dato: INEC Censo 2022 — microdatos nivel parroquial
+    estado_dato: pendiente_microdato
+    fuente_requerida: INEC_DPA_PARROQUIAL
+    naturaleza_valor: proxy
+    proxy_de:
+      fuente_valor: "NBI zona_inec urbana cantonal INEC 2022"
+      nivel_fuente: zona_inec
+      valor_fuente: 21.3
+      supuesto: >
+        Cabecera cantonal hereda promedio zona_inec urbana. Supuesto
+        razonable para la cabecera, pero MCU contiene comunas periféricas
+        (Los 3 Bajos, Las 2 Toallas) con posible NBI > promedio urbano.
+      validez: provisional
+
+  - id: RES_EQUD_01_LPL
+    nombre: NBI/Redistribución — La Pila
+    indicador: IND_EQUD_01_MCR
+    nivel_territorial: parroquia
+    territorio: La Pila
+    parroquia_id: ECU-13-MONTECRISTI-LPL
+    canton_id: ECU-13-MONTECRISTI
+    nodo_padre: RES_EQUD_01_MCR
+    relacion_padre: DESAGREGA_EN
+    valor: null
+    periodo_referencia: "Censo 2022"
+    fuente_dato: INEC Censo 2022 — microdatos nivel parroquial
+    estado_dato: pendiente_microdato
+    fuente_requerida: INEC_DPA_PARROQUIAL
+    naturaleza_valor: proxy
+    proxy_de:
+      fuente_valor: "NBI zona_inec rural cantonal INEC 2022"
+      nivel_fuente: zona_inec
+      valor_fuente: 53.3
+      supuesto: >
+        Única parroquia rural del cantón. Hereda promedio zona_inec
+        rural cantonal. Supuesto razonable — La Pila es la referencia
+        rural de toda la brecha NBI 32pp. Si NBI_LPL >> 53.3% confirma
+        que el proxy subestima la inequidad real.
+      validez: provisional
+
+  - id: RES_EQUD_01_CLR
+    nombre: NBI/Redistribución — Colorado
+    indicador: IND_EQUD_01_MCR
+    nivel_territorial: parroquia
+    territorio: Colorado
+    parroquia_id: ECU-13-MONTECRISTI-CLR
+    canton_id: ECU-13-MONTECRISTI
+    nodo_padre: RES_EQUD_01_MCR
+    relacion_padre: DESAGREGA_EN
+    valor: null
+    periodo_referencia: "Censo 2022"
+    fuente_dato: INEC Censo 2022 — microdatos nivel parroquial
+    estado_dato: pendiente_microdato
+    fuente_requerida: INEC_DPA_PARROQUIAL
+    naturaleza_valor: proxy
+    proxy_de:
+      fuente_valor: "NBI zona_inec urbana cantonal INEC 2022"
+      nivel_fuente: zona_inec
+      valor_fuente: 21.3
+      supuesto: >
+        Parroquia urbana hereda promedio zona_inec urbana cantonal.
+        NOTA: Colorado contiene comunas El Arroyo y El Chorrillo con
+        características rurales — su NBI real puede superar el promedio
+        urbano cantonal. Proxy de baja confianza para esta parroquia.
+      validez: provisional
+
+  - id: RES_EQUD_01_PRN
+    nombre: NBI/Redistribución — Leonidas Proaño
+    indicador: IND_EQUD_01_MCR
+    nivel_territorial: parroquia
+    territorio: Leonidas Proaño
+    parroquia_id: ECU-13-MONTECRISTI-PRN
+    canton_id: ECU-13-MONTECRISTI
+    nodo_padre: RES_EQUD_01_MCR
+    relacion_padre: DESAGREGA_EN
+    valor: null
+    periodo_referencia: "Censo 2022"
+    fuente_dato: INEC Censo 2022 — microdatos nivel parroquial
+    estado_dato: pendiente_microdato
+    fuente_requerida: INEC_DPA_PARROQUIAL
+    naturaleza_valor: proxy
+    proxy_de:
+      fuente_valor: "NBI zona_inec urbana cantonal INEC 2022"
+      nivel_fuente: zona_inec
+      valor_fuente: 21.3
+      supuesto: >
+        Parroquia urbana hereda promedio zona_inec urbana cantonal.
+        Supuesto no verificado — diferencias reales probables dado que
+        parroquias urbanas de Montecristi contienen asentamientos con
+        características rurales (PDOT Bicentenario).
+      validez: provisional
+
+  - id: RES_EQUD_01_ANS
+    nombre: NBI/Redistribución — Aníbal San Andrés
+    indicador: IND_EQUD_01_MCR
+    nivel_territorial: parroquia
+    territorio: Aníbal San Andrés
+    parroquia_id: ECU-13-MONTECRISTI-ANS
+    canton_id: ECU-13-MONTECRISTI
+    nodo_padre: RES_EQUD_01_MCR
+    relacion_padre: DESAGREGA_EN
+    valor: null
+    periodo_referencia: "Censo 2022"
+    fuente_dato: INEC Censo 2022 — microdatos nivel parroquial
+    estado_dato: pendiente_microdato
+    fuente_requerida: INEC_DPA_PARROQUIAL
+    naturaleza_valor: proxy
+    proxy_de:
+      fuente_valor: "NBI zona_inec urbana cantonal INEC 2022"
+      nivel_fuente: zona_inec
+      valor_fuente: 21.3
+      supuesto: >
+        Parroquia urbana hereda promedio zona_inec urbana cantonal.
+        Supuesto no verificado — diferencias reales probables dado que
+        parroquias urbanas de Montecristi contienen asentamientos con
+        características rurales (PDOT Bicentenario).
+      validez: provisional
+
+  - id: RES_EQUD_01_GEA
+    nombre: NBI/Redistribución — General Eloy Alfaro
+    indicador: IND_EQUD_01_MCR
+    nivel_territorial: parroquia
+    territorio: General Eloy Alfaro
+    parroquia_id: ECU-13-MONTECRISTI-GEA
+    canton_id: ECU-13-MONTECRISTI
+    nodo_padre: RES_EQUD_01_MCR
+    relacion_padre: DESAGREGA_EN
+    valor: null
+    periodo_referencia: "Censo 2022"
+    fuente_dato: INEC Censo 2022 — microdatos nivel parroquial
+    estado_dato: pendiente_microdato
+    fuente_requerida: INEC_DPA_PARROQUIAL
+    naturaleza_valor: proxy
+    proxy_de:
+      fuente_valor: "NBI zona_inec urbana cantonal INEC 2022"
+      nivel_fuente: zona_inec
+      valor_fuente: 21.3
+      supuesto: >
+        Parroquia urbana hereda promedio zona_inec urbana cantonal.
+        Supuesto no verificado — diferencias reales probables dado que
+        parroquias urbanas de Montecristi contienen asentamientos con
+        características rurales (PDOT Bicentenario).
+      validez: provisional
+
+  - id: RES_EQUD_01_ISM
+    nombre: NBI/Redistribución — Isabel Muentes
+    indicador: IND_EQUD_01_MCR
+    nivel_territorial: parroquia
+    territorio: Isabel Muentes
+    parroquia_id: ECU-13-MONTECRISTI-ISM
+    canton_id: ECU-13-MONTECRISTI
+    nodo_padre: RES_EQUD_01_MCR
+    relacion_padre: DESAGREGA_EN
+    valor: null
+    periodo_referencia: "Censo 2022"
+    fuente_dato: INEC Censo 2022 — microdatos nivel parroquial
+    estado_dato: pendiente_microdato
+    fuente_requerida: INEC_DPA_PARROQUIAL
+    naturaleza_valor: proxy
+    proxy_de:
+      fuente_valor: "NBI zona_inec urbana cantonal INEC 2022"
+      nivel_fuente: zona_inec
+      valor_fuente: 21.3
+      supuesto: >
+        Parroquia urbana hereda promedio zona_inec urbana cantonal.
+        ALERTA OUTLIER: Isabel Muentes tiene cobertura de desechos
+        sólidos del 70% — la más baja del cantón. Su NBI real puede
+        ser significativamente mayor que 21.3%. Proxy de baja confianza.
+        Prioridad alta para resolución con microdatos INEC DPA.
+      validez: provisional
+
+  # ─── IND_EQUD_04: NBI absoluto por parroquia ─────────────
+  # Fuente: INEC Censo 2022 tabla NBI por parroquia
+  # Permite calcular brecha NBI_rural - NBI_urbano por zona
+
+  - id: RES_EQUD_04_MCU
+    nombre: NBI Absoluto — Montecristi Urbano
+    indicador: IND_EQUD_04_MCR
+    nivel_territorial: parroquia
+    territorio: Montecristi Urbano
+    parroquia_id: ECU-13-MONTECRISTI-MCU
+    canton_id: ECU-13-MONTECRISTI
+    nodo_padre: RES_EQUD_04_MCR
+    relacion_padre: DESAGREGA_EN
+    valor: null
+    periodo_referencia: "Censo 2022"
+    fuente_dato: INEC Censo 2022 — tabla NBI parroquial
+    estado_dato: pendiente_microdato
+    fuente_requerida: INEC_DPA_PARROQUIAL
+    naturaleza_valor: proxy
+    proxy_de:
+      fuente_valor: "NBI zona_inec urbana cantonal INEC 2022"
+      nivel_fuente: zona_inec
+      valor_fuente: 21.3
+      supuesto: "Cabecera urbana hereda promedio zona_inec urbana. Supuesto provisional."
+      validez: provisional
+
+  - id: RES_EQUD_04_LPL
+    nombre: NBI Absoluto — La Pila
+    indicador: IND_EQUD_04_MCR
+    nivel_territorial: parroquia
+    territorio: La Pila
+    parroquia_id: ECU-13-MONTECRISTI-LPL
+    canton_id: ECU-13-MONTECRISTI
+    nodo_padre: RES_EQUD_04_MCR
+    relacion_padre: DESAGREGA_EN
+    valor: null
+    periodo_referencia: "Censo 2022"
+    fuente_dato: INEC Censo 2022 — tabla NBI parroquial
+    estado_dato: pendiente_microdato
+    fuente_requerida: INEC_DPA_PARROQUIAL
+    naturaleza_valor: proxy
+    proxy_de:
+      fuente_valor: "NBI zona_inec rural cantonal INEC 2022"
+      nivel_fuente: zona_inec
+      valor_fuente: 53.3
+      supuesto: "Única parroquia rural — hereda promedio zona_inec rural. Proxy razonable."
+      validez: provisional
+
+  - id: RES_EQUD_04_CLR
+    nombre: NBI Absoluto — Colorado
+    indicador: IND_EQUD_04_MCR
+    nivel_territorial: parroquia
+    territorio: Colorado
+    parroquia_id: ECU-13-MONTECRISTI-CLR
+    canton_id: ECU-13-MONTECRISTI
+    nodo_padre: RES_EQUD_04_MCR
+    relacion_padre: DESAGREGA_EN
+    valor: null
+    periodo_referencia: "Censo 2022"
+    fuente_dato: INEC Censo 2022 — tabla NBI parroquial
+    estado_dato: pendiente_microdato
+    fuente_requerida: INEC_DPA_PARROQUIAL
+    naturaleza_valor: proxy
+    proxy_de:
+      fuente_valor: "NBI zona_inec urbana cantonal INEC 2022"
+      nivel_fuente: zona_inec
+      valor_fuente: 21.3
+      supuesto: >
+        Parroquia urbana hereda proxy urbano cantonal. NOTA: Colorado
+        contiene comunas El Arroyo y El Chorrillo — NBI real puede superar
+        el promedio urbano. Proxy de baja confianza.
+      validez: provisional
+
+  - id: RES_EQUD_04_PRN
+    nombre: NBI Absoluto — Leonidas Proaño
+    indicador: IND_EQUD_04_MCR
+    nivel_territorial: parroquia
+    territorio: Leonidas Proaño
+    parroquia_id: ECU-13-MONTECRISTI-PRN
+    canton_id: ECU-13-MONTECRISTI
+    nodo_padre: RES_EQUD_04_MCR
+    relacion_padre: DESAGREGA_EN
+    valor: null
+    periodo_referencia: "Censo 2022"
+    fuente_dato: INEC Censo 2022 — tabla NBI parroquial
+    estado_dato: pendiente_microdato
+    fuente_requerida: INEC_DPA_PARROQUIAL
+    naturaleza_valor: proxy
+    proxy_de:
+      fuente_valor: "NBI zona_inec urbana cantonal INEC 2022"
+      nivel_fuente: zona_inec
+      valor_fuente: 21.3
+      supuesto: "Parroquia urbana hereda proxy urbano cantonal. Supuesto provisional."
+      validez: provisional
+
+  - id: RES_EQUD_04_ANS
+    nombre: NBI Absoluto — Aníbal San Andrés
+    indicador: IND_EQUD_04_MCR
+    nivel_territorial: parroquia
+    territorio: Aníbal San Andrés
+    parroquia_id: ECU-13-MONTECRISTI-ANS
+    canton_id: ECU-13-MONTECRISTI
+    nodo_padre: RES_EQUD_04_MCR
+    relacion_padre: DESAGREGA_EN
+    valor: null
+    periodo_referencia: "Censo 2022"
+    fuente_dato: INEC Censo 2022 — tabla NBI parroquial
+    estado_dato: pendiente_microdato
+    fuente_requerida: INEC_DPA_PARROQUIAL
+    naturaleza_valor: proxy
+    proxy_de:
+      fuente_valor: "NBI zona_inec urbana cantonal INEC 2022"
+      nivel_fuente: zona_inec
+      valor_fuente: 21.3
+      supuesto: "Parroquia urbana. Nota mixta anterior eliminada — confirmada como urbana."
+      validez: provisional
+
+  - id: RES_EQUD_04_GEA
+    nombre: NBI Absoluto — General Eloy Alfaro
+    indicador: IND_EQUD_04_MCR
+    nivel_territorial: parroquia
+    territorio: General Eloy Alfaro
+    parroquia_id: ECU-13-MONTECRISTI-GEA
+    canton_id: ECU-13-MONTECRISTI
+    nodo_padre: RES_EQUD_04_MCR
+    relacion_padre: DESAGREGA_EN
+    valor: null
+    periodo_referencia: "Censo 2022"
+    fuente_dato: INEC Censo 2022 — tabla NBI parroquial
+    estado_dato: pendiente_microdato
+    fuente_requerida: INEC_DPA_PARROQUIAL
+    naturaleza_valor: proxy
+    proxy_de:
+      fuente_valor: "NBI zona_inec urbana cantonal INEC 2022"
+      nivel_fuente: zona_inec
+      valor_fuente: 21.3
+      supuesto: "Parroquia urbana (error anterior 'rural' corregido). Proxy urbano provisional."
+      validez: provisional
+
+  - id: RES_EQUD_04_ISM
+    nombre: NBI Absoluto — Isabel Muentes
+    indicador: IND_EQUD_04_MCR
+    nivel_territorial: parroquia
+    territorio: Isabel Muentes
+    parroquia_id: ECU-13-MONTECRISTI-ISM
+    canton_id: ECU-13-MONTECRISTI
+    nodo_padre: RES_EQUD_04_MCR
+    relacion_padre: DESAGREGA_EN
+    valor: null
+    periodo_referencia: "Censo 2022"
+    fuente_dato: INEC Censo 2022 — tabla NBI parroquial
+    estado_dato: pendiente_microdato
+    fuente_requerida: INEC_DPA_PARROQUIAL
+    naturaleza_valor: proxy
+    proxy_de:
+      fuente_valor: "NBI zona_inec urbana cantonal INEC 2022"
+      nivel_fuente: zona_inec
+      valor_fuente: 21.3
+      supuesto: >
+        Parroquia urbana (error anterior 'rural' corregido). ALERTA:
+        Desechos sólidos 70% — señal de rezago real. NBI puede superar
+        el proxy urbano cantonal. Prioridad alta para microdatos DPA.
+      validez: provisional
+
+  # ─── IND_EQUD_02: Inversión ejecutada por parroquia ──────
+  # Fuente: SIGEF / Gold Master (proyectos georreferenciados)
+  # Permite calcular inversión per cápita por parroquia y brecha
+
+  - id: RES_EQUD_02_MCU
+    nombre: Inversión Ejecutada — Montecristi Urbano
+    indicador: IND_EQUD_02_MCR
+    nivel_territorial: parroquia
+    territorio: Montecristi Urbano
+    parroquia_id: ECU-13-MONTECRISTI-MCU
+    canton_id: ECU-13-MONTECRISTI
+    nodo_padre: RES_EQUD_02_MCR
+    relacion_padre: DESAGREGA_EN
+    valor: null
+    unidad: USD_devengado
+    periodo_referencia: "2024"
+    fuente_dato: SIGEF — partidas con código/nombre zona urbana
+    estado_dato: pendiente_validacion
+
+  - id: RES_EQUD_02_LPL
+    nombre: Inversión Ejecutada — La Pila
+    indicador: IND_EQUD_02_MCR
+    nivel_territorial: parroquia
+    territorio: La Pila
+    parroquia_id: ECU-13-MONTECRISTI-LPL
+    canton_id: ECU-13-MONTECRISTI
+    nodo_padre: RES_EQUD_02_MCR
+    relacion_padre: DESAGREGA_EN
+    valor: null
+    unidad: USD_devengado
+    periodo_referencia: "2024"
+    fuente_dato: SIGEF — proyectos con "La Pila" en nombre o ubicación
+    estado_dato: pendiente_validacion
+
+  - id: RES_EQUD_02_CLR
+    nombre: Inversión Ejecutada — Colorado
+    indicador: IND_EQUD_02_MCR
+    nivel_territorial: parroquia
+    territorio: Colorado
+    parroquia_id: ECU-13-MONTECRISTI-CLR
+    canton_id: ECU-13-MONTECRISTI
+    nodo_padre: RES_EQUD_02_MCR
+    relacion_padre: DESAGREGA_EN
+    valor: null
+    unidad: USD_devengado
+    periodo_referencia: "2024"
+    fuente_dato: SIGEF
+    estado_dato: pendiente_validacion
+
+  - id: RES_EQUD_02_PRN
+    nombre: Inversión Ejecutada — Leonidas Proaño
+    indicador: IND_EQUD_02_MCR
+    nivel_territorial: parroquia
+    territorio: Leonidas Proaño
+    parroquia_id: ECU-13-MONTECRISTI-PRN
+    canton_id: ECU-13-MONTECRISTI
+    nodo_padre: RES_EQUD_02_MCR
+    relacion_padre: DESAGREGA_EN
+    valor: null
+    unidad: USD_devengado
+    periodo_referencia: "2024"
+    fuente_dato: SIGEF
+    estado_dato: pendiente_validacion
+
+  - id: RES_EQUD_02_ANS
+    nombre: Inversión Ejecutada — Aníbal San Andrés
+    indicador: IND_EQUD_02_MCR
+    nivel_territorial: parroquia
+    territorio: Aníbal San Andrés
+    parroquia_id: ECU-13-MONTECRISTI-ANS
+    canton_id: ECU-13-MONTECRISTI
+    nodo_padre: RES_EQUD_02_MCR
+    relacion_padre: DESAGREGA_EN
+    valor: null
+    unidad: USD_devengado
+    periodo_referencia: "2024"
+    fuente_dato: SIGEF
+    estado_dato: pendiente_validacion
+
+  - id: RES_EQUD_02_GEA
+    nombre: Inversión Ejecutada — General Eloy Alfaro
+    indicador: IND_EQUD_02_MCR
+    nivel_territorial: parroquia
+    territorio: General Eloy Alfaro
+    parroquia_id: ECU-13-MONTECRISTI-GEA
+    canton_id: ECU-13-MONTECRISTI
+    nodo_padre: RES_EQUD_02_MCR
+    relacion_padre: DESAGREGA_EN
+    valor: null
+    unidad: USD_devengado
+    periodo_referencia: "2024"
+    fuente_dato: SIGEF
+    estado_dato: pendiente_validacion
+
+  - id: RES_EQUD_02_ISM
+    nombre: Inversión Ejecutada — Isabel Muentes
+    indicador: IND_EQUD_02_MCR
+    nivel_territorial: parroquia
+    territorio: Isabel Muentes
+    parroquia_id: ECU-13-MONTECRISTI-ISM
+    canton_id: ECU-13-MONTECRISTI
+    nodo_padre: RES_EQUD_02_MCR
+    relacion_padre: DESAGREGA_EN
+    valor: null
+    unidad: USD_devengado
+    periodo_referencia: "2024"
+    fuente_dato: SIGEF
+    estado_dato: pendiente_validacion
+    nota: >
+      Parroquia de mayor rezago. Si inversión_ISM < promedio_rural_canton
+      → confirma patrón de inequidad extrema (NBI alto + menor inversión).
+
+# ============================================================
+# RELACIONES INTER-CIRCUITO (EQUIDAD como nodo transversal)
+# ============================================================
+
+RELACIONES_INTER_CIRCUITO:
+
+  # EQUIDAD ↔ GAP_10PCT
+  - origen: IND_EQUD_01_MCR
+    destino: IND_G10P_01_MCR
+    tipo: CORRELACION_CAUSAL
+    descripcion: >
+      Si el GAD incumple la asignación 10% GAP (COOTAD_249),
+      la inversión en grupos prioritarios baja → IRS baja.
+      Correlación esperada: IND_G10P_01 < 10 → IRS deteriora.
+
+  # EQUIDAD ↔ AGUA_POTABLE
+  - origen: IND_EQUD_04_MCR
+    destino: IND_AGPT_01_MCR
+    tipo: COMPONENTE_DE
+    descripcion: >
+      La brecha de cobertura de agua potable rural vs urbana
+      es una de las expresiones más tangibles de la inequidad
+      territorial. IND_AGPT_01 (cobertura agua) es parte del
+      cálculo de NBI → parte del IRS.
+
+  # EQUIDAD ↔ PRESUPUESTO (Dom02)
+  - origen: SP_EQUD_MCR
+    destino: SP_AGPT_MCR
+    tipo: CONDICIONA
+    descripcion: >
+      La distribución territorial de la inversión (EQUIDAD)
+      determina cuánto del presupuesto llega a obras rurales
+      de agua potable, GAP, vialidad. EQUIDAD es el circuito
+      que explica POR QUÉ los servicios son desiguales.
+
+# ============================================================
+# HIPÓTESIS CAUSAL QUIRA — Circuito EQUIDAD
+# ============================================================
+# Esta sección contiene la hipótesis de investigación que
+# QUIRA puede verificar empíricamente cuando los C9 sean
+# poblados con datos reales.
+# ============================================================
+
+HIPOTESIS_CAUSAL:
+
+  id: HIP_EQUD_01_MCR
+  enunciado: >
+    El IRS 79.7 de Montecristi refleja una distribución
+    de inversión pública que favorece marginalmente la zona
+    urbana sobre las parroquias rurales. Esta brecha es
+    explicada por: (a) concentración histórica de obras en
+    cabecera cantonal, (b) menor ejecución de proyectos
+    rurales vinculados al PDOT, y (c) subcobertura del
+    presupuesto participativo parroquial (COOTAD_302).
+  variables_independientes:
+    - inversion_rural_pct (IND_EQUD_02)
+    - cumplimiento_pdot_parroquial (IND_EQUD_03)
+    - cobertura_participacion_parroquial (IND_EQUD_06)
+  variable_dependiente: IRS_cantonal (IND_EQUD_01)
+  falsificacion: >
+    Si inversion_rural_pct >= poblacion_rural_pct Y
+    cumplimiento_pdot_parroquial >= 70 → la hipótesis es falsa
+    y la brecha IRS tiene otra causa (externo al GAD).
+  estado: pendiente_datos
+  accion_quira: >
+    Al poblar C9 RES_EQUD_02 con datos Gold Master,
+    se puede hacer el primer test de falsificación.
+
+# ============================================================
+# ÍNDICE NEO4J (relaciones Cypher deducibles de este YAML)
+# ============================================================
+#
+# Nodos C3-C9 para ECU-13-MONTECRISTI / EQUIDAD:
+#   C3:  SP_EQUD_MCR                         (1 nodo)
+#   C4:  PRC_EQUD_01..06_MCR                 (6 nodos)
+#   C5:  EVD_EQUD_01..08_MCR                 (8 nodos)
+#   C6:  CTL_EQUD_01..05_MCR                 (5 nodos)
+#   C7:  OBS_EQUD_01..05_MCR                 (5 nodos)
+#   C8:  IND_EQUD_01..06_MCR                 (6 nodos)
+#   C9 cantonal:   RES_EQUD_01..05_MCR           (5 nodos  — nivel 2)
+#   C9 parroquial: RES_EQUD_01+04+02_PAR × 7    (21 nodos — nivel 3)
+#   PARROQUIAS:    ECU-13-MONTECRISTI-{PAR}       (7 nodos  — Parroquia)
+#   HIP: HIP_EQUD_01_MCR                         (1 nodo Hipótesis)
+#                                                ──────────────────
+#   TOTAL NODOS EQUIDAD:                         65 nodos
+#
+# Parroquias: MCU · LPL · CLR · PRN · ANS · GEA · ISM (7 total)
+# Parroquias confirmadas PDOT KB 2023-2027: 7 parroquias
+# Datos C9 confirmados: RES_EQUD_04_MCR (brecha 32pp) · RES_EQUD_01_MCR (IRS 79.7)
+#
+# Relaciones inter-circuito:               3 relaciones
+#   IND_EQUD_01 -[:CORRELACION_CAUSAL]-> IND_G10P_01
+#   IND_EQUD_04 -[:COMPONENTE_DE]->      IND_AGPT_01
+#   SP_EQUD     -[:CONDICIONA]->          SP_AGPT
+#
+# Relaciones [:DESAGREGA_EN] (21):
+#   RES_EQUD_01_MCR -[:DESAGREGA_EN]-> RES_EQUD_01_{MCU|LPL|CLR|PRN|ANS|GEA|ISM}
+#   RES_EQUD_04_MCR -[:DESAGREGA_EN]-> RES_EQUD_04_{MCU|LPL|CLR|PRN|ANS|GEA|ISM}
+#   RES_EQUD_02_MCR -[:DESAGREGA_EN]-> RES_EQUD_02_{MCU|LPL|CLR|PRN|ANS|GEA|ISM}
+#
+# Cypher — ancla del circuito:
+#   MERGE (canton:Canton {id: 'ECU-13-MONTECRISTI'})
+#   MERGE (sp:C3ServicioPublico {id: 'SP_EQUD_MCR'})
+#   SET sp.circuito_id = 'EQUIDAD', sp.canton_id = 'ECU-13-MONTECRISTI'
+#   MERGE (canton)<-[:ANCLADO_EN]-(sp)
+#   MATCH (ack:Atom {id: 'COOTAD_228'})
+#   MERGE (ack)-[:MATERIALIZA_VIA]->(sp)
+#
+# Cypher — desagregación parroquial (template para los 15 nodos):
+#   MERGE (res_canton:C9ResultadoTerritorial {id: 'RES_EQUD_01_MCR'})
+#   MERGE (res_par:C9ResultadoTerritorial {id: 'RES_EQUD_01_LPL'})
+#   SET res_par.nivel_territorial = 'parroquia',
+#       res_par.territorio = 'La Pila',
+#       res_par.canton_id = 'ECU-13-MONTECRISTI',
+#       res_par.estado_dato = 'pendiente_validacion'
+#   MERGE (res_canton)-[:DESAGREGA_EN]->(res_par)
+#
+# Cypher — query brecha parroquial:
+#   MATCH (c:C9ResultadoTerritorial {id: 'RES_EQUD_04_MCR'})
+#   MATCH (c)-[:DESAGREGA_EN]->(p:C9ResultadoTerritorial)
+#   RETURN p.territorio, p.valor
+#   ORDER BY p.valor DESC  // mayor NBI primero = más vulnerable
+#
+# Cypher — relación inter-circuito:
+#   MATCH (a:C8Indicador {id: 'IND_EQUD_01_MCR'})
+#   MATCH (b:C8Indicador {id: 'IND_G10P_01_MCR'})
+#   MERGE (a)-[:CORRELACION_CAUSAL {descripcion: 'GAP < 10% → NBI rural deteriora'}]->(b)
+#
+# Cypher — query diagnóstico equidad:
+#   MATCH (c:Canton {id: 'ECU-13-MONTECRISTI'})
+#   MATCH (c)<-[:ANCLADO_EN]-(sp:C3ServicioPublico {circuito_id: 'EQUIDAD'})
+#   MATCH (sp)-[:SE_EJECUTA_EN]->(prc:C4Proceso)
+#   MATCH (prc)-[:GENERA]->(evd:C5Evidencia)
+#   MATCH (evd)-[:CONTROLADA_POR]->(ctl:C6Control)
+#   MATCH (ctl)-[:EXPONE_A]->(obs:C7Observabilidad)
+#   MATCH (obs)-[:MIDE]->(ind:C8Indicador)
+#   MATCH (ind)-[:REGISTRA]->(res:C9ResultadoTerritorial)
+#   RETURN sp, ind.nombre, res.valor, ind.semaforo_actual
+#
+# ACK → QTMP (materialización):
+#   CE_274       -[:HABILITA]->        SP_EQUD_MCR
+#   COOTAD_228   -[:MATERIALIZA_VIA]-> SP_EQUD_MCR
+#   COOTAD_215   -[:CONTROLA]->        CTL_EQUD_02_MCR
+#   COPLAFIP_83  -[:NORMA]->           OBS_EQUD_03_MCR
+#
+# Corpus QTMP Montecristi post-EQUIDAD v3 (7 parroquias confirmadas PDOT KB):
+#   AGUA_POTABLE:  30+ nodos (cantonal) — RES_AGPT_01 confirmado 34.9%
+#   GAP_10PCT:     ~40 nodos (cantonal)
+#   EQUIDAD:       65 nodos (cantonal + 21 parroquial) + 3 inter-circuito
+#   Parroquias:    7 nodos Parroquia (MCU/LPL/CLR/PRN/ANS/GEA/ISM)
+#   ─────────────────────────────────────────────────────────────────
+#   TOTAL MCR:     ~140+ nodos
+#
+# C9 confirmados: RES_EQUD_04_MCR (brecha 32pp ROJO) · RES_AGPT_01_MCR (34.9%)
+#                 RES_AGPT_02_MCR (continuidad 0%) · RES_EQUD_01_MCR (IRS 79.7)
+# C9 pendientes:  21 nodos parroquiales (microdatos INEC 2022 requeridos)
+# ============================================================
+#
+# NOTA METODOLÓGICA:
+#   EQUIDAD es el primer circuito transversal de QUIRA.
+#   Los circuitos AGUA_POTABLE y GAP_10PCT son sectoriales.
+#   EQUIDAD los conecta: explica POR QUÉ los servicios
+#   sectoriales tienen brechas. Es el circuito explicativo.
+#
+#   Jerarquía causal:
+#     EQUIDAD (C3 SP_EQUD) → explica →
+#     AGUA_POTABLE (C3 SP_AGPT) + GAP_10PCT (C3 SP_G10P)
+#
+#   En Neo4j esto habilita:
+#     "¿Por qué la cobertura de agua en La Pila es 60%?"
+#     ← COOTAD_228 incumplimiento → inversión rural baja
+#     → brecha NBI rural no se cierra → IRS 79.7 (amarillo)
+# ============================================================

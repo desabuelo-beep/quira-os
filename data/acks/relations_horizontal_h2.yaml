@@ -1,0 +1,572 @@
+# ============================================================
+# QUIRA Gov — REL-H2: Circuitos Horizontales Sprint 2
+# ============================================================
+# Sprint:    REL-H2 — Densificación inter-dominio
+# Versión:   QLEP v1.5 / QNKC-002
+# Fecha:     2026-05-30
+# Propósito: Expandir capacidad explicativa del grafo.
+#            REL-H1 abrió 4 circuitos. REL-H2 agrega 6 más.
+#            Meta estratégica: 25-30 REL-H para habilitar
+#            razonamiento predictivo inter-dominio.
+#
+# Principio: Cada REL-H multiplica el valor de los 86 ACK existentes.
+#            Cada ACK nuevo suma linealmente. Las relaciones suman exponencialmente.
+#
+# Circuitos nuevos en REL-H2:
+#   H5: Dom01↔Dom02 — Control explica calidad de ejecución (3 REL atoms)
+#   H6: Dom07↔Dom08 — Transparencia determina participación efectiva (2 REL atoms)
+#   H7: Dom02↔Dom04 — Ejecución presupuestaria explica brechas territoriales (3 REL atoms)
+#   H8: Dom08↔Dom12 — Participación incide en protección GAP (3 REL atoms)
+#   H9: Dom01↔Dom07 — Control interno explica calidad de transparencia (2 REL atoms)
+#   H10: Dom09/Dom12↔Dom04 — Planificación inclusiva en PDOT (2 REL atoms)
+#
+# Total REL-H2: 15 REL atoms
+# Total REL-H acumulado: 8 (H1) + 15 (H2) = 23
+# Corpus total post-H2: 86 ACK + 14 REL-V + 23 REL-H = 123 artefactos
+# ============================================================
+
+
+# ============================================================
+# CIRCUITO H5: CONTROL_EJECUCION — Dom01 ↔ Dom02
+# Pregunta: ¿La calidad del sistema de control interno explica la ejecución presupuestaria?
+# ============================================================
+
+- REL_ID: LOCCGE12_COMPLEMENTA_COOTAD215
+  ORIGEN: LOC-CGE_12
+  DESTINO: COOTAD_215
+  TIPO: COMPLEMENTA
+  FUERZA: CAUSAL
+  EVIDENCIA:
+    - LOC-CGE_12
+    - COOTAD_215
+    - NCI_PRE_COMPROMISO
+  CIRCUITO:
+    id: H5_CONTROL_EJECUCION
+    tipo: horizontal
+    dominios_cruzados: [Dom01, Dom02]
+    capa_origen: "C6"
+    capa_destino: "C4"
+  META:
+    estado: v1.5
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.5
+    revisado_por_experto: true
+  NOTA: >
+    El sistema de control previo, continuo y posterior (LOC-CGE_12) es la arquitectura
+    institucional que condiciona la calidad de la ejecución presupuestaria (COOTAD_215).
+    El control previo bloquea compromisos ilegales; el control continuo detecta desviaciones
+    en ejecución; el control posterior registra el historial. Instituciones con control
+    previo débil (Dom01/C6) producen sistemáticamente subejecución o ejecución irregular
+    (Dom02/C4). Causal: la densidad del sistema de control explica la varianza en ejecución
+    entre municipios con similar presupuesto pero diferente capacidad institucional de control.
+
+---
+
+- REL_ID: NCI_600_01_COMPLEMENTA_COOTAD198
+  ORIGEN: NCI_600_01
+  DESTINO: COOTAD_198
+  TIPO: COMPLEMENTA
+  FUERZA: CAUSAL
+  EVIDENCIA:
+    - NCI_600_01
+    - COOTAD_198
+    - LOC-CGE_45
+  CIRCUITO:
+    id: H5_CONTROL_EJECUCION
+    tipo: horizontal
+    dominios_cruzados: [Dom01, Dom02]
+    capa_origen: "C6"
+    capa_destino: "C3"
+  META:
+    estado: v1.5
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.5
+    revisado_por_experto: true
+  NOTA: >
+    El seguimiento de recomendaciones de auditoría (NCI_600_01) afecta directamente la
+    calidad del presupuesto del ejercicio siguiente (COOTAD_198). Las observaciones de CGE
+    no implementadas producen los mismos errores presupuestarios ciclo tras ciclo. Causal:
+    la tasa de implementación de recomendaciones (indicador de Dom01) predice la calidad
+    de la proforma siguiente (Dom02). Este es uno de los pocos vínculos inter-ejercicio
+    del grafo — un hallazgo de auditoría en año N afecta el presupuesto de año N+1.
+
+---
+
+- REL_ID: NCI_300_COMPLEMENTA_COOTAD198
+  ORIGEN: NCI_300
+  DESTINO: COOTAD_198
+  TIPO: COMPLEMENTA
+  FUERZA: CAUSAL
+  EVIDENCIA:
+    - NCI_300
+    - COOTAD_198
+    - NCI_200_04
+  CIRCUITO:
+    id: H5_CONTROL_EJECUCION
+    tipo: horizontal
+    dominios_cruzados: [Dom01, Dom02]
+    capa_origen: "C6"
+    capa_destino: "C3"
+  META:
+    estado: v1.5
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.5
+    revisado_por_experto: true
+  NOTA: >
+    La evaluación y administración del riesgo presupuestario (NCI_300) identifica los
+    procesos y partidas más expuestas a irregularidades en la proforma (COOTAD_198).
+    Sin evaluación de riesgo, el presupuesto se construye sin diferenciación de
+    vulnerabilidad: las mismas partidas de alto riesgo (contratación de obras,
+    gasto social sin control) concentran glosas ciclo tras ciclo. La NCI_300 es el
+    instrumento que convierte la experiencia histórica de control en mejora prospectiva
+    del presupuesto. Causal: un GAD con evaluación de riesgo activa produce proformas
+    más ejecutables y con menor incidencia de observaciones CGE.
+
+---
+
+# ============================================================
+# CIRCUITO H6: TRANSPARENCIA_PARTICIPACION — Dom07 ↔ Dom08
+# Pregunta: ¿La calidad de la información publicada determina la efectividad de la participación?
+# ============================================================
+
+- REL_ID: LOTAIP7_COMPLEMENTA_COOTAD302
+  ORIGEN: LOTAIP_7
+  DESTINO: COOTAD_302
+  TIPO: COMPLEMENTA
+  FUERZA: CAUSAL
+  EVIDENCIA:
+    - LOTAIP_7
+    - COOTAD_302
+    - LOTAIP_19_6
+  CIRCUITO:
+    id: H6_TRANSPARENCIA_PARTICIPACION
+    tipo: horizontal
+    dominios_cruzados: [Dom07, Dom08]
+    capa_origen: "C1"
+    capa_destino: "C2"
+  META:
+    estado: v1.5
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.5
+    revisado_por_experto: true
+  NOTA: >
+    El derecho al acceso a información pública (LOTAIP_7 — Dom07) es la condición
+    necesaria para que la rendición de cuentas (COOTAD_302 — Dom08) sea sustantiva
+    y no meramente formal. Sin información accesible, completa y oportuna, la ciudadanía
+    no puede evaluar si las metas del POA o PDOT fueron cumplidas. Causal C1→C2: el
+    nivel de cumplimiento LOTAIP Dom07 predice la calidad de la deliberación en los
+    procesos de rendición de cuentas Dom08. Municipios con alta opacidad LOTAIP
+    producen rendiciones de cuentas sin escrutinio real.
+
+---
+
+- REL_ID: LOTAIP19_10_COMPLEMENTA_COOTAD304
+  ORIGEN: LOTAIP_19_10
+  DESTINO: COOTAD_304
+  TIPO: COMPLEMENTA
+  FUERZA: CAUSAL
+  EVIDENCIA:
+    - LOTAIP_19_10
+    - COOTAD_304
+    - COOTAD_192
+  CIRCUITO:
+    id: H6_TRANSPARENCIA_PARTICIPACION
+    tipo: horizontal
+    dominios_cruzados: [Dom07, Dom08]
+    capa_origen: "C7"
+    capa_destino: "C2"
+  META:
+    estado: v1.5
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.5
+    revisado_por_experto: true
+  NOTA: >
+    La publicación del PDOT y POA (LOTAIP_19_10 — Dom07) es el insumo técnico
+    necesario para que el presupuesto participativo (COOTAD_304 — Dom08) opere
+    con base en metas reales y no en promesas sin sustento. Sin PDOT y POA
+    publicados y actualizados, el proceso participativo carece de marco de
+    referencia verificable: la ciudadanía no puede priorizar inversión si
+    desconoce el estado de avance del plan vigente. Causal: la visibilidad del
+    instrumento de planificación Dom07 determina la calidad técnica del proceso
+    de participación Dom08.
+
+---
+
+# ============================================================
+# CIRCUITO H7: INVERSION_TERRITORIAL — Dom02 ↔ Dom04
+# Pregunta: ¿La ejecución presupuestaria explica las brechas territoriales de cobertura?
+# ============================================================
+
+- REL_ID: COOTAD215_COMPLEMENTA_COOTAD228
+  ORIGEN: COOTAD_215
+  DESTINO: COOTAD_228
+  TIPO: COMPLEMENTA
+  FUERZA: CAUSAL
+  EVIDENCIA:
+    - COOTAD_215
+    - COOTAD_228
+    - LOTAIP_19_6
+  CIRCUITO:
+    id: H7_INVERSION_TERRITORIAL
+    tipo: horizontal
+    dominios_cruzados: [Dom02, Dom04]
+    capa_origen: "C4"
+    capa_destino: "C8"
+  META:
+    estado: v1.5
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.5
+    revisado_por_experto: true
+  NOTA: >
+    La ejecución presupuestaria (COOTAD_215 — Dom02) determina si los recursos asignados
+    para servicios territoriales se materializan en cobertura real. El Índice de Reforma
+    Social o indicador de equidad territorial (COOTAD_228 — Dom04) es el resultado final
+    de años de ejecución (o subejecución) acumulada. Causal: una brecha persistente en el
+    IRS Dom04 es explicada parcialmente por la subejecución sistemática de las partidas de
+    inversión territorial en Dom02. Este es el circuito que une la "fotografía financiera"
+    con la "fotografía territorial" y permite formular hipótesis causales verificables.
+
+---
+
+- REL_ID: COOTAD198_COMPLEMENTA_COOTAD137
+  ORIGEN: COOTAD_198
+  DESTINO: COOTAD_137
+  TIPO: COMPLEMENTA
+  FUERZA: SISTEMICA
+  EVIDENCIA:
+    - COOTAD_198
+    - COOTAD_137
+    - LOTAIP_19_6
+  CIRCUITO:
+    id: H7_INVERSION_TERRITORIAL
+    tipo: horizontal
+    dominios_cruzados: [Dom02, Dom04]
+    capa_origen: "C3"
+    capa_destino: "C3"
+  META:
+    estado: v1.5
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.5
+    revisado_por_experto: true
+  NOTA: >
+    La competencia exclusiva de provisión de agua potable (COOTAD_137 — Dom04) requiere
+    asignación presupuestaria suficiente en la proforma municipal (COOTAD_198 — Dom02)
+    para operación, mantenimiento y expansión de la red. Sin presupuesto asignado, la
+    obligación normativa de COOTAD_137 es inejecutables. Esta es la conexión más directa
+    entre la arquitectura financiera Dom02 y el cumplimiento del mandato territorial Dom04:
+    ningún servicio existe sin presupuesto. Sistemica porque el vínculo es estructural
+    e incondicional para todos los GADs.
+
+---
+
+- REL_ID: COOTAD228_COMPLEMENTA_COOTAD249
+  ORIGEN: COOTAD_228
+  DESTINO: COOTAD_249
+  TIPO: COMPLEMENTA
+  FUERZA: CAUSAL
+  EVIDENCIA:
+    - COOTAD_228
+    - COOTAD_249
+    - LOTAIP_19_6
+  CIRCUITO:
+    id: H7_INVERSION_TERRITORIAL
+    tipo: horizontal
+    dominios_cruzados: [Dom04, Dom12]
+    capa_origen: "C8"
+    capa_destino: "C2"
+  META:
+    estado: v1.5
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.5
+    revisado_por_experto: true
+  NOTA: >
+    El índice de equidad territorial (COOTAD_228 — Dom04) debería informar la
+    distribución de la asignación GAP (COOTAD_249 — Dom12): parroquias con menor IRS
+    concentran mayor población vulnerable y deberían recibir mayor proporción del 10%.
+    Causal C8→C2: si la asignación GAP no correlaciona con el IRS parroquial, los
+    recursos de protección social llegan donde menos se necesitan. Esta relación
+    permite formular el indicador cruzado: ratio(GAP_por_habitante × IRS_parroquial)
+    como medida de eficiencia distributiva. Tercer circuito que conecta Dom04 con Dom12,
+    completando el triángulo AGUA↔ACCESIBILIDAD↔EQUIDAD_GAP.
+
+---
+
+# ============================================================
+# CIRCUITO H8: PARTICIPACION_GAP — Dom08 ↔ Dom12
+# Pregunta: ¿La participación ciudadana incide en la protección efectiva de los GAP?
+# ============================================================
+
+- REL_ID: COOTAD304_COMPLEMENTA_COOTAD249
+  ORIGEN: COOTAD_304
+  DESTINO: COOTAD_249
+  TIPO: COMPLEMENTA
+  FUERZA: CAUSAL
+  EVIDENCIA:
+    - COOTAD_304
+    - COOTAD_249
+    - CE_35
+  CIRCUITO:
+    id: H8_PARTICIPACION_GAP
+    tipo: horizontal
+    dominios_cruzados: [Dom08, Dom12]
+    capa_origen: "C2"
+    capa_destino: "C2"
+  META:
+    estado: v1.5
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.5
+    revisado_por_experto: true
+  NOTA: >
+    El presupuesto participativo (COOTAD_304 — Dom08) puede orientar y reforzar la
+    asignación GAP del 10% (COOTAD_249 — Dom12). Cuando las comunidades con alta
+    concentración de grupos prioritarios participan activamente en el proceso
+    presupuestario, el 10% tiende a dirigirse hacia sus necesidades específicas.
+    En ausencia de participación activa del GAP Dom08, el 10% se gasta en programas
+    genéricos sin impacto territorial verificable. Causal: la representación efectiva
+    de grupos prioritarios en el PP Dom08 es un predictor de la calidad del gasto
+    GAP Dom12. Esta relación es especialmente relevante para municipios con alta
+    población GAP rural o dispersa.
+
+---
+
+- REL_ID: CONA207_COMPLEMENTA_COOTAD302
+  ORIGEN: CONA_207
+  DESTINO: COOTAD_302
+  TIPO: COMPLEMENTA
+  FUERZA: SISTEMICA
+  EVIDENCIA:
+    - CONA_207
+    - COOTAD_302
+    - LOAPAM_84
+  CIRCUITO:
+    id: H8_PARTICIPACION_GAP
+    tipo: horizontal
+    dominios_cruzados: [Dom12, Dom08]
+    capa_origen: "C2"
+    capa_destino: "C2"
+  META:
+    estado: v1.5
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.5
+    revisado_por_experto: true
+  NOTA: >
+    La Junta Cantonal de Protección de Derechos (CONA_207 — Dom12/Dom08) es el mecanismo
+    especializado de rendición de cuentas en materia de NNA. Complementa la rendición de
+    cuentas general (COOTAD_302 — Dom08) aportando perspectiva de derechos específica.
+    Sin JCPD activa, la rendición de cuentas carece de un actor que visibilice
+    sistemáticamente el estado de los derechos de NNA en el cantón. La debilidad de
+    CONA_207 produce opacidad sobre la situación Dom12 en el proceso de accountability
+    Dom08. Sistemica: el vínculo es estructural — la JCPD es un componente del sistema
+    cantonal de protección que debe articularse con la rendición de cuentas.
+
+---
+
+- REL_ID: CE35_COMPLEMENTA_COOTAD302
+  ORIGEN: CE_35
+  DESTINO: COOTAD_302
+  TIPO: COMPLEMENTA
+  FUERZA: SISTEMICA
+  EVIDENCIA:
+    - CE_35
+    - COOTAD_302
+    - CONA_12
+  CIRCUITO:
+    id: H8_PARTICIPACION_GAP
+    tipo: horizontal
+    dominios_cruzados: [Dom12, Dom08]
+    capa_origen: "C1"
+    capa_destino: "C2"
+  META:
+    estado: v1.5
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.5
+    revisado_por_experto: true
+  NOTA: >
+    Los grupos de atención prioritaria (CE_35 — Dom12) tienen el mismo derecho a exigir
+    rendición de cuentas que cualquier ciudadano. Esto significa que COOTAD_302 (Dom08)
+    debe incluir explícitamente el estado de cumplimiento de los derechos CE_35 como
+    componente sustantivo — no solo la ejecución financiera. CE_35 enriquece el mandato
+    de COOTAD_302 con contenido específico de derechos: la rendición de cuentas es
+    incompleta si no informa sobre NNA, adultos mayores, personas con discapacidad y
+    población en movilidad. Sistemica: el vínculo emerge del sistema constitucional
+    de derechos — no requiere norma expresa que lo diga.
+
+---
+
+# ============================================================
+# CIRCUITO H9: CONTROL_TRANSPARENCIA — Dom01 ↔ Dom07
+# Pregunta: ¿La debilidad del control interno produce brechas de transparencia?
+# ============================================================
+
+- REL_ID: LOCCGE45_COMPLEMENTA_LOTAIP42
+  ORIGEN: LOC-CGE_45
+  DESTINO: LOTAIP_42
+  TIPO: COMPLEMENTA
+  FUERZA: SISTEMICA
+  EVIDENCIA:
+    - LOC-CGE_45
+    - LOTAIP_42
+    - LOTAIP_8
+  CIRCUITO:
+    id: H9_CONTROL_TRANSPARENCIA
+    tipo: horizontal
+    dominios_cruzados: [Dom01, Dom07]
+    capa_origen: "C6"
+    capa_destino: "C6"
+  META:
+    estado: v1.5
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.5
+    revisado_por_experto: true
+  NOTA: >
+    La responsabilidad administrativa del servidor (LOC-CGE_45 — Dom01) y la sanción
+    por incumplimiento LOTAIP (LOTAIP_42 — Dom07) convergen sobre el mismo servidor
+    responsable de la publicación. El mismo funcionario que no publica enfrenta dos
+    cadenas sancionatorias paralelas: la de control interno (LOC-CGE_45 → CGE) y la
+    de transparencia (LOTAIP_42 → DPE/Defensoría). La doble consecuencia refuerza
+    el incentivo institucional para cumplir. Su complementariedad es estructural:
+    son dos mecanismos del mismo principio de accountability pública que refuerzan
+    el mismo comportamiento desde ángulos distintos (legalidad + transparencia).
+
+---
+
+- REL_ID: LOCCGE12_COMPLEMENTA_LOTAIP19_6
+  ORIGEN: LOC-CGE_12
+  DESTINO: LOTAIP_19_6
+  TIPO: COMPLEMENTA
+  FUERZA: CAUSAL
+  EVIDENCIA:
+    - LOC-CGE_12
+    - LOTAIP_19_6
+    - NCI_200_04
+  CIRCUITO:
+    id: H9_CONTROL_TRANSPARENCIA
+    tipo: horizontal
+    dominios_cruzados: [Dom01, Dom07]
+    capa_origen: "C6"
+    capa_destino: "C7"
+  META:
+    estado: v1.5
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.5
+    revisado_por_experto: true
+  NOTA: >
+    El control continuo y posterior (LOC-CGE_12 — Dom01/C6) verifica que las
+    publicaciones financieras LOTAIP_19_6 (Dom07/C7) sean correctas y oportunas.
+    La ausencia de control posterior sobre las publicaciones produce información
+    inconsistente, incompleta o desactualizada en el portal LOTAIP, que CGE detecta
+    en auditorías de gestión como hallazgo de transparencia. Causal C6→C7: la
+    intensidad del control interno Dom01 predice la calidad de la información
+    publicada Dom07. Esto también explica por qué instituciones con buen control
+    interno publican mejor — no por cultura de transparencia, sino por estructura.
+
+---
+
+# ============================================================
+# CIRCUITO H10: PLANIFICACION_INCLUSIVA — Dom09/Dom12 ↔ Dom04
+# Pregunta: ¿La planificación territorial incorpora efectivamente los enfoques de grupos prioritarios?
+# ============================================================
+
+- REL_ID: LOMH167_COMPLEMENTA_COOTAD192
+  ORIGEN: LOMH_167
+  DESTINO: COOTAD_192
+  TIPO: COMPLEMENTA
+  FUERZA: CAUSAL
+  EVIDENCIA:
+    - LOMH_167
+    - COOTAD_192
+    - LOMH_165
+  CIRCUITO:
+    id: H10_PLANIFICACION_INCLUSIVA
+    tipo: horizontal
+    dominios_cruzados: [Dom09, Dom04]
+    capa_origen: "C2"
+    capa_destino: "C3"
+  META:
+    estado: v1.5
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.5
+    revisado_por_experto: true
+  NOTA: >
+    La transversalización del enfoque de movilidad humana en todas las entidades
+    públicas (LOMH_167 — Dom12/Dom09) opera directamente sobre el instrumento de
+    planificación territorial (COOTAD_192 — Dom04). Si el PDOT no incorpora el
+    análisis de flujos migratorios y la política pública de movilidad, los planes
+    territoriales producen invisibilidad institucional de la población migrante
+    y retornada. Causal Dom09→Dom04: un PDOT sin enfoque de movilidad humana
+    genera asignación territorial de recursos que ignora un segmento de la
+    demanda real de servicios. Especialmente relevante para cantones con alta
+    migración como Montecristi (zona costera y ruta migratoria).
+
+---
+
+- REL_ID: LOAPAM84_COMPLEMENTA_COOTAD192
+  ORIGEN: LOAPAM_84
+  DESTINO: COOTAD_192
+  TIPO: COMPLEMENTA
+  FUERZA: SISTEMICA
+  EVIDENCIA:
+    - LOAPAM_84
+    - COOTAD_192
+    - LOAPAM_14
+  CIRCUITO:
+    id: H10_PLANIFICACION_INCLUSIVA
+    tipo: horizontal
+    dominios_cruzados: [Dom12, Dom04]
+    capa_origen: "C2"
+    capa_destino: "C3"
+  META:
+    estado: v1.5
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.5
+    revisado_por_experto: true
+  NOTA: >
+    Las atribuciones del GAD para protección integral de adultos mayores (LOAPAM_84
+    — Dom12) deben materializarse en el PDOT (COOTAD_192 — Dom04) como componente
+    de inclusión social del plan territorial. Sin integración en el instrumento de
+    planificación, la política de adultos mayores queda desvinculada del ordenamiento
+    del cantón: no hay metas, no hay indicadores, no hay presupuesto plurianual.
+    Sistemica: el vínculo es inherente al principio de planificación integral —
+    COOTAD_192 obliga al GAD a planificar el territorio en todas sus dimensiones,
+    incluyendo la dimensión de protección social del LOAPAM.
+
+---
+
+# ============================================================
+# ÍNDICE REL-H2 — 15 átomos horizontales
+# ============================================================
+#
+# H5: CONTROL_EJECUCION (Dom01↔Dom02)
+#   LOCCGE12_COMPLEMENTA_COOTAD215       — C6/Dom01 → C4/Dom02 — CAUSAL
+#   NCI_600_01_COMPLEMENTA_COOTAD198     — C6/Dom01 → C3/Dom02 — CAUSAL
+#   NCI_300_COMPLEMENTA_COOTAD198        — C6/Dom01 → C3/Dom02 — CAUSAL
+#
+# H6: TRANSPARENCIA_PARTICIPACION (Dom07↔Dom08)
+#   LOTAIP7_COMPLEMENTA_COOTAD302        — C1/Dom07 → C2/Dom08 — CAUSAL
+#   LOTAIP19_10_COMPLEMENTA_COOTAD304    — C7/Dom07 → C2/Dom08 — CAUSAL
+#
+# H7: INVERSION_TERRITORIAL (Dom02↔Dom04)
+#   COOTAD215_COMPLEMENTA_COOTAD228      — C4/Dom02 → C8/Dom04 — CAUSAL
+#   COOTAD198_COMPLEMENTA_COOTAD137      — C3/Dom02 → C3/Dom04 — SISTEMICA
+#   COOTAD228_COMPLEMENTA_COOTAD249      — C8/Dom04 → C2/Dom12 — CAUSAL
+#
+# H8: PARTICIPACION_GAP (Dom08↔Dom12)
+#   COOTAD304_COMPLEMENTA_COOTAD249      — C2/Dom08 → C2/Dom12 — CAUSAL
+#   CONA207_COMPLEMENTA_COOTAD302        — C2/Dom12 → C2/Dom08 — SISTEMICA
+#   CE35_COMPLEMENTA_COOTAD302           — C1/Dom12 → C2/Dom08 — SISTEMICA
+#
+# H9: CONTROL_TRANSPARENCIA (Dom01↔Dom07)
+#   LOCCGE45_COMPLEMENTA_LOTAIP42        — C6/Dom01 → C6/Dom07 — SISTEMICA
+#   LOCCGE12_COMPLEMENTA_LOTAIP19_6      — C6/Dom01 → C7/Dom07 — CAUSAL
+#
+# H10: PLANIFICACION_INCLUSIVA (Dom09/Dom12↔Dom04)
+#   LOMH167_COMPLEMENTA_COOTAD192        — C2/Dom09 → C3/Dom04 — CAUSAL
+#   LOAPAM84_COMPLEMENTA_COOTAD192       — C2/Dom12 → C3/Dom04 — SISTEMICA
+#
+# Diferencia H1 vs H2:
+#   H1: abrió los 4 circuitos fundamentales (Finanzas·Territorio·Contratación·Estructura)
+#   H2: densifica con 6 circuitos adicionales (Control·Transparencia·Inversión·Participación·GAP·Planificación)
+#
+# Corpus acumulado: 86 ACK + 14 REL-V + 23 REL-H = 123 artefactos
+# Circuitos horizontales cerrados: 10 (H1: 4 + H2: 6)
+# ============================================================

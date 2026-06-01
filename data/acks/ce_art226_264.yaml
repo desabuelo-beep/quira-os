@@ -1,0 +1,910 @@
+# F0.1C — Constitución del Ecuador — Art. 226-264
+# Bloque: Administración Pública + GADs + Competencias Exclusivas GAD Municipal
+# QLEP v1.2 | Extracción: 2026-05-30
+# Átomos: 11 | Estado: completo
+# Fuente: Constitución de la República del Ecuador 2008
+
+---
+ACK_ID: CE_226
+CLASE: ACK_PRINCIPIO
+TIPO: principio
+NOMBRE: Principio de Legalidad Administrativa
+FUENTE:
+  norma: Constitución de la República del Ecuador
+  sigla: CE
+  jerarquia: 0
+  articulo: "226"
+  inciso: ""
+  fecha_vigencia: "2008-10-20"
+
+ACTOR_OBLIGADO:
+  - Instituciones-del-Estado
+  - GAD-Municipal
+  - Todos-los-órganos-públicos
+
+ACTOR_BENEFICIARIO:
+  - Ciudadanía
+
+OBLIGACION: >
+  Las instituciones del Estado, sus organismos, dependencias, las servidoras o
+  servidores públicos y las personas que actúen en virtud de una potestad estatal
+  ejercerán solamente las competencias y facultades que les sean atribuidas en la
+  Constitución y la ley. Tendrán el deber de coordinar acciones para el
+  cumplimiento de sus fines y hacer efectivo el goce y ejercicio de los derechos
+  reconocidos en la Constitución.
+
+EVIDENCIA:
+  - Actos-administrativos-con-base-legal-expresa
+  - Ordenanzas-con-fundamento-en-COOTAD
+  - Resoluciones-del-Concejo
+
+CONSECUENCIA:
+  descripcion: >
+    Los actos administrativos sin base legal expresa son nulos de pleno derecho.
+    Responsabilidad administrativa y civil de los servidores que los emitan.
+    Principio interpretativo base de todo control institucional QUIRA.
+  tipo: nulidad
+  organo_sancionador:
+    - Judicatura
+    - CGE
+    - PGE
+
+APLICABILIDAD:
+  nivel_gobierno: [GAD-Municipal, GAD-Provincial, GAD-Parroquial, Nivel-Central]
+  condicion: []
+  ambito_lac: >
+    Principio de legalidad análogo en toda LAC como base del Estado de Derecho.
+    Colombia: Art. 6 + 121 CN. Perú: Art. 43-44 Constitución. México: Art. 16 CPEUM.
+    Ecuador es uno de los más explícitos: obliga a ejercer SOLO lo atribuido.
+
+DOMINIOS_QUIRA:
+  - Dom01
+  - Dom03
+
+RELACIONES:
+  - CE_240
+  - CE_264
+  - COOTAD_54
+  - COA_14
+  - LOSEP_22
+
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: CE_227
+CLASE: ACK_PRINCIPIO
+TIPO: principio
+NOMBRE: Principios de la Administración Pública
+FUENTE:
+  norma: Constitución de la República del Ecuador
+  sigla: CE
+  jerarquia: 0
+  articulo: "227"
+  inciso: ""
+  fecha_vigencia: "2008-10-20"
+
+ACTOR_OBLIGADO:
+  - Administración-Pública
+  - GAD-Municipal
+
+ACTOR_BENEFICIARIO:
+  - Ciudadanía
+
+OBLIGACION: >
+  La administración pública constituye un servicio a la colectividad que se rige
+  por los principios de eficacia, eficiencia, calidad, jerarquía,
+  desconcentración, descentralización, coordinación, participación, planificación,
+  transparencia y evaluación.
+
+EVIDENCIA:
+  - POA-Institucional
+  - Informes-de-evaluación-institucional
+  - LOTAIP-rendición-de-cuentas
+  - Informes-CGE
+
+CONSECUENCIA:
+  descripcion: >
+    El incumplimiento de estos principios genera responsabilidad administrativa
+    y puede activar control de la CGE o DPE. Base normativa para evaluación
+    institucional y para los indicadores de gestión del TGI (D1-D9).
+  tipo: responsabilidad-administrativa
+  organo_sancionador:
+    - CGE
+    - DPE
+    - CPCCS
+
+APLICABILIDAD:
+  nivel_gobierno: [GAD-Municipal, GAD-Provincial, GAD-Parroquial, Nivel-Central]
+  condicion: []
+  ambito_lac: >
+    Principios análogos en toda LAC. Colombia: Ley 489/98 Art. 3.
+    Perú: Ley 27444 LPAG Art. IV. México: Ley del Servicio Profesional de Carrera.
+    Eficiencia + Transparencia + Evaluación son el núcleo común.
+
+DOMINIOS_QUIRA:
+  - Dom01
+  - Dom07
+
+RELACIONES:
+  - CE_226
+  - COOTAD_3
+  - LOSEP_22
+  - LOC-CGE_21
+  - LOTAIP_1
+
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: CE_230
+CLASE: ACK_OBLIGACION
+TIPO: prohibicion
+NOMBRE: Prohibición Nepotismo Pluriempleo Discriminación
+FUENTE:
+  norma: Constitución de la República del Ecuador
+  sigla: CE
+  jerarquia: 0
+  articulo: "230"
+  inciso: ""
+  fecha_vigencia: "2008-10-20"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+  - Concejo-Municipal
+  - Director-Municipal
+
+ACTOR_BENEFICIARIO:
+  - Ciudadanía
+  - Servidores-públicos
+
+OBLIGACION: >
+  En el ejercicio del servicio público se prohíbe: el desempeño de más de un
+  cargo público remunerado; el nepotismo; y las discriminaciones de cualquier
+  tipo. Igualmente está prohibido el ejercicio de funciones en una institución
+  administrada o controlada por el servidor o sus familiares hasta el cuarto
+  grado de consanguinidad y segundo de afinidad.
+
+EVIDENCIA:
+  - Expedientes-RRHH-personal
+  - Contratos-y-nombramientos
+  - LOTAIP-Numeral-9-contratos-laborales
+  - Declaraciones-patrimoniales
+
+CONSECUENCIA:
+  descripcion: >
+    La violación de estas prohibiciones constituye causa de destitución sin
+    perjuicio de las acciones legales correspondientes. El nepotismo puede
+    generar responsabilidades penales y civiles.
+  tipo: destitucion
+  organo_sancionador:
+    - LOSEP-sumario-administrativo
+    - CGE
+    - Judicatura
+
+APLICABILIDAD:
+  nivel_gobierno: [GAD-Municipal, GAD-Provincial, GAD-Parroquial, Nivel-Central]
+  condicion: []
+  ambito_lac: >
+    Prohibiciones análogas en toda LAC. Colombia: Ley 734/2002 CDU Art. 35.
+    Perú: Ley 27588 (incompatibilidades). México: LGRA Art. 29.
+
+DOMINIOS_QUIRA:
+  - Dom01
+  - Dom07
+
+RELACIONES:
+  - CE_226
+  - CE_231
+  - LOSEP_42
+  - LOC-CGE
+
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: CE_231
+CLASE: ACK_OBLIGACION
+TIPO: obligacion
+NOMBRE: Declaración Patrimonial Jurada Servidores Públicos
+FUENTE:
+  norma: Constitución de la República del Ecuador
+  sigla: CE
+  jerarquia: 0
+  articulo: "231"
+  inciso: ""
+  fecha_vigencia: "2008-10-20"
+
+ACTOR_OBLIGADO:
+  - Alcalde
+  - Concejales
+  - Directores-municipales
+  - Todos-los-servidores-públicos
+
+ACTOR_BENEFICIARIO:
+  - Ciudadanía
+  - Control-público
+
+OBLIGACION: >
+  Las servidoras y servidores públicos sin excepción presentarán, al iniciar y
+  al finalizar su gestión y con periodicidad anual, una declaración patrimonial
+  jurada que incluirá activos y pasivos, así como la autorización para que, de
+  ser necesario, se levante el sigilo de sus cuentas bancarias; quienes
+  incumplan serán destituidos del cargo.
+
+EVIDENCIA:
+  - Declaraciones-patrimoniales-juradas-registradas-CGE
+  - LOTAIP-Numeral-9
+  - Registro-declaraciones-Contraloría
+
+CONSECUENCIA:
+  descripcion: >
+    El incumplimiento es causa directa e inmediata de destitución del cargo.
+    La falsedad en la declaración activa responsabilidad penal (falsedad
+    instrumental). La CGE lleva el registro y puede comparar año a año.
+  tipo: destitucion
+  organo_sancionador:
+    - CGE
+    - LOSEP-sumario-administrativo
+    - Judicatura-si-falsedad
+
+APLICABILIDAD:
+  nivel_gobierno: [GAD-Municipal, GAD-Provincial, GAD-Parroquial, Nivel-Central]
+  condicion: [inicio-gestión, anual, fin-gestión]
+  ambito_lac: >
+    Declaración patrimonial obligatoria en toda LAC como herramienta anticorrupción.
+    Colombia: Ley 190/1995 + formulario CGR. Perú: Ley 27482.
+    México: Declaración 3de3 SFP. Costa Rica: DJBR-CGHR.
+
+DOMINIOS_QUIRA:
+  - Dom07
+  - Dom01
+
+RELACIONES:
+  - CE_230
+  - CE_233
+  - LOC-CGE
+  - LOSEP_42
+
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: CE_233
+CLASE: ACK_OBLIGACION
+TIPO: sancion
+NOMBRE: Responsabilidad Servidores y Peculado Imprescriptible
+FUENTE:
+  norma: Constitución de la República del Ecuador
+  sigla: CE
+  jerarquia: 0
+  articulo: "233"
+  inciso: ""
+  fecha_vigencia: "2008-10-20"
+
+ACTOR_OBLIGADO:
+  - Alcalde
+  - Concejales
+  - Directores-municipales
+  - Todos-los-servidores-públicos
+
+ACTOR_BENEFICIARIO:
+  - Estado-ecuatoriano
+  - Ciudadanía
+
+OBLIGACION: >
+  Ninguna servidora ni servidor público estará exento de responsabilidades por
+  los actos realizados en el ejercicio de sus funciones, o por sus omisiones, y
+  serán responsables administrativa, civil y penalmente por el manejo y
+  administración de fondos, bienes o recursos públicos. Los delitos de peculado,
+  cohecho, concusión y enriquecimiento ilícito son imprescriptibles; la acción
+  para perseguirlos y las penas correspondientes serán imprescriptibles y los
+  juicios se iniciarán y continuarán incluso en ausencia de las personas acusadas.
+
+EVIDENCIA:
+  - Informes-CGE-glosas
+  - Expedientes-juicios-coactivos-Contraloría
+  - Expedientes-penales-Fiscalía
+  - Declaraciones-patrimoniales-comparativas
+
+CONSECUENCIA:
+  descripcion: >
+    Peculado, cohecho, concusión y enriquecimiento ilícito son imprescriptibles.
+    Triple responsabilidad: administrativa (destitución), civil (reintegro al
+    Estado), penal (prisión). Juicios continúan en ausencia del acusado.
+  tipo: sancion-penal
+  organo_sancionador:
+    - Judicatura
+    - CGE
+    - Fiscalía
+
+APLICABILIDAD:
+  nivel_gobierno: [GAD-Municipal, GAD-Provincial, GAD-Parroquial, Nivel-Central]
+  condicion: []
+  ambito_lac: >
+    Responsabilidad pública en toda LAC. La imprescriptibilidad del peculado es
+    característica constitucional ecuatoriana reforzada.
+    Colombia: Art. 90 CN + Ley 599 Código Penal.
+    Perú: Art. 41 Constitución (imprescriptibilidad parcial).
+
+DOMINIOS_QUIRA:
+  - Dom01
+  - Dom03
+  - Dom02
+
+RELACIONES:
+  - CE_231
+  - LOC-CGE
+  - LOSNCP_106
+  - LOSEP_42
+
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: CE_237_3
+CLASE: ACK_PRINCIPIO
+TIPO: procedimiento
+NOMBRE: Pronunciamientos PGE Vinculantes para GAD
+FUENTE:
+  norma: Constitución de la República del Ecuador
+  sigla: CE
+  jerarquia: 0
+  articulo: "237"
+  inciso: "3"
+  fecha_vigencia: "2008-10-20"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+  - Concejo-Municipal
+
+ACTOR_BENEFICIARIO:
+  - Estado-ecuatoriano
+  - Ciudadanía
+
+OBLIGACION: >
+  La Procuraduría General del Estado tiene como atribución el asesoramiento legal
+  y la representación judicial del Estado. Sus dictámenes y pronunciamientos
+  sobre la interpretación de las normas son vinculantes para las entidades del
+  sector público, incluyendo los GADs. El GAD que actúe en contra de un
+  pronunciamiento expreso de la PGE incurre en responsabilidad institucional.
+
+EVIDENCIA:
+  - Dictámenes-PGE-registrados-y-publicados
+  - Consultas-PGE-elevadas-por-GAD
+  - Contratos-revisados-con-visto-bueno-PGE
+
+CONSECUENCIA:
+  descripcion: >
+    El incumplimiento de dictámenes vinculantes de la PGE genera nulidad del
+    acto y responsabilidad administrativa del servidor que lo aplicó.
+    La CGE toma en cuenta los pronunciamientos PGE en sus auditorías.
+  tipo: nulidad
+  organo_sancionador:
+    - PGE
+    - Judicatura
+    - CGE
+
+APLICABILIDAD:
+  nivel_gobierno: [GAD-Municipal, GAD-Provincial, GAD-Parroquial, Nivel-Central]
+  condicion: []
+  ambito_lac: >
+    Instituciones análogas con distinto peso vinculante: Colombia — Concepto
+    Consejo de Estado (no vinculante, orientativo). Perú — Opiniones OSCE en
+    contrataciones (vinculantes en su ámbito). México — Dictámenes SFP.
+
+DOMINIOS_QUIRA:
+  - Dom01
+
+RELACIONES:
+  - CE_226
+  - CE_233
+  - LOSNCP
+  - LOC-CGE
+
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: CE_238
+CLASE: ACK_PRINCIPIO
+TIPO: definicion
+NOMBRE: GADs Autonomía Política Administrativa Financiera
+FUENTE:
+  norma: Constitución de la República del Ecuador
+  sigla: CE
+  jerarquia: 0
+  articulo: "238"
+  inciso: ""
+  fecha_vigencia: "2008-10-20"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - GAD-Provincial
+  - GAD-Parroquial
+
+ACTOR_BENEFICIARIO:
+  - Territorio-cantonal
+  - Ciudadanía
+
+OBLIGACION: >
+  Los gobiernos autónomos descentralizados gozarán de autonomía política,
+  administrativa y financiera, y se regirán por los principios de solidaridad,
+  subsidiariedad, equidad interterritorial, integración y participación ciudadana.
+  En ningún caso el ejercicio de la autonomía permitirá la secesión del territorio
+  nacional. Constituyen gobiernos autónomos descentralizados las juntas
+  parroquiales rurales, los concejos municipales, los concejos metropolitanos,
+  los consejos provinciales y los consejos regionales.
+
+EVIDENCIA:
+  - Ordenanzas-emitidas-por-el-Concejo
+  - Presupuesto-municipal-aprobado
+  - POA-institucional
+  - Resoluciones-del-Concejo
+
+CONSECUENCIA:
+  descripcion: >
+    La interferencia inconstitucional del gobierno central en las autonomías
+    del GAD puede impugnarse ante la Corte Constitucional. El GAD que no
+    ejerza su autonomía financiera compromete su capacidad de cumplir competencias.
+  tipo: ninguna
+  organo_sancionador:
+    - Corte-Constitucional
+
+APLICABILIDAD:
+  nivel_gobierno: [GAD-Municipal, GAD-Provincial, GAD-Parroquial]
+  condicion: []
+  ambito_lac: >
+    Autonomía municipal constitucional en toda LAC aunque con diferente alcance.
+    Colombia: Art. 287 CN (autonomía entidades territoriales).
+    Perú: Art. 188-199 Constitución (descentralización).
+    México: Art. 115 CPEUM (municipio libre).
+    La forma institucional varía; la autonomía territorial es el principio análogo.
+
+DOMINIOS_QUIRA:
+  - Dom01
+
+RELACIONES:
+  - CE_240
+  - CE_241
+  - CE_264
+  - COOTAD_1
+  - COPLAFIP
+
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: CE_240
+CLASE: ACK_OBLIGACION
+TIPO: competencia_exclusiva
+NOMBRE: Facultades Legislativas y Ejecutivas del GAD Municipal
+FUENTE:
+  norma: Constitución de la República del Ecuador
+  sigla: CE
+  jerarquia: 0
+  articulo: "240"
+  inciso: ""
+  fecha_vigencia: "2008-10-20"
+
+ACTOR_OBLIGADO:
+  - Concejo-Municipal
+  - Alcalde
+
+ACTOR_BENEFICIARIO:
+  - Ciudadanía-cantonal
+  - Territorio-cantonal
+
+OBLIGACION: >
+  Los gobiernos autónomos descentralizados de los cantones tendrán facultades
+  legislativas en el ámbito de sus competencias y jurisdicciones territoriales
+  — expresadas en ordenanzas. El Alcalde ejerce las facultades ejecutivas.
+  Las juntas parroquiales rurales tendrán facultades reglamentarias. Todos los
+  GADs ejercerán facultades ejecutivas en el ámbito de sus competencias.
+
+EVIDENCIA:
+  - Ordenanzas-municipales-registradas
+  - Resoluciones-ejecutivas-Alcaldía
+  - Registro-oficial-publicaciones-municipales
+  - Actas-Concejo-aprobación-ordenanzas
+
+CONSECUENCIA:
+  descripcion: >
+    Las ordenanzas municipales fuera del ámbito de competencias constitucionales
+    son nulas. El Alcalde que ejerza funciones legislativas incurre en
+    responsabilidad administrativa.
+  tipo: nulidad
+  organo_sancionador:
+    - Corte-Constitucional
+    - PGE
+
+APLICABILIDAD:
+  nivel_gobierno: [GAD-Municipal]
+  condicion: []
+  ambito_lac: >
+    Facultad normativa municipal (acuerdos/ordenanzas) en toda LAC.
+    Colombia: Acuerdos del Concejo Municipal (Ley 136).
+    Perú: Ordenanzas municipales (Ley 27972 LOM).
+    México: Reglamentos municipales (Art. 115 CPEUM).
+
+IMPLEMENTACION_TERRITORIAL:
+  funcion_publica: >
+    Ejercicio de la potestad normativa local (ordenanzas) y ejecutiva (actos
+    administrativos del Alcalde) para regular y gestionar las 14 competencias
+    exclusivas del cantón. Función permanente: el Concejo Municipal siempre
+    existe; su composición y la estructura interna de ejecución son contingentes.
+  actor_local: >
+    pendiente — verificar Resolución Orgánica GADM Montecristi.
+    QNKC-001: Concejo Municipal (facultad legislativa) y Alcalde (facultad
+    ejecutiva) son constantes constitucionales; la estructura interna de
+    direcciones y unidades es contingente.
+  instrumento: Ordenanzas + Resoluciones + Actos-administrativos
+  evidencia:
+    - LOTAIP_Numeral_8
+    - Registro-oficial-sección-municipal
+  indicador:
+    - DOM01_ORDENANZAS_APROBADAS
+    - DOM01_RESOLUCIONES_ALCALDIA
+
+DOMINIOS_QUIRA:
+  - Dom01
+
+RELACIONES:
+  - CE_226
+  - CE_238
+  - CE_264
+  - COOTAD_54
+  - COOTAD_57
+
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: CE_241
+CLASE: ACK_OBLIGACION
+TIPO: obligacion
+NOMBRE: Planificación Territorial Obligatoria Base Constitucional PDOT
+FUENTE:
+  norma: Constitución de la República del Ecuador
+  sigla: CE
+  jerarquia: 0
+  articulo: "241"
+  inciso: ""
+  fecha_vigencia: "2008-10-20"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Concejo-Municipal
+  - Alcalde
+
+ACTOR_BENEFICIARIO:
+  - Ciudadanía-cantonal
+  - Territorio-cantonal
+
+OBLIGACION: >
+  La planificación garantizará el ordenamiento territorial y será obligatoria en
+  todos los gobiernos autónomos descentralizados. El PDOT (Plan de Desarrollo y
+  Ordenamiento Territorial) es el instrumento de planificación mandatado.
+
+EVIDENCIA:
+  - PDOT-aprobado-y-vigente
+  - Informes-seguimiento-PDOT-SENPLADES
+  - POA-alineado-al-PDOT
+  - Presupuesto-articulado-al-PDOT
+
+CONSECUENCIA:
+  descripcion: >
+    La ausencia de PDOT vigente es incumplimiento constitucional que activa la
+    Secretaría de Planificación y el CPCCS. El presupuesto sin alineación al
+    PDOT puede ser observado por la CGE. Base de todos los indicadores Dom04
+    y Dom09 del TGI.
+  tipo: observacion-cpccs
+  organo_sancionador:
+    - Secretaría-de-Planificación-del-Estado
+    - CPCCS
+    - CGE
+
+APLICABILIDAD:
+  nivel_gobierno: [GAD-Municipal, GAD-Provincial, GAD-Parroquial]
+  condicion: []
+  ambito_lac: >
+    Planificación territorial obligatoria en toda LAC aunque con nombre e
+    instrumento diferente. Colombia: POT municipal obligatorio (Ley 388/1997).
+    Perú: PDC — Plan de Desarrollo Concertado (Ley 28867 LOM).
+    México: Plan Municipal de Desarrollo. El PDOT ecuatoriano es uno de los
+    más completos en cuanto a obligatoriedad de seguimiento.
+
+IMPLEMENTACION_TERRITORIAL:
+  funcion_publica: >
+    Planificación territorial cantonal con ordenamiento del uso del suelo,
+    articulación del presupuesto al PDOT y seguimiento de metas de desarrollo.
+    Función permanente del GAD Municipal: independiente de la administración
+    política de turno — el PDOT trasciende los períodos de gobierno.
+  actor_local: >
+    pendiente — verificar Resolución Orgánica GADM Montecristi.
+    Típicamente: Dirección de Planificación o unidad equivalente.
+    QNKC-001: la planificación es obligación permanente; la unidad interna es contingente.
+  instrumento: PDOT + POA + Presupuesto-alineado
+  evidencia:
+    - LOTAIP_Numeral_7
+    - PDOT-Montecristi-aprobado
+    - Informes-seguimiento-SENPLADES
+  indicador:
+    - DOM04_PDOT_APROBADO
+    - DOM04_METAS_PDOT_PCT
+    - DOM09_ALINEACION_POA_PDOT
+  gap_conocido: >
+    PDOT Montecristi es fuente canónica para datos de brechas territoriales
+    parroquiales. Parroquia Isabel Muentes: NBI=61.2% (estimado).
+    Verificar fecha actualización PDOT vigente y estado de aprobación formal.
+
+DOMINIOS_QUIRA:
+  - Dom04
+  - Dom02
+  - Dom09
+
+RELACIONES:
+  - CE_238
+  - CE_264
+  - COOTAD_295
+  - COPLAFIP
+  - PND
+
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: CE_260
+CLASE: ACK_PRINCIPIO
+TIPO: distribucion
+NOMBRE: Competencias Exclusivas No Excluyen Concurrentes
+FUENTE:
+  norma: Constitución de la República del Ecuador
+  sigla: CE
+  jerarquia: 0
+  articulo: "260"
+  inciso: ""
+  fecha_vigencia: "2008-10-20"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Nivel-Central
+
+ACTOR_BENEFICIARIO:
+  - Ciudadanía
+  - Territorio-cantonal
+
+OBLIGACION: >
+  El ejercicio de las competencias exclusivas no excluirá el ejercicio
+  concurrente de la gestión en la prestación de servicios públicos y actividades
+  de colaboración y complementariedad entre los distintos niveles de gobierno.
+
+EVIDENCIA:
+  - Convenios-interinstitucionales-firmados
+  - Contratos-de-mancomunidad
+  - Delegaciones-del-nivel-central-al-GAD
+  - POA-con-componentes-concurrentes
+
+CONSECUENCIA:
+  descripcion: >
+    La negativa injustificada a ejercer competencias concurrentes cuando existe
+    necesidad territorial puede generar responsabilidad por omisión.
+    Base legal para convenios de cooperación, mancomunidades y delegaciones.
+  tipo: responsabilidad-administrativa
+  organo_sancionador:
+    - DPE
+    - CPCCS
+
+APLICABILIDAD:
+  nivel_gobierno: [GAD-Municipal, GAD-Provincial, GAD-Parroquial, Nivel-Central]
+  condicion: []
+  ambito_lac: >
+    Competencias concurrentes entre niveles de gobierno son la norma en LAC.
+    Colombia: Art. 288 CN + Ley 1454/2011 LOOT.
+    Perú: Art. 43 LOM (funciones compartidas).
+    México: Art. 115-116 CPEUM (convenios Federación-Municipio).
+
+DOMINIOS_QUIRA:
+  - Dom01
+  - Dom12
+  - Dom04
+
+RELACIONES:
+  - CE_264
+  - CE_238
+  - COOTAD_116
+  - COOTAD_138
+
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: CE_264
+CLASE: ACK_OBLIGACION
+TIPO: competencia_exclusiva
+NOMBRE: Catálogo Completo Competencias Exclusivas GAD Municipal
+FUENTE:
+  norma: Constitución de la República del Ecuador
+  sigla: CE
+  jerarquia: 0
+  articulo: "264"
+  inciso: "1-14"
+  fecha_vigencia: "2008-10-20"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+  - Concejo-Municipal
+
+ACTOR_BENEFICIARIO:
+  - Ciudadanía-cantonal
+  - Territorio-cantonal
+
+OBLIGACION: >
+  Los gobiernos municipales tendrán las siguientes competencias exclusivas sin
+  perjuicio de otras que determine la ley:
+  1. Planificar el desarrollo cantonal y formular los correspondientes planes de
+  ordenamiento territorial.
+  2. Ejercer el control sobre el uso y ocupación del suelo en el cantón.
+  3. Planificar, construir y mantener la vialidad urbana.
+  4. Prestar los servicios públicos de agua potable, alcantarillado, depuración
+  de aguas residuales, manejo de desechos sólidos, actividades de saneamiento
+  ambiental y aquellos que establezca la ley.
+  5. Crear, modificar o suprimir mediante ordenanzas, tasas y contribuciones
+  especiales de mejoras.
+  6. Planificar, regular y controlar el tránsito y el transporte terrestre
+  dentro de su circunscripción cantonal.
+  7. Planificar, construir y mantener la infraestructura física y los
+  equipamientos de salud y educación, así como los espacios públicos destinados
+  al desarrollo social, cultural y deportivo.
+  8. Preservar, mantener y difundir el patrimonio arquitectónico, cultural y
+  natural del cantón y construir los espacios públicos para estos fines.
+  9. Formar y administrar los catastros inmobiliarios urbanos y rurales.
+  10. Delimitar, regular, autorizar y controlar el uso de las playas de mar,
+  riberas y lechos de ríos, lagos y lagunas, sin perjuicio de las limitaciones
+  que establezca la ley.
+  11. Preservar y garantizar el acceso efectivo de las personas al uso de las
+  playas de mar, riberas de ríos, lagos y lagunas.
+  12. Regular, autorizar y controlar la explotación de materiales áridos y pétreos.
+  13. Gestionar los servicios de prevención, protección, socorro y extinción de
+  incendios.
+  14. Gestionar la cooperación internacional para el cumplimiento de sus competencias.
+
+EVIDENCIA:
+  - POA-con-ejecución-por-competencia
+  - LOTAIP-Numeral-6
+  - LOTAIP-Numeral-10
+  - PDOT-con-metas-por-competencia
+  - Presupuesto-institucional-por-programa
+  - Gold-Master-TGI-ejecución
+
+CONSECUENCIA:
+  descripcion: >
+    El incumplimiento de cualquiera de las 14 competencias exclusivas constituye
+    omisión institucional que puede activar el DPE (derecho vulnerado en el
+    territorio) y la CGE (presupuesto no ejecutado en función pública mandatada).
+    Base constitucional de TODOS los indicadores TGI del Holding Municipal de
+    Montecristi y de los 221 GADs del Ecuador.
+  tipo: observacion-cpccs
+  organo_sancionador:
+    - DPE
+    - CGE
+    - CPCCS
+
+APLICABILIDAD:
+  nivel_gobierno: [GAD-Municipal]
+  condicion: []
+  ambito_lac: >
+    Catálogo de competencias municipales equivalente en LAC aunque con distribución
+    diferente según el modelo de Estado (unitario vs federal).
+    Colombia: Art. 311-313 CN + Ley 136 (competencias municipales).
+    Perú: Ley 27972 LOM Art. 73-80 (ordenamiento territorial, servicios locales).
+    México: Art. 115 CPEUM fracción III (agua, alumbrado, mercados, seguridad).
+    El catálogo nominal varía; la estructura competencial territorial es análoga.
+    QUIRA mapea la función (Capa 3) — el actor local (Capa 5) varía por jurisdicción.
+
+IMPLEMENTACION_TERRITORIAL:
+  funcion_publica: >
+    Las 14 competencias exclusivas constituyen el catálogo completo de funciones
+    públicas permanentes del GAD Municipal. Cada una genera una obligación de
+    resultado verificable en el territorio:
+    CE_264.1 → PDOT aprobado y metas de desarrollo territorial.
+    CE_264.2 → Control uso suelo: permisos, catastro, sanciones.
+    CE_264.3 → Vialidad urbana mantenida.
+    CE_264.4 → Agua potable en cada parroquia, alcantarillado, residuos sólidos.
+    CE_264.5 → Recaudación de tasas y contribuciones.
+    CE_264.6 → Tránsito y transporte regulado.
+    CE_264.7 → Infraestructura salud/educación/espacios públicos mantenida.
+    CE_264.8 → Patrimonio cultural preservado.
+    CE_264.9 → Catastro inmobiliario actualizado.
+    CE_264.13 → Servicio de bomberos operativo.
+    Estas funciones existen aunque cambie la administración o la forma institucional.
+  actor_local: >
+    pendiente — verificar Resolución Orgánica GADM Montecristi para cada
+    competencia. QNKC-001: el actor es contingente; la función es permanente.
+    CE_264.4 (agua potable): NO existe EP de agua en Montecristi — actor pendiente
+    de verificación en orgánico GADM. NUNCA asumir EP sin fuente documental.
+    CE_264.13 (bomberos): Cuerpo de Bomberos Montecristi — entidad autónoma con
+    financiamiento propio (recargo factura eléctrica).
+  instrumento: >
+    Variable por competencia: Dirección-Municipal / EP-Municipal / Concesión /
+    Convenio-Mancomunidad / Sistema-comunitario / Delegación-Nivel-Central.
+    QNKC-001: el instrumento es Capa 4 (SERVICIO) — contingente.
+  evidencia:
+    - LOTAIP_Numeral_6
+    - LOTAIP_Numeral_7
+    - LOTAIP_Numeral_10
+    - PDOT-Montecristi
+    - Gold-Master-TGI-v5.5
+  indicador:
+    - DOM04_COBERTURA_AGUA_PCT
+    - DOM04_COBERTURA_ALCANTARILLADO_PCT
+    - DOM04_RESIDUOS_SOLIDOS_COBERTURA_PCT
+    - DOM02_EJECUCION_PRESUPUESTARIA
+    - DOM03_CATASTRO_ACTUALIZADO
+    - DOM04_VIALIDAD_URBANA_MANTENIDA
+  nota_lac: >
+    CE_264.4 es análogo a: Colombia — Ley 142/1994 (servicios públicos domiciliarios,
+    prestados por ESP pública, mixta o privada). Perú — LOM Art. 80 (saneamiento,
+    agua y alcantarillado). México — Art. 115 fracción III a) (agua potable,
+    alcantarillado, tratamiento y disposición de aguas residuales).
+    El QLEP mapea la función universal. El QTMP mapea el actor local por jurisdicción.
+  gap_conocido: >
+    CE_264.4 (agua potable): Gold Master v5.5 no registra EP de agua en Montecristi.
+    Actor pendiente de verificación en Resolución Orgánica GADM.
+    Parroquia Isabel Muentes: NBI estimado 61.2% — brecha cobertura agua según PDOT.
+    Estimado: ~3,200 personas sin cobertura de agua potable.
+
+DOMINIOS_QUIRA:
+  - Dom04
+  - Dom02
+  - Dom03
+  - Dom12
+  - Dom01
+
+RELACIONES:
+  - CE_238
+  - CE_241
+  - CE_260
+  - COOTAD_54
+  - COOTAD_55
+  - COOTAD_264
+  - LOTAIP_19
+
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false

@@ -1,0 +1,402 @@
+# F0.3b — COOTAD — Artículos Críticos Pendientes
+# GAP 10% + Sistema Participativo (Arts. 249 + 300-304)
+# QLEP v1.2 | Extracción: 2026-05-30
+# Átomos: 4 | Estado: completo
+#
+# NOTA ARQUITECTÓNICA:
+# Arts. 295-299 COOTAD → DEROGADOS por RO 790 (5-jul-2016).
+# La planificación participativa técnica migró al CPFP (Arts. 28-50).
+# COOTAD conserva los DERECHOS y PRINCIPIOS (Arts. 300-304).
+# CPFP regula el PROCEDIMIENTO Y METODOLOGÍA.
+# Referencias a COOTAD_295/299 deben leerse como COOTAD_300 + CPFP_28.
+#
+# CIRCUITO JURÍDICO CLAVE (identificado en auditoría Sprint F0):
+# CE_35 (derecho GAP) → CE_11_3 (prioridad) → COOTAD_249 (10% obligatorio) → Dom12
+# Este es uno de los circuitos causales más importantes de QUIRA.
+
+---
+ACK_ID: COOTAD_249
+CLASE: ACK_OBLIGACION
+TIPO: obligacion
+NOMBRE: Presupuesto 10 Pct Grupos Atención Prioritaria Ingresos No Tributarios
+FUENTE:
+  norma: Código Orgánico de Organización Territorial, Autonomía y Descentralización
+  sigla: COOTAD
+  jerarquia: 1
+  articulo: "249"
+  inciso: ""
+  fecha_vigencia: "2010-10-19"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+  - Director-Financiero-GADM
+  - Concejo-Municipal
+
+ACTOR_BENEFICIARIO:
+  - Grupos-de-Atención-Prioritaria
+  - Adultos-mayores
+  - Personas-con-discapacidad
+  - Niñas-niños-adolescentes
+  - Mujeres-embarazadas
+  - Pueblos-y-nacionalidades
+  - Personas-privadas-de-libertad
+  - Personas-en-movilidad-humana
+
+OBLIGACION: >
+  Sin perjuicio de las asignaciones que consten en el presupuesto general del Estado,
+  los gobiernos autónomos descentralizados municipales y metropolitanos destinarán
+  a los grupos de atención prioritaria NO MENOS DEL DIEZ POR CIENTO (10%) del
+  presupuesto de sus ingresos no tributarios para el financiamiento de políticas
+  sociales locales de los grupos de atención prioritaria, de acuerdo a los planes
+  y programas de ejecución y en coordinación con las entidades rectoras.
+
+EVIDENCIA:
+  - Presupuesto-con-partida-GAP-10-pct-mínimo
+  - Cédulas-presupuestarias-ingresos-no-tributarios
+  - POA-con-programas-GAP
+  - Gold-Master-TGI-presupuesto-GAP-pct
+  - LOTAIP-Numeral-6-presupuesto-ejecutado
+
+CONSECUENCIA:
+  descripcion: >
+    El GAD que no destine el 10% mínimo a GAP en su presupuesto viola el Art. 249.
+    La CGE puede detectarlo en auditoría de ejecución presupuestaria y emitir glosa.
+    El DPE puede activar acción por vulneración de derechos de grupos prioritarios.
+    El incumplimiento afecta el Patronato Municipal si no recibe el financiamiento
+    mínimo constitucional. Base de todos los indicadores Dom12 del TGI.
+  tipo: glosa-cge
+  organo_sancionador:
+    - CGE
+    - DPE
+    - CPCCS
+
+APLICABILIDAD:
+  nivel_gobierno: [GAD-Municipal]
+  condicion: []
+  ambito_lac: >
+    Asignación presupuestaria obligatoria a grupos vulnerables en toda LAC.
+    Colombia: Ley 1148/2007 (adulto mayor) + Ley 1618/2013 (discapacidad) —
+    obligaciones de gasto social municipal pero sin porcentaje fijo universal.
+    Perú: Presupuesto por resultados con programas presupuestales para grupos
+    vulnerables (PP 0049, 0058, 0080).
+    México: Ley General de Inclusión de las Personas con Discapacidad + LGDS —
+    mandatos de gasto social sin porcentaje fijo constitucional.
+    La regla del 10% ecuatoriana es más explícita que el resto de LAC.
+
+IMPLEMENTACION_TERRITORIAL:
+  funcion_publica: >
+    Financiar políticas sociales locales para todos los subgrupos GAP del cantón
+    con al menos el 10% de los ingresos no tributarios del GADM.
+    La función es permanente: existe independientemente de si el instrumento
+    ejecutor es el Patronato, una Dirección de Bienestar Social, o convenios
+    con el MIES/MSP/MAATE.
+    Esta es la base financiera del circuito causal:
+    CE_35 → CE_11.3 → COOTAD_249 → [actor local] → Dom12.
+  actor_local: >
+    pendiente — verificar Resolución Orgánica GADM Montecristi.
+    Típicamente: Patronato Municipal de Amparo Social (si existe) + Dirección GAP.
+    Gold Master v5.5: Patronato Municipal Montecristi registrado como entidad
+    del Holding con financiamiento propio. Verificar % del presupuesto GADM
+    que corresponde a ingresos no tributarios para calcular el 10% mínimo.
+    QNKC-001: la función GAP es permanente; el actor ejecutor es contingente.
+  instrumento: POA-GAP + Presupuesto-10pct + Convenio-MIES + Convenio-MSP
+  evidencia:
+    - LOTAIP_19_6
+    - Cédulas-presupuestarias-GAP
+    - Informes-Patronato-Municipal
+    - Gold-Master-Ti-Patronato
+  indicador:
+    - DOM12_PRESUPUESTO_GAP_PCT
+    - DOM12_IGD_GAP
+    - DOM12_TI_PATRONATO
+  nota_lac: >
+    Ecuador: 10% ingresos no tributarios (Art. 249 COOTAD) — mandato explícito.
+    Colombia: Ley 1276/2009 (centros vida adulto mayor) — asignación por habitante.
+    Perú: Foncomun con uso social orientado pero sin porcentaje fijo para GAP.
+    México: LGDS Art. 48 — municipios deben reportar gasto social pero sin %.
+    La especificidad del 10% ecuatoriano es una ventaja para QUIRA:
+    el cumplimiento es verificable con una comparación presupuestaria simple.
+  gap_conocido: >
+    Gold Master v5.5: Ti Patronato verificado. Verificar que el presupuesto del
+    Patronato + programas GAP directos del GADM superen el 10% de ingresos no
+    tributarios. El incumplimiento es el gap Dom12 más fácilmente cuantificable.
+
+DOMINIOS_QUIRA:
+  - Dom12
+  - Dom02
+  - Dom04
+
+RELACIONES:
+  - CE_35
+  - CE_11
+  - CE_264
+  - COOTAD_54
+  - LOTAIP_19_6
+
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: COOTAD_300
+CLASE: ACK_OBLIGACION
+TIPO: obligacion
+NOMBRE: Consejo Planificación Resolución Favorable Requisito Indispensable PDOT
+FUENTE:
+  norma: Código Orgánico de Organización Territorial, Autonomía y Descentralización
+  sigla: COOTAD
+  jerarquia: 1
+  articulo: "300"
+  inciso: ""
+  fecha_vigencia: "2010-10-19"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+  - Concejo-Municipal
+  - Consejo-de-Planificación-Cantonal
+
+ACTOR_BENEFICIARIO:
+  - Ciudadanía-cantonal
+  - Organizaciones-sociales
+
+OBLIGACION: >
+  Los consejos de planificación participativa de los gobiernos autónomos
+  descentralizados participarán en el proceso de formulación, seguimiento y
+  evaluación de sus planes y emitirán RESOLUCIÓN FAVORABLE sobre las prioridades
+  estratégicas de desarrollo como REQUISITO INDISPENSABLE para su aprobación
+  ante el órgano legislativo correspondiente. Los consejos de planificación
+  estarán presididos por sus máximos representantes. Su conformación y
+  atribuciones serán definidas por la ley (CPFP).
+
+EVIDENCIA:
+  - Resolución-favorable-Consejo-Planificación
+  - Acta-Consejo-Planificación-sobre-PDOT
+  - PDOT-con-resolución-adjunta
+
+CONSECUENCIA:
+  descripcion: >
+    El PDOT aprobado por el Concejo sin la resolución favorable previa del Consejo
+    de Planificación es legalmente inválido. Este control participativo es la
+    primera línea de legitimidad del PDyOT. Un PDOT sin esta resolución puede
+    ser impugnado ante la Corte Constitucional o la Contraloría.
+  tipo: nulidad
+  organo_sancionador:
+    - Corte-Constitucional
+    - CGE
+
+APLICABILIDAD:
+  nivel_gobierno: [GAD-Municipal, GAD-Provincial, GAD-Parroquial]
+  condicion: []
+  ambito_lac: >
+    Consejos o instancias de planificación participativa en toda LAC.
+    Colombia: Consejo Territorial de Planeación (Ley 152/1994) — concepto
+    previo obligatorio sobre el Plan de Desarrollo.
+    Perú: Consejo de Coordinación Local (LOM 27972 Art. 98) — participación
+    en formulación del PDC.
+    México: COPLADEMUN — comité de planeación democrática municipal.
+    La resolución/concepto previo participativo es el patrón LAC estándar.
+
+DOMINIOS_QUIRA:
+  - Dom09
+  - Dom02
+  - Dom08
+
+RELACIONES:
+  - CE_241
+  - COOTAD_57
+  - COOTAD_304
+  - CPFP_29
+
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: COOTAD_302
+CLASE: ACK_OBLIGACION
+TIPO: obligacion
+NOMBRE: Participación Ciudadana Rendición de Cuentas Permanente GAD
+FUENTE:
+  norma: Código Orgánico de Organización Territorial, Autonomía y Descentralización
+  sigla: COOTAD
+  jerarquia: 1
+  articulo: "302"
+  inciso: ""
+  fecha_vigencia: "2010-10-19"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+  - Concejo-Municipal
+
+ACTOR_BENEFICIARIO:
+  - Ciudadanía-cantonal
+  - Organizaciones-sociales
+  - Comunidades-rurales
+
+OBLIGACION: >
+  La ciudadanía podrá participar de manera protagónica en la toma de decisiones,
+  la planificación y gestión de los asuntos públicos y en el control social de
+  las instituciones de los GADs y de sus representantes, en un proceso permanente
+  de construcción del poder ciudadano. Las autoridades ejecutivas y legislativas
+  de los GADs tendrán la OBLIGACIÓN de establecer un sistema de rendición de
+  cuentas a la ciudadanía conforme el mandato de la ley y de sus propias normativas.
+
+EVIDENCIA:
+  - Informe-rendición-cuentas-presentado
+  - Actas-asambleas-participativas
+  - Sistema-participación-ciudadana-activo
+
+CONSECUENCIA:
+  descripcion: >
+    La omisión del sistema de rendición de cuentas es incumplimiento del Art. 302.
+    El CPCCS puede evaluar y sancionar la falta de rendición de cuentas.
+    Complementa la obligación del Art. 11 LOTAIP (informe anual DPE).
+  tipo: observacion-cpccs
+  organo_sancionador:
+    - CPCCS
+    - DPE
+
+APLICABILIDAD:
+  nivel_gobierno: [GAD-Municipal, GAD-Provincial, GAD-Parroquial]
+  condicion: []
+  ambito_lac: >
+    Rendición de cuentas obligatoria de autoridades locales en toda LAC.
+    Colombia: Ley 850/2003 Veedurías Ciudadanas + Ley 1757/2015 Participación.
+    Perú: Ley 26300 (participación ciudadana) + Transparencia Municipal.
+    México: Ley General de Contabilidad Gubernamental + Informes de Gobierno.
+
+DOMINIOS_QUIRA:
+  - Dom08
+  - Dom07
+  - Dom01
+
+RELACIONES:
+  - COOTAD_304
+  - LOTAIP_11
+  - LOTAIP_19_12
+  - CE_264
+
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: COOTAD_304
+CLASE: ACK_OBLIGACION
+TIPO: obligacion
+NOMBRE: Sistema Participación Ciudadana Presupuesto Participativo Obligatorio
+FUENTE:
+  norma: Código Orgánico de Organización Territorial, Autonomía y Descentralización
+  sigla: COOTAD
+  jerarquia: 1
+  articulo: "304"
+  inciso: "1-8"
+  fecha_vigencia: "2010-10-19"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+  - Concejo-Municipal
+
+ACTOR_BENEFICIARIO:
+  - Ciudadanía-cantonal
+  - Comunidades-rurales
+  - Parroquias-con-NBI-alto
+
+OBLIGACION: >
+  Los gobiernos autónomos descentralizados conformarán un sistema de
+  participación ciudadana, que tendrá una estructura y denominación propias,
+  para las siguientes finalidades:
+  1. Deliberar sobre las prioridades de desarrollo de sus circunscripciones.
+  2. Participar en la formulación, ejecución, seguimiento y evaluación del PDOT.
+  3. ELABORAR PRESUPUESTOS PARTICIPATIVOS de los gobiernos.
+  4. Participar en la definición de políticas públicas.
+  5. Generar mecanismos de coordinación para temas sectoriales o sociales.
+  6. FORTALECER LA DEMOCRACIA LOCAL con transparencia, rendición de cuentas y
+  control social permanente.
+  7. Promover el involucramiento ciudadano en decisiones territoriales.
+  8. Impulsar mecanismos de formación ciudadana activa.
+
+EVIDENCIA:
+  - Ordenanza-sistema-participación-aprobada
+  - Actas-asambleas-presupuesto-participativo
+  - Presupuesto-participativo-ejecutado-por-parroquia
+  - Informes-seguimiento-PDOT-con-participación
+
+CONSECUENCIA:
+  descripcion: >
+    El GAD que no conforme el Sistema de Participación Ciudadana viola el Art. 304.
+    El numeral 3 (presupuesto participativo) es especialmente crítico: el PP
+    es la herramienta más directa para reducir el IRS=79.7 — si las parroquias
+    rurales definen prioridades, la concentración urbana se corrige.
+    El CPCCS y la DPE pueden verificar el cumplimiento del sistema participativo.
+  tipo: observacion-cpccs
+  organo_sancionador:
+    - CPCCS
+    - DPE
+
+APLICABILIDAD:
+  nivel_gobierno: [GAD-Municipal, GAD-Provincial, GAD-Parroquial]
+  condicion: []
+  ambito_lac: >
+    Presupuesto participativo con base legal en toda LAC.
+    Colombia: Ley 1757/2015 + Decreto 1082/2015 (mecanismos participación).
+    Perú: Ley 28056 Marco del Presupuesto Participativo — obligatorio para
+    gobiernos regionales y locales.
+    México: Ley de Participación Ciudadana (Ciudad de México + estados) — PP
+    municipal en varios estados.
+    Ecuador es uno de los más robustos en LAC: PP tiene base en COOTAD + CPFP.
+
+IMPLEMENTACION_TERRITORIAL:
+  funcion_publica: >
+    Conformar y operar un sistema de participación ciudadana que incluya
+    obligatoriamente el presupuesto participativo (PP). El PP es el instrumento
+    territorial que conecta la voluntad ciudadana con la inversión pública.
+    La corrección del IRS=79.7 requiere PP por parroquia: las comunidades rurales
+    deben poder deliberar y decidir sobre la inversión que les corresponde.
+  actor_local: >
+    pendiente — verificar Resolución Orgánica GADM Montecristi.
+    Típicamente: Unidad de Participación Ciudadana o Dirección equivalente.
+    Consejo Cantonal de Planificación: órgano participativo con mandato COOTAD_300.
+    QNKC-001: la función (PP + participación) es permanente; el actor es contingente.
+  instrumento: Ordenanza-participación + PP-por-parroquia + Consejo-Planificación
+  evidencia:
+    - Actas-PP-por-parroquia
+    - Inversión-priorizada-por-PP-ejecutada
+    - Informe-sistema-participativo-anual
+  indicador:
+    - DOM08_PARTICIPACION_CIUDADANA
+    - DOM04_IRS_INDICE_REGRESIVIDAD
+    - DOM08_PP_EJECUTADO_PCT
+  gap_conocido: >
+    IRS=79.7: 79.7% de la inversión en cabecera cantonal → evidencia de PP
+    ausente o inoperante en parroquias rurales. El PP por parroquia es la
+    corrección estructural que QUIRA puede facilitar con datos territoriales.
+
+DOMINIOS_QUIRA:
+  - Dom08
+  - Dom04
+  - Dom02
+
+RELACIONES:
+  - COOTAD_300
+  - COOTAD_302
+  - COOTAD_215
+  - COOTAD_228
+  - CPFP_45
+  - LOPC
+
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false

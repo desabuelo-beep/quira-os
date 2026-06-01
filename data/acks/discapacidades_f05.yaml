@@ -1,0 +1,256 @@
+# ============================================================
+# QUIRA Gov — F0.5 Bloque GAP: Ley Orgánica de Discapacidades
+# ============================================================
+# Norma:     Ley Orgánica de Discapacidades
+# Sigla:     LOD
+# Jerarquía: 1 (Ley Orgánica)
+# Registro Oficial: Suplemento 796 — 25-sep-2012
+# Ámbito GAD Municipal: parcial — obligaciones específicas Arts. 47, 56, 58
+# Atoms:     3 (Art.47 · Art.56 · Art.58)
+# Propósito: Completar Dom12 — obligaciones GAD en inclusión laboral y accesibilidad
+# ============================================================
+
+ACK_ID: LOD_47
+CLASE: ACK_OBLIGACION
+TIPO: obligacion
+NOMBRE: Inclusión laboral obligatoria — 4% de trabajadores con discapacidad (empleadores ≥25)
+
+FUENTE:
+  norma: Ley Orgánica de Discapacidades
+  sigla: LOD
+  jerarquia: 1
+  articulo: "47"
+  inciso: ""
+  fecha_vigencia: "2012-09-25"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Director-RR-HH
+
+ACTOR_BENEFICIARIO:
+  - Personas con discapacidad en el cantón
+  - Sector laboral
+
+OBLIGACION: >
+  El empleador público o privado que cuente con un número mínimo de veinticinco (25)
+  trabajadores está obligado a contratar un mínimo del cuatro por ciento (4%) de personas
+  con discapacidad en labores permanentes. El trabajo asignado deberá ser acorde a sus
+  capacidades, potencialidades y talentos.
+  Para el personal de Cuerpos de Bomberos y Policías Municipales, el cálculo del 4%
+  se realiza únicamente sobre la nómina del personal administrativo, excluyendo
+  funciones operativas.
+  Contratos no permanentes se excluyen del cálculo.
+
+EVIDENCIA:
+  - Nómina de personal GAD Municipal — percentaje de trabajadores con discapacidad
+  - Carnet de discapacidad (CONADIS) de trabajadores incluidos
+  - Informe de CONADIS — seguimiento inclusión laboral sector público
+  - Resoluciones de nombramiento / contratos del personal con discapacidad
+
+CONSECUENCIA:
+  descripcion: >
+    Incumplimiento del 4% es infracción expresa (LOD Art. 563). Sanción: multa.
+    El CONADIS puede iniciar proceso administrativo sancionatorio.
+    Si el incumplimiento es sistemático, aplica responsabilidad administrativa
+    del Director de Talento Humano (LOC-CGE_45).
+  tipo: multa
+  organo_sancionador:
+    - CONADIS
+    - CGE
+
+APLICABILIDAD:
+  nacional: false
+  municipal: true
+  condicion:
+    - ninguna
+  # Aplica cuando la nómina del GAD ≥ 25 trabajadores — invariablemente en GADMCM
+
+DOMINIOS_QUIRA:
+  - Dom12
+  - Dom05
+
+RELACIONES:
+  - CE_35
+  - CE_11_3
+  - LOD_58
+  - LOC-CGE_45
+
+VIGENCIA:
+  estado: vigente
+
+META:
+  estado: v1.4
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.4
+  revisado_por_experto: true
+
+---
+
+ACK_ID: LOD_56
+CLASE: ACK_OBLIGACION
+TIPO: competencia_concurrente
+NOMBRE: GAD implementa programas de vivienda accesible para personas con discapacidad
+
+FUENTE:
+  norma: Ley Orgánica de Discapacidades
+  sigla: LOD
+  jerarquia: 1
+  articulo: "56"
+  inciso: ""
+  fecha_vigencia: "2012-09-25"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Estado (autoridad nacional de vivienda)
+
+ACTOR_BENEFICIARIO:
+  - Personas con discapacidad
+  - Familias de personas con discapacidad
+
+OBLIGACION: >
+  La autoridad nacional encargada de vivienda y los gobiernos autónomos descentralizados
+  implementarán, diseñarán y ejecutarán programas de vivienda que permitan a las personas
+  con discapacidad acceso prioritario y oportuno a una vivienda adecuada.
+  Los programas de vivienda para personas con discapacidad deberán incluir facilidades
+  de acceso y condiciones que les permita procurar su mayor grado de autonomía.
+  Los GADs también prestarán facilidades en el otorgamiento de créditos para adquisición,
+  construcción, adecuación o remodelación de vivienda (Art. 57).
+
+EVIDENCIA:
+  - POA — programas o convenios de vivienda accesible
+  - Catastro municipal — registros de vivienda adaptada
+  - Convenios con MIDUVI o entidades de vivienda
+  - Ordenanzas de construcción — requisitos de accesibilidad
+
+CONSECUENCIA:
+  descripcion: >
+    La omisión de programas de vivienda accesible activa responsabilidad administrativa
+    del servidor competente. La persona con discapacidad puede ejercer acción de protección
+    (CE Art. 88) por violación del derecho a vivienda digna (CE Art. 30).
+  tipo: responsabilidad-administrativa
+  organo_sancionador:
+    - DPE
+    - Judicatura
+
+APLICABILIDAD:
+  nacional: false
+  municipal: true
+  condicion:
+    - ninguna
+
+DOMINIOS_QUIRA:
+  - Dom12
+  - Dom04
+
+RELACIONES:
+  - CE_35
+  - CE_30
+  - LOD_58
+  - LOD_47
+  - COOTAD_55
+
+VIGENCIA:
+  estado: vigente
+
+META:
+  estado: v1.4
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.4
+  revisado_por_experto: true
+
+---
+
+ACK_ID: LOD_58
+CLASE: ACK_OBLIGACION
+TIPO: obligacion
+NOMBRE: GAD dicta ordenanzas de accesibilidad universal — espacios públicos y estacionamientos tarifados
+
+FUENTE:
+  norma: Ley Orgánica de Discapacidades
+  sigla: LOD
+  jerarquia: 1
+  articulo: "58"
+  inciso: ""
+  fecha_vigencia: "2012-09-25"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Concejo-Municipal
+
+ACTOR_BENEFICIARIO:
+  - Personas con discapacidad
+  - Ciudadanía en general
+
+OBLIGACION: >
+  En toda obra pública y privada de acceso público, urbana o rural, deben preverse accesos,
+  medios de circulación, información e instalaciones adecuadas para personas con discapacidad.
+  Los gobiernos autónomos descentralizados DEBEN dictar las ordenanzas respectivas para el
+  cumplimiento de este derecho, de conformidad con las normas de accesibilidad del INEN.
+  En los sistemas de estacionamiento tarifados creados por los GADs: se destinará un porcentaje
+  de parqueaderos claramente identificados (señalización y color) para personas con discapacidad.
+  El porcentaje mínimo de parqueos accesibles es el 2% del total de parqueos regulares
+  de la edificación o zona tarifada.
+
+EVIDENCIA:
+  - Ordenanza Municipal de Accesibilidad Universal (obligatoria — norma expresamente manda dictarla)
+  - Normas INEN 2293, 2245, 2246, 2247 (accesibilidad en edificaciones y espacio público)
+  - Catastro de obras públicas con cumplimiento de accesibilidad verificado
+  - Inspecciones de obras municipales con visto bueno de accesibilidad
+  - Sistema de estacionamiento tarifado — señalización de espacios accesibles
+
+CONSECUENCIA:
+  descripcion: >
+    La no emisión de la ordenanza de accesibilidad constituye omisión directa del mandato legal.
+    El Concejo Municipal y el Alcalde tienen responsabilidad institucional por la omisión.
+    La persona con discapacidad puede ejercer acción de protección (CE Art. 88).
+    El CONADIS puede sancionar administrativamente al GAD (LOD Art. 563).
+  tipo: accion-constitucional
+  organo_sancionador:
+    - CONADIS
+    - DPE
+    - Judicatura
+
+APLICABILIDAD:
+  nacional: false
+  municipal: true
+  condicion:
+    - ninguna
+  # La obligación de dictar la ordenanza es expresa y sin condición
+
+DOMINIOS_QUIRA:
+  - Dom12
+  - Dom04
+  - Dom01
+
+RELACIONES:
+  - CE_35
+  - CE_47
+  - LOD_47
+  - LOD_56
+  - COOTAD_57
+  - COOTAD_55
+
+VIGENCIA:
+  estado: vigente
+
+IMPLEMENTACION_TERRITORIAL:
+  funcion_publica: >
+    Garantía de accesibilidad universal en el espacio público cantonal — eliminación de
+    barreras físicas, de información y de comunicación para personas con discapacidad
+    en todos los bienes de uso público del GAD Municipal.
+  actor_local: >
+    Montecristi: Dirección de Obras Públicas / Planificación Urbana.
+    Verificar si existe Ordenanza de Accesibilidad vigente en Montecristi.
+    Si no existe, la Ordenanza es un instrumento normativo pendiente de alta prioridad.
+  instrumento: Ordenanza-Municipal
+  evidencia:
+    - Ordenanza de accesibilidad universal GADMCM (verificar existencia)
+    - Permisos de construcción con inspección de accesibilidad
+  indicador:
+    - pendiente — TGI Dom12 puede incluir: existencia de ordenanza accesibilidad (binario)
+
+META:
+  estado: v1.4
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.4
+  revisado_por_experto: true

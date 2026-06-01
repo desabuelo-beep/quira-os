@@ -1,0 +1,663 @@
+# ══════════════════════════════════════════════════════════════════════
+# QUIRA Legal Extraction Protocol (QLEP v1.3) — Sprint F0.4
+# Bloque Control — Parte B: NCI-CGE
+# Norma: Normas de Control Interno para las Entidades, Organismos del
+#         Sector Público y de las Personas Jurídicas de Derecho Privado
+#         que dispongan de Recursos Públicos
+# Instrumento: Acuerdo CGE 039-CG-2009
+# RO: Suplemento 87 (14-dic-2009)
+# Jerarquía: 3 (Resolución/Acuerdo de la CGE)
+# Ámbito GAD Municipal: TOTAL
+# Extractor: QLEP-v1.3 · Fecha: 2026-05-30
+# Nota arquitectónica: Las NCI crean NORMAS OPERATIVAS que el GAD DEBE
+#   implementar. Las NCI no crean consecuencias propias — el incumplimiento
+#   activa LOC-CGE Art. 45 (responsabilidad administrativa). Las NCI son
+#   la materialización operativa de LOC-CGE Art. 7 y 9.
+# Nota de codificación: El código NCI tiene 5 caracteres numéricos.
+#   Los 3 primeros = grupo/subgrupo (ej: 200 = Ambiente de Control).
+#   Los 2 últimos = título de la norma (ej: 200-02 = Administración estratégica).
+#   Los átomos NCI_PRE_COMPROMISO y NCI_PRE_DEVENGADO corresponden a las
+#   sub-normas del Componente 400 — Administración Financiera / Presupuesto.
+#   Se usan títulos descriptivos pendiente de verificación del código exacto.
+# Circuitos activados:
+#   NCI_200_02 → CE_241 + COOTAD_215 → TGI Dom04/Dom08
+#   NCI_400_01 → LOC-CGE_45 → TGI Dom01
+#   NCI_PRE_COMPROMISO → LOC-CGE_12 → D3=59.85% (TGI Dom02)
+# ══════════════════════════════════════════════════════════════════════
+
+---
+ACK_ID: NCI_GEN_CI
+CLASE: ACK_PRINCIPIO
+TIPO: principio
+NOMBRE: Control interno — definición normativa, 5 componentes y responsabilidad del diseño
+
+FUENTE:
+  norma: Normas de Control Interno — Contraloría General del Estado
+  sigla: NCI-CGE
+  jerarquia: 3
+  articulo: "Normas Generales"
+  inciso: "Control Interno"
+  fecha_vigencia: "2009-12-14"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+  - Director
+
+ACTOR_BENEFICIARIO:
+  - Estado Ecuatoriano
+
+OBLIGACION: >
+  El control interno será responsabilidad de cada institución del Estado y
+  de las personas jurídicas de derecho privado que dispongan de recursos
+  públicos, y tendrá como finalidad crear las condiciones para el ejercicio
+  del control. El control interno es un proceso integral aplicado por la
+  máxima autoridad, la dirección y el personal de cada entidad, que
+  proporciona seguridad razonable para el logro de los objetivos
+  institucionales y la protección de los recursos públicos. Constituyen
+  componentes del control interno: (1) el ambiente de control, (2) la
+  evaluación de riesgos, (3) las actividades de control, (4) los sistemas
+  de información y comunicación, y (5) el seguimiento. El diseño,
+  establecimiento, mantenimiento, funcionamiento, perfeccionamiento y
+  evaluación del control interno es responsabilidad de la máxima autoridad,
+  de los directivos y el personal de la entidad, de acuerdo con sus
+  competencias.
+
+EVIDENCIA:
+  - Sistema de control interno documentado (5 componentes)
+  - Informes de autoevaluación de control interno
+  - Código de ética institucional (Componente 200)
+  - Mapa de riesgos institucional (Componente 300)
+
+CONSECUENCIA:
+  descripcion: >
+    Incumplimiento de los 5 componentes activa LOC-CGE Art. 45. La ausencia
+    de cualquiera de los componentes constituye deficiencia del sistema de
+    control interno. La CGE usa esta norma como referente técnico principal
+    en cualquier auditoría o examen especial al GADM.
+  tipo: responsabilidad-administrativa
+  organo_sancionador:
+    - CGE
+
+VIGENCIA:
+  estado: vigente
+
+DOMINIOS_QUIRA:
+  - Dom01
+
+RELACIONES:
+  - LOC-CGE_9
+  - NCI_200_02
+  - NCI_200_04
+  - NCI_300
+  - NCI_400_01
+  - NCI_600_01
+
+META:
+  estado: v1.3
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.3
+  revisado_por_experto: false
+
+---
+ACK_ID: NCI_200_02
+CLASE: ACK_OBLIGACION
+TIPO: obligacion
+NOMBRE: Administración estratégica — POA como desagregación del plan plurianual con indicadores
+
+FUENTE:
+  norma: Normas de Control Interno — Contraloría General del Estado
+  sigla: NCI-CGE
+  jerarquia: 3
+  articulo: "200-02"
+  inciso: ""
+  fecha_vigencia: "2009-12-14"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+  - Director
+
+ACTOR_BENEFICIARIO:
+  - CGE
+  - Ciudadanía
+
+OBLIGACION: >
+  Las entidades del sector público implantarán, pondrán en funcionamiento y
+  actualizarán el sistema de planificación, así como el establecimiento de
+  indicadores de gestión que permitan evaluar el cumplimiento de las metas,
+  objetivos y la eficiencia de la gestión institucional. Requieren para su
+  gestión la implantación de un sistema de planificación que incluya la
+  formulación, ejecución, control, seguimiento y evaluación de los planes
+  operativos anuales y un plan plurianual institucional, que considerarán
+  como base la función, misión y visión institucionales y que tendrán
+  consistencia con los objetivos del Plan Nacional de Desarrollo, políticas
+  públicas, normativa constitucional y legal relacionada con su misión, y
+  lineamientos del organismo técnico de planificación. Los planes operativos
+  constituirán la desagregación del plan plurianual y contendrán: objetivos,
+  indicadores, metas, programas, proyectos y actividades que se impulsarán
+  en el período anual, documento que deberá estar vinculado con el
+  presupuesto a fin de concretar lo planificado en función de las capacidades
+  y la disponibilidad real de los recursos. Los productos de todas las
+  actividades de formulación, seguimiento y evaluación deben plasmarse en
+  documentos oficiales a difundirse entre todos los niveles de la organización
+  y a la comunidad en general.
+
+EVIDENCIA:
+  - POA actualizado y aprobado vinculado al presupuesto y al PDOT/PEI
+  - Plan plurianual institucional (PDyOT o equivalente)
+  - Indicadores de gestión documentados
+  - Informes de seguimiento y evaluación POA publicados en LOTAIP
+  - SIGAD actualizado (SNP)
+
+CONSECUENCIA:
+  descripcion: >
+    POA no articulado al PDyOT viola NCI 200-02 y activa LOC-CGE Art. 45
+    numeral 7 (no establecer sistemas de planificación). En GADM: presupuesto
+    aprobado sin coherencia territorial (IRS=79.7) viola esta norma además
+    de COOTAD_215. El incumplimiento es observable directamente en el SIGAD.
+  tipo: responsabilidad-administrativa
+  organo_sancionador:
+    - CGE
+
+VIGENCIA:
+  estado: vigente
+
+DOMINIOS_QUIRA:
+  - Dom01
+  - Dom02
+  - Dom04
+  - Dom09
+
+RELACIONES:
+  - LOC-CGE_9
+  - LOC-CGE_45
+  - CE_241
+  - COOTAD_215
+  - COOTAD_60
+  - LOTAIP_19_10
+
+META:
+  estado: v1.3
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.3
+  revisado_por_experto: false
+
+---
+ACK_ID: NCI_200_04
+CLASE: ACK_OBLIGACION
+TIPO: obligacion
+NOMBRE: Estructura orgánica — reglamento orgánico y manual de puestos obligatorios
+
+FUENTE:
+  norma: Normas de Control Interno — Contraloría General del Estado
+  sigla: NCI-CGE
+  jerarquia: 3
+  articulo: "200-04"
+  inciso: ""
+  fecha_vigencia: "2009-12-14"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+
+ACTOR_BENEFICIARIO:
+  - CGE
+  - Servidores-Publicos
+
+OBLIGACION: >
+  Toda entidad contará con un reglamento orgánico, estatuto orgánico o el
+  instrumento técnico de gestión organizacional, actualizado, que contendrá:
+  la estructura orgánica, niveles jerárquicos, funciones, atribuciones,
+  productos y demás especificaciones establecidas en la normativa aplicable;
+  y, un manual de procesos y procedimientos, como elementos sustanciales
+  para definir posteriormente el sistema de clasificación de puestos o
+  cargos. Toda entidad debe complementar su estructura orgánica con un Manual
+  de Descripción, Valoración y Clasificación de Puestos, actualizado, en el
+  cual se deben establecer los perfiles, funciones y atribuciones para cada
+  uno de los puestos o cargos, así como los requisitos para ocuparlos. Los
+  directivos comprenderán cuáles son sus responsabilidades de control y
+  poseerán experiencia y conocimientos requeridos en función de sus cargos.
+
+EVIDENCIA:
+  - Resolución Orgánica de Gestión Organizacional por Procesos publicada en RO
+  - Manual de Descripción, Valoración y Clasificación de Puestos vigente
+  - Orgánico funcional publicado en portal LOTAIP
+
+CONSECUENCIA:
+  descripcion: >
+    Reglamento orgánico desactualizado activa LOC-CGE Art. 45 numeral 7
+    (no establecer administración de recursos humanos). Su ausencia es
+    deficiencia grave del Componente 200 (Ambiente de Control) y puede
+    activar observaciones de la CGE en cualquier auditoría. En GADM: la
+    Resolución Orgánica 040-2025-ALC-LJTL debe verificarse contra los
+    requisitos de esta norma. El bajo D5 (capacidad institucional) tiene
+    correlación directa con incumplimiento de NCI 200-04 y 200-06.
+  tipo: responsabilidad-administrativa
+  organo_sancionador:
+    - CGE
+
+VIGENCIA:
+  estado: vigente
+
+DOMINIOS_QUIRA:
+  - Dom01
+  - Dom05
+
+RELACIONES:
+  - LOC-CGE_11
+  - LOC-CGE_45
+  - NCI_GEN_CI
+  - LOSEP
+  - LOTAIP_19
+
+META:
+  estado: v1.3
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.3
+  revisado_por_experto: false
+
+---
+ACK_ID: NCI_300
+CLASE: ACK_OBLIGACION
+TIPO: obligacion
+NOMBRE: Evaluación del riesgo — mapa de riesgos institucional obligatorio (probabilidad × impacto)
+
+FUENTE:
+  norma: Normas de Control Interno — Contraloría General del Estado
+  sigla: NCI-CGE
+  jerarquia: 3
+  articulo: "300"
+  inciso: "Evaluación del Riesgo (300-01 a 300-04)"
+  fecha_vigencia: "2009-12-14"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+  - Director
+
+ACTOR_BENEFICIARIO:
+  - Estado Ecuatoriano
+
+OBLIGACION: >
+  La máxima autoridad y el personal de la institución establecerán los
+  mecanismos necesarios para identificar, analizar, valorar y responder a
+  los riesgos a los que está expuesta la organización para el logro de sus
+  objetivos, el cumplimiento de las disposiciones legales, la protección de
+  recursos públicos y la generación de información oportuna y confiable.
+  La administración debe valorar los riesgos a partir de dos perspectivas,
+  probabilidad e impacto, siendo la probabilidad la posibilidad de ocurrencia,
+  mientras que el impacto representa el efecto frente a su ocurrencia
+  (Norma 300-03 — Valoración del riesgo). Los perfiles de riesgo y controles
+  relacionados serán continuamente revisados para asegurar que el mapa del
+  riesgo siga siendo válido, que las respuestas al riesgo son apropiadamente
+  escogidas y proporcionadas, y que los controles para mitigarlos sigan
+  siendo efectivos en la medida en que los riesgos cambien con el tiempo.
+  La entidad deberá establecer un plan de mitigación de riesgos que
+  desarrolle las estrategias y acciones para enfrentar los riesgos
+  identificados (Norma 300-04).
+
+EVIDENCIA:
+  - Matriz de riesgos institucional actualizada
+  - Mapa de calor de riesgos (probabilidad × impacto)
+  - Plan de mitigación y contingencia
+  - Informes periódicos de actualización del mapa de riesgos
+
+CONSECUENCIA:
+  descripcion: >
+    Ausencia de mapa de riesgos activa LOC-CGE Art. 45 numeral 6 (no
+    establecer control interno). En GADM: Montecristi opera en Manabí
+    (Clase 5 en amenazas: sismicidad, sequías, inundaciones costeras Chirijos).
+    La ausencia de un mapa de riesgos institucional actualizado es deficiencia
+    crítica del Componente 300, viola NCI, y puede activar responsabilidad
+    administrativa del Alcalde. El riesgo de fraccionamiento en contratos
+    (visible en SOCE) es riesgo de corrupción que debe estar en la matriz.
+  tipo: responsabilidad-administrativa
+  organo_sancionador:
+    - CGE
+
+VIGENCIA:
+  estado: vigente
+
+DOMINIOS_QUIRA:
+  - Dom01
+  - Dom03
+  - Dom04
+
+RELACIONES:
+  - LOC-CGE_9
+  - LOC-CGE_45
+  - NCI_GEN_CI
+  - NCI_400_01
+  - COOTAD_3
+
+META:
+  estado: v1.3
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.3
+  revisado_por_experto: false
+
+---
+ACK_ID: NCI_400_01
+CLASE: ACK_OBLIGACION
+TIPO: prohibicion
+NOMBRE: Separación de funciones — segregación obligatoria de autorización, ejecución y registro
+
+FUENTE:
+  norma: Normas de Control Interno — Contraloría General del Estado
+  sigla: NCI-CGE
+  jerarquia: 3
+  articulo: "400-01"
+  inciso: "Separación de funciones y rotación de labores"
+  fecha_vigencia: "2009-12-14"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+  - Director-Financiero
+
+ACTOR_BENEFICIARIO:
+  - Estado Ecuatoriano
+
+OBLIGACION: >
+  La máxima autoridad y los directivos de cada entidad asignarán funciones
+  y responsabilidades al personal a su cargo, estableciendo una segregación
+  de éstas, de manera que exista independencia, revisiones, separación de
+  funciones incompatibles y reducción del riesgo. La separación de funciones
+  se definirá en el reglamento orgánico, estatuto orgánico o el instrumento
+  técnico de gestión organizacional, en el manual de procesos y procedimientos,
+  Manual de Descripción, Valoración y Clasificación de Puestos y en los
+  sistemas informáticos que administra la entidad. Para reducir el riesgo de
+  error, el desperdicio, las actividades incorrectas y el riesgo de no
+  detectar tales problemas, no se asignará el control de todas las operaciones
+  clave a una sola persona o equipo; y tampoco se mantendrá por períodos
+  excesivos de tiempo a un servidor como responsable de dichas operaciones.
+  La máxima autoridad dispondrá la rotación de labores, siempre que existan
+  los perfiles suficientes para realizar los movimientos de personal
+  necesarios; caso contrario, deberán implementarse actividades de control
+  que compensen la imposibilidad de realizar rotaciones.
+  Regla fundamental: QUIEN AUTORIZA ≠ QUIEN EJECUTA ≠ QUIEN REGISTRA.
+  Quien recibe dinero ≠ quien contabiliza. Quien compra ≠ quien recibe bienes.
+
+EVIDENCIA:
+  - Reglamento orgánico con segregación documentada de funciones
+  - Manual de procesos con separación de roles
+  - Registros de autorización y aprobación diferenciados
+  - Plan de rotación de labores
+
+CONSECUENCIA:
+  descripcion: >
+    Concentración indebida de funciones en contratos/pagos activa LOC-CGE
+    Art. 45 numeral 3 (permisividad de violación de normas) y puede activar
+    indicios de responsabilidad penal (COIP peculado) si genera perjuicio
+    económico. Es el control que previene los hallazgos más graves en
+    auditorías de gestión. En GADM: verificar si el Director Financiero y
+    el responsable de contratos tienen funciones claramente segregadas en
+    SOCE y eSIGEF.
+  tipo: responsabilidad-administrativa
+  organo_sancionador:
+    - CGE
+    - Fiscalia
+
+VIGENCIA:
+  estado: vigente
+
+DOMINIOS_QUIRA:
+  - Dom01
+  - Dom02
+  - Dom03
+  - Dom05
+
+RELACIONES:
+  - LOC-CGE_11
+  - LOC-CGE_45
+  - NCI_GEN_CI
+  - NCI_200_04
+  - LOSNCP
+
+META:
+  estado: v1.3
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.3
+  revisado_por_experto: false
+
+---
+ACK_ID: NCI_600_01
+CLASE: ACK_OBLIGACION
+TIPO: obligacion
+NOMBRE: Seguimiento continuo — monitoreo permanente del control interno con UAI
+
+FUENTE:
+  norma: Normas de Control Interno — Contraloría General del Estado
+  sigla: NCI-CGE
+  jerarquia: 3
+  articulo: "600"
+  inciso: "Seguimiento continuo o en operación"
+  fecha_vigencia: "2009-12-14"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+  - Director
+  - Unidad-Auditoria-Interna
+
+ACTOR_BENEFICIARIO:
+  - Estado Ecuatoriano
+  - CGE
+
+OBLIGACION: >
+  La máxima autoridad y los directivos de la entidad establecerán
+  procedimientos de seguimiento continuo, evaluaciones periódicas o una
+  combinación de ambas para asegurar la eficacia del sistema de control
+  interno. Seguimiento es el proceso que evalúa la calidad del funcionamiento
+  del control interno en el tiempo y permite al sistema reaccionar en forma
+  dinámica, cambiando cuando las circunstancias así lo requieran. Se orientará
+  a la identificación de controles débiles o insuficientes para promover su
+  reforzamiento, así como asegurar que las medidas producto de los hallazgos
+  de auditoría y los resultados de otras revisiones se atiendan de manera
+  efectiva y con prontitud. Las debilidades y deficiencias detectadas como
+  resultado del proceso de monitoreo deben ser registradas y puestas a
+  disposición de los responsables con el fin de que tomen las acciones
+  necesarias para su corrección. El término "deficiencia" constituye la
+  materialización de un riesgo. La máxima autoridad, los niveles directivos
+  y de jefatura efectuarán un seguimiento continuo del ambiente interno y
+  externo que les permita conocer y aplicar medidas oportunas sobre
+  condiciones reales o potenciales que afecten el desarrollo de las
+  actividades institucionales.
+
+EVIDENCIA:
+  - Informes periódicos de autoevaluación del control interno
+  - Informes de la Unidad de Auditoría Interna
+  - Registros de implementación de recomendaciones de auditoría
+  - Seguimiento de POA con indicadores de gestión
+
+CONSECUENCIA:
+  descripcion: >
+    Ausencia de seguimiento continuo activa LOC-CGE Art. 45 numeral 9
+    (no tomar acciones correctivas en conocimiento del informe del auditor).
+    Si el GADM recibe recomendaciones de la CGE o de la UAI y no las
+    implementa, incurre directamente en esta causal. El incumplimiento de
+    recomendaciones es uno de los hallazgos más frecuentes en auditorías
+    posteriores de la CGE.
+  tipo: responsabilidad-administrativa
+  organo_sancionador:
+    - CGE
+
+VIGENCIA:
+  estado: vigente
+
+DOMINIOS_QUIRA:
+  - Dom01
+  - Dom07
+
+RELACIONES:
+  - LOC-CGE_12
+  - LOC-CGE_14
+  - LOC-CGE_45
+  - NCI_GEN_CI
+  - LOTAIP_19_12
+
+META:
+  estado: v1.3
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.3
+  revisado_por_experto: false
+
+---
+ACK_ID: NCI_PRE_COMPROMISO
+CLASE: ACK_OBLIGACION
+TIPO: procedimiento
+NOMBRE: Control previo al compromiso — triple verificación antes de comprometer recursos públicos
+
+FUENTE:
+  norma: Normas de Control Interno — Contraloría General del Estado
+  sigla: NCI-CGE
+  jerarquia: 3
+  articulo: "402-02"
+  inciso: "Control previo al compromiso"
+  fecha_vigencia: "2009-12-14"
+
+ACTOR_OBLIGADO:
+  - Director-Financiero
+  - Alcalde
+  - Servidor-Responsable-Gasto
+
+ACTOR_BENEFICIARIO:
+  - Estado Ecuatoriano
+
+OBLIGACION: >
+  Se denomina control previo al compromiso al conjunto de procedimientos y
+  acciones que adoptan los niveles directivos de las entidades antes de
+  tomar decisiones que comprometan recursos públicos. En el control previo
+  a la autorización para la ejecución de un gasto, las personas designadas
+  verificarán y justificarán con la documentación de respaldo que:
+  (1) La operación financiera está directamente relacionada con la misión
+  de la entidad, sus objetivos y con los programas, proyectos y actividades
+  aprobados en los planes operativos anuales y presupuestos.
+  (2) La operación financiera reúne los requisitos legales pertinentes y
+  necesarios para llevarla a cabo, que no existan restricciones legales
+  sobre la misma.
+  (3) Exista la partida presupuestaria con la disponibilidad suficiente de
+  fondos no comprometidos, a fin de evitar desviaciones financieras y
+  presupuestarias.
+
+EVIDENCIA:
+  - Certificación presupuestaria previa al compromiso
+  - Vinculación documentada del gasto al POA y partida presupuestaria
+  - Verificación de cumplimiento de requisitos legales del proceso
+  - Disponibilidad de saldo en partida (eSIGEF)
+
+CONSECUENCIA:
+  descripcion: >
+    Compromiso sin certificación previa o sin cumplir la triple verificación
+    activa LOC-CGE Art. 45 numeral 8 (contraer compromisos en contravención
+    con normas legales o insistir en una orden objetada por el control previo).
+    Activa también LOC-CGE Art. 52 (responsabilidad civil culposa) si genera
+    perjuicio económico. En GADM: D3=59.85% ejecución baja con posibles
+    concentraciones en Q4 puede indicar que el control previo se aplica de
+    forma insuficiente o tardía. Gastos sin POA = SAT-X-A (señal de alarma).
+  tipo: responsabilidad-administrativa
+  organo_sancionador:
+    - CGE
+
+VIGENCIA:
+  estado: vigente
+
+DOMINIOS_QUIRA:
+  - Dom01
+  - Dom02
+  - Dom03
+
+RELACIONES:
+  - LOC-CGE_12
+  - LOC-CGE_45
+  - NCI_GEN_CI
+  - COOTAD_198
+  - LOTAIP_19_6
+  - LOSNCP
+
+META:
+  estado: v1.3
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.3
+  revisado_por_experto: false
+
+---
+ACK_ID: NCI_PRE_DEVENGADO
+CLASE: ACK_OBLIGACION
+TIPO: procedimiento
+NOMBRE: Control previo al devengado — documentación mínima antes de aceptar obligación
+
+FUENTE:
+  norma: Normas de Control Interno — Contraloría General del Estado
+  sigla: NCI-CGE
+  jerarquia: 3
+  articulo: "402-03"
+  inciso: "Control previo al devengado"
+  fecha_vigencia: "2009-12-14"
+
+ACTOR_OBLIGADO:
+  - Director-Financiero
+  - Fiscalizador
+  - Servidor-Responsable-Pago
+
+ACTOR_BENEFICIARIO:
+  - Estado Ecuatoriano
+
+OBLIGACION: >
+  Previa a la aceptación de una obligación o al reconocimiento de un derecho,
+  como resultado de la recepción de bienes, servicios u obras, las personas
+  encargadas del control, con la documentación de respaldo, evidenciarán y
+  verificarán: (1) Que la obligación sea veraz y corresponda a una transacción
+  financiera que haya reunido los requisitos exigidos en la fase del control
+  previo; que se haya registrado contablemente; y, contenga la autorización
+  de la autoridad competente, así como mantengan su razonabilidad y exactitud
+  aritmética. (2) Que los bienes, obras o servicios recibidos cuenten con
+  los respaldos como: factura, contrato, ingreso a bodega o acta de recepción,
+  informes técnicos legalizados, que evidencien la obligación o deuda
+  correspondiente. (3) Que la transacción no varíe con respecto a la
+  propiedad, legalidad y conformidad con el presupuesto inicialmente
+  establecido y/o las reformas legalmente autorizadas por la autoridad
+  competente.
+
+EVIDENCIA:
+  - Acta de recepción provisional y definitiva (obras)
+  - Acta de entrega-recepción + ingreso a bodega (bienes)
+  - Informe de cumplimiento técnico (servicios)
+  - Factura legalizada y contrato correspondiente
+  - Informe de fiscalización (obras públicas)
+
+CONSECUENCIA:
+  descripcion: >
+    Devengamiento sin documentación completa (sin acta de recepción, sin
+    informe técnico) es causa directa de glosa (LOC-CGE Art. 53) por pago
+    indebido o perjuicio económico. Activa LOC-CGE Art. 45 numeral 3
+    (permisividad de violación de normas). En GADM: contratos pagados sin
+    acta de recepción o con obras inconclusas son el tipo exacto de hallazgo
+    que genera glosas. D3=59.85% con pagos concentrados en dic/ene puede
+    indicar devengamientos sin respaldo suficiente.
+  tipo: glosa-cge
+  organo_sancionador:
+    - CGE
+
+VIGENCIA:
+  estado: vigente
+
+DOMINIOS_QUIRA:
+  - Dom01
+  - Dom02
+  - Dom03
+
+RELACIONES:
+  - LOC-CGE_12
+  - LOC-CGE_45
+  - LOC-CGE_53
+  - NCI_PRE_COMPROMISO
+  - LOSNCP
+  - COOTAD_198
+
+META:
+  estado: v1.3
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.3
+  revisado_por_experto: false

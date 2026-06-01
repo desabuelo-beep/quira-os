@@ -1,0 +1,256 @@
+# ============================================================
+# QUIRA Gov — F0.5 Bloque GAP: CONA
+# Código Orgánico de la Niñez y Adolescencia
+# ============================================================
+# Norma:     Código de la Niñez y Adolescencia (Ley 100)
+# Sigla:     CONA
+# Jerarquía: 1 (Ley Orgánica)
+# Registro Oficial: 737 — 03-ene-2003
+# Última reforma:   RO Suplemento 283 — 07-jul-2014
+# Ámbito GAD Municipal: parcial — obligaciones institucionales específicas
+# Atoms:     3 (Art.12 · Art.207 · DEROGADOS)
+# Propósito: Completar Dom12 — obligaciones del GAD Municipal hacia NNA
+# ============================================================
+
+ACK_ID: CONA_12
+CLASE: ACK_PRINCIPIO
+TIPO: principio
+NOMBRE: Prioridad absoluta NNA en políticas públicas y recursos del Estado
+
+FUENTE:
+  norma: Código de la Niñez y Adolescencia
+  sigla: CONA
+  jerarquia: 1
+  articulo: "12"
+  inciso: ""
+  fecha_vigencia: "2003-01-03"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Estado
+  - Sociedad
+
+ACTOR_BENEFICIARIO:
+  - Niñas, niños y adolescentes (0-18 años)
+  - Menores de 6 años (prioridad especial)
+
+OBLIGACION: >
+  En la formulación y ejecución de las políticas públicas y en la provisión de recursos
+  se debe asignar prioridad absoluta a la niñez y adolescencia. Se les asegurará acceso
+  preferente a los servicios públicos y a cualquier clase de atención que requieran.
+  Se dará prioridad especial a la atención de niños y niñas menores de seis años.
+  En caso de conflicto, los derechos de los NNA prevalecen sobre los derechos de los demás.
+
+EVIDENCIA:
+  - POA — componente de atención a niñez y adolescencia
+  - Presupuesto — asignación a programas NNA
+  - COOTAD_249 — 10% GAP (complemento obligacional)
+  - LOTAIP_19_6 — publicación mensual de ejecución presupuestaria
+  - Patronato Municipal — informes de servicio a NNA
+
+CONSECUENCIA:
+  descripcion: >
+    La omisión de prioridad absoluta a NNA activa acción de protección (CE Art. 88).
+    Si la omisión genera perjuicio económico al Estado, aplica glosa CGE.
+    Responsabilidad administrativa del servidor público que omita asignar prioridad.
+  tipo: accion-constitucional
+  organo_sancionador:
+    - DPE
+    - Corte Constitucional
+    - CGE
+
+APLICABILIDAD:
+  nacional: true
+  municipal: true
+  condicion:
+    - ninguna
+
+DOMINIOS_QUIRA:
+  - Dom12
+  - Dom02
+  - Dom08
+
+RELACIONES:
+  - CE_35
+  - CE_11_3
+  - COOTAD_249
+  - CONA_207
+  - LOAPAM_84
+
+VIGENCIA:
+  estado: vigente
+
+CADENA_TERRITORIAL:
+  capa: 1
+  circuito_id: GAP_10PCT
+  activa:
+    - COOTAD_249
+    - CONA_207
+  mide_en: "TGI Dom12"
+
+META:
+  estado: v1.4
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.4
+  revisado_por_experto: true
+
+---
+
+ACK_ID: CONA_207
+CLASE: ACK_OBLIGACION
+TIPO: obligacion
+NOMBRE: Junta Cantonal de Protección de Derechos — constitución por Concejo Cantonal NNA
+
+FUENTE:
+  norma: Código de la Niñez y Adolescencia
+  sigla: CONA
+  jerarquia: 1
+  articulo: "207"
+  inciso: ""
+  fecha_vigencia: "2003-01-03"
+
+ACTOR_OBLIGADO:
+  - Concejo-Municipal
+  - GAD-Municipal
+
+ACTOR_BENEFICIARIO:
+  - Niñas, niños y adolescentes del cantón
+  - Ciudadanía en general
+
+OBLIGACION: >
+  La Junta Cantonal de Protección de Derechos (JCPD) se integrará con tres miembros
+  principales y sus respectivos suplentes, elegidos por el Concejo Cantonal de la Niñez
+  y Adolescencia. El GAD Municipal es responsable de constituir, financiar y sostener
+  la operación de la JCPD en su jurisdicción. Los miembros deben acreditar formación
+  técnica para las responsabilidades del cargo.
+
+EVIDENCIA:
+  - Acta de Concejo — resolución de conformación JCPD
+  - Ordenanza Municipal — regulación de la JCPD
+  - Presupuesto — asignación para operación JCPD
+  - LOTAIP_19_6 — ejecución presupuestaria JCPD
+  - Informe de gestión JCPD
+
+CONSECUENCIA:
+  descripcion: >
+    La no constitución de la JCPD viola CE Art. 35 (grupos prioritarios) y CE Art. 88
+    (acción de protección). La Defensoría del Pueblo puede actuar de oficio.
+    Responsabilidad administrativa del Alcalde por omisión de garantía institucional.
+  tipo: accion-constitucional
+  organo_sancionador:
+    - DPE
+    - Judicatura
+
+APLICABILIDAD:
+  nacional: false
+  municipal: true
+  condicion:
+    - ninguna
+  # Aplica a todos los GAD Municipales — cada cantón debe tener su JCPD
+
+DOMINIOS_QUIRA:
+  - Dom12
+  - Dom08
+  - Dom01
+
+RELACIONES:
+  - CONA_12
+  - CE_35
+  - CE_264
+  - COOTAD_55
+  - COOTAD_249
+
+VIGENCIA:
+  estado: vigente
+
+IMPLEMENTACION_TERRITORIAL:
+  funcion_publica: >
+    Protección administrativa de derechos de NNA en el cantón — tribunal administrativo
+    especializado que conoce y resuelve amenazas o violaciones de derechos en sede
+    extrajudicial antes de acudir a los juzgados de niñez.
+  actor_local: >
+    Montecristi: JCPD Montecristi — pendiente verificar si se constituyó conforme al CONA.
+    Resolución Orgánica 040-2025 debe indicar si existe como unidad administrativa.
+  instrumento: Servicio-público-municipal
+  evidencia:
+    - Ordenanza que regula la JCPD en el cantón
+    - Presupuesto asignado (LOTAIP_19_6)
+  indicador:
+    - pendiente — verificar si TGI Dom12 incluye indicador de operatividad JCPD
+
+META:
+  estado: v1.4
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.4
+  revisado_por_experto: true
+
+---
+
+ACK_ID: CONA_302
+CLASE: ACK_OBLIGACION
+TIPO: obligacion
+NOMBRE: Fondos municipales para NNA — DEROGADO (RO 283 / 2014)
+
+FUENTE:
+  norma: Código de la Niñez y Adolescencia
+  sigla: CONA
+  jerarquia: 1
+  articulo: "302"
+  inciso: ""
+  fecha_vigencia: "2003-01-03"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+
+ACTOR_BENEFICIARIO:
+  - Niñas, niños y adolescentes del cantón
+
+OBLIGACION: >
+  [DEROGADO] Los municipios debían constituir fondos específicos para el financiamiento
+  de programas de protección integral de NNA. El artículo fue derogado por Ley No. 0
+  (RO Suplemento 283, 07-jul-2014). La obligación de financiar se mantiene a través
+  del mandato general de COOTAD_249 (10% para GAP) y CE Art. 35.
+
+EVIDENCIA:
+  - No aplica — átomo histórico para trazabilidad de auditorías
+  - Referencia histórica: presupuestos GAD anteriores a 2014
+
+CONSECUENCIA:
+  descripcion: >
+    Norma derogada. Sin consecuencia activa. Referencia solo para auditorías históricas
+    (períodos 2003-2014) o para el Patronato que pueda alegar fondos bajo la norma anterior.
+  tipo: ninguna
+  organo_sancionador: []
+
+APLICABILIDAD:
+  nacional: false
+  municipal: true
+  condicion:
+    - ninguna
+
+DOMINIOS_QUIRA:
+  - Dom12
+  - Dom02
+
+RELACIONES:
+  - CONA_12
+  - COOTAD_249
+  - CE_35
+
+VIGENCIA:
+  estado: derogado
+  fecha_fin: "2014-07-07"
+  reemplazado_por:
+    - COOTAD_249
+    - CE_35
+  nota_historica: >
+    Derogado por Ley No. 0 (RO Suplemento 283, 07-jul-2014).
+    También derogados: Arts. 298, 299, 300, 301, 303, 304 CONA (financiamiento NNA).
+    El régimen de financiamiento municipal para NNA migró a COOTAD_249 (10% GAP).
+    Igualmente derogados: Arts. 194, 198-204 (Concejo Nacional NNA — organismo suprimido).
+
+META:
+  estado: v1.4
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.4
+  revisado_por_experto: true

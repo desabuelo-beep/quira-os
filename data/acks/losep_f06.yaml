@@ -1,0 +1,363 @@
+# ============================================================
+# QUIRA Gov — F0.6 Bloque Operativo: LOSEP
+# Ley Orgánica del Servicio Público
+# ============================================================
+# Norma:     Ley Orgánica del Servicio Público
+# Sigla:     LOSEP
+# Jerarquía: 1 (Ley Orgánica)
+# RO:        Suplemento 294 — 06-oct-2010
+# Última reforma relevante: 2020+
+# Ámbito GAD Municipal: TOTAL — todos los servidores municipales bajo régimen público
+# Atoms:     3 (Art.4 · Art.22 · Art.42)
+# Propósito: Completar Dom05 — talento humano como capa institucional del GAD
+#            Resolver forward references (LOSEP_22, LOSEP_42 referenciados en 15+ átomos)
+#            Densificar circuito H4_INSTITUCION_EJECUCION
+# ============================================================
+# Nota arquitectónica QNKC-002: El servidor público (Actor lateral) ejecuta procesos C4
+# pero NO es parte de la cadena causal. La LOSEP define el marco jurídico (C1-C2) y el
+# régimen de control (C6) de los Actores. La responsabilidad formal del servidor es el
+# enlace entre la obligación institucional y la consecuencia real.
+# ============================================================
+# Forward references resueltas:
+#   LOSEP_22 → referenciado en: ce_art226_264.yaml (2 veces)
+#   LOSEP_42 → referenciado en: ce_art226_264.yaml (3×), lotaip_f02.yaml (5×),
+#              loc_cge_f04.yaml (1×), cona_f05.yaml (indirecto), h1.yaml (nota)
+# ============================================================
+
+ACK_ID: LOSEP_4
+CLASE: ACK_PRINCIPIO
+TIPO: distribucion
+NOMBRE: Ámbito LOSEP — GADs como Empleadores del Régimen de Servicio Público
+
+FUENTE:
+  norma: Ley Orgánica del Servicio Público
+  sigla: LOSEP
+  jerarquia: 1
+  articulo: "4"
+  inciso: ""
+  fecha_vigencia: "2010-10-06"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+  - Concejo-Municipal
+
+ACTOR_BENEFICIARIO:
+  - Servidoras y servidores públicos municipales
+  - Ciudadanía (garantía de servicio profesional e imparcial)
+
+OBLIGACION: >
+  La LOSEP se aplica a todas las servidoras y servidores de las instituciones del Estado,
+  incluyendo los Gobiernos Autónomos Descentralizados. Los GADs están obligados a regir
+  todas sus relaciones laborales con el personal de planta conforme a las disposiciones
+  de la LOSEP: ingreso por concurso de méritos y oposición, evaluación periódica del
+  desempeño, régimen remunerativo establecido, y régimen disciplinario con garantías
+  del debido proceso. Las personas que prestan servicios ocasionales o por contrato
+  de servicios profesionales tienen un régimen diferenciado.
+
+EVIDENCIA:
+  - Contratos de nombramiento del personal municipal
+  - Resoluciones de concursos de méritos GADMCM
+  - ROL de pagos en SIGEF
+  - Informes de evaluación de desempeño
+  - Nómina institucional publicada (LOTAIP_19_6)
+
+CONSECUENCIA:
+  descripcion: >
+    La contratación de personal fuera del régimen LOSEP (sin concurso, con categorías
+    distintas a las establecidas, o sin proceso de evaluación) genera nulidad del
+    nombramiento. Responsabilidad administrativa del Alcalde como máxima autoridad
+    nominadora y del Director de Talento Humano que instrumenta el proceso.
+  tipo: nulidad
+  organo_sancionador:
+    - MinTrabajo-SENRES
+    - CGE
+    - PGE
+
+APLICABILIDAD:
+  nacional: true
+  municipal: true
+  condicion:
+    - Todo GAD Municipal como empleador de servicio público
+
+OBSERVA_CAPA: "C1"
+
+DOMINIOS_QUIRA:
+  - Dom05
+  - Dom01
+
+RELACIONES:
+  - CE_225
+  - CE_229
+  - COOTAD_54
+  - LOSEP_22
+  - LOSEP_42
+
+VIGENCIA:
+  estado: vigente
+
+CADENA_TERRITORIAL:
+  circuito_id: H4_INSTITUCION_EJECUCION
+  capa_inicio: "C1"
+  capa_fin: "C3"
+  servicio_publico: >
+    Servicio público municipal prestado por funcionarios con régimen jurídico-laboral
+    profesional, garantía de institucionalidad y capacidad de ejecución.
+  proceso_referencia: >
+    Clasificación de puestos → convocatoria concurso → méritos y oposición →
+    nombramiento → inducción → evaluación desempeño periódica → régimen LOSEP.
+  indicador_referencia: >
+    TGI Dom05 — porcentaje personal con nombramiento regular / personal con
+    evaluación al día. Dom01 — actos administrativos de personal conformes a LOSEP.
+
+IMPLEMENTACION_LOCAL:
+  actor_local: >
+    pendiente — Director/a de Talento Humano GADMCM (autoridad nominadora delegada
+    por el Alcalde para gestión del recurso humano)
+  institucion_local: >
+    GAD-Municipal-Montecristi — Dirección de Talento Humano
+  fuente_organica: >
+    Resolución Orgánica GADMCM — competencias Dirección Talento Humano /
+    Reglamento Interno de Administración de Talento Humano GADMCM
+
+META:
+  estado: v1.5
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.5
+  revisado_por_experto: true
+
+---
+
+ACK_ID: LOSEP_22
+CLASE: ACK_DERECHO
+TIPO: derecho
+NOMBRE: Derechos de las Servidoras y Servidores Públicos Municipales
+
+FUENTE:
+  norma: Ley Orgánica del Servicio Público
+  sigla: LOSEP
+  jerarquia: 1
+  articulo: "22"
+  inciso: ""
+  fecha_vigencia: "2010-10-06"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+  - Director-Talento-Humano
+
+ACTOR_BENEFICIARIO:
+  - Servidoras y servidores municipales
+
+OBLIGACION: >
+  [PENDIENTE VERIFICACIÓN LITERAL — Art. 22 LOSEP] Las servidoras y servidores públicos
+  tienen derecho a: (a) desempeñar sus funciones en un entorno de trabajo adecuado;
+  (b) percibir una remuneración justa, proporcional a su función, eficiencia y
+  responsabilidades, y en ningún caso inferior a los mínimos establecidos; (c) contar
+  con vacaciones, descanso semanal y licencias con goce de remuneración conforme a la ley;
+  (d) recibir prestaciones sociales y del IESS; (e) no ser removido sino con apego
+  a la ley y con garantías del debido proceso; (f) recibir capacitación y formación
+  continua. El GAD como empleador está obligado a garantizar el ejercicio efectivo de
+  estos derechos.
+
+EVIDENCIA:
+  - ROL de pagos y registro de remuneraciones en SIGEF
+  - Registro de vacaciones, licencias y permisos
+  - Planillas de afiliación IESS
+  - Ausencia de sumarios sin apertura de debido proceso
+  - Registros de capacitación del personal
+
+CONSECUENCIA:
+  descripcion: >
+    La violación de los derechos de los servidores municipales activa acción de protección
+    (CE Art. 88), recurso de apelación ante Tribunal de lo Contencioso Administrativo
+    y puede motivar demanda de daños y perjuicios. El Alcalde y Director de Talento
+    Humano incurren en responsabilidad personal por la omisión.
+  tipo: responsabilidad-administrativa
+  organo_sancionador:
+    - Tribunales-Contencioso-Administrativo
+    - DPE
+    - MinTrabajo
+
+APLICABILIDAD:
+  nacional: true
+  municipal: true
+  condicion:
+    - Todo servidor municipal bajo régimen LOSEP
+
+OBSERVA_CAPA: "C3"
+
+DOMINIOS_QUIRA:
+  - Dom05
+
+RELACIONES:
+  - CE_226
+  - CE_227
+  - CE_229
+  - LOSEP_4
+  - LOSEP_42
+
+VIGENCIA:
+  estado: vigente
+
+CADENA_TERRITORIAL:
+  circuito_id: H4_INSTITUCION_EJECUCION
+  capa_inicio: "C1"
+  capa_fin: "C3"
+  servicio_publico: >
+    Garantía de condiciones laborales justas para el servidor municipal, fundamento
+    de la capacidad institucional para ejecutar servicios públicos de calidad.
+  proceso_referencia: >
+    Reconocimiento de derechos → gestión de nómina correcta → afiliación IESS →
+    evaluación clima laboral → indicadores de capacidad institucional Dom05.
+  indicador_referencia: >
+    TGI Dom05 — índice de rotación / ausentismo / sumarios iniciados vs. derechos
+    reclamados. Calidad institucional = precondición de ejecución presupuestaria.
+
+IMPLEMENTACION_LOCAL:
+  actor_local: >
+    pendiente — Director/a de Talento Humano GADMCM
+  institucion_local: >
+    GAD-Municipal-Montecristi — Dirección de Talento Humano
+  fuente_organica: >
+    Reglamento Interno de Administración de Talento Humano GADMCM
+
+META:
+  estado: v1.5
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.5
+  revisado_por_experto: false
+
+---
+
+ACK_ID: LOSEP_42
+CLASE: ACK_OBLIGACION
+TIPO: sancion
+NOMBRE: Régimen Disciplinario — Escala de Sanciones al Servidor Público
+
+FUENTE:
+  norma: Ley Orgánica del Servicio Público
+  sigla: LOSEP
+  jerarquia: 1
+  articulo: "42"
+  inciso: ""
+  fecha_vigencia: "2010-10-06"
+
+ACTOR_OBLIGADO:
+  - Alcalde (autoridad nominadora)
+  - Director-Talento-Humano (instructor del sumario)
+
+ACTOR_BENEFICIARIO:
+  - Estado-Ecuatoriano (disciplina institucional)
+  - Ciudadanía (garantía servicio libre de abusos)
+
+OBLIGACION: >
+  [PENDIENTE VERIFICACIÓN LITERAL — Art. 42 LOSEP — puede ser Art. 41 en versiones previas]
+  El régimen disciplinario contempla las siguientes sanciones en orden de gravedad:
+  (a) amonestación verbal; (b) amonestación escrita; (c) sanción pecuniaria administrativa
+  (multa de hasta el 10% del sueldo mensual); (d) suspensión temporal sin goce de
+  remuneración; (e) destitución del cargo. La sanción de destitución requiere apertura
+  de sumario administrativo con plenas garantías del debido proceso (CE Art. 76). La CGE
+  determina la responsabilidad; la autoridad nominadora ejecuta la sanción. El servidor
+  sancionado puede impugnar ante el Tribunal de lo Contencioso Administrativo.
+
+EVIDENCIA:
+  - Sumario administrativo iniciado con notificación al servidor
+  - Resolución motivada de sanción emitida por el nominador
+  - Expediente de personal actualizado con sanción registrada
+  - Informe CGE que determina responsabilidad (cuando aplica)
+  - Sentencias de Tribunales Contencioso-Administrativo (impugnaciones)
+
+CONSECUENCIA:
+  descripcion: >
+    Este artículo ES el instrumento sancionatorio activado por múltiples normas del corpus:
+    violaciones LOTAIP (Art. 42 → sanciones LOSEP), incumplimientos de recomendaciones CGE
+    (LOC-CGE_45), infracciones LOSNCP_106, faltas al régimen presupuestario (COOTAD_215),
+    y cualquier falta grave del servidor. La destitución impide reingreso al servicio público.
+    El peculado además genera responsabilidad penal (COIP).
+  tipo: responsabilidad-administrativa
+  organo_sancionador:
+    - Alcalde-Nominador
+    - Tribunales-Contencioso-Administrativo
+
+APLICABILIDAD:
+  nacional: true
+  municipal: true
+  condicion:
+    - Todo servidor municipal sujeto a proceso disciplinario
+
+OBSERVA_CAPA: "C6"
+
+DOMINIOS_QUIRA:
+  - Dom05
+  - Dom01
+
+RELACIONES:
+  - LOC-CGE_45
+  - LOTAIP_42
+  - CE_229
+  - CE_233
+  - LOSEP_4
+  - LOSNCP_106
+
+VIGENCIA:
+  estado: vigente
+
+CADENA_TERRITORIAL:
+  circuito_id: H4_INSTITUCION_EJECUCION
+  capa_inicio: "C6"
+  capa_fin: "C6"
+  servicio_publico: >
+    Disciplina institucional como condición necesaria de integridad y capacidad
+    de ejecución del servicio público municipal.
+  proceso_referencia: >
+    Detección de falta → apertura sumario → instrucción y due process →
+    resolución del nominador → ejecución sanción → registro expediente personal.
+  indicador_referencia: >
+    TGI Dom05 — sumarios iniciados y resueltos / tasa de cumplimiento de
+    recomendaciones CGE. Dom01 — densidad de la cadena de responsabilidades
+    institucionales (núcleo QNKC-002 Actor lateral).
+
+IMPLEMENTACION_LOCAL:
+  actor_local: >
+    pendiente — Alcalde (autoridad nominadora) / Director/a de Talento Humano
+    (instructor del sumario administrativo) / Procurador/a Síndico (asesoría jurídica)
+  institucion_local: >
+    GAD-Municipal-Montecristi — Alcaldía / Dirección de Talento Humano /
+    Procuraduría Síndica Municipal
+  fuente_organica: >
+    Resolución Orgánica GADMCM que delega instrucción de sumarios /
+    Reglamento Interno de Administración de Talento Humano
+
+META:
+  estado: v1.5
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.5
+  revisado_por_experto: false
+
+---
+
+# ============================================================
+# ÍNDICE F0.6 LOSEP — 3 átomos
+# ============================================================
+#
+# LOSEP_4   — Art. 4  — Ámbito (GADs incluidos) — Dom05/Dom01 — revisado: true
+# LOSEP_22  — Art. 22 — Derechos servidores     — Dom05       — revisado: false
+# LOSEP_42  — Art. 42 — Régimen disciplinario   — Dom05/Dom01 — revisado: false
+#
+# Forward references resueltas:
+#   LOSEP_22 (de ce_art226_264.yaml líneas 69, 135) → resuelto
+#   LOSEP_42 (de 8+ átomos existentes en corpus)   → resuelto
+#   LOSEP    (genérico, de nci_f04.yaml)            → parcialmente resuelto
+#
+# Circuitos densificados:
+#   H4_INSTITUCION_EJECUCION: LOSEP_4 + LOSEP_42 son el sustrato institucional
+#   H5_CONTROL_EJECUCION: LOSEP_42 es el eslabón sancionatorio Dom05→Dom02
+#
+# Nota arquitectónica QNKC-002:
+#   LOSEP_42 es el "eslabón de enforcement" que hace efectiva la cadena de control.
+#   Sin LOSEP_42 (amenaza de consecuencia real), las obligaciones de NCI, LOC-CGE y
+#   LOTAIP son normativas sin dientes. Este es el corazón del circuito H4.
+#
+# Corpus post-F0.6-LOSEP: 89+3 = 92 ACK + 14 REL-V + 23 REL-H = 129 artefactos
+# ============================================================

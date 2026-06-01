@@ -1,0 +1,1194 @@
+# F0.2 — LOTAIP — Ley Orgánica de Transparencia y Acceso a la Información Pública
+# Bloque: Transparencia Activa + Acceso a la Información + Obligaciones GAD
+# QLEP v1.2 | Extracción: 2026-05-30
+# Átomos: 14 | Estado: completo
+# Fuente: LOTAIP (RO 245 — 7 de febrero de 2023, versión vigente)
+#
+# NOTA ARQUITECTÓNICA (QNKC-001 + QLEP v1.2b):
+# DISTINCIÓN FUNDAMENTAL: LOTAIP no crea obligaciones sustantivas.
+# LOTAIP crea VENTANAS OBSERVACIONALES sobre obligaciones que ya existen en CE/COOTAD.
+#   - CE_12 + COOTAD_137 crean la OBLIGACIÓN de dar agua potable.
+#   - LOTAIP_19_6 observa si esa obligación se ejecutó (vía presupuesto publicado).
+# Los átomos LOTAIP_19_X tienen el campo OBSERVA_CAPA para clasificar qué capa observan.
+# Sin este campo, QUIRA confundiría la fuente de la obligación con su ventana de verificación.
+# Los átomos LOTAIP_7, 8, 9, 10, 11, 39, 42 SÍ crean obligaciones sustantivas (no observacionales).
+# Los átomos LOTAIP_19_X y LOTAIP_24 son observacionales → llevan OBSERVA_CAPA.
+
+---
+ACK_ID: LOTAIP_7
+CLASE: ACK_DERECHO
+TIPO: derecho
+NOMBRE: Derecho de Acceso a la Información Pública
+FUENTE:
+  norma: Ley Orgánica de Transparencia y Acceso a la Información Pública
+  sigla: LOTAIP
+  jerarquia: 1
+  articulo: "7"
+  inciso: ""
+  fecha_vigencia: "2023-02-07"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+  - Concejo-Municipal
+  - Todos-los-sujetos-obligados
+
+ACTOR_BENEFICIARIO:
+  - Ciudadanía
+  - Comunidades-rurales
+  - Organizaciones-sociedad-civil
+
+OBLIGACION: >
+  El derecho de acceso a la información pública comprende el derecho a buscar,
+  acceder, solicitar, investigar, difundir, recibir, copiar, analizar, reprocesar,
+  reutilizar y redistribuir información. Toda la información producida, obtenida,
+  adquirida, transformada o en posesión de los sujetos obligados es pública y
+  accesible a cualquier persona en los términos y condiciones establecidos en
+  la presente Ley.
+
+EVIDENCIA:
+  - Portal-web-GADM-actualizado
+  - Registro-solicitudes-información-respondidas
+  - LOTAIP-Numeral-23-Registro-Activos-Información
+
+CONSECUENCIA:
+  descripcion: >
+    El GAD que niegue o dilate injustificadamente el acceso activa el Art. 42
+    LOTAIP (sanciones LOSEP) y puede ser denunciado ante la Defensoría del Pueblo.
+    La ciudadanía puede interponer acción de acceso a la información pública ante
+    la Corte Constitucional.
+  tipo: sancion-penal
+  organo_sancionador:
+    - DPE
+    - Corte-Constitucional
+    - CPCCS
+
+APLICABILIDAD:
+  nivel_gobierno: [GAD-Municipal, GAD-Provincial, GAD-Parroquial, Nivel-Central]
+  condicion: []
+  ambito_lac: >
+    Derecho de acceso a la información pública en toda LAC.
+    Colombia: Ley 1712/2014 (Ley de Transparencia y Acceso).
+    Perú: Ley 27806 (Ley de Transparencia y Acceso a la Información).
+    México: Ley General de Transparencia y Acceso a la Información (LGTAIP 2015).
+    Cada país tiene su ley equivalente; el derecho es análogo.
+
+IMPLEMENTACION_TERRITORIAL:
+  funcion_publica: >
+    Garantizar el ejercicio efectivo del derecho de acceso a la información para
+    TODOS los habitantes del cantón, incluidas las comunidades rurales con menor
+    conectividad y alfabetismo digital. La función va más allá de publicar en portal
+    web — incluye la capacidad real de cualquier ciudadano de obtener información.
+  actor_local: >
+    pendiente — verificar Resolución Orgánica GADM Montecristi.
+    Típicamente: Secretaría General o UATH como responsable LOTAIP.
+    Alcalde/Alcaldesa: responsable personal según Art. 39 LOTAIP.
+  instrumento: Portal-web-GADM + Atención-presencial + Sistema-solicitudes
+  evidencia:
+    - LOTAIP_Numeral_14
+    - LOTAIP_Numeral_23
+    - Registro-solicitudes-respondidas
+  indicador:
+    - DOM07_SOLICITUDES_RESPONDIDAS_PCT
+    - DOM07_TIEMPO_RESPUESTA_DIAS
+  nota_lac: >
+    CE Art. 18 (derecho a información) es la fuente constitucional.
+    LOTAIP Art. 7 es la regulación de ese derecho para sujetos obligados.
+    Relación: CE_18 → LOTAIP_7 → LOTAIP_19 (evidencia).
+  gap_conocido: >
+    Parroquias rurales de Montecristi (Isabel Muentes, Joa, Guale, San Marcos):
+    brecha de acceso real — NBI alto + conectividad limitada + literacidad digital baja.
+    El derecho existe; el acceso efectivo es la brecha a medir en Dom07.
+
+DOMINIOS_QUIRA:
+  - Dom07
+  - Dom01
+
+RELACIONES:
+  - CE_18
+  - LOTAIP_9
+  - LOTAIP_19
+  - LOTAIP_39
+  - LOTAIP_42
+
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: LOTAIP_8
+CLASE: ACK_PRINCIPIO
+TIPO: definicion
+NOMBRE: GADs como Sujetos Obligados LOTAIP
+FUENTE:
+  norma: Ley Orgánica de Transparencia y Acceso a la Información Pública
+  sigla: LOTAIP
+  jerarquia: 1
+  articulo: "8"
+  inciso: "a"
+  fecha_vigencia: "2023-02-07"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - GAD-Provincial
+  - GAD-Parroquial
+
+ACTOR_BENEFICIARIO:
+  - Ciudadanía
+
+OBLIGACION: >
+  Son sujetos obligados por la LOTAIP: a) Los organismos y dependencias de las
+  funciones Legislativa, Ejecutiva, Judicial, Electoral y de Transparencia y
+  Control Social; b) Los organismos electorales; c) Los organismos de control y
+  regulación; d) Las entidades que integran el régimen autónomo descentralizado
+  (GADs); e) Las entidades creadas por Constitución o ley para el ejercicio de
+  potestad estatal. Los GADs Municipales son sujetos obligados por el literal d).
+
+EVIDENCIA:
+  - Portal-web-GADM-activo
+  - Registro-DPE-cumplimiento-LOTAIP
+  - Informe-anual-presentado-DPE
+
+CONSECUENCIA:
+  descripcion: >
+    El GAD que no cumpla con las obligaciones LOTAIP como sujeto obligado
+    activa el régimen sancionatorio del Art. 42 (sanciones LOSEP).
+  tipo: responsabilidad-administrativa
+  organo_sancionador:
+    - DPE
+    - CPCCS
+    - LOSEP-sumario-administrativo
+
+APLICABILIDAD:
+  nivel_gobierno: [GAD-Municipal, GAD-Provincial, GAD-Parroquial]
+  condicion: []
+  ambito_lac: >
+    Los municipios son sujetos obligados de transparencia en toda LAC.
+    La denominación varía (entidades descentralizadas, gobiernos locales,
+    municipios) pero la obligación es análoga.
+
+DOMINIOS_QUIRA:
+  - Dom07
+  - Dom01
+
+RELACIONES:
+  - CE_238
+  - LOTAIP_7
+  - LOTAIP_9
+  - LOTAIP_19
+
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: LOTAIP_9
+CLASE: ACK_OBLIGACION
+TIPO: obligacion
+NOMBRE: Obligaciones Sujetos LOTAIP Promover Garantizar Transparentar
+FUENTE:
+  norma: Ley Orgánica de Transparencia y Acceso a la Información Pública
+  sigla: LOTAIP
+  jerarquia: 1
+  articulo: "9"
+  inciso: ""
+  fecha_vigencia: "2023-02-07"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+
+ACTOR_BENEFICIARIO:
+  - Ciudadanía
+
+OBLIGACION: >
+  Los sujetos obligados deberán promover, garantizar, transparentar y proteger
+  el derecho de acceso a la información pública, permitir su acceso y proteger
+  los datos reservados, confidenciales y personales que estén bajo su poder;
+  y para ello deberán cumplir con todas las obligaciones y procedimientos
+  establecidos en la presente Ley.
+
+EVIDENCIA:
+  - Portal-web-GADM-con-sección-LOTAIP
+  - Responsable-de-información-designado
+  - Procedimiento-solicitudes-publicado
+
+CONSECUENCIA:
+  descripcion: >
+    El incumplimiento de las obligaciones del Art. 9 activa el Art. 42 LOTAIP
+    (sanciones LOSEP). La Defensoría del Pueblo puede iniciar investigación.
+  tipo: responsabilidad-administrativa
+  organo_sancionador:
+    - DPE
+    - CPCCS
+
+APLICABILIDAD:
+  nivel_gobierno: [GAD-Municipal, GAD-Provincial, GAD-Parroquial]
+  condicion: []
+  ambito_lac: >
+    Obligación de transparencia activa y pasiva en toda LAC como principio
+    de buen gobierno municipal.
+
+DOMINIOS_QUIRA:
+  - Dom07
+  - Dom01
+
+RELACIONES:
+  - LOTAIP_7
+  - LOTAIP_8
+  - LOTAIP_19
+  - LOTAIP_39
+  - LOTAIP_42
+
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: LOTAIP_10
+CLASE: ACK_OBLIGACION
+TIPO: obligacion
+NOMBRE: Custodia Profesional Información Pública GAD
+FUENTE:
+  norma: Ley Orgánica de Transparencia y Acceso a la Información Pública
+  sigla: LOTAIP
+  jerarquia: 1
+  articulo: "10"
+  inciso: ""
+  fecha_vigencia: "2023-02-07"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+  - Secretaría-General-GADM
+  - Todos-servidores-que-administren-archivos
+
+ACTOR_BENEFICIARIO:
+  - Ciudadanía
+  - Control-público-CGE-DPE
+
+OBLIGACION: >
+  Es responsabilidad de las instituciones públicas crear y mantener registros
+  públicos de manera profesional, de acuerdo con lo que determine la Ley del
+  Sistema Nacional de Archivos, para que el derecho a la información se pueda
+  ejercer de forma integral. En ningún caso se justificará la ausencia de normas
+  técnicas y manejo de archivo de la información y documentación tanto física
+  como digital para impedir u obstaculizar el ejercicio de acceso a la
+  información pública, peor aún su destrucción. Quienes administren, manejen
+  archivo o conserven información pública serán personalmente responsables y
+  solidariamente responsables por su custodia.
+
+EVIDENCIA:
+  - Sistema-gestión-documental-GADM
+  - Archivo-físico-y-digital-organizado
+  - Contratos-históricos-preservados
+  - Actas-Concejo-archivadas
+
+CONSECUENCIA:
+  descripcion: >
+    La ausencia de sistema de gestión documental profesional en el GADM es
+    violación directa del Art. 10. La destrucción de documentos públicos activa
+    responsabilidad penal. Los servidores que administren archivos son
+    personalmente responsables y solidariamente.
+  tipo: responsabilidad-administrativa
+  organo_sancionador:
+    - DPE
+    - CGE
+    - Judicatura-si-destrucción
+
+APLICABILIDAD:
+  nivel_gobierno: [GAD-Municipal, GAD-Provincial, GAD-Parroquial]
+  condicion: []
+  ambito_lac: >
+    Obligación de archivo profesional en toda LAC. La gestión documental pública
+    es requisito sine qua non de la transparencia territorial.
+
+DOMINIOS_QUIRA:
+  - Dom07
+  - Dom01
+
+RELACIONES:
+  - LOTAIP_9
+  - LOTAIP_19
+  - LOC-CGE
+  - LOSEP_42
+
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: LOTAIP_11
+CLASE: ACK_OBLIGACION
+TIPO: plazo
+NOMBRE: Informe Anual Defensoría del Pueblo Cumplimiento LOTAIP
+FUENTE:
+  norma: Ley Orgánica de Transparencia y Acceso a la Información Pública
+  sigla: LOTAIP
+  jerarquia: 1
+  articulo: "11"
+  inciso: ""
+  fecha_vigencia: "2023-02-07"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+
+ACTOR_BENEFICIARIO:
+  - Defensoría-del-Pueblo
+  - Ciudadanía
+
+OBLIGACION: >
+  Todas las instituciones públicas, a través de su titular o representante legal,
+  presentarán a la Defensoría del Pueblo, hasta el último día laborable del mes
+  de enero de cada año, un informe anual sobre el cumplimiento del derecho de
+  acceso a la información pública. El informe contendrá:
+  a) Información del período anterior sobre el cumplimiento de las obligaciones
+  que le asigna esta Ley;
+  b) Detalle de las solicitudes de acceso a la información y el trámite dado a
+  cada una de ellas, con indicación del tiempo que ha tomado en responder;
+  c) Informe semestral actualizado del estado del enlace de transparencia
+  institucional.
+
+EVIDENCIA:
+  - Informe-anual-LOTAIP-enviado-DPE
+  - Acuse-recibo-DPE
+  - Portal-DPE-registro-informes-GAD
+
+CONSECUENCIA:
+  descripcion: >
+    El incumplimiento del plazo de presentación del informe anual activa el Art. 42
+    LOTAIP (sanciones LOSEP). La Defensoría puede registrar al GAD como incumplidor.
+    El Alcalde es personalmente responsable del cumplimiento (Art. 39 LOTAIP).
+  tipo: responsabilidad-administrativa
+  organo_sancionador:
+    - DPE
+    - CPCCS
+
+APLICABILIDAD:
+  nivel_gobierno: [GAD-Municipal, GAD-Provincial, GAD-Parroquial]
+  condicion: [anual, plazo-ultimo-dia-laborable-enero]
+  ambito_lac: >
+    Informes periódicos de transparencia a órgano de control en toda LAC.
+    Colombia: Informe SUIT-SIG a la DAFP.
+    Perú: Informe al Ministerio de Justicia (Portal de Transparencia).
+    México: Informes al INAI.
+
+DOMINIOS_QUIRA:
+  - Dom07
+  - Dom01
+
+RELACIONES:
+  - LOTAIP_9
+  - LOTAIP_19
+  - LOTAIP_39
+  - LOTAIP_42
+
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: LOTAIP_19
+CLASE: ACK_OBLIGACION
+TIPO: obligacion
+NOMBRE: Transparencia Activa 24 Ítems Obligatorios Actualización Mensual
+FUENTE:
+  norma: Ley Orgánica de Transparencia y Acceso a la Información Pública
+  sigla: LOTAIP
+  jerarquia: 1
+  articulo: "19"
+  inciso: "1-24"
+  fecha_vigencia: "2023-02-07"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+
+ACTOR_BENEFICIARIO:
+  - Ciudadanía
+  - Organizaciones-sociedad-civil
+  - CGE-DPE
+
+OBLIGACION: >
+  Los sujetos obligados difundirán a través de un portal informático web la
+  siguiente información mínima ACTUALIZADA MENSUALMENTE, que se la considera
+  de naturaleza obligatoria. Los 24 ítems son:
+  1. Estructura orgánica + base legal + metas institucionales
+  2. Directorio completo + distributivo de personal
+  3. Remuneraciones de todo el personal
+  4. Detalle de funcionarios en licencia o comisión
+  5. Servicios del GADM + horarios de atención
+  6. Presupuesto anual + ejecución + liquidación presupuestaria
+  7. Auditorías internas + externas (informes CGE)
+  8. Contratos de obras + adjudicaciones + liquidaciones
+  9. Empresas que incumplieron contratos
+  10. Planes y programas en ejecución (PDyOT + PAC + POA)
+  11. Contratos de crédito + deuda externa e interna
+  12. Mecanismos de rendición de cuentas + indicadores de gestión
+  13. Viáticos + justificativos de movilización
+  14. Nombre del responsable de acceso a la información
+  15. Contratos colectivos vigentes
+  16. Índice de información reservada
+  17. Audiencias y reuniones de autoridades electas
+  18. Decisiones en reuniones (elaboración de actos administrativos)
+  19. Reuniones sobre contratos públicos
+  20. Reuniones sobre políticas y planes
+  21. Convenios nacionales e internacionales vigentes
+  22. Donativos y regalos oficiales
+  23. Registro de Activos de Información
+  24. Datos de cuotas laborales (discapacidad + pueblos y nacionalidades)
+
+EVIDENCIA:
+  - Portal-web-GADM-sección-LOTAIP-activa
+  - Fecha-última-actualización-verificable
+  - Los-24-ítems-publicados-y-accesibles
+
+CONSECUENCIA:
+  descripcion: >
+    El incumplimiento de cualquiera de los 24 ítems del Art. 19 constituye
+    falta grave que activa el Art. 42 LOTAIP (sanciones LOSEP hasta destitución).
+    El Alcalde es personalmente responsable (Art. 39). La DPE puede iniciar
+    proceso sancionatorio. El incumplimiento es MENSUAL — no publicar en un mes
+    es incumplimiento en ese período.
+  tipo: responsabilidad-administrativa
+  organo_sancionador:
+    - DPE
+    - CPCCS
+    - LOSEP-sumario-administrativo
+
+APLICABILIDAD:
+  nivel_gobierno: [GAD-Municipal, GAD-Provincial, GAD-Parroquial]
+  condicion: [mensual, portal-web-obligatorio]
+  ambito_lac: >
+    Transparencia activa obligatoria en toda LAC, aunque con distinto número
+    de ítems y periodicidad. Colombia: Ley 1712/2014 Art. 9-12.
+    Perú: TUO Ley 27806 Art. 5. México: LGTAIP Art. 70 (48 fracciones obligatorias).
+    El principio de transparencia activa proactiva es análogo.
+
+DOMINIOS_QUIRA:
+  - Dom07
+  - Dom01
+  - Dom02
+  - Dom03
+  - Dom04
+  - Dom12
+
+RELACIONES:
+  - CE_18
+  - LOTAIP_7
+  - LOTAIP_9
+  - LOTAIP_24
+  - LOTAIP_39
+  - LOTAIP_42
+  - LOTAIP_19_6
+  - LOTAIP_19_8
+  - LOTAIP_19_10
+  - LOTAIP_19_12
+  - LOTAIP_19_21
+
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: LOTAIP_19_6
+CLASE: ACK_OBLIGACION
+TIPO: obligacion
+NOMBRE: Transparencia Activa Ítem 6 Presupuesto Ejecutado
+OBSERVA_CAPA:
+  - financiera
+# Observa cumplimiento de: COOTAD_198 (regla 70/30) + COOTAD_215 (presupuesto PDyOT)
+# La obligación sustantiva es del COOTAD. LOTAIP_19_6 es la ventana de verificación pública.
+FUENTE:
+  norma: Ley Orgánica de Transparencia y Acceso a la Información Pública
+  sigla: LOTAIP
+  jerarquia: 1
+  articulo: "19"
+  inciso: "6"
+  fecha_vigencia: "2023-02-07"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+  - Director-Financiero-GADM
+
+ACTOR_BENEFICIARIO:
+  - Ciudadanía
+  - CGE
+  - Organizaciones-sociedad-civil
+
+OBLIGACION: >
+  Publicar mensualmente en el portal web: el presupuesto anual y su ejecución,
+  incluyendo la liquidación presupuestaria del ejercicio fiscal correspondiente.
+  Incluye: ingresos, gastos, inversión, transferencias, deuda — por programa
+  y proyecto.
+
+EVIDENCIA:
+  - Portal-GADM-sección-presupuesto-ejecutado
+  - SIGEF-reportes-ejecución
+  - Cédulas-presupuestarias-publicadas
+
+CONSECUENCIA:
+  descripcion: >
+    No publicar el presupuesto ejecutado mensualmente es falta grave LOTAIP
+    (Art. 42 → sanciones LOSEP). El Director Financiero puede ser sancionado.
+    La CGE puede verificar en auditoría la consistencia entre lo publicado y
+    lo ejecutado en SIGEF.
+  tipo: responsabilidad-administrativa
+  organo_sancionador:
+    - DPE
+    - CGE
+    - LOSEP-sumario-administrativo
+
+APLICABILIDAD:
+  nivel_gobierno: [GAD-Municipal, GAD-Provincial, GAD-Parroquial]
+  condicion: [mensual]
+  ambito_lac: >
+    Publicación de ejecución presupuestaria en toda LAC.
+    Colombia: Publicación en Portal Cuentas Claras (CGR).
+    Perú: Publicación en Portal Transparencia MEF.
+    México: Cuenta Pública Municipal anual.
+
+IMPLEMENTACION_TERRITORIAL:
+  funcion_publica: >
+    Publicación mensual del presupuesto ejecutado del GADM — en todos sus
+    programas y proyectos — para que la ciudadanía pueda verificar la ejecución
+    de las 14 competencias constitucionales (CE_264) en el territorio.
+    Ítem 6 LOTAIP conecta CE_264 (competencias) con el territorio real.
+  actor_local: >
+    Director Financiero GADM Montecristi — responsable técnico de la publicación.
+    Alcalde — responsable legal (Art. 39 LOTAIP).
+    QNKC-001: la función (publicar ejecución) es permanente; el actor interno es contingente.
+  instrumento: SIGEF + Portal-GADM + LOTAIP-Art19-Numeral6
+  evidencia:
+    - Cédulas-presupuestarias-mensuales-publicadas
+    - SIGEF-reportes-consolidados
+  indicador:
+    - DOM02_EJECUCION_PRESUPUESTARIA_D3
+    - DOM07_CUMPLIMIENTO_LOTAIP_19_6
+  nota_lac: >
+    Equivalente QUIRA para otros cantones LAC:
+    Colombia: Portal Cuentas Claras CGR (ejecución).
+    Perú: Portal Transparencia MEF-SIAF.
+    México: Cuenta Pública Municipal (CONAC).
+    QUIRA mide la brecha: ejecución real vs. publicación LOTAIP.
+  gap_conocido: >
+    Gold Master v5.5: D3 Ejecución Presupuestaria = 59.85% (Montecristi Mar-2026).
+    Verificar que este valor esté publicado en portal GADM como LOTAIP_19_6.
+    La cadena de integridad: SIGEF → Gold Master → Portal LOTAIP → indicador QUIRA.
+
+DOMINIOS_QUIRA:
+  - Dom02
+  - Dom07
+
+RELACIONES:
+  - LOTAIP_19
+  - CE_264
+  - CE_241
+  - COPLAFIP
+  - LOC-CGE
+
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: LOTAIP_19_8
+CLASE: ACK_OBLIGACION
+TIPO: obligacion
+NOMBRE: Transparencia Activa Ítem 8 Contratos de Obras Adjudicaciones
+OBSERVA_CAPA:
+  - contratacion
+# Observa cumplimiento de: LOSNCP + COOTAD_55 (obra pública por competencia)
+# La obligación sustantiva es del LOSNCP. LOTAIP_19_8 es la ventana pública de contratos.
+FUENTE:
+  norma: Ley Orgánica de Transparencia y Acceso a la Información Pública
+  sigla: LOTAIP
+  jerarquia: 1
+  articulo: "19"
+  inciso: "8"
+  fecha_vigencia: "2023-02-07"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+  - Director-Compras-Públicas-GADM
+
+ACTOR_BENEFICIARIO:
+  - Ciudadanía
+  - Proveedores
+  - CGE-SERCOP
+
+OBLIGACION: >
+  Publicar mensualmente en el portal web: los contratos de obras, bienes y
+  servicios adjudicados, su valor y el nombre del proveedor o contratista,
+  así como las liquidaciones de contratos finalizados.
+
+EVIDENCIA:
+  - COMPRASPUBLICAS-SERCOP-registro
+  - Portal-GADM-contratos-publicados
+  - PAC-publicado-y-ejecutado
+
+CONSECUENCIA:
+  descripcion: >
+    No publicar los contratos adjudicados es falta grave LOTAIP (Art. 42).
+    La CGE puede cruzar lo publicado contra COMPRASPUBLICAS para detectar
+    omisiones. Es la evidencia documental primaria de las competencias CE_264.
+  tipo: responsabilidad-administrativa
+  organo_sancionador:
+    - DPE
+    - CGE
+    - SERCOP
+    - LOSEP-sumario-administrativo
+
+APLICABILIDAD:
+  nivel_gobierno: [GAD-Municipal, GAD-Provincial, GAD-Parroquial]
+  condicion: [mensual]
+  ambito_lac: >
+    Publicación de contratos públicos en toda LAC.
+    Colombia: SECOP I y SECOP II (COLOMBIA COMPRA EFICIENTE).
+    Perú: SEACE (OSCE).
+    México: CompraNet.
+
+IMPLEMENTACION_TERRITORIAL:
+  funcion_publica: >
+    Publicación mensual de todos los contratos del GADM — obras, bienes, servicios —
+    para permitir la verificación ciudadana de la inversión pública en el territorio.
+    Cada contrato de obra es evidencia de la ejecución de una competencia CE_264
+    en una parroquia específica.
+  actor_local: >
+    Director de Compras Públicas GADM Montecristi + Alcalde.
+    QNKC-001: la función (publicar contratos) es permanente; el actor es contingente.
+  instrumento: COMPRASPUBLICAS-SERCOP + Portal-GADM + PAC
+  evidencia:
+    - SERCOP-COMPRASPUBLICAS-consulta
+    - Portal-GADM-sección-contratos
+  indicador:
+    - DOM03_CONTRATOS_PUBLICADOS_PCT
+    - DOM03_VALOR_ADJUDICADO
+    - DOM07_CUMPLIMIENTO_LOTAIP_19_8
+
+DOMINIOS_QUIRA:
+  - Dom03
+  - Dom07
+
+RELACIONES:
+  - LOTAIP_19
+  - CE_264
+  - LOSNCP
+  - LOC-CGE
+
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: LOTAIP_19_10
+CLASE: ACK_OBLIGACION
+TIPO: obligacion
+NOMBRE: Transparencia Activa Ítem 10 Planes y Programas en Ejecución
+OBSERVA_CAPA:
+  - planificacion
+# Observa cumplimiento de: CE_241 (planificación obligatoria) + COOTAD_215 (presupuesto PDyOT)
+# La obligación sustantiva es constitucional. LOTAIP_19_10 hace el PDOT visible al ciudadano.
+FUENTE:
+  norma: Ley Orgánica de Transparencia y Acceso a la Información Pública
+  sigla: LOTAIP
+  jerarquia: 1
+  articulo: "19"
+  inciso: "10"
+  fecha_vigencia: "2023-02-07"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+  - Director-Planificación-GADM
+
+ACTOR_BENEFICIARIO:
+  - Ciudadanía
+  - Organizaciones-sociedad-civil
+  - Secretaría-Planificación-Estado
+
+OBLIGACION: >
+  Publicar mensualmente en el portal web: los planes y programas en ejecución,
+  incluyendo el PDyOT (Plan de Desarrollo y Ordenamiento Territorial), el PAC
+  (Plan Anual de Contratación) y el POA (Plan Operativo Anual) en curso.
+
+EVIDENCIA:
+  - Portal-GADM-sección-planificación
+  - PDOT-publicado-y-vigente
+  - POA-publicado-actualizado
+
+CONSECUENCIA:
+  descripcion: >
+    No publicar los planes y programas en ejecución es falta grave LOTAIP (Art. 42).
+    Activa sanciones LOSEP para el Director de Planificación y el Alcalde.
+    La Secretaría de Planificación puede verificar el cumplimiento.
+  tipo: responsabilidad-administrativa
+  organo_sancionador:
+    - DPE
+    - CPCCS
+    - Secretaría-Planificación-Estado
+
+APLICABILIDAD:
+  nivel_gobierno: [GAD-Municipal, GAD-Provincial, GAD-Parroquial]
+  condicion: [mensual]
+  ambito_lac: >
+    Publicación de planes locales en ejecución en toda LAC.
+    Colombia: Publicación POT y Plan de Desarrollo Municipal.
+    Perú: Publicación PDC y PDU en portales municipales.
+    México: Plan Municipal de Desarrollo publicado.
+
+IMPLEMENTACION_TERRITORIAL:
+  funcion_publica: >
+    Publicación mensual del estado de ejecución del PDOT, POA y PAC para que
+    la ciudadanía pueda verificar el avance de las metas territoriales del cantón.
+    Conecta CE_241 (planificación obligatoria) con la evidencia observable.
+  actor_local: >
+    Director de Planificación GADM Montecristi + Alcalde.
+    QNKC-001: la función (publicar planes) es permanente; el actor es contingente.
+  instrumento: PDOT + POA + Portal-GADM
+  evidencia:
+    - PDOT-Montecristi-publicado
+    - Informes-seguimiento-PDOT-SENPLADES
+    - POA-ejecutado-trimestral
+  indicador:
+    - DOM04_PDOT_PUBLICADO
+    - DOM09_ALINEACION_POA_PDOT
+    - DOM07_CUMPLIMIENTO_LOTAIP_19_10
+
+DOMINIOS_QUIRA:
+  - Dom04
+  - Dom09
+  - Dom07
+
+RELACIONES:
+  - LOTAIP_19
+  - CE_241
+  - CE_264
+  - COOTAD_295
+  - COPLAFIP
+
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: LOTAIP_19_12
+CLASE: ACK_OBLIGACION
+TIPO: obligacion
+NOMBRE: Transparencia Activa Ítem 12 Rendición de Cuentas e Indicadores
+OBSERVA_CAPA:
+  - accountability
+# Observa cumplimiento de: COOTAD_54.e (seguimiento permanente) + LOPC (participación)
+# Es la ventana legal que justifica que el TGI sea público: los indicadores de gestión
+# deben publicarse mensualmente por mandato del Art. 19 numeral 12.
+FUENTE:
+  norma: Ley Orgánica de Transparencia y Acceso a la Información Pública
+  sigla: LOTAIP
+  jerarquia: 1
+  articulo: "19"
+  inciso: "12"
+  fecha_vigencia: "2023-02-07"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+
+ACTOR_BENEFICIARIO:
+  - Ciudadanía
+  - CPCCS
+  - Organizaciones-sociedad-civil
+
+OBLIGACION: >
+  Publicar mensualmente en el portal web: los mecanismos de rendición de cuentas
+  a la ciudadanía, tales como metas e indicadores de gestión con sus resultados.
+  Incluye: indicadores del PDyOT, informes de rendición de cuentas, participación
+  ciudadana en los procesos de evaluación.
+
+EVIDENCIA:
+  - Informe-rendición-cuentas-anual
+  - Indicadores-PDyOT-publicados
+  - Silla-vacía-y-audiencias-públicas
+
+CONSECUENCIA:
+  descripcion: >
+    No publicar los mecanismos de rendición de cuentas e indicadores es falta
+    grave LOTAIP (Art. 42). El CPCCS puede verificar el cumplimiento.
+    Este ítem es crítico: es donde QUIRA pone sus indicadores TGI visibles al público.
+  tipo: responsabilidad-administrativa
+  organo_sancionador:
+    - DPE
+    - CPCCS
+
+APLICABILIDAD:
+  nivel_gobierno: [GAD-Municipal, GAD-Provincial, GAD-Parroquial]
+  condicion: [mensual]
+  ambito_lac: >
+    Rendición de cuentas con indicadores en toda LAC.
+    Colombia: Rendición de cuentas obligatoria (Ley 850/2003 Veedurías).
+    Perú: Portal de Transparencia + Informe de Gestión.
+    México: Informe Anual de Gobierno Municipal.
+
+IMPLEMENTACION_TERRITORIAL:
+  funcion_publica: >
+    Publicación mensual de los indicadores de gestión del GADM y los mecanismos
+    formales de rendición de cuentas. Es el punto donde QUIRA conecta sus
+    indicadores TGI con la obligación legal de transparencia activa.
+    LOTAIP_19_12 es la "ventana legal" que justifica que el TGI sea público.
+  actor_local: >
+    Alcalde (responsable político) + Director de Planificación (responsable técnico).
+    QNKC-001: la función (rendir cuentas con indicadores) es permanente.
+  instrumento: TGI-QUIRA + Portal-GADM + Audiencias-públicas
+  evidencia:
+    - Indicadores-TGI-publicados-portal
+    - Informe-rendición-cuentas-aprobado
+    - Actas-audiencias-silla-vacía
+  indicador:
+    - DOM07_RENDICION_CUENTAS_REALIZADA
+    - DOM08_PARTICIPACION_CIUDADANA
+    - DOM07_CUMPLIMIENTO_LOTAIP_19_12
+
+DOMINIOS_QUIRA:
+  - Dom07
+  - Dom08
+  - Dom01
+
+RELACIONES:
+  - LOTAIP_19
+  - CE_264
+  - COOTAD_302
+  - LOPC
+
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: LOTAIP_19_21
+CLASE: ACK_OBLIGACION
+TIPO: obligacion
+NOMBRE: Transparencia Activa Ítem 21 Convenios Nacionales e Internacionales
+OBSERVA_CAPA:
+  - contratacion
+# Observa cumplimiento de: COOTAD_55.n (cooperación internacional) + CE_264.14
+# La obligación de gestionar cooperación es del COOTAD/CE. LOTAIP_19_21 la hace verificable.
+FUENTE:
+  norma: Ley Orgánica de Transparencia y Acceso a la Información Pública
+  sigla: LOTAIP
+  jerarquia: 1
+  articulo: "19"
+  inciso: "21"
+  fecha_vigencia: "2023-02-07"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+
+ACTOR_BENEFICIARIO:
+  - Ciudadanía
+  - Organizaciones-internacionales-cooperantes
+
+OBLIGACION: >
+  Publicar mensualmente en el portal web: los convenios nacionales e
+  internacionales suscritos por el GADM, incluyendo convenios con organismos
+  de cooperación internacional (CAF, BID, GIZ, AECID, etc.), convenios con
+  el MIES, MSP, MAATE y otras instituciones nacionales.
+
+EVIDENCIA:
+  - Portal-GADM-sección-convenios
+  - Texto-convenios-publicados
+  - Informes-ejecución-convenios
+
+CONSECUENCIA:
+  descripcion: >
+    No publicar los convenios es falta grave LOTAIP (Art. 42). Los convenios
+    internacionales no publicados pueden generar observaciones de organismos
+    cooperantes sobre transparencia y gobernanza.
+  tipo: responsabilidad-administrativa
+  organo_sancionador:
+    - DPE
+    - CPCCS
+
+APLICABILIDAD:
+  nivel_gobierno: [GAD-Municipal, GAD-Provincial, GAD-Parroquial]
+  condicion: [mensual]
+  ambito_lac: >
+    Publicación de convenios de cooperación en toda LAC.
+    Organismos cooperantes exigen transparencia como condicionalidad.
+    CAF, BID, GIZ, AECID operan en toda LAC con los mismos estándares.
+
+IMPLEMENTACION_TERRITORIAL:
+  funcion_publica: >
+    Publicación mensual de todos los convenios del GADM para que la ciudadanía
+    conozca los recursos externos y compromisos institucionales que afectan al
+    territorio. Especialmente crítico para convenios de cooperación que financian
+    proyectos de brecha territorial.
+  actor_local: >
+    Alcalde + Secretaría General GADM Montecristi (custodia convenios).
+    QNKC-001: la función (publicar convenios) es permanente; el actor es contingente.
+  instrumento: Portal-GADM + Texto-convenios-publicados
+  evidencia:
+    - Convenios-CAF-BID-GIZ-publicados
+    - Convenios-MIES-MSP-MAATE-publicados
+  indicador:
+    - DOM12_CONVENIOS_GAP_VIGENTES
+    - DOM07_CUMPLIMIENTO_LOTAIP_19_21
+
+DOMINIOS_QUIRA:
+  - Dom12
+  - Dom07
+  - Dom03
+
+RELACIONES:
+  - LOTAIP_19
+  - CE_264
+  - CE_35
+  - COOTAD
+
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: LOTAIP_24
+CLASE: ACK_OBLIGACION
+TIPO: obligacion
+NOMBRE: Obligaciones Específicas GADs Actas Sesiones PDyOT Contratación
+FUENTE:
+  norma: Ley Orgánica de Transparencia y Acceso a la Información Pública
+  sigla: LOTAIP
+  jerarquia: 1
+  articulo: "24"
+  inciso: ""
+  fecha_vigencia: "2023-02-07"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Concejo-Municipal
+  - Alcalde
+
+ACTOR_BENEFICIARIO:
+  - Ciudadanía-cantonal
+
+OBLIGACION: >
+  Además de la información señalada en el Art. 19, los organismos seccionales
+  mensualmente informarán a las personas, a través del portal informático web,
+  de las resoluciones que adopten, mediante la publicación de las ACTAS DE LAS
+  RESPECTIVAS SESIONES de estos cuerpos colegiados, comisiones y consejo,
+  incluyendo lo correspondiente a procesos legislativos, así como sus PLANES
+  DE DESARROLLO LOCAL, y en los casos que corresponda, los planes de uso y
+  gestión de suelo. Se incluirá además la descripción de sus procesos de
+  contratación pública.
+
+EVIDENCIA:
+  - Actas-Concejo-Municipal-publicadas
+  - PDOT-publicado-y-accesible
+  - PUGS-publicado-si-existe
+  - Procesos-contratación-descritos
+
+CONSECUENCIA:
+  descripcion: >
+    El incumplimiento del Art. 24 es falta grave LOTAIP (Art. 42 → sanciones LOSEP).
+    El Alcalde y el Secretario del Concejo son responsables.
+    Este artículo es ADICIONAL al Art. 19 — amplía las obligaciones para GADs.
+  tipo: responsabilidad-administrativa
+  organo_sancionador:
+    - DPE
+    - CPCCS
+    - LOSEP-sumario-administrativo
+
+APLICABILIDAD:
+  nivel_gobierno: [GAD-Municipal, GAD-Provincial, GAD-Parroquial]
+  condicion: [mensual, obligaciones-adicionales-a-art19]
+  ambito_lac: >
+    Publicación de actas de sesiones de cuerpos colegiados municipales en LAC.
+    Colombia: Actas de Concejo Municipal (Ley 136 Art. 72).
+    Perú: Actas de Sesión de Concejo (LOM Art. 10).
+    México: Actas de Cabildo (Ley Orgánica Municipal estatal).
+
+DOMINIOS_QUIRA:
+  - Dom07
+  - Dom01
+  - Dom04
+  - Dom08
+
+RELACIONES:
+  - LOTAIP_9
+  - LOTAIP_19
+  - CE_238
+  - CE_240
+  - CE_241
+
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: LOTAIP_39
+CLASE: ACK_OBLIGACION
+TIPO: obligacion
+NOMBRE: Responsabilidad Personal Titular GADM Cumplimiento LOTAIP
+FUENTE:
+  norma: Ley Orgánica de Transparencia y Acceso a la Información Pública
+  sigla: LOTAIP
+  jerarquia: 1
+  articulo: "39"
+  inciso: ""
+  fecha_vigencia: "2023-02-07"
+
+ACTOR_OBLIGADO:
+  - Alcalde
+  - Titular-sujeto-obligado
+  - Quien-vulnere-el-derecho-directamente
+
+ACTOR_BENEFICIARIO:
+  - Ciudadanía
+
+OBLIGACION: >
+  El titular de la entidad o representante legal, así como quien vulnere
+  directamente el derecho de acceso a la información, serán responsables
+  administrativa, civil o penalmente, por sus acciones u omisiones en la
+  difusión, ocultamiento, alteración, denegación o pérdida de información,
+  asimismo, por la falta de publicación o actualización, en el correspondiente
+  portal web, de la información a su cargo.
+
+EVIDENCIA:
+  - Expedientes-sancionatorios-DPE
+  - Resoluciones-LOSEP-sumario
+  - Denuncias-ciudadanas-registradas
+
+CONSECUENCIA:
+  descripcion: >
+    El Alcalde/Alcaldesa de Montecristi es personalmente responsable de que el
+    portal LOTAIP esté actualizado mensualmente. Responsabilidad triple:
+    administrativa (LOSEP), civil (daños y perjuicios), penal (si hay ocultamiento
+    o destrucción dolosa de información).
+  tipo: responsabilidad-administrativa
+  organo_sancionador:
+    - DPE
+    - CPCCS
+    - Judicatura
+    - LOSEP-sumario-administrativo
+
+APLICABILIDAD:
+  nivel_gobierno: [GAD-Municipal, GAD-Provincial, GAD-Parroquial]
+  condicion: []
+  ambito_lac: >
+    Responsabilidad personal del titular en transparencia pública en toda LAC.
+    Colombia: Ley 1712/2014 Art. 28 (sanciones al jefe de la entidad).
+    Perú: Ley 27806 Art. 4 (funcionarios responsables).
+    México: LGTAIP Art. 207 (sanciones por incumplimiento).
+
+DOMINIOS_QUIRA:
+  - Dom07
+  - Dom01
+
+RELACIONES:
+  - LOTAIP_7
+  - LOTAIP_9
+  - LOTAIP_19
+  - LOTAIP_42
+  - CE_233
+
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: LOTAIP_42
+CLASE: ACK_OBLIGACION
+TIPO: sancion
+NOMBRE: Sanciones LOSEP por Incumplimiento LOTAIP
+FUENTE:
+  norma: Ley Orgánica de Transparencia y Acceso a la Información Pública
+  sigla: LOTAIP
+  jerarquia: 1
+  articulo: "42"
+  inciso: ""
+  fecha_vigencia: "2023-02-07"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+  - Todos-los-responsables-LOTAIP
+
+ACTOR_BENEFICIARIO:
+  - Ciudadanía
+
+OBLIGACION: >
+  El incumplimiento de la obligación de transparentar activa y pasivamente la
+  información pública de conformidad con lo establecido en esta Ley, dará
+  lugar a las sanciones administrativas establecidas en la Ley Orgánica del
+  Servicio Público (LOSEP), y conforme las garantías del debido proceso
+  contempladas en la Constitución.
+
+EVIDENCIA:
+  - Sumarios-administrativos-LOSEP-iniciados
+  - Resoluciones-sancionatorias-DPE
+  - Expedientes-destitución
+
+CONSECUENCIA:
+  descripcion: >
+    Cadena sancionatoria completa: Incumplimiento LOTAIP → sumario administrativo
+    LOSEP → sanciones desde amonestación hasta destitución. El servidor sancionado
+    puede quedar inhabilitado para el servicio público. La DPE puede iniciar el
+    proceso sancionatorio directamente.
+  tipo: destitucion
+  organo_sancionador:
+    - DPE
+    - LOSEP-sumario-administrativo
+    - Judicatura
+
+APLICABILIDAD:
+  nivel_gobierno: [GAD-Municipal, GAD-Provincial, GAD-Parroquial]
+  condicion: []
+  ambito_lac: >
+    Sanciones por incumplimiento de transparencia en toda LAC.
+    La intensidad varía: Ecuador conecta LOTAIP con LOSEP (destitución posible).
+    Colombia: sanciones disciplinarias CDU.
+    Perú: proceso administrativo disciplinario.
+    México: sanciones LGRSP.
+
+DOMINIOS_QUIRA:
+  - Dom07
+  - Dom01
+
+RELACIONES:
+  - LOTAIP_39
+  - LOTAIP_19
+  - CE_233
+  - LOSEP_42
+
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false

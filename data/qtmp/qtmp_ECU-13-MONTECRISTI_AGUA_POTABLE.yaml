@@ -1,0 +1,641 @@
+# ============================================================
+# QUIRA — QTMP Instance v1.0
+# Primer circuito territorial materializado en el sistema QUIRA
+# ============================================================
+# QTMP_ID:   QTMP_AGUA_POTABLE_MCR
+# Cantón:    Montecristi — ECU-13-MONTECRISTI
+# Circuito:  AGUA_POTABLE
+# Versión:   1.0
+# Estado:    desarrollo (pendiente validación GADMCM)
+# Fecha:     2026-05-30
+#
+# Propósito: Materializar la cadena C3→C9 para el servicio de agua
+#            potable en el cantón Montecristi. Este es el primer archivo
+#            QTMP del sistema QUIRA — la prueba de concepto que valida
+#            la arquitectura QNKC-002 de extremo a extremo.
+#
+# Base normativa:
+#   CE_12    → Agua como derecho humano fundamental e irrenunciable
+#   CE_264   → Competencia exclusiva cantonal: prestación agua potable
+#   COOTAD_55 → Funciones del gobierno municipal (literal j: agua)
+#   COOTAD_137 → Competencias GAD municipal en gestión del agua
+#              [pendiente verificación artículo exacto]
+#
+# Fuente orgánica local:
+#   Resolución Administrativa No. 040-2025-ALC-LJTL-GADMCM
+#   Estatuto Orgánico GADMCM — vigente desde 01-ene-2026
+#
+# Cypher Neo4j — cadena completa del circuito:
+#   MATCH (canton:Canton {id: 'ECU-13-MONTECRISTI'})
+#   MATCH (ack_ce12:Atom {id: 'CE_12'})
+#   MERGE (sp:C3ServicioPublico {id: 'SP_AGPT_MCR'})
+#     SET sp.canton_id = 'ECU-13-MONTECRISTI', sp.nombre = 'Agua Potable'
+#   MERGE (ack_ce12)-[:MATERIALIZA_VIA]->(sp)
+#   MERGE (sp)-[:ANCLADO_EN]->(canton)
+#   MERGE (pro:C4Proceso {id: 'PRO_AGPT_01_MCR'})
+#   MERGE (sp)-[:SE_EJECUTA_EN]->(pro)
+#   -- continúa C5→C9 según cadena QNKC-002
+# ============================================================
+
+QTMP_ID: QTMP_AGUA_POTABLE_MCR
+CIRCUITO_ID: AGUA_POTABLE
+CANTON_ID: ECU-13-MONTECRISTI
+VERSION: "1.0"
+ESTADO: desarrollo
+
+META:
+  fecha_creacion: "2026-05-30"
+  creado_por: QLEP-QTMP-v1.0
+  canton_responsable: GAD Municipal Montecristi (GADMCM)
+  fuente_organica: >
+    Resolución Administrativa No. 040-2025-ALC-LJTL-GADMCM —
+    Estatuto Orgánico de Gestión Organizacional por Procesos del
+    Gobierno Autónomo Descentralizado Municipal de Montecristi.
+    Aprobado en Sesión Ordinaria N° 148 del 2 de octubre de 2025.
+    Vigente desde el 1 de enero de 2026.
+  revisado_por_experto: false
+  nota_revision: >
+    Este archivo requiere validación con el GADMCM:
+    (a) confirmación del área ejecutora de agua potable,
+    (b) datos reales de cobertura y continuidad del servicio,
+    (c) verificación de concesión ARCA vigente,
+    (d) contratos activos en SERCOP para infraestructura de agua.
+
+# ============================================================
+# C3 — SERVICIO PÚBLICO
+# La obligación jurídica materializada como prestación ciudadana
+# ============================================================
+
+SERVICIO_PUBLICO:
+  id: SP_AGPT_MCR
+  nombre: Agua Potable Municipal — Montecristi
+  descripcion: >
+    Prestación del servicio público de captación, tratamiento y distribución
+    de agua potable para uso doméstico, comercial e industrial en el cantón
+    Montecristi. Competencia exclusiva del GAD Municipal conforme CE Art. 264
+    numeral 4. El GADMCM ejecuta el servicio directamente a través de su
+    estructura operativa (no existe EP de Agua independiente).
+  dominio_tgi: Dom04
+  tgi_dimension: D4_TERRITORIO
+  competencia_fuente: CE_264
+  competencias_concurrentes:
+    - CE_12
+    - COOTAD_55
+    - COOTAD_137
+  modalidad: directa
+  nota_modalidad: >
+    GADMCM gestiona el servicio directamente mediante Dirección de OOPP/
+    Infraestructura. No existe Empresa Pública de Agua Municipal.
+    La Dirección de Planificación Estratégica coordina con las direcciones
+    operativas en movilidad, agua potable y alcantarillado (Estatuto 040-2025).
+  cobertura_actual_pct: null
+  cobertura_meta_pct: null
+  nota_cobertura: >
+    Valores pendientes validación con datos reales GADMCM / INEC 2022.
+    Montecristi es un cantón costero (Manabí) con historial de retos
+    en cobertura de servicios básicos en zonas rurales dispersas.
+
+# ============================================================
+# IMPLEMENTACION_LOCAL — ACTOR LATERAL (QNKC-002)
+# El servidor/dirección que ejecuta pero NO es parte de la cadena causal.
+# Neo4j: (Proceso:C4)-[:EJECUTADO_POR]->(Actor)-[:PERTENECE_A]->(Institucion)
+# ============================================================
+
+IMPLEMENTACION_LOCAL:
+  actor_local: >
+    pendiente — Director/a de Obras Públicas e Infraestructura GADMCM
+    (responsable de la ejecución operativa del servicio de agua potable
+    y alcantarillado según Estatuto Orgánico 040-2025, Procesos Sustantivos)
+  institucion_local: >
+    Gobierno Autónomo Descentralizado Municipal del Cantón Montecristi (GADMCM)
+    — Dirección de Obras Públicas e Infraestructura (nombre pendiente verificación
+    exacta en Resolución 040-2025; Estatuto establece 7 Direcciones Sustantivas
+    para territorio + servicios ciudadanos)
+  autoridad_maxima: >
+    Ing. Luis Jonathan Toro Largacha — Alcalde del cantón Montecristi
+    (Resolución Administrativa No. 040-2025-ALC-LJTL-GADMCM)
+  fuente_organica: Resolución Administrativa No. 040-2025-ALC-LJTL-GADMCM
+  validado: false
+
+# ============================================================
+# C4 — PROCESOS
+# Los procesos operativos mediante los cuales el servicio se ejecuta
+# ============================================================
+
+PROCESOS:
+
+  - id: PRO_AGPT_01_MCR
+    nombre: Captación y Tratamiento de Agua
+    tipo_proceso: operativo
+    descripcion: >
+      Captación del agua cruda de fuentes superficiales o subterráneas
+      y tratamiento para potabilización conforme normas INEN 1108.
+      Incluye: coagulación, floculación, sedimentación, filtración y
+      desinfección (cloración). Resultado: agua tratada lista para distribución.
+    actor_ref: Director/a OOPP GADMCM
+    estado: activo
+    anio_poa: "2026"
+    partida_presupuestaria: pendiente
+
+  - id: PRO_AGPT_02_MCR
+    nombre: Distribución y Presión de Red
+    tipo_proceso: operativo
+    descripcion: >
+      Distribución del agua tratada a través de la red de tuberías hasta
+      las acometidas domiciliarias. Control de presiones en la red.
+      Gestión de reservorios y tanques de almacenamiento. Cobertura:
+      zona urbana + parroquias rurales con red instalada.
+    actor_ref: Director/a OOPP GADMCM
+    estado: activo
+    anio_poa: "2026"
+    partida_presupuestaria: pendiente
+
+  - id: PRO_AGPT_03_MCR
+    nombre: Control de Calidad del Agua Potable
+    tipo_proceso: control_interno
+    descripcion: >
+      Análisis periódicos de calidad del agua en puntos de la red:
+      físico-químicos y microbiológicos. Cumplimiento NTE INEN 1108
+      (Agua Potable — Requisitos). Reporte a MSP y ARCA.
+    actor_ref: Director/a OOPP GADMCM / Laboratorio externo certificado
+    estado: activo
+    anio_poa: "2026"
+    partida_presupuestaria: pendiente
+
+  - id: PRO_AGPT_04_MCR
+    nombre: Gestión Comercial — Catastro y Facturación
+    tipo_proceso: administrativo
+    descripcion: >
+      Registro del catastro de usuarios (abonados). Lectura de medidores.
+      Liquidación de planillas. Cobro de tasas por consumo de agua potable
+      conforme Ordenanza municipal de tarifas vigente. Generación de
+      ingresos propios del GADMCM por servicio de agua.
+    actor_ref: Director/a OOPP GADMCM / Dirección Financiera GADMCM
+    estado: activo
+    anio_poa: "2026"
+    partida_presupuestaria: pendiente
+
+  - id: PRO_AGPT_05_MCR
+    nombre: Mantenimiento y Rehabilitación de Red
+    tipo_proceso: operativo
+    descripcion: >
+      Mantenimiento preventivo y correctivo de la red de distribución.
+      Reparación de fugas. Rehabilitación de tramos deteriorados.
+      Ampliación de cobertura a nuevas zonas. Procesos de contratación
+      pública LOSNCP para obras de infraestructura hídrica.
+    actor_ref: Director/a OOPP GADMCM / UGP Contratación
+    estado: activo
+    anio_poa: "2026"
+    partida_presupuestaria: pendiente
+
+# ============================================================
+# C5 — EVIDENCIAS
+# Los documentos y registros que prueban la ejecución del servicio
+# ============================================================
+
+EVIDENCIAS:
+
+  - id: EVD_AGPT_01_MCR
+    tipo: licencia_regulatoria
+    descripcion: >
+      Concesión de uso de agua (ARCA) — autorización legal para captar
+      el recurso hídrico que alimenta el sistema de agua potable del cantón.
+      Sin concesión vigente, el servicio carece de base jurídica.
+    proceso_ref: PRO_AGPT_01_MCR
+    obligatoria: true
+    fuente_sistema: ARCA (Agencia de Regulación y Control del Agua)
+    vinculo_ack: CE_12
+    url: pendiente
+    estado_documento: pendiente_verificacion
+
+  - id: EVD_AGPT_02_MCR
+    tipo: informe_tecnico
+    descripcion: >
+      Informes de análisis de calidad de agua — resultados de análisis
+      físico-químicos y microbiológicos conforme NTE INEN 1108. Deben
+      realizarse con frecuencia mínima mensual en puntos de red y en
+      planta de tratamiento.
+    proceso_ref: PRO_AGPT_03_MCR
+    obligatoria: true
+    fuente_sistema: Laboratorio certificado GADMCM o externo
+    vinculo_ack: pendiente
+    url: pendiente
+    estado_documento: pendiente_validacion
+
+  - id: EVD_AGPT_03_MCR
+    tipo: registro_administrativo
+    descripcion: >
+      Catastro de abonados — padrón de usuarios con servicio de agua
+      potable activo. Número de conexiones domiciliarias activas.
+      Base para cálculo de cobertura cantonal (% hogares conectados).
+    proceso_ref: PRO_AGPT_04_MCR
+    obligatoria: true
+    fuente_sistema: Sistema de gestión comercial GADMCM / SIG municipal
+    vinculo_ack: LOTAIP_19_6
+    url: pendiente
+    estado_documento: pendiente_validacion
+
+  - id: EVD_AGPT_04_MCR
+    tipo: documento_presupuestario
+    descripcion: >
+      Cédula presupuestaria — partidas de gasto asignadas al servicio
+      de agua potable (grupo 73 obras + grupo 84 bienes de larga duración).
+      Ejecución devengada vs. codificado. Fuente: SIGEF.
+    proceso_ref: PRO_AGPT_05_MCR
+    obligatoria: true
+    fuente_sistema: SIGEF (Sistema Integrado de Gestión Financiera)
+    vinculo_ack: COOTAD_215
+    url: pendiente
+    estado_documento: pendiente_validacion
+
+  - id: EVD_AGPT_05_MCR
+    tipo: publicacion_transparencia
+    descripcion: >
+      PAC publicado en SERCOP — procesos de contratación planificados
+      para infraestructura de agua potable (obras, consultoría, suministros).
+      Contratos adjudicados y en ejecución. Obligatorio LOSNCP Art. 21.
+    proceso_ref: PRO_AGPT_05_MCR
+    obligatoria: true
+    fuente_sistema: SERCOP (Portal de Compras Públicas)
+    vinculo_ack: LOSNCP_21
+    url: "https://www.compraspublicas.gob.ec"
+    estado_documento: verificar
+
+  - id: EVD_AGPT_06_MCR
+    tipo: publicacion_transparencia
+    descripcion: >
+      Publicación LOTAIP — información sobre el servicio de agua potable
+      publicada en el portal web institucional GADMCM: tarifas vigentes,
+      cobertura, contratos, presupuesto asignado. Obligatorio LOTAIP Art. 19.
+    proceso_ref: PRO_AGPT_04_MCR
+    obligatoria: true
+    fuente_sistema: Portal LOTAIP GADMCM
+    vinculo_ack: LOTAIP_19_21
+    url: "https://www.montecristi.gob.ec"
+    estado_documento: verificar
+
+# ============================================================
+# C6 — CONTROLES
+# Los órganos externos que verifican la legalidad y calidad del servicio
+# ============================================================
+
+CONTROLES:
+
+  - id: CTL_AGPT_01_MCR
+    nombre: ARCA — Regulación y Control del Uso del Agua
+    tipo_control: regulatorio
+    fuente: Ley Orgánica de Recursos Hídricos, Usos y Aprovechamiento del Agua
+    organo_control: ARCA (Agencia de Regulación y Control del Agua)
+    descripcion: >
+      Regulación de la concesión de uso del agua para el sistema de agua
+      potable municipal. Verificación de cumplimiento de condiciones de la
+      autorización de uso. Control de caudales concedidos. Si el GADMCM
+      capta sin concesión vigente → infracción a Ley de Recursos Hídricos.
+    estado_control: pendiente_verificacion
+
+  - id: CTL_AGPT_02_MCR
+    nombre: MSP — Control de Calidad del Agua para Consumo Humano
+    tipo_control: tecnico_sanitario
+    fuente: Ley Orgánica de Salud / Normativa MSP
+    organo_control: Ministerio de Salud Pública (MSP) — Zona 4 Manabí
+    descripcion: >
+      Vigilancia de la calidad del agua de consumo humano conforme
+      normas INEN 1108. El MSP puede emitir alertas y declarar estados
+      de emergencia sanitaria si el agua no cumple parámetros mínimos.
+      Control se ejerce a través de informes de vigilancia epidemiológica
+      y inspecciones periódicas a los sistemas de agua.
+    estado_control: pendiente_verificacion
+
+  - id: CTL_AGPT_03_MCR
+    nombre: CGE — Auditoría de Ejecución Presupuestaria
+    tipo_control: financiero
+    fuente: LOC-CGE (Ley Orgánica de la Contraloría General del Estado)
+    organo_control: Contraloría General del Estado (CGE)
+    descripcion: >
+      Auditoría de la ejecución del presupuesto del GADMCM en partidas
+      de agua potable. Control del uso correcto de recursos públicos en
+      obras de infraestructura. Verificación de procesos de contratación
+      pública para obras de agua. Glosa si hay mal uso de recursos.
+    vinculo_ack: LOC-CGE_21
+    estado_control: activo
+
+  - id: CTL_AGPT_04_MCR
+    nombre: CPCCS — Rendición de Cuentas Ciudadana
+    tipo_control: ciudadano
+    fuente: COOTAD_302 / LOPC
+    organo_control: Consejo de Participación Ciudadana y Control Social (CPCCS)
+    descripcion: >
+      Control social sobre la gestión del servicio de agua potable a través
+      del proceso de rendición de cuentas anual. Los ciudadanos pueden
+      presentar observaciones sobre calidad, cobertura y continuidad del
+      servicio. Obligación del Alcalde de rendir cuentas anualmente sobre
+      todos los servicios municipales incluyendo agua potable.
+    vinculo_ack: COOTAD_302
+    estado_control: activo
+
+# ============================================================
+# C7 — OBSERVABILIDAD
+# Los puntos donde el servicio se hace visible y verificable
+# ============================================================
+
+OBSERVABILIDAD:
+
+  - id: OBS_AGPT_01_MCR
+    fuente_ack: LOSNCP_21
+    tipo_publicacion: portal_contratacion
+    descripcion: >
+      PAC publicado en SERCOP — transparencia total de procesos de
+      contratación de obras de agua potable: construcción, ampliación,
+      rehabilitación, mantenimiento de red y planta de tratamiento.
+      Observable: comparar PAC vs. contratos adjudicados vs. avance obras.
+    url_portal: "https://www.compraspublicas.gob.ec/ProcesoContratacion"
+    frecuencia_real: anual_actualizado_mensual
+
+  - id: OBS_AGPT_02_MCR
+    fuente_ack: COOTAD_215
+    tipo_publicacion: sistema_financiero
+    descripcion: >
+      Ejecución presupuestaria en SIGEF — partidas de agua potable en
+      el presupuesto municipal. Devengado vs. codificado en tiempo real.
+      Observable: porcentaje de ejecución de inversión en agua potable
+      al 31 de diciembre de cada año fiscal.
+    url_portal: "https://www.finanzas.gob.ec/sigef"
+    frecuencia_real: tiempo_real
+
+  - id: OBS_AGPT_03_MCR
+    fuente_ack: LOTAIP_19_21
+    tipo_publicacion: portal_transparencia
+    descripcion: >
+      Portal LOTAIP GADMCM — información sobre el servicio de agua potable:
+      tarifas vigentes por categoría de usuario, número de abonados,
+      cobertura cantonal, contratos activos, presupuesto asignado.
+      Obligación de publicación trimestral. Observable: verificar si el
+      PAC de agua publicado coincide con el proceso participativo (H3).
+    url_portal: "https://www.montecristi.gob.ec/lotaip"
+    frecuencia_real: trimestral
+
+  - id: OBS_AGPT_04_MCR
+    fuente_ack: COOTAD_302
+    tipo_publicacion: rendicion_cuentas
+    descripcion: >
+      Informe de rendición de cuentas anual — el Alcalde debe informar
+      explícitamente sobre el avance en cobertura de agua potable vs.
+      metas del PDOT, inversión ejecutada, y resultados del servicio.
+      Observable: Acta de rendición de cuentas vs. indicadores TGI Dom04.
+    url_portal: "https://www.cpccs.gob.ec"
+    frecuencia_real: anual
+
+# ============================================================
+# C8 — INDICADORES
+# Las métricas que cuantifican la calidad del servicio y el resultado
+# ============================================================
+
+INDICADORES:
+
+  - id: IND_AGPT_01_MCR
+    nombre: Cobertura de Agua Potable
+    dominio_tgi: Dom04
+    tgi_dimension: D4_TERRITORIO
+    formula: "(hogares_con_agua_potable / total_hogares_canton) * 100"
+    fuente_dato: >
+      INEC (Censo 2022 / ENEMDU) + Catastro abonados GADMCM (SIGEF)
+    frecuencia: anual
+    unidad: porcentaje
+    valor_linea_base: null
+    meta_anual: null
+    umbral_verde: ">= 90"
+    umbral_amarillo: ">= 70 y < 90"
+    umbral_rojo: "< 70"
+    nota_umbral: >
+      Umbrales referenciados en SNP/ODS 6.1 (acceso universal
+      agua segura 2030). Ecuador promedio nacional ~86%. Montecristi zona
+      costera — verificar con datos INEC 2022 cantonal.
+    estado_dato: pendiente_validacion
+
+  - id: IND_AGPT_02_MCR
+    nombre: Continuidad del Servicio (horas/día promedio)
+    dominio_tgi: Dom04
+    tgi_dimension: D4_TERRITORIO
+    formula: "promedio_horas_servicio_dia_por_zona"
+    fuente_dato: Reportes operativos GADMCM / GADMCM OOPP
+    frecuencia: mensual
+    unidad: horas_por_dia
+    valor_linea_base: null
+    meta_anual: null
+    umbral_verde: ">= 20"
+    umbral_amarillo: ">= 12 y < 20"
+    umbral_rojo: "< 12"
+    nota_umbral: >
+      Servicio continuo ideal = 24h/día. 20h es estándar mínimo aceptable.
+      Zonas rurales pueden tener restricciones por capacidad de red.
+    estado_dato: pendiente_validacion
+
+  - id: IND_AGPT_03_MCR
+    nombre: Cumplimiento Norma Calidad INEN 1108
+    dominio_tgi: Dom04
+    tgi_dimension: D4_TERRITORIO
+    formula: "(parametros_dentro_norma / total_parametros_analizados) * 100"
+    fuente_dato: Informes análisis laboratorio / MSP Zona 4 Manabí
+    frecuencia: mensual
+    unidad: porcentaje
+    valor_linea_base: null
+    meta_anual: null
+    umbral_verde: "= 100"
+    umbral_amarillo: ">= 95 y < 100"
+    umbral_rojo: "< 95"
+    nota_umbral: >
+      Norma INEN 1108 define parámetros obligatorios. 100% cumplimiento
+      es el único estándar aceptable — el agua para consumo humano
+      no admite incumplimientos en parámetros críticos (coliformes, cloro).
+    estado_dato: pendiente_validacion
+
+  - id: IND_AGPT_04_MCR
+    nombre: Ejecución Presupuestaria Inversión Agua Potable
+    dominio_tgi: Dom02
+    tgi_dimension: D2_FINANZAS
+    formula: "(devengado_agua / codificado_agua) * 100"
+    fuente_dato: SIGEF — cédula presupuestaria GADMCM (partidas grupo 73/84 agua)
+    frecuencia: mensual
+    unidad: porcentaje
+    valor_linea_base: null
+    meta_anual: ">= 85"
+    umbral_verde: ">= 85"
+    umbral_amarillo: ">= 70 y < 85"
+    umbral_rojo: "< 70"
+    nota_umbral: >
+      Ejecución >85% al 31-dic indica capacidad efectiva de inversión en agua.
+      La brecha ejecución Dom02 detectada en QUIRA (D3=59.85% promedio) puede
+      reflejarse también en partidas específicas de agua potable.
+    estado_dato: pendiente_validacion
+
+  - id: IND_AGPT_05_MCR
+    nombre: Coincidencia PAC-Participativo (agua potable)
+    dominio_tgi: Dom08
+    tgi_dimension: D6_PARTICIPACION
+    formula: >
+      (proyectos_agua_en_PAC_que_estan_en_participativo /
+       total_proyectos_agua_priorizados_en_participativo) * 100
+    fuente_dato: >
+      Actas Asamblea Ciudadana (Dom08) vs. PAC publicado SERCOP (Dom03)
+    frecuencia: anual
+    unidad: porcentaje
+    valor_linea_base: null
+    meta_anual: null
+    umbral_verde: ">= 80"
+    umbral_amarillo: ">= 50 y < 80"
+    umbral_rojo: "< 50"
+    nota_umbral: >
+      Indicador del circuito H3 densificado (REL-H3): la relación causal
+      COOTAD304_COMPLEMENTA_LOSNCP21. Mide si el proceso participativo
+      realmente se materializa en contratos de agua. Brecha alta = captura
+      institucional del proceso Dom08.
+    estado_dato: pendiente_validacion
+
+# ============================================================
+# C9 — RESULTADOS TERRITORIALES
+# Los outcomes verificables en el territorio del cantón
+# ============================================================
+
+RESULTADOS:
+
+  - id: RES_AGPT_01_MCR
+    nivel_territorial: canton
+    territorio: Montecristi
+    canton_id: ECU-13-MONTECRISTI
+    indicador_ref: IND_AGPT_01_MCR
+    valor: 34.9
+    unidad: "% viviendas con acceso a red pública de agua"
+    periodo: "2022"
+    fuente_verificacion: INEC Censo de Población y Vivienda 2022
+    estado_dato: confirmado
+    naturaleza_valor: observado
+    meta_pdot_lb_2023: 39.25
+    meta_pdot_2027: 42.38
+    nota: >
+      INEC Censo 2022: 34.9% de viviendas con acceso a red pública de agua.
+      PDOT Bicentenario LB operacional 2023: 39.25% (métrica más amplia que
+      incluye modalidades de suministro formal adicionales). Meta PDOT 2027:
+      42.38% (brecha +3.13pp en 4 años — ritmo muy bajo frente a la crisis).
+      Contexto critico: 60.19% de población sin cobertura por red (2024);
+      55.01% se abastece por tanqueros; servicio continuo 24/7 = 0%.
+      Distribución territorial: Aníbal San Andrés + cabecera cantonal = 1 vez
+      por semana; Colorado + Leónidas Proaño + General Eloy Alfaro = 1 vez
+      cada 15 días. Fuente operacional: Dirección de Agua Potable GADMCM /
+      PDOT Montecristi 2023-2027 Bicentenario (pág. 363 Tabla 182).
+      GADMCM no genera estadística propia — INEC es la fuente primaria.
+
+  - id: RES_AGPT_02_MCR
+    nivel_territorial: canton
+    territorio: Montecristi
+    canton_id: ECU-13-MONTECRISTI
+    indicador_ref: IND_AGPT_02_MCR
+    valor: 0
+    unidad: "% continuidad servicio 24/7"
+    periodo: "2024"
+    fuente_verificacion: Dirección de Agua Potable GADMCM / PDOT Bicentenario 2023
+    estado_dato: confirmado
+    naturaleza_valor: observado
+    meta_pdot_2027: 10
+    nota: >
+      Continuidad 24/7 = 0% (2024). Ninguna zona del cantón recibe agua
+      de forma continua. Meta PDOT 2027: 10% del cantón con servicio
+      continuo. Parroquias Montecristi (cantón): Montecristi (cabecera),
+      Aníbal San Andrés, La Pila, Colorado, Leónidas Proaño,
+      General Eloy Alfaro, Isabel Muentes (7 parroquias).
+
+  - id: RES_AGPT_03_MCR
+    nivel_territorial: canton
+    territorio: Montecristi
+    canton_id: ECU-13-MONTECRISTI
+    indicador_ref: IND_AGPT_03_MCR
+    valor: null
+    periodo: "2025"
+    fuente_verificacion: Laboratorio / MSP Zona 4 Manabí
+    estado_dato: pendiente_validacion
+    nota: >
+      Cumplimiento INEN 1108. Solicitar informes mensuales al GADMCM
+      o a la Dirección Zonal de Salud 4 - Manabí.
+
+  - id: RES_AGPT_04_MCR
+    nivel_territorial: canton
+    territorio: Montecristi
+    canton_id: ECU-13-MONTECRISTI
+    indicador_ref: IND_AGPT_04_MCR
+    valor: null
+    periodo: "2025"
+    fuente_verificacion: SIGEF / Cédula presupuestaria GADMCM 2025
+    estado_dato: pendiente_validacion
+    nota: >
+      Ejecución presupuestaria partidas de agua 2025. El TGI detecta
+      D3=59.85% promedio de ejecución — verificar si partidas de agua
+      siguen o superan este patrón. Cruzar con PAC agua publicado.
+
+  - id: RES_AGPT_05_MCR
+    nivel_territorial: canton
+    territorio: Montecristi
+    canton_id: ECU-13-MONTECRISTI
+    indicador_ref: IND_AGPT_05_MCR
+    valor: null
+    periodo: "2025"
+    fuente_verificacion: >
+      Actas de Asamblea Ciudadana 2024/2025 (GADMCM Dom08) vs.
+      PAC publicado SERCOP 2025 (items de agua potable)
+    estado_dato: pendiente_validacion
+    nota: >
+      Este resultado cierra el circuito H3 densificado: ¿el proceso
+      participativo de Montecristi produce PAC que refleja las prioridades
+      ciudadanas en agua potable? Fuente cruzada Dom08 × Dom03.
+
+# ============================================================
+# ÍNDICE CIRCUITO — AGUA_POTABLE MCR
+# ============================================================
+#
+# Cadena QNKC-002 instanciada:
+#   CE_12 (C1/C2) → SP_AGPT_MCR (C3) → PRO_AGPT_01-05_MCR (C4)
+#   → EVD_AGPT_01-06_MCR (C5) → CTL_AGPT_01-04_MCR (C6)
+#   → OBS_AGPT_01-04_MCR (C7) → IND_AGPT_01-05_MCR (C8)
+#   → RES_AGPT_01-05_MCR (C9)
+#
+# Nodos Neo4j a crear:
+#   1 × C3ServicioPublico (SP_AGPT_MCR)
+#   5 × C4Proceso
+#   6 × C5Evidencia
+#   4 × C6Control
+#   4 × C7Observabilidad
+#   5 × C8Indicador
+#   5 × C9ResultadoTerritorial
+#   Total: 30 nodos + el nodo Canton ancla + relaciones
+#
+# Relaciones ACK → QTMP (materialización):
+#   CE_12      -[:MATERIALIZA_VIA]-> SP_AGPT_MCR
+#   CE_264     -[:HABILITA]->        SP_AGPT_MCR
+#   COOTAD_55  -[:HABILITA]->        SP_AGPT_MCR
+#   LOSNCP_21  -[:OBSERVA]->         OBS_AGPT_01_MCR
+#   COOTAD_215 -[:CONTROLA]->        EVD_AGPT_04_MCR
+#   COOTAD_302 -[:ACTIVA]->          OBS_AGPT_04_MCR
+#   LOC-CGE_21 -[:CONTROLA]->        CTL_AGPT_03_MCR
+#
+# Preguntas causales respondibles con este QTMP:
+#   1. ¿Cuántos hogares de Montecristi tienen acceso real a agua segura?
+#      → IND_AGPT_01_MCR (cobertura %)
+#   2. ¿La inversión en agua potable se ejecuta o queda en papel?
+#      → IND_AGPT_04_MCR (ejecución presupuestaria)
+#   3. ¿El agua cumple normas de calidad?
+#      → IND_AGPT_03_MCR + CTL_AGPT_02_MCR (MSP)
+#   4. ¿Las obras de agua priorizadas en el participativo llegaron al PAC?
+#      → IND_AGPT_05_MCR (circuito H3 Dom08→Dom03)
+#   5. ¿El GADMCM tiene concesión ARCA vigente para captar el agua?
+#      → EVD_AGPT_01_MCR (control regulatorio C6)
+#
+# Estado validación:
+#   Estructura: COMPLETA (todos los campos del schema instanciados)
+#   Datos:      PENDIENTE (todos los valores requieren validación GADMCM)
+#   Revisión:   revisado_por_experto: false — requiere sesión con GADMCM
+#
+# Siguiente paso para activar este circuito:
+#   1. Confirmar con GADMCM el nombre exacto de la dirección OOPP
+#   2. Obtener concesión ARCA (número y vigencia)
+#   3. Obtener dato de cobertura INEC 2022 para Montecristi
+#   4. Obtener cédula presupuestaria 2025 partidas agua (SIGEF)
+#   5. Cruzar PAC SERCOP agua vs. Actas Asamblea Ciudadana 2024
+# ============================================================

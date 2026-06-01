@@ -1,0 +1,313 @@
+# ============================================================
+# QUIRA Gov — REL-H1: Circuitos Horizontales (Sprint H1)
+# ============================================================
+# Sprint:    REL-H1 — Relaciones inter-dominio
+# Versión:   QLEP v1.5 / QNKC-002
+# Fecha:     2026-05-30
+# Propósito: Habilitar razonamiento explicativo cruzando dominios.
+#            Los circuitos verticales describen la cadena causal dentro de un dominio.
+#            Los circuitos horizontales explican POR QUÉ un dominio falla en términos de otro.
+#
+# Transición epistémica que estos REL atoms habilitan:
+#   Sistema descriptivo   → "COOTAD_249 asigna 10% al GAP"
+#   Sistema explicativo   → "La baja ejecución Dom02 explica la brecha Dom12"
+#   Sistema predictivo    → "Si Dom02 cae, Dom12 seguirá"
+#
+# Circuitos cubiertos:
+#   H1: Dom02↔Dom12 — Presupuesto explica brecha GAP (2 REL atoms)
+#   H2: Dom04↔Dom12 — Cobertura territorial explica vulneración derechos (2 REL atoms)
+#   H3: Dom03↔Dom08 — Contratación afecta participación y transparencia (2 REL atoms)
+#   H4: Dom05↔Dom02 — Estructura institucional afecta ejecución (2 REL atoms)
+#
+# Total: 8 REL atoms horizontales
+# ============================================================
+
+
+# ============================================================
+# CIRCUITO H1: PRESUPUESTO_GAP — Dom02 ↔ Dom12
+# Pregunta: ¿La ejecución presupuestaria explica la brecha GAP?
+# ============================================================
+
+- REL_ID: COOTAD249_COMPLEMENTA_COOTAD215
+  ORIGEN: COOTAD_249
+  DESTINO: COOTAD_215
+  TIPO: COMPLEMENTA
+  FUERZA: SISTEMICA
+  EVIDENCIA:
+    - COOTAD_249
+    - COOTAD_215
+    - LOTAIP_19_6
+  CIRCUITO:
+    id: H1_PRESUPUESTO_GAP
+    tipo: horizontal
+    dominios_cruzados: [Dom12, Dom02]
+    capa_origen: "C2"
+    capa_destino: "C4"
+  META:
+    estado: v1.5
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.5
+    revisado_por_experto: true
+  NOTA: >
+    El mandato de asignar ≥10% del presupuesto al GAP (COOTAD_249 — Dom12) se materializa
+    únicamente a través del mecanismo de ejecución de gastos de COOTAD_215 (Dom02).
+    La asignación sin ejecución es ilusoria: el 10% puede estar en la proforma y no llegar
+    al beneficiario. Relación explicativa: una baja ejecución Dom02 es señal predictiva
+    de brecha en Dom12. Observable en LOTAIP_19_6 (ejecución mensual).
+
+---
+
+- REL_ID: NCI_PRE_DEVENGADO_COMPLEMENTA_COOTAD249
+  ORIGEN: NCI_PRE_DEVENGADO
+  DESTINO: COOTAD_249
+  TIPO: COMPLEMENTA
+  FUERZA: CAUSAL
+  EVIDENCIA:
+    - NCI_PRE_DEVENGADO
+    - COOTAD_249
+    - LOC-CGE_12
+  CIRCUITO:
+    id: H1_PRESUPUESTO_GAP
+    tipo: horizontal
+    dominios_cruzados: [Dom02, Dom12]
+    capa_origen: "C6"
+    capa_destino: "C2"
+  META:
+    estado: v1.5
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.5
+    revisado_por_experto: true
+  NOTA: >
+    El control previo al devengado (NCI_PRE_DEVENGADO — Dom02/C6) es la última barrera
+    antes de que el gasto llegue efectivamente al beneficiario GAP. Si el devengado no se
+    registra correctamente para partidas de grupos prioritarios, el 10% comprometido
+    (COOTAD_249) no se convierte en servicio real. Causal C6→C2: un fallo en el control
+    de devengado Dom02 produce directamente brecha en el ejercicio de derechos Dom12.
+
+---
+
+# ============================================================
+# CIRCUITO H2: COBERTURA_DERECHOS — Dom04 ↔ Dom12
+# Pregunta: ¿La cobertura territorial explica la vulneración de derechos?
+# ============================================================
+
+- REL_ID: LOMH165_COMPLEMENTA_COOTAD137
+  ORIGEN: LOMH_165
+  DESTINO: COOTAD_137
+  TIPO: COMPLEMENTA
+  FUERZA: CAUSAL
+  EVIDENCIA:
+    - LOMH_165
+    - COOTAD_137
+    - LOMH_167
+  CIRCUITO:
+    id: H2_COBERTURA_DERECHOS
+    tipo: horizontal
+    dominios_cruzados: [Dom12, Dom04]
+    capa_origen: "C2"
+    capa_destino: "C3"
+  META:
+    estado: v1.5
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.5
+    revisado_por_experto: true
+  NOTA: >
+    LOMH_165 obliga al GAD a integrar el enfoque de movilidad humana en el PDOT,
+    incluyendo acceso a servicios básicos para población migrante y retornada.
+    COOTAD_137 regula la provisión de agua potable y saneamiento como competencia
+    exclusiva territorial. La cobertura de servicios básicos Dom04 es condición
+    necesaria para el ejercicio de derechos de la población en movilidad humana Dom12.
+    Causal: una brecha territorial en Dom04 produce directamente vulneración en Dom12
+    para la población más vulnerable de ese déficit de cobertura.
+
+---
+
+- REL_ID: LOD58_COMPLEMENTA_COOTAD137
+  ORIGEN: LOD_58
+  DESTINO: COOTAD_137
+  TIPO: COMPLEMENTA
+  FUERZA: SISTEMICA
+  EVIDENCIA:
+    - LOD_58
+    - COOTAD_137
+    - CE_47
+  CIRCUITO:
+    id: H2_COBERTURA_DERECHOS
+    tipo: horizontal
+    dominios_cruzados: [Dom12, Dom04]
+    capa_origen: "C2"
+    capa_destino: "C3"
+  META:
+    estado: v1.5
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.5
+    revisado_por_experto: true
+  NOTA: >
+    La accesibilidad universal mandatada por LOD_58 (Dom12) aplica a toda obra e
+    infraestructura pública, incluyendo sistemas de agua potable, saneamiento y
+    espacios públicos de COOTAD_137 (Dom04). Una obra de infraestructura de servicios
+    que no cumple normas INEN de accesibilidad viola simultáneamente LOD_58 y COOTAD_137.
+    Esto produce un doble incumplimiento observable en una sola evidencia (permiso de
+    obra + inspección de accesibilidad), lo que hace más eficiente el control cruzado.
+
+---
+
+# ============================================================
+# CIRCUITO H3: CONTRATACION_PARTICIPACION — Dom03 ↔ Dom08
+# Pregunta: ¿La contratación pública afecta la participación y la transparencia?
+# ============================================================
+
+- REL_ID: COOTAD304_COMPLEMENTA_LOTAIP19_21
+  ORIGEN: COOTAD_304
+  DESTINO: LOTAIP_19_21
+  TIPO: COMPLEMENTA
+  FUERZA: CAUSAL
+  EVIDENCIA:
+    - COOTAD_304
+    - LOTAIP_19_21
+    - LOTAIP_19_8
+  CIRCUITO:
+    id: H3_CONTRATACION_PARTICIPACION
+    tipo: horizontal
+    dominios_cruzados: [Dom08, Dom03]
+    capa_origen: "C2"
+    capa_destino: "C7"
+  META:
+    estado: v1.5
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.5
+    revisado_por_experto: true
+  NOTA: >
+    El presupuesto participativo (COOTAD_304 — Dom08) debe traducirse en el Plan Anual
+    de Contratación (PAC). LOTAIP_19_21 obliga a publicar el PAC como instrumento de
+    transparencia. Si las prioridades validadas en el proceso participativo Dom08 no
+    aparecen en el PAC publicado Dom03/Dom07, el mandato participativo no tuvo efecto
+    real en la asignación contractual. Causal: la calidad del proceso Dom08 predice
+    la alineación del PAC Dom03. La distancia entre las dos listas es una métrica
+    de captura institucional del proceso de contratación.
+
+---
+
+- REL_ID: COOTAD302_COMPLEMENTA_LOTAIP19_8
+  ORIGEN: COOTAD_302
+  DESTINO: LOTAIP_19_8
+  TIPO: COMPLEMENTA
+  FUERZA: SISTEMICA
+  EVIDENCIA:
+    - COOTAD_302
+    - LOTAIP_19_8
+    - COOTAD_304
+  CIRCUITO:
+    id: H3_CONTRATACION_PARTICIPACION
+    tipo: horizontal
+    dominios_cruzados: [Dom08, Dom03]
+    capa_origen: "C2"
+    capa_destino: "C7"
+  META:
+    estado: v1.5
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.5
+    revisado_por_experto: true
+  NOTA: >
+    La rendición de cuentas participativa (COOTAD_302 — Dom08) requiere como insumo
+    la información de contratos adjudicados publicada por LOTAIP_19_8 (Dom03/Dom07).
+    Sin la publicación de contratación, la rendición de cuentas es estructuralmente
+    incompleta: la ciudadanía no puede contrastar si los contratos reflejan las
+    prioridades del proceso participativo. La transparencia contractual Dom03 es
+    condición necesaria para la calidad de la accountability Dom08.
+
+---
+
+# ============================================================
+# CIRCUITO H4: INSTITUCION_EJECUCION — Dom05 ↔ Dom02
+# Pregunta: ¿La estructura institucional afecta la ejecución presupuestaria?
+# ============================================================
+
+- REL_ID: LOCCGE45_COMPLEMENTA_COOTAD215
+  ORIGEN: LOC-CGE_45
+  DESTINO: COOTAD_215
+  TIPO: COMPLEMENTA
+  FUERZA: CAUSAL
+  EVIDENCIA:
+    - LOC-CGE_45
+    - COOTAD_215
+    - LOC-CGE_12
+  CIRCUITO:
+    id: H4_INSTITUCION_EJECUCION
+    tipo: horizontal
+    dominios_cruzados: [Dom01, Dom02]
+    capa_origen: "C6"
+    capa_destino: "C4"
+  META:
+    estado: v1.5
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.5
+    revisado_por_experto: true
+  NOTA: >
+    La responsabilidad administrativa del servidor que no ejecuta el presupuesto asignado
+    (LOC-CGE_45 — Dom01) es el mecanismo de enforcement de la obligación de ejecución de
+    COOTAD_215 (Dom02). Sin la amenaza de consecuencia institucional, la ejecución
+    presupuestaria no tiene enforcement efectivo. Causal Dom01↔Dom02: la densidad
+    institucional de la cadena de responsabilidades explica la velocidad y calidad de
+    la ejecución. Este es el núcleo de la conexión Actor lateral (QNKC-002) con Dom02:
+    el actor ejecuta el proceso — su responsabilidad formal es el enlace.
+
+---
+
+- REL_ID: LOD47_COMPLEMENTA_COOTAD198
+  ORIGEN: LOD_47
+  DESTINO: COOTAD_198
+  TIPO: COMPLEMENTA
+  FUERZA: SISTEMICA
+  EVIDENCIA:
+    - LOD_47
+    - COOTAD_198
+    - CONADIS
+  CIRCUITO:
+    id: H4_INSTITUCION_EJECUCION
+    tipo: horizontal
+    dominios_cruzados: [Dom12, Dom02]
+    capa_origen: "C2"
+    capa_destino: "C3"
+  META:
+    estado: v1.5
+    fecha_extraccion: "2026-05-30"
+    extractor: QLEP-v1.5
+    revisado_por_experto: true
+  NOTA: >
+    El cumplimiento de la inclusión laboral obligatoria del 4% de personas con
+    discapacidad (LOD_47 — Dom12/Dom05) afecta la estructura de la nómina del GAD,
+    que es la mayor partida de gasto del presupuesto municipal (COOTAD_198 — Dom02).
+    El incumplimiento implica multa CONADIS (costo Dom02 no presupuestado).
+    El cumplimiento implica ajuste en la planta de personal (Dom05) con impacto
+    estructural en presupuesto Dom02. Esta es la conexión más directa entre la
+    obligación de inclusión social Dom12 y la estructura financiera Dom02.
+
+---
+
+# ============================================================
+# ÍNDICE REL-H1 — 8 átomos horizontales
+# ============================================================
+#
+# H1: PRESUPUESTO_GAP (Dom02↔Dom12)
+#   COOTAD249_COMPLEMENTA_COOTAD215      — C2/Dom12 → C4/Dom02 — SISTEMICA
+#   NCI_PRE_DEVENGADO_COMPLEMENTA_COOTAD249 — C6/Dom02 → C2/Dom12 — CAUSAL
+#
+# H2: COBERTURA_DERECHOS (Dom04↔Dom12)
+#   LOMH165_COMPLEMENTA_COOTAD137        — C2/Dom12 → C3/Dom04 — CAUSAL
+#   LOD58_COMPLEMENTA_COOTAD137          — C2/Dom12 → C3/Dom04 — SISTEMICA
+#
+# H3: CONTRATACION_PARTICIPACION (Dom03↔Dom08)
+#   COOTAD304_COMPLEMENTA_LOTAIP19_21    — C2/Dom08 → C7/Dom03 — CAUSAL
+#   COOTAD302_COMPLEMENTA_LOTAIP19_8     — C2/Dom08 → C7/Dom03 — SISTEMICA
+#
+# H4: INSTITUCION_EJECUCION (Dom05↔Dom02)
+#   LOCCGE45_COMPLEMENTA_COOTAD215       — C6/Dom01 → C4/Dom02 — CAUSAL
+#   LOD47_COMPLEMENTA_COOTAD198          — C2/Dom12 → C3/Dom02 — SISTEMICA
+#
+# Diferencia epistémica con relations_circuits.yaml:
+#   Vertical (relations_circuits.yaml): cómo se materializa una norma dentro de un dominio
+#   Horizontal (este archivo):         por qué un dominio falla en términos de otro
+#
+# Corpus total post-REL-H1: 86 ACK + 14 REL-V + 8 REL-H = 108 artefactos
+# ============================================================

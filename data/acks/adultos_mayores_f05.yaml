@@ -1,0 +1,256 @@
+# ============================================================
+# QUIRA Gov — F0.5 Bloque GAP: Ley Adultos Mayores
+# Ley Orgánica de las Personas Adultas Mayores
+# ============================================================
+# Norma:     Ley Orgánica de las Personas Adultas Mayores (Ley s/n)
+# Sigla:     LOAPAM
+# Jerarquía: 1 (Ley Orgánica)
+# Registro Oficial: Suplemento 484 — 09-may-2019
+# Ámbito GAD Municipal: parcial — obligaciones específicas Arts. 14 y 84
+# Atoms:     3 (Art.14 · Art.84 · Art.19)
+# Propósito: Completar Dom12 — obligaciones del GAD Municipal hacia adultos mayores
+# ============================================================
+
+ACK_ID: LOAPAM_14
+CLASE: ACK_OBLIGACION
+TIPO: prohibicion
+NOMBRE: Exoneración impuestos municipales obligatoria — personas ≥65 años con ingresos ≤5 RBU
+
+FUENTE:
+  norma: Ley Orgánica de las Personas Adultas Mayores
+  sigla: LOAPAM
+  jerarquia: 1
+  articulo: "14"
+  inciso: ""
+  fecha_vigencia: "2019-05-09"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Estado
+
+ACTOR_BENEFICIARIO:
+  - Personas de 65 años o más con ingresos ≤ 5 RBU o patrimonio ≤ 500 RBU
+
+OBLIGACION: >
+  Toda persona que ha cumplido 65 años de edad, con ingresos mensuales estimados
+  en un máximo de 5 remuneraciones básicas unificadas (RBU) o con un patrimonio
+  que no exceda de 500 RBU, está exonerada del pago de impuestos fiscales y municipales.
+  Para la aplicación de este beneficio no se requerirá declaración administrativa previa,
+  provincial o municipal. Si renta o patrimonio excede el umbral, solo se pagan impuestos
+  por la diferencia o excedente.
+
+EVIDENCIA:
+  - Ordenanza municipal de exoneraciones — debe recoger el mandato LOAPAM_14
+  - Catastro municipal — padrón de contribuyentes con exoneración aplicada
+  - Registros del Departamento de Rentas Municipales
+  - LOTAIP_19_6 — ejecución presupuestaria (impacto en ingresos tributarios)
+
+CONSECUENCIA:
+  descripcion: >
+    La negativa a aplicar la exoneración constituye violación directa del derecho de
+    la persona adulta mayor. Activable por acción constitucional (CE Art. 88 — acción
+    de protección) y dictamen de Defensoría del Pueblo.
+    El GAD no puede requerir trámite previo para otorgar la exoneración.
+  tipo: accion-constitucional
+  organo_sancionador:
+    - DPE
+    - Judicatura
+
+APLICABILIDAD:
+  nacional: false
+  municipal: true
+  condicion:
+    - ninguna
+  # Aplica a todos los GAD Municipales — es mandato de ley orgánica
+
+DOMINIOS_QUIRA:
+  - Dom12
+  - Dom02
+
+RELACIONES:
+  - CE_35
+  - CE_36
+  - LOAPAM_84
+  - CE_11_3
+
+VIGENCIA:
+  estado: vigente
+
+META:
+  estado: v1.4
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.4
+  revisado_por_experto: true
+
+---
+
+ACK_ID: LOAPAM_84
+CLASE: ACK_OBLIGACION
+TIPO: obligacion
+NOMBRE: Atribuciones del GAD Municipal — sistema de protección integral adultos mayores
+
+FUENTE:
+  norma: Ley Orgánica de las Personas Adultas Mayores
+  sigla: LOAPAM
+  jerarquia: 1
+  articulo: "84"
+  inciso: ""
+  fecha_vigencia: "2019-05-09"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+
+ACTOR_BENEFICIARIO:
+  - Personas adultas mayores (≥65 años)
+
+OBLIGACION: >
+  Los municipios y distritos metropolitanos deben:
+  (1) Garantizar el funcionamiento de los consejos cantonales, juntas cantonales
+  y redes de protección de derechos de políticas y servicios especializados a favor
+  de las personas adultas mayores.
+  (2) Dotar a los consejos cantonales de protección de derechos y a las juntas cantonales
+  de protección de derechos los recursos y la infraestructura necesaria para asegurar
+  los servicios especializados a favor de personas adultas mayores.
+  (3) A través de las juntas de protección de derechos conocerán, de oficio o a petición
+  de parte, los casos de amenaza o vulneración de derechos de adultos mayores dentro
+  de la jurisdicción cantonal, y dispondrán las medidas administrativas de protección.
+  (4) De acuerdo al nivel de gobierno y a las competencias asignadas, implementarán el
+  Sistema Nacional Especializado de Protección Integral de los Derechos de Adultos Mayores.
+
+EVIDENCIA:
+  - Resolución de constitución de Consejo Cantonal de Adultos Mayores
+  - Ordenanza Municipal — reglamento de protección adultos mayores
+  - Presupuesto — línea de inversión para adultos mayores (Patronato Municipal si aplica)
+  - Actas de Junta Cantonal de Protección de Derechos — casos atendidos
+  - LOTAIP_19_6 — ejecución presupuestaria servicios adultos mayores
+
+CONSECUENCIA:
+  descripcion: >
+    El incumplimiento del mandato de garantizar el funcionamiento del sistema cantonal
+    activa acción de protección (CE Art. 88) por violación de CE Art. 35-38.
+    La Defensoría del Pueblo puede actuar de oficio. Si el incumplimiento implica
+    perjuicio presupuestario verificable, aplica responsabilidad administrativa LOC-CGE_45.
+  tipo: accion-constitucional
+  organo_sancionador:
+    - DPE
+    - Judicatura
+    - CGE
+
+APLICABILIDAD:
+  nacional: false
+  municipal: true
+  condicion:
+    - ninguna
+
+DOMINIOS_QUIRA:
+  - Dom12
+  - Dom08
+  - Dom01
+
+RELACIONES:
+  - CE_35
+  - CE_36
+  - CE_37
+  - CE_38
+  - COOTAD_55
+  - COOTAD_249
+  - LOAPAM_14
+  - CONA_207
+
+VIGENCIA:
+  estado: vigente
+
+IMPLEMENTACION_TERRITORIAL:
+  funcion_publica: >
+    Protección integral de derechos de personas adultas mayores en el cantón —
+    incluye: sistema de consejos cantonales, juntas cantonales, redes de protección,
+    atención especializada y medidas administrativas de protección.
+  actor_local: >
+    Montecristi: Patronato Municipal (si incluye adultos mayores en su mandato).
+    Verificar Resolución Orgánica 040-2025 — si el Patronato tiene competencia expresa
+    sobre adultos mayores. Si no existe instrumento específico, el GAD incumple LOAPAM_84.
+  instrumento: Servicio-público-municipal
+  evidencia:
+    - Ordenanza Patronato Municipal (verificar cobertura adultos mayores)
+    - Presupuesto asignado (LOTAIP_19_6)
+  indicador:
+    - pendiente — TGI Dom12 debe incluir indicador de operatividad sistema protección PAM
+
+META:
+  estado: v1.4
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.4
+  revisado_por_experto: true
+
+---
+
+ACK_ID: LOAPAM_19
+CLASE: ACK_OBLIGACION
+TIPO: competencia_concurrente
+NOMBRE: Derecho a la cultura — GADs crean programas para adultos mayores en ámbito de competencias
+
+FUENTE:
+  norma: Ley Orgánica de las Personas Adultas Mayores
+  sigla: LOAPAM
+  jerarquia: 1
+  articulo: "19"
+  inciso: ""
+  fecha_vigencia: "2019-05-09"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Estado (a través de entidades del Sistema Nacional de Cultura)
+
+ACTOR_BENEFICIARIO:
+  - Personas adultas mayores
+
+OBLIGACION: >
+  Las entidades del Sistema Nacional de Cultura y los gobiernos autónomos descentralizados,
+  dentro del ámbito de sus competencias, deberán diseñar e implementar medidas que garanticen
+  el derecho de los adultos mayores a acceder, aportar, participar y disfrutar de las actividades
+  culturales, artísticas y espirituales, en el marco de la diversidad.
+  Ver también Art. 20: los GADs crearán programas para estimular el desarrollo de potencialidades
+  en deporte, recreación y turismo para adultos mayores.
+
+EVIDENCIA:
+  - POA — programas culturales para adultos mayores
+  - Convenios con MCYP (Ministerio de Cultura) u otras entidades
+  - Informe de actividades del Patronato Municipal / Dirección de cultura
+  - LOTAIP_19_6 — ejecución de partidas culturales/recreativas adultos mayores
+
+CONSECUENCIA:
+  descripcion: >
+    El incumplimiento activa responsabilidad administrativa del servidor público.
+    Si hay presupuesto asignado no ejecutado, aplica LOC-CGE_45 (sub-ejecución).
+    La Defensoría del Pueblo puede observar la omisión.
+  tipo: responsabilidad-administrativa
+  organo_sancionador:
+    - DPE
+    - CGE
+
+APLICABILIDAD:
+  nacional: false
+  municipal: true
+  condicion:
+    - ninguna
+
+DOMINIOS_QUIRA:
+  - Dom12
+  - Dom08
+
+RELACIONES:
+  - CE_35
+  - CE_36
+  - CE_377
+  - COOTAD_55
+  - LOAPAM_84
+
+VIGENCIA:
+  estado: vigente
+
+META:
+  estado: v1.4
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.4
+  revisado_por_experto: true

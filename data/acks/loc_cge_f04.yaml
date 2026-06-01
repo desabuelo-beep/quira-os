@@ -1,0 +1,629 @@
+# ══════════════════════════════════════════════════════════════════════
+# QUIRA Legal Extraction Protocol (QLEP v1.3) — Sprint F0.4
+# Bloque Control — Parte A: LOC-CGE
+# Norma: Ley Orgánica de la Contraloría General del Estado
+# Sigla: LOC-CGE
+# RO: Suplemento 595 (12-jun-2002) · Última reforma: 18-dic-2015
+# Jerarquía: 1 (Ley Orgánica)
+# Ámbito GAD Municipal: TOTAL (Art. 2 remite al Art. 225 CE — GADs incluidos)
+# Extractor: QLEP-v1.3 · Fecha: 2026-05-30
+# Nota: Esta ley crea el SISTEMA DE CONTROL; las NCI (Acuerdo 039-CG-2009)
+#        crean las NORMAS OPERATIVAS. Ambas son obligatorias para el GADM.
+# Nota: No confundir LOC-CGE Art. 45 (causales resp. admin) con LOSEP Art. 42
+#        (sanciones). La CGE determina la responsabilidad; LOSEP ejecuta la sanción.
+# Circuitos causales activados:
+#   LOC-CGE_45 → LOTAIP_19_12 (accountability) → TGI Dom01
+#   LOC-CGE_53 → Glosa → Coactiva → ONT-RISK.Glosa
+# ══════════════════════════════════════════════════════════════════════
+
+---
+ACK_ID: LOC-CGE_5
+CLASE: ACK_PRINCIPIO
+TIPO: principio
+NOMBRE: Sistema de control — 4 obligaciones de cada institución del Estado
+
+FUENTE:
+  norma: Ley Orgánica de la Contraloría General del Estado
+  sigla: LOC-CGE
+  jerarquia: 1
+  articulo: "5"
+  inciso: ""
+  fecha_vigencia: "2015-12-18"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+  - Concejo
+
+ACTOR_BENEFICIARIO:
+  - Ciudadanía
+  - Estado Ecuatoriano
+  - CGE
+
+OBLIGACION: >
+  Las instituciones del Estado actuarán dentro del Sistema de Control,
+  Fiscalización y Auditoría del Estado, cuya aplicación propenderá a que:
+  (1) dignatarios, autoridades, funcionarios y servidores públicos se
+  responsabilicen y rindan cuenta pública sobre el ejercicio de sus
+  atribuciones y la utilización de los recursos públicos;
+  (2) las atribuciones y objetivos de las instituciones y los deberes y
+  obligaciones de sus servidores sean cumplidos a cabalidad;
+  (3) cada institución asuma la responsabilidad por la existencia y
+  mantenimiento de su propio sistema de control interno; y
+  (4) se coordine y complemente con la acción de otros órganos de control
+  externo sobre el sector público y sus servidores.
+
+EVIDENCIA:
+  - Sistema de control interno institucional documentado
+  - Informes de rendición de cuentas
+  - Informe anual de autoevaluación del control interno
+
+CONSECUENCIA:
+  descripcion: >
+    Incumplimiento de cualquiera de las 4 obligaciones activa responsabilidad
+    administrativa culposa (LOC-CGE Art. 45) en la máxima autoridad y
+    directivos. La ausencia de control interno es causa autónoma de glosa si
+    origina perjuicio económico al Estado (LOC-CGE Art. 52-53).
+  tipo: responsabilidad-administrativa
+  organo_sancionador:
+    - CGE
+
+VIGENCIA:
+  estado: vigente
+
+DOMINIOS_QUIRA:
+  - Dom01
+  - Dom07
+
+RELACIONES:
+  - CE_226
+  - CE_233
+  - LOC-CGE_9
+  - LOC-CGE_45
+  - NCI-CGE
+
+META:
+  estado: v1.3
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.3
+  revisado_por_experto: false
+
+---
+ACK_ID: LOC-CGE_9
+CLASE: ACK_OBLIGACION
+TIPO: obligacion
+NOMBRE: Control interno — definición, elementos y responsabilidad institucional
+
+FUENTE:
+  norma: Ley Orgánica de la Contraloría General del Estado
+  sigla: LOC-CGE
+  jerarquia: 1
+  articulo: "9"
+  inciso: ""
+  fecha_vigencia: "2015-12-18"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+  - Director
+
+ACTOR_BENEFICIARIO:
+  - Estado Ecuatoriano
+  - CGE
+
+OBLIGACION: >
+  El control interno constituye un proceso aplicado por la máxima autoridad,
+  la dirección y el personal de cada institución que proporciona seguridad
+  razonable de que se protegen los recursos públicos y se alcanzan los
+  objetivos institucionales. Constituyen elementos del control interno: el
+  entorno de control, la organización, la idoneidad del personal, el
+  cumplimiento de los objetivos institucionales, los riesgos institucionales
+  en el logro de tales objetivos y las medidas adoptadas para afrontarlos,
+  el sistema de información, el cumplimiento de las normas jurídicas y
+  técnicas, y la corrección oportuna de las deficiencias de control. El
+  control interno será responsabilidad de cada institución del Estado, y
+  tendrá como finalidad primordial crear las condiciones para el ejercicio
+  del control externo a cargo de la CGE.
+
+EVIDENCIA:
+  - Reglamento Orgánico de Gestión Organizacional por Procesos
+  - Mapa de riesgos institucional actualizado
+  - Manual de descripción y clasificación de puestos
+  - Sistema de información institucional (SIGAD, eSIGEF integrados)
+  - Código de ética institucional
+
+CONSECUENCIA:
+  descripcion: >
+    Ausencia del sistema de control interno es causal directo de
+    responsabilidad administrativa culposa (LOC-CGE Art. 45, numeral 6:
+    "no establecer o no aplicar con sujeción a esta Ley los subsistemas
+    de control interno y control externo"). Activa glosa si genera perjuicio
+    económico. En GADM: D5=baja capacidad institucional es síntoma observable
+    de control interno deficiente (NCI 200-02, 200-04).
+  tipo: responsabilidad-administrativa
+  organo_sancionador:
+    - CGE
+
+VIGENCIA:
+  estado: vigente
+
+DOMINIOS_QUIRA:
+  - Dom01
+  - Dom03
+  - Dom05
+
+RELACIONES:
+  - LOC-CGE_5
+  - LOC-CGE_12
+  - LOC-CGE_45
+  - NCI_GEN_CI
+  - NCI_200_02
+  - NCI_300
+
+META:
+  estado: v1.3
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.3
+  revisado_por_experto: false
+
+---
+ACK_ID: LOC-CGE_11
+CLASE: ACK_OBLIGACION
+TIPO: obligacion
+NOMBRE: Aplicación del control interno — funciones incompatibles y reglamento orgánico en RO
+
+FUENTE:
+  norma: Ley Orgánica de la Contraloría General del Estado
+  sigla: LOC-CGE
+  jerarquia: 1
+  articulo: "11"
+  inciso: ""
+  fecha_vigencia: "2015-12-18"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+  - Director-Financiero
+
+ACTOR_BENEFICIARIO:
+  - Estado Ecuatoriano
+
+OBLIGACION: >
+  Se tendrán en cuenta las normas sobre funciones incompatibles, depósito
+  intacto e inmediato de lo recaudado, otorgamiento de recibos, pagos con
+  cheque o mediante la red bancaria, distinción entre ordenadores de gasto
+  y ordenadores de pago; y, el reglamento orgánico funcional que será
+  publicado en el Registro Oficial.
+
+EVIDENCIA:
+  - Resolución Orgánica de Gestión Organizacional publicada en RO
+  - Registros de depósito intacto e inmediato de recaudaciones
+  - Separación documental entre ordenador de gasto y ordenador de pago
+
+CONSECUENCIA:
+  descripcion: >
+    Incumplimiento de funciones incompatibles (concentración indebida de
+    funciones) activa LOC-CGE Art. 45 numeral 3 (permisividad de violación
+    de normas). Reglamento orgánico no publicado en RO viola NCI 200-04 y
+    genera deficiencia grave de ambiente de control.
+  tipo: responsabilidad-administrativa
+  organo_sancionador:
+    - CGE
+
+VIGENCIA:
+  estado: vigente
+
+DOMINIOS_QUIRA:
+  - Dom01
+  - Dom02
+  - Dom05
+
+RELACIONES:
+  - LOC-CGE_9
+  - LOC-CGE_45
+  - NCI_200_04
+  - NCI_400_01
+
+META:
+  estado: v1.3
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.3
+  revisado_por_experto: false
+
+---
+ACK_ID: LOC-CGE_12
+CLASE: ACK_OBLIGACION
+TIPO: procedimiento
+NOMBRE: Tiempos de control — previo, continuo y posterior con UAI
+
+FUENTE:
+  norma: Ley Orgánica de la Contraloría General del Estado
+  sigla: LOC-CGE
+  jerarquia: 1
+  articulo: "12"
+  inciso: ""
+  fecha_vigencia: "2015-12-18"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Servidores-Responsables
+  - Unidad-Auditoria-Interna
+
+ACTOR_BENEFICIARIO:
+  - Estado Ecuatoriano
+
+OBLIGACION: >
+  El ejercicio del control interno se aplicará en forma previa, continua y
+  posterior. Control previo: los servidores analizarán las actividades
+  propuestas antes de su autorización o ejecución, respecto a su legalidad,
+  veracidad, conveniencia, oportunidad, pertinencia y conformidad con los
+  planes y presupuestos institucionales. Control continuo: los servidores
+  inspeccionarán y constatarán en forma continua la oportunidad, calidad y
+  cantidad de obras, bienes y servicios recibidos o prestados de conformidad
+  con la ley, los términos contractuales y las autorizaciones respectivas.
+  Control posterior: la unidad de auditoría interna será responsable del
+  control posterior interno ante las respectivas autoridades y se aplicará a
+  las actividades institucionales, con posterioridad a su ejecución.
+
+EVIDENCIA:
+  - Certificaciones presupuestarias previas al compromiso
+  - Actas de recepción de bienes y servicios (control continuo)
+  - Informes anuales de la Unidad de Auditoría Interna
+  - PAT (Plan Anual de Trabajo) de la UAI
+
+CONSECUENCIA:
+  descripcion: >
+    Omisión del control previo activa LOC-CGE Art. 45 numeral 8 (contraer
+    compromisos sin sujetarse a los dictámenes de la ley o insistir
+    ilegalmente en una orden objetada por el control previo). La ausencia de
+    UAI activa LOC-CGE Art. 45 numeral 6 (no establecer control interno).
+    En GADM: D3=59.85% ejecución presupuestaria baja puede indicar deficiencias
+    en el control previo al compromiso (NCI 402-02).
+  tipo: responsabilidad-administrativa
+  organo_sancionador:
+    - CGE
+
+VIGENCIA:
+  estado: vigente
+
+DOMINIOS_QUIRA:
+  - Dom01
+  - Dom02
+  - Dom03
+
+RELACIONES:
+  - LOC-CGE_9
+  - LOC-CGE_14
+  - LOC-CGE_45
+  - NCI_PRE_COMPROMISO
+  - NCI_PRE_DEVENGADO
+  - NCI_600_01
+
+META:
+  estado: v1.3
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.3
+  revisado_por_experto: false
+
+---
+ACK_ID: LOC-CGE_14
+CLASE: ACK_OBLIGACION
+TIPO: obligacion
+NOMBRE: Auditoría interna — obligatoriedad en instituciones del Estado cuando se justifique
+
+FUENTE:
+  norma: Ley Orgánica de la Contraloría General del Estado
+  sigla: LOC-CGE
+  jerarquia: 1
+  articulo: "14"
+  inciso: ""
+  fecha_vigencia: "2015-12-18"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+
+ACTOR_BENEFICIARIO:
+  - CGE
+  - Estado Ecuatoriano
+
+OBLIGACION: >
+  Las instituciones del Estado contarán con una Unidad de Auditoría Interna
+  cuando se justifique, que dependerá técnica y administrativamente de la
+  Contraloría General del Estado. El personal auditor será nombrado, removido
+  o trasladado por el Contralor General del Estado. Las remuneraciones y
+  gastos para el funcionamiento de las unidades de auditoría interna serán
+  cubiertos por las propias instituciones del Estado a las que sirven y
+  controlan. Las remuneraciones que corresponden a las máximas autoridades de
+  las Unidades de Auditoría Interna de los Gobiernos Autónomos
+  Descentralizados serán cubiertas por la Contraloría General del Estado.
+  La auditoría interna se ejecutará de acuerdo con las normas nacionales e
+  internacionales de auditoría aplicables al sector público.
+
+EVIDENCIA:
+  - UAI activa con jefe designado por CGE
+  - PAT (Plan Anual de Trabajo UAI) presentado a CGE antes del 30-sep
+  - Informes de UAI dirigidos a la máxima autoridad
+  - Presupuesto asignado a funcionamiento de UAI
+
+CONSECUENCIA:
+  descripcion: >
+    Ausencia de UAI cuando se justifica activa LOC-CGE Art. 45 numeral 6
+    (no establecer control interno). En un GAD del tamaño de Montecristi,
+    la UAI se justifica claramente por volumen presupuestario del Holding
+    Municipal. La ausencia de UAI activa implica control posterior
+    ausente, lo que deja al GAD sin capacidad de auto-detectar irregularidades
+    antes de que la CGE realice un examen especial.
+  tipo: responsabilidad-administrativa
+  organo_sancionador:
+    - CGE
+
+VIGENCIA:
+  estado: vigente
+
+DOMINIOS_QUIRA:
+  - Dom01
+  - Dom05
+
+RELACIONES:
+  - LOC-CGE_12
+  - LOC-CGE_45
+  - NCI_600_01
+  - NCI_200_02
+
+META:
+  estado: v1.3
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.3
+  revisado_por_experto: false
+
+---
+ACK_ID: LOC-CGE_21
+CLASE: ACK_PRINCIPIO
+TIPO: principio
+NOMBRE: Auditoría de gestión — economía, efectividad y eficiencia como criterios evaluativos
+
+FUENTE:
+  norma: Ley Orgánica de la Contraloría General del Estado
+  sigla: LOC-CGE
+  jerarquia: 1
+  articulo: "21"
+  inciso: ""
+  fecha_vigencia: "2015-12-18"
+
+ACTOR_OBLIGADO:
+  - CGE
+  - Unidad-Auditoria-Interna
+
+ACTOR_BENEFICIARIO:
+  - Estado Ecuatoriano
+  - Ciudadanía
+
+OBLIGACION: >
+  La Auditoría de Gestión es la acción fiscalizadora dirigida a examinar y
+  evaluar el control interno y la gestión, utilizando recursos humanos de
+  carácter multidisciplinario, el desempeño de una institución, ente
+  contable, o la ejecución de programas y proyectos, con el fin de determinar
+  si dicho desempeño se está realizando de acuerdo a principios y criterios
+  de economía, efectividad y eficiencia. Este tipo de auditoría examinará y
+  evaluará los resultados originalmente esperados y medidos de acuerdo con
+  los indicadores institucionales y de desempeño pertinentes. Constituirán
+  objeto de la auditoría de gestión: el proceso administrativo, las
+  actividades de apoyo, financieras y operativas; la eficiencia, efectividad
+  y economía en el empleo de los recursos humanos, materiales, financieros,
+  ambientales, tecnológicos y de tiempo; y, el cumplimiento de las
+  atribuciones, objetivos y metas institucionales.
+
+EVIDENCIA:
+  - Indicadores de gestión institucional (TGI, POA, PDOT)
+  - Informes de avance de POA vs. metas
+  - Evaluaciones de desempeño institucional
+
+CONSECUENCIA:
+  descripcion: >
+    La auditoría de gestión es el instrumento que la CGE utiliza para
+    evaluar el TGI del GADM: el IRS=79.7 (equidad territorial), D3=59.85%
+    (ejecución), D5 (capacidad institucional) son exactamente los
+    "resultados originalmente esperados y medidos de acuerdo con los
+    indicadores de desempeño pertinentes" que este artículo mandatas auditar.
+    Si la CGE realiza una auditoría de gestión al GADM con los datos actuales,
+    encontraría causales de LOC-CGE Art. 45 en múltiples frentes.
+  tipo: ninguna
+  organo_sancionador:
+    - CGE
+
+VIGENCIA:
+  estado: vigente
+
+DOMINIOS_QUIRA:
+  - Dom01
+  - Dom04
+  - Dom07
+
+RELACIONES:
+  - LOC-CGE_5
+  - LOC-CGE_45
+  - CE_226
+  - COOTAD_215
+
+META:
+  estado: v1.3
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.3
+  revisado_por_experto: false
+
+---
+ACK_ID: LOC-CGE_45
+CLASE: ACK_OBLIGACION
+TIPO: sancion
+NOMBRE: Responsabilidad administrativa culposa — 14 causales con multa de 1 a 20 RBU
+
+FUENTE:
+  norma: Ley Orgánica de la Contraloría General del Estado
+  sigla: LOC-CGE
+  jerarquia: 1
+  articulo: "45"
+  inciso: ""
+  fecha_vigencia: "2015-12-18"
+
+ACTOR_OBLIGADO:
+  - Alcalde
+  - Director
+  - Servidor-Publico
+
+ACTOR_BENEFICIARIO:
+  - Estado Ecuatoriano
+  - CGE
+
+OBLIGACION: >
+  La responsabilidad administrativa culposa de las autoridades, dignatarios,
+  funcionarios y servidores de las instituciones del Estado se establecerá a
+  base del análisis documentado del grado de inobservancia de las
+  disposiciones legales relativas al asunto de que se trate, y sobre el
+  incumplimiento de las atribuciones, funciones, deberes y obligaciones que
+  les competen por razón de su cargo. Incurren en responsabilidad
+  administrativa culposa quienes: (1) no establezcan ni apliquen indicadores
+  de gestión para evaluar la gestión institucional o el rendimiento individual;
+  (2) cometan abuso en el ejercicio del cargo; (3) permitan la violación de
+  la ley, normas específicas o de carácter obligatorio; (4) exijan o reciban
+  dinero o recompensas por cumplir sus funciones o por otorgar contratos;
+  (5) no establezcan o apliquen los subsistemas de determinación/recaudación,
+  presupuesto, tesorería, crédito público y contabilidad gubernamental;
+  (6) no establezcan o apliquen los subsistemas de control interno y externo;
+  (7) no establezcan o apliquen los sistemas de planificación, administración
+  de bienes y servicios, inversiones públicas, talento humano y gestión
+  financiera; (8) contraigan compromisos en contravención con normas legales
+  o insistan ilegalmente en una orden objetada por el control previo;
+  (9) no tomen acciones correctivas necesarias en conocimiento del informe
+  del auditor interno o externo; (10) no proporcionen oportunamente la
+  información pertinente ni presten la colaboración requerida a los auditores
+  gubernamentales; (11) incurran en ilegal determinación o recaudación de
+  ingresos; (12) no efectúen el ingreso oportuno de cualquier recurso
+  financiero recibido; (13) dispongan o ejecuten sin atribución el cambio de
+  planes, programas y estipulaciones relativas a contratos; y, (14) las demás
+  previstas en otras normas legales vigentes. La sanción será multa de una
+  a veinte remuneraciones básicas unificadas del trabajador del sector
+  privado (Art. 46), sin perjuicio de responsabilidad civil o penal.
+
+EVIDENCIA:
+  - Resolución de la CGE determinando responsabilidad
+  - Informe de auditoría gubernamental con hallazgos
+  - Documentación del proceso disciplinario
+
+CONSECUENCIA:
+  descripcion: >
+    Multa de 1 a 20 RBU (Art. 46). Ejecutada por la autoridad nominadora a
+    requerimiento de la CGE. Si el sujeto es la propia máxima autoridad,
+    la CGE la impone directamente. No exime de responsabilidad civil (glosa)
+    ni penal (COIP peculado/enriquecimiento ilícito). La CGE concede hasta
+    30 días de defensa antes de imponer la destitución.
+    BRECHAS GADMCM: (1) D3=59.85% sugiere posibles incumplimientos del
+    causal 8 (compromisos sin POA) y causal 5 (presupuesto). (2) IRS=79.7
+    activa causal 7 (no aplicar sistema de planificación equitativo). (3)
+    Ausencia de mapa de riesgos activaría causal 6 (sin control interno).
+  tipo: responsabilidad-administrativa
+  organo_sancionador:
+    - CGE
+
+VIGENCIA:
+  estado: vigente
+
+DOMINIOS_QUIRA:
+  - Dom01
+  - Dom02
+  - Dom03
+  - Dom07
+
+RELACIONES:
+  - LOC-CGE_5
+  - LOC-CGE_9
+  - LOC-CGE_52
+  - LOC-CGE_53
+  - NCI_200_02
+  - NCI_400_01
+  - NCI_PRE_COMPROMISO
+  - LOTAIP_19_12
+
+META:
+  estado: v1.3
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.3
+  revisado_por_experto: false
+
+---
+ACK_ID: LOC-CGE_53
+CLASE: ACK_OBLIGACION
+TIPO: procedimiento
+NOMBRE: Predeterminación — glosa y 60 días para contestar responsabilidad civil culposa
+
+FUENTE:
+  norma: Ley Orgánica de la Contraloría General del Estado
+  sigla: LOC-CGE
+  jerarquia: 1
+  articulo: "53"
+  inciso: ""
+  fecha_vigencia: "2015-12-18"
+
+ACTOR_OBLIGADO:
+  - CGE
+  - Alcalde
+  - Servidor-Publico
+
+ACTOR_BENEFICIARIO:
+  - Estado Ecuatoriano
+
+OBLIGACION: >
+  La responsabilidad civil culposa se determinará en forma privativa por la
+  Contraloría General del Estado cuando por los resultados de la auditoría
+  gubernamental se hubiere determinado que se ha causado perjuicio económico
+  al Estado o a sus instituciones. El perjuicio se establece mediante la
+  predeterminación o glosa de responsabilidad civil culposa, que será
+  notificada a las personas implicadas (servidores públicos o personas
+  naturales/jurídicas de derecho privado), concediéndoles el plazo de
+  sesenta días para que las contesten y presenten las pruebas correspondientes.
+  Expirado este plazo, la CGE expedirá su resolución. En caso de pago
+  indebido, se emitirá orden de reintegro con plazo de 90 días.
+  La resolución confirmatoria ejecutoriada se ejecuta mediante jurisdicción
+  coactiva (Art. 57).
+
+EVIDENCIA:
+  - Notificación de la predeterminación de responsabilidad civil (glosa)
+  - Contestación a la glosa dentro de 60 días
+  - Resolución de la CGE (confirmatoria o derogatoria)
+  - Comprobante de pago o título de crédito en coactiva
+
+CONSECUENCIA:
+  descripcion: >
+    Si no se contesta en 60 días → la CGE expide resolución directa. Si la
+    resolución es confirmatoria y no se paga → coactiva con título de crédito
+    (Art. 57). Además de la glosa, el servidor incurre en responsabilidad
+    administrativa (LOC-CGE Art. 45) que puede activar sanción de destitución.
+    Los indicios de responsabilidad penal (peculado, concusión) se remiten a
+    Fiscalía (Arts. 65-67 LOC-CGE + COIP).
+    BRECHAS GADMCM: contratos ejecutados sin acta de recepción o con
+    sobreprecio son el tipo de hechos que activan glosas. D3=59.85% con
+    elevada concentración de contratos en Q4 (diciembre) es patrón de riesgo.
+  tipo: glosa-cge
+  organo_sancionador:
+    - CGE
+
+VIGENCIA:
+  estado: vigente
+
+DOMINIOS_QUIRA:
+  - Dom01
+  - Dom02
+  - Dom03
+
+RELACIONES:
+  - LOC-CGE_42
+  - LOC-CGE_45
+  - LOC-CGE_52
+  - LOTAIP_19_12
+  - LOSNCP
+
+META:
+  estado: v1.3
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.3
+  revisado_por_experto: false

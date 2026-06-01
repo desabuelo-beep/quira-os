@@ -1,0 +1,932 @@
+# F0.3 — COOTAD — Código Orgánico de Organización Territorial, Autonomía y Descentralización
+# Bloque: Principios + Funciones + Competencias + Presupuesto + Equidad
+# QLEP v1.2 | Extracción: 2026-05-30
+# Átomos: 10 | Estado: completo (núcleo)
+# Fuente: COOTAD (Suplemento RO 303 — 19-oct-2010, con reformas 2026)
+#
+# NOTA ARQUITECTÓNICA (QNKC-001):
+# Los átomos COOTAD desarrollan las Capas 1-2 de la cadena canónica.
+# COOTAD_3 → principios interpretativos de TODA la acción del GAD.
+# COOTAD_54 → funciones permanentes del GAD (análogo a funcion_publica en IMPLEMENTACION_TERRITORIAL).
+# COOTAD_192/198/215/228 → la cadena presupuestaria que conecta derechos con territorio.
+# IRS=79.7 viola simultáneamente COOTAD_215 + COOTAD_228 → base legal de las alertas Dom04.
+
+---
+ACK_ID: COOTAD_3
+CLASE: ACK_PRINCIPIO
+TIPO: principio
+NOMBRE: Principios COOTAD — Solidaridad Equidad Interterritorial Subsidiariedad
+FUENTE:
+  norma: Código Orgánico de Organización Territorial, Autonomía y Descentralización
+  sigla: COOTAD
+  jerarquia: 1
+  articulo: "3"
+  inciso: ""
+  fecha_vigencia: "2010-10-19"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+  - Concejo-Municipal
+
+ACTOR_BENEFICIARIO:
+  - Ciudadanía-cantonal
+  - Parroquias-rurales
+  - Comunidades-con-NBI-alto
+
+OBLIGACION: >
+  El ejercicio de la autoridad y las potestades públicas de los gobiernos autónomos
+  descentralizados se regirán por los siguientes principios:
+  UNIDAD: los distintos niveles de gobierno observarán la unidad del ordenamiento
+  jurídico y la igualdad de trato, evitando que la distribución de competencias y
+  recursos produzca inequidades territoriales.
+  SOLIDARIDAD: todos los niveles de gobierno tienen como obligación compartida
+  construir el desarrollo justo, equilibrado y equitativo de las distintas
+  circunscripciones territoriales, redistributibuyendo y reorientando recursos y
+  bienes públicos para compensar las inequidades entre circunscripciones.
+  COORDINACIÓN: los niveles de gobierno armonizarán sus planes y gestión para
+  cumplir los objetivos del buen vivir.
+  SUBSIDIARIEDAD: se privilegiará la gestión por el nivel de gobierno más cercano
+  a la población, para mejorar calidad, eficacia y democratización.
+  COMPLEMENTARIEDAD: los gobiernos cooperarán entre sí.
+  EQUIDAD INTERTERRITORIAL: la organización territorial garantizará el desarrollo
+  equilibrado, la igualdad de oportunidades y el acceso a servicios públicos
+  en todos los territorios.
+  PARTICIPACIÓN CIUDADANA: los GADs promoverán el desarrollo de formas
+  participativas de gestión.
+  SUSTENTABILIDAD DEL DESARROLLO: los GADs priorizarán las potencialidades
+  de sus circunscripciones para mejorar el bienestar de la población.
+
+EVIDENCIA:
+  - IRS-Índice-de-Regresividad-Territorial
+  - Distribución-presupuestaria-por-parroquia
+  - Informes-CGE-equidad-territorial
+  - PDOT-con-territorialización-de-inversiones
+
+CONSECUENCIA:
+  descripcion: >
+    El incumplimiento del principio de solidaridad y equidad interterritorial no
+    tiene una sanción directa pero es la base legal de las alertas QUIRA.
+    IRS=79.7 viola el principio de solidaridad (Art. 3) + equidad interior (Art. 228).
+    Base jurídica para reclamaciones ante DPE y CPCCS por distribución inequitativa.
+  tipo: observacion-cpccs
+  organo_sancionador:
+    - DPE
+    - CPCCS
+    - Corte-Constitucional
+
+APLICABILIDAD:
+  nivel_gobierno: [GAD-Municipal, GAD-Provincial, GAD-Parroquial]
+  condicion: []
+  ambito_lac: >
+    Principios de solidaridad, subsidiariedad y equidad territorial en toda LAC.
+    Colombia: Art. 1 + 287 CN + Art. 2 Ley 136 (principios municipales).
+    Perú: Ley 27783 LBDP (bases descentralización) Art. 8 (principios).
+    México: Art. 115 CPEUM + Ley de Coordinación Fiscal (equidad distributiva).
+
+DOMINIOS_QUIRA:
+  - Dom04
+  - Dom01
+  - Dom02
+
+RELACIONES:
+  - CE_238
+  - CE_264
+  - COOTAD_215
+  - COOTAD_228
+  - COOTAD_192
+
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: COOTAD_54
+CLASE: ACK_OBLIGACION
+TIPO: obligacion
+NOMBRE: Funciones del GAD Municipal — 20 Funciones Permanentes
+FUENTE:
+  norma: Código Orgánico de Organización Territorial, Autonomía y Descentralización
+  sigla: COOTAD
+  jerarquia: 1
+  articulo: "54"
+  inciso: ""
+  fecha_vigencia: "2010-10-19"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+  - Concejo-Municipal
+
+ACTOR_BENEFICIARIO:
+  - Ciudadanía-cantonal
+  - Territorio-cantonal
+
+OBLIGACION: >
+  Son funciones del gobierno autónomo descentralizado municipal las siguientes
+  (selección de funciones con mayor impacto territorial):
+  a) Promover el desarrollo sustentable del cantón para garantizar la realización
+  del buen vivir a través de la implementación de políticas públicas cantonales.
+  b) Diseñar e implementar políticas de promoción y construcción de equidad e
+  inclusión en su territorio, en el marco de sus competencias constitucionales
+  y legales.
+  e) Elaborar y ejecutar el plan cantonal de desarrollo, el de ordenamiento
+  territorial y las políticas públicas en el ámbito de sus competencias y en su
+  circunscripción territorial, de manera coordinada con la planificación nacional,
+  regional, provincial y parroquial, y realizar en forma permanente el seguimiento
+  y rendición de cuentas sobre el cumplimiento de las metas establecidas.
+  f) Ejecutar las competencias exclusivas y concurrentes reconocidas por la
+  Constitución y la ley, y en dicho marco prestar los servicios públicos y
+  construir la obra pública cantonal correspondiente con criterios de calidad,
+  eficacia y eficiencia, observando los principios de universalidad,
+  accesibilidad, regularidad, continuidad, solidaridad, interculturalidad,
+  subsidiariedad, participación y equidad.
+  i) Implementar el derecho al hábitat y a la vivienda y desarrollar planes y
+  programas de vivienda de interés social en el territorio cantonal.
+  k) Regular, prevenir y controlar la contaminación ambiental en el territorio
+  cantonal de manera articulada con las políticas ambientales nacionales.
+  r) Fomentar actividades orientadas a cuidar, proteger y conservar el patrimonio
+  cultural y memoria social en el campo de la interculturalidad y diversidad.
+
+EVIDENCIA:
+  - POA-con-ejecución-por-función
+  - Informes-rendición-de-cuentas
+  - PDOT-con-seguimiento-de-metas
+  - LOTAIP-Numeral-10
+
+CONSECUENCIA:
+  descripcion: >
+    El incumplimiento de cualquiera de las 20 funciones del Art. 54 constituye
+    omisión institucional. El literal e) es especialmente crítico: el seguimiento
+    permanente y la rendición de cuentas son obligatorios — no opcionales.
+    Base legal de todos los indicadores de gestión del TGI.
+  tipo: observacion-cpccs
+  organo_sancionador:
+    - DPE
+    - CPCCS
+    - CGE
+
+APLICABILIDAD:
+  nivel_gobierno: [GAD-Municipal]
+  condicion: []
+  ambito_lac: >
+    Catálogo de funciones municipales en toda LAC. El literal f) (prestar servicios
+    con universalidad, accesibilidad, continuidad) es el mandato de servicio público
+    territorial que QUIRA mide a través del TGI en cada competencia.
+
+IMPLEMENTACION_TERRITORIAL:
+  funcion_publica: >
+    Las 20 funciones del Art. 54 son las obligaciones de resultado permanentes
+    del GAD Municipal. A diferencia de las competencias (CE_264 / COOTAD_55),
+    las funciones describen el CÓMO debe actuar el GAD: con equidad,
+    universalidad, accesibilidad, continuidad y rendición de cuentas permanente.
+    El literal e) crea la obligación de seguimiento y rendición de cuentas
+    que justifica el TGI como instrumento de gobernanza preventiva.
+  actor_local: >
+    pendiente — verificar Resolución Orgánica GADM Montecristi.
+    QNKC-001: las funciones son permanentes; las unidades internas que las ejecutan
+    son contingentes.
+  instrumento: POA + PDOT + Sistema-rendición-cuentas-permanente
+  evidencia:
+    - LOTAIP_19_12
+    - Informes-seguimiento-PDOT
+    - Auditorías-CGE
+  indicador:
+    - DOM01_FUNCIONES_CUMPLIDAS_PCT
+    - DOM07_RENDICION_CUENTAS_REALIZADA
+
+DOMINIOS_QUIRA:
+  - Dom01
+  - Dom04
+  - Dom07
+  - Dom02
+
+RELACIONES:
+  - CE_264
+  - COOTAD_55
+  - COOTAD_215
+  - LOTAIP_19_12
+
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: COOTAD_55
+CLASE: ACK_OBLIGACION
+TIPO: competencia_exclusiva
+NOMBRE: Competencias Exclusivas COOTAD GAD Municipal — Desarrollo Operativo CE_264
+FUENTE:
+  norma: Código Orgánico de Organización Territorial, Autonomía y Descentralización
+  sigla: COOTAD
+  jerarquia: 1
+  articulo: "55"
+  inciso: "a-n"
+  fecha_vigencia: "2010-10-19"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+
+ACTOR_BENEFICIARIO:
+  - Ciudadanía-cantonal
+  - Territorio-cantonal
+
+OBLIGACION: >
+  Los gobiernos autónomos descentralizados municipales tendrán las siguientes
+  competencias exclusivas sin perjuicio de otras que determine la ley (en
+  desarrollo de CE_264):
+  a) Planificar el desarrollo cantonal y formular el PDyOT.
+  b) Ejercer el control sobre el uso y ocupación del suelo en el cantón.
+  c) Planificar, construir y mantener la vialidad urbana.
+  d) Prestar los servicios públicos de agua potable, alcantarillado, depuración
+  de aguas residuales, manejo de desechos sólidos, actividades de saneamiento
+  ambiental y aquellos que establezca la ley.
+  e) Crear, modificar o suprimir mediante ordenanzas, tasas y contribuciones.
+  f) Planificar, regular y controlar el tránsito y el transporte terrestre.
+  g) Planificar, construir y mantener la infraestructura física y equipamientos
+  de salud y educación (con autorización previa del ente rector nacional por convenio).
+  h) Preservar, mantener y difundir el patrimonio arquitectónico, cultural y natural.
+  i) Elaborar y administrar los catastros inmobiliarios urbanos y rurales.
+  j) Delimitar, regular, autorizar y controlar el uso de playas de mar, riberas y
+  lechos de ríos, lagos y lagunas.
+  k) Preservar y garantizar el acceso efectivo de personas al uso de playas y riberas.
+  l) Regular, autorizar y controlar la explotación de materiales áridos y pétreos.
+  m) Gestionar los servicios de prevención, protección, socorro y extinción de incendios.
+  n) Gestionar la cooperación internacional para el cumplimiento de sus competencias.
+
+EVIDENCIA:
+  - POA-por-competencia
+  - LOTAIP-Numeral-6-ejecución-por-competencia
+  - Gold-Master-TGI-v5.5
+  - Informes-CGE-auditoría-competencias
+
+CONSECUENCIA:
+  descripcion: >
+    Omisión en cualquier competencia exclusiva constituye incumplimiento institucional.
+    COOTAD_55.d (agua potable) + COOTAD_137 son la base legal de las alertas Dom04
+    por cobertura deficiente en parroquias rurales (Isabel Muentes agua=1.02%).
+    Literal g) tiene condición especial: requiere convenio previo con el ente rector.
+  tipo: observacion-cpccs
+  organo_sancionador:
+    - DPE
+    - CGE
+    - CPCCS
+
+APLICABILIDAD:
+  nivel_gobierno: [GAD-Municipal]
+  condicion: []
+  ambito_lac: >
+    COOTAD_55 es el desarrollo operativo de CE_264. En LAC, la ley orgánica
+    municipal desarrolla las competencias constitucionales con el mismo patrón.
+    Colombia: Ley 136/1994 Art. 3 (funciones municipales).
+    Perú: LOM 27972 Art. 73 (materias de competencia municipal).
+    México: Art. 115 fracción III CPEUM.
+
+IMPLEMENTACION_TERRITORIAL:
+  funcion_publica: >
+    Las 14 competencias exclusivas del COOTAD desarrollan operativamente las
+    de CE_264. Son el mapa de funciones públicas permanentes del GAD Municipal.
+    Cada competencia genera una brecha territorial verificable cuando no se cumple.
+    COOTAD_55.d es la competencia más crítica para Montecristi: agua potable
+    con cobertura del 1.02% en Isabel Muentes — emergencia constitucional.
+  actor_local: >
+    pendiente — verificar Resolución Orgánica GADM Montecristi por cada competencia.
+    COOTAD_55.m (bomberos): Cuerpo de Bomberos Montecristi — autónomo con
+    financiamiento propio. COOTAD_55.d (agua): actor pendiente de verificación.
+    QNKC-001: el actor es contingente; la competencia es permanente.
+  instrumento: Varía por competencia (EP / Dirección / Convenio / Sistema-comunitario)
+  evidencia:
+    - LOTAIP_19_6
+    - LOTAIP_19_8
+    - PDOT-Montecristi
+    - Gold-Master-TGI-v5.5
+  indicador:
+    - DOM04_COBERTURA_AGUA_PCT
+    - DOM04_COBERTURA_ALCANTARILLADO_PCT
+    - DOM04_RESIDUOS_SOLIDOS_COBERTURA_PCT
+  gap_conocido: >
+    COOTAD_55.d (agua potable): Isabel Muentes agua=1.02% — violación directa.
+    Gold Master v5.5 + PDOT Montecristi son fuentes canónicas de esta brecha.
+    Actor local pendiente: no existe EP de agua en Montecristi (QNKC-001).
+
+DOMINIOS_QUIRA:
+  - Dom04
+  - Dom02
+  - Dom12
+  - Dom01
+
+RELACIONES:
+  - CE_264
+  - COOTAD_54
+  - COOTAD_137
+  - CE_241
+  - LOTAIP_19
+
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: COOTAD_57
+CLASE: ACK_OBLIGACION
+TIPO: obligacion
+NOMBRE: Atribuciones Concejo Municipal PDOT Presupuesto Ordenanzas
+FUENTE:
+  norma: Código Orgánico de Organización Territorial, Autonomía y Descentralización
+  sigla: COOTAD
+  jerarquia: 1
+  articulo: "57"
+  inciso: "e, g, i"
+  fecha_vigencia: "2010-10-19"
+
+ACTOR_OBLIGADO:
+  - Concejo-Municipal
+
+ACTOR_BENEFICIARIO:
+  - Ciudadanía-cantonal
+
+OBLIGACION: >
+  Son atribuciones del Concejo Municipal (selección de las más relevantes):
+  e) Aprobar el plan cantonal de desarrollo (PDOT) formulado participativamente
+  con la acción del consejo cantonal de planificación.
+  g) Aprobar u observar el presupuesto del gobierno autónomo descentralizado
+  municipal, que deberá guardar concordancia con el plan cantonal de desarrollo
+  y con el de ordenamiento territorial.
+  i) Autorizar la contratación de empréstitos destinados a financiar la ejecución
+  de programas y proyectos previstos en el plan cantonal de desarrollo.
+
+EVIDENCIA:
+  - Acta-aprobación-PDOT
+  - Acta-aprobación-presupuesto-institucional
+  - LOTAIP-Numeral-8-actas-Concejo-publicadas
+
+CONSECUENCIA:
+  descripcion: >
+    Si el Concejo aprueba un presupuesto que no guarda concordancia con el PDOT,
+    el Concejo incurre en responsabilidad administrativa. La aprobación del
+    presupuesto sin coherencia con el PDyOT viola el Art. 57.g + Art. 215 COOTAD.
+    La CGE puede observar el presupuesto aprobado si no hay articulación PDyOT.
+  tipo: responsabilidad-administrativa
+  organo_sancionador:
+    - CGE
+    - DPE
+
+APLICABILIDAD:
+  nivel_gobierno: [GAD-Municipal]
+  condicion: []
+  ambito_lac: >
+    Atribuciones legislativas del Concejo/Cabildo en toda LAC.
+    Colombia: Concejo Municipal (Ley 136 Art. 32).
+    Perú: Concejo Municipal (LOM 27972 Art. 9).
+    México: Cabildo Municipal (Leyes Orgánicas Municipales estatales).
+
+DOMINIOS_QUIRA:
+  - Dom02
+  - Dom01
+  - Dom09
+
+RELACIONES:
+  - CE_240
+  - CE_241
+  - COOTAD_60
+  - COOTAD_215
+  - LOTAIP_24
+
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: COOTAD_60
+CLASE: ACK_OBLIGACION
+TIPO: obligacion
+NOMBRE: Atribuciones Alcalde POA Proforma Presupuestaria Contratos
+FUENTE:
+  norma: Código Orgánico de Organización Territorial, Autonomía y Descentralización
+  sigla: COOTAD
+  jerarquia: 1
+  articulo: "60"
+  inciso: "f, g, h, l"
+  fecha_vigencia: "2010-10-19"
+
+ACTOR_OBLIGADO:
+  - Alcalde
+
+ACTOR_BENEFICIARIO:
+  - Ciudadanía-cantonal
+
+OBLIGACION: >
+  Son atribuciones del alcalde o alcaldesa (selección):
+  f) Dirigir la elaboración del plan cantonal de desarrollo (PDOT) y el de
+  ordenamiento territorial, en concordancia con el plan nacional de desarrollo.
+  g) Elaborar el plan operativo anual y la correspondiente proforma presupuestaria
+  institucional conforme al plan cantonal de desarrollo y de ordenamiento territorial.
+  La proforma del presupuesto institucional deberá someterla a consideración del
+  concejo municipal para su aprobación.
+  h) Decidir el modelo de gestión administrativa mediante el cual deben ejecutarse
+  el plan cantonal de desarrollo y el de ordenamiento territorial.
+  l) Suscribir contratos, convenios e instrumentos que comprometan al gobierno
+  autónomo descentralizado municipal, de acuerdo con la ley.
+
+EVIDENCIA:
+  - POA-firmado-y-aprobado
+  - Proforma-presupuestaria-presentada-Concejo
+  - PDOT-elaborado-y-actualizado
+  - Contratos-suscritos-COMPRASPUBLICAS
+
+CONSECUENCIA:
+  descripcion: >
+    El Alcalde que elabore un POA sin coherencia con el PDOT viola el Art. 60.g.
+    El modelo de gestión (Art. 60.h) debe derivarse del PDOT — no ser una
+    decisión ad hoc. D2=69.93% y D3=59.85% son métricas directas del cumplimiento
+    de las atribuciones del Alcalde en planificación y ejecución.
+  tipo: responsabilidad-administrativa
+  organo_sancionador:
+    - CGE
+    - DPE
+
+APLICABILIDAD:
+  nivel_gobierno: [GAD-Municipal]
+  condicion: []
+  ambito_lac: >
+    Atribuciones ejecutivas del Alcalde/Intendente en toda LAC.
+    Colombia: Alcalde (Ley 136 Art. 91).
+    Perú: Alcalde (LOM 27972 Art. 20).
+    México: Presidente Municipal (Leyes Orgánicas Municipales estatales).
+
+DOMINIOS_QUIRA:
+  - Dom02
+  - Dom03
+  - Dom09
+
+RELACIONES:
+  - CE_240
+  - COOTAD_57
+  - COOTAD_215
+  - CE_241
+
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: COOTAD_137
+CLASE: ACK_OBLIGACION
+TIPO: competencia_exclusiva
+NOMBRE: Agua Potable OCSAS Alianzas Comunitarias Parroquias Rurales
+FUENTE:
+  norma: Código Orgánico de Organización Territorial, Autonomía y Descentralización
+  sigla: COOTAD
+  jerarquia: 1
+  articulo: "137"
+  inciso: ""
+  fecha_vigencia: "2010-10-19"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+
+ACTOR_BENEFICIARIO:
+  - Ciudadanía-parroquias-rurales
+  - Comunidades-rurales-sin-cobertura
+
+OBLIGACION: >
+  Las competencias de prestación de servicios públicos de agua potable, en todas
+  sus fases, las ejecutarán los gobiernos autónomos descentralizados municipales
+  con sus respectivas normativas y dando cumplimiento a las regulaciones y
+  políticas nacionales. Los servicios en las parroquias rurales se deberán
+  coordinar con los GADs parroquiales y las organizaciones comunitarias del agua
+  (OCSAS) existentes en el cantón.
+  Los GADs municipales planificarán y operarán la gestión integral del servicio
+  de agua potable en sus respectivos territorios.
+  Se fortalecerá la gestión de las iniciativas comunitarias en torno al agua,
+  mediante el incentivo de alianzas entre lo público y lo comunitario.
+  La provisión de los servicios responderá a los principios de solidaridad,
+  obligatoriedad, generalidad, uniformidad, eficiencia, universalidad,
+  accesibilidad, regularidad, continuidad y calidad.
+  Los precios y tarifas serán equitativos, a través de tarifas diferenciadas a
+  favor de los sectores con menores recursos económicos.
+
+EVIDENCIA:
+  - Convenios-GADM-OCSAS-firmados
+  - Cobertura-agua-potable-por-parroquia
+  - PDOT-con-metas-cobertura-agua
+  - Tarifas-diferenciadas-publicadas
+
+CONSECUENCIA:
+  descripcion: >
+    El GADM que no garantice agua potable "en todas sus fases" en parroquias
+    rurales viola el Art. 137 + CE_264.4. Isabel Muentes con agua=1.02% representa
+    una emergencia constitucional: triple violación (CE_12 + CE_264.4 + COOTAD_137).
+    El DPE puede activar acciones de protección por vulneración del derecho humano
+    al agua en comunidades con NBI alto.
+  tipo: observacion-cpccs
+  organo_sancionador:
+    - DPE
+    - CPCCS
+    - Corte-Constitucional
+
+APLICABILIDAD:
+  nivel_gobierno: [GAD-Municipal]
+  condicion: []
+  ambito_lac: >
+    Competencia municipal de agua potable con enfoque comunitario en toda LAC.
+    Colombia: Ley 142/1994 (servicios públicos domiciliarios) + Decreto 1575/2007.
+    Perú: LOM 27972 Art. 80 num.4 + Reglamento de calidad del agua.
+    México: Art. 115 fracción III.a CPEUM + Ley de Aguas Nacionales.
+    Las OCSAS (SAPAM México, JASS Perú, Acueductos comunitarios Colombia) son
+    el equivalente de las organizaciones comunitarias de agua mencionadas en COOTAD_137.
+
+IMPLEMENTACION_TERRITORIAL:
+  funcion_publica: >
+    Garantizar agua potable en TODAS sus fases en TODAS las parroquias del cantón,
+    incluyendo las rurales, con coordinación obligatoria con OCSAS comunitarias.
+    Función permanente: existe independientemente de si hay EP de agua o no.
+    En Montecristi: sin EP de agua — la función debe ejecutarse a través del
+    orgánico municipal o alianzas con OCSAS existentes en cada parroquia.
+  actor_local: >
+    pendiente — verificar Resolución Orgánica GADM Montecristi.
+    QNKC-001: NO existe EP de agua en Montecristi. La función es del GAD;
+    el mecanismo de ejecución (Dirección / Convenio / OCSAS) debe verificarse
+    en el orgánico GADM. NUNCA asumir actor sin fuente documental.
+  instrumento: Dirección-Agua-GAD / Convenio-OCSAS / Sistema-comunitario
+  evidencia:
+    - PDOT-Montecristi-cobertura-agua-por-parroquia
+    - Convenios-OCSAS-firmados
+    - LOTAIP_19_6-presupuesto-agua
+  indicador:
+    - DOM04_COBERTURA_AGUA_PCT
+    - DOM04_COBERTURA_AGUA_RURAL_PCT
+    - DOM12_OCSAS_FORTALECIDAS
+  nota_lac: >
+    Ecuador: OCSAS = organizaciones comunitarias agua (art. 137 COOTAD).
+    Colombia: Acueductos comunitarios (Ley 142 Art. 15.4).
+    Perú: JASS — Juntas Administradoras de Servicios de Saneamiento (DS 004-2018).
+    México: SAPAM — Sistemas de Agua Potable y Alcantarillado Municipal.
+    QUIRA puede mapear el equivalente local en cada jurisdicción LAC.
+  gap_conocido: >
+    EMERGENCIA CONSTITUCIONAL: Isabel Muentes agua=1.02%. Colorado: datos bajos.
+    Violación directa: CE_12 (derecho) + CE_264.4 (competencia) + COOTAD_137 (operativo).
+    Estimado: ~3,200 personas afectadas en Isabel Muentes sin acceso a agua potable.
+    Fuente: Gold Master v5.5 + PDOT Montecristi.
+
+DOMINIOS_QUIRA:
+  - Dom04
+  - Dom12
+  - Dom01
+
+RELACIONES:
+  - CE_12
+  - CE_264
+  - COOTAD_55
+  - COOTAD_3
+
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: COOTAD_192
+CLASE: ACK_OBLIGACION
+TIPO: obligacion
+NOMBRE: Transferencias Automáticas 21 Pct 10 Pct Criterio NBI
+FUENTE:
+  norma: Código Orgánico de Organización Territorial, Autonomía y Descentralización
+  sigla: COOTAD
+  jerarquia: 1
+  articulo: "192"
+  inciso: ""
+  fecha_vigencia: "2010-10-19"
+
+ACTOR_OBLIGADO:
+  - Gobierno-Central
+  - GAD-Municipal
+
+ACTOR_BENEFICIARIO:
+  - GAD-Municipal
+  - Territorio-cantonal
+
+OBLIGACION: >
+  Los gobiernos autónomos descentralizados participarán del veintiún por ciento
+  (21%) de ingresos permanentes y del diez por ciento (10%) de los no permanentes
+  del presupuesto general del Estado.
+  El monto total a transferir se distribuirá: 27% para Consejos Provinciales;
+  67% para Municipios y Distritos Metropolitanos; 6% para Juntas Parroquiales.
+  El total de recursos se distribuirá conforme a criterios constitucionales:
+  tamaño y densidad de la población; necesidades básicas insatisfechas (NBI)
+  jerarquizadas en relación con la población residente; logros en el mejoramiento
+  de los niveles de vida; esfuerzo fiscal y administrativo; y cumplimiento de
+  metas del Plan Nacional de Desarrollo y del plan de desarrollo del GAD.
+
+EVIDENCIA:
+  - SIGEF-transferencias-automáticas-recibidas
+  - Gold-Master-TGI-presupuesto-ingresos
+  - Certificados-SENPLADES-NBI-cantonal
+
+CONSECUENCIA:
+  descripcion: >
+    El Gobierno Central que retenga o retrase las transferencias automáticas viola
+    el Art. 192 + Art. 6 COOTAD (garantía de autonomía). El GAD puede reclamar
+    ante la PGE y el Ministerio de Finanzas. El criterio NBI implica que cantones
+    con mayor pobreza relativa deben recibir más — base para que Montecristi
+    actualice y comunique su NBI parroquial ante SENPLADES.
+  tipo: ninguna
+  organo_sancionador:
+    - PGE
+    - Ministerio-de-Finanzas
+    - Corte-Constitucional
+
+APLICABILIDAD:
+  nivel_gobierno: [GAD-Municipal, GAD-Provincial, GAD-Parroquial]
+  condicion: []
+  ambito_lac: >
+    Transferencias intergubernamentales con criterios de equidad en toda LAC.
+    Colombia: Sistema General de Participaciones (SGP) — Ley 715/2001.
+    Perú: Foncomun (Fondo de Compensación Municipal) — Ley 29062.
+    México: Fondo General de Participaciones + Fondo de Aportaciones — LCF.
+    El criterio NBI/pobreza como factor redistributivo es análogo en toda la región.
+
+DOMINIOS_QUIRA:
+  - Dom02
+  - Dom04
+
+RELACIONES:
+  - CE_238
+  - COOTAD_3
+  - COOTAD_193
+  - COOTAD_198
+  - COPLAFIP
+
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: COOTAD_198
+CLASE: ACK_OBLIGACION
+TIPO: obligacion
+NOMBRE: Regla 70 Pct Inversión Destino Transferencias
+FUENTE:
+  norma: Código Orgánico de Organización Territorial, Autonomía y Descentralización
+  sigla: COOTAD
+  jerarquia: 1
+  articulo: "198"
+  inciso: ""
+  fecha_vigencia: "2010-10-19"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+  - Director-Financiero-GADM
+
+ACTOR_BENEFICIARIO:
+  - Ciudadanía-cantonal
+  - Parroquias-rurales
+
+OBLIGACION: >
+  Las transferencias que efectúa el Gobierno Central a los gobiernos autónomos
+  descentralizados podrán financiar hasta el treinta por ciento (30%) de gastos
+  permanentes, y un mínimo del setenta por ciento (70%) de gastos no permanentes
+  necesarios para el ejercicio de sus competencias exclusivas con base en la
+  planificación de cada GAD. Las transferencias provenientes del 10% de los
+  ingresos no permanentes deberán financiar egresos no permanentes exclusivamente.
+  [Reforma 2026: Art. 198.1 establece que los egresos no financieros totales
+  deben ser ≥68% en gasto de inversión para 2027, y ≥70% desde 2028].
+
+EVIDENCIA:
+  - Presupuesto-ejecutado-gasto-permanente-vs-no-permanente
+  - Cédulas-presupuestarias-por-tipo-gasto
+  - Informes-CGE-cumplimiento-regla-70-30
+  - Gold-Master-TGI-D3-ejecución-inversión
+
+CONSECUENCIA:
+  descripcion: >
+    El incumplimiento de la regla 70/30 es observable en la ejecución presupuestaria.
+    D3=59.85% de ejecución total — si la sub-ejecución se concentra en gasto no
+    permanente (inversión), el GADM podría violar tanto el Art. 198 original como
+    el Art. 198.1 de la Reforma 2026. La CGE puede detectarlo en auditoría.
+    Consecuencia: observación de auditoría + riesgo de glosa al Director Financiero.
+  tipo: glosa-cge
+  organo_sancionador:
+    - CGE
+    - Ministerio-de-Finanzas
+
+APLICABILIDAD:
+  nivel_gobierno: [GAD-Municipal, GAD-Provincial, GAD-Parroquial]
+  condicion: []
+  ambito_lac: >
+    Reglas de uso de transferencias intergubernamentales en toda LAC.
+    Colombia: SGP con usos específicos por sector (salud, educación, etc.).
+    Perú: Foncomun — libre disponibilidad pero con control de inversión mínima.
+    México: Fondo de Aportaciones — uso sectorial específico por ley.
+    La regla de inversión mínima es el mecanismo anti-burocracia estándar en LAC.
+
+DOMINIOS_QUIRA:
+  - Dom02
+  - Dom04
+
+RELACIONES:
+  - COOTAD_192
+  - COOTAD_215
+  - COOTAD_228
+  - LOC-CGE
+  - COPLAFIP
+
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: COOTAD_215
+CLASE: ACK_OBLIGACION
+TIPO: obligacion
+NOMBRE: Presupuesto Ajustado PDyOT Participativo Territorializado
+FUENTE:
+  norma: Código Orgánico de Organización Territorial, Autonomía y Descentralización
+  sigla: COOTAD
+  jerarquia: 1
+  articulo: "215"
+  inciso: ""
+  fecha_vigencia: "2010-10-19"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+  - Concejo-Municipal
+
+ACTOR_BENEFICIARIO:
+  - Ciudadanía-cantonal
+  - Parroquias-rurales
+
+OBLIGACION: >
+  El presupuesto de los gobiernos autónomos descentralizados se ajustará a los
+  planes regionales, provinciales, cantonales y parroquiales respectivos, en el
+  marco del Plan Nacional de Desarrollo, sin menoscabo de sus competencias y
+  autonomía. El presupuesto deberá ser elaborado participativamente, de acuerdo
+  con lo prescrito por la Constitución y la ley. Las inversiones presupuestarias
+  se ajustarán a los planes de desarrollo de cada circunscripción, los mismos
+  que serán TERRITORIALIZADOS para garantizar la equidad a su interior. Todo
+  programa o proyecto financiado con recursos públicos tendrá objetivos, metas
+  y plazos, al término del cual serán evaluados.
+
+EVIDENCIA:
+  - Presupuesto-con-articulación-POA-PDOT
+  - Informes-seguimiento-metas-PDOT
+  - Territorializacion-inversiones-por-parroquia
+  - LOTAIP-Numeral-10-planes-en-ejecución
+
+CONSECUENCIA:
+  descripcion: >
+    El presupuesto aprobado sin articulación al PDOT viola el Art. 215. La
+    territorialización es OBLIGATORIA — el IRS=79.7 que concentra el 79.7%
+    de la inversión en Montecristi urbana viola directamente la cláusula de
+    "territorializar para garantizar la equidad interior". La CGE puede observar
+    el presupuesto y el POA por falta de territorialización. Base jurídica más
+    directa de la alerta Dom04 por brecha rural de $1,791,935.
+  tipo: glosa-cge
+  organo_sancionador:
+    - CGE
+    - DPE
+    - CPCCS
+
+APLICABILIDAD:
+  nivel_gobierno: [GAD-Municipal, GAD-Provincial, GAD-Parroquial]
+  condicion: []
+  ambito_lac: >
+    Articulación presupuesto-planificación con territorialización en toda LAC.
+    Colombia: POT + Plan de Desarrollo Municipal articulados (Ley 388/97).
+    Perú: PDC territorializados (MEF + DNPP guías).
+    México: Plan Municipal de Desarrollo como rector del presupuesto.
+
+IMPLEMENTACION_TERRITORIAL:
+  funcion_publica: >
+    El presupuesto DEBE distribuirse con equidad territorial interna.
+    La territorialización es la operación que conecta el dinero público con
+    las parroquias que lo necesitan — sin territorialización, la planificación
+    es un documento sin consecuencia en el territorio.
+    IRS=79.7 = violación directa de este mandato de equidad interior.
+  actor_local: >
+    Alcalde (Art. 60.g elabora proforma) + Concejo Municipal (Art. 57.g aprueba).
+    Director Financiero: responsable técnico de la territorialización.
+    QNKC-001: la función (territorializar inversiones) es permanente; el actor interno es contingente.
+  instrumento: POA-territorializado + PDOT + Sistema-seguimiento-parroquial
+  evidencia:
+    - Inversión-por-parroquia-reportada
+    - IRS-calculado-y-publicado
+    - Informes-seguimiento-PDOT
+  indicador:
+    - DOM04_IRS_INDICE_REGRESIVIDAD
+    - DOM02_EJECUCION_PRESUPUESTARIA
+    - DOM09_ALINEACION_POA_PDOT
+  gap_conocido: >
+    IRS=79.7 (Montecristi Mar-2026): 79.7% de la inversión se concentra en la
+    cabecera cantonal. Brecha rural estimada: $1,791,935. Fuente: Gold Master v5.5.
+    Este valor viola simultáneamente COOTAD_215 + COOTAD_228.
+
+DOMINIOS_QUIRA:
+  - Dom02
+  - Dom04
+  - Dom09
+
+RELACIONES:
+  - COOTAD_57
+  - COOTAD_60
+  - COOTAD_228
+  - CE_241
+  - COPLAFIP
+
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false
+
+---
+ACK_ID: COOTAD_228
+CLASE: ACK_OBLIGACION
+TIPO: obligacion
+NOMBRE: Equidad Interna Territorial en la Agrupación del Gasto
+FUENTE:
+  norma: Código Orgánico de Organización Territorial, Autonomía y Descentralización
+  sigla: COOTAD
+  jerarquia: 1
+  articulo: "228"
+  inciso: ""
+  fecha_vigencia: "2010-10-19"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+  - Director-Financiero-GADM
+  - Concejo-Municipal
+
+ACTOR_BENEFICIARIO:
+  - Parroquias-rurales
+  - Ciudadanía-con-NBI-alto
+
+OBLIGACION: >
+  Los egresos del fondo general se agruparán en áreas, programas, subprogramas,
+  proyectos y actividades. En cada programa, subprograma, proyecto y actividad
+  deberán determinarse los gastos corrientes y los proyectos de inversión,
+  atendiendo a la naturaleza económica predominante de los gastos, y deberán
+  estar ORIENTADOS A GARANTIZAR LA EQUIDAD AL INTERIOR DEL TERRITORIO de
+  cada gobierno autónomo descentralizado.
+
+EVIDENCIA:
+  - Presupuesto-por-programa-con-distribución-territorial
+  - IRS-publicado-y-reportado
+  - POA-con-proyectos-territorializados
+
+CONSECUENCIA:
+  descripcion: >
+    Cada partida de gasto del POA aprobado con IRS=79.7 viola el mandato de
+    equidad interior del Art. 228. El Concejo que aprueba ese presupuesto y el
+    Alcalde que lo propone son responsables. La CGE puede observar el presupuesto
+    y emitir glosa por falta de equidad interna. El Art. 228 es la base jurídica
+    más específica para el indicador IRS de QUIRA Dom04.
+  tipo: glosa-cge
+  organo_sancionador:
+    - CGE
+    - DPE
+
+APLICABILIDAD:
+  nivel_gobierno: [GAD-Municipal, GAD-Provincial, GAD-Parroquial]
+  condicion: []
+  ambito_lac: >
+    Equidad territorial interna en la distribución del gasto municipal en toda LAC.
+    Colombia: Ley 617/2000 (distribución gasto) + criterios NBI por sectores.
+    Perú: MEF directrices territorialización POI-PIA.
+    México: CONAC criterios clasificación funcional del gasto municipal.
+
+DOMINIOS_QUIRA:
+  - Dom04
+  - Dom02
+
+RELACIONES:
+  - COOTAD_215
+  - COOTAD_3
+  - COOTAD_192
+  - CE_241
+
+META:
+  estado: v1.2
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.2
+  revisado_por_experto: false

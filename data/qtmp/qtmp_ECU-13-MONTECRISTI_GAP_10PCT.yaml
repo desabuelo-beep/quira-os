@@ -1,0 +1,876 @@
+# ============================================================
+# QUIRA — QTMP Instance v1.0
+# Materialización territorial F0.5 (Dom12) — Montecristi
+# ============================================================
+# QTMP_ID:   QTMP_GAP_10PCT_MCR
+# Cantón:    Montecristi — ECU-13-MONTECRISTI
+# Circuito:  GAP_10PCT
+# Versión:   1.0
+# Estado:    desarrollo (pendiente validación contra Gold Master)
+# Fecha:     2026-05-30
+#
+# Propósito: Materializar la obligación COOTAD_249 (10% presupuesto GAP)
+#            y todo el corpus F0.5 (CONA + LOAPAM + LOD + LOMH) en un
+#            circuito territorial verificable para Montecristi.
+#
+#            Antes: CE_35 → COOTAD_249 → Dom12 (norma sin territorio)
+#            Ahora: CE_35 → Competencia → Servicio → Proceso → Evidencia
+#                   → Control → Observabilidad → Indicador
+#                   → Resultado:Montecristi:2025
+#
+# ACKs fundantes (F0.1 + F0.3 + F0.5 — todos en corpus):
+#   CE_35       → Derechos de grupos de atención prioritaria
+#   COOTAD_249  → 10% presupuesto no salarial obligatorio para GAP
+#   CONA_12     → Principio de prioridad absoluta (NNA)
+#   CONA_207    → JCPD como mecanismo de protección local
+#   LOAPAM_84   → Atribuciones GAD para adultos mayores
+#   LOD_47      → 4% inclusión laboral — discapacidad
+#   LOD_56      → Vivienda accesible — discapacidad
+#   LOD_58      → Ordenanza de accesibilidad universal
+#   LOMH_165    → Competencias GAD + PDOT — migrantes
+#   LOMH_167    → Transversalización políticas migratorias
+#
+# Actor lateral (Entidad Adscrita):
+#   Patronato Municipal de Amparo Social GADMCM
+#   Fuente: Estatuto Orgánico 040-2025 (Entidades Adscritas)
+#
+# Vínculo Gold Master:
+#   Patronato: datos 12 meses 2025 COMPLETO en SIAP-ICPI_GOLD_MASTER_v5.5_TGI
+#   Ejecución GAP: derivable de cédula SIGEF (partidas GAP)
+#
+# Cypher — relación clave COOTAD_249 → circuito GAP:
+#   MATCH (ack:Atom {id: 'COOTAD_249'})
+#   MERGE (sp:C3ServicioPublico {id: 'SP_G10P_MCR'})
+#   MERGE (ack)-[:MATERIALIZA_VIA]->(sp)
+#   MERGE (canton:Canton {id: 'ECU-13-MONTECRISTI'})
+#   MERGE (sp)-[:ANCLADO_EN]->(canton)
+# ============================================================
+
+QTMP_ID: QTMP_GAP_10PCT_MCR
+CIRCUITO_ID: GAP_10PCT
+CANTON_ID: ECU-13-MONTECRISTI
+VERSION: "1.1"
+SCHEMA_VERSION: "1.1"
+ESTADO: parcialmente_confirmado
+
+META:
+  fecha_creacion: "2026-05-30"
+  fecha_actualizacion: "2026-05-31"
+  creado_por: QLEP-QTMP-v1.0
+  actualizado_por: QTMP-P2-Patronato-2026-05-31
+  canton_responsable: GAD Municipal Montecristi (GADMCM)
+  fuente_organica: >
+    Resolución Administrativa No. 040-2025-ALC-LJTL-GADMCM —
+    Estatuto Orgánico de Gestión Organizacional por Procesos GADMCM.
+    Patronato Municipal de Amparo Social: Entidad Adscrita del GADMCM.
+    Gold Master: SIAP-ICPI_GOLD_MASTER_v5.5_TGI (datos Patronato 2025 completos).
+  revisado_por_experto: false
+  nota_revision: >
+    P2 COMPLETADO 2026-05-31:
+    RES_G10P_04_MCR CONFIRMADO — Ti_Patronato_2025 = 50.00%
+    (Sentinel 2026-05-18, 12 cédulas eSIGEF, H07b_Ti_INVERSIÓN).
+    RES_G10P_01_MCR ACTUALIZADO 2026-05-31 — ratio COOTAD_249:
+    20.84% (codificado) / 14.19% (devengado) — AMBOS VERDE (≥10%).
+    Fuente: cédula GAD dic-2025 (anual completa) + cédula Patronato nov-2025
+    (11 meses; Ti_nov=50.03% converge con Ti_anual=50.00% → dic marginal).
+    PENDIENTES: (a) cédula Patronato dic-2025 para confirmar RES_G10P_01,
+    (b) registro beneficiarios por grupo prioritario (Patronato RDC),
+    (c) metas PDOT Dom12 vigentes validadas.
+
+  # HALLAZGO CAUSAL PRINCIPAL — P2 Patronato 2026-05-31
+  hallazgo_causal: >
+    CADENA CONFIRMADA: COOTAD_249 → Asignación GAP ≥ 10% (cumplida en codificado,
+    H01 param=$2,668,914.70 = "10% del GAD central") → PERO Ti_Patronato = 50%
+    en 2025 → solo el 50% del presupuesto GAP se ejecuta → brecha territorial Dom12
+    persiste. El riesgo de incumplimiento NO está en la ASIGNACIÓN sino en la
+    EJECUCIÓN. COOTAD_249 se cumple formalmente pero no en impacto territorial.
+    Serie histórica Ti_Patronato: 2023=35.03% → 2024=53.77% → 2025=50.00%
+    Tendencia: mejora lenta, pero persistentemente en zona ROJO (< 70%).
+
+  gold_master_datos_confirmados:
+    fuente_sistema: SIAP-ICPI_GOLD_MASTER_v5.5_TGI
+    hoja_principal: H07b_Ti_INVERSIÓN_eSIGEF (fila 18)
+    sentinel_timestamp: "2026-05-18"
+    cedulas_ingresadas: "12/12 meses 2025 (inc. 3 PDF via pdfplumber)"
+    Ti_Patronato_2025: 0.50
+    Ti_Patronato_2024: 0.5377
+    Ti_Patronato_2023: 0.3503
+    Codificado_Patronato_G78_2024: 1994567.57
+    Devengado_Patronato_G78_2024: 1072502.87
+    Presupuesto_Patronato_H01_param: 2668914.70
+    H01_param_descripcion: "Art.249 COOTAD — 10% del GAD central (piso mínimo legal)"
+    Patronato_Q1_2026_Codificado: 4341242.62
+    Patronato_Q1_2026_Devengado: 849061.75
+    Patronato_Q1_2026_Ti: 0.1956
+
+# ============================================================
+# C3 — SERVICIO PÚBLICO
+# ============================================================
+
+SERVICIO_PUBLICO:
+  id: SP_G10P_MCR
+  nombre: Atención Integral a Grupos de Atención Prioritaria — Montecristi
+  descripcion: >
+    Prestación de servicios sociales, programas de protección, inclusión y
+    desarrollo para grupos de atención prioritaria del cantón Montecristi:
+    adultos mayores, personas con discapacidad, niñez y adolescencia (NNA),
+    personas en situación de movilidad humana, y otros grupos vulnerables.
+    La obligación normativa es dual: (a) asignación presupuestaria mínima del
+    10% del presupuesto no salarial (COOTAD_249), y (b) prestación efectiva
+    de programas con resultados medibles en territorio (CE_35, F0.5 corpus).
+  dominio_tgi: Dom12
+  tgi_dimension: D12_SOCIAL
+  competencia_fuente: COOTAD_249
+  competencias_concurrentes:
+    - CE_35
+    - CONA_12
+    - CONA_207
+    - LOAPAM_84
+    - LOD_47
+    - LOD_56
+    - LOD_58
+    - LOMH_165
+    - LOMH_167
+  modalidad: entidad_adscrita
+  nota_modalidad: >
+    El GADMCM ejecuta los programas GAP principalmente a través del
+    Patronato Municipal de Amparo Social (Entidad Adscrita — Estatuto 040-2025).
+    Adicionalmente, la Junta Cantonal de Protección de Derechos (JCPD) opera
+    como mecanismo de protección NNA (CONA_207). El 10% COOTAD_249 puede incluir
+    también inversiones directas del GAD en accesibilidad e inclusión.
+  grupos_prioritarios:
+    - adultos_mayores
+    - personas_con_discapacidad
+    - nna_ninos_adolescentes
+    - movilidad_humana
+    - otros_vulnerables
+  cobertura_actual_pct: null
+  meta_cobertura_pdot: null
+  nota_cobertura: >
+    Valores pendientes validación contra Gold Master y datos INEC 2022.
+    Montecristi: provincia Manabí — zona costera con alta diversidad
+    de grupos prioritarios incluyendo migrantes y retornados.
+
+# ============================================================
+# IMPLEMENTACION_LOCAL — ACTOR LATERAL (QNKC-002)
+# ============================================================
+
+IMPLEMENTACION_LOCAL:
+  actor_local: >
+    pendiente — Directora/Director Ejecutiva/o del Patronato Municipal
+    de Amparo Social GADMCM + Presidencia del Patronato (designación
+    institucional a verificar en Estatuto 040-2025)
+  institucion_local: >
+    Patronato Municipal de Amparo Social — GAD Municipal Montecristi
+    (Entidad Adscrita GADMCM, Estatuto Orgánico 040-2025)
+  autoridad_maxima: >
+    Ing. Luis Jonathan Toro Largacha — Alcalde del cantón Montecristi
+    (máxima autoridad nominadora y responsable del cumplimiento COOTAD_249)
+  actor_secundario: >
+    Junta Cantonal de Protección de Derechos (JCPD) — Organismo Autónomo
+    (CONA_207): ejerce protección de derechos NNA en el cantón
+  fuente_organica: Resolución Administrativa No. 040-2025-ALC-LJTL-GADMCM
+  validado: false
+  nota_actor: >
+    La responsabilidad fiscal del 10% COOTAD_249 recae en la Dirección
+    Financiera del GADMCM (programación y ejecución presupuestaria).
+    La ejecución de programas sociales recae en el Patronato.
+    El control y seguimiento de cumplimiento: Dirección de Planificación Estratégica.
+    La rendición de cuentas: Alcalde ante ciudadanía y CPCCS.
+
+# ============================================================
+# C4 — PROCESOS
+# ============================================================
+
+PROCESOS:
+
+  - id: PRO_G10P_01_MCR
+    nombre: Programación Presupuestaria 10% GAP
+    tipo_proceso: administrativo
+    descripcion: >
+      Identificación y separación de la partida presupuestaria obligatoria
+      del 10% del presupuesto no salarial del GADMCM para programas GAP
+      (COOTAD_249). Proceso anual de formulación presupuestaria que garantiza
+      que la asignación cumpla el mínimo legal. Base para todo el circuito GAP.
+      Actores: Dirección Financiera + Dirección Planificación Estratégica.
+    actor_ref: Director/a Financiero GADMCM + Director/a Planificación Estratégica
+    estado: activo
+    anio_poa: "2026"
+    partida_presupuestaria: pendiente
+    nota: >
+      Esta es la condición sine qua non del circuito. Si la partida no se
+      programa correctamente (< 10% del no-salarial), todo lo demás falla.
+      El dato real está en SIGEF y en el Gold Master GADMCM.
+
+  - id: PRO_G10P_02_MCR
+    nombre: Programas para Adultos Mayores
+    tipo_proceso: operativo
+    descripcion: >
+      Ejecución de servicios y programas para personas adultas mayores del cantón
+      conforme LOAPAM: centros de día, alimentación, actividades de desarrollo,
+      atención domiciliaria. El Patronato Municipal es el ejecutor principal.
+      Mandato: LOAPAM_84 (atribuciones GAD adultos mayores).
+    actor_ref: Directora/Director Ejecutiva/o Patronato Municipal GADMCM
+    estado: activo
+    anio_poa: "2026"
+    partida_presupuestaria: pendiente
+    poblacion_objetivo: adultos_mayores_canton_montecristi
+
+  - id: PRO_G10P_03_MCR
+    nombre: Programas para Personas con Discapacidad
+    tipo_proceso: operativo
+    descripcion: >
+      Ejecución de programas de inclusión, atención y equiparación de
+      oportunidades para personas con discapacidad del cantón. Incluye:
+      accesibilidad universal (LOD_58 ordenanza), inclusión laboral 4% en
+      GADMCM (LOD_47), atención directa del Patronato, y programas de vivienda
+      accesible (LOD_56). Coordinación con MIES y CONADIS.
+    actor_ref: Directora/Director Ejecutiva/o Patronato Municipal GADMCM
+    estado: activo
+    anio_poa: "2026"
+    partida_presupuestaria: pendiente
+    poblacion_objetivo: personas_con_discapacidad_canton_montecristi
+
+  - id: PRO_G10P_04_MCR
+    nombre: Protección de Niñez y Adolescencia (NNA)
+    tipo_proceso: operativo
+    descripcion: >
+      Ejecución de programas de protección, desarrollo y restitución de derechos
+      para niñas, niños y adolescentes del cantón. JCPD (CONA_207) como mecanismo
+      de protección institucional. Principio de prioridad absoluta (CONA_12).
+      Patronato como ejecutor de programas de desarrollo infantil y apoyo familiar.
+    actor_ref: Junta Cantonal de Protección de Derechos (JCPD) + Patronato GADMCM
+    estado: activo
+    anio_poa: "2026"
+    partida_presupuestaria: pendiente
+    poblacion_objetivo: nna_canton_montecristi
+
+  - id: PRO_G10P_05_MCR
+    nombre: Atención a Personas en Movilidad Humana
+    tipo_proceso: operativo
+    descripcion: >
+      Implementación de políticas y programas para personas en situación de
+      movilidad humana (migrantes, refugiados, retornados) en el cantón.
+      PDOT debe integrar este eje (LOMH_165). Programas transversalizados
+      en la gestión municipal (LOMH_167). Zona Manabí: alta relevancia por
+      migración interna y retorno post-crisis (terremoto 2016 secuelas).
+    actor_ref: Patronato GADMCM / Dirección de Planificación Estratégica
+    estado: activo
+    anio_poa: "2026"
+    partida_presupuestaria: pendiente
+    poblacion_objetivo: personas_movilidad_humana_canton_montecristi
+
+  - id: PRO_G10P_06_MCR
+    nombre: Seguimiento y Rendición de Cuentas GAP
+    tipo_proceso: control_interno
+    descripcion: >
+      Monitoreo trimestral del cumplimiento del 10% GAP: ejecución presupuestaria,
+      número de beneficiarios, metas PDOT Dom12. Elaboración del informe anual
+      de gestión GAP para la rendición de cuentas del Alcalde (COOTAD_302).
+      Articulación con el informe ICPI y el TGI Dom12 de QUIRA.
+    actor_ref: Dirección de Planificación Estratégica GADMCM
+    estado: activo
+    anio_poa: "2026"
+    partida_presupuestaria: pendiente
+
+# ============================================================
+# C5 — EVIDENCIAS
+# ============================================================
+
+EVIDENCIAS:
+
+  - id: EVD_G10P_01_MCR
+    tipo: documento_presupuestario
+    descripcion: >
+      Cédula presupuestaria GADMCM — partidas asignadas a programas GAP.
+      Evidencia principal del cumplimiento COOTAD_249: asignación mínima
+      del 10% del presupuesto no salarial. Dato en SIGEF, validable contra
+      el Gold Master SIAP-ICPI_GOLD_MASTER_v5.5_TGI.
+    proceso_ref: PRO_G10P_01_MCR
+    obligatoria: true
+    fuente_sistema: SIGEF + Gold Master GADMCM
+    vinculo_ack: COOTAD_249
+    url: "https://www.finanzas.gob.ec/sigef"
+    estado_documento: verificar
+    nota: >
+      Gold Master tiene datos Patronato 2025 completos (12 meses).
+      Cruzar partidas GAP en SIGEF vs. presupuesto total no salarial.
+
+  - id: EVD_G10P_02_MCR
+    tipo: registro_administrativo
+    descripcion: >
+      Registro de beneficiarios atendidos por el Patronato Municipal —
+      desagregado por programa y grupo prioritario: adultos mayores,
+      discapacidad, NNA, movilidad humana. Base para medir cobertura real
+      vs. población objetivo del cantón.
+    proceso_ref: PRO_G10P_02_MCR
+    obligatoria: true
+    fuente_sistema: Patronato Municipal GADMCM / MIES (registro SIDECU)
+    vinculo_ack: CE_35
+    url: pendiente
+    estado_documento: pendiente_validacion
+
+  - id: EVD_G10P_03_MCR
+    tipo: registro_administrativo
+    descripcion: >
+      Planilla de nómina GADMCM — verificación de cumplimiento 4% inclusión
+      laboral personas con discapacidad (LOD_47). Al menos 4 de cada 100
+      servidores municipales deben tener discapacidad calificada por CONADIS.
+    proceso_ref: PRO_G10P_03_MCR
+    obligatoria: true
+    fuente_sistema: SIGEF / Dirección Talento Humano GADMCM
+    vinculo_ack: LOD_47
+    url: pendiente
+    estado_documento: pendiente_validacion
+
+  - id: EVD_G10P_04_MCR
+    tipo: acta_institucional
+    descripcion: >
+      Actas de la JCPD (Junta Cantonal de Protección de Derechos) —
+      medidas de protección dictadas, casos atendidos, resoluciones.
+      Evidencia del funcionamiento real del mecanismo CONA_207 en el cantón.
+    proceso_ref: PRO_G10P_04_MCR
+    obligatoria: true
+    fuente_sistema: JCPD Montecristi / MIES
+    vinculo_ack: CONA_207
+    url: pendiente
+    estado_documento: pendiente_validacion
+
+  - id: EVD_G10P_05_MCR
+    tipo: publicacion_transparencia
+    descripcion: >
+      Portal LOTAIP GADMCM — publicación de programas sociales del Patronato:
+      tipo de servicios, número de beneficiarios, presupuesto ejecutado.
+      Obligación LOTAIP Art. 19 para información sobre servicios a GAP.
+    proceso_ref: PRO_G10P_06_MCR
+    obligatoria: true
+    fuente_sistema: Portal LOTAIP GADMCM
+    vinculo_ack: LOTAIP_19_6
+    url: "https://www.montecristi.gob.ec/lotaip"
+    estado_documento: verificar
+
+  - id: EVD_G10P_06_MCR
+    tipo: informe_tecnico
+    descripcion: >
+      Informe de gestión anual del Patronato Municipal — presentado ante
+      el Concejo Municipal y publicado para rendición de cuentas.
+      Debe incluir: programas ejecutados, beneficiarios, presupuesto,
+      metas alcanzadas vs. planificadas en POA del Patronato.
+    proceso_ref: PRO_G10P_06_MCR
+    obligatoria: true
+    fuente_sistema: Patronato Municipal GADMCM / Concejo Municipal
+    vinculo_ack: COOTAD_302
+    url: pendiente
+    estado_documento: pendiente_validacion
+
+  - id: EVD_G10P_07_MCR
+    tipo: documento_presupuestario
+    descripcion: >
+      POA del Patronato Municipal 2026 — Plan Operativo Anual con programas,
+      metas, indicadores y presupuesto del Patronato. Evidencia de que los
+      programas GAP están planificados con coherencia vs. el PDOT Dom12.
+    proceso_ref: PRO_G10P_01_MCR
+    obligatoria: false
+    fuente_sistema: Patronato Municipal GADMCM
+    vinculo_ack: COOTAD_249
+    url: pendiente
+    estado_documento: pendiente_validacion
+
+# ============================================================
+# C6 — CONTROLES
+# ============================================================
+
+CONTROLES:
+
+  - id: CTL_G10P_01_MCR
+    nombre: CGE — Auditoría Cumplimiento COOTAD_249
+    tipo_control: financiero
+    fuente: LOC-CGE + COOTAD_249
+    organo_control: Contraloría General del Estado (CGE)
+    descripcion: >
+      Verificación en auditorías del cumplimiento de la asignación mínima
+      del 10% para GAP. La CGE puede glosar al GADMCM si no se demuestra
+      que la partida GAP alcanzó el mínimo legal o si los recursos fueron
+      desviados a otros fines. Glosa activa = responsabilidad civil Alcalde.
+    vinculo_ack: LOC-CGE_21
+    estado_control: activo
+
+  - id: CTL_G10P_02_MCR
+    nombre: MIES — Control Programas Sociales Vinculados
+    tipo_control: regulatorio
+    fuente: Ley de Economía Popular y Solidaria / normativa MIES
+    organo_control: Ministerio de Inclusión Económica y Social (MIES)
+    descripcion: >
+      Regulación y control de los servicios de atención social que operan
+      en el cantón, incluyendo los del Patronato en articulación con el MIES.
+      Control de registros de beneficiarios, calidad de programas, y
+      cumplimiento de estándares mínimos de atención.
+    estado_control: activo
+
+  - id: CTL_G10P_03_MCR
+    nombre: DPE — Defensoría del Pueblo (Grupos Prioritarios)
+    tipo_control: defensa_derechos
+    fuente: LOD + CONA + LOAPAM + CE_35
+    organo_control: Defensoría del Pueblo del Ecuador (DPE)
+    descripcion: >
+      Protección de derechos de grupos prioritarios ante omisiones o
+      vulneraciones por parte del GADMCM. Puede emitir resoluciones
+      de incumplimiento si el GAD no garantiza servicios a GAP.
+      Canal de quejas ciudadanas por falta de atención a grupos prioritarios.
+    estado_control: activo
+
+  - id: CTL_G10P_04_MCR
+    nombre: CPCCS — Control Social y Rendición de Cuentas
+    tipo_control: ciudadano
+    fuente: COOTAD_302 / LOPC
+    organo_control: CPCCS + Veedurías Ciudadanas
+    descripcion: >
+      Control ciudadano sobre los programas GAP del GADMCM: veedurías
+      a programas del Patronato, observaciones en la rendición de cuentas
+      anual, y verificación de que el proceso participativo Dom08 se
+      traduzca en programas GAP reales (circuito H8: Dom08↔Dom12).
+    vinculo_ack: COOTAD_302
+    estado_control: activo
+
+  - id: CTL_G10P_05_MCR
+    nombre: Concejo de Derechos Cantonal / JCPD
+    tipo_control: institucional_local
+    fuente: CONA_207 / normativa CPCCS
+    organo_control: Concejo Cantonal de los Derechos + Junta Cantonal de Protección
+    descripcion: >
+      Organismos de protección y exigibilidad de derechos de grupos prioritarios
+      a nivel local. El Concejo Cantonal de Derechos es el espacio de articulación
+      de políticas. La JCPD (CONA_207) dicta medidas de protección NNA.
+      Ambos están formalizados en el Estatuto Orgánico 040-2025 del GADMCM.
+    vinculo_ack: CONA_207
+    estado_control: activo
+
+# ============================================================
+# C7 — OBSERVABILIDAD
+# ============================================================
+
+OBSERVABILIDAD:
+
+  - id: OBS_G10P_01_MCR
+    fuente_ack: COOTAD_249
+    tipo_publicacion: sistema_financiero
+    descripcion: >
+      SIGEF — ejecución presupuestaria partidas GAP. El porcentaje de ejecución
+      del 10% COOTAD_249 es directamente observable en la cédula presupuestaria
+      GADMCM. Devengado GAP / Total no salarial codificado. Dato en Gold Master.
+    url_portal: "https://www.finanzas.gob.ec/sigef"
+    frecuencia_real: mensual
+    nota: Gold Master SIAP-ICPI tiene datos Patronato 2025 completos.
+
+  - id: OBS_G10P_02_MCR
+    fuente_ack: LOTAIP_19_6
+    tipo_publicacion: portal_transparencia
+    descripcion: >
+      Portal LOTAIP GADMCM — publicación de programas sociales: información
+      del Patronato, servicios ofrecidos, número de beneficiarios, contratos
+      de servicios sociales. Observable en línea y verificable trimestralmente.
+    url_portal: "https://www.montecristi.gob.ec/lotaip"
+    frecuencia_real: trimestral
+
+  - id: OBS_G10P_03_MCR
+    fuente_ack: COOTAD_302
+    tipo_publicacion: rendicion_cuentas
+    descripcion: >
+      Rendición de cuentas anual del Alcalde — sección Dom12: avance en
+      programas de atención a grupos prioritarios vs. metas PDOT. Observable
+      en el informe público anual y en el CPCCS. Circuito H8 densificado:
+      si la rendición de cuentas incluye datos GAP verificables.
+    url_portal: "https://www.cpccs.gob.ec"
+    frecuencia_real: anual
+
+  - id: OBS_G10P_04_MCR
+    fuente_ack: LOD_47
+    tipo_publicacion: sistema_financiero
+    descripcion: >
+      Nómina institucional GADMCM (SIGEF) — verificación del 4% de
+      inclusión laboral de personas con discapacidad. Observable cruzando
+      nómina GADMCM con el registro de servidores con discapacidad calificada
+      por CONADIS. Obligación LOSEP_4 + LOD_47 combinadas.
+    url_portal: "https://www.finanzas.gob.ec/sigef"
+    frecuencia_real: anual
+
+# ============================================================
+# C8 — INDICADORES
+# ============================================================
+
+INDICADORES:
+
+  - id: IND_G10P_01_MCR
+    nombre: Cumplimiento Asignación 10% Presupuesto GAP
+    dominio_tgi: Dom12
+    tgi_dimension: D12_SOCIAL
+    formula: >
+      (partida_GAP_codificada / presupuesto_GAD_no_salarial_codificado) × 100
+      — VERSIÓN CODIFICADO: verifica compliance formal de asignación.
+      — VERSIÓN DEVENGADO: (GAP_devengado / GAD_no_salarial_devengado) × 100
+        → muestra si la EJECUCIÓN real también cumple el 10%.
+      Nota: la norma dice "asignar partida" → compliance formal = codificado.
+      QUIRA muestra AMBAS versiones: asignado vs. ejecutado.
+    fuente_dato: >
+      H01_PARÁMETROS Gold Master (Presupuesto_Patronato = piso 10%) /
+      SIGEF cédula anual GAD 2025 (denominador: total no-salarial)
+    frecuencia: anual
+    unidad: porcentaje
+    valor_linea_base: null
+    meta_anual: ">= 10"
+    umbral_verde: ">= 10"
+    umbral_amarillo: ">= 7 y < 10"
+    umbral_rojo: "< 7"
+    nota_umbral: >
+      El 10% es el mínimo legal (COOTAD_249). ROJO = incumplimiento normativo
+      = glosa CGE potencial. VERDE = cumple mínimo.
+      HALLAZGO 2026-05-31: el Gold Master parameteriza el piso en $2,668,914.70
+      ("10% del GAD central"). Evidencia sugiere que la asignación (codificado)
+      cumple el piso — el problema es la EJECUCIÓN (Ti=50%).
+      Esto significa: el GAD cumple FORMALMENTE con COOTAD_249 pero el Patronato
+      no ejecuta la inversión → la norma se cumple en papel, no en territorio.
+    estado_dato: pendiente_validacion
+    fuente_requerida: SIGEF_CEDULA_GAD_2025_TODOS_GRUPOS
+    naturaleza_valor: calculado
+
+  - id: IND_G10P_02_MCR
+    nombre: Cobertura Adultos Mayores Atendidos
+    dominio_tgi: Dom12
+    tgi_dimension: D12_SOCIAL
+    formula: >
+      (adultos_mayores_atendidos_patronato / poblacion_adultos_mayores_canton) * 100
+    fuente_dato: >
+      Registro beneficiarios Patronato GADMCM / INEC 2022 proyección cantonal
+    frecuencia: semestral
+    unidad: porcentaje
+    valor_linea_base: null
+    meta_anual: null
+    umbral_verde: ">= 30"
+    umbral_amarillo: ">= 15 y < 30"
+    umbral_rojo: "< 15"
+    nota_umbral: >
+      Umbrales referenciales — la norma no establece % mínimo de cobertura.
+      Calibrar contra promedio nacional de cobertura Patronatos (MIES datos).
+      Montecristi tiene adultos mayores en zona urbana y rural dispersa.
+    estado_dato: pendiente_validacion
+
+  - id: IND_G10P_03_MCR
+    nombre: Inclusión Laboral Discapacidad GADMCM (4%)
+    dominio_tgi: Dom12
+    tgi_dimension: D12_SOCIAL
+    formula: >
+      (servidores_con_discapacidad_nomina / total_servidores_nomina) * 100
+    fuente_dato: >
+      Nómina GADMCM (SIGEF) + registros CONADIS / Dirección Talento Humano
+    frecuencia: anual
+    unidad: porcentaje
+    valor_linea_base: null
+    meta_anual: ">= 4"
+    umbral_verde: ">= 4"
+    umbral_amarillo: ">= 2 y < 4"
+    umbral_rojo: "< 2"
+    nota_umbral: >
+      4% es el mínimo legal obligatorio (LOD_47). Incumplimiento activa
+      responsabilidad del Alcalde como nominador y del Director de Talento Humano.
+      Cruzar: nómina SIGEF × registro CONADIS carnet de discapacidad.
+    estado_dato: pendiente_validacion
+
+  - id: IND_G10P_04_MCR
+    nombre: Ejecución Presupuestaria Patronato Municipal
+    dominio_tgi: Dom12
+    tgi_dimension: D12_SOCIAL
+    formula: >
+      Ti_Patronato = (Devengado_G7+G8_Patronato / Codificado_G7+G8_Patronato) × 100
+      [Grupos 7 (inversión) + 8 (capital) — clasificador eSIGEF]
+    fuente_dato: >
+      Gold Master SIAP-ICPI_GOLD_MASTER_v5.5_TGI — H07b_Ti_INVERSIÓN_eSIGEF
+      (Patronato 2025: 12 cédulas eSIGEF, Sentinel 2026-05-18)
+    frecuencia: mensual
+    unidad: porcentaje
+    valor_linea_base: 35.03
+    # valor_linea_base = Ti_Patronato_2023 (REAL-VERIFICADO, H36b ARRASTRE-009)
+    serie_historica_confirmada:
+      Ti_2023: 35.03   # ARRASTRE-009 · Cod=$1,508,072.98 · Dev=$528,268.01
+      Ti_2024: 53.77   # ARRASTRE-003 · Cod=$1,994,567.57 · Dev=$1,072,502.87
+      Ti_2025: 50.00   # H07b Sentinel · 12 cédulas completas
+      fuente_serie: H36b_LOOKUP_ARRASTRE + H07b_Ti_INVERSIÓN (INMUTABLES)
+    meta_anual: ">= 85"
+    umbral_verde: ">= 85"
+    umbral_amarillo: ">= 70 y < 85"
+    umbral_rojo: "< 70"
+    nota_umbral: >
+      2025: Ti = 50.00% → ROJO persistente (año 3 consecutivo en zona roja).
+      Tendencia: mejora de 2023→2024 (+18.74pp) pero retroceso leve 2024→2025 (-3.77pp).
+      Ti_GAD_2025 = 59.85% (D3 TGI) — el Patronato ejecuta MENOS que el GAD central
+      en inversión. Para Dom12: si el Patronato no ejecuta su inversión, el impacto
+      en adultos mayores, discapacidad y NNA se diluye aunque el 10% esté asignado.
+    estado_dato: confirmado
+    naturaleza_valor: calculado
+    nota_confirmacion: >
+      CONFIRMADO P2 — 2026-05-31. Sentinel Supabase 2026-05-18.
+      12 cédulas eSIGEF Patronato 2025 ingresadas (H36b nota: "inc. 3 PDF via pdfplumber").
+      Fuente primaria: H07b_Ti_INVERSIÓN_eSIGEF fila 18 col. ENTE-02.
+      Serie 2023-2025 verificada y CONGELADA en Gold Master (H36b = INMUTABLE).
+
+  - id: IND_G10P_05_MCR
+    nombre: Programas NNA con JCPD Operativa
+    dominio_tgi: Dom12
+    tgi_dimension: D12_SOCIAL
+    formula: >
+      binario: JCPD_operativa_y_con_casos_resueltos = [1=SI / 0=NO]
+      + medidas_proteccion_dictadas_anio (número absoluto)
+    fuente_dato: >
+      Actas JCPD Montecristi / MIES / Informe gestión Patronato
+    frecuencia: anual
+    unidad: binario_y_conteo
+    valor_linea_base: null
+    meta_anual: "JCPD = operativa (1)"
+    umbral_verde: "JCPD operativa Y medidas > 0"
+    umbral_amarillo: "JCPD operativa Y medidas = 0"
+    umbral_rojo: "JCPD no operativa"
+    nota_umbral: >
+      La mera existencia de la JCPD no prueba protección efectiva.
+      La JCPD debe dictar medidas reales. Si JCPD existe pero no opera
+      (cero medidas), es AMARILLO — estructura sin funcionamiento.
+      Si no existe o no funciona formalmente: ROJO.
+    estado_dato: pendiente_validacion
+
+# ============================================================
+# C9 — RESULTADOS TERRITORIALES
+# ============================================================
+
+RESULTADOS:
+
+  - id: RES_G10P_01_MCR
+    nivel_territorial: canton
+    territorio: Montecristi
+    canton_id: ECU-13-MONTECRISTI
+    indicador_ref: IND_G10P_01_MCR
+    valor: 20.84
+    # 20.84% = ratio codificado COOTAD_249
+    # Patronato Cod (nov-2025) / GAD no-salarial Cod (dic-2025 anual) × 100
+    # = $4,098,832.39 / $19,665,790.12 × 100 = 20.84%
+    valor_devengado_pct: 14.19
+    # 14.19% = ratio devengado COOTAD_249
+    # Patronato Dev (nov-2025) / GAD no-salarial Dev (dic-2025 anual) × 100
+    # = $2,050,552.30 / $14,449,700.32 × 100 = 14.19%
+    periodo: "2025"
+    fuente_verificacion: >
+      SIGEF cédulas reales 2025: (1) GAD Montecristi dic-2025 anual acumulado
+      (todos los grupos presupuestarios, fuente primaria SIGEF).
+      (2) Patronato Municipal nov-2025 (11 meses acumulados).
+      Ti_nov_Patronato=50.03% converge con Ti_anual Gold Master=50.00%
+      → dic-2025 Patronato marginal, ratio anual ≈ ratio nov.
+      Gold Master SIAP-ICPI_GOLD_MASTER_v5.5_TGI — H01_PARÁMETROS
+      confirma: Presupuesto_Patronato H01_piso=$2,668,914.70 (10% GAD central).
+    estado_dato: pendiente_validacion
+    # pendiente_validacion: cédula Patronato dic-2025 convertiría en confirmado.
+    # Hipótesis: diciembre agrega < 1% al ratio dado Ti_nov=50.03%≈Ti_anual=50%.
+    fuente_requerida: CEDULA_PATRONATO_DIC_2025_SIGEF
+    naturaleza_valor: calculado
+    semaforo: "🟢 VERDE"
+    # Ratio 20.84% (cod) y 14.19% (dev) — ambos superiores al mínimo legal 10%
+    interpretacion: >
+      El GAD Montecristi cumple FORMALMENTE con COOTAD_249 (asignación ≥ 10%):
+      asignó el 20.84% del presupuesto no-salarial al Patronato (2.08× el mínimo legal).
+      Sin embargo, la ejecución (devengado) es 14.19% — también sobre el piso legal.
+      EL PROBLEMA NO ES LA ASIGNACIÓN: el GAD asigna correctamente y en exceso.
+      EL PROBLEMA ES LA EJECUCIÓN INTERNA DEL PATRONATO: Ti=50% significa que el
+      Patronato solo gastó la mitad de lo que le asignaron. El incumplimiento de
+      COOTAD_249 no es de forma (asignación formal) sino de fondo (impacto territorial).
+      Los $2,048,280 no ejecutados ($4,098,832 × 50%) se convierten en G97 rezagado
+      o se devuelven al GAD — en cualquier caso no llegan a grupos prioritarios.
+    datos_cedula:
+      # Fuente: cédula SIGEF real — datos directos, no Gold Master
+      GAD_Montecristi_dic2025_anual:
+        Total_Cod: 31496667.83
+        Total_Dev: 24024123.57
+        G51_personal_corriente_Cod: 4413818.26
+        G71_personal_inversion_Cod: 7417059.45
+        Personal_total_G51_G71_Cod: 11830877.71
+        Personal_total_G51_G71_Dev: 9574423.25
+        No_salarial_Cod: 19665790.12
+        No_salarial_Dev: 14449700.32
+        Ti_total: 76.28
+      Patronato_nov2025_11meses:
+        Total_Cod: 4098832.39
+        Total_Dev: 2050552.30
+        Ti_11meses: 50.03
+        # Ti_nov=50.03% ≈ Ti_anual_Gold_Master=50.00% — convergencia confirma dict es marginal
+      ratio_COOTAD249:
+        Cod: 20.84   # Patronato_Cod / GAD_no_salarial_Cod × 100
+        Dev: 14.19   # Patronato_Dev / GAD_no_salarial_Dev × 100
+        Legal_piso: 10.0
+        Cumple_piso_cod: true
+        Cumple_piso_dev: true
+
+  - id: RES_G10P_02_MCR
+    nivel_territorial: canton
+    territorio: Montecristi
+    canton_id: ECU-13-MONTECRISTI
+    indicador_ref: IND_G10P_02_MCR
+    valor: null
+    periodo: "2025"
+    fuente_verificacion: Registro beneficiarios Patronato / INEC 2022
+    estado_dato: pendiente_validacion
+    nota: >
+      Requiere datos del Patronato (registro beneficiarios) y
+      dato poblacional de adultos mayores en Montecristi (INEC 2022).
+
+  - id: RES_G10P_03_MCR
+    nivel_territorial: canton
+    territorio: Montecristi
+    canton_id: ECU-13-MONTECRISTI
+    indicador_ref: IND_G10P_03_MCR
+    valor: null
+    periodo: "2025"
+    fuente_verificacion: Nómina GADMCM SIGEF + registro CONADIS
+    estado_dato: pendiente_validacion
+    nota: >
+      Cruzar nómina GADMCM (Gold Master tiene datos nómina 2025)
+      contra registro de personas con discapacidad certificada CONADIS.
+      Calcular: (servidores con carnet discapacidad) / (total servidores) × 100.
+
+  - id: RES_G10P_04_MCR
+    nivel_territorial: canton
+    territorio: Montecristi
+    canton_id: ECU-13-MONTECRISTI
+    indicador_ref: IND_G10P_04_MCR
+    valor: 50.0
+    # 50.00% = Ti_Patronato_2025 (G7+G8 grupos de inversión)
+    # Devengado_G7+8 / Codificado_G7+8 × 100 — cédulas eSIGEF 12 meses
+    periodo: "2025"
+    fuente_verificacion: >
+      Gold Master SIAP-ICPI_GOLD_MASTER_v5.5_TGI — H07b_Ti_INVERSIÓN_eSIGEF fila 18
+      col. ENTE-02 (Patronato). Sentinel Supabase 2026-05-18. 12 cédulas 2025 completas
+      (inc. 3 PDF via pdfplumber). Dato INMUTABLE en Gold Master.
+    estado_dato: confirmado
+    naturaleza_valor: calculado
+    semaforo: "🔴 ROJO"
+    # Ti = 50% < umbral ROJO de < 70%
+    interpretacion: >
+      El Patronato ejecutó solo el 50% de su presupuesto de inversión en 2025.
+      Serie 2023→2024→2025: 35%→54%→50% — mejora insuficiente, persistentemente
+      en zona roja. Implica que aun si el GAD asigna formalmente el 10% COOTAD_249,
+      el 50% de ese 10% nunca llega a los grupos prioritarios como gasto real.
+    comparador_historico:
+      Ti_2023: 35.03
+      Ti_2024: 53.77
+      Ti_2025: 50.0
+      delta_2324: "+18.74pp"
+      delta_2425: "-3.77pp"
+      tendencia: "mejora lenta con retroceso leve en 2025"
+
+  - id: RES_G10P_05_MCR
+    nivel_territorial: canton
+    territorio: Montecristi
+    canton_id: ECU-13-MONTECRISTI
+    indicador_ref: IND_G10P_05_MCR
+    valor: null
+    periodo: "2025"
+    fuente_verificacion: Actas JCPD Montecristi / MIES
+    estado_dato: pendiente_validacion
+    nota: >
+      Verificar si la JCPD de Montecristi está operativa y tiene actas
+      de medidas de protección dictadas en 2025. El Estatuto 040-2025
+      formaliza la JCPD como organismo del GADMCM.
+
+# ============================================================
+# CAUSALIDAD TERRITORIAL — CIRCUITO H8 ACTIVADO
+# ============================================================
+# Este QTMP activa el circuito horizontal H8: Dom08↔Dom12
+# (Participación protege grupos prioritarios — REL-H2)
+#
+# Cadena predictiva ahora trazable:
+#
+#   Dom05 (talento humano) → débil estructura institucional
+#     ↓ LOSEP4_COMPLEMENTA_COOTAD198
+#   Dom02 (presupuesto) → ejecución baja (D3=59.85%)
+#     ↓ COOTAD215 (ejecución) vs COOTAD249 (10% GAP)
+#   Dom12 (GAP) → partida no ejecutada → brecha de cobertura
+#     ↓ IND_G10P_01_MCR < 10% → ROJO → glosa CGE potencial
+#   Dom08 (participación) → proceso participativo no refleja GAP
+#     ↓ COOTAD304_COMPLEMENTA_LOSNCP21
+#   Dom03 (contratación) → PAC sin proyectos GAP
+#     ↓ resultado territorial
+#   C9: RES_G10P_01-05_MCR → Montecristi 2025
+#
+# La hipótesis causal del colega:
+#   "Dom05 débil → Control previo deficiente → Ejecución baja → Brecha GAP elevada"
+# es ahora VERIFICABLE con datos del Gold Master + SIGEF.
+#
+# Preguntas causales respondibles:
+#   1. ¿Montecristi asigna el 10% legal a GAP?
+#      → IND_G10P_01_MCR vs. COOTAD_249 (umbral: 10%)
+#   2. ¿El Patronato ejecuta lo que le asignan?
+#      → IND_G10P_04_MCR (Gold Master dato disponible)
+#   3. ¿El GADMCM incluye 4% servidores con discapacidad?
+#      → IND_G10P_03_MCR vs. LOD_47 (umbral: 4%)
+#   4. ¿La JCPD protege efectivamente a NNA?
+#      → IND_G10P_05_MCR (binario: operativa + medidas > 0)
+#   5. ¿La inversión GAP llega a adultos mayores?
+#      → IND_G10P_02_MCR vs. población INEC cantonal
+#
+# Nodos Neo4j a crear:
+#   1 × C3ServicioPublico
+#   6 × C4Proceso
+#   7 × C5Evidencia
+#   5 × C6Control
+#   4 × C7Observabilidad
+#   5 × C8Indicador
+#   5 × C9ResultadoTerritorial
+#   Total: 33 nodos + relaciones con 10 ACKs del corpus F0.5
+#
+# Circuitos REL-H activados por este QTMP:
+#   H1: COOTAD249↔COOTAD215 — brecha GAP explica por ejecución presupuestaria
+#   H2: LOD58↔COOTAD137 — cobertura territorial + accesibilidad
+#   H4: LOD47↔COOTAD198 — inclusión laboral → estructura presupuestaria
+#   H7: COOTAD249↔COOTAD228 — inversión GAP vs. inversión territorial
+#   H8: COOTAD304↔COOTAD249 — participativo prioriza GAP?
+# ============================================================
+
+# ============================================================
+# P2 PATRONATO — ESTADO POST-VALIDACIÓN 2026-05-31
+# ============================================================
+#
+# NODOS C9 CONFIRMADOS (estado_dato: confirmado):
+#   RES_G10P_04_MCR: Ti_Patronato_2025 = 50.00% → 🔴 ROJO
+#     (Gold Master H07b, Sentinel 2026-05-18, 12 cédulas)
+#
+# NODOS C9 CON VALOR (estado_dato: pendiente_validacion — 1 fuente pendiente):
+#   RES_G10P_01_MCR: 20.84% (cod) / 14.19% (dev) → 🟢 VERDE
+#     Fuente: cédulas SIGEF reales (GAD dic-2025 + Patronato nov-2025)
+#     Pendiente: cédula Patronato dic-2025 para pasar a confirmado
+#     HALLAZGO: El problema NO es la asignación (20.84% >> 10%).
+#              El problema es la ejecución interna del Patronato (Ti=50%).
+#
+# NODOS C9 SIN VALOR (estado_dato: pendiente_validacion — sin dato):
+#   RES_G10P_02_MCR: beneficiarios adultos mayores (requiere Patronato RDC)
+#   RES_G10P_03_MCR: inclusión laboral 4% discapacidad (requiere CONADIS cruce)
+#   RES_G10P_05_MCR: JCPD operativa (requiere actas medidas protección)
+#
+# HALLAZGO CAUSAL CENTRAL (2026-05-31):
+#   Cadena: COOTAD_249(asignación=CUMPLE) → Ti_Patronato=50%(ejecución=FALLA)
+#   → $2,048,280 no ejecutados (50% de $4.1M) → Dom12 brecha persiste
+#   La norma se cumple en PAPEL pero no en TERRITORIO.
+#   Tipo de falla: ejecución institucional (Patronato) ≠ incumplimiento formal (GAD)
+#
+# PRIMERA CONSULTA CAUSAL RESPONDIBLE (Neo4j):
+#   MATCH (norm:Atom {id:'COOTAD_249'})-[:MATERIALIZA_VIA]->(sp:C3ServicioPublico)
+#   MATCH (sp)-[:REQUIERE]->(ind4:C8Indicador {id:'IND_G10P_04_MCR'})
+#   MATCH (ind4)-[:MIDE]->(res4:C9ResultadoTerritorial)
+#   MATCH (sp)-[:REQUIERE]->(ind1:C8Indicador {id:'IND_G10P_01_MCR'})
+#   MATCH (ind1)-[:MIDE]->(res1:C9ResultadoTerritorial)
+#   RETURN norm.obligacion, res1.valor AS asignacion_pct,
+#          res1.semaforo AS semafor_asig,
+#          res4.valor AS ejecucion_ti,
+#          res4.semaforo AS semaforo_ejec
+#   → Responde: "COOTAD_249 cumple en asignación (20.84%,🟢) PERO ejecución Ti=50%(🔴)"
+#   → Revela la paradoja: norma cumplida formalmente, impacto territorial fallido.
+#
+# PRÓXIMOS PASOS:
+#   1. Obtener cédula Patronato dic-2025 → confirmar RES_G10P_01_MCR
+#   2. Cargar este YAML en Neo4j (junto con AGUA_POTABLE y EQUIDAD)
+#   3. Ejecutar consulta causal pública — primera demo Alpha
+#   4. Solicitar RDC 2025 Patronato → confirmar RES_G10P_02_MCR
+# ============================================================

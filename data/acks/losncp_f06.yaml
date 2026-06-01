@@ -1,0 +1,346 @@
+# ============================================================
+# QUIRA Gov — F0.6 Bloque Operativo: LOSNCP
+# Ley Orgánica del Sistema Nacional de Contratación Pública
+# ============================================================
+# Norma:     Ley Orgánica del Sistema Nacional de Contratación Pública
+# Sigla:     LOSNCP
+# Jerarquía: 1 (Ley Orgánica)
+# RO:        Suplemento 395 — 04-ago-2008
+# Última reforma relevante: 2020
+# Ámbito GAD Municipal: TOTAL — todo el ciclo de contratación pública municipal
+# Atoms:     3 (Art.21 · Art.22 · Art.106)
+# Propósito: Completar Dom03 — cadena de contratación pública del GAD Municipal
+#            Resolver forward references existentes en corpus (LOSNCP genérico, LOSNCP_106)
+#            Densificar circuitos H3 y H7
+# ============================================================
+# Nota corpus: los átomos LOSNCP generan la base para circuitos:
+#   H3_CONTRATACION_PARTICIPACION: PAC (LOSNCP_21) ↔ presupuesto participativo (COOTAD_304)
+#   H7_INVERSION_TERRITORIAL: cert. presupuestaria (LOSNCP_22) ↔ ejecución (COOTAD_215)
+# ============================================================
+
+ACK_ID: LOSNCP_21
+CLASE: ACK_OBLIGACION
+TIPO: obligacion
+NOMBRE: Plan Anual de Contratación — Obligación y Publicación
+
+FUENTE:
+  norma: Ley Orgánica del Sistema Nacional de Contratación Pública
+  sigla: LOSNCP
+  jerarquia: 1
+  articulo: "21"
+  inciso: ""
+  fecha_vigencia: "2008-08-04"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Alcalde
+  - Director-Contratacion-Publica
+
+ACTOR_BENEFICIARIO:
+  - Proveedores-Estado
+  - Ciudadanía
+  - SERCOP
+
+OBLIGACION: >
+  Las entidades contratantes, incluyendo los GADs Municipales, tienen la obligación de
+  elaborar, aprobar y publicar el Plan Anual de Contratación (PAC) hasta el 15 de enero
+  de cada año. El PAC debe ser publicado en el portal institucional de la entidad y en
+  el Portal del Sistema Nacional de Contratación Pública (SERCOP). Toda reforma al PAC
+  requiere resolución motivada de la máxima autoridad institucional. Sin PAC aprobado
+  y publicado, la entidad no puede iniciar ningún proceso de contratación durante el
+  ejercicio fiscal.
+
+EVIDENCIA:
+  - PAC publicado en portal SERCOP (compraspublicas.gob.ec)
+  - Resolución de aprobación del PAC firmada por Alcalde
+  - LOTAIP_19_21 — publicación PAC en portal institucional
+  - Acta de Concejo aprobando PAC si corresponde
+
+CONSECUENCIA:
+  descripcion: >
+    La no publicación o publicación tardía del PAC impide legalmente iniciar procesos
+    de contratación. Activa responsabilidad administrativa del servidor responsable.
+    La CGE y el SERCOP pueden impugnar procesos iniciados sin PAC vigente. La LOTAIP_42
+    activa las sanciones LOSEP correspondientes al Director de Contratación y al Alcalde.
+  tipo: responsabilidad-administrativa
+  organo_sancionador:
+    - CGE
+    - SERCOP
+
+APLICABILIDAD:
+  nacional: true
+  municipal: true
+  condicion:
+    - Entidades contratantes con presupuesto asignado en el ejercicio fiscal
+
+OBSERVA_CAPA: "C4"
+
+DOMINIOS_QUIRA:
+  - Dom03
+  - Dom07
+
+RELACIONES:
+  - LOTAIP_19_21
+  - COOTAD_304
+  - COOTAD_198
+  - LOSNCP_22
+  - NCI_200_04
+
+VIGENCIA:
+  estado: vigente
+
+CADENA_TERRITORIAL:
+  circuito_id: H3_CONTRATACION_PARTICIPACION
+  capa_inicio: "C2"
+  capa_fin: "C7"
+  servicio_publico: >
+    Publicación del Plan Anual de Contratación como instrumento de transparencia
+    y planificación del gasto municipal ante ciudadanía y proveedores.
+  proceso_referencia: >
+    Elaboración PAC enero → aprobación máxima autoridad → publicación SERCOP
+    → publicación LOTAIP_19_21 → inicio procesos contractuales autorizados.
+  indicador_referencia: >
+    TGI Dom03 — PAC publicado en plazo / alineación PAC vs. compromisos participativos.
+    TGI Dom07 — cumplimiento LOTAIP_19_21 (transparencia contratación).
+
+IMPLEMENTACION_LOCAL:
+  actor_local: >
+    pendiente — Director/a de Contratación Pública GADMCM
+  institucion_local: >
+    GAD-Municipal-Montecristi — Dirección de Contratación Pública
+  fuente_organica: >
+    Resolución Orgánica GADMCM — funciones Dirección de Contratación
+
+META:
+  estado: v1.5
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.5
+  revisado_por_experto: true
+
+---
+
+ACK_ID: LOSNCP_22
+CLASE: ACK_OBLIGACION
+TIPO: procedimiento
+NOMBRE: Estudios Previos y Presupuesto Referencial — Requisitos Precontractuales
+
+FUENTE:
+  norma: Ley Orgánica del Sistema Nacional de Contratación Pública
+  sigla: LOSNCP
+  jerarquia: 1
+  articulo: "22"
+  inciso: ""
+  fecha_vigencia: "2008-08-04"
+
+ACTOR_OBLIGADO:
+  - GAD-Municipal
+  - Director-Contratacion-Publica
+  - Director-Tecnico-responsable
+
+ACTOR_BENEFICIARIO:
+  - Estado-Ecuatoriano
+  - Ciudadanía
+
+OBLIGACION: >
+  [PENDIENTE VERIFICACIÓN LITERAL — Art. 22 LOSNCP] Antes de publicar cualquier proceso
+  de contratación, la entidad contratante debe contar con los estudios técnicos previos,
+  diseños definitivos y un presupuesto referencial debidamente documentado. El proceso
+  contractual que se inicie sin estos requisitos previos es susceptible de glosa CGE
+  y genera responsabilidad personal del servidor que lo autorizó. Complementariamente,
+  el responsable del área financiera debe emitir la certificación presupuestaria
+  previa que acredite la disponibilidad de fondos para cubrir el objeto del contrato.
+
+EVIDENCIA:
+  - Estudios de factibilidad y estudios técnicos previos
+  - Diseños definitivos aprobados
+  - Presupuesto referencial documentado en expediente
+  - Certificación presupuestaria emitida por Director Financiero
+  - Expediente de contratación completo
+
+CONSECUENCIA:
+  descripcion: >
+    La contratación sin estudios previos y presupuesto referencial válido puede ser
+    declarada nula por la CGE y generar glosa. El servidor que inicia el proceso sin
+    los requisitos previos incurre en responsabilidad administrativa (LOSEP_42) y civil
+    (LOC-CGE). La PGE puede emitir pronunciamiento sobre la nulidad del contrato.
+  tipo: nulidad
+  organo_sancionador:
+    - CGE
+    - SERCOP
+    - PGE
+
+APLICABILIDAD:
+  nacional: true
+  municipal: true
+  condicion:
+    - Todo proceso de contratación independientemente del monto y modalidad
+
+OBSERVA_CAPA: "C4"
+
+DOMINIOS_QUIRA:
+  - Dom03
+  - Dom02
+
+RELACIONES:
+  - LOSNCP_21
+  - COOTAD_215
+  - NCI_200_04
+  - LOC-CGE_21
+  - NCI_PRE_DEVENGADO
+
+VIGENCIA:
+  estado: vigente
+
+CADENA_TERRITORIAL:
+  circuito_id: H7_INVERSION_TERRITORIAL
+  capa_inicio: "C4"
+  capa_fin: "C4"
+  servicio_publico: >
+    Proceso de contratación de obra pública, bienes o servicios para materializar
+    la inversión planificada en el POA/PAC con respaldo técnico y financiero.
+  proceso_referencia: >
+    PAC aprobado → estudios previos → presupuesto referencial → certificación
+    presupuestaria → publicación proceso SERCOP → adjudicación → suscripción contrato.
+  indicador_referencia: >
+    TGI Dom03 — porcentaje expedientes de contratación completos vs. observados CGE.
+    TGI Dom02 — relación inversión planificada / inversión ejecutada con documentación.
+
+IMPLEMENTACION_LOCAL:
+  actor_local: >
+    pendiente — Director/a de Obras Públicas (obras civiles) / Director Contratación
+    (bienes y servicios) / Director Financiero (certificación presupuestaria)
+  institucion_local: >
+    GAD-Municipal-Montecristi — Dirección de Obras Públicas / Dirección Contratación /
+    Dirección Financiera
+  fuente_organica: >
+    Resolución Orgánica GADMCM — competencias Dirección OOPP y Contratación
+
+META:
+  estado: v1.5
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.5
+  revisado_por_experto: false
+
+---
+
+ACK_ID: LOSNCP_106
+CLASE: ACK_OBLIGACION
+TIPO: sancion
+NOMBRE: Sanciones e Infracciones en Contratación Pública
+
+FUENTE:
+  norma: Ley Orgánica del Sistema Nacional de Contratación Pública
+  sigla: LOSNCP
+  jerarquia: 1
+  articulo: "106"
+  inciso: ""
+  fecha_vigencia: "2008-08-04"
+
+ACTOR_OBLIGADO:
+  - SERCOP
+  - CGE
+
+ACTOR_BENEFICIARIO:
+  - Estado-Ecuatoriano
+  - Ciudadanía
+
+OBLIGACION: >
+  [PENDIENTE VERIFICACIÓN LITERAL — Art. 106 LOSNCP] El SERCOP y la Contraloría General
+  del Estado están facultados para sancionar a proveedores y servidores públicos que
+  incurran en infracciones al régimen de contratación pública. Las sanciones incluyen
+  la suspensión del Registro Único de Proveedores (RUP), multas administrativas y
+  otras consecuencias que impiden al infractor contratar con el Estado. El incumplimiento
+  contractual y las irregularidades en el proceso activan la responsabilidad civil,
+  administrativa y penal del servidor involucrado conforme al CE Art. 233.
+
+EVIDENCIA:
+  - Resolución SERCOP de suspensión del RUP
+  - Acto administrativo sancionatorio emitido
+  - Informe CGE sobre irregularidades contractuales
+  - Sentencia judicial (si corresponde — peculado contractual)
+
+CONSECUENCIA:
+  descripcion: >
+    Las infracciones en contratación pública activan: (a) responsabilidad administrativa
+    → LOSEP_42 para el servidor público; (b) responsabilidad civil → LOC-CGE_21 glosa
+    para el patrimonio personal; (c) responsabilidad penal → Fiscalía/Judicatura para
+    peculado o concusión. La suspensión del RUP impide al proveedor contratar con el
+    Estado mientras dure la sanción.
+  tipo: sancion-penal
+  organo_sancionador:
+    - SERCOP
+    - CGE
+    - Fiscalía
+    - Judicatura
+
+APLICABILIDAD:
+  nacional: true
+  municipal: true
+  condicion:
+    - Todo proceso de contratación municipal sujeto a LOSNCP
+
+OBSERVA_CAPA: "C6"
+
+DOMINIOS_QUIRA:
+  - Dom03
+  - Dom01
+
+RELACIONES:
+  - CE_233
+  - LOC-CGE_45
+  - LOSEP_42
+  - LOSNCP_21
+  - LOSNCP_22
+
+VIGENCIA:
+  estado: vigente
+
+CADENA_TERRITORIAL:
+  circuito_id: H3_CONTRATACION_PARTICIPACION
+  capa_inicio: "C6"
+  capa_fin: "C6"
+  servicio_publico: >
+    Control ex-post de la integridad del proceso de contratación pública municipal
+    como garantía de uso correcto de recursos públicos.
+  proceso_referencia: >
+    Auditoría CGE → detección infracción → informe con responsabilidades determinadas
+    → sanción SERCOP (RUP) / sumario LOSEP / acción penal Fiscalía.
+  indicador_referencia: >
+    TGI Dom03 — porcentaje contratos con irregularidades identificadas en auditorías.
+    TGI Dom01 — índice de responsabilidades determinadas y ejecutadas.
+
+IMPLEMENTACION_LOCAL:
+  actor_local: >
+    pendiente — Director de Contratación / Asesor Jurídico GADMCM (gestión del expediente
+    ante SERCOP / CGE en caso de sanción)
+  institucion_local: >
+    GAD-Municipal-Montecristi — Dirección de Contratación / Procuraduría Síndica
+  fuente_organica: >
+    Resolución Orgánica GADMCM — funciones Asesoría Jurídica y Contratación
+
+META:
+  estado: v1.5
+  fecha_extraccion: "2026-05-30"
+  extractor: QLEP-v1.5
+  revisado_por_experto: false
+
+---
+
+# ============================================================
+# ÍNDICE F0.6 LOSNCP — 3 átomos
+# ============================================================
+#
+# LOSNCP_21  — Art. 21 — PAC obligation         — Dom03/Dom07 — revisado: true
+# LOSNCP_22  — Art. 22 — Requisitos precontract. — Dom03/Dom02 — revisado: false
+# LOSNCP_106 — Art. 106 — Sanciones contratación — Dom03/Dom01 — revisado: false
+#
+# Forward references resueltas:
+#   LOSNCP     (genérico) → ahora existen LOSNCP_21, LOSNCP_22, LOSNCP_106
+#   LOSNCP_106 (de ce_art226_264.yaml línea 351) → resuelto
+#
+# Circuitos densificados:
+#   H3_CONTRATACION_PARTICIPACION: LOSNCP_21 es el eslabón Dom03 del circuito
+#   H7_INVERSION_TERRITORIAL: LOSNCP_22 es el eslabón Dom03 del circuito
+#
+# Corpus post-F0.6-LOSNCP: 86+3 = 89 ACK + 14 REL-V + 23 REL-H = 126 artefactos
+# ============================================================
