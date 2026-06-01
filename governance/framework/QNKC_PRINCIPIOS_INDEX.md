@@ -113,6 +113,28 @@ La primera frase describe la topología del sistema (cadenas, no atributos aisla
 
 ---
 
+## Hipótesis Arquitectónica H-QNKC-03 (anticipada — QUIRA Impact)
+
+> **La verificación de una cadena causal no equivale a la atribución de su resultado.**
+>
+> Demostrar que la cadena de condiciones necesarias estuvo intacta (H-QNKC-02) no demuestra que esa cadena fue la causa del cambio observado. El cambio pudo haber ocurrido por factores externos no capturados en el modelo.
+
+**Por qué no es extensión de H-QNKC-02:**
+
+| Hipótesis | Pregunta | Modelo matemático |
+|-----------|---------|-------------------|
+| H-QNKC-02 | ¿La cadena de condiciones necesarias estuvo intacta? | Producto: C = c₁ × c₂ × c₃ |
+| H-QNKC-03 | ¿El cambio observado fue causado por esa cadena y no por otro factor? | Contrafactual: E[outcome\|intervención] − E[outcome\|sin intervención] |
+
+Son preguntas epistemológicamente distintas. P00–P05 verifican cadenas. P06 atribuye cambios. Esa distinción requiere un tercer axioma porque la multiplicación no puede resolver la identificación causal contrafactual.
+
+**Cuándo se necesitará:**  
+Cuando P06 (Impacto ≠ Transformación sistémica) se formalice. En ese momento, la pregunta ya no será "¿la cobertura de agua mejoró?" sino "¿mejoró porque la inversión municipal lo causó, o mejoró por factores demográficos / transferencias nacionales / ciclo climático?" QUIRA Impact necesitará un modelo de atribución (diferencias en diferencias, control sintético, o similar) que la cadena multiplicativa no puede proveer.
+
+**Estado:** Anticipada — no necesaria para BETA-CORE. Activación cuando QUIRA Impact entre en diseño.
+
+---
+
 ## Estructura Axiomática del Framework
 
 **La transición de catálogo a sistema axiomático (2026-06-01):**  
@@ -488,8 +510,9 @@ Antes de crear P0N, responder: ¿qué proceso está siendo confundido con su res
 
 ```
 HIPÓTESIS FUNDACIONALES
-├── H-QNKC-01  Proceso ≠ Resultado              (eje categorial — qué confusión destruye cada principio)
-└── H-QNKC-02  Condiciones necesarias × (no +)  (eje matemático — cómo modela QUIRA la capacidad institucional)
+├── H-QNKC-01  Proceso ≠ Resultado              (Congelada — eje categorial)
+├── H-QNKC-02  Condiciones necesarias × (no +)  (Congelada — eje matemático)
+└── H-QNKC-03  Verificación ≠ Atribución        (Anticipada — QUIRA Impact / P06)
 
 PRINCIPIOS  (cada uno satisface H-QNKC-01 + H-QNKC-02 simultáneamente)
 ├── P00  Norma ≠ Cumplimiento              (Congelado — 2026-06-01)
@@ -538,6 +561,21 @@ Describe la topología: cadenas, no atributos aislados.
 Describe el álgebra: multiplicativa, no aditiva. La segunda es la especificación técnica de la primera. Para uso interno e institucional; la primera sigue siendo la frase canónica pública.
 
 **Condición de reapertura:** si durante la construcción de algún dominio Tier A–C el sistema detecta una confusión proceso/resultado no cubierta por P00–P04, se registra como OBS-QNKC y se evalúa si cumple simultáneamente H-QNKC-01 (falso equivalente) y H-QNKC-02 (cadena multiplicativa). Si cumple ambas, se escala a Scheduled. Si solo cumple una, queda como OBS-QNKC.
+
+**Horizonte post-BETA-CORE — H-QNKC-03:**  
+H-QNKC-03 está registrada como anticipada. No se activa durante BETA-CORE porque ningún dominio de Montecristi requiere aún atribución causal contrafactual — solo verificación de cadenas. H-QNKC-03 se activará cuando P06 (Impacto ≠ Transformación sistémica) entre en formalización, lo que ocurrirá en QUIRA Impact. Ese momento marcará el paso del framework de un sistema de verificación causal a un sistema de atribución causal. Son epistemológicamente distintos y requieren axiomas distintos.
+
+**Madurez epistemológica al cierre de Sprint 3:**
+
+```
+Nivel 0 — Catálogo         12 dominios listados
+Nivel 1 — Framework        Capas C1–C9 causal
+Nivel 2 — Teoría           P00–P06 como principios derivados
+Nivel 3 — Sistema axiomático   H-QNKC-01 + H-QNKC-02 como raíces
+                               Principios como derivaciones verificables
+```
+
+QNKC opera en Nivel 3. Los sprints que siguen no construyen la teoría — la instancian en Montecristi.
 
 ---
 
