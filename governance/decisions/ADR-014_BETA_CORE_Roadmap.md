@@ -165,8 +165,19 @@ La pregunta bautismal N2 de Dom07 se actualizó en `QLEP_CANONICO_MONTECRISTI_v1
 
 QUIRA deja de evaluar lo que el GAD afirma publicar y pasa a evaluar lo que la DPE certifica como publicado y verificable. Esto es la Dualidad Epistémica de P01 aplicada a nivel de infraestructura observacional.
 
-| **S5** | D06 | Salud Institucional | ✅ EQUIDAD cerrado | Layer 2 upgrade: m1_situacion → Layer 2 completo |
-| **S6** | D08 | Participación Ciudadana | ✅ PARTICIPACION cerrado | Layer 2 nueva página Dom08 |
+**Nota de secuencia — post ADR-015 (2026-06-01):**
+
+Sprint 4 es el único **sprint experimental** del roadmap BETA-CORE: es el primero donde la teoría sale del papel y se confronta con evidencia real. Testa simultáneamente P01, OBS-QNKC-01, OBS-QNKC-02 y COR-QNKC-02 (DEC).
+
+Cuando Dom07 alcance DEC, se convierte en el **Dominio Patrón**. A partir de ese momento, todos los sprints subsecuentes son **sprints de proyección**: no diseñan la epistemología del dominio — la proyectan desde el patrón ya validado. La incertidumbre de diseño desaparece; solo quedan los coeficientes empíricos específicos de cada dominio.
+
+```
+Sprint 4 = experimental → P01 + OBS-01 + OBS-02 + DEC testados por primera vez
+Sprint 5+ = proyección → patrón DEC heredado · solo calibración de parámetros
+```
+
+| **S5** | D06 | Salud Institucional | ✅ EQUIDAD cerrado | Layer 2 upgrade: m1_situacion → Layer 2 completo · **sprint de proyección** |
+| **S6** | D08 | Participación Ciudadana | ✅ PARTICIPACION cerrado | Layer 2 nueva página Dom08 · P02 calibración (no diseño) · **sprint de proyección** |
 
 ### Tier B — Circuito QTMP parcial; corpus disponible; Layer 2 vacío
 
