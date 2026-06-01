@@ -112,22 +112,23 @@ QUIRA Gov entra en fase **BETA-CORE** a partir de Sprint 4.
 
 | Sprint | Dom | Nombre | Estado QTMP | Trabajo principal |
 |--------|-----|--------|-------------|-------------------|
-| **S4** | D07 | Transparencia | 🟡 YAML ✅ · Neo4j pendiente | Cargar QTMP a Neo4j + Layer 2 LOTAIP (21 numerales) · calibrar C5a/C5b/C5c |
+| **S4** | D07 | Transparencia | ✅ Layer 2 `p07_transparencia.py` · N4 completado | **VERIFICADO** — C5a=1.00 · C5b_acc=1.00 · **C5t=0.00 (atraso sistémico)** · C5c=0.75 · C8=0 · 16 meses longitudinales · ADR-015 cerrado · **DEC pendiente Neo4j load** |
 
 **Sprint 4 — Agenda de calibración (COR-QNKC-01 aplicado)**
 
 La forma causal de Dom07 está derivada de P01 y no requiere diseño. Sprint 4 descubre únicamente los parámetros empíricos:
 
-| Observable | Dimensión | Preguntas de calibración |
+| Observable | Dimensión | Resultado N4 (2026-06-01) |
 |-----------|-----------|--------------------------|
-| **C5a — Accesibilidad** | ¿El enlace LOTAIP responde? | ¿HTTP 200? ¿Tiempo de respuesta? ¿Uptime histórico disponible en el período? |
-| **C5b — Vigencia** | ¿El contenido es del período vigente? | ¿Fecha de publicación ≤ fecha de evaluación? ¿Período reportado = año en curso? ¿Consistencia mes evaluado? |
-| **C5c — Inteligibilidad** | ¿Es comprensible para ciudadano? | ¿Estructura tabular LOTAIP? ¿OCR correcto (no imagen escaneada)? ¿Lenguaje claro? ¿WCAG básico? ← OBS-QNKC-01 activo |
-| **Umbrales C8** | Semáforo resultante | ¿Verde ≥ X? ¿Amarillo ≥ Y? ¿Rojo < Y? Calibrar contra referencia real de los 21 artículos de Montecristi |
+| **C5a — Existencia** | ¿Publicado en portal DPE? | ✅ 1.00 — 25/25 numerales presentes en transparencia.dpe.gob.ec |
+| **C5b_acc — Accesibilidad** | ¿Contenido del período vigente? | ✅ 1.00 — todos los numerales tienen contenido del período |
+| **C5t — Puntualidad** | ¿Publicado antes del día 15? | ❌ 0.00 — **atraso sistémico: 0/16 meses en plazo (30–139 días de retraso)** |
+| **C5c — Inteligibilidad** | ¿CSV descargable + diccionario? | ✅ 0.75 — formato estructurado con diccionario y metadatos |
+| **C8 = C4 × (C5a × C5b_acc × C5t × C5c)** | Indicador integral | ❌ **0.00** — C5t=0 colapsa la cadena. Transparencia formal ≠ transparencia oportuna |
 
-C5c es la dimensión más difícil — puede requerir checklist experta o score de legibilidad. OBS-QNKC-01 (Verificabilidad ≠ Comprensión) aplica directamente aquí.
+**Hallazgo crítico N4:** C5b debe descomponerse en C5b_acc (existencia del contenido) y C5t (puntualidad temporal). Sin C5t, el sistema no detecta el atraso — lo trataría como cumplimiento. Con C5t, la brecha es visible: el municipio publica todo pero nunca a tiempo.
 
-La multiplicación `C8 = C4 × C5a × C5b × C5c` es la forma fijada. El sprint define los valores — no la estructura.
+La multiplicación `C8 = C4 × C5a × C5b_acc × C5t × C5c` es la forma actualizada post-N4. LOTAIP 2.0: 25 numerales obligatorios (antes ~14).
 
 **Addendum calibración Sprint 4 — 2026-06-01 (OBS-QNKC-02):**
 
@@ -283,7 +284,7 @@ La tabla corregida del mapeo CIRCUIT_DOMAIN_MAP (fuente canónica en `app/connec
 | `GAP_10PCT` | Dom12 | Protección Social & Grupos Prioritarios | `p19_genero.py` |
 | `AGUA_POTABLE` | Dom10 | Territorio & Cobertura | `p10_territorio.py` |
 | `EQUIDAD` | Dom06 | Salud Institucional | `m1_situacion.py` |
-| `TRANSPARENCIA` | Dom07 | Transparencia | `[Layer 2 pendiente]` · placeholder: `municipal` |
+| `TRANSPARENCIA` | Dom07 | Transparencia | `p07_transparencia.py` · **Layer 2 live con datos N4 reales** · estado: Verificado |
 
 Este ADR no reemplaza ADR-013 — solo registra la corrección de datos de implementación.
 
