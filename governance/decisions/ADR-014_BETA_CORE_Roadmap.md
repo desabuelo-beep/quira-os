@@ -128,6 +128,29 @@ La forma causal de Dom07 está derivada de P01 y no requiere diseño. Sprint 4 d
 C5c es la dimensión más difícil — puede requerir checklist experta o score de legibilidad. OBS-QNKC-01 (Verificabilidad ≠ Comprensión) aplica directamente aquí.
 
 La multiplicación `C8 = C4 × C5a × C5b × C5c` es la forma fijada. El sprint define los valores — no la estructura.
+
+**Addendum calibración Sprint 4 — 2026-06-01 (OBS-QNKC-02):**
+
+Hallazgo durante calibración: bajo LOTAIP 2.0 (reforma vigente), la fuente canónica de C5a y C5b para Dom07 **no es el portal institucional del GADMCM** sino el **portal regulatorio de la DPE**: `https://transparencia.dpe.gob.ec/`.
+
+Las preguntas de calibración C5a y C5b se responden consultando el portal DPE para Montecristi, no `montecristi.gob.ec/lotaip`. El portal GAD puede tener información adicional pero no es autoritativo para verificación de cumplimiento LOTAIP.
+
+**Protocolo de auditoría N4 (Matriz de calibración por numeral):**
+
+Para cada numeral del Art. 19 LOTAIP, registrar:
+
+| Numeral | C5a — Existe en DPE | C5b — Actualizado (período vigente) | C5c — Comprensible (lenguaje claro) |
+|---------|--------------------|------------------------------------|-------------------------------------|
+| 1       | ✓/✗                | ✓/✗                                | ✓/✗                                 |
+| 2       | ✓/✗                | ✓/✗                                | ✓/✗                                 |
+| ...     | ...                | ...                                | ...                                 |
+| 21+     | ✓/✗                | ✓/✗                                | ✓/✗                                 |
+
+*Nota: verificar si LOTAIP 2.0 amplió el número de numerales obligatorios — observaciones de navegación sugieren hasta 24; pendiente contraste con texto legal.*
+
+Resultado de la matriz → C5a = (Σ C5a_i) / total · C5b = (Σ C5b_i) / C5a_i · C5c = evaluación por muestreo representativo → C8 = C4 × C5a × C5b × C5c.
+
+Registrado como OBS-QNKC-02 en QNKC_PRINCIPIOS_INDEX.
 | **S5** | D06 | Salud Institucional | ✅ EQUIDAD cerrado | Layer 2 upgrade: m1_situacion → Layer 2 completo |
 | **S6** | D08 | Participación Ciudadana | ✅ PARTICIPACION cerrado | Layer 2 nueva página Dom08 |
 

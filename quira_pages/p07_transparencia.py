@@ -302,24 +302,25 @@ def _render_dom07_ejecutivo(chain: dict) -> None:
         unsafe_allow_html=True,
     )
 
+    # OBS-QNKC-02: portal DPE es la fuente canónica de C5a/C5b bajo LOTAIP 2.0
     obs_sources = [
         (
-            "Portal LOTAIP",
-            "montecristi.gob.ec",
-            "21 numerales Art. 19 · publicación activa · RAIP",
-            "Fuente: LOTAIP Art. 19",
+            "Portal DPE · LOTAIP 2.0",
+            "transparencia.dpe.gob.ec",
+            "Fuente canónica C5 · Numerales Art. 19 · todos los GADs del Ecuador",
+            "DPE — Ley LOTAIP 2.0 (fuente regulatoria oficial)",
         ),
         (
             "SIGEF",
             "finanzas.gob.ec",
             "Ejecución presupuestaria en tiempo real · por partidas",
-            "Fuente: COOTAD Art. 215",
+            "COOTAD Art. 215",
         ),
         (
             "SERCOP",
             "compraspublicas.gob.ec",
             "PAC + contratos adjudicados + montos + contratistas",
-            "Fuente: LOSNCP Art. 21",
+            "LOSNCP Art. 21",
         ),
     ]
 

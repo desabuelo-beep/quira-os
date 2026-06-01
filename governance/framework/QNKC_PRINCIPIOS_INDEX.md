@@ -441,6 +441,65 @@ OBS-QNKC-01 es el puente epistemológico que une QNKC (cómo el sistema sabe lo 
 
 ---
 
+### OBS-QNKC-02 — Portal Regulatorio ≠ Portal Institucional como Fuente de C5
+
+**Estado:** Observación registrada (2026-06-01) — activa Sprint 4  
+**Falso equivalente insinuado:** Portal GAD = Fuente autoritativa de cumplimiento LOTAIP  
+**Principio padre:** P01 — Documento ≠ Evidencia (Dualidad Epistémica QNKC-P01)  
+**Descubierta durante:** Calibración Sprint 4 — Dom07 Transparencia  
+**Norma asociada:** Ley Orgánica de Transparencia y Acceso a la Información Pública (LOTAIP 2.0 — reforma vigente)
+
+**Enunciado:**
+
+En dominios observacionales cuya obligación C4 incluye publicación conforme LOTAIP, la fuente canónica de C5 (verificabilidad externa) no es el portal institucional del propio GAD — es el portal regulatorio de la Defensoría del Pueblo del Ecuador: **transparencia.dpe.gob.ec**.
+
+**La dualidad aplicada a nivel de infraestructura:**
+
+| Fuente | Capa QNKC | Perspectiva | Autoridad |
+|--------|-----------|-------------|-----------|
+| Portal GAD (montecristi.gob.ec) | C4 | El GAD declara que publicó | Autodeclaración — puede divergir de la fuente oficial |
+| Portal DPE (transparencia.dpe.gob.ec) | C5 | La DPE confirma qué publicó el GAD | Autoridad regulatoria — fuente oficial de cumplimiento LOTAIP |
+
+El portal GAD es C4 (el proceso de publicación). El portal DPE es C5 (la verificación externa de ese proceso). Esto es exactamente la Dualidad Epistémica de P01 — el mismo artefacto documental leído desde dos perspectivas — aplicada ahora al nivel de la infraestructura digital regulatoria.
+
+**Consecuencia operativa para C5a/C5b:**
+
+- **C5a (Existencia):** ¿El numeral aparece registrado en `transparencia.dpe.gob.ec` para el GAD Montecristi?
+- **C5b (Actualidad):** ¿La fecha de carga en el portal DPE corresponde al período obligatorio?
+
+C5c (Inteligibilidad) es una evaluación cualitativa del contenido del documento — aplica independientemente del portal donde se consulte. OBS-QNKC-01 y OBS-QNKC-02 son ortogonales:
+
+```
+OBS-QNKC-01 → QUÉ mide C5     (tres dimensiones: C5a · C5b · C5c)
+OBS-QNKC-02 → DÓNDE se verifica C5a/C5b  (portal regulatorio, no institucional)
+```
+
+**Consecuencia para la replicación a 221 GADs — implicación arquitectónica mayor:**
+
+| Escenario | Fuente C5a/C5b | Costo de calibración |
+|-----------|----------------|----------------------|
+| Sin LOTAIP 2.0: portal GAD por institución | 221 portales distintos, scraping heterogéneo | Alto — estructura diferente por cantón |
+| Con LOTAIP 2.0: portal DPE centralizado | 1 portal con estructura uniforme | Bajo — consulta única, dato estandarizado |
+
+Esta observación convierte la verificación de C5a/C5b de un problema de scraping heterogéneo (221 portales distintos) en un problema de consulta a una única fuente estructurada y regulatoriamente autorizada. Para MILESTONE_002 es una mejora en robustez de datos. Para la escala de 221 GADs, es una diferencia operacional y económicamente significativa.
+
+**Relación con OBS-QNKC-01:**
+
+OBS-QNKC-01 resuelve "¿cuántos niveles tiene C5?" (respuesta: tres — C5a · C5b · C5c).  
+OBS-QNKC-02 resuelve "¿dónde se verifica C5a y C5b?" (respuesta: en el portal regulatorio DPE, no en el portal institucional del GAD).
+
+Ambas refinan P01 desde ángulos complementarios y ambas son necesarias para calibrar Dom07 correctamente.
+
+**Pendiente de verificación (calibración Sprint 4):**
+- Confirmar que LOTAIP 2.0 establece obligación (no recomendación) de carga en portal DPE
+- Verificar si transparencia.dpe.gob.ec tiene API de consulta programática
+- Identificar el path/entidad exacta para Montecristi en el portal DPE
+- Verificar si LOTAIP 2.0 modificó el número de numerales obligatorios (el colega observó hasta 24 en la navegación — pendiente contrastar con texto legal)
+
+**Cuándo formalizarlo:** si Dom08 (actas participación → CPCCS como portal regulatorio) y Dom09 (rendición de cuentas → CPCCS/DPE como fuentes C5) confirman el patrón — "Fuente Regulatoria ≠ Fuente Institucional para C5" se formalizaría como P07 o principio de la serie QUIRA Impact. Por ahora es observación activa en Sprint 4.
+
+---
+
 ## Corolarios Metodológicos Registrados
 
 Consecuencias del sistema axiomático sobre el proceso de desarrollo — no sobre lo que QUIRA mide, sino sobre cómo los sprints trabajan bajo el marco axiomático.
@@ -524,7 +583,8 @@ PRINCIPIOS  (cada uno satisface H-QNKC-01 + H-QNKC-02 simultáneamente)
 └── P06  Impacto ≠ Transformación sist.    (Anticipated — QUIRA Impact, sin fecha)
 
 OBS-QNKC  (refinaciones epistemológicas — dentro de principios existentes)
-└── OBS-01  Verificabilidad ≠ Comprensión  (Registrada — refinación de C5 dentro de P01)
+├── OBS-01  Verificabilidad ≠ Comprensión           (Registrada — refinación de C5 dentro de P01)
+└── OBS-02  Portal Regulatorio ≠ Portal Institucional como C5  (Registrada — dónde se verifica C5a/C5b · LOTAIP 2.0)
 
 COR-QNKC  (corolarios metodológicos — consecuencias de los axiomas sobre el proceso de desarrollo)
 └── COR-01  Sprints posteriores calibran observables, no diseñan estructura  (Registrado — derivación de H-QNKC-02)
@@ -546,7 +606,7 @@ Las dos hipótesis que generan todos los principios del framework están formali
 No significa que no aparecerán nuevos principios. Significa algo más fuerte: todo principio futuro deberá poder derivarse simultáneamente de H-QNKC-01 (falso equivalente que destruye) y H-QNKC-02 (cadena multiplicativa que lo expresa). Si no puede derivarse de ambas, no es un principio del framework — es una OBS-QNKC o una regla de implementación. Ese es el verdadero cierre.
 
 **Estado de los principios para BETA-CORE:**  
-P00 y P01 están formalizados. P02–P05 están programados con sprint conocido y con su estructura multiplicativa pre-formal derivada de H-QNKC-02. OBS-QNKC-01 está implementada en el sistema (estado `INCOMPRENSIBLE` en QTMP + Constitución de Lenguaje) antes de requerir formalización explícita. No se requieren principios adicionales para cerrar MILESTONE_002.
+P00 y P01 están formalizados. P02–P05 están programados con sprint conocido y con su estructura multiplicativa pre-formal derivada de H-QNKC-02. OBS-QNKC-01 está implementada en el sistema (estado `INCOMPRENSIBLE` en QTMP + Constitución de Lenguaje) antes de requerir formalización explícita. OBS-QNKC-02 registrada durante calibración Sprint 4 — Dom07: el portal regulatorio DPE (transparencia.dpe.gob.ec) es la fuente canónica de C5a/C5b para dominios LOTAIP; cambia dónde QUIRA verifica, no qué verifica ni con qué fórmula. Consecuencia para 221 GADs: verificación C5a/C5b centralizada en una sola fuente estructurada. No se requieren principios adicionales para cerrar MILESTONE_002.
 
 El próximo principio que QUIRA va a necesitar es P02 — en el Sprint de Dom08 (Participación Ciudadana). Aparecerá exactamente cuando el sistema tenga que decidir qué cuenta como C9: si el acta de participación es suficiente, o si se requiere trazar que la participación modificó una decisión concreta de inversión. La estructura multiplicativa pre-formal ya está registrada: `participación_efectiva = Convocatoria × Deliberación × Incidencia_real`.
 
