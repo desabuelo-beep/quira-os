@@ -166,16 +166,48 @@ La diferencia entre "Operativo" y "DEC" no es técnica — es epistemológica. U
 
 Si los indicadores de un dominio no se calibran con datos externos independientes, QUIRA está midiendo su propia arquitectura, no la realidad institucional de Montecristi.
 
-**Relación con H-QNKC-01 y H-QNKC-02:**
+**El primer axioma que opera fuera del sistema — axioma de humildad institucional:**
 
-| Hipótesis | Eje | Pregunta |
-|-----------|-----|----------|
-| H-QNKC-01 | Categorial — qué confusión destruye el principio | ¿El sistema confunde proceso con resultado? |
-| H-QNKC-02 | Matemático — cómo se agregan las condiciones | ¿Las condiciones son multiplicativas? |
-| H-QNKC-03 | Causal — cómo se atribuye el resultado | ¿La cadena causó el cambio, o lo causó algo más? |
-| **H-QNKC-04** | **Epistémico — qué valida la evidencia real** | **¿El sistema mide el territorio, o mide su propio modelo?** |
+Los tres axiomas anteriores operan *dentro* del sistema QUIRA:
 
-Las cuatro hipótesis son ortogonales. H-QNKC-04 es el eje que distingue un sistema de inteligencia territorial real de un sistema de inteligencia documental sofisticado.
+| Hipótesis | Dónde opera | Pregunta |
+|-----------|-------------|----------|
+| H-QNKC-01 | Dentro — categorías conceptuales | ¿Confundimos proceso con resultado? |
+| H-QNKC-02 | Dentro — álgebra del modelo | ¿Confundimos sumatoria con producto? |
+| H-QNKC-03 | Dentro — lógica causal | ¿Confundimos verificación con atribución? |
+| **H-QNKC-04** | **Fuera — contraste con el territorio real** | **¿Confundimos el modelo con la realidad?** |
+
+H-QNKC-01, H-QNKC-02 y H-QNKC-03 garantizan que el sistema razone bien. H-QNKC-04 garantiza algo diferente y más difícil: que el sistema razone bien *sobre la realidad*, no sobre su propia representación de la realidad.
+
+Un sistema puede satisfacer plenamente H-QNKC-01, H-QNKC-02 y H-QNKC-03 — y seguir siendo un sistema de inteligencia sobre sí mismo, no sobre el territorio. SIGAD satisface H-QNKC-01 y H-QNKC-02 internamente. Pero cuando se compara con SIGEF, aparece la brecha. H-QNKC-04 es el axioma que obliga a hacer esa comparación — que fuerza al sistema a salir de sí mismo para verificar que lo que modela corresponde a lo que existe.
+
+Por eso H-QNKC-04 es el **axioma de humildad institucional**: no dice que el modelo está mal — dice que el modelo no puede saber si está bien sin evidencia externa. Ningún otro axioma del framework lo dice.
+
+**La consecuencia que H-QNKC-04 produce si se congela — familia VAL-QNKC:**
+
+Si H-QNKC-04 se eleva a hipótesis congelada, produce una nueva familia de artefactos que no son principios, no son observaciones, y no son corolarios. Son **protocolos de validación cruzada**:
+
+```
+VAL-QNKC-NN
+  Fuente interna (lo que el modelo declara)
+  ↔
+  Fuente externa (lo que el territorio muestra)
+  →
+  Gap observable (lo que QUIRA mide como brecha)
+```
+
+Ejemplos anticipados:
+
+| Código | Fuente interna | Fuente externa | Gap que QUIRA mide |
+|--------|---------------|----------------|-------------------|
+| VAL-01 | ICM-SIGAD (metas autodeclaradas) | SIGEF (ejecución financiera real) | Brecha declaración/ejecución presupuestaria |
+| VAL-02 | Portal GAD (publicación autodeclarada) | Portal DPE (registro regulatorio) | Brecha cumplimiento declarado/verificado LOTAIP |
+| VAL-03 | POA (planificación declarada) | SERCOP (contratación real) | Brecha plan/contratación efectiva |
+| VAL-04 | Informe rendición (resultados declarados) | CGE (auditoría externa) | Brecha declaración rendición/evidencia auditada |
+
+**"QNKC explica cómo razona QUIRA. VAL-QNKC explica cómo QUIRA demuestra que tenía razón."**
+
+La familia VAL-QNKC no existe formalmente aún. Se crea cuando H-QNKC-04 se congele. Por ahora quedan registrados los ejemplos como derivaciones anticipadas, no como artefactos activos.
 
 **Anchor empírico — La brecha SIGAD/ICM ya existe en la práctica:**
 
@@ -692,24 +724,54 @@ No destruye un falso equivalente institucional (H-QNKC-01). No modela una capaci
 
 **DEC como quinto estado del ciclo de vida de un dominio:**
 
-Los frameworks GovTech convencionales definen cuatro estados de madurez:
+Los frameworks GovTech convencionales definen cuatro estados de madurez. QUIRA introduce el quinto y el más exigente:
 
 ```
-Diseñado     → N1/N2 definidos — la norma y la pregunta bautismal existen
-Desarrollado → N1–N3 — el grafo causal existe en Neo4j
-Desplegado   → N1–N3 + Layer 2 — la pantalla funciona (puede usar fallback)
-Operativo    → N1–N5 — todos los pasos completos
+Diseñado    → N1/N2: norma y pregunta bautismal definidas
+Implementado → N1–N3: grafo causal en Neo4j + QTMP
+Operativo   → N1–N5: Layer 2 desplegado (puede usar fallback o datos proxy)
+Verificado  → N1–N5: validación técnica OK — Neo4j carga · Layer 2 funciona · YAML correcto
+DEC         → N1–N5 con datos reales + principios testados empíricamente + cadena causal cerrada
 ```
 
-QUIRA introduce un quinto estado que ningún framework GovTech convencional define:
+**La distinción crítica: Verificado ≠ DEC**
+
+Un dominio puede estar técnicamente Verificado y no ser DEC. "Verificado" es una categoría técnica — todos los componentes funcionan. "DEC" es una categoría epistemológica — el sistema ha confrontado sus hipótesis con el territorio.
 
 ```
-Epistemológicamente Cerrado (DEC) → N1–N5 con datos reales
-                                    + principios P0N testados empíricamente
-                                    + OBS-QNKC aplicables testadas o refutadas
+Verificado:
+  Neo4j carga correctamente    ✓
+  Layer 2 despliega            ✓
+  YAML sintácticamente válido  ✓
+  Conector responde            ✓
+  C10 producido                ✓  ← pero puede ser con fallback
+
+DEC (exige algo más):
+  C8 calculado con dato real   ✓  ← no fallback, no proxy, no estimado
+  P01 testado empíricamente    ✓  ← la fórmula multiplicativa con valores reales
+  OBS-QNKC-01 testada          ✓  ← ¿casos C5a=1 · C5b=1 · C5c=0?
+  OBS-QNKC-02 testada          ✓  ← ¿DPE como fuente canónica?
+  ADR-015 cerrado              ✓  ← resultado registrado en governance
 ```
 
-La diferencia entre "Operativo" y "DEC" no es técnica — es epistemológica. Un dominio Operativo tiene todos los pasos completados. Un dominio DEC tiene todos los pasos completados **con evidencia real** y ha confrontado los principios que lo gobiernan con datos del territorio — no con proxies, no con fallbacks, no con datos autodeclarados sin verificación externa.
+Dom07 hoy está entre "Operativo" y "Verificado". Tiene pantalla, Neo4j, conector — pero el C10 dice PENDIENTE porque N4 no ha ocurrido. N4 es el paso de "Verificado" a "DEC".
+
+**Dom07 como Dominio Patrón — consecuencia de DEC:**
+
+Cuando Dom07 alcance estado DEC, no cierra solo un dominio. Se convierte en el **Dominio Patrón** del framework: el primer y único dominio donde la cadena completa
+
+```
+Norma → Pregunta → Observación → Verificación → Resultado
+```
+
+ha sido recorrida de extremo a extremo con datos reales y principios testados.
+
+Dom08, Dom09, Dom03 no arrancarán desde cero. Arrancarán desde un patrón verificado:
+- La estructura multiplicativa de P01 tiene expresión empírica confirmada
+- OBS-QNKC-01 y OBS-QNKC-02 tienen resultado registrado
+- El estándar de cierre DEC está demostrado con un caso real
+
+Eso significa que todo P02→P05 puede proyectarse desde el Dominio Patrón sin incertidumbre epistemológica sobre la forma. Solo quedan los coeficientes empíricos del dominio específico por calibrar.
 
 **Definición formal de DEC:**
 
@@ -779,7 +841,8 @@ El framework produce cuatro tipos de conocimiento con ciclos de vida distintos:
 | **Principio** | Pxx | Destruye un falso equivalente institucional demostrado con evidencia de sprint. Debe satisfacer simultáneamente H-QNKC-01 y H-QNKC-02 | Permanente — congelado cuando se formaliza. No se modifica; se enmienda con nuevo documento | P00, P01 |
 | **Scheduled Principle** | Pxx (sprint asignado) | Falso equivalente identificado con sprint conocido que lo requiere. Existe como entrada en este índice, no como documento propio | Temporal — se convierte en Principio cuando su sprint lo materializa | P02, P03, P04, P05 |
 | **Observación Arquitectónica** | OBS-QNKC-NN | Patrón recurrente que no requiere principio independiente — es refinación de un principio existente o requiere condiciones que aún no existen | Abierto — puede evolucionar a Principio Scheduled, cerrarse como implementado, o seguir registrado indefinidamente | OBS-QNKC-01 |
-| **Corolario Metodológico** | COR-QNKC-NN | Consecuencia del sistema axiomático sobre cómo el framework crece y cómo se construyen sus implementaciones. No destruye un falso equivalente — formaliza una regla de proceso derivada de los axiomas | Permanente — se registra cuando la práctica de sprint confirma la regla derivada | COR-QNKC-01 (calibración) · COR-QNKC-02 (cierre DEC) |
+| **Corolario Metodológico** | COR-QNKC-NN | Consecuencia del sistema axiomático sobre cómo el framework crece y cómo se construyen sus implementaciones. No destruye un falso equivalente — formaliza una regla de proceso derivada de los axiomas | Permanente — se registra cuando la práctica de sprint confirma la regla derivada | COR-QNKC-01 (calibración) · COR-QNKC-02 (cierre DEC · Dominio Patrón) |
+| **Protocolo de Validación Cruzada** | VAL-QNKC-NN | Comparación formal entre fuente interna (autodeclaración C4) y fuente externa (verificación independiente C5) para medir la brecha observable. Derivación directa de H-QNKC-04 si se congela. No existe aún como familia — se crea cuando H-QNKC-04 pase de candidata a congelada | Activo mientras el gap medido es observable — puede cerrarse si la brecha desaparece institucionalmente | VAL-01 (SIGAD↔SIGEF) · VAL-02 (portal GAD↔portal DPE) — anticipados |
 
 **La diferencia crítica entre Scheduled y OBS-QNKC:** un Scheduled Principle tiene sprint asignado donde será necesario. Una OBS-QNKC no tiene sprint — aparece cuando el sistema la necesita, o cuando un sprint posterior revela que el patrón es más profundo de lo que parecía.
 
@@ -804,11 +867,11 @@ Antes de crear P0N, responder: ¿qué proceso está siendo confundido con su res
 **Árbol estructural del framework:**
 
 ```
-HIPÓTESIS FUNDACIONALES
-├── H-QNKC-01  Proceso ≠ Resultado              (Congelada — eje categorial)
-├── H-QNKC-02  Condiciones necesarias × (no +)  (Congelada — eje matemático)
-├── H-QNKC-03  Verificación ≠ Atribución        (Anticipada — QUIRA Impact / P06)
-└── H-QNKC-04  Modelo ≠ Validación              (Candidata — emergente de DEC · anchor empírico: brecha ICM-SIGAD vs SIGEF)
+HIPÓTESIS FUNDACIONALES  (H01-H03 operan dentro del sistema · H04 opera fuera)
+├── H-QNKC-01  Proceso ≠ Resultado              (Congelada — eje categorial — intramodelo)
+├── H-QNKC-02  Condiciones necesarias × (no +)  (Congelada — eje matemático — intramodelo)
+├── H-QNKC-03  Verificación ≠ Atribución        (Anticipada — QUIRA Impact / P06 — intramodelo)
+└── H-QNKC-04  Modelo ≠ Validación              (Candidata — axioma de humildad institucional — extramodelo · si congela → familia VAL-QNKC)
 
 PRINCIPIOS  (cada uno satisface H-QNKC-01 + H-QNKC-02 simultáneamente)
 ├── P00  Norma ≠ Cumplimiento              (Congelado — 2026-06-01)
