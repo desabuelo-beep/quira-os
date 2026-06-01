@@ -419,6 +419,39 @@ OBS-QNKC-01 es el puente epistemológico que une QNKC (cómo el sistema sabe lo 
 
 ---
 
+## Corolarios Metodológicos Registrados
+
+Consecuencias del sistema axiomático sobre el proceso de desarrollo — no sobre lo que QUIRA mide, sino sobre cómo los sprints trabajan bajo el marco axiomático.
+
+### COR-QNKC-01 — Los sprints posteriores al congelamiento de un principio no diseñan estructura; calibran observables
+
+**Estado:** Registrado (2026-06-01)  
+**Derivado de:** H-QNKC-02 — las condiciones necesarias se modelan multiplicativamente  
+**Enunciado:** Una vez que un principio Pxx está congelado, la estructura causal de su Layer 2 está determinada. Los sprints posteriores descubren los parámetros empíricos — variables observables, fuentes de datos, pesos, umbrales — pero no la forma.
+
+**La distinción crítica:**
+
+| Tipo de trabajo | Quién lo determina | Ejemplo Sprint 4 — Dom07 |
+|----------------|-------------------|--------------------------|
+| Estructura causal | Los axiomas (H-QNKC-01 + H-QNKC-02) → derivación de P01 | `C8 = C4 × C5a × C5b × C5c` — ya congelado |
+| Parámetros empíricos | El sprint — observación en Montecristi | ¿Qué mide C5c? ¿Qué umbral activa ROJO? |
+
+**Dom07 como primera prueba empírica del sistema axiomático:**  
+Sprint 4 es la primera Layer 2 completa construida como derivación directa de los axiomas. Si la cadena C4 → C5a → C5b → C5c → C8 valida P01 en Dom07, el mismo patrón se proyecta sobre todos los sprints subsecuentes sin rediseñar la epistemología:
+
+```
+P01 → Dom07   (Sprint 4 — calibra C5a/C5b/C5c para LOTAIP)
+P02 → Dom08   (Sprint 6 — calibra Incidencia_real para Participación)
+P03 → Dom03   (Sprint 10 — calibra Corrección_aplicada para Seguimiento)
+P04 → Dom09   (Sprint 11 — calibra Corrección_posterior para Rendición)
+P05 → Obs.Long (post-M002 — calibra C9a/C9b antes de la serie temporal)
+```
+
+**Por qué COR-QNKC-01 no es un principio Pxx:**  
+No destruye un falso equivalente institucional (H-QNKC-01). No modela una capacidad como condición necesaria (H-QNKC-02). Es una consecuencia procedimental del sistema axiomático — una regla sobre cómo los sprints trabajan bajo ese sistema, no sobre qué mide QUIRA.
+
+---
+
 ## Tipos de Conocimiento QNKC
 
 El framework produce cuatro tipos de conocimiento con ciclos de vida distintos:
@@ -429,6 +462,7 @@ El framework produce cuatro tipos de conocimiento con ciclos de vida distintos:
 | **Principio** | Pxx | Destruye un falso equivalente institucional demostrado con evidencia de sprint. Debe satisfacer simultáneamente H-QNKC-01 y H-QNKC-02 | Permanente — congelado cuando se formaliza. No se modifica; se enmienda con nuevo documento | P00, P01 |
 | **Scheduled Principle** | Pxx (sprint asignado) | Falso equivalente identificado con sprint conocido que lo requiere. Existe como entrada en este índice, no como documento propio | Temporal — se convierte en Principio cuando su sprint lo materializa | P02, P03, P04, P05 |
 | **Observación Arquitectónica** | OBS-QNKC-NN | Patrón recurrente que no requiere principio independiente — es refinación de un principio existente o requiere condiciones que aún no existen | Abierto — puede evolucionar a Principio Scheduled, cerrarse como implementado, o seguir registrado indefinidamente | OBS-QNKC-01 |
+| **Corolario Metodológico** | COR-QNKC-NN | Consecuencia del sistema axiomático sobre cómo el framework crece y cómo se construyen sus implementaciones. No destruye un falso equivalente — formaliza una regla de proceso derivada de los axiomas | Permanente — se registra cuando la práctica de sprint confirma la regla derivada | COR-QNKC-01 |
 
 **La diferencia crítica entre Scheduled y OBS-QNKC:** un Scheduled Principle tiene sprint asignado donde será necesario. Una OBS-QNKC no tiene sprint — aparece cuando el sistema la necesita, o cuando un sprint posterior revela que el patrón es más profundo de lo que parecía.
 
@@ -441,7 +475,8 @@ El framework produce cuatro tipos de conocimiento con ciclos de vida distintos:
 - `H-QNKC-NN`: Hipótesis arquitectónicas fundacionales — establecen la gramática del framework, no destruyen falsos equivalentes
 - `P00`: Principios sobre la posición de una norma en la cadena C1-C9 (eje de capas)
 - `P01+`: Principios sobre la lectura o consecuencia de artefactos (eje epistémico y causal)
-- `OBS-QNKC-NN`: Observaciones arquitectónicas registradas — no son principios, no requieren sprint inmediato, pero reaparecerán
+- `OBS-QNKC-NN`: Observaciones arquitectónicas registradas — refinaciones epistemológicas dentro de principios existentes
+- `COR-QNKC-NN`: Corolarios metodológicos — consecuencias del sistema axiomático sobre el proceso de desarrollo; no sobre el dominio observacional
 - Numeración secuencial en orden de descubrimiento — no de importancia jerárquica
 - Cada principio congelado tiene documento propio en `governance/framework/`
 - Este índice es el registro canónico — los documentos propios son las especificaciones
@@ -465,8 +500,11 @@ PRINCIPIOS  (cada uno satisface H-QNKC-01 + H-QNKC-02 simultáneamente)
 ├── P05  Resultado ≠ Impacto               (Scheduled — Sprint Obs. Longitudinal)
 └── P06  Impacto ≠ Transformación sist.    (Anticipated — QUIRA Impact, sin fecha)
 
-OBS-QNKC  (refinaciones dentro de principios existentes — no ramas independientes del árbol)
+OBS-QNKC  (refinaciones epistemológicas — dentro de principios existentes)
 └── OBS-01  Verificabilidad ≠ Comprensión  (Registrada — refinación de C5 dentro de P01)
+
+COR-QNKC  (corolarios metodológicos — consecuencias de los axiomas sobre el proceso de desarrollo)
+└── COR-01  Sprints posteriores calibran observables, no diseñan estructura  (Registrado — derivación de H-QNKC-02)
 ```
 
 Las dos hipótesis son la raíz. Cada Pxx es un nodo que implementa simultáneamente H-QNKC-01 (el falso equivalente que destruye) y H-QNKC-02 (la cadena multiplicativa que lo expresa). Un candidato que solo satisface una de las dos hipótesis no es un principio del framework — es un caso de uso o una regla de diseño.

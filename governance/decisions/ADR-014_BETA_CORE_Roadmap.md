@@ -112,7 +112,22 @@ QUIRA Gov entra en fase **BETA-CORE** a partir de Sprint 4.
 
 | Sprint | Dom | Nombre | Estado QTMP | Trabajo principal |
 |--------|-----|--------|-------------|-------------------|
-| **S4** | D07 | Transparencia | 🟡 YAML ✅ · Neo4j pendiente | Cargar QTMP a Neo4j + Layer 2 LOTAIP (21 numerales) |
+| **S4** | D07 | Transparencia | 🟡 YAML ✅ · Neo4j pendiente | Cargar QTMP a Neo4j + Layer 2 LOTAIP (21 numerales) · calibrar C5a/C5b/C5c |
+
+**Sprint 4 — Agenda de calibración (COR-QNKC-01 aplicado)**
+
+La forma causal de Dom07 está derivada de P01 y no requiere diseño. Sprint 4 descubre únicamente los parámetros empíricos:
+
+| Observable | Dimensión | Preguntas de calibración |
+|-----------|-----------|--------------------------|
+| **C5a — Accesibilidad** | ¿El enlace LOTAIP responde? | ¿HTTP 200? ¿Tiempo de respuesta? ¿Uptime histórico disponible en el período? |
+| **C5b — Vigencia** | ¿El contenido es del período vigente? | ¿Fecha de publicación ≤ fecha de evaluación? ¿Período reportado = año en curso? ¿Consistencia mes evaluado? |
+| **C5c — Inteligibilidad** | ¿Es comprensible para ciudadano? | ¿Estructura tabular LOTAIP? ¿OCR correcto (no imagen escaneada)? ¿Lenguaje claro? ¿WCAG básico? ← OBS-QNKC-01 activo |
+| **Umbrales C8** | Semáforo resultante | ¿Verde ≥ X? ¿Amarillo ≥ Y? ¿Rojo < Y? Calibrar contra referencia real de los 21 artículos de Montecristi |
+
+C5c es la dimensión más difícil — puede requerir checklist experta o score de legibilidad. OBS-QNKC-01 (Verificabilidad ≠ Comprensión) aplica directamente aquí.
+
+La multiplicación `C8 = C4 × C5a × C5b × C5c` es la forma fijada. El sprint define los valores — no la estructura.
 | **S5** | D06 | Salud Institucional | ✅ EQUIDAD cerrado | Layer 2 upgrade: m1_situacion → Layer 2 completo |
 | **S6** | D08 | Participación Ciudadana | ✅ PARTICIPACION cerrado | Layer 2 nueva página Dom08 |
 
