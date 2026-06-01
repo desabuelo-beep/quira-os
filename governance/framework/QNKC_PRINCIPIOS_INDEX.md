@@ -176,6 +176,36 @@ Si QUIRA incorpora un nuevo dominio institucional, la teoría ya predice la form
 
 El framework no necesita inventar para crecer. Necesita proyectar.
 
+**La consecuencia metodológica para los sprints:**
+
+Bajo el modelo axiomático, cada sprint tiene dos tipos de trabajo que no pueden mezclarse:
+
+| Tipo | Qué determina | Quién lo determina | Ejemplo Sprint 4 |
+|------|--------------|-------------------|-----------------|
+| Estructura causal | La forma del indicador — qué factores, en qué relación multiplicativa | Los axiomas — derivación formal | `C8 = C4 × C5a × C5b × C5c` para Dom07 |
+| Parámetros empíricos | Los valores, pesos y fuentes de cada factor | El sprint — observación del territorio en Montecristi | ¿Qué fuente provee C5c? ¿Qué umbral define "comprensible"? |
+
+Sprint 4 no diseña la teoría de Dom07. La implementa.  
+La forma ya está fijada por P01: C4 → C5a → C5b → C5c → C8.  
+El sprint descubre los parámetros: qué datasource alimenta cada dimensión, qué umbrales activan el semáforo, qué peso relativo recibe cada C5 en el indicador.
+
+Lo mismo aplica a todos los sprints subsecuentes:
+
+- **Sprint Dom08** no inventa la estructura de P02 — calibra qué cuenta como `Incidencia_real` en el contexto concreto de Montecristi
+- **Sprint Dom03** no inventa la estructura de P03 — calibra qué constituye `Corrección_aplicada` verificable en el ciclo de seguimiento del GAD
+- **Sprint Obs. Longitudinal** no inventa la distinción C9a/C9b — la aplica: debe separar outputs anuales de outcomes censales *antes* de construir la serie temporal, o el instrumento leerá NBI inmóvil como impacto = 0, cuando en realidad significa resolución temporal insuficiente
+
+**El cambio de pregunta que los axiomas producen:**
+
+```
+Antes: ¿Cómo debería verse este dominio?
+
+Ahora: ¿Qué variables, fuentes y pesos calibran
+        la estructura que P0N ya determinó?
+```
+
+La primera pregunta es abierta — cualquier sprint puede responderla de forma diferente. La segunda es cerrada en su forma y abierta solo en sus coeficientes. Eso es lo que hace que el sistema sea acumulable sin perder coherencia.
+
 ---
 
 ## Meta-principio raíz
