@@ -618,6 +618,70 @@ No destruye un falso equivalente institucional (H-QNKC-01). No modela una capaci
 
 ---
 
+### COR-QNKC-02 — El criterio real de cierre de un sprint es la obtención de un Dominio Epistemológicamente Cerrado
+
+**Estado:** Registrado (2026-06-01)  
+**Derivado de:** H-QNKC-01 + H-QNKC-02 + ADR-012 — la combinación de los axiomas con el protocolo N1→N5 define cuándo un sprint está verdaderamente cerrado  
+**Enunciado:** Un sprint está concluido cuando su dominio alcanza estado **DEC (Dominio Epistemológicamente Cerrado)** — no cuando sus tareas técnicas se completan.
+
+**Definición formal de DEC:**
+
+Un dominio alcanza estado DEC cuando la cadena:
+
+```
+Norma → Pregunta → Observación → Verificación → Resultado
+```
+
+puede recorrerse de extremo a extremo sin huecos con datos reales — y cuando ese recorrido valida o falsea empíricamente los principios QNKC que gobiernan el dominio.
+
+**Condiciones necesarias para DEC (todas deben satisfacerse simultáneamente):**
+
+| Condición | Qué requiere | Lo que NO es suficiente |
+|-----------|-------------|------------------------|
+| 1. ADR-012 N1–N5 completos | Todos los pasos con datos reales — sin fallback | N1–N4 con proxies o estimados |
+| 2. Principio P0N testado empíricamente | El principio gobernante del dominio tiene al menos un resultado observable que confirma o refuta su forma multiplicativa | El principio existe en governance pero no en datos |
+| 3. OBS-QNKC aplicable testada | Si existe una OBS-QNKC activa en el dominio, tiene resultado: validada / parcialmente validada / no confirmada | La OBS existe registrada pero sin cierre empírico |
+| 4. C10 calculado con dato real | La narrativa del Alcalde refleja un dato territorial verificable | C10 producido con datos de fallback o "pendiente" |
+
+**Condiciones que NO son suficientes para DEC:**
+
+```
+El commit existe               → necesaria, no suficiente
+La pantalla funciona           → necesaria, no suficiente
+Neo4j load ejecutado           → necesaria, no suficiente
+N5 (C10) producido             → necesaria pero no suficiente si usa fallback
+Layer 2 desplegado             → necesaria, no suficiente
+```
+
+**La distinción crítica — lo que COR-QNKC-02 hace explícito:**
+
+Un dominio puede ser técnicamente completo (pantalla funciona, Neo4j cargado, connector operativo) y epistemológicamente abierto: el indicador se calcula con datos proxy, el C8 usa fallback, el C10 dice "PENDIENTE". Ese dominio no es DEC.
+
+DEC no es más exigente en lo técnico — es exigente en lo empírico: requiere que el dato real pase por la cadena completa y que los principios que gobiernan el dominio hayan sido confrontados con evidencia, no solo con estructura.
+
+**Dom07 como primera prueba de COR-QNKC-02:**
+
+Sprint 4 no cierra cuando `p07_transparencia.py` funciona. Sprint 4 cierra cuando:
+
+1. N4 completo: auditoría real en `transparencia.dpe.gob.ec` para Montecristi — datos [Numeral × C5a × C5b × C5c] registrados
+2. N5 completo: C10 calculado con `C8 = C4 × C5a × C5b × C5c` usando datos reales (no PENDIENTE)
+3. ADR-015 cerrado: OBS-QNKC-02 declarada validada / parcialmente validada / no confirmada con evidencia
+4. Tres hipótesis testadas simultáneamente:
+   - **H-A:** P01 funciona operativamente — `C8 = C4 × C5a × C5b × C5c` calculable con datos reales
+   - **H-B:** OBS-QNKC-01 es observable — ¿existen numerales donde C5a=1, C5b=1, C5c=0?
+   - **H-C:** OBS-QNKC-02 escala nacionalmente — ¿puede DPE actuar como observador canónico?
+
+Dom07 DEC = Dom07 técnico + Dom07 empírico + principios testados.
+
+**Consecuencia sobre los sprints subsecuentes:**
+
+Dom08, Dom09, Dom03 no son experimentos epistemológicos. Son **replicaciones del patrón DEC**. La forma es idéntica (ADR-012 N1→N5 + test de principios gobernantes). Solo los coeficientes empíricos varían. COR-QNKC-02 formaliza por qué Dom07 como primer DEC importa: establece el estándar de cierre para todos los sprints subsecuentes. Cuando Dom07 esté DEC, el framework habrá demostrado que H-QNKC-01 + H-QNKC-02 + P01 + OBS-QNKC-01 + OBS-QNKC-02 pueden producir conjuntamente un dominio operativo completo y verificado. Dom08–Dom12 heredan ese estándar.
+
+**Por qué COR-QNKC-02 no es un principio Pxx:**  
+No destruye un falso equivalente institucional (H-QNKC-01). No modela una capacidad institucional como condición necesaria (H-QNKC-02). Es una consecuencia del sistema axiomático sobre cómo los sprints se evalúan — una regla de proceso derivada de los axiomas, como COR-QNKC-01, no sobre lo que QUIRA mide.
+
+---
+
 ## Tipos de Conocimiento QNKC
 
 El framework produce cuatro tipos de conocimiento con ciclos de vida distintos:
@@ -628,7 +692,7 @@ El framework produce cuatro tipos de conocimiento con ciclos de vida distintos:
 | **Principio** | Pxx | Destruye un falso equivalente institucional demostrado con evidencia de sprint. Debe satisfacer simultáneamente H-QNKC-01 y H-QNKC-02 | Permanente — congelado cuando se formaliza. No se modifica; se enmienda con nuevo documento | P00, P01 |
 | **Scheduled Principle** | Pxx (sprint asignado) | Falso equivalente identificado con sprint conocido que lo requiere. Existe como entrada en este índice, no como documento propio | Temporal — se convierte en Principio cuando su sprint lo materializa | P02, P03, P04, P05 |
 | **Observación Arquitectónica** | OBS-QNKC-NN | Patrón recurrente que no requiere principio independiente — es refinación de un principio existente o requiere condiciones que aún no existen | Abierto — puede evolucionar a Principio Scheduled, cerrarse como implementado, o seguir registrado indefinidamente | OBS-QNKC-01 |
-| **Corolario Metodológico** | COR-QNKC-NN | Consecuencia del sistema axiomático sobre cómo el framework crece y cómo se construyen sus implementaciones. No destruye un falso equivalente — formaliza una regla de proceso derivada de los axiomas | Permanente — se registra cuando la práctica de sprint confirma la regla derivada | COR-QNKC-01 |
+| **Corolario Metodológico** | COR-QNKC-NN | Consecuencia del sistema axiomático sobre cómo el framework crece y cómo se construyen sus implementaciones. No destruye un falso equivalente — formaliza una regla de proceso derivada de los axiomas | Permanente — se registra cuando la práctica de sprint confirma la regla derivada | COR-QNKC-01 (calibración) · COR-QNKC-02 (cierre DEC) |
 
 **La diferencia crítica entre Scheduled y OBS-QNKC:** un Scheduled Principle tiene sprint asignado donde será necesario. Una OBS-QNKC no tiene sprint — aparece cuando el sistema la necesita, o cuando un sprint posterior revela que el patrón es más profundo de lo que parecía.
 
@@ -672,7 +736,8 @@ OBS-QNKC  (refinaciones epistemológicas — dentro de principios existentes)
 └── OBS-02  Portal Regulatorio ≠ Portal Institucional como C5  (Registrada · ADR-015 abierto — validación N4 pendiente · O(n)→O(1) · N2 Dom07 v1.0.1)
 
 COR-QNKC  (corolarios metodológicos — consecuencias de los axiomas sobre el proceso de desarrollo)
-└── COR-01  Sprints posteriores calibran observables, no diseñan estructura  (Registrado — derivación de H-QNKC-02)
+├── COR-01  Sprints posteriores calibran observables, no diseñan estructura  (Registrado — derivación de H-QNKC-02)
+└── COR-02  Criterio de cierre de sprint = DEC (Dominio Epistemológicamente Cerrado)  (Registrado — N4 Dom07 es test simultáneo de P01 + OBS-01 + OBS-02)
 ```
 
 Las dos hipótesis son la raíz. Cada Pxx es un nodo que implementa simultáneamente H-QNKC-01 (el falso equivalente que destruye) y H-QNKC-02 (la cadena multiplicativa que lo expresa). Un candidato que solo satisface una de las dos hipótesis no es un principio del framework — es un caso de uso o una regla de diseño.

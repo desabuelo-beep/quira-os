@@ -28,28 +28,33 @@ Dom07 dejó de ser un dominio de **autodeclaración** y pasó a ser un dominio d
 
 ---
 
-## Las dos preguntas que N4 responde simultáneamente
+## Las tres hipótesis que N4 testa simultáneamente
 
-### Pregunta 1 — Operativa (Dom07 · Montecristi)
+La auditoría N4 no valida solo los valores de C5a, C5b, C5c para Montecristi. Valida tres hipótesis del framework QNKC de forma simultánea. Ese es el alcance real de este ADR.
 
-> ¿Cuál es el C8 real del Municipio de Montecristi según la fuente canónica DPE?
+### Hipótesis A — P01 funciona operativamente
+
+> ¿Puede calcularse `C8 = C4 × C5a × C5b × C5c` con datos reales, no con fallback?
 
 ```
-C8 = C4 × C5a × C5b × C5c
-
-C4  = cumplimiento formal autodeclarado  (portal GAD)
-C5a = numerales que existen en DPE      (pendiente)
-C5b = numerales actualizados en DPE     (pendiente)
-C5c = inteligibilidad para ciudadano    (pendiente)
+C4  = cumplimiento formal autodeclarado  (portal GAD o verificación directa)
+C5a = fracción de numerales que existen en DPE        [pendiente]
+C5b = fracción de numerales actualizados en DPE       [pendiente]
+C5c = evaluación de inteligibilidad para ciudadano    [pendiente]
+C8  = C4 × C5a × C5b × C5c                           [pendiente]
 ```
 
-Resultado: **[pendiente auditoría N4]**
+Si C8 puede calcularse con datos reales → P01 (Dualidad Epistémica) tiene expresión operativa verificada, no solo teórica. La forma multiplicativa de H-QNKC-02 queda instanciada por primera vez con evidencia territorial real.
 
-### Pregunta 2 — Arquitectónica (Escalabilidad nacional · 221 GADs)
+### Hipótesis B — OBS-QNKC-01 es observable empíricamente
+
+> ¿Existen numerales en la auditoría donde `C5a = 1`, `C5b = 1`, `C5c = 0`?
+
+Es decir: ¿hay documentos que existen y están actualizados pero son incomprensibles para un ciudadano común? Si aparecen esos casos, OBS-QNKC-01 (Verificabilidad ≠ Comprensión) deja de ser una distinción teórica y se convierte en un fenómeno observable registrado con evidencia. Eso tiene consecuencias directas sobre la Constitución de Lenguaje y sobre la política de plain language en C10.
+
+### Hipótesis C — OBS-QNKC-02 escala nacionalmente
 
 > ¿Puede DPE actuar como fuente observacional canónica para evaluar los 221 GADs del Ecuador bajo el mismo modelo epistemológico que QUIRA aplica en Montecristi?
-
-Esta pregunta tiene alcance estratégico mayor que la primera. Si la respuesta es sí, el salto de Montecristi a Ecuador completo cambia de naturaleza:
 
 ```
 Sin DPE como fuente canónica:
@@ -59,7 +64,7 @@ Con DPE como fuente canónica:
   1 portal DPE → 1 conector → estructura uniforme → O(1)
 ```
 
-La complejidad de observabilidad para Dom07 (y potencialmente para otros dominios con verificador externo equivalente) pasa de lineal a constante.
+La complejidad de observabilidad para Dom07 pasa de lineal a constante. Si valida, el salto de Montecristi a Ecuador completo cambia de naturaleza: no es un problema de scraping, es un problema de consulta a fuente estructurada.
 
 ---
 
@@ -188,6 +193,49 @@ C8  = C4 × C5a × C5b × C5c
 **Resultado:** Primer C10 record de Dom07 — input para p07_transparencia.py y Neo4j.
 
 ---
+
+## Criterio de cierre — DEC (Dominio Epistemológicamente Cerrado)
+
+Sprint 4 no cierra cuando el commit existe, ni cuando la pantalla funciona, ni cuando Neo4j está cargado. Cierra cuando Dom07 alcanza estado **DEC** (COR-QNKC-02 — `QNKC_PRINCIPIOS_INDEX.md`).
+
+**Dom07 DEC se declara cuando:**
+
+```
+1. N4 completo:   auditoría real transparencia.dpe.gob.ec para Montecristi
+                  datos [Numeral × C5a × C5b × C5c] registrados
+
+2. N5 completo:   C10 calculado con C8 = C4 × C5a × C5b × C5c
+                  usando datos reales — no "PENDIENTE", no fallback
+
+3. ADR-015 cerrado: OBS-QNKC-02 declarada:
+                    Validada / Parcialmente validada / No confirmada
+                    con evidencia empírica registrada
+
+4. Tres hipótesis testadas:
+   H-A: P01 operativo      → C8 calculado con dato real
+   H-B: OBS-QNKC-01 obs.  → casos C5a=1 · C5b=1 · C5c=0 registrados (o ausentes)
+   H-C: OBS-QNKC-02 escala → DPE como fuente canónica confirmado (o refutado)
+```
+
+**La cadena que debe poder recorrerse de extremo a extremo:**
+
+```
+CE_18 / LOTAIP Art. 19
+         ↓ QLEP (N1)
+Pregunta bautismal N2 v1.0.1
+         ↓ QTMP (N3)
+Cadena causal C1→C9 en Neo4j
+         ↓ Auditoría DPE (N4)
+C5a · C5b · C5c reales
+         ↓ Cálculo C8 (N5)
+C10 record — narrativa para el Alcalde
+         ↓ Layer 2 p07_transparencia.py
+Semáforo · indicador · observabilidad en pantalla
+```
+
+Si hay un hueco en esta cadena — cualquier eslabón con dato proxy, fallback, o "pendiente" — Dom07 no es DEC. El C10 puede existir, pero el sprint no está cerrado.
+
+**Sprint 5 no abre hasta que Dom07 sea DEC.**
 
 ## Relación con otros documentos de gobernanza
 
