@@ -4,7 +4,8 @@
 **Fecha apertura:** 2026-06-01  
 **Autores:** Dylus Lab — Director + Advisor  
 **Vigencia:** Se cierra con resultado N4 de Sprint 4 · Dom07  
-**Clasif.:** Interno · QUIRA Operaciones
+**Clasif.:** Interno · QUIRA Operaciones  
+**Nota de clasificación:** Este ADR es retroactivamente el primer **protocolo VAL-QNKC de facto** del framework — no es una inspección de cumplimiento sino una comparación formal entre fuente interna (portal GAD · C4) y fuente externa (portal DPE · C5) para medir la brecha observable. Cuando la familia VAL-QNKC se formalice (derivación de H-QNKC-04 si se congela), ADR-015 será su prototipo fundacional. Ver `QNKC_PRINCIPIOS_INDEX.md` — H-QNKC-04 candidata.
 
 ---
 
