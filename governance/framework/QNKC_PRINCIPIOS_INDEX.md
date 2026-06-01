@@ -539,7 +539,49 @@ Ambas refinan P01 desde ángulos complementarios y ambas son necesarias para cal
 - Identificar el path/entidad exacta para Montecristi en el portal DPE
 - Verificar si LOTAIP 2.0 modificó el número de numerales obligatorios (el colega observó hasta 24 en la navegación — pendiente contrastar con texto legal)
 
-**Cuándo formalizarlo:** si Dom08 (actas participación → CPCCS como portal regulatorio) y Dom09 (rendición de cuentas → CPCCS/DPE como fuentes C5) confirman el patrón — "Fuente Regulatoria ≠ Fuente Institucional para C5" se formalizaría como P07 o principio de la serie QUIRA Impact. Por ahora es observación activa en Sprint 4.
+**El desplazamiento epistemológico completo — de autodeclaración a observación externa:**
+
+OBS-QNKC-02 no solo cambia la fuente de un dato. Cambia el sujeto de evaluación de QUIRA en Dom07:
+
+```
+Modelo anterior:
+  ¿Qué afirma haber publicado el GAD? (autodeclaración — C4)
+
+Modelo OBS-QNKC-02:
+  ¿Qué verifica un tercero institucional como publicado? (observación externa — C5)
+```
+
+Dom07 dejó de ser un dominio de autodeclaración y pasó a ser un dominio de observación externa. Este es el núcleo epistemológico de P01 (Dualidad Epistémica) aplicado no a los documentos sino a la infraestructura digital que los contiene: el portal GAD es C4 (el proceso de publicación), el portal DPE es C5 (la verificación de ese proceso por un tercero con autoridad regulatoria).
+
+**Patrón generalizador — Verificadores Externos por Dominio:**
+
+OBS-QNKC-02 probablemente no es específica de Dom07 (LOTAIP). Si el patrón se mantiene, otros dominios tienen su equivalente de verificador externo:
+
+| Dominio | Fuente primaria actual (C4) | Posible fuente observacional externa (C5) | Institución verificadora |
+|---------|----------------------------|------------------------------------------|--------------------------|
+| Dom07 Transparencia | Portal GAD · autodeclaración | `transparencia.dpe.gob.ec` | DPE |
+| Dom08 Participación | Actas municipales · proceso | Evidencia de incidencia en PDOT/POA firmado | Consejo Planificación / CPCCS |
+| Dom09 Rendición | Informe municipal · autodeclaración | Evaluación externa / observatorio rendición | CPCCS |
+| Dom03 Seguimiento | Reporte interno de metas | SIGEF (ejecución financiera) / CGE (auditoría) | MEF / CGE |
+
+La pauta subyacente es directamente derivada de P01: QUIRA prioriza el verificador externo cuando existe con autoridad normativa y estructura consultable sobre el dominio evaluado.
+
+**Cuándo formalizarlo como P07:** Si Dom07 (DPE) valida y Dom08 (CPCCS) + Dom09 (CPCCS/DPE) confirman el mismo patrón en sus respectivos sprints, el candidato es:
+
+> **P07 — Autodeclaración ≠ Verificación Externa (en C5)**  
+> *"Para evaluar la verificabilidad C5 de una capacidad institucional, QUIRA prioriza fuentes regulatorias externas sobre autodeclaraciones del propio GAD."*
+
+P07 satisfaría H-QNKC-01 (destruye el falso equivalente "declaración de cumplimiento = cumplimiento verificable por tercero") y H-QNKC-02 (la verificabilidad colapsa si no existe verificador externo con cobertura positiva). El test formal se aplica cuando Dom08 y Dom09 tengan sus sprints — no antes.
+
+**Validación en curso — ADR-015:**
+
+La auditoría N4 de Dom07 responde dos preguntas simultáneas:
+- **Pregunta operativa:** ¿Cuál es el C8 de Montecristi? (Dom07 específico)
+- **Pregunta arquitectónica:** ¿Puede DPE actuar como fuente canónica para 221 GADs? (escala nacional)
+
+La segunda tiene alcance mayor. Si valida, la complejidad de observabilidad Dom07 para 221 GADs es O(1). Si no valida, la complejidad sigue siendo O(n). Resultado documentado en `ADR-015_Validacion_OBS-QNKC-02.md` — pendiente de cierre post-N4.
+
+**Estado tras auditoría N4:** OBS-QNKC-02 pasará de "Registrada" a "Validada", "Parcialmente validada" o "No confirmada" — actualizando este índice y cerrando ADR-015.
 
 ---
 
@@ -627,7 +669,7 @@ PRINCIPIOS  (cada uno satisface H-QNKC-01 + H-QNKC-02 simultáneamente)
 
 OBS-QNKC  (refinaciones epistemológicas — dentro de principios existentes)
 ├── OBS-01  Verificabilidad ≠ Comprensión           (Registrada — refinación de C5 dentro de P01)
-└── OBS-02  Portal Regulatorio ≠ Portal Institucional como C5  (Registrada — dónde se verifica C5a/C5b · LOTAIP 2.0)
+└── OBS-02  Portal Regulatorio ≠ Portal Institucional como C5  (Registrada · ADR-015 abierto — validación N4 pendiente · O(n)→O(1) · N2 Dom07 v1.0.1)
 
 COR-QNKC  (corolarios metodológicos — consecuencias de los axiomas sobre el proceso de desarrollo)
 └── COR-01  Sprints posteriores calibran observables, no diseñan estructura  (Registrado — derivación de H-QNKC-02)
