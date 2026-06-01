@@ -1,8 +1,8 @@
 # QNKC — Índice de Principios Arquitectónicos del Framework
 
 **Estado:** Vivo — se actualiza al congelar cada nuevo principio  
-**Versión:** 1.2  
-**Fecha creación:** 2026-06-01 · Última actualización:** 2026-06-01  
+**Versión:** 1.3  
+**Fecha creación:** 2026-06-01 · **Última actualización:** 2026-06-01 (v1.3 — OBS-QNKC-02 VALIDADA · C5t registrado · N4 completado · ADR-015 cerrado)  
 **Clasificación en la jerarquía de gobernanza:** Primer nivel — al mismo nivel que ADRs del núcleo y QLEP Canónico  
 **Clasif.:** Interno · QUIRA Operaciones
 
@@ -521,10 +521,21 @@ Comprensible para ciudadano  ✗  ← OBS-QNKC-01
 | C5 media | C5b · Actualidad | ¿El contenido es del período vigente y está completo? |
 | C5 avanzada | C5c · Inteligibilidad | ¿Un ciudadano común puede entenderlo y usarlo? |
 
-**Fórmula operativa de los tres niveles:**
+**Extensión empírica N4 (2026-06-01) — C5b descompuesto:**
+
+N4 Dom07 descubrió que C5b (Actualidad) contiene dos fenómenos independientes que deben medirse por separado:
+
+| Sub-variable | Pregunta | N4 Montecristi (16 meses) |
+|---|---|---|
+| `C5b_acc` — Accesibilidad | ¿El numeral está publicado para el período? | 1.00 — 100% presentes |
+| `C5t` — Puntualidad temporal | ¿Fue publicado antes del plazo legal (día 15 del mes siguiente)? | 0.00 — 0/16 meses en plazo |
+
+`C5b_acc = 1` y `C5t = 0` pueden coexistir: el documento existe pero llegó tarde. Sin C5t, la `verificabilidad_efectiva` mide si el dato está disponible, no si cumple el mandato legal de plazo. C5t es la primera variable donde evidencia empírica falsea el supuesto default C5b=1. El atraso máximo registrado en Montecristi es 139 días (abril 2025). No existe un solo mes puntual en 16 meses de datos.
+
+**Fórmula operativa actualizada (post-N4):**
 
 ```
-verificabilidad_efectiva = C5a × C5b × C5c
+verificabilidad_efectiva = C5a × C5b_acc × C5t × C5c
 ```
 
 Coherencia estructural con C8: la multiplicación es la misma lógica. Si C5c (inteligibilidad) es cero — el documento existe y está actualizado pero nadie puede entenderlo — la verificabilidad es cero aunque C5a y C5b sean perfectos. El sistema no puede premiar transparencia inaccesible. Exactamente el mismo mecanismo que en `C8 = cumplimiento_formal × verificabilidad_efectiva`.
@@ -541,7 +552,7 @@ OBS-QNKC-01 es el puente epistemológico que une QNKC (cómo el sistema sabe lo 
 
 ### OBS-QNKC-02 — Portal Regulatorio ≠ Portal Institucional como Fuente de C5
 
-**Estado:** Observación registrada (2026-06-01) — activa Sprint 4  
+**Estado:** VALIDADA (2026-06-01) — N4 completado · DPE confirmado como fuente canónica O(1) · ADR-015 cerrado  
 **Falso equivalente insinuado:** Portal GAD = Fuente autoritativa de cumplimiento LOTAIP  
 **Principio padre:** P01 — Documento ≠ Evidencia (Dualidad Epistémica QNKC-P01)  
 **Descubierta durante:** Calibración Sprint 4 — Dom07 Transparencia  
@@ -631,11 +642,24 @@ OBS-QNKC-02 resuelve "¿dónde se verifica C5a y C5b?" (respuesta: en el portal 
 
 Ambas refinan P01 desde ángulos complementarios y ambas son necesarias para calibrar Dom07 correctamente.
 
-**Pendiente de verificación (calibración Sprint 4):**
-- Confirmar que LOTAIP 2.0 establece obligación (no recomendación) de carga en portal DPE
-- Verificar si transparencia.dpe.gob.ec tiene API de consulta programática
-- Identificar el path/entidad exacta para Montecristi en el portal DPE
-- Verificar si LOTAIP 2.0 modificó el número de numerales obligatorios (el colega observó hasta 24 en la navegación — pendiente contrastar con texto legal)
+**Resultado N4 — Auditoría empírica (2026-06-01):**
+
+✅ `transparencia.dpe.gob.ec` expone API pública sin autenticación — consulta programática confirmada  
+✅ Montecristi: ID 937 · URL canónica `/entidades/937` · RUC 1360001010001 · endpoint `/backend/v1/transparency/transparency/active/public?establishment_id=937&year={y}&month={m}`  
+✅ 25 numerales/mes en 2026 — LOTAIP 2.0 amplió de ~14 a 25 numerales obligatorios (salto confirmado por datos longitudinales)  
+✅ Arquitectura O(1) confirmada — un único endpoint uniforme sirve todos los GADs ecuatorianos  
+✅ 16 meses de datos longitudinales: 2025 completo (12 meses) + 2026 Ene–Abr (4 meses)
+
+**Hallazgo crítico — C5t = 0.0 en los 16 meses auditados (atraso sistémico):**
+
+N4 descubrió que C5b debe descomponerse en dos sub-variables independientes (ver extensión en OBS-QNKC-01):
+
+| Sub-variable | Definición | Montecristi 2025–2026 |
+|---|---|---|
+| `C5b_acc` (accesibilidad) | ¿El numeral está publicado para el período? | 1.00 — todos los meses |
+| `C5t` (puntualidad) | ¿Fue publicado antes del día 15 del mes siguiente? | 0.00 — ningún mes |
+
+C5t es la primera variable donde evidencia empírica contradice el supuesto default C5b=1. El atraso máximo registrado es 139 días (abril 2025). El mínimo es 30 días (marzo 2025). **Ningún mes de los 16 auditados cumplió el plazo legal.** Esta brecha no es visible desde el portal GAD (C4) — solo la fuente regulatoria externa (C5) la revela, lo que confirma el núcleo epistemológico de OBS-QNKC-02.
 
 **El desplazamiento epistemológico completo — de autodeclaración a observación externa:**
 
@@ -671,15 +695,15 @@ La pauta subyacente es directamente derivada de P01: QUIRA prioriza el verificad
 
 P07 satisfaría H-QNKC-01 (destruye el falso equivalente "declaración de cumplimiento = cumplimiento verificable por tercero") y H-QNKC-02 (la verificabilidad colapsa si no existe verificador externo con cobertura positiva). El test formal se aplica cuando Dom08 y Dom09 tengan sus sprints — no antes.
 
-**Validación en curso — ADR-015:**
+**Validación completada — ADR-015 cerrado (2026-06-01):**
 
-La auditoría N4 de Dom07 responde dos preguntas simultáneas:
-- **Pregunta operativa:** ¿Cuál es el C8 de Montecristi? (Dom07 específico)
-- **Pregunta arquitectónica:** ¿Puede DPE actuar como fuente canónica para 221 GADs? (escala nacional)
+La auditoría N4 respondió dos preguntas simultáneas:
+- **Pregunta operativa:** ¿Cuál es el C8 de Montecristi? — `C8 = C4 × C5a × C5b_acc × C5t × C5c = C4 × 1.00 × 1.00 × 0.00 × 0.75 = 0` (atraso sistémico colapsa la cadena)
+- **Pregunta arquitectónica:** ¿Puede DPE actuar como fuente canónica para 221 GADs? — Sí. O(1) confirmado.
 
-La segunda tiene alcance mayor. Si valida, la complejidad de observabilidad Dom07 para 221 GADs es O(1). Si no valida, la complejidad sigue siendo O(n). Resultado documentado en `ADR-015_Validacion_OBS-QNKC-02.md` — pendiente de cierre post-N4.
+La segunda tenía alcance mayor y validó: la complejidad de observabilidad Dom07 para 221 GADs es O(1). Resultado completo documentado en `ADR-015_Validacion_OBS-QNKC-02.md` — cerrado con estado ACEPTADO.
 
-**Estado tras auditoría N4:** OBS-QNKC-02 pasará de "Registrada" a "Validada", "Parcialmente validada" o "No confirmada" — actualizando este índice y cerrando ADR-015.
+**Estado post-auditoría N4:** OBS-QNKC-02 = **VALIDADA**. ADR-015 cerrado. Dom07 en estado **Verificado** — pendiente DEC formal (requiere C10 con dato real y carga Neo4j definitiva).
 
 ---
 
@@ -754,7 +778,7 @@ DEC (exige algo más):
   ADR-015 cerrado              ✓  ← resultado registrado en governance
 ```
 
-Dom07 hoy está entre "Operativo" y "Verificado". Tiene pantalla, Neo4j, conector — pero el C10 dice PENDIENTE porque N4 no ha ocurrido. N4 es el paso de "Verificado" a "DEC".
+Dom07 está en estado **Verificado** (2026-06-01). N4 completado: pantalla, Neo4j, conector, auditoría DPE empírica y ADR-015 cerrado. El paso pendiente hacia DEC es C10 con dato real (`C8 = C4 × C5a × C5b_acc × C5t × C5c` con valores del N4, sin PENDIENTE) y la carga Neo4j definitiva del circuito TRANSPARENCIA.
 
 **Dom07 como Dominio Patrón — consecuencia de DEC:**
 
@@ -884,7 +908,7 @@ PRINCIPIOS  (cada uno satisface H-QNKC-01 + H-QNKC-02 simultáneamente)
 
 OBS-QNKC  (refinaciones epistemológicas — dentro de principios existentes)
 ├── OBS-01  Verificabilidad ≠ Comprensión           (Registrada — refinación de C5 dentro de P01)
-└── OBS-02  Portal Regulatorio ≠ Portal Institucional como C5  (Registrada · ADR-015 abierto — validación N4 pendiente · O(n)→O(1) · N2 Dom07 v1.0.1)
+└── OBS-02  Portal Regulatorio ≠ Portal Institucional como C5  (VALIDADA 2026-06-01 · ADR-015 cerrado · O(n)→O(1) confirmado · C5t=0.0 · atraso sistémico 16 meses · Dom07 → Verificado)
 
 COR-QNKC  (corolarios metodológicos — consecuencias de los axiomas sobre el proceso de desarrollo)
 ├── COR-01  Sprints posteriores calibran observables, no diseñan estructura  (Registrado — derivación de H-QNKC-02)
@@ -907,7 +931,7 @@ Las dos hipótesis que generan todos los principios del framework están formali
 No significa que no aparecerán nuevos principios. Significa algo más fuerte: todo principio futuro deberá poder derivarse simultáneamente de H-QNKC-01 (falso equivalente que destruye) y H-QNKC-02 (cadena multiplicativa que lo expresa). Si no puede derivarse de ambas, no es un principio del framework — es una OBS-QNKC o una regla de implementación. Ese es el verdadero cierre.
 
 **Estado de los principios para BETA-CORE:**  
-P00 y P01 están formalizados. P02–P05 están programados con sprint conocido y con su estructura multiplicativa pre-formal derivada de H-QNKC-02. OBS-QNKC-01 está implementada en el sistema (estado `INCOMPRENSIBLE` en QTMP + Constitución de Lenguaje) antes de requerir formalización explícita. OBS-QNKC-02 registrada durante calibración Sprint 4 — Dom07: el portal regulatorio DPE (transparencia.dpe.gob.ec) es la fuente canónica de C5a/C5b para dominios LOTAIP; cambia dónde QUIRA verifica, no qué verifica ni con qué fórmula. Consecuencia para 221 GADs: verificación C5a/C5b centralizada en una sola fuente estructurada. No se requieren principios adicionales para cerrar MILESTONE_002.
+P00 y P01 están formalizados. P02–P05 están programados con sprint conocido y con su estructura multiplicativa pre-formal derivada de H-QNKC-02. OBS-QNKC-01 está implementada en el sistema (estado `INCOMPRENSIBLE` en QTMP + Constitución de Lenguaje) antes de requerir formalización explícita. OBS-QNKC-02 **VALIDADA** (2026-06-01 · ADR-015 cerrado) — el portal regulatorio DPE (transparencia.dpe.gob.ec) es la fuente canónica de C5a/C5b para dominios LOTAIP. N4 confirmó: API pública sin autenticación, 25 numerales/mes, 16 meses de datos longitudinales, arquitectura O(1) verificada para los 221 GADs. Hallazgo crítico adicional: C5b descompuesto en C5b_acc (accesibilidad = 1.00) y C5t (puntualidad = 0.00) — atraso sistémico en todos los meses auditados. No se requieren principios adicionales para cerrar MILESTONE_002.
 
 El próximo principio que QUIRA va a necesitar es P02 — en el Sprint de Dom08 (Participación Ciudadana). Aparecerá exactamente cuando el sistema tenga que decidir qué cuenta como C9: si el acta de participación es suficiente, o si se requiere trazar que la participación modificó una decisión concreta de inversión. La estructura multiplicativa pre-formal ya está registrada: `participación_efectiva = Convocatoria × Deliberación × Incidencia_real`.
 
