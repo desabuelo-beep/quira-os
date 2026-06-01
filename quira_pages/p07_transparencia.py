@@ -4,7 +4,8 @@ Módulo ejecutivo para el Dominio 7 — Transparencia e Información Pública.
 
 ADR-013 (2026-05-31) + ADR-014 (2026-06-01) — QTMP circuit TRANSPARENCIA → Dom07.
 QNKC-P01 Dualidad Epistémica: C4 (Cumplimiento Formal) × C5 (Verificabilidad Efectiva).
-OBS-QNKC-01: verificabilidad_efectiva = C5a (Existencia) × C5b (Actualidad) × C5c (Inteligibilidad).
+OBS-QNKC-01 + N4: verificabilidad_efectiva = C5a (Existencia) × C5b_acc (Accesibilidad) × C5t (Puntualidad) × C5c (Inteligibilidad).
+OBS-QNKC-02: fuente canónica C5 = Portal DPE · transparencia.dpe.gob.ec (no portal institucional GAD).
 
 Bloomberg Model:
   ✗ NUNCA exponer: TRANSPARENCIA, IND_TRANS_01_MCR, H41_IOC, circuit_id, fuente_neo4j
@@ -94,10 +95,17 @@ def _render_dom07_ejecutivo(chain: dict) -> None:
     narrativa       = chain.get("narrativa", "")
     estado          = chain.get("estado_dato", "pendiente_validacion")
     numerales       = chain.get("numerales_publicados")     # puede ser None
-    numerales_total = chain.get("numerales_total", 21)
+    numerales_total = chain.get("numerales_total", 25)   # LOTAIP 2.0: 25 numerales
     tasa_saip       = chain.get("tasa_respuesta_saip")      # puede ser None
     umbral          = chain.get("umbral_verde", 80.0)
     fuente_neo4j    = chain.get("fuente_neo4j", False)      # INTERNO — no exponer en UI
+    # Valores C5 individuales — de N4 cuando están disponibles (pueden ser None)
+    c5a_val         = chain.get("c5a")
+    c5b_acc_val     = chain.get("c5b_acc")
+    c5t_val         = chain.get("c5t")
+    c5c_val         = chain.get("c5c")
+    atraso_max      = chain.get("atraso_max_dias")
+    meses_audit     = chain.get("meses_auditados")
 
     es_pendiente = (valor is None or sem == "PENDIENTE")
 
@@ -189,7 +197,7 @@ def _render_dom07_ejecutivo(chain: dict) -> None:
                 f"{c4_pct:.0f}% de cobertura</div></div>"
             )
         else:
-            c4_val   = "— / 21"
+            c4_val   = f"— / {numerales_total}"
             c4_color = _MUTED
             c4_barra = ""
 
@@ -205,45 +213,66 @@ def _render_dom07_ejecutivo(chain: dict) -> None:
               font-family:monospace;margin-bottom:0">{c4_val}</div>
   {c4_barra}
   <div style="font-size:0.67rem;color:{_MUTED};line-height:1.5;margin-top:4px">
-    Numerales LOTAIP Art. 19<br>con contenido activo en portal<br>
-    <span style="color:{_TEAL}">Perspectiva institucional</span>
+    Numerales LOTAIP publicados<br>en portal regulatorio DPE<br>
+    <span style="color:{_TEAL}">Perspectiva de cumplimiento formal</span>
   </div>
 </div>""",
             unsafe_allow_html=True,
         )
 
     # ── C5: Verificabilidad Efectiva (perspectiva ciudadana externa) ──────────
+    # OBS-QNKC-02: fuente canónica = Portal DPE (no portal institucional GAD)
+    # N4 incorporó C5t (puntualidad) como sub-variable de C5b
     with col_c5:
+        def _c5_badge(v: float | None) -> str:
+            """Texto + color para un valor C5 individual."""
+            if v is None:
+                return f"<span style='color:{_MUTED}'>—</span>"
+            color = _VERDE if v >= 0.95 else (_ALERTA if v >= 0.50 else _CRITICO)
+            return f"<span style='color:{color};font-weight:900;font-family:monospace'>{v:.2f}</span>"
+
+        def _c5_row(code: str, label: str, desc: str, v: float | None) -> str:
+            val_html = _c5_badge(v)
+            border_c = _VERDE if (v is not None and v >= 0.95) else (
+                _ALERTA if (v is not None and v >= 0.50) else
+                (_CRITICO if v is not None else _AZUL)
+            )
+            return (
+                f"<div style='font-size:0.67rem;color:rgba(255,255,255,0.8);"
+                f"background:rgba(59,130,246,0.06);border-radius:5px;"
+                f"padding:5px 10px;border-left:2px solid {border_c};"
+                f"display:flex;justify-content:space-between;align-items:center;gap:6px'>"
+                f"<div><span style='color:{_AZUL};font-weight:700'>{code} · {label}</span>"
+                f"<br><span style='color:rgba(255,255,255,0.55);font-size:0.6rem'>{desc}</span></div>"
+                f"<div>{val_html}</div>"
+                f"</div>"
+            )
+
+        atraso_nota = ""
+        if atraso_max and meses_audit:
+            atraso_nota = (
+                f"<div style='font-size:0.6rem;color:{_CRITICO};margin-top:6px;line-height:1.4'>"
+                f"Atraso máx: {atraso_max} días · {meses_audit}/16 meses auditados en plazo: 0"
+                f"</div>"
+            )
+
         st.markdown(
             f"""<div style="background:{_AZUL}08;border:1px solid {_AZUL}22;
                          border-top:3px solid {_AZUL};border-radius:8px;
                          padding:14px;min-height:180px">
   <div style="font-size:0.62rem;color:{_AZUL};font-weight:700;
-              letter-spacing:1.5px;margin-bottom:8px">C5 · VERIFICABILIDAD EFECTIVA</div>
+              letter-spacing:1.5px;margin-bottom:6px">C5 · VERIFICABILIDAD EFECTIVA</div>
   <div style="font-size:0.78rem;color:rgba(255,255,255,0.85);font-weight:600;
-              margin-bottom:10px">¿Un ciudadano puede confirmarlo?</div>
-  <div style="display:flex;flex-direction:column;gap:5px">
-    <div style="font-size:0.67rem;color:rgba(255,255,255,0.8);
-                background:rgba(59,130,246,0.08);border-radius:5px;
-                padding:6px 10px;border-left:2px solid {_AZUL}">
-      <span style="color:{_AZUL};font-weight:700">C5a · Existencia</span><br>
-      ¿El enlace responde HTTP 200?
-    </div>
-    <div style="font-size:0.67rem;color:rgba(255,255,255,0.8);
-                background:rgba(59,130,246,0.08);border-radius:5px;
-                padding:6px 10px;border-left:2px solid {_AZUL}">
-      <span style="color:{_AZUL};font-weight:700">C5b · Actualidad</span><br>
-      ¿El contenido es del período vigente?
-    </div>
-    <div style="font-size:0.67rem;color:rgba(255,255,255,0.8);
-                background:rgba(59,130,246,0.08);border-radius:5px;
-                padding:6px 10px;border-left:2px solid {_AZUL}">
-      <span style="color:{_AZUL};font-weight:700">C5c · Inteligibilidad</span><br>
-      ¿Un ciudadano puede entenderlo?
-    </div>
+              margin-bottom:8px">¿Un ciudadano puede confirmarlo?</div>
+  <div style="display:flex;flex-direction:column;gap:4px">
+    {_c5_row("C5a", "Existencia", "¿Publicado en portal regulatorio DPE?", c5a_val)}
+    {_c5_row("C5b", "Accesibilidad", "¿Contenido del período vigente?", c5b_acc_val)}
+    {_c5_row("C5t", "Puntualidad", "¿Publicado antes del día 15?", c5t_val)}
+    {_c5_row("C5c", "Inteligibilidad", "¿Formato legible y descargable?", c5c_val)}
   </div>
-  <div style="font-size:0.62rem;color:{_AZUL};margin-top:8px">
-    Perspectiva ciudadana externa
+  {atraso_nota}
+  <div style="font-size:0.6rem;color:{_AZUL};margin-top:6px">
+    Fuente: transparencia.dpe.gob.ec · perspectiva regulatoria
   </div>
 </div>""",
             unsafe_allow_html=True,
@@ -253,16 +282,34 @@ def _render_dom07_ejecutivo(chain: dict) -> None:
 
     # ── Sección 4: Fórmula C8 ────────────────────────────────────────────────
     # C8 = cumplimiento_formal × verificabilidad_efectiva
-    #    = C4 × (C5a × C5b × C5c)
+    #    = C4 × (C5a × C5b_acc × C5t × C5c)   [post-N4: C5b descompuesto]
     # Multiplicativa: un cero en cualquier dimensión colapsa el resultado a cero.
+    # Montecristi: C5t = 0.00 → C8 = 0 aunque C5a = C5b_acc = 1.00
+    _has_c5_vals = all(v is not None for v in [c5a_val, c5b_acc_val, c5t_val, c5c_val])
+    _c8_eval = ""
+    if _has_c5_vals and numerales is not None:
+        c4_v = (numerales / numerales_total) if numerales_total else 0.0
+        c8_v = c4_v * c5a_val * c5b_acc_val * c5t_val * c5c_val
+        _c5t_color = _VERDE if c5t_val >= 0.95 else (_ALERTA if c5t_val >= 0.50 else _CRITICO)
+        _c8_color  = _VERDE if c8_v * 100 >= umbral else (_ALERTA if c8_v * 100 >= 50 else _CRITICO)
+        _c8_eval = (
+            f"<div style='margin-top:8px;padding:6px 10px;"
+            f"background:rgba(255,255,255,0.03);border-radius:6px;"
+            f"font-family:monospace;font-size:0.8rem;color:rgba(255,255,255,0.7)'>"
+            f"= {c4_v:.2f} × ({c5a_val:.2f} × {c5b_acc_val:.2f} × "
+            f"<span style='color:{_c5t_color};font-weight:900'>{c5t_val:.2f}</span> × {c5c_val:.2f}) "
+            f"= <span style='color:{_c8_color};font-weight:900'>{c8_v:.2f}</span>"
+            f"</div>"
+        )
+
     st.markdown(
         f"""<div style="background:rgba(255,255,255,0.03);
                      border:1px solid rgba(255,255,255,0.08);
                      border-radius:8px;padding:14px 18px;margin-bottom:16px">
   <div style="font-size:0.65rem;color:{_MUTED};font-weight:700;
               letter-spacing:1.5px;margin-bottom:10px">INDICADOR INTEGRAL DE TRANSPARENCIA</div>
-  <div style="font-family:monospace;font-size:0.9rem;color:white;
-              display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px">
+  <div style="font-family:monospace;font-size:0.88rem;color:white;
+              display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px">
     <span style="color:{_VERDE};font-weight:900">C8</span>
     <span style="color:{_MUTED}">=</span>
     <span style="background:{_TEAL}18;color:{_TEAL};font-weight:700;
@@ -275,19 +322,23 @@ def _render_dom07_ejecutivo(chain: dict) -> None:
     <span style="background:{_AZUL}18;color:{_AZUL};font-weight:700;
                 padding:2px 8px;border-radius:4px">C5b</span>
     <span style="color:{_MUTED}">×</span>
+    <span style="background:{_CRITICO}28;color:{_CRITICO};font-weight:700;
+                padding:2px 8px;border-radius:4px">C5t</span>
+    <span style="color:{_MUTED}">×</span>
     <span style="background:{_AZUL}18;color:{_AZUL};font-weight:700;
                 padding:2px 8px;border-radius:4px">C5c</span>
     <span style="color:{_MUTED}">)</span>
   </div>
-  <div style="display:flex;gap:16px;flex-wrap:wrap">
+  {_c8_eval}
+  <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:8px">
     <div style="font-size:0.68rem;color:{_MUTED};line-height:1.5;flex:1;min-width:200px">
       <span style="color:{_VERDE};font-weight:700">Verde</span> ≥ {umbral:.0f} &nbsp;|&nbsp;
       <span style="color:{_ALERTA};font-weight:700">Amarillo</span> ≥ 50 &nbsp;|&nbsp;
       <span style="color:{_CRITICO};font-weight:700">Rojo</span> &lt; 50
     </div>
     <div style="font-size:0.68rem;color:{_MUTED};line-height:1.5;flex:2;min-width:240px">
-      Un GAD que publica 21/21 artículos con enlaces rotos tiene C5a ≈ 0
-      y por tanto C8 ≈ 0. La transparencia simulada no es transparencia.
+      Un municipio que publica todos los numerales fuera de plazo tiene C5t = 0
+      y por tanto C8 = 0. La transparencia tardía no es transparencia oportuna.
     </div>
   </div>
 </div>""",
@@ -368,17 +419,17 @@ def _render_dom07_ejecutivo(chain: dict) -> None:
         )
 
     # ── Sección 7: Pie de página ──────────────────────────────────────────────
-    fuente_badge = "🔴 Datos en vivo · Neo4j" if fuente_neo4j else "📋 Datos consolidados"
+    fuente_badge = "🔴 Datos en vivo · Neo4j" if fuente_neo4j else (
+        "🔍 Auditoría DPE · N4 · 16 meses" if estado == "confirmado" else "📋 Datos consolidados"
+    )
     st.caption(f"{fuente_badge} · Fuente: {fuente} · Corte: {corte}")
 
     if es_pendiente:
         st.info(
-            "**Verificación pendiente.** Para activar este dominio, el equipo QUIRA Operaciones "
-            "debe auditar directamente el portal montecristi.gob.ec: "
-            "contar los 21 numerales activos (C5a), verificar fechas de actualización (C5b) "
-            "y evaluar comprensibilidad para el ciudadano (C5c). "
-            "El indicador C8 se calculará automáticamente al cargar los datos en el sistema.",
-            icon="🔍",
+            "**Datos en proceso de carga.** El circuito está definido — "
+            "los valores de verificabilidad se activarán automáticamente "
+            "al completar la carga Neo4j del circuito TRANSPARENCIA.",
+            icon="🔄",
         )
 
 

@@ -193,8 +193,9 @@ _FALLBACK: dict[str, dict[str, Any]] = {
 
     # ── TRANSPARENCIA → Dom07 ─────────────────────────────────────────────────
     # CE_18 (derecho a la información) + COOTAD_302 (rendición de cuentas)
-    # Datos: pendiente verificación directa portal LOTAIP GADMCM
-    # Nota interna: indicador central = H41_IOC (compuesto cumplimiento×actualización×comprensibilidad)
+    # Fuente: Portal DPE · transparencia.dpe.gob.ec · ID 937 · auditoría N4 · 2026-06-01
+    # LOTAIP 2.0: 25 numerales obligatorios desde 2026 (antes ~14)
+    # C8 = C4 × (C5a × C5b_acc × C5t × C5c) = 1.00 × (1.00 × 1.00 × 0.00 × 0.75) = 0.00
     "TRANSPARENCIA": {
         "circuit_id":      "TRANSPARENCIA",       # INTERNO — no exponer en UI
         "dominio_id":      "Dom07",               # INTERNO
@@ -207,32 +208,43 @@ _FALLBACK: dict[str, dict[str, Any]] = {
             "acerca de los hechos, acontecimientos y procesos de interés general."
         ),
         "hallazgo": (
-            "El circuito de transparencia institucional del GADMCM requiere auditoría "
-            "directa del portal LOTAIP. Los 21 numerales del Art. 19 de la Ley de "
-            "Transparencia y Acceso a la Información Pública deben estar publicados, "
-            "actualizados y ser comprensibles para el ciudadano. "
-            "Datos pendientes de verificación directa en el portal institucional."
+            "El GADMCM publica los 25 numerales LOTAIP en el portal regulatorio de la "
+            "Defensoría del Pueblo — presencia completa (C5a = 100 %) con contenido "
+            "del período vigente (C5b_acc = 100 %) en formato CSV descargable (C5c = 75 %). "
+            "Sin embargo, ningún mes de los 16 auditados fue publicado dentro del plazo "
+            "legal (día 15 del mes siguiente): C5t = 0 % en todos los períodos. "
+            "Atraso sistémico: entre 30 y 139 días. La transparencia formal existe; "
+            "la transparencia oportuna — la que permite ejercer el derecho en tiempo real — es cero."
         ),
-        "valor_principal":  None,
+        "valor_principal":  0.0,    # C8 = 0.00 porque C5t = 0.00 colapsa la cadena
         "indicador_label": "Cumplimiento integral de publicación institucional",
-        "unidad":           "% cumplimiento agregado (publicación × actualización × comprensibilidad)",
-        "semaforo":         "PENDIENTE",
-        "fuente":           "Portal LOTAIP GADMCM (montecristi.gob.ec) — verificación pendiente",
-        "fecha_corte":      "pendiente",
-        "estado_dato":      "pendiente_validacion",
+        "unidad":           "% cumplimiento integral (publicación × accesibilidad × puntualidad × comprensibilidad)",
+        "semaforo":         "ROJO",
+        "fuente":           "Portal DPE · transparencia.dpe.gob.ec · enero 2025 – abril 2026",
+        "fecha_corte":      "abril 2026 (16 meses auditados)",
+        "estado_dato":      "confirmado",
         "narrativa": (
-            "El Art. 18 de la Constitución establece el derecho fundamental a buscar "
-            "y recibir información veraz y oportuna. El GADMCM tiene la obligación legal "
-            "de publicar activamente los 21 numerales del Art. 19 de la Ley de Transparencia "
-            "y Acceso a la Información Pública en su portal web. La capacidad efectiva de "
-            "escrutinio ciudadano en Montecristi depende de que esa información esté "
-            "disponible, actualizada y sea comprensible. El circuito está definido — "
-            "los datos requieren verificación directa del portal institucional. "
-            "Fuente: Portal LOTAIP GADMCM · verificación pendiente."
+            "El Art. 18 de la Constitución garantiza el derecho a recibir información "
+            "veraz y oportuna. El GADMCM tiene la obligación legal de publicar 25 "
+            "numerales LOTAIP mensualmente en el portal regulatorio de la Defensoría del "
+            "Pueblo del Ecuador. La auditoría de 16 meses (2025 completo + 2026 Ene–Abr) "
+            "revela una brecha crítica: el municipio publica todos los numerales "
+            "— presencia del 100 % — pero ningún mes fue publicado dentro del plazo "
+            "legal del día 15 del mes siguiente. Los atrasos van de 30 a 139 días. "
+            "La transparencia formal existe; la transparencia oportuna — que permite al "
+            "ciudadano ejercer su derecho en tiempo real — es cero en todos los períodos. "
+            "Fuente: Portal DPE · transparencia.dpe.gob.ec · auditoría junio 2026."
         ),
-        # Indicadores complementarios
-        "numerales_publicados": None,
-        "numerales_total":      21,
+        # Indicadores complementarios — valores C5 reales del N4 (2026-06-01)
+        "numerales_publicados": 25,
+        "numerales_total":      25,    # LOTAIP 2.0 amplió de ~14 a 25 numerales
+        "c5a":                  1.00,  # Existencia — 25/25 numerales en DPE
+        "c5b_acc":              1.00,  # Accesibilidad — contenido del período
+        "c5t":                  0.00,  # Puntualidad — 0/16 meses en plazo legal
+        "c5c":                  0.75,  # Inteligibilidad — CSV + diccionario + metadatos
+        "atraso_min_dias":      30,    # mínimo: marzo 2025
+        "atraso_max_dias":      139,   # máximo: abril 2025
+        "meses_auditados":      16,
         "tasa_respuesta_saip":  None,
         "umbral_verde":         80.0,
         "fuente_neo4j":         False,
