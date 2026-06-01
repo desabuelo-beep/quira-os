@@ -1,0 +1,811 @@
+# ============================================================
+# QUIRA — QTMP Instance v1.0
+# Segundo circuito territorial materializado en el sistema QUIRA
+# ============================================================
+# QTMP_ID:   QTMP_TRANSPARENCIA_MCR
+# Cantón:    Montecristi — ECU-13-MONTECRISTI
+# Circuito:  TRANSPARENCIA
+# Versión:   1.0
+# Estado:    desarrollo (pendiente validación GADMCM)
+# Fecha:     2026-06-01
+#
+# Propósito: Materializar la cadena C3→C9 para el circuito de
+#            transparencia e información pública en el cantón Montecristi.
+#            Segundo archivo QTMP del sistema QUIRA — valida la arquitectura
+#            QNKC-002 en el dominio de la observabilidad institucional.
+#
+# Principio arquitectónico crítico (ADR-012 confirmado):
+#   OBLIGACIÓN SUSTANTIVA ≠ VENTANA DE OBSERVACIÓN
+#   → LOTAIP no crea la obligación de producir información; crea la
+#     ventana de observación sobre obligaciones que nacen en CE/COOTAD/LOSNCP.
+#   → C2 (Competencial): COOTAD/LOSNCP/CE
+#   → C4 (Proceso/Observación): LOTAIP Art. 19 (21 numerales)
+#
+# Base normativa:
+#   CE_18    → Derecho a buscar, recibir, conocer y difundir información
+#   CE_91    → Acción de acceso a información pública como garantía jurisdiccional
+#   CE_226   → Principio de legalidad — solo competencias atribuidas por ley
+#   COOTAD_302 → Obligación sustantiva de rendición de cuentas anual del Alcalde
+#   LOSNCP_21  → Obligación sustantiva: publicar PAC en SERCOP antes del 15-ene
+#   COOTAD_215 → Obligación sustantiva: información presupuestaria verificable
+#   LOTAIP_19  → Ventana de observación: 21 numerales de publicación activa
+#   LOTAIP_47  → Consecuencia: sanciones por incumplimiento (DPE activa)
+#
+# Fuente orgánica local:
+#   Resolución Administrativa No. 040-2025-ALC-LJTL-GADMCM
+#   Estatuto Orgánico GADMCM — vigente desde 01-ene-2026
+#
+# Cypher Neo4j — cadena completa del circuito:
+#   MATCH (canton:Canton {id: 'ECU-13-MONTECRISTI'})
+#   MATCH (ack_ce18:Atom {id: 'CE_18'})
+#   MERGE (sp:C3ServicioPublico {id: 'SP_TRANS_MCR'})
+#     SET sp.canton_id = 'ECU-13-MONTECRISTI', sp.nombre = 'Transparencia'
+#   MERGE (ack_ce18)-[:MATERIALIZA_VIA]->(sp)
+#   MERGE (sp)-[:ANCLADO_EN]->(canton)
+#   MERGE (pro:C4Proceso {id: 'PRO_TRANS_01_MCR'})
+#   MERGE (sp)-[:SE_EJECUTA_EN]->(pro)
+#   -- continúa C5→C9 según cadena QNKC-002
+# ============================================================
+
+QTMP_ID: QTMP_TRANSPARENCIA_MCR
+CIRCUITO_ID: TRANSPARENCIA
+CANTON_ID: ECU-13-MONTECRISTI
+VERSION: "1.0"
+ESTADO: desarrollo
+
+META:
+  fecha_creacion: "2026-06-01"
+  creado_por: QLEP-QTMP-v1.0
+  canton_responsable: GAD Municipal Montecristi (GADMCM)
+  fuente_organica: >
+    Resolución Administrativa No. 040-2025-ALC-LJTL-GADMCM —
+    Estatuto Orgánico de Gestión Organizacional por Procesos del
+    Gobierno Autónomo Descentralizado Municipal de Montecristi.
+    Aprobado en Sesión Ordinaria N° 148 del 2 de octubre de 2025.
+    Vigente desde el 1 de enero de 2026.
+  revisado_por_experto: false
+  nota_revision: >
+    Este archivo requiere validación con el GADMCM:
+    (a) confirmación del servidor designado como Responsable de Acceso a la
+        Información Pública (LOTAIP) y su resolución de designación,
+    (b) estado real de publicación de los 21 numerales LOTAIP Art. 19
+        en el portal web institucional (verificación directa en portal),
+    (c) número y estado de solicitudes de información (SAIP) en 2024-2025,
+    (d) cédula presupuestaria del área de comunicación/transparencia en SIGEF,
+    (e) verificación de designación del funcionario responsable conforme
+        Estatuto Orgánico 040-2025.
+
+# ============================================================
+# C3 — SERVICIO PÚBLICO
+# La obligación jurídica materializada como prestación ciudadana
+# ============================================================
+
+SERVICIO_PUBLICO:
+  id: SP_TRANS_MCR
+  nombre: Acceso Efectivo a Información Institucional — Montecristi
+  descripcion: >
+    Prestación del servicio de acceso a información pública del cantón
+    Montecristi: publicación activa de información institucional, atención
+    de solicitudes ciudadanas de información, rendición de cuentas anual,
+    y publicación de procesos de contratación. El GAD Municipal tiene la
+    obligación de producir, mantener y hacer disponible la información
+    que la ley le manda publicar — y el ciudadano tiene el derecho
+    constitucional de acceder a ella sin justificación previa.
+    El resultado es la capacidad efectiva de escrutinio ciudadano.
+  dominio_tgi: Dom07
+  tgi_dimension: D7_TRANSPARENCIA
+  competencia_fuente: CE_18
+  competencias_concurrentes:
+    - CE_91
+    - CE_226
+    - COOTAD_302
+    - LOSNCP_21
+    - COOTAD_215
+  modalidad: directa
+  nota_modalidad: >
+    GADMCM gestiona el servicio directamente. Conforme Estatuto Orgánico
+    040-2025 y LOTAIP Art. 9, el Alcalde designa un Responsable de Acceso
+    a la Información Pública (RAIP). La Dirección de Comunicación Social
+    o la Secretaría General ejecuta la publicación en el portal web.
+    La Dirección Financiera provee datos de ejecución presupuestaria
+    para publicación en SIGEF. La UGP/Compras Públicas publica el PAC
+    en SERCOP.
+  pregunta_bautismal: >
+    ¿Qué información que el municipio tiene obligación legal de publicar
+    no está disponible, no está actualizada o no es comprensible,
+    y cuál es la consecuencia institucional de esa opacidad?
+
+# ============================================================
+# IMPLEMENTACION_LOCAL — ACTOR LATERAL (QNKC-002)
+# El servidor/dirección que ejecuta pero NO es parte de la cadena causal.
+# Neo4j: (Proceso:C4)-[:EJECUTADO_POR]->(Actor)-[:PERTENECE_A]->(Institucion)
+# ============================================================
+
+IMPLEMENTACION_LOCAL:
+  actor_local: >
+    pendiente — Responsable de Acceso a la Información Pública (RAIP)
+    del GADMCM, designado conforme LOTAIP Art. 9. Puede ser el/la
+    Director/a de Comunicación Social o el/la Secretario/a General,
+    según resolución de designación vigente del Alcalde.
+  institucion_local: >
+    Gobierno Autónomo Descentralizado Municipal del Cantón Montecristi (GADMCM)
+    — área de Comunicación Social / Secretaría General / Unidad de Transparencia
+    (nombre exacto pendiente verificación en Resolución 040-2025;
+    el Estatuto establece proceso de Gobernabilidad y Transparencia
+    como parte de los Procesos Adjetivos de Asesoría).
+  autoridad_maxima: >
+    Ing. Luis Jonathan Toro Largacha — Alcalde del cantón Montecristi
+    (Resolución Administrativa No. 040-2025-ALC-LJTL-GADMCM)
+  fuente_organica: Resolución Administrativa No. 040-2025-ALC-LJTL-GADMCM
+  validado: false
+
+# ============================================================
+# C4 — PROCESOS
+# Los procesos de publicación y atención mediante los cuales el servicio
+# se ejecuta. LOTAIP Art. 19 define la VENTANA DE OBSERVACIÓN — los
+# 21 numerales son los estados observables, no la fuente de la obligación.
+#
+# Estados de observación por numeral (observable por QUIRA y ciudadanos):
+#   PUBLICADO       — información accesible, completa y comprensible
+#   ATRASADO        — publicada pero fuera del plazo LOTAIP (>90 días)
+#   INCOMPLETO      — publicada parcialmente; faltan campos o períodos
+#   INCOMPRENSIBLE  — publicada pero en formato ilegible/inutilizable
+#   NO_PUBLICADO    — no consta en portal; obligación incumplida
+# ============================================================
+
+PROCESOS:
+
+  - id: PRO_TRANS_01_MCR
+    nombre: Publicación Activa LOTAIP — Portal Web Institucional
+    tipo_proceso: publicacion
+    descripcion: >
+      Publicación de los 21 numerales del Art. 19 de LOTAIP en el portal
+      web del GADMCM (montecristi.gob.ec). Obligación: actualización
+      trimestral mínima. Incluye: orgánico-funcional, POA, presupuesto,
+      contratos, remuneraciones, servicios, indicadores de gestión, y
+      demás numerales establecidos en la ley. El RAIP es el responsable
+      de mantener el portal actualizado y de verificar la comprensibilidad
+      de la información publicada.
+    actor_ref: RAIP GADMCM / Director/a Comunicación Social
+    base_normativa: LOTAIP_19
+    numerales_totales: 21
+    estado: activo
+    estados_posibles: [PUBLICADO, ATRASADO, INCOMPLETO, INCOMPRENSIBLE, NO_PUBLICADO]
+    estado_actual: pendiente_verificacion
+    frecuencia_obligatoria: trimestral
+    anio_poa: "2026"
+    partida_presupuestaria: pendiente
+
+  - id: PRO_TRANS_02_MCR
+    nombre: Publicación Información Financiera — SIGEF
+    tipo_proceso: publicacion
+    descripcion: >
+      Publicación de la ejecución presupuestaria del GADMCM a través del
+      Sistema Integrado de Gestión Financiera (SIGEF). El Ministerio de
+      Finanzas consolida y publica la ejecución de todos los GADs en tiempo
+      real. La Dirección Financiera del GADMCM alimenta el sistema con:
+      presupuesto aprobado, codificado, devengado y pagado, por partidas.
+      Comprende: cédula presupuestaria, ejecución de ingresos, transferencias
+      del Gobierno Central, y deuda pública municipal.
+    actor_ref: Director/a Financiero/a GADMCM
+    base_normativa: COOTAD_215
+    estados_posibles: [PUBLICADO, ATRASADO, INCOMPLETO, INCOMPRENSIBLE, NO_PUBLICADO]
+    estado_actual: pendiente_verificacion
+    frecuencia_obligatoria: mensual
+    anio_poa: "2026"
+    partida_presupuestaria: pendiente
+
+  - id: PRO_TRANS_03_MCR
+    nombre: Publicación Contratación Pública — SERCOP y PAC
+    tipo_proceso: publicacion
+    descripcion: >
+      Publicación del Plan Anual de Contratación (PAC) en el portal del
+      SERCOP antes del 15 de enero de cada año (LOSNCP Art. 21). Publicación
+      de todos los procesos de contratación, pliegos, contratos adjudicados,
+      y actas de entrega-recepción. El portal SERCOP es la fuente observable:
+      cualquier ciudadano puede verificar si el GADMCM cumple con la
+      obligación de transparencia en contratación. Contratos no publicados
+      carecen de eficacia jurídica.
+    actor_ref: Unidad de Gestión de Proyectos / Compras Públicas GADMCM
+    base_normativa: LOSNCP_21
+    estados_posibles: [PUBLICADO, ATRASADO, INCOMPLETO, INCOMPRENSIBLE, NO_PUBLICADO]
+    estado_actual: verificar
+    frecuencia_obligatoria: permanente
+    anio_poa: "2026"
+    partida_presupuestaria: pendiente
+
+  - id: PRO_TRANS_04_MCR
+    nombre: Atención Solicitudes de Información Pública — SAIP
+    tipo_proceso: atencion_ciudadana
+    descripcion: >
+      Recepción, tramitación y respuesta a solicitudes de acceso a
+      información pública conforme LOTAIP Art. 20. Plazo máximo de
+      respuesta: 10 días hábiles (LOTAIP Art. 34). El RAIP coordina
+      internamente la entrega de información solicitada. Si la
+      institución no responde en plazo → silencio positivo: la
+      información se presume pública. Si niega información →
+      recurso ante DPE. Indicador de calidad institucional: tasa
+      de respuesta oportuna y tasa de negativas justificadas.
+    actor_ref: RAIP GADMCM
+    base_normativa: LOTAIP_20
+    plazo_respuesta_dias: 10
+    estados_posibles: [RESPONDIDA_PLAZO, RESPONDIDA_TARDIO, NEGADA_JUSTIFICADA, NEGADA_INJUSTIFICADA, SIN_RESPUESTA]
+    estado_actual: pendiente_verificacion
+    frecuencia_obligatoria: permanente
+    anio_poa: "2026"
+    partida_presupuestaria: pendiente
+
+  - id: PRO_TRANS_05_MCR
+    nombre: Rendición de Cuentas Anual — Alcalde GADMCM
+    tipo_proceso: rendicion_cuentas
+    descripcion: >
+      Proceso de rendición de cuentas anual del Alcalde conforme COOTAD
+      Art. 302 y Ley Orgánica de Participación Ciudadana. El Alcalde
+      rinde cuentas ante la ciudadanía sobre la gestión del año anterior:
+      metas cumplidas, presupuesto ejecutado, proyectos entregados, y
+      estado de todos los servicios municipales. El informe debe ser
+      presentado públicamente y publicado en el portal. El CPCCS verifica
+      el cumplimiento del proceso. La no realización de la rendición de
+      cuentas es una infracción grave conforme LOPC.
+    actor_ref: Alcalde GADMCM
+    base_normativa: COOTAD_302
+    estados_posibles: [REALIZADA_PLAZO, REALIZADA_TARDIO, INCOMPLETA, NO_REALIZADA]
+    estado_actual: pendiente_verificacion
+    frecuencia_obligatoria: anual
+    anio_poa: "2026"
+    partida_presupuestaria: pendiente
+
+# ============================================================
+# C5 — EVIDENCIAS
+# Los documentos y registros que prueban la ejecución del servicio
+# de transparencia — verificables por terceros sin acceso interno
+# ============================================================
+
+EVIDENCIAS:
+
+  - id: EVD_TRANS_01_MCR
+    tipo: portal_transparencia
+    descripcion: >
+      Portal LOTAIP GADMCM — sección de transparencia activa en el
+      sitio web institucional con los 21 numerales del Art. 19 de LOTAIP
+      publicados. La URL del portal es la evidencia primaria y observable
+      por cualquier ciudadano. Estado de cada numeral (PUBLICADO/NO_PUBLICADO/
+      INCOMPLETO/ATRASADO) es verificable directamente. Fecha de última
+      actualización visible. El portal es la fuente de evidencia central
+      de todo el circuito de transparencia.
+    proceso_ref: PRO_TRANS_01_MCR
+    obligatoria: true
+    fuente_sistema: Portal web institucional GADMCM
+    vinculo_ack: LOTAIP_19
+    url: "https://www.montecristi.gob.ec"
+    estado_documento: verificar
+
+  - id: EVD_TRANS_02_MCR
+    tipo: sistema_financiero
+    descripcion: >
+      Ejecución presupuestaria GADMCM en SIGEF — cédula presupuestaria
+      pública del municipio de Montecristi. Devengado vs. codificado por
+      partidas, en tiempo real. La información es cargada por la Dirección
+      Financiera GADMCM y publicada automáticamente por el MF. Observable
+      externamente en el portal del Ministerio de Finanzas sin credenciales.
+      Incluye ingresos, gastos, transferencias del Estado y deuda pública.
+    proceso_ref: PRO_TRANS_02_MCR
+    obligatoria: true
+    fuente_sistema: SIGEF (Sistema Integrado de Gestión Financiera — MF)
+    vinculo_ack: COOTAD_215
+    url: "https://www.finanzas.gob.ec/sigef"
+    estado_documento: verificar
+
+  - id: EVD_TRANS_03_MCR
+    tipo: portal_contratacion
+    descripcion: >
+      PAC publicado en SERCOP y procesos de contratación activos —
+      Plan Anual de Contratación del GADMCM publicado en el Portal de
+      Compras Públicas. Contratos adjudicados, montos, contratistas,
+      plazos de ejecución y estado de cada proceso. Cualquier ciudadano
+      puede buscar el RUC del GADMCM (pendiente verificación) y ver
+      todos los contratos públicos. Evidencia de transparencia en el
+      uso de recursos públicos.
+    proceso_ref: PRO_TRANS_03_MCR
+    obligatoria: true
+    fuente_sistema: SERCOP (Portal de Compras Públicas)
+    vinculo_ack: LOSNCP_21
+    url: "https://www.compraspublicas.gob.ec"
+    estado_documento: verificar
+
+  - id: EVD_TRANS_04_MCR
+    tipo: registro_administrativo
+    descripcion: >
+      Registro de solicitudes de información SAIP — libro o sistema de
+      registro de todas las solicitudes de información recibidas por el
+      GADMCM, con: fecha de recepción, tema solicitado, nombre del
+      solicitante (si proporcionado), fecha de respuesta, resultado
+      (entregada/negada/sin respuesta), y fundamento de eventual negativa.
+      Este registro es exigible al RAIP en cualquier momento por la DPE.
+      Su inexistencia es evidencia de incumplimiento institucional.
+    proceso_ref: PRO_TRANS_04_MCR
+    obligatoria: true
+    fuente_sistema: RAIP GADMCM / Sistema interno SAIP
+    vinculo_ack: LOTAIP_20
+    url: pendiente
+    estado_documento: pendiente_verificacion
+
+  - id: EVD_TRANS_05_MCR
+    tipo: informe_rendicion_cuentas
+    descripcion: >
+      Informe de rendición de cuentas anual del Alcalde — documento
+      publicado en el portal GADMCM y en el repositorio CPCCS con:
+      metas del POA/PDOT alcanzadas, presupuesto ejecutado por sector,
+      proyectos entregados, indicadores de gestión, y respuesta a
+      observaciones de la ciudadanía del año anterior. El informe es
+      la evidencia de que el circuito de rendición de cuentas (C5) se
+      cerró en el período anual.
+    proceso_ref: PRO_TRANS_05_MCR
+    obligatoria: true
+    fuente_sistema: Portal GADMCM / Portal CPCCS
+    vinculo_ack: COOTAD_302
+    url: "https://www.cpccs.gob.ec"
+    estado_documento: pendiente_verificacion
+
+  - id: EVD_TRANS_06_MCR
+    tipo: acto_administrativo
+    descripcion: >
+      Resolución de designación del Responsable de Acceso a la
+      Información Pública (RAIP) — acto administrativo del Alcalde
+      que designa al funcionario responsable del cumplimiento de LOTAIP.
+      Sin esta designación, no existe responsable institucional del
+      circuito de transparencia. La resolución debe estar publicada
+      en el portal web. Su ausencia implica que el GADMCM carece del
+      andamiaje mínimo para cumplir LOTAIP.
+    proceso_ref: PRO_TRANS_01_MCR
+    obligatoria: true
+    fuente_sistema: Portal web GADMCM / Secretaría General
+    vinculo_ack: LOTAIP_9
+    url: "https://www.montecristi.gob.ec"
+    estado_documento: pendiente_verificacion
+
+# ============================================================
+# C6 — CONTROLES
+# Los órganos externos que verifican y sancionan el cumplimiento
+# del servicio de transparencia institucional
+# ============================================================
+
+CONTROLES:
+
+  - id: CTL_TRANS_01_MCR
+    nombre: DPE — Defensoría del Pueblo (Transparencia y LOTAIP)
+    tipo_control: regulatorio_constitucional
+    fuente: LOTAIP Art. 47 / Ley Orgánica del Defensor del Pueblo
+    organo_control: Defensoría del Pueblo del Ecuador (DPE)
+    descripcion: >
+      La DPE es el órgano primario de control del cumplimiento de LOTAIP.
+      Recibe denuncias ciudadanas por incumplimiento de publicación activa
+      (Art. 19) o por negativa/demora en atención de solicitudes (Art. 20).
+      Puede: iniciar investigación de oficio, citar al RAIP, requerir
+      información, emitir resolución vinculante, y remitir a la SENRES/
+      LOSEP para responsabilidad administrativa del funcionario infractor.
+      LOTAIP Art. 47 establece las sanciones específicas (suspensión,
+      multa, destitución según gravedad).
+    vinculo_ack: LOTAIP_47
+    estado_control: activo
+
+  - id: CTL_TRANS_02_MCR
+    nombre: CGE — Contraloría General del Estado (Control financiero-informativo)
+    tipo_control: financiero
+    fuente: LOC-CGE
+    organo_control: Contraloría General del Estado (CGE)
+    descripcion: >
+      La CGE audita la veracidad y completitud de la información financiera
+      publicada por el GADMCM: si la cédula presupuestaria en SIGEF refleja
+      la ejecución real, si los contratos publicados en SERCOP existen y
+      son correctos, y si los informes de rendición de cuentas son fieles
+      a los registros contables. La CGE también controla que el proceso de
+      publicación de información no tenga irregularidades (ej: publicar
+      contratos inexistentes o montos alterados). Glosa si hay perjuicio
+      al Estado vinculado a opacidad deliberada.
+    vinculo_ack: LOC-CGE_21
+    estado_control: activo
+
+  - id: CTL_TRANS_03_MCR
+    nombre: CPCCS — Control Social sobre Rendición de Cuentas
+    tipo_control: ciudadano
+    fuente: COOTAD_302 / LOPC
+    organo_control: Consejo de Participación Ciudadana y Control Social (CPCCS)
+    descripcion: >
+      El CPCCS verifica que el Alcalde cumpla con el proceso de rendición
+      de cuentas anual: convocatoria pública, realización del evento,
+      informe publicado, y participación ciudadana efectiva. El CPCCS
+      puede emitir informes de calificación del proceso y remitir a la
+      SENRES en caso de incumplimiento grave. Es el control institucional
+      específico del proceso PRO_TRANS_05_MCR (rendición de cuentas).
+      Cualquier ciudadano puede presentar observaciones ante el CPCCS
+      sobre el proceso de rendición de cuentas del Alcalde.
+    vinculo_ack: COOTAD_302
+    estado_control: activo
+
+  - id: CTL_TRANS_04_MCR
+    nombre: PGE — Procurador General del Estado (Pronunciamientos)
+    tipo_control: juridico
+    fuente: Ley Orgánica de la Procuraduría General del Estado
+    organo_control: Procuraduría General del Estado (PGE)
+    descripcion: >
+      La PGE emite pronunciamientos sobre el alcance e interpretación
+      de las obligaciones de transparencia de las entidades públicas,
+      incluyendo GADs. Cuando existe controversia sobre si determinada
+      información es pública o reservada, el RAIP puede consultar a la PGE.
+      Los pronunciamientos de la PGE son de observancia obligatoria para
+      todas las entidades del sector público. Relevante cuando el GADMCM
+      invoca reserva de información ante solicitudes SAIP.
+    estado_control: activo
+
+# ============================================================
+# C7 — OBSERVABILIDAD
+# Los puntos donde el servicio de transparencia se hace visible
+# y verificable — especialmente por cualquier ciudadano
+# Principio: la transparencia es observable si y solo si un ciudadano
+# sin credenciales puede verificarla con una búsqueda web simple.
+# ============================================================
+
+OBSERVABILIDAD:
+
+  - id: OBS_TRANS_01_MCR
+    fuente_ack: LOTAIP_19
+    tipo_publicacion: portal_transparencia
+    descripcion: >
+      Portal LOTAIP GADMCM — verificación directa ciudadana. Cualquier
+      persona puede navegar a montecristi.gob.ec/lotaip y verificar cuántos
+      de los 21 numerales del Art. 19 están publicados, actualizados y son
+      comprensibles. Esta es la observabilidad primaria del circuito:
+      la transparencia no es un formulario interno — es una URL pública.
+      Observable: número de numerales activos vs. 21 totales; fecha de
+      última actualización de cada numeral; calidad y comprensibilidad.
+    url_portal: "https://www.montecristi.gob.ec/lotaip"
+    frecuencia_real: trimestral
+    verificacion_anonima: true
+
+  - id: OBS_TRANS_02_MCR
+    fuente_ack: COOTAD_215
+    tipo_publicacion: sistema_financiero
+    descripcion: >
+      SIGEF público — ejecución presupuestaria GADMCM verificable por
+      cualquier ciudadano en el portal del Ministerio de Finanzas, sin
+      credenciales. Permite verificar: cuánto presupuesto tiene el
+      municipio, cuánto ha ejecutado, en qué partidas, y si los montos
+      coinciden con lo informado en el portal LOTAIP. Brecha entre SIGEF
+      y portal LOTAIP = evidencia de inconsistencia informativa.
+    url_portal: "https://www.finanzas.gob.ec/sigef"
+    frecuencia_real: tiempo_real
+    verificacion_anonima: true
+
+  - id: OBS_TRANS_03_MCR
+    fuente_ack: LOSNCP_21
+    tipo_publicacion: portal_contratacion
+    descripcion: >
+      SERCOP — contratación pública GADMCM verificable por cualquier
+      ciudadano. Permite verificar: todos los contratos del municipio,
+      montos, contratistas, estado de ejecución, y si el PAC publicado
+      al inicio del año se materializó en contratos reales. Brecha
+      PAC vs. contratos adjudicados = indicador de calidad de la
+      planificación y de la transparencia en el uso del dinero público.
+      Cruce con Dom03 (Seguimiento de Metas) y Dom05 (Holding).
+    url_portal: "https://www.compraspublicas.gob.ec/ProcesoContratacion"
+    frecuencia_real: tiempo_real
+    verificacion_anonima: true
+
+  - id: OBS_TRANS_04_MCR
+    fuente_ack: LOTAIP_47
+    tipo_publicacion: registro_quejas
+    descripcion: >
+      Sistema de quejas y denuncias de la DPE — cualquier ciudadano
+      que no reciba respuesta a su solicitud SAIP en 10 días, o que
+      encuentre que el portal LOTAIP no está actualizado, puede presentar
+      una denuncia ante la DPE. El volumen y tipo de denuncias contra el
+      GADMCM en la DPE es un indicador observable de la calidad real
+      de la transparencia institucional: una institución con alta
+      observabilidad tiene pocas quejas en la DPE por opacidad.
+    url_portal: "https://www.dpe.gob.ec"
+    frecuencia_real: continuo
+    verificacion_anonima: true
+
+# ============================================================
+# C8 — INDICADORES
+# Las métricas que cuantifican la calidad de la transparencia
+# y la observabilidad ciudadana real
+# ============================================================
+
+INDICADORES:
+
+  - id: IND_TRANS_01_MCR
+    # Nota interna: este indicador corresponde al H41_IOC del Bloomberg Model.
+    # El H41_IOC es el ponderado compuesto de cumplimiento × actualización ×
+    # comprensibilidad. NO exponer este identificador en UI/API/informes públicos.
+    nombre: Cumplimiento Integral de Publicación Institucional
+    dominio_tgi: Dom07
+    tgi_dimension: D7_TRANSPARENCIA
+    formula: >
+      (numerales_publicados_completos / 21) * peso_cumplimiento
+      + (numerales_actualizados_en_plazo / numerales_publicados) * peso_actualizacion
+      + (numerales_comprensibles / numerales_publicados) * peso_comprensibilidad
+    nota_formula: >
+      Indicador compuesto ponderado. Pesos: cumplimiento=0.5, actualización=0.3,
+      comprensibilidad=0.2. La comprensibilidad es evaluada mediante criterio
+      experto o feedback ciudadano directo. El indicador mide no solo si se
+      publicó, sino si la publicación cumple su función de informar.
+    fuente_dato: >
+      Portal LOTAIP GADMCM (verificación directa) + evaluación técnica
+      de comprensibilidad (formato, accesibilidad, nivel de detalle).
+    frecuencia: trimestral
+    unidad: indice_0_a_100
+    valor_linea_base: null
+    meta_anual: null
+    umbral_verde: ">= 80"
+    umbral_amarillo: ">= 50 y < 80"
+    umbral_rojo: "< 50"
+    nota_umbral: >
+      Umbral QUIRA: <50 = opacidad crítica (DPE interviene); 50-79 = cumplimiento
+      parcial (monitoreo reforzado); ≥80 = transparencia efectiva (estándar mínimo
+      de gobernabilidad). No existe estándar nacional oficial para este compuesto —
+      umbrales derivados de análisis comparativo de portales LOTAIP municipales
+      ecuatorianos. Meta razonable para GADMCM: ≥70 en 2026, ≥80 en 2027.
+    estado_dato: pendiente_validacion
+
+  - id: IND_TRANS_02_MCR
+    nombre: Cobertura de Publicación LOTAIP Art. 19
+    dominio_tgi: Dom07
+    tgi_dimension: D7_TRANSPARENCIA
+    formula: "(numerales_publicados_activos / 21) * 100"
+    fuente_dato: >
+      Portal web GADMCM — conteo manual de numerales Art. 19 con
+      contenido activo (no vacío, no "en construcción", no enlace roto).
+    frecuencia: trimestral
+    unidad: porcentaje
+    valor_linea_base: null
+    meta_anual: null
+    umbral_verde: "= 100"
+    umbral_amarillo: ">= 80 y < 100"
+    umbral_rojo: "< 80"
+    nota_umbral: >
+      Los 21 numerales son obligación legal, no opcional. 100% es el único
+      estándar de cumplimiento. Numerales ausentes son incumplimiento directo
+      de LOTAIP Art. 19. La DPE puede actuar sobre cada numeral faltante.
+    estado_dato: pendiente_validacion
+
+  - id: IND_TRANS_03_MCR
+    nombre: Actualidad de Publicaciones (% dentro de plazo)
+    dominio_tgi: Dom07
+    tgi_dimension: D7_TRANSPARENCIA
+    formula: "(numerales_actualizados_en_plazo / numerales_publicados) * 100"
+    fuente_dato: >
+      Portal web GADMCM — fecha de última actualización de cada numeral
+      vs. plazo máximo LOTAIP (actualización trimestral obligatoria).
+    frecuencia: trimestral
+    unidad: porcentaje
+    valor_linea_base: null
+    meta_anual: null
+    umbral_verde: ">= 90"
+    umbral_amarillo: ">= 60 y < 90"
+    umbral_rojo: "< 60"
+    nota_umbral: >
+      Publicación desactualizada = información inútil para el ciudadano.
+      Un numeral publicado hace 2 años no cuenta como transparencia activa.
+      Montecristi: alto riesgo de desactualización por capacidad técnica
+      limitada del área de comunicación en GADs pequeños.
+    estado_dato: pendiente_validacion
+
+  - id: IND_TRANS_04_MCR
+    nombre: Tasa de Respuesta Oportuna SAIP
+    dominio_tgi: Dom07
+    tgi_dimension: D7_TRANSPARENCIA
+    formula: "(solicitudes_respondidas_en_10_dias / total_solicitudes_recibidas) * 100"
+    fuente_dato: >
+      Registro SAIP del RAIP GADMCM — número de solicitudes recibidas
+      en el período vs. número respondidas dentro del plazo legal de
+      10 días hábiles (LOTAIP Art. 34).
+    frecuencia: mensual
+    unidad: porcentaje
+    valor_linea_base: null
+    meta_anual: null
+    umbral_verde: ">= 95"
+    umbral_amarillo: ">= 70 y < 95"
+    umbral_rojo: "< 70"
+    nota_umbral: >
+      El plazo de 10 días es obligación legal (LOTAIP Art. 34). Silencio
+      administrativo en SAIP = presunción de información pública (silencio
+      positivo). Respuesta tardía = infracción administrativa. Meta: 100%.
+      Indicador de primer nivel de atención ciudadana del municipio.
+    estado_dato: pendiente_validacion
+
+  - id: IND_TRANS_05_MCR
+    nombre: Asistencia Ciudadana a Rendición de Cuentas
+    dominio_tgi: Dom08
+    tgi_dimension: D8_PARTICIPACION
+    formula: "asistentes_verificados_rendicion_cuentas_anual"
+    fuente_dato: >
+      Acta de rendición de cuentas GADMCM firmada por CPCCS —
+      número de ciudadanos asistentes al evento anual de rendición.
+      Cruce con Dom08 (Participación Ciudadana).
+    frecuencia: anual
+    unidad: numero_personas
+    valor_linea_base: null
+    meta_anual: null
+    umbral_verde: ">= 200"
+    umbral_amarillo: ">= 50 y < 200"
+    umbral_rojo: "< 50"
+    nota_umbral: >
+      Una rendición de cuentas con menos de 50 asistentes puede indicar
+      falta de convocatoria efectiva o pérdida de confianza ciudadana.
+      Umbral indicativo — no hay estándar nacional. Cruce con Dom08
+      para correlación participación vs. calidad de transparencia.
+      Si rendición no fue realizada = valor 0 → ROJO automático.
+    estado_dato: pendiente_validacion
+
+# ============================================================
+# C9 — RESULTADOS TERRITORIALES
+# Los outcomes verificables en el territorio del cantón
+# La pregunta que responde este bloque:
+# ¿Tiene Montecristi capacidad efectiva de escrutinio ciudadano?
+# ============================================================
+
+RESULTADOS:
+
+  - id: RES_TRANS_01_MCR
+    nivel_territorial: canton
+    territorio: Montecristi
+    canton_id: ECU-13-MONTECRISTI
+    indicador_ref: IND_TRANS_01_MCR
+    valor: null
+    unidad: "índice 0-100 (cumplimiento integral publicación institucional)"
+    periodo: "2025"
+    fuente_verificacion: Portal LOTAIP GADMCM + evaluación técnica QUIRA
+    estado_dato: pendiente_validacion
+    naturaleza_valor: calculado
+    nota: >
+      Resultado primario del circuito Dom07: ¿Puede un ciudadano de
+      Montecristi hoy verificar el uso del dinero público, los contratos
+      del municipio, la estructura institucional y los servicios que recibe?
+      El índice compuesto (IND_TRANS_01_MCR) sintetiza la respuesta en un
+      número entre 0 y 100. Un índice <50 significa que la institución opera
+      en opacidad efectiva — el GAD existe en papel, no en la realidad
+      observable del ciudadano. Pendiente: verificación directa del portal
+      montecristi.gob.ec por el equipo QUIRA Operaciones.
+
+  - id: RES_TRANS_02_MCR
+    nivel_territorial: canton
+    territorio: Montecristi
+    canton_id: ECU-13-MONTECRISTI
+    indicador_ref: IND_TRANS_02_MCR
+    valor: null
+    unidad: "% numerales LOTAIP Art. 19 publicados y activos (de 21 totales)"
+    periodo: "2025"
+    fuente_verificacion: Portal web GADMCM — verificación directa
+    estado_dato: pendiente_validacion
+    naturaleza_valor: observado
+    nota: >
+      Cobertura de publicación activa LOTAIP Art. 19: cuántos de los 21
+      numerales están publicados, con contenido real, y no vacíos o con
+      mensajes "en construcción". Verificable directamente en el portal sin
+      credenciales. Si <21 numerales están publicados → incumplimiento
+      legal específico por numeral faltante. La DPE puede actuar por cada
+      numeral ausente individualmente. Meta: 21/21 = 100%.
+
+  - id: RES_TRANS_03_MCR
+    nivel_territorial: canton
+    territorio: Montecristi
+    canton_id: ECU-13-MONTECRISTI
+    indicador_ref: IND_TRANS_03_MCR
+    valor: null
+    unidad: "% publicaciones LOTAIP actualizadas dentro del plazo trimestral"
+    periodo: "2025"
+    fuente_verificacion: Portal web GADMCM — fecha última actualización por numeral
+    estado_dato: pendiente_validacion
+    naturaleza_valor: observado
+    nota: >
+      Actualidad de las publicaciones: cuántos numerales tienen fecha de
+      actualización dentro del trimestre vigente. Una publicación de 2023
+      no cuenta como transparencia activa en 2025. Este resultado revela
+      si el GADMCM mantiene un proceso institucional de actualización
+      continua, o si publicó una vez y abandonó el portal.
+      Alto riesgo en GADs pequeños: limitada capacidad técnica del área.
+
+  - id: RES_TRANS_04_MCR
+    nivel_territorial: canton
+    territorio: Montecristi
+    canton_id: ECU-13-MONTECRISTI
+    indicador_ref: IND_TRANS_04_MCR
+    valor: null
+    unidad: "% solicitudes SAIP respondidas dentro de los 10 días hábiles legales"
+    periodo: "2025"
+    fuente_verificacion: Registro SAIP RAIP GADMCM / Expedientes DPE por quejas
+    estado_dato: pendiente_validacion
+    naturaleza_valor: observado
+    nota: >
+      Si el RAIP no lleva registro formal de solicitudes SAIP → el dato
+      es null por omisión institucional (no por ausencia de solicitudes).
+      La ausencia de registro es en sí misma evidencia de cumplimiento
+      deficiente. Cruzar con denuncias ante DPE contra GADMCM por
+      incumplimiento LOTAIP: si hay denuncias, el RAIP no respondió.
+      Solicitar al GADMCM el registro formal de solicitudes 2023-2025.
+
+  - id: RES_TRANS_05_MCR
+    nivel_territorial: canton
+    territorio: Montecristi
+    canton_id: ECU-13-MONTECRISTI
+    indicador_ref: IND_TRANS_05_MCR
+    valor: null
+    unidad: "número de ciudadanos asistentes a rendición de cuentas anual"
+    periodo: "2025"
+    fuente_verificacion: >
+      Acta de rendición de cuentas GADMCM 2024/2025 firmada por CPCCS.
+      Verificar si el evento fue realizado, fecha y número de asistentes.
+    estado_dato: pendiente_validacion
+    naturaleza_valor: observado
+    nota: >
+      Resultado que cierra el circuito Dom07 × Dom08: la rendición de
+      cuentas es el punto de convergencia entre transparencia (Dom07) y
+      participación ciudadana (Dom08). Un evento sin convocatoria real
+      o con asistencia mínima indica que la transparencia existe en papel
+      pero no genera escrutinio ciudadano efectivo. Verificar también
+      si el Informe de RC fue publicado en el portal GADMCM y en CPCCS.
+
+# ============================================================
+# ÍNDICE CIRCUITO — TRANSPARENCIA MCR
+# ============================================================
+#
+# Cadena QNKC-002 instanciada:
+#   CE_18 + CE_91 (C1/C2) → SP_TRANS_MCR (C3) → PRO_TRANS_01-05_MCR (C4)
+#   → EVD_TRANS_01-06_MCR (C5) → CTL_TRANS_01-04_MCR (C6)
+#   → OBS_TRANS_01-04_MCR (C7) → IND_TRANS_01-05_MCR (C8)
+#   → RES_TRANS_01-05_MCR (C9)
+#
+# Posición de LOTAIP en la cadena (corrección arquitectónica ADR-012):
+#   LOTAIP_19 → C4 (ventana de observación de los procesos)
+#   LOTAIP_20 → C4 (proceso de atención SAIP)
+#   LOTAIP_47 → C6 (control/sanción DPE)
+#   LOTAIP NO está en C2 (Competencial) — no crea la obligación sustantiva
+#   C2 = COOTAD_302 + LOSNCP_21 + COOTAD_215 (obligaciones sustantivas)
+#
+# Nodos Neo4j a crear:
+#   1 × C3ServicioPublico (SP_TRANS_MCR)
+#   5 × C4Proceso
+#   6 × C5Evidencia
+#   4 × C6Control
+#   4 × C7Observabilidad
+#   5 × C8Indicador
+#   5 × C9ResultadoTerritorial
+#   Total: 30 nodos + nodo Canton ancla + relaciones
+#
+# Relaciones ACK → QTMP (materialización):
+#   CE_18      -[:MATERIALIZA_VIA]-> SP_TRANS_MCR
+#   CE_91      -[:HABILITA]->        SP_TRANS_MCR
+#   COOTAD_302 -[:HABILITA]->        SP_TRANS_MCR
+#   LOSNCP_21  -[:HABILITA]->        PRO_TRANS_03_MCR
+#   LOTAIP_19  -[:OBSERVA]->         OBS_TRANS_01_MCR
+#   LOTAIP_47  -[:CONTROLA]->        CTL_TRANS_01_MCR
+#   COOTAD_215 -[:HABILITA]->        PRO_TRANS_02_MCR
+#   COOTAD_302 -[:ACTIVA]->          PRO_TRANS_05_MCR
+#   LOC-CGE_21 -[:CONTROLA]->        CTL_TRANS_02_MCR
+#
+# Preguntas causales respondibles con este QTMP:
+#   1. ¿Cuántos de los 21 numerales LOTAIP están publicados en el portal?
+#      → RES_TRANS_02_MCR (cobertura publicación)
+#   2. ¿Las publicaciones están actualizadas o son información vieja?
+#      → RES_TRANS_03_MCR (actualidad publicaciones)
+#   3. ¿El municipio responde las solicitudes ciudadanas de información?
+#      → RES_TRANS_04_MCR (tasa respuesta SAIP)
+#   4. ¿La ciudadanía puede verificar el uso del dinero público?
+#      → OBS_TRANS_02_MCR (SIGEF) + OBS_TRANS_03_MCR (SERCOP)
+#   5. ¿Existe capacidad efectiva de escrutinio ciudadano en Montecristi?
+#      → RES_TRANS_01_MCR (índice compuesto — pregunta central Dom07)
+#
+# Estado validación:
+#   Estructura: COMPLETA (todos los campos del schema instanciados)
+#   Datos:      PENDIENTE (requieren verificación directa portal GADMCM)
+#   Revisión:   revisado_por_experto: false — requiere sesión con GADMCM
+#
+# Siguiente paso para activar este circuito:
+#   1. Verificar portal montecristi.gob.ec — contar numerales LOTAIP activos
+#   2. Solicitar al GADMCM registro de solicitudes SAIP 2023-2025
+#   3. Solicitar resolución de designación del RAIP vigente
+#   4. Cruzar PAC SERCOP 2025 con informe rendición de cuentas 2024
+#   5. Agregar entrada TRANSPARENCIA en neo4j_qtmp.py (CIRCUIT_DOMAIN_MAP)
+# ============================================================

@@ -8,7 +8,7 @@ Dylus Lab © 2026
 """
 import streamlit as st
 from data.loader import load_all
-from utils.session import is_tecnico
+from utils.session import is_tecnico, is_ejecutivo
 from quira_pages.html_engine import render_page, page_header
 
 # ── PANEL IGM · 6 SUB-INDICADORES DE GÉNERO ──────────────────────────────────
@@ -330,7 +330,235 @@ def _fa_card(m: tuple) -> str:
     )
 
 
-def render() -> None:
+# ══════════════════════════════════════════════════════════════════════════════
+# LAYER 2 — EJECUTIVO · DOM12 · PROTECCIÓN SOCIAL & GRUPOS PRIORITARIOS
+# ADR-013: GAP_10PCT → Dom12 — cadena causal confirmada en Neo4j
+# Bloomberg Model: cero nomenclatura interna en esta sección.
+# ══════════════════════════════════════════════════════════════════════════════
+
+# Colores canónicos QUIRA
+_VERDE   = "#22C55E"
+_ALERTA  = "#F97316"
+_CRITICO = "#EF4444"
+_MUTED   = "rgba(255,255,255,0.45)"
+
+
+def _render_return_band() -> None:
+    """Banda superior de retorno al Centro de Mando — persiste en drill-down Ejecutivo."""
+    if is_ejecutivo():
+        col1, _col2 = st.columns([1, 7])
+        with col1:
+            if st.button("← Centro de Mando", key="back_to_cc_d12"):
+                st.session_state["gov_module"] = "inicio"
+                st.rerun()
+
+
+def _semaforo_color(semaforo: str) -> str:
+    m = {"VERDE": _VERDE, "AMARILLO": _ALERTA, "ROJO": _CRITICO}
+    return m.get(semaforo, _MUTED)
+
+
+def _semaforo_label(semaforo: str) -> str:
+    m = {"VERDE": "EN RUTA", "AMARILLO": "BAJO OBJETIVO", "ROJO": "BRECHA CRÍTICA",
+         "PENDIENTE": "EN MODELADO"}
+    return m.get(semaforo, semaforo)
+
+
+def _render_dom12_ejecutivo(chain: dict) -> None:
+    """
+    Layer 2 canónico — Dom12 Protección Social & Grupos Prioritarios.
+    Solo lenguaje de gobernanza. Sin nomenclatura interna. Ejecutivo.
+
+    Estructura:
+      1. Semáforo y KPI principal
+      2. Narrativa causal
+      3. Indicadores clave (3 máx.)
+      4. Visualización: barra progreso + serie histórica
+      5. Pie de página con fuente pública
+    """
+    # Colores
+    sem   = chain.get("semaforo", "ROJO")
+    color = _semaforo_color(sem)
+    label = _semaforo_label(sem)
+    valor = chain.get("valor_principal", 50.0)
+    ind_label = chain.get("indicador_label", "Ejecución presupuestaria Patronato Municipal")
+    fuente    = chain.get("fuente", "Sistema Integrado de Gestión Financiera · 2025")
+    corte     = chain.get("fecha_corte", "noviembre 2025")
+    narrativa = chain.get("narrativa", "")
+    estado    = chain.get("estado_dato", "confirmado")
+    asignacion    = chain.get("asignacion_pct", 20.84)
+    sem_asignacion= chain.get("asignacion_semaforo", "VERDE")
+    serie         = chain.get("serie_historica", {2023: 35.03, 2024: 53.77, 2025: 50.0})
+    fuente_neo4j  = chain.get("fuente_neo4j", False)
+
+    # ── Cabecera de dominio ────────────────────────────────────────────────────
+    st.markdown(
+        f"<div style='font-size:11px;color:{_MUTED};letter-spacing:2px;"
+        f"text-transform:uppercase;margin-bottom:4px'>D12 · PROTECCIÓN SOCIAL</div>",
+        unsafe_allow_html=True,
+    )
+    st.markdown(
+        "<div style='font-size:20px;font-weight:700;color:white;margin-bottom:16px'>"
+        "Protección Social &amp; Grupos de Atención Prioritaria</div>",
+        unsafe_allow_html=True,
+    )
+
+    # ── Sección 1: Semáforo y KPI principal ───────────────────────────────────
+    badge_asterisco = " *" if estado != "confirmado" else ""
+    st.markdown(
+        f"""<div style="background:{color}18;border:1px solid {color}44;
+                     border-left:4px solid {color};border-radius:10px;
+                     padding:16px 20px;margin-bottom:16px">
+  <div style="font-size:2.8rem;font-weight:900;color:{color};
+              font-family:monospace;line-height:1">{valor:.1f}%{badge_asterisco}</div>
+  <div style="font-size:0.75rem;font-weight:700;color:{color};
+              letter-spacing:1px;margin-top:6px">{label}</div>
+  <div style="font-size:0.8rem;color:rgba(255,255,255,0.7);margin-top:6px">
+    {ind_label}
+  </div>
+</div>""",
+        unsafe_allow_html=True,
+    )
+
+    if estado != "confirmado":
+        st.caption(f"* Pendiente confirmación oficial · {fuente}")
+
+    # ── Sección 2: Narrativa causal ───────────────────────────────────────────
+    if narrativa:
+        st.markdown(
+            f"""<div style="background:rgba(255,255,255,0.04);border-radius:10px;
+                         padding:14px 18px;margin-bottom:16px;
+                         border:1px solid rgba(255,255,255,0.08);
+                         font-size:0.88rem;color:rgba(255,255,255,0.82);
+                         line-height:1.7">{narrativa}</div>""",
+            unsafe_allow_html=True,
+        )
+
+    # ── Sección 3: Indicadores clave (3 máx.) ────────────────────────────────
+    col_a, col_b, col_c = st.columns(3)
+
+    col_ejecucion_color = _semaforo_color(sem)
+    col_asig_color      = _semaforo_color(sem_asignacion)
+
+    with col_a:
+        st.markdown(
+            f"""<div style="background:{col_ejecucion_color}15;border:1px solid {col_ejecucion_color}33;
+                         border-radius:8px;padding:14px;text-align:center">
+  <div style="font-size:1.8rem;font-weight:900;color:{col_ejecucion_color};
+              font-family:monospace">{valor:.1f}%</div>
+  <div style="font-size:0.68rem;color:{col_ejecucion_color};font-weight:700;margin-top:4px">
+    BRECHA CRÍTICA
+  </div>
+  <div style="font-size:0.65rem;color:{_MUTED};margin-top:3px;line-height:1.4">
+    Ejecución presupuestaria<br>Patronato Municipal
+  </div>
+</div>""",
+            unsafe_allow_html=True,
+        )
+
+    with col_b:
+        st.markdown(
+            f"""<div style="background:{col_asig_color}15;border:1px solid {col_asig_color}33;
+                         border-radius:8px;padding:14px;text-align:center">
+  <div style="font-size:1.8rem;font-weight:900;color:{col_asig_color};
+              font-family:monospace">{asignacion:.1f}%</div>
+  <div style="font-size:0.68rem;color:{col_asig_color};font-weight:700;margin-top:4px">
+    CUMPLE LA NORMA
+  </div>
+  <div style="font-size:0.65rem;color:{_MUTED};margin-top:3px;line-height:1.4">
+    Asignación presupuestaria<br>para grupos prioritarios
+  </div>
+</div>""",
+            unsafe_allow_html=True,
+        )
+
+    with col_c:
+        umbral = chain.get("umbral_verde", 85.0)
+        brecha = umbral - valor
+        st.markdown(
+            f"""<div style="background:{_CRITICO}15;border:1px solid {_CRITICO}33;
+                         border-radius:8px;padding:14px;text-align:center">
+  <div style="font-size:1.8rem;font-weight:900;color:{_CRITICO};
+              font-family:monospace">{brecha:.0f} pts</div>
+  <div style="font-size:0.68rem;color:{_CRITICO};font-weight:700;margin-top:4px">
+    DISTANCIA AL UMBRAL
+  </div>
+  <div style="font-size:0.65rem;color:{_MUTED};margin-top:3px;line-height:1.4">
+    Umbral de referencia<br>{umbral:.0f}% · SIGEF
+  </div>
+</div>""",
+            unsafe_allow_html=True,
+        )
+
+    st.markdown("<div style='height:16px'></div>", unsafe_allow_html=True)
+
+    # ── Sección 4: Visualización ──────────────────────────────────────────────
+    # Barra de progreso
+    progress_pct = min(valor / 100.0, 1.0)
+    umbral_pct   = min(umbral / 100.0, 1.0)
+
+    st.markdown(
+        f"""<div style="margin-bottom:16px">
+  <div style="font-size:0.75rem;color:{_MUTED};margin-bottom:6px;
+              font-weight:600;letter-spacing:1px">EJECUCIÓN PRESUPUESTARIA VS UMBRAL</div>
+  <div style="position:relative;height:10px;background:rgba(255,255,255,0.1);
+              border-radius:6px;overflow:hidden;margin-bottom:4px">
+    <div style="position:absolute;height:100%;width:{valor:.1f}%;
+                background:{color};border-radius:6px;
+                transition:width 0.5s ease"></div>
+    <div style="position:absolute;height:100%;left:{umbral:.0f}%;
+                width:2px;background:{_VERDE};opacity:0.7"></div>
+  </div>
+  <div style="display:flex;justify-content:space-between;font-size:0.7rem;
+              color:{_MUTED}">
+    <span>0%</span>
+    <span style="color:{_VERDE}">▲ Umbral {umbral:.0f}%</span>
+    <span>100%</span>
+  </div>
+</div>""",
+        unsafe_allow_html=True,
+    )
+
+    # Serie histórica
+    if serie:
+        años = sorted(serie.keys())
+        vals = [serie[a] for a in años]
+        bars = ""
+        max_v = max(vals) if vals else 100
+        for año, v in zip(años, vals):
+            h = (v / max_v) * 60  # altura relativa en px
+            c = _semaforo_color("VERDE" if v >= umbral else "ROJO")
+            bars += (
+                f"<div style='display:flex;flex-direction:column;align-items:center;gap:4px'>"
+                f"<div style='font-size:0.75rem;color:{c};font-weight:700'>{v:.0f}%</div>"
+                f"<div style='width:40px;height:{h:.0f}px;background:{c};border-radius:4px 4px 0 0'></div>"
+                f"<div style='font-size:0.68rem;color:{_MUTED}'>{año}</div>"
+                f"</div>"
+            )
+        st.markdown(
+            f"""<div style="margin-bottom:20px">
+  <div style="font-size:0.75rem;color:{_MUTED};margin-bottom:10px;
+              font-weight:600;letter-spacing:1px">SERIE HISTÓRICA · EJECUCIÓN PATRONATO</div>
+  <div style="display:flex;gap:24px;align-items:flex-end;height:80px">{bars}</div>
+</div>""",
+            unsafe_allow_html=True,
+        )
+
+    # ── Sección 5: Pie de página ──────────────────────────────────────────────
+    fuente_label = (
+        f"{'🔴 Datos en vivo · Neo4j' if fuente_neo4j else '📋 Datos consolidados'}"
+        f" · Fuente: {fuente} · Corte: {corte}"
+    )
+    st.caption(fuente_label)
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# LAYER 2 TÉCNICO — Vista enriquecida para Directivo / Técnico / Administrador
+# (contenido existente — violaciones de lenguaje pendientes de corrección)
+# ══════════════════════════════════════════════════════════════════════════════
+
+def _render_dom12_tecnico() -> None:
+    """Vista técnica existente — Directivo / Técnico / Administrador."""
     data      = load_all()
     show_tech = is_tecnico()
     indices   = data["indices"]
@@ -760,3 +988,31 @@ def render() -> None:
                          key="btn_ods_tab2"):
                 st.session_state["page"] = "ods"
                 st.rerun()
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# ENTRY POINT CANÓNICO — Layer 2 Dom12
+# ADR-013 · Sprint 3 Panel Estratégico
+# ══════════════════════════════════════════════════════════════════════════════
+
+def render() -> None:
+    """
+    Layer 2 — Protección Social & Grupos Prioritarios
+    Dominio D12 · Sprint 3 Panel Estratégico
+
+    Ejecutivo → vista canónica QTMP (narrativa causal + semáforo + fuente pública)
+    Directivo / Técnico / Administrador → vista enriquecida técnica
+    """
+    from app.connectors.neo4j_qtmp import get_qtmp_chain
+
+    # Banda de retorno siempre arriba
+    _render_return_band()
+
+    if is_ejecutivo():
+        chain = get_qtmp_chain("GAP_10PCT")
+        if chain:
+            _render_dom12_ejecutivo(chain)
+        else:
+            st.error("Datos del dominio no disponibles. Intente nuevamente.")
+    else:
+        _render_dom12_tecnico()

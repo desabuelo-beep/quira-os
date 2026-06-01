@@ -180,9 +180,9 @@ _DOMAINS_12: list[dict] = [
         "id": "d10", "num": "10",
         "nombre": "Territorio & Cobertura",
         "estado": "BRECHA CRÍTICA",
-        "metric": "$40/hab",
-        "narrativa": "Inversión rural 5.4× menor a cabecera cantonal · Chirijos, Noboa y La Pila en nivel crítico.",
-        "temp": "critico", "mod": "geotwin",
+        "metric": "34.9%",
+        "narrativa": "Solo 34.9 % de viviendas con acceso a red pública de agua potable · 0 % de continuidad 24/7 en el cantón.",
+        "temp": "critico", "mod": "territorio",
     },
     {
         "id": "d11", "num": "11",
@@ -947,7 +947,7 @@ def _build_canvas(d: dict) -> str:
     <span>·</span>
     <span>Corte {CORTE}</span>
   </div>
-  <span class="cc-footer-right">Dylus Lab © 2026 · Gold Master v5.5_TGI</span>
+  <span class="cc-footer-right">Dylus Lab © 2026 · QUIRA Intelligence v1.0</span>
 </div>"""
 
     canvas = f"""

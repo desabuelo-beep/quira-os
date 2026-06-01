@@ -21,11 +21,12 @@ Regla doctrinal permanente:
   rdc          → p17_rdc.py            Rendición de Cuentas · CPCCS · Checklist
   cooperacion  → p18_cooperacion.py    Fondos BID · CAF · PNUD · ONU Mujeres
   genero       → p19_genero.py         PSG 12.83% · ODS 5 · Ambiente · FA PDOT
+  territorio   → p10_territorio.py     Dom10 · Cobertura agua potable · ADR-013 AGUA_POTABLE
 
   SECCIÓN TÉCNICA — solo Técnico, Operador, Administrador (is_tecnico())
   ─────────────────────────────────────────────────────────────────────────────
   analisis     → m4_analisis.py        Tablero Técnico + Eficiencia + Metas + Cadena + Operación
-  geotwin      → p4_geotwin.py         GeoTwin Territorio · Mapa Folium · Parroquias
+  geotwin      → p4_geotwin.py         GeoTwin Territorio · Mapa Folium · Parroquias (Técnico)
   congruencias → p3_congruencias.py    Congruencias HPT-M · PDOT
   simulador    → p13_simulador.py      Simulador de Escenarios · Análisis de sensibilidad
   control      → m5_control.py         Centro de Control + Carga + Ingesta + Historial + Sentinel
@@ -139,6 +140,7 @@ _GOV_MODULES: list[tuple[str, str, str, bool]] = [
     ("rdc",          "📋",  "Rendición de Cuentas",          False),
     ("cooperacion",  "🌍",  "Cooperación Internacional",     False),
     ("genero",       "💜",  "Género y Ambiente",             False),
+    ("territorio",   "🗺",  "Territorio & Cobertura",        False),   # Dom10 · ADR-013
     # ── Sección Técnica (Técnico, Operador, Administrador) ─────────────────
     ("cadena",       "🔗",  "Cadena Institucional",          True),   # Sprint E.1
     ("analisis",     "📈",  "Análisis Estratégico",          True),
@@ -398,6 +400,20 @@ def _render_concejo() -> None:
         st.error(f"Panel Estratégico no disponible: {e}")
 
 
+def _render_territorio() -> None:
+    """
+    Dom10 — Territorio & Cobertura · Layer 2 para Ejecutivo.
+    ADR-013: AGUA_POTABLE → Dom10 → p10_territorio.py
+    Todos los roles pueden ver esta vista ejecutiva.
+    El GeoTwin técnico (p4_geotwin.py) sigue siendo Técnico.
+    """
+    try:
+        from quira_pages.p10_territorio import render as _r
+        _r()
+    except Exception as e:
+        st.error(f"Módulo Territorio & Cobertura no disponible: {e}")
+
+
 # ── Mapa key → (renderer, label) ─────────────────────────────────────────────
 _MODULE_RENDER: dict[str, tuple] = {
     # Sección Ejecutiva
@@ -410,6 +426,7 @@ _MODULE_RENDER: dict[str, tuple] = {
     "rdc":          (_render_rdc,          "Rendición de Cuentas"),
     "cooperacion":  (_render_cooperacion,  "Cooperación Internacional"),
     "genero":       (_render_genero,       "Género y Ambiente"),
+    "territorio":   (_render_territorio,   "Territorio & Cobertura"),  # Dom10 · ADR-013
     # Sección Técnica
     "cadena":       (_render_cadena,       "Cadena Institucional"),   # Sprint E.1
     "analisis":     (_render_analisis,     "Análisis Estratégico"),
