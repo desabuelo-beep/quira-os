@@ -203,14 +203,17 @@ Norma operativa: **LOTAIP Art. 7** — Por transparencia activa, las institucion
 
 **N2 — Pregunta bautismal:**
 
-> **¿Toda la información de acceso público que el municipio debe transparentar por mandato legal está disponible, actualizada y comprensible para cualquier ciudadano en este momento?**
+> **¿Los numerales LOTAIP que el Municipio de Montecristi debe publicar por mandato legal aparecen como verificables — existentes, actualizados y comprensibles — desde la fuente canónica de observación externa, con independencia de lo que el GAD afirma haber publicado?**
 
-*Por qué esta pregunta y no "¿publicamos los 21 artículos?"*: La publicación formal no garantiza comprensibilidad ni actualización. La pregunta bautismal incluye tres dimensiones: disponibilidad (está publicado), actualidad (es del período vigente), y comprensibilidad (un ciudadano puede entenderlo y usarlo). Sin esas tres dimensiones, la transparencia es compliance formal, no derecho real.
+*Enmienda v1.0.1 — 2026-06-01 · evento normativo calificante: LOTAIP 2.0 (reforma vigente):* Bajo LOTAIP 2.0, la Defensoría del Pueblo del Ecuador centraliza en `transparencia.dpe.gob.ec` el registro oficial de cumplimiento LOTAIP para todas las instituciones públicas. La fuente canónica de C5a (Existencia) y C5b (Actualidad) deja de ser el portal institucional GAD — pasa a ser el portal regulatorio DPE. Por tanto, la pregunta bautismal debe observarse desde esa fuente externa, no desde la autodeclaración del GAD. La N2 v1.0 ("¿está disponible en el portal municipal?") no se elimina — se desplaza a C4 (cumplimiento formal autodeclarado). La N2 v1.0.1 opera en C5 (verificabilidad desde tercero institucional). Registrado como OBS-QNKC-02 en `QNKC_PRINCIPIOS_INDEX.md`.
+
+*Por qué esta pregunta y no "¿publicamos los numerales?"*: La publicación formal autodeclarada es C4 — el proceso. La pregunta bautismal v1.0.1 exige C5 — la evidencia verificable externamente. Las tres dimensiones se mantienen: existentes (C5a · ¿aparece en el portal DPE?), actualizados (C5b · ¿la carga en DPE corresponde al período obligatorio?), comprensibles (C5c · ¿un ciudadano puede entenderlo y usarlo?). Sin las tres, la transparencia es compliance formal, no derecho real verificable.
 
 **Estado QLEP:**
 - C1/C2: CE_18 (F0.1), LOTAIP_7 (F0.2), LOTAIP_19 completo (F0.2) — **corpus más completo**
 - Circuito QTMP: **YAML materializado** — `data/qtmp/qtmp_ECU-13-MONTECRISTI_TRANSPARENCIA.yaml` (2026-06-01, 811 líneas, cadena C3-C9 completa) · Neo4j load pendiente Sprint 4
 - Conector: `app/connectors/neo4j_qtmp.py` — `TRANSPARENCIA` circuit registrado · fallback + query operativos
+- **OBS-QNKC-02 activa:** Fuente C5a/C5b = portal DPE (`transparencia.dpe.gob.ec`) · N2 actualizado v1.0.1 · p07_transparencia.py observabilidad panel actualizado
 - REL-H activos: H6 (Dom07↔Dom08), H9 (Dom01↔Dom07), H3 (Dom03↔Dom08 vía LOTAIP)
 
 **Coherencia crítica**: Dom07 es prerrequisito de Dom08 (sin información pública, la participación es vacía) y de Dom09 (sin publicaciones actualizadas, la rendición de cuentas no tiene base documental verificable).
@@ -402,7 +405,7 @@ Fuera de MILESTONE_002: Dom11
 - Dom01: requiere CPFP + PDOT Montecristi (F0.7) para cadena causal PLANIFICACION — Sprint 9
 - Dom03: requiere CPFP Art. 44 (F0.7) + Dom01 completo — Sprint 10
 - Dom05: requiere atomización LOEP (F0.8) — Sprint 12
-- Dom07: **Layer 2 ✅** (p07_transparencia.py · Sprint 4) — pendiente: Neo4j load + verificación directa portal GADMCM (C5a/C5b/C5c)
+- Dom07: **Layer 2 ✅** (p07_transparencia.py · Sprint 4) — pendiente: Neo4j load + auditoría `transparencia.dpe.gob.ec` para Montecristi (C5a/C5b · OBS-QNKC-02) + evaluación C5c comprensibilidad · N2 v1.0.1 actualizado
 - Dom09: depende Dom01+Dom03+Dom07 completos — Sprint 11
 - Dom11: requiere corpus completo (F0.7-F0.8) antes de activar módulo
 

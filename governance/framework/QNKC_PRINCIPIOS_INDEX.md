@@ -481,7 +481,50 @@ OBS-QNKC-02 → DÓNDE se verifica C5a/C5b  (portal regulatorio, no instituciona
 | Sin LOTAIP 2.0: portal GAD por institución | 221 portales distintos, scraping heterogéneo | Alto — estructura diferente por cantón |
 | Con LOTAIP 2.0: portal DPE centralizado | 1 portal con estructura uniforme | Bajo — consulta única, dato estandarizado |
 
-Esta observación convierte la verificación de C5a/C5b de un problema de scraping heterogéneo (221 portales distintos) en un problema de consulta a una única fuente estructurada y regulatoriamente autorizada. Para MILESTONE_002 es una mejora en robustez de datos. Para la escala de 221 GADs, es una diferencia operacional y económicamente significativa.
+**Complejidad observacional — Transformación O(n) → O(1):**
+
+La consecuencia arquitectónica de OBS-QNKC-02 es una reducción en la complejidad de verificación de C5a/C5b:
+
+Esquema pre-OBS-QNKC-02 — 221 fuentes heterogéneas:
+```
+221 portales municipales
+       ↓
+221 conectores específicos
+       ↓
+221 modelos de scraping
+```
+
+Esquema post-OBS-QNKC-02 — fuente regulatoria unificada:
+```
+Portal DPE (transparencia.dpe.gob.ec)
+      ↓
+Fuente observacional unificada y estandarizada
+      ↓
+221 GADs
+```
+
+La complejidad de verificación C5a/C5b cambia de O(n) — un conector por cada GAD — a O(1) — una sola consulta a fuente canónica. Esto no es solo una mejora operacional. Cambia el modelo de escalabilidad de QUIRA: el costo de cubrir un nuevo GAD en Dom07 deja de ser proporcional al número de GADs y pasa a ser el costo fijo de un único conector DPE. Para BETA-CORE (Montecristi) es una mejora en robustez de datos. Para la visión de 221 GADs, es la diferencia entre un proyecto inescalable y uno que escala por definición.
+
+**Consecuencia epistemológica — cambio de pregunta bautismal N2 Dom07:**
+
+OBS-QNKC-02 produce una consecuencia directa y verificable sobre la pregunta fundacional de Dom07. La distinción no es operacional — es epistemológica: el objeto de evaluación cambia de sujeto:
+
+| Versión | Pregunta implícita | Fuente de observación | Perspectiva |
+|---------|-------------------|----------------------|-------------|
+| N2 v1.0 | ¿Qué afirma haber publicado el municipio? | Portal GAD — autodeclaración | C4 (proceso) |
+| N2 v1.0.1 | ¿Qué verifica un tercero institucional como publicado? | Portal DPE — regulador externo | C5 (evidencia) |
+
+```
+QUIRA deja de evaluar:
+  lo que el GAD afirma haber publicado
+
+QUIRA pasa a evaluar:
+  lo que un tercero institucional puede verificar como publicado
+```
+
+Esta es exactamente la Dualidad Epistémica de P01 aplicada al nivel de infraestructura digital: el portal GAD es C4 (el proceso de publicación, autodeclarado), el portal DPE es C5 (la verificación externa de ese proceso). OBS-QNKC-02 hace explícito el punto de lectura correcto para el lado C5 de la dualidad.
+
+La N2 actualizada (v1.0.1) está documentada en `QLEP_CANONICO_MONTECRISTI_v1.0.md` — enmienda LOTAIP 2.0 como evento normativo calificante.
 
 **Relación con OBS-QNKC-01:**
 

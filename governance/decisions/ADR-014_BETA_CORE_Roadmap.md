@@ -151,6 +151,20 @@ Para cada numeral del Art. 19 LOTAIP, registrar:
 Resultado de la matriz → C5a = (Σ C5a_i) / total · C5b = (Σ C5b_i) / C5a_i · C5c = evaluación por muestreo representativo → C8 = C4 × C5a × C5b × C5c.
 
 Registrado como OBS-QNKC-02 en QNKC_PRINCIPIOS_INDEX.
+
+**Consecuencia arquitectónica O(n) → O(1) — validada durante Sprint 4:**
+
+OBS-QNKC-02 produce una reducción en la complejidad de observabilidad para todos los dominios LOTAIP. La verificación C5a/C5b pasa de O(n) — un conector por cada GAD — a O(1) — una sola consulta al portal regulatorio DPE. Para MILESTONE_002 esto es una mejora en robustez. Para la visión de 221 GADs, define el modelo de escalabilidad.
+
+**N2 Dom07 actualizado — v1.0.1 (enmienda LOTAIP 2.0):**
+
+La pregunta bautismal N2 de Dom07 se actualizó en `QLEP_CANONICO_MONTECRISTI_v1.0.md` como enmienda calificada bajo la regla de modificación (evento normativo: LOTAIP 2.0 centraliza verificación en portal DPE):
+
+- N2 v1.0: ¿Qué afirma haber publicado el municipio? → perspectiva C4 (portal GAD, autodeclaración)
+- N2 v1.0.1: ¿Qué verifica un tercero institucional como publicado? → perspectiva C5 (portal DPE, evidencia externa)
+
+QUIRA deja de evaluar lo que el GAD afirma publicar y pasa a evaluar lo que la DPE certifica como publicado y verificable. Esto es la Dualidad Epistémica de P01 aplicada a nivel de infraestructura observacional.
+
 | **S5** | D06 | Salud Institucional | ✅ EQUIDAD cerrado | Layer 2 upgrade: m1_situacion → Layer 2 completo |
 | **S6** | D08 | Participación Ciudadana | ✅ PARTICIPACION cerrado | Layer 2 nueva página Dom08 |
 
