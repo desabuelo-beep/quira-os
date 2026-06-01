@@ -6,7 +6,7 @@
 # Cantón:    Montecristi — ECU-13-MONTECRISTI
 # Circuito:  TRANSPARENCIA
 # Versión:   1.0
-# Estado:    desarrollo (pendiente validación GADMCM)
+# Estado:    n4_verificado — N4 completado 2026-06-01 · DPE canónico
 # Fecha:     2026-06-01
 #
 # Propósito: Materializar la cadena C3→C9 para el circuito de
@@ -19,7 +19,7 @@
 #   → LOTAIP no crea la obligación de producir información; crea la
 #     ventana de observación sobre obligaciones que nacen en CE/COOTAD/LOSNCP.
 #   → C2 (Competencial): COOTAD/LOSNCP/CE
-#   → C4 (Proceso/Observación): LOTAIP Art. 19 (21 numerales)
+#   → C4 (Proceso/Observación): LOTAIP Art. 19 (25 numerales — LOTAIP 2.0)
 #
 # Base normativa:
 #   CE_18    → Derecho a buscar, recibir, conocer y difundir información
@@ -28,7 +28,7 @@
 #   COOTAD_302 → Obligación sustantiva de rendición de cuentas anual del Alcalde
 #   LOSNCP_21  → Obligación sustantiva: publicar PAC en SERCOP antes del 15-ene
 #   COOTAD_215 → Obligación sustantiva: información presupuestaria verificable
-#   LOTAIP_19  → Ventana de observación: 21 numerales de publicación activa
+#   LOTAIP_19  → Ventana de observación: 25 numerales de publicación activa (LOTAIP 2.0)
 #   LOTAIP_47  → Consecuencia: sanciones por incumplimiento (DPE activa)
 #
 # Fuente orgánica local:
@@ -51,7 +51,7 @@ QTMP_ID: QTMP_TRANSPARENCIA_MCR
 CIRCUITO_ID: TRANSPARENCIA
 CANTON_ID: ECU-13-MONTECRISTI
 VERSION: "1.0"
-ESTADO: desarrollo
+ESTADO: n4_verificado
 
 META:
   fecha_creacion: "2026-06-01"
@@ -65,15 +65,54 @@ META:
     Vigente desde el 1 de enero de 2026.
   revisado_por_experto: false
   nota_revision: >
-    Este archivo requiere validación con el GADMCM:
+    N4 completado 2026-06-01 — portal DPE auditado 16 meses. Pendiente
+    validación con el GADMCM:
     (a) confirmación del servidor designado como Responsable de Acceso a la
         Información Pública (LOTAIP) y su resolución de designación,
-    (b) estado real de publicación de los 21 numerales LOTAIP Art. 19
-        en el portal web institucional (verificación directa en portal),
+    (b) CONFIRMADO N4: los 25 numerales LOTAIP Art. 19 (LOTAIP 2.0) están
+        publicados en los 16 meses auditados (C5a=1.00, C5b_acc=1.00).
+        Hallazgo crítico: atraso sistémico — C5t=0.00 en todos los meses,
+        rango 30–139 días. Fuente: Portal DPE (transparencia.dpe.gob.ec),
+        entidad ID=937. El portal GAD (montecristi.gob.ec) no es la fuente
+        canónica de verificación — DPE consolida el estado de todos los GADs.
     (c) número y estado de solicitudes de información (SAIP) en 2024-2025,
     (d) cédula presupuestaria del área de comunicación/transparencia en SIGEF,
     (e) verificación de designación del funcionario responsable conforme
         Estatuto Orgánico 040-2025.
+
+# ============================================================
+# NOTA_N4 — Auditoría empírica DPE · 2026-06-01
+# ============================================================
+
+NOTA_N4:
+  tipo: auditoria_empirica
+  fecha_auditoria: "2026-06-01"
+  auditor: QUIRA Operaciones — QLEP-QTMP-v1.0
+  fuente_auditoria: >
+    Portal DPE — transparencia.dpe.gob.ec. Sistema de Publicación de
+    Información por Entidades. Método: API REST DPE, endpoint
+    /backend/v1/transparency/transparency/active/public?establishment_id=937
+    &year={y}&month={m}. GADMCM: establishment_id=937, RUC=1360001010001.
+    Período: enero 2025 – abril 2026 (16 meses consecutivos).
+  hallazgos:
+    c5a: "1.00 — El GADMCM publicó los 25 numerales en los 16 meses auditados."
+    c5b_acc: "1.00 — 25/25 numerales presentes en cada período verificado."
+    c5t: >
+      0.00 — ATRASO SISTÉMICO. Ningún mes publicó antes del día 15 del
+      mes siguiente (plazo LOTAIP). Rango de atraso: 30–139 días.
+      Primera falsificación empírica del supuesto C5b=1 pre-N4.
+    c5c: "0.75 — Comprensibilidad estimada por evaluación técnica preliminar."
+    c8_resultado: >
+      0.00 — Cadena C5a × C5b_acc × C5t × C5c colapsa a 0 porque C5t=0.00.
+      Transparencia presente (publican todo) pero no oportuna (siempre tarde).
+  adrs_relacionados:
+    - "ADR-015 — OBS-QNKC-02 validada · cerrado 2026-06-01"
+    - "ADR-012 — OBLIGACIÓN SUSTANTIVA ≠ VENTANA DE OBSERVACIÓN confirmado"
+    - "ADR-014 — Sprint 4 Dom07 marcado VERIFICADO"
+  estado_circuito_post_n4: >
+    Dom07 VERIFICADO. Estructura COMPLETA. Datos N4 confirmados para
+    RES_TRANS_01 (C8=0.00) y RES_TRANS_02 (100% cobertura). Pendiente:
+    N3 (carga Neo4j) para alcanzar estado DEC.
 
 # ============================================================
 # C3 — SERVICIO PÚBLICO
@@ -159,19 +198,21 @@ PROCESOS:
     nombre: Publicación Activa LOTAIP — Portal Web Institucional
     tipo_proceso: publicacion
     descripcion: >
-      Publicación de los 21 numerales del Art. 19 de LOTAIP en el portal
-      web del GADMCM (montecristi.gob.ec). Obligación: actualización
-      trimestral mínima. Incluye: orgánico-funcional, POA, presupuesto,
-      contratos, remuneraciones, servicios, indicadores de gestión, y
-      demás numerales establecidos en la ley. El RAIP es el responsable
+      Publicación de los 25 numerales del Art. 19 de LOTAIP (LOTAIP 2.0)
+      en el portal web del GADMCM. Obligación: publicación mensual con
+      plazo máximo hasta el día 15 del mes siguiente. Incluye: orgánico-
+      funcional, POA, presupuesto, contratos, remuneraciones, servicios,
+      indicadores de gestión, y demás numerales establecidos en la reforma
+      LOTAIP 2.0 (amplió de ~14 a 25 numerales). El RAIP es el responsable
       de mantener el portal actualizado y de verificar la comprensibilidad
-      de la información publicada.
+      de la información publicada. N4 (2026-06-01): 25/25 publicados en
+      todos los meses auditados — pero con atraso sistémico (C5t=0.00).
     actor_ref: RAIP GADMCM / Director/a Comunicación Social
     base_normativa: LOTAIP_19
-    numerales_totales: 21
+    numerales_totales: 25
     estado: activo
     estados_posibles: [PUBLICADO, ATRASADO, INCOMPLETO, INCOMPRENSIBLE, NO_PUBLICADO]
-    estado_actual: pendiente_verificacion
+    estado_actual: auditado_n4_atraso_sistemico
     frecuencia_obligatoria: trimestral
     anio_poa: "2026"
     partida_presupuestaria: pendiente
@@ -452,16 +493,24 @@ OBSERVABILIDAD:
     fuente_ack: LOTAIP_19
     tipo_publicacion: portal_transparencia
     descripcion: >
-      Portal LOTAIP GADMCM — verificación directa ciudadana. Cualquier
-      persona puede navegar a montecristi.gob.ec/lotaip y verificar cuántos
-      de los 21 numerales del Art. 19 están publicados, actualizados y son
-      comprensibles. Esta es la observabilidad primaria del circuito:
-      la transparencia no es un formulario interno — es una URL pública.
-      Observable: número de numerales activos vs. 21 totales; fecha de
-      última actualización de cada numeral; calidad y comprensibilidad.
-    url_portal: "https://www.montecristi.gob.ec/lotaip"
-    frecuencia_real: trimestral
+      Portal DPE (fuente canónica QUIRA) — Sistema de Publicación de
+      Información por Entidades. El portal de la Defensoría del Pueblo
+      (transparencia.dpe.gob.ec) consolida el estado de publicación de todos
+      los 221 GADs del Ecuador, incluyendo el GADMCM (establishment_id=937).
+      Observable: 25 numerales LOTAIP 2.0 por mes · fecha de publicación por
+      numeral · atraso respecto al plazo legal (día 15 del mes siguiente).
+      N4 (2026-06-01): 25/25 numerales presentes en los 16 meses auditados
+      (ene 2025 – abr 2026). Atraso sistémico: 30–139 días en todos los meses.
+      Portal GAD (montecristi.gob.ec): publicación institucional obligatoria
+      por LOTAIP Art. 9; complementario a DPE para verificación ciudadana.
+    url_portal: "https://transparencia.dpe.gob.ec/entidades/937"
+    url_portal_gad: "https://www.montecristi.gob.ec"
+    frecuencia_real: mensual
     verificacion_anonima: true
+    nota_n4: >
+      OBS-QNKC-02 VALIDADA (ADR-015 cerrado). API DPE confirmada O(1):
+      /backend/v1/transparency/transparency/active/public?establishment_id=937&year={y}&month={m}.
+      Arquitectura escalable a 221 GADs sin cambio de método.
 
   - id: OBS_TRANS_02_MCR
     fuente_ack: COOTAD_215
@@ -523,52 +572,64 @@ INDICADORES:
     dominio_tgi: Dom07
     tgi_dimension: D7_TRANSPARENCIA
     formula: >
-      (numerales_publicados_completos / 21) * peso_cumplimiento
-      + (numerales_actualizados_en_plazo / numerales_publicados) * peso_actualizacion
-      + (numerales_comprensibles / numerales_publicados) * peso_comprensibilidad
+      C8 = C4 × (C5a × C5b_acc × C5t × C5c)
+      donde:
+        C4      = cumplimiento del proceso de publicación activa (0.00–1.00)
+        C5a     = existencia     — ¿publicó al menos 1 numeral? (1.00 si presente)
+        C5b_acc = accesibilidad  — ¿publicó todos los numerales? (n_pub / 25)
+        C5t     = puntualidad    — ¿publicó antes del día 15 del mes siguiente?
+                  0.00 si atraso · 1.00 si en plazo
+        C5c     = comprensibilidad — calidad/legibilidad de lo publicado (0.00–1.00)
     nota_formula: >
-      Indicador compuesto ponderado. Pesos: cumplimiento=0.5, actualización=0.3,
-      comprensibilidad=0.2. La comprensibilidad es evaluada mediante criterio
-      experto o feedback ciudadano directo. El indicador mide no solo si se
-      publicó, sino si la publicación cumple su función de informar.
+      Cadena multiplicativa QNKC post-N4: cualquier sub-variable en 0 colapsa
+      el resultado a 0. Reemplaza la ponderación aditiva pre-N4
+      (cumplimiento×0.5 + actualización×0.3 + comprensibilidad×0.2).
+      C5b descompuesto en C5b_acc (accesibilidad) y C5t (puntualidad temporal)
+      como variables independientes — descubrimiento empírico de N4.
+      LOTAIP 2.0: 25 numerales obligatorios (reforma 2024-2025).
+      N4 (2026-06-01): C5a=1.00 · C5b_acc=1.00 · C5t=0.00 · C5c=0.75 → C8=0.00.
     fuente_dato: >
-      Portal LOTAIP GADMCM (verificación directa) + evaluación técnica
-      de comprensibilidad (formato, accesibilidad, nivel de detalle).
-    frecuencia: trimestral
-    unidad: indice_0_a_100
-    valor_linea_base: null
+      Portal DPE (transparencia.dpe.gob.ec) — API REST, entidad ID=937.
+      Verificación directa de 25 numerales × período. Comprensibilidad (C5c)
+      por evaluación técnica QUIRA Operaciones.
+    frecuencia: mensual
+    unidad: indice_0_a_1
+    valor_linea_base: 0.0
     meta_anual: null
-    umbral_verde: ">= 80"
-    umbral_amarillo: ">= 50 y < 80"
-    umbral_rojo: "< 50"
+    umbral_verde: ">= 0.80"
+    umbral_amarillo: ">= 0.50 y < 0.80"
+    umbral_rojo: "< 0.50"
     nota_umbral: >
-      Umbral QUIRA: <50 = opacidad crítica (DPE interviene); 50-79 = cumplimiento
-      parcial (monitoreo reforzado); ≥80 = transparencia efectiva (estándar mínimo
-      de gobernabilidad). No existe estándar nacional oficial para este compuesto —
-      umbrales derivados de análisis comparativo de portales LOTAIP municipales
-      ecuatorianos. Meta razonable para GADMCM: ≥70 en 2026, ≥80 en 2027.
-    estado_dato: pendiente_validacion
+      Umbral QUIRA: <0.50 = opacidad crítica (DPE interviene); 0.50–0.79 =
+      cumplimiento parcial (monitoreo reforzado); ≥0.80 = transparencia
+      efectiva (estándar mínimo de gobernabilidad). Cualquier valor
+      C5t=0.00 colapsa el resultado a 0 independientemente de los otros
+      factores — el atraso sistémico es el riesgo dominante.
+    estado_dato: confirmado
 
   - id: IND_TRANS_02_MCR
     nombre: Cobertura de Publicación LOTAIP Art. 19
     dominio_tgi: Dom07
     tgi_dimension: D7_TRANSPARENCIA
-    formula: "(numerales_publicados_activos / 21) * 100"
+    formula: "(numerales_publicados_activos / 25) * 100"
     fuente_dato: >
-      Portal web GADMCM — conteo manual de numerales Art. 19 con
-      contenido activo (no vacío, no "en construcción", no enlace roto).
-    frecuencia: trimestral
+      Portal DPE (transparencia.dpe.gob.ec) — API REST, entidad ID=937.
+      Conteo automático de numerales con contenido activo por período.
+      N4 (2026-06-01): 25/25 publicados en los 16 meses auditados = 100%.
+    frecuencia: mensual
     unidad: porcentaje
-    valor_linea_base: null
-    meta_anual: null
+    valor_linea_base: 100.0
+    meta_anual: 100.0
     umbral_verde: "= 100"
     umbral_amarillo: ">= 80 y < 100"
     umbral_rojo: "< 80"
     nota_umbral: >
-      Los 21 numerales son obligación legal, no opcional. 100% es el único
-      estándar de cumplimiento. Numerales ausentes son incumplimiento directo
-      de LOTAIP Art. 19. La DPE puede actuar sobre cada numeral faltante.
-    estado_dato: pendiente_validacion
+      Los 25 numerales (LOTAIP 2.0) son obligación legal, no opcional.
+      100% es el único estándar de cumplimiento. Numerales ausentes son
+      incumplimiento directo de LOTAIP Art. 19. La DPE puede actuar sobre
+      cada numeral faltante individualmente. N4 confirma 100% cobertura —
+      el problema de Montecristi es el atraso (C5t), no la cobertura (C5b_acc).
+    estado_dato: confirmado
 
   - id: IND_TRANS_03_MCR
     nombre: Actualidad de Publicaciones (% dentro de plazo)
@@ -653,40 +714,42 @@ RESULTADOS:
     territorio: Montecristi
     canton_id: ECU-13-MONTECRISTI
     indicador_ref: IND_TRANS_01_MCR
-    valor: null
-    unidad: "índice 0-100 (cumplimiento integral publicación institucional)"
-    periodo: "2025"
-    fuente_verificacion: Portal LOTAIP GADMCM + evaluación técnica QUIRA
-    estado_dato: pendiente_validacion
+    valor: 0.0
+    unidad: "índice 0-1 (cadena multiplicativa verificabilidad efectiva)"
+    periodo: "ene 2025 – abr 2026 (16 meses)"
+    fuente_verificacion: "Portal DPE · transparencia.dpe.gob.ec · entidad ID=937 · N4 2026-06-01"
+    estado_dato: confirmado
     naturaleza_valor: calculado
     nota: >
-      Resultado primario del circuito Dom07: ¿Puede un ciudadano de
-      Montecristi hoy verificar el uso del dinero público, los contratos
-      del municipio, la estructura institucional y los servicios que recibe?
-      El índice compuesto (IND_TRANS_01_MCR) sintetiza la respuesta en un
-      número entre 0 y 100. Un índice <50 significa que la institución opera
-      en opacidad efectiva — el GAD existe en papel, no en la realidad
-      observable del ciudadano. Pendiente: verificación directa del portal
-      montecristi.gob.ec por el equipo QUIRA Operaciones.
+      Resultado N4 (2026-06-01): C8 = C4 × (C5a × C5b_acc × C5t × C5c)
+      = 1.00 × (1.00 × 1.00 × 0.00 × 0.75) = 0.00.
+      El GADMCM publica los 25 numerales LOTAIP 2.0 en todos los meses
+      auditados (C5a=1.00, C5b_acc=1.00), pero nunca dentro del plazo legal
+      del día 15 del mes siguiente (C5t=0.00 en los 16 meses). Atraso:
+      30–139 días. La cadena multiplicativa colapsa a 0: la información
+      existe pero no es oportuna — transparencia presente pero no efectiva.
+      Semáforo: ROJO. Hallazgo: atraso sistémico es el riesgo dominante en
+      Dom07, no la ausencia de publicación. ADR-015 cerrado.
 
   - id: RES_TRANS_02_MCR
     nivel_territorial: canton
     territorio: Montecristi
     canton_id: ECU-13-MONTECRISTI
     indicador_ref: IND_TRANS_02_MCR
-    valor: null
-    unidad: "% numerales LOTAIP Art. 19 publicados y activos (de 21 totales)"
-    periodo: "2025"
-    fuente_verificacion: Portal web GADMCM — verificación directa
-    estado_dato: pendiente_validacion
+    valor: 100.0
+    unidad: "% numerales LOTAIP Art. 19 publicados activos (de 25 totales — LOTAIP 2.0)"
+    periodo: "ene 2025 – abr 2026 (16 meses)"
+    fuente_verificacion: "Portal DPE · transparencia.dpe.gob.ec · entidad ID=937 · N4 2026-06-01"
+    estado_dato: confirmado
     naturaleza_valor: observado
     nota: >
-      Cobertura de publicación activa LOTAIP Art. 19: cuántos de los 21
-      numerales están publicados, con contenido real, y no vacíos o con
-      mensajes "en construcción". Verificable directamente en el portal sin
-      credenciales. Si <21 numerales están publicados → incumplimiento
-      legal específico por numeral faltante. La DPE puede actuar por cada
-      numeral ausente individualmente. Meta: 21/21 = 100%.
+      N4 (2026-06-01): cobertura de publicación = 25/25 = 100% en los 16
+      meses auditados. El GADMCM NO tiene problema de cobertura (C5b_acc=1.00):
+      publica todos los numerales LOTAIP 2.0 requeridos. El problema es la
+      puntualidad (C5t=0.00): ningún mes cumplió el plazo del día 15.
+      Fuente: Portal DPE, no portal GAD (montecristi.gob.ec). Meta: 25/25
+      = 100% ✅ ALCANZADA en cobertura. Tarea pendiente: eliminar el atraso
+      sistémico (C5t → 1.00) para que la cadena C8 supere el umbral mínimo.
 
   - id: RES_TRANS_03_MCR
     nivel_territorial: canton
@@ -786,7 +849,7 @@ RESULTADOS:
 #   LOC-CGE_21 -[:CONTROLA]->        CTL_TRANS_02_MCR
 #
 # Preguntas causales respondibles con este QTMP:
-#   1. ¿Cuántos de los 21 numerales LOTAIP están publicados en el portal?
+#   1. ¿Cuántos de los 25 numerales LOTAIP 2.0 están publicados en el portal?
 #      → RES_TRANS_02_MCR (cobertura publicación)
 #   2. ¿Las publicaciones están actualizadas o son información vieja?
 #      → RES_TRANS_03_MCR (actualidad publicaciones)
@@ -799,13 +862,19 @@ RESULTADOS:
 #
 # Estado validación:
 #   Estructura: COMPLETA (todos los campos del schema instanciados)
-#   Datos:      PENDIENTE (requieren verificación directa portal GADMCM)
+#   Datos N4:   CONFIRMADOS — RES_TRANS_01 (C8=0.0) y RES_TRANS_02 (100%) con
+#               datos empíricos del Portal DPE · 16 meses auditados · ADR-015 cerrado
+#   Datos pend: SAIP (RES_TRANS_04) · Rendición cuentas (RES_TRANS_05) ·
+#               Actualidad detallada (RES_TRANS_03) · RAIP designado (IMPL_LOCAL)
 #   Revisión:   revisado_por_experto: false — requiere sesión con GADMCM
 #
-# Siguiente paso para activar este circuito:
-#   1. Verificar portal montecristi.gob.ec — contar numerales LOTAIP activos
-#   2. Solicitar al GADMCM registro de solicitudes SAIP 2023-2025
-#   3. Solicitar resolución de designación del RAIP vigente
-#   4. Cruzar PAC SERCOP 2025 con informe rendición de cuentas 2024
-#   5. Agregar entrada TRANSPARENCIA en neo4j_qtmp.py (CIRCUIT_DOMAIN_MAP)
+# Estado Dom07: VERIFICADO (N4 completado) — pendiente DEC hasta N3 (Neo4j load)
+#
+# Siguiente paso:
+#   1. ✅ Portal DPE auditado — 25/25 numerales confirmados · atraso sistémico registrado
+#   2. N3: ejecutar carga Neo4j del circuito TRANSPARENCIA (cuando Neo4j disponible)
+#   3. Solicitar al GADMCM registro de solicitudes SAIP 2023-2025
+#   4. Solicitar resolución de designación del RAIP vigente
+#   5. Cruzar PAC SERCOP 2025 con informe rendición de cuentas 2024
+#   6. Sprint 5: Dom06 (Salud Institucional) — después de DEC Dom07
 # ============================================================
