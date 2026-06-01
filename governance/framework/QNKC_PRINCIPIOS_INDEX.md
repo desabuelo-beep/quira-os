@@ -135,6 +135,72 @@ Cuando P06 (Impacto ≠ Transformación sistémica) se formalice. En ese momento
 
 ---
 
+## Hipótesis Arquitectónica H-QNKC-04 (candidata — emergente de DEC · 2026-06-01)
+
+> **Modelo ≠ Validación**
+>
+> Un dominio puede estar perfectamente modelado — estructura causal formalizada, principios congelados, Layer 2 construido, Neo4j cargado — y no ser epistemológicamente cerrado. El modelo determina la forma. La validación determina si la forma produce conocimiento real sobre el territorio.
+
+**Por qué emerge de DEC:**
+
+COR-QNKC-02 (Dominio Epistemológicamente Cerrado) introduce implícitamente una distinción que H-QNKC-01 y H-QNKC-02 no capturan explícitamente. Los frameworks GovTech convencionales tienen cuatro estados de madurez de un dominio:
+
+```
+Diseñado    → N1/N2 definidos
+Desarrollado → N1–N3 + QTMP
+Desplegado   → N1–N3 + Layer 2 funcionando
+Operativo    → N1–N5 completos
+```
+
+QUIRA introduce un quinto estado que ningún framework GovTech convencional define:
+
+```
+Epistemológicamente Cerrado (DEC) → N1–N5 reales + principios testados empíricamente
+```
+
+La diferencia entre "Operativo" y "DEC" no es técnica — es epistemológica. Un dominio puede ser Operativo (todos los pasos completados, pantalla funcionando) y no ser DEC si sus indicadores usan proxies, fallbacks, o datos autodeclarados sin verificación externa. H-QNKC-04 captura esa distinción como axioma: el modelo y la validación son objetos epistemológicamente distintos.
+
+**La pregunta que H-QNKC-04 formalizaría:**
+
+> ¿El modelo de este dominio produce conocimiento sobre el territorio, o produce conocimiento sobre el modelo?
+
+Si los indicadores de un dominio no se calibran con datos externos independientes, QUIRA está midiendo su propia arquitectura, no la realidad institucional de Montecristi.
+
+**Relación con H-QNKC-01 y H-QNKC-02:**
+
+| Hipótesis | Eje | Pregunta |
+|-----------|-----|----------|
+| H-QNKC-01 | Categorial — qué confusión destruye el principio | ¿El sistema confunde proceso con resultado? |
+| H-QNKC-02 | Matemático — cómo se agregan las condiciones | ¿Las condiciones son multiplicativas? |
+| H-QNKC-03 | Causal — cómo se atribuye el resultado | ¿La cadena causó el cambio, o lo causó algo más? |
+| **H-QNKC-04** | **Epistémico — qué valida la evidencia real** | **¿El sistema mide el territorio, o mide su propio modelo?** |
+
+Las cuatro hipótesis son ortogonales. H-QNKC-04 es el eje que distingue un sistema de inteligencia territorial real de un sistema de inteligencia documental sofisticado.
+
+**Anchor empírico — La brecha SIGAD/ICM ya existe en la práctica:**
+
+La Secretaría Nacional de Planificación (SNP) opera el SIGAD (Sistema de Información para los GADs), donde los propios GADs reportan su cumplimiento de metas. El ICM (Índice de Cumplimiento de Metas) del SIGAD se calcula desde esa autodeclaración.
+
+El patrón que emerge sistemáticamente al comparar el ICM-SIGAD con datos de SIGEF, DPE o CGE es exactamente:
+
+```
+GAD afirma algo (ICM-SIGAD = autodeclaración al SNP)
+        ↓
+Tercero independiente observa algo (SIGEF / DPE / CGE)
+        ↓
+QUIRA mide la diferencia (C8 = C4 × C5)
+```
+
+La brecha ICM-SIGAD vs. SIGEF no es un bug del sistema SNP — es la manifestación empírica de que Modelo ≠ Validación. El ICM-SIGAD es el modelo (lo que el GAD declara que hizo). SIGEF es la validación (lo que el sistema financiero del Estado registra como ejecutado). QUIRA mide esa brecha como dato formal, no como excepción.
+
+H-QNKC-04 convierte esa brecha — ya observable en la práctica institucional ecuatoriana — en un axioma de diseño: el sistema de inteligencia debe preferir siempre la fuente de validación externa sobre la fuente de autodeclaración para calcular C5.
+
+**Estado:** Candidata emergente (2026-06-01) — detectada durante la formalización de DEC en Sprint 4. No se eleva a Hipótesis congelada hasta que la práctica de múltiples sprints DEC confirme que la distinción Modelo/Validación es recurrente como necesidad axiomática. Posibles estados futuros: (a) integrada en COR-QNKC-02 si el corolario es suficiente, (b) elevada a H-QNKC-04 congelada si el número de dominios donde la distinción es crítica lo justifica.
+
+**Cuándo se necesitará:** Si el Sprint Observabilidad Longitudinal (post-MILESTONE_002) detecta que las series temporales mezclan datos autodeclarados con datos verificados externamente sin distinción, H-QNKC-04 se activa: el sistema estará midiendo su modelo longitudinal, no la evolución real del territorio.
+
+---
+
 ## Estructura Axiomática del Framework
 
 **La transición de catálogo a sistema axiomático (2026-06-01):**  
@@ -624,6 +690,27 @@ No destruye un falso equivalente institucional (H-QNKC-01). No modela una capaci
 **Derivado de:** H-QNKC-01 + H-QNKC-02 + ADR-012 — la combinación de los axiomas con el protocolo N1→N5 define cuándo un sprint está verdaderamente cerrado  
 **Enunciado:** Un sprint está concluido cuando su dominio alcanza estado **DEC (Dominio Epistemológicamente Cerrado)** — no cuando sus tareas técnicas se completan.
 
+**DEC como quinto estado del ciclo de vida de un dominio:**
+
+Los frameworks GovTech convencionales definen cuatro estados de madurez:
+
+```
+Diseñado     → N1/N2 definidos — la norma y la pregunta bautismal existen
+Desarrollado → N1–N3 — el grafo causal existe en Neo4j
+Desplegado   → N1–N3 + Layer 2 — la pantalla funciona (puede usar fallback)
+Operativo    → N1–N5 — todos los pasos completos
+```
+
+QUIRA introduce un quinto estado que ningún framework GovTech convencional define:
+
+```
+Epistemológicamente Cerrado (DEC) → N1–N5 con datos reales
+                                    + principios P0N testados empíricamente
+                                    + OBS-QNKC aplicables testadas o refutadas
+```
+
+La diferencia entre "Operativo" y "DEC" no es técnica — es epistemológica. Un dominio Operativo tiene todos los pasos completados. Un dominio DEC tiene todos los pasos completados **con evidencia real** y ha confrontado los principios que lo gobiernan con datos del territorio — no con proxies, no con fallbacks, no con datos autodeclarados sin verificación externa.
+
 **Definición formal de DEC:**
 
 Un dominio alcanza estado DEC cuando la cadena:
@@ -720,7 +807,8 @@ Antes de crear P0N, responder: ¿qué proceso está siendo confundido con su res
 HIPÓTESIS FUNDACIONALES
 ├── H-QNKC-01  Proceso ≠ Resultado              (Congelada — eje categorial)
 ├── H-QNKC-02  Condiciones necesarias × (no +)  (Congelada — eje matemático)
-└── H-QNKC-03  Verificación ≠ Atribución        (Anticipada — QUIRA Impact / P06)
+├── H-QNKC-03  Verificación ≠ Atribución        (Anticipada — QUIRA Impact / P06)
+└── H-QNKC-04  Modelo ≠ Validación              (Candidata — emergente de DEC · anchor empírico: brecha ICM-SIGAD vs SIGEF)
 
 PRINCIPIOS  (cada uno satisface H-QNKC-01 + H-QNKC-02 simultáneamente)
 ├── P00  Norma ≠ Cumplimiento              (Congelado — 2026-06-01)
@@ -775,7 +863,23 @@ Describe el álgebra: multiplicativa, no aditiva. La segunda es la especificaci�
 **Horizonte post-BETA-CORE — H-QNKC-03:**  
 H-QNKC-03 está registrada como anticipada. No se activa durante BETA-CORE porque ningún dominio de Montecristi requiere aún atribución causal contrafactual — solo verificación de cadenas. H-QNKC-03 se activará cuando P06 (Impacto ≠ Transformación sistémica) entre en formalización, lo que ocurrirá en QUIRA Impact. Ese momento marcará el paso del framework de un sistema de verificación causal a un sistema de atribución causal. Son epistemológicamente distintos y requieren axiomas distintos.
 
-**Madurez epistemológica al cierre de Sprint 3:**
+**Horizonte BETA-CORE — H-QNKC-04 candidata:**  
+H-QNKC-04 (Modelo ≠ Validación) emergió de la formalización de DEC en Sprint 4. Es candidata, no congelada. Se activa si la práctica de múltiples sprints DEC confirma que la distinción entre "dominio modelado" y "dominio empíricamente validado" es recurrente y necesaria como axioma. Su anchor empírico existe en la práctica institucional ecuatoriana: la brecha ICM-SIGAD (autodeclaración GAD al SNP) vs. SIGEF/DPE/CGE (verificadores externos) es exactamente el fenómeno que H-QNKC-04 formalizaría. QUIRA no inventa esa brecha — la convierte en medición formal.
+
+**Familia OBS-QNKC anticipada — el desplazamiento completo autodeclaración → observación independiente:**
+
+OBS-QNKC-02 (Portal Regulatorio ≠ Portal Institucional) puede ser el primer miembro de una familia. Si el patrón valida en Dom07 (DPE) y se confirma en Dom08/Dom09, emerge la generalización:
+
+| OBS candidata | Dominio | Fuente verificadora externa |
+|---------------|---------|----------------------------|
+| OBS-QNKC-02 | Dom07 — Transparencia | DPE · `transparencia.dpe.gob.ec` |
+| OBS-QNKC-03 | Dom08 — Participación | Incidencia en PDOT/POA · CPCCS |
+| OBS-QNKC-04 | Dom09 / Dom03 | CGE · SIGEF · MEF |
+| OBS-QNKC-05 | Dom10 / territorial | INEC · datos sectoriales externos |
+
+Todas derivadas del mismo desplazamiento epistemológico: del dominio de autodeclaración al dominio de observación independiente. OBS-03 a OBS-05 no existen formalmente — se formalizan cuando sus sprints detecten el patrón. Si los cuatro dominios confirman, el candidato a Principio es P07: "Autodeclaración ≠ Verificación Externa en C5".
+
+**Madurez epistemológica al cierre de Sprint 4 (pre-DEC):**
 
 ```
 Nivel 0 — Catálogo         12 dominios listados
@@ -783,9 +887,11 @@ Nivel 1 — Framework        Capas C1–C9 causal
 Nivel 2 — Teoría           P00–P06 como principios derivados
 Nivel 3 — Sistema axiomático   H-QNKC-01 + H-QNKC-02 como raíces
                                Principios como derivaciones verificables
+Nivel 4 — Validación empírica  DEC — primer dominio con evidencia real
+                               N4 Dom07 = primer test empírico completo del framework
 ```
 
-QNKC opera en Nivel 3. Los sprints que siguen no construyen la teoría — la instancian en Montecristi.
+Sprint 4 no construye el sistema axiomático — lo confirma por primera vez con datos del territorio. La diferencia entre Nivel 3 y Nivel 4 es exactamente H-QNKC-04: el modelo existe (Nivel 3), la validación convierte el modelo en conocimiento real (Nivel 4). QNKC alcanzará Nivel 4 cuando Dom07 sea DEC.
 
 ---
 
@@ -799,6 +905,8 @@ QNKC opera en Nivel 3. Los sprints que siguen no construyen la teoría — la in
 | `QNKC_P01_Dominios_Observacionales.md` | Especificación completa de P01 |
 | `qtmp_ECU-13-MONTECRISTI_TRANSPARENCIA.yaml` | Primera implementación de P00 + P01 + OBS-QNKC-01 (estado INCOMPRENSIBLE) en YAML canónico |
 | `constitucion_lenguaje_v1.md` | Implementación comunicacional de OBS-QNKC-01 — el plain language como respuesta al falso equivalente Verificabilidad ≠ Comprensión |
+| `ADR-015_Validacion_OBS-QNKC-02.md` | Protocolo de validación OBS-QNKC-02 · tres hipótesis simultáneas · criterio DEC para cierre Sprint 4 |
+| ICM-SIGAD (SNP) vs SIGEF/DPE/CGE | Anchor empírico externo de H-QNKC-04 — la brecha entre autodeclaración GAD y verificador externo ya existe en la práctica institucional ecuatoriana |
 
 ---
 
