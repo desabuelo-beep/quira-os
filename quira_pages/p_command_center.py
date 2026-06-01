@@ -156,7 +156,7 @@ _DOMAINS_12: list[dict] = [
         "estado": "OBSERVADO",
         "metric": "21/21",
         "narrativa": "21 artículos LOTAIP publicados y verificados · sin sanciones CPCCS registradas.",
-        "temp": "normal", "mod": "municipal",
+        "temp": "normal", "mod": "transparencia",   # Dom07 · ADR-013 Sprint 4
     },
     {
         "id": "d08", "num": "08",
@@ -878,7 +878,7 @@ function qLogout(){window.parent.postMessage({type:'quira_action',action:'logout
 _NAV_TARGETS = [
     "situacion", "cooperacion", "alertas", "municipal",
     "analisis", "geotwin", "rdc", "confianza", "genero",
-    "ods", "control",
+    "ods", "control", "territorio", "transparencia",   # Dom10 · Dom07 · ADR-013
 ]
 
 _BRIDGE_SCRIPT = """

@@ -6,7 +6,7 @@ ADR-013 (2026-05-31) — Mapeo canónico CONGELADO:
   GAP_10PCT     → Dom12 (Protección Social)      → p19_genero.py
   AGUA_POTABLE  → Dom10 (Territorio & Cobertura) → p10_territorio.py
   EQUIDAD       → Dom06 (Salud Institucional)    → m1_situacion.py
-  TRANSPARENCIA → Dom07 (Transparencia)          → [Layer 2 pendiente] → municipal
+  TRANSPARENCIA → Dom07 (Transparencia)          → p07_transparencia.py
 
 Bloomberg Model — este módulo es INTERNO.
   ✓ Los campos 'narrativa' y 'fuente' siguen el lenguaje de gobernanza pública.
@@ -34,7 +34,7 @@ CIRCUIT_DOMAIN_MAP: dict[str, dict[str, str]] = {
     "GAP_10PCT":     {"dominio": "Dom12", "modulo": "genero"},
     "AGUA_POTABLE":  {"dominio": "Dom10", "modulo": "territorio"},
     "EQUIDAD":       {"dominio": "Dom06", "modulo": "situacion"},
-    "TRANSPARENCIA": {"dominio": "Dom07", "modulo": "municipal"},
+    "TRANSPARENCIA": {"dominio": "Dom07", "modulo": "transparencia"},
 }
 
 # ── Circuitos disponibles ─────────────────────────────────────────────────────

@@ -22,6 +22,7 @@ Regla doctrinal permanente:
   cooperacion  → p18_cooperacion.py    Fondos BID · CAF · PNUD · ONU Mujeres
   genero       → p19_genero.py         PSG 12.83% · ODS 5 · Ambiente · FA PDOT
   territorio   → p10_territorio.py     Dom10 · Cobertura agua potable · ADR-013 AGUA_POTABLE
+  transparencia→ p07_transparencia.py  Dom07 · LOTAIP 21 numerales · C4×C5a×C5b×C5c · ADR-013
 
   SECCIÓN TÉCNICA — solo Técnico, Operador, Administrador (is_tecnico())
   ─────────────────────────────────────────────────────────────────────────────
@@ -33,8 +34,8 @@ Regla doctrinal permanente:
 
 ━━━ ROLES ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-  Directivo    → ve: SECCIÓN EJECUTIVA (9 módulos)
-  Técnico      → ve: SECCIÓN EJECUTIVA + SECCIÓN TÉCNICA (14 módulos)
+  Directivo    → ve: SECCIÓN EJECUTIVA (11 módulos)
+  Técnico      → ve: SECCIÓN EJECUTIVA + SECCIÓN TÉCNICA (16 módulos)
   Administrador→ ve: todo (igual que Técnico — verificación cruzada)
 
 ━━━ NAVEGACIÓN ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -141,6 +142,7 @@ _GOV_MODULES: list[tuple[str, str, str, bool]] = [
     ("cooperacion",  "🌍",  "Cooperación Internacional",     False),
     ("genero",       "💜",  "Género y Ambiente",             False),
     ("territorio",   "🗺",  "Territorio & Cobertura",        False),   # Dom10 · ADR-013
+    ("transparencia","👁",  "Transparencia Institucional",   False),   # Dom07 · ADR-013 Sprint 4
     # ── Sección Técnica (Técnico, Operador, Administrador) ─────────────────
     ("cadena",       "🔗",  "Cadena Institucional",          True),   # Sprint E.1
     ("analisis",     "📈",  "Análisis Estratégico",          True),
@@ -414,6 +416,21 @@ def _render_territorio() -> None:
         st.error(f"Módulo Territorio & Cobertura no disponible: {e}")
 
 
+def _render_transparencia_d07() -> None:
+    """
+    Dom07 — Transparencia e Información Pública · Layer 2 · Sprint 4.
+    ADR-013: TRANSPARENCIA → Dom07 → p07_transparencia.py
+    QNKC-P01 Dualidad Epistémica: C4 (Cumplimiento Formal) × C5 (Verificabilidad).
+    OBS-QNKC-01: verificabilidad_efectiva = C5a × C5b × C5c.
+    Todos los roles pueden ver esta vista ejecutiva.
+    """
+    try:
+        from quira_pages.p07_transparencia import render as _r
+        _r()
+    except Exception as e:
+        st.error(f"Módulo Transparencia Institucional no disponible: {e}")
+
+
 # ── Mapa key → (renderer, label) ─────────────────────────────────────────────
 _MODULE_RENDER: dict[str, tuple] = {
     # Sección Ejecutiva
@@ -426,7 +443,8 @@ _MODULE_RENDER: dict[str, tuple] = {
     "rdc":          (_render_rdc,          "Rendición de Cuentas"),
     "cooperacion":  (_render_cooperacion,  "Cooperación Internacional"),
     "genero":       (_render_genero,       "Género y Ambiente"),
-    "territorio":   (_render_territorio,   "Territorio & Cobertura"),  # Dom10 · ADR-013
+    "territorio":   (_render_territorio,      "Territorio & Cobertura"),    # Dom10 · ADR-013
+    "transparencia":(_render_transparencia_d07,"Transparencia Institucional"),# Dom07 · Sprint 4
     # Sección Técnica
     "cadena":       (_render_cadena,       "Cadena Institucional"),   # Sprint E.1
     "analisis":     (_render_analisis,     "Análisis Estratégico"),

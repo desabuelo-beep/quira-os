@@ -380,7 +380,7 @@ TRANSPARENCIA  ──→  PARTICIPACIÓN  ──→  PROTECCIÓN SOCIAL
 | 04 | Alertas Institucionales | ✅ LOCCGE_12, NCI_600_01 | ✅ este doc | ✅ CONTROL_LEGAL cerrado | ❌ |
 | 05 | Holding Municipal | 🟡 CE_315 parcial | ✅ este doc | ❌ LOEP pendiente | ❌ |
 | 06 | Salud Institucional | ✅ CE_226, COOTAD_228 | ✅ este doc | ✅ EQUIDAD cerrado | ❌ |
-| 07 | Transparencia | ✅ CE_18, LOTAIP completo | ✅ este doc | 🟡 YAML materializado · Neo4j pendiente S4 | ❌ pendiente Sprint 4 |
+| 07 | Transparencia | ✅ CE_18, LOTAIP completo | ✅ este doc | 🟡 YAML materializado · Neo4j pendiente | 🟡 p07_transparencia.py · datos pendientes verificación GADMCM |
 | 08 | Participación Ciudadana | ✅ COOTAD_304, COOTAD_302 | ✅ este doc | ✅ PARTICIPACION cerrado | ❌ |
 | 09 | Rendición de Cuentas | ✅ COOTAD_302 | ✅ este doc | ❌ pendiente | ❌ |
 | 10 | Territorio & Cobertura | ✅ CE_12, CE_264, COOTAD_137 | ✅ este doc | ✅ AGUA_POTABLE cerrado | ✅ p10_territorio.py |
@@ -392,7 +392,8 @@ TRANSPARENCIA  ──→  PARTICIPACIÓN  ──→  PROTECCIÓN SOCIAL
 **Estado BETA-CORE al 2026-06-01** (ver ADR-014 para secuencia completa):
 
 Completados N1-N5: Dom10 ✅ · Dom12 ✅  
-Circuito QTMP + conector activo (Layer 2 pendiente): Dom02 · Dom04 · Dom06 · Dom07 · Dom08  
+Layer 2 construido · datos pendientes verificación: **Dom07** ✅ p07_transparencia.py (PENDIENTE)  
+Circuito QTMP + conector activo (Layer 2 pendiente): Dom02 · Dom04 · Dom06 · Dom08  
 Sin circuito (corpus disponible): Dom01 · Dom03 · Dom09  
 Bloqueado corpus F0.8: Dom05  
 Fuera de MILESTONE_002: Dom11
@@ -401,7 +402,7 @@ Fuera de MILESTONE_002: Dom11
 - Dom01: requiere CPFP + PDOT Montecristi (F0.7) para cadena causal PLANIFICACION — Sprint 9
 - Dom03: requiere CPFP Art. 44 (F0.7) + Dom01 completo — Sprint 10
 - Dom05: requiere atomización LOEP (F0.8) — Sprint 12
-- Dom07: Neo4j load + Layer 2 — **Sprint 4** (YAML ✅, conector ✅)
+- Dom07: **Layer 2 ✅** (p07_transparencia.py · Sprint 4) — pendiente: Neo4j load + verificación directa portal GADMCM (C5a/C5b/C5c)
 - Dom09: depende Dom01+Dom03+Dom07 completos — Sprint 11
 - Dom11: requiere corpus completo (F0.7-F0.8) antes de activar módulo
 
