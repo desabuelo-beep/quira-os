@@ -67,6 +67,54 @@ ROOT = Path(__file__).parent.parent.parent
 # Base: ADR-017 · Extensión: ADR-018 (NRC)
 # ══════════════════════════════════════════════════════════════════════════════
 
+# ─ Paso 0: CE_1 — Nodo Constituyente (apex ontológico) ─ ADR-019 PROPUESTO ───
+CYPHER_CE1_APEX = """
+// CE_1 — Nodo Constituyente: Soberanía Popular
+// nrc_rango=constituyente — categoría DISTINTA a los NRCs funcionales
+// Los NRCs funcionales (CE_226/18/95/264) describen condiciones de funcionamiento.
+// CE_1 define QUIÉN es el titular del poder — ontológicamente anterior a todos.
+//
+// Relación: CONSTITUYE (no HABILITA)
+// CE_1 no "habilita" al Estado — es la FUENTE de la que deriva su validez.
+// Hipótesis ADR-019: si betweenness(CE_1) > betweenness(CE_226) al crecer el grafo,
+// QUIRA opera como arquitectura de soberanía, no solo de legalidad.
+
+MERGE (ce1:ACK {ack_id: 'CE_1'})
+SET ce1.nombre      = 'Soberanía popular — titularidad del poder constituyente',
+    ce1.tipo        = 'principio',
+    ce1.es_nrc      = true,
+    ce1.nrc_rango   = 'constituyente',
+    ce1.norma_sigla = 'CE',
+    ce1.articulo    = '1',
+    ce1.jerarquia   = 0,
+    ce1.obligacion  = 'La soberanía radica en el pueblo, cuya voluntad es el fundamento de la autoridad, y se ejerce a través de los órganos del poder público y de las formas de participación directa previstas en la Constitución.'
+
+MERGE (ce226:ACK {ack_id: 'CE_226'})
+MERGE (ce18:ACK  {ack_id: 'CE_18'})
+MERGE (ce95:ACK  {ack_id: 'CE_95'})
+MERGE (ce264:ACK {ack_id: 'CE_264'})
+
+MERGE (ce1)-[:CONSTITUYE {
+    razon: 'La soberanía popular es la fuente de la que deriva la autoridad del Estado — CE_226 operacionaliza esa fuente como principio de legalidad',
+    adr: 'ADR-019'
+}]->(ce226)
+
+MERGE (ce1)-[:CONSTITUYE {
+    razon: 'El pueblo como soberano requiere información para ejercer control — CE_18 instrumenta ese prerrequisito',
+    adr: 'ADR-019'
+}]->(ce18)
+
+MERGE (ce1)-[:CONSTITUYE {
+    razon: 'CE_95 es el mecanismo primario de ejercicio cotidiano de CE_1 — convierte soberanía abstracta en participación verificable',
+    adr: 'ADR-019'
+}]->(ce95)
+
+MERGE (ce1)-[:CONSTITUYE {
+    razon: 'Las competencias del GAD (CE_264) son una delegación que el pueblo soberano hace al gobierno municipal',
+    adr: 'ADR-019'
+}]->(ce264)
+"""
+
 # ─ Paso 1: Nodos Raíz Constitucionales (NRC) ─ ADR-018 ───────────────────────
 CYPHER_NRC = """
 // ADR-018: Nodos Raíz Constitucionales — axiomas del sistema QUIRA
@@ -381,6 +429,7 @@ MERGE (lotaip47)-[:INSTRUMENTA {
 
 # ── Todos los pasos en orden canónico ────────────────────────────────────────
 ALL_CYPHER_STEPS = [
+    ("CE_1 — Nodo Constituyente apex (ADR-019 PROPUESTO)",       CYPHER_CE1_APEX),
     ("NRCs — Nodos Raíz Constitucionales (ADR-018)",             CYPHER_NRC),
     ("ACKs sectoriales Dom07",                                   CYPHER_ACKS_SECTORIALES),
     ("ACKs sectoriales Dom08 — COOTAD 302/303/304",              CYPHER_ACKS_DOM08),
@@ -488,6 +537,16 @@ VALIDATION_QUERIES = [
             "type(r2) AS rel2, d07.id AS hacia_dom07"
         ),
         "expect": "1 row: Dom07-[INFORMA]->Dom08 y Dom08-[DEMANDA]->Dom07 coexisten (relación mutua, no jerárquica)",
+    },
+    {
+        "id": "Q10_ce1_apex",
+        "descripcion": "CE_1 constituyente — soberanía popular CONSTITUYE a todos los NRCs funcionales",
+        "cypher": (
+            "MATCH (ce1:ACK {ack_id:'CE_1'})-[r:CONSTITUYE]->(n:ACK) "
+            "RETURN ce1.ack_id AS apex, ce1.nrc_rango AS rango, type(r) AS rel, n.ack_id AS nrc "
+            "ORDER BY n.ack_id"
+        ),
+        "expect": "4 rows: CE_1(constituyente)-[CONSTITUYE]->CE_18, CE_226, CE_264, CE_95",
     },
 ]
 

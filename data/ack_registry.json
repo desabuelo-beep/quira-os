@@ -1,8 +1,9 @@
 {
   "meta": {
-    "version": "0.3",
-    "total_acks": 14,
+    "version": "0.4",
+    "total_acks": 15,
     "total_nrcs": 4,
+    "nrcs_constituyentes": 1,
     "scope": "nacional",
     "descripcion": "Catálogo maestro de Átomos Canónicos de Conocimiento (ACK) — alcance nacional Ecuador. Los ACKs representan normativa constitucional y orgánica aplicable a todos los GADs municipales. El campo canton_id no existe por diseño: la normativa es nacional; los datos operacionales (SIGEF, portales LOTAIP, ejecución) son cantonales y entran en L0 (Excel Canónico), nunca en el ACK Registry.",
     "laboratorio": "GADMCM — Cantón Montecristi",
@@ -10,7 +11,9 @@
     "ultima_actualizacion": "2026-06-02",
     "extractor_default": "QLEP-v1.0",
     "notas_pendientes": [
-      "chunk_refs 11/14 — LOTAIP_47, LOPC_72 con corpus gaps; COOTAD_302/303/304 chunk_refs verificados 2026-06-02",
+      "chunk_refs 11/15 — LOTAIP_47, LOPC_72, CE_1 con corpus gaps pendientes; COOTAD_302/303/304 verificados",
+      "CE_1 nrc_rango=constituyente: ontológicamente anterior a NRCs funcionales — ADR-019 PROPUESTO",
+      "CE_1 relación: CONSTITUYE (no HABILITA) — es fuente de validez del ordenamiento, no habilitador funcional",
       "revisado_por_experto=false para todos — pendiente validación jurista especializado",
       "LOTAIP_47: verificar Art. sanción en texto impreso LOTAIP (original 2004 vs reformado)",
       "LOPC_72: ingestar LOPC completa en milestone F0.2 ampliado",
@@ -22,6 +25,55 @@
     ]
   },
   "acks": [
+    {
+      "ack_id": "CE_1",
+      "tipo": "principio",
+      "nombre": "Soberanía popular — titularidad del poder constituyente",
+      "norma": {
+        "sigla": "CE",
+        "nombre_oficial": "Constitución del Ecuador",
+        "articulo": "1",
+        "inciso": "párr. 2",
+        "jerarquia": 0,
+        "vigente": "2008-10-20"
+      },
+      "actor_obligado": [
+        "Estado",
+        "GAD-Municipal",
+        "Instituciones del Estado"
+      ],
+      "actor_beneficiario": [
+        "Pueblo ecuatoriano"
+      ],
+      "obligacion": "La soberanía radica en el pueblo, cuya voluntad es el fundamento de la autoridad, y se ejerce a través de los órganos del poder público y de las formas de participación directa previstas en la Constitución.",
+      "dominios": [
+        "Dom08",
+        "Dom01"
+      ],
+      "circuitos": [],
+      "fundante": true,
+      "es_nrc": true,
+      "nrc_rango": "constituyente",
+      "vigente": true,
+      "revisado_por_experto": false,
+      "chunk_refs": [],
+      "obsidian_nota": "CE_1.md",
+      "qlep_yaml": null,
+      "relaciones": [
+        "CE_226",
+        "CE_18",
+        "CE_95",
+        "CE_264",
+        "LOPC"
+      ],
+      "meta": {
+        "fecha_extraccion": "2026-06-02",
+        "extractor": "QLEP-v1.0",
+        "version": "1.0",
+        "confianza": "alta",
+        "nota": "NODO CONSTITUYENTE — nrc_rango=constituyente. Categoría DISTINTA a los NRCs funcionales (CE_226/18/95/264). Los NRCs funcionales describen condiciones de funcionamiento del Estado: qué puede hacer (CE_226), qué derechos tiene el ciudadano (CE_18, CE_95), qué competencia tiene el GAD (CE_264). CE_1 describe QUIÉN tiene el poder — es ontológicamente anterior a todos ellos. La soberanía popular (CE_1) es la fuente de la que deriva la validez del ordenamiento jurídico entero. Relación en Neo4j: CONSTITUYE (no HABILITA). Dom08 es el mecanismo constitucional que convierte CE_1 en acción pública verificable cotidiana — sin Dom08, CE_1 permanece como declaración abstracta sin traducción institucional. CORPUS GAP: CE_1 debería estar en F0.1 corpus, pendiente verificar sha256. Escenario C del ADR-019: si CE_1 muestra mayor betweenness centrality que CE_226 tras cargar Dom09, la arquitectura de soberanía prevalece sobre la arquitectura de legalidad. Esa es una afirmación que vale la pena probar con datos."
+      }
+    },
     {
       "ack_id": "CE_18",
       "tipo": "derecho",
