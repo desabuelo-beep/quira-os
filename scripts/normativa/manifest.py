@@ -433,6 +433,28 @@ MANIFEST: list[dict] = [
         "vigente":   True,
     },
 
+    # ── F0.7 LOCAL (continuación) ────────────────────────────────────────────
+    {
+        "archivo":   "PDOT MOntecristi 2023-2027 Bicentenario.docx",
+        "sigla":     "PDOT-MONTECRISTI",
+        "nombre":    "Plan de Desarrollo y Ordenamiento Territorial del Cantón Montecristi 2023-2027 Bicentenario",
+        "jerarquia": 3,
+        "milestone": "F0.7",
+        "tipo":      "plan_territorial",
+        "dominios":  ["Dom01","Dom04","Dom10","Dom11","Dom12"],
+        "vigente":   True,
+    },
+    {
+        "archivo":   "Plan CNE ALcalde Montecristi.docx",
+        "sigla":     "PLAN-GOB-MCR",
+        "nombre":    "Plan de Gobierno del Alcalde de Montecristi — presentado al CNE",
+        "jerarquia": 4,
+        "milestone": "F0.7",
+        "tipo":      "plan_gobierno",
+        "dominios":  ["Dom01","Dom04","Dom08"],
+        "vigente":   True,
+    },
+
     # ── F0.8 COMPLEMENTARIO ──────────────────────────────────────────────────
     {
         "archivo":   "PAGCC-ECUADOR-2024.docx",
