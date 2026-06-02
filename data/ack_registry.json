@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "0.5",
-    "total_acks": 34,
+    "version": "0.6",
+    "total_acks": 35,
     "total_nrcs": 4,
     "nrcs_constituyentes": 1,
     "scope": "nacional",
@@ -36,10 +36,19 @@
         "jerarquia": 0,
         "vigente": "2008-10-20"
       },
-      "actor_obligado": ["Estado", "GAD-Municipal", "Instituciones del Estado"],
-      "actor_beneficiario": ["Pueblo ecuatoriano"],
+      "actor_obligado": [
+        "Estado",
+        "GAD-Municipal",
+        "Instituciones del Estado"
+      ],
+      "actor_beneficiario": [
+        "Pueblo ecuatoriano"
+      ],
       "obligacion": "La soberanía radica en el pueblo, cuya voluntad es el fundamento de la autoridad, y se ejerce a través de los órganos del poder público y de las formas de participación directa previstas en la Constitución.",
-      "dominios": ["Dom08", "Dom01"],
+      "dominios": [
+        "Dom08",
+        "Dom01"
+      ],
       "circuitos": [],
       "fundante": true,
       "es_nrc": true,
@@ -49,7 +58,13 @@
       "chunk_refs": [],
       "obsidian_nota": "CE_1.md",
       "qlep_yaml": null,
-      "relaciones": ["CE_226", "CE_18", "CE_95", "CE_264", "LOPC"],
+      "relaciones": [
+        "CE_226",
+        "CE_18",
+        "CE_95",
+        "CE_264",
+        "LOPC"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-02",
         "extractor": "QLEP-v1.0",
@@ -70,11 +85,20 @@
         "jerarquia": 0,
         "vigente": "2008-10-20"
       },
-      "actor_obligado": ["GAD-Municipal", "Instituciones del Estado"],
-      "actor_beneficiario": ["Ciudadanía"],
+      "actor_obligado": [
+        "GAD-Municipal",
+        "Instituciones del Estado"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía"
+      ],
       "obligacion": "Toda persona tiene derecho a acceder libremente a la información generada en entidades públicas, o en las privadas que manejen fondos del Estado o realicen funciones públicas. No existirá reserva de información excepto en los casos expresamente establecidos en la ley.",
-      "dominios": ["Dom07"],
-      "circuitos": ["C01"],
+      "dominios": [
+        "Dom07"
+      ],
+      "circuitos": [
+        "C01"
+      ],
       "fundante": true,
       "es_nrc": true,
       "vigente": true,
@@ -89,7 +113,11 @@
       ],
       "obsidian_nota": "CE_18.md",
       "qlep_yaml": null,
-      "relaciones": ["CE_226", "LOTAIP", "LOPC"],
+      "relaciones": [
+        "CE_226",
+        "LOTAIP",
+        "LOPC"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-01",
         "extractor": "QLEP-v1.0",
@@ -110,10 +138,17 @@
         "jerarquia": 0,
         "vigente": "2008-10-20"
       },
-      "actor_obligado": ["Estado", "GAD-Municipal"],
-      "actor_beneficiario": ["Ciudadanía ecuatoriana"],
+      "actor_obligado": [
+        "Estado",
+        "GAD-Municipal"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía ecuatoriana"
+      ],
       "obligacion": "Las ecuatorianas y ecuatorianos gozan de derechos de participación política, incluyendo presentar proyectos de iniciativa popular, ser consultados en los procesos que les afecten y fiscalizar los actos del poder público.",
-      "dominios": ["Dom07"],
+      "dominios": [
+        "Dom07"
+      ],
       "circuitos": [],
       "fundante": true,
       "es_nrc": false,
@@ -129,7 +164,10 @@
       ],
       "obsidian_nota": "CE_61.md",
       "qlep_yaml": null,
-      "relaciones": ["CE_95", "LOPC"],
+      "relaciones": [
+        "CE_95",
+        "LOPC"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-01",
         "extractor": "QLEP-v1.0",
@@ -150,11 +188,21 @@
         "jerarquia": 0,
         "vigente": "2008-10-20"
       },
-      "actor_obligado": ["GAD-Municipal", "Estado"],
-      "actor_beneficiario": ["Ciudadanía"],
+      "actor_obligado": [
+        "GAD-Municipal",
+        "Estado"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía"
+      ],
       "obligacion": "Las ciudadanas y ciudadanos, en forma individual y colectiva, participarán de manera protagónica en la toma de decisiones, planificación y gestión de los asuntos públicos, y en el control popular de las instituciones del Estado y la sociedad, y de sus representantes.",
-      "dominios": ["Dom07", "Dom08"],
-      "circuitos": ["C01"],
+      "dominios": [
+        "Dom07",
+        "Dom08"
+      ],
+      "circuitos": [
+        "C01"
+      ],
       "fundante": true,
       "es_nrc": true,
       "vigente": true,
@@ -169,7 +217,12 @@
       ],
       "obsidian_nota": "CE_95.md",
       "qlep_yaml": null,
-      "relaciones": ["CE_226", "CE_18", "CE_100", "LOPC"],
+      "relaciones": [
+        "CE_226",
+        "CE_18",
+        "CE_100",
+        "LOPC"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-01",
         "extractor": "QLEP-v1.0",
@@ -190,11 +243,21 @@
         "jerarquia": 0,
         "vigente": "2008-10-20"
       },
-      "actor_obligado": ["GAD-Municipal", "Concejo"],
-      "actor_beneficiario": ["Ciudadanía", "Organizaciones sociales"],
+      "actor_obligado": [
+        "GAD-Municipal",
+        "Concejo"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía",
+        "Organizaciones sociales"
+      ],
       "obligacion": "En todos los niveles de gobierno se conformarán instancias de participación integradas por autoridades electas, representantes del régimen dependiente y representantes de la sociedad del ámbito territorial de cada nivel de gobierno, que elaborarán planes y políticas, mejorarán la calidad de la inversión pública, y elaborarán presupuestos participativos.",
-      "dominios": ["Dom08"],
-      "circuitos": ["C01"],
+      "dominios": [
+        "Dom08"
+      ],
+      "circuitos": [
+        "C01"
+      ],
       "fundante": true,
       "es_nrc": false,
       "vigente": true,
@@ -209,7 +272,11 @@
       ],
       "obsidian_nota": "CE_100.md",
       "qlep_yaml": null,
-      "relaciones": ["CE_95", "COOTAD_302", "LOPC"],
+      "relaciones": [
+        "CE_95",
+        "COOTAD_302",
+        "LOPC"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-01",
         "extractor": "QLEP-v1.0",
@@ -230,10 +297,21 @@
         "jerarquia": 0,
         "vigente": "2008-10-20"
       },
-      "actor_obligado": ["GAD-Municipal", "Alcalde", "Concejo", "Instituciones del Estado", "Servidores públicos"],
-      "actor_beneficiario": ["Estado de Derecho", "Ciudadanía"],
+      "actor_obligado": [
+        "GAD-Municipal",
+        "Alcalde",
+        "Concejo",
+        "Instituciones del Estado",
+        "Servidores públicos"
+      ],
+      "actor_beneficiario": [
+        "Estado de Derecho",
+        "Ciudadanía"
+      ],
       "obligacion": "Las instituciones del Estado, sus organismos, dependencias, las servidoras o servidores públicos y las personas que actúen en virtud de una potestad estatal ejercerán solamente las competencias y facultades que les sean atribuidas en la Constitución y la ley. Tendrán el deber de coordinar acciones para el cumplimiento de sus fines y hacer efectivo el goce y ejercicio de los derechos reconocidos en la Constitución.",
-      "dominios": ["Dom01"],
+      "dominios": [
+        "Dom01"
+      ],
       "circuitos": [],
       "fundante": true,
       "es_nrc": true,
@@ -249,7 +327,13 @@
       ],
       "obsidian_nota": "CE_226.md",
       "qlep_yaml": null,
-      "relaciones": ["CE_264", "CE_238", "COA", "LOSEP", "LOSNCP"],
+      "relaciones": [
+        "CE_264",
+        "CE_238",
+        "COA",
+        "LOSEP",
+        "LOSNCP"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-02",
         "extractor": "QLEP-v1.0",
@@ -270,11 +354,22 @@
         "jerarquia": 0,
         "vigente": "2008-10-20"
       },
-      "actor_obligado": ["GAD-Municipal", "Alcalde", "Concejo"],
-      "actor_beneficiario": ["Ciudadanía cantonal"],
+      "actor_obligado": [
+        "GAD-Municipal",
+        "Alcalde",
+        "Concejo"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía cantonal"
+      ],
       "obligacion": "Los gobiernos municipales tendrán las siguientes competencias exclusivas, sin perjuicio de otras que determine la ley: 1) Planificar el desarrollo cantonal y formular los planes de ordenamiento territorial; 2) Ejercer el control sobre el uso y ocupación del suelo; 4) Prestar los servicios públicos de agua potable, alcantarillado y otros.",
-      "dominios": ["Dom04", "Dom10"],
-      "circuitos": ["C03"],
+      "dominios": [
+        "Dom04",
+        "Dom10"
+      ],
+      "circuitos": [
+        "C03"
+      ],
       "fundante": true,
       "es_nrc": true,
       "vigente": true,
@@ -289,7 +384,11 @@
       ],
       "obsidian_nota": "CE_264.md",
       "qlep_yaml": null,
-      "relaciones": ["CE_226", "COOTAD", "COPLAFIP"],
+      "relaciones": [
+        "CE_226",
+        "COOTAD",
+        "COPLAFIP"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-01",
         "extractor": "QLEP-v1.0",
@@ -310,10 +409,19 @@
         "jerarquia": 1,
         "vigente": "2010-10-19"
       },
-      "actor_obligado": ["GAD-Municipal", "Concejo", "Director-Financiero"],
-      "actor_beneficiario": ["Grupos de atención prioritaria", "Patronato Municipal"],
+      "actor_obligado": [
+        "GAD-Municipal",
+        "Concejo",
+        "Director-Financiero"
+      ],
+      "actor_beneficiario": [
+        "Grupos de atención prioritaria",
+        "Patronato Municipal"
+      ],
       "obligacion": "Los gobiernos municipales asignarán al menos el 10% de sus ingresos no tributarios para el financiamiento de programas sociales dirigidos a grupos de atención prioritaria, conforme dispone la Constitución.",
-      "dominios": ["Dom12"],
+      "dominios": [
+        "Dom12"
+      ],
       "circuitos": [],
       "fundante": true,
       "es_nrc": false,
@@ -329,7 +437,12 @@
       ],
       "obsidian_nota": "COOTAD_249.md",
       "qlep_yaml": null,
-      "relaciones": ["CE_35", "CE_36", "CE_37", "CE_38"],
+      "relaciones": [
+        "CE_35",
+        "CE_36",
+        "CE_37",
+        "CE_38"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-01",
         "extractor": "QLEP-v1.0",
@@ -350,11 +463,22 @@
         "jerarquia": 1,
         "vigente": "2004-05-18"
       },
-      "actor_obligado": ["GAD-Municipal", "Alcalde", "Director-Comunicacion"],
-      "actor_beneficiario": ["Ciudadanía"],
+      "actor_obligado": [
+        "GAD-Municipal",
+        "Alcalde",
+        "Director-Comunicacion"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía"
+      ],
       "obligacion": "Las instituciones del Estado deben difundir a través de un portal de información o página web una lista de información mínima actualizada que incluye: estructura orgánica, base legal, regulaciones, presupuesto, directorio de funcionarios, información de contratación pública, y demás establecida en los 14 literales del artículo.",
-      "dominios": ["Dom07"],
-      "circuitos": ["C01", "C02"],
+      "dominios": [
+        "Dom07"
+      ],
+      "circuitos": [
+        "C01",
+        "C02"
+      ],
       "fundante": false,
       "es_nrc": false,
       "vigente": true,
@@ -369,7 +493,11 @@
       ],
       "obsidian_nota": "LOTAIP_7.md",
       "qlep_yaml": null,
-      "relaciones": ["CE_18", "LOTAIP_34", "LOTAIP_47"],
+      "relaciones": [
+        "CE_18",
+        "LOTAIP_34",
+        "LOTAIP_47"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-01",
         "extractor": "QLEP-v1.0",
@@ -390,11 +518,20 @@
         "jerarquia": 1,
         "vigente": "2004-05-18"
       },
-      "actor_obligado": ["GAD-Municipal", "Responsable-Informacion"],
-      "actor_beneficiario": ["Solicitante de información"],
+      "actor_obligado": [
+        "GAD-Municipal",
+        "Responsable-Informacion"
+      ],
+      "actor_beneficiario": [
+        "Solicitante de información"
+      ],
       "obligacion": "La institución tiene 10 días hábiles para responder una solicitud de información pública. Si la información es voluminosa, se puede extender 5 días más comunicando al solicitante.",
-      "dominios": ["Dom07"],
-      "circuitos": ["C01"],
+      "dominios": [
+        "Dom07"
+      ],
+      "circuitos": [
+        "C01"
+      ],
       "fundante": false,
       "es_nrc": false,
       "vigente": true,
@@ -409,7 +546,11 @@
       ],
       "obsidian_nota": "LOTAIP_34.md",
       "qlep_yaml": null,
-      "relaciones": ["CE_18", "LOTAIP_7", "LOTAIP_47"],
+      "relaciones": [
+        "CE_18",
+        "LOTAIP_7",
+        "LOTAIP_47"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-01",
         "extractor": "QLEP-v1.0",
@@ -430,10 +571,17 @@
         "jerarquia": 1,
         "vigente": "2004-05-18"
       },
-      "actor_obligado": ["Defensor del Pueblo", "CPCCS"],
-      "actor_beneficiario": ["Ciudadanía"],
+      "actor_obligado": [
+        "Defensor del Pueblo",
+        "CPCCS"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía"
+      ],
       "obligacion": "El incumplimiento de las obligaciones de transparencia activa y pasiva establecidas en la LOTAIP será sancionado según las disposiciones del artículo, incluyendo multas y responsabilidad administrativa de los funcionarios.",
-      "dominios": ["Dom07"],
+      "dominios": [
+        "Dom07"
+      ],
       "circuitos": [],
       "fundante": false,
       "es_nrc": false,
@@ -442,7 +590,11 @@
       "chunk_refs": [],
       "obsidian_nota": "LOTAIP_47.md",
       "qlep_yaml": null,
-      "relaciones": ["LOTAIP_7", "LOTAIP_34", "CE_18"],
+      "relaciones": [
+        "LOTAIP_7",
+        "LOTAIP_34",
+        "CE_18"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-01",
         "extractor": "QLEP-v1.0",
@@ -463,10 +615,18 @@
         "jerarquia": 1,
         "vigente": "2010-04-20"
       },
-      "actor_obligado": ["GAD-Municipal", "Alcalde"],
-      "actor_beneficiario": ["Ciudadanía", "Organizaciones sociales"],
+      "actor_obligado": [
+        "GAD-Municipal",
+        "Alcalde"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía",
+        "Organizaciones sociales"
+      ],
       "obligacion": "Los GADs establecerán mecanismos de participación ciudadana incluyendo cabildos abiertos, rendición de cuentas, y presupuestos participativos según los procedimientos establecidos en la LOPC.",
-      "dominios": ["Dom08"],
+      "dominios": [
+        "Dom08"
+      ],
       "circuitos": [],
       "fundante": false,
       "es_nrc": false,
@@ -475,7 +635,11 @@
       "chunk_refs": [],
       "obsidian_nota": "LOPC_72.md",
       "qlep_yaml": null,
-      "relaciones": ["CE_95", "CE_100", "COOTAD_302"],
+      "relaciones": [
+        "CE_95",
+        "CE_100",
+        "COOTAD_302"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-01",
         "extractor": "QLEP-v1.0",
@@ -496,11 +660,22 @@
         "jerarquia": 1,
         "vigente": "2010-10-19"
       },
-      "actor_obligado": ["GAD-Municipal", "Concejo", "Alcalde"],
-      "actor_beneficiario": ["Ciudadanía cantonal", "Organizaciones sociales"],
+      "actor_obligado": [
+        "GAD-Municipal",
+        "Concejo",
+        "Alcalde"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía cantonal",
+        "Organizaciones sociales"
+      ],
       "obligacion": "Los GADs conformarán un sistema de participación ciudadana que se regulará por acto normativo del correspondiente nivel de gobierno. El sistema se orientará por los principios de igualdad, autonomía, deliberación pública, respeto a la diferencia, control popular, solidaridad e interculturalidad.",
-      "dominios": ["Dom08"],
-      "circuitos": ["C01"],
+      "dominios": [
+        "Dom08"
+      ],
+      "circuitos": [
+        "C01"
+      ],
       "fundante": false,
       "es_nrc": false,
       "vigente": true,
@@ -515,7 +690,13 @@
       ],
       "obsidian_nota": "COOTAD_302.md",
       "qlep_yaml": null,
-      "relaciones": ["CE_95", "CE_100", "COOTAD_303", "COOTAD_304", "LOPC_72"],
+      "relaciones": [
+        "CE_95",
+        "CE_100",
+        "COOTAD_303",
+        "COOTAD_304",
+        "LOPC_72"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-02",
         "extractor": "QLEP-v1.0",
@@ -536,11 +717,24 @@
         "jerarquia": 1,
         "vigente": "2010-10-19"
       },
-      "actor_obligado": ["GAD-Municipal", "Alcalde", "Director-Financiero", "Concejo"],
-      "actor_beneficiario": ["Ciudadanía cantonal", "Organizaciones territoriales"],
+      "actor_obligado": [
+        "GAD-Municipal",
+        "Alcalde",
+        "Director-Financiero",
+        "Concejo"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía cantonal",
+        "Organizaciones territoriales"
+      ],
       "obligacion": "Los GADs implementarán el presupuesto participativo en el que la ciudadanía podrá definir y priorizar programas y proyectos de inversión pública en el marco de los planes de desarrollo. El presupuesto participativo se realizará antes de la elaboración del proyecto de presupuesto del gobierno autónomo descentralizado.",
-      "dominios": ["Dom08", "Dom02"],
-      "circuitos": ["C01"],
+      "dominios": [
+        "Dom08",
+        "Dom02"
+      ],
+      "circuitos": [
+        "C01"
+      ],
       "fundante": false,
       "es_nrc": false,
       "vigente": true,
@@ -555,7 +749,12 @@
       ],
       "obsidian_nota": "COOTAD_303.md",
       "qlep_yaml": null,
-      "relaciones": ["CE_100", "COOTAD_302", "COOTAD_304", "LOPC_72"],
+      "relaciones": [
+        "CE_100",
+        "COOTAD_302",
+        "COOTAD_304",
+        "LOPC_72"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-02",
         "extractor": "QLEP-v1.0",
@@ -576,11 +775,21 @@
         "jerarquia": 1,
         "vigente": "2010-10-19"
       },
-      "actor_obligado": ["GAD-Municipal", "Alcalde"],
-      "actor_beneficiario": ["Ciudadanía cantonal", "Organizaciones comunitarias"],
+      "actor_obligado": [
+        "GAD-Municipal",
+        "Alcalde"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía cantonal",
+        "Organizaciones comunitarias"
+      ],
       "obligacion": "Los GADs reconocerán mecanismos de participación ciudadana en todas las fases y espacios de la gestión pública: audiencias públicas, cabildos populares, silla vacía, veedurías, observatorios y consejos consultivos. Garantizarán la interculturalidad y la paridad de género en la conformación de estos espacios.",
-      "dominios": ["Dom08"],
-      "circuitos": ["C01"],
+      "dominios": [
+        "Dom08"
+      ],
+      "circuitos": [
+        "C01"
+      ],
       "fundante": false,
       "es_nrc": false,
       "vigente": true,
@@ -595,7 +804,12 @@
       ],
       "obsidian_nota": "COOTAD_304.md",
       "qlep_yaml": null,
-      "relaciones": ["CE_95", "COOTAD_302", "COOTAD_303", "LOPC_72"],
+      "relaciones": [
+        "CE_95",
+        "COOTAD_302",
+        "COOTAD_303",
+        "LOPC_72"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-02",
         "extractor": "QLEP-v1.0",
@@ -616,11 +830,21 @@
         "jerarquia": 1,
         "vigente": "2010-04-20"
       },
-      "actor_obligado": ["GAD-Municipal", "Estado"],
-      "actor_beneficiario": ["Ciudadanía", "Organizaciones sociales"],
+      "actor_obligado": [
+        "GAD-Municipal",
+        "Estado"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía",
+        "Organizaciones sociales"
+      ],
       "obligacion": "La LOPC tiene por objeto propiciar, fomentar y garantizar el ejercicio de los derechos de participación de los ciudadanos y organizaciones de manera protagónica, en la toma de decisiones que les corresponda, la organización colectiva autónoma y la gestión de sus propios asuntos.",
-      "dominios": ["Dom08"],
-      "circuitos": ["C01"],
+      "dominios": [
+        "Dom08"
+      ],
+      "circuitos": [
+        "C01"
+      ],
       "fundante": false,
       "es_nrc": false,
       "vigente": true,
@@ -635,7 +859,11 @@
       ],
       "obsidian_nota": "LOPC_1.md",
       "qlep_yaml": null,
-      "relaciones": ["CE_95", "CE_100", "COOTAD_302"],
+      "relaciones": [
+        "CE_95",
+        "CE_100",
+        "COOTAD_302"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-02",
         "extractor": "QLEP-v1.0",
@@ -656,10 +884,17 @@
         "jerarquia": 1,
         "vigente": "2010-04-20"
       },
-      "actor_obligado": ["GAD-Municipal", "Estado"],
-      "actor_beneficiario": ["Ciudadanía"],
+      "actor_obligado": [
+        "GAD-Municipal",
+        "Estado"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía"
+      ],
       "obligacion": "La participación ciudadana debe regirse por 13 principios rectores: igualdad, interculturalidad, plurinacionalidad, autonomía, deliberación pública, respeto a la diferencia, paridad de género, responsabilidad, corresponsabilidad, información y transparencia, pluralismo, solidaridad e interés colectivo.",
-      "dominios": ["Dom08"],
+      "dominios": [
+        "Dom08"
+      ],
       "circuitos": [],
       "fundante": false,
       "es_nrc": false,
@@ -675,7 +910,10 @@
       ],
       "obsidian_nota": "LOPC_4.md",
       "qlep_yaml": null,
-      "relaciones": ["CE_95", "LOPC_1"],
+      "relaciones": [
+        "CE_95",
+        "LOPC_1"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-02",
         "extractor": "QLEP-v1.0",
@@ -696,11 +934,22 @@
         "jerarquia": 1,
         "vigente": "2010-04-20"
       },
-      "actor_obligado": ["GAD-Municipal", "Alcalde"],
-      "actor_beneficiario": ["Ciudadanía", "Organizaciones sociales"],
+      "actor_obligado": [
+        "GAD-Municipal",
+        "Alcalde"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía",
+        "Organizaciones sociales"
+      ],
       "obligacion": "Las asambleas locales tienen funciones de: exigir rendición de cuentas de autoridades electas, elaborar propuestas de políticas públicas, elaborar presupuestos participativos, fortalecer la organización comunitaria, proponer reformas y controlar el cumplimiento de las decisiones.",
-      "dominios": ["Dom08", "Dom09"],
-      "circuitos": ["C01"],
+      "dominios": [
+        "Dom08",
+        "Dom09"
+      ],
+      "circuitos": [
+        "C01"
+      ],
       "fundante": false,
       "es_nrc": false,
       "vigente": true,
@@ -715,7 +964,12 @@
       ],
       "obsidian_nota": "LOPC_60.md",
       "qlep_yaml": null,
-      "relaciones": ["CE_95", "CE_100", "LOPC_65", "LOPC_90"],
+      "relaciones": [
+        "CE_95",
+        "CE_100",
+        "LOPC_65",
+        "LOPC_90"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-02",
         "extractor": "QLEP-v1.0",
@@ -736,11 +990,21 @@
         "jerarquia": 1,
         "vigente": "2010-04-20"
       },
-      "actor_obligado": ["GAD-Municipal", "Alcalde"],
-      "actor_beneficiario": ["Ciudadanía"],
+      "actor_obligado": [
+        "GAD-Municipal",
+        "Alcalde"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía"
+      ],
       "obligacion": "Los GADs conformarán instancias de participación integradas por ciudadanos y organizaciones civiles. El ejecutivo del GAD convocará la instancia de participación al menos tres veces al año. Los consejos locales de planificación deben incluir mínimo 30% de ciudadanía.",
-      "dominios": ["Dom08", "Dom04"],
-      "circuitos": ["C01"],
+      "dominios": [
+        "Dom08",
+        "Dom04"
+      ],
+      "circuitos": [
+        "C01"
+      ],
       "fundante": false,
       "es_nrc": false,
       "vigente": true,
@@ -755,7 +1019,12 @@
       ],
       "obsidian_nota": "LOPC_65.md",
       "qlep_yaml": null,
-      "relaciones": ["CE_95", "CE_100", "COOTAD_302", "LOPC_60"],
+      "relaciones": [
+        "CE_95",
+        "CE_100",
+        "COOTAD_302",
+        "LOPC_60"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-02",
         "extractor": "QLEP-v1.0",
@@ -776,10 +1045,18 @@
         "jerarquia": 1,
         "vigente": "2010-04-20"
       },
-      "actor_obligado": ["GAD-Municipal", "Alcalde"],
-      "actor_beneficiario": ["Ciudadanía"],
+      "actor_obligado": [
+        "GAD-Municipal",
+        "Alcalde"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía"
+      ],
       "obligacion": "El presupuesto participativo se articulará con los planes de desarrollo y de ordenamiento territorial. La ciudadanía priorizará la inversión pública para que sus necesidades sean atendidas. El presupuesto participativo debe elaborarse de abajo hacia arriba — participación territorial obligatoria en el PDOT.",
-      "dominios": ["Dom02", "Dom04"],
+      "dominios": [
+        "Dom02",
+        "Dom04"
+      ],
       "circuitos": [],
       "fundante": false,
       "es_nrc": false,
@@ -795,7 +1072,11 @@
       ],
       "obsidian_nota": "LOPC_69.md",
       "qlep_yaml": null,
-      "relaciones": ["CE_95", "COOTAD_303", "LOPC_71"],
+      "relaciones": [
+        "CE_95",
+        "COOTAD_303",
+        "LOPC_71"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-02",
         "extractor": "QLEP-v1.0",
@@ -816,10 +1097,18 @@
         "jerarquia": 1,
         "vigente": "2010-04-20"
       },
-      "actor_obligado": ["GAD-Municipal", "Alcalde", "Concejo"],
-      "actor_beneficiario": ["Ciudadanía"],
+      "actor_obligado": [
+        "GAD-Municipal",
+        "Alcalde",
+        "Concejo"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía"
+      ],
       "obligacion": "Será obligatorio para todos los GADs implementar el presupuesto participativo. El incumplimiento de la obligación de efectuar el presupuesto participativo acarreará responsabilidades políticas, administrativas y civiles de las autoridades que lo incumplan.",
-      "dominios": ["Dom02"],
+      "dominios": [
+        "Dom02"
+      ],
       "circuitos": [],
       "fundante": false,
       "es_nrc": false,
@@ -835,7 +1124,11 @@
       ],
       "obsidian_nota": "LOPC_71.md",
       "qlep_yaml": null,
-      "relaciones": ["CE_95", "LOPC_69", "COOTAD_303"],
+      "relaciones": [
+        "CE_95",
+        "LOPC_69",
+        "COOTAD_303"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-02",
         "extractor": "QLEP-v1.0",
@@ -856,10 +1149,18 @@
         "jerarquia": 1,
         "vigente": "2010-04-20"
       },
-      "actor_obligado": ["GAD-Municipal", "Alcalde"],
-      "actor_beneficiario": ["Ciudadanía"],
+      "actor_obligado": [
+        "GAD-Municipal",
+        "Alcalde"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía"
+      ],
       "obligacion": "Los GADs están obligados a celebrar audiencias públicas para rendir cuentas sobre la gestión y para recibir peticiones ciudadanas. La convocatoria debe realizarse dentro de los 30 días posteriores a la solicitud ciudadana.",
-      "dominios": ["Dom08", "Dom07"],
+      "dominios": [
+        "Dom08",
+        "Dom07"
+      ],
       "circuitos": [],
       "fundante": false,
       "es_nrc": false,
@@ -875,7 +1176,11 @@
       ],
       "obsidian_nota": "LOPC_74.md",
       "qlep_yaml": null,
-      "relaciones": ["CE_95", "LOPC_60", "CE_18"],
+      "relaciones": [
+        "CE_95",
+        "LOPC_60",
+        "CE_18"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-02",
         "extractor": "QLEP-v1.0",
@@ -896,10 +1201,18 @@
         "jerarquia": 1,
         "vigente": "2010-04-20"
       },
-      "actor_obligado": ["GAD-Municipal", "Concejo"],
-      "actor_beneficiario": ["Ciudadanía"],
+      "actor_obligado": [
+        "GAD-Municipal",
+        "Concejo"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía"
+      ],
       "obligacion": "Las sesiones del Concejo Municipal en las que se decida sobre planes de desarrollo, presupuestos u ordenanzas, contarán con un espacio de silla vacía para la participación ciudadana con voz y voto. La inobservancia de esta norma determina la nulidad de lo actuado en esa sesión.",
-      "dominios": ["Dom08", "Dom03"],
+      "dominios": [
+        "Dom08",
+        "Dom03"
+      ],
       "circuitos": [],
       "fundante": false,
       "es_nrc": false,
@@ -915,7 +1228,11 @@
       ],
       "obsidian_nota": "LOPC_77.md",
       "qlep_yaml": null,
-      "relaciones": ["CE_95", "LOPC_65", "COOTAD_304"],
+      "relaciones": [
+        "CE_95",
+        "LOPC_65",
+        "COOTAD_304"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-02",
         "extractor": "QLEP-v1.0",
@@ -936,10 +1253,17 @@
         "jerarquia": 1,
         "vigente": "2010-04-20"
       },
-      "actor_obligado": ["GAD-Municipal"],
-      "actor_beneficiario": ["Ciudadanía", "Organizaciones sociales"],
+      "actor_obligado": [
+        "GAD-Municipal"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía",
+        "Organizaciones sociales"
+      ],
       "obligacion": "Se reconocen los observatorios ciudadanos como organizaciones conformadas por ciudadanos para el monitoreo y vigilancia de las políticas públicas, los actos de la administración, la gestión de los recursos públicos y los servicios públicos. El GAD debe reconocerlos y facilitarles información.",
-      "dominios": ["Dom08"],
+      "dominios": [
+        "Dom08"
+      ],
       "circuitos": [],
       "fundante": false,
       "es_nrc": false,
@@ -955,7 +1279,10 @@
       ],
       "obsidian_nota": "LOPC_79.md",
       "qlep_yaml": null,
-      "relaciones": ["CE_95", "LOPC_85"],
+      "relaciones": [
+        "CE_95",
+        "LOPC_85"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-02",
         "extractor": "QLEP-v1.0",
@@ -976,10 +1303,16 @@
         "jerarquia": 1,
         "vigente": "2010-04-20"
       },
-      "actor_obligado": ["GAD-Municipal"],
-      "actor_beneficiario": ["Ciudadanía"],
+      "actor_obligado": [
+        "GAD-Municipal"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía"
+      ],
       "obligacion": "Los consejos consultivos son mecanismos de asesoramiento compuestos por ciudadanas, ciudadanos, o por organizaciones civiles que se constituirán por temáticas específicas de gestión pública y que podrán formular propuestas y recomendaciones de políticas públicas.",
-      "dominios": ["Dom08"],
+      "dominios": [
+        "Dom08"
+      ],
       "circuitos": [],
       "fundante": false,
       "es_nrc": false,
@@ -995,7 +1328,10 @@
       ],
       "obsidian_nota": "LOPC_80.md",
       "qlep_yaml": null,
-      "relaciones": ["CE_95", "LOPC_79"],
+      "relaciones": [
+        "CE_95",
+        "LOPC_79"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-02",
         "extractor": "QLEP-v1.0",
@@ -1016,10 +1352,18 @@
         "jerarquia": 1,
         "vigente": "2010-04-20"
       },
-      "actor_obligado": ["GAD-Municipal"],
-      "actor_beneficiario": ["Ciudadanía", "Organizaciones sociales"],
+      "actor_obligado": [
+        "GAD-Municipal"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía",
+        "Organizaciones sociales"
+      ],
       "obligacion": "Las veedurías ciudadanas son mecanismos de control social mediante los cuales la ciudadanía organizada vigila, supervisa, evalúa y controla la gestión pública, los actos de la administración, el manejo de los recursos y bienes públicos.",
-      "dominios": ["Dom08", "Dom03"],
+      "dominios": [
+        "Dom08",
+        "Dom03"
+      ],
       "circuitos": [],
       "fundante": false,
       "es_nrc": false,
@@ -1035,7 +1379,11 @@
       ],
       "obsidian_nota": "LOPC_85.md",
       "qlep_yaml": null,
-      "relaciones": ["CE_95", "LOPC_87", "LOPC_79"],
+      "relaciones": [
+        "CE_95",
+        "LOPC_87",
+        "LOPC_79"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-02",
         "extractor": "QLEP-v1.0",
@@ -1056,10 +1404,19 @@
         "jerarquia": 1,
         "vigente": "2010-04-20"
       },
-      "actor_obligado": ["GAD-Municipal", "Alcalde"],
-      "actor_beneficiario": ["Veedurías ciudadanas", "Ciudadanía"],
+      "actor_obligado": [
+        "GAD-Municipal",
+        "Alcalde"
+      ],
+      "actor_beneficiario": [
+        "Veedurías ciudadanas",
+        "Ciudadanía"
+      ],
       "obligacion": "Las instituciones del Estado, sus representantes o delegados tienen la obligación de facilitar a las veedurías la información que sea de carácter público. La respuesta debe darse en el plazo máximo de quince días. En caso de negativa, las veedurías pueden recurrir a las instancias legales.",
-      "dominios": ["Dom08", "Dom07"],
+      "dominios": [
+        "Dom08",
+        "Dom07"
+      ],
       "circuitos": [],
       "fundante": false,
       "es_nrc": false,
@@ -1075,7 +1432,11 @@
       ],
       "obsidian_nota": "LOPC_87.md",
       "qlep_yaml": null,
-      "relaciones": ["CE_95", "CE_18", "LOPC_85"],
+      "relaciones": [
+        "CE_95",
+        "CE_18",
+        "LOPC_85"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-02",
         "extractor": "QLEP-v1.0",
@@ -1096,10 +1457,18 @@
         "jerarquia": 1,
         "vigente": "2010-04-20"
       },
-      "actor_obligado": ["GAD-Municipal", "Alcalde", "Funcionarios"],
-      "actor_beneficiario": ["Ciudadanía"],
+      "actor_obligado": [
+        "GAD-Municipal",
+        "Alcalde",
+        "Funcionarios"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía"
+      ],
       "obligacion": "La rendición de cuentas es un proceso sistemático, deliberado, interactivo y universal que involucra a autoridades electas, designadas y representantes de las instituciones públicas. La ciudadanía exige y evalúa la rendición de cuentas.",
-      "dominios": ["Dom09"],
+      "dominios": [
+        "Dom09"
+      ],
       "circuitos": [],
       "fundante": false,
       "es_nrc": false,
@@ -1108,7 +1477,11 @@
       "chunk_refs": [],
       "obsidian_nota": "LOPC_89.md",
       "qlep_yaml": null,
-      "relaciones": ["CE_95", "LOPC_90", "LOPC_91"],
+      "relaciones": [
+        "CE_95",
+        "LOPC_90",
+        "LOPC_91"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-02",
         "extractor": "QLEP-v1.0",
@@ -1129,11 +1502,22 @@
         "jerarquia": 1,
         "vigente": "2010-04-20"
       },
-      "actor_obligado": ["Alcalde", "GAD-Municipal", "Funcionarios", "Directivos"],
-      "actor_beneficiario": ["Ciudadanía"],
+      "actor_obligado": [
+        "Alcalde",
+        "GAD-Municipal",
+        "Funcionarios",
+        "Directivos"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía"
+      ],
       "obligacion": "Estarán sujetas a la rendición de cuentas las instituciones del Estado, los representantes legales, los funcionarios designados, las autoridades electas y demás representantes. Los GADs, el Alcalde y los funcionarios son sujetos obligados sin excepción.",
-      "dominios": ["Dom09"],
-      "circuitos": ["C01"],
+      "dominios": [
+        "Dom09"
+      ],
+      "circuitos": [
+        "C01"
+      ],
       "fundante": false,
       "es_nrc": false,
       "vigente": true,
@@ -1148,7 +1532,11 @@
       ],
       "obsidian_nota": "LOPC_90.md",
       "qlep_yaml": null,
-      "relaciones": ["CE_95", "LOPC_89", "LOPC_95"],
+      "relaciones": [
+        "CE_95",
+        "LOPC_89",
+        "LOPC_95"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-02",
         "extractor": "QLEP-v1.0",
@@ -1169,10 +1557,18 @@
         "jerarquia": 1,
         "vigente": "2010-04-20"
       },
-      "actor_obligado": ["GAD-Municipal", "Alcalde"],
-      "actor_beneficiario": ["Ciudadanía", "Mandantes constitucionales"],
+      "actor_obligado": [
+        "GAD-Municipal",
+        "Alcalde"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía",
+        "Mandantes constitucionales"
+      ],
       "obligacion": "Los objetivos de la rendición de cuentas son: garantizar a los mandantes el acceso a la información de los mandatarios, presentar resultados de la gestión pública, habilitar el ejercicio del control popular y promover la corresponsabilidad ciudadana, prevenir e impedir la arbitrariedad y la corrupción.",
-      "dominios": ["Dom09"],
+      "dominios": [
+        "Dom09"
+      ],
       "circuitos": [],
       "fundante": false,
       "es_nrc": false,
@@ -1181,7 +1577,11 @@
       "chunk_refs": [],
       "obsidian_nota": "LOPC_91.md",
       "qlep_yaml": null,
-      "relaciones": ["CE_95", "CE_1", "LOPC_89"],
+      "relaciones": [
+        "CE_95",
+        "CE_1",
+        "LOPC_89"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-02",
         "extractor": "QLEP-v1.0",
@@ -1202,10 +1602,18 @@
         "jerarquia": 1,
         "vigente": "2010-04-20"
       },
-      "actor_obligado": ["GAD-Municipal", "Funcionarios", "Directivos"],
-      "actor_beneficiario": ["Ciudadanía"],
+      "actor_obligado": [
+        "GAD-Municipal",
+        "Funcionarios",
+        "Directivos"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía"
+      ],
       "obligacion": "Las personas que en virtud de sus cargos tengan funciones de nivel programático y operativo rendirán cuentas ante sus mandantes, delegantes o ante quien les ha encomendado el ejercicio de sus funciones, con base en los procedimientos establecidos en la ley y los procedimientos técnicos y administrativos.",
-      "dominios": ["Dom09"],
+      "dominios": [
+        "Dom09"
+      ],
       "circuitos": [],
       "fundante": false,
       "es_nrc": false,
@@ -1214,7 +1622,11 @@
       "chunk_refs": [],
       "obsidian_nota": "LOPC_93.md",
       "qlep_yaml": null,
-      "relaciones": ["CE_95", "LOPC_90", "LOPC_91"],
+      "relaciones": [
+        "CE_95",
+        "LOPC_90",
+        "LOPC_91"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-02",
         "extractor": "QLEP-v1.0",
@@ -1235,11 +1647,20 @@
         "jerarquia": 1,
         "vigente": "2010-04-20"
       },
-      "actor_obligado": ["Alcalde", "GAD-Municipal"],
-      "actor_beneficiario": ["Ciudadanía"],
+      "actor_obligado": [
+        "Alcalde",
+        "GAD-Municipal"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía"
+      ],
       "obligacion": "Las personas sobre quienes recae la obligación de rendir cuentas deberán hacerlo al menos una vez al año, y al final de cada período de gestión o mandato.",
-      "dominios": ["Dom09"],
-      "circuitos": ["C01"],
+      "dominios": [
+        "Dom09"
+      ],
+      "circuitos": [
+        "C01"
+      ],
       "fundante": false,
       "es_nrc": false,
       "vigente": true,
@@ -1254,7 +1675,11 @@
       ],
       "obsidian_nota": "LOPC_95.md",
       "qlep_yaml": null,
-      "relaciones": ["CE_95", "LOPC_90", "CPCCS_RC_2026"],
+      "relaciones": [
+        "CE_95",
+        "LOPC_90",
+        "CPCCS_RC_2026"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-02",
         "extractor": "QLEP-v1.0",
@@ -1275,10 +1700,20 @@
         "jerarquia": 1,
         "vigente": "2010-04-20"
       },
-      "actor_obligado": ["GAD-Municipal", "Alcalde"],
-      "actor_beneficiario": ["Ciudadanía"],
+      "actor_obligado": [
+        "GAD-Municipal",
+        "Alcalde"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía"
+      ],
       "obligacion": "Los GADs generarán espacios de deliberación virtual mediante plataformas de tecnología de la comunicación. Los GADs facilitarán e incentivarán el uso de esas plataformas para la participación ciudadana. El portal web debe publicar planes, presupuestos y procesos de contratación para participación informada.",
-      "dominios": ["Dom08", "Dom02", "Dom04", "Dom03"],
+      "dominios": [
+        "Dom08",
+        "Dom02",
+        "Dom04",
+        "Dom03"
+      ],
       "circuitos": [],
       "fundante": false,
       "es_nrc": false,
@@ -1294,7 +1729,10 @@
       ],
       "obsidian_nota": "LOPC_101.md",
       "qlep_yaml": null,
-      "relaciones": ["CE_95", "LOTAIP_7"],
+      "relaciones": [
+        "CE_95",
+        "LOTAIP_7"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-02",
         "extractor": "QLEP-v1.0",
@@ -1315,10 +1753,18 @@
         "jerarquia": 2,
         "vigente": "2026-01-01"
       },
-      "actor_obligado": ["GAD-Municipal", "Alcalde", "Funcionarios"],
-      "actor_beneficiario": ["Ciudadanía"],
+      "actor_obligado": [
+        "GAD-Municipal",
+        "Alcalde",
+        "Funcionarios"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía"
+      ],
       "obligacion": "El CPCCS establece la metodología, los instrumentos y el proceso para la rendición de cuentas de las autoridades electas y funcionarios. Todos los GADs deben usar la plataforma virtual del CPCCS para su RC anual. Sin upload al sistema CPCCS, la RC no existe jurídicamente aunque haya ocurrido el evento.",
-      "dominios": ["Dom09"],
+      "dominios": [
+        "Dom09"
+      ],
       "circuitos": [],
       "fundante": false,
       "es_nrc": false,
@@ -1327,13 +1773,74 @@
       "chunk_refs": [],
       "obsidian_nota": "CPCCS_RC_2026.md",
       "qlep_yaml": null,
-      "relaciones": ["LOPC_90", "LOPC_95", "CE_95"],
+      "relaciones": [
+        "LOPC_90",
+        "LOPC_95",
+        "CE_95"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-02",
         "extractor": "QLEP-v1.0",
         "version": "1.0",
         "confianza": "media-alta",
         "nota": "ACK sectorial Dom09. Cargado en Neo4j commit b6aefa6. chunk_refs=[] — resolución CPCCS NO está en los 41 docs del corpus normativo (documento externo). Ocupa posición C4 en DCO Dom09 (ventana de observación), igual que LOTAIP_7 en Dom07. Evidencia verificable: plataforma rendiciondecuentas.cpccs.gob.ec"
+      }
+    },
+    {
+      "ack_id": "COOTAD_266",
+      "tipo": "obligacion",
+      "nombre": "Rendicion de Cuentas al cierre del ejercicio fiscal — convocatoria a asamblea territorial",
+      "norma": {
+        "sigla": "COOTAD",
+        "nombre_oficial": "Codigo Organico de Organizacion Territorial, Autonomia y Descentralizacion",
+        "articulo": "266",
+        "inciso": null,
+        "jerarquia": 1,
+        "vigente": "2010-10-19"
+      },
+      "actor_obligado": [
+        "GAD-Municipal",
+        "Alcalde"
+      ],
+      "actor_beneficiario": [
+        "Ciudadania cantonal",
+        "Asamblea territorial"
+      ],
+      "obligacion": "Al final del ejercicio fiscal el ejecutivo del gobierno autonomo descentralizado convocara a la asamblea territorial o al organismo que en cada gobierno autonomo descentralizado se establezca como maxima instancia de participacion, para informar sobre la ejecucion presupuestaria anual, sobre el cumplimiento de sus metas, y sobre las prioridades de ejecucion del siguiente anio.",
+      "dominios": [
+        "Dom09",
+        "Dom02",
+        "Dom04"
+      ],
+      "circuitos": [
+        "C01"
+      ],
+      "fundante": true,
+      "es_nrc": false,
+      "vigente": true,
+      "revisado_por_experto": false,
+      "chunk_refs": [
+        {
+          "sha256": "0f71df4207f9c54f386fbba882eb6a982507e75159596176f3f8a4214c83b709",
+          "articulo_num": 266,
+          "chunk_seq": 0,
+          "palabras": 65
+        }
+      ],
+      "obsidian_nota": "COOTAD_266.md",
+      "qlep_yaml": null,
+      "relaciones": [
+        "CE_95",
+        "COOTAD_303",
+        "LOPC_90",
+        "LOPC_95"
+      ],
+      "meta": {
+        "fecha_extraccion": "2026-06-02",
+        "extractor": "QLEP-v1.0",
+        "version": "1.0",
+        "confianza": "alta",
+        "nota": "ACK ESTRUCTURAL Dom09 triple funcion: (1) ejecucion presupuestaria anual->nexo Dom09/Dom02; (2) cumplimiento de metas->nexo Dom09/Dom04; (3) prioridades siguiente anio->retroalimentacion Dom09->Dom08. sha256 verificado Supabase 2026-06-02. Aplica a TODOS los GADs. OBS-003: ciclo Dom09->Dom08 positivizado en COOTAD_266 desde 2010."
       }
     }
   ]

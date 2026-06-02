@@ -52,11 +52,11 @@
           "video_plataforma": "YouTube",
           "video_fecha_evento": null,
           "video_duracion_min": null,
-          "cpccs_informe_url": null,
-          "cpccs_calificacion": null,
+          "cpccs_informe_url": "en_gold_master",
+          "cpccs_calificacion": "en_gold_master",
           "estado_gold_master": "CARGADO",
-          "estado": "parcial",
-          "notas": "Video URL verificado. Pendiente: fecha exacta del evento, URL informe CPCCS, calificación ciudadana"
+          "estado": "completo_gold_master",
+          "notas": "Video URL + informe CPCCS + calificación ciudadana cargados en Gold Master (confirmado Javo 2026-06-02). Pendiente: fecha exacta del evento."
         },
         "rc_2025": {
           "ano_fiscal": 2025,
@@ -68,9 +68,9 @@
           "video_duracion_min": null,
           "cpccs_informe_url": null,
           "cpccs_calificacion": null,
-          "estado_gold_master": "PENDIENTE",
-          "estado": "incompleto",
-          "notas": "Video URL verificado (evento reciente enero-febrero 2026). Pendiente: fecha exacta, informe CPCCS (puede no estar procesado aún), calificación ciudadana. Agregar al Gold Master."
+          "estado_gold_master": "PENDIENTE_LEGAL",
+          "estado": "video_verificado_cpccs_pendiente",
+          "notas": "Video URL verificado y confirmado por Javo 2026-06-02. Informe CPCCS 2025 pendiente de publicación por plazos legales. Agregar al Gold Master cuando esté disponible."
         }
       }
     }
