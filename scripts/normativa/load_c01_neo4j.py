@@ -7,15 +7,27 @@ QUIRA Gov · Dylus Lab · 2026-06-02
 PROPÓSITO:
   Cargar el Circuito Constitucional C01 (Transparencia → Participación → Planificación)
   en Neo4j, incluyendo los Nodos Raíz Constitucionales (NRC) definidos en ADR-018.
+  Incluye extensión Dom08 (DCO activo) + Dom07 Layer 2 + relación bidireccional Dom07↔Dom08.
 
   Cuando este script termina exitosamente, Neo4j puede responder:
     "¿Por qué C01 está colapsado?" → trazabilidad descendente:
     Diagnóstico → C01 → Dom07 → CE_18 → CE_226
 
+  Dos cadenas constitucionales comprobables:
+    CE_226 → CE_18  → Dom07 → C01   (cadena transparencia)
+    CE_226 → CE_95  → Dom08 → C01   (cadena participación)
+
+  Hallazgo arquitectónico 2026-06-02:
+    Dom07 ↔ Dom08 son bidireccionales. Dos raíces independientes (CE_18, CE_95).
+    Dom08 no depende de Dom07 — son mutuamente reforzantes.
+    Dom08 pertenece a la categoría "Legitimación Democrática" (con Dom09, pendiente ADR).
+    CE_1 (soberanía popular) candidato NRC — base normativa de Dom08 más profunda que CE_95.
+
   Fuentes de doctrina:
     ADR-017: Cypher base de C01 (nodos + aristas causales entre dominios)
     ADR-018: Extensión NRC (CE_226 como axioma raíz · relaciones HABILITA)
-    ACK Registry v0.2: 4 NRCs confirmados
+    ADR-016: DCO Dom07 (activo) + Dom08 (activo 2026-06-02)
+    ACK Registry v0.3: 4 NRCs + 14 ACKs (COOTAD_302/303/304 añadidos)
 
 PREREQUISITO — secrets.toml debe tener:
   [neo4j]
@@ -113,6 +125,63 @@ SET lotaip7.nombre     = 'Obligaciones de transparencia activa — publicación 
     lotaip7.sha256_corpus = '415a04b64d24208424018e8b3f24126c3a13195c7129cc9ec31772389f32695b'
 """
 
+# ─ Paso 2b: ACKs sectoriales Dom08 — COOTAD 302/303/304 (ACK Registry v0.3) ──
+CYPHER_ACKS_DOM08 = """
+// ACKs sectoriales Dom08 — Participación Ciudadana & Control Democrático
+// Fuente: COOTAD Arts. 302-304 · sha256 verificados vía Supabase normativa_corpus
+
+MERGE (cootad302:ACK {ack_id: 'COOTAD_302'})
+SET cootad302.nombre      = 'Sistema de participación ciudadana del GAD Municipal',
+    cootad302.tipo        = 'obligacion',
+    cootad302.es_nrc      = false,
+    cootad302.norma_sigla = 'COOTAD',
+    cootad302.articulo    = '302',
+    cootad302.jerarquia   = 1,
+    cootad302.sha256_corpus = '7fc2193b2bbea9565cc13a93c62c6929cbf95b2f547431d8b606b381b30009d5'
+
+MERGE (cootad303:ACK {ack_id: 'COOTAD_303'})
+SET cootad303.nombre      = 'Presupuesto participativo — procedimiento GAD Municipal',
+    cootad303.tipo        = 'procedimiento',
+    cootad303.es_nrc      = false,
+    cootad303.norma_sigla = 'COOTAD',
+    cootad303.articulo    = '303',
+    cootad303.jerarquia   = 1,
+    cootad303.sha256_corpus = 'ef9e6846f1bf5798398a64629f5ae80c7502f9d79da16d9432ad073119a61149'
+
+MERGE (cootad304:ACK {ack_id: 'COOTAD_304'})
+SET cootad304.nombre      = 'Mecanismos de participación ciudadana en el ciclo de gestión',
+    cootad304.tipo        = 'procedimiento',
+    cootad304.es_nrc      = false,
+    cootad304.norma_sigla = 'COOTAD',
+    cootad304.articulo    = '304',
+    cootad304.jerarquia   = 1,
+    cootad304.sha256_corpus = 'a1ccfa62c16fa16fcea1a47d1bc24ebfee0aa489856ade2b4d4d312656eac667'
+"""
+
+# ─ Paso 2c: ACKs Dom07 Layer 2 — LOTAIP_34 + LOTAIP_47 ───────────────────────
+CYPHER_ACKS_DOM07_L2 = """
+// ACKs Dom07 Layer 2 — Plazo + Sanción
+// LOTAIP_34: plazo 10 días hábiles respuesta · LOTAIP_47: sanción por incumplimiento
+
+MERGE (lotaip34:ACK {ack_id: 'LOTAIP_34'})
+SET lotaip34.nombre      = 'Plazo de respuesta a solicitudes de información pública',
+    lotaip34.tipo        = 'plazo',
+    lotaip34.es_nrc      = false,
+    lotaip34.norma_sigla = 'LOTAIP',
+    lotaip34.articulo    = '34',
+    lotaip34.jerarquia   = 1,
+    lotaip34.sha256_corpus = '7e6fb9b6d0e8690871798eb8e399234f677b915ac9a18c5f698236e2ed6c5c69'
+
+MERGE (lotaip47:ACK {ack_id: 'LOTAIP_47'})
+SET lotaip47.nombre      = 'Sanciones por incumplimiento de obligaciones de transparencia',
+    lotaip47.tipo        = 'sancion',
+    lotaip47.es_nrc      = false,
+    lotaip47.norma_sigla = 'LOTAIP',
+    lotaip47.articulo    = '47',
+    lotaip47.jerarquia   = 1,
+    lotaip47.sha256_corpus = null
+"""
+
 # ─ Paso 3: Dominios ───────────────────────────────────────────────────────────
 CYPHER_DOMINIOS = """
 // Dominios del Circuito C01
@@ -122,8 +191,8 @@ SET d07.nombre    = 'Transparencia',
     d07.chs_rol   = 'ORIGEN'
 
 MERGE (d08:Dominio {id: 'Dom08'})
-SET d08.nombre    = 'Participación',
-    d08.dco_activo = false,
+SET d08.nombre    = 'Participación Ciudadana & Control Democrático',
+    d08.dco_activo = true,
     d08.chs_rol   = 'INTERMEDIARIO'
 
 MERGE (d04:Dominio {id: 'Dom04'})
@@ -245,6 +314,18 @@ MERGE (d07)-[:INFORMA {
     acks:      'CE_18, LOTAIP_7, LOTAIP_34'
 }]->(d08)
 
+// Bidireccionalidad Dom07 ↔ Dom08 — el colega (2026-06-02)
+// Dom07 INFORMA → Dom08 (arriba): transparencia entrega insumo a participación
+// Dom08 DEMANDA → Dom07 (abajo): sin mandante activo, Dom07 es obligación sin sujeto de demanda
+// CE_18 y CE_95 son raíces independientes — ninguna funda a la otra
+// La relación es mutua, no jerárquica
+MERGE (d08)-[:DEMANDA {
+    circuito:  'C01',
+    mecanismo: 'CE_95 → CE_18',
+    texto:     'La participación ciudadana activa genera demanda que justifica constitucionalmente la transparencia. Sin Dom08 (mandante), Dom07 es una obligación estatal sin sujeto exigente. Dom08 operacionaliza la soberanía popular (CE_1 candidato NRC).',
+    acks:      'CE_95, CE_100, COOTAD_302'
+}]->(d07)
+
 MERGE (d08)-[:HABILITA {
     circuito:  'C01',
     mecanismo: 'CE_95 → CE_264_1',
@@ -253,17 +334,66 @@ MERGE (d08)-[:HABILITA {
 }]->(d04)
 """
 
+# ─ Paso 10: COOTAD 302/303/304 INSTRUMENTA Dom08 ─────────────────────────────
+CYPHER_DOM08_INSTRUMENTA = """
+// COOTAD 302/303/304 instrumentan Dom08 en capa C2 (obligación/procedimiento)
+// DCO Dom08 conforme ADR-016 — LOPC está en C2, no en C4 (inversión arquitectónica)
+MERGE (cootad302:ACK  {ack_id: 'COOTAD_302'})
+MERGE (cootad303:ACK  {ack_id: 'COOTAD_303'})
+MERGE (cootad304:ACK  {ack_id: 'COOTAD_304'})
+MERGE (d08:Dominio    {id:     'Dom08'})
+
+MERGE (cootad302)-[:INSTRUMENTA {
+    capa: 'C2_obligacion',
+    nota: 'COOTAD_302 crea el sistema de participación como cuerpo normativo propio del GAD'
+}]->(d08)
+
+MERGE (cootad303)-[:INSTRUMENTA {
+    capa: 'C2_procedimiento',
+    nota: 'COOTAD_303 regula el presupuesto participativo — nexo Dom08↔Dom02'
+}]->(d08)
+
+MERGE (cootad304)-[:INSTRUMENTA {
+    capa: 'C2_procedimiento',
+    nota: 'COOTAD_304 enumera la taxonomía operativa: silla vacía, cabildos, veedurías'
+}]->(d08)
+"""
+
+# ─ Paso 11: LOTAIP_34 + LOTAIP_47 INSTRUMENTA Dom07 — Layer 2 ────────────────
+CYPHER_DOM07_L2_INSTRUMENTA = """
+// Dom07 Layer 2: LOTAIP_34 (plazo) + LOTAIP_47 (sanción)
+// Tres capas normativas Dom07: CE_18 (fundante) → LOTAIP_7 (observación C4) →
+//   LOTAIP_34 (plazo C2) + LOTAIP_47 (consecuencia C4_sancion)
+MERGE (lotaip34:ACK {ack_id: 'LOTAIP_34'})
+MERGE (lotaip47:ACK {ack_id: 'LOTAIP_47'})
+MERGE (d07:Dominio  {id:     'Dom07'})
+
+MERGE (lotaip34)-[:INSTRUMENTA {
+    capa: 'C2_plazo',
+    nota: 'LOTAIP_34 establece plazo 10 días hábiles — obligación procedimental verificable'
+}]->(d07)
+
+MERGE (lotaip47)-[:INSTRUMENTA {
+    capa: 'C4_sancion',
+    nota: 'LOTAIP_47 activa consecuencia legal — DPE + CPCCS como órganos sancionadores'
+}]->(d07)
+"""
+
 # ── Todos los pasos en orden canónico ────────────────────────────────────────
 ALL_CYPHER_STEPS = [
-    ("NRCs — Nodos Raíz Constitucionales (ADR-018)",           CYPHER_NRC),
-    ("ACKs sectoriales",                                        CYPHER_ACKS_SECTORIALES),
-    ("Dominios C01",                                            CYPHER_DOMINIOS),
-    ("Circuito C01 (ADR-017)",                                  CYPHER_CIRCUITO),
-    ("Relaciones NRC → NRC (HABILITA — ADR-018)",               CYPHER_NRC_HABILITA),
-    ("Relaciones ACK → Dominio (FUNDA / INSTRUMENTA)",          CYPHER_ACK_FUNDA),
-    ("Relaciones Dominio → Circuito (ALIMENTA — causal)",       CYPHER_DOM_ALIMENTA),
-    ("Relaciones Circuito → Dominio (INCLUYE — estructural)",   CYPHER_CIRC_INCLUYE),
-    ("Aristas causales entre dominios (ADR-017)",               CYPHER_ARISTAS_CAUSALES),
+    ("NRCs — Nodos Raíz Constitucionales (ADR-018)",             CYPHER_NRC),
+    ("ACKs sectoriales Dom07",                                   CYPHER_ACKS_SECTORIALES),
+    ("ACKs sectoriales Dom08 — COOTAD 302/303/304",              CYPHER_ACKS_DOM08),
+    ("ACKs Dom07 Layer 2 — LOTAIP_34 + LOTAIP_47",               CYPHER_ACKS_DOM07_L2),
+    ("Dominios C01",                                             CYPHER_DOMINIOS),
+    ("Circuito C01 (ADR-017)",                                   CYPHER_CIRCUITO),
+    ("Relaciones NRC → NRC (HABILITA — ADR-018)",                CYPHER_NRC_HABILITA),
+    ("Relaciones ACK → Dominio (FUNDA / INSTRUMENTA)",           CYPHER_ACK_FUNDA),
+    ("Relaciones Dominio → Circuito (ALIMENTA — causal)",        CYPHER_DOM_ALIMENTA),
+    ("Relaciones Circuito → Dominio (INCLUYE — estructural)",    CYPHER_CIRC_INCLUYE),
+    ("Aristas causales entre dominios (ADR-017)",                CYPHER_ARISTAS_CAUSALES),
+    ("Dom08 INSTRUMENTA — COOTAD 302/303/304 → Dom08",           CYPHER_DOM08_INSTRUMENTA),
+    ("Dom07 Layer 2 INSTRUMENTA — LOTAIP_34/47 → Dom07",         CYPHER_DOM07_L2_INSTRUMENTA),
 ]
 
 
@@ -318,6 +448,46 @@ VALIDATION_QUERIES = [
             "ORDER BY r.peso DESC"
         ),
         "expect": "3 rows: Dom07 (1.5), Dom08 (1.0), Dom04 (0.7)",
+    },
+    {
+        "id": "Q6_dom08_chain",
+        "descripcion": "Segunda cadena constitucional — CE_226 → CE_95 → Dom08 → C01",
+        "cypher": (
+            "MATCH p=(:ACK {ack_id:'CE_226'})-[:HABILITA]->(:ACK {ack_id:'CE_95'})"
+            "-[:FUNDA]->(:Dominio {id:'Dom08'})-[:ALIMENTA]->(:Circuito {id:'C01'}) RETURN p"
+        ),
+        "expect": "1 path: CE_226 → CE_95 → Dom08 → C01 (segunda cadena gobernanza explicable)",
+    },
+    {
+        "id": "Q7_dom08_acks",
+        "descripcion": "Dom08 instrumentado — COOTAD 302/303/304 apuntan a Dom08",
+        "cypher": (
+            "MATCH (a:ACK)-[:INSTRUMENTA]->(d:Dominio {id:'Dom08'}) "
+            "RETURN a.ack_id AS ack, a.tipo AS tipo, a.norma_sigla AS norma "
+            "ORDER BY a.articulo"
+        ),
+        "expect": "3 rows: COOTAD_302 (obligacion), COOTAD_303 (procedimiento), COOTAD_304 (procedimiento)",
+    },
+    {
+        "id": "Q8_dom07_l2",
+        "descripcion": "Dom07 Layer 2 — LOTAIP_34 (plazo) + LOTAIP_47 (sanción) apuntan a Dom07",
+        "cypher": (
+            "MATCH (a:ACK)-[r:INSTRUMENTA]->(d:Dominio {id:'Dom07'}) "
+            "RETURN a.ack_id AS ack, r.capa AS capa "
+            "ORDER BY a.ack_id"
+        ),
+        "expect": "3 rows: LOTAIP_34 (C2_plazo), LOTAIP_47 (C4_sancion), LOTAIP_7 (C4_observacion)",
+    },
+    {
+        "id": "Q9_bidireccional",
+        "descripcion": "Dom07 ↔ Dom08 bidireccional — INFORMA + DEMANDA (dos raíces independientes)",
+        "cypher": (
+            "MATCH (d07:Dominio {id:'Dom07'})-[r1:INFORMA]->(d08:Dominio {id:'Dom08'}) "
+            "MATCH (d08)-[r2:DEMANDA]->(d07) "
+            "RETURN d07.id AS desde_dom07, type(r1) AS rel1, d08.id AS dom08, "
+            "type(r2) AS rel2, d07.id AS hacia_dom07"
+        ),
+        "expect": "1 row: Dom07-[INFORMA]->Dom08 y Dom08-[DEMANDA]->Dom07 coexisten (relación mutua, no jerárquica)",
     },
 ]
 
@@ -454,7 +624,7 @@ def validate_c01(driver) -> bool:
         print(f"\n  [{q['id']}] {q['descripcion']}")
         print(f"  Esperado: {q['expect']}")
         try:
-            with driver.session() as session:
+            with _session(driver) as session:
                 results = list(session.run(q["cypher"]))
                 if results:
                     print(f"  [OK] {len(results)} resultado(s) — recorrido verificado")
@@ -536,7 +706,7 @@ Prerequisito secrets.toml:
             ok = validate_c01(driver)
         elif args.link_results:
             print("\n  Conectando C01 a resultados operacionales...")
-            with driver.session() as session:
+            with _session(driver) as session:
                 result = session.run(CYPHER_LINK_RESULTS).single()
                 if result:
                     print(f"  [OK] {result['status']}")

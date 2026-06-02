@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "0.2",
-    "total_acks": 11,
+    "version": "0.3",
+    "total_acks": 14,
     "total_nrcs": 4,
     "scope": "nacional",
     "descripcion": "Catálogo maestro de Átomos Canónicos de Conocimiento (ACK) — alcance nacional Ecuador. Los ACKs representan normativa constitucional y orgánica aplicable a todos los GADs municipales. El campo canton_id no existe por diseño: la normativa es nacional; los datos operacionales (SIGEF, portales LOTAIP, ejecución) son cantonales y entran en L0 (Excel Canónico), nunca en el ACK Registry.",
@@ -10,13 +10,15 @@
     "ultima_actualizacion": "2026-06-02",
     "extractor_default": "QLEP-v1.0",
     "notas_pendientes": [
-      "chunk_refs 9/11 — LOTAIP_47 y LOPC_72 con corpus gaps documentados (CE_226 OK)",
+      "chunk_refs 11/14 — LOTAIP_47, LOPC_72 con corpus gaps; COOTAD_302/303/304 chunk_refs verificados 2026-06-02",
       "revisado_por_experto=false para todos — pendiente validación jurista especializado",
       "LOTAIP_47: verificar Art. sanción en texto impreso LOTAIP (original 2004 vs reformado)",
       "LOPC_72: ingestar LOPC completa en milestone F0.2 ampliado",
       "Sub-ACKs pendientes: CE_264_1 (planificación) + CE_264_4 (agua potable)",
-      "Dom08 DCO pendiente: usar ADR-016 template con CE_95 como norma fundante",
-      "NRC candidatos adicionales sin confirmar: CE_85 (igualdad) · CE_238 (autonomía GAD) · CE_340 (inclusión social)"
+      "NRC candidatos adicionales sin confirmar: CE_85 (igualdad) · CE_238 (autonomía GAD) · CE_340 (inclusión social)",
+      "Dom08 DCO CREADO 2026-06-02: docs/adr/DCO_Dom08_Participacion_Ciudadana.md — LOPC en C2 (no C4)",
+      "Phase 3 pendiente: Neo4j Dom08 extension — agregar COOTAD_302/303/304 como nodos ACK + relaciones INSTRUMENTA",
+      "Phase 4 pendiente: Dom07 Layer 2 — agregar LOTAIP_34 + LOTAIP_47 como nodos Neo4j"
     ]
   },
   "acks": [
@@ -593,6 +595,176 @@
         "version": "1.0",
         "confianza": "media",
         "nota": "ACK sectorial (es_nrc=false). Procedimiento Dom08 específico. CORPUS GAP: LOPC no estaba en el corpus F0.2 (milestone Transparencia). La LOPC completa tiene 100+ artículos — Art.72 existe pero no fue ingresada en F0.x. Acciones requeridas: (1) ejecutar /qlep --norma LOPC para verificar Art.72 es sobre mecanismos participación GAD, (2) ingestar LOPC en milestone F0.2 ampliado. Hasta resolver, este ACK es placeholder normativo 'procedimiento' Dom08."
+      }
+    },
+    {
+      "ack_id": "COOTAD_302",
+      "tipo": "obligacion",
+      "nombre": "Sistema de participación ciudadana del GAD Municipal",
+      "norma": {
+        "sigla": "COOTAD",
+        "nombre_oficial": "Código Orgánico de Organización Territorial, Autonomía y Descentralización",
+        "articulo": "302",
+        "inciso": null,
+        "jerarquia": 1,
+        "vigente": "2010-10-19"
+      },
+      "actor_obligado": [
+        "GAD-Municipal",
+        "Concejo",
+        "Alcalde"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía cantonal",
+        "Organizaciones sociales"
+      ],
+      "obligacion": "Los GADs conformarán un sistema de participación ciudadana que se regulará por acto normativo del correspondiente nivel de gobierno, tendrá una estructura y denominación propias. El sistema de participación ciudadana se orientará por los principios de igualdad, autonomía, deliberación pública, respeto a la diferencia, control popular, solidaridad e interculturalidad.",
+      "dominios": [
+        "Dom08"
+      ],
+      "circuitos": [
+        "C01"
+      ],
+      "fundante": false,
+      "es_nrc": false,
+      "vigente": true,
+      "revisado_por_experto": false,
+      "chunk_refs": [
+        {
+          "sha256": "7fc2193b2bbea9565cc13a93c62c6929cbf95b2f547431d8b606b381b30009d5",
+          "articulo_num": 302,
+          "chunk_seq": 0,
+          "palabras": 169
+        }
+      ],
+      "obsidian_nota": "COOTAD_302.md",
+      "qlep_yaml": null,
+      "relaciones": [
+        "CE_95",
+        "CE_100",
+        "COOTAD_303",
+        "COOTAD_304",
+        "LOPC_72"
+      ],
+      "meta": {
+        "fecha_extraccion": "2026-06-02",
+        "extractor": "QLEP-v1.0",
+        "version": "1.0",
+        "confianza": "alta",
+        "nota": "ACK sectorial (es_nrc=false). COOTAD_302 operacionaliza CE_100 en la institucionalidad GAD: manda la creación formal del sistema de participación como cuerpo normativo propio. Es el pivot C2 de Dom08-A en el DCO. Su remoción afecta exclusivamente Dom08. chunk_refs verificado 2026-06-02 vía Supabase normativa_corpus (sha256 7fc2193b, 169 palabras, corpus COOTAD F0.3)."
+      }
+    },
+    {
+      "ack_id": "COOTAD_303",
+      "tipo": "procedimiento",
+      "nombre": "Presupuesto participativo — procedimiento GAD Municipal",
+      "norma": {
+        "sigla": "COOTAD",
+        "nombre_oficial": "Código Orgánico de Organización Territorial, Autonomía y Descentralización",
+        "articulo": "303",
+        "inciso": null,
+        "jerarquia": 1,
+        "vigente": "2010-10-19"
+      },
+      "actor_obligado": [
+        "GAD-Municipal",
+        "Alcalde",
+        "Director-Financiero",
+        "Concejo"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía cantonal",
+        "Organizaciones territoriales"
+      ],
+      "obligacion": "Los GADs implementarán el presupuesto participativo en el que la ciudadanía podrá definir y priorizar programas y proyectos de inversión pública en el marco de los planes de desarrollo. El presupuesto participativo se realizará antes de la elaboración del proyecto de presupuesto del gobierno autónomo descentralizado.",
+      "dominios": [
+        "Dom08",
+        "Dom02"
+      ],
+      "circuitos": [
+        "C01"
+      ],
+      "fundante": false,
+      "es_nrc": false,
+      "vigente": true,
+      "revisado_por_experto": false,
+      "chunk_refs": [
+        {
+          "sha256": "ef9e6846f1bf5798398a64629f5ae80c7502f9d79da16d9432ad073119a61149",
+          "articulo_num": 303,
+          "chunk_seq": 0,
+          "palabras": 263
+        }
+      ],
+      "obsidian_nota": "COOTAD_303.md",
+      "qlep_yaml": null,
+      "relaciones": [
+        "CE_100",
+        "COOTAD_302",
+        "COOTAD_304",
+        "LOPC_72"
+      ],
+      "meta": {
+        "fecha_extraccion": "2026-06-02",
+        "extractor": "QLEP-v1.0",
+        "version": "1.0",
+        "confianza": "alta",
+        "nota": "ACK sectorial (es_nrc=false). COOTAD_303 es el pivot C2 de Dom08-B (Presupuesto Participativo). Tiene doble mapeo: Dom08 (participación) + Dom02 (presupuesto / inversión) — el presupuesto participativo es el nexo estructural entre ambos dominios. Evidencia: debe ocurrir ANTES de la elaboración del presupuesto anual (precedencia temporal verificable vs ciclo POA-PAC). chunk_refs verificado 2026-06-02 vía Supabase (sha256 ef9e6846, 263 palabras, corpus COOTAD F0.3)."
+      }
+    },
+    {
+      "ack_id": "COOTAD_304",
+      "tipo": "procedimiento",
+      "nombre": "Mecanismos de participación ciudadana en el ciclo de gestión",
+      "norma": {
+        "sigla": "COOTAD",
+        "nombre_oficial": "Código Orgánico de Organización Territorial, Autonomía y Descentralización",
+        "articulo": "304",
+        "inciso": null,
+        "jerarquia": 1,
+        "vigente": "2010-10-19"
+      },
+      "actor_obligado": [
+        "GAD-Municipal",
+        "Alcalde"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía cantonal",
+        "Organizaciones comunitarias"
+      ],
+      "obligacion": "Los GADs reconocerán mecanismos de participación ciudadana en todas las fases y espacios de la gestión pública: audiencias públicas, cabildos populares, silla vacía, veedurías, observatorios y consejos consultivos. Garantizarán la interculturalidad y la paridad de género en la conformación de estos espacios.",
+      "dominios": [
+        "Dom08"
+      ],
+      "circuitos": [
+        "C01"
+      ],
+      "fundante": false,
+      "es_nrc": false,
+      "vigente": true,
+      "revisado_por_experto": false,
+      "chunk_refs": [
+        {
+          "sha256": "a1ccfa62c16fa16fcea1a47d1bc24ebfee0aa489856ade2b4d4d312656eac667",
+          "articulo_num": 304,
+          "chunk_seq": 0,
+          "palabras": 326
+        }
+      ],
+      "obsidian_nota": "COOTAD_304.md",
+      "qlep_yaml": null,
+      "relaciones": [
+        "CE_95",
+        "COOTAD_302",
+        "COOTAD_303",
+        "LOPC_72"
+      ],
+      "meta": {
+        "fecha_extraccion": "2026-06-02",
+        "extractor": "QLEP-v1.0",
+        "version": "1.0",
+        "confianza": "alta",
+        "nota": "ACK sectorial (es_nrc=false). COOTAD_304 enumera la taxonomía operativa de los mecanismos de participación: silla vacía, cabildos, veedurías, observatorios. Es el instrumento más concreto de Dom08 — dice exactamente QUÉ mecanismos deben existir (verificable). Evidencia: Ordenanza de participación + convocatorias de cabildo + actas silla vacía + informes veedurías. chunk_refs verificado 2026-06-02 vía Supabase (sha256 a1ccfa62, 326 palabras, corpus COOTAD F0.3). Nota: mayor volumen (326 palabras) refleja la riqueza taxonómica del artículo."
       }
     }
   ]
