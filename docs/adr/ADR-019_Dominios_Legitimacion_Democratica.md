@@ -1,16 +1,20 @@
 # ADR-019 — Dominios de Legitimación Democrática: Hipótesis Arquitectónica
 
-**Estado**: CONFIRMED ✅  
+**Estado**: STRONGLY_SUPPORTED  
 **Fecha de apertura**: 2026-06-02  
 **Fecha de actualización**: 2026-06-02  
-**Fecha de confirmación**: 2026-06-02 — commit cfb6595 · 4/4 criterios PASS  
+**Fecha de cierre**: PENDIENTE — ver §Criterios de Confirmación actualizados  
 **Proyecto**: QUIRA Gov · Dylus Lab  
 **Participantes**: Equipo Dylus Lab · Colega Asesor Externo  
 
-> **CONFIRMED**: 4/4 criterios PASS verificados computacionalmente. Evidencia en `data/centrality_results.json` (commit cfb6595).
-> C1 ✅ Dom08 betweenness 4.59× Dom07 | C2 ✅ Dom09 posición 2° | C3 ✅ Dom08(C2)≠Dom09(C3)+lazo causal | C4b ✅ CE_1=39>CE_226=34
-> **Nota arquitectónica**: C3 reformulado (ADR-019 O-01) — PASS = comunidades distintas con lazo GENERA+RETROALIMENTA verificado en Neo4j.
-> Dom09 sigue como seed incompleto. Re-run con Dom09 completo consolidará C3 con más ACKs en Comunidad 3.
+> **STRONGLY_SUPPORTED**: C1, C2, C4b con evidencia computacional en `data/centrality_results.json` (commit cfb6595).
+> C3 y la transición a CONFIRMED requieren Dom09 completo + re-run con métricas estándar (betweenness, Louvain) sobre snapshot estable.
+>
+> **Por qué NO es CONFIRMED todavía** (criterio colega asesor, 2026-06-02):
+> C4b (Cascade Score) es una métrica propia de QUIRA — válida e innovadora, pero sin literatura externa.
+> Para CONFIRMED se requieren métricas estándar de teoría de grafos que lo corroboren + Dom09 completo.
+> C3 fue reformulado para hacer PASS (diferentes comunidades) — ese cambio de criterio no es evidencia, es ajuste.
+> El criterio correcto de C3 requiere Dom09 con más ACKs en Comunidad 3 para evaluar la díada con cobertura completa.
 
 ## Evidencia Acumulada — 2026-06-02
 
@@ -341,7 +345,7 @@ Ver: `docs/adr/ADR-020_Analitica_Constitucional.md` — sección C4b.
 |---|---|---|---|
 | C1 | Dom08 betweenness > 1.3× Dom07 | M2 formal | **PASS — 4.6×** |
 | C2 | Dom09 betweenness posición ≤ 4 | M2 formal | **PASS — posición 2°** |
-| C3 | Dom08+Dom09 = lazo causal + comunidades adyacentes | M5 | PENDIENTE (refinar def.) |
+| C3 | Dom09 completo → Comunidad 3 estable + lazo GENERA+RETROALIMENTA + betweenness díada | M5+M2 | PENDIENTE — Dom09 seed incompleto, re-run necesario |
 | C4b | CE_1 CASCADE SCORE > CE_226 | M6 nuevo | **PASS — 39 vs 34** |
 
 ---
