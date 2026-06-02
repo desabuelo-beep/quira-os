@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "0.4",
-    "total_acks": 15,
+    "version": "0.5",
+    "total_acks": 34,
     "total_nrcs": 4,
     "nrcs_constituyentes": 1,
     "scope": "nacional",
@@ -11,17 +11,16 @@
     "ultima_actualizacion": "2026-06-02",
     "extractor_default": "QLEP-v1.0",
     "notas_pendientes": [
-      "chunk_refs 11/15 — LOTAIP_47, LOPC_72, CE_1 con corpus gaps pendientes; COOTAD_302/303/304 verificados",
-      "CE_1 nrc_rango=constituyente: ontológicamente anterior a NRCs funcionales — ADR-019 PROPUESTO",
-      "CE_1 relación: CONSTITUYE (no HABILITA) — es fuente de validez del ordenamiento, no habilitador funcional",
+      "chunk_refs: LOPC_89/91/93 pendientes --link-corpus (sha256 no en script — cargadas sin Cypher externo en commit b6aefa6)",
+      "chunk_refs: CPCCS_RC_2026 chunk_refs=[] — resolución CPCCS no está en los 41 docs del corpus normativo (documento externo)",
+      "chunk_refs: LOTAIP_47 pendiente (Art.47 no encontrado en corpus — corpus LOTAIP termina en Art.44 aprox.)",
+      "chunk_refs: LOPC_72 pendiente — placeholder, ingestar LOPC completa en milestone F0.2 ampliado",
+      "Neo4j pending: LOPC_80 nodo existe pero SIN relaciones INSTRUMENTA en Neo4j (disconnected — verificar si es intencional)",
+      "Neo4j pending: CE_61, CE_100, COOTAD_249, LOPC_72 están en registry pero NO en Neo4j (carga pendiente)",
+      "NRC candidatos sin confirmar: CE_85 (igualdad) · CE_238 (autonomía GAD) · CE_340 (inclusión social)",
       "revisado_por_experto=false para todos — pendiente validación jurista especializado",
-      "LOTAIP_47: verificar Art. sanción en texto impreso LOTAIP (original 2004 vs reformado)",
-      "LOPC_72: ingestar LOPC completa en milestone F0.2 ampliado",
-      "Sub-ACKs pendientes: CE_264_1 (planificación) + CE_264_4 (agua potable)",
-      "NRC candidatos adicionales sin confirmar: CE_85 (igualdad) · CE_238 (autonomía GAD) · CE_340 (inclusión social)",
-      "Dom08 DCO CREADO 2026-06-02: docs/adr/DCO_Dom08_Participacion_Ciudadana.md — LOPC en C2 (no C4)",
-      "Phase 3 pendiente: Neo4j Dom08 extension — agregar COOTAD_302/303/304 como nodos ACK + relaciones INSTRUMENTA",
-      "Phase 4 pendiente: Dom07 Layer 2 — agregar LOTAIP_34 + LOTAIP_47 como nodos Neo4j"
+      "LOPC_72 sub-ACK redundante con LOPC_65 — revisar si debe mantenerse o consolidarse",
+      "Cascade Score M6: CE_1=39 > CE_226=34 calculado en sesión, pendiente formalizar en JSON (Gate 2)"
     ]
   },
   "acks": [
@@ -37,19 +36,10 @@
         "jerarquia": 0,
         "vigente": "2008-10-20"
       },
-      "actor_obligado": [
-        "Estado",
-        "GAD-Municipal",
-        "Instituciones del Estado"
-      ],
-      "actor_beneficiario": [
-        "Pueblo ecuatoriano"
-      ],
+      "actor_obligado": ["Estado", "GAD-Municipal", "Instituciones del Estado"],
+      "actor_beneficiario": ["Pueblo ecuatoriano"],
       "obligacion": "La soberanía radica en el pueblo, cuya voluntad es el fundamento de la autoridad, y se ejerce a través de los órganos del poder público y de las formas de participación directa previstas en la Constitución.",
-      "dominios": [
-        "Dom08",
-        "Dom01"
-      ],
+      "dominios": ["Dom08", "Dom01"],
       "circuitos": [],
       "fundante": true,
       "es_nrc": true,
@@ -59,19 +49,13 @@
       "chunk_refs": [],
       "obsidian_nota": "CE_1.md",
       "qlep_yaml": null,
-      "relaciones": [
-        "CE_226",
-        "CE_18",
-        "CE_95",
-        "CE_264",
-        "LOPC"
-      ],
+      "relaciones": ["CE_226", "CE_18", "CE_95", "CE_264", "LOPC"],
       "meta": {
         "fecha_extraccion": "2026-06-02",
         "extractor": "QLEP-v1.0",
         "version": "1.0",
         "confianza": "alta",
-        "nota": "NODO CONSTITUYENTE — nrc_rango=constituyente. Categoría DISTINTA a los NRCs funcionales (CE_226/18/95/264). Los NRCs funcionales describen condiciones de funcionamiento del Estado: qué puede hacer (CE_226), qué derechos tiene el ciudadano (CE_18, CE_95), qué competencia tiene el GAD (CE_264). CE_1 describe QUIÉN tiene el poder — es ontológicamente anterior a todos ellos. La soberanía popular (CE_1) es la fuente de la que deriva la validez del ordenamiento jurídico entero. Relación en Neo4j: CONSTITUYE (no HABILITA). Dom08 es el mecanismo constitucional que convierte CE_1 en acción pública verificable cotidiana — sin Dom08, CE_1 permanece como declaración abstracta sin traducción institucional. CORPUS GAP: CE_1 debería estar en F0.1 corpus, pendiente verificar sha256. Escenario C del ADR-019: si CE_1 muestra mayor betweenness centrality que CE_226 tras cargar Dom09, la arquitectura de soberanía prevalece sobre la arquitectura de legalidad. Esa es una afirmación que vale la pena probar con datos."
+        "nota": "NODO CONSTITUYENTE — nrc_rango=constituyente. Categoría DISTINTA a los NRCs funcionales (CE_226/18/95/264). CE_1 describe QUIÉN tiene el poder — es ontológicamente anterior a todos ellos. Relación en Neo4j: CONSTITUYE (no HABILITA). Dom08 es el mecanismo constitucional que convierte CE_1 en acción pública verificable cotidiana. CORPUS GAP: CE_1 pendiente --link-corpus."
       }
     },
     {
@@ -86,20 +70,11 @@
         "jerarquia": 0,
         "vigente": "2008-10-20"
       },
-      "actor_obligado": [
-        "GAD-Municipal",
-        "Instituciones del Estado"
-      ],
-      "actor_beneficiario": [
-        "Ciudadanía"
-      ],
+      "actor_obligado": ["GAD-Municipal", "Instituciones del Estado"],
+      "actor_beneficiario": ["Ciudadanía"],
       "obligacion": "Toda persona tiene derecho a acceder libremente a la información generada en entidades públicas, o en las privadas que manejen fondos del Estado o realicen funciones públicas. No existirá reserva de información excepto en los casos expresamente establecidos en la ley.",
-      "dominios": [
-        "Dom07"
-      ],
-      "circuitos": [
-        "C01"
-      ],
+      "dominios": ["Dom07"],
+      "circuitos": ["C01"],
       "fundante": true,
       "es_nrc": true,
       "vigente": true,
@@ -114,17 +89,13 @@
       ],
       "obsidian_nota": "CE_18.md",
       "qlep_yaml": null,
-      "relaciones": [
-        "CE_226",
-        "LOTAIP",
-        "LOPC"
-      ],
+      "relaciones": ["CE_226", "LOTAIP", "LOPC"],
       "meta": {
         "fecha_extraccion": "2026-06-01",
         "extractor": "QLEP-v1.0",
         "version": "1.0",
         "confianza": "alta",
-        "nota": "NODO RAÍZ CONSTITUCIONAL (es_nrc=true). Dom07 es la manifestación institucional primaria de CE_18, pero el derecho aplica a todos los dominios que producen información pública: Dom08 (participación informada), Dom09 (rendición de cuentas), Dom02 (presupuesto público), Dom04 (PDOT), Dom10 (servicios). Si CE_18 se derogara, múltiples dominios independientes pierden su base normativa. | Norma fundante confirmada de Dom07-A. DCO ADR-016 establece CE_18 como fundante permanente. El corpus devolvió Art.19 para 'transparencia activa' pero el DCO gana: CE_18 es la norma que CREA el derecho."
+        "nota": "NODO RAÍZ CONSTITUCIONAL (es_nrc=true). Dom07 es la manifestación institucional primaria de CE_18, pero el derecho aplica a todos los dominios que producen información pública. DCO ADR-016 establece CE_18 como fundante permanente de Dom07. El corpus devolvió Art.19 para 'transparencia activa' pero el DCO gana: CE_18 es la norma que CREA el derecho."
       }
     },
     {
@@ -139,17 +110,10 @@
         "jerarquia": 0,
         "vigente": "2008-10-20"
       },
-      "actor_obligado": [
-        "Estado",
-        "GAD-Municipal"
-      ],
-      "actor_beneficiario": [
-        "Ciudadanía ecuatoriana"
-      ],
+      "actor_obligado": ["Estado", "GAD-Municipal"],
+      "actor_beneficiario": ["Ciudadanía ecuatoriana"],
       "obligacion": "Las ecuatorianas y ecuatorianos gozan de derechos de participación política, incluyendo presentar proyectos de iniciativa popular, ser consultados en los procesos que les afecten y fiscalizar los actos del poder público.",
-      "dominios": [
-        "Dom07"
-      ],
+      "dominios": ["Dom07"],
       "circuitos": [],
       "fundante": true,
       "es_nrc": false,
@@ -165,16 +129,13 @@
       ],
       "obsidian_nota": "CE_61.md",
       "qlep_yaml": null,
-      "relaciones": [
-        "CE_95",
-        "LOPC"
-      ],
+      "relaciones": ["CE_95", "LOPC"],
       "meta": {
         "fecha_extraccion": "2026-06-01",
         "extractor": "QLEP-v1.0",
         "version": "1.0",
         "confianza": "media",
-        "nota": "ACK sectorial (es_nrc=false). CE_61 describe derechos políticos ciudadanos — complementa CE_95 pero es más específico (ciudadanos ecuatorianos vs. participación en gestión pública en general). Su remoción afectaría Dom07-B y Dom08, pero ambos están relacionados temáticamente, no son dominios independientes. Criterio NRC no cumplido. | Pendiente verificación jurista."
+        "nota": "ACK sectorial (es_nrc=false). CE_61 describe derechos políticos ciudadanos — complementa CE_95 pero es más específico. Criterio NRC no cumplido. NOTA: CE_61 está en registry pero NO en Neo4j — pendiente carga."
       }
     },
     {
@@ -189,21 +150,11 @@
         "jerarquia": 0,
         "vigente": "2008-10-20"
       },
-      "actor_obligado": [
-        "GAD-Municipal",
-        "Estado"
-      ],
-      "actor_beneficiario": [
-        "Ciudadanía"
-      ],
+      "actor_obligado": ["GAD-Municipal", "Estado"],
+      "actor_beneficiario": ["Ciudadanía"],
       "obligacion": "Las ciudadanas y ciudadanos, en forma individual y colectiva, participarán de manera protagónica en la toma de decisiones, planificación y gestión de los asuntos públicos, y en el control popular de las instituciones del Estado y la sociedad, y de sus representantes.",
-      "dominios": [
-        "Dom07",
-        "Dom08"
-      ],
-      "circuitos": [
-        "C01"
-      ],
+      "dominios": ["Dom07", "Dom08"],
+      "circuitos": ["C01"],
       "fundante": true,
       "es_nrc": true,
       "vigente": true,
@@ -218,18 +169,13 @@
       ],
       "obsidian_nota": "CE_95.md",
       "qlep_yaml": null,
-      "relaciones": [
-        "CE_226",
-        "CE_18",
-        "CE_100",
-        "LOPC"
-      ],
+      "relaciones": ["CE_226", "CE_18", "CE_100", "LOPC"],
       "meta": {
         "fecha_extraccion": "2026-06-01",
         "extractor": "QLEP-v1.0",
         "version": "1.0",
         "confianza": "media-alta",
-        "nota": "NODO RAÍZ CONSTITUCIONAL (es_nrc=true). CE_95 cierra el ciclo democrático: sin participación, Dom07 (transparencia) pierde su lado de demanda; Dom08 (participación) colapsa como dominio primario; Dom09 (rendición de cuentas) pierde su mecanismo de control ciudadano; Dom04 (planificación) pierde el mandato de PDOT participativo. Dominios afectados son funcionalmente independientes. | Nodo INTERMEDIARIO en C01 (Dom08). ADR-017 lo usa como norma fundante de Dom08. Pendiente verificación jurista."
+        "nota": "NODO RAÍZ CONSTITUCIONAL (es_nrc=true). CE_95 es norma fundante de AMBOS Dom08 y Dom09 — 'control popular' es la segunda mitad del mismo derecho que 'participar'. Nodo INTERMEDIARIO en C01. Betweenness formal: 0.003704 (supera a Dom04 en proxy)."
       }
     },
     {
@@ -244,21 +190,11 @@
         "jerarquia": 0,
         "vigente": "2008-10-20"
       },
-      "actor_obligado": [
-        "GAD-Municipal",
-        "Concejo"
-      ],
-      "actor_beneficiario": [
-        "Ciudadanía",
-        "Organizaciones sociales"
-      ],
+      "actor_obligado": ["GAD-Municipal", "Concejo"],
+      "actor_beneficiario": ["Ciudadanía", "Organizaciones sociales"],
       "obligacion": "En todos los niveles de gobierno se conformarán instancias de participación integradas por autoridades electas, representantes del régimen dependiente y representantes de la sociedad del ámbito territorial de cada nivel de gobierno, que elaborarán planes y políticas, mejorarán la calidad de la inversión pública, y elaborarán presupuestos participativos.",
-      "dominios": [
-        "Dom08"
-      ],
-      "circuitos": [
-        "C01"
-      ],
+      "dominios": ["Dom08"],
+      "circuitos": ["C01"],
       "fundante": true,
       "es_nrc": false,
       "vigente": true,
@@ -273,17 +209,13 @@
       ],
       "obsidian_nota": "CE_100.md",
       "qlep_yaml": null,
-      "relaciones": [
-        "CE_95",
-        "COOTAD_302",
-        "LOPC"
-      ],
+      "relaciones": ["CE_95", "COOTAD_302", "LOPC"],
       "meta": {
         "fecha_extraccion": "2026-06-01",
         "extractor": "QLEP-v1.0",
         "version": "1.0",
         "confianza": "media",
-        "nota": "ACK sectorial (es_nrc=false). CE_100 operacionaliza CE_95 en la institucionalidad de los GADs. Su remoción afecta Dom08 directamente, con impactos en Dom04 (presupuestos participativos). Pero CE_95 (NRC) es la norma raíz — CE_100 es su instrumento. No cumple criterio NRC independiente. | Pendiente verificación artículo exacto."
+        "nota": "ACK sectorial (es_nrc=false). CE_100 operacionaliza CE_95 en la institucionalidad de los GADs. NOTA: CE_100 está en registry pero NO en Neo4j — pendiente carga."
       }
     },
     {
@@ -298,21 +230,10 @@
         "jerarquia": 0,
         "vigente": "2008-10-20"
       },
-      "actor_obligado": [
-        "GAD-Municipal",
-        "Alcalde",
-        "Concejo",
-        "Instituciones del Estado",
-        "Servidores públicos"
-      ],
-      "actor_beneficiario": [
-        "Estado de Derecho",
-        "Ciudadanía"
-      ],
+      "actor_obligado": ["GAD-Municipal", "Alcalde", "Concejo", "Instituciones del Estado", "Servidores públicos"],
+      "actor_beneficiario": ["Estado de Derecho", "Ciudadanía"],
       "obligacion": "Las instituciones del Estado, sus organismos, dependencias, las servidoras o servidores públicos y las personas que actúen en virtud de una potestad estatal ejercerán solamente las competencias y facultades que les sean atribuidas en la Constitución y la ley. Tendrán el deber de coordinar acciones para el cumplimiento de sus fines y hacer efectivo el goce y ejercicio de los derechos reconocidos en la Constitución.",
-      "dominios": [
-        "Dom01"
-      ],
+      "dominios": ["Dom01"],
       "circuitos": [],
       "fundante": true,
       "es_nrc": true,
@@ -328,19 +249,13 @@
       ],
       "obsidian_nota": "CE_226.md",
       "qlep_yaml": null,
-      "relaciones": [
-        "CE_264",
-        "CE_238",
-        "COA",
-        "LOSEP",
-        "LOSNCP"
-      ],
+      "relaciones": ["CE_264", "CE_238", "COA", "LOSEP", "LOSNCP"],
       "meta": {
         "fecha_extraccion": "2026-06-02",
         "extractor": "QLEP-v1.0",
         "version": "1.0",
         "confianza": "alta",
-        "nota": "NODO RAÍZ CONSTITUCIONAL PRIMARIO (es_nrc=true). CE_226 es el axioma del sistema QUIRA: sin el principio de legalidad, ninguna actuación del GAD Municipal tiene validez constitucional, ningún ACK tiene fundamento normativo, ningún circuito tiene base jurídica. Dom01 es su ancla institucional primaria (Marco Constitucional / Legalidad), pero como NRC su ámbito real son los 12 dominios simultáneamente. Es el 'root of roots': CE_18, CE_95 y CE_264 derivan su autoridad de CE_226. chunk_refs vinculado 2026-06-02 (sha256 f1ea501c, 71 palabras, F0.1 corpus)."
+        "nota": "NODO RAÍZ CONSTITUCIONAL PRIMARIO (es_nrc=true). CE_226 es el axioma del sistema QUIRA: sin el principio de legalidad, ninguna actuación del GAD tiene validez constitucional. Es el 'root of roots'. Community 0 Louvain verificado. Cascade Score: 34 (vs CE_1=39)."
       }
     },
     {
@@ -355,22 +270,11 @@
         "jerarquia": 0,
         "vigente": "2008-10-20"
       },
-      "actor_obligado": [
-        "GAD-Municipal",
-        "Alcalde",
-        "Concejo"
-      ],
-      "actor_beneficiario": [
-        "Ciudadanía cantonal"
-      ],
+      "actor_obligado": ["GAD-Municipal", "Alcalde", "Concejo"],
+      "actor_beneficiario": ["Ciudadanía cantonal"],
       "obligacion": "Los gobiernos municipales tendrán las siguientes competencias exclusivas, sin perjuicio de otras que determine la ley: 1) Planificar el desarrollo cantonal y formular los planes de ordenamiento territorial; 2) Ejercer el control sobre el uso y ocupación del suelo; 4) Prestar los servicios públicos de agua potable, alcantarillado y otros.",
-      "dominios": [
-        "Dom04",
-        "Dom10"
-      ],
-      "circuitos": [
-        "C03"
-      ],
+      "dominios": ["Dom04", "Dom10"],
+      "circuitos": ["C03"],
       "fundante": true,
       "es_nrc": true,
       "vigente": true,
@@ -385,17 +289,13 @@
       ],
       "obsidian_nota": "CE_264.md",
       "qlep_yaml": null,
-      "relaciones": [
-        "CE_226",
-        "COOTAD",
-        "COPLAFIP"
-      ],
+      "relaciones": ["CE_226", "COOTAD", "COPLAFIP"],
       "meta": {
         "fecha_extraccion": "2026-06-01",
         "extractor": "QLEP-v1.0",
         "version": "1.0",
         "confianza": "alta",
-        "nota": "NODO RAÍZ CONSTITUCIONAL (es_nrc=true). CE_264 asigna las competencias constitucionales del GAD Municipal. Sin él: Dom04 (planificación) pierde su mandato; Dom10 (agua) pierde su competencia; Dom02 (presupuesto municipal) pierde su razón de ser; Dom03 (contratación) pierde el objeto de los contratos. Dominios funcionalmente independientes, todos afectados. | ACK de nivel artículo completo. Sub-ACKs CE_264_1 (planificación) + CE_264_4 (agua potable) pendientes. NOTA DE REPLICABILIDAD: CE_264 aplica a todos los GAD Municipales (220 cantones). Quito opera ADICIONALMENTE bajo CE Art.266. Al escalar a Quito, crear ACK CE_266 complementario."
+        "nota": "NODO RAÍZ CONSTITUCIONAL (es_nrc=true). CE_264 aplica a todos los GAD Municipales (220 cantones). Quito opera ADICIONALMENTE bajo CE Art.266. Sub-ACKs CE_264_1 (planificación) + CE_264_4 (agua potable) pendientes."
       }
     },
     {
@@ -410,19 +310,10 @@
         "jerarquia": 1,
         "vigente": "2010-10-19"
       },
-      "actor_obligado": [
-        "GAD-Municipal",
-        "Concejo",
-        "Director-Financiero"
-      ],
-      "actor_beneficiario": [
-        "Grupos de atención prioritaria",
-        "Patronato Municipal"
-      ],
+      "actor_obligado": ["GAD-Municipal", "Concejo", "Director-Financiero"],
+      "actor_beneficiario": ["Grupos de atención prioritaria", "Patronato Municipal"],
       "obligacion": "Los gobiernos municipales asignarán al menos el 10% de sus ingresos no tributarios para el financiamiento de programas sociales dirigidos a grupos de atención prioritaria, conforme dispone la Constitución.",
-      "dominios": [
-        "Dom12"
-      ],
+      "dominios": ["Dom12"],
       "circuitos": [],
       "fundante": true,
       "es_nrc": false,
@@ -438,18 +329,13 @@
       ],
       "obsidian_nota": "COOTAD_249.md",
       "qlep_yaml": null,
-      "relaciones": [
-        "CE_35",
-        "CE_36",
-        "CE_37",
-        "CE_38"
-      ],
+      "relaciones": ["CE_35", "CE_36", "CE_37", "CE_38"],
       "meta": {
         "fecha_extraccion": "2026-06-01",
         "extractor": "QLEP-v1.0",
         "version": "1.0",
         "confianza": "alta",
-        "nota": "ACK sectorial (es_nrc=false). COOTAD_249 aplica exclusivamente a Dom12 (Protección Social). Su remoción afecta un solo dominio. | Dato verificado: GADMCM asigna 20.84% (2.08x el mínimo legal) pero ejecución Patronato fue 50% en 2025. Circuit ADR-013: GAP_10PCT→Dom12."
+        "nota": "ACK sectorial (es_nrc=false). COOTAD_249 aplica exclusivamente a Dom12. Circuit ADR-013: GAP_10PCT→Dom12. NOTA: COOTAD_249 está en registry pero NO en Neo4j — pendiente carga."
       }
     },
     {
@@ -464,22 +350,11 @@
         "jerarquia": 1,
         "vigente": "2004-05-18"
       },
-      "actor_obligado": [
-        "GAD-Municipal",
-        "Alcalde",
-        "Director-Comunicacion"
-      ],
-      "actor_beneficiario": [
-        "Ciudadanía"
-      ],
+      "actor_obligado": ["GAD-Municipal", "Alcalde", "Director-Comunicacion"],
+      "actor_beneficiario": ["Ciudadanía"],
       "obligacion": "Las instituciones del Estado deben difundir a través de un portal de información o página web una lista de información mínima actualizada que incluye: estructura orgánica, base legal, regulaciones, presupuesto, directorio de funcionarios, información de contratación pública, y demás establecida en los 14 literales del artículo.",
-      "dominios": [
-        "Dom07"
-      ],
-      "circuitos": [
-        "C01",
-        "C02"
-      ],
+      "dominios": ["Dom07"],
+      "circuitos": ["C01", "C02"],
       "fundante": false,
       "es_nrc": false,
       "vigente": true,
@@ -494,17 +369,13 @@
       ],
       "obsidian_nota": "LOTAIP_7.md",
       "qlep_yaml": null,
-      "relaciones": [
-        "CE_18",
-        "LOTAIP_34",
-        "LOTAIP_47"
-      ],
+      "relaciones": ["CE_18", "LOTAIP_34", "LOTAIP_47"],
       "meta": {
         "fecha_extraccion": "2026-06-01",
         "extractor": "QLEP-v1.0",
         "version": "1.0",
         "confianza": "alta",
-        "nota": "ACK sectorial (es_nrc=false). LOTAIP_7 operacionaliza CE_18 en Dom07. Si se deroga, Dom07-A se debilita pero Dom08, Dom04 y otros siguen funcionando desde sus propias bases normativas. Es el instrumento en C4 del DCO Dom07 (ventana de observación), no la norma fundante. | PRIMER HITO OPERACIONAL COMPLETADO: LOTAIP_7 (sha256 415a04b6) -> Dom07 -> C01/C02 traversal OK."
+        "nota": "ACK sectorial (es_nrc=false). LOTAIP_7 operacionaliza CE_18 en Dom07. PRIMER HITO OPERACIONAL COMPLETADO: LOTAIP_7 → Dom07 → C01/C02 traversal OK."
       }
     },
     {
@@ -519,20 +390,11 @@
         "jerarquia": 1,
         "vigente": "2004-05-18"
       },
-      "actor_obligado": [
-        "GAD-Municipal",
-        "Responsable-Informacion"
-      ],
-      "actor_beneficiario": [
-        "Solicitante de información"
-      ],
+      "actor_obligado": ["GAD-Municipal", "Responsable-Informacion"],
+      "actor_beneficiario": ["Solicitante de información"],
       "obligacion": "La institución tiene 10 días hábiles para responder una solicitud de información pública. Si la información es voluminosa, se puede extender 5 días más comunicando al solicitante.",
-      "dominios": [
-        "Dom07"
-      ],
-      "circuitos": [
-        "C01"
-      ],
+      "dominios": ["Dom07"],
+      "circuitos": ["C01"],
       "fundante": false,
       "es_nrc": false,
       "vigente": true,
@@ -547,17 +409,13 @@
       ],
       "obsidian_nota": "LOTAIP_34.md",
       "qlep_yaml": null,
-      "relaciones": [
-        "CE_18",
-        "LOTAIP_7",
-        "LOTAIP_47"
-      ],
+      "relaciones": ["CE_18", "LOTAIP_7", "LOTAIP_47"],
       "meta": {
         "fecha_extraccion": "2026-06-01",
         "extractor": "QLEP-v1.0",
         "version": "1.0",
         "confianza": "media-alta",
-        "nota": "ACK sectorial (es_nrc=false). Plazo específico de Dom07. | Pendiente verificación artículo exacto en texto impreso LOTAIP."
+        "nota": "ACK sectorial (es_nrc=false). Plazo específico de Dom07."
       }
     },
     {
@@ -572,17 +430,10 @@
         "jerarquia": 1,
         "vigente": "2004-05-18"
       },
-      "actor_obligado": [
-        "Defensor del Pueblo",
-        "CPCCS"
-      ],
-      "actor_beneficiario": [
-        "Ciudadanía"
-      ],
+      "actor_obligado": ["Defensor del Pueblo", "CPCCS"],
+      "actor_beneficiario": ["Ciudadanía"],
       "obligacion": "El incumplimiento de las obligaciones de transparencia activa y pasiva establecidas en la LOTAIP será sancionado según las disposiciones del artículo, incluyendo multas y responsabilidad administrativa de los funcionarios.",
-      "dominios": [
-        "Dom07"
-      ],
+      "dominios": ["Dom07"],
       "circuitos": [],
       "fundante": false,
       "es_nrc": false,
@@ -591,17 +442,13 @@
       "chunk_refs": [],
       "obsidian_nota": "LOTAIP_47.md",
       "qlep_yaml": null,
-      "relaciones": [
-        "LOTAIP_7",
-        "LOTAIP_34",
-        "CE_18"
-      ],
+      "relaciones": ["LOTAIP_7", "LOTAIP_34", "CE_18"],
       "meta": {
         "fecha_extraccion": "2026-06-01",
         "extractor": "QLEP-v1.0",
         "version": "1.0",
         "confianza": "media",
-        "nota": "ACK sectorial (es_nrc=false). Sanción Dom07 específica. CORPUS GAP: normativa_corpus (F0.2) tiene LOTAIP hasta Art.44 aprox. — Art.47 no encontrado. Acciones requeridas: (1) verificar artículo exacto de sanciones en texto impreso LOTAIP (podría ser Art.20/21 en versión original 2004, o Art.47 en versión reformada), (2) re-ingestar versión completa LOTAIP para poblar chunk_refs. Hasta resolver, este ACK queda como placeholder normativo del tipo 'sancion' Dom07."
+        "nota": "ACK sectorial (es_nrc=false). CORPUS GAP: LOTAIP corpus termina en Art.44 aprox. — Art.47 no encontrado. Verificar artículo exacto de sanciones en texto impreso LOTAIP (podría ser Art.20/21 en versión 2004 o Art.47 en versión reformada)."
       }
     },
     {
@@ -616,18 +463,10 @@
         "jerarquia": 1,
         "vigente": "2010-04-20"
       },
-      "actor_obligado": [
-        "GAD-Municipal",
-        "Alcalde"
-      ],
-      "actor_beneficiario": [
-        "Ciudadanía",
-        "Organizaciones sociales"
-      ],
+      "actor_obligado": ["GAD-Municipal", "Alcalde"],
+      "actor_beneficiario": ["Ciudadanía", "Organizaciones sociales"],
       "obligacion": "Los GADs establecerán mecanismos de participación ciudadana incluyendo cabildos abiertos, rendición de cuentas, y presupuestos participativos según los procedimientos establecidos en la LOPC.",
-      "dominios": [
-        "Dom08"
-      ],
+      "dominios": ["Dom08"],
       "circuitos": [],
       "fundante": false,
       "es_nrc": false,
@@ -636,17 +475,13 @@
       "chunk_refs": [],
       "obsidian_nota": "LOPC_72.md",
       "qlep_yaml": null,
-      "relaciones": [
-        "CE_95",
-        "CE_100",
-        "COOTAD_302"
-      ],
+      "relaciones": ["CE_95", "CE_100", "COOTAD_302"],
       "meta": {
         "fecha_extraccion": "2026-06-01",
         "extractor": "QLEP-v1.0",
         "version": "1.0",
         "confianza": "media",
-        "nota": "ACK sectorial (es_nrc=false). Procedimiento Dom08 específico. CORPUS GAP: LOPC no estaba en el corpus F0.2 (milestone Transparencia). La LOPC completa tiene 100+ artículos — Art.72 existe pero no fue ingresada en F0.x. Acciones requeridas: (1) ejecutar /qlep --norma LOPC para verificar Art.72 es sobre mecanismos participación GAD, (2) ingestar LOPC en milestone F0.2 ampliado. Hasta resolver, este ACK es placeholder normativo 'procedimiento' Dom08."
+        "nota": "PLACEHOLDER (es_nrc=false). CORPUS GAP: LOPC Art.72 no en corpus. Revisar si es redundante con LOPC_65 (mismo propósito). NOTA: LOPC_72 está en registry pero NO en Neo4j — pendiente verificar si consolidar con LOPC_65."
       }
     },
     {
@@ -661,22 +496,11 @@
         "jerarquia": 1,
         "vigente": "2010-10-19"
       },
-      "actor_obligado": [
-        "GAD-Municipal",
-        "Concejo",
-        "Alcalde"
-      ],
-      "actor_beneficiario": [
-        "Ciudadanía cantonal",
-        "Organizaciones sociales"
-      ],
-      "obligacion": "Los GADs conformarán un sistema de participación ciudadana que se regulará por acto normativo del correspondiente nivel de gobierno, tendrá una estructura y denominación propias. El sistema de participación ciudadana se orientará por los principios de igualdad, autonomía, deliberación pública, respeto a la diferencia, control popular, solidaridad e interculturalidad.",
-      "dominios": [
-        "Dom08"
-      ],
-      "circuitos": [
-        "C01"
-      ],
+      "actor_obligado": ["GAD-Municipal", "Concejo", "Alcalde"],
+      "actor_beneficiario": ["Ciudadanía cantonal", "Organizaciones sociales"],
+      "obligacion": "Los GADs conformarán un sistema de participación ciudadana que se regulará por acto normativo del correspondiente nivel de gobierno. El sistema se orientará por los principios de igualdad, autonomía, deliberación pública, respeto a la diferencia, control popular, solidaridad e interculturalidad.",
+      "dominios": ["Dom08"],
+      "circuitos": ["C01"],
       "fundante": false,
       "es_nrc": false,
       "vigente": true,
@@ -691,19 +515,13 @@
       ],
       "obsidian_nota": "COOTAD_302.md",
       "qlep_yaml": null,
-      "relaciones": [
-        "CE_95",
-        "CE_100",
-        "COOTAD_303",
-        "COOTAD_304",
-        "LOPC_72"
-      ],
+      "relaciones": ["CE_95", "CE_100", "COOTAD_303", "COOTAD_304", "LOPC_72"],
       "meta": {
         "fecha_extraccion": "2026-06-02",
         "extractor": "QLEP-v1.0",
         "version": "1.0",
         "confianza": "alta",
-        "nota": "ACK sectorial (es_nrc=false). COOTAD_302 operacionaliza CE_100 en la institucionalidad GAD: manda la creación formal del sistema de participación como cuerpo normativo propio. Es el pivot C2 de Dom08-A en el DCO. Su remoción afecta exclusivamente Dom08. chunk_refs verificado 2026-06-02 vía Supabase normativa_corpus (sha256 7fc2193b, 169 palabras, corpus COOTAD F0.3)."
+        "nota": "ACK sectorial (es_nrc=false). COOTAD_302 operacionaliza CE_100 en la institucionalidad GAD: manda la creación formal del sistema de participación."
       }
     },
     {
@@ -718,24 +536,11 @@
         "jerarquia": 1,
         "vigente": "2010-10-19"
       },
-      "actor_obligado": [
-        "GAD-Municipal",
-        "Alcalde",
-        "Director-Financiero",
-        "Concejo"
-      ],
-      "actor_beneficiario": [
-        "Ciudadanía cantonal",
-        "Organizaciones territoriales"
-      ],
+      "actor_obligado": ["GAD-Municipal", "Alcalde", "Director-Financiero", "Concejo"],
+      "actor_beneficiario": ["Ciudadanía cantonal", "Organizaciones territoriales"],
       "obligacion": "Los GADs implementarán el presupuesto participativo en el que la ciudadanía podrá definir y priorizar programas y proyectos de inversión pública en el marco de los planes de desarrollo. El presupuesto participativo se realizará antes de la elaboración del proyecto de presupuesto del gobierno autónomo descentralizado.",
-      "dominios": [
-        "Dom08",
-        "Dom02"
-      ],
-      "circuitos": [
-        "C01"
-      ],
+      "dominios": ["Dom08", "Dom02"],
+      "circuitos": ["C01"],
       "fundante": false,
       "es_nrc": false,
       "vigente": true,
@@ -750,18 +555,13 @@
       ],
       "obsidian_nota": "COOTAD_303.md",
       "qlep_yaml": null,
-      "relaciones": [
-        "CE_100",
-        "COOTAD_302",
-        "COOTAD_304",
-        "LOPC_72"
-      ],
+      "relaciones": ["CE_100", "COOTAD_302", "COOTAD_304", "LOPC_72"],
       "meta": {
         "fecha_extraccion": "2026-06-02",
         "extractor": "QLEP-v1.0",
         "version": "1.0",
         "confianza": "alta",
-        "nota": "ACK sectorial (es_nrc=false). COOTAD_303 es el pivot C2 de Dom08-B (Presupuesto Participativo). Tiene doble mapeo: Dom08 (participación) + Dom02 (presupuesto / inversión) — el presupuesto participativo es el nexo estructural entre ambos dominios. Evidencia: debe ocurrir ANTES de la elaboración del presupuesto anual (precedencia temporal verificable vs ciclo POA-PAC). chunk_refs verificado 2026-06-02 vía Supabase (sha256 ef9e6846, 263 palabras, corpus COOTAD F0.3)."
+        "nota": "ACK sectorial (es_nrc=false). Doble mapeo: Dom08 + Dom02 — el presupuesto participativo es el nexo estructural entre participación y presupuesto. Precedencia temporal verificable: debe ocurrir ANTES de elaborar el presupuesto anual."
       }
     },
     {
@@ -776,21 +576,11 @@
         "jerarquia": 1,
         "vigente": "2010-10-19"
       },
-      "actor_obligado": [
-        "GAD-Municipal",
-        "Alcalde"
-      ],
-      "actor_beneficiario": [
-        "Ciudadanía cantonal",
-        "Organizaciones comunitarias"
-      ],
+      "actor_obligado": ["GAD-Municipal", "Alcalde"],
+      "actor_beneficiario": ["Ciudadanía cantonal", "Organizaciones comunitarias"],
       "obligacion": "Los GADs reconocerán mecanismos de participación ciudadana en todas las fases y espacios de la gestión pública: audiencias públicas, cabildos populares, silla vacía, veedurías, observatorios y consejos consultivos. Garantizarán la interculturalidad y la paridad de género en la conformación de estos espacios.",
-      "dominios": [
-        "Dom08"
-      ],
-      "circuitos": [
-        "C01"
-      ],
+      "dominios": ["Dom08"],
+      "circuitos": ["C01"],
       "fundante": false,
       "es_nrc": false,
       "vigente": true,
@@ -805,18 +595,745 @@
       ],
       "obsidian_nota": "COOTAD_304.md",
       "qlep_yaml": null,
-      "relaciones": [
-        "CE_95",
-        "COOTAD_302",
-        "COOTAD_303",
-        "LOPC_72"
-      ],
+      "relaciones": ["CE_95", "COOTAD_302", "COOTAD_303", "LOPC_72"],
       "meta": {
         "fecha_extraccion": "2026-06-02",
         "extractor": "QLEP-v1.0",
         "version": "1.0",
         "confianza": "alta",
-        "nota": "ACK sectorial (es_nrc=false). COOTAD_304 enumera la taxonomía operativa de los mecanismos de participación: silla vacía, cabildos, veedurías, observatorios. Es el instrumento más concreto de Dom08 — dice exactamente QUÉ mecanismos deben existir (verificable). Evidencia: Ordenanza de participación + convocatorias de cabildo + actas silla vacía + informes veedurías. chunk_refs verificado 2026-06-02 vía Supabase (sha256 a1ccfa62, 326 palabras, corpus COOTAD F0.3). Nota: mayor volumen (326 palabras) refleja la riqueza taxonómica del artículo."
+        "nota": "ACK sectorial (es_nrc=false). COOTAD_304 enumera la taxonomía operativa de los mecanismos de participación: silla vacía, cabildos, veedurías, observatorios. Es el instrumento más concreto de Dom08."
+      }
+    },
+    {
+      "ack_id": "LOPC_1",
+      "tipo": "definicion",
+      "nombre": "Objeto de la LOPC — instancias y mecanismos de participación ciudadana",
+      "norma": {
+        "sigla": "LOPC",
+        "nombre_oficial": "Ley Orgánica de Participación Ciudadana",
+        "articulo": "1",
+        "inciso": null,
+        "jerarquia": 1,
+        "vigente": "2010-04-20"
+      },
+      "actor_obligado": ["GAD-Municipal", "Estado"],
+      "actor_beneficiario": ["Ciudadanía", "Organizaciones sociales"],
+      "obligacion": "La LOPC tiene por objeto propiciar, fomentar y garantizar el ejercicio de los derechos de participación de los ciudadanos y organizaciones de manera protagónica, en la toma de decisiones que les corresponda, la organización colectiva autónoma y la gestión de sus propios asuntos.",
+      "dominios": ["Dom08"],
+      "circuitos": ["C01"],
+      "fundante": false,
+      "es_nrc": false,
+      "vigente": true,
+      "revisado_por_experto": false,
+      "chunk_refs": [
+        {
+          "sha256": "9712d64cd4dd087433b2c4fb7a1c0149f41fb0fd5bf77ff89820c3141de89e5e",
+          "articulo_num": 1,
+          "chunk_seq": 0,
+          "palabras": null
+        }
+      ],
+      "obsidian_nota": "LOPC_1.md",
+      "qlep_yaml": null,
+      "relaciones": ["CE_95", "CE_100", "COOTAD_302"],
+      "meta": {
+        "fecha_extraccion": "2026-06-02",
+        "extractor": "QLEP-v1.0",
+        "version": "1.0",
+        "confianza": "alta",
+        "nota": "ACK sectorial Sprint Dom08-Core. sha256 verificado Supabase normativa_corpus 2026-06-02. palabras=null pendiente verificación exacta."
+      }
+    },
+    {
+      "ack_id": "LOPC_4",
+      "tipo": "principio",
+      "nombre": "Principios rectores de la participación ciudadana — 13 principios LOPC",
+      "norma": {
+        "sigla": "LOPC",
+        "nombre_oficial": "Ley Orgánica de Participación Ciudadana",
+        "articulo": "4",
+        "inciso": null,
+        "jerarquia": 1,
+        "vigente": "2010-04-20"
+      },
+      "actor_obligado": ["GAD-Municipal", "Estado"],
+      "actor_beneficiario": ["Ciudadanía"],
+      "obligacion": "La participación ciudadana debe regirse por 13 principios rectores: igualdad, interculturalidad, plurinacionalidad, autonomía, deliberación pública, respeto a la diferencia, paridad de género, responsabilidad, corresponsabilidad, información y transparencia, pluralismo, solidaridad e interés colectivo.",
+      "dominios": ["Dom08"],
+      "circuitos": [],
+      "fundante": false,
+      "es_nrc": false,
+      "vigente": true,
+      "revisado_por_experto": false,
+      "chunk_refs": [
+        {
+          "sha256": "46789b7a0ce4a059362c413e482a0eef7834085d16da4d96b95072c307e4ebe1",
+          "articulo_num": 4,
+          "chunk_seq": 0,
+          "palabras": null
+        }
+      ],
+      "obsidian_nota": "LOPC_4.md",
+      "qlep_yaml": null,
+      "relaciones": ["CE_95", "LOPC_1"],
+      "meta": {
+        "fecha_extraccion": "2026-06-02",
+        "extractor": "QLEP-v1.0",
+        "version": "1.0",
+        "confianza": "alta",
+        "nota": "ACK sectorial Sprint Dom08-Core. 13 principios: paridad género, interculturalidad, gratuidad — base normativa para auditar cualquier mecanismo de participación del GAD."
+      }
+    },
+    {
+      "ack_id": "LOPC_60",
+      "tipo": "obligacion",
+      "nombre": "Funciones de las asambleas locales de participación ciudadana",
+      "norma": {
+        "sigla": "LOPC",
+        "nombre_oficial": "Ley Orgánica de Participación Ciudadana",
+        "articulo": "60",
+        "inciso": null,
+        "jerarquia": 1,
+        "vigente": "2010-04-20"
+      },
+      "actor_obligado": ["GAD-Municipal", "Alcalde"],
+      "actor_beneficiario": ["Ciudadanía", "Organizaciones sociales"],
+      "obligacion": "Las asambleas locales tienen funciones de: exigir rendición de cuentas de autoridades electas, elaborar propuestas de políticas públicas, elaborar presupuestos participativos, fortalecer la organización comunitaria, proponer reformas y controlar el cumplimiento de las decisiones.",
+      "dominios": ["Dom08", "Dom09"],
+      "circuitos": ["C01"],
+      "fundante": false,
+      "es_nrc": false,
+      "vigente": true,
+      "revisado_por_experto": false,
+      "chunk_refs": [
+        {
+          "sha256": "2617f6cb8077352a4e96e1b2f2668229dc0e815dac24c98bce8e899d4a836b15",
+          "articulo_num": 60,
+          "chunk_seq": 0,
+          "palabras": null
+        }
+      ],
+      "obsidian_nota": "LOPC_60.md",
+      "qlep_yaml": null,
+      "relaciones": ["CE_95", "CE_100", "LOPC_65", "LOPC_90"],
+      "meta": {
+        "fecha_extraccion": "2026-06-02",
+        "extractor": "QLEP-v1.0",
+        "version": "1.0",
+        "confianza": "alta",
+        "nota": "ACK multi-dominio: Dom08 + Dom09. Las asambleas organizan rendición de cuentas — nexo causal participación→rendición. Sprint Dom08-Core."
+      }
+    },
+    {
+      "ack_id": "LOPC_65",
+      "tipo": "obligacion",
+      "nombre": "Instancias de participación ciudadana local — convocatoria obligatoria mínimo 3 veces al año",
+      "norma": {
+        "sigla": "LOPC",
+        "nombre_oficial": "Ley Orgánica de Participación Ciudadana",
+        "articulo": "65",
+        "inciso": null,
+        "jerarquia": 1,
+        "vigente": "2010-04-20"
+      },
+      "actor_obligado": ["GAD-Municipal", "Alcalde"],
+      "actor_beneficiario": ["Ciudadanía"],
+      "obligacion": "Los GADs conformarán instancias de participación integradas por ciudadanos y organizaciones civiles. El ejecutivo del GAD convocará la instancia de participación al menos tres veces al año. Los consejos locales de planificación deben incluir mínimo 30% de ciudadanía.",
+      "dominios": ["Dom08", "Dom04"],
+      "circuitos": ["C01"],
+      "fundante": false,
+      "es_nrc": false,
+      "vigente": true,
+      "revisado_por_experto": false,
+      "chunk_refs": [
+        {
+          "sha256": "01cbf6da62224e6af00e3f81a6e7f311e3e27d2f7064955a1ee852f031a6622c",
+          "articulo_num": 65,
+          "chunk_seq": 0,
+          "palabras": null
+        }
+      ],
+      "obsidian_nota": "LOPC_65.md",
+      "qlep_yaml": null,
+      "relaciones": ["CE_95", "CE_100", "COOTAD_302", "LOPC_60"],
+      "meta": {
+        "fecha_extraccion": "2026-06-02",
+        "extractor": "QLEP-v1.0",
+        "version": "1.0",
+        "confianza": "alta",
+        "nota": "ACK multi-dominio: Dom08 + Dom04 (consejos de planificación). Obligación verificable: mínimo 3 convocatorias/año documentables. Sprint Dom08-Core."
+      }
+    },
+    {
+      "ack_id": "LOPC_69",
+      "tipo": "procedimiento",
+      "nombre": "Articulación del presupuesto participativo con los planes de desarrollo",
+      "norma": {
+        "sigla": "LOPC",
+        "nombre_oficial": "Ley Orgánica de Participación Ciudadana",
+        "articulo": "69",
+        "inciso": null,
+        "jerarquia": 1,
+        "vigente": "2010-04-20"
+      },
+      "actor_obligado": ["GAD-Municipal", "Alcalde"],
+      "actor_beneficiario": ["Ciudadanía"],
+      "obligacion": "El presupuesto participativo se articulará con los planes de desarrollo y de ordenamiento territorial. La ciudadanía priorizará la inversión pública para que sus necesidades sean atendidas. El presupuesto participativo debe elaborarse de abajo hacia arriba — participación territorial obligatoria en el PDOT.",
+      "dominios": ["Dom02", "Dom04"],
+      "circuitos": [],
+      "fundante": false,
+      "es_nrc": false,
+      "vigente": true,
+      "revisado_por_experto": false,
+      "chunk_refs": [
+        {
+          "sha256": "e7417b5d4ddf589e31ecef61fa33ed054b37bc22242a86ac9c960cb021597198",
+          "articulo_num": 69,
+          "chunk_seq": 0,
+          "palabras": null
+        }
+      ],
+      "obsidian_nota": "LOPC_69.md",
+      "qlep_yaml": null,
+      "relaciones": ["CE_95", "COOTAD_303", "LOPC_71"],
+      "meta": {
+        "fecha_extraccion": "2026-06-02",
+        "extractor": "QLEP-v1.0",
+        "version": "1.0",
+        "confianza": "alta",
+        "nota": "ACK multi-dominio: Dom02 (presupuesto) + Dom04 (planificación). Nexo causal: Dom08 → Dom02 + Dom04 via presupuesto participativo. Sprint Dom08-Core."
+      }
+    },
+    {
+      "ack_id": "LOPC_71",
+      "tipo": "obligacion",
+      "nombre": "Obligatoriedad del presupuesto participativo — sanción por incumplimiento",
+      "norma": {
+        "sigla": "LOPC",
+        "nombre_oficial": "Ley Orgánica de Participación Ciudadana",
+        "articulo": "71",
+        "inciso": null,
+        "jerarquia": 1,
+        "vigente": "2010-04-20"
+      },
+      "actor_obligado": ["GAD-Municipal", "Alcalde", "Concejo"],
+      "actor_beneficiario": ["Ciudadanía"],
+      "obligacion": "Será obligatorio para todos los GADs implementar el presupuesto participativo. El incumplimiento de la obligación de efectuar el presupuesto participativo acarreará responsabilidades políticas, administrativas y civiles de las autoridades que lo incumplan.",
+      "dominios": ["Dom02"],
+      "circuitos": [],
+      "fundante": false,
+      "es_nrc": false,
+      "vigente": true,
+      "revisado_por_experto": false,
+      "chunk_refs": [
+        {
+          "sha256": "117ee8fc9d6b751538f6d83c8a694a58a1aec1c906e8fe93fa89dce78d25d8f1",
+          "articulo_num": 71,
+          "chunk_seq": 0,
+          "palabras": null
+        }
+      ],
+      "obsidian_nota": "LOPC_71.md",
+      "qlep_yaml": null,
+      "relaciones": ["CE_95", "LOPC_69", "COOTAD_303"],
+      "meta": {
+        "fecha_extraccion": "2026-06-02",
+        "extractor": "QLEP-v1.0",
+        "version": "1.0",
+        "confianza": "alta",
+        "nota": "ACK sectorial Dom02. Sanción política + administrativa — hace exigible el presupuesto participativo. Sprint Dom08-Core."
+      }
+    },
+    {
+      "ack_id": "LOPC_74",
+      "tipo": "procedimiento",
+      "nombre": "Audiencias públicas — convocatoria obligatoria y plazo 30 días",
+      "norma": {
+        "sigla": "LOPC",
+        "nombre_oficial": "Ley Orgánica de Participación Ciudadana",
+        "articulo": "74",
+        "inciso": null,
+        "jerarquia": 1,
+        "vigente": "2010-04-20"
+      },
+      "actor_obligado": ["GAD-Municipal", "Alcalde"],
+      "actor_beneficiario": ["Ciudadanía"],
+      "obligacion": "Los GADs están obligados a celebrar audiencias públicas para rendir cuentas sobre la gestión y para recibir peticiones ciudadanas. La convocatoria debe realizarse dentro de los 30 días posteriores a la solicitud ciudadana.",
+      "dominios": ["Dom08", "Dom07"],
+      "circuitos": [],
+      "fundante": false,
+      "es_nrc": false,
+      "vigente": true,
+      "revisado_por_experto": false,
+      "chunk_refs": [
+        {
+          "sha256": "255d189959c72e7d81374565dc1b6a775d8e85172283ba25e0379322c9fefb85",
+          "articulo_num": 74,
+          "chunk_seq": 0,
+          "palabras": null
+        }
+      ],
+      "obsidian_nota": "LOPC_74.md",
+      "qlep_yaml": null,
+      "relaciones": ["CE_95", "LOPC_60", "CE_18"],
+      "meta": {
+        "fecha_extraccion": "2026-06-02",
+        "extractor": "QLEP-v1.0",
+        "version": "1.0",
+        "confianza": "alta",
+        "nota": "ACK multi-dominio: Dom08 + Dom07. Audiencias públicas refuerzan Dom07 (ciudadanía exige información) y activan Dom08 (mecanismo de participación). Sprint Dom08-Core."
+      }
+    },
+    {
+      "ack_id": "LOPC_77",
+      "tipo": "procedimiento",
+      "nombre": "Silla vacía en sesiones del GAD — voz y voto ciudadano, nulidad por incumplimiento",
+      "norma": {
+        "sigla": "LOPC",
+        "nombre_oficial": "Ley Orgánica de Participación Ciudadana",
+        "articulo": "77",
+        "inciso": null,
+        "jerarquia": 1,
+        "vigente": "2010-04-20"
+      },
+      "actor_obligado": ["GAD-Municipal", "Concejo"],
+      "actor_beneficiario": ["Ciudadanía"],
+      "obligacion": "Las sesiones del Concejo Municipal en las que se decida sobre planes de desarrollo, presupuestos u ordenanzas, contarán con un espacio de silla vacía para la participación ciudadana con voz y voto. La inobservancia de esta norma determina la nulidad de lo actuado en esa sesión.",
+      "dominios": ["Dom08", "Dom03"],
+      "circuitos": [],
+      "fundante": false,
+      "es_nrc": false,
+      "vigente": true,
+      "revisado_por_experto": false,
+      "chunk_refs": [
+        {
+          "sha256": "bcbec672000a38ee564f2bcb350ec943ae70a66135dce6ec6d1adde291b69d7b",
+          "articulo_num": 77,
+          "chunk_seq": 0,
+          "palabras": null
+        }
+      ],
+      "obsidian_nota": "LOPC_77.md",
+      "qlep_yaml": null,
+      "relaciones": ["CE_95", "LOPC_65", "COOTAD_304"],
+      "meta": {
+        "fecha_extraccion": "2026-06-02",
+        "extractor": "QLEP-v1.0",
+        "version": "1.0",
+        "confianza": "alta",
+        "nota": "ACK multi-dominio: Dom08 + Dom03 (silla vacía en sesiones de contratación y ordenanzas). Nulidad es consecuencia jurídica directa — verificable en actas del Concejo. Sprint Dom08-Core."
+      }
+    },
+    {
+      "ack_id": "LOPC_79",
+      "tipo": "definicion",
+      "nombre": "Observatorios ciudadanos — mecanismo de monitoreo independiente",
+      "norma": {
+        "sigla": "LOPC",
+        "nombre_oficial": "Ley Orgánica de Participación Ciudadana",
+        "articulo": "79",
+        "inciso": null,
+        "jerarquia": 1,
+        "vigente": "2010-04-20"
+      },
+      "actor_obligado": ["GAD-Municipal"],
+      "actor_beneficiario": ["Ciudadanía", "Organizaciones sociales"],
+      "obligacion": "Se reconocen los observatorios ciudadanos como organizaciones conformadas por ciudadanos para el monitoreo y vigilancia de las políticas públicas, los actos de la administración, la gestión de los recursos públicos y los servicios públicos. El GAD debe reconocerlos y facilitarles información.",
+      "dominios": ["Dom08"],
+      "circuitos": [],
+      "fundante": false,
+      "es_nrc": false,
+      "vigente": true,
+      "revisado_por_experto": false,
+      "chunk_refs": [
+        {
+          "sha256": "87b587756d87ef0e55d36bd6a9cd12c2668cc357a49d37a8b919b53fe6218491",
+          "articulo_num": 79,
+          "chunk_seq": 0,
+          "palabras": null
+        }
+      ],
+      "obsidian_nota": "LOPC_79.md",
+      "qlep_yaml": null,
+      "relaciones": ["CE_95", "LOPC_85"],
+      "meta": {
+        "fecha_extraccion": "2026-06-02",
+        "extractor": "QLEP-v1.0",
+        "version": "1.0",
+        "confianza": "alta",
+        "nota": "ACK sectorial Dom08. Vigilancia técnica independiente — complementa las veedurías (LOPC_85). Sprint Dom08-Core."
+      }
+    },
+    {
+      "ack_id": "LOPC_80",
+      "tipo": "definicion",
+      "nombre": "Consejos consultivos — mecanismos de asesoramiento ciudadano",
+      "norma": {
+        "sigla": "LOPC",
+        "nombre_oficial": "Ley Orgánica de Participación Ciudadana",
+        "articulo": "80",
+        "inciso": null,
+        "jerarquia": 1,
+        "vigente": "2010-04-20"
+      },
+      "actor_obligado": ["GAD-Municipal"],
+      "actor_beneficiario": ["Ciudadanía"],
+      "obligacion": "Los consejos consultivos son mecanismos de asesoramiento compuestos por ciudadanas, ciudadanos, o por organizaciones civiles que se constituirán por temáticas específicas de gestión pública y que podrán formular propuestas y recomendaciones de políticas públicas.",
+      "dominios": ["Dom08"],
+      "circuitos": [],
+      "fundante": false,
+      "es_nrc": false,
+      "vigente": true,
+      "revisado_por_experto": false,
+      "chunk_refs": [
+        {
+          "sha256": "5849d42ad3a87aabd843ac94878a396951d818eeedc2cb69667693bcffbbeeed",
+          "articulo_num": 80,
+          "chunk_seq": 0,
+          "palabras": null
+        }
+      ],
+      "obsidian_nota": "LOPC_80.md",
+      "qlep_yaml": null,
+      "relaciones": ["CE_95", "LOPC_79"],
+      "meta": {
+        "fecha_extraccion": "2026-06-02",
+        "extractor": "QLEP-v1.0",
+        "version": "1.0",
+        "confianza": "alta",
+        "nota": "ACK sectorial Dom08. ADVERTENCIA ARQUITECTÓNICA: LOPC_80 existe como nodo en Neo4j (Community 5 — aislado, degree=0). SIN relaciones INSTRUMENTA en grafo. Verificar si falta cargar la relación LOPC_80→Dom08 en Neo4j."
+      }
+    },
+    {
+      "ack_id": "LOPC_85",
+      "tipo": "procedimiento",
+      "nombre": "Veedurías ciudadanas — modalidades y facultades de control social",
+      "norma": {
+        "sigla": "LOPC",
+        "nombre_oficial": "Ley Orgánica de Participación Ciudadana",
+        "articulo": "85",
+        "inciso": null,
+        "jerarquia": 1,
+        "vigente": "2010-04-20"
+      },
+      "actor_obligado": ["GAD-Municipal"],
+      "actor_beneficiario": ["Ciudadanía", "Organizaciones sociales"],
+      "obligacion": "Las veedurías ciudadanas son mecanismos de control social mediante los cuales la ciudadanía organizada vigila, supervisa, evalúa y controla la gestión pública, los actos de la administración, el manejo de los recursos y bienes públicos.",
+      "dominios": ["Dom08", "Dom03"],
+      "circuitos": [],
+      "fundante": false,
+      "es_nrc": false,
+      "vigente": true,
+      "revisado_por_experto": false,
+      "chunk_refs": [
+        {
+          "sha256": "5cd57fe5d318f29d96d681ea49f069c311d0f16f560062100c741c3d3b9b546a",
+          "articulo_num": 85,
+          "chunk_seq": 0,
+          "palabras": null
+        }
+      ],
+      "obsidian_nota": "LOPC_85.md",
+      "qlep_yaml": null,
+      "relaciones": ["CE_95", "LOPC_87", "LOPC_79"],
+      "meta": {
+        "fecha_extraccion": "2026-06-02",
+        "extractor": "QLEP-v1.0",
+        "version": "1.0",
+        "confianza": "alta",
+        "nota": "ACK multi-dominio: Dom08 + Dom03 (veedurías vigilan procesos de contratación). Control social sobre recursos públicos — evidencia verificable. Sprint Dom08-Core."
+      }
+    },
+    {
+      "ack_id": "LOPC_87",
+      "tipo": "obligacion",
+      "nombre": "Obligación del GAD de garantizar acceso de información a veedurías ciudadanas",
+      "norma": {
+        "sigla": "LOPC",
+        "nombre_oficial": "Ley Orgánica de Participación Ciudadana",
+        "articulo": "87",
+        "inciso": null,
+        "jerarquia": 1,
+        "vigente": "2010-04-20"
+      },
+      "actor_obligado": ["GAD-Municipal", "Alcalde"],
+      "actor_beneficiario": ["Veedurías ciudadanas", "Ciudadanía"],
+      "obligacion": "Las instituciones del Estado, sus representantes o delegados tienen la obligación de facilitar a las veedurías la información que sea de carácter público. La respuesta debe darse en el plazo máximo de quince días. En caso de negativa, las veedurías pueden recurrir a las instancias legales.",
+      "dominios": ["Dom08", "Dom07"],
+      "circuitos": [],
+      "fundante": false,
+      "es_nrc": false,
+      "vigente": true,
+      "revisado_por_experto": false,
+      "chunk_refs": [
+        {
+          "sha256": "98dc74b0a9a904d966c5a8c7d1ffd6538afd72781d798a0966dcd2525a66ad0c",
+          "articulo_num": 87,
+          "chunk_seq": 0,
+          "palabras": null
+        }
+      ],
+      "obsidian_nota": "LOPC_87.md",
+      "qlep_yaml": null,
+      "relaciones": ["CE_95", "CE_18", "LOPC_85"],
+      "meta": {
+        "fecha_extraccion": "2026-06-02",
+        "extractor": "QLEP-v1.0",
+        "version": "1.0",
+        "confianza": "alta",
+        "nota": "ACK multi-dominio: Dom08 + Dom07. Nexo directo Dom08-Dom07: la participación genera demanda de información pública. Sprint Dom08-Core."
+      }
+    },
+    {
+      "ack_id": "LOPC_89",
+      "tipo": "definicion",
+      "nombre": "Rendición de cuentas — definición formal del proceso participativo",
+      "norma": {
+        "sigla": "LOPC",
+        "nombre_oficial": "Ley Orgánica de Participación Ciudadana",
+        "articulo": "89",
+        "inciso": null,
+        "jerarquia": 1,
+        "vigente": "2010-04-20"
+      },
+      "actor_obligado": ["GAD-Municipal", "Alcalde", "Funcionarios"],
+      "actor_beneficiario": ["Ciudadanía"],
+      "obligacion": "La rendición de cuentas es un proceso sistemático, deliberado, interactivo y universal que involucra a autoridades electas, designadas y representantes de las instituciones públicas. La ciudadanía exige y evalúa la rendición de cuentas.",
+      "dominios": ["Dom09"],
+      "circuitos": [],
+      "fundante": false,
+      "es_nrc": false,
+      "vigente": true,
+      "revisado_por_experto": false,
+      "chunk_refs": [],
+      "obsidian_nota": "LOPC_89.md",
+      "qlep_yaml": null,
+      "relaciones": ["CE_95", "LOPC_90", "LOPC_91"],
+      "meta": {
+        "fecha_extraccion": "2026-06-02",
+        "extractor": "QLEP-v1.0",
+        "version": "1.0",
+        "confianza": "alta",
+        "nota": "ACK sectorial Dom09. Cargado en Neo4j via commit b6aefa6 (sin script Python separado). chunk_refs=[] pendiente --link-corpus. Definición formal del proceso RC."
+      }
+    },
+    {
+      "ack_id": "LOPC_90",
+      "tipo": "obligacion",
+      "nombre": "Sujetos obligados a rendir cuentas — autoridades electas y funcionarios",
+      "norma": {
+        "sigla": "LOPC",
+        "nombre_oficial": "Ley Orgánica de Participación Ciudadana",
+        "articulo": "90",
+        "inciso": null,
+        "jerarquia": 1,
+        "vigente": "2010-04-20"
+      },
+      "actor_obligado": ["Alcalde", "GAD-Municipal", "Funcionarios", "Directivos"],
+      "actor_beneficiario": ["Ciudadanía"],
+      "obligacion": "Estarán sujetas a la rendición de cuentas las instituciones del Estado, los representantes legales, los funcionarios designados, las autoridades electas y demás representantes. Los GADs, el Alcalde y los funcionarios son sujetos obligados sin excepción.",
+      "dominios": ["Dom09"],
+      "circuitos": ["C01"],
+      "fundante": false,
+      "es_nrc": false,
+      "vigente": true,
+      "revisado_por_experto": false,
+      "chunk_refs": [
+        {
+          "sha256": "547b900b8a8f28271aa0084a24f8a89e1395791011b19d251984ff39e0c8f739",
+          "articulo_num": 90,
+          "chunk_seq": 0,
+          "palabras": null
+        }
+      ],
+      "obsidian_nota": "LOPC_90.md",
+      "qlep_yaml": null,
+      "relaciones": ["CE_95", "LOPC_89", "LOPC_95"],
+      "meta": {
+        "fecha_extraccion": "2026-06-02",
+        "extractor": "QLEP-v1.0",
+        "version": "1.0",
+        "confianza": "alta",
+        "nota": "ACK sectorial Dom09. sha256 verificado Supabase 2026-06-02 (Sprint Dom08-Core). Define QUIÉNES deben rendir cuentas — el Alcalde no puede eludir esta obligación."
+      }
+    },
+    {
+      "ack_id": "LOPC_91",
+      "tipo": "obligacion",
+      "nombre": "Objetivos de la rendición de cuentas — acceso, control popular, prevención corrupción",
+      "norma": {
+        "sigla": "LOPC",
+        "nombre_oficial": "Ley Orgánica de Participación Ciudadana",
+        "articulo": "91",
+        "inciso": null,
+        "jerarquia": 1,
+        "vigente": "2010-04-20"
+      },
+      "actor_obligado": ["GAD-Municipal", "Alcalde"],
+      "actor_beneficiario": ["Ciudadanía", "Mandantes constitucionales"],
+      "obligacion": "Los objetivos de la rendición de cuentas son: garantizar a los mandantes el acceso a la información de los mandatarios, presentar resultados de la gestión pública, habilitar el ejercicio del control popular y promover la corresponsabilidad ciudadana, prevenir e impedir la arbitrariedad y la corrupción.",
+      "dominios": ["Dom09"],
+      "circuitos": [],
+      "fundante": false,
+      "es_nrc": false,
+      "vigente": true,
+      "revisado_por_experto": false,
+      "chunk_refs": [],
+      "obsidian_nota": "LOPC_91.md",
+      "qlep_yaml": null,
+      "relaciones": ["CE_95", "CE_1", "LOPC_89"],
+      "meta": {
+        "fecha_extraccion": "2026-06-02",
+        "extractor": "QLEP-v1.0",
+        "version": "1.0",
+        "confianza": "alta",
+        "nota": "ACK sectorial Dom09. Cargado en Neo4j commit b6aefa6. chunk_refs=[] pendiente --link-corpus. Nota: 'mandantes' = CE_1 (la ciudadanía como titular de la soberanía) — conexión ontológica con el apex constituyente."
+      }
+    },
+    {
+      "ack_id": "LOPC_93",
+      "tipo": "procedimiento",
+      "nombre": "Rendición de cuentas por niveles — programático y operativo",
+      "norma": {
+        "sigla": "LOPC",
+        "nombre_oficial": "Ley Orgánica de Participación Ciudadana",
+        "articulo": "93",
+        "inciso": null,
+        "jerarquia": 1,
+        "vigente": "2010-04-20"
+      },
+      "actor_obligado": ["GAD-Municipal", "Funcionarios", "Directivos"],
+      "actor_beneficiario": ["Ciudadanía"],
+      "obligacion": "Las personas que en virtud de sus cargos tengan funciones de nivel programático y operativo rendirán cuentas ante sus mandantes, delegantes o ante quien les ha encomendado el ejercicio de sus funciones, con base en los procedimientos establecidos en la ley y los procedimientos técnicos y administrativos.",
+      "dominios": ["Dom09"],
+      "circuitos": [],
+      "fundante": false,
+      "es_nrc": false,
+      "vigente": true,
+      "revisado_por_experto": false,
+      "chunk_refs": [],
+      "obsidian_nota": "LOPC_93.md",
+      "qlep_yaml": null,
+      "relaciones": ["CE_95", "LOPC_90", "LOPC_91"],
+      "meta": {
+        "fecha_extraccion": "2026-06-02",
+        "extractor": "QLEP-v1.0",
+        "version": "1.0",
+        "confianza": "alta",
+        "nota": "ACK sectorial Dom09. Cargado en Neo4j commit b6aefa6. chunk_refs=[] pendiente --link-corpus. Distingue niveles: Alcalde (estratégico) vs Directivos (programático) vs Funcionarios (operativo)."
+      }
+    },
+    {
+      "ack_id": "LOPC_95",
+      "tipo": "plazo",
+      "nombre": "Periodicidad de la rendición de cuentas — una vez por año y al final de gestión",
+      "norma": {
+        "sigla": "LOPC",
+        "nombre_oficial": "Ley Orgánica de Participación Ciudadana",
+        "articulo": "95",
+        "inciso": null,
+        "jerarquia": 1,
+        "vigente": "2010-04-20"
+      },
+      "actor_obligado": ["Alcalde", "GAD-Municipal"],
+      "actor_beneficiario": ["Ciudadanía"],
+      "obligacion": "Las personas sobre quienes recae la obligación de rendir cuentas deberán hacerlo al menos una vez al año, y al final de cada período de gestión o mandato.",
+      "dominios": ["Dom09"],
+      "circuitos": ["C01"],
+      "fundante": false,
+      "es_nrc": false,
+      "vigente": true,
+      "revisado_por_experto": false,
+      "chunk_refs": [
+        {
+          "sha256": "88db254371a24a0935384644bcb442babc785a464f8822d1a961a8dde2a67e17",
+          "articulo_num": 95,
+          "chunk_seq": 0,
+          "palabras": null
+        }
+      ],
+      "obsidian_nota": "LOPC_95.md",
+      "qlep_yaml": null,
+      "relaciones": ["CE_95", "LOPC_90", "CPCCS_RC_2026"],
+      "meta": {
+        "fecha_extraccion": "2026-06-02",
+        "extractor": "QLEP-v1.0",
+        "version": "1.0",
+        "confianza": "alta",
+        "nota": "ACK sectorial Dom09. Timer anual verificable — evidencia: la RC ocurrió (fecha CPCCS) vs plazo máximo (12 meses desde la anterior). Sprint Dom08-Core."
+      }
+    },
+    {
+      "ack_id": "LOPC_101",
+      "tipo": "obligacion",
+      "nombre": "Democracia electrónica — obligación de implementar mecanismos digitales de participación",
+      "norma": {
+        "sigla": "LOPC",
+        "nombre_oficial": "Ley Orgánica de Participación Ciudadana",
+        "articulo": "101",
+        "inciso": null,
+        "jerarquia": 1,
+        "vigente": "2010-04-20"
+      },
+      "actor_obligado": ["GAD-Municipal", "Alcalde"],
+      "actor_beneficiario": ["Ciudadanía"],
+      "obligacion": "Los GADs generarán espacios de deliberación virtual mediante plataformas de tecnología de la comunicación. Los GADs facilitarán e incentivarán el uso de esas plataformas para la participación ciudadana. El portal web debe publicar planes, presupuestos y procesos de contratación para participación informada.",
+      "dominios": ["Dom08", "Dom02", "Dom04", "Dom03"],
+      "circuitos": [],
+      "fundante": false,
+      "es_nrc": false,
+      "vigente": true,
+      "revisado_por_experto": false,
+      "chunk_refs": [
+        {
+          "sha256": "b7cd10e123ff9e548a9c1231c7fbd87f40f1d1222543ddc5fa26a523afad0120",
+          "articulo_num": 101,
+          "chunk_seq": 0,
+          "palabras": null
+        }
+      ],
+      "obsidian_nota": "LOPC_101.md",
+      "qlep_yaml": null,
+      "relaciones": ["CE_95", "LOTAIP_7"],
+      "meta": {
+        "fecha_extraccion": "2026-06-02",
+        "extractor": "QLEP-v1.0",
+        "version": "1.0",
+        "confianza": "alta",
+        "nota": "ACK multi-dominio: Dom08 + Dom02 + Dom04 + Dom03. Mayor cobertura del sprint. Evidencia digital: si el video RC existe en YouTube → compliance LOPC_101 + compliance Dom09 simultáneamente. Sprint Dom08-Core."
+      }
+    },
+    {
+      "ack_id": "CPCCS_RC_2026",
+      "tipo": "procedimiento",
+      "nombre": "Reglamento CPCCS para rendición de cuentas 2026 — metodología, plataforma y calificación ciudadana",
+      "norma": {
+        "sigla": "CPCCS_RES",
+        "nombre_oficial": "Resolución CPCCS — Metodología de Rendición de Cuentas 2026",
+        "articulo": "varios",
+        "inciso": null,
+        "jerarquia": 2,
+        "vigente": "2026-01-01"
+      },
+      "actor_obligado": ["GAD-Municipal", "Alcalde", "Funcionarios"],
+      "actor_beneficiario": ["Ciudadanía"],
+      "obligacion": "El CPCCS establece la metodología, los instrumentos y el proceso para la rendición de cuentas de las autoridades electas y funcionarios. Todos los GADs deben usar la plataforma virtual del CPCCS para su RC anual. Sin upload al sistema CPCCS, la RC no existe jurídicamente aunque haya ocurrido el evento.",
+      "dominios": ["Dom09"],
+      "circuitos": [],
+      "fundante": false,
+      "es_nrc": false,
+      "vigente": true,
+      "revisado_por_experto": false,
+      "chunk_refs": [],
+      "obsidian_nota": "CPCCS_RC_2026.md",
+      "qlep_yaml": null,
+      "relaciones": ["LOPC_90", "LOPC_95", "CE_95"],
+      "meta": {
+        "fecha_extraccion": "2026-06-02",
+        "extractor": "QLEP-v1.0",
+        "version": "1.0",
+        "confianza": "media-alta",
+        "nota": "ACK sectorial Dom09. Cargado en Neo4j commit b6aefa6. chunk_refs=[] — resolución CPCCS NO está en los 41 docs del corpus normativo (documento externo). Ocupa posición C4 en DCO Dom09 (ventana de observación), igual que LOTAIP_7 en Dom07. Evidencia verificable: plataforma rendiciondecuentas.cpccs.gob.ec"
       }
     }
   ]
