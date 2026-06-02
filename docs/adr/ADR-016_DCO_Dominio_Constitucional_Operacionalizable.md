@@ -1,6 +1,6 @@
 # ADR-016 — Dominio Constitucional Operacionalizable (DCO)
 
-**Estado:** PROPUESTO — pendiente congelamiento formal  
+**Estado:** CONGELADO v1.0 — Dom07 caso de referencia activo  
 **Fecha:** 2026-06-01  
 **Autores:** Dylus Lab (Javo + Claude)  
 **Derivado de:** Sprint 4 (Corpus Normativo F0.1-F0.2) · Dom07 caso de referencia  
