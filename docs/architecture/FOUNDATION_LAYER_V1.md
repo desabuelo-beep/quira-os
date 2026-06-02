@@ -236,15 +236,108 @@ Madurez actual:
   L4 Obsidian+Orient  : ✅ Dom07 nota · 39 notas · /quira-orient v1.0
   L5 GeoTwin+SAT+Sentinel: 🔵 SAT activo · resto pendiente roadmap O.2+
 
-Próximos pasos ordenados:
-  1. ACK Registry: register_ack.py + carga CE_18 + 9 ACKs prioritarios
-  2. C01 → Neo4j: cargar circuito desde Cypher ADR-017
-  3. Dom08 DCO: usar ADR-016 template (Triángulo P-02 Dom07+Dom08+Dom09)
-  4. Dom09 DCO: Rendición de Cuentas (cierra Triángulo P-02)
-  5. C02 spec completa: requiere QLEP Dom03 (LOSNCP ACKs)
+Próximos pasos — ejecución paralela posible:
+  Secuencial obligatorio:
+    1. ACK Registry: register_ack.py + carga CE_18 + 9 ACKs prioritarios
+    2. C01 → Neo4j: cargar circuito desde Cypher ADR-017
+  Paralelo viable (base doctrinal cerrada en ambos):
+    3a. Dom08 DCO: Triángulo P-02 Dom07+Dom08+Dom09 (cierra C01 Layer 2)
+    3b. Dom07 Layer 2: p07_transparencia.py con corpus F0.2 + ADR-016 activo
+  Posterior:
+    4. Dom09 DCO: Rendición de Cuentas (cierra Triángulo P-02)
+    5. C02 spec completa: requiere QLEP Dom03 (LOSNCP ACKs)
 ```
 
 ---
 
+## La Fase Constituyente — Declaración de Cierre (2026-06-01)
+
+### La cadena normativa interna
+
+Foundation Layer v1.0 establece una jerarquía de dependencias entre los cinco documentos constitucionales. Ninguno puede ser ignorado sin romper los que le siguen:
+
+```
+Excel Canónico           ← Ley Cero — verdad operacional del GAD
+        ↓ define qué es la verdad
+TRES_CEREBROS_QUIRA      ← reglas de qué pregunta responde cada capa
+        ↓ define qué son los átomos de conocimiento
+ACK_REGISTRY             ← catálogo formal de los átomos jurídicos
+        ↓ los átomos anclan a los dominios
+ADR-016 (DCO)            ← formato de inteligencia de dominio
+        ↓ los dominios son nodos de circuitos
+ADR-017 (Circuitos)      ← cadenas causales multi-dominio
+```
+
+**Nota sobre dependencias mutuas (mejora sobre el modelo lineal):**
+
+La cadena anterior es correcta en dirección general, pero ACK_REGISTRY y ADR-016 son mutuamente dependientes:
+- ACK_REGISTRY define los átomos que ADR-016 referencia como anclas (→)
+- ADR-017 produce los circuit IDs que ACK_REGISTRY registra en su campo `circuitos[]` (←)
+
+Esto no es una inconsistencia — es el patrón correcto para un grafo de conocimiento: los artefactos se co-determinan. La cadena establece la dirección de autoridad, no la dirección de creación.
+
+### El insight estructural de ADR-017
+
+El cambio más profundo introducido por Foundation Layer no es técnico. Es epistémico:
+
+**Antes de ADR-017:**
+```
+Portal LOTAIP caído → Problema de Dom07
+```
+
+**Después de ADR-017:**
+```
+Portal LOTAIP caído → Dom07 degradado → Riesgo C01 → Riesgo C02
+                                      → "El municipio no puede planificar
+                                         porque primero no participa
+                                         y primero no informa"
+```
+
+El dominio ya no es la unidad de diagnóstico.  
+El circuito es la unidad de diagnóstico.  
+El dominio es un nodo dentro del diagnóstico.
+
+Esto es lo que hace que QUIRA pase de ser un dashboard a ser un motor de gobernanza.
+
+### Scorecard de madurez QUIRA (2026-06-01)
+
+*(Evaluación conjunta Dylus Lab + colega asesor)*
+
+| Capa | Score | Evidencia |
+|---|---|---|
+| Corpus normativo | 9/10 | 7,740 chunks · 41 docs · 0 errores · F0.1-F0.8 ✅ |
+| Doctrina | 9/10 | Foundation Layer v1.0 · 5 artefactos congelados · Constitución QUIRA |
+| Arquitectura | 10/10 | ADR-013/016/017 congelados · 3 Cerebros · Ley Cero definida |
+| Circuitos | 6/10 | ADR-017 diseño completo · C01 listo · C02/C03 parciales · Neo4j pendiente |
+| Neo4j operativo | 4/10 | Fallback activo (Gold Master) · grafo real no cargado · Cypher C01 listo |
+| ACK Knowledge Graph | 1/10 | 10 ACKs identificados · 0 cargados · register_ack.py no creado ← brecha crítica |
+| Diagnóstico sistémico | 3/10 | C01 en papel · sin traversal real · sin CHS calculado live |
+| Predicción territorial | 1/10 | SAT activo (3 alertas) · GeoTwin pendiente · Sentinel en desarrollo |
+
+**Lectura del scorecard:**
+
+Las capas donde el score es ≥ 9 ya no son el problema. Las capas donde el score es ≤ 4 son exactamente el orden de la fase operacional.
+
+La brecha más importante no es Neo4j (4/10) — es el ACK Knowledge Graph (1/10). Sin ACKs cargados, Neo4j no tiene átomos que conectar. Los primeros 10 ACKs desbloquean 3 otros scores simultáneamente.
+
+### La transición: Definir → Demostrar
+
+Hasta Foundation Layer v1.0, QUIRA estaba respondiendo la pregunta:
+> **"¿Qué es QUIRA?"**
+
+A partir de Foundation Layer v1.0, QUIRA responde la pregunta:
+> **"¿Funciona QUIRA?"**
+
+Esa transición tiene una implicación práctica: el próximo sprint no produce más documentos de arquitectura. Produce código ejecutable que atraviesa la cadena:
+
+```
+CE_18 (ACK) → Dom07 (DCO) → C01 (Circuito) → Diagnóstico sistémico
+```
+
+Cuando ese recorrido funcione en Neo4j con datos reales, Foundation Layer v1.0 habrá sido demostrado, no solo declarado.
+
+---
+
 *Foundation Layer v1.0 · QUIRA Gov · Dylus Lab © 2026*  
-*"La Constitución no limita el crecimiento — garantiza que el crecimiento sea coherente."*
+*"La Constitución no limita el crecimiento — garantiza que el crecimiento sea coherente."*  
+*Fase constituyente: cerrada 2026-06-01. Fase operacional: iniciada.*
