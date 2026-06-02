@@ -71,6 +71,228 @@ def _semaforo_label(semaforo: str) -> str:
 
 
 # ══════════════════════════════════════════════════════════════════════════════
+# DIAGNÓSTICO SISTÉMICO — Circuito C01 (ADR-017)
+# CHS_C01 = Σ(NodeOK × peso) / Σ(peso)
+# Regla de colapso: ORIGEN falla → CHS = 0.0 independientemente del resto
+# Cadena causal: CE_18 → LOTAIP_7 → Dom07 (ORIGEN·1.5) → Dom08 (INTER·1.0) → Dom04 (DEST·0.7)
+# ══════════════════════════════════════════════════════════════════════════════
+
+# Definición canónica C01 — ADR-017 (CONGELADO v1.0)
+# Fuente de verdad para la UI sin Neo4j. Actualizar requiere nuevo ADR.
+_C01_NODES = [
+    {
+        "dominio":   "Dom07",
+        "nombre":    "Transparencia",
+        "rol":       "ORIGEN",
+        "peso":      1.5,
+        "ack_id":    "CE_18",
+        "ack_nombre":"Derecho de acceso a información pública",
+        "norma":     "CE Art. 18",
+        "condicion": "Ningún mes publicado en plazo legal (C5t = 0)",
+    },
+    {
+        "dominio":   "Dom08",
+        "nombre":    "Participación",
+        "rol":       "INTERMEDIARIO",
+        "peso":      1.0,
+        "ack_id":    "CE_95",
+        "ack_nombre":"Participación ciudadana protagónica",
+        "norma":     "CE Art. 95",
+        "condicion": "Sin datos Layer 2 (DCO pendiente)",
+    },
+    {
+        "dominio":   "Dom04",
+        "nombre":    "Planificación",
+        "rol":       "DESTINO",
+        "peso":      0.7,
+        "ack_id":    "CE_264_1",
+        "ack_nombre":"Planificación cantonal y ordenamiento territorial",
+        "norma":     "CE Art. 264.1",
+        "condicion": "Sin datos Layer 2",
+    },
+]
+
+_PESO_TOTAL_C01 = sum(n["peso"] for n in _C01_NODES)
+
+
+def _calcular_chs_c01(chain: dict) -> tuple[float | None, str, str]:
+    """
+    Calcula CHS de C01 con los datos disponibles.
+    Retorna (chs_value, label, color).
+    chs_value = None si datos insuficientes.
+    """
+    sem_d07 = chain.get("semaforo", "PENDIENTE")
+
+    if sem_d07 == "PENDIENTE":
+        return None, "SIN DATOS", _MUTED
+
+    # Dom07 NodeOK: VERDE/AMARILLO=1, ROJO=0
+    node_ok_d07 = 0 if sem_d07 == "ROJO" else 1
+
+    # Regla colapso ADR-017: ORIGEN falla → CHS = 0.0
+    if node_ok_d07 == 0:
+        chs = 0.0
+        return chs, "CIRCUITO CRÍTICO", _CRITICO
+
+    # Dom08 y Dom04 sin datos Layer 2 aún — CHS parcial (no podemos confirmar salud)
+    # No decimos "crítico" si ORIGEN está bien — decimos "datos incompletos"
+    return None, "DATOS PARCIALES", _ALERTA
+
+
+def _render_chs_c01(chain: dict) -> None:
+    """
+    Sección de diagnóstico sistémico — Circuito C01 (ADR-017).
+    Muestra la cadena causal completa:
+      CE_18 → LOTAIP_7 → Dom07 (ORIGEN) → Dom08 → Dom04 → CHS → Riesgo → Norma
+    Fuente: ADR-017 (CONGELADO) + ACK Registry + datos chain actuales.
+    """
+    chs_val, chs_label, chs_color = _calcular_chs_c01(chain)
+    sem_d07 = chain.get("semaforo", "PENDIENTE")
+    node_ok_d07 = 0 if sem_d07 == "ROJO" else 1
+    origen_falla = (node_ok_d07 == 0)
+
+    chs_display = f"{chs_val * 100:.0f}" if chs_val is not None else "—"
+
+    # ── Cabecera del bloque ───────────────────────────────────────────────────
+    st.markdown(
+        f"<div style='font-size:0.75rem;color:{_MUTED};margin-bottom:8px;"
+        f"font-weight:600;letter-spacing:1px'>"
+        f"DIAGNÓSTICO SISTÉMICO — CIRCUITO CONSTITUCIONAL C01</div>",
+        unsafe_allow_html=True,
+    )
+
+    # ── CHS principal ─────────────────────────────────────────────────────────
+    colapso_nota = ""
+    if origen_falla:
+        colapso_nota = (
+            f"<div style='font-size:0.68rem;color:{_CRITICO};"
+            f"margin-top:6px;font-weight:700'>"
+            f"REGLA DE COLAPSO ACTIVA — Dom07 es ORIGEN. "
+            f"Cuando el nodo de origen falla, el circuito colapsa independientemente "
+            f"del estado de Dom08 y Dom04."
+            f"</div>"
+        )
+
+    st.markdown(
+        f"""<div style="background:{chs_color}12;border:1px solid {chs_color}33;
+                     border-left:4px solid {chs_color};border-radius:10px;
+                     padding:14px 20px;margin-bottom:12px">
+  <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+    <div>
+      <div style="font-size:0.6rem;color:{_MUTED};letter-spacing:2px;
+                  font-weight:700;margin-bottom:2px">CHS CIRCUITO C01</div>
+      <div style="font-size:2.4rem;font-weight:900;color:{chs_color};
+                  font-family:monospace;line-height:1">{chs_display}</div>
+      <div style="font-size:0.62rem;color:{chs_color};font-weight:700;
+                  letter-spacing:1px;margin-top:3px">{chs_label}</div>
+    </div>
+    <div style="flex:1;min-width:200px">
+      <div style="font-size:0.75rem;color:white;font-weight:700;margin-bottom:4px">
+        Transparencia → Participación → Planificación
+      </div>
+      <div style="font-size:0.68rem;color:{_MUTED};line-height:1.5">
+        El circuito C01 conecta causalmente tres dominios: cuando la información pública
+        no circula (Dom07), la participación ciudadana no tiene base (Dom08),
+        y la planificación territorial pierde legitimidad (Dom04).
+      </div>
+      {colapso_nota}
+    </div>
+  </div>
+</div>""",
+        unsafe_allow_html=True,
+    )
+
+    # ── Nodos del circuito ───────────────────────────────────────────────────
+    dom07_color = _semaforo_color(sem_d07) if sem_d07 != "PENDIENTE" else _MUTED
+
+    node_data = [
+        (_C01_NODES[0], dom07_color, sem_d07, node_ok_d07),
+        (_C01_NODES[1], _MUTED, "SIN DATOS", None),
+        (_C01_NODES[2], _MUTED, "SIN DATOS", None),
+    ]
+
+    cols = st.columns(3)
+    for i, (node, color, estado_nodo, ok) in enumerate(node_data):
+        with cols[i]:
+            rol_color = {
+                "ORIGEN":       _CRITICO if origen_falla else _VERDE,
+                "INTERMEDIARIO": _MUTED,
+                "DESTINO":       _MUTED,
+            }[node["rol"]]
+
+            ok_badge = ""
+            if ok is not None:
+                ok_badge = (
+                    f"<div style='font-size:0.62rem;color:{color};"
+                    f"font-weight:900;margin-top:4px'>"
+                    f"{'FALLA' if ok == 0 else 'OK'} · peso {node['peso']}</div>"
+                )
+
+            arrow = " →" if i < 2 else ""
+            st.markdown(
+                f"""<div style="background:{color}0A;border:1px solid {color}28;
+                             border-top:3px solid {rol_color};
+                             border-radius:8px;padding:12px;
+                             position:relative;min-height:160px">
+  <div style="font-size:0.6rem;color:{rol_color};font-weight:700;
+              letter-spacing:1.5px;margin-bottom:4px">{node['rol']}{arrow}</div>
+  <div style="font-size:0.88rem;font-weight:700;color:white;margin-bottom:2px">
+    {node['nombre']}</div>
+  <div style="font-size:0.62rem;color:{_MUTED};margin-bottom:6px">
+    {node['dominio']}</div>
+  <div style="font-size:0.62rem;color:{color};font-weight:600;
+              margin-bottom:3px">{estado_nodo}</div>
+  {ok_badge}
+  <div style="font-size:0.58rem;color:rgba(255,255,255,0.4);
+              margin-top:8px;line-height:1.4;border-top:1px solid rgba(255,255,255,0.06);
+              padding-top:6px">
+    {node['norma']}<br>
+    <span style="color:rgba(255,255,255,0.25)">{node['condicion']}</span>
+  </div>
+</div>""",
+                unsafe_allow_html=True,
+            )
+
+    st.markdown("<div style='height:10px'></div>", unsafe_allow_html=True)
+
+    # ── Cadena normativa: CE_18 → LOTAIP_7 → Dom07 → C01 ───────────────────
+    st.markdown(
+        f"""<div style="background:rgba(255,255,255,0.02);
+                     border:1px solid rgba(255,255,255,0.06);
+                     border-radius:8px;padding:12px 16px;
+                     font-size:0.72rem;color:{_MUTED}">
+  <div style="font-size:0.6rem;color:{_MUTED};letter-spacing:1.5px;
+              font-weight:700;margin-bottom:8px">CADENA NORMATIVA VERIFICABLE</div>
+  <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+              font-family:monospace">
+    <span style="background:{_VERDE}18;color:{_VERDE};padding:3px 8px;
+                 border-radius:4px;font-weight:700">CE Art. 18</span>
+    <span style="color:rgba(255,255,255,0.3)">→</span>
+    <span style="background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.7);
+                 padding:3px 8px;border-radius:4px">LOTAIP Art. 7</span>
+    <span style="color:rgba(255,255,255,0.3)">→</span>
+    <span style="background:{_CRITICO}18;color:{_CRITICO};padding:3px 8px;
+                 border-radius:4px;font-weight:700">Dom07</span>
+    <span style="color:rgba(255,255,255,0.3)">→</span>
+    <span style="background:{_CRITICO}18;color:{_CRITICO};padding:3px 8px;
+                 border-radius:4px;font-weight:700">C01 = {chs_display}</span>
+    <span style="color:rgba(255,255,255,0.3)">→</span>
+    <span style="background:{chs_color}18;color:{chs_color};padding:3px 8px;
+                 border-radius:4px;font-weight:700">Riesgo: ALTO</span>
+  </div>
+  <div style="margin-top:8px;font-size:0.65rem;color:rgba(255,255,255,0.35);
+              line-height:1.5">
+    La norma que crea el derecho (CE Art. 18) se operacionaliza en la obligación
+    de publicación (LOTAIP Art. 7). El incumplimiento de LOTAIP degrada el nodo
+    Dom07 del circuito C01. Cuando Dom07 falla como ORIGEN, el circuito completo
+    colapsa: la participación y la planificación pierden su fundamento informacional.
+  </div>
+</div>""",
+        unsafe_allow_html=True,
+    )
+
+
+# ══════════════════════════════════════════════════════════════════════════════
 # LAYER 2 CANÓNICO — Dom07 Transparencia
 # QNKC-P01: C4 × C5 — el artefacto documental es uno, el ángulo epistémico es doble
 # ══════════════════════════════════════════════════════════════════════════════
@@ -344,6 +566,13 @@ def _render_dom07_ejecutivo(chain: dict) -> None:
 </div>""",
         unsafe_allow_html=True,
     )
+
+    # ── Sección 4b: Diagnóstico Sistémico — Circuito C01 ────────────────────
+    # ADR-017: C01 = Dom07 (ORIGEN·1.5) → Dom08 (INTER·1.0) → Dom04 (DEST·0.7)
+    # Regla de colapso: si ORIGEN falla → CHS = 0.0
+    # Norma que activa la cadena: CE_18 → LOTAIP_7 → Dom07 → C01
+    _render_chs_c01(chain)
+    st.markdown("<div style='height:8px'></div>", unsafe_allow_html=True)
 
     # ── Sección 5: Fuentes de observabilidad ─────────────────────────────────
     st.markdown(
