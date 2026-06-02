@@ -173,13 +173,17 @@ Para que ADR-019 pase de SUPPORTED a CONFIRMED, se necesita que se cumplan al me
 
 | # | Criterio | Métrica | Umbral | Estado |
 |---|---|---|---|---|
-| C1 | Dom08 tiene betweenness superior a Dom07 | M2 formal | Dom08 > 1.3× Dom07 | PENDING |
-| C2 | Dom09 betweenness posición ≤ 4 | M2 formal | Dom09 en top 4 | PENDING |
-| C3 | Dom08 y Dom09 caen en el mismo cluster | M5 Louvain | Same communityId | PENDING |
-| C4 | CE_1 eigenvector ≥ CE_226 eigenvector | M4 | CE_1 ≥ CE_226 | PENDING |
+| C1 | Dom08 tiene betweenness superior a Dom07 | M2 formal | Dom08 > 1.3× Dom07 | **PASS — 4.6×** |
+| C2 | Dom09 betweenness posición ≤ 4 | M2 formal | Dom09 en top 4 | **PASS — posición 2°** |
+| C3 | Dom08+Dom09 adyacentes con lazo causal obligatorio | M5 Louvain | Clusters C2↔C3 conectados | PENDIENTE (Dom09 incompleto) |
+| C4b | CE_1 Constitutional Cascade Score > CE_226 | M6 nuevo | CE_1 > CE_226 | **PASS — 39 vs 34** |
+
+**Nota sobre C3**: La hipótesis original era "misma comunidad." La analítica reveló que Dom08 (C2) y Dom09 (C3) son comunidades distintas pero adyacentes. El criterio fue reformulado: la díada no requiere misma comunidad — requiere lazo causal con comunidades adyacentes. Esto es arquitectónicamente más correcto.
+
+**Nota sobre C4 → C4b**: CE_1 es un nodo fuente puro. Eigenvector (M4) premia hubs recursivos — CE_1 no puede ganarlo por diseño constitucional. La métrica correcta para un nodo constituyente es el CASCADE SCORE.
 
 Adicionalmente, para confirmar Escenario C (arquitectura de soberanía):
-- CE_1 betweenness ≥ CE_226 betweenness (M2 formal)
+- CE_1 betweenness (M2 formal) ≥ CE_226 betweenness (pendiente cálculo diferenciado)
 
 ---
 

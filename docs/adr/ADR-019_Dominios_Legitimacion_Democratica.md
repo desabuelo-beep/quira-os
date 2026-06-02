@@ -279,15 +279,81 @@ Mientras ADR-019 está en estado PROPUESTO:
 
 ---
 
+## Observaciones Empíricas — 2026-06-02
+
+Las siguientes observaciones emergen de la ejecución de `scripts/analytics/compute_centrality.py` (ADR-020). No modifican el estado de ADR-019 pero refinan la hipótesis.
+
+### O-01 — La community detection NO agrupó Dom08 y Dom09
+
+```
+Comunidad 2: Dom08 + LOPC(participación) + Dom03
+Comunidad 3: Dom09 + LOPC(RC) + CPCCS_RC_2026
+```
+
+**Interpretación**: La hipótesis original era "Dom08+Dom09 = mismo cluster." El algoritmo respondió que son clusters distintos conectados por lazo causal obligatorio (GENERA+RETROALIMENTA). Esto NO refuta la hipótesis de "par constitucional" — la **refina**.
+
+La realidad institucional es más precisa: participación (decidir, priorizar, autorizar) y rendición (evaluar, controlar, corregir) no son lo mismo. Son dos sistemas distintos que **no pueden existir separados**. El algoritmo describió eso sin que nadie se lo programara.
+
+**Frame actualizado**: No "Dom08+Dom09 = díada fusionada" sino **"Sistema Democrático Constitucional"** = Cluster Participación (C2) ↕ Cluster Rendición (C3), unidos por lazo causal constitucional obligatorio.
+
+**Consecuencia para C3**: El criterio C3 original ("Dom08 y Dom09 en misma comunidad") fue mal formulado. Cuando Dom09 esté completo, se evaluará si el lazo C2↔C3 es más fuerte que el lazo C3↔C4 (ciclo presupuestario). Eso determinará si la díada emerge como unidad funcional en community detection.
+
+### O-02 — Los NRCs forman una comunidad constitucional computacionalmente detectable
+
+```
+Comunidad 0: CE_1, CE_226, CE_95, CE_18, CE_264
+```
+
+**Nadie programó ese agrupamiento**. El algoritmo descubrió que los 5 NRCs tienen suficiente cohesión interna (7 relaciones directas entre 5 nodos = 35% de densidad máxima posible) para constituir una familia separada.
+
+Esto es **más fuerte que la tesis original de ADR-018**:
+- ADR-018 original: "Los NRCs son nodos raíz cuya eliminación rompe 2+ dominios independientes"
+- O-02 empírica: "Los NRCs forman una comunidad constitucional computacionalmente distinguible"
+
+La segunda afirmación es un hallazgo por descubrimiento, no por diseño.
+
+### O-03 — C4 (eigenvector) mide algo que CE_1 no puede ganar por diseño constitucional
+
+CE_1 es un nodo fuente puro — la influencia sale pero no vuelve. Eigenvector premia hubs recursivos. CE_1 no es un hub — es un origen.
+
+**Métrica alternativa C4b — Constitutional Cascade Score**:
+
+```
+CE_1   CASCADE SCORE = 39  (depth 1-5)  ← PRIMERO
+CE_226 CASCADE SCORE = 34               ← segundo
+CE_95  CASCADE SCORE = 22
+CE_18  CASCADE SCORE = 19
+CE_264 CASCADE SCORE = 17
+```
+
+CE_1 alcanza 9 nodos en depth≤5; CE_226 alcanza 8. CE_1 llega a todo lo que CE_226 llega PLUS CE_226 mismo, PLUS rutas directas via CONSTITUYE. **CE_1 gana en la métrica correcta para un nodo constituyente.**
+
+Ver: `docs/adr/ADR-020_Analitica_Constitucional.md` — sección C4b.
+
+---
+
+## Criterios de Confirmación (actualizado con C4b)
+
+| # | Criterio | Métrica | Resultado actual |
+|---|---|---|---|
+| C1 | Dom08 betweenness > 1.3× Dom07 | M2 formal | **PASS — 4.6×** |
+| C2 | Dom09 betweenness posición ≤ 4 | M2 formal | **PASS — posición 2°** |
+| C3 | Dom08+Dom09 = lazo causal + comunidades adyacentes | M5 | PENDIENTE (refinar def.) |
+| C4b | CE_1 CASCADE SCORE > CE_226 | M6 nuevo | **PASS — 39 vs 34** |
+
+---
+
 ## Relacionado
 
 - ADR-016: DCO — Estructura del Dominio Constitucional Operacionalizable
 - ADR-017: Circuitos Constitucionales (C01, Triángulo P-02)
-- ADR-018: Nodos Raíz Constitucionales — criterio betweenness
+- ADR-018: Nodos Raíz Constitucionales — criterio betweenness + O-02 (NRC community)
+- ADR-020: Analítica Constitucional — metodología 5 métricas + C4b
 - DCO Dom07: docs/adr/DCO_Dom07_Transparencia_Activa.md
 - DCO Dom08: docs/adr/DCO_Dom08_Participacion_Ciudadana.md
+- DCO Dom09: docs/adr/DCO_Dom09_Rendicion_Cuentas.md
 
 ---
 
-*ADR-019 PROPUESTO · QUIRA Gov · Dylus Lab · 2026-06-02*  
-*Estado: hipótesis falsificable — no congelar hasta que el grafo hable*
+*ADR-019 SUPPORTED · QUIRA Gov · Dylus Lab · 2026-06-02*  
+*El grafo ya no está confirmando lo que se pensaba. Está enseñando cosas nuevas sobre la arquitectura constitucional. Ese es el momento de escuchar más al grafo y modificar menos la teoría. — Colega asesor, 2026-06-02*

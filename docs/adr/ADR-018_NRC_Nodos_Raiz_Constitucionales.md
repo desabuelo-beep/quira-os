@@ -255,6 +255,34 @@ CE_226 chunk_refs:        ⏳ Pendiente --link-corpus CE_226 (corpus F0.1 dispon
 
 ---
 
+## Observación Empírica 2026-06-02 — NRCs como Comunidad Constitucional Computacionalmente Detectable
+
+**Fuente**: `scripts/analytics/compute_centrality.py` — Community Detection Louvain (M5)
+
+La Community Detection Louvain, ejecutada sobre el grafo constitucional con 37 nodos y 55 aristas, produjo el siguiente resultado sin ninguna instrucción sobre agrupamiento:
+
+```
+Comunidad 0: CE_1, CE_226, CE_95, CE_18, CE_264
+```
+
+Los 5 NRCs (4 funcionales + 1 constituyente) fueron agrupados en su propia comunidad separada de todos los dominios operacionales y ACKs sectoriales. Nadie programó ese agrupamiento — el algoritmo lo descubrió.
+
+**Cohesión interna NRC Community 0:**
+- 7 relaciones directas entre 5 nodos (CONSTITUYE + HABILITA)
+- Densidad = 7/20 = 35% de todas las relaciones posibles
+- Umbral Louvain típico para cluster significativo: ~10-15%
+
+**Implicación para ADR-018**: La tesis original era **estructural** ("NRCs son nodos cuya eliminación rompe 2+ dominios independientes"). La observación O-02 es **empírica**: los NRCs son estructuralmente tan cohesivos entre sí que forman una comunidad computacionalmente distinguible sin guía humana.
+
+Esto es más fuerte. La tesis de ADR-018 describe el CRITERIO para ser NRC. O-02 describe la PROPIEDAD EMERGENTE que ese criterio produce.
+
+**Conclusión O-02**: Los NRC no son únicamente nodos raíz. Constituyen una comunidad constitucional computacionalmente detectable. La arquitectura normativa ecuatoriana, al menos en el subconjunto cargado, tiene una capa constitucional diferenciada que el grafo revela por sí mismo.
+
+Ver: `docs/adr/ADR-019_Dominios_Legitimacion_Democratica.md` — Observación O-02.
+
+---
+
 *ADR-018 v1.0 · QUIRA Gov · Dylus Lab © 2026*  
 *"QUIRA no impone una teoría de gobernanza — revela la que el ordenamiento jurídico ya diseñó."*  
-*Propuesto: colega asesor + Javo · Formalizado: 2026-06-02*
+*Propuesto: colega asesor + Javo · Formalizado: 2026-06-02*  
+*Observación O-02 agregada: 2026-06-02 — Community detection confirmó cohesión constitucional*
