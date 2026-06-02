@@ -1,0 +1,339 @@
+{
+  "meta": {
+    "version": "0.1",
+    "total_acks": 10,
+    "scope": "nacional",
+    "descripcion": "Catálogo maestro de Átomos Canónicos de Conocimiento (ACK) — alcance nacional Ecuador. Los ACKs representan normativa constitucional y orgánica aplicable a todos los GADs municipales. El campo canton_id no existe por diseño: la normativa es nacional; los datos operacionales (SIGEF, portales LOTAIP, ejecución) son cantonales y entran en L0 (Excel Canónico), nunca en el ACK Registry.",
+    "laboratorio": "GADMCM — Cantón Montecristi",
+    "destino": "221 municipios del Ecuador",
+    "ultima_actualizacion": "2026-06-01",
+    "extractor_default": "QLEP-v1.0",
+    "notas_pendientes": [
+      "chunk_refs vacíos — poblar con: python register_ack.py --link-corpus ACK_ID",
+      "revisado_por_experto=false — pendiente validación jurista especializado",
+      "CE_61, CE_100, LOPC_72 requieren verificación artículo exacto"
+    ]
+  },
+  "acks": [
+    {
+      "ack_id": "CE_18",
+      "tipo": "derecho",
+      "nombre": "Derecho de acceso a información pública",
+      "norma": {
+        "sigla": "CE",
+        "nombre_oficial": "Constitución del Ecuador",
+        "articulo": "18",
+        "inciso": null,
+        "jerarquia": 0,
+        "vigente": "2008-10-20"
+      },
+      "actor_obligado": ["GAD-Municipal", "Instituciones del Estado"],
+      "actor_beneficiario": ["Ciudadanía"],
+      "obligacion": "Toda persona tiene derecho a acceder libremente a la información generada en entidades públicas, o en las privadas que manejen fondos del Estado o realicen funciones públicas. No existirá reserva de información excepto en los casos expresamente establecidos en la ley.",
+      "dominios": ["Dom07"],
+      "circuitos": ["C01"],
+      "fundante": true,
+      "vigente": true,
+      "revisado_por_experto": false,
+      "chunk_refs": [],
+      "obsidian_nota": "CE_18.md",
+      "qlep_yaml": null,
+      "relaciones": ["LOTAIP", "LOPC"],
+      "meta": {
+        "fecha_extraccion": "2026-06-01",
+        "extractor": "QLEP-v1.0",
+        "version": "1.0",
+        "confianza": "alta",
+        "nota": "Norma fundante confirmada de Dom07-A. DCO ADR-016 establece CE_18 como fundante permanente. El corpus devolvió Art.19 para 'transparencia activa' pero el DCO gana: CE_18 es la norma que CREA el derecho."
+      }
+    },
+    {
+      "ack_id": "CE_61",
+      "tipo": "derecho",
+      "nombre": "Derechos de participación política de ecuatorianos",
+      "norma": {
+        "sigla": "CE",
+        "nombre_oficial": "Constitución del Ecuador",
+        "articulo": "61",
+        "inciso": null,
+        "jerarquia": 0,
+        "vigente": "2008-10-20"
+      },
+      "actor_obligado": ["Estado", "GAD-Municipal"],
+      "actor_beneficiario": ["Ciudadanía ecuatoriana"],
+      "obligacion": "Las ecuatorianas y ecuatorianos gozan de derechos de participación política, incluyendo presentar proyectos de iniciativa popular, ser consultados en los procesos que les afecten y fiscalizar los actos del poder público.",
+      "dominios": ["Dom07"],
+      "circuitos": [],
+      "fundante": true,
+      "vigente": true,
+      "revisado_por_experto": false,
+      "chunk_refs": [],
+      "obsidian_nota": "CE_61.md",
+      "qlep_yaml": null,
+      "relaciones": ["CE_95", "LOPC"],
+      "meta": {
+        "fecha_extraccion": "2026-06-01",
+        "extractor": "QLEP-v1.0",
+        "version": "1.0",
+        "confianza": "media",
+        "nota": "Pendiente verificación jurista. Incluido como fundante Dom07-B (Transparencia Dialógica) basado en que los derechos de participación política anclan la obligación de transparencia activa hacia el ciudadano."
+      }
+    },
+    {
+      "ack_id": "CE_95",
+      "tipo": "derecho",
+      "nombre": "Participación ciudadana protagónica en asuntos públicos",
+      "norma": {
+        "sigla": "CE",
+        "nombre_oficial": "Constitución del Ecuador",
+        "articulo": "95",
+        "inciso": null,
+        "jerarquia": 0,
+        "vigente": "2008-10-20"
+      },
+      "actor_obligado": ["GAD-Municipal", "Estado"],
+      "actor_beneficiario": ["Ciudadanía"],
+      "obligacion": "Las ciudadanas y ciudadanos, en forma individual y colectiva, participarán de manera protagónica en la toma de decisiones, planificación y gestión de los asuntos públicos, y en el control popular de las instituciones del Estado y la sociedad, y de sus representantes.",
+      "dominios": ["Dom07", "Dom08"],
+      "circuitos": ["C01"],
+      "fundante": true,
+      "vigente": true,
+      "revisado_por_experto": false,
+      "chunk_refs": [],
+      "obsidian_nota": "CE_95.md",
+      "qlep_yaml": null,
+      "relaciones": ["CE_18", "CE_100", "LOPC"],
+      "meta": {
+        "fecha_extraccion": "2026-06-01",
+        "extractor": "QLEP-v1.0",
+        "version": "1.0",
+        "confianza": "media-alta",
+        "nota": "Nodo INTERMEDIARIO en C01 (Dom08). ADR-017 lo usa como norma fundante de Dom08. Pendiente verificación artículo exacto con jurista."
+      }
+    },
+    {
+      "ack_id": "CE_100",
+      "tipo": "obligacion",
+      "nombre": "Instancias de participación en todos los niveles de gobierno",
+      "norma": {
+        "sigla": "CE",
+        "nombre_oficial": "Constitución del Ecuador",
+        "articulo": "100",
+        "inciso": null,
+        "jerarquia": 0,
+        "vigente": "2008-10-20"
+      },
+      "actor_obligado": ["GAD-Municipal", "Concejo"],
+      "actor_beneficiario": ["Ciudadanía", "Organizaciones sociales"],
+      "obligacion": "En todos los niveles de gobierno se conformarán instancias de participación integradas por autoridades electas, representantes del régimen dependiente y representantes de la sociedad del ámbito territorial de cada nivel de gobierno, que elaborarán planes y políticas, mejorarán la calidad de la inversión pública, y elaborarán presupuestos participativos.",
+      "dominios": ["Dom08"],
+      "circuitos": ["C01"],
+      "fundante": true,
+      "vigente": true,
+      "revisado_por_experto": false,
+      "chunk_refs": [],
+      "obsidian_nota": "CE_100.md",
+      "qlep_yaml": null,
+      "relaciones": ["CE_95", "COOTAD_302", "LOPC"],
+      "meta": {
+        "fecha_extraccion": "2026-06-01",
+        "extractor": "QLEP-v1.0",
+        "version": "1.0",
+        "confianza": "media",
+        "nota": "Pendiente verificación artículo exacto. El contenido descrito es el de CE Art.100 basado en conocimiento del corpus normativo ecuatoriano."
+      }
+    },
+    {
+      "ack_id": "LOTAIP_7",
+      "tipo": "obligacion",
+      "nombre": "Obligaciones de transparencia activa — publicación portal oficial",
+      "norma": {
+        "sigla": "LOTAIP",
+        "nombre_oficial": "Ley Orgánica de Transparencia y Acceso a la Información Pública",
+        "articulo": "7",
+        "inciso": null,
+        "jerarquia": 1,
+        "vigente": "2004-05-18"
+      },
+      "actor_obligado": ["GAD-Municipal", "Alcalde", "Director-Comunicacion"],
+      "actor_beneficiario": ["Ciudadanía"],
+      "obligacion": "Las instituciones del Estado deben difundir a través de un portal de información o página web una lista de información mínima actualizada que incluye: estructura orgánica, base legal, regulaciones, presupuesto, directorio de funcionarios, información de contratación pública, y demás establecida en los 14 literales del artículo.",
+      "dominios": ["Dom07"],
+      "circuitos": ["C01", "C02"],
+      "fundante": false,
+      "vigente": true,
+      "revisado_por_experto": false,
+      "chunk_refs": [],
+      "obsidian_nota": "LOTAIP_7.md",
+      "qlep_yaml": null,
+      "relaciones": ["CE_18", "LOTAIP_34", "LOTAIP_47"],
+      "meta": {
+        "fecha_extraccion": "2026-06-01",
+        "extractor": "QLEP-v1.0",
+        "version": "1.0",
+        "confianza": "alta",
+        "nota": "Instrumento en C4 del DCO Dom07 (ventana de observación). La obligación de publicar activamente deriva de CE_18. LOTAIP_7 no crea el derecho — lo operacionaliza. Nodo del circuito C01 como arista de activación Dom07."
+      }
+    },
+    {
+      "ack_id": "LOTAIP_34",
+      "tipo": "plazo",
+      "nombre": "Plazo de respuesta a solicitudes de información pública",
+      "norma": {
+        "sigla": "LOTAIP",
+        "nombre_oficial": "Ley Orgánica de Transparencia y Acceso a la Información Pública",
+        "articulo": "34",
+        "inciso": null,
+        "jerarquia": 1,
+        "vigente": "2004-05-18"
+      },
+      "actor_obligado": ["GAD-Municipal", "Responsable-Informacion"],
+      "actor_beneficiario": ["Solicitante de información"],
+      "obligacion": "La institución tiene 10 días hábiles para responder una solicitud de información pública. Si la información es voluminosa, se puede extender 5 días más comunicando al solicitante.",
+      "dominios": ["Dom07"],
+      "circuitos": ["C01"],
+      "fundante": false,
+      "vigente": true,
+      "revisado_por_experto": false,
+      "chunk_refs": [],
+      "obsidian_nota": "LOTAIP_34.md",
+      "qlep_yaml": null,
+      "relaciones": ["CE_18", "LOTAIP_7", "LOTAIP_47"],
+      "meta": {
+        "fecha_extraccion": "2026-06-01",
+        "extractor": "QLEP-v1.0",
+        "version": "1.0",
+        "confianza": "media-alta",
+        "nota": "Pendiente verificación artículo exacto. La referencia a 10 días LOTAIP aparece en el skill QLEP como ejemplo de tipo 'plazo'."
+      }
+    },
+    {
+      "ack_id": "LOTAIP_47",
+      "tipo": "sancion",
+      "nombre": "Sanciones por incumplimiento de obligaciones de transparencia",
+      "norma": {
+        "sigla": "LOTAIP",
+        "nombre_oficial": "Ley Orgánica de Transparencia y Acceso a la Información Pública",
+        "articulo": "47",
+        "inciso": null,
+        "jerarquia": 1,
+        "vigente": "2004-05-18"
+      },
+      "actor_obligado": ["Defensor del Pueblo", "CPCCS"],
+      "actor_beneficiario": ["Ciudadanía"],
+      "obligacion": "El incumplimiento de las obligaciones de transparencia activa y pasiva establecidas en la LOTAIP será sancionado según las disposiciones del artículo, incluyendo multas y responsabilidad administrativa de los funcionarios.",
+      "dominios": ["Dom07"],
+      "circuitos": [],
+      "fundante": false,
+      "vigente": true,
+      "revisado_por_experto": false,
+      "chunk_refs": [],
+      "obsidian_nota": "LOTAIP_47.md",
+      "qlep_yaml": null,
+      "relaciones": ["LOTAIP_7", "LOTAIP_34", "CE_18"],
+      "meta": {
+        "fecha_extraccion": "2026-06-01",
+        "extractor": "QLEP-v1.0",
+        "version": "1.0",
+        "confianza": "media",
+        "nota": "Pendiente verificación artículo exacto de sanciones LOTAIP. Referenciado en QLEP skill como ejemplo de tipo 'sancion' Dom07."
+      }
+    },
+    {
+      "ack_id": "LOPC_72",
+      "tipo": "procedimiento",
+      "nombre": "Mecanismos de participación ciudadana en GADs",
+      "norma": {
+        "sigla": "LOPC",
+        "nombre_oficial": "Ley Orgánica de Participación Ciudadana",
+        "articulo": "72",
+        "inciso": null,
+        "jerarquia": 1,
+        "vigente": "2010-04-20"
+      },
+      "actor_obligado": ["GAD-Municipal", "Alcalde"],
+      "actor_beneficiario": ["Ciudadanía", "Organizaciones sociales"],
+      "obligacion": "Los GADs establecerán mecanismos de participación ciudadana incluyendo cabildos abiertos, rendición de cuentas, y presupuestos participativos según los procedimientos establecidos en la LOPC.",
+      "dominios": ["Dom08"],
+      "circuitos": [],
+      "fundante": false,
+      "vigente": true,
+      "revisado_por_experto": false,
+      "chunk_refs": [],
+      "obsidian_nota": "LOPC_72.md",
+      "qlep_yaml": null,
+      "relaciones": ["CE_95", "CE_100", "COOTAD_302"],
+      "meta": {
+        "fecha_extraccion": "2026-06-01",
+        "extractor": "QLEP-v1.0",
+        "version": "1.0",
+        "confianza": "media",
+        "nota": "Pendiente verificación artículo exacto. LOPC regula mecanismos de participación en todos los niveles. Art.72 podría ser sobre cabildos abiertos o un mecanismo específico Dom08. Requiere QLEP Dom08."
+      }
+    },
+    {
+      "ack_id": "CE_264",
+      "tipo": "competencia_exclusiva",
+      "nombre": "Competencias exclusivas del GAD Municipal",
+      "norma": {
+        "sigla": "CE",
+        "nombre_oficial": "Constitución del Ecuador",
+        "articulo": "264",
+        "inciso": null,
+        "jerarquia": 0,
+        "vigente": "2008-10-20"
+      },
+      "actor_obligado": ["GAD-Municipal", "Alcalde", "Concejo"],
+      "actor_beneficiario": ["Ciudadanía cantonal"],
+      "obligacion": "Los gobiernos municipales tendrán las siguientes competencias exclusivas, sin perjuicio de otras que determine la ley: 1) Planificar el desarrollo cantonal y formular los planes de ordenamiento territorial; 2) Ejercer el control sobre el uso y ocupación del suelo; 4) Prestar los servicios públicos de agua potable, alcantarillado y otros.",
+      "dominios": ["Dom04", "Dom10"],
+      "circuitos": ["C03"],
+      "fundante": true,
+      "vigente": true,
+      "revisado_por_experto": false,
+      "chunk_refs": [],
+      "obsidian_nota": "CE_264.md",
+      "qlep_yaml": null,
+      "relaciones": ["COOTAD", "COPLAFIP"],
+      "meta": {
+        "fecha_extraccion": "2026-06-01",
+        "extractor": "QLEP-v1.0",
+        "version": "1.0",
+        "confianza": "alta",
+        "nota": "ACK de nivel artículo completo. Los numerales específicos (264_1, 264_4, etc.) deben extraerse como sub-ACKs via QLEP al procesar dominios Dom04 y Dom10. Este ACK es el ancla general de competencias municipales."
+      }
+    },
+    {
+      "ack_id": "COOTAD_249",
+      "tipo": "obligacion",
+      "nombre": "Asignación mínima 10% inversión social para grupos de atención prioritaria",
+      "norma": {
+        "sigla": "COOTAD",
+        "nombre_oficial": "Código Orgánico de Organización Territorial, Autonomía y Descentralización",
+        "articulo": "249",
+        "inciso": null,
+        "jerarquia": 1,
+        "vigente": "2010-10-19"
+      },
+      "actor_obligado": ["GAD-Municipal", "Concejo", "Director-Financiero"],
+      "actor_beneficiario": ["Grupos de atención prioritaria", "Patronato Municipal"],
+      "obligacion": "Los gobiernos municipales asignarán al menos el 10% de sus ingresos no tributarios para el financiamiento de programas sociales dirigidos a grupos de atención prioritaria, conforme dispone la Constitución.",
+      "dominios": ["Dom12"],
+      "circuitos": [],
+      "fundante": true,
+      "vigente": true,
+      "revisado_por_experto": false,
+      "chunk_refs": [],
+      "obsidian_nota": "COOTAD_249.md",
+      "qlep_yaml": null,
+      "relaciones": ["CE_35", "CE_36", "CE_37", "CE_38"],
+      "meta": {
+        "fecha_extraccion": "2026-06-01",
+        "extractor": "QLEP-v1.0",
+        "version": "1.0",
+        "confianza": "alta",
+        "nota": "Dato verificado: GADMCM asigna 20.84% (2.08x el mínimo legal) pero ejecución Patronato fue 50% en 2025. Fuente: SIGEF + cédula presupuestaria. Circuit ADR-013: GAP_10PCT→Dom12. Este ACK ancla ese circuito normativamente."
+      }
+    }
+  ]
+}

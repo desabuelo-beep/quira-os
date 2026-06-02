@@ -1,10 +1,30 @@
 # ACK Registry — Catálogo Maestro de Conocimiento Jurídico
 
-**Versión:** 0.1 (diseño — NO implementado)  
+**Versión:** 0.2 (implementado — carga inicial 10 ACKs)  
 **Fecha:** 2026-06-01  
-**Estado:** DISEÑO PENDIENTE IMPLEMENTACIÓN  
+**Estado:** ACTIVO — carga inicial completa · chunk_refs pendientes · revisión experto pendiente  
 **Autores:** Dylus Lab · Colega asesor  
 **Relacionado:** QLEP v1.0 · ADR-016 (DCO) · ADR-017 (Circuitos)
+
+---
+
+## Principio de Alcance Nacional (INMUTABLE)
+
+Los ACKs son normativa constitucional y orgánica aplicable a **todos los GADs municipales del Ecuador**. El campo `canton_id` **no existe por diseño de arquitectura**.
+
+```
+La normativa es NACIONAL         → ACK Registry
+Los datos operacionales son CANTONALES → L0 (Excel Canónico)
+
+El mismo CE_18 aplica a Quito, Guayaquil, Cuenca y Montecristi.
+Lo que cambia canton a canton: ¿están cumpliendo con CE_18?
+```
+
+**Laboratorio:** GADMCM — Cantón Montecristi (modelado y validación)  
+**Destino:** 221 municipios del Ecuador  
+
+Esta separación no es accidental — es la razón por la que la arquitectura escala.  
+Si se agrega `canton_id` a un ACK, se rompe este principio y el código lo rechazará.
 
 ---
 
@@ -223,16 +243,16 @@ Los primeros ACKs a registrar (basados en DCO Dom07 y los circuitos activos):
 
 | ACK ID | Dominio | Fundante | Estado |
 |---|---|---|---|
-| CE_18 | Dom07 | ✅ | Pendiente |
-| CE_61 | Dom07-B | ✅ | Pendiente |
-| CE_95 | Dom07-B | ✅ | Pendiente |
-| CE_100 | Dom07-B | ✅ | Pendiente |
-| LOTAIP_7 | Dom07-A | — | Pendiente |
-| LOTAIP_34 | Dom07-A | — | Pendiente |
-| LOTAIP_47 | Dom07-A | — | Pendiente |
-| LOPC_72 | Dom07-B | — | Pendiente |
-| CE_264 | Dom10 | ✅ | Pendiente |
-| COOTAD_249 | Dom12 | ✅ | Pendiente |
+| CE_18 | Dom07 | ✅ | ✅ CARGADO · confianza alta · chunk_refs pendiente |
+| CE_61 | Dom07-B | ✅ | ✅ CARGADO · confianza media · pendiente jurista |
+| CE_95 | Dom07-B | ✅ | ✅ CARGADO · confianza media-alta · pendiente jurista |
+| CE_100 | Dom07-B | ✅ | ✅ CARGADO · confianza media · pendiente jurista |
+| LOTAIP_7 | Dom07-A | — | ✅ CARGADO · confianza alta · chunk_refs pendiente |
+| LOTAIP_34 | Dom07-A | — | ✅ CARGADO · confianza media-alta |
+| LOTAIP_47 | Dom07-A | — | ✅ CARGADO · confianza media · pendiente jurista |
+| LOPC_72 | Dom07-B | — | ✅ CARGADO · confianza media · pendiente jurista |
+| CE_264 | Dom10/Dom04 | ✅ | ✅ CARGADO · confianza alta · sub-ACKs CE_264_1/264_4 pendientes |
+| COOTAD_249 | Dom12 | ✅ | ✅ CARGADO · confianza alta · dato SIGEF verificado |
 
 ---
 
@@ -244,15 +264,33 @@ El ACK Registry es esa entidad. Junto con el DCO (ADR-016), resuelve el problema
 
 ---
 
+## Estado de implementación (2026-06-01)
+
+```
+data/ack_registry.json          ✅ CREADO — 10 ACKs prioritarios
+scripts/normativa/register_ack.py ✅ CREADO — CLI completo
+  --stats         OK (10 ACKs, 6 fundantes, 5 en C01)
+  --validate-all  OK (todos válidos, canton_id guardrail activo)
+  --traverse      OK (muestra cadena ACK → Dominio → Circuito)
+  --link-corpus   PENDIENTE (requiere Supabase + normativa_corpus)
+
+Opción A (JSON) IMPLEMENTADA para v0.
+Migrar a Opción C (JSON + Supabase sync) cuando registry tenga 50+ ACKs.
+```
+
 ## Próximos pasos
 
-1. [ ] Decidir Opción A vs C para implementación
-2. [ ] Script `register_ack.py` (lectura de YAML QLEP → registry)
-3. [ ] Carga inicial: CE_18 + 9 ACKs prioritarios de Dom07 y circuitos activos
+1. [x] Decidir Opción A vs C → RESUELTO: Opción A implementada
+2. [x] Script `register_ack.py` → COMPLETADO: CLI completo con --stats/--get/--filter/--link-corpus/--traverse/--validate-all
+3. [x] Carga inicial: 10 ACKs prioritarios → COMPLETADO en data/ack_registry.json
 4. [ ] Integrar verificación en QLEP: antes de extraer un ACK, revisar si ya existe en registry
-5. [ ] Campo `chunk_refs` — cruzar sha256 del registry con normativa_corpus para validar cobertura
+5. [ ] chunk_refs: ejecutar `--link-corpus ACK_ID` para cada ACK (requiere Supabase)
+6. [ ] Primer hito operacional: LOTAIP_7 → Dom07-A → C01 → CHS → Diagnóstico textual
+7. [ ] Revisión jurista: CE_61, CE_95, CE_100, LOPC_72, LOTAIP_34, LOTAIP_47
+8. [ ] Sub-ACKs: CE_264_1 (planificación) + CE_264_4 (agua potable) como ACKs específicos
 
 ---
 
-*ACK Registry Design v0.1 · QUIRA Gov · Dylus Lab © 2026*  
-*Siguiente: implementación scripts/normativa/register_ack.py*
+*ACK Registry v0.2 · QUIRA Gov · Dylus Lab © 2026*  
+*Laboratorio: Montecristi · Destino: 221 municipios Ecuador*  
+*Siguiente: --link-corpus + primer diagnóstico sistémico real*
