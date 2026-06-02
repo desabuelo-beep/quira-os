@@ -1,11 +1,11 @@
 # Foundation Layer v1.0 — Núcleo Arquitectónico QUIRA
 ## Declaración Formal del Núcleo Estable del Sistema
 
-**Versión:** 1.0  
+**Versión:** 1.0 (extensión ADR-018 2026-06-02)  
 **Fecha:** 2026-06-01  
-**Estado:** CONGELADO  
+**Estado:** CONGELADO · Extensión activa via ADR-018  
 **Autores:** Dylus Lab · Colega asesor  
-**Relacionado:** TRES_CEREBROS_QUIRA · ADR-016 · ACK_REGISTRY · ADR-017
+**Relacionado:** TRES_CEREBROS_QUIRA · ADR-016 · ACK_REGISTRY · ADR-017 · ADR-018
 
 ---
 
@@ -86,6 +86,7 @@ Todo módulo nuevo de QUIRA debe ser rastreable a al menos uno de los tres pilar
 | Un nuevo cerebro o capa de almacenamiento | Pilar I (TRES_CEREBROS) |
 | Un nuevo dominio con DCO | Pilar II (ADR-016) |
 | Un nuevo ACK o catálogo de conocimiento | Pilar III (ACK_REGISTRY) |
+| Un ACK con alcance multi-dominio universal | Pilar III + ADR-018 (NRC) |
 | Un circuito constitucional | Pilar II (nodos) + Pilar III (ACKs que anclan los nodos) |
 | Una nueva interfaz de Obsidian | Pilar I (Cerebro 3 definición) |
 | Un nuevo indicador en el Excel | Ley Cero (Excel Canónico) — no requiere ADR |
@@ -212,9 +213,10 @@ Esta vista no reemplaza los 12 dominios — los complementa con la dimensión ca
 |---|---|---|---|
 | 1 | `TRES_CEREBROS_QUIRA.md` | Modelo epistemológico · 3 preguntas · 3 cerebros · Ley Cero | ✅ CONGELADO |
 | 2 | `ADR-016_DCO_*.md` | Formato DCO · 8 componentes · Dom07 caso referencia | ✅ CONGELADO v1.0 |
-| 3 | `ACK_REGISTRY.md` | Schema ACK · catálogo maestro · Opción A implementada | ✅ OPERACIONAL v0.2 (10 ACKs · traversal ✅) |
+| 3 | `ACK_REGISTRY.md` | Schema ACK · catálogo maestro · Opción A implementada | ✅ OPERACIONAL v0.2 (11 ACKs · 4 NRCs · traversal ✅) |
 | 4 | `ADR-017_Circuitos_*.md` | Arquitectura circuitos · C01 completo · CHS fórmula | ✅ CONGELADO v1.0 |
 | 5 | `FOUNDATION_LAYER_V1.md` | Este documento · regla de extensión · 6 niveles madurez | ✅ CONGELADO v1.0 |
+| 6 | `ADR-018_NRC_*.md` | Nodos Raíz Constitucionales · es_nrc field · criterio formal | ✅ CONGELADO v1.0 (extiende Pilar III) |
 
 Estos cinco documentos son la Constitución QUIRA. Todo lo demás en el sistema — módulos Python, notas Obsidian, tablas Supabase, grafos Neo4j — implementa, extiende o interpreta esta Constitución. Pero no la gobierna.
 
@@ -226,7 +228,8 @@ Estos cinco documentos son la Constitución QUIRA. Todo lo demás en el sistema 
 Foundation Layer v1.0: ✅ DECLARADA Y CONGELADA
   Pilar I  (3 Cerebros)  : ✅ COMPLETO
   Pilar II (ADR-016 DCO) : ✅ COMPLETO · Dom07 caso referencia
-  Pilar III (ACK Registry): ✅ OPERACIONAL v0.2 — 10 ACKs · CLI · traversal ✅
+  Pilar III (ACK Registry): ✅ OPERACIONAL v0.2 — 11 ACKs · 4 NRCs · CLI · traversal ✅
+  Extensión (ADR-018 NRC) : ✅ CONGELADO — NRC como categoría formal · CE_226 añadido
 
 Madurez actual:
   L0 Excel Canónico   : ✅ ACTIVO (v5.5_TGI · Sprint Soberanía completado)

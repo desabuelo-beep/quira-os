@@ -148,6 +148,7 @@ def filter_acks(
     tipo: str | None = None,
     fundante: bool | None = None,
     sigla: str | None = None,
+    nrc: bool | None = None,
 ) -> list[dict]:
     results = registry.get("acks", [])
     if dominio:
@@ -160,6 +161,8 @@ def filter_acks(
         results = [a for a in results if a.get("fundante") == fundante]
     if sigla:
         results = [a for a in results if a.get("norma", {}).get("sigla") == sigla]
+    if nrc is not None:
+        results = [a for a in results if a.get("es_nrc", False) == nrc]
     return results
 
 
@@ -358,6 +361,7 @@ def print_stats(registry: dict) -> None:
     con_chunks = 0
     revisados = 0
     fundantes = 0
+    nrcs = 0
     confianza_alta = 0
 
     for a in acks:
@@ -374,10 +378,13 @@ def print_stats(registry: dict) -> None:
             revisados += 1
         if a.get("fundante"):
             fundantes += 1
+        if a.get("es_nrc", False):
+            nrcs += 1
         if a.get("meta", {}).get("confianza") == "alta":
             confianza_alta += 1
 
     print(f"\n  Fundantes         : {fundantes}/{len(acks)}")
+    print(f"  NRCs (Nodos Raiz) : {nrcs}/{len(acks)}  [ver --filter-nrc · ADR-018]")
     print(f"  Con chunk_refs    : {con_chunks}/{len(acks)} {'OK' if con_chunks == len(acks) else '(pendiente --link-corpus)'}")
     print(f"  Revisados experto : {revisados}/{len(acks)} {'OK' if revisados == len(acks) else '(pendiente revision juridica)'}")
     print(f"  Confianza alta    : {confianza_alta}/{len(acks)}")
@@ -434,6 +441,7 @@ Ejemplos:
   python register_ack.py --filter-domain Dom07 --filter-fundante
   python register_ack.py --filter-circuit C01
   python register_ack.py --filter-sigla LOTAIP
+  python register_ack.py --filter-nrc
   python register_ack.py --link-corpus CE_18
   python register_ack.py --traverse LOTAIP_7
   python register_ack.py --validate-all
@@ -453,6 +461,8 @@ Ejemplos:
                         help="Filtrar por sigla de norma (ej: LOTAIP)")
     parser.add_argument("--filter-fundante", action="store_true",
                         help="Solo ACKs fundantes")
+    parser.add_argument("--filter-nrc", action="store_true",
+                        help="Solo Nodos Raiz Constitucionales (es_nrc=true) — ver ADR-018")
     parser.add_argument("--link-corpus", metavar="ACK_ID",
                         help="Vincular chunks de normativa_corpus a un ACK (requiere Supabase)")
     parser.add_argument("--traverse", metavar="ACK_ID",
@@ -475,7 +485,7 @@ Ejemplos:
             sys.exit(1)
 
     elif args.filter_domain or args.filter_circuit or args.filter_tipo or \
-         args.filter_fundante or args.filter_sigla:
+         args.filter_fundante or args.filter_sigla or args.filter_nrc:
         results = filter_acks(
             registry,
             dominio=args.filter_domain,
@@ -483,6 +493,7 @@ Ejemplos:
             tipo=args.filter_tipo,
             fundante=True if args.filter_fundante else None,
             sigla=args.filter_sigla,
+            nrc=True if args.filter_nrc else None,
         )
         print(json.dumps(results, ensure_ascii=False, indent=2))
         print(f"\n[{len(results)} resultado(s)]")

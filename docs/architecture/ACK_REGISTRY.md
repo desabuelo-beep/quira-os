@@ -132,6 +132,9 @@ circuitos:                       # circuitos donde este ACK es nodo
   - C01
 
 fundante: true                   # true = norma que CREA la obligación (no solo la desarrolla)
+es_nrc: false                    # true = Nodo Raíz Constitucional (ver ADR-018)
+                                  # Criterio: su remoción rompe 2+ dominios independientes
+                                  # Máximo esperado: 6-8 NRCs en corpus completo
 vigente: true                    # false = derogado o reformado sustancialmente
 
 revisado_por_experto: false      # true = validado por jurista (no solo por Claude)
@@ -147,6 +150,52 @@ meta:
   fecha_extraccion: "2026-06-01"
   extractor: "QLEP-v1.0"
   version: "1.0"
+```
+
+---
+
+## Nodos Raíz Constitucionales (NRC) — ADR-018
+
+*(Categoría formal introducida 2026-06-02 · v0.2 del registry)*
+
+### La distinción
+
+```
+ACK normal → funda un dominio
+ACK raíz   → funda múltiples dominios simultáneamente
+```
+
+Un ACK es NRC si su eliminación rompe la base normativa de 2 o más dominios **independientes**. El criterio es deliberadamente conservador. Máximo esperado: 6-8 NRCs en el corpus completo.
+
+### NRCs actuales (registry v0.2 · 4 confirmados)
+
+| ACK | Nombre | Por qué es raíz |
+|---|---|---|
+| `CE_226` | Principio de Legalidad | Axioma del sistema — toda actuación pública requiere habilitación. Sin él, ningún dominio tiene fundamento constitucional |
+| `CE_18` | Derecho a información | Dom07 (primario) + Dom08 (participación informada) + Dom09 (rendición) + Dom02 (presupuesto) |
+| `CE_95` | Participación protagónica | Dom08 (primario) + Dom07 lado demanda + Dom09 mecanismo control |
+| `CE_264` | Competencias GAD Municipal | Dom04 (planificación) + Dom10 (agua) + Dom02 (presupuesto) + Dom03 (contratación) |
+
+### La jerarquía extendida
+
+```
+NRC (axioma constitucional)
+  ↓
+ACK normal (operacionalización normativa)
+  ↓
+DCO (dominio como sistema de razonamiento)
+  ↓
+Circuito (cadena causal multi-dominio)
+  ↓
+Diagnóstico
+```
+
+### Consultas CLI
+
+```bash
+python scripts/normativa/register_ack.py --filter-nrc
+python scripts/normativa/register_ack.py --stats   # muestra NRCs: 4/11
+python scripts/normativa/register_ack.py --traverse CE_226
 ```
 
 ---

@@ -1,20 +1,22 @@
 {
   "meta": {
-    "version": "0.1",
-    "total_acks": 10,
+    "version": "0.2",
+    "total_acks": 11,
+    "total_nrcs": 4,
     "scope": "nacional",
     "descripcion": "Catálogo maestro de Átomos Canónicos de Conocimiento (ACK) — alcance nacional Ecuador. Los ACKs representan normativa constitucional y orgánica aplicable a todos los GADs municipales. El campo canton_id no existe por diseño: la normativa es nacional; los datos operacionales (SIGEF, portales LOTAIP, ejecución) son cantonales y entran en L0 (Excel Canónico), nunca en el ACK Registry.",
     "laboratorio": "GADMCM — Cantón Montecristi",
     "destino": "221 municipios del Ecuador",
-    "ultima_actualizacion": "2026-06-01",
+    "ultima_actualizacion": "2026-06-02",
     "extractor_default": "QLEP-v1.0",
     "notas_pendientes": [
-      "chunk_refs 8/10 — LOTAIP_47 y LOPC_72 con corpus gaps documentados en meta.nota",
+      "chunk_refs 9/11 — LOTAIP_47 y LOPC_72 con corpus gaps documentados (CE_226 OK)",
       "revisado_por_experto=false para todos — pendiente validación jurista especializado",
       "LOTAIP_47: verificar Art. sanción en texto impreso LOTAIP (original 2004 vs reformado)",
       "LOPC_72: ingestar LOPC completa en milestone F0.2 ampliado",
       "Sub-ACKs pendientes: CE_264_1 (planificación) + CE_264_4 (agua potable)",
-      "Dom08 DCO pendiente: usar ADR-016 template con CE_95 como norma fundante"
+      "Dom08 DCO pendiente: usar ADR-016 template con CE_95 como norma fundante",
+      "NRC candidatos adicionales sin confirmar: CE_85 (igualdad) · CE_238 (autonomía GAD) · CE_340 (inclusión social)"
     ]
   },
   "acks": [
@@ -45,6 +47,7 @@
         "C01"
       ],
       "fundante": true,
+      "es_nrc": true,
       "vigente": true,
       "revisado_por_experto": false,
       "chunk_refs": [
@@ -58,6 +61,7 @@
       "obsidian_nota": "CE_18.md",
       "qlep_yaml": null,
       "relaciones": [
+        "CE_226",
         "LOTAIP",
         "LOPC"
       ],
@@ -66,7 +70,7 @@
         "extractor": "QLEP-v1.0",
         "version": "1.0",
         "confianza": "alta",
-        "nota": "Norma fundante confirmada de Dom07-A. DCO ADR-016 establece CE_18 como fundante permanente. El corpus devolvió Art.19 para 'transparencia activa' pero el DCO gana: CE_18 es la norma que CREA el derecho."
+        "nota": "NODO RAÍZ CONSTITUCIONAL (es_nrc=true). Dom07 es la manifestación institucional primaria de CE_18, pero el derecho aplica a todos los dominios que producen información pública: Dom08 (participación informada), Dom09 (rendición de cuentas), Dom02 (presupuesto público), Dom04 (PDOT), Dom10 (servicios). Si CE_18 se derogara, múltiples dominios independientes pierden su base normativa. | Norma fundante confirmada de Dom07-A. DCO ADR-016 establece CE_18 como fundante permanente. El corpus devolvió Art.19 para 'transparencia activa' pero el DCO gana: CE_18 es la norma que CREA el derecho."
       }
     },
     {
@@ -94,6 +98,7 @@
       ],
       "circuitos": [],
       "fundante": true,
+      "es_nrc": false,
       "vigente": true,
       "revisado_por_experto": false,
       "chunk_refs": [
@@ -115,7 +120,7 @@
         "extractor": "QLEP-v1.0",
         "version": "1.0",
         "confianza": "media",
-        "nota": "Pendiente verificación jurista. Incluido como fundante Dom07-B (Transparencia Dialógica) basado en que los derechos de participación política anclan la obligación de transparencia activa hacia el ciudadano."
+        "nota": "ACK sectorial (es_nrc=false). CE_61 describe derechos políticos ciudadanos — complementa CE_95 pero es más específico (ciudadanos ecuatorianos vs. participación en gestión pública en general). Su remoción afectaría Dom07-B y Dom08, pero ambos están relacionados temáticamente, no son dominios independientes. Criterio NRC no cumplido. | Pendiente verificación jurista."
       }
     },
     {
@@ -146,6 +151,7 @@
         "C01"
       ],
       "fundante": true,
+      "es_nrc": true,
       "vigente": true,
       "revisado_por_experto": false,
       "chunk_refs": [
@@ -159,6 +165,7 @@
       "obsidian_nota": "CE_95.md",
       "qlep_yaml": null,
       "relaciones": [
+        "CE_226",
         "CE_18",
         "CE_100",
         "LOPC"
@@ -168,7 +175,7 @@
         "extractor": "QLEP-v1.0",
         "version": "1.0",
         "confianza": "media-alta",
-        "nota": "Nodo INTERMEDIARIO en C01 (Dom08). ADR-017 lo usa como norma fundante de Dom08. Pendiente verificación artículo exacto con jurista."
+        "nota": "NODO RAÍZ CONSTITUCIONAL (es_nrc=true). CE_95 cierra el ciclo democrático: sin participación, Dom07 (transparencia) pierde su lado de demanda; Dom08 (participación) colapsa como dominio primario; Dom09 (rendición de cuentas) pierde su mecanismo de control ciudadano; Dom04 (planificación) pierde el mandato de PDOT participativo. Dominios afectados son funcionalmente independientes. | Nodo INTERMEDIARIO en C01 (Dom08). ADR-017 lo usa como norma fundante de Dom08. Pendiente verificación jurista."
       }
     },
     {
@@ -199,6 +206,7 @@
         "C01"
       ],
       "fundante": true,
+      "es_nrc": false,
       "vigente": true,
       "revisado_por_experto": false,
       "chunk_refs": [
@@ -221,200 +229,64 @@
         "extractor": "QLEP-v1.0",
         "version": "1.0",
         "confianza": "media",
-        "nota": "Pendiente verificación artículo exacto. El contenido descrito es el de CE Art.100 basado en conocimiento del corpus normativo ecuatoriano."
+        "nota": "ACK sectorial (es_nrc=false). CE_100 operacionaliza CE_95 en la institucionalidad de los GADs. Su remoción afecta Dom08 directamente, con impactos en Dom04 (presupuestos participativos). Pero CE_95 (NRC) es la norma raíz — CE_100 es su instrumento. No cumple criterio NRC independiente. | Pendiente verificación artículo exacto."
       }
     },
     {
-      "ack_id": "LOTAIP_7",
-      "tipo": "obligacion",
-      "nombre": "Obligaciones de transparencia activa — publicación portal oficial",
+      "ack_id": "CE_226",
+      "tipo": "principio",
+      "nombre": "Principio de Legalidad Administrativa",
       "norma": {
-        "sigla": "LOTAIP",
-        "nombre_oficial": "Ley Orgánica de Transparencia y Acceso a la Información Pública",
-        "articulo": "7",
+        "sigla": "CE",
+        "nombre_oficial": "Constitución del Ecuador",
+        "articulo": "226",
         "inciso": null,
-        "jerarquia": 1,
-        "vigente": "2004-05-18"
+        "jerarquia": 0,
+        "vigente": "2008-10-20"
       },
       "actor_obligado": [
         "GAD-Municipal",
         "Alcalde",
-        "Director-Comunicacion"
+        "Concejo",
+        "Instituciones del Estado",
+        "Servidores públicos"
       ],
       "actor_beneficiario": [
+        "Estado de Derecho",
         "Ciudadanía"
       ],
-      "obligacion": "Las instituciones del Estado deben difundir a través de un portal de información o página web una lista de información mínima actualizada que incluye: estructura orgánica, base legal, regulaciones, presupuesto, directorio de funcionarios, información de contratación pública, y demás establecida en los 14 literales del artículo.",
+      "obligacion": "Las instituciones del Estado, sus organismos, dependencias, las servidoras o servidores públicos y las personas que actúen en virtud de una potestad estatal ejercerán solamente las competencias y facultades que les sean atribuidas en la Constitución y la ley. Tendrán el deber de coordinar acciones para el cumplimiento de sus fines y hacer efectivo el goce y ejercicio de los derechos reconocidos en la Constitución.",
       "dominios": [
-        "Dom07"
+        "Dom01"
       ],
-      "circuitos": [
-        "C01",
-        "C02"
-      ],
-      "fundante": false,
+      "circuitos": [],
+      "fundante": true,
+      "es_nrc": true,
       "vigente": true,
       "revisado_por_experto": false,
       "chunk_refs": [
         {
-          "sha256": "415a04b64d24208424018e8b3f24126c3a13195c7129cc9ec31772389f32695b",
-          "articulo_num": 7,
+          "sha256": "f1ea501c97afb2e9dab889ee061fd22c6d87176828fc3a21d61e2cdab4796c5d",
+          "articulo_num": 226,
           "chunk_seq": 0,
-          "palabras": 253
+          "palabras": 71
         }
       ],
-      "obsidian_nota": "LOTAIP_7.md",
+      "obsidian_nota": "CE_226.md",
       "qlep_yaml": null,
       "relaciones": [
-        "CE_18",
-        "LOTAIP_34",
-        "LOTAIP_47"
+        "CE_264",
+        "CE_238",
+        "COA",
+        "LOSEP",
+        "LOSNCP"
       ],
       "meta": {
-        "fecha_extraccion": "2026-06-01",
+        "fecha_extraccion": "2026-06-02",
         "extractor": "QLEP-v1.0",
         "version": "1.0",
         "confianza": "alta",
-        "nota": "Instrumento en C4 del DCO Dom07 (ventana de observación). La obligación de publicar activamente deriva de CE_18. LOTAIP_7 no crea el derecho — lo operacionaliza. Nodo del circuito C01 como arista de activación Dom07."
-      }
-    },
-    {
-      "ack_id": "LOTAIP_34",
-      "tipo": "plazo",
-      "nombre": "Plazo de respuesta a solicitudes de información pública",
-      "norma": {
-        "sigla": "LOTAIP",
-        "nombre_oficial": "Ley Orgánica de Transparencia y Acceso a la Información Pública",
-        "articulo": "34",
-        "inciso": null,
-        "jerarquia": 1,
-        "vigente": "2004-05-18"
-      },
-      "actor_obligado": [
-        "GAD-Municipal",
-        "Responsable-Informacion"
-      ],
-      "actor_beneficiario": [
-        "Solicitante de información"
-      ],
-      "obligacion": "La institución tiene 10 días hábiles para responder una solicitud de información pública. Si la información es voluminosa, se puede extender 5 días más comunicando al solicitante.",
-      "dominios": [
-        "Dom07"
-      ],
-      "circuitos": [
-        "C01"
-      ],
-      "fundante": false,
-      "vigente": true,
-      "revisado_por_experto": false,
-      "chunk_refs": [
-        {
-          "sha256": "7e6fb9b6d0e8690871798eb8e399234f677b915ac9a18c5f698236e2ed6c5c69",
-          "articulo_num": 34,
-          "chunk_seq": 0,
-          "palabras": 39
-        }
-      ],
-      "obsidian_nota": "LOTAIP_34.md",
-      "qlep_yaml": null,
-      "relaciones": [
-        "CE_18",
-        "LOTAIP_7",
-        "LOTAIP_47"
-      ],
-      "meta": {
-        "fecha_extraccion": "2026-06-01",
-        "extractor": "QLEP-v1.0",
-        "version": "1.0",
-        "confianza": "media-alta",
-        "nota": "Pendiente verificación artículo exacto. La referencia a 10 días LOTAIP aparece en el skill QLEP como ejemplo de tipo 'plazo'."
-      }
-    },
-    {
-      "ack_id": "LOTAIP_47",
-      "tipo": "sancion",
-      "nombre": "Sanciones por incumplimiento de obligaciones de transparencia",
-      "norma": {
-        "sigla": "LOTAIP",
-        "nombre_oficial": "Ley Orgánica de Transparencia y Acceso a la Información Pública",
-        "articulo": "47",
-        "inciso": null,
-        "jerarquia": 1,
-        "vigente": "2004-05-18"
-      },
-      "actor_obligado": [
-        "Defensor del Pueblo",
-        "CPCCS"
-      ],
-      "actor_beneficiario": [
-        "Ciudadanía"
-      ],
-      "obligacion": "El incumplimiento de las obligaciones de transparencia activa y pasiva establecidas en la LOTAIP será sancionado según las disposiciones del artículo, incluyendo multas y responsabilidad administrativa de los funcionarios.",
-      "dominios": [
-        "Dom07"
-      ],
-      "circuitos": [],
-      "fundante": false,
-      "vigente": true,
-      "revisado_por_experto": false,
-      "chunk_refs": [],
-      "obsidian_nota": "LOTAIP_47.md",
-      "qlep_yaml": null,
-      "relaciones": [
-        "LOTAIP_7",
-        "LOTAIP_34",
-        "CE_18"
-      ],
-      "meta": {
-        "fecha_extraccion": "2026-06-01",
-        "extractor": "QLEP-v1.0",
-        "version": "1.0",
-        "confianza": "media",
-        "nota": "CORPUS GAP: normativa_corpus (F0.2) tiene LOTAIP hasta Art.44 aprox. — Art.47 no encontrado. Acciones requeridas: (1) verificar artículo exacto de sanciones en texto impreso LOTAIP (podría ser Art.20/21 en versión original 2004, o Art.47 en versión reformada), (2) re-ingestar versión completa LOTAIP para poblar chunk_refs. Hasta resolver, este ACK queda como placeholder normativo del tipo 'sancion' Dom07."
-      }
-    },
-    {
-      "ack_id": "LOPC_72",
-      "tipo": "procedimiento",
-      "nombre": "Mecanismos de participación ciudadana en GADs",
-      "norma": {
-        "sigla": "LOPC",
-        "nombre_oficial": "Ley Orgánica de Participación Ciudadana",
-        "articulo": "72",
-        "inciso": null,
-        "jerarquia": 1,
-        "vigente": "2010-04-20"
-      },
-      "actor_obligado": [
-        "GAD-Municipal",
-        "Alcalde"
-      ],
-      "actor_beneficiario": [
-        "Ciudadanía",
-        "Organizaciones sociales"
-      ],
-      "obligacion": "Los GADs establecerán mecanismos de participación ciudadana incluyendo cabildos abiertos, rendición de cuentas, y presupuestos participativos según los procedimientos establecidos en la LOPC.",
-      "dominios": [
-        "Dom08"
-      ],
-      "circuitos": [],
-      "fundante": false,
-      "vigente": true,
-      "revisado_por_experto": false,
-      "chunk_refs": [],
-      "obsidian_nota": "LOPC_72.md",
-      "qlep_yaml": null,
-      "relaciones": [
-        "CE_95",
-        "CE_100",
-        "COOTAD_302"
-      ],
-      "meta": {
-        "fecha_extraccion": "2026-06-01",
-        "extractor": "QLEP-v1.0",
-        "version": "1.0",
-        "confianza": "media",
-        "nota": "CORPUS GAP: LOPC no estaba en el corpus F0.2 (milestone Transparencia). La LOPC completa tiene 100+ artículos — Art.72 existe pero no fue ingresada en F0.x. Acciones requeridas: (1) ejecutar /qlep --norma LOPC para verificar Art.72 es sobre mecanismos participación GAD, (2) ingestar LOPC en milestone F0.2 ampliado. Hasta resolver, este ACK es placeholder normativo 'procedimiento' Dom08."
+        "nota": "NODO RAÍZ CONSTITUCIONAL PRIMARIO (es_nrc=true). CE_226 es el axioma del sistema QUIRA: sin el principio de legalidad, ninguna actuación del GAD Municipal tiene validez constitucional, ningún ACK tiene fundamento normativo, ningún circuito tiene base jurídica. Dom01 es su ancla institucional primaria (Marco Constitucional / Legalidad), pero como NRC su ámbito real son los 12 dominios simultáneamente. Es el 'root of roots': CE_18, CE_95 y CE_264 derivan su autoridad de CE_226. chunk_refs vinculado 2026-06-02 (sha256 f1ea501c, 71 palabras, F0.1 corpus)."
       }
     },
     {
@@ -446,6 +318,7 @@
         "C03"
       ],
       "fundante": true,
+      "es_nrc": true,
       "vigente": true,
       "revisado_por_experto": false,
       "chunk_refs": [
@@ -459,6 +332,7 @@
       "obsidian_nota": "CE_264.md",
       "qlep_yaml": null,
       "relaciones": [
+        "CE_226",
         "COOTAD",
         "COPLAFIP"
       ],
@@ -467,7 +341,7 @@
         "extractor": "QLEP-v1.0",
         "version": "1.0",
         "confianza": "alta",
-        "nota": "ACK de nivel artículo completo. Los numerales específicos (264_1=planificación, 264_4=agua potable, etc.) deben extraerse como sub-ACKs via QLEP al procesar Dom04 y Dom10. NOTA DE REPLICABILIDAD: CE_264 aplica a todos los GAD Municipales del Ecuador (220 cantones regulares). El Distrito Metropolitano de Quito opera ADICIONALMENTE bajo CE Art.266 (competencias ampliadas de distritos metropolitanos). Al escalar QUIRA a Quito, crear ACK CE_266 complementario — CE_264 sigue siendo válido para Quito, CE_266 añade las competencias extendidas. Referencia: CE Art.258 (régimen especial distritos metropolitanos)."
+        "nota": "NODO RAÍZ CONSTITUCIONAL (es_nrc=true). CE_264 asigna las competencias constitucionales del GAD Municipal. Sin él: Dom04 (planificación) pierde su mandato; Dom10 (agua) pierde su competencia; Dom02 (presupuesto municipal) pierde su razón de ser; Dom03 (contratación) pierde el objeto de los contratos. Dominios funcionalmente independientes, todos afectados. | ACK de nivel artículo completo. Sub-ACKs CE_264_1 (planificación) + CE_264_4 (agua potable) pendientes. NOTA DE REPLICABILIDAD: CE_264 aplica a todos los GAD Municipales (220 cantones). Quito opera ADICIONALMENTE bajo CE Art.266. Al escalar a Quito, crear ACK CE_266 complementario."
       }
     },
     {
@@ -497,6 +371,7 @@
       ],
       "circuitos": [],
       "fundante": true,
+      "es_nrc": false,
       "vigente": true,
       "revisado_por_experto": false,
       "chunk_refs": [
@@ -520,7 +395,204 @@
         "extractor": "QLEP-v1.0",
         "version": "1.0",
         "confianza": "alta",
-        "nota": "Dato verificado: GADMCM asigna 20.84% (2.08x el mínimo legal) pero ejecución Patronato fue 50% en 2025. Fuente: SIGEF + cédula presupuestaria. Circuit ADR-013: GAP_10PCT→Dom12. Este ACK ancla ese circuito normativamente."
+        "nota": "ACK sectorial (es_nrc=false). COOTAD_249 aplica exclusivamente a Dom12 (Protección Social). Su remoción afecta un solo dominio. | Dato verificado: GADMCM asigna 20.84% (2.08x el mínimo legal) pero ejecución Patronato fue 50% en 2025. Circuit ADR-013: GAP_10PCT→Dom12."
+      }
+    },
+    {
+      "ack_id": "LOTAIP_7",
+      "tipo": "obligacion",
+      "nombre": "Obligaciones de transparencia activa — publicación portal oficial",
+      "norma": {
+        "sigla": "LOTAIP",
+        "nombre_oficial": "Ley Orgánica de Transparencia y Acceso a la Información Pública",
+        "articulo": "7",
+        "inciso": null,
+        "jerarquia": 1,
+        "vigente": "2004-05-18"
+      },
+      "actor_obligado": [
+        "GAD-Municipal",
+        "Alcalde",
+        "Director-Comunicacion"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía"
+      ],
+      "obligacion": "Las instituciones del Estado deben difundir a través de un portal de información o página web una lista de información mínima actualizada que incluye: estructura orgánica, base legal, regulaciones, presupuesto, directorio de funcionarios, información de contratación pública, y demás establecida en los 14 literales del artículo.",
+      "dominios": [
+        "Dom07"
+      ],
+      "circuitos": [
+        "C01",
+        "C02"
+      ],
+      "fundante": false,
+      "es_nrc": false,
+      "vigente": true,
+      "revisado_por_experto": false,
+      "chunk_refs": [
+        {
+          "sha256": "415a04b64d24208424018e8b3f24126c3a13195c7129cc9ec31772389f32695b",
+          "articulo_num": 7,
+          "chunk_seq": 0,
+          "palabras": 253
+        }
+      ],
+      "obsidian_nota": "LOTAIP_7.md",
+      "qlep_yaml": null,
+      "relaciones": [
+        "CE_18",
+        "LOTAIP_34",
+        "LOTAIP_47"
+      ],
+      "meta": {
+        "fecha_extraccion": "2026-06-01",
+        "extractor": "QLEP-v1.0",
+        "version": "1.0",
+        "confianza": "alta",
+        "nota": "ACK sectorial (es_nrc=false). LOTAIP_7 operacionaliza CE_18 en Dom07. Si se deroga, Dom07-A se debilita pero Dom08, Dom04 y otros siguen funcionando desde sus propias bases normativas. Es el instrumento en C4 del DCO Dom07 (ventana de observación), no la norma fundante. | PRIMER HITO OPERACIONAL COMPLETADO: LOTAIP_7 (sha256 415a04b6) -> Dom07 -> C01/C02 traversal OK."
+      }
+    },
+    {
+      "ack_id": "LOTAIP_34",
+      "tipo": "plazo",
+      "nombre": "Plazo de respuesta a solicitudes de información pública",
+      "norma": {
+        "sigla": "LOTAIP",
+        "nombre_oficial": "Ley Orgánica de Transparencia y Acceso a la Información Pública",
+        "articulo": "34",
+        "inciso": null,
+        "jerarquia": 1,
+        "vigente": "2004-05-18"
+      },
+      "actor_obligado": [
+        "GAD-Municipal",
+        "Responsable-Informacion"
+      ],
+      "actor_beneficiario": [
+        "Solicitante de información"
+      ],
+      "obligacion": "La institución tiene 10 días hábiles para responder una solicitud de información pública. Si la información es voluminosa, se puede extender 5 días más comunicando al solicitante.",
+      "dominios": [
+        "Dom07"
+      ],
+      "circuitos": [
+        "C01"
+      ],
+      "fundante": false,
+      "es_nrc": false,
+      "vigente": true,
+      "revisado_por_experto": false,
+      "chunk_refs": [
+        {
+          "sha256": "7e6fb9b6d0e8690871798eb8e399234f677b915ac9a18c5f698236e2ed6c5c69",
+          "articulo_num": 34,
+          "chunk_seq": 0,
+          "palabras": 39
+        }
+      ],
+      "obsidian_nota": "LOTAIP_34.md",
+      "qlep_yaml": null,
+      "relaciones": [
+        "CE_18",
+        "LOTAIP_7",
+        "LOTAIP_47"
+      ],
+      "meta": {
+        "fecha_extraccion": "2026-06-01",
+        "extractor": "QLEP-v1.0",
+        "version": "1.0",
+        "confianza": "media-alta",
+        "nota": "ACK sectorial (es_nrc=false). Plazo específico de Dom07. | Pendiente verificación artículo exacto en texto impreso LOTAIP."
+      }
+    },
+    {
+      "ack_id": "LOTAIP_47",
+      "tipo": "sancion",
+      "nombre": "Sanciones por incumplimiento de obligaciones de transparencia",
+      "norma": {
+        "sigla": "LOTAIP",
+        "nombre_oficial": "Ley Orgánica de Transparencia y Acceso a la Información Pública",
+        "articulo": "47",
+        "inciso": null,
+        "jerarquia": 1,
+        "vigente": "2004-05-18"
+      },
+      "actor_obligado": [
+        "Defensor del Pueblo",
+        "CPCCS"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía"
+      ],
+      "obligacion": "El incumplimiento de las obligaciones de transparencia activa y pasiva establecidas en la LOTAIP será sancionado según las disposiciones del artículo, incluyendo multas y responsabilidad administrativa de los funcionarios.",
+      "dominios": [
+        "Dom07"
+      ],
+      "circuitos": [],
+      "fundante": false,
+      "es_nrc": false,
+      "vigente": true,
+      "revisado_por_experto": false,
+      "chunk_refs": [],
+      "obsidian_nota": "LOTAIP_47.md",
+      "qlep_yaml": null,
+      "relaciones": [
+        "LOTAIP_7",
+        "LOTAIP_34",
+        "CE_18"
+      ],
+      "meta": {
+        "fecha_extraccion": "2026-06-01",
+        "extractor": "QLEP-v1.0",
+        "version": "1.0",
+        "confianza": "media",
+        "nota": "ACK sectorial (es_nrc=false). Sanción Dom07 específica. CORPUS GAP: normativa_corpus (F0.2) tiene LOTAIP hasta Art.44 aprox. — Art.47 no encontrado. Acciones requeridas: (1) verificar artículo exacto de sanciones en texto impreso LOTAIP (podría ser Art.20/21 en versión original 2004, o Art.47 en versión reformada), (2) re-ingestar versión completa LOTAIP para poblar chunk_refs. Hasta resolver, este ACK queda como placeholder normativo del tipo 'sancion' Dom07."
+      }
+    },
+    {
+      "ack_id": "LOPC_72",
+      "tipo": "procedimiento",
+      "nombre": "Mecanismos de participación ciudadana en GADs",
+      "norma": {
+        "sigla": "LOPC",
+        "nombre_oficial": "Ley Orgánica de Participación Ciudadana",
+        "articulo": "72",
+        "inciso": null,
+        "jerarquia": 1,
+        "vigente": "2010-04-20"
+      },
+      "actor_obligado": [
+        "GAD-Municipal",
+        "Alcalde"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía",
+        "Organizaciones sociales"
+      ],
+      "obligacion": "Los GADs establecerán mecanismos de participación ciudadana incluyendo cabildos abiertos, rendición de cuentas, y presupuestos participativos según los procedimientos establecidos en la LOPC.",
+      "dominios": [
+        "Dom08"
+      ],
+      "circuitos": [],
+      "fundante": false,
+      "es_nrc": false,
+      "vigente": true,
+      "revisado_por_experto": false,
+      "chunk_refs": [],
+      "obsidian_nota": "LOPC_72.md",
+      "qlep_yaml": null,
+      "relaciones": [
+        "CE_95",
+        "CE_100",
+        "COOTAD_302"
+      ],
+      "meta": {
+        "fecha_extraccion": "2026-06-01",
+        "extractor": "QLEP-v1.0",
+        "version": "1.0",
+        "confianza": "media",
+        "nota": "ACK sectorial (es_nrc=false). Procedimiento Dom08 específico. CORPUS GAP: LOPC no estaba en el corpus F0.2 (milestone Transparencia). La LOPC completa tiene 100+ artículos — Art.72 existe pero no fue ingresada en F0.x. Acciones requeridas: (1) ejecutar /qlep --norma LOPC para verificar Art.72 es sobre mecanismos participación GAD, (2) ingestar LOPC en milestone F0.2 ampliado. Hasta resolver, este ACK es placeholder normativo 'procedimiento' Dom08."
       }
     }
   ]
