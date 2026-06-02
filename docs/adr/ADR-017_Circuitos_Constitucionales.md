@@ -5,7 +5,7 @@
 **Fecha:** 2026-06-01  
 **Estado:** CONGELADO v1.0  
 **Autores:** Dylus Lab · Colega asesor  
-**Relacionado:** ADR-013 · ADR-016 (DCO) · ACK_REGISTRY · TRES_CEREBROS_QUIRA
+**Relacionado:** ADR-013 · ADR-016 (DCO) · ADR-018 (NRC) · ACK_REGISTRY · TRES_CEREBROS_QUIRA
 
 ---
 

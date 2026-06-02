@@ -4,7 +4,7 @@
 **Fecha:** 2026-06-01  
 **Autores:** Dylus Lab (Javo + Claude)  
 **Derivado de:** Sprint 4 (Corpus Normativo F0.1-F0.2) · Dom07 caso de referencia  
-**Relacionado:** ADR-013 (CIRCUIT_DOMAIN_MAP) · ADR-017 (Circuitos Constitucionales) · QLEP v1.0
+**Relacionado:** ADR-013 (CIRCUIT_DOMAIN_MAP) · ADR-017 (Circuitos Constitucionales) · ADR-018 (NRC) · QLEP v1.0
 
 ---
 
