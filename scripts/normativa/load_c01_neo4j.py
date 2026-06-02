@@ -304,7 +304,7 @@ VALIDATION_QUERIES = [
         "id": "Q4_variable",
         "descripcion": "Explicación completa (path variable) — CE_226 cualquier relación hacia C01",
         "cypher": (
-            "MATCH p=(:ACK {ack_id:'CE_226'})-[:HABILITA|:FUNDA|:ALIMENTA*1..5]->"
+            "MATCH p=(:ACK {ack_id:'CE_226'})-[:HABILITA|FUNDA|ALIMENTA*1..5]->"
             "(:Circuito {id:'C01'}) RETURN p"
         ),
         "expect": "1+ paths: todos los caminos de CE_226 a C01",
@@ -344,34 +344,37 @@ RETURN 'C01 conectado a resultados operacionales' AS status,
 # CONEXIÓN NEO4J
 # ══════════════════════════════════════════════════════════════════════════════
 
-def _get_neo4j_driver():
-    """
-    Establece conexión con Neo4j usando secrets.toml.
-    Requiere:
-      [neo4j]
-      uri      = "bolt://localhost:7687"
-      user     = "neo4j"
-      password = "..."
-    """
+def _get_neo4j_config() -> dict:
+    """Lee configuración Neo4j desde secrets.toml."""
     try:
         import toml
         secrets_path = ROOT / ".streamlit" / "secrets.toml"
         if not secrets_path.exists():
             print("[ERROR] .streamlit/secrets.toml no encontrado")
-            return None
+            return {}
         secrets = toml.load(str(secrets_path))
-        neo4j_cfg = secrets.get("neo4j", {})
-        uri  = neo4j_cfg.get("uri",  "bolt://localhost:7687")
-        user = neo4j_cfg.get("user", "neo4j")
-        pw   = neo4j_cfg.get("password", "")
-        if not pw:
+        cfg = secrets.get("neo4j", {})
+        if not cfg.get("password"):
             print("[ERROR] neo4j.password no configurado en secrets.toml")
-            print("        Agrega [neo4j] con uri/user/password")
-            print("        Neo4j Aura gratuito: https://neo4j.com/cloud/platform/aura-graph-database/")
-            return None
+            return {}
+        return cfg
     except Exception as exc:
         print(f"[ERROR] No se pudo leer secrets.toml: {exc}")
+        return {}
+
+
+def _get_neo4j_driver():
+    """
+    Establece conexión con Neo4j usando secrets.toml.
+    Soporta AuraDB Free (database = instance ID) y Neo4j Desktop (bolt://).
+    """
+    cfg = _get_neo4j_config()
+    if not cfg:
         return None
+
+    uri  = cfg.get("uri",  "bolt://localhost:7687")
+    user = cfg.get("user", "neo4j")
+    pw   = cfg["password"]
 
     try:
         from neo4j import GraphDatabase
@@ -387,6 +390,13 @@ def _get_neo4j_driver():
     except Exception as exc:
         print(f"[ERROR] Neo4j no disponible: {exc.__class__.__name__}: {exc}")
         return None
+
+
+def _session(driver):
+    """Abre sesión apuntando a la base de datos correcta (Aura Free usa ID de instancia)."""
+    cfg = _get_neo4j_config()
+    db  = cfg.get("database", "neo4j")
+    return driver.session(database=db)
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -413,7 +423,7 @@ def load_c01(driver, dry_run: bool = False) -> bool:
                     print(f"  {line}")
         else:
             try:
-                with driver.session() as session:
+                with _session(driver) as session:
                     result = session.run(cypher)
                     summary = result.consume()
                     counters = summary.counters
