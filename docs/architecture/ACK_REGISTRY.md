@@ -26,6 +26,35 @@ Lo que cambia canton a canton: ¿están cumpliendo con CE_18?
 Esta separación no es accidental — es la razón por la que la arquitectura escala.  
 Si se agrega `canton_id` a un ACK, se rompe este principio y el código lo rechazará.
 
+### Tipos de GAD en Ecuador — implicaciones para el ACK Registry
+
+Ecuador tiene cuatro tipos de GAD (CE Art.238):
+
+| Tipo | Base CE | Ejemplo | Scope actual QUIRA |
+|---|---|---|---|
+| GAD Municipal | Art.264 | 220 cantones (Montecristi, Guayaquil, Cuenca...) | ✅ ACTIVO |
+| Distrito Metropolitano | Art.266 | Quito (Distrito Metropolitano) | 🔵 Futuro |
+| GAD Provincial | Art.263 | 24 provincias | 🔵 Futuro |
+| GAD Parroquial Rural | Art.267 | 800+ parroquias rurales | 🔵 Futuro |
+
+**Quito no es un GAD Municipal ordinario.** Es un Distrito Metropolitano (CE Art.258) que:
+- Tiene todas las competencias del Art.264 (GAD Municipal)
+- **ADEMÁS** tiene competencias ampliadas del Art.266 (exclusivas del Distrito)
+- Usa "Concejo Metropolitano" en lugar de "Concejo Municipal"
+
+**Implicación para ACK Registry:**
+- `CE_264` es válido para Quito — aplica el mismo artículo
+- Quito adicionalmente necesita `ACK CE_266` (no creado aún — scope futuro)
+- `canton_id` sigue siendo arquitectónicamente imposible — la normativa aplica igual
+
+```
+El mismo CE_18 aplica a Quito Y a Montecristi.
+Lo que cambia: Quito tiene CE_264 + CE_266 como normas fundantes,
+               Montecristi solo tiene CE_264.
+```
+
+Esta distinción no rompe el Principio de Alcance Nacional — lo enriquece. El Kernel Nacional tiene dos variantes para competencias: GAD Municipal (la mayoría) y GAD Metropolitano (Quito). Ambas son nacionales; ninguna es cantonal.
+
 ---
 
 ## El problema que resuelve
@@ -264,15 +293,19 @@ El ACK Registry es esa entidad. Junto con el DCO (ADR-016), resuelve el problema
 
 ---
 
-## Estado de implementación (2026-06-01)
+## Estado de implementación (2026-06-01 · post-carga-inicial)
 
 ```
-data/ack_registry.json          ✅ CREADO — 10 ACKs prioritarios
-scripts/normativa/register_ack.py ✅ CREADO — CLI completo
-  --stats         OK (10 ACKs, 6 fundantes, 5 en C01)
-  --validate-all  OK (todos válidos, canton_id guardrail activo)
-  --traverse      OK (muestra cadena ACK → Dominio → Circuito)
-  --link-corpus   PENDIENTE (requiere Supabase + normativa_corpus)
+data/ack_registry.json          ✅ OPERACIONAL — 10 ACKs · 8/10 chunk_refs
+scripts/normativa/register_ack.py ✅ OPERACIONAL — CLI completo + encoding UTF-8
+  --stats         OK — hito COMPLETADO visible
+  --validate-all  OK — todos válidos · canton_id guardrail activo
+  --traverse      OK — LOTAIP_7 → Dom07 → C01/C02 → Neo4j-ready ✅
+  --link-corpus   OK — 8/10 operacional · LOTAIP_47/LOPC_72 corpus gaps documentados
+
+Corpus gaps (no bloquean arquitectura):
+  LOTAIP_47: Art.47 no en corpus F0.x — verificar artículo real
+  LOPC_72:   LOPC no ingresada en F0.2 — re-ingestar
 
 Opción A (JSON) IMPLEMENTADA para v0.
 Migrar a Opción C (JSON + Supabase sync) cuando registry tenga 50+ ACKs.
@@ -283,14 +316,18 @@ Migrar a Opción C (JSON + Supabase sync) cuando registry tenga 50+ ACKs.
 1. [x] Decidir Opción A vs C → RESUELTO: Opción A implementada
 2. [x] Script `register_ack.py` → COMPLETADO: CLI completo con --stats/--get/--filter/--link-corpus/--traverse/--validate-all
 3. [x] Carga inicial: 10 ACKs prioritarios → COMPLETADO en data/ack_registry.json
-4. [ ] Integrar verificación en QLEP: antes de extraer un ACK, revisar si ya existe en registry
-5. [ ] chunk_refs: ejecutar `--link-corpus ACK_ID` para cada ACK (requiere Supabase)
-6. [ ] Primer hito operacional: LOTAIP_7 → Dom07-A → C01 → CHS → Diagnóstico textual
-7. [ ] Revisión jurista: CE_61, CE_95, CE_100, LOPC_72, LOTAIP_34, LOTAIP_47
-8. [ ] Sub-ACKs: CE_264_1 (planificación) + CE_264_4 (agua potable) como ACKs específicos
+4. [x] chunk_refs: 8/10 completado · LOTAIP_47/LOPC_72 corpus gaps documentados
+5. [x] **Primer hito operacional: COMPLETADO** — LOTAIP_7 → Dom07 → C01/C02 → traversal ✅
+6. [ ] C01 → Neo4j: cargar Cypher de ADR-017 (prerequisito CHS live)
+7. [ ] Dom08 DCO: usar ADR-016 template · norma fundante CE_95 · Triángulo P-02
+8. [ ] Dom07 Layer 2: p07_transparencia.py con corpus + ACK Registry activo
+9. [ ] Revisión jurista: CE_61 · CE_95 · CE_100 · LOPC_72 · LOTAIP_34 · LOTAIP_47
+10. [ ] Sub-ACKs: CE_264_1 (planificación) + CE_264_4 (agua potable)
+11. [ ] ACK CE_266: competencias adicionales Distrito Metropolitano Quito (futuro)
+12. [ ] Integrar verificación en QLEP: antes de extraer, revisar si ACK ya existe
 
 ---
 
 *ACK Registry v0.2 · QUIRA Gov · Dylus Lab © 2026*  
 *Laboratorio: Montecristi · Destino: 221 municipios Ecuador*  
-*Siguiente: --link-corpus + primer diagnóstico sistémico real*
+*Primer hito operacional: COMPLETADO 2026-06-01 — LOTAIP_7 → Dom07 → C01/C02*

@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
 register_ack.py — ACK Registry Manager
 QUIRA Gov · Dylus Lab · 2026-06-01
@@ -37,9 +38,14 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+import io
 from datetime import date
 from pathlib import Path
 from typing import Any
+
+# Windows console encoding fix — permite mostrar caracteres UTF-8 correctamente
+if sys.platform == "win32" and hasattr(sys.stdout, "buffer"):
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
 # ── Rutas canónicas ─────────────────────────────────────────────────────────────
 REGISTRY_PATH = Path(__file__).parent.parent.parent / "data" / "ack_registry.json"
@@ -181,20 +187,36 @@ def add_ack(registry: dict, ack: dict, *, overwrite: bool = False) -> bool:
 
 # ── Link corpus ──────────────────────────────────────────────────────────────────
 
+def _setup_supabase() -> bool:
+    """
+    Parchea st.secrets con secrets.toml para usar db_config fuera de Streamlit.
+    Patron identico a ingest.py — fuente canónica.
+    """
+    ROOT = Path(__file__).parent.parent.parent
+    secrets_path = ROOT / ".streamlit" / "secrets.toml"
+    if not secrets_path.exists():
+        print(f"[ERROR] secrets.toml no encontrado: {secrets_path}")
+        return False
+    try:
+        import toml
+        import streamlit as st
+        raw = toml.load(str(secrets_path))
+        class _FakeSecrets:
+            def get(self, k, d=None): return raw.get(k, d)
+            def __getitem__(self, k): return raw[k]
+        st.secrets = _FakeSecrets()
+        return True
+    except Exception as exc:
+        print(f"[ERROR] No se pudo configurar secrets: {exc}")
+        return False
+
 
 def link_corpus(registry: dict, ack_id: str) -> int:
     """
     Busca en normativa_corpus los chunks correspondientes al articulo del ACK
     y actualiza chunk_refs[] con sus SHA256.
-    Requiere conexion a Supabase (sentinel.db_config).
+    Requiere Supabase activo y .streamlit/secrets.toml con mode=supabase.
     """
-    try:
-        sys.path.insert(0, str(Path(__file__).parent.parent.parent))
-        from sentinel.db_config import DbConn
-    except ImportError:
-        print("[ERROR] sentinel.db_config no disponible. Ejecutar desde quira-os/")
-        return 0
-
     ack = get_ack(registry, ack_id)
     if not ack:
         print(f"[NOT FOUND] ACK {ack_id} no esta en el registry.")
@@ -206,33 +228,39 @@ def link_corpus(registry: dict, ack_id: str) -> int:
     try:
         articulo_num = int(articulo_str)
     except ValueError:
-        print(f"[ERROR] articulo '{articulo_str}' no es un entero. Verifica el ACK.")
+        print(f"[ERROR] articulo '{articulo_str}' no es un entero en el ACK.")
         return 0
 
-    db = DbConn()
-    conn = db.connect()
-    if not conn:
-        print("[ERROR] No se pudo conectar a la base de datos.")
+    if not _setup_supabase():
         return 0
 
     try:
-        cursor = conn.cursor()
+        ROOT = Path(__file__).parent.parent.parent
+        sys.path.insert(0, str(ROOT))
+        from sentinel.db_config import get_connection
+    except ImportError as exc:
+        print(f"[ERROR] sentinel.db_config no disponible: {exc}")
+        return 0
+
+    try:
+        db = get_connection()
+        cursor = db.cursor()
         cursor.execute(
             """
             SELECT sha256, articulo_num, chunk_seq, palabras
             FROM normativa_corpus
-            WHERE norma_sigla = %s AND articulo_num = %s
+            WHERE norma_sigla = ? AND articulo_num = ?
             ORDER BY chunk_seq
             """,
             (sigla, articulo_num),
         )
-        rows = cursor.fetchall()
+        rows = cursor.fetchall()  # -> list[dict] por el wrapper _Cursor
         chunk_refs = [
             {
-                "sha256": r[0],
-                "articulo_num": r[1],
-                "chunk_seq": r[2],
-                "palabras": r[3],
+                "sha256": r["sha256"],
+                "articulo_num": r["articulo_num"],
+                "chunk_seq": r["chunk_seq"],
+                "palabras": r["palabras"],
             }
             for r in rows
         ]
@@ -240,13 +268,12 @@ def link_corpus(registry: dict, ack_id: str) -> int:
         status = "OK" if chunk_refs else "WARN"
         print(f"[{status}] {len(chunk_refs)} chunks vinculados a {ack_id} ({sigla} Art.{articulo_num})")
         if not chunk_refs:
-            print(f"       Verifica que {sigla} este en normativa_corpus (milestone F0.x completado).")
+            print(f"       Verifica que {sigla} este en normativa_corpus (milestone F0.x).")
+        db.close()
         return len(chunk_refs)
     except Exception as exc:
         print(f"[ERROR] Query fallida: {exc}")
         return 0
-    finally:
-        cursor.close()
 
 
 # ── Traverse: recorrido completo ACK → Dominio → Circuito ───────────────────────
@@ -272,7 +299,7 @@ def traverse_ack(registry: dict, ack_id: str) -> None:
     print(f"  Tipo:     {ack['tipo']}")
     print(f"  Nombre:   {ack['nombre']}")
     print(f"  Fundante: {'SI' if ack['fundante'] else 'no'}")
-    print(f"  Chunks:   {len(ack['chunk_refs'])} en normativa_corpus {'✓' if ack['chunk_refs'] else '(pendiente --link-corpus)'}")
+    print(f"  Chunks:   {len(ack['chunk_refs'])} en normativa_corpus {'[OK]' if ack['chunk_refs'] else '(pendiente --link-corpus)'}")
 
     print(f"\n  Dominios ancla:")
     for dom in ack.get("dominios", []):
@@ -372,10 +399,24 @@ def print_stats(registry: dict) -> None:
         for circ, count in sorted(by_circuito.items()):
             print(f"    {circ}   {count}")
 
-    print(f"\n  Primer hito operacional pendiente:")
-    print(f"    LOTAIP_7 (chunks) -> Dom07-A (DCO) -> C01 (Circuito) -> CHS -> Diagnostico")
-    print(f"    Ejecutar: python register_ack.py --link-corpus LOTAIP_7")
-    print(f"              python register_ack.py --traverse LOTAIP_7")
+    # Estado del primer hito operacional
+    lotaip7 = next((a for a in acks if a["ack_id"] == "LOTAIP_7"), None)
+    if lotaip7 and lotaip7.get("chunk_refs"):
+        print(f"\n  Primer hito operacional: COMPLETADO")
+        print(f"    LOTAIP_7 (sha256 ok) -> Dom07 (DCO) -> C01/C02 (Circuitos) -> Neo4j")
+        print(f"    Ejecutar: python register_ack.py --traverse LOTAIP_7")
+        print(f"    Siguiente: p07_transparencia.py (Layer 2 Dom07) + Dom08 DCO (ADR-016)")
+    else:
+        print(f"\n  Primer hito operacional: PENDIENTE")
+        print(f"    LOTAIP_7 (chunks) -> Dom07-A (DCO) -> C01 (Circuito) -> CHS -> Diagnostico")
+        print(f"    Ejecutar: python register_ack.py --link-corpus LOTAIP_7")
+        print(f"              python register_ack.py --traverse LOTAIP_7")
+    print(f"\n  Corpus gaps identificados:")
+    for a in acks:
+        if not a.get("chunk_refs"):
+            print(f"    {a['ack_id']}: Art.{a['norma']['articulo']} no en normativa_corpus "
+                  f"({a['norma']['sigla']} version F0.x). "
+                  f"Pendiente re-ingesta o verificacion articulo.")
     print(f"{'='*60}\n")
 
 

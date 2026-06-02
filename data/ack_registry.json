@@ -9,9 +9,12 @@
     "ultima_actualizacion": "2026-06-01",
     "extractor_default": "QLEP-v1.0",
     "notas_pendientes": [
-      "chunk_refs vacíos — poblar con: python register_ack.py --link-corpus ACK_ID",
-      "revisado_por_experto=false — pendiente validación jurista especializado",
-      "CE_61, CE_100, LOPC_72 requieren verificación artículo exacto"
+      "chunk_refs 8/10 — LOTAIP_47 y LOPC_72 con corpus gaps documentados en meta.nota",
+      "revisado_por_experto=false para todos — pendiente validación jurista especializado",
+      "LOTAIP_47: verificar Art. sanción en texto impreso LOTAIP (original 2004 vs reformado)",
+      "LOPC_72: ingestar LOPC completa en milestone F0.2 ampliado",
+      "Sub-ACKs pendientes: CE_264_1 (planificación) + CE_264_4 (agua potable)",
+      "Dom08 DCO pendiente: usar ADR-016 template con CE_95 como norma fundante"
     ]
   },
   "acks": [
@@ -27,18 +30,37 @@
         "jerarquia": 0,
         "vigente": "2008-10-20"
       },
-      "actor_obligado": ["GAD-Municipal", "Instituciones del Estado"],
-      "actor_beneficiario": ["Ciudadanía"],
+      "actor_obligado": [
+        "GAD-Municipal",
+        "Instituciones del Estado"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía"
+      ],
       "obligacion": "Toda persona tiene derecho a acceder libremente a la información generada en entidades públicas, o en las privadas que manejen fondos del Estado o realicen funciones públicas. No existirá reserva de información excepto en los casos expresamente establecidos en la ley.",
-      "dominios": ["Dom07"],
-      "circuitos": ["C01"],
+      "dominios": [
+        "Dom07"
+      ],
+      "circuitos": [
+        "C01"
+      ],
       "fundante": true,
       "vigente": true,
       "revisado_por_experto": false,
-      "chunk_refs": [],
+      "chunk_refs": [
+        {
+          "sha256": "848f507bcaf4654bf78887e3ac5291fc48d738bc5c8f2749dc9fdc502cbd7c07",
+          "articulo_num": 18,
+          "chunk_seq": 0,
+          "palabras": 108
+        }
+      ],
       "obsidian_nota": "CE_18.md",
       "qlep_yaml": null,
-      "relaciones": ["LOTAIP", "LOPC"],
+      "relaciones": [
+        "LOTAIP",
+        "LOPC"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-01",
         "extractor": "QLEP-v1.0",
@@ -59,18 +81,35 @@
         "jerarquia": 0,
         "vigente": "2008-10-20"
       },
-      "actor_obligado": ["Estado", "GAD-Municipal"],
-      "actor_beneficiario": ["Ciudadanía ecuatoriana"],
+      "actor_obligado": [
+        "Estado",
+        "GAD-Municipal"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía ecuatoriana"
+      ],
       "obligacion": "Las ecuatorianas y ecuatorianos gozan de derechos de participación política, incluyendo presentar proyectos de iniciativa popular, ser consultados en los procesos que les afecten y fiscalizar los actos del poder público.",
-      "dominios": ["Dom07"],
+      "dominios": [
+        "Dom07"
+      ],
       "circuitos": [],
       "fundante": true,
       "vigente": true,
       "revisado_por_experto": false,
-      "chunk_refs": [],
+      "chunk_refs": [
+        {
+          "sha256": "982c97e9b32f6e278eee6232b0a1c1ace1558fd122bcfc127c4276ad83834fff",
+          "articulo_num": 61,
+          "chunk_seq": 0,
+          "palabras": 163
+        }
+      ],
       "obsidian_nota": "CE_61.md",
       "qlep_yaml": null,
-      "relaciones": ["CE_95", "LOPC"],
+      "relaciones": [
+        "CE_95",
+        "LOPC"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-01",
         "extractor": "QLEP-v1.0",
@@ -91,18 +130,39 @@
         "jerarquia": 0,
         "vigente": "2008-10-20"
       },
-      "actor_obligado": ["GAD-Municipal", "Estado"],
-      "actor_beneficiario": ["Ciudadanía"],
+      "actor_obligado": [
+        "GAD-Municipal",
+        "Estado"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía"
+      ],
       "obligacion": "Las ciudadanas y ciudadanos, en forma individual y colectiva, participarán de manera protagónica en la toma de decisiones, planificación y gestión de los asuntos públicos, y en el control popular de las instituciones del Estado y la sociedad, y de sus representantes.",
-      "dominios": ["Dom07", "Dom08"],
-      "circuitos": ["C01"],
+      "dominios": [
+        "Dom07",
+        "Dom08"
+      ],
+      "circuitos": [
+        "C01"
+      ],
       "fundante": true,
       "vigente": true,
       "revisado_por_experto": false,
-      "chunk_refs": [],
+      "chunk_refs": [
+        {
+          "sha256": "b92f8bff98e7ecc396c345febdadaacff534862b691f159b90ab07ff9aaf82e5",
+          "articulo_num": 95,
+          "chunk_seq": 0,
+          "palabras": 108
+        }
+      ],
       "obsidian_nota": "CE_95.md",
       "qlep_yaml": null,
-      "relaciones": ["CE_18", "CE_100", "LOPC"],
+      "relaciones": [
+        "CE_18",
+        "CE_100",
+        "LOPC"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-01",
         "extractor": "QLEP-v1.0",
@@ -123,18 +183,39 @@
         "jerarquia": 0,
         "vigente": "2008-10-20"
       },
-      "actor_obligado": ["GAD-Municipal", "Concejo"],
-      "actor_beneficiario": ["Ciudadanía", "Organizaciones sociales"],
+      "actor_obligado": [
+        "GAD-Municipal",
+        "Concejo"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía",
+        "Organizaciones sociales"
+      ],
       "obligacion": "En todos los niveles de gobierno se conformarán instancias de participación integradas por autoridades electas, representantes del régimen dependiente y representantes de la sociedad del ámbito territorial de cada nivel de gobierno, que elaborarán planes y políticas, mejorarán la calidad de la inversión pública, y elaborarán presupuestos participativos.",
-      "dominios": ["Dom08"],
-      "circuitos": ["C01"],
+      "dominios": [
+        "Dom08"
+      ],
+      "circuitos": [
+        "C01"
+      ],
       "fundante": true,
       "vigente": true,
       "revisado_por_experto": false,
-      "chunk_refs": [],
+      "chunk_refs": [
+        {
+          "sha256": "a2ee651aa41b53a2541a20973b3ec650ea2eec636ccacc0c28d1d7ac7c8a4ace",
+          "articulo_num": 100,
+          "chunk_seq": 0,
+          "palabras": 128
+        }
+      ],
       "obsidian_nota": "CE_100.md",
       "qlep_yaml": null,
-      "relaciones": ["CE_95", "COOTAD_302", "LOPC"],
+      "relaciones": [
+        "CE_95",
+        "COOTAD_302",
+        "LOPC"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-01",
         "extractor": "QLEP-v1.0",
@@ -155,18 +236,40 @@
         "jerarquia": 1,
         "vigente": "2004-05-18"
       },
-      "actor_obligado": ["GAD-Municipal", "Alcalde", "Director-Comunicacion"],
-      "actor_beneficiario": ["Ciudadanía"],
+      "actor_obligado": [
+        "GAD-Municipal",
+        "Alcalde",
+        "Director-Comunicacion"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía"
+      ],
       "obligacion": "Las instituciones del Estado deben difundir a través de un portal de información o página web una lista de información mínima actualizada que incluye: estructura orgánica, base legal, regulaciones, presupuesto, directorio de funcionarios, información de contratación pública, y demás establecida en los 14 literales del artículo.",
-      "dominios": ["Dom07"],
-      "circuitos": ["C01", "C02"],
+      "dominios": [
+        "Dom07"
+      ],
+      "circuitos": [
+        "C01",
+        "C02"
+      ],
       "fundante": false,
       "vigente": true,
       "revisado_por_experto": false,
-      "chunk_refs": [],
+      "chunk_refs": [
+        {
+          "sha256": "415a04b64d24208424018e8b3f24126c3a13195c7129cc9ec31772389f32695b",
+          "articulo_num": 7,
+          "chunk_seq": 0,
+          "palabras": 253
+        }
+      ],
       "obsidian_nota": "LOTAIP_7.md",
       "qlep_yaml": null,
-      "relaciones": ["CE_18", "LOTAIP_34", "LOTAIP_47"],
+      "relaciones": [
+        "CE_18",
+        "LOTAIP_34",
+        "LOTAIP_47"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-01",
         "extractor": "QLEP-v1.0",
@@ -187,18 +290,38 @@
         "jerarquia": 1,
         "vigente": "2004-05-18"
       },
-      "actor_obligado": ["GAD-Municipal", "Responsable-Informacion"],
-      "actor_beneficiario": ["Solicitante de información"],
+      "actor_obligado": [
+        "GAD-Municipal",
+        "Responsable-Informacion"
+      ],
+      "actor_beneficiario": [
+        "Solicitante de información"
+      ],
       "obligacion": "La institución tiene 10 días hábiles para responder una solicitud de información pública. Si la información es voluminosa, se puede extender 5 días más comunicando al solicitante.",
-      "dominios": ["Dom07"],
-      "circuitos": ["C01"],
+      "dominios": [
+        "Dom07"
+      ],
+      "circuitos": [
+        "C01"
+      ],
       "fundante": false,
       "vigente": true,
       "revisado_por_experto": false,
-      "chunk_refs": [],
+      "chunk_refs": [
+        {
+          "sha256": "7e6fb9b6d0e8690871798eb8e399234f677b915ac9a18c5f698236e2ed6c5c69",
+          "articulo_num": 34,
+          "chunk_seq": 0,
+          "palabras": 39
+        }
+      ],
       "obsidian_nota": "LOTAIP_34.md",
       "qlep_yaml": null,
-      "relaciones": ["CE_18", "LOTAIP_7", "LOTAIP_47"],
+      "relaciones": [
+        "CE_18",
+        "LOTAIP_7",
+        "LOTAIP_47"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-01",
         "extractor": "QLEP-v1.0",
@@ -219,10 +342,17 @@
         "jerarquia": 1,
         "vigente": "2004-05-18"
       },
-      "actor_obligado": ["Defensor del Pueblo", "CPCCS"],
-      "actor_beneficiario": ["Ciudadanía"],
+      "actor_obligado": [
+        "Defensor del Pueblo",
+        "CPCCS"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía"
+      ],
       "obligacion": "El incumplimiento de las obligaciones de transparencia activa y pasiva establecidas en la LOTAIP será sancionado según las disposiciones del artículo, incluyendo multas y responsabilidad administrativa de los funcionarios.",
-      "dominios": ["Dom07"],
+      "dominios": [
+        "Dom07"
+      ],
       "circuitos": [],
       "fundante": false,
       "vigente": true,
@@ -230,13 +360,17 @@
       "chunk_refs": [],
       "obsidian_nota": "LOTAIP_47.md",
       "qlep_yaml": null,
-      "relaciones": ["LOTAIP_7", "LOTAIP_34", "CE_18"],
+      "relaciones": [
+        "LOTAIP_7",
+        "LOTAIP_34",
+        "CE_18"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-01",
         "extractor": "QLEP-v1.0",
         "version": "1.0",
         "confianza": "media",
-        "nota": "Pendiente verificación artículo exacto de sanciones LOTAIP. Referenciado en QLEP skill como ejemplo de tipo 'sancion' Dom07."
+        "nota": "CORPUS GAP: normativa_corpus (F0.2) tiene LOTAIP hasta Art.44 aprox. — Art.47 no encontrado. Acciones requeridas: (1) verificar artículo exacto de sanciones en texto impreso LOTAIP (podría ser Art.20/21 en versión original 2004, o Art.47 en versión reformada), (2) re-ingestar versión completa LOTAIP para poblar chunk_refs. Hasta resolver, este ACK queda como placeholder normativo del tipo 'sancion' Dom07."
       }
     },
     {
@@ -251,10 +385,18 @@
         "jerarquia": 1,
         "vigente": "2010-04-20"
       },
-      "actor_obligado": ["GAD-Municipal", "Alcalde"],
-      "actor_beneficiario": ["Ciudadanía", "Organizaciones sociales"],
+      "actor_obligado": [
+        "GAD-Municipal",
+        "Alcalde"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía",
+        "Organizaciones sociales"
+      ],
       "obligacion": "Los GADs establecerán mecanismos de participación ciudadana incluyendo cabildos abiertos, rendición de cuentas, y presupuestos participativos según los procedimientos establecidos en la LOPC.",
-      "dominios": ["Dom08"],
+      "dominios": [
+        "Dom08"
+      ],
       "circuitos": [],
       "fundante": false,
       "vigente": true,
@@ -262,13 +404,17 @@
       "chunk_refs": [],
       "obsidian_nota": "LOPC_72.md",
       "qlep_yaml": null,
-      "relaciones": ["CE_95", "CE_100", "COOTAD_302"],
+      "relaciones": [
+        "CE_95",
+        "CE_100",
+        "COOTAD_302"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-01",
         "extractor": "QLEP-v1.0",
         "version": "1.0",
         "confianza": "media",
-        "nota": "Pendiente verificación artículo exacto. LOPC regula mecanismos de participación en todos los niveles. Art.72 podría ser sobre cabildos abiertos o un mecanismo específico Dom08. Requiere QLEP Dom08."
+        "nota": "CORPUS GAP: LOPC no estaba en el corpus F0.2 (milestone Transparencia). La LOPC completa tiene 100+ artículos — Art.72 existe pero no fue ingresada en F0.x. Acciones requeridas: (1) ejecutar /qlep --norma LOPC para verificar Art.72 es sobre mecanismos participación GAD, (2) ingestar LOPC en milestone F0.2 ampliado. Hasta resolver, este ACK es placeholder normativo 'procedimiento' Dom08."
       }
     },
     {
@@ -283,24 +429,45 @@
         "jerarquia": 0,
         "vigente": "2008-10-20"
       },
-      "actor_obligado": ["GAD-Municipal", "Alcalde", "Concejo"],
-      "actor_beneficiario": ["Ciudadanía cantonal"],
+      "actor_obligado": [
+        "GAD-Municipal",
+        "Alcalde",
+        "Concejo"
+      ],
+      "actor_beneficiario": [
+        "Ciudadanía cantonal"
+      ],
       "obligacion": "Los gobiernos municipales tendrán las siguientes competencias exclusivas, sin perjuicio de otras que determine la ley: 1) Planificar el desarrollo cantonal y formular los planes de ordenamiento territorial; 2) Ejercer el control sobre el uso y ocupación del suelo; 4) Prestar los servicios públicos de agua potable, alcantarillado y otros.",
-      "dominios": ["Dom04", "Dom10"],
-      "circuitos": ["C03"],
+      "dominios": [
+        "Dom04",
+        "Dom10"
+      ],
+      "circuitos": [
+        "C03"
+      ],
       "fundante": true,
       "vigente": true,
       "revisado_por_experto": false,
-      "chunk_refs": [],
+      "chunk_refs": [
+        {
+          "sha256": "8a610fc989a27680bc74773949859e89e1a17000a4f3e8c6c4a7f7b8f9906958",
+          "articulo_num": 264,
+          "chunk_seq": 0,
+          "palabras": 304
+        }
+      ],
       "obsidian_nota": "CE_264.md",
       "qlep_yaml": null,
-      "relaciones": ["COOTAD", "COPLAFIP"],
+      "relaciones": [
+        "COOTAD",
+        "COPLAFIP"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-01",
         "extractor": "QLEP-v1.0",
         "version": "1.0",
         "confianza": "alta",
-        "nota": "ACK de nivel artículo completo. Los numerales específicos (264_1, 264_4, etc.) deben extraerse como sub-ACKs via QLEP al procesar dominios Dom04 y Dom10. Este ACK es el ancla general de competencias municipales."
+        "nota": "ACK de nivel artículo completo. Los numerales específicos (264_1=planificación, 264_4=agua potable, etc.) deben extraerse como sub-ACKs via QLEP al procesar Dom04 y Dom10. NOTA DE REPLICABILIDAD: CE_264 aplica a todos los GAD Municipales del Ecuador (220 cantones regulares). El Distrito Metropolitano de Quito opera ADICIONALMENTE bajo CE Art.266 (competencias ampliadas de distritos metropolitanos). Al escalar QUIRA a Quito, crear ACK CE_266 complementario — CE_264 sigue siendo válido para Quito, CE_266 añade las competencias extendidas. Referencia: CE Art.258 (régimen especial distritos metropolitanos)."
       }
     },
     {
@@ -315,18 +482,39 @@
         "jerarquia": 1,
         "vigente": "2010-10-19"
       },
-      "actor_obligado": ["GAD-Municipal", "Concejo", "Director-Financiero"],
-      "actor_beneficiario": ["Grupos de atención prioritaria", "Patronato Municipal"],
+      "actor_obligado": [
+        "GAD-Municipal",
+        "Concejo",
+        "Director-Financiero"
+      ],
+      "actor_beneficiario": [
+        "Grupos de atención prioritaria",
+        "Patronato Municipal"
+      ],
       "obligacion": "Los gobiernos municipales asignarán al menos el 10% de sus ingresos no tributarios para el financiamiento de programas sociales dirigidos a grupos de atención prioritaria, conforme dispone la Constitución.",
-      "dominios": ["Dom12"],
+      "dominios": [
+        "Dom12"
+      ],
       "circuitos": [],
       "fundante": true,
       "vigente": true,
       "revisado_por_experto": false,
-      "chunk_refs": [],
+      "chunk_refs": [
+        {
+          "sha256": "8ba19c20585444312164f89ea43886b7e4db8f1750a80b6d2d80ead6db7763f6",
+          "articulo_num": 249,
+          "chunk_seq": 0,
+          "palabras": 71
+        }
+      ],
       "obsidian_nota": "COOTAD_249.md",
       "qlep_yaml": null,
-      "relaciones": ["CE_35", "CE_36", "CE_37", "CE_38"],
+      "relaciones": [
+        "CE_35",
+        "CE_36",
+        "CE_37",
+        "CE_38"
+      ],
       "meta": {
         "fecha_extraccion": "2026-06-01",
         "extractor": "QLEP-v1.0",

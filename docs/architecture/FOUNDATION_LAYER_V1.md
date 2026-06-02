@@ -212,7 +212,7 @@ Esta vista no reemplaza los 12 dominios — los complementa con la dimensión ca
 |---|---|---|---|
 | 1 | `TRES_CEREBROS_QUIRA.md` | Modelo epistemológico · 3 preguntas · 3 cerebros · Ley Cero | ✅ CONGELADO |
 | 2 | `ADR-016_DCO_*.md` | Formato DCO · 8 componentes · Dom07 caso referencia | ✅ CONGELADO v1.0 |
-| 3 | `ACK_REGISTRY.md` | Schema ACK · catálogo maestro · 3 opciones implementación | ✅ DISEÑADO (impl. pendiente) |
+| 3 | `ACK_REGISTRY.md` | Schema ACK · catálogo maestro · Opción A implementada | ✅ OPERACIONAL v0.2 (10 ACKs · traversal ✅) |
 | 4 | `ADR-017_Circuitos_*.md` | Arquitectura circuitos · C01 completo · CHS fórmula | ✅ CONGELADO v1.0 |
 | 5 | `FOUNDATION_LAYER_V1.md` | Este documento · regla de extensión · 6 niveles madurez | ✅ CONGELADO v1.0 |
 
@@ -220,32 +220,43 @@ Estos cinco documentos son la Constitución QUIRA. Todo lo demás en el sistema 
 
 ---
 
-## Estado del proyecto al 2026-06-01
+## Estado del proyecto al 2026-06-01 (post-carga-inicial ACK Registry)
 
 ```
 Foundation Layer v1.0: ✅ DECLARADA Y CONGELADA
   Pilar I  (3 Cerebros)  : ✅ COMPLETO
   Pilar II (ADR-016 DCO) : ✅ COMPLETO · Dom07 caso referencia
-  Pilar III (ACK Registry): ✅ DISEÑADO · implementación pendiente
+  Pilar III (ACK Registry): ✅ OPERACIONAL v0.2 — 10 ACKs · CLI · traversal ✅
 
 Madurez actual:
   L0 Excel Canónico   : ✅ ACTIVO (v5.5_TGI · Sprint Soberanía completado)
-  L1 Corpus + ACK     : ✅ CORPUS 7,740 chunks · ACK Registry pendiente carga
+  L1 Corpus + ACK     : ✅ CORPUS 7,740 chunks · ACK Registry 10 ACKs · 8/10 chunk_refs
   L2 DCO              : ✅ Dom07 completo · Dom08-Dom12 pendientes
-  L3 Circuitos        : ✅ ADR-017 congelado · C01 pendiente Neo4j
+  L3 Circuitos        : ✅ ADR-017 congelado · C01 pendiente carga Neo4j
   L4 Obsidian+Orient  : ✅ Dom07 nota · 39 notas · /quira-orient v1.0
   L5 GeoTwin+SAT+Sentinel: 🔵 SAT activo · resto pendiente roadmap O.2+
 
+Primer hito operacional: COMPLETADO
+  LOTAIP_7 (sha256: 415a04b6) → Dom07 (DCO ADR-016) → C01/C02 (ADR-017)
+  Estado: traversal completo · Neo4j pendiente · CHS calculable (datos pendientes)
+
+Corpus gaps identificados (no bloquean la arquitectura):
+  LOTAIP_47 (Art.47): no en corpus F0.x · verificar artículo real + re-ingestar
+  LOPC_72 (Art.72):   LOPC no ingresada en corpus F0.2 · ingestar F0.2 ampliado
+
 Próximos pasos — ejecución paralela posible:
   Secuencial obligatorio:
-    1. ACK Registry: register_ack.py + carga CE_18 + 9 ACKs prioritarios
-    2. C01 → Neo4j: cargar circuito desde Cypher ADR-017
-  Paralelo viable (base doctrinal cerrada en ambos):
-    3a. Dom08 DCO: Triángulo P-02 Dom07+Dom08+Dom09 (cierra C01 Layer 2)
-    3b. Dom07 Layer 2: p07_transparencia.py con corpus F0.2 + ADR-016 activo
+    1. C01 → Neo4j: cargar Cypher ADR-017 (prerequisito para CHS live)
+  Paralelo viable:
+    2a. Dom08 DCO: Triángulo P-02 Dom07+Dom08+Dom09 · norma fundante CE_95
+    2b. Dom07 Layer 2: p07_transparencia.py con corpus F0.2 + ACK Registry activo
   Posterior:
-    4. Dom09 DCO: Rendición de Cuentas (cierra Triángulo P-02)
-    5. C02 spec completa: requiere QLEP Dom03 (LOSNCP ACKs)
+    3. Dom09 DCO: Rendición de Cuentas (cierra Triángulo P-02)
+    4. C02 spec completa: requiere QLEP Dom03 (LOSNCP ACKs)
+    5. Revisión jurista: CE_61 · CE_95 · CE_100 · LOPC_72 · LOTAIP_34 · LOTAIP_47
+  Corpus expansión:
+    6. LOPC ingestión F0.2 ampliado (LOPC_72 + otros ACKs Dom08)
+    7. LOTAIP versión completa (verificar Art.47 vs Art.20-21 en texto impreso)
 ```
 
 ---
@@ -299,9 +310,9 @@ El dominio es un nodo dentro del diagnóstico.
 
 Esto es lo que hace que QUIRA pase de ser un dashboard a ser un motor de gobernanza.
 
-### Scorecard de madurez QUIRA (2026-06-01)
+### Scorecard de madurez QUIRA (2026-06-01 · v2 post-carga-inicial)
 
-*(Evaluación conjunta Dylus Lab + colega asesor)*
+*(Evaluación conjunta Dylus Lab + colega asesor — actualizado tras ACK Registry v0.2)*
 
 | Capa | Score | Evidencia |
 |---|---|---|
@@ -310,15 +321,18 @@ Esto es lo que hace que QUIRA pase de ser un dashboard a ser un motor de goberna
 | Arquitectura | 10/10 | ADR-013/016/017 congelados · 3 Cerebros · Ley Cero definida |
 | Circuitos | 6/10 | ADR-017 diseño completo · C01 listo · C02/C03 parciales · Neo4j pendiente |
 | Neo4j operativo | 4/10 | Fallback activo (Gold Master) · grafo real no cargado · Cypher C01 listo |
-| ACK Knowledge Graph | 1/10 | 10 ACKs identificados · 0 cargados · register_ack.py no creado ← brecha crítica |
-| Diagnóstico sistémico | 3/10 | C01 en papel · sin traversal real · sin CHS calculado live |
+| ACK Knowledge Graph | 6/10 | 10 ACKs cargados · register_ack.py CLI completo · 8/10 chunk_refs · traversal LOTAIP_7→C01 ✅ |
+| Diagnóstico sistémico | 3/10 | Traversal operacional · sin CHS calculado live · sin Neo4j real |
 | Predicción territorial | 1/10 | SAT activo (3 alertas) · GeoTwin pendiente · Sentinel en desarrollo |
+| **Replicabilidad nacional** | **7/10** | Principio Alcance Nacional declarado · canton_id guardrail activo · Kernel+Instancias documentado · 221 municipios destino |
 
-**Lectura del scorecard:**
+**Lectura del scorecard (v2):**
 
-Las capas donde el score es ≥ 9 ya no son el problema. Las capas donde el score es ≤ 4 son exactamente el orden de la fase operacional.
+El salto más significativo de v1→v2 es el ACK Knowledge Graph (1→6): el registry pasó de ser una propuesta a ser un catálogo operacional con CLI, 10 ACKs, 8 SHA256 verificados y traversal completo demostrado.
 
-La brecha más importante no es Neo4j (4/10) — es el ACK Knowledge Graph (1/10). Sin ACKs cargados, Neo4j no tiene átomos que conectar. Los primeros 10 ACKs desbloquean 3 otros scores simultáneamente.
+La nueva dimensión "Replicabilidad nacional" (7/10) refleja que la decisión más estratégica del sprint no fue técnica sino ontológica: **el campo `canton_id` es arquitectónicamente imposible en el ACK Registry**. La normativa es nacional; los datos operacionales son cantonales. Esta separación — Kernel Nacional + Instancias — es lo que hace que QUIRA sea escalable a 221 municipios sin reimplementación.
+
+Las brechas que restan: Neo4j sin datos (4/10), diagnóstico sin CHS live (3/10), predicción incipiente (1/10). Estas son exactamente el roadmap operacional de los próximos sprints.
 
 ### La transición: Definir → Demostrar
 
