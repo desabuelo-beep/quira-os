@@ -141,20 +141,66 @@ Sin Dom09-B, el presupuesto participativo es una consulta decorativa. Con Dom09-
 
 ## Componente 5 — Evidencia Canónica
 
-### Evidencia L0 (Excel Canónico / registros locales GAD)
+La evidencia de Dom09 opera en 4 sub-niveles. Esta taxonomía también aplica a Dom08 (ciclo PP).
 
-| Tipo | Fuente | Verifica |
+### L4 — Compliance normativo (verificación institucional)
+
+| Evidencia | Fuente | Verifica |
 |---|---|---|
-| Informe de RC publicado | Portal LOTAIP + sistema CPCCS | Dom09-A: RC realizada |
-| Calificación ciudadana | Sistema CPCCS | Dom09-A: calidad RC |
-| Actas asamblea de evaluación | Secretaría Municipal | Dom09-A: proceso deliberativo |
-| Comparativo PP vs. ejecución | POA-PAC + actas PP | Dom09-B: cumplimiento del mandato participativo |
+| Certificado de cumplimiento CPCCS | Sistema CPCCS | ¿El GAD realizó la RC según metodología? |
+| Calificación ciudadana CPCCS | Sistema CPCCS | ¿Cómo calificó la ciudadanía la RC? (0-100) |
+| Pronunciamientos CGE | Contraloría | ¿RC reveló irregularidades? |
+
+### L1/L2 — Registros administrativos (documentos estructurados)
+
+| Evidencia | Fuente | Verifica |
+|---|---|---|
+| Informe técnico RC uploadado a CPCCS | Plataforma CPCCS | Dom09-A: contenido del proceso (plan + presupuesto + POA ejecutado) |
+| Comparativo PP planificado vs ejecutado | POA-PAC + actas PP | Dom09-B: ¿se hizo lo que la ciudadanía decidió? |
 | Informe ejecución presupuestaria | SIGEF / sistema financiero GAD | Dom09-B: cuánto se ejecutó de lo participado |
 
-### Evidencia L4 (compliance normativo)
+El informe técnico CPCCS **no es un documento libre** — sigue la estructura de `RES-CPCCS-RC-2026`. Incluye secciones obligatorias: plan de trabajo, presupuesto aprobado vs ejecutado, avance POA, obras ejecutadas, participación ciudadana del año. Sin upload al sistema CPCCS, la RC no existe jurídicamente aunque haya ocurrido el evento.
 
-- Informe CPCCS de cumplimiento de RC (¿el GAD cumplió el proceso metodológico?)
-- Pronunciamientos CGE si RC revela irregularidades
+### L0 — Evidencia operacional (registros del proceso)
+
+| Evidencia | Fuente | Verifica |
+|---|---|---|
+| Actas de asamblea de evaluación ciudadana | Secretaría Municipal | Proceso deliberativo ocurrió |
+| Lista de asistentes (nombre + firma) | Secretaría Municipal | Participación real en el evento |
+| Convocatoria pública (≥72h anticipación) | Portal / redes sociales GAD | Publicidad del proceso |
+
+### L0-digital — Evidencia pública verificable (nueva sub-capa)
+
+**Esta capa no existía en versiones anteriores del modelo.** Surge de la observación de que los GADs generan evidencia digital pública de sus procesos participativos que es:
+- **Machine-verifiable**: una URL es comprobable automáticamente
+- **Difícil de falsificar**: un video de 2 horas es más robusto que un acta de una página
+- **Legalmente mandatada**: `LOPC_101` (ya en Neo4j) exige que los GADs tengan portal actualizado con esta información
+
+| Evidencia | Campos | Norma que la requiere |
+|---|---|---|
+| **Video evento RC** | URL + plataforma + fecha + duración | LOPC_101 (democracia electrónica) |
+| **Video evento PP** | URL + plataforma + fecha + duración | LOPC_101 (democracia electrónica) |
+| URL informe RC en portal LOTAIP | URL verificable | LOTAIP_7 (transparencia activa) |
+| Transmisión en vivo (si aplica) | URL + plataforma | LOPC_101 |
+
+**Implicación doble del video RC:**
+1. Si el video **existe** → prueba compliance Dom09 (RC ocurrió, fue pública) Y compliance LOPC_101 (democracia electrónica activa)
+2. Si el video **no existe** → evidencia de incumplimiento de LOPC_101, y debilita Dom09
+
+El video del Alcalde en la asamblea de rendición de cuentas es la evidencia más robusta del ciclo democrático: no puede retroactivamente ser "arreglado", tiene fecha y hora, y es accesible a cualquier ciudadano sin necesidad de solicitud formal.
+
+**Campos para el Gold Master (L0 — columnas futuras):**
+
+```
+RC_VIDEO_URL          = "https://youtube.com/watch?v=..."
+RC_VIDEO_FECHA        = "2026-01-15"
+RC_VIDEO_PLATAFORMA   = "YouTube / Facebook / Portal GAD"
+RC_VIDEO_DURACION_MIN = 120
+RC_CPCCS_INFORME_URL  = "https://rendiciondecuentas.cpccs.gob.ec/..."
+RC_CPCCS_CALIFICACION = 87.3
+PP_VIDEO_URL          = "https://..."
+PP_ACTA_URL           = "https://..."
+```
 
 ---
 
@@ -162,12 +208,16 @@ Sin Dom09-B, el presupuesto participativo es una consulta decorativa. Con Dom09-
 
 ### Variables principales
 
-| Variable | Tipo | Rango | Fuente |
-|---|---|---|---|
-| RC_REALIZADA | binaria | 0/1 | Sistema CPCCS |
-| RC_CALIFICACION | continua | 0-100 | Calificación ciudadana CPCCS |
-| PP_VS_EJECUCION_PCT | continua | 0-100% | POA-PAC vs actas PP |
-| RC_DIAS_PLAZO | entera | días de demora | Fecha convocatoria vs fecha legal |
+| Variable | Tipo | Rango | Fuente | Capa |
+|---|---|---|---|---|
+| RC_REALIZADA | binaria | 0/1 | Sistema CPCCS | L4 |
+| RC_CALIFICACION | continua | 0-100 | Calificación ciudadana CPCCS | L4 |
+| PP_VS_EJECUCION_PCT | continua | 0-100% | POA-PAC vs actas PP | L1/L2 |
+| RC_DIAS_PLAZO | entera | días de demora | Fecha convocatoria vs fecha legal | L0 |
+| RC_VIDEO_EXISTS | binaria | 0/1 | URL verificable | L0-digital |
+| RC_VIDEO_URL | texto | URL | Portal GAD / YouTube | L0-digital |
+| PP_VIDEO_EXISTS | binaria | 0/1 | URL verificable | L0-digital |
+| RC_CPCCS_URL | texto | URL | Plataforma CPCCS | L0-digital |
 
 ### Indicador de cierre de ciclo
 
