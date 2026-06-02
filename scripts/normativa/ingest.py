@@ -268,7 +268,7 @@ def ingest(milestone: Optional[str] = None,
             continue
 
         if dry_run:
-            print(f"  [DRY-RUN]  {tag}  → {len(new_rows)} chunks nuevos "
+            print(f"  [DRY-RUN]  {tag}  -> {len(new_rows)} chunks nuevos "
                   f"({len(skip_rows)} ya en DB)")
             results.append((tag, "DRY-RUN", len(new_rows), 0))
             continue
