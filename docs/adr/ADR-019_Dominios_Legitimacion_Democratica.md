@@ -1,10 +1,66 @@
 # ADR-019 — Dominios de Legitimación Democrática: Hipótesis Arquitectónica
 
-**Estado**: PROPUESTO  
+**Estado**: SUPPORTED  
 **Fecha de apertura**: 2026-06-02  
-**Fecha de cierre**: PENDIENTE — ver Criterios de Activación  
+**Fecha de actualización**: 2026-06-02  
+**Fecha de cierre**: PENDIENTE — ver Criterios de Confirmación  
 **Proyecto**: QUIRA Gov · Dylus Lab  
 **Participantes**: Equipo Dylus Lab · Colega Asesor Externo  
+
+> **SUPPORTED**: La evidencia observacional es positiva y consistente en todas las métricas disponibles. No existe ninguna métrica que contradiga la hipótesis. Falta evidencia discriminante formal (betweenness GDS, community detection) para pasar a CONFIRMED. Ver §Evidencia Acumulada.
+
+## Evidencia Acumulada — 2026-06-02
+
+### Degree Centrality (grafo con LOPC Dom08-Core + Dom09 seed)
+
+| Nodo | Tipo | Degree | Posición |
+|---|---|---|---|
+| Dom08 | Dominio | 21 | 1° — único |
+| Dom09 | Dominio | 11 | 2° (incompleto) |
+| Dom07 | Dominio | 10 | 3° |
+| Dom04 | Dominio | 7 | 4° |
+| C01 | Circuito | 6 | 5° |
+| CE_1 | ACK constituyente | 4 | — |
+| CE_95 | NRC | 4 | — |
+| CE_226 | NRC | 4 | — |
+
+### Betweenness Proxy (NRC→Dominio paths, longitud 1..5)
+
+| Nodo | Tipo | Proxy | Ratio vs Dom07 |
+|---|---|---|---|
+| Dom08 | Dominio | 328 | 1.58x |
+| Dom07 | Dominio | 207 | 1.00x (base) |
+| **CE_95** | **NRC** | **145** | **0.70x — ACK supera a Dom04** |
+| Dom04 | Dominio | 128 | 0.62x |
+| Dom09 | Dominio | 99 | 0.48x (incompleto) |
+| CE_226 | NRC | 82 | 0.40x |
+| **CE_1** | **NRC constituyente** | **82** | **0.40x — empatado con CE_226** |
+| CE_18 | NRC | 76 | 0.37x |
+
+### ACKs instrumentando dominios
+
+| Dominio | ACKs | Normas |
+|---|---|---|
+| Dom08 | 13 | COOTAD + LOPC |
+| Dom09 | 7 | LOPC + RES-CPCCS (incompleto) |
+| Dom07 | 5 | LOTAIP + LOPC |
+| Dom04 | 3 | LOPC (pendiente COOTAD 295+) |
+
+### Díada Dom08+Dom09
+
+- Proxy combinado: **427** vs Dom07: **207** (ratio 2.06x)
+- Ciclo: Dom08 ─GENERA─► Dom09 ─RETROALIMENTA─► Dom08 ✅
+- Norma raíz compartida: CE_95 ─FUNDA─► Dom08 y Dom09 ✅
+- CE_1 ─CONSTITUYE─► CE_95 ─FUNDA─► [Dom08, Dom09] ✅
+
+### Hallazgos que no estaban en la hipótesis inicial
+
+1. **CE_95 > Dom04** en proxy: un NRC supera en centralidad a un dominio operacional completo
+2. **CE_1 = CE_226** en proxy: la capa de soberanía popular ya es visible computacionalmente
+3. **LOPC toca 6 dominios** con solo 15 artículos: evidencia de ley de arquitectura, no temática
+4. **Dom08 degree = 2× Dom07**: diferencia no marginal, no atribuible a artefacto de carga
+
+
 
 ---
 

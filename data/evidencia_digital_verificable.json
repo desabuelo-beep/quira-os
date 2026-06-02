@@ -1,0 +1,121 @@
+{
+  "meta": {
+    "descripcion": "Evidencia Digital Verificable (EDV) — Registro de evidencia pública L0-digital del ciclo democrático PP→RC para el GAD Municipio de Montecristi y el Holding Municipal",
+    "version": "0.1",
+    "fecha_creacion": "2026-06-02",
+    "ultima_actualizacion": "2026-06-02",
+    "ambito_normativo": "LOPC_101 (democracia electrónica obligatoria) + LOTAIP_7 (transparencia activa)",
+    "notas": [
+      "Los campos RC_ANO_FISCAL refieren al año de la gestión evaluada, no al año del evento",
+      "RC 2024 = audición de actividades 2024, realizada en 2025",
+      "RC 2025 = audición de actividades 2025, realizada en 2026",
+      "La ausencia de URL es en sí misma un indicador de incumplimiento de LOPC_101",
+      "Campos CPCCS pendientes de verificar cuando el sistema CPCCS procese los informes"
+    ]
+  },
+  "dominios": {
+    "Dom08": {
+      "descripcion": "Participación Ciudadana — evidencia L0-digital del Presupuesto Participativo",
+      "registros": {
+        "pp_2024": {
+          "ano_fiscal": 2024,
+          "tipo": "Presupuesto Participativo",
+          "entidad": "GAD-Municipal-Montecristi",
+          "video_url": null,
+          "video_plataforma": null,
+          "video_fecha_evento": null,
+          "acta_url": null,
+          "estado": "pendiente_verificar",
+          "notas": "Verificar si existe video del PP 2024 en portal GAD o YouTube"
+        },
+        "pp_2025": {
+          "ano_fiscal": 2025,
+          "tipo": "Presupuesto Participativo",
+          "entidad": "GAD-Municipal-Montecristi",
+          "video_url": null,
+          "video_plataforma": null,
+          "video_fecha_evento": null,
+          "acta_url": null,
+          "estado": "pendiente_verificar",
+          "notas": "Verificar si existe video del PP 2025"
+        }
+      }
+    },
+    "Dom09": {
+      "descripcion": "Rendición de Cuentas — evidencia L0-digital del ciclo RC anual",
+      "registros": {
+        "rc_2024": {
+          "ano_fiscal": 2024,
+          "tipo": "Rendición de Cuentas Anual",
+          "entidad": "GAD-Municipal-Montecristi",
+          "video_url": "https://www.youtube.com/watch?v=mqDT5jKXHW8",
+          "video_plataforma": "YouTube",
+          "video_fecha_evento": null,
+          "video_duracion_min": null,
+          "cpccs_informe_url": null,
+          "cpccs_calificacion": null,
+          "estado_gold_master": "CARGADO",
+          "estado": "parcial",
+          "notas": "Video URL verificado. Pendiente: fecha exacta del evento, URL informe CPCCS, calificación ciudadana"
+        },
+        "rc_2025": {
+          "ano_fiscal": 2025,
+          "tipo": "Rendición de Cuentas Anual",
+          "entidad": "GAD-Municipal-Montecristi",
+          "video_url": "https://www.youtube.com/watch?v=Qexwg7EKmUo",
+          "video_plataforma": "YouTube",
+          "video_fecha_evento": null,
+          "video_duracion_min": null,
+          "cpccs_informe_url": null,
+          "cpccs_calificacion": null,
+          "estado_gold_master": "PENDIENTE",
+          "estado": "incompleto",
+          "notas": "Video URL verificado (evento reciente enero-febrero 2026). Pendiente: fecha exacta, informe CPCCS (puede no estar procesado aún), calificación ciudadana. Agregar al Gold Master."
+        }
+      }
+    }
+  },
+  "holding_municipal": {
+    "descripcion": "RC de entes del Holding — pendiente de carga",
+    "entidades": [
+      {
+        "entidad": "EP-Aseo-Montecristi",
+        "rc_2024": { "video_url": null, "estado": "pendiente_verificar" },
+        "rc_2025": { "video_url": null, "estado": "pendiente_verificar" }
+      },
+      {
+        "entidad": "Cuerpo-de-Bomberos-Montecristi",
+        "rc_2024": { "video_url": null, "estado": "pendiente_verificar" },
+        "rc_2025": { "video_url": null, "estado": "pendiente_verificar" }
+      },
+      {
+        "entidad": "Patronato-Municipal-Montecristi",
+        "rc_2024": { "video_url": null, "estado": "pendiente_verificar" },
+        "rc_2025": { "video_url": null, "estado": "pendiente_verificar" }
+      }
+    ],
+    "notas": "Las URLs de RC del Holding se agregarán cuando el usuario las proporcione"
+  },
+  "estructura_gold_master": {
+    "descripcion": "Campos que deben existir en el Gold Master para completar el ciclo EDV",
+    "campos_rc": [
+      "RC_ANO_FISCAL",
+      "RC_FECHA_EVENTO",
+      "RC_VIDEO_URL",
+      "RC_VIDEO_PLATAFORMA",
+      "RC_VIDEO_DURACION_MIN",
+      "RC_CPCCS_INFORME_URL",
+      "RC_CPCCS_CALIFICACION"
+    ],
+    "campos_pp": [
+      "PP_ANO_FISCAL",
+      "PP_FECHA_EVENTO",
+      "PP_VIDEO_URL",
+      "PP_VIDEO_PLATAFORMA",
+      "PP_ACTA_URL",
+      "PP_PRESUPUESTO_APROBADO_USD",
+      "PP_PRESUPUESTO_EJECUTADO_USD",
+      "PP_EJECUCION_PCT"
+    ]
+  }
+}
