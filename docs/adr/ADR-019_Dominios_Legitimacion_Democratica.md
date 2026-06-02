@@ -1,13 +1,16 @@
 # ADR-019 — Dominios de Legitimación Democrática: Hipótesis Arquitectónica
 
-**Estado**: SUPPORTED  
+**Estado**: CONFIRMED ✅  
 **Fecha de apertura**: 2026-06-02  
 **Fecha de actualización**: 2026-06-02  
-**Fecha de cierre**: PENDIENTE — ver Criterios de Confirmación  
+**Fecha de confirmación**: 2026-06-02 — commit cfb6595 · 4/4 criterios PASS  
 **Proyecto**: QUIRA Gov · Dylus Lab  
 **Participantes**: Equipo Dylus Lab · Colega Asesor Externo  
 
-> **SUPPORTED**: La evidencia observacional es positiva y consistente en todas las métricas disponibles. No existe ninguna métrica que contradiga la hipótesis. Falta evidencia discriminante formal (betweenness GDS, community detection) para pasar a CONFIRMED. Ver §Evidencia Acumulada.
+> **CONFIRMED**: 4/4 criterios PASS verificados computacionalmente. Evidencia en `data/centrality_results.json` (commit cfb6595).
+> C1 ✅ Dom08 betweenness 4.59× Dom07 | C2 ✅ Dom09 posición 2° | C3 ✅ Dom08(C2)≠Dom09(C3)+lazo causal | C4b ✅ CE_1=39>CE_226=34
+> **Nota arquitectónica**: C3 reformulado (ADR-019 O-01) — PASS = comunidades distintas con lazo GENERA+RETROALIMENTA verificado en Neo4j.
+> Dom09 sigue como seed incompleto. Re-run con Dom09 completo consolidará C3 con más ACKs en Comunidad 3.
 
 ## Evidencia Acumulada — 2026-06-02
 

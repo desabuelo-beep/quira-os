@@ -1,6 +1,7 @@
 # ADR-020 — Analítica Constitucional: Metodología de Medición del Grafo QUIRA
 
 **Estado**: ACTIVO  
+**Fecha actualización**: 2026-06-02 (Gate 2 completado)  
 **Fecha**: 2026-06-02  
 **Proyecto**: QUIRA Gov · Dylus Lab  
 **Motivación**: ADR-019 (hipótesis Dominios de Legitimación Democrática) requiere evidencia discriminante formal más allá del degree centrality.
@@ -176,7 +177,7 @@ Para que ADR-019 pase de SUPPORTED a CONFIRMED, se necesita que se cumplan al me
 | C1 | Dom08 tiene betweenness superior a Dom07 | M2 formal | Dom08 > 1.3× Dom07 | **PASS — 4.6×** |
 | C2 | Dom09 betweenness posición ≤ 4 | M2 formal | Dom09 en top 4 | **PASS — posición 2°** |
 | C3 | Dom08+Dom09 adyacentes con lazo causal obligatorio | M5 Louvain | Clusters C2↔C3 conectados | PENDIENTE (Dom09 incompleto) |
-| C4b | CE_1 Constitutional Cascade Score > CE_226 | M6 nuevo | CE_1 > CE_226 | **PASS — 39 vs 34** |
+| C4b | CE_1 Constitutional Cascade Score > CE_226 | M6 | CE_1 > CE_226 | **PASS — 39 vs 34** ✅ centrality_results.json verificado commit cfb6595 |
 
 **Nota sobre C3**: La hipótesis original era "misma comunidad." La analítica reveló que Dom08 (C2) y Dom09 (C3) son comunidades distintas pero adyacentes. El criterio fue reformulado: la díada no requiere misma comunidad — requiere lazo causal con comunidades adyacentes. Esto es arquitectónicamente más correcto.
 
@@ -238,7 +239,9 @@ def compute_analytics(G):
     return results
 ```
 
-Estado: SCRIPT PENDIENTE DE CREAR. Implementar en próximo sprint analítico.
+Estado: IMPLEMENTADO Y EJECUTADO — commit cfb6595 · 2026-06-02
+Ubicación: scripts/analytics/compute_centrality.py
+Output: data/centrality_results.json (incluye cascade_score desde Gate 2)
 
 ---
 
