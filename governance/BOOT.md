@@ -11,12 +11,12 @@ Laboratorio: GAD Montecristi (MCR). Destino: 221 municipios.
 
 ## AHORA (actualizar al cierre)
 - **Sprint**: Gate 6.5 — Ingesta Holding MCR (Capas C+D)
-- **Último commit**: pendiente — Fase 4 structured
-- **Hecho**: F1-F3 texto ✅ · POA-ASEO-2025 ✅ · **F4 Cédulas structured (15 tablas, 2,414 filas) ✅**
-- **Siguiente**: Fase 4b — ingestar cédulas mensuales 2025 (12 meses × 4 entidades, Q09-Q11)
-  → explorar `Presupuestos 2023-2026/Presupuestos 2025/` y agregar al manifest
-- **Corpus texto**: ~13,509 chunks · **holding_structured_data**: 15 tablas · Neo4j: 38/58
-- **Habilitado**: Q09 POA vs devengado · Q10 PAC vs devengado · Q12 gap A≠D cuantificable
+- **Último commit**: pendiente
+- **Hecho**: F1-F3 ✅ · F4 estructurada ✅ · **F4b LOTAIP mensual (48 archivos, ~4,500 filas) ✅** · OBS-008 ✅
+- **Siguiente**: Gate 6.5 Fase 5 (SIGAD) → `python scripts/holding/ingest_holding.py --fase 5`
+- **Corpus texto**: ~13,509 chunks · **holding_structured_data**: 63 tablas total · Neo4j: 38/58
+- **OBS-008**: GAD solo 3/12 meses LOTAIP 2025 — gap A≠D ya medible · Q09-Q12 habilitadas
+- **ADR-022 candidato**: espera Fase 5 SIGAD para decisión
 - **No tocar**: ADR-019 sigue STRONGLY_SUPPORTED · ADR-022 candidato (espera Fase 3 PAC)
 
 ## REGLAS DE ORO (inviolables — el resto en CLAUDE.md)
