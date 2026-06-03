@@ -3,7 +3,7 @@
 **Tipo**: Observación de investigación (no ADR — requiere más evidencia antes de congelar)  
 **Fecha**: 2026-06-02  
 **Origen**: Gate 3 · Sprint Dom09 · Corpus query COOTAD Art. 266  
-**Estado**: ACTIVA — pendiente de corroboración con métricas de grafo completo  
+**Estado**: CONFIRMED — corroborado en Gate 4 (commit 6c8a213 · 2026-06-02)  
 **Proyecto**: QUIRA Gov · Dylus Lab
 
 ---
@@ -103,6 +103,17 @@ La combinación de ambas fortalece la tesis de ADR-019 más allá de lo que cual
 
 ---
 
-*OBS-003 · QUIRA Gov · Dylus Lab · 2026-06-02*  
-*"El grafo reveló una propiedad que el legislador había diseñado 16 años antes. Eso es lo que QUIRA hace: ve la estructura del ordenamiento, no solo su texto."*  
-*Pendiente: re-run Gate 4 para verificar Cascade Score COOTAD_266*
+## Corroboración — Gate 4 (commit 6c8a213)
+
+Re-run analítico con COOTAD_266 en el grafo (38 nodos · 58 aristas) produjo:
+
+- **COOTAD_266 → Comunidad 4** (Dom02 + Dom04 + C01) — NO Comunidad 3 (Dom09)
+- Esto confirma la hipótesis: COOTAD_266 no pertenece a Dom09 como dominio. Es un **nodo puente** que instrumenta el cierre del ciclo de gestión conectando presupuesto + planificación + rendición.
+- Cascade Score COOTAD_266 = 26 (igual que LOPC_77/LOPC_85, por encima de CE_18=19)
+
+**Interpretación final**: La Asamblea Constituyente diseñó el ciclo. El legislador lo positivizó en COOTAD_266 (2010). El grafo lo detectó 16 años después sin que nadie lo programara. QUIRA no inventó el par constitucional Dom08↔Dom09 — lo *reveló*.
+
+---
+
+*OBS-003 · CONFIRMED · QUIRA Gov · Dylus Lab · 2026-06-02*  
+*"El grafo reveló una propiedad que el legislador había diseñado 16 años antes. Eso es lo que QUIRA hace: ve la estructura del ordenamiento, no solo su texto."*

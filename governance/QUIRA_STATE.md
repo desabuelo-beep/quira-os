@@ -4,9 +4,9 @@
 > Single source of truth de: qué está abierto, qué está cerrado, en qué sprint, dónde vive cada cosa.
 > **Actualizar este archivo al final de cada sesión que cambie el estado.**
 
-**Última actualización**: 2026-06-02
-**Sprint activo**: Sprint Constitucional — Grafo Neo4j + ADRs 016-020
-**Fase**: Construcción del Cerebro 2 (Grafo Causal Constitucional)
+**Última actualización**: 2026-06-02 (sesión 2 — sincronización post Gates 3-4)
+**Sprint activo**: Sprint Constitucional — Gate 6 Semantic Mining
+**Fase**: Transición Cerebro 2 consolidado → Semantic Mining del corpus completo
 
 ---
 
@@ -20,11 +20,11 @@ Laboratorio: GAD Municipal de Montecristi (Ecuador). Destino: 221 municipios.
 2. **Cerebro 2 — Grafo Causal** (Neo4j AuraDB): 37 nodos, 55 aristas. 🔨 EN CONSTRUCCIÓN ACTIVA
 3. **Cerebro 3 — Razonamiento** (Claude API + corpus + grafo): futuro
 
-**Lo que se construyó en la sesión 2026-06-02 (la grande):**
-El grafo constitucional dejó de ser hipótesis y empezó a **revelar estructura**. Se descubrió que la
-participación ciudadana (Dom08) + rendición de cuentas (Dom09) forman un **par constitucional** que es
-el nodo más central de todo el sistema — más que transparencia. Y que la soberanía popular (CE_1) es
-visible computacionalmente como nodo apex.
+**Lo que se construyó en sesiones 2026-06-02:**
+El grafo constitucional dejó de ser hipótesis y empezó a **revelar estructura**. Dom08+Dom09 forman
+el par constitucional más central. CE_1 es nodo apex computacional. COOTAD_266 cerró el ciclo
+PP→RC→nuevo_PP normativamente (OBS-003 CONFIRMED). Corpus completo: 43 docs / 8,351 chunks.
+Gates 3 y 4 completados. ADR-019 STRONGLY_SUPPORTED (no CONFIRMED — rigor epistemológico activo).
 
 ---
 
@@ -44,6 +44,15 @@ visible computacionalmente como nodo apex.
 ---
 
 ## 2. QUÉ ESTÁ ABIERTO (en progreso o pendiente)
+
+### Gates completados (actualización post sesión 2)
+- **Gate 3 ✅** — COOTAD_266 cargado en Neo4j · OBS-003 creada · commit d66c2d3
+- **Gate 4 ✅** — Re-run analítico (38n/58a) · COOTAD_266 → Comunidad 4 · commit 6c8a213
+- **OBS-003 ✅ CONFIRMED** — COOTAD_266 es puente RC↔presupuesto/planificación (no Dom09 exclusivo)
+- **Corpus ✅** — 41→43 docs, 7,740→8,351 chunks · commit 86f0c08
+
+### Próximo: Gate 6 — Semantic Mining
+Usando skill `/qlep-corpus` sobre `C:\...\ProyecT\Normativa_Word`. Ver §6.
 
 ### ADR-019 — Dominios de Legitimación Democrática → **STRONGLY_SUPPORTED**
 Hipótesis: Dom08 + Dom09 forman una categoría arquitectónica distinta de los dominios operacionales.
@@ -72,17 +81,17 @@ Cuando se complete, re-evaluar C3 y considerar ADR-019 → CONFIRMED.
 ## 3. ESTADO DE LOS 3 TRACKS
 
 ### Track A — Corpus Supabase (Cerebro 1) ✅ COMPLETO
-- 41 docs · 7,740 chunks · pgvector 384dim · tabla `normativa_corpus`
-- LOPC completa (94 chunks, Arts 1-101) · RES-CPCCS-RC-2026 (104 chunks)
+- **43 docs · 8,351 chunks** · pgvector 384dim · tabla `normativa_corpus`
+- Incluye: PDOT Montecristi (594 chunks) + Plan GOB MCR (18 chunks) — commit 86f0c08
 - Modelo: `paraphrase-multilingual-MiniLM-L12-v2`
 
-### Track B — ACK Registry v0.5 ✅ Gap cerrado
-- `data/ack_registry.json` — **34 ACKs** · 4 NRCs funcionales + 1 NRC constituyente (CE_1)
-- Los 15 LOPC ACKs + CPCCS_RC_2026 ya están sincronizados Neo4j↔JSON
-- chunk_refs SHA256 verificados (excepto gaps: LOTAIP_47, LOPC_72)
+### Track B — ACK Registry v0.6 ✅ Gap cerrado
+- `data/ack_registry.json` — **35 ACKs** · 4 NRCs funcionales + 1 NRC constituyente (CE_1)
+- Nuevo: COOTAD_266 (sha256 0f71df42) — ancla fiscal ciclo democrático — commit d66c2d3
+- chunk_refs SHA256 verificados (excepto gaps documentados: LOTAIP_47, LOPC_72)
 
 ### Track C — Neo4j Grafo (Cerebro 2) 🔨 ACTIVO
-- **AuraDB Free · Instancia `6c134c35`** · 37 nodos · 55 aristas · 10 tipos de relación
+- **AuraDB Free · Instancia `6c134c35`** · **38 nodos · 58 aristas** · 10 tipos de relación
 - **CRÍTICO**: AuraDB Free usa el instance ID como username Y database name (no "neo4j")
 - **CRÍTICO**: usar patrón `MATCH + MERGE` para relaciones (nunca `MERGE (anon)-[r]->(var)` — crea duplicados)
 - Scripts:
@@ -133,14 +142,23 @@ por LOPC_101 (democracia electrónica). El nodo NO es "VIDEO" sino "Evidencia Di
 
 ---
 
-## 6. PRÓXIMOS PASOS (orden priorizado — colega asesor 2026-06-02)
+## 6. PRÓXIMOS PASOS (actualizado post Gates 3-4 · colega asesor 2026-06-02)
 
-1. **RC 2025 metadatos completos** → agregar al Gold Master (fecha + CPCCS URL + calificación)
-2. **Dom09 completo**: QLEP de COOTAD 266-270 + LOPC 88/92/96 + RES-CPCCS completo → Neo4j
-3. **Re-run analítica** con Dom09 maduro → re-evaluar C3 con métricas estándar
-4. **ADR-019 → CONFIRMED** SOLO si el grafo maduro lo sostiene (no antes)
-5. **LOPC completa**: atomizar los ~80 artículos restantes (núcleo Dom08-Core ya hecho)
-6. **Dom10/Dom12 DCOs** + COOTAD 295-310 (cierra capa técnica)
+**Gate 6 — Semantic Mining (SIGUIENTE)**
+- Usar skill `/qlep-corpus` sobre `C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT\Normativa_Word`
+- Extracción e ingesta total e integral de todo el corpus normativo pendiente
+- Medir densidad normativa por dominio (Dom09 sigue débil → explica Comunidad 3 pequeña)
+- Buscar circuitos emergentes: PLANIFICA→EJECUTA→RINDE→OBSERVA→CORRIGE
+
+**Gate 5 — ADR-019 CONFIRMED** (después de Gate 6)
+- NO antes. Necesita Dom09 con cobertura normativa real del corpus completo
+- Métricas estándar (betweenness, Louvain) deben sostenerlo — no solo Cascade Score M6
+
+**Pendiente paralelo (no bloquea Gate 6)**
+- RC 2025 metadatos CPCCS → Gold Master (esperando plazos legales CPCCS)
+- RC 2025 video ya verificado: https://www.youtube.com/watch?v=Qexwg7EKmUo
+
+**ADR-021 candidato** (abrir solo si Gate 6 confirma LOPC_101 > CE_95 con corpus completo)
 
 ---
 
