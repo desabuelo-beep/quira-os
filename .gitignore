@@ -82,3 +82,4 @@ data/vault_backup_p2/
 # ── REPORTES Y ARCHIVOS INTERMEDIOS PDF (artefactos generados localmente) ─────
 *.pdf
 test_reporte.pdf
+.env.claude
