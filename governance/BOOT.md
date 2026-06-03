@@ -5,9 +5,15 @@
 > Mantener bajo 500 tokens. Actualizar `## AHORA` al cierre de cada sesión.
 
 ## QUÉ ES
-QUIRA = Motor de Trazabilidad Pública Municipal (Dylus Lab). KOS, no dashboard.
-Laboratorio: GAD Montecristi (MCR). Destino: 221 municipios.
-3 Cerebros: **C1** Corpus normativo (Supabase pgvector) · **C2** Grafo causal (Neo4j) · **C3** Razonamiento (futuro).
+> "El Gold Master ya sabe medir la gestión pública; QUIRA está aprendiendo a
+> demostrar documentalmente por qué cada métrica del Gold Master es verdadera o falsa."
+
+**3 niveles** (ADR-023 — inmutable):
+- **Nivel 1 Motor**: Gold Master SIAP-ICPI v5.5 — calcula ICPI/TGI/SAT/MMP. Leer via `app/connectors/gold_master.py`. NUNCA recalcular fuera del Excel.
+- **Nivel 2 SO**: QUIRA — ingesta + trazabilidad (MNT_UUID) + evidencia documental
+- **Nivel 3 UI**: Dashboards + GeoTwin — solo visualizan, no calculan
+
+**MATRIZ_CANONICA** del Excel = ADN compartido. Sin ella: dos mundos. Con ella: un sistema.
 
 ## AHORA (actualizar al cierre)
 - **Sprint**: Gate 6.5 — Ingesta Holding MCR (Capas C+D)
