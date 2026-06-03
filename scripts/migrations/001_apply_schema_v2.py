@@ -95,6 +95,17 @@ def check_state(conn) -> dict:
     result = {}
     c = conn.cursor()
 
+    def _bool(row) -> bool:
+        """Extrae bool de fila — soporta dict y tuple."""
+        if isinstance(row, dict):
+            return list(row.values())[0]
+        return row[0]
+
+    def _int(row) -> int:
+        if isinstance(row, dict):
+            return list(row.values())[0]
+        return row[0]
+
     # ¿Tabla documents existe?
     c.execute("""
         SELECT EXISTS (
@@ -102,7 +113,7 @@ def check_state(conn) -> dict:
             WHERE table_name = 'documents'
         )
     """)
-    result["documents_exists"] = c.fetchone()[0]
+    result["documents_exists"] = _bool(c.fetchone())
 
     # ¿normativa_corpus tiene document_class?
     c.execute("""
@@ -112,7 +123,7 @@ def check_state(conn) -> dict:
             AND column_name = 'document_class'
         )
     """)
-    result["corpus_has_document_class"] = c.fetchone()[0]
+    result["corpus_has_document_class"] = _bool(c.fetchone())
 
     # ¿Tabla holding_structured_data existe?
     c.execute("""
@@ -121,16 +132,16 @@ def check_state(conn) -> dict:
             WHERE table_name = 'holding_structured_data'
         )
     """)
-    result["holding_exists"] = c.fetchone()[0]
+    result["holding_exists"] = _bool(c.fetchone())
 
     # Conteo actual
     c.execute("SELECT COUNT(*) FROM normativa_corpus")
-    result["chunks_total"] = c.fetchone()[0]
+    result["chunks_total"] = _int(c.fetchone())
 
     # Chunks con document_class ya poblado (si la columna existe)
     if result["corpus_has_document_class"]:
         c.execute("SELECT COUNT(*) FROM normativa_corpus WHERE document_class IS NOT NULL")
-        result["chunks_classified"] = c.fetchone()[0]
+        result["chunks_classified"] = _int(c.fetchone())
     else:
         result["chunks_classified"] = 0
 
@@ -138,12 +149,14 @@ def check_state(conn) -> dict:
 
 
 def print_state(state: dict, title: str = "Estado Schema") -> None:
+    ok  = "[OK]"
+    nok = "[--]"
     print(f"\n{'='*55}")
     print(f"  {title}")
     print(f"{'='*55}")
-    print(f"  Tabla documents:          {'✅ existe' if state['documents_exists'] else '❌ no existe'}")
-    print(f"  Tabla holding_structured: {'✅ existe' if state['holding_exists'] else '❌ no existe'}")
-    print(f"  corpus.document_class:    {'✅ existe' if state['corpus_has_document_class'] else '❌ no existe'}")
+    print(f"  Tabla documents:          {ok if state['documents_exists'] else nok}")
+    print(f"  Tabla holding_structured: {ok if state['holding_exists'] else nok}")
+    print(f"  corpus.document_class:    {ok if state['corpus_has_document_class'] else nok}")
     print(f"  Chunks total:             {state['chunks_total']:,}")
     print(f"  Chunks clasificados:      {state['chunks_classified']:,}")
     print(f"{'='*55}\n")
@@ -159,10 +172,9 @@ def apply_ddl(conn) -> None:
     try:
         conn.execute(sql)
         conn.commit()
-        print("  ✅ DDL aplicado correctamente.")
+        print("  [OK] DDL aplicado correctamente.")
     except Exception as e:
-        conn.rollback()
-        print(f"  ❌ Error en DDL: {e}")
+        print(f"  [FAIL] Error en DDL: {e}")
         raise
 
 
@@ -185,11 +197,12 @@ def populate_documents_table(conn) -> int:
                   "FROM normativa_corpus WHERE norma_sigla = %s LIMIT 1", (sigla,))
         row = c.fetchone()
         if not row:
-            print(f"    ⚠️  {sigla} no encontrada en corpus — saltando")
+            print(f"    [WARN]  {sigla} no encontrada en corpus — saltando")
             skipped += 1
             continue
 
         try:
+            # row es dict: {"norma_nombre": ..., "jerarquia": ..., etc.}
             conn.execute("""
                 INSERT INTO documents
                     (norma_sigla, norma_nombre, document_class, authority_level,
@@ -203,14 +216,18 @@ def populate_documents_table(conn) -> int:
                     canton_id       = EXCLUDED.canton_id,
                     updated_at      = NOW()
             """, (
-                sigla, row[0], doc_class, auth_level,
-                source_ent, canton,
-                row[1], row[2], row[3], row[4]
+                sigla,
+                row.get("norma_nombre") if isinstance(row, dict) else row[0],
+                doc_class, auth_level, source_ent, canton,
+                row.get("jerarquia")     if isinstance(row, dict) else row[1],
+                row.get("milestone_qlep") if isinstance(row, dict) else row[2],
+                row.get("tipo_documento") if isinstance(row, dict) else row[3],
+                row.get("archivo_nombre") if isinstance(row, dict) else row[4],
             ))
             inserted += 1
-            print(f"    ✓ {sigla:30s} → {doc_class} / auth={auth_level}")
+            print(f"    [v] {sigla:30s} -> {doc_class} / auth={auth_level}")
         except Exception as e:
-            print(f"    ❌ {sigla}: {e}")
+            print(f"    [FAIL] {sigla}: {e}")
 
     conn.commit()
     print(f"\n  Resultado: {inserted} insertados / {skipped} saltados")
@@ -240,12 +257,12 @@ def update_corpus_columns(conn) -> int:
         conn.commit()
         c = conn.cursor()
         c.execute("SELECT COUNT(*) FROM normativa_corpus WHERE document_class IS NOT NULL")
-        updated = c.fetchone()[0]
-        print(f"  ✅ {updated:,} chunks actualizados con nuevas columnas")
+        row = c.fetchone()
+        updated = list(row.values())[0] if isinstance(row, dict) else row[0]
+        print(f"  [OK] {updated:,} chunks actualizados con nuevas columnas")
         return updated
     except Exception as e:
-        conn.rollback()
-        print(f"  ❌ Error actualizando corpus: {e}")
+        print(f"  [FAIL] Error actualizando corpus: {e}")
         raise
 
 
@@ -254,10 +271,10 @@ def apply_rollback(conn) -> None:
     """Revierte Migration 001. USAR CON CUIDADO."""
     rollback_path = Path(__file__).parent / "001_rollback.sql"
     sql = rollback_path.read_text(encoding="utf-8")
-    print("  ⚠️  APLICANDO ROLLBACK — esto destruye la tabla documents y los nuevos índices...")
+    print("  [WARN]  APLICANDO ROLLBACK — esto destruye la tabla documents y los nuevos índices...")
     conn.execute(sql)
     conn.commit()
-    print("  ✅ Rollback aplicado.")
+    print("  [OK] Rollback aplicado.")
 
 
 # ── MAIN ──────────────────────────────────────────────────────────────────────
@@ -314,17 +331,18 @@ def main() -> None:
     # Verificación de integridad
     c = conn.cursor()
     c.execute("SELECT COUNT(*) FROM normativa_corpus WHERE document_class IS NULL")
-    unclassified = c.fetchone()[0]
+    row = c.fetchone()
+    unclassified = list(row.values())[0] if isinstance(row, dict) else row[0]
     if unclassified > 0:
-        print(f"  ⚠️  ATENCIÓN: {unclassified} chunks sin clasificar (norma_sigla no en DOCUMENT_MAPPING)")
+        print(f"  [WARN]  ATENCIÓN: {unclassified} chunks sin clasificar (norma_sigla no en DOCUMENT_MAPPING)")
         c.execute("SELECT DISTINCT norma_sigla FROM normativa_corpus WHERE document_class IS NULL")
-        missing = [r[0] for r in c.fetchall()]
+        missing = [list(r.values())[0] if isinstance(r, dict) else r[0] for r in c.fetchall()]
         print(f"     Siglas faltantes: {missing}")
     else:
-        print("  ✅ Todos los chunks clasificados correctamente.")
+        print("  [OK] Todos los chunks clasificados correctamente.")
 
     conn.close()
-    print("\n  ✅ Migration 001 completada.\n")
+    print("\n  [OK] Migration 001 completada.\n")
 
 
 if __name__ == "__main__":

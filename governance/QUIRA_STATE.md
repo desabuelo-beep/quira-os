@@ -51,8 +51,15 @@ Gates 3 y 4 completados. ADR-019 STRONGLY_SUPPORTED (no CONFIRMED — rigor epis
 - **OBS-003 ✅ CONFIRMED** — COOTAD_266 es puente RC↔presupuesto/planificación (no Dom09 exclusivo)
 - **Corpus ✅** — 41→43 docs, 7,740→8,351 chunks · commit 86f0c08
 
-### Próximo: Gate 6 — Semantic Mining
-Usando skill `/qlep-corpus` sobre `C:\...\ProyecT\Normativa_Word`. Ver §6.
+### Gate 6 — Motor de Trazabilidad Pública (EN PROGRESO)
+  Gate 6.1a COMPLETADO: CANONICAL_CHUNK_SCHEMA.md v1.1 (Star Schema)
+  Gate 6.1b COMPLETADO: DDL Supabase (documents + holding_structured_data + 8 cols corpus)
+  Gate 6.2  COMPLETADO: 43 docs → tabla documents · 8,351 chunks clasificados
+  Gate 6.3  PENDIENTE: manifest.py nuevos campos
+  Gate 6.4  PENDIENTE: Normativa_Word delta
+  Gate 6.5  PENDIENTE: Holding MCR (POA · PAC · RC · PP)
+  Gate 6.6  PENDIENTE: Semantic Mining
+  Gate 6.7  PENDIENTE: Re-evaluar ADR-019
 
 ### ADR-019 — Dominios de Legitimación Democrática → **STRONGLY_SUPPORTED**
 Hipótesis: Dom08 + Dom09 forman una categoría arquitectónica distinta de los dominios operacionales.
