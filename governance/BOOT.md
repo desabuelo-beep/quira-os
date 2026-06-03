@@ -20,7 +20,7 @@
 
 ## AHORA (actualizar al cierre)
 - **Sprint**: Gate 6.6 — Bridge Corpus → Motor ICPI
-- **Último commit**: `6049542` — reducción peso contexto (QUIRA_STATE archivado, BOOT única fuente)
+- **Último commit**: `106359a` — CI health-check (guardián arranque liviano + anti-secretos)
 - **Gate 6.5 ✅ COMPLETO**: 13,509 chunks · 65 tablas · OBS-008/009 · ADR-022/023
 - **Corpus**: ~13,509 chunks texto · 65+ tablas LOTAIP/cédulas · Neo4j: 38/58
 - **Gold Master leído completo** (120 hojas): ICPI-2025=69.93% · TGI=66.79% · D3=59.85%(gap) · D4=44.79%(crítico)
