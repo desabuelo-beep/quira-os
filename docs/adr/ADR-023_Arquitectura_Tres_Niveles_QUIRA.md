@@ -101,6 +101,40 @@ GeoTwin: aterrizaje territorial de los resultados
 
 ---
 
+## Las 4 Reglas Operacionales
+
+Cualquier decisión de desarrollo futura puede resolverse con una sola pregunta:
+**¿Esto pertenece al Motor, al Sistema Operativo o a la Capa de Presentación?**
+
+### Regla 1 — Nueva métrica
+```
+¿Dónde se calcula?
+  → Gold Master. No en QUIRA.
+```
+
+### Regla 2 — Nuevo documento
+```
+¿Dónde se integra?
+  → QUIRA. No en el Excel.
+```
+
+### Regla 3 — Discrepancia (ICPI = X, Documento dice Y)
+```
+QUIRA no corrige el ICPI.
+QUIRA produce evidencia para explicar:
+  → por qué X es correcto
+  → o por qué X debería revisarse
+```
+
+### Regla 4 — MATRIZ_CANONICA
+```
+MATRIZ_CANONICA = contrato semántico entre el Motor y QUIRA.
+No es una hoja más. Es el punto de convergencia de ambos sistemas.
+Todo Gate 6.6 gira alrededor de ese contrato.
+```
+
+---
+
 ## El ADN compartido: MATRIZ_CANONICA
 
 La MATRIZ_CANONICA del Gold Master (`SIAP-ICPI v5.5 → hoja MATRIZ_CANONICA`)
