@@ -1,0 +1,54 @@
+name: QUIRA · Health Check
+
+# Guardián ligero de salud del proyecto. Corre en cada push/PR.
+# Protege lo que importa: arranque liviano, sin secretos, sintaxis válida.
+# NO conecta a Supabase/Neo4j/Excel — sin credenciales, ~30 segundos.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "CLAUDE.md"
+      - ".claude/**"
+      - "governance/**"
+      - "scripts/**"
+      - "sentinel/**"
+      - "app/**"
+      - "docs/**"
+      - "*.py"
+  pull_request:
+    branches: [main]
+  workflow_dispatch:   # disparable manualmente desde la UI de GitHub
+
+jobs:
+  health:
+    name: Arranque + Secretos + Sintaxis
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1   # solo el último commit — no necesitamos historia
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: QUIRA Health Check
+        run: python scripts/ci/check_health.py
+
+      # Defensa en profundidad: bloquear si alguien intenta commitear secretos
+      - name: Verificar que archivos sensibles NO estén rastreados
+        run: |
+          for f in .env.claude .streamlit/secrets.toml .env; do
+            if git ls-files --error-unmatch "$f" >/dev/null 2>&1; then
+              echo "::error::Archivo sensible rastreado por git: $f"
+              exit 1
+            fi
+          done
+          echo "OK — ningún archivo sensible está rastreado"
