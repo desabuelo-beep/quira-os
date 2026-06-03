@@ -1,0 +1,304 @@
+{
+  "fecha": "2026-06-03",
+  "gate": "6.5A",
+  "corpus_stats": {
+    "por_doc": {
+      "PP-GAD-2024": {
+        "chunks": 22,
+        "palabras": 7991,
+        "avg_palabras_por_chunk": 363.2
+      },
+      "PP-GAD-2025": {
+        "chunks": 110,
+        "palabras": 43702,
+        "avg_palabras_por_chunk": 397.3
+      },
+      "PP-GAD-2026": {
+        "chunks": 114,
+        "palabras": 45259,
+        "avg_palabras_por_chunk": 397.0
+      },
+      "RC-ASEO-2023": {
+        "chunks": 21,
+        "palabras": 8248,
+        "avg_palabras_por_chunk": 392.8
+      },
+      "RC-ASEO-2024": {
+        "chunks": 43,
+        "palabras": 17197,
+        "avg_palabras_por_chunk": 399.9
+      },
+      "RC-BOMBEROS-2023": {
+        "chunks": 13,
+        "palabras": 4780,
+        "avg_palabras_por_chunk": 367.7
+      },
+      "RC-BOMBEROS-2024": {
+        "chunks": 15,
+        "palabras": 5708,
+        "avg_palabras_por_chunk": 380.5
+      },
+      "RC-GAD-2023": {
+        "chunks": 12,
+        "palabras": 1436,
+        "avg_palabras_por_chunk": 119.7
+      },
+      "RC-GAD-2024": {
+        "chunks": 13,
+        "palabras": 1691,
+        "avg_palabras_por_chunk": 130.1
+      },
+      "RC-PATRONATO-2023": {
+        "chunks": 19,
+        "palabras": 988,
+        "avg_palabras_por_chunk": 52.0
+      },
+      "RC-PATRONATO-2024": {
+        "chunks": 10,
+        "palabras": 425,
+        "avg_palabras_por_chunk": 42.5
+      }
+    },
+    "total_chunks": 392,
+    "total_palabras": 137425,
+    "rc_chunks": 146,
+    "pp_chunks": 246
+  },
+  "n_queries": 8,
+  "findings": {
+    "Q01_PP_DEMANDAS": {
+      "query_id": "Q01_PP_DEMANDAS",
+      "tipo": "PP_DEMANDAS_TERRITORIALES",
+      "dominio": "Dom08",
+      "circuito": "C01",
+      "n_resultados": 8,
+      "similarity_avg": 0.5349,
+      "entidades": [
+        "ASEO",
+        "GAD"
+      ],
+      "top_chunks": [
+        {
+          "sigla": "PP-GAD-2024",
+          "sim": 0.5828,
+          "preview": "Delgado Calderón RONALD NICOLAS 1311891244 Montecristi Montecristi octubre y callejon 21 de noviembre. Alcantarillado asfaltados aceras y bordillo 25 Carrasco delgado Maritza Beatriz 131080289-5 Toall"
+        },
+        {
+          "sigla": "PP-GAD-2024",
+          "sim": 0.5442,
+          "preview": "las necesidades O de la ciudadanía en cuanto a obra pública, viabilización, salud, seguridad, etc etc, pero se confía plenamente en su gestión señor Alcalde para conseguir los recursos y medios necesa"
+        },
+        {
+          "sigla": "RC-ASEO-2024",
+          "sim": 0.5353,
+          "preview": "políticas, planes, programas, proyectos y MANEJO DE DESECHOS SOLIDOS, ACTIVIDADES DE VEHÍCULOS Y MAQUINARIA. EJECUTADAS. actividades para el mejoramiento de la calidad de vía de la SANEAMIENTO AMBIENT"
+        }
+      ]
+    },
+    "Q02_RC_METAS": {
+      "query_id": "Q02_RC_METAS",
+      "tipo": "RC_METAS_CUMPLIMIENTO",
+      "dominio": "Dom09",
+      "circuito": "C01",
+      "n_resultados": 8,
+      "similarity_avg": 0.5474,
+      "entidades": [
+        "GAD",
+        "ASEO",
+        "BOMBEROS",
+        "PATRONATO"
+      ],
+      "top_chunks": [
+        {
+          "sigla": "RC-BOMBEROS-2024",
+          "sim": 0.6745,
+          "preview": "Y ¿POR QUÉ? DE LA GESTIÓN DEL OBJETIVO PLAN DE TRABAJO (OFERTA ELECTORAL) DESCRIBA LOS OBJETIVOS/ OFERTAS DEL PLAN DE TRABAJO DESCRIBA LOS PROGRAMAS / PORCENTAJE DESCRIBA LOS RESULTADOS ALCANZADOS PRO"
+        },
+        {
+          "sigla": "RC-ASEO-2023",
+          "sim": 0.5725,
+          "preview": "LA CIUDADANÍA DEL CANTÓN OPERATIVIDAD EN LA PRESTACIÓN DEL SERVICIO DE RECOLECCIÓN MONTECRISTI PLAN DE TRABAJO (OFERTA ELECTORAL) DESCRIBA LOS OBJETIVOS/ OFERTAS DEL PLAN DE TRABAJO DESCRIBA LOS PROGR"
+        },
+        {
+          "sigla": "RC-BOMBEROS-2024",
+          "sim": 0.5536,
+          "preview": "PLAN DE TRABAJO fiscal, de las sugerencias acogidas en la deliberacion y content/uploads/2025/RDC/Fase4/Plan-Trabajo-2025.pdf PARA INCORPORAR LAS SUGERENCIAS las cuales fueron acogidas como sugerencia"
+        }
+      ]
+    },
+    "Q03_RC_PRESUPUESTO": {
+      "query_id": "Q03_RC_PRESUPUESTO",
+      "tipo": "RC_EJECUCION_PRESUPUESTARIA",
+      "dominio": "Dom09",
+      "circuito": "C02",
+      "n_resultados": 8,
+      "similarity_avg": 0.6025,
+      "entidades": [
+        "GAD"
+      ],
+      "top_chunks": [
+        {
+          "sigla": "PP-GAD-2026",
+          "sim": 0.6228,
+          "preview": "ñ,iüfiT¿ü'Tüti SEPTIMo: Entrego de ficho de priorizoción o lo ciudodonío poro el presupuesto port¡cipotivo 2026, poto luego sistemot¡zor el eguipo de Portic¡poc¡ón c¡udodono del oAD Mun¡cipol se encor"
+        },
+        {
+          "sigla": "PP-GAD-2025",
+          "sim": 0.6121,
+          "preview": "electos y designodos. Que en el Art 68 de lo [opc.- corocterísticos del presupuesto porticipotivo.- Los presupuestos porticipotivos estorón obiertos o los orgonizociones socioles y ciudodonío que dese"
+        },
+        {
+          "sigla": "PP-GAD-2026",
+          "sim": 0.6035,
+          "preview": "levontomiento de oporte ciudodono y lo priorizoción del presupuesto mun¡c¡pol de Montecristi correspondiente ol ejercicio f iscol 2026. SEGUNDO. - Disponer ol Jefe de Porticipoción Ciudodono, remítose"
+        }
+      ]
+    },
+    "Q04_RC_PARTICIPACION": {
+      "query_id": "Q04_RC_PARTICIPACION",
+      "tipo": "RC_EVENTO_PARTICIPATIVO",
+      "dominio": "Dom08",
+      "circuito": "C01",
+      "n_resultados": 8,
+      "similarity_avg": 0.6631,
+      "entidades": [
+        "PATRONATO",
+        "GAD"
+      ],
+      "top_chunks": [
+        {
+          "sigla": "RC-GAD-2023",
+          "sim": 0.7335,
+          "preview": "marzo del 2024 de manera formal la asamblea ciudadana remite las preguntas al GAD Montecristi y a las instituciones adscritas. El día 11 de marzo de 2024 previa convocatoria a las 10:00am en la Casa P"
+        },
+        {
+          "sigla": "PP-GAD-2024",
+          "sim": 0.7074,
+          "preview": "invitó a la ciudadanía a dar su aporte ciudadano, para el proceso de presupuesto participativo 2023, mismo que se realizó a través de un link https://forms.gle/qkYiUw7Wv58FUGJL7 con los representantes"
+        },
+        {
+          "sigla": "PP-GAD-2026",
+          "sim": 0.6964,
+          "preview": "ciudadanas y los ciudadanos, de forma individual o pbr medio de organ¡zaciones sociales, contribuyen voluntar¡amente a la toma de decisiones respecto de los presupuestos estatales, en reuniones con la"
+        }
+      ]
+    },
+    "Q05_CPCCS_CUMPLIMIENTO": {
+      "query_id": "Q05_CPCCS_CUMPLIMIENTO",
+      "tipo": "CPCCS_COMPLIANCE",
+      "dominio": "Dom09",
+      "circuito": "C01",
+      "n_resultados": 8,
+      "similarity_avg": 0.424,
+      "entidades": [
+        "BOMBEROS",
+        "PATRONATO",
+        "GAD"
+      ],
+      "top_chunks": [
+        {
+          "sigla": "RC-GAD-2023",
+          "sim": 0.5813,
+          "preview": "el día 17 de abril del presente se dio la revisión del formulario de EXCEL y dar cumplimiento a las actividades planificadas con la comisión 1. El 22 de abril el Alcalde, aprueba el informe de rendici"
+        },
+        {
+          "sigla": "RC-GAD-2024",
+          "sim": 0.4585,
+          "preview": "la máxima autoridad. El 29 de julio del 2025 alcalde entregará formalmente a la instancia de participación y al CPCCS, los planes de trabajo. del 1 al 08 de agosto del 2025 gad Montecristi se continua"
+        },
+        {
+          "sigla": "RC-GAD-2023",
+          "sim": 0.4316,
+          "preview": "plan de trabajo a la máxima autoridad. 14 junio del 2024 alcalde entregará formalmente a la instancia de participación y al CPCCS, el plan de trabajo del 17 al 28 de junio del 2024 gad Montecristi ing"
+        }
+      ]
+    },
+    "Q06_PP_PRESUPUESTO": {
+      "query_id": "Q06_PP_PRESUPUESTO",
+      "tipo": "PP_PRESUPUESTO_ASIGNADO",
+      "dominio": "Dom08",
+      "circuito": "C02",
+      "n_resultados": 8,
+      "similarity_avg": 0.6996,
+      "entidades": [
+        "BOMBEROS",
+        "GAD"
+      ],
+      "top_chunks": [
+        {
+          "sigla": "PP-GAD-2025",
+          "sim": 0.792,
+          "preview": "en el Art.68 de Ia LOPC. - Características del presupuesto participativo. - Los p¡esupuestos participativos estar¡ín abiertos a las organizaciones sociales y ciudadanía que deseen participar; suponen "
+        },
+        {
+          "sigla": "PP-GAD-2024",
+          "sim": 0.7777,
+          "preview": "invitó a la ciudadanía a dar su aporte ciudadano, para el proceso de presupuesto participativo 2023, mismo que se realizó a través de un link https://forms.gle/qkYiUw7Wv58FUGJL7 con los representantes"
+        },
+        {
+          "sigla": "PP-GAD-2024",
+          "sim": 0.7391,
+          "preview": "elaboración del presupuesto participativo, de acuerdo con los lineamientos del Plan de Desarrollo elaborado por el Consejo Nacional de Planificación Participativa y los consejos locales de planificaci"
+        }
+      ]
+    },
+    "Q07_RETROALIMENTACION": {
+      "query_id": "Q07_RETROALIMENTACION",
+      "tipo": "RETROALIMENTACION_CICLO",
+      "dominio": "Dom09",
+      "circuito": "C01",
+      "n_resultados": 8,
+      "similarity_avg": 0.6021,
+      "entidades": [
+        "BOMBEROS",
+        "GAD"
+      ],
+      "top_chunks": [
+        {
+          "sigla": "RC-BOMBEROS-2024",
+          "sim": 0.6901,
+          "preview": "PLAN DE TRABAJO fiscal, de las sugerencias acogidas en la deliberacion y content/uploads/2025/RDC/Fase4/Plan-Trabajo-2025.pdf PARA INCORPORAR LAS SUGERENCIAS las cuales fueron acogidas como sugerencia"
+        },
+        {
+          "sigla": "PP-GAD-2026",
+          "sim": 0.6457,
+          "preview": "MARKETING. Asunto: Pr¡orizoción del Anteproyecto de Presupuesto Port¡cipot¡vo - Ejercicio Fiscol 2026 l. Ant€c€dentes En cumplimiento de los disposiciones estoblecidos poro lo formuloción del Presupue"
+        },
+        {
+          "sigla": "PP-GAD-2026",
+          "sim": 0.6336,
+          "preview": "ñ,iüfiT¿ü'Tüti SEPTIMo: Entrego de ficho de priorizoción o lo ciudodonío poro el presupuesto port¡cipotivo 2026, poto luego sistemot¡zor el eguipo de Portic¡poc¡ón c¡udodono del oAD Mun¡cipol se encor"
+        }
+      ]
+    },
+    "Q08_INCUMPLIMIENTO": {
+      "query_id": "Q08_INCUMPLIMIENTO",
+      "tipo": "INCUMPLIMIENTO_DETECTADO",
+      "dominio": "Dom09",
+      "circuito": "C03",
+      "n_resultados": 8,
+      "similarity_avg": 0.454,
+      "entidades": [
+        "PATRONATO",
+        "GAD"
+      ],
+      "top_chunks": [
+        {
+          "sigla": "RC-PATRONATO-2023",
+          "sim": 0.4778,
+          "preview": "OBJETIVOS DEL PLAN DE DESARROLLO DE SU TERRITORIO: INFORME DE RENDICIÓN DE CUENTAS No 12068 PERIODO 2023 CUMPLIMIENTO DE LA EJECUCIÓN PROGRAMÁTICA: PLAN DE DESARROLLO: REPORTE EL AVANCE RESPECTO A TOD"
+        },
+        {
+          "sigla": "RC-PATRONATO-2024",
+          "sim": 0.4653,
+          "preview": "OBJETIVOS DEL PLAN DE DESARROLLO DE SU TERRITORIO: INFORME DE RENDICIÓN DE CUENTAS No 14976 PERIODO 2024 CUMPLIMIENTO DE LA EJECUCIÓN PROGRAMÁTICA: PLAN DE DESARROLLO: REPORTE EL AVANCE RESPECTO A TOD"
+        },
+        {
+          "sigla": "RC-PATRONATO-2023",
+          "sim": 0.4589,
+          "preview": "OBJETIVOS DEL PLAN DE DESARROLLO DE SU TERRITORIO: INFORME DE RENDICIÓN DE CUENTAS No 12068 PERIODO 2023 CUMPLIMIENTO DE LA EJECUCIÓN PROGRAMÁTICA: PLAN DE DESARROLLO: REPORTE EL AVANCE RESPECTO A TOD"
+        }
+      ]
+    }
+  }
+}
