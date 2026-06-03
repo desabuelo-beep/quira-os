@@ -133,16 +133,32 @@ def _extract_text_pdf(path: Path) -> list[tuple[str, int]]:
     return pages
 
 
+def _extract_text_txt(path: Path) -> list[tuple[str, int]]:
+    """
+    Extrae líneas de un .txt pre-procesado (ej. extraído de Drive via Chrome).
+    Retorna: lista de (linea, numero_linea)
+    """
+    lines = []
+    with open(str(path), encoding="utf-8") as f:
+        for i, line in enumerate(f):
+            text = line.strip()
+            if text and len(text) > 4:
+                lines.append((text, i))
+    return lines
+
+
 def _extract_text(path: Path) -> tuple[list[tuple[str, int]], str]:
     """
     Auto-detecta formato y extrae texto.
-    Retorna: (fragmentos, tipo) donde tipo = 'docx' | 'pdf'
+    Retorna: (fragmentos, tipo) donde tipo = 'docx' | 'pdf' | 'txt'
     """
     suffix = path.suffix.lower()
     if suffix == ".docx":
         return _extract_text_docx(path), "docx"
     elif suffix == ".pdf":
         return _extract_text_pdf(path), "pdf"
+    elif suffix == ".txt":
+        return _extract_text_txt(path), "txt"
     else:
         raise ValueError(f"Formato no soportado: {suffix}")
 

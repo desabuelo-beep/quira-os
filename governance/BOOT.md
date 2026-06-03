@@ -11,11 +11,10 @@ Laboratorio: GAD Montecristi (MCR). Destino: 221 municipios.
 
 ## AHORA (actualizar al cierre)
 - **Sprint**: Gate 6.5 — Ingesta Holding MCR (Capas C+D)
-- **Último commit**: `6a82137` — Fase 3 PAC +506c
-- **Hecho**: Gates 6.1-6.4 ✅ · F1 RC+PP ✅ · F2 POA ✅ · **F3 PAC (+506c, 0 errores) ✅**
+- **Último commit**: pendiente
+- **Hecho**: Gates 6.1-6.4 ✅ · F1 RC+PP ✅ · F2 POA ✅ · F3 PAC ✅ · **POA-ASEO-2025 ✅** (Drive→Claude-in-Chrome→txt)
 - **Siguiente**: Gate 6.5 Fase 4 (Cédulas) → `python scripts/holding/ingest_holding.py --fase 4`
-- **Pendiente**: POA-ASEO-2025 (Drive, sin descarga) → ingestar cuando Javo baje el archivo
-- **Corpus**: ~12,523 chunks · Neo4j: 38 nodos/58 aristas
+- **Corpus**: ~13,509 chunks · Neo4j: 38 nodos/58 aristas
 - **No tocar**: ADR-019 sigue STRONGLY_SUPPORTED · ADR-022 candidato (espera Fase 3 PAC)
 
 ## REGLAS DE ORO (inviolables — el resto en CLAUDE.md)

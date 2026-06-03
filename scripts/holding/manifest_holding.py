@@ -368,12 +368,10 @@ MANIFEST_HOLDING: list[dict] = [
         "fase":           2,
     },
     {
-        # PENDIENTE: archivo solo disponible en Google Drive (sin descarga directa)
+        # Extraído de Google Drive via extensión Claude-in-Chrome (sin descarga directa).
         # Drive: https://drive.google.com/file/d/1Fwgw2smrUQJaEWFTkwBaXN7W-Qzz8Xd9/view
-        # Título confirmado: "POA Y PRESUPUESTO DEFINITIVO 2025"
-        # Acción: descargar desde Drive viewer (⬇) y guardar en POA 2023-2026\Aseo Ep POA 2025.pdf
-        # Luego: python scripts/holding/ingest_holding.py --sigla POA-ASEO-2025
-        "archivo":        r"POA 2023-2026\Aseo Ep POA 2025.pdf",
+        # Texto limpiado: ! → espacios (artefacto de codificación PDF del visor Drive).
+        "archivo":        r"POA 2023-2026\Aseo Ep POA 2025.txt",
         "sigla":          "POA-ASEO-2025",
         "nombre":         "Plan Operativo Anual EP Aseo Montecristi 2025",
         "entity":         "ASEO",
