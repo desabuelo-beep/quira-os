@@ -1,9 +1,10 @@
 # OBS-004 — Calidad del Corpus de Evidencia Observacional
 
-**Estado**: CONFIRMED
-**Fecha**: 2026-06-03
-**Origen**: Gate 6.5A · Semantic Mining sobre RC+PP
-**Tipo**: Observacion de calidad de datos
+**Estado**: CONFIRMED — FIX APLICADO  
+**Fecha**: 2026-06-02  
+**Actualizado**: 2026-06-03 (chunker fix ejecutado)  
+**Origen**: Gate 6.5A · Semantic Mining sobre RC+PP  
+**Tipo**: Observacion de calidad de datos + accion correctiva
 
 ---
 
@@ -34,23 +35,44 @@ de algunos chunks.
 
 ## Problemas de Calidad Detectados
 
-### P1 — Repeticion acumulativa de cabecera (RC-GAD)
-Los chunks de RC-GAD-2023/2024 acumulan el header del informe en cada chunk
-por efecto del overlap del chunker. Resultado: mucho contexto redundante.
-**Impacto**: reduccion de densidad semantica util por chunk.
-**Mitigacion**: ajustar CHUNK_OVERLAP en chunker_holding.py de 50 a 10 palabras
-para documentos DOCX muy estructurados.
+### P1 — Repeticion acumulativa de cabecera (RC-GAD) — FIX APLICADO
+
+Los chunks de RC-GAD-2023/2024 acumulaban el header del informe en cada chunk
+por efecto del overlap (50 palabras en DOCX). Adicionalmente, el template CPCCS
+de RC usa una estructura de "path acumulativo" donde cada párrafo incluye la
+jerarquía del documento completa.
+
+**Fix ejecutado** (commit siguiente a este):
+- `CHUNK_OVERLAP_DOCX = 10` (era 50) — evita arrastre de cabeceras de sección
+- `_dedupe_common_prefix()` — función nueva que stripea prefijos comunes entre
+  chunks consecutivos (threshold: 15 palabras idénticas iniciales)
+- Overlap adaptativo: DOCX=10, PDF=50
+
+**Chunks RC-GAD post-fix**: deduplicacion activa, menor repeticion de contexto.
+
+**Issue residual conocido**: el template CPCCS genera párrafos muy cortos (9-19 palabras)
+que son solo campos/etiquetas del formulario. Esto no es un bug del chunker — es
+la estructura del documento. Los filtros MIN_PALABRAS=30 en mine_evidence.py los
+excluyen correctamente de la minería.
+
+**Para Fases 2-3 (POA, PAC)**: documentos con estructura diferente — el fix
+de CHUNK_OVERLAP_DOCX=10 los beneficiará directamente.
 
 ### P2 — Texto scrambled en PDFs escaneados (RC-ASEO final pages)
-Las ultimas paginas de RC-ASEO-2023 contienen texto con letras separadas por espacios
-(artefacto de extraccion de PDF escaneado). Ejemplo: "o r s e c l a e r q g u o i p..."
-**Impacto**: chunks inutilizables semanticamente.
-**Mitigacion**: filtro GIBBERISH_RE activo en mine_evidence.py excluye estos chunks.
-**Accion futura**: aplicar OCR (pymupdf) en PDFs escaneados antes de ingestar.
+
+Las últimas páginas de RC-ASEO-2023 contienen texto con letras separadas por
+espacios (artefacto de extracción de PDF escaneado por pdfplumber).
+Ejemplo: "o r s e c l a e r q g u o i p..."
+
+**Estado**: ACEPTADO con filtro activo.
+**Mitigación actual**: filtro GIBBERISH_RE en mine_evidence.py excluye estos chunks.
+**Acción futura**: para Fase 5 (XLSX) y si se reingestar PDFs escaneados, usar
+pymupdf con OCR antes de chunking.
 
 ### P3 — Chunks de texto nominal (< 30 palabras)
-Algunos chunks son solo titulos de seccion sin contenido sustancial.
-**Mitigacion**: filtro MIN_PALABRAS=30 activo.
+
+Algunos chunks son solo títulos de sección sin contenido sustancial.
+**Mitigación activa**: filtro MIN_PALABRAS=30 en mine_evidence.py.
 
 ## Impacto en la Analitica
 

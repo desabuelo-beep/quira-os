@@ -39,8 +39,17 @@ SECTION_RE = re.compile(
     re.MULTILINE
 )
 
-CHUNK_MAX_WORDS  = 400
-CHUNK_OVERLAP    = 50   # palabras de overlap entre chunks
+CHUNK_MAX_WORDS    = 400
+
+# Overlap adaptativo por tipo de documento (fix OBS-004)
+# DOCX: 10 palabras — los docs de gestion tienen secciones bien delimitadas.
+#        50 palabras causaba que el header completo se repitiera en cada chunk.
+# PDF:  50 palabras — texto continuo sin separacion natural de secciones.
+CHUNK_OVERLAP_DOCX = 10
+CHUNK_OVERLAP_PDF  = 50
+
+# Umbral deduplicacion de prefijo comun entre chunks consecutivos (OBS-004)
+DEDUPE_PREFIX_THRESHOLD = 15  # si >15 palabras iniciales iguales, se stripea
 
 
 @dataclass
@@ -117,12 +126,64 @@ def _extract_text(path: Path) -> tuple[list[tuple[str, int]], str]:
 
 # ── CHUNKING ──────────────────────────────────────────────────────────────────
 
+def _dedupe_common_prefix(chunks: list[HoldingChunk]) -> list[HoldingChunk]:
+    """
+    Elimina prefijos comunes repetidos entre chunks consecutivos (fix OBS-004).
+
+    Problema: En DOCX de gestión pública (RC, POA), el template acumula la
+    jerarquía del documento en cada párrafo. Ej: cada chunk comienza con
+    "INFORME RC N°17649 PERIODO 2023 > CUMPLIMIENTO > METAS > ..."
+    sin que eso aporte valor semántico adicional.
+
+    Solución: si dos chunks consecutivos comparten >= DEDUPE_PREFIX_THRESHOLD
+    palabras iniciales, se stripea el prefijo del segundo chunk.
+    """
+    if len(chunks) < 2:
+        return chunks
+
+    result = [chunks[0]]
+    for i in range(1, len(chunks)):
+        prev_words = result[-1].contenido.split()
+        curr_words = chunks[i].contenido.split()
+
+        # Contar palabras comunes iniciales
+        common = 0
+        for j in range(min(len(prev_words), len(curr_words), 80)):
+            if prev_words[j].lower() == curr_words[j].lower():
+                common += 1
+            else:
+                break
+
+        if common >= DEDUPE_PREFIX_THRESHOLD:
+            stripped = " ".join(curr_words[common:]).strip()
+            if len(stripped.split()) >= 15:  # mantener chunk solo si queda contenido util
+                fixed = HoldingChunk.from_text(
+                    stripped,
+                    chunks[i].chunk_seq,
+                    chunks[i].seccion_raw,
+                    chunks[i].pagina_inicio,
+                )
+                result.append(fixed)
+            # si queda muy corto, descartar el chunk (era puro header)
+        else:
+            result.append(chunks[i])
+
+    return result
+
+
 def _split_into_chunks(fragments: list[tuple[str, int]],
                        doc_type: str) -> list[HoldingChunk]:
     """
     Divide los fragmentos en chunks de ~CHUNK_MAX_WORDS palabras.
     Detecta cabeceras de sección como límites naturales.
+
+    Overlap adaptativo (fix OBS-004):
+      DOCX: 10 palabras — evita arrastre de cabeceras en templates de gestion.
+      PDF:  50 palabras — texto continuo, el overlap preserva contexto.
     """
+    # Seleccionar overlap segun tipo de documento
+    chunk_overlap = CHUNK_OVERLAP_DOCX if doc_type == "docx" else CHUNK_OVERLAP_PDF
+
     chunks: list[HoldingChunk] = []
     current_words: list[str] = []
     current_seccion = "CONTENIDO"
@@ -149,8 +210,8 @@ def _split_into_chunks(fragments: list[tuple[str, int]],
             if chunk:
                 chunks.append(chunk)
                 seq += 1
-            # Conservar overlap
-            overlap_words = current_words[-CHUNK_OVERLAP:] if len(current_words) > CHUNK_OVERLAP else current_words[:]
+            # Overlap reducido para DOCX: no arrastrar headers de sección
+            overlap_words = current_words[-chunk_overlap:] if len(current_words) > chunk_overlap else current_words[:]
             current_words = overlap_words
             current_seccion = fragment[:100]  # nueva sección
             current_page = page_ref
@@ -166,8 +227,8 @@ def _split_into_chunks(fragments: list[tuple[str, int]],
             if chunk:
                 chunks.append(chunk)
                 seq += 1
-            # Overlap para el siguiente chunk
-            current_words = current_words[CHUNK_MAX_WORDS - CHUNK_OVERLAP:]
+            # Overlap adaptativo
+            current_words = current_words[CHUNK_MAX_WORDS - chunk_overlap:]
             current_page = page_ref
 
     # Emitir lo que queda
@@ -175,6 +236,10 @@ def _split_into_chunks(fragments: list[tuple[str, int]],
         chunk = flush(current_words, current_seccion, current_page)
         if chunk:
             chunks.append(chunk)
+
+    # Post-proceso: deduplicar prefijos comunes (solo DOCX — PDFs ya no tienen este problema)
+    if doc_type == "docx" and len(chunks) > 1:
+        chunks = _dedupe_common_prefix(chunks)
 
     return chunks
 

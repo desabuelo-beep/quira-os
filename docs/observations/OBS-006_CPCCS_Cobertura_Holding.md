@@ -48,7 +48,29 @@ No es solo un dominio teorico — tiene evidencia documental para Montecristi.
 
 Esto fortalece el criterio C3 de ADR-019 que estaba pendiente de Dom09 completo.
 
+## Implicacion para ADR-019
+
+La evidencia de CPCCS compliance confirma que Dom09 opera como DESTINO real
+en el circuito C01. No es solo un dominio teorico.
+
+La combinacion OBS-005 + OBS-006 añade un eje de validacion desde la practica
+real, independiente del corpus normativo:
+
+```
+ADR-019 STRONGLY_SUPPORTED ya tiene:
+  C1: Dom08 betweenness 4.6x Dom07
+  C2: Dom09 top-4 betweenness
+  C4b: CE_1 Cascade Score > CE_226
+
+OBS-005 + OBS-006 añaden:
+  C_D: ciclo PP->RC->PP documentado (OBS-005)
+  C_D2: cobertura RC 100pct del Holding (este OBS)
+```
+
+Pendiente: C3 (Dom09 cobertura normativa completa) sigue siendo el criterio
+formal para mover ADR-019 a CONFIRMED.
+
 ---
 
-*OBS-006 · QUIRA Gov · Dylus Lab · 2026-06-03*
-*El Holding Municipal de Montecristi tiene cobertura RC 100pct para 2023-2024.*
+*OBS-006 · QUIRA Gov · Dylus Lab · 2026-06-02 (actualizado 2026-06-03)*  
+*El Holding Municipal de Montecristi tiene cobertura RC 100% para 2023-2024.*

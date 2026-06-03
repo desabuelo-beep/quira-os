@@ -61,12 +61,19 @@ Gates 3 y 4 completados. ADR-019 STRONGLY_SUPPORTED (no CONFIRMED — rigor epis
     Fase 1 COMPLETADA: 11 docs RC+PP → 392 chunks EVIDENCIA_OBSERVACIONAL
       Supabase MCR: 1,096 chunks (392 D + 612 C + 92 A)
       Total corpus: 8,743 chunks (8,351 + 392)
-    Fase 2 PENDIENTE: 17 docs POA+PAI
-    Fase 3 PENDIENTE: 18 docs PAC+Presupuesto
-    Fase 4 PENDIENTE: 2 docs SIGAD
-    Fase 5 PENDIENTE: XLSX/CSV → holding_structured_data
-  Gate 6.6  PENDIENTE: Semantic Mining
-  Gate 6.7  PENDIENTE: Re-evaluar ADR-019
+  Gate 6.5A COMPLETADO: Semantic Mining RC+PP → OBS-004/005/006 CONFIRMED
+    392 chunks · 8 queries · 8/8 con resultados
+    OBS-004: calidad chunking — FIX APLICADO (overlap DOCX=10, dedupe prefix)
+    OBS-005: Ciclo PP->RC->PP tres capas convergentes — CANDIDATO ADR-022
+    OBS-006: CPCCS cobertura Holding 100pct 2023-2024
+    data/mining/gate65a_findings.json — reporte completo
+  Gate 6.5 Fases 2-5 PENDIENTES (colega: procesar OBS antes de mas datos)
+    Fase 2: 17 docs POA+PAI
+    Fase 3: 18 docs PAC+Presupuesto
+    Fase 4: 2 docs SIGAD
+    Fase 5: XLSX/CSV → holding_structured_data
+  Gate 6.6  PENDIENTE: Semantic Mining completo (post Fases 2-5)
+  Gate 6.7  PENDIENTE: Re-evaluar ADR-019 (C3 sigue pendiente Dom09 normativo)
 
 ### ADR-019 — Dominios de Legitimación Democrática → **STRONGLY_SUPPORTED**
 Hipótesis: Dom08 + Dom09 forman una categoría arquitectónica distinta de los dominios operacionales.
