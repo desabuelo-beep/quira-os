@@ -144,21 +144,30 @@ por LOPC_101 (democracia electrónica). El nodo NO es "VIDEO" sino "Evidencia Di
 
 ## 6. PRÓXIMOS PASOS (actualizado post Gates 3-4 · colega asesor 2026-06-02)
 
-**Gate 6 — Semantic Mining (SIGUIENTE)**
-- Usar skill `/qlep-corpus` sobre `C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT\Normativa_Word`
-- Extracción e ingesta total e integral de todo el corpus normativo pendiente
-- Medir densidad normativa por dominio (Dom09 sigue débil → explica Comunidad 3 pequeña)
-- Buscar circuitos emergentes: PLANIFICA→EJECUTA→RINDE→OBSERVA→CORRIGE
+**Gate 6 — Motor de Trazabilidad Pública (SIGUIENTE · ver ADR-021)**
 
-**Gate 5 — ADR-019 CONFIRMED** (después de Gate 6)
-- NO antes. Necesita Dom09 con cobertura normativa real del corpus completo
-- Métricas estándar (betweenness, Louvain) deben sostenerlo — no solo Cascade Score M6
+ADR-021 ACTIVO — `docs/adr/ADR-021_Ontologia_Corpus_Motor_Trazabilidad.md`
+Define: 4 Capas (A=Norma/B=Metodología/C=Instrumento/D=Evidencia) + authority_level + canton_id
+
+Fuentes:
+  Normativa_Word: `C:\...\ProyecT\Normativa_Word` (43 docs · Capas A+B)
+  Holding MCR:    `C:\...\ProyecT\Holding_Municipal_Montecristi` (~90 docs · Capas C+D)
+
+Secuencia Gates:
+  Gate 6.1 ⏳ Schema Supabase: ADD COLUMN document_class + authority_level + canton_id
+  Gate 6.2 ⏳ Migración corpus existente (43 docs → clasificar retroactivamente)
+  Gate 6.3 ⏳ Delta Normativa_Word: ingestar lo que falta (skill /qlep-corpus)
+  Gate 6.4 ⏳ Ingesta Holding MCR (Capas C+D) — evidencia de ejecución territorial
+  Gate 6.5 ⏳ Datos estructurados LOTAIP → tabla holding_structured_data
+  Gate 6.6 ⏳ Semantic Mining: densidad por dominio, circuitos emergentes
+  Gate 6.7 ⏳ Re-evaluar ADR-019 con corpus completo
+
+**Gate 5 — ADR-019 CONFIRMED** (después de Gate 6.7)
+- NO antes. Dom09 necesita cobertura real del corpus completo
+- Métricas estándar deben sostenerlo — no solo Cascade Score M6
 
 **Pendiente paralelo (no bloquea Gate 6)**
 - RC 2025 metadatos CPCCS → Gold Master (esperando plazos legales CPCCS)
-- RC 2025 video ya verificado: https://www.youtube.com/watch?v=Qexwg7EKmUo
-
-**ADR-021 candidato** (abrir solo si Gate 6 confirma LOPC_101 > CE_95 con corpus completo)
 
 ---
 
