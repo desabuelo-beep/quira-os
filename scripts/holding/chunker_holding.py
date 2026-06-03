@@ -81,8 +81,9 @@ class HoldingChunk:
 
 def _extract_text_docx(path: Path) -> list[tuple[str, int]]:
     """
-    Extrae párrafos de un DOCX.
-    Retorna: lista de (texto_parrafo, numero_parrafo)
+    Extrae párrafos de un DOCX. Si el documento no tiene párrafos con texto
+    (ej. POA/PAC enteramente en tablas), extrae filas de tablas como fallback.
+    Retorna: lista de (texto, numero_secuencia)
     """
     from docx import Document
     doc = Document(str(path))
@@ -91,7 +92,27 @@ def _extract_text_docx(path: Path) -> list[tuple[str, int]]:
         text = para.text.strip()
         if text:
             paragraphs.append((text, i))
-    return paragraphs
+
+    if paragraphs:
+        return paragraphs
+
+    # Fallback: documento basado en tablas (POA/PAC tipo planilla)
+    rows: list[tuple[str, int]] = []
+    seq = 0
+    for table in doc.tables:
+        for row in table.rows:
+            # python-docx repite celdas en celdas fusionadas — deduplicar
+            seen: set[str] = set()
+            unique: list[str] = []
+            for cell in row.cells:
+                ct = cell.text.strip()
+                if ct and ct not in seen:
+                    seen.add(ct)
+                    unique.append(ct)
+            if unique:
+                rows.append((" | ".join(unique), seq))
+                seq += 1
+    return rows
 
 
 def _extract_text_pdf(path: Path) -> list[tuple[str, int]]:

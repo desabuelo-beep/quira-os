@@ -11,12 +11,12 @@ Laboratorio: GAD Montecristi (MCR). Destino: 221 municipios.
 
 ## AHORA (actualizar al cierre)
 - **Sprint**: Gate 6.5 — Ingesta Holding MCR (Capas C+D)
-- **Último commit**: `2c958ae` — sistema BOOT lazy-load
-- **Hecho**: Gates 6.1-6.4 ✅ · Fase 1 (RC+PP, 392 chunks) ✅ · Gate 6.5A mining ✅ (OBS-004/005/006/007)
-- **Siguiente**: Gate 6.5 Fase 2 (POA) → `python scripts/holding/ingest_holding.py --fase 2`
-  (Fases reordenadas por OBS-007: 4=Cédulas, 5=SIGAD. Falta mover cédulas a fase 4 en manifest)
-- **Corpus**: 8,743 chunks · MCR: 1,096 · Neo4j: 38 nodos/58 aristas
-- **No tocar**: ADR-019 sigue STRONGLY_SUPPORTED (no CONFIRMED sin Dom09 completo)
+- **Último commit**: pendiente — chunker fix tabla-fallback + Fase 2 POA
+- **Hecho**: Gates 6.1-6.4 ✅ · Fase 1 (RC+PP, 392c) ✅ · Gate 6.5A mining ✅ · **Fase 2 (POA, +3,157c) ✅**
+- **Siguiente**: Gate 6.5 Fase 3 (PAC) → `python scripts/holding/ingest_holding.py --fase 3`
+- **Corpus**: ~11,900 chunks · Neo4j: 38 nodos/58 aristas
+- **Pendiente Javo**: localizar en Holding → `Aseo Ep POA 2026.pdf` + `Bomberos Montecristi POA 2026.pdf`
+- **No tocar**: ADR-019 sigue STRONGLY_SUPPORTED · ADR-022 candidato (espera Fase 3 PAC)
 
 ## REGLAS DE ORO (inviolables — el resto en CLAUDE.md)
 1. **Excel = Estado.** Gold Master es fuente de verdad. Excel→Python→Supabase→UI, nunca al revés.
