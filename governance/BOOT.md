@@ -11,7 +11,7 @@ Laboratorio: GAD Montecristi (MCR). Destino: 221 municipios.
 
 ## AHORA (actualizar al cierre)
 - **Sprint**: Gate 6.5 — Ingesta Holding MCR (Capas C+D)
-- **Último commit**: pendiente
+- **Último commit**: `e99f0e7` — POA-ASEO-2025 Drive→txt +986c · chunker .txt
 - **Hecho**: Gates 6.1-6.4 ✅ · F1 RC+PP ✅ · F2 POA ✅ · F3 PAC ✅ · **POA-ASEO-2025 ✅** (Drive→Claude-in-Chrome→txt)
 - **Siguiente**: Gate 6.5 Fase 4 (Cédulas) → `python scripts/holding/ingest_holding.py --fase 4`
 - **Corpus**: ~13,509 chunks · Neo4j: 38 nodos/58 aristas
