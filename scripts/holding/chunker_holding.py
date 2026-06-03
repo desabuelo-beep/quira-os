@@ -93,7 +93,9 @@ def _extract_text_docx(path: Path) -> list[tuple[str, int]]:
         if text:
             paragraphs.append((text, i))
 
-    if paragraphs:
+    # Documentos con >= 5 párrafos tienen contenido narrativo real — usar párrafos.
+    # Documentos con < 5 párrafos son planillas basadas en tablas — usar tabla-fallback.
+    if len(paragraphs) >= 5:
         return paragraphs
 
     # Fallback: documento basado en tablas (POA/PAC tipo planilla)

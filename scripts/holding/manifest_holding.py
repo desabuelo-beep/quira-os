@@ -353,7 +353,7 @@ MANIFEST_HOLDING: list[dict] = [
         "fase":           2,
     },
     {
-        "archivo":        r"Oficiales_2026\Aseo Ep POA 2026.pdf",
+        "archivo":        r"POA 2023-2026\Aseo Ep POA 2026.docx",
         "sigla":          "POA-ASEO-2026",
         "nombre":         "Plan Operativo Anual EP Aseo Montecristi 2026",
         "entity":         "ASEO",
@@ -400,7 +400,7 @@ MANIFEST_HOLDING: list[dict] = [
         "fase":           2,
     },
     {
-        "archivo":        r"Oficiales_2026\Bomberos Montecristi POA 2026.pdf",
+        "archivo":        r"POA 2023-2026\Bomberos Montecristi POA 2026.docx",
         "sigla":          "POA-BOMBEROS-2026",
         "nombre":         "Plan Operativo Anual Cuerpo de Bomberos Montecristi 2026",
         "entity":         "BOMBEROS",
@@ -898,7 +898,13 @@ MANIFEST_HOLDING: list[dict] = [
         "archivo":        r"POA 2023-2026\Aseo Ep POA 2026.pdf",
         "sigla":          "POA-ASEO-2026-PDF",
         "ingest_mode":    "skip",
-        "motivo":         "duplicate — mismo archivo que POA-ASEO-2026 (listado dos veces en carpeta)",
+        "motivo":         "duplicate_prefer_docx — usar POA 2023-2026\\Aseo Ep POA 2026.docx",
+    },
+    {
+        "archivo":        r"POA 2023-2026\Bomberos Montecristi POA 2026.pdf",
+        "sigla":          "POA-BOMBEROS-2026-PDF",
+        "ingest_mode":    "skip",
+        "motivo":         "duplicate_prefer_docx — usar POA 2023-2026\\Bomberos Montecristi POA 2026.docx",
     },
 
     # ── STRUCTURED DATA: XLSX / XLS / CSV ─────────────────────────────────────
