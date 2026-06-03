@@ -20,15 +20,16 @@
 
 ## AHORA (actualizar al cierre)
 - **Sprint**: Gate 6.6 — Bridge Corpus → Motor ICPI
-- **Último commit**: `69e1a02` — Gate 6.6A+C · corpus_mnt_mapping 51/51 · explainability
+- **Último commit**: pendiente — Gate 6.6B Dom01-D12
 - **Gate 6.5 ✅ COMPLETO**: 13,509 chunks · 65 tablas · OBS-008/009 · ADR-022/023
 - **Corpus**: ~13,509 chunks texto · 65+ tablas LOTAIP/cédulas · Neo4j: 38/58
 - **Gold Master leído completo** (120 hojas): ICPI-2025=69.93% · TGI=66.79% · D3=59.85%(gap) · D4=44.79%(crítico)
 - **Connector LISTO**: `app/connectors/gold_master.py` → H73_OUTPUT_API
-- **Gate 6.6A ✅ COMPLETO**: `corpus_mnt_mapping` creada · 51/51 siglas MCR trazadas (100%)
-- **Gate 6.6B (siguiente)**: Dom01-D12 tagging en `corpus_mnt_mapping` (campo dominio)
-- **Gate 6.6C ✅ prototipo**: `explainability_report.py` funciona — responde "¿qué evidencia respalda ICPI 2025=69.93%?"
-- **Scripts listos**: `tag_mnt_uuid.py` · `explainability_report.py` · `update_silos.py` · `metrics_mcr.py`
+- **Gate 6.6 ✅ COMPLETO** (Sprint Ontología Territorial):
+    - 6.6A: `corpus_mnt_mapping` · 51/51 siglas MCR → MNT_UUID · 0 huérfanos
+    - 6.6B: Dom01-D12 · 51/51 (100%) · D10=9 · D04=9 · D12=9 · D03=8
+    - 6.6C: `explainability_report.py` — "¿Por qué ICPI=69.93%?" → respuesta automática
+- **Siguiente**: segundo municipio (Portoviejo/Manta/etc.) → validar ADR-022 CONFIRMED
 - **Ver**: `docs/architecture/BRIDGE_EXCEL_CORPUS.md` · `docs/adr/ADR-023`
 - **ADR-019 STRONGLY_SUPPORTED · ADR-022 SUPPORTED · ADR-023 ACTIVO**
 
