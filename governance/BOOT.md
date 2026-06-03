@@ -11,9 +11,10 @@ Laboratorio: GAD Montecristi (MCR). Destino: 221 municipios.
 
 ## AHORA (actualizar al cierre)
 - **Sprint**: Gate 6.5 — Ingesta Holding MCR (Capas C+D)
-- **Último commit**: `971f51f` — OBS-007 dos circuitos
+- **Último commit**: `2c958ae` — sistema BOOT lazy-load
 - **Hecho**: Gates 6.1-6.4 ✅ · Fase 1 (RC+PP, 392 chunks) ✅ · Gate 6.5A mining ✅ (OBS-004/005/006/007)
 - **Siguiente**: Gate 6.5 Fase 2 (POA) → `python scripts/holding/ingest_holding.py --fase 2`
+  (Fases reordenadas por OBS-007: 4=Cédulas, 5=SIGAD. Falta mover cédulas a fase 4 en manifest)
 - **Corpus**: 8,743 chunks · MCR: 1,096 · Neo4j: 38 nodos/58 aristas
 - **No tocar**: ADR-019 sigue STRONGLY_SUPPORTED (no CONFIRMED sin Dom09 completo)
 
