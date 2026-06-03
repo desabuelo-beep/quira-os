@@ -207,5 +207,36 @@ QUIRA la hace operable. La transparenta. La auditará con documentos reales.
 
 ---
 
+## El salto de categoría
+
+```
+Sin puente MNT_UUID:
+  Corpus = biblioteca
+  Excel  = motor
+
+Con puente MNT_UUID:
+  Corpus = evidencia verificable del motor
+```
+
+Gate 6.6 es el primer gate que **no agrega datos. Agrega significado.**
+
+Cuando ese puente exista, QUIRA deja de ser un repositorio inteligente
+y pasa a ser un **sistema de auditoría explicable del modelo ICPI**.
+
+Ese es el salto de categoría que define la siguiente fase del proyecto.
+
+---
+
+## Identidad del sistema (versión definitiva)
+
+| Versión | Definición |
+|---|---|
+| Antes de Gate 6.5 | Motor de trazabilidad normativa |
+| Después de Gate 6.5 | Motor de trazabilidad con evidencia territorial |
+| Después de Gate 6.6 | **Sistema de auditoría explicable del modelo ICPI** |
+
+---
+
 *ADR-023 · QUIRA Gov · Dylus Lab © 2026*  
-*Principio fundacional inmutable — no requiere revisión periódica*
+*Principio fundacional inmutable — no requiere revisión periódica*  
+*Colega asesor externo · Javo (fundador) · Claude (director técnico)*

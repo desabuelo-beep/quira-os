@@ -5,8 +5,11 @@
 > Mantener bajo 500 tokens. Actualizar `## AHORA` al cierre de cada sesión.
 
 ## QUÉ ES
-> "El Gold Master ya sabe medir la gestión pública; QUIRA está aprendiendo a
-> demostrar documentalmente por qué cada métrica del Gold Master es verdadera o falsa."
+> **"El Gold Master ya sabe medir la gestión pública; QUIRA está aprendiendo a
+> demostrar documentalmente por qué cada métrica del Gold Master es verdadera o falsa."**
+>
+> Gate 6.6 no agrega datos. Agrega significado.
+> Objetivo: **sistema de auditoría explicable del modelo ICPI.**
 
 **3 niveles** (ADR-023 — inmutable):
 - **Nivel 1 Motor**: Gold Master SIAP-ICPI v5.5 — calcula ICPI/TGI/SAT/MMP. Leer via `app/connectors/gold_master.py`. NUNCA recalcular fuera del Excel.
