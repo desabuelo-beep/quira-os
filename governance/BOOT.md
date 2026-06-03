@@ -11,7 +11,7 @@ Laboratorio: GAD Montecristi (MCR). Destino: 221 municipios.
 
 ## AHORA (actualizar al cierre)
 - **Sprint**: Gate 6.5 — Ingesta Holding MCR (Capas C+D)
-- **Último commit**: pendiente
+- **Último commit**: `86d4ec6` — Gate 6.6 cadena trazabilidad + ADR-022 reformulado
 - **Excel Canon (120 hojas)**: 9 Silos S1-S9 · Motor ICPI H12 · ICPI-2025=69.93% · TGI=66.79%
 - **Fórmula**: ICPI = Σ(Pi×Ri×Vi×Ei×Ti×Ci)/Σ(Pi×Ri) · Vi=producto lógico 4 verificadores
 - **Connector**: `app/connectors/gold_master.py` → H73_OUTPUT_API — ÚNICA FUENTE DE VERDAD
