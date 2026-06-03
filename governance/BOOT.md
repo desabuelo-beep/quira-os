@@ -19,20 +19,18 @@
 **MATRIZ_CANONICA** del Excel = ADN compartido. Sin ella: dos mundos. Con ella: un sistema.
 
 ## AHORA (actualizar al cierre)
-- **Sprint**: Gate 6.5 — Ingesta Holding MCR (Capas C+D)
-- **Último commit**: `6be6888` — ADR-023 completo · identidad definitiva · cierre sesión
-- **Excel Canon (120 hojas)**: 9 Silos S1-S9 · Motor ICPI H12 · ICPI-2025=69.93% · TGI=66.79%
-- **Fórmula**: ICPI = Σ(Pi×Ri×Vi×Ei×Ti×Ci)/Σ(Pi×Ri) · Vi=producto lógico 4 verificadores
-- **Connector**: `app/connectors/gold_master.py` → H73_OUTPUT_API — ÚNICA FUENTE DE VERDAD
-- **Gate 6.5 (hecho)**: corpus = evidencia para silos S5/S7/S8
-- **Gate 6.6 (siguiente — EL MAS IMPORTANTE)**:
+- **Sprint**: Gate 6.6 — Bridge Corpus → Motor ICPI
+- **Último commit**: `69de4ab` — cierre sesión 2026-06-03
+- **Gate 6.5 ✅ COMPLETO**: 13,509 chunks · 65 tablas · OBS-008/009 · ADR-022/023
+- **Corpus**: ~13,509 chunks texto · 65+ tablas LOTAIP/cédulas · Neo4j: 38/58
+- **Gold Master leído completo** (120 hojas): ICPI-2025=69.93% · TGI=66.79% · D3=59.85%(gap) · D4=44.79%(crítico)
+- **Connector LISTO**: `app/connectors/gold_master.py` → H73_OUTPUT_API
+- **Gate 6.6 — ÚNICA PRIORIDAD**:
     1. `tag_mnt_uuid.py` → SIGLA corpus → MNT_UUID (MATRIZ_CANONICA) → Silo → Variable
-    2. `update_silos.py --silo s5` → Ti real LOTAIP → H07 (Excel recalcula ICPI)
-    3. `verify_cpccs.py` → V_CPCCS real desde RC → H10
-- **Ver**: `docs/architecture/BRIDGE_EXCEL_CORPUS.md` — cadena completa + mapa SIGLA→MNT→Silo
-- **ADR-022 corregido**: cadena Norma→Instrumento→Ejecución→Evidencia→Motor ICPI
-- **ADR-019 STRONGLY_SUPPORTED · ADR-022 SUPPORTED**
-- **No tocar**: ADR-019 sigue STRONGLY_SUPPORTED · ADR-022 candidato (espera Fase 3 PAC)
+    2. `update_silos.py --silo s5` → Ti real LOTAIP → H07
+    3. `verify_cpccs.py` → V_CPCCS real RC → H10
+- **Ver primero**: `docs/architecture/BRIDGE_EXCEL_CORPUS.md` + `docs/adr/ADR-023`
+- **ADR-019 STRONGLY_SUPPORTED · ADR-022 SUPPORTED · ADR-023 ACTIVO (inmutable)**
 
 ## REGLAS DE ORO (inviolables — el resto en CLAUDE.md)
 1. **Excel = Estado.** Gold Master es fuente de verdad. Excel→Python→Supabase→UI, nunca al revés.
@@ -45,11 +43,13 @@
 | Si vas a... | Lee primero |
 |---|---|
 | Entender estado completo | `governance/QUIRA_STATE.md` (§0 TL;DR primero) |
+| **Gate 6.6 (tagging MNT_UUID)** | **`docs/architecture/BRIDGE_EXCEL_CORPUS.md` + `ADR-023`** |
+| Leer métricas del Gold Master | `app/connectors/gold_master.py` → NO recalcular |
 | Reglas de construcción/UI/dominios | `CLAUDE.md` + `docs/REFERENCE.md` |
 | Ingesta corpus/Holding | `scripts/holding/manifest_holding.py` (docstring) |
 | Tocar el grafo Neo4j | `docs/adr/ADR-017` + `ADR-018` |
 | Clasificar documentos | `docs/adr/ADR-021` + `docs/architecture/CANONICAL_CHUNK_SCHEMA.md` |
-| Hallazgos territoriales | `docs/observations/OBS-005/006/007` |
+| Hallazgos territoriales | `docs/observations/OBS-005/006/008/009` |
 | Métricas del grafo | `data/centrality_results.json` + `ADR-019/020` |
 
 ## INFRA (credenciales en `.streamlit/secrets.toml` local, NUNCA al repo)
