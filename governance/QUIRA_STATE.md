@@ -55,9 +55,16 @@ Gates 3 y 4 completados. ADR-019 STRONGLY_SUPPORTED (no CONFIRMED — rigor epis
   Gate 6.1a COMPLETADO: CANONICAL_CHUNK_SCHEMA.md v1.1 (Star Schema)
   Gate 6.1b COMPLETADO: DDL Supabase (documents + holding_structured_data + 8 cols corpus)
   Gate 6.2  COMPLETADO: 43 docs → tabla documents · 8,351 chunks clasificados
-  Gate 6.3  PENDIENTE: manifest.py nuevos campos
-  Gate 6.4  PENDIENTE: Normativa_Word delta
-  Gate 6.5  PENDIENTE: Holding MCR (POA · PAC · RC · PP)
+  Gate 6.3  COMPLETADO: manifest.py v2 — 43 docs con campos ontologicos + validacion
+  Gate 6.4  COMPLETADO: Delta Normativa_Word = CERO (todo ya ingresado)
+  Gate 6.5  EN PROGRESO:
+    Fase 1 COMPLETADA: 11 docs RC+PP → 392 chunks EVIDENCIA_OBSERVACIONAL
+      Supabase MCR: 1,096 chunks (392 D + 612 C + 92 A)
+      Total corpus: 8,743 chunks (8,351 + 392)
+    Fase 2 PENDIENTE: 17 docs POA+PAI
+    Fase 3 PENDIENTE: 18 docs PAC+Presupuesto
+    Fase 4 PENDIENTE: 2 docs SIGAD
+    Fase 5 PENDIENTE: XLSX/CSV → holding_structured_data
   Gate 6.6  PENDIENTE: Semantic Mining
   Gate 6.7  PENDIENTE: Re-evaluar ADR-019
 
