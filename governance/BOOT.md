@@ -45,15 +45,17 @@
 ## LAZY LOAD — lee SOLO lo que aplica a tu tarea
 | Si vas a... | Lee primero |
 |---|---|
-| Entender estado completo | `governance/QUIRA_STATE.md` (§0 TL;DR primero) |
-| **Gate 6.6 (tagging MNT_UUID)** | **`docs/architecture/BRIDGE_EXCEL_CORPUS.md` + `ADR-023`** |
+| **Arranque normal** | **SOLO este BOOT.md. No leas nada más hasta saber tu tarea.** |
+| Arquitectura 3 niveles (inmutable) | `docs/adr/ADR-023` |
+| Gate 6.6 / tagging / bridge Excel | `docs/architecture/BRIDGE_EXCEL_CORPUS.md` |
+| Gate 7 (segundo municipio) | `docs/adr/GATE-007_Validacion_Externa_Municipio2.md` |
 | Leer métricas del Gold Master | `app/connectors/gold_master.py` → NO recalcular |
-| Reglas de construcción/UI/dominios | `CLAUDE.md` + `docs/REFERENCE.md` |
+| Reglas de construcción/UI/dominios | `docs/REFERENCE.md` |
 | Ingesta corpus/Holding | `scripts/holding/manifest_holding.py` (docstring) |
 | Tocar el grafo Neo4j | `docs/adr/ADR-017` + `ADR-018` |
 | Clasificar documentos | `docs/adr/ADR-021` + `docs/architecture/CANONICAL_CHUNK_SCHEMA.md` |
 | Hallazgos territoriales | `docs/observations/OBS-005/006/008/009` |
-| Métricas del grafo | `data/centrality_results.json` + `ADR-019/020` |
+| Estado histórico completo (snapshot) | `governance/historico/QUIRA_STATE_2026-06-03.md` |
 
 ## INFRA (credenciales en `.streamlit/secrets.toml` local, NUNCA al repo)
 Neo4j AuraDB Free instancia `6c134c35` (user=DB=instance ID · patrón MATCH+MERGE) · Supabase `normativa_corpus` · repo PRIVADO.
