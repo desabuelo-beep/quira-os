@@ -11,7 +11,7 @@ Laboratorio: GAD Montecristi (MCR). Destino: 221 municipios.
 
 ## AHORA (actualizar al cierre)
 - **Sprint**: Gate 6.5 — Ingesta Holding MCR (Capas C+D)
-- **Último commit**: pendiente
+- **Último commit**: `3b11424` — Gates 5A-5C · OBS-009 · Score MCR=57
 - **Hecho**: F1-F5 completas ✅ · OBS-008/009 ✅ · **metrics_mcr.py ✅** (Gate 5C)
 - **Score MCR**: SIGAD=100 · LOTAIP=25 · Timeliness=17.5 · Coverage=80 → **Compuesto=57**
 - **Gap A≠D**: +75 pts (ICM declarado vs transparencia real) — evidencia de 6 capas
