@@ -941,19 +941,19 @@ MANIFEST_HOLDING: list[dict] = [
         "motivo":         "cedula_presupuestaria — holding_structured_data",
     },
     {
-        "archivo":        "GAD Montecristi_Cedula_Presupuestaria_de_Gastos_ 2024.xls",
+        "archivo":        r"Presupuestos 2023-2026\GAD Montecristi_Cedula_Presupuestaria_de_Gastos_ 2024.xls",
         "sigla":          "STRUCT-GAD-CEDULA-GASTOS-2024",
         "ingest_mode":    "structured",
         "motivo":         "cedula_presupuestaria — holding_structured_data",
     },
     {
-        "archivo":        "GAD Montecristi_Diciembre_Cedula_Presupuestaria_de_Gastos_ 2023.xls",
+        "archivo":        r"Presupuestos 2023-2026\GAD Montecristi_Diciembre_Cedula_Presupuestaria_de_Gastos_ 2023.xls",
         "sigla":          "STRUCT-GAD-CEDULA-GASTOS-DIC2023",
         "ingest_mode":    "structured",
         "motivo":         "cedula_presupuestaria — holding_structured_data",
     },
     {
-        "archivo":        r"Oficiales\PAC INICIAL 2025 GAD MONTECRISTI...(1).xlsx",
+        "archivo":        r"Oficiales\PAC INICIAL 2025 GAD MONTECRISTI-POSTERIOR DE PUBLICACION SUBSANADO (1).xlsx",
         "sigla":          "STRUCT-GAD-PAC-INICIAL-2025",
         "ingest_mode":    "structured",
         "motivo":         "pac_tabular — holding_structured_data",
@@ -977,7 +977,7 @@ MANIFEST_HOLDING: list[dict] = [
         "motivo":         "cedula_presupuestaria — holding_structured_data",
     },
     {
-        "archivo":        "GAD Montecristi Presupuesto abril 2026.xlsx",
+        "archivo":        r"Presupuestos 2023-2026\Presupuestos 2026\GAD Montecristi Presupuesto abril 2026.xlsx",
         "sigla":          "STRUCT-GAD-PRESUP-ABR2026",
         "ingest_mode":    "structured",
         "motivo":         "cedula_presupuestaria — holding_structured_data",
@@ -989,7 +989,7 @@ MANIFEST_HOLDING: list[dict] = [
         "motivo":         "cedula_presupuestaria — holding_structured_data",
     },
     {
-        "archivo":        "Aseo EP Presupuesto Diciembre 2024.xlsx",
+        "archivo":        r"Presupuestos 2023-2026\Aseo EP Presupuesto Diciembre 2024.xlsx",
         "sigla":          "STRUCT-ASEO-PRESUP-DIC2024-B",
         "ingest_mode":    "structured",
         "motivo":         "cedula_presupuestaria — holding_structured_data",
@@ -1001,7 +1001,7 @@ MANIFEST_HOLDING: list[dict] = [
         "motivo":         "poa_tabular — holding_structured_data",
     },
     {
-        "archivo":        r"POA 2023-2026\Bomberos POA 2024.xlsx",
+        "archivo":        r"Presupuestos 2023-2026\Bomberos POA 2024.xlsx",
         "sigla":          "STRUCT-BOMBEROS-POA-2024",
         "ingest_mode":    "structured",
         "motivo":         "poa_tabular — holding_structured_data",
@@ -1013,13 +1013,13 @@ MANIFEST_HOLDING: list[dict] = [
         "motivo":         "cedula_presupuestaria_pdf — holding_structured_data (tabular, no narrativo)",
     },
     {
-        "archivo":        "Patronato Presupesto Diciembre 2024.xlsx",
+        "archivo":        r"Presupuestos 2023-2026\Patronato Presupesto Diciembre 2024.xlsx",
         "sigla":          "STRUCT-PATRONATO-PRESUP-DIC2024",
         "ingest_mode":    "structured",
         "motivo":         "cedula_presupuestaria — holding_structured_data",
     },
     {
-        "archivo":        "Bomberos Presupuesto 2026.xlsx",
+        "archivo":        r"Presupuestos 2023-2026\Presupuestos 2026\Bomberos Presupuesto abril 2026.xlsx",
         "sigla":          "STRUCT-BOMBEROS-PRESUP-2026-B",
         "ingest_mode":    "structured",
         "motivo":         "cedula_presupuestaria — holding_structured_data",
