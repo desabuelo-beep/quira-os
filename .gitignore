@@ -67,8 +67,10 @@ frontend/node_modules/
 frontend/.next/
 frontend/.env.local
 
-# ── CLAUDE SKILLS (data CSV local — no va al repo) ───────────────────────────
-.claude/skills/ui-ux-pro-max/scripts/__pycache__/
+# ── CLAUDE CODE (entorno de desarrollo local — no va al repo) ────────────────
+.claude/
+.agents/
+.claude/scheduled_tasks.lock
 .gstack/
 
 # ── CODEGRAPH (índice generado localmente — no va al repo) ────────────────────
