@@ -1,12 +1,12 @@
-# QUIRA_STATE.md — Estado Vivo del Proyecto
+# QUIRA_STATE.md — Estado Vivo del Proyecto (DETALLE)
 
-> **Documento de arranque obligatorio.** El `CLAUDE.md` exige leer este archivo como paso 2 de toda sesión.
-> Single source of truth de: qué está abierto, qué está cerrado, en qué sprint, dónde vive cada cosa.
-> **Actualizar este archivo al final de cada sesión que cambie el estado.**
+> **NO es el archivo de arranque.** Para arrancar usa `governance/BOOT.md` (~450 tokens).
+> Este es el ESTADO COMPLETO — léelo solo si necesitas el detalle total, no al inicio.
+> **Actualizar al cierre de sesión que cambie el estado** (y `BOOT.md` §AHORA).
 
-**Última actualización**: 2026-06-02 (sesión 2 — sincronización post Gates 3-4)
-**Sprint activo**: Sprint Constitucional — Gate 6 Semantic Mining
-**Fase**: Transición Cerebro 2 consolidado → Semantic Mining del corpus completo
+**Última actualización**: 2026-06-03 (sesión 3 — Gate 6.5 Fase 1 + 6.5A + sistema BOOT lazy-load)
+**Sprint activo**: Gate 6.5 — Ingesta Holding MCR (Capas C+D)
+**Fase**: Evidencia territorial — Fase 1 (RC+PP) completa, Fases 2-5 pendientes
 
 ---
 
