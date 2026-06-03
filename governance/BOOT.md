@@ -11,7 +11,7 @@ Laboratorio: GAD Montecristi (MCR). Destino: 221 municipios.
 
 ## AHORA (actualizar al cierre)
 - **Sprint**: Gate 6.5 — Ingesta Holding MCR (Capas C+D)
-- **Último commit**: pendiente
+- **Último commit**: `e7842d4` — ADR-022 SUPPORTED · arquitectura Excel Canon clarificada
 - **Hecho**: Gate 6.5 F1-F5 ✅ · OBS-008/009 ✅ · metrics_mcr ✅ · **ADR-022 SUPPORTED ✅**
 - **Excel Canon**: gobierna Capa A (normas). Capas C+D (Holding) son independientes — correcto.
 - **Deuda técnica**: `dominios_quira=""` en docs Holding → tagging Dom01-Dom12 pendiente (Gate 6.6)
