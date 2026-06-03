@@ -11,13 +11,17 @@ Laboratorio: GAD Montecristi (MCR). Destino: 221 municipios.
 
 ## AHORA (actualizar al cierre)
 - **Sprint**: Gate 6.5 — Ingesta Holding MCR (Capas C+D)
-- **Último commit**: `57d79ab` — FIX CRITICO metrics_mcr anclado al Gold Master
-- **Hecho**: Gate 6.5 F1-F5 ✅ · OBS-008/009 ✅ · ADR-022 SUPPORTED ✅ · **metrics_mcr anclado al Gold Master ✅**
-- **Excel Canon (SIAP-ICPI v5.5)**: ICPI-2025=69.93% · TGI=66.79% · D3=59.85%(gap) · D4=44.79%(crítico)
-- **Connector**: `app/connectors/gold_master.py` → H73_OUTPUT_API — USAR SIEMPRE
-- **Deuda Gate 6.6**: `dominios_quira=""` en Holding → tagging Dom01-Dom12 + bridge H36_QUIRA_BRIDGE
-- **Siguiente**: Gate 6.6 — tagging dominios + circuitos en Capas C/D · segundo municipio para ADR-022→CONFIRMED
-- **Corpus**: ~13,509 chunks · 65+ tablas · Neo4j: 38/58 · ADR-019 STRONGLY_SUPPORTED · ADR-022 SUPPORTED
+- **Último commit**: pendiente — Gate 6.6 bridge Excel
+- **Excel Canon (120 hojas)**: 9 Silos S1-S9 · Motor ICPI H12 · ICPI-2025=69.93% · TGI=66.79%
+- **Fórmula**: ICPI = Σ(Pi×Ri×Vi×Ei×Ti×Ci)/Σ(Pi×Ri) · Vi=producto lógico 4 verificadores
+- **Connector**: `app/connectors/gold_master.py` → H73_OUTPUT_API — ÚNICA FUENTE DE VERDAD
+- **Gate 6.5 (hecho)**: corpus es la materia prima para los silos S5/S7/S8
+- **Gate 6.6 (siguiente)**:
+    1. `update_silos.py --silo s5` → Ti real desde LOTAIP mensual → H07
+    2. `update_silos.py --silo s8` → V_CPCCS real desde RC corpus → H10
+    3. `tag_domains.py` → Dom01-D12 + C01-C03 en Holding corpus
+- **Ver**: `docs/architecture/BRIDGE_EXCEL_CORPUS.md` — mapa completo del bridge
+- **ADR-019 STRONGLY_SUPPORTED · ADR-022 SUPPORTED**
 - **No tocar**: ADR-019 sigue STRONGLY_SUPPORTED · ADR-022 candidato (espera Fase 3 PAC)
 
 ## REGLAS DE ORO (inviolables — el resto en CLAUDE.md)
