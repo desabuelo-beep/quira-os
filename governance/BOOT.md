@@ -20,7 +20,7 @@
 
 ## AHORA (actualizar al cierre)
 - **Sprint**: Gate 6.6 — Bridge Corpus → Motor ICPI
-- **Último commit**: `69de4ab` — cierre sesión 2026-06-03
+- **Último commit**: `69e1a02` — Gate 6.6A+C · corpus_mnt_mapping 51/51 · explainability
 - **Gate 6.5 ✅ COMPLETO**: 13,509 chunks · 65 tablas · OBS-008/009 · ADR-022/023
 - **Corpus**: ~13,509 chunks texto · 65+ tablas LOTAIP/cédulas · Neo4j: 38/58
 - **Gold Master leído completo** (120 hojas): ICPI-2025=69.93% · TGI=66.79% · D3=59.85%(gap) · D4=44.79%(crítico)
