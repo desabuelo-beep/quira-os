@@ -145,8 +145,9 @@ RC (rendición de cuentas) ✅
 SIGAD (evaluación externa SNP) ✅  ←  Fase 5
 ```
 
-**OBS-009 es la condición de cierre para abrir ADR-022.**
-No como hipótesis. Como hallazgo con evidencia de seis capas.
+**OBS-009 es la evidencia fundacional de ADR-022.**
+ADR-022 está abierto con estado SUPPORTED (2026-06-03).
+Para CONFIRMED: replicar en segundo municipio + cobertura LOTAIP >50%.
 
 ---
 

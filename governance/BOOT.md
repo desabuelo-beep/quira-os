@@ -11,12 +11,12 @@ Laboratorio: GAD Montecristi (MCR). Destino: 221 municipios.
 
 ## AHORA (actualizar al cierre)
 - **Sprint**: Gate 6.5 — Ingesta Holding MCR (Capas C+D)
-- **Último commit**: `3b11424` — Gates 5A-5C · OBS-009 · Score MCR=57
-- **Hecho**: F1-F5 completas ✅ · OBS-008/009 ✅ · **metrics_mcr.py ✅** (Gate 5C)
-- **Score MCR**: SIGAD=100 · LOTAIP=25 · Timeliness=17.5 · Coverage=80 → **Compuesto=57**
-- **Gap A≠D**: +75 pts (ICM declarado vs transparencia real) — evidencia de 6 capas
-- **Siguiente**: **ADR-022** — condición cumplida (OBS-009). Abrir con Javo.
-- **Corpus**: ~13,509 chunks texto · 65+ tablas estructuradas · Neo4j: 38/58
+- **Último commit**: pendiente
+- **Hecho**: Gate 6.5 F1-F5 ✅ · OBS-008/009 ✅ · metrics_mcr ✅ · **ADR-022 SUPPORTED ✅**
+- **Excel Canon**: gobierna Capa A (normas). Capas C+D (Holding) son independientes — correcto.
+- **Deuda técnica**: `dominios_quira=""` en docs Holding → tagging Dom01-Dom12 pendiente (Gate 6.6)
+- **Siguiente**: Gate 6.6 Semantic Mining · tagging dominios · expandir a segundo municipio
+- **Corpus**: ~13,509 chunks · 65+ tablas · Neo4j: 38/58 · ADR-019 STRONGLY_SUPPORTED · ADR-022 SUPPORTED
 - **No tocar**: ADR-019 sigue STRONGLY_SUPPORTED · ADR-022 candidato (espera Fase 3 PAC)
 
 ## REGLAS DE ORO (inviolables — el resto en CLAUDE.md)
