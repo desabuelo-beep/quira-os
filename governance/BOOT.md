@@ -29,7 +29,9 @@
     - 6.6A: `corpus_mnt_mapping` · 51/51 siglas MCR → MNT_UUID · 0 huérfanos
     - 6.6B: Dom01-D12 · 51/51 (100%) · D10=9 · D04=9 · D12=9 · D03=8
     - 6.6C: `explainability_report.py` — "¿Por qué ICPI=69.93%?" → respuesta automática
-- **Siguiente**: segundo municipio (Portoviejo/Manta/etc.) → validar ADR-022 CONFIRMED
+- **Siguiente**: **GATE-007** — Municipio #2 (Javo elige: Portoviejo/Manta/Jipijapa/Santa Ana/Chone)
+    Ver `docs/adr/GATE-007_Validacion_Externa_Municipio2.md`
+    Objetivo: replicar el pipeline. Si funciona: QUIRA = solución para 221 GAD del Ecuador.
 - **Ver**: `docs/architecture/BRIDGE_EXCEL_CORPUS.md` · `docs/adr/ADR-023`
 - **ADR-019 STRONGLY_SUPPORTED · ADR-022 SUPPORTED · ADR-023 ACTIVO**
 
