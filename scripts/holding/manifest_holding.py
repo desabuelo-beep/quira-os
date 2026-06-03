@@ -367,6 +367,26 @@ MANIFEST_HOLDING: list[dict] = [
         "ingest_mode":    "text",
         "fase":           2,
     },
+    {
+        # PENDIENTE: archivo solo disponible en Google Drive (sin descarga directa)
+        # Drive: https://drive.google.com/file/d/1Fwgw2smrUQJaEWFTkwBaXN7W-Qzz8Xd9/view
+        # Título confirmado: "POA Y PRESUPUESTO DEFINITIVO 2025"
+        # Acción: descargar desde Drive viewer (⬇) y guardar en POA 2023-2026\Aseo Ep POA 2025.pdf
+        # Luego: python scripts/holding/ingest_holding.py --sigla POA-ASEO-2025
+        "archivo":        r"POA 2023-2026\Aseo Ep POA 2025.pdf",
+        "sigla":          "POA-ASEO-2025",
+        "nombre":         "Plan Operativo Anual EP Aseo Montecristi 2025",
+        "entity":         "ASEO",
+        "year":           2025,
+        "document_class": "INSTRUMENTO_TERRITORIAL",
+        "authority_level": 40,
+        "source_entity":  "EP_ASEO_MCR",
+        "canton_id":      "MCR",
+        "evidence_type":  None,
+        "circuit_refs":   ["C02", "C03"],
+        "ingest_mode":    "text",
+        "fase":           2,
+    },
 
     # Bomberos POA
     {
