@@ -11,7 +11,7 @@ Laboratorio: GAD Montecristi (MCR). Destino: 221 municipios.
 
 ## AHORA (actualizar al cierre)
 - **Sprint**: Gate 6.5 — Ingesta Holding MCR (Capas C+D)
-- **Último commit**: pendiente
+- **Último commit**: `ef52d45` — F4b LOTAIP 48 archivos · OBS-008 cobertura diferencial
 - **Hecho**: F1-F3 ✅ · F4 estructurada ✅ · **F4b LOTAIP mensual (48 archivos, ~4,500 filas) ✅** · OBS-008 ✅
 - **Siguiente**: Gate 6.5 Fase 5 (SIGAD) → `python scripts/holding/ingest_holding.py --fase 5`
 - **Corpus texto**: ~13,509 chunks · **holding_structured_data**: 63 tablas total · Neo4j: 38/58
