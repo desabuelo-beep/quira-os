@@ -152,17 +152,70 @@ AVEP, los SATs, los MMP, los IEDs por dirección.
 
 ---
 
+## Mapa canónico: SIGLA corpus → MNT_UUID → Silo
+
+La MATRIZ_CANONICA del Excel ya registra todos los documentos del Holding.
+Esta es la tabla de trazabilidad directa:
+
+| SIGLA (corpus) | MNT_UUID (Excel) | Actividad_ID | Silo | Variable |
+|---|---|---|---|---|
+| RC-GAD-2023 | MNT-DOC-2023-0016 | RENDIC-2023 | S8 | V_CPCCS |
+| RC-GAD-2024 | MNT-DOC-2024-0021 | RENDIC-2024 | S8 | V_CPCCS |
+| POA-GAD-2023 | MNT-DOC-2023-0015 | POA-2023 | S3 | Pi |
+| POA-GAD-2024 | MNT-DOC-2024-0020 | POA-2024 | S3 | Pi |
+| POA-GAD-2025 | MNT-DOC-2025-0025 | POA-2025 | S3 | Pi |
+| POA-GAD-2026-v2 | MNT-DOC-2026-0028 | POA-2026 | S3 | Pi |
+| PAC-GAD-2023 | MNT-DOC-2023-0013 | PAC-2023 | S3b+S4 | V_SERCOP |
+| PAC-GAD-2024 | MNT-DOC-2024-0019 | PAC-2024 | S3b+S4 | V_SERCOP |
+| PAC-GAD-2025 | MNT-DOC-2025-0024 | PAC-2025 | S3b+S4 | V_SERCOP |
+| PAC-GAD-2026 | MNT-DOC-2026-0027 | PAC-2026 | S3b+S4 | V_SERCOP |
+| SIGAD-GAD-2023-DOC | MNT-DOC-2023-0017 | ICM_SI-2023 | S6 | ICM |
+| SIGAD-GAD-2024-DOC | MNT-DOC-2024-0022 | ICM_SI-2024 | S6 | ICM |
+| PAI-GAD-2023 | MNT-DOC-2023-0014 | PAI-2023 | S2 | Pi_Plan |
+| LOTAIP-GAD_MCR-2025-* | MNT-PRES-2025-001x | PRES-GAD_MO-Gx-2025 | **S5** | **Ti** |
+| LOTAIP-GAD_MCR-2026-* | MNT-PRES-2026-* | PRES-GAD_MO-Gx-2026 | **S5** | **Ti** |
+| LOTAIP-BOMBEROS_MCR-* | MNT-PRES-2025/26-* | PRES-BOMBER-Gx | **S5** | **Ti** |
+| LOTAIP-EP_ASEO_MCR-* | MNT-ASEO26-G5..G9 | PRES-ASEO-Gx-2026 | **S5** | **Ti** |
+| PP-2024 (RC corpus) | MNT-DOC-2024-0018 | PRESUP-2024 | S8b | IGP |
+| PP-2025 (RC corpus) | MNT-DOC-2025-0023 | PRESUP-2025 | S8b | IGP |
+
+## La cadena de trazabilidad completa (objetivo Gate 6.6)
+
+```
+PDF en Holding
+    ↓
+Chunk en normativa_corpus
+    sigla = 'RC-GAD-2024'
+    ↓
+MNT_UUID = MNT-DOC-2024-0021  (MATRIZ_CANONICA)
+    ↓
+Silo = S8 (H10_CPCCS)
+Variable = V_CPCCS
+    ↓
+Meta SC-I-N-01 (agua potable) → V_CPCCS=1.0
+Meta AH-I-X-02 (vialidad)    → V_CPCCS=0.5
+    ↓
+Vi = f(V_eSIGEF, V_SERCOP, V_LOTAIP, V_CPCCS)
+    ↓
+ICPI += Pi × Ri × Vi × Ei × Ti × Ci
+    ↓
+Este PDF incrementa ICPI en X puntos
+```
+
+Cuando eso exista: "Este RC de 2024 explica por qué D3 Ejecución = 59.85%."
+
 ## Próximos pasos Gate 6.6
 
 ```
-1. update_silos.py        → alimentar H07 con cédulas reales
-2. verify_cpccs.py        → verificar V_CPCCS desde corpus RC
-3. tag_domains.py         → tagging Dom01-D12 en Holding corpus
-4. metrics_mcr.py         → ya lee de H73 (completado)
-5. UI bridge              → Dom01-D12 → click → dashboard Excel
+1. tag_mnt_uuid.py   → agrega mnt_uuid + silo + variable a normativa_corpus
+   (lee MATRIZ_CANONICA del Excel, mapea por sigla)
+2. update_silos.py   → alimentar H07 con Ti real desde LOTAIP mensual
+3. verify_cpccs.py   → V_CPCCS real desde RC corpus → H10
+4. metrics_mcr.py    → ya lee de H73 (completado)
+5. UI bridge         → Dom01-D12 → click → dashboard Excel → QUIRA IA
 ```
 
 ---
 
 *BRIDGE_EXCEL_CORPUS.md · QUIRA Gov · Dylus Lab © 2026*
-*Commit: Gate 6.6 — puente Corpus → Motor ICPI*
+*Commit: Gate 6.6 — cadena de trazabilidad Corpus → Motor ICPI*

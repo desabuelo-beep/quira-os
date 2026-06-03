@@ -18,22 +18,32 @@
 
 ---
 
-## Contexto
+## Contexto y corrección arquitectónica (2026-06-03)
 
-ADR-019 demostró que Dom08 (participación) y Dom09 (control social) son
-los nodos de mayor centralidad en el grafo constitucional municipal, con
-evidencia computacional de centralidad y ciclo de retroalimentación.
+ADR-019 demostró la centralidad normativa del sistema (Dom08+Dom09).
+ADR-021 estableció la ontología de 4 capas (A/B/C/D).
 
-ADR-021 estableció la ontología de 4 capas que permite distinguir:
-- A = lo que la norma **obliga** (COOTAD, LOPC, Constitución)
-- B = lo que la metodología **explica** (SNP, guías técnicas)
-- C = lo que el municipio **planificó y ejecutó** (POA, PAC, cédulas)
-- D = lo que **se puede observar** (RC, LOTAIP, SIGAD)
+**Corrección importante:** La formulación inicial "Norma vs Evidencia" era incompleta.
+El Excel Canónico NO es un observador externo del sistema — ES el motor.
+La cadena correcta es:
 
-Lo que faltaba era la pregunta empírica: **¿A y D convergen en la práctica?**
+```
+Norma (A)
+    ↓ obliga
+Instrumento (C) → POA, PAC, cédulas
+    ↓ ejecuta
+Ejecución financiera → Ti = Devengado/Codificado
+    ↓ verifica
+Evidencia (D) → RC, LOTAIP, SIGAD
+    ↓ alimenta
+Motor ICPI (Gold Master) → ICPI = Σ(Pi×Ri×Vi×Ei×Ti×Ci)/Σ(Pi×Ri)
+    ↓ produce
+Resultado → ICPI, TGI, D1-D5, SAT, MMP
+```
 
-Gate 6.5 (Fases 1–5, Holding Municipal Montecristi) provee los datos para
-responder esa pregunta por primera vez con evidencia real.
+El gap A↔D no es entre "norma" y "evidencia" solamente.
+Es la divergencia medible en cada etapa de esa cadena,
+cuantificable mediante el Motor ICPI.
 
 ---
 

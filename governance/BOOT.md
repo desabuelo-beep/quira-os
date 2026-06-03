@@ -11,16 +11,17 @@ Laboratorio: GAD Montecristi (MCR). Destino: 221 municipios.
 
 ## AHORA (actualizar al cierre)
 - **Sprint**: Gate 6.5 — Ingesta Holding MCR (Capas C+D)
-- **Último commit**: pendiente — Gate 6.6 bridge Excel
+- **Último commit**: pendiente
 - **Excel Canon (120 hojas)**: 9 Silos S1-S9 · Motor ICPI H12 · ICPI-2025=69.93% · TGI=66.79%
 - **Fórmula**: ICPI = Σ(Pi×Ri×Vi×Ei×Ti×Ci)/Σ(Pi×Ri) · Vi=producto lógico 4 verificadores
 - **Connector**: `app/connectors/gold_master.py` → H73_OUTPUT_API — ÚNICA FUENTE DE VERDAD
-- **Gate 6.5 (hecho)**: corpus es la materia prima para los silos S5/S7/S8
-- **Gate 6.6 (siguiente)**:
-    1. `update_silos.py --silo s5` → Ti real desde LOTAIP mensual → H07
-    2. `update_silos.py --silo s8` → V_CPCCS real desde RC corpus → H10
-    3. `tag_domains.py` → Dom01-D12 + C01-C03 en Holding corpus
-- **Ver**: `docs/architecture/BRIDGE_EXCEL_CORPUS.md` — mapa completo del bridge
+- **Gate 6.5 (hecho)**: corpus = evidencia para silos S5/S7/S8
+- **Gate 6.6 (siguiente — EL MAS IMPORTANTE)**:
+    1. `tag_mnt_uuid.py` → SIGLA corpus → MNT_UUID (MATRIZ_CANONICA) → Silo → Variable
+    2. `update_silos.py --silo s5` → Ti real LOTAIP → H07 (Excel recalcula ICPI)
+    3. `verify_cpccs.py` → V_CPCCS real desde RC → H10
+- **Ver**: `docs/architecture/BRIDGE_EXCEL_CORPUS.md` — cadena completa + mapa SIGLA→MNT→Silo
+- **ADR-022 corregido**: cadena Norma→Instrumento→Ejecución→Evidencia→Motor ICPI
 - **ADR-019 STRONGLY_SUPPORTED · ADR-022 SUPPORTED**
 - **No tocar**: ADR-019 sigue STRONGLY_SUPPORTED · ADR-022 candidato (espera Fase 3 PAC)
 
