@@ -11,7 +11,7 @@ Laboratorio: GAD Montecristi (MCR). Destino: 221 municipios.
 
 ## AHORA (actualizar al cierre)
 - **Sprint**: Gate 6.5 — Ingesta Holding MCR (Capas C+D)
-- **Último commit**: pendiente
+- **Último commit**: `57d79ab` — FIX CRITICO metrics_mcr anclado al Gold Master
 - **Hecho**: Gate 6.5 F1-F5 ✅ · OBS-008/009 ✅ · ADR-022 SUPPORTED ✅ · **metrics_mcr anclado al Gold Master ✅**
 - **Excel Canon (SIAP-ICPI v5.5)**: ICPI-2025=69.93% · TGI=66.79% · D3=59.85%(gap) · D4=44.79%(crítico)
 - **Connector**: `app/connectors/gold_master.py` → H73_OUTPUT_API — USAR SIEMPRE
