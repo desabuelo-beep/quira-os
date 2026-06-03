@@ -11,7 +11,7 @@ Laboratorio: GAD Montecristi (MCR). Destino: 221 municipios.
 
 ## AHORA (actualizar al cierre)
 - **Sprint**: Gate 6.5 — Ingesta Holding MCR (Capas C+D)
-- **Último commit**: pendiente — Fase 3 PAC
+- **Último commit**: `6a82137` — Fase 3 PAC +506c
 - **Hecho**: Gates 6.1-6.4 ✅ · F1 RC+PP ✅ · F2 POA ✅ · **F3 PAC (+506c, 0 errores) ✅**
 - **Siguiente**: Gate 6.5 Fase 4 (Cédulas) → `python scripts/holding/ingest_holding.py --fase 4`
 - **Pendiente**: POA-ASEO-2025 (Drive, sin descarga) → ingestar cuando Javo baje el archivo
