@@ -11,7 +11,7 @@ Laboratorio: GAD Montecristi (MCR). Destino: 221 municipios.
 
 ## AHORA (actualizar al cierre)
 - **Sprint**: Gate 6.5 — Ingesta Holding MCR (Capas C+D)
-- **Último commit**: `1fa1624` — Fase 2 POA +3,157c + chunker tabla-fallback
+- **Último commit**: `f27d611` — Fase 2 POA completa (+3,274c) · chunker tabla umbral ≥5
 - **Hecho**: Gates 6.1-6.4 ✅ · Fase 1 (RC+PP) ✅ · Gate 6.5A mining ✅ · **Fase 2 (POA, +3,274c) ✅**
 - **Siguiente**: Gate 6.5 Fase 3 (PAC) → `python scripts/holding/ingest_holding.py --fase 3`
 - **Corpus**: ~12,017 chunks · Neo4j: 38 nodos/58 aristas
