@@ -38,11 +38,16 @@ HOLDING_BASE = (
     r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT\Holding_Municipal_Montecristi"
 )
 
-# Fase de prioridad para Gate 6.5
-FASE_1 = ["RC_INFORME", "PP_INFORME"]    # Cierra circuitos C01/C02/C03
-FASE_2 = ["POA"]                          # Planificacion → Ejecucion
-FASE_3 = ["PAC"]                          # Planificacion → Contratacion
-FASE_4 = ["SIGAD_ICM"]                    # Ejecucion → Evaluacion
+# Fases Gate 6.5 — Dos Circuitos (OBS-007)
+#
+# Circuito A (Democratico):  PP → POA → PAC → RC → PP
+# Circuito B (Financiero):   POA → PAC → Cedulas → RC
+#
+FASE_1 = ["RC_INFORME", "PP_INFORME"]    # Circuito A+B: evidencia RC+PP  ✅ COMPLETA
+FASE_2 = ["POA"]                          # Circuito A+B: planificacion → metas
+FASE_3 = ["PAC"]                          # Circuito A+B: contratacion
+FASE_4 = ["CEDULA_PRESUPUESTARIA"]        # Circuito B: ejecucion financiera (puente PAC→RC)
+FASE_5 = ["SIGAD_ICM"]                    # Circuito B: evaluacion institucional
 
 MANIFEST_HOLDING: list[dict] = [
 
@@ -793,7 +798,7 @@ MANIFEST_HOLDING: list[dict] = [
         "evidence_type":  "SIGAD_ICM",
         "circuit_refs":   ["C02", "C03"],
         "ingest_mode":    "text",
-        "fase":           4,
+        "fase":           5,
     },
     {
         "archivo":        r"Oficiales\Reporte ICM SIGAD 2024.docx",
@@ -808,7 +813,7 @@ MANIFEST_HOLDING: list[dict] = [
         "evidence_type":  "SIGAD_ICM",
         "circuit_refs":   ["C02", "C03"],
         "ingest_mode":    "text",
-        "fase":           4,
+        "fase":           5,
     },
 
     # ── PLAN DE GOBIERNO CNE ──────────────────────────────────────────────────
