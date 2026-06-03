@@ -11,12 +11,12 @@ Laboratorio: GAD Montecristi (MCR). Destino: 221 municipios.
 
 ## AHORA (actualizar al cierre)
 - **Sprint**: Gate 6.5 — Ingesta Holding MCR (Capas C+D)
-- **Último commit**: `ef52d45` — F4b LOTAIP 48 archivos · OBS-008 cobertura diferencial
-- **Hecho**: F1-F3 ✅ · F4 estructurada ✅ · **F4b LOTAIP mensual (48 archivos, ~4,500 filas) ✅** · OBS-008 ✅
-- **Siguiente**: Gate 6.5 Fase 5 (SIGAD) → `python scripts/holding/ingest_holding.py --fase 5`
-- **Corpus texto**: ~13,509 chunks · **holding_structured_data**: 63 tablas total · Neo4j: 38/58
-- **OBS-008**: GAD solo 3/12 meses LOTAIP 2025 — gap A≠D ya medible · Q09-Q12 habilitadas
-- **ADR-022 candidato**: espera Fase 5 SIGAD para decisión
+- **Último commit**: pendiente
+- **Hecho**: F1-F5 completas ✅ · OBS-008/009 ✅ · **metrics_mcr.py ✅** (Gate 5C)
+- **Score MCR**: SIGAD=100 · LOTAIP=25 · Timeliness=17.5 · Coverage=80 → **Compuesto=57**
+- **Gap A≠D**: +75 pts (ICM declarado vs transparencia real) — evidencia de 6 capas
+- **Siguiente**: **ADR-022** — condición cumplida (OBS-009). Abrir con Javo.
+- **Corpus**: ~13,509 chunks texto · 65+ tablas estructuradas · Neo4j: 38/58
 - **No tocar**: ADR-019 sigue STRONGLY_SUPPORTED · ADR-022 candidato (espera Fase 3 PAC)
 
 ## REGLAS DE ORO (inviolables — el resto en CLAUDE.md)
