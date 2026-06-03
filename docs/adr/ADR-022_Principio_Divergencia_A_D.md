@@ -107,21 +107,28 @@ Esa capacidad de cruce es el valor diferencial de QUIRA como
 
 ---
 
-## Score Territorial Compuesto — Primer Resultado
+## Métricas Canónicas — Gold Master v5.5
 
-Ejecutado con `scripts/analysis/metrics_mcr.py` sobre datos reales de MCR:
+`scripts/analysis/metrics_mcr.py` lee desde `app/connectors/gold_master.py` → H73_OUTPUT_API.
+Todos los valores son los calculados por el Motor ICPI del Excel (fuente de verdad).
 
 ```
-Dimensión                        Score   Peso
-─────────────────────────────────────────────
-SIGAD Score (evaluación externa)  100.0   30%
-Transparency Score (LOTAIP)        25.0   30%
-Timeliness Score (puntualidad)     17.5   20%
-Coverage Score (corpus docs)       80.0   20%
-─────────────────────────────────────────────
-Score Compuesto MCR:               57.0 / 100
-Gap A<>D:                         +75.0 puntos
+ICPI 2025:    69.93%  (Transición Crítica · meta PDOT = 65% ✓)
+TGI Score:    66.79%
+  D1 Legalidad:     83.2%  [fuerte]
+  D2 Planificación: 69.9%  [moderado]
+  D3 Ejecución:     59.9%  [débil — gap principal]
+  D4 Equidad:       44.8%  [crítico]
+  D5 Capacidad:    100.0%  [excelente]
+ITAM Transparencia: 82.29%
+IOC Opacidad:       17.71%  ← Gap A≠D real
+SIGAD ICM:         100%     ← Declarado
+Gap A≠D (Excel):   17.71 pts de opacidad observable
 ```
+
+El gap A≠D real es 17.71 pts (no 75 como calculamos inicialmente con métricas ad-hoc).
+La observación de divergencia se mantiene — la magnitud fue sobreestimada antes de
+anclar al Motor ICPI del Excel.
 
 ---
 

@@ -1,23 +1,30 @@
 # -*- coding: utf-8 -*-
 """
-metrics_mcr.py — Primer Score Territorial Compuesto · GAD Montecristi
-QUIRA Gov · Gate 5C · Dylus Lab © 2026
+metrics_mcr.py — Score Territorial MCR desde Gold Master Canonico
+QUIRA Gov · Gate 5C (corregido) · Dylus Lab (c) 2026
 
-Calcula cuatro dimensiones del desempeño institucional a partir de los
-datos ya ingresados en holding_structured_data y normativa_corpus.
+DOCTRINA (regla de oro QUIRA):
+  Excel Canon = fuente de verdad. Excel -> Python -> Supabase -> UI.
+  Este script LEE las metricas calculadas por el Motor ICPI del Gold Master
+  via app/connectors/gold_master.py (H73_OUTPUT_API).
+  NO calcula nada por su cuenta. NO duplica logica del Excel.
 
-Dimensiones:
-  SIGAD_SCORE         — ICM reportado al SNP (evaluación externa)
-  TRANSPARENCY_SCORE  — cobertura LOTAIP mensual publicada (%)
-  TIMELINESS_SCORE    — puntualidad de envío de reportes (inverso de demora)
-  COVERAGE_SCORE      — completitud del corpus documental del Holding
+El Motor ICPI del Excel ya calcula:
+  ICPI     = Indice Compuesto de Progreso Institucional (17.45% Q1-2026 | 69.93% 2025)
+  TGI      = TGI Score 5D (66.79%)
+  D1-D5    = 5 dimensiones ponderadas
+  ITAM     = Transparencia real (82.29%) / IOC opacidad (17.71%)
+  IED      = Eficiencia Directiva (16.52%)
+  SAT      = Alertas activas (2 activas, riesgo MEDIO)
 
-El gap observable A≠D es la distancia entre SIGAD_SCORE y TRANSPARENCY_SCORE.
+El Gap A<>D real (desde el Excel):
+  SIGAD declara ICM = 1.00 (100%)
+  IOC_OPACIDAD = 17.71% (brecha de transparencia observable)
+  D3 Ejecucion = 59.85% (dimension mas debil del TGI)
 
 Uso:
-  python scripts/analysis/metrics_mcr.py
-  python scripts/analysis/metrics_mcr.py --year 2024
-  python scripts/analysis/metrics_mcr.py --json
+  python -X utf8 scripts/analysis/metrics_mcr.py
+  python -X utf8 scripts/analysis/metrics_mcr.py --json
 """
 
 from __future__ import annotations
@@ -30,266 +37,105 @@ from pathlib import Path
 ROOT = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(ROOT))
 
-import toml, streamlit as st
-_raw = toml.load(str(ROOT / ".streamlit" / "secrets.toml"))
-class _F:
-    def get(self, k, d=None): return _raw.get(k, d)
-    def __getitem__(self, k): return _raw[k]
-st.secrets = _F()
 
-from sentinel.db_config import get_connection
-
-
-# ── CÁLCULO DE SCORES ─────────────────────────────────────────────────────────
-
-def score_sigad(conn, entity: str = "GAD_MCR") -> dict:
-    """ICM promedio de los años disponibles en SIGAD."""
-    c = conn.cursor()
-    c.execute("""
-        SELECT periodo,
-               (datos_json->>'icm')::float AS icm,
-               (datos_json->>'demora_meses')::int AS demora
-        FROM holding_structured_data
-        WHERE evidence_type = 'SIGAD_ICM'
-          AND source_entity = %s
-        ORDER BY periodo
-    """, (entity,))
-    rows = c.fetchall()
-    if not rows:
-        return {"score": None, "detail": "sin datos SIGAD", "años": []}
-    icms = [r["icm"] for r in rows if r["icm"] is not None]
-    score = sum(icms) / len(icms) if icms else None
+def fetch() -> dict:
+    """Lee metricas canonicas desde el Gold Master via conector oficial."""
+    from app.connectors.gold_master import fetch_gold_master_data
+    result = fetch_gold_master_data()
+    if result["status"] == "failed":
+        raise RuntimeError(f"Gold Master no disponible: {result['error']}")
+    raw = result["data"].get("_raw_h73", {})
+    tgi = result["data"].get("tgi", {})
+    icpi = result["data"].get("icpi", {})
+    sat = result["data"].get("sat_engine", {})
     return {
-        "score": round(score * 100, 1) if score else None,
-        "icm_promedio": score,
-        "años": [{"periodo": r["periodo"], "icm": r["icm"],
-                  "demora_meses": r["demora"]} for r in rows],
+        "fuente":          "Gold Master v5.5 SIAP-ICPI (H73_OUTPUT_API)",
+        "entidad":         raw.get("ENTIDAD", "GAD MCR"),
+        "periodo_corte":   str(raw.get("PERIODO_CORTE", "")),
+        # ICPI por ano (historico + actual)
+        "icpi_2023":       round(icpi.get("historico", {}).get("2023", 0) * 100, 2),
+        "icpi_2024":       round(icpi.get("historico", {}).get("2024", 0) * 100, 2),
+        "icpi_2025":       round(icpi.get("historico", {}).get("2025", 0) * 100, 2),
+        "icpi_q1_2026":    round((icpi.get("acumulado_q1") or 0) * 100, 2),
+        "icpi_clasif":     icpi.get("clasificacion", ""),
+        # TGI 5 dimensiones
+        "tgi_score":       round(tgi.get("score", 0), 2),
+        "tgi_d1_legalidad":     round(tgi.get("d1", 0), 2),
+        "tgi_d2_planificacion": round(tgi.get("d2", 0), 2),
+        "tgi_d3_ejecucion":     round(tgi.get("d3", 0), 2),
+        "tgi_d4_equidad":       round(tgi.get("d4", 0), 2),
+        "tgi_d5_capacidad":     round(tgi.get("d5", 0), 2),
+        # Transparencia (ITAM) y Opacidad (IOC) — del Motor Excel
+        "itam_transparencia": round((raw.get("ITAM_2025_REF") or 0) * 100, 2),
+        "ioc_opacidad":       round((raw.get("IOC_OPACIDAD") or 0) * 100, 2),
+        # Gap A<>D real: lo que el Excel calcula como opacidad observable
+        "gap_a_d_ioc":        round((raw.get("IOC_OPACIDAD") or 0) * 100, 2),
+        # SAT
+        "sat_activas":     int(sat.get("activas_count") or 0),
+        "sat_riesgo":      sat.get("clasif_riesgo", ""),
+        # Financiero
+        "presupuesto_total":  raw.get("PRESUPUESTO_TOTAL_4E"),
+        "gad_devengado_q1":   raw.get("GAD_DEVENGADO_Q1"),
+        "trust_score":        raw.get("TRUST_SCORE"),
     }
 
 
-def score_transparency(conn, entity: str = "GAD_MCR",
-                       year: int | None = None) -> dict:
-    """Cobertura LOTAIP: meses publicados / meses esperados (12 por año)."""
-    c = conn.cursor()
-    query = """
-        SELECT periodo FROM holding_structured_data
-        WHERE evidence_type = 'LOTAIP_DATOS'
-          AND source_entity = %s
-    """
-    params = [entity]
-    if year:
-        query += " AND periodo LIKE %s"
-        params.append(f"{year}-%")
-    c.execute(query, params)
-    rows = c.fetchall()
+def print_report(d: dict) -> None:
+    print("\n" + "=" * 62)
+    print("  QUIRA -- Score Territorial Canonico")
+    print(f"  {d['entidad']} -- Corte: {d['periodo_corte']}")
+    print(f"  Fuente: {d['fuente']}")
+    print("=" * 62)
 
-    by_year: dict[str, set] = {}
-    for r in rows:
-        p = r["periodo"]  # formato YYYY-MM
-        yr = p[:4]
-        by_year.setdefault(yr, set()).add(p[5:])  # mes MM
+    print("\n  ICPI -- Indice Compuesto de Progreso Institucional")
+    print(f"    2023: {d['icpi_2023']:>6.2f}%  |  2024: {d['icpi_2024']:>6.2f}%"
+          f"  |  2025: {d['icpi_2025']:>6.2f}%")
+    print(f"    Q1-2026 (parcial): {d['icpi_q1_2026']:>6.2f}%   {d['icpi_clasif']}")
+    print(f"    Meta PDOT 2027: 65.0%   Brecha: {65.0 - d['icpi_2025']:+.2f} pts")
 
-    detail = []
-    total_expected = total_published = 0
-    for yr in sorted(by_year):
-        published = len(by_year[yr])
-        expected = 12
-        total_published += published
-        total_expected += expected
-        detail.append({"año": yr, "publicados": published,
-                        "esperados": expected,
-                        "cobertura_pct": round(published / expected * 100, 1)})
-
-    score = (total_published / total_expected * 100) if total_expected else None
-    return {
-        "score": round(score, 1) if score else None,
-        "meses_publicados": total_published,
-        "meses_esperados": total_expected,
-        "detalle_por_año": detail,
-    }
-
-
-def score_timeliness(conn, entity: str = "GAD_MCR") -> dict:
-    """
-    Puntualidad de envío SIGAD.
-    Score = max(0, 100 - (demora_meses * 5))
-    12 meses tarde → 40 pts | 6 meses → 70 pts | 0 meses → 100 pts
-    """
-    c = conn.cursor()
-    c.execute("""
-        SELECT periodo, (datos_json->>'demora_meses')::int AS demora
-        FROM holding_structured_data
-        WHERE evidence_type = 'SIGAD_ICM' AND source_entity = %s
-        ORDER BY periodo
-    """, (entity,))
-    rows = c.fetchall()
-    if not rows:
-        return {"score": None, "detail": "sin datos SIGAD"}
-
-    scores = []
-    detail = []
-    for r in rows:
-        demora = r["demora"] or 0
-        s = max(0, 100 - demora * 5)
-        scores.append(s)
-        detail.append({"periodo": r["periodo"], "demora_meses": demora,
-                        "timeliness_score": s})
-
-    return {
-        "score": round(sum(scores) / len(scores), 1),
-        "detalle": detail,
-    }
-
-
-def score_coverage(conn) -> dict:
-    """
-    Completitud del corpus documental del Holding MCR.
-    Basado en siglas procesadas vs categorías esperadas.
-    """
-    c = conn.cursor()
-    c.execute("""
-        SELECT DISTINCT norma_sigla FROM normativa_corpus
-        WHERE canton_id = 'MCR'
-    """)
-    siglas = {r["norma_sigla"] for r in c.fetchall()}
-
-    # Categorías esperadas para circuito completo
-    expected_categories = {
-        "RC": ["RC-GAD-2023", "RC-GAD-2024"],
-        "PP": ["PP-2023", "PP-2024", "PP-2025"],
-        "POA-GAD": ["POA-GAD-2023", "POA-GAD-2024", "POA-GAD-2025", "POA-GAD-2026-v2"],
-        "PAC-GAD": ["PAC-GAD-2023", "PAC-GAD-2024", "PAC-GAD-2025", "PAC-GAD-2026"],
-        "SIGAD": ["SIGAD-GAD-2023-DOC", "SIGAD-GAD-2024-DOC"],
-    }
-
-    found = total = 0
-    detail = {}
-    for cat, expected_siglas in expected_categories.items():
-        cat_found = [s for s in expected_siglas if s in siglas]
-        found += len(cat_found)
-        total += len(expected_siglas)
-        detail[cat] = {
-            "encontrados": len(cat_found),
-            "esperados": len(expected_siglas),
-            "siglas": cat_found,
-        }
-
-    score = found / total * 100 if total else 0
-    return {
-        "score": round(score, 1),
-        "documentos_encontrados": found,
-        "documentos_esperados": total,
-        "detalle": detail,
-    }
-
-
-# ── REPORT ────────────────────────────────────────────────────────────────────
-
-def compute_all(year: int | None = None) -> dict:
-    conn = get_connection()
-
-    s_sigad      = score_sigad(conn)
-    s_transp     = score_transparency(conn, year=year)
-    s_timeliness = score_timeliness(conn)
-    s_coverage   = score_coverage(conn)
-    conn.close()
-
-    # Score compuesto ponderado
-    weights = {"sigad": 0.30, "transparency": 0.30,
-               "timeliness": 0.20, "coverage": 0.20}
-    scores = {
-        "sigad":        s_sigad["score"],
-        "transparency": s_transp["score"],
-        "timeliness":   s_timeliness["score"],
-        "coverage":     s_coverage["score"],
-    }
-    valid = {k: v for k, v in scores.items() if v is not None}
-    if valid:
-        composite = sum(v * weights[k] for k, v in valid.items())
-        composite /= sum(weights[k] for k in valid)
-    else:
-        composite = None
-
-    # Gap A≠D: diferencia entre lo que el sistema dice y lo que publica
-    gap_and = None
-    if scores["sigad"] is not None and scores["transparency"] is not None:
-        gap_and = round(scores["sigad"] - scores["transparency"], 1)
-
-    return {
-        "canton": "MCR — Montecristi",
-        "entidad": "GAD_MCR",
-        "fecha_calculo": "2026-06-03",
-        "scores": scores,
-        "composite_score": round(composite, 1) if composite else None,
-        "gap_A_neq_D": gap_and,
-        "detalle": {
-            "sigad":        s_sigad,
-            "transparency": s_transp,
-            "timeliness":   s_timeliness,
-            "coverage":     s_coverage,
-        },
-    }
-
-
-def print_report(result: dict) -> None:
-    print(f"\n{'='*60}")
-    print(f"  QUIRA — Score Territorial Compuesto")
-    print(f"  {result['canton']} · {result['entidad']}")
-    print(f"  Calculado: {result['fecha_calculo']}")
-    print(f"{'='*60}")
-
-    s = result["scores"]
-    print(f"\n  {'Dimensión':30s} {'Score':>8}  {'Peso':>6}")
-    print(f"  {'-'*48}")
+    print("\n  TGI -- Score Territorial (5 Dimensiones)")
+    print(f"    Score Global:  {d['tgi_score']:>6.2f}%")
     dims = [
-        ("SIGAD Score (evaluación externa)",  s["sigad"],        "30%"),
-        ("Transparency Score (LOTAIP)",        s["transparency"], "30%"),
-        ("Timeliness Score (puntualidad)",     s["timeliness"],   "20%"),
-        ("Coverage Score (corpus docs)",       s["coverage"],     "20%"),
+        ("D1 Legalidad",     d["tgi_d1_legalidad"],     "#####....."),
+        ("D2 Planificacion", d["tgi_d2_planificacion"],  "######...."),
+        ("D3 Ejecucion",     d["tgi_d3_ejecucion"],      "#####....."),
+        ("D4 Equidad",       d["tgi_d4_equidad"],        "####......"),
+        ("D5 Capacidad",     d["tgi_d5_capacidad"],      "##########"),
     ]
-    for name, score, weight in dims:
-        sc_str = f"{score:.1f}" if score is not None else "  n/d"
-        print(f"  {name:30s} {sc_str:>8}  {weight:>6}")
+    for name, val, _ in dims:
+        bar = "#" * int(val / 10) + "." * (10 - int(val / 10))
+        flag = " <-- gap critico" if val < 50 else (" <-- debil" if val < 65 else "")
+        print(f"    {name:18s} [{bar}] {val:5.1f}%{flag}")
 
-    print(f"  {'-'*48}")
-    cs = result["composite_score"]
-    print(f"  {'Score Compuesto':30s} {cs:>8.1f}" if cs else "  Score Compuesto: n/d")
+    print("\n  Transparencia (Motor ITAM del Excel):")
+    print(f"    Transparencia observable: {d['itam_transparencia']:.2f}%")
+    print(f"    Opacidad (IOC):           {d['ioc_opacidad']:.2f}%")
+    print(f"    Gap A<>D real:            {d['gap_a_d_ioc']:.2f} pts de opacidad")
 
-    gap = result["gap_A_neq_D"]
-    if gap is not None:
-        print(f"\n  [!] Gap A<>D (SIGAD - LOTAIP): {gap:+.1f} puntos")
-        if gap > 50:
-            print(f"      Divergencia ALTA: el GAD declara cumplimiento alto")
-            print(f"      pero publica solo {s['transparency']:.0f}% de transparencia financiera.")
+    print("\n  SAT -- Alertas Activas:")
+    print(f"    {d['sat_activas']} alertas activas  --  Riesgo: {d['sat_riesgo']}")
 
-    # LOTAIP por año
-    print(f"\n  Cobertura LOTAIP por año:")
-    for d in result["detalle"]["transparency"].get("detalle_por_año", []):
-        bar = "#" * int(d["cobertura_pct"] / 10) + "." * (10 - int(d["cobertura_pct"] / 10))
-        print(f"    {d['año']}  [{bar}] {d['cobertura_pct']:5.1f}%  "
-              f"({d['publicados']}/{d['esperados']} meses)")
+    print("\n  Financiero:")
+    if d.get("presupuesto_total"):
+        print(f"    Presupuesto 4 entidades: ${d['presupuesto_total']:,.0f}")
+    if d.get("gad_devengado_q1"):
+        print(f"    GAD devengado Q1-2026:   ${d['gad_devengado_q1']:,.0f}")
+    if d.get("trust_score"):
+        print(f"    Trust Score: {d['trust_score']}  (modelo VALIDO)")
 
-    # SIGAD por año
-    print(f"\n  SIGAD ICM por año:")
-    for d in result["detalle"]["sigad"].get("años", []):
-        print(f"    {d['periodo']}  ICM={d['icm']:.2f}  "
-              f"(enviado con {d['demora_meses']} meses de retraso)")
-
-    print(f"\n{'='*60}\n")
+    print("\n" + "=" * 62 + "\n")
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--year", type=int)
     parser.add_argument("--json", action="store_true", dest="as_json")
     args = parser.parse_args()
 
-    result = compute_all(year=args.year)
-
+    data = fetch()
     if args.as_json:
-        print(json.dumps(result, ensure_ascii=False, indent=2))
+        print(json.dumps(data, ensure_ascii=False, indent=2, default=str))
     else:
-        print_report(result)
+        print_report(data)
 
 
 if __name__ == "__main__":

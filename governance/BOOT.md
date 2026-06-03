@@ -11,11 +11,12 @@ Laboratorio: GAD Montecristi (MCR). Destino: 221 municipios.
 
 ## AHORA (actualizar al cierre)
 - **Sprint**: Gate 6.5 — Ingesta Holding MCR (Capas C+D)
-- **Último commit**: `e7842d4` — ADR-022 SUPPORTED · arquitectura Excel Canon clarificada
-- **Hecho**: Gate 6.5 F1-F5 ✅ · OBS-008/009 ✅ · metrics_mcr ✅ · **ADR-022 SUPPORTED ✅**
-- **Excel Canon**: gobierna Capa A (normas). Capas C+D (Holding) son independientes — correcto.
-- **Deuda técnica**: `dominios_quira=""` en docs Holding → tagging Dom01-Dom12 pendiente (Gate 6.6)
-- **Siguiente**: Gate 6.6 Semantic Mining · tagging dominios · expandir a segundo municipio
+- **Último commit**: pendiente
+- **Hecho**: Gate 6.5 F1-F5 ✅ · OBS-008/009 ✅ · ADR-022 SUPPORTED ✅ · **metrics_mcr anclado al Gold Master ✅**
+- **Excel Canon (SIAP-ICPI v5.5)**: ICPI-2025=69.93% · TGI=66.79% · D3=59.85%(gap) · D4=44.79%(crítico)
+- **Connector**: `app/connectors/gold_master.py` → H73_OUTPUT_API — USAR SIEMPRE
+- **Deuda Gate 6.6**: `dominios_quira=""` en Holding → tagging Dom01-Dom12 + bridge H36_QUIRA_BRIDGE
+- **Siguiente**: Gate 6.6 — tagging dominios + circuitos en Capas C/D · segundo municipio para ADR-022→CONFIRMED
 - **Corpus**: ~13,509 chunks · 65+ tablas · Neo4j: 38/58 · ADR-019 STRONGLY_SUPPORTED · ADR-022 SUPPORTED
 - **No tocar**: ADR-019 sigue STRONGLY_SUPPORTED · ADR-022 candidato (espera Fase 3 PAC)
 

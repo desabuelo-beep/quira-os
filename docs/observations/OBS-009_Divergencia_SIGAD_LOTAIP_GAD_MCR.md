@@ -100,18 +100,23 @@ La causa modifica la interpretación pero no invalida el hallazgo.
 
 ---
 
-## Comparación: SIGAD Score vs Transparency Score
+## Métricas canónicas del Gold Master (H73_OUTPUT_API)
 
-| Entidad       | SIGAD ICM | LOTAIP 2025 | Divergencia |
-|---------------|:---------:|:-----------:|:-----------:|
-| GAD_MCR       | 1.00      | 25%         | **75 pts**  |
-| BOMBEROS_MCR  | n/d       | 100%        | —           |
-| EP_ASEO_MCR   | n/d       | 92%         | —           |
-| PATRONATO_MCR | n/d       | 75%         | —           |
+> **Corrección arquitectónica (2026-06-03):** los valores de transparencia
+> no son "3/12 meses LOTAIP = 25%" sino los calculados por el Motor ITAM del Excel.
 
-El GAD es el único ente con evaluación SIGAD disponible y, paradójicamente,
-el que muestra mayor brecha entre evaluación externa (100%) y comportamiento
-real de transparencia (25%).
+| Métrica              | Valor canónico | Fuente Excel       |
+|----------------------|:--------------:|:------------------:|
+| ICPI 2025            | **69.93%**     | H12c · Transición Crítica |
+| TGI Score            | **66.79%**     | H98_TGI_FRAMEWORK  |
+| D3 Ejecución         | **59.85%**     | H98 · dimensión más débil |
+| ITAM Transparencia   | **82.29%**     | H18_ITAM           |
+| IOC Opacidad         | **17.71%**     | H41 · gap A≠D real |
+| SIGAD ICM declarado  | 100%           | H08 autoreporte    |
+
+**El gap A≠D real (desde el Excel) = IOC_OPACIDAD = 17.71%**, no 75 pts.
+La divergencia entre SIGAD (100%) e ITAM (82.29%) = 17.71 pts de opacidad observable.
+Eso sigue siendo una señal de riesgo de gobernanza, a menor escala que la estimación inicial.
 
 ---
 
