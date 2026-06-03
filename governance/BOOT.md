@@ -25,12 +25,12 @@
 - **Corpus**: ~13,509 chunks texto · 65+ tablas LOTAIP/cédulas · Neo4j: 38/58
 - **Gold Master leído completo** (120 hojas): ICPI-2025=69.93% · TGI=66.79% · D3=59.85%(gap) · D4=44.79%(crítico)
 - **Connector LISTO**: `app/connectors/gold_master.py` → H73_OUTPUT_API
-- **Gate 6.6 — ÚNICA PRIORIDAD**:
-    1. `tag_mnt_uuid.py` → SIGLA corpus → MNT_UUID (MATRIZ_CANONICA) → Silo → Variable
-    2. `update_silos.py --silo s5` → Ti real LOTAIP → H07
-    3. `verify_cpccs.py` → V_CPCCS real RC → H10
-- **Ver primero**: `docs/architecture/BRIDGE_EXCEL_CORPUS.md` + `docs/adr/ADR-023`
-- **ADR-019 STRONGLY_SUPPORTED · ADR-022 SUPPORTED · ADR-023 ACTIVO (inmutable)**
+- **Gate 6.6A ✅ COMPLETO**: `corpus_mnt_mapping` creada · 51/51 siglas MCR trazadas (100%)
+- **Gate 6.6B (siguiente)**: Dom01-D12 tagging en `corpus_mnt_mapping` (campo dominio)
+- **Gate 6.6C ✅ prototipo**: `explainability_report.py` funciona — responde "¿qué evidencia respalda ICPI 2025=69.93%?"
+- **Scripts listos**: `tag_mnt_uuid.py` · `explainability_report.py` · `update_silos.py` · `metrics_mcr.py`
+- **Ver**: `docs/architecture/BRIDGE_EXCEL_CORPUS.md` · `docs/adr/ADR-023`
+- **ADR-019 STRONGLY_SUPPORTED · ADR-022 SUPPORTED · ADR-023 ACTIVO**
 
 ## REGLAS DE ORO (inviolables — el resto en CLAUDE.md)
 1. **Excel = Estado.** Gold Master es fuente de verdad. Excel→Python→Supabase→UI, nunca al revés.
