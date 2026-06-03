@@ -10,6 +10,9 @@
 > QUIRA está aprendiendo a demostrar documentalmente  
 > por qué cada métrica del Gold Master es verdadera o falsa."**
 >
+> **"El valor de QUIRA no está en producir métricas nuevas,  
+> sino en hacer auditables y explicables las métricas existentes."**
+>
 > — Colega asesor, 2026-06-03
 
 ---
