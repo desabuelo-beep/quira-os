@@ -1,9 +1,9 @@
 # Schema Canónico del Chunk — QUIRA Corpus Semántico Gobernado
 ## Dylus Lab · Motor de Trazabilidad Pública Municipal
 
-**Versión**: 1.0  
+**Versión**: 1.1  
 **Fecha**: 2026-06-02  
-**Estado**: DISEÑO APROBADO — pendiente ejecución Gate 6.1b  
+**Estado**: EJECUTADO — Gate 6.1b aplicado en Supabase  
 **Referencia**: ADR-021 (Ontología Corpus 4 Capas)
 
 > Este documento es la especificación técnica del schema canónico del corpus.  
@@ -306,6 +306,51 @@ CREATE TABLE evidencia_digital_verificable (
 2. **Migración de datos existentes**: script `scripts/normativa/migrate_schema_v2.py` (a crear en Gate 6.1b) — actualiza las 43 entradas con los valores de la tabla §4.2.
 
 3. **`manifest.py`**: los nuevos campos se agregan como opcionales con defaults None. Los documentos existentes no fallan si no tienen los nuevos campos — el pipeline los llenará con NULL.
+
+---
+
+## 7b. La Bifurcación Resuelta — ¿documents o chunks?
+
+**Pregunta del colega**: ¿document_class y authority_level viven en chunks o en documents?
+
+**Respuesta**: **Ambos — Star Schema intencional.**
+
+```
+documents (dimension table)
+    1 fila por documento
+    Fuente de verdad para document_class, authority_level
+    Reclasificar = 1 UPDATE aquí
+         ↓ FK
+normativa_corpus (fact table)
+    1 fila por chunk
+    Copia denormalizada: document_class, authority_level
+    Performance: pgvector WHERE sin JOIN
+    circuit_refs: SOLO aquí (chunk-level — distintos artículos tocan distintos circuitos)
+```
+
+**Por qué denormalizar en chunks también:**
+El índice pgvector (IVFFlat) hace búsqueda vectorial + WHERE en una sola tabla. Sin denormalización, cada query necesitaría un JOIN que destruye la performance de búsqueda semántica.
+
+**Cuándo actualizar la copia en chunks:**
+```sql
+-- Reclasificar un documento:
+UPDATE documents SET document_class='METODOLOGIA', authority_level=60
+WHERE norma_sigla='GUIA-X';
+
+-- Propagar a chunks (script o trigger):
+UPDATE normativa_corpus nc
+SET document_class='METODOLOGIA', authority_level=60
+FROM documents d
+WHERE nc.document_id = d.document_id
+AND d.norma_sigla='GUIA-X';
+```
+
+**circuit_refs es SOLO chunk-level:**
+```
+COOTAD Art.266  → circuit_refs=['C01','C02','C03']  ← RC + presupuesto + planificación
+COOTAD Art.302  → circuit_refs=['C01','C03']         ← participación + planificación
+```
+Diferentes artículos del mismo documento tocan diferentes circuitos. Por eso NO se desnormaliza desde documents — es propiedad del artículo, no del documento.
 
 ---
 
