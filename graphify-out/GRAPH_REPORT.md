@@ -1,12 +1,12 @@
-# Graph Report - .  (2026-06-03)
+# Graph Report - .  (2026-06-04)
 
 ## Corpus Check
 - 207 files · ~253,066 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1889 nodes · 3099 edges · 188 communities (168 shown, 20 thin omitted)
-- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 69 edges (avg confidence: 0.78)
+- 1938 nodes · 3238 edges · 196 communities (176 shown, 20 thin omitted)
+- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 77 edges (avg confidence: 0.79)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
@@ -169,28 +169,36 @@
 - [[_COMMUNITY_Módulo Código 156|Módulo Código #156]]
 - [[_COMMUNITY_Módulo Código 157|Módulo Código #157]]
 - [[_COMMUNITY_Módulo Código 158|Módulo Código #158]]
-- [[_COMMUNITY_Módulo Código 174|Módulo Código #174]]
-- [[_COMMUNITY_Módulo Código 175|Módulo Código #175]]
-- [[_COMMUNITY_Módulo Código 176|Módulo Código #176]]
-- [[_COMMUNITY_Módulo Código 177|Módulo Código #177]]
-- [[_COMMUNITY_Módulo Código 178|Módulo Código #178]]
-- [[_COMMUNITY_Módulo Código 179|Módulo Código #179]]
-- [[_COMMUNITY_Módulo Código 180|Módulo Código #180]]
-- [[_COMMUNITY_Módulo Código 181|Módulo Código #181]]
+- [[_COMMUNITY_Módulo Código 159|Módulo Código #159]]
+- [[_COMMUNITY_Módulo Código 160|Módulo Código #160]]
+- [[_COMMUNITY_Módulo Código 161|Módulo Código #161]]
+- [[_COMMUNITY_Módulo Código 162|Módulo Código #162]]
+- [[_COMMUNITY_Módulo Código 163|Módulo Código #163]]
+- [[_COMMUNITY_Módulo Código 164|Módulo Código #164]]
+- [[_COMMUNITY_Módulo Código 165|Módulo Código #165]]
+- [[_COMMUNITY_Módulo Código 166|Módulo Código #166]]
 - [[_COMMUNITY_Módulo Código 182|Módulo Código #182]]
 - [[_COMMUNITY_Módulo Código 183|Módulo Código #183]]
 - [[_COMMUNITY_Módulo Código 184|Módulo Código #184]]
 - [[_COMMUNITY_Módulo Código 185|Módulo Código #185]]
 - [[_COMMUNITY_Módulo Código 186|Módulo Código #186]]
 - [[_COMMUNITY_Módulo Código 187|Módulo Código #187]]
+- [[_COMMUNITY_Vault scriptscicheck_health.py — H|Vault: scripts/ci/check_health.py — H]]
+- [[_COMMUNITY_Vault config.py — Configuración cent|Vault: config.py — Configuración cent]]
+- [[_COMMUNITY_Vault modelsauth.py — Roles del sis|Vault: models/auth.py — Roles del sis]]
+- [[_COMMUNITY_Vault utilssession.py — Helpers de|Vault: utils/session.py — Helpers de ]]
+- [[_COMMUNITY_Vault utilscache_quira.py — Capa de|Vault: utils/cache_quira.py — Capa de]]
+- [[_COMMUNITY_Vault datagm_snapshot.json — Fallba|Vault: data/gm_snapshot.json — Fallba]]
+- [[_COMMUNITY_Vault datamunicipality_registry.jso|Vault: data/municipality_registry.jso]]
+- [[_COMMUNITY_Vault QTMP — Circuitos Causales Muni|Vault: QTMP — Circuitos Causales Muni]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `is_tecnico()` - 58 edges
 2. `skills` - 30 edges
 3. `page_header()` - 29 edges
 4. `render_page()` - 27 edges
-5. `render()` - 24 edges
-6. `Gold Master Excel (fuente de verdad canónica)` - 24 edges
+5. `Gold Master TGI v5.5 — Motor Excel Fuente Canónica (propiedad Dylus Lab)` - 26 edges
+6. `render()` - 24 edges
 7. `str` - 20 edges
 8. `SnapshotPipeline` - 19 edges
 9. `cargar_gm_snapshot()` - 18 edges
@@ -228,617 +236,649 @@
 - **Sistema Democrático Constitucional Dom08+Dom09 par constitucional** — concept_dom08, concept_dom09, concept_ce95, concept_ce1, adr019_legitimacion [EXTRACTED 0.95]
 - **Gate 7 criterios validación municipio 2 generalización 221 GAD** — gate007_validacion, adr022_divergencia, adr023_tres_niveles, concept_gap_ad [EXTRACTED 1.00]
 
-## Communities (188 total, 20 thin omitted)
+## Communities (196 total, 20 thin omitted)
 
 ### Community 0 - "Motor Longitudinal & Análisis Temporal"
 Cohesion: 0.05
-Nodes (72): Any, bool, float, int, str, float, int, str (+64 more)
-
-### Community 1 - "Vista Ejecutiva + QUIRA IA"
-Cohesion: 0.05
 Nodes (70): _alerta_card(), _briefing_sentence(), _compose_quira_ia(), _compromiso_row(), _compute_ecosistema(), _entity_card(), _html_briefing_strip(), _html_decisiones_strip() (+62 more)
 
-### Community 2 - "Autenticación & Control de Acceso"
+### Community 1 - "Vista Ejecutiva + QUIRA IA"
 Cohesion: 0.07
 Nodes (65): QUIRA OS — Auth entry point Solo delega al controlador. No contiene lógica ni HT, str, QUIRA OS — Controller: Auth  (Sprint Landing v3 · 2026-05-27) 4 cajones iguales,, run(), _st_key(), Exception, AuthError, AuthUser (+57 more)
 
+### Community 2 - "Autenticación & Control de Acceso"
+Cohesion: 0.08
+Nodes (53): Any, bool, float, int, str, float, int, str (+45 more)
+
 ### Community 3 - "ADRs Constitucionales 016-019"
-Cohesion: 0.05
-Nodes (70): ADR-016 Dominio Constitucional Operacionalizable, ADR-017 Circuitos Constitucionales, ADR-018 Nodos Raíz Constitucionales, ADR-019 Dominios de Legitimación Democrática, ADR-020 Analítica Constitucional Metodología, ADR-021 Ontología Corpus 4 Capas Motor Trazabilidad, ADR-022 Principio de Divergencia A↔D, ADR-023 Arquitectura Tres Niveles QUIRA (+62 more)
+Cohesion: 0.06
+Nodes (51): Any, bool, str, _build_driver(), get_all_chains(), _get_driver(), get_qtmp_chain(), is_neo4j_available() (+43 more)
 
 ### Community 4 - "GOV Entry Layer (p0 + env_gov)"
-Cohesion: 0.06
-Nodes (53): Banda compacta de 4 KPI tiles — persiste en drill-down del Ejecutivo.     Misma, _render_mini_kpi_band(), _badge(), _card_metric(), _load_snapshot(), str, QUIRA OS — P-00 Inicio Pantalla de entrada consolidada · Sprint 2  Muestra el es, Carga el snapshot activo de Montecristi con cache de 5 minutos. (+45 more)
-
-### Community 5 - "Neo4j QTMP Connector"
-Cohesion: 0.06
-Nodes (49): Any, bool, str, _build_driver(), get_all_chains(), _get_driver(), get_qtmp_chain(), is_neo4j_available() (+41 more)
-
-### Community 6 - "Configuración VS Code"
 Cohesion: 0.05
 Nodes (37): breadcrumbs.enabled, editor.formatOnSave, editor.minimap.enabled, editor.rulers, editor.tabSize, files.associations, *.md, *.toml (+29 more)
 
+### Community 5 - "Neo4j QTMP Connector"
+Cohesion: 0.10
+Nodes (33): QUIRA OS — Módulo M3: Municipal Consolida Grupo Municipal · Participación Ciudad, render(), _eje_row(), _parroquia_bar(), float, str, QUIRA OS v0.1 — P-10 Inversión per Cápita Equidad territorial · $/hab por parroq, Barra horizontal de inversión per cápita para una parroquia. (+25 more)
+
+### Community 6 - "Configuración VS Code"
+Cohesion: 0.12
+Nodes (29): str, _accessible(), QUIRA Intelligence — Entry Point · 2026-05-27 Infraestructura de monitoreo insti, utils — QUIRA OS v0.1 Módulos auxiliares de soporte transversal. Dylus Lab © 202, check_session_expiry(), get_rol(), get_usuario(), init_session() (+21 more)
+
 ### Community 7 - "Centro de Control OPS"
-Cohesion: 0.14
-Nodes (29): QUIRA OS — Módulo M5: Control (solo Técnico) Consolida Centro de Control · Panel, render(), _actor_from_session(), _badge(), str, QUIRA OS · p_gestion.py Ruta de Atención Institucional — Sprint 2.9A  Gobernanza, render(), _tab_estado() (+21 more)
+Cohesion: 0.16
+Nodes (32): QUIRA Gov — Identidad y Arquitectura, TGI Framework — Territorial Governance Intelligence, TGI Dimensiones — D1 a D5, Sentinel — Lógica de Decisión (CAPA 5), Motor TGI — Metodología QUIRA Gov (Gold Master), TGI Indicadores — Glosario Canónico, SAT — Sistema de Alertas y Trazabilidad (SAT-0 a SAT-VI), AVEP — Sistema de Lenguaje Político (4 Niveles Ejecutivos) (+24 more)
 
 ### Community 8 - "Snapshot Diff & Comparador"
+Cohesion: 0.09
+Nodes (24): QUIRA OS — Módulo M1: Situación Consolida Vista Ejecutiva · Pulso · Causas de la, render(), QUIRA OS — Módulo M4: Análisis (Concejal + Técnico) Consolida Tablero Técnico ·, render(), _dir_row(), int, str, QUIRA OS v0.1 — P-14 Eficiencia por Dirección IED 33.99% · 12 Direcciones GAD · (+16 more)
+
+### Community 9 - "Holding Municipal Dashboard"
 Cohesion: 0.12
 Nodes (29): Any, bool, float, str, _clasificar(), compare_snapshots(), detect_reincidence_from_history(), _detectar_sat_iii() (+21 more)
 
-### Community 9 - "Holding Municipal Dashboard"
-Cohesion: 0.17
-Nodes (24): _cajon(), _cajon2(), _conc_entity_card(), _concentracion_stats(), _fmt(), _load_sercop_data(), _pct(), _prov_bars() (+16 more)
-
 ### Community 10 - "Dashboard Controller"
+Cohesion: 0.13
+Nodes (25): bool, Path, str, Logger, _calcular_sha256(), obtener_changelog_gm(), obtener_estado_gm(), QUIRA Intelligence — Gobernanza Gold Master (Sprint 3 · P4)  El Gold Master ya n (+17 more)
+
+### Community 11 - "GOV Router (env_gov.py)"
 Cohesion: 0.17
 Nodes (21): QUIRA OS — Controller: Dashboard Responsabilidad única: orquestar Model + View y, run(), DashboardData, DashboardData, _hex_to_rgb(), load(), str, QUIRA OS — Model: Dashboard Responsabilidad única: extraer y calcular los datos (+13 more)
 
-### Community 11 - "GOV Router (env_gov.py)"
+### Community 12 - "Sentinel Monitoring"
 Cohesion: 0.14
 Nodes (24): QUIRA Intelligence — Ambiente 🏛 GOV  (Router v4 · Sprint A+ · 2026-05-27) QUIRA, Panel Estratégico — dominio político dentro del Centro de Mando., Dom10 — Territorio & Cobertura · Layer 2 para Ejecutivo.     ADR-013: AGUA_POTAB, Dom07 — Transparencia e Información Pública · Layer 2 · Sprint 4.     ADR-013: T, _render_alertas(), _render_analisis(), _render_cadena(), _render_concejo() (+16 more)
 
-### Community 12 - "Sentinel Monitoring"
+### Community 13 - "Situación Ejecutiva & Cooperación"
+Cohesion: 0.11
+Nodes (24): ADR-004: ProyecT es el workspace oficial de trabajo activo, ADR-007: Gold Master es la única fuente canónica de cálculo, QUIRA OS — Guía Canónica (CLAUDE.md), 221 GADs Ecuador — Escala Nacional QUIRA, ADR-023 — Tres Niveles Gold Master (inmutable), Gate 6.6 — Corpus Mapping Completo (51/51 siglas MCR), Gate 7 — Segundo Municipio Manta (Congelado), Gold Master TGI v5.5 — Motor Excel Fuente Canónica (propiedad Dylus Lab) (+16 more)
+
+### Community 14 - "Ambiente OPS"
+Cohesion: 0.13
+Nodes (21): _art_row(), str, QUIRA OS v0.1 — P-15 Transparencia LOTAIP ITAM 56% · IOC 17.71% · 21 artículos L, render(), _check_row(), _fase_card(), bool, str (+13 more)
+
+### Community 15 - "Módulo Código #15"
 Cohesion: 0.14
 Nodes (22): _get_api_key(), bool, str, QUIRA OS — Sentinel · Agente de Gobernanza Territorial Powered by Claude Haiku (, Llama a Claude Haiku (Anthropic) con streaming y audit log. Dylus Lab 2026., Renderiza el chat Sentinel · Claude Haiku (Anthropic) · RC-7.2/7.3 activo., Obtiene Anthropic API Key en orden de prioridad:     1. session_state (ingresada, _render_chat_history() (+14 more)
 
-### Community 13 - "Situación Ejecutiva & Cooperación"
-Cohesion: 0.13
-Nodes (18): QUIRA OS — Módulo M1: Situación Consolida Vista Ejecutiva · Pulso · Causas de la, render(), _fondo_card(), str, QUIRA OS v0.1 — P-18 Cooperación Internacional Fondos disponibles · BID · CAF ·, render(), _cong_card(), _nodo_card() (+10 more)
-
-### Community 14 - "Ambiente OPS"
+### Community 16 - "Módulo Código #16"
 Cohesion: 0.14
 Nodes (21): QUIRA Intelligence — Ambiente ⚙ Ops Infraestructura interna del equipo QUIRA. Nu, render(), _tab_config(), _tab_gold_master(), _tab_pipeline(), _tab_reliability(), _tab_snapshots(), render() (+13 more)
 
-### Community 15 - "Módulo Código #15"
+### Community 17 - "Módulo Código #17"
 Cohesion: 0.12
 Nodes (22): 12 Dominios Canónicos D01-D12 (inmutables), 4 Ambientes QUIRA: GOV / Civic / Impact / Ops, C2 — Cerebro Grafo (Neo4j), Ciclo Mensual — 6 pasos operacionales (CAPTURAR→ENTREGAR), scripts/ejecutar_ciclo_mensual.py — Orquestador ciclo mensual (5 pasos), env_gov.py — Router GOV puro, Gold Master Governance Layer — Validación y SHA-256, Layer 1 — Centro de Mando (p_command_center.py, 12 cajones HTML canvas) (+14 more)
 
-### Community 16 - "Módulo Código #16"
+### Community 18 - "Módulo Código #18"
 Cohesion: 0.09
 Nodes (21): dependencies, framer-motion, next, react, react-dom, description, devDependencies, @types/node (+13 more)
-
-### Community 17 - "Módulo Código #17"
-Cohesion: 0.16
-Nodes (20): _arrow(), _gc_row(), _meta_cadena(), _nodo(), bool, str, QUIRA OS v0.1 — P-12 Cadena POA·PAC Trazabilidad operativa · POA→PAC→SERCOP→eSIG, Cadena visual POA→PAC→SERCOP→eSIGEF para una meta. (+12 more)
-
-### Community 18 - "Módulo Código #18"
-Cohesion: 0.20
-Nodes (18): bool, Path, str, _calcular_sha256(), obtener_changelog_gm(), obtener_estado_gm(), QUIRA Intelligence — Gobernanza Gold Master (Sprint 3 · P4)  El Gold Master ya n, Ejecuta validaciones canónicas sobre el Gold Master.      Verifica:       - Exis (+10 more)
 
 ### Community 19 - "Módulo Código #19"
 Cohesion: 0.12
 Nodes (21): auth_required_notice(), data_stale_notice(), empty_notice(), guard_suggestion(), loading_placeholder(), bool, str, utils/page_guards.py — QUIRA OS v0.1 Helpers de acceso seguro a st.session_state (+13 more)
 
 ### Community 20 - "Módulo Código #20"
+Cohesion: 0.18
+Nodes (21): ADR-016 Dominio Constitucional Operacionalizable, ADR-017 Circuitos Constitucionales, ADR-018 Nodos Raíz Constitucionales, ADR-019 Dominios de Legitimación Democrática, ADR-020 Analítica Constitucional Metodología, CE_1 NRC Constituyente Soberanía Popular Apex, CE_18 NRC Derecho a la Información, CE_226 NRC Principio de Legalidad (+13 more)
+
+### Community 21 - "Módulo Código #21"
 Cohesion: 0.12
 Nodes (21): Arquitectura de 6 Capas (Gold Master→Pipeline→Supabase→Streamlit+Obsidian+GitHub), Claude Haiku (Anthropic) — Motor LLM de QUIRA IA, app/connectors/cpccs.py — Conector CPCCS control social RdC, Doctrina de los Dos Mundos (GOV vs CIV), app/connectors/dpe.py — Conector DPE API ejecución presupuestaria, GitHub + Streamlit Cloud — Versionado y Despliegue Continuo (L6), gm_snapshot.json — puente Gold Master a Streamlit Cloud, app/connectors/gold_master.py — Único punto de acceso al Excel (+13 more)
 
-### Community 21 - "Módulo Código #21"
+### Community 22 - "Módulo Código #22"
 Cohesion: 0.14
 Nodes (12): bool, Path, Placeholder — Fase 2. YouTube/Facebook require manual verification., PASO 5 — Lee métricas canónicas del Gold Master (H73_OUTPUT_API).          Actúa, PASO 8 — Evalúa el catálogo SAT completo contra el snapshot.          Produce al, Normaliza y merges los resultados de los conectores., Valida el snapshot contra el esquema canónico., Persiste el snapshot en data/snapshots/ + Supabase. (+4 more)
 
-### Community 22 - "Módulo Código #22"
+### Community 23 - "Módulo Código #23"
 Cohesion: 0.19
 Nodes (20): ADR-001: PDOT Montecristi fuente canónica territorial, ADR-002: COOTAD e INEC son dominios normativos distintos, ADR-003: Todo valor proxy requiere declarar proxy_de, ADR-005: Neo4j como cerebro causal (grafo, no vector store), ADR-006: Ti_G7+G8 mide Piso 1 (compliance financiero), no impacto territorial, ADR-008: C10 (Reflexión Institucional) pertenece a Alpha, no a Beta, ADR-009: La Red Académica valida incertidumbres (C10), no resultados, ADR-010: Alpha 1.0 termina con consulta causal bautismal reproducible (+12 more)
 
-### Community 23 - "Módulo Código #23"
-Cohesion: 0.17
-Nodes (16): datetime, app/pipelines/snapshot_pipeline.py — QUIRA OS · Sprint 2 Orquestador Snapshot Pi, QUIRA OS · p_carga.py Panel de Carga Mensual — RC-CARGA  Permite al Técnico actu, render(), QUIRA OS · p_reportes.py Reportes Institucionales Mensuales — Sprint 2.6.3  Gene, list_snapshots(), load_snapshot(), bool (+8 more)
-
 ### Community 24 - "Módulo Código #24"
-Cohesion: 0.18
-Nodes (16): str, _accessible(), QUIRA Intelligence — Entry Point · 2026-05-27 Infraestructura de monitoreo insti, utils — QUIRA OS v0.1 Módulos auxiliares de soporte transversal. Dylus Lab © 202, check_session_expiry(), get_rol(), get_usuario(), init_session() (+8 more)
+Cohesion: 0.13
+Nodes (20): IED — Índice de Eficiencia Directiva, Dylus Lab — Operador Soberano del Sistema QUIRA, Holding Municipal Montecristi — 4 Entidades (GAD + EMAI + Bomberos + Patronato), IED por Dirección — Ti_Devengado/Ti_Codificado×100 (SHA-256 activa Ti_V), IFE — Índice de Fidelidad Electoral, IMN — Informe Mensual Normalizado (átomo operativo del sistema), Montecristi — Territorio piloto doctrinal (código 130801), RC-2A SLA Institucional — Plazos de alertas (48h crítica, 120h advertencia) (+12 more)
 
 ### Community 25 - "Módulo Código #25"
 Cohesion: 0.15
-Nodes (19): COOTAD — Código Orgánico de Organización Territorial, Dylus Lab — Operador Soberano del Sistema QUIRA, Ecosistema Municipal / Holding Municipal Montecristi, IFE — Índice de Fidelidad Electoral, IMN — Informe Mensual Normalizado (átomo operativo del sistema), Montecristi — Territorio piloto doctrinal (código 130801), RC-2A SLA Institucional — Plazos de alertas (48h crítica, 120h advertencia), Roles del Sistema: ejecutivo / tecnico / operador / administrador (+11 more)
+Nodes (18): QUIRA OS — Módulo M2: Alertas Consolida SAT activas y Evolución Longitudinal (RC, Renderiza la tabla RC-M con colores semánticos., Gráfico de línea de tendencia ICPI usando Plotly., Nota doctrinal RC-M al pie., Muestra instrucción cuando no hay snapshots suficientes., Renderiza la tabla RC-M canónica y el gráfico de tendencia ICPI., render(), _render_doctrinal_note() (+10 more)
 
 ### Community 26 - "Módulo Código #26"
-Cohesion: 0.15
-Nodes (18): Inyecta la navegación modular de GOV en el sidebar.     Solo se llama desde app., render_sidebar_nav(), is_admin(), is_alcalde(), is_analyst(), is_ejecutivo(), is_gov_user(), is_operador() (+10 more)
+Cohesion: 0.27
+Nodes (19): _api(), _bar(), _dim_css(), _fetch_parity(), _fetch_sentinel(), _html_bloque_a(), _html_bloque_b(), _html_bloque_c() (+11 more)
 
 ### Community 27 - "Módulo Código #27"
-Cohesion: 0.18
-Nodes (18): CPCCS — Consejo de Participación Ciudadana (RdC verificación), D3 — Ejecución de Inversión (Ti presupuestaria), eSIGEF — Sistema Integrado de Gestión Financiera (cédulas presupuestarias), SIAP-ICPI Gold Master v5.5 (canónico activo, 123 hojas), TGI Gold Master v6.0 (template de diseño, 34 hojas), H73_OUTPUT_API — Hoja de salida API del Gold Master v5.5, Sprint Soberanía H73 — Reconexión 92.1% fórmulas vivas, IET — Índice de Equidad Territorial (+10 more)
+Cohesion: 0.17
+Nodes (16): datetime, app/pipelines/snapshot_pipeline.py — QUIRA OS · Sprint 2 Orquestador Snapshot Pi, QUIRA OS · p_carga.py Panel de Carga Mensual — RC-CARGA  Permite al Técnico actu, render(), QUIRA OS · p_reportes.py Reportes Institucionales Mensuales — Sprint 2.6.3  Gene, list_snapshots(), load_snapshot(), bool (+8 more)
 
 ### Community 28 - "Módulo Código #28"
-Cohesion: 0.14
-Nodes (18): ADR-004: ProyecT es el workspace oficial de trabajo activo, ADR-007: Gold Master es la única fuente canónica de cálculo, QUIRA OS — Guía Canónica (CLAUDE.md), ADR-023 — Tres Niveles Gold Master (inmutable), Gate 6.6 — Corpus Mapping Completo (51/51 siglas MCR), Gate 7 — Segundo Municipio Manta (Congelado), Gold Master Excel (fuente de verdad canónica), governance/BOOT.md — Estado vivo del proyecto (único documento vivo) (+10 more)
+Cohesion: 0.20
+Nodes (17): _ataque_card(), _compute_contexto(), _html_argumentario(), _html_ataques(), _html_checklist(), _html_header_concejo(), _load(), _nav_btn() (+9 more)
 
 ### Community 29 - "Módulo Código #29"
 Cohesion: 0.22
 Nodes (17): CedulaParseResult, _build_result_html(), _build_status_html(), _panel_history(), _panel_kpis(), _panel_status(), _panel_validations(), int (+9 more)
 
 ### Community 30 - "Módulo Código #30"
-Cohesion: 0.17
-Nodes (17): 221 GADs Ecuador — Escala Nacional QUIRA, ADR-019: Dominios de Legitimación Democrática (Dom08+Dom09), ADR-019 — Dominios Legitimación Democrática STRONGLY_SUPPORTED, COOTAD Art. 266 — Rendición de Cuentas GAD ante asamblea, Fase Constitucional — v2.0 arquitectura constitucional computable, Neo4j — Cerebro Causal QUIRA, Cadena Causal Verificable — Unidad Mínima de Valor QUIRA, Familia de Productos QUIRA (Gov / Operaciones / Ciudadana / Impact / Economy) (+9 more)
+Cohesion: 0.13
+Nodes (17): _can_see(), _current_module(), bool, str, Determina si el rol actual puede ver este módulo., Módulo activo según session_state. Corrige si el rol no tiene acceso., Inyecta la navegación modular de GOV en el sidebar.     Solo se llama desde app., Banda superior con identidad GOV y módulo activo. (+9 more)
 
 ### Community 31 - "Módulo Código #31"
+Cohesion: 0.33
+Nodes (17): ALERTA — Isabel Muentes: Emergencia Hídrica y Subinversión Crítica, ALERTA — Regresividad Presupuestaria IRS=79.7, Motor QUIRA — Arquitectura Lógica (CAPA 3 SIAP Engine), Motor QUIRA — Los Cinco Silos Epistémicos, Motor QUIRA — Fuentes Institucionales, Motor QUIRA — La Dialéctica Territorial, Motor QUIRA — El Ecosistema Digital, Montecristi — TGI Score (Urbana P-01) (+9 more)
+
+### Community 32 - "Módulo Código #32"
 Cohesion: 0.12
 Nodes (16): label, onAutoForward, openFiles, customizations, codespaces, vscode, forwardPorts, image (+8 more)
 
-### Community 32 - "Módulo Código #32"
+### Community 33 - "Módulo Código #33"
+Cohesion: 0.24
+Nodes (16): ADR-015 Validación OBS-QNKC-02 DPE Infraestructura Observacional, C5t — Puntualidad LOTAIP (Nueva Sub-variable N4), COR-QNKC-02 — DEC como Criterio de Cierre de Sprint, DEC — Dominio Epistemológicamente Cerrado, DPE Portal transparencia.dpe.gob.ec — Fuente C5 Canónica O(1), H-QNKC-01 — Proceso ≠ Resultado (Hipótesis Axiomática), H-QNKC-02 — Condiciones Necesarias Multiplicativas, H-QNKC-04 — Modelo ≠ Validación (Candidata) (+8 more)
+
+### Community 34 - "Módulo Código #34"
 Cohesion: 0.16
 Nodes (15): info_box(), kpi_card(), metric_row(), progress_bar_card(), bool, float, int, str (+7 more)
 
-### Community 33 - "Módulo Código #33"
-Cohesion: 0.17
-Nodes (13): QUIRA OS — Módulo M3: Municipal Consolida Grupo Municipal · Participación Ciudad, render(), _eje_row(), _parroquia_bar(), float, str, QUIRA OS v0.1 — P-10 Inversión per Cápita Equidad territorial · $/hab por parroq, Barra horizontal de inversión per cápita para una parroquia. (+5 more)
-
-### Community 34 - "Módulo Código #34"
-Cohesion: 0.22
-Nodes (14): Backward-compat shim — la View real vive en views/html_engine.py Las páginas exi, Vista técnica existente — Directivo / Técnico / Administrador., _render_dom12_tecnico(), page_frame(), page_header(), prog_bar(), bool, float (+6 more)
-
 ### Community 35 - "Módulo Código #35"
+Cohesion: 0.20
+Nodes (15): Banda compacta de 4 KPI tiles — persiste en drill-down del Ejecutivo.     Misma, _render_mini_kpi_band(), _badge(), _card_metric(), _load_snapshot(), str, QUIRA OS — P-00 Inicio Pantalla de entrada consolidada · Sprint 2  Muestra el es, Carga el snapshot activo de Montecristi con cache de 5 minutos. (+7 more)
+
+### Community 36 - "Módulo Código #36"
 Cohesion: 0.32
 Nodes (13): _chart_barras_comparativas(), _chart_tendencia(), _fmt_m(), _panel_alertas(), _panel_disponibilidad(), _panel_ranking(), _panel_totales(), Figure (+5 more)
 
-### Community 36 - "Módulo Código #36"
-Cohesion: 0.22
-Nodes (13): _calcular_chs_c01(), float, str, QUIRA Intelligence — Dom07 Transparencia  (Layer 2 · Sprint 4) Módulo ejecutivo, Calcula CHS de C01 con los datos disponibles.     Retorna (chs_value, label, col, Sección de diagnóstico sistémico — Circuito C01 (ADR-017).     Muestra la cadena, Layer 2 canónico — Dom07 Transparencia e Información Pública.     Implementa QNK, Banda superior de retorno al Centro de Mando — solo para Ejecutivo. (+5 more)
-
 ### Community 37 - "Módulo Código #37"
+Cohesion: 0.29
+Nodes (13): _build_canvas(), _card_viz(), _domain_card(), _domain_grid(), _kpi_band(), _load_data(), Any, str (+5 more)
+
+### Community 38 - "Módulo Código #38"
+Cohesion: 0.28
+Nodes (13): ADR-021 Ontología Corpus 4 Capas Motor Trazabilidad, ADR-022 Principio de Divergencia A↔D, ADR-023 Arquitectura Tres Niveles QUIRA, BRIDGE Excel Corpus Motor ICPI, Schema Canónico del Chunk QUIRA Corpus, Corpus Ontología 4 Capas A/B/C/D authority_level, Gap A↔D Divergencia Norma-Evidencia 17.71%, Holding Municipal Montecristi GAD+EP Aseo+Bomberos+Patronato (+5 more)
+
+### Community 39 - "Módulo Código #39"
 Cohesion: 0.24
 Nodes (12): avep_badge_html(), _hex_to_rgb(), bool, float, str, QUIRA OS v0.1 — Badge AVEP Renderiza la banda canónica H01 en HTML para st.markd, Convierte #RRGGBB a 'R,G,B' para uso en rgba()., Genera HTML para un badge AVEP inline.     Usar con st.markdown(..., unsafe_allo (+4 more)
 
-### Community 38 - "Módulo Código #38"
+### Community 40 - "Módulo Código #40"
 Cohesion: 0.38
-Nodes (13): ADR-011: Tres productos · Motor IA · Arquitectura integrada QUIRA, Bloomberg Firewall (prohibición exposición pública de métricas internas), Cadena Causal QUIRA C1→C10 (QNKC-002), IOC — Índice de Opacidad Cantonal (H41), QUIRA Ciudadana (Producto de Empoderamiento Ciudadano), QUIRA Gov (Producto Institucional), QUIRA Operaciones (Producto Interno), SAIP Engine — Generación automática solicitudes LOTAIP Art. 34 (+5 more)
+Nodes (13): ADR-011: Tres productos · Motor IA · Arquitectura integrada QUIRA, Bloomberg Firewall — Prohibición de exponer ICPI/TGI/Ti/QTMP en UI pública, Cadena Causal QUIRA C1→C10 (QNKC-002), IOC — Índice de Opacidad Cantonal (H41), QUIRA Ciudadana (Producto de Empoderamiento Ciudadano), QUIRA Gov (Producto Institucional), QUIRA Operaciones (Producto Interno), SAIP Engine — Generación automática solicitudes LOTAIP Art. 34 (+5 more)
 
-### Community 39 - "Módulo Código #39"
+### Community 41 - "Módulo Código #41"
+Cohesion: 0.26
+Nodes (11): Backward-compat shim — la View real vive en views/html_engine.py Las páginas exi, page_frame(), prog_bar(), bool, float, int, str, QUIRA OS v0.1 — HTML Rendering Engine Renderiza via components.html() con auto-r (+3 more)
+
+### Community 42 - "Módulo Código #42"
 Cohesion: 0.26
 Nodes (11): bool, int, str, QUIRA OS v0.1 — Tarjetas SAT (Sistema de Alertas Tempranas) Dylus Lab © 2026, Tarjeta SAT completa.     compact=True: versión feed para sidebar o resumen., Header del feed SAT con contadores., _rgb(), sat_card() (+3 more)
 
-### Community 40 - "Módulo Código #40"
+### Community 43 - "Módulo Código #43"
+Cohesion: 0.27
+Nodes (12): COOTAD — Código Orgánico de Organización Territorial, eSIGEF — Sistema Integrado de Gestión Financiera (cédulas presupuestarias), SIAP-ICPI Gold Master v5.5 (canónico activo, 123 hojas), TGI Gold Master v6.0 (template de diseño, 34 hojas), H73_OUTPUT_API — Hoja de salida API del Gold Master v5.5, Sprint Soberanía H73 — Reconexión 92.1% fórmulas vivas, SAT — Sistema de Alertas Tempranas (SAT-0 a SAT-VIII), TGI — Territorial Governance Index (5 dimensiones D1-D5) (+4 more)
+
+### Community 44 - "Módulo Código #44"
+Cohesion: 0.26
+Nodes (10): QUIRA OS — Módulo M5: Control (solo Técnico) Consolida Centro de Control · Panel, render(), _actor_from_session(), _badge(), str, QUIRA OS · p_gestion.py Ruta de Atención Institucional — Sprint 2.9A  Gobernanza, render(), _tab_estado() (+2 more)
+
+### Community 45 - "Módulo Código #45"
+Cohesion: 0.27
+Nodes (11): _calcular_chs_c01(), float, str, QUIRA Intelligence — Dom07 Transparencia  (Layer 2 · Sprint 4) Módulo ejecutivo, Calcula CHS de C01 con los datos disponibles.     Retorna (chs_value, label, col, Sección de diagnóstico sistémico — Circuito C01 (ADR-017).     Muestra la cadena, Layer 2 canónico — Dom07 Transparencia e Información Pública.     Implementa QNK, _render_chs_c01() (+3 more)
+
+### Community 46 - "Módulo Código #46"
 Cohesion: 0.18
 Nodes (7): float, int, str, Ensambla el snapshot canónico con namespace doctrinal., TRACEABILITY_SCORE = Σ(reliability_i × weight_i) × 100., Coverage = proporción de fuentes con status 'ok'., Detecta dimensiones TGI sin cobertura de datos.
 
-### Community 41 - "Módulo Código #41"
+### Community 47 - "Módulo Código #47"
 Cohesion: 0.29
 Nodes (11): _ci_color(), _in_range(), main(), _print_caso_result(), _print_header(), _print_summary(), bool, int (+3 more)
 
-### Community 42 - "Módulo Código #42"
+### Community 48 - "Módulo Código #48"
+Cohesion: 0.29
+Nodes (11): ADR-013 Mapeo Canónico QTMP → 12 Dominios, COMPETENCIAS_QUIRA_MAP — CE Art.264 → Dominios, Constitución Ecuador Art.264 — 14 Competencias Exclusivas GAD, CIRCUIT_DOMAIN_MAP — Mapeo QTMP→Dominio Canónico, Dom06 — Salud Institucional, Dom10 — Territorio & Cobertura, Dom12 Protección Social Grupos Prioritarios, Layer 3 — GeoTwin Territorio (p4_geotwin.py, solo rol Técnico) (+3 more)
+
+### Community 49 - "Módulo Código #49"
 Cohesion: 0.18
 Nodes (10): POSTGRES_CONNECTION_STRING, hooks, PreToolUse, mcpServers, quira-postgres, args, command, comment (+2 more)
 
-### Community 43 - "Módulo Código #43"
-Cohesion: 0.33
-Nodes (9): QUIRA OS — Módulo M4: Análisis (Concejal + Técnico) Consolida Tablero Técnico ·, render(), _p17_html(), _p18_html(), _p19_html(), bool, str, QUIRA OS v0.1 — P-05 Operación Técnica P-17 Ingesta · P-18 Validador · P-19 HITL (+1 more)
+### Community 50 - "Módulo Código #50"
+Cohesion: 0.29
+Nodes (11): ADR-019: Dominios de Legitimación Democrática (Dom08+Dom09), ADR-019 — Dominios Legitimación Democrática STRONGLY_SUPPORTED, COOTAD Art. 266 — Rendición de Cuentas GAD ante asamblea, Fase Constitucional — v2.0 arquitectura constitucional computable, Neo4j — Cerebro Causal QUIRA, OBS-003: Cierre Normativo del Ciclo Democrático Municipal (CONFIRMED), OBS-005: Ciclo PP→RC→PP — Tres Capas de Evidencia Convergentes (CONFIRMED), OBS-006: Cobertura CPCCS y Ejecución Presupuestaria del Holding (CONFIRMED) (+3 more)
 
-### Community 44 - "Módulo Código #44"
+### Community 51 - "Módulo Código #51"
 Cohesion: 0.38
 Nodes (10): _avep_irs(), _avep_label(), _calcular_icgit(), _gauge_bar(), _irs_interpolado(), float, str, QUIRA OS v0.1 — P-13 Simulador de Escenarios ¿Qué ICGI-T logramos si mejoramos X (+2 more)
 
-### Community 45 - "Módulo Código #45"
+### Community 52 - "Módulo Código #52"
 Cohesion: 0.18
 Nodes (10): casos, meta, canton, doctrina, fecha_creacion, fuente_datos, icgit_q1_2026, purpose (+2 more)
 
-### Community 46 - "Módulo Código #46"
+### Community 53 - "Módulo Código #53"
 Cohesion: 0.29
 Nodes (9): Figure, float, int, str, QUIRA OS v0.1 — Gauge semicircular ICGI-T Plotly indicator adaptado para Streaml, Genera un gauge semicircular para el score ICGI-T.      Args:         score: Val, Gauge compacto para entidades del holding (P-02)., render_gauge() (+1 more)
 
-### Community 47 - "Módulo Código #47"
-Cohesion: 0.27
-Nodes (9): Path, str, fetch_gold_master_data(), _normalize_h73(), app/connectors/gold_master.py — QUIRA OS · Sprint 3 Conector institucional: Gold, Resuelve la ruta del Gold Master desde config o usa la canónica.      Prioridad:, Normaliza y tipifica los valores de H73 en el namespace del pipeline.      Devue, Lee H73_OUTPUT_API del Gold Master y devuelve métricas canónicas.      Args: (+1 more)
+### Community 54 - "Módulo Código #54"
+Cohesion: 0.38
+Nodes (9): _arrow(), _gc_row(), _meta_cadena(), _nodo(), bool, str, QUIRA OS v0.1 — P-12 Cadena POA·PAC Trazabilidad operativa · POA→PAC→SERCOP→eSIG, Cadena visual POA→PAC→SERCOP→eSIGEF para una meta. (+1 more)
 
-### Community 48 - "Módulo Código #48"
+### Community 55 - "Módulo Código #55"
 Cohesion: 0.44
 Nodes (9): _brecha_row(), _cumpl_card(), _meta_row(), _parroquia_row(), _pp_cycle_card(), str, QUIRA OS v0.1 — P-16 GOBERNANZA PARTICIPATIVA Tab 1: Participación Ciudadana — P, _rdc_pp_row() (+1 more)
 
-### Community 49 - "Módulo Código #49"
+### Community 56 - "Módulo Código #56"
 Cohesion: 0.40
 Nodes (9): _alert_card(), _build_html(), _chip(), _historial_section_html(), int, str, QUIRA OS · p_alertas.py Centro de Alertas de Cumplimiento — Sprint 2.6  Muestra, render() (+1 more)
 
-### Community 50 - "Módulo Código #50"
+### Community 57 - "Módulo Código #57"
 Cohesion: 0.38
 Nodes (9): bytes, _build_html(), _cronicos_html(), _export_xlsx(), str, _ranking_html(), QUIRA OS · p_seguimiento.py Seguimiento Institucional — Sprint 2.6.2  Capacidad, _reincidencia_html() (+1 more)
 
-### Community 51 - "Módulo Código #51"
-Cohesion: 0.24
-Nodes (10): _can_see(), _current_module(), bool, str, Determina si el rol actual puede ver este módulo., Módulo activo según session_state. Corrige si el rol no tiene acceso., Banda superior con identidad GOV y módulo activo., Renderiza el contenido GOV según el rol activo.      Ejecutivo (Sprint 1.2): (+2 more)
-
-### Community 52 - "Módulo Código #52"
-Cohesion: 0.25
-Nodes (8): str, ensure_sprint1_dirs(), get_pdot_path(), get_siap_path(), QUIRA OS — Configuración central Sprint 1 — Consolidación Base (Junio–Agosto 202, Crea directorios Sprint 1 si no existen., Retorna la ruta del Excel SIAP-ICPI Gold Master.     Orden de búsqueda: v5.5 can, Retorna la ruta del Excel PDOT_KB.     Orden de búsqueda:       1. data/ dentro
-
-### Community 53 - "Módulo Código #53"
-Cohesion: 0.28
-Nodes (8): float, str, _classify_risk(), evaluate_sat(), _get_thresholds(), app/services/sat_evaluator.py — QUIRA OS · Sprint 2 Evaluador SAT — Sistema de A, Clasifica el riesgo ponderado SAT en niveles canónicos.      Umbrales (base doct, Evalúa el catálogo SAT completo contra los datos del snapshot.      Args:
-
-### Community 54 - "Módulo Código #54"
-Cohesion: 0.33
-Nodes (8): Map, _build_folium_map(), _parroquia_row(), float, str, QUIRA OS v0.1 — P-04 GeoTwin · Territorio Mapa Folium real (Leaflet) + tabla par, render(), _tps_color()
-
-### Community 55 - "Módulo Código #55"
-Cohesion: 0.47
-Nodes (8): _global_badge(), _hist_icon(), _historial_html(), _integrity_html(), _pillar_card(), str, QUIRA OS · p_congruencia.py Estado de Congruencia Institucional — Sprint 2.5C  P, render()
-
-### Community 56 - "Módulo Código #56"
-Cohesion: 0.28
-Nodes (8): indicator_label(), str, utils/display_names.py — QUIRA OS v0.1 Capa de traducción semántica: nombres téc, Devuelve la etiqueta del indicador en el modo especificado.      Args:         a, Convierte un nombre técnico interno al equivalente en lenguaje de administración, Genera una etiqueta de fuente adecuada para mostrar en la UI.      Limpia prefij, source_label(), tech_to_admin()
-
-### Community 57 - "Módulo Código #57"
-Cohesion: 0.25
-Nodes (8): AVEP_nivel_1, accion, description, emoji, fuente_excel, label, rango, visible_en
-
 ### Community 58 - "Módulo Código #58"
-Cohesion: 0.25
-Nodes (8): AVEP_nivel_2, accion, description, emoji, fuente_excel, label, rango, visible_en
+Cohesion: 0.27
+Nodes (9): Path, str, fetch_gold_master_data(), _normalize_h73(), app/connectors/gold_master.py — QUIRA OS · Sprint 3 Conector institucional: Gold, Resuelve la ruta del Gold Master desde config o usa la canónica.      Prioridad:, Normaliza y tipifica los valores de H73 en el namespace del pipeline.      Devue, Lee H73_OUTPUT_API del Gold Master y devuelve métricas canónicas.      Args: (+1 more)
 
 ### Community 59 - "Módulo Código #59"
 Cohesion: 0.25
-Nodes (8): AVEP_nivel_3, accion, description, emoji, fuente_excel, label, rango, visible_en
+Nodes (9): ADR-014 BETA-CORE Roadmap Completación Montecristi, ADR-012 N1→N5 — Protocolo de Completación de Dominio, BETA-CORE — Fase Completación 12 Dominios, Registro C10 — SAT Output / Narrativa para el Alcalde, Dom11 — Ecosistema Productivo (DISABLED), GAD Municipal de Montecristi — Laboratorio Alpha, MILESTONE_002 — Gemelo Institucional Completo Montecristi, QLEP — Protocolo Legal de Extracción QUIRA (+1 more)
 
 ### Community 60 - "Módulo Código #60"
 Cohesion: 0.25
-Nodes (8): AVEP_nivel_4, accion, description, emoji, fuente_excel, label, rango, visible_en
+Nodes (8): str, ensure_sprint1_dirs(), get_pdot_path(), get_siap_path(), QUIRA OS — Configuración central Sprint 1 — Consolidación Base (Junio–Agosto 202, Crea directorios Sprint 1 si no existen., Retorna la ruta del Excel SIAP-ICPI Gold Master.     Orden de búsqueda: v5.5 can, Retorna la ruta del Excel PDOT_KB.     Orden de búsqueda:       1. data/ dentro
 
 ### Community 61 - "Módulo Código #61"
+Cohesion: 0.47
+Nodes (8): _p17_html(), _p18_html(), _p19_html(), bool, str, QUIRA OS v0.1 — P-05 Operación Técnica P-17 Ingesta · P-18 Validador · P-19 HITL, render(), page_header()
+
+### Community 62 - "Módulo Código #62"
+Cohesion: 0.33
+Nodes (8): Map, _build_folium_map(), _parroquia_row(), float, str, QUIRA OS v0.1 — P-04 GeoTwin · Territorio Mapa Folium real (Leaflet) + tabla par, render(), _tps_color()
+
+### Community 63 - "Módulo Código #63"
+Cohesion: 0.33
+Nodes (8): _atencion_card(), float, str, QUIRA OS · p_ejecutivo.py Vista Ejecutiva — Alcalde y Directivos RC-1  Responde, Sección Q1 — datos reales del último snapshot pipeline (cache 5 min)., render(), _render_q1_panel(), _semaforo_card()
+
+### Community 64 - "Módulo Código #64"
+Cohesion: 0.28
+Nodes (8): indicator_label(), str, utils/display_names.py — QUIRA OS v0.1 Capa de traducción semántica: nombres téc, Devuelve la etiqueta del indicador en el modo especificado.      Args:         a, Convierte un nombre técnico interno al equivalente en lenguaje de administración, Genera una etiqueta de fuente adecuada para mostrar en la UI.      Limpia prefij, source_label(), tech_to_admin()
+
+### Community 65 - "Módulo Código #65"
+Cohesion: 0.28
+Nodes (8): float, str, _classify_risk(), evaluate_sat(), _get_thresholds(), app/services/sat_evaluator.py — QUIRA OS · Sprint 2 Evaluador SAT — Sistema de A, Clasifica el riesgo ponderado SAT en niveles canónicos.      Umbrales (base doct, Evalúa el catálogo SAT completo contra los datos del snapshot.      Args:
+
+### Community 66 - "Módulo Código #66"
+Cohesion: 0.47
+Nodes (8): _global_badge(), _hist_icon(), _historial_html(), _integrity_html(), _pillar_card(), str, QUIRA OS · p_congruencia.py Estado de Congruencia Institucional — Sprint 2.5C  P, render()
+
+### Community 67 - "Módulo Código #67"
+Cohesion: 0.25
+Nodes (8): AVEP_nivel_1, accion, description, emoji, fuente_excel, label, rango, visible_en
+
+### Community 68 - "Módulo Código #68"
+Cohesion: 0.25
+Nodes (8): AVEP_nivel_2, accion, description, emoji, fuente_excel, label, rango, visible_en
+
+### Community 69 - "Módulo Código #69"
+Cohesion: 0.25
+Nodes (8): AVEP_nivel_3, accion, description, emoji, fuente_excel, label, rango, visible_en
+
+### Community 70 - "Módulo Código #70"
+Cohesion: 0.25
+Nodes (8): AVEP_nivel_4, accion, description, emoji, fuente_excel, label, rango, visible_en
+
+### Community 71 - "Módulo Código #71"
 Cohesion: 0.25
 Nodes (8): AVEP_nivel_5, accion, description, emoji, fuente_excel, label, rango, visible_en
 
-### Community 62 - "Módulo Código #62"
-Cohesion: 0.36
-Nodes (7): _ods_chip(), _ods_detail_row(), str, QUIRA OS v0.1 — P-11 ODS Tracker Agenda 2030 · Vinculación PDOT ↔ ODS · ICODS 87, Chip cuadrado para cada ODS en el grid., Fila detallada para los ODS críticos/parciales., render()
-
-### Community 63 - "Módulo Código #63"
+### Community 72 - "Módulo Código #72"
 Cohesion: 0.50
 Nodes (7): main(), SENTINEL RAG · sentinel_setup.py Script maestro de arranque — ejecuta Sprint 0 y, run_audit(), run_ingest(), run_tests(), verify_deps(), bool
 
-### Community 64 - "Módulo Código #64"
+### Community 73 - "Módulo Código #73"
+Cohesion: 0.36
+Nodes (7): _ods_chip(), _ods_detail_row(), str, QUIRA OS v0.1 — P-11 ODS Tracker Agenda 2030 · Vinculación PDOT ↔ ODS · ICODS 87, Chip cuadrado para cada ODS en el grid., Fila detallada para los ODS críticos/parciales., render()
+
+### Community 74 - "Módulo Código #74"
 Cohesion: 0.25
 Nodes (8): cargar_datos_rcm(), cargar_historial_snapshots(), cargar_reliability_historial(), int, str, Carga el historial de confiabilidad por fuente para un municipio.     Cache TTL:, Carga el historial de snapshots para la tabla RC-M longitudinal.     Cache TTL:, Carga la tabla RC-M canónica (fecha, ICPI, D3, SAT-IV, Riesgo ponderado).     Ca
 
-### Community 65 - "Módulo Código #65"
+### Community 75 - "Módulo Código #75"
 Cohesion: 0.25
 Nodes (7): meta, en_rango, fecha, icgit_q1, total_casos, version, resultados
 
-### Community 66 - "Módulo Código #66"
+### Community 76 - "Módulo Código #76"
 Cohesion: 0.48
 Nodes (7): ALPHA 0.9 Freeze Congelamiento Formal, ALPHA 1.0 Freeze Congelamiento Formal, Paradoja COOTAD_249 Hallazgo Fundacional Alpha 1.0, QNKC-002 Cadena Causal 9 Capas C1-C9, Mapa Ecosistema QUIRA v2.1, QUIRA Causal Model v1.0 QNKC-002, QUIRA Data Governance v1.0 Taxonomía Canónica
 
-### Community 67 - "Módulo Código #67"
-Cohesion: 0.29
-Nodes (5): int, str, fetch_rdc_cpccs(), app/connectors/cpccs.py — QUIRA OS · Sprint 1 Conector institucional: CPCCS — Re, Obtiene el bloque de Rendición de Cuentas (RdC) desde CPCCS + redes.      Args:
-
-### Community 68 - "Módulo Código #68"
-Cohesion: 0.29
-Nodes (5): int, str, fetch_dpe_data(), app/connectors/dpe.py — QUIRA OS · Sprint 1 Conector institucional: Portal Nacio, Obtiene datos presupuestarios y de cobertura desde la API DPE.      Args:
-
-### Community 69 - "Módulo Código #69"
-Cohesion: 0.29
-Nodes (5): int, str, fetch_sercop_data(), app/connectors/sercop.py — QUIRA OS · Sprint 1 Conector institucional: SERCOP —, Obtiene el estado vivo de contratación pública desde SERCOP OCDS API.      Args:
-
-### Community 70 - "Módulo Código #70"
+### Community 77 - "Módulo Código #77"
 Cohesion: 0.29
 Nodes (7): HPTM, accion, description, fuente_excel, label, nota, visible_en
 
-### Community 71 - "Módulo Código #71"
+### Community 78 - "Módulo Código #78"
 Cohesion: 0.29
 Nodes (7): ICGI_T, accion, description, fuente_excel, label, nota, visible_en
 
-### Community 72 - "Módulo Código #72"
-Cohesion: 0.43
-Nodes (6): _check_row(), _fase_card(), bool, str, QUIRA OS v0.1 — P-17 Rendición de Cuentas RDC 2026 · CPCCS · Checklist preparaci, render()
+### Community 79 - "Módulo Código #79"
+Cohesion: 0.48
+Nodes (6): _cong_card(), _nodo_card(), float, str, QUIRA OS v0.1 — P-03 Congruencias · HPT-M Fiel al DEMO.html P-05 · st.components, render()
 
-### Community 73 - "Módulo Código #73"
-Cohesion: 0.43
-Nodes (6): str, QUIRA OS v0.1 — P-09 Alertas SAT Preventivas Sistema de Alertas Tempranas · SIAP, Tarjeta HTML para una SAT., render(), _riesgo_card(), _sat_card()
-
-### Community 74 - "Módulo Código #74"
+### Community 80 - "Módulo Código #80"
 Cohesion: 0.52
 Nodes (6): _badge(), _ejemplos_html(), _patron_html(), str, QUIRA OS · p_aprendizaje.py Aprendizaje Institucional Trazable — Sprint 2.8A  Mu, render()
 
-### Community 75 - "Módulo Código #75"
-Cohesion: 0.33
-Nodes (6): COOTAD, accion, description, fuente_excel, label, visible_en
-
-### Community 76 - "Módulo Código #76"
-Cohesion: 0.33
-Nodes (6): MFN, accion, description, fuente_excel, label, visible_en
-
-### Community 77 - "Módulo Código #77"
-Cohesion: 0.33
-Nodes (6): PDOT, accion, description, fuente_excel, label, visible_en
-
-### Community 78 - "Módulo Código #78"
-Cohesion: 0.33
-Nodes (6): SAT, accion, description, fuente_excel, label, visible_en
-
-### Community 79 - "Módulo Código #79"
-Cohesion: 0.33
-Nodes (6): TAC, accion, description, fuente_excel, label, visible_en
-
-### Community 80 - "Módulo Código #80"
-Cohesion: 0.33
-Nodes (6): AVEP, accion, description, fuente_excel, label, visible_en
-
 ### Community 81 - "Módulo Código #81"
-Cohesion: 0.33
-Nodes (6): Brecha_ICPI_SIGAD, accion, description, fuente_excel, label, visible_en
+Cohesion: 0.29
+Nodes (5): int, str, fetch_rdc_cpccs(), app/connectors/cpccs.py — QUIRA OS · Sprint 1 Conector institucional: CPCCS — Re, Obtiene el bloque de Rendición de Cuentas (RdC) desde CPCCS + redes.      Args:
 
 ### Community 82 - "Módulo Código #82"
-Cohesion: 0.33
-Nodes (6): Ci, accion, description, fuente_excel, label, visible_en
+Cohesion: 0.29
+Nodes (5): int, str, fetch_dpe_data(), app/connectors/dpe.py — QUIRA OS · Sprint 1 Conector institucional: Portal Nacio, Obtiene datos presupuestarios y de cobertura desde la API DPE.      Args:
 
 ### Community 83 - "Módulo Código #83"
-Cohesion: 0.33
-Nodes (6): CPCCS, accion, description, fuente_excel, label, visible_en
+Cohesion: 0.29
+Nodes (5): int, str, fetch_sercop_data(), app/connectors/sercop.py — QUIRA OS · Sprint 1 Conector institucional: SERCOP —, Obtiene el estado vivo de contratación pública desde SERCOP OCDS API.      Args:
 
 ### Community 84 - "Módulo Código #84"
 Cohesion: 0.33
-Nodes (6): eSIGEF, accion, description, fuente_excel, label, visible_en
+Nodes (6): ICODS, accion, description, fuente_excel, label, visible_en
 
 ### Community 85 - "Módulo Código #85"
 Cohesion: 0.33
-Nodes (6): ICM, accion, description, fuente_excel, label, visible_en
+Nodes (6): IGP, accion, description, fuente_excel, label, visible_en
 
 ### Community 86 - "Módulo Código #86"
 Cohesion: 0.33
-Nodes (6): ICODS, accion, description, fuente_excel, label, visible_en
+Nodes (6): SAT_II, accion, description, fuente_excel, label, visible_en
 
 ### Community 87 - "Módulo Código #87"
 Cohesion: 0.33
-Nodes (6): ICPI, accion, description, fuente_excel, label, visible_en
+Nodes (6): SIGAD, accion, description, fuente_excel, label, visible_en
 
 ### Community 88 - "Módulo Código #88"
 Cohesion: 0.33
-Nodes (6): ICS, accion, description, fuente_excel, label, visible_en
+Nodes (6): AVEP, accion, description, fuente_excel, label, visible_en
 
 ### Community 89 - "Módulo Código #89"
 Cohesion: 0.33
-Nodes (6): IED, accion, description, fuente_excel, label, visible_en
+Nodes (6): Brecha_ICPI_SIGAD, accion, description, fuente_excel, label, visible_en
 
 ### Community 90 - "Módulo Código #90"
 Cohesion: 0.33
-Nodes (6): IEF, accion, description, fuente_excel, label, visible_en
+Nodes (6): Ci, accion, description, fuente_excel, label, visible_en
 
 ### Community 91 - "Módulo Código #91"
 Cohesion: 0.33
-Nodes (6): IET, accion, description, fuente_excel, label, visible_en
+Nodes (6): COOTAD, accion, description, fuente_excel, label, visible_en
 
 ### Community 92 - "Módulo Código #92"
 Cohesion: 0.33
-Nodes (6): IFE, accion, description, fuente_excel, label, visible_en
+Nodes (6): CPCCS, accion, description, fuente_excel, label, visible_en
 
 ### Community 93 - "Módulo Código #93"
 Cohesion: 0.33
-Nodes (6): IGP, accion, description, fuente_excel, label, visible_en
+Nodes (6): eSIGEF, accion, description, fuente_excel, label, visible_en
 
 ### Community 94 - "Módulo Código #94"
 Cohesion: 0.33
-Nodes (6): IOC, accion, description, fuente_excel, label, visible_en
+Nodes (6): ICM, accion, description, fuente_excel, label, visible_en
 
 ### Community 95 - "Módulo Código #95"
 Cohesion: 0.33
-Nodes (6): IPE, accion, description, fuente_excel, label, visible_en
+Nodes (6): ICPI, accion, description, fuente_excel, label, visible_en
 
 ### Community 96 - "Módulo Código #96"
 Cohesion: 0.33
-Nodes (6): ISP, accion, description, fuente_excel, label, visible_en
+Nodes (6): ICS, accion, description, fuente_excel, label, visible_en
 
 ### Community 97 - "Módulo Código #97"
 Cohesion: 0.33
-Nodes (6): ITAM, accion, description, fuente_excel, label, visible_en
+Nodes (6): IED, accion, description, fuente_excel, label, visible_en
 
 ### Community 98 - "Módulo Código #98"
 Cohesion: 0.33
-Nodes (6): LOTAIP, accion, description, fuente_excel, label, visible_en
+Nodes (6): IEF, accion, description, fuente_excel, label, visible_en
 
 ### Community 99 - "Módulo Código #99"
 Cohesion: 0.33
-Nodes (6): _meta, acciones, fecha, fuente_maestra, regla, version
+Nodes (6): IET, accion, description, fuente_excel, label, visible_en
 
 ### Community 100 - "Módulo Código #100"
 Cohesion: 0.33
-Nodes (6): MMP, accion, description, fuente_excel, label, visible_en
+Nodes (6): IFE, accion, description, fuente_excel, label, visible_en
 
 ### Community 101 - "Módulo Código #101"
 Cohesion: 0.33
-Nodes (6): PAC, accion, description, fuente_excel, label, visible_en
+Nodes (6): IOC, accion, description, fuente_excel, label, visible_en
 
 ### Community 102 - "Módulo Código #102"
 Cohesion: 0.33
-Nodes (6): POA, accion, description, fuente_excel, label, visible_en
+Nodes (6): IPE, accion, description, fuente_excel, label, visible_en
 
 ### Community 103 - "Módulo Código #103"
 Cohesion: 0.33
-Nodes (6): PSG, accion, description, fuente_excel, label, visible_en
+Nodes (6): ISP, accion, description, fuente_excel, label, visible_en
 
 ### Community 104 - "Módulo Código #104"
 Cohesion: 0.33
-Nodes (6): Q1, accion, description, fuente_excel, label, visible_en
+Nodes (6): ITAM, accion, description, fuente_excel, label, visible_en
 
 ### Community 105 - "Módulo Código #105"
 Cohesion: 0.33
-Nodes (6): Q2, accion, description, fuente_excel, label, visible_en
+Nodes (6): LOTAIP, accion, description, fuente_excel, label, visible_en
 
 ### Community 106 - "Módulo Código #106"
 Cohesion: 0.33
-Nodes (6): Q3, accion, description, fuente_excel, label, visible_en
+Nodes (6): _meta, acciones, fecha, fuente_maestra, regla, version
 
 ### Community 107 - "Módulo Código #107"
 Cohesion: 0.33
-Nodes (6): SAT_0, accion, description, fuente_excel, label, visible_en
+Nodes (6): MFN, accion, description, fuente_excel, label, visible_en
 
 ### Community 108 - "Módulo Código #108"
 Cohesion: 0.33
-Nodes (6): SAT_I, accion, description, fuente_excel, label, visible_en
+Nodes (6): MMP, accion, description, fuente_excel, label, visible_en
 
 ### Community 109 - "Módulo Código #109"
 Cohesion: 0.33
-Nodes (6): SAT_II, accion, description, fuente_excel, label, visible_en
+Nodes (6): PAC, accion, description, fuente_excel, label, visible_en
 
 ### Community 110 - "Módulo Código #110"
 Cohesion: 0.33
-Nodes (6): SAT_III, accion, description, fuente_excel, label, visible_en
+Nodes (6): PDOT, accion, description, fuente_excel, label, visible_en
 
 ### Community 111 - "Módulo Código #111"
 Cohesion: 0.33
-Nodes (6): SAT_IV, accion, description, fuente_excel, label, visible_en
+Nodes (6): POA, accion, description, fuente_excel, label, visible_en
 
 ### Community 112 - "Módulo Código #112"
 Cohesion: 0.33
-Nodes (6): SAT_V, accion, description, fuente_excel, label, visible_en
+Nodes (6): PSG, accion, description, fuente_excel, label, visible_en
 
 ### Community 113 - "Módulo Código #113"
 Cohesion: 0.33
-Nodes (6): SAT_VI, accion, description, fuente_excel, label, visible_en
+Nodes (6): Q1, accion, description, fuente_excel, label, visible_en
 
 ### Community 114 - "Módulo Código #114"
 Cohesion: 0.33
-Nodes (6): SERCOP, accion, description, fuente_excel, label, visible_en
+Nodes (6): Q2, accion, description, fuente_excel, label, visible_en
 
 ### Community 115 - "Módulo Código #115"
 Cohesion: 0.33
-Nodes (6): SIGAD, accion, description, fuente_excel, label, visible_en
+Nodes (6): Q3, accion, description, fuente_excel, label, visible_en
 
 ### Community 116 - "Módulo Código #116"
 Cohesion: 0.33
-Nodes (6): SNP, accion, description, fuente_excel, label, visible_en
+Nodes (6): SAT, accion, description, fuente_excel, label, visible_en
 
 ### Community 117 - "Módulo Código #117"
 Cohesion: 0.33
-Nodes (6): Ti, accion, description, fuente_excel, label, visible_en
+Nodes (6): SAT_0, accion, description, fuente_excel, label, visible_en
 
 ### Community 118 - "Módulo Código #118"
 Cohesion: 0.33
-Nodes (6): Vi, accion, description, fuente_excel, label, visible_en
+Nodes (6): SAT_I, accion, description, fuente_excel, label, visible_en
 
 ### Community 119 - "Módulo Código #119"
+Cohesion: 0.33
+Nodes (6): SAT_III, accion, description, fuente_excel, label, visible_en
+
+### Community 120 - "Módulo Código #120"
+Cohesion: 0.33
+Nodes (6): SAT_IV, accion, description, fuente_excel, label, visible_en
+
+### Community 121 - "Módulo Código #121"
+Cohesion: 0.33
+Nodes (6): SAT_V, accion, description, fuente_excel, label, visible_en
+
+### Community 122 - "Módulo Código #122"
+Cohesion: 0.33
+Nodes (6): SAT_VI, accion, description, fuente_excel, label, visible_en
+
+### Community 123 - "Módulo Código #123"
+Cohesion: 0.33
+Nodes (6): SERCOP, accion, description, fuente_excel, label, visible_en
+
+### Community 124 - "Módulo Código #124"
+Cohesion: 0.33
+Nodes (6): SNP, accion, description, fuente_excel, label, visible_en
+
+### Community 125 - "Módulo Código #125"
+Cohesion: 0.33
+Nodes (6): TAC, accion, description, fuente_excel, label, visible_en
+
+### Community 126 - "Módulo Código #126"
+Cohesion: 0.33
+Nodes (6): Ti, accion, description, fuente_excel, label, visible_en
+
+### Community 127 - "Módulo Código #127"
+Cohesion: 0.33
+Nodes (6): Vi, accion, description, fuente_excel, label, visible_en
+
+### Community 128 - "Módulo Código #128"
 Cohesion: 0.53
 Nodes (5): _mecanism_row(), _parroquia_participacion(), str, QUIRA OS v0.1 — P-16 Confianza Ciudadana IGP 27.98% · Participación parroquial ·, render()
 
-### Community 120 - "Módulo Código #120"
-Cohesion: 0.40
-Nodes (5): _dir_row(), int, str, QUIRA OS v0.1 — P-14 Eficiencia por Dirección IED 33.99% · 12 Direcciones GAD ·, render()
-
-### Community 121 - "Módulo Código #121"
-Cohesion: 0.40
-Nodes (5): _meta_row(), str, QUIRA OS v0.1 — P-03 Metas PDOT Trazabilidad Promesa → Meta → Ejecución · Fiel a, Fila HTML para una meta PDOT., render()
-
-### Community 122 - "Módulo Código #122"
-Cohesion: 0.40
-Nodes (4): _terminos_ocultar, accion, descripcion, lista
-
-### Community 123 - "Módulo Código #123"
-Cohesion: 0.40
-Nodes (5): computedHash, skillPath, source, sourceType, design-an-interface
-
-### Community 124 - "Módulo Código #124"
-Cohesion: 0.40
-Nodes (5): computedHash, skillPath, source, sourceType, grill-me
-
-### Community 125 - "Módulo Código #125"
-Cohesion: 0.40
-Nodes (5): computedHash, skillPath, source, sourceType, obsidian-vault
-
-### Community 126 - "Módulo Código #126"
-Cohesion: 0.40
-Nodes (5): computedHash, skillPath, source, sourceType, request-refactor-plan
-
-### Community 127 - "Módulo Código #127"
-Cohesion: 0.40
-Nodes (5): computedHash, skillPath, source, sourceType, review
-
-### Community 128 - "Módulo Código #128"
-Cohesion: 0.40
-Nodes (5): computedHash, skillPath, source, sourceType, setup-pre-commit
-
 ### Community 129 - "Módulo Código #129"
 Cohesion: 0.40
-Nodes (5): computedHash, skillPath, source, sourceType, caveman
+Nodes (5): CPCCS — Consejo de Participación Ciudadana (RdC verificación), LOTAIP — Ley Orgánica de Transparencia y Acceso a la Información Pública, RC-SCOUT — Módulo de análisis independiente de municipios, SERCOP — Contratación Pública (PAC + procesos OCDS), RC-3 Fuentes de Datos Independientes para Análisis Municipal
 
 ### Community 130 - "Módulo Código #130"
 Cohesion: 0.40
-Nodes (5): computedHash, skillPath, source, sourceType, diagnose
+Nodes (4): _terminos_ocultar, accion, descripcion, lista
 
 ### Community 131 - "Módulo Código #131"
 Cohesion: 0.40
-Nodes (5): computedHash, skillPath, source, sourceType, edit-article
+Nodes (5): computedHash, skillPath, source, sourceType, design-an-interface
 
 ### Community 132 - "Módulo Código #132"
 Cohesion: 0.40
-Nodes (5): computedHash, skillPath, source, sourceType, git-guardrails-claude-code
+Nodes (5): computedHash, skillPath, source, sourceType, grill-me
 
 ### Community 133 - "Módulo Código #133"
 Cohesion: 0.40
-Nodes (5): computedHash, skillPath, source, sourceType, grill-with-docs
+Nodes (5): computedHash, skillPath, source, sourceType, obsidian-vault
 
 ### Community 134 - "Módulo Código #134"
 Cohesion: 0.40
-Nodes (5): computedHash, skillPath, source, sourceType, handoff
+Nodes (5): computedHash, skillPath, source, sourceType, request-refactor-plan
 
 ### Community 135 - "Módulo Código #135"
 Cohesion: 0.40
-Nodes (5): computedHash, skillPath, source, sourceType, improve-codebase-architecture
+Nodes (5): computedHash, skillPath, source, sourceType, review
 
 ### Community 136 - "Módulo Código #136"
 Cohesion: 0.40
-Nodes (5): computedHash, skillPath, source, sourceType, migrate-to-shoehorn
+Nodes (5): computedHash, skillPath, source, sourceType, setup-pre-commit
 
 ### Community 137 - "Módulo Código #137"
 Cohesion: 0.40
-Nodes (5): computedHash, skillPath, source, sourceType, prototype
+Nodes (5): computedHash, skillPath, source, sourceType, caveman
 
 ### Community 138 - "Módulo Código #138"
 Cohesion: 0.40
-Nodes (5): computedHash, skillPath, source, sourceType, qa
+Nodes (5): computedHash, skillPath, source, sourceType, diagnose
 
 ### Community 139 - "Módulo Código #139"
 Cohesion: 0.40
-Nodes (5): computedHash, skillPath, source, sourceType, scaffold-exercises
+Nodes (5): computedHash, skillPath, source, sourceType, edit-article
 
 ### Community 140 - "Módulo Código #140"
 Cohesion: 0.40
-Nodes (5): computedHash, skillPath, source, sourceType, setup-matt-pocock-skills
+Nodes (5): computedHash, skillPath, source, sourceType, git-guardrails-claude-code
 
 ### Community 141 - "Módulo Código #141"
 Cohesion: 0.40
-Nodes (5): tdd, computedHash, skillPath, source, sourceType
+Nodes (5): computedHash, skillPath, source, sourceType, grill-with-docs
 
 ### Community 142 - "Módulo Código #142"
 Cohesion: 0.40
-Nodes (5): teach, computedHash, skillPath, source, sourceType
+Nodes (5): computedHash, skillPath, source, sourceType, handoff
 
 ### Community 143 - "Módulo Código #143"
 Cohesion: 0.40
-Nodes (5): to-issues, computedHash, skillPath, source, sourceType
+Nodes (5): computedHash, skillPath, source, sourceType, improve-codebase-architecture
 
 ### Community 144 - "Módulo Código #144"
 Cohesion: 0.40
-Nodes (5): to-prd, computedHash, skillPath, source, sourceType
+Nodes (5): computedHash, skillPath, source, sourceType, migrate-to-shoehorn
 
 ### Community 145 - "Módulo Código #145"
 Cohesion: 0.40
-Nodes (5): ubiquitous-language, computedHash, skillPath, source, sourceType
+Nodes (5): computedHash, skillPath, source, sourceType, prototype
 
 ### Community 146 - "Módulo Código #146"
 Cohesion: 0.40
-Nodes (5): write-a-skill, computedHash, skillPath, source, sourceType
+Nodes (5): computedHash, skillPath, source, sourceType, qa
 
 ### Community 147 - "Módulo Código #147"
 Cohesion: 0.40
-Nodes (5): writing-beats, computedHash, skillPath, source, sourceType
+Nodes (5): computedHash, skillPath, source, sourceType, scaffold-exercises
 
 ### Community 148 - "Módulo Código #148"
 Cohesion: 0.40
-Nodes (5): writing-fragments, computedHash, skillPath, source, sourceType
+Nodes (5): computedHash, skillPath, source, sourceType, setup-matt-pocock-skills
 
 ### Community 149 - "Módulo Código #149"
 Cohesion: 0.40
-Nodes (5): writing-shape, computedHash, skillPath, source, sourceType
+Nodes (5): tdd, computedHash, skillPath, source, sourceType
 
 ### Community 150 - "Módulo Código #150"
 Cohesion: 0.40
-Nodes (5): zoom-out, computedHash, skillPath, source, sourceType
+Nodes (5): teach, computedHash, skillPath, source, sourceType
 
 ### Community 151 - "Módulo Código #151"
 Cohesion: 0.40
-Nodes (5): triage, computedHash, skillPath, source, sourceType
+Nodes (5): to-issues, computedHash, skillPath, source, sourceType
 
 ### Community 152 - "Módulo Código #152"
+Cohesion: 0.40
+Nodes (5): to-prd, computedHash, skillPath, source, sourceType
+
+### Community 153 - "Módulo Código #153"
+Cohesion: 0.40
+Nodes (5): ubiquitous-language, computedHash, skillPath, source, sourceType
+
+### Community 154 - "Módulo Código #154"
+Cohesion: 0.40
+Nodes (5): write-a-skill, computedHash, skillPath, source, sourceType
+
+### Community 155 - "Módulo Código #155"
+Cohesion: 0.40
+Nodes (5): writing-beats, computedHash, skillPath, source, sourceType
+
+### Community 156 - "Módulo Código #156"
+Cohesion: 0.40
+Nodes (5): writing-fragments, computedHash, skillPath, source, sourceType
+
+### Community 157 - "Módulo Código #157"
+Cohesion: 0.40
+Nodes (5): writing-shape, computedHash, skillPath, source, sourceType
+
+### Community 158 - "Módulo Código #158"
+Cohesion: 0.40
+Nodes (5): zoom-out, computedHash, skillPath, source, sourceType
+
+### Community 159 - "Módulo Código #159"
+Cohesion: 0.40
+Nodes (5): triage, computedHash, skillPath, source, sourceType
+
+### Community 160 - "Módulo Código #160"
 Cohesion: 0.50
 Nodes (3): configurations, inputs, version
 
@@ -850,12 +890,12 @@ Nodes (3): configurations, inputs, version
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `is_tecnico()` connect `Situación Ejecutiva & Cooperación` to `Vista Ejecutiva + QUIRA IA`, `GOV Entry Layer (p0 + env_gov)`, `Neo4j QTMP Connector`, `Holding Municipal Dashboard`, `Dashboard Controller`, `GOV Router (env_gov.py)`, `Sentinel Monitoring`, `Módulo Código #17`, `Módulo Código #24`, `Módulo Código #26`, `Módulo Código #33`, `Módulo Código #34`, `Módulo Código #43`, `Módulo Código #44`, `Módulo Código #48`, `Módulo Código #51`, `Módulo Código #54`, `Módulo Código #62`, `Módulo Código #72`, `Módulo Código #73`, `Módulo Código #119`, `Módulo Código #120`, `Módulo Código #121`?**
-  _High betweenness centrality (0.070) - this node is a cross-community bridge._
-- **Why does `datetime` connect `Módulo Código #23` to `Motor Longitudinal & Análisis Temporal`, `Autenticación & Control de Acceso`, `Módulo Código #67`, `Módulo Código #68`, `Módulo Código #69`, `GOV Entry Layer (p0 + env_gov)`, `Módulo Código #41`, `Módulo Código #74`, `Módulo Código #17`, `Módulo Código #18`, `Módulo Código #53`?**
-  _High betweenness centrality (0.039) - this node is a cross-community bridge._
-- **Why does `cargar_gm_snapshot()` connect `GOV Entry Layer (p0 + env_gov)` to `Módulo Código #17`, `GOV Router (env_gov.py)`, `Ambiente OPS`, `Vista Ejecutiva + QUIRA IA`?**
-  _High betweenness centrality (0.031) - this node is a cross-community bridge._
+- **Why does `is_tecnico()` connect `Snapshot Diff & Comparador` to `Módulo Código #128`, `Motor Longitudinal & Análisis Temporal`, `ADRs Constitucionales 016-019`, `Neo4j QTMP Connector`, `Configuración VS Code`, `GOV Router (env_gov.py)`, `Sentinel Monitoring`, `Ambiente OPS`, `Módulo Código #15`, `Módulo Código #25`, `Módulo Código #30`, `Módulo Código #35`, `Módulo Código #51`, `Módulo Código #54`, `Módulo Código #55`, `Módulo Código #61`, `Módulo Código #62`, `Módulo Código #73`, `Módulo Código #79`?**
+  _High betweenness centrality (0.068) - this node is a cross-community bridge._
+- **Why does `datetime` connect `Módulo Código #27` to `Módulo Código #65`, `Autenticación & Control de Acceso`, `Vista Ejecutiva + QUIRA IA`, `Dashboard Controller`, `Ambiente OPS`, `Módulo Código #47`, `Módulo Código #80`, `Módulo Código #81`, `Módulo Código #82`, `Módulo Código #83`, `Módulo Código #63`?**
+  _High betweenness centrality (0.038) - this node is a cross-community bridge._
+- **Why does `cargar_gm_snapshot()` connect `Módulo Código #35` to `Motor Longitudinal & Análisis Temporal`, `Módulo Código #37`, `Sentinel Monitoring`, `Ambiente OPS`, `Módulo Código #16`, `Módulo Código #28`, `Módulo Código #63`?**
+  _High betweenness centrality (0.030) - this node is a cross-community bridge._
 - **Are the 24 inferred relationships involving `page_header()` (e.g. with `render()` and `render()`) actually correct?**
   _`page_header()` has 24 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 18 inferred relationships involving `render_page()` (e.g. with `render()` and `render()`) actually correct?**
@@ -863,4 +903,4 @@ _Questions this graph is uniquely positioned to answer:_
 - **What connects `str`, `QUIRA Intelligence — Entry Point · 2026-05-27 Infraestructura de monitoreo insti`, `QUIRA OS — Configuración central Sprint 1 — Consolidación Base (Junio–Agosto 202` to the rest of the system?**
   _890 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Motor Longitudinal & Análisis Temporal` be split into smaller, more focused modules?**
-  _Cohesion score 0.050580997949419004 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.05365296803652968 - nodes in this community are weakly interconnected._

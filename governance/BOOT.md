@@ -20,8 +20,10 @@
 
 ## AHORA (actualizar al cierre)
 - **Sprint**: Sprint A — Contexto Cantonal (ficha viva Montecristi · pantalla base)
-- **Grafo QUIRA**: `graphify-out/graph.json` ✅ — 1889 nodos · 3099 aristas · MCP activo
-    Actualizar con `/graphify . --update` al cerrar cada sprint
+- **Grafo QUIRA v2**: `graphify-out/graph.json` ✅ — 1938 nodos · 3238 aristas · MCP activo
+    Incluye: ADRs 001-023 · governance · código Python · Gold Master schema · Vault Obsidian 00_CORE + TGI parroquias
+    Gold Master TGI = 5to nodo más conectado (degree 26) — hub metodológico confirmado
+    Próxima actualización: `/graphify . --update` al cerrar Sprint A
 - **Último commit**: `106359a` — CI health-check · tag `boot-estable-v1` creado
 - **Gate 6.6 ✅ COMPLETO**: 51/51 siglas MCR · 0 huérfanos · ICPI=69.93% explicable
 - **Corpus**: ~13,509 chunks · 65 tablas LOTAIP · Neo4j: 38/58
