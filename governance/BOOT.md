@@ -19,20 +19,23 @@
 **MATRIZ_CANONICA** del Excel = ADN compartido. Sin ella: dos mundos. Con ella: un sistema.
 
 ## AHORA (actualizar al cierre)
-- **Sprint**: Gate 6.6 — Bridge Corpus → Motor ICPI
-- **Último commit**: `106359a` — CI health-check (guardián arranque liviano + anti-secretos)
-- **Gate 6.5 ✅ COMPLETO**: 13,509 chunks · 65 tablas · OBS-008/009 · ADR-022/023
-- **Corpus**: ~13,509 chunks texto · 65+ tablas LOTAIP/cédulas · Neo4j: 38/58
-- **Gold Master leído completo** (120 hojas): ICPI-2025=69.93% · TGI=66.79% · D3=59.85%(gap) · D4=44.79%(crítico)
+- **Sprint**: Sprint A — Contexto Cantonal (ficha viva Montecristi · pantalla base)
+- **Grafo QUIRA**: `graphify-out/graph.json` ✅ — 1889 nodos · 3099 aristas · MCP activo
+    Actualizar con `/graphify . --update` al cerrar cada sprint
+- **Último commit**: `106359a` — CI health-check · tag `boot-estable-v1` creado
+- **Gate 6.6 ✅ COMPLETO**: 51/51 siglas MCR · 0 huérfanos · ICPI=69.93% explicable
+- **Corpus**: ~13,509 chunks · 65 tablas LOTAIP · Neo4j: 38/58
 - **Connector LISTO**: `app/connectors/gold_master.py` → H73_OUTPUT_API
-- **Gate 6.6 ✅ COMPLETO** (Sprint Ontología Territorial):
-    - 6.6A: `corpus_mnt_mapping` · 51/51 siglas MCR → MNT_UUID · 0 huérfanos
-    - 6.6B: Dom01-D12 · 51/51 (100%) · D10=9 · D04=9 · D12=9 · D03=8
-    - 6.6C: `explainability_report.py` — "¿Por qué ICPI=69.93%?" → respuesta automática
-- **Siguiente**: **GATE-007** — Municipio #2 (Javo elige: Portoviejo/Manta/Jipijapa/Santa Ana/Chone)
-    Ver `docs/adr/GATE-007_Validacion_Externa_Municipio2.md`
-    Objetivo: replicar el pipeline. Si funciona: QUIRA = solución para 221 GAD del Ecuador.
-- **Ver**: `docs/architecture/BRIDGE_EXCEL_CORPUS.md` · `docs/adr/ADR-023`
+- **GATE-007 🧊 CONGELADO** — no cancelado · Manta elegida · retomar post-Montecristi v1.0
+- **DECISIÓN ESTRATÉGICA (2026-06-03)**: QUIRA = familia de productos
+    - QUIRA Institucional (70% sistema, 20% producto) → PRIORIDAD: invertir relación
+    - QUIRA Operaciones → módulo técnico municipal (UI sobre pipeline) → sprint E
+    - QUIRA Ciudadana → post Institucional+Operaciones · hereda ambos
+    - QUIRA Impact / Cooperación / Economic → motor financiero post-Montecristi v1.0
+- **Roadmap activo**: A→B→C→D→E→F (Montecristi v1.0) → Gate 7
+    A: Contexto Cantonal · B: 12 Dominios (puertas) · C: Dashboard+IA analista
+    D: GeoTwin conectado · E: QUIRA Operaciones · F: v1.0 completo
+- **UI norte**: institucional · premium · territorial · ecuatoriana (NO SaaS genérico)
 - **ADR-019 STRONGLY_SUPPORTED · ADR-022 SUPPORTED · ADR-023 ACTIVO**
 
 ## REGLAS DE ORO (inviolables — el resto en CLAUDE.md)

@@ -1,0 +1,13 @@
+{
+  "runs": [
+    {
+      "date": "2026-06-04T00:45:31.338201+00:00",
+      "input_tokens": 493021,
+      "output_tokens": 0,
+      "files": 207,
+      "note": "Build inicial grafo QUIRA — 4 agentes paralelos + AST"
+    }
+  ],
+  "total_input_tokens": 493021,
+  "total_output_tokens": 0
+}

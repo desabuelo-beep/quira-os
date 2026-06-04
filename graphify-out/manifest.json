@@ -1,0 +1,1037 @@
+{
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\app.py": {
+    "mtime": 1780102331.707402,
+    "ast_hash": "62c536d49d10d32410dee16fad8889ac",
+    "semantic_hash": "62c536d49d10d32410dee16fad8889ac"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\config.py": {
+    "mtime": 1779842415.663833,
+    "ast_hash": "cbc2f2e2d6b1e8f0ecc093b8317db23f",
+    "semantic_hash": "cbc2f2e2d6b1e8f0ecc093b8317db23f"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\sentinel_setup.py": {
+    "mtime": 1779059106.1610572,
+    "ast_hash": "cb91fc8edd105d5e028780807c41dcbc",
+    "semantic_hash": "cb91fc8edd105d5e028780807c41dcbc"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\skills-lock.json": {
+    "mtime": 1780288521.3267863,
+    "ast_hash": "5cb0734c4da0d8a875ba9585e413e738",
+    "semantic_hash": "5cb0734c4da0d8a875ba9585e413e738"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\.claude\\settings.json": {
+    "mtime": 1780520346.5027955,
+    "ast_hash": "247a73a3e5ef36672ae01253386a74cc",
+    "semantic_hash": "247a73a3e5ef36672ae01253386a74cc"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\.claude\\settings.local.json": {
+    "mtime": 1780532902.9022832,
+    "ast_hash": "3435b4f446c53a8cebf61ea75412f169",
+    "semantic_hash": "3435b4f446c53a8cebf61ea75412f169"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\.claude\\setup-db-env.py": {
+    "mtime": 1780520318.130159,
+    "ast_hash": "ce162237a67f9dcc53302d734df05b26",
+    "semantic_hash": "ce162237a67f9dcc53302d734df05b26"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\.devcontainer\\devcontainer.json": {
+    "mtime": 1778734432.290078,
+    "ast_hash": "fb2ac9a154553d42c8a4a2afdb9d9447",
+    "semantic_hash": "fb2ac9a154553d42c8a4a2afdb9d9447"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\.vscode\\extensions.json": {
+    "mtime": 1780520523.418288,
+    "ast_hash": "1f43040c279577bc9b566eef75c4eeb6",
+    "semantic_hash": "1f43040c279577bc9b566eef75c4eeb6"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\.vscode\\launch.json": {
+    "mtime": 1780520540.9979887,
+    "ast_hash": "1aa4e2c5e2cdf98911df047aeb592ce8",
+    "semantic_hash": "1aa4e2c5e2cdf98911df047aeb592ce8"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\.vscode\\settings.json": {
+    "mtime": 1780520515.0906174,
+    "ast_hash": "3687474f41dda9e45070821720f39caf",
+    "semantic_hash": "3687474f41dda9e45070821720f39caf"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\.vscode\\tasks.json": {
+    "mtime": 1780520555.576846,
+    "ast_hash": "cff522fdd5f00e5f229ecc0eb7cd7f00",
+    "semantic_hash": "cff522fdd5f00e5f229ecc0eb7cd7f00"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\app\\__init__.py": {
+    "mtime": 1779737456.1008277,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\app\\connectors\\cpccs.py": {
+    "mtime": 1779737580.5840821,
+    "ast_hash": "034a1d7b97e1e2ec623b55f0758f2a8d",
+    "semantic_hash": "034a1d7b97e1e2ec623b55f0758f2a8d"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\app\\connectors\\dpe.py": {
+    "mtime": 1779737548.8823693,
+    "ast_hash": "5b714a6dfd70599c7fbdd65f7ec189b0",
+    "semantic_hash": "5b714a6dfd70599c7fbdd65f7ec189b0"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\app\\connectors\\gold_master.py": {
+    "mtime": 1779842423.3454661,
+    "ast_hash": "2f63fa15069b67fae66399532e2d070e",
+    "semantic_hash": "2f63fa15069b67fae66399532e2d070e"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\app\\connectors\\neo4j_qtmp.py": {
+    "mtime": 1780347941.434882,
+    "ast_hash": "05001e5c88ab0d1c78206e2d7152d8dd",
+    "semantic_hash": "05001e5c88ab0d1c78206e2d7152d8dd"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\app\\connectors\\sercop.py": {
+    "mtime": 1779737563.7695808,
+    "ast_hash": "40c631a0f542b03d9f070c8d74458230",
+    "semantic_hash": "40c631a0f542b03d9f070c8d74458230"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\app\\connectors\\__init__.py": {
+    "mtime": 1779737456.1501403,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\app\\models\\__init__.py": {
+    "mtime": 1779737456.2599041,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\app\\pipelines\\snapshot_pipeline.py": {
+    "mtime": 1779842434.0198426,
+    "ast_hash": "5ac94053104556db3b2744aa1d17ddc5",
+    "semantic_hash": "5ac94053104556db3b2744aa1d17ddc5"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\app\\pipelines\\__init__.py": {
+    "mtime": 1779737456.1847394,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\app\\services\\comparador_snapshots.py": {
+    "mtime": 1779776010.21804,
+    "ast_hash": "842e71d3416be9e54266490b0e0da3b2",
+    "semantic_hash": "842e71d3416be9e54266490b0e0da3b2"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\app\\services\\gobernanza_gold_master.py": {
+    "mtime": 1779776016.07512,
+    "ast_hash": "5aacadc73a881cc3a34708437df8b98a",
+    "semantic_hash": "5aacadc73a881cc3a34708437df8b98a"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\app\\services\\gold_master_governance.py": {
+    "mtime": 1779842569.7009943,
+    "ast_hash": "a197a067f535860885bd723c7079507d",
+    "semantic_hash": "a197a067f535860885bd723c7079507d"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\app\\services\\longitudinal_engine.py": {
+    "mtime": 1779774496.35999,
+    "ast_hash": "08b1b9d072650beea6bce438d7c32cfb",
+    "semantic_hash": "08b1b9d072650beea6bce438d7c32cfb"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\app\\services\\rastreador_confiabilidad.py": {
+    "mtime": 1779776043.26067,
+    "ast_hash": "36d3fc00068313b8f7cd68f2bd40ffce",
+    "semantic_hash": "36d3fc00068313b8f7cd68f2bd40ffce"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\app\\services\\reliability_tracker.py": {
+    "mtime": 1779764643.689012,
+    "ast_hash": "8182279efc8880dc6c760732e0bca95c",
+    "semantic_hash": "8182279efc8880dc6c760732e0bca95c"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\app\\services\\sat_evaluator.py": {
+    "mtime": 1779742438.4287133,
+    "ast_hash": "66f56ed4dfcefe3e1faa05a77f16bff3",
+    "semantic_hash": "66f56ed4dfcefe3e1faa05a77f16bff3"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\app\\services\\snapshot_diff.py": {
+    "mtime": 1779777744.6318622,
+    "ast_hash": "c7e6b0f105136023ec8f737388111265",
+    "semantic_hash": "c7e6b0f105136023ec8f737388111265"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\app\\services\\__init__.py": {
+    "mtime": 1779737456.2259374,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\app\\utils\\__init__.py": {
+    "mtime": 1779737456.3393917,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\app\\views\\__init__.py": {
+    "mtime": 1779737456.306499,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\auth\\login.py": {
+    "mtime": 1778888985.6942623,
+    "ast_hash": "e3aee36c5629f6618ed7396a8157e2b2",
+    "semantic_hash": "e3aee36c5629f6618ed7396a8157e2b2"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\auth\\__init__.py": {
+    "mtime": 1778719689.2733774,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\components\\avep_badge.py": {
+    "mtime": 1778732217.735582,
+    "ast_hash": "40574421df5bed09f928ca88f8ff768b",
+    "semantic_hash": "40574421df5bed09f928ca88f8ff768b"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\components\\gauge.py": {
+    "mtime": 1778719746.419383,
+    "ast_hash": "4a8c0217ef40dd656bc1b00bbb5aad9e",
+    "semantic_hash": "4a8c0217ef40dd656bc1b00bbb5aad9e"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\components\\kpi_card.py": {
+    "mtime": 1778732199.9068465,
+    "ast_hash": "47d3436a40e238813a5feadc50e95b35",
+    "semantic_hash": "47d3436a40e238813a5feadc50e95b35"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\components\\sat_card.py": {
+    "mtime": 1778732264.4435797,
+    "ast_hash": "29fd03e642a783da45559448ee3d565b",
+    "semantic_hash": "29fd03e642a783da45559448ee3d565b"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\components\\sentinel.py": {
+    "mtime": 1779332937.685596,
+    "ast_hash": "36f943cfc432bf9ba5fbbbcf858bfb13",
+    "semantic_hash": "36f943cfc432bf9ba5fbbbcf858bfb13"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\components\\__init__.py": {
+    "mtime": 1778719690.2891681,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\controllers\\auth_controller.py": {
+    "mtime": 1779943280.9445858,
+    "ast_hash": "016b3a3c6a57ec71db2021881c3a889f",
+    "semantic_hash": "016b3a3c6a57ec71db2021881c3a889f"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\controllers\\dashboard_controller.py": {
+    "mtime": 1778915597.061787,
+    "ast_hash": "a105f523354a609b0b5c768a2773c5e1",
+    "semantic_hash": "a105f523354a609b0b5c768a2773c5e1"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\controllers\\__init__.py": {
+    "mtime": 1778889003.884781,
+    "ast_hash": "a5b0e51968a6fdcf1885979e50f240f8",
+    "semantic_hash": "a5b0e51968a6fdcf1885979e50f240f8"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\frontend\\package.json": {
+    "mtime": 1779055725.4458044,
+    "ast_hash": "190a050c5178c5d832e098b52ba50f61",
+    "semantic_hash": "190a050c5178c5d832e098b52ba50f61"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\knowledge_base\\glossary_public.json": {
+    "mtime": 1778914015.3855162,
+    "ast_hash": "4361dcd9ccea2a7f3836c3590e0ac721",
+    "semantic_hash": "4361dcd9ccea2a7f3836c3590e0ac721"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\knowledge_base\\legal\\legal_chunks.json": {
+    "mtime": 1778862043.5369854,
+    "ast_hash": "bca3c2210024c64e00d58145928623f2",
+    "semantic_hash": "bca3c2210024c64e00d58145928623f2"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\models\\auth.py": {
+    "mtime": 1779935591.8867166,
+    "ast_hash": "8b3ce709ec0a4eb6b0128b157ae6cda4",
+    "semantic_hash": "8b3ce709ec0a4eb6b0128b157ae6cda4"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\models\\dashboard.py": {
+    "mtime": 1778889323.5420446,
+    "ast_hash": "c71349e53606295b9456902658d9be73",
+    "semantic_hash": "c71349e53606295b9456902658d9be73"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\models\\__init__.py": {
+    "mtime": 1778888996.7055082,
+    "ast_hash": "511b6e25cf036cb0d7dc4397e74e2f8d",
+    "semantic_hash": "511b6e25cf036cb0d7dc4397e74e2f8d"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\env_civic.py": {
+    "mtime": 1779764049.410972,
+    "ast_hash": "0a5da91b6a24625b05109a625cdffcdb",
+    "semantic_hash": "0a5da91b6a24625b05109a625cdffcdb"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\env_gov.py": {
+    "mtime": 1780340659.994737,
+    "ast_hash": "b24abd53d9e2058b8442a10cc2d9086e",
+    "semantic_hash": "b24abd53d9e2058b8442a10cc2d9086e"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\env_impact.py": {
+    "mtime": 1779764059.8969274,
+    "ast_hash": "d7c28781f073e7b5d32f54c1c877981a",
+    "semantic_hash": "d7c28781f073e7b5d32f54c1c877981a"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\env_ops.py": {
+    "mtime": 1779844182.489364,
+    "ast_hash": "54a22850a737135cee7bd251db5b8a19",
+    "semantic_hash": "54a22850a737135cee7bd251db5b8a19"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\html_engine.py": {
+    "mtime": 1778889299.5940945,
+    "ast_hash": "4c25f8b61f3c209273a5a571a1663d76",
+    "semantic_hash": "4c25f8b61f3c209273a5a571a1663d76"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\m1_situacion.py": {
+    "mtime": 1779744036.2008073,
+    "ast_hash": "fa6db6c8761e3fb6df1ffdee5ac9d709",
+    "semantic_hash": "fa6db6c8761e3fb6df1ffdee5ac9d709"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\m2_alertas.py": {
+    "mtime": 1779744890.717544,
+    "ast_hash": "9debdaf8e934751b4803c0fe0f6997e2",
+    "semantic_hash": "9debdaf8e934751b4803c0fe0f6997e2"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\m3_municipal.py": {
+    "mtime": 1779744053.4763505,
+    "ast_hash": "11525f247247605b7b9b615a1d33a853",
+    "semantic_hash": "11525f247247605b7b9b615a1d33a853"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\m4_analisis.py": {
+    "mtime": 1779744062.0575387,
+    "ast_hash": "7f8c75f76291f3ca8d5ce687efd10add",
+    "semantic_hash": "7f8c75f76291f3ca8d5ce687efd10add"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\m5_control.py": {
+    "mtime": 1779744073.9192677,
+    "ast_hash": "283361f6862d614e967bdec69e772401",
+    "semantic_hash": "283361f6862d614e967bdec69e772401"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\p07_transparencia.py": {
+    "mtime": 1780375549.6579127,
+    "ast_hash": "7ee29ae9c08d92819ca504df5a082929",
+    "semantic_hash": "7ee29ae9c08d92819ca504df5a082929"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\p0_inicio.py": {
+    "mtime": 1779777393.4645784,
+    "ast_hash": "dbd60e0ed05ba405d94787a61b0b1db3",
+    "semantic_hash": "dbd60e0ed05ba405d94787a61b0b1db3"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\p10_inversion.py": {
+    "mtime": 1778915987.4585557,
+    "ast_hash": "0543b445559e0927ec5bfba07f37cd00",
+    "semantic_hash": "0543b445559e0927ec5bfba07f37cd00"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\p10_territorio.py": {
+    "mtime": 1780290962.1192248,
+    "ast_hash": "79cf7c5b9ca311951d2574262aaecb38",
+    "semantic_hash": "79cf7c5b9ca311951d2574262aaecb38"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\p11_ods.py": {
+    "mtime": 1778915933.566533,
+    "ast_hash": "938db6f5a4e583b809be03da68aaa58a",
+    "semantic_hash": "938db6f5a4e583b809be03da68aaa58a"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\p12_cadena.py": {
+    "mtime": 1778915965.1155763,
+    "ast_hash": "e9e64465d77babb6efa034abfefff532",
+    "semantic_hash": "e9e64465d77babb6efa034abfefff532"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\p13_simulador.py": {
+    "mtime": 1778916101.5236685,
+    "ast_hash": "cd9915eb74b7393393536a70bd8b8fd1",
+    "semantic_hash": "cd9915eb74b7393393536a70bd8b8fd1"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\p14_eficiencia.py": {
+    "mtime": 1778916049.3796673,
+    "ast_hash": "d8de72f7ac8ec6b766bc3cab1225e7e0",
+    "semantic_hash": "d8de72f7ac8ec6b766bc3cab1225e7e0"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\p15_transparencia.py": {
+    "mtime": 1778915862.4342017,
+    "ast_hash": "b59cd2dc50126669e439ca985bad00f8",
+    "semantic_hash": "b59cd2dc50126669e439ca985bad00f8"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\p16_confianza.py": {
+    "mtime": 1778915891.3419561,
+    "ast_hash": "f5ab6fe64a6a87360e201a3660119649",
+    "semantic_hash": "f5ab6fe64a6a87360e201a3660119649"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\p16_gobernanza.py": {
+    "mtime": 1778915998.402027,
+    "ast_hash": "f386536cc00f19ae4e0835789381d63c",
+    "semantic_hash": "f386536cc00f19ae4e0835789381d63c"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\p17_rdc.py": {
+    "mtime": 1778777273.0196095,
+    "ast_hash": "c0d9297625046286497bb49ed64f6fb5",
+    "semantic_hash": "c0d9297625046286497bb49ed64f6fb5"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\p18_cooperacion.py": {
+    "mtime": 1778915592.8093765,
+    "ast_hash": "698c79ed3ca5ada12941ba1908e9c87d",
+    "semantic_hash": "698c79ed3ca5ada12941ba1908e9c87d"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\p19_genero.py": {
+    "mtime": 1780290031.6939683,
+    "ast_hash": "b0afd183bfdbc13793a31ecfcecfdffe",
+    "semantic_hash": "b0afd183bfdbc13793a31ecfcecfdffe"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\p1_dashboard.py": {
+    "mtime": 1778889431.1392555,
+    "ast_hash": "9c7e816540ff39d504a844581a5f6a1e",
+    "semantic_hash": "9c7e816540ff39d504a844581a5f6a1e"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\p2_holding.py": {
+    "mtime": 1780003565.1286852,
+    "ast_hash": "1cf3f835080bf3b50faccc9b82470451",
+    "semantic_hash": "1cf3f835080bf3b50faccc9b82470451"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\p3_congruencias.py": {
+    "mtime": 1778915541.8734713,
+    "ast_hash": "88a779e8aca2b56631070f3966e25659",
+    "semantic_hash": "88a779e8aca2b56631070f3966e25659"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\p4_geotwin.py": {
+    "mtime": 1778916011.416405,
+    "ast_hash": "22a652593600676fcc620428e1e5c480",
+    "semantic_hash": "22a652593600676fcc620428e1e5c480"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\p5_operacion.py": {
+    "mtime": 1779313457.0482428,
+    "ast_hash": "922662f82a3f247d9b8d3765ccf0895c",
+    "semantic_hash": "922662f82a3f247d9b8d3765ccf0895c"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\p6_pulso.py": {
+    "mtime": 1778915576.7964034,
+    "ast_hash": "0a38ae2c41bc4ee3dd9144b4987a9a75",
+    "semantic_hash": "0a38ae2c41bc4ee3dd9144b4987a9a75"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\p7_brecha.py": {
+    "mtime": 1778915703.9226391,
+    "ast_hash": "5f0764639e711e5b73422066c3405d05",
+    "semantic_hash": "5f0764639e711e5b73422066c3405d05"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\p8_metas.py": {
+    "mtime": 1778915718.9077213,
+    "ast_hash": "554755f2bb34105426e43429d11ae883",
+    "semantic_hash": "554755f2bb34105426e43429d11ae883"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\p9_sat.py": {
+    "mtime": 1778915522.836874,
+    "ast_hash": "189ad3aa47a83e152c78377a98549ea7",
+    "semantic_hash": "189ad3aa47a83e152c78377a98549ea7"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\p_alertas.py": {
+    "mtime": 1779336142.7924194,
+    "ast_hash": "0ad584f48ad082472e74c42336e9ae03",
+    "semantic_hash": "0ad584f48ad082472e74c42336e9ae03"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\p_aprendizaje.py": {
+    "mtime": 1779135609.606228,
+    "ast_hash": "a897088418155bbb45e2ae9613998035",
+    "semantic_hash": "a897088418155bbb45e2ae9613998035"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\p_cadena_institucional.py": {
+    "mtime": 1779935588.0053568,
+    "ast_hash": "c4f38353b60a2c3b7ae0fe3bce475fcc",
+    "semantic_hash": "c4f38353b60a2c3b7ae0fe3bce475fcc"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\p_carga.py": {
+    "mtime": 1779935572.3988965,
+    "ast_hash": "430ea1625ec08ce5fa01f161e0d7e3d5",
+    "semantic_hash": "430ea1625ec08ce5fa01f161e0d7e3d5"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\p_command_center.py": {
+    "mtime": 1780340645.5039606,
+    "ast_hash": "f747c5f6cbce4094165815c87cc95c98",
+    "semantic_hash": "f747c5f6cbce4094165815c87cc95c98"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\p_concejo.py": {
+    "mtime": 1779981787.1625051,
+    "ast_hash": "d3ad746bdfecb4caf93bd52bb13a609a",
+    "semantic_hash": "d3ad746bdfecb4caf93bd52bb13a609a"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\p_congruencia.py": {
+    "mtime": 1779130901.4235928,
+    "ast_hash": "b3951dc221d33a021eef3678651e8373",
+    "semantic_hash": "b3951dc221d33a021eef3678651e8373"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\p_ejecutivo.py": {
+    "mtime": 1779801215.471466,
+    "ast_hash": "1bf648e254263fca8f6ace27e19e1956",
+    "semantic_hash": "1bf648e254263fca8f6ace27e19e1956"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\p_gestion.py": {
+    "mtime": 1779137254.0476687,
+    "ast_hash": "350a44438f2089dbb4d2ac0104e828de",
+    "semantic_hash": "350a44438f2089dbb4d2ac0104e828de"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\p_historico.py": {
+    "mtime": 1779106875.2975776,
+    "ast_hash": "b7dcb1a82f89fbe8931f9243a29c96ae",
+    "semantic_hash": "b7dcb1a82f89fbe8931f9243a29c96ae"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\p_ingesta.py": {
+    "mtime": 1779131985.4007378,
+    "ast_hash": "f6339d5e1c501832d084999432df2403",
+    "semantic_hash": "f6339d5e1c501832d084999432df2403"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\p_reportes.py": {
+    "mtime": 1779134545.037527,
+    "ast_hash": "f259d7dd884235919c5eabe85d3e5994",
+    "semantic_hash": "f259d7dd884235919c5eabe85d3e5994"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\p_seguimiento.py": {
+    "mtime": 1779133731.742434,
+    "ast_hash": "a5e2beced823c7d4dc399b3fc617f6d7",
+    "semantic_hash": "a5e2beced823c7d4dc399b3fc617f6d7"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\p_sentinel_hub.py": {
+    "mtime": 1779137850.947739,
+    "ast_hash": "8247c245f14ab0b466203fc9ece14d67",
+    "semantic_hash": "8247c245f14ab0b466203fc9ece14d67"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\p_vista_ejecutiva.py": {
+    "mtime": 1779939130.1116676,
+    "ast_hash": "68cf55d1e705b9dfe0aaa38b8b0b0b50",
+    "semantic_hash": "68cf55d1e705b9dfe0aaa38b8b0b0b50"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\quira_pages\\__init__.py": {
+    "mtime": 1778719690.6224265,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\utils\\audit_log.py": {
+    "mtime": 1778891801.8541365,
+    "ast_hash": "ec75d53c7cb65bc0dfb010f01a51872c",
+    "semantic_hash": "ec75d53c7cb65bc0dfb010f01a51872c"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\utils\\cache_quira.py": {
+    "mtime": 1779774911.4604132,
+    "ast_hash": "ddb4e152ca831955cf4b38aaa73eba56",
+    "semantic_hash": "ddb4e152ca831955cf4b38aaa73eba56"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\utils\\display_names.py": {
+    "mtime": 1779844131.9746664,
+    "ast_hash": "162b98f87889201bfcafc18704503655",
+    "semantic_hash": "162b98f87889201bfcafc18704503655"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\utils\\input_guard.py": {
+    "mtime": 1778891920.9045942,
+    "ast_hash": "adb858dfcc1f7bff1ee771e2f8082a2c",
+    "semantic_hash": "adb858dfcc1f7bff1ee771e2f8082a2c"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\utils\\logger.py": {
+    "mtime": 1779742261.1118157,
+    "ast_hash": "0126ab34bade8f3fa88fe141b607dd00",
+    "semantic_hash": "0126ab34bade8f3fa88fe141b607dd00"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\utils\\narrativa.py": {
+    "mtime": 1779918588.2413926,
+    "ast_hash": "d50605d62b206e866730dd4866b23682",
+    "semantic_hash": "d50605d62b206e866730dd4866b23682"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\utils\\page_guards.py": {
+    "mtime": 1779336129.729529,
+    "ast_hash": "2ea0a292c020abc0a12ee28f5e717455",
+    "semantic_hash": "2ea0a292c020abc0a12ee28f5e717455"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\utils\\session.py": {
+    "mtime": 1779935550.0649521,
+    "ast_hash": "1ea481add8131d4451608f5d870d1466",
+    "semantic_hash": "1ea481add8131d4451608f5d870d1466"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\utils\\snapshot_io.py": {
+    "mtime": 1779774505.9094346,
+    "ast_hash": "3627112caac1a11e908f870fac8e6dc3",
+    "semantic_hash": "3627112caac1a11e908f870fac8e6dc3"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\utils\\top.py": {
+    "mtime": 1779907758.6125162,
+    "ast_hash": "fbdb7aee49292a10a9e9b19b4345489d",
+    "semantic_hash": "fbdb7aee49292a10a9e9b19b4345489d"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\utils\\__init__.py": {
+    "mtime": 1779338933.3383281,
+    "ast_hash": "188c760d85346a818cbdc94cd5a6b636",
+    "semantic_hash": "188c760d85346a818cbdc94cd5a6b636"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\validation\\banco_casos_v1.json": {
+    "mtime": 1778869615.308833,
+    "ast_hash": "6d424eac0182d5e11f8324f223909136",
+    "semantic_hash": "6d424eac0182d5e11f8324f223909136"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\validation\\resultados_stress_test.json": {
+    "mtime": 1778892993.4889836,
+    "ast_hash": "0622ba5cfe3f04aa3cc1f9d94f57e29f",
+    "semantic_hash": "0622ba5cfe3f04aa3cc1f9d94f57e29f"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\validation\\run_stress_test.py": {
+    "mtime": 1778869835.6988907,
+    "ast_hash": "f5c35a10e5dc4e75e350093a3558d1ec",
+    "semantic_hash": "f5c35a10e5dc4e75e350093a3558d1ec"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\views\\dashboard_view.py": {
+    "mtime": 1778915610.3258152,
+    "ast_hash": "315f44fe99c9238ab718e23bb9dc069f",
+    "semantic_hash": "315f44fe99c9238ab718e23bb9dc069f"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\views\\html_engine.py": {
+    "mtime": 1780000156.5086792,
+    "ast_hash": "82ca0a45d7b183bf18cb23b060151b5d",
+    "semantic_hash": "82ca0a45d7b183bf18cb23b060151b5d"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\views\\login_view.py": {
+    "mtime": 1779943245.1972263,
+    "ast_hash": "831f7eec17a38b4d1db84a4d76303d38",
+    "semantic_hash": "831f7eec17a38b4d1db84a4d76303d38"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\views\\__init__.py": {
+    "mtime": 1778889000.1347752,
+    "ast_hash": "7d65592baa414828c978683a78c106ee",
+    "semantic_hash": "7d65592baa414828c978683a78c106ee"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\CLAUDE.md": {
+    "mtime": 1780521679.5619879,
+    "ast_hash": "da6e290c30467a98f28d420f263e43bc",
+    "semantic_hash": "da6e290c30467a98f28d420f263e43bc"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\.claude\\CLAUDE.md": {
+    "mtime": 1779975107.1501625,
+    "ast_hash": "817fe671013b35ae0bc9301dfe449a87",
+    "semantic_hash": "817fe671013b35ae0bc9301dfe449a87"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\.github\\workflows\\claude-review.yml": {
+    "mtime": 1779311007.908129,
+    "ast_hash": "792a023bcdc48aaca61cde016c2c3bfc",
+    "semantic_hash": "792a023bcdc48aaca61cde016c2c3bfc"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\.github\\workflows\\claude.yml": {
+    "mtime": 1780288583.3452022,
+    "ast_hash": "e79762de927f625814063713f932da58",
+    "semantic_hash": "e79762de927f625814063713f932da58"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\.github\\workflows\\quira-health.yml": {
+    "mtime": 1780522170.439793,
+    "ast_hash": "343cd0e89edc9669a00f6e252f83cd42",
+    "semantic_hash": "343cd0e89edc9669a00f6e252f83cd42"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\ARQUITECTURA_CANONICA.md": {
+    "mtime": 1779857462.3529813,
+    "ast_hash": "0d9e9b6c93aea3a2a3c8b5f3f26ce333",
+    "semantic_hash": "0d9e9b6c93aea3a2a3c8b5f3f26ce333"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\AUDITORIA_GOLD_MASTER.md": {
+    "mtime": 1779839085.8301113,
+    "ast_hash": "75a3e68049b6d2a79243ff4feb54a898",
+    "semantic_hash": "75a3e68049b6d2a79243ff4feb54a898"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\DATA_CONTRACT.md": {
+    "mtime": 1779918493.3678827,
+    "ast_hash": "0da1c231e867ada4d76a418d3186ac43",
+    "semantic_hash": "0da1c231e867ada4d76a418d3186ac43"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\DEPLOY_STREAMLIT_CLOUD.md": {
+    "mtime": 1779774609.298138,
+    "ast_hash": "8cb227d7b951bd1dcc5a5a2bd1ade1d9",
+    "semantic_hash": "8cb227d7b951bd1dcc5a5a2bd1ade1d9"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\GLOSARIO_INSTITUCIONAL.md": {
+    "mtime": 1779160081.043824,
+    "ast_hash": "1a1f50ce99c45db0d03f54264a731246",
+    "semantic_hash": "1a1f50ce99c45db0d03f54264a731246"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\gold_master_schema.md": {
+    "mtime": 1780532948.9589121,
+    "ast_hash": "bf4eb820036a7c69e70b05e6338f92d1",
+    "semantic_hash": "bf4eb820036a7c69e70b05e6338f92d1"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\GOLD_MASTER_v6_SCHEMA.md": {
+    "mtime": 1779756658.6767895,
+    "ast_hash": "94c9b74bfbf2dcdbf332fcfd5e8a8565",
+    "semantic_hash": "94c9b74bfbf2dcdbf332fcfd5e8a8565"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\MONTHLY_CYCLE.md": {
+    "mtime": 1779764592.767396,
+    "ast_hash": "d63d94fe3fc02a930276c3060a7acfb6",
+    "semantic_hash": "d63d94fe3fc02a930276c3060a7acfb6"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\NOMENCLATURA_CANONICA.md": {
+    "mtime": 1779907821.987403,
+    "ast_hash": "d0b45362785742dd94587a931a7f5222",
+    "semantic_hash": "d0b45362785742dd94587a931a7f5222"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\NORTH.md": {
+    "mtime": 1779773906.4102526,
+    "ast_hash": "918715c702c4b4c30c926760b4c8f79e",
+    "semantic_hash": "918715c702c4b4c30c926760b4c8f79e"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\QUIRA_CIV_CITIZEN_JOURNEY_v1.md": {
+    "mtime": 1779852840.1502368,
+    "ast_hash": "27a64a19ced55098563a68bfe9781725",
+    "semantic_hash": "27a64a19ced55098563a68bfe9781725"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\QUIRA_DOCTRINE_v1.md": {
+    "mtime": 1779907871.7807944,
+    "ast_hash": "cd78d7e2d4466e21c56badafe9ad57d8",
+    "semantic_hash": "cd78d7e2d4466e21c56badafe9ad57d8"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\QUIRA_INTELLIGENCE.md": {
+    "mtime": 1779763160.2103474,
+    "ast_hash": "260215035d8ca5165439594fe5c50444",
+    "semantic_hash": "260215035d8ca5165439594fe5c50444"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\RC1_1_WALKTHROUGH.md": {
+    "mtime": 1779160158.4752574,
+    "ast_hash": "14465424e272fbbd8f4a20d6d71d91bc",
+    "semantic_hash": "14465424e272fbbd8f4a20d6d71d91bc"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\RC2_AUTOMATIZACION.md": {
+    "mtime": 1779160116.972077,
+    "ast_hash": "7775255bd725d34bc218a1435c1a6945",
+    "semantic_hash": "7775255bd725d34bc218a1435c1a6945"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\RC3_FUENTES_INDEPENDIENTES.md": {
+    "mtime": 1779369811.899677,
+    "ast_hash": "8e8c67c506bddaac2d48d9e0ed8e4d32",
+    "semantic_hash": "8e8c67c506bddaac2d48d9e0ed8e4d32"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\REFERENCE.md": {
+    "mtime": 1780463903.4825344,
+    "ast_hash": "394a49734ce9bbccc2193be701d85e99",
+    "semantic_hash": "394a49734ce9bbccc2193be701d85e99"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\SPRINT3.md": {
+    "mtime": 1779802054.4904609,
+    "ast_hash": "4b08d8eebfdd1269cb1095e8aca1680a",
+    "semantic_hash": "4b08d8eebfdd1269cb1095e8aca1680a"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\UX_CONTRACT.md": {
+    "mtime": 1779918423.1519916,
+    "ast_hash": "cd51ec0b6ec62942cbf782ca5d91a429",
+    "semantic_hash": "cd51ec0b6ec62942cbf782ca5d91a429"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\adr\\ADR-016_DCO_Dominio_Constitucional_Operacionalizable.md": {
+    "mtime": 1780377853.6099472,
+    "ast_hash": "eab486803b78ebdb4c0288e981933196",
+    "semantic_hash": "eab486803b78ebdb4c0288e981933196"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\adr\\ADR-017_Circuitos_Constitucionales.md": {
+    "mtime": 1780377861.1410575,
+    "ast_hash": "e652a993b9cdd583fe44feef0e8960ea",
+    "semantic_hash": "e652a993b9cdd583fe44feef0e8960ea"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\adr\\ADR-018_NRC_Nodos_Raiz_Constitucionales.md": {
+    "mtime": 1780419311.4341152,
+    "ast_hash": "db721f2ca6babbc03252acec116eb4d9",
+    "semantic_hash": "db721f2ca6babbc03252acec116eb4d9"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\adr\\ADR-019_Dominios_Legitimacion_Democratica.md": {
+    "mtime": 1780431325.9727523,
+    "ast_hash": "e9c0004b7f4ca2f7d9b9c974529432de",
+    "semantic_hash": "e9c0004b7f4ca2f7d9b9c974529432de"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\adr\\ADR-020_Analitica_Constitucional.md": {
+    "mtime": 1780430888.6336799,
+    "ast_hash": "d67270de68baa2672a4d5da7232a723c",
+    "semantic_hash": "d67270de68baa2672a4d5da7232a723c"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\adr\\ADR-021_Ontologia_Corpus_Motor_Trazabilidad.md": {
+    "mtime": 1780449249.7796435,
+    "ast_hash": "93abfbc16f23a614bdd2ed273fadfbe0",
+    "semantic_hash": "93abfbc16f23a614bdd2ed273fadfbe0"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\adr\\ADR-022_Principio_Divergencia_A_D.md": {
+    "mtime": 1780513904.6286297,
+    "ast_hash": "3fb962642523fb1d1589235764d0229a",
+    "semantic_hash": "3fb962642523fb1d1589235764d0229a"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\adr\\ADR-023_Arquitectura_Tres_Niveles_QUIRA.md": {
+    "mtime": 1780516725.1072924,
+    "ast_hash": "eb849fcceed76155faa8bb692b038456",
+    "semantic_hash": "eb849fcceed76155faa8bb692b038456"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\adr\\DCO_Dom08_Participacion_Ciudadana.md": {
+    "mtime": 1780383543.8417244,
+    "ast_hash": "58e8006c16fd0eb8fa696670ac606b2a",
+    "semantic_hash": "58e8006c16fd0eb8fa696670ac606b2a"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\adr\\DCO_Dom09_Rendicion_Cuentas.md": {
+    "mtime": 1780415720.00094,
+    "ast_hash": "dc42f8a0ef12b65f88aeeb09776f5593",
+    "semantic_hash": "dc42f8a0ef12b65f88aeeb09776f5593"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\adr\\GATE-007_Validacion_Externa_Municipio2.md": {
+    "mtime": 1780519490.8237805,
+    "ast_hash": "73f5e5511989eec3cc08dbcb5c0553fa",
+    "semantic_hash": "73f5e5511989eec3cc08dbcb5c0553fa"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\architecture\\ACK_REGISTRY.md": {
+    "mtime": 1780377633.3360791,
+    "ast_hash": "afb5b4aa55c3d5490f4a22db503e3f26",
+    "semantic_hash": "afb5b4aa55c3d5490f4a22db503e3f26"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\architecture\\BRIDGE_EXCEL_CORPUS.md": {
+    "mtime": 1780513932.6406183,
+    "ast_hash": "00886367e0f064efde1b71c4f68e3e59",
+    "semantic_hash": "00886367e0f064efde1b71c4f68e3e59"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\architecture\\CANONICAL_CHUNK_SCHEMA.md": {
+    "mtime": 1780456494.2866967,
+    "ast_hash": "2d15cdface39843c694e5a1947cea35b",
+    "semantic_hash": "2d15cdface39843c694e5a1947cea35b"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\architecture\\FOUNDATION_LAYER_V1.md": {
+    "mtime": 1780377667.5787666,
+    "ast_hash": "71968b5624c5f387b8ede316b2c09934",
+    "semantic_hash": "71968b5624c5f387b8ede316b2c09934"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\architecture\\TRES_CEREBROS_QUIRA.md": {
+    "mtime": 1780367343.0601504,
+    "ast_hash": "412c2e86932ab79300026e87c6219a30",
+    "semantic_hash": "412c2e86932ab79300026e87c6219a30"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\audits\\AUDIT_DELTA_CORPUS_2026_06_02.md": {
+    "mtime": 1780457901.3953304,
+    "ast_hash": "cee8256cd8ef9fb41c3c23448a7f4424",
+    "semantic_hash": "cee8256cd8ef9fb41c3c23448a7f4424"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\corpus_externo\\ADR-001_PDOT_fuente_canonica_territorial.md": {
+    "mtime": 1780532903.5441582,
+    "ast_hash": "65afe06c85f42f665ae2fec1906080d3",
+    "semantic_hash": "65afe06c85f42f665ae2fec1906080d3"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\corpus_externo\\ADR-002_COOTAD_vs_INEC_dominios_separados.md": {
+    "mtime": 1780532903.5441582,
+    "ast_hash": "68764625d9425d79253df491367ce5ad",
+    "semantic_hash": "68764625d9425d79253df491367ce5ad"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\corpus_externo\\ADR-003_proxy_requiere_proxy_de.md": {
+    "mtime": 1780532903.5527053,
+    "ast_hash": "e58cca2c01868f9fd570410bd6781330",
+    "semantic_hash": "e58cca2c01868f9fd570410bd6781330"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\corpus_externo\\ADR-004_ProyecT_workspace_oficial.md": {
+    "mtime": 1780532903.5537233,
+    "ast_hash": "b6a4a5473323c2ed614986427beabc99",
+    "semantic_hash": "b6a4a5473323c2ed614986427beabc99"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\corpus_externo\\ADR-005_Neo4j_cerebro_causal_no_vector.md": {
+    "mtime": 1780532903.5647666,
+    "ast_hash": "a567cdd82ff22fe3e9039bbe039557c1",
+    "semantic_hash": "a567cdd82ff22fe3e9039bbe039557c1"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\corpus_externo\\ADR-006_Ti_G7G8_es_Piso1_no_impacto_territorial.md": {
+    "mtime": 1780532903.5647666,
+    "ast_hash": "a4a79888d6425347460462833a226626",
+    "semantic_hash": "a4a79888d6425347460462833a226626"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\corpus_externo\\ADR-007_Gold_Master_unica_fuente_calculo.md": {
+    "mtime": 1780532903.5717497,
+    "ast_hash": "0fa8c93593b39e1d7abcce96a6469c72",
+    "semantic_hash": "0fa8c93593b39e1d7abcce96a6469c72"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\corpus_externo\\ADR-008_C10_reflexion_institucional_es_Alpha.md": {
+    "mtime": 1780532903.5773163,
+    "ast_hash": "43ab1ffa066c045f02fe57608753cb5c",
+    "semantic_hash": "43ab1ffa066c045f02fe57608753cb5c"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\corpus_externo\\ADR-009_Red_Academica_valida_incertidumbres.md": {
+    "mtime": 1780532903.585609,
+    "ast_hash": "651bd76fb04b51f0b3241c00a92949b5",
+    "semantic_hash": "651bd76fb04b51f0b3241c00a92949b5"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\corpus_externo\\ADR-010_Alpha_termina_con_consulta_causal_reproducible.md": {
+    "mtime": 1780532903.585609,
+    "ast_hash": "8df27f84b8453dae11ef26ebe61ac34f",
+    "semantic_hash": "8df27f84b8453dae11ef26ebe61ac34f"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\corpus_externo\\ADR-011_Tres_productos_motor_IA_QUIRA.md": {
+    "mtime": 1780532903.5961528,
+    "ast_hash": "fb9b4df6e2938d54a4510c9fad67a5e6",
+    "semantic_hash": "fb9b4df6e2938d54a4510c9fad67a5e6"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\corpus_externo\\ADR-012_Regla_expansion_canonica_dominios.md": {
+    "mtime": 1780532903.6021047,
+    "ast_hash": "b70bbe4d30418df932c9fad00050f76a",
+    "semantic_hash": "b70bbe4d30418df932c9fad00050f76a"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\corpus_externo\\ALPHA_0_9_FREEZE.md": {
+    "mtime": 1780532903.3951995,
+    "ast_hash": "e190066571c6cf8dd10ba2978c45a62b",
+    "semantic_hash": "e190066571c6cf8dd10ba2978c45a62b"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\corpus_externo\\ALPHA_1_0_FREEZE.md": {
+    "mtime": 1780532903.3980448,
+    "ast_hash": "c6b61be0a0a82bd60c763ede5ad8cec8",
+    "semantic_hash": "c6b61be0a0a82bd60c763ede5ad8cec8"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\corpus_externo\\MAPA_ECOSISTEMA_QUIRA.md": {
+    "mtime": 1780532903.6592987,
+    "ast_hash": "4d00e6bbf9eb6940c1d51e2923343995",
+    "semantic_hash": "4d00e6bbf9eb6940c1d51e2923343995"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\corpus_externo\\Metodologia SIAP-ICPI Final.md": {
+    "mtime": 1780532903.7072003,
+    "ast_hash": "280fddd3db83e6b2d4b3d9b5c6b505c6",
+    "semantic_hash": "280fddd3db83e6b2d4b3d9b5c6b505c6"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\corpus_externo\\NOTA_METODOLOGICA_DOM12_INDICES_COMPLEMENTARIOS.md": {
+    "mtime": 1780532903.4008763,
+    "ast_hash": "48abdf5c1cf023f729fdd86af8ca5e2c",
+    "semantic_hash": "48abdf5c1cf023f729fdd86af8ca5e2c"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\corpus_externo\\QUIRA_BETA_BACKLOG.md": {
+    "mtime": 1780532903.408706,
+    "ast_hash": "70241507eead6db4ecbab2bad5cef94a",
+    "semantic_hash": "70241507eead6db4ecbab2bad5cef94a"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\corpus_externo\\QUIRA_BOOT_CONTEXT.md": {
+    "mtime": 1780532903.413989,
+    "ast_hash": "ccd42f938827d934396466eabd0ba110",
+    "semantic_hash": "ccd42f938827d934396466eabd0ba110"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\corpus_externo\\QUIRA_CAUSAL_MODEL_v1.0.md": {
+    "mtime": 1780532903.422052,
+    "ast_hash": "167f40e0d00eae49fb92f0e709c132e3",
+    "semantic_hash": "167f40e0d00eae49fb92f0e709c132e3"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\corpus_externo\\QUIRA_DATA_GOVERNANCE_v1.0.md": {
+    "mtime": 1780532903.429734,
+    "ast_hash": "b174af86c2dc244eee8304769d1f0110",
+    "semantic_hash": "b174af86c2dc244eee8304769d1f0110"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\corpus_externo\\QUIRA_ECOSYSTEM_2026_2030.md": {
+    "mtime": 1780532903.435943,
+    "ast_hash": "544a41f312da2579af7349f68ad05473",
+    "semantic_hash": "544a41f312da2579af7349f68ad05473"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\corpus_externo\\QUIRA_EPISTEMIC_FRAMEWORK_v1.0.md": {
+    "mtime": 1780532903.440101,
+    "ast_hash": "fc3c15eefe63ff2d13f3cd81161cb112",
+    "semantic_hash": "fc3c15eefe63ff2d13f3cd81161cb112"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\corpus_externo\\QUIRA_LANGUAGE_BOUNDARY_v1.0.md": {
+    "mtime": 1780532903.4480896,
+    "ast_hash": "6de1e7bd8632e430bec2fb2f01804ee6",
+    "semantic_hash": "6de1e7bd8632e430bec2fb2f01804ee6"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\corpus_externo\\QUIRA_PRODUCT_ARCHITECTURE_v1.0.md": {
+    "mtime": 1780532903.453237,
+    "ast_hash": "dbb64a2ba2fa4d71225c6f7e9002df66",
+    "semantic_hash": "dbb64a2ba2fa4d71225c6f7e9002df66"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\corpus_externo\\QUIRA_STATE.md": {
+    "mtime": 1780532903.453237,
+    "ast_hash": "e158db609d5cd562ef025333669b399b",
+    "semantic_hash": "e158db609d5cd562ef025333669b399b"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\corpus_externo\\QUIRA_TERRITORIAL_SEMANTICS_v1.0.md": {
+    "mtime": 1780532903.4638455,
+    "ast_hash": "941105135c47b7917cd6dce74412f965",
+    "semantic_hash": "941105135c47b7917cd6dce74412f965"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\corpus_externo\\QUIRA_THEORY_OF_CHANGE_v1.0.md": {
+    "mtime": 1780532903.4647548,
+    "ast_hash": "0d24bef9c31b58575db771d881e68246",
+    "semantic_hash": "0d24bef9c31b58575db771d881e68246"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\corpus_externo\\QUIRA_THEORY_OF_VALUE_v1.0.md": {
+    "mtime": 1780532903.4727707,
+    "ast_hash": "4b74f54b56e1275093c134d6093c26eb",
+    "semantic_hash": "4b74f54b56e1275093c134d6093c26eb"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\corpus_externo\\README.md": {
+    "mtime": 1780532903.6049688,
+    "ast_hash": "12cf49d080fb36533f78907baccb9c65",
+    "semantic_hash": "12cf49d080fb36533f78907baccb9c65"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\observations\\OBS-003_Cierre_Normativo_Ciclo_Democratico.md": {
+    "mtime": 1780446663.1346233,
+    "ast_hash": "2bca256291db50f77f009c86874b5966",
+    "semantic_hash": "2bca256291db50f77f009c86874b5966"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\observations\\OBS-004_Calidad_Corpus_Evidencia.md": {
+    "mtime": 1780462106.0526688,
+    "ast_hash": "3b83f71f799e05ceb46008803c13105c",
+    "semantic_hash": "3b83f71f799e05ceb46008803c13105c"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\observations\\OBS-005_Ciclo_PP_RC_Evidencia_Territorial.md": {
+    "mtime": 1780462073.844208,
+    "ast_hash": "91d44cd441a2dd0dfe5ecf6987447b30",
+    "semantic_hash": "91d44cd441a2dd0dfe5ecf6987447b30"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\observations\\OBS-006_CPCCS_Cobertura_Holding.md": {
+    "mtime": 1780462132.384132,
+    "ast_hash": "cb1c1770c33d1f373c46dcd7390a62d6",
+    "semantic_hash": "cb1c1770c33d1f373c46dcd7390a62d6"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\observations\\OBS-007_Dos_Circuitos_Trazabilidad_Municipal.md": {
+    "mtime": 1780463026.1607666,
+    "ast_hash": "79940426c4a40d6c749e1a73f708e3a5",
+    "semantic_hash": "79940426c4a40d6c749e1a73f708e3a5"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\observations\\OBS-008_Cobertura_Ejecucion_Financiera_Mensual.md": {
+    "mtime": 1780494669.4619246,
+    "ast_hash": "472021445eb14912076c003c7d451e61",
+    "semantic_hash": "472021445eb14912076c003c7d451e61"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\observations\\OBS-009_Divergencia_SIGAD_LOTAIP_GAD_MCR.md": {
+    "mtime": 1780505546.7515993,
+    "ast_hash": "f6b1ec06cdfdbe5ac57f6275569b6d87",
+    "semantic_hash": "f6b1ec06cdfdbe5ac57f6275569b6d87"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\superpowers\\plans\\2026-06-03-quira-institucional-montecristi-v1.md": {
+    "mtime": 1780531142.608036,
+    "ast_hash": "ef1a0f798ac28eb34b194d6202ee748f",
+    "semantic_hash": "ef1a0f798ac28eb34b194d6202ee748f"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\governance\\BOOT.md": {
+    "mtime": 1780524116.5619628,
+    "ast_hash": "774bdf4b03c4644922f24a6567d830e0",
+    "semantic_hash": "774bdf4b03c4644922f24a6567d830e0"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\governance\\QUIRA_STATE.md": {
+    "mtime": 1780521620.4507885,
+    "ast_hash": "32c2b585dc7a31675c2702927ccf3ca2",
+    "semantic_hash": "32c2b585dc7a31675c2702927ccf3ca2"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\governance\\decisions\\ADR-013_Mapeo_QTMP_Dominios.md": {
+    "mtime": 1780324168.665864,
+    "ast_hash": "11c2f3edc024091edff645fa02e8b4c6",
+    "semantic_hash": "11c2f3edc024091edff645fa02e8b4c6"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\governance\\decisions\\ADR-014_BETA_CORE_Roadmap.md": {
+    "mtime": 1780348253.0018487,
+    "ast_hash": "20f591fdc3cd6cc0ce0485fbd1988421",
+    "semantic_hash": "20f591fdc3cd6cc0ce0485fbd1988421"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\governance\\decisions\\ADR-015_Validacion_OBS-QNKC-02.md": {
+    "mtime": 1780347304.5570943,
+    "ast_hash": "20dceba560116961a7d9cd275d9f647a",
+    "semantic_hash": "20dceba560116961a7d9cd275d9f647a"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\governance\\framework\\COMPETENCIAS_QUIRA_MAP.md": {
+    "mtime": 1780325746.9081025,
+    "ast_hash": "b3853fbe50eebce222e3ec3159a8b28c",
+    "semantic_hash": "b3853fbe50eebce222e3ec3159a8b28c"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\governance\\framework\\QNKC_P01_Dominios_Observacionales.md": {
+    "mtime": 1780329825.7276103,
+    "ast_hash": "1c3d7c046616c7169d712054bbcf0481",
+    "semantic_hash": "1c3d7c046616c7169d712054bbcf0481"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\governance\\framework\\QNKC_PRINCIPIOS_INDEX.md": {
+    "mtime": 1780347707.024735,
+    "ast_hash": "5839b58072c2e4cbc9c414bb966e7847",
+    "semantic_hash": "5839b58072c2e4cbc9c414bb966e7847"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\governance\\historico\\QUIRA_STATE_2026-06-03.md": {
+    "mtime": 1780463997.245894,
+    "ast_hash": "93f6e81f3eff7bf589095986503c6c11",
+    "semantic_hash": "93f6e81f3eff7bf589095986503c6c11"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\governance\\qlep\\QLEP_CANONICO_MONTECRISTI_v1.0.md": {
+    "mtime": 1780342050.18264,
+    "ast_hash": "b70311320a10d17867ee31f2daf3bf84",
+    "semantic_hash": "b70311320a10d17867ee31f2daf3bf84"
+  },
+  "C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\quira-os\\docs\\audit\\landing.png": {
+    "mtime": 1780286986.2152865,
+    "ast_hash": "c89475e57af53414c3907bd0a5614b88",
+    "semantic_hash": "c89475e57af53414c3907bd0a5614b88"
+  }
+}

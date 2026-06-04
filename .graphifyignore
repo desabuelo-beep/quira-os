@@ -1,0 +1,46 @@
+# Graphify ignore — QUIRA OS
+# QLEP cubre esto mejor → Neo4j
+data/acks/
+data/parroquias_montecristi.geojson
+
+# Código operativo de bajo valor semántico
+sentinel/
+scripts/
+tests/
+migrations/
+
+# Artefactos y generados
+graphify-out/
+__pycache__/
+*.pyc
+.planning/
+node_modules/
+.git/
+
+# Skills y plugins (ya son contexto de Claude)
+.claude/skills/
+.claude/plugins/
+
+# Archivos de entorno y secretos
+.env*
+*.toml
+*.lock
+requirements*.txt
+
+# Datos crudos y binarios — incluye ACKs (Neo4j los tiene mejor)
+data/
+*.xlsx
+*.docx
+*.pdf
+*.sqlite
+*.db
+
+# Agentes y contexto interno de Claude
+.agents/
+HANDOFF_GITHUB.md
+*.html
+
+# Logs y temporales
+*.log
+*.tmp
+graphify-out/
