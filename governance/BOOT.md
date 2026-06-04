@@ -47,7 +47,7 @@
 La memoria histórica es la base de QUIRA dialéctica / autorregenerativa.
 Comando: `/graphify . --update` al cierre de cada sesión con nuevos artefactos.
 
-## ARQUITECTURA DE 4 CAPAS (ADR-024 — PROPUESTO 2026-06-04, pendiente ratificar)
+## ARQUITECTURA DE 4 CAPAS (ADR-024 — RATIFICADO 2026-06-04)
 **Pregunta central a ratificar: ¿QUIRA es software municipal o radar nacional?**
 Los 3 convergemos en: RADAR NACIONAL independiente. (GAD = sujeto observado, no cliente)
 - **Capa A NÚCLEO**: Gold Master · QLEP · Graphify · GeoTwin · conectores · NLP · índices (ya construido)
@@ -56,7 +56,7 @@ Los 3 convergemos en: RADAR NACIONAL independiente. (GAD = sujeto observado, no 
 - **Capa D PORTAL** = **PRODUCTO PRINCIPAL**: quiraintelligence.com = radar vivo 221 GAD
     quiraholding.streamlit.app = LABORATORIO donde validamos el motor (no es el producto final)
 - **Montecristi = Municipio 001** (laboratorio). NO cambia sprints; SÍ cambia interpretación.
-- Sesión de arquitectura pendiente para ratificar ADR-024 antes de tocar Capa D.
+- ADR-024 RATIFICADO. Capa D disponible post-Montecristi v1.0.
 
 ## REGLAS DE ORO (inviolables — el resto en CLAUDE.md)
 1. **Excel = Estado.** Gold Master es fuente de verdad. Excel→Python→Supabase→UI, nunca al revés.

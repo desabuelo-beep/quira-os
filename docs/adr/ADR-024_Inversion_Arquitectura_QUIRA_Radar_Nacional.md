@@ -1,6 +1,6 @@
 # ADR-024 — Inversión de Arquitectura: QUIRA como Radar Nacional
 
-**Estado**: PROPUESTO — pendiente ratificación en sesión de arquitectura dedicada
+**Estado**: RATIFICADO — 2026-06-04 · Consenso equipo Dylus Lab (Javo + Claude + Colega)
 **Fecha**: 2026-06-04
 **Proyecto**: QUIRA Gov · Dylus Lab
 **Origen**: Javo (fundador) + síntesis Colega + criterio Claude (director técnico)
