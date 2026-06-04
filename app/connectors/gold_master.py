@@ -214,10 +214,14 @@ def _normalize_h73(raw: dict) -> dict:
         return default
 
     # fallback 5D ponderado cuando TGI_SCORE falla en Excel (#VALOR!)
+    # pesos canónicos: D1×20 + D2×20 + D3×25 + D4×25 + D5×10 = 100
     _tgi_d = [_float(f"TGI_D{i}") for i in range(1, 6)]
     _tgi_score = _float("TGI_SCORE")
     if _tgi_score is None and all(d is not None for d in _tgi_d):
-        _tgi_score = round(sum(_tgi_d) / 5.0, 4)
+        _tgi_score = round(
+            _tgi_d[0]*0.20 + _tgi_d[1]*0.20 + _tgi_d[2]*0.25 + _tgi_d[3]*0.25 + _tgi_d[4]*0.10,
+            2,
+        )
 
     return {
         "icpi": {
