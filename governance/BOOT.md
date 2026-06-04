@@ -19,28 +19,27 @@
 **MATRIZ_CANONICA** del Excel = ADN compartido. Sin ella: dos mundos. Con ella: un sistema.
 
 ## AHORA (actualizar al cierre)
-- **Sprint**: Sprint A — Identidad Institucional (ficha viva Montecristi · pantalla base)
-    Auditoría UX hecha (2026-06-04): login + dashboard revisados con Playwright
-    Hallazgos críticos: tagline frío · "53.6% Ruptura Sistémica" sin contexto · dominios=tarjetas no puertas
-- **Grafo QUIRA v2**: `graphify-out/graph.json` ✅ — 1938 nodos · 3238 aristas · MCP activo
-    Incluye: ADRs 001-023 · governance · código Python · Gold Master schema · Vault Obsidian 00_CORE + TGI parroquias
-    Gold Master TGI = 5to nodo más conectado (degree 26) — hub metodológico confirmado
-    Próxima actualización: `/graphify . --update` al cerrar Sprint A
-- **Último commit**: `106359a` — CI health-check · tag `boot-estable-v1` creado
+- **Sprint A ✅ COMPLETO** (2026-06-04) — commits esta sesión:
+    `eb1fcec` Observatorio→Radar (terminología, 7 archivos)
+    `656c224` ADR-024 RATIFICADO — QUIRA como Radar Nacional
+    `19bfa98` Fix TGI Score #VALOR! — fallback 5D ponderado
+    `e026b6e` Corregir pesos TGI: D1×20+D2×20+D3×25+D4×25+D5×10 → 66.85% ✓
+    `76ca29f` Ficha cantonal Sprint A — canton_card.py + p0_inicio.py reescrito
+- **Próximo**: Sprint B — 12 Puertas (cajones p_command_center → navegación full-screen real)
+    Archivo clave: `quira_pages/p_command_center.py` · `_DOMAINS_12` ya existe
+    Meta: click en dominio = pantalla completa, no modal ni popup
+- **Pendiente verificar**: UI Sprint A con `streamlit run app.py` (Tarea A3 del plan)
+    Verificar: ficha cantonal renderiza · CTA navega · SAT badge aparece si hay alertas
+- **Grafo**: pendiente `/graphify . --update` con artefactos de esta sesión
+    (ADR-024 nuevo nombre + canton_card.py + p0_inicio.py + BOOT.md)
 - **Gate 6.6 ✅ COMPLETO**: 51/51 siglas MCR · 0 huérfanos · ICPI=69.93% explicable
 - **Corpus**: ~13,509 chunks · 65 tablas LOTAIP · Neo4j: 38/58
-- **Connector LISTO**: `app/connectors/gold_master.py` → H73_OUTPUT_API
-- **GATE-007 🧊 CONGELADO** — no cancelado · Manta elegida · retomar post-Montecristi v1.0
-- **DECISIÓN ESTRATÉGICA (2026-06-03)**: QUIRA = familia de productos
-    - QUIRA Institucional (70% sistema, 20% producto) → PRIORIDAD: invertir relación
-    - QUIRA Operaciones → módulo técnico municipal (UI sobre pipeline) → sprint E
-    - QUIRA Ciudadana → post Institucional+Operaciones · hereda ambos
-    - QUIRA Impact / Cooperación / Economic → motor financiero post-Montecristi v1.0
-- **Roadmap activo**: A→B→C→D→E→F (Montecristi v1.0) → Gate 7
-    A: Contexto Cantonal · B: 12 Dominios (puertas) · C: Dashboard+IA analista
-    D: GeoTwin conectado · E: QUIRA Operaciones · F: v1.0 completo
+- **Connector LISTO**: `app/connectors/gold_master.py` → H73_OUTPUT_API + fallback TGI
+- **GATE-007 🧊 CONGELADO** — Manta = Municipio 002 · retomar post-Montecristi v1.0
+- **Roadmap activo**: A✅→B→C→D→E→F (Montecristi v1.0) → Gate 7
+    B: 12 Puertas · C: Dashboard+IA analista · D: GeoTwin · E: Operaciones · F: v1.0
 - **UI norte**: institucional · premium · territorial · ecuatoriana (NO SaaS genérico)
-- **ADR-019 STRONGLY_SUPPORTED · ADR-022 SUPPORTED · ADR-023 ACTIVO**
+- **ADR-019 STRONGLY_SUPPORTED · ADR-022 SUPPORTED · ADR-023 ACTIVO · ADR-024 RATIFICADO**
 
 ## REGLA CANÓNICA NUEVA (2026-06-03)
 **Todo artefacto construido entra al grafo.** Docs, decisiones, specs, planes, versiones históricas.
