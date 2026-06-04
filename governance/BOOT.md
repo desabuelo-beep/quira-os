@@ -40,6 +40,11 @@
 - **UI norte**: institucional · premium · territorial · ecuatoriana (NO SaaS genérico)
 - **ADR-019 STRONGLY_SUPPORTED · ADR-022 SUPPORTED · ADR-023 ACTIVO**
 
+## REGLA CANÓNICA NUEVA (2026-06-03)
+**Todo artefacto construido entra al grafo.** Docs, decisiones, specs, planes, versiones históricas.
+La memoria histórica es la base de QUIRA dialéctica / autorregenerativa.
+Comando: `/graphify . --update` al cierre de cada sesión con nuevos artefactos.
+
 ## REGLAS DE ORO (inviolables — el resto en CLAUDE.md)
 1. **Excel = Estado.** Gold Master es fuente de verdad. Excel→Python→Supabase→UI, nunca al revés.
 2. **Bloomberg Firewall.** NUNCA en UI/público: ICPI·TGI·Ti·QTMP·H01-H99·Gold Master·node IDs (Dom07·C01·CE_226).
