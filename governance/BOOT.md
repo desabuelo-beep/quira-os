@@ -19,7 +19,9 @@
 **MATRIZ_CANONICA** del Excel = ADN compartido. Sin ella: dos mundos. Con ella: un sistema.
 
 ## AHORA (actualizar al cierre)
-- **Sprint**: Sprint A — Contexto Cantonal (ficha viva Montecristi · pantalla base)
+- **Sprint**: Sprint A — Identidad Institucional (ficha viva Montecristi · pantalla base)
+    Auditoría UX hecha (2026-06-04): login + dashboard revisados con Playwright
+    Hallazgos críticos: tagline frío · "53.6% Ruptura Sistémica" sin contexto · dominios=tarjetas no puertas
 - **Grafo QUIRA v2**: `graphify-out/graph.json` ✅ — 1938 nodos · 3238 aristas · MCP activo
     Incluye: ADRs 001-023 · governance · código Python · Gold Master schema · Vault Obsidian 00_CORE + TGI parroquias
     Gold Master TGI = 5to nodo más conectado (degree 26) — hub metodológico confirmado
@@ -44,6 +46,17 @@
 **Todo artefacto construido entra al grafo.** Docs, decisiones, specs, planes, versiones históricas.
 La memoria histórica es la base de QUIRA dialéctica / autorregenerativa.
 Comando: `/graphify . --update` al cierre de cada sesión con nuevos artefactos.
+
+## ARQUITECTURA DE 4 CAPAS (ADR-024 — PROPUESTO 2026-06-04, pendiente ratificar)
+**Pregunta central a ratificar: ¿QUIRA es software municipal u observatorio nacional?**
+Los 3 convergemos en: OBSERVATORIO NACIONAL independiente. (GAD = sujeto observado, no cliente)
+- **Capa A NÚCLEO**: Gold Master · QLEP · Graphify · GeoTwin · conectores · NLP · índices (ya construido)
+- **Capa B OPERACIONES**: CAPACIDAD interna Dylus Lab (NO producto). Hoy = Javo+Claude+Colega
+- **Capa C PRODUCTOS**: Institucional · Ciudadana · Impact · Economic · Cooperación (5 UIs, 1 motor)
+- **Capa D PORTAL** = **PRODUCTO PRINCIPAL**: quiraintelligence.com = observatorio vivo 221 GAD
+    quiraholding.streamlit.app = LABORATORIO donde validamos el motor (no es el producto final)
+- **Montecristi = Municipio 001** (laboratorio). NO cambia sprints; SÍ cambia interpretación.
+- Sesión de arquitectura pendiente para ratificar ADR-024 antes de tocar Capa D.
 
 ## REGLAS DE ORO (inviolables — el resto en CLAUDE.md)
 1. **Excel = Estado.** Gold Master es fuente de verdad. Excel→Python→Supabase→UI, nunca al revés.
