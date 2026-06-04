@@ -263,7 +263,7 @@ Son la **red de validación científica e institucional** del ecosistema.
 - Producción de investigación científica sobre gobernanza territorial
 - Formación de capacidades en gobierno por resultados
 - Contribución al corpus normativo nacional (atomización colaborativa)
-- Producción de observatorios temáticos sobre dominios específicos
+- Producción de radares temáticos sobre dominios específicos
 
 **El escudo institucional:**  
 Cuando actores políticos impugnen los resultados de QUIRA,  

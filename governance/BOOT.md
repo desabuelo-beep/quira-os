@@ -48,12 +48,12 @@ La memoria histórica es la base de QUIRA dialéctica / autorregenerativa.
 Comando: `/graphify . --update` al cierre de cada sesión con nuevos artefactos.
 
 ## ARQUITECTURA DE 4 CAPAS (ADR-024 — PROPUESTO 2026-06-04, pendiente ratificar)
-**Pregunta central a ratificar: ¿QUIRA es software municipal u observatorio nacional?**
-Los 3 convergemos en: OBSERVATORIO NACIONAL independiente. (GAD = sujeto observado, no cliente)
+**Pregunta central a ratificar: ¿QUIRA es software municipal o radar nacional?**
+Los 3 convergemos en: RADAR NACIONAL independiente. (GAD = sujeto observado, no cliente)
 - **Capa A NÚCLEO**: Gold Master · QLEP · Graphify · GeoTwin · conectores · NLP · índices (ya construido)
 - **Capa B OPERACIONES**: CAPACIDAD interna Dylus Lab (NO producto). Hoy = Javo+Claude+Colega
 - **Capa C PRODUCTOS**: Institucional · Ciudadana · Impact · Economic · Cooperación (5 UIs, 1 motor)
-- **Capa D PORTAL** = **PRODUCTO PRINCIPAL**: quiraintelligence.com = observatorio vivo 221 GAD
+- **Capa D PORTAL** = **PRODUCTO PRINCIPAL**: quiraintelligence.com = radar vivo 221 GAD
     quiraholding.streamlit.app = LABORATORIO donde validamos el motor (no es el producto final)
 - **Montecristi = Municipio 001** (laboratorio). NO cambia sprints; SÍ cambia interpretación.
 - Sesión de arquitectura pendiente para ratificar ADR-024 antes de tocar Capa D.

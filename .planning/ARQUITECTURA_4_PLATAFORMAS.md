@@ -50,7 +50,7 @@ El mismo dato puede vivir en las 4 plataformas con **lecturas completamente dist
 ```
 → Cooperación como **evidencia para articular impacto**  
 → El organismo necesita saber: ¿este territorio justifica una inversión?  
-→ Data room. Observatorio. Laboratorio territorial.
+→ Data room. Radar territorial. Laboratorio.
 
 ---
 
@@ -122,7 +122,7 @@ Debe sentirse como: **data room territorial para organismos multilaterales**
 
 Usuarios: BID, CAF, GIZ, COSUDE, PNUD, ONGs, academia  
 Tono: evidencia, rigor, narrativa de impacto  
-Visual: diferente de QUIRA Institucional — más "observatorio", menos "sala de mando"
+Visual: diferente de QUIRA Institucional — más "radar de datos", menos "sala de mando"
 
 ---
 

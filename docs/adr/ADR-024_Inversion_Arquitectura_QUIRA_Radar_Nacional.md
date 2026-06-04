@@ -1,4 +1,4 @@
-# ADR-024 — Inversión de Arquitectura: QUIRA como Observatorio Nacional
+# ADR-024 — Inversión de Arquitectura: QUIRA como Radar Nacional
 
 **Estado**: PROPUESTO — pendiente ratificación en sesión de arquitectura dedicada
 **Fecha**: 2026-06-04
@@ -10,7 +10,7 @@
 
 ## PREGUNTA CENTRAL A RATIFICAR (sesión de arquitectura)
 
-> **¿QUIRA es un software municipal, o un observatorio nacional independiente
+> **¿QUIRA es un software municipal, o un radar nacional independiente
 > de inteligencia pública?**
 
 Si la respuesta es la segunda (y los tres convergemos en que lo es), entonces
@@ -19,7 +19,7 @@ el laboratorio operativo. Este ADR documenta la propuesta; la sesión la ratific
 
 Diferencia que está en juego:
 - **Software municipal** → el municipio es el CLIENTE
-- **Observatorio nacional** → el municipio es el SUJETO OBSERVADO
+- **Radar nacional** → el municipio es el SUJETO OBSERVADO
 
 Cambia narrativa, mercado, posicionamiento, gobernanza del dato y crecimiento.
 
@@ -35,7 +35,7 @@ QUIRA Institucional (raíz)
 ```
 
 Javo planteó una inversión: quiraintelligence.com no es la vitrina de Montecristi
-ni el demo de Institucional. Es el **observatorio vivo e independiente de los 221 GAD
+ni el demo de Institucional. Es el **radar vivo e independiente de los 221 GAD
 del Ecuador**. Y lo que llevamos meses construyendo no es un dashboard municipal —
 es la infraestructura de un sistema operativo de inteligencia pública.
 
@@ -60,7 +60,7 @@ Es la función interna de Dylus Lab que alimenta el núcleo.
 - MAÑANA: analistas de Dylus Lab
 - DESPUÉS: módulo derivado para técnicos municipales (sólo con contrato GAD)
 - Hace: ingesta · scraping DPE/SERCOP · monitoreo mensual · validación SHA-256 · curación
-- NO se vende como UI. Es el motor humano detrás del observatorio.
+- NO se vende como UI. Es el motor humano detrás del radar.
 
 ### Capa C — PRODUCTOS (interfaces sobre el mismo motor)
 - **QUIRA Institucional** → alcaldes y directivos (la médula del sistema)
@@ -71,7 +71,7 @@ Es la función interna de Dylus Lab que alimenta el núcleo.
 
 ### Capa D — PORTAL NACIONAL (el PRODUCTO PRINCIPAL)
 **Corrección del Colega: quiraintelligence.com NO es landing ni demo. Es el producto.**
-- **quiraintelligence.com** = Observatorio Nacional de Gobernanza Explicable
+- **quiraintelligence.com** = Radar Nacional de Gobernanza Explicable
 - El visitante NO entra a ver Montecristi. Entra a ver ECUADOR:
   221 GAD monitoreados · 24 provincias · semáforo nacional · ranking de coherencia
   mapa Ecuador · alertas críticas · ejecución · transparencia · contratación · cooperación
@@ -109,12 +109,12 @@ donde se valida que el motor despierta. Si funciona en 001, escala a los 221.
 
 **Positivas:**
 - Modelo de negocio independiente de la voluntad política del GAD
-- quiraintelligence.com tiene un norte claro: observatorio nacional, no demo
+- quiraintelligence.com tiene un norte claro: radar nacional, no demo
 - Los 5 productos comparten un solo motor → eficiencia de construcción
 - La valoración futura de Dylus Lab cambia: no es una app, es infraestructura nacional
 
 **Riesgos:**
-- Scope creep si se intenta construir el observatorio antes de validar Montecristi
+- Scope creep si se intenta construir el radar antes de validar Montecristi
 - Mitigación: Montecristi v1.0 es prerequisito duro antes de cualquier capa D
 
 ## Relación con otros ADRs

@@ -146,7 +146,7 @@ Esta descomposición está registrada como OBS-QNKC-01 en `QNKC_PRINCIPIOS_INDEX
 
 ---
 
-## QUIRA como Observatorio Externo
+## QUIRA como Radar Externo
 
 Este principio establece una distinción fundamental entre QUIRA y el sistema de autoreporte del propio GAD:
 

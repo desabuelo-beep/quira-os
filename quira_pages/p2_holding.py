@@ -631,7 +631,7 @@ def render() -> None:
     hdr = page_header(
         "⑤ HOLDING MUNICIPAL",
         "Contratación Pública · 5 Entidades · 2023-2026",
-        f"Observatorio SERCOP — datos reales verificados · {total_proc} procesos únicos · {_fmt(total_adj)} adjudicados",
+        f"Radar SERCOP — datos reales verificados · {total_proc} procesos únicos · {_fmt(total_adj)} adjudicados",
     )
 
     # ── BANNER FUENTE ─────────────────────────────────────────────────────────

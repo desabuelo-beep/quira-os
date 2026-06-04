@@ -204,7 +204,7 @@ El Gold Master (motor matemático TGI/ICPI/D1-D5) NO se modifica.
 - Ejemplo: "Si D3 < 60% por 3 trimestres → riesgo pérdida cooperación"
 
 ### FASE 6 — Infraestructura Territorial (Año 3+)
-- Multi-GAD completo, observatorio regional
+- Multi-GAD completo, radar regional
 
 ---
 
