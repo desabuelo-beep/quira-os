@@ -1,15 +1,11 @@
 """
-QUIRA OS — P-00 Inicio
-Pantalla de entrada consolidada · Sprint 2
+QUIRA OS — P-00 Inicio · Sprint A
+Ficha cantonal de identidad institucional — Montecristi v1.0
 
-Muestra el estado real del municipio según el último snapshot Q1:
-  · ICPI global (53.56% → Ruptura Sistémica)
-  · Alertas SAT activas (SAT-III / SAT-IV / SAT-V)
-  · Nivel de riesgo ponderado (ALTO)
-  · Accesos directos por rol
-
-Carga datos desde municipality_snapshots (Supabase).
-Si no hay snapshot activo muestra aviso de ingesta pendiente.
+Muestra quién es el municipio (alcalde, período, presupuesto, parroquias)
+antes de entrar a los 12 dominios de análisis.
+Bloomberg Firewall: ningún índice metodológico (ICPI/TGI/Ti) visible aquí.
+Índices van en Sprint C (dashboards por dominio).
 
 Dylus Lab © 2026
 """
@@ -17,6 +13,7 @@ from __future__ import annotations
 
 import streamlit as st
 from utils.session import get_rol, is_tecnico, navigate_to
+from quira_pages.components.canton_card import render_canton_header
 
 # ── SAT descriptores (fijo — triple anclaje doctrinal) ────────────────────────
 _SAT_INFO: dict[str, dict] = {
@@ -99,154 +96,97 @@ def render() -> None:
     # ── Cargar snapshot ────────────────────────────────────────────────────
     snap, meta = _load_snapshot()
 
-    # ── Header ─────────────────────────────────────────────────────────────
-    st.markdown("""
-<div style="margin-bottom:24px">
-    <div style="font-size:1.1rem;font-weight:900;color:#E2E8F0;letter-spacing:-0.02em">
-        Estado del Municipio
-    </div>
-    <div style="font-size:12px;color:rgba(255,255,255,0.35);margin-top:2px">
-        Montecristi · Q1 2026 · Corte enero–marzo
-    </div>
-</div>
-""", unsafe_allow_html=True)
-
-    # ── Sin snapshot ─────────────────────────────────────────────────────
-    if not snap:
-        st.warning(
-            "⚠️ No hay snapshot activo para Montecristi. "
-            "Ejecuta el pipeline desde **Centro de Control → Panel de Carga** para generar el primer diagnóstico."
-        )
-        if is_tecnico():
-            if st.button("→ Ir al Panel de Carga", type="primary"):
-                navigate_to("carga")
-        return
-
-    # ── Extraer datos del snapshot ────────────────────────────────────────
-    icpi_data   = snap.get("icpi", {})
-    sat_data    = snap.get("sat",  {})
-    tgi_data    = snap.get("tgi",  {})
-    meta_snap   = snap.get("_meta", {})
-
-    icpi_pct    = icpi_data.get("global_pct") or icpi_data.get("global")
-    icpi_clasif = icpi_data.get("clasificacion", "—")
-
-    riesgo_pond = sat_data.get("riesgo_ponderado", 0.0)
-    clasif_sat  = sat_data.get("clasif_riesgo", "—").upper()
+    # ── Extraer alertas SAT del snapshot (si existe) ─────────────────────
+    sat_data    = (snap or {}).get("sat",  {})
     alertas_act = sat_data.get("alertas_activas", [])
     n_activas   = sat_data.get("total_activas", len(alertas_act))
-
-    # TGI: índice principal v6.0 — leer del snapshot; fallback a gm_snapshot.json
-    tgi_score = tgi_data.get("score")
-    if tgi_score is None:
-        from utils.cache_quira import cargar_gm_snapshot
-        _gm = cargar_gm_snapshot()
-        tgi_score = _gm.get("tgi", {}).get("score")
-
+    meta_snap   = (snap or {}).get("_meta", {})
     fecha_corte = meta_snap.get("fecha_corte", "")
     source_lbl  = (meta or {}).get("source", "supabase")
     source_note = "Supabase" if source_lbl == "supabase" else "archivo local"
 
-    icpi_str   = f"{icpi_pct:.1f}%" if icpi_pct is not None else "—"
-    tgi_str    = f"{tgi_score:.2f}%" if tgi_score is not None else "—"
-    riesgo_str = f"{riesgo_pond * 100:.1f}%" if riesgo_pond else "—"
+    # ── Ficha cantonal de identidad (Sprint A) ────────────────────────────
+    render_canton_header(sat_count=n_activas)
 
-    icpi_color = _ICPI_COLOR.get(icpi_clasif, "#F59E0B")
-    riesgo_col = _RIESGO_COLOR.get(clasif_sat, "#F97316")
+    # ── Sin snapshot: aviso al técnico ───────────────────────────────────
+    if not snap:
+        st.info(
+            "📋 Aún no hay diagnóstico activo para Montecristi. "
+            "Ingresá los datos desde **Panel de Carga** para activar el análisis."
+        )
+        if is_tecnico():
+            if st.button("→ Ir al Panel de Carga", type="primary"):
+                navigate_to("carga")
 
-    # ── Métricas principales: TGI primero (índice canónico v6.0), SAT, ICPI ──
-    m_tgi   = _card_metric("TGI",        tgi_str,   "Gobernanza Institucional D1-D5", "#00D4FF" if tgi_score else "#64748B")
-    m_riesg = _card_metric("Riesgo SAT", clasif_sat, f"{n_activas} alertas activas",  riesgo_col)
-    m_icpi  = _card_metric("ICPI",       icpi_str,   icpi_clasif,                     icpi_color)
 
-    st.markdown(f"""
-<div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px">
-    {m_tgi}{m_riesg}{m_icpi}
-</div>
-""", unsafe_allow_html=True)
-
-    # ── Alertas SAT activas ───────────────────────────────────────────────
-    if alertas_act:
+    # ── Alertas SAT activas (detalle) ────────────────────────────────────
+    if snap and alertas_act:
         st.markdown(f"""
 <div style="margin-bottom:8px">
-    <span style="font-size:12px;font-weight:700;color:rgba(255,255,255,0.6);
+    <span style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.5);
                  letter-spacing:0.07em;text-transform:uppercase">
-        🚨 Alertas SAT Activas ({n_activas})
+        Señales de gestión activas ({n_activas})
     </span>
 </div>
 """, unsafe_allow_html=True)
-
         rows_html = ""
         for codigo in alertas_act:
             info = _SAT_INFO.get(codigo)
             if info:
                 rows_html += _sat_row(codigo, info)
-
         if rows_html:
             st.markdown(rows_html, unsafe_allow_html=True)
-    else:
-        st.success("✅ Sin alertas SAT activas en el período.")
 
+    # ── CTA principal: acceder a los 12 dominios ─────────────────────────
+    st.markdown("<div style='height:16px'></div>", unsafe_allow_html=True)
+    col_cta, col_sec = st.columns([2, 3])
+    with col_cta:
+        if st.button("Explorar 12 dominios de gobernanza →",
+                     type="primary", use_container_width=True):
+            navigate_to("command_center")
+
+    # ── Accesos secundarios por rol ───────────────────────────────────────
+    with col_sec:
+        if rol == "Alcalde":
+            c1, c2, c3 = st.columns(3)
+            with c1:
+                if st.button("📉 Brecha", use_container_width=True):
+                    navigate_to("brecha")
+            with c2:
+                if st.button("🏛️ Grupo Municipal", use_container_width=True):
+                    navigate_to("holding")
+            with c3:
+                if st.button("🧮 Proyector", use_container_width=True):
+                    navigate_to("simulador")
+        elif rol == "Concejal":
+            c1, c2, c3 = st.columns(3)
+            with c1:
+                if st.button("🚨 Alertas", use_container_width=True):
+                    navigate_to("sat")
+            with c2:
+                if st.button("🎯 Metas PDyOT", use_container_width=True):
+                    navigate_to("metas")
+            with c3:
+                if st.button("🔍 Transparencia", use_container_width=True):
+                    navigate_to("transparencia")
+        else:  # Técnico
+            c1, c2, c3 = st.columns(3)
+            with c1:
+                if st.button("⬡ Control", use_container_width=True):
+                    navigate_to("sentinel_hub")
+            with c2:
+                if st.button("⬆️ Carga", use_container_width=True):
+                    navigate_to("carga")
+            with c3:
+                if st.button("🚨 Alertas", use_container_width=True):
+                    navigate_to("sat")
+
+    # ── Metadatos ─────────────────────────────────────────────────────────
     st.markdown("<div style='height:20px'></div>", unsafe_allow_html=True)
-
-    # ── Accesos rápidos por rol ───────────────────────────────────────────
-    st.markdown("""
-<div style="font-size:12px;font-weight:700;color:rgba(255,255,255,0.6);
-             letter-spacing:0.07em;text-transform:uppercase;margin-bottom:10px">
-    Accesos Rápidos
-</div>
-""", unsafe_allow_html=True)
-
-    if rol == "Alcalde":
-        c1, c2, c3, c4 = st.columns(4)
-        with c1:
-            if st.button("📊 Tablero Ejecutivo", use_container_width=True):
-                navigate_to("ejecutivo")
-        with c2:
-            if st.button("📉 Causas de la Brecha", use_container_width=True):
-                navigate_to("brecha")
-        with c3:
-            if st.button("🏛️ Grupo Municipal", use_container_width=True):
-                navigate_to("holding")
-        with c4:
-            if st.button("🧮 Proyector", use_container_width=True):
-                navigate_to("simulador")
-
-    elif rol == "Concejal":
-        c1, c2, c3, c4 = st.columns(4)
-        with c1:
-            if st.button("🚨 Alertas SAT", use_container_width=True):
-                navigate_to("sat")
-        with c2:
-            if st.button("🎯 Metas del Plan", use_container_width=True):
-                navigate_to("metas")
-        with c3:
-            if st.button("📉 Causas de la Brecha", use_container_width=True):
-                navigate_to("brecha")
-        with c4:
-            if st.button("🔍 Transparencia", use_container_width=True):
-                navigate_to("transparencia")
-
-    else:  # Técnico
-        c1, c2, c3, c4 = st.columns(4)
-        with c1:
-            if st.button("⬡ Centro de Control", use_container_width=True):
-                navigate_to("sentinel_hub")
-        with c2:
-            if st.button("🚨 Alertas SAT", use_container_width=True):
-                navigate_to("sat")
-        with c3:
-            if st.button("⬆️ Panel de Carga", use_container_width=True):
-                navigate_to("carga")
-        with c4:
-            if st.button("📊 Tablero Técnico", use_container_width=True):
-                navigate_to("dashboard")
-
-    # ── Metadatos del snapshot ────────────────────────────────────────────
-    st.markdown("<div style='height:20px'></div>", unsafe_allow_html=True)
+    _corte_lbl = fecha_corte or "Q1-2026"
     st.markdown(f"""
-<div style="font-size:9px;color:rgba(255,255,255,0.2);border-top:1px solid rgba(255,255,255,0.05);
-            padding-top:10px">
-    Fuente: {source_note} · Corte {fecha_corte} · Pipeline Q1 QUIRA OS Sprint 2
+<div style="font-size:9px;color:rgba(255,255,255,0.18);
+            border-top:1px solid rgba(255,255,255,0.05);padding-top:10px">
+    Fuente: {source_note} · Corte {_corte_lbl} · QUIRA OS Sprint A
 </div>
 """, unsafe_allow_html=True)
