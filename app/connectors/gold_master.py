@@ -192,8 +192,10 @@ def _normalize_h73(raw: dict) -> dict:
     """
     def _float(key, default=None):
         v = raw.get(key)
+        if v is None or (isinstance(v, str) and v.startswith('#')):
+            return default
         try:
-            return float(v) if v is not None else default
+            return float(v)
         except (TypeError, ValueError):
             return default
 
@@ -211,6 +213,12 @@ def _normalize_h73(raw: dict) -> dict:
             return bool(v)
         return default
 
+    # fallback 5D ponderado cuando TGI_SCORE falla en Excel (#VALOR!)
+    _tgi_d = [_float(f"TGI_D{i}") for i in range(1, 6)]
+    _tgi_score = _float("TGI_SCORE")
+    if _tgi_score is None and all(d is not None for d in _tgi_d):
+        _tgi_score = round(sum(_tgi_d) / 5.0, 4)
+
     return {
         "icpi": {
             "global":          _float("ICPI_GLOBAL"),
@@ -224,12 +232,12 @@ def _normalize_h73(raw: dict) -> dict:
             "acumulado_q1":    _float("ICPI_ACUMULADO_Q1"),
         },
         "tgi": {
-            "score": _float("TGI_SCORE"),
-            "d1":    _float("TGI_D1"),
-            "d2":    _float("TGI_D2"),
-            "d3":    _float("TGI_D3"),
-            "d4":    _float("TGI_D4"),
-            "d5":    _float("TGI_D5"),
+            "score": _tgi_score,
+            "d1":    _tgi_d[0],
+            "d2":    _tgi_d[1],
+            "d3":    _tgi_d[2],
+            "d4":    _tgi_d[3],
+            "d5":    _tgi_d[4],
         },
         "financiero": {
             "isp_salud_presup":   _float("ISP_SALUD_PRESUP"),
