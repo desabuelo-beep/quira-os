@@ -139,7 +139,7 @@ Nivel 0 — Fuente Primaria Oficial (máxima autoridad)
 ├── INEC: censos, encuestas, CPV 2022
 ├── eSIGEF: cédulas presupuestarias oficiales
 ├── SERCOP: contratos y PAC verificados
-├── SENPLADES/SENESCYT: planes, PDOT aprobados
+├── SNP/SENESCYT: planes, PDOT aprobados
 └── CPCCS: actas de rendición de cuentas
 
 Nivel 1 — Síntesis Metodológica Propia

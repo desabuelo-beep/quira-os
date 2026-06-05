@@ -255,7 +255,7 @@ MANIFEST: list[dict] = [
     {
         "archivo":          "SNP-SNP-2023-0049-A-PDOT-2023.docx",
         "sigla":            "LINEAMIENTOS-PDOT-2023",
-        "nombre":           "Lineamientos y Metodología para la Actualización de PDOTs 2023 — SENPLADES",
+        "nombre":           "Lineamientos y Metodología para la Actualización de PDOTs 2023 — SNP",
         "jerarquia":        3,
         "milestone":        "F0.3",
         "tipo":             "guia",

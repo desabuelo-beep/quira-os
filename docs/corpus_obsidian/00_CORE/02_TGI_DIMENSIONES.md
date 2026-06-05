@@ -115,7 +115,7 @@ tags: [tgi, dimensiones, d1, d2, d3, d4, d5, formulas, core]
 	
 	**Qué mide:** Capacidad operativa, técnica y administrativa del GAD para gestionar sus competencias. Incluye: existencia de unidades técnicas, sistemas de información, capacidad de contratación.
 	
-	**Norma habilitante:** Art. 338 COOTAD — competencias y capacidades de los GAD municipales. ICO — Índice de Capacidad Operativa (SENPLADES/PLADES).
+	**Norma habilitante:** Art. 338 COOTAD — competencias y capacidades de los GAD municipales. ICO — Índice de Capacidad Operativa (SNP/PLADES).
 	
 	**Nota metodológica:** El valor 100% para GADM Montecristi se debe a que la capacidad institucional base fue verificada como suficiente. La escala es binaria-gradual: GADs que no cumplen requisitos mínimos reciben penalización directa.
 	

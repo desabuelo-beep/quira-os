@@ -37,7 +37,7 @@ tags: [motor, fuentes, instituciones, esigef, sigad, sercop, inec, cpccs, cne, d
 
 | Fuente | Institución | Qué produce | Mandato legal |
 |--------|-------------|-------------|--------------|
-| SIGAD | SENPLADES / SETEPLAN | Reporte de metas PDyOT por ciclo | COPFP Art. 50 |
+| SIGAD | SNP / SETEPLAN | Reporte de metas PDyOT por ciclo | COPFP Art. 50 |
 | PDyOT 2023-2027 | GADM Montecristi | 25 metas estratégicas | COOTAD Art. 295 |
 | POA anual | GADM + 3 entes adscritos | Programación operativa anual | COPFP Art. 97 |
 | Plan de Gobierno CNE | Candidato electo | Compromisos electorales | Código Democracia |
@@ -71,7 +71,7 @@ tags: [motor, fuentes, instituciones, esigef, sigad, sercop, inec, cpccs, cne, d
 |--------|-------------|-------------|--------------|
 | Censo de Población y Vivienda | INEC | NBI por parroquia, acceso servicios | Constitución Art. 154 |
 | RIPS | Ministerio Salud / INEC | Población actualizada por zona | — |
-| SIGAD inversiones | SENPLADES / GAD | Inversión declarada por parroquia | COPFP Art. 50 |
+| SIGAD inversiones | SNP / GAD | Inversión declarada por parroquia | COPFP Art. 50 |
 | PDyOT Diagnóstico | GADM + equipo técnico | Análisis territorial base | COOTAD Art. 295 |
 | Informe Presupuesto Participativo | GADM | Prioridades ciudadanas por parroquia | LOPC Art. 67 |
 
@@ -87,7 +87,7 @@ tags: [motor, fuentes, instituciones, esigef, sigad, sercop, inec, cpccs, cne, d
 
 | Fuente | Institución | Qué produce | Mandato legal |
 |--------|-------------|-------------|--------------|
-| Reporte ICM SIGAD | SENPLADES / SETEPLAN | Índice Cumplimiento Metas por GAD | COPFP Art. 50 |
+| Reporte ICM SIGAD | SNP / SETEPLAN | Índice Cumplimiento Metas por GAD | COPFP Art. 50 |
 | Actas RdC | CPCCS | Verificación proceso rendición cuentas | LOPC Art. 89 · COOTAD Art. 302 |
 | Orgánico estructural | GADM | Resolución estructura institucional | LOSEP Art. 52 |
 | Contratos personal | GADM (Talento Humano) | Capacidad técnica instalada | LOSEP Art. 17 |
@@ -103,7 +103,7 @@ tags: [motor, fuentes, instituciones, esigef, sigad, sercop, inec, cpccs, cne, d
 
 ```
 PLANIFICACIÓN                    FISCALIZACIÓN
-SENPLADES / SETEPLAN             Contraloría General del Estado (CGE)
+SNP / SETEPLAN                   Contraloría General del Estado (CGE)
     ↓ SIGAD, COPFP                   ↓ Auditorías, NCI
     
 FINANZAS                         PARTICIPACIÓN
@@ -115,7 +115,7 @@ SERCOP                           INEC
     ↓ PAC, LOSNCP                    ↓ Censo, NBI, RIPS
     
 TERRITORIO                       GOBIERNO LOCAL
-SENPLADES / SETEPLAN             GADM Montecristi (4 entes)
+SNP / SETEPLAN                   GADM Montecristi (4 entes)
     ↓ PDyOT, Ordenamiento           ↓ todo lo anterior
 ```
 

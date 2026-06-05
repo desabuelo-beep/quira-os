@@ -9,7 +9,7 @@ Metodología de scores ODS:
     ODS 10 → IET_PERCAPITA  = 44.80% → score 45
     ODS 16 → IGP_REF_2025   = 27.98% → score 28
   Resto (13 ODS): score indicativo basado en estado cualitativo PDOT
-  → no confundir con medición oficial ODS SENPLADES/ONU
+  → no confundir con medición oficial ODS SNP/ONU
 Dylus Lab © 2026
 """
 import streamlit as st
@@ -268,7 +268,7 @@ def render() -> None:
     <span>🟡 Parcial = vinculación incompleta o en proceso</span>
     <span>🔴 Crítico = brecha severa · riesgo mandato 2027</span>
     <span style="color:rgba(255,184,0,.7)">
-      ⚠ Barra inferior: ODS 5/6/10/16 derivados de H73 · Resto indicativo PDOT · Pendiente medición oficial SENPLADES
+      ⚠ Barra inferior: ODS 5/6/10/16 derivados de H73 · Resto indicativo PDOT · Pendiente medición oficial SNP
     </span>
   </div>
 </div>"""

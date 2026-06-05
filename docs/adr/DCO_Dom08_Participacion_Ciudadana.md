@@ -171,7 +171,7 @@ actores:
 
   articulador:
     - CPCCS (Consejo de Participación Ciudadana y Control Social)
-    - SENPLADES / SENPLADES-R (orientación metodológica)
+    - SNP (Secretaría Nacional de Planificación — orientación metodológica)
     - CNP (Consejo Nacional de Planificación — articulación PDOT)
 
   controlador:

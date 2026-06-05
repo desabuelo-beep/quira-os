@@ -41,7 +41,7 @@ NO_PUEDE: list[str] = [
 SAFE_MODE_PHRASES: list[str] = [
     "No hay evidencia suficiente en el Gold Master para responder esto con precisión.",
     "Este dato no está disponible en H73_OUTPUT_API ni H99_ENGINE_CORE. "
-    "Recomiendo consultar la fuente primaria (INEC, SENPLADES, CPCCS).",
+    "Recomiendo consultar la fuente primaria (INEC, SNP, CPCCS).",
     "El indicador está marcado como 'Sin dato oficial' en el sistema. "
     "Pendiente de certificación.",
 ]

@@ -144,7 +144,7 @@ actores:
     # El actor que RECIBE el cumplimiento o el derecho
 
   articulador:
-    - "[CPCCS | CNE | SENPLADES | etc.]"
+    - "[CPCCS | CNE | SNP | etc.]"
     # El actor que HABILITA o COORDINA (no sanciona)
 
   controlador:

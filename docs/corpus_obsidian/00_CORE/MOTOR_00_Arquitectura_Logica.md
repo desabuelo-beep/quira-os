@@ -107,10 +107,10 @@ Cada silo tiene fuentes institucionales específicas — organismos del Estado q
 | Silo | Fuentes principales |
 |------|-------------------|
 | S1 Normatividad | Registro Oficial, CPCCS, CGE |
-| S2 Planificación | SIGAD (SENPLADES/SETEPLAN), POA institucional, CNE |
+| S2 Planificación | SIGAD (SNP/SETEPLAN), POA institucional, CNE |
 | S3 Ejecución | eSIGEF (Ministerio Finanzas), SERCOP, PAC |
 | S4 Territorio | INEC (Censo, NBI), SIGAD inversiones, PDyOT |
-| S5 Institucionalidad | SENPLADES (ICM), CPCCS (RdC), GAD (estructura orgánica) |
+| S5 Institucionalidad | SNP (ICM), CPCCS (RdC), GAD (estructura orgánica) |
 
 → Desarrollo completo en [[MOTOR_02_Fuentes_Institucionales]]
 

@@ -1,0 +1,1 @@
+SENPLADES fue reorganizada como SNP (Secretaría Nacional de Planificación) en 2021 mediante Decreto Ejecutivo 723. En QUIRA, usar siempre SNP como entidad activa. SENPLADES solo aparece en contextos históricos pre-2021.

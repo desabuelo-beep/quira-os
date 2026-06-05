@@ -686,7 +686,7 @@ def _render_dom12_tecnico() -> None:
   <div style="font-size:8px;color:var(--amber);margin-bottom:8px;
               padding:4px 8px;background:rgba(255,184,0,.07);border-radius:4px;
               border:1px solid rgba(255,184,0,.2)">
-    ⚠ Avance % pendiente de medición oficial SENPLADES/ONU Mujeres · Estado cualitativo derivado del PDOT
+    ⚠ Avance % pendiente de medición oficial SNP/ONU Mujeres · Estado cualitativo derivado del PDOT
   </div>
   {"".join(_ods5_row(t) for t in ODS5_TARGETS)}
   <div style="margin-top:8px;font-size:9px;color:var(--muted)">
