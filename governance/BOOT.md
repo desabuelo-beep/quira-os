@@ -30,8 +30,10 @@
     Meta: click en dominio = pantalla completa, no modal ni popup
 - **Pendiente verificar**: UI Sprint A con `streamlit run app.py` (Tarea A3 del plan)
     Verificar: ficha cantonal renderiza · CTA navega · SAT badge aparece si hay alertas
-- **Grafo**: pendiente `/graphify . --update` con artefactos de esta sesión
-    (ADR-024 nuevo nombre + canton_card.py + p0_inicio.py + BOOT.md)
+- **Histórico** `fb78876` (2026-06-08): corpus conversacional ingresado a `governance/historico/`
+    `historico-construccion-quira.md` (392 KB) + `ultima-conversacion-director-claude.md` (35 KB)
+- **Grafo**: pendiente `/graphify . --update` con artefactos acumulados
+    (ADR-024 + canton_card.py + p0_inicio.py + BOOT.md + 2 docs históricos nuevos)
 - **Gate 6.6 ✅ COMPLETO**: 51/51 siglas MCR · 0 huérfanos · ICPI=69.93% explicable
 - **Corpus**: ~13,509 chunks · 65 tablas LOTAIP · Neo4j: 38/58
 - **Connector LISTO**: `app/connectors/gold_master.py` → H73_OUTPUT_API + fallback TGI
