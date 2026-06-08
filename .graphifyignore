@@ -40,6 +40,11 @@ data/
 HANDOFF_GITHUB.md
 *.html
 
+# Corpus conversacional histórico — memoria para humanos, no para el grafo
+# Ingerir causaría fragmentación de nodos (Gold Master, ICPI, ADRs repetidos ~100x)
+# Ver análisis en sesión 2026-06-08: Opción A recomendada
+governance/historico/historico-construccion-quira.md
+
 # Logs y temporales
 *.log
 *.tmp
