@@ -147,6 +147,38 @@ D19 (Género)         ──┘
 
 ---
 
+### Tipo D — Corpus Fundacional
+
+Dominios que **no producen métricas operacionales ni sintetizan indicadores**. Proveen el marco normativo y territorial dentro del cual todos los demás tipos adquieren significado. Viven principalmente en **Supabase C1 Corpus** como embeddings vectorizados con sus relaciones causales, y alimentan el sistema desde la capa de conocimiento.
+
+**Dominios confirmados:** D01 (Marco Legal) · D05 (PDOT)
+*Confirmación: Javo Fundador, sesión 2026-06-08*
+
+Características:
+- Vectorizados en Supabase C1 con relaciones causales explícitas (no son indicadores — son contexto semántico)
+- No aparecen como vectores en D06 (no contribuyen al ICPI — contribuyen a su interpretación)
+- Alimentan a los Generadores como referencias normativas y de meta: `meta_pdot_2027` (D10), `METAS_PDOT` (D08), checklist PDOT (D09)
+- El PDOT fue cargado específicamente para territorializar en GeoTwin (Layer 3)
+- El Marco Legal establece las relaciones causales entre artículos constitucionales que el ACK Registry implementa
+
+```
+CAPA 0 — CORPUS FUNDACIONAL (Supabase C1 · vectorizado)
+  D01 Marco Legal  → relaciones causales ACK Registry · contexto normativo
+  D05 PDOT         → metas territoriales (→ D08, D09, D10) · GeoTwin (→ p4_geotwin.py)
+
+       ↓  alimenta como referencia  ↓
+
+CAPA 1 — GENERADORES Tipo A  (D04 D07 D08 D10 D02 D03 D12)
+CAPA 2 — SINTETIZADOR Tipo B  (D06)
+CAPA 3 — PROTOCOLO Tipo C    (D09)
+```
+
+**Por qué D01 y D05 no son Generadores:** un Generador produce evidencia verificable sobre el cumplimiento de una función constitucional hoy. El Marco Legal y el PDOT no se "cumplen" en tiempo real — definen el contrato que los Generadores deben demostrar que se está cumpliendo. Son la referencia, no la medición.
+
+**Por qué D01 y D05 no están en los vectores de D06:** D06 sintetiza el estado operacional del sistema. D01/D05 son el estándar contra el que ese estado se mide. Incluirlos como vectores equivaldría a incluir la constitución como variable dentro de un indicador de cumplimiento constitucional.
+
+---
+
 ## Hallazgos no anticipados por el diseño original
 
 Las excavaciones revelaron tres hallazgos que no estaban formalizados antes de este ADR.
@@ -313,8 +345,8 @@ Los siguientes dominios no fueron excavados en esta sesión. Son necesarios para
 | D02 — Presupuesto Municipal | Generador fiscal (ISP, IED → D06) | Alta |
 | D03 — Contratación Pública | Generador contractual (LOSNCP, SERCOP → D06) | Alta |
 | D12 — Inclusión Social | Sensor social (probable Tipo A) | Media |
-| D01 — Identidad Cantonal | Posible caso especial (no aparece en vectores D06) | Baja |
-| D05 — Marco Legal | Posible caso especial (no aparece en vectores D06) | Baja |
+| D01 — Marco Legal | **✅ RESUELTO** — Tipo D Corpus Fundacional · vectorizado Supabase C1 · ACK Registry | N/A |
+| D05 — PDOT | **✅ RESUELTO** — Tipo D Corpus Fundacional · vectorizado Supabase C1 · feeds GeoTwin + D08/D09/D10 | N/A |
 | D11 — (DESHABILITADO) | `disabled: True` en command center — no excavar | N/A |
 
 ---
@@ -339,8 +371,11 @@ Los siguientes dominios no fueron excavados en esta sesión. Son necesarios para
 > Una puerta Tipo A es un monitor (¿qué evidencia existe hoy?).
 > Una puerta Tipo B es un diagnóstico (¿qué dice la síntesis de la evidencia?).
 > Una puerta Tipo C es un preparador (¿qué falta para que el protocolo pase?).
+> Un dominio Tipo D no tiene puerta operacional — tiene entrada de corpus (Supabase ingest).
 >
-> Diseñar una puerta Tipo C como si fuera Tipo A produce un checklist que parece un monitor. Diseñar una puerta Tipo B como si fuera Tipo A produce un dashboard que pretende generar datos que no tiene.
+> Diseñar una puerta Tipo C como si fuera Tipo A produce un checklist que parece un monitor.
+> Diseñar una puerta Tipo B como si fuera Tipo A produce un dashboard que pretende generar datos que no tiene.
+> Intentar construir una puerta operacional para un Tipo D produce una pantalla que muestra un PDF — porque el PDOT y el Marco Legal no son indicadores, son el estándar.
 
 ---
 
@@ -348,7 +383,7 @@ Los siguientes dominios no fueron excavados en esta sesión. Son necesarios para
 
 | Componente | Estado |
 |---|---|
-| Taxonomía 3 tipos | ✅ RATIFICADA — evidencia de 6 excavaciones |
+| Taxonomía 4 tipos | ✅ RATIFICADA — 3 tipos por excavación + Tipo D por confirmación Javo Fundador 2026-06-08 |
 | C01 confirmado en código | ✅ CONFIRMADO — `p07_transparencia.py` líneas 82-113, 118-139 |
 | C-RDC formalizado | ✅ NUEVO — spec completa en este ADR |
 | ICM/ICPI como propuesta de valor | ✅ CONFIRMADO — `p16_gobernanza.py` líneas 100-104 |
@@ -360,5 +395,6 @@ Los siguientes dominios no fueron excavados en esta sesión. Son necesarios para
 
 ---
 
-*ADR-026 v1.0 · QUIRA Gov · Dylus Lab © 2026*
-*Siguiente: Excavaciones D02 + D03 + D12 → cierre taxonomía → Bloomberg Firewall → Sprint B FASE 2*
+*ADR-026 v1.1 · QUIRA Gov · Dylus Lab © 2026*
+*v1.0 → v1.1: Tipo D Corpus Fundacional añadido (D01 Marco Legal + D05 PDOT) — confirmación Javo Fundador 2026-06-08*
+*Siguiente: Excavaciones D02 + D03 + D12 → cierre taxonomía Tipo A → Bloomberg Firewall → Sprint B FASE 2*
