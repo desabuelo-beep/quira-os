@@ -26,13 +26,20 @@
     → ADR-026 v1.3: `docs/adr/ADR-026_Topologia_Funcional_QUIRA.md`
     → MAPA_FUNCIONAL_QUIRA_v1: `docs/architecture/MAPA_FUNCIONAL_QUIRA_v1.md`
     → QUIRA_DATA_REGISTRY_v1: `docs/architecture/QUIRA_DATA_REGISTRY_v1.md`
-- **FASE 1 Operaciones ✅ CASI COMPLETA** — último commit `2f8a98f` (2026-06-09):
+- **FASE 1 Operaciones — EN CURSO D02** — último commit `1879d84` (2026-06-09):
     ✅ Bloomberg Firewall `2571e23`: p7_brecha · p10_inversion · p15_transparencia (deprecated) · m3_municipal · p_cadena
     ✅ D03 routing `205af2a`: mod=metas → p8_metas.py (IFE-A 72.73% ahora accesible)
     ✅ QUIRA_DATA_REGISTRY_v1 `2f8a98f`: ~32 LIVE · 10 MISSING · 2 HARDCODED · 1 PENDIENTE
+    ✅ D02 Migración 002 `1879d84`: 5 tablas Supabase + 21 requisitos + 21 emisores ancla
+       fondos_emisores · fondos_convocatorias · fondos_requisitos · fondos_conv_requisitos · fondos_elegibilidad
+- **D02 EN CONSTRUCCIÓN** (siguiente paso `app/engines/fondos_matcher.py`):
+    ✅ A.0 Schema 5 tablas en Supabase (aplicado y verificado 2026-06-09)
+    ✅ A.1 Semilla: 21 requisitos canónicos (4 familias) + 21 emisores ancla (todos los tipos)
+    🔄 B. fondos_matcher.py — lee indicadores Gold Master → calcula estado_quira + brechas + potencial_usd
+    ⬜ C. fondos_simulator.py — "si PSG sube X, qué se desbloquea"
+    ⬜ D. skill /fondos-radar + rewrite p18_cooperacion.py
 - **PENDIENTES BLOQUEANTES pre-Sprint B**:
-    🔴 D02 REDISEÑO: `p18_cooperacion.py` bonds retirados → skill `/fondos-radar` (~15 días)
-       Concepto: reembolsable/no-reembolsable · GAD/ONG/OSC/Academia/Startup/coaliciones
+    🔴 D02 REDISEÑO: fondos_matcher.py (siguiente) → fondos_simulator.py → /fondos-radar → p18
     🔴 IFE-E (D03): trazabilidad POA→PAC→eSIGEF → Dirección Financiera GAD
     🟠 D12 datos faltantes: IGM-A,B,C,F (RRHH · DAF · PNUD · CNE) — solicitar formalmente
     🟡 C-RDC en Neo4j: YAML spec lista en ADR-026 → ejecutar Cypher AuraDB
