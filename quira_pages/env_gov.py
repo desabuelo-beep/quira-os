@@ -287,6 +287,20 @@ def _render_situacion() -> None:
         st.error(f"Módulo Situación no disponible: {e}")
 
 
+def _render_metas_d03() -> None:
+    """
+    Dom03 — Metas PDOT e Integridad del Mandato · p8_metas.py
+    IFE-A: 48/66 promesas CNE vinculadas al PDOT (72.73% · auditado H73)
+    IFE-E: trazabilidad POA→PAC→eSIGEF (pendiente Q2-2026)
+    Wiring: ADR-026 D03 routing · 2026-06-09
+    """
+    try:
+        from quira_pages.p8_metas import render as _r
+        _r()
+    except Exception as e:
+        st.error(f"Módulo Metas PDOT no disponible: {e}")
+
+
 def _render_alertas() -> None:
     try:
         from quira_pages.m2_alertas import render as _r
@@ -436,6 +450,7 @@ _MODULE_RENDER: dict[str, tuple] = {
     # Sección Ejecutiva
     "inicio":       (_render_inicio,       "Centro de Mando"),
     "situacion":    (_render_situacion,    "Situación Institucional"),
+    "metas":        (_render_metas_d03,   "Metas PDOT · IFE"),          # Dom03 · ADR-026
     "alertas":      (_render_alertas,      "Alertas y Riesgos SAT"),
     "municipal":    (_render_municipal,    "Gestión Municipal"),
     "ods":          (_render_ods,          "ODS y Metas PDOT"),

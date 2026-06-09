@@ -115,11 +115,11 @@ _DOMAINS_12: list[dict] = [
     },
     {
         "id": "d03", "num": "03",
-        "nombre": "Seguimiento de Metas",
+        "nombre": "Metas PDOT · Mandato",
         "estado": "EN RUTA",
         "metric": "94.6%",
-        "narrativa": "53 de 56 metas avanzan en cronograma · rezago en Agua Potable y Vialidad Rural.",
-        "temp": "alerta", "mod": "situacion",
+        "narrativa": "53 de 56 metas en cronograma · IFE-A 72.73%: 48/66 promesas CNE formalizadas en PDOT.",
+        "temp": "alerta", "mod": "metas",  # Dom03 · ADR-026 routing fix 2026-06-09
     },
     # ── Fila 2 ────────────────────────────────────────────────────────────────
     {
