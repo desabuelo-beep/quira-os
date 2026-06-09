@@ -131,7 +131,7 @@ def render() -> None:
     </div>
     <div style="font-size:28px;font-weight:900;color:var(--green);
                 font-family:var(--mono)">${inversion_ejec/1_000_000:.2f}M</div>
-    <div style="font-size:9px;color:var(--muted);margin-top:3px">Ti_norm 70% · ritmo adecuado</div>
+    <div style="font-size:9px;color:var(--muted);margin-top:3px">Ritmo de ejecución Q1 adecuado</div>
   </div>
   <div style="background:rgba(255,184,0,.06);border:1px solid rgba(255,184,0,.2);
               border-radius:12px;padding:16px;text-align:center">
@@ -149,7 +149,7 @@ def render() -> None:
     </div>
     <div style="font-size:28px;font-weight:900;color:var(--red);
                 font-family:var(--mono)">5.4×</div>
-    <div style="font-size:9px;color:var(--muted);margin-top:3px">Cabecera $217 vs Isabel M. $40 · H99</div>
+    <div style="font-size:9px;color:var(--muted);margin-top:3px">Cabecera $217 vs Isabel M. $40 · datos Q1-2026</div>
   </div>
 </div>"""
 

@@ -62,7 +62,7 @@ def render() -> None:
             "impacto": -2.8,
             "valor": 44.80,
             "color": "amber",
-            "descripcion": "Isabel Muentes $40/hab vs cabecera $217/hab · brecha 5.4× · H99 Q1-2026",
+            "descripcion": "Isabel Muentes $40/hab vs cabecera $217/hab · brecha 5.4× · datos Q1-2026",
             "accion": "Redirigir inversión Q2 · mínimo $80/hab parroquias críticas",
         },
         {

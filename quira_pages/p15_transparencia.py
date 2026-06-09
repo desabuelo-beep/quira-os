@@ -1,12 +1,24 @@
 """
-QUIRA OS v0.1 — P-15 Transparencia LOTAIP
-ITAM 56% · IOC 17.71% · 21 artículos LOTAIP · Portal Municipal
-Dylus Lab © 2026
+# DEPRECATED — P-15 Transparencia LOTAIP
+# ─────────────────────────────────────────────────────────────────────────────
+# ESTADO: CÓDIGO MUERTO — NO ACTIVAR
+#
+# Reemplazado por: quira_pages/p07_transparencia.py (canónico, Sprint 4)
+# Router activo:   env_gov.py → transparencia → p07_transparencia.py
+# Razón de retiro: Bloomberg Firewall (2026-06-09, ADR-026 §Hallazgo 3)
+#   · Expone ITAM e IOC como códigos técnicos en UI pública
+#   · Implementación sin QTMP circuit ni dualidad C4/C5 (QNKC-P01)
+#   · Datos hardcodeados sin snapshot ni MNT_UUID
+#
+# Preservado para referencia histórica:
+#   · LOTAIP_ARTS: los 21 artículos con estado Q1-2026 siguen siendo
+#     datos válidos — están también en p07_transparencia.py actualizado
+#   · render(): desactivado con excepción explícita
+#
+# Para reactivar: NO. Usar p07_transparencia.py y extenderlo si es necesario.
+# ─────────────────────────────────────────────────────────────────────────────
+# QUIRA OS v0.1 — Dylus Lab © 2026
 """
-import streamlit as st
-from data.loader import load_all
-from utils.session import is_tecnico
-from quira_pages.html_engine import render_page, page_header
 
 # ── 21 ARTÍCULOS LOTAIP · Estado Q1-2026 ─────────────────────────────────────
 LOTAIP_ARTS = [
@@ -59,9 +71,18 @@ def _art_row(a: dict) -> str:
 
 
 def render() -> None:
-    data      = load_all()
-    show_tech = is_tecnico()
-    indices   = data["indices"]
+    # DEPRECATED — este módulo está desactivado.
+    # El router env_gov.py apunta a p07_transparencia.py.
+    # Si ves este mensaje en UI, hay un error de routing — corregir en env_gov.py.
+    raise RuntimeError(
+        "p15_transparencia.py DEPRECATED. "
+        "Usar quira_pages/p07_transparencia.py. "
+        "Ver ADR-026 §Hallazgo 3 y Bloomberg Firewall 2026-06-09."
+    )
+    # ── código original preservado para referencia — nunca ejecutado ──────────
+    data      = load_all()  # noqa: F841
+    show_tech = is_tecnico()  # noqa: F841
+    indices   = data["indices"]  # noqa: F841
     itam_val  = indices.get("ITAM", {}).get("valor", 56.0)
     ioc_val   = indices.get("IOC",  {}).get("valor", 17.71)
 

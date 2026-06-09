@@ -34,7 +34,7 @@ def render() -> None:
 
     with tab_trans:
         try:
-            from quira_pages.p15_transparencia import render as _r
+            from quira_pages.p07_transparencia import render as _r  # p15 DEPRECATED 2026-06-09
             _r()
         except Exception as e:
             st.error(f"Transparencia no disponible: {e}")

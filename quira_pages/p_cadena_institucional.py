@@ -18,7 +18,7 @@ Recicla:
   p12_cadena      → POA→PAC→SERCOP→eSIGEF
   utils/cache_quira → Presupuesto (snapshot financiero)
   p17_rdc         → Rendición de Cuentas
-  p15_transparencia → LOTAIP
+  p07_transparencia → LOTAIP (p15 DEPRECATED 2026-06-09)
 
 Dylus Lab © 2026
 """
@@ -468,11 +468,11 @@ def render() -> None:
         st.markdown(
             '<div style="font:700 10px/1 Inter,sans-serif;color:rgba(255,255,255,.4);'
             'letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px">'
-            'LOTAIP · 21 Artículos · ITAM 56% · IOC 17.71% · DPE API</div>',
+            'LOTAIP · 21 Artículos · Auditoría publicación portal · DPE API</div>',
             unsafe_allow_html=True,
         )
         try:
-            from quira_pages.p15_transparencia import render as _r_trans
+            from quira_pages.p07_transparencia import render as _r_trans  # p15 DEPRECATED 2026-06-09
             _r_trans()
         except Exception as e:
             st.error(f"Módulo Transparencia LOTAIP no disponible: {e}")
