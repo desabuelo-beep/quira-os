@@ -48,18 +48,31 @@
        Renderer usa demo_data.INDICES para display (escala % correcta). Matcher usa Gold Master (correcto).
     ⚠️  NOTA conv_requisitos: nuevas convocatorias del Fetcher necesitan requisitos manuales en Supabase
        antes de que el Matcher las evalúe. Ver skill /fondos-radar §"Nota importante sobre conv_requisitos".
-- **C-RDC FORMALIZACIÓN — COMPLETA** (commit `2d814c3` · 2026-06-09):
+- **SEGURIDAD** (commit pendiente · 2026-06-09): Migración 004 — RLS habilitado en 23/23 tablas Supabase.
+    Correo Supabase 08-Jun detectó `rls_disabled_in_public`. Resuelto: 0 tablas expuestas.
+    App no afectado (conexión directa postgres bypasea RLS por diseño).
+- **PD-GEN-01 — PRINCIPIO DE DISEÑO GÉNERO** (directorio: ADR-026 §Género · 2026-06-09):
+    Descubrimiento: el eje Género de QUIRA se estructura primariamente sobre brechas TERRITORIALES.
+    Los indicadores institucionales (PSG, IGM-A, IGM-B) son indicadores de CAPACIDAD (20%).
+    Los indicadores territoriales (violencia, cuidados, empleo, movilidad, seguridad) son RESULTADOS (80%).
+    Fuente territorial: PDOT vigente (PDOT Bicentenario 2023 ya en corpus) agrega INEC/DINASED/Banco Central.
+    D12 Territorial ≠ nueva campaña de levantamiento = extracción estructurada del PDOT (ya ingresado).
+    PDOT → GeoTwin: la Capa B de género territorial se territorializa espacialmente en el GeoTwin del cantón.
+    Narrativa que cambia: "PSG=12.83%" → "capacidad institucional insuficiente → brechas territoriales persisten
+    → $300K ONU Mujeres bloqueados → programas territoriales no ejecutados"
+    Sprint B: extraer variables Capa B del corpus PDOT (violencia · jefatura femenina · cuidados · empleo).
+- **C-RDC FORMALIZACIÓN — COMPLETA** (commit `96a98c9` · 2026-06-09):
     ✅ `scripts/cypher/001_crdc_circuit.cypher` — topología convergente + 6 nodos + EvaluacionCircuito MCR-001
     ✅ `scripts/cypher/apply_cypher.py` — runner AuraDB (requiere reanudar instancia 6c134c35)
     ✅ `app/connectors/neo4j_crdc.py` — get_crdc_state() + simulate_crdc_mejora() + fallback MCR-001
     ✅ `quira_pages/p17_rdc.py` — bloque C-RDC live wired (6 nodos · semáforos · impacto D02 $5.3M)
-    ⚠️  Cypher pendiente de aplicar: reanudar AuraDB en console.neo4j.io → instancia 6c134c35 → Resume
-        Luego: `python scripts/cypher/apply_cypher.py scripts/cypher/001_crdc_circuit.cypher`
+    ✅ AuraDB reanudado + Cypher 29/29 aplicado · Fuente Neo4j: True · live en p17_rdc.py
     Verificado CLI: BLOQUEADO · 2/6 nodos · $5.3M · PSG→20% sube nodo pero circuito sigue bloqueado
     (ITAM 56%<80% + ISP 14.58%<25% = 2 críticos que impiden desbloqueo total)
 - **PENDIENTES BLOQUEANTES pre-Sprint B**:
     ✅ D02 completo — 5/5 pasos (Motor de Elegibilidad Financiera operacional)
-    ✅ C-RDC Neo4j — código completo, Cypher listo. Único pendiente: reanudar AuraDB y aplicar
+    ✅ C-RDC Neo4j — COMPLETO Y LIVE. AuraDB activo. Fuente Neo4j: True.
+    ✅ Supabase RLS — 23/23 tablas protegidas. Vulnerabilidad Supabase resuelta.
     🔴 IFE-E (D03): trazabilidad POA→PAC→eSIGEF → Dirección Financiera GAD
     🟠 D12 datos faltantes: IGM-A,B,C,F (RRHH · DAF · PNUD · CNE) — solicitar formalmente
     🟡 C02 + C03: specs parciales ADR-017 → completar
