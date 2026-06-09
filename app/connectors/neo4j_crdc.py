@@ -251,7 +251,10 @@ def _query_crdc_from_neo4j(session, gad_id: str) -> dict | None:
     Consulta EvaluacionCircuito + C9ResultadoTerritorial por nodo.
     Retorna None si no existen datos para este gad_id.
     """
-    eval_id = f"EVAL_CRDC_{gad_id.replace('-', '_')}_2026"
+    # Convención de ID en AuraDB: EVAL_CRDC_<GAD_SIGLA>_<AÑO>
+    # MCR-001 → MCR (solo la sigla, sin el número de municipio)
+    gad_sigla = gad_id.split("-")[0]
+    eval_id = f"EVAL_CRDC_{gad_sigla}_2026"
 
     # Evaluación general
     ev = session.run("""
