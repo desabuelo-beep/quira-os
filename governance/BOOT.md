@@ -48,20 +48,29 @@
        Renderer usa demo_data.INDICES para display (escala % correcta). Matcher usa Gold Master (correcto).
     ⚠️  NOTA conv_requisitos: nuevas convocatorias del Fetcher necesitan requisitos manuales en Supabase
        antes de que el Matcher las evalúe. Ver skill /fondos-radar §"Nota importante sobre conv_requisitos".
+- **C-RDC FORMALIZACIÓN — COMPLETA** (commit `2d814c3` · 2026-06-09):
+    ✅ `scripts/cypher/001_crdc_circuit.cypher` — topología convergente + 6 nodos + EvaluacionCircuito MCR-001
+    ✅ `scripts/cypher/apply_cypher.py` — runner AuraDB (requiere reanudar instancia 6c134c35)
+    ✅ `app/connectors/neo4j_crdc.py` — get_crdc_state() + simulate_crdc_mejora() + fallback MCR-001
+    ✅ `quira_pages/p17_rdc.py` — bloque C-RDC live wired (6 nodos · semáforos · impacto D02 $5.3M)
+    ⚠️  Cypher pendiente de aplicar: reanudar AuraDB en console.neo4j.io → instancia 6c134c35 → Resume
+        Luego: `python scripts/cypher/apply_cypher.py scripts/cypher/001_crdc_circuit.cypher`
+    Verificado CLI: BLOQUEADO · 2/6 nodos · $5.3M · PSG→20% sube nodo pero circuito sigue bloqueado
+    (ITAM 56%<80% + ISP 14.58%<25% = 2 críticos que impiden desbloqueo total)
 - **PENDIENTES BLOQUEANTES pre-Sprint B**:
     ✅ D02 completo — 5/5 pasos (Motor de Elegibilidad Financiera operacional)
+    ✅ C-RDC Neo4j — código completo, Cypher listo. Único pendiente: reanudar AuraDB y aplicar
     🔴 IFE-E (D03): trazabilidad POA→PAC→eSIGEF → Dirección Financiera GAD
     🟠 D12 datos faltantes: IGM-A,B,C,F (RRHH · DAF · PNUD · CNE) — solicitar formalmente
-    🟡 C-RDC en Neo4j: YAML spec lista en ADR-026 → ejecutar Cypher AuraDB
     🟡 C02 + C03: specs parciales ADR-017 → completar
     ⬜ Verificar UI Sprint A: `streamlit run app.py` (Tarea A3)
-    ⬜ Graphify update: `/graphify . --update` (artefactos nuevos: ADR-026 v1.3 · MAPA · REGISTRY)
+    ⬜ Graphify update: `/graphify . --update` (artefactos nuevos: ADR-026 v1.3 · MAPA · REGISTRY · C-RDC)
 - **Histórico** `fb78876` (2026-06-08): `historico-construccion-quira.md` + `ultima-conversacion-director-claude.md`
 - **Gate 6.6 ✅ · Corpus**: ~13,509 chunks · Neo4j: 38/58
 - **Connector LISTO**: `app/connectors/gold_master.py` → H73_OUTPUT_API + fallback TGI
 - **GATE-007 🧊 CONGELADO** — Manta = Municipio 002 · retomar post-Montecristi v1.0
 - **Roadmap revisado**: A✅→[Operaciones ~90%]→B→C→D→E→F
-    Siguiente: D02 `/fondos-radar` + C-RDC Neo4j → Sprint B (12 puertas por Tipo Funcional)
+    Siguiente: C-RDC aplicar Cypher (reanudar AuraDB) → D12 solicitudes → Sprint B (12 puertas)
 - **ADR-019 STRONGLY_SUPPORTED · ADR-022 SUPPORTED · ADR-023 ACTIVO · ADR-024 RATIFICADO · ADR-026 v1.3 RATIFICADO**
 
 ## REGLA CANÓNICA NUEVA (2026-06-03)
