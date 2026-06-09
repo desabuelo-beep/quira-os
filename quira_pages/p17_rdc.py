@@ -1,12 +1,29 @@
 """
 QUIRA OS v0.1 — P-17 Rendición de Cuentas
-RDC 2026 · CPCCS · Checklist preparación · Timeline
+RDC 2026 · CPCCS · Checklist preparación · Timeline · Circuito C-RDC
 Dylus Lab © 2026
+
+Wired: app/connectors/neo4j_crdc.py → Circuito convergente vivo (6 nodos)
+       Neo4j AuraDB si está activo, fallback embebido si está pausado.
+Bloomberg: solo lenguaje de gobernanza en UI. Nodo IDs / circuito ID: internos.
 """
+import logging
+
 import streamlit as st
+
 from data.loader import load_all
 from utils.session import is_tecnico
 from quira_pages.html_engine import render_page, page_header
+
+logger = logging.getLogger(__name__)
+
+# ── CONECTOR C-RDC ─────────────────────────────────────────────────────────────
+try:
+    from app.connectors.neo4j_crdc import get_crdc_state
+    _CRDC_AVAILABLE = True
+except ImportError:
+    _CRDC_AVAILABLE = False
+    logger.warning("neo4j_crdc no disponible — bloque C-RDC omitido en p17")
 
 # ── CHECKLIST RDC 2026 ────────────────────────────────────────────────────────
 CHECKLIST_RDC = [
@@ -79,6 +96,166 @@ _FASES = [
         ],
     },
 ]
+
+
+def _semaforo_badge(semaforo: str) -> str:
+    """Traduce semáforo interno → badge HTML Bloomberg-safe."""
+    mapa = {
+        "VERDE":    ("var(--green)",  "rgba(0,200,83,.15)",  "CUMPLE"),
+        "ROJO":     ("var(--red)",    "rgba(255,77,109,.15)","BRECHA"),
+        "AMARILLO": ("var(--amber)",  "rgba(255,184,0,.15)", "RIESGO"),
+        "PENDIENTE":("var(--muted)",  "rgba(120,120,120,.15)","PENDIENTE"),
+    }
+    color, bg, label = mapa.get(semaforo.upper(), mapa["PENDIENTE"])
+    return (
+        f'<span style="font-size:9px;font-weight:700;color:{color};'
+        f'background:{bg};border-radius:4px;padding:2px 7px">{label}</span>'
+    )
+
+
+def _render_crdc_bloque() -> str:
+    """
+    Bloque HTML con el estado live del Circuito C-RDC.
+    Solo lenguaje de gobernanza (Bloomberg-safe).
+    Retorna '' si el conector no está disponible.
+    """
+    if not _CRDC_AVAILABLE:
+        return ""
+
+    try:
+        state = get_crdc_state()
+    except Exception as exc:
+        logger.warning(f"get_crdc_state() falló: {exc}")
+        return ""
+
+    estado         = state.get("estado", "BLOQUEADO")
+    pct_ok         = state.get("pct_ok", 0.0)
+    nodos_ok       = state.get("nodos_ok", 0)
+    nodos_total    = state.get("nodos_total", 6)
+    nodos_pend     = state.get("nodos_pendientes", 0)
+    impacto_usd    = state.get("impacto_d02_usd", 0)
+    narrativa      = state.get("narrativa", "")
+    fuente_neo4j   = state.get("fuente_neo4j", False)
+    fecha_corte    = state.get("fecha_corte", "2026")
+    nodos          = state.get("nodos", [])
+
+    # ── color por estado ──
+    _COLORES = {
+        "PREPARADO":   ("var(--green)",  "rgba(0,200,83,.08)",  "rgba(0,200,83,.25)"),
+        "CON_BRECHAS": ("var(--amber)",  "rgba(255,184,0,.07)", "rgba(255,184,0,.25)"),
+        "BLOQUEADO":   ("var(--red)",    "rgba(255,77,109,.08)","rgba(255,77,109,.25)"),
+    }
+    col, bg, border = _COLORES.get(estado, _COLORES["BLOQUEADO"])
+
+    # ── fuente badge ──
+    fuente_badge = (
+        '<span style="font-size:8px;color:var(--cyan);background:rgba(0,212,255,.1);'
+        'border-radius:4px;padding:1px 5px;margin-left:6px">● Neo4j AuraDB</span>'
+        if fuente_neo4j else
+        '<span style="font-size:8px;color:var(--muted);background:rgba(120,120,120,.1);'
+        'border-radius:4px;padding:1px 5px;margin-left:6px">◌ Fallback local</span>'
+    )
+
+    # ── barra progreso ──
+    barra = f"""
+<div style="height:6px;background:var(--divider);border-radius:3px;
+            overflow:hidden;margin:8px 0 14px">
+  <div style="height:6px;width:{pct_ok:.0f}%;background:{col};
+              border-radius:3px;transition:width .4s"></div>
+</div>"""
+
+    # ── nodos ──
+    nodos_html = ""
+    for nodo in nodos:
+        nombre    = nodo.get("nombre", "")
+        indicador = nodo.get("indicador", "")
+        valor     = nodo.get("valor_actual")
+        umbral    = nodo.get("umbral")
+        semaforo  = nodo.get("semaforo", "PENDIENTE")
+        brecha    = nodo.get("brecha_pp")
+        es_crit   = nodo.get("es_critico", False)
+
+        val_txt = f"{valor:.1f}%" if valor is not None else "Pendiente"
+        umb_txt = f"/ req. {umbral:.0f}%" if umbral else ""
+        brecha_txt = ""
+        if brecha is not None:
+            signo = "+" if brecha >= 0 else ""
+            brecha_txt = (
+                f'<span style="font-size:8px;color:{"var(--muted)" if brecha>=0 else "var(--red)"};">'
+                f'  {signo}{brecha:.1f}pp</span>'
+            )
+        crit_badge = (
+            '<span style="font-size:8px;font-weight:700;color:var(--red);'
+            'background:rgba(255,77,109,.1);border-radius:3px;'
+            'padding:1px 5px;margin-left:4px">CRÍTICO</span>'
+            if es_crit and semaforo != "VERDE" else ""
+        )
+
+        nodos_html += f"""
+<div style="display:flex;align-items:center;gap:8px;padding:7px 10px;
+            background:rgba(255,255,255,.02);border-radius:6px;margin-bottom:3px">
+  <div style="flex:1;font-size:10px;color:var(--white)">{nombre}{crit_badge}</div>
+  <div style="font-size:9px;color:var(--muted);font-family:var(--mono)">
+    {val_txt} {umb_txt}
+  </div>
+  {brecha_txt}
+  <div>{_semaforo_badge(semaforo)}</div>
+</div>"""
+
+    # ── impacto D02 ──
+    impacto_html = ""
+    if impacto_usd > 0:
+        impacto_html = f"""
+<div style="background:rgba(255,184,0,.06);border:1px solid rgba(255,184,0,.2);
+            border-radius:8px;padding:10px 14px;margin-top:12px">
+  <div style="font-size:9px;font-weight:700;color:var(--amber);margin-bottom:3px">
+    ⚡ IMPACTO EN FINANCIAMIENTO INTERNACIONAL (D02)
+  </div>
+  <div style="font-size:11px;font-weight:900;color:var(--amber);font-family:var(--mono)">
+    ${impacto_usd:,.0f} bloqueados
+  </div>
+  <div style="font-size:9px;color:var(--muted);margin-top:4px">
+    {state.get('impacto_descripcion',
+      'Las brechas del circuito bloquean acceso a fondos internacionales.')}
+  </div>
+</div>"""
+
+    return f"""
+<div style="background:{bg};border:1px solid {border};
+            border-radius:12px;padding:16px;margin-bottom:16px">
+  <div style="display:flex;align-items:center;justify-content:space-between;
+              flex-wrap:wrap;gap:8px;margin-bottom:4px">
+    <div>
+      <span style="font-size:11px;font-weight:700;color:var(--white)">
+        CIRCUITO CONVERGENTE · RENDICIÓN DE CUENTAS
+      </span>
+      {fuente_badge}
+    </div>
+    <div style="display:flex;align-items:center;gap:10px">
+      <span style="font-size:9px;color:var(--muted)">{fecha_corte}</span>
+      <span style="font-size:10px;font-weight:700;color:{col};
+                   background:{bg};border:1px solid {border};
+                   border-radius:6px;padding:3px 10px">{estado}</span>
+      <span style="font-size:10px;font-weight:900;color:{col};
+                   font-family:var(--mono)">{nodos_ok}/{nodos_total}
+        <span style="font-size:8px;font-weight:400;color:var(--muted)"> nodos</span>
+        &nbsp;{pct_ok:.0f}%
+      </span>
+    </div>
+  </div>
+  {barra}
+  <div style="font-size:9px;color:var(--muted);margin-bottom:12px;
+              line-height:1.5;border-left:2px solid {border};
+              padding-left:10px;font-style:italic">
+    {narrativa[:320]}{'…' if len(narrativa)>320 else ''}
+  </div>
+  <div style="font-size:9px;font-weight:700;color:var(--cyan);
+              text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">
+    Estado por área
+  </div>
+  {nodos_html}
+  {impacto_html}
+</div>"""
 
 
 def _check_row(cat: str, item: str, ok: bool, urgente: bool) -> str:
@@ -186,15 +363,21 @@ def render() -> None:
   </div>
 </div>"""
 
+    # ── C-RDC live circuit ──────────────────────────────────────────────────
+    crdc_html = _render_crdc_bloque()
+
     hdr = page_header(
         "⑬ RENDICIÓN DE CUENTAS",
-        "RDC 2026 · CPCCS · Checklist",
+        "RDC 2026 · CPCCS · Checklist · Circuito Convergente",
         f"CPCCS V=0 RDC 2025 · {n_ok}/{n_tot} ítems listos · {n_urg} urgentes · RDC Agosto 2026",
         '<span class="badge badge-red">🔴 RDC en preparación</span>',
     )
 
-    render_page(hdr + resumen_html + checklist_html + fases_html,
-                show_tech=show_tech, height=1400)
+    render_page(
+        hdr + resumen_html + crdc_html + checklist_html + fases_html,
+        show_tech=show_tech,
+        height=1650,
+    )
 
     st.markdown("---")
     c1, c2, c3 = st.columns(3)
