@@ -32,19 +32,24 @@
     ✅ QUIRA_DATA_REGISTRY_v1 `2f8a98f`: ~32 LIVE · 10 MISSING · 2 HARDCODED · 1 PENDIENTE
     ✅ D02 Migración 002 `1879d84`: 5 tablas Supabase + 21 requisitos + 21 emisores ancla
        fondos_emisores · fondos_convocatorias · fondos_requisitos · fondos_conv_requisitos · fondos_elegibilidad
-- **D02 MOTOR DE ELEGIBILIDAD — 4/4 PASOS COMPLETOS** (último commit pendiente):
+- **D02 MOTOR DE ELEGIBILIDAD — 5/5 PASOS COMPLETOS** (último commit `55c701a` p18 + D.2 pendiente):
     ✅ A.0 Schema 5 tablas Supabase (aplicado y verificado)
     ✅ A.1 Semilla: 21 requisitos (4 familias) + 21 emisores ancla + 5 convocatorias test
     ✅ B. `app/engines/fondos_matcher.py` — MCR-001: elegible=2·brecha=1·no_elegible=2·USD 1.3M
     ✅ C. `app/engines/fondos_simulator.py` — PSG→30%: ONU Mujeres USD 300K / ISP→65%: BDE USD 5M
-    ✅ D.1 `quira_pages/p18_cooperacion.py` — rewrite COMPLETO como lector puro Supabase
-       4 tabs: Disponible hoy · Bloqueado/Brechas · Simulador · Por emisor
-       Bloomberg-safe: indicadores_display via demo_data (escala %) · nombre_publico para gates
-    ⬜ D.2 skill /fondos-radar (Fetcher — ciclo 15 días, siguiente sesión)
+    ✅ D.1 `quira_pages/p18_cooperacion.py` — rewrite COMPLETO como lector puro Supabase (commit `55c701a`)
+    ✅ D.2 skill `/fondos-radar` — pipeline completo Adapter→Normalizer→Staging→Validator→Insert→Matcher
+       - Migración 003: fondos_fuentes (salud) + fondos_historial (auditoría inmutable)
+       - `app/fetchers/`: base_adapter · fondos_normalizer (Haiku) · fondos_radar_runner
+       - 3 adaptadores MVP: PNUD · BID · AECID (demo+live, fallback heurístico)
+       - `.claude/skills/fondos-radar/SKILL.md` — ciclo 15 días operativo
+       - Test end-to-end: 6 fondos insertados · Matcher recalculado · fondos_fuentes OK
     ⚠️  NOTA: Gold Master almacena ISP/PSG como fracción decimal (0.028 = 2.8% ≠ 14.58%)
        Renderer usa demo_data.INDICES para display (escala % correcta). Matcher usa Gold Master (correcto).
+    ⚠️  NOTA conv_requisitos: nuevas convocatorias del Fetcher necesitan requisitos manuales en Supabase
+       antes de que el Matcher las evalúe. Ver skill /fondos-radar §"Nota importante sobre conv_requisitos".
 - **PENDIENTES BLOQUEANTES pre-Sprint B**:
-    🟡 D02 Paso D.2: skill /fondos-radar (Fetcher auto-discovery, ciclo 15 días)
+    ✅ D02 completo — 5/5 pasos (Motor de Elegibilidad Financiera operacional)
     🔴 IFE-E (D03): trazabilidad POA→PAC→eSIGEF → Dirección Financiera GAD
     🟠 D12 datos faltantes: IGM-A,B,C,F (RRHH · DAF · PNUD · CNE) — solicitar formalmente
     🟡 C-RDC en Neo4j: YAML spec lista en ADR-026 → ejecutar Cypher AuraDB
