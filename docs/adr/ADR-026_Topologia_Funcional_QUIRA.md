@@ -95,7 +95,7 @@ Características comunes:
 | Sensor constitucional | D10 | Lee fuente primaria única (QTMP AGUA_POTABLE + Gold Master) · no propaga |
 | Nodo origen causal | D07 | Es ORIGEN del Circuito C01 · colapsa circuito si falla · dimensión temporal C5t |
 | Nodo de unión | D08 | Mayor conectividad del sistema · C01 INTER · IGP→D06 · D08→D09 · verificador ICM/ICPI |
-| Capa de consecuencia financiera | D02 | Convierte outputs de otros Tipo A en elegibilidad de fondos · $3.66M bloqueado cuantificado |
+| Capa de consecuencia financiera | D02 | Convierte outputs de otros Tipo A en elegibilidad de fondos · arquitectura: snapshot dinámico vía skill (ver corrección post-excavación abajo) |
 | Puente PDOT-Operaciones | D03 | Mapea metas Tipo D (PDOT) contra mediciones Tipo A · IFE-A único · sin ruta sidebar |
 | Generador con membresía dual A+D | D12 | PSG = output Tipo A (Gold Master H73) · PDOT género = input Tipo D · 4/6 IGM incompletos |
 
@@ -243,7 +243,46 @@ Esto no es una elección técnica — es una **tesis de gobernanza**: la oportun
 
 **Regla canónica derivada:** Las fórmulas de QUIRA deben ser multiplicativas donde la oportunidad o la integridad sean condición necesaria, no acumulativas donde la excelencia en una dimensión puede compensar el fallo en otra.
 
-### Hallazgo 4 — D02 como capa de consecuencia financiera
+### Hallazgo 4 — D02 como capa de consecuencia financiera *(con corrección de implementación)*
+
+**⚠️ CORRECCIÓN POST-EXCAVACIÓN (2026-06-09 · Javo Fundador):**
+El portfolio hardcodeado de `p18_cooperacion.py` (6 fondos con thresholds fijos: BID Gender Bond, BDE, CAF, etc.) no tiene base sustancial en el Gold Master. Fue construido en una etapa temprana sin fundamento verificado. **El concepto de "bonds" queda retirado.**
+
+**Arquitectura correcta de D02:**
+
+```
+INTELIGENCIA DE FINANCIAMIENTO DINÁMICO
+──────────────────────────────────────────────────────────────────────
+Eje 1: Tipo de financiamiento
+   · Reembolsable   → crédito/préstamo (BDE, CAF crédito, banca multilateral)
+   · No reembolsable → cooperación/donación (GEF, PNUD, ONU Mujeres, fondos climáticos)
+
+Eje 2: Tipo de entidad elegible
+   · GAD · ONG · OSC · Academia · Startup
+   · Coaliciones: GAD+ONG · GAD+Academia · Multisectorial · todas las combinaciones
+
+Eje 3: Condición de elegibilidad
+   · Derivada de indicadores reales de dominios Tipo A (PSG, ISP, ITAM, ICPI rango, etc.)
+   · ELEGIBLE / CONDICIONADO / BLOQUEADO / REQUIERE-COALICIÓN
+
+Skill de actualización: `/fondos-radar` (~15 días)
+   → mapea fuentes de fondos disponibles (BID, CAF, GEF, PNUD, MAATE, BDE, etc.)
+   → evalúa elegibilidad GAD contra snapshot de indicadores
+   → genera JSON estructurado → D02 renderiza desde snapshot
+   → NUNCA hardcoded — siempre desde el último snapshot con timestamp
+```
+
+Este rediseño hace D02 más robusto porque:
+1. Elimina Bloomberg violations actuales (ISP/PSG/ITAM como códigos hardcodeados en UI)
+2. Escala a los 221 GADs del Radar Nacional (cada uno con su snapshot de elegibilidad)
+3. Cubre el ecosistema completo de financiamiento (no solo 6 fondos encontrados en un momento)
+4. La dimensión de coaliciones — GAD puede no calificar solo pero sí con una ONG aliada
+
+La cuantificación del costo de incoherencia sigue siendo válida y poderosa:
+> "PSG 12.83% no es abstractamente crítico — es un monto bloqueado de financiamiento cuantificable."
+El método de cálculo cambia (dinámico vía skill) pero el insight arquitectónico permanece.
+
+### Hallazgo 4a — D02 como capa de consecuencia financiera (insight permanente)
 
 `p18_cooperacion.py` convierte estados de dominio en consecuencia económica cuantificada. Cada fondo tiene umbrales cruzados sobre outputs de otros Tipo A:
 
@@ -477,7 +516,7 @@ Fase 0 completa. Los 12 dominios constitucionales están clasificados:
 | C-RDC formalizado | ✅ NUEVO — spec completa en este ADR |
 | ICM/ICPI como propuesta de valor | ✅ CONFIRMADO — `p16_gobernanza.py` líneas 100-104 |
 | Fórmula C8 como innovación epistemológica | ✅ CONFIRMADO — `p07_transparencia.py` líneas 506-566 |
-| D02 capa consecuencia financiera | ✅ NUEVO HALLAZGO — $3.66M cuantificado + llaves maestras |
+| D02 corrección arquitectónica | ✅ CORREGIDO — portfolio hardcodeado retirado · nuevo concepto: inteligencia dinámica financiamiento + skill `/fondos-radar` · entidades: GAD/ONG/OSC/Academia/Startup/coaliciones |
 | D03 puente PDOT-Operaciones | ✅ NUEVO HALLAZGO — IFE-A único · mod=None (deuda activa) |
 | Visión sinóptica Norma→Obs→Interp→Valid | ✅ FORMALIZADA — tabla 4 capas · aporte Colega asesor |
 | Deprecación `p15_transparencia.py` | ⏳ PENDIENTE — acción pre-Sprint B |

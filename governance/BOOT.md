@@ -33,12 +33,15 @@
     FASE 2 → QUIRA Institucional (Sprint B — 12 puertas por Tipo Funcional)
 - **Próximos pasos inmediatos** (FASE 1 Operaciones):
     1. ✅ Taxonomía Tipo A cerrada (D02+D03+D12 confirmados)
-    2. Bloomberg Firewall: corregir p9_sat · p7_brecha · p10_inversion · p15_transparencia
-    3. Deprecar `p15_transparencia.py` (código muerto activo — riesgo Bloomberg)
-    4. Wiring D03: `p8_metas.py` sin ruta sidebar (mod=None → agregar ruta en env_gov.py)
-    5. D12 roadmap datos faltantes: IGM-A,B,C,F sin fuente Excel (RRHH · DAF · CNE · PNUD)
-    6. Completar C02 + C03 (specs parciales ADR-017)
-    7. Formalizar C-RDC en Neo4j (spec lista en ADR-026)
+    2. **D02 REDISEÑO** (2026-06-09): `p18_cooperacion.py` portfolio bonds → retirado sin base Excel
+       Nuevo concepto: inteligencia dinámica · reembolsable/no-reembolsable · GAD/ONG/OSC/Academia/Startup/coaliciones
+       Skill pendiente: `/fondos-radar` (~15 días actualización) · render desde snapshot
+    3. Bloomberg Firewall: corregir p9_sat · p7_brecha · p10_inversion · p15_transparencia
+    4. Deprecar `p15_transparencia.py` (código muerto activo — riesgo Bloomberg)
+    5. Wiring D03: `p8_metas.py` sin ruta sidebar (mod=None → agregar ruta en env_gov.py)
+    6. D12 roadmap datos faltantes: IGM-A,B,C,F sin fuente Excel (RRHH · DAF · CNE · PNUD)
+    7. Completar C02 + C03 (specs parciales ADR-017)
+    8. Formalizar C-RDC en Neo4j (spec lista en ADR-026)
 - **Pendiente verificar**: UI Sprint A con `streamlit run app.py` (Tarea A3 — sigue pendiente)
 - **Histórico** `fb78876` (2026-06-08): `historico-construccion-quira.md` + `ultima-conversacion-director-claude.md`
 - **Grafo**: pendiente `/graphify . --update` (fix Windows listo · usage reset a las 7:10pm Guayaquil)
