@@ -32,16 +32,19 @@
     ✅ QUIRA_DATA_REGISTRY_v1 `2f8a98f`: ~32 LIVE · 10 MISSING · 2 HARDCODED · 1 PENDIENTE
     ✅ D02 Migración 002 `1879d84`: 5 tablas Supabase + 21 requisitos + 21 emisores ancla
        fondos_emisores · fondos_convocatorias · fondos_requisitos · fondos_conv_requisitos · fondos_elegibilidad
-- **D02 MOTOR DE ELEGIBILIDAD — 3/4 PASOS COMPLETOS** (último commit `35d7b31`):
+- **D02 MOTOR DE ELEGIBILIDAD — 4/4 PASOS COMPLETOS** (último commit pendiente):
     ✅ A.0 Schema 5 tablas Supabase (aplicado y verificado)
     ✅ A.1 Semilla: 21 requisitos (4 familias) + 21 emisores ancla + 5 convocatorias test
     ✅ B. `app/engines/fondos_matcher.py` — MCR-001: elegible=2·brecha=1·no_elegible=2·USD 1.3M
     ✅ C. `app/engines/fondos_simulator.py` — PSG→30%: ONU Mujeres USD 300K / ISP→65%: BDE USD 5M
-    ⬜ D. skill /fondos-radar (ciclo 15 días) + rewrite p18_cooperacion.py como lector puro
+    ✅ D.1 `quira_pages/p18_cooperacion.py` — rewrite COMPLETO como lector puro Supabase
+       4 tabs: Disponible hoy · Bloqueado/Brechas · Simulador · Por emisor
+       Bloomberg-safe: indicadores_display via demo_data (escala %) · nombre_publico para gates
+    ⬜ D.2 skill /fondos-radar (Fetcher — ciclo 15 días, siguiente sesión)
     ⚠️  NOTA: Gold Master almacena ISP/PSG como fracción decimal (0.028 = 2.8% ≠ 14.58%)
-       Los estados de elegibilidad son correctos. Normalización de escala: pendiente antes de UI.
+       Renderer usa demo_data.INDICES para display (escala % correcta). Matcher usa Gold Master (correcto).
 - **PENDIENTES BLOQUEANTES pre-Sprint B**:
-    🔴 D02 Paso D: skill /fondos-radar + rewrite p18_cooperacion.py
+    🟡 D02 Paso D.2: skill /fondos-radar (Fetcher auto-discovery, ciclo 15 días)
     🔴 IFE-E (D03): trazabilidad POA→PAC→eSIGEF → Dirección Financiera GAD
     🟠 D12 datos faltantes: IGM-A,B,C,F (RRHH · DAF · PNUD · CNE) — solicitar formalmente
     🟡 C-RDC en Neo4j: YAML spec lista en ADR-026 → ejecutar Cypher AuraDB
