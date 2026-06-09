@@ -96,7 +96,7 @@ Características comunes:
 | Nodo origen causal | D07 | Es ORIGEN del Circuito C01 · colapsa circuito si falla · dimensión temporal C5t |
 | Nodo de unión | D08 | Mayor conectividad del sistema · C01 INTER · IGP→D06 · D08→D09 · verificador ICM/ICPI |
 | Capa de consecuencia financiera | D02 | Convierte outputs de otros Tipo A en elegibilidad de fondos · arquitectura: snapshot dinámico vía skill (ver corrección post-excavación abajo) |
-| Puente PDOT-Operaciones | D03 | Mapea metas Tipo D (PDOT) contra mediciones Tipo A · IFE-A único · sin ruta sidebar |
+| Puente PDOT-Operaciones | D03 | Dos capas independientes: CNE (IFE-A 72.73% · 48/66 promesas) + PDOT (IFE-E pendiente Q2-2026 · trazabilidad POA→PAC→eSIGEF) · sin ruta sidebar |
 | Generador con membresía dual A+D | D12 | PSG = output Tipo A (Gold Master H73) · PDOT género = input Tipo D · 4/6 IGM incompletos |
 
 **Nota sobre D12 — primer caso de membresía dual:** un dominio puede tener outputs operacionales (Tipo A) alimentados por marcos normativos (Tipo D). La dirección del flujo determina el tipo funcional; la presencia de norma no lo contradice. El PDOT de género es referencia (Tipo D); PSG es medición (Tipo A). Esta coexistencia es arquitectónicamente válida y esperada en dominios de inclusión social.
@@ -200,6 +200,9 @@ CAPA 3 — PROTOCOLO Tipo C    (D09)
 | OBSERVACIÓN | A | D02 · D03 · D04 · D07 · D08 · D10 · D12 | Observan la realidad contra la norma |
 | INTERPRETACIÓN | B | D06 | Interpretan la realidad en su conjunto |
 | VALIDACIÓN | C | D09 | La someten a validación externa (CPCCS) |
+| CONSECUENCIA | A² | D02 | Traducen el estado institucional en dinero disponible / bloqueado |
+
+*Nota D02: doble naturaleza confirmada en código — Observación (genera datos de elegibilidad) y Consecuencia (traduce estado institucional en consecuencia financiera cuantificada). No rompe la taxonomía — agrega una dimensión. Documentado como: `Generador con función de consecuencia financiera`. Aporte: Colega asesor, 2026-06-09.*
 
 > Esta estructura evita el error clásico de GovTech: `Norma = Indicador`. El PDOT no es un indicador. La Constitución no es un indicador. LOTAIP no es un indicador. Son marcos de referencia. Por eso Tipo D existe como categoría separada — y por eso QUIRA puede afirmar que "verifica" y no solo que "mide".
 
