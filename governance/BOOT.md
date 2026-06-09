@@ -19,29 +19,34 @@
 **MATRIZ_CANONICA** del Excel = ADN compartido. Sin ella: dos mundos. Con ella: un sistema.
 
 ## AHORA (actualizar al cierre)
-- **Sprint A ✅ COMPLETO** (2026-06-04) — commits esta sesión:
-    `eb1fcec` Observatorio→Radar (terminología, 7 archivos)
-    `656c224` ADR-024 RATIFICADO — QUIRA como Radar Nacional
-    `19bfa98` Fix TGI Score #VALOR! — fallback 5D ponderado
-    `e026b6e` Corregir pesos TGI: D1×20+D2×20+D3×25+D4×25+D5×10 → 66.85% ✓
-    `76ca29f` Ficha cantonal Sprint A — canton_card.py + p0_inicio.py reescrito
-- **Próximo**: Sprint B — 12 Puertas (cajones p_command_center → navegación full-screen real)
-    Archivo clave: `quira_pages/p_command_center.py` · `_DOMAINS_12` ya existe
-    Meta: click en dominio = pantalla completa, no modal ni popup
-- **Pendiente verificar**: UI Sprint A con `streamlit run app.py` (Tarea A3 del plan)
-    Verificar: ficha cantonal renderiza · CTA navega · SAT badge aparece si hay alertas
-- **Histórico** `fb78876` (2026-06-08): corpus conversacional ingresado a `governance/historico/`
-    `historico-construccion-quira.md` (392 KB) + `ultima-conversacion-director-claude.md` (35 KB)
-- **Grafo**: pendiente `/graphify . --update` con artefactos acumulados
-    (ADR-024 + canton_card.py + p0_inicio.py + BOOT.md + 2 docs históricos nuevos)
-- **Gate 6.6 ✅ COMPLETO**: 51/51 siglas MCR · 0 huérfanos · ICPI=69.93% explicable
-- **Corpus**: ~13,509 chunks · 65 tablas LOTAIP · Neo4j: 38/58
+- **Sprint A ✅ COMPLETO** (2026-06-04) · **ADR-026 ✅ RATIFICADO** (2026-06-08)
+- **FASE 0 — Arqueología funcional ✅ COMPLETA** (2026-06-08):
+    6 excavaciones: D04 · D06 · D07 · D08 · D09 · D10
+    Hallazgo central: QUIRA tiene taxonomía funcional de 3 tipos (no 12 dominios iguales)
+    → Tipo A Generadores · Tipo B Sintetizador · Tipo C Puerta de Protocolo
+    → C-RDC formalizado como nuevo circuito · ICM/ICPI gap = propuesta de valor central
+    → ADR-026: `docs/adr/ADR-026_Topologia_Funcional_QUIRA.md`
+- **SECUENCIA REVISADA** (consecuencia de ADR-026):
+    FASE 1 → QUIRA Operaciones (completar Generadores + Bloomberg Firewall)
+    FASE 2 → QUIRA Institucional (Sprint B puertas — diseño por Tipo Funcional)
+    **Sprint B NO es el siguiente paso. Operaciones es el siguiente paso.**
+- **Próximos pasos inmediatos** (FASE 1 Operaciones):
+    1. Excavar D02 + D03 + D12 (cerrar taxonomía Tipo A)
+    2. Bloomberg Firewall: corregir p9_sat · p7_brecha · p10_inversion · p15_transparencia
+    3. Deprecar `p15_transparencia.py` (código muerto activo — riesgo Bloomberg)
+    4. Completar C02 + C03 (specs parciales ADR-017)
+    5. Formalizar C-RDC en Neo4j (spec lista en ADR-026)
+- **Pendiente verificar**: UI Sprint A con `streamlit run app.py` (Tarea A3 — sigue pendiente)
+- **Histórico** `fb78876` (2026-06-08): `historico-construccion-quira.md` + `ultima-conversacion-director-claude.md`
+- **Grafo**: pendiente `/graphify . --update` (fix Windows listo · usage reset a las 7:10pm Guayaquil)
+    Nuevos artefactos: ADR-026 + sesión arqueología completa
+- **Gate 6.6 ✅ · Corpus**: ~13,509 chunks · Neo4j: 38/58
 - **Connector LISTO**: `app/connectors/gold_master.py` → H73_OUTPUT_API + fallback TGI
 - **GATE-007 🧊 CONGELADO** — Manta = Municipio 002 · retomar post-Montecristi v1.0
-- **Roadmap activo**: A✅→B→C→D→E→F (Montecristi v1.0) → Gate 7
-    B: 12 Puertas · C: Dashboard+IA analista · D: GeoTwin · E: Operaciones · F: v1.0
-- **UI norte**: institucional · premium · territorial · ecuatoriana (NO SaaS genérico)
-- **ADR-019 STRONGLY_SUPPORTED · ADR-022 SUPPORTED · ADR-023 ACTIVO · ADR-024 RATIFICADO**
+- **Roadmap revisado**: A✅→[Operaciones]→B→C→D→E→F
+    Operaciones: D02+D03+D12 excavación · Bloomberg · C-RDC Neo4j
+    B: 12 Puertas diseñadas por Tipo Funcional (post-Operaciones)
+- **ADR-019 STRONGLY_SUPPORTED · ADR-022 SUPPORTED · ADR-023 ACTIVO · ADR-024 RATIFICADO · ADR-026 RATIFICADO**
 
 ## REGLA CANÓNICA NUEVA (2026-06-03)
 **Todo artefacto construido entra al grafo.** Docs, decisiones, specs, planes, versiones históricas.
