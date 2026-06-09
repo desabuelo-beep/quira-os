@@ -61,6 +61,18 @@
     Narrativa que cambia: "PSG=12.83%" → "capacidad institucional insuficiente → brechas territoriales persisten
     → $300K ONU Mujeres bloqueados → programas territoriales no ejecutados"
     Sprint B: extraer variables Capa B del corpus PDOT (violencia · jefatura femenina · cuidados · empleo).
+- **PD-GEO-01 — PRINCIPIO DE DISEÑO TERRITORIAL** (ADR-026 §Geografía · 2026-06-09):
+    PDOT vigente = Gemelo Digital Territorial canónico de QUIRA. No es un documento — es un modelo territorial.
+    El PDOT agrega INEC · DINASED · MSP · BCE · MIES · SENPLADES · catastros · equipamientos.
+    Por tanto: PDOT ≡ GeoTwin (definición formal, no metáfora).
+    Toda brecha territorial debe representarse simultáneamente como:
+      1. Indicador (tabla/Gold Master)   2. Narrativa (texto gobernanza)   3. Entidad geoespacial (capa GeoTwin)
+    Pregunta que cambia: "¿Cuántos casos?" → "¿DÓNDE ocurren?" — la pregunta que necesita un alcalde.
+    Cadena completa QUIRA: PDOT/GeoTwin (DÓNDE) → QUIRA (CAPACIDAD) → D02 (FINANCIAMIENTO) → GeoTwin (DÓNDE INTERVENIR)
+    Ejemplo operativo: "$300K ONU Mujeres para intervenir parroquias X/Y/Z donde GeoTwin muestra
+    mayor concentración de vulnerabilidad de género" — esto es gobernanza territorial inteligente.
+    Relación PD-GEN-01→PD-GEO-01: Violencia · Cuidados · Movilidad · Empleo femenino = capas nativas GeoTwin.
+    Completa ADR-026: Norma→Observación→Interpretación→Validación→Consecuencia→**DÓNDE ocurre la consecuencia**.
 - **C-RDC FORMALIZACIÓN — COMPLETA** (commit `96a98c9` · 2026-06-09):
     ✅ `scripts/cypher/001_crdc_circuit.cypher` — topología convergente + 6 nodos + EvaluacionCircuito MCR-001
     ✅ `scripts/cypher/apply_cypher.py` — runner AuraDB (requiere reanudar instancia 6c134c35)
