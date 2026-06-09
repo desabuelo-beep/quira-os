@@ -1,9 +1,9 @@
 # ADR-026 — Topología Funcional de QUIRA
 
-**Versión:** 1.0
-**Fecha:** 2026-06-08
-**Estado:** RATIFICADO — consenso equipo Dylus Lab (Javo + Claude + Colega)
-**Origen:** Fase 0 · Arqueología funcional · 6 excavaciones de dominio (D04, D06, D07, D08, D09, D10)
+**Versión:** 1.2
+**Fecha:** 2026-06-08 (v1.0) → 2026-06-09 (v1.2)
+**Estado:** MODELO OPERATIVO — taxonomía cerrada · Fase 0 Arqueología Funcional completada
+**Origen:** Fase 0 · Arqueología funcional · 9 excavaciones de dominio (D02, D03, D04, D06, D07, D08, D09, D10, D12)
 **Autores:** Dylus Lab · Colega asesor · Claude Director Técnico
 **Relacionado:** ADR-017 (Circuitos Constitucionales) · ADR-023 (3 Niveles) · ADR-024 (Radar Nacional) · ADR-025 (Principio Alertas)
 
@@ -38,7 +38,9 @@ Entre las 19:00 y las 21:00 del 8 de junio de 2026, se realizaron excavaciones a
 5. ¿Cuándo muere?
 6. ¿Qué es la "puerta"?
 
-Dominios excavados: **D04, D06, D07, D08, D09, D10**.
+Dominios excavados: **D02, D03, D04, D06, D07, D08, D09, D10, D12** (9/12 dominios constitucionales).
+Dominios no operacionales (no excavar): D11 (`disabled: True` en command center).
+Dominios Tipo D verificados: D01 (Marco Legal), D05 (PDOT) — confirmados por Javo Fundador, no son módulos operacionales sino corpus vectorizado.
 
 Los hallazgos de cada excavación están registrados en el historial de sesión 2026-06-08 (contexto vivo, no duplicado aquí).
 
@@ -76,8 +78,8 @@ Este ADR formaliza el **Plano Funcional** descubierto en el código.
 
 Dominios que **producen evidencia propia** sobre el cumplimiento de una función constitucional. Tienen fuentes de datos primarias externas al sistema QUIRA (INEC, Gold Master, Neo4j QTMP, documentos físicos), operan en tiempo real o casi-real, y pueden existir independientemente de otros dominios.
 
-**Dominios confirmados:** D04 · D07 · D08 · D10
-**Dominios probables:** D02 · D03 · D12 *(pendiente excavación)*
+**Dominios confirmados (7 de 7):** D02 · D03 · D04 · D07 · D08 · D10 · D12
+*(taxonomía Tipo A cerrada — Fase 0 completa)*
 
 Características comunes:
 - Conectan a fuentes externas verificables (SIGEF, INEC, CPCCS, SERCOP, Gold Master)
@@ -93,6 +95,11 @@ Características comunes:
 | Sensor constitucional | D10 | Lee fuente primaria única (QTMP AGUA_POTABLE + Gold Master) · no propaga |
 | Nodo origen causal | D07 | Es ORIGEN del Circuito C01 · colapsa circuito si falla · dimensión temporal C5t |
 | Nodo de unión | D08 | Mayor conectividad del sistema · C01 INTER · IGP→D06 · D08→D09 · verificador ICM/ICPI |
+| Capa de consecuencia financiera | D02 | Convierte outputs de otros Tipo A en elegibilidad de fondos · $3.66M bloqueado cuantificado |
+| Puente PDOT-Operaciones | D03 | Mapea metas Tipo D (PDOT) contra mediciones Tipo A · IFE-A único · sin ruta sidebar |
+| Generador con membresía dual A+D | D12 | PSG = output Tipo A (Gold Master H73) · PDOT género = input Tipo D · 4/6 IGM incompletos |
+
+**Nota sobre D12 — primer caso de membresía dual:** un dominio puede tener outputs operacionales (Tipo A) alimentados por marcos normativos (Tipo D). La dirección del flujo determina el tipo funcional; la presencia de norma no lo contradice. El PDOT de género es referencia (Tipo D); PSG es medición (Tipo A). Esta coexistencia es arquitectónicamente válida y esperada en dominios de inclusión social.
 
 ---
 
@@ -147,9 +154,13 @@ D19 (Género)         ──┘
 
 ---
 
-### Tipo D — Corpus Fundacional
+### Tipo D — Corpus Fundacional Verificable
 
-Dominios que **no producen métricas operacionales ni sintetizan indicadores**. Proveen el marco normativo y territorial dentro del cual todos los demás tipos adquieren significado. Viven principalmente en **Supabase C1 Corpus** como embeddings vectorizados con sus relaciones causales, y alimentan el sistema desde la capa de conocimiento.
+Dominios que **no producen métricas operacionales ni sintetizan indicadores**. Definen qué significa "cumplir" — son el estándar de referencia contra el cual los Generadores observan y el Sintetizador interpreta. Viven principalmente en **Supabase C1 Corpus** como embeddings vectorizados con sus relaciones causales, y alimentan el sistema desde la capa de conocimiento.
+
+**La diferencia con un repositorio documental:** un PDF archivado no es Tipo D. Tipo D tiene **comportamiento computable** — sus contenidos alimentan decisiones en tiempo de ejecución. Por ejemplo: `PDOT → meta_pdot_2027 → D10` ya es comportamiento computable, no solo referencia. La palabra clave es **Verificable**: el corpus puede ser consultado, citado y usado para validar afirmaciones operacionales del sistema.
+
+*Precisión conceptual: Colega asesor, sesión 2026-06-08.*
 
 **Dominios confirmados:** D01 (Marco Legal) · D05 (PDOT)
 *Confirmación: Javo Fundador, sesión 2026-06-08*
@@ -179,9 +190,24 @@ CAPA 3 — PROTOCOLO Tipo C    (D09)
 
 ---
 
+## Visión sinóptica — La cadena completa
+
+*Formulación del Colega asesor, confirmada tras las 9 excavaciones. Esta tabla es la síntesis más precisa de QUIRA en una sola vista.*
+
+| Capa funcional | Tipo | Dominios | Función |
+|---|---|---|---|
+| NORMA | D | D01 · D05 | Definen qué significa "cumplir" |
+| OBSERVACIÓN | A | D02 · D03 · D04 · D07 · D08 · D10 · D12 | Observan la realidad contra la norma |
+| INTERPRETACIÓN | B | D06 | Interpretan la realidad en su conjunto |
+| VALIDACIÓN | C | D09 | La someten a validación externa (CPCCS) |
+
+> Esta estructura evita el error clásico de GovTech: `Norma = Indicador`. El PDOT no es un indicador. La Constitución no es un indicador. LOTAIP no es un indicador. Son marcos de referencia. Por eso Tipo D existe como categoría separada — y por eso QUIRA puede afirmar que "verifica" y no solo que "mide".
+
+---
+
 ## Hallazgos no anticipados por el diseño original
 
-Las excavaciones revelaron tres hallazgos que no estaban formalizados antes de este ADR.
+Las excavaciones revelaron seis hallazgos que no estaban formalizados antes de este ADR.
 
 ### Hallazgo 1 — La brecha ICM/ICPI es la propuesta de valor central
 
@@ -216,6 +242,54 @@ La fórmula es **multiplicativa**. Un cero en cualquier dimensión colapsa el re
 Esto no es una elección técnica — es una **tesis de gobernanza**: la oportunidad forma parte constitutiva del derecho a la información. No un atributo deseable sino un requisito definitorio. Esta lógica multiplicativa distingue a QUIRA de cualquier sistema que promedia indicadores.
 
 **Regla canónica derivada:** Las fórmulas de QUIRA deben ser multiplicativas donde la oportunidad o la integridad sean condición necesaria, no acumulativas donde la excelencia en una dimensión puede compensar el fallo en otra.
+
+### Hallazgo 4 — D02 como capa de consecuencia financiera
+
+`p18_cooperacion.py` convierte estados de dominio en consecuencia económica cuantificada. Cada fondo tiene umbrales cruzados sobre outputs de otros Tipo A:
+
+```
+D12 PSG = 12.83% < 30% → BID Gender Bond BLOQUEADO ($95K) + ONU Mujeres BLOQUEADO ($65K)
+D10 ISP = 14.58% < 65% → BDE Crédito Reactivación BLOQUEADO ($3.5M)
+D07 ITAM = 56% < 65% → CAF Ciudades Sostenibles EN GESTIÓN ($1.2M)
+──────────────────────────────────────────────────────────────────
+Total bloqueado verificado: $3.66M — exactamente el datum del command center
+```
+
+Esta es la primera demostración empírica del COSTO DE LA INCOHERENCIA INSTITUCIONAL en QUIRA: un dominio "en rojo" no es abstractamente malo. Es $3.66M sin poder moverse.
+
+**Regla canónica derivada:** D02 debe mostrar las "llaves maestras" — las 2-3 acciones mínimas que desbloquean el mayor volumen financiero. No es un portafolio de oportunidades. Es un diagnóstico de elegibilidad con prescripción accionable.
+
+### Hallazgo 5 — D03 como puente formal PDOT→Operaciones
+
+`p8_metas.py` implementa el contrato de rendición de cuentas: cada METAS_PDOT mapea una obligación del Plan de Desarrollo (Tipo D) a su medición actual (Tipo A). 10 metas al cierre de la excavación:
+
+```
+M-06: PSG 12.83% → 30% · fuente: D12 · estado: CRÍTICO · bloquea: Gender Bond $95K
+M-07: IET $40/hab → $80/hab · fuente: D10 · estado: CRÍTICO
+M-08: ITAM 56% → 75% · fuente: D07 · estado: NORMAL
+M-05: UT activas 50 → 75 · fuente: D08 · estado: ALERTA
+M-01: Agua 34.9% → 65% · fuente: D10 · estado: CRÍTICO
+M-10: IFE-A 72.73% → 100% · ÚNICO EN D03 · trazabilidad promesas electorales
+```
+
+D03 tiene `mod=None` en el command center — existe como página (`p8_metas.py`) sin ruta de sidebar. Esto es deuda activa: el contrato de rendición de cuentas más importante del sistema no tiene acceso público directo.
+
+**Regla canónica derivada:** IFE-A (Índice de Fidelidad Electoral) es un indicador sin par en el sistema — mide cuántas promesas del alcalde tienen respaldo en metas PDOT formales. 72.73% al cierre de excavación, 18 promesas sin respaldo. Debe preservarse y no mezclarse con indicadores de ejecución.
+
+### Hallazgo 6 — D12 confirma membresía dual, revela brecha en Gold Master
+
+D12 genera PSG = 12.83% (Tipo A, vivo en H73_OUTPUT_API) pero sus 4/6 sub-indicadores IGM tienen `valor=None`:
+
+```python
+IGM-A: Mujeres en cargos directivos   → valor=None (pendiente certificación RRHH)
+IGM-B: Brecha salarial                → valor=None (pendiente nómina DAF)
+IGM-C: Carga acarreo agua rurales     → valor=None (pendiente encuesta PNUD/INEC)
+IGM-F: Representación política CNE    → valor=None (pendiente datos CNE/AME)
+```
+
+El patrón `valor=None` está documentado como diseño deliberado: "Indicadores sin fuente Excel marcados con valor=None → Sin dato oficial". No es un bug. Es un contrato: QUIRA no inventa datos. Pero sí revela que D12 es el dominio con mayor brecha entre lo que el sistema debería medir y lo que el Gold Master actualmente cubre.
+
+**Regla canónica derivada:** antes de Sprint B, D12 debe tener un roadmap explícito de qué fuentes externas (RRHH, DAF, CNE/AME, PNUD/INEC) se necesitan para cubrir IGM-A, B, C y F. Sin eso, D12 muestra una puerta con luz prendida pero sin datos detrás.
 
 ### Hallazgo 3 — Deuda arquitectónica activa en D07
 
@@ -331,23 +405,33 @@ Una vez completada FASE 1, las puertas de Sprint B deben diseñarse así:
 | A — Sensor | D10 | KPI constitucional + barra de progreso PDOT | Semestral / datos vivos |
 | A — Origen causal | D07 | Semáforo C8 + dualidad C4/C5 + estado C01 | Mensual (publicación LOTAIP) |
 | A — Nodo unión | D08 | 6 mecanismos + parroquias + ICM/ICPI gap | Trimestral + RDC |
+| A — Consecuencia financiera | D02 | Portafolio elegibilidad + llaves maestras + $X bloqueado | Continuo (por dominio fuente) |
+| A — Puente PDOT | D03 | Dashboard metas M-01→M-10 + IFE-A + brechas | Trimestral + Gold Master |
+| A — Dual A+D | D12 | PSG semáforo + IGM panel (con gaps explícitos) + Ambiente FA | Trimestral + Gold Master |
 | B — Sintetizador | D06 | Score ICPI + 6 vectores causales + histórico | Trimestral (Gold Master) |
 | C — Protocolo | D09 | Checklist preparación RDC + timeline estacional | Anual (Mayo-Sep) |
+| D — Corpus | D01 · D05 | No puerta operacional — entrada Supabase C1 corpus | N/A |
 
 ---
 
-## Pendientes para cerrar la taxonomía
+## Cierre de taxonomía — todos los dominios clasificados
 
-Los siguientes dominios no fueron excavados en esta sesión. Son necesarios para confirmar si existen Generadores adicionales y si hay sub-tipos nuevos:
+Fase 0 completa. Los 12 dominios constitucionales están clasificados:
 
-| Dominio | Hipótesis pre-excavación | Prioridad |
-|---|---|---|
-| D02 — Presupuesto Municipal | Generador fiscal (ISP, IED → D06) | Alta |
-| D03 — Contratación Pública | Generador contractual (LOSNCP, SERCOP → D06) | Alta |
-| D12 — Inclusión Social | Sensor social (probable Tipo A) | Media |
-| D01 — Marco Legal | **✅ RESUELTO** — Tipo D Corpus Fundacional · vectorizado Supabase C1 · ACK Registry | N/A |
-| D05 — PDOT | **✅ RESUELTO** — Tipo D Corpus Fundacional · vectorizado Supabase C1 · feeds GeoTwin + D08/D09/D10 | N/A |
-| D11 — (DESHABILITADO) | `disabled: True` en command center — no excavar | N/A |
+| Dominio | Tipo | Evidencia | Estado |
+|---|---|---|---|
+| D01 — Marco Legal | D | Vectorizado Supabase C1 · ACK Registry · relaciones causales | ✅ RESUELTO |
+| D02 — Cooperación | A | `p18_cooperacion.py` · $3.66M bloqueado · umbral PSG/ISP/ITAM | ✅ CONFIRMADO |
+| D03 — Metas PDOT | A | `p8_metas.py` · M-01→M-10 · IFE-A 72.73% · mod=None | ✅ CONFIRMADO |
+| D04 — SAT/Alertas | A | `p9_sat.py` · `p_alertas.py` · 3 capas · SLA temporal | ✅ CONFIRMADO |
+| D05 — PDOT | D | Vectorizado Supabase C1 · meta_pdot_2027 computable · GeoTwin | ✅ RESUELTO |
+| D06 — Estado GAD | B | `p6_pulso.py` · `p7_brecha.py` · 6 vectores causales | ✅ CONFIRMADO |
+| D07 — Transparencia | A | `p07_transparencia.py` · C8 · QTMP TRANSPARENCIA · ORIGEN C01 | ✅ CONFIRMADO |
+| D08 — Participación | A | `p16_confianza.py` · `p16_gobernanza.py` · IGP · 6 mecanismos | ✅ CONFIRMADO |
+| D09 — Rendición | C | `p17_rdc.py` · 20-item checklist · 4 fases · CPCCS árbitro | ✅ CONFIRMADO |
+| D10 — Territorio | A | `p10_territorio.py` · QTMP AGUA_POTABLE · IET · GeoTwin | ✅ CONFIRMADO |
+| D11 — (DESHABILITADO) | — | `disabled: True` en command center | NO EXCAVAR |
+| D12 — Género/Ambiente | A+D | `p19_genero.py` · PSG H73 (A) · PDOT género/FA (D) · IGM 4/6 None | ✅ CONFIRMADO |
 
 ---
 
@@ -383,18 +467,28 @@ Los siguientes dominios no fueron excavados en esta sesión. Son necesarios para
 
 | Componente | Estado |
 |---|---|
-| Taxonomía 4 tipos | ✅ RATIFICADA — 3 tipos por excavación + Tipo D por confirmación Javo Fundador 2026-06-08 |
+| Taxonomía 4 tipos | ✅ CERRADA — 9 excavaciones · D02/D03/D12 confirman · D11 deshabilitado |
+| Tipo A — 7 generadores clasificados | ✅ COMPLETO — D02 D03 D04 D07 D08 D10 D12 |
+| Tipo B — Sintetizador | ✅ ÚNICO — D06 |
+| Tipo C — Protocolo | ✅ ÚNICO — D09 |
+| Tipo D — Corpus Fundacional Verificable | ✅ DOS — D01 D05 · confirmado Javo Fundador |
+| Membresía dual A+D documentada | ✅ PRIMER CASO — D12 (PSG output + PDOT género input) |
 | C01 confirmado en código | ✅ CONFIRMADO — `p07_transparencia.py` líneas 82-113, 118-139 |
 | C-RDC formalizado | ✅ NUEVO — spec completa en este ADR |
 | ICM/ICPI como propuesta de valor | ✅ CONFIRMADO — `p16_gobernanza.py` líneas 100-104 |
 | Fórmula C8 como innovación epistemológica | ✅ CONFIRMADO — `p07_transparencia.py` líneas 506-566 |
-| Excavaciones D02, D03, D12 pendientes | ⏳ PENDIENTE — necesarias para cerrar taxonomía |
+| D02 capa consecuencia financiera | ✅ NUEVO HALLAZGO — $3.66M cuantificado + llaves maestras |
+| D03 puente PDOT-Operaciones | ✅ NUEVO HALLAZGO — IFE-A único · mod=None (deuda activa) |
+| Visión sinóptica Norma→Obs→Interp→Valid | ✅ FORMALIZADA — tabla 4 capas · aporte Colega asesor |
 | Deprecación `p15_transparencia.py` | ⏳ PENDIENTE — acción pre-Sprint B |
 | Bloomberg Firewall completo (todos dominios) | ⏳ PENDIENTE — acción pre-Sprint B |
-| Diseño de puertas por Tipo Funcional | ⏳ PENDIENTE — Sprint B FASE 2 |
+| D03 routing (mod=None) | ⏳ PENDIENTE — p8_metas.py sin entrada sidebar |
+| D12 roadmap datos faltantes (IGM-A,B,C,F) | ⏳ PENDIENTE — fuentes RRHH/DAF/CNE/PNUD |
+| Diseño de puertas por Tipo Funcional | ⏳ PENDIENTE — Sprint B FASE 2 (post-Operaciones) |
 
 ---
 
-*ADR-026 v1.1 · QUIRA Gov · Dylus Lab © 2026*
+*ADR-026 v1.2 · QUIRA Gov · Dylus Lab © 2026*
 *v1.0 → v1.1: Tipo D Corpus Fundacional añadido (D01 Marco Legal + D05 PDOT) — confirmación Javo Fundador 2026-06-08*
-*Siguiente: Excavaciones D02 + D03 + D12 → cierre taxonomía Tipo A → Bloomberg Firewall → Sprint B FASE 2*
+*v1.1 → v1.2: Taxonomía cerrada · D02 D03 D12 confirmados como Tipo A · D12 membresía dual documentada · Visión sinóptica 4 capas formalizada · Estado: MODELO OPERATIVO — 2026-06-09*
+*Siguiente: Bloomberg Firewall → p15 deprecación → D03 routing → D12 datos faltantes → Sprint B FASE 2*

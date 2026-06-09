@@ -19,23 +19,26 @@
 **MATRIZ_CANONICA** del Excel = ADN compartido. Sin ella: dos mundos. Con ella: un sistema.
 
 ## AHORA (actualizar al cierre)
-- **Sprint A ✅ COMPLETO** (2026-06-04) · **ADR-026 ✅ RATIFICADO** (2026-06-08)
-- **FASE 0 — Arqueología funcional ✅ COMPLETA** (2026-06-08):
-    6 excavaciones: D04 · D06 · D07 · D08 · D09 · D10
-    Hallazgo central: QUIRA tiene taxonomía funcional de 3 tipos (no 12 dominios iguales)
-    → Tipo A Generadores · Tipo B Sintetizador · Tipo C Puerta de Protocolo
-    → C-RDC formalizado como nuevo circuito · ICM/ICPI gap = propuesta de valor central
-    → ADR-026: `docs/adr/ADR-026_Topologia_Funcional_QUIRA.md`
-- **SECUENCIA REVISADA** (consecuencia de ADR-026):
-    FASE 1 → QUIRA Operaciones (completar Generadores + Bloomberg Firewall)
-    FASE 2 → QUIRA Institucional (Sprint B puertas — diseño por Tipo Funcional)
-    **Sprint B NO es el siguiente paso. Operaciones es el siguiente paso.**
+- **Sprint A ✅ COMPLETO** (2026-06-04) · **ADR-026 v1.2 ✅ MODELO OPERATIVO** (2026-06-09)
+- **FASE 0 — Arqueología funcional ✅ COMPLETA** (2026-06-09):
+    9 excavaciones: D02 · D03 · D04 · D06 · D07 · D08 · D09 · D10 · D12
+    Hallazgo central: QUIRA tiene taxonomía funcional de 4 tipos (no 12 dominios iguales)
+    → Tipo A (7 generadores) · Tipo B (D06 sintetizador) · Tipo C (D09 protocolo) · Tipo D (D01 D05 corpus)
+    → D12 = membresía dual A+D (primer caso) · D02 = capa consecuencia financiera ($3.66M)
+    → D03 = puente PDOT-Operaciones · IFE-A 72.73% único · mod=None (deuda activa)
+    → Cadena epistemológica completa: Norma→Observación→Interpretación→Validación
+    → ADR-026 v1.2: `docs/adr/ADR-026_Topologia_Funcional_QUIRA.md`
+- **SECUENCIA OPERACIONES** (consecuencia de ADR-026):
+    FASE 1 → QUIRA Operaciones (Bloomberg Firewall + deudas activas)
+    FASE 2 → QUIRA Institucional (Sprint B — 12 puertas por Tipo Funcional)
 - **Próximos pasos inmediatos** (FASE 1 Operaciones):
-    1. Excavar D02 + D03 + D12 (cerrar taxonomía Tipo A)
+    1. ✅ Taxonomía Tipo A cerrada (D02+D03+D12 confirmados)
     2. Bloomberg Firewall: corregir p9_sat · p7_brecha · p10_inversion · p15_transparencia
     3. Deprecar `p15_transparencia.py` (código muerto activo — riesgo Bloomberg)
-    4. Completar C02 + C03 (specs parciales ADR-017)
-    5. Formalizar C-RDC en Neo4j (spec lista en ADR-026)
+    4. Wiring D03: `p8_metas.py` sin ruta sidebar (mod=None → agregar ruta en env_gov.py)
+    5. D12 roadmap datos faltantes: IGM-A,B,C,F sin fuente Excel (RRHH · DAF · CNE · PNUD)
+    6. Completar C02 + C03 (specs parciales ADR-017)
+    7. Formalizar C-RDC en Neo4j (spec lista en ADR-026)
 - **Pendiente verificar**: UI Sprint A con `streamlit run app.py` (Tarea A3 — sigue pendiente)
 - **Histórico** `fb78876` (2026-06-08): `historico-construccion-quira.md` + `ultima-conversacion-director-claude.md`
 - **Grafo**: pendiente `/graphify . --update` (fix Windows listo · usage reset a las 7:10pm Guayaquil)
