@@ -46,7 +46,7 @@ Sin esta regla, Sprint B se convierte en 5 mini-proyectos secuenciales.
 |---|---|---|---|---|
 | 1 | Transparencia | 🟢 | ✅ completada | `FICHA-01_transparencia.md` |
 | 2 | Agua potable y alcantarillado (saneamiento básico) | 🟢 | ✅ completada | `FICHA-02_agua_alcantarillado.md` |
-| 3 | Violencia de género | 🟡 | ⬜ | — |
+| 3 | Violencia de género | 🟡 | ✅ 4/5 + frontera | `FICHA-03_violencia_genero.md` |
 | 4 | Movilidad | 🔴 | ⬜ | — |
 | 5 | Desempleo juvenil | 🔴 | ⬜ | — |
 | 6 | Residuos sólidos (recolección · transporte · disposición final) | 🟡 | ⬜ | — |

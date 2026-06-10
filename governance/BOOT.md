@@ -111,8 +111,15 @@
     Objetivo: **Montecristi = primer territorio completamente explicable por QUIRA.**
     NO construir — validar. Matriz 5 casos × 5 preguntas (qué·por qué·dónde·cuánto·recursos).
     Estructura: B.1 Diagnóstico (NO reparar) → B.2 Cierre gaps críticos → B.3 Re-validación.
-    Casos (6): Transparencia ✅PASA · Agua+Alcantarillado ✅PASA · Violencia género 🟡 · Movilidad 🔴 ·
-    Desempleo juv. 🔴 · Residuos sólidos 🟡 (caso 06 agregado — cadena distinta a agua, ficha propia)
+    Casos (6): Transparencia ✅PASA · Agua+Alcantarillado ✅PASA · Violencia género ✅4/5+frontera ·
+    Movilidad 🔴 · Desempleo juv. 🔴 · Residuos sólidos 🟡 (caso 06 — cadena distinta a agua)
+    FICHA-03 resultado: pronóstico Colega EXACTO — 4 responden, "¿dónde?" en frontera.
+    **G-09 CRÍTICO confirmado**: 0 indicadores género desagregados por parroquia en PDOT (verificado
+    por script). Asimetría hallada: sistema conoce OFERTA territorial (liderazgo 2/7 parroquias,
+    Isabel Muentes y Aníbal SA sin cobertura) pero no DEMANDA (dónde duele la brecha). Femicidios
+    1.14/100K (meta 0.8) · jefatura fem. 36.1% · VIF y embarazo adolescente SIN TASA ni cantonal
+    (G-11/G-12). G-10: brechas PSG inconsistentes (-7.17 C-RDC vs -19.97 matcher, escala decimal).
+    Hipótesis Colega (correlación capacidad↔brechas territoriales) registrada — verificable post-G-09.
     FICHA-02 resultado: PASA 5/5 · respuesta territorial por parroquia (Isabel Muentes 1.02% agua ·
     NBI 61.2% · $40 pc vs cabecera 95%/$217) · serie 20 años +2.2pp · meta PDOT 2027 inalcanzable
     sin BDE $5M (bloqueado por fiscal) · 4 gaps: G-05 semántica agua parroquial/cantonal ·
