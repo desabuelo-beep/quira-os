@@ -22,11 +22,22 @@ Impact/Economic/Cooperación = vistas. El motor es el activo; las UIs son deriva
 
 ```
 B.1   DIAGNÓSTICO    → correr 6 casos · llenar 30 celdas · registrar gaps · NO reparar
+                       ✅ COMPLETO 2026-06-09 · 6/6 fichas · 25 gaps
 B.1A  AUDITORÍA PDOT → barrido temático del corpus (¿gap de datos o de extracción?)
-                       → B1A_AUDITORIA_PDOT.md · ejecutada 2026-06-09
-B.2   CIERRE         → reparar SOLO gaps críticos priorizados por evidencia
-B.3   RE-VALIDACIÓN  → segunda pasada + 6 Fichas de Explicabilidad finales
+                       ✅ B1A_AUDITORIA_PDOT.md · hallazgo: Corpus ≠ KB estructurado
+B.2   OPERACIÓN MINERA DEL PDOT (redefinida por Colega post-B.1)
+                     → extraer PRIMERO todo lo que ya existe adentro; afuera después.
+                       Lotes: 1.Género · 2.Ambiente · 3.Movilidad · 4.Juventud · 5.Empleo
+                       (Empleo/Económico Productivo = CAMPO VERDE, nunca excavado — Javo)
+B.3   RE-VALIDACIÓN  → re-correr FICHAS 03-06 SIN tocar el motor · medir:
+                       ¿cuánto de los 25 gaps era conocimiento no extraído vs vacío real?
+                       → esa razón decide el próximo sprint: expansión de corpus
+                         o cirugía del Gold Master (GM-GEN/AMB/COOP/BONOS-01)
 ```
+
+**Regla de secuencia (Colega):** el Gold Master NO se toca hasta medir cuánto
+mejora QUIRA solo con extracción. Si ~70 % de los gaps desaparecen, el problema
+nunca fue el motor — era la capa de conocimiento.
 
 **Regla anti-madriguera (inviolable en B.1):** si un caso falla una pregunta,
 se registra el gap y se continúa. El diagnóstico se completa ENTERO antes de reparar.

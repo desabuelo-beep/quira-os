@@ -145,8 +145,13 @@
     inversión $40pc · recolección 70%) — la parroquia-síntoma del cantón. (2) Radar D02 con 3 vacíos
     temáticos (movilidad·empleo·residuos) = 1 sola intervención al fetcher. (3) Gaps externos
     convergen en 1 paquete INEC (G-09 género + G-18/21 empleo + G-19 PEA).
-    SIGUIENTE: B.2 priorización de cierres (lote radar · paquete INEC · extracción tabla p.115 ·
-    Junta Cantonal serie · celda emergente) + revisión Gold Master (mesa Javo+Director).
+    **B.2 REDEFINIDA = OPERACIÓN MINERA DEL PDOT** (Colega post-B.1 · 2026-06-09):
+    "Extraer primero todo lo que ya existe adentro" — hallazgo central B.1: Corpus ≠ KB estructurado.
+    Lotes: 1.Género · 2.Ambiente · 3.Movilidad · 4.Juventud · 5.Empleo (campo verde — Javo: el
+    componente Económico Productivo NUNCA fue excavado). Luego B.3: re-correr FICHAS 03-06 sin
+    tocar el motor y MEDIR: ¿cuánto de los 25 gaps era no-extraído vs vacío real? Esa razón decide
+    el próximo sprint (expansión corpus vs cirugía GM). Gold Master NO se toca hasta esa medición
+    (Fase 3 = auditorías dirigidas GM-GEN-01·GM-AMB-01·GM-COOP-01·GM-BONOS-01 con evidencia B.1/B.2).
     **REVISIÓN GOLD MASTER pendiente (pedido Javo)**: género/ambiente/bonos/cooperación flojos en Excel.
     B.1A produce el insumo: Ambiente=extraer del PDOT→proponer indicadores · Género=fuentes externas ·
     Cooperación/bonos=D02 ya es la fuente, afinar reglas. Decisión de mesa Javo+Director post-B.1.
