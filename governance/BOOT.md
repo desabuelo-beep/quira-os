@@ -73,6 +73,16 @@
     mayor concentración de vulnerabilidad de género" — esto es gobernanza territorial inteligente.
     Relación PD-GEN-01→PD-GEO-01: Violencia · Cuidados · Movilidad · Empleo femenino = capas nativas GeoTwin.
     Completa ADR-026: Norma→Observación→Interpretación→Validación→Consecuencia→**DÓNDE ocurre la consecuencia**.
+- **PD-CIU-01 — PROPUESTA Javo (pendiente revisión Colega · 2026-06-09): pipeline de adquisición ciudadana**:
+    QUIRA Ciudadana = cascada: N0 sistema busca solo (LOTAIP·SERCOP·CPCCS·web GAD) →
+    N1 ciudadano sube (PDOT·plan trabajo·orgánico·presup. participativo) → N2 sistema genera
+    solicitud acceso info pública → N3 día 15 sin respuesta: email acción judicial + paso a paso.
+    Invierte D12: el ciudadano exige con derecho propio (presión que un oficio Dylus no tiene).
+    Ciudadano = sensor del radar nacional · coyuntura electoral = máxima motivación.
+    Testers UEB/CAF usan la misma cascada con SU cantón (o ven demo Montecristi en portal).
+    ⚠️ Plantillas legales SOLO con texto vigente verificado SHA256 (LOTAIP reformada 2023 + LOGJCC).
+    ⚠️ Capa de autenticidad para docs subidos por ciudadanos antes de entrar al corpus.
+    Secuencia: es material Sprint C/D — Sprint B (validación motor) no se detiene.
 - **C-RDC FORMALIZACIÓN — COMPLETA** (commit `96a98c9` · 2026-06-09):
     ✅ `scripts/cypher/001_crdc_circuit.cypher` — topología convergente + 6 nodos + EvaluacionCircuito MCR-001
     ✅ `scripts/cypher/apply_cypher.py` — runner AuraDB (requiere reanudar instancia 6c134c35)
