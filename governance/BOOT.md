@@ -310,6 +310,18 @@
     La recarga API queda como COMPLEMENTO
     (PUGS normativo fino del narrativo + resto Plan Bicentenario, 1,254 chunks reanudables) —
     no como bloqueo. GeoTwin v1 arranca con lo que hay.
+    **GEOTWIN NARRATIVO v1 ✅ VALIDADO** (2026-06-10 · `app/engines/geotwin_narrativo.py`):
+    Mandato Colega ejecutado: GeoTwin nace EXPLICANDO, no visualizando. 3 casos generados EN
+    RUNTIME desde pdot_indicadores (no documentos estáticos — si el dato cambia, la narrativa cambia):
+    CASO 1 Isabel Muentes: el motor COMPUTÓ la convergencia — peor del cantón en 4/5 dimensiones
+    + hallazgo nuevo del motor: es el polígono urbano MÁS EXTENSO (777 ha) con los menores servicios.
+    CASO 2 Riesgo: hallazgos nuevos en runtime — incendios forestales 48,399 ha (el riesgo MAYOR
+    del cantón, invisible hasta hoy) · deslizamientos 4,547 ha · 40 riesgos con nombre de lugar ·
+    "depósitos clandestinos de basura en quebradas" en Colorado/Isabel Muentes (residuos↔riesgo↔IM).
+    CASO 3 Brecha urbano-rural: ratios computados 7.2×/2.3×/3.0× + serie NBI + comunidades dispersas.
+    CRITERIO COLEGA CUMPLIDO: el motor explica los 3 casos con los 2,004 indicadores — y encontró
+    señales que su constructor no conocía. GeoTwin = validado conceptualmente. CLI:
+    `python -m app.engines.geotwin_narrativo [--caso N]`. Siguiente: capa visual cuando mesa ordene.
     ⏳ UI p18: badge de origen (gris/azul/verde/rojo) pendiente — material Fichas v2/UI.
     **REVISIÓN GOLD MASTER pendiente (pedido Javo)**: género/ambiente/bonos/cooperación flojos en Excel.
     B.1A produce el insumo: Ambiente=extraer del PDOT→proponer indicadores · Género=fuentes externas ·
