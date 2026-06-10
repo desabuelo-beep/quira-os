@@ -167,6 +167,18 @@
     Género (A) · Ambiente (B) · Economía Productiva (C) — prioridades del Colega.
     El extractor = PROTOTIPO del módulo de ingesta Sprint C (misma arquitectura para 221 cantones:
     PDOT → Extractor → Base estructurada → GeoTwin → Operaciones).
+    **ESTADO CORRIDA + PLAN SIN CRÉDITOS API** (2026-06-10):
+    Corrida Haiku murió al 22.1% (350/1,587 chunks · 372 indicadores) por créditos API agotados.
+    PAI completo · PDOT-MCR parcial · PLAN-BICENTENARIO 0 (ahí está el PUGS).
+    VÍA $0 ACTIVADA: `kb_loader.py` (commit aaddfc6) parsea el KB estructurado (producto /graphify
+    del Excel KB) determinísticamente → 1,610 indicadores confianza ALTA (carga en curso).
+    Doble vía conviven: KB determinístico ($0) + narrativo Haiku (reanudable al recargar créditos:
+    `python scripts/sprint_b/pdot_extractor.py` simplemente continúa donde quedó).
+    **DIRECTIVAS COLEGA post-corrida**: validar SOLO 3 cortes — Género (vs Lote 1 manual) ·
+    Ambiente (el más rico esperado) · Económico Productivo (apuesta estratégica → QUIRA Economic).
+    MÉTRICA DECISIVA: ¿cuántos de los 25 gaps desaparecen? (quedan 20=problema modelo ·
+    quedan 5=era extracción · quedan ~12=responsabilidad compartida GM+corpus).
+    Gold Master: NI UNA LÍNEA hasta el informe de cosecha.
     **REVISIÓN GOLD MASTER pendiente (pedido Javo)**: género/ambiente/bonos/cooperación flojos en Excel.
     B.1A produce el insumo: Ambiente=extraer del PDOT→proponer indicadores · Género=fuentes externas ·
     Cooperación/bonos=D02 ya es la fuente, afinar reglas. Decisión de mesa Javo+Director post-B.1.
