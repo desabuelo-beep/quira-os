@@ -137,11 +137,19 @@ def _read_gad_indicators() -> dict[str, tuple[Any, str, str]]:
         return v * 100 if v is not None else None
 
     # PSG: psg_ejecucion preferido, psg_fidelidad como backup
-    # ⚠️ SEMÁNTICA PENDIENTE DE MESA (G-10b): psg_ejecucion (GM, ~2.8%) y
-    # PSG display (demo_data, 12.83%) son VARIABLES DISTINTAS (ejecución vs
-    # codificado). Decidir contra cuál se evalúan los requisitos de fondos.
+    # G-10b RESUELTO POR MESA (2026-06-10 · Javo+Colega+Director):
+    #   PSG ejecutado  → variable PRINCIPAL de elegibilidad (capacidad real
+    #                    de gasto — lo que evalúan los cooperantes serios)
+    #   PSG codificado → variable CONTEXTUAL (priorización programática /
+    #                    alineación estratégica — narrativa y simulador)
+    # Se conservan AMBAS. Si el GM no está disponible, el fallback demo_data
+    # (codificado 12.83) entra como proxy con confianza MEDIA y fuente visible.
     psg_gm = _gm_pct(gm_fin.get("psg_ejecucion") or gm_fin.get("psg_fidelidad"))
     ind["PSG"]  = _resolve(psg_gm, "PSG")
+
+    # PSG_CODIFICADO — contextual, NUNCA gate de elegibilidad
+    psg_cod_gm = _gm_pct(gm_fin.get("psg_codificado"))
+    ind["PSG_CODIFICADO"] = _resolve(psg_cod_gm, "PSG")
 
     # ISP: isp_salud_presup
     ind["ISP"]  = _resolve(_gm_pct(gm_fin.get("isp_salud_presup")), "ISP")

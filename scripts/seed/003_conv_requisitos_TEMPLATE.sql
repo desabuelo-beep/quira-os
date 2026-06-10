@@ -7,6 +7,13 @@
 -- convocatoria deben leerse de sus bases oficiales (URL en fondos_convocatorias)
 -- y recién entonces descomentar/completar el bloque correspondiente.
 --
+-- 🛑 HALLAZGO 2026-06-10 (verificado): las convocatorias ids 7-11 listadas
+-- abajo son DATOS DEMO de los adaptadores (URLs hardcodeadas en
+-- adapter_pnud.py / adapter_bid.py — no existen bases reales). Quedaron
+-- marcadas en DB (metadata_json.es_real=false). ESTE TEMPLATE NO SE LLENA
+-- para ellas. El G-01 real es: correr el fetcher en modo LIVE (requiere
+-- créditos API) → convocatorias reales → entonces sí leer bases y cargar.
+--
 -- Procedimiento:
 --   1. Abrir la URL de la convocatoria (SELECT url FROM fondos_convocatorias WHERE id=X)
 --   2. Leer sección de elegibilidad/requisitos de las bases

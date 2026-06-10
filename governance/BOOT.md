@@ -246,6 +246,18 @@
     ✅ G-02: dedup semántico en runner (nombre normalizado+emisor) + duplicada PNUD id=6 eliminada.
     📋 G-01/G-08: plantilla `scripts/seed/003_conv_requisitos_TEMPLATE.sql` — 5 convocatorias con
        URL listas para verificar bases reales y cargar requisitos (NO se inventan — Regla 3).
+    **VOTO DE MESA EJECUTADO** (Colega+Javo · 2026-06-10):
+    ✅ G-10b RESUELTO: PSG ejecutado = principal de elegibilidad (capacidad real) · PSG codificado =
+       contextual (alineación). AMBOS conservados en matcher. Matcher RE-CORRIDO con GM live
+       (64 métricas Excel): brechas corregidas ONU PSG -19.97→-17.17 · BDE ISP -64.97→-61.78.
+       Veredictos estables: 2 elegibles ($900K) · 1 brecha (AECID ITAM -9) · 2 no elegibles.
+    🛑 G-01 RECLASIFICADO (hallazgo verificado): las 5 convocatorias "sin veredicto" son DATOS
+       DEMO de los adaptadores (URLs hardcodeadas en adapter_pnud/bid). NO existen bases que leer.
+       Marcadas en DB (es_real=false). El G-01 real = ciclo LIVE del fetcher (requiere créditos
+       API) → convocatorias reales → bases reales → requisitos. El radar ampliado (8 temas) ya
+       está listo para ese ciclo. ❓Mesa: ¿las 5 del seed original (BDE/ONU/PNUD/AECID/FORD con
+       elegibilidad calculada) son convocatorias verificadas o plantillas realistas de test?
+    SIGUIENTE (orden Colega): Fichas v2 (productización) → GeoTwin (consolidación) → auditoría GM.
     **REVISIÓN GOLD MASTER pendiente (pedido Javo)**: género/ambiente/bonos/cooperación flojos en Excel.
     B.1A produce el insumo: Ambiente=extraer del PDOT→proponer indicadores · Género=fuentes externas ·
     Cooperación/bonos=D02 ya es la fuente, afinar reglas. Decisión de mesa Javo+Director post-B.1.
