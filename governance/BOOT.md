@@ -281,7 +281,18 @@
     Decisión única: generar evidencia territorial (censo INEC jefatura parroquial + DINASED)
     ANTES de gestionar el siguiente fondo. Honestidad: SIMULADA presentada como mecánica, no como
     oportunidad; oportunidades citadas = VALIDADA del vault (Ford·USAID·CFLI·PNUD).
-    → PENDIENTE: revisión de formato por Javo+Colega → si funciona, misma plantilla para 02/06/05.
+    → FORMATO APROBADO POR MESA (Colega: "APROBADA con ajustes menores · plantilla base").
+    **FICHAS v2 COMPLETAS 4/4** (2026-06-10 · `docs/sprint-b/v2/`):
+    3 ajustes Colega aplicados a la plantilla: evidencia/interpretación separadas por columna ·
+    sección CAPACIDAD INSTALADA · oportunidades divididas gestión vs financiamiento.
+    FICHA-02 v2 Agua: "el cantón ejecuta crédito HOY — ¿llega donde la brecha es mayor?" ·
+    decisión: siguiente proyecto del banco municipal = Isabel Muentes.
+    FICHA-06 v2 Residuos: decisión = ventana CELEC activa → estudio cierre técnico de la celda.
+    FICHA-05 v2 Empleo: la ficha de la frontera honesta ("no se puede medir") · decisión =
+    obtener tasa juvenil INEC antes de diseñar programas. Megaproyectos marcados no-materializados.
+    Regla metodológica permanente adoptada: UNA ficha = UNA decisión.
+    Las 4 fichas v2 = primer producto de inteligencia pública de QUIRA (lenguaje para
+    alcaldes/CAF/UEB/ciudadanía · Bloomberg-safe · límites declarados · pie técnico omitible).
     ⏳ UI p18: badge de origen (gris/azul/verde/rojo) pendiente — material Fichas v2/UI.
     **REVISIÓN GOLD MASTER pendiente (pedido Javo)**: género/ambiente/bonos/cooperación flojos en Excel.
     B.1A produce el insumo: Ambiente=extraer del PDOT→proponer indicadores · Género=fuentes externas ·
