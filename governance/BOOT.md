@@ -232,6 +232,20 @@
     territorial · (3) brecha urbano/rural transversal. NO bloques enteros género/ambiente/bonos.
     SIGUIENTE: B.3 fase 2 (fichas v2) · B.2-cierre C (lote arquitectura sin API: G-01/02/08/10 +
     radar 4 temas) · mesa GM cuando Javo+Colega dispongan.
+    **G-27 RECLASIFICADO (aclaración Javo · 2026-06-10)**: el GM YA disciplina materialización de
+    obras MUNICIPALES (variable con verificación SERCOP — confirmado en QUIRA_DATA_GOVERNANCE_v1.0 +
+    tabla sercop_contratos 772 filas). El Aromo/Refinería = obras NACIONALES (fuera del ámbito GAD
+    por diseño). G-27 queda como mejora de capa territorial: campos competencia + materialización
+    en pdot_indicadores. Auditoría GM futura baja a 2 dimensiones (riesgo territorial · urbano/rural).
+    **B.2-CIERRE ARQUITECTURA EJECUTADO** (voto Colega · 2026-06-10):
+    ✅ G-10 escala: fondos_matcher normaliza PSG/ISP del GM (fracción→%) — brecha -19.97 era falsa.
+       ⚠️ G-10b pendiente MESA: psg_ejecucion (GM 2.8%) vs PSG display (12.83%) = variables distintas
+       — decidir contra cuál se evalúan requisitos de fondos ANTES de re-correr matcher.
+    ✅ G-15/20/23+clima: radar amplió vocabulario — 8 temas nuevos (movilidad·empleo·juventud·
+       residuos·economia_circular·clima·resiliencia·riesgo_desastres) en normalizer+prompt.
+    ✅ G-02: dedup semántico en runner (nombre normalizado+emisor) + duplicada PNUD id=6 eliminada.
+    📋 G-01/G-08: plantilla `scripts/seed/003_conv_requisitos_TEMPLATE.sql` — 5 convocatorias con
+       URL listas para verificar bases reales y cargar requisitos (NO se inventan — Regla 3).
     **REVISIÓN GOLD MASTER pendiente (pedido Javo)**: género/ambiente/bonos/cooperación flojos en Excel.
     B.1A produce el insumo: Ambiente=extraer del PDOT→proponer indicadores · Género=fuentes externas ·
     Cooperación/bonos=D02 ya es la fuente, afinar reglas. Decisión de mesa Javo+Director post-B.1.

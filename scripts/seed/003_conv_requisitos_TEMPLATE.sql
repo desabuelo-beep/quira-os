@@ -1,0 +1,63 @@
+-- ============================================================================
+-- PLANTILLA — Requisitos de convocatorias del radar (G-01/G-08 · Sprint B.2)
+-- QUIRA OS · Dylus Lab © 2026
+--
+-- ⚠️ NADA DE ESTE ARCHIVO SE APLICA SIN VERIFICAR LAS BASES REALES.
+-- Regla de Oro 3: sin fuente verificada, no hay dato. Los requisitos de cada
+-- convocatoria deben leerse de sus bases oficiales (URL en fondos_convocatorias)
+-- y recién entonces descomentar/completar el bloque correspondiente.
+--
+-- Procedimiento:
+--   1. Abrir la URL de la convocatoria (SELECT url FROM fondos_convocatorias WHERE id=X)
+--   2. Leer sección de elegibilidad/requisitos de las bases
+--   3. Mapear cada requisito al catálogo (21 códigos en fondos_requisitos)
+--   4. Completar umbral_valor si el requisito es numérico (ej. PSG ≥ 20)
+--   5. Descomentar el bloque y aplicar
+--   6. Correr el matcher → las convocatorias pasan de "sin veredicto" a evaluadas
+--
+-- Catálogo disponible (fondos_requisitos.codigo):
+--   CPCCS_SIN_OBS · EVIDENCIA_EJECUCION · IED · IET · IFE_A · IGP · IOC · ISP
+--   ITAM · LOTAIP_VIGENTE · META_INST_FORMALIZADA · META_PDOT_ASOCIADA
+--   PAC_APROBADO · PARROQUIA_PRIORIZADA · PDOT_ALINEADO · POA_APROBADO
+--   PORTAL_OPERATIVO · PRIORIDAD_TERRITORIAL · PROMESA_CNE · PSG · RDC_PRESENTADA
+-- ============================================================================
+
+-- ── id=7 · ONU_MUJERES-0E88-2026 · Fondo Mujeres Rurales Ecuador 2026 ────────
+-- Bases: ver url en fondos_convocatorias id=7
+-- INSERT INTO fondos_conv_requisitos (convocatoria_id, requisito_id, umbral_valor, obligatorio)
+-- SELECT 7, id, NULL /* completar umbral */, TRUE
+-- FROM fondos_requisitos WHERE codigo IN (
+--     /* 'PSG', 'PDOT_ALINEADO', ... según bases */
+-- );
+
+-- ── id=8 · BID-EC9F-2026 · Línea Municipal Agua Potable y Saneamiento ────────
+-- INSERT INTO fondos_conv_requisitos (convocatoria_id, requisito_id, umbral_valor, obligatorio)
+-- SELECT 8, id, NULL, TRUE
+-- FROM fondos_requisitos WHERE codigo IN (
+--     /* 'ISP', 'PDOT_ALINEADO', 'POA_APROBADO', ... según bases */
+-- );
+
+-- ── id=9 · BID-F473-2026 · BID Lab Cooperación Técnica Gobernanza ────────────
+-- INSERT INTO fondos_conv_requisitos (convocatoria_id, requisito_id, umbral_valor, obligatorio)
+-- SELECT 9, id, NULL, TRUE
+-- FROM fondos_requisitos WHERE codigo IN (
+--     /* según bases */
+-- );
+
+-- ── id=10 · AECID-18EE-2026 · Programa Gobernanza Participativa LAT ──────────
+-- INSERT INTO fondos_conv_requisitos (convocatoria_id, requisito_id, umbral_valor, obligatorio)
+-- SELECT 10, id, NULL, TRUE
+-- FROM fondos_requisitos WHERE codigo IN (
+--     /* nota: la convocatoria hermana del seed (AECID Gobernanza) usa ITAM ≥ 65 —
+--        verificar si estas bases piden lo mismo */
+-- );
+
+-- ── id=11 · AECID-F47B-2026 · Fondo Municipal Transparencia y Gob. Abierto ───
+-- INSERT INTO fondos_conv_requisitos (convocatoria_id, requisito_id, umbral_valor, obligatorio)
+-- SELECT 11, id, NULL, TRUE
+-- FROM fondos_requisitos WHERE codigo IN (
+--     /* probable ITAM/LOTAIP_VIGENTE/PORTAL_OPERATIVO — verificar bases */
+-- );
+
+-- Tras aplicar: recalcular elegibilidad
+--   python -m app.engines.fondos_matcher  (o vía skill /fondos-radar)

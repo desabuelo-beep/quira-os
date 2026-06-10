@@ -128,12 +128,23 @@ def _read_gad_indicators() -> dict[str, tuple[Any, str, str]]:
     ind: dict[str, tuple] = {}
 
     # ── FAMILIA OPERACIONAL (6) — H73_OUTPUT_API ───────────────────────────
+    # G-10 (Sprint B): el Gold Master almacena PSG/ISP como FRACCIÓN decimal
+    # (0.028 = 2.8%) — regla documentada en BOOT. Los requisitos de fondos
+    # están en escala porcentual. Sin esta normalización el matcher comparaba
+    # 0.028 contra umbral 20 → brecha -19.97 (falsa). SOLO aplica a PSG/ISP
+    # leídos del GM; demo_data ya viene en %.
+    def _gm_pct(v):
+        return v * 100 if v is not None else None
+
     # PSG: psg_ejecucion preferido, psg_fidelidad como backup
-    psg_gm = gm_fin.get("psg_ejecucion") or gm_fin.get("psg_fidelidad")
+    # ⚠️ SEMÁNTICA PENDIENTE DE MESA (G-10b): psg_ejecucion (GM, ~2.8%) y
+    # PSG display (demo_data, 12.83%) son VARIABLES DISTINTAS (ejecución vs
+    # codificado). Decidir contra cuál se evalúan los requisitos de fondos.
+    psg_gm = _gm_pct(gm_fin.get("psg_ejecucion") or gm_fin.get("psg_fidelidad"))
     ind["PSG"]  = _resolve(psg_gm, "PSG")
 
     # ISP: isp_salud_presup
-    ind["ISP"]  = _resolve(gm_fin.get("isp_salud_presup"), "ISP")
+    ind["ISP"]  = _resolve(_gm_pct(gm_fin.get("isp_salud_presup")), "ISP")
 
     # IGP, IOC, IET, IED: en _raw_h73 con claves a confirmar con Gold Master
     # Si las claves exactas no coinciden devuelven None → demo_data fallback

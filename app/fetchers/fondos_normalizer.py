@@ -46,6 +46,11 @@ TEMAS_VALIDOS = {
     "gobernanza", "genero", "agua", "democracia", "medioambiente",
     "infraestructura", "participacion", "transparencia", "derechos_humanos",
     "salud", "educacion", "economia", "otros",
+    # Sprint B.2-cierre (G-15/G-20/G-23 + clima): 4 vacíos temáticos
+    # detectados por las fichas — los fondos existen (CAF/BID/GEF/UE),
+    # el radar no los veía.
+    "movilidad", "empleo", "juventud", "residuos", "economia_circular",
+    "clima", "resiliencia", "riesgo_desastres",
 }
 ELEGIBLES_VALIDOS = {
     "GAD", "ONG", "OSC", "academia", "empresa", "gobierno_central",
@@ -81,7 +86,10 @@ SCHEMA DE SALIDA (JSON estricto):
   "elegibles": ["GAD", "ONG", "OSC", "academia", "empresa", "gobierno_central"],
   "temas": ["gobernanza", "genero", "agua", "democracia", "medioambiente",
             "infraestructura", "participacion", "transparencia",
-            "derechos_humanos", "salud", "educacion", "economia", "otros"],
+            "derechos_humanos", "salud", "educacion", "economia",
+            "movilidad", "empleo", "juventud", "residuos",
+            "economia_circular", "clima", "resiliencia",
+            "riesgo_desastres", "otros"],
   "descripcion": "Descripción breve (max 300 chars)",
   "url": "URL directa a la convocatoria o null",
   "confidence": número 0.0-1.0,

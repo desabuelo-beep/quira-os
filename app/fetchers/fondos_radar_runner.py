@@ -308,11 +308,26 @@ def _load_emisores_map(conn) -> dict:
     return result
 
 
+def _norm_nombre_conv(nombre: str) -> str:
+    """G-02 (Sprint B.2-cierre): normaliza nombre de convocatoria para dedup
+    semántico — minúsculas, sin tildes, sin puntuación, espacios colapsados.
+    El hash de nombre EXACTO dejaba pasar variantes mínimas del mismo fondo
+    (caso PNUD Gobernanza: seed manual vs fetcher)."""
+    import re
+    import unicodedata
+    n = unicodedata.normalize("NFD", nombre.lower().strip())
+    n = "".join(c for c in n if unicodedata.category(c) != "Mn")
+    n = re.sub(r"[^a-z0-9 ]", " ", n)
+    return re.sub(r"\s+", " ", n).strip()
+
+
 def _insert_canonical(conn, canonical, emisores_map: dict, fuente_codigo: str) -> str:
     """
     Inserta FondoCanonical en fondos_convocatorias si no existe duplicado.
 
-    Deduplicación: nombre normalizado + emisor_id.
+    Deduplicación (2 niveles):
+      1. código exacto (EMISOR-HASH4-AÑO)
+      2. nombre normalizado + mismo emisor (G-02 — semántico)
     Si ya existe → retorna 'duplicate'.
     Si insertó → retorna 'inserted'.
     Si error → retorna 'error'.
@@ -344,6 +359,17 @@ def _insert_canonical(conn, canonical, emisores_map: dict, fuente_codigo: str) -
         if cur.fetchone():
             cur.close()
             return "duplicate"
+
+        # G-02: duplicado semántico — mismo emisor, nombre normalizado igual
+        cur.execute(
+            "SELECT nombre FROM fondos_convocatorias WHERE emisor_id = %s",
+            (emisor_id,),
+        )
+        objetivo = _norm_nombre_conv(canonical.nombre)
+        for (nombre_exist,) in cur.fetchall():
+            if _norm_nombre_conv(nombre_exist) == objetivo:
+                cur.close()
+                return "duplicate"
 
         # INSERT
         cur.execute("""

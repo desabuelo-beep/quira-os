@@ -57,7 +57,7 @@ Gold Master.**
 | G-10 | Escala PSG decimal/% inconsistente entre circuito y matcher | Bajo |
 | G-15 + G-20 + G-23 + clima | **Radar D02 ciego en 4 temas: movilidad · empleo · residuos · clima/resiliencia** — los fondos existen, el fetcher no los barre | Medio (1 sola intervención) |
 | G-25 | Tasa de recuperación de reciclables como indicador formal | Decisión de mesa |
-| **G-27** | **Estado de materialización de proyectos (anunciado/contratado/en construcción/operativo/estancado/abandonado)** — descubierto por la corrección del fundador sobre El Aromo/Refinería: el sistema documenta promesas como si fueran activos | **Medio — candidata a dimensión obligatoria del schema** |
+| **G-27** *(reclasificado 2026-06-10)* | **Estado de materialización — SOLO para la capa territorial PDOT.** Aclaración Javo: el Gold Master YA disciplina la materialización de obras MUNICIPALES (variable con verificación en portal SERCOP — confirmado en QUIRA_DATA_GOVERNANCE_v1.0 y tabla `sercop_contratos`). El Aromo/Refinería son obras NACIONALES — fuera de la planificación municipal por diseño. Lo que falta: que `pdot_indicadores` etiquete **competencia** (municipal/provincial/nacional) y herede la disciplina de materialización para proyectos no-municipales que el PDOT documenta | Bajo-Medio — 2 campos en schema territorial, NO toca el GM |
 
 ---
 
@@ -99,12 +99,17 @@ La auditoría futura (GM-XXX-01) ya no pregunta "¿qué agregamos?" sino
 y siguen invisibles en el Gold Master?". Con la evidencia de B.2, esa
 lista es CORTA y precisa:
 
-1. **Estado de materialización** (G-27) — la brecha planificado-vs-real
-   ES auditoría de gestión pública; hoy ninguna capa la modela.
+1. ~~Estado de materialización~~ **DESACTIVADA de la auditoría GM**
+   (aclaración Javo 2026-06-10): el GM ya la modela para obras municipales
+   vía SERCOP. Queda como mejora de la capa territorial (G-27 reclasificado).
 2. **Riesgo/vulnerabilidad territorial** — 82.28 % del territorio en
    susceptibilidad y el motor no tiene dominio que lo lea.
 3. **Brecha urbano/rural como dimensión transversal** — pobreza extrema
    7× no es un indicador más: es un eje que cruza todos los dominios.
+
+La lista quirúrgica queda en **2 dimensiones** — y la decisión de mesa
+(Colega 2026-06-10) es NO abrir la auditoría GM todavía: primero cerrar
+arquitectura, formalizar fichas v2 y consolidar GeoTwin.
 
 No son "género, ambiente, bonos y cooperación" como bloques — son tres
 dimensiones quirúrgicas con evidencia.
