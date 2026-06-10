@@ -16,15 +16,17 @@ mayor.
 
 ## EVIDENCIA
 
-| Señal | Dato | Lectura |
+*Indicador y dato separados de su interpretación — auditables por columna.*
+
+| Indicador | Dato (fuente oficial) | Interpretación QUIRA |
 |---|---|---|
-| Demanda de protección | Casos de mujer en la Junta Cantonal: **120 → 198 en un año** (+65 %) | La presión sobre el sistema crece más rápido que el sistema |
-| Contexto de violencia | Homicidios: ~6/año (2014-2021) → **25 (2022) → 47 (2023)** | Cambio de régimen, no tendencia — el entorno de riesgo se multiplicó por ocho |
-| Femicidios | 5 casos en diez años (0-2/año, estable) | El femicidio tipificado se mantiene bajo; el riesgo contextual no |
-| Estructura del hogar | Jefatura femenina: **18.7 % (2001) → 36.1 % (2022)** | Casi se duplicó — transformación estructural del cantón |
-| Capacidad que sí mejoró | Analfabetismo digital en mujeres: 34.8 % → **7.8 %** | Cuando la política llega, el indicador responde |
-| Capacidad institucional | Presupuesto de género ejecutado: **2.8 %** (estándar de rendición: 20 % · instrumentos internacionales: 30 %) | La inversión real crece más lento que la demanda |
-| Cobertura territorial | Formación de liderazgo femenino: **2 de 7 parroquias** · centro de atención: solo cabecera | La oferta institucional se concentra donde ya hay servicios |
+| Casos de mujer — Junta Cantonal de Protección | **120 (2022) → 198 (2023)** | +65 % de presión en un año sobre el sistema local de protección |
+| Homicidios intencionales (serie 2014-2023) | ~6/año → **25 (2022) → 47 (2023)** | Cambio de régimen, no tendencia — el entorno de riesgo se multiplicó por ocho |
+| Femicidios (serie 2014-2023) | 5 casos en diez años (0-2/año) | El femicidio tipificado se mantiene bajo; el riesgo contextual no |
+| Jefatura de hogar femenina | **18.7 % (2001) → 25.4 % (2010) → 36.1 % (2022)** | Casi se duplicó — transformación estructural del hogar montecristense |
+| Analfabetismo digital en mujeres | 34.8 % (2010) → **7.8 % (2022)** | Cuando la política llega, el indicador responde |
+| Presupuesto de género ejecutado | **2.8 %** (estándar de rendición: 20 % · instrumentos internacionales: 30 %) | La inversión real crece más lento que la demanda |
+| Cobertura de programas de género | Liderazgo femenino: **2 de 7 parroquias** · centro de atención: solo cabecera | La oferta institucional se concentra donde ya hay servicios |
 
 ## CAUSALIDAD
 
@@ -57,6 +59,26 @@ parroquia por parroquia) aún no es medible — los registros existen a nivel
 cantonal. Este es el vacío de información más importante del eje (ver
 Próxima Decisión).*
 
+## CAPACIDAD INSTALADA
+
+*¿Sobre qué infraestructura institucional puede actuar el territorio?*
+
+- **Junta Cantonal de Protección de Derechos** — operando con equipo técnico
+  de trabajo social y psicológico (Código de la Niñez y Adolescencia).
+- **Sistema Cantonal de Protección de Derechos** — ordenanza vigente desde
+  2014, con Consejo Cantonal constituido.
+- **Convenios activos con especialistas:** Fundación FASE (erradicación de
+  violencia intrafamiliar) y Alas de Libertad (prevención e intervención,
+  campaña "Contigo Confianza" en unidades educativas).
+- **Programas municipales en ejecución** vía Patronato de Amparo Social,
+  incluida campaña de prevención de violencia sexual (USD 48,000).
+- **Capacidad demostrada de gestión de fondos:** el cantón ejecuta hoy
+  crédito multilateral (CAF, BEI/PROGAPSA, CELEC) en otros ejes y mantiene
+  **48 articulaciones institucionales** registradas — ninguna del eje género.
+
+El territorio no parte de cero: tiene el andamiaje. Lo que falta es
+focalización territorial y escala presupuestaria.
+
 ## COSTO DE NO ACTUAR
 
 - **El sistema de protección se satura:** al ritmo actual (+65 %/año), la
@@ -73,15 +95,22 @@ Próxima Decisión).*
 
 ## OPORTUNIDADES
 
-**Montecristi no es un territorio desconectado del financiamiento.** El
-cantón mantiene **48 articulaciones institucionales registradas** y ejecuta
-hoy crédito multilateral en agua, saneamiento y ambiente (CAF, BEI/PROGAPSA,
-CELEC). La capacidad de gestionar fondos está demostrada.
+**El hallazgo es de focalización, no de carencia:** ninguna de las 48
+articulaciones activas del cantón es de protección o género — el eje no está
+en el pipeline de inversión. La pregunta operativa ya no es *"¿existen
+fondos?"* — es *"¿por qué el eje de género no está entre las articulaciones?"*.
 
-**El hallazgo es de focalización:** ninguna de las articulaciones activas
-es de protección o género — el eje no está en el pipeline de inversión.
-Fuentes identificadas con ventana para equidad e inclusión (revisión validada,
-pendiente verificación de vigencia):
+### De gestión (no requieren dinero nuevo)
+
+1. **Extraer la jefatura femenina parroquial del Censo INEC 2022** — fuente
+   pública ya disponible; primer indicador de género territorializado.
+2. **Reorientar la cobertura de los programas existentes** hacia Isabel
+   Muentes y Aníbal San Andrés (hoy sin cobertura de liderazgo) — el programa
+   ya existe, el cambio es de despliegue.
+3. **Incorporar el eje género al registro de articulaciones** — que el
+   próximo convenio de cooperación tenga componente de protección explícito.
+
+### De financiamiento (fuentes validadas, vigencia por verificar)
 
 | Fuente | Perfil | Escala |
 |---|---|---|
@@ -89,9 +118,6 @@ pendiente verificación de vigencia):
 | USAID — Gobernanza e Inclusión | Gobernanza local con inclusión | por convocatoria |
 | Canadá CFLI | Iniciativas locales, ciclos cortos | ~USD 50K |
 | PNUD — Desarrollo Local | Programas territoriales | hasta USD 2M |
-
-La pregunta operativa ya no es *"¿existen fondos?"* — es *"¿por qué el eje
-de género no está entre las 48 articulaciones?"*.
 
 ## PRÓXIMA DECISIÓN
 
