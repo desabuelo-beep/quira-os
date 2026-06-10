@@ -206,6 +206,16 @@
     cantonal 41.98→meta 59.22 (2025). Conecta Operaciones+Cooperación+Impact: fondos
     adaptación climática (BID/CAF/GEF) — y el radar D02 NO tiene términos clima/resiliencia
     (4ª instancia patrón G-15). Hipótesis Colega actualizada: 25 gaps → probablemente 10-15 reales.
+    **CORTE 3 ECONÓMICO PRODUCTIVO ✅** (2026-06-10) — la apuesta del Colega CONFIRMADA:
+    el campo verde escondía MEGA-ACTIVOS nunca estructurados:
+    (1) **Central Fotovoltaica El Aromo**: 200 MW · 290 ha · ~USD 145M · cubriría 60.8% consumo
+    Manta + 22% Manabí — EN el cantón. (2) Complejo Refinador ZEDE 200 MBPD (2013, ref. histórica).
+    (3) Minería no metálica 800 m³/día + pequeña minería 300 Tn/día. (4) Riego Río Bravo 38 familias.
+    (5) **Relevo generacional agro roto**: 79.3% productores tienen 45+ años · solo 6.2% < 35 años
+    (Manabí 2022) — desempleo juvenil visto desde el otro lado: el campo no absorbe jóvenes →
+    conecta FICHA-05. Tenencia 83.8% propia · 43% montubio. QUIRA Economic deja de ser idea:
+    tiene activos energéticos + agro + minería cuantificados para conectar PDOT↔Fondos↔Inversión.
+    **3/3 CORTES COMPLETOS** → siguiente: B.3 re-validación FICHAS 03-06 + MEDICIÓN de gaps.
     **REVISIÓN GOLD MASTER pendiente (pedido Javo)**: género/ambiente/bonos/cooperación flojos en Excel.
     B.1A produce el insumo: Ambiente=extraer del PDOT→proponer indicadores · Género=fuentes externas ·
     Cooperación/bonos=D02 ya es la fuente, afinar reglas. Decisión de mesa Javo+Director post-B.1.
