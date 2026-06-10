@@ -159,6 +159,14 @@
     120→198. G-11 confirmado por el PROPIO PDOT ("no se registran cifras para este nivel territorial").
     Pendiente lote 1 v2: cuidados T.100-101 · CDBV · fecundidad. Lotes 2-5: ambiente · movilidad ·
     juventud · empleo (campo verde).
+    **EXTRACCIÓN TOTAL PDOT APROBADA POR MESA Y EN CURSO** (2026-06-10 · commit `0d40ab2`):
+    Migración 005 aplicada (pdot_indicadores + pdot_extract_log · RLS día 1).
+    `scripts/sprint_b/pdot_extractor.py` — Haiku + ventana vecinos + dedup + reanudable.
+    PUGS confirmado DENTRO del PDOT (Javo: 2ª parte de 800+ pp · 370 chunks con contenido suelo).
+    Corrida total 1,587 chunks lanzada en background. Validación dirigida post-corrida en:
+    Género (A) · Ambiente (B) · Economía Productiva (C) — prioridades del Colega.
+    El extractor = PROTOTIPO del módulo de ingesta Sprint C (misma arquitectura para 221 cantones:
+    PDOT → Extractor → Base estructurada → GeoTwin → Operaciones).
     **REVISIÓN GOLD MASTER pendiente (pedido Javo)**: género/ambiente/bonos/cooperación flojos en Excel.
     B.1A produce el insumo: Ambiente=extraer del PDOT→proponer indicadores · Género=fuentes externas ·
     Cooperación/bonos=D02 ya es la fuente, afinar reglas. Decisión de mesa Javo+Director post-B.1.
