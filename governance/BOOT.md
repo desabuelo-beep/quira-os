@@ -264,8 +264,16 @@
     plantillas realistas para validar matching, NO radar vivo). Runner propaga origen: live→VALIDADA ·
     demo→SIMULADA. Regla: SOLO VIGENTE se presenta como oportunidad operativa; SIMULADA = "caso de
     validación del motor". Ciclo radar 15 días → **SEMANAL** (decisión Javo · proxima_revision +7).
-    ⏳ OBSIDIAN: los 15-20 fondos revisados NO están en repo/corpus (viven en vault local de Javo).
-    Pedido a Javo: ruta o export de esa nota → primera carga VALIDADA real del radar.
+    ✅ OBSIDIAN LOCALIZADO Y CARGADO (ruta Javo: C:\Proyectos\QUIRA\knowledge_base\QUIRA_KB_Montecristi):
+    Módulo 06_Fuentes_Financiamiento = 18 notas de fondo + CATASTRO 40 fuentes + dashboard.
+    `vault_fondos_loader.py` (determinístico, $0): **18 líneas VALIDADA + 7 emisores nuevos**
+    (BEI·CELEC·COSUDE·GIZ·GCF·NED·OSF·Embajadas). Distribución: 18 VALIDADA · 10 SIMULADA.
+    **HALLAZGO MAYOR del vault**: el cantón tiene financiamiento ACTIVO EN EJECUCIÓN que las
+    fichas v1 no veían — CAF acueducto agua cruda (80/20) · BEI/PROGAPSA alcantarillado Eloy
+    Alfaro (mixto, 15% no reemb.) · BDE alcantarillado La Sequita-Pepa de Huso · BDE Premio
+    Verde Manglar (Fase 1 ejecutada) · CELEC compensación estudios. + PAI pipeline USD 366.7M ·
+    48 articulaciones PDyOT. FICHA-02 v2 DEBE incorporar esto (la v1 decía "ninguno accesible").
+    El vault además ya tenía score_quira por fondo calculado por GM v5.4 (módulo fondos del Excel).
     ⏳ UI p18: badge de origen (gris/azul/verde/rojo) pendiente — material Fichas v2/UI.
     **REVISIÓN GOLD MASTER pendiente (pedido Javo)**: género/ambiente/bonos/cooperación flojos en Excel.
     B.1A produce el insumo: Ambiente=extraer del PDOT→proponer indicadores · Género=fuentes externas ·
