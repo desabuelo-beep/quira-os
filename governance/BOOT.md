@@ -293,6 +293,21 @@
     Regla metodológica permanente adoptada: UNA ficha = UNA decisión.
     Las 4 fichas v2 = primer producto de inteligencia pública de QUIRA (lenguaje para
     alcaldes/CAF/UEB/ciudadanía · Bloomberg-safe · límites declarados · pie técnico omitible).
+    **VEREDICTO DE MESA FINAL** (Colega · 2026-06-10): Fichas v2 APROBADAS · GeoTwin SIGUIENTE ·
+    Gold Master ESPERAR ("el territorio todavía sigue hablando").
+    **HALLAZGO CONCEPTUAL — FAMILIAS A/B** (patrón emergente de las 4 decisiones):
+    Familia A = problemas que requieren EVIDENCIA antes de actuar (género·empleo: "medir primero").
+    Familia B = problemas donde la evidencia existe y falta GESTIÓN (agua·residuos: "focalizar lo activo").
+    Capa analítica nueva para clasificar problemas públicos — candidata a principio de diseño.
+    Conclusión Colega del sprint: "casi la mitad de los vacíos atribuidos al modelo eran conocimiento
+    territorial que ya existía sin estructurar" — justifica la Operación Minera ANTES que cirugía GM.
+    **CONSULTA API RESUELTA (Javo · 2026-06-10): NO recargar para GeoTwin v1.**
+    El KB estructurado ya tiene la capa GeoTwin esencial vía determinística ($0):
+    POLÍGONOS CUP (13 polígonos · áreas ha · barrios listados · CUP total 3,952.2 ha) +
+    KB_RIESGOS georreferenciado por sitio (Playa San José·La Pila·Los Ceibos · inundación 10,032 ha).
+    kb_loader ampliado F4 (polígonos) + F5 (riesgos). La recarga API queda como COMPLEMENTO
+    (PUGS normativo fino del narrativo + resto Plan Bicentenario, 1,254 chunks reanudables) —
+    no como bloqueo. GeoTwin v1 arranca con lo que hay.
     ⏳ UI p18: badge de origen (gris/azul/verde/rojo) pendiente — material Fichas v2/UI.
     **REVISIÓN GOLD MASTER pendiente (pedido Javo)**: género/ambiente/bonos/cooperación flojos en Excel.
     B.1A produce el insumo: Ambiente=extraer del PDOT→proponer indicadores · Género=fuentes externas ·

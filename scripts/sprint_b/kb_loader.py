@@ -124,6 +124,70 @@ def parse_kb(path: Path) -> list[dict]:
                     })
                 continue
 
+            # F4 — POLÍGONOS CUP (10 celdas): gad|Parroquia_Poligono|Area_ha|Barrios|Tipo|Zona|Año|Fuente|Pág|Notas
+            # GeoTwin v1: geometría administrativa-urbana (nombres + ha + barrios)
+            if len(c) == 10 and _num(c[2]) is not None and _num(c[3]) is None \
+                    and c[4] in ("parroquia", "poligono_crecimiento"):
+                poligono = c[1]
+                anio = c[6] if re.fullmatch(r"\d{4}", c[6] or "") else "2023"
+                rows.append({
+                    "sistema": "PUGS",
+                    "indicador": f"Área del polígono urbano CUP ({c[4]})",
+                    "unidad": "ha",
+                    "valor_texto": c[2][:500],
+                    "valor_num": _num(c[2]),
+                    "anio": anio,
+                    "territorio": poligono[:120],
+                    "fuente": (c[7] or "PDOT Cap. Asentamientos Humanos")[:200],
+                    "pagina": c[8] or "115",
+                    "confianza": "alta",
+                })
+                if c[3]:
+                    rows.append({
+                        "sistema": "PUGS",
+                        "indicador": "Barrios y sectores del polígono CUP",
+                        "unidad": None,
+                        "valor_texto": c[3][:500],
+                        "valor_num": None,
+                        "anio": anio,
+                        "territorio": poligono[:120],
+                        "fuente": (c[7] or "PDOT Cap. Asentamientos Humanos")[:200],
+                        "pagina": c[8] or "115",
+                        "confianza": "alta",
+                    })
+                continue
+
+            # F5 — KB_RIESGOS (9 celdas): gad|Riesgo_ID|Tipo_Amenaza|Nivel|Territorio|Pobl_Expuesta|Area_ha|Medida|Pág
+            # GeoTwin v1: capa de riesgo con nombre de lugar
+            if len(c) >= 9 and (c[1] or "").startswith("RISK-"):
+                territorio_r = c[4] or "cantonal"
+                rows.append({
+                    "sistema": "BIOFISICO",
+                    "indicador": f"Riesgo territorial: {c[2][:220]}",
+                    "unidad": "nivel",
+                    "valor_texto": (c[3] or "registrado")[:500],
+                    "valor_num": None,
+                    "anio": "s/f",   # evita NULL en clave de dedup (re-corridas)
+                    "territorio": territorio_r[:120],
+                    "fuente": "PDOT — matriz de riesgos (KB_RIESGOS)",
+                    "pagina": c[8] if len(c) > 8 else None,
+                    "confianza": "alta",
+                })
+                if _num(c[6]) is not None:
+                    rows.append({
+                        "sistema": "BIOFISICO",
+                        "indicador": f"Área afectada — {c[2][:200]}",
+                        "unidad": "ha",
+                        "valor_texto": c[6][:500],
+                        "valor_num": _num(c[6]),
+                        "anio": "s/f",
+                        "territorio": territorio_r[:120],
+                        "fuente": "PDOT — matriz de riesgos (KB_RIESGOS)",
+                        "pagina": c[8] if len(c) > 8 else None,
+                        "confianza": "alta",
+                    })
+                continue
+
             # F3 — KB_NBI (11-12 celdas): gad|Geo_ID|Territorio|Año|NBI_Total|NBI_Agua|NBI_Alc|NBI_Viv|NBI_Edu|NBI_Salud|Sistema|Pág
             if len(c) >= 11 and c[1].startswith("GEO_") and re.fullmatch(r"\d{4}", c[3] or ""):
                 territorio, anio = c[2], c[3]
