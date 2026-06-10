@@ -163,8 +163,13 @@ def cargar_chunks(cur, limit: int | None, sample: int | None) -> list[dict]:
 
 # ── Extracción Haiku ──────────────────────────────────────────────────────────
 
-def extraer_chunk(client, chunk: dict) -> list[dict]:
-    """Un chunk (con ventana) → lista de indicadores via Haiku."""
+def extraer_chunk(client, chunk: dict) -> tuple[list[dict], str]:
+    """Un chunk (con ventana) → (indicadores, status). status: ok|api_error.
+
+    CRÍTICO: distinguir [] legítimo (chunk sin datos) de fallo de API
+    (créditos agotados / red) — un fallo marcado 'vacio' es pérdida
+    silenciosa de contenido (lección corrida 2026-06-10: 76 falsos vacíos).
+    """
     user_msg = (
         f"Documento: {chunk['sigla']} · fragmento #{chunk['seq']}\n\n{chunk['ventana']}"
     )
@@ -181,14 +186,14 @@ def extraer_chunk(client, chunk: dict) -> list[dict]:
             texto = re.sub(r"^```(json)?|```$", "", texto, flags=re.M).strip()
             data = json.loads(texto)
             if not isinstance(data, list):
-                return []
-            return [d for d in data if _valido(d)]
+                return [], "ok"
+            return [d for d in data if _valido(d)], "ok"
         except json.JSONDecodeError:
             logger.warning("JSON inválido chunk %s (intento %d)", chunk["id"], intento)
-        except Exception as e:  # rate limit / red — backoff
+        except Exception as e:  # rate limit / créditos / red — backoff
             logger.warning("API error chunk %s: %s (intento %d)", chunk["id"], e, intento)
             time.sleep(2 * intento)
-    return []
+    return [], "api_error"
 
 
 def _valido(d: dict) -> bool:
@@ -280,16 +285,31 @@ def main() -> None:
         return
 
     total_ind = 0
+    api_errors_consecutivos = 0
     t0 = time.time()
     for i, ch in enumerate(chunks, 1):
         try:
-            inds = extraer_chunk(client, ch)
+            inds, status = extraer_chunk(client, ch)
             if args.dry_run:
-                print(f"[{ch['sigla']} #{ch['seq']}] -> {len(inds)} indicadores")
+                print(f"[{ch['sigla']} #{ch['seq']}] -> {len(inds)} indicadores ({status})")
                 for d in inds[:4]:
                     print("   ", d.get("sistema"), "|", d.get("indicador"),
                           "=", d.get("valor_texto"), f"({d.get('territorio')})")
                 continue
+
+            if status == "api_error":
+                api_errors_consecutivos += 1
+                log_chunk(cur, ch, 0, "error", "api_error tras reintentos")
+                conn.commit()
+                # 5 fallos API seguidos = créditos agotados o API caída → ABORTAR
+                if api_errors_consecutivos >= 5:
+                    print(f"\n⛔ ABORTADO: {api_errors_consecutivos} fallos API consecutivos "
+                          f"(¿créditos agotados?). {i} chunks intentados — corrida reanudable.")
+                    conn.close()
+                    return
+                continue
+
+            api_errors_consecutivos = 0
             n = guardar(cur, ch, inds)
             log_chunk(cur, ch, n, "ok" if inds else "vacio")
             conn.commit()
@@ -302,6 +322,18 @@ def main() -> None:
             conn.commit()
             print(f"\nInterrumpido — {i-1} chunks procesados (reanudable).")
             return
+        except psycopg2.Error as e:
+            # conexión DB caída (lección 2026-06-10) → reconectar y continuar
+            logger.warning("conexión DB perdida (%s) — reconectando...", type(e).__name__)
+            try:
+                conn.close()
+            except Exception:
+                pass
+            conn = _conn(secrets)
+            conn.autocommit = False
+            cur = conn.cursor()
+            log_chunk(cur, ch, 0, "error", f"db_reconnect: {e}")
+            conn.commit()
         except Exception as e:
             logger.error("chunk %s fatal: %s", ch["id"], e)
             if not args.dry_run:
