@@ -190,6 +190,22 @@
     (Montecristi/Cantón Montecristi/Montecristi (Cantón)) + dedup semántico de indicadores.
     SIGUIENTE: validar cortes 2-3 (Ambiente · Económico Productivo) → B.3 re-validación fichas
     → MEDICIÓN: ¿cuántos de los 25 gaps caen? → informe de cosecha a la mesa.
+    **OBSERVACIÓN JAVO VALIDADA CON COSECHA** (2026-06-10): brecha urbano/rural ENORME confirmada —
+    pobreza rural 42.2% vs urbana 18.4% · pobreza EXTREMA rural 23.7% vs urbana 3.3% (7×) ·
+    multidimensional rural 67.9% vs urbana 23% (3×) · NBI rural 53.3 vs urbano 21.3 (+32pp).
+    Las "comunidades históricamente olvidadas" SÍ están (agregadas): fila "Demás áreas sin
+    parroquia" = agua 19.3% · saneamiento 15.53% · pluvial 0% — peor que cualquier parroquia
+    nombrada. Isabel Muentes (1.02% agua) es parroquia URBANA → la precariedad es DENTRO del CUP.
+    → **G-26 NUEVO**: inventario sub-parroquial de comunidades/recintos con/sin sistema de agua
+    no existe como capa nombrada (promedio parroquial invisibiliza). Fuente: GAD/PDOT anexos.
+    **CORTE 2 AMBIENTE ✅** (directiva Colega · 2026-06-10): BIOFISICO 362 = riqueza confirmada.
+    Temas: ecosistemas 54 · residuos 45 · clima 25 · riesgo/amenaza 18 · suelo 13.
+    SORPRESA (como predijo Colega): capa de riesgo COMPLETA y cuantificada —
+    **82.28% del territorio con susceptibilidad a movimientos de masa** · 13.51% riesgo
+    inundación · sismo tsunamigénico min 7.0 (ref. 7.8 Pedernales 2016) · índice riesgo
+    cantonal 41.98→meta 59.22 (2025). Conecta Operaciones+Cooperación+Impact: fondos
+    adaptación climática (BID/CAF/GEF) — y el radar D02 NO tiene términos clima/resiliencia
+    (4ª instancia patrón G-15). Hipótesis Colega actualizada: 25 gaps → probablemente 10-15 reales.
     **REVISIÓN GOLD MASTER pendiente (pedido Javo)**: género/ambiente/bonos/cooperación flojos en Excel.
     B.1A produce el insumo: Ambiente=extraer del PDOT→proponer indicadores · Género=fuentes externas ·
     Cooperación/bonos=D02 ya es la fuente, afinar reglas. Decisión de mesa Javo+Director post-B.1.
