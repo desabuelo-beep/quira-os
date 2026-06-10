@@ -152,6 +152,13 @@
     tocar el motor y MEDIR: ¿cuánto de los 25 gaps era no-extraído vs vacío real? Esa razón decide
     el próximo sprint (expansión corpus vs cirugía GM). Gold Master NO se toca hasta esa medición
     (Fase 3 = auditorías dirigidas GM-GEN-01·GM-AMB-01·GM-COOP-01·GM-BONOS-01 con evidencia B.1/B.2).
+    **LOTE-01 GÉNERO v1 ✅** (`docs/sprint-b/mineria/LOTE-01_genero.md` · commit d315852):
+    11 indicadores extraídos formato KB. HALLAZGO MAYOR: violencia letal cambió de régimen —
+    homicidios 6/año (2014-21) → 25 (2022) → 47 (2023), +683% vs línea base (Tabla 121 p.242).
+    Femicidios serie 10 años: total 5, bajo y estable (Tabla 122 p.243). Junta Cantonal Mujer
+    120→198. G-11 confirmado por el PROPIO PDOT ("no se registran cifras para este nivel territorial").
+    Pendiente lote 1 v2: cuidados T.100-101 · CDBV · fecundidad. Lotes 2-5: ambiente · movilidad ·
+    juventud · empleo (campo verde).
     **REVISIÓN GOLD MASTER pendiente (pedido Javo)**: género/ambiente/bonos/cooperación flojos en Excel.
     B.1A produce el insumo: Ambiente=extraer del PDOT→proponer indicadores · Género=fuentes externas ·
     Cooperación/bonos=D02 ya es la fuente, afinar reglas. Decisión de mesa Javo+Director post-B.1.
