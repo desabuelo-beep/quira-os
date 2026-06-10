@@ -85,7 +85,14 @@
     Objetivo: **Montecristi = primer territorio completamente explicable por QUIRA.**
     NO construir — validar. Matriz 5 casos × 5 preguntas (qué·por qué·dónde·cuánto·recursos).
     Estructura: B.1 Diagnóstico (NO reparar) → B.2 Cierre gaps críticos → B.3 Re-validación.
-    Casos: Transparencia 🟢✅ · Agua 🟢 · Violencia género 🟡 · Movilidad 🔴 · Desempleo juv. 🔴
+    Casos (6): Transparencia 🟢✅ · Agua+Alcantarillado 🟢 · Violencia género 🟡 · Movilidad 🔴 ·
+    Desempleo juv. 🔴 · Residuos sólidos 🟡 (caso 06 agregado — cadena distinta a agua, ficha propia)
+    **DECISIÓN ESTRATÉGICA UEB/CAF (Javo · 2026-06-09): NO demo — QUIRA operando sobre X cantones,**
+    **testers operativizan ingesta completa como experiencia.** Fichas = QA del motor pre-réplica.
+    Horizonte propuesto: B validar → C industrializar ingesta (operable no-ingenieros) → D replicar
+    X cantones (testers como operadores). Diplomado CAF = fuerza de ingesta distribuida.
+    ⚠️ Cuello de botella identificado: Gold Master es POR CANTÓN (Excel MCR) — réplica requiere
+    decisión arquitectónica (X Excels vs capa documental sin motor para cantones nuevos).
     → `docs/sprint-b/README.md` (definición+plantilla) · `FICHA-01_transparencia.md` ✅
     FICHA-01 resultado: PASA 5/5 preguntas · 4 gaps (G-01 conv_requisitos · G-02 dedup PNUD ·
     G-03 convención institucional ✅resuelto · G-04 trazabilidad ITAM→corpus)

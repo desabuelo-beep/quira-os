@@ -45,10 +45,22 @@ Sin esta regla, Sprint B se convierte en 5 mini-proyectos secuenciales.
 | # | Caso | Pronóstico | Estado | Ficha |
 |---|---|---|---|---|
 | 1 | Transparencia | 🟢 | ✅ completada | `FICHA-01_transparencia.md` |
-| 2 | Agua potable | 🟢 | ⬜ | — |
+| 2 | Agua potable y alcantarillado (saneamiento básico) | 🟢 | ⬜ | — |
 | 3 | Violencia de género | 🟡 | ⬜ | — |
 | 4 | Movilidad | 🔴 | ⬜ | — |
 | 5 | Desempleo juvenil | 🔴 | ⬜ | — |
+| 6 | Residuos sólidos (recolección · transporte · disposición final) | 🟡 | ⬜ | — |
+
+**Caso 02 — por qué agua + alcantarillado juntos:** son el mismo sistema (ciclo del
+agua). Cobertura de agua alta puede ocultar alcantarillado deficiente → contaminación,
+enfermedad, deterioro de fuentes. Así evalúan ODS 6, BDE, CAF, BID y así diagnostica
+el PDOT. Transparencia valida la capa institucional; este caso valida la capa
+territorial completa (GeoTwin + PDOT + capacidad + fondos + circuito simultáneamente).
+
+**Caso 06 — por qué residuos sólidos separado:** es otra cadena física
+(recolección → transporte → disposición final), otro diagnóstico PDOT y otra línea
+de financiamiento. Fusionarlo con agua diluiría ambas fichas. Competencia municipal
+exclusiva igual que saneamiento — juntos completan el bloque de servicios básicos.
 
 El pronóstico desigual es deliberado: dos verdes validan el motor,
 dos rojos mapean la **frontera actual del sistema** — el entregable más
@@ -114,15 +126,25 @@ Alto / Medio / Bajo — por pregunta
 
 ---
 
-## Doble uso de las fichas
+## Rol de las fichas en el horizonte UEB/CAF (re-encuadre 2026-06-09)
+
+**Decisión estratégica de Javo:** UEB/CAF no recibe una demo. Recibe **QUIRA
+operando sobre X cantones reales**, donde los testers/estudiantes **operativizan
+una ingesta completa como experiencia**.
+
+Consecuencia para Sprint B: las fichas dejan de ser "material demo" y se
+convierten en **control de calidad del motor antes de replicar**. No se replica
+a X cantones un motor no validado — la replicación multiplica defectos.
 
 ```
-Validación interna  →  ¿el motor explica el territorio?
-Material demo       →  UEB · CAF · caso Montecristi · académico · comercial
+Sprint B   →  validar el motor (Montecristi explicable 6/6 casos)
+Sprint C   →  industrializar la ingesta (pipeline operable por no-ingenieros)
+Sprint D   →  replicar a X cantones — testers UEB/CAF como operadores de ingesta
 ```
 
-Sprint B produce **evidencia**. La evidencia después sirve para vender,
-enseñar, defender y mejorar QUIRA.
+El diplomado CAF como fuerza de ingesta distribuida: N estudiantes × 1 cantón
+cada uno = el radar nacional crece mientras ellos aprenden. La experiencia
+educativa ES la expansión del sistema.
 
 ---
 
