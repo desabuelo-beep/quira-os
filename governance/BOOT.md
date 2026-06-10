@@ -81,7 +81,17 @@
     ✅ AuraDB reanudado + Cypher 29/29 aplicado · Fuente Neo4j: True · live en p17_rdc.py
     Verificado CLI: BLOQUEADO · 2/6 nodos · $5.3M · PSG→20% sube nodo pero circuito sigue bloqueado
     (ITAM 56%<80% + ISP 14.58%<25% = 2 críticos que impiden desbloqueo total)
-- **PENDIENTES BLOQUEANTES pre-Sprint B**:
+- **SPRINT B — ABIERTO** (2026-06-09 · consenso Javo+Colega+Director):
+    Objetivo: **Montecristi = primer territorio completamente explicable por QUIRA.**
+    NO construir — validar. Matriz 5 casos × 5 preguntas (qué·por qué·dónde·cuánto·recursos).
+    Estructura: B.1 Diagnóstico (NO reparar) → B.2 Cierre gaps críticos → B.3 Re-validación.
+    Casos: Transparencia 🟢✅ · Agua 🟢 · Violencia género 🟡 · Movilidad 🔴 · Desempleo juv. 🔴
+    → `docs/sprint-b/README.md` (definición+plantilla) · `FICHA-01_transparencia.md` ✅
+    FICHA-01 resultado: PASA 5/5 preguntas · 4 gaps (G-01 conv_requisitos · G-02 dedup PNUD ·
+    G-03 convención institucional ✅resuelto · G-04 trazabilidad ITAM→corpus)
+    Hallazgo clave: AECID $400K bloqueado por brecha exacta ITAM −9 · $900K elegible HOY gobernanza.
+    Las 5 fichas = material demo UEB/CAF (cuerpo Bloomberg-safe, pie técnico omitible).
+- **PENDIENTES (no bloqueantes — Sprint B corre en paralelo)**:
     ✅ D02 completo — 5/5 pasos (Motor de Elegibilidad Financiera operacional)
     ✅ C-RDC Neo4j — COMPLETO Y LIVE. AuraDB activo. Fuente Neo4j: True.
     ✅ Supabase RLS — 23/23 tablas protegidas. Vulnerabilidad Supabase resuelta.
