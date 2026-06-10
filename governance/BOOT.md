@@ -134,6 +134,19 @@
     parroquial SÍ existe p.115: Isabel Muentes 0% · EA 12.4%). Gaps nuevos: G-13 unidades km/m ·
     G-14 La Pila+IM sin datos viales · G-15 radar sin tema movilidad (vacío fetcher, CAF presta) ·
     G-16 transporte público sin datos operativos · G-17 indicador ANT ambiguo.
+    **B.1 DIAGNÓSTICO COMPLETO ✅ (2026-06-09) — 6/6 FICHAS:**
+    FICHA-05 Desempleo juvenil (2/5, frontera mapeada): tasa cantonal 4.35%→meta 3.73 SÍ existe ·
+    tasa JUVENIL no existe (G-18) · empleo 65% en empresas grandes · embudo universitario 44% vs 97%.
+    FICHA-06 Residuos (3/5+2): recolección 96% FUERTE con tabla parroquial+recintos (Isabel Muentes
+    70% otra vez al fondo) · disposición final = CELDA EMERGENTE desde 2019 (no relleno técnico) ·
+    recuperación reciclables ≈1.3% · Montecristi-EP cadena completa desde 2017.
+    BALANCE B.1: 25 gaps (G-01…G-25) · 2 resueltos en camino (G-05/G-06) · 0 reparaciones prematuras.
+    PATRONES TRANSVERSALES: (1) Isabel Muentes al fondo de TODO (agua 1.02% · saneamiento 0% ·
+    inversión $40pc · recolección 70%) — la parroquia-síntoma del cantón. (2) Radar D02 con 3 vacíos
+    temáticos (movilidad·empleo·residuos) = 1 sola intervención al fetcher. (3) Gaps externos
+    convergen en 1 paquete INEC (G-09 género + G-18/21 empleo + G-19 PEA).
+    SIGUIENTE: B.2 priorización de cierres (lote radar · paquete INEC · extracción tabla p.115 ·
+    Junta Cantonal serie · celda emergente) + revisión Gold Master (mesa Javo+Director).
     **REVISIÓN GOLD MASTER pendiente (pedido Javo)**: género/ambiente/bonos/cooperación flojos en Excel.
     B.1A produce el insumo: Ambiente=extraer del PDOT→proponer indicadores · Género=fuentes externas ·
     Cooperación/bonos=D02 ya es la fuente, afinar reglas. Decisión de mesa Javo+Director post-B.1.

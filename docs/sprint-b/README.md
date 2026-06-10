@@ -50,8 +50,11 @@ Sin esta regla, Sprint B se convierte en 5 mini-proyectos secuenciales.
 | 2 | Agua potable y alcantarillado (saneamiento básico) | 🟢 | ✅ completada | `FICHA-02_agua_alcantarillado.md` |
 | 3 | Violencia de género | 🟡 | ✅ 4/5 + frontera | `FICHA-03_violencia_genero.md` |
 | 4 | Movilidad | 🟡 *(era 🔴)* | ✅ 3/5 + 2 frontera | `FICHA-04_movilidad.md` |
-| 5 | Desempleo juvenil | 🔴 *(B.1A: demografía sí, tasa no)* | ⬜ | — |
-| 6 | Residuos sólidos (recolección · transporte · disposición final) | 🟢 *(era 🟡 — B.1A: 158 chunks, tonelajes)* | ⬜ | — |
+| 5 | Desempleo juvenil | 🔴 | ✅ 2/5 — frontera mapeada | `FICHA-05_desempleo_juvenil.md` |
+| 6 | Residuos sólidos (recolección · transporte · disposición final) | 🟢 *(era 🟡)* | ✅ 3/5 + 2 frontera | `FICHA-06_residuos_solidos.md` |
+
+**B.1 DIAGNÓSTICO COMPLETO (2026-06-09): 6/6 fichas · 25 gaps registrados (G-01…G-25) ·
+2 gaps resueltos en el camino (G-05, G-06) · 0 reparaciones prematuras (regla respetada).**
 
 **Caso 02 — por qué agua + alcantarillado juntos:** son el mismo sistema (ciclo del
 agua). Cobertura de agua alta puede ocultar alcantarillado deficiente → contaminación,
