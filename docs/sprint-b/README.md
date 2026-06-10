@@ -21,9 +21,11 @@ Impact/Economic/Cooperación = vistas. El motor es el activo; las UIs son deriva
 ## Estructura del sprint
 
 ```
-B.1  DIAGNÓSTICO     → correr 5 casos · llenar 25 celdas · registrar gaps · NO reparar
-B.2  CIERRE          → reparar SOLO gaps críticos priorizados por evidencia
-B.3  RE-VALIDACIÓN   → segunda pasada + 5 Fichas de Explicabilidad finales
+B.1   DIAGNÓSTICO    → correr 6 casos · llenar 30 celdas · registrar gaps · NO reparar
+B.1A  AUDITORÍA PDOT → barrido temático del corpus (¿gap de datos o de extracción?)
+                       → B1A_AUDITORIA_PDOT.md · ejecutada 2026-06-09
+B.2   CIERRE         → reparar SOLO gaps críticos priorizados por evidencia
+B.3   RE-VALIDACIÓN  → segunda pasada + 6 Fichas de Explicabilidad finales
 ```
 
 **Regla anti-madriguera (inviolable en B.1):** si un caso falla una pregunta,
@@ -47,9 +49,9 @@ Sin esta regla, Sprint B se convierte en 5 mini-proyectos secuenciales.
 | 1 | Transparencia | 🟢 | ✅ completada | `FICHA-01_transparencia.md` |
 | 2 | Agua potable y alcantarillado (saneamiento básico) | 🟢 | ✅ completada | `FICHA-02_agua_alcantarillado.md` |
 | 3 | Violencia de género | 🟡 | ✅ 4/5 + frontera | `FICHA-03_violencia_genero.md` |
-| 4 | Movilidad | 🔴 | ⬜ | — |
-| 5 | Desempleo juvenil | 🔴 | ⬜ | — |
-| 6 | Residuos sólidos (recolección · transporte · disposición final) | 🟡 | ⬜ | — |
+| 4 | Movilidad | 🟡 *(era 🔴 — B.1A: 211 chunks, 49 parroquiales)* | ⬜ | — |
+| 5 | Desempleo juvenil | 🔴 *(B.1A: demografía sí, tasa no)* | ⬜ | — |
+| 6 | Residuos sólidos (recolección · transporte · disposición final) | 🟢 *(era 🟡 — B.1A: 158 chunks, tonelajes)* | ⬜ | — |
 
 **Caso 02 — por qué agua + alcantarillado juntos:** son el mismo sistema (ciclo del
 agua). Cobertura de agua alta puede ocultar alcantarillado deficiente → contaminación,

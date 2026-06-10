@@ -120,6 +120,16 @@
     1.14/100K (meta 0.8) · jefatura fem. 36.1% · VIF y embarazo adolescente SIN TASA ni cantonal
     (G-11/G-12). G-10: brechas PSG inconsistentes (-7.17 C-RDC vs -19.97 matcher, escala decimal).
     Hipótesis Colega (correlación capacidad↔brechas territoriales) registrada — verificable post-G-09.
+    **B.1A AUDITORÍA PDOT ✅** (2026-06-09 · `docs/sprint-b/B1A_AUDITORIA_PDOT.md` + script reproducible):
+    Corpus narrativo 1,587 chunks PDOT auditado por tema. VEREDICTOS: Ambiente 211/65×parroquia y
+    Movilidad 211/49 = gaps de EXTRACCIÓN (riqueza sin explotar, NO faltan datos) · Género 18/0 =
+    GAP REAL doble fuente (KB+narrativo) · Residuos 158 (caso 06 asegurado) · Juventud 67/13 parcial.
+    HALLAZGO NUEVO: Junta Cantonal Protección Derechos — casos Mujer 120→198 (+65% en 1 año) ·
+    morbilidad 66.25% femenina → enriquecen FICHA-03 "qué pasa" (extraer en B.2).
+    Pronósticos revisados: Movilidad 🔴→🟡 · Residuos 🟡→🟢.
+    **REVISIÓN GOLD MASTER pendiente (pedido Javo)**: género/ambiente/bonos/cooperación flojos en Excel.
+    B.1A produce el insumo: Ambiente=extraer del PDOT→proponer indicadores · Género=fuentes externas ·
+    Cooperación/bonos=D02 ya es la fuente, afinar reglas. Decisión de mesa Javo+Director post-B.1.
     FICHA-02 resultado: PASA 5/5 · respuesta territorial por parroquia (Isabel Muentes 1.02% agua ·
     NBI 61.2% · $40 pc vs cabecera 95%/$217) · serie 20 años +2.2pp · meta PDOT 2027 inalcanzable
     sin BDE $5M (bloqueado por fiscal) · 4 gaps: G-05 semántica agua parroquial/cantonal ·
