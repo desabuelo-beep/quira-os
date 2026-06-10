@@ -94,6 +94,11 @@
     V3 Testers UEB/CAF = ingesta documental de SU cantón como experiencia.
     Las 3 convergen al corpus con niveles 🥇ORO/🥈PLATA/🥉BRONCE. OSINT = capa futura posterior.
     ❓Mesa pendiente: ¿Índice Opacidad = conteo documental QUIRA o métrica Excel? (zona gris ADR-023)
+    **TRIÁNGULO EN CONSTRUCCIÓN** (Javo · 2026-06-09): Operaciones (expone: radar/opacidad) →
+    Ciudadana (presiona: cascada) → **Institucional/Gestión (válvula de salida: espejo privado
+    del GAD, donde responde y mejora — el ingreso de Dylus)**. Institucional = VÍA 4 adquisición:
+    GAD cliente entrega datos operativos directos (calidad ORO+). Flywheel: más datos → mejor radar
+    → más presión → más GADs a Institucional → más datos. Alcaldes entrantes 2027 = clientes naturales.
 - **C-RDC FORMALIZACIÓN — COMPLETA** (commit `96a98c9` · 2026-06-09):
     ✅ `scripts/cypher/001_crdc_circuit.cypher` — topología convergente + 6 nodos + EvaluacionCircuito MCR-001
     ✅ `scripts/cypher/apply_cypher.py` — runner AuraDB (requiere reanudar instancia 6c134c35)
