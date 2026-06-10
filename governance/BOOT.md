@@ -274,6 +274,14 @@
     Verde Manglar (Fase 1 ejecutada) · CELEC compensación estudios. + PAI pipeline USD 366.7M ·
     48 articulaciones PDyOT. FICHA-02 v2 DEBE incorporar esto (la v1 decía "ninguno accesible").
     El vault además ya tenía score_quira por fondo calculado por GM v5.4 (módulo fondos del Excel).
+    **FICHA-03 v2 GÉNERO ✅** (2026-06-10 · `docs/sprint-b/v2/FICHA-03_v2_genero.md`):
+    Primera ficha formato PRODUCTO (filosofía Colega): Situación→Evidencia→Causalidad→Territorios→
+    Costo→Oportunidades→UNA Próxima Decisión. Narrativa nueva: "el hogar cambió; la política no" ·
+    "la pregunta no es si existen fondos — es por qué género no está entre las 48 articulaciones".
+    Decisión única: generar evidencia territorial (censo INEC jefatura parroquial + DINASED)
+    ANTES de gestionar el siguiente fondo. Honestidad: SIMULADA presentada como mecánica, no como
+    oportunidad; oportunidades citadas = VALIDADA del vault (Ford·USAID·CFLI·PNUD).
+    → PENDIENTE: revisión de formato por Javo+Colega → si funciona, misma plantilla para 02/06/05.
     ⏳ UI p18: badge de origen (gris/azul/verde/rojo) pendiente — material Fichas v2/UI.
     **REVISIÓN GOLD MASTER pendiente (pedido Javo)**: género/ambiente/bonos/cooperación flojos en Excel.
     B.1A produce el insumo: Ambiente=extraer del PDOT→proponer indicadores · Género=fuentes externas ·
