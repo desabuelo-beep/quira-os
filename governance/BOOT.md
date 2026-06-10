@@ -86,7 +86,10 @@
     ✅ C-RDC Neo4j — COMPLETO Y LIVE. AuraDB activo. Fuente Neo4j: True.
     ✅ Supabase RLS — 23/23 tablas protegidas. Vulnerabilidad Supabase resuelta.
     🔴 IFE-E (D03): trazabilidad POA→PAC→eSIGEF → Dirección Financiera GAD
-    🟠 D12 datos faltantes: IGM-A,B,C,F (RRHH · DAF · PNUD · CNE) — solicitar formalmente
+    🧊 D12 → BACKLOG ESTRATÉGICO (no bloqueante · no ejecutar ahora)
+       Oficios redactados y listos. NO enviar hasta que QUIRA demuestre valor.
+       Realidad: municipios tardan 3+ meses en responder. UEB/CAF no puede esperar.
+       Estrategia invertida: Modelo→Demo→Validación→Luego oficios.
     🟡 C02 + C03: specs parciales ADR-017 → completar
     ⬜ Verificar UI Sprint A: `streamlit run app.py` (Tarea A3)
     ⬜ Graphify update: `/graphify . --update` (artefactos nuevos: ADR-026 v1.3 · MAPA · REGISTRY · C-RDC)
@@ -94,8 +97,8 @@
 - **Gate 6.6 ✅ · Corpus**: ~13,509 chunks · Neo4j: 38/58
 - **Connector LISTO**: `app/connectors/gold_master.py` → H73_OUTPUT_API + fallback TGI
 - **GATE-007 🧊 CONGELADO** — Manta = Municipio 002 · retomar post-Montecristi v1.0
-- **Roadmap revisado**: A✅→[Operaciones ~90%]→B→C→D→E→F
-    Siguiente: C-RDC aplicar Cypher (reanudar AuraDB) → D12 solicitudes → Sprint B (12 puertas)
+- **Roadmap revisado**: A✅→[Operaciones ✅]→**B ABIERTO**→C→D→E→F
+    Siguiente: **Sprint B ABIERTO** — modelo demuestra valor con datos que ya tiene. D12 no bloquea.
 - **ADR-019 STRONGLY_SUPPORTED · ADR-022 SUPPORTED · ADR-023 ACTIVO · ADR-024 RATIFICADO · ADR-026 v1.3 RATIFICADO**
 
 ## REGLA CANÓNICA NUEVA (2026-06-03)
