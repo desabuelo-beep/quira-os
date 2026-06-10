@@ -83,3 +83,4 @@ data/vault_backup_p2/
 *.pdf
 test_reporte.pdf
 .env.claude
+scripts/sprint_b/_lote1_genero_raw.txt
