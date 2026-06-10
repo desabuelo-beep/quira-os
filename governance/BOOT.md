@@ -322,6 +322,20 @@
     CRITERIO COLEGA CUMPLIDO: el motor explica los 3 casos con los 2,004 indicadores — y encontró
     señales que su constructor no conocía. GeoTwin = validado conceptualmente. CLI:
     `python -m app.engines.geotwin_narrativo [--caso N]`. Siguiente: capa visual cuando mesa ordene.
+    **CIERRE SPRINT B — DIRECTIVA SIGUIENTE ETAPA** (Colega asesor · 2026-06-10):
+    Hipótesis arquitectónica VALIDADA: "el territorio puede explicarse a sí mismo si se estructura
+    correctamente la evidencia". El sistema produce CONOCIMIENTO NUEVO (inferencia territorial).
+    🧊 CONGELAMIENTO de ciclo corto: Gold Master · nuevas métricas · nuevos módulos. NO abrir
+    frentes nuevos ("cuando algo empieza a funcionar, conviene entenderlo antes de expandirlo").
+    📋 SIGUIENTE ETAPA (en orden): (1) VALIDACIÓN EXTERNA de los 3 casos GeoTwin — protocolo y
+    material listos en `docs/sprint-b/GEOTWIN_VALIDACION_EXTERNA.md` (entrevistas 15-20 min a
+    técnico municipal/director planificación/conocedor del cantón · pregunta central: "¿esto
+    explica mejor el territorio que un informe tradicional?" · SÍ → GeoTwin = producto → capa
+    visual · NO → las razones = backlog del motor). (2) Refinar motor narrativo. (3) Capa visual.
+    ⏳ API: no recargar — 1,254 chunks = valor incremental, no crítico.
+    Conclusión de mesa: "La siguiente etapa ya no es descubrir datos; es demostrar que la
+    explicación territorial genera valor para usuarios reales."
+    **ACCIÓN JAVO**: agendar 1-3 entrevistas de validación con el material impreso del protocolo.
     ⏳ UI p18: badge de origen (gris/azul/verde/rojo) pendiente — material Fichas v2/UI.
     **REVISIÓN GOLD MASTER pendiente (pedido Javo)**: género/ambiente/bonos/cooperación flojos en Excel.
     B.1A produce el insumo: Ambiente=extraer del PDOT→proponer indicadores · Género=fuentes externas ·
