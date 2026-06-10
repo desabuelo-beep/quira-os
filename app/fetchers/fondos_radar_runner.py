@@ -243,7 +243,10 @@ def _process_fuente(
             })
             continue
 
-        insert_result = _insert_canonical(conn, canonical, emisores_map, fuente_codigo)
+        # ORIGEN_OPORTUNIDAD (mesa 2026-06-10): live → VALIDADA (real
+        # identificada, vigencia pendiente) · demo → SIMULADA (prueba motor).
+        origen = "VALIDADA" if mode == "live" else "SIMULADA"
+        insert_result = _insert_canonical(conn, canonical, emisores_map, fuente_codigo, origen)
         if insert_result == "inserted":
             result["insertados"] += 1
             result["nuevas"].append({
@@ -321,13 +324,15 @@ def _norm_nombre_conv(nombre: str) -> str:
     return re.sub(r"\s+", " ", n).strip()
 
 
-def _insert_canonical(conn, canonical, emisores_map: dict, fuente_codigo: str) -> str:
+def _insert_canonical(conn, canonical, emisores_map: dict, fuente_codigo: str,
+                      origen: str = "SIMULADA") -> str:
     """
     Inserta FondoCanonical en fondos_convocatorias si no existe duplicado.
 
     Deduplicación (2 niveles):
       1. código exacto (EMISOR-HASH4-AÑO)
       2. nombre normalizado + mismo emisor (G-02 — semántico)
+    origen: SIMULADA (demo) | VALIDADA (live) — taxonomía mesa 2026-06-10.
     Si ya existe → retorna 'duplicate'.
     Si insertó → retorna 'inserted'.
     Si error → retorna 'error'.
@@ -378,13 +383,15 @@ def _insert_canonical(conn, canonical, emisores_map: dict, fuente_codigo: str) -
                  monto_min_usd, monto_max_usd, moneda,
                  elegibles, temas, url, descripcion,
                  fecha_cierre, fecha_apertura,
+                 origen_oportunidad,
                  snapshot_date, proxima_revision)
             VALUES
                 (%s, %s, %s, %s,
                  %s, %s, %s,
                  %s, %s, %s, %s,
                  %s, %s,
-                 CURRENT_DATE, CURRENT_DATE + 30)
+                 %s,
+                 CURRENT_DATE, CURRENT_DATE + 7)
             RETURNING id
         """, (
             codigo,
@@ -400,6 +407,7 @@ def _insert_canonical(conn, canonical, emisores_map: dict, fuente_codigo: str) -
             canonical.descripcion,
             canonical.fecha_cierre,
             canonical.fecha_inicio,   # fecha_apertura en DB
+            origen,                   # taxonomía mesa 2026-06-10
         ))
 
         conv_id = cur.fetchone()[0]

@@ -258,6 +258,15 @@
        está listo para ese ciclo. ❓Mesa: ¿las 5 del seed original (BDE/ONU/PNUD/AECID/FORD con
        elegibilidad calculada) son convocatorias verificadas o plantillas realistas de test?
     SIGUIENTE (orden Colega): Fichas v2 (productización) → GeoTwin (consolidación) → auditoría GM.
+    **TAXONOMÍA ORIGEN_OPORTUNIDAD IMPLEMENTADA** (mesa · 2026-06-10):
+    Migración 006 aplicada: SIMULADA(gris)/VALIDADA(azul)/VIGENTE(verde)/CERRADA(rojo).
+    10/10 convocatorias actuales = SIMULADA (seed test + fetcher demo — hipótesis Colega confirmada:
+    plantillas realistas para validar matching, NO radar vivo). Runner propaga origen: live→VALIDADA ·
+    demo→SIMULADA. Regla: SOLO VIGENTE se presenta como oportunidad operativa; SIMULADA = "caso de
+    validación del motor". Ciclo radar 15 días → **SEMANAL** (decisión Javo · proxima_revision +7).
+    ⏳ OBSIDIAN: los 15-20 fondos revisados NO están en repo/corpus (viven en vault local de Javo).
+    Pedido a Javo: ruta o export de esa nota → primera carga VALIDADA real del radar.
+    ⏳ UI p18: badge de origen (gris/azul/verde/rojo) pendiente — material Fichas v2/UI.
     **REVISIÓN GOLD MASTER pendiente (pedido Javo)**: género/ambiente/bonos/cooperación flojos en Excel.
     B.1A produce el insumo: Ambiente=extraer del PDOT→proponer indicadores · Género=fuentes externas ·
     Cooperación/bonos=D02 ya es la fuente, afinar reglas. Decisión de mesa Javo+Director post-B.1.
