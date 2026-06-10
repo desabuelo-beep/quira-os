@@ -206,16 +206,32 @@
     cantonal 41.98→meta 59.22 (2025). Conecta Operaciones+Cooperación+Impact: fondos
     adaptación climática (BID/CAF/GEF) — y el radar D02 NO tiene términos clima/resiliencia
     (4ª instancia patrón G-15). Hipótesis Colega actualizada: 25 gaps → probablemente 10-15 reales.
-    **CORTE 3 ECONÓMICO PRODUCTIVO ✅** (2026-06-10) — la apuesta del Colega CONFIRMADA:
-    el campo verde escondía MEGA-ACTIVOS nunca estructurados:
-    (1) **Central Fotovoltaica El Aromo**: 200 MW · 290 ha · ~USD 145M · cubriría 60.8% consumo
-    Manta + 22% Manabí — EN el cantón. (2) Complejo Refinador ZEDE 200 MBPD (2013, ref. histórica).
-    (3) Minería no metálica 800 m³/día + pequeña minería 300 Tn/día. (4) Riego Río Bravo 38 familias.
-    (5) **Relevo generacional agro roto**: 79.3% productores tienen 45+ años · solo 6.2% < 35 años
-    (Manabí 2022) — desempleo juvenil visto desde el otro lado: el campo no absorbe jóvenes →
-    conecta FICHA-05. Tenencia 83.8% propia · 43% montubio. QUIRA Economic deja de ser idea:
-    tiene activos energéticos + agro + minería cuantificados para conectar PDOT↔Fondos↔Inversión.
+    **CORTE 3 ECONÓMICO PRODUCTIVO ✅ + CORRECCIÓN JAVO** (2026-06-10):
+    el campo verde escondía MEGA-PROYECTOS — pero son **PROYECTOS FALLIDOS/ESTANCADOS de
+    gobiernos nacionales anteriores, NUNCA CONSTRUIDOS** (corrección del fundador):
+    (1) Central Fotovoltaica El Aromo: 200 MW · ~USD 145M — contrato firmado mar-2023,
+    obra JAMÁS INICIADA (estancado). (2) Refinería del Pacífico/ZEDE 200 MBPD — abandonado.
+    El PDOT los documenta como capacidad; la realidad territorial es que no existen físicamente.
+    → **G-27 NUEVO (arquitectura · descubierto por corrección Javo)**: el sistema NO distingue
+    **estado de materialización** (anunciado/contratado/en construcción/operativo/estancado/
+    abandonado). Sin esa dimensión, QUIRA repetiría el error del PDOT: presentar promesas como
+    activos. La brecha PLANIFICADO vs MATERIALIZADO ES auditoría de gestión pública pura —
+    El Aromo es el caso de estudio perfecto. Candidata a dimensión obligatoria del schema.
+    Hallazgos VÁLIDOS del corte: relevo generacional agro roto (79.3% productores 45+ ·
+    solo 6.2% <35 — conecta FICHA-05) · minería no metálica activa · riego Río Bravo 38 familias ·
+    tenencia 83.8% propia · 43% montubio.
     **3/3 CORTES COMPLETOS** → siguiente: B.3 re-validación FICHAS 03-06 + MEDICIÓN de gaps.
+    **B.3 MEDICIÓN ✅** (2026-06-10 · `docs/sprint-b/B3_MEDICION_GAPS.md`):
+    **27 gaps → 14 A (reales) · 4 B (extracción) · 9 C (arquitectura)**. 48% se resuelve sin
+    fuentes externas ni tocar el GM. **Los 14 reales son TODOS fuentes externas (INEC·DINASED·
+    MSP·ANT·GAD) — CERO fórmulas faltantes del motor.** Hipótesis Colega direccionalmente correcta.
+    7 decisiones de QUIRA cambiaron (FICHA-03 qué pasa Media→Alta · saneamiento IM 0% · prioridad
+    territorial + "Demás áreas" · relevo agro · capa riesgo operativa · Economic con G-27 · radar 4 temas).
+    VEREDICTO PRELIMINAR GM: NO es el problema principal. Auditoría futura = 3 dimensiones
+    quirúrgicas con evidencia: (1) estado de materialización G-27 · (2) riesgo/vulnerabilidad
+    territorial · (3) brecha urbano/rural transversal. NO bloques enteros género/ambiente/bonos.
+    SIGUIENTE: B.3 fase 2 (fichas v2) · B.2-cierre C (lote arquitectura sin API: G-01/02/08/10 +
+    radar 4 temas) · mesa GM cuando Javo+Colega dispongan.
     **REVISIÓN GOLD MASTER pendiente (pedido Javo)**: género/ambiente/bonos/cooperación flojos en Excel.
     B.1A produce el insumo: Ambiente=extraer del PDOT→proponer indicadores · Género=fuentes externas ·
     Cooperación/bonos=D02 ya es la fuente, afinar reglas. Decisión de mesa Javo+Director post-B.1.
