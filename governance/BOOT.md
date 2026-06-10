@@ -127,6 +127,13 @@
     HALLAZGO NUEVO: Junta Cantonal Protección Derechos — casos Mujer 120→198 (+65% en 1 año) ·
     morbilidad 66.25% femenina → enriquecen FICHA-03 "qué pasa" (extraer en B.2).
     Pronósticos revisados: Movilidad 🔴→🟡 · Residuos 🟡→🟢.
+    **FICHA-04 Movilidad ✅** (3/5 + 2 frontera): tabla vial parroquial p.136 extraída — Colorado
+    8.92% tratada/35.56% sin tratamiento/110km red mayor · pluvial 0% en 4 parroquias · ANT 95.8%
+    siniestros rurales. HALLAZGOS COLATERALES: G-05 RESUELTO (discrepancia agua = núcleo CUP vs
+    parroquia completa, tabla corregida p.115 con flags [EST]) · G-06 RECLASIFICADO (saneamiento
+    parroquial SÍ existe p.115: Isabel Muentes 0% · EA 12.4%). Gaps nuevos: G-13 unidades km/m ·
+    G-14 La Pila+IM sin datos viales · G-15 radar sin tema movilidad (vacío fetcher, CAF presta) ·
+    G-16 transporte público sin datos operativos · G-17 indicador ANT ambiguo.
     **REVISIÓN GOLD MASTER pendiente (pedido Javo)**: género/ambiente/bonos/cooperación flojos en Excel.
     B.1A produce el insumo: Ambiente=extraer del PDOT→proponer indicadores · Género=fuentes externas ·
     Cooperación/bonos=D02 ya es la fuente, afinar reglas. Decisión de mesa Javo+Director post-B.1.

@@ -49,7 +49,7 @@ Sin esta regla, Sprint B se convierte en 5 mini-proyectos secuenciales.
 | 1 | Transparencia | 🟢 | ✅ completada | `FICHA-01_transparencia.md` |
 | 2 | Agua potable y alcantarillado (saneamiento básico) | 🟢 | ✅ completada | `FICHA-02_agua_alcantarillado.md` |
 | 3 | Violencia de género | 🟡 | ✅ 4/5 + frontera | `FICHA-03_violencia_genero.md` |
-| 4 | Movilidad | 🟡 *(era 🔴 — B.1A: 211 chunks, 49 parroquiales)* | ⬜ | — |
+| 4 | Movilidad | 🟡 *(era 🔴)* | ✅ 3/5 + 2 frontera | `FICHA-04_movilidad.md` |
 | 5 | Desempleo juvenil | 🔴 *(B.1A: demografía sí, tasa no)* | ⬜ | — |
 | 6 | Residuos sólidos (recolección · transporte · disposición final) | 🟢 *(era 🟡 — B.1A: 158 chunks, tonelajes)* | ⬜ | — |
 
