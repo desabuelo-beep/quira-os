@@ -87,6 +87,13 @@
     Niveles confianza corpus: 🥇ORO oficio GAD firmado (verif. criptográfica PAdES) ·
     🥈PLATA fuente oficial pública (URL+SHA256+fecha) · 🥉BRONCE upload ciudadano (referencia, NO evidencia).
     Secuencia: es material Sprint C/D — Sprint B (validación motor) no se detiene.
+    **MODELO 3 VÍAS de adquisición** (Javo · 2026-06-09): V1 Dylus/Operaciones = barrido activo
+    LOTAIP·SERCOP·CPCCS·web GADs → **ÍNDICE DE OPACIDAD NACIONAL** (221 GADs · post-validación;
+    opacidad se mide por AUSENCIA → no requiere cooperación GAD ni Gold Master por cantón) ·
+    V2 Ciudadana = cascada N0-N3 (corre por parte del ciudadano, independiente) ·
+    V3 Testers UEB/CAF = ingesta documental de SU cantón como experiencia.
+    Las 3 convergen al corpus con niveles 🥇ORO/🥈PLATA/🥉BRONCE. OSINT = capa futura posterior.
+    ❓Mesa pendiente: ¿Índice Opacidad = conteo documental QUIRA o métrica Excel? (zona gris ADR-023)
 - **C-RDC FORMALIZACIÓN — COMPLETA** (commit `96a98c9` · 2026-06-09):
     ✅ `scripts/cypher/001_crdc_circuit.cypher` — topología convergente + 6 nodos + EvaluacionCircuito MCR-001
     ✅ `scripts/cypher/apply_cypher.py` — runner AuraDB (requiere reanudar instancia 6c134c35)
