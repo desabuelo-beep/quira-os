@@ -250,7 +250,9 @@ def main():
             ON CONFLICT (canton_id, indicador, territorio, anio, valor_texto) DO NOTHING
             """,
             (SIGLA, KB_SHA, r["sistema"], r["indicador"], r["unidad"],
-             r["valor_texto"], r["valor_num"], r["anio"], r["territorio"],
+             # anio nunca NULL: NULL rompe el dedup de la UNIQUE (lección
+             # corrida 2: 443 duplicados por claves con NULL)
+             r["valor_texto"], r["valor_num"], r["anio"] or "s/f", r["territorio"],
              r["fuente"], r["pagina"], r["confianza"], VER),
         )
         nuevos += cur.rowcount

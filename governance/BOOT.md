@@ -305,7 +305,9 @@
     El KB estructurado ya tiene la capa GeoTwin esencial vía determinística ($0):
     POLÍGONOS CUP (13 polígonos · áreas ha · barrios listados · CUP total 3,952.2 ha) +
     KB_RIESGOS georreferenciado por sitio (Playa San José·La Pila·Los Ceibos · inundación 10,032 ha).
-    kb_loader ampliado F4 (polígonos) + F5 (riesgos). La recarga API queda como COMPLEMENTO
+    kb_loader F4+F5 CARGADO: censo final **2,004 indicadores** (PUGS 27 · BIOFISICO 408 con riesgos
+    territoriales). Limpieza: 443 duplicados por anio NULL eliminados + clave normalizada s/f.
+    La recarga API queda como COMPLEMENTO
     (PUGS normativo fino del narrativo + resto Plan Bicentenario, 1,254 chunks reanudables) —
     no como bloqueo. GeoTwin v1 arranca con lo que hay.
     ⏳ UI p18: badge de origen (gris/azul/verde/rojo) pendiente — material Fichas v2/UI.
