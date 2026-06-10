@@ -81,7 +81,11 @@
     Ciudadano = sensor del radar nacional · coyuntura electoral = máxima motivación.
     Testers UEB/CAF usan la misma cascada con SU cantón (o ven demo Montecristi en portal).
     ⚠️ Plantillas legales SOLO con texto vigente verificado SHA256 (LOTAIP reformada 2023 + LOGJCC).
-    ⚠️ Capa de autenticidad para docs subidos por ciudadanos antes de entrar al corpus.
+    ✅ Capa de autenticidad RESUELTA (Javo): N2 siempre pide remisión al correo → fuerza respuesta
+    electrónica del GAD con firma digital → oficio firmado = respaldo probatorio de QUIRA.
+    Firma electrónica > SHA256: hash + identidad firmante + sello de tiempo + GAD comprometido.
+    Niveles confianza corpus: 🥇ORO oficio GAD firmado (verif. criptográfica PAdES) ·
+    🥈PLATA fuente oficial pública (URL+SHA256+fecha) · 🥉BRONCE upload ciudadano (referencia, NO evidencia).
     Secuencia: es material Sprint C/D — Sprint B (validación motor) no se detiene.
 - **C-RDC FORMALIZACIÓN — COMPLETA** (commit `96a98c9` · 2026-06-09):
     ✅ `scripts/cypher/001_crdc_circuit.cypher` — topología convergente + 6 nodos + EvaluacionCircuito MCR-001
