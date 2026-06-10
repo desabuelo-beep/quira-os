@@ -111,8 +111,12 @@
     Objetivo: **Montecristi = primer territorio completamente explicable por QUIRA.**
     NO construir — validar. Matriz 5 casos × 5 preguntas (qué·por qué·dónde·cuánto·recursos).
     Estructura: B.1 Diagnóstico (NO reparar) → B.2 Cierre gaps críticos → B.3 Re-validación.
-    Casos (6): Transparencia 🟢✅ · Agua+Alcantarillado 🟢 · Violencia género 🟡 · Movilidad 🔴 ·
+    Casos (6): Transparencia ✅PASA · Agua+Alcantarillado ✅PASA · Violencia género 🟡 · Movilidad 🔴 ·
     Desempleo juv. 🔴 · Residuos sólidos 🟡 (caso 06 agregado — cadena distinta a agua, ficha propia)
+    FICHA-02 resultado: PASA 5/5 · respuesta territorial por parroquia (Isabel Muentes 1.02% agua ·
+    NBI 61.2% · $40 pc vs cabecera 95%/$217) · serie 20 años +2.2pp · meta PDOT 2027 inalcanzable
+    sin BDE $5M (bloqueado por fiscal) · 4 gaps: G-05 semántica agua parroquial/cantonal ·
+    G-06 alcantarillado parroquial no existe · G-07 costo social sin cuantificar · G-08 BID sin requisitos
     **DECISIÓN ESTRATÉGICA UEB/CAF (Javo · 2026-06-09): NO demo — QUIRA operando sobre X cantones,**
     **testers operativizan ingesta completa como experiencia.** Fichas = QA del motor pre-réplica.
     Horizonte propuesto: B validar → C industrializar ingesta (operable no-ingenieros) → D replicar
