@@ -179,6 +179,17 @@
     MÉTRICA DECISIVA: ¿cuántos de los 25 gaps desaparecen? (quedan 20=problema modelo ·
     quedan 5=era extracción · quedan ~12=responsabilidad compartida GM+corpus).
     Gold Master: NI UNA LÍNEA hasta el informe de cosecha.
+    **COSECHA v1 COMPLETA** (2026-06-10): **1,959 indicadores** en pdot_indicadores
+    (KB determinístico 1,587 confianza alta + Haiku 372). **1,617 TERRITORIALIZADOS (82.5%)**
+    en ~103 territorios (parroquias+recintos+urbano/rural). Por sistema: SOCIOCULTURAL 658 ·
+    ASENTAMIENTOS 643 · BIOFISICO 362 · ECONOMICO_PRODUCTIVO 139 (campo verde poblado) ·
+    POLITICO_INST 104 · MOVILIDAD 46 · PUGS 4 (espera créditos — narrativo Plan Bicentenario).
+    Corte género VALIDADO vs Lote 1: converge (Junta Cantonal 120→198 idéntico en ambas vías)
+    Y SUPERA: jefatura femenina serie 2001-2022 (18.7→25.4→36.1 = casi se duplicó en 20 años) ·
+    analfabetismo digital mujeres 34.8→7.8. Limpieza pendiente: normalizar territorios
+    (Montecristi/Cantón Montecristi/Montecristi (Cantón)) + dedup semántico de indicadores.
+    SIGUIENTE: validar cortes 2-3 (Ambiente · Económico Productivo) → B.3 re-validación fichas
+    → MEDICIÓN: ¿cuántos de los 25 gaps caen? → informe de cosecha a la mesa.
     **REVISIÓN GOLD MASTER pendiente (pedido Javo)**: género/ambiente/bonos/cooperación flojos en Excel.
     B.1A produce el insumo: Ambiente=extraer del PDOT→proponer indicadores · Género=fuentes externas ·
     Cooperación/bonos=D02 ya es la fuente, afinar reglas. Decisión de mesa Javo+Director post-B.1.
