@@ -357,6 +357,17 @@
     F4 CASO DEMOSTRADOR: Isabel Muentes — GeoTwin+Ficha+Radar+Financiamiento sobre UN caso.
        Estrategia Director: F1 arranca CON IM como primer contenido (F1+F4 juntos).
     Roadmap actualizado: A✅ → B✅ CUMPLIDO → **C OPERAR** → D...
+    **F1 GEOTWIN VISUAL — CABLEADO COMPLETO ✅** (2026-06-10):
+    Flujo del Colega implementado: Mapa → Clic → Narrativa → Indicadores soporte → Decisión sugerida.
+    `geotwin_narrativo.py` + `explicar_parroquia(nombre)` (generalización del Caso 1 — primer paso
+    hacia explicar_territorio(objeto)) + `render_panel_html()` Bloomberg-safe + fallback snapshot IM.
+    `p4_geotwin.py`: st_folium captura clic (last_object_clicked_tooltip) → panel "GEOTWIN EXPLICA"
+    full-width con cache 1h. Decisiones CURADAS de las Fichas v2 (no se inventan en runtime — solo
+    IM la tiene). Verificado funcional: IM live 5/5 peor del cantón · polígono mayor · decisión ✓ ·
+    Colorado degrada elegante (1/5, sin decisión) · fallback OK.
+    ⬜ PENDIENTE: verificación visual `streamlit run app.py` (clic real en mapa — Tarea A3 acumulada).
+    Criterio F1 (Colega): "clic en IM → entender en <30s" — panel: resumen 1 línea + 5 dimensiones
+    + paradoja 777ha + decisión = ~25s de lectura.
     ⏳ UI p18: badge de origen (gris/azul/verde/rojo) pendiente — material Fichas v2/UI.
     **REVISIÓN GOLD MASTER pendiente (pedido Javo)**: género/ambiente/bonos/cooperación flojos en Excel.
     B.1A produce el insumo: Ambiente=extraer del PDOT→proponer indicadores · Género=fuentes externas ·

@@ -15,6 +15,19 @@ from data.loader import load_all
 from utils.session import is_tecnico
 from quira_pages.html_engine import render_page, page_header
 
+# Sprint C · F1 — motor narrativo cableado al mapa (clic → explicación)
+try:
+    from app.engines.geotwin_narrativo import explicar_parroquia, render_panel_html
+    _NARRATIVO_OK = True
+except Exception:
+    _NARRATIVO_OK = False
+
+
+@st.cache_data(ttl=3600, show_spinner=False)
+def _explicacion_cacheada(nombre: str) -> dict:
+    """Cachea la explicación del motor (la query vive 1 h por parroquia)."""
+    return explicar_parroquia(nombre)
+
 _GEOJSON_PATH = Path(__file__).parent.parent / "data" / "parroquias_montecristi.geojson"
 
 _GT_CSS = """
@@ -225,13 +238,21 @@ def render() -> None:
         )
 
         folium_map = _build_folium_map(parroquias)
-        st_folium(
+        map_state = st_folium(
             folium_map,
             width=None,
             height=420,
-            returned_objects=[],
+            returned_objects=["last_object_clicked_tooltip"],
             use_container_width=True,
         )
+
+        # F1: clic en parroquia → GeoTwin explica (tooltip: "emoji Nombre · TPS ...")
+        _clicked = None
+        if _NARRATIVO_OK and map_state and map_state.get("last_object_clicked_tooltip"):
+            tt = map_state["last_object_clicked_tooltip"]
+            nombre_raw = tt.split("·")[0].strip()
+            # quitar el emoji inicial si existe
+            _clicked = nombre_raw.split(" ", 1)[1].strip() if " " in nombre_raw else nombre_raw
 
         st.markdown(
             '<p style="font-size:9px;color:rgba(255,255,255,.2);margin-top:4px">'
@@ -282,6 +303,19 @@ def render() -> None:
   <div class="gt-fund pending">⏳ BID Lab Gender Bond · $95,000 · PSG ≥ 30% req.</div>
 </div>"""
         render_page(gov_twin_html, show_tech=False, height=560, extra_css=_GT_CSS)
+
+    # ── Sprint C · F1 — Panel "GeoTwin Explica" (clic → explicación <30 s) ──
+    if _NARRATIVO_OK:
+        if _clicked:
+            panel = render_panel_html(_explicacion_cacheada(_clicked))
+            render_page(panel, show_tech=False, height=470, extra_css=_GT_CSS)
+        else:
+            st.markdown(
+                '<p style="font-size:11px;color:#8892B0;margin:2px 0 8px 2px">'
+                '🧠 Haz clic en una parroquia del mapa y GeoTwin la explicará '
+                'desde la base territorial.</p>',
+                unsafe_allow_html=True,
+            )
 
     rows  = "".join(_parroquia_row(p) for p in parroquias_sorted)
     tabla = f"""

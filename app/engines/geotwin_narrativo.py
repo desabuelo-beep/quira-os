@@ -265,6 +265,171 @@ def render_caso_3(d: dict) -> str:
 
 
 # ══════════════════════════════════════════════════════════════════════════
+# SPRINT C · F1 — explicar_parroquia(): la generalización del Caso 1
+# para el cableado al mapa (clic → explicación en <30 segundos).
+# La "siguiente frontera" (Colega): explicar_territorio(objeto) — esta
+# firma parroquial es su primer paso.
+# ══════════════════════════════════════════════════════════════════════════
+
+# Decisiones sugeridas CURADAS por la mesa (provienen de las Fichas v2 —
+# no se inventan en runtime). Solo las parroquias con ficha tienen decisión.
+_DECISIONES_CURADAS = {
+    "Isabel Muentes": (
+        "Que el siguiente proyecto de agua y saneamiento del banco de "
+        "proyectos municipal sea Isabel Muentes. El cantón ya demostró "
+        "(alcantarillado de Eloy Alfaro con crédito europeo) que puede "
+        "focalizar inversión en la parroquia correcta — falta repetirlo "
+        "con la más crítica. [Ficha de Inteligencia Territorial · Agua]"
+    ),
+}
+
+# Fallback snapshot (verificado 2026-06-10) — si la base no responde,
+# la experiencia no se rompe. Patrón fallback-first del proyecto.
+_FALLBACK_IM = {
+    "parroquia": "Isabel Muentes",
+    "fuente_viva": False,
+    "n_dimensiones_evaluadas": 5,
+    "n_dimensiones_peor": 4,
+    "convergencia": [
+        {"dimension": "agua por red", "valor": 1.02, "rango": (1.0, 67.0), "peor": True},
+        {"dimension": "saneamiento", "valor": 0.0, "rango": (0.0, 67.0), "peor": True},
+        {"dimension": "drenaje pluvial", "valor": 0.0, "rango": (0.0, 8.6), "peor": False},
+        {"dimension": "recolección de residuos", "valor": 70.0, "rango": (70.0, 100.0), "peor": True},
+        {"dimension": "equipamiento público", "valor": 1.0, "rango": (1.0, 22.7), "peor": True},
+    ],
+    "area_poligono_ha": 777.27,
+    "es_poligono_mayor": True,
+    "decision": _DECISIONES_CURADAS["Isabel Muentes"],
+}
+
+
+def explicar_parroquia(nombre: str) -> dict:
+    """Explicación territorial de una parroquia, generada desde la base.
+    Retorna dict listo para render (página o CLI). Si la base no está
+    disponible y la parroquia tiene fallback, retorna el snapshot."""
+    try:
+        conn = _conn()
+        cur = conn.cursor()
+    except Exception:
+        if "Isabel Muentes" in nombre:
+            return dict(_FALLBACK_IM)
+        return {"parroquia": nombre, "fuente_viva": False, "convergencia": [],
+                "decision": None, "sin_datos": True}
+
+    try:
+        convergencia = []
+        for indicador, etiqueta in DIMENSIONES_PARROQUIALES:
+            rows = _q(cur, """
+                SELECT territorio, valor_num FROM pdot_indicadores
+                WHERE indicador = %s AND valor_num IS NOT NULL
+                  AND territorio = ANY(%s)
+                ORDER BY valor_num ASC
+            """, (indicador, PARROQUIAS_CUP))
+            if len(rows) < 4:
+                continue
+            valor = next((float(v) for t, v in rows if nombre.lower() in t.lower()
+                          or t.lower() in nombre.lower()), None)
+            if valor is None:
+                continue
+            convergencia.append({
+                "dimension": etiqueta,
+                "valor": valor,
+                "rango": (float(rows[0][1]), float(rows[-1][1])),
+                "peor": valor == float(rows[0][1]),
+            })
+
+        poligono = _q(cur, """
+            SELECT territorio, valor_num FROM pdot_indicadores
+            WHERE indicador ILIKE 'Área del polígono urbano CUP%%'
+              AND valor_num IS NOT NULL ORDER BY valor_num DESC
+        """)
+        area = next((float(v) for t, v in poligono
+                     if nombre.lower() in t.lower() or t.lower() in nombre.lower()), None)
+        es_mayor = bool(poligono) and area is not None and \
+            area == max(float(v) for _, v in poligono)
+
+        return {
+            "parroquia": nombre,
+            "fuente_viva": True,
+            "n_dimensiones_evaluadas": len(convergencia),
+            "n_dimensiones_peor": sum(1 for c in convergencia if c["peor"]),
+            "convergencia": convergencia,
+            "area_poligono_ha": area,
+            "es_poligono_mayor": es_mayor,
+            "decision": _DECISIONES_CURADAS.get(nombre),
+        }
+    finally:
+        conn.close()
+
+
+def render_panel_html(d: dict) -> str:
+    """Panel HTML compacto para la página GeoTwin — lectura en <30 s.
+    Lenguaje de gobernanza puro (sin códigos internos)."""
+    if d.get("sin_datos"):
+        return (f'<div class="card"><div class="card-title">📍 {d["parroquia"]}</div>'
+                '<div style="font-size:12px;color:var(--muted)">Explicación territorial '
+                'disponible próximamente — base en construcción para esta parroquia.</div></div>')
+
+    n_eval, n_peor = d["n_dimensiones_evaluadas"], d["n_dimensiones_peor"]
+    critica = n_eval > 0 and n_peor >= max(2, n_eval - 1)
+    titulo_estado = ("CONVERGENCIA CRÍTICA DE EXCLUSIÓN TERRITORIAL" if critica
+                     else "PERFIL TERRITORIAL")
+    color = "#FF4D6D" if critica else "#00D4FF"
+
+    filas = ""
+    for c in d["convergencia"]:
+        marca = ('<span style="color:#FF4D6D;font-weight:700">🔴 peor del cantón</span>'
+                 if c["peor"] else
+                 '<span style="color:#8892B0">—</span>')
+        filas += (
+            f'<tr><td style="padding:3px 0;color:#8892B0">{c["dimension"]}</td>'
+            f'<td class="td-num" style="font-weight:700">{c["valor"]:.1f}</td>'
+            f'<td class="td-num" style="color:#8892B0;font-size:10px">'
+            f'{c["rango"][0]:.1f}–{c["rango"][1]:.1f}</td>'
+            f'<td style="text-align:right;font-size:10px">{marca}</td></tr>'
+        )
+
+    paradoja = ""
+    if d.get("es_poligono_mayor") and d.get("area_poligono_ha"):
+        paradoja = (
+            f'<div style="margin-top:10px;padding:8px;background:rgba(255,77,109,.06);'
+            f'border:1px solid rgba(255,77,109,.2);border-radius:8px;font-size:11px;color:#E8EDF4">'
+            f'⚠️ <strong>La paradoja territorial:</strong> con {d["area_poligono_ha"]:.0f} ha es el '
+            f'polígono urbano <strong>más extenso del cantón</strong> — la mayor superficie '
+            f'urbana con los menores servicios.</div>'
+        )
+
+    decision = ""
+    if d.get("decision"):
+        decision = (
+            f'<div style="margin-top:10px;padding:10px;background:rgba(0,212,255,.05);'
+            f'border-left:3px solid #00D4FF;border-radius:6px;font-size:12px;color:#E8EDF4">'
+            f'<strong style="color:#00D4FF">🎯 DECISIÓN SUGERIDA</strong><br>{d["decision"]}</div>'
+        )
+
+    fuente = ("⚡ Generado en tiempo real desde la base territorial (2,004 indicadores)"
+              if d.get("fuente_viva")
+              else "📌 Snapshot verificado 2026-06-10 (base territorial sin conexión)")
+
+    resumen = (f'El sistema evaluó <strong>{n_eval} dimensiones</strong> de servicios con datos '
+               f'parroquiales comparables. {d["parroquia"]} ocupa el <strong style="color:{color}">'
+               f'peor lugar del cantón en {n_peor} de {n_eval}</strong>.') if n_eval else ""
+
+    return f"""
+<div class="card" style="border:1px solid {color}40">
+  <div class="card-title" style="color:{color}">🧠 GEOTWIN EXPLICA · {d["parroquia"].upper()}
+    <span style="float:right;font-size:9px;font-weight:400;color:#8892B0">{titulo_estado}</span>
+  </div>
+  <div style="font-size:12px;color:#E8EDF4;margin-bottom:8px">{resumen}</div>
+  <table class="tbl" style="font-size:11px">
+    <thead><tr><th>Dimensión</th><th>Valor</th><th>Rango cantonal</th><th></th></tr></thead>
+    <tbody>{filas}</tbody>
+  </table>
+  {paradoja}
+  {decision}
+  <div style="font-size:9px;color:rgba(255,255,255,.25);margin-top:8px">{fuente}</div>
+</div>"""
+
 
 def main():
     ap = argparse.ArgumentParser(description="GeoTwin Narrativo v1 — 3 casos")
