@@ -885,13 +885,20 @@ _BRIDGE_SCRIPT = """
 <script>
 (function(){
   function dispatch(dest,action){
-    var btns=window.parent.document.querySelectorAll('[data-testid="stBaseButton-secondary"]');
+    var btns=window.parent.document.querySelectorAll('button');
     var token=action==='logout'?'__QLOGOUT__':'__QNAV_'+dest+'__';
     for(var i=0;i<btns.length;i++){
       if(btns[i].innerText.trim()===token){btns[i].click();return;}
     }
   }
-  window.addEventListener('message',function(e){
+  // FIX Sprint C (2026-06-11): los cards hacen window.parent.postMessage —
+  // el evento 'message' se dispara EN LA VENTANA PRINCIPAL, no en este
+  // iframe. El listener debe registrarse en window.parent (same-origin
+  // via srcdoc lo permite). Con window.addEventListener este script jamás
+  // recibía nada → los cajones nunca navegaron (ni local ni cloud).
+  // Selector 'button' genérico: sobrevive renombres de data-testid entre
+  // versiones de Streamlit.
+  window.parent.addEventListener('message',function(e){
     if(!e.data)return;
     if(e.data.type==='quira_nav')dispatch(e.data.dest,'nav');
     if(e.data.type==='quira_action'&&e.data.action==='logout')dispatch(null,'logout');

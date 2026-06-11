@@ -23,7 +23,10 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-80.6578, -1.0444]
+        "coordinates": [
+          -80.6578,
+          -1.0444
+        ]
       }
     },
     {
@@ -31,7 +34,7 @@
       "properties": {
         "codigo": "130251",
         "nombre": "Eloy Alfaro",
-        "tipo": "Rural",
+        "tipo": "Urbana",
         "emoji": "🌾",
         "tps": 31.2,
         "agua": 48.6,
@@ -43,15 +46,18 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-80.7121, -0.9834]
+        "coordinates": [
+          -80.7121,
+          -0.9834
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
         "codigo": "130252",
-        "nombre": "Leónidas Plaza",
-        "tipo": "Rural",
+        "nombre": "Leónidas Proaño",
+        "tipo": "Urbana",
         "emoji": "🌿",
         "tps": 28.8,
         "agua": 52.1,
@@ -63,7 +69,10 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-80.5524, -0.9713]
+        "coordinates": [
+          -80.5524,
+          -0.9713
+        ]
       }
     },
     {
@@ -83,7 +92,10 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-80.6891, -1.1187]
+        "coordinates": [
+          -80.6891,
+          -1.1187
+        ]
       }
     },
     {
@@ -91,7 +103,7 @@
       "properties": {
         "codigo": "130254",
         "nombre": "Colorado",
-        "tipo": "Rural",
+        "tipo": "Urbana",
         "emoji": "🏔️",
         "tps": 58.7,
         "agua": 18.3,
@@ -103,7 +115,10 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-80.5018, -1.0728]
+        "coordinates": [
+          -80.5018,
+          -1.0728
+        ]
       }
     },
     {
@@ -111,7 +126,7 @@
       "properties": {
         "codigo": "130255",
         "nombre": "Aníbal San Andrés",
-        "tipo": "Rural",
+        "tipo": "Urbana",
         "emoji": "💜",
         "tps": 62.3,
         "agua": 22.7,
@@ -123,7 +138,10 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-80.7312, -1.1524]
+        "coordinates": [
+          -80.7312,
+          -1.1524
+        ]
       }
     },
     {
@@ -131,7 +149,7 @@
       "properties": {
         "codigo": "130256",
         "nombre": "Isabel Muentes",
-        "tipo": "Rural",
+        "tipo": "Urbana",
         "emoji": "💧",
         "tps": 73.8,
         "agua": 1.02,
@@ -144,7 +162,10 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-80.4162, -1.1183]
+        "coordinates": [
+          -80.4162,
+          -1.1183
+        ]
       }
     }
   ]

@@ -34,7 +34,7 @@ Auditado 2026-05-15 contra Gold Master v4.1 · Actualizado 2026-05-20 a v5.5 · 
   - Colorado: nbi 58.4→58.7%, agua 34.7→38.82%, hab 2230→3800, inv 210K→121.6K, pc 94→32
   - La Pila: nbi 52.8→55.9%, agua 51.2→50%, hab 4100→4600, inv 380K→239.2K, pc 93→52
   - Eloy Alfaro: nbi 45.1→49.8%, agua 62.1→100%, hab 12800→6300, inv 980K→447.3K, pc 77→71
-  - Leónidas Plaza: nbi 41.3→54.3%, agua 68.4→100%, hab 8200→4100, inv 720K→196.8K, pc 88→48
+  - Leónidas Proaño: nbi 41.3→54.3%, agua 68.4→100%, hab 8200→4100, inv 720K→196.8K, pc 88→48
   - Montecristi: nbi 38.2→38.4%, agua 78.3→95%, hab 28400→39800, inv 3.2M→8.6M, pc 113→217
   - Isabel Muentes: hab 3488→5700, inv 140K→228K (nbi/agua/pc sin cambio)
   - ICODS: 87.50→91.42% (Excelencia Gobernanza · H20_ICODS Ref_2025)
@@ -381,8 +381,10 @@ PARROQUIAS = [
     },
     {
         # H99 P-04 "Leónidas Proaño" · auditado 2026-05-15 · corrección crítica: nbi 41.3→54.3
-        # Nombre oficial parroquia: Leónidas Plaza Gutiérrez (H99 usa "Proaño" — error tipográfico)
-        "nombre": "Leónidas Plaza",
+        # Toponimia confirmada por Javo 2026-06-10: el nombre oficial ES "Leonidas Proaño"
+        # (parroquia urbana, coincide con PDOT y H99). La nota previa que atribuía error
+        # tipográfico a H99 era incorrecta — "Leónidas Plaza" pertenece a otro cantón.
+        "nombre": "Leónidas Proaño",
         "tps": 28.76,                  # INEC/PDOT diagnóstico oficial · pendiente H99
         "nbi": 54.3,                   # H99_ENGINE_CORE NBI_Pct · INEC Censo 2022
         "agua": 100.0,                 # H99_ENGINE_CORE Cobertura_Agua_Pct (cobertura total)
