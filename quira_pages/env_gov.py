@@ -272,11 +272,19 @@ def _render_gov_header(module_label: str) -> None:
 # ── Sección Ejecutiva ─────────────────────────────────────────────────────────
 
 def _render_inicio() -> None:
+    # v2 NATIVO (Sprint C 2026-06-11): cajones st.button reales — el v1
+    # (iframe + puente postMessage) nunca navegó en Streamlit Cloud por
+    # sandbox cross-origin. v1 queda como fallback de emergencia.
     try:
-        from quira_pages.p_command_center import render as _r
+        from quira_pages.p_command_center_v2 import render as _r
         _r()
     except Exception as e:
-        st.error(f"Centro de Mando no disponible: {e}")
+        st.warning(f"Centro de Mando v2 no disponible ({e}) — usando v1.")
+        try:
+            from quira_pages.p_command_center import render as _r1
+            _r1()
+        except Exception as e1:
+            st.error(f"Centro de Mando no disponible: {e1}")
 
 
 def _render_situacion() -> None:
