@@ -564,12 +564,20 @@ button[data-testid="collapsedControl"] {
             fn_drill()
             return
 
-        # ── Landing Ejecutivo: Centro de Mando (HTML canvas) ─────────────────
+        # ── Landing Ejecutivo: Centro de Mando v2 NATIVO ──────────────────────
+        # FIX 2026-06-11: esta era la SEGUNDA ruta al Centro de Mando (la del
+        # rol ejecutivo) y seguía llamando al v1 — por eso Javo veía v1.1
+        # aunque el v2 estuviera desplegado y sano. Ambas rutas ahora → v2.
         try:
-            from quira_pages.p_command_center import render as _ve
+            from quira_pages.p_command_center_v2 import render as _ve
             _ve()
         except Exception as e:
-            st.error(f"Centro de Mando no disponible: {e}")
+            st.warning(f"Centro de Mando v2 no disponible ({e}) — usando v1.")
+            try:
+                from quira_pages.p_command_center import render as _ve1
+                _ve1()
+            except Exception as e1:
+                st.error(f"Centro de Mando no disponible: {e1}")
         return
 
     # ── Directivo / Administrador: módulo activo con header GOV ──────────────
