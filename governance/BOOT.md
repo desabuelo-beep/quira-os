@@ -395,6 +395,26 @@
     Lo que SIGUE crudo (inventario UX Colega + Sprint D): L2/L3 de entornos Ciudadana ·
     Institucional fino · Operaciones ("en construcción") — la arquitectura L1→L2→L3 del entorno
     Ejecutivo queda operativa con este fix.
+    **⚠️ RE-PRUEBA JAVO NEGATIVA (2026-06-11): cajones siguen muertos en deploy.**
+    LECCIÓN REGISTRADA (patrón señalado por Javo): "Claude siempre decía está conectado todo
+    pero nunca se pudo pasar de los cajones" → REGLA NUEVA: ningún cableado UI se declara
+    funcionando sin verificación VISUAL en el deploy (no basta sintaxis+lógica).
+    Causa probable residual: iframe sandbox cross-origin en Streamlit Cloud bloquea el acceso
+    a window.parent (el fix postMessage funciona local, puede no en cloud) — O la prueba fue
+    pre-redeploy. **EXPERIMENTO BINARIO pusheado (c6e7ccd): footer ahora muestra
+    "UI v1.1-cajones · 2026-06-11"** → si Javo ve v1.1 y cajones muertos = sandbox confirmado →
+    **DECISIÓN: matar el bridge — reescribir cajones L1 como nativos st.button estilizados**
+    (1 sesión enfocada). Si funcionan = era timing del redeploy.
+    **SPECS JAVO PARA CAJONES v2** (registradas · 2026-06-11):
+    cada cajón = (a) CONCEPTO: qué ES este dominio en lenguaje humano (definir/conceptualizar),
+    (b) número duro representativo, (c) GANCHO que invite a entrar al dashboard.
+    "Su info no me dice nada, es solo un número frío" → aplicar el patrón del motor narrativo a L1.
+    **QUIRA IA — TESIS JAVO VALIDADA**: la IA junta todo (resultado final del ecosistema) —
+    enseña/explica/educa/guía a CADA rol (alcalde·técnico·ciudadano·operaciones). ES C3
+    Razonamiento (arquitectura ya definida) + Sentinel existente en m5_control. El botón
+    "Preguntar a QUIRA" era DECORATIVO (onclick=void(0)) → cableado a 'control' (c6e7ccd).
+    Ubicación correcta: header transversal (siempre visible). Implementación plena = Sprint C/D
+    con dependencia de créditos API (Haiku conversacional).
     **UX/UI — PREGUNTA DE MESA ABIERTA** (Javo · 2026-06-10): cajones/tarjetas/dashboards sin tocar
     hace semanas + dominios comprados (dyluslab · quiraintelligence) sin destino definido.
     POSICIÓN DEL DIRECTOR para la mesa: Sprint D = PRODUCTO & EXPERIENCIA, después de cerrar C
