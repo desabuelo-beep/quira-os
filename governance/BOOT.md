@@ -381,6 +381,20 @@
     3. Clic en el círculo de Isabel Muentes en el mapa
     4. Confirmar: aparece panel "🧠 GEOTWIN EXPLICA · ISABEL MUENTES" con 5 dimensiones,
        paradoja 777 ha y decisión sugerida — ¿se entiende en <30 segundos? → F1 TERMINADO (veredicto Colega).
+    **🔧 FIX CAJONES L1 — CAUSA RAÍZ RESUELTA** (commit 3c20ffa · 2026-06-11):
+    Síntoma Javo (deploy): "no se abre ningún cajón, no hay dashboards, no hay conexión GeoTwin".
+    CAUSA: bug de diseño del bridge postMessage — cards envían a window.parent pero el listener
+    se registraba en el iframe del script (los message events solo llegan a la ventana destino)
+    → el listener JAMÁS recibió nada → L1→L2 nunca funcionó (ni local ni cloud).
+    FIX: listener en window.parent (same-origin srcdoc) + selector 'button' robusto a versiones.
+    La cadena completa ya existía: 12 cards qNav() → botones ocultos __QNAV_x__ → gov_module →
+    env_gov rutea (incl. geotwin→p4 con F1). PUSHEADO → redeploy ~5 min → Javo re-prueba:
+    refresh + relogin (el reboot mata sesión) + clic en cualquier cajón → dashboard L2 ·
+    cajón Territorio/acceso GeoTwin → mapa → clic Isabel Muentes → panel F1.
+    + Toponimia corregida en mismo commit (geojson Leónidas Proaño + tipos: solo La Pila rural).
+    Lo que SIGUE crudo (inventario UX Colega + Sprint D): L2/L3 de entornos Ciudadana ·
+    Institucional fino · Operaciones ("en construcción") — la arquitectura L1→L2→L3 del entorno
+    Ejecutivo queda operativa con este fix.
     **UX/UI — PREGUNTA DE MESA ABIERTA** (Javo · 2026-06-10): cajones/tarjetas/dashboards sin tocar
     hace semanas + dominios comprados (dyluslab · quiraintelligence) sin destino definido.
     POSICIÓN DEL DIRECTOR para la mesa: Sprint D = PRODUCTO & EXPERIENCIA, después de cerrar C
