@@ -365,9 +365,30 @@
     full-width con cache 1h. Decisiones CURADAS de las Fichas v2 (no se inventan en runtime — solo
     IM la tiene). Verificado funcional: IM live 5/5 peor del cantón · polígono mayor · decisión ✓ ·
     Colorado degrada elegante (1/5, sin decisión) · fallback OK.
-    ⬜ PENDIENTE: verificación visual `streamlit run app.py` (clic real en mapa — Tarea A3 acumulada).
     Criterio F1 (Colega): "clic en IM → entender en <30s" — panel: resumen 1 línea + 5 dimensiones
     + paradoja 777ha + decisión = ~25s de lectura.
+    **C2 ✅ LAS 7 PARROQUIAS** (commit e4ccae8): 6/7 con 5 dimensiones completas (La Pila 1 = G-14
+    real). Alias toponímicos agregados + fix [EST] (LIKE prefijo). IM 5/5 peor; ninguna otra >1.
+    ❓JAVO confirmar toponimia: geojson/demo_data dicen "Leónidas Plaza" · PDOT dice "Leonidas Proaño".
+    **🚀 DEPLOY DESBLOQUEADO** (2026-06-10): el repo estaba **135 commits adelante de GitHub** —
+    por eso quiraholding.streamlit.app no mostraba cambios (el deploy se alimenta del push).
+    PUSH ejecutado (d2bcd64→e4ccae8): TODO Sprint B+C va al deploy. Streamlit Cloud redespliega
+    automáticamente en minutos. El motor narrativo en cloud usa secrets del dashboard (database ya
+    configurada — p18 la usa) y si falla → fallback snapshot IM por diseño.
+    **VERIFICACIÓN VISUAL C1 — guion 60s para JAVO** (post-redeploy):
+    1. Abrir quiraholding.streamlit.app (esperar redeploy ~5 min tras el push)
+    2. Login → módulo ④ GeoTwin · Territorio
+    3. Clic en el círculo de Isabel Muentes en el mapa
+    4. Confirmar: aparece panel "🧠 GEOTWIN EXPLICA · ISABEL MUENTES" con 5 dimensiones,
+       paradoja 777 ha y decisión sugerida — ¿se entiende en <30 segundos? → F1 TERMINADO (veredicto Colega).
+    **UX/UI — PREGUNTA DE MESA ABIERTA** (Javo · 2026-06-10): cajones/tarjetas/dashboards sin tocar
+    hace semanas + dominios comprados (dyluslab · quiraintelligence) sin destino definido.
+    POSICIÓN DEL DIRECTOR para la mesa: Sprint D = PRODUCTO & EXPERIENCIA, después de cerrar C
+    (C3 comparador + F3 radar). Alcance D: (1) UX refresh del laboratorio (cajones/tarjetas/
+    dashboards), (2) decisión dominios: quiraintelligence.com = portal radar nacional (YA definido
+    en ADR-024 Capa D como PRODUCTO PRINCIPAL) · dyluslab.com = corporativo, (3) GeoTwin visual
+    pulido como pieza central demo UEB/CAF. ⚠️ Nota técnica: Streamlit Community Cloud NO soporta
+    dominios custom → quiraintelligence.com requiere decisión de hosting (costo) — decisión de mesa.
     ⏳ UI p18: badge de origen (gris/azul/verde/rojo) pendiente — material Fichas v2/UI.
     **REVISIÓN GOLD MASTER pendiente (pedido Javo)**: género/ambiente/bonos/cooperación flojos en Excel.
     B.1A produce el insumo: Ambiente=extraer del PDOT→proponer indicadores · Género=fuentes externas ·
