@@ -335,7 +335,28 @@
     ⏳ API: no recargar — 1,254 chunks = valor incremental, no crítico.
     Conclusión de mesa: "La siguiente etapa ya no es descubrir datos; es demostrar que la
     explicación territorial genera valor para usuarios reales."
-    **ACCIÓN JAVO**: agendar 1-3 entrevistas de validación con el material impreso del protocolo.
+    ~~ACCIÓN JAVO: agendar 1-3 entrevistas de validación~~ → **VALIDACIÓN CERRADA INTERNAMENTE**
+    (Javo · 2026-06-10): "yo valido, soy técnico, conozco Montecristi, armé el modelo y el Excel".
+    Colega concuerda: la validación funcional ocurrió DURANTE el sprint (el motor encontró relaciones
+    no explícitas · contradicciones · convergencias multisistema · corrigió hipótesis · cambió
+    decisiones). El protocolo queda como activo reutilizable para Municipio 002+.
+- **SPRINT C — OPERACIONALIZACIÓN · ABIERTO** (mesa Javo+Colega+Director · 2026-06-10):
+    **Objetivo único: "Que una persona pueda abrir GeoTwin y entender Montecristi sin leer el PDOT."**
+    Cambio de modo: DESCUBRIR→ESTRUCTURAR→EXPLICAR ✅ → **OPERAR**.
+    🧊 NO abrir: auditoría GM · nuevas métricas · nuevas dimensiones · más extracción PDOT.
+    Riesgo declarado: "parálisis por riqueza de información" — el cuello es convertir conocimiento
+    en herramienta que alguien use.
+    FRENTES (orden Colega):
+    F1 (prioridad máxima) GeoTwin Visual v1 — mapa→clic parroquia→GeoTwin explica. EXPERIENCIA, no dashboard.
+       ✅ RECONOCIMIENTO: el mapa YA EXISTE (p4_geotwin.py 327 líneas Folium + 
+       data/parroquias_montecristi.geojson 7 features) + motor narrativo listo + base 2,004.
+       F1 = CABLEAR motor al mapa existente (no construir de cero). Nota: reconciliar tipos
+       urbana/rural del geojson vs CUP del PDOT.
+    F2 Fichas automáticas — indicadores→motor→ficha v2 generada (patrón geotwin_narrativo → formato ficha).
+    F3 Radar vivo — promover ~10 fondos del vault VALIDADA→VIGENTE con verificación web real.
+    F4 CASO DEMOSTRADOR: Isabel Muentes — GeoTwin+Ficha+Radar+Financiamiento sobre UN caso.
+       Estrategia Director: F1 arranca CON IM como primer contenido (F1+F4 juntos).
+    Roadmap actualizado: A✅ → B✅ CUMPLIDO → **C OPERAR** → D...
     ⏳ UI p18: badge de origen (gris/azul/verde/rojo) pendiente — material Fichas v2/UI.
     **REVISIÓN GOLD MASTER pendiente (pedido Javo)**: género/ambiente/bonos/cooperación flojos en Excel.
     B.1A produce el insumo: Ambiente=extraer del PDOT→proponer indicadores · Género=fuentes externas ·
