@@ -405,6 +405,13 @@
     "UI v1.1-cajones · 2026-06-11"** → si Javo ve v1.1 y cajones muertos = sandbox confirmado →
     **DECISIÓN: matar el bridge — reescribir cajones L1 como nativos st.button estilizados**
     (1 sesión enfocada). Si funcionan = era timing del redeploy.
+    **✅ CENTRO DE MANDO v2 NATIVO CONSTRUIDO Y PUSHEADO** (commit e006702 · 2026-06-11):
+    Experimento v1.1 confirmó sandbox → bridge MUERTO. `p_command_center_v2.py`: st.container +
+    st.button REALES (DOM Streamlit, cero iframes de navegación — no puede fallar). 12 cajones
+    con specs Javo (CONCEPTO+número+GANCHO 12/12) · KPI band clicable · estética via CSS
+    st-key-* (temperaturas conservadas) · botón QUIRA IA nativo→control · stamp UI v2.0-nativo.
+    env_gov._render_inicio → v2 con fallback v1. RE-PRUEBA JAVO: footer debe decir
+    "UI v2.0-nativo · 2026-06-11" → clic ABRIR → en cualquier cajón → dashboard L2.
     **SPECS JAVO PARA CAJONES v2** (registradas · 2026-06-11):
     cada cajón = (a) CONCEPTO: qué ES este dominio en lenguaje humano (definir/conceptualizar),
     (b) número duro representativo, (c) GANCHO que invite a entrar al dashboard.
