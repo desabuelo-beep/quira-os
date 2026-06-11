@@ -410,8 +410,19 @@
     st.button REALES (DOM Streamlit, cero iframes de navegación — no puede fallar). 12 cajones
     con specs Javo (CONCEPTO+número+GANCHO 12/12) · KPI band clicable · estética via CSS
     st-key-* (temperaturas conservadas) · botón QUIRA IA nativo→control · stamp UI v2.0-nativo.
-    env_gov._render_inicio → v2 con fallback v1. RE-PRUEBA JAVO: footer debe decir
-    "UI v2.0-nativo · 2026-06-11" → clic ABRIR → en cualquier cajón → dashboard L2.
+    env_gov._render_inicio → v2 con fallback v1.
+    **🎯 CAUSA RAÍZ DEFINITIVA HALLADA Y CORREGIDA (commit bb71144 · 2026-06-11):**
+    env_gov tenía DOS rutas al Centro de Mando: _render_inicio (Directivo/Admin — ya cambiada)
+    y la Landing Ejecutivo L569 (LA PUERTA DE JAVO) que seguía importando v1 → por eso veía
+    v1.1 con el v2 desplegado y sano. Ambas rutas ahora → v2.
+    **VERIFICACIÓN CON OJOS (regla nueva en acción):** harness `scripts/dev/preview_cc2.py`
+    (sesión simulada SIN tocar auth) + Playwright localhost: v2 renderiza completo (stamp v2.0 ·
+    11 ABRIR · conceptos 12/12 · KPIs vivos GM 17.4%) y CLIC VERIFICADO: "NAVEGACIÓN DISPARADA
+    → gov_module='ods'". Build stamp pre-auth verificado en deploy por Playwright (pipeline
+    GitHub→Cloud ~1-2 min OK). Episodio "ventana --no-sandbox": Javo miraba el navegador de
+    pruebas de Playwright con sesión vieja — cerrado.
+    RE-PRUEBA JAVO (la definitiva): SU Chrome → Ctrl+Shift+R → login → cards con concepto +
+    botón ABRIR → → clic → dashboard L2. Footer: UI v2.0-nativo.
     **SPECS JAVO PARA CAJONES v2** (registradas · 2026-06-11):
     cada cajón = (a) CONCEPTO: qué ES este dominio en lenguaje humano (definir/conceptualizar),
     (b) número duro representativo, (c) GANCHO que invite a entrar al dashboard.
