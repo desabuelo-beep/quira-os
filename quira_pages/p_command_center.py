@@ -932,7 +932,7 @@ def _build_canvas(d: dict) -> str:
       <span>EN LÍNEA</span>
     </div>
     <span class="badge-rol">{rol}</span>
-    <button class="btn-cc btn-ai" onclick="void(0)">◎ Preguntar a QUIRA</button>
+    <button class="btn-cc btn-ai" onclick="qNav('control')">◎ Preguntar a QUIRA</button>
     <button class="btn-cc btn-logout" onclick="qLogout()">⎋ Salir</button>
   </div>
 </div>"""
@@ -954,7 +954,9 @@ def _build_canvas(d: dict) -> str:
     <span>·</span>
     <span>Corte {CORTE}</span>
   </div>
-  <span class="cc-footer-right">Dylus Lab © 2026 · QUIRA Intelligence v1.0</span>
+  <span class="cc-footer-right">Dylus Lab © 2026 · QUIRA Intelligence v1.0 ·
+    <span style="font-family:'JetBrains Mono',monospace;opacity:.6">UI v1.1-cajones · 2026-06-11</span>
+  </span>
 </div>"""
 
     canvas = f"""
