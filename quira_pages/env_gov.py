@@ -279,7 +279,9 @@ def _render_inicio() -> None:
         from quira_pages.p_command_center_v2 import render as _r
         _r()
     except Exception as e:
-        st.warning(f"Centro de Mando v2 no disponible ({e}) — usando v1.")
+        import traceback as _tb
+        st.error(f"💥 CENTRO DE MANDO v2 FALLÓ EN RUNTIME — mostrando v1. Error: {e}")
+        st.code(_tb.format_exc())
         try:
             from quira_pages.p_command_center import render as _r1
             _r1()
@@ -572,7 +574,9 @@ button[data-testid="collapsedControl"] {
             from quira_pages.p_command_center_v2 import render as _ve
             _ve()
         except Exception as e:
-            st.warning(f"Centro de Mando v2 no disponible ({e}) — usando v1.")
+            import traceback as _tb
+        st.error(f"💥 CENTRO DE MANDO v2 FALLÓ EN RUNTIME — mostrando v1. Error: {e}")
+        st.code(_tb.format_exc())
             try:
                 from quira_pages.p_command_center import render as _ve1
                 _ve1()

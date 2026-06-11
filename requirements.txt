@@ -1,4 +1,7 @@
-streamlit>=1.55.0
+# Pin exacto 2026-06-11: fuerza REBUILD completo del entorno en Streamlit
+# Cloud (un cambio en requirements dispara reinstalación). Garantiza runtime
+# >= features que usa el Centro de Mando v2 (st.container key, etc.).
+streamlit==1.55.0
 pandas>=2.0.0
 plotly>=5.0.0
 openpyxl>=3.1.0

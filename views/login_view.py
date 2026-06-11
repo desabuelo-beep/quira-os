@@ -302,14 +302,16 @@ def trust_badges() -> str:
 
 def footer() -> str:
     # BUILD_STAMP visible pre-auth: permite verificar QUÉ commit corre el
-    # deploy SIN credenciales (Playwright/director). Actualizar en cada
-    # push relevante de UI. Lección 2026-06-11: fin de los deploys a ciegas.
+    # deploy SIN credenciales (Playwright/director) + la VERSIÓN del runtime
+    # Streamlit del servidor (diagnóstico de features no soportadas).
+    # Lección 2026-06-11: fin de los deploys a ciegas.
+    import streamlit as _st_v
     return (
         '<div class="ql-footer">'
         'QUIRA Intelligence · Dylus Lab © 2026<br>'
         '<span style="color:rgba(255,184,0,.2)">Infraestructura de gobernanza pública</span><br>'
         '<span style="color:rgba(255,255,255,.18);font-family:monospace;font-size:9px">'
-        'build cc-v2-nativo · 2026-06-11</span>'
+        f'build cc-v2-r2 · 2026-06-11 · st {_st_v.__version__}</span>'
         '</div>'
     )
 
