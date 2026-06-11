@@ -575,8 +575,8 @@ button[data-testid="collapsedControl"] {
             _ve()
         except Exception as e:
             import traceback as _tb
-        st.error(f"💥 CENTRO DE MANDO v2 FALLÓ EN RUNTIME — mostrando v1. Error: {e}")
-        st.code(_tb.format_exc())
+            st.error(f"💥 CENTRO DE MANDO v2 FALLÓ EN RUNTIME — mostrando v1. Error: {e}")
+            st.code(_tb.format_exc())
             try:
                 from quira_pages.p_command_center import render as _ve1
                 _ve1()
