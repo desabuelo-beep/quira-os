@@ -74,10 +74,10 @@ def caso_isabel_muentes(cur) -> dict:
     for indicador, etiqueta in DIMENSIONES_PARROQUIALES:
         rows = _q(cur, """
             SELECT territorio, valor_num FROM pdot_indicadores
-            WHERE indicador = %s AND valor_num IS NOT NULL
+            WHERE indicador LIKE %s AND valor_num IS NOT NULL
               AND territorio = ANY(%s)
             ORDER BY valor_num ASC
-        """, (indicador, PARROQUIAS_CUP))
+        """, (indicador + "%", PARROQUIAS_CUP))
         if len(rows) < 4:
             continue
         peor_territorio, peor_valor = rows[0]
@@ -271,6 +271,27 @@ def render_caso_3(d: dict) -> str:
 # firma parroquial es su primer paso.
 # ══════════════════════════════════════════════════════════════════════════
 
+# Alias de territorio: el geojson, demo_data y el PDOT usan variantes del
+# mismo topónimo. El matching prueba el nombre + sus alias.
+# ⚠️ DISCREPANCIA TOPONÍMICA registrada para Javo: geojson/demo_data dicen
+# "Leónidas Plaza"; el PDOT oficial dice "Leonidas Proaño" — confirmar cuál
+# es el nombre canónico de la parroquia.
+_ALIAS_TERRITORIO: dict[str, list[str]] = {
+    "Leónidas Plaza": ["Leonidas Proaño", "Leónidas Proaño"],
+    "Eloy Alfaro": ["General Eloy Alfaro", "Gral. Eloy Alfaro", "General Alfaro"],
+    "Montecristi (cabecera)": ["Montecristi"],
+}
+
+
+def _variantes(nombre: str) -> list[str]:
+    return [nombre] + _ALIAS_TERRITORIO.get(nombre, [])
+
+
+def _match_territorio(nombre: str, territorio: str) -> bool:
+    t = territorio.lower()
+    return any(v.lower() in t or t in v.lower() for v in _variantes(nombre))
+
+
 # Decisiones sugeridas CURADAS por la mesa (provienen de las Fichas v2 —
 # no se inventan en runtime). Solo las parroquias con ficha tienen decisión.
 _DECISIONES_CURADAS = {
@@ -321,14 +342,14 @@ def explicar_parroquia(nombre: str) -> dict:
         for indicador, etiqueta in DIMENSIONES_PARROQUIALES:
             rows = _q(cur, """
                 SELECT territorio, valor_num FROM pdot_indicadores
-                WHERE indicador = %s AND valor_num IS NOT NULL
+                WHERE indicador LIKE %s AND valor_num IS NOT NULL
                   AND territorio = ANY(%s)
                 ORDER BY valor_num ASC
-            """, (indicador, PARROQUIAS_CUP))
+            """, (indicador + "%", PARROQUIAS_CUP))
             if len(rows) < 4:
                 continue
-            valor = next((float(v) for t, v in rows if nombre.lower() in t.lower()
-                          or t.lower() in nombre.lower()), None)
+            valor = next((float(v) for t, v in rows
+                          if _match_territorio(nombre, t)), None)
             if valor is None:
                 continue
             convergencia.append({
@@ -344,7 +365,7 @@ def explicar_parroquia(nombre: str) -> dict:
               AND valor_num IS NOT NULL ORDER BY valor_num DESC
         """)
         area = next((float(v) for t, v in poligono
-                     if nombre.lower() in t.lower() or t.lower() in nombre.lower()), None)
+                     if _match_territorio(nombre, t)), None)
         es_mayor = bool(poligono) and area is not None and \
             area == max(float(v) for _, v in poligono)
 
