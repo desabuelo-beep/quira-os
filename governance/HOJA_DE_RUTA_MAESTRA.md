@@ -16,20 +16,26 @@
 **QUIRA es un OBSERVATORIO NACIONAL DE INTEGRIDAD TERRITORIAL.** El fin es el
 barrido progresivo de los 221 GADs del Ecuador. Montecristi no es el cliente #1
 — es el **MOLDE**: se valida y se pule una vez, y luego se replica nacionalmente
-con DOS MOTORES DE ADQUISICIÓN que no piden permiso al GAD:
+con **TRES MOTORES DE ADQUISICIÓN** (= los 3 productos de Fase 1; cada producto
+alimenta el observatorio desde su ángulo). Ningún GAD se escapa, coopere o no:
 
 ```
-MOTOR 1 · OPERACIONES (Dylus + QUIRA IA)
+MOTOR 1 · QUIRA OPERACIONES (Dylus + QUIRA IA)
   QUIRA IA barre Transparencia LOTAIP · SERCOP · CPCCS  +  equipo extrae PDOT
   → monitoreo progresivo cantón por cantón → Índice de Opacidad Nacional
   (se mide por AUSENCIA: el GAD que oculta, se delata; no requiere su cooperación)
 
-MOTOR 2 · CIUDADANA (la gente — cobertura nacional con la población)
+MOTOR 2 · QUIRA CIUDADANA (la gente — cobertura nacional con la población)
   ciudadano activa la IA (busca Transparencia/SERCOP/CPCCS)
   + aporta (presupuesto participativo · PDOT · Plan CNE · orgánico)
   + si no los tiene → CASCADA LEGAL: solicitud de acceso → GAD entrega
     Excel/CSV por correo CON FIRMA DIGITAL → QUIRA valida info oficial real
   + silencio 15 días → vía judicial + procedimiento paso a paso → ciudadano ejecuta
+
+MOTOR 3 · QUIRA INSTITUCIONAL / GESTIÓN (el GAD mismo — datos ORO)
+  el GAD usuario entrega sus datos operativos directos ("su espejo privado")
+  → GAD predictivo/preventivo · máxima calidad de dato (voluntario, firmado)
+  → donde el GAD coopera: dato ORO; donde no: Motores 1+2 lo cubren igual
 ```
 
 **EL DIFERENCIADOR LETAL (coyuntural):** cruce de **Plan CNE** (promesas de
@@ -52,16 +58,29 @@ nacional o al molde que lo habilita, no es prioridad.
 
 **Dylus Lab** (empresa · `dyluslab.com`) construye **QUIRA** (producto ·
 `quiraintelligence.com`): un ecosistema de inteligencia territorial. NO un
-dashboard — un sistema operativo territorial. Tres productos, un solo motor:
+dashboard — un sistema operativo territorial. **6 productos, un solo motor**
+(ADR-024), construidos en 2 fases:
 
-| Producto | Usuario | Qué resuelve | Línea CAF |
+**FASE 1 — los 3 que construimos HOY (= los 3 motores de adquisición):**
+
+| Producto | Usuario | Qué resuelve · rol en el observatorio | Línea CAF |
 |---|---|---|---|
-| **QUIRA Operaciones** | Alcaldía, directores, analistas | Datos dispersos → decisiones operativas | 3 (Transición digital) |
-| **QUIRA Institucional** | GAD, control, cooperación | Gobernanza preventiva, trazabilidad PDOT-PAI-Presupuesto | 3 + 8 |
-| **QUIRA Ciudadana** | Ciudadanía, OSC, academia | La gente no entiende la planificación pública | 8 (Gobernanza participativa) |
+| **QUIRA Operaciones** | Dylus Lab (ingesta nacional) | Datos dispersos → decisiones · MOTOR 1 (barrido activo) | 3 |
+| **QUIRA Institucional / Gestión** | GAD, control | GAD predictivo/preventivo · MOTOR 3 (el GAD aporta dato ORO) | 3 + 8 |
+| **QUIRA Ciudadana** | Ciudadanía, OSC | Participación y control social · MOTOR 2 (la gente exige+sube) | 8 |
+
+**FASE 2 — los 3 posteriores (vistas de EXPLOTACIÓN, mientras se opera):**
+
+| Producto | Usuario | Qué explota |
+|---|---|---|
+| **QUIRA Cooperación** | cooperación internacional | elegibilidad y financiamiento (radar D02) |
+| **QUIRA Impact** | BID · CAF · PNUD · Banco Mundial | evidencia de impacto territorial |
+| **QUIRA Economic** | inversión, desarrollo económico local | inteligencia económica del territorio |
 
 El motor (Gold Master + corpus + 2,004 indicadores + motor narrativo + radar
-D02 + GeoTwin) es el activo irreemplazable. Los 3 productos son vistas.
+D02 + GeoTwin) es el activo irreemplazable. Los 6 productos son vistas.
+**Fase 1 = motores (adquieren datos) · Fase 2 = vistas (explotan datos ya adquiridos).**
+Secuencia (Javo): consolidar las 3 de Fase 1 mientras se opera → luego construir las 3 de Fase 2.
 
 ---
 

@@ -21,10 +21,12 @@
 ## 🎯 LA TESIS (lo que NUNCA se debe olvidar — Javo lo ha dicho muchas veces)
 **QUIRA NO vende software a municipios. El GAD es SUJETO OBSERVADO, no cliente** (ADR-024).
 QUIRA = **OBSERVATORIO NACIONAL DE INTEGRIDAD TERRITORIAL** (221 GADs). Montecristi = el MOLDE.
-Cobertura nacional con 2 motores: **Operaciones** (QUIRA IA barre Transparencia/SERCOP/CPCCS +
-extrae PDOT) + **Ciudadana** (la gente activa la IA + cascada legal fuerza al GAD a entregar
-info firmada). Diferenciador: Plan CNE + NLP discurso RDC = demagogia expuesta. Ventana: **elecciones
-alcaldes NOV-2026**. Negocio central = complementario (cooperación/certificación/estándar), no licencias.
+Cobertura nacional con **3 MOTORES = los 3 productos de Fase 1**: **Operaciones** (Dylus/QUIRA IA
+barre Transparencia/SERCOP/CPCCS + extrae PDOT) · **Ciudadana** (la gente + cascada legal con firma
+digital) · **Institucional/Gestión** (el GAD aporta dato ORO directo · GAD predictivo). Fase 2
+(después, vistas de explotación): **Cooperación · Impact · Economic** (6 productos total · ADR-024).
+Diferenciador: Plan CNE + NLP discurso RDC = demagogia expuesta. Ventana: **elecciones alcaldes
+NOV-2026**. Negocio central = complementario (cooperación/certificación/estándar), no licencias.
 Detalle completo: `HOJA_DE_RUTA_MAESTRA.md §0`.
 
 ## 🗺️ HOJA DE RUTA COMPLETA → `governance/HOJA_DE_RUTA_MAESTRA.md`
