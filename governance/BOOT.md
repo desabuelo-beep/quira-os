@@ -18,6 +18,15 @@
 
 **MATRIZ_CANONICA** del Excel = ADN compartido. Sin ella: dos mundos. Con ella: un sistema.
 
+## 🎯 LA TESIS (lo que NUNCA se debe olvidar — Javo lo ha dicho muchas veces)
+**QUIRA NO vende software a municipios. El GAD es SUJETO OBSERVADO, no cliente** (ADR-024).
+QUIRA = **OBSERVATORIO NACIONAL DE INTEGRIDAD TERRITORIAL** (221 GADs). Montecristi = el MOLDE.
+Cobertura nacional con 2 motores: **Operaciones** (QUIRA IA barre Transparencia/SERCOP/CPCCS +
+extrae PDOT) + **Ciudadana** (la gente activa la IA + cascada legal fuerza al GAD a entregar
+info firmada). Diferenciador: Plan CNE + NLP discurso RDC = demagogia expuesta. Ventana: **elecciones
+alcaldes NOV-2026**. Negocio central = complementario (cooperación/certificación/estándar), no licencias.
+Detalle completo: `HOJA_DE_RUTA_MAESTRA.md §0`.
+
 ## 🗺️ HOJA DE RUTA COMPLETA → `governance/HOJA_DE_RUTA_MAESTRA.md`
 **Para la RUTA (qué sigue, sprints, productos, GeoTwin 3D, Ciudadana, CAF): leer ese archivo.**
 BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo que no se mueve.

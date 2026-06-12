@@ -46,6 +46,19 @@ SIGUIENTE PASO CONCRETO (espera consenso de mesa):
   SALUD INSTITUCIONAL (p_vista_ejecutiva, la pantalla del alcalde, la más violada
   con 32 términos). Javo decide el orden.
 
+LA TESIS — NUNCA LA OLVIDES (Javo la ha repetido muchas veces, "pareciera se olvida"):
+- QUIRA NO vende software a municipios. El GAD es SUJETO OBSERVADO, no cliente (ADR-024).
+- QUIRA = OBSERVATORIO NACIONAL DE INTEGRIDAD TERRITORIAL (221 GADs). Montecristi = el MOLDE
+  (se pule una vez, luego se replica nacionalmente).
+- Cobertura nacional con 2 MOTORES: (1) Operaciones — QUIRA IA barre Transparencia/SERCOP/CPCCS
+  + extrae PDOT, monitoreo cantón por cantón → Índice de Opacidad Nacional (se mide por ausencia,
+  no pide permiso al GAD). (2) Ciudadana — la gente activa la IA + cascada legal que fuerza al GAD
+  a entregar info oficial firmada digitalmente.
+- Diferenciador (ventana electoral NOV-2026): Plan CNE + NLP del discurso del alcalde en RDC =
+  demagogia expuesta matemáticamente.
+- Negocio central = COMPLEMENTARIO (cooperación, certificación, estándar regional, CAF) — NO licencias.
+- Secuencia: MOLDE primero (Montecristi mostrable), barrido nacional después. Detalle: HOJA_DE_RUTA §0.
+
 CONTEXTO ESTRATÉGICO QUE NO DEBE PERDERSE:
 - 3 productos (Operaciones·Institucional·Ciudadana), un motor. quiraintelligence.com
   + dyluslab.com adquiridos.

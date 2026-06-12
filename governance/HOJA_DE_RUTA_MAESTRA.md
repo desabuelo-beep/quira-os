@@ -8,7 +8,47 @@
 
 ---
 
-## 1. EL ECOSISTEMA (qué estamos construyendo)
+## 0. LA TESIS — qué es QUIRA realmente (Javo · grabado 2026-06-12)
+
+> **QUIRA NO vende software a municipios. El GAD es SUJETO OBSERVADO, no
+> cliente** (ADR-024, ratificado). Vender licencias es *complementario*, no el fin.
+
+**QUIRA es un OBSERVATORIO NACIONAL DE INTEGRIDAD TERRITORIAL.** El fin es el
+barrido progresivo de los 221 GADs del Ecuador. Montecristi no es el cliente #1
+— es el **MOLDE**: se valida y se pule una vez, y luego se replica nacionalmente
+con DOS MOTORES DE ADQUISICIÓN que no piden permiso al GAD:
+
+```
+MOTOR 1 · OPERACIONES (Dylus + QUIRA IA)
+  QUIRA IA barre Transparencia LOTAIP · SERCOP · CPCCS  +  equipo extrae PDOT
+  → monitoreo progresivo cantón por cantón → Índice de Opacidad Nacional
+  (se mide por AUSENCIA: el GAD que oculta, se delata; no requiere su cooperación)
+
+MOTOR 2 · CIUDADANA (la gente — cobertura nacional con la población)
+  ciudadano activa la IA (busca Transparencia/SERCOP/CPCCS)
+  + aporta (presupuesto participativo · PDOT · Plan CNE · orgánico)
+  + si no los tiene → CASCADA LEGAL: solicitud de acceso → GAD entrega
+    Excel/CSV por correo CON FIRMA DIGITAL → QUIRA valida info oficial real
+  + silencio 15 días → vía judicial + procedimiento paso a paso → ciudadano ejecuta
+```
+
+**EL DIFERENCIADOR LETAL (coyuntural):** cruce de **Plan CNE** (promesas de
+campaña) **+ NLP del discurso del alcalde en RDC** + todos los índices = la
+"fricción narrativa" / demagogia expuesta matemáticamente.
+**VENTANA: elecciones de alcaldes NOVIEMBRE 2026** — máxima atención ciudadana,
+promesas frescas. Es la ventana de posicionamiento y adopción nacional.
+
+**Negocio central = complementario** (cooperación internacional · certificación
+de integridad · datos · estándar de referencia regional · CAF) — NO licencias GAD.
+
+**Implicación de secuencia (no negociable):** primero MOLDE (Montecristi
+mostrable: refactor L2 + caso demostrable), DESPUÉS barrido nacional. No al revés.
+Esta tesis manda sobre TODO lo que sigue — si algo no sirve al observatorio
+nacional o al molde que lo habilita, no es prioridad.
+
+---
+
+## 1. EL ECOSISTEMA (cómo se materializa la tesis)
 
 **Dylus Lab** (empresa · `dyluslab.com`) construye **QUIRA** (producto ·
 `quiraintelligence.com`): un ecosistema de inteligencia territorial. NO un
@@ -127,11 +167,26 @@ PD-CIU-01 era la Fase 1; Terra Ciudadana es el diseño completo:
 - **Estrategia equipo CAF**: el equipo trabaja la CAPA CIUDADANA (metodología, UX,
   participación) — NUNCA el núcleo. Background IP de Dylus declarado por escrito.
 
-### SPRINT E — Escalamiento nacional (post-validación Montecristi)
+### SPRINT E — ACTIVACIÓN DE LA TESIS: barrido nacional (NO es una fase tardía — es el FIN)
+Se activa cuando el MOLDE Montecristi está mostrable (no antes). Es el corazón del §0.
+**Motor 1 · Operaciones:**
+- Fetchers a construir: Transparencia LOTAIP · SERCOP · CPCCS (patrón de `app/fetchers/`
+  ya existe para fondos — replicar). Dependencia: créditos API.
+- Extractor PDOT por cantón → base → GeoTwin: **YA CONSTRUIDO** (`pdot_extractor.py` +
+  `kb_loader.py`). Una pieza del barrido ya está lista — replica a cualquier cantón.
 - Índice de Opacidad Nacional (221 GADs · se mide por ausencia · sin Gold Master por cantón).
-- Replicación: PDOT → extractor → base → GeoTwin (mismo pipeline, otro cantón).
-- Testers UEB + diplomado CAF como fuerza de ingesta distribuida.
-- quiraintelligence.com como portal radar nacional (⚠️ requiere hosting ≠ Streamlit Cloud).
+**Motor 2 · Ciudadana:** las 6 fases de Terra (ver Sprint D) — la gente amplía la cobertura.
+**Diferenciador electoral (construir para ventana NOV-2026):**
+- Análisis Plan CNE (promesas de campaña) — semilla ya existe (dom03: 48/66 promesas CNE en PDOT).
+- NLP del discurso del alcalde en RDC cruzado con índices ("fricción narrativa" — Terra Fase 2).
+**Infra:** testers UEB + diplomado CAF = fuerza de ingesta distribuida ·
+quiraintelligence.com como portal radar nacional (⚠️ requiere hosting ≠ Streamlit Cloud).
+**Estrategia de institucionalización (consulta Javo 2026-06-12 · respuesta Director):**
+- White Paper QUIRA v1.0 (50-80 pp · síntesis de lo ya escrito) = entregable Sprint D · oro CAF.
+- Apertura: abrir la METODOLOGÍA ahora (White Paper, posicionamiento) ≠ abrir el CÓDIGO
+  (Open Core formal) — esto último DIFERIDO hasta tener tracción (varios cantones). Abrir el
+  estándar antes de tracción regala la ventaja sin cobrar el efecto de red. Framing "estándar
+  territorial abierto + motor cerrado" para CAF = legitimidad sin riesgo (motor sigue caja negra).
 
 ### BACKLOG congelado (no abrir hasta su disparador)
 - Auditoría Gold Master (2 dimensiones: riesgo territorial · urbano-rural) — tras refactor L2.
