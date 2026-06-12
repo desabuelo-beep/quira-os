@@ -421,6 +421,23 @@
     → gov_module='ods'". Build stamp pre-auth verificado en deploy por Playwright (pipeline
     GitHub→Cloud ~1-2 min OK). Episodio "ventana --no-sandbox": Javo miraba el navegador de
     pruebas de Playwright con sesión vieja — cerrado.
+    **🎉 CAJONES ABREN (Javo 2026-06-12): "Ahora sí entramos, se da click y aparecen las pantallas."**
+    El muro de semanas cayó. NUEVO DIAGNÓSTICO al entrar: los dashboards L2 son las pantallas
+    de la era TERRA sin reestructurar, con NOMENCLATURA CANÓNICA PROHIBIDA VISIBLE (violación
+    Regla de Oro 2 en producción) — incl. "Pregúntale a QUIRA" → Sentinel-Terra tal cual.
+    Directiva Javo: REFACTORIZAR TODOS los dashboards — uno por uno, con base, consensuado,
+    propuesta antes de ejecutar. Las pantallas viejas sirven como insumo, no como resultado.
+    **AUDITORÍA BLOOMBERG L2 ✅** (`scripts/dev/audit_bloomberg_l2.py` · strings renderizables):
+    🔴 p_vista_ejecutiva 32 · p07_transparencia 31 (mayoría metadatos internos — confirmar) ·
+    🟠 m2_alertas 17 · p0_inicio 11 (¿huérfana post-v2?) · 🟡 11 páginas 1-7 c/u ·
+    ⚠️ m1/m3/m4 "limpios" son WRAPPERS — hijos Terra se auditan por cajón.
+    **PROPUESTA EN MESA** (`docs/sprint-c/PROPUESTA_REFACTOR_L2.md` — pendiente consenso):
+    Paso 0 tabla de equivalencias de lenguaje → plantilla canónica (concepto·gobernanza·dato
+    vivo·decisión curada·límites) → gate por dashboard (Bloomberg 0 + verificación visual
+    harness + deploy) → cadencia maqueta-texto→consenso→ejecución→mirada Javo.
+    Orden propuesto: 1º Salud Institucional (pantalla del alcalde, la peor) · 2º Territorio
+    (conecta F1) · 3º RDC · 4º Cooperación. Paralelo sin código: contenido cajones L1 con Javo.
+    QUIRA IA: reemplazo del Sentinel-Terra en el programa — dependencia créditos API.
     RE-PRUEBA JAVO (la definitiva): SU Chrome → Ctrl+Shift+R → login → cards con concepto +
     botón ABRIR → → clic → dashboard L2. Footer: UI v2.0-nativo.
     **SPECS JAVO PARA CAJONES v2** (registradas · 2026-06-11):
