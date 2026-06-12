@@ -18,7 +18,21 @@
 
 **MATRIZ_CANONICA** del Excel = ADN compartido. Sin ella: dos mundos. Con ella: un sistema.
 
+## 🗺️ HOJA DE RUTA COMPLETA → `governance/HOJA_DE_RUTA_MAESTRA.md`
+**Para la RUTA (qué sigue, sprints, productos, GeoTwin 3D, Ciudadana, CAF): leer ese archivo.**
+BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo que no se mueve.
+
 ## AHORA (actualizar al cierre)
+- **🔚 CIERRE DE SESIÓN 2026-06-12 (último commit antes de nuevo chat):**
+    Hito: Centro de Mando v2 nativo NAVEGA en deploy (cajones abren — fin del muro de semanas).
+    Pivote: refactor L2 dashboards (pantallas Terra con Bloomberg Firewall violado). PROPUESTA en mesa.
+    **Material nuevo ingresado al repo**: `docs/geotwin/` (GeoTwin 3D) · `docs/caf/` (Desafíos +
+    estrategia IP) · `docs/ciudadana/` (Terra Ciudadana + Institucional v3 = spec PMV pantallas).
+    **HOJA DE RUTA MAESTRA creada** → `governance/HOJA_DE_RUTA_MAESTRA.md` (todo integrado: 3 productos,
+    3 capas, GeoTwin 3D, Ciudadana 6 fases, QUIRA IA, Caja 0 Realidad Cantonal, calendario CAF retos 3/8/9).
+    **Prompt de arranque del próximo Claude** → `governance/PROMPT_ARRANQUE_PROXIMA_SESION.md`.
+    SIGUIENTE PASO CONCRETO: mesa decide C.0 (Tabla de Equivalencias) → arranca refactor L2
+    por Salud Institucional o Cooperación (voto Colega: Cooperación #2). NADA se ejecuta sin consenso.
 - **Sprint A ✅ COMPLETO** (2026-06-04) · **ADR-026 v1.3 ✅ MODELO OPERATIVO** (2026-06-09)
 - **FASE 0 — Arqueología funcional ✅ COMPLETA** (2026-06-09):
     9 excavaciones: D02 · D03 · D04 · D06 · D07 · D08 · D09 · D10 · D12
