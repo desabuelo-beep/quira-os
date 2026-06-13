@@ -80,19 +80,28 @@ día, se mantiene. Si es una sigla que solo existe dentro de QUIRA, va a A o B.*
 
 ---
 
-## ⚠️ DECISIONES QUE NECESITAN A JAVO (no las invento)
+## ✅ DECISIONES RESUELTAS (definiciones del grafo Obsidian + decisiones Javo · 2026-06-13)
 
-1. **TGI** — aparece en el header canónico ("GAD · TGI · SAT") y en el nombre del
-   Gold Master (v5.5_TGI). No tengo su significado exacto confirmado. ¿Qué es y
-   cómo se llama en público? (¿"Gestión Territorial Integral"?)
-2. **TOP** (Trayectoria Operativa Proyectada) — ¿se muestra el nombre "Trayectoria
-   de cumplimiento" o solo el semáforo sin nombre técnico?
-3. **ICPI público** — propongo "Cumplimiento Institucional" (ya usado en cajones v2).
-   ¿Se ratifica como el nombre oficial público del índice madre?
-4. **AVEP / MMP** — confirmar qué son para decidir A o B.
-5. **¿Mostrar índices como sigla + nombre, o solo nombre?** Ej. "Transparencia
-   activa: 56" vs "ITAM: 56". Propongo: SOLO nombre en Institucional/Ciudadana;
-   la sigla puede vivir en el pie técnico de Operaciones (rol interno Dylus).
+1. **TGI = Territorial Governance Intelligence** (grafo: `01_TGI_FRAMEWORK.md`).
+   Es el FRAMEWORK metodológico propietario, no un índice. → **DOBLE destino:**
+   la sigla/marco = Categoría B (NUNCA visible, propietario · como Gold Master).
+   El *score territorial global* (las 5 dimensiones D1-D5) sí se muestra →
+   público: **"Gobernanza Territorial"** (Institucional) / **"Estado del cantón"** (Ciudadana).
+2. **ICPI = Índice de Calidad Pública Institucional** (grafo: Glosario — promedio
+   ponderado IED+IGP+ISP = salud institucional global). → público: **"Cumplimiento
+   Institucional"** (índice) · el cajón/dominio puede llamarse "Salud Institucional".
+   *(micro-confirmación a Javo: ¿"Cumplimiento" o "Salud Institucional" como nombre del índice?)*
+3. **TOP = Trayectoria Operativa Proyectada** (Nomenclatura Canónica). Sigla interna →
+   se muestra el CONCEPTO/semáforo, no la sigla → público: **"Trayectoria de cumplimiento"**.
+4. **AVEP = baremo de interpretación del ICPI** (Excelencia→Ruptura Sistémica · grafo
+   `07_AVEP_LENGUAJE.md`) → **INTERNO** (Cat. B). El usuario ve la CATEGORÍA en
+   lenguaje de gobernanza (ej. "Transición Crítica"), nunca la sigla "AVEP".
+5. **MMP = hojas de monitoreo de metas** (H25 mensual / H26 trimestral / H27 anual) →
+   **EXTERNO** (fuente de resultados anuales) · ruta de integración a explotar (Excel→QUIRA).
+6. **Sigla vs nombre** → SOLO nombre en Institucional/Ciudadana; sigla en pie técnico
+   de Operaciones (rol interno Dylus). ✅ aprobado Javo.
+
+**Estado: v1.0 lista para ratificar.** Solo resta la micro-confirmación del punto 2.
 
 ---
 
