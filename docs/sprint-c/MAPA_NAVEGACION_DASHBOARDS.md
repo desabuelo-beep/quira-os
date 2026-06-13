@@ -96,4 +96,24 @@ Obsidian (`C:\Proyectos\QUIRA\knowledge_base`) + grafo cuando toque la pantalla.
 
 ---
 
-*Mapa de Navegación · Sprint C · Dylus Lab © 2026 · read-only, ningún código tocado.*
+---
+
+## AUDITORÍA BLOOMBERG SOBRE VIVOS (re-corrida 2026-06-12, post-archivado)
+
+Ranking real (ya sin las pantallas muertas que contaminaban):
+
+| Sev | Página | Violaciones | Nota |
+|---|---|---|---|
+| 🔴 | p07_transparencia | 31 | la peor REAL (p_vista_ejecutiva ya archivada) |
+| 🟠 | p_ejecutivo · p_concejo | 18 c/u | p_concejo: TGI×12 |
+| 🟠 | m2_alertas | 17 | ICPI/SAT |
+| 🟠 | p16_gobernanza · p12_cadena | 13 c/u | |
+| 🟠 | p_cadena_institucional · p9_sat | 10 c/u | |
+| 🟡 | 13 páginas | 1-7 c/u | p18(6) · p17(2) · p19(7) · p4(3) … |
+| 🟢 | LIMPIAS | 0 | p_command_center_v2 ✅ · p2_holding (961 líneas, 0!) · m1/m3/m4 (wrappers) · p1_dashboard (stub) |
+
+**Pilotos recomendados** (manejables + ya modernizados, para calibrar método):
+p18_cooperacion (6 · lector Supabase) · p17_rdc (2 · C-RDC live). La joya
+p07_transparencia (31) se ataca con el método YA rodado, no de primera.
+
+*Mapa de Navegación · Sprint C · Dylus Lab © 2026 · read-only, ningún código de producto tocado.*

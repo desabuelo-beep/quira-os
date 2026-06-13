@@ -1,0 +1,204 @@
+- generic [ref=e3]:
+  - banner [ref=e6]:
+    - generic [ref=e9]:
+      - button "Deploy" [ref=e19] [cursor=pointer]:
+        - generic [ref=e21]: Deploy
+      - button "Main menu" [ref=e23] [cursor=pointer]:
+        - img [ref=e24]
+  - generic [ref=e27]:
+    - generic [ref=e32]: 🔧 PREVIEW DEV — Centro de Mando v2 · sesión simulada · sin auth real
+    - generic [ref=e34]:
+      - generic [ref=e41]:
+        - generic [ref=e42]: ⬡ QUIRA
+        - generic [ref=e43]:
+          - generic [ref=e44]: Centro de Mando
+          - generic [ref=e45]: GAD Municipal de Montecristi · Corte Q1-2026
+      - generic [ref=e52]: ● EN LÍNEA ejecutivo
+      - button "◎ Preguntar a QUIRA" [ref=e57] [cursor=pointer]:
+        - paragraph [ref=e61]: ◎ Preguntar a QUIRA
+      - button "⎋ Salir" [ref=e66] [cursor=pointer]:
+        - paragraph [ref=e70]: ⎋ Salir
+    - generic [ref=e72]:
+      - generic [ref=e76]:
+        - generic [ref=e81]:
+          - generic [ref=e82]: CUMPLIMIENTO INSTITUCIONAL
+          - generic [ref=e83]: 17.4%
+          - generic [ref=e84]: 🔴 Ruptura Sistémica · umbral 65%
+        - button "abrir →" [ref=e87] [cursor=pointer]:
+          - paragraph [ref=e91]: abrir →
+      - generic [ref=e95]:
+        - generic [ref=e100]:
+          - generic [ref=e101]: FONDOS EN RIESGO
+          - generic [ref=e102]: $3.66M
+          - generic [ref=e103]: BID · CAF · PNUD · desembolso condicionado
+        - button "abrir →" [ref=e106] [cursor=pointer]:
+          - paragraph [ref=e110]: abrir →
+      - generic [ref=e114]:
+        - generic [ref=e119]:
+          - generic [ref=e120]: ALERTAS ACTIVAS
+          - generic [ref=e121]: "3"
+          - generic [ref=e122]: ALTO
+        - button "abrir →" [ref=e125] [cursor=pointer]:
+          - paragraph [ref=e129]: abrir →
+      - generic [ref=e133]:
+        - generic [ref=e138]:
+          - generic [ref=e139]: HOLDING MUNICIPAL
+          - generic [ref=e140]: 68.7%
+          - generic [ref=e141]: Promedio 4 entidades · EP Aseo líder
+        - button "abrir →" [ref=e144] [cursor=pointer]:
+          - paragraph [ref=e148]: abrir →
+    - generic [ref=e153]:
+      - generic [ref=e154]: ▎DOMINIOS OPERACIONALES
+      - generic [ref=e155]: Holding Municipal · Montecristi · 12 dominios · clic en ABRIR
+    - generic [ref=e157]:
+      - generic [ref=e161]:
+        - generic [ref=e166]:
+          - generic [ref=e167]:
+            - generic [ref=e168]: "01"
+            - generic [ref=e169]: Planificación Estratégica
+          - generic [ref=e170]: "El plan de desarrollo del cantón: los compromisos que Montecristi se fijó hasta 2027 y su grado de ejecución real."
+          - generic [ref=e171]:
+            - generic [ref=e172]: ● EN RUTA
+            - generic [ref=e173]: 56/56
+          - generic [ref=e174]: ¿Qué prometió el cantón y cuánto se cumple? Los 4 ejes, meta por meta.
+        - button "ABRIR →" [ref=e177] [cursor=pointer]:
+          - paragraph [ref=e181]: ABRIR →
+      - generic [ref=e185]:
+        - generic [ref=e190]:
+          - generic [ref=e191]:
+            - generic [ref=e192]: "02"
+            - generic [ref=e193]: Presupuesto & Financiamiento
+          - generic [ref=e194]: "El dinero del cantón: de dónde viene, en qué se invierte y qué fondos internacionales están en juego."
+          - generic [ref=e195]:
+            - generic [ref=e196]: ● CONDICIONADO
+            - generic [ref=e197]: $3.66M
+          - generic [ref=e198]: Tres fondos activos dependen de hitos de este trimestre — cuáles y qué los condiciona.
+        - button "ABRIR →" [ref=e201] [cursor=pointer]:
+          - paragraph [ref=e205]: ABRIR →
+      - generic [ref=e209]:
+        - generic [ref=e214]:
+          - generic [ref=e215]:
+            - generic [ref=e216]: "03"
+            - generic [ref=e217]: Metas PDOT · Mandato
+          - generic [ref=e218]: "La palabra empeñada: las promesas registradas ante el CNE convertidas (o no) en metas formales del plan."
+          - generic [ref=e219]:
+            - generic [ref=e220]: ● EN RUTA
+            - generic [ref=e221]: 94.6%
+          - generic [ref=e222]: 53 de 56 metas en cronograma — y 3 en rezago. Mira cuáles son.
+        - button "ABRIR →" [ref=e225] [cursor=pointer]:
+          - paragraph [ref=e229]: ABRIR →
+    - generic [ref=e231]:
+      - generic [ref=e235]:
+        - generic [ref=e240]:
+          - generic [ref=e241]:
+            - generic [ref=e242]: "04"
+            - generic [ref=e243]: Alertas Institucionales
+          - generic [ref=e244]: "El sistema de alerta temprana: señales que anticipan riesgos institucionales antes de que se vuelvan crisis."
+          - generic [ref=e245]:
+            - generic [ref=e246]: ● 3 ACTIVAS
+            - generic [ref=e247]: 3 activas
+          - generic [ref=e248]: 7 tipos de señal bajo monitoreo continuo — el semáforo del cantón.
+        - button "ABRIR →" [ref=e251] [cursor=pointer]:
+          - paragraph [ref=e255]: ABRIR →
+      - generic [ref=e259]:
+        - generic [ref=e264]:
+          - generic [ref=e265]:
+            - generic [ref=e266]: "05"
+            - generic [ref=e267]: Holding Municipal
+          - generic [ref=e268]: Las 4 entidades del holding (GAD, EP Aseo, Bomberos, Patronato) medidas con la misma vara.
+          - generic [ref=e269]:
+            - generic [ref=e270]: ● BAJO OBJETIVO
+            - generic [ref=e271]: 68.7%
+          - generic [ref=e272]: EP Aseo lidera con 82% y el GAD está en rezago — compara las cuatro.
+        - button "ABRIR →" [ref=e275] [cursor=pointer]:
+          - paragraph [ref=e279]: ABRIR →
+      - generic [ref=e283]:
+        - generic [ref=e288]:
+          - generic [ref=e289]:
+            - generic [ref=e290]: "06"
+            - generic [ref=e291]: Salud Institucional
+          - generic [ref=e292]: "El estado general del municipio como institución: 41 métricas integradas en un solo diagnóstico."
+          - generic [ref=e293]:
+            - generic [ref=e294]: ● BAJO UMBRAL
+            - generic [ref=e295]: 17.4%
+          - generic [ref=e296]: 11.4 puntos bajo el umbral — entra a ver dónde se concentra la brecha.
+        - button "ABRIR →" [ref=e299] [cursor=pointer]:
+          - paragraph [ref=e303]: ABRIR →
+    - generic [ref=e305]:
+      - generic [ref=e309]:
+        - generic [ref=e314]:
+          - generic [ref=e315]:
+            - generic [ref=e316]: "07"
+            - generic [ref=e317]: Transparencia
+          - generic [ref=e318]: La información que la ley obliga a publicar (LOTAIP) y su estado real de publicación y verificación.
+          - generic [ref=e319]:
+            - generic [ref=e320]: ● OBSERVADO
+            - generic [ref=e321]: 21/21
+          - generic [ref=e322]: 21 de 21 artículos publicados, sin sanciones — verifica la evidencia.
+        - button "ABRIR →" [ref=e325] [cursor=pointer]:
+          - paragraph [ref=e329]: ABRIR →
+      - generic [ref=e333]:
+        - generic [ref=e338]:
+          - generic [ref=e339]:
+            - generic [ref=e340]: "08"
+            - generic [ref=e341]: Participación Ciudadana
+          - generic [ref=e342]: "Los mecanismos por los que la ciudadanía decide: presupuesto participativo, cabildos, consultas, veedurías."
+          - generic [ref=e343]:
+            - generic [ref=e344]: ● BAJO OBJETIVO
+            - generic [ref=e345]: 27.98%
+          - generic [ref=e346]: 6 mecanismos activos pero la participación no llega al objetivo de 40% — ¿por qué?
+        - button "ABRIR →" [ref=e349] [cursor=pointer]:
+          - paragraph [ref=e353]: ABRIR →
+      - generic [ref=e357]:
+        - generic [ref=e362]:
+          - generic [ref=e363]:
+            - generic [ref=e364]: "09"
+            - generic [ref=e365]: Rendición de Cuentas
+          - generic [ref=e366]: "El examen anual del municipio ante el CPCCS y la ciudadanía: el circuito que valida (o bloquea) la gestión del año."
+          - generic [ref=e367]:
+            - generic [ref=e368]: ● EN PREPARACIÓN
+            - generic [ref=e369]: 51 días
+          - generic [ref=e370]: Cuenta regresiva a la presentación de agosto — el circuito tiene condiciones en rojo.
+        - button "ABRIR →" [ref=e373] [cursor=pointer]:
+          - paragraph [ref=e377]: ABRIR →
+    - generic [ref=e379]:
+      - generic [ref=e383]:
+        - generic [ref=e388]:
+          - generic [ref=e389]:
+            - generic [ref=e390]: "10"
+            - generic [ref=e391]: Territorio & Cobertura
+          - generic [ref=e392]: "Los servicios básicos vistos desde el territorio: quién tiene agua, saneamiento y recolección — y quién no."
+          - generic [ref=e393]:
+            - generic [ref=e394]: ● BRECHA CRÍTICA
+            - generic [ref=e395]: 34.9%
+          - generic [ref=e396]: Una parroquia concentra todas las brechas. El mapa lo explica en 30 segundos.
+        - button "ABRIR →" [ref=e399] [cursor=pointer]:
+          - paragraph [ref=e403]: ABRIR →
+      - generic [ref=e407]:
+        - generic [ref=e412]:
+          - generic [ref=e413]:
+            - generic [ref=e414]: "11"
+            - generic [ref=e415]: Ecosistema Productivo Territorial
+          - generic [ref=e416]: "La economía del territorio: empleo, industria, turismo y la zona especial de desarrollo."
+          - generic [ref=e417]:
+            - generic [ref=e418]: ● EN CONSTRUCCIÓN
+            - generic [ref=e419]: —
+          - generic [ref=e420]: Módulo en estructuración — empleo, industria y turismo.
+        - generic [ref=e425]: — en construcción —
+      - generic [ref=e429]:
+        - generic [ref=e434]:
+          - generic [ref=e435]:
+            - generic [ref=e436]: "12"
+            - generic [ref=e437]: Protección Social & Grupos Prioritarios
+          - generic [ref=e438]: "Los grupos que la Constitución manda atender primero: inversión social, género y prioridad territorial."
+          - generic [ref=e439]:
+            - generic [ref=e440]: ● CRÍTICO
+            - generic [ref=e441]: 12.83%
+          - generic [ref=e442]: La inversión social está 17.2 puntos bajo el mandato constitucional — $2.1M de brecha.
+        - button "ABRIR →" [ref=e445] [cursor=pointer]:
+          - paragraph [ref=e449]: ABRIR →
+    - generic [ref=e454]:
+      - generic [ref=e455]: ● Sistema operativo · GAD Municipal de Montecristi · Corte Q1-2026
+      - generic [ref=e456]: Dylus Lab © 2026 · QUIRA Intelligence · UI v2.0-nativo · 2026-06-11
+    - alert [ref=e459]:
+      - paragraph [ref=e464]: ✅ NAVEGACIÓN DISPARADA → gov_module = 'ods' (el botón funciona)

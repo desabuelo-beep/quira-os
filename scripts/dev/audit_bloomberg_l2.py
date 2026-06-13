@@ -20,12 +20,21 @@ from pathlib import Path
 sys.stdout.reconfigure(encoding="utf-8")
 ROOT = Path(__file__).resolve().parents[2]
 
-# Páginas ruteadas desde env_gov (el mapa L2 del entorno GOV)
+# SOLO PÁGINAS VIVAS (ruteadas) — confirmadas por mapa de navegación 2026-06-12.
+# Muertos archivados a _deprecated/ (p0_inicio, p_vista_ejecutiva, p_congruencia,
+# p15_transparencia) — NO se auditan. Lista = entorno GOV ejecutiva + técnica.
 PAGINAS = [
-    "p0_inicio", "m1_situacion", "m2_alertas", "m3_municipal", "m4_analisis",
-    "m5_control", "p3_congruencias", "p4_geotwin", "p8_metas", "p07_transparencia",
-    "p10_territorio", "p11_ods", "p13_simulador", "p16_confianza", "p17_rdc",
-    "p18_cooperacion", "p19_genero", "p_vista_ejecutiva",
+    # INICIO
+    "p_command_center_v2",
+    # GOV Ejecutiva (contenedores M + hojas P)
+    "m1_situacion", "p_ejecutivo", "p6_pulso", "p7_brecha",
+    "p8_metas", "m2_alertas", "p9_sat",
+    "m3_municipal", "p2_holding", "p16_gobernanza", "p07_transparencia", "p10_inversion",
+    "p11_ods", "p16_confianza", "p17_rdc", "p18_cooperacion", "p19_genero",
+    "p_cadena_institucional", "p12_cadena", "p10_territorio",
+    # GOV Técnica
+    "m4_analisis", "p1_dashboard", "p14_eficiencia", "p5_operacion",
+    "p4_geotwin", "p3_congruencias", "p13_simulador", "m5_control", "p_concejo",
 ]
 
 PATRONES = {

@@ -1,0 +1,68 @@
+- generic [active] [ref=e2]:
+  - generic [ref=e6]:
+    - iframe [ref=e7]:
+      - generic [ref=f7e6]:
+        - generic [ref=f7e11]:
+          - img [ref=f7e13]
+          - generic [ref=f7e20]: QUIRA Intelligence
+          - generic [ref=f7e21]: Sistema Operativo de Coherencia Institucional
+          - generic [ref=f7e22]: Development by Dylus Lab
+          - generic [ref=f7e23]: Observabilidad territorial · Riesgo institucional · Decisión ejecutiva
+        - generic [ref=f7e25]:
+          - button "🏛 QUIRA Institucional Centro de comando institucional para Alcaldía y Holding Municipal." [ref=f7e30] [cursor=pointer]:
+            - generic [ref=f7e33]:
+              - paragraph [ref=f7e34]: 🏛
+              - paragraph [ref=f7e35]: QUIRA Institucional
+              - paragraph [ref=f7e36]: Centro de comando institucional para Alcaldía y Holding Municipal.
+          - button "🌎 QUIRA Ciudadano Transparencia territorial y seguimiento ciudadano." [ref=f7e41] [cursor=pointer]:
+            - generic [ref=f7e44]:
+              - paragraph [ref=f7e45]: 🌎
+              - paragraph [ref=f7e46]: QUIRA Ciudadano
+              - paragraph [ref=f7e47]: Transparencia territorial y seguimiento ciudadano.
+          - button "📑 QUIRA Cooperación Evidencia territorial para investigación y cooperación." [ref=f7e52] [cursor=pointer]:
+            - generic [ref=f7e55]:
+              - paragraph [ref=f7e56]: 📑
+              - paragraph [ref=f7e57]: QUIRA Cooperación
+              - paragraph [ref=f7e58]: Evidencia territorial para investigación y cooperación.
+          - button "⚡ QUIRA Operations Monitoreo institucional en tiempo real — En construcción." [disabled] [ref=f7e63]:
+            - generic [ref=f7e66]:
+              - paragraph [ref=f7e67]: ⚡
+              - paragraph [ref=f7e68]: QUIRA Operations
+              - paragraph [ref=f7e69]: Monitoreo institucional en tiempo real — En construcción.
+        - generic [ref=f7e74]:
+          - generic [ref=f7e76]:
+            - generic [ref=f7e77]: ACCESO PROTEGIDO
+            - generic [ref=f7e78]: Cifrado institucional
+          - generic [ref=f7e80]:
+            - generic [ref=f7e81]: SESIÓN TEMPORAL
+            - generic [ref=f7e82]: Expira en 60 minutos
+          - generic [ref=f7e84]:
+            - generic [ref=f7e85]: INTENTOS MONITOREADOS
+            - generic [ref=f7e86]: Bloqueo tras 3 fallos
+          - generic [ref=f7e88]:
+            - generic [ref=f7e89]: ACTIVIDAD AUDITADA
+            - generic [ref=f7e90]: Registro de accesos
+        - generic [ref=f7e95]:
+          - text: QUIRA Intelligence · Dylus Lab © 2026
+          - text: Infraestructura de gobernanza pública
+          - text: build cc-v2-r2 · 2026-06-11 · st 1.55.0
+        - generic [ref=f7e97]: · · ·
+        - button "⚙ acceso operacional" [ref=f7e109] [cursor=pointer]:
+          - paragraph [ref=f7e113]: ⚙ acceso operacional
+    - link [ref=e8] [cursor=pointer]:
+      - /url: https://streamlit.io/cloud
+      - img [ref=e10]
+    - link "App Creator Avatar" [ref=e16] [cursor=pointer]:
+      - /url: https://share.streamlit.io/user/desabuelo-beep
+      - img "App Creator Avatar" [ref=e17]
+  - iframe [ref=e1]:
+    - generic [ref=f5e2]:
+      - img [ref=f5e4]
+      - generic [ref=f5e11]:
+        - heading "Status embed installed correctly" [level=1] [ref=f5e12]:
+          - paragraph [ref=f5e13]: Status embed installed correctly
+        - generic [ref=f5e14]: This will be shown if an incident or maintenance is posted on your status page.
+        - link "View latest updates" [ref=f5e16] [cursor=pointer]:
+          - /url: https://www.streamlitstatus.com?utm_source=embed
+      - button [ref=f5e18] [cursor=pointer]:
+        - img [ref=f5e19]

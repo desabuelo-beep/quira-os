@@ -109,21 +109,42 @@ Secuencia (Javo): consolidar las 3 de Fase 1 mientras se opera → luego constru
 
 ---
 
-## 2. LAS 3 CAPAS DE LA UI (arquitectura de navegación)
+## 2. LAS 3 CAPAS DE LA UI (arquitectura REDEFINIDA · Javo 2026-06-13)
+
+Reordenamiento clave: el TERRITORIO aterriza PRIMERO. Antes de los cajones,
+el usuario entiende DÓNDE está parado. Secuencia pedagógica: dónde estamos →
+qué pasa → dónde ocurre.
 
 ```
-L1  CENTRO DE MANDO   → 12 cajones (el v2 nativo ya navega · 2026-06-11)
-        ↓ clic ABRIR
-L2  DASHBOARDS        → N dashboards por cajón · "cada cajón abre su universo"
+CAPA 1 · EL CANTÓN            → primera pantalla. Aterriza al territorio real.
+  (antes "Caja 0")              Perfil de Montecristi: datos territoriales +
+                                administración municipal (alcalde, concejo,
+                                período: días transcurridos / días restantes de
+                                mandato — DINÁMICO, no estático), alimentado de
+                                webs institucionales. "¿Dónde estamos parados?"
+        ↓ entrar
+CAPA 2 · CENTRO DE MANDO       → 12 cajones + los dashboards que abre cada cajón.
+  (hoy p_command_center_v2)      "¿Qué pasa en la gestión?" · El v2 ya navega.
         ↓ territorializa
-L3  GEOTWIN           → CAPA TRANSVERSAL (no es un dominio) · aterriza TODO en
-                        el territorio real · 2D hoy → 3D (PyDeck) en ruta
+CAPA 3 · GEOTWIN               → mapa GIS del cantón. Territorializa PDOT
+                                diagnóstico + PUGS + resultados anuales medidos
+                                por QUIRA. "¿DÓNDE ocurre?" · 2D hoy → 3D (PyDeck).
 ```
 
 **Regla GeoTwin (Javo · canónica):** GeoTwin NO ES UN DOMINIO. Es la capa
 completa que lleva todos los dominios y sus dashboards y los conecta con el
 territorio real — donde se ven las asimetrías por barrio/sector/parroquia.
 Es donde aterrizan políticas, planes, programas y proyectos.
+
+**⚠️ DECISIÓN DE NAMING PENDIENTE (Javo 2026-06-13):** "Centro de Mando" es
+nombre ejecutivo/militar — sirve para Operaciones e Institucional, NO para
+Ciudadana. Necesita un nombre apropiado para los 3 productos, o un nombre por
+producto. Opciones a decidir en mesa:
+- Transversal: "Tablero Territorial" · "Panorama" · "Centro de Inteligencia Territorial"
+- Por producto: Operaciones=Centro de Mando · Institucional=Tablero de Gestión ·
+  Ciudadana=Mirador Ciudadano
+La Capa 1 (el Cantón) sí es naturalmente transversal — el nombre del cantón
+("Montecristi") funciona igual para los 3.
 
 ---
 

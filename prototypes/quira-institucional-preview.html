@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QUIRA Institucional · Montecristi · Prototipo</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  :root {
+    --bg:       #07101E;
+    --bg2:      #0C1829;
+    --card:     rgba(255,255,255,0.04);
+    --border:   rgba(255,255,255,0.08);
+    --cyan:     #00D4FF;
+    --cyan2:    rgba(0,212,255,0.12);
+    --verde:    #22C55E;
+    --amarillo: #F59E0B;
+    --rojo:     #EF4444;
+    --texto:    #E2E8F0;
+    --sub:      rgba(255,255,255,0.4);
+    --dim:      rgba(255,255,255,0.18);
+  }
+  body { background:var(--bg); color:var(--texto); font-family:'Segoe UI',system-ui,sans-serif; min-height:100vh; }
+
+  /* ── BANNER DE PROTOTIPO ── */
+  .proto-banner {
+    background:linear-gradient(90deg,#7C3AED,#4F46E5);
+    text-align:center; padding:6px 0;
+    font-size:11px; font-weight:700; letter-spacing:.1em; color:#fff;
+  }
+
+  /* ── HEADER INSTITUCIONAL ── */
+  .header {
+    background:linear-gradient(135deg,rgba(0,25,55,.98),rgba(0,12,30,.99));
+    border-bottom:1px solid rgba(0,212,255,.12);
+    padding:20px 32px;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;
+  }
+  .header-left .gad-tag {
+    font-size:9px; font-weight:700; letter-spacing:.14em;
+    color:rgba(0,212,255,.5); text-transform:uppercase; margin-bottom:4px;
+  }
+  .header-left h1 { font-size:1.5rem; font-weight:900; letter-spacing:-.03em; color:#F1F5F9; }
+  .header-left .meta {
+    font-size:11px; color:var(--sub); margin-top:6px;
+    display:flex; gap:12px; flex-wrap:wrap;
+  }
+  .header-right { text-align:right; }
+  .header-right .corte-label { font-size:9px; color:var(--dim); letter-spacing:.1em; text-transform:uppercase; }
+  .header-right .corte-val { font-size:18px; font-weight:800; color:var(--cyan); margin-top:2px; }
+  .header-right .presupuesto { font-size:10px; color:var(--sub); margin-top:2px; }
+
+  /* ── CHIP KPI ── */
+  .kpi-row {
+    display:flex; gap:10px; padding:12px 32px; background:rgba(0,0,0,.2);
+    border-bottom:1px solid var(--border); flex-wrap:wrap;
+  }
+  .kpi-chip {
+    background:var(--card); border:1px solid var(--border);
+    border-radius:8px; padding:8px 14px; flex:1; min-width:130px;
+  }
+  .kpi-chip .kl { font-size:9px; color:var(--dim); letter-spacing:.08em; text-transform:uppercase; }
+  .kpi-chip .kv { font-size:1.2rem; font-weight:800; margin-top:3px; }
+  .kpi-chip .ks { font-size:10px; color:var(--sub); margin-top:2px; }
+
+  /* ── COMANDO PRINCIPAL ── */
+  .cmd-main { padding:24px 32px; }
+  .cmd-title { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--dim); margin-bottom:16px; }
+
+  .domains-grid {
+    display:grid; grid-template-columns:repeat(4,1fr); gap:12px;
+  }
+  @media(max-width:900px){ .domains-grid{grid-template-columns:repeat(2,1fr);} }
+  @media(max-width:500px){ .domains-grid{grid-template-columns:1fr;} }
+
+  /* ── TARJETA DE DOMINIO ── */
+  .dom-card {
+    background:var(--card); border:1px solid var(--border);
+    border-radius:14px; padding:16px 18px;
+    cursor:pointer; transition:all .2s; position:relative; overflow:hidden;
+  }
+  .dom-card:hover { border-color:rgba(0,212,255,.35); transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,212,255,.08); }
+  .dom-card.verde  { border-left:3px solid var(--verde); }
+  .dom-card.amarillo { border-left:3px solid var(--amarillo); }
+  .dom-card.rojo   { border-left:3px solid var(--rojo); box-shadow:0 0 12px rgba(239,68,68,.1); }
+  .dom-card.dim    { opacity:.45; cursor:not-allowed; }
+  .dom-card.span2  { grid-column:span 2; }
+
+  .dom-num { font-size:9px; font-weight:700; color:var(--dim); letter-spacing:.1em; margin-bottom:4px; }
+  .dom-name { font-size:13px; font-weight:700; color:var(--texto); line-height:1.3; }
+  .dom-estado {
+    display:inline-block; margin-top:6px;
+    font-size:9px; font-weight:700; letter-spacing:.06em;
+    padding:2px 7px; border-radius:4px;
+  }
+  .estado-verde  { color:var(--verde);    background:rgba(34,197,94,.12); }
+  .estado-amarillo{ color:var(--amarillo); background:rgba(245,158,11,.12); }
+  .estado-rojo   { color:var(--rojo);     background:rgba(239,68,68,.12); }
+  .estado-dim    { color:var(--dim);      background:rgba(255,255,255,.05); }
+  .dom-metric { font-size:1.3rem; font-weight:900; margin-top:8px; }
+  .dom-narrativa { font-size:10px; color:var(--sub); margin-top:6px; line-height:1.5; }
+  .dom-arrow {
+    position:absolute; bottom:10px; right:14px;
+    font-size:12px; color:var(--dim);
+  }
+
+  /* ── DASHBOARD (overlay) ── */
+  .dashboard-overlay {
+    display:none; position:fixed; inset:0; background:var(--bg);
+    z-index:100; overflow-y:auto;
+  }
+  .dashboard-overlay.active { display:block; }
+
+  .dash-header {
+    background:linear-gradient(135deg,rgba(0,25,55,.98),rgba(0,12,30,.99));
+    border-bottom:1px solid rgba(0,212,255,.12);
+    padding:16px 32px; display:flex; align-items:center; gap:20px;
+    position:sticky; top:0; z-index:10;
+  }
+  .back-btn {
+    background:rgba(255,255,255,.06); border:1px solid var(--border);
+    border-radius:8px; padding:6px 14px; font-size:12px; font-weight:700;
+    color:var(--texto); cursor:pointer; transition:.2s;
+  }
+  .back-btn:hover { background:rgba(255,255,255,.1); }
+  .dash-title-area .dom-tag { font-size:9px; color:rgba(0,212,255,.5); letter-spacing:.1em; text-transform:uppercase; }
+  .dash-title-area h2 { font-size:1.3rem; font-weight:900; }
+
+  .dash-body { padding:28px 32px; max-width:1200px; margin:0 auto; }
+  .dash-row { display:grid; gap:16px; margin-bottom:16px; }
+  .dash-row-2 { grid-template-columns:1fr 1fr; }
+  .dash-row-3 { grid-template-columns:1fr 1fr 1fr; }
+  .dash-row-left { grid-template-columns:1.4fr 1fr; }
+  .dash-row-right { grid-template-columns:1fr 1.4fr; }
+  @media(max-width:800px){ .dash-row-2,.dash-row-3,.dash-row-left,.dash-row-right{grid-template-columns:1fr;} }
+
+  .dash-card {
+    background:var(--card); border:1px solid var(--border);
+    border-radius:16px; padding:22px 24px;
+  }
+  .dash-card-title { font-size:10px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--dim); margin-bottom:14px; }
+  .dash-card-label { font-size:11px; color:var(--sub); margin-bottom:6px; }
+
+  /* Stat grande */
+  .big-stat { font-size:2.8rem; font-weight:900; letter-spacing:-.04em; line-height:1; }
+  .big-sub { font-size:11px; color:var(--sub); margin-top:4px; }
+  .big-context { font-size:12px; color:var(--dim); margin-top:8px; line-height:1.6; }
+
+  /* Barra de progreso */
+  .prog-row { margin-bottom:10px; }
+  .prog-label { display:flex; justify-content:space-between; font-size:11px; margin-bottom:4px; }
+  .prog-label span:first-child { color:var(--sub); }
+  .prog-label span:last-child { font-weight:700; }
+  .prog-track { height:6px; background:rgba(255,255,255,.06); border-radius:3px; overflow:hidden; }
+  .prog-fill  { height:100%; border-radius:3px; transition:width .6s ease; }
+  .fill-verde   { background:var(--verde); }
+  .fill-amarillo{ background:var(--amarillo); }
+  .fill-rojo    { background:var(--rojo); }
+  .fill-cyan    { background:var(--cyan); }
+
+  /* Alerta row */
+  .alert-row {
+    display:flex; align-items:flex-start; gap:12px; padding:12px 14px;
+    background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.06);
+    border-radius:10px; margin-bottom:8px;
+  }
+  .alert-row.critica { border-left:3px solid var(--rojo); }
+  .alert-row.alerta  { border-left:3px solid var(--amarillo); }
+  .alert-row.info    { border-left:3px solid #64748B; }
+  .alert-code { font-size:11px; font-weight:800; min-width:56px; }
+  .alert-body h4 { font-size:12px; font-weight:700; margin-bottom:2px; }
+  .alert-body p  { font-size:10px; color:var(--sub); }
+  .alert-badge { margin-left:auto; font-size:9px; font-weight:700; padding:2px 7px; border-radius:4px; white-space:nowrap; }
+
+  /* Parroquia row */
+  .parr-row { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+  .parr-name { font-size:11px; min-width:130px; color:var(--sub); }
+  .parr-track { flex:1; height:8px; background:rgba(255,255,255,.06); border-radius:4px; overflow:hidden; }
+  .parr-fill  { height:100%; border-radius:4px; }
+  .parr-val  { font-size:11px; font-weight:700; min-width:36px; text-align:right; }
+
+  /* Checklist */
+  .check-item { display:flex; align-items:center; gap:8px; padding:7px 0; border-bottom:1px solid rgba(255,255,255,.04); font-size:11px; }
+  .check-item:last-child { border-bottom:none; }
+  .check-ico { font-size:13px; }
+  .check-art { color:var(--dim); min-width:90px; }
+  .check-name { flex:1; }
+  .check-status { font-size:9px; font-weight:700; padding:2px 7px; border-radius:4px; }
+
+  /* Countdown */
+  .countdown-box { text-align:center; }
+  .countdown-num { font-size:3rem; font-weight:900; color:var(--amarillo); letter-spacing:-.04em; }
+  .countdown-label { font-size:11px; color:var(--sub); margin-top:4px; }
+
+  /* Ítems CPCCS */
+  .items-row { display:flex; gap:6px; flex-wrap:wrap; margin-top:8px; }
+  .item-chip {
+    width:28px; height:28px; border-radius:6px; display:flex;
+    align-items:center; justify-content:center; font-size:9px; font-weight:700;
+  }
+  .item-done   { background:rgba(34,197,94,.2); color:var(--verde); border:1px solid rgba(34,197,94,.3); }
+  .item-prog   { background:rgba(245,158,11,.2); color:var(--amarillo); border:1px solid rgba(245,158,11,.3); }
+  .item-pend   { background:rgba(255,255,255,.05); color:var(--dim); border:1px solid rgba(255,255,255,.1); }
+
+  /* Empresa card */
+  .empresa-card { padding:12px; background:rgba(255,255,255,.03); border:1px solid var(--border); border-radius:10px; margin-bottom:8px; }
+  .empresa-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; }
+  .empresa-name { font-size:12px; font-weight:700; }
+  .empresa-pct  { font-size:16px; font-weight:900; }
+
+  /* Nota pie */
+  .proto-note { font-size:9px; color:rgba(255,255,255,.15); text-align:center; padding:20px; border-top:1px solid rgba(255,255,255,.04); margin-top:20px; }
+
+  /* Chart canvas */
+  canvas { max-height:220px; }
+</style>
+</head>
+<body>
+
+<div class="proto-banner">⚠ PROTOTIPO DE DISEÑO · Datos de muestra · No para uso institucional · QUIRA Intelligence · Dylus Lab © 2026</div>
+
+<!-- ═══════════════════════════ PANTALLA PRINCIPAL ═══════════════════════════ -->
+<div id="screen-main">
+
+  <!-- Header cantonal -->
+  <div class="header">
+    <div class="header-left">
+      <div class="gad-tag">GAD Municipal · Provincia de Manabí</div>
+      <h1>MONTECRISTI</h1>
+      <div class="meta">
+        <span>👤 Ing. Jonathan Toro Largacha</span>
+        <span>·</span>
+        <span>📅 Período 2023–2027</span>
+        <span>·</span>
+        <span>📊 Corte Q1-2026</span>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="corte-label">Presupuesto Anual</div>
+      <div class="corte-val">$54,2M</div>
+      <div class="presupuesto">Codificado · SIGEF · Año fiscal 2025</div>
+    </div>
+  </div>
+
+  <!-- KPIs rápidos -->
+  <div class="kpi-row">
+    <div class="kpi-chip">
+      <div class="kl">Población estimada</div>
+      <div class="kv" style="color:var(--cyan)">~32.000</div>
+      <div class="ks">Habitantes · Censo 2022</div>
+    </div>
+    <div class="kpi-chip">
+      <div class="kl">Parroquias</div>
+      <div class="kv" style="color:var(--cyan)">7</div>
+      <div class="ks">1 urbana · 6 rurales</div>
+    </div>
+    <div class="kpi-chip">
+      <div class="kl">PDOT vigente</div>
+      <div class="kv" style="color:var(--verde)">2023–2027</div>
+      <div class="ks">PUGS vigente · SNP aprobado</div>
+    </div>
+    <div class="kpi-chip">
+      <div class="kl">Desempeño institucional</div>
+      <div class="kv" style="color:var(--amarillo)">69,9%</div>
+      <div class="ks">Anual 2025 · En transición</div>
+    </div>
+    <div class="kpi-chip">
+      <div class="kl">Señales activas</div>
+      <div class="kv" style="color:var(--rojo)">3</div>
+      <div class="ks">de 7 tipos monitoreados</div>
+    </div>
+  </div>
+
+  <!-- Título sección -->
+  <div class="cmd-main">
+    <div class="cmd-title">12 dominios de gestión · haz clic para explorar</div>
+
+    <!-- Grid de dominios -->
+    <div class="domains-grid">
+
+      <!-- D01 Plan de Gobierno -->
+      <div class="dom-card verde" onclick="openDash('d01')">
+        <div class="dom-num">01 · Planificación</div>
+        <div class="dom-name">Plan de Gobierno</div>
+        <div class="dom-estado estado-verde">EN RUTA</div>
+        <div class="dom-metric" style="color:var(--verde)">56/56</div>
+        <div class="dom-narrativa">PDOT 2023–2027 · 4 ejes activos · 7 parroquias con seguimiento</div>
+        <div class="dom-arrow">→</div>
+      </div>
+
+      <!-- D02 Cooperación -->
+      <div class="dom-card amarillo" onclick="openDash('d02')">
+        <div class="dom-num">02 · Financiamiento</div>
+        <div class="dom-name">Cooperación Internacional</div>
+        <div class="dom-estado estado-amarillo">CONDICIONADO</div>
+        <div class="dom-metric" style="color:var(--amarillo)">$3,66M</div>
+        <div class="dom-narrativa">3 fondos activos · desembolso condicionado a hitos Q2-2026</div>
+        <div class="dom-arrow">→</div>
+      </div>
+
+      <!-- D03 Ejecución Anual -->
+      <div class="dom-card verde" onclick="openDash('d03')">
+        <div class="dom-num">03 · Plan Anual</div>
+        <div class="dom-name">Ejecución Anual</div>
+        <div class="dom-estado estado-verde">EN RUTA</div>
+        <div class="dom-metric" style="color:var(--verde)">94,6%</div>
+        <div class="dom-narrativa">POA · PAC · 53 de 56 metas en cronograma Q1</div>
+        <div class="dom-arrow">→</div>
+      </div>
+
+      <!-- D04 Señales -->
+      <div class="dom-card rojo" onclick="openDash('d04')">
+        <div class="dom-num">04 · Monitoreo</div>
+        <div class="dom-name">Señales de Gestión</div>
+        <div class="dom-estado estado-rojo">3 ACTIVAS</div>
+        <div class="dom-metric" style="color:var(--rojo)">⚠ 3</div>
+        <div class="dom-narrativa">Señales activas que requieren atención · 7 tipos monitoreados</div>
+        <div class="dom-arrow">→</div>
+      </div>
+
+      <!-- D05 Empresas -->
+      <div class="dom-card amarillo" onclick="openDash('d05')">
+        <div class="dom-num">05 · Holding</div>
+        <div class="dom-name">Empresas Municipales</div>
+        <div class="dom-estado estado-amarillo">BAJO OBJETIVO</div>
+        <div class="dom-metric" style="color:var(--amarillo)">68%</div>
+        <div class="dom-narrativa">EP Aseo lidera · 3 entidades bajo objetivo del 75%</div>
+        <div class="dom-arrow">→</div>
+      </div>
+
+      <!-- D06 Estado GAD -->
+      <div class="dom-card amarillo" onclick="openDash('d06')">
+        <div class="dom-num">06 · Institucional</div>
+        <div class="dom-name">Estado del GAD</div>
+        <div class="dom-estado estado-amarillo">EN TRANSICIÓN</div>
+        <div class="dom-metric" style="color:var(--amarillo)">69,9%</div>
+        <div class="dom-narrativa">Desempeño institucional · 41 métricas en seguimiento activo</div>
+        <div class="dom-arrow">→</div>
+      </div>
+
+      <!-- D07 Transparencia -->
+      <div class="dom-card verde" onclick="openDash('d07')">
+        <div class="dom-num">07 · Información</div>
+        <div class="dom-name">Transparencia y LOTAIP</div>
+        <div class="dom-estado estado-verde">OBSERVADO</div>
+        <div class="dom-metric" style="color:var(--verde)">21/21</div>
+        <div class="dom-narrativa">Artículos LOTAIP publicados y verificados · sin sanciones CPCCS</div>
+        <div class="dom-arrow">→</div>
+      </div>
+
+      <!-- D08+D09 Gobernanza Participativa (doble ancho) -->
+      <div class="dom-card amarillo span2" onclick="openDash('d0809')">
+        <div class="dom-num">08 · 09 · Democracia</div>
+        <div class="dom-name">Gobernanza Participativa</div>
+        <div class="dom-estado estado-amarillo">EN PROCESO</div>
+        <div style="display:flex;gap:24px;margin-top:8px;">
+          <div>
+            <div style="font-size:9px;color:var(--dim)">PARTICIPACIÓN</div>
+            <div class="dom-metric" style="color:var(--amarillo);font-size:1.6rem">27,98%</div>
+            <div style="font-size:10px;color:var(--sub)">Meta: 40% · 6 mecanismos</div>
+          </div>
+          <div style="width:1px;background:var(--border)"></div>
+          <div>
+            <div style="font-size:9px;color:var(--dim)">RENDICIÓN CPCCS</div>
+            <div class="dom-metric" style="color:var(--amarillo);font-size:1.6rem">87 días</div>
+            <div style="font-size:10px;color:var(--sub)">Agosto 2026 · 20 ítems</div>
+          </div>
+        </div>
+        <div class="dom-arrow">→</div>
+      </div>
+
+      <!-- D10 Territorio -->
+      <div class="dom-card rojo" onclick="openDash('d10')">
+        <div class="dom-num">10 · Territorial</div>
+        <div class="dom-name">Servicios por Parroquia</div>
+        <div class="dom-estado estado-rojo">BRECHA CRÍTICA</div>
+        <div class="dom-metric" style="color:var(--rojo)">34,9%</div>
+        <div class="dom-narrativa">Cobertura agua potable · 6 parroquias rurales con brecha crítica</div>
+        <div class="dom-arrow">→</div>
+      </div>
+
+      <!-- D11 Economía (disabled) -->
+      <div class="dom-card dim">
+        <div class="dom-num">11 · Economía</div>
+        <div class="dom-name">Economía Local</div>
+        <div class="dom-estado estado-dim">EN CONSTRUCCIÓN</div>
+        <div class="dom-metric" style="color:var(--dim)">—</div>
+        <div class="dom-narrativa">Disponible en julio 2026 · conectores DPE en estructuración</div>
+      </div>
+
+      <!-- D12 Inversión Social -->
+      <div class="dom-card rojo" onclick="openDash('d12')">
+        <div class="dom-num">12 · Social</div>
+        <div class="dom-name">Inversión Social y Patronato</div>
+        <div class="dom-estado estado-rojo">CRÍTICO</div>
+        <div class="dom-metric" style="color:var(--rojo)">$2,1M</div>
+        <div class="dom-narrativa">Brecha constitucional Art. 35 CRE · Patronato activo</div>
+        <div class="dom-arrow">→</div>
+      </div>
+
+    </div><!-- /grid -->
+  </div><!-- /cmd-main -->
+  <div class="proto-note">QUIRA Intelligence · Dylus Lab © 2026 · Montecristi Municipio 001 · Prototipo de diseño · Datos de muestra</div>
+</div><!-- /screen-main -->
+
+
+<!-- ═══════════════════════════ DASHBOARDS ═══════════════════════════ -->
+
+<!-- D01: Plan de Gobierno -->
+<div id="dash-d01" class="dashboard-overlay">
+  <div class="dash-header">
+    <button class="back-btn" onclick="closeDash()">← Volver</button>
+    <div class="dash-title-area">
+      <div class="dom-tag">01 · Planificación · PDOT 2023–2027</div>
+      <h2>Plan de Gobierno</h2>
+    </div>
+  </div>
+  <div class="dash-body">
+    <div class="dash-row dash-row-2">
+      <div class="dash-card">
+        <div class="dash-card-title">Avance por eje estratégico</div>
+        <div class="prog-row"><div class="prog-label"><span>Eje 1 · Infraestructura y servicios</span><span style="color:var(--amarillo)">67%</span></div><div class="prog-track"><div class="prog-fill fill-amarillo" style="width:67%"></div></div></div>
+        <div class="prog-row"><div class="prog-label"><span>Eje 2 · Desarrollo social y humano</span><span style="color:var(--amarillo)">54%</span></div><div class="prog-track"><div class="prog-fill fill-amarillo" style="width:54%"></div></div></div>
+        <div class="prog-row"><div class="prog-label"><span>Eje 3 · Ambiental y territorial</span><span style="color:var(--rojo)">41%</span></div><div class="prog-track"><div class="prog-fill fill-rojo" style="width:41%"></div></div></div>
+        <div class="prog-row"><div class="prog-label"><span>Eje 4 · Fortalecimiento institucional</span><span style="color:var(--verde)">78%</span></div><div class="prog-track"><div class="prog-fill fill-verde" style="width:78%"></div></div></div>
+        <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border);font-size:10px;color:var(--dim)">Fuente: PDOT 2023-2027 · SNP · Seguimiento Q1-2026 · Datos de muestra</div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-card-title">Estado de metas</div>
+        <canvas id="chart-d01"></canvas>
+        <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;">
+          <span style="font-size:10px;color:var(--verde)">● En ruta: 53</span>
+          <span style="font-size:10px;color:var(--amarillo)">● Con rezago: 2</span>
+          <span style="font-size:10px;color:var(--rojo)">● En riesgo: 1</span>
+        </div>
+      </div>
+    </div>
+    <div class="dash-row">
+      <div class="dash-card">
+        <div class="dash-card-title">Metas con rezago — requieren atención</div>
+        <div class="alert-row alerta">
+          <div class="alert-code" style="color:var(--amarillo)">META-12</div>
+          <div class="alert-body"><h4>Agua Potable Rural</h4><p>Avance 28% · meta Q1: 45% · rezago de 17 puntos · Vialidad Rural en seguimiento</p></div>
+          <span class="alert-badge" style="background:rgba(245,158,11,.15);color:var(--amarillo)">REZAGO</span>
+        </div>
+        <div class="alert-row alerta">
+          <div class="alert-code" style="color:var(--amarillo)">META-31</div>
+          <div class="alert-body"><h4>Vialidad Rural – Parroquia Colorado</h4><p>Avance 35% · meta Q1: 50% · proceso contractual en trámite</p></div>
+          <span class="alert-badge" style="background:rgba(245,158,11,.15);color:var(--amarillo)">REZAGO</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- D02: Cooperación Internacional -->
+<div id="dash-d02" class="dashboard-overlay">
+  <div class="dash-header">
+    <button class="back-btn" onclick="closeDash()">← Volver</button>
+    <div class="dash-title-area">
+      <div class="dom-tag">02 · Financiamiento · Cooperación Internacional</div>
+      <h2>Cooperación Internacional</h2>
+    </div>
+  </div>
+  <div class="dash-body">
+    <div class="dash-row dash-row-3">
+      <div class="dash-card" style="border-top:3px solid var(--amarillo)">
+        <div class="dash-card-title">BID · Agua y Saneamiento</div>
+        <div class="big-stat" style="color:var(--amarillo)">$1,2M</div>
+        <div class="big-sub">Condicionado · Q2-2026</div>
+        <div style="margin-top:12px;">
+          <div class="prog-row"><div class="prog-label"><span>Condiciones cumplidas</span><span style="color:var(--amarillo)">60%</span></div><div class="prog-track"><div class="prog-fill fill-amarillo" style="width:60%"></div></div></div>
+        </div>
+        <div class="big-context">Requiere: PDOT actualizado · Estudio hidráulico aprobado SNP</div>
+      </div>
+      <div class="dash-card" style="border-top:3px solid var(--verde)">
+        <div class="dash-card-title">CAF · Infraestructura Vial</div>
+        <div class="big-stat" style="color:var(--verde)">$0,8M</div>
+        <div class="big-sub">Activo · Desembolso Q1</div>
+        <div style="margin-top:12px;">
+          <div class="prog-row"><div class="prog-label"><span>Ejecución</span><span style="color:var(--verde)">45%</span></div><div class="prog-track"><div class="prog-fill fill-verde" style="width:45%"></div></div></div>
+        </div>
+        <div class="big-context">En ejecución · Vialidad rural Gral. Alfaro · Leónidas Proaño</div>
+      </div>
+      <div class="dash-card" style="border-top:3px solid var(--dim)">
+        <div class="dash-card-title">GIZ · Gestión Ambiental</div>
+        <div class="big-stat" style="color:var(--sub)">$1,66M</div>
+        <div class="big-sub">En evaluación · respuesta agosto</div>
+        <div style="margin-top:12px;">
+          <div class="prog-row"><div class="prog-label"><span>Propuesta enviada</span><span>100%</span></div><div class="prog-track"><div class="prog-fill fill-cyan" style="width:100%"></div></div></div>
+        </div>
+        <div class="big-context">Propuesta presentada · En revisión técnica GIZ Quito</div>
+      </div>
+    </div>
+    <div class="dash-row">
+      <div class="dash-card">
+        <div class="dash-card-title">Matching de elegibilidad — próximas convocatorias (datos de muestra)</div>
+        <div style="font-size:10px;color:var(--sub);margin-bottom:12px;">El motor de matching cruza el perfil del GAD con convocatorias abiertas por tipo de elegibilidad</div>
+        <div class="alert-row info"><div class="alert-code" style="color:var(--cyan)">PNUD</div><div class="alert-body"><h4>Ciudades Sostenibles · Cierre 30 Jun</h4><p>Elegible: GAD + ONG + Academia · Sector: Movilidad y espacio público · Monto: hasta $200k</p></div><span class="alert-badge" style="background:rgba(0,212,255,.1);color:var(--cyan)">MATCH 87%</span></div>
+        <div class="alert-row info"><div class="alert-code" style="color:var(--cyan)">COSUDE</div><div class="alert-body"><h4>Agua y Gobernanza · Cierre 15 Jul</h4><p>Elegible: GAD · Sector: Agua potable rural · Ecuador prioritario</p></div><span class="alert-badge" style="background:rgba(0,212,255,.1);color:var(--cyan)">MATCH 94%</span></div>
+        <div style="font-size:9px;color:var(--dim);margin-top:10px;">* Datos de muestra · Skill de monitoreo vivo disponible en julio 2026</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- D04: Señales de Gestión -->
+<div id="dash-d04" class="dashboard-overlay">
+  <div class="dash-header">
+    <button class="back-btn" onclick="closeDash()">← Volver</button>
+    <div class="dash-title-area">
+      <div class="dom-tag">04 · Monitoreo · Sistema de Alertas</div>
+      <h2>Señales de Gestión</h2>
+    </div>
+  </div>
+  <div class="dash-body">
+    <div class="dash-row dash-row-2">
+      <div class="dash-card">
+        <div class="dash-card-title">Señales activas — Q1-2026</div>
+        <div class="alert-row critica">
+          <div class="alert-code" style="color:var(--rojo)">Señal III</div>
+          <div class="alert-body"><h4>Parálisis Presupuestaria</h4><p>Ejecución presupuestaria por debajo del umbral mínimo institucional · COPFP Art. 113</p></div>
+          <span class="alert-badge" style="background:rgba(239,68,68,.15);color:var(--rojo)">CRÍTICA</span>
+        </div>
+        <div class="alert-row alerta">
+          <div class="alert-code" style="color:var(--amarillo)">Señal V</div>
+          <div class="alert-body"><h4>Brecha de Compromiso CPCCS</h4><p>Ítems de rendición de cuentas en preparación con riesgo de incumplimiento · COOTAD Art. 302</p></div>
+          <span class="alert-badge" style="background:rgba(245,158,11,.15);color:var(--amarillo)">ALERTA</span>
+        </div>
+        <div class="alert-row info">
+          <div class="alert-code" style="color:#64748B">Señal VIII</div>
+          <div class="alert-body"><h4>Equidad Territorial</h4><p>Brecha de inversión entre parroquia urbana y rurales supera umbral de atención · COOTAD Art. 238/247</p></div>
+          <span class="alert-badge" style="background:rgba(100,116,139,.15);color:#64748B">INFO</span>
+        </div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-card-title">Estado del sistema de monitoreo</div>
+        <canvas id="chart-d04"></canvas>
+        <div style="margin-top:12px;font-size:10px;color:var(--dim)">7 tipos de señales monitoreadas continuamente · actualización mensual</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- D05: Empresas Municipales -->
+<div id="dash-d05" class="dashboard-overlay">
+  <div class="dash-header">
+    <button class="back-btn" onclick="closeDash()">← Volver</button>
+    <div class="dash-title-area">
+      <div class="dom-tag">05 · Holding · Grupo Municipal</div>
+      <h2>Empresas Municipales</h2>
+    </div>
+  </div>
+  <div class="dash-body">
+    <div class="dash-row dash-row-left">
+      <div>
+        <div class="empresa-card">
+          <div class="empresa-header"><span class="empresa-name">EP Aseo Municipal</span><span class="empresa-pct" style="color:var(--verde)">82%</span></div>
+          <div class="prog-track"><div class="prog-fill fill-verde" style="width:82%"></div></div>
+          <div style="font-size:10px;color:var(--sub);margin-top:6px">Ejecución presupuestaria · Recolección + Barrido</div>
+        </div>
+        <div class="empresa-card">
+          <div class="empresa-header"><span class="empresa-name">Patronato Municipal</span><span class="empresa-pct" style="color:var(--verde)">71%</span></div>
+          <div class="prog-track"><div class="prog-fill fill-verde" style="width:71%"></div></div>
+          <div style="font-size:10px;color:var(--sub);margin-top:6px">Inversión social · Programas activos</div>
+        </div>
+        <div class="empresa-card">
+          <div class="empresa-header"><span class="empresa-name">EP Agua Potable</span><span class="empresa-pct" style="color:var(--rojo)">45%</span></div>
+          <div class="prog-track"><div class="prog-fill fill-rojo" style="width:45%"></div></div>
+          <div style="font-size:10px;color:var(--rojo);margin-top:6px">⚠ Bajo objetivo · Infraestructura pendiente</div>
+        </div>
+        <div class="empresa-card">
+          <div class="empresa-header"><span class="empresa-name">GAD Municipal (directo)</span><span class="empresa-pct" style="color:var(--amarillo)">66%</span></div>
+          <div class="prog-track"><div class="prog-fill fill-amarillo" style="width:66%"></div></div>
+          <div style="font-size:10px;color:var(--sub);margin-top:6px">Administración central · Ejecución Q1</div>
+        </div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-card-title">Comparativa grupo municipal</div>
+        <canvas id="chart-d05"></canvas>
+        <div style="margin-top:10px;font-size:10px;color:var(--dim)">Objetivo de referencia: 75% · Fuente: SERCOP + eSIGEF · Datos de muestra</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- D06: Estado del GAD -->
+<div id="dash-d06" class="dashboard-overlay">
+  <div class="dash-header">
+    <button class="back-btn" onclick="closeDash()">← Volver</button>
+    <div class="dash-title-area">
+      <div class="dom-tag">06 · Institucional · Desempeño General</div>
+      <h2>Estado del GAD</h2>
+    </div>
+  </div>
+  <div class="dash-body">
+    <div class="dash-row dash-row-left">
+      <div class="dash-card">
+        <div class="dash-card-title">Perfil de desempeño · 5 dimensiones</div>
+        <canvas id="chart-d06"></canvas>
+        <div style="margin-top:12px;font-size:9px;color:var(--dim)">Dimensiones de gobernanza territorial · Datos Gold Master Q1-2026</div>
+      </div>
+      <div>
+        <div class="dash-card" style="margin-bottom:12px;">
+          <div class="dash-card-title">Resultado institucional anual 2025</div>
+          <div class="big-stat" style="color:var(--amarillo)">69,9%</div>
+          <div class="big-sub">Desempeño institucional</div>
+          <div style="margin-top:12px">
+            <div class="prog-row"><div class="prog-label"><span>Gobernanza metodológica</span><span style="color:var(--verde)">83,5%</span></div><div class="prog-track"><div class="prog-fill fill-verde" style="width:83.5%"></div></div></div>
+            <div class="prog-row"><div class="prog-label"><span>Cumplimiento de metas</span><span style="color:var(--amarillo)">69,9%</span></div><div class="prog-track"><div class="prog-fill fill-amarillo" style="width:69.9%"></div></div></div>
+            <div class="prog-row"><div class="prog-label"><span>Eficiencia de inversión</span><span style="color:var(--amarillo)">59,9%</span></div><div class="prog-track"><div class="prog-fill fill-amarillo" style="width:59.9%"></div></div></div>
+            <div class="prog-row"><div class="prog-label"><span>Equidad territorial rural</span><span style="color:var(--rojo)">44,8%</span></div><div class="prog-track"><div class="prog-fill fill-rojo" style="width:44.8%"></div></div></div>
+            <div class="prog-row"><div class="prog-label"><span>Reporte al SNP</span><span style="color:var(--verde)">100%</span></div><div class="prog-track"><div class="prog-fill fill-verde" style="width:100%"></div></div></div>
+          </div>
+        </div>
+        <div class="dash-card" style="background:rgba(239,68,68,.06);border-color:rgba(239,68,68,.2)">
+          <div class="dash-card-title" style="color:var(--rojo)">Dimensión prioritaria</div>
+          <div style="font-size:13px;font-weight:700;color:var(--rojo)">Equidad Territorial Rural · 44,8%</div>
+          <div style="font-size:11px;color:var(--sub);margin-top:6px;line-height:1.6">6 parroquias rurales con brecha de inversión respecto a la parroquia urbana. Principal palanca de mejora institucional.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- D07: Transparencia y LOTAIP -->
+<div id="dash-d07" class="dashboard-overlay">
+  <div class="dash-header">
+    <button class="back-btn" onclick="closeDash()">← Volver</button>
+    <div class="dash-title-area">
+      <div class="dom-tag">07 · Información · LOTAIP</div>
+      <h2>Transparencia y LOTAIP</h2>
+    </div>
+  </div>
+  <div class="dash-body">
+    <div class="dash-row dash-row-2">
+      <div class="dash-card">
+        <div class="dash-card-title">Artículos LOTAIP · Estado de cumplimiento</div>
+        <div style="max-height:360px;overflow-y:auto;">
+          <!-- muestra primeros 8 artículos representativos -->
+          <div class="check-item"><span class="check-ico">✅</span><span class="check-art">Art. 7 lit. a)</span><span class="check-name">Estructura orgánica y funcional</span><span class="check-status" style="background:rgba(34,197,94,.1);color:var(--verde)">PUBLICADO</span></div>
+          <div class="check-item"><span class="check-ico">✅</span><span class="check-art">Art. 7 lit. b)</span><span class="check-name">Base legal que rige la entidad</span><span class="check-status" style="background:rgba(34,197,94,.1);color:var(--verde)">PUBLICADO</span></div>
+          <div class="check-item"><span class="check-ico">✅</span><span class="check-art">Art. 7 lit. c)</span><span class="check-name">Regulaciones y procedimientos internos</span><span class="check-status" style="background:rgba(34,197,94,.1);color:var(--verde)">PUBLICADO</span></div>
+          <div class="check-item"><span class="check-ico">✅</span><span class="check-art">Art. 7 lit. d)</span><span class="check-name">Metas y objetivos de las unidades</span><span class="check-status" style="background:rgba(34,197,94,.1);color:var(--verde)">PUBLICADO</span></div>
+          <div class="check-item"><span class="check-ico">✅</span><span class="check-art">Art. 7 lit. e)</span><span class="check-name">Directorio de funcionarios</span><span class="check-status" style="background:rgba(34,197,94,.1);color:var(--verde)">PUBLICADO</span></div>
+          <div class="check-item"><span class="check-ico">⚠️</span><span class="check-art">Art. 7 lit. f)</span><span class="check-name">Remuneración mensual por puesto</span><span class="check-status" style="background:rgba(245,158,11,.1);color:var(--amarillo)">OBSERVADO</span></div>
+          <div class="check-item"><span class="check-ico">✅</span><span class="check-art">Art. 7 lit. g)</span><span class="check-name">Servicios que ofrece la entidad</span><span class="check-status" style="background:rgba(34,197,94,.1);color:var(--verde)">PUBLICADO</span></div>
+          <div class="check-item"><span class="check-ico">✅</span><span class="check-art">Art. 7 lit. h)</span><span class="check-name">Texto de los contratos colectivos</span><span class="check-status" style="background:rgba(34,197,94,.1);color:var(--verde)">PUBLICADO</span></div>
+          <div style="text-align:center;padding:10px;font-size:10px;color:var(--dim)">+ 13 artículos más verificados · 20 ✅ · 1 ⚠️</div>
+        </div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-card-title">Resumen de cumplimiento</div>
+        <canvas id="chart-d07"></canvas>
+        <div style="margin-top:16px;padding:12px;background:rgba(34,197,94,.06);border:1px solid rgba(34,197,94,.2);border-radius:8px;">
+          <div style="font-size:12px;font-weight:700;color:var(--verde)">Sin sanciones CPCCS registradas</div>
+          <div style="font-size:10px;color:var(--sub);margin-top:4px">Último período de control · Sin observaciones formales pendientes</div>
+        </div>
+        <div style="margin-top:10px;font-size:9px;color:var(--dim)">Fuente: LOTAIP · CPCCS · Verificación documental QUIRA · Datos de muestra</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- D08+D09: Gobernanza Participativa -->
+<div id="dash-d0809" class="dashboard-overlay">
+  <div class="dash-header">
+    <button class="back-btn" onclick="closeDash()">← Volver</button>
+    <div class="dash-title-area">
+      <div class="dom-tag">08 · 09 · Democracia Local</div>
+      <h2>Gobernanza Participativa</h2>
+    </div>
+  </div>
+  <div class="dash-body">
+    <div class="dash-row dash-row-2">
+      <!-- Participación -->
+      <div class="dash-card">
+        <div class="dash-card-title" style="color:var(--cyan)">Participación Ciudadana · LOPC</div>
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;">
+          <div><div class="big-stat" style="color:var(--amarillo)">27,98%</div><div class="big-sub">Índice de participación</div></div>
+          <div style="flex:1;text-align:right"><div style="font-size:11px;color:var(--sub)">Meta</div><div style="font-size:1.4rem;font-weight:800;color:var(--dim)">40%</div></div>
+        </div>
+        <div class="prog-row"><div class="prog-label"><span>Silla vacía digital</span><span style="color:var(--verde)">Activa</span></div><div class="prog-track"><div class="prog-fill fill-verde" style="width:100%"></div></div></div>
+        <div class="prog-row"><div class="prog-label"><span>Presupuesto participativo</span><span style="color:var(--verde)">Habilitado</span></div><div class="prog-track"><div class="prog-fill fill-verde" style="width:85%"></div></div></div>
+        <div class="prog-row"><div class="prog-label"><span>Audiencias públicas</span><span style="color:var(--amarillo)">2 de 4</span></div><div class="prog-track"><div class="prog-fill fill-amarillo" style="width:50%"></div></div></div>
+        <div class="prog-row"><div class="prog-label"><span>Veedurías ciudadanas</span><span style="color:var(--amarillo)">1 activa</span></div><div class="prog-track"><div class="prog-fill fill-amarillo" style="width:40%"></div></div></div>
+        <div class="prog-row"><div class="prog-label"><span>Asambleas parroquiales</span><span style="color:var(--rojo)">3 de 7</span></div><div class="prog-track"><div class="prog-fill fill-rojo" style="width:43%"></div></div></div>
+        <div class="prog-row"><div class="prog-label"><span>Consejo cantonal planeación</span><span style="color:var(--verde)">Activo</span></div><div class="prog-track"><div class="prog-fill fill-verde" style="width:100%"></div></div></div>
+        <div style="margin-top:10px;font-size:9px;color:var(--dim)">Fuente: LOPC · Datos de muestra</div>
+      </div>
+      <!-- Rendición de Cuentas -->
+      <div class="dash-card">
+        <div class="dash-card-title" style="color:var(--amarillo)">Rendición de Cuentas CPCCS</div>
+        <div class="countdown-box" style="margin-bottom:20px;">
+          <div class="countdown-num">87</div>
+          <div class="countdown-label">días hasta presentación ante CPCCS · Agosto 2026</div>
+        </div>
+        <div class="dash-card-label">20 ítems requeridos</div>
+        <div class="items-row">
+          <!-- 7 completos -->
+          <div class="item-chip item-done">1</div><div class="item-chip item-done">2</div><div class="item-chip item-done">3</div><div class="item-chip item-done">4</div><div class="item-chip item-done">5</div><div class="item-chip item-done">6</div><div class="item-chip item-done">7</div>
+          <!-- 8 en progreso -->
+          <div class="item-chip item-prog">8</div><div class="item-chip item-prog">9</div><div class="item-chip item-prog">10</div><div class="item-chip item-prog">11</div><div class="item-chip item-prog">12</div><div class="item-chip item-prog">13</div><div class="item-chip item-prog">14</div><div class="item-chip item-prog">15</div>
+          <!-- 5 pendientes -->
+          <div class="item-chip item-pend">16</div><div class="item-chip item-pend">17</div><div class="item-chip item-pend">18</div><div class="item-chip item-pend">19</div><div class="item-chip item-pend">20</div>
+        </div>
+        <div style="margin-top:12px;display:flex;gap:12px;font-size:10px;">
+          <span style="color:var(--verde)">● 7 completos</span>
+          <span style="color:var(--amarillo)">● 8 en progreso</span>
+          <span style="color:var(--dim)">● 5 pendientes</span>
+        </div>
+        <div style="margin-top:14px;font-size:9px;color:var(--dim)">Fuente: CPCCS · COOTAD Art. 302 · Datos de muestra</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- D10: Servicios por Parroquia -->
+<div id="dash-d10" class="dashboard-overlay">
+  <div class="dash-header">
+    <button class="back-btn" onclick="closeDash()">← Volver</button>
+    <div class="dash-title-area">
+      <div class="dom-tag">10 · Territorial · 7 Parroquias</div>
+      <h2>Servicios por Parroquia</h2>
+    </div>
+  </div>
+  <div class="dash-body">
+    <div class="dash-row dash-row-2">
+      <div class="dash-card">
+        <div class="dash-card-title">Cobertura de agua potable — red pública</div>
+        <div id="parroquias-chart" style="margin-top:8px;">
+          <div class="parr-row"><div class="parr-name">Montecristi (urbana)</div><div class="parr-track"><div class="parr-fill" style="width:65%;background:var(--amarillo);height:100%;border-radius:4px"></div></div><div class="parr-val" style="color:var(--amarillo)">65%</div></div>
+          <div class="parr-row"><div class="parr-name">Gral. Eloy Alfaro</div><div class="parr-track"><div class="parr-fill" style="width:58%;background:var(--amarillo);height:100%;border-radius:4px"></div></div><div class="parr-val" style="color:var(--amarillo)">58%</div></div>
+          <div class="parr-row"><div class="parr-name">Leónidas Proaño</div><div class="parr-track"><div class="parr-fill" style="width:45%;background:var(--rojo);height:100%;border-radius:4px"></div></div><div class="parr-val" style="color:var(--rojo)">45%</div></div>
+          <div class="parr-row"><div class="parr-name">La Pila</div><div class="parr-track"><div class="parr-fill" style="width:32%;background:var(--rojo);height:100%;border-radius:4px"></div></div><div class="parr-val" style="color:var(--rojo)">32%</div></div>
+          <div class="parr-row"><div class="parr-name">Chirijos</div><div class="parr-track"><div class="parr-fill" style="width:28%;background:var(--rojo);height:100%;border-radius:4px"></div></div><div class="parr-val" style="color:var(--rojo)">28%</div></div>
+          <div class="parr-row"><div class="parr-name">Colorado</div><div class="parr-track"><div class="parr-fill" style="width:22%;background:var(--rojo);height:100%;border-radius:4px"></div></div><div class="parr-val" style="color:var(--rojo)">22%</div></div>
+          <div class="parr-row"><div class="parr-name">Isabel Muentes</div><div class="parr-track"><div class="parr-fill" style="width:18%;background:var(--rojo);height:100%;border-radius:4px"></div></div><div class="parr-val" style="color:var(--rojo)">18%</div></div>
+        </div>
+        <div style="margin-top:12px;font-size:10px;color:var(--sub)">Promedio cantonal: <b style="color:var(--rojo)">34,9%</b> · Meta PDOT: 75%</div>
+        <div style="font-size:9px;color:var(--dim);margin-top:4px">Datos de muestra · Fuente: SENAGUA · PDOT</div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-card-title">Brecha urbano-rural por servicio</div>
+        <canvas id="chart-d10"></canvas>
+        <div style="margin-top:12px;padding:10px;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.2);border-radius:8px;">
+          <div style="font-size:11px;font-weight:700;color:var(--rojo)">Señal VIII activa — Equidad Territorial</div>
+          <div style="font-size:10px;color:var(--sub);margin-top:4px">Brecha de inversión entre parroquia urbana y rurales supera umbral · COOTAD Art. 238/247</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- D12: Inversión Social -->
+<div id="dash-d12" class="dashboard-overlay">
+  <div class="dash-header">
+    <button class="back-btn" onclick="closeDash()">← Volver</button>
+    <div class="dash-title-area">
+      <div class="dom-tag">12 · Social · CRE Art. 35</div>
+      <h2>Inversión Social y Patronato</h2>
+    </div>
+  </div>
+  <div class="dash-body">
+    <div class="dash-row dash-row-2">
+      <div class="dash-card">
+        <div class="dash-card-title">Brecha de inversión social — CRE Art. 35</div>
+        <div class="big-stat" style="color:var(--rojo)">$2,1M</div>
+        <div class="big-sub">Brecha estimada · bajo umbral constitucional</div>
+        <div style="margin:16px 0">
+          <div class="prog-row">
+            <div class="prog-label"><span>Inversión ejecutada</span><span style="color:var(--rojo)">12,83%</span></div>
+            <div class="prog-track"><div class="prog-fill fill-rojo" style="width:12.83%"></div></div>
+          </div>
+          <div class="prog-row">
+            <div class="prog-label"><span>Umbral mínimo CRE Art. 35</span><span style="color:var(--dim)">30%</span></div>
+            <div class="prog-track"><div class="prog-fill" style="width:30%;background:rgba(255,255,255,.2)"></div></div>
+          </div>
+        </div>
+        <div style="padding:12px;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.2);border-radius:8px;">
+          <div style="font-size:11px;font-weight:700;color:var(--rojo)">Alerta constitucional activa</div>
+          <div style="font-size:10px;color:var(--sub);margin-top:4px">La inversión en grupos prioritarios está 17,2 puntos por debajo del umbral que establece la Constitución del Ecuador</div>
+        </div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-card-title">Cobertura de grupos prioritarios</div>
+        <canvas id="chart-d12"></canvas>
+        <div style="margin-top:14px">
+          <div class="prog-row"><div class="prog-label"><span>Patronato · Programas activos</span><span style="color:var(--verde)">5</span></div><div class="prog-track"><div class="prog-fill fill-verde" style="width:71%"></div></div></div>
+          <div class="prog-row"><div class="prog-label"><span>Economía del cuidado</span><span style="color:var(--amarillo)">Parcial</span></div><div class="prog-track"><div class="prog-fill fill-amarillo" style="width:40%"></div></div></div>
+        </div>
+        <div style="font-size:9px;color:var(--dim);margin-top:8px">Datos de muestra · Fuente: Gold Master · Patronato · INEC</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Dashboards vacíos para D03 -->
+<div id="dash-d03" class="dashboard-overlay">
+  <div class="dash-header"><button class="back-btn" onclick="closeDash()">← Volver</button><div class="dash-title-area"><div class="dom-tag">03 · Plan Anual</div><h2>Ejecución Anual — POA · PAC</h2></div></div>
+  <div class="dash-body">
+    <div class="dash-row dash-row-2">
+      <div class="dash-card">
+        <div class="dash-card-title">Ejecución por tipo de gasto — Q1 2026</div>
+        <div class="prog-row"><div class="prog-label"><span>Obras civiles</span><span style="color:var(--amarillo)">72%</span></div><div class="prog-track"><div class="prog-fill fill-amarillo" style="width:72%"></div></div></div>
+        <div class="prog-row"><div class="prog-label"><span>Adquisición de bienes</span><span style="color:var(--verde)">88%</span></div><div class="prog-track"><div class="prog-fill fill-verde" style="width:88%"></div></div></div>
+        <div class="prog-row"><div class="prog-label"><span>Consultoría y servicios</span><span style="color:var(--amarillo)">65%</span></div><div class="prog-track"><div class="prog-fill fill-amarillo" style="width:65%"></div></div></div>
+        <div class="prog-row"><div class="prog-label"><span>Gasto de personal</span><span style="color:var(--verde)">91%</span></div><div class="prog-track"><div class="prog-fill fill-verde" style="width:91%"></div></div></div>
+        <div style="margin-top:14px;border-top:1px solid var(--border);padding-top:14px;">
+          <div class="prog-row"><div class="prog-label"><span style="font-weight:700">Total ejecución PAC</span><span style="color:var(--verde);font-weight:900">94,6%</span></div><div class="prog-track"><div class="prog-fill fill-verde" style="width:94.6%"></div></div></div>
+        </div>
+        <div style="font-size:9px;color:var(--dim);margin-top:8px">Fuente: PAC publicado SERCOP · eSIGEF · Datos de muestra</div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-card-title">Metas en riesgo de incumplimiento</div>
+        <div class="alert-row alerta"><div class="alert-code" style="color:var(--amarillo)">META-12</div><div class="alert-body"><h4>Agua Potable Rural</h4><p>Avance 28% · meta trimestral 45%</p></div></div>
+        <div class="alert-row alerta"><div class="alert-code" style="color:var(--amarillo)">META-31</div><div class="alert-body"><h4>Vialidad Rural Colorado</h4><p>Proceso contractual en trámite · 35% de avance</p></div></div>
+        <div style="margin-top:12px;font-size:10px;color:var(--sub)">53 de 56 metas en ruta · 2 con rezago · 1 en riesgo</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── Navegación ──────────────────────────────────────────────────────────────
+function openDash(id) {
+  document.querySelectorAll('.dashboard-overlay').forEach(d => d.classList.remove('active'));
+  const el = document.getElementById('dash-' + id);
+  if (el) {
+    el.classList.add('active');
+    el.scrollTop = 0;
+    window.scrollTo(0,0);
+    setTimeout(() => initCharts(id), 100);
+  }
+}
+function closeDash() {
+  document.querySelectorAll('.dashboard-overlay').forEach(d => d.classList.remove('active'));
+}
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeDash(); });
+
+// ── Charts ──────────────────────────────────────────────────────────────────
+const DEFAULTS = {
+  plugins:{ legend:{ labels:{ color:'rgba(255,255,255,0.5)', font:{size:10} } } },
+  scales:{
+    r:{ ticks:{color:'rgba(255,255,255,0.2)',backdropColor:'transparent',font:{size:9}}, pointLabels:{color:'rgba(255,255,255,0.5)',font:{size:10}}, grid:{color:'rgba(255,255,255,0.08)'}, angleLines:{color:'rgba(255,255,255,0.08)'} },
+    x:{ ticks:{color:'rgba(255,255,255,0.4)',font:{size:9}}, grid:{color:'rgba(255,255,255,0.05)'} },
+    y:{ ticks:{color:'rgba(255,255,255,0.4)',font:{size:9}}, grid:{color:'rgba(255,255,255,0.05)'} }
+  }
+};
+
+const charts = {};
+function destroyChart(id){ if(charts[id]){ charts[id].destroy(); delete charts[id]; } }
+
+function initCharts(dashId) {
+  Chart.defaults.color = 'rgba(255,255,255,0.4)';
+
+  if(dashId==='d01') {
+    destroyChart('d01');
+    charts['d01'] = new Chart(document.getElementById('chart-d01'), {
+      type:'doughnut',
+      data:{ labels:['En ruta','Con rezago','En riesgo'],
+        datasets:[{data:[53,2,1],backgroundColor:['rgba(34,197,94,.7)','rgba(245,158,11,.7)','rgba(239,68,68,.7)'],borderWidth:0}]},
+      options:{...DEFAULTS, cutout:'72%', plugins:{legend:{position:'bottom',labels:{color:'rgba(255,255,255,0.5)',font:{size:10}}}}}
+    });
+  }
+
+  if(dashId==='d04') {
+    destroyChart('d04');
+    charts['d04'] = new Chart(document.getElementById('chart-d04'), {
+      type:'doughnut',
+      data:{ labels:['Crítica','Alerta','Informacional','Sin activar'],
+        datasets:[{data:[1,1,1,4],backgroundColor:['rgba(239,68,68,.8)','rgba(245,158,11,.7)','rgba(100,116,139,.6)','rgba(255,255,255,.08)'],borderWidth:0}]},
+      options:{...DEFAULTS, cutout:'68%', plugins:{legend:{position:'bottom',labels:{color:'rgba(255,255,255,0.5)',font:{size:10}}}}}
+    });
+  }
+
+  if(dashId==='d05') {
+    destroyChart('d05');
+    charts['d05'] = new Chart(document.getElementById('chart-d05'), {
+      type:'radar',
+      data:{ labels:['EP Aseo','Patronato','GAD central','EP Agua'],
+        datasets:[
+          {label:'Ejecución',data:[82,71,66,45],backgroundColor:'rgba(0,212,255,0.1)',borderColor:'rgba(0,212,255,0.6)',pointBackgroundColor:'rgba(0,212,255,0.8)',pointRadius:4},
+          {label:'Objetivo 75%',data:[75,75,75,75],backgroundColor:'transparent',borderColor:'rgba(255,255,255,0.15)',borderDash:[4,4],pointRadius:0}
+        ]},
+      options:{...DEFAULTS, scales:{r:{...DEFAULTS.scales.r, suggestedMin:0, suggestedMax:100}}}
+    });
+  }
+
+  if(dashId==='d06') {
+    destroyChart('d06');
+    charts['d06'] = new Chart(document.getElementById('chart-d06'), {
+      type:'radar',
+      data:{ labels:['Gobernanza\nmetodológica','Cumplimiento\nde metas','Eficiencia\nde inversión','Equidad\nterritorial','Reporte\nal SNP'],
+        datasets:[
+          {label:'Montecristi 2025',data:[83.5,69.9,59.9,44.8,100],backgroundColor:'rgba(0,212,255,0.08)',borderColor:'rgba(0,212,255,0.5)',pointBackgroundColor:'rgba(0,212,255,0.8)',pointRadius:4},
+          {label:'Umbral óptimo',data:[80,80,80,80,80],backgroundColor:'transparent',borderColor:'rgba(34,197,94,0.2)',borderDash:[4,4],pointRadius:0}
+        ]},
+      options:{...DEFAULTS, scales:{r:{...DEFAULTS.scales.r, suggestedMin:0, suggestedMax:100}}}
+    });
+  }
+
+  if(dashId==='d07') {
+    destroyChart('d07');
+    charts['d07'] = new Chart(document.getElementById('chart-d07'), {
+      type:'doughnut',
+      data:{ labels:['Publicados','Observados'],
+        datasets:[{data:[20,1],backgroundColor:['rgba(34,197,94,.7)','rgba(245,158,11,.7)'],borderWidth:0}]},
+      options:{...DEFAULTS, cutout:'72%', plugins:{legend:{position:'bottom',labels:{color:'rgba(255,255,255,0.5)',font:{size:10}}}}}
+    });
+  }
+
+  if(dashId==='d10') {
+    destroyChart('d10');
+    charts['d10'] = new Chart(document.getElementById('chart-d10'), {
+      type:'bar',
+      data:{
+        labels:['Agua potable','Vialidad','Alumbrado','Internet'],
+        datasets:[
+          {label:'Urbana',data:[65,72,85,55],backgroundColor:'rgba(0,212,255,0.6)'},
+          {label:'Rural (prom.)',data:[24,38,52,12],backgroundColor:'rgba(239,68,68,0.5)'}
+        ]},
+      options:{...DEFAULTS, scales:{x:{...DEFAULTS.scales.x},y:{...DEFAULTS.scales.y,max:100}}, plugins:{legend:{position:'bottom',labels:{color:'rgba(255,255,255,0.5)',font:{size:10}}}}}
+    });
+  }
+
+  if(dashId==='d12') {
+    destroyChart('d12');
+    charts['d12'] = new Chart(document.getElementById('chart-d12'), {
+      type:'doughnut',
+      data:{ labels:['Niñez (0-14)','Población productiva (15-64)','Adultos mayores (65+)'],
+        datasets:[{data:[31,62,7],backgroundColor:['rgba(0,212,255,0.7)','rgba(100,116,139,0.5)','rgba(245,158,11,0.7)'],borderWidth:0}]},
+      options:{...DEFAULTS, cutout:'60%', plugins:{legend:{position:'bottom',labels:{color:'rgba(255,255,255,0.5)',font:{size:10}}}}}
+    });
+  }
+}
+</script>
+</body>
+</html>

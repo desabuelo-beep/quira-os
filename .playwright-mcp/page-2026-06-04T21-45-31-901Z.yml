@@ -1,0 +1,64 @@
+- generic [ref=e27]:
+  - generic [ref=e43]:
+    - img [ref=e45]
+    - generic [ref=e52]: QUIRA Intelligence
+    - generic [ref=e53]: Sistema Operativo de Coherencia Institucional
+    - generic [ref=e54]: Development by Dylus Lab
+    - generic [ref=e55]: Observabilidad territorial · Riesgo institucional · Decisión ejecutiva
+  - generic [ref=e57]:
+    - button "🏛 QUIRA Institucional Centro de comando institucional para Alcaldía y Holding Municipal." [ref=e62] [cursor=pointer]:
+      - generic [ref=e65]:
+        - paragraph [ref=e66]: 🏛
+        - paragraph [ref=e67]: QUIRA Institucional
+        - paragraph [ref=e68]: Centro de comando institucional para Alcaldía y Holding Municipal.
+    - button "🌎 QUIRA Ciudadano Transparencia territorial y seguimiento ciudadano." [ref=e73] [cursor=pointer]:
+      - generic [ref=e76]:
+        - paragraph [ref=e77]: 🌎
+        - paragraph [ref=e78]: QUIRA Ciudadano
+        - paragraph [ref=e79]: Transparencia territorial y seguimiento ciudadano.
+    - button "📑 QUIRA Cooperación Evidencia territorial para investigación y cooperación." [ref=e84] [cursor=pointer]:
+      - generic [ref=e87]:
+        - paragraph [ref=e88]: 📑
+        - paragraph [ref=e89]: QUIRA Cooperación
+        - paragraph [ref=e90]: Evidencia territorial para investigación y cooperación.
+    - button "⚡ QUIRA Operations Monitoreo institucional en tiempo real — En construcción." [disabled] [ref=e95]:
+      - generic [ref=e98]:
+        - paragraph [ref=e99]: ⚡
+        - paragraph [ref=e100]: QUIRA Operations
+        - paragraph [ref=e101]: Monitoreo institucional en tiempo real — En construcción.
+  - generic [ref=e153]:
+    - generic [ref=e156]:
+      - generic [ref=e160]:
+        - generic [ref=e161]: Acceso Institucional
+        - generic [ref=e163]: Acceso Restringido · QUIRA Institucional
+      - generic [ref=e165]:
+        - paragraph [ref=e169]: CONTRASEÑA
+        - generic [ref=e171]:
+          - textbox "CONTRASEÑA" [ref=e172]:
+            - /placeholder: ••••••••
+            - text: quira2026
+          - button "Show password text" [ref=e173] [cursor=pointer]:
+            - img "Show password text" [ref=e174]
+      - button "ACCEDER →" [active] [ref=e179] [cursor=pointer]:
+        - paragraph [ref=e183]: ACCEDER →
+    - alert [ref=e232]:
+      - paragraph [ref=e237]: Contraseña incorrecta (1/3 intentos)
+  - generic [ref=e127]:
+    - generic [ref=e187]:
+      - generic [ref=e188]: ACCESO PROTEGIDO
+      - generic [ref=e189]: Cifrado institucional
+    - generic [ref=e191]:
+      - generic [ref=e192]: SESIÓN TEMPORAL
+      - generic [ref=e193]: Expira en 60 minutos
+    - generic [ref=e195]:
+      - generic [ref=e196]: INTENTOS MONITOREADOS
+      - generic [ref=e197]: Bloqueo tras 3 fallos
+    - generic [ref=e199]:
+      - generic [ref=e200]: ACTIVIDAD AUDITADA
+      - generic [ref=e201]: Registro de accesos
+  - generic [ref=e129]:
+    - text: QUIRA Intelligence · Dylus Lab © 2026
+    - text: Infraestructura de gobernanza pública
+  - generic [ref=e206]: · · ·
+  - button "⚙ acceso operacional" [ref=e218] [cursor=pointer]:
+    - paragraph [ref=e222]: ⚙ acceso operacional
