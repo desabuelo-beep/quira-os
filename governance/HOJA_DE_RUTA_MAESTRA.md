@@ -54,6 +54,31 @@ nacional o al molde que lo habilita, no es prioridad.
 
 ---
 
+## 0.1 LA VISIÓN (norte de largo plazo · grabada 2026-06-12 · = apertura del White Paper)
+
+> **QUIRA es la infraestructura de conocimiento e inteligencia pública de
+> América Latina y el Caribe — la que USA los mejores LLMs del momento, sin
+> ser uno de ellos.**
+>
+> No es un modelo de lenguaje: es el CEREBRO DE DOMINIO que se monta sobre
+> ellos (corpus verificado + ontología gestión pública LAC + motor de
+> indicadores + grafo territorial). Los LLMs son commodities que se reemplazan
+> cada año; **QUIRA es lo que permanece.**
+>
+> *"No quieras ser lo que se reemplaza cada año. Sé lo que permanece."*
+
+**Corrección de director (consulta existencial Javo · 2026-06-12):** QUIRA NO
+debe ser ni puede ser un LLM propio (cuesta cientos de millones, se obsoleta en
+meses, no se necesita). El activo DEFENDIBLE no es el modelo — es la capa de
+conocimiento: corpus público verificado (SHA256), metodología SIAP-ICPI,
+ontología, grafo territorial y la red de adquisición ciudadana. Los gigantes
+de IA trabajan PARA QUIRA (Claude/Haiku vía API), no contra ella.
+**Si alguna vez regresa la tentación de "entrenar nuestro propio modelo": NO.**
+Ese capital va a la infraestructura de conocimiento, que es lo irreemplazable.
+Detalle: `docs/whitepaper/WHITE_PAPER_QUIRA_v1_outline.md`.
+
+---
+
 ## 1. EL ECOSISTEMA (cómo se materializa la tesis)
 
 **Dylus Lab** (empresa · `dyluslab.com`) construye **QUIRA** (producto ·
@@ -201,7 +226,9 @@ Se activa cuando el MOLDE Montecristi está mostrable (no antes). Es el corazón
 **Infra:** testers UEB + diplomado CAF = fuerza de ingesta distribuida ·
 quiraintelligence.com como portal radar nacional (⚠️ requiere hosting ≠ Streamlit Cloud).
 **Estrategia de institucionalización (consulta Javo 2026-06-12 · respuesta Director):**
-- White Paper QUIRA v1.0 (50-80 pp · síntesis de lo ya escrito) = entregable Sprint D · oro CAF.
+- **White Paper QUIRA v1.0** (50-80 pp · síntesis de lo ya escrito) = ENTREGABLE Sprint D · oro CAF.
+  Esqueleto + visión + mapeo de fuentes YA listos: `docs/whitepaper/WHITE_PAPER_QUIRA_v1_outline.md`.
+  Abre con LA VISIÓN (§0.1). Redacción = ensamblaje del 80% ya escrito, caja negra del motor.
 - Apertura: abrir la METODOLOGÍA ahora (White Paper, posicionamiento) ≠ abrir el CÓDIGO
   (Open Core formal) — esto último DIFERIDO hasta tener tracción (varios cantones). Abrir el
   estándar antes de tracción regala la ventaja sin cobrar el efecto de red. Framing "estándar
