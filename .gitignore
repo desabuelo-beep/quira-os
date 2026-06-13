@@ -84,3 +84,14 @@ data/vault_backup_p2/
 test_reporte.pdf
 .env.claude
 scripts/sprint_b/_lote1_genero_raw.txt
+
+# ── ARTEFACTOS DE TRABAJO LOCAL (regenerables — NUNCA al repo) ────────────────
+# Caché/salida del grafo graphify (se regenera con /graphify · es local)
+graphify-out/
+# Screenshots y snapshots de pruebas de navegador (Playwright MCP)
+.playwright-mcp/
+cc2_preview_snapshot.md
+sprint-a-verify-*.png
+# Prototipos throwaway y planes de superpowers (trabajo local)
+prototypes/
+docs/superpowers/
