@@ -101,6 +101,11 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
        🔴 FALLA si: un componente no cabe en ningún dominio (=hueco ontológico) · su indicador no está en el Mapa
        (=dato fantasma) · cabe en DOS dominios (=problema de frontera). Cada fallo NO se fuerza: es hallazgo que corrige
        la ontología (como d13 nació de un hueco). Pregunta del test: ¿se alimenta de pantallas reales SIN reinterpretación?
+       ✅ PILOTO d10 — INVENTARIO EJECUTADO (2026-06-14 · leyendo pantallas reales): la ontología SOBREVIVIÓ.
+       Tipo A (núcleo encaja): agua → QTMP AGUA_POTABLE (Neo4j) · inversión p.c./IET/brecha → data.loader.
+       Test cazó: 🅲 p7_brecha MAL asignada al plano (es d06 ICGI-T 6 vectores, NO d10) → cosechar en d06 ·
+       🅲 saneamiento/recolección SIN pantalla cantera (huecos) · 🅱️ EJES_INVERSION = material d02 + HARDCODED.
+       Plano d10 corregido en Diccionario. FALTA: implementación (código) = próxima sesión CON harness de verificación.
        Auditoría de fórmulas (B) diferida · ICODS-ambiental a precisar.
 
 - **🔚 CIERRE DE SESIÓN 2026-06-13 (se acabó contexto · nuevo chat):**

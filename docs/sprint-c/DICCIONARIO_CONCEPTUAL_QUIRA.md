@@ -135,13 +135,19 @@ Todo ADN se redacta con estos 11 campos, en este orden (Cajón 10 = molde):
 | 10 | **Madre + operativos + ancla** | **Madre (concepto):** Acceso territorial a bienes públicos. **Operativos REALES:** Cobertura de agua por red pública (% · INEC) · Cobertura de saneamiento (% · INEC) · Cobertura de recolección de desechos (% · INEC) · Pobreza por NBI (INEC) · Equidad Territorial (Gold Master) · Inversión per cápita por parroquia (eSIGEF). **Ancla motor:** IET → `H73_OUTPUT_API` ✅ · inversión p.c. → `H07b_Ti_INVERSIÓN_eSIGEF` (27/30) ✅ · agua/saneamiento/NBI → INEC·QTMP·loader ✅ **LIVE**. |
 | 11 | **Expresión GeoTwin (Capa 3)** | **Déficit estructural:** extrusión volumétrica 3D de los polígonos parroquiales según NBI; cruza el diagnóstico base del PDOT con los proyectos ejecutados, encendiendo gradientes rojos en las coordenadas de las comunidades excluidas. |
 
-### Plano de cosecha atómica — Cajón 10
-| Pantalla cantera | Sección/componente a cosechar | → Dashboard |
-|---|---|---|
-| p10_territorio | Tabla de cobertura por parroquia | D1 · Tablero Cobertura & Brecha |
-| p7_brecha | Gráfico comparativo urbano/rural | D1 |
-| p10_inversion | Inversión per cápita parroquial | D1 |
-| pdot_indicadores (datos) | Servicios parroquiales (extraídos) | D1 |
+### Plano de cosecha atómica — Cajón 10 (VERIFICADO contra pantallas reales · 2026-06-14)
+> Inventario real (leyendo el código, no adivinando). El test de falsación cazó un mapeo falso
+> y dos huecos — la ontología sobrevivió; el plano se corrige (no se fuerza nada).
+
+| Pantalla cantera | Componente REAL | Indicador → ancla | Veredicto |
+|---|---|---|---|
+| p10_territorio | KPI agua + semáforo + barras de escenarios | Cobertura agua potable → QTMP AGUA_POTABLE (Neo4j) ✅ LIVE | 🅰️ encaja en d10 |
+| p10_inversion | Barras inversión per cápita por parroquia + brecha 5.4× | Inversión p.c. · IET · brecha → `data.loader` ✅ LIVE | 🅰️ encaja en d10 |
+| p10_inversion | `EJES_INVERSION` (distribución sectorial) | Presupuesto por sector → ⚠️ HARDCODED | 🅱️ dato de **d02**, no d10 |
+| ~~p7_brecha~~ | 6 vectores causales del ICGI-T (ISP·IED·IGP·IOC·IET·PSG) | ICPI + vectores → `data.loader` | 🅲 **es d06, NO d10** (el plano lo asignó mal) |
+| (ninguna) | saneamiento · recolección de desechos | prometidos en el ADN | 🅲 **sin pantalla cantera** (concepto sin evidencia hoy) |
+
+**Veredicto del piloto:** el núcleo de d10 (agua + equidad territorial) SÍ se alimenta de pantallas reales con anclas reales (Tipo A). El test cazó: `p7_brecha` mal asignada (→ va a la cosecha de **d06**) · saneamiento/recolección sin pantalla (Tipo C, huecos a llenar) · `EJES_INVERSION` = material de d02 + hardcoded (Tipo B). **La ontología no se fuerza: se corrige.**
 
 **Dashboards finales: 1** — Tablero de Cobertura & Brecha + botón "🛰️ Ver en Territorio (GeoTwin)".
 *(El mapa ya NO es dashboard del Cajón 10 — es la capa transversal · ver §GeoTwin abajo.)*
