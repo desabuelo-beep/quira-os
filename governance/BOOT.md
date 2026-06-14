@@ -63,7 +63,11 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
     HALLAZGO: motor ~97% poblado · auditoría may-26 quedó STALE (H26 18→43 · H31 33→58 · H11b poblada 41/47).
        Único hueco que toca cajones = cédula eSIGEF 2026 (H07_S5) → destraba d02/d03/d06 2026 a la vez (CHK-08).
        MISSING reales = externos d12 (IGM RRHH/CNE · ODS5 PNUD). LLENA=poblada, NO verificada-correcta (=auditoría B).
-    SIGUIENTE: enriquecer Matriz Maestra + d01/d02/d10 con columna ancla → redactar d03→d12 ANCLADOS de origen.
+    ✅ 4 ADN ANCLADOS sellados en Diccionario: d01 · d02 · d03 (el SELLO QUIRA · eslabón PROMESA↔PLAN) · d10.
+       Director filtró 3 derivas del académico: d01 sin "Vector IED" (IED es d02/d06) · d03 ancla a
+       H73+corpus promesas (NO H26/H31) · d03 "NLP del discurso" bajado a capa futura Sprint E (no operativo hoy).
+       Plantilla campo 10 ahora incluye "ancla motor (código·estado)" · Matriz Maestra apunta a MAPA_ANCLAJE_MOTOR.
+    SIGUIENTE: redactar d04→d09 → d11 → d12 (8 ADN restantes), anclados de origen, uno por uno → revisión de mesa.
 
 - **🔚 CIERRE DE SESIÓN 2026-06-13 (se acabó contexto · nuevo chat):**
     Pivote mayor: dejamos de diseñar dashboards y construimos LA TEORÍA DE QUIRA.

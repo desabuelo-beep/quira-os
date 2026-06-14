@@ -74,16 +74,19 @@ Diccionario es la fuente única de ambas.)
 índice de la Constitución Ontológica (§12 dominios) y las referencias de la Hoja
 de Ruta aún citan nombres previos (d03 "Mandato", d05 "Holding", d12 "Equidad y
 Género"). Propagar en pase siguiente para no fracturar la ontología entre docs.
+*(2026-06-14: Constitución + PLANO ya propagados · check 2.5 OK.)*
 
 ## 🗺️ MATRIZ MAESTRA — el índice de toda la ontología (colega · 2026-06-14)
 
 > Capacidad (Capa 0.5) ↕ Dominio canónico ↕ Indicador madre (concepto) ↕
 > Operativos REALES del motor ↕ Expresión GeoTwin. El mapa de una sola página de QUIRA.
+>
+> **Anclaje al motor + estado (LIVE/PENDIENTE/MISSING) por operativo → `docs/architecture/MAPA_ANCLAJE_MOTOR.md`.**
 
 | # | Capacidad (0.5) | Dominio canónico | Indicador madre (concepto) | Operativos REALES (motor) | Expresión GeoTwin |
 |---|---|---|---|---|---|
 | d01 | Trayectoria | Planificación Estratégica | Cumplimiento de la planificación de desarrollo | Avance físico metas PDOT (4 ejes) | Cumplimiento territorial de metas |
-| d02 | Movilización | Presupuesto & Financiamiento | Captación y eficiencia del gasto | Elegibilidad/fondos en riesgo (radar D02) · inversión p.c. (eSIGEF) | Inversión per cápita por parroquia |
+| d02 | Movilización | Presupuesto & Financiamiento | Captación y eficiencia del gasto | Sostenibilidad (ISP) · eficiencia (IED) · ejecución (devengado) · elegibilidad (radar D02) | Inversión per cápita por parroquia |
 | d03 | Fidelidad democrática | Gobernanza del Mandato | Congruencia promesa↔plan | Consistencia plan de campaña (IFE-A) | Promesas espacializadas (PUGS) |
 | d04 | Anticipación | Alertas Institucionales | Riesgo operativo y legal activo | Cola del Sistema de Alerta Temprana | Pulsos de alerta geolocalizados |
 | d05 | Articulación | Holding e Integración Municipal | Desempeño del ecosistema de entidades | Promedio de entidades | Entidades por ubicación |
@@ -110,12 +113,12 @@ Todo ADN se redacta con estos 11 campos, en este orden (Cajón 10 = molde):
 7. **Alcance** — qué incluye.
 8. **Exclusiones** — qué NO incluye (y a qué cajón va).
 9. **Data central** — la materia prima.
-10. **Indicador madre (concepto) + operativos REALES** — concepto arriba, métricas del motor abajo.
+10. **Indicador madre (concepto) + operativos REALES + ancla motor** — concepto arriba; métricas del motor abajo; cada operativo con su hoja del Gold Master y estado (LIVE/PENDIENTE/MISSING · ver `MAPA_ANCLAJE_MOTOR.md`).
 11. **Expresión GeoTwin** (Capa 3) — cómo se espacializa la capacidad.
 
 ---
 
-## 📁 CAJÓN 10 · COBERTURA DE SERVICIOS E INFRAESTRUCTURA  (plantilla madre · re-sellada 11 campos · 2026-06-14)
+## 📁 CAJÓN 10 · COBERTURA DE SERVICIOS E INFRAESTRUCTURA  (plantilla madre · re-sellada 11 campos · anclada · 2026-06-14)
 
 | # | Campo | Contenido |
 |---|---|---|
@@ -128,7 +131,7 @@ Todo ADN se redacta con estos 11 campos, en este orden (Cajón 10 = molde):
 | 7 | **Alcance (incluye)** | Acceso a agua por red, alcantarillado, saneamiento, recolección de desechos, electrificación y conectividad física por polígono. |
 | 8 | **Exclusiones (no incluye)** | Presupuestos globales de obras (→ d02) · contratos de fiscalización (→ d07) · capacidad del personal técnico (→ d06) · la representación espacial/mapa (→ GeoTwin transversal). |
 | 9 | **Data central** | Matriz viva de cobertura sectorial parroquial + capas de delimitación geográfica del PUGS. |
-| 10 | **Indicador madre + operativos** | **Madre (concepto):** Acceso territorial a bienes públicos. **Operativos REALES:** Cobertura de agua por red pública (% · INEC) · Cobertura de saneamiento (% · INEC) · Cobertura de recolección de desechos (% · INEC) · Pobreza por NBI (INEC) · Equidad Territorial (Gold Master) · Inversión per cápita por parroquia (eSIGEF). |
+| 10 | **Madre + operativos + ancla** | **Madre (concepto):** Acceso territorial a bienes públicos. **Operativos REALES:** Cobertura de agua por red pública (% · INEC) · Cobertura de saneamiento (% · INEC) · Cobertura de recolección de desechos (% · INEC) · Pobreza por NBI (INEC) · Equidad Territorial (Gold Master) · Inversión per cápita por parroquia (eSIGEF). **Ancla motor:** IET → `H73_OUTPUT_API` ✅ · inversión p.c. → `H07b_Ti_INVERSIÓN_eSIGEF` (27/30) ✅ · agua/saneamiento/NBI → INEC·QTMP·loader ✅ **LIVE**. |
 | 11 | **Expresión GeoTwin (Capa 3)** | **Déficit estructural:** extrusión volumétrica 3D de los polígonos parroquiales según NBI; cruza el diagnóstico base del PDOT con los proyectos ejecutados, encendiendo gradientes rojos en las coordenadas de las comunidades excluidas. |
 
 ### Plano de cosecha atómica — Cajón 10
@@ -144,7 +147,7 @@ Todo ADN se redacta con estos 11 campos, en este orden (Cajón 10 = molde):
 
 ---
 
-## 📁 CAJÓN 01 · PLANIFICACIÓN ESTRATÉGICA  (primer ADN bajo la nueva arquitectura · mesa 2026-06-14)
+## 📁 CAJÓN 01 · PLANIFICACIÓN ESTRATÉGICA  (ADN anclado · mesa 2026-06-14)
 
 | # | Campo | Contenido |
 |---|---|---|
@@ -157,22 +160,61 @@ Todo ADN se redacta con estos 11 campos, en este orden (Cajón 10 = molde):
 | 7 | **Alcance (incluye)** | Metas físicas del PDOT, hitos temporales de proyectos estratégicos y ponderación de alineación con los ODS. |
 | 8 | **Exclusiones (no incluye)** | Montos devengados o flujo de caja (→ d02) · contratos en portales (→ d07) · compromisos discursivos de campaña no normados (→ d03). |
 | 9 | **Data central** | Matriz consolidada de hitos y metas físicas por componente de desarrollo. |
-| 10 | **Indicador madre + operativos** | **Madre (concepto):** Cumplimiento de la planificación de desarrollo. **Operativos REALES:** Avance físico consolidado de metas PDOT (4 ejes oficiales del plan de desarrollo). |
+| 10 | **Madre + operativos + ancla** | **Madre (concepto):** Cumplimiento de la planificación de desarrollo. **Operativos REALES:** Avance físico de metas PDOT (4 ejes oficiales). **Ancla motor:** `H11b_MONITOR_POLITICAS` (41/47) · `H12c_ICPI_HISTÓRICO` · corpus METAS_PDOT (Supabase) → ✅ **LIVE** *(conexión a TGI D1/D2 = auditoría de fórmulas, diferida)*. |
 | 11 | **Expresión GeoTwin (Capa 3)** | **Cumplimiento territorial:** mapas temáticos donde las capas base de diagnóstico del PDOT (biofísico, movilidad…) se intersectan con los % de avance del plan; tiñe parroquias según el rezago de metas sectoriales, mostrando dónde la planificación no se materializó. |
 
 ---
 
-## ESQUELETO — Cajones 02-09, 11, 12 (pendientes de ADN completo · mismo nivel conceptual)
+## 📁 CAJÓN 02 · PRESUPUESTO & FINANCIAMIENTO  (ADN anclado · mesa 2026-06-14)
 
-> d01 ✅ y d10 ✅ ya tienen ADN completo (arriba). Faltan estos 10, en orden de
-> mesa: d02 → d09 → d11 → d12. Cada uno se redactará con los **11 campos** +
-> cosecha atómica. Nombres = Nomenclátor. Indicadores = solo los del motor
-> (concepto puro arriba, métrica real abajo).
+| # | Campo | Contenido |
+|---|---|---|
+| 1 | **Capacidad Universal (0.5)** | **Movilización** — captar, gestionar, optimizar y distribuir recursos financieros y de cooperación de forma eficiente, oportuna y fiscalmente sostenible. |
+| 2 | **Dominio Canónico** | Presupuesto & Financiamiento |
+| 3 | **Alias histórico / técnico** | p18_cooperacion · radar_fondos |
+| 4 | **Definición conceptual** | Dimensión de viabilidad, flujo y asignación de los recursos públicos: el comportamiento de la ingeniería financiera institucional frente a los compromisos de gasto y el apalancamiento de capital externo. |
+| 5 | **Propósito** | Garantizar la sostenibilidad fiscal, minimizar el volumen de fondos en riesgo y maximizar el espacio fiscal disponible para financiar el desarrollo. |
+| 6 | **Pregunta estratégica** | ¿Con qué eficiencia, oportunidad y viabilidad se movilizan y ejecutan los recursos frente a la capacidad de captación y el riesgo de subejecución? |
+| 7 | **Alcance (incluye)** | Cédulas presupuestarias (codificado vs devengado), sostenibilidad y liquidez, eficiencia del gasto por dirección, y elegibilidad/riesgo de fondos de cooperación (radar D02). |
+| 8 | **Exclusiones (no incluye)** | Avance físico de las metas que el presupuesto financia (→ d01) · contratación pública específica y su apertura (→ d07) · cobertura material resultante en el territorio (→ d10). |
+| 9 | **Data central** | Cédulas de ejecución eSIGEF + matriz de elegibilidad del radar D02. |
+| 10 | **Madre + operativos + ancla** | **Madre (concepto):** Captación y eficiencia del gasto. **Operativos REALES:** Sostenibilidad presupuestaria (ISP) · Eficiencia de gestión (IED) · Ejecución presupuestaria (devengado) · Elegibilidad/fondos en riesgo. **Ancla motor:** ISP·IED → `H73_OUTPUT_API` ✅ LIVE · elegibilidad → Supabase `fondos_*` ✅ LIVE · ejecución devengado → `H07_S5_FINANCIERO_eSIGEF` (zona 2026 cruda) ⏳ **PENDIENTE** (CHK-08, cédula eSIGEF 2026). |
+| 11 | **Expresión GeoTwin (Capa 3)** | **Inversión territorializada:** prismas de inversión per cápita por parroquia (eSIGEF) — la altura = gasto devengado por habitante, desnudando las asimetrías de asignación financiera sobre el suelo. |
+
+---
+
+## 📁 CAJÓN 03 · GOBERNANZA DEL MANDATO  (ADN anclado · el sello QUIRA · mesa 2026-06-14)
+
+> **Primer dominio donde la Doctrina se vuelve visible.** Trabaja el eslabón
+> **PROMESA↔PLAN** de la cadena madre — lo que separa a QUIRA de un BI: ningún
+> dashboard tradicional pregunta si la planificación sigue fiel al mandato ciudadano.
+> Aterriza el diferencial epistemológico para CAF/BID/CEPAL/PNUD.
+
+| # | Campo | Contenido |
+|---|---|---|
+| 1 | **Capacidad Universal (0.5)** | **Fidelidad Democrática** — mantener la coherencia y la integridad entre la palabra empeñada ante el soberano (el cuerpo electoral) y la acción normativa formalizada por el Estado. |
+| 2 | **Dominio Canónico** | Gobernanza del Mandato |
+| 3 | **Alias histórico / técnico** | Metas PDOT·Mandato · promesas_cne |
+| 4 | **Definición conceptual** | Dimensión de correspondencia de origen y consistencia democrática: la degradación o persistencia de la oferta de campaña inscrita legalmente, una vez procesada por las estructuras burocráticas y los planes plurianuales del gobierno local. |
+| 5 | **Propósito** | Garantizar que la voluntad popular que legitimó al gobierno se mantenga como eje rector del planeamiento, blindando la gestión contra desvíos programáticos u omisiones selectivas. |
+| 6 | **Pregunta estratégica** | ¿La planificación institucional mantiene su integridad y correspondencia respecto a los compromisos originales validados por la ciudadanía en las urnas? |
+| 7 | **Alcance (incluye)** | Ofertas de campaña inscritas formalmente ante el CNE, objetivos del plan de trabajo de la autoridad, metas del PDOT, y la matriz de trazabilidad CNE↔PDOT. *(El NLP del discurso en RDC = capa diferenciadora DISEÑADA · Sprint E · depende de créditos API · no operativa hoy.)* |
+| 8 | **Exclusiones (no incluye)** | Ejecución presupuestaria financiera (→ d02) · presupuesto participativo (→ d08) · estado del circuito formal ante el CPCCS (→ d09). |
+| 9 | **Data central** | Matriz de trazabilidad Plan de Trabajo (CNE) ↔ Objetivos Estratégicos (PDOT). |
+| 10 | **Madre + operativos + ancla** | **Madre (concepto):** Congruencia promesa↔plan. **Operativos REALES:** Consistencia del plan de campaña (IFE-A · 48/66 promesas CNE→PDOT). **Ancla motor:** IFE-A → `H73_OUTPUT_API` (consolidado) + corpus promesas CNE/PDOT (Supabase C1) → ✅ **LIVE**. *(Fidelidad de ejecución IFE-E → eSIGEF → ⏳ PENDIENTE Q2-2026.)* |
+| 11 | **Expresión GeoTwin (Capa 3)** | **Promesas espacializadas:** los compromisos geográficos de campaña frente a las zonas de intervención real (PUGS) — qué promesas locales se formalizaron en obra y cuáles se omitieron de la geografía del desarrollo cantonal. |
+
+---
+
+## ESQUELETO — Cajones 04-09, 11, 12 (pendientes de ADN completo · mismo nivel conceptual)
+
+> d01 ✅ · d02 ✅ · d03 ✅ · d10 ✅ ya tienen ADN completo y **anclado** (arriba). Faltan
+> estos 8, en orden de mesa: d04 → d09 → d11 → d12. Cada uno con los **11 campos** + ancla
+> motor + cosecha atómica. Nombres = Nomenclátor. Indicadores = solo los del motor (concepto
+> puro arriba, métrica real + ancla abajo).
 
 | # | Cajón (canónico) | Capacidad (0.5) | Definición conceptual (1 línea — a pulir) | Madre (concepto) · operativos reales |
 |---|---|---|---|---|
-| 02 | Presupuesto & Financiamiento | Movilización | Origen, asignación y oportunidades de financiamiento de los recursos | Captación y eficiencia del gasto · elegibilidad/fondos en riesgo (radar D02) |
-| 03 | Gobernanza del Mandato | Fidelidad democrática | Correspondencia entre la palabra empeñada y su formalización en el plan | Congruencia promesa↔plan · consistencia plan de campaña (IFE-A) |
 | 04 | Alertas Institucionales | Anticipación | Detección temprana de riesgos institucionales | Riesgo operativo y legal activo · cola del Sistema de Alerta Temprana |
 | 05 | Holding e Integración Municipal | Articulación | Desempeño del conjunto de entidades de gobernanza del cantón | Desempeño del ecosistema · promedio de entidades |
 | 06 | Salud Institucional | Sostenibilidad interna | Cumplir funciones de forma consistente, eficiente y sostenible | Cumplimiento sostenible · Cumplimiento Institucional (ICPI) |
@@ -213,4 +255,4 @@ GeoTwin v3 · PREDICE        → series temporales + IA → "¿qué ocurrirá?" 
 
 ---
 
-*Diccionario Conceptual QUIRA · Sprint C · Dylus Lab © 2026 · plantilla madre = Cajón 10 (11 campos) · Nomenclátor canónico = fuente única de nombres · GeoTwin = capa transversal.*
+*Diccionario Conceptual QUIRA · Sprint C · Dylus Lab © 2026 · plantilla madre = Cajón 10 (11 campos) · Nomenclátor canónico = fuente única · ADN anclados al motor (MAPA_ANCLAJE_MOTOR) · GeoTwin = capa transversal.*
