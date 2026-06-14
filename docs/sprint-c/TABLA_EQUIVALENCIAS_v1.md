@@ -1,10 +1,10 @@
 # TABLA DE EQUIVALENCIAS QUIRA v2.0 — DEFINITIVA
 **Sprint C · cierre de fundación · 2026-06-14 · el puente: UNA verdad → TRES QUIRAs**
 
-> Promueve la v1.0 (propuesta · 2026-06-12) a definitiva, ahora que los 12 ADN
+> Promueve la v1.0 (propuesta · 2026-06-12) a definitiva, ahora que los 13 ADN
 > están cerrados y anclados al motor. Es el puente entre la ontología interna y
 > las tres audiencias — y, como dictaminó el colega, **es la auditoría de lenguaje
-> de los 12 ADN**: traducir a tres voces expone los nombres débiles y las ambigüedades.
+> de los 13 ADN**: traducir a tres voces expone los nombres débiles y las ambigüedades.
 > **Estado: DEFINITIVA en redacción · las elecciones de lenguaje se ratifican en mesa.**
 
 ## La arquitectura del puente (lo que la mesa consolidó)
@@ -12,7 +12,7 @@
 ```
 UNA verdad (celda del motor · H73_OUTPUT_API)
    ↓
-UNA ontología (los 12 ADN anclados · MAPA_ANCLAJE_MOTOR)
+UNA ontología (los 13 ADN anclados · MAPA_ANCLAJE_MOTOR)
    ↓
 TRES QUIRAs (tres lenguajes de la MISMA verdad — nunca cambia el número, solo la voz)
    ├─ OPERACIONES   (Dylus interno · barrido nacional) → puede usar sigla en pie técnico
@@ -121,7 +121,7 @@ Jamás en UI, ni traducidos. Se habla del concepto sin nombrarlos.
 
 ---
 
-## 🔍 HALLAZGOS DE AUDITORÍA (lo que la traducción reveló de los 12 ADN)
+## 🔍 HALLAZGOS DE AUDITORÍA (lo que la traducción reveló de los 13 ADN)
 
 *La Tabla cumplió su función de auditoría (colega). Para ratificar en mesa:*
 
@@ -142,4 +142,4 @@ Jamás en UI, ni traducidos. Se habla del concepto sin nombrarlos.
 
 ---
 
-*Tabla de Equivalencias QUIRA v2.0 · DEFINITIVA (en ratificación) · Dylus Lab © 2026 · una verdad → tres QUIRAs · auditoría de lenguaje de los 12 ADN.*
+*Tabla de Equivalencias QUIRA v2.0 · DEFINITIVA (en ratificación) · Dylus Lab © 2026 · una verdad → tres QUIRAs · auditoría de lenguaje de los 13 ADN.*

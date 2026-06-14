@@ -28,7 +28,7 @@
 
 GeoTwin NO es un cajón (dominio) — es la **CAPA TRANSVERSAL de visualización e
 inferencia territorial**. Los cajones responden *¿qué pasa?*; GeoTwin responde
-*¿DÓNDE pasa?*. Arquitectura: **12 dominios de gestión + 1 capa territorial
+*¿DÓNDE pasa?*. Arquitectura: **13 dominios de gestión + 1 capa territorial
 transversal.** Cada cajón gana un botón "🛰️ Ver en Territorio (GeoTwin)" que
 espacializa SU indicador. Es el mismo mapa mutando según el dominio activo.
 
