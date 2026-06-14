@@ -96,6 +96,11 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
        PILOTO: d10 Cobertura (plano sembrado en Diccionario + conecta GeoTwin).
        ⚠️ ANCLAS — verificar c/u contra el Mapa (el académico deriva): cobertura agua/saneamiento d10 = INEC/corpus/
        loader (NO H73) · H73 solo IET. Estilo "Bloomberg" = fase UI, no cosecha. Dashboards se nombran por dominio.
+       **PRUEBA DE REALIDAD del piloto d10 (criterio de falsación — el 1er test empírico de la fundación):**
+       ✅ PASA si cada componente real de la pantalla mapea a UN dominio + un ancla REAL del Mapa, sin huérfanos ni forzar.
+       🔴 FALLA si: un componente no cabe en ningún dominio (=hueco ontológico) · su indicador no está en el Mapa
+       (=dato fantasma) · cabe en DOS dominios (=problema de frontera). Cada fallo NO se fuerza: es hallazgo que corrige
+       la ontología (como d13 nació de un hueco). Pregunta del test: ¿se alimenta de pantallas reales SIN reinterpretación?
        Auditoría de fórmulas (B) diferida · ICODS-ambiental a precisar.
 
 - **🔚 CIERRE DE SESIÓN 2026-06-13 (se acabó contexto · nuevo chat):**
