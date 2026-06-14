@@ -131,10 +131,16 @@ CAPA 3 · GEOTWIN               → mapa GIS del cantón. Territorializa PDOT
                                 por QUIRA. "¿DÓNDE ocurre?" · 2D hoy → 3D (PyDeck).
 ```
 
-**Regla GeoTwin (Javo · canónica):** GeoTwin NO ES UN DOMINIO. Es la capa
-completa que lleva todos los dominios y sus dashboards y los conecta con el
-territorio real — donde se ven las asimetrías por barrio/sector/parroquia.
-Es donde aterrizan políticas, planes, programas y proyectos.
+**Regla GeoTwin (Javo + colega · canónica · reforzada 2026-06-13):** GeoTwin NO
+ES UN CAJÓN/DOMINIO. Es la CAPA TRANSVERSAL de territorialización. **Ningún cajón
+es territorial por sí mismo; TODOS se territorializan vía GeoTwin.** Arquitectura:
+**12 dominios de gestión + 1 capa territorial transversal.** Cada cajón tiene un
+botón "🛰️ Ver en Territorio" que espacializa SU indicador madre — el mismo mapa
+mutando según el dominio activo. (El Cajón 10 se purificó: "Cobertura de Servicios
+e Infraestructura" — dejó de "ser el mapa".) Detalle + Matriz de Espacialización:
+`docs/sprint-c/DICCIONARIO_CONCEPTUAL_QUIRA.md §GeoTwin`.
+Implementación honesta: GeoTwin v1 = 2D Folium + motor narrativo F1 (ya existe) ·
+GeoTwin 3D (prismas PyDeck + PostGIS + DEM) = futuro, requiere capa geoespacial.
 
 **⚠️ DECISIÓN DE NAMING PENDIENTE (Javo 2026-06-13):** "Centro de Mando" es
 nombre ejecutivo/militar — sirve para Operaciones e Institucional, NO para

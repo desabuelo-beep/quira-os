@@ -17,6 +17,21 @@
    Tabla de Equivalencias. PROHIBIDO inventar nombres grandilocuentes que no
    correspondan a una métrica real del motor (= motor paralelo alucinado).
 
+## REGLA TERRITORIAL (Javo + colega · 2026-06-13 · arquitectónica)
+
+> **Ningún cajón es territorial por sí mismo. Todos los cajones pueden
+> territorializarse a través de GeoTwin.**
+
+GeoTwin NO es un cajón (dominio) — es la **CAPA TRANSVERSAL de visualización e
+inferencia territorial**. Los cajones responden *¿qué pasa?*; GeoTwin responde
+*¿DÓNDE pasa?*. Arquitectura: **12 dominios de gestión + 1 capa territorial
+transversal.** Cada cajón gana un botón "🛰️ Ver en Territorio (GeoTwin)" que
+espacializa SU indicador. Es el mismo mapa mutando según el dominio activo.
+
+(El concepto de cada cajón se expresa en UI de DOS formas: encabezado estático
+breve "qué es" + QUIRA IA para la explicación profunda bajo demanda. El
+Diccionario es la fuente única de ambas.)
+
 ## COSECHA ATÓMICA (Javo · 2026-06-13)
 
 > La refactorización NO es por pantalla — es por SECCIONES/PARTES. Una sección,
@@ -30,31 +45,30 @@
 
 ---
 
-## 📁 CAJÓN 10 · TERRITORIO & COBERTURA  (plantilla madre — corregida)
+## 📁 CAJÓN 10 · COBERTURA DE SERVICIOS E INFRAESTRUCTURA  (purificado — ya NO "es el mapa")
 
 | Elemento | Definición |
 |---|---|
-| **Nombre** | Territorio & Cobertura |
-| **Definición conceptual** | Dimensión espacial de la política pública. Representa cómo se distribuyen las condiciones de vida, las capacidades instaladas, las vulnerabilidades ambientales y la asignación de recursos sobre el espacio geográfico del cantón. |
-| **Propósito** | Identificar patrones de asimetría territorial, brechas de cobertura de servicios y niveles de exposición al riesgo, para orientar la planificación y la inversión pública basada en evidencia. |
-| **Pregunta estratégica** | ¿Cómo se distribuyen las brechas de servicios y los riesgos en el territorio, y de qué manera la inversión pública las mitiga o las acentúa? |
-| **Alcance (qué incluye)** | Cartografía (SIG), modelo de terreno, zonificación del PUGS, coberturas sectoriales por parroquia/barrio, mapas de vulnerabilidad física y ambiental. |
-| **Exclusiones (qué NO incluye)** | Capacidad administrativa interna (→ Salud Institucional) · presupuesto institucional global (→ Presupuesto) · transparencia (→ Transparencia) · gobernanza de empresas públicas (→ Holding). |
-| **Data central** | Matriz de cobertura y brecha parroquial + capa de visualización transversal GeoTwin. |
-| **Indicadores madre (REALES — Tabla de Equivalencias)** | • Cobertura de agua por red pública (% · INEC) • Cobertura de saneamiento (% · INEC) • **Equidad Territorial** (IET · Gold Master) • Pobreza por servicios / NBI (INEC) • Inversión pública per cápita por parroquia (eSIGEF) • Exposición a riesgos naturales (susceptibilidad · PDOT) |
-| **Conexiones** | Recibe capas de Planificación (01), Presupuesto (02), Alertas (04) y Protección Social & Género (12) para proyectarlas sobre el espacio. Converge en GeoTwin (capa 3). |
+| **Nombre** | Cobertura de Servicios e Infraestructura *(antes "Territorio & Cobertura" — el mapa pasó a GeoTwin transversal)* |
+| **Definición conceptual** | Capacidad del territorio de garantizar el acceso de la población a los servicios básicos e infraestructura física. Mide el cumplimiento de las metas de provisión de agua, saneamiento, manejo de desechos y conectividad sobre el espacio del cantón. |
+| **Propósito** | Cuantificar la cobertura y el déficit de servicios básicos e infraestructura, e identificar las brechas de provisión para orientar la priorización de la inversión. |
+| **Pregunta estratégica** | ¿Cuál es el déficit de servicios e infraestructura del cantón y cómo se distribuye entre sus parroquias? |
+| **Alcance (qué incluye)** | Cobertura de agua potable, alcantarillado/saneamiento, recolección de desechos, conectividad vial y equipamiento por parroquia. |
+| **Exclusiones (qué NO incluye)** | La representación espacial/mapa (→ **GeoTwin**, capa transversal) · capacidad administrativa interna (→ Salud Institucional) · presupuesto global (→ Presupuesto) · transparencia (→ Transparencia). |
+| **Data central** | Matriz de cobertura y brecha de servicios por parroquia. |
+| **Indicadores madre (REALES — Tabla de Equivalencias)** | • Cobertura de agua por red pública (% · INEC) • Cobertura de saneamiento (% · INEC) • Cobertura de recolección de desechos (% · INEC) • Pobreza por servicios / NBI (INEC) • **Equidad Territorial** (IET · Gold Master) • Inversión per cápita por parroquia (eSIGEF) |
+| **Conexiones** | Sus indicadores se espacializan en **GeoTwin** (capa transversal) junto con los de todos los demás cajones. GeoTwin recibe las brechas de cobertura de ESTE cajón para mostrarlas sobre el mapa del cantón. |
 
 ### Plano de cosecha atómica — Cajón 10
 | Pantalla cantera | Sección/componente a cosechar | → Dashboard |
 |---|---|---|
 | p10_territorio | Tabla de cobertura por parroquia | D1 · Tablero Cobertura & Brecha |
 | p7_brecha | Gráfico comparativo urbano/rural | D1 |
-| p10_inversion | Inversión per cápita parroquial | D1 + D2 |
-| p4_geotwin | Mapa Folium interactivo + GeoTwin narrativo (F1) | D2 · GeoTwin |
-| pdot_indicadores (datos) | Servicios + riesgos parroquiales (extraídos) | D1 + D2 |
-| *crear nuevo si falta* | capa de prismas 3D de inversión (futuro PyDeck) | D2 |
+| p10_inversion | Inversión per cápita parroquial | D1 |
+| pdot_indicadores (datos) | Servicios parroquiales (extraídos) | D1 |
 
-**Dashboards finales: 2** — (1) Tablero de Cobertura & Brecha · (2) GeoTwin.
+**Dashboards finales: 1** — Tablero de Cobertura & Brecha + botón "🛰️ Ver en Territorio (GeoTwin)".
+*(El mapa ya NO es dashboard del Cajón 10 — es la capa transversal · ver §GeoTwin abajo.)*
 
 ---
 
@@ -79,4 +93,33 @@ Nombres públicos: Tabla de Equivalencias. Indicadores: solo los del motor.
 
 ---
 
-*Diccionario Conceptual QUIRA · Sprint C · Dylus Lab © 2026 · plantilla madre = Cajón 10.*
+## 🛰️ GEOTWIN — CAPA TRANSVERSAL (no es un cajón)
+
+> **GeoTwin constituye la capa territorial transversal de QUIRA. Todos los
+> dominios de gestión pueden ser espacializados sobre GeoTwin para visualizar
+> cómo sus indicadores, riesgos, brechas, inversiones y resultados se distribuyen
+> en el territorio.** No es un dashboard del Cajón 10 — es la infraestructura
+> territorial de toda la plataforma.
+
+### Matriz de Espacialización (qué indicador REAL de cada cajón se territorializa)
+| Dominio (Capa 2) | Pregunta de gestión | Respuesta territorial en GeoTwin |
+|---|---|---|
+| 02 Presupuesto | ¿Cuánto se ejecutó? | Inversión per cápita (eSIGEF) por parroquia — qué zonas excluidas |
+| 04 Alertas | ¿Qué riesgos operativos? | Exposición a riesgos naturales (PDOT) sobre infraestructura crítica |
+| 10 Cobertura de Servicios | ¿Cuál es el déficit? | Pobreza por servicios / NBI (INEC) + déficit agua/saneamiento por parroquia |
+| 12 Protección Social & Género | ¿Dónde la brecha? | Presupuesto con enfoque de género (PSG) × grupos prioritarios por sector |
+| (…todos los demás) | ¿qué pasa? | …su indicador madre, proyectado en el mapa |
+
+### Implementación — honestidad de fases (Director)
+```
+GeoTwin v1 · AHORA   → capa transversal con lo que YA existe: mapa 2D Folium +
+                       motor narrativo F1 (clic → explica) + el botón de anclaje
+                       por cajón. El mapa muta sus datos según el dominio activo.
+GeoTwin 3D · DESPUÉS → prismas/extrusión PyDeck + polígonos PostGIS + DEM.
+                       Requiere construir la capa geoespacial (hoy hay centroides,
+                       no polígonos). NO se promete como inmediato (ver docs/geotwin).
+```
+
+---
+
+*Diccionario Conceptual QUIRA · Sprint C · Dylus Lab © 2026 · plantilla madre = Cajón 10 · GeoTwin = capa transversal.*
