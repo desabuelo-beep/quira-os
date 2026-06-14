@@ -50,6 +50,13 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
     (Vista Ejecutiva) · `p6_pulso` (Pulso) · `p7_brecha` (Causas/6 vectores · ya cosechada). Otras d06: `p1_dashboard` ·
     `p14_eficiencia` (IED) + cantera `_deprecated/p_vista_ejecutiva` (32 Bloomberg) · `_deprecated/p0_inicio`.
     Arranque concreto: leer `p_ejecutivo` + `p6_pulso` → mapear componentes → test de falsación (Tipo A/B/C).
+    ✅ COSECHA d06 EJECUTADA (2026-06-14 · plano en Diccionario): la TEORÍA se sostuvo. 🅰️ ICPI núcleo desde
+    SNAPSHOT vivo (cache_quira/sentinel/GM v5.5). 🅲 HALLAZGO MAYOR: **d06 = SÍNTESIS** (cross-domain por naturaleza ·
+    el ICPI promedia 6 vectores que viven en d02/d07/d08/d10/d12 · su dashboard = mapa de causalidad que enlaza,
+    no pantalla aislada · CONFIRMA ADR-026 Sintetizador). 🅱️ 2 rutas de datos a unificar (p_ejecutivo snapshot vs
+    p6_pulso data.loader) + 6 vectores hardcoded en p7_brecha. 🅲 "4 congruencias" (pol/oper/terr/ecosist) huérfanas →
+    MESA (no es dominio nuevo · candidata = Doctrina congruencia × macroeje). Desguace: p_ejecutivo = {d06 + d04 SAT + d05 Holding}.
+    SIGUIENTE d06: decidir las 4 congruencias (mesa) → contrato del dashboard d06 (síntesis con enlaces) → implementación.
     Regla (colega): d10 validó el MÉTODO; **d06 valida la TEORÍA** — sesión propia, en frío. Pregunta de apertura:
     ¿d06 se alimenta de pantallas reales sin reinterpretación? Pase o falle, las dos salidas son buenas.
     Detalle de arranque (loop · olas · doctrina interfaz · Mapa CNE) ↓ en los bloques de esta misma fecha.

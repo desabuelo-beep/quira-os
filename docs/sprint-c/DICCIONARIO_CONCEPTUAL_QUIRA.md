@@ -265,6 +265,28 @@ Todo ADN se redacta con estos 11 campos, en este orden (Cajón 10 = molde):
 | 10 | **Madre + operativos + ancla** | **Madre (concepto):** Cumplimiento sostenible de funciones. **Operativos REALES:** Cumplimiento Institucional (ICPI) + sus 6 vectores (ISP·IED·IGP·IOC·IET·PSG) + histórico. **Ancla motor:** `H73_OUTPUT_API` → `ICPI_GLOBAL` · `H12_MOTOR_ICPI` · `H12c_ICPI_HISTÓRICO` (2023-25) → ✅ **LIVE** *(ICPI 2026 vivo depende de `T_i_2026`/eSIGEF 2026 → ⏳ CHK-08)*. **NUNCA recalcular — solo leer (Regla 1).** |
 | 11 | **Expresión GeoTwin (Capa 3)** | **Capacidad por sede/territorio:** la salud institucional proyectada sobre las unidades territoriales. |
 
+### Plano de cosecha atómica — Cajón 06 (VERIFICADO contra pantallas reales · 2026-06-14)
+> d06 valida la TEORÍA (no solo el método). Hallazgo mayor: **d06 es un dominio SÍNTESIS** — sus pantallas
+> ejecutivas son cross-domain por NATURALEZA, no por error. La teoría aguantó y se explicó a sí misma.
+
+| Pantalla cantera | Componente REAL | Indicador → ancla | Veredicto |
+|---|---|---|---|
+| p_ejecutivo (tab) | TGI/ICPI/Riesgo headline + estado + Q&A autoridad | ICPI/TGI/SAT → **SNAPSHOT vivo** (cache_quira·sentinel·GM v5.5) | 🅰️ d06 núcleo · LIVE pipeline |
+| p_ejecutivo | Semáforos por entidad (GAD·BOMBEROS·EMAI·PATRONATO) | Ti ejecución por entidad | 🅱️ es **d05 Holding** |
+| p_ejecutivo | Señales SAT (SAT-0..VIII) + SLA institucional | alertas activas | 🅱️ es **d04 Alertas** |
+| p7_brecha (tab) | 6 vectores del ICPI (ISP·IED·IGP·IOC·IET·PSG) + ICGI-T + AVEP | data.loader + ⚠️ vectores **HARDCODED** | 🅰️ d06 (la causalidad) · ⚠️ valores fijos |
+| p6_pulso (tab) | **4 congruencias** (política·operativa·territorial·ecosistémica) | data.loader | 🅲 **concepto SIN hogar** en los 13 ADN |
+| p6_pulso | alertas·riesgo·holding·IET·PSG | data.loader (demo) | 🅱️ cross-domain + ruta de datos ≠ p_ejecutivo |
+
+**Veredicto del piloto d06:** la TEORÍA se sostuvo. (1) 🅰️ el ICPI núcleo se alimenta de un snapshot REAL del
+pipeline (no inventado). (2) 🅲 **d06 = SÍNTESIS**: el ICPI promedia 6 vectores que VIVEN en otros cajones
+(ISP→d02 · IGP→d08 · IOC→d07 · IET→d10 · PSG→d12). Su dashboard se diseña como **mapa de causalidad que enlaza
+a los otros**, no como pantalla aislada. Confirma ADR-026 (d06 = Sintetizador), no lo rompe. (3) 🅱️ DOS rutas
+de datos a unificar (p_ejecutivo snapshot/sentinel vivo vs p6_pulso data.loader demo) + 6 vectores hardcoded en
+p7_brecha → cablear al conector canónico. (4) 🅲 **4 congruencias huérfanas** (política/operativa/territorial/
+ecosistémica): NO es dominio nuevo (no dispara Protocolo) · candidata = expresión de la Doctrina "congruencia"
+a nivel macroeje · **decisión de mesa**.
+
 ---
 
 ## 📁 CAJÓN 07 · TRANSPARENCIA  (ADN anclado · mesa 2026-06-14)
