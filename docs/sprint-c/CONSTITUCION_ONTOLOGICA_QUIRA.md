@@ -152,6 +152,19 @@ latinoamericana. Ahí está el valor estratégico de QUIRA.
 > **S** Social → d12 (hogar) + d08 · d09 · d10 · **G** Governance → d03 · d06 · d07 · d09 + d01 · d02 · d05.
 > Una verdad → 13 dominios → **vista ESG para el Banco Verde**. d13 = el hogar; ESG = la lente.
 
+### 🔒 PROTOCOLO DE EXPANSIÓN ONTOLÓGICA (la ley del gate · mesa 2026-06-14)
+> La Mutabilidad permite crecer; el Protocolo impide que el crecimiento degrade la ontología en
+> un catálogo. Un dominio nuevo se anexa SOLO si cumple LAS 6 condiciones — todas, no algunas:
+>
+> 1. **Capacidad estatal universal, probada por exportabilidad** (sobrevive al colapso municipal → ministerio/banco/agencia).
+> 2. **Masa crítica de información propia** (datos huérfanos validados · ej. los 362 biofísicos de Sprint B).
+> 3. **Inexistencia de solapamiento** (ningún dominio vigente lo absorbe o modela adecuadamente).
+> 4. **Ancla a fuente real (Regla de Oro 3):** ancla a motor/corpus verificable o se declara "campo verde". PROHIBIDO crear un dominio para alojar un indicador inventado.
+> 5. **Obligación de propagación:** anexar OBLIGA a propagar a TODO el canon (Constitución · Diccionario · Matriz · Mapa de Anclaje · Tabla de Equivalencias · CLAUDE.md) + correr el check de consistencia. Un dominio a medio propagar fractura la ontología — el riesgo real, no el conceptual.
+> 6. **Consenso de mesa** (Director + fundadores).
+>
+> **Precedente:** d13 Ambiente (2026-06-14) cumplió las 6 y se propagó completo. Es el patrón.
+
 ## LOS 4 MACROEJES SISTÉMICOS (organización operativa vigente · cómo QUIRA entiende el Estado)
 
 | Macroeje | Dominios | Qué evalúa |

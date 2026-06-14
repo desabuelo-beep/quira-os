@@ -85,7 +85,11 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
     Propagado: Constitución (Capa 0.5/Macroeje 4/índice 13/nota Mutabilidad+ESG) · Diccionario (Matriz + ADN d13) ·
     CLAUDE.md (prohibición "D01-D12 inmutables" reconciliada al gate) · MAPA_ANCLAJE (d13) · Tabla v2.0 (+ESG).
     Ancla d13: ICODS (ODS · sub-eje a precisar) + corpus biofísico (Supabase 362) + riesgo (KB_RIESGOS) → LIVE corpus.
-    **13/13 ADN.** SIGUIENTE: cosecha atómica → dashboards. Auditoría de fórmulas (B) diferida · ICODS-ambiental a precisar.
+    **13/13 ADN.** ✅ PROTOCOLO DE EXPANSIÓN ONTOLÓGICA sellado (6 condiciones · ley del gate · Constitución):
+       capacidad universal+exportable · data huérfana · no solapamiento · ancla real (Regla 3) · obligación de
+       propagación+check · consenso de mesa. Cierra el slippery-slope; d13 es el precedente.
+    SIGUIENTE: **abrir Cosecha Atómica** (pantalla cantera → componente → indicador real → dominio → capacidad →
+       estado → dashboard) → dashboards. Auditoría de fórmulas (B) diferida · ICODS-ambiental a precisar.
 
 - **🔚 CIERRE DE SESIÓN 2026-06-13 (se acabó contexto · nuevo chat):**
     Pivote mayor: dejamos de diseñar dashboards y construimos LA TEORÍA DE QUIRA.
