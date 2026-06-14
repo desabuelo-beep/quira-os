@@ -46,6 +46,10 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
     (plan completo en `HOJA_DE_RUTA_MAESTRA §5`).
     **▶ PRIMER ACTO de la próxima sesión = COSECHA d06** (Salud Institucional · el corazón epistemológico:
     ICPI / ICGI-T / 6 vectores ISP·IED·IGP·IOC·IET·PSG · recibe `p7_brecha` · 32 términos Bloomberg).
+    🔎 Head-start (cosecha asomada 2026-06-14): `m1_situacion` = el WRAPPER de d06 — 3 tabs → `p_ejecutivo`
+    (Vista Ejecutiva) · `p6_pulso` (Pulso) · `p7_brecha` (Causas/6 vectores · ya cosechada). Otras d06: `p1_dashboard` ·
+    `p14_eficiencia` (IED) + cantera `_deprecated/p_vista_ejecutiva` (32 Bloomberg) · `_deprecated/p0_inicio`.
+    Arranque concreto: leer `p_ejecutivo` + `p6_pulso` → mapear componentes → test de falsación (Tipo A/B/C).
     Regla (colega): d10 validó el MÉTODO; **d06 valida la TEORÍA** — sesión propia, en frío. Pregunta de apertura:
     ¿d06 se alimenta de pantallas reales sin reinterpretación? Pase o falle, las dos salidas son buenas.
     Detalle de arranque (loop · olas · doctrina interfaz · Mapa CNE) ↓ en los bloques de esta misma fecha.
