@@ -55,6 +55,16 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
        Después: propagar Nomenclátor a Constitución/Hoja · Tabla de Equivalencias definitiva · cosecha.
     Método mesa confirmado: "revise, mejore, supere, ejecute" · indicadores SIEMPRE reales · Javo decide.
 
+- **🔩 ANCLAJE AL MOTOR — "ancla mínima" ejecutada (2026-06-14):** la ontología atada al Gold Master.
+    DECISIÓN mesa: anclar AHORA (no cajones-ciegos + merge) · auditoría de fórmulas (B) sigue DIFERIDA.
+    ✅ `scripts/dev/gm_surface_map.py` (determinista · $0 · sin LLM) → `docs/architecture/GM_SURFACE_DUMP.md`:
+       Excel v5.5 vivo = 123 hojas · 119 LLENAS · 0 muertas · 4 incompletas (H65/66/67 Ciudadano IN + H34b narrativa).
+    ✅ `docs/architecture/MAPA_ANCLAJE_MOTOR.md` = cajón→operativo→hoja motor→estado (LIVE/PENDIENTE/MISSING).
+    HALLAZGO: motor ~97% poblado · auditoría may-26 quedó STALE (H26 18→43 · H31 33→58 · H11b poblada 41/47).
+       Único hueco que toca cajones = cédula eSIGEF 2026 (H07_S5) → destraba d02/d03/d06 2026 a la vez (CHK-08).
+       MISSING reales = externos d12 (IGM RRHH/CNE · ODS5 PNUD). LLENA=poblada, NO verificada-correcta (=auditoría B).
+    SIGUIENTE: enriquecer Matriz Maestra + d01/d02/d10 con columna ancla → redactar d03→d12 ANCLADOS de origen.
+
 - **🔚 CIERRE DE SESIÓN 2026-06-13 (se acabó contexto · nuevo chat):**
     Pivote mayor: dejamos de diseñar dashboards y construimos LA TEORÍA DE QUIRA.
     "Primero la ontología, después la ingeniería" (mesa Javo+colega+académico).
