@@ -279,11 +279,11 @@ Todo ADN se redacta con estos 11 campos, en este orden (Cajón 10 = molde):
 | p6_pulso | alertas·riesgo·holding·IET·PSG | data.loader (demo) | 🅱️ cross-domain + ruta de datos ≠ p_ejecutivo |
 
 **Veredicto del piloto d06:** la TEORÍA se sostuvo. (1) 🅰️ el ICPI núcleo se alimenta de un snapshot REAL del
-pipeline (no inventado). (2) 🅲 **d06 = SÍNTESIS**: el ICPI promedia 6 vectores que VIVEN en otros cajones
+pipeline (no inventado). (2) 🅲 **d06 = SÍNTESIS**: el ICPI es el CIMIENTO y los índices superiores se posan ENCIMA cruzándolo — NUNCA lo promedian (Regla 1 · síntesis por RELACIÓN, no por promedio); sus vectores enlazan a otros cajones
 (ISP→d02 · IGP→d08 · IOC→d07 · IET→d10 · PSG→d12). Su dashboard se diseña como **mapa de causalidad que enlaza
 a los otros**, no como pantalla aislada. Confirma ADR-026 (d06 = Sintetizador), no lo rompe. (3) 🅱️ DOS rutas
 de datos a unificar (p_ejecutivo snapshot/sentinel vivo vs p6_pulso data.loader demo) + 6 vectores hardcoded en
-p7_brecha → cablear al conector canónico. (4) 🅲 **4 congruencias huérfanas** (política/operativa/territorial/
+p7_brecha → cablear al conector canónico. (4) ✅ **4 congruencias = Capa de Congruencia (sellada en Constitución · lectura relacional sobre el cimiento ICPI)** (política/operativa/territorial/
 ecosistémica): NO es dominio nuevo (no dispara Protocolo) · candidata = expresión de la Doctrina "congruencia"
 a nivel macroeje · **decisión de mesa**.
 

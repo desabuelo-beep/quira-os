@@ -152,6 +152,21 @@ latinoamericana. Ahí está el valor estratégico de QUIRA.
 > **S** Social → d12 (hogar) + d08 · d09 · d10 · **G** Governance → d03 · d06 · d07 · d09 + d01 · d02 · d05.
 > Una verdad → 13 dominios → **vista ESG para el Banco Verde**. d13 = el hogar; ESG = la lente.
 
+### 🔗 CAPA DE CONGRUENCIA (4 lentes relacionales · regla canónica del Excel · Javo 2026-06-14)
+> **Corrección canónica (Regla de Oro 1):** el **ICPI (d06) es el CIMIENTO** del análisis — la salud de la
+> maquinaria administrativa interna (¿el motor funciona o está trabado?). Los demás índices (TGI, impacto,
+> género, ambiente, los 6 vectores) son **capas RELACIONALES que se posan ENCIMA y lo CRUZAN con variables
+> externas — NUNCA lo promedian.** Si se promediaran, un motor interno colapsado se ocultaría tras una fachada
+> relacional costosa; al mantenerlos como capas independientes, **la verdad emerge** (motor colapsado sosteniendo
+> una fachada cara). Prohibido modelar el ICPI como promedio simple de índices.
+>
+> Las **4 CONGRUENCIAS** (halladas en `p6_pulso`, sin hogar previo) SON esa capa superior — la
+> **operacionalización de la Doctrina** (Capa 0: QUIRA mide la CONGRUENCIA de la cadena intención↔realidad),
+> leída en 4 planos: **Política** (la promesa/mandato) · **Operativa** (la gestión/ejecución) · **Territorial**
+> (el resultado en el suelo) · **Ecosistémica** (la sostenibilidad ambiental). NO son un dominio (no disparan el
+> Protocolo) ni un widget suelto — son el **estándar relacional de lectura** que cruza horizontalmente los 13
+> dominios sobre el cimiento ICPI. Hermana de ESG: ESG = E/S/G; Congruencia = la coherencia de la cadena en 4 planos.
+
 ### 🔒 PROTOCOLO DE EXPANSIÓN ONTOLÓGICA (la ley del gate · mesa 2026-06-14)
 > La Mutabilidad permite crecer; el Protocolo impide que el crecimiento degrade la ontología en
 > un catálogo. Un dominio nuevo se anexa SOLO si cumple LAS 6 condiciones — todas, no algunas:

@@ -52,10 +52,10 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
     Arranque concreto: leer `p_ejecutivo` + `p6_pulso` → mapear componentes → test de falsación (Tipo A/B/C).
     ✅ COSECHA d06 EJECUTADA (2026-06-14 · plano en Diccionario): la TEORÍA se sostuvo. 🅰️ ICPI núcleo desde
     SNAPSHOT vivo (cache_quira/sentinel/GM v5.5). 🅲 HALLAZGO MAYOR: **d06 = SÍNTESIS** (cross-domain por naturaleza ·
-    el ICPI promedia 6 vectores que viven en d02/d07/d08/d10/d12 · su dashboard = mapa de causalidad que enlaza,
+    el ICPI es el CIMIENTO y los índices relacionales se posan ENCIMA — NUNCA lo promedian (Regla 1 · corrección Javo); los vectores cruzan d02/d07/d08/d10/d12 · su dashboard = mapa de causalidad que enlaza,
     no pantalla aislada · CONFIRMA ADR-026 Sintetizador). 🅱️ 2 rutas de datos a unificar (p_ejecutivo snapshot vs
-    p6_pulso data.loader) + 6 vectores hardcoded en p7_brecha. 🅲 "4 congruencias" (pol/oper/terr/ecosist) huérfanas →
-    MESA (no es dominio nuevo · candidata = Doctrina congruencia × macroeje). Desguace: p_ejecutivo = {d06 + d04 SAT + d05 Holding}.
+    p6_pulso data.loader) + 6 vectores hardcoded en p7_brecha. ✅ "4 congruencias" (pol/oper/terr/ecosist) = **CAPA DE CONGRUENCIA** sobre el cimiento ICPI
+    (lectura relacional que opera la Doctrina · sellada en Constitución · NO es dominio · no dispara Protocolo). Desguace: p_ejecutivo = {d06 + d04 SAT + d05 Holding}.
     SIGUIENTE d06: decidir las 4 congruencias (mesa) → contrato del dashboard d06 (síntesis con enlaces) → implementación.
     Regla (colega): d10 validó el MÉTODO; **d06 valida la TEORÍA** — sesión propia, en frío. Pregunta de apertura:
     ¿d06 se alimenta de pantallas reales sin reinterpretación? Pase o falle, las dos salidas son buenas.
