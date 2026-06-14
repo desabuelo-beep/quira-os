@@ -206,21 +206,122 @@ Todo ADN se redacta con estos 11 campos, en este orden (Cajón 10 = molde):
 
 ---
 
-## ESQUELETO — Cajones 04-09, 11, 12 (pendientes de ADN completo · mismo nivel conceptual)
+## 📁 CAJÓN 04 · ALERTAS INSTITUCIONALES  (ADN anclado · mesa 2026-06-14)
 
-> d01 ✅ · d02 ✅ · d03 ✅ · d10 ✅ ya tienen ADN completo y **anclado** (arriba). Faltan
-> estos 8, en orden de mesa: d04 → d09 → d11 → d12. Cada uno con los **11 campos** + ancla
-> motor + cosecha atómica. Nombres = Nomenclátor. Indicadores = solo los del motor (concepto
-> puro arriba, métrica real + ancla abajo).
+| # | Campo | Contenido |
+|---|---|---|
+| 1 | **Capacidad Universal (0.5)** | **Anticipación** — detectar el riesgo operativo y legal antes de que se convierta en crisis. |
+| 2 | **Dominio Canónico** | Alertas Institucionales |
+| 3 | **Alias histórico / técnico** | Sistema de Alerta Temprana (SAT) · m2_alertas |
+| 4 | **Definición conceptual** | Dimensión de vigilancia preventiva: el sistema de detección temprana que identifica desviaciones, incumplimientos y exposiciones de riesgo institucional antes de que escalen. |
+| 5 | **Propósito** | Anticipar y priorizar los riesgos operativos y legales activos para habilitar la corrección preventiva, no la reacción tardía. |
+| 6 | **Pregunta estratégica** | ¿Qué riesgos institucionales están activos hoy, con qué severidad, y cuáles exigen intervención antes de volverse crisis? |
+| 7 | **Alcance (incluye)** | Metas sin respaldo de contratación (PAC), indicadores bajo umbral crítico, desvíos de participación y liquidez, y la cola priorizada de alertas activas. |
+| 8 | **Exclusiones (no incluye)** | La causa presupuestaria de fondo (→ d02) · el cumplimiento institucional que las alertas alimentan (→ d06) · la rendición formal del riesgo (→ d09). |
+| 9 | **Data central** | Cola priorizada del Sistema de Alerta Temprana + matriz de severidad por tipo de riesgo. |
+| 10 | **Madre + operativos + ancla** | **Madre (concepto):** Riesgo operativo y legal activo. **Operativos REALES:** Cola del Sistema de Alerta Temprana (SAT-0 · SAT-IV · SAT-V). **Ancla motor:** `H75_SAT_ENGINE` (14/14) · `H24_SAT-IV` (15/20) → ✅ **LIVE** · matriz de riesgo (4 categorías) → demo_data → ⚠️ HARDCODED (conectar a snapshot `H75`). |
+| 11 | **Expresión GeoTwin (Capa 3)** | **Pulsos de alerta geolocalizados:** los riesgos activos encendidos sobre la infraestructura crítica del cantón. |
+
+---
+
+## 📁 CAJÓN 05 · HOLDING E INTEGRACIÓN MUNICIPAL  (ADN anclado · mesa 2026-06-14)
+
+| # | Campo | Contenido |
+|---|---|---|
+| 1 | **Capacidad Universal (0.5)** | **Articulación** — gobernar el ecosistema de entidades y empresas públicas del cantón como un conjunto coherente. |
+| 2 | **Dominio Canónico** | Holding e Integración Municipal |
+| 3 | **Alias histórico / técnico** | Holding/Ecosistema Municipal · p2_holding |
+| 4 | **Definición conceptual** | Dimensión de gobernanza corporativa territorial: el desempeño agregado y la coordinación del conjunto de entidades, empresas públicas y unidades adscritas que ejecutan la gestión cantonal. |
+| 5 | **Propósito** | Medir la salud y la articulación del ecosistema institucional para evitar que la fragmentación entre entidades degrade el resultado conjunto. |
+| 6 | **Pregunta estratégica** | ¿El conjunto de entidades del cantón opera de forma articulada y con desempeño consistente, o hay piezas que arrastran al sistema? |
+| 7 | **Alcance (incluye)** | Desempeño comparado de las entidades y empresas públicas adscritas, su contribución al cumplimiento institucional y su grado de integración. |
+| 8 | **Exclusiones (no incluye)** | El cumplimiento de la entidad matriz aislada (→ d06) · la ejecución presupuestaria de cada entidad (→ d02) · la transparencia individual (→ d07). |
+| 9 | **Data central** | Matriz de desempeño por entidad del ecosistema municipal. |
+| 10 | **Madre + operativos + ancla** | **Madre (concepto):** Desempeño del ecosistema de entidades. **Operativos REALES:** Promedio de desempeño de entidades. **Ancla motor:** `H12d_ICPI_POR_ENTIDAD` (19/24) → ✅ **LIVE**. |
+| 11 | **Expresión GeoTwin (Capa 3)** | **Entidades por ubicación:** el mapa de las unidades del ecosistema y su desempeño territorial. |
+
+---
+
+## 📁 CAJÓN 06 · SALUD INSTITUCIONAL  (ADN anclado · indicador de cabecera · mesa 2026-06-14)
+
+| # | Campo | Contenido |
+|---|---|---|
+| 1 | **Capacidad Universal (0.5)** | **Sostenibilidad interna** — cumplir las funciones públicas de forma consistente, eficiente y sostenible en el tiempo. |
+| 2 | **Dominio Canónico** | Salud Institucional |
+| 3 | **Alias histórico / técnico** | Cumplimiento Institucional (ICPI) · m1_situacion |
+| 4 | **Definición conceptual** | Dimensión sintética de la salud del aparato público: la capacidad de la organización de sostener el cumplimiento de sus funciones combinando eficiencia, sostenibilidad financiera, observancia, participación y equidad. |
+| 5 | **Propósito** | Ofrecer la lectura integral del estado institucional — el indicador de cabecera que sintetiza los vectores causales en una sola señal de salud. |
+| 6 | **Pregunta estratégica** | ¿El gobierno local cumple sus funciones de forma sostenible y consistente, o hay un deterioro estructural en su capacidad institucional? |
+| 7 | **Alcance (incluye)** | El cumplimiento institucional global, su composición por vectores causales y su evolución histórica. |
+| 8 | **Exclusiones (no incluye)** | El detalle operativo de cada vector, que vive en su dominio (presupuesto → d02 · transparencia → d07 · participación → d08 · equidad → d12) · las alertas que lo amenazan (→ d04). |
+| 9 | **Data central** | Score de cumplimiento institucional + su descomposición por vectores + serie histórica. |
+| 10 | **Madre + operativos + ancla** | **Madre (concepto):** Cumplimiento sostenible de funciones. **Operativos REALES:** Cumplimiento Institucional (ICPI) + sus 6 vectores (ISP·IED·IGP·IOC·IET·PSG) + histórico. **Ancla motor:** `H73_OUTPUT_API` → `ICPI_GLOBAL` · `H12_MOTOR_ICPI` · `H12c_ICPI_HISTÓRICO` (2023-25) → ✅ **LIVE** *(ICPI 2026 vivo depende de `T_i_2026`/eSIGEF 2026 → ⏳ CHK-08)*. **NUNCA recalcular — solo leer (Regla 1).** |
+| 11 | **Expresión GeoTwin (Capa 3)** | **Capacidad por sede/territorio:** la salud institucional proyectada sobre las unidades territoriales. |
+
+---
+
+## 📁 CAJÓN 07 · TRANSPARENCIA  (ADN anclado · mesa 2026-06-14)
+
+| # | Campo | Contenido |
+|---|---|---|
+| 1 | **Capacidad Universal (0.5)** | **Verificabilidad** — hacer auditable y verificable la acción pública ante cualquier observador. |
+| 2 | **Dominio Canónico** | Transparencia |
+| 3 | **Alias histórico / técnico** | Transparencia Activa (LOTAIP) · p07_transparencia |
+| 4 | **Definición conceptual** | Dimensión de apertura verificable: el grado en que la información pública es accesible, oportuna, completa y consistente, de modo que la gestión pueda ser auditada por la ciudadanía y los órganos de control. |
+| 5 | **Propósito** | Cuantificar la apertura real (no declarativa) de la información pública para que la verificación ciudadana sea posible y la opacidad quede expuesta. |
+| 6 | **Pregunta estratégica** | ¿La información pública del cantón es accesible, oportuna y consistente de forma verificable, o hay opacidad que impide auditar la gestión? |
+| 7 | **Alcance (incluye)** | Cumplimiento formal de la LOTAIP (21 artículos), accesibilidad del portal, oportunidad temporal y consistencia de la información publicada. |
+| 8 | **Exclusiones (no incluye)** | La participación que la transparencia habilita (→ d08) · la rendición formal de cuentas (→ d09) · la contratación específica como dato presupuestario (→ d02). |
+| 9 | **Data central** | Matriz de cumplimiento LOTAIP 21/21 + métricas de accesibilidad/oportunidad/consistencia. |
+| 10 | **Madre + operativos + ancla** | **Madre (concepto):** Apertura verificable de la información. **Operativos REALES:** Transparencia activa (LOTAIP 21/21) · accesibilidad · oportunidad (DPE) · Observancia Contractual (IOC). **Ancla motor:** QTMP (Neo4j) C4/C5 · `H73_OUTPUT_API` (IOC) → ✅ **LIVE**. |
+| 11 | **Expresión GeoTwin (Capa 3)** | **Cumplimiento por entidad:** la apertura proyectada sobre las unidades del ecosistema. |
+
+---
+
+## 📁 CAJÓN 08 · PARTICIPACIÓN CIUDADANA  (ADN anclado · mesa 2026-06-14)
+
+| # | Campo | Contenido |
+|---|---|---|
+| 1 | **Capacidad Universal (0.5)** | **Inteligencia colectiva** — incorporar la voz ciudadana a la decisión pública. |
+| 2 | **Dominio Canónico** | Participación Ciudadana |
+| 3 | **Alias histórico / técnico** | Gobernanza Participativa · p16_gobernanza |
+| 4 | **Definición conceptual** | Dimensión de incidencia ciudadana: el grado en que los mecanismos de participación efectivamente influyen en las decisiones públicas, más allá de su existencia formal. |
+| 5 | **Propósito** | Medir la incidencia real de la ciudadanía en la gestión — cuántos mecanismos funcionan y qué territorios quedan sin voz. |
+| 6 | **Pregunta estratégica** | ¿La ciudadanía incide realmente en las decisiones públicas, y qué territorios o grupos quedan sin canal de participación? |
+| 7 | **Alcance (incluye)** | Mecanismos de participación activos (presupuesto participativo, sillas, audiencias), aportes ciudadanos procesados, y cobertura territorial de la voz. |
+| 8 | **Exclusiones (no incluye)** | La transparencia que habilita la participación (→ d07) · la rendición formal ante el CPCCS (→ d09) · la equidad de los grupos prioritarios (→ d12). |
+| 9 | **Data central** | Matriz de mecanismos de participación + aportes + cobertura parroquial de la voz. |
+| 10 | **Madre + operativos + ancla** | **Madre (concepto):** Incidencia de la ciudadanía. **Operativos REALES:** Gobernanza participativa (IGP) · parroquias sin voz · aportes de presupuesto participativo · resultado CPCCS. **Ancla motor:** `H73_OUTPUT_API` (IGP) · `H10c_RDC_APORTES` (132/134) · `H31_REPORTE_CPCCS` (58/65) → ✅ **LIVE**. |
+| 11 | **Expresión GeoTwin (Capa 3)** | **Participación por parroquia:** el mapa de dónde la ciudadanía incide y dónde no tiene voz. |
+
+---
+
+## 📁 CAJÓN 09 · RENDICIÓN DE CUENTAS  (ADN anclado · dominio terminal · mesa 2026-06-14)
+
+| # | Campo | Contenido |
+|---|---|---|
+| 1 | **Capacidad Universal (0.5)** | **Responsabilidad pública** — someter la gestión al control social y validarla públicamente. |
+| 2 | **Dominio Canónico** | Rendición de Cuentas |
+| 3 | **Alias histórico / técnico** | Circuito RDC Live · p17_rdc |
+| 4 | **Definición conceptual** | Dimensión de validación pública: el estado del proceso formal por el cual la gestión se somete al control social y al órgano rector, integrando la evidencia de todos los demás dominios. |
+| 5 | **Propósito** | Verificar que el gobierno cierra el ciclo democrático rindiendo cuentas con evidencia, no con autorreporte — el dominio terminal que consolida la responsabilidad. |
+| 6 | **Pregunta estratégica** | ¿El gobierno cierra el ciclo de responsabilidad pública con evidencia verificable, o la rendición es formal y autorreportada? |
+| 7 | **Alcance (incluye)** | Estado del circuito de rendición de cuentas, su checklist de requisitos, el resultado ante el CPCCS y el calendario del proceso. |
+| 8 | **Exclusiones (no incluye)** | Los datos de origen que la rendición consolida (viven en sus dominios) · la participación que la alimenta (→ d08) · la transparencia que la sostiene (→ d07). |
+| 9 | **Data central** | Estado del circuito RDC + checklist de cumplimiento + resultado CPCCS. |
+| 10 | **Madre + operativos + ancla** | **Madre (concepto):** Validación pública de la gestión. **Operativos REALES:** Estado del circuito de rendición (RDC) · resultado CPCCS · aportes consolidados. **Ancla motor:** `H73_OUTPUT_API` (RDC_SCORE) · `H10c_RDC_APORTES` (132/134) · `H31_REPORTE_CPCCS` (58/65) · circuito C-RDC (Neo4j) → ✅ **LIVE**. |
+| 11 | **Expresión GeoTwin (Capa 3)** | **Cobertura RDC territorial:** el alcance de la rendición proyectado sobre el cantón. |
+
+---
+
+## ESQUELETO — Cajones 11, 12 (pendientes de ADN completo · mismo nivel conceptual)
+
+> d01-d09 + d10 ✅ ya tienen ADN completo y **anclado** (arriba). Faltan **2** (Tanda 2):
+> d11 (campo verde · corpus PDOT, sin hoja GM dedicada) + d12 (PSG vivo + MISSING externos
+> IGM/ODS5). Mismos 11 campos + ancla motor + cosecha atómica. Nombres = Nomenclátor.
 
 | # | Cajón (canónico) | Capacidad (0.5) | Definición conceptual (1 línea — a pulir) | Madre (concepto) · operativos reales |
 |---|---|---|---|---|
-| 04 | Alertas Institucionales | Anticipación | Detección temprana de riesgos institucionales | Riesgo operativo y legal activo · cola del Sistema de Alerta Temprana |
-| 05 | Holding e Integración Municipal | Articulación | Desempeño del conjunto de entidades de gobernanza del cantón | Desempeño del ecosistema · promedio de entidades |
-| 06 | Salud Institucional | Sostenibilidad interna | Cumplir funciones de forma consistente, eficiente y sostenible | Cumplimiento sostenible · Cumplimiento Institucional (ICPI) |
-| 07 | Transparencia | Verificabilidad | Acceso oportuno, verificable y comprensible a la información pública | Apertura verificable · Transparencia activa (LOTAIP 21/21) |
-| 08 | Participación Ciudadana | Inteligencia colectiva | Incidencia de la ciudadanía en las decisiones públicas | Incidencia ciudadana · Gobernanza participativa (IGP) |
-| 09 | Rendición de Cuentas | Responsabilidad pública | Validación pública de la gestión ante el control y la ciudadanía | Validación pública · estado del circuito de rendición (RDC) |
 | 11 | Desarrollo Económico Territorial | Dinamización | Dimensión económica: producción, empleo y desarrollo del territorio | Capacidad productiva y de empleo · PEA / cadenas de valor (PDOT) |
 | 12 | Inclusión, Equidad y Género | Inclusión y equidad | Garantizar los derechos de los grupos de atención prioritaria | Protección de grupos prioritarios · Presupuesto con enfoque de género (PSG) |
 
