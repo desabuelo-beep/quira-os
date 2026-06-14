@@ -88,8 +88,15 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
     **13/13 ADN.** ✅ PROTOCOLO DE EXPANSIÓN ONTOLÓGICA sellado (6 condiciones · ley del gate · Constitución):
        capacidad universal+exportable · data huérfana · no solapamiento · ancla real (Regla 3) · obligación de
        propagación+check · consenso de mesa. Cierra el slippery-slope; d13 es el precedente.
-    SIGUIENTE: **abrir Cosecha Atómica** (pantalla cantera → componente → indicador real → dominio → capacidad →
-       estado → dashboard) → dashboards. Auditoría de fórmulas (B) diferida · ICODS-ambiental a precisar.
+    SIGUIENTE FASE: **COSECHA ATÓMICA** (ontología→ingeniería · el freeze de código se levanta — fundación cerrada).
+       SECUENCIA DISCIPLINADA (NO saltar a código, lección del refactor L2 atascado): (1) inventario REAL de la
+       pantalla cantera (leyéndola, no adivinando) → matriz [pantalla·componente·indicador·dominio·capacidad·
+       estado(Mapa)·dashboard] · (2) contrato del dashboard (maqueta texto) → consenso mesa · (3) código ·
+       (4) gate Bloomberg 0 + verificación VISUAL en deploy. Cruza MAPA_NAVEGACION × MAPA_ANCLAJE.
+       PILOTO: d10 Cobertura (plano sembrado en Diccionario + conecta GeoTwin).
+       ⚠️ ANCLAS — verificar c/u contra el Mapa (el académico deriva): cobertura agua/saneamiento d10 = INEC/corpus/
+       loader (NO H73) · H73 solo IET. Estilo "Bloomberg" = fase UI, no cosecha. Dashboards se nombran por dominio.
+       Auditoría de fórmulas (B) diferida · ICODS-ambiental a precisar.
 
 - **🔚 CIERRE DE SESIÓN 2026-06-13 (se acabó contexto · nuevo chat):**
     Pivote mayor: dejamos de diseñar dashboards y construimos LA TEORÍA DE QUIRA.
