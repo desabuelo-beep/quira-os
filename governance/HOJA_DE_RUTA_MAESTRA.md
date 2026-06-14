@@ -139,8 +139,9 @@ botón "🛰️ Ver en Territorio" que espacializa SU indicador madre — el mis
 mutando según el dominio activo. (El Cajón 10 se purificó: "Cobertura de Servicios
 e Infraestructura" — dejó de "ser el mapa".) Detalle + Matriz de Espacialización:
 `docs/sprint-c/DICCIONARIO_CONCEPTUAL_QUIRA.md §GeoTwin`.
-Implementación honesta: GeoTwin v1 = 2D Folium + motor narrativo F1 (ya existe) ·
-GeoTwin 3D (prismas PyDeck + PostGIS + DEM) = futuro, requiere capa geoespacial.
+Evolución (diseñada y documentada · `docs/geotwin/GEOTWIN_PLAN_IMPLEMENTACION.md`):
+v1 territorializa (2D Folium + F1 · parcial hoy) → v2 visualiza 3D (PyDeck+PostGIS+DEM ·
+stack $0 · DISEÑADO, implementación DIFERIDA — no "futuro") → v3 predice (IA · con tracción).
 
 **⚠️ DECISIÓN DE NAMING PENDIENTE (Javo 2026-06-13):** "Centro de Mando" es
 nombre ejecutivo/militar — sirve para Operaciones e Institucional, NO para

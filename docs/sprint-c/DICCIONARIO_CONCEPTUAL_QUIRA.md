@@ -110,14 +110,14 @@ Nombres públicos: Tabla de Equivalencias. Indicadores: solo los del motor.
 | 12 Protección Social & Género | ¿Dónde la brecha? | Presupuesto con enfoque de género (PSG) × grupos prioritarios por sector |
 | (…todos los demás) | ¿qué pasa? | …su indicador madre, proyectado en el mapa |
 
-### Implementación — honestidad de fases (Director)
+### Evolución de fases (diseñada y documentada — `docs/geotwin/GEOTWIN_PLAN_IMPLEMENTACION.md`)
 ```
-GeoTwin v1 · AHORA   → capa transversal con lo que YA existe: mapa 2D Folium +
-                       motor narrativo F1 (clic → explica) + el botón de anclaje
-                       por cajón. El mapa muta sus datos según el dominio activo.
-GeoTwin 3D · DESPUÉS → prismas/extrusión PyDeck + polígonos PostGIS + DEM.
-                       Requiere construir la capa geoespacial (hoy hay centroides,
-                       no polígonos). NO se promete como inmediato (ver docs/geotwin).
+GeoTwin v1 · TERRITORIALIZA → mapa 2D Folium + motor narrativo F1 (clic → explica).
+  Parcial HOY. Pendiente: botón "Ver en Territorio" por cajón + mapa que muta por dominio.
+GeoTwin v2 · VISUALIZA 3D   → prismas PyDeck + polígonos PostGIS + DEM NASA. Stack $0,
+  DISEÑADO Y DOCUMENTADO · implementación DIFERIDA (no "futuro/fantasía" — fase posterior
+  de ejecución, tras consolidar la Fundación Ontológica). Falta: shapefiles PUGS + DEM + PostGIS.
+GeoTwin v3 · PREDICE        → series temporales + IA → "¿qué ocurrirá?" (con tracción).
 ```
 
 ---
