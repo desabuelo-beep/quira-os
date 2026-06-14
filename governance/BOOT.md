@@ -40,6 +40,20 @@ dashboards, es lo que se define UNA vez. Sprint C: ontología antes que ingenier
 BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo que no se mueve.
 
 ## AHORA (actualizar al cierre)
+- **🧬 SESIÓN 2026-06-14 — LAUNCH PAD DE LOS 12 ADN ARMADO (mesa Javo+colega+académico):**
+    Fundación lista para REDACTAR los ADN. Todo sellado en `docs/sprint-c/DICCIONARIO_CONCEPTUAL_QUIRA.md`:
+    ✅ NOMENCLÁTOR CANÓNICO — 12 nombres oficiales + alias histórico/backend (FUENTE ÚNICA de nombres).
+       Renombrados: d03 Gobernanza del Mandato · d05 Holding e Integración Municipal · d12 Inclusión,
+       Equidad y Género. ⚠️ PENDIENTE: propagar a Constitución §índice + Hoja de Ruta (aún citan viejos).
+    ✅ PLANTILLA MADRE elevada 9→11 CAMPOS (Capacidad 0.5 → Dominio → … → Expresión GeoTwin).
+       Cajón 10 re-sellado como molde definitivo. CONVENCIÓN SELLADA (fallo Javo): indicador madre =
+       CONCEPTO puro, NUNCA "Índice de…" (Regla Oro 3 · evitó el 4º índice inventado del académico).
+    ✅ MATRIZ MAESTRA (idea colega) = índice de la ontología: Capacidad↕Dominio↕Madre↕Operativos↕GeoTwin.
+    ✅ d01 Planificación Estratégica = primer ADN completo bajo la nueva arquitectura (revisado por mesa).
+    SIGUIENTE: redactar d02→d09 → d11 → d12 (10 ADN restantes), uno por uno, propuesta→mesa→siguiente.
+       Después: propagar Nomenclátor a Constitución/Hoja · Tabla de Equivalencias definitiva · cosecha.
+    Método mesa confirmado: "revise, mejore, supere, ejecute" · indicadores SIEMPRE reales · Javo decide.
+
 - **🔚 CIERRE DE SESIÓN 2026-06-13 (se acabó contexto · nuevo chat):**
     Pivote mayor: dejamos de diseñar dashboards y construimos LA TEORÍA DE QUIRA.
     "Primero la ontología, después la ingeniería" (mesa Javo+colega+académico).
