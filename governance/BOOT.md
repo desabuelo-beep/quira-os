@@ -29,6 +29,12 @@ Diferenciador: Plan CNE + NLP discurso RDC = demagogia expuesta. Ventana: **elec
 NOV-2026**. Negocio central = complementario (cooperación/certificación/estándar), no licencias.
 Detalle completo: `HOJA_DE_RUTA_MAESTRA.md §0`.
 
+## 📜 CONSTITUCIÓN ONTOLÓGICA → `docs/sprint-c/CONSTITUCION_ONTOLOGICA_QUIRA.md`
+**Define QUÉ ES QUIRA (capa 0 Doctrina + 4 macroejes + 12 dominios).** QUIRA mide la
+CONGRUENCIA de la cadena PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO y
+encuentra las BRECHAS. Los 12 dominios cambian; la Doctrina permanece. Esto, no los
+dashboards, es lo que se define UNA vez. Sprint C: ontología antes que ingeniería.
+
 ## 🗺️ HOJA DE RUTA COMPLETA → `governance/HOJA_DE_RUTA_MAESTRA.md`
 **Para la RUTA (qué sigue, sprints, productos, GeoTwin 3D, Ciudadana, CAF): leer ese archivo.**
 BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo que no se mueve.
