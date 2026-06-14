@@ -1,4 +1,4 @@
-# DICCIONARIO CONCEPTUAL QUIRA — Fundación Ontológica de los 12 Cajones
+# DICCIONARIO CONCEPTUAL QUIRA — Fundación Ontológica de los 13 Cajones
 **Sprint C · 2026-06-13 (actualizado 2026-06-14) · el documento fundacional · nivel estándar LAC (CAF/BID)**
 
 > Antes de diseñar un solo dashboard, se define QUÉ representa cada dominio de
@@ -97,6 +97,7 @@ Género"). Propagar en pase siguiente para no fracturar la ontología entre docs
 | d10 | Acceso colectivo | Cobertura de Servicios e Infraestructura | Acceso territorial a bienes públicos | Cobertura agua/saneamiento/recolección (INEC) · NBI (INEC) · Equidad Territorial (Gold Master) · inversión p.c. (eSIGEF) | Déficit estructural por polígono (NBI) |
 | d11 | Dinamización | Desarrollo Económico Territorial | Capacidad productiva y de empleo del territorio | PEA / cadenas de valor (PDOT) | Tejido productivo territorial |
 | d12 | Inclusión y equidad | Inclusión, Equidad y Género | Protección de los grupos prioritarios | Presupuesto con enfoque de género (PSG) | Geografía de la equidad (PSG × grupos) |
+| d13 | Resiliencia | Sostenibilidad y Resiliencia Ambiental | Integridad ecológica y resiliencia del territorio | ODS ambientales (ICODS) · riesgo biofísico (PDOT) · conservación | Vulnerabilidad ecológica (riesgo × asentamientos) |
 
 ---
 
@@ -350,11 +351,35 @@ Todo ADN se redacta con estos 11 campos, en este orden (Cajón 10 = molde):
 
 ---
 
-## ✅ LOS 12 ADN — COMPLETOS Y ANCLADOS (fundación ontológica cerrada · 2026-06-14)
+## 📁 CAJÓN 13 · SOSTENIBILIDAD Y RESILIENCIA AMBIENTAL  (ADN anclado · 1er ejercicio de Mutabilidad · escudo ESG · mesa 2026-06-14)
 
-Los 12 dominios tienen ADN de 11 campos, nombre canónico y **ancla al motor con estado**.
+> **Primer dominio anexado vía la Declaración de Mutabilidad.** Da casa al dato
+> biofísico huérfano (362 indicadores · Sprint B) y completa el ESG material del
+> Macroeje 4. Gemelo de género (d12) en cooperación: ambos son los mayores imanes
+> de financiamiento climático/social (Banco Verde CAF). Pasó el gate (capacidad
+> distinta + data huérfana propia).
+
+| # | Campo | Contenido |
+|---|---|---|
+| 1 | **Capacidad Universal (0.5)** | **Resiliencia** — proteger el patrimonio natural, mitigar el cambio climático y adaptar el territorio ante riesgos biofísicos y ambientales. |
+| 2 | **Dominio Canónico** | Sostenibilidad y Resiliencia Ambiental |
+| 3 | **Alias histórico / técnico** | componente_biofisico · p11_ods (eje ambiental) |
+| 4 | **Definición conceptual** | Dimensión de preservación, mitigación e integridad ecológica: la correspondencia entre las presiones antrópicas sobre el entorno y la capacidad institucional de sostener el equilibrio ecosistémico y adaptar el territorio al riesgo climático. |
+| 5 | **Propósito** | Monitorear la degradación de los activos naturales, garantizar la adaptación al cambio climático y activar las alarmas de riesgo biofísico — habilitando el acceso al financiamiento climático internacional. |
+| 6 | **Pregunta estratégica** | ¿Qué tan efectiva es la intervención pública para mitigar la vulnerabilidad ambiental del territorio y conservar sus recursos vitales frente a la presión del desarrollo? |
+| 7 | **Alcance (incluye)** | Conservación de ecosistemas y microcuencas, deforestación y uso del suelo, gestión de riesgo biofísico (deslizamientos, inundación, sismo), mitigación de huella de carbono y cumplimiento de los ODS ambientales (6 Agua · 13 Clima · 14/15 Ecosistemas). |
+| 8 | **Exclusiones (no incluye)** | Redes urbanas de alcantarillado doméstico como servicio (→ d10) · los fondos verdes que financian la acción (→ d02) · las alertas operativas institucionales (→ d04) · la vulnerabilidad climática de los grupos prioritarios (→ d12, hilo compartido). |
+| 9 | **Data central** | Inventario biofísico del PDOT (corpus) + capa de riesgo georreferenciada (KB_RIESGOS) + metas ODS ambientales. |
+| 10 | **Madre + operativos + ancla** | **Madre (concepto):** Integridad ecológica y resiliencia del territorio. **Operativos REALES:** Cumplimiento de ODS ambientales (ICODS · sub-eje) · susceptibilidad a riesgos naturales (PDOT) · estado de conservación biofísico. **Ancla motor:** ICODS → `H73_OUTPUT_API` (ODS · sub-eje ambiental a precisar) · corpus biofísico (Supabase · 362 ind) · capa de riesgo (KB_RIESGOS) → ✅ **LIVE (corpus/riesgo)** · ⚠️ desglose ODS-ambiental del motor a confirmar (NO inventar el sub-índice). |
+| 11 | **Expresión GeoTwin (Capa 3)** | **Vulnerabilidad ecológica:** superposición de degradación del suelo + áreas de conservación + riesgo (deslave/inundación/estrés hídrico) sobre los asentamientos humanos — la pantalla de negociación de créditos climáticos con CAF. |
+
+---
+
+## ✅ LOS 13 ADN — COMPLETOS Y ANCLADOS (fundación + 1er ejercicio de Mutabilidad · 2026-06-14)
+
+Los 13 dominios tienen ADN de 11 campos, nombre canónico y **ancla al motor con estado**.
 Resumen de anclaje (detalle vivo en `docs/architecture/MAPA_ANCLAJE_MOTOR.md`):
-- **✅ LIVE (núcleo):** d01 · d03 · d05 · d06 · d07 · d08 · d09 · d10 · d12-PSG · d02 (ISP/IED/elegibilidad).
+- **✅ LIVE (núcleo):** d01 · d03 · d05 · d06 · d07 · d08 · d09 · d10 · d12-PSG · d13 (biofísico/riesgo corpus · ICODS a precisar) · d02 (ISP/IED/elegibilidad).
 - **⏳ PENDIENTE 2026:** d02 ejecución · d03 IFE-E · d06 ICPI 2026 — un solo hueco: cédula eSIGEF 2026 (CHK-08).
 - **⚠️ HARDCODED:** d04 matriz de riesgo (conectar a snapshot `H75`).
 - **🌱 campo verde:** d11 (corpus PDOT · sin hoja GM dedicada · no inventar madre del motor).

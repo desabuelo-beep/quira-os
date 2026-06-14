@@ -20,7 +20,8 @@ Detalle: `docs/adr/ADR-023` (3 niveles, inmutable).
 6. **Repo PRIVADO.** Credenciales solo en `.streamlit/secrets.toml` local. Nunca al repo.
 
 ## PROHIBICIONES
-NUNCA: hardcodear sin snapshot · agregar dominio nuevo (D01-D12 inmutables) · agregar items al
+NUNCA: hardcodear sin snapshot · agregar un dominio que NO pase la prueba de exportabilidad (Mutabilidad:
+la Doctrina es inmutable, los dominios son variables CON gate — Constitución §Mutabilidad · d13 Ambiente = 1er ejercicio) · agregar items al
 sidebar Ejecutivo · exponer QTMP/ACK IDs en UI · lenguaje acusatorio (incumplió/violó/ilegal) ·
 inventar artículos de ley · construir un motor de cálculo paralelo al Gold Master.
 

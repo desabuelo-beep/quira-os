@@ -108,6 +108,7 @@ del motor — no inventados.)
 | **4 Territorio** | Capacidad de **acceso colectivo** (distribuir bienes públicos en el suelo) | d10 Cobertura de Servicios e Infraestructura | Cobertura agua/saneamiento (INEC) · NBI |
 | | Capacidad de **dinamización** (potenciar tejido productivo y empleo) | d11 Desarrollo Económico Territorial | PEA / cadenas de valor (PDOT) |
 | | Capacidad de **inclusión y equidad** (proteger grupos prioritarios) | d12 Inclusión, Equidad y Género | Presupuesto con enfoque de género (PSG) |
+| | Capacidad de **resiliencia** (proteger el patrimonio natural · adaptar al clima) | d13 Sostenibilidad y Resiliencia Ambiental | ICODS (ODS ambientales) · biofísico/riesgo (PDOT) |
 
 ### Expresión GeoTwin de cada capacidad (Capa 0.5 ↔ Capa 3)
 Cada capacidad se espacializa. Ej.: Trayectoria → cumplimiento territorial de
@@ -140,6 +141,17 @@ latinoamericana. Ahí está el valor estratégico de QUIRA.
 > Energética, **nuevos dominios serán anexados sin alterar la Doctrina QUIRA.**
 > Lo permanente es la Capa 0; los dominios son variables.
 
+**🔓 PRIMER EJERCICIO DE MUTABILIDAD (2026-06-14): d13 Sostenibilidad y Resiliencia Ambiental.**
+> El **GATE** (no se agrega un dominio "porque sí"): un dominio entra SOLO si **(a)** pasa la prueba de
+> exportabilidad como capacidad distinta y **(b)** tiene data propia hoy huérfana. d13 cumple ambas —
+> "Resiliencia" es capacidad central de un Ministerio de Ambiente, y los **362 indicadores biofísicos** de
+> Sprint B no tenían cajón. El número (12→13) no es sagrado; el gate sí. *(Reconcilia la prohibición de CLAUDE.md.)*
+>
+> **VISTA ESG** (lente CAF/BID/PNUD · NO es un cajón · cruza los dominios):
+> **E** Environmental → d13 (hogar) + d02 fondos verdes · d04 riesgo natural · d10 agua · d01 ODS ·
+> **S** Social → d12 (hogar) + d08 · d09 · d10 · **G** Governance → d03 · d06 · d07 · d09 + d01 · d02 · d05.
+> Una verdad → 13 dominios → **vista ESG para el Banco Verde**. d13 = el hogar; ESG = la lente.
+
 ## LOS 4 MACROEJES SISTÉMICOS (organización operativa vigente · cómo QUIRA entiende el Estado)
 
 | Macroeje | Dominios | Qué evalúa |
@@ -147,7 +159,7 @@ latinoamericana. Ahí está el valor estratégico de QUIRA.
 | **1 · Dirección Estratégica y Sustentabilidad** | d01 Planificación Estratégica · d02 Presupuesto & Financiamiento · d03 Gobernanza del Mandato | Viabilidad financiera + traducción de la voluntad política en asignaciones reales |
 | **2 · Capacidad Operativa y Mitigación** | d04 Alertas Institucionales · d05 Holding e Integración Municipal · d06 Salud Institucional | Salud interna del aparato municipal + prevención de crisis |
 | **3 · Transparencia Democrática y Control Social** | d07 Transparencia · d08 Participación Ciudadana · d09 Rendición de Cuentas | Apertura a la ciudadanía + rendición de cuentas |
-| **4 · Despliegue Territorial e Impacto** | d10 Cobertura de Servicios e Infraestructura · d11 Desarrollo Económico Territorial · d12 Inclusión, Equidad y Género | Efectividad material de la política sobre el suelo físico |
+| **4 · Despliegue Territorial e Impacto** | d10 Cobertura de Servicios e Infraestructura · d11 Desarrollo Económico Territorial · d12 Inclusión, Equidad y Género · d13 Sostenibilidad y Resiliencia Ambiental | Efectividad material + integridad ecológica del territorio (ESG completo) |
 
 ### Doctrina GeoTwin — la capa EPISTEMOLÓGICA (no solo tecnológica)
 GeoTwin no es un mapa, ni un SIG, ni una visualización. Es **donde la Doctrina
@@ -177,7 +189,7 @@ Los componentes del PDOT estructuran la base de GeoTwin; los dominios son la cap
 
 ---
 
-## ÍNDICE DE LOS 12 DOMINIOS (ADN completo en `DICCIONARIO_CONCEPTUAL_QUIRA.md`)
+## ÍNDICE DE LOS 13 DOMINIOS (12 originales + d13 Ambiente vía Mutabilidad · ADN completo en `DICCIONARIO_CONCEPTUAL_QUIRA.md`)
 
 > **Nombres canónicos = Nomenclátor del Diccionario** (`DICCIONARIO_CONCEPTUAL_QUIRA.md §Nomenclátor`). Esta tabla ya usa esos nombres oficiales; los alias históricos viven en el Nomenclátor.
 
@@ -195,6 +207,7 @@ Los componentes del PDOT estructuran la base de GeoTwin; los dominios son la cap
 | 10 | Cobertura de Servicios e Infraestructura | Acceso territorial a bienes públicos | 4 |
 | 11 | Desarrollo Económico Territorial | Capacidad productiva y de empleo del territorio | 4 |
 | 12 | Inclusión, Equidad y Género | Protección de los grupos de atención prioritaria | 4 |
+| 13 | Sostenibilidad y Resiliencia Ambiental | Integridad ecológica y resiliencia climática del territorio | 4 |
 
 ---
 
