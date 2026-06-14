@@ -314,16 +314,54 @@ Todo ADN se redacta con estos 11 campos, en este orden (Cajón 10 = molde):
 
 ---
 
-## ESQUELETO — Cajones 11, 12 (pendientes de ADN completo · mismo nivel conceptual)
+## 📁 CAJÓN 11 · DESARROLLO ECONÓMICO TERRITORIAL  (ADN anclado · campo verde · mesa 2026-06-14)
 
-> d01-d09 + d10 ✅ ya tienen ADN completo y **anclado** (arriba). Faltan **2** (Tanda 2):
-> d11 (campo verde · corpus PDOT, sin hoja GM dedicada) + d12 (PSG vivo + MISSING externos
-> IGM/ODS5). Mismos 11 campos + ancla motor + cosecha atómica. Nombres = Nomenclátor.
+| # | Campo | Contenido |
+|---|---|---|
+| 1 | **Capacidad Universal (0.5)** | **Dinamización** — potenciar el tejido productivo y el empleo del territorio. |
+| 2 | **Dominio Canónico** | Desarrollo Económico Territorial |
+| 3 | **Alias histórico / técnico** | Ecosistema Productivo Territorial · (En Const.) |
+| 4 | **Definición conceptual** | Dimensión de vitalidad económica del territorio: la capacidad del cantón de sostener producción, empleo, cadenas de valor y relevo generacional en su base productiva. |
+| 5 | **Propósito** | Caracterizar el tejido económico territorial y sus brechas (empleo, cadenas, materialización de proyectos) para orientar la política de dinamización productiva. |
+| 6 | **Pregunta estratégica** | ¿El territorio sostiene un tejido productivo dinámico y con empleo, o arrastra brechas estructurales (informalidad, relevo generacional roto, proyectos no materializados)? |
+| 7 | **Alcance (incluye)** | PEA y empleo, cadenas de valor y vocación productiva, tenencia y uso económico del suelo, y el estado de materialización de los proyectos estratégicos. *(Estado de materialización planificado vs construido = dimensión candidata · G-27.)* |
+| 8 | **Exclusiones (no incluye)** | La cobertura de servicios e infraestructura física (→ d10) · el presupuesto que financia la inversión (→ d02) · la equidad de los grupos prioritarios (→ d12). |
+| 9 | **Data central** | Caracterización económica territorial extraída del PDOT (corpus) + indicadores de empleo/PEA. |
+| 10 | **Madre + operativos + ancla** | **Madre (concepto):** Capacidad productiva y de empleo del territorio. **Operativos REALES:** PEA · cadenas de valor · relevo generacional agro (PDOT). **Ancla motor:** corpus PDOT económico (139 indicadores · Supabase C1) → ✅ **LIVE (corpus)**. ⚠️ **SIN hoja GM dedicada** — el motor aún NO calcula un indicador madre económico (campo verde · candidato a futura métrica del Gold Master · NO inventar hoy). |
+| 11 | **Expresión GeoTwin (Capa 3)** | **Tejido productivo territorial:** la actividad económica, las cadenas y los proyectos (materializados vs estancados) proyectados sobre el suelo. |
 
-| # | Cajón (canónico) | Capacidad (0.5) | Definición conceptual (1 línea — a pulir) | Madre (concepto) · operativos reales |
-|---|---|---|---|---|
-| 11 | Desarrollo Económico Territorial | Dinamización | Dimensión económica: producción, empleo y desarrollo del territorio | Capacidad productiva y de empleo · PEA / cadenas de valor (PDOT) |
-| 12 | Inclusión, Equidad y Género | Inclusión y equidad | Garantizar los derechos de los grupos de atención prioritaria | Protección de grupos prioritarios · Presupuesto con enfoque de género (PSG) |
+---
+
+## 📁 CAJÓN 12 · INCLUSIÓN, EQUIDAD Y GÉNERO  (ADN anclado · PD-GEN-01 · mesa 2026-06-14)
+
+| # | Campo | Contenido |
+|---|---|---|
+| 1 | **Capacidad Universal (0.5)** | **Inclusión y equidad** — proteger y garantizar los derechos de los grupos de atención prioritaria. |
+| 2 | **Dominio Canónico** | Inclusión, Equidad y Género |
+| 3 | **Alias histórico / técnico** | Protección Social & Género · p19_genero |
+| 4 | **Definición conceptual** | Dimensión de equidad y protección: la capacidad del Estado de garantizar derechos y cerrar brechas de los grupos de atención prioritaria, primariamente sobre el territorio (PD-GEN-01: 80% territorial / 20% institucional). |
+| 5 | **Propósito** | Medir la equidad institucional (presupuesto con enfoque de género) y las brechas territoriales de los grupos prioritarios, para orientar la protección hacia donde la brecha duele. |
+| 6 | **Pregunta estratégica** | ¿El gobierno protege a los grupos de atención prioritaria con presupuesto real y cierra las brechas territoriales donde la vulnerabilidad se concentra? |
+| 7 | **Alcance (incluye)** | Presupuesto con enfoque de género (capacidad institucional · 20%) y las brechas territoriales de los grupos prioritarios (violencia, cuidados, empleo, jefatura femenina · 80% · vía PDOT). *(PD-GEN-01.)* |
+| 8 | **Exclusiones (no incluye)** | La participación ciudadana general (→ d08) · la cobertura de servicios básicos no desagregada por grupo (→ d10) · el presupuesto global (→ d02). |
+| 9 | **Data central** | Presupuesto con enfoque de género + matriz de brechas territoriales de grupos prioritarios (PDOT). |
+| 10 | **Madre + operativos + ancla** | **Madre (concepto):** Protección de los grupos prioritarios. **Operativos REALES:** Presupuesto con enfoque de género (PSG) · brechas territoriales (violencia/cuidados/empleo). **Ancla motor:** PSG → `H73_OUTPUT_API` (`PSG_EJECUCION`) → ✅ **LIVE** · brechas territoriales → corpus PDOT (Supabase) → ✅ LIVE. ❌ **MISSING** (externos · gestión cooperación): IGM-A/B (RRHH/DAF) · IGM-C (PNUD/INEC) · IGM-F (CNE) · ODS 5.x (6/6 · PNUD/SENPLADES). |
+| 11 | **Expresión GeoTwin (Capa 3)** | **Geografía de la equidad:** el PSG y los grupos prioritarios cruzados con la densidad de vulnerabilidad territorial — el **Pin Morado** de PD-GEN-01. |
+
+---
+
+## ✅ LOS 12 ADN — COMPLETOS Y ANCLADOS (fundación ontológica cerrada · 2026-06-14)
+
+Los 12 dominios tienen ADN de 11 campos, nombre canónico y **ancla al motor con estado**.
+Resumen de anclaje (detalle vivo en `docs/architecture/MAPA_ANCLAJE_MOTOR.md`):
+- **✅ LIVE (núcleo):** d01 · d03 · d05 · d06 · d07 · d08 · d09 · d10 · d12-PSG · d02 (ISP/IED/elegibilidad).
+- **⏳ PENDIENTE 2026:** d02 ejecución · d03 IFE-E · d06 ICPI 2026 — un solo hueco: cédula eSIGEF 2026 (CHK-08).
+- **⚠️ HARDCODED:** d04 matriz de riesgo (conectar a snapshot `H75`).
+- **🌱 campo verde:** d11 (corpus PDOT · sin hoja GM dedicada · no inventar madre del motor).
+- **❌ MISSING (externos):** d12 IGM/ODS5 (gestión de cooperación, no falla del motor).
+
+**SIGUIENTE (orden de mesa):** Tabla de Equivalencias definitiva → cosecha atómica → recién dashboards.
+La auditoría de fórmulas del motor (B) sigue **diferida** hasta su disparador.
 
 ---
 

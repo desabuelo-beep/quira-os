@@ -70,8 +70,9 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
     ✅ TANDA 1 sellada (2026-06-14): d04·d05·d06·d07·d08·d09 anclados — todos ✅ LIVE
        (d04 riesgo-matrix ⚠️HARDCODED · d06 ICPI 2026 ⏳ T_i_2026/eSIGEF · d08/d09 H31+H10c LIVE).
        **10/12 ADN completos y anclados.** Cadencia: 2 tandas temáticas (cada tanda = lote revisable de mesa).
-    SIGUIENTE = TANDA 2 (cierre fundación): d11 (campo verde · corpus PDOT, sin hoja GM) + d12 (PSG vivo + MISSING
-       externos IGM/ODS5). Luego: Tabla de Equivalencias definitiva → cosecha atómica → recién dashboards.
+    ✅ TANDA 2 sellada — **12/12 ADN COMPLETOS Y ANCLADOS** · fundación ontológica del Diccionario CERRADA.
+       d11 corpus PDOT (campo verde · sin hoja GM · NO se inventó madre del motor) · d12 PSG H73 LIVE + IGM/ODS5 MISSING.
+    SIGUIENTE: Tabla de Equivalencias definitiva → cosecha atómica → recién dashboards. Auditoría de fórmulas (B) diferida.
 
 - **🔚 CIERRE DE SESIÓN 2026-06-13 (se acabó contexto · nuevo chat):**
     Pivote mayor: dejamos de diseñar dashboards y construimos LA TEORÍA DE QUIRA.
