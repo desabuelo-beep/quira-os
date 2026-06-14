@@ -96,18 +96,18 @@ del motor — no inventados.)
 
 | Macroeje | Capacidad del Estado | → Dominio operativo | Indicador real |
 |---|---|---|---|
-| **1 Dirección** | Capacidad de **trayectoria** (intención → rumbo verificable) | d01 Planificación | Avance físico metas PDOT |
-| | Capacidad de **movilización** (captar y distribuir recursos) | d02 Presupuesto | Elegibilidad / fondos en riesgo (radar D02) |
-| | Capacidad de **fidelidad democrática** (palabra empeñada ↔ acción) | d03 Mandato | Consistencia IFE-A |
-| **2 Capacidad** | Capacidad de **anticipación** (detectar riesgo antes de la crisis) | d04 Alertas | Cola del Sistema de Alerta Temprana |
-| | Capacidad de **articulación** (gobernar el ecosistema de entidades) | d05 Holding | Promedio de entidades |
+| **1 Dirección** | Capacidad de **trayectoria** (intención → rumbo verificable) | d01 Planificación Estratégica | Avance físico metas PDOT |
+| | Capacidad de **movilización** (captar y distribuir recursos) | d02 Presupuesto & Financiamiento | Elegibilidad / fondos en riesgo (radar D02) |
+| | Capacidad de **fidelidad democrática** (palabra empeñada ↔ acción) | d03 Gobernanza del Mandato | Consistencia IFE-A |
+| **2 Capacidad** | Capacidad de **anticipación** (detectar riesgo antes de la crisis) | d04 Alertas Institucionales | Cola del Sistema de Alerta Temprana |
+| | Capacidad de **articulación** (gobernar el ecosistema de entidades) | d05 Holding e Integración Municipal | Promedio de entidades |
 | | Capacidad de **sostenibilidad interna** (cumplir funciones consistentemente) | d06 Salud Institucional | Cumplimiento Institucional (ICPI) |
 | **3 Democracia** | Capacidad de **verificabilidad** (hacer auditable la acción pública) | d07 Transparencia | LOTAIP 21/21 |
-| | Capacidad de **inteligencia colectiva** (incorporar la voz ciudadana) | d08 Participación | Gobernanza participativa (IGP) |
-| | Capacidad de **responsabilidad pública** (someterse al control social) | d09 RDC | Estado del circuito de rendición |
-| **4 Territorio** | Capacidad de **acceso colectivo** (distribuir bienes públicos en el suelo) | d10 Cobertura | Cobertura agua/saneamiento (INEC) · NBI |
-| | Capacidad de **dinamización** (potenciar tejido productivo y empleo) | d11 Desarrollo Económico | PEA / cadenas de valor (PDOT) |
-| | Capacidad de **inclusión y equidad** (proteger grupos prioritarios) | d12 Equidad y Género | Presupuesto con enfoque de género (PSG) |
+| | Capacidad de **inteligencia colectiva** (incorporar la voz ciudadana) | d08 Participación Ciudadana | Gobernanza participativa (IGP) |
+| | Capacidad de **responsabilidad pública** (someterse al control social) | d09 Rendición de Cuentas | Estado del circuito de rendición |
+| **4 Territorio** | Capacidad de **acceso colectivo** (distribuir bienes públicos en el suelo) | d10 Cobertura de Servicios e Infraestructura | Cobertura agua/saneamiento (INEC) · NBI |
+| | Capacidad de **dinamización** (potenciar tejido productivo y empleo) | d11 Desarrollo Económico Territorial | PEA / cadenas de valor (PDOT) |
+| | Capacidad de **inclusión y equidad** (proteger grupos prioritarios) | d12 Inclusión, Equidad y Género | Presupuesto con enfoque de género (PSG) |
 
 ### Expresión GeoTwin de cada capacidad (Capa 0.5 ↔ Capa 3)
 Cada capacidad se espacializa. Ej.: Trayectoria → cumplimiento territorial de
@@ -144,10 +144,10 @@ latinoamericana. Ahí está el valor estratégico de QUIRA.
 
 | Macroeje | Dominios | Qué evalúa |
 |---|---|---|
-| **1 · Dirección Estratégica y Sustentabilidad** | d01 Planificación · d02 Presupuesto · d03 Mandato | Viabilidad financiera + traducción de la voluntad política en asignaciones reales |
-| **2 · Capacidad Operativa y Mitigación** | d04 Alertas · d05 Holding · d06 Salud Institucional | Salud interna del aparato municipal + prevención de crisis |
-| **3 · Transparencia Democrática y Control Social** | d07 Transparencia · d08 Participación · d09 RDC | Apertura a la ciudadanía + rendición de cuentas |
-| **4 · Despliegue Territorial e Impacto** | d10 Cobertura de Servicios · d11 Desarrollo Económico · d12 Equidad y Género | Efectividad material de la política sobre el suelo físico |
+| **1 · Dirección Estratégica y Sustentabilidad** | d01 Planificación Estratégica · d02 Presupuesto & Financiamiento · d03 Gobernanza del Mandato | Viabilidad financiera + traducción de la voluntad política en asignaciones reales |
+| **2 · Capacidad Operativa y Mitigación** | d04 Alertas Institucionales · d05 Holding e Integración Municipal · d06 Salud Institucional | Salud interna del aparato municipal + prevención de crisis |
+| **3 · Transparencia Democrática y Control Social** | d07 Transparencia · d08 Participación Ciudadana · d09 Rendición de Cuentas | Apertura a la ciudadanía + rendición de cuentas |
+| **4 · Despliegue Territorial e Impacto** | d10 Cobertura de Servicios e Infraestructura · d11 Desarrollo Económico Territorial · d12 Inclusión, Equidad y Género | Efectividad material de la política sobre el suelo físico |
 
 ### Doctrina GeoTwin — la capa EPISTEMOLÓGICA (no solo tecnológica)
 GeoTwin no es un mapa, ni un SIG, ni una visualización. Es **donde la Doctrina
@@ -179,20 +179,22 @@ Los componentes del PDOT estructuran la base de GeoTwin; los dominios son la cap
 
 ## ÍNDICE DE LOS 12 DOMINIOS (ADN completo en `DICCIONARIO_CONCEPTUAL_QUIRA.md`)
 
+> **Nombres canónicos = Nomenclátor del Diccionario** (`DICCIONARIO_CONCEPTUAL_QUIRA.md §Nomenclátor`). Esta tabla ya usa esos nombres oficiales; los alias históricos viven en el Nomenclátor.
+
 | # | Dominio | Mide (indicador madre — concepto) | Macroeje |
 |---|---|---|---|
 | 01 | Planificación Estratégica | Cumplimiento de la planificación de desarrollo | 1 |
 | 02 | Presupuesto & Financiamiento | Capacidad de captación y eficiencia del gasto | 1 |
-| 03 | Metas PDOT · Mandato | Congruencia entre lo prometido y lo planificado | 1 |
+| 03 | Gobernanza del Mandato | Congruencia entre lo prometido y lo planificado | 1 |
 | 04 | Alertas Institucionales | Riesgo operativo y legal activo | 2 |
-| 05 | Holding / Ecosistema Municipal | Desempeño del conjunto de entidades | 2 |
+| 05 | Holding e Integración Municipal | Desempeño del conjunto de entidades | 2 |
 | 06 | Salud Institucional | Capacidad de cumplir funciones de forma sostenible | 2 |
 | 07 | Transparencia | Apertura verificable de la información pública | 3 |
 | 08 | Participación Ciudadana | Incidencia de la ciudadanía en las decisiones | 3 |
 | 09 | Rendición de Cuentas | Validación pública de la gestión | 3 |
 | 10 | Cobertura de Servicios e Infraestructura | Acceso territorial a bienes públicos | 4 |
 | 11 | Desarrollo Económico Territorial | Capacidad productiva y de empleo del territorio | 4 |
-| 12 | Equidad y Género | Protección de los grupos de atención prioritaria | 4 |
+| 12 | Inclusión, Equidad y Género | Protección de los grupos de atención prioritaria | 4 |
 
 ---
 

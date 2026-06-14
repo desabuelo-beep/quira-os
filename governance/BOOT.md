@@ -44,7 +44,8 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
     Fundación lista para REDACTAR los ADN. Todo sellado en `docs/sprint-c/DICCIONARIO_CONCEPTUAL_QUIRA.md`:
     ✅ NOMENCLÁTOR CANÓNICO — 12 nombres oficiales + alias histórico/backend (FUENTE ÚNICA de nombres).
        Renombrados: d03 Gobernanza del Mandato · d05 Holding e Integración Municipal · d12 Inclusión,
-       Equidad y Género. ⚠️ PENDIENTE: propagar a Constitución §índice + Hoja de Ruta (aún citan viejos).
+       Equidad y Género. ✅ PROPAGADO a Constitución (Capa 0.5 + macroejes + índice) + PLANO_DE_CAJONES
+       (check 2.5 OK · Hoja sin tabla de dominios · snapshot UI viejo lo corrige el refactor L2).
     ✅ PLANTILLA MADRE elevada 9→11 CAMPOS (Capacidad 0.5 → Dominio → … → Expresión GeoTwin).
        Cajón 10 re-sellado como molde definitivo. CONVENCIÓN SELLADA (fallo Javo): indicador madre =
        CONCEPTO puro, NUNCA "Índice de…" (Regla Oro 3 · evitó el 4º índice inventado del académico).

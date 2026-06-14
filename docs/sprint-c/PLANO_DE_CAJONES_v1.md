@@ -55,16 +55,16 @@ aportan piezas (incluye archivadas = cantera). **Concepto = a CO-CREAR con Javo*
 |---|---|---|---|---|
 | 01 | Planificación Estratégica | Avance de metas PDOT (4 ejes) | p11_ods · p8_metas · m4_analisis | 1-2 |
 | 02 | Presupuesto & Financiamiento | $ en juego + elegibilidad (radar D02) | p18_cooperacion · radar fondos | 1-2 |
-| 03 | Metas PDOT · Mandato | Cumplimiento del plan de campaña (IFE-A) | p8_metas · p_concejo (promesas CNE) | 1 |
+| 03 | Gobernanza del Mandato | Cumplimiento del plan de campaña (IFE-A) | p8_metas · p_concejo (promesas CNE) | 1 |
 | 04 | Alertas Institucionales | Alertas activas (Sistema de Alerta Temprana) | m2_alertas · p9_sat · p_alertas | 1 |
-| 05 | Holding / Ecosistema Municipal | Promedio 4 entidades | m3_municipal · p2_holding | 1 |
+| 05 | Holding e Integración Municipal | Promedio 4 entidades | m3_municipal · p2_holding | 1 |
 | 06 | Salud Institucional | Cumplimiento Institucional (índice madre) | m1_situacion · p6_pulso · p1_dashboard · p14_eficiencia · ⚰️p_ejecutivo · ⚰️p0_inicio | 1-2 |
 | 07 | Transparencia | Transparencia activa (LOTAIP 21/21) | p07_transparencia · ⚰️p15_transparencia | 1 |
 | 08 | Participación Ciudadana | Participación / gobernanza participativa | p16_confianza · p16_gobernanza | 1 |
 | 09 | Rendición de Cuentas | Días + estado circuito rendición (C-RDC live) | p17_rdc | 1 |
-| 10 | Territorio & Cobertura | Cobertura de servicios por parroquia + GeoTwin | p10_territorio · p4_geotwin · p7_brecha · p10_inversion | 2 (tabla + mapa) |
-| 11 | Ecosistema Productivo Territorial | (en construcción) | cantera económica del PDOT extraído (139 ind.) | — |
-| 12 | Protección Social & Género | Presupuesto con enfoque de género (PSG) | p19_genero | 1 |
+| 10 | Cobertura de Servicios e Infraestructura | Cobertura de servicios por parroquia *(mapa → GeoTwin transversal)* | p10_territorio · p7_brecha · p10_inversion | 1 (Tablero Cobertura & Brecha) |
+| 11 | Desarrollo Económico Territorial | (en construcción) | cantera económica del PDOT extraído (139 ind.) | — |
+| 12 | Inclusión, Equidad y Género | Presupuesto con enfoque de género (PSG) | p19_genero | 1 |
 
 ⚰️ = pantalla archivada en `_deprecated/` que aporta como CANTERA (su contenido
 se recicla aunque el archivo esté fuera de ruteo).
