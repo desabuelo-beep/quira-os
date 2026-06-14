@@ -25,7 +25,7 @@ TRES QUIRAs (tres lenguajes de la MISMA verdad — nunca cambia el número, solo
 
 ---
 
-## A1 · LOS 12 DOMINIOS — nombre canónico → tres audiencias (NUEVO en v2.0)
+## A1 · LOS 13 DOMINIOS — nombre canónico → tres audiencias (NUEVO en v2.0)
 
 *El nombre canónico (Nomenclátor) es interno/CAF. Aquí su rendición por audiencia.*
 
@@ -33,7 +33,7 @@ TRES QUIRAs (tres lenguajes de la MISMA verdad — nunca cambia el número, solo
 |---|---|---|---|---|
 | d01 | Planificación Estratégica | Planificación Estratégica | Planificación y Cumplimiento de Metas | ¿Cumple el plan que se propuso? |
 | d02 | Presupuesto & Financiamiento | Presupuesto & Financiamiento | Presupuesto y Financiamiento | ¿En qué se gasta y de dónde sale? |
-| d03 | Gobernanza del Mandato | Gobernanza del Mandato | Fidelidad al Plan de Gobierno | ¿Cumple lo que prometió en campaña? |
+| d03 | Gobernanza del Mandato | Gobernanza del Mandato | Cumplimiento del Mandato Democrático | ¿Cumple lo que prometió en campaña? |
 | d04 | Alertas Institucionales | Alertas Institucionales (SAT) | Alertas de Gestión | ¿Qué riesgos hay que atender? |
 | d05 | Holding e Integración Municipal | Holding e Integración Municipal | Empresas y Entidades del Municipio | ¿Cómo funcionan las empresas públicas? |
 | d06 | Salud Institucional | Salud Institucional (ICPI) | Cumplimiento Institucional | ¿Qué tan bien funciona el municipio? |
@@ -43,6 +43,22 @@ TRES QUIRAs (tres lenguajes de la MISMA verdad — nunca cambia el número, solo
 | d10 | Cobertura de Servicios e Infraestructura | Cobertura de Servicios e Infraestructura | Cobertura de Servicios e Infraestructura | ¿Llega el agua, el alcantarillado, la vía? |
 | d11 | Desarrollo Económico Territorial | Desarrollo Económico Territorial | Desarrollo Económico y Empleo | ¿Hay trabajo y producción en el cantón? |
 | d12 | Inclusión, Equidad y Género | Inclusión, Equidad y Género | Inclusión y Equidad | ¿Protege a los grupos más vulnerables? |
+| d13 | Sostenibilidad y Resiliencia Ambiental | Sostenibilidad y Resiliencia Ambiental | Ambiente y Resiliencia Climática | ¿Cuida el ambiente y se prepara para el clima? |
+
+---
+
+## A1.ESG · LA LENTE ESG — cómo lee CAF/BID/PNUD los 13 dominios (vista, NO cajón)
+
+> No altera el núcleo: cruza los 13 dominios en las 3 letras del estándar continental.
+> **d13 es el HOGAR de la E**; la lente la lee transversal. Una verdad → 13 dominios → ESG.
+
+| Eje ESG | Hogar | Dominios que cruza (hilos) |
+|---|---|---|
+| **E** · Ambiental | d13 | + d02 (fondos verdes) · d04 (riesgo natural) · d10 (agua) · d01 (ODS ambientales) |
+| **S** · Social | d12 | + d08 (participación) · d09 (rendición) · d10 (cobertura) |
+| **G** · Gobernanza | d03 · d06 · d07 · d09 | + d01 · d02 · d05 |
+
+Para CAF (Banco Verde de LAC): la **E** ya no está enterrada — tiene **cajón (d13)** y **lente (ESG)**.
 
 ---
 

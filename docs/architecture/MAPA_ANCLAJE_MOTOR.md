@@ -45,6 +45,7 @@ hueco de dato — típicamente columna 2026) · ❌ MISSING (fuente externa no c
 | | | Inversión per cápita | `H07b_Ti_INVERSIÓN_eSIGEF` (27/30) | ✅ LIVE |
 | **d11** Desarrollo Económico Territorial | Capacidad productiva y de empleo | PEA / cadenas de valor | corpus PDOT económico (139 ind. · Supabase) | ✅ LIVE *(sin hoja GM dedicada — campo en construcción)* |
 | **d12** Inclusión, Equidad y Género | Protección de grupos prioritarios | Presupuesto con enfoque de género (PSG) | `H73_OUTPUT_API` → `PSG_EJECUCION` | ✅ LIVE |
+| **d13** Sostenibilidad y Resiliencia Ambiental | Integridad ecológica y resiliencia | ODS ambientales (ICODS) · riesgo biofísico · conservación | corpus biofísico (Supabase · 362 ind) · capa riesgo (KB_RIESGOS) · ICODS → `H73_OUTPUT_API` (sub-eje ambiental a precisar) | ✅ LIVE (corpus/riesgo) · ⚠️ ICODS-ambiental a confirmar |
 | | | IGM-A/B/C/F · ODS 5.x | RRHH/DAF · CNE · PNUD/INEC (externos) | ❌ MISSING |
 
 ## Hallazgos del anclaje (lo que el mapa revela)

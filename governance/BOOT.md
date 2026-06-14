@@ -76,7 +76,16 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
        (Operaciones / Institucional / Ciudadana) · 12 dominios + indicadores + B/C · = auditoría de lenguaje de los ADN.
        Hallazgos a ratificar: d05 "Holding"→"Empresas y Entidades" · "equidad" en 2 sentidos (IET d10 vs d12 género) ·
        IOC nunca "opacidad" · CERRADO: ICPI(índice)="Cumplimiento Institucional" vs d06(dominio)="Salud Institucional".
-    SIGUIENTE: ratificar Tabla en mesa → cosecha atómica → recién dashboards. Auditoría de fórmulas (B) diferida.
+    ✅ 5 hallazgos de lenguaje RATIFICADOS (mesa) · d03 Institucional = "Cumplimiento del Mandato Democrático".
+- **🌍 d13 SOSTENIBILIDAD Y RESILIENCIA AMBIENTAL creado (2026-06-14 · commit aa5e289 · 1er ejercicio de Mutabilidad):**
+    Radar del fundador: ambiente estaba descolado (gemelo de género para el Banco Verde CAF). Mesa partida
+    (académico=d13 dominio · colega=capa ESG); Director sintetizó: **d13 + vista ESG + gate**.
+    Justificación: el dato biofísico estaba HUÉRFANO (362 ind Sprint B sin cajón) + "Resiliencia" pasa exportabilidad.
+    GATE sellado (cierra slippery-slope): un dominio entra solo si pasa exportabilidad + tiene data huérfana propia.
+    Propagado: Constitución (Capa 0.5/Macroeje 4/índice 13/nota Mutabilidad+ESG) · Diccionario (Matriz + ADN d13) ·
+    CLAUDE.md (prohibición "D01-D12 inmutables" reconciliada al gate) · MAPA_ANCLAJE (d13) · Tabla v2.0 (+ESG).
+    Ancla d13: ICODS (ODS · sub-eje a precisar) + corpus biofísico (Supabase 362) + riesgo (KB_RIESGOS) → LIVE corpus.
+    **13/13 ADN.** SIGUIENTE: cosecha atómica → dashboards. Auditoría de fórmulas (B) diferida · ICODS-ambiental a precisar.
 
 - **🔚 CIERRE DE SESIÓN 2026-06-13 (se acabó contexto · nuevo chat):**
     Pivote mayor: dejamos de diseñar dashboards y construimos LA TEORÍA DE QUIRA.
