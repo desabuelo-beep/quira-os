@@ -62,7 +62,9 @@ que hace a QUIRA **QUIRA**, y no una plataforma de BI con dashboards bonitos.
 ```
 CAPA 0 · DOCTRINA          qué es QUIRA (promesa→territorio · congruencia · brechas)
    ↓
-12 DOMINIOS                las dimensiones de gestión observadas (4 macroejes)
+CAPA 0.5 · CAPACIDADES     qué PODER del Estado evalúa QUIRA (universal, permanente)
+   ↓
+12 DOMINIOS OPERATIVOS     dónde se manifiesta esa capacidad hoy (4 macroejes · variable)
    ↓
 INDICADOR MADRE            el concepto que mide cada dominio (abstracto)
    ↓
@@ -73,12 +75,39 @@ VISUALIZACIONES            los dashboards (cosecha atómica)
 GEOTWIN                    la capa transversal: dónde ocurre todo
 ```
 
+**Por qué la Capa 0.5 (colega · 2026-06-13):** QUIRA no observa "planificación"
+— observa la *capacidad de convertir intención en trayectoria verificable*. La
+diferencia es ontológica, no semántica. Las capacidades son universales (todo
+Estado las tiene → exportable a LAC); los dominios son su manifestación vigente.
+Eleva QUIRA de "sistema municipal" a **teoría general de gobernanza por evidencia**.
+
 **Regla de indicadores (Director):** el indicador madre es el CONCEPTO (ej. Cajón
 10 = "acceso territorial a bienes públicos"). Debajo, EXPLÍCITOS, los indicadores
 operativos REALES del motor (cobertura agua INEC, saneamiento, NBI…). Concepto
 arriba, dato verificable abajo. Nunca un "índice" inventado sin métrica real.
 
 ---
+
+## CAPA 0.5 · CAPACIDADES DEL ESTADO (qué poder evalúa QUIRA · universal · exportable)
+
+Cada dominio operativo es la **manifestación de una capacidad estatal**. Las
+capacidades son permanentes; los dominios, su forma vigente. (Indicadores REALES
+del motor — no inventados.)
+
+| Macroeje | Capacidad del Estado | → Dominio operativo | Indicador real |
+|---|---|---|---|
+| **1 Dirección** | Capacidad de **trayectoria** (intención → rumbo verificable) | d01 Planificación | Avance físico metas PDOT |
+| | Capacidad de **movilización** (captar y distribuir recursos) | d02 Presupuesto | Elegibilidad / fondos en riesgo (radar D02) |
+| | Capacidad de **fidelidad democrática** (palabra empeñada ↔ acción) | d03 Mandato | Consistencia IFE-A |
+| **2 Capacidad** | Capacidad de **anticipación** (detectar riesgo antes de la crisis) | d04 Alertas | Cola del Sistema de Alerta Temprana |
+| | Capacidad de **articulación** (gobernar el ecosistema de entidades) | d05 Holding | Promedio de entidades |
+| | Capacidad de **sostenibilidad interna** (cumplir funciones consistentemente) | d06 Salud Institucional | Cumplimiento Institucional (ICPI) |
+| **3 Democracia** | Capacidad de **verificabilidad** (hacer auditable la acción pública) | d07 Transparencia | LOTAIP 21/21 |
+| | Capacidad de **inteligencia colectiva** (incorporar la voz ciudadana) | d08 Participación | Gobernanza participativa (IGP) |
+| | Capacidad de **responsabilidad pública** (someterse al control social) | d09 RDC | Estado del circuito de rendición |
+| **4 Territorio** | Capacidad de **acceso colectivo** (distribuir bienes públicos en el suelo) | d10 Cobertura | Cobertura agua/saneamiento (INEC) · NBI |
+| | Capacidad de **dinamización** (potenciar tejido productivo y empleo) | d11 Desarrollo Económico | PEA / cadenas de valor (PDOT) |
+| | Capacidad de **inclusión y equidad** (proteger grupos prioritarios) | d12 Equidad y Género | Presupuesto con enfoque de género (PSG) |
 
 ## 🔄 DECLARACIÓN DE MUTABILIDAD (lo permanente es la Doctrina, no los dominios)
 
@@ -106,6 +135,22 @@ cantonales engañosos — todo hecho del Estado tiene raíz física.
 > **Regla de oro transversal: Ningún dominio es territorial por sí mismo. Todos
 > se espacializan a través de GeoTwin para arrastrar la evidencia hacia la
 > geografía real del cantón.**
+
+### Las dos familias de capas de GeoTwin (respuesta a Javo · macroejes ≠ componentes PDOT)
+GeoTwin cruza DOS lentes distintos — no son lo mismo, ambos viven en el mapa:
+
+```
+CAPA BASE · DIAGNÓSTICO    → los 6 componentes del PDOT (Biofísico · Sociocultural ·
+  ("¿qué hay en el territorio?")  Económico Productivo · Asentamientos Humanos ·
+                                  Movilidad-Energía-Conectividad · Político-Institucional).
+                                  El estado del cantón. Estructura canónica SENPLADES.
+
+CAPA SUPERPUESTA · GESTIÓN → los 12 dominios de QUIRA proyectados (inversión, metas,
+  ("¿qué hace el gobierno?")     alertas, género…). La acción sobre el territorio.
+```
+**La brecha aparece donde la GESTIÓN no cierra el déficit del DIAGNÓSTICO.** Es la
+Doctrina hecha mapa: gestión × territorio → ¿dónde se rompe la cadena en el suelo?
+Los componentes del PDOT estructuran la base de GeoTwin; los dominios son la capa viva.
 
 ---
 
