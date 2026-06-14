@@ -167,23 +167,23 @@ La Capa 1 (el Cantón) sí es naturalmente transversal — el nombre del cantón
 
 ---
 
-## 4. DÓNDE ESTAMOS (2026-06-12)
+## 4. DÓNDE ESTAMOS (2026-06-14)
 
 ```
 Sprint A ✅  Base metodológica
 Sprint B ✅  Territorio comprendido (2,004 indicadores · GeoTwin narrativo validado)
-Sprint C 🔄  Operacionalización — EN CURSO
-    ✅ Centro de Mando v2 nativo (cajones navegan en deploy)
-    ✅ GeoTwin F1 (clic parroquia → explica · motor cableado)
-    🔄 Refactor L2 dashboards — PROPUESTA en mesa (docs/sprint-c/PROPUESTA_REFACTOR_L2.md)
+Sprint C ✅  FUNDACIÓN ONTOLÓGICA — CERRADA (13 dominios anclados · Tabla Equivalencias v2 · ESG · Protocolo de Expansión)
+Sprint D 🔄  EVIDENCIA OPERATIVA — EN CURSO (cosecha → dashboards · piloto d10 inventariado · ontología validada)
+Sprint E ⏳  QUIRA Ciudadana   ·   Sprint F ⏳  Barrido Nacional (Fase 2)
 ```
 
 ---
 
 ## 5. LA RUTA COMPLETA (todo lo pendiente, integrado y ordenado)
 
-### SPRINT C — Operacionalización (en curso)
-**Objetivo: "que una persona abra QUIRA y entienda Montecristi sin leer el PDOT".**
+### SPRINT C — FUNDACIÓN ONTOLÓGICA (✅ CERRADO 2026-06-14 · los dashboards C.1 pasaron a Sprint D)
+**Objetivo cumplido: la teoría de QUIRA quedó en pie, anclada y defendible (13 ADN · Tabla · ESG · Protocolo).**
+*(El detalle C.0-C.5 abajo es histórico: C.0 Tabla ✅ · C.1 dashboards → Sprint D · C.5 Caja 0 → Capa 1 "Mapa CNE".)*
 
 - **C.0 — Tabla de Equivalencias QUIRA v1.0** (sin código · mesa) ← BLOQUEANTE
   El documento más importante: cada término interno → nombre público. Sin él,
@@ -224,7 +224,43 @@ pública no es estética, es evidencia".
 - **Pendiente datos**: PUGS de Montecristi (está DENTRO del PDOT, 2ª parte 800+ pp —
   370 chunks ya detectados) + DEM descarga.
 
-### SPRINT D — QUIRA Ciudadana (producto 3 · la fuerza del equipo CAF)
+### SPRINT D — EVIDENCIA OPERATIVA (nuevo · insertado 2026-06-14 · el molde mostrable)
+> Reconciliación (colega): la ejecución real INSERTÓ un sprint — no se renombró nada.
+> Teoría C→D→E · Realidad C→D→E→F. Rastro histórico limpio para CAF/auditores.
+
+**Objetivo FUSIONADO (Javo):** que cualquiera —CAF, concejal, ciudadano— abra QUIRA y entienda
+EL CANTÓN entero (su radiografía) **sin abrir el PDOT**, viendo los 13 cajones vibrar con datos REALES
+y trazables. La trazabilidad es el MEDIO; la comprensión inmediata del territorio es el FIN.
+
+**Pregunta científica (colega):** Sprint D no "construye dashboards" — responde si la ontología
+DESCRIBE la realidad o la DEFORMA. Mucho Tipo A = QUIRA funciona · mucho Tipo C = la ontología aprende
+(activa el Protocolo si es estructural) · mucho Tipo B = la arquitectura aprende.
+
+**Loop de 4 pasos POR cajón:** (1) cosecha (inventario real) → (2) contrato del dashboard (maqueta
+texto) → consenso → (3) implementación (Tipo A + llenar Tipo C · con harness) → (4) verificación
+visual (gate Bloomberg 0 + Auditor de Comprensión en deploy). Ontología CONGELADA salvo Tipo C estructural.
+
+**Olas (orden colega — flujo de lectura ejecutiva):**
+- 🌊 **Ola 1 · Núcleo Ejecutivo:** d06 Salud Institucional (*¿está sano el municipio?*) → d02 Presupuesto
+  (*¿con qué recursos?*) → d10 Cobertura (*¿qué llega al territorio?*). Piloto d10 ya inventariado.
+- 🌊 **Ola 2 · Diferenciadores CAF:** d13 Ambiente · d12 Inclusión y Género · d03 Gobernanza del Mandato.
+- 🌊 **Ola 3 · Ecosistema completo:** d07 · d08 · d09 · d04 · d05 · d11 · d01.
+
+**Doctrina de interfaz (Javo · canónica):** QUIRA es UNA pieza bento. **CERO menús, CERO sidebars.**
+Los 13 cajones SON el Centro de Mando ejecutivo / de gestión / de control institucional, a la vez —
+la interfaz refleja la ontología pura en la pantalla de inicio. NO hay "pantalla del alcalde": todas lo son.
+
+**Capa 1 · "Efecto Mapa CNE" (Javo · el puente al barrido):** primera capa que aterriza de lo NACIONAL
+al territorio — mapa de Ecuador → clic provincia → cantón → parroquia (estilo portal de resultados CNE).
+Al hacer clic en un cantón: zoom dinámico + inyecta la retícula de los 13 cajones de ESE GAD + su
+administración (alcalde, concejo, período dinámico). NO es demás: es el **pasaporte del Barrido Nacional**
+y la antesala pedagógica (país → territorio → gestión). Eleva la antigua "Caja 0 · Realidad Cantonal" (C.5).
+Scope: el *shell* que aterriza en Montecristi (único poblado hoy) entra en Sprint D; la forma nacional plena = Sprint F.
+
+**Arranque:** cosecha d06 (recibe `p7_brecha`) ∥ implementación d10 (Tipo A listos). GeoTwin (Capa 3,
+incl. 3D · ver arriba) se cablea al cerrar d10/Territorio.
+
+### SPRINT E — QUIRA Ciudadana (antes Sprint D · producto 3 · la fuerza del equipo CAF)
 Fuente canónica: `docs/ciudadana/TERRA_CIUDADANA_origen.md` (6 fases completas).
 PD-CIU-01 era la Fase 1; Terra Ciudadana es el diseño completo:
 - **Fase 1** Ingesta + Artillería Legal (cascada N0-N3 ya diseñada · oficios LOTAIP
@@ -239,7 +275,7 @@ PD-CIU-01 era la Fase 1; Terra Ciudadana es el diseño completo:
 - **Estrategia equipo CAF**: el equipo trabaja la CAPA CIUDADANA (metodología, UX,
   participación) — NUNCA el núcleo. Background IP de Dylus declarado por escrito.
 
-### SPRINT E — ACTIVACIÓN DE LA TESIS: barrido nacional (NO es una fase tardía — es el FIN)
+### SPRINT F — ACTIVACIÓN DE LA TESIS: barrido nacional (antes Sprint E · NO es una fase tardía — es el FIN)
 Se activa cuando el MOLDE Montecristi está mostrable (no antes). Es el corazón del §0.
 **Motor 1 · Operaciones:**
 - Fetchers a construir: Transparencia LOTAIP · SERCOP · CPCCS (patrón de `app/fetchers/`

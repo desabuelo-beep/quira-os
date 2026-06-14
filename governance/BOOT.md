@@ -110,7 +110,12 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
        una cosecha descubra un Tipo C ESTRUCTURAL (nuevo "biofísico huérfano") → solo entonces, Protocolo de Expansión.
        ORDEN SPRINT D = EVIDENCIA: (1) cosecha pantallas restantes · (2) contratos de dashboard (maqueta texto) ·
        (3) implementación Tipo A (Supabase/PyDeck) · (4) verificación visual (gate Bloomberg 0 en deploy caliente).
-       Arrancar por: implementación Tablero d10 (Tipo A listos) + cosecha d06 (recibe p7_brecha).
+       PLAN SPRINT D sellado en `HOJA_DE_RUTA_MAESTRA §5` (objetivo FUSIONADO: trazabilidad=medio, entender el cantón
+       sin PDOT=fin · pregunta científica colega: ¿la ontología describe o deforma? · 4-step loop · 3 olas).
+       Reconciliación: insertado Sprint D Evidencia (no renombrado) → E=Ciudadana · F=Barrido. Ola 1 (orden colega):
+       **d06 Salud Inst → d02 Presupuesto → d10 Cobertura**. DOCTRINA INTERFAZ (Javo): cero menús/sidebars, los 13
+       cajones SON el command center (no hay "pantalla del alcalde"). CAPA 1 "Efecto Mapa CNE": Ecuador→cantón→13
+       cajones (shell Montecristi ahora · nacional en Sprint F · eleva la Caja 0). Arrancar: cosecha d06 ∥ implementación d10.
        Auditoría de fórmulas (B) diferida · ICODS-ambiental a precisar.
 
 - **🔚 CIERRE DE SESIÓN 2026-06-13 (se acabó contexto · nuevo chat):**
