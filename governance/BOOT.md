@@ -72,7 +72,11 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
        **10/12 ADN completos y anclados.** Cadencia: 2 tandas temáticas (cada tanda = lote revisable de mesa).
     ✅ TANDA 2 sellada — **12/12 ADN COMPLETOS Y ANCLADOS** · fundación ontológica del Diccionario CERRADA.
        d11 corpus PDOT (campo verde · sin hoja GM · NO se inventó madre del motor) · d12 PSG H73 LIVE + IGM/ODS5 MISSING.
-    SIGUIENTE: Tabla de Equivalencias definitiva → cosecha atómica → recién dashboards. Auditoría de fórmulas (B) diferida.
+    ✅ TABLA DE EQUIVALENCIAS v2.0 DEFINITIVA (`TABLA_EQUIVALENCIAS_v1.md`): puente UNA verdad → 3 QUIRAs
+       (Operaciones / Institucional / Ciudadana) · 12 dominios + indicadores + B/C · = auditoría de lenguaje de los ADN.
+       Hallazgos a ratificar: d05 "Holding"→"Empresas y Entidades" · "equidad" en 2 sentidos (IET d10 vs d12 género) ·
+       IOC nunca "opacidad" · CERRADO: ICPI(índice)="Cumplimiento Institucional" vs d06(dominio)="Salud Institucional".
+    SIGUIENTE: ratificar Tabla en mesa → cosecha atómica → recién dashboards. Auditoría de fórmulas (B) diferida.
 
 - **🔚 CIERRE DE SESIÓN 2026-06-13 (se acabó contexto · nuevo chat):**
     Pivote mayor: dejamos de diseñar dashboards y construimos LA TEORÍA DE QUIRA.
