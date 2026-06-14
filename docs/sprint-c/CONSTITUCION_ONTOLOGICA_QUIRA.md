@@ -13,6 +13,25 @@ Un gobierno local NO es una acumulación de trámites, presupuestos y obras. Par
 QUIRA es un **organismo vivo que procesa el mandato ciudadano, gestiona recursos,
 y produce resultados sobre un territorio.**
 
+### La misión profunda — el POR QUÉ (palabras originales · `QUIRA_THEORY_OF_VALUE` + `EPISTEMIC_FRAMEWORK`, CONGELADO 2026-05-31)
+
+> **El problema no es falta de datos.** Los datos no hablan entre sí; y cuando lo
+> hacen, solo dicen *"hay una brecha"* — **no POR QUÉ.** QUIRA existe para
+> responder el por qué: **el GAD deja de gestionar datos y empieza a gestionar
+> causas.** Reduce la distancia entre la intención pública y la realidad pública,
+> transformando la evidencia en capacidad de decisión.
+
+**Genealogía del avance (no es tecnológico — es conceptual):**
+```
+SIAP-ICPI  → MIDE el incumplimiento      ("¿qué se cumplió?")
+QUADRUM    → DETECTA la incoherencia      ("¿es coherente lo que reportan?")
+QUIRA      → EXPLICA la causalidad        ("¿POR QUÉ existe la brecha?")
+```
+La diferencia entre *detectar* y *explicar* no es de velocidad — es de nivel de
+abstracción. QUADRUM dice "hay una brecha de $2M"; QUIRA dice "esa brecha existe
+porque la norma se cumple en papel pero la entidad ejecuta el 50%, tres años sin
+corrección". Esa cadena causal es **verificable, reproducible y refutable**.
+
 **QUIRA no mide trámites ni obras aisladas. Mide la CONGRUENCIA de la cadena que
 va de la promesa al territorio — y encuentra DÓNDE se rompe.**
 
@@ -61,7 +80,15 @@ arriba, dato verificable abajo. Nunca un "índice" inventado sin métrica real.
 
 ---
 
-## LOS 4 MACROEJES SISTÉMICOS (cómo QUIRA entiende el Estado)
+## 🔄 DECLARACIÓN DE MUTABILIDAD (lo permanente es la Doctrina, no los dominios)
+
+> Los 12 cajones constituyen la **organización operativa VIGENTE** del sistema,
+> optimizada para el piloto de GADs municipales. La estructura de dominios es
+> modular: ante la expansión a Salud Pública, Seguridad, Educación o Transición
+> Energética, **nuevos dominios serán anexados sin alterar la Doctrina QUIRA.**
+> Lo permanente es la Capa 0; los dominios son variables.
+
+## LOS 4 MACROEJES SISTÉMICOS (organización operativa vigente · cómo QUIRA entiende el Estado)
 
 | Macroeje | Dominios | Qué evalúa |
 |---|---|---|
@@ -70,9 +97,15 @@ arriba, dato verificable abajo. Nunca un "índice" inventado sin métrica real.
 | **3 · Transparencia Democrática y Control Social** | d07 Transparencia · d08 Participación · d09 RDC | Apertura a la ciudadanía + rendición de cuentas |
 | **4 · Despliegue Territorial e Impacto** | d10 Cobertura de Servicios · d11 Desarrollo Económico · d12 Equidad y Género | Efectividad material de la política sobre el suelo físico |
 
-### Doctrina GeoTwin (regla de oro transversal)
-> **Ningún dominio es territorial por sí mismo. Todos se espacializan a través
-> de GeoTwin para comprender DÓNDE ocurren los hechos del Estado.**
+### Doctrina GeoTwin — la capa EPISTEMOLÓGICA (no solo tecnológica)
+GeoTwin no es un mapa, ni un SIG, ni una visualización. Es **donde la Doctrina
+toca el territorio**: la espacialización de la evidencia pública. Cada brecha
+tiene ubicación · cada recurso tiene punto de impacto · cada decisión se ejecuta
+sobre una comunidad concreta. La gestión pública no puede diluirse en promedios
+cantonales engañosos — todo hecho del Estado tiene raíz física.
+> **Regla de oro transversal: Ningún dominio es territorial por sí mismo. Todos
+> se espacializan a través de GeoTwin para arrastrar la evidencia hacia la
+> geografía real del cantón.**
 
 ---
 
