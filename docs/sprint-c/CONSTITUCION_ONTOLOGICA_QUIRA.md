@@ -109,6 +109,29 @@ del motor — no inventados.)
 | | Capacidad de **dinamización** (potenciar tejido productivo y empleo) | d11 Desarrollo Económico | PEA / cadenas de valor (PDOT) |
 | | Capacidad de **inclusión y equidad** (proteger grupos prioritarios) | d12 Equidad y Género | Presupuesto con enfoque de género (PSG) |
 
+### Expresión GeoTwin de cada capacidad (Capa 0.5 ↔ Capa 3)
+Cada capacidad se espacializa. Ej.: Trayectoria → cumplimiento territorial de
+metas · Movilización → prismas de inversión per cápita · Fidelidad → promesas
+espacializadas (PUGS) · Anticipación → pulsos de alerta geolocalizados · Acceso →
+déficit estructural de servicios por polígono · Equidad → geografía de la equidad
+(PSG × densidad de grupos prioritarios). *(Expresiones 3D = GeoTwin v2 diferido.)*
+
+### ✅ LA PRUEBA DE EXPORTABILIDAD (colega · 2026-06-13 — la matriz la pasa)
+> Test: ¿sobreviven las 12 capacidades si DESAPARECEN los 12 dominios actuales?
+> Si una capacidad solo existe porque existe un cajón municipal, es un dominio
+> disfrazado, no una capacidad.
+
+**QUIRA en el Ministerio de Salud** (los 12 cajones cambian, el cerebro queda):
+- Trayectoria → ya no mide PDOT, mide la Estrategia Nacional de Vacunación.
+- Movilización → ya no mide eSIGEF municipal, mide inversión en hospitales.
+- Anticipación → ya no mide glosas, mide abastecimiento crítico de medicamentos.
+- Acceso → ya no mide redes de agua, mide camas de UCI por provincia.
+- **GeoTwin hace exactamente lo mismo:** muestra el punto del mapa donde la
+  congruencia entre la intención del Ministro y la realidad del hospital se rompió.
+
+Las capacidades sobreviven → la ontología deja de ser municipal y se vuelve
+latinoamericana. Ahí está el valor estratégico de QUIRA.
+
 ## 🔄 DECLARACIÓN DE MUTABILIDAD (lo permanente es la Doctrina, no los dominios)
 
 > Los 12 cajones constituyen la **organización operativa VIGENTE** del sistema,
