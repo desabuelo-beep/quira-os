@@ -40,6 +40,16 @@ dashboards, es lo que se define UNA vez. Sprint C: ontología antes que ingenier
 BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo que no se mueve.
 
 ## AHORA (actualizar al cierre)
+- **🏁 SPRINT C CERRADO · SPRINT D ABIERTO (2026-06-14 · 17 commits · jornada de fundación):**
+    **Sprint C = Fundación Ontológica → ✅ CERRADO** (13 dominios anclados · Tabla Equivalencias v2 · ESG ·
+    Protocolo de Expansión · piloto de falsación d10 PASÓ). **Sprint D = EVIDENCIA OPERATIVA → ✅ ABIERTO**
+    (plan completo en `HOJA_DE_RUTA_MAESTRA §5`).
+    **▶ PRIMER ACTO de la próxima sesión = COSECHA d06** (Salud Institucional · el corazón epistemológico:
+    ICPI / ICGI-T / 6 vectores ISP·IED·IGP·IOC·IET·PSG · recibe `p7_brecha` · 32 términos Bloomberg).
+    Regla (colega): d10 validó el MÉTODO; **d06 valida la TEORÍA** — sesión propia, en frío. Pregunta de apertura:
+    ¿d06 se alimenta de pantallas reales sin reinterpretación? Pase o falle, las dos salidas son buenas.
+    Detalle de arranque (loop · olas · doctrina interfaz · Mapa CNE) ↓ en los bloques de esta misma fecha.
+
 - **🧬 SESIÓN 2026-06-14 — LAUNCH PAD DE LOS 12 ADN ARMADO (mesa Javo+colega+académico):**
     Fundación lista para REDACTAR los ADN. Todo sellado en `docs/sprint-c/DICCIONARIO_CONCEPTUAL_QUIRA.md`:
     ✅ NOMENCLÁTOR CANÓNICO — 12 nombres oficiales + alias histórico/backend (FUENTE ÚNICA de nombres).
