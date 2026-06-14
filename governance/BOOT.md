@@ -106,6 +106,11 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
        Test cazó: 🅲 p7_brecha MAL asignada al plano (es d06 ICGI-T 6 vectores, NO d10) → cosechar en d06 ·
        🅲 saneamiento/recolección SIN pantalla cantera (huecos) · 🅱️ EJES_INVERSION = material d02 + HARDCODED.
        Plano d10 corregido en Diccionario. FALTA: implementación (código) = próxima sesión CON harness de verificación.
+       🧊 REGLA SPRINT D (mesa · inviolable): ontología CONGELADA — cero cambios de dominio/capacidad/ADN/Tabla salvo que
+       una cosecha descubra un Tipo C ESTRUCTURAL (nuevo "biofísico huérfano") → solo entonces, Protocolo de Expansión.
+       ORDEN SPRINT D = EVIDENCIA: (1) cosecha pantallas restantes · (2) contratos de dashboard (maqueta texto) ·
+       (3) implementación Tipo A (Supabase/PyDeck) · (4) verificación visual (gate Bloomberg 0 en deploy caliente).
+       Arrancar por: implementación Tablero d10 (Tipo A listos) + cosecha d06 (recibe p7_brecha).
        Auditoría de fórmulas (B) diferida · ICODS-ambiental a precisar.
 
 - **🔚 CIERRE DE SESIÓN 2026-06-13 (se acabó contexto · nuevo chat):**
