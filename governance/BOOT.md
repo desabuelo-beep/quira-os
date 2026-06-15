@@ -74,6 +74,13 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
       ① CIMIENTO — KPI central "Cumplimiento Institucional" ~53.56% (snapshot vivo Q1 2026).
       ② 4 BARRAS DE TENSIÓN (Modelo B · muestran ± fortaleza/presión, NO %): Política→IFE-A · Operativa→ISP/IED+SAT ·
          Territorial→IET+INEC · Ecosistémica→PSG+biofísico.
+      ⚠️ PRERREQUISITO DEL MVP (de-risk 2026-06-14 · leído data/loader + demo_data.py): las 4 congruencias HOY están
+         HARDCODEADAS en demo_data.py (NO salen del Gold Master). 3/4 alinean con Modelo B (política=IFE-A 72.73 ·
+         operativa=cadena 47.20 · territorial=IET 44.80) PERO la 4ª DIVERGE: la "ecosistemica" del demo = HOLDING/4
+         entidades (d05), NO sostenibilidad d12/d13. → El MVP DEBE: (a) redefinir Ecosistémica = PSG+biofísico (Modelo B,
+         no holding) · (b) etiquetar las 4 como "ilustrativo · en calibración Q1 2026" (Regla 3, son demo) · (c) ❓PREGUNTA
+         A JAVO (Regla 4): ¿las 4 congruencias del Modelo B existen en el Gold Master como capas relacionales, o son una
+         lectura a definir? Si existen → cablear; si NO → su fórmula se define EN EL EXCEL, nunca en Python (no motor paralelo).
       ③ REJILLA BENTO — 5 enlaces planos: Ver d02 Presupuesto · d03 Mandato · d10 Cobertura · d12 Género · d13 Ambiente
          (se posan sobre el cimiento, NO lo promedian).
       ④ EVIDENCIA — corte "Q1 2026 · datos en carga" + firma del snapshot del pipeline.
