@@ -113,6 +113,16 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
     (2) ⚠️ CORRECCIÓN del 17.45%: NO es "Ruptura Sistémica" — es el ICPI ACUMULADO ANUAL leído en Q1 (mes 4-5), bajo por PARCIAL.
     Anualizado ≈52% ≈ el 53.56% demo (mismo estado, 2 lentes temporales). "Ruptura" = misread (umbral anual sobre valor parcial).
     Sincerar el Excel = definir la LECTURA PROPORCIONAL al tiempo de gestión (metodología Javo/motor), NO cablear el crudo. (Over-celebración del Director corregida.)
+    🔬 DIAGNÓSTICO H12 (auditoría 2026-06-15 · `scripts/dev/gm_sheet_dump.py` → `docs/architecture/GM_SHEET_H12_MOTOR_ICPI.md`):
+    ICPI = Σ(Pi·Ri·Vi·Ei·**Ti**·Ci)/Σ(Pi·Ri)×100 (H12!B33 · "FUENTE ÚNICA · NUNCA recalcular · NO modificar la lógica").
+    **Ti = ejecución eSIGEF (devengado/codificado) = 0.2375 GAD en Q1** → Ti es MULTIPLICATIVO y a mitad de año va ~24% →
+    arrastra el ICPI a 17.45%. NO es error de fórmula (el motor funciona): el error es la CLASIFICACIÓN AVEP (B34) que aplica
+    umbrales ANUALES (<20%=Ruptura) a un valor PARCIAL → falsa "Ruptura".
+    ✅ FIX RECOMENDADO (respeta "no cambiar lo canónico"): NO tocar el Excel (B33 axioma blindado · riesgo de corromper la malla
+    de 123 hojas con openpyxl). QUIRA LEE el ICPI crudo + aplica la lectura PROPORCIONAL al periodo en PRESENTACIÓN (mensualizado).
+    Errores de FONDO a revisar CON Javo (su metodología · con backup, NO yo solo): (1) "Motor Ci pendiente" (TBL_CALIBRACION_Ci sin
+    construir · H01 §M · B40 lo marca) · (2) metas con Ti=0 (GAD_SIN_ESIGEF) que multiplican por cero. SIGUIENTE: decisión de Javo
+    sobre la fórmula de normalización mensual + si toca los errores de fondo en el Excel (él, en Excel, con backup).
       ③ REJILLA BENTO — 5 enlaces planos: Ver d02 Presupuesto · d03 Mandato · d10 Cobertura · d12 Género · d13 Ambiente
          (se posan sobre el cimiento, NO lo promedian).
       ④ EVIDENCIA — corte "Q1 2026 · datos en carga" + firma del snapshot del pipeline.
