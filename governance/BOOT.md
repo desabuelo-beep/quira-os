@@ -102,6 +102,12 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
     ⚠️ EL MVP NO debe mostrar 53.56% — el dato real es 17.45%. (Blueprint a corregir.)
     SIGUIENTE (Sprint D.2 · fresco): reconciliar lecturas del proyecto → cablear a las 65 claves de H73 (vía gold_master.py) ·
     reemplazar demo_data · normalizar unidades. RECIÉN entonces el MVP de d06 se construye sobre DATO VIVO, no fachada.
+    ✅ MATRIZ DE RECONCILIACIÓN TOTAL construida (`docs/architecture/MATRIZ_RECONCILIACION_TOTAL.md` · 4 inventarios · mesa):
+    Inv1 Pantallas→Motor (deuda: p6_pulso·p7_brecha·p10_inversion = demo DESYNC · p_ejecutivo/p10_territorio = semi-live).
+    Inv2 Ontología→Motor: **9/13 ✅ respaldo total** · 3 🟡 (d01·d05·d11) · 1 🔴 d09 (sin clave H73 directa). d13 ICODS=87.5 ✅ dorada.
+    Inv3 H73→hojas (genealogía del dump: ICPI←H12!B33 · ISP←H19 · PSG←H16c · TGI←H98 · ICODS←H20 · MMP_AVANCE = única NO validada).
+    Inv4 Congruencias→datos: solo MARCO Modelo B (insumos), SIN fórmula · pendiente formalizar (Javo/Excel) o reubicar en QUIRA IA.
+    Director filtró cifras del académico (IET≠TGI 66.79 · ISP←H19 no H07_S5 · coords B4/B12 inventadas → fuentes reales del dump).
       ③ REJILLA BENTO — 5 enlaces planos: Ver d02 Presupuesto · d03 Mandato · d10 Cobertura · d12 Género · d13 Ambiente
          (se posan sobre el cimiento, NO lo promedian).
       ④ EVIDENCIA — corte "Q1 2026 · datos en carga" + firma del snapshot del pipeline.
