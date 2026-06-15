@@ -1,0 +1,240 @@
+# SCHEMA_METADATA — volcado determinista (fórmulas + etiquetas)
+fuente: `SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx` · filas=47 · pobladas=46 · fórmulas=1
+inputs(lee de): H00_ÍNDICE
+outputs(alimenta a): H00_ÍNDICE
+
+## FÓRMULAS
+```
+A1	=HYPERLINK("#'H00_ÍNDICE'!A1","⬅️ ÍNDICE GENERAL")
+```
+
+## ETIQUETAS / DATOS (tope 600)
+```
+B1	★ SCHEMA_METADATA — Ficha Municipal Montecristi
+C1	Dato canónico único · PDOT 2023-2027 + SIAP-ICPI v1.0
+A3	Campo
+B3	Valor
+C3	Unidad
+D3	Fuente
+E3	Pagina_PDOT
+A4	Municipio_ID
+B4	GAD-MNT-180650
+C4	—
+D4	SENPLADES/INEC
+E4	portada
+A5	Nombre_Canton
+B5	Montecristi
+C5	—
+D5	PDOT 2023-2027
+E5	1
+A6	Provincia
+B6	Manabí
+C6	—
+D6	PDOT 2023-2027
+E6	1
+A7	Codigo_INEC
+B7	180650
+C7	—
+D7	INEC
+E7	—
+A8	Periodo_PDOT
+B8	2023-2027
+C8	años
+D8	PDOT aprobado GAD
+E8	1
+A9	ICPI_2026_Q1
+B9	53.56
+C9	%
+D9	SIAP-ICPI H12!B33
+E9	—
+A10	ICPI_Clasificacion
+B10	Transición Crítica
+C10	—
+D10	SCHEMA_REGLAS
+E10	—
+A11	Trust_Score
+B11	100
+C11	/100
+D11	SIAP-ICPI H12
+E11	—
+A12	Poblacion_Total_2022
+B12	99937
+C12	hab
+D12	INEC Censo 2022
+E12	35
+A13	Poblacion_Urbana_2022
+B13	71066
+C13	hab
+D13	INEC / PDOT
+E13	35
+A14	Poblacion_Rural_2022
+B14	28871
+C14	hab
+D14	INEC / PDOT
+E14	35
+A15	Pob_Proyectada_2035_CUP
+B15	100989
+C15	hab
+D15	PDOT 2023-2027
+E15	63
+A16	Pob_Proyectada_2035_Rural
+B16	35639
+C16	hab
+D16	PDOT 2023-2027
+E16	63
+A17	Area_Canton_ha
+B17	97000
+C17	ha
+D17	PDOT estimado
+E17	—
+A18	Area_CUP_ha
+B18	3952.2
+C18	ha
+D18	PDOT 2023-2027 p.87
+E18	87
+A19	Parroquias_Urbanas
+B19	6
+C19	unidades
+D19	PDOT
+E19	35
+A20	Parroquia_Rural
+B20	1 (La Pila)
+C20	—
+D20	PDOT
+E20	35
+A21	Densidad_Pob_CUP
+B21	17.87
+C21	hab/ha
+D21	PDOT 2023-2027
+E21	63
+A22	Crecimiento_Anual_Prom
+B22	3.13
+C22	% anual
+D22	INEC 2001-2022
+E22	35
+A23	Presupuesto_Consolidado
+B23	54242424.28
+C23	USD
+D23	H90_PRESUPUESTO / SERCOP
+E23	—
+A24	Ti_GAD_Q1_2026
+B24	11.20
+C24	%
+D24	H90_PRESUPUESTO
+E24	—
+A25	Ti_Patronato_Q1_2026
+B25	19.56
+C25	%
+D25	H90_PRESUPUESTO
+E25	—
+A26	Ti_EP_Aseo_Q1_2026
+B26	18.17
+C26	%
+D26	H90_PRESUPUESTO
+E26	—
+A27	Ti_Bomberos_Q1_2026
+B27	19.43
+C27	%
+D27	H90_PRESUPUESTO
+E27	—
+A28	Ti_Total_Q1_2026
+B28	12.40
+C28	%
+D28	H90_PRESUPUESTO
+E28	—
+A29	NBI_Urbano_Pct
+B29	23.00
+C29	%
+D29	INEC / PDOT p.316
+E29	316
+A30	NBI_Rural_Pct
+B30	67.90
+C30	%
+D30	INEC / PDOT p.316
+E30	316
+A31	Pobreza_Extrema_Urbana
+B31	4.80
+C31	%
+D31	INEC / PDOT p.316
+E31	316
+A32	Pobreza_Extrema_Rural
+B32	40.20
+C32	%
+D32	INEC / PDOT p.316
+E32	316
+A33	Vias_Total_km
+B33	499.72
+C33	km
+D33	PDOT 2023-2027
+E33	115
+A34	Vias_Sin_Tratamiento_km
+B34	86.41
+C34	km (17.29%)
+D34	PDOT 2023-2027
+E34	115
+A35	Vias_Tratamiento_Medio_km
+B35	302.28
+C35	km (60.49%)
+D35	PDOT 2023-2027
+E35	115
+A36	Vias_Tratamiento_Total_km
+B36	111.03
+C36	km (22.22%)
+D36	PDOT 2023-2027
+E36	115
+A37	Establecimientos_Salud
+B37	10
+C37	unidades
+D37	MSP / PDOT
+E37	320
+A38	Establecimientos_Educacion
+B38	60
+C38	instituciones
+D38	Mineduc 2022-2023
+E38	—
+A39	Estudiantes_Total
+B39	20199
+C39	alumnos
+D39	Mineduc 2022-2023
+E39	—
+A40	Docentes_Total
+B40	920
+C40	docentes
+D40	Mineduc 2022-2023
+E40	—
+A41	Empleo_Formal_Total
+B41	15807
+C41	plazas
+D41	REEM/INEC 2022
+E41	—
+A42	Viviendas_Particulares
+B42	36917
+C42	unidades
+D42	INEC / PDOT
+E42	—
+A43	Percepcion_Municipio_Buena
+B43	44.60
+C43	% (Buena+MuyBuena)
+D43	PDOT 2023-2027
+E43	—
+A44	Metas_PDOT_Total
+B44	56
+C44	metas
+D44	KB_PROPUESTA_METAS
+E44	—
+A45	Proyectos_PAI_Total
+B45	145
+C45	proyectos
+D45	KB_PAI_PROYECTOS
+E45	—
+A46	Versión_SIAP
+B46	v1.0
+C46	—
+D46	DYLUS LAB
+E46	—
+A47	Fecha_Corte
+B47	2026-05-08
+C47	ISO
+D47	SIAP-ICPI
+E47	—
+```

@@ -1,0 +1,133 @@
+# H28_RESUMEN_EJECUTIVO — volcado determinista (fórmulas + etiquetas)
+fuente: `SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx` · filas=42 · pobladas=40 · fórmulas=40
+inputs(lee de): H01_PARÁMETROS, H05_S3_OPERATIVO_POA, H12_MOTOR_ICPI_CANÓNICO, H12d_ICPI_POR_ENTIDAD, H16_IFE, H16b_IPE, H16c_PSG_PRESUPUESTO_GENERO, H17_IED, H18_ITAM, H19_ICS_ISP, H20_ICODS, H20b_IGP_GOBERNANZA_PARTIC, H20c_IEF_EFICIENCIA_FINANCIERA, H21_SAT-I, H21b_SAT-0_COHERENCIA_PAC, H22_SAT-II, H23_SAT-III, H24_SAT-IV, H24b_SAT-V_ALERTA_CPCCS, H24c_SAT-VI_DESVÍO_PP
+outputs(alimenta a): H00_ÍNDICE, H29_TABLERO_ALCALDE, H31_REPORTE_CPCCS
+refs no resueltas: #H00_ÍNDICE
+MARCADORES: C20: =IF(B20>=0.85,"🟢 Excelente",IF(B20>=0.7,"🟡 Gestión por Mandato",IF(B20 · B42: =IFERROR(IF(H12_MOTOR_ICPI_CANÓNICO!B33>=0.7,"✅ "&TEXT(H12_MOTOR_ICPI_
+
+## FÓRMULAS
+```
+A1	=HYPERLINK("#H00_ÍNDICE!A1","⬅️ ÍNDICE GENERAL")
+E1	="ICPI 2026: "&ROUND(H12_MOTOR_ICPI_CANÓNICO!B33,2)&"% ★"
+F1	=TODAY()
+B7	=H12_MOTOR_ICPI_CANÓNICO!B33
+B8	=H12_MOTOR_ICPI_CANÓNICO!B34
+B9	=H01_PARÁMETROS!B13
+B10	=H01_PARÁMETROS!B16
+B11	=H12_MOTOR_ICPI_CANÓNICO!B37
+B14	=H16_IFE!B6
+C14	=H16_IFE!B7
+B15	=H16b_IPE!B6
+D15	=IFERROR(H05_S3_OPERATIVO_POA!B8,0)&"% POA 2026"
+B16	=H16c_PSG_PRESUPUESTO_GENERO!B11
+C16	=H16c_PSG_PRESUPUESTO_GENERO!B13
+B17	=H17_IED!B6
+C17	=H17_IED!B7
+B18	=H18_ITAM!B6
+C18	=H18_ITAM!B7
+B19	=H19_ICS_ISP!B6
+C19	=H19_ICS_ISP!B7
+B20	=IFERROR(AVERAGE(H12d_ICPI_POR_ENTIDAD!E8:E10)/100,0)
+C20	=IF(B20>=0.85,"🟢 Excelente",IF(B20>=0.7,"🟡 Gestión por Mandato",IF(B20>=0.5,"🟠 Transición Crítica",IF(B20>=0.2,"🔴 Atención Alta","⚫ Sin datos"))))
+B21	=H20b_IGP_GOBERNANZA_PARTIC!B9
+C21	=H20b_IGP_GOBERNANZA_PARTIC!B10
+B22	=H20c_IEF_EFICIENCIA_FINANCIERA!B41
+C22	=H20c_IEF_EFICIENCIA_FINANCIERA!B42
+B23	=H20_ICODS!B6
+A24	=IF(COUNTIF(B14:B23,H12_MOTOR_ICPI_CANÓNICO!B33)>1,"⚠️ FALLA 14 DETECTADA: "&COUNTIF(B14:B23,H12_MOTOR_ICPI_CANÓNICO!B33)&" índices muestran valor idéntico al ICPI — verificar referencias de H17/H20b/H19b","✅ Índices con valores distintos — Sin duplicados ICPI")
+B27	='H21b_SAT-0_COHERENCIA_PAC'!B17
+B28	='H21_SAT-I'!B15
+B29	='H22_SAT-II'!B12
+B30	='H23_SAT-III'!B13
+B31	='H24_SAT-IV'!B13
+B32	='H24b_SAT-V_ALERTA_CPCCS'!B17
+B33	='H24c_SAT-VI_DESVÍO_PP'!B14
+B39	=H01_PARÁMETROS!B15
+B40	=H12_MOTOR_ICPI_CANÓNICO!B33
+B41	=B39-B37
+C41	=TEXT(B39-B37,"▲ +0.00%;;▼ -0.00%")&" (pp 2023→2025)"
+B42	=IFERROR(IF(H12_MOTOR_ICPI_CANÓNICO!B33>=0.7,"✅ "&TEXT(H12_MOTOR_ICPI_CANÓNICO!B33,"0.00%")&" — Meta 2027 ≥70% alcanzada","⏳ "&TEXT(H12_MOTOR_ICPI_CANÓNICO!B33,"0.00%")&" → Meta: ≥70% | Brecha: "&TEXT(0.7-H12_MOTOR_ICPI_CANÓNICO!B33,"0.00%")),"⏳ Motor no disponible")
+```
+
+## ETIQUETAS / DATOS (tope 600)
+```
+B1	🏛️ QUIRA Gov · Powered by Dylus Lab · TGI Engine
+D1	H28_RESUMEN_EJECUTIVO
+A2	H28 — RESUMEN EJECUTIVO — VISTA INTEGRADA DEL SISTEMA
+A3	Panel ejecutivo con todos los índices del EAS. Audiencia: Dirección Ejecutiva y Equipo Técnico.
+A5	▌ PANEL ICPI — EL NÚMERO QUE IMPORTA
+A6	Campo
+B6	Valor
+C6	Fuente
+A7	ICPI_Global
+C7	H12!B33 — FUENTE Única
+A8	Clasificación_AVEP
+C8	H12!B34
+A9	Año_Activo
+C9	H01!B13
+A10	Fecha_Corte
+C10	H01!B16
+A11	Brecha_Verificación (ICPI vs SIGAD)
+C11	H12!B37 — Lenguaje preventivo
+A12	▌ RESUMEN 10 ÍNDICES COMPLEMENTARIOS
+A13	Índice
+B13	Valor
+C13	Clasificación
+D13	Ref. 2025
+A14	IFE — Fidelidad Electoral
+D14	≈72.73%
+A15	IPE — Pertinencia Estratégica
+C15	Ver H16b
+A16	PSG — Presupuesto Género (Ejecución)
+D16	≈2.80% ejec. / 86.75% fid.
+A17	IED — Eficiencia Direcciones
+D17	≈70.33% (≠ 69.93% ICPI)
+A18	ITAM — Transparencia Municipal
+D18	≈56.00%
+A19	ISP — Salud Presupuestaria
+D19	≈58.40%
+A20	IED_EP/EA — Eficiencia Entidades Adscritas
+D20	≈17.71% (ref. 2025)
+A21	IGP — Gobernanza Participativa
+D21	≈27.98% (≠ 69.93% ICPI)
+A22	IEF — Eficiencia Financiera
+D22	Según fondos externos
+A23	ICODS — Cumplimiento ODS
+C23	Ver H20
+D23	≈87.50%
+A25	▌ SEÑALES SAT ACTIVAS
+A26	SAT
+B26	Estado
+C26	Descripción
+A27	SAT-0
+C27	Coherencia POA-PAC
+A28	SAT-I
+C28	Fragmentación Selectiva
+A29	SAT-II
+C29	Reforma Tardía
+A30	SAT-III
+C30	Parálisis Presupuestaria
+A31	SAT-IV
+C31	Alerta Fiscal COOTAD
+A32	SAT-V
+C32	Alerta Brecha CPCCS
+A33	SAT-VI
+C33	Desvío Presupuesto PP
+A35	▌ TENDENCIA DE MANDATO 2023-2027
+A36	Año
+B36	ICPI
+C36	Nota
+A37	2023
+B37	0.5736130950255192
+C37	★ ICPI canónico 2023 — sellado (H07b serie histórica)
+A38	2024
+B38	0.6711542988680421
+C38	★ ICPI canónico 2024 — sellado (H07b serie histórica)
+A39	2025
+C39	★ Canónico — referencia H12!B33
+A40	2026
+C40	Motor H12 vivo en B33
+A41	Δ Mandato 2023→2025:
+A42	Objetivo 2027:
+C42	🟢 Gestión por Mandato
+```

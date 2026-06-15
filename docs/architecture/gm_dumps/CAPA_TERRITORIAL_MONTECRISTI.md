@@ -1,0 +1,142 @@
+# CAPA_TERRITORIAL_MONTECRISTI — volcado determinista (fórmulas + etiquetas)
+fuente: `SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx` · filas=24 · pobladas=23 · fórmulas=2
+inputs(lee de): H00_ÍNDICE, H01_PARÁMETROS
+outputs(alimenta a): H00_ÍNDICE
+MARCADORES: E10: ⏳ PENDIENTE — ingresar GPS · E11: ⏳ PENDIENTE — ingresar GPS · E12: ⏳ PENDIENTE — ingresar GPS · E13: ⏳ PENDIENTE — ingresar GPS · E14: ⏳ PENDIENTE — ingresar GPS · E15: ⏳ PENDIENTE — ingresar GPS · E16: ⏳ PENDIENTE — ingresar GPS · E17: ⏳ PENDIENTE — ingresar GPS · E18: ⏳ PENDIENTE — ingresar GPS · E19: ⏳ PENDIENTE — ingresar GPS · E20: ⏳ PENDIENTE — ingresar GPS · E21: ⏳ PENDIENTE — ingresar GPS
+
+## FÓRMULAS
+```
+A1	=HYPERLINK("#'H00_ÍNDICE'!A1","⬅️ ÍNDICE GENERAL")
+G1	="AXIOMA 2025: " & TEXT(H01_PARÁMETROS!$B$15, "0,00%") & " | LIVE 2026: " & TEXT(H01_PARÁMETROS!$B$19, "0,00%")
+```
+
+## ETIQUETAS / DATOS (tope 600)
+```
+A2	Geo_ID
+B2	Tipo_Territorio
+C2	Nombre_Territorio
+D2	Zona
+E2	Coordenadas_Ref
+F2	Fuente_PDOT_Pagina
+G2	Meta_UUIDs_Vinculadas
+A3	GEO_MNT_0001
+B3	Parroquia
+C3	Montecristi
+D3	URBANA
+E3	-1.0450, -80.6578 (aprox. cabecera cantonal)
+F3	Fuente oficial GAD (cabecera cantonal)
+G3	MNT-PRES-2025-0011, MNT-PRES-2025-0012, MNT-PRES-2025-0013, MNT-PRES-2025-0014, MNT-DOC-2026-0006, MNT-DOC-2026-0007, MNT-DOC-2023-0013, MNT-DOC-2024-0018, MNT-DOC-2024-0019, MNT-DOC-2025-0023, MNT-DOC-2025-0024, MNT-DOC-2026-0027, MNT-DOC-2026-0028 | [POA-2026]APAA-01 | [POA-2026]APAA-02 | [POA-2026]APAA-03 | [POA-2026]APAA-04 | [POA-2026]APAA-05 | [POA-2026]APAA-06 | [POA-2026]APAA-07 | [POA-2026]APAA-08 | [POA-2026]APAA-09 | [POA-2026]APAA-10 | [POA-2026]APAA-11 | [POA-2026]APAA-12 | [POA-202
+A4	GEO_MNT_0002
+B4	Parroquia
+C4	Aníbal San Andrés
+D4	URBANA
+E4	-1.0238, -80.5891 (aprox. norte)
+F4	Fuente oficial GAD
+G4	[POA-2026]APAA-29
+A5	GEO_MNT_0003
+B5	Parroquia
+C5	Colorado
+D5	URBANA
+E5	-1.1253, -80.5612 (aprox. interior)
+F5	Fuente oficial GAD
+A6	GEO_MNT_0004
+B6	Parroquia
+C6	Leónidas Proaño
+D6	URBANA
+E6	-1.0978, -80.6021 (aprox. sur)
+F6	Fuente oficial GAD
+A7	GEO_MNT_0005
+B7	Parroquia
+C7	General Alfaro
+D7	URBANA
+E7	-0.9876, -80.5234 (aprox. este)
+F7	Fuente oficial GAD
+A8	GEO_MNT_0006
+B8	Parroquia
+C8	La Pila
+D8	RURAL
+E8	-1.0689, -80.6923 (aprox. artesanías)
+F8	Fuente oficial GAD
+G8	[POA-2025]GAD25-135
+A9	GEO_MNT_P06
+B9	Parroquia
+C9	Isabel Muentes
+D9	URBANA
+E9	-0.9712, -80.6487 (aprox. norte costera)
+F9	Fuente oficial GAD — mayor déficit hídrico
+A10	GEO_MNT_0007
+B10	Barrio
+C10	Las Marías
+D10	URBANA
+E10	⏳ PENDIENTE — ingresar GPS
+F10	PDF p.102
+A11	GEO_MNT_0008
+B11	Territorio
+C11	Horizonte Azul
+D11	INDETERMINADA
+E11	⏳ PENDIENTE — ingresar GPS
+F11	PDF p.120
+A12	GEO_MNT_0009
+B12	Comuna
+C12	Las Lagunas
+D12	INDETERMINADA
+E12	⏳ PENDIENTE — ingresar GPS
+F12	PDF p.124
+A13	GEO_MNT_0010
+B13	Sector
+C13	Horizonte
+D13	URBANA
+E13	⏳ PENDIENTE — ingresar GPS
+F13	PDF p.130
+A14	GEO_MNT_0011
+B14	Sector
+C14	Río Bravo
+D14	INDETERMINADA
+E14	⏳ PENDIENTE — ingresar GPS
+F14	PDF p.271
+A15	GEO_MNT_0012
+B15	Territorio
+C15	Unidad Responsable
+D15	INDETERMINADA
+E15	⏳ PENDIENTE — ingresar GPS
+F15	PDF p.410
+A16	GEO_MNT_0013
+B16	Comunidad
+C16	Recuperación
+D16	RURAL
+E16	⏳ PENDIENTE — ingresar GPS
+F16	PDF p.434
+G16	[POA-2026]DIRCOM-03 | [POA-2026]DTCPA-06 | [POA-2026]OOPP-16 | [POA-2026]OOPP-23 | [POA-2026]OOPP-24 | [POA-2026]OOPP-33 | [POA-2025]GAD25-92 | [POA-2025]GAD25-94 | [POA-2025]GAD25-95 | [POA-2025]GAD25-155 | [POA-2025]GAD25-161 | [POA-2025]GAD25-162 | [POA-2025]GAD25-171 | [POA-2025]GAD25-174 | [POA-2025]GAD25-176 | [POA-2025]GAD25-177 | [POA-2025]GAD25-179 | [POA-2025]GAD25-180 | [POA-2025]GAD25-181 | [POA-2025]GAD25-182 | [POA-2023]GAD23-081
+A17	GEO_MNT_0014
+B17	Comunidad
+C17	Mercado de Montecristi
+D17	INDETERMINADA
+E17	⏳ PENDIENTE — ingresar GPS
+F17	PDF p.436
+A18	GEO_MNT_0015
+B18	Comunidad
+C18	Geriátrico Montecristi
+D18	INDETERMINADA
+E18	⏳ PENDIENTE — ingresar GPS
+F18	PDF p.438
+A19	GEO_MNT_0016
+B19	Territorio
+C19	Promoción de Montecristi
+D19	INDETERMINADA
+E19	⏳ PENDIENTE — ingresar GPS
+F19	PDF p.439
+A20	GEO_MNT_0017
+B20	Comunidad
+C20	Los Corrales
+D20	RURAL
+E20	⏳ PENDIENTE — ingresar GPS
+F20	PDF p.449
+A21	GEO_MNT_0018
+B21	Zona
+C21	Viviendas
+D21	RURAL
+E21	⏳ PENDIENTE — ingresar GPS
+F21	PDF p.528
+A22	TOTAL TERRITORIOS: 18 | PARROQUIAS: 6 | ADICIONALES: 12
+A24	⚠️ Coordenadas aproximadas — Validar con GPS oficial GAD antes de usar en GeoTwin
+```

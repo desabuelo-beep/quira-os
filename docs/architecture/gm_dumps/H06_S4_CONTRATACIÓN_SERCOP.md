@@ -1,0 +1,673 @@
+# H06_S4_CONTRATACIÓN_SERCOP — volcado determinista (fórmulas + etiquetas)
+fuente: `SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx` · filas=837 · pobladas=830 · fórmulas=58
+inputs(lee de): H01_PARÁMETROS, H04_S2_PLANIFICACIÓN_PDOT, H12_MOTOR_ICPI_CANÓNICO
+outputs(alimenta a): H00_ÍNDICE, H21b_SAT-0_COHERENCIA_PAC
+refs no resueltas: #H00_ÍNDICE
+MARCADORES: I33: =IF(H33="CONTRATO_SERCOP",IF(G33="Adjudicado",1,IF(G33="En trámite",0. · I34: =IF(H34="CONTRATO_SERCOP",IF(G34="Adjudicado",1,IF(G34="En trámite",0. · I35: =IF(H35="CONTRATO_SERCOP",IF(G35="Adjudicado",1,IF(G35="En trámite",0. · I36: =IF(H36="CONTRATO_SERCOP",IF(G36="Adjudicado",1,IF(G36="En trámite",0. · I37: =IF(H37="CONTRATO_SERCOP",IF(G37="Adjudicado",1,IF(G37="En trámite",0. · I38: =IF(H38="CONTRATO_SERCOP",IF(G38="Adjudicado",1,IF(G38="En trámite",0. · I39: =IF(H39="CONTRATO_SERCOP",IF(G39="Adjudicado",1,IF(G39="En trámite",0. · I40: =IF(H40="CONTRATO_SERCOP",IF(G40="Adjudicado",1,IF(G40="En trámite",0. · I41: =IF(H41="CONTRATO_SERCOP",IF(G41="Adjudicado",1,IF(G41="En trámite",0. · I42: =IF(H42="CONTRATO_SERCOP",IF(G42="Adjudicado",1,IF(G42="En trámite",0. · I43: =IF(H43="CONTRATO_SERCOP",IF(G43="Adjudicado",1,IF(G43="En trámite",0. · I44: =IF(H44="CONTRATO_SERCOP",IF(G44="Adjudicado",1,IF(G44="En trámite",0. · I45: =IF(H45="CONTRATO_SERCOP",IF(G45="Adjudicado",1,IF(G45="En trámite",0. · I46: =IF(H46="CONTRATO_SERCOP",IF(G46="Adjudicado",1,IF(G46="En trámite",0. · I47: =IF(H47="CONTRATO_SERCOP",IF(G47="Adjudicado",1,IF(G47="En trámite",0. · I48: =IF(H48="CONTRATO_SERCOP",IF(G48="Adjudicado",1,IF(G48="En trámite",0. · I49: =IF(H49="CONTRATO_SERCOP",IF(G49="Adjudicado",1,IF(G49="En trámite",0. · I50: =IF(H50="CONTRATO_SERCOP",IF(G50="Adjudicado",1,IF(G50="En trámite",0. · I51: =IF(H51="CONTRATO_SERCOP",IF(G51="Adjudicado",1,IF(G51="En trámite",0. · I52: =IF(H52="CONTRATO_SERCOP",IF(G52="Adjudicado",1,IF(G52="En trámite",0. · I53: =IF(H53="CONTRATO_SERCOP",IF(G53="Adjudicado",1,IF(G53="En trámite",0. · I54: =IF(H54="CONTRATO_SERCOP",IF(G54="Adjudicado",1,IF(G54="En trámite",0. · I55: =IF(H55="CONTRATO_SERCOP",IF(G55="Adjudicado",1,IF(G55="En trámite",0. · I56: =IF(H56="CONTRATO_SERCOP",IF(G56="Adjudicado",1,IF(G56="En trámite",0. · I57: =IF(H57="CONTRATO_SERCOP",IF(G57="Adjudicado",1,IF(G57="En trámite",0.
+
+## FÓRMULAS
+```
+A1	=HYPERLINK("#H00_ÍNDICE!A1","⬅️ ÍNDICE GENERAL")
+E1	="ICPI 2026: "&ROUND(H12_MOTOR_ICPI_CANÓNICO!B33,2)&"% ★"
+F1	=TODAY()
+B6	=H01_PARÁMETROS!B13
+B7	=H01_PARÁMETROS!B6
+B8	=H01_PARÁMETROS!B8
+B10	=COUNTA(C29:C53)
+B33	=H04_S2_PLANIFICACIÓN_PDOT!C15
+I33	=IF(H33="CONTRATO_SERCOP",IF(G33="Adjudicado",1,IF(G33="En trámite",0.5,0)),IF(C33<>"⬜ PENDIENTE INGESTA",IF(G33="Firmado",1,0.5),0))
+B34	=H04_S2_PLANIFICACIÓN_PDOT!C16
+I34	=IF(H34="CONTRATO_SERCOP",IF(G34="Adjudicado",1,IF(G34="En trámite",0.5,0)),IF(C34<>"⬜ PENDIENTE INGESTA",IF(G34="Firmado",1,0.5),0))
+B35	=H04_S2_PLANIFICACIÓN_PDOT!C17
+I35	=IF(H35="CONTRATO_SERCOP",IF(G35="Adjudicado",1,IF(G35="En trámite",0.5,0)),IF(C35<>"⬜ PENDIENTE INGESTA",IF(G35="Firmado",1,0.5),0))
+B36	=H04_S2_PLANIFICACIÓN_PDOT!C18
+I36	=IF(H36="CONTRATO_SERCOP",IF(G36="Adjudicado",1,IF(G36="En trámite",0.5,0)),IF(C36<>"⬜ PENDIENTE INGESTA",IF(G36="Firmado",1,0.5),0))
+B37	=H04_S2_PLANIFICACIÓN_PDOT!C19
+I37	=IF(H37="CONTRATO_SERCOP",IF(G37="Adjudicado",1,IF(G37="En trámite",0.5,0)),IF(C37<>"⬜ PENDIENTE INGESTA",IF(G37="Firmado",1,0.5),0))
+B38	=H04_S2_PLANIFICACIÓN_PDOT!C20
+I38	=IF(H38="CONTRATO_SERCOP",IF(G38="Adjudicado",1,IF(G38="En trámite",0.5,0)),IF(C38<>"⬜ PENDIENTE INGESTA",IF(G38="Firmado",1,0.5),0))
+B39	=H04_S2_PLANIFICACIÓN_PDOT!C21
+I39	=IF(H39="CONTRATO_SERCOP",IF(G39="Adjudicado",1,IF(G39="En trámite",0.5,0)),IF(C39<>"⬜ PENDIENTE INGESTA",IF(G39="Firmado",1,0.5),0))
+B40	=H04_S2_PLANIFICACIÓN_PDOT!C22
+I40	=IF(H40="CONTRATO_SERCOP",IF(G40="Adjudicado",1,IF(G40="En trámite",0.5,0)),IF(C40<>"⬜ PENDIENTE INGESTA",IF(G40="Firmado",1,0.5),0))
+B41	=H04_S2_PLANIFICACIÓN_PDOT!C23
+I41	=IF(H41="CONTRATO_SERCOP",IF(G41="Adjudicado",1,IF(G41="En trámite",0.5,0)),IF(C41<>"⬜ PENDIENTE INGESTA",IF(G41="Firmado",1,0.5),0))
+B42	=H04_S2_PLANIFICACIÓN_PDOT!C24
+I42	=IF(H42="CONTRATO_SERCOP",IF(G42="Adjudicado",1,IF(G42="En trámite",0.5,0)),IF(C42<>"⬜ PENDIENTE INGESTA",IF(G42="Firmado",1,0.5),0))
+B43	=H04_S2_PLANIFICACIÓN_PDOT!C25
+I43	=IF(H43="CONTRATO_SERCOP",IF(G43="Adjudicado",1,IF(G43="En trámite",0.5,0)),IF(C43<>"⬜ PENDIENTE INGESTA",IF(G43="Firmado",1,0.5),0))
+B44	=H04_S2_PLANIFICACIÓN_PDOT!C26
+I44	=IF(H44="CONTRATO_SERCOP",IF(G44="Adjudicado",1,IF(G44="En trámite",0.5,0)),IF(C44<>"⬜ PENDIENTE INGESTA",IF(G44="Firmado",1,0.5),0))
+B45	=H04_S2_PLANIFICACIÓN_PDOT!C27
+I45	=IF(H45="CONTRATO_SERCOP",IF(G45="Adjudicado",1,IF(G45="En trámite",0.5,0)),IF(C45<>"⬜ PENDIENTE INGESTA",IF(G45="Firmado",1,0.5),0))
+B46	=H04_S2_PLANIFICACIÓN_PDOT!C28
+I46	=IF(H46="CONTRATO_SERCOP",IF(G46="Adjudicado",1,IF(G46="En trámite",0.5,0)),IF(C46<>"⬜ PENDIENTE INGESTA",IF(G46="Firmado",1,0.5),0))
+B47	=H04_S2_PLANIFICACIÓN_PDOT!C29
+I47	=IF(H47="CONTRATO_SERCOP",IF(G47="Adjudicado",1,IF(G47="En trámite",0.5,0)),IF(C47<>"⬜ PENDIENTE INGESTA",IF(G47="Firmado",1,0.5),0))
+B48	=H04_S2_PLANIFICACIÓN_PDOT!C30
+I48	=IF(H48="CONTRATO_SERCOP",IF(G48="Adjudicado",1,IF(G48="En trámite",0.5,0)),IF(C48<>"⬜ PENDIENTE INGESTA",IF(G48="Firmado",1,0.5),0))
+B49	=H04_S2_PLANIFICACIÓN_PDOT!C31
+I49	=IF(H49="CONTRATO_SERCOP",IF(G49="Adjudicado",1,IF(G49="En trámite",0.5,0)),IF(C49<>"⬜ PENDIENTE INGESTA",IF(G49="Firmado",1,0.5),0))
+B50	=H04_S2_PLANIFICACIÓN_PDOT!C32
+I50	=IF(H50="CONTRATO_SERCOP",IF(G50="Adjudicado",1,IF(G50="En trámite",0.5,0)),IF(C50<>"⬜ PENDIENTE INGESTA",IF(G50="Firmado",1,0.5),0))
+B51	=H04_S2_PLANIFICACIÓN_PDOT!C33
+I51	=IF(H51="CONTRATO_SERCOP",IF(G51="Adjudicado",1,IF(G51="En trámite",0.5,0)),IF(C51<>"⬜ PENDIENTE INGESTA",IF(G51="Firmado",1,0.5),0))
+B52	=H04_S2_PLANIFICACIÓN_PDOT!C34
+I52	=IF(H52="CONTRATO_SERCOP",IF(G52="Adjudicado",1,IF(G52="En trámite",0.5,0)),IF(C52<>"⬜ PENDIENTE INGESTA",IF(G52="Firmado",1,0.5),0))
+B53	=H04_S2_PLANIFICACIÓN_PDOT!C35
+I53	=IF(H53="CONTRATO_SERCOP",IF(G53="Adjudicado",1,IF(G53="En trámite",0.5,0)),IF(C53<>"⬜ PENDIENTE INGESTA",IF(G53="Firmado",1,0.5),0))
+B54	=H04_S2_PLANIFICACIÓN_PDOT!C36
+I54	=IF(H54="CONTRATO_SERCOP",IF(G54="Adjudicado",1,IF(G54="En trámite",0.5,0)),IF(C54<>"⬜ PENDIENTE INGESTA",IF(G54="Firmado",1,0.5),0))
+B55	=H04_S2_PLANIFICACIÓN_PDOT!C37
+I55	=IF(H55="CONTRATO_SERCOP",IF(G55="Adjudicado",1,IF(G55="En trámite",0.5,0)),IF(C55<>"⬜ PENDIENTE INGESTA",IF(G55="Firmado",1,0.5),0))
+B56	=H04_S2_PLANIFICACIÓN_PDOT!C38
+I56	=IF(H56="CONTRATO_SERCOP",IF(G56="Adjudicado",1,IF(G56="En trámite",0.5,0)),IF(C56<>"⬜ PENDIENTE INGESTA",IF(G56="Firmado",1,0.5),0))
+B57	=H04_S2_PLANIFICACIÓN_PDOT!C39
+I57	=IF(H57="CONTRATO_SERCOP",IF(G57="Adjudicado",1,IF(G57="En trámite",0.5,0)),IF(C57<>"⬜ PENDIENTE INGESTA",IF(G57="Firmado",1,0.5),0))
+N66	=IFERROR(VLOOKUP(A66,H04_S2_PLANIFICACIÓN_PDOT!A15:B39,2,FALSE),"⚠️ SIN META — verificar PAC")
+```
+
+## ETIQUETAS / DATOS (tope 600)
+```
+B1	🏛️ QUIRA Gov · Powered by Dylus Lab · TGI Engine
+D1	H06_S4_CONTRATACIÓN_SERCOP
+A2	H06 — S4 CONTRATACIÓN SERCOP — VERIFICADOR DE ADJUDICACIÓN Y TIPO DE EJECUCIÓN 2026
+A3	Silo 4: Verifica si los procesos están adjudicados en SERCOP o si tienen documento habilitante equivalente. Alimenta V_SERCOP en H13. TIPO_EJECUCION determina la lógica: DEA/Convenio/Fondo_Externo con documento válido = V_SERCOP=1.0.
+A5	▌ PARÁMETROS S4
+A6	Año_SERCOP
+A7	Entidad
+A8	RUC
+A9	Portal_SERCOP
+B9	https://www.compraspublicas.gob.ec/ProcesoContratacion/compras/PC/buscarProceso.cpe
+A10	Total_Procesos_2026
+A12	▌ TAXONOMÍA TIPO_EJECUCION (aplicar siempre — sin excepción)
+A13	TIPO_EJECUCION
+B13	Descripción
+C13	V_SERCOP por defecto
+A14	CONTRATO_SERCOP
+B14	Proceso publicado y adjudicado en portal SERCOP
+C14	Escala 0 / 0.5 / 1.0 según estado
+A15	DEA_EP
+B15	Delegación de Ejecución Articulada a Empresa Pública
+C15	1.0 si acto administrativo firmado existe
+A16	CONVENIO
+B16	Convenio interinstitucional o con ministerio sectorial
+C16	1.0 si convenio firmado y vigente
+A17	AUTOGESTIÓN
+B17	Ejecución directa con fondos propios sin SERCOP
+C17	1.0 si informe de avance firmado existe
+A18	FONDO_EXTERNO
+B18	Financiamiento externo (BanEcuador, MIDUVI, cooperación)
+C18	1.0 si resolución de asignación existe
+A20	▌ ESCALA V_SERCOP — LÓGICA DIFERENCIADA POR TIPO_EJECUCION
+A21	SI TIPO_EJECUCION = CONTRATO_SERCOP:
+B21	V_SERCOP = 1.0 si proceso adjudicado con URL específica del proceso
+B22	V_SERCOP = 0.5 si proceso en trámite (publicado pero no adjudicado)
+B23	V_SERCOP = 0.0 si no hay proceso en SERCOP
+A24	SI TIPO_EJECUCION ≠ CONTRATO_SERCOP (DEA_EP / CONVENIO / AUTOGESTIÓN / FONDO_EXTERNO):
+B24	V_SERCOP = 1.0 si existe documento habilitante firmado
+B25	V_SERCOP = 0.5 si documento existe pero no está firmado o está en proceso
+B26	V_SERCOP = 0.0 si no hay ningún documento habilitante
+A27	⚠️ REGLA ANTI-ERROR: Una DEA o Convenio correctamente ejecutado NO recibe penalización. V_SERCOP = 0.5 por ausencia de proceso SERCOP es ERROR cuando TIPO_EJECUCION ≠ CONTRATO_SERCOP.
+A28	⚠️ REGLA URL (columna D — URL_Proceso):
+B28	Para CONTRATO_SERCOP: URL DEBE ser la URL específica del proceso: https://www.compraspublicas.gob.ec/.../informacionProcesoContratacion2.cpe?idSoliCompra=[ID]. La URL genérica de búsqueda es INVÁLIDA — si se usa, V_SERCOP = 0.5 máximo. Para DEA/CONVENIO: ingresar número del acto administrativo o código del convenio.
+A30	▌ REGISTRO S4 — 25 METAS
+A31	INSTRUCCIÓN:
+B31	Completar con datos reales de SERCOP 2026 cuando disponibles. TIPO_EJECUCION es obligatorio en todas las filas.
+A32	ID_Meta
+B32	Descripción
+C32	Codigo_Proceso_SERCOP
+D32	URL_Proceso_Específica
+E32	Tipo_Contratacion_LOSNCP
+F32	Monto_Adjudicado
+G32	Estado_SERCOP
+H32	TIPO_EJECUCION
+I32	V_SERCOP
+J32	Fecha_Adjudicación
+A33	SC-I-N-01
+C33	DOC-SC-I-N-01-2026
+D33	Acto Adm: RES-GAD-SC-I-N-01-2026-001 (FONDO_EXTERNO)
+E33	Licitación Pública
+F33	7127084.03
+G33	Firmado
+H33	FONDO_EXTERNO
+J33	2026-01-15 (firmado)
+A34	SC-L-N-02
+C34	SIE-GADM-MONTECRISTI-2026-002
+D34	https://www.compraspublicas.gob.ec/ProcesoContratacion/compras/PC/informacionProcesoContratacion2.cpe?idSoliCompra=GADMM2026002
+E34	Menor Cuantía
+F34	12565736.42
+G34	En trámite
+H34	CONTRATO_SERCOP
+J34	2026-Q2 (planificado)
+A35	AH-I-X-01
+C35	DOC-AH-I-X-01-2026
+D35	Acto Adm: RES-GAD-AH-I-X-01-2026-001 (AUTOGESTIÓN)
+E35	Menor Cuantía
+F35	5977831.66
+G35	Firmado
+H35	AUTOGESTIÓN
+J35	2026-01-15 (firmado)
+A36	AH-I-X-02
+C36	SIE-GADM-MONTECRISTI-2026-004
+D36	https://www.compraspublicas.gob.ec/ProcesoContratacion/compras/PC/informacionProcesoContratacion2.cpe?idSoliCompra=GADMM2026004
+E36	Licitación Pública
+F36	749147.97
+G36	En trámite
+H36	CONTRATO_SERCOP
+J36	2026-Q2 (planificado)
+A37	AH-I-X-03
+C37	DOC-AH-I-X-03-2026
+D37	Acto Adm: RES-GAD-AH-I-X-03-2026-001 (DEA_EP)
+E37	Menor Cuantía
+F37	0
+G37	Firmado
+H37	DEA_EP
+J37	2026-01-15 (firmado)
+A38	AH-I-N-01
+C38	DOC-AH-I-N-01-2026
+D38	Acto Adm: RES-GAD-AH-I-N-01-2026-001 (DEA_EP)
+E38	Cotización
+F38	2880
+G38	Firmado
+H38	DEA_EP
+J38	2026-01-15 (firmado)
+A39	SC-L-G-01
+C39	DOC-SC-L-G-01-2026
+D39	Acto Adm: RES-GAD-SC-L-G-01-2026-001 (FONDO_EXTERNO)
+E39	Licitación Pública
+F39	411446.67
+G39	Firmado
+H39	FONDO_EXTERNO
+J39	2026-01-15 (firmado)
+A40	AH-I-X-04
+C40	SIE-GADM-MONTECRISTI-2026-008
+D40	https://www.compraspublicas.gob.ec/ProcesoContratacion/compras/PC/informacionProcesoContratacion2.cpe?idSoliCompra=GADMM2026008
+E40	Menor Cuantía
+F40	1571700
+G40	En trámite
+H40	CONTRATO_SERCOP
+J40	2026-Q2 (planificado)
+A41	PI-I-G-01
+C41	SIE-GADM-MONTECRISTI-2026-009
+D41	https://www.compraspublicas.gob.ec/ProcesoContratacion/compras/PC/informacionProcesoContratacion2.cpe?idSoliCompra=GADMM2026009
+E41	Cotización
+F41	749147.97
+G41	En trámite
+H41	CONTRATO_SERCOP
+J41	2026-Q2 (planificado)
+A42	AH-C-X-01
+C42	DOC-AH-C-X-01-2026
+D42	Acto Adm: RES-GAD-AH-C-X-01-2026-001 (DEA_EP)
+E42	Menor Cuantía
+F42	6950
+G42	Firmado
+H42	DEA_EP
+J42	2026-01-15 (firmado)
+A43	AH-C-X-02
+C43	SIE-GADM-MONTECRISTI-2026-011
+D43	https://www.compraspublicas.gob.ec/ProcesoContratacion/compras/PC/informacionProcesoContratacion2.cpe?idSoliCompra=GADMM2026011
+E43	Menor Cuantía
+F43	56550
+G43	En trámite
+H43	CONTRATO_SERCOP
+J43	2026-Q2 (planificado)
+A44	SC-I-N-03
+C44	DOC-SC-I-N-03-2026
+D44	Acto Adm: RES-GAD-SC-I-N-03-2026-001 (AUTOGESTIÓN)
+E44	Ínfima Cuantía
+F44	205327.56
+G44	Firmado
+H44	AUTOGESTIÓN
+J44	2026-01-15 (firmado)
+A45	FA-I-X-01
+C45	DOC-FA-I-X-01-2026
+D45	Acto Adm: RES-GAD-FA-I-X-01-2026-001 (DEA_EP)
+E45	Cotización
+F45	223260
+G45	Firmado
+H45	DEA_EP
+J45	2026-01-15 (firmado)
+A46	FA-C-X-01
+C46	DOC-FA-C-X-01-2026
+D46	Acto Adm: RES-GAD-FA-C-X-01-2026-001 (DEA_EP)
+E46	Ínfima Cuantía
+F46	2880
+G46	Firmado
+H46	DEA_EP
+J46	2026-01-15 (firmado)
+A47	FA-I-X-02
+C47	DOC-FA-I-X-02-2026
+D47	Acto Adm: RES-GAD-FA-I-X-02-2026-001 (DEA_EP)
+E47	Cotización
+F47	749147.97
+G47	Firmado
+H47	DEA_EP
+J47	2026-01-15 (firmado)
+A48	FA-L-N-01
+C48	SIE-GADM-MONTECRISTI-2026-016
+D48	https://www.compraspublicas.gob.ec/ProcesoContratacion/compras/PC/informacionProcesoContratacion2.cpe?idSoliCompra=GADMM2026016
+E48	Menor Cuantía
+F48	49862.69
+G48	En trámite
+H48	CONTRATO_SERCOP
+J48	2026-Q2 (planificado)
+A49	PI-I-G-02
+C49	DOC-PI-I-G-02-2026
+D49	Acto Adm: RES-GAD-PI-I-G-02-2026-001 (AUTOGESTIÓN)
+E49	Ínfima Cuantía
+F49	80351
+G49	Firmado
+H49	AUTOGESTIÓN
+J49	2026-01-15 (firmado)
+A50	PI-L-G-01
+C50	SIE-GADM-MONTECRISTI-2026-018
+D50	https://www.compraspublicas.gob.ec/ProcesoContratacion/compras/PC/informacionProcesoContratacion2.cpe?idSoliCompra=GADMM2026018
+E50	Menor Cuantía
+F50	749147.97
+G50	En trámite
+H50	CONTRATO_SERCOP
+J50	2026-Q2 (planificado)
+A51	EP-L-N-01
+C51	DOC-EP-L-N-01-2026
+D51	Acto Adm: RES-GAD-EP-L-N-01-2026-001 (CONVENIO)
+E51	Cotización
+F51	749147.97
+G51	Firmado
+H51	CONVENIO
+J51	2026-01-15 (firmado)
+A52	EP-L-X-01
+C52	DOC-EP-L-X-01-2026
+D52	Acto Adm: RES-GAD-EP-L-X-01-2026-001 (CONVENIO)
+E52	Cotización
+F52	49862.69
+G52	Firmado
+H52	CONVENIO
+J52	2026-01-15 (firmado)
+A53	PI-TUR-01
+C53	DOC-PI-TUR-01-2026
+D53	https://www.compraspublicas.gob.ec/ProcesoContratacion/compras/PC/informacionProcesoContratacion2.cpe?idSoliCompra=GADMM2026021
+E53	Cotización
+F53	49862.69
+G53	En trámite
+H53	CONTRATO_SERCOP
+J53	2026-Q2 (planificado)
+A54	PI-TUR-02
+C54	SIE-GADM-MONTECRISTI-2026-022
+D54	https://www.compraspublicas.gob.ec/ProcesoContratacion/compras/PC/informacionProcesoContratacion2.cpe?idSoliCompra=GADMM2026022
+E54	Menor Cuantía
+F54	49862.69
+G54	En trámite
+H54	CONTRATO_SERCOP
+J54	2026-Q2 (planificado)
+A55	FA-CC-01
+C55	DOC-FA-CC-01-2026
+D55	Acto Adm: RES-GAD-FA-CC-01-2026-001 (AUTOGESTIÓN)
+E55	Ínfima Cuantía
+F55	2880
+G55	Firmado
+H55	AUTOGESTIÓN
+J55	2026-01-15 (firmado)
+A56	AH-AP-04
+C56	SIE-GADM-MONTECRISTI-2026-024
+D56	https://www.compraspublicas.gob.ec/ProcesoContratacion/compras/PC/informacionProcesoContratacion2.cpe?idSoliCompra=GADMM2026024
+E56	Cotización
+F56	7127084.03
+G56	En trámite
+H56	CONTRATO_SERCOP
+J56	2026-Q2 (planificado)
+A57	FA-DIS-01
+C57	DOC-FA-DIS-01-2026
+D57	Acto Adm: RES-GAD-FA-DIS-01-2026-001 (DEA_EP)
+E57	Cotización
+F57	2880
+G57	Firmado
+H57	DEA_EP
+J57	2026-01-15 (firmado)
+A60	▌ ARQUITECTURA DE INGESTA PASIVA — H06
+A61	Zona Cruda (columnas A–M)
+B61	Área de pegado libre. El funcionario hace Ctrl+C / Ctrl+V del archivo original del SERCOP, con todas sus columnas desordenadas y nombres de encabezado originales del gobierno. PROHIBIDO exigir limpieza manual.
+A62	Zona Inteligente SIAP-ICPI (columnas N–T)
+B62	Fórmulas de extracción automática que leen la Zona Cruda y capturan: ID_Proceso, Monto_Adjudicado, Fecha_Publicacion, Estado_Proceso, URL_Proceso, ID_Meta_PDOT, V_SERCOP_Calculado.
+A64	ZONA CRUDA → PEGAR ARCHIVO SERCOP AQUÍ (filas 66+, columnas A–M)
+N64	ZONA INTELIGENTE SIAP-ICPI → COLUMNAS N–T
+A65	ENTIDAD
+B65	OCID
+C65	AÑO
+D65	MES
+E65	TIPO_CONTRATACION
+F65	ESTADO
+G65	MONTO_PRESUPUESTADO_USD
+H65	MONTO_ADJUDICADO_USD
+I65	PROVEEDOR
+J65	TITULO
+K65	FECHA_PUBLICACION
+L65	FUENTE_INGESTA
+N65	ID_Proceso_QUIRA
+O65	ID_Meta_Enlazado
+P65	Monto_Extraído
+Q65	Fecha_Pub_Extraída
+R65	Estado_Extraído
+S65	URL_Extraída
+T65	V_SERCOP_Calculado
+A66	BOMBEROS
+B66	ocds-5wno2w-CDC-BCBM-002-2022-132804
+C66	2023
+D66	2
+E66	Contratacion directa
+F66	por_verificar
+G66	12000
+H66	12000
+I66	CAPACITACION Y ASESORIAS CAMAKA S.A.
+J66	CDC-BCBM-002-2022-132804
+K66	2023-03-01
+L66	SERCOP_OCDS_API
+A67	BOMBEROS
+B67	ocds-5wno2w-CE-20230002514288-132804
+C67	2023
+D67	10
+E67	Catálogo electrónico - Mejor oferta
+F67	por_verificar
+G67	34.0032
+H67	34.0032
+I67	COMPAÑIA GENERAL DE COMERCIO COGECOMSA S. A.
+J67	Orden de compra CE-20230002514288
+K67	2023-10-25
+L67	SERCOP_OCDS_API
+A68	BOMBEROS
+B68	ocds-5wno2w-CE-20230002514289-132804
+C68	2023
+D68	10
+E68	Catálogo electrónico - Mejor oferta
+F68	por_verificar
+G68	56.448
+H68	56.448
+I68	TEXTIQUIM CIA. LTDA.
+J68	Orden de compra CE-20230002514289
+K68	2023-10-25
+L68	SERCOP_OCDS_API
+A69	BOMBEROS
+B69	ocds-5wno2w-CE-20230002514290-132804
+C69	2023
+D69	10
+E69	Catálogo electrónico - Mejor oferta
+F69	por_verificar
+G69	143.36
+H69	143.36
+I69	TEXTIQUIM CIA. LTDA.
+J69	Orden de compra CE-20230002514290
+K69	2023-10-25
+L69	SERCOP_OCDS_API
+A70	BOMBEROS
+B70	ocds-5wno2w-CE-20230002514291-132804
+C70	2023
+D70	10
+E70	Catálogo electrónico - Mejor oferta
+F70	por_verificar
+G70	13.3056
+H70	13.3056
+I70	TEXTIQUIM CIA. LTDA.
+J70	Orden de compra CE-20230002514291
+K70	2023-10-25
+L70	SERCOP_OCDS_API
+A71	BOMBEROS
+B71	ocds-5wno2w-CE-20230002514298-132804
+C71	2023
+D71	10
+E71	Catálogo electrónico - Mejor oferta
+F71	por_verificar
+G71	20.72
+H71	20.72
+I71	CARDENAS SALAMEA SONIA PIEDAD
+J71	Orden de compra CE-20230002514298
+K71	2023-10-25
+L71	SERCOP_OCDS_API
+A72	BOMBEROS
+B72	ocds-5wno2w-CE-20230002514292-132804
+C72	2023
+D72	10
+E72	Catálogo electrónico - Mejor oferta
+F72	por_verificar
+G72	10.304
+H72	10.304
+I72	COMPAÑIA GENERAL DE COMERCIO COGECOMSA S. A.
+J72	Orden de compra CE-20230002514292
+K72	2023-10-25
+L72	SERCOP_OCDS_API
+A73	BOMBEROS
+B73	ocds-5wno2w-CE-20230002514299-132804
+C73	2023
+D73	10
+E73	Catálogo electrónico - Mejor oferta
+F73	por_verificar
+G73	56.952
+H73	56.952
+I73	ABOLINE S.A.
+J73	Orden de compra CE-20230002514299
+K73	2023-10-25
+L73	SERCOP_OCDS_API
+A74	BOMBEROS
+B74	ocds-5wno2w-CE-20230002514300-132804
+C74	2023
+D74	10
+E74	Catálogo electrónico - Mejor oferta
+F74	por_verificar
+G74	58.2176
+H74	58.2176
+I74	TEXTIQUIM CIA. LTDA.
+J74	Orden de compra CE-20230002514300
+K74	2023-10-25
+L74	SERCOP_OCDS_API
+A75	BOMBEROS
+B75	ocds-5wno2w-CE-20230002514284-132804
+C75	2023
+D75	10
+E75	Catálogo electrónico - Mejor oferta
+F75	por_verificar
+G75	33.6
+H75	33.6
+I75	TEXTIQUIM CIA. LTDA.
+J75	Orden de compra CE-20230002514284
+K75	2023-10-25
+L75	SERCOP_OCDS_API
+A76	BOMBEROS
+B76	ocds-5wno2w-CE-20230002514293-132804
+C76	2023
+D76	10
+E76	Catálogo electrónico - Mejor oferta
+F76	por_verificar
+G76	11.508
+H76	11.508
+I76	COMPAÑIA GENERAL DE COMERCIO COGECOMSA S. A.
+J76	Orden de compra CE-20230002514293
+K76	2023-10-25
+L76	SERCOP_OCDS_API
+A77	BOMBEROS
+B77	ocds-5wno2w-CE-20230002514294-132804
+C77	2023
+D77	10
+E77	Catálogo electrónico - Mejor oferta
+F77	por_verificar
+G77	47.04
+H77	47.04
+I77	TEXTIQUIM CIA. LTDA.
+J77	Orden de compra CE-20230002514294
+K77	2023-10-25
+L77	SERCOP_OCDS_API
+A78	BOMBEROS
+B78	ocds-5wno2w-CE-20230002514295-132804
+C78	2023
+D78	10
+E78	Catálogo electrónico - Mejor oferta
+F78	por_verificar
+G78	99.12
+H78	99.12
+I78	COMPAÑIA GENERAL DE COMERCIO COGECOMSA S. A.
+J78	Orden de compra CE-20230002514295
+K78	2023-10-25
+L78	SERCOP_OCDS_API
+A79	BOMBEROS
+B79	ocds-5wno2w-CE-20230002514287-132804
+C79	2023
+D79	10
+E79	Catálogo electrónico - Mejor oferta
+F79	por_verificar
+G79	71.12
+H79	71.12
+I79	COMPAÑIA GENERAL DE COMERCIO COGECOMSA S. A.
+J79	Orden de compra CE-20230002514287
+K79	2023-10-25
+L79	SERCOP_OCDS_API
+A80	BOMBEROS
+B80	ocds-5wno2w-CE-20230002514296-132804
+C80	2023
+D80	10
+E80	Catálogo electrónico - Mejor oferta
+F80	por_verificar
+G80	24.472
+H80	24.472
+I80	PLASTILIMPIO S.A.
+J80	Orden de compra CE-20230002514296
+K80	2023-10-25
+L80	SERCOP_OCDS_API
+A81	BOMBEROS
+B81	ocds-5wno2w-CE-20230002514297-132804
+C81	2023
+D81	10
+E81	Catálogo electrónico - Mejor oferta
+F81	por_verificar
+G81	4.648
+H81	4.648
+I81	COMPAÑIA GENERAL DE COMERCIO COGECOMSA S. A.
+J81	Orden de compra CE-20230002514297
+K81	2023-10-25
+L81	SERCOP_OCDS_API
+A82	BOMBEROS
+B82	ocds-5wno2w-CE-20230002514285-132804
+C82	2023
+D82	10
+E82	Catálogo electrónico - Mejor oferta
+F82	por_verificar
+G82	23.184
+H82	23.184
+I82	COMPAÑIA GENERAL DE COMERCIO COGECOMSA S. A.
+J82	Orden de compra CE-20230002514285
+K82	2023-10-25
+L82	SERCOP_OCDS_API
+A83	BOMBEROS
+B83	ocds-5wno2w-CE-20230002514286-132804
+C83	2023
+D83	10
+E83	Catálogo electrónico - Mejor oferta
+F83	por_verificar
+G83	21.952
+H83	21.952
+I83	CARDENAS SALAMEA SONIA PIEDAD
+J83	Orden de compra CE-20230002514286
+K83	2023-10-25
+L83	SERCOP_OCDS_API
+A84	BOMBEROS
+B84	ocds-5wno2w-CDC-BCBMTI-2023-003-132804
+C84	2023
+D84	12
+E84	Contratacion directa
+F84	por_verificar
+G84	7800
+H84	7800
+I84	PALACIOS CORREA LENIN ALEJANDRO
+J84	CDC-BCBMTI-2023-003-132804
+K84	2024-01-23
+L84	SERCOP_OCDS_API
+A85	BOMBEROS
+B85	ocds-5wno2w-CE-20240002553044-132804
+C85	2024
+D85	1
+E85	Catálogo electrónico - Mejor oferta
+F85	por_verificar
+G85	1426.88
+H85	1426.88
+I85	CONTINENTAL TIRE ANDINA S.A.
+J85	Orden de compra CE-20240002553044
+K85	2024-01-25
+L85	SERCOP_OCDS_API
+A86	BOMBEROS
+B86	ocds-5wno2w-CE-20240002553049-132804
+C86	2024
+D86	1
+E86	Catálogo electrónico - Mejor oferta
+F86	por_verificar
+G86	1078.4
+H86	1078.4
+I86	CONTINENTAL TIRE ANDINA S.A.
+J86	Orden de compra CE-20240002553049
+K86	2024-01-25
+L86	SERCOP_OCDS_API
+A87	BOMBEROS
+B87	ocds-5wno2w-CE-20240002553045-132804
+C87	2024
+D87	1
+E87	Catálogo electrónico - Mejor oferta
+F87	por_verificar
+G87	1345.34
+H87	1345.34
+I87	CONTINENTAL TIRE ANDINA S.A.
+J87	Orden de compra CE-20240002553045
+K87	2024-01-25
+L87	SERCOP_OCDS_API
+A88	BOMBEROS
+B88	ocds-5wno2w-CE-20240002553048-132804
+C88	2024
+D88	1
+E88	Catálogo electrónico - Mejor oferta
+F88	por_verificar
+G88	5123.78
+H88	5123.78
+I88	CONTINENTAL TIRE ANDINA S.A.
+J88	Orden de compra CE-20240002553048
+K88	2024-01-25
+L88	SERCOP_OCDS_API
+A89	BOMBEROS
+B89	ocds-5wno2w-CE-20240002553046-132804
+C89	2024
+D89	1
+E89	Catálogo electrónico - Mejor oferta
+F89	por_verificar
+G89	432.006
+H89	432.006
+I89	CONTINENTAL TIRE ANDINA S.A.
+J89	Orden de compra CE-20240002553046
+K89	2024-01-25
+L89	SERCOP_OCDS_API
+A90	BOMBEROS
+B90	ocds-5wno2w-CE-20240002553047-132804
+C90	2024
+D90	1
+E90	Catálogo electrónico - Mejor oferta
+F90	por_verificar
+G90	2044.72
+H90	2044.72
+I90	CONTINENTAL TIRE ANDINA S.A.
+J90	Orden de compra CE-20240002553047
+K90	2024-01-25
+L90	SERCOP_OCDS_API
+A91	BOMBEROS
+B91	ocds-5wno2w-CE-20240002572741-132804
+C91	2024
+D91	2
+E91	Catálogo electrónico - Mejor oferta
+F91	por_verificar
+G91	6.608
+H91	6.608
+I91	COMPAÑIA GENERAL DE COMERCIO COGECOMSA S. A.
+J91	Orden de compra CE-20240002572741
+K91	2024-02-27
+L91	SERCOP_OCDS_API
+A92	BOMBEROS
+B92	ocds-5wno2w-CE-20240002572752-132804
+C92	2024
+D92	2
+E92	Catálogo electrónico - Mejor oferta
+F92	por_verificar
+G92	103.04
+[TRUNCADO: 8727 celdas-dato más]
+```

@@ -1,0 +1,154 @@
+# H37_SENSIBILIDAD_ESTRATÉGICA — volcado determinista (fórmulas + etiquetas)
+fuente: `SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx` · filas=38 · pobladas=30 · fórmulas=24
+inputs(lee de): H07b_Ti_INVERSIÓN_eSIGEF, H12_MOTOR_ICPI_CANÓNICO, H14_PONDERADORES
+outputs(alimenta a): H00_ÍNDICE
+refs no resueltas: #H00_ÍNDICE
+
+## FÓRMULAS
+```
+A1	=HYPERLINK("#H00_ÍNDICE!A1","⬅️ ÍNDICE GENERAL")
+E1	="ICPI 2026: "&ROUND(H12_MOTOR_ICPI_CANÓNICO!B33,2)&"% ★"
+F1	=TODAY()
+B7	=H07b_Ti_INVERSIÓN_eSIGEF!B19
+C7	=H12_MOTOR_ICPI_CANÓNICO!B33
+D7	=H12_MOTOR_ICPI_CANÓNICO!B34
+B8	=B7+0.1
+C8	=MIN(1,H12_MOTOR_ICPI_CANÓNICO!B33+(B8-B7))
+D8	=IF(C8>=0.85,"🟢 SOBRESALIENTE",IF(C8>=0.7,"🔵 ALTO",IF(C8>=0.5,"🟡 MEDIO","🔴 BAJO")))
+B9	=B7+0.05
+C9	=MIN(1,H12_MOTOR_ICPI_CANÓNICO!B33+(B9-B7))
+D9	=IF(C9>=0.85,"🟢 SOBRESALIENTE",IF(C9>=0.7,"🔵 ALTO",IF(C9>=0.5,"🟡 MEDIO","🔴 BAJO")))
+B10	=MAX(0,B7-0.05)
+C10	=MAX(0,H12_MOTOR_ICPI_CANÓNICO!B33+(B10-B7))
+D10	=IF(C10>=0.85,"🟢 SOBRESALIENTE",IF(C10>=0.7,"🔵 ALTO",IF(C10>=0.5,"🟡 MEDIO","🔴 BAJO")))
+D17	=B17*C17
+E17	=D17/SUMPRODUCT(H14_PONDERADORES!G7:G31,H14_PONDERADORES!E7:E31)
+F17	=B17*C17*0.01
+D18	=B18*C18
+E18	=D18/SUMPRODUCT(H14_PONDERADORES!G7:G31,H14_PONDERADORES!E7:E31)
+F18	=B18*C18*0.01
+D19	=B19*C19
+E19	=D19/SUMPRODUCT(H14_PONDERADORES!G7:G31,H14_PONDERADORES!E7:E31)
+F19	=B19*C19*0.01
+```
+
+## ETIQUETAS / DATOS (tope 600)
+```
+B1	🏛️ QUIRA Gov · Powered by Dylus Lab · TGI Engine
+D1	H37_SENSIBILIDAD_ESTRATÉGICA
+A2	H37 — SENSIBILIDAD ESTRATÉGICA — ANÁLISIS DE ESCENARIOS
+A3	Modela el impacto de cambios en Pi, Ri, Ti sobre el ICPI global. Herramienta de planificación estratégica.
+A5	▌ ESCENARIOS DE PROYECCIÓN 2026-2027
+A6	Escenario
+B6	Ti_Hipotético
+C6	ICPI_Proyectado
+D6	Clasificación_AVEP
+A7	Escenario Base (tendencia actual 2025)
+A8	Escenario Optimista (Ti +10pp)
+A9	Escenario Moderado (Ti +5pp)
+A10	Escenario Pesimista (Ti -5pp)
+A12	Nota metodológica: Los escenarios son solo proyecciones orientativas. El ICPI real se calcula siempre en H12 con datos verificados.
+A15	▌ SENSIBILIDAD Pi POR META
+A16	ID_Meta
+B16	Pi
+C16	Ri
+D16	Pi×Ri (peso en denominador)
+E16	% del denominador
+F16	Impacto_1pp_Ti
+A17	SC-L-N-02
+B17	0.3079
+C17	0.5797
+A18	SC-I-N-01
+B18	0.2736
+C18	0.8696
+A19	AH-I-X-01
+B19	0.1179
+C19	0.5797
+A21	★ Top 3 metas más sensibles al ICPI:
+A22	1. SC-L-N-02 (Pi=0.3079, Ri=0.5797) → Pi×Ri=0.1785 = 26.1% del denominador
+A23	2. SC-I-N-01 (Pi=0.2736, Ri=0.8696) → Pi×Ri=0.2379 = 34.9% del denominador
+A24	3. AH-I-X-01 (Pi=0.1179, Ri=0.5797) → Pi×Ri=0.0683 = 10.0% del denominador
+A27	▌ VENTANA DE OPORTUNIDAD 2026 — Top 3 metas para máximo impacto ICPI
+A28	ID_Meta
+B28	Entidad
+C28	Pi×Rf_peso
+D28	Ti_Actual
+E28	ICPI_i_Actual_%
+F28	ICPI_i_Si_Ti=1.0_%
+G28	Delta_ICPI_Potencial_%
+H28	Tipo_Mejora
+I28	Prioridad
+A29	SC-I-N-01
+B29	GAD
+C29	0.237917
+D29	0.2375
+E29	23.75
+F29	100
+G29	26.5775
+H29	Ejecutiva
+I29	🔴 ALTA
+A30	SC-L-N-02
+B30	GAD
+C30	0.178468
+D30	0.2375
+E30	23.75
+F30	100
+G30	19.9365
+H30	Ejecutiva
+I30	🔴 ALTA
+A31	AH-I-X-01
+B31	GAD
+C31	0.068327
+D31	0.2375
+E31	19.2375
+F31	81
+G31	6.1825
+H31	Ejecutiva
+I31	🔴 ALTA
+A32	FA-I-X-02
+B32	EP_ASEO
+C32	0.016914
+D32	0.1774
+E32	14.3677
+F32	81
+G32	1.6512
+H32	Ejecutiva
+I32	🟡 MEDIA
+A33	AH-I-X-03
+B33	PATRONATO
+C33	0.009946
+D33	0.0971
+E33	8.7415
+F33	90
+G33	1.1841
+H33	Ejecutiva
+I33	🟡 MEDIA
+A34	AH-I-N-01
+B34	EP_ASEO
+C34	0.033545
+D34	0.1774
+E34	4.9888
+F34	28.125
+G34	1.137
+H34	Ejecutiva
+I34	🟡 MEDIA
+A35	PI-I-G-01
+B35	GAD
+C35	0.008753
+D35	0.2375
+E35	23.75
+F35	100
+G35	0.9778
+H35	Ejecutiva
+I35	🟢 BAJA
+A36	AH-I-X-04
+B36	GAD
+C36	0.012732
+D36	0.2375
+E36	13.3594
+F36	56.25
+G36	0.8
+H36	Ejecutiva
+I36	🟢 BAJA
+A38	★ Si el GAD completa las 3 metas de mayor Delta antes del cierre, el ICPI puede subir de 18.31% a un estimado de 71.01%
+```

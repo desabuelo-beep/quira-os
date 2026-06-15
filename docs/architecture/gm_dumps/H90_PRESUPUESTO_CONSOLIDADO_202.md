@@ -1,0 +1,526 @@
+# H90_PRESUPUESTO_CONSOLIDADO_202 — volcado determinista (fórmulas + etiquetas)
+fuente: `SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx` · filas=80 · pobladas=74 · fórmulas=6
+inputs(lee de): H00_ÍNDICE
+outputs(alimenta a): H00_ÍNDICE, H73_OUTPUT_API, H_HOLDING_CEDULAS_2026
+MARCADORES: I43: ⏳ sin dato 2025
+
+## FÓRMULAS
+```
+A1	=HYPERLINK("#'H00_ÍNDICE'!A1","⬅️ ÍNDICE GENERAL")
+B73	=C8/B8
+B74	=C4/B4
+B75	=C5/B5
+B76	=C6/B6
+B77	=C7/B7
+```
+
+## ETIQUETAS / DATOS (tope 600)
+```
+A2	4 Entidades: GAD Municipal  ·  Patronato Municipal  ·  EP Aseo  ·  Cuerpo de Bomberos
+A3	Entidad
+B3	Codificado_Vigente
+C3	Devengado_Q1
+D3	Ti_2026_%
+E3	Calidad_Dato
+F3	Alerta_Variacion
+G3	Cod_Inicial
+H3	Reformas_Net
+A4	GAD Municipal de Montecristi
+B4	45977893.81
+C4	5147258.859999999
+D4	11.20%
+E4	Cédula oficial SERCOP Q1-2026
+F4	TOTAL: +46.0% | G5: +86.2% | G7: +47.5%
+G4	39310032.02
+H4	6667861.79
+A5	Patronato Municipal de Montecristi
+B5	4341242.62
+C5	849061.75
+D5	19.56%
+E5	Cédula oficial SERCOP Q1-2026
+F5	✅ Sin alerta
+G5	4339062.31
+H5	2180.31
+A6	EP Aseo Montecristi
+B6	2438254.45
+C6	442929.52
+D6	18.17%
+E6	Cédula oficial SERCOP Q1-2026
+F6	TOTAL: -16.9% | G9: +549.8% | G5: -100.0%
+G6	1937281.5
+H6	500972.95
+A7	Cuerpo de Bomberos Montecristi
+B7	1485033.4
+C7	288599.28
+D7	19.43%
+E7	Cédula oficial SERCOP Q1-2026
+F7	G9: -79.1% | G5: -100.0% | G8: -24.2%
+G7	1485033.4
+H7	-6.252776074688882e-13
+A8	TOTAL 4 ENTIDADES
+B8	54242424.28
+C8	6727849.409999999
+D8	12.40%
+E8	—
+F8	—
+G8	—
+H8	—
+A10	PRESUPUESTO CANTONAL TOTAL 2026: $54,242,424.28  |  EJECUCIÓN Q1 (31-03-2026): 12.40%  |  DEVENGADO Q1: $6,727,849.41
+A12	══  GAD MUNICIPAL DE MONTECRISTI  ══  Corte: 31-03-2026
+A13	Grupo
+B13	Descripcion_Grupo
+C13	Codificado_Inicial
+D13	Reformas
+E13	Codificado_Vigente
+F13	Devengado_Q1
+G13	Ti_%
+H13	Calidad_Dato
+I13	Alerta_Variacion
+A14	G51
+B14	Gastos en Personal — Corriente
+C14	5171966.33
+D14	0
+E14	5171966.33
+F14	1682492.1
+G14	32.53%
+H14	Cédula oficial
+I14	⚠️ ALERTA_VARIACION G7: +47.5%
+A15	G53
+B15	Bienes y Servicios de Consumo
+C15	1598178.56
+D15	618964.7799999998
+E15	2217143.34
+F15	78689.88
+G15	3.55%
+H15	Cédula oficial
+I15	⚠️ ALERTA_VARIACION G7: +47.5%
+A16	G56
+B16	Gastos Financieros
+C16	1668502.96
+D16	385605.8500000001
+E16	2054108.81
+F16	167706.08
+G16	8.16%
+H16	Cédula oficial
+I16	⚠️ ALERTA_VARIACION G7: +47.5%
+A17	G57
+B17	Otros Gastos Corrientes
+C17	404550
+D17	0
+E17	404550
+F17	1923.3
+G17	0.48%
+H17	Cédula oficial
+I17	⚠️ ALERTA_VARIACION G7: +47.5%
+A18	G58
+B18	Transferencias y Donaciones Corrientes
+C18	1013177.72
+D18	0
+E18	1013177.72
+F18	17056.82
+G18	1.68%
+H18	Cédula oficial
+I18	⚠️ ALERTA_VARIACION G7: +47.5%
+A19	G71
+B19	Gastos en Personal — Inversión
+C19	6961991.370000001
+D19	0
+E19	6961991.370000001
+F19	5448.120000000001
+G19	0.08%
+H19	Cédula oficial
+I19	⚠️ ALERTA_VARIACION G7: +47.5%
+A20	G73
+B20	Bienes y Servicios para Inversión
+C20	4043482.65
+D20	1469541.55
+E20	5513024.2
+F20	57014.66
+G20	1.03%
+H20	Cédula oficial
+I20	⚠️ ALERTA_VARIACION G7: +47.5%
+A21	G75
+B21	Obras Públicas
+C21	14900160.22
+D21	939990.4800000023
+E21	15840150.7
+F21	181050.94
+G21	1.14%
+H21	Cédula oficial
+I21	⚠️ ALERTA_VARIACION G5: +86.2%
+A22	G77
+B22	Otros Gastos de Inversión
+C22	7900
+D22	23764.8
+E22	31664.8
+F22	0
+G22	0.00%
+H22	Cédula oficial
+I22	⚠️ ALERTA_VARIACION G7: +47.5%
+A23	G78
+B23	Transferencias e Inversiones de Capital
+C23	151000
+D23	1091289.3
+E23	1242289.3
+F23	0
+G23	0.00%
+H23	Cédula oficial
+I23	⚠️ ALERTA_VARIACION G7: +47.5%
+A24	G84
+B24	Bienes de Larga Duración
+C24	502793.51
+D24	114897.86
+E24	617691.37
+F24	0
+G24	0.00%
+H24	Cédula oficial
+I24	⚠️ ALERTA_VARIACION G8: -26.3%
+A25	G96
+B25	Amortización de Deuda Pública
+C25	1177953.37
+D25	441425.5
+E25	1619378.87
+F25	154455.56
+G25	9.54%
+H25	Cédula oficial
+A26	G97
+B26	Deuda Flotante / CxP Años Anteriores
+C26	1628375.33
+D26	1582381.67
+E26	3210757
+F26	2801421.4
+G26	87.25%
+H26	Cédula oficial
+A27	G99
+B27	Otros de Financiamiento
+C27	80000
+D27	0
+E27	80000
+F27	0
+G27	0.00%
+H27	Cédula oficial
+A28	SUBTOTAL
+B28	GAD Municipal de Montecristi
+C28	39310032.02
+D28	6667861.79
+E28	45977893.81
+F28	5147258.859999999
+G28	11.20%
+H28	—
+I28	Var 2025: +46.0%
+A30	══  PATRONATO MUNICIPAL DE MONTECRISTI  ══  Corte: 31-03-2026
+A31	Grupo
+B31	Descripcion_Grupo
+C31	Codificado_Inicial
+D31	Reformas
+E31	Codificado_Vigente
+F31	Devengado_Q1
+G31	Ti_%
+H31	Calidad_Dato
+I31	Alerta_Variacion
+A32	G51
+B32	Gastos en Personal — Corriente
+C32	612279.22
+D32	0
+E32	612279.22
+F32	137568.09
+G32	22.47%
+H32	Cédula oficial
+A33	G53
+B33	Bienes y Servicios de Consumo
+C33	184112.6
+D33	0
+E33	184112.6
+F33	11353.9
+G33	6.17%
+H33	Cédula oficial
+A34	G56
+B34	Gastos Financieros
+C34	1000
+D34	0
+E34	1000
+F34	0
+G34	0.00%
+H34	Cédula oficial
+A35	G57
+B35	Otros Gastos Corrientes
+C35	16800
+D35	0
+E35	16800
+F35	196.89
+G35	1.17%
+H35	Cédula oficial
+A36	G58
+B36	Transferencias y Donaciones Corrientes
+C36	15000
+D36	0
+E36	15000
+F36	3955.42
+G36	26.37%
+H36	Cédula oficial
+A37	G71
+B37	Gastos en Personal — Inversión
+C37	879138.3200000001
+D37	0
+E37	879138.3200000001
+F37	197781.37
+G37	22.50%
+H37	Cédula oficial
+A38	G73
+B38	Bienes y Servicios para Inversión
+C38	1702473.57
+D38	0
+E38	1702473.57
+F38	78347.93000000001
+G38	4.60%
+H38	Cédula oficial
+A39	G77
+B39	Otros Gastos de Inversión
+C39	88590.77
+D39	0
+E39	88590.77
+F39	6788.22
+G39	7.66%
+H39	Cédula oficial
+A40	G78
+B40	Transferencias e Inversiones de Capital
+C40	90134.79000000001
+D40	0
+E40	90134.79000000001
+F40	2239.91
+G40	2.49%
+H40	Cédula oficial
+A41	G84
+B41	Bienes de Larga Duración
+C41	356604.85
+D41	0
+E41	356604.85
+F41	17585.92
+G41	4.93%
+H41	Cédula oficial
+A42	G97
+B42	Deuda Flotante / CxP Años Anteriores
+C42	392928.19
+D42	2180.309999999998
+E42	395108.5
+F42	393244.1
+G42	99.53%
+H42	Cédula oficial
+A43	SUBTOTAL
+B43	Patronato Municipal de Montecristi
+C43	4339062.31
+D43	2180.31
+E43	4341242.62
+F43	849061.75
+G43	19.56%
+H43	—
+I43	⏳ sin dato 2025
+A45	══  EP ASEO MONTECRISTI  ══  Corte: 31-03-2026
+A46	Grupo
+B46	Descripcion_Grupo
+C46	Codificado_Inicial
+D46	Reformas
+E46	Codificado_Vigente
+F46	Devengado_Q1
+G46	Ti_%
+H46	Calidad_Dato
+I46	Alerta_Variacion
+A47	G51
+B47	Gastos en Personal — Corriente
+C47	408682.77
+D47	0
+E47	408682.77
+F47	88864.98999999999
+G47	21.74%
+H47	Cédula oficial
+I47	⚠️ ALERTA_VARIACION G7: +18.7%
+A48	G53
+B48	Bienes y Servicios de Consumo
+C48	32338.94
+D48	6009.100000000002
+E48	38348.04
+F48	4400.97
+G48	11.48%
+H48	Cédula oficial
+I48	⚠️ ALERTA_VARIACION G7: +18.7%
+A49	G56
+B49	Gastos Financieros
+C49	0
+D49	2200
+E49	2200
+F49	1593.35
+G49	72.42%
+H49	Cédula oficial
+I49	⚠️ ALERTA_VARIACION G7: +18.7%
+A50	G57
+B50	Otros Gastos Corrientes
+C50	8688.67
+D50	52.5
+E50	8741.17
+F50	21.65
+G50	0.25%
+H50	Cédula oficial
+I50	⚠️ ALERTA_VARIACION G7: +18.7%
+A51	G58
+B51	Transferencias y Donaciones Corrientes
+C51	10000
+D51	-2200
+E51	7800
+F51	1283.91
+G51	16.46%
+H51	Cédula oficial
+I51	⚠️ ALERTA_VARIACION G7: +18.7%
+A52	G71
+B52	Gastos en Personal — Inversión
+C52	831398.06
+D52	0
+E52	831398.06
+F52	202584.52
+G52	24.37%
+H52	Cédula oficial
+I52	⚠️ ALERTA_VARIACION G7: +18.7%
+A53	G73
+B53	Bienes y Servicios para Inversión
+C53	529427.51
+D53	166127.11
+E53	695554.62
+F53	31127.16
+G53	4.48%
+H53	Cédula oficial
+I53	⚠️ ALERTA_VARIACION G7: +18.7%
+A54	G75
+B54	Obras Públicas
+C54	0.03
+D54	0
+E54	0.03
+F54	0
+G54	0.00%
+H54	Cédula oficial
+I54	⚠️ ALERTA_VARIACION G5: -100.0%
+A55	G77
+B55	Otros Gastos de Inversión
+C55	16500
+D55	0
+E55	16500
+F55	0
+G55	0.00%
+H55	Cédula oficial
+I55	⚠️ ALERTA_VARIACION G7: +18.7%
+A56	G84
+B56	Bienes de Larga Duración
+C56	74145.51999999999
+D56	0
+E56	74145.51999999999
+F56	53215.98
+G56	71.77%
+H56	Cédula oficial
+I56	⚠️ ALERTA_VARIACION G8: -88.9%
+A57	G97
+B57	Deuda Flotante / CxP Años Anteriores
+C57	26100
+D57	328784.24
+E57	354884.24
+F57	59836.99
+G57	16.86%
+H57	Cédula oficial
+I57	⚠️ ALERTA_VARIACION G9: +549.8%
+A58	SUBTOTAL
+B58	EP Aseo Montecristi
+C58	1937281.5
+D58	500972.95
+E58	2438254.45
+F58	442929.52
+G58	18.17%
+H58	—
+I58	Var 2025: -16.9%
+A60	══  CUERPO DE BOMBEROS MONTECRISTI  ══  Corte: 31-03-2026
+A61	Grupo
+B61	Descripcion_Grupo
+C61	Codificado_Inicial
+D61	Reformas
+E61	Codificado_Vigente
+F61	Devengado_Q1
+G61	Ti_%
+H61	Calidad_Dato
+I61	Alerta_Variacion
+A62	G51
+B62	Gastos en Personal — Corriente
+C62	931754.47
+D62	12232.03000000003
+E62	943986.5
+F62	229246.95
+G62	24.28%
+H62	Cédula oficial
+A63	G53
+B63	Bienes y Servicios de Consumo
+C63	258200.36
+D63	-12232.02999999997
+E63	245968.33
+F63	18947.8
+G63	7.70%
+H63	Cédula oficial
+A64	G57
+B64	Otros Gastos Corrientes
+C64	45741.19
+D64	0
+E64	45741.19
+F64	7568.97
+G64	16.55%
+H64	Cédula oficial
+A65	G84
+B65	Bienes de Larga Duración
+C65	216501.82
+D65	0
+E65	216501.82
+F65	0
+G65	0.00%
+H65	Cédula oficial
+I65	⚠️ ALERTA_VARIACION G8: -24.2%
+A66	G97
+B66	Deuda Flotante / CxP Años Anteriores
+C66	32835.56
+D66	0
+E66	32835.56
+F66	32835.56
+G66	100.00%
+H66	Cédula oficial
+I66	⚠️ ALERTA_VARIACION G9: -79.1%
+A67	SUBTOTAL
+B67	Cuerpo de Bomberos Montecristi
+C67	1485033.4
+D67	-6.252776074688882e-13
+E67	1485033.4
+F67	288599.28
+G67	19.43%
+H67	—
+I67	Var 2025: -8.0%
+A69	══  RESUMEN ANALÍTICO CONSOLIDADO 4 ENTIDADES — Q1 2026  ══
+A70	Indicador
+B70	Valor
+C70	Observación
+A71	Presupuesto Cantonal Total 2026
+B71	$54,242,424.28
+C71	4 entidades consolidadas
+A72	Devengado Q1 acumulado
+B72	$6,727,849.41
+C72	Corte 31-03-2026
+A73	Ti Global Q1 2026
+C73	Devengado/Codificado_Vigente
+A74	Ti GAD Q1
+C74	GAD Municipal
+A75	Ti Patronato Q1
+C75	Patronato
+A76	Ti EP Aseo Q1
+C76	EP Aseo
+A77	Ti Bomberos Q1
+C77	Bomberos
+A78	Alertas Variación >15% vs 2025
+B78	12
+C78	⚠️ Revisar manualmente
+A79	FUENTE
+B79	Cédulas presupuestarias oficiales
+C79	Corte 31-03-2026
+A80	JERARQUÍA
+B80	Cédula oficial > eSIGEF > POA
+C80	Nunca mezclar POA para calcular Ti
+```

@@ -1,0 +1,154 @@
+# H_HOLDING_CEDULAS_2026 — volcado determinista (fórmulas + etiquetas)
+fuente: `SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx` · filas=35 · pobladas=30 · fórmulas=12
+inputs(lee de): H90_PRESUPUESTO_CONSOLIDADO_202
+outputs(alimenta a): —
+MARCADORES: A21: * GAD: Febrero 2026 no registrado independiente — archivo etiquetado c
+
+## FÓRMULAS
+```
+B32	=H90_PRESUPUESTO_CONSOLIDADO_202!B74
+C32	=H90_PRESUPUESTO_CONSOLIDADO_202!B4
+D32	=H90_PRESUPUESTO_CONSOLIDADO_202!C4
+B33	=H90_PRESUPUESTO_CONSOLIDADO_202!B75
+C33	=H90_PRESUPUESTO_CONSOLIDADO_202!B5
+D33	=H90_PRESUPUESTO_CONSOLIDADO_202!C5
+B34	=H90_PRESUPUESTO_CONSOLIDADO_202!B76
+C34	=H90_PRESUPUESTO_CONSOLIDADO_202!B6
+D34	=H90_PRESUPUESTO_CONSOLIDADO_202!C6
+B35	=H90_PRESUPUESTO_CONSOLIDADO_202!B77
+C35	=H90_PRESUPUESTO_CONSOLIDADO_202!B7
+D35	=H90_PRESUPUESTO_CONSOLIDADO_202!C7
+```
+
+## ETIQUETAS / DATOS (tope 600)
+```
+A1	QUIRA Gov - Powered by Dylus Lab
+A2	H_HOLDING_CEDULAS_2026 - Serie Mensual Ti Inversion - Holding Municipal de Montecristi
+A3	Fuente: Cedulas presupuestarias oficiales eSIGEF/LOTAIP - Sentinel Sprint 2.5B - Supabase PostgreSQL - 2026-05-18
+A5	RESUMEN CONSOLIDADO HOLDING - 4 Entidades - Enero-Marzo 2026
+A6	Entidad
+B6	Mes
+C6	Codificado Total
+D6	Devengado Total
+E6	Ejec. Total %
+F6	Codificado Inv.
+G6	Devengado Inv.
+H6	Ti Inv. %
+I6	Fuente
+A7	GAD
+B7	Enero
+C7	39310000
+D7	2155870
+E7	5.48
+F7	26567300
+G7	160309
+H7	0.6
+I7	Cedula eSIGEF/LOTAIP
+A8	GAD
+B8	Marzo
+C8	45977900
+D8	5147260
+E8	11.2
+F8	30206800
+G8	243514
+H8	0.81
+I8	Cedula eSIGEF/LOTAIP
+A9	BOMBEROS
+B9	Enero
+C9	1752000
+D9	141125
+E9	8.06
+F9	216502
+G9	0
+H9	0
+I9	Cedula eSIGEF/LOTAIP
+A10	BOMBEROS
+B10	Febrero
+C10	1752000
+D10	225826
+E10	12.89
+F10	216502
+G10	0
+H10	0
+I10	Cedula eSIGEF/LOTAIP
+A11	BOMBEROS
+B11	Marzo
+C11	1752000
+D11	315140
+E11	17.99
+F11	216502
+G11	0
+H11	0
+I11	Cedula eSIGEF/LOTAIP
+A12	EMAI-EP
+B12	Enero
+C12	1937280
+D12	160305
+E12	8.27
+F12	103906
+G12	0
+H12	0
+I12	Cedula eSIGEF/LOTAIP
+A13	EMAI-EP
+B13	Febrero
+C13	2438250
+D13	290062
+E13	11.9
+F13	154357
+G13	1491
+H13	0.97
+I13	Cedula eSIGEF/LOTAIP
+A14	EMAI-EP
+B14	Marzo
+C14	2438250
+D14	442930
+E14	18.17
+F14	154357
+G14	2552
+H14	1.65
+I14	Cedula eSIGEF/LOTAIP
+A15	PATRONATO
+B15	Enero
+C15	4339060
+D15	196271
+E15	4.52
+F15	3116940
+G15	88119
+H15	2.83
+I15	Cedula eSIGEF/LOTAIP
+A16	PATRONATO
+B16	Febrero
+C16	4339060
+D16	536161
+E16	12.36
+F16	3116940
+G16	215742
+H16	6.92
+I16	Cedula eSIGEF/LOTAIP
+A17	PATRONATO
+B17	Marzo
+C17	4341240
+D17	849062
+E17	19.56
+F17	3116940
+G17	302743
+H17	9.71
+I17	Cedula eSIGEF/LOTAIP
+A19	NOTAS METODOLOGICAS
+A20	  * Ti Inversion = Devengado Grupos 7+8 / Codificado Grupos 7+8 x 100  (clasificador presupuestario eSIGEF)
+A21	  * GAD: Febrero 2026 no registrado independiente — archivo etiquetado como corte Dic-2025 (period_year=2025)
+A22	  * BOMBEROS: Devengado Inversion = $0 en Ene-Mar 2026 (grupos 84.xx sin ejecucion al corte de cada mes)
+A23	  * EMAI-EP: Inversion baja — grupos 84.xx con ejecucion parcial iniciando en Febrero 2026
+A24	  * PATRONATO: Mejor Ti del holding — inversiones activas desde Enero (grupos 7+8)
+A25	  * Fuente primaria: Sentinel Supabase - monthly_kpis - Sprint 2.5B - 2026-05-18
+A26	  * Este sheet complementa H90 (totales anuales) y H07b (serie historica GAD) — no los reemplaza
+A30	▌ VALIDACIÓN CRUZADA vs H90_PRESUPUESTO_CONSOLIDADO_202
+A31	Entidad
+B31	Ti_H90 (total Q1)
+C31	Codificado_H90
+D31	Devengado_H90
+A32	GAD Municipal
+A33	Patronato Municipal
+A34	EP Aseo
+A35	Bomberos
+```
