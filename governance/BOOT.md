@@ -123,6 +123,14 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
     Errores de FONDO a revisar CON Javo (su metodología · con backup, NO yo solo): (1) "Motor Ci pendiente" (TBL_CALIBRACION_Ci sin
     construir · H01 §M · B40 lo marca) · (2) metas con Ti=0 (GAD_SIN_ESIGEF) que multiplican por cero. SIGUIENTE: decisión de Javo
     sobre la fórmula de normalización mensual + si toca los errores de fondo en el Excel (él, en Excel, con backup).
+    🔬 AUDITORÍA H07b (2026-06-15 · `docs/architecture/GM_SHEET_H07B.md`): **¡el % proporcional EXISTE!** (Javo recordaba bien).
+    `Ti_norm_2026` (H07b!B20) = `MIN(1, Ti_raw / FactorTemporal(mes/12))` — "avance proporcional al corte mensual". Y el ICPI
+    YA lo lee (H12 F=H07b!B20). → NO hay que crear el proporcional. El 17.45% bajo viene de TRES causas (decisión de metodología Javo):
+    (a) FactorTemporal LINEAL (mes/12) penaliza meses tempranos — el gasto público es BACK-LOADED (Q3-Q4) → refinar a curva real ·
+    (b) metas con Ti=0 (GAD_SIN_ESIGEF) que arrastran el numerador (hueco de realidad: la tesis lo construyó, no subió al Excel) ·
+    (c) ejecución 2026 genuinamente baja (devengado 1.95M / codificado 30.27M = 6.4% a abril · ciclo recién arranca).
+    EJECUCIÓN SEGURA: trabajar la COPIA FREEZER de Javo (no el canon vivo) · Javo dirige metodología · Claude ejecuta mecánico +
+    verifica con dumps · el freezer = rollback. Es metodología profunda = sesión fresca, NO a 30 commits / medianoche.
       ③ REJILLA BENTO — 5 enlaces planos: Ver d02 Presupuesto · d03 Mandato · d10 Cobertura · d12 Género · d13 Ambiente
          (se posan sobre el cimiento, NO lo promedian).
       ④ EVIDENCIA — corte "Q1 2026 · datos en carga" + firma del snapshot del pipeline.

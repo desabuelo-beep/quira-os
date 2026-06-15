@@ -1,0 +1,116 @@
+# H07b_Ti_INVERSIÓN_eSIGEF — fórmulas (volcado determinista)
+fuente: `SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx`
+
+```
+A1	=HYPERLINK("#H00_ÍNDICE!A1","⬅️ ÍNDICE GENERAL")
+B1	🏛️ QUIRA Gov · Powered by Dylus Lab · TGI Engine
+D1	H07b_Ti_INVERSIÓN_eSIGEF
+E1	="ICPI 2026: "&ROUND(H12_MOTOR_ICPI_CANÓNICO!B33,2)&"% ★"
+F1	=TODAY()
+A2	H07b — Ti HISTÓRICO eSIGEF — SERIE 2023-2026 · GRUPOS 7+8
+A3	Registro histórico del Ti de inversión. Los datos 2023-2025 son inmutables (de H36b). El dato 2026 es dinámico (de H07).
+A5	▌ SERIE HISTÓRICA Ti — GAD CENTRAL (ENTE-01)
+A6	Año
+B6	Codificado_7+8
+C6	Devengado_7+8
+D6	Ti_Inversión
+E6	Tipo_Dato
+F6	Fuente
+A7	2023
+B7	19257163.75
+C7	13102087.01
+D7	=IF(B7=0,0,C7/B7)
+E7	REAL
+F7	Cédula eSIGEF 2023 GAD Montecristi ★ INMUTABLE
+A8	2024
+B8	13616171.34
+C8	10840503.33
+D8	=IF(B8=0,0,C8/B8)
+E8	REAL
+F8	Cédula eSIGEF 2024 GAD Montecristi ★ INMUTABLE
+A9	2025
+B9	10202422.21
+C9	6106506.58
+D9	=IF(B9=0,0,C9/B9)
+E9	REAL (Presupuesto GAD Montecristi dic-2025 — grupos 73+75)
+F9	Presupuesto GAD Montecristi 2025 (diciembre) ★ SHA256-pendiente
+A10	2026
+B10	30271811.74
+C10	1947738.29
+D10	=IF(B10=0,0,C10/B10)
+E10	VIVO
+F10	Cédula LOTAIP GAD Abr-2026 (Ene-Abr) · CHK-08 update Abril 2026-05-26
+G10	Ti_raw Abr=6.43% (vs Mar=0.81%) — ejecución real activó en Abril
+A12	NOTA:
+B12	Datos 2023-2024 son INMUTABLES. No modificar. ICPI_2023=57.36130950255192% / ICPI_2024=67.11542988680421% / ICPI_2025=69.93090617066258% (canónico REAL-eSIGEF).
+A13	SERIE MENSUAL Ene-Mar 2026 disponible en nueva hoja: H_HOLDING_CEDULAS_2026 — Sprint 2.5B 2026-05-18
+A14	▌ SERIE HISTÓRICA Ti — TODAS LAS ENTIDADES
+A15	Año
+B15	ENTE-01 GAD
+C15	ENTE-02 Patronato
+D15	ENTE-03 Bomberos
+E15	ENTE-04 EP Aseo
+A16	2023
+B16	0.6804
+C16	0.3503
+D16	PROXY 77%
+E16	SIMULADO-MPE
+A17	2024
+B17	0.7961
+C17	0.5377
+D17	0.678
+E17	0.6759
+A18	2025
+B18	0.5985349806455421
+C18	0.5
+D18	0.1638
+E18	0.9047
+F18	CONFIRMADO Sentinel 2026-05-18 — BOMBEROS=16.38% EMAI-EP=90.47% GAD=72.73% PATRONATO=50.00% | Ingesta 38 cédulas eSIGEF 2025 | GAD parcial (Oct-Dic) · EP Aseo y PATRONATO año completo
+A19	2026
+B19	=H07_S5_FINANCIERO_eSIGEF!B20
+C19	0.139075
+D19	0
+E19	0.241599
+F19	Sentinel CHK-08 Abril 2026-05-26 | GAD=formula H07 | PAT=13.91% | BOM=0% | ASEO=24.16%
+H19	★ CONECTADO Marzo-2026: Patronato Ti_raw=9.7128% | Bomberos Ti_raw=0.0000% (sin G7+G8) | EP Aseo Ti_raw=17.7379%. Ingesta: 2026-05-10
+A20	Ti_norm_2026
+B20	=MIN(1,IFERROR(B19/H07_S5_FINANCIERO_eSIGEF!B23,B19))
+C20	=MIN(1,IFERROR(C19/H07_S5_FINANCIERO_eSIGEF!B23,C19))
+D20	=MIN(1,IFERROR(D19/H07_S5_FINANCIERO_eSIGEF!B23,D19))
+E20	=MIN(1,IFERROR(E19/H07_S5_FINANCIERO_eSIGEF!B23,E19))
+F20	Ti normalizada: Ti_raw / FactorTemporal (mes/12). Refleja avance proporcional al corte mensual.
+A21	▌ ICPI HISTÓRICO ANUAL (referencia)
+A22	Año
+B22	ICPI
+C22	Clasificación AVEP
+D22	Fuente
+A23	2023
+B23	0.5736130950255192
+C23	🟡 Transición Crítica
+D23	H12c REAL-eSIGEF ★ INMUTABLE
+A24	2024
+B24	0.6711542988680421
+C24	🟡 Transición Crítica
+D24	H12c REAL-eSIGEF ★ INMUTABLE
+A25	2025
+B25	0.6993090617066258
+C25	🟡 Transición Crítica
+D25	★ ICPI_Real_2025 (resultado H12!B33 con datos 2025)
+A26	2026
+B26	=(H12_MOTOR_ICPI_CANÓNICO!$B$33) / 100
+C26	=H12_MOTOR_ICPI_CANÓNICO!B34
+D26	H12 MOTOR ICPI VIVO 2026 — actualizado 2026-05-10
+F26	Presupuesto GAD Montecristi 2026 (Marzo) — Ingesta: 2026-05-10 | Ti_raw=1.0536% | Ti_norm=4.2144%
+A27	2027
+B27	*(proyección)*
+C27	Objetivo: ≥70% Gestión por Mandato
+D27	H12c_ICPI_HISTÓRICO_ANUAL
+A29	TENDENCIA:
+B29	Tendencia del mandato 2023-2025: +20.52 puntos porcentuales en 3 años. ICPI 2023: 57.36% → 2024: 67.12% → 2025: 69.93%. Objetivo 2027: alcanzar Gestión por Mandato (≥70%).
+A30	ACTUALIZACIÓN RC-2
+B30	2026-05-18
+C30	Sentinel Supabase
+D30	Ti 2025 real ingesta masiva: GAD=72.73%(Q4) | PATRONATO=50.00% | BOMBEROS=16.38% | EMAI-EP=90.47%
+E30	Fuente: 38 cédulas eSIGEF LOTAIP 2025 — pipeline parse_cedula + ingest_cedula
+F30	BOMBEROS 12/12 · EMAI-EP 11/11 · GAD 3/12 (Oct-Dic) · PATRONATO 12/12 (inc. 3 PDF via pdfplumber)
+```
