@@ -12,7 +12,7 @@ NINGÚN script lo recalcula** — se lee vía `app/connectors/gold_master.py`.
 Detalle: `docs/adr/ADR-023` (3 niveles, inmutable).
 
 ## REGLAS DE ORO (inviolables)
-1. **Excel = Estado.** Gold Master es fuente de verdad. Excel→Python→Supabase→UI, nunca al revés.
+1. **Excel = Estado.** Gold Master es fuente de verdad. Excel→Python→Supabase→UI, nunca al revés. **La fórmula canónica (H12!B33 ICPI) es INMUTABLE** — jamás se modifica; correcciones SOLO en inputs/semáforo/presentación, sobre COPIA de trabajo, con evidencia, verificadas con dumps (openpyxl corrompe el canon). Metodología estampada: `docs/architecture/METODOLOGIA_GOLD_MASTER.md`.
 2. **Bloomberg Firewall.** NUNCA en UI/API/público: ICPI·TGI·Ti·QTMP·H01-H99·Gold Master·node IDs (Dom07·C01·CE_226). Lenguaje de gobernanza, no metodología interna.
 3. **Sin norma verificada (SHA256), no hay dato.** Prohibido alucinar artículos o cifras.
 4. **No recalcular el motor.** Métricas vienen del Excel (Regla 1 de ADR-023). Documento nuevo → QUIRA. Métrica nueva → Excel.
@@ -23,7 +23,7 @@ Detalle: `docs/adr/ADR-023` (3 niveles, inmutable).
 NUNCA: hardcodear sin snapshot · agregar un dominio que NO pase el PROTOCOLO DE EXPANSIÓN ONTOLÓGICA
 (6 condiciones · Constitución §Mutabilidad — la Doctrina inmutable, los dominios variables CON gate · d13 Ambiente = 1er ejercicio) · agregar items al
 sidebar Ejecutivo · exponer QTMP/ACK IDs en UI · lenguaje acusatorio (incumplió/violó/ilegal) ·
-inventar artículos de ley · construir un motor de cálculo paralelo al Gold Master.
+inventar artículos de ley · **modificar la fórmula canónica del Gold Master (H12!B33)** · construir un motor de cálculo paralelo al Gold Master. *(Correcciones del motor: SOLO inputs/semáforo/presentación · sobre copia · con evidencia · ver `METODOLOGIA_GOLD_MASTER.md`.)*
 
 ## ARQUITECTURA (1 línea — detalle en `docs/REFERENCE.md`)
 Stack: Streamlit + Python + Claude Haiku + Neo4j + Supabase. 3 Cerebros: C1 Corpus (Supabase) · C2 Grafo (Neo4j) · C3 Razonamiento.

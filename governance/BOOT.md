@@ -131,6 +131,14 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
     (c) ejecución 2026 genuinamente baja (devengado 1.95M / codificado 30.27M = 6.4% a abril · ciclo recién arranca).
     EJECUCIÓN SEGURA: trabajar la COPIA FREEZER de Javo (no el canon vivo) · Javo dirige metodología · Claude ejecuta mecánico +
     verifica con dumps · el freezer = rollback. Es metodología profunda = sesión fresca, NO a 30 commits / medianoche.
+    ✅ PRINCIPIO INVIOLABLE ESTAMPADO (Javo · 2026-06-15): la **fórmula canónica `H12!B33` es INMUTABLE** · correcciones SOLO
+    en inputs/semáforo/presentación · sobre COPIA · con evidencia · verificadas. Estampado en CLAUDE.md (Regla 1 + Prohibición) +
+    `docs/architecture/METODOLOGIA_GOLD_MASTER.md` (NUEVO · registro canónico · "para nunca más perder la metodología en tesis archivadas").
+    AUDITORÍA FASE 1 (colega): AVEP (config.py · H01) ≥.90 Excelencia · .70-.89 Mandato · .40-.69 Transición · .20-.39 Ocurrencia · <.20
+    Ruptura → umbrales calibrados para valor ANUAL · el 17.45% parcial cae en Ruptura porque el SEMÁFORO no sabe que es corte parcial.
+    DATOS para la curva: solo 2023-25 anual + 2026 mensual (NO hay 2021-22 ni trimestral pre-2026) → curva con evidencia parcial.
+    PLAN CIRUGÍA (colega · bajo inmutabilidad · sobre copia freezer): F1 auditar semáforo/umbrales/Ti_norm/Ti=0 · F2 curva histórica
+    Montecristi + mini-Ti por adscrita (NO factor 1.0 = regalar puntos) · F3 aplicar en copia → comparar ICPI actual vs corregido → validar. **NUNCA tocar B33.**
       ③ REJILLA BENTO — 5 enlaces planos: Ver d02 Presupuesto · d03 Mandato · d10 Cobertura · d12 Género · d13 Ambiente
          (se posan sobre el cimiento, NO lo promedian).
       ④ EVIDENCIA — corte "Q1 2026 · datos en carga" + firma del snapshot del pipeline.
