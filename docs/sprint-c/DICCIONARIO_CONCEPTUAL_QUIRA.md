@@ -101,6 +101,27 @@ Género"). Propagar en pase siguiente para no fracturar la ontología entre docs
 
 ---
 
+## 🔗 MATRIZ DE CONGRUENCIAS (Sprint D.0 · Modelo B · operacionaliza la Doctrina · mesa 2026-06-14)
+
+> Cómo las 4 congruencias **leen los dominios** en las uniones de la Cadena Madre. Anclas VERIFICADAS contra
+> `MAPA_ANCLAJE_MOTOR` — corregida la deriva del académico (d03 IFE-A vive en H73 + corpus, **NO** en H26/H31).
+
+| Congruencia | Eslabón (Cadena Madre) | Dominios que lee | Indicador madre (concepto) | Ancla real (motor/corpus) | Estado |
+|---|---|---|---|---|---|
+| **Política** | Promesa → Plan | d03 · d01 | Congruencia promesa↔plan · cumplimiento de la planificación | IFE-A → `H73_OUTPUT_API` + corpus promesas CNE/PDOT (Supabase) · metas PDOT → `H11b`·`H12c` | ✅ LIVE |
+| **Operativa** | Plan → Presupuesto → Ejecución | d02 · d04 · d05 · d06\* | captación/eficiencia del gasto · riesgo activo · cumplimiento institucional | ISP·IED → `H73` · SAT → `H75`/`H24` · entidades → `H12d` · ICPI → `H73`·`H12` *(cimiento)* · devengado → `H07_S5` | ⏳ MEDIO (eSIGEF 2026) |
+| **Territorial** | Ejecución → Resultado → Territorio | d10 · d11 | acceso territorial a bienes públicos · capacidad productiva | agua → QTMP · NBI/saneam. → INEC/loader · IET → `H73` · inversión → `H07b` · PEA/cadenas → corpus PDOT | ✅ LIVE *(d11 corpus)* |
+| **Ecosistémica** | Territorio → Sostenibilidad | d12 · d13 | protección de grupos prioritarios · integridad ecológica | PSG → `H73` · brechas → corpus · biofísico 362 + riesgo `KB_RIESGOS` · ICODS sub-eje ⚠️ | 🟡 LIVE parcial *(IGM/ODS5 MISSING · ICODS-amb a precisar)* |
+
+\* **d06 entra como CIMIENTO** (no se promedia) — la Congruencia Operativa lo lee como base.
+**Capa de verificación:** d07 · d08 · d09 **auditan cada unión** (¿la congruencia es verificable públicamente?).
+
+**El diferencial QUIRA (causa, no síntoma):** un BI dice *"60% de ejecución"*. QUIRA dice *"Congruencia Operativa en
+saldo negativo: el presupuesto está devengado en papel, pero el Cumplimiento Institucional (d06) está bajo y las obras
+viales (d04 SAT) están frenadas"*. → UX: 4 barras de tensión = **"Sensores de Presión del Estado"** (clic → zoom relacional al cajón).
+
+---
+
 ## 🧱 LA PLANTILLA MADRE — 11 CAMPOS (estándar definitivo · post Capa 0.5)
 
 Todo ADN se redacta con estos 11 campos, en este orden (Cajón 10 = molde):

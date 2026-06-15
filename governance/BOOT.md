@@ -61,7 +61,12 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
     COMPLETA de la Doctrina (Capa 0) — el mecanismo que explica POR QUÉ un municipio funciona · transversal · pertenece
     a QUIRA; **d06 = su LAUNCHPAD**, no dueño. UX = TENSIONES (no %). CONTRATO d06 v2.0 PRE-APROBADO (mesa): ① ancla base
     "Cumplimiento Institucional" · ② 4 barras de TENSIÓN · ③ grilla bento relacional (enlaces d02/d07/d08/d10/d12/d13) ·
-    ④ filtro exclusión SAT→d04 · Holding→d05. SIGUIENTE: confirmar Modelo B en mesa → implementación (código · contexto fresco + harness). Desguace: p_ejecutivo = {d06 + d04 SAT + d05 Holding}.
+    ④ filtro exclusión SAT→d04 · Holding→d05.
+    ✅ SPRINT D.0 — MATRIZ DE CONGRUENCIAS sellada (Diccionario · recomendación colega): bindeo VERIFICADO
+    congruencia→eslabón→dominios→indicador madre→ancla. Director filtró 3ª deriva del académico (d03 IFE-A → H73+corpus,
+    NO H26/H31). Estados: Política ✅ · Operativa ⏳(eSIGEF 2026) · Territorial ✅ · Ecosistémica 🟡(IGM/ODS5 MISSING ·
+    ICODS-amb a precisar). d07·d08·d09 = capa de verificación que audita cada unión.
+    SIGUIENTE: con la Matriz lista el contrato d06 es trivial → IMPLEMENTACIÓN (código · contexto fresco + harness de verificación). Desguace: p_ejecutivo = {d06 + d04 SAT + d05 Holding}.
     SIGUIENTE d06: decidir las 4 congruencias (mesa) → contrato del dashboard d06 (síntesis con enlaces) → implementación.
     Regla (colega): d10 validó el MÉTODO; **d06 valida la TEORÍA** — sesión propia, en frío. Pregunta de apertura:
     ¿d06 se alimenta de pantallas reales sin reinterpretación? Pase o falle, las dos salidas son buenas.
