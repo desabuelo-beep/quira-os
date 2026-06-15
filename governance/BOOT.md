@@ -81,6 +81,16 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
          no holding) · (b) etiquetar las 4 como "ilustrativo · en calibración Q1 2026" (Regla 3, son demo) · (c) ❓PREGUNTA
          A JAVO (Regla 4): ¿las 4 congruencias del Modelo B existen en el Gold Master como capas relacionales, o son una
          lectura a definir? Si existen → cablear; si NO → su fórmula se define EN EL EXCEL, nunca en Python (no motor paralelo).
+      ✅ RESPUESTA JAVO (2026-06-14): las 4 congruencias son el ESPÍRITU de las tesis QUIRA anteriores · NUNCA formalizadas
+         en el Excel canónico (sin aterrizaje matemático/metodológico). HOY = capa CONCEPTUAL/narrativa, NO cálculo del motor.
+         Corregido en Constitución + Matriz (marco válido, pendiente formalización). Hogar a explorar: QUIRA IA (C3), no el Excel.
+         → MVP las muestra como MARCO etiquetado "metodología en formalización", NUNCA como dato calculado (Regla 3/4).
+   - **PMV vs MVP (aclaración Javo):** el PMV = QUIRA COMPLETO modelado sobre Montecristi (el molde · el producto real).
+     El "MVP demostrador d06" NO es otro producto ni versión chica aparte — es la **1ª TAJADA VERTICAL del PMV**: d06 real
+     (el primer cajón/corazón), mínimo→completo, validado con el test 60s, antes de seguir al siguiente. PMV completo construido
+     cajón por cajón (vertical), no los 13 de golpe ni un juguete desechable.
+   - 🔭 REFLEXIONES JAVO a no perder: (1) **Obsidian/KB** — verificar conexión (solo se cargó `vault_fondos`, el resto del KB ¿conectado?).
+     (2) **QUIRA IA (C3 Razonamiento · la capa FINAL del proyecto)** aún NO incorporada — posible hogar de las congruencias narrativas.
       ③ REJILLA BENTO — 5 enlaces planos: Ver d02 Presupuesto · d03 Mandato · d10 Cobertura · d12 Género · d13 Ambiente
          (se posan sobre el cimiento, NO lo promedian).
       ④ EVIDENCIA — corte "Q1 2026 · datos en carga" + firma del snapshot del pipeline.

@@ -176,6 +176,12 @@ latinoamericana. Ahí está el valor estratégico de QUIRA.
 > (Capa 0)**: el mecanismo que explica POR QUÉ un municipio funciona o no. Pertenece a QUIRA · es **transversal**
 > · **d06 es su LAUNCHPAD** (donde se expone primero), no su dueño. UX: muestra **TENSIONES** (Territorial −12 ·
 > Operativa +8), no porcentajes planos — evidencia accionable que destruye la retórica burocrática.
+>
+> ⚠️ **ESTADO (Javo · 2026-06-14):** las 4 congruencias son el **ESPÍRITU de las tesis QUIRA anteriores** — un marco
+> metodológico válido (la estructura de la Doctrina), pero **NUNCA formalizado matemáticamente en el Excel canónico.**
+> HOY son una **capa conceptual/narrativa, NO un cálculo del motor.** Pendiente: aterrizaje matemático en el Gold Master
+> (Javo · motor) ANTES de presentarlas como valor calculado — Regla 4 (no Python) + Regla 3 (no dato sin fuente). Hogar
+> alternativo a explorar: la capa **QUIRA IA** (C3 Razonamiento · inferencia narrativa), quizá más natural que una celda Excel.
 
 ### 🔒 PROTOCOLO DE EXPANSIÓN ONTOLÓGICA (la ley del gate · mesa 2026-06-14)
 > La Mutabilidad permite crecer; el Protocolo impide que el crecimiento degrade la ontología en

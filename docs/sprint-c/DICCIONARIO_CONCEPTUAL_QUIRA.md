@@ -120,6 +120,11 @@ Género"). Propagar en pase siguiente para no fracturar la ontología entre docs
 saldo negativo: el presupuesto está devengado en papel, pero el Cumplimiento Institucional (d06) está bajo y las obras
 viales (d04 SAT) están frenadas"*. → UX: 4 barras de tensión = **"Sensores de Presión del Estado"** (clic → zoom relacional al cajón).
 
+> ⚠️ **ESTADO (Javo · 2026-06-14):** esta Matriz es el MARCO METODOLÓGICO correcto, pero las 4 congruencias **NO están
+> formalizadas en el Excel canónico** (son el espíritu de las tesis anteriores, nunca aterrizado). Los anclajes de la
+> tabla son los indicadores que las congruencias *leerían* — la congruencia en sí **aún no se calcula en el motor.**
+> Pendiente: formalizarla en el Gold Master (Javo) o reubicarla en QUIRA IA (C3). Hasta entonces = capa conceptual, NO dato.
+
 ---
 
 ## 🧱 LA PLANTILLA MADRE — 11 CAMPOS (estándar definitivo · post Capa 0.5)
