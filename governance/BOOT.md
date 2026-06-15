@@ -44,7 +44,8 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
     **Sprint C = Fundación Ontológica → ✅ CERRADO** (13 dominios anclados · Tabla Equivalencias v2 · ESG ·
     Protocolo de Expansión · piloto de falsación d10 PASÓ). **Sprint D = EVIDENCIA OPERATIVA → ✅ ABIERTO**
     (plan completo en `HOJA_DE_RUTA_MAESTRA §5`).
-    **▶ PRIMER ACTO de la próxima sesión = COSECHA d06** (Salud Institucional · el corazón epistemológico:
+    **▶ PRIMER ACTO próxima sesión = SPRINT D.1: traducir a CÓDIGO el blueprint del MVP demostrador d06** (↓ diseñado ·
+    con harness de verificación visual · "60-Second Causality Test"). Contexto d06 (✅ cosechado · el corazón epistemológico:
     ICPI / ICGI-T / 6 vectores ISP·IED·IGP·IOC·IET·PSG · recibe `p7_brecha` · 32 términos Bloomberg).
     🔎 Head-start (cosecha asomada 2026-06-14): `m1_situacion` = el WRAPPER de d06 — 3 tabs → `p_ejecutivo`
     (Vista Ejecutiva) · `p6_pulso` (Pulso) · `p7_brecha` (Causas/6 vectores · ya cosechada). Otras d06: `p1_dashboard` ·
@@ -66,7 +67,18 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
     congruencia→eslabón→dominios→indicador madre→ancla. Director filtró 3ª deriva del académico (d03 IFE-A → H73+corpus,
     NO H26/H31). Estados: Política ✅ · Operativa ⏳(eSIGEF 2026) · Territorial ✅ · Ecosistémica 🟡(IGM/ODS5 MISSING ·
     ICODS-amb a precisar). d07·d08·d09 = capa de verificación que audita cada unión.
-    SIGUIENTE: con la Matriz lista el contrato d06 es trivial → IMPLEMENTACIÓN (código · contexto fresco + harness de verificación). Desguace: p_ejecutivo = {d06 + d04 SAT + d05 Holding}.
+    ✅ SPRINT D.1 — BLUEPRINT MVP DEMOSTRADOR d06 (mesa colega+académico · DISEÑADO hoy, NO codificado · "60-Second
+    Causality Test"): propósito = probar que las TENSIONES explican el estado institucional (validar la TEORÍA, no el
+    código · observador externo 60s · SÍ→Modelo B validado · NO→refinar · ambas salidas buenas). 5 elementos, brutalmente
+    simple (SIN GeoTwin/PyDeck/animaciones):
+      ① CIMIENTO — KPI central "Cumplimiento Institucional" ~53.56% (snapshot vivo Q1 2026).
+      ② 4 BARRAS DE TENSIÓN (Modelo B · muestran ± fortaleza/presión, NO %): Política→IFE-A · Operativa→ISP/IED+SAT ·
+         Territorial→IET+INEC · Ecosistémica→PSG+biofísico.
+      ③ REJILLA BENTO — 5 enlaces planos: Ver d02 Presupuesto · d03 Mandato · d10 Cobertura · d12 Género · d13 Ambiente
+         (se posan sobre el cimiento, NO lo promedian).
+      ④ EVIDENCIA — corte "Q1 2026 · datos en carga" + firma del snapshot del pipeline.
+      ⑤ BLOOMBERG — "Cumplimiento Institucional" (nunca ICPI) · "motor de indicadores" (nunca Gold Master).
+    SIGUIENTE (arranque EN FRÍO): traducción MECÁNICA de este blueprint a código + harness de verificación visual + deploy. Desguace: p_ejecutivo = {d06 + d04 SAT + d05 Holding}.
     SIGUIENTE d06: decidir las 4 congruencias (mesa) → contrato del dashboard d06 (síntesis con enlaces) → implementación.
     Regla (colega): d10 validó el MÉTODO; **d06 valida la TEORÍA** — sesión propia, en frío. Pregunta de apertura:
     ¿d06 se alimenta de pantallas reales sin reinterpretación? Pase o falle, las dos salidas son buenas.
