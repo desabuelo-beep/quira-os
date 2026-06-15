@@ -40,6 +40,22 @@ dashboards, es lo que se define UNA vez. Sprint C: ontología antes que ingenier
 BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo que no se mueve.
 
 ## AHORA (actualizar al cierre)
+- **🔎 AUDITORÍA INTEGRAL DEL GOLD MASTER — COMPLETA (2026-06-15 · chat separado · 100% determinista · solo lectura):**
+    Entregable único y durable → `docs/architecture/GM_REGISTRO_INTEGRAL.md` (las 123 hojas vectorizadas: ficha · grupo ·
+    inputs/outputs · estado · rol ICPI/TGI · gaps). Herramientas reusables: `scripts/dev/gm_full_audit.py` (123 volcados +
+    grafo de dependencias por fórmula → `docs/architecture/gm_dumps/`), `gm_probe.py` (valores cacheados), `gm_freeze_diff.py`.
+    **TODO sale de la celda, NADA de memoria.** Hallazgos mayores (resumen §0 del registro):
+    (1) Motor LIMPIO de errores de fórmula — la cadena H12/H07b/H98/H99/H73 sin `#REF!`/`#DIV`; 3 tokens hallados = 1 falso
+    positivo (`H01!A28` texto) + 2 reales periféricos (`H36c!C13`, `H71!B8` enmascarado por IFERROR→0). (2) ICPI=17.45%
+    confirmado (`H12!B33=0.174489`; `=B31/B32*100` INTACTA · `H85!CHK-11 ✅`). (3) **5/25 metas con Ti=0** colapsan numerador:
+    `H12!F18` Bomberos + `F26:F29` GAD_SIN_ESIGEF. (4) Bomberos SÍ existe en `H90!D7=19.43%` (SERCOP) — es ruteo de fuente, no
+    falta de dato. (5) Discrepancia eSIGEF vs SERCOP en los 4 entes (norm infla: Patronato 41.7 vs 19.56 · EP Aseo 72.5 vs 18.17).
+    (6) Motor Ci íntegro hoy (`H39!D25/D26/D27 ✅` · 0 hilos rotos) pero `H39!D28 ERROR` (Ci 1pp) + S-04 (Pi hardcodeados en H12,
+    no fórmulas a H14). (7) `H73!MMP_AVANCE_PCT` única `VALIDACION_OK=NO`. (8) Brecha rural inconsistente INTERNA (`H73/H99=1.37M`
+    vs `H97!V-14=7.47M`). (9) FREEZE diff: 79/123 hojas difieren pero ~70 solo por sello de fecha; sustantivo = H06 +9057 celdas
+    SERCOP + reclasificación territorial Rural↔Urbana (H99/CAPA/SCHEMA_TERR/H43). **B33 jamás se tocó.**
+    SIGUIENTE: con Javo, decidir sobre copia freezer (INPUT no B33): fuente canónica adscritas (eSIGEF vs SERCOP H90) + curva
+    FactorTemporal real + semáforo consciente del corte parcial. El registro es la base para cablear/recablear.
 - **🏁 SPRINT C CERRADO · SPRINT D ABIERTO (2026-06-14 · 17 commits · jornada de fundación):**
     **Sprint C = Fundación Ontológica → ✅ CERRADO** (13 dominios anclados · Tabla Equivalencias v2 · ESG ·
     Protocolo de Expansión · piloto de falsación d10 PASÓ). **Sprint D = EVIDENCIA OPERATIVA → ✅ ABIERTO**
