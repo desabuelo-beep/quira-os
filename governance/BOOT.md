@@ -145,6 +145,12 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
     canónica): **ningún número se acepta de memoria/afirmación — SOLO del dump determinista (el árbitro es la celda, nunca la cabeza).**
     RESPUESTA a Javo: SÍ, construir la metodología completa (tesis+motor) es NECESARIO — pero INCREMENTAL (módulo×módulo · reconciliar
     intención-tesis vs realidad-motor · SIEMPRE verificado por dump). El real: ICPI 17% = FactorTemporal sub-normaliza (Ti_norm ~0.24) + Bomberos Ti=0.
+    🧱 SPRINT D.2A — HOMOLOGACIÓN ADSCRITAS · FUENTE ENCONTRADA (2026-06-15 · dump `H90_PRESUPUESTO_CONSOLIDADO`):
+    **el dato de Bomberos SÍ EXISTE.** H90 tiene los 4 entes con cédula SERCOP Q1-2026: GAD Ti=11.20% · Patronato 19.56% ·
+    EP Aseo 18.17% · **Bomberos 19.43%** (cod 1.485M / dev 288.6K). El agujero NO es falta de dato — es que H07b lee el Ti
+    desde eSIGEF (H07_S5, vacío para Bomberos=0) en vez de H90 (SERCOP, completo). FIX (sobre copia · INPUT, no B33): homologar
+    el Ti de adscritas a H90 (SERCOP) — Bomberos 0→19.43% con dato REAL, NO factor 1.0. ⚠️ H90 difiere de H07b en Patronato
+    (19.56 vs 13.9) y EP Aseo (18.17 vs 24.16) → DECIDIR con Javo la fuente canónica (eSIGEF vs SERCOP). Al subir Bomberos, el ICPI sube (deja de ×0).
       ③ REJILLA BENTO — 5 enlaces planos: Ver d02 Presupuesto · d03 Mandato · d10 Cobertura · d12 Género · d13 Ambiente
          (se posan sobre el cimiento, NO lo promedian).
       ④ EVIDENCIA — corte "Q1 2026 · datos en carga" + firma del snapshot del pipeline.
