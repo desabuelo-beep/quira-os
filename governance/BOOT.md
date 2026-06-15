@@ -139,6 +139,12 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
     DATOS para la curva: solo 2023-25 anual + 2026 mensual (NO hay 2021-22 ni trimestral pre-2026) → curva con evidencia parcial.
     PLAN CIRUGÍA (colega · bajo inmutabilidad · sobre copia freezer): F1 auditar semáforo/umbrales/Ti_norm/Ti=0 · F2 curva histórica
     Montecristi + mini-Ti por adscrita (NO factor 1.0 = regalar puntos) · F3 aplicar en copia → comparar ICPI actual vs corregido → validar. **NUNCA tocar B33.**
+    ⚠️ VERIFICACIÓN DETERMINISTA (2026-06-15 · re-corrida `gm_h73_dump`): el ICPI ES **17.45% 🔴 Ruptura** (timestamp 2026-05-26 · SIN
+    cambios). El académico AFIRMÓ 53.56% con números FABRICADOS (codificado 39.3M vs real 45.98M · devengado 11.47M vs real 5.14M ·
+    Ti_norm GAD 0.70 vs real ~0.24). El colega reconstruyó el plan sobre esa fabricación, de buena fe. LECCIÓN (refuerza la metodología
+    canónica): **ningún número se acepta de memoria/afirmación — SOLO del dump determinista (el árbitro es la celda, nunca la cabeza).**
+    RESPUESTA a Javo: SÍ, construir la metodología completa (tesis+motor) es NECESARIO — pero INCREMENTAL (módulo×módulo · reconciliar
+    intención-tesis vs realidad-motor · SIEMPRE verificado por dump). El real: ICPI 17% = FactorTemporal sub-normaliza (Ti_norm ~0.24) + Bomberos Ti=0.
       ③ REJILLA BENTO — 5 enlaces planos: Ver d02 Presupuesto · d03 Mandato · d10 Cobertura · d12 Género · d13 Ambiente
          (se posan sobre el cimiento, NO lo promedian).
       ④ EVIDENCIA — corte "Q1 2026 · datos en carga" + firma del snapshot del pipeline.
