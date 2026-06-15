@@ -40,6 +40,18 @@ dashboards, es lo que se define UNA vez. Sprint C: ontología antes que ingenier
 BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo que no se mueve.
 
 ## AHORA (actualizar al cierre)
+- **✅ CIRUGÍA GOLD MASTER D.2A — COMPLETA Y VERIFICADA INEXPUGNABLE (2026-06-15 · sobre COPIA · Excel nativo + dump):**
+    Registro celda-a-celda → `docs/architecture/CIRUGIA_GOLD_MASTER_D2A.md`. **ICPI 17.45% → 27.46%** (corte abril · proyección
+    HONESTA: el GAD va rezagado vs su 2025 ~60-73%, obras G8 dev=0). 3 correcciones, TODAS input/semáforo, **B33 JAMÁS tocada**:
+    (1) Adscritas Ti=0: `H07b!D19` Bomberos `0→0.1943` (cédula SERCOP `H90` · jerarquía del propio Excel "Cédula>eSIGEF") +
+    `H12!F26:F29` GAD_SIN_ESIGEF `0→=H07b!B20`. (2) Semáforo `H12!B34`: bug de escala (umbrales %→fracción · daba SIEMPRE Ruptura) +
+    consciente del corte (mes<12 → "lectura preliminar", no veredicto anual). (3) FactorTemporal `H07_S5!B23`: lineal `mes/12` →
+    **curva pacing REAL de Montecristi** (CHOOSE 12m · abril 0.333→0.212 · GAD Ti_norm 19.3%→30.3%) desde `monthly_kpis` Supabase
+    (prom 3 adscritas con cobertura 2025 · GAD sin serie intra-anual → proxy DECLARADO · NO hipótesis nacional). Scripts: `scripts/dev/gm_2025_{probe,curve}.py`.
+    VERIFICADO determinista: `B33==B31/B32` INTACTA · `B40 ✅ AXIOMA 69.9309%` · **0 errores añadidos** (5 preexistentes idénticos).
+    COPIA: `ProyecT\...WORK_20260615_D2A_APLICADO.xlsx` · **VIVO INTACTO** (mtime 05-30).
+    ▶ SIGUIENTE: **promoción a vivo PENDIENTE de OK de Javo** (respaldo vivo→freeze · copia→vivo · verificar por dump). Pendientes
+    aparte: revisar curva al cerrar 2026 (1ª serie intra-anual del GAD) · 5 errores preexistentes (`H98!B36`·`H99!B45` = TGI, fuera del motor ICPI).
 - **🔎 AUDITORÍA INTEGRAL DEL GOLD MASTER — COMPLETA (2026-06-15 · chat separado · 100% determinista · solo lectura):**
     Entregable único y durable → `docs/architecture/GM_REGISTRO_INTEGRAL.md` (las 123 hojas vectorizadas: ficha · grupo ·
     inputs/outputs · estado · rol ICPI/TGI · gaps). Herramientas reusables: `scripts/dev/gm_full_audit.py` (123 volcados +
