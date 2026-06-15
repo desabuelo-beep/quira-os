@@ -91,6 +91,17 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
      cajón por cajón (vertical), no los 13 de golpe ni un juguete desechable.
    - 🔭 REFLEXIONES JAVO a no perder: (1) **Obsidian/KB** — verificar conexión (solo se cargó `vault_fondos`, el resto del KB ¿conectado?).
      (2) **QUIRA IA (C3 Razonamiento · la capa FINAL del proyecto)** aún NO incorporada — posible hogar de las congruencias narrativas.
+
+- **🔬 SPRINT D.2 — SINCERAR EL EXCEL · ARRANCADO (2026-06-14 · decisión Javo: el paréntesis ya NO se posterga):**
+    `scripts/dev/gm_h73_dump.py` → `docs/architecture/GM_H73_DUMP.md`: volcado del contrato REAL del motor
+    (H73_OUTPUT_API · 65 claves con celda fuente). 🔴 HALLAZGO BOMBA: el motor dice **ICPI_GLOBAL = 17.45% "Ruptura
+    Sistémica"** — pero las pantallas (demo_data) muestran **53.56%. EL PROYECTO ESTÁ DESINCRONIZADO DEL EXCEL.**
+    Más desyncs: ISP demo 14.58% vs motor 3.22% · PSG demo 12.83% vs motor 2.83% (el motor guarda FRACCIÓN DECIMAL ·
+    unidades a normalizar decimal↔%). El contrato TIENE todo: ICPI · TGI(D1-D5)=66.79 · 6 vectores · ICODS=87.5 (d13) ·
+    IEF · IRS · SAT · presupuesto (devengado Q1 $5.14M) · NBI · fondos. Las 4 congruencias NO están en H73 (confirma Javo).
+    ⚠️ EL MVP NO debe mostrar 53.56% — el dato real es 17.45%. (Blueprint a corregir.)
+    SIGUIENTE (Sprint D.2 · fresco): reconciliar lecturas del proyecto → cablear a las 65 claves de H73 (vía gold_master.py) ·
+    reemplazar demo_data · normalizar unidades. RECIÉN entonces el MVP de d06 se construye sobre DATO VIVO, no fachada.
       ③ REJILLA BENTO — 5 enlaces planos: Ver d02 Presupuesto · d03 Mandato · d10 Cobertura · d12 Género · d13 Ambiente
          (se posan sobre el cimiento, NO lo promedian).
       ④ EVIDENCIA — corte "Q1 2026 · datos en carga" + firma del snapshot del pipeline.
