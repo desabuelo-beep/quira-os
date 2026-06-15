@@ -166,6 +166,16 @@ latinoamericana. Ahí está el valor estratégico de QUIRA.
 > (el resultado en el suelo) · **Ecosistémica** (la sostenibilidad ambiental). NO son un dominio (no disparan el
 > Protocolo) ni un widget suelto — son el **estándar relacional de lectura** que cruza horizontalmente los 13
 > dominios sobre el cimiento ICPI. Hermana de ESG: ESG = E/S/G; Congruencia = la coherencia de la cadena en 4 planos.
+>
+> **MODELO B (mesa · 2026-06-14 · adoptado):** las congruencias NO leen el cimiento — **leen los DOMINIOS en
+> las uniones de la Cadena Madre** (PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO):
+> **Política** ← d01·d03 (¿la promesa se volvió plan?) · **Operativa** ← d02·d04·d05·d06 (¿el plan se volvió
+> ejecución sana?) · **Territorial** ← d10·d11 (¿la ejecución llegó al suelo?) · **Ecosistémica** ← d12·d13
+> (¿con equidad y sostenibilidad?). La verificación democrática (d07·d08·d09) audita cada unión.
+> **ELEVACIÓN (colega):** esto NO es un componente de d06 — es la **operacionalización COMPLETA de la Doctrina
+> (Capa 0)**: el mecanismo que explica POR QUÉ un municipio funciona o no. Pertenece a QUIRA · es **transversal**
+> · **d06 es su LAUNCHPAD** (donde se expone primero), no su dueño. UX: muestra **TENSIONES** (Territorial −12 ·
+> Operativa +8), no porcentajes planos — evidencia accionable que destruye la retórica burocrática.
 
 ### 🔒 PROTOCOLO DE EXPANSIÓN ONTOLÓGICA (la ley del gate · mesa 2026-06-14)
 > La Mutabilidad permite crecer; el Protocolo impide que el crecimiento degrade la ontología en

@@ -55,7 +55,13 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
     el ICPI es el CIMIENTO y los índices relacionales se posan ENCIMA — NUNCA lo promedian (Regla 1 · corrección Javo); los vectores cruzan d02/d07/d08/d10/d12 · su dashboard = mapa de causalidad que enlaza,
     no pantalla aislada · CONFIRMA ADR-026 Sintetizador). 🅱️ 2 rutas de datos a unificar (p_ejecutivo snapshot vs
     p6_pulso data.loader) + 6 vectores hardcoded en p7_brecha. ✅ "4 congruencias" (pol/oper/terr/ecosist) = **CAPA DE CONGRUENCIA** sobre el cimiento ICPI
-    (lectura relacional que opera la Doctrina · sellada en Constitución · NO es dominio · no dispara Protocolo). Desguace: p_ejecutivo = {d06 + d04 SAT + d05 Holding}.
+    (lectura relacional que opera la Doctrina · sellada en Constitución · NO es dominio · no dispara Protocolo).
+    MODELO B (mesa · adoptado): las congruencias leen los DOMINIOS en las uniones de la Cadena Madre — Política←d01·d03 ·
+    Operativa←d02·d04·d05·d06 · Territorial←d10·d11 · Ecosistémica←d12·d13. ELEVACIÓN (colega): es la operacionalización
+    COMPLETA de la Doctrina (Capa 0) — el mecanismo que explica POR QUÉ un municipio funciona · transversal · pertenece
+    a QUIRA; **d06 = su LAUNCHPAD**, no dueño. UX = TENSIONES (no %). CONTRATO d06 v2.0 PRE-APROBADO (mesa): ① ancla base
+    "Cumplimiento Institucional" · ② 4 barras de TENSIÓN · ③ grilla bento relacional (enlaces d02/d07/d08/d10/d12/d13) ·
+    ④ filtro exclusión SAT→d04 · Holding→d05. SIGUIENTE: confirmar Modelo B en mesa → implementación (código · contexto fresco + harness). Desguace: p_ejecutivo = {d06 + d04 SAT + d05 Holding}.
     SIGUIENTE d06: decidir las 4 congruencias (mesa) → contrato del dashboard d06 (síntesis con enlaces) → implementación.
     Regla (colega): d10 validó el MÉTODO; **d06 valida la TEORÍA** — sesión propia, en frío. Pregunta de apertura:
     ¿d06 se alimenta de pantallas reales sin reinterpretación? Pase o falle, las dos salidas son buenas.
