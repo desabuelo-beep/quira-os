@@ -56,6 +56,10 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
     SERCOP + reclasificación territorial Rural↔Urbana (H99/CAPA/SCHEMA_TERR/H43). **B33 jamás se tocó.**
     SIGUIENTE: con Javo, decidir sobre copia freezer (INPUT no B33): fuente canónica adscritas (eSIGEF vs SERCOP H90) + curva
     FactorTemporal real + semáforo consciente del corte parcial. El registro es la base para cablear/recablear.
+    ⚠️ DIRECTOR (corrige el "copia freezer"): el FREEZE (05-26) es MÁS VIEJO que el vivo (05-30 · sin H06 SERCOP +9057 ni la
+    reclasif. territorial) → la cirugía va sobre **COPIA DEL VIVO** (decidir: ¿terminar la reclasif. a medias del vivo, o partir del
+    freeze más limpio?). La homologación SERCOP es **BIDIRECCIONAL** (sube Bomberos 0→19.43 · BAJA Patronato 41.7→19.56 y EP Aseo
+    72.5→18.17) → homologar los 4 a UNA fuente honesta (recomiendo SERCOP/H90), efecto neto al ICPI se calcula en copia.
 - **🏁 SPRINT C CERRADO · SPRINT D ABIERTO (2026-06-14 · 17 commits · jornada de fundación):**
     **Sprint C = Fundación Ontológica → ✅ CERRADO** (13 dominios anclados · Tabla Equivalencias v2 · ESG ·
     Protocolo de Expansión · piloto de falsación d10 PASÓ). **Sprint D = EVIDENCIA OPERATIVA → ✅ ABIERTO**
