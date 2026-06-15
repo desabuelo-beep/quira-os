@@ -123,7 +123,8 @@ viales (d04 SAT) están frenadas"*. → UX: 4 barras de tensión = **"Sensores d
 > ⚠️ **ESTADO (Javo · 2026-06-14):** esta Matriz es el MARCO METODOLÓGICO correcto, pero las 4 congruencias **NO están
 > formalizadas en el Excel canónico** (son el espíritu de las tesis anteriores, nunca aterrizado). Los anclajes de la
 > tabla son los indicadores que las congruencias *leerían* — la congruencia en sí **aún no se calcula en el motor.**
-> Pendiente: formalizarla en el Gold Master (Javo) o reubicarla en QUIRA IA (C3). Hasta entonces = capa conceptual, NO dato.
+> ✅ DECIDIDO (Javo · 2026-06-15): las congruencias viven en **QUIRA IA (C3)** — son juicios, no aritmética. NO se calculan
+> en el Excel. Hasta que esa capa exista = capa conceptual, NO dato (en el MVP se muestran etiquetadas como marco).
 
 ---
 

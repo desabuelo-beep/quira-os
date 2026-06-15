@@ -180,8 +180,10 @@ latinoamericana. Ahí está el valor estratégico de QUIRA.
 > ⚠️ **ESTADO (Javo · 2026-06-14):** las 4 congruencias son el **ESPÍRITU de las tesis QUIRA anteriores** — un marco
 > metodológico válido (la estructura de la Doctrina), pero **NUNCA formalizado matemáticamente en el Excel canónico.**
 > HOY son una **capa conceptual/narrativa, NO un cálculo del motor.** Pendiente: aterrizaje matemático en el Gold Master
-> (Javo · motor) ANTES de presentarlas como valor calculado — Regla 4 (no Python) + Regla 3 (no dato sin fuente). Hogar
-> alternativo a explorar: la capa **QUIRA IA** (C3 Razonamiento · inferencia narrativa), quizá más natural que una celda Excel.
+> (Javo · motor) ANTES de presentarlas como valor calculado — Regla 4 (no Python) + Regla 3 (no dato sin fuente).
+> ✅ **HOGAR DECIDIDO (Javo · 2026-06-15): QUIRA IA** (C3 Razonamiento) — las congruencias son **JUICIOS, no aritmética.**
+> La cadena de integridad intersistémica ya vive en las pantallas ejecutivo/técnico en refactor. **NO se calculan en el Excel** —
+> las razona QUIRA IA. Hasta que esa capa exista, son marco conceptual; en el MVP se muestran etiquetadas, nunca como dato.
 
 ### 🔒 PROTOCOLO DE EXPANSIÓN ONTOLÓGICA (la ley del gate · mesa 2026-06-14)
 > La Mutabilidad permite crecer; el Protocolo impide que el crecimiento degrade la ontología en

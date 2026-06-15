@@ -108,6 +108,11 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
     Inv3 H73→hojas (genealogía del dump: ICPI←H12!B33 · ISP←H19 · PSG←H16c · TGI←H98 · ICODS←H20 · MMP_AVANCE = única NO validada).
     Inv4 Congruencias→datos: solo MARCO Modelo B (insumos), SIN fórmula · pendiente formalizar (Javo/Excel) o reubicar en QUIRA IA.
     Director filtró cifras del académico (IET≠TGI 66.79 · ISP←H19 no H07_S5 · coords B4/B12 inventadas → fuentes reales del dump).
+    ✅ DECISIONES JAVO (2026-06-15): (1) las 4 CONGRUENCIAS viven en **QUIRA IA (C3)** — juicios, no aritmética · la cadena
+    intersistémica ya está en pantallas ejecutivo/técnico en refactor · NO se calculan en el Excel. Sellado en Constitución/Diccionario/Matriz.
+    (2) ⚠️ CORRECCIÓN del 17.45%: NO es "Ruptura Sistémica" — es el ICPI ACUMULADO ANUAL leído en Q1 (mes 4-5), bajo por PARCIAL.
+    Anualizado ≈52% ≈ el 53.56% demo (mismo estado, 2 lentes temporales). "Ruptura" = misread (umbral anual sobre valor parcial).
+    Sincerar el Excel = definir la LECTURA PROPORCIONAL al tiempo de gestión (metodología Javo/motor), NO cablear el crudo. (Over-celebración del Director corregida.)
       ③ REJILLA BENTO — 5 enlaces planos: Ver d02 Presupuesto · d03 Mandato · d10 Cobertura · d12 Género · d13 Ambiente
          (se posan sobre el cimiento, NO lo promedian).
       ④ EVIDENCIA — corte "Q1 2026 · datos en carga" + firma del snapshot del pipeline.

@@ -2,7 +2,12 @@
 
 **Sprint D.2 · 2026-06-14 · elimina toda diferencia entre Motor ↔ Pantallas ↔ Ontología ↔ Congruencias**
 
-> El activo de QUIRA es el **MOTOR**, no las pantallas. Las pantallas mintieron (ICPI 53.56% demo vs **17.45% real**).
+> El activo de QUIRA es el **MOTOR**, no las pantallas — PERO leído CORRECTAMENTE.
+> ⚠️ **CORRECCIÓN Javo (2026-06-15):** el `ICPI_GLOBAL` 17.45% es el **acumulado anual leído en Q1 (mes ~4-5)** —
+> naturalmente bajo (apenas 3-4 meses de gestión). Clasificarlo "Ruptura Sistémica" (umbral ANUAL sobre valor PARCIAL)
+> es un MISREAD. **Anualizado ≈ 17.45%×3 ≈ 52% ≈ el 53.56% del demo → NO se contradicen: es el mismo estado en dos
+> lentes temporales** (crudo Q1 vs proyección anual). La reconciliación NO es "cablear al 17.45% crudo" — es definir la
+> **lectura PROPORCIONAL al tiempo de gestión** que refleje la gestión REAL al corte (decisión de metodología · Javo/motor).
 > Verificado contra `GM_H73_DUMP.md` (65 claves reales con celda fuente). Cifras del académico filtradas (IET≠TGI; ISP←H19, no H07_S5).
 > La verdad incómoda (17.45% "Ruptura Sistémica") = el activo comercial: QUIRA **no maquilla, expone con precisión científica.**
 
@@ -59,13 +64,15 @@
 | Territorial (Ejec.→Territorio) | `IET` (H42) ↔ `NBI`/cobertura (INEC) | marco · sin fórmula |
 | Ecosistémica (Terr.→Sostenib.) | `PSG` (H16c) + `ICODS` (H20) + biofísico | marco · sin fórmula |
 
-⚠️ **Pendiente (Javo):** formalizar la fórmula EN EL EXCEL (Regla 4 · no Python) o reubicar en **QUIRA IA** (C3 · inferencia narrativa).
+✅ **DECIDIDO (Javo · 2026-06-15):** las congruencias viven en **QUIRA IA (C3)** — son JUICIOS, no aritmética. NO se calculan en el Excel · las razona la IA sobre las claves del motor.
 
 ---
 
 ## Veredicto de la reconciliación
 - **El motor entrega 65 claves reales, trazables hasta la celda.** Las pantallas `demo_data` están desincronizadas (≥5 casos: ICPI·ISP·PSG·…).
 - **Acción Sprint D.2 (código · fresco + harness):** cablear pantallas `demo_data` → H73 (`gold_master.py`) · normalizar unidades (decimal↔%) · verificación VISUAL en deploy.
-- **Recién entonces** el MVP de d06 se construye sobre dato VIVO (ICPI 17.45%, no 53.56%), y se decide el hogar de las congruencias.
+- **Definir la lectura PROPORCIONAL del ICPI al corte** (no presentar el crudo Q1 como si fuera anual → evita la falsa "Ruptura"). Metodología: Javo/motor.
+- **Recién entonces** el MVP de d06 se construye sobre dato VIVO leído correctamente. Congruencias → **QUIRA IA (C3)** decidido (Javo · son juicios, no aritmética).
+- **El activo comercial** NO es un número crudo — es la **trazabilidad + la lectura correcta**: QUIRA no maquilla (53.56% sin base) NI da falsas alarmas (17.45% "Ruptura" mal leído). Expone la gestión REAL al corte, proporcional y trazable hasta la celda.
 
 *Matriz de Reconciliación Total · Sprint D.2 · Dylus Lab © 2026 · una sola verdad · regenerar contrato: `python scripts/dev/gm_h73_dump.py`*
