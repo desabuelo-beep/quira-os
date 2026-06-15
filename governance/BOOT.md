@@ -50,8 +50,13 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
     (prom 3 adscritas con cobertura 2025 · GAD sin serie intra-anual → proxy DECLARADO · NO hipótesis nacional). Scripts: `scripts/dev/gm_2025_{probe,curve}.py`.
     VERIFICADO determinista: `B33==B31/B32` INTACTA · `B40 ✅ AXIOMA 69.9309%` · **0 errores añadidos** (5 preexistentes idénticos).
     COPIA: `ProyecT\...WORK_20260615_D2A_APLICADO.xlsx` · **VIVO INTACTO** (mtime 05-30).
-    ▶ SIGUIENTE: **promoción a vivo PENDIENTE de OK de Javo** (respaldo vivo→freeze · copia→vivo · verificar por dump). Pendientes
-    aparte: revisar curva al cerrar 2026 (1ª serie intra-anual del GAD) · 5 errores preexistentes (`H98!B36`·`H99!B45` = TGI, fuera del motor ICPI).
+    ✅ **PROMOVIDO A VIVO (2026-06-15 16:22)** · slot `...v5.5_TGI.xlsx` conserva nombre (= contrato del código, conector intacto) ·
+    vivo lee **27.46%** · `B33==B31/B32` verificada. Respaldos: `..._FREEZE_20260615_pre-D2A` (rollback 17.45%) + `..._v6.0_FREEZE_20260615`
+    (sello oficial). Conector documentado (`app/connectors/gold_master.py` docstring). Pendientes aparte: revisar curva al cerrar 2026 ·
+    5 errores preexistentes (`H98!B36`·`H99!B45` = TGI, fuera del motor ICPI).
+    ▶ **SIGUIENTE = TEJER (la ruta de QUIRA, por fin):** (1) regenerar snapshot desde el vivo → fuente única que leen QUIRA+Supabase+Neo4j ·
+    (2) cablear pantallas demo→H73 (`gold_master.py`) · (3) **MAPA DEL HILO CONDUCTOR** (Obsidian→Excel→snapshot→Supabase/Neo4j→QUIRA por los 13 dominios) ·
+    (4) tejer UN dominio punta-a-punta (d06/ICPI: B33→snapshot→pantalla, trazado) como test del flujo. Las 2 anclas (ontología Sprint C + motor inexpugnable hoy) ya están firmes.
 - **🔎 AUDITORÍA INTEGRAL DEL GOLD MASTER — COMPLETA (2026-06-15 · chat separado · 100% determinista · solo lectura):**
     Entregable único y durable → `docs/architecture/GM_REGISTRO_INTEGRAL.md` (las 123 hojas vectorizadas: ficha · grupo ·
     inputs/outputs · estado · rol ICPI/TGI · gaps). Herramientas reusables: `scripts/dev/gm_full_audit.py` (123 volcados +

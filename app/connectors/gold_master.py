@@ -16,6 +16,13 @@ DECISIÓN ARQUITECTÓNICA (2026-05-26):
   SAT_CLASIF_RIESGO añadidas canónicamente). El archivo TGI_GOLD_MASTER_v6.0_20260525.xlsx
   es un template de referencia — no tiene los datos de soporte para auditoría.
 
+ACTUALIZACIÓN (2026-06-15 · cirugía D.2A → v6.0 metodológico):
+  El slot vivo (SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx) fue promovido al motor CORREGIDO:
+  ICPI 17.45% → 27.46% (adscritas→cédula SERCOP · semáforo escala+corte · FactorTemporal curva real 2025).
+  B33 INTACTA · 0 errores añadidos. El NOMBRE del slot se conserva a propósito (contrato con el código);
+  el v6.0 se sella aparte en SIAP-ICPI_GOLD_MASTER_v6.0_FREEZE_20260615.xlsx.
+  Registro celda-a-celda: docs/architecture/CIRUGIA_GOLD_MASTER_D2A.md.
+
 Versiones soportadas:
   v5.5 (ACTIVO):    SIAP-ICPI_GOLD_MASTER_v5.5_TGI_20260518.xlsx → H73_OUTPUT_API
   v6.0 (template):  TGI_GOLD_MASTER_v6.0_20260525.xlsx → G6.1_OUTPUT_API (fallback)
