@@ -62,7 +62,9 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
     GM corregido **PASA governance** (30 reglas · 0 err · 0 alertas) · ciclo dry-run OK 10.4s **sin tocar Supabase** ·
     claves REALES del snapshot (anidadas): `icpi.global_pct`·`icpi.clasificacion`·`tgi.score`·`tgi.d1..d5`·`financiero.*`·`sat_engine.*` (+`_raw_h73` 64 claves). Tool: `scripts/dev/gm_contract_check.py`.
     Nota: dry-run NO persistió el JSON (guardado=skipped); persistir `gm_snapshot.json` = escritura producción (Supabase+JSON) → paso consciente antes del cableado (Paso 3).
-    ▶ **SIGUIENTE = Paso 2:** mapeo widget d06 ↔ clave REAL del snapshot · luego Paso 3 cablear `demo_data`→snapshot + deploy · Paso 4 auditoría visual (¿pantalla == Excel 27.46%?).
+    ✅ **PASO 2 (2026-06-15):** matriz `docs/architecture/d06_MAPPING_MATRIX.md`. Hallazgo: `p_ejecutivo` Q1 YA cablea snapshot (`icpi.global_pct`·`tgi.score`·`sat.*` ✅) ·
+    `p6_pulso`+`p7_brecha` = `demo_data`+hardcode. HUECOS reales (el académico decía 'ninguno'): 🟥 4 congruencias→C3/QUIRA IA (no en snapshot) · 🟥 FactorTemporal/Ti_raw/adscritas = celdas INTERNAS no exportadas a H73 (Carril B) · 🟡 texto hardcoded.
+    ▶ **SIGUIENTE = Paso 3 (cablear · Carril A):** persistir `gm_snapshot.json` (escritura PRODUCCIÓN → luz verde Javo) · `p6_pulso`/`p7_brecha` demo→`cargar_snapshot()`+`_raw_h73` · 4 congruencias→placeholder C3 · auditoría visual. Decisión diseño: headline d06 = ICPI (27.46) o TGI (66.79).
     Las 2 anclas (ontología Sprint C + motor inexpugnable) firmes. Cadena cerrada: TESIS→GOLD MASTER→H73→ONTOLOGÍA→DOMINIOS→CONGRUENCIAS→DASHBOARDS.
 - **🔎 AUDITORÍA INTEGRAL DEL GOLD MASTER — COMPLETA (2026-06-15 · chat separado · 100% determinista · solo lectura):**
     Entregable único y durable → `docs/architecture/GM_REGISTRO_INTEGRAL.md` (las 123 hojas vectorizadas: ficha · grupo ·
