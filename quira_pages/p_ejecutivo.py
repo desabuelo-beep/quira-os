@@ -97,50 +97,60 @@ def _atencion_card(titulo: str, entidad: str, periodo: str) -> str:
 
 
 def _render_q1_panel() -> None:
-    """Sección Q1 — datos reales del último snapshot pipeline (cache 5 min)."""
-    from utils.cache_quira import cargar_snapshot
-    snap, meta = cargar_snapshot(municipio_code="130801")
+    """Sección Q1 — datos del Gold Master LOCAL (gm_snapshot.json · corregido v6.0 D.2A).
+    Fuente: cargar_gm_snapshot() — SIN Supabase. Jerarquía: ICPI titular (cimiento · Regla 1), TGI explicador."""
+    from utils.cache_quira import cargar_gm_snapshot
+    gm = cargar_gm_snapshot()
 
-    if not snap:
+    if not gm or not gm.get("icpi"):
         st.info(
-            "💡 Sin snapshot Q1 activo. El panel de diagnóstico territorial "
-            "se habilitará después de ejecutar el pipeline desde **Panel de Carga**."
+            "💡 Sin snapshot local. Corre `python scripts/_update_snapshot.py` para "
+            "regenerar `data/gm_snapshot.json` desde el Gold Master vivo."
         )
         return
 
-    icpi = snap.get("icpi", {})
-    sat  = snap.get("sat",  {})
-    tgi_snap = snap.get("tgi", {})
+    icpi     = gm.get("icpi", {})
+    tgi_snap = gm.get("tgi", {})
+    sat      = gm.get("sat_gm", {})
 
-    icpi_pct    = icpi.get("global_pct") or icpi.get("global")
-    icpi_clasif = icpi.get("clasificacion", "—")
-    activas     = sat.get("alertas_activas", sat.get("activas", []))
-    clasif_riesgo = sat.get("clasif_riesgo", "—").upper()
-    riesgo_pond = sat.get("riesgo_ponderado", 0.0)
-    fecha       = snap.get("_meta", {}).get("fecha_corte", "")
+    icpi_pct      = icpi.get("global_pct")
+    icpi_clasif   = icpi.get("clasificacion", "—")
+    tgi_score     = tgi_snap.get("score")
+    activas       = list(sat.get("sat_activas_detalle", {}).keys()) or sat.get("activas", [])
+    clasif_riesgo = str(sat.get("clasif_riesgo", "—")).upper()
+    fecha         = gm.get("_meta", {}).get("fecha_corte", "")
+    version       = gm.get("_meta", {}).get("version_excel", "v6.0")
 
-    # TGI: índice titular v5.5+TGI — leer del snapshot; fallback a gm_snapshot.json
-    tgi_score = tgi_snap.get("score")
-    if tgi_score is None:
-        from utils.cache_quira import cargar_gm_snapshot
-        _gm = cargar_gm_snapshot()
-        tgi_score = _gm.get("tgi", {}).get("score")
+    icpi_str = f"{icpi_pct:.2f}%" if icpi_pct is not None else "—"
+    tgi_str  = f"{tgi_score:.2f}%" if tgi_score is not None else "—"
+    ic       = _ICPI_COLOR.get(icpi_clasif, "#F59E0B")
+    rc       = _RIESGO_COLOR.get(clasif_riesgo, "#F97316")
 
-    icpi_str  = f"{icpi_pct:.1f}%" if icpi_pct is not None else "—"
-    tgi_str   = f"{tgi_score:.2f}%" if tgi_score is not None else "—"
-    ic        = _ICPI_COLOR.get(icpi_clasif, "#F59E0B")
-    rc        = _RIESGO_COLOR.get(clasif_riesgo, "#F97316")
+    # ── TITULAR: ICPI · Cumplimiento Institucional (el cimiento · Regla 1) ─────
+    st.markdown(f"""
+<div style="background:linear-gradient(135deg,rgba(245,158,11,0.10),rgba(255,255,255,0.03));
+            border:1px solid {ic}55;border-radius:16px;padding:22px 26px;margin-bottom:12px">
+  <div style="font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:.08em;
+              text-transform:uppercase;margin-bottom:6px">Cumplimiento Institucional · ICPI</div>
+  <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap">
+    <div style="font-size:3.2rem;font-weight:900;color:{ic};line-height:1">{icpi_str}</div>
+    <div style="font-size:13px;color:#E2E8F0;font-weight:600;max-width:340px">{icpi_clasif}</div>
+  </div>
+  <div style="font-size:10px;color:rgba(255,255,255,0.35);margin-top:8px">
+    El cimiento del motor — velocidad de ejecución al corte. Los demás índices se posan encima; nunca lo promedian.</div>
+</div>
+""", unsafe_allow_html=True)
 
-    # ── Banner TGI (titular) + Riesgo SAT + ICPI (complementario) ─────────────
+    # ── EXPLICADORES: TGI + Riesgo SAT (subordinados al cimiento) ──────────────
     st.markdown(f"""
 <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px">
   <div style="flex:1;min-width:160px;background:rgba(255,255,255,0.04);
               border:1px solid rgba(0,212,255,0.25);border-radius:14px;
               padding:16px 20px">
     <div style="font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:.07em;
-                text-transform:uppercase;margin-bottom:4px">TGI · Gobernanza Institucional</div>
+                text-transform:uppercase;margin-bottom:4px">TGI · explica la calidad institucional</div>
     <div style="font-size:2rem;font-weight:900;color:#00D4FF;line-height:1">{tgi_str}</div>
-    <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:4px">Índice titular D1-D5</div>
+    <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:4px">Índice integral D1-D5</div>
   </div>
   <div style="flex:1;min-width:160px;background:rgba(255,255,255,0.04);
               border:1px solid rgba(255,255,255,0.09);border-radius:14px;
@@ -151,14 +161,6 @@ def _render_q1_panel() -> None:
     <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:4px">
       {len(activas)} señal{'es' if len(activas)!=1 else ''} activa{'s' if len(activas)!=1 else ''}
     </div>
-  </div>
-  <div style="flex:1;min-width:160px;background:rgba(255,255,255,0.04);
-              border:1px solid rgba(255,255,255,0.09);border-radius:14px;
-              padding:16px 20px">
-    <div style="font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:.07em;
-                text-transform:uppercase;margin-bottom:4px">ICPI · Progreso Ejecución</div>
-    <div style="font-size:2rem;font-weight:900;color:{ic};line-height:1">{icpi_str}</div>
-    <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:4px">{icpi_clasif}</div>
   </div>
 </div>
 """, unsafe_allow_html=True)
@@ -190,7 +192,7 @@ def _render_q1_panel() -> None:
 
     st.markdown(
         f'<div style="font-size:9px;color:rgba(255,255,255,0.2);margin-top:4px">'
-        f'Pipeline Q1 · Corte {fecha} · Gold Master v5.5</div>',
+        f'Gold Master {version} · Corte {fecha} · fuente local gm_snapshot.json (sin Supabase)</div>',
         unsafe_allow_html=True,
     )
     st.markdown("---")
