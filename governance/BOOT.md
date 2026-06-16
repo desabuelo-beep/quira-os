@@ -75,7 +75,11 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
     🛡️ **FRONTERA DE LENGUAJE (Regla 2 · Javo lo cachó · skill `quira-language-guard`):** `p_ejecutivo` corregido — etiquetas VISIBLES en lenguaje de gobernanza, NO canónico.
     Mapa: ICPI→"Cumplimiento institucional" · TGI→"Gobernanza territorial" · SAT/SAT-III→"Alertas" (nombre+ley, sin código) · "Gold Master/version/Supabase"→"QUIRA Intelligence · Dylus Lab" · ISP→Salud presup. · IED→Eficiencia directiva · IGP→Participación · IOC→Opacidad informativa · IET→Equidad territorial · PSG→Presup. con enfoque de género.
     Claves internas (`icpi.global_pct`…), comentarios y docstrings se CONSERVAN (capa interna permitida).
-    ▶ SIGUIENTE: cablear `p6_pulso` + `p7_brecha` **YA con lenguaje de gobernanza** (`load_all` demo→local · 4 congruencias→"Pendiente C3" · 6 vectores→`_raw_h73` con etiquetas públicas · purgar hardcodes "$40/hab") · re-correr `quira-language-guard` · **auditoría visual (abrir d06 · ¿pantalla==27.46%? = EL HITO)** · **3B persistir Supabase = OBLIGATORIO** (mata el 17.45% stale). Matriz-spec: `docs/architecture/d06_MAPPING_MATRIX.md`.
+    ✅ **d06 COMPLETO — CERO demo_data (2026-06-16):** las 3 pestañas (`p_ejecutivo` · `p6_pulso` · `p7_brecha`) leen el snapshot LOCAL (`cargar_gm_snapshot`) ·
+    lenguaje de gobernanza (frontera limpia · verificado) · 4 coherencias→"Pendiente análisis contextual" (C3) · 6 vectores reales (isp 3.22·ied 24.94·igp 48.33·ioc 17.71·iet 44.8·psg 2.83) ·
+    holding real (GAD 11.2·Pat 19.56·Aseo 18.17·Bom 19.43) · parroquia crítica real (Isabel Muentes $40 vs $217) · SIN narrativa de "caída" (corte parcial ≠ cierre anual).
+    Builder extendido (bloque `vectores` en `_update_snapshot.py`). Acid test `grep demo_data` d06 = **0** · las 3 compilan.
+    ▶ SIGUIENTE: **auditoría visual** (`streamlit run` → abrir d06 → ¿pantalla muestra 27.46% en gobernanza? = EL HITO · la vive Javo) · luego **3B persistir Supabase** (mata el 17.45% stale). Matriz-spec: `docs/architecture/d06_MAPPING_MATRIX.md`.
     Las 2 anclas (ontología Sprint C + motor inexpugnable) firmes. Cadena cerrada: TESIS→GOLD MASTER→H73→ONTOLOGÍA→DOMINIOS→CONGRUENCIAS→DASHBOARDS.
 - **🔎 AUDITORÍA INTEGRAL DEL GOLD MASTER — COMPLETA (2026-06-15 · chat separado · 100% determinista · solo lectura):**
     Entregable único y durable → `docs/architecture/GM_REGISTRO_INTEGRAL.md` (las 123 hojas vectorizadas: ficha · grupo ·

@@ -81,6 +81,20 @@ def main() -> int:
     if "IRS_GLOBAL" in raw and isinstance(st.get("irs"), dict):
         st["irs"]["valor"] = _r(raw["IRS_GLOBAL"], 2)
 
+    # ── VECTORES causales (6 · alimentan d06 Brechas/Pulso · 'label' = etiqueta pública) ──
+    def _pct(k):
+        v = raw.get(k)
+        return _r(v * 100, 2) if isinstance(v, (int, float)) else None
+    snap["vectores"] = {
+        "_nota": "6 vectores causales desde H73 (claves internas). Valores en %; 'label' = nombre PÚBLICO para la UI (frontera de lenguaje).",
+        "isp": {"valor": _pct("ISP_SALUD_PRESUP"),   "label": "Salud presupuestaria"},
+        "ied": {"valor": _pct("IED_GLOBAL"),          "label": "Eficiencia directiva"},
+        "igp": {"valor": _pct("IGP_2026_ACTUAL"),     "label": "Participación ciudadana"},
+        "ioc": {"valor": _pct("IOC_OPACIDAD"),        "label": "Opacidad informativa"},
+        "iet": {"valor": _pct("IET_PERCAPITA_PEOR"),  "label": "Equidad territorial"},
+        "psg": {"valor": _pct("PSG_EJECUCION"),       "label": "Presupuesto con enfoque de género"},
+    }
+
     # ── Respaldo + escritura LOCAL (sin Supabase) ────────────────────────────────
     bak = _JSON + ".bak_" + datetime.now().strftime("%Y%m%d_%H%M%S")
     shutil.copy2(_JSON, bak)

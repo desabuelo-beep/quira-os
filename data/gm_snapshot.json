@@ -6,7 +6,7 @@
     "hojas_fuente": "H73_OUTPUT_API (interfaz canónica) · H12_MOTOR_ICPI · H15_ICPI_GLOBAL · H21-H24_SAT · H17_IED · H42_IET",
     "advertencia": "Este archivo contiene ÚNICAMENTE outputs institucionales públicos verificados. El Excel Gold Master v5.5 (123 hojas, 931 KB) es la fuente L1 de toda la cadena. Prohibido reemplazar estos valores sin validación analítica en el Excel canónico.",
     "proxima_actualizacion": "Con cédula presupuestaria Q2-2026 (junio 2026)",
-    "sincronizado": "2026-06-16 03:05 UTC — refresco canónico desde el vivo corregido (cirugía D.2A · ICPI 27.46% · B33 intacta) vía _update_snapshot.py",
+    "sincronizado": "2026-06-16 15:14 UTC — refresco canónico desde el vivo corregido (cirugía D.2A · ICPI 27.46% · B33 intacta) vía _update_snapshot.py",
     "decision_arquitectonica": "v5.5 es Gold Master canónico activo. v6.0 es template de referencia sin datos de soporte — no apto para auditoría.",
     "nota_d2a": "Refrescado tras cirugía D.2A (adscritas→SERCOP · semáforo escala+corte · FactorTemporal curva real). Valores curados (parroquias, series) preservados."
   },
@@ -406,5 +406,32 @@
         "fuente": "H99_ENGINE_CORE"
       }
     ]
+  },
+  "vectores": {
+    "_nota": "6 vectores causales desde H73 (claves internas). Valores en %; 'label' = nombre PÚBLICO para la UI (frontera de lenguaje).",
+    "isp": {
+      "valor": 3.22,
+      "label": "Salud presupuestaria"
+    },
+    "ied": {
+      "valor": 24.94,
+      "label": "Eficiencia directiva"
+    },
+    "igp": {
+      "valor": 48.33,
+      "label": "Participación ciudadana"
+    },
+    "ioc": {
+      "valor": 17.71,
+      "label": "Opacidad informativa"
+    },
+    "iet": {
+      "valor": 44.8,
+      "label": "Equidad territorial"
+    },
+    "psg": {
+      "valor": 2.83,
+      "label": "Presupuesto con enfoque de género"
+    }
   }
 }
