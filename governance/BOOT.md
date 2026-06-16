@@ -57,8 +57,12 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
     ✅ **MAPA DEL HILO CONDUCTOR documentado** → `docs/architecture/MAPA_HILO_CONDUCTOR.md` (5 capas Raíz→Motor→Puente→Soporte→Cerebro ·
     Regla de Oro · 3 datos del académico corregidos: 2025 ingesta PARCIAL no completa · claves REALES H73 no inventadas · el Puente ORQUESTA no solo exporta).
     🛡️ **REGLA DE DISCIPLINA adoptada (colega):** ningún debate metodológico nuevo salvo que una pantalla/cosecha REAL lo obligue (no re-filosofar ICPI · no rediseñar congruencias · no tocar ontología).
-    ▶ **SIGUIENTE = Sprint D.1 · d06 EN VIVO** (cableado, NO teoría): (1) regenerar `gm_snapshot.json` sobre el vivo corregido ·
-    (2) mapeo widget↔clave REAL del snapshot · (3) cablear d06 `demo_data`→snapshot + push Streamlit (SIN tocar estética) · (4) auditoría visual (¿pantalla == Excel 27.46%?).
+    ▶ **Sprint D.1 · d06 EN VIVO** (cableado, NO teoría · 2 carriles que NO se mezclan: A=QUIRA UI · B=metodología freezer):
+    ✅ **PASO 1 VERIFICADO (2026-06-15):** contrato `H73` + pipeline entregan **27.46% + semáforo de corte END-TO-END** ·
+    GM corregido **PASA governance** (30 reglas · 0 err · 0 alertas) · ciclo dry-run OK 10.4s **sin tocar Supabase** ·
+    claves REALES del snapshot (anidadas): `icpi.global_pct`·`icpi.clasificacion`·`tgi.score`·`tgi.d1..d5`·`financiero.*`·`sat_engine.*` (+`_raw_h73` 64 claves). Tool: `scripts/dev/gm_contract_check.py`.
+    Nota: dry-run NO persistió el JSON (guardado=skipped); persistir `gm_snapshot.json` = escritura producción (Supabase+JSON) → paso consciente antes del cableado (Paso 3).
+    ▶ **SIGUIENTE = Paso 2:** mapeo widget d06 ↔ clave REAL del snapshot · luego Paso 3 cablear `demo_data`→snapshot + deploy · Paso 4 auditoría visual (¿pantalla == Excel 27.46%?).
     Las 2 anclas (ontología Sprint C + motor inexpugnable) firmes. Cadena cerrada: TESIS→GOLD MASTER→H73→ONTOLOGÍA→DOMINIOS→CONGRUENCIAS→DASHBOARDS.
 - **🔎 AUDITORÍA INTEGRAL DEL GOLD MASTER — COMPLETA (2026-06-15 · chat separado · 100% determinista · solo lectura):**
     Entregable único y durable → `docs/architecture/GM_REGISTRO_INTEGRAL.md` (las 123 hojas vectorizadas: ficha · grupo ·
