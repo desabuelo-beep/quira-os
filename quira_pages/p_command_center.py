@@ -217,18 +217,16 @@ def _load_data() -> dict[str, Any]:
         "hold_avg": 68.7, "has_snap": bool(snap),
     }
 
+    # ICPI · titular: preferir el Gold Master local (gm_snapshot · valor corregido v6.0)
+    # sobre el pipeline/Supabase (que aún puede traer un corte anterior — coherencia con d06).
+    icpi_src = (gm.get("icpi") if gm else None) or (snap.get("icpi") if snap else {}) or {}
+    d["icpi_pct"]    = icpi_src.get("global_pct") or icpi_src.get("global")
+    d["icpi_clasif"] = icpi_src.get("clasificacion", "—")
+
     if snap:
-        icpi_d = snap.get("icpi", {})
-        d["icpi_pct"]    = icpi_d.get("global_pct") or icpi_d.get("global")
-        d["icpi_clasif"] = icpi_d.get("clasificacion", "—")
         sat_d = snap.get("sat", {})
         d["n_alertas"]     = sat_d.get("total_activas", 0)
-        d["riesgo_clasif"] = sat_d.get("clasif_riesgo", "—").upper()
-
-    if gm and d["icpi_pct"] is None:
-        icpi_gm = gm.get("icpi", {})
-        d["icpi_pct"]    = icpi_gm.get("global_pct") or icpi_gm.get("global")
-        d["icpi_clasif"] = icpi_gm.get("clasificacion", "—")
+        d["riesgo_clasif"] = str(sat_d.get("clasif_riesgo", "—")).upper()
 
     from datetime import date as _date
     d["dias_rdc"] = max(0, (_date(2026, 8, 1) - _date.today()).days)
@@ -253,7 +251,7 @@ def _kpi_band(d: dict) -> str:
     icpi_str   = f"{icpi_pct:.1f}%" if icpi_pct is not None else "17.4%"
     alert_str  = str(n_alertas) if n_alertas >= 0 else "0"
     riesgo_str = riesgo_cl if riesgo_cl not in ("—", "") else "Sin alertas críticas"
-    icpi_sub   = (d.get("icpi_clasif", "—") + " · umbral 65%")
+    icpi_sub   = d.get("icpi_clasif", "—")
 
     def _tile(label: str, val: str, color: str, sub: str,
               dest: str, size: str = "lg") -> str:

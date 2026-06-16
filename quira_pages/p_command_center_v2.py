@@ -166,8 +166,9 @@ def _data() -> dict[str, Any]:
     n_al = int(d.get("n_alertas", 0) or 0)
     hold = d.get("hold_avg", 68.7)
     d["icpi_str"]    = f"{icpi:.1f}%" if icpi is not None else "—"
-    d["icpi_color"]  = C.sem(icpi) if icpi is not None else "#EF4444"
-    d["icpi_sub"]    = f"{d.get('icpi_clasif', '—')} · umbral 65%"
+    _parcial = any(t in str(d.get("icpi_clasif", "")).lower() for t in ("parcial", "preliminar"))
+    d["icpi_color"]  = "#F59E0B" if _parcial else (C.sem(icpi) if icpi is not None else "#EF4444")
+    d["icpi_sub"]    = d.get('icpi_clasif', '—')
     d["alert_str"]   = str(n_al)
     d["alert_color"] = "#EF4444" if n_al > 0 else "#22C55E"
     d["riesgo_str"]  = (d.get("riesgo_clasif") or "Sin alertas críticas")
