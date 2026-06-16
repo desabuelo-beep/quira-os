@@ -64,7 +64,12 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
     Nota: dry-run NO persistió el JSON (guardado=skipped); persistir `gm_snapshot.json` = escritura producción (Supabase+JSON) → paso consciente antes del cableado (Paso 3).
     ✅ **PASO 2 (2026-06-15):** matriz `docs/architecture/d06_MAPPING_MATRIX.md`. Hallazgo: `p_ejecutivo` Q1 YA cablea snapshot (`icpi.global_pct`·`tgi.score`·`sat.*` ✅) ·
     `p6_pulso`+`p7_brecha` = `demo_data`+hardcode. HUECOS reales (el académico decía 'ninguno'): 🟥 4 congruencias→C3/QUIRA IA (no en snapshot) · 🟥 FactorTemporal/Ti_raw/adscritas = celdas INTERNAS no exportadas a H73 (Carril B) · 🟡 texto hardcoded.
-    ▶ **SIGUIENTE = Paso 3 (cablear · Carril A):** persistir `gm_snapshot.json` (escritura PRODUCCIÓN → luz verde Javo) · `p6_pulso`/`p7_brecha` demo→`cargar_snapshot()`+`_raw_h73` · 4 congruencias→placeholder C3 · auditoría visual. Decisión diseño: headline d06 = ICPI (27.46) o TGI (66.79).
+    ▶ **PASO 3 INICIADO (2026-06-15 · arquitectura del colega ADOPTADA):** titular = **ICPI 27.46%** (cimiento · Regla 1) · TGI 66.79% = explicador · congruencias = tensión ·
+    **cablear ANTES de persistir** (3A cablear→deploy→auditoría visual · 3B Supabase DESPUÉS, no antes).
+    ⚠️ **2 BLOQUEOS reales hallados:** (a) `data/gm_snapshot.json` está **VIEJO** (`icpi.global_pct=53.56` · "Ruptura" · `fecha 2026-05-26` · `v5.5_TGI_20260518` — NO refleja el v6.0 corregido) → regenerar desde el vivo.
+    (b) `scripts/_update_snapshot.py` (generador del JSON · referenciado por `p_carga.py:10`) **NO EXISTE** → recrear/resolver (usar `fetch_gold_master_data()` que SÍ entrega 27.46% + estructura que valida `utils/snapshot_io.py §CLAVES OBLIGATORIAS`).
+    ▶ **PRÓXIMO VUELO (mecánica pura · fresco):** 1.resolver builder → regenerar `gm_snapshot.json` LOCAL (sin Supabase) con 27.46% · 2.cablear `p6_pulso`/`p7_brecha` demo→snapshot (ICPI titular · congruencias→placeholder C3) ·
+    3.deploy + **auditoría visual (¿pantalla == 27.46%? = EL HITO)** · 4.recién entonces persistir Supabase (3B). Matriz-spec lista: `docs/architecture/d06_MAPPING_MATRIX.md`.
     Las 2 anclas (ontología Sprint C + motor inexpugnable) firmes. Cadena cerrada: TESIS→GOLD MASTER→H73→ONTOLOGÍA→DOMINIOS→CONGRUENCIAS→DASHBOARDS.
 - **🔎 AUDITORÍA INTEGRAL DEL GOLD MASTER — COMPLETA (2026-06-15 · chat separado · 100% determinista · solo lectura):**
     Entregable único y durable → `docs/architecture/GM_REGISTRO_INTEGRAL.md` (las 123 hojas vectorizadas: ficha · grupo ·
