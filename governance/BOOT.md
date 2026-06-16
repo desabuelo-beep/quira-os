@@ -54,9 +54,12 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
     vivo lee **27.46%** · `B33==B31/B32` verificada. Respaldos: `..._FREEZE_20260615_pre-D2A` (rollback 17.45%) + `..._v6.0_FREEZE_20260615`
     (sello oficial). Conector documentado (`app/connectors/gold_master.py` docstring). Pendientes aparte: revisar curva al cerrar 2026 ·
     5 errores preexistentes (`H98!B36`·`H99!B45` = TGI, fuera del motor ICPI).
-    ▶ **SIGUIENTE = TEJER (la ruta de QUIRA, por fin):** (1) regenerar snapshot desde el vivo → fuente única que leen QUIRA+Supabase+Neo4j ·
-    (2) cablear pantallas demo→H73 (`gold_master.py`) · (3) **MAPA DEL HILO CONDUCTOR** (Obsidian→Excel→snapshot→Supabase/Neo4j→QUIRA por los 13 dominios) ·
-    (4) tejer UN dominio punta-a-punta (d06/ICPI: B33→snapshot→pantalla, trazado) como test del flujo. Las 2 anclas (ontología Sprint C + motor inexpugnable hoy) ya están firmes.
+    ✅ **MAPA DEL HILO CONDUCTOR documentado** → `docs/architecture/MAPA_HILO_CONDUCTOR.md` (5 capas Raíz→Motor→Puente→Soporte→Cerebro ·
+    Regla de Oro · 3 datos del académico corregidos: 2025 ingesta PARCIAL no completa · claves REALES H73 no inventadas · el Puente ORQUESTA no solo exporta).
+    🛡️ **REGLA DE DISCIPLINA adoptada (colega):** ningún debate metodológico nuevo salvo que una pantalla/cosecha REAL lo obligue (no re-filosofar ICPI · no rediseñar congruencias · no tocar ontología).
+    ▶ **SIGUIENTE = Sprint D.1 · d06 EN VIVO** (cableado, NO teoría): (1) regenerar `gm_snapshot.json` sobre el vivo corregido ·
+    (2) mapeo widget↔clave REAL del snapshot · (3) cablear d06 `demo_data`→snapshot + push Streamlit (SIN tocar estética) · (4) auditoría visual (¿pantalla == Excel 27.46%?).
+    Las 2 anclas (ontología Sprint C + motor inexpugnable) firmes. Cadena cerrada: TESIS→GOLD MASTER→H73→ONTOLOGÍA→DOMINIOS→CONGRUENCIAS→DASHBOARDS.
 - **🔎 AUDITORÍA INTEGRAL DEL GOLD MASTER — COMPLETA (2026-06-15 · chat separado · 100% determinista · solo lectura):**
     Entregable único y durable → `docs/architecture/GM_REGISTRO_INTEGRAL.md` (las 123 hojas vectorizadas: ficha · grupo ·
     inputs/outputs · estado · rol ICPI/TGI · gaps). Herramientas reusables: `scripts/dev/gm_full_audit.py` (123 volcados +
