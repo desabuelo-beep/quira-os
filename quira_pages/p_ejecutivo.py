@@ -104,8 +104,8 @@ def _render_q1_panel() -> None:
 
     if not gm or not gm.get("icpi"):
         st.info(
-            "💡 Sin snapshot local. Corre `python scripts/_update_snapshot.py` para "
-            "regenerar `data/gm_snapshot.json` desde el Gold Master vivo."
+            "💡 Sin datos del período disponibles. El reporte institucional se "
+            "habilitará una vez cargada la información del corte."
         )
         return
 
@@ -131,13 +131,13 @@ def _render_q1_panel() -> None:
 <div style="background:linear-gradient(135deg,rgba(245,158,11,0.10),rgba(255,255,255,0.03));
             border:1px solid {ic}55;border-radius:16px;padding:22px 26px;margin-bottom:12px">
   <div style="font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:.08em;
-              text-transform:uppercase;margin-bottom:6px">Cumplimiento Institucional · ICPI</div>
+              text-transform:uppercase;margin-bottom:6px">Cumplimiento institucional</div>
   <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap">
     <div style="font-size:3.2rem;font-weight:900;color:{ic};line-height:1">{icpi_str}</div>
     <div style="font-size:13px;color:#E2E8F0;font-weight:600;max-width:340px">{icpi_clasif}</div>
   </div>
   <div style="font-size:10px;color:rgba(255,255,255,0.35);margin-top:8px">
-    El cimiento del motor — velocidad de ejecución al corte. Los demás índices se posan encima; nunca lo promedian.</div>
+    Mide el avance real de la ejecución de la gestión al corte del período.</div>
 </div>
 """, unsafe_allow_html=True)
 
@@ -148,15 +148,15 @@ def _render_q1_panel() -> None:
               border:1px solid rgba(0,212,255,0.25);border-radius:14px;
               padding:16px 20px">
     <div style="font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:.07em;
-                text-transform:uppercase;margin-bottom:4px">TGI · explica la calidad institucional</div>
+                text-transform:uppercase;margin-bottom:4px">Gobernanza territorial</div>
     <div style="font-size:2rem;font-weight:900;color:#00D4FF;line-height:1">{tgi_str}</div>
-    <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:4px">Índice integral D1-D5</div>
+    <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:4px">Calidad integral de la gestión</div>
   </div>
   <div style="flex:1;min-width:160px;background:rgba(255,255,255,0.04);
               border:1px solid rgba(255,255,255,0.09);border-radius:14px;
               padding:16px 20px">
     <div style="font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:.07em;
-                text-transform:uppercase;margin-bottom:4px">Nivel de Riesgo SAT</div>
+                text-transform:uppercase;margin-bottom:4px">Nivel de alerta</div>
     <div style="font-size:2rem;font-weight:900;color:{rc};line-height:1">{clasif_riesgo}</div>
     <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:4px">
       {len(activas)} señal{'es' if len(activas)!=1 else ''} activa{'s' if len(activas)!=1 else ''}
@@ -176,23 +176,22 @@ def _render_q1_panel() -> None:
                 f'<div style="display:flex;align-items:center;gap:10px;padding:8px 12px;'
                 f'background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);'
                 f'border-left:3px solid {col};border-radius:8px;margin-bottom:5px">'
-                f'<span style="font-weight:800;color:{col};font-size:11px;min-width:56px">{cod}</span>'
-                f'<span style="flex:1;font-size:11px;color:#E2E8F0">{nombre}</span>'
+                f'<span style="flex:1;font-size:12px;color:#E2E8F0">{nombre}</span>'
                 f'<span style="font-size:10px;color:rgba(255,255,255,0.35)">{ley}</span>'
                 f'</div>'
             )
         st.markdown(
             f'<div style="margin-bottom:4px;font-size:11px;font-weight:700;'
             f'color:rgba(255,255,255,0.5);letter-spacing:.07em;text-transform:uppercase">'
-            f'🚨 Señales SAT Activas</div>{rows}',
+            f'🚨 Alertas activas</div>{rows}',
             unsafe_allow_html=True,
         )
     else:
-        st.success("✅ Sin alertas SAT activas en el período Q1.", icon="🟢")
+        st.success("✅ Sin alertas activas en el período.", icon="🟢")
 
     st.markdown(
         f'<div style="font-size:9px;color:rgba(255,255,255,0.2);margin-top:4px">'
-        f'Gold Master {version} · Corte {fecha} · fuente local gm_snapshot.json (sin Supabase)</div>',
+        f'QUIRA Intelligence v1.0 · Dylus Lab · corte {fecha}</div>',
         unsafe_allow_html=True,
     )
     st.markdown("---")
