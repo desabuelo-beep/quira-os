@@ -10,6 +10,8 @@ TGI_GOLD_MASTER*.xlsx
 *SIAP*.xlsx
 # Backups locales del Gold Master (firmados SHA-256 — gestión local Dylus Lab)
 data/backups/
+# Respaldos del snapshot que crea scripts/_update_snapshot.py al refrescar (locales)
+data/gm_snapshot.json.bak_*
 
 # ── PDOT_MONTECRISTI_KB.xlsx → SÍ va al repo (datos oficiales públicos) ───────
 # (no se excluye)

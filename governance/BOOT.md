@@ -66,10 +66,10 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
     `p6_pulso`+`p7_brecha` = `demo_data`+hardcode. HUECOS reales (el académico decía 'ninguno'): 🟥 4 congruencias→C3/QUIRA IA (no en snapshot) · 🟥 FactorTemporal/Ti_raw/adscritas = celdas INTERNAS no exportadas a H73 (Carril B) · 🟡 texto hardcoded.
     ▶ **PASO 3 INICIADO (2026-06-15 · arquitectura del colega ADOPTADA):** titular = **ICPI 27.46%** (cimiento · Regla 1) · TGI 66.79% = explicador · congruencias = tensión ·
     **cablear ANTES de persistir** (3A cablear→deploy→auditoría visual · 3B Supabase DESPUÉS, no antes).
-    ⚠️ **2 BLOQUEOS reales hallados:** (a) `data/gm_snapshot.json` está **VIEJO** (`icpi.global_pct=53.56` · "Ruptura" · `fecha 2026-05-26` · `v5.5_TGI_20260518` — NO refleja el v6.0 corregido) → regenerar desde el vivo.
-    (b) `scripts/_update_snapshot.py` (generador del JSON · referenciado por `p_carga.py:10`) **NO EXISTE** → recrear/resolver (usar `fetch_gold_master_data()` que SÍ entrega 27.46% + estructura que valida `utils/snapshot_io.py §CLAVES OBLIGATORIAS`).
-    ▶ **PRÓXIMO VUELO (mecánica pura · fresco):** 1.resolver builder → regenerar `gm_snapshot.json` LOCAL (sin Supabase) con 27.46% · 2.cablear `p6_pulso`/`p7_brecha` demo→snapshot (ICPI titular · congruencias→placeholder C3) ·
-    3.deploy + **auditoría visual (¿pantalla == 27.46%? = EL HITO)** · 4.recién entonces persistir Supabase (3B). Matriz-spec lista: `docs/architecture/d06_MAPPING_MATRIX.md`.
+    ✅ **2 BLOQUEOS RESUELTOS (2026-06-15 22:05 · arteria restablecida):**
+    (a) builder `scripts/_update_snapshot.py` **RECREADO** — refresca valores canónicos desde `fetch_gold_master_data()` (H73), **preserva lo curado** (7 parroquias, 5 series longitudinales, gad, notas), respalda el JSON previo. Idempotente, solo lectura del Excel + escritura JSON local.
+    (b) `data/gm_snapshot.json` **REFRESCADO**: `icpi.global_pct` **53.56 → 27.46** · clasif "Corte parcial - lectura preliminar" · TGI 66.79 (D1-D5 = 83.2/69.93/59.85/44.79/100) · `version_excel=v6.0_D2A_20260615` · **SIN tocar Supabase** · curado intacto.
+    ▶ **PRÓXIMO VUELO = Paso 3A cableado (mecánica pura · fresco):** cablear `p6_pulso`/`p7_brecha` `demo_data`→`cargar_gm_snapshot()`/`cargar_snapshot()` (ICPI titular · 4 congruencias→placeholder C3 · 6 vectores→`_raw_h73`) · `p_ejecutivo` Q1 ya cablea snapshot ✅ · deploy + **auditoría visual (¿pantalla == 27.46%? = EL HITO)** · luego 3B persistir Supabase. Matriz-spec: `docs/architecture/d06_MAPPING_MATRIX.md`.
     Las 2 anclas (ontología Sprint C + motor inexpugnable) firmes. Cadena cerrada: TESIS→GOLD MASTER→H73→ONTOLOGÍA→DOMINIOS→CONGRUENCIAS→DASHBOARDS.
 - **🔎 AUDITORÍA INTEGRAL DEL GOLD MASTER — COMPLETA (2026-06-15 · chat separado · 100% determinista · solo lectura):**
     Entregable único y durable → `docs/architecture/GM_REGISTRO_INTEGRAL.md` (las 123 hojas vectorizadas: ficha · grupo ·

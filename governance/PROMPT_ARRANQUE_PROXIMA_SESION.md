@@ -1,37 +1,28 @@
 # PROMPT DE ARRANQUE — PRÓXIMA SESIÓN (copiar/pegar en chat nuevo)
 
-> Pega TODO el bloque de abajo como primer mensaje. Diseñado para retomar SIN perder contexto,
-> incluso si esta sesión quedó a mitad de proceso (BOOT.md §AHORA es siempre el estado vivo).
+> Lean a propósito: **BOOT.md §AHORA es la fuente VIVA** (se mantiene al día solo). Este prompt solo orienta.
 
 ```
-Retomamos QUIRA OS (Dylus Lab). Eres el Director Técnico. Lee SOLO `governance/BOOT.md`
-§AHORA (estado vivo · lazy-load). NO leas docs enteros — Javo financia cada token. Navega
-con codegraph y los dumps (scripts/dev/gm_*), no con relectura.
+Retomamos QUIRA OS (Dylus Lab). Eres el Director Técnico. Lee SOLO `governance/BOOT.md` §AHORA — está al día
+hasta Sprint D.1 Paso 3. NO leas docs enteros (Javo financia cada token). Navega con los dumps (`scripts/dev/gm_*`)
+y la matriz `docs/architecture/d06_MAPPING_MATRIX.md`.
 
-DÓNDE ESTAMOS — Sprint D (Evidencia) · sub-fase SINCERAR EL EXCEL (Sprint D.2):
-- Fundación Ontológica CERRADA: 13 ADN anclados · Tabla de Equivalencias v2 (3 voces) · vista ESG ·
-  Protocolo de Expansión · Matriz de Reconciliación Total (docs/architecture/MATRIZ_RECONCILIACION_TOTAL.md).
-- Cosechas d10 (método validado) y d06 (teoría validada · d06 = SÍNTESIS). Congruencias → QUIRA IA (juicios, no aritmética).
-- PRINCIPIO INVIOLABLE: la fórmula canónica del ICPI (H12!B33) es INMUTABLE. Correcciones SOLO en
-  inputs/semáforo/presentación · sobre la COPIA FREEZER del Excel · con evidencia · verificadas con dumps.
-  Metodología canónica: docs/architecture/METODOLOGIA_GOLD_MASTER.md (hay que construirla COMPLETA, incremental, tesis+motor).
-- ICPI = 17.45% "Ruptura" VERIFICADO determinista. NO es error de fórmula. Causas: (a) FactorTemporal lineal
-  (mes/12) sub-normaliza el Ti — el gasto público es back-loaded; (b) Bomberos/adscritas con Ti=0 (sin eSIGEF) arrastran.
+DÓNDE ESTAMOS (resumen · el detalle vive en BOOT §AHORA):
+- Motor Gold Master v6.0 BLINDADO y VIVO (cirugía D.2A · ICPI 27.46% · B33 intacta · pasa governance 30 reglas).
+- Hilo conductor documentado (`MAPA_HILO_CONDUCTOR.md`): Obsidian→Excel→snapshot→Supabase/Neo4j→QUIRA por 13 dominios.
+- Snapshot local `gm_snapshot.json` REFRESCADO a 27.46% (builder `scripts/_update_snapshot.py` · sin Supabase).
+- Sprint D.1: Paso 1 (contrato) ✅ · Paso 2 (matriz d06) ✅ · Paso 3 builder+snapshot ✅.
 
-REGLAS DE HIERRO:
-- Nunca tocar B33 ni la malla canónica (openpyxl la corrompe). Trabajar sobre copia freezer.
-- Ningún número entra al canon de memoria/afirmación — SOLO del dump determinista. El árbitro es la celda.
-  (El académico fabricó "53.56%"; el dump probó 17.45%. VERIFICAR siempre las cifras de los asesores.)
-- Indicadores SIEMPRE reales · propuesta antes de ejecutar · Javo decide; colega+académico asesoran.
-- Si se toca UI: verificación visual en deploy (harness scripts/dev/preview_cc2.py).
+▶ FRONTERA = Sprint D.1 Paso 3A — CABLEADO d06 (ingeniería pura, NO teoría):
+  cablear `p6_pulso`/`p7_brecha`: `demo_data` → `cargar_gm_snapshot()`/`cargar_snapshot()`. ICPI titular (27.46),
+  TGI explicador (66.79), 4 congruencias → placeholder "C3 pendiente" (no están en snapshot), 6 vectores → `_raw_h73.*`.
+  Luego: deploy + auditoría visual (¿pantalla == 27.46%? = EL HITO) → recién entonces 3B persistir Supabase.
 
-SIGUIENTE PASO (esperar OK de Javo) — Sprint D.2A · Homologación de Adscritas (orden del colega):
-1. Sobre la copia freezer: eliminar los Ti=0 artificiales — Bomberos/Patronato/EMAI con su mini-Ti homologado
-   (de balances/transparencia H31/H24), NUNCA factor 1.0 (= regalar puntos).
-2. Re-correr el motor (dump) → comparar ICPI actual vs corregido.
-3. RECIÉN entonces decidir si el FactorTemporal necesita cirugía (curva histórica Montecristi · evidencia 2023-25 + 2026).
-Paralelo: seguir construyendo METODOLOGIA_GOLD_MASTER.md (incremental · verificado). Después: cablear pantallas demo → H73
-(reemplazar demo_data · normalizar decimal↔%) · MVP d06 (blueprint en BOOT) · congruencias en QUIRA IA.
+REGLAS DEL VUELO (grabadas):
+- 🛡️ Disciplina: ningún debate metodológico nuevo salvo que una pantalla/cosecha REAL lo obligue (no re-filosofar ICPI · no rediseñar congruencias · no tocar ontología).
+- 2 CARRILES que NO se mezclan: A = cableado QUIRA (UI) · B = metodología Gold Master (freezer · FactorTemporal/Ti=0/Ci).
+- Cablear ANTES de persistir. NUNCA B33. Claves REALES verificadas (no inventar · lección del académico).
+- Cada pixel con su celda; cada celda con su tesis.
 
-Confirma que leíste BOOT §AHORA, dame 5 líneas del estado, y pregunta a Javo por dónde seguimos. NO ejecutes nada aún.
+Confirma que leíste BOOT §AHORA + la matriz, da 5 líneas del estado, y pregunta a Javo por dónde arrancamos. NO ejecutes nada aún.
 ```

@@ -1,15 +1,15 @@
 {
   "_meta": {
-    "fuente": "SIAP-ICPI_GOLD_MASTER_v5.5_TGI_20260518.xlsx — H73_OUTPUT_API — Gold Master canónico activo",
-    "fecha_corte": "2026-05-26",
-    "version_excel": "v5.5_TGI_20260518",
+    "fuente": "SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx (slot vivo · CONTENIDO v6.0 corregido D.2A) — H73_OUTPUT_API",
+    "fecha_corte": "2026-04-30",
+    "version_excel": "v6.0_D2A_20260615",
     "hojas_fuente": "H73_OUTPUT_API (interfaz canónica) · H12_MOTOR_ICPI · H15_ICPI_GLOBAL · H21-H24_SAT · H17_IED · H42_IET",
     "advertencia": "Este archivo contiene ÚNICAMENTE outputs institucionales públicos verificados. El Excel Gold Master v5.5 (123 hojas, 931 KB) es la fuente L1 de toda la cadena. Prohibido reemplazar estos valores sin validación analítica en el Excel canónico.",
     "proxima_actualizacion": "Con cédula presupuestaria Q2-2026 (junio 2026)",
-    "sincronizado": "2026-05-26 — sincronizado a v5.5+TGI por analista Dylus Lab · H73_OUTPUT_API · TGI keys añadidos canónicamente",
-    "decision_arquitectonica": "v5.5 es Gold Master canónico activo. v6.0 es template de referencia sin datos de soporte — no apto para auditoría."
+    "sincronizado": "2026-06-16 03:05 UTC — refresco canónico desde el vivo corregido (cirugía D.2A · ICPI 27.46% · B33 intacta) vía _update_snapshot.py",
+    "decision_arquitectonica": "v5.5 es Gold Master canónico activo. v6.0 es template de referencia sin datos de soporte — no apto para auditoría.",
+    "nota_d2a": "Refrescado tras cirugía D.2A (adscritas→SERCOP · semáforo escala+corte · FactorTemporal curva real). Valores curados (parroquias, series) preservados."
   },
-
   "gad": {
     "nombre": "GAD Municipal de Montecristi",
     "codigo": "130801",
@@ -24,13 +24,12 @@
     "metas_pdot": 25,
     "fuente_alcalde": "H01_PARÁMETROS Sección A · H63_S0_CNE_TRAZABILIDAD"
   },
-
   "icpi": {
     "_nota": "ICPI (Índice Compuesto de Progreso Institucional) — G4.1 — métrica de progreso ejecutivo. Coexiste con TGI como lente complementario. ICPI mide velocidad de ejecución; TGI mide calidad institucional integral.",
-    "global": 0.5356,
-    "global_pct": 53.56,
-    "clasificacion": "Ruptura Sistémica",
-    "acumulado_q1": 0.5356,
+    "global": 0.2746,
+    "global_pct": 27.46,
+    "clasificacion": "Corte parcial - lectura preliminar (no comparable con umbral anual)",
+    "acumulado_q1": 0.2367,
     "fuente": "G4.1_ICPI — Índice Compuesto de Progreso Institucional (D1-D5, ponderación ejecución-first)",
     "historico": {
       "_nota": "Series históricas pendientes de validación analítica en v6.0. Valores 2023-2025 desde v5.5 como referencia provisional.",
@@ -40,10 +39,9 @@
       "objetivo_2027": 70.0
     }
   },
-
   "tgi": {
     "_nota": "TGI (Transparencia y Gestión Institucional) — G4.2 — índice de gobernanza institucional integral. Índice principal QUIRA. Incorpora 5 dimensiones con pesos canónicos. Coexiste con ICPI como lente complementario.",
-    "score": 68.82,
+    "score": 66.79,
     "clasificacion": "Transición con Riesgos",
     "rango": "65–74",
     "color_hex": "#FFB800",
@@ -52,21 +50,21 @@
     "d1": {
       "nombre": "Legalidad y Coherencia Normativa",
       "codigo": "D1",
-      "valor": 83.5,
-      "peso": 0.20,
+      "valor": 83.2,
+      "peso": 0.2,
       "fuente": "G3.1_D1 · H01_PARÁMETROS!B180 — Trust_Score_Metodológico"
     },
     "d2": {
       "nombre": "Fidelidad de Planificación",
       "codigo": "D2",
       "valor": 69.93,
-      "peso": 0.20,
+      "peso": 0.2,
       "fuente": "G3.2_D2 · PSG_FIDELIDAD — % metas PDOT cumplidas (D2_Score)"
     },
     "d3": {
       "nombre": "Ejecución Presupuestaria",
       "codigo": "D3",
-      "valor": 14.58,
+      "valor": 59.85,
       "peso": 0.25,
       "fuente": "G3.5_D3 · Ti Holding Municipal Q1-2026 — ratio estricto grupos 7+8",
       "_nota_d3": "14.58% = Ti Q1-2026 (período activo). Ref. histórica 2025 anual: PSG_EJECUCION=59.85% (G3.3). D3 del TGI usa siempre el período activo para reflejar la situación corriente."
@@ -74,7 +72,7 @@
     "d4": {
       "nombre": "Equidad Territorial",
       "codigo": "D4",
-      "valor": 66.85,
+      "valor": 44.79,
       "peso": 0.25,
       "fuente": "G3.6_D4 · TGI rural promedio ponderado por parroquia",
       "_nota_d4": "Metodología v6.0 actualizada: usa TGI rural promedio ponderado (vs IET_PerCápita_adj de v5.5). IRS_GLOBAL=79.7 (Muy Regresivo) sigue siendo el indicador de desigualdad."
@@ -83,7 +81,7 @@
       "nombre": "Capacidad Institucional",
       "codigo": "D5",
       "valor": 100.0,
-      "peso": 0.10,
+      "peso": 0.1,
       "fuente": "G3.7_D5 · H01_PARÁMETROS!B12 — ICM_SNP_SIGAD × 100 = 100%"
     },
     "irs": {
@@ -94,28 +92,35 @@
       "fuente": "G3.6 · H99_ENGINE_CORE — escenario recomendado v2.1 (w_NBI=50% w_Agua=30% w_Pop=20%)"
     },
     "ied_global": {
-      "valor": 31.14,
+      "valor": 24.94,
       "n_direcciones": 11,
       "fuente": "G4.4_IED — Índice de Eficiencia Directiva"
     },
-    "brecha_rural_usd": 1791935,
+    "brecha_rural_usd": 1371051,
     "fuente_tgi": "G4.2_TGI_FRAMEWORK · G3.1-G3.7_DIMENSIONES"
   },
-
   "sat_gm": {
     "_nota": "Valores SAT reconciliados 2026-05-26. Cadena canónica: H75_SAT_ENGINE (pesos) → H73_OUTPUT_API (output) → Gold Master v5.5. SATs activas Q1-2026: SAT-III(0.20) + SAT-IV(0.10) + SAT-V(0.05) = 0.35. Valor anterior 0.72 en G6.1_OUTPUT_API era estimación manual inconsistente con H75 thresholds (0.72≥0.50=CRÍTICO por H75, pero G6.1 decía ALTO). Reconciliado con metodología canónica documentada.",
     "riesgo_total": 0.35,
     "clasif_riesgo": "ALTO",
     "activas_count": 3,
     "sat_activas_detalle": {
-      "SAT-III": {"peso": 0.20, "descripcion": "Sub-ejecución D3 (<60% Ti por 1+ períodos)"},
-      "SAT-IV": {"peso": 0.10, "descripcion": "Brecha territorial crítica (IRS=79.7 Muy Regresivo)"},
-      "SAT-V": {"peso": 0.05, "descripcion": "Densidad de trazabilidad insuficiente"}
+      "SAT-III": {
+        "peso": 0.2,
+        "descripcion": "Sub-ejecución D3 (<60% Ti por 1+ períodos)"
+      },
+      "SAT-IV": {
+        "peso": 0.1,
+        "descripcion": "Brecha territorial crítica (IRS=79.7 Muy Regresivo)"
+      },
+      "SAT-V": {
+        "peso": 0.05,
+        "descripcion": "Densidad de trazabilidad insuficiente"
+      }
     },
     "fuente": "H75_SAT_ENGINE · H73_OUTPUT_API · v5.5",
     "reconciliacion": "2026-05-26 — SAT_RIESGO_TOTAL corregido de 0.72 (G6.1 manual) a 0.35 (H75 metodología canónica). Ver nota en H73_OUTPUT_API col C."
   },
-
   "psg": {
     "_nota": "Indicadores PSG (Plan-Seguimiento-Gestión) — referencias operacionales de D2 y D3.",
     "psg_ejecucion_2025": 0.5985,
@@ -125,7 +130,6 @@
     "pac_publicado": true,
     "fuente": "H73_OUTPUT_API · PSG_EJECUCION · PSG_FIDELIDAD"
   },
-
   "financiero": {
     "_nota_scope": "Datos financieros desde H90 y H07b del Gold Master v5.5 canónico. Dos vistas: 'grupos_inv' = grupos G71-G78 (base D3) · 'all_groups' = H90 consolidado todos grupos.",
     "_version_fuente": "v5.5_TGI_20260518",
@@ -142,7 +146,7 @@
     "h90_consolidado": {
       "gad_codificado_vigente_2026": 45977893.81,
       "gad_devengado_q1": 5147258.86,
-      "gad_ti_q1_pct": 11.20,
+      "gad_ti_q1_pct": 11.2,
       "gad_cod_inicial": 39310032.02,
       "gad_reformas_net": 6667861.79,
       "patronato_codificado": 4341242.62,
@@ -151,17 +155,16 @@
       "ep_aseo_codificado": 2438254.45,
       "ep_aseo_devengado_q1": 442929.52,
       "ep_aseo_ti_q1_pct": 18.17,
-      "bomberos_codificado": 1485033.40,
+      "bomberos_codificado": 1485033.4,
       "bomberos_devengado_q1": 288599.28,
       "bomberos_ti_q1_pct": 19.43,
       "holding_total_codificado": 54242424.28,
       "holding_total_devengado_q1": 6727849.41,
-      "holding_ti_q1_pct": 12.40,
+      "holding_ti_q1_pct": 12.4,
       "fuente": "H90_PRESUPUESTO_CONSOLIDADO · Gold Master v5.5_TGI_20260518",
       "corte": "2026-03-31"
     }
   },
-
   "series_longitudinal": {
     "_meta": {
       "descripcion": "Series históricas verificadas de ejecución presupuestaria (codificado + devengado) por entidad y alcance presupuestario.",
@@ -268,7 +271,7 @@
         "reformas": 6667862,
         "grupo_gasto": "todos",
         "entidad": "GAD",
-        "ti_pct": 11.20,
+        "ti_pct": 11.2,
         "fuente": "gm_v55_h90",
         "fuente_notas": "H90_PRESUPUESTO_CONSOLIDADO todos grupos Q1-2026; cod_inicial=39,310,032; reformas_net=6,667,862"
       },
@@ -313,7 +316,6 @@
       }
     ]
   },
-
   "territorial": {
     "poblacion_census_2022": 69500,
     "parroquias_total": 7,
@@ -326,46 +328,81 @@
     "nota_poblacion": "Datos Censo INEC 2022. Actualizar con proyección PDOT cuando esté disponible.",
     "parroquias": [
       {
-        "id": "P-01", "nombre": "Montecristi", "tipo": "Urbana",
-        "poblacion_2022": 39800, "nbi_pct": 38.4, "cobertura_agua_pct": 95.0,
-        "inv_percapita_q1": 217, "iet_local_pct": 193.75,
+        "id": "P-01",
+        "nombre": "Montecristi",
+        "tipo": "Urbana",
+        "poblacion_2022": 39800,
+        "nbi_pct": 38.4,
+        "cobertura_agua_pct": 95.0,
+        "inv_percapita_q1": 217,
+        "iet_local_pct": 193.75,
         "fuente": "H99_ENGINE_CORE"
       },
       {
-        "id": "P-02", "nombre": "Aníbal San Andrés", "tipo": "Rural",
-        "poblacion_2022": 5200, "nbi_pct": 52.1, "cobertura_agua_pct": 67.01,
-        "inv_percapita_q1": 58, "iet_local_pct": 51.79,
+        "id": "P-02",
+        "nombre": "Aníbal San Andrés",
+        "tipo": "Rural",
+        "poblacion_2022": 5200,
+        "nbi_pct": 52.1,
+        "cobertura_agua_pct": 67.01,
+        "inv_percapita_q1": 58,
+        "iet_local_pct": 51.79,
         "fuente": "H99_ENGINE_CORE"
       },
       {
-        "id": "P-03", "nombre": "Colorado", "tipo": "Rural",
-        "poblacion_2022": 3800, "nbi_pct": 58.7, "cobertura_agua_pct": 38.82,
-        "inv_percapita_q1": 32, "iet_local_pct": 28.57,
+        "id": "P-03",
+        "nombre": "Colorado",
+        "tipo": "Rural",
+        "poblacion_2022": 3800,
+        "nbi_pct": 58.7,
+        "cobertura_agua_pct": 38.82,
+        "inv_percapita_q1": 32,
+        "iet_local_pct": 28.57,
         "fuente": "H99_ENGINE_CORE"
       },
       {
-        "id": "P-04", "nombre": "Leónidas Proaño", "tipo": "Rural",
-        "poblacion_2022": 4100, "nbi_pct": 54.3, "cobertura_agua_pct": 100.0,
-        "inv_percapita_q1": 48, "iet_local_pct": 42.86,
+        "id": "P-04",
+        "nombre": "Leónidas Proaño",
+        "tipo": "Rural",
+        "poblacion_2022": 4100,
+        "nbi_pct": 54.3,
+        "cobertura_agua_pct": 100.0,
+        "inv_percapita_q1": 48,
+        "iet_local_pct": 42.86,
         "fuente": "H99_ENGINE_CORE"
       },
       {
-        "id": "P-05", "nombre": "Gral. Alfaro", "tipo": "Rural",
-        "poblacion_2022": 6300, "nbi_pct": 49.8, "cobertura_agua_pct": 100.0,
-        "inv_percapita_q1": 71, "iet_local_pct": 63.39,
+        "id": "P-05",
+        "nombre": "Gral. Alfaro",
+        "tipo": "Rural",
+        "poblacion_2022": 6300,
+        "nbi_pct": 49.8,
+        "cobertura_agua_pct": 100.0,
+        "inv_percapita_q1": 71,
+        "iet_local_pct": 63.39,
         "fuente": "H99_ENGINE_CORE"
       },
       {
-        "id": "P-06", "nombre": "Isabel Muentes", "tipo": "Rural",
-        "poblacion_2022": 5700, "nbi_pct": 61.2, "cobertura_agua_pct": 1.02,
-        "inv_percapita_q1": 40, "iet_local_pct": 35.71,
+        "id": "P-06",
+        "nombre": "Isabel Muentes",
+        "tipo": "Rural",
+        "poblacion_2022": 5700,
+        "nbi_pct": 61.2,
+        "cobertura_agua_pct": 1.02,
+        "inv_percapita_q1": 40,
+        "iet_local_pct": 35.71,
         "fuente": "H99_ENGINE_CORE",
         "alerta": "Parroquia con mayor Composite_Need del cantón — déficit hídrico crítico (1.02% cobertura agua)"
       },
       {
-        "id": "P-07", "nombre": "La Pila", "tipo": "Rural",
-        "poblacion_2022": 4600, "nbi_pct": 55.9, "cobertura_agua_pct": 50.0,
-        "inv_percapita_q1": 52, "iet_local_pct": 46.43,
+        "id": "P-07",
+        "nombre": "La Pila",
+        "tipo": "Rural",
+        "poblacion_2022": 4600,
+        "nbi_pct": 55.9,
+        "cobertura_agua_pct": 50.0,
+        "inv_percapita_q1": 52,
+        "iet_local_pct": 46.43,
         "fuente": "H99_ENGINE_CORE"
       }
     ]
