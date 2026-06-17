@@ -1,15 +1,15 @@
 """
-QUIRA OS v0.1 — P-19 Género y Equidad + Ambiente
-Tab 1 💜 Género: PSG 12.83% · ODS 5 · Gender Bond · Pin Morado · Plan género · Panel IGM 6 sub-ind.
-Tab 2 🌿 Ambiente: 6 metas FA PDOT · alineación PP 2026 · RDC aportes FA (30 = más demandado)
-FUENTE ÚNICA DE DATOS: SIAP-ICPI_GOLD_MASTER_v4.1 (H73_OUTPUT_API + H99_ENGINE_CORE + H10c_RDC)
-Indicadores sin fuente Excel marcados con valor=None → "Sin dato oficial"
+QUIRA OS — P-19 Protección Social, Género y Ambiente (cajón d12)
+Headline = presupuesto con enfoque de género del snapshot vivo (cargar_gm_snapshot · vectores.psg = 2.83%),
+coherente con la tarjeta L1. Indicadores sin fuente oficial marcados con valor=None → "Sin dato oficial".
+Tab 1 Género · Tab 2 Ambiente (metas FA PDOT · alineación PP 2026 · aportes RDC).
 Dylus Lab © 2026
 """
 import streamlit as st
 from data.loader import load_all
 from utils.session import is_tecnico, is_ejecutivo
 from quira_pages.html_engine import render_page, page_header
+from utils.cache_quira import cargar_gm_snapshot
 
 # ── PANEL IGM · 6 SUB-INDICADORES DE GÉNERO ──────────────────────────────────
 # valor=None  → dato NO disponible en Excel · se muestra como "Sin dato oficial"
@@ -57,7 +57,7 @@ INDICADORES_GENERO = [
         "unidad": "% avance",
         "estado": "BLOQUEADO",
         "color":  "red",
-        "nota":   "Aníbal San Andrés · Gov Twin aprobado · BLOQUEADO: PSG 12.83% < umbral 30% · Fuente: H73",
+        "nota":   "Aníbal San Andrés · proyecto aprobado · BLOQUEADO: presupuesto de género bajo el umbral · Fuente: registros oficiales",
     },
     {
         "codigo": "IGM-E",
@@ -91,7 +91,7 @@ ODS5_TARGETS = [
     {"id": "5.4", "desc": "Reconocimiento cuidados no remunerados",  "avance": None, "estado": "CRÍTICO"},
     {"id": "5.5", "desc": "Liderazgo político y económico femenino", "avance": None, "estado": "PARCIAL"},
     {"id": "5.a", "desc": "Igualdad derechos económicos / catastro", "avance": None, "estado": "PARCIAL"},
-    {"id": "5.c", "desc": "Políticas y legislación género · PSG",    "avance": None, "estado": "CRÍTICO"},
+    {"id": "5.c", "desc": "Políticas y legislación con enfoque de género", "avance": None, "estado": "CRÍTICO"},
 ]
 
 
@@ -180,7 +180,7 @@ PROGRAMAS_GENERO = [
         "programa": "Luminarias seguridad Aníbal San Andrés",
         "monto": 95_000, "pct_genero": 80, "vinculo_psg": True,
         "estado": "BLOQUEADO",
-        "nota": "Gov Twin activo · requiere PSG ≥30% para Gender Bond",
+        "nota": "Proyecto activo · requiere presupuesto de género ≥30% para el fondo de cooperación",
     },
     {
         "programa": "Formación liderazgo femenino parroquial",
@@ -239,7 +239,7 @@ FA_METAS = [
      "Capacidad disposición final 0→20% · relleno sanitario cantonal",
      0.43, "⬜", "amber"),
     ("FA-CC-01",  "Cambio Climático",
-     "4 planes de acción al 2027 · Q1-2026: 0 iniciados · SAT ambiental activa",
+     "4 planes de acción al 2027 · Q1-2026: 0 iniciados · alerta ambiental activa",
      0.00, "⬜", "red"),
 ]
 
@@ -319,7 +319,7 @@ def _fa_card(m: tuple) -> str:
         f'</div>'
         f'<div style="text-align:right;flex-shrink:0">'
         f'<div style="font-size:18px;font-weight:900;color:var(--{col});'
-        f'font-family:monospace">{ti_pct:.0f}<span style="font-size:10px">% Ti</span></div>'
+        f'font-family:monospace">{ti_pct:.0f}<span style="font-size:10px">% ejec.</span></div>'
         f'{vi_badge}</div></div>'
         f'<div style="height:4px;background:var(--divider);border-radius:2px;'
         f'overflow:hidden;margin-bottom:6px">'
@@ -546,7 +546,7 @@ def _render_dom12_ejecutivo(chain: dict) -> None:
 
     # ── Sección 5: Pie de página ──────────────────────────────────────────────
     fuente_label = (
-        f"{'🔴 Datos en vivo · Neo4j' if fuente_neo4j else '📋 Datos consolidados'}"
+        f"{'🔴 Datos en vivo' if fuente_neo4j else '📋 Datos consolidados'}"
         f" · Fuente: {fuente} · Corte: {corte}"
     )
     st.caption(fuente_label)
@@ -560,9 +560,14 @@ def _render_dom12_ejecutivo(chain: dict) -> None:
 def _render_dom12_tecnico() -> None:
     """Vista técnica existente — Directivo / Técnico / Administrador."""
     data      = load_all()
+    gm        = cargar_gm_snapshot()
     show_tech = is_tecnico()
     indices   = data["indices"]
-    psg_val   = indices.get("PSG", {}).get("valor", _psg_actual)
+    # Presupuesto con enfoque de genero: cifra madre del motor vivo (vectores.psg = 2.83), coherente con tarjeta L1
+    psg_val   = ((gm or {}).get("vectores", {}).get("psg") or {}).get("valor")
+    if psg_val is None:
+        psg_val = indices.get("PSG", {}).get("valor", _psg_actual)
+    psg_brecha = _psg_meta - psg_val
 
     resumen_html = f"""
 <div class="grid-4" style="margin-bottom:16px">
@@ -570,7 +575,7 @@ def _render_dom12_tecnico() -> None:
               border-radius:12px;padding:16px;text-align:center">
     <div style="font-size:42px;font-weight:900;color:var(--purple);
                 font-family:var(--mono)">{psg_val:.2f}<span style="font-size:18px">%</span></div>
-    <div style="font-size:10px;font-weight:700;color:var(--purple);margin-top:4px">PSG ACTUAL</div>
+    <div style="font-size:10px;font-weight:700;color:var(--purple);margin-top:4px">PRESUP. GÉNERO</div>
     <div style="font-size:9px;color:var(--muted);margin-top:3px">Ruptura Sistémica</div>
   </div>
   <div style="background:rgba(0,224,150,.06);border:1px solid rgba(0,224,150,.2);
@@ -583,8 +588,8 @@ def _render_dom12_tecnico() -> None:
   <div style="background:rgba(255,77,109,.07);border:1px solid rgba(255,77,109,.25);
               border-radius:12px;padding:16px;text-align:center">
     <div style="font-size:42px;font-weight:900;color:var(--red);
-                font-family:var(--mono)">{_psg_brecha:.2f}<span style="font-size:18px">pts</span></div>
-    <div style="font-size:10px;font-weight:700;color:var(--red);margin-top:4px">BRECHA PSG</div>
+                font-family:var(--mono)">{psg_brecha:.2f}<span style="font-size:18px">pts</span></div>
+    <div style="font-size:10px;font-weight:700;color:var(--red);margin-top:4px">BRECHA GÉNERO</div>
     <div style="font-size:9px;color:var(--muted);margin-top:3px">Vs meta mínima 30%</div>
   </div>
   <div style="background:rgba(124,92,252,.08);border:1px solid rgba(124,92,252,.25);
@@ -592,7 +597,7 @@ def _render_dom12_tecnico() -> None:
     <div style="font-size:28px;font-weight:900;color:var(--purple);
                 font-family:var(--mono)">${(_total_genero_potencial/1000):.0f}K</div>
     <div style="font-size:10px;font-weight:700;color:var(--purple);margin-top:4px">POA RECLASIFICABLE</div>
-    <div style="font-size:9px;color:var(--muted);margin-top:3px">PSG potencial {_psg_potencial:.1f}%</div>
+    <div style="font-size:9px;color:var(--muted);margin-top:3px">Con enfoque pot. {_psg_potencial:.1f}%</div>
   </div>
 </div>"""
 
@@ -612,8 +617,8 @@ def _render_dom12_tecnico() -> None:
               border:1px solid rgba(255,184,0,.2);line-height:1.6">
     ⚠ <strong>Integridad de datos:</strong>
     {igm_sin_dato} de {len(INDICADORES_GENERO)} indicadores muestran "Sin dato oficial"
-    — valores no disponibles en el Gold Master (H73/H99).
-    IGM-D e IGM-E son estados binarios derivados del PSG 12.83% (fuente: H73_OUTPUT_API).
+    — valores aún no disponibles en los registros oficiales del cantón.
+    IGM-D e IGM-E son estados binarios derivados del presupuesto con enfoque de género.
     Pendiente: certificación RRHH (IGM-A), análisis nómina DAF (IGM-B),
     encuesta PNUD/INEC (IGM-C), fuente CNE/AME (IGM-F).
   </div>
@@ -690,7 +695,7 @@ def _render_dom12_tecnico() -> None:
   </div>
   {"".join(_ods5_row(t) for t in ODS5_TARGETS)}
   <div style="margin-top:8px;font-size:9px;color:var(--muted)">
-    PSG 12.83% afecta directamente ODS 5.c · Luminarias (IGM-D) afecta ODS 5.2 · Plan género (IGM-E) afecta 5.1 y 5.5
+    El presupuesto con enfoque de género afecta directamente ODS 5.c · Luminarias (IGM-D) afecta ODS 5.2 · Plan género (IGM-E) afecta 5.1 y 5.5
   </div>
 </div>"""
 
@@ -704,17 +709,17 @@ def _render_dom12_tecnico() -> None:
       BID Lab GENDER BOND · $95,000 · BLOQUEADO · Vence Q3-2026
     </div>
     <div style="font-size:11px;color:var(--muted);line-height:1.7;margin-bottom:8px">
-      El Gender Bond financia luminarias de seguridad en Aníbal San Andrés
-      (Pin Morado activo · Gov Twin aprobado). Está <strong style="color:var(--red)">bloqueado</strong>
-      porque el BID Lab exige PSG ≥ 30%. Con PSG actual 12.83%, la brecha es
-      <strong style="color:var(--purple)">{_psg_brecha:.2f} puntos</strong>.
+      El Gender Bond del BID Lab financia luminarias de seguridad en Aníbal San Andrés
+      (proyecto aprobado). Está <strong style="color:var(--red)">bloqueado</strong>
+      porque el cooperante exige presupuesto de género ≥ 30%. Con el {psg_val:.2f}% actual, la brecha es
+      <strong style="color:var(--purple)">{psg_brecha:.2f} puntos</strong>.
       Si no se alcanza antes de Q3-2026, el fondo <strong style="color:var(--red)">vence</strong>
       y debe recompetir en la siguiente convocatoria (2027).
     </div>
     <div style="display:flex;gap:8px;flex-wrap:wrap">
       <div style="padding:6px 12px;background:rgba(124,92,252,.12);border-radius:7px;
                   font-size:10px;color:var(--purple)">
-        Reclasificar 3 programas POA → PSG sube a ~{_psg_potencial:.1f}%
+        Reclasificar 3 programas POA → el enfoque de género sube a ~{_psg_potencial:.1f}%
       </div>
       <div style="padding:6px 12px;background:rgba(0,212,255,.08);border-radius:7px;
                   font-size:10px;color:var(--cyan)">
@@ -726,7 +731,7 @@ def _render_dom12_tecnico() -> None:
 
     plan_reclasificacion_html = f"""
 <div class="card" style="margin-bottom:16px">
-  <div class="card-title">💜 PLAN RECLASIFICACIÓN POA · PSG {psg_val:.2f}% → {_psg_potencial:.1f}%</div>
+  <div class="card-title">💜 PLAN RECLASIFICACIÓN POA · enfoque de género {psg_val:.2f}% → {_psg_potencial:.1f}%</div>
   <div style="font-size:10px;color:var(--muted);margin-bottom:10px;
               padding:6px 10px;background:rgba(124,92,252,.05);
               border-radius:6px;border:1px solid rgba(124,92,252,.15)">
@@ -738,7 +743,7 @@ def _render_dom12_tecnico() -> None:
   <div style="margin-top:10px;padding:8px 10px;
               background:rgba(124,92,252,.05);border:1px solid rgba(124,92,252,.15);
               border-radius:7px;font-size:10px;color:var(--purple)">
-    💜 PSG actual: {psg_val:.2f}% ·
+    💜 Presupuesto de género actual: {psg_val:.2f}% ·
     Con reclasificación potencial: {_psg_potencial:.1f}% ·
     Meta Gender Bond: ≥30% · Meta ONU Mujeres: ≥25%
   </div>
@@ -749,7 +754,7 @@ def _render_dom12_tecnico() -> None:
   <div style="background:rgba(124,92,252,.06);border:1px solid rgba(124,92,252,.2);
               border-radius:12px;padding:16px">
     <div style="font-size:11px;font-weight:700;color:var(--purple);margin-bottom:8px">
-      💜 HOJA DE RUTA PSG · 30 DÍAS
+      💜 HOJA DE RUTA · PRESUPUESTO DE GÉNERO · 30 DÍAS
     </div>
     <div style="display:flex;flex-direction:column;gap:5px">
       <div style="font-size:11px;color:var(--white);padding:6px 10px;
@@ -762,18 +767,18 @@ def _render_dom12_tecnico() -> None:
       </div>
       <div style="font-size:11px;color:var(--white);padding:6px 10px;
                   background:rgba(124,92,252,.08);border-radius:6px">
-        <strong style="color:var(--purple)">Días 11-15:</strong> Registro eSIGEF · PSG recalculado ≥20%
+        <strong style="color:var(--purple)">Días 11-15:</strong> Registro eSIGEF · presupuesto de género recalculado ≥20%
       </div>
       <div style="font-size:11px;color:var(--white);padding:6px 10px;
                   background:rgba(124,92,252,.08);border-radius:6px">
-        <strong style="color:var(--purple)">Días 16-30:</strong> Ampliar programas género · PSG ≥30% · Gender Bond
+        <strong style="color:var(--purple)">Días 16-30:</strong> Ampliar programas género · presupuesto de género ≥30% · Gender Bond
       </div>
     </div>
   </div>
   <div style="background:rgba(0,224,150,.05);border:1px solid rgba(0,224,150,.2);
               border-radius:12px;padding:16px">
     <div style="font-size:11px;font-weight:700;color:var(--green);margin-bottom:8px">
-      ✅ BENEFICIOS DE ALCANZAR PSG ≥ 30%
+      ✅ BENEFICIOS DE ALCANZAR EL 30% DE PRESUPUESTO DE GÉNERO
     </div>
     <div style="display:flex;flex-direction:column;gap:5px">
       <div style="font-size:11px;color:var(--white);padding:6px 10px;
@@ -798,10 +803,10 @@ def _render_dom12_tecnico() -> None:
 
     hdr = page_header(
         "GÉNERO · EQUIDAD · AMBIENTE",
-        "PSG · ODS 5 · Gender Bond · Metas FA",
-        f"PSG {psg_val:.2f}% · Brecha {_psg_brecha:.2f} pts · Gender Bond $95K · "
-        f"6 metas FA PDOT · Cambio climático sin iniciar",
-        '<span class="badge badge-red">💜 PSG Ruptura Sistémica</span>',
+        "Presupuesto de género · ODS 5 · Gender Bond · Metas ambientales",
+        f"Presupuesto de género {psg_val:.2f}% · Brecha {psg_brecha:.2f} pts · Gender Bond $95K · "
+        f"6 metas ambientales PDOT · Cambio climático sin iniciar",
+        '<span class="badge badge-red">💜 Brecha de género crítica</span>',
     )
 
     tab1, tab2 = st.tabs(["💜  Género", "🌿  Ambiente"])
@@ -818,13 +823,13 @@ def _render_dom12_tecnico() -> None:
         st.markdown("---")
         c1, c2, c3 = st.columns(3)
         with c1:
-            if st.button("🔮 Sentinel · Plan reclasificación PSG",
-                         use_container_width=True, type="primary"):
+            if st.button("🔮 Sentinel · Plan de presupuesto de género",
+                         use_container_width=True, type="primary", key="gen_sentinel"):
                 st.session_state["page"] = "sentinel"
                 st.session_state["sentinel_pregunta_auto"] = (
-                    f"El PSG de Montecristi es {psg_val:.2f}%. El Gender Bond BID Lab $95K "
+                    f"El presupuesto con enfoque de género de Montecristi es {psg_val:.2f}%. El Gender Bond BID Lab $95K "
                     "y ONU Mujeres $65K están bloqueados por este indicador. "
-                    f"La reclasificación de partidas en el POA podría elevar el PSG a ~{_psg_potencial:.1f}%. "
+                    f"La reclasificación de partidas en el POA podría elevar el presupuesto de género a ~{_psg_potencial:.1f}%. "
                     "¿Cuál es el procedimiento legal exacto bajo COOTAD y el reglamento SINFÍN "
                     "para reclasificar partidas presupuestarias con perspectiva de género, "
                     "quién firma la resolución y cuánto tiempo toma el registro en eSIGEF?"
@@ -853,7 +858,7 @@ def _render_dom12_tecnico() -> None:
               border-radius:12px;padding:14px;text-align:center">
     <div style="font-size:34px;font-weight:900;color:var(--green);font-family:monospace">{fa_ini}<span style="font-size:14px">/{len(FA_METAS)}</span></div>
     <div style="font-size:9px;font-weight:700;color:var(--green)">METAS FA INICIADAS</div>
-    <div style="font-size:8px;color:var(--muted)">Ti > 0% · H31_REPORTE_CPCCS</div>
+    <div style="font-size:8px;color:var(--muted)">Ejecución > 0% · registros CPCCS</div>
   </div>
   <div style="background:rgba(255,77,109,.07);border:1px solid rgba(255,77,109,.2);
               border-radius:12px;padding:14px;text-align:center">
@@ -871,7 +876,7 @@ def _render_dom12_tecnico() -> None:
               border-radius:12px;padding:14px;text-align:center">
     <div style="font-size:34px;font-weight:900;color:var(--green);font-family:monospace">30</div>
     <div style="font-size:9px;font-weight:700;color:var(--green)">APORTES RDC FA</div>
-    <div style="font-size:8px;color:var(--muted)">Componente más demandado · H10c</div>
+    <div style="font-size:8px;color:var(--muted)">Componente más demandado</div>
   </div>
 </div>"""
 
@@ -882,7 +887,7 @@ def _render_dom12_tecnico() -> None:
   <div style="font-size:8px;color:rgba(0,212,255,.7);margin-bottom:10px;padding:5px 10px;
               background:rgba(0,212,255,.05);border-radius:5px;
               border:1px solid rgba(0,212,255,.1)">
-    Fuente: H31_REPORTE_CPCCS · Ti = ejecución presupuestaria Q1-2026 ·
+    Fuente: registros CPCCS · ejecución presupuestaria Q1-2026 ·
     Vi = verificación documental proyectada · Meta PDOT 2027
   </div>
   <div class="grid-2" style="gap:10px">
@@ -896,8 +901,8 @@ def _render_dom12_tecnico() -> None:
   <div class="card-title">🌿 6 METAS BIOFÍSICO-AMBIENTE · Plan 2023-2027 · Estado ene–mar 2026</div>
   <div style="font-size:8px;color:rgba(0,212,255,.7);margin-bottom:10px;padding:5px 10px;
               background:rgba(0,212,255,.05);border-radius:5px;border:1px solid rgba(0,212,255,.1)">
-    Fuente: H31_REPORTE_CPCCS · Ti = ejecución presupuestaria Q1-2026 ·
-    Vi ✅ verificada / ⬜ sin verificar · Meta global al 2027
+    Fuente: registros CPCCS · ejecución presupuestaria Q1-2026 ·
+    ✅ verificada / ⬜ sin verificar · Meta global al 2027
   </div>
   {"".join(_fa_card(m) for m in FA_METAS)}
   <div style="margin-top:8px;padding:8px 10px;background:rgba(255,77,109,.06);
@@ -918,7 +923,7 @@ def _render_dom12_tecnico() -> None:
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
     <div>
       <div style="font-size:9px;font-weight:700;color:var(--muted);margin-bottom:8px">
-        APORTES RDC 2023-2024 · COMPONENTE FA (30 registros · H10c)
+        APORTES RDC 2023-2024 · COMPONENTE AMBIENTE (30 registros)
       </div>
       {"".join(
         f'<div style="font-size:9px;color:var(--white);padding:5px 8px;'
