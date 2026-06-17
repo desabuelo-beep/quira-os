@@ -14,6 +14,7 @@ from __future__ import annotations
 import streamlit as st
 from quira_pages.html_engine import render_page, page_header
 from utils.session import is_tecnico
+from utils.cache_quira import cargar_gm_snapshot
 
 
 # ── METADATA ESTÁTICA ──────────────────────────────────────────────────────────
@@ -615,9 +616,98 @@ def _cajon2(prov_by_entity: dict, by_entity: dict) -> str:
 </div>"""
 
 
+# ── EJE DE CONSISTENCIA — ejecución presupuestaria del holding (motor h90) ──────
+# La cifra madre de la tarjeta L1 (12.4% consolidado), desglosada en sus 4 entidades
+# reales. Cierra el círculo causal: el consolidado NO es opinión, es ejecutado/codificado
+# sin reinterpretación humana. (key h90, code en _ENTIDADES). Corte parcial Q1.
+_H90_ENT = [("gad", "GAD"), ("patronato", "PATRONATO"), ("ep_aseo", "EMAI"), ("bomberos", "BOMBEROS")]
+
+
+def _eje_consistencia(gm: dict) -> str:
+    h90  = (gm or {}).get("financiero", {}).get("h90_consolidado", {}) or {}
+    cons = h90.get("holding_ti_q1_pct")
+    if cons is None:
+        return ""  # sin motor → no fabricar (Regla 3: sin dato verificado, no hay dato)
+
+    dev = h90.get("holding_total_devengado_q1", 0.0) or 0.0
+    cod = h90.get("holding_total_codificado", 0.0) or 0.0
+
+    filas = []
+    for key, code in _H90_ENT:
+        ti = h90.get(f"{key}_ti_q1_pct")
+        if ti is None:
+            continue
+        dcod = h90.get(f"{key}_codificado") or h90.get(f"{key}_codificado_vigente_2026") or 0.0
+        ddev = h90.get(f"{key}_devengado_q1") or 0.0
+        meta = _ENTIDADES.get(code, {})
+        filas.append({"ti": ti, "cod": dcod, "dev": ddev, "nombre": meta.get("nombre", code),
+                      "emoji": meta.get("emoji", ""), "color": meta.get("color", "#8892B0")})
+    filas.sort(key=lambda x: x["ti"], reverse=True)
+    if not filas:
+        return ""
+    max_ti = max((f["ti"] for f in filas), default=1.0) or 1.0
+
+    bars = ""
+    for f in filas:
+        w     = min(f["ti"] / max_ti * 100, 100)
+        share = (f["cod"] / cod * 100) if cod > 0 else 0
+        bars += (
+            f'<div style="margin-bottom:10px">'
+            f'  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px">'
+            f'    <span style="font-size:11px;color:var(--white)">{f["emoji"]} {f["nombre"]} '
+            f'      <span style="color:var(--muted);font-size:9px">· {share:.0f}% del presupuesto</span></span>'
+            f'    <span style="font-size:12px;font-weight:800;font-family:var(--mono);color:{f["color"]}">{f["ti"]:.1f}%</span>'
+            f'  </div>'
+            f'  <div style="height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden">'
+            f'    <div style="height:100%;width:{w:.0f}%;background:{f["color"]};opacity:.85;border-radius:3px"></div>'
+            f'  </div>'
+            f'  <div style="font-size:9px;color:var(--muted);margin-top:2px">'
+            f'    {_fmt(f["dev"])} ejecutado de {_fmt(f["cod"])} codificado</div>'
+            f'</div>'
+        )
+
+    lider  = filas[0]
+    rezago = min(filas, key=lambda x: x["ti"])
+    share_rez = (rezago["cod"] / cod * 100) if cod > 0 else 0
+    narrativa = (
+        f'El {rezago["nombre"]} concentra el {share_rez:.0f}% del presupuesto del holding '
+        f'({_fmt(rezago["cod"])}) y ejecutó {rezago["ti"]:.1f}% al primer trimestre — eso determina '
+        f'el consolidado. Las entidades adscritas ejecutan a mayor ritmo (lidera {lider["nombre"]} con '
+        f'{lider["ti"]:.1f}%) pero pesan menos en el total. Es un corte parcial del trimestre: mide el '
+        f'avance a la fecha, no comparable con un cierre anual.'
+    )
+
+    return f"""
+<div style="margin-bottom:16px;border:1px solid rgba(245,158,11,.3);border-radius:12px;
+            background:var(--navy-card);padding:16px 18px">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;
+              margin-bottom:12px;flex-wrap:wrap;gap:10px">
+    <div>
+      <div style="font-size:13px;font-weight:800;color:var(--white)">
+        🎯 Eje de Consistencia · Ejecución Presupuestaria del Holding</div>
+      <div style="font-size:10px;color:var(--muted);margin-top:3px">
+        La misma cifra del Centro de Mando, desglosada en sus 4 entidades — sin reinterpretación</div>
+    </div>
+    <div style="text-align:right;flex-shrink:0">
+      <div style="font-size:2rem;font-weight:900;font-family:var(--mono);color:#F59E0B;line-height:1">{cons:.1f}%</div>
+      <span style="font-size:9px;color:#F59E0B;font-weight:700">CORTE PARCIAL Q1 · PRELIMINAR</span>
+    </div>
+  </div>
+  <div style="font-size:11px;color:var(--muted);margin-bottom:14px">
+    {_fmt(dev)} ejecutados de {_fmt(cod)} codificados · consolidado de las 4 entidades al 31-mar-2026</div>
+  {bars}
+  <div style="margin-top:6px;padding:11px 13px;background:rgba(245,158,11,.06);
+              border-left:3px solid #F59E0B;border-radius:0 8px 8px 0;font-size:11px;
+              color:var(--white);line-height:1.6">{narrativa}</div>
+  <div style="font-size:9px;color:rgba(255,255,255,.28);margin-top:10px">
+    Fuente: Sistema Integrado de Gestión Financiera (SIGEF) · presupuesto consolidado · corte 31-mar-2026</div>
+</div>"""
+
+
 # ── RENDER PRINCIPAL ───────────────────────────────────────────────────────────
 def render() -> None:
     sd        = _load_sercop_data()
+    gm        = cargar_gm_snapshot()
     show_tech = is_tecnico()
 
     by_entity      = sd.get("by_entity",      {})
@@ -888,14 +978,15 @@ def render() -> None:
 </div>"""
 
     # ── ASSEMBLE ──────────────────────────────────────────────────────────────
+    eje_html = _eje_consistencia(gm)
     html = (
-        hdr + banner + kpi_strip
+        hdr + eje_html + banner + kpi_strip
         + sec_hdr + cajones
         + cajon2_html
         + insights + tabla + tech
         + ctas_html   # CTAs dentro del canvas naval — sin ruptura visual
     )
-    render_page(html, show_tech=show_tech, height=4400)
+    render_page(html, show_tech=show_tech, height=4700)
 
     # ── BRIDGE JS ↔ STREAMLIT ──────────────────────────────────────────────────
     # Captura postMessage de los CTAs navales y dispara botones Streamlit ocultos.
