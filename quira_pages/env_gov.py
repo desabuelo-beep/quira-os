@@ -71,7 +71,7 @@ def _render_mini_kpi_band() -> None:
         icpi_pct    = None
         icpi_clasif = "—"
         n_alertas   = 0
-        hold_avg    = 68.7
+        hold_avg    = None
 
         if snap:
             icpi_d      = snap.get("icpi", {})
@@ -80,15 +80,22 @@ def _render_mini_kpi_band() -> None:
             sat_d       = snap.get("sat", {})
             n_alertas   = sat_d.get("total_activas", 0)
 
-        if gm and icpi_pct is None:
+        if gm and gm.get("icpi"):
             icpi_gm     = gm.get("icpi", {})
             icpi_pct    = icpi_gm.get("global_pct") or icpi_gm.get("global")
             icpi_clasif = icpi_gm.get("clasificacion", "—")
 
-        icpi_color  = C.sem(icpi_pct) if icpi_pct is not None else "#EF4444"
+        if gm:
+            _h90 = gm.get("financiero", {}).get("h90_consolidado", {}) or {}
+            if _h90.get("holding_ti_q1_pct") is not None:
+                hold_avg = _h90["holding_ti_q1_pct"]            # consolidado real del motor
+
+        _parcial    = any(t in str(icpi_clasif).lower() for t in ("parcial", "preliminar"))
+        icpi_color  = "#F59E0B" if _parcial else (C.sem(icpi_pct) if icpi_pct is not None else "#EF4444")
         alert_color = "#EF4444" if n_alertas > 0 else "#22C55E"
-        hold_color  = C.sem(hold_avg)
-        icpi_str    = f"{icpi_pct:.1f}%" if icpi_pct is not None else "17.4%"
+        hold_color  = C.sem(hold_avg) if hold_avg is not None else "#EF4444"
+        icpi_str    = f"{icpi_pct:.1f}%" if icpi_pct is not None else "—"
+        hold_str    = f"{hold_avg:.1f}%" if hold_avg is not None else "—"
 
         def _t(label: str, val: str, color: str, sub: str) -> str:
             return f"""
@@ -107,13 +114,13 @@ def _render_mini_kpi_band() -> None:
 
         tiles_html = (
             _t("Cumplimiento Institucional", icpi_str, icpi_color,
-               icpi_clasif + " · umbral 65%") +
+               icpi_clasif) +
             _t("Fondos en Riesgo", "$3.66M", "#7C5CFC",
                "3 fuentes condicionadas") +
             _t("Alertas Activas", str(n_alertas), alert_color,
                "Sistema activo") +
-            _t("Holding Municipal", f"{hold_avg:.1f}%", hold_color,
-               "Promedio entidades")
+            _t("Holding Municipal", hold_str, hold_color,
+               "Consolidado 4 entidades")
         )
 
         st.markdown(f"""

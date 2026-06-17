@@ -81,7 +81,7 @@ _DOMAINS_V2: list[dict[str, Any]] = [
         "concepto": "Las 4 entidades del holding (GAD, EP Aseo, Bomberos, "
                     "Patronato) medidas con la misma vara.",
         "estado": "BAJO OBJETIVO", "metric_key": "hold_avg", "metric_suffix": "%",
-        "gancho": "EP Aseo lidera con 82% y el GAD está en rezago — compara las cuatro.",
+        "gancho": "Entra a comparar las cuatro entidades: quién ejecuta y quién arrastra al consolidado.",
         "temp": "alerta", "mod": "municipal",
     },
     {
@@ -104,8 +104,8 @@ _DOMAINS_V2: list[dict[str, Any]] = [
         "id": "d08", "num": "08", "nombre": "Participación Ciudadana",
         "concepto": "Los mecanismos por los que la ciudadanía decide: presupuesto "
                     "participativo, cabildos, consultas, veedurías.",
-        "estado": "BAJO OBJETIVO", "metric": "27.98%",
-        "gancho": "6 mecanismos activos pero la participación no llega al objetivo de 40% — ¿por qué?",
+        "estado": "BAJO OBJETIVO", "metric_key": "igp_pct", "metric_suffix": "%",
+        "gancho": "Los mecanismos por los que la ciudadanía participa: entra a ver cuáles funcionan y dónde se estanca.",
         "temp": "alerta", "mod": "confianza",
     },
     {
@@ -136,8 +136,8 @@ _DOMAINS_V2: list[dict[str, Any]] = [
         "id": "d12", "num": "12", "nombre": "Protección Social & Grupos Prioritarios",
         "concepto": "Los grupos que la Constitución manda atender primero: "
                     "inversión social, género y prioridad territorial.",
-        "estado": "CRÍTICO", "metric": "12.83%",
-        "gancho": "La inversión social está 17.2 puntos bajo el mandato constitucional — $2.1M de brecha.",
+        "estado": "CRÍTICO", "metric_key": "psg_pct", "metric_suffix": "%",
+        "gancho": "La inversión en los grupos que la Constitución manda atender primero: entra a ver la brecha real.",
         "temp": "critico", "mod": "genero",
     },
 ]
@@ -150,7 +150,7 @@ _KPIS = [
     {"key": "kpi_alertas",     "label": "ALERTAS ACTIVAS", "dest": "alertas",
      "val_key": "alert_str", "color_key": "alert_color", "sub_key": "riesgo_str"},
     {"key": "kpi_municipal",   "label": "HOLDING MUNICIPAL", "dest": "municipal",
-     "val_key": "hold_str", "color_key": "hold_color", "sub": "Promedio 4 entidades · EP Aseo líder"},
+     "val_key": "hold_str", "color_key": "hold_color", "sub": "Consolidado 4 entidades · corte Q1 2026"},
 ]
 
 
@@ -164,7 +164,7 @@ def _data() -> dict[str, Any]:
     from utils.css_tokens import C
     icpi = d.get("icpi_pct")
     n_al = int(d.get("n_alertas", 0) or 0)
-    hold = d.get("hold_avg", 68.7)
+    hold = d.get("hold_avg", 0.0)
     d["icpi_str"]    = f"{icpi:.1f}%" if icpi is not None else "—"
     _parcial = any(t in str(d.get("icpi_clasif", "")).lower() for t in ("parcial", "preliminar"))
     d["icpi_color"]  = "#F59E0B" if _parcial else (C.sem(icpi) if icpi is not None else "#EF4444")

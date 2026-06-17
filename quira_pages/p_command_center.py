@@ -214,7 +214,7 @@ def _load_data() -> dict[str, Any]:
     d: dict[str, Any] = {
         "icpi_pct": None, "icpi_clasif": "—",
         "n_alertas": 0,   "riesgo_clasif": "—",
-        "hold_avg": 68.7, "has_snap": bool(snap),
+        "hold_avg": 0.0, "has_snap": bool(snap),
     }
 
     # ICPI · titular: preferir el Gold Master local (gm_snapshot · valor corregido v6.0)
@@ -222,6 +222,15 @@ def _load_data() -> dict[str, Any]:
     icpi_src = (gm.get("icpi") if gm else None) or (snap.get("icpi") if snap else {}) or {}
     d["icpi_pct"]    = icpi_src.get("global_pct") or icpi_src.get("global")
     d["icpi_clasif"] = icpi_src.get("clasificacion", "—")
+
+    # Holding consolidado + vectores causales: del motor vivo (leer, no recalcular - Regla 4).
+    _gm = gm or {}
+    h90 = _gm.get("financiero", {}).get("h90_consolidado", {}) or {}
+    if h90.get("holding_ti_q1_pct") is not None:
+        d["hold_avg"] = h90["holding_ti_q1_pct"]            # consolidado ponderado real
+    _vec = _gm.get("vectores", {}) or {}
+    d["igp_pct"] = (_vec.get("igp") or {}).get("valor")     # Participacion ciudadana
+    d["psg_pct"] = (_vec.get("psg") or {}).get("valor")     # Presupuesto con enfoque de genero
 
     if snap:
         sat_d = snap.get("sat", {})
