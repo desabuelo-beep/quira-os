@@ -119,7 +119,7 @@ def render() -> None:
 
     c1, c2, c3 = st.columns(3)
     with c1:
-        if st.button("🔮 Analizar con IA", use_container_width=True, type="primary"):
+        if st.button("🔮 Analizar con IA", use_container_width=True, type="primary", key="brecha_ia"):
             st.session_state["page"] = "sentinel"
             st.session_state["sentinel_pregunta_auto"] = (
                 f"Al corte de abril 2026, el cumplimiento institucional de Montecristi es {score:.1f}%. "
@@ -128,10 +128,10 @@ def render() -> None:
             )
             st.rerun()
     with c2:
-        if st.button("⚡ Ver pulso institucional", use_container_width=True):
+        if st.button("⚡ Ver pulso institucional", use_container_width=True, key="brecha_pulso"):
             st.session_state["page"] = "pulso"
             st.rerun()
     with c3:
-        if st.button("🎯 Ver metas del plan cantonal", use_container_width=True):
+        if st.button("🎯 Ver metas del plan cantonal", use_container_width=True, key="brecha_metas"):
             st.session_state["page"] = "metas"
             st.rerun()

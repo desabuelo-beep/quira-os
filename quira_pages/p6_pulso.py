@@ -135,7 +135,7 @@ def render() -> None:
     st.markdown("---")
     c1, c2, c3 = st.columns(3)
     with c1:
-        if st.button("🔮 ¿Qué hacemos esta semana?", use_container_width=True, type="primary"):
+        if st.button("🔮 ¿Qué hacemos esta semana?", use_container_width=True, type="primary", key="pulso_sentinel"):
             st.session_state["page"] = "sentinel"
             st.session_state["sentinel_pregunta_auto"] = (
                 f"Soy el alcalde de Montecristi. Al corte de abril el cumplimiento institucional es "
@@ -144,10 +144,10 @@ def render() -> None:
             )
             st.rerun()
     with c2:
-        if st.button("📊 Ver causas (brechas)", use_container_width=True):
+        if st.button("📊 Ver causas (brechas)", use_container_width=True, key="pulso_brecha"):
             st.session_state["page"] = "brecha"
             st.rerun()
     with c3:
-        if st.button("🎯 Ver metas del plan cantonal", use_container_width=True):
+        if st.button("🎯 Ver metas del plan cantonal", use_container_width=True, key="pulso_metas"):
             st.session_state["page"] = "metas"
             st.rerun()
