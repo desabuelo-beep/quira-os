@@ -1,0 +1,1827 @@
+{
+ "env_gov.py": [
+  {
+   "line": 144,
+   "terms": "SAT",
+   "alt": "Alerta de reincidencia",
+   "risk": "ALTO",
+   "snippet": "Alertas y Riesgos SAT"
+  },
+  {
+   "line": 470,
+   "terms": "IFE",
+   "alt": "—",
+   "risk": "ALTO",
+   "snippet": "Metas PDOT · IFE"
+  },
+  {
+   "line": 471,
+   "terms": "SAT",
+   "alt": "Alerta de reincidencia",
+   "risk": "ALTO",
+   "snippet": "Alertas y Riesgos SAT"
+  }
+ ],
+ "env_ops.py": [
+  {
+   "line": 150,
+   "terms": "Gold Master",
+   "alt": "motor / sistema canonico",
+   "risk": "ALTO",
+   "snippet": "**📋 Gold Master Governance Layer**"
+  },
+  {
+   "line": 151,
+   "terms": "ICPI, TGI",
+   "alt": "Cumplimiento institucional",
+   "risk": "ALTO",
+   "snippet": "Motor metodológico TGI/ICPI/D1-D5 — Trazabilidad y versionado"
+  },
+  {
+   "line": 216,
+   "terms": "Gold Master, v5.5",
+   "alt": "motor / sistema canonico",
+   "risk": "ALTO",
+   "snippet": "**Estado Gold Master v5.5 (canónico activo) — Hojas clave**"
+  },
+  {
+   "line": 50,
+   "terms": "Gold Master",
+   "alt": "motor / sistema canonico",
+   "risk": "ALTO",
+   "snippet": "📥 Ingesta Mensual (Gold Master)"
+  },
+  {
+   "line": 96,
+   "terms": "Gold Master",
+   "alt": "motor / sistema canonico",
+   "risk": "ALTO",
+   "snippet": "Gold Master"
+  },
+  {
+   "line": 96,
+   "terms": "v5.5",
+   "alt": "QUIRA Intelligence v1.0",
+   "risk": "ALTO",
+   "snippet": "H73_OUTPUT_API v5.5+ · validación analítica Dylus Lab"
+  },
+  {
+   "line": 355,
+   "terms": "Gold Master",
+   "alt": "motor / sistema canonico",
+   "risk": "ALTO",
+   "snippet": "📋 Gold Master"
+  },
+  {
+   "line": 28,
+   "terms": "Supabase",
+   "alt": "registros institucionales",
+   "risk": "ALTO",
+   "snippet": "Invalida el cache y carga datos frescos desde Supabase/JSON"
+  },
+  {
+   "line": 170,
+   "terms": "ICPI, TGI",
+   "alt": "Cumplimiento institucional",
+   "risk": "ALTO",
+   "snippet": "TGI/ICPI"
+  },
+  {
+   "line": 209,
+   "terms": "Gold Master",
+   "alt": "motor / sistema canonico",
+   "risk": "ALTO",
+   "snippet": "Gold Master xlsx no disponible en este entorno — mostrando datos del ..."
+  },
+  {
+   "line": 211,
+   "terms": "Gold Master, gm_snapshot",
+   "alt": "motor / sistema canonico",
+   "risk": "ALTO",
+   "snippet": "Gold Master no disponible. Verifica que `data/gm_snapshot.json` esté ..."
+  },
+  {
+   "line": 250,
+   "terms": "Gold Master",
+   "alt": "motor / sistema canonico",
+   "risk": "ALTO",
+   "snippet": "**Changelog Gold Master**"
+  },
+  {
+   "line": 208,
+   "terms": "ICPI",
+   "alt": "Cumplimiento institucional",
+   "risk": "BAJO",
+   "snippet": "ICPI"
+  }
+ ],
+ "m2_alertas.py": [
+  {
+   "line": 63,
+   "terms": "ICPI, SAT-",
+   "alt": "Cumplimiento institucional",
+   "risk": "ALTO",
+   "snippet": "Trayectoria institucional: ICPI · Ejecución Presupuestaria (D3) · SAT..."
+  },
+  {
+   "line": 136,
+   "terms": "ICPI",
+   "alt": "Cumplimiento institucional",
+   "risk": "ALTO",
+   "snippet": "ICPI (%)"
+  },
+  {
+   "line": 136,
+   "terms": "SAT-",
+   "alt": "Alerta de reincidencia",
+   "risk": "BAJO",
+   "snippet": "SAT-IV"
+  },
+  {
+   "line": 270,
+   "terms": "ICPI, SAT-III",
+   "alt": "Cumplimiento institucional",
+   "risk": "ALTO",
+   "snippet": "<div style='background:#111827;border-left:3px solid #00D4FF..."
+  },
+  {
+   "line": 40,
+   "terms": "SAT",
+   "alt": "Alerta de reincidencia",
+   "risk": "ALTO",
+   "snippet": "🚨 Señales SAT Activas"
+  },
+  {
+   "line": 91,
+   "terms": "ICPI",
+   "alt": "Cumplimiento institucional",
+   "risk": "ALTO",
+   "snippet": "ICPI último período"
+  },
+  {
+   "line": 94,
+   "terms": "ICPI",
+   "alt": "Cumplimiento institucional",
+   "risk": "ALTO",
+   "snippet": "Tendencia ICPI"
+  },
+  {
+   "line": 98,
+   "terms": "SAT",
+   "alt": "Alerta de reincidencia",
+   "risk": "ALTO",
+   "snippet": "<div style='text-align:center'><div style='font-size:0.75rem;color:#9..."
+  },
+  {
+   "line": 251,
+   "terms": "ICPI",
+   "alt": "Cumplimiento institucional",
+   "risk": "ALTO",
+   "snippet": "Trayectoria ICPI — Períodos registrados"
+  },
+  {
+   "line": 243,
+   "terms": "ICPI",
+   "alt": "Cumplimiento institucional",
+   "risk": "ALTO",
+   "snippet": "ICPI (%)"
+  },
+  {
+   "line": 49,
+   "terms": "SAT",
+   "alt": "Alerta de reincidencia",
+   "risk": "ALTO",
+   "snippet": "SAT no disponible:"
+  },
+  {
+   "line": 252,
+   "terms": "ICPI",
+   "alt": "Cumplimiento institucional",
+   "risk": "ALTO",
+   "snippet": "ICPI (%)"
+  }
+ ],
+ "p07_transparencia.py": [
+  {
+   "line": 651,
+   "terms": "Neo4j",
+   "alt": "—",
+   "risk": "ALTO",
+   "snippet": "🔴 Datos en vivo · Neo4j"
+  },
+  {
+   "line": 658,
+   "terms": "Neo4j",
+   "alt": "—",
+   "risk": "ALTO",
+   "snippet": "**Datos en proceso de carga.** El circuito está definido — los valore..."
+  }
+ ],
+ "p10_inversion.py": [
+  {
+   "line": 189,
+   "terms": "PSG",
+   "alt": "Presupuesto con enfoque de genero",
+   "risk": "ALTO",
+   "snippet": "<div class=\"grid-2\" style=\"margin-top:16px\">   <div style=\"backgroun..."
+  },
+  {
+   "line": 165,
+   "terms": "SIAP-ICPI, ICPI",
+   "alt": "—",
+   "risk": "ALTO",
+   "snippet": "<div style=\"margin-top:12px;font-size:9px;color:var(--muted);     ..."
+  },
+  {
+   "line": 245,
+   "terms": "IET",
+   "alt": "Equidad territorial",
+   "risk": "ALTO",
+   "snippet": "M · Brecha 2.8× · IET 44.80% · Corte ene–mar 2026"
+  },
+  {
+   "line": 261,
+   "terms": "H99, IET",
+   "alt": "Fuente publica (SIGEF/SERCOP/CPCCS)",
+   "risk": "ALTO",
+   "snippet": "El IET (Equidad Territorial) de Montecristi es 44.80%. La brecha per ..."
+  }
+ ],
+ "p10_territorio.py": [
+  {
+   "line": 252,
+   "terms": "Neo4j",
+   "alt": "—",
+   "risk": "ALTO",
+   "snippet": "🔴 Datos en vivo · Neo4j"
+  }
+ ],
+ "p11_ods.py": [
+  {
+   "line": 284,
+   "terms": "PSG, ISP",
+   "alt": "Presupuesto con enfoque de genero",
+   "risk": "ALTO",
+   "snippet": "<div class=\"card\" style=\"margin-top:16px\">   <div class=\"card-title\"..."
+  },
+  {
+   "line": 54,
+   "terms": "PSG",
+   "alt": "Presupuesto con enfoque de genero",
+   "risk": "ALTO",
+   "snippet": "PSG 12.83% · bloquea Gender Bond $95K · ONU Mujeres"
+  },
+  {
+   "line": 55,
+   "terms": "PSG",
+   "alt": "Presupuesto con enfoque de genero",
+   "risk": "ALTO",
+   "snippet": "PSG ≥ 30% al 2027 · luminarias seguridad Aníbal San Andrés"
+  },
+  {
+   "line": 89,
+   "terms": "H99, IET",
+   "alt": "Fuente publica (SIGEF/SERCOP/CPCCS)",
+   "risk": "ALTO",
+   "snippet": "IET 44.80% · Gov Twin · brecha territorial $40→$217/hab · H99 Q1-2026"
+  },
+  {
+   "line": 90,
+   "terms": "IET",
+   "alt": "Equidad territorial",
+   "risk": "ALTO",
+   "snippet": "IET ≥ 60% · inversión mínima rural $80/hab al 2027"
+  },
+  {
+   "line": 131,
+   "terms": "IGP",
+   "alt": "Participacion ciudadana",
+   "risk": "ALTO",
+   "snippet": "CPCCS · IGP 27.98% · rendición de cuentas · LOTAIP"
+  },
+  {
+   "line": 132,
+   "terms": "IGP",
+   "alt": "Participacion ciudadana",
+   "risk": "ALTO",
+   "snippet": "IGP ≥ 60% · 75 UT activas · RDC validado CPCCS"
+  },
+  {
+   "line": 263,
+   "terms": "H73",
+   "alt": "Fuente publica (SIGEF/SERCOP/CPCCS)",
+   "risk": "ALTO",
+   "snippet": "</div>   <div style=\"display:flex;gap:16px;flex-wrap:wrap;font-siz..."
+  },
+  {
+   "line": 346,
+   "terms": "PSG",
+   "alt": "Presupuesto con enfoque de genero",
+   "risk": "ALTO",
+   "snippet": "El GAD de Montecristi tiene ICODS 87.5% con 14 ODS vinculados al PDOT..."
+  }
+ ],
+ "p12_cadena.py": [
+  {
+   "line": 161,
+   "terms": "SAT-0",
+   "alt": "Alerta de reincidencia",
+   "risk": "ALTO",
+   "snippet": "<div class=\"card\" style=\"margin-bottom:16px\">   <div class=\"card-tit..."
+  },
+  {
+   "line": 268,
+   "terms": "IED, SAT-0",
+   "alt": "Eficiencia directiva",
+   "risk": "ALTO",
+   "snippet": "<div class=\"grid-2\" style=\"margin-top:16px\">   <div style=\"backgroun..."
+  },
+  {
+   "line": 20,
+   "terms": "SAT-0",
+   "alt": "Alerta de reincidencia",
+   "risk": "ALTO",
+   "snippet": "SAT-0 activa · sin proceso SERCOP publicado"
+  },
+  {
+   "line": 48,
+   "terms": "IGP, SAT-",
+   "alt": "Participacion ciudadana",
+   "risk": "ALTO",
+   "snippet": "Desvío de meta participativa IGP · SAT-V relacionada"
+  },
+  {
+   "line": 238,
+   "terms": "SAT-0",
+   "alt": "Alerta de reincidencia",
+   "risk": "ALTO",
+   "snippet": "<div class=\"card\">   <div class=\"card-title\">⚠️ 4 METAS PDOT SIN CON..."
+  },
+  {
+   "line": 246,
+   "terms": "SIAP-ICPI, ICPI",
+   "alt": "—",
+   "risk": "ALTO",
+   "snippet": "<div class=\"card\" style=\"margin-top:16px\">   <div class=\"card-title\"..."
+  },
+  {
+   "line": 324,
+   "terms": "SAT-0",
+   "alt": "Alerta de reincidencia",
+   "risk": "ALTO",
+   "snippet": "POA → PAC → SERCOP → eSIGEF · SAT-0 activa · 4 cortes · 24 procesos s..."
+  },
+  {
+   "line": 325,
+   "terms": "SAT-0",
+   "alt": "Alerta de reincidencia",
+   "risk": "ALTO",
+   "snippet": "<span class=\"badge badge-red\">🔴 SAT-0 ACTIVA</span>"
+  },
+  {
+   "line": 335,
+   "terms": "SAT-0",
+   "alt": "Alerta de reincidencia",
+   "risk": "ALTO",
+   "snippet": "🔮 Sentinel · Protocolo SAT-0"
+  },
+  {
+   "line": 339,
+   "terms": "SAT-0",
+   "alt": "Alerta de reincidencia",
+   "risk": "ALTO",
+   "snippet": "SAT-0 activa en Montecristi: 4 metas PDOT sin contrato PAC (agua Isab..."
+  }
+ ],
+ "p13_simulador.py": [
+  {
+   "line": 15,
+   "terms": "ISP",
+   "alt": "Salud presupuestaria",
+   "risk": "BAJO",
+   "snippet": "ISP"
+  },
+  {
+   "line": 26,
+   "terms": "IED",
+   "alt": "Eficiencia directiva",
+   "risk": "BAJO",
+   "snippet": "IED"
+  },
+  {
+   "line": 33,
+   "terms": "SAT-0",
+   "alt": "Alerta de reincidencia",
+   "risk": "ALTO",
+   "snippet": "Publicar evidencias PAC · regularizar SAT-0"
+  },
+  {
+   "line": 37,
+   "terms": "IGP",
+   "alt": "Participacion ciudadana",
+   "risk": "BAJO",
+   "snippet": "IGP"
+  },
+  {
+   "line": 48,
+   "terms": "IOC",
+   "alt": "Opacidad informativa",
+   "risk": "BAJO",
+   "snippet": "IOC"
+  },
+  {
+   "line": 59,
+   "terms": "IET",
+   "alt": "Equidad territorial",
+   "risk": "BAJO",
+   "snippet": "IET"
+  },
+  {
+   "line": 70,
+   "terms": "PSG",
+   "alt": "Presupuesto con enfoque de genero",
+   "risk": "BAJO",
+   "snippet": "PSG"
+  },
+  {
+   "line": 361,
+   "terms": "IET",
+   "alt": "Equidad territorial",
+   "risk": "ALTO",
+   "snippet": "<div style=\"margin-bottom:20px\">   <div style=\"font-size:11px;font-w..."
+  },
+  {
+   "line": 487,
+   "terms": "Gold Master, SIAP-ICPI, ICPI",
+   "alt": "motor / sistema canonico",
+   "risk": "ALTO",
+   "snippet": "<div style=\"display:flex;justify-content:space-between;align-items:f..."
+  },
+  {
+   "line": 530,
+   "terms": "Gold Master",
+   "alt": "motor / sistema canonico",
+   "risk": "ALTO",
+   "snippet": "<div style=\"background:rgba(0,212,255,.05);border:1px solid rgba(0,2..."
+  },
+  {
+   "line": 540,
+   "terms": "Gold Master",
+   "alt": "motor / sistema canonico",
+   "risk": "ALTO",
+   "snippet": "<div style=\"background:rgba(255,77,109,.05);border:1px solid rgba(25..."
+  },
+  {
+   "line": 310,
+   "terms": "ISP",
+   "alt": "Salud presupuestaria",
+   "risk": "ALTO",
+   "snippet": "🔴 Solo ISP"
+  },
+  {
+   "line": 311,
+   "terms": "ISP, IED",
+   "alt": "Salud presupuestaria",
+   "risk": "ALTO",
+   "snippet": "⚡ ISP + IED"
+  },
+  {
+   "line": 311,
+   "terms": "ISP",
+   "alt": "Salud presupuestaria",
+   "risk": "ALTO",
+   "snippet": "ISP + regularizas cadena PAC"
+  },
+  {
+   "line": 418,
+   "terms": "SIAP-ICPI, ICPI",
+   "alt": "—",
+   "risk": "ALTO",
+   "snippet": "<div style=\"margin-top:8px;padding:8px 10px;background:rgba(255,77,1..."
+  }
+ ],
+ "p14_eficiencia.py": [
+  {
+   "line": 123,
+   "terms": "IED",
+   "alt": "Eficiencia directiva",
+   "risk": "ALTO",
+   "snippet": "<div class=\"grid-2\" style=\"margin-top:16px\">   <div style=\"backgroun..."
+  },
+  {
+   "line": 15,
+   "terms": "ISP",
+   "alt": "Salud presupuestaria",
+   "risk": "ALTO",
+   "snippet": "ISP 14.58% · coactivas pendientes · 5 sin SHA-256"
+  },
+  {
+   "line": 18,
+   "terms": "IGP",
+   "alt": "Participacion ciudadana",
+   "risk": "ALTO",
+   "snippet": "IGP 27.98% · 2 parroquias sin voz activa"
+  },
+  {
+   "line": 36,
+   "terms": "SAT",
+   "alt": "Alerta de reincidencia",
+   "risk": "ALTO",
+   "snippet": "<span style=\"font-size:8px;font-weight:700;color:var(--red);backgroun..."
+  },
+  {
+   "line": 85,
+   "terms": "IED",
+   "alt": "Eficiencia directiva",
+   "risk": "ALTO",
+   "snippet": "<span style=\"font-size:18px\">%</span></div>     <div style=\"font-size..."
+  },
+  {
+   "line": 112,
+   "terms": "IED",
+   "alt": "Eficiencia directiva",
+   "risk": "ALTO",
+   "snippet": "<div class=\"card\">   <div class=\"card-title\">📋 RANKING 12 DIRECCIONE..."
+  },
+  {
+   "line": 115,
+   "terms": "SIAP-ICPI, ICPI, IED, SAT",
+   "alt": "—",
+   "risk": "ALTO",
+   "snippet": "<div style=\"font-size:9px;color:var(--muted);margin-top:8px;paddin..."
+  },
+  {
+   "line": 165,
+   "terms": "IED",
+   "alt": "Eficiencia directiva",
+   "risk": "ALTO",
+   "snippet": "Ranking 12 Direcciones · IED"
+  },
+  {
+   "line": 166,
+   "terms": "IED",
+   "alt": "Eficiencia directiva",
+   "risk": "ALTO",
+   "snippet": "IED Global"
+  },
+  {
+   "line": 176,
+   "terms": "IED",
+   "alt": "Eficiencia directiva",
+   "risk": "ALTO",
+   "snippet": "🔮 Sentinel · Plan 90 días IED"
+  },
+  {
+   "line": 179,
+   "terms": "IED",
+   "alt": "Eficiencia directiva",
+   "risk": "ALTO",
+   "snippet": "El IED de Montecristi es 33.99%. Las 3 direcciones más críticas son D..."
+  },
+  {
+   "line": 74,
+   "terms": "IED",
+   "alt": "Eficiencia directiva",
+   "risk": "BAJO",
+   "snippet": "IED"
+  }
+ ],
+ "p16_confianza.py": [
+  {
+   "line": 135,
+   "terms": "IGP",
+   "alt": "Participacion ciudadana",
+   "risk": "BAJO",
+   "snippet": "IGP"
+  }
+ ],
+ "p16_gobernanza.py": [
+  {
+   "line": 210,
+   "terms": "ICPI",
+   "alt": "Cumplimiento institucional",
+   "risk": "ALTO",
+   "snippet": "%</div>     <div style=\"font-size:8px;color:var(--muted)\">ICPI Verifi..."
+  },
+  {
+   "line": 289,
+   "terms": "IGP",
+   "alt": "Participacion ciudadana",
+   "risk": "ALTO",
+   "snippet": "fichas · IGP ref 2025:"
+  },
+  {
+   "line": 289,
+   "terms": "SAT-",
+   "alt": "Alerta de reincidencia",
+   "risk": "ALTO",
+   "snippet": "% · RDC 2026: en preparación (informe jun-2026) · SAT-V: Sin señal"
+  },
+  {
+   "line": 309,
+   "terms": "H20b, IGP",
+   "alt": "Fuente publica (SIGEF/SERCOP/CPCCS)",
+   "risk": "ALTO",
+   "snippet": "<span style=\"font-size:16px\">%</span></div>     <div style=\"font-size..."
+  },
+  {
+   "line": 432,
+   "terms": "H20b, IGP",
+   "alt": "Fuente publica (SIGEF/SERCOP/CPCCS)",
+   "risk": "ALTO",
+   "snippet": "<div style=\"background:rgba(255,255,255,.03);border:1px solid rgba(2..."
+  },
+  {
+   "line": 482,
+   "terms": "SAT-",
+   "alt": "Alerta de reincidencia",
+   "risk": "ALTO",
+   "snippet": "<div style=\"background:rgba(0,212,255,.04);border:1px solid rgba(0,2..."
+  },
+  {
+   "line": 520,
+   "terms": "ICPI",
+   "alt": "Cumplimiento institucional",
+   "risk": "ALTO",
+   "snippet": "<div class=\"card\" style=\"margin-bottom:16px\">   <div class=\"card-tit..."
+  },
+  {
+   "line": 531,
+   "terms": "ICPI",
+   "alt": "Cumplimiento institucional",
+   "risk": "ALTO",
+   "snippet": "<div style=\"margin-top:8px;padding:8px 10px;               backgro..."
+  },
+  {
+   "line": 542,
+   "terms": "IFE",
+   "alt": "—",
+   "risk": "ALTO",
+   "snippet": "<div style=\"background:rgba(0,224,150,.04);border:1px solid rgba(0,2..."
+  },
+  {
+   "line": 669,
+   "terms": "H10c",
+   "alt": "Fuente publica (SIGEF/SERCOP/CPCCS)",
+   "risk": "ALTO",
+   "snippet": "<div class=\"card\" style=\"margin-bottom:16px\">   <div class=\"card-tit..."
+  },
+  {
+   "line": 277,
+   "terms": "IGP",
+   "alt": "Participacion ciudadana",
+   "risk": "BAJO",
+   "snippet": "IGP"
+  },
+  {
+   "line": 465,
+   "terms": "IGP",
+   "alt": "Participacion ciudadana",
+   "risk": "ALTO",
+   "snippet": "% vs PP2025). El IGP referencia 2025 es"
+  },
+  {
+   "line": 738,
+   "terms": "IFE",
+   "alt": "—",
+   "risk": "ALTO",
+   "snippet": "La RDC 2026 del GAD de Montecristi debe presentarse ante el CPCCS en ..."
+  },
+  {
+   "line": 740,
+   "terms": "ICPI",
+   "alt": "Cumplimiento institucional",
+   "risk": "ALTO",
+   "snippet": "sin verificar. La brecha ICM-ICPI histórica promedia 30 puntos. Los ..."
+  }
+ ],
+ "p17_rdc.py": [
+  {
+   "line": 35,
+   "terms": "ISP",
+   "alt": "Salud presupuestaria",
+   "risk": "ALTO",
+   "snippet": "ISP regularizado ≥ 25% (avance) antes de RDC"
+  },
+  {
+   "line": 38,
+   "terms": "SAT-0",
+   "alt": "Alerta de reincidencia",
+   "risk": "ALTO",
+   "snippet": "4 metas SAT-0 regularizadas (PAC + SHA-256)"
+  },
+  {
+   "line": 39,
+   "terms": "IFE",
+   "alt": "—",
+   "risk": "ALTO",
+   "snippet": "IFE-A actualizado · 48/66 promesas con estado Q2"
+  },
+  {
+   "line": 44,
+   "terms": "IOC",
+   "alt": "Opacidad informativa",
+   "risk": "ALTO",
+   "snippet": "IOC < 10% (actual 17.71%) · reducir opacidad"
+  },
+  {
+   "line": 46,
+   "terms": "PSG",
+   "alt": "Presupuesto con enfoque de genero",
+   "risk": "ALTO",
+   "snippet": "PSG ≥ 20% documentado y certificado (actual 12.83%)"
+  },
+  {
+   "line": 152,
+   "terms": "Neo4j",
+   "alt": "—",
+   "risk": "ALTO",
+   "snippet": "<span style=\"font-size:8px;color:var(--cyan);background:rgba(0,212,25..."
+  },
+  {
+   "line": 59,
+   "terms": "SAT-0",
+   "alt": "Alerta de reincidencia",
+   "risk": "ALTO",
+   "snippet": "Regularizar SAT-0: 4 metas PAC + 24 SHA-256"
+  }
+ ],
+ "p18_cooperacion.py": [
+  {
+   "line": 44,
+   "terms": "PSG",
+   "alt": "Presupuesto con enfoque de genero",
+   "risk": "BAJO",
+   "snippet": "PSG"
+  },
+  {
+   "line": 45,
+   "terms": "ISP",
+   "alt": "Salud presupuestaria",
+   "risk": "BAJO",
+   "snippet": "ISP"
+  },
+  {
+   "line": 46,
+   "terms": "IGP",
+   "alt": "Participacion ciudadana",
+   "risk": "BAJO",
+   "snippet": "IGP"
+  },
+  {
+   "line": 47,
+   "terms": "IOC",
+   "alt": "Opacidad informativa",
+   "risk": "BAJO",
+   "snippet": "IOC"
+  },
+  {
+   "line": 48,
+   "terms": "IET",
+   "alt": "Equidad territorial",
+   "risk": "BAJO",
+   "snippet": "IET"
+  },
+  {
+   "line": 49,
+   "terms": "IED",
+   "alt": "Eficiencia directiva",
+   "risk": "BAJO",
+   "snippet": "IED"
+  },
+  {
+   "line": 51,
+   "terms": "ITAM",
+   "alt": "—",
+   "risk": "BAJO",
+   "snippet": "ITAM"
+  },
+  {
+   "line": 73,
+   "terms": "PSG",
+   "alt": "Presupuesto con enfoque de genero",
+   "risk": "BAJO",
+   "snippet": "PSG"
+  },
+  {
+   "line": 74,
+   "terms": "ISP",
+   "alt": "Salud presupuestaria",
+   "risk": "BAJO",
+   "snippet": "ISP"
+  },
+  {
+   "line": 75,
+   "terms": "IGP",
+   "alt": "Participacion ciudadana",
+   "risk": "BAJO",
+   "snippet": "IGP"
+  },
+  {
+   "line": 76,
+   "terms": "IOC",
+   "alt": "Opacidad informativa",
+   "risk": "BAJO",
+   "snippet": "IOC"
+  },
+  {
+   "line": 77,
+   "terms": "IET",
+   "alt": "Equidad territorial",
+   "risk": "BAJO",
+   "snippet": "IET"
+  },
+  {
+   "line": 78,
+   "terms": "IED",
+   "alt": "Eficiencia directiva",
+   "risk": "BAJO",
+   "snippet": "IED"
+  },
+  {
+   "line": 80,
+   "terms": "ITAM",
+   "alt": "—",
+   "risk": "BAJO",
+   "snippet": "ITAM"
+  },
+  {
+   "line": 151,
+   "terms": "Supabase",
+   "alt": "registros institucionales",
+   "risk": "ALTO",
+   "snippet": "[p18] Supabase no disponible:"
+  },
+  {
+   "line": 606,
+   "terms": "ISP",
+   "alt": "Salud presupuestaria",
+   "risk": "BAJO",
+   "snippet": "ISP"
+  },
+  {
+   "line": 607,
+   "terms": "PSG",
+   "alt": "Presupuesto con enfoque de genero",
+   "risk": "BAJO",
+   "snippet": "PSG"
+  },
+  {
+   "line": 73,
+   "terms": "PSG",
+   "alt": "Presupuesto con enfoque de genero",
+   "risk": "BAJO",
+   "snippet": "PSG"
+  },
+  {
+   "line": 74,
+   "terms": "ISP",
+   "alt": "Salud presupuestaria",
+   "risk": "BAJO",
+   "snippet": "ISP"
+  },
+  {
+   "line": 75,
+   "terms": "IGP",
+   "alt": "Participacion ciudadana",
+   "risk": "BAJO",
+   "snippet": "IGP"
+  },
+  {
+   "line": 76,
+   "terms": "IOC",
+   "alt": "Opacidad informativa",
+   "risk": "BAJO",
+   "snippet": "IOC"
+  },
+  {
+   "line": 77,
+   "terms": "IET",
+   "alt": "Equidad territorial",
+   "risk": "BAJO",
+   "snippet": "IET"
+  },
+  {
+   "line": 78,
+   "terms": "IED",
+   "alt": "Eficiencia directiva",
+   "risk": "BAJO",
+   "snippet": "IED"
+  },
+  {
+   "line": 79,
+   "terms": "IFE",
+   "alt": "—",
+   "risk": "BAJO",
+   "snippet": "IFE-A"
+  },
+  {
+   "line": 80,
+   "terms": "ITAM",
+   "alt": "—",
+   "risk": "BAJO",
+   "snippet": "ITAM"
+  },
+  {
+   "line": 534,
+   "terms": "PSG",
+   "alt": "Presupuesto con enfoque de genero",
+   "risk": "BAJO",
+   "snippet": "PSG"
+  },
+  {
+   "line": 535,
+   "terms": "ISP",
+   "alt": "Salud presupuestaria",
+   "risk": "BAJO",
+   "snippet": "ISP"
+  },
+  {
+   "line": 536,
+   "terms": "ITAM",
+   "alt": "—",
+   "risk": "BAJO",
+   "snippet": "ITAM"
+  },
+  {
+   "line": 537,
+   "terms": "IGP",
+   "alt": "Participacion ciudadana",
+   "risk": "BAJO",
+   "snippet": "IGP"
+  }
+ ],
+ "p19_genero.py": [
+  {
+   "line": 747,
+   "terms": "PSG",
+   "alt": "Presupuesto con enfoque de genero",
+   "risk": "ALTO",
+   "snippet": "<div class=\"grid-2\">   <div style=\"background:rgba(124,92,252,.06);b..."
+  },
+  {
+   "line": 60,
+   "terms": "H73, PSG",
+   "alt": "Fuente publica (SIGEF/SERCOP/CPCCS)",
+   "risk": "ALTO",
+   "snippet": "Aníbal San Andrés · Gov Twin aprobado · BLOQUEADO: PSG 12.83% < umbra..."
+  },
+  {
+   "line": 94,
+   "terms": "PSG",
+   "alt": "Presupuesto con enfoque de genero",
+   "risk": "ALTO",
+   "snippet": "Políticas y legislación género · PSG"
+  },
+  {
+   "line": 183,
+   "terms": "PSG",
+   "alt": "Presupuesto con enfoque de genero",
+   "risk": "ALTO",
+   "snippet": "Gov Twin activo · requiere PSG ≥30% para Gender Bond"
+  },
+  {
+   "line": 242,
+   "terms": "SAT",
+   "alt": "Alerta de reincidencia",
+   "risk": "ALTO",
+   "snippet": "4 planes de acción al 2027 · Q1-2026: 0 iniciados · SAT ambiental activa"
+  },
+  {
+   "line": 572,
+   "terms": "PSG",
+   "alt": "Presupuesto con enfoque de genero",
+   "risk": "ALTO",
+   "snippet": "<span style=\"font-size:18px\">%</span></div>     <div style=\"font-size..."
+  },
+  {
+   "line": 586,
+   "terms": "PSG",
+   "alt": "Presupuesto con enfoque de genero",
+   "risk": "ALTO",
+   "snippet": "<span style=\"font-size:18px\">pts</span></div>     <div style=\"font-si..."
+  },
+  {
+   "line": 593,
+   "terms": "PSG",
+   "alt": "Presupuesto con enfoque de genero",
+   "risk": "ALTO",
+   "snippet": "K</div>     <div style=\"font-size:10px;font-weight:700;color:var(--pu..."
+  },
+  {
+   "line": 614,
+   "terms": "Gold Master, H73, PSG",
+   "alt": "motor / sistema canonico",
+   "risk": "ALTO",
+   "snippet": "indicadores muestran \"Sin dato oficial\"     — valores no disponibles..."
+  },
+  {
+   "line": 691,
+   "terms": "PSG",
+   "alt": "Presupuesto con enfoque de genero",
+   "risk": "ALTO",
+   "snippet": "<div style=\"margin-top:8px;font-size:9px;color:var(--muted)\">     ..."
+  },
+  {
+   "line": 697,
+   "terms": "PSG",
+   "alt": "Presupuesto con enfoque de genero",
+   "risk": "ALTO",
+   "snippet": "<div style=\"background:rgba(124,92,252,.07);border:1px solid rgba(12..."
+  },
+  {
+   "line": 710,
+   "terms": "PSG",
+   "alt": "Presupuesto con enfoque de genero",
+   "risk": "ALTO",
+   "snippet": "puntos</strong>.       Si no se alcanza antes de Q3-2026, el fondo <..."
+  },
+  {
+   "line": 727,
+   "terms": "PSG",
+   "alt": "Presupuesto con enfoque de genero",
+   "risk": "ALTO",
+   "snippet": "<div class=\"card\" style=\"margin-bottom:16px\">   <div class=\"card-tit..."
+  },
+  {
+   "line": 737,
+   "terms": "PSG",
+   "alt": "Presupuesto con enfoque de genero",
+   "risk": "ALTO",
+   "snippet": "<div style=\"margin-top:10px;padding:8px 10px;               backgr..."
+  },
+  {
+   "line": 801,
+   "terms": "PSG",
+   "alt": "Presupuesto con enfoque de genero",
+   "risk": "ALTO",
+   "snippet": "PSG · ODS 5 · Gender Bond · Metas FA"
+  },
+  {
+   "line": 804,
+   "terms": "PSG",
+   "alt": "Presupuesto con enfoque de genero",
+   "risk": "ALTO",
+   "snippet": "<span class=\"badge badge-red\">💜 PSG Ruptura Sistémica</span>"
+  },
+  {
+   "line": 802,
+   "terms": "PSG",
+   "alt": "Presupuesto con enfoque de genero",
+   "risk": "BAJO",
+   "snippet": "PSG"
+  },
+  {
+   "line": 860,
+   "terms": "H10c",
+   "alt": "Fuente publica (SIGEF/SERCOP/CPCCS)",
+   "risk": "ALTO",
+   "snippet": "</div>     <div style=\"font-size:9px;font-weight:700;color:var(--red)..."
+  },
+  {
+   "line": 912,
+   "terms": "H10c",
+   "alt": "Fuente publica (SIGEF/SERCOP/CPCCS)",
+   "risk": "ALTO",
+   "snippet": "<div style=\"background:rgba(0,224,150,.04);border:1px solid rgba(0,2..."
+  },
+  {
+   "line": 549,
+   "terms": "Neo4j",
+   "alt": "—",
+   "risk": "ALTO",
+   "snippet": "🔴 Datos en vivo · Neo4j"
+  },
+  {
+   "line": 565,
+   "terms": "PSG",
+   "alt": "Presupuesto con enfoque de genero",
+   "risk": "BAJO",
+   "snippet": "PSG"
+  },
+  {
+   "line": 821,
+   "terms": "PSG",
+   "alt": "Presupuesto con enfoque de genero",
+   "risk": "ALTO",
+   "snippet": "🔮 Sentinel · Plan reclasificación PSG"
+  },
+  {
+   "line": 825,
+   "terms": "PSG",
+   "alt": "Presupuesto con enfoque de genero",
+   "risk": "ALTO",
+   "snippet": "El PSG de Montecristi es"
+  },
+  {
+   "line": 825,
+   "terms": "PSG",
+   "alt": "Presupuesto con enfoque de genero",
+   "risk": "ALTO",
+   "snippet": "%. El Gender Bond BID Lab $95K y ONU Mujeres $65K están bloqueados po..."
+  }
+ ],
+ "p2_holding.py": [
+  {
+   "line": 933,
+   "terms": "Supabase",
+   "alt": "registros institucionales",
+   "risk": "ALTO",
+   "snippet": "<div style=\"margin-top:16px;padding:10px 12px;background:rgba(255,25..."
+  }
+ ],
+ "p3_congruencias.py": [
+  {
+   "line": 68,
+   "terms": "IFE, SAT-0",
+   "alt": "—",
+   "risk": "ALTO",
+   "snippet": "<div class=\"card\" style=\"margin-bottom:14px;border-left:4px solid va..."
+  },
+  {
+   "line": 145,
+   "terms": "IFE",
+   "alt": "—",
+   "risk": "ALTO",
+   "snippet": "<div style=\"padding:8px 12px;margin-bottom:14px;background:rgba(14,1..."
+  },
+  {
+   "line": 167,
+   "terms": "IFE",
+   "alt": "—",
+   "risk": "ALTO",
+   "snippet": "IFE-A 72.73% mide la promesa → plan (48/66 CNE). El 58.4% incorpora l..."
+  },
+  {
+   "line": 176,
+   "terms": "SAT-0",
+   "alt": "Alerta de reincidencia",
+   "risk": "ALTO",
+   "snippet": "Cadena POA-PAC-SERCOP-eSIGEF · 4 cortes detectados · SAT-0 activo"
+  },
+  {
+   "line": 185,
+   "terms": "H99",
+   "alt": "Fuente publica (SIGEF/SERCOP/CPCCS)",
+   "risk": "ALTO",
+   "snippet": "Isabel Muentes (TPS 77.94, NBI 61.2%) recibe $228K · $40/hab vs $217 ..."
+  },
+  {
+   "line": 225,
+   "terms": "SIAP-ICPI, H16, ICPI, IFE",
+   "alt": "—",
+   "risk": "ALTO",
+   "snippet": "<div style=\"margin-top:16px;font-size:9px;color:rgba(255,255,255,.2)..."
+  }
+ ],
+ "p4_geotwin.py": [
+  {
+   "line": 269,
+   "terms": "PSG",
+   "alt": "Presupuesto con enfoque de genero",
+   "risk": "ALTO",
+   "snippet": "<div style=\"font-size:12px;color:var(--muted);margin-bottom:12px;pad..."
+  },
+  {
+   "line": 329,
+   "terms": "H99",
+   "alt": "Fuente publica (SIGEF/SERCOP/CPCCS)",
+   "risk": "ALTO",
+   "snippet": "</tbody>   </table>   <div style=\"font-size:10px;color:var(--muted);m..."
+  },
+  {
+   "line": 339,
+   "terms": "SIAP-ICPI, H24, ICPI, IET",
+   "alt": "—",
+   "risk": "ALTO",
+   "snippet": "<div style=\"margin-top:16px;font-size:9px;color:rgba(255,255,255,.2)..."
+  }
+ ],
+ "p5_operacion.py": [
+  {
+   "line": 39,
+   "terms": "SIAP-ICPI, ICPI",
+   "alt": "—",
+   "risk": "ALTO",
+   "snippet": "<div class=\"card\">   <div class=\"card-title\">Protocolo de Ingesta · ..."
+  },
+  {
+   "line": 241,
+   "terms": "SAT-0",
+   "alt": "Alerta de reincidencia",
+   "risk": "ALTO",
+   "snippet": "<div class=\"card\">   <div class=\"card-title\">4 tipos de brecha que d..."
+  },
+  {
+   "line": 269,
+   "terms": "H05",
+   "alt": "Fuente publica (SIGEF/SERCOP/CPCCS)",
+   "risk": "ALTO",
+   "snippet": "<div class=\"card\">   <div class=\"card-title\">Flujo de validación QUI..."
+  },
+  {
+   "line": 515,
+   "terms": "SIAP-ICPI, ICPI",
+   "alt": "—",
+   "risk": "ALTO",
+   "snippet": "<div class=\"tech-gate-card\">     <div style=\"font-size:1.8rem;text-a..."
+  }
+ ],
+ "p8_metas.py": [
+  {
+   "line": 252,
+   "terms": "IFE",
+   "alt": "—",
+   "risk": "ALTO",
+   "snippet": "<div class=\"card\" style=\"margin-bottom:16px\">   <div class=\"card-tit..."
+  },
+  {
+   "line": 28,
+   "terms": "SAT",
+   "alt": "Alerta de reincidencia",
+   "risk": "ALTO",
+   "snippet": "SAT activa · Isabel Muentes 1.02%"
+  },
+  {
+   "line": 82,
+   "terms": "PSG",
+   "alt": "Presupuesto con enfoque de genero",
+   "risk": "ALTO",
+   "snippet": "Presupuesto género PSG: 12.83% → 30% al 2027"
+  },
+  {
+   "line": 106,
+   "terms": "ITAM",
+   "alt": "—",
+   "risk": "ALTO",
+   "snippet": "ITAM transparencia municipal: 56% → 75% al 2027"
+  },
+  {
+   "line": 130,
+   "terms": "IFE",
+   "alt": "—",
+   "risk": "ALTO",
+   "snippet": "IFE-A fidelidad: 72.73% · formalizar 18 promesas restantes"
+  },
+  {
+   "line": 245,
+   "terms": "SAT-0",
+   "alt": "Alerta de reincidencia",
+   "risk": "ALTO",
+   "snippet": "</div>     <div style=\"font-size:10px;font-weight:700;color:var(--pur..."
+  },
+  {
+   "line": 295,
+   "terms": "SIAP-ICPI, ICPI",
+   "alt": "—",
+   "risk": "ALTO",
+   "snippet": "<div style=\"font-size:9px;color:var(--muted);margin-top:8px;paddin..."
+  },
+  {
+   "line": 322,
+   "terms": "SAT-0",
+   "alt": "Alerta de reincidencia",
+   "risk": "ALTO",
+   "snippet": "Mirando las metas PDOT 2023-2027 de Montecristi, hay 4 metas críticas..."
+  }
+ ],
+ "p9_sat.py": [
+  {
+   "line": 178,
+   "terms": "ISP, SAT-0",
+   "alt": "Salud presupuestaria",
+   "risk": "ALTO",
+   "snippet": "<div style=\"background:rgba(255,77,109,.08);border:1px solid rgba(25..."
+  },
+  {
+   "line": 209,
+   "terms": "SAT",
+   "alt": "Alerta de reincidencia",
+   "risk": "ALTO",
+   "snippet": "</div>   <div style=\"margin-top:12px;font-size:10px;color:var(--mu..."
+  },
+  {
+   "line": 19,
+   "terms": "ISP",
+   "alt": "Salud presupuestaria",
+   "risk": "ALTO",
+   "snippet": "ISP 14.58% bajo umbral COOTAD 65% · bloquea perfil BDE"
+  },
+  {
+   "line": 28,
+   "terms": "SAT-0",
+   "alt": "Alerta de reincidencia",
+   "risk": "ALTO",
+   "snippet": "4 metas PDOT sin contrato PAC activo · SAT-0"
+  },
+  {
+   "line": 38,
+   "terms": "IOC",
+   "alt": "Opacidad informativa",
+   "risk": "ALTO",
+   "snippet": "IOC 17.71% · LOTAIP parcialmente actualizado"
+  },
+  {
+   "line": 46,
+   "terms": "IGP",
+   "alt": "Participacion ciudadana",
+   "risk": "ALTO",
+   "snippet": "IGP 27.98% · CPCCS V=0 en RDC 2026"
+  },
+  {
+   "line": 241,
+   "terms": "ISP, SAT-0",
+   "alt": "Salud presupuestaria",
+   "risk": "ALTO",
+   "snippet": "El GAD de Montecristi tiene 2 SATs críticas activas: SAT-0 (4 metas s..."
+  }
+ ],
+ "p_cadena_institucional.py": [
+  {
+   "line": 39,
+   "terms": "IFE",
+   "alt": "—",
+   "risk": "ALTO",
+   "snippet": "CNE / IFE"
+  },
+  {
+   "line": 60,
+   "terms": "SAT-0",
+   "alt": "Alerta de reincidencia",
+   "risk": "ALTO",
+   "snippet": "SAT-0 activa"
+  },
+  {
+   "line": 64,
+   "terms": "SAT-0",
+   "alt": "Alerta de reincidencia",
+   "risk": "ALTO",
+   "snippet": "SAT-0 · SERCOP"
+  },
+  {
+   "line": 84,
+   "terms": "IGP",
+   "alt": "Participacion ciudadana",
+   "risk": "ALTO",
+   "snippet": "IGP + PP 2026"
+  },
+  {
+   "line": 103,
+   "terms": "IOC, ITAM",
+   "alt": "Opacidad informativa",
+   "risk": "ALTO",
+   "snippet": "ITAM 56% · IOC 17.71%"
+  },
+  {
+   "line": 307,
+   "terms": "H90",
+   "alt": "Fuente publica (SIGEF/SERCOP/CPCCS)",
+   "risk": "ALTO",
+   "snippet": "<div style=\"font:700 9px/1 Inter,sans-serif;color:rgba(255,255,255,.4..."
+  },
+  {
+   "line": 369,
+   "terms": "IFE",
+   "alt": "—",
+   "risk": "ALTO",
+   "snippet": "📜 CNE / IFE"
+  },
+  {
+   "line": 381,
+   "terms": "IFE",
+   "alt": "—",
+   "risk": "ALTO",
+   "snippet": "<div style=\"font:700 10px/1 Inter,sans-serif;color:rgba(255,255,255,...."
+  },
+  {
+   "line": 393,
+   "terms": "IFE",
+   "alt": "—",
+   "risk": "ALTO",
+   "snippet": "CNE / IFE"
+  },
+  {
+   "line": 413,
+   "terms": "SAT-0",
+   "alt": "Alerta de reincidencia",
+   "risk": "ALTO",
+   "snippet": "<div style=\"font:700 10px/1 Inter,sans-serif;color:rgba(255,255,255,...."
+  },
+  {
+   "line": 428,
+   "terms": "Gold Master, H90",
+   "alt": "motor / sistema canonico",
+   "risk": "ALTO",
+   "snippet": "<div style=\"font:700 10px/1 Inter,sans-serif;color:rgba(255,255,255,...."
+  },
+  {
+   "line": 438,
+   "terms": "IGP",
+   "alt": "Participacion ciudadana",
+   "risk": "ALTO",
+   "snippet": "<div style=\"font:700 10px/1 Inter,sans-serif;color:rgba(255,255,255,...."
+  },
+  {
+   "line": 483,
+   "terms": "Gold Master",
+   "alt": "motor / sistema canonico",
+   "risk": "ALTO",
+   "snippet": "<div style=\"margin-top:12px;font:400 8px/1 JetBrains Mono,monospace;c..."
+  },
+  {
+   "line": 235,
+   "terms": "Gold Master",
+   "alt": "motor / sistema canonico",
+   "risk": "ALTO",
+   "snippet": "verificados con Gold Master"
+  }
+ ],
+ "p_carga.py": [
+  {
+   "line": 62,
+   "terms": "Gold Master, gm_snapshot",
+   "alt": "motor / sistema canonico",
+   "risk": "ALTO",
+   "snippet": "<div class=\"carga-card\"> <div class=\"carga-header\">Guía de carga — 3..."
+  },
+  {
+   "line": 116,
+   "terms": "gm_snapshot",
+   "alt": "—",
+   "risk": "ALTO",
+   "snippet": "<div class=\"carga-header\">Subir gm_snapshot.json</div>"
+  },
+  {
+   "line": 251,
+   "terms": "Supabase",
+   "alt": "registros institucionales",
+   "risk": "ALTO",
+   "snippet": "Aún no hay snapshots registrados en Supabase. Usa la pestaña **Subir ..."
+  },
+  {
+   "line": 308,
+   "terms": "Supabase",
+   "alt": "registros institucionales",
+   "risk": "ALTO",
+   "snippet": "🟢 Supabase (en vivo)"
+  },
+  {
+   "line": 336,
+   "terms": "TGI",
+   "alt": "Gobernanza territorial",
+   "risk": "ALTO",
+   "snippet": "</span> </div> </div>  <div class=\"carga-card\" style=\"margin-top:8px\"..."
+  },
+  {
+   "line": 155,
+   "terms": "TGI",
+   "alt": "Gobernanza territorial",
+   "risk": "ALTO",
+   "snippet": "TGI Score"
+  },
+  {
+   "line": 195,
+   "terms": "Supabase",
+   "alt": "registros institucionales",
+   "risk": "ALTO",
+   "snippet": "Guarda el snapshot en Supabase y lo activa para todos los usuarios."
+  },
+  {
+   "line": 159,
+   "terms": "TGI",
+   "alt": "Gobernanza territorial",
+   "risk": "ALTO",
+   "snippet": "<div class=\"carga-card\" style=\"margin-top:12px\"> <div class=\"carga-h..."
+  },
+  {
+   "line": 225,
+   "terms": "Supabase",
+   "alt": "registros institucionales",
+   "risk": "ALTO",
+   "snippet": "Verifica que Supabase esté configurado en `.streamlit/secrets.toml` c..."
+  }
+ ],
+ "p_command_center.py": [
+  {
+   "line": 121,
+   "terms": "IFE",
+   "alt": "—",
+   "risk": "ALTO",
+   "snippet": "53 de 56 metas en cronograma · IFE-A 72.73%: 48/66 promesas CNE forma..."
+  },
+  {
+   "line": 330,
+   "terms": "SAT",
+   "alt": "Alerta de reincidencia",
+   "risk": "BAJO",
+   "snippet": "SAT"
+  },
+  {
+   "line": 330,
+   "terms": "MMP",
+   "alt": "—",
+   "risk": "BAJO",
+   "snippet": "MMP"
+  },
+  {
+   "line": 333,
+   "terms": "SAT",
+   "alt": "Alerta de reincidencia",
+   "risk": "BAJO",
+   "snippet": "SAT"
+  },
+  {
+   "line": 333,
+   "terms": "MMP",
+   "alt": "—",
+   "risk": "BAJO",
+   "snippet": "MMP"
+  }
+ ],
+ "p_concejo.py": [
+  {
+   "line": 358,
+   "terms": "H90",
+   "alt": "Fuente publica (SIGEF/SERCOP/CPCCS)",
+   "risk": "ALTO",
+   "snippet": "COOTAD Art. 238 · Manual Clasificador Presupuestario 2026 · H90 PRESU..."
+  },
+  {
+   "line": 376,
+   "terms": "Gold Master, TGI",
+   "alt": "motor / sistema canonico",
+   "risk": "ALTO",
+   "snippet": "QUIRA_DOCTRINE_v1.3 · TGI Framework D1-D5 · Gold Master v5.5_TGI"
+  },
+  {
+   "line": 613,
+   "terms": "Gold Master",
+   "alt": "motor / sistema canonico",
+   "risk": "ALTO",
+   "snippet": "<div style=\"margin-top:16px;font:400 8px/1 JetBrains Mono,monospace;c..."
+  },
+  {
+   "line": 327,
+   "terms": "IET",
+   "alt": "Equidad territorial",
+   "risk": "ALTO",
+   "snippet": "(Muy Regresivo) — QUIRA confirma la inequidad territorial. IET parro..."
+  },
+  {
+   "line": 364,
+   "terms": "TGI",
+   "alt": "Gobernanza territorial",
+   "risk": "ALTO",
+   "snippet": "El TGI es"
+  },
+  {
+   "line": 365,
+   "terms": "TGI",
+   "alt": "Gobernanza territorial",
+   "risk": "BAJO",
+   "snippet": "TGI"
+  },
+  {
+   "line": 369,
+   "terms": "TGI",
+   "alt": "Gobernanza territorial",
+   "risk": "ALTO",
+   "snippet": "El TGI crece año tras año y lo confirma el sistema. La legalidad y la..."
+  },
+  {
+   "line": 373,
+   "terms": "TGI",
+   "alt": "Gobernanza territorial",
+   "risk": "ALTO",
+   "snippet": "No defender el número — defender la trayectoria. El TGI"
+  },
+  {
+   "line": 374,
+   "terms": "TGI",
+   "alt": "Gobernanza territorial",
+   "risk": "ALTO",
+   "snippet": "hoy es mejor que el TGI 67 del año pasado y el 57 del anterior. La d..."
+  },
+  {
+   "line": 468,
+   "terms": "TGI",
+   "alt": "Gobernanza territorial",
+   "risk": "ALTO",
+   "snippet": "El TGI es tendencia positiva — no un snapshot estático"
+  },
+  {
+   "line": 194,
+   "terms": "TGI",
+   "alt": "Gobernanza territorial",
+   "risk": "BAJO",
+   "snippet": "TGI"
+  },
+  {
+   "line": 447,
+   "terms": "SAT-III",
+   "alt": "Alerta de reincidencia",
+   "risk": "ALTO",
+   "snippet": "El SAT-III activado no es una falla — es el sistema funcionando. Dete..."
+  },
+  {
+   "line": 470,
+   "terms": "TGI",
+   "alt": "Gobernanza territorial",
+   "risk": "BAJO",
+   "snippet": "TGI"
+  },
+  {
+   "line": 470,
+   "terms": "TGI",
+   "alt": "Gobernanza territorial",
+   "risk": "ALTO",
+   "snippet": "hoy vs TGI 67 hace 12 meses vs TGI 57 hace 24. Eso es una curva de m..."
+  }
+ ],
+ "p_ejecutivo.py": [
+  {
+   "line": 27,
+   "terms": "SAT-0",
+   "alt": "Alerta de reincidencia",
+   "risk": "BAJO",
+   "snippet": "SAT-0"
+  },
+  {
+   "line": 28,
+   "terms": "SAT-I",
+   "alt": "Alerta de reincidencia",
+   "risk": "BAJO",
+   "snippet": "SAT-I"
+  },
+  {
+   "line": 29,
+   "terms": "SAT-II",
+   "alt": "Alerta de reincidencia",
+   "risk": "BAJO",
+   "snippet": "SAT-II"
+  },
+  {
+   "line": 30,
+   "terms": "SAT-III",
+   "alt": "Alerta de reincidencia",
+   "risk": "BAJO",
+   "snippet": "SAT-III"
+  },
+  {
+   "line": 31,
+   "terms": "SAT-",
+   "alt": "Alerta de reincidencia",
+   "risk": "BAJO",
+   "snippet": "SAT-IV"
+  },
+  {
+   "line": 32,
+   "terms": "SAT-",
+   "alt": "Alerta de reincidencia",
+   "risk": "BAJO",
+   "snippet": "SAT-V"
+  },
+  {
+   "line": 33,
+   "terms": "SAT-",
+   "alt": "Alerta de reincidencia",
+   "risk": "BAJO",
+   "snippet": "SAT-VI"
+  },
+  {
+   "line": 34,
+   "terms": "SAT-",
+   "alt": "Alerta de reincidencia",
+   "risk": "BAJO",
+   "snippet": "SAT-VII"
+  },
+  {
+   "line": 35,
+   "terms": "SAT-",
+   "alt": "Alerta de reincidencia",
+   "risk": "BAJO",
+   "snippet": "SAT-VIII"
+  },
+  {
+   "line": 38,
+   "terms": "SAT-III",
+   "alt": "Alerta de reincidencia",
+   "risk": "BAJO",
+   "snippet": "SAT-III"
+  },
+  {
+   "line": 39,
+   "terms": "SAT-",
+   "alt": "Alerta de reincidencia",
+   "risk": "BAJO",
+   "snippet": "SAT-IV"
+  },
+  {
+   "line": 40,
+   "terms": "SAT-",
+   "alt": "Alerta de reincidencia",
+   "risk": "BAJO",
+   "snippet": "SAT-V"
+  },
+  {
+   "line": 122,
+   "terms": "v6.0",
+   "alt": "QUIRA Intelligence v1.0",
+   "risk": "BAJO",
+   "snippet": "v6.0"
+  }
+ ],
+ "p_sentinel_hub.py": [
+  {
+   "line": 173,
+   "terms": "TGI",
+   "alt": "Gobernanza territorial",
+   "risk": "ALTO",
+   "snippet": "✓ Meta TGI 2027 alcanzada."
+  },
+  {
+   "line": 200,
+   "terms": "ICPI",
+   "alt": "Cumplimiento institucional",
+   "risk": "ALTO",
+   "snippet": "%</b>       </span>       <span style=\"font-size:10px;color:var(--mut..."
+  },
+  {
+   "line": 210,
+   "terms": "TGI",
+   "alt": "Gobernanza territorial",
+   "risk": "ALTO",
+   "snippet": "%</b> del mandato.     TGI territorial: <b>"
+  },
+  {
+   "line": 281,
+   "terms": "IET",
+   "alt": "Equidad territorial",
+   "risk": "ALTO",
+   "snippet": "<div style=\"margin-top:12px;font-size:9px;color:var(--muted);     ..."
+  },
+  {
+   "line": 326,
+   "terms": "TGI",
+   "alt": "Gobernanza territorial",
+   "risk": "ALTO",
+   "snippet": "</div>   <div style=\"margin-top:10px;background:rgba(255,77,109,.0..."
+  },
+  {
+   "line": 434,
+   "terms": "Gold Master",
+   "alt": "motor / sistema canonico",
+   "risk": "ALTO",
+   "snippet": "</div>   <div style=\"margin-top:10px;display:flex;gap:5px;flex-wra..."
+  },
+  {
+   "line": 582,
+   "terms": "SIAP-ICPI, ICPI, TGI",
+   "alt": "—",
+   "risk": "ALTO",
+   "snippet": "<div class=\"card\">   <div class=\"bloque-label\" style=\"margin-bottom:..."
+  },
+  {
+   "line": 172,
+   "terms": "TGI",
+   "alt": "Gobernanza territorial",
+   "risk": "ALTO",
+   "snippet": "pts</b> para meta TGI 2027 ("
+  },
+  {
+   "line": 540,
+   "terms": "Gold Master",
+   "alt": "motor / sistema canonico",
+   "risk": "ALTO",
+   "snippet": "SENTINEL API no responde en `localhost:8100`. Datos institucionales d..."
+  },
+  {
+   "line": 549,
+   "terms": "TGI",
+   "alt": "Gobernanza territorial",
+   "risk": "ALTO",
+   "snippet": "· TGI"
+  },
+  {
+   "line": 185,
+   "terms": "TGI",
+   "alt": "Gobernanza territorial",
+   "risk": "ALTO",
+   "snippet": "TGI Territorial"
+  },
+  {
+   "line": 585,
+   "terms": "v5.4",
+   "alt": "QUIRA Intelligence v1.0",
+   "risk": "BAJO",
+   "snippet": "v5.4"
+  },
+  {
+   "line": 242,
+   "terms": "IET",
+   "alt": "Equidad territorial",
+   "risk": "BAJO",
+   "snippet": "IET"
+  }
+ ]
+}
