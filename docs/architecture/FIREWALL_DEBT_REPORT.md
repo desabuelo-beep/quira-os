@@ -11,6 +11,9 @@ Generador: [`scripts/dev/firewall_audit.py`](../../scripts/dev/firewall_audit.py
 - **BAJO (63)** = el string ES la clave bare (`.get("IGP")`) → acceso a dato interno, no se renderiza.
 - El escáner usa **AST**: excluye docstrings y comentarios (capa interna permitida); distingue strings visibles de claves. NO marca términos PÚBLICOS legítimos (SIGEF/eSIGEF/SERCOP/CPCCS/LOTAIP/COOTAD/PDOT/ODS/NBI/CNE/RDC).
 
+## 📉 Progreso (re-medido por el escáner · no estimado)
+- **2026-06-17 · d12 purgado:** `p19_genero` **22 → 0** · **deuda repo 190 → 168** (-22). Ola 1 (d05·d08·d12) cerrada.
+
 ## ✅ Validación: las pantallas convergidas están LIMPIAS
 `p_ejecutivo.py` (d06) y `p16_confianza.py` (d08) salen **0 ALTO** (solo clave interna). **El patrón de convergencia deja el firewall impecable** — lo que purgamos, queda purgado.
 
