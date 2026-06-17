@@ -1,7 +1,7 @@
 """
-QUIRA OS v0.1 — P-16 Confianza Ciudadana
-IGP 27.98% · Participación parroquial · CPCCS · Índice de Confianza
-FUENTE DATOS: SIAP-ICPI_GOLD_MASTER_v4.1 (H73_OUTPUT_API → IGP=27.98%)
+QUIRA OS — P-16 Participación Ciudadana (cajón d08)
+Headline = participación del snapshot vivo (cargar_gm_snapshot · vectores.igp = 48.33%), coherente con la tarjeta L1.
+Mecanismos = hechos cuantitativos reales (actas PP, CPCCS, veedurías): textura cualitativa, NO aritmética del headline.
 Scores de mecanismos derivados de hechos cuantitativos en "avance":
   Asambleas:   2/7   × 100 = 28.6% → 29
   Presupuesto: 7/7   × 100 = 100%  → 100 (PP 2026: 6 talleres, 149 fichas, ACTA N°007-2025 agosto)
@@ -16,6 +16,7 @@ import streamlit as st
 from data.loader import load_all
 from utils.session import is_tecnico
 from quira_pages.html_engine import render_page, page_header
+from utils.cache_quira import cargar_gm_snapshot
 
 # ── MECANISMOS DE PARTICIPACIÓN · Estado Q1-2026 ──────────────────────────────
 # score = derivado del hecho cuantitativo declarado en "avance" (ver docstring módulo)
@@ -125,10 +126,13 @@ def _parroquia_participacion(p: dict) -> str:
 
 def render() -> None:
     data       = load_all()
+    gm         = cargar_gm_snapshot()
     show_tech  = is_tecnico()
     parroquias = data.get("parroquias", [])
-    indices    = data["indices"]
-    igp_val    = indices.get("IGP", {}).get("valor", 27.98)
+    # Participacion: cifra madre del motor vivo (vectores.igp = 48.33), NO del demo (coherencia tarjeta L1)
+    igp_val    = ((gm or {}).get("vectores", {}).get("igp") or {}).get("valor")
+    if igp_val is None:
+        igp_val = data.get("indices", {}).get("IGP", {}).get("valor", 0.0)
 
     n_sin_voz = sum(1 for p in parroquias
                     if p.get("participacion", {}).get("estado") == "Sin voz")
@@ -141,8 +145,8 @@ def render() -> None:
               border-radius:12px;padding:16px;text-align:center">
     <div style="font-size:42px;font-weight:900;color:var(--amber);
                 font-family:var(--mono)">{igp_val:.2f}<span style="font-size:18px">%</span></div>
-    <div style="font-size:10px;font-weight:700;color:var(--amber);margin-top:4px">IGP GLOBAL</div>
-    <div style="font-size:9px;color:var(--muted);margin-top:3px">Gestión por Ocurrencia</div>
+    <div style="font-size:10px;font-weight:700;color:var(--amber);margin-top:4px">PARTICIPACIÓN</div>
+    <div style="font-size:9px;color:var(--muted);margin-top:3px">Mecanismos institucionales</div>
   </div>
   <div style="background:rgba(255,77,109,.07);border:1px solid rgba(255,77,109,.25);
               border-radius:12px;padding:16px;text-align:center">
@@ -192,10 +196,11 @@ def render() -> None:
   <div style="font-size:8px;color:rgba(0,212,255,.7);margin-bottom:10px;
               padding:5px 10px;background:rgba(0,212,255,.05);border-radius:5px;
               border:1px solid rgba(0,212,255,.15)">
-    📐 <strong>Metodología scores:</strong>
-    Score = razón cuantitativa declarada en estado de avance
-    (2/7 asambleas=29%, 4/7 parroquias=57%, 50/75 UT=67%, CPCCS V=0%, 3/6 veedurías=50%, 0 publicados=0%).
-    IGP 27.98% fuente: H73_OUTPUT_API · Gold Master v4.1.
+    📐 <strong>Avance por mecanismo:</strong>
+    cada barra es la razón cuantitativa real del mecanismo
+    (2/7 asambleas, 7/7 presupuesto participativo, 50/75 unidades territoriales,
+    rendición de cuentas sin validar, 3/6 veedurías, portal sin publicar).
+    Fuente: registros institucionales · actas PP 2026 · calificación CPCCS.
   </div>
   {"".join(_mecanism_row(m) for m in MECANISMOS)}
 </div>"""
@@ -213,24 +218,42 @@ def render() -> None:
   </div>
 </div>"""
 
+    _ord    = sorted(MECANISMOS, key=lambda m: m["score"], reverse=True)
+    _clean  = lambda n: n.split(" (")[0]
+    fuertes = [_clean(m["nombre"]) for m in _ord[:2]]
+    debiles = [_clean(m["nombre"]) for m in _ord[-2:]]
+    narrativa = (
+        f"La participación ciudadana alcanza {igp_val:.2f}% al corte — la misma cifra del Centro de Mando. "
+        f"La sostienen los mecanismos fuertes ({fuertes[0]}, {fuertes[1]}) y la frenan los críticos "
+        f"({debiles[0]}, {debiles[1]}, sin validación ciudadana). Es una lectura del trimestre, no un cierre anual."
+    )
+    eje_html = (
+        '<div style="margin-bottom:16px;padding:12px 16px;background:rgba(245,158,11,.06);'
+        'border-left:3px solid var(--amber);border-radius:0 10px 10px 0">'
+        '<div style="font-size:11px;font-weight:700;color:var(--amber);margin-bottom:4px">'
+        '🎯 Lectura de la participación al corte</div>'
+        f'<div style="font-size:11px;color:var(--white);line-height:1.6">{narrativa}</div>'
+        '</div>'
+    )
+
     hdr = page_header(
-        "⑫ CONFIANZA CIUDADANA",
-        "IGP · Participación · CPCCS",
-        f"IGP {igp_val:.2f}% · {n_sin_voz} parroquias sin voz · CPCCS V=0 RDC 2025 · ene–mar 2026",
+        "⑧ PARTICIPACIÓN CIUDADANA",
+        "Mecanismos · Presupuesto Participativo · CPCCS",
+        f"Participación {igp_val:.2f}% · {n_sin_voz} parroquias sin voz · CPCCS V=0 RDC 2025 · ene–mar 2026",
         '<span class="badge badge-red">🔴 CPCCS V=0</span>',
     )
 
-    render_page(hdr + resumen_html + cpccs_html + mecanismos_html + parroquias_html,
-                show_tech=show_tech, height=1350)
+    render_page(hdr + resumen_html + eje_html + cpccs_html + mecanismos_html + parroquias_html,
+                show_tech=show_tech, height=1480)
 
     st.markdown("---")
     c1, c2, c3 = st.columns(3)
     with c1:
-        if st.button("🔮 Sentinel · Estrategia CPCCS + IGP",
-                     use_container_width=True, type="primary"):
+        if st.button("🔮 Sentinel · Estrategia CPCCS + Participación",
+                     use_container_width=True, type="primary", key="conf_sentinel"):
             st.session_state["page"] = "sentinel"
             st.session_state["sentinel_pregunta_auto"] = (
-                "El IGP de Montecristi es 27.98%. El CPCCS calificó V=0 la RDC 2025. "
+                f"La participación ciudadana de Montecristi es {igp_val:.2f}%. El CPCCS calificó V=0 la RDC 2025. "
                 "Isabel Muentes y Aníbal San Andrés tienen 0 mesas participativas y $0 "
                 "en presupuesto participativo. La próxima RDC es Q3-2026. "
                 "¿Cuál es la estrategia concreta para obtener V≥70 en la RDC 2026, "
@@ -239,10 +262,10 @@ def render() -> None:
             )
             st.rerun()
     with c2:
-        if st.button("🗺️ Ver Territorio Digital", use_container_width=True):
+        if st.button("🗺️ Ver Territorio Digital", use_container_width=True, key="conf_geotwin"):
             st.session_state["page"] = "geotwin"
             st.rerun()
     with c3:
-        if st.button("🎯 Ver Metas del Plan Cantonal", use_container_width=True):
+        if st.button("🎯 Ver Metas del Plan Cantonal", use_container_width=True, key="conf_metas"):
             st.session_state["page"] = "metas"
             st.rerun()
