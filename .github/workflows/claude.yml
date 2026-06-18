@@ -13,15 +13,15 @@ on:
 
 jobs:
   claude-assistant:
-    # Solo actúa cuando se menciona @claude explícitamente
+    # Solo actúa con @claude explícito, y NUNCA en bucle con el propio bot.
+    # (una sola clave 'if:' — dos claves rompen el YAML del workflow)
     if: |
-      (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@claude')) ||
-      (github.event_name == 'pull_request_review_comment' && contains(github.event.comment.body, '@claude')) ||
-      (github.event_name == 'pull_request_review' && contains(github.event.review.body, '@claude')) ||
-      (github.event_name == 'issues' && (contains(github.event.issue.body, '@claude') || contains(github.event.issue.labels.*.name, 'claude')))
-
-    # Evitar bucles infinitos con el propio bot
-    if: github.actor != 'claude[bot]' && github.actor != 'dependabot[bot]'
+      (github.actor != 'claude[bot]' && github.actor != 'dependabot[bot]') && (
+        (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@claude')) ||
+        (github.event_name == 'pull_request_review_comment' && contains(github.event.comment.body, '@claude')) ||
+        (github.event_name == 'pull_request_review' && contains(github.event.review.body, '@claude')) ||
+        (github.event_name == 'issues' && (contains(github.event.issue.body, '@claude') || contains(github.event.issue.labels.*.name, 'claude')))
+      )
 
     runs-on: ubuntu-latest
     permissions:
@@ -47,7 +47,7 @@ jobs:
         uses: anthropics/claude-code-action@beta
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          model: claude-opus-4-5-20251101
+          model: claude-opus-4-8
           max_turns: 25
           timeout_minutes: 15
 
