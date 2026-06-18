@@ -41,8 +41,8 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
 
 ## AHORA (estado vivo · historial → `governance/historico/BOOT_2026-06-17.md`)
 **OLA 1 COMPLETA** — 3 hardcodes críticos al motor: d05 Holding 12.4% (h90) · d08 Participación 48.33% · d12 Género 2.83% (vectores). Patrón: tarjeta→detalle→firewall→commit. Último `fea4d28`.
-**Firewall debt MEDIDO** (`scripts/dev/firewall_audit.py`, AST): **190→168** · `p_ejecutivo`·`p16`·`p19`=0 ALTO · matriz `docs/architecture/FIREWALL_DEBT_REPORT.md`.
-▶ **SIGUIENTE — Firewall Blitz:** barrer públicas por deuda (top `p_cadena_institucional`·`p16_gobernanza`·`p14_eficiencia`) → 0. NO tocar interno-ops.
+**Firewall debt MEDIDO** (`scripts/dev/firewall_audit.py`, AST): **190→154** · blitz en curso (`p_cadena` 14→0) · matriz `docs/architecture/FIREWALL_DEBT_REPORT.md`.
+▶ **SIGUIENTE — Firewall Blitz:** seguir públicas (`p16_gobernanza` 13·`p14` 11·`p12` 10·`p13` 9·`p11` 9) → <100. Verificar gating: `is_tecnico`=GAD Directivo→purgar · `is_ops`=Dylus→legítimo.
 ⚠ **CI:** BOOT.md límite 6KB. §AHORA LEAN — al cierre REEMPLAZAR (no apilar) + archivar a `historico/`.
 
 ## REGLA CANÓNICA — todo artefacto al grafo
