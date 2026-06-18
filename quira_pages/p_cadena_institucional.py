@@ -36,7 +36,7 @@ _CADENA_ESTADO: list[dict] = [
     {
         "id": "cne",
         "icon": "📜",
-        "label": "CNE / IFE",
+        "label": "Plan CNE",
         "sub": "66 compromisos",
         "color": "#F97316",
         "status": "SEGUIMIENTO",
@@ -57,11 +57,11 @@ _CADENA_ESTADO: list[dict] = [
         "id": "poa_pac",
         "icon": "⚡",
         "label": "POA → PAC",
-        "sub": "SAT-0 activa",
+        "sub": "Alerta activa",
         "color": "#EF4444",
         "status": "RUPTURA",
         "score": "4 metas sin contrato PAC · 24 procesos sin SHA-256",
-        "tip": "SAT-0 · SERCOP",
+        "tip": "Alerta · SERCOP",
     },
     {
         "id": "presupuesto",
@@ -81,7 +81,7 @@ _CADENA_ESTADO: list[dict] = [
         "color": "#F59E0B",
         "status": "EN PROCESO",
         "score": "6 talleres · 149 fichas · ACTA N°007-2025",
-        "tip": "IGP + PP 2026",
+        "tip": "Participación + PP 2026",
     },
     {
         "id": "rdc",
@@ -100,7 +100,7 @@ _CADENA_ESTADO: list[dict] = [
         "sub": "21 artículos",
         "color": "#F59E0B",
         "status": "PARCIAL",
-        "score": "ITAM 56% · IOC 17.71%",
+        "score": "Transparencia 56% · Opacidad 17.71%",
         "tip": "LOTAIP · DPE",
     },
 ]
@@ -232,7 +232,7 @@ def _hitl_widget(tab_id: str, label: str) -> None:
     col_a, col_b = st.columns([1, 2])
     with col_a:
         validado = st.checkbox(
-            f"✓ Datos {label} verificados con Gold Master",
+            f"✓ Datos {label} verificados con el motor",
             key=state_key_ok,
             value=st.session_state.get(state_key_ok, False),
         )
@@ -281,14 +281,14 @@ def _tab_presupuesto() -> None:
 
     col1, col2, col3, col4 = st.columns(4)
     with col1:
-        st.metric("Ti Inversión GAD (G71-78)", f"{ti_gad:.2f}%",
+        st.metric("Ejecución Inversión GAD (G71-78)", f"{ti_gad:.2f}%",
                   delta="⚡ RUPTURA · TOP 8.1%", delta_color="inverse")
     with col2:
         st.metric("Codificado Inversión",
                   f"${cod_gad:,.0f}", delta="Grupos 71–78")
     with col3:
         st.metric("Devengado Q1-2026",
-                  f"${dev_gad:,.0f}", delta=f"{ti_gad:.2f}% Ti")
+                  f"${dev_gad:,.0f}", delta=f"{ti_gad:.2f}% ejec.")
     with col4:
         st.metric("Fondos Bloqueados Est.",
                   f"${bloqueados:,.0f}", delta_color="inverse",
@@ -306,7 +306,7 @@ def _tab_presupuesto() -> None:
     st.markdown(
         '<div style="font:700 9px/1 Inter,sans-serif;color:rgba(255,255,255,.4);'
         'letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px">'
-        'H90 CONSOLIDADO · Holding Municipal Q1-2026</div>',
+        'HOLDING CONSOLIDADO · Municipal Q1-2026</div>',
         unsafe_allow_html=True,
     )
 
@@ -334,7 +334,7 @@ def _tab_presupuesto() -> None:
             f'{nombre}</div>'
             f'<div style="display:flex;gap:20px;align-items:center">'
             f'<div style="font:900 13px/1 Inter,sans-serif;color:{col_sem}">'
-            f'{ti:.2f}%<span style="font:400 8px/1 Inter,sans-serif;color:rgba(255,255,255,.3)"> Ti</span></div>'
+            f'{ti:.2f}%<span style="font:400 8px/1 Inter,sans-serif;color:rgba(255,255,255,.3)"> ejec.</span></div>'
             + (f'<div style="font:400 8px/1 Inter,sans-serif;color:rgba(255,255,255,.3)">'
                f'${cod:,.0f} cod · ${dev:,.0f} dev</div>' if cod else "")
             + f'</div></div>',
@@ -366,7 +366,7 @@ def render() -> None:
 
     # ── Tabs por eslabón ────────────────────────────────────────────────────
     tabs = st.tabs([
-        "📜 CNE / IFE",
+        "📜 Plan CNE",
         "🗺 PDOT · Metas",
         "⚡ POA → PAC → SERCOP",
         "💰 Presupuesto",
@@ -375,12 +375,12 @@ def render() -> None:
         "🔍 LOTAIP",
     ])
 
-    # ── Tab 1: CNE / IFE ─────────────────────────────────────────────────────
+    # ── Tab 1: Plan CNE ─────────────────────────────────────────────────────
     with tabs[0]:
         st.markdown(
             '<div style="font:700 10px/1 Inter,sans-serif;color:rgba(255,255,255,.4);'
             'letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px">'
-            'H63_S0_CNE · 66 Promesas IFE · Corte Q1-2026</div>',
+            '66 Promesas del Plan CNE · Corte Q1-2026</div>',
             unsafe_allow_html=True,
         )
         try:
@@ -390,7 +390,7 @@ def render() -> None:
             _r_gov()
         except Exception as e:
             st.error(f"Módulo Gobernanza Participativa no disponible: {e}")
-        _hitl_widget("cne", "CNE / IFE")
+        _hitl_widget("cne", "Plan CNE")
 
     # ── Tab 2: PDOT · Metas ──────────────────────────────────────────────────
     with tabs[1]:
@@ -412,7 +412,7 @@ def render() -> None:
         st.markdown(
             '<div style="font:700 10px/1 Inter,sans-serif;color:rgba(255,255,255,.4);'
             'letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px">'
-            'SAT-0 · Cadena Operativa POA→PAC→SERCOP→eSIGEF · OCDS API</div>',
+            'Cadena Operativa POA→PAC→SERCOP→eSIGEF · OCDS API</div>',
             unsafe_allow_html=True,
         )
         try:
@@ -427,7 +427,7 @@ def render() -> None:
         st.markdown(
             '<div style="font:700 10px/1 Inter,sans-serif;color:rgba(255,255,255,.4);'
             'letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px">'
-            'eSIGEF · G71-78 · H90 Holding · Gold Master v5.5_TGI</div>',
+            'eSIGEF · G71-78 · Holding consolidado · Q1-2026</div>',
             unsafe_allow_html=True,
         )
         _tab_presupuesto()
@@ -437,7 +437,7 @@ def render() -> None:
         st.markdown(
             '<div style="font:700 10px/1 Inter,sans-serif;color:rgba(255,255,255,.4);'
             'letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px">'
-            'PP 2026 · $20.9M · 7 Parroquias · IGP 27.98%</div>',
+            'PP 2026 · $20.9M · 7 Parroquias · Participación ciudadana</div>',
             unsafe_allow_html=True,
         )
         # p16_confianza tiene el panel IGP + PP detallado
@@ -485,7 +485,7 @@ def render() -> None:
         'justify-content:space-between;align-items:center">'
         '<span style="color:rgba(124,92,252,.2)">Vista Técnica · HITL activo · datos no salen de esta sesión</span>'
         f'<span>QUIRA Intelligence · Cadena Institucional · Sprint E.1 · '
-        f'Gold Master v5.5_TGI · {CORTE} · Dylus Lab © 2026</span>'
+        f'{CORTE} · Dylus Lab © 2026</span>'
         '</div>',
         unsafe_allow_html=True,
     )
