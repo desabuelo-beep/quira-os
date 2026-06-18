@@ -202,13 +202,13 @@ def _brecha_row(b: dict) -> str:
   <div style="text-align:center;min-width:80px">
     <div style="font-size:14px;font-weight:800;color:var(--{icm_col});
                 font-family:monospace">{icm_txt}</div>
-    <div style="font-size:8px;color:var(--muted)">ICM SIGAD</div>
+    <div style="font-size:8px;color:var(--muted)">Autoreportado</div>
   </div>
   <div style="font-size:16px;color:var(--muted)">→</div>
   <div style="text-align:center;min-width:86px">
     <div style="font-size:14px;font-weight:800;color:var(--cyan);
                 font-family:monospace">{b["icpi"]:.2f}%</div>
-    <div style="font-size:8px;color:var(--muted)">ICPI Verificado</div>
+    <div style="font-size:8px;color:var(--muted)">Cumplimiento Verificado</div>
   </div>
   <div style="font-size:16px;color:var(--muted)">=</div>
   <div style="text-align:center;min-width:80px">
@@ -286,8 +286,8 @@ def render() -> None:
     hdr = page_header(
         "GOBERNANZA PARTICIPATIVA",
         "Participación Ciudadana · Control Social",
-        f"PP 2026: {fichas_2026} fichas · IGP ref 2025: {igp_ref:.2f}% · "
-        f"RDC 2026: en preparación (informe jun-2026) · SAT-V: Sin señal",
+        f"PP 2026: {fichas_2026} fichas · Participación ref 2025: {igp_ref:.2f}% · "
+        f"RDC 2026: en preparación (informe jun-2026) · Alerta: Sin señal",
         '<span class="badge badge-cyan">🗳️ Ciclo PP Completo</span>',
     )
 
@@ -307,8 +307,8 @@ def render() -> None:
               border-radius:12px;padding:16px;text-align:center">
     <div style="font-size:38px;font-weight:900;color:var(--cyan);
                 font-family:var(--mono)">{igp_ref:.1f}<span style="font-size:16px">%</span></div>
-    <div style="font-size:10px;font-weight:700;color:var(--cyan);margin-top:4px">IGP · REF 2025</div>
-    <div style="font-size:9px;color:var(--muted);margin-top:3px">H20b · Gobernanza Partic.</div>
+    <div style="font-size:10px;font-weight:700;color:var(--cyan);margin-top:4px">PARTICIPACIÓN · REF 2025</div>
+    <div style="font-size:9px;color:var(--muted);margin-top:3px">Gobernanza participativa</div>
   </div>
   <div style="background:rgba(0,224,150,.06);border:1px solid rgba(0,224,150,.2);
               border-radius:12px;padding:16px;text-align:center">
@@ -433,11 +433,11 @@ def render() -> None:
 <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);
             border-radius:10px;padding:12px 14px;margin-top:12px;
             font-size:10px;color:var(--muted);line-height:1.7">
-  <strong style="color:var(--white)">IGP (Índice de Gobernanza Participativa) — Nota metodológica</strong><br>
-  IGP ref 2025 = 27.98% · H20b_IGP_GOBERNANZA_PARTIC<br>
-  IGP 2026 Q1 (H20b) = promedio de 3 componentes:
-  IGP_1 (Asambleas CPCCS 54%) + IGP_2 (PP activo 0% — pendiente actualización post-PP) +
-  IGP_3 (Fidelidad Narrativa 91%) = 48.33% · Clasificación: Gestión por Transición
+  <strong style="color:var(--white)">Participación ciudadana — Nota metodológica</strong><br>
+  Participación ref 2025 = 27.98% · registros de gobernanza participativa<br>
+  Participación 2026 Q1 = promedio de 3 componentes:
+  asambleas CPCCS (54%) + presupuesto participativo (pendiente actualización post-PP) +
+  fidelidad narrativa (91%) = 48.33% · Clasificación: en transición
 </div>"""
 
         tab1_content = resumen_html + f"""
@@ -463,7 +463,7 @@ def render() -> None:
                 st.session_state["sentinel_pregunta_auto"] = (
                     f"El PP 2026 de Montecristi registró {fichas_2026} fichas ciudadanas "
                     f"en 7 parroquias (tendencia +{tendencia}% vs PP2025). "
-                    f"El IGP referencia 2025 es {igp_ref:.2f}%. "
+                    f"La participación ciudadana referencia 2025 es {igp_ref:.2f}%. "
                     "Las prioridades ciudadanas son: agua potable, áreas verdes, vialidad, salud, aseo. "
                     "¿Qué estrategia concreta recomiendas para que el PP 2027 incremente la participación "
                     "en las parroquias con menor actividad y vincule mejor las fichas con partidas POA verificables?"
@@ -494,7 +494,7 @@ def render() -> None:
       El informe de gestión debe presentarse ante el CPCCS en <strong style="color:var(--cyan)">junio 2026</strong>
       (LOPC Art.88 + Constitución Art.204).
       <br>
-      <strong style="color:var(--green)">SAT-V:</strong> Sin señal activa ·
+      <strong style="color:var(--green)">Alerta:</strong> Sin señal activa ·
       Compromisos CPCCS formales registrados: 0 (sin proceso abierto) ·
       <strong style="color:var(--white)">No existe calificación CPCCS vigente.</strong>
     </div>
@@ -505,7 +505,7 @@ def render() -> None:
       </span>
       <span style="padding:5px 10px;background:rgba(0,224,150,.08);border-radius:6px;
                    font-size:9px;font-weight:700;color:var(--green)">
-        ✅ SAT-V: Sin señal · H24b_SAT-V
+        ✅ Alerta: Sin señal activa
       </span>
       <span style="padding:5px 10px;background:rgba(255,184,0,.08);border-radius:6px;
                    font-size:9px;font-weight:700;color:var(--amber)">
@@ -519,21 +519,21 @@ def render() -> None:
         brecha_rows = "".join(_brecha_row(b) for b in BRECHA_HISTORICA)
         brecha_html = f"""
 <div class="card" style="margin-bottom:16px">
-  <div class="card-title">📊 BRECHA DE VERIFICACIÓN · ICM Autoreportado vs ICPI Verificado</div>
+  <div class="card-title">📊 BRECHA DE VERIFICACIÓN · Autoreportado vs Verificado</div>
   <div style="font-size:8px;color:rgba(0,212,255,.7);margin-bottom:10px;padding:5px 10px;
               background:rgba(0,212,255,.05);border-radius:5px;
               border:1px solid rgba(0,212,255,.1)">
-    ICM (Índice Cumplimiento Meta) = autoreportado por el GAD al SIGAD/SNP ·
-    ICPI = verificado por QUIRA OS con 8 silos de datos independientes ·
+    El cumplimiento autoreportado por el GAD al SIGAD/SNP ·
+    frente al verificado por QUIRA con 8 fuentes de datos independientes ·
     La brecha mide la distancia entre el discurso oficial y la evidencia verificable.
-    <strong style="color:var(--white)"> Fuente: H08_SIGAD (ICM) + H12c_ICPI_HISTÓRICO (ICPI)</strong>
+    <strong style="color:var(--white)"> Fuente: registros oficiales (SIGAD/SNP) + verificación QUIRA</strong>
   </div>
   {brecha_rows}
   <div style="margin-top:8px;padding:8px 10px;
               background:rgba(255,184,0,.06);border:1px solid rgba(255,184,0,.15);
               border-radius:7px;font-size:10px;color:var(--amber)">
-    ⚠ Esta brecha no implica irregularidades — el ICM mide cumplimiento programático declarado
-    y el ICPI incorpora verificación algorítmica cruzada. Reducir la brecha = fortalecer
+    ⚠ Esta brecha no implica irregularidades — el dato autoreportado mide cumplimiento programático declarado
+    y la verificación QUIRA incorpora cruce de evidencia documental. Reducir la brecha = fortalecer
     la evidencia documental de cada meta ante el CPCCS.
   </div>
 </div>"""
@@ -543,12 +543,12 @@ def render() -> None:
 <div style="background:rgba(0,224,150,.04);border:1px solid rgba(0,224,150,.15);
             border-radius:12px;padding:14px 16px;margin-bottom:16px">
   <div style="font-size:11px;font-weight:700;color:var(--green);margin-bottom:8px">
-    🏛️ FIDELIDAD AL MANDATO ELECTORAL · IFE 72.73% · H63_S0_CNE_TRAZABILIDAD
+    🏛️ FIDELIDAD AL MANDATO ELECTORAL · 72.73% · trazabilidad Plan CNE
   </div>
   <div class="grid-3" style="gap:10px;margin-bottom:10px">
     <div style="text-align:center;padding:10px;background:rgba(255,255,255,.03);border-radius:8px">
       <div style="font-size:28px;font-weight:900;color:var(--green);font-family:monospace">72.73%</div>
-      <div style="font-size:9px;color:var(--muted)">IFE Global</div>
+      <div style="font-size:9px;color:var(--muted)">Fidelidad Global</div>
     </div>
     <div style="text-align:center;padding:10px;background:rgba(255,255,255,.03);border-radius:8px">
       <div style="font-size:28px;font-weight:900;color:var(--cyan);font-family:monospace">48/66</div>
@@ -668,12 +668,12 @@ def render() -> None:
 
         rdc_hist_html = f"""
 <div class="card" style="margin-bottom:16px">
-  <div class="card-title">📂 APORTES CIUDADANOS · RDC 2023-2024 · H10c_RDC_APORTES (VERIFICADO)</div>
+  <div class="card-title">📂 APORTES CIUDADANOS · RDC 2023-2024 (VERIFICADO)</div>
   <div style="font-size:8px;color:rgba(0,212,255,.7);margin-bottom:10px;padding:5px 10px;
               background:rgba(0,212,255,.05);border-radius:5px;
               border:1px solid rgba(0,212,255,.1)">
     Fuente: Informes CPCCS-RDC oficiales GAD Montecristi · Patronato · EP Aseo / EMAIMEP · Bomberos ·
-    Ingesta verificada en SIAP-ICPI_GOLD_MASTER_v4.1 hoja H10c ·
+    Ingesta verificada en el motor del sistema ·
     <strong style="color:var(--white)">Naturaleza legal: ADVISORY (LOPC Art.89) —
     no vinculante individual; obliga documentación y respuesta institucional colectiva.</strong>
   </div>
@@ -736,9 +736,9 @@ def render() -> None:
                 st.session_state["page"] = "sentinel"
                 st.session_state["sentinel_pregunta_auto"] = (
                     "La RDC 2026 del GAD de Montecristi debe presentarse ante el CPCCS en junio 2026. "
-                    "El IFE es 72.73% (48/66 promesas vinculadas al PDOT). "
+                    "La fidelidad al mandato electoral es 72.73% (48/66 promesas vinculadas al PDOT). "
                     f"De las 25 metas PDOT: {n_verif} verificadas, {n_proc} en proceso, {n_sinv} sin verificar. "
-                    "La brecha ICM-ICPI histórica promedia 30 puntos. "
+                    "La brecha entre lo autoreportado y lo verificado promedia 30 puntos. "
                     "Los aportes ciudadanos en RDC 2023-2024 suman 95 (GAD+Holding): "
                     "FA=30, AH=23, SC=20, PI=14, EP=8. El ciclo RDC→PP está verificado: "
                     "agua potable, vialidad y aseo fueron los más demandados en RDC y son las top prioridades PP 2026. "

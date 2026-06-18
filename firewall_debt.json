@@ -597,102 +597,11 @@
  ],
  "p16_gobernanza.py": [
   {
-   "line": 210,
-   "terms": "ICPI",
-   "alt": "Cumplimiento institucional",
-   "risk": "ALTO",
-   "snippet": "%</div>     <div style=\"font-size:8px;color:var(--muted)\">ICPI Verifi..."
-  },
-  {
-   "line": 289,
-   "terms": "IGP",
-   "alt": "Participacion ciudadana",
-   "risk": "ALTO",
-   "snippet": "fichas · IGP ref 2025:"
-  },
-  {
-   "line": 289,
-   "terms": "SAT-",
-   "alt": "Alerta de reincidencia",
-   "risk": "ALTO",
-   "snippet": "% · RDC 2026: en preparación (informe jun-2026) · SAT-V: Sin señal"
-  },
-  {
-   "line": 309,
-   "terms": "H20b, IGP",
-   "alt": "Fuente publica (SIGEF/SERCOP/CPCCS)",
-   "risk": "ALTO",
-   "snippet": "<span style=\"font-size:16px\">%</span></div>     <div style=\"font-size..."
-  },
-  {
-   "line": 432,
-   "terms": "H20b, IGP",
-   "alt": "Fuente publica (SIGEF/SERCOP/CPCCS)",
-   "risk": "ALTO",
-   "snippet": "<div style=\"background:rgba(255,255,255,.03);border:1px solid rgba(2..."
-  },
-  {
-   "line": 482,
-   "terms": "SAT-",
-   "alt": "Alerta de reincidencia",
-   "risk": "ALTO",
-   "snippet": "<div style=\"background:rgba(0,212,255,.04);border:1px solid rgba(0,2..."
-  },
-  {
-   "line": 520,
-   "terms": "ICPI",
-   "alt": "Cumplimiento institucional",
-   "risk": "ALTO",
-   "snippet": "<div class=\"card\" style=\"margin-bottom:16px\">   <div class=\"card-tit..."
-  },
-  {
-   "line": 531,
-   "terms": "ICPI",
-   "alt": "Cumplimiento institucional",
-   "risk": "ALTO",
-   "snippet": "<div style=\"margin-top:8px;padding:8px 10px;               backgro..."
-  },
-  {
-   "line": 542,
-   "terms": "IFE",
-   "alt": "—",
-   "risk": "ALTO",
-   "snippet": "<div style=\"background:rgba(0,224,150,.04);border:1px solid rgba(0,2..."
-  },
-  {
-   "line": 669,
-   "terms": "H10c",
-   "alt": "Fuente publica (SIGEF/SERCOP/CPCCS)",
-   "risk": "ALTO",
-   "snippet": "<div class=\"card\" style=\"margin-bottom:16px\">   <div class=\"card-tit..."
-  },
-  {
    "line": 277,
    "terms": "IGP",
    "alt": "Participacion ciudadana",
    "risk": "BAJO",
    "snippet": "IGP"
-  },
-  {
-   "line": 465,
-   "terms": "IGP",
-   "alt": "Participacion ciudadana",
-   "risk": "ALTO",
-   "snippet": "% vs PP2025). El IGP referencia 2025 es"
-  },
-  {
-   "line": 738,
-   "terms": "IFE",
-   "alt": "—",
-   "risk": "ALTO",
-   "snippet": "La RDC 2026 del GAD de Montecristi debe presentarse ante el CPCCS en ..."
-  },
-  {
-   "line": 740,
-   "terms": "ICPI",
-   "alt": "Cumplimiento institucional",
-   "risk": "ALTO",
-   "snippet": "sin verificar. La brecha ICM-ICPI histórica promedia 30 puntos. Los ..."
   }
  ],
  "p17_rdc.py": [
