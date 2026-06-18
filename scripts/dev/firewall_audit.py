@@ -99,6 +99,20 @@ def scan_file(path: Path) -> list[dict]:
     return hits
 
 
+# ── Capas de soberanía (ADR-027) — el canon es LEGÍTIMO fuera de Familia QUIRA ──
+# Dylus Lab = laboratorio/consolas internas · QUIRA IA = infra invisible. NO son deuda pública.
+DYLUS_LAB = {"env_ops.py", "p_carga.py", "p_ingesta.py", "p_reportes.py", "p_sentinel_hub.py"}
+QUIRA_IA  = {"env_gov.py"}
+
+
+def _layer(fname: str) -> str:
+    if fname in DYLUS_LAB:
+        return "DYLUS"
+    if fname in QUIRA_IA:
+        return "QUIRA_IA"
+    return "FAMILIA"
+
+
 def main() -> None:
     try:
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")  # consola Windows = cp1252
@@ -107,24 +121,29 @@ def main() -> None:
     root  = Path(sys.argv[1]) if len(sys.argv) > 1 else Path("quira_pages")
     files = sorted(root.glob("*.py"))
     report: dict[str, list[dict]] = {}
-    tot_alto = tot_bajo = 0
+    deuda_familia = canon_legitimo = tot_bajo = 0
     for f in files:
         hits = scan_file(f)
         if hits:
             report[f.name] = hits
-            tot_alto += sum(1 for h in hits if h["risk"] == "ALTO")
+            alto = sum(1 for h in hits if h["risk"] == "ALTO")
             tot_bajo += sum(1 for h in hits if h["risk"] == "BAJO")
+            if _layer(f.name) == "FAMILIA":
+                deuda_familia += alto
+            else:
+                canon_legitimo += alto
 
-    print(f"# FIREWALL DEBT REPORT — {root}/")
-    print(f"# {len(files)} archivos · {len(report)} con hits · "
-          f"VISIBLES(ALTO)={tot_alto} · clave-interna(BAJO)={tot_bajo}\n")
+    print(f"# FIREWALL DEBT REPORT — {root}/  ·  capas ADR-027")
+    print(f"# DEUDA FAMILIA QUIRA (purgar)={deuda_familia} · "
+          f"canon legítimo Dylus/IA (NO purgar)={canon_legitimo} · BAJO={tot_bajo}\n")
     ranked = sorted(report.items(),
                     key=lambda kv: -sum(1 for h in kv[1] if h["risk"] == "ALTO"))
+    _tag = {"DYLUS": "🔴 Dylus · canon OK", "QUIRA_IA": "🟣 QUIRA IA · canon OK", "FAMILIA": "🟢 Familia → purgar"}
     for fname, hits in ranked:
         alto = sum(1 for h in hits if h["risk"] == "ALTO")
         if alto == 0:
             continue  # en la consola priorizamos lo VISIBLE; el BAJO queda en el JSON
-        print(f"## {fname}   ALTO={alto}")
+        print(f"## {fname}   ALTO={alto}   [{_tag[_layer(fname)]}]")
         for h in sorted(hits, key=lambda x: (x["risk"] != "ALTO", x["line"])):
             if h["risk"] != "ALTO":
                 continue

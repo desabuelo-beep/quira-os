@@ -13,6 +13,8 @@ Generador: [`scripts/dev/firewall_audit.py`](../../scripts/dev/firewall_audit.py
 
 ## 📉 Progreso (re-medido por el escáner · no estimado)
 - **2026-06-17 · d12 purgado:** `p19_genero` **22 → 0** · **deuda repo 190 → 168** (-22). Ola 1 (d05·d08·d12) cerrada.
+- **2026-06-17 · Blitz #1:** `p_cadena_institucional` 14 → 0 · deuda 168 → 154.
+- **2026-06-17 · Capas de soberanía (ADR-027):** reclasificación → **deuda Familia QUIRA = 119** (purgar) · **canon legítimo Dylus/IA = 35** (NO purgar: `env_ops`·`p_carga`·`p_ingesta`·`p_sentinel_hub`·`env_gov`). Los 35 nunca fueron deuda. El escáner ahora etiqueta capas (`DYLUS_LAB`/`QUIRA_IA`).
 
 ## ✅ Validación: las pantallas convergidas están LIMPIAS
 `p_ejecutivo.py` (d06) y `p16_confianza.py` (d08) salen **0 ALTO** (solo clave interna). **El patrón de convergencia deja el firewall impecable** — lo que purgamos, queda purgado.
