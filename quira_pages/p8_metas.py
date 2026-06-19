@@ -25,7 +25,7 @@ METAS_PDOT = [
         "meta_val": 65.0,
         "estado": "CRÍTICO",
         "presupuesto": "$2,400,000",
-        "sat": "SAT activa · Isabel Muentes 1.02%",
+        "sat": "Alerta activa · Isabel Muentes 1.02%",
         "color": "red",
     },
     {
@@ -79,7 +79,7 @@ METAS_PDOT = [
     {
         "id": "M-06",
         "eje": "Género y Equidad",
-        "meta": "Presupuesto género PSG: 12.83% → 30% al 2027",
+        "meta": "Presupuesto de género: 12.83% → 30% al 2027",
         "indicador": "% POA con perspectiva de género",
         "avance": 12.83,
         "meta_val": 30.0,
@@ -103,7 +103,7 @@ METAS_PDOT = [
     {
         "id": "M-08",
         "eje": "Transparencia",
-        "meta": "ITAM transparencia municipal: 56% → 75% al 2027",
+        "meta": "Transparencia municipal: 56% → 75% al 2027",
         "indicador": "Índice LOTAIP · publicaciones actualizadas",
         "avance": 56.0,
         "meta_val": 75.0,
@@ -127,7 +127,7 @@ METAS_PDOT = [
     {
         "id": "M-10",
         "eje": "Fidelidad Electoral",
-        "meta": "IFE-A fidelidad: 72.73% · formalizar 18 promesas restantes",
+        "meta": "Fidelidad de mandato: 72.73% · formalizar 18 promesas restantes",
         "indicador": "Promesas CNE con meta PDOT formal",
         "avance": 72.73,
         "meta_val": 100.0,
@@ -244,14 +244,14 @@ def render() -> None:
     <div style="font-size:42px;font-weight:900;color:var(--purple);
                 font-family:var(--mono)">{n_pac}</div>
     <div style="font-size:10px;font-weight:700;color:var(--purple);margin-top:4px">SIN CONTRATO PAC</div>
-    <div style="font-size:9px;color:var(--muted);margin-top:3px">SAT-0 · riesgo Contraloría</div>
+    <div style="font-size:9px;color:var(--muted);margin-top:3px">Alerta activa · riesgo Contraloría</div>
   </div>
 </div>"""
 
     # ── IFE BARRA PROMESAS ────────────────────────────────────────────────────
     ife_html = """
 <div class="card" style="margin-bottom:16px">
-  <div class="card-title">🗳️ IFE-A · TRAZABILIDAD PROMESA → PDOT · 66 compromisos CNE</div>
+  <div class="card-title">🗳️ FIDELIDAD · TRAZABILIDAD PROMESA → PDOT · 66 compromisos CNE</div>
   <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
     <div style="flex:1;min-width:200px">
       <div style="display:flex;height:24px;border-radius:8px;overflow:hidden;
@@ -269,7 +269,7 @@ def render() -> None:
       </div>
       <div style="display:flex;justify-content:space-between;
                   font-size:9px;color:var(--muted);margin-top:4px">
-        <span>72.73% IFE-A · Gestión por Mandato ✅</span>
+        <span>72.73% fidelidad · Gestión por Mandato ✅</span>
         <span>27.27% · Riesgo cierre 2027</span>
       </div>
     </div>
@@ -295,7 +295,7 @@ def render() -> None:
   {"".join(_meta_row(m) for m in METAS_PDOT)}
   <div style="font-size:9px;color:var(--muted);margin-top:8px;padding-top:8px;
               border-top:1px solid rgba(255,255,255,.05)">
-    📌 Fuente: PDOT Montecristi 2023-2027 · POA-PAC ene–mar 2026 · SIAP-ICPI v1.0222
+    📌 Fuente: PDOT Montecristi 2023-2027 · POA-PAC ene–mar 2026 · corte institucional sellado
     · Corte sellado ene–mar 2026
   </div>
 </div>"""
@@ -321,7 +321,7 @@ def render() -> None:
             st.session_state["sentinel_pregunta_auto"] = (
                 "Mirando las metas PDOT 2023-2027 de Montecristi, "
                 "hay 4 metas críticas (agua, alcantarillado, género, inversión per cápita rural) "
-                "y 4 metas sin contrato PAC activo (SAT-0). "
+                "y 4 metas sin contrato PAC activo (alerta activa). "
                 "¿Cuáles son las 3 acciones más urgentes para regularizar el avance "
                 "antes del cierre del primer semestre 2026?"
             )

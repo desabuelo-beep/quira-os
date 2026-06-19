@@ -601,64 +601,6 @@
    "snippet": "<div class=\"tech-gate-card\">     <div style=\"font-size:1.8rem;text-a..."
   }
  ],
- "p8_metas.py": [
-  {
-   "line": 252,
-   "terms": "IFE",
-   "alt": "—",
-   "risk": "ALTO",
-   "snippet": "<div class=\"card\" style=\"margin-bottom:16px\">   <div class=\"card-tit..."
-  },
-  {
-   "line": 28,
-   "terms": "SAT",
-   "alt": "Alerta de reincidencia",
-   "risk": "ALTO",
-   "snippet": "SAT activa · Isabel Muentes 1.02%"
-  },
-  {
-   "line": 82,
-   "terms": "PSG",
-   "alt": "Presupuesto con enfoque de genero",
-   "risk": "ALTO",
-   "snippet": "Presupuesto género PSG: 12.83% → 30% al 2027"
-  },
-  {
-   "line": 106,
-   "terms": "ITAM",
-   "alt": "—",
-   "risk": "ALTO",
-   "snippet": "ITAM transparencia municipal: 56% → 75% al 2027"
-  },
-  {
-   "line": 130,
-   "terms": "IFE",
-   "alt": "—",
-   "risk": "ALTO",
-   "snippet": "IFE-A fidelidad: 72.73% · formalizar 18 promesas restantes"
-  },
-  {
-   "line": 245,
-   "terms": "SAT-0",
-   "alt": "Alerta de reincidencia",
-   "risk": "ALTO",
-   "snippet": "</div>     <div style=\"font-size:10px;font-weight:700;color:var(--pur..."
-  },
-  {
-   "line": 295,
-   "terms": "SIAP-ICPI, ICPI",
-   "alt": "—",
-   "risk": "ALTO",
-   "snippet": "<div style=\"font-size:9px;color:var(--muted);margin-top:8px;paddin..."
-  },
-  {
-   "line": 322,
-   "terms": "SAT-0",
-   "alt": "Alerta de reincidencia",
-   "risk": "ALTO",
-   "snippet": "Mirando las metas PDOT 2023-2027 de Montecristi, hay 4 metas críticas..."
-  }
- ],
  "p_carga.py": [
   {
    "line": 62,
