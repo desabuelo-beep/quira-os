@@ -12,10 +12,10 @@ from quira_pages.html_engine import render_page, page_header
 DIRECCIONES = [
     {"id": "DJUR",  "nombre": "Dirección Jurídica",             "score": 68.4, "sat": False, "procesos": 18, "nota": "Contratos revisados · asesoría legal activa"},
     {"id": "DSOC",  "nombre": "Dirección Desarrollo Social",    "score": 62.1, "sat": False, "procesos": 24, "nota": "Patronato alineado · programas vulnerables OK"},
-    {"id": "DAF",   "nombre": "Dirección Administrativa Fin.",  "score": 55.3, "sat": True,  "procesos": 31, "nota": "ISP 14.58% · coactivas pendientes · 5 sin SHA-256"},
+    {"id": "DAF",   "nombre": "Dirección Administrativa Fin.",  "score": 55.3, "sat": True,  "procesos": 31, "nota": "Salud presupuestaria 14.58% · coactivas pendientes · 5 sin verificación"},
     {"id": "DPM",   "nombre": "Dirección de Planificación",     "score": 51.2, "sat": True,  "procesos": 22, "nota": "4 metas PDOT sin PAC · PDOT actualización pendiente"},
     {"id": "DGA",   "nombre": "Dirección Gestión Ambiental",    "score": 48.7, "sat": False, "procesos": 12, "nota": "GEF elegible · plan residuos sin aprobar"},
-    {"id": "DGOV",  "nombre": "Dirección de Gobernanza",        "score": 41.5, "sat": False, "procesos": 9,  "nota": "IGP 27.98% · 2 parroquias sin voz activa"},
+    {"id": "DGOV",  "nombre": "Dirección de Gobernanza",        "score": 41.5, "sat": False, "procesos": 9,  "nota": "Participación 27.98% · 2 parroquias sin voz activa"},
     {"id": "DAPS",  "nombre": "Dir. Administrativa y Servicios","score": 38.2, "sat": True,  "procesos": 28, "nota": "6 procesos sin SHA-256 · PAC desactualizado"},
     {"id": "DCOM",  "nombre": "Dirección de Comunicación",      "score": 35.7, "sat": False, "procesos": 8,  "nota": "LOTAIP parcial · portal 48% contenido desactualizado"},
     {"id": "DGAD",  "nombre": "Dir. Atención Ciudadana",        "score": 29.8, "sat": False, "procesos": 15, "nota": "Tiempo respuesta 8.2 días vs meta 3 días"},
@@ -35,7 +35,7 @@ def _dir_row(d: dict, rank: int) -> str:
     sat_badge = (
         '<span style="font-size:8px;font-weight:700;color:var(--red);'
         'background:rgba(255,77,109,.15);border:1px solid rgba(255,77,109,.3);'
-        'border-radius:4px;padding:1px 5px;margin-left:6px">SAT</span>'
+        'border-radius:4px;padding:1px 5px;margin-left:6px">ALERTA</span>'
         if d["sat"] else ""
     )
     rank_col = "cyan" if rank <= 3 else "muted" if rank <= 8 else "red"
@@ -83,7 +83,7 @@ def render() -> None:
               border-radius:12px;padding:16px;text-align:center">
     <div style="font-size:42px;font-weight:900;color:var(--amber);
                 font-family:var(--mono)">{ied_val:.1f}<span style="font-size:18px">%</span></div>
-    <div style="font-size:10px;font-weight:700;color:var(--amber);margin-top:4px">IED GLOBAL</div>
+    <div style="font-size:10px;font-weight:700;color:var(--amber);margin-top:4px">EFICIENCIA DIRECCIONAL</div>
     <div style="font-size:9px;color:var(--muted);margin-top:3px">Gestión por Ocurrencia</div>
   </div>
   <div style="background:rgba(0,224,150,.06);border:1px solid rgba(0,224,150,.2);
@@ -111,12 +111,12 @@ def render() -> None:
 
     ranking_html = f"""
 <div class="card">
-  <div class="card-title">📋 RANKING 12 DIRECCIONES GAD · IED ene–mar 2026 (mayor→menor)</div>
+  <div class="card-title">📋 RANKING 12 DIRECCIONES GAD · EFICIENCIA ene–mar 2026 (mayor→menor)</div>
   {"".join(_dir_row(d, i+1) for i, d in enumerate(DIRECCIONES_SORTED))}
   <div style="font-size:9px;color:var(--muted);margin-top:8px;padding-top:8px;
               border-top:1px solid rgba(255,255,255,.05)">
-    📌 IED = Índice de Eficiencia Direccional · Modelo SIAP-ICPI v1.0222
-    · SAT = Dirección con alerta activa vinculada · 12 dirs. evaluadas Q1-2026
+    📌 Eficiencia direccional por dirección · evaluación institucional QUIRA
+    · ALERTA = dirección con alerta activa vinculada · 12 dirs. evaluadas Q1-2026
   </div>
 </div>"""
 
@@ -155,15 +155,15 @@ def render() -> None:
     </div>
     <div style="font-size:11px;color:var(--white);padding:6px 10px;
                 background:rgba(0,224,150,.07);border-radius:6px">
-      Meta IED Q3-2026: 50% → requiere +16 pts · plan 90 días activado
+      Meta de eficiencia Q3-2026: 50% → requiere +16 pts · plan 90 días activado
     </div>
   </div>
 </div>"""
 
     hdr = page_header(
         "⑩ EFICIENCIA DIRECCIONAL",
-        "Ranking 12 Direcciones · IED",
-        f"IED Global {ied_val:.2f}% · {n_ok} dirs sobre 60% · {n_crit} críticas · {n_sat} con señal activa",
+        "Ranking 12 Direcciones · Eficiencia",
+        f"Eficiencia direccional global {ied_val:.2f}% · {n_ok} dirs sobre 60% · {n_crit} críticas · {n_sat} con señal activa",
         '<span class="badge badge-amber">Gestión por Ocurrencia</span>',
     )
 
@@ -173,14 +173,14 @@ def render() -> None:
     st.markdown("---")
     c1, c2, c3 = st.columns(3)
     with c1:
-        if st.button("🔮 Sentinel · Plan 90 días IED", use_container_width=True, type="primary"):
+        if st.button("🔮 Sentinel · Plan 90 días de eficiencia", use_container_width=True, type="primary"):
             st.session_state["page"] = "sentinel"
             st.session_state["sentinel_pregunta_auto"] = (
-                "El IED de Montecristi es 33.99%. Las 3 direcciones más críticas son "
+                "La eficiencia direccional de Montecristi es 33.99%. Las 3 direcciones más críticas son "
                 "DTIC 18.3% (digitalización), DTUR 22.4% (turismo UNESCO sin activar) "
                 "y DOBS 26.5% (obras bloqueadas, 8 procesos sin SHA-256). "
                 "¿Qué plan de 90 días con acciones semanales específicas elevaría "
-                "el IED global a 50% antes del cierre Q3-2026?"
+                "la eficiencia direccional global a 50% antes del cierre Q3-2026?"
             )
             st.rerun()
     with c2:
