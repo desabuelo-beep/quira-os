@@ -16,7 +16,7 @@ RIESGO_MATRIX = [
         "nivel": "CRÍTICO",
         "color": "red",
         "items": [
-            "ISP 14.58% bajo umbral COOTAD 65% · bloquea perfil BDE",
+            "Salud presupuestaria 14.58% bajo umbral COOTAD 65% · bloquea perfil BDE",
             "Presupuesto total $26.7M · ejecutado Q1 solo $7.8M (29.3%)",
         ],
     },
@@ -25,8 +25,8 @@ RIESGO_MATRIX = [
         "nivel": "CRÍTICO",
         "color": "red",
         "items": [
-            "4 metas PDOT sin contrato PAC activo · SAT-0",
-            "24 procesos sin evidencia SHA-256 · Gasto Ciego C4",
+            "4 metas PDOT sin contrato PAC activo · alerta activa",
+            "24 procesos sin evidencia SHA-256 · Gasto Ciego",
         ],
     },
     {
@@ -34,8 +34,8 @@ RIESGO_MATRIX = [
         "nivel": "ALERTA",
         "color": "amber",
         "items": [
-            "Patrón fragmentación selectiva DAPS-01 · LOSNCP",
-            "IOC 17.71% · LOTAIP parcialmente actualizado",
+            "Patrón de fragmentación selectiva en contratación · LOSNCP",
+            "Opacidad informativa 17.71% · LOTAIP parcialmente actualizado",
         ],
     },
     {
@@ -43,7 +43,7 @@ RIESGO_MATRIX = [
         "nivel": "ALERTA",
         "color": "amber",
         "items": [
-            "IGP 27.98% · CPCCS V=0 en RDC 2026",
+            "Participación ciudadana 27.98% · CPCCS V=0 en RDC 2026",
             "2 parroquias sin voz: Isabel Muentes · Aníbal San Andrés",
         ],
     },
@@ -185,9 +185,9 @@ def render() -> None:
       RIESGO CONTRALORÍA GENERAL DEL ESTADO · Sin acción próximo trimestre
     </div>
     <div style="font-size:11px;color:var(--muted);line-height:1.6">
-      Las señales críticas activas (SAT-0 y SAT-IV) generan riesgo de observación formal
+      Las señales críticas activas generan riesgo de observación formal
       por parte de la Contraloría. La falta de evidencias SHA-256 en 24 procesos
-      y el ISP 14.58% bajo umbral COOTAD 65% pueden derivar en
+      y la salud presupuestaria 14.58% bajo umbral COOTAD 65% pueden derivar en
       <strong style="color:var(--white)">glosas contables y bloqueo de crédito BDE</strong>
       si no se regulariza antes del cierre del primer semestre 2026.
     </div>
@@ -211,9 +211,9 @@ def render() -> None:
   <div style="margin-top:12px;font-size:10px;color:var(--muted);
               padding:8px 10px;background:rgba(0,212,255,.04);
               border:1px solid rgba(0,212,255,.1);border-radius:7px;line-height:1.6">
-    💡 <strong style="color:var(--cyan)">Lógica SAT:</strong>
+    💡 <strong style="color:var(--cyan)">Cómo funcionan las alertas:</strong>
     El sistema detecta patrones de desviación antes de que se conviertan en crisis.
-    Una SAT PREVENTIVA activa significa que el algoritmo identificó señales de riesgo
+    Una alerta preventiva activa significa que el algoritmo identificó señales de riesgo
     en los datos de POA·PAC·eSIGEF — no espera a que el problema sea visible.
   </div>
 </div>"""
@@ -234,13 +234,13 @@ def render() -> None:
     st.markdown("---")
     c1, c2, c3 = st.columns(3)
     with c1:
-        if st.button("🔮 Sentinel · ¿Cómo desactivar las SATs?",
+        if st.button("🔮 Sentinel · ¿Cómo desactivar las alertas?",
                      use_container_width=True, type="primary"):
             st.session_state["page"] = "sentinel"
             st.session_state["sentinel_pregunta_auto"] = (
-                "El GAD de Montecristi tiene 2 SATs críticas activas: "
-                "SAT-0 (4 metas sin contrato PAC, 24 procesos sin evidencia SHA-256) "
-                "y SAT-IV (ISP 14.58% bajo umbral COOTAD 65%). "
+                "El GAD de Montecristi tiene 2 señales de alerta críticas activas: "
+                "una por 4 metas sin contrato PAC y 24 procesos sin evidencia SHA-256, "
+                "y otra por salud presupuestaria 14.58% bajo umbral COOTAD 65%. "
                 "¿Cuál es el protocolo de desactivación más rápido para cada una "
                 "y qué área administrativa debe liderar cada acción?"
             )

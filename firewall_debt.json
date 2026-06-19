@@ -768,57 +768,6 @@
    "snippet": "Mirando las metas PDOT 2023-2027 de Montecristi, hay 4 metas críticas..."
   }
  ],
- "p9_sat.py": [
-  {
-   "line": 178,
-   "terms": "ISP, SAT-0",
-   "alt": "Salud presupuestaria",
-   "risk": "ALTO",
-   "snippet": "<div style=\"background:rgba(255,77,109,.08);border:1px solid rgba(25..."
-  },
-  {
-   "line": 209,
-   "terms": "SAT",
-   "alt": "Alerta de reincidencia",
-   "risk": "ALTO",
-   "snippet": "</div>   <div style=\"margin-top:12px;font-size:10px;color:var(--mu..."
-  },
-  {
-   "line": 19,
-   "terms": "ISP",
-   "alt": "Salud presupuestaria",
-   "risk": "ALTO",
-   "snippet": "ISP 14.58% bajo umbral COOTAD 65% · bloquea perfil BDE"
-  },
-  {
-   "line": 28,
-   "terms": "SAT-0",
-   "alt": "Alerta de reincidencia",
-   "risk": "ALTO",
-   "snippet": "4 metas PDOT sin contrato PAC activo · SAT-0"
-  },
-  {
-   "line": 38,
-   "terms": "IOC",
-   "alt": "Opacidad informativa",
-   "risk": "ALTO",
-   "snippet": "IOC 17.71% · LOTAIP parcialmente actualizado"
-  },
-  {
-   "line": 46,
-   "terms": "IGP",
-   "alt": "Participacion ciudadana",
-   "risk": "ALTO",
-   "snippet": "IGP 27.98% · CPCCS V=0 en RDC 2026"
-  },
-  {
-   "line": 241,
-   "terms": "ISP, SAT-0",
-   "alt": "Salud presupuestaria",
-   "risk": "ALTO",
-   "snippet": "El GAD de Montecristi tiene 2 SATs críticas activas: SAT-0 (4 metas s..."
-  }
- ],
  "p_carga.py": [
   {
    "line": 62,
