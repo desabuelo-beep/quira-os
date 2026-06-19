@@ -197,17 +197,31 @@
  "p10_inversion.py": [
   {
    "line": 189,
-   "terms": "PSG",
+   "terms": "PSG, TPS",
    "alt": "Presupuesto con enfoque de genero",
    "risk": "ALTO",
    "snippet": "<div class=\"grid-2\" style=\"margin-top:16px\">   <div style=\"backgroun..."
   },
   {
+   "line": 71,
+   "terms": "TPS",
+   "alt": "Prioridad territorial",
+   "risk": "ALTO",
+   "snippet": "total</span>     <span>TPS"
+  },
+  {
    "line": 165,
-   "terms": "SIAP-ICPI, ICPI",
+   "terms": "SIAP-ICPI, ICPI, TPS",
    "alt": "—",
    "risk": "ALTO",
    "snippet": "<div style=\"margin-top:12px;font-size:9px;color:var(--muted);     ..."
+  },
+  {
+   "line": 177,
+   "terms": "TPS",
+   "alt": "Prioridad territorial",
+   "risk": "ALTO",
+   "snippet": "<div style=\"margin-top:10px;padding:8px 12px;               backgr..."
   },
   {
    "line": 245,
@@ -231,6 +245,50 @@
    "alt": "—",
    "risk": "ALTO",
    "snippet": "🔴 Datos en vivo · Neo4j"
+  }
+ ],
+ "p11_ods.py": [
+  {
+   "line": 26,
+   "terms": "TPS",
+   "alt": "Prioridad territorial",
+   "risk": "ALTO",
+   "snippet": "TPS rural · NBI parroquias · inversión per cápita mínima $80/hab"
+  },
+  {
+   "line": 27,
+   "terms": "TPS",
+   "alt": "Prioridad territorial",
+   "risk": "ALTO",
+   "snippet": "Reducir TPS promedio rural de 48.4% → 35% al 2027"
+  },
+  {
+   "line": 229,
+   "terms": "ICODS",
+   "alt": "Cumplimiento ODS",
+   "risk": "ALTO",
+   "snippet": "<span style=\"font-size:18px\">%</span></div>     <div style=\"font-size..."
+  },
+  {
+   "line": 331,
+   "terms": "ICODS",
+   "alt": "Cumplimiento ODS",
+   "risk": "BAJO",
+   "snippet": "ICODS"
+  },
+  {
+   "line": 346,
+   "terms": "ICODS",
+   "alt": "Cumplimiento ODS",
+   "risk": "ALTO",
+   "snippet": "El GAD de Montecristi tiene ICODS 87.5% con 14 ODS vinculados al PDOT..."
+  },
+  {
+   "line": 210,
+   "terms": "ICODS",
+   "alt": "Cumplimiento ODS",
+   "risk": "BAJO",
+   "snippet": "ICODS"
   }
  ],
  "p14_eficiencia.py": [
@@ -518,6 +576,69 @@
  ],
  "p19_genero.py": [
   {
+   "line": 751,
+   "terms": "ICODS",
+   "alt": "Cumplimiento ODS",
+   "risk": "ALTO",
+   "snippet": "<div class=\"grid-2\">   <div style=\"background:rgba(124,92,252,.06);b..."
+  },
+  {
+   "line": 19,
+   "terms": "IGM-A",
+   "alt": "Equidad de genero",
+   "risk": "BAJO",
+   "snippet": "IGM-A"
+  },
+  {
+   "line": 30,
+   "terms": "IGM-B",
+   "alt": "Equidad de genero",
+   "risk": "BAJO",
+   "snippet": "IGM-B"
+  },
+  {
+   "line": 41,
+   "terms": "IGM-C",
+   "alt": "Equidad de genero",
+   "risk": "BAJO",
+   "snippet": "IGM-C"
+  },
+  {
+   "line": 52,
+   "terms": "IGM-D",
+   "alt": "Equidad de genero",
+   "risk": "BAJO",
+   "snippet": "IGM-D"
+  },
+  {
+   "line": 63,
+   "terms": "IGM-E",
+   "alt": "Equidad de genero",
+   "risk": "BAJO",
+   "snippet": "IGM-E"
+  },
+  {
+   "line": 74,
+   "terms": "IGM-F",
+   "alt": "Equidad de genero",
+   "risk": "BAJO",
+   "snippet": "IGM-F"
+  },
+  {
+   "line": 618,
+   "terms": "IGM-D",
+   "alt": "Equidad de genero",
+   "risk": "ALTO",
+   "snippet": "indicadores muestran \"Sin dato oficial\"     — valores aún no disponi..."
+  },
+  {
+   "line": 695,
+   "terms": "IGM-D",
+   "alt": "Equidad de genero",
+   "risk": "ALTO",
+   "snippet": "<div style=\"margin-top:8px;font-size:9px;color:var(--muted)\">     ..."
+  },
+  {
    "line": 568,
    "terms": "PSG",
    "alt": "Presupuesto con enfoque de genero",
@@ -534,6 +655,29 @@
    "snippet": "<div style=\"margin-top:16px;padding:10px 12px;background:rgba(255,25..."
   }
  ],
+ "p3_congruencias.py": [
+  {
+   "line": 68,
+   "terms": "AVEP",
+   "alt": "Escala de calificacion",
+   "risk": "ALTO",
+   "snippet": "<div class=\"card\" style=\"margin-bottom:14px;border-left:4px solid va..."
+  },
+  {
+   "line": 183,
+   "terms": "TPS",
+   "alt": "Prioridad territorial",
+   "risk": "ALTO",
+   "snippet": "Inversión ↔ Parroquias ↔ NBI ↔ TPS"
+  },
+  {
+   "line": 185,
+   "terms": "TPS",
+   "alt": "Prioridad territorial",
+   "risk": "ALTO",
+   "snippet": "Isabel Muentes (TPS 77.94, NBI 61.2%) recibe $228K · $40/hab vs $217 ..."
+  }
+ ],
  "p4_geotwin.py": [
   {
    "line": 269,
@@ -543,8 +687,15 @@
    "snippet": "<div style=\"font-size:12px;color:var(--muted);margin-bottom:12px;pad..."
   },
   {
+   "line": 321,
+   "terms": "TPS",
+   "alt": "Prioridad territorial",
+   "risk": "ALTO",
+   "snippet": "<div class=\"card\">   <div class=\"card-title\">📊 Las 7 Parroquias · In..."
+  },
+  {
    "line": 329,
-   "terms": "H99",
+   "terms": "H99, TPS",
    "alt": "Fuente publica (SIGEF/SERCOP/CPCCS)",
    "risk": "ALTO",
    "snippet": "</tbody>   </table>   <div style=\"font-size:10px;color:var(--muted);m..."
@@ -555,6 +706,20 @@
    "alt": "—",
    "risk": "ALTO",
    "snippet": "<div style=\"margin-top:16px;font-size:9px;color:rgba(255,255,255,.2)..."
+  },
+  {
+   "line": 112,
+   "terms": "TPS",
+   "alt": "Prioridad territorial",
+   "risk": "ALTO",
+   "snippet": "</div>   <table style=\"width:100%;font-size:11px;border-collapse:c..."
+  },
+  {
+   "line": 127,
+   "terms": "TPS",
+   "alt": "Prioridad territorial",
+   "risk": "ALTO",
+   "snippet": "· TPS"
   }
  ],
  "p5_operacion.py": [
