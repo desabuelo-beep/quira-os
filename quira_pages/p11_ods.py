@@ -51,8 +51,8 @@ ODS_CATALOGO = [
     {
         "num": 5, "nombre": "Igualdad de Género",
         "estado": "CRÍTICO", "color": "#FF3A21",
-        "vinculo": "PSG 12.83% · bloquea Gender Bond $95K · ONU Mujeres",
-        "meta_pdot": "PSG ≥ 30% al 2027 · luminarias seguridad Aníbal San Andrés",
+        "vinculo": "Presupuesto de género 12.83% · bloquea Gender Bond $95K · ONU Mujeres",
+        "meta_pdot": "Presupuesto de género ≥ 30% al 2027 · luminarias seguridad Aníbal San Andrés",
         "score": 13,          # PSG_EJECUCION=12.83% · fuente H73_OUTPUT_API (redondeado)
     },
     {
@@ -86,8 +86,8 @@ ODS_CATALOGO = [
     {
         "num": 10, "nombre": "Reducción Desigualdades",
         "estado": "VINCULADO", "color": "#DD1367",
-        "vinculo": "IET 44.80% · Gov Twin · brecha territorial $40→$217/hab · H99 Q1-2026",
-        "meta_pdot": "IET ≥ 60% · inversión mínima rural $80/hab al 2027",
+        "vinculo": "Equidad territorial 44.80% · Gov Twin · brecha territorial $40→$217/hab · Q1-2026",
+        "meta_pdot": "Equidad territorial ≥ 60% · inversión mínima rural $80/hab al 2027",
         "score": 45,          # IET_PERCAPITA=44.80% · fuente H73_OUTPUT_API (redondeado)
     },
     {
@@ -128,8 +128,8 @@ ODS_CATALOGO = [
     {
         "num": 16, "nombre": "Paz, Justicia e Instituciones",
         "estado": "VINCULADO", "color": "#00689D",
-        "vinculo": "CPCCS · IGP 27.98% · rendición de cuentas · LOTAIP",
-        "meta_pdot": "IGP ≥ 60% · 75 UT activas · RDC validado CPCCS",
+        "vinculo": "CPCCS · Participación 27.98% · rendición de cuentas · LOTAIP",
+        "meta_pdot": "Participación ≥ 60% · 75 UT activas · RDC validado CPCCS",
         "score": 28,          # IGP_REF_2025=27.98% · fuente H73_OUTPUT_API (redondeado)
     },
     {
@@ -268,7 +268,7 @@ def render() -> None:
     <span>🟡 Parcial = vinculación incompleta o en proceso</span>
     <span>🔴 Crítico = brecha severa · riesgo mandato 2027</span>
     <span style="color:rgba(255,184,0,.7)">
-      ⚠ Barra inferior: ODS 5/6/10/16 derivados de H73 · Resto indicativo PDOT · Pendiente medición oficial SNP
+      ⚠ Barra inferior: ODS 5/6/10/16 con dato derivado · Resto indicativo PDOT · Pendiente medición oficial SNP
     </span>
   </div>
 </div>"""
@@ -306,11 +306,11 @@ def render() -> None:
       </div>
       <div style="font-size:11px;color:var(--white);padding:6px 10px;
                   background:rgba(255,184,0,.06);border-radius:6px;margin-bottom:6px">
-        💜 BID Lab Gender Bond · $95K · ODS 5 · Requiere PSG ≥ 30% (actual 12.83%)
+        💜 BID Lab Gender Bond · $95K · ODS 5 · Requiere presupuesto de género ≥ 30% (actual 12.83%)
       </div>
       <div style="font-size:11px;color:var(--white);padding:6px 10px;
                   background:rgba(255,184,0,.06);border-radius:6px">
-        🏦 BDE Crédito Municipal · ODS 11 · Requiere ISP ≥ 65% (actual 14.58%)
+        🏦 BDE Crédito Municipal · ODS 11 · Requiere salud presupuestaria ≥ 65% (actual 14.58%)
       </div>
     </div>
   </div>
@@ -344,7 +344,7 @@ def render() -> None:
             st.session_state["page"] = "sentinel"
             st.session_state["sentinel_pregunta_auto"] = (
                 "El GAD de Montecristi tiene ICODS 87.5% con 14 ODS vinculados al PDOT. "
-                "Los ODS 5 (Género, PSG 12.83%) y ODS 6 (Agua, cobertura 34.9%) están críticos. "
+                "Los ODS 5 (Género, presupuesto de género 12.83%) y ODS 6 (Agua, cobertura 34.9%) están críticos. "
                 "Hay $2.68M en fondos internacionales disponibles (GEF, PNUD, BID Gender Bond). "
                 "¿Cuál es la secuencia óptima de acciones para desbloquear estos fondos "
                 "usando los ODS como palanca política ante cooperantes?"
