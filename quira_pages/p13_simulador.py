@@ -12,7 +12,7 @@ from utils.session import is_tecnico
 _VECTORES = [
     {
         "key":     "isp",
-        "codigo":  "ISP",
+        "codigo":  "Presupuesto",
         "nombre":  "Salud Presupuestaria",
         "actual":  14.58,
         "meta":    65.0,
@@ -23,18 +23,18 @@ _VECTORES = [
     },
     {
         "key":     "ied",
-        "codigo":  "IED",
+        "codigo":  "Eficiencia",
         "nombre":  "Eficiencia Direcciones",
         "actual":  33.99,
         "meta":    70.0,
         "peso":    0.18,
         "impacto": -6.8,
         "color":   "🔴",
-        "accion":  "Publicar evidencias PAC · regularizar SAT-0",
+        "accion":  "Publicar evidencias PAC · cerrar señales de alerta",
     },
     {
         "key":     "igp",
-        "codigo":  "IGP",
+        "codigo":  "Participación",
         "nombre":  "Gobernanza Participativa",
         "actual":  27.98,
         "meta":    60.0,
@@ -45,7 +45,7 @@ _VECTORES = [
     },
     {
         "key":     "ioc",
-        "codigo":  "IOC",
+        "codigo":  "Transparencia",
         "nombre":  "Transparencia (invertido)",
         "actual":  17.71,
         "meta":    40.0,
@@ -56,7 +56,7 @@ _VECTORES = [
     },
     {
         "key":     "iet",
-        "codigo":  "IET",
+        "codigo":  "Equidad",
         "nombre":  "Equidad Territorial",
         "actual":  44.80,
         "meta":    70.0,
@@ -67,7 +67,7 @@ _VECTORES = [
     },
     {
         "key":     "psg",
-        "codigo":  "PSG",
+        "codigo":  "Género",
         "nombre":  "Presupuesto de Género",
         "actual":  12.83,
         "meta":    30.0,
@@ -202,12 +202,12 @@ def render() -> None:
     Motor de Escenarios QUIRA OS
   </div>
   <div style="font-size:11px;color:rgba(255,255,255,0.45)">
-    Tab 1: ICGI-T — vectores de mejora · Tab 2: IRS — sensibilidad Composite_Need v2.1
+    Tab 1: Calificación de gestión — vectores de mejora · Tab 2: Regresividad de la inversión — análisis de sensibilidad
   </div>
 </div>
 """, unsafe_allow_html=True)
 
-    tab1, tab2 = st.tabs(["📊 Calificación · Vectores de Mejora", "🔴 IRS · Sensibilidad Composite_Need"])
+    tab1, tab2 = st.tabs(["📊 Calificación · Vectores de Mejora", "🔴 Regresividad de la Inversión · Sensibilidad"])
 
     # ══════════════════════════════════════════════════════════════════════════
     # TAB 1 — ICGI-T SIMULATOR (existing content)
@@ -222,7 +222,7 @@ def render() -> None:
             for v in _VECTORES:
                 st.markdown(
                     f'<div style="font-size:11px;font-weight:700;color:#E2E8F0;margin-bottom:2px">'
-                    f'{v["color"]} {v["codigo"]} · {v["nombre"]}</div>'
+                    f'{v["color"]} {v["nombre"]}</div>'
                     f'<div style="font-size:9px;color:rgba(255,255,255,.4);margin-bottom:4px">'
                     f'Actual: {v["actual"]:.1f}% · Meta: {v["meta"]:.0f}% · '
                     f'Prioridad: {"🔴 Alta" if abs(v["impacto"]) >= 6 else "🟠 Media" if abs(v["impacto"]) >= 3 else "🟡 Normal"}</div>',
@@ -307,8 +307,8 @@ def render() -> None:
         st.markdown('<div class="sim-label">⚡ ESCENARIOS RÁPIDOS</div>', unsafe_allow_html=True)
         sc1, sc2, sc3, sc4 = st.columns(4)
         escenarios = [
-            ("🔴 Solo ISP",     {"isp": 65.0},                                   "Resuelves deuda tributaria"),
-            ("⚡ ISP + IED",    {"isp": 65.0, "ied": 60.0},                      "ISP + regularizas cadena PAC"),
+            ("🔴 Solo Presupuesto", {"isp": 65.0},                              "Resuelves deuda tributaria"),
+            ("⚡ Presup. + Eficiencia", {"isp": 65.0, "ied": 60.0},             "Mejora presupuesto y cadena PAC"),
             ("🎯 Meta Q3-2026", {"isp": 45.0, "ied": 55.0, "igp": 45.0, "psg": 22.0}, "Escenario realista Q3"),
             ("✨ Todos al 80%", {v["key"]: min(v["meta"], v["actual"]+(v["meta"]-v["actual"])*0.8)
                                   for v in _VECTORES},                            "Mejora ambiciosa"),
@@ -362,16 +362,17 @@ def render() -> None:
 <div style="margin-bottom:20px">
   <div style="font-size:11px;font-weight:700;color:#FF4D6D;
               text-transform:uppercase;letter-spacing:.12em;margin-bottom:4px">
-    🔴 IRS · SENSIBILIDAD COMPOSITE_NEED
+    🔴 REGRESIVIDAD DE LA INVERSIÓN · ANÁLISIS DE SENSIBILIDAD
   </div>
   <div style="font-size:20px;font-weight:900;color:#F0F4FF;margin-bottom:6px">
-    ¿Cómo cambian IRS e IET al variar los pesos?
+    ¿Cómo cambia la regresividad de la inversión al variar los pesos?
   </div>
   <div style="font-size:11px;color:rgba(255,255,255,0.45)">
-    Composite_Need = <strong style="color:#FF4D6D">w_Agua</strong>×(1-Agua/100) +
-    <strong style="color:#FF4D6D">w_NBI</strong>×(NBI/100) +
-    <strong style="color:#FF4D6D">w_Pop</strong>×(Pop/total) · suma = 100%
-    · IRS = -CORREL(Composite_Need, Inv_PerCápita) × 100
+    La regresividad mide si la inversión pública llega a donde más se necesita,
+    ponderando <strong style="color:#FF4D6D">acceso a agua</strong>,
+    <strong style="color:#FF4D6D">necesidades básicas insatisfechas</strong> y
+    <strong style="color:#FF4D6D">población</strong> · A mayor regresividad,
+    mayor inequidad territorial en el reparto del presupuesto.
   </div>
 </div>
 """, unsafe_allow_html=True)
@@ -419,8 +420,8 @@ def render() -> None:
 <div style="margin-top:8px;padding:8px 10px;background:rgba(255,77,109,.05);
             border:1px solid rgba(255,77,109,.2);border-radius:7px;
             font-size:9px;color:rgba(255,255,255,.4);line-height:1.7">
-  Fuente: Análisis de sensibilidad del tester SIAP-ICPI v2.1 · 7 parroquias Montecristi
-  · En todos los escenarios el IRS es ≥71.8% → zona <strong style="color:#FF4D6D">Muy Regresivo</strong>
+  Fuente: Análisis de sensibilidad territorial · 7 parroquias Montecristi
+  · En todos los escenarios la regresividad es ≥71.8% → zona <strong style="color:#FF4D6D">Muy Regresivo</strong>
   · La inversión pública NO llega proporcionalmente a donde más se necesita
 </div>
 """, unsafe_allow_html=True)
@@ -456,17 +457,17 @@ def render() -> None:
                 ))
                 fig.add_annotation(
                     x=30, y=79.7,
-                    text="★ Recomendado<br>v2.1 Oficial",
+                    text="★ Escenario<br>Recomendado",
                     showarrow=True,
                     arrowhead=2, arrowcolor="#00D4FF", arrowwidth=1.5,
                     font=dict(size=9, color="#00D4FF"),
                     ax=40, ay=-30,
                 )
                 fig.update_layout(
-                    title=dict(text="IRS vs Peso NBI (%)", font=dict(size=11, color="#9BA3B2"), x=0),
+                    title=dict(text="Regresividad vs Peso NBI (%)", font=dict(size=11, color="#9BA3B2"), x=0),
                     xaxis=dict(title="Peso NBI (%)", color="#9BA3B2",
                                gridcolor="rgba(255,255,255,0.05)", range=[8, 58]),
-                    yaxis=dict(title="IRS Global", color="#9BA3B2",
+                    yaxis=dict(title="Regresividad", color="#9BA3B2",
                                gridcolor="rgba(255,255,255,0.05)", range=[68, 86]),
                     plot_bgcolor="#0D1B2F",
                     paper_bgcolor="#0D1B2F",
@@ -489,17 +490,17 @@ def render() -> None:
   <div>
     <div style="font-size:11px;font-weight:700;color:#FF4D6D;
                 text-transform:uppercase;letter-spacing:.1em">
-      📋 ANÁLISIS DE SENSIBILIDAD · 6 ESCENARIOS VALIDADOS · TESTER v2.1
+      📋 ANÁLISIS DE SENSIBILIDAD · 6 ESCENARIOS VALIDADOS
     </div>
     <div style="font-size:9px;color:rgba(255,255,255,0.35);margin-top:3px">
-      Fuente: SIAP-ICPI Gold Master v4.1 · Composite_Need_Analysis · Trazabilidad verificada
+      Fuente: Análisis de necesidades territoriales · Trazabilidad verificada
     </div>
   </div>
   <div style="background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.3);
               border-radius:8px;padding:8px 14px;text-align:center">
-    <div style="font-size:9px;color:rgba(0,212,255,0.7);font-weight:700">IRS OFICIAL</div>
+    <div style="font-size:9px;color:rgba(0,212,255,0.7);font-weight:700">REGRESIVIDAD OFICIAL</div>
     <div style="font-size:28px;font-weight:900;color:#FF4D6D;font-family:monospace;line-height:1.1">79.7</div>
-    <div style="font-size:8px;color:rgba(255,255,255,0.4)">★ Recomendado v2.1</div>
+    <div style="font-size:8px;color:rgba(255,255,255,0.4)">★ Escenario recomendado</div>
   </div>
 </div>
 """, unsafe_allow_html=True)
@@ -530,9 +531,9 @@ def render() -> None:
         st.markdown("""
 <div style="background:rgba(0,212,255,.05);border:1px solid rgba(0,212,255,.12);
             border-radius:8px;padding:8px 12px;font-size:9px;color:rgba(255,255,255,.4);margin-top:4px">
-  🔒 Los pesos de ponderación son parámetros del Gold Master (SIAP-ICPI_GOLD_MASTER_v4.1).
-  El IRS oficial para reportes externos, solicitudes PNUD/BID/GEF y evidencia institucional es
-  <strong style="color:#00D4FF">79.7 pts · Escenario Recomendado v2.1</strong>.
+  🔒 Los pesos de ponderación son parámetros validados del modelo territorial QUIRA.
+  El índice de regresividad oficial para reportes externos, solicitudes PNUD/BID/GEF y evidencia institucional es
+  <strong style="color:#00D4FF">79.7 pts · Escenario recomendado</strong>.
 </div>
 """, unsafe_allow_html=True)
 
@@ -541,26 +542,26 @@ def render() -> None:
 <div style="background:rgba(255,77,109,.05);border:1px solid rgba(255,77,109,.2);
             border-radius:12px;padding:14px 16px;margin-top:12px">
   <div style="font-size:11px;font-weight:700;color:#FF4D6D;margin-bottom:8px">
-    📋 CONCLUSIONES ANÁLISIS DE SENSIBILIDAD (Tester v2.1)
+    📋 CONCLUSIONES DEL ANÁLISIS DE SENSIBILIDAD
   </div>
   <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
     <div style="font-size:10px;color:rgba(255,255,255,.7);line-height:1.6;
                 padding:8px;background:rgba(255,255,255,.02);border-radius:6px">
       <strong style="color:#FF4D6D">NBI es el indicador más duro.</strong>
-      A mayor peso NBI → IRS más alto → más inequidad detectada.
+      A mayor peso NBI → mayor regresividad → más inequidad detectada.
       Rango realista: 71.8–82.1 pts.
     </div>
     <div style="font-size:10px;color:rgba(255,255,255,.7);line-height:1.6;
                 padding:8px;background:rgba(255,255,255,.02);border-radius:6px">
       <strong style="color:#00D4FF">En todos los escenarios</strong>
-      el GAD está en zona <strong>Muy Regresivo</strong> (IRS > 70).
+      el GAD está en zona <strong>Muy Regresivo</strong> (regresividad > 70).
       Argumento institucional para PNUD, BID, GEF.
     </div>
     <div style="font-size:10px;color:rgba(255,255,255,.7);line-height:1.6;
                 padding:8px;background:rgba(255,255,255,.02);border-radius:6px">
       <strong style="color:#FFB800">Peso recomendado (50/30/20)</strong>
       es el más equilibrado y defendible ante Contraloría.
-      Certificado Gold Master · Tester v2.1.
+      Certificado de validación territorial QUIRA.
     </div>
   </div>
 </div>
