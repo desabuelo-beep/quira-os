@@ -599,50 +599,6 @@
    "snippet": "<div style=\"margin-top:16px;padding:10px 12px;background:rgba(255,25..."
   }
  ],
- "p3_congruencias.py": [
-  {
-   "line": 68,
-   "terms": "IFE, SAT-0",
-   "alt": "—",
-   "risk": "ALTO",
-   "snippet": "<div class=\"card\" style=\"margin-bottom:14px;border-left:4px solid va..."
-  },
-  {
-   "line": 145,
-   "terms": "IFE",
-   "alt": "—",
-   "risk": "ALTO",
-   "snippet": "<div style=\"padding:8px 12px;margin-bottom:14px;background:rgba(14,1..."
-  },
-  {
-   "line": 167,
-   "terms": "IFE",
-   "alt": "—",
-   "risk": "ALTO",
-   "snippet": "IFE-A 72.73% mide la promesa → plan (48/66 CNE). El 58.4% incorpora l..."
-  },
-  {
-   "line": 176,
-   "terms": "SAT-0",
-   "alt": "Alerta de reincidencia",
-   "risk": "ALTO",
-   "snippet": "Cadena POA-PAC-SERCOP-eSIGEF · 4 cortes detectados · SAT-0 activo"
-  },
-  {
-   "line": 185,
-   "terms": "H99",
-   "alt": "Fuente publica (SIGEF/SERCOP/CPCCS)",
-   "risk": "ALTO",
-   "snippet": "Isabel Muentes (TPS 77.94, NBI 61.2%) recibe $228K · $40/hab vs $217 ..."
-  },
-  {
-   "line": 225,
-   "terms": "SIAP-ICPI, H16, ICPI, IFE",
-   "alt": "—",
-   "risk": "ALTO",
-   "snippet": "<div style=\"margin-top:16px;font-size:9px;color:rgba(255,255,255,.2)..."
-  }
- ],
  "p4_geotwin.py": [
   {
    "line": 269,

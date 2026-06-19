@@ -70,15 +70,15 @@ def render() -> None:
      background:linear-gradient(135deg,rgba(14,165,233,.06) 0%,rgba(0,0,0,0) 100%)">
   <div style="font-size:10px;font-weight:700;color:var(--cyan);text-transform:uppercase;
               letter-spacing:.12em;margin-bottom:10px">
-    🗳️ Fidelidad Electoral · IFE · Promesa → Planificación → Ejecución ·
+    🗳️ Fidelidad Electoral · Promesa → Planificación → Ejecución ·
     <span class="badge badge-real">REAL</span>
   </div>
   <div style="display:grid;grid-template-columns:auto 1fr 1fr;gap:16px;align-items:center">
 
-    <!-- IFE-A número -->
+    <!-- Alineación promesa-plan -->
     <div style="text-align:center;min-width:110px">
       <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;
-                  letter-spacing:.08em;margin-bottom:2px">IFE-A · Alineación</div>
+                  letter-spacing:.08em;margin-bottom:2px">Alineación promesa → plan</div>
       <div style="font-size:42px;font-weight:800;color:var(--white);line-height:1">72.73%</div>
       <div style="font-size:10px;color:var(--amber);font-weight:700;margin-top:3px">
         Gestión por Mandato ✅
@@ -109,33 +109,33 @@ def render() -> None:
       </div>
     </div>
 
-    <!-- IFE-E + interpretación -->
+    <!-- Ejecución + interpretación -->
     <div style="display:flex;flex-direction:column;gap:6px">
       <div style="background:rgba(124,92,252,.07);border:1px solid rgba(124,92,252,.28);
                   border-radius:7px;padding:8px 10px">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
-          <div style="font-size:10px;font-weight:700;color:var(--purple)">IFE-E · Ejecución</div>
+          <div style="font-size:10px;font-weight:700;color:var(--purple)">Ejecución plan → presupuesto</div>
           <div style="font-size:9px;font-weight:700;color:var(--purple);
                       background:rgba(124,92,252,.15);border-radius:4px;padding:2px 6px">
-            IFE-E · v1.2
+            Ejecución
           </div>
         </div>
         <div style="font-size:10px;color:var(--muted);line-height:1.5">
           PDOT→POA→PAC→eSIGEF ·
-          <span style="color:var(--red);font-weight:700">⚡ SAT-0:</span>
+          <span style="color:var(--red);font-weight:700">⚡ Alerta:</span>
           4 metas sin contrato PAC
         </div>
       </div>
       <div style="font-size:10px;color:var(--muted);line-height:1.5;padding:0 2px">
         💡 Mayo 2023: el <strong style="color:var(--white)">Ing. Jonathan Toro Largacha</strong>
         asumió 66 compromisos CNE ante 101,181 ciudadanos.
-        IFE-A = <strong style="color:var(--amber)">48/66 formalizados</strong>.
+        Alineación: <strong style="color:var(--amber)">48/66 formalizados</strong>.
         18 sin respaldo PDOT.
       </div>
       <div style="display:inline-block;padding:8px 12px;
                   background:rgba(0,212,255,.06);border:1px solid rgba(0,212,255,.15);
                   border-radius:8px;font-size:12px;color:var(--cyan)">
-        💬 SENTINEL · IFE
+        💬 SENTINEL · Fidelidad
       </div>
     </div>
   </div>
@@ -147,10 +147,10 @@ def render() -> None:
             border-radius:8px;border-left:3px solid rgba(14,165,233,.3);
             font-size:11px;color:var(--muted);line-height:1.6">
   📌 <strong style="color:var(--cyan)">El PDOT sigue siendo el instrumento rector.</strong>
-  El IFE mide la fidelidad del mandato dentro de él: cuántas promesas electorales se convirtieron
-  en metas formales <strong style="color:var(--white)">(IFE-A)</strong> y cuántas de esas metas
+  La fidelidad del mandato se mide dentro de él: cuántas promesas electorales se convirtieron
+  en metas formales <strong style="color:var(--white)">(alineación)</strong> y cuántas de esas metas
   tienen trazabilidad operativa completa hasta el devengado eSIGEF
-  <strong style="color:var(--white)">(IFE-E)</strong>.
+  <strong style="color:var(--white)">(ejecución)</strong>.
 </div>"""
 
     # ── 4 CONGRUENCIAS GRID ───────────────────────────────────────────────────
@@ -164,7 +164,7 @@ def render() -> None:
         "①", "Congruencia Política",
         "Promesa electoral → Meta PDOT → COOTAD",
         58.4, "amber", "amber",
-        "IFE-A 72.73% mide la promesa → plan (48/66 CNE). El 58.4% incorpora la ejecución: 4 metas sin contrato PAC activo",
+        "La alineación 72.73% mide la promesa → plan (48/66 CNE). El 58.4% incorpora la ejecución: 4 metas sin contrato PAC activo",
         "¿Estamos gobernando lo que prometimos?",
         "Analizar Congruencia Política",
     )
@@ -173,7 +173,7 @@ def render() -> None:
         "②", "Congruencia Operativa",
         "POA ↔ PAC ↔ eSIGEF ↔ EP",
         47.2, "red", "red",
-        "Cadena POA-PAC-SERCOP-eSIGEF · 4 cortes detectados · SAT-0 activo",
+        "Cadena POA-PAC-SERCOP-eSIGEF · 4 cortes detectados · alerta activa",
         "¿Lo planificado se está contratando y ejecutando?",
         "Analizar Cadena Operativa",
     )
@@ -182,7 +182,7 @@ def render() -> None:
         "③", "Congruencia Territorial",
         "Inversión ↔ Parroquias ↔ NBI ↔ TPS",
         44.8, "red", "red",
-        "Isabel Muentes (TPS 77.94, NBI 61.2%) recibe $228K · $40/hab vs $217 cabecera · H99 Q1-2026",
+        "Isabel Muentes (TPS 77.94, NBI 61.2%) recibe $228K · $40/hab vs $217 cabecera · Q1-2026",
         "¿La inversión llega donde más se necesita?",
         "Analizar Brecha Territorial",
     )
@@ -225,7 +225,7 @@ def render() -> None:
         tech = """
 <div style="margin-top:16px;font-size:9px;color:rgba(255,255,255,.2);
             border-top:1px solid rgba(255,255,255,.04);padding-top:8px">
-  🔧 Fuente: SIAP-ICPI H16 · H24 · IFE-A auditado CNE · IFE-E en construcción · Q1-2026
+  🔧 Fuente: auditoría CNE · Q1-2026
 </div>"""
 
     # ── ASSEMBLE & RENDER ─────────────────────────────────────────────────────
