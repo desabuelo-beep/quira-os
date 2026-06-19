@@ -17,7 +17,7 @@ METAS_SIN_PAC = [
         "eje": "Servicios Básicos",
         "presupuesto": "$380,000",
         "poa_ok": True, "pac_ok": False, "sercop_ok": False, "esigef_ok": False,
-        "corte": "SAT-0 activa · sin proceso SERCOP publicado",
+        "corte": "Alerta operativa activa · sin proceso SERCOP publicado",
         "riesgo": "Riesgo observación Contraloría + bloqueo PNUD",
     },
     {
@@ -45,7 +45,7 @@ METAS_SIN_PAC = [
         "presupuesto": "$145,000",
         "poa_ok": True, "pac_ok": True, "sercop_ok": False, "esigef_ok": False,
         "corte": "Especificaciones técnicas en revisión · no publicado SERCOP",
-        "riesgo": "Desvío de meta participativa IGP · SAT-V relacionada",
+        "riesgo": "Desvío de meta participativa · alerta relacionada",
     },
 ]
 
@@ -179,7 +179,7 @@ def render() -> None:
                 position:relative;flex-shrink:0">
       <div style="position:absolute;top:-11px;left:50%;transform:translateX(-50%);
                   background:var(--red);color:white;font-size:9px;font-weight:700;
-                  padding:2px 8px;border-radius:4px;white-space:nowrap">4 cortes SAT-0</div>
+                  padding:2px 8px;border-radius:4px;white-space:nowrap">4 cortes con alerta</div>
       <div style="font-size:26px">📁</div>
       <div style="font-size:14px;font-weight:800;color:var(--amber);margin-top:4px">PAC</div>
       <div style="font-size:10px;color:var(--muted)">Plan Anual Compras</div>
@@ -225,7 +225,7 @@ def render() -> None:
   <div style="margin-top:10px;padding:10px 12px;
               background:rgba(255,77,109,.06);border:1px solid rgba(255,77,109,.2);
               border-radius:8px;font-size:10px;color:var(--muted);line-height:1.6">
-    🔴 <strong style="color:var(--red)">SAT-0 activa:</strong>
+    🔴 <strong style="color:var(--red)">Alerta operativa activa:</strong>
     La cadena operativa tiene dos puntos de corte críticos:
     (1) <strong style="color:var(--white)">4 metas</strong> con POA aprobado pero
     sin contrato PAC activo · (2)
@@ -237,7 +237,7 @@ def render() -> None:
     # ── 4 METAS SIN PAC ───────────────────────────────────────────────────────
     metas_html = f"""
 <div class="card">
-  <div class="card-title">⚠️ 4 METAS PDOT SIN CONTRATO PAC · SAT-0 · Detalle</div>
+  <div class="card-title">⚠️ 4 METAS PDOT SIN CONTRATO PAC · Alerta operativa · Detalle</div>
   {"".join(_meta_cadena(m) for m in METAS_SIN_PAC)}
 </div>"""
 
@@ -252,7 +252,7 @@ def render() -> None:
     Cada proceso contractual debe tener un <strong style="color:var(--white)">hash SHA-256</strong>
     de las evidencias cargadas en el portal SERCOP (actas, especificaciones, informes).
     Sin este hash, el proceso no es auditable digitalmente — es "Gasto Ciego".
-    El SIAP-ICPI detectó <strong style="color:var(--red)">24 procesos sin evidencia</strong>
+    El sistema detectó <strong style="color:var(--red)">24 procesos sin evidencia</strong>
     distribuidos en 5 direcciones.
   </div>
   {gc_rows}
@@ -270,7 +270,7 @@ def render() -> None:
   <div style="background:rgba(0,224,150,.05);border:1px solid rgba(0,224,150,.2);
               border-radius:12px;padding:16px">
     <div style="font-size:11px;font-weight:700;color:var(--green);margin-bottom:10px">
-      ✅ PROTOCOLO DESACTIVACIÓN SAT-0
+      ✅ PROTOCOLO DESACTIVACIÓN DE ALERTA
     </div>
     <div style="display:flex;flex-direction:column;gap:6px">
       <div style="font-size:11px;color:var(--white);padding:6px 10px;
@@ -287,7 +287,7 @@ def render() -> None:
       </div>
       <div style="font-size:11px;color:var(--white);padding:6px 10px;
                   background:rgba(0,224,150,.07);border-radius:6px">
-        <strong style="color:var(--green)">DÍA 15:</strong> SAT-0 se desactiva automáticamente · mejora proyectada en IED
+        <strong style="color:var(--green)">DÍA 15:</strong> la alerta se desactiva automáticamente · mejora proyectada en eficiencia
       </div>
     </div>
   </div>
@@ -307,7 +307,7 @@ def render() -> None:
       </div>
       <div style="font-size:11px;color:var(--white);padding:6px 10px;
                   background:rgba(255,77,109,.07);border-radius:6px">
-        🔴 IED se mantiene en 33.99% · calificación no supera 55% al cierre del semestre
+        🔴 La eficiencia direccional se mantiene en 33.99% · calificación no supera 55% al cierre del semestre
       </div>
       <div style="font-size:11px;color:var(--white);padding:6px 10px;
                   background:rgba(255,77,109,.07);border-radius:6px">
@@ -321,8 +321,8 @@ def render() -> None:
     hdr = page_header(
         "⑧ CADENA POA·PAC",
         "Trazabilidad Operativa",
-        "POA → PAC → SERCOP → eSIGEF · SAT-0 activa · 4 cortes · 24 procesos sin SHA-256",
-        '<span class="badge badge-red">🔴 SAT-0 ACTIVA</span>',
+        "POA → PAC → SERCOP → eSIGEF · Alerta operativa activa · 4 cortes · 24 procesos sin SHA-256",
+        '<span class="badge badge-red">🔴 ALERTA ACTIVA</span>',
     )
 
     html = hdr + flujo_html + metas_html + gc_html + protocolo_html
@@ -332,11 +332,11 @@ def render() -> None:
     st.markdown("---")
     c1, c2, c3 = st.columns(3)
     with c1:
-        if st.button("🔮 Sentinel · Protocolo SAT-0",
+        if st.button("🔮 Sentinel · Protocolo de alerta",
                      use_container_width=True, type="primary"):
             st.session_state["page"] = "sentinel"
             st.session_state["sentinel_pregunta_auto"] = (
-                "SAT-0 activa en Montecristi: 4 metas PDOT sin contrato PAC "
+                "Alerta operativa activa en Montecristi: 4 metas PDOT sin contrato PAC "
                 "(agua Isabel Muentes $380K, vialidad Eloy Alfaro $210K, "
                 "luminarias Aníbal San Andrés $95K, centro La Pila $145K) "
                 "y 24 procesos sin evidencia SHA-256 en SERCOP. "
