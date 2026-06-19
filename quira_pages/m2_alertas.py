@@ -37,7 +37,7 @@ _TREND_EMOJI = {
 
 def render() -> None:
     tab_sat, tab_long = st.tabs([
-        "🚨 Señales SAT Activas",
+        "🚨 Señales de Alerta Activas",
         "📈 Evolución Longitudinal",
     ])
 
@@ -46,7 +46,7 @@ def render() -> None:
             from quira_pages.p9_sat import render as _r
             _r()
         except Exception as e:
-            st.error(f"SAT no disponible: {e}")
+            st.error(f"Señales de alerta no disponibles: {e}")
 
     with tab_long:
         _render_longitudinal()
@@ -58,9 +58,9 @@ def render() -> None:
 
 def _render_longitudinal() -> None:
     """Renderiza la tabla RC-M canónica y el gráfico de tendencia ICPI."""
-    st.markdown("### 📈 Evolución Longitudinal — Tabla RC-M")
+    st.markdown("### 📈 Evolución Longitudinal — Trayectoria Institucional")
     st.caption(
-        "Trayectoria institucional: ICPI · Ejecución Presupuestaria (D3) · SAT-IV · Riesgo ponderado"
+        "Trayectoria institucional: cumplimiento · ejecución presupuestaria · alertas · riesgo ponderado"
     )
 
     # ── Carga de datos ─────────────────────────────────────────────────────────
@@ -88,15 +88,15 @@ def _render_longitudinal() -> None:
         st.metric("Períodos registrados", str(n), help="Snapshots únicos en el historial")
     with col2:
         icpi_str = f"{last_icpi:.1f}%" if last_icpi is not None else "—"
-        st.metric("ICPI último período", icpi_str, help=f"Período: {last_period}")
+        st.metric("Cumplimiento último período", icpi_str, help=f"Período: {last_period}")
     with col3:
         trend_icon = _TREND_EMOJI.get(icpi_trend, "❓")
-        st.metric("Tendencia ICPI", f"{trend_icon} {icpi_trend}")
+        st.metric("Tendencia de cumplimiento", f"{trend_icon} {icpi_trend}")
     with col4:
         risk_color = _RIESGO_COLOR.get(last_riesgo, "#6B7280")
         st.markdown(
             f"<div style='text-align:center'>"
-            f"<div style='font-size:0.75rem;color:#9CA3AF;margin-bottom:4px'>Riesgo SAT actual</div>"
+            f"<div style='font-size:0.75rem;color:#9CA3AF;margin-bottom:4px'>Nivel de alerta actual</div>"
             f"<div style='font-size:1.25rem;font-weight:700;color:{risk_color}'>{last_riesgo}</div>"
             f"</div>",
             unsafe_allow_html=True,
@@ -110,7 +110,7 @@ def _render_longitudinal() -> None:
         _render_no_data_hint()
         return
 
-    st.markdown("#### Tabla RC-M Canónica")
+    st.markdown("#### Tabla de Trayectoria Institucional")
     _render_rcm_table(rcm)
 
     st.divider()
@@ -133,7 +133,7 @@ def _render_longitudinal() -> None:
 def _render_rcm_table(rcm: list[dict]) -> None:
     """Renderiza la tabla RC-M con colores semánticos."""
     cols = st.columns([2, 2, 2, 2, 2])
-    headers = ["Período", "ICPI (%)", "D3 Ti (%)", "SAT-IV", "Riesgo"]
+    headers = ["Período", "Cumplimiento (%)", "Ejecución (%)", "Alerta", "Riesgo"]
     for col, h in zip(cols, headers):
         col.markdown(f"**{h}**")
 
@@ -240,7 +240,7 @@ def _render_icpi_chart(icpi_series: list[tuple]) -> None:
                 x=labels,
                 y=values,
                 mode="lines+markers",
-                name="ICPI (%)",
+                name="Cumplimiento (%)",
                 line=dict(color="#00D4FF", width=2),
                 marker=dict(size=8, color="#00D4FF"),
                 connectgaps=True,
@@ -248,8 +248,8 @@ def _render_icpi_chart(icpi_series: list[tuple]) -> None:
         )
 
         fig.update_layout(
-            title="Trayectoria ICPI — Períodos registrados",
-            yaxis=dict(title="ICPI (%)", range=[0, 100], gridcolor="#1F2937"),
+            title="Trayectoria de Cumplimiento — Períodos registrados",
+            yaxis=dict(title="Cumplimiento (%)", range=[0, 100], gridcolor="#1F2937"),
             xaxis=dict(title="Período", gridcolor="#1F2937"),
             plot_bgcolor="#0A1628",
             paper_bgcolor="#0A1628",
@@ -270,13 +270,13 @@ def _render_doctrinal_note() -> None:
         """
         <div style='background:#111827;border-left:3px solid #00D4FF;
                     padding:12px 16px;border-radius:4px;margin-top:16px;font-size:0.82rem'>
-        <strong style='color:#00D4FF'>Doctrina RC-M</strong><br>
+        <strong style='color:#00D4FF'>Cómo leer la trayectoria</strong><br>
         <span style='color:#9CA3AF'>
-        La tabla RC-M convierte observaciones puntuales en trayectoria institucional.
-        Ti &lt; 60% por ≥ 3 períodos consecutivos activa SAT-III REINCIDENTE
-        (D3-Ejecución · COPFP Art. 113).
-        ICPI &lt; 65% sostenido = riesgo de pérdida de elegibilidad a fondos
-        (Q5-Proyección contextual).
+        La tabla convierte observaciones puntuales en trayectoria institucional.
+        Una ejecución presupuestaria &lt; 60% por ≥ 3 períodos consecutivos activa una
+        alerta de reincidencia (COPFP Art. 113).
+        Un cumplimiento &lt; 65% sostenido = riesgo de pérdida de elegibilidad a fondos
+        (proyección contextual).
         </span>
         </div>
         """,
@@ -297,7 +297,7 @@ def _render_no_data_hint() -> None:
         <div style='font-size:0.85rem;color:#9CA3AF;max-width:480px;margin:0 auto'>
             Ejecuta el pipeline una vez por período (semana / mes) desde
             <strong>Control → Panel de Carga</strong>.
-            Cada ejecución agrega un punto a la trayectoria RC-M.
+            Cada ejecución agrega un punto a la trayectoria institucional.
         </div>
         </div>
         """,
