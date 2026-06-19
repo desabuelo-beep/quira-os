@@ -1188,102 +1188,11 @@
  ],
  "p_concejo.py": [
   {
-   "line": 358,
-   "terms": "H90",
-   "alt": "Fuente publica (SIGEF/SERCOP/CPCCS)",
-   "risk": "ALTO",
-   "snippet": "COOTAD Art. 238 · Manual Clasificador Presupuestario 2026 · H90 PRESU..."
-  },
-  {
-   "line": 376,
-   "terms": "Gold Master, TGI",
-   "alt": "motor / sistema canonico",
-   "risk": "ALTO",
-   "snippet": "QUIRA_DOCTRINE_v1.3 · TGI Framework D1-D5 · Gold Master v5.5_TGI"
-  },
-  {
-   "line": 613,
-   "terms": "Gold Master",
-   "alt": "motor / sistema canonico",
-   "risk": "ALTO",
-   "snippet": "<div style=\"margin-top:16px;font:400 8px/1 JetBrains Mono,monospace;c..."
-  },
-  {
-   "line": 327,
-   "terms": "IET",
-   "alt": "Equidad territorial",
-   "risk": "ALTO",
-   "snippet": "(Muy Regresivo) — QUIRA confirma la inequidad territorial. IET parro..."
-  },
-  {
-   "line": 364,
-   "terms": "TGI",
-   "alt": "Gobernanza territorial",
-   "risk": "ALTO",
-   "snippet": "El TGI es"
-  },
-  {
-   "line": 365,
-   "terms": "TGI",
-   "alt": "Gobernanza territorial",
-   "risk": "BAJO",
-   "snippet": "TGI"
-  },
-  {
-   "line": 369,
-   "terms": "TGI",
-   "alt": "Gobernanza territorial",
-   "risk": "ALTO",
-   "snippet": "El TGI crece año tras año y lo confirma el sistema. La legalidad y la..."
-  },
-  {
-   "line": 373,
-   "terms": "TGI",
-   "alt": "Gobernanza territorial",
-   "risk": "ALTO",
-   "snippet": "No defender el número — defender la trayectoria. El TGI"
-  },
-  {
-   "line": 374,
-   "terms": "TGI",
-   "alt": "Gobernanza territorial",
-   "risk": "ALTO",
-   "snippet": "hoy es mejor que el TGI 67 del año pasado y el 57 del anterior. La d..."
-  },
-  {
-   "line": 468,
-   "terms": "TGI",
-   "alt": "Gobernanza territorial",
-   "risk": "ALTO",
-   "snippet": "El TGI es tendencia positiva — no un snapshot estático"
-  },
-  {
    "line": 194,
    "terms": "TGI",
    "alt": "Gobernanza territorial",
    "risk": "BAJO",
    "snippet": "TGI"
-  },
-  {
-   "line": 447,
-   "terms": "SAT-III",
-   "alt": "Alerta de reincidencia",
-   "risk": "ALTO",
-   "snippet": "El SAT-III activado no es una falla — es el sistema funcionando. Dete..."
-  },
-  {
-   "line": 470,
-   "terms": "TGI",
-   "alt": "Gobernanza territorial",
-   "risk": "BAJO",
-   "snippet": "TGI"
-  },
-  {
-   "line": 470,
-   "terms": "TGI",
-   "alt": "Gobernanza territorial",
-   "risk": "ALTO",
-   "snippet": "hoy vs TGI 67 hace 12 meses vs TGI 57 hace 24. Eso es una curva de m..."
   }
  ],
  "p_ejecutivo.py": [

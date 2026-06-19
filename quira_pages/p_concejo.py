@@ -324,11 +324,11 @@ def _html_ataques(ctx: dict) -> str:
     a2 = _ataque_card(
         "A2",
         "Las parroquias rurales están abandonadas. El NBI rural es del 55.7%.",
-        f"NBI rural promedio: {nbi:.1f}%. IRS: {irs:.1f} (Muy Regresivo) — QUIRA confirma "
-        f"la inequidad territorial. IET parroquias: Montecristi 193.75% (inversión sobre "
+        f"NBI rural promedio: {nbi:.1f}%. Regresividad social: {irs:.1f} (Muy Regresivo) — QUIRA confirma "
+        f"la inequidad territorial. Equidad territorial por parroquia: Montecristi 193.75% (inversión sobre "
         f"paridad) vs Colorado 28.57% e Isabel Muentes 35.71% (sub-inversión crítica). "
-        f"El D4 Equidad Territorial: {d3:.1f}% — problema metodológico real.",
-        f"El IRS {irs:.0f} es un dato del sistema QUIRA, no un ataque — lo confirmamos. "
+        f"La equidad territorial: {d3:.1f}% — problema metodológico real.",
+        f"La regresividad social {irs:.0f} es un dato del sistema QUIRA, no un ataque — lo confirmamos. "
         f"Lo que el sistema también muestra es que este es el primer mandato que lo mide, "
         f"lo publica y lo incluye en el PDOT 2023-2027 como meta vinculante.",
         f"La inequidad territorial es una herencia estructural acumulada en 20 años. "
@@ -355,25 +355,25 @@ def _html_ataques(ctx: dict) -> str:
         f"El contraste que la oposición usa como ataque es la misma evidencia de que "
         f"el holding municipal opera correctamente. El problema está localizado en un "
         f"cuello de botella financiero específico — no en la gestión institucional.",
-        "COOTAD Art. 238 · Manual Clasificador Presupuestario 2026 · H90 PRESUPUESTO CONSOLIDADO",
+        "COOTAD Art. 238 · Manual Clasificador Presupuestario 2026 · Presupuesto Consolidado (Holding)",
         "ALTO",
     )
 
     a4 = _ataque_card(
         "A4",
-        f"El TGI es {tgi:.1f} — no llegaron al 70 comprometido.",
-        f"TGI {CORTE}: {tgi:.1f}. Tendencia 3 años: 57→67→{tgi:.0f} (crecimiento sostenido). "
-        f"D1 Legalidad: {d1:.1f}% (fuerte). D5 Capacidad Institucional: {d5:.1f}% (máximo). "
-        f"D3 Ejecución: {d3:.1f}% — único vector que deprime el score global. "
-        f"Con Ti normalizado Q2+BDE, D3 proyecta recuperación.",
-        f"El TGI crece año tras año y lo confirma el sistema. "
+        f"La gobernanza territorial es {tgi:.1f} — no llegaron al 70 comprometido.",
+        f"Gobernanza territorial {CORTE}: {tgi:.1f}. Tendencia 3 años: 57→67→{tgi:.0f} (crecimiento sostenido). "
+        f"Legalidad: {d1:.1f}% (fuerte). Capacidad institucional: {d5:.1f}% (máximo). "
+        f"Ejecución: {d3:.1f}% — único vector que deprime el resultado global. "
+        f"Con ejecución normalizada Q2+BDE, proyecta recuperación.",
+        f"La gobernanza territorial crece año tras año y lo confirma el sistema. "
         f"La legalidad y la capacidad institucional están al máximo. "
-        f"El único vector deprimido es D3 — el mismo que estamos trabajando con BDE. "
-        f"El TGI no es un número estático: es una trayectoria. Y la trayectoria es positiva.",
+        f"El único vector deprimido es la ejecución — el mismo que estamos trabajando con BDE. "
+        f"La gobernanza territorial no es un número estático: es una trayectoria. Y la trayectoria es positiva.",
         f"No defender el número — defender la trayectoria. "
-        f"El TGI {tgi:.0f} hoy es mejor que el TGI 67 del año pasado y el 57 del anterior. "
+        f"La gobernanza territorial {tgi:.0f} hoy es mejor que el 67 del año pasado y el 57 del anterior. "
         f"La dirección es correcta. La activación BDE es el catalizador para Q2.",
-        "QUIRA_DOCTRINE_v1.3 · TGI Framework D1-D5 · Gold Master v5.5_TGI",
+        "Doctrina QUIRA · Marco de gobernanza territorial · Motor del sistema",
         "MEDIO",
     )
 
@@ -444,7 +444,7 @@ def _html_argumentario(ctx: dict) -> str:
             "ico": "◆",
             "titulo": "Tenemos el sistema de alerta temprana más sofisticado del cantón",
             "texto": (
-                f"El SAT-III activado no es una falla — es el sistema funcionando. "
+                f"La alerta de reincidencia activada no es una falla — es el sistema funcionando. "
                 f"Detectamos la ruptura en Q1 con datos reales, no en diciembre. "
                 f"Eso da 6 meses de margen de acción. "
                 f"¿Cuántos concejos municipales del país pueden decir eso?"
@@ -465,12 +465,12 @@ def _html_argumentario(ctx: dict) -> str:
         },
         {
             "ico": "✦",
-            "titulo": "El TGI es tendencia positiva — no un snapshot estático",
+            "titulo": "La gobernanza territorial es tendencia positiva — no un snapshot estático",
             "texto": (
-                f"TGI {ctx['tgi_score']:.1f} hoy vs TGI 67 hace 12 meses vs TGI 57 hace 24. "
+                f"Gobernanza territorial {ctx['tgi_score']:.1f} hoy vs 67 hace 12 meses vs 57 hace 24. "
                 f"Eso es una curva de mejora institucional sostenida. "
-                f"D1 Legalidad {ctx['d1']:.1f}%, D5 Capacidad {ctx['d5']:.1f}%. "
-                f"La institución tiene bases sólidas. El vector D3 "
+                f"Legalidad {ctx['d1']:.1f}%, Capacidad {ctx['d5']:.1f}%. "
+                f"La institución tiene bases sólidas. El vector de ejecución "
                 f"tiene causa identificada y solución en marcha."
             ),
             "color": "#F59E0B",
@@ -613,7 +613,7 @@ def render() -> None:
         '<div style="margin-top:16px;font:400 8px/1 JetBrains Mono,monospace;'
         'color:rgba(255,255,255,.1);text-align:right">'
         'QUIRA Intelligence · Panel Estratégico · D.3b · '
-        'Gold Master v5.5_TGI · Dylus Lab © 2026'
+        'Dylus Lab © 2026'
         '</div>',
         unsafe_allow_html=True,
     )
