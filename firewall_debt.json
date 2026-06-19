@@ -203,11 +203,74 @@
  ],
  "p07_transparencia.py": [
   {
+   "line": 84,
+   "terms": "Dom07",
+   "alt": "node id interno",
+   "risk": "BAJO",
+   "snippet": "Dom07"
+  },
+  {
+   "line": 88,
+   "terms": "CE_18",
+   "alt": "node id interno",
+   "risk": "BAJO",
+   "snippet": "CE_18"
+  },
+  {
+   "line": 94,
+   "terms": "Dom08",
+   "alt": "node id interno",
+   "risk": "BAJO",
+   "snippet": "Dom08"
+  },
+  {
+   "line": 98,
+   "terms": "CE_95",
+   "alt": "node id interno",
+   "risk": "BAJO",
+   "snippet": "CE_95"
+  },
+  {
+   "line": 104,
+   "terms": "Dom04",
+   "alt": "node id interno",
+   "risk": "BAJO",
+   "snippet": "Dom04"
+  },
+  {
    "line": 651,
    "terms": "Neo4j",
    "alt": "—",
    "risk": "ALTO",
    "snippet": "🔴 Datos en vivo · Neo4j"
+  },
+  {
+   "line": 168,
+   "terms": "Dom07",
+   "alt": "node id interno",
+   "risk": "ALTO",
+   "snippet": ";margin-top:6px;font-weight:700'>REGLA DE COLAPSO ACTIVA — Dom07 es O..."
+  },
+  {
+   "line": 193,
+   "terms": "Dom07",
+   "alt": "node id interno",
+   "risk": "ALTO",
+   "snippet": ";line-height:1.5\">         El circuito C01 conecta causalmente tres d..."
+  },
+  {
+   "line": 274,
+   "terms": "Dom07",
+   "alt": "node id interno",
+   "risk": "ALTO",
+   "snippet": ";padding:3px 8px;                  border-radius:4px;font-weight:700\"..."
+  },
+  {
+   "line": 280,
+   "terms": "Dom07",
+   "alt": "node id interno",
+   "risk": "ALTO",
+   "snippet": ";padding:3px 8px;                  border-radius:4px;font-weight:700\"..."
   },
   {
    "line": 658,
@@ -606,7 +669,7 @@
  ],
  "p19_genero.py": [
   {
-   "line": 569,
+   "line": 568,
    "terms": "PSG",
    "alt": "Presupuesto con enfoque de genero",
    "risk": "BAJO",
@@ -706,10 +769,24 @@
   },
   {
    "line": 269,
-   "terms": "H05",
+   "terms": "H05, ICGI",
    "alt": "Fuente publica (SIGEF/SERCOP/CPCCS)",
    "risk": "ALTO",
    "snippet": "<div class=\"card\">   <div class=\"card-title\">Flujo de validación QUI..."
+  },
+  {
+   "line": 328,
+   "terms": "ICGI",
+   "alt": "Calificacion de gestion",
+   "risk": "ALTO",
+   "snippet": "<div style=\"padding:12px 16px;background:rgba(124,92,252,.07);      ..."
+  },
+  {
+   "line": 372,
+   "terms": "ICGI",
+   "alt": "Calificacion de gestion",
+   "risk": "ALTO",
+   "snippet": "<div class=\"card\">   <div class=\"card-title\">     Ejemplo · Hallazgo..."
   },
   {
    "line": 515,
@@ -1109,6 +1186,20 @@
    "alt": "Gobernanza territorial",
    "risk": "ALTO",
    "snippet": "TGI Territorial"
+  },
+  {
+   "line": 324,
+   "terms": "IRS",
+   "alt": "Regresividad de la inversion",
+   "risk": "ALTO",
+   "snippet": "IRS — Regresividad"
+  },
+  {
+   "line": 336,
+   "terms": "IRS",
+   "alt": "Regresividad de la inversion",
+   "risk": "ALTO",
+   "snippet": "IRS Muy Regresivo 79.7"
   },
   {
    "line": 585,

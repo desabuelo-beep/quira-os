@@ -340,7 +340,7 @@ def render() -> None:
                 st.session_state["page"] = "sentinel"
                 st.session_state["sentinel_pregunta_auto"] = (
                     f"Estoy simulando un escenario donde el GAD de Montecristi mejora: {mejoras_txt}. "
-                    f"El modelo proyecta un ICGI-T de {score_proj:.2f}% ({avep_label}). "
+                    f"El modelo proyecta una calificación de gestión de {score_proj:.2f}% ({avep_label}). "
                     f"¿Es este escenario realista en el plazo Q2-Q3 2026? "
                     f"¿Qué obstáculos concretos debo anticipar para alcanzarlo?"
                 )
@@ -570,15 +570,15 @@ def render() -> None:
         st.markdown("---")
         c1, c2, c3 = st.columns(3)
         with c1:
-            if st.button("🔮 Sentinel · Estrategia IRS + cooperantes",
+            if st.button("🔮 Sentinel · Estrategia de equidad de inversión + cooperantes",
                          use_container_width=True, type="primary", key="sent_irs"):
                 st.session_state["page"] = "sentinel"
                 st.session_state["sentinel_pregunta_auto"] = (
-                    "El IRS de Montecristi es 79.7% (Muy Regresivo) con pesos Composite_Need "
-                    "Agua=50%, NBI=30%, Población=20%. Esto significa que la inversión pública "
+                    "El índice de regresividad de la inversión de Montecristi es 79.7% (Muy Regresivo) "
+                    "con ponderación Agua=50%, NBI=30%, Población=20%. Esto significa que la inversión pública "
                     "NO llega proporcionalmente a donde más se necesita. "
                     "¿Cómo presento este indicador ante PNUD, BID Lab y GEF para fortalecer "
-                    "la solicitud de fondos? ¿Qué acciones concretas en Q2-Q3 2026 reducen el IRS "
+                    "la solicitud de fondos? ¿Qué acciones concretas en Q2-Q3 2026 reducen la regresividad "
                     "de 79.7% a menos de 65%?"
                 )
                 st.rerun()

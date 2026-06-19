@@ -153,7 +153,6 @@ def _igm_card(ind: dict) -> str:
     <div style="display:flex;align-items:center;gap:6px;flex:1">
       <span style="font-size:14px">{ind["icon"]}</span>
       <div>
-        <div style="font-size:9px;color:var(--muted);font-weight:700;letter-spacing:.06em">{ind["codigo"]}</div>
         <div style="font-size:11px;font-weight:700;color:var(--white)">{ind["nombre"]}</div>
       </div>
       {badge}

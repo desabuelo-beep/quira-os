@@ -15,6 +15,11 @@ Riesgo:
 Importante: NO marca terminos PUBLICOS legitimos (SIGEF/eSIGEF/SERCOP/CPCCS/LOTAIP/COOTAD/
 PDOT/POA/PAC/ODS/NBI/CNE/RDC) — esos SON lenguaje de gobernanza correcto.
 
+Limitacion conocida (PUNTO CIEGO): solo ve ast.Constant literales. NO detecta acronimos
+canonicos interpolados desde variables (ej. v["codigo"] -> "IED" renderizado en un slider).
+Convencion: NO guardar acronimos canonicos en campos dict que se renderizan -> usar etiqueta
+publica. Un bare "IED" dict-value se clasifica BAJO aunque se muestre; revisar manualmente.
+
 Uso:  python scripts/dev/firewall_audit.py [carpeta]     (default: quira_pages)
 """
 from __future__ import annotations
@@ -40,9 +45,17 @@ PROHIBITED: list[tuple[re.Pattern, str]] = [
     (re.compile(r"\bIED\b"),                       "Eficiencia directiva"),
     (re.compile(r"\bIOC\b"),                       "Opacidad informativa"),
     (re.compile(r"\bIET\b"),                       "Equidad territorial"),
+    (re.compile(r"\bIRS\b"),                        "Regresividad de la inversion"),
+    (re.compile(r"\bICM\b"),                        "—"),
+    (re.compile(r"\bICGI\b"),                       "Calificacion de gestion"),
     (re.compile(r"\b(?:IFE|ITAM|IPE|IEFR|MMP)\b"), "—"),
     (re.compile(r"\bQTMP\b"),                      "—"),
     (re.compile(r"\bQNKC\b"),                      "—"),
+    (re.compile(r"\bComposite_Need\w*"),           "Necesidad territorial"),
+    (re.compile(r"\bInv_PerC\w*"),                 "Inversion por habitante"),
+    (re.compile(r"\bMNT_UUID\b"),                  "trazabilidad interna"),
+    (re.compile(r"\bDom\d{2}\b"),                  "node id interno"),
+    (re.compile(r"\bCE_\d{2,3}\b"),                "node id interno"),
     (re.compile(r"\bSAT-?(?:I{1,3}|\d+)?\b"),      "Alerta de reincidencia"),
     (re.compile(r"\bSupabase\b"),                  "registros institucionales"),
     (re.compile(r"\bNeo4j\b"),                     "—"),
