@@ -41,8 +41,8 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
 
 ## AHORA (estado vivo · historial → `governance/historico/BOOT_2026-06-17.md`)
 **OLA 1 COMPLETA** — 3 hardcodes críticos al motor: d05 Holding 12.4% (h90) · d08 Participación 48.33% · d12 Género 2.83% (vectores). Patrón: tarjeta→detalle→firewall→commit. Último `fea4d28`.
-**Firewall (ADR-027 · 3 capas):** deuda **Familia=65** · canon Dylus/IA=35 · BAJO=54 · `firewall_audit.py` · 6 cajones (últ. p13).
-▶ **Blitz→0:** `m2_alertas`11·`p11`9·`p8_metas`8·`p17_rdc`7·`p9_sat`7·`p3_cong`6·menores. Verificar `m2_alertas`/`p9_sat`/`p3_cong` (¿Dylus o público?). ⚠ escáner ciego a IRS·ICGI-T·codigo interpolado → a mano.
+**Firewall (ADR-027 · 3 capas):** deuda **Familia=71** (real · era 65) · canon Dylus/IA=37 · BAJO=59 · 6 cajones+calibración.
+▶ **Blitz→0:** `m2_alertas`11·`p11`9·`p8_metas`8·`p17_rdc`7·`p9_sat`7·`p07`6·`p3_cong`6·`p5_op`6·menores. Escáner calibrado · punto ciego cerrado. Verificar `m2_alertas`/`p9_sat`/`p3_cong` (¿Dylus/público?).
 ⚠ **CI:** BOOT.md límite 6KB. §AHORA LEAN — al cierre REEMPLAZAR (no apilar) + archivar a `historico/`.
 
 ## REGLA CANÓNICA — todo artefacto al grafo
