@@ -40,9 +40,9 @@ dashboards, es lo que se define UNA vez. Sprint C: ontología antes que ingenier
 BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo que no se mueve.
 
 ## AHORA (estado vivo · historial → `governance/historico/BOOT_2026-06-17.md`)
-**OLA 1 COMPLETA** — 3 hardcodes críticos al motor: d05 Holding 12.4% (h90) · d08 Participación 48.33% · d12 Género 2.83% (vectores). Patrón: tarjeta→detalle→firewall→commit. Último `fea4d28`.
-**Firewall (ADR-027) COMPLETO ✅:** deuda **Familia=0** (119→0) · canon Dylus/IA=37 intacto · escáner calibrado · punto ciego cerrado.
-▶ **Convergencia cerrada:** toda la UI pública en lenguaje de administración pública (regla mixto · canon en capa Dylus). Futuro: Compilador+CID → `ADR-028` (post-conv).
+**OLA 1 + FIREWALL COMPLETOS** — hardcodes al motor (d05/d08/d12) · deuda Familia **119→0** (−100%) · canon Dylus/IA=37 · escáner calibrado (20 térm.) · punto ciego cerrado · regla mixto.
+▶ **Sprint E — CLI-Q Compiler (ADR-028):** Fase 1 ✅ `firewall_dictionary.json` (tabla de símbolos · multi-backend). Fase 2 ⛏️ bucle CID (scan→patch→verify→commit · solo Dylus). Fase 3 multi-backend.
+📐 Mapa motores (frontera de verdad c/u): `docs/architecture/QUIRA_OS_MOTORES_CLI-Q.md`. Pendiente (colega): inventario a nivel código (fuente vs vista).
 ⚠ **CI:** BOOT.md límite 6KB. §AHORA LEAN — al cierre REEMPLAZAR (no apilar) + archivar a `historico/`.
 
 ## REGLA CANÓNICA — todo artefacto al grafo
