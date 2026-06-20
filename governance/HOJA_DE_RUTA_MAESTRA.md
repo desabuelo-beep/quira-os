@@ -167,15 +167,34 @@ La Capa 1 (el Cantón) sí es naturalmente transversal — el nombre del cantón
 
 ---
 
-## 4. DÓNDE ESTAMOS (2026-06-14)
+## 4. DÓNDE ESTAMOS (2026-06-21 · reconciliación de DOS VÍAS · Javo + mesa)
 
+> **Reconciliación clave (resuelve la sensación de "salto"):** QUIRA creció en DOS vías paralelas.
+> La numeración A-F es la **VÍA PRODUCTO**. La gobernanza/ingeniería de junio es la **VÍA SISTEMA**
+> (Dylus Lab) — NO consume letras de producto. No fue desvío: fue construir la segunda vía, que ni
+> siquiera estaba dibujada. Mapea a la decisión de Javo: *Operaciones opera el Estado · Dylus opera QUIRA.*
+
+**VÍA PRODUCTO (QUIRA Operaciones · hacia afuera · la manda el CAF):**
 ```
 Sprint A ✅  Base metodológica
 Sprint B ✅  Territorio comprendido (2,004 indicadores · GeoTwin narrativo validado)
-Sprint C ✅  FUNDACIÓN ONTOLÓGICA — CERRADA (13 dominios anclados · Tabla Equivalencias v2 · ESG · Protocolo de Expansión)
-Sprint D 🔄  EVIDENCIA OPERATIVA — EN CURSO (cosecha → dashboards · piloto d10 inventariado · ontología validada)
-Sprint E ⏳  QUIRA Ciudadana   ·   Sprint F ⏳  Barrido Nacional (Fase 2)
+Sprint C ✅  Fundación Ontológica (13 dominios · Tabla Equivalencias v2 · ESG · Protocolo)
+Sprint D 🔄  EVIDENCIA OPERATIVA — EN CURSO (13 cajones con dato real · gate Bloomberg 0 ✅ · GeoTwin pendiente)
+Sprint E ⏳  QUIRA Ciudadana (6 fases Terra)   ·   Sprint F ⏳  Barrido Nacional
 ```
+
+**VÍA SISTEMA (Dylus Lab · hacia adentro · ingeniería de la plataforma · NO es ruta de producto):**
+```
+S-1 ✅  Firewall Bloomberg + escáner calibrado (deuda Familia 119→0 · = el gate Bloomberg de Sprint D)
+S-2 ✅  Soberanía + Lenguaje: ADR-027 (3 capas) · ADR-028 (Compilador CLI-Q + CID) · Diccionario Soberano
+S-3 ✅  Cartografía: Architecture v1.0 · Dependency Atlas v1.0 · Inventario código · grafo maestro 1972
+S-4 ⏳  Compilador CLI-Q/CID Fase 2 · Desexcelización (ADR-029) — se construye cuando el producto lo permita
+```
+*(Las etiquetas "Sprint D.2A / Sprint E" usadas en junio eran VÍA SISTEMA — re-ancladas aquí. El Sprint E de
+producto sigue siendo QUIRA Ciudadana, intacto. La VÍA SISTEMA jamás roba prioridad a la VÍA PRODUCTO.)*
+
+**Prioridad (CAF manda · §6):** la **VÍA PRODUCTO**. Próximo foco = **cerrar Sprint D** (demo Montecristi
+mostrable: 13 cajones + GeoTwin), NO el compilador (Dylus-interno). El molde primero, siempre (§0).
 
 ---
 
