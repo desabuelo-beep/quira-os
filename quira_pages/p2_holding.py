@@ -934,10 +934,8 @@ def render() -> None:
 <div style="margin-top:16px;padding:10px 12px;background:rgba(255,255,255,.02);
             border:1px solid rgba(255,255,255,.06);border-radius:8px;
             font-size:9px;color:rgba(255,255,255,.25)">
-  🔧 Fuente técnica: tabla <code>sercop_contratos</code> en Supabase ·
-  Ingesta: <code>scripts/sercop_sprint0.py</code> · OCDS API SERCOP ·
-  Deduplicación por UNIQUE(ocid) · Cache 30 min ·
-  Actualizar: <code>python scripts/sercop_sprint0.py --year YYYY</code>
+  🔧 Fuente: contratación pública del SERCOP (estándar abierto OCDS) ·
+  actualización periódica · deduplicación por identificador único de proceso.
 </div>"""
 
     # ── CAJÓN 2 — Concentración de Proveedores ───────────────────────────────

@@ -148,7 +148,7 @@ def _load_elegibilidad() -> list[dict]:
         return rows
 
     except Exception as exc:
-        logger.error(f"[p18] Supabase no disponible: {exc}")
+        logger.error(f"[p18] registros no disponibles: {exc}")
         return []
 
 

@@ -238,15 +238,6 @@
    "snippet": "El IET (Equidad Territorial) de Montecristi es 44.80%. La brecha per ..."
   }
  ],
- "p10_territorio.py": [
-  {
-   "line": 252,
-   "terms": "Neo4j",
-   "alt": "—",
-   "risk": "ALTO",
-   "snippet": "🔴 Datos en vivo · Neo4j"
-  }
- ],
  "p11_ods.py": [
   {
    "line": 210,
@@ -281,57 +272,6 @@
    "alt": "Participacion ciudadana",
    "risk": "BAJO",
    "snippet": "IGP"
-  }
- ],
- "p17_rdc.py": [
-  {
-   "line": 35,
-   "terms": "ISP",
-   "alt": "Salud presupuestaria",
-   "risk": "ALTO",
-   "snippet": "ISP regularizado ≥ 25% (avance) antes de RDC"
-  },
-  {
-   "line": 38,
-   "terms": "SAT-0",
-   "alt": "Alerta de reincidencia",
-   "risk": "ALTO",
-   "snippet": "4 metas SAT-0 regularizadas (PAC + SHA-256)"
-  },
-  {
-   "line": 39,
-   "terms": "IFE",
-   "alt": "—",
-   "risk": "ALTO",
-   "snippet": "IFE-A actualizado · 48/66 promesas con estado Q2"
-  },
-  {
-   "line": 44,
-   "terms": "IOC",
-   "alt": "Opacidad informativa",
-   "risk": "ALTO",
-   "snippet": "IOC < 10% (actual 17.71%) · reducir opacidad"
-  },
-  {
-   "line": 46,
-   "terms": "PSG",
-   "alt": "Presupuesto con enfoque de genero",
-   "risk": "ALTO",
-   "snippet": "PSG ≥ 20% documentado y certificado (actual 12.83%)"
-  },
-  {
-   "line": 152,
-   "terms": "Neo4j",
-   "alt": "—",
-   "risk": "ALTO",
-   "snippet": "<span style=\"font-size:8px;color:var(--cyan);background:rgba(0,212,25..."
-  },
-  {
-   "line": 59,
-   "terms": "SAT-0",
-   "alt": "Alerta de reincidencia",
-   "risk": "ALTO",
-   "snippet": "Regularizar SAT-0: 4 metas PAC + 24 SHA-256"
   }
  ],
  "p18_cooperacion.py": [
@@ -432,13 +372,6 @@
    "alt": "—",
    "risk": "BAJO",
    "snippet": "ITAM"
-  },
-  {
-   "line": 151,
-   "terms": "Supabase",
-   "alt": "registros institucionales",
-   "risk": "ALTO",
-   "snippet": "[p18] Supabase no disponible:"
   },
   {
    "line": 606,
@@ -588,15 +521,6 @@
    "alt": "Presupuesto con enfoque de genero",
    "risk": "BAJO",
    "snippet": "PSG"
-  }
- ],
- "p2_holding.py": [
-  {
-   "line": 933,
-   "terms": "Supabase",
-   "alt": "registros institucionales",
-   "risk": "ALTO",
-   "snippet": "<div style=\"margin-top:16px;padding:10px 12px;background:rgba(255,25..."
   }
  ],
  "p4_geotwin.py": [
@@ -753,13 +677,6 @@
   }
  ],
  "p_command_center.py": [
-  {
-   "line": 121,
-   "terms": "IFE",
-   "alt": "—",
-   "risk": "ALTO",
-   "snippet": "53 de 56 metas en cronograma · IFE-A 72.73%: 48/66 promesas CNE forma..."
-  },
   {
    "line": 330,
    "terms": "SAT",

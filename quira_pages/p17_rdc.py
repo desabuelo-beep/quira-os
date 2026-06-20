@@ -32,18 +32,18 @@ CHECKLIST_RDC = [
     ("Normativa",     "Informe de gestión aprobado por Alcaldía",                    False, True),
     ("Normativa",     "Convocatoria ampliada · mínimo 2 sesiones públicas",          False, True),
     ("Financiero",    "Estado de ejecución presupuestaria actualizado al Q2-2026",   False, True),
-    ("Financiero",    "ISP regularizado ≥ 25% (avance) antes de RDC",               False, True),
+    ("Financiero",    "Salud presupuestaria regularizada ≥ 25% (avance) antes de RDC",               False, True),
     ("Financiero",    "Informe deuda y coactivas con plan de pago",                  False, False),
     ("PDOT",          "Avance de metas PDOT 2023-2027 con indicadores verificables", False, True),
-    ("PDOT",          "4 metas SAT-0 regularizadas (PAC + SHA-256)",                 False, True),
-    ("PDOT",          "IFE-A actualizado · 48/66 promesas con estado Q2",            True,  False),
+    ("PDOT",          "4 metas con alerta regularizadas (PAC + SHA-256)",                 False, True),
+    ("PDOT",          "Fidelidad actualizada · 48/66 promesas con estado Q2",            True,  False),
     ("Participación", "7/7 parroquias con asamblea previa a RDC",                    False, True),
     ("Participación", "Actas firmadas y digitalizadas · Isabel Muentes + Aníbal SA", False, True),
     ("Participación", "Presupuesto participativo rendido por parroquia",              False, False),
     ("Transparencia", "21 artículos LOTAIP completos y actualizados",                False, True),
-    ("Transparencia", "IOC < 10% (actual 17.71%) · reducir opacidad",               False, False),
+    ("Transparencia", "Opacidad informativa < 10% (actual 17.71%)",               False, False),
     ("Transparencia", "Estadísticas quejas/denuncias publicadas (Art. 7r)",          False, False),
-    ("Género",        "PSG ≥ 20% documentado y certificado (actual 12.83%)",         False, False),
+    ("Género",        "Presupuesto de género ≥ 20% documentado y certificado (actual 12.83%)",         False, False),
     ("Género",        "Plan género aprobado · Patronato alineado",                   False, False),
     ("Holding",       "Informes EP Aseo, Bomberos, Patronato consolidados",          True,  False),
     ("Holding",       "Score holding ≥ 65% con evidencias por entidad",              False, False),
@@ -56,7 +56,7 @@ _FASES = [
         "periodo": "Mayo–Junio 2026",
         "color": "amber",
         "hitos": [
-            "Regularizar SAT-0: 4 metas PAC + 24 SHA-256",
+            "Regularizar alertas: 4 metas PAC + 24 SHA-256",
             "Convocar asambleas Isabel Muentes y Aníbal San Andrés",
             "Publicar 4 artículos LOTAIP faltantes",
             "Actualizar informe gestión con indicadores PDOT",
@@ -150,7 +150,7 @@ def _render_crdc_bloque() -> str:
     # ── fuente badge ──
     fuente_badge = (
         '<span style="font-size:8px;color:var(--cyan);background:rgba(0,212,255,.1);'
-        'border-radius:4px;padding:1px 5px;margin-left:6px">● Neo4j AuraDB</span>'
+        'border-radius:4px;padding:1px 5px;margin-left:6px">● Datos en vivo</span>'
         if fuente_neo4j else
         '<span style="font-size:8px;color:var(--muted);background:rgba(120,120,120,.1);'
         'border-radius:4px;padding:1px 5px;margin-left:6px">◌ Fallback local</span>'

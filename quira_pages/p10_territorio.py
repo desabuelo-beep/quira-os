@@ -249,7 +249,7 @@ def _render_dom10_ejecutivo(chain: dict) -> None:
     )
 
     # ── Sección 5: Pie de página ──────────────────────────────────────────────
-    fuente_badge = "🔴 Datos en vivo · Neo4j" if fuente_neo4j else "📋 Datos consolidados"
+    fuente_badge = "🔴 Datos en vivo" if fuente_neo4j else "📋 Datos consolidados"
     st.caption(f"{fuente_badge} · Fuente: {fuente} · Corte: {corte}")
 
 

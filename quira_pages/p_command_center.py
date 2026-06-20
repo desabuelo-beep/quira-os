@@ -118,7 +118,7 @@ _DOMAINS_12: list[dict] = [
         "nombre": "Metas PDOT · Mandato",
         "estado": "EN RUTA",
         "metric": "94.6%",
-        "narrativa": "53 de 56 metas en cronograma · IFE-A 72.73%: 48/66 promesas CNE formalizadas en PDOT.",
+        "narrativa": "53 de 56 metas en cronograma · Fidelidad 72.73%: 48/66 promesas CNE formalizadas en PDOT.",
         "temp": "alerta", "mod": "metas",  # Dom03 · ADR-026 routing fix 2026-06-09
     },
     # ── Fila 2 ────────────────────────────────────────────────────────────────
