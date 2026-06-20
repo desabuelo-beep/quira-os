@@ -112,7 +112,7 @@ def _build_folium_map(parroquias: list) -> folium.Map:
     {estado}
   </div>
   <table style="width:100%;font-size:11px;border-collapse:collapse">
-    <tr><td style="color:#8892B0;padding:2px 0">TPS</td>
+    <tr><td style="color:#8892B0;padding:2px 0">Vulnerabilidad</td>
         <td style="color:{color};font-weight:700;text-align:right">{tps:.1f}</td></tr>
     <tr><td style="color:#8892B0;padding:2px 0">Agua potable</td>
         <td style="color:{agua_color};font-weight:700;text-align:right">{agua:.1f}%</td></tr>
@@ -124,7 +124,7 @@ def _build_folium_map(parroquias: list) -> folium.Map:
   {'<div style="margin-top:8px;font-size:10px;color:#FF4D6D;font-weight:600">⚠️ Zona Crítica — intervención urgente</div>' if critica else ''}
 </div>"""
 
-        tooltip = f"{emoji} {nombre} · TPS {tps:.0f} · Agua {agua:.0f}%"
+        tooltip = f"{emoji} {nombre} · Vulnerabilidad {tps:.0f} · Agua {agua:.0f}%"
 
         if critica:
             icon = folium.DivIcon(
@@ -300,7 +300,7 @@ def render() -> None:
     <div class="gt-contrib-box"><strong>🏛️ Municipio aporta:</strong>Postes + instalación eléctrica</div>
     <div class="gt-contrib-box"><strong>👥 Comunidad aporta:</strong>Mantenimiento + veeduría</div>
   </div>
-  <div class="gt-fund pending">⏳ BID Lab Gender Bond · $95,000 · PSG ≥ 30% req.</div>
+  <div class="gt-fund pending">⏳ BID Lab Gender Bond · $95,000 · presupuesto de género ≥ 30% req.</div>
 </div>"""
         render_page(gov_twin_html, show_tech=False, height=560, extra_css=_GT_CSS)
 
@@ -323,14 +323,14 @@ def render() -> None:
   <div class="card-title">📊 Las 7 Parroquias · Inequidad territorial documentada · ene–mar 2026</div>
   <table class="tbl">
     <thead><tr>
-      <th>Parroquia</th><th>TPS ↓</th><th>Agua %</th>
+      <th>Parroquia</th><th>Vulnerab. ↓</th><th>Agua %</th>
       <th>Habitantes</th><th>$/hab</th><th>Estado</th>
     </tr></thead>
     <tbody>{rows}</tbody>
   </table>
   <div style="font-size:10px;color:var(--muted);margin-top:8px;padding-top:8px;
               border-top:1px solid rgba(255,255,255,.05)">
-    📌 TPS = Tasa de Pobreza por Servicios · Cabecera $217/hab · Isabel Muentes $40/hab · Brecha 5.4× · H99 Q1-2026
+    📌 Vulnerabilidad = nivel de pobreza por servicios · Cabecera $217/hab · Isabel Muentes $40/hab · Brecha 5.4× · Q1-2026
   </div>
 </div>"""
 
@@ -339,7 +339,7 @@ def render() -> None:
         tech = """
 <div style="margin-top:16px;font-size:9px;color:rgba(255,255,255,.2);
             border-top:1px solid rgba(255,255,255,.04);padding-top:8px">
-  🔧 Fuente: SIAP-ICPI H24 · GeoTwin KB · INEC 2022 · IET Q1-2026 · Corte sellado Q1-2026
+  🔧 Fuente: datos institucionales · GeoTwin KB · INEC 2022 · equidad territorial Q1-2026 · Corte sellado Q1-2026
   · Mapa: Folium/Leaflet · CartoDB Dark Matter · GeoJSON centroides IGM
 </div>"""
 

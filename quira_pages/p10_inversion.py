@@ -69,7 +69,7 @@ def _parroquia_bar(p: dict, max_cap: float) -> str:
   <div style="display:flex;justify-content:space-between;
               font-size:9px;color:var(--muted);margin-top:2px">
     <span>{p["habitantes"]:,} hab · ${p["inversion"]:,} total</span>
-    <span>TPS {p["tps"]:.1f}% vulnerabilidad</span>
+    <span>Vulnerabilidad {p["tps"]:.1f}%</span>
   </div>
 </div>"""
 
@@ -165,8 +165,8 @@ def render() -> None:
   {"".join(_parroquia_bar(p, max_cap) for p in sorted_par)}
   <div style="margin-top:12px;font-size:9px;color:var(--muted);
               border-top:1px solid rgba(255,255,255,.05);padding-top:8px">
-    📌 Inversión total cantonal estimada por parroquia basada en SIAP-ICPI ene–mar 2026
-    · TPS = Tasa de Pobreza por Sistema (mayor TPS = mayor vulnerabilidad)
+    📌 Inversión total cantonal estimada por parroquia basada en datos institucionales ene–mar 2026
+    · Vulnerabilidad = nivel de necesidad territorial por parroquia (mayor valor = mayor prioridad)
   </div>
 </div>"""
 
@@ -180,7 +180,7 @@ def render() -> None:
               border-radius:7px;font-size:10px;color:var(--muted);line-height:1.6">
     ⚠️ <strong style="color:var(--red)">Agua y Saneamiento (15.7%)</strong> recibe $4.2M
     para cubrir brecha del 34.9% de cobertura.
-    Isabel Muentes, la parroquia más vulnerable (TPS 77.94%, NBI 61.2%), recibe $228K total —
+    Isabel Muentes, la parroquia más vulnerable (vulnerabilidad 77.94%, NBI 61.2%), recibe $228K total —
     insuficiente para alcanzar la meta de cobertura al 2027 sin financiamiento externo.
   </div>
 </div>"""
@@ -196,19 +196,19 @@ def render() -> None:
     <div style="display:flex;flex-direction:column;gap:6px">
       <div style="font-size:11px;color:var(--white);padding:6px 10px;
                   background:rgba(255,77,109,.08);border-radius:6px">
-        🚨 Isabel Muentes · $40/hab · TPS 77.94 · agua 1.02% — EMERGENCIA
+        🚨 Isabel Muentes · $40/hab · vulnerabilidad 77.94 · agua 1.02% — EMERGENCIA
       </div>
       <div style="font-size:11px;color:var(--white);padding:6px 10px;
                   background:rgba(124,92,252,.1);border-radius:6px">
-        💜 Aníbal San Andrés · $61/hab · TPS 62.34 · sin voz participativa
+        💜 Aníbal San Andrés · $61/hab · vulnerabilidad 62.34 · sin voz participativa
       </div>
       <div style="font-size:11px;color:var(--white);padding:6px 10px;
                   background:rgba(255,184,0,.08);border-radius:6px">
-        🟠 Colorado · $94/hab · TPS 58.67 · agua 34.7% — cerca de meta
+        🟠 Colorado · $94/hab · vulnerabilidad 58.67 · agua 34.7% — cerca de meta
       </div>
       <div style="font-size:11px;color:var(--white);padding:6px 10px;
                   background:rgba(255,184,0,.08);border-radius:6px">
-        🟡 La Pila · $93/hab · TPS 41.23 · agua 51.2% — cerca de meta
+        🟡 La Pila · $93/hab · vulnerabilidad 41.23 · agua 51.2% — cerca de meta
       </div>
     </div>
   </div>
@@ -228,7 +228,7 @@ def render() -> None:
       </div>
       <div style="font-size:11px;color:var(--white);padding:6px 10px;
                   background:rgba(0,212,255,.08);border-radius:6px">
-        🔵 Gender Bond $95K para luminarias Aníbal San Andrés · requiere PSG ≥30%
+        🔵 Gender Bond $95K para luminarias Aníbal San Andrés · requiere presupuesto de género ≥30%
       </div>
       <div style="font-size:11px;color:var(--white);padding:6px 10px;
                   background:rgba(0,212,255,.08);border-radius:6px">
@@ -242,7 +242,7 @@ def render() -> None:
     hdr = page_header(
         "⑥ INVERSIÓN POR HABITANTE",
         "Equidad Territorial · $/hab",
-        f"Presupuesto total ${presupuesto_total/1_000_000:.2f}M · Brecha 2.8× · IET 44.80% · Corte ene–mar 2026",
+        f"Presupuesto total ${presupuesto_total/1_000_000:.2f}M · Brecha 2.8× · Equidad territorial 44.80% · Corte ene–mar 2026",
         '<span class="badge badge-red">Brecha 2.8× Isabel Muentes</span>',
     )
 
@@ -258,8 +258,8 @@ def render() -> None:
                      use_container_width=True, type="primary"):
             st.session_state["page"] = "sentinel"
             st.session_state["sentinel_pregunta_auto"] = (
-                "El IET (Equidad Territorial) de Montecristi es 44.80%. "
-                "La brecha per cápita es 5.4×: cabecera $217/hab vs Isabel Muentes $40/hab (H99 Q1-2026). "
+                "La equidad territorial de Montecristi es 44.80%. "
+                "La brecha per cápita es 5.4×: cabecera $217/hab vs Isabel Muentes $40/hab (Q1-2026). "
                 "El PDOT tiene como meta subir la inversión rural mínima a $80/hab al 2027. "
                 "¿Qué mecanismo de redistribución presupuestaria es viable en Q2-2026 "
                 "sin incumplir el equilibrio fiscal del COOTAD?"

@@ -157,7 +157,7 @@ def _render_chs_c01(chain: dict) -> None:
     st.markdown(
         f"<div style='font-size:0.75rem;color:{_MUTED};margin-bottom:8px;"
         f"font-weight:600;letter-spacing:1px'>"
-        f"DIAGNÓSTICO SISTÉMICO — CIRCUITO CONSTITUCIONAL C01</div>",
+        f"DIAGNÓSTICO SISTÉMICO — CADENA DE TRANSPARENCIA</div>",
         unsafe_allow_html=True,
     )
 
@@ -167,9 +167,9 @@ def _render_chs_c01(chain: dict) -> None:
         colapso_nota = (
             f"<div style='font-size:0.68rem;color:{_CRITICO};"
             f"margin-top:6px;font-weight:700'>"
-            f"REGLA DE COLAPSO ACTIVA — Dom07 es ORIGEN. "
-            f"Cuando el nodo de origen falla, el circuito colapsa independientemente "
-            f"del estado de Dom08 y Dom04."
+            f"REGLA DE COLAPSO ACTIVA — Transparencia es ORIGEN. "
+            f"Cuando el eje de origen falla, la cadena colapsa independientemente "
+            f"del estado de Participación y Planificación."
             f"</div>"
         )
 
@@ -180,7 +180,7 @@ def _render_chs_c01(chain: dict) -> None:
   <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap">
     <div>
       <div style="font-size:0.6rem;color:{_MUTED};letter-spacing:2px;
-                  font-weight:700;margin-bottom:2px">CHS CIRCUITO C01</div>
+                  font-weight:700;margin-bottom:2px">CADENA DE TRANSPARENCIA</div>
       <div style="font-size:2.4rem;font-weight:900;color:{chs_color};
                   font-family:monospace;line-height:1">{chs_display}</div>
       <div style="font-size:0.62rem;color:{chs_color};font-weight:700;
@@ -191,9 +191,9 @@ def _render_chs_c01(chain: dict) -> None:
         Transparencia → Participación → Planificación
       </div>
       <div style="font-size:0.68rem;color:{_MUTED};line-height:1.5">
-        El circuito C01 conecta causalmente tres dominios: cuando la información pública
-        no circula (Dom07), la participación ciudadana no tiene base (Dom08),
-        y la planificación territorial pierde legitimidad (Dom04).
+        Esta cadena conecta causalmente tres ejes: cuando la información pública
+        no circula, la participación ciudadana no tiene base,
+        y la planificación territorial pierde legitimidad.
       </div>
       {colapso_nota}
     </div>
@@ -272,10 +272,10 @@ def _render_chs_c01(chain: dict) -> None:
                  padding:3px 8px;border-radius:4px">LOTAIP Art. 7</span>
     <span style="color:rgba(255,255,255,0.3)">→</span>
     <span style="background:{_CRITICO}18;color:{_CRITICO};padding:3px 8px;
-                 border-radius:4px;font-weight:700">Dom07</span>
+                 border-radius:4px;font-weight:700">Transparencia</span>
     <span style="color:rgba(255,255,255,0.3)">→</span>
     <span style="background:{_CRITICO}18;color:{_CRITICO};padding:3px 8px;
-                 border-radius:4px;font-weight:700">C01 = {chs_display}</span>
+                 border-radius:4px;font-weight:700">Cadena = {chs_display}</span>
     <span style="color:rgba(255,255,255,0.3)">→</span>
     <span style="background:{chs_color}18;color:{chs_color};padding:3px 8px;
                  border-radius:4px;font-weight:700">Riesgo: ALTO</span>
@@ -283,8 +283,8 @@ def _render_chs_c01(chain: dict) -> None:
   <div style="margin-top:8px;font-size:0.65rem;color:rgba(255,255,255,0.35);
               line-height:1.5">
     La norma que crea el derecho (CE Art. 18) se operacionaliza en la obligación
-    de publicación (LOTAIP Art. 7). El incumplimiento de LOTAIP degrada el nodo
-    Dom07 del circuito C01. Cuando Dom07 falla como ORIGEN, el circuito completo
+    de publicación (LOTAIP Art. 7). El incumplimiento de LOTAIP degrada el eje
+    de Transparencia. Cuando la Transparencia falla como ORIGEN, la cadena completa
     colapsa: la participación y la planificación pierden su fundamento informacional.
   </div>
 </div>""",
@@ -648,7 +648,7 @@ def _render_dom07_ejecutivo(chain: dict) -> None:
         )
 
     # ── Sección 7: Pie de página ──────────────────────────────────────────────
-    fuente_badge = "🔴 Datos en vivo · Neo4j" if fuente_neo4j else (
+    fuente_badge = "🔴 Datos en vivo" if fuente_neo4j else (
         "🔍 Auditoría DPE · N4 · 16 meses" if estado == "confirmado" else "📋 Datos consolidados"
     )
     st.caption(f"{fuente_badge} · Fuente: {fuente} · Corte: {corte}")
@@ -657,7 +657,7 @@ def _render_dom07_ejecutivo(chain: dict) -> None:
         st.info(
             "**Datos en proceso de carga.** El circuito está definido — "
             "los valores de verificabilidad se activarán automáticamente "
-            "al completar la carga Neo4j del circuito TRANSPARENCIA.",
+            "al completar la carga de datos del eje TRANSPARENCIA.",
             icon="🔄",
         )
 

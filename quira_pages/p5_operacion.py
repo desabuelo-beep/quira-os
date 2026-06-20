@@ -78,7 +78,7 @@ def _p17_html(show_tech: bool) -> str:
       <div>
         <div style="font-size:12px;font-weight:700;color:var(--purple)">Actualización de Calificación</div>
         <div style="font-size:11px;color:var(--muted)">
-          Motor SIAP-ICPI recalcula el índice. QUIRA Gov se actualiza.
+          El motor recalcula el índice. QUIRA Gov se actualiza.
           Trazabilidad SHA-256 generada.
         </div>
       </div>
@@ -261,7 +261,7 @@ def _p18_html(show_tech: bool) -> str:
                 border-left:3px solid var(--amber);font-size:11px;color:var(--muted)">
       <strong style="color:var(--amber)">C4 — Gasto ciego:</strong>
       Devengado sin proceso PAC ni SHA-256.
-      <strong style="color:var(--red)">24 activos Q1-2026 · SAT-0 activo.</strong>
+      <strong style="color:var(--red)">24 activos Q1-2026 · alerta activa.</strong>
     </div>
   </div>
 </div>"""
@@ -273,7 +273,7 @@ def _p18_html(show_tech: bool) -> str:
     <div style="display:flex;align-items:center;gap:8px;padding:7px 0;
                 border-bottom:1px solid rgba(255,255,255,.05);font-size:11px;color:var(--muted)">
       <span style="color:var(--cyan);font-weight:700;min-width:18px">①</span>
-      Carga de fuentes (H05 POA · H05b PAC · H07 eSIGEF · Informe PDF)
+      Carga de fuentes (POA · PAC · eSIGEF · Informe PDF)
     </div>
     <div style="display:flex;align-items:center;gap:8px;padding:7px 0;
                 border-bottom:1px solid rgba(255,255,255,.05);font-size:11px;color:var(--muted)">
@@ -293,7 +293,7 @@ def _p18_html(show_tech: bool) -> str:
     <div style="display:flex;align-items:center;gap:8px;padding:7px 0;
                 font-size:11px;color:var(--muted)">
       <span style="color:var(--purple);font-weight:700;min-width:18px">⑤</span>
-      Motor ICGI-T recalcula → QUIRA Gov se actualiza → PDF certificado
+      El motor recalcula → QUIRA Gov se actualiza → PDF certificado
     </div>
   </div>
   <div style="margin-top:10px;padding:8px;background:rgba(124,92,252,.05);border-radius:6px;
@@ -336,7 +336,7 @@ def _p19_html(show_tech: bool) -> str:
     </div>
     <div style="font-size:11px;color:var(--muted)">
       La IA detecta inconsistencias y propone clasificaciones. El técnico aprueba, rechaza o comenta.
-      <strong style="color:var(--white)">Sin validación humana, ningún dato entra al motor ICGI-T.</strong>
+      <strong style="color:var(--white)">Sin validación humana, ningún dato entra al motor de calificación.</strong>
     </div>
   </div>
 </div>"""
@@ -408,7 +408,7 @@ def _p19_html(show_tech: bool) -> str:
   </div>
   <div style="margin-top:8px;font-size:10px;color:var(--green);padding:6px;
               background:rgba(0,224,150,.04);border-radius:6px">
-    → Resolución registrada · SHA-256 generado · Motor ICGI-T actualiza EP Aseo 58.4% → recalcula
+    → Resolución registrada · SHA-256 generado · Motor de calificación actualiza EP Aseo 58.4% → recalcula
   </div>
 </div>"""
 
@@ -519,7 +519,7 @@ def render() -> None:
                 text-align:center;margin-bottom:4px">Operación Técnica</div>
     <div style="font-size:0.75rem;color:rgba(255,255,255,0.4);
                 text-align:center;margin-bottom:1.6rem;letter-spacing:0.04em">
-        P-17 · P-18 · P-19 · SIAP-ICPI · Acceso Restringido
+        P-17 · P-18 · P-19 · Acceso Restringido
     </div>
 </div>
             """, unsafe_allow_html=True)
