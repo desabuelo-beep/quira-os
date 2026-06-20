@@ -6,25 +6,29 @@
 > **El reframe:** QUIRA dejó de ser "el Excel". El Excel es un **origen** del conocimiento, no el
 > sistema. QUIRA OS = la **orquestación** de varios motores, cada uno dueño de UNA verdad.
 
-## Los motores y su frontera de verdad (qué hace cada uno · qué NO hace)
+## Los 7 motores y su frontera de verdad (ninguno se reemplaza · cada uno gobierna UNA verdad)
 
-| Motor | Tecnología | Frontera de verdad (lo único que dictamina) | NO hace |
-|---|---|---|---|
-| **Analítico** | Gold Master (Excel SIAP-ICPI v6.0) | la **causalidad administrativa** — el número (ICPI/TGI/SAT/holding). H12!B33 inmutable. | no ingiere, no explica, no expone |
-| **Operacional** | Supabase / PostgreSQL | el **hecho observado** — evidencia cruda del territorio (SERCOP, NBI/PUGS/INEC, snapshots) | no calcula índices |
-| **Causal** | Neo4j (capa QUIRA IA) | la **doctrina** — la cadena Promesa→…→Territorio y las 4 congruencias (dónde se corta el eslabón) | no promedia |
-| **Semántico** | Graphify (AST + comunidades) | la **estructura** — dependencias, ADRs, axiomas de diseño (auditor de IP) | no opera sobre datos vivos |
-| **Inferencial** | CLI-Q / LLM en CID (Dylus Lab) | la **exposición** — traduce canon→idioma de salida (público/académico/…) | jamás inventa el dato (Regla 1) |
-| **Visual** | Streamlit / GeoTwin | la **presentación** — sólo visualiza, no calcula (ADR-023 Nivel 3) | no es fuente de verdad |
+| Motor | Contiene | Lo alimenta | Lo consulta | Estado |
+|---|---|---|---|---|
+| **Gold Master** (Excel SIAP-ICPI v6.0) | causalidad **matemática** — fórmulas, pesos, ICPI/TGI/holding · H12!B33 inmutable | ingesta metodológica | Neo4j · CLI-Q | **Fuente** (analítica · intocable) |
+| **Supabase** (PostgreSQL) | el **hecho observado** — SERCOP, corpus parroquial (NBI/PUGS/INEC), snapshots | pipelines ETL | Neo4j · CLI-Q | **Fuente** (facto-territorial) |
+| **Neo4j** (capa QUIRA IA) | causalidad **operacional viva** — cadena Promesa→…→Territorio · las 4 congruencias | ETL (Gold Master + Supabase) | CLI-Q · export visual | **Fuente** (doctrinal · el porqué) |
+| **Graphify** (AST) | **estructura del código** — dependencias, imports, 16 ADRs (NO conocimiento institucional) | análisis estático del repo | Gephi · CLI-Q | **Fuente** (estructural · el plano) |
+| **Gephi** | **visualización analítica** — comunidades, centralidad, modularidad, puentes, hubs | exporta de Graphify **y** Neo4j | analistas Dylus · auditores | **Vista** (explicación) |
+| **CLI-Q** (LLM en CID · Dylus) | **exposición** — traduce canon→idioma vía `firewall_dictionary.json` · jamás inventa el dato | todos los anteriores + diccionario | usuario final | **Vista** (exposición) |
+| **Streamlit / GeoTwin** | **presentación** del producto — dashboards, mapa (ADR-023 Nivel 3) | CLI-Q (idioma público) | el GAD | **Vista** (producto) |
 
-**El orden de dependencia (arquitectura de compilador):**
+**Distinción clave (lo que la conversación había simplificado):** `Graphify` produce el grafo del **código**;
+`Neo4j` guarda el grafo **causal institucional**; `Gephi` **explica** visualmente a cualquiera de los dos.
+Ninguno reemplaza al otro → `código → Graphify → Gephi` · `causalidad → Neo4j → Gephi`.
+*(Custodia de grafos: `graph.json`=maestro repo · `graph_fullrepo.json`=respaldo maestro · `graph_adr.json`=subgrafo ADR. El maestro NUNCA se destruye.)*
+
+**La causalidad no se reconstruye — se ORQUESTA** (está repartida por frontera de verdad):
 ```
-Gold Master (causalidad)  →  Motor canónico  →  Compilador CLI-Q (firewall)
-                                                        │
-                                       ┌────────────────┼────────────────┐
-                                       ▼                ▼                ▼
-                                   Público          Académico        Financiero  …
-                              (el motor nunca cambia; cambia sólo el backend de salida)
+Gold Master ─→ Supabase ─→ Neo4j ─┬─→ Graphify ─→ Gephi   (estructura → se explica)
+ (matemática) (evidencia) (causal) │
+                                   └─→ CLI-Q / Compilador ─→ Público · Académico · Financiero …
+                                        (el motor nunca cambia; cambia sólo el backend de salida)
 ```
 
 ## Hoja de Ruta — Sprint E: Industrialización del CID (CLI-Q Compiler)
