@@ -42,7 +42,7 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
 ## AHORA (estado vivo · historial → `governance/historico/BOOT_2026-06-17.md`)
 **OLA 1 + FIREWALL COMPLETOS** — deuda Familia **119→0** · canon Dylus/IA=37 · escáner calibrado · punto ciego cerrado · regla mixto.
 ▶ **Sprint E — CLI-Q Compiler (ADR-028):** Fase 1 ✅ `firewall_dictionary.json` (tabla de símbolos · multi-backend). Fase 2 ⛏️ bucle CID (scan→patch→verify→commit · solo Dylus). Fase 3 multi-backend.
-📐 7 motores → `QUIRA_OS_MOTORES_CLI-Q.md` · inventario código ✅ `QUIRA_OS_INVENTARIO_CODIGO.md` (Excel→snapshot 1× · LLM solo `load_all`). Cabos: 3 loaders GM · `db_config`→utils v7.0.
+📐 **Mapa maestro:** `QUIRA_OS_ARCHITECTURE_v1.md` (7 capas · flujo verificado · taxonomía) → subordina `_MOTORES`/`_INVENTARIO` · grafo maestro 1972✓. Cabos: 3 loaders GM · `db_config`→utils v7.0.
 ⚠ **CI:** BOOT.md límite 6KB. §AHORA LEAN — al cierre REEMPLAZAR (no apilar) + archivar a `historico/`.
 
 ## REGLA CANÓNICA — todo artefacto al grafo
