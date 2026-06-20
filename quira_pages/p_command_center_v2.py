@@ -61,7 +61,7 @@ _DOMAINS_V2: list[dict[str, Any]] = [
         "temp": "funds", "mod": "cooperacion",
     },
     {
-        "id": "d03", "num": "03", "nombre": "Metas PDOT · Mandato",
+        "id": "d03", "num": "03", "nombre": "Gobernanza del Mandato",
         "concepto": "La palabra empeñada: las promesas registradas ante el CNE "
                     "convertidas (o no) en metas formales del plan.",
         "estado": "EN RUTA", "metric": "94.6%",
@@ -77,7 +77,7 @@ _DOMAINS_V2: list[dict[str, Any]] = [
         "temp": "critico", "mod": "alertas", "dynamic_d04": True,
     },
     {
-        "id": "d05", "num": "05", "nombre": "Holding Municipal",
+        "id": "d05", "num": "05", "nombre": "Holding e Integración Municipal",
         "concepto": "Las 4 entidades del holding (GAD, EP Aseo, Bomberos, "
                     "Patronato) medidas con la misma vara.",
         "estado": "BAJO OBJETIVO", "metric_key": "hold_avg", "metric_suffix": "%",
@@ -117,7 +117,7 @@ _DOMAINS_V2: list[dict[str, Any]] = [
         "temp": "alerta", "mod": "rdc",
     },
     {
-        "id": "d10", "num": "10", "nombre": "Territorio & Cobertura",
+        "id": "d10", "num": "10", "nombre": "Cobertura de Servicios e Infraestructura",
         "concepto": "Los servicios básicos vistos desde el territorio: quién tiene "
                     "agua, saneamiento y recolección — y quién no.",
         "estado": "BRECHA CRÍTICA", "metric": "34.9%",
@@ -125,7 +125,7 @@ _DOMAINS_V2: list[dict[str, Any]] = [
         "temp": "critico", "mod": "territorio",
     },
     {
-        "id": "d11", "num": "11", "nombre": "Ecosistema Productivo Territorial",
+        "id": "d11", "num": "11", "nombre": "Desarrollo Económico Territorial",
         "concepto": "La economía del territorio: empleo, industria, turismo y la "
                     "zona especial de desarrollo.",
         "estado": "EN CONSTRUCCIÓN", "metric": "—",
@@ -133,12 +133,22 @@ _DOMAINS_V2: list[dict[str, Any]] = [
         "temp": "dim", "mod": None, "disabled": True,
     },
     {
-        "id": "d12", "num": "12", "nombre": "Protección Social & Grupos Prioritarios",
+        "id": "d12", "num": "12", "nombre": "Inclusión, Equidad y Género",
         "concepto": "Los grupos que la Constitución manda atender primero: "
                     "inversión social, género y prioridad territorial.",
         "estado": "CRÍTICO", "metric_key": "psg_pct", "metric_suffix": "%",
         "gancho": "La inversión en los grupos que la Constitución manda atender primero: entra a ver la brecha real.",
         "temp": "critico", "mod": "genero",
+    },
+    {
+        "id": "d13", "num": "13", "nombre": "Sostenibilidad y Resiliencia Ambiental",
+        "concepto": "La integridad ecológica del territorio: el equilibrio entre las "
+                    "presiones sobre el ambiente y la capacidad del municipio de "
+                    "conservar sus recursos y adaptarse al riesgo climático.",
+        "estado": "EN CONSTRUCCIÓN", "metric": "—",
+        "gancho": "¿Qué tan efectiva es la gestión pública para mitigar la "
+                  "vulnerabilidad ambiental y conservar los recursos vitales del territorio?",
+        "temp": "dim", "mod": None, "disabled": True,
     },
 ]
 
@@ -337,7 +347,7 @@ def render() -> None:
 
     # ── Grid 4 × 3 — cards nativas ───────────────────────────────────────────
     n_alertas = int(d.get("n_alertas", 0) or 0)
-    for fila in range(0, 12, 3):
+    for fila in range(0, len(_DOMAINS_V2), 3):
         cols = st.columns(3, gap="small")
         for col, dom in zip(cols, _DOMAINS_V2[fila:fila + 3]):
             with col:
