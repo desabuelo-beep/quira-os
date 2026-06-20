@@ -1,0 +1,55 @@
+{
+  "_meta": {
+    "version": "1.0",
+    "descripcion": "Tabla de simbolos del Compilador de Lenguaje Institucional (CLI-Q). Fuente unica de verdad calibrada: scripts/dev/firewall_audit.py (lista PROHIBITED). Cada termino canonico mapea a su forma por BACKEND. publico=administracion publica. publico:null => SUPRIMIR (sin equivalente publico, se omite/genericiza). Backends futuros (academico/juridico/financiero/ciudadano) se agregan como claves paralelas. Ref: ADR-028.",
+    "fecha": "2026-06-20",
+    "backends_activos": ["publico"],
+    "calibracion": "Sprint D.2A · deuda Familia 119->0 · 20 terminos + node-IDs"
+  },
+  "indices": {
+    "ICPI":  {"tipo": "indice", "publico": "Cumplimiento institucional"},
+    "TGI":   {"tipo": "indice", "publico": "Gobernanza territorial"},
+    "IGP":   {"tipo": "indice", "publico": "Participacion ciudadana"},
+    "PSG":   {"tipo": "indice", "publico": "Presupuesto de genero"},
+    "ISP":   {"tipo": "indice", "publico": "Salud presupuestaria"},
+    "IED":   {"tipo": "indice", "publico": "Eficiencia direccional"},
+    "IOC":   {"tipo": "indice", "publico": "Opacidad informativa"},
+    "IET":   {"tipo": "indice", "publico": "Equidad territorial"},
+    "IRS":   {"tipo": "indice", "publico": "Regresividad de la inversion"},
+    "ICM":   {"tipo": "indice", "publico": "Cumplimiento municipal"},
+    "ICGI":  {"tipo": "indice", "publico": "Calificacion de gestion"},
+    "ICODS": {"tipo": "indice", "publico": "Cumplimiento ODS"},
+    "IFE":   {"tipo": "indice", "publico": "Fidelidad electoral"},
+    "ITAM":  {"tipo": "indice", "publico": "Transparencia municipal"},
+    "IGM-[A-Z]": {"tipo": "indice", "publico": "Equidad de genero"},
+    "TPS":   {"tipo": "score",  "publico": "Prioridad territorial"},
+    "AVEP":  {"tipo": "escala", "publico": "Escala de calificacion"},
+    "RC-M":  {"tipo": "doctrina", "publico": "Trayectoria institucional"},
+    "SAT":   {"tipo": "alerta", "publico": "Alerta preventiva", "nota": "patron SAT-?(I{1,3}|\\d+)? captura SAT, SAT-0, SAT-III, SAT-IV"}
+  },
+  "motor_metodologia": {
+    "Gold Master":     {"tipo": "motor",        "publico": null, "nota": "no exponer; usar 'motor de calculo' solo si imprescindible"},
+    "SIAP-ICPI":       {"tipo": "motor",        "publico": null, "nota": "no exponer; 'modelo/datos institucionales'"},
+    "ICGI-T":          {"tipo": "modelo",       "publico": "Calificacion de gestion"},
+    "Composite_Need":  {"tipo": "variable",     "publico": "Necesidad territorial"},
+    "Inv_PerCapita":   {"tipo": "variable",     "publico": "Inversion por habitante"},
+    "QTMP":            {"tipo": "protocolo",    "publico": null},
+    "MMP":             {"tipo": "metodo",       "publico": null}
+  },
+  "infraestructura": {
+    "Neo4j":     {"tipo": "infra", "publico": "datos en vivo"},
+    "Supabase":  {"tipo": "infra", "publico": "registros institucionales"},
+    "OUTPUT_API":{"tipo": "infra", "publico": null},
+    "gm_snapshot":{"tipo":"infra", "publico": null},
+    "demo_data": {"tipo": "infra", "publico": null},
+    "data.loader":{"tipo":"infra", "publico": null}
+  },
+  "node_ids": {
+    "H\\d{2}":   {"tipo": "fuente",  "publico": "Fuente publica (SIGEF/SERCOP/CPCCS)", "nota": "H-codes Gold Master"},
+    "Dom\\d{2}": {"tipo": "node_id", "publico": null, "nota": "dominio interno -> nombrar el eje (Transparencia/Participacion/...)"},
+    "CE_\\d{2,3}":{"tipo":"node_id", "publico": null},
+    "C0\\d":     {"tipo": "node_id", "publico": null, "nota": "circuito interno -> 'cadena'"},
+    "CHS":       {"tipo": "score",   "publico": null, "nota": "circuit health -> 'cadena/score de la cadena'"},
+    "MNT_UUID":  {"tipo": "trace",   "publico": null}
+  }
+}
