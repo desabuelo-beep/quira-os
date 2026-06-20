@@ -2,7 +2,7 @@
 
 > **Único archivo de arranque.** Léelo y NADA más hasta saber en qué vas a trabajar.
 > Lazy loading: carga el detalle SOLO del área que vas a tocar. No leas todo "por si acaso".
-> Mantener bajo 500 tokens. Actualizar `## AHORA` al cierre de cada sesión.
+> Mantener bajo 500 tokens · `## AHORA` al cierre · **¿dónde vive una verdad? → `QUIRA_MASTER_INDEX.md`** (Regla #6).
 
 ## QUÉ ES
 > **"El Gold Master ya sabe medir la gestión pública; QUIRA está aprendiendo a
@@ -46,7 +46,7 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
 ⚠ **CI:** BOOT.md límite 6KB. §AHORA LEAN — al cierre REEMPLAZAR (no apilar) + archivar a `historico/`.
 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 ratificado · detalle en el ADR)
-GAD = sujeto observado, NO cliente. 4 capas: **A Núcleo** (Gold Master·QLEP·Graphify·GeoTwin·conectores·NLP·índices) · **B Operaciones** (capacidad interna Dylus) · **C Productos** (Institucional·Ciudadana·Impact·Economic·Cooperación · 5 UIs, 1 motor) · **D Portal** = `quiraintelligence.com` (radar vivo 221 GAD) · `quiraholding.streamlit.app` = laboratorio · Montecristi = Municipio 001.
+GAD = sujeto observado, NO cliente. 4 capas: A Núcleo (motor·grafos·conectores·índices) · B Operaciones (Dylus) · C Productos (Institucional·Ciudadana·Impact·Economic·Cooperación · 1 motor) · D Portal `quiraintelligence.com` (radar 221 GAD). Montecristi = Municipio 001.
 
 ## REGLAS DE ORO (inviolables — el resto en CLAUDE.md)
 1. **Excel = Estado.** Gold Master es fuente de verdad. Excel→Python→Supabase→UI, nunca al revés.
