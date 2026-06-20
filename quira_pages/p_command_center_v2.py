@@ -217,16 +217,20 @@ def _css() -> str:
         per_card.append(
             f'.st-key-card_{dom["id"]} > div[data-testid="stVerticalBlockBorderWrapper"] '
             f'{{ background:{t["bg"]}!important; border:1px solid {t["bd"]}!important; '
-            f'border-left:3px solid {t["c"]}!important; border-radius:12px!important; {op} }}'
+            f'border-left:3px solid {t["c"]}!important; border-radius:12px!important; '
+            f'position:relative!important; transition:transform .12s ease,border-color .12s ease; {op} }}'
         )
-        per_card.append(
-            f'.st-key-nav_{dom["id"]} button {{ background:transparent!important; '
-            f'border:1px solid {t["bd"]}!important; color:{t["c"]}!important; '
-            f'font-size:11px!important; font-weight:700!important; '
-            f'border-radius:8px!important; padding:2px 10px!important; min-height:30px!important; }}'
-            f'.st-key-nav_{dom["id"]} button:hover {{ background:{t["c"]}22!important; '
-            f'border-color:{t["c"]}!important; }}'
-        )
+        if not dom.get("disabled"):
+            # Variante A · card 100% clicable: botón transparente superpuesto (A1)
+            per_card.append(
+                f'.st-key-card_{dom["id"]}:hover > div[data-testid="stVerticalBlockBorderWrapper"] '
+                f'{{ border-color:{t["c"]}!important; transform:translateY(-2px); }}'
+                f'.st-key-nav_{dom["id"]} {{ position:absolute!important; inset:0!important; '
+                f'z-index:4!important; margin:0!important; padding:0!important; }}'
+                f'.st-key-nav_{dom["id"]} button {{ width:100%!important; height:100%!important; '
+                f'min-height:100%!important; opacity:0!important; border:none!important; '
+                f'cursor:pointer!important; }}'
+            )
     for k in _KPIS:
         per_card.append(
             f'.st-key-{k["key"]} > div[data-testid="stVerticalBlockBorderWrapper"] '
@@ -341,7 +345,7 @@ def render() -> None:
         '<span style="font-size:10.5px;font-weight:800;letter-spacing:.1em;'
         'color:#00D4FF">▎DOMINIOS OPERACIONALES</span>'
         '<span style="font-size:9.5px;color:#5A6B7E;font-family:\'JetBrains Mono\','
-        'monospace">Holding Municipal · Montecristi · 12 dominios · clic en ABRIR</span></div>',
+        'monospace">Montecristi · 13 dominios · clic en la tarjeta</span></div>',
         unsafe_allow_html=True,
     )
 
@@ -359,33 +363,40 @@ def render() -> None:
                         estado = "SIN ALERTAS" if n_alertas == 0 else f"{n_alertas} ACTIVAS"
                         t = _TEMP["verde"] if n_alertas == 0 else _TEMP["critico"]
                     metric = _metric_of(dom, d)
+                    arrow = (
+                        f'<div style="position:absolute;top:1px;right:3px;font-size:13px;'
+                        f'color:{t["c"]};opacity:.55">↗</div>'
+                    ) if not dom.get("disabled") else ""
                     st.markdown(
-                        f'<div style="padding:2px 4px 0">'
-                        # fila título
-                        f'<div style="display:flex;align-items:center;gap:8px;margin-bottom:5px">'
+                        f'<div style="padding:2px 4px 0;position:relative">'
+                        f'{arrow}'
+                        # título: num + nombre
+                        f'<div style="display:flex;align-items:center;gap:8px;'
+                        f'margin-bottom:6px;padding-right:14px">'
                         f'<span style="font-family:\'JetBrains Mono\',monospace;font-size:10px;'
                         f'font-weight:700;color:{t["c"]};background:{t["c"]}1c;'
                         f'border:1px solid {t["c"]}38;border-radius:6px;padding:1px 7px">'
                         f'{dom["num"]}</span>'
-                        f'<span style="font-size:13.5px;font-weight:800;color:#E8EDF4">'
-                        f'{dom["nombre"]}</span></div>'
-                        # CONCEPTO (spec Javo: qué ES el dominio)
-                        f'<div style="font-size:11px;color:#A8B4C8;line-height:1.45;'
-                        f'margin-bottom:7px">{dom["concepto"]}</div>'
-                        # estado + número duro
-                        f'<div style="display:flex;align-items:baseline;gap:10px;margin-bottom:6px">'
-                        f'<span style="font-size:9px;font-weight:800;letter-spacing:.06em;'
-                        f'color:{t["c"]};border:1px solid {t["c"]}45;border-radius:10px;'
-                        f'padding:2px 9px">● {estado}</span>'
-                        f'<span style="font-family:\'JetBrains Mono\',monospace;font-size:24px;'
-                        f'font-weight:900;color:{t["c"]}">{metric}</span></div>'
-                        # GANCHO (spec Javo: invitación a entrar)
+                        f'<span style="font-size:13.5px;font-weight:800;color:#E8EDF4;'
+                        f'line-height:1.15">{dom["nombre"]}</span></div>'
+                        # cuerpo: concepto (izq) | métrica + estado (der)
+                        f'<div style="display:flex;gap:12px;align-items:flex-start;'
+                        f'margin-bottom:7px">'
+                        f'<div style="flex:1;font-size:11px;color:#A8B4C8;'
+                        f'line-height:1.45">{dom["concepto"]}</div>'
+                        f'<div style="text-align:right;flex-shrink:0;min-width:84px">'
+                        f'<div style="font-family:\'JetBrains Mono\',monospace;font-size:25px;'
+                        f'font-weight:900;color:{t["c"]};line-height:1">{metric}</div>'
+                        f'<div style="font-size:8.5px;font-weight:800;letter-spacing:.04em;'
+                        f'color:{t["c"]};margin-top:4px">● {estado}</div></div></div>'
+                        # pregunta estratégica al pie (itálica)
                         f'<div style="font-size:10.5px;color:#7E8BA3;font-style:italic;'
-                        f'line-height:1.4">{dom["gancho"]}</div></div>',
+                        f'line-height:1.4;border-top:1px solid rgba(255,255,255,.05);'
+                        f'padding-top:6px">{dom["gancho"]}</div></div>',
                         unsafe_allow_html=True,
                     )
                     if dom.get("mod") and not dom.get("disabled"):
-                        if st.button("ABRIR →", key=f"nav_{dom['id']}",
+                        if st.button(f'Abrir {dom["nombre"]}', key=f"nav_{dom['id']}",
                                      use_container_width=True):
                             _nav(dom["mod"])
                     else:
