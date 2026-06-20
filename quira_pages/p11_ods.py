@@ -23,8 +23,8 @@ ODS_CATALOGO = [
     {
         "num": 1, "nombre": "Fin de la Pobreza",
         "estado": "VINCULADO", "color": "#E5243B",
-        "vinculo": "TPS rural · NBI parroquias · inversión per cápita mínima $80/hab",
-        "meta_pdot": "Reducir TPS promedio rural de 48.4% → 35% al 2027",
+        "vinculo": "Prioridad territorial rural · NBI parroquias · inversión per cápita mínima $80/hab",
+        "meta_pdot": "Reducir la prioridad territorial promedio rural de 48.4% → 35% al 2027",
         "score": 72,
     },
     {
@@ -227,7 +227,7 @@ def render() -> None:
               border-radius:12px;padding:16px;text-align:center">
     <div style="font-size:42px;font-weight:900;color:var(--green);
                 font-family:var(--mono)">{icods_val:.1f}<span style="font-size:18px">%</span></div>
-    <div style="font-size:10px;font-weight:700;color:var(--green);margin-top:4px">ICODS · SCORE</div>
+    <div style="font-size:10px;font-weight:700;color:var(--green);margin-top:4px">Cumplimiento ODS</div>
     <div style="font-size:9px;color:var(--muted);margin-top:3px">Gestión por Mandato ✅</div>
   </div>
   <div style="background:rgba(0,224,150,.06);border:1px solid rgba(0,224,150,.2);
@@ -328,7 +328,7 @@ def render() -> None:
     hdr = page_header(
         "⑦ AGENDA 2030 · ODS",
         "Agenda 2030 · Vinculación al Plan Cantonal",
-        f"ICODS {icods_val:.1f}% · {n_vinculado} ODS vinculados · {n_critico} críticos · Corte ene–mar 2026",
+        f"Cumplimiento ODS {icods_val:.1f}% · {n_vinculado} ODS vinculados · {n_critico} críticos · Corte ene–mar 2026",
         '<span class="badge badge-green">✅ Gestión por Mandato</span>',
     )
 
@@ -343,7 +343,7 @@ def render() -> None:
                      use_container_width=True, type="primary"):
             st.session_state["page"] = "sentinel"
             st.session_state["sentinel_pregunta_auto"] = (
-                "El GAD de Montecristi tiene ICODS 87.5% con 14 ODS vinculados al PDOT. "
+                "El GAD de Montecristi tiene un cumplimiento ODS de 87.5% con 14 ODS vinculados al PDOT. "
                 "Los ODS 5 (Género, presupuesto de género 12.83%) y ODS 6 (Agua, cobertura 34.9%) están críticos. "
                 "Hay $2.68M en fondos internacionales disponibles (GEF, PNUD, BID Gender Bond). "
                 "¿Cuál es la secuencia óptima de acciones para desbloquear estos fondos "

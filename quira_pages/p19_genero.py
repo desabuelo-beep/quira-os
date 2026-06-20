@@ -617,9 +617,9 @@ def _render_dom12_tecnico() -> None:
     ⚠ <strong>Integridad de datos:</strong>
     {igm_sin_dato} de {len(INDICADORES_GENERO)} indicadores muestran "Sin dato oficial"
     — valores aún no disponibles en los registros oficiales del cantón.
-    IGM-D e IGM-E son estados binarios derivados del presupuesto con enfoque de género.
-    Pendiente: certificación RRHH (IGM-A), análisis nómina DAF (IGM-B),
-    encuesta PNUD/INEC (IGM-C), fuente CNE/AME (IGM-F).
+    Dos indicadores son estados binarios derivados del presupuesto con enfoque de género.
+    Pendiente: certificación RRHH, análisis nómina DAF,
+    encuesta PNUD/INEC, fuente CNE/AME.
   </div>
   <div style="display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap">
     <div style="padding:6px 12px;background:rgba(255,77,109,.1);border-radius:7px;
@@ -694,7 +694,7 @@ def _render_dom12_tecnico() -> None:
   </div>
   {"".join(_ods5_row(t) for t in ODS5_TARGETS)}
   <div style="margin-top:8px;font-size:9px;color:var(--muted)">
-    El presupuesto con enfoque de género afecta directamente ODS 5.c · Luminarias (IGM-D) afecta ODS 5.2 · Plan género (IGM-E) afecta 5.1 y 5.5
+    El presupuesto con enfoque de género afecta directamente ODS 5.c · Luminarias afecta ODS 5.2 · Plan género afecta 5.1 y 5.5
   </div>
 </div>"""
 
@@ -790,7 +790,7 @@ def _render_dom12_tecnico() -> None:
       </div>
       <div style="font-size:11px;color:var(--white);padding:6px 10px;
                   background:rgba(0,224,150,.07);border-radius:6px">
-        📈 ODS 5 pasa de CRÍTICO a PARCIAL · ICODS sube a ~90%
+        📈 ODS 5 pasa de CRÍTICO a PARCIAL · cumplimiento ODS sube a ~90%
       </div>
       <div style="font-size:11px;color:var(--white);padding:6px 10px;
                   background:rgba(0,224,150,.07);border-radius:6px">

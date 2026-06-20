@@ -86,7 +86,7 @@ def render() -> None:
       <div class="prog-bar" style="margin-top:6px;height:6px">
         <div class="prog-fill amber" style="width:72.73%"></div>
       </div>
-      <div style="font-size:9px;color:var(--muted);margin-top:3px">AVEP ≥ 70%</div>
+      <div style="font-size:9px;color:var(--muted);margin-top:3px">Meta ≥ 70%</div>
     </div>
 
     <!-- Promesas counts -->
@@ -180,9 +180,9 @@ def render() -> None:
 
     cong_territorial = _cong_card(
         "③", "Congruencia Territorial",
-        "Inversión ↔ Parroquias ↔ NBI ↔ TPS",
+        "Inversión ↔ Parroquias ↔ NBI ↔ Prioridad territorial",
         44.8, "red", "red",
-        "Isabel Muentes (TPS 77.94, NBI 61.2%) recibe $228K · $40/hab vs $217 cabecera · Q1-2026",
+        "Isabel Muentes (prioridad territorial 77.94, NBI 61.2%) recibe $228K · $40/hab vs $217 cabecera · Q1-2026",
         "¿La inversión llega donde más se necesita?",
         "Analizar Brecha Territorial",
     )

@@ -249,41 +249,6 @@
  ],
  "p11_ods.py": [
   {
-   "line": 26,
-   "terms": "TPS",
-   "alt": "Prioridad territorial",
-   "risk": "ALTO",
-   "snippet": "TPS rural · NBI parroquias · inversión per cápita mínima $80/hab"
-  },
-  {
-   "line": 27,
-   "terms": "TPS",
-   "alt": "Prioridad territorial",
-   "risk": "ALTO",
-   "snippet": "Reducir TPS promedio rural de 48.4% → 35% al 2027"
-  },
-  {
-   "line": 229,
-   "terms": "ICODS",
-   "alt": "Cumplimiento ODS",
-   "risk": "ALTO",
-   "snippet": "<span style=\"font-size:18px\">%</span></div>     <div style=\"font-size..."
-  },
-  {
-   "line": 331,
-   "terms": "ICODS",
-   "alt": "Cumplimiento ODS",
-   "risk": "BAJO",
-   "snippet": "ICODS"
-  },
-  {
-   "line": 346,
-   "terms": "ICODS",
-   "alt": "Cumplimiento ODS",
-   "risk": "ALTO",
-   "snippet": "El GAD de Montecristi tiene ICODS 87.5% con 14 ODS vinculados al PDOT..."
-  },
-  {
    "line": 210,
    "terms": "ICODS",
    "alt": "Cumplimiento ODS",
@@ -576,13 +541,6 @@
  ],
  "p19_genero.py": [
   {
-   "line": 751,
-   "terms": "ICODS",
-   "alt": "Cumplimiento ODS",
-   "risk": "ALTO",
-   "snippet": "<div class=\"grid-2\">   <div style=\"background:rgba(124,92,252,.06);b..."
-  },
-  {
    "line": 19,
    "terms": "IGM-A",
    "alt": "Equidad de genero",
@@ -625,20 +583,6 @@
    "snippet": "IGM-F"
   },
   {
-   "line": 618,
-   "terms": "IGM-D",
-   "alt": "Equidad de genero",
-   "risk": "ALTO",
-   "snippet": "indicadores muestran \"Sin dato oficial\"     — valores aún no disponi..."
-  },
-  {
-   "line": 695,
-   "terms": "IGM-D",
-   "alt": "Equidad de genero",
-   "risk": "ALTO",
-   "snippet": "<div style=\"margin-top:8px;font-size:9px;color:var(--muted)\">     ..."
-  },
-  {
    "line": 568,
    "terms": "PSG",
    "alt": "Presupuesto con enfoque de genero",
@@ -653,29 +597,6 @@
    "alt": "registros institucionales",
    "risk": "ALTO",
    "snippet": "<div style=\"margin-top:16px;padding:10px 12px;background:rgba(255,25..."
-  }
- ],
- "p3_congruencias.py": [
-  {
-   "line": 68,
-   "terms": "AVEP",
-   "alt": "Escala de calificacion",
-   "risk": "ALTO",
-   "snippet": "<div class=\"card\" style=\"margin-bottom:14px;border-left:4px solid va..."
-  },
-  {
-   "line": 183,
-   "terms": "TPS",
-   "alt": "Prioridad territorial",
-   "risk": "ALTO",
-   "snippet": "Inversión ↔ Parroquias ↔ NBI ↔ TPS"
-  },
-  {
-   "line": 185,
-   "terms": "TPS",
-   "alt": "Prioridad territorial",
-   "risk": "ALTO",
-   "snippet": "Isabel Muentes (TPS 77.94, NBI 61.2%) recibe $228K · $40/hab vs $217 ..."
   }
  ],
  "p4_geotwin.py": [
