@@ -42,11 +42,8 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
 ## AHORA (estado vivo · historial → `governance/historico/BOOT_2026-06-17.md`)
 **RECONCILIACIÓN 2 VÍAS (2026-06-21):** la ruta estaba viva; el "salto" era mezclar 2 vías. `HOJA_DE_RUTA_MAESTRA.md §4`.
 ▶ **VÍA PRODUCTO (CAF · PRIORIDAD) · Sprint D:** contenido cajones = **13 ADN sellados (`DICCIONARIO_CONCEPTUAL`)** · NO re-derivar · forma `ADR-030`. Trabajo: sincronizar UI 12→13 + cosechar (`PLANO_DE_CAJONES`). Luego E·F.
-🔧 **VÍA SISTEMA (Dylus · no roba prioridad):** firewall 119→0 · ADR-027/028/029/030 · Atlas/Architecture/Inventario · grafo 1972✓. S-4 (NO ahora): CID Fase 2 + Desexcelización.
+🔧 **VÍA SISTEMA (Dylus):** firewall 119→0 · ADR-027→030 · Atlas/Arch/Inventario · grafo 1972✓. S-4 (NO ahora): CID F2 + Desexcelización.
 ⚠ **CI:** BOOT.md límite 6KB. §AHORA LEAN — al cierre REEMPLAZAR (no apilar) + archivar a `historico/`.
-
-## REGLA CANÓNICA — todo artefacto al grafo
-`/graphify . --update` al cierre con artefactos nuevos (memoria histórica = base dialéctica autorregenerativa).
 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 ratificado · detalle en el ADR)
 GAD = sujeto observado, NO cliente. 4 capas: **A Núcleo** (Gold Master·QLEP·Graphify·GeoTwin·conectores·NLP·índices) · **B Operaciones** (capacidad interna Dylus) · **C Productos** (Institucional·Ciudadana·Impact·Economic·Cooperación · 5 UIs, 1 motor) · **D Portal** = `quiraintelligence.com` (radar vivo 221 GAD) · `quiraholding.streamlit.app` = laboratorio · Montecristi = Municipio 001.
@@ -57,6 +54,7 @@ GAD = sujeto observado, NO cliente. 4 capas: **A Núcleo** (Gold Master·QLEP·G
 3. **Sin norma verificada (SHA256), no hay dato.** Prohibido alucinar artículos/cifras.
 4. **No congelar teoría antes que el grafo hable.** ADR-019 a propósito en SUPPORTED.
 5. **Commits**: `[area]: desc en español` + `Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>`
+6. **El grafo es autoridad (anti-amnesia).** Antes de definir un concepto: ¿existe? (`graph`/Diccionario) → si existe DERIVA, no redefines · el que redefine se detiene. Al cierre `/graphify . --update`.
 
 ## LAZY LOAD — lee SOLO lo que aplica a tu tarea
 | Si vas a... | Lee primero |
