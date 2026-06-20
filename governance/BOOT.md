@@ -42,7 +42,7 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
 ## AHORA (estado vivo · historial → `governance/historico/BOOT_2026-06-17.md`)
 **OLA 1 COMPLETA** — 3 hardcodes críticos al motor: d05 Holding 12.4% (h90) · d08 Participación 48.33% · d12 Género 2.83% (vectores). Patrón: tarjeta→detalle→firewall→commit. Último `fea4d28`.
 **Firewall (ADR-027) COMPLETO ✅:** deuda **Familia=0** (119→0) · canon Dylus/IA=37 intacto · escáner calibrado · punto ciego cerrado.
-▶ **Convergencia cerrada:** toda la UI pública en lenguaje de administración pública (regla mixto · canon en capa Dylus). Futuro: bucles agénticos QUIRA IA (post-conv).
+▶ **Convergencia cerrada:** toda la UI pública en lenguaje de administración pública (regla mixto · canon en capa Dylus). Futuro: Compilador+CID → `ADR-028` (post-conv).
 ⚠ **CI:** BOOT.md límite 6KB. §AHORA LEAN — al cierre REEMPLAZAR (no apilar) + archivar a `historico/`.
 
 ## REGLA CANÓNICA — todo artefacto al grafo
