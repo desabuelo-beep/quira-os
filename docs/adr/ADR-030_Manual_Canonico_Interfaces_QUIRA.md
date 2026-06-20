@@ -1,111 +1,74 @@
-# ADR-030 · Manual Canónico de Interfaces QUIRA
+# ADR-030 · Canon de Expresión de Interfaz QUIRA
 
-**Estado:** EN REVISIÓN (Javo) · 2026-06-21 · canon de Experiencia Metodológica
-**Contexto de origen:** rediseño del Centro de Mando. Mesa (colega + académico): *"no diseñes un dashboard bonito; diseña un instrumento de gobierno."*
-**Relacionado:** ADR-027 (firewall · lenguaje público) · ADR-028 (compilador) · `p_command_center_v2.py` · `firewall_dictionary.json`
+**Estado:** RATIFICADO · 2026-06-21 (Javo) · reescrito estrecho para NO duplicar el Diccionario
+**Alcance estricto:** SOLO la **expresión visual**. El **contenido** (qué es cada cajón, su pregunta,
+exclusiones, indicador madre) lo gobierna `docs/sprint-c/DICCIONARIO_CONCEPTUAL_QUIRA.md` (13 ADN ·
+11 campos · SELLADO 2026-06-14) — **fuente única**. Este ADR **no redefine dominios.**
+**Relacionado:** DICCIONARIO_CONCEPTUAL (contenido) · PLANO_DE_CAJONES (método cosecha) · CONSTITUCION_ONTOLOGICA · ADR-027 (firewall) · ADR-028.
 
 ---
 
-## Principio rector
+## Por qué existe (y por qué NO duplica)
 
-QUIRA **no vende gráficos: vende comprensión.** El Centro de Mando no es un *menú* (lanzador de
-pantallas) — es el **puente de mando** de un sistema operativo de inteligencia pública. Toda interfaz
-obedece dos leyes:
-1. **Instrumento de gobierno, no aplicación bonita.** Cada elemento enseña o decide; nada es decorativo.
-2. **Regla 50/50** — 50% visualización · 50% interpretación. Un gráfico sin criterio no pasa.
+El Diccionario ya define **QUÉ es cada cajón** (13 ADN anclados al motor). No define **CÓMO se renderiza.**
+Este ADR cubre solo la forma, y **deriva todo su contenido del Diccionario.**
 
-Este manual define la **anatomía** una sola vez; los 13 cajones DERIVAN de él y nunca vuelven a divergir.
+> **Regla anti-duplicación:** ADR-030 no contiene definiciones de dominio — contiene reglas de render.
+> El texto de la UI se LEE del ADN, jamás se reescribe aquí. Si la UI contradice el Diccionario, gana el Diccionario.
 
-## §1 · Anatomía del CAJÓN — las 4 preguntas (obligatorias, sin excepción)
+*(Nota de memoria: la versión previa de este ADR y la mesa de 2026-06-21 re-derivaron una anatomía de
+"4 preguntas" sin recordar el ADN de 11 campos ya sellado — la "pérdida de narrativa" que el colega advirtió.
+Javo lo cazó. Esta versión lo corrige: el ADN manda.)*
 
-Ninguna card muestra datos sueltos. Cada cajón responde, en este orden:
+## §1 · La card del cajón = RENDER del ADN (Variante A)
 
-| # | Pregunta | Elemento | Regla |
-|---|---|---|---|
-| 1 | ¿Qué dominio? | **Nombre** del dominio | nº + nombre |
-| 2 | ¿Qué significa? | **Significado canónico** | definición metodológica, **NO eslogan** · lenguaje público (firewall) |
-| 3 | ¿Cómo está? | **Estado** | el número del motor + badge de estado |
-| 4 | ¿Por qué me importa? | **Pregunta marco-causal** | la invitación que da sentido al dato |
+La card renderiza campos del ADN — no inventa texto:
 
-**Mecánica (A1 · locked):** card 100% clicable vía `st.button` transparente superpuesto (nativo, sin
-iframe → navega en deploy). Sin botón "abrir". Layout **Variante A**: concepto (izq) | métrica grande +
-estado (der) · pregunta al pie · ↗ en la esquina · hover aclara el borde. Grilla 4×3 · color por temperatura.
+| Elemento visual (card) | Campo del ADN (Diccionario · fuente) |
+|---|---|
+| Nombre | Campo 2 · Dominio Canónico (Nomenclátor) |
+| Concepto / significado | Campo 4 · Definición conceptual (en lenguaje público · firewall ADR-027) |
+| Métrica + estado | Campo 10 · Indicador madre + operativos (leído del motor · Regla 1, nunca recalcular) |
+| Pregunta | Campo 6 · Pregunta estratégica |
 
-## §2 · Los 4 Dominios de Exploración (menú superior · identidad de cada QUIRA)
+**Layout Variante A:** nombre arriba · concepto (izq) | métrica+estado (der) · pregunta al pie · ↗ esquina.
+**Mecánica A1:** card 100% clicable vía `st.button` transparente superpuesto (nativo · sin iframe · navega en
+deploy). Sin botón "abrir". Grilla · color por temperatura · d04 dinámico · cajón deshabilitado seguro.
 
-Los 4 de arriba **NO son KPIs ni atajos** (eran redundantes con los 12). Son **Dominios de Exploración**:
-le dan cerebro propio a cada producto de la Suite. No solo cambian dashboards — cambian la identidad.
+## §2 · Los 4 Dominios de Exploración (menú superior · GENUINAMENTE NUEVO)
 
-**QUIRA Institucional** (confirmado · Javo 2026-06-21):
-```
-①  Territorio          realidad dura: INEC · NBI · PDOT · cobertura · demografía
-②  Gobierno            concejo · alcalde · dependencias · organigrama · competencias
-③  Proyecto Político   Plan de Trabajo CNE · promesas · visión · agenda
-④  Evidencia Documental ordenanzas · contratos · planes · informes (el búnker probatorio)
-```
-*(QUIRA Operaciones y Ciudadana definirán sus 4 Dominios cuando se construyan — mismo patrón, distinto cerebro.)*
+Lo único que el canon no tenía (Javo + mesa · 2026-06-21): los 4 de arriba dejan de ser KPIs redundantes
+y se vuelven el **menú de identidad de cada producto**. **QUIRA Institucional:**
+① Territorio · ② Gobierno · ③ Proyecto Político (Plan CNE) · ④ Evidencia Documental.
+*(NO son los 13 dominios de gestión — son navegación de producto. Operaciones/Ciudadana definirán los suyos.)*
 
-## §3 · Anatomía del DASHBOARD interno (Regla 50/50)
+## §3 · El dashboard interno = Regla 50/50
 
-Cada dashboard = dos mitades de igual peso:
-```
-┌─────────────────────────┬─────────────────────────┐
-│  VISUALIZACIÓN (50%)     │  INTERPRETACIÓN (50%)    │
-│  gráficos · tablas ·     │  el CRITERIO de QUIRA    │
-│  mapas · series          │  (§4) — no leyendas      │
-└─────────────────────────┴─────────────────────────┘
-```
-Se conserva solo lo valioso del dashboard heredado; lo demás se reconstruye bajo esta regla.
-*(Todo dashboard heredado es un prototipo exploratorio, no canon.)*
+Cada dashboard = 50% visualización + 50% interpretación (el criterio de QUIRA IA, §4 — no leyendas).
+Se construye por **cosecha** (`PLANO_DE_CAJONES`): se recicla lo valioso de las ~40 pantallas-cantera; se
+crea solo lo que falte. **Ningún dashboard nace de una pantalla; nace del ADN** (Regla QUIRA).
 
-## §4 · Anatomía de QUIRA IA — produce CRITERIO, no describe gráficos
+## §4 · QUIRA IA en la interfaz = produce CRITERIO
 
-La IA **no explica el dashboard** (eso ya existe en todo sistema). **Responde la pregunta marco-causal
-del cajón (§1.4) y produce juicio metodológico.** Ejemplo canónico (RdC):
-> *"El informe presentado al CPCCS refleja el 91% de la gestión observada. Sin embargo, el discurso
-> público sobrerrepresenta la inversión en seguridad y omite parcialmente la ejecución social. Se
-> detectan tres divergencias relevantes."*
+La IA responde la **Pregunta estratégica** del ADN (campo 6) con juicio metodológico, no describe gráficos.
+Ej.: *"el informe refleja el 91% de la gestión; el discurso sobrerrepresenta seguridad y omite ejecución
+social · 3 divergencias."* Frontera Regla 1 intacta (lee la verdad sellada, no la recalcula).
 
-No describe barras: dictamina. Frontera Regla 1 intacta — razona sobre la verdad sellada, no la recalcula.
+## §5 · La frontera "qué NO es" se respeta en el render
 
-## §5 · Caso canónico — Rendición de Cuentas (destruir y reconstruir)
-
-El cajón 09 actual es invento; se reconstruye entero. RdC = **congruencia de tres relatos**:
-```
-RENDICIÓN DE CUENTAS · Congruencia entre:
-   Gestión (lo que el sistema midió)  →  Informe CPCCS (lo reportado)  →  Discurso público (lo comunicado)
-
-            ┌─────────────────────┐
-            │   89% CONGRUENCIA    │   ← indicador gigante
-            └─────────────────────┘
-   ┌──────────────┬──────────────┬──────────────┐
-   │ Lo ejecutado │ Lo reportado │ Lo comunicado│   ← 3 columnas
-   └──────────────┴──────────────┴──────────────┘
-   NLP del discurso (link de redes)  ← abajo, evidencia
-   Criterio QUIRA (§4): las divergencias dictaminadas
-```
-Fuentes reales: informe oficial CPCCS + link del evento público de RdC (discurso) → NLP. Conecta con el
-diferenciador del §0 de la Hoja de Ruta (Plan CNE + NLP discurso = demagogia expuesta).
-
-## §6 · Holding — resolución de arquitectura de información
-
-Holding se volvió **cajón comodín** (acumuló contenido ajeno). Misión canónica (confirmada · Javo):
-**consolidación ponderada de las 4 entidades** (GAD · EP Aseo · Bomberos · Patronato) medidas con la
-misma vara. **Adelgaza:** el contenido de Rendición de Cuentas → cajón 09 · el de Participación → cajón 08.
-Cada widget vive donde pertenece; Holding deja de ser comodín.
-
-## §7 · Los átomos (definidos una vez)
-
-- **Métrica:** el número que dictamina el motor (Gold Master). Nunca se recalcula en la UI.
-- **Concepto / significado canónico:** definición metodológica en lenguaje público (firewall · ADR-027) — jamás eslogan, jamás acrónimo interno.
-- **Evidencia:** todo dato visible debe rastrearse a soporte verificable (SHA-256 / norma · Regla 3).
+El **campo 8 del ADN (Exclusiones)** gobierna dónde vive cada widget. Caso vivo: **Holding (d05)** acumuló
+contenido de RdC (→d09) y Participación (→d08) en `p2_holding.py`, violando las Exclusiones de su propio ADN.
+Render correcto = reubicar a sus cajones. **No es decisión nueva: es cumplir el canon** (confirmado · Javo).
 
 ## Consecuencias
 
-- Los 13 cajones y sus dashboards **derivan de este manual** → cero divergencia futura.
-- Orden de construcción: A1 (card · §1) → A2 (Dominios · §2) → dashboards (§3-4) por ola → RdC (§5) → Holding (§6).
-- Es **VÍA PRODUCTO** (Sprint D · CAF): mejora el molde Montecristi mostrable.
-- **Verificación en deploy obligatoria** antes de declarar hecho cualquier cajón (regla del proyecto).
+- ADR-030 = contrato de **render**. Diccionario = contrato de **contenido**. Cero competencia, cero duplicación.
+- **Trabajo real (Sprint D · VÍA PRODUCTO):** sincronizar el Centro de Mando vivo con el canon. Hoy:
+  `p_command_center_v2.py` tiene **12 cajones con nombres viejos**; el canon tiene **13 ADN** con Nomenclátor
+  (falta **d13 Sostenibilidad y Resiliencia Ambiental**; renombrar d03→"Gobernanza del Mandato",
+  d10→"Cobertura de Servicios e Infraestructura", d12→"Inclusión, Equidad y Género").
+- **Orden:** sincronizar nombres + 13 cajones → A1 card (Variante A) → 4 Dominios de Exploración →
+  dashboards por ola (cosecha) → verificación en deploy. Es **implementar el canon**, no re-conceptualizar.
 
 ---
-*ADR-030 · Manual Canónico de Interfaces QUIRA · Dylus Lab © 2026 · "Cada cajón enseña. Cada dashboard interpreta. La IA dictamina. La interfaz dejó de ser una app bonita: habla el Canon."*
+*ADR-030 · Canon de Expresión de Interfaz QUIRA · Dylus Lab © 2026 · "El Diccionario dice qué es cada cajón; este canon dice cómo se ve. El contenido se lee del ADN — jamás se reinventa en la UI."*
