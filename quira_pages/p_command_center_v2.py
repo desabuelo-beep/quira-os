@@ -64,7 +64,7 @@ _DOMAINS_V2: list[dict[str, Any]] = [
         "id": "d03", "num": "03", "nombre": "Gobernanza del Mandato",
         "concepto": "La correspondencia entre lo que se prometió en campaña y lo que "
                     "el plan de gobierno realmente ejecuta — la palabra empeñada, medida.",
-        "estado": "EN RUTA", "metric": "94.6%",
+        "estado": "EN RUTA", "metric": "72.73%",
         "gancho": "¿La gestión mantiene la correspondencia con los compromisos que la ciudadanía validó en las urnas?",
         "temp": "alerta", "mod": "metas",
     },
