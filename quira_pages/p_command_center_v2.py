@@ -155,7 +155,9 @@ _DOMAINS_V2: list[dict[str, Any]] = [
 ]
 
 # Las 4 DIMENSIONES del sistema (lentes · NO contenido · NUNCA duplican los 13).
-# Ciclo: ¿Qué? (Gobierno) · ¿Dónde? (Territorio) · ¿Por qué? (Inteligencia) · ¿Y ahora qué? (Acción).
+# Ciclo: ¿Qué? (Gobierno) · ¿Dónde? (Territorio) · ¿Por qué? (Inteligencia) · ¿Con quién? (Convergencia).
+# La ACCIÓN (¿y ahora qué?) la cierra el GOBIERNO, FUERA de QUIRA: QUIRA informa y
+# conecta, no actúa (frontera · Javo 2026-06-21). El 4to = match entre QUIRAs.
 # Frame universal a las 6 QUIRAs; el contenido es propio de cada una.
 _DIMS = [
     {"key": "dim_gob",    "icon": "🏛", "nombre": "Gobierno",
@@ -164,8 +166,8 @@ _DIMS = [
      "desc": "¿Dónde? · el cantón en el mapa", "dest": "geotwin"},
     {"key": "dim_intel",  "icon": "◎", "nombre": "Inteligencia",
      "desc": "¿Por qué? · QUIRA lee y anticipa", "dest": "control"},
-    {"key": "dim_accion", "icon": "⚡", "nombre": "Acción",
-     "desc": "¿Y ahora qué? · de la inteligencia a la decisión", "dest": None, "proximamente": True},
+    {"key": "dim_conv", "icon": "🔗", "nombre": "Convergencia",
+     "desc": "¿Con quién? · el encuentro entre las QUIRAs", "dest": None, "proximamente": True},
 ]
 
 
