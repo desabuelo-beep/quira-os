@@ -60,6 +60,16 @@
 Nunca toca el Excel, Supabase ni Neo4j directamente. Razona **sobre** la verdad sellada; no la recalcula.
 → La frontera que la mesa imaginó **ya existe en el código** — y es lo que vuelve el futuro CID seguro.
 
+## 4.5 Las 3 capas de EXPERIENCIA (la UI que navega el usuario · 2026-06-21)
+
+Sobre el stack técnico, el usuario navega **3 capas de experiencia** (no son las 7 de soberanía):
+
+- **L1 · Centro de Mando** — las **13 investigaciones (QINV-001…013)**: entrada (grilla · el ícono alusivo = acceso, sin numeración) + el expediente de cada una (molde **UMI** · `umi.py` · regla **20/70/10**: pregunta forense · evidencia protagonista · lectura).
+- **L2 · GeoTwin** — la **convergencia territorial**: todas las brechas de las 13 aterrizan en el mapa.
+- **L3 · QUIRA IA** — la **inteligencia que CONSOLIDA**: lee las 13 + GeoTwin, copiloto omnipresente, ápice de la inteligencia territorial. **Es una CAPA, no el 10%** de un expediente — el 20/70/10 es el layout *local*; la IA como capa es full-power (capa Causal/Neo4j + Gephi externo). *(Javo · 2026-06-21: no relegar la IA.)*
+
+**Polimorfismo QINV (dual-lente):** cada investigación sirve **dos sujetos obligados** con el mismo método — **Lente GAD** (territorial · PDOT · eSIGEF local) y **Lente Central** (sectorial · PEI · Plan Nacional · LOSEP/Contraloría). QUIRA deja de ser solo-cantón → **sistema del Estado**; el lente se adapta, la pregunta forense es la misma. *(Enriquece el `DICCIONARIO_CONCEPTUAL` —el rector— con la columna Lente Central; se integra al construir cada QINV.)*
+
 ## 5. Las 3 capas de soberanía de lenguaje (ADR-027) mapeadas sobre el stack
 
 - **Dylus Lab** (capas 1-6 internas + consolas) → canon legítimo (ICPI/TGI/SAT/H##). NO se purga.
