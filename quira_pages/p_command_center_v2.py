@@ -41,103 +41,105 @@ _TEMP: dict[str, dict[str, str]] = {
 }
 
 # ══════════════════════════════════════════════════════════════════════════════
-# 12 DOMINIOS — CONCEPTO (qué es) + número duro + GANCHO (por qué entrar)
+# 13 DOMINIOS — CONCEPTO (campo-4 ADN) + número duro + PREGUNTA (campo-6 ADN)
 # ══════════════════════════════════════════════════════════════════════════════
 _DOMAINS_V2: list[dict[str, Any]] = [
     {
         "id": "d01", "num": "01", "nombre": "Planificación Estratégica",
-        "concepto": "El plan de desarrollo del cantón: los compromisos que "
-                    "Montecristi se fijó hasta 2027 y su grado de ejecución real.",
+        "concepto": "La consistencia entre lo que el cantón planificó a largo plazo "
+                    "y los hitos que de verdad cumple — el rumbo, no el discurso.",
         "estado": "EN RUTA", "metric": "56/56",
-        "gancho": "¿Qué prometió el cantón y cuánto se cumple? Los 4 ejes, meta por meta.",
+        "gancho": "¿El cantón mantiene el rumbo hacia sus metas plurianuales, o se desvió en el camino?",
         "temp": "verde", "mod": "ods",
     },
     {
         "id": "d02", "num": "02", "nombre": "Presupuesto & Financiamiento",
-        "concepto": "El dinero del cantón: de dónde viene, en qué se invierte y "
-                    "qué fondos internacionales están en juego.",
+        "concepto": "La capacidad del cantón de captar, mover y ejecutar recursos a "
+                    "tiempo — y de apalancar capital externo sin caer en subejecución.",
         "estado": "CONDICIONADO", "metric": "$3.66M",
-        "gancho": "Tres fondos activos dependen de hitos de este trimestre — cuáles y qué los condiciona.",
+        "gancho": "¿Con qué eficiencia y oportunidad se ejecutan los recursos frente al riesgo de subejecución?",
         "temp": "funds", "mod": "cooperacion",
     },
     {
         "id": "d03", "num": "03", "nombre": "Gobernanza del Mandato",
-        "concepto": "La palabra empeñada: las promesas registradas ante el CNE "
-                    "convertidas (o no) en metas formales del plan.",
+        "concepto": "La correspondencia entre lo que se prometió en campaña y lo que "
+                    "el plan de gobierno realmente ejecuta — la palabra empeñada, medida.",
         "estado": "EN RUTA", "metric": "94.6%",
-        "gancho": "53 de 56 metas en cronograma — y 3 en rezago. Mira cuáles son.",
+        "gancho": "¿La gestión mantiene la correspondencia con los compromisos que la ciudadanía validó en las urnas?",
         "temp": "alerta", "mod": "metas",
     },
     {
         "id": "d04", "num": "04", "nombre": "Alertas Institucionales",
-        "concepto": "El sistema de alerta temprana: señales que anticipan riesgos "
-                    "institucionales antes de que se vuelvan crisis.",
+        "concepto": "La vigilancia preventiva del cantón: las desviaciones y riesgos "
+                    "detectados antes de que se vuelvan crisis.",
         "metric_key": "n_alertas", "metric_suffix": " activas",
-        "gancho": "7 tipos de señal bajo monitoreo continuo — el semáforo del cantón.",
+        "gancho": "¿Qué riesgos están activos hoy y cuáles exigen intervención antes de volverse crisis?",
         "temp": "critico", "mod": "alertas", "dynamic_d04": True,
     },
     {
         "id": "d05", "num": "05", "nombre": "Holding e Integración Municipal",
-        "concepto": "Las 4 entidades del holding (GAD, EP Aseo, Bomberos, "
-                    "Patronato) medidas con la misma vara.",
+        "concepto": "El desempeño coordinado de las entidades adscritas del municipio "
+                    "(empresas públicas, Bomberos, Patronato) — quién articula y quién "
+                    "arrastra al conjunto.",
         "estado": "BAJO OBJETIVO", "metric_key": "hold_avg", "metric_suffix": "%",
-        "gancho": "Entra a comparar las cuatro entidades: quién ejecuta y quién arrastra al consolidado.",
+        "gancho": "¿Las entidades operan articuladas, o hay piezas que arrastran al conjunto?",
         "temp": "alerta", "mod": "municipal",
     },
     {
         "id": "d06", "num": "06", "nombre": "Salud Institucional",
-        "concepto": "El estado general del municipio como institución: 41 métricas "
-                    "integradas en un solo diagnóstico.",
+        "concepto": "El estado de fondo del aparato público: su capacidad de sostener "
+                    "el cumplimiento de sus funciones en el tiempo, no solo cumplir hoy.",
         "estado": "BAJO UMBRAL", "metric_key": "icpi_pct", "metric_suffix": "%",
-        "gancho": "11.4 puntos bajo el umbral — entra a ver dónde se concentra la brecha.",
+        "gancho": "¿El gobierno cumple sus funciones de forma sostenible, o hay un deterioro estructural?",
         "temp": "critico", "mod": "situacion",
     },
     {
         "id": "d07", "num": "07", "nombre": "Transparencia",
-        "concepto": "La información que la ley obliga a publicar (LOTAIP) y su "
-                    "estado real de publicación y verificación.",
+        "concepto": "La relación entre la obligación legal de publicar y la capacidad "
+                    "real de sostener una gestión auditable por la ciudadanía.",
         "estado": "OBSERVADO", "metric": "21/21",
-        "gancho": "21 de 21 artículos publicados, sin sanciones — verifica la evidencia.",
+        "gancho": "¿La información pública es verificable, o hay opacidad que impide auditar la gestión?",
         "temp": "normal", "mod": "transparencia",
     },
     {
         "id": "d08", "num": "08", "nombre": "Participación Ciudadana",
-        "concepto": "Los mecanismos por los que la ciudadanía decide: presupuesto "
-                    "participativo, cabildos, consultas, veedurías.",
+        "concepto": "La incidencia real de la ciudadanía en las decisiones públicas — "
+                    "no cuántos talleres hubo, sino cuánto cambiaron lo que se decidió.",
         "estado": "BAJO OBJETIVO", "metric_key": "igp_pct", "metric_suffix": "%",
-        "gancho": "Los mecanismos por los que la ciudadanía participa: entra a ver cuáles funcionan y dónde se estanca.",
+        "gancho": "¿La ciudadanía incide de verdad en las decisiones, o la participación es solo formal?",
         "temp": "alerta", "mod": "confianza",
     },
     {
         "id": "d09", "num": "09", "nombre": "Rendición de Cuentas",
-        "concepto": "El examen anual del municipio ante el CPCCS y la ciudadanía: "
-                    "el circuito que valida (o bloquea) la gestión del año.",
+        "concepto": "La validación pública de la gestión: si la narrativa que el "
+                    "municipio declara coincide con la evidencia que el sistema observó.",
         "estado": "EN PREPARACIÓN", "metric_key": "dias_rdc", "metric_suffix": " días",
-        "gancho": "Cuenta regresiva a la presentación de agosto — el circuito tiene condiciones en rojo.",
+        "gancho": "¿La narrativa pública coincide con la evidencia, o la rendición es solo autorreportada?",
         "temp": "alerta", "mod": "rdc",
     },
     {
         "id": "d10", "num": "10", "nombre": "Cobertura de Servicios e Infraestructura",
-        "concepto": "Los servicios básicos vistos desde el territorio: quién tiene "
-                    "agua, saneamiento y recolección — y quién no.",
+        "concepto": "El acceso real a los servicios básicos visto desde el territorio: "
+                    "dónde llegan las redes y dónde está el déficit estructural.",
         "estado": "BRECHA CRÍTICA", "metric": "34.9%",
-        "gancho": "Una parroquia concentra todas las brechas. El mapa lo explica en 30 segundos.",
+        "gancho": "¿Dónde está el déficit real de servicios y a quién golpea la brecha urbano-rural?",
         "temp": "critico", "mod": "territorio",
     },
     {
         "id": "d11", "num": "11", "nombre": "Desarrollo Económico Territorial",
-        "concepto": "La economía del territorio: empleo, industria, turismo y la "
-                    "zona especial de desarrollo.",
+        "concepto": "La vitalidad económica del territorio: su capacidad de sostener "
+                    "producción, empleo y cadenas de valor.",
         "estado": "EN CONSTRUCCIÓN", "metric": "—",
         "gancho": "Módulo en estructuración — empleo, industria y turismo.",
         "temp": "dim", "mod": None, "disabled": True,
     },
     {
         "id": "d12", "num": "12", "nombre": "Inclusión, Equidad y Género",
-        "concepto": "Los grupos que la Constitución manda atender primero: "
-                    "inversión social, género y prioridad territorial.",
+        "concepto": "La capacidad del municipio de cerrar las brechas de los grupos de "
+                    "atención prioritaria, sobre todo donde la vulnerabilidad se "
+                    "concentra en el territorio.",
         "estado": "CRÍTICO", "metric_key": "psg_pct", "metric_suffix": "%",
-        "gancho": "La inversión en los grupos que la Constitución manda atender primero: entra a ver la brecha real.",
+        "gancho": "¿El presupuesto de equidad es real, y dónde se concentra la brecha territorial?",
         "temp": "critico", "mod": "genero",
     },
     {
