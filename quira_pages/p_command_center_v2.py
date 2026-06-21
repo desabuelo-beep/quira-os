@@ -227,7 +227,7 @@ def _css() -> str:
             f'border-left:3px solid {t["c"]}!important; border-radius:12px!important; '
             f'min-height:220px!important; transition:border-color .12s ease; {op} }}'
         )
-        if not dom.get("disabled"):
+        if True:  # ícono-entrada estilizado para las 13 (todas son investigaciones)
             # ÍCONO-entrada (Javo · 2026-06-21): el ícono alusivo ES el disparador
             # nativo de entrada — reemplaza la numeración y el botón-caja. Robusto
             # (no overlay, no enlace). Hover = el cajón se ilumina e invita a entrar.
@@ -394,16 +394,10 @@ def render() -> None:
                     # título: ÍCONO-entrada (disparador) + nombre
                     ic, nm = st.columns([0.17, 0.83], gap="small")
                     with ic:
-                        if dom.get("mod") and not dom.get("disabled"):
-                            if st.button(icono, key=f"nav_{dom['id']}",
-                                         help=f"Entrar · {dom['nombre']}"):
-                                _nav(dom["mod"])
-                        else:
-                            st.markdown(
-                                f'<div style="font-size:18px;opacity:.4;text-align:center;'
-                                f'padding-top:3px">{icono}</div>',
-                                unsafe_allow_html=True,
-                            )
+                        # Las 13 abren su investigación sobre el kernel (qinv · UMI)
+                        if st.button(icono, key=f"nav_{dom['id']}",
+                                     help=f"Entrar · {dom['nombre']}"):
+                            _nav(f"qinv_{dom['id']}")
                     with nm:
                         st.markdown(
                             f'<div style="font-size:13.5px;font-weight:800;color:#E8EDF4;'

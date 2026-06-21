@@ -139,7 +139,7 @@ def _render_mini_kpi_band() -> None:
 # tecnico_only=True → solo visible para Técnico, Operador, Administrador
 _GOV_MODULES: list[tuple[str, str, str, bool]] = [
     # ── Sección Ejecutiva (todos los roles GOV) ────────────────────────────
-    ("inicio",       "🏛",  "Centro de Mando",               False),
+    ("inicio",       "🏛",  "Centro de Inteligencia Territorial",               False),
     ("situacion",    "📊",  "Situación Institucional",      False),
     ("alertas",      "🚨",  "Alertas y Riesgos SAT",        False),
     ("municipal",    "🏛",  "Gestión Municipal",             False),
@@ -193,7 +193,7 @@ def render_sidebar_nav() -> None:
     Ejecutivo (Sprint 1.2): sidebar ELIMINADO — navegación por HTML canvas.
     Técnico / Administrador: EJECUTIVO + TÉCNICO secciones.
     """
-    # ── Ejecutivo: sin sidebar — el Centro de Mando es el canvas completo ──────
+    # ── Ejecutivo: sin sidebar — el Centro de Inteligencia Territorial es el canvas completo ──────
     if is_ejecutivo():
         # El sidebar se oculta por CSS en p_command_center.py.
         # Aquí solo evitamos renderizar botones que aparecerían si el CSS falla.
@@ -293,7 +293,7 @@ def _render_inicio() -> None:
             from quira_pages.p_command_center import render as _r1
             _r1()
         except Exception as e1:
-            st.error(f"Centro de Mando no disponible: {e1}")
+            st.error(f"Centro de Inteligencia Territorial no disponible: {e1}")
 
 
 def _render_situacion() -> None:
@@ -425,7 +425,7 @@ def _render_control() -> None:
 
 
 def _render_concejo() -> None:
-    """Panel Estratégico — dominio político dentro del Centro de Mando."""
+    """Panel Estratégico — dominio político dentro del Centro de Inteligencia Territorial."""
     try:
         from quira_pages.p_concejo import render as _r
         _r()
@@ -465,7 +465,7 @@ def _render_transparencia_d07() -> None:
 # ── Mapa key → (renderer, label) ─────────────────────────────────────────────
 _MODULE_RENDER: dict[str, tuple] = {
     # Sección Ejecutiva
-    "inicio":       (_render_inicio,       "Centro de Mando"),
+    "inicio":       (_render_inicio,       "Centro de Inteligencia Territorial"),
     "situacion":    (_render_situacion,    "Situación Institucional"),
     "metas":        (_render_metas_d03,   "Metas PDOT · IFE"),          # Dom03 · ADR-026
     "alertas":      (_render_alertas,      "Alertas y Riesgos SAT"),
@@ -496,9 +496,9 @@ def render() -> None:
     Renderiza el contenido GOV según el rol activo.
 
     Ejecutivo (Sprint 1.2):
-      · Centro de Mando único = pantalla principal (HTML canvas full)
+      · Centro de Inteligencia Territorial único = pantalla principal (HTML canvas full)
       · Sidebar eliminado — navegación por tarjetas onclick
-      · drill-in de dominio → módulo + banda de retorno "← Centro de Mando"
+      · drill-in de dominio → módulo + banda de retorno "← Centro de Inteligencia Territorial"
       · 'concejo' = Panel Estratégico como dominio (no view separada)
 
     Directivo / Administrador → módulo activo con header de identidad GOV.
@@ -507,13 +507,20 @@ def render() -> None:
     if is_ejecutivo():
         gov_mod = st.session_state.get("gov_module", "inicio")
 
-        # drill-in — navegó a un dominio desde el Centro de Mando
+        # drill-in — navegó a un dominio desde el Centro de Inteligencia Territorial
         # 'concejo' se maneja igual que cualquier módulo (Panel Estratégico)
         drill_targets = set(_MODULE_RENDER.keys()) | {"concejo"}
-        if gov_mod != "inicio" and gov_mod in drill_targets:
+        is_qinv = gov_mod.startswith("qinv_")
+        if gov_mod != "inicio" and (is_qinv or gov_mod in drill_targets):
 
             # Mostrar el módulo con banda de retorno
-            if gov_mod == "concejo":
+            if is_qinv:
+                # Cajón → investigación sobre el kernel (qinv.render · UMI · Pasada 1)
+                from quira_pages.qinv import render as _r_qinv, label_of as _label_qinv
+                _qdom = gov_mod[len("qinv_"):]
+                fn_drill = lambda d=_qdom: _r_qinv(d)
+                label_drill = _label_qinv(_qdom)
+            elif gov_mod == "concejo":
                 fn_drill, label_drill = _render_concejo, "Panel Estratégico"
             else:
                 fn_drill, label_drill = _MODULE_RENDER.get(
@@ -548,7 +555,7 @@ button[data-testid="collapsedControl"] {
                letter-spacing:.08em;text-transform:uppercase">⬡ QUIRA</span>
   <span style="font-size:9px;color:rgba(255,255,255,.20)">›</span>
   <span style="font-size:9px;color:rgba(255,255,255,.35);font-weight:700;
-               letter-spacing:.06em;text-transform:uppercase">Centro de Mando</span>
+               letter-spacing:.06em;text-transform:uppercase">Centro de Inteligencia Territorial</span>
   <span style="font-size:9px;color:rgba(255,255,255,.20)">›</span>
   <span style="font-size:9px;color:#E2E8F0;font-weight:700;
                letter-spacing:.06em;text-transform:uppercase">{label_drill}</span>
@@ -561,7 +568,7 @@ button[data-testid="collapsedControl"] {
 """, unsafe_allow_html=True)
 
             # Botón funcional de retorno
-            if st.button("← Centro de Mando", key="exec_back_centro",
+            if st.button("← Centro de Inteligencia Territorial", key="exec_back_centro",
                          use_container_width=False):
                 st.session_state["gov_module"] = "inicio"
                 st.session_state.pop("ejecutivo_modo", None)
@@ -573,8 +580,8 @@ button[data-testid="collapsedControl"] {
             fn_drill()
             return
 
-        # ── Landing Ejecutivo: Centro de Mando v2 NATIVO ──────────────────────
-        # FIX 2026-06-11: esta era la SEGUNDA ruta al Centro de Mando (la del
+        # ── Landing Ejecutivo: Centro de Inteligencia Territorial v2 NATIVO ──────────────────────
+        # FIX 2026-06-11: esta era la SEGUNDA ruta al Centro de Inteligencia Territorial (la del
         # rol ejecutivo) y seguía llamando al v1 — por eso Javo veía v1.1
         # aunque el v2 estuviera desplegado y sano. Ambas rutas ahora → v2.
         try:
@@ -588,7 +595,7 @@ button[data-testid="collapsedControl"] {
                 from quira_pages.p_command_center import render as _ve1
                 _ve1()
             except Exception as e1:
-                st.error(f"Centro de Mando no disponible: {e1}")
+                st.error(f"Centro de Inteligencia Territorial no disponible: {e1}")
         return
 
     # ── Directivo / Administrador: módulo activo con header GOV ──────────────
