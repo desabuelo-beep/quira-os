@@ -117,7 +117,7 @@ class InvestigacionQUIRA:
         st.markdown('<div class="umi-wrap">', unsafe_allow_html=True)
 
         # 1 · PREGUNTA FORENSE (encabezado soberano)
-        badge = f"EXPEDIENTE {self.id} · {self.nombre}"
+        badge = f"INVESTIGACIÓN {self.id} · {self.nombre}"
         if self.version:
             badge += f" · v{self.version}"
         hcol, dcol = st.columns([4.6, 1.4])
@@ -142,7 +142,7 @@ class InvestigacionQUIRA:
         # Regla 20/70/10: la evidencia del Excel/motor JAMÁS se minimiza ni se esconde.
         # QUIRA resume el método validado en Montecristi; no lo reemplaza.
         st.markdown(
-            '<div class="umi-sec umi-sec-ev">▎ EVIDENCIA — el universo de pruebas del motor</div>',
+            '<div class="umi-sec umi-sec-ev">▎ EVIDENCIA — todo lo que observa el motor</div>',
             unsafe_allow_html=True,
         )
         if self.evidencia is not None:
@@ -156,7 +156,7 @@ class InvestigacionQUIRA:
         # 3 · PERITAJE QUIRA (10% · el dictamen DESPUÉS de toda la evidencia, jamás antes)
         st.markdown('<hr class="umi-div">', unsafe_allow_html=True)
         st.markdown(
-            '<div class="umi-sec umi-sec-ia">▎ PERITAJE QUIRA — dictamen tras analizar la evidencia</div>',
+            '<div class="umi-sec umi-sec-ia">▎ LECTURA DE QUIRA — interpretación tras analizar la evidencia</div>',
             unsafe_allow_html=True,
         )
         if self.peritaje or self.peritaje_headline:
@@ -166,7 +166,7 @@ class InvestigacionQUIRA:
             )
         else:
             st.markdown(
-                '<div style="font-size:11px;color:#5A6B7E">— peritaje en cómputo —</div>',
+                '<div style="font-size:11px;color:#5A6B7E">— lectura en proceso —</div>',
                 unsafe_allow_html=True,
             )
 
@@ -223,7 +223,7 @@ class InvestigacionQUIRA:
 # Render helpers (la vista — subordinada al kernel)
 # ═══════════════════════════════════════════════════════════════════════════════
 def _peritaje_html(headline: str, dictamenes: Sequence[str], contradicciones: Sequence[str]) -> str:
-    head = '<div class="umi-perito-head">◎ QUIRA dictamina</div>'
+    head = '<div class="umi-perito-head">◎ QUIRA interpreta</div>'
     lead = f'<div class="umi-dic"><b>{headline}</b></div>' if headline else ""
     cuerpo = "".join(
         f'<div class="umi-dic"><span class="umi-dic-mk">▸</span><span>{d}</span></div>'
@@ -246,7 +246,7 @@ def _conclusion_html(inv: "InvestigacionQUIRA") -> str:
     bigpct = f'<span class="umi-bigpct" style="color:{color}">{pct}%</span>' if pct is not None else ""
     pcolor = _TEMP.get(inv.prioridad_temp, "#FF4D4D")
     div_html = (
-        f'<span class="umi-concl-lbl">Divergencias</span><br>'
+        f'<span class="umi-concl-lbl">Señales</span><br>'
         f'<span style="font-size:15px;font-weight:800;color:#E8EDF4">{inv.divergencias}</span>'
         if inv.divergencias else ""
     )
