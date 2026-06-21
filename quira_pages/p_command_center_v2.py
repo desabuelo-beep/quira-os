@@ -226,16 +226,19 @@ def _css() -> str:
             # Nav NATIVA robusta: botón VISIBLE en flujo. El overlay transparente
             # absoluto (opacity:0·inset:0) lo rechazaba Streamlit Cloud y rompía la
             # navegación (2026-06-21). Disparador claro = lo que el DOM sí reconoce.
+            # Disparador MÍNIMO: sin caja, hairline, casi invisible — no compite con
+            # el cajón ni roba su visión (Javo · 2026-06-21). Franja inferior clicable.
             per_card.append(
                 f'.st-key-card_{dom["id"]}:hover > div[data-testid="stVerticalBlockBorderWrapper"] '
                 f'{{ border-color:{t["c"]}!important; }}'
-                f'.st-key-nav_{dom["id"]} button {{ background:{t["c"]}14!important; '
-                f'border:1px solid {t["c"]}55!important; color:{t["c"]}!important; '
-                f'font-size:11.5px!important; font-weight:700!important; '
-                f'border-radius:8px!important; padding:5px 12px!important; '
-                f'min-height:34px!important; width:100%!important; letter-spacing:.02em; }}'
-                f'.st-key-nav_{dom["id"]} button:hover {{ background:{t["c"]}28!important; '
-                f'border-color:{t["c"]}!important; }}'
+                f'.st-key-nav_{dom["id"]} button {{ background:transparent!important; '
+                f'border:none!important; border-top:1px solid rgba(255,255,255,.06)!important; '
+                f'color:{t["c"]}b0!important; font-size:10px!important; font-weight:600!important; '
+                f'letter-spacing:.07em!important; text-transform:uppercase!important; '
+                f'border-radius:0!important; padding:7px 0 1px!important; '
+                f'min-height:0!important; width:100%!important; box-shadow:none!important; }}'
+                f'.st-key-nav_{dom["id"]} button:hover {{ color:{t["c"]}!important; '
+                f'background:{t["c"]}0d!important; }}'
             )
     for k in _KPIS:
         per_card.append(
@@ -402,7 +405,7 @@ def render() -> None:
                         unsafe_allow_html=True,
                     )
                     if dom.get("mod") and not dom.get("disabled"):
-                        if st.button("Abrir investigación →", key=f"nav_{dom['id']}",
+                        if st.button("entrar →", key=f"nav_{dom['id']}",
                                      use_container_width=True):
                             _nav(dom["mod"])
                     else:
