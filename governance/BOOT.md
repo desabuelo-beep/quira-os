@@ -40,10 +40,10 @@ dashboards, es lo que se define UNA vez. Sprint C: ontología antes que ingenier
 BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo que no se mueve.
 
 ## AHORA (estado vivo · historial → `governance/historico/BOOT_2026-06-17.md`)
-**PARADIGMA (2026-06-21):** QUIRA construye **investigaciones (QINV)**, no dashboards · 3 capas exp (L1 Mando · L2 GeoTwin · L3 **QUIRA IA** consolida, NO 10%) · polimorfismo GAD+Central → sistema del Estado · → `ARCHITECTURE_v1 §4.5`.
-✅ **HECHO:** kernel `InvestigacionQUIRA` (`umi.py` 20/70/10) · QINV-006 en deploy · 13 conceptos campo-4 · nav ícono (sin nº · cards iguales) · preventivo · Regla 3.
-▶ **SIGUIENTE:** QINV-002 (lente dual) → 010 → 009 (3 mundos) · polimorfismo al Diccionario.
-🔶 **PENDIENTE (financiado · bloquea GeoTwin+QGIS):** Haiku · 1.254 chunks (PUGS+Bicentenario · ~45min·$1-2). Gephi → grafo QUIRA IA. **DEPLOY** `c7567d2` pend. Reboot. **CI:** ≤6KB.
+**CENTRO DE INTELIGENCIA TERRITORIAL · 2026-06-21.** QUIRA NO es forense: descriptiva→preventiva→predictiva→prospectiva · el GOBIERNO actúa (QUIRA informa/conecta). Excel = SO matemático (invisible). 4 dims (regla 2 pisos): Gobierno·Territorio·Inteligencia·Convergencia(próx). Detalle: `ARCHITECTURE_v1 §4.5`+`qinv.py`.
+✅ **PASADA 1:** `umi.py`+`qinv.py` · **13 investigaciones cableadas al kernel** · QINV-006 real · d03=72.73 (no 94.6).
+▶ **RETOMAR Pasada 2** (directrices en `qinv.py`): A(001·002·003·006)→B(007·8·9)→C(010-013)→D(004·005) · 001 Arq.Estratégica · 002 Arq.Financiera (Motor Elegibilidad).
+🔶 **GeoTwin (H-004):** Haiku 1.254 chunks · financiado. **CI:** BOOT ≤6KB.
 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 ratificado · detalle en el ADR)
 GAD = sujeto observado, NO cliente. 4 capas: A Núcleo (motor·grafos·conectores·índices) · B Operaciones (Dylus) · C Productos (Institucional·Ciudadana·Impact·Economic·Cooperación · 1 motor) · D Portal `quiraintelligence.com` (radar 221 GAD). Montecristi = Municipio 001.
