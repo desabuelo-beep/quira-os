@@ -220,25 +220,22 @@ def _css() -> str:
             f'.st-key-card_{dom["id"]} > div[data-testid="stVerticalBlockBorderWrapper"] '
             f'{{ background:{t["bg"]}!important; border:1px solid {t["bd"]}!important; '
             f'border-left:3px solid {t["c"]}!important; border-radius:12px!important; '
-            f'position:relative!important; transition:transform .12s ease,border-color .12s ease; {op} }}'
+            f'min-height:220px!important; transition:border-color .12s ease; {op} }}'
         )
         if not dom.get("disabled"):
-            # Nav NATIVA robusta: botón VISIBLE en flujo. El overlay transparente
-            # absoluto (opacity:0·inset:0) lo rechazaba Streamlit Cloud y rompía la
-            # navegación (2026-06-21). Disparador claro = lo que el DOM sí reconoce.
-            # Disparador MÍNIMO: sin caja, hairline, casi invisible — no compite con
-            # el cajón ni roba su visión (Javo · 2026-06-21). Franja inferior clicable.
+            # ÍCONO-entrada (Javo · 2026-06-21): el ícono alusivo ES el disparador
+            # nativo de entrada — reemplaza la numeración y el botón-caja. Robusto
+            # (no overlay, no enlace). Hover = el cajón se ilumina e invita a entrar.
             per_card.append(
                 f'.st-key-card_{dom["id"]}:hover > div[data-testid="stVerticalBlockBorderWrapper"] '
                 f'{{ border-color:{t["c"]}!important; }}'
-                f'.st-key-nav_{dom["id"]} button {{ background:transparent!important; '
-                f'border:none!important; border-top:1px solid rgba(255,255,255,.06)!important; '
-                f'color:{t["c"]}b0!important; font-size:10px!important; font-weight:600!important; '
-                f'letter-spacing:.07em!important; text-transform:uppercase!important; '
-                f'border-radius:0!important; padding:7px 0 1px!important; '
-                f'min-height:0!important; width:100%!important; box-shadow:none!important; }}'
-                f'.st-key-nav_{dom["id"]} button:hover {{ color:{t["c"]}!important; '
-                f'background:{t["c"]}0d!important; }}'
+                f'.st-key-nav_{dom["id"]} button {{ background:{t["c"]}1c!important; '
+                f'border:1px solid {t["c"]}45!important; border-radius:9px!important; '
+                f'font-size:17px!important; line-height:1!important; padding:0!important; '
+                f'min-height:38px!important; height:38px!important; width:100%!important; '
+                f'box-shadow:none!important; }}'
+                f'.st-key-nav_{dom["id"]} button:hover {{ background:{t["c"]}33!important; '
+                f'border-color:{t["c"]}!important; transform:translateY(-1px); }}'
             )
     for k in _KPIS:
         per_card.append(
@@ -352,14 +349,20 @@ def render() -> None:
     st.markdown(
         '<div style="display:flex;justify-content:space-between;margin:4px 2px 0">'
         '<span style="font-size:10.5px;font-weight:800;letter-spacing:.1em;'
-        'color:#00D4FF">▎DOMINIOS OPERACIONALES</span>'
+        'color:#00D4FF">▎ÁREAS DE GESTIÓN</span>'
         '<span style="font-size:9.5px;color:#5A6B7E;font-family:\'JetBrains Mono\','
-        'monospace">Montecristi · 13 dominios · clic en la tarjeta</span></div>',
+        'monospace">Montecristi · clic en el ícono para entrar</span></div>',
         unsafe_allow_html=True,
     )
 
-    # ── Grid 4 × 3 — cards nativas ───────────────────────────────────────────
+    # ── Grid · 13 cajones · dimensiones iguales · ÍCONO = entrada ─────────────
     n_alertas = int(d.get("n_alertas", 0) or 0)
+    # Ícono alusivo por cajón (reemplaza la numeración · ningún cajón manda sobre otro)
+    _ICON = {
+        "d01": "🧭", "d02": "💰", "d03": "📜", "d04": "🚨", "d05": "🏢",
+        "d06": "🩺", "d07": "🔍", "d08": "🗳", "d09": "📣", "d10": "🗺",
+        "d11": "📈", "d12": "🤝", "d13": "🌿",
+    }
     for fila in range(0, len(_DOMAINS_V2), 3):
         cols = st.columns(3, gap="small")
         for col, dom in zip(cols, _DOMAINS_V2[fila:fila + 3]):
@@ -372,23 +375,29 @@ def render() -> None:
                         estado = "SIN ALERTAS" if n_alertas == 0 else f"{n_alertas} ACTIVAS"
                         t = _TEMP["verde"] if n_alertas == 0 else _TEMP["critico"]
                     metric = _metric_of(dom, d)
-                    arrow = (
-                        f'<div style="position:absolute;top:1px;right:3px;font-size:13px;'
-                        f'color:{t["c"]};opacity:.55">↗</div>'
-                    ) if not dom.get("disabled") else ""
+                    icono = _ICON.get(dom["id"], "◉")
+                    # título: ÍCONO-entrada (disparador) + nombre
+                    ic, nm = st.columns([0.17, 0.83], gap="small")
+                    with ic:
+                        if dom.get("mod") and not dom.get("disabled"):
+                            if st.button(icono, key=f"nav_{dom['id']}",
+                                         help=f"Entrar · {dom['nombre']}"):
+                                _nav(dom["mod"])
+                        else:
+                            st.markdown(
+                                f'<div style="font-size:18px;opacity:.4;text-align:center;'
+                                f'padding-top:3px">{icono}</div>',
+                                unsafe_allow_html=True,
+                            )
+                    with nm:
+                        st.markdown(
+                            f'<div style="font-size:13.5px;font-weight:800;color:#E8EDF4;'
+                            f'line-height:1.18;padding-top:8px">{dom["nombre"]}</div>',
+                            unsafe_allow_html=True,
+                        )
+                    # cuerpo: concepto (izq) | métrica + estado (der)
                     st.markdown(
-                        f'<div style="padding:2px 4px 0;position:relative">'
-                        f'{arrow}'
-                        # título: num + nombre
-                        f'<div style="display:flex;align-items:center;gap:8px;'
-                        f'margin-bottom:6px;padding-right:14px">'
-                        f'<span style="font-family:\'JetBrains Mono\',monospace;font-size:10px;'
-                        f'font-weight:700;color:{t["c"]};background:{t["c"]}1c;'
-                        f'border:1px solid {t["c"]}38;border-radius:6px;padding:1px 7px">'
-                        f'{dom["num"]}</span>'
-                        f'<span style="font-size:13.5px;font-weight:800;color:#E8EDF4;'
-                        f'line-height:1.15">{dom["nombre"]}</span></div>'
-                        # cuerpo: concepto (izq) | métrica + estado (der)
+                        f'<div style="padding:6px 2px 0">'
                         f'<div style="display:flex;gap:12px;align-items:flex-start;'
                         f'margin-bottom:7px">'
                         f'<div style="flex:1;font-size:11px;color:#A8B4C8;'
@@ -404,14 +413,10 @@ def render() -> None:
                         f'padding-top:6px">{dom["gancho"]}</div></div>',
                         unsafe_allow_html=True,
                     )
-                    if dom.get("mod") and not dom.get("disabled"):
-                        if st.button("entrar →", key=f"nav_{dom['id']}",
-                                     use_container_width=True):
-                            _nav(dom["mod"])
-                    else:
+                    if dom.get("disabled"):
                         st.markdown(
                             '<div style="font-size:9.5px;color:#5A6B7E;text-align:center;'
-                            'padding:4px 0 2px">— en construcción —</div>',
+                            'padding:2px 0">— en construcción —</div>',
                             unsafe_allow_html=True,
                         )
 
