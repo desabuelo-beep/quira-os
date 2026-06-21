@@ -1,17 +1,29 @@
 """
 QUIRA OS — UMI · Unidad Metodológica de Investigación
 ═══════════════════════════════════════════════════════════════════════════════
-El MOLDE UNIVERSAL del expediente de inteligencia institucional. Las 13
-investigaciones (los dominios) heredan EXACTAMENTE esta anatomía de 4 momentos:
+El KERNEL del expediente de inteligencia institucional. NO es un componente
+visual: es una MÁQUINA METODOLÓGICA datos-primero. El expediente existe como un
+objeto puro (independiente de cómo se exponga); el render es solo UNO de sus
+métodos de salida.
 
+        InvestigacionQUIRA  (objeto puro · el expediente)
+              │
+              ├── to_streamlit()   ← la vista web (Variante A · layout 30cac66)
+              ├── to_json()        ← Operations · API · versionado
+              ├── to_pdf()         ← expediente CAF / Contraloría / CPCCS  (planificado)
+              ├── to_html()        ← informe ciudadano                      (planificado)
+              └── export_api()     ← consumo entre productos                (planificado)
+
+Las 13 investigaciones (QINV-001 … QINV-013) son INSTANCIAS de esta clase, con
+control de versiones histórico (QINV-006 · v2026-07). Operations produce el
+expediente; Institucional / Ciudadana / Cooperación lo CONSUMEN. Un solo
+expediente, cero duplicación.
+
+Anatomía de 4 momentos forenses (heredada por las 13):
   1. PREGUNTA FORENSE      — el encabezado soberano (reemplaza el título del widget)
-  2. EVIDENCIA (50% izq)   — la prueba física e incontestable del motor (cosecha)
-  3. PERITAJE QUIRA (50% der) — el dictamen vinculante del perito (causa, no síntoma)
-  4. CONCLUSIÓN EJECUTIVA  — el veredicto que el alcalde necesita para actuar en segundos
-
-NO es gobernanza, NO es un documento, NO es un ADR: es el componente de render
-reutilizable (forma · ADR-030 · regla 50/50). El contenido lo provee cada dominio
-desde el canon (Diccionario · motor). Aquí solo vive la ESTRUCTURA.
+  2. EVIDENCIA (50% izq)   — la prueba física del motor (indicadores + vista viva)
+  3. PERITAJE QUIRA (50% der) — el dictamen vinculante (causa, no síntoma)
+  4. CONCLUSIÓN EJECUTIVA  — el veredicto para actuar en segundos
 
 "QUIRA no visualiza datos: construye expedientes de inteligencia institucional
 para la toma de decisiones." — la mesa, 2026-06-21.
@@ -20,7 +32,8 @@ Dylus Lab © 2026
 """
 from __future__ import annotations
 
-from typing import Callable, Sequence
+from dataclasses import dataclass, field
+from typing import Any, Callable, Sequence
 
 import streamlit as st
 
@@ -33,6 +46,229 @@ _TEMP: dict[str, str] = {
     "dim": "#5A6B7E",
 }
 _IA = "#00D4FF"  # el color del perito (QUIRA)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# EL KERNEL — objeto puro del expediente (datos-primero)
+# ═══════════════════════════════════════════════════════════════════════════════
+@dataclass
+class InvestigacionQUIRA:
+    """Un expediente de inteligencia institucional. Objeto puro: el contenido vive
+    como DATOS; los métodos `to_*` lo compilan a cada formato. Cada dominio lo
+    instancia con su canon (Diccionario + motor) — jamás con datos inventados (Regla 3).
+
+        QINV006 = InvestigacionQUIRA(
+            id="QINV-006", dominio="d06", nombre="Salud Institucional",
+            version="2026-06",
+            pregunta="¿Tiene esta institución capacidad para sostener el gobierno?",
+            estado="BAJO UMBRAL", dato="58.6%", temp="critico",
+            indicadores={...},                 # datos duros (serializables)
+            evidencia=_evidencia_d06,          # vista web viva (solo to_streamlit)
+            peritaje_headline="El deterioro es estructural, no coyuntural.",
+            peritaje=["El cumplimiento está 11.4 pts bajo el umbral…"],
+            veredicto_label="Capacidad institucional", veredicto_pct=59,
+            divergencias="4 dimensiones en rojo",
+            prioridad="Prioridad 1 · sostenibilidad financiera",
+            conclusion="La institución sostiene el gobierno, pero…",
+        )
+        QINV006.to_streamlit(on_volver=_volver)   # web
+        QINV006.to_json()                         # Operations / API
+    """
+    # — Identidad del expediente —
+    id: str                                  # "QINV-006" · número de caso PÚBLICO
+    dominio: str                             # "d06" · enlace INTERNO al canon (no UI)
+    nombre: str                              # "Salud Institucional"
+    version: str = ""                        # "2026-06" · control de versiones histórico
+
+    # — 1 · Pregunta forense —
+    pregunta: str = ""
+    estado: str = ""
+    dato: str = ""
+    temp: str = "normal"
+    hipotesis: str = ""                       # la hipótesis de la investigación (opcional)
+
+    # — 2 · Evidencia —
+    indicadores: dict[str, Any] = field(default_factory=dict)  # datos duros (puros · serializables)
+    evidencia: Callable[[], None] | None = None                # vista web viva (charts · solo to_streamlit)
+
+    # — 3 · Peritaje QUIRA (criterio IA · el perito) —
+    peritaje_headline: str = ""
+    peritaje: Sequence[str] = field(default_factory=list)
+    contradicciones: Sequence[str] = field(default_factory=list)  # divergencias (3 mundos · d09)
+
+    # — 4 · Conclusión ejecutiva (veredicto) —
+    veredicto_label: str = ""
+    veredicto_pct: int | None = None
+    divergencias: str = ""
+    prioridad: str = ""
+    prioridad_temp: str = "critico"
+    conclusion: str = ""
+    anexos: Sequence[str] = field(default_factory=list)          # links/evidencia adjunta
+
+    # ── salida WEB (la vista de 30cac66, ahora como método) ──────────────────
+    def to_streamlit(self, on_volver: Callable[[], None] | None = None) -> None:
+        color = _TEMP.get(self.temp, _IA)
+        st.markdown(_css(color), unsafe_allow_html=True)
+
+        if on_volver is not None:
+            if st.button("← Volver al Centro de Mando", key=f"umi_volver_{self.dominio}"):
+                on_volver()
+
+        st.markdown('<div class="umi-wrap">', unsafe_allow_html=True)
+
+        # 1 · PREGUNTA FORENSE (encabezado soberano)
+        badge = f"EXPEDIENTE {self.id} · {self.nombre}"
+        if self.version:
+            badge += f" · v{self.version}"
+        hcol, dcol = st.columns([4.6, 1.4])
+        with hcol:
+            st.markdown(
+                f'<div class="umi-badge">{badge}</div>'
+                f'<div class="umi-pregunta">{self.pregunta}</div>',
+                unsafe_allow_html=True,
+            )
+        with dcol:
+            st.markdown(
+                f'<div style="text-align:right;padding-top:4px">'
+                f'<div class="umi-dato">{self.dato}</div>'
+                f'<div style="margin-top:7px"><span class="umi-estado">● {self.estado}</span></div>'
+                f'</div>',
+                unsafe_allow_html=True,
+            )
+
+        st.markdown('<hr class="umi-div">', unsafe_allow_html=True)
+
+        # 2 | 3 · EVIDENCIA (izq) | PERITAJE QUIRA (der)
+        col_e, col_p = st.columns(2, gap="large")
+        with col_e:
+            st.markdown(
+                '<div class="umi-sec umi-sec-ev">▎ EVIDENCIA — la prueba del motor</div>',
+                unsafe_allow_html=True,
+            )
+            if self.evidencia is not None:
+                self.evidencia()
+            else:
+                st.markdown(
+                    '<div style="font-size:11px;color:#5A6B7E">— evidencia pendiente de cosecha —</div>',
+                    unsafe_allow_html=True,
+                )
+        with col_p:
+            st.markdown(
+                '<div class="umi-sec umi-sec-ia">▎ PERITAJE QUIRA — dictamen vinculante</div>',
+                unsafe_allow_html=True,
+            )
+            if self.peritaje or self.peritaje_headline:
+                st.markdown(
+                    _peritaje_html(self.peritaje_headline, self.peritaje, self.contradicciones),
+                    unsafe_allow_html=True,
+                )
+            else:
+                st.markdown(
+                    '<div style="font-size:11px;color:#5A6B7E">— peritaje en cómputo —</div>',
+                    unsafe_allow_html=True,
+                )
+
+        # 4 · CONCLUSIÓN EJECUTIVA (el veredicto para actuar)
+        st.markdown(_conclusion_html(self), unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
+
+    # ── salida DATOS (Operations · API · versionado) ─────────────────────────
+    def to_json(self) -> dict[str, Any]:
+        """El expediente como dato puro — lo que consumen Operations, la API y el
+        control de versiones. Excluye la vista viva (callable, no serializable)."""
+        return {
+            "id": self.id,
+            "dominio": self.dominio,
+            "nombre": self.nombre,
+            "version": self.version,
+            "pregunta": self.pregunta,
+            "estado": self.estado,
+            "dato": self.dato,
+            "hipotesis": self.hipotesis,
+            "indicadores": dict(self.indicadores),
+            "peritaje": {"headline": self.peritaje_headline, "dictamenes": list(self.peritaje)},
+            "contradicciones": list(self.contradicciones),
+            "veredicto": {
+                "label": self.veredicto_label,
+                "pct": self.veredicto_pct,
+                "divergencias": self.divergencias,
+                "prioridad": self.prioridad,
+            },
+            "conclusion": self.conclusion,
+            "anexos": list(self.anexos),
+            "tiene_evidencia_viva": self.evidencia is not None,
+        }
+
+    # ── salidas PLANIFICADAS (se construyen cuando un consumidor real las pida) ─
+    def to_pdf(self) -> bytes:
+        raise NotImplementedError(
+            "Expediente PDF — planificado (consumidores: CAF · Contraloría · CPCCS). "
+            "El dato ya vive en to_json(); falta solo la plantilla de salida."
+        )
+
+    def to_html(self) -> str:
+        raise NotImplementedError(
+            "Informe HTML — planificado (consumidor: ciudadano). Deriva de to_json()."
+        )
+
+    def export_api(self) -> dict[str, Any]:
+        raise NotImplementedError(
+            "Contrato API entre productos — planificado. Hoy usar to_json()."
+        )
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# Render helpers (la vista — subordinada al kernel)
+# ═══════════════════════════════════════════════════════════════════════════════
+def _peritaje_html(headline: str, dictamenes: Sequence[str], contradicciones: Sequence[str]) -> str:
+    head = '<div class="umi-perito-head">◎ QUIRA dictamina</div>'
+    lead = f'<div class="umi-dic"><b>{headline}</b></div>' if headline else ""
+    cuerpo = "".join(
+        f'<div class="umi-dic"><span class="umi-dic-mk">▸</span><span>{d}</span></div>'
+        for d in dictamenes
+    )
+    contra = "".join(
+        f'<div class="umi-dic"><span class="umi-dic-mk" style="color:#FF4D4D">⚠</span><span>{c}</span></div>'
+        for c in contradicciones
+    )
+    return f'<div class="umi-perito">{head}{lead}{cuerpo}{contra}</div>'
+
+
+def _conclusion_html(inv: "InvestigacionQUIRA") -> str:
+    color = _TEMP.get(inv.temp, _IA)
+    pct = max(0, min(100, int(inv.veredicto_pct))) if inv.veredicto_pct is not None else None
+    barra = (
+        f'<div class="umi-bar"><div class="umi-bar-fill" style="width:{pct}%;background:{color}"></div></div>'
+        if pct is not None else ""
+    )
+    bigpct = f'<span class="umi-bigpct" style="color:{color}">{pct}%</span>' if pct is not None else ""
+    pcolor = _TEMP.get(inv.prioridad_temp, "#FF4D4D")
+    div_html = (
+        f'<span class="umi-concl-lbl">Divergencias</span><br>'
+        f'<span style="font-size:15px;font-weight:800;color:#E8EDF4">{inv.divergencias}</span>'
+        if inv.divergencias else ""
+    )
+    prio_html = (
+        f'<span class="umi-chip" style="background:{pcolor}1f;color:{pcolor};'
+        f'border:1px solid {pcolor}55">⚑ {inv.prioridad}</span>'
+        if inv.prioridad else ""
+    )
+    concl_txt = f'<div class="umi-concl-txt">{inv.conclusion}</div>' if inv.conclusion else ""
+    return (
+        f'<div class="umi-concl">'
+        f'<div class="umi-concl-lbl">Conclusión ejecutiva — {inv.veredicto_label}</div>'
+        f'<div style="display:flex;align-items:flex-end;gap:18px;margin-top:4px">'
+        f'<div style="flex:1">{barra}</div>{bigpct}</div>'
+        f'<div style="display:flex;justify-content:space-between;align-items:center;'
+        f'gap:14px;margin-top:10px;flex-wrap:wrap">'
+        f'<div>{div_html}</div><div>{prio_html}</div></div>'
+        f'{concl_txt}</div>'
+    )
+
+
+def render_investigacion(inv: "InvestigacionQUIRA", on_volver: Callable[[], None] | None = None) -> None:
+    """Atajo histórico (30cac66): hoy delega en el método de salida web del expediente."""
+    inv.to_streamlit(on_volver=on_volver)
 
 
 def _css(color: str) -> str:
@@ -73,147 +309,11 @@ def _css(color: str) -> str:
   text-transform:uppercase; }}
 .umi-bar {{ height:13px; background:rgba(255,255,255,.07); border-radius:8px;
   overflow:hidden; margin:7px 0 4px; }}
-.umi-bar-fill {{ height:100%; background:{color}; border-radius:8px; }}
+.umi-bar-fill {{ height:100%; border-radius:8px; }}
 .umi-bigpct {{ font-family:'JetBrains Mono',monospace; font-size:34px; font-weight:900;
-  color:{color}; line-height:1; }}
+  line-height:1; }}
 .umi-chip {{ display:inline-block; font-size:11px; font-weight:700; border-radius:9px;
   padding:4px 11px; }}
 .umi-concl-txt {{ font-size:13px; color:#C7D2E0; line-height:1.55; margin-top:6px; }}
 hr.umi-div {{ border:none; border-top:1px solid rgba(255,255,255,.08); margin:10px 0; }}
 </style>"""
-
-
-def _peritaje_html(headline: str, dictamenes: Sequence[str]) -> str:
-    head = f'<div class="umi-perito-head">◎ QUIRA dictamina</div>'
-    lead = f'<div class="umi-dic"><b>{headline}</b></div>' if headline else ""
-    cuerpo = "".join(
-        f'<div class="umi-dic"><span class="umi-dic-mk">▸</span><span>{d}</span></div>'
-        for d in dictamenes
-    )
-    return f'<div class="umi-perito">{head}{lead}{cuerpo}</div>'
-
-
-def render_investigacion(
-    *,
-    pregunta: str,
-    badge: str = "",
-    estado: str = "",
-    dato: str = "",
-    temp: str = "normal",
-    evidencia: Callable[[], None] | None = None,
-    peritaje_headline: str = "",
-    peritaje: Sequence[str] = (),
-    veredicto_label: str = "",
-    veredicto_pct: int | None = None,
-    divergencias: str = "",
-    prioridad: str = "",
-    prioridad_temp: str = "critico",
-    conclusion: str = "",
-    on_volver: Callable[[], None] | None = None,
-) -> None:
-    """Renderiza UNA investigación en el molde universal (4 momentos).
-
-    Cada dominio la invoca con su contenido del canon. Ej. d06:
-
-        render_investigacion(
-            pregunta="¿Tiene esta institución capacidad para sostener el gobierno?",
-            badge="06 · Salud Institucional · Investigación",
-            estado="BAJO UMBRAL", dato="58.6%", temp="critico",
-            evidencia=_evidencia_d06,          # cosecha del motor (prueba real)
-            peritaje_headline="El deterioro es estructural, no coyuntural.",
-            peritaje=["El cumplimiento está 11.4 pts bajo el umbral…", "…"],
-            veredicto_label="Capacidad institucional",
-            veredicto_pct=59, divergencias="4 dimensiones en rojo",
-            prioridad="Prioridad 1 · sostenibilidad financiera",
-            conclusion="La institución sostiene el gobierno, pero…",
-        )
-    """
-    color = _TEMP.get(temp, _IA)
-    st.markdown(_css(color), unsafe_allow_html=True)
-
-    # ── 0 · Volver al Centro de Mando ────────────────────────────────────────
-    if on_volver is not None:
-        if st.button("← Volver al Centro de Mando", key="umi_volver"):
-            on_volver()
-
-    st.markdown('<div class="umi-wrap">', unsafe_allow_html=True)
-
-    # ── 1 · PREGUNTA FORENSE (encabezado soberano) ───────────────────────────
-    hcol, dcol = st.columns([4.6, 1.4])
-    with hcol:
-        st.markdown(
-            f'<div class="umi-badge">{badge}</div>'
-            f'<div class="umi-pregunta">{pregunta}</div>',
-            unsafe_allow_html=True,
-        )
-    with dcol:
-        st.markdown(
-            f'<div style="text-align:right;padding-top:4px">'
-            f'<div class="umi-dato">{dato}</div>'
-            f'<div style="margin-top:7px"><span class="umi-estado">● {estado}</span></div>'
-            f'</div>',
-            unsafe_allow_html=True,
-        )
-
-    st.markdown('<hr class="umi-div">', unsafe_allow_html=True)
-
-    # ── 2 | 3 · EVIDENCIA (izq) | PERITAJE QUIRA (der) ───────────────────────
-    col_e, col_p = st.columns(2, gap="large")
-    with col_e:
-        st.markdown(
-            '<div class="umi-sec umi-sec-ev">▎ EVIDENCIA — la prueba del motor</div>',
-            unsafe_allow_html=True,
-        )
-        if evidencia is not None:
-            evidencia()
-        else:
-            st.markdown(
-                '<div style="font-size:11px;color:#5A6B7E">— evidencia pendiente de cosecha —</div>',
-                unsafe_allow_html=True,
-            )
-    with col_p:
-        st.markdown(
-            '<div class="umi-sec umi-sec-ia">▎ PERITAJE QUIRA — dictamen vinculante</div>',
-            unsafe_allow_html=True,
-        )
-        if peritaje or peritaje_headline:
-            st.markdown(_peritaje_html(peritaje_headline, peritaje), unsafe_allow_html=True)
-        else:
-            st.markdown(
-                '<div style="font-size:11px;color:#5A6B7E">— peritaje en cómputo —</div>',
-                unsafe_allow_html=True,
-            )
-
-    # ── 4 · CONCLUSIÓN EJECUTIVA (el veredicto para actuar) ───────────────────
-    pct = max(0, min(100, int(veredicto_pct))) if veredicto_pct is not None else None
-    barra = (
-        f'<div class="umi-bar"><div class="umi-bar-fill" style="width:{pct}%"></div></div>'
-        if pct is not None else ""
-    )
-    bigpct = f'<span class="umi-bigpct">{pct}%</span>' if pct is not None else ""
-    pcolor = _TEMP.get(prioridad_temp, "#FF4D4D")
-    div_html = (
-        f'<span class="umi-concl-lbl">Divergencias</span><br>'
-        f'<span style="font-size:15px;font-weight:800;color:#E8EDF4">{divergencias}</span>'
-        if divergencias else ""
-    )
-    prio_html = (
-        f'<span class="umi-chip" style="background:{pcolor}1f;color:{pcolor};'
-        f'border:1px solid {pcolor}55">⚑ {prioridad}</span>'
-        if prioridad else ""
-    )
-    concl_txt = f'<div class="umi-concl-txt">{conclusion}</div>' if conclusion else ""
-
-    st.markdown(
-        f'<div class="umi-concl">'
-        f'<div class="umi-concl-lbl">Conclusión ejecutiva — {veredicto_label}</div>'
-        f'<div style="display:flex;align-items:flex-end;gap:18px;margin-top:4px">'
-        f'<div style="flex:1">{barra}</div>{bigpct}</div>'
-        f'<div style="display:flex;justify-content:space-between;align-items:center;'
-        f'gap:14px;margin-top:10px;flex-wrap:wrap">'
-        f'<div>{div_html}</div><div>{prio_html}</div></div>'
-        f'{concl_txt}</div>',
-        unsafe_allow_html=True,
-    )
-
-    st.markdown('</div>', unsafe_allow_html=True)
