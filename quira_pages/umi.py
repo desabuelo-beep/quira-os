@@ -138,35 +138,37 @@ class InvestigacionQUIRA:
 
         st.markdown('<hr class="umi-div">', unsafe_allow_html=True)
 
-        # 2 | 3 · EVIDENCIA (izq) | PERITAJE QUIRA (der)
-        col_e, col_p = st.columns(2, gap="large")
-        with col_e:
+        # 2 · EVIDENCIA (70% · el universo de pruebas · ANCHO COMPLETO · protagonista)
+        # Regla 20/70/10: la evidencia del Excel/motor JAMÁS se minimiza ni se esconde.
+        # QUIRA resume el método validado en Montecristi; no lo reemplaza.
+        st.markdown(
+            '<div class="umi-sec umi-sec-ev">▎ EVIDENCIA — el universo de pruebas del motor</div>',
+            unsafe_allow_html=True,
+        )
+        if self.evidencia is not None:
+            self.evidencia()
+        else:
             st.markdown(
-                '<div class="umi-sec umi-sec-ev">▎ EVIDENCIA — la prueba del motor</div>',
+                '<div style="font-size:11px;color:#5A6B7E">— evidencia pendiente de cosecha —</div>',
                 unsafe_allow_html=True,
             )
-            if self.evidencia is not None:
-                self.evidencia()
-            else:
-                st.markdown(
-                    '<div style="font-size:11px;color:#5A6B7E">— evidencia pendiente de cosecha —</div>',
-                    unsafe_allow_html=True,
-                )
-        with col_p:
+
+        # 3 · PERITAJE QUIRA (10% · el dictamen DESPUÉS de toda la evidencia, jamás antes)
+        st.markdown('<hr class="umi-div">', unsafe_allow_html=True)
+        st.markdown(
+            '<div class="umi-sec umi-sec-ia">▎ PERITAJE QUIRA — dictamen tras analizar la evidencia</div>',
+            unsafe_allow_html=True,
+        )
+        if self.peritaje or self.peritaje_headline:
             st.markdown(
-                '<div class="umi-sec umi-sec-ia">▎ PERITAJE QUIRA — dictamen vinculante</div>',
+                _peritaje_html(self.peritaje_headline, self.peritaje, self.contradicciones),
                 unsafe_allow_html=True,
             )
-            if self.peritaje or self.peritaje_headline:
-                st.markdown(
-                    _peritaje_html(self.peritaje_headline, self.peritaje, self.contradicciones),
-                    unsafe_allow_html=True,
-                )
-            else:
-                st.markdown(
-                    '<div style="font-size:11px;color:#5A6B7E">— peritaje en cómputo —</div>',
-                    unsafe_allow_html=True,
-                )
+        else:
+            st.markdown(
+                '<div style="font-size:11px;color:#5A6B7E">— peritaje en cómputo —</div>',
+                unsafe_allow_html=True,
+            )
 
         # 4 · CONCLUSIÓN EJECUTIVA (el veredicto para actuar)
         st.markdown(_conclusion_html(self), unsafe_allow_html=True)

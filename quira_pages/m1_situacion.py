@@ -1,21 +1,19 @@
 """
 QUIRA OS — QINV-006 · Salud Institucional (Investigación)
 ═══════════════════════════════════════════════════════════════════════════════
-Primera INSTANCIA del kernel InvestigacionQUIRA (UMI). El corte vigente es el
-expediente QEXP-006-2026-Q1. NO es un dashboard: es un expediente de inteligencia.
+Primera INSTANCIA del kernel InvestigacionQUIRA (UMI). Corte vigente:
+QEXP-006-2026-Q1. NO es un dashboard ni una tablita: es un EXPEDIENTE de
+inteligencia bajo la regla soberana 20/70/10.
 
-  · Evidencia  → cosecha del motor (cumplimiento real + las 3 vistas-cantera)
-  · Peritaje   → dictamen sobre la capacidad institucional
-  · Veredicto  → el cumplimiento institucional vivo, para decidir en segundos
+  20% · Contexto  → la pregunta forense permanente + el estado general (banda UMI)
+  70% · EVIDENCIA → el universo de pruebas del motor: los 3 cuerpos de evidencia
+                    (Diagnóstico · Pulso · Brecha) ABIERTOS y a ancho completo.
+                    La riqueza del laboratorio de Montecristi NO se minimiza.
+  10% · Dictamen  → el peritaje QUIRA, DESPUÉS de toda la evidencia, jamás antes.
 
-La pregunta forense es PERMANENTE (vive en QINV-006); cada corte la congela en un
-expediente fechado. Doctrina: Excel = Estado (Regla 1 · el número se lee, no se
-recalcula) · sin dato verificado no hay afirmación (Regla 3). Firewall: ningún
-código interno en la vista pública.
-
-NOTA: este archivo era el contenedor de 3 pestañas (Vista Ejecutiva · Pulso ·
-Brecha). Ese contenido se conserva íntegro como "evidencia ampliada" — nada se
-pierde; se reencuadra como prueba del expediente.
+Doctrina: Excel = Estado (Regla 1 · el número se lee, no se recalcula) · sin dato
+verificado no hay afirmación (Regla 3). QUIRA resume el método; no lo reemplaza.
+Firewall: ningún código interno en la vista pública.
 
 Dylus Lab © 2026
 """
@@ -38,60 +36,39 @@ def _cargar() -> dict:
         return {}
 
 
-def _evidencia_panel(icpi_str: str, clasif: str) -> None:
-    """La prueba: el cumplimiento real y sus parámetros de seguimiento (corte Q1-2026)."""
-    filas = [
-        ("Cumplimiento institucional", icpi_str, "el índice agregado de la salud del aparato público"),
-        ("Clasificación del corte", clasif or "—", "lectura del motor para este período"),
-        ("Métricas en seguimiento", "41", "el diagnóstico no es un dato suelto"),
-        ("Corte del expediente", "Q1-2026", "foto fechada · la investigación es permanente"),
-    ]
-    bloques = "".join(
-        f'<div style="padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06)">'
-        f'<div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px">'
-        f'<span style="font-size:12px;color:#A8B4C8">{lbl}</span>'
-        f'<span style="font-family:\'JetBrains Mono\',monospace;font-size:15px;'
-        f'font-weight:800;color:#E8EDF4">{val}</span></div>'
-        f'<div style="font-size:10px;color:#5A6B7E;margin-top:2px">{sub}</div></div>'
-        for lbl, val, sub in filas
-    )
+def _bloque(titulo: str, subtitulo: str, modname: str) -> None:
+    """Un cuerpo de evidencia del motor, ABIERTO y a ancho completo (no escondido).
+    Cosecha la vista-cantera tal cual la validó Montecristi."""
     st.markdown(
-        f'<div style="background:rgba(255,255,255,.015);border:1px solid rgba(255,255,255,.07);'
-        f'border-radius:12px;padding:4px 16px 8px">{bloques}</div>',
+        f'<div style="margin:8px 0 6px">'
+        f'<span style="font-family:\'JetBrains Mono\',monospace;font-size:13px;'
+        f'font-weight:800;color:#E8EDF4;letter-spacing:.02em">{titulo}</span>'
+        f'<span style="font-size:11px;color:#5A6B7E;margin-left:9px">{subtitulo}</span></div>',
         unsafe_allow_html=True,
     )
+    try:
+        from importlib import import_module
+        import_module(f"quira_pages.{modname}").render()
+    except Exception as e:
+        st.caption(f"Bloque de evidencia no disponible: {e}")
 
 
-def _cantera() -> None:
-    """Evidencia ampliada: las 3 vistas-cantera del motor (datos reales · ancho completo)."""
-    st.markdown('<div style="margin-top:16px"></div>', unsafe_allow_html=True)
-    with st.expander("▸ Evidencia ampliada — diagnóstico, pulso y causas de la brecha", expanded=False):
-        t1, t2, t3 = st.tabs(["🏛 Diagnóstico", "⚡ Pulso", "📉 Causas de la Brecha"])
-        with t1:
-            try:
-                from quira_pages.p_ejecutivo import render as _r
-                _r()
-            except Exception as e:
-                st.caption(f"Diagnóstico no disponible: {e}")
-        with t2:
-            try:
-                from quira_pages.p6_pulso import render as _r
-                _r()
-            except Exception as e:
-                st.caption(f"Pulso no disponible: {e}")
-        with t3:
-            try:
-                from quira_pages.p7_brecha import render as _r
-                _r()
-            except Exception as e:
-                st.caption(f"Causas de la brecha no disponibles: {e}")
+def _evidencia() -> None:
+    """El universo de evidencia de Salud Institucional — los 3 cuerpos del motor,
+    abiertos y en secuencia. Es el 70%: la prueba pesa más que el dictamen."""
+    _div = ('<hr style="border:none;border-top:1px solid rgba(255,255,255,.08);'
+            'margin:16px 0">')
+    _bloque("① DIAGNÓSTICO INSTITUCIONAL", "las 41 métricas integradas del motor", "p_ejecutivo")
+    st.markdown(_div, unsafe_allow_html=True)
+    _bloque("② PULSO OPERATIVO", "el estado vivo del municipio", "p6_pulso")
+    st.markdown(_div, unsafe_allow_html=True)
+    _bloque("③ CAUSAS DE LA BRECHA", "dónde y por qué se abre la distancia al umbral", "p7_brecha")
 
 
 def render() -> None:
     """QINV-006 · Salud Institucional — el primer expediente sobre el kernel UMI."""
     d = _cargar()
     icpi = d.get("icpi_pct")
-    clasif = d.get("icpi_clasif", "—")
     tiene = isinstance(icpi, (int, float))
     icpi_str = f"{icpi:.1f}%" if tiene else "—"
 
@@ -113,9 +90,10 @@ def render() -> None:
         headline = ("El deterioro es estructural, no coyuntural." if icpi < 65
                     else "El cumplimiento se sostiene, bajo vigilancia.")
         peritaje = [
-            f"El índice de cumplimiento institucional se sitúa hoy en {icpi_str}.",
-            "El diagnóstico integra 41 métricas en seguimiento (corte Q1-2026): "
-            "no es un dato aislado, es un patrón sostenido.",
+            f"Tras integrar los tres cuerpos de evidencia, el cumplimiento "
+            f"institucional se sitúa en {icpi_str}.",
+            "El diagnóstico no descansa en un dato suelto: son 41 métricas en "
+            "seguimiento las que sostienen el patrón.",
             ("La institución sostiene el gobierno, pero sin margen: cualquier choque "
              "la empuja bajo el piso operativo." if icpi < 65 else
              "La institución opera con holgura, pero la vigilancia no se suspende."),
@@ -125,7 +103,7 @@ def render() -> None:
         id="QINV-006", dominio="d06", nombre="Salud Institucional", version="2026-Q1",
         pregunta=_PREGUNTA, estado=estado, dato=icpi_str, temp=temp,
         hipotesis="La capacidad institucional se sostiene cerca del umbral de gobernabilidad.",
-        evidencia=lambda: _evidencia_panel(icpi_str, clasif),
+        evidencia=_evidencia,
         peritaje_headline=headline,
         peritaje=peritaje,
         veredicto_label="Capacidad institucional",
@@ -137,8 +115,7 @@ def render() -> None:
             "La institución sostiene el gobierno hoy, pero su capacidad de cumplimiento "
             "está bajo el umbral: la prioridad no es cosmética, es estructural."
             if tiene and icpi < 65 else
-            "Lea el peritaje y la evidencia ampliada para el dictamen del corte."
+            "Lea el peritaje sobre la evidencia desplegada para el dictamen del corte."
         ),
     )
     inv.to_streamlit()
-    _cantera()
