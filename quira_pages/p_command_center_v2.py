@@ -154,15 +154,18 @@ _DOMAINS_V2: list[dict[str, Any]] = [
     },
 ]
 
-_KPIS = [
-    {"key": "kpi_situacion",   "label": "CUMPLIMIENTO INSTITUCIONAL", "dest": "situacion",
-     "val_key": "icpi_str",    "color_key": "icpi_color", "sub_key": "icpi_sub"},
-    {"key": "kpi_cooperacion", "label": "FONDOS EN RIESGO", "dest": "cooperacion",
-     "val": "$3.66M", "color": "#7C5CFC", "sub": "BID · CAF · PNUD · desembolso condicionado"},
-    {"key": "kpi_alertas",     "label": "ALERTAS ACTIVAS", "dest": "alertas",
-     "val_key": "alert_str", "color_key": "alert_color", "sub_key": "riesgo_str"},
-    {"key": "kpi_municipal",   "label": "HOLDING MUNICIPAL", "dest": "municipal",
-     "val_key": "hold_str", "color_key": "hold_color", "sub": "Consolidado 4 entidades · corte Q1 2026"},
+# Las 4 DIMENSIONES del sistema (lentes · NO contenido · NUNCA duplican los 13).
+# Ciclo: ¿Qué? (Gobierno) · ¿Dónde? (Territorio) · ¿Por qué? (Inteligencia) · ¿Y ahora qué? (Acción).
+# Frame universal a las 6 QUIRAs; el contenido es propio de cada una.
+_DIMS = [
+    {"key": "dim_gob",    "icon": "🏛", "nombre": "Gobierno",
+     "desc": "¿Qué? · la institución y sus 13 investigaciones", "dest": None, "activo": True},
+    {"key": "dim_terr",   "icon": "🗺", "nombre": "Territorio",
+     "desc": "¿Dónde? · el cantón en el mapa", "dest": "geotwin"},
+    {"key": "dim_intel",  "icon": "◎", "nombre": "Inteligencia",
+     "desc": "¿Por qué? · QUIRA lee y anticipa", "dest": "control"},
+    {"key": "dim_accion", "icon": "⚡", "nombre": "Acción",
+     "desc": "¿Y ahora qué? · de la inteligencia a la decisión", "dest": None, "proximamente": True},
 ]
 
 
@@ -237,7 +240,7 @@ def _css() -> str:
                 f'.st-key-nav_{dom["id"]} button:hover {{ background:{t["c"]}33!important; '
                 f'border-color:{t["c"]}!important; transform:translateY(-1px); }}'
             )
-    for k in _KPIS:
+    for k in _DIMS:
         per_card.append(
             f'.st-key-{k["key"]} > div[data-testid="stVerticalBlockBorderWrapper"] '
             f'{{ background:rgba(255,255,255,.015)!important; '
@@ -301,7 +304,7 @@ def render() -> None:
             '<span style="font-size:21px;font-weight:900;color:#00D4FF;'
             'letter-spacing:.04em">⬡ QUIRA</span>'
             '<div style="border-left:1px solid rgba(255,255,255,.12);padding-left:14px">'
-            '<div style="font-size:15px;font-weight:800;color:#E8EDF4">Centro de Mando</div>'
+            '<div style="font-size:14px;font-weight:800;color:#E8EDF4">Centro de Inteligencia Territorial</div>'
             '<div style="font-size:10.5px;color:#8892B0">GAD Municipal de Montecristi · '
             'Corte Q1-2026</div></div></div>',
             unsafe_allow_html=True,
@@ -325,26 +328,36 @@ def render() -> None:
             logout()
             st.rerun()
 
-    # ── KPI band (4 tiles clicables) ─────────────────────────────────────────
-    kcols = st.columns(4, gap="small")
-    for col, k in zip(kcols, _KPIS):
+    # ── Banda de 4 DIMENSIONES (lentes del sistema · no duplican los 13) ──────
+    dcols = st.columns(4, gap="small")
+    for col, dim in zip(dcols, _DIMS):
         with col:
-            with st.container(border=True, key=k["key"]):
-                val   = k.get("val")   or d.get(k.get("val_key", ""), "—")
-                color = k.get("color") or d.get(k.get("color_key", ""), "#00D4FF")
-                sub   = k.get("sub")   or d.get(k.get("sub_key", ""), "")
+            with st.container(border=True, key=dim["key"]):
                 st.markdown(
-                    f'<div style="padding:2px 4px 0">'
-                    f'<div style="font-size:9.5px;font-weight:700;letter-spacing:.08em;'
-                    f'color:#8892B0">{k["label"]}</div>'
-                    f'<div style="font-size:30px;font-weight:900;'
-                    f"font-family:'JetBrains Mono',monospace;"
-                    f'color:{color};line-height:1.15">{val}</div>'
-                    f'<div style="font-size:10px;color:#8892B0">{sub}</div></div>',
+                    f'<div style="padding:4px 6px 2px">'
+                    f'<div style="display:flex;align-items:center;gap:8px">'
+                    f'<span style="font-size:18px">{dim["icon"]}</span>'
+                    f'<span style="font-size:15px;font-weight:800;color:#E8EDF4">'
+                    f'{dim["nombre"]}</span></div>'
+                    f'<div style="font-size:10px;color:#8892B0;margin-top:4px;'
+                    f'line-height:1.35">{dim["desc"]}</div></div>',
                     unsafe_allow_html=True,
                 )
-                if st.button("abrir →", key=f"go_{k['key']}", use_container_width=True):
-                    _nav(k["dest"])
+                if dim.get("activo"):
+                    st.markdown(
+                        '<div style="font-size:9.5px;color:#22C55E;text-align:center;'
+                        'padding:4px 0 2px;font-weight:700">● estás aquí</div>',
+                        unsafe_allow_html=True,
+                    )
+                elif dim.get("proximamente"):
+                    st.markdown(
+                        '<div style="font-size:9.5px;color:#5A6B7E;text-align:center;'
+                        'padding:4px 0 2px">— próximamente —</div>',
+                        unsafe_allow_html=True,
+                    )
+                else:
+                    if st.button("entrar →", key=f"go_{dim['key']}", use_container_width=True):
+                        _nav(dim["dest"])
 
     st.markdown(
         '<div style="display:flex;justify-content:space-between;margin:4px 2px 0">'
