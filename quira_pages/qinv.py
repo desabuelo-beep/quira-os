@@ -36,6 +36,41 @@ from quira_pages.umi import InvestigacionQUIRA
 #     COOTAD corriente/inversión + Patronato gasta en personal, no PAC).
 # Excel = motor canónico INVISIBLE (no se muestra/exporta/explica · Regla 1 + Firewall).
 
+# ── MATRIZ DE LA FÁBRICA · 13 cajones (consenso 2026-06-21 · "definir antes de construir") ──
+# Madre = índice REAL del Canon. Deuda = lo que falta para dejar el Canon EXPEDITO.
+# REGLA DURA (Javo): ningún cajón se construye con métrica proxy — el Canon va primero (Regla 1).
+# Leyenda deuda: 🟢 listo · 🟠 parcial · 🔴 bloquea construcción (Canon incompleto).
+#
+#  d01 Planif. Estratégica  madre: avance metas PDOT (IPE=proxy 0.84·pend POA)
+#      hojas: H04·H05·H05b·H21b·H12 · cosecha: p8_metas·p_ejecutivo · deuda: 🔴 POA 2026→H05
+#  d02 Presupuesto          madre: devengado/ISP/IED · hojas: H07·H73
+#      cosecha: p18_cooperacion · deuda: 🔴 cédula eSIGEF oficial→H07
+#  d03 Gobernanza Mandato   madre: IFE-A 72.73% (REAL·48/66) · hojas: H03·H73
+#      cosecha: p8_metas·p_concejo · deuda: 🟠 plan CNE/66 promesas (carga oficial)
+#  d04 Alertas              madre: SAT activas (REAL) · hojas: H75·H24
+#      cosecha: m2_alertas·p9_sat · deuda: 🟢 ok
+#  d05 Holding              madre: promedio entidades · hojas: H12d
+#      cosecha: p2_holding·m3_municipal · deuda: 🟠 Excel EP/Patronato flojo
+#  d06 Salud Institucional  madre: ICPI (REAL·H12) — ya construida · hojas: H12·H73
+#      cosecha: p_ejecutivo·p6_pulso·p7_brecha · deuda: 🟢 ok
+#  d07 Transparencia        madre: LOTAIP 21/21 (REAL) · hojas: LOTAIP
+#      cosecha: p07_transparencia · deuda: 🟢 ok
+#  d08 Participación         madre: IGP · hojas: H73
+#      cosecha: p16_gobernanza·p16_confianza · deuda: 🟢 base lista (cosechar de Holding)
+#  d09 Rendición             madre: estado circuito RDC · hojas: H31(CPCCS)
+#      cosecha: p17_rdc · deuda: 🟠 3 mundos (NLP discurso)
+#  d10 Cobertura             madre: NBI/cobertura territorial · hojas: H04b·INEC·CAPA_TERR
+#      cosecha: p10_territorio·p7_brecha · deuda: 🔴 GPS + NBI territorial (PDOT diag)
+#  d11 Desarrollo Económico  madre: — (no existe) · hojas: corpus PDOT
+#      cosecha: — · deuda: 🔴 índice madre inexistente (campo verde)
+#  d12 Inclusión/Género      madre: PSG/IBSC · hojas: H04b·H73
+#      cosecha: p19_genero · deuda: 🔴 GAP subíndices + IBSC datos + COOTAD
+#  d13 Sostenibilidad        madre: ICODS (sub-eje) · hojas: corpus biofísico·KB_RIESGOS
+#      cosecha: — · deuda: 🔴 ICODS sub-eje + biofísico
+#
+# SPRINT CANON (previo a pantallas · ingesta al Excel · método: Haiku docs + manual):
+#   🔴 POA 2026→H05 · cédula eSIGEF→H07 · IBSC col F→H04b · plan CNE→H03 · GPS→CAPA_TERR.
+
 # ── Registro canónico (clave = dominio interno · id público = QINV-NNN) ─────────
 # pregunta = estratégica permanente · gad/central = los dos lentes · page = ya construida
 QINV: dict[str, dict] = {
