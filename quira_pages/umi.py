@@ -104,6 +104,9 @@ class InvestigacionQUIRA:
     prioridad_temp: str = "critico"
     conclusion: str = ""
     anexos: Sequence[str] = field(default_factory=list)          # links/evidencia adjunta
+    # — visuales de síntesis OPCIONALES (graph+text en peritaje/conclusión · Javo 2026-06-23) —
+    peritaje_viz: Callable[[], None] | None = None               # síntesis visual del peritaje
+    conclusion_viz: Callable[[], None] | None = None             # visual del veredicto
 
     # ── salida WEB (la vista de 30cac66, ahora como método) ──────────────────
     def to_streamlit(self, on_volver: Callable[[], None] | None = None) -> None:
@@ -160,18 +163,30 @@ class InvestigacionQUIRA:
             unsafe_allow_html=True,
         )
         if self.peritaje or self.peritaje_headline:
-            st.markdown(
-                _peritaje_html(self.peritaje_headline, self.peritaje, self.contradicciones),
-                unsafe_allow_html=True,
-            )
+            _ph = _peritaje_html(self.peritaje_headline, self.peritaje, self.contradicciones)
+            if self.peritaje_viz is not None:                    # graph + text (síntesis)
+                _vc, _tc = st.columns([1, 1.18], gap="medium")
+                with _vc:
+                    self.peritaje_viz()
+                with _tc:
+                    st.markdown(_ph, unsafe_allow_html=True)
+            else:
+                st.markdown(_ph, unsafe_allow_html=True)
         else:
             st.markdown(
                 '<div style="font-size:11px;color:#5A6B7E">— lectura en proceso —</div>',
                 unsafe_allow_html=True,
             )
 
-        # 4 · CONCLUSIÓN EJECUTIVA (el veredicto para actuar)
-        st.markdown(_conclusion_html(self), unsafe_allow_html=True)
+        # 4 · CONCLUSIÓN EJECUTIVA (el veredicto para actuar · con visual opcional)
+        if self.conclusion_viz is not None:
+            _cc1, _cc2 = st.columns([1, 1.18], gap="medium")
+            with _cc1:
+                self.conclusion_viz()
+            with _cc2:
+                st.markdown(_conclusion_html(self), unsafe_allow_html=True)
+        else:
+            st.markdown(_conclusion_html(self), unsafe_allow_html=True)
         st.markdown('</div>', unsafe_allow_html=True)
 
     # ── salida DATOS (Operations · API · versionado) ─────────────────────────
