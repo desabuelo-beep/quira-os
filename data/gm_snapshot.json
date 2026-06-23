@@ -437,6 +437,183 @@
   "planificacion": {
     "_fuente": "PDOT (planificación) · POA (operación) · PAC (contratación) · coherencia · corte Q1-2026",
     "metas_total": 25,
+    "metas_detalle": [
+      {
+        "id": "SC-I-N-01",
+        "sistema": "Agua potable",
+        "meta": "Agua potable: cobertura 39.25%→42.38%; calidad 100% INEN 1108; infraestructura BUENA 22.74%→41.",
+        "competencia": "Exclusiva Crítica",
+        "direccion": "Agua Potable y Alcantarillado Sanitario"
+      },
+      {
+        "id": "SC-L-N-02",
+        "sistema": "Talento humano",
+        "meta": "Gestión del talento humano municipal: desempeño 80%→90%; plan capacitación 90% anual",
+        "competencia": "Exclusiva Importante",
+        "direccion": "Talento Humano"
+      },
+      {
+        "id": "AH-I-X-01",
+        "sistema": "Finanzas",
+        "meta": "Sostenibilidad financiera: autonomía 43.35%→45.30%; gestión cobros y coactivas",
+        "competencia": "Exclusiva Importante",
+        "direccion": "Financiera"
+      },
+      {
+        "id": "AH-I-X-02",
+        "sistema": "Vialidad",
+        "meta": "Vialidad cantonal: mantenimiento 43.8 km vías CUP + 57.22 km rurales; 23.77 km tratamiento medi",
+        "competencia": "Exclusiva Crítica",
+        "direccion": "Obras Públicas y Fiscalización"
+      },
+      {
+        "id": "AH-I-X-03",
+        "sistema": "Salud",
+        "meta": "Salud integral municipal: población atendida 57,401→84,041 personas (+10% anual)",
+        "competencia": "Concurrente Crítica",
+        "direccion": "Patronato Municipal de Montecristi"
+      },
+      {
+        "id": "AH-I-N-01",
+        "sistema": "Desechos",
+        "meta": "Gestión integral desechos sólidos: 20,118→23,086 Tn/año; relleno sanitario; capacidad disposici",
+        "competencia": "Exclusiva Crítica",
+        "direccion": "Gestión Ambiental y Riesgos"
+      },
+      {
+        "id": "SC-L-G-01",
+        "sistema": "Alcantarillado",
+        "meta": "Alcantarillado sanitario: cobertura 19.77%→24.32%; PTAR 0%→75%; estaciones bombeo 36%→72%",
+        "competencia": "Exclusiva Crítica",
+        "direccion": "Agua Potable y Alcantarillado Sanitario"
+      },
+      {
+        "id": "AH-I-X-04",
+        "sistema": "Modernización",
+        "meta": "Modernización recursos administrativos: parque automotor, tecnología e infraestructura municipa",
+        "competencia": "Exclusiva Importante",
+        "direccion": "Administrativa"
+      },
+      {
+        "id": "PI-I-G-01",
+        "sistema": "Equipamientos",
+        "meta": "Equipamientos públicos: terminal terrestre, mercado, estación bomberil, centro salud tipo C, es",
+        "competencia": "Exclusiva Importante",
+        "direccion": "Obras Públicas y Fiscalización"
+      },
+      {
+        "id": "AH-C-X-01",
+        "sistema": "Derechos sociales",
+        "meta": "Protección derechos sociales: atenciones grupos prioritarios 943→1,649 (+15%/año); CDI; adultos",
+        "competencia": "Concurrente Crítica",
+        "direccion": "Patronato Municipal"
+      },
+      {
+        "id": "AH-C-X-02",
+        "sistema": "Información territorial",
+        "meta": "Sistema información territorial: catastro urbano-rural 19.52%→80%; 12 procesos sistematizados; ",
+        "competencia": "Exclusiva Importante",
+        "direccion": "Catastro y Gestión del Suelo"
+      },
+      {
+        "id": "SC-I-N-03",
+        "sistema": "Participación",
+        "meta": "Participación ciudadana: 50→100 Unidades Territoriales; 2→4 instancias efectivas (COPFP Art.115",
+        "competencia": "Exclusiva Importante",
+        "direccion": "Participación Ciudadana y Comunicación Social"
+      },
+      {
+        "id": "FA-I-X-01",
+        "sistema": "Riesgo",
+        "meta": "Gestión del riesgo: reducir 10% infraestructura susceptible (3,655→2,398 unidades); alerta temp",
+        "competencia": "Exclusiva Importante",
+        "direccion": "Gestión Ambiental y Riesgos"
+      },
+      {
+        "id": "FA-C-X-01",
+        "sistema": "Áreas verdes",
+        "meta": "Áreas verdes y parques: IVU 10.94→17.32 m²/hab; parques inter-barriales; recuperación manglar p",
+        "competencia": "Exclusiva Importante",
+        "direccion": "Gestión Ambiental y Riesgos"
+      },
+      {
+        "id": "FA-I-X-02",
+        "sistema": "Equipamiento urbano",
+        "meta": "Índice equipamiento urbano CUP 9.96→10.73 m²/hab; recolección desechos 91.95%→97.95%; 77.83→81.",
+        "competencia": "Exclusiva Importante",
+        "direccion": "Obras Públicas y Fiscalización"
+      },
+      {
+        "id": "FA-L-N-01",
+        "sistema": "Cultura",
+        "meta": "Inventario patrimonial 100% al 2026; 8,000→10,000 participantes eventos culturales; Museo del S",
+        "competencia": "Exclusiva Importante",
+        "direccion": "Turismo, Cultura, Patrimonio y Fomento Productivo"
+      },
+      {
+        "id": "PI-I-G-02",
+        "sistema": "PDOT/PUGS",
+        "meta": "Cumplimiento PDOT/PUGS 0%→80%; SIL 19.52%→80%; 37 trámites digitales implementados",
+        "competencia": "Exclusiva Importante",
+        "direccion": "Planificación Estratégica e Institucional"
+      },
+      {
+        "id": "PI-L-G-01",
+        "sistema": "Señalización vial",
+        "meta": "Señalización vial 0→10,000 m²; 0→8 semáforos; revisiones técnicas 4,000→20,000; educación vial ",
+        "competencia": "Exclusiva Importante",
+        "direccion": "Obras Públicas y Fiscalización"
+      },
+      {
+        "id": "EP-L-N-01",
+        "sistema": "Vivienda",
+        "meta": "Vivienda de interés social: 50 VIS/VIP hasta 2027; reducción déficit habitacional cualitativo",
+        "competencia": "Exclusiva Importante",
+        "direccion": "Obras Públicas y Fiscalización"
+      },
+      {
+        "id": "EP-L-X-01",
+        "sistema": "Productivo",
+        "meta": "Fortalecimiento productivo: beneficiarios artesanos, mipymes, emprendedores, huertos comunitari",
+        "competencia": "Concurrente",
+        "direccion": "Turismo, Cultura, Patrimonio y Fomento Productivo"
+      },
+      {
+        "id": "PI-TUR-01",
+        "sistema": "Turismo certif.",
+        "meta": "Turismo cantonal: establecimientos certificación Montecristi Ciudad Creativa 0→60 al 2027; visi",
+        "competencia": "Concurrente",
+        "direccion": "Turismo, Cultura, Patrimonio y Fomento Productivo"
+      },
+      {
+        "id": "PI-TUR-02",
+        "sistema": "Turismo eventos",
+        "meta": "Eventos turísticos anuales: 10 eventos/año 2023 → 22 eventos/año al 2027",
+        "competencia": "Concurrente",
+        "direccion": "Turismo, Cultura, Patrimonio y Fomento Productivo"
+      },
+      {
+        "id": "FA-CC-01",
+        "sistema": "Cambio climático",
+        "meta": "Cambio climático: formulación de 4 planes de acción al 2027 (0%→100%)",
+        "competencia": "Exclusiva Importante",
+        "direccion": "Gestión Ambiental y Riesgos"
+      },
+      {
+        "id": "AH-AP-04",
+        "sistema": "Agua continuidad",
+        "meta": "Continuidad servicio agua potable: índice ALTO de 0% → 10% al 2027",
+        "competencia": "Exclusiva Crítica",
+        "direccion": "Agua Potable y Alcantarillado Sanitario"
+      },
+      {
+        "id": "FA-DIS-01",
+        "sistema": "Disposición final",
+        "meta": "Disposición final desechos sólidos: capacidad operativa 0%→20% al 2027",
+        "competencia": "Exclusiva Crítica",
+        "direccion": "Gestión Ambiental y Riesgos"
+      }
+    ],
     "competencia": [
       {
         "label": "Exclusiva Crítica",

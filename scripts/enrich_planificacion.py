@@ -53,10 +53,20 @@ def build_block() -> dict:
     # ── A · PDOT — metas por competencia COOTAD (H04 col D) ──────────────────
     ws = sh("H04_S2_PLAN")
     comp = Counter()
+    metas = {}
     for r in range(15, 45):
+        mid = ws.cell(r, 1).value
         v = ws.cell(r, 4).value
         if v:
             comp[str(v).strip().replace("_", " ")] += 1
+        if mid and v:                      # solo metas reales del PDOT (con competencia COOTAD)
+            metas[str(mid).strip()] = {
+                "id": str(mid).strip(),
+                "sistema": str(ws.cell(r, 2).value or "").strip(),
+                "meta": str(ws.cell(r, 3).value or "").strip()[:95],
+                "competencia": str(v or "").strip().replace("_", " "),
+                "direccion": "",
+            }
     metas_total = sum(comp.values())
     # orden canónico de severidad de competencia
     orden = ["Exclusiva Crítica", "Concurrente Crítica", "Exclusiva Importante", "Concurrente"]
@@ -69,12 +79,15 @@ def build_block() -> dict:
     ws = sh("H05_S3_OPER")
     dirs = Counter()
     for r in range(14, 45):
+        mid = ws.cell(r, 1).value
         v = ws.cell(r, 3).value
         if v:
             name = str(v).split("+")[0].strip()       # dirección primaria (antes de "+")
             if name.startswith("Dir."):
                 name = name[4:].strip()
             dirs[name] += 1
+            if mid and str(mid).strip() in metas:
+                metas[str(mid).strip()]["direccion"] = name
     direcciones = [{"dir": k, "n": n} for k, n in dirs.most_common()]
     n_direcciones = len(direcciones)
 
@@ -121,6 +134,7 @@ def build_block() -> dict:
     return {
         "_fuente": "PDOT (planificación) · POA (operación) · PAC (contratación) · coherencia · corte Q1-2026",
         "metas_total": metas_total,
+        "metas_detalle": list(metas.values()),
         "competencia": competencia,
         "direcciones": direcciones,
         "n_direcciones": n_direcciones,
