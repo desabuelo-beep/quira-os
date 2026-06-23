@@ -46,5 +46,30 @@ ICPI = [ Σ(Pi · Ri · Vi · Ei · Ti · Ci) / Σ(Pi · Ri) ] × 100
 - ✅ ICPI anual 2023-2025 (`H12c`) · ✅ cédulas mensuales 2026 (`H_HOLDING_CEDULAS_2026`) · ✅ metas mensuales (`H25_MMP_MENSUAL`) · `H36b` arrastre 2023-25.
 - ❌ **NO hay 2021-2022 ni serie trimestral pre-2026** → la curva histórica se construye con lo que EXISTE (2023-25 anual + 2026 mensual), declarando el límite. Evidencia parcial > hipótesis nacional.
 
+## IGAP — Índice de Grupos de Atención Prioritaria (índice NUEVO · cirugía sobre copia · 2026-06-23, validado con Javo)
+
+> **Mide** la atención del GAD a los **grupos de atención prioritaria de su competencia** (subconjunto del Art.35 CRE habilitado por ley/ordenanza — **NO** es "índice de política social", que abarcaría Deportes/Cultura/Turismo y otras competencias de dirección). Madre del cajón **d12** (Inclusión / Grupos Prioritarios). **Nombre: IGAP, no IPS.**
+
+**Grupos medidos (4 · competencia GAD):** niñez y adolescencia · mujeres (énfasis embarazadas) · adultos mayores · personas con discapacidad.
+
+**Anti-duplicación (Regla #6 — DERIVA, no redefine):**
+| Componente | Ya existe → deriva de |
+|---|---|
+| Subíndice mujeres/género | `H16c_PSG` (dual Fidelidad 0.44 / Ejecución 0.028) |
+| Base bienestar / NBI | `H12b_IBSC` + `H04b_DIAGNÓSTICO_SOCIAL` |
+| Marco COOTAD corriente/inversión | `H19_ISP` (piso 65% Art.192 + SAT-IV) |
+| Naturaleza de la unidad | `H02b_ORGÁNICO_CLASIFICADOR` |
+
+**Equidad por naturaleza de la unidad (corrección Javo — principio GENERAL, no parche al Patronato):**
+El IGAP lee `H02b.EVIDENCIA_PREDOMINANTE` para **NO castigar a las unidades que producen intangibles** (gasto corriente: sueldos/servicios) en vez de PAC/inversión. Unidades GAP intangibles: Patronato (U-19 · `INDICADOR/INFORME SHA-256`), Turismo-Cultura-Patrimonio (U-13), Cultura/Deporte, Desarrollo Económico, Participación (U-06). Para ellas la evidencia válida es **atención (indicador)**, no SERCOP/eSIGEF → el IGAP mide **RESULTADO (atenciones)**, no compras.
+
+**Mapeo grupo→unidad (DRAFT — confirmar Javo):** adultos mayores · discapacidad · embarazadas · protección social → **Patronato (U-19)**; niñez/adolescencia → **Cultura/Deporte (U-13)** + Patronato. Meta PDOT ancla: `AH-C-X-01` "Protección derechos sociales: atenciones a grupos" (Patronato + MIES convenio).
+
+**Fórmula (estructura):** `SIGAP_g = f(cobertura = atenciones/población objetivo · evidencia según EVIDENCIA_PREDOMINANTE de la unidad responsable)` · `IGAP = Σ(peso_g · SIGAP_g)`, peso por vulnerabilidad/población.
+
+**Insumos:** población objetivo/grupo ✅ PDOT/INEC · clasificador de unidades ✅ `H02b` (Res.040-2025) · gasto/competencia ✅ eSIGEF/orgánico · **atenciones mensualizadas/grupo ⏳ LOTAIP literal D (bloqueado por caída CNT — Javo descarga y avisa).**
+
+**Construcción:** índice derivado nuevo (como IPE/IBSC) · **NO toca `H12!B33`** · sobre COPIA de trabajo · con evidencia · verificado con dumps · **openpyxl PROHIBIDO sobre el canon vivo** (corrompe la malla de 123 hojas). Cirugía documentada como la D2A.
+
 ---
 *Metodología Gold Master · Dylus Lab © 2026 · la fórmula canónica es INMUTABLE · correcciones solo en inputs/semáforo/presentación, sobre copia, con evidencia verificada.*
