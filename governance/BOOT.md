@@ -40,10 +40,11 @@ dashboards, es lo que se define UNA vez. Sprint C: ontología antes que ingenier
 BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo que no se mueve.
 
 ## AHORA (estado vivo · historial → `governance/historico/BOOT_2026-06-17.md`)
-**CENTRO DE INTELIGENCIA TERRITORIAL · 2026-06-21.** QUIRA NO es forense: descriptiva→preventiva→predictiva→prospectiva · el GOBIERNO actúa (QUIRA informa/conecta). Excel = SO matemático (invisible). 4 dims (regla 2 pisos): Gobierno·Territorio·Inteligencia·Convergencia(próx). Detalle: `ARCHITECTURE_v1 §4.5`+`qinv.py`.
-✅ **PASADA 1:** `umi.py`+`qinv.py` · **13 investigaciones cableadas al kernel** · QINV-006 real · d03=72.73 (no 94.6).
-▶ **RETOMAR Pasada 2** (directrices en `qinv.py`): A(001·002·003·006)→B(007·8·9)→C(010-013)→D(004·005) · 001 Arq.Estratégica · 002 Arq.Financiera (Motor Elegibilidad).
-🔶 **GeoTwin (H-004):** Haiku 1.254 chunks · financiado. **CI:** BOOT ≤6KB.
+**CENTRO DE INTELIGENCIA TERRITORIAL · 2026-06-23.** QUIRA NO es forense (preventiva→prospectiva · GOBIERNO actúa). Excel = Canon INVISIBLE (**la fuente YA tiene el dato**). 4 dims: Gob·Terr·Intel·Converg(próx).
+✅ **P1:** kernel `umi.py`+`qinv.py` · 13 cableadas · QINV-006 · d03=72.73.
+▶ **P2:** ✅ **QINV-001 Planificación** (`m_planificacion.py` · Fidelidad 69.93% real · no proxy · firewall 0). Sigue 002·003→7·8·9→10-13→4·5.
+🔧 **IGAP** (no IPS · `METODOLOGIA_GOLD_MASTER`): 4 grupos prioritarios · deriva PSG/IBSC/ISP · equidad `H02b`. ⏳ falta **LOTAIP D** (CNT) + mapeo grupo→unidad.
+🔶 GeoTwin 1.254 chunks. **CI:** BOOT ≤6KB · openpyxl PROHIBIDO en Canon (copia+dumps).
 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 ratificado · detalle en el ADR)
 GAD = sujeto observado, NO cliente. 4 capas: A Núcleo (motor·grafos·conectores·índices) · B Operaciones (Dylus) · C Productos (Institucional·Ciudadana·Impact·Economic·Cooperación · 1 motor) · D Portal `quiraintelligence.com` (radar 221 GAD). Montecristi = Municipio 001.
