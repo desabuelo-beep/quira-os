@@ -50,7 +50,7 @@ ICPI = [ Σ(Pi · Ri · Vi · Ei · Ti · Ci) / Σ(Pi · Ri) ] × 100
 
 > **Mide** la atención del GAD a los **grupos de atención prioritaria de su competencia** (subconjunto del Art.35 CRE habilitado por ley/ordenanza — **NO** es "índice de política social", que abarcaría Deportes/Cultura/Turismo y otras competencias de dirección). Madre del cajón **d12** (Inclusión / Grupos Prioritarios). **Nombre: IGAP, no IPS.**
 
-**Grupos medidos (4 · competencia GAD):** niñez y adolescencia · mujeres (énfasis embarazadas) · adultos mayores · personas con discapacidad.
+**Grupos medidos (competencia GAD · subconjunto Art.35 CRE):** niñez y adolescencia · adultos mayores · personas con discapacidad · mujeres embarazadas · personas en extrema pobreza · enfermedades catastróficas. *(Mujeres en general → ODS/género vía PSG, NO GAP; el GAP toma a la embarazada.)*
 
 **Anti-duplicación (Regla #6 — DERIVA, no redefine):**
 | Componente | Ya existe → deriva de |
@@ -63,7 +63,7 @@ ICPI = [ Σ(Pi · Ri · Vi · Ei · Ti · Ci) / Σ(Pi · Ri) ] × 100
 **Equidad por naturaleza de la unidad (corrección Javo — principio GENERAL, no parche al Patronato):**
 El IGAP lee `H02b.EVIDENCIA_PREDOMINANTE` para **NO castigar a las unidades que producen intangibles** (gasto corriente: sueldos/servicios) en vez de PAC/inversión. Unidades GAP intangibles: Patronato (U-19 · `INDICADOR/INFORME SHA-256`), Turismo-Cultura-Patrimonio (U-13), Cultura/Deporte, Desarrollo Económico, Participación (U-06). Para ellas la evidencia válida es **atención (indicador)**, no SERCOP/eSIGEF → el IGAP mide **RESULTADO (atenciones)**, no compras.
 
-**Mapeo grupo→unidad (DRAFT — confirmar Javo):** adultos mayores · discapacidad · embarazadas · protección social → **Patronato (U-19)**; niñez/adolescencia → **Cultura/Deporte (U-13)** + Patronato. Meta PDOT ancla: `AH-C-X-01` "Protección derechos sociales: atenciones a grupos" (Patronato + MIES convenio).
+**Mapeo grupo→unidad (confirmado Javo 2026-06-23):** el **Patronato (U-19)** es la unidad GAP-dedicada — atiende a TODOS los grupos prioritarios (niñez/adolescencia, adultos mayores, discapacidad, embarazadas, extrema pobreza, enf. catastróficas). **Cultura/Deportes/Turismo (U-13)** son universales: sirven a toda la población —GAP incluido— → contribuyen al IGAP pero NO son GAP-exclusivas. Meta PDOT ancla: `AH-C-X-01` "Protección derechos sociales: atenciones a grupos" (Patronato + MIES convenio).
 
 **Fórmula (estructura):** `SIGAP_g = f(cobertura = atenciones/población objetivo · evidencia según EVIDENCIA_PREDOMINANTE de la unidad responsable)` · `IGAP = Σ(peso_g · SIGAP_g)`, peso por vulnerabilidad/población.
 
