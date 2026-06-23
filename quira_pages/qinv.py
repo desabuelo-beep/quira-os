@@ -41,8 +41,8 @@ from quira_pages.umi import InvestigacionQUIRA
 # REGLA DURA (Javo): ningún cajón se construye con métrica proxy — el Canon va primero (Regla 1).
 # Leyenda deuda: 🟢 listo · 🟠 parcial · 🔴 bloquea construcción (Canon incompleto).
 #
-#  d01 Planif. Estratégica  madre: avance metas PDOT (IPE=proxy 0.84·pend POA)
-#      hojas: H04·H05·H05b·H21b·H12 · cosecha: p8_metas·p_ejecutivo · deuda: 🔴 POA 2026→H05
+#  d01 Planif. Estratégica  madre: Fidelidad de Planificación 69.93% (REAL·tgi.d2) — ✅ CONSTRUIDA
+#      hojas: H04·H05(POA ✓)·H05b·H21b · cosecha: p8_metas·p12_cadena·p3_congruencias · deuda: 🟢 ok
 #  d02 Presupuesto          madre: devengado/ISP/IED · hojas: H07·H73
 #      cosecha: p18_cooperacion · deuda: 🔴 cédula eSIGEF oficial→H07
 #  d03 Gobernanza Mandato   madre: IFE-A 72.73% (REAL·48/66) · hojas: H03·H73
@@ -80,6 +80,7 @@ QINV: dict[str, dict] = {
                     "plurianuales, o registra desviaciones en su senda de desarrollo?",
         "gad": "Metas plurianuales del PDOT.",
         "central": "Objetivos del PEI alineados al Plan Nacional de Desarrollo.",
+        "page": "m_planificacion",  # ✅ construida (evidencia real · Fidelidad de Planificación)
     },
     "d02": {
         "id": "QINV-002", "nombre": "Presupuesto & Financiamiento",
