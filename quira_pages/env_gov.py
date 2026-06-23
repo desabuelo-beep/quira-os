@@ -574,8 +574,10 @@ button[data-testid="collapsedControl"] {
                 st.session_state.pop("ejecutivo_modo", None)
                 st.rerun()
 
-            # KPI band persistente — contexto superior antes del módulo
-            _render_mini_kpi_band()
+            # KPI band: SOLO módulos legacy. Los cajones QINV van limpios, sin cromo viejo
+            # (Javo 2026-06-23: las 4 tiles son de pantallas antiguas — eliminar del cajón).
+            if not is_qinv:
+                _render_mini_kpi_band()
 
             fn_drill()
             return

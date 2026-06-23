@@ -433,5 +433,132 @@
       "valor": 2.83,
       "label": "Presupuesto con enfoque de género"
     }
+  },
+  "planificacion": {
+    "_fuente": "PDOT (planificación) · POA (operación) · PAC (contratación) · coherencia · corte Q1-2026",
+    "metas_total": 25,
+    "competencia": [
+      {
+        "label": "Exclusiva Crítica",
+        "n": 6
+      },
+      {
+        "label": "Concurrente Crítica",
+        "n": 2
+      },
+      {
+        "label": "Exclusiva Importante",
+        "n": 14
+      },
+      {
+        "label": "Concurrente",
+        "n": 3
+      }
+    ],
+    "direcciones": [
+      {
+        "dir": "Obras Públicas y Fiscalización",
+        "n": 5
+      },
+      {
+        "dir": "Gestión Ambiental y Riesgos",
+        "n": 5
+      },
+      {
+        "dir": "Turismo, Cultura, Patrimonio y Fomento Productivo",
+        "n": 4
+      },
+      {
+        "dir": "Agua Potable y Alcantarillado Sanitario",
+        "n": 3
+      },
+      {
+        "dir": "Talento Humano",
+        "n": 1
+      },
+      {
+        "dir": "Financiera",
+        "n": 1
+      },
+      {
+        "dir": "Patronato Municipal de Montecristi",
+        "n": 1
+      },
+      {
+        "dir": "Administrativa",
+        "n": 1
+      },
+      {
+        "dir": "Patronato Municipal",
+        "n": 1
+      },
+      {
+        "dir": "Catastro y Gestión del Suelo",
+        "n": 1
+      },
+      {
+        "dir": "Participación Ciudadana y Comunicación Social",
+        "n": 1
+      },
+      {
+        "dir": "Planificación Estratégica e Institucional",
+        "n": 1
+      },
+      {
+        "dir": "—",
+        "n": 1
+      }
+    ],
+    "n_direcciones": 13,
+    "pac": {
+      "total_usd": 101000,
+      "n_procesos": 27,
+      "tipos": [
+        {
+          "tipo": "Subasta Inversa Electronica",
+          "n": 15
+        },
+        {
+          "tipo": "Subasta Inversa Electrónica",
+          "n": 3
+        },
+        {
+          "tipo": "Catalogo Electrónico",
+          "n": 1
+        },
+        {
+          "tipo": "91",
+          "n": 1
+        }
+      ],
+      "gap_proceso": "Servicios atención grupos prioritarios — Patronato"
+    },
+    "sat0": {
+      "componentes": [
+        {
+          "label": "Brecha POA-PAC",
+          "estado": "Sin datos",
+          "temp": "dim"
+        },
+        {
+          "label": "Downcoding contractual",
+          "estado": "Sin downcoding",
+          "temp": "verde"
+        },
+        {
+          "label": "Monto mínimo",
+          "estado": "Procesos bajo monto mínimo",
+          "temp": "alerta"
+        },
+        {
+          "label": "Reloj de evidencia",
+          "estado": "Evidencia en plazo — 4 proceso(s) verificados",
+          "temp": "verde"
+        }
+      ],
+      "global": "SAT-0 ACTIVO — Revisar coherencia POA-PAC",
+      "global_temp": "alerta",
+      "diagnostico": "Detectada brecha entre programación operativa y plan de contratación. Revisar alineación POA-PAC para fortalecer la ejecución del plan anual."
+    }
   }
 }
