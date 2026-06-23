@@ -710,6 +710,712 @@
       ],
       "gap_proceso": "Servicios atención grupos prioritarios — Patronato"
     },
+    "pac_detalle": [
+      {
+        "id": "PAC-GAD-2026-001",
+        "desc": "Mantenimiento vías urbanas CUP — red cantonal",
+        "tipo": "",
+        "monto": 0,
+        "meta": "AH-I-X-02",
+        "alerta": "Coherente",
+        "alerta_temp": "verde"
+      },
+      {
+        "id": "PAC-GAD-2026-002",
+        "desc": "Recolección desechos sólidos — DEA EP Aseo",
+        "tipo": "",
+        "monto": 0,
+        "meta": "AH-I-N-01",
+        "alerta": "Coherente",
+        "alerta_temp": "verde"
+      },
+      {
+        "id": "PAC-GAD-2026-003",
+        "desc": "Obras alcantarillado sanitario — red urbana",
+        "tipo": "",
+        "monto": 0,
+        "meta": "SC-L-G-01",
+        "alerta": "Coherente",
+        "alerta_temp": "verde"
+      },
+      {
+        "id": "PAC-GAD-2026-004",
+        "desc": "Equipamiento tecnológico institucional",
+        "tipo": "Subasta Inversa Electrónica",
+        "monto": 15000,
+        "meta": "AH-I-X-04",
+        "alerta": "Brecha PAC > 20%",
+        "alerta_temp": "alerta"
+      },
+      {
+        "id": "PAC-GAD-2026-005",
+        "desc": "Inventario patrimonial cantonal 2026",
+        "tipo": "",
+        "monto": 0,
+        "meta": "FA-L-N-01",
+        "alerta": "Coherente",
+        "alerta_temp": "verde"
+      },
+      {
+        "id": "PAC-GAD-2026-006",
+        "desc": "Servicios atención grupos prioritarios — Patronato",
+        "tipo": "",
+        "monto": 0,
+        "meta": "AH-C-X-01",
+        "alerta": "Coherente",
+        "alerta_temp": "verde"
+      },
+      {
+        "id": "PAC-GAD-SERCOP-002",
+        "desc": "ADQUISICIÓN DE EQUIPOS INFORMÁTICOS, DESTINADOS A LA RE",
+        "tipo": "Catalogo Electrónico",
+        "monto": 15000,
+        "meta": "[ID_Meta]",
+        "alerta": "Brecha PAC > 20%",
+        "alerta_temp": "alerta"
+      },
+      {
+        "id": "PAC-GAD-SERCOP-003",
+        "desc": "ADQUISICIÓN DE MOTOCICLETAS PARA EL CONTROL DE ESPACIOS",
+        "tipo": "Subasta Inversa Electrónica",
+        "monto": 23000,
+        "meta": "[ID_Meta]",
+        "alerta": "Brecha PAC > 20%",
+        "alerta_temp": "alerta"
+      },
+      {
+        "id": "PAC-GAD-SERCOP-004",
+        "desc": "ADQUISICIÓN DE EQUIPOS DE PARA IMPLEMENTACION DE LABORA",
+        "tipo": "Subasta Inversa Electrónica",
+        "monto": 48000,
+        "meta": "[ID_Meta]",
+        "alerta": "Brecha PAC > 20%",
+        "alerta_temp": "alerta"
+      },
+      {
+        "id": "PAC-GAD-SERCOP-005",
+        "desc": "REPOTENCIACIÓN DE PLANTA DE TRATAMIENTO DE AGUA POTABLE",
+        "tipo": "Subasta Inversa Electronica",
+        "monto": 0,
+        "meta": "[ID_Meta]",
+        "alerta": "Coherente",
+        "alerta_temp": "verde"
+      },
+      {
+        "id": "PAC-GAD-SERCOP-006",
+        "desc": "ADQUISICIÓN DE MOBILIARIOS PARA EQUIPAMIENTO DEL GOBIER",
+        "tipo": "Subasta Inversa Electronica",
+        "monto": 0,
+        "meta": "[ID_Meta]",
+        "alerta": "Coherente",
+        "alerta_temp": "verde"
+      },
+      {
+        "id": "PAC-GAD-SERCOP-008",
+        "desc": "CONSTRUCCIÓN DEL MERCADO MENOR DEL CANTÓN MONTECRISTI",
+        "tipo": "Subasta Inversa Electronica",
+        "monto": 0,
+        "meta": "[ID_Meta]",
+        "alerta": "Coherente",
+        "alerta_temp": "verde"
+      },
+      {
+        "id": "PAC-GAD-SERCOP-009",
+        "desc": "CONSTRUCCIÓN DEL MERCADO MENOR DEL CANTÓN MONTECRISTI",
+        "tipo": "Subasta Inversa Electronica",
+        "monto": 0,
+        "meta": "[ID_Meta]",
+        "alerta": "Coherente",
+        "alerta_temp": "verde"
+      },
+      {
+        "id": "PAC-GAD-SERCOP-010",
+        "desc": "PAVIMENTACIÓN, REPAVIMENTACIÓN, ADOQUINADO, BACHEO, DOB",
+        "tipo": "Subasta Inversa Electronica",
+        "monto": 0,
+        "meta": "[ID_Meta]",
+        "alerta": "Coherente",
+        "alerta_temp": "verde"
+      },
+      {
+        "id": "PAC-GAD-SERCOP-011",
+        "desc": "PAVIMENTACIÓN ASFÁLTICA EN LA VÍA PRINCIPAL DE LA COMUN",
+        "tipo": "Subasta Inversa Electronica",
+        "monto": 0,
+        "meta": "[ID_Meta]",
+        "alerta": "Coherente",
+        "alerta_temp": "verde"
+      },
+      {
+        "id": "PAC-GAD-SERCOP-012",
+        "desc": "LA RECTIFICACIÓN, MEJORAMIENTO, AMPLIACIÓN Y REHABILITA",
+        "tipo": "Subasta Inversa Electronica",
+        "monto": 0,
+        "meta": "[ID_Meta]",
+        "alerta": "Coherente",
+        "alerta_temp": "verde"
+      },
+      {
+        "id": "PAC-GAD-SERCOP-013",
+        "desc": "REGENERACIÓN DE CALLE ELOY ALFARO DEL SECTOR DE BAJO DE",
+        "tipo": "Subasta Inversa Electronica",
+        "monto": 0,
+        "meta": "[ID_Meta]",
+        "alerta": "Coherente",
+        "alerta_temp": "verde"
+      },
+      {
+        "id": "PAC-GAD-SERCOP-014",
+        "desc": "ADQUISICIÓN DE MATERIAL PÉTREO PARA EL MEJORAMIENTO VIA",
+        "tipo": "Subasta Inversa Electronica",
+        "monto": 0,
+        "meta": "[ID_Meta]",
+        "alerta": "Coherente",
+        "alerta_temp": "verde"
+      },
+      {
+        "id": "PAC-GAD-SERCOP-015",
+        "desc": "PAVIMENTACION, ACERAS Y BORDILLOS EN VARIAS VIAS DEL CA",
+        "tipo": "Subasta Inversa Electronica",
+        "monto": 0,
+        "meta": "[ID_Meta]",
+        "alerta": "Coherente",
+        "alerta_temp": "verde"
+      },
+      {
+        "id": "PAC-GAD-SERCOP-016",
+        "desc": "MEJORAMIENTO DE VARIAS CALLES EN LA ZONA RURAL DEL CANT",
+        "tipo": "Subasta Inversa Electronica",
+        "monto": 0,
+        "meta": "[ID_Meta]",
+        "alerta": "Coherente",
+        "alerta_temp": "verde"
+      },
+      {
+        "id": "PAC-GAD-SERCOP-017",
+        "desc": "CONSTRUCCIÓN DE INFRAESTRUCTURA COMUNITARIA Y ESPACIOS ",
+        "tipo": "Subasta Inversa Electronica",
+        "monto": 0,
+        "meta": "[ID_Meta]",
+        "alerta": "Coherente",
+        "alerta_temp": "verde"
+      },
+      {
+        "id": "PAC-GAD-SERCOP-019",
+        "desc": "CONSTRUCCIÓN DEL PARQUE LA HUELLA EN LA COMUNA CARCEL S",
+        "tipo": "Subasta Inversa Electronica",
+        "monto": 0,
+        "meta": "[ID_Meta]",
+        "alerta": "Coherente",
+        "alerta_temp": "verde"
+      },
+      {
+        "id": "PAC-GAD-SERCOP-020",
+        "desc": "AMPLIACIÓN Y ADECUACIÓN DE PARQUE CENTRAL DE LA PARROQU",
+        "tipo": "Subasta Inversa Electronica",
+        "monto": 0,
+        "meta": "[ID_Meta]",
+        "alerta": "Coherente",
+        "alerta_temp": "verde"
+      },
+      {
+        "id": "PAC-GAD-SERCOP-021",
+        "desc": "CONSTRUCCIÓN DE ESCENARIO CAMERINO EN LA COMUNA TOALLA ",
+        "tipo": "Subasta Inversa Electronica",
+        "monto": 0,
+        "meta": "[ID_Meta]",
+        "alerta": "Coherente",
+        "alerta_temp": "verde"
+      },
+      {
+        "id": "RESUMEN PAC",
+        "desc": "Total_Procesos_PAC",
+        "tipo": "91",
+        "monto": 0,
+        "meta": "",
+        "alerta": "",
+        "alerta_temp": "dim"
+      },
+      {
+        "id": "NOTA:",
+        "desc": "H05b es el puente PAC-SERCOP. Cuando H05b esté poblada ",
+        "tipo": "",
+        "monto": 0,
+        "meta": "",
+        "alerta": "",
+        "alerta_temp": "dim"
+      },
+      {
+        "id": "FUENTE PAC:",
+        "desc": "https://www.compraspublicas.gob.ec/ProcesoContratacion/",
+        "tipo": "",
+        "monto": 0,
+        "meta": "",
+        "alerta": "",
+        "alerta_temp": "dim"
+      }
+    ],
+    "presupuesto": {
+      "codificado_inversion": 30271811.740000002,
+      "bienes": 29654120.37,
+      "obras": 617691.37,
+      "devengado": 1947738.29,
+      "ti_pct": 6.4,
+      "corte": "Abril 2026 (Ene-Abr)"
+    },
+    "poa_detalle": [
+      {
+        "id": "SC-I-N-01",
+        "anual_usd": 7127084.03,
+        "crono": [
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08
+        ]
+      },
+      {
+        "id": "SC-L-N-02",
+        "anual_usd": 12565736.42,
+        "crono": [
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.09
+        ]
+      },
+      {
+        "id": "AH-I-X-01",
+        "anual_usd": 5977831.66,
+        "crono": [
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.09
+        ]
+      },
+      {
+        "id": "AH-I-X-02",
+        "anual_usd": 749147.97,
+        "crono": [
+          0.05,
+          0.05,
+          0.08,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.07,
+          0.05
+        ]
+      },
+      {
+        "id": "AH-I-X-03",
+        "anual_usd": 0,
+        "crono": [
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.09
+        ]
+      },
+      {
+        "id": "AH-I-N-01",
+        "anual_usd": 2880,
+        "crono": [
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.09
+        ]
+      },
+      {
+        "id": "SC-L-G-01",
+        "anual_usd": 411446.67,
+        "crono": [
+          0.05,
+          0.05,
+          0.08,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.07,
+          0.05
+        ]
+      },
+      {
+        "id": "AH-I-X-04",
+        "anual_usd": 1571700,
+        "crono": [
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.09
+        ]
+      },
+      {
+        "id": "PI-I-G-01",
+        "anual_usd": 749147.97,
+        "crono": [
+          0.05,
+          0.05,
+          0.08,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.07,
+          0.05
+        ]
+      },
+      {
+        "id": "AH-C-X-01",
+        "anual_usd": 6950,
+        "crono": [
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.09
+        ]
+      },
+      {
+        "id": "AH-C-X-02",
+        "anual_usd": 56550,
+        "crono": [
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.09
+        ]
+      },
+      {
+        "id": "SC-I-N-03",
+        "anual_usd": 205327.56,
+        "crono": [
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.09
+        ]
+      },
+      {
+        "id": "FA-I-X-01",
+        "anual_usd": 223260,
+        "crono": [
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.09
+        ]
+      },
+      {
+        "id": "FA-C-X-01",
+        "anual_usd": 2880,
+        "crono": [
+          0.05,
+          0.05,
+          0.08,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.07,
+          0.05
+        ]
+      },
+      {
+        "id": "FA-I-X-02",
+        "anual_usd": 749147.97,
+        "crono": [
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.09
+        ]
+      },
+      {
+        "id": "FA-L-N-01",
+        "anual_usd": 49862.69,
+        "crono": [
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.09
+        ]
+      },
+      {
+        "id": "PI-I-G-02",
+        "anual_usd": 80351,
+        "crono": [
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.09
+        ]
+      },
+      {
+        "id": "PI-L-G-01",
+        "anual_usd": 749147.97,
+        "crono": [
+          0.05,
+          0.05,
+          0.08,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.07,
+          0.05
+        ]
+      },
+      {
+        "id": "EP-L-N-01",
+        "anual_usd": 749147.97,
+        "crono": [
+          0.05,
+          0.05,
+          0.08,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.07,
+          0.05
+        ]
+      },
+      {
+        "id": "EP-L-X-01",
+        "anual_usd": 49862.69,
+        "crono": [
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.09
+        ]
+      },
+      {
+        "id": "PI-TUR-01",
+        "anual_usd": 49862.69,
+        "crono": [
+          0.05,
+          0.05,
+          0.05,
+          0.08,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.12,
+          0.1,
+          0.1,
+          0.05
+        ]
+      },
+      {
+        "id": "PI-TUR-02",
+        "anual_usd": 49862.69,
+        "crono": [
+          0.05,
+          0.05,
+          0.05,
+          0.08,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.12,
+          0.1,
+          0.1,
+          0.05
+        ]
+      },
+      {
+        "id": "FA-CC-01",
+        "anual_usd": 2880,
+        "crono": [
+          0.05,
+          0.05,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.05,
+          0.05
+        ]
+      },
+      {
+        "id": "AH-AP-04",
+        "anual_usd": 7127084.03,
+        "crono": [
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.09
+        ]
+      },
+      {
+        "id": "FA-DIS-01",
+        "anual_usd": 2880,
+        "crono": [
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.09
+        ]
+      }
+    ],
+    "poa_total": 39310031.98,
     "sat0": {
       "componentes": [
         {

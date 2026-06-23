@@ -131,6 +131,52 @@ def build_block() -> dict:
         "diagnostico": _clean(cell("B21")),
     }
 
+    # ── PRESUPUESTO — eSIGEF inversión codificado (H07) ──────────────────────
+    ws = sh("H07_S5")
+    presupuesto = {
+        "codificado_inversion": ws["B18"].value or 0,    # ~$30.3M
+        "bienes": ws["B14"].value or 0,
+        "obras": ws["B16"].value or 0,
+        "devengado": ws["B19"].value or 0,
+        "ti_pct": round((ws["B20"].value or 0) * 100, 1),
+        "corte": str(ws["B10"].value or ""),
+    }
+
+    # ── PAC detalle — procesos vinculados a meta + coherencia (H05b A-H) ─────
+    ws = sh("H05b_S3b")
+    pac_detalle = []
+    for r in range(15, 60):
+        pid = ws.cell(r, 1).value
+        if not pid:
+            continue
+        pac_detalle.append({
+            "id": str(pid).strip(),
+            "desc": str(ws.cell(r, 2).value or "").strip()[:55],
+            "tipo": str(ws.cell(r, 3).value or "").strip(),
+            "monto": ws.cell(r, 4).value or 0,
+            "meta": str(ws.cell(r, 5).value or "").strip(),
+            "alerta": _clean(str(ws.cell(r, 8).value or "")),
+            "alerta_temp": _temp(str(ws.cell(r, 8).value or "")),
+        })
+
+    # ── POA detalle — monto anual por meta + cronograma mensual (H05 E-R) ────
+    ws = sh("H05_S3_OPER")
+    poa_detalle, poa_total = [], 0
+    for r in range(14, 45):
+        mid = ws.cell(r, 1).value
+        anual = ws.cell(r, 5).value
+        if not mid or not isinstance(anual, (int, float)):
+            continue
+        if str(mid).strip() not in metas:            # solo metas reales del PDOT (sin filas espurias)
+            continue
+        crono = [ws.cell(r, c).value for c in range(6, 18)]   # ENE..DIC %
+        poa_detalle.append({
+            "id": str(mid).strip(),
+            "anual_usd": anual,
+            "crono": [round(x, 3) if isinstance(x, (int, float)) else 0 for x in crono],
+        })
+        poa_total += anual
+
     return {
         "_fuente": "PDOT (planificación) · POA (operación) · PAC (contratación) · coherencia · corte Q1-2026",
         "metas_total": metas_total,
@@ -139,6 +185,10 @@ def build_block() -> dict:
         "direcciones": direcciones,
         "n_direcciones": n_direcciones,
         "pac": pac,
+        "pac_detalle": pac_detalle,
+        "presupuesto": presupuesto,
+        "poa_detalle": poa_detalle,
+        "poa_total": poa_total,
         "sat0": sat0,
     }
 
