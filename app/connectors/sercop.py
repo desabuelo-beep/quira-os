@@ -31,6 +31,8 @@ RELIABILITY = 0.95
 def fetch_sercop_data(
     ruc: str,
     year: int | None = None,
+    search: str = "",
+    buyer: str = "",
 ) -> dict:
     """Obtiene el estado vivo de contratación pública desde SERCOP OCDS API.
 
@@ -59,11 +61,11 @@ def fetch_sercop_data(
     try:
         from scripts.fetch_sercop import build_contratacion_block
 
-        block = build_contratacion_block(ruc, year)
-        contratacion = block.get("contratacion", {})
+        # API actual: search por palabra clave + filtro por comprador (no por RUC)
+        contratacion = build_contratacion_block(year, search or "", buyer or "")
 
         result["data"]   = contratacion
-        result["status"] = "ok" if contratacion.get("pac_publicado") else "partial"
+        result["status"] = "ok" if contratacion.get("n_procesos") else "partial"
 
         # Ajustar reliability si la API no respondió
         if result["status"] == "partial":
