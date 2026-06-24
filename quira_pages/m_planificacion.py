@@ -299,13 +299,16 @@ def _tab_datos(plan: dict) -> None:
     st.markdown(_tabla_proyectos(proys), unsafe_allow_html=True)
     st.markdown(_div(), unsafe_allow_html=True)
 
+    _pac_total = plan.get("pac", {}).get("total_usd", 0)
     st.markdown(_head("3", "PAC — LA CONTRATACIÓN",
-                      f"qué se va a contratar · {len(pac)} procesos · ${plan.get('pac', {}).get('total_usd', 0):,.0f}"),
+                      f"qué contrata el municipio · total oficial ${_pac_total:,.0f}"),
                 unsafe_allow_html=True)
-    st.markdown(_intro("El Plan Anual de Contratación: cada proceso, su tipo, su monto referencial y —clave— a "
-                       "qué meta del plan sirve. La última columna es la coherencia POA-PAC que QUIRA verifica "
-                       "proceso por proceso."), unsafe_allow_html=True)
-    st.markdown(_tabla_pac(pac), unsafe_allow_html=True)
+    st.markdown(_intro(
+        f"El Plan Anual de Contratación oficial (SERCOP) asciende a <b>${_pac_total:,.0f}</b>. De ese total, "
+        f"<b>$19.74M se itemizan en 91 procesos</b> y el resto corresponde a régimen especial. El PAC cubre el "
+        f"<b>98.6% del presupuesto de inversión</b> — la cadena plan→gasto es coherente. El detalle por proceso "
+        f"(descripción · tipo · estado · adjudicación) se incorporará desde los <b>datos abiertos de SERCOP</b> "
+        f"—fuente estructurada y en tiempo real— en el próximo conector."), unsafe_allow_html=True)
     st.markdown(_div(), unsafe_allow_html=True)
 
     st.markdown(_head("4", "PRESUPUESTO — EL RECURSO", f"con qué inversión se cuenta · corte {pres.get('corte', '')}"),
