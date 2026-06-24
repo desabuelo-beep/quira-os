@@ -1416,6 +1416,2064 @@
       }
     ],
     "poa_total": 39310031.98,
+    "poa_proyectos": [
+      {
+        "dir": "Dirección de Agua Potable y Alcantarillado Sanitar",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Ampliación de redes públicas de agua potable en",
+        "desc": "ALQUILER DE SERVICIO DE TANQUEROS PARA DISTRIBUCIÓN DE AGUA POTABLE EN EL CANTÓN",
+        "partida": "730505",
+        "anual": 100000
+      },
+      {
+        "dir": "Dirección de Agua Potable y Alcantarillado Sanitar",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Ampliación de redes públicas pluviales",
+        "desc": "CONSTRUCCIÓN DE SISTEMA DE ALCANTARILLADO PLUVIAL EN EL CANTÓN MONTECRISTI",
+        "partida": "750103",
+        "anual": 40000
+      },
+      {
+        "dir": "Dirección de Agua Potable y Alcantarillado Sanitar",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Ampliación de redes públicas de agua potable en",
+        "desc": "ADQUISICIÓN DE EQUIPOS DE PARA IMPLEMENTACION DE LABORATORIO DE LA DIRECCON DE A",
+        "partida": "840104",
+        "anual": 48000
+      },
+      {
+        "dir": "Dirección de Agua Potable y Alcantarillado Sanitar",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Ampliación de redes públicas de agua potable en",
+        "desc": "ENTREGA DE AGUA POTABLE PARA VARIOS SECTORES DEL CANTÓN MONTECRISTI POR PARTE DE",
+        "partida": "750101",
+        "anual": 144860
+      },
+      {
+        "dir": "Dirección de Agua Potable y Alcantarillado Sanitar",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Ampliación de redes públicas de agua potable en",
+        "desc": "SERVICIO DE TRANSPORTE DE AGUA CRUDA A TRAVÉS DEL ACUEDUCTO DE REFINERÍA DEL PAC",
+        "partida": "750101",
+        "anual": 250000
+      },
+      {
+        "dir": "Dirección de Agua Potable y Alcantarillado Sanitar",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Gestión para la construcción de nueva",
+        "desc": "ADQUISICIÓN DE QUÍMICOS PARA TRATAMIENTO DE PTAPS Y PTARS DEL CANTÓN MONTECRISTI",
+        "partida": "730819",
+        "anual": 65000
+      },
+      {
+        "dir": "Dirección de Agua Potable y Alcantarillado Sanitar",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Ampliación de redes públicas de agua potable en",
+        "desc": "CONSTRUCCIÓN DEL SISTEMA DE AGUA POTABLE PARA ZONAS DISPERSAS EN EL CANTÓN MONTE",
+        "partida": "750101",
+        "anual": 10
+      },
+      {
+        "dir": "Dirección de Agua Potable y Alcantarillado Sanitar",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Ampliación de redes públicas de agua potable en",
+        "desc": "AMPLIACIÓN DE REDES DE AGUA POTABLE CERRO GUAYABAL MARGEN DERECHO VÍA MONTECRIST",
+        "partida": "750101",
+        "anual": 10
+      },
+      {
+        "dir": "Dirección de Agua Potable y Alcantarillado Sanitar",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Gestión para la construcción de nueva",
+        "desc": "ADQUISICIÓ N D E M I CR O O R G AN I S M O S P ARA PTARS E N E L C A N T Ó N M O",
+        "partida": "730819",
+        "anual": 20000
+      },
+      {
+        "dir": "Dirección de Agua Potable y Alcantarillado Sanitar",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Mantenimiento de infraestructura existente de agua",
+        "desc": "ALQUILER DE MAQUINARIA PARA TRABAJOS DE LA DIRECCIÓN DE AGUA POTABLE Y ALCANTARI",
+        "partida": "730504",
+        "anual": 17970
+      },
+      {
+        "dir": "Dirección de Agua Potable y Alcantarillado Sanitar",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Mantenimiento de infraestructura existente de agua",
+        "desc": "SUMINISTRO DE MATERIALES Y ACCESORIOS PARA MANTENIMIENTO Y REPOSICIÓN DE ELEMENT",
+        "partida": "730811",
+        "anual": 70000
+      },
+      {
+        "dir": "Dirección de Agua Potable y Alcantarillado Sanitar",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Ampliación de redes públicas de agua potable en",
+        "desc": "ALQUILER DE VEHÍCULO PARA LA GESTIÓN COMERCIAL DE LA DIRECCIÓN DE AGUA POTABLE",
+        "partida": "730505",
+        "anual": 10000
+      },
+      {
+        "dir": "Dirección de Agua Potable y Alcantarillado Sanitar",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Mantenimiento de infraestructura existente de",
+        "desc": "ADQUISICIÓN DE MATERIALES PARA AMPLIACIONES DE REDES HIDROSANITARIAS EN CDLA PRI",
+        "partida": "730811",
+        "anual": 88000
+      },
+      {
+        "dir": "Dirección de Agua Potable y Alcantarillado Sanitar",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Mantenimiento de infraestructura existente de",
+        "desc": "CONSTRUCCIÓN DE CERRAMIENTO Y GARITA EN PTARS DE COLORADO, BAJOS DE AFUERA, BAJO",
+        "partida": "750101",
+        "anual": 10
+      },
+      {
+        "dir": "Dirección de Agua Potable y Alcantarillado Sanitar",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Ampliación de redes públicas de agua potable en",
+        "desc": "CONSTRUCCIÓN DE SISTEMA DE BOMBEO EN LA LÍNEA DE CAPTACIÓN DE AGUA CRUDA PARA ME",
+        "partida": "750101",
+        "anual": 10
+      },
+      {
+        "dir": "Dirección de Agua Potable y Alcantarillado Sanitar",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Ampliación de redes públicas de agua potable en",
+        "desc": "SERVICIOS COMERCIALES PARA LA DIRECCIÓN DE AGUA POTABLE DEL GAD MONTECRISTI",
+        "partida": "730607",
+        "anual": 10
+      },
+      {
+        "dir": "Dirección de Agua Potable y Alcantarillado Sanitar",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Mantenimiento de infraestructura existente de",
+        "desc": "ESTUDIOS DEFINITIVOS PARA LA REHABILITACIÓN, MANTENIMIENTO Y PUESTA EN OPERACIÓN",
+        "partida": "730601",
+        "anual": 10
+      },
+      {
+        "dir": "Dirección de Agua Potable y Alcantarillado Sanitar",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Mantenimiento de infraestructura existente de agua",
+        "desc": "REPOTENCIACIÓN DE PLANTA DE TRATAMIENTO DE AGUA POTABLE LOS MANGOS Y GUAYABAL",
+        "partida": "840104",
+        "anual": 40000
+      },
+      {
+        "dir": "Dirección de Agua Potable y Alcantarillado Sanitar",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Ampliación de redes públicas de agua potable en",
+        "desc": "SERVICIOS PROFESIONALES INGENIERO HIDRÁULICO",
+        "partida": "730606",
+        "anual": 14400
+      },
+      {
+        "dir": "Dirección de Agua Potable y Alcantarillado Sanitar",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Gestión para la nueva infraestructura de",
+        "desc": "PLAN MAESTRO DE AGUA POTABLE Y SANEAMIENTO DEL CANTÓN",
+        "partida": "730601",
+        "anual": 10
+      },
+      {
+        "dir": "Dirección de Agua Potable y Alcantarillado Sanitar",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Ampliación de redes públicas de saneamiento área",
+        "desc": "AMPLIACIÓN DE SISTEMA DE ALCANTARILLADO SANITARIO, SECTOR LA CANCHA 5 DE MAYO Y",
+        "partida": "750103",
+        "anual": 215000
+      },
+      {
+        "dir": "Dirección de Agua Potable y Alcantarillado Sanitar",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Ampliación de redes públicas de saneamiento área",
+        "desc": "CONSTRUCCIÓN DE LÍNEA DE CONDUCCIÓN DE AGUA POTABLE DESDE EL TANQUE CENTÍNELA EN",
+        "partida": "750101",
+        "anual": 20000
+      },
+      {
+        "dir": "Dirección de Agua Potable y Alcantarillado Sanitar",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Ampliación de redes públicas de saneamiento área",
+        "desc": "REHABILITACIÓN Y MANTENIMIENTO DE LOS SISTEMAS DE ALCANTARILLADO SANITARIO DE CA",
+        "partida": "730417",
+        "anual": 10
+      },
+      {
+        "dir": "Dirección de Agua Potable y Alcantarillado Sanitar",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Ampliación de redes públicas de saneamiento área",
+        "desc": "CONSTRUCCIÓN DE POZO COMO FUENTE DE CAPTACION PARA ZONAS DISPERSAS DEL CANTÓN MO",
+        "partida": "750101",
+        "anual": 10
+      },
+      {
+        "dir": "Dirección de Agua Potable y Alcantarillado Sanitar",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Mantenimiento de infraestructura existente de",
+        "desc": "ALQUILER DE VEHICULO HIDROSUCCIONADOR PARA ATENDER LAS OBSTRUCCIONES EN LA RED D",
+        "partida": "730504",
+        "anual": 60000
+      },
+      {
+        "dir": "Dirección de Agua Potable y Alcantarillado Sanitar",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Ampliación de redes públicas de saneamiento área",
+        "desc": "CONSTRUCCIÓN DE LA FASE I DEL SISTEMA DE ALCANTARILLADO SANITARIO DE LA PARROQUI",
+        "partida": "750103",
+        "anual": 10
+      },
+      {
+        "dir": "Dirección de Agua Potable y Alcantarillado Sanitar",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Ampliación de redes públicas de agua potable en",
+        "desc": "ADQUISICIÓN DE REACTIVOS Y ACCESORIOS PARA EL LABORATORIO DE LA DIRECCIÓN DE AGU",
+        "partida": "730819",
+        "anual": 20000
+      },
+      {
+        "dir": "Dirección de Agua Potable y Alcantarillado Sanitar",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Ampliación de redes públicas de agua potable en",
+        "desc": "ADQUISICIÓN DE REACTIVOS Y ACCESORIOS PARA EL LABORATORIO DE LA DIRECCIÓN DE AGU",
+        "partida": "730819",
+        "anual": 11000
+      },
+      {
+        "dir": "Dirección de Agua Potable y Alcantarillado Sanitar",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Ampliación de redes públicas de saneamiento área",
+        "desc": "CONSTRUCCIÓN DEL ALCANTARILLADO SANITARIO PARA LAS COMUNAS PEPA DE HUSO Y LA SEQ",
+        "partida": "750103",
+        "anual": 10
+      },
+      {
+        "dir": "Dirección de Talento Humano",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "CONTRATACIÓN DE SEGURO DE CAUCIÓN PARA LOS SERVIDORES PÚBLICOS BAJO EL RÉGIMEN L",
+        "partida": "570201",
+        "anual": 5000
+      },
+      {
+        "dir": "Dirección de Talento Humano",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "CONTRATACIÓN DE PÓLIZA DE SEGURO DE VIDA COLECTIVO PARA LOS SERVIDORES PÚBLICOS",
+        "partida": "570201",
+        "anual": 25000
+      },
+      {
+        "dir": "Dirección de Talento Humano",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "ADQUISICIÓN DE VESTIMENTA (UNIFORME) PARA EL PERSONAL BAJO EL RÉGIMEN CÓDIGO DE",
+        "partida": "530802",
+        "anual": 86000
+      },
+      {
+        "dir": "Dirección de Talento Humano",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "ADQUISICIÓN DE VESTIMENTA (UNIFORME) PARA EL PERSONAL BAJO EL RÉGIMEN LOSEP DEL",
+        "partida": "530802",
+        "anual": 25000
+      },
+      {
+        "dir": "Dirección de Talento Humano",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "SERVICIO DE EXÁMENES MÉDICOS OCUPACIONALES PARA LOS TRABAJADORES DE GOBIERNO AUT",
+        "partida": "530226",
+        "anual": 10000
+      },
+      {
+        "dir": "Dirección de Talento Humano",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "ADQUISICIÓN DE MEDICINAS E INSUMOS PARA EL CONSULTORIO MÉDICO DEL GAD MONTECRIST",
+        "partida": "530809",
+        "anual": 5000
+      },
+      {
+        "dir": "Dirección de Talento Humano",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "PROVISIÓN Y RECARGA DE AGUA PURIFICADA EN BOTELLAS Y BOTELLONES PARA EL GAD MUNI",
+        "partida": "530101",
+        "anual": 10000
+      },
+      {
+        "dir": "Dirección de Talento Humano",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "ADQUISICIÓN Y MANTENIMIENTO DE EXTINTORES PARA LAS INSTALACIONES DEL GAD MUNICIP",
+        "partida": "530203",
+        "anual": 3000
+      },
+      {
+        "dir": "Dirección de Talento Humano",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "ADQUISICIÓN DE EQUIPOS DE PROTECCIÓN PERSONAL PARA LOS TRABAJADORES DEL GOBIERNO",
+        "partida": "530802",
+        "anual": 9000
+      },
+      {
+        "dir": "Dirección de Talento Humano",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "ADQUISICIÓN DE EQUIPOS DE PROTECCIÓN PERSONAL PARA LOS TRABAJADORES DEL GOBIERNO",
+        "partida": "530802",
+        "anual": 16000
+      },
+      {
+        "dir": "Dirección de Talento Humano",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "SERVICIO DE CAPACITACIÓN EN FORTALECIMIENTO EN COMPETENCIAS PARA SERVIDORES PÚBL",
+        "partida": "530612",
+        "anual": 1
+      },
+      {
+        "dir": "Dirección de Talento Humano",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "GESTIONES INTERINSTITUCIONALES – PASAJES EXTERIOR",
+        "partida": "530302",
+        "anual": 2000
+      },
+      {
+        "dir": "Dirección de Talento Humano",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "GESTIONES INTERINSTITUCIONALES – VIÁTICOS Y SUBSISTENCIA EN EL EXTERIOR",
+        "partida": "530304",
+        "anual": 1000
+      },
+      {
+        "dir": "Dirección de Talento Humano",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "GESTIONES INTERINSTITUCIONALES – PASAJES INTERIOR",
+        "partida": "530301",
+        "anual": 6000
+      },
+      {
+        "dir": "Dirección de Talento Humano",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "GESTIONES INTERINSTITUCIONALES – VIÁTICOS Y SUBSISTENCIA EN EL INTERIOR",
+        "partida": "530303",
+        "anual": 3000
+      },
+      {
+        "dir": "Dirección de Talento Humano",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "SERVICIOS POR CONTRATOS CIVILES PROFESIONALES",
+        "partida": "530606",
+        "anual": 94600
+      },
+      {
+        "dir": "Dirección de Talento Humano",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "RETROACTIVOS CODIGO DE TRABAJO POR AJUSTES DE SUELDOS",
+        "partida": "510106",
+        "anual": 340020
+      },
+      {
+        "dir": "Dirección de Talento Humano",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "JUBILADOS APORTE MENSUAL",
+        "partida": "580209",
+        "anual": 51177.72
+      },
+      {
+        "dir": "Dirección de Talento Humano",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "SALARIOS Y REMUNERACIONES 51 CORRIENTE",
+        "partida": "51",
+        "anual": 4486531.81
+      },
+      {
+        "dir": "Dirección de Talento Humano",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "SALARIOS Y REMUNERACIONES 71-INVERSION",
+        "partida": "71",
+        "anual": 6844495.28
+      },
+      {
+        "dir": "Dirección de Talento Humano",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "OBLIGACIONES DE EJERCICIOS ANTERIORES POR EGRESO DE PERSONAL",
+        "partida": "990101",
+        "anual": 80000
+      },
+      {
+        "dir": "Dirección de Talento Humano",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "CONTRAPARTE BDE",
+        "partida": "510706",
+        "anual": 1
+      },
+      {
+        "dir": "Dirección de Talento Humano",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "SUPRESIÓN DE PARTIDAS",
+        "partida": "510702",
+        "anual": 1
+      },
+      {
+        "dir": "Dirección de Talento Humano",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "LIQUIDACIÓN JUBILACIONES - RECURSOS PROPIOS",
+        "partida": "510606",
+        "anual": 200000
+      },
+      {
+        "dir": "Dirección de Talento",
+        "meta": "Fortalecer y mejorar los recursos",
+        "proyecto": "Formación y fortalecimiento del",
+        "desc": "DESPIDOS INTEMPESTIVOS CODIGO DE TRABAJO",
+        "partida": "710703",
+        "anual": 18000
+      },
+      {
+        "dir": "Dirección de Talento Humano",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "DESPIDOS INTEMPESTIVOS CODIGO DE TRABAJO CORRIENTE",
+        "partida": "510703",
+        "anual": 18000
+      },
+      {
+        "dir": "Dirección de Talento Humano",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "COMPENSACIÓN POR VACACIONES NO GOZADAS POR CESACIÓN DE FUNCIONES INVERSION",
+        "partida": "710707",
+        "anual": 35000
+      },
+      {
+        "dir": "Dirección de Talento Humano",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "COMPENSACIÓN POR VACACIONES NO GOZADAS POR CESACIÓN DE FUNCIONES CORRIENTE",
+        "partida": "510707",
+        "anual": 35690.46
+      },
+      {
+        "dir": "Dirección de Talento Humano",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "COMPENSACIÓN POR DESAHUCIO INVERSION",
+        "partida": "710704",
+        "anual": 5000
+      },
+      {
+        "dir": "Dirección de Talento Humano",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "COMPENSACIÓN POR DESAHUCIO CORRIENTE",
+        "partida": "510704",
+        "anual": 5000
+      },
+      {
+        "dir": "Dirección de Talento Humano",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "HORAS EXTRAORDINARIAS Y SUPLEMENTARIAS INVERSION",
+        "partida": "710509",
+        "anual": 18232.65
+      },
+      {
+        "dir": "Dirección de Talento Humano",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "HORAS EXTRAORDINARIAS Y SUPLEMENTARIAS CORRIENTE",
+        "partida": "510509",
+        "anual": 39319.56
+      },
+      {
+        "dir": "Dirección de Talento Humano",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "DECIMO TERCER SUELDO HORAS EXTRAS INVERSION",
+        "partida": "710203",
+        "anual": 1519.39
+      },
+      {
+        "dir": "Dirección de Talento Humano",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "DECIMO TERCER SUELDO HORAS EXTRAS CORRIENTE",
+        "partida": "510203",
+        "anual": 3276.63
+      },
+      {
+        "dir": "Dirección de Talento Humano",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "APORTE PATRONAL HORAS EXTRAS INVERSION",
+        "partida": "710601",
+        "anual": 2215.27
+      },
+      {
+        "dir": "Dirección de Talento Humano",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "FONDO DE RESERVA HORAS EXTRAS INVERSION",
+        "partida": "710602",
+        "anual": 1518.78
+      },
+      {
+        "dir": "Dirección de Talento Humano",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "APORTE PATRONAL HORAS EXTRAS CORRIENTE",
+        "partida": "510601",
+        "anual": 4779.24
+      },
+      {
+        "dir": "Dirección de Talento Humano",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "FONDO DE RESERVA HORAS EXTRAS CORRIENTE",
+        "partida": "510602",
+        "anual": 3276.63
+      },
+      {
+        "dir": "Dirección de Talento Humano",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "SUBROGACIONES LOSEP CORRIENTE",
+        "partida": "510512",
+        "anual": 6670
+      },
+      {
+        "dir": "Dirección de Talento Humano",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "SUBROGACIONES LOSEP INVERSIÓN",
+        "partida": "710512",
+        "anual": 6010
+      },
+      {
+        "dir": "Dirección de Talento Humano",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "ENCARGOS LOSEP CORRIENTE",
+        "partida": "510513",
+        "anual": 29400
+      },
+      {
+        "dir": "Dirección de Talento Humano",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "ENCARGOS LOSEP INVERSIÓN",
+        "partida": "710513",
+        "anual": 30000
+      },
+      {
+        "dir": "Consejo Cantonal de Protección de Derechos",
+        "meta": "Incrementar la cobertura de servicios de derechos sociales c",
+        "proyecto": "Fortalecimiento para la reducción de indicadores",
+        "desc": "DIETA A MIEMBROS DE LA SOCIEDAD CIVIL",
+        "partida": "770301",
+        "anual": 7900
+      },
+      {
+        "dir": "Dirección de Proyectos Estratégicos",
+        "meta": "Fortalecer la gobernabilidad e institucionalidad, mediante l",
+        "proyecto": "Desarrollo e implementación de Planes Estratégicos",
+        "desc": "SERVICIOS PROFESIONALES: ESPECIALISTA EN FINANCIAMIENTO E INVERSIONES",
+        "partida": "530606",
+        "anual": 24000
+      },
+      {
+        "dir": "Dirección de Proyectos Estratégicos",
+        "meta": "Fortalecer la gobernabilidad e institucionalidad, mediante l",
+        "proyecto": "Desarrollo e implementación de Planes Estratégicos",
+        "desc": "CONTRATACIÓN DE ESTUDIOS DE SUELOS REQUERIDOS PARA EL DISEÑO Y ELABORACIÓN DE PR",
+        "partida": "730601",
+        "anual": 1
+      },
+      {
+        "dir": "Dirección de Proyectos Estratégicos",
+        "meta": "Incrementar la oferta turística de calidad, fortaleciendo lo",
+        "proyecto": "Desarrollo de Eventos de Promoción",
+        "desc": "ESTUDIO DE CONSULTORÍA PARA PREFACTIBILIDAD Y FACTIBILIDAD DE PROYECTO ECOTURÍST",
+        "partida": "730601",
+        "anual": 30000
+      },
+      {
+        "dir": "Dirección de Comunicación Social Relaciones Públic",
+        "meta": "Fortalecer la gobernabilidad e institucionalidad, mediante l",
+        "proyecto": "Proyecto de Estrategias Integrales de",
+        "desc": "CONTRATACIÓN DEL SERVICIO DE DIFUSIÓN DE PLANES PROYECTOS Y PROGRAMAS DEL GAD MO",
+        "partida": "530207",
+        "anual": 66327.56
+      },
+      {
+        "dir": "Dirección de Comunicación Social Relaciones Públic",
+        "meta": "Fortalecer la gobernabilidad e institucionalidad, mediante l",
+        "proyecto": "Proyecto de Estrategias Integrales de",
+        "desc": "SERVICIOS DE ELABORACIÓN DE SOUVENIRS CON IMAGEN INSTITUCIONAL Y ELEMENTOS PROMO",
+        "partida": "530807",
+        "anual": 10000
+      },
+      {
+        "dir": "Dirección de Comunicación Social Relaciones Públic",
+        "meta": "Fortalecer la gobernabilidad e institucionalidad, mediante l",
+        "proyecto": "Proyecto de Estrategias Integrales de",
+        "desc": "SERVICIOS PROFESIONALES: FORTALECIMIENTO COMUNICACIONAL QUE IMPULSE LA GESTIÓN D",
+        "partida": "530606",
+        "anual": 46000
+      },
+      {
+        "dir": "Dirección de Comunicación Social Relaciones Públic",
+        "meta": "Fortalecer la gobernabilidad e institucionalidad, mediante l",
+        "proyecto": "Proyecto de Estrategias Integrales de",
+        "desc": "ELABORACIÓN DE ESTUDIOS DE MEDICIÓN, ALCANCE Y ACEPTACIÓN DE LA GESTIÓN DEL GAD",
+        "partida": "530601",
+        "anual": 13000
+      },
+      {
+        "dir": "Dirección de Comunicación Social Relaciones Públic",
+        "meta": "Fortalecer la gobernabilidad e institucionalidad, mediante l",
+        "proyecto": "Proyecto de Estrategias Integrales de",
+        "desc": "ADQUISICIÓN DE EQUIPOS COMUNICACIONALES",
+        "partida": "840104",
+        "anual": 10000
+      },
+      {
+        "dir": "Dirección de Comunicación Social Relaciones Públic",
+        "meta": "Fortalecer la gobernabilidad e institucionalidad, mediante l",
+        "proyecto": "Proyecto de Estrategias Integrales de",
+        "desc": "CONTRATACIÓN DEL SERVICIO DE IMPRESIÓN DE SELLOS, NOTIFICACIONES Y OTROS ELEMENT",
+        "partida": "530807",
+        "anual": 6000
+      },
+      {
+        "dir": "Dirección de Seguridad, Control Territorial y Comi",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Implementación de infraestructura de videovigilanc",
+        "desc": "SERVICIO DE INSTALACIÓN DE CÁMARAS DE VIDEOVIGILANCIA Y ALARMAS COMUNITARIAS Y E",
+        "partida": "730404",
+        "anual": 90000
+      },
+      {
+        "dir": "Dirección de Seguridad, Control Territorial y Comi",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Implementación de infraestructura de videovigilanc",
+        "desc": "INSTALACIÓN DE CERCOS ELÉCTRICOS",
+        "partida": "730208",
+        "anual": 10000
+      },
+      {
+        "dir": "Dirección de Seguridad, Control Territorial y Comi",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Implementación de infraestructura de videovigilanc",
+        "desc": "SERVICIO DE LOGÍSTICA PARA LA ADECUACIÓN Y CONTROL DE LOS ESPACIOS PÚBLICOS DURA",
+        "partida": "730425",
+        "anual": 10380
+      },
+      {
+        "dir": "Dirección de Seguridad, Control Territorial y Comi",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Implementación de infraestructura de videovigilanc",
+        "desc": "ADQUISICIÓN DE EQUIPAMIENTOS PARA PERSONAL DE SEGURIDAD DE LOS ESPACIOS PÚBLICOS",
+        "partida": "730802",
+        "anual": 10000
+      },
+      {
+        "dir": "Dirección de Gestión Ambiental y Riesgos",
+        "meta": "Disminuir la contaminación ambiental y el riesgo mediante ac",
+        "proyecto": "Manejo sustentable de los recursos de áridos",
+        "desc": "SERVICIOS PROFESIONALES PARA LA GESTIÓN DE PROCESOS MUNICIPALES VINCULADOS A CON",
+        "partida": "730606",
+        "anual": 14400
+      },
+      {
+        "dir": "Dirección de Catastro y Gestión del Suelo",
+        "meta": "Desarrollar estrategias innovadoras mediante la instituciona",
+        "proyecto": "Fortalecimiento del Sistema de Información",
+        "desc": "CONTRATACIÓN EQUIPO TÉCNICO ESPECIALIZADO EN EL MARCO DEL PROYECTO DE ACTUALIZAC",
+        "partida": "730606",
+        "anual": 38700
+      },
+      {
+        "dir": "Dirección de Catastro y Gestión del Suelo",
+        "meta": "Desarrollar estrategias innovadoras mediante la instituciona",
+        "proyecto": "Fortalecimiento del Sistema de Información",
+        "desc": "MANTENIMIENTO PREVENTIVO DE LOS EQUIPOS TOPOGRAFICOS Y UAVS DEL GOBIERNO AUTONOM",
+        "partida": "730404",
+        "anual": 1300
+      },
+      {
+        "dir": "Dirección de Catastro y Gestión del Suelo",
+        "meta": "Desarrollar estrategias innovadoras mediante la instituciona",
+        "proyecto": "Desarrollo e implementación de Planes",
+        "desc": "SERVICIOS PROFESIONALES: IMPLEMENTACION DE PROCESOS URBANOS, REGULACION Y APLICA",
+        "partida": "730606",
+        "anual": 14400
+      },
+      {
+        "dir": "Dirección de Planificación Estratégica",
+        "meta": "Desarrollar estrategias innovadoras mediante la instituciona",
+        "proyecto": "Desarrollo e implementación de Planes Estratégicos",
+        "desc": "SERVICIOS PROFESIONALES: DESARROLLO E IMPLEMENTACIÓN DE INSTRUMENTOS DE PLANIFIC",
+        "partida": "530606",
+        "anual": 26350
+      },
+      {
+        "dir": "Dirección de Participación Ciudadana",
+        "meta": "Desarrollar estrategias innovadoras mediante la instituciona",
+        "proyecto": "Promoción de la formación, participación",
+        "desc": "CONTRATACIÓN DE SERVICIOS DE TALLERES DE PARTICIPACIÓN CIUDADANA EN EL CANTÓN MO",
+        "partida": "730613",
+        "anual": 5600
+      },
+      {
+        "dir": "Dirección de Participación Ciudadana",
+        "meta": "Desarrollar estrategias innovadoras mediante la instituciona",
+        "proyecto": "Promoción de la formación, participación",
+        "desc": "ADQUISICIÓN DE SOUVENIRS PARA LOS DIFERENTES PROYECTOS QUE LLEVA A CABO LA DIREC",
+        "partida": "730820",
+        "anual": 6000
+      },
+      {
+        "dir": "Dirección de Participación Ciudadana",
+        "meta": "Desarrollar estrategias innovadoras mediante la instituciona",
+        "proyecto": "Promoción de la formación, participación",
+        "desc": "CONTRATACIÓN DE REFRIGERIOS Y ALMUERZOS PARA ATENDER LOS DIFERENTES PROYECTOS SO",
+        "partida": "730801",
+        "anual": 6000
+      },
+      {
+        "dir": "Dirección de Participación Ciudadana",
+        "meta": "Desarrollar estrategias innovadoras mediante la instituciona",
+        "proyecto": "Promoción de la formación, participación",
+        "desc": "ADQUISICIÓN DE EQUIPOS Y MATERIALES DE OFICINA PARA FORTALECIMIENTO DEL PROGRAMA",
+        "partida": "730804",
+        "anual": 1000
+      },
+      {
+        "dir": "Dirección de Participación Ciudadana",
+        "meta": "Incrementar la cobertura de servicios de derechos sociales c",
+        "proyecto": "Fortalecimiento para la reducción de indicadores",
+        "desc": "ADQUISICIÓN DE MATERIALES Y EQUIPOS ELECTRÓNICOS PARA EL DESARROLLO DEL CURSO DE",
+        "partida": "730820",
+        "anual": 3000
+      },
+      {
+        "dir": "Dirección de Participación Ciudadana",
+        "meta": "Desarrollar estrategias innovadoras mediante la instituciona",
+        "proyecto": "Promoción de la formación, participación",
+        "desc": "CAPACITACIÓN EN TEMAS DE LIDERAZGO PARA LA POBLACIÓN DEL CANTÓN MONTECRISTI",
+        "partida": "730613",
+        "anual": 2000
+      },
+      {
+        "dir": "Dirección de Participación Ciudadana",
+        "meta": "Desarrollar estrategias innovadoras mediante la instituciona",
+        "proyecto": "Promoción de la formación, participación",
+        "desc": "SERVICIO DE CAPACITACIÓN PARA TÉCNICOS EN MANTENIMIENTO GENERAL DE INFRAESTRUCTU",
+        "partida": "730613",
+        "anual": 12000
+      },
+      {
+        "dir": "Dirección de Participación Ciudadana",
+        "meta": "Desarrollar estrategias innovadoras mediante la instituciona",
+        "proyecto": "Promoción de la formación, participación",
+        "desc": "SERVICIO TÉCNICO ESPECIALIZADO PARA EL PROYECTO CDC FORTALECIENDO CAPACIDADES Y",
+        "partida": "730607",
+        "anual": 8400
+      },
+      {
+        "dir": "Dirección de Participación Ciudadana",
+        "meta": "Desarrollar estrategias innovadoras mediante la instituciona",
+        "proyecto": "Promoción de la formación, participación",
+        "desc": "ADQUISICIÓN DE MATERIALES Y SUMINISTROS DE CONSTRUCCIÓN, ELECTRICIDAD, PLOMERÍA,",
+        "partida": "730811",
+        "anual": 10000
+      },
+      {
+        "dir": "Dirección de Registro de la Propiedad y Mercantil",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Optimización y Modernización de la Gestión de",
+        "desc": "ENCUADERNADOS Y EMPASTADOS DE LIBROS PARA EL REGISTRO DE LA PROPIEDAD Y MERCANTI",
+        "partida": "730204",
+        "anual": 1850
+      },
+      {
+        "dir": "Dirección de Registro de la Propiedad y Mercantil",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "CONTRATACIÓN DEL SERVICIO DE CAPACITACIÓN DEL PERSONAL EN NORMATIVA REGISTRAL Y",
+        "partida": "530612",
+        "anual": 300
+      },
+      {
+        "dir": "Dirección de Turismo, Cultura, Patrimonio y Foment",
+        "meta": "Incrementar la oferta turística de calidad, fortaleciendo lo",
+        "proyecto": "Desarrollo de Eventos de Promoción",
+        "desc": "SERVICIO DE LOGÍSTICA Y ORGANIZACIÓN DE EVENTOS CÍVICOS Y CULTURALES DEL GOBIERN",
+        "partida": "730249",
+        "anual": 43350.78
+      },
+      {
+        "dir": "Dirección de Turismo, Cultura, Patrimonio y Foment",
+        "meta": "Incrementar la oferta turística de calidad, fortaleciendo lo",
+        "proyecto": "Desarrollo de Eventos de Promoción",
+        "desc": "SERVICIOS PROFESIONALES PARA EL DESARROLLO EN GESTION CULTURAL DEL CANTON MONTEC",
+        "partida": "730606",
+        "anual": 32500
+      },
+      {
+        "dir": "Dirección de Turismo, Cultura, Patrimonio y Foment",
+        "meta": "Fortalecer la cultura y el patrimonio de la ciudad creativa",
+        "proyecto": "Implementación de cursos para el desarrollo de",
+        "desc": "REALIZAR TALLERES EN ARTES (MUSICA, DANZA Y CANTO)",
+        "partida": "730606",
+        "anual": 20400
+      },
+      {
+        "dir": "Dirección de Turismo, Cultura, Patrimonio y Foment",
+        "meta": "Incrementar la oferta turística de calidad, fortaleciendo lo",
+        "proyecto": "Desarrollo de Eventos de Promoción",
+        "desc": "CONTRATACIÓN DE SERVICIOS PARA EL DESARROLLO INTEGRAL DEL ENCUENTRO DE CIUDADES",
+        "partida": "730249",
+        "anual": 10
+      },
+      {
+        "dir": "Dirección de Turismo, Cultura, Patrimonio y Foment",
+        "meta": "Incrementar la oferta turística de calidad, fortaleciendo lo",
+        "proyecto": "Desarrollo de Eventos de Promoción",
+        "desc": "CONTRATACIÓN DE SERVICIOS PARA ACTIVIDADES DE PROMOCIÓN TURÍSTICA DURANTE LOS FE",
+        "partida": "730249",
+        "anual": 10000
+      },
+      {
+        "dir": "Dirección de Turismo, Cultura, Patrimonio y Foment",
+        "meta": "Fortalecer la cultura y el patrimonio de la ciudad creativa",
+        "proyecto": "Implementación de la Agenda integral de eventos",
+        "desc": "CONTRATACIÓN DE SERVICIOS PARA LA PROMOCIÓN DE TURISMO DEPORTIVO EN LA PLAYA SAN",
+        "partida": "730249",
+        "anual": 10000
+      },
+      {
+        "dir": "Dirección de Turismo, Cultura, Patrimonio y Foment",
+        "meta": "Fortalecer la cultura y el patrimonio de la ciudad creativa",
+        "proyecto": "Promoción de Montecristi Ciudad Creativa de la",
+        "desc": "CONTRATACIÓN DE SERVICIOS PARA LA PROMOCIÓN DEL TURISMO ARTESANAL Y ARTÍSTICAS,",
+        "partida": "730249",
+        "anual": 10000
+      },
+      {
+        "dir": "Dirección de Turismo, Cultura, Patrimonio y Foment",
+        "meta": "Fortalecer la cultura y el patrimonio de la ciudad creativa",
+        "proyecto": "Creación de la Escuela de Arte Municipal",
+        "desc": "SERVICIO DE ORGANIZACIÓN DE EVENTOS Y ACTIVIDADES PARA LA PROMOCIÓN DEL CANTÓN M",
+        "partida": "730249",
+        "anual": 19990
+      },
+      {
+        "dir": "Dirección de Turismo, Cultura, Patrimonio y Foment",
+        "meta": "Incrementar el estímulo a la economía, mejorando la estructu",
+        "proyecto": "Fomento al Emprendimiento Artesanal y el",
+        "desc": "CONTRATACIÓN DEL SERVICIO DE LOGÍSTICA PARA FERIA DE EMPRENDIMIENTO QUE PROMUEVA",
+        "partida": "730249",
+        "anual": 5000
+      },
+      {
+        "dir": "Dirección de Turismo, Cultura, Patrimonio y Foment",
+        "meta": "Incrementar el estímulo a la economía, mejorando la estructu",
+        "proyecto": "Fomento al Emprendimiento Artesanal y el",
+        "desc": "ADQUISICIÓN DE MATERIALES NECESARIOS PARA CURSOS DE EMPRENDIMIENTO QUE PROMUEVE",
+        "partida": "730820",
+        "anual": 5000
+      },
+      {
+        "dir": "Dirección de Turismo, Cultura, Patrimonio y Foment",
+        "meta": "Incrementar el estímulo a la economía, mejorando la estructu",
+        "proyecto": "Denominación Origen Artesanos",
+        "desc": "PROYECTO KAL-ARTE TRASMITIENDO SABERES DEL ARTE DEL CALADO SERVICIOS PROFESIONAL",
+        "partida": "730606",
+        "anual": 4200
+      },
+      {
+        "dir": "Dirección de Turismo, Cultura, Patrimonio y Foment",
+        "meta": "Incrementar el estímulo a la economía, mejorando la estructu",
+        "proyecto": "Denominación Origen Artesanos",
+        "desc": "ADQUISICIÓN DE MATERIALES E INSUMOS DE TEJER EN PAJA TOQUILLA PARA LLEVAR A CABO",
+        "partida": "730820",
+        "anual": 3000
+      },
+      {
+        "dir": "Dirección de Turismo, Cultura, Patrimonio y Foment",
+        "meta": "Incrementar el estímulo a la economía, mejorando la estructu",
+        "proyecto": "Implementación de huertos orgánicos",
+        "desc": "ADQUISICIÓN DE SEMILLAS, INSUMOS, ACCESORIOS, MATERIALES Y HERRAMIENTAS PARA LA",
+        "partida": "730814",
+        "anual": 10000
+      },
+      {
+        "dir": "Dirección de Turismo, Cultura, Patrimonio y Foment",
+        "meta": "Incrementar el estímulo a la economía, mejorando la estructu",
+        "proyecto": "Fomento al Emprendimiento Artesanal y el",
+        "desc": "ADQUISICIÓN DE ALIMENTOS DE PRIMERA NECESIDAD PARA ATENDER LOS TALLERES DE GASTR",
+        "partida": "730801",
+        "anual": 4000
+      },
+      {
+        "dir": "Dirección de Turismo, Cultura, Patrimonio y Foment",
+        "meta": "Incrementar el estímulo a la economía, mejorando la estructu",
+        "proyecto": "Fomento al Emprendimiento Artesanal y el",
+        "desc": "SERVICIO TÉCNICO PARA DESARROLLO DE PROYECTOS DE CULTIVO EN EL CANTÓN MONTECRIST",
+        "partida": "730607",
+        "anual": 10000
+      },
+      {
+        "dir": "Dirección de Turismo, Cultura, Patrimonio y Foment",
+        "meta": "Fortalecer la cultura y el patrimonio de la ciudad creativa",
+        "proyecto": "Gestión para los Fondos Concursables en",
+        "desc": "TRANSFERENCIA DE RECURSOS POR FIRMA DE CONVENIOS CON INSTITUCIONES PRIVADAS PARA",
+        "partida": "780204",
+        "anual": 12000
+      },
+      {
+        "dir": "Dirección Financiera",
+        "meta": "Desarrollar estrategias innovadoras mediante la instituciona",
+        "proyecto": "Implementación de la Transformación",
+        "desc": "MANTENIMIENTO Y ACTUALIZACIÓN DEL SISTEMA ERP OLIMPO.",
+        "partida": "530702",
+        "anual": 15000
+      },
+      {
+        "dir": "Dirección Financiera",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Ampliación de redes públicas de agua potable en",
+        "desc": "GASTOS DE EVALUACIÓN Y COMISIÓN DE FINANCIAMIENTO DEL CRÉDITO CAF",
+        "partida": "570203",
+        "anual": 50
+      },
+      {
+        "dir": "Dirección Financiera",
+        "meta": "Desarrollar estrategias innovadoras mediante la instituciona",
+        "proyecto": "Desarrollo e implementación de Planes Estratégicos",
+        "desc": "COMISIONES Y OTROS CARGOS",
+        "partida": "570203",
+        "anual": 265000
+      },
+      {
+        "dir": "Dirección Financiera",
+        "meta": "Desarrollar estrategias innovadoras mediante la instituciona",
+        "proyecto": "Desarrollo e implementación de Planes Estratégicos",
+        "desc": "COMISIONES BANCARIAS",
+        "partida": "570203",
+        "anual": 15000
+      },
+      {
+        "dir": "Dirección Financiera",
+        "meta": "Fortalecer la gobernabilidad e institucionalidad, mediante l",
+        "proyecto": "Promoción de la formación, participación",
+        "desc": "TRANSFERENCIA A LA ASAMBLEA CIUDADANA",
+        "partida": "580102",
+        "anual": 30000
+      },
+      {
+        "dir": "Dirección Financiera",
+        "meta": "Incrementar la cobertura de servicios de derechos sociales c",
+        "proyecto": "Desarrollo del Bienestar Integral para Montecristi",
+        "desc": "TRANSFERENCIA A PATRONATO DE AMPARO SOCIAL",
+        "partida": "580102",
+        "anual": 932000
+      },
+      {
+        "dir": "Dirección Financiera",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "CONVENIO PURGA DE MORA (INTERÉS) POR DEUDA CONTRAÍDA CON EL IESS",
+        "partida": "560205",
+        "anual": 453006.16
+      },
+      {
+        "dir": "Dirección Financiera",
+        "meta": "Desarrollar estrategias innovadoras mediante la instituciona",
+        "proyecto": "Optimización y Modernización de la Gestión de",
+        "desc": "AMORTIZACIÓN DE CAPITAL DE CRÉDITO BDE #6543-2 (INTERÉS) AL SECTOR PÚBLICO FINAN",
+        "partida": "560201",
+        "anual": 11667.04
+      },
+      {
+        "dir": "Dirección Financiera",
+        "meta": "Desarrollar estrategias innovadoras mediante la instituciona",
+        "proyecto": "Optimización y Modernización de la Gestión de",
+        "desc": "AMORTIZACIÓN CAPITAL DE INTERES #60702 CONSTRUCCIÓN DEL SISTEMA DE AGUA POTABLE",
+        "partida": "560201",
+        "anual": 44338.18
+      },
+      {
+        "dir": "Dirección Financiera",
+        "meta": "Desarrollar estrategias innovadoras mediante la instituciona",
+        "proyecto": "Optimización y Modernización de la Gestión de",
+        "desc": "AMORTIZACIÓN DE INTERESES AL SECTOR PÚBLICO FINANCIERO - CRÉDITO.BDE 60820 CONST",
+        "partida": "560201",
+        "anual": 166045.04
+      },
+      {
+        "dir": "Dirección Financiera",
+        "meta": "Desarrollar estrategias innovadoras mediante la instituciona",
+        "proyecto": "Optimización y Modernización de la Gestión de",
+        "desc": "AMORTIZACIÓN DE INTERESES DE SECTOR PUBLICO FINANCIERO - CREDITO # 60244 PRODESA",
+        "partida": "560201",
+        "anual": 9752.02
+      },
+      {
+        "dir": "Dirección Financiera",
+        "meta": "Desarrollar estrategias innovadoras mediante la instituciona",
+        "proyecto": "Optimización y Modernización de la Gestión de",
+        "desc": "AMORTIZACIÓN DE INTERES AL SECTOR PÚBLICO CRÉDITO 60858 - CONSTRUCCIÓN DE ALCANT",
+        "partida": "560201",
+        "anual": 54884.09
+      },
+      {
+        "dir": "Dirección Financiera",
+        "meta": "Desarrollar estrategias innovadoras mediante la instituciona",
+        "proyecto": "Optimización y Modernización de la Gestión de",
+        "desc": "AMORTIZACIÓN DE CAPITAL DE CRÉDITO BDE #6543-1 (INTERÉS) AL SECTOR PÚBLICO FINAN",
+        "partida": "960201",
+        "anual": 94335.12
+      },
+      {
+        "dir": "Dirección Financiera",
+        "meta": "Desarrollar estrategias innovadoras mediante la instituciona",
+        "proyecto": "Optimización y Modernización de la Gestión de",
+        "desc": "AMORTIZACIÓN DE INTERES AL SECTOR PÚBLICO FINANCIERO CRÉDITO 60035 CONSTRUCCIÓN",
+        "partida": "560201",
+        "anual": 38524.15
+      },
+      {
+        "dir": "Dirección Financiera",
+        "meta": "Desarrollar estrategias innovadoras mediante la instituciona",
+        "proyecto": "Optimización y Modernización de la Gestión de",
+        "desc": "AMORTIZACIÓN DE INTERÉS DE SECTOR PÚBLICO FINANCIERO - CRÉDITO 60610 CONSTRUCCIÓ",
+        "partida": "560201",
+        "anual": 158951.16
+      },
+      {
+        "dir": "Dirección Financiera",
+        "meta": "Desarrollar estrategias innovadoras mediante la instituciona",
+        "proyecto": "Optimización y Modernización de la Gestión de",
+        "desc": "AMORTIZACIÓN DE INTERESES PARA EL FINANCIAMIENTO CON ORGANISMOS MULTILATERALES P",
+        "partida": "560201",
+        "anual": 266000
+      },
+      {
+        "dir": "Dirección Financiera",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Implementación del plan Recaudación",
+        "desc": "SERVICIO PARA LA GESTIÓN DE COBRO PERSUASIVO, PRE COACTIVA Y COACTIVO A LOS DEUD",
+        "partida": "730607",
+        "anual": 100000
+      },
+      {
+        "dir": "Dirección Financiera",
+        "meta": "Desarrollar estrategias innovadoras mediante la instituciona",
+        "proyecto": "Desarrollo e implementación de Planes Estratégicos",
+        "desc": "TRANSFERENCIA A LA EMPRESA PÚBLICA DE VIVIENDA",
+        "partida": "780103",
+        "anual": 39000
+      },
+      {
+        "dir": "Dirección Financiera",
+        "meta": "Desarrollar estrategias innovadoras mediante la instituciona",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "CONVENIO PURGA DE MORA (CAPITAL) POR DEUDA CONTRAÍDA CON EL IESS",
+        "partida": "960204",
+        "anual": 676150.25
+      },
+      {
+        "dir": "Dirección Financiera",
+        "meta": "Desarrollar estrategias innovadoras mediante la instituciona",
+        "proyecto": "Formación y fortalecimiento del Talento Humano",
+        "desc": "AMORTIZACIÓN DE CAPITAL DE SECTOR PUBLICO FINANCIERO - CREDITO # 60244 PRODESARR",
+        "partida": "960204",
+        "anual": 33573.13
+      },
+      {
+        "dir": "Dirección Financiera",
+        "meta": "Desarrollar estrategias innovadoras mediante la instituciona",
+        "proyecto": "Optimización y Modernización de la Gestión de",
+        "desc": "AMORTIZACIÓN DE CAPITAL, SECTOR PÚBLICO FINANCIERO - CRÉDITO. BDE 60820 CONSTRUC",
+        "partida": "960204",
+        "anual": 91809.82
+      },
+      {
+        "dir": "Dirección Financiera",
+        "meta": "Desarrollar estrategias innovadoras mediante la instituciona",
+        "proyecto": "Optimización y Modernización de la Gestión de",
+        "desc": "AMORTIZACIÓN CAPITAL DE CREDITO #60702 CONSTRUCCIÓN DEL SISTEMA DE AGUA POTABLE",
+        "partida": "960201",
+        "anual": 25987.37
+      },
+      {
+        "dir": "Dirección Financiera",
+        "meta": "Desarrollar estrategias innovadoras mediante la instituciona",
+        "proyecto": "Optimización y Modernización de la Gestión de",
+        "desc": "AMORTIZACIÓN DE CAPITAL AL SECTOR PÚBLICO FINANCIERO CRÉDITO 60035 CONSTRUCCIÓN",
+        "partida": "960201",
+        "anual": 114968.57
+      },
+      {
+        "dir": "Dirección Financiera",
+        "meta": "Desarrollar estrategias innovadoras mediante la instituciona",
+        "proyecto": "Optimización y Modernización de la Gestión de",
+        "desc": "AMORTIZACIÓN DE CAPITAL DE CRÉDITO BDE #6543-2 (CAPITAL) AL SECTOR PÚBLICO FINAN",
+        "partida": "960201",
+        "anual": 10064.46
+      },
+      {
+        "dir": "Dirección Financiera",
+        "meta": "Desarrollar estrategias innovadoras mediante la instituciona",
+        "proyecto": "Optimización y Modernización de la Gestión de",
+        "desc": "AMORTIZACIÓN DE CAPITAL DEL SECTOR PÚBLICO FINANCIERO - CRÉDITO 60610 CONSTRUCCI",
+        "partida": "960201",
+        "anual": 120860.4
+      },
+      {
+        "dir": "Dirección Financiera",
+        "meta": "Desarrollar estrategias innovadoras mediante la instituciona",
+        "proyecto": "Optimización y Modernización de la Gestión de",
+        "desc": "AMORTIZACIÓN DE CAPITAL DE CRÉDITO BDE #6543-1 (CAPITAL) AL SECTOR PÚBLICO FINAN",
+        "partida": "960201",
+        "anual": 81377.48
+      },
+      {
+        "dir": "Dirección Financiera",
+        "meta": "Desarrollar estrategias innovadoras mediante la instituciona",
+        "proyecto": "Optimización y Modernización de la Gestión de",
+        "desc": "AMORTIZACIÓN DE CAPITAL AL SECTOR PÚBLICO CRÉDITO 60858 CONSTRUCCIÓN DE ALCANTAR",
+        "partida": "960201",
+        "anual": 23111.89
+      },
+      {
+        "dir": "Dirección Financiera",
+        "meta": "Desarrollar estrategias innovadoras mediante la instituciona",
+        "proyecto": "Optimización y Modernización de la Gestión de",
+        "desc": "RECURSOS PARA AMORTIZAR LOS CRÉDITOS OBTENIDOS DE ORGANISMOS MULTILATERALES PARA",
+        "partida": "960301",
+        "anual": 50
+      },
+      {
+        "dir": "Dirección Financiera",
+        "meta": "Desarrollar estrategias innovadoras mediante la instituciona",
+        "proyecto": "Optimización y Modernización de la Gestión de",
+        "desc": "CUENTAS POR PAGAR, A PROVEEDORES POR ADQUISICIÓN DE BIENES O SERVICIOS DE AÑOS A",
+        "partida": "970101",
+        "anual": 1628375.33
+      },
+      {
+        "dir": "Dirección Financiera",
+        "meta": "Desarrollar estrategias innovadoras mediante la instituciona",
+        "proyecto": "Desarrollo e implementación de Planes Estratégicos",
+        "desc": "TRANSFERENCIAS A LA EMPRESA DE ASEO",
+        "partida": "780103",
+        "anual": 100000
+      },
+      {
+        "dir": "Dirección Financiera",
+        "meta": "Desarrollar estrategias innovadoras mediante la instituciona",
+        "proyecto": "Optimización y Modernización de la Gestión de",
+        "desc": "EGRESOS POR COMISIONES Y OTROS CARGOS EN LA NEGOCIACIÓN DE FINANCIAMIENTO CON OR",
+        "partida": "560306",
+        "anual": 371000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "SERVICIO DE MANTENIMIENTO PREVENTIVO Y CORRECTIVO DEL VEHICULO HIDROSUCCIONADOR",
+        "partida": "530405",
+        "anual": 20000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "SERVICIO DE MANTENIMIENTO PREVENTIVO Y CORRECTIVO DEL VEHICULO HIDROSUCCIONADOR",
+        "partida": "530813",
+        "anual": 10000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "SERVICIO DE MANTENIMIENTO PREVENTIVO Y CORRECTIVO DEL VEHICULO KENWORTH HIDROSUC",
+        "partida": "530803",
+        "anual": 5000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "SERVICIO DE MANTENIMIENTO PREVENTIVO Y CORRECTIVO DE MAQUINARIAS MARCAS, JOHN DE",
+        "partida": "530405",
+        "anual": 95000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "SERVICIO DE MANTENIMIENTO PREVENTIVO Y CORRECTIVO DE MAQUINARIAS MARCAS, JOHN DE",
+        "partida": "530813",
+        "anual": 95000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "SERVICIO DE MANTENIMIENTO PREVENTIVO Y CORRECTIVO DE MAQUINARIAS MARCAS, JOHN DE",
+        "partida": "530803",
+        "anual": 40000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "SERVICIO DE MANTENIMIENTO PREVENTIVO Y CORRECTIVO PARA LOS VEHICULOS LIVIANOS, T",
+        "partida": "530405",
+        "anual": 30000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "SERVICIO DE MANTENIMIENTO PREVENTIVO Y CORRECTIVO PARA LOS VEHICULOS LIVIANOS, T",
+        "partida": "530813",
+        "anual": 30000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "SERVICIO DE MANTENIMIENTO PREVENTIVO Y CORRECTIVO PARA LOS VEHICULOS LIVIANOS, T",
+        "partida": "530803",
+        "anual": 15000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "SERVICIO DE MANTENIMIENTO PREVENTIVO Y CORRECTIVO PARA LOS VEHICULOS LIVIANOS, T",
+        "partida": "530405",
+        "anual": 20000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "SERVICIO DE MANTENIMIENTO PREVENTIVO Y CORRECTIVO POR VIGENCIA TECNOLOGICA DE LA",
+        "partida": "530405",
+        "anual": 10000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "SERVICIO DE MANTENIMIENTO PREVENTIVO Y CORRECTIVO POR VIGENCIA TECNOLOGICA DE LA",
+        "partida": "530813",
+        "anual": 15000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "SERVICIO DE MANTENIMIENTO PREVENTIVO Y CORRECTIVO POR VIGENCIA TECNOLOGICA DE LA",
+        "partida": "530803",
+        "anual": 5000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "SERVICIO DE PROVISIÓN DE COMBUSTIBLE DIESEL Y EXTRA CON ETANOL PARA LOS VEHÍCULO",
+        "partida": "530255",
+        "anual": 406000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "SERVICIO DE MONITOREO Y RASTREO SATELITAL PARA LOS VEHICULOS LIVIANOS, PESADOS Y",
+        "partida": "530105",
+        "anual": 9000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "ADQUISICIÓN DE NEUMÁTICOS CATALOGADOS PARA LOS VEHICULOS DEL PARQUE AUTOMOTOR DE",
+        "partida": "730813",
+        "anual": 70000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "ADQUISICIÓN DE NEUMATICOS NO CATALOGADOS PARA LA MAQUINARIA Y TANQUERO HYUNDAI D",
+        "partida": "730813",
+        "anual": 30000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "SERVICIO DE REPARACION DE NEUMATICOS, ENLLANTAJE PARA VEHICULOS Y MAQUINARIAS DE",
+        "partida": "730404",
+        "anual": 8000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "MATRICULACIÓN DE MAQUINARIAS, EQUIPOS Y VEHÍCULOS DE PROPIEDAD MUNICIPAL",
+        "partida": "570102",
+        "anual": 10000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "SERVICIO DE MANTENIMIENTO PREVENTIVO Y CORRECTIVO POR VIGENCIA TECNOLOGICA DE MA",
+        "partida": "530405",
+        "anual": 30000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "SERVICIO DE MANTENIMIENTO PREVENTIVO Y CORRECTIVO POR VIGENCIA TECNOLOGICA DE MA",
+        "partida": "730813",
+        "anual": 25000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "SERVICIO DE MANTENIMIENTO PREVENTIVO Y CORRECTIVO POR VIGENCIA TECNOLOGICA DE MA",
+        "partida": "530255",
+        "anual": 15000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "CONTRATACIÓN DEL SERVICIO DE ELABORACIÓN, INSTALACIÓN Y PUESTA EN FUNCIONAMIENTO",
+        "partida": "730404",
+        "anual": 10000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "SERVICIO DE MANTENIMIENTO CORRECTIVO PARA LAS ESTRUCTURAS DE LOS TANQUES DE LOS",
+        "partida": "730404",
+        "anual": 5000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "SERVICIOS BÁSICOS TELECOMUNICACIONES",
+        "partida": "530105",
+        "anual": 17000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "SERVICIO DE CORREO",
+        "partida": "530106",
+        "anual": 600
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "SERVICIOS BÁSICOS ENERGÍA ELÉCTRICA",
+        "partida": "530104",
+        "anual": 75000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "ADQUISICIÓN DE MOBILIARIOS PARA EQUIPAMIENTO DEL GOBIERNO AUTÓNOMO DESCENTRALIZA",
+        "partida": "840103",
+        "anual": 5000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "ADQUISICIÓN DE REPUESTOS Y ACCESORIOS PARA LA INSTALACIÓN, MANTENIMIENTO Y REPAR",
+        "partida": "530813",
+        "anual": 1000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "CONTRATACIÓN DE PÓLIZAS DE SEGUROS DE INCENDIO, LUCRO CESANTE POR INCENDIO, ROBO",
+        "partida": "570201",
+        "anual": 80000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "ADQUISICIÓN DE MATERIALES DE OFICINA PARA EL PERSONAL DEL GOBIERNO AUTÓNOMO DESC",
+        "partida": "530804",
+        "anual": 9500
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "ADQUISICIÓN DE INSUMOS DE PAPELERÍA PARA LAS OFICINAS DE LAS DIFERENTES DIRECCIO",
+        "partida": "530804",
+        "anual": 5500
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "ADQUISICIÓN DE INSUMOS Y MATERIALES DE ASEO PARA MANTENER LOS ESPACIOS EN CONDIC",
+        "partida": "530805",
+        "anual": 9500
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "ADQUISICIÓN DE INSUMOS, MATERIALES, PINTURAS Y ACCESORIOS PARA ADECUACIÓN DE ESP",
+        "partida": "530811",
+        "anual": 1500
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "SERVICIO DE REPARACIÓN Y ADECUACIÓN DE EDIFICACIONES PROPIAS, ALQUILADAS O EN CO",
+        "partida": "530402",
+        "anual": 40000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "ADQUISICIÓN DE INSUMOS Y ACCESORIOS PARA EQUIPOS INFORMÁTICOS PARA EL GAD MUNICI",
+        "partida": "531407",
+        "anual": 10000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "ADQUISICIÓN DE EQUIPOS INFORMÁTICOS, DESTINADOS A LA RENOVACIÓN TECNOLÓGICA, PAR",
+        "partida": "840107",
+        "anual": 15000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "CONTRATACIÓN DE ENTORNO CLOUD PARA EL SERVICIO DE INFRAESTRUCTURA EN LA NUBE (IA",
+        "partida": "530702",
+        "anual": 50000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "ADQUISICIÓN DE LICENCIAS DE SOFTWARE PARA FIREWALLS, IDS/IPS Y GESTIÓN DE VULNER",
+        "partida": "531407",
+        "anual": 3000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "ADQUISICIÓN DE LICENCIAS PARA LA GESTIÓN INSTITUCIONAL DEL G.A.D. MUNICIPAL DEL",
+        "partida": "531407",
+        "anual": 8000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "CONTRATACIÓN DEL SERVICIO DE INTERNET BACKUP Y PUNTOS WIFI Y PUNTOS DE ACCESO IN",
+        "partida": "530105",
+        "anual": 31000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "SERVICIO ADMINISTRADO DE IMPRESIÓN Y COPIADO CON PROVISIÓN DE EQUIPOS MULTIFUNCI",
+        "partida": "730204",
+        "anual": 80000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "ADQUISICIÓN DE EQUIPOS DE COMUNICACIÓN Y REDES CON INSTALACIÓN Y PRUEBAS, PARA E",
+        "partida": "840107",
+        "anual": 15000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "ADQUISICIÓN DE PERIFÉRICOS Y OTROS EQUIPOS, PARA EL GAD DEL CANTÓN MONTECRISTI",
+        "partida": "840107",
+        "anual": 5000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "ADQUISICIÓN DE LICENCIA ANTIVIRUS CORPORATIVO CON ADMINISTRACIÓN CENTRALIZADA Y",
+        "partida": "531407",
+        "anual": 4000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "ADQUISICIÓN DE SERVIDORES NAS CON RAID Y REPLICACIÓN EN CALIENTE PARA POLÍTICAS",
+        "partida": "840107",
+        "anual": 7000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "SERVICIOS PROFESIONALES PARA EL FORTALECIMIENTO DE LA JEFATURA DE COMPRAS PÚBLIC",
+        "partida": "730606",
+        "anual": 19200
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "CONTRATACIÓN DE SERVICIO ESPECIALIZADO DE CONTROL INTEGRAL DE PLAGAS PARA LAS ED",
+        "partida": "730607",
+        "anual": 5000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "ALQUILER DE UNA CAMIONETA DOBLE CABINA 4X4 PARA EL GOBIERNO AUTONOMO DESCENTRALI",
+        "partida": "730505",
+        "anual": 20400
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "ADQUISICION DE MOTOCICLETAS PARA EL CONTROL DE ESPACIOS PUBLICOS DEL GOBIERNO AU",
+        "partida": "840105",
+        "anual": 23000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "SERVICIO DE MANTENIMIENTO PREVENTIVO Y CORRECTIVO POR VIGENCIA TECNOLÓGICA PARA",
+        "partida": "530405",
+        "anual": 1500
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "SERVICIO DE MANTENIMIENTO PREVENTIVO Y CORRECTIVO POR VIGENCIA TECNOLÓGICA PARA",
+        "partida": "530813",
+        "anual": 750
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "SERVICIO DE MANTENIMIENTO PREVENTIVO Y CORRECTIVO POR VIGENCIA TECNOLÓGICA PARA",
+        "partida": "530803",
+        "anual": 750
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "ADQUISICION DE TABLETS Y GPS PARA EL EQUIPO DE CONTROL TERRITORIAL",
+        "partida": "840107",
+        "anual": 8000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "CONTRATACIÓN DEL SERVICIO DE DESARROLLO E IMPLEMENTACIÓN DE UNA APLICACIÓN MÓVIL",
+        "partida": "530701",
+        "anual": 2000
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "ADQUISICIÓN DE EQUIPO DE DIGITALIZACIÓN (SCANNER) PARA EL REGISTRO DE LA PROPIED",
+        "partida": "840107",
+        "anual": 500
+      },
+      {
+        "dir": "Dirección Administrativa",
+        "meta": "FORTALECER Y MEJORAR LOS RECURSOS MUNICIPALES",
+        "proyecto": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE",
+        "desc": "ADQUISICIÓN DE EQUIPOS DE AUDIOS PARA EL GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNIC",
+        "partida": "840104",
+        "anual": 10000
+      },
+      {
+        "dir": "Dirección de Tránsito y Transporte Terrestre",
+        "meta": "Mejorar la movilidad y conectividad del cantón",
+        "proyecto": "Implementación de Señalización y control vial",
+        "desc": "SERVICIO DE SEÑALIZACIÓN VIAL HORIZONTAL Y VERTICAL, PARA VARIAS CALLES DEL CANT",
+        "partida": "730418",
+        "anual": 20000
+      },
+      {
+        "dir": "Dirección de Tránsito y Transporte Terrestre",
+        "meta": "Mejorar la movilidad y conectividad del cantón",
+        "proyecto": "Mejora del servicio de Transporte Público",
+        "desc": "CONTRATACIÓN DEL DISEÑO, FABRICACIÓN, SUMINISTRO E INSTALACIÓN DE PARADAS DE BUS",
+        "partida": "730811",
+        "anual": 20000
+      },
+      {
+        "dir": "Dirección de Tránsito y Transporte Terrestre",
+        "meta": "Mejorar la movilidad y conectividad del cantón",
+        "proyecto": "Mejora del servicio de Transporte Público",
+        "desc": "SERVICIO DE ARRENDAMIENTO DEL SISTEMA INFORMATICO PARA LOS PROCESOS DE MATRICULA",
+        "partida": "730702",
+        "anual": 30000
+      },
+      {
+        "dir": "Dirección de Tránsito y Transporte Terrestre",
+        "meta": "Mejorar la movilidad y conectividad del cantón",
+        "proyecto": "Mejora del servicio de Transporte Público",
+        "desc": "ESTUDIO DE CONSULTORIA PARA EL CENSO DE TRANSPORTE COMERCIAL DEL CANTÓN MONTECRI",
+        "partida": "730601",
+        "anual": 15900
+      },
+      {
+        "dir": "Dirección de Tránsito y Transporte Terrestre",
+        "meta": "Mejorar la movilidad y conectividad del cantón",
+        "proyecto": "Mejoramiento de la seguridad vial",
+        "desc": "CONTRATACIÓN DEL SERVICIO DE LOGÍSTICA PARA ACTIVACIONES DE PROMOCIÓN EN SEGURID",
+        "partida": "730249",
+        "anual": 2100
+      },
+      {
+        "dir": "Dirección de Tránsito y Transporte Terrestre",
+        "meta": "Mejorar la movilidad y conectividad del cantón",
+        "proyecto": "Implementación de Señalización y control vial",
+        "desc": "SERVICIO DE MANTENIMIENTO Y REPARACIÓN DEL SISTEMA SEMAFÓRICO DEL CANTÓN MONTECR",
+        "partida": "730404",
+        "anual": 12000
+      },
+      {
+        "dir": "Procuraduría Síndica",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Optimización y Modernización de la Gestión de",
+        "desc": "GASTOS NOTARIALES : COSTAS JUDICIALES, TRÁMITES NOTARIALES, LEGALIZACIÓN DE DOCU",
+        "partida": "570206",
+        "anual": 4500
+      },
+      {
+        "dir": "Junta Cantonal de Protección de Derechos",
+        "meta": "Incrementar la cobertura de servicios de derechos sociales c",
+        "proyecto": "Fortalecimiento para la reducción de indicadores",
+        "desc": "ATENCIÓN Y CREACIÓN DE PROGRAMAS TALLERES DE DIFUSIÓN DE DERECHOS DE LA FAMILIA,",
+        "partida": "730613",
+        "anual": 1500
+      },
+      {
+        "dir": "Dirección de Obras Públicas",
+        "meta": "Mejorar la movilidad y conectividad del cantón",
+        "proyecto": "Mantenimiento de vías urbanas para el acceso de lo",
+        "desc": "PAVIMENTACIÓN, REPAVIMENTACIÓN, ADOQUINADO, BACHEO, DOBLE RIEGO Y CONSTRUCCION D",
+        "partida": "750105",
+        "anual": 440000
+      },
+      {
+        "dir": "Dirección de Obras Públicas",
+        "meta": "Mejorar la movilidad y conectividad del cantón",
+        "proyecto": "Mantenimiento de vías urbanas para el acceso de lo",
+        "desc": "CONSTRUCCIÓN DE INFRAESTRUCTURA COMUNITARIA Y ESPACIOS PUBLICOS EN LA ZONA URBAN",
+        "partida": "750104",
+        "anual": 261000
+      },
+      {
+        "dir": "Dirección de Obras Públicas",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Mantenimiento y recuperación de espacios",
+        "desc": "RECONSTRUCCIÓN Y ADECUACIÓN DE VARIOS PARQUES DEL CANTÓN MONTECRISTI",
+        "partida": "750104",
+        "anual": 162466.49
+      },
+      {
+        "dir": "Dirección de Obras Públicas",
+        "meta": "Mejorar la movilidad y conectividad del cantón",
+        "proyecto": "Mantenimiento de vías urbanas para el acceso de lo",
+        "desc": "ALQUILER DE VOLQUETA PARA LIMPIEZA, DESAZOLVE Y TRANSPORTE DE MATERIAL ÁRIDO Y P",
+        "partida": "730504",
+        "anual": 186000
+      },
+      {
+        "dir": "Dirección de Obras Públicas",
+        "meta": "Disminuir la contaminación ambiental y el riesgo mediante ac",
+        "proyecto": "Implementación de Infraestructura civil para la",
+        "desc": "OBRAS PARA CONTROL HIDRÁULICO Y MITIGACIÓN DE RIESGOS EN ÉPOCA INVERNAL EN EL CA",
+        "partida": "750114",
+        "anual": 84000
+      },
+      {
+        "dir": "Dirección de Obras Públicas",
+        "meta": "Desarrollar estrategias innovadoras mediante la instituciona",
+        "proyecto": "Fortalecimiento del Sistema de Información",
+        "desc": "LICENCIA PARA USO DE SOFTWARE ALINEADO A UN MODELO DE GESTIÓN DE PLANIFICACIÓN,",
+        "partida": "730702",
+        "anual": 59000
+      },
+      {
+        "dir": "Dirección de Obras Públicas",
+        "meta": "Disminuir la contaminación ambiental y el riesgo mediante ac",
+        "proyecto": "Desarrollo de la red Verde y recuperación del",
+        "desc": "CONSTRUCCIÓN DEL PARQUE LA HUELLA EN LA COMUNA CARCEL SIMÓN BOLIVAR DEL CANTÓN M",
+        "partida": "750104",
+        "anual": 164000
+      },
+      {
+        "dir": "Dirección de Obras Públicas",
+        "meta": "Disminuir la contaminación ambiental y el riesgo mediante ac",
+        "proyecto": "Recuperación y manejo integral de zonas de riesgo",
+        "desc": "ALQUILER DE MAQUINARIA PARA DIFERENTES ACTIVIDADES DE LIMPIEZA Y DESAZOLVE DE QU",
+        "partida": "730504",
+        "anual": 250000
+      },
+      {
+        "dir": "Dirección de Obras Públicas",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Mantenimiento de vías urbanas para el acceso de lo",
+        "desc": "SERVICIOS PROFESIONALES PARA EL FORTALECIMIENTO TECNICO DE LA DIRECCIÓN DE OBRAS",
+        "partida": "730606",
+        "anual": 31233.33
+      },
+      {
+        "dir": "Dirección de Obras Públicas",
+        "meta": "Disminuir la contaminación ambiental y el riesgo mediante ac",
+        "proyecto": "Mantenimiento e implementación de arbolado en call",
+        "desc": "AMPLIACIÓN Y ADECUACIÓN DE PARQUE CENTRAL DE LA PARROQUIA COLORADO, DEL CANTÓN M",
+        "partida": "750104",
+        "anual": 267600
+      },
+      {
+        "dir": "Dirección de Obras Públicas",
+        "meta": "Mejorar la movilidad y conectividad del cantón",
+        "proyecto": "Mantenimiento de vías urbanas para el acceso de lo",
+        "desc": "PAVIMENTACIÓN ASFÁLTICA EN LA VÍA PRINCIPAL DE LA COMUNA PILE, DEL CANTÓN MONTEC",
+        "partida": "750105",
+        "anual": 79000
+      },
+      {
+        "dir": "Dirección de Obras Públicas",
+        "meta": "Mejorar la movilidad y conectividad del cantón",
+        "proyecto": "Mantenimiento de vías urbanas para el acceso de lo",
+        "desc": "ADQUISICION DE MATERIAL PARA PEDRAPLEN EN EL CANTÓN MONTECRISTI",
+        "partida": "730811",
+        "anual": 6500
+      },
+      {
+        "dir": "Dirección de Obras Públicas",
+        "meta": "Mejorar la movilidad y conectividad del cantón",
+        "proyecto": "Mantenimiento de vías urbanas para el acceso de lo",
+        "desc": "FABRICACIÓN E INSTALACIÓN DE RAMPA METÁLICA PARA MAQUINARIA DE CAMA BAJA",
+        "partida": "731404",
+        "anual": 3000
+      },
+      {
+        "dir": "Dirección de Obras Públicas",
+        "meta": "Mejorar la movilidad y conectividad del cantón",
+        "proyecto": "Mantenimiento de vías urbanas para el acceso de lo",
+        "desc": "ADQUISICIÓN DE SEÑALIZACIÓN NOCTURNA PARA LA EJECUCIÓN DE TRABAJOS EN EL CANTÓN",
+        "partida": "731406",
+        "anual": 3000
+      },
+      {
+        "dir": "Dirección de Obras Públicas",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Mantenimiento y recuperación de espacios",
+        "desc": "CONSTRUCCIÓN DE ESCENARIO CAMERINO EN LA COMUNA TOALLA CHICA DEL CANTÓN MONTECRI",
+        "partida": "750104",
+        "anual": 24000
+      },
+      {
+        "dir": "Dirección de Obras Públicas",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Recuperación Integral de los Espacios Públicos",
+        "desc": "SERVICIO DE PERFORACIÓN, CARACTERIZACIÓN, REVESTIMIENTO Y DESARROLLO DEL POZO PR",
+        "partida": "730417",
+        "anual": 19000
+      },
+      {
+        "dir": "Dirección de Obras Públicas",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "F o r t a le c i m i e n t o e st r a t é g i co p",
+        "desc": "DECLARATORIA DE UTILIDAD PUBLICA Y EXPROPIACION PARA PROYECTO DE EQUIPAMIENTO DE",
+        "partida": "840301",
+        "anual": 236293.51
+      },
+      {
+        "dir": "Dirección de Obras Públicas",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Mantenimiento de vías urbanas para el acceso de lo",
+        "desc": "ESTUDIO DE SUELO PARA DISEÑO Y CONTROL DE CALIDAD PARA LA EJECUCION DE OBRAS DEL",
+        "partida": "730601",
+        "anual": 8000
+      },
+      {
+        "dir": "Dirección de Obras Públicas",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Mantenimiento de vías urbanas para el acceso de lo",
+        "desc": "LA RECTIFICACIÓN, MEJORAMIENTO, AMPLIACIÓN Y REHABILITACIÓN A NIVEL DE CARPETA A",
+        "partida": "750105",
+        "anual": 173547.44
+      },
+      {
+        "dir": "Dirección de Obras Públicas",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Mantenimiento de vías urbanas para el acceso de lo",
+        "desc": "REGENERACIÓN DE CALLE ELOY ALFARO DEL SECTOR DE BAJO DE PECHICHE DEL CANTÓN MONT",
+        "partida": "750105",
+        "anual": 189000
+      },
+      {
+        "dir": "Dirección de Obras Públicas",
+        "meta": "Mejorar la movilidad y conectividad del cantón",
+        "proyecto": "Mantenimiento de vías urbanas para el acceso de lo",
+        "desc": "ADQUISICIÓN DE MATERIAL PÉTREO PARA EL MEJORAMIENTO VIAL DEL CANTÓN MONTECRISTI",
+        "partida": "750105",
+        "anual": 306979.1
+      },
+      {
+        "dir": "Dirección de Obras Públicas",
+        "meta": "Fortalecer y mejorar los recursos municipales",
+        "proyecto": "Optimización y Modernización de la Gestión de",
+        "desc": "ADQUISICIÓN DE CONTROL DE COMBUSTIBLE DE LAS MAQUINARIAS DE LA DIRECCION DE OBRA",
+        "partida": "730702",
+        "anual": 30000
+      },
+      {
+        "dir": "Dirección de Obras Públicas",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Recuperación Integral de los Espacios Públicos",
+        "desc": "CONSTRUCCIÓN DE CUBIERTAS METÁLICAS EN VARIAS CANCHAS DEL CANTÓN MONTECRISTI",
+        "partida": "750104",
+        "anual": 60000
+      },
+      {
+        "dir": "Dirección de Obras Públicas",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Recuperación Integral de los Espacios Públicos",
+        "desc": "ADQUISICIÓN DE MATERIALES DE CONSTRUCCIÓN PARA CUBIERTAS, MANTENIMIENTO DE LA IN",
+        "partida": "730811",
+        "anual": 143000
+      },
+      {
+        "dir": "Dirección de Obras Públicas",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "F o r t a le c i m i e n t o e st r a t é g i co p",
+        "desc": "CONSTRUCCIÓN DEL MERCADO MENOR DEL CANTÓN MONTECRISTI",
+        "partida": "750107",
+        "anual": 1000
+      },
+      {
+        "dir": "Dirección de Obras Públicas",
+        "meta": "Mejorar la movilidad y conectividad del cantón",
+        "proyecto": "Mantenimiento de vías urbanas para el acceso de lo",
+        "desc": "PAVIMENTACION, ACERAS Y BORDILLOS EN VARIAS VIAS DEL CANTON MONTECRISTI",
+        "partida": "750105",
+        "anual": 100000
+      },
+      {
+        "dir": "Dirección de Obras Públicas",
+        "meta": "Mejorar la movilidad y conectividad del cantón",
+        "proyecto": "Mantenimiento de vías urbanas para el acceso de lo",
+        "desc": "MEJORAMIENTO DE VARIAS CALLES EN LA ZONA RURAL DEL CANTÓN MONTECRISTI",
+        "partida": "750105",
+        "anual": 50000
+      },
+      {
+        "dir": "Dirección de Obras Públicas",
+        "meta": "Mejorar la movilidad y conectividad del cantón",
+        "proyecto": "Mantenimiento de vías urbanas para el acceso de lo",
+        "desc": "ALQUILER DE MAQUINARIA PARA EL MANTENIMIENTO VIAL DEL CANTÓN MONTECRISTI",
+        "partida": "730504",
+        "anual": 120000
+      },
+      {
+        "dir": "Dirección de Obras Públicas",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Recuperación Integral de los Espacios Públicos",
+        "desc": "CONSTRUCCIÓN DE LA CANCHA DEL BARRIO SAN JOSÉ DEL CANTÓN MONTECRISTI",
+        "partida": "750104",
+        "anual": 30000
+      },
+      {
+        "dir": "Dirección de Obras Públicas",
+        "meta": "Mejorar la movilidad y conectividad del cantón",
+        "proyecto": "Mantenimiento de vías urbanas para el acceso de lo",
+        "desc": "CONSTRUCCIÓN DE CANCHA EN EL SECTOR RIO BRAVO DEL CANTÓN MONTECRISTI",
+        "partida": "750104",
+        "anual": 100
+      },
+      {
+        "dir": "Dirección de Obras Públicas",
+        "meta": "Mejorar la movilidad y conectividad del cantón",
+        "proyecto": "Mantenimiento de vías urbanas para el acceso de lo",
+        "desc": "CONSTRUCCIÓN DE LA SEDE DE RIO BRAVO EN EL CANTÓN MONTECRISTI",
+        "partida": "750104",
+        "anual": 10
+      },
+      {
+        "dir": "Dirección de Obras Públicas",
+        "meta": "Mejorar la movilidad y conectividad del cantón",
+        "proyecto": "Mantenimiento de vías urbanas para el acceso de lo",
+        "desc": "ALQUILER DE VOLQUETA PARA LIMPIEZA, DESAZOLVE Y TRANSPORTE DE MATERIAL ÁRIDO Y P",
+        "partida": "730504",
+        "anual": 180000
+      },
+      {
+        "dir": "Dirección de Obras Públicas",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Recuperación Integral de los Espacios Públicos",
+        "desc": "ADQUISICIÓN DE MATERIALES Y SUMINISTROS DE CONSTRUCCIÓN, ELECTRICIDAD, PLOMERÍA,",
+        "partida": "730811",
+        "anual": 38000
+      },
+      {
+        "dir": "Dirección de Obras Públicas",
+        "meta": "Mejorar la movilidad y conectividad del cantón",
+        "proyecto": "Mantenimiento de vías urbanas para el acceso de lo",
+        "desc": "CONSTRUCCIÓN DE LA CANCHA DE CÉSPED EN EL CERRO GUAYABAL DEL CANTÓN MONTECRISTI.",
+        "partida": "750104",
+        "anual": 40000
+      },
+      {
+        "dir": "Dirección de Obras Públicas",
+        "meta": "Mejorar la movilidad y conectividad del cantón",
+        "proyecto": "Mantenimiento de vías urbanas para el acceso de lo",
+        "desc": "CONSTRUCCIÓN DE LA CANCHA TAMARINDO DEL CANTÓN MONTECRISTI",
+        "partida": "750104",
+        "anual": 10
+      },
+      {
+        "dir": "Unidad Ejecutora del Proyecto Construcción de Acue",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Gestión para la nueva infraestructura de",
+        "desc": "CONSULTORÍA DE ESTUDIO DE PREFACTIBILIDAD, FACTIBILIDAD Y DISEÑOS DEFINITIVOS DE",
+        "partida": "730601",
+        "anual": 250000
+      },
+      {
+        "dir": "Unidad Ejecutora del Proyecto Construcción de Acue",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Gestión para la nueva infraestructura de",
+        "desc": "DECLARACIÓN DE UTILIDAD PUBLICA Y EXPROPIACIÓN DE TERRENO PARA ESTACIÓN DE BOMBE",
+        "partida": "840301",
+        "anual": 80000
+      },
+      {
+        "dir": "Unidad Ejecutora del Proyecto Construcción de Acue",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Gestión para la nueva infraestructura de",
+        "desc": "\"CONSTRUCCIÓN DE ACUEDUCTO PARA EL INCREMENTO DEL CAUDAL DE AGUA CRUDA DEL SISTE",
+        "partida": "750101",
+        "anual": 10881006.41
+      },
+      {
+        "dir": "Unidad Ejecutora del Proyecto Construcción de Acue",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Gestión para la nueva infraestructura de",
+        "desc": "\"CONSTRUCCIÓN DE ACUEDUCTO PARA EL INCREMENTO DEL CAUDAL DE AGUA CRUDA DEL SISTE",
+        "partida": "750101",
+        "anual": 550000
+      },
+      {
+        "dir": "Unidad Ejecutora del Proyecto Construcción de Acue",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Gestión para la nueva infraestructura de",
+        "desc": "\"CONSTRUCCIÓN DE ACUEDUCTO PARA EL INCREMENTO DEL CAUDAL DE AGUA CRUDA DEL SISTE",
+        "partida": "750101",
+        "anual": 141510.78
+      },
+      {
+        "dir": "Unidad Ejecutora del Proyecto Construcción de Acue",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Gestión para la nueva infraestructura de",
+        "desc": "AJUSTE DE PRECIOS E IMPREVISTOS DEL PROYECTO \"CONSTRUCCIÓN DE ACUEDUCTO PARA EL",
+        "partida": "750101",
+        "anual": 225000
+      },
+      {
+        "dir": "Unidad Ejecutora del Proyecto Construcción de Acue",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Gestión para la nueva infraestructura de",
+        "desc": "FISCALIZACIÓN DEL PROYECTO \"CONSTRUCCIÓN ACUEDUCTO PARA EL INCREMENTO DEL CAUDAL",
+        "partida": "730604",
+        "anual": 909693.54
+      },
+      {
+        "dir": "Unidad Ejecutora del Proyecto Construcción de Acue",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Gestión para la nueva infraestructura de",
+        "desc": "CONTRATACIÓN POR SERVICIOS PROFESIONALES PARA EL EQUIPO QUE INTEGRA LA UNIDAD EJ",
+        "partida": "730606",
+        "anual": 314064
+      },
+      {
+        "dir": "Unidad Ejecutora del Proyecto Construcción de Acue",
+        "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
+        "proyecto": "Gestión para la nueva infraestructura de",
+        "desc": "CONTRATACIÓN ESPECIALIZADA DE AUDITORÍA EXTERNA PARA EL PROYECTO \"CONSTRUCCIÓN D",
+        "partida": "730602",
+        "anual": 80000
+      }
+    ],
     "sat0": {
       "componentes": [
         {

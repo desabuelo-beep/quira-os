@@ -177,6 +177,23 @@ def build_block() -> dict:
         })
         poa_total += anual
 
+    # POA proyectos — detalle oficial ingerido (H05 sección filas 47+ · 257 proyectos)
+    ws = sh("H05_S3_OPER")
+    poa_proyectos = []
+    for r in range(47, 320):
+        d = ws.cell(r, 1).value
+        monto = ws.cell(r, 6).value
+        if not d or str(d).startswith("TOTAL") or not isinstance(monto, (int, float)):
+            continue
+        poa_proyectos.append({
+            "dir": str(d).strip(),
+            "meta": str(ws.cell(r, 2).value or "").strip(),
+            "proyecto": str(ws.cell(r, 3).value or "").strip(),
+            "desc": str(ws.cell(r, 4).value or "").strip(),
+            "partida": str(ws.cell(r, 5).value or "").strip(),
+            "anual": monto,
+        })
+
     return {
         "_fuente": "PDOT (planificación) · POA (operación) · PAC (contratación) · coherencia · corte Q1-2026",
         "metas_total": metas_total,
@@ -189,6 +206,7 @@ def build_block() -> dict:
         "presupuesto": presupuesto,
         "poa_detalle": poa_detalle,
         "poa_total": poa_total,
+        "poa_proyectos": poa_proyectos,
         "sat0": sat0,
     }
 
