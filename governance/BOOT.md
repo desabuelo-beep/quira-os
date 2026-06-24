@@ -40,12 +40,12 @@ dashboards, es lo que se define UNA vez. Sprint C: ontología antes que ingenier
 BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo que no se mueve.
 
 ## AHORA (estado vivo · historial → `governance/historico/BOOT_2026-06-17.md`)
-**CENTRO DE INTELIGENCIA TERRITORIAL · 2026-06-23.** QUIRA preventiva (no forense). Excel=Canon INVISIBLE. 4 dims: Gob·Terr·Intel·Converg.
-✅ **P1/P2:** `umi.py`+`qinv.py` · **QINV-001 nivel BI** (`m_planificacion.py`·2 pestañas·Plotly·real) · QINV-006 · d03=72.73.
-🔧 **SPRINT CANON:** docs oficiales (Holding) → **9 silos** (S1-S9). **PIPELINE PROBADO:** freeze→openpyxl→recalc COM→diff→promover→snapshot. ✅ **PAC GAD $29.85M** (coherencia 0.3%→98.6%·ICPI ok). Falta: 91 SERCOP→H06·POA→H05·cédula→H07·+entidades.
-🔑 `FREEZE_20260623`=rollback · ⚠️ openpyxl borra cache→recalc COM.
-🔧 IGAP (d12·no IPS): falta Literal D + mapeo.
-🔶 GeoTwin 1.254. **CI:** BOOT ≤6KB.
+**CENTRO DE INTELIGENCIA TERRITORIAL · 2026-06-24.** QUIRA preventiva (no forense). Excel=Canon INVISIBLE. 4 dims: Gob·Terr·Intel·Converg.
+✅ **P1/P2:** kernel `umi.py`+`qinv.py` · **QINV-001 nivel BI** (2 pestañas·Plotly) · QINV-006 · d03=72.73.
+🔧 **SPRINT CANON · Backbone COMPLETO:** PDOT 25 metas · POA 257 proy $39.3M · Presup 135 partidas $45.98M · PAC total $29.85M (98.6%).
+🔌 **PAC per-proceso → conector SERCOP** datos abiertos (validado: `search_ocds`+`record` OCDS · 221 GAD). PDF entrelaza → API es la fuente. **← siguiente.**
+🔑 `FREEZE_20260623`=rollback. Pendiente: cédulas MENSUALES · IGAP Literal D · entidades Holding · GeoTwin.
+🔶 **CI:** BOOT ≤6KB.
 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 ratificado · detalle en el ADR)
 GAD = sujeto observado, NO cliente. 4 capas: A Núcleo (motor·grafos·conectores·índices) · B Operaciones (Dylus) · C Productos (Institucional·Ciudadana·Impact·Economic·Cooperación · 1 motor) · D Portal `quiraintelligence.com` (radar 221 GAD). Montecristi = Municipio 001.
