@@ -961,7 +961,1014 @@
       "obras": 617691.37,
       "devengado": 1947738.29,
       "ti_pct": 6.4,
-      "corte": "Abril 2026 (Ene-Abr)"
+      "corte": "Abril 2026 (Ene-Abr)",
+      "total_municipal": 45977893.81,
+      "devengado_municipal": 7752517.84,
+      "por_categoria": [
+        {
+          "cat": "OBRAS PÚBLICAS",
+          "cod": 15840150.7
+        },
+        {
+          "cat": "EGRESOS EN PERSONAL PARA INVER",
+          "cod": 6961991.37
+        },
+        {
+          "cat": "BIENES Y SERVICIOS PARA INVERS",
+          "cod": 5578024.2
+        },
+        {
+          "cat": "EGRESOS EN PERSONAL",
+          "cod": 5171966.33
+        },
+        {
+          "cat": "PASIVO CIRCULANTE",
+          "cod": 3210757
+        },
+        {
+          "cat": "EGRESOS FINANCIEROS",
+          "cod": 2317255.89
+        },
+        {
+          "cat": "BIENES Y SERVICIOS DE CONSUMO",
+          "cod": 2152143.34
+        },
+        {
+          "cat": "AMORTIZACIÓN DE LA DEUDA PÚBLI",
+          "cod": 1619378.87
+        },
+        {
+          "cat": "TRANSFERENCIAS O DONACIONES PA",
+          "cod": 1242289.3
+        },
+        {
+          "cat": "TRANSFERENCIAS O DONACIONES CO",
+          "cod": 1013177.72
+        },
+        {
+          "cat": "BIENES DE LARGA DURACIÓN (PROP",
+          "cod": 617691.37
+        },
+        {
+          "cat": "OTROS EGRESOS CORRIENTES",
+          "cod": 141402.92
+        },
+        {
+          "cat": "OTROS PASIVOS",
+          "cod": 80000
+        },
+        {
+          "cat": "OTROS EGRESOS DE INVERSIÓN",
+          "cod": 31664.8
+        }
+      ],
+      "partidas": [
+        {
+          "cuenta": "510105",
+          "desc": "Remuneraciones Unificadas",
+          "grupo": "EGRESOS EN PERSONAL",
+          "cod": 1319606,
+          "dev": 674800.41
+        },
+        {
+          "cuenta": "510106",
+          "desc": "Salarios Unificados",
+          "grupo": "EGRESOS EN PERSONAL",
+          "cod": 1331595,
+          "dev": 806249.87
+        },
+        {
+          "cuenta": "510203",
+          "desc": "Decimo Tercer Sueldo",
+          "grupo": "EGRESOS EN PERSONAL",
+          "cod": 283143.63,
+          "dev": 12687.85
+        },
+        {
+          "cuenta": "510204",
+          "desc": "Decimo Cuarto Sueldo",
+          "grupo": "EGRESOS EN PERSONAL",
+          "cod": 145800,
+          "dev": 127545.98
+        },
+        {
+          "cuenta": "510304",
+          "desc": "Compensacion por Transporte",
+          "grupo": "EGRESOS EN PERSONAL",
+          "cod": 8580,
+          "dev": 5166.99
+        },
+        {
+          "cuenta": "510306",
+          "desc": "Alimentacion",
+          "grupo": "EGRESOS EN PERSONAL",
+          "cod": 102960,
+          "dev": 62004
+        },
+        {
+          "cuenta": "510401",
+          "desc": "Por Cargas Familiares",
+          "grupo": "EGRESOS EN PERSONAL",
+          "cod": 4560,
+          "dev": 2935.38
+        },
+        {
+          "cuenta": "510408",
+          "desc": "Subsidio de Antiguedad",
+          "grupo": "EGRESOS EN PERSONAL",
+          "cod": 25479.43,
+          "dev": 8036.11
+        },
+        {
+          "cuenta": "510509",
+          "desc": "Horas Extraordinarias y Suplementarias",
+          "grupo": "EGRESOS EN PERSONAL",
+          "cod": 39319.56,
+          "dev": 0
+        },
+        {
+          "cuenta": "510510",
+          "desc": "Servicios Personales por Contrato",
+          "grupo": "EGRESOS EN PERSONAL",
+          "cod": 939524,
+          "dev": 99769.75
+        },
+        {
+          "cuenta": "510512",
+          "desc": "Subrogacion",
+          "grupo": "EGRESOS EN PERSONAL",
+          "cod": 6670,
+          "dev": 0
+        },
+        {
+          "cuenta": "510513",
+          "desc": "Encargos",
+          "grupo": "EGRESOS EN PERSONAL",
+          "cod": 29400,
+          "dev": 21484.24
+        },
+        {
+          "cuenta": "510601",
+          "desc": "Aporte Patronal",
+          "grupo": "EGRESOS EN PERSONAL",
+          "cod": 393818.94,
+          "dev": 181059.33
+        },
+        {
+          "cuenta": "510602",
+          "desc": "Fondo de Reserva",
+          "grupo": "EGRESOS EN PERSONAL",
+          "cod": 277507.31,
+          "dev": 119982.75
+        },
+        {
+          "cuenta": "510606",
+          "desc": "Asignacion global de jubilacion patronal para trab",
+          "grupo": "EGRESOS EN PERSONAL",
+          "cod": 200000,
+          "dev": 0
+        },
+        {
+          "cuenta": "510702",
+          "desc": "Supresion de Puesto",
+          "grupo": "EGRESOS EN PERSONAL",
+          "cod": 5311,
+          "dev": 5310
+        },
+        {
+          "cuenta": "510703",
+          "desc": "Despido Intempestivo",
+          "grupo": "EGRESOS EN PERSONAL",
+          "cod": 18000,
+          "dev": 0
+        },
+        {
+          "cuenta": "510704",
+          "desc": "Compensacion por Desahucio",
+          "grupo": "EGRESOS EN PERSONAL",
+          "cod": 5000,
+          "dev": 0
+        },
+        {
+          "cuenta": "510706",
+          "desc": "Beneficio por Jubilacion",
+          "grupo": "EGRESOS EN PERSONAL",
+          "cod": 1,
+          "dev": 0
+        },
+        {
+          "cuenta": "510707",
+          "desc": "Compensacion por Vacaciones no Gozadas por Cesacio",
+          "grupo": "EGRESOS EN PERSONAL",
+          "cod": 35690.46,
+          "dev": 7771.09
+        },
+        {
+          "cuenta": "530101",
+          "desc": "Agua Potable",
+          "grupo": "BIENES Y SERVICIOS DE CONSUMO",
+          "cod": 17189.44,
+          "dev": 380.7
+        },
+        {
+          "cuenta": "530104",
+          "desc": "Energia Electrica",
+          "grupo": "BIENES Y SERVICIOS DE CONSUMO",
+          "cod": 80641.07,
+          "dev": 17090.73
+        },
+        {
+          "cuenta": "530105",
+          "desc": "Telecomunicaciones",
+          "grupo": "BIENES Y SERVICIOS DE CONSUMO",
+          "cod": 78456.05,
+          "dev": 10842.7
+        },
+        {
+          "cuenta": "530106",
+          "desc": "Servicio de Correo",
+          "grupo": "BIENES Y SERVICIOS DE CONSUMO",
+          "cod": 600,
+          "dev": 12.38
+        },
+        {
+          "cuenta": "530203",
+          "desc": "Almacenamiento Embalaje Desembalaje Envase Desenva",
+          "grupo": "BIENES Y SERVICIOS DE CONSUMO",
+          "cod": 3000,
+          "dev": 0
+        },
+        {
+          "cuenta": "530204",
+          "desc": "Edicion Impresion Reproduccion Publicaciones Suscr",
+          "grupo": "BIENES Y SERVICIOS DE CONSUMO",
+          "cod": 13800,
+          "dev": 0
+        },
+        {
+          "cuenta": "530207",
+          "desc": "Difusion Informacion y Publicidad",
+          "grupo": "BIENES Y SERVICIOS DE CONSUMO",
+          "cod": 135647.76,
+          "dev": 0
+        },
+        {
+          "cuenta": "530226",
+          "desc": "Servicios Medicos Hospitalarios y Complementarios",
+          "grupo": "BIENES Y SERVICIOS DE CONSUMO",
+          "cod": 10000,
+          "dev": 0
+        },
+        {
+          "cuenta": "530255",
+          "desc": "Combustibles",
+          "grupo": "BIENES Y SERVICIOS DE CONSUMO",
+          "cod": 570724.24,
+          "dev": 74855.13
+        },
+        {
+          "cuenta": "530301",
+          "desc": "Pasajes al Interior",
+          "grupo": "BIENES Y SERVICIOS DE CONSUMO",
+          "cod": 6000,
+          "dev": 0
+        },
+        {
+          "cuenta": "530302",
+          "desc": "Pasajes al Exterior",
+          "grupo": "BIENES Y SERVICIOS DE CONSUMO",
+          "cod": 2000,
+          "dev": 0
+        },
+        {
+          "cuenta": "530303",
+          "desc": "Viaticos y Subsistencias en el Interior",
+          "grupo": "BIENES Y SERVICIOS DE CONSUMO",
+          "cod": 3000,
+          "dev": 0
+        },
+        {
+          "cuenta": "530304",
+          "desc": "Viaticos y Subsistencias en el Exterior",
+          "grupo": "BIENES Y SERVICIOS DE CONSUMO",
+          "cod": 1000,
+          "dev": 0
+        },
+        {
+          "cuenta": "530402",
+          "desc": "Edificios Locales Residencias y Cableado Estructur",
+          "grupo": "BIENES Y SERVICIOS DE CONSUMO",
+          "cod": 40000,
+          "dev": 0
+        },
+        {
+          "cuenta": "530405",
+          "desc": "Vehiculos (Servicio para Mantenimiento y Reparacio",
+          "grupo": "BIENES Y SERVICIOS DE CONSUMO",
+          "cod": 161046.3,
+          "dev": 0
+        },
+        {
+          "cuenta": "530505",
+          "desc": "Vehiculos (Arrendamiento)",
+          "grupo": "BIENES Y SERVICIOS DE CONSUMO",
+          "cod": 9504,
+          "dev": 0
+        },
+        {
+          "cuenta": "530601",
+          "desc": "Consultoria Asesoria e Investigacion Especializada",
+          "grupo": "BIENES Y SERVICIOS DE CONSUMO",
+          "cod": 261000,
+          "dev": 0
+        },
+        {
+          "cuenta": "530606",
+          "desc": "Honorarios por Contratos Civiles de Servicios",
+          "grupo": "BIENES Y SERVICIOS DE CONSUMO",
+          "cod": 209720,
+          "dev": 17673.32
+        },
+        {
+          "cuenta": "530609",
+          "desc": "Investigaciones Profesionales y Analisis de Labora",
+          "grupo": "BIENES Y SERVICIOS DE CONSUMO",
+          "cod": 15000,
+          "dev": 0
+        },
+        {
+          "cuenta": "530612",
+          "desc": "Capacitacion a Servidores Publicos",
+          "grupo": "BIENES Y SERVICIOS DE CONSUMO",
+          "cod": 301,
+          "dev": 0
+        },
+        {
+          "cuenta": "530701",
+          "desc": "Desarrollo Actualizacion Asistencia Tecnica y Sopo",
+          "grupo": "BIENES Y SERVICIOS DE CONSUMO",
+          "cod": 5478.26,
+          "dev": 0
+        },
+        {
+          "cuenta": "530702",
+          "desc": "Arrendamiento y Licencias de Uso de Paquetes Infor",
+          "grupo": "BIENES Y SERVICIOS DE CONSUMO",
+          "cod": 98515,
+          "dev": 9240
+        },
+        {
+          "cuenta": "530802",
+          "desc": "Vestuario Lenceria Prendas de Proteccion Insumos y",
+          "grupo": "BIENES Y SERVICIOS DE CONSUMO",
+          "cod": 136000,
+          "dev": 0
+        },
+        {
+          "cuenta": "530803",
+          "desc": "Lubricantes",
+          "grupo": "BIENES Y SERVICIOS DE CONSUMO",
+          "cod": 65750,
+          "dev": 0
+        },
+        {
+          "cuenta": "530804",
+          "desc": "Materiales de Oficina",
+          "grupo": "BIENES Y SERVICIOS DE CONSUMO",
+          "cod": 16020.22,
+          "dev": 0
+        },
+        {
+          "cuenta": "530805",
+          "desc": "Materiales de Aseo",
+          "grupo": "BIENES Y SERVICIOS DE CONSUMO",
+          "cod": 12500,
+          "dev": 2934.86
+        },
+        {
+          "cuenta": "530807",
+          "desc": "Materiales de Impresion Fotografia Reproduccion y ",
+          "grupo": "BIENES Y SERVICIOS DE CONSUMO",
+          "cod": 16000,
+          "dev": 0
+        },
+        {
+          "cuenta": "530809",
+          "desc": "Medicamentos",
+          "grupo": "BIENES Y SERVICIOS DE CONSUMO",
+          "cod": 5000,
+          "dev": 0
+        },
+        {
+          "cuenta": "530811",
+          "desc": "Insumos Materiales y Suministros para Construccion",
+          "grupo": "BIENES Y SERVICIOS DE CONSUMO",
+          "cod": 1500,
+          "dev": 751.06
+        },
+        {
+          "cuenta": "530813",
+          "desc": "Repuestos y Accesorios",
+          "grupo": "BIENES Y SERVICIOS DE CONSUMO",
+          "cod": 151750,
+          "dev": 155
+        },
+        {
+          "cuenta": "531406",
+          "desc": "Herramientas y Equipos Menores",
+          "grupo": "BIENES Y SERVICIOS DE CONSUMO",
+          "cod": 10000,
+          "dev": 0
+        },
+        {
+          "cuenta": "531407",
+          "desc": "Equipos Sistemas y Paquetes Informaticos",
+          "grupo": "BIENES Y SERVICIOS DE CONSUMO",
+          "cod": 15000,
+          "dev": 0
+        },
+        {
+          "cuenta": "560106",
+          "desc": "Descuentos Comisiones y Otros Cargos en Titulos Va",
+          "grupo": "EGRESOS FINANCIEROS",
+          "cod": 263147.08,
+          "dev": 21421.55
+        },
+        {
+          "cuenta": "560201",
+          "desc": "Sector Publico Financiero",
+          "grupo": "EGRESOS FINANCIEROS",
+          "cod": 1079100.6,
+          "dev": 237322.62
+        },
+        {
+          "cuenta": "560205",
+          "desc": "Seguridad Social",
+          "grupo": "EGRESOS FINANCIEROS",
+          "cod": 604008.21,
+          "dev": 0
+        },
+        {
+          "cuenta": "560306",
+          "desc": "Comisiones y Otros Cargos",
+          "grupo": "EGRESOS FINANCIEROS",
+          "cod": 371000,
+          "dev": 0
+        },
+        {
+          "cuenta": "570102",
+          "desc": "Tasas Generales Impuestos Contribuciones Permisos ",
+          "grupo": "OTROS EGRESOS CORRIENTES",
+          "cod": 10000,
+          "dev": 536.8
+        },
+        {
+          "cuenta": "570201",
+          "desc": "Seguros",
+          "grupo": "OTROS EGRESOS CORRIENTES",
+          "cod": 110000,
+          "dev": 0
+        },
+        {
+          "cuenta": "570203",
+          "desc": "Comisiones Bancarias",
+          "grupo": "OTROS EGRESOS CORRIENTES",
+          "cod": 16902.92,
+          "dev": 2888.16
+        },
+        {
+          "cuenta": "570206",
+          "desc": "Costas Judiciales Tramites Notariales Legalizacion",
+          "grupo": "OTROS EGRESOS CORRIENTES",
+          "cod": 4500,
+          "dev": 0
+        },
+        {
+          "cuenta": "580102",
+          "desc": "A Entidades Descentralizadas y Autonomas",
+          "grupo": "TRANSFERENCIAS O DONACIONES CO",
+          "cod": 962000,
+          "dev": 240500
+        },
+        {
+          "cuenta": "580209",
+          "desc": "A Jubilados Patronales",
+          "grupo": "TRANSFERENCIAS O DONACIONES CO",
+          "cod": 51177.72,
+          "dev": 20610.21
+        },
+        {
+          "cuenta": "710105",
+          "desc": "Remuneraciones Unificadas",
+          "grupo": "EGRESOS EN PERSONAL PARA INVER",
+          "cod": 982940,
+          "dev": 144960
+        },
+        {
+          "cuenta": "710106",
+          "desc": "Salarios Unificados",
+          "grupo": "EGRESOS EN PERSONAL PARA INVER",
+          "cod": 2790831,
+          "dev": 269533.93
+        },
+        {
+          "cuenta": "710203",
+          "desc": "Decimo Tercer Sueldo",
+          "grupo": "EGRESOS EN PERSONAL PARA INVER",
+          "cod": 421469.39,
+          "dev": 4048.23
+        },
+        {
+          "cuenta": "710204",
+          "desc": "Decimo Cuarto Sueldo",
+          "grupo": "EGRESOS EN PERSONAL PARA INVER",
+          "cod": 261954,
+          "dev": 234739.44
+        },
+        {
+          "cuenta": "710304",
+          "desc": "Compensacion por Transporte",
+          "grupo": "EGRESOS EN PERSONAL PARA INVER",
+          "cod": 23430,
+          "dev": 1622.5
+        },
+        {
+          "cuenta": "710306",
+          "desc": "Alimentacion",
+          "grupo": "EGRESOS EN PERSONAL PARA INVER",
+          "cod": 281160,
+          "dev": 19470
+        },
+        {
+          "cuenta": "710401",
+          "desc": "Por Cargas Familiares",
+          "grupo": "EGRESOS EN PERSONAL PARA INVER",
+          "cod": 12960,
+          "dev": 978.46
+        },
+        {
+          "cuenta": "710408",
+          "desc": "Subsidio de Antiguedad",
+          "grupo": "EGRESOS EN PERSONAL PARA INVER",
+          "cod": 69482.37,
+          "dev": 2660.13
+        },
+        {
+          "cuenta": "710509",
+          "desc": "Horas Extraordinarias y Suplementarias",
+          "grupo": "EGRESOS EN PERSONAL PARA INVER",
+          "cod": 18232.65,
+          "dev": 0
+        },
+        {
+          "cuenta": "710510",
+          "desc": "Servicios Personales por Contrato",
+          "grupo": "EGRESOS EN PERSONAL PARA INVER",
+          "cod": 1021866,
+          "dev": 0
+        },
+        {
+          "cuenta": "710512",
+          "desc": "Subrogacion",
+          "grupo": "EGRESOS EN PERSONAL PARA INVER",
+          "cod": 6010,
+          "dev": 0
+        },
+        {
+          "cuenta": "710513",
+          "desc": "Encargos",
+          "grupo": "EGRESOS EN PERSONAL PARA INVER",
+          "cod": 30000,
+          "dev": 3188
+        },
+        {
+          "cuenta": "710601",
+          "desc": "Aporte Patronal",
+          "grupo": "EGRESOS EN PERSONAL PARA INVER",
+          "cod": 579660.98,
+          "dev": 46808.9
+        },
+        {
+          "cuenta": "710602",
+          "desc": "Fondo de Reserva",
+          "grupo": "EGRESOS EN PERSONAL PARA INVER",
+          "cod": 403994.98,
+          "dev": 31276.54
+        },
+        {
+          "cuenta": "710703",
+          "desc": "Despido Intempestivo",
+          "grupo": "EGRESOS EN PERSONAL PARA INVER",
+          "cod": 18000,
+          "dev": 0
+        },
+        {
+          "cuenta": "710704",
+          "desc": "Compensacion por Desahucio",
+          "grupo": "EGRESOS EN PERSONAL PARA INVER",
+          "cod": 5000,
+          "dev": 0
+        },
+        {
+          "cuenta": "710707",
+          "desc": "Compensacion por Vacaciones no Gozadas por Cesacio",
+          "grupo": "EGRESOS EN PERSONAL PARA INVER",
+          "cod": 35000,
+          "dev": 1520.15
+        },
+        {
+          "cuenta": "730101",
+          "desc": "Agua Potable",
+          "grupo": "BIENES Y SERVICIOS PARA INVERS",
+          "cod": 150000,
+          "dev": 0
+        },
+        {
+          "cuenta": "730105",
+          "desc": "Telecomunicaciones",
+          "grupo": "BIENES Y SERVICIOS PARA INVERS",
+          "cod": 14008.45,
+          "dev": 0
+        },
+        {
+          "cuenta": "730204",
+          "desc": "Edicion Impresion Reproduccion Publicaciones Suscr",
+          "grupo": "BIENES Y SERVICIOS PARA INVERS",
+          "cod": 103447.67,
+          "dev": 9750
+        },
+        {
+          "cuenta": "730208",
+          "desc": "Servicio de Seguridad y Vigilancia",
+          "grupo": "BIENES Y SERVICIOS PARA INVERS",
+          "cod": 10000,
+          "dev": 0
+        },
+        {
+          "cuenta": "730249",
+          "desc": "Eventos Publicos Promocionales",
+          "grupo": "BIENES Y SERVICIOS PARA INVERS",
+          "cod": 176089.78,
+          "dev": 80599
+        },
+        {
+          "cuenta": "730402",
+          "desc": "Edificios Locales Residencias y Cableado Estructur",
+          "grupo": "BIENES Y SERVICIOS PARA INVERS",
+          "cod": 33895.16,
+          "dev": 0
+        },
+        {
+          "cuenta": "730404",
+          "desc": "Maquinarias y Equipos (Instalacion Mantenimiento y",
+          "grupo": "BIENES Y SERVICIOS PARA INVERS",
+          "cod": 203943.68,
+          "dev": 0
+        },
+        {
+          "cuenta": "730405",
+          "desc": "Vehiculos (Servicio de Mantenimiento y Reparacion)",
+          "grupo": "BIENES Y SERVICIOS PARA INVERS",
+          "cod": 37000,
+          "dev": 0
+        },
+        {
+          "cuenta": "730417",
+          "desc": "Infraestructura",
+          "grupo": "BIENES Y SERVICIOS PARA INVERS",
+          "cod": 19010,
+          "dev": 0
+        },
+        {
+          "cuenta": "730418",
+          "desc": "Mantenimiento de Areas Verdes y Arreglo de Vias In",
+          "grupo": "BIENES Y SERVICIOS PARA INVERS",
+          "cod": 20000,
+          "dev": 0
+        },
+        {
+          "cuenta": "730425",
+          "desc": "Instalacion Readecuacion Montaje de Exposiciones M",
+          "grupo": "BIENES Y SERVICIOS PARA INVERS",
+          "cod": 0,
+          "dev": 0
+        },
+        {
+          "cuenta": "730504",
+          "desc": "Maquinarias y Equipos (Arrendamiento)",
+          "grupo": "BIENES Y SERVICIOS PARA INVERS",
+          "cod": 725470.88,
+          "dev": 0
+        },
+        {
+          "cuenta": "730505",
+          "desc": "Vehiculos (Arrendamiento)",
+          "grupo": "BIENES Y SERVICIOS PARA INVERS",
+          "cod": 133200,
+          "dev": 0
+        },
+        {
+          "cuenta": "730601",
+          "desc": "Consultoria Asesoria e Investigacion Especializada",
+          "grupo": "BIENES Y SERVICIOS PARA INVERS",
+          "cod": 528624.19,
+          "dev": 12780
+        },
+        {
+          "cuenta": "730602",
+          "desc": "Servicio de Auditoria",
+          "grupo": "BIENES Y SERVICIOS PARA INVERS",
+          "cod": 80000,
+          "dev": 0
+        },
+        {
+          "cuenta": "730604",
+          "desc": "Fiscalizacion e Inspecciones Tecnicas",
+          "grupo": "BIENES Y SERVICIOS PARA INVERS",
+          "cod": 919881.77,
+          "dev": 0
+        },
+        {
+          "cuenta": "730606",
+          "desc": "Honorarios por Contratos Civiles de Servicios",
+          "grupo": "BIENES Y SERVICIOS PARA INVERS",
+          "cod": 491715.99,
+          "dev": 22600
+        },
+        {
+          "cuenta": "730607",
+          "desc": "Servicios Tecnicos Especializados",
+          "grupo": "BIENES Y SERVICIOS PARA INVERS",
+          "cod": 653019.77,
+          "dev": 35966.02
+        },
+        {
+          "cuenta": "730612",
+          "desc": "Capacitacion a Servidores Publicos",
+          "grupo": "BIENES Y SERVICIOS PARA INVERS",
+          "cod": 10000,
+          "dev": 0
+        },
+        {
+          "cuenta": "730613",
+          "desc": "Capacitacion para la Ciudadania en General",
+          "grupo": "BIENES Y SERVICIOS PARA INVERS",
+          "cod": 21100,
+          "dev": 0
+        },
+        {
+          "cuenta": "730702",
+          "desc": "Arrendamiento y Licencias de Uso de Paquetes Infor",
+          "grupo": "BIENES Y SERVICIOS PARA INVERS",
+          "cod": 101000,
+          "dev": 0
+        },
+        {
+          "cuenta": "730801",
+          "desc": "Alimentos y Bebidas",
+          "grupo": "BIENES Y SERVICIOS PARA INVERS",
+          "cod": 20975.75,
+          "dev": 0
+        },
+        {
+          "cuenta": "730802",
+          "desc": "Vestuario Lenceria Prendas de Proteccion Insumos y",
+          "grupo": "BIENES Y SERVICIOS PARA INVERS",
+          "cod": 94784.97,
+          "dev": 22233.42
+        },
+        {
+          "cuenta": "730803",
+          "desc": "LUBRICANTES",
+          "grupo": "BIENES Y SERVICIOS PARA INVERS",
+          "cod": 38833.45,
+          "dev": 0
+        },
+        {
+          "cuenta": "730804",
+          "desc": "Materiales de Oficina",
+          "grupo": "BIENES Y SERVICIOS PARA INVERS",
+          "cod": 1000,
+          "dev": 0
+        },
+        {
+          "cuenta": "730811",
+          "desc": "Insumos Materiales y Suministros para Construccion",
+          "grupo": "BIENES Y SERVICIOS PARA INVERS",
+          "cod": 444227.83,
+          "dev": 69702.05
+        },
+        {
+          "cuenta": "730813",
+          "desc": "Repuestos y Accesorios",
+          "grupo": "BIENES Y SERVICIOS PARA INVERS",
+          "cod": 207374.86,
+          "dev": 0
+        },
+        {
+          "cuenta": "730814",
+          "desc": "Suministros para Actividades Agropecuarias Pesca y",
+          "grupo": "BIENES Y SERVICIOS PARA INVERS",
+          "cod": 10000,
+          "dev": 0
+        },
+        {
+          "cuenta": "730817",
+          "desc": "Productos Agricolas",
+          "grupo": "BIENES Y SERVICIOS PARA INVERS",
+          "cod": 14920,
+          "dev": 10487.2
+        },
+        {
+          "cuenta": "730819",
+          "desc": "Accesorios e Insumos Quimicos y Organicos",
+          "grupo": "BIENES Y SERVICIOS PARA INVERS",
+          "cod": 263000,
+          "dev": 0
+        },
+        {
+          "cuenta": "730820",
+          "desc": "Menaje y Accesorios Descartables",
+          "grupo": "BIENES Y SERVICIOS PARA INVERS",
+          "cod": 17000,
+          "dev": 0
+        },
+        {
+          "cuenta": "730821",
+          "desc": "Egresos para Situaciones de Emergencia",
+          "grupo": "BIENES Y SERVICIOS PARA INVERS",
+          "cod": 21000,
+          "dev": 0
+        },
+        {
+          "cuenta": "731404",
+          "desc": "Maquinarias y Equipos",
+          "grupo": "BIENES Y SERVICIOS PARA INVERS",
+          "cod": 4000,
+          "dev": 0
+        },
+        {
+          "cuenta": "731406",
+          "desc": "Herramientas y Equipos Menores",
+          "grupo": "BIENES Y SERVICIOS PARA INVERS",
+          "cod": 9500,
+          "dev": 5983.91
+        },
+        {
+          "cuenta": "750101",
+          "desc": "Agua Potable",
+          "grupo": "OBRAS PÚBLICAS",
+          "cod": 12282474.33,
+          "dev": 149195.96
+        },
+        {
+          "cuenta": "750103",
+          "desc": "Alcantarillado",
+          "grupo": "OBRAS PÚBLICAS",
+          "cod": 466692.66,
+          "dev": 92104.14
+        },
+        {
+          "cuenta": "750104",
+          "desc": "Urbanizacion y Embellecimiento",
+          "grupo": "OBRAS PÚBLICAS",
+          "cod": 1111923.24,
+          "dev": 128939.53
+        },
+        {
+          "cuenta": "750105",
+          "desc": "Transporte y Vias",
+          "grupo": "OBRAS PÚBLICAS",
+          "cod": 1645686.12,
+          "dev": 189549.59
+        },
+        {
+          "cuenta": "750107",
+          "desc": "Construcciones y Edificaciones",
+          "grupo": "OBRAS PÚBLICAS",
+          "cod": 1000,
+          "dev": 0
+        },
+        {
+          "cuenta": "750114",
+          "desc": "Control de Inundaciones y Estabilizacion de Cauces",
+          "grupo": "OBRAS PÚBLICAS",
+          "cod": 85000,
+          "dev": 0
+        },
+        {
+          "cuenta": "750199",
+          "desc": "Otras Obras de Infraestructura",
+          "grupo": "OBRAS PÚBLICAS",
+          "cod": 38374.35,
+          "dev": 0
+        },
+        {
+          "cuenta": "750501",
+          "desc": "Obras de Infraestructura",
+          "grupo": "OBRAS PÚBLICAS",
+          "cod": 209000,
+          "dev": 55857.32
+        },
+        {
+          "cuenta": "770201",
+          "desc": "Seguros",
+          "grupo": "OTROS EGRESOS DE INVERSIÓN",
+          "cod": 23764.8,
+          "dev": 19860.69
+        },
+        {
+          "cuenta": "770301",
+          "desc": "Dietas",
+          "grupo": "OTROS EGRESOS DE INVERSIÓN",
+          "cod": 7900,
+          "dev": 0
+        },
+        {
+          "cuenta": "780103",
+          "desc": "A Empresas Publicas",
+          "grupo": "TRANSFERENCIAS O DONACIONES PA",
+          "cod": 1230289.3,
+          "dev": 281323.18
+        },
+        {
+          "cuenta": "780204",
+          "desc": "Transferencias o Donaciones al Sector Privado no F",
+          "grupo": "TRANSFERENCIAS O DONACIONES PA",
+          "cod": 12000,
+          "dev": 0
+        },
+        {
+          "cuenta": "840103",
+          "desc": "Mobiliarios",
+          "grupo": "BIENES DE LARGA DURACIÓN (PROP",
+          "cod": 5000,
+          "dev": 0
+        },
+        {
+          "cuenta": "840104",
+          "desc": "Maquinarias y Equipos",
+          "grupo": "BIENES DE LARGA DURACIÓN (PROP",
+          "cod": 189570.86,
+          "dev": 0
+        },
+        {
+          "cuenta": "840105",
+          "desc": "Vehiculos",
+          "grupo": "BIENES DE LARGA DURACIÓN (PROP",
+          "cod": 23000,
+          "dev": 0
+        },
+        {
+          "cuenta": "840107",
+          "desc": "Equipos Sistemas y Paquetes Informaticos",
+          "grupo": "BIENES DE LARGA DURACIÓN (PROP",
+          "cod": 83827,
+          "dev": 0
+        },
+        {
+          "cuenta": "840301",
+          "desc": "Terrenos (Expropiacion)",
+          "grupo": "BIENES DE LARGA DURACIÓN (PROP",
+          "cod": 316293.51,
+          "dev": 0
+        },
+        {
+          "cuenta": "960201",
+          "desc": "Al Sector Publico Financiero",
+          "grupo": "AMORTIZACIÓN DE LA DEUDA PÚBLI",
+          "cod": 717795.2,
+          "dev": 211339.18
+        },
+        {
+          "cuenta": "960205",
+          "desc": "A la Seguridad Social",
+          "grupo": "AMORTIZACIÓN DE LA DEUDA PÚBLI",
+          "cod": 901533.67,
+          "dev": 0
+        },
+        {
+          "cuenta": "960301",
+          "desc": "A Organismos Multilaterales",
+          "grupo": "AMORTIZACIÓN DE LA DEUDA PÚBLI",
+          "cod": 50,
+          "dev": 0
+        },
+        {
+          "cuenta": "970101",
+          "desc": "De Cuentas por Pagar",
+          "grupo": "PASIVO CIRCULANTE",
+          "cod": 3210757,
+          "dev": 2801421.4
+        },
+        {
+          "cuenta": "990101",
+          "desc": "Obligaciones de Ejercicios Anteriores por Egresos ",
+          "grupo": "OTROS PASIVOS",
+          "cod": 80000,
+          "dev": 0
+        }
+      ]
     },
     "poa_detalle": [
       {

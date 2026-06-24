@@ -142,6 +142,26 @@ def build_block() -> dict:
         "corte": str(ws["B10"].value or ""),
     }
 
+    # cédula oficial ingerida (Zona Cruda H07 A46:E) — partidas + TOTAL municipal real
+    _cat, _parts, _tc, _td = {}, [], 0.0, 0.0
+    for r in range(46, 200):
+        cuenta = ws.cell(r, 1).value
+        cod = ws.cell(r, 4).value
+        if not cuenta or not isinstance(cod, (int, float)):
+            continue
+        dev = ws.cell(r, 5).value if isinstance(ws.cell(r, 5).value, (int, float)) else 0
+        grupo = str(ws.cell(r, 3).value or "")
+        _tc += cod
+        _td += dev
+        _cat[grupo] = _cat.get(grupo, 0) + cod
+        _parts.append({"cuenta": str(cuenta), "desc": str(ws.cell(r, 2).value or "")[:50],
+                       "grupo": grupo, "cod": cod, "dev": dev})
+    presupuesto["total_municipal"] = round(_tc, 2)
+    presupuesto["devengado_municipal"] = round(_td, 2)
+    presupuesto["por_categoria"] = sorted(
+        [{"cat": k, "cod": round(v, 2)} for k, v in _cat.items()], key=lambda x: -x["cod"])
+    presupuesto["partidas"] = _parts
+
     # ── PAC detalle — procesos vinculados a meta + coherencia (H05b A-H) ─────
     ws = sh("H05b_S3b")
     pac_detalle = []
