@@ -2,8 +2,8 @@
 """
 QUIRA OS — Ingesta POA GAD 2026 → silo H05 (sección DETALLE PROYECTOS)
 ═══════════════════════════════════════════════════════════════════════════════
-Pipeline Canon. Parsea el POA oficial (PDF matriz SENPLADES · extract_tables por
-los 123 rects de celda) y escribe los 257 proyectos como sección de detalle en
+Pipeline Canon. Parsea el POA oficial (PDF matriz de planificación · extract_tables
+por los 123 rects de celda) y escribe los 257 proyectos como sección de detalle en
 H05, DEBAJO de las 25 metas (fórmulas E14:E38 intactas). Sobre COPIA WORK.
 
 Columnas POA (mapeadas): 04 meta · 05 dirección · 09 proyecto · 11 descripción ·

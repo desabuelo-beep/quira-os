@@ -155,6 +155,15 @@ def _tabla_poa(poa: list[dict], mmap: dict) -> str:
     return _tbl(["ID", "Meta", "Dirección responsable", "Monto anual planificado"], rows)
 
 
+def _tabla_proyectos(proys: list[dict]) -> str:
+    rows = ""
+    for x in proys:
+        rows += (f'<tr><td class="mt-dir">{x["dir"]}</td><td class="mt-meta">{x["desc"]}</td>'
+                 f'<td class="mt-id">{x["partida"]}</td>'
+                 f'<td class="mt-num">${x["anual"]:,.0f}</td></tr>')
+    return _tbl(["Dirección", "Proyecto / actividad", "Partida", "Monto anual"], rows, mh=320)
+
+
 def _tabla_pac(pac: list[dict]) -> str:
     rows = ""
     for x in pac:
@@ -278,11 +287,16 @@ def _tab_datos(plan: dict) -> None:
     st.markdown(_tabla_metas(metas), unsafe_allow_html=True)
     st.markdown(_div(), unsafe_allow_html=True)
 
-    st.markdown(_head("2", "POA — LA OPERACIÓN", "cómo se programa cada meta en el año · Plan Operativo 2026"),
+    proys = plan.get("poa_proyectos", [])
+    _tpoa = sum(x["anual"] for x in proys)
+    st.markdown(_head("2", "POA — LA OPERACIÓN",
+                      f"cómo se ejecuta el plan en el año · {len(proys)} proyectos · Plan Operativo 2026"),
                 unsafe_allow_html=True)
-    st.markdown(_intro("El POA aterriza cada meta del plan en un monto anual planificado y un cronograma mes a "
-                       "mes. Aquí, lo que cada meta moviliza en 2026."), unsafe_allow_html=True)
-    st.markdown(_tabla_poa(poa, mmap), unsafe_allow_html=True)
+    st.markdown(_intro(f"El Plan Operativo Anual aterriza el plan en <b>{len(proys)} proyectos</b> concretos, cada "
+                       f"uno con su dirección, partida presupuestaria y monto. En conjunto movilizan "
+                       f"<b>${_tpoa:,.0f}</b> en 2026 — exactamente el presupuesto agregado de las 25 metas."),
+                unsafe_allow_html=True)
+    st.markdown(_tabla_proyectos(proys), unsafe_allow_html=True)
     st.markdown(_div(), unsafe_allow_html=True)
 
     st.markdown(_head("3", "PAC — LA CONTRATACIÓN",
