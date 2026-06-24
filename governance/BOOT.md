@@ -43,7 +43,7 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
 **CENTRO DE INTELIGENCIA TERRITORIAL · 2026-06-24.** QUIRA preventiva (no forense). Excel=Canon INVISIBLE. 4 dims: Gob·Terr·Intel·Converg.
 ✅ **P1/P2:** kernel `umi.py`+`qinv.py` · **QINV-001 nivel BI** (2 pestañas·Plotly) · QINV-006 · d03=72.73.
 🔧 **SPRINT CANON · Backbone COMPLETO:** PDOT 25 metas · POA 257 proy $39.3M · Presup 135 partidas $45.98M · PAC total $29.85M (98.6%).
-🔌 **PAC per-proceso → conector SERCOP** datos abiertos (validado: `search_ocds`+`record` OCDS · 221 GAD). PDF entrelaza → API es la fuente. **← siguiente.**
+🔌 **PAC per-proceso → conector SERCOP** datos abiertos (validado: `search_ocds`+`record` OCDS · 221 GAD). Conector ✅ subsanado (`fetch_sercop`). Falta: →silo H06→cajón.
 🔑 `FREEZE_20260623`=rollback. Pendiente: cédulas MENSUALES · IGAP Literal D · entidades Holding · GeoTwin.
 🔶 **CI:** BOOT ≤6KB.
 
