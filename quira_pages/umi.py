@@ -107,6 +107,7 @@ class InvestigacionQUIRA:
     # — visuales de síntesis OPCIONALES (graph+text en peritaje/conclusión · Javo 2026-06-23) —
     peritaje_viz: Callable[[], None] | None = None               # síntesis visual del peritaje
     conclusion_viz: Callable[[], None] | None = None             # visual del veredicto
+    criterio_ia: str | None = None                               # Cable Interpretación (Haiku · ADR-031 · ADR-030 §4)
 
     # ── salida WEB (la vista de 30cac66, ahora como método) ──────────────────
     def to_streamlit(self, on_volver: Callable[[], None] | None = None) -> None:
@@ -162,7 +163,9 @@ class InvestigacionQUIRA:
             '<div class="umi-sec umi-sec-ia">▎ LECTURA DE QUIRA — interpretación tras analizar la evidencia</div>',
             unsafe_allow_html=True,
         )
-        if self.peritaje or self.peritaje_headline:
+        if self.criterio_ia:                                     # Cable de Interpretación (Haiku · ADR-030 §4)
+            st.markdown(self.criterio_ia)                        # el criterio dinámico ES la lectura
+        elif self.peritaje or self.peritaje_headline:
             _ph = _peritaje_html(self.peritaje_headline, self.peritaje, self.contradicciones)
             if self.peritaje_viz is not None:                    # graph + text (síntesis)
                 _vc, _tc = st.columns([1, 1.18], gap="medium")

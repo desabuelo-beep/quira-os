@@ -509,6 +509,11 @@ def render() -> None:
     tiene = isinstance(fid, (int, float))
     dato_str = f"{fid:.1f}%" if tiene else "—"
 
+    # Cable de Interpretación — criterio dinámico de QUIRA IA (Haiku), generado al enriquecer
+    _cm = plan.get("criterio_ia") or {}
+    criterio_ia = (f"{_cm['texto']}\n\n*— Lectura generada por QUIRA IA · {_cm.get('modelo', '')} · "
+                   f"corte {_cm.get('fecha', '')}*") if _cm.get("texto") else None
+
     if not tiene:
         estado, temp, vpct, prioridad_temp = "—", "dim", None, "alerta"
         headline = "Sin evidencia cargada para este corte."
@@ -551,5 +556,6 @@ def render() -> None:
         veredicto_label="Correspondencia con el Plan", veredicto_pct=vpct,
         divergencias="", prioridad="Foco · que el plan llegue al gasto", prioridad_temp=prioridad_temp,
         conclusion=conclusion, conclusion_viz=con_viz,
+        criterio_ia=criterio_ia,
     )
     inv.to_streamlit()

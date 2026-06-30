@@ -4593,6 +4593,11 @@
         "publicado_usd": 1048154.43,
         "cobertura_pct": 3.5
       }
+    },
+    "criterio_ia": {
+      "texto": "**Criterio metodológico**\n\nMontecristi mantiene **correspondencia formal entre su PDOT y su ciclo operativo 2026**: las 25 metas plurianuales (8 críticas) se traducen en 257 proyectos operativos financiados con $39.3M. Sin embargo, la ejecución real muestra una **senda de desarrollo desacelerada**: al corte del año, apenas el 6.4% de la inversión codificada ($30.3M) se ha materializado. Este desfase inicial es típico en municipios con calendarios de contratación atrasados, pero requiere atención porque solo el 3.5% del PAC 2026 ha sido publicado en procesos de compra pública.\n\nLa **señal preventiva activa** entre plan y contratación sugiere un cuello de botella: los proyectos están diseñados (coherencia PDOT↔POA), el presupuesto está asignado (coherencia POA↔inversión codificada), pero la velocidad de contratación es baja. Si esta inercia se mantiene, las metas críticas correrán riesgo de incumplimiento en el horizonte 2027. El PAC cubre el 98.6% de la inversión codificada (buena señal de previsión), pero su publicación efectiva debe acelerarse en los próximos trimestres.\n\n**Recomendación:** Realice un diagnóstico de cuellos de botella en la gestión de contratación pública (tiempos de elaboración de bases, disponibilidad de profesionales en compras) y publique al menos el 25% del PAC 2026 en los próximos 60 días, priorizando los 8 proyectos de las metas críticas.",
+      "modelo": "claude-haiku-4-5",
+      "fecha": "2026-06-30"
     }
   }
 }
