@@ -119,7 +119,7 @@ trabajo, no como objeto-marca — el protagonista es el MCD, no el motor (cohere
 *el activo es el modelo, no el algoritmo*).
 
 **La Matriz del MCD — no para documentar, para TRABAJAR.** El tablero deja de ser Trello: *el tablero ES el
-MCD.* Cada MCD se construye y rastrea recorriendo estas 7 capas; el estado vivo va en `BOOT §AHORA`, no aquí.
+MCD.* Cada MCD se construye y rastrea recorriendo estas 8 capas; el estado vivo va en `BOOT §AHORA`, no aquí.
 Construir un MCD = dejar cada capa CONECTADA — **NO re-ingerir lo que ya existe** (Regla #6).
 
 | Capa | Fuente | Responsable | Rol |
@@ -131,10 +131,32 @@ Construir un MCD = dejar cada capa CONECTADA — **NO re-ingerir lo que ya exist
 | Memoria | Obsidian | Diseño | el porqué de las decisiones (vía QUIRA IA) |
 | Interpretación | QUIRA IA | Cognición | criterio · hipótesis · riesgos (`ADR-030` §4) |
 | Visualización | Cajón/GeoTwin | UI | una de muchas vistas — al final, no al inicio |
+| **Diagnóstico (SAT)** | Gold Master (MCM) | Diagnóstico | la familia SAT del dominio — la calcula el MCM, QUIRA la rutea (§6.1) |
 
-> *Hallazgo (2026-06-29):* al instanciar la matriz para Planificación, **7/7 capas ya existen como fuente**;
-> el trabajo del MCD es **tejer** (cablear las 4 faltantes), no construir. La mesa subcontaba el canon
-> (Supabase normativa marcado "pendiente" cuando ya es ratificado en `ADR-005`).
+> *Hallazgo (2026-06-29/30):* al instanciar la matriz para Planificación, **las 8 capas ya existen como
+> fuente** (incluidos los SAT, computados por el MCM); el trabajo del MCD es **tejer** (cablear lo faltante),
+> no construir. La mesa subcontó el canon 3 veces: inventario H06 · Supabase normativa (ratif. `ADR-005`) ·
+> mapeo SAT (ya en `SAT_Catalogo`).
+
+---
+
+### §6.1 · El Sistema SAT vive en el dominio (las alertas no son un cajón)
+
+Decisión (Javo + asesor · 2026-06-30 · verificada contra el canon): **las alertas NO son un dominio — son la
+8ª capa (diagnóstico) de cada MCD.** El cajón de Alertas (d04) se retira como dominio (Opción A, ya decidido);
+el antiguo centro pasa a **Centro de Situación** que SOLO agrega el estado SAT de todos los MCD — no genera.
+
+Es **cablear lo que existe**, no construir:
+- Los SAT los calcula el **MCM (Gold Master)** — `H75_SAT_ENGINE` + hojas `H21–H24c`. QUIRA los **lee y rutea**,
+  nunca los genera (Regla 1). *Corrección al asesor:* el SAT no nace en un "motor analítico" de QUIRA; nace en el Excel.
+- El **mapeo SAT→dominio YA existe** (`SAT_Catalogo`) — se traduce a los 13 ADN y se cablea; no se inventa.
+- **No se inventan familias SAT** (SAT-C1/F1… del asesor no existen). El sistema es vivo: los SAT nuevos nacen
+  en `H75_SAT_ENGINE` (Regla 4) — SAT-VII (Vi sináptico) ya emerge ahí.
+
+**Dos ejes — intuición de Javo, verificada en el canon:** técnico-metodológico (SAT-0·I·II·III·VII) y legal
+(SAT-IV COOTAD Art.198 · SAT-V CPCCS · SAT-VI desvío PP). **Corolario:** cada SAT se distribuye a SU dominio
+—SAT-V→Rendición, SAT-VI→Participación, SAT-IV→Financiero—, no todos a Planificación. Cada MCD muestra su
+familia SAT; el Centro de Situación las consolida — y QUIRA IA puede razonar su causa raíz común.
 
 ---
 
