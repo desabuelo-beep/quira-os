@@ -46,7 +46,6 @@ def _cargar() -> dict:
     try:
         from utils.cache_quira import cargar_gm_snapshot
         gm = cargar_gm_snapshot() or {}
-        out["fidelidad_plan"] = ((gm.get("tgi", {}) or {}).get("d2", {}) or {}).get("valor")
         out["plan"] = gm.get("planificacion") or {}
     except Exception:
         out["plan"] = {}
@@ -529,59 +528,43 @@ def _conclusion_viz(pct: int, color: str) -> None:
 def render() -> None:
     """QINV-001 · Planificación Estratégica — 2 pestañas (Datos | Análisis) nivel BI."""
     d = _cargar()
-    fid = d.get("fidelidad_plan")
     plan = d.get("plan") or {}
     sat_temp = (plan.get("sat0", {}) or {}).get("global_temp", "alerta")
-    tiene = isinstance(fid, (int, float))
-    dato_str = f"{fid:.1f}%" if tiene else "—"
 
     # Cable de Interpretación — criterio dinámico de QUIRA IA (Haiku), generado al enriquecer
     _cm = plan.get("criterio_ia") or {}
     criterio_ia = (f"{_cm['texto']}\n\n*— Lectura generada por QUIRA IA · {_cm.get('modelo', '')} · "
                    f"corte {_cm.get('fecha', '')}*") if _cm.get("texto") else None
 
-    if not tiene:
-        estado, temp, vpct, prioridad_temp = "—", "dim", None, "alerta"
-        headline = "Sin evidencia cargada para este corte."
-        peritaje = ["La investigación no puede leer sin evidencia del motor (Regla 3)."]
-        conclusion = "Lea la evidencia del corte para la interpretación de QUIRA."
-        per_viz = con_viz = None
-    else:
-        vpct = int(round(fid))
-        if fid >= _UMBRAL:
-            temp, estado = "verde", "EN SENDA"
-        elif fid >= _UMBRAL * 0.85:
-            temp, estado = "alerta", "BAJO OBJETIVO"
-        else:
-            temp, estado = "critico", "DESVIACIÓN CRÍTICA"
-        prioridad_temp = temp
-        headline = ("El plan conserva la correspondencia con su senda; el foco preventivo "
-                    "está en sostenerla en la ejecución.")
-        peritaje = [
-            f"La planificación mantiene una correspondencia del {dato_str} con las metas plurianuales "
-            "—el diseño del plan está esencialmente a la altura de su objetivo a 2027.",
-            "El backbone se sostiene en el diseño (plan, operación, presupuesto), pero la contratación "
-            "todavía recoge una fracción mínima del presupuesto: ahí está la distancia que importa.",
-            "No es un juicio del pasado: es dónde concentrar la atención hoy para que el plan llegue al gasto.",
-        ]
-        conclusion = (
-            "El Plan de Desarrollo mantiene su senda en el diseño plurianual. La señal es preventiva: que la "
-            "contratación (PAC) y la ejecución alcancen al presupuesto, para que la correspondencia no se "
-            "erosione en el camino del plan al gasto."
-        )
-        per_viz = lambda: _peritaje_viz(sat_temp)
-        con_viz = lambda: _conclusion_viz(vpct, _T.get(temp, "#00D4FF"))
+    # El veredicto del cajón ya NO es un % de "fidelidad" (era una dimensión TGI interna: sensible al
+    # Firewall y sobresimplificaba el análisis · Javo 2026-06-30). El veredicto es el CRITERIO (cualitativo,
+    # arriba) + la señal de coherencia preventiva. Sin gauge de porcentaje.
+    _EST = {"verde": "COHERENCIA SOSTENIDA", "alerta": "SEÑAL PREVENTIVA",
+            "critico": "BRECHA POR CERRAR", "dim": "EN ANÁLISIS"}
+    temp = sat_temp if sat_temp in _EST else "alerta"
+    estado = _EST[temp]
+    headline = ("El plan conserva la correspondencia con su senda en el diseño plurianual; el foco "
+                "preventivo está en que la contratación y la ejecución alcancen al presupuesto.")
+    peritaje = [
+        "El plan sostiene su diseño plurianual: las metas se traducen en operación y presupuesto coherentes.",
+        "La distancia que importa está en la contratación: que el PAC y la ejecución alcancen al presupuesto.",
+    ]
+    conclusion = (
+        "El Plan de Desarrollo mantiene su senda en el diseño (plan, operación, presupuesto). La señal es "
+        "preventiva: que la contratación (PAC) y la ejecución alcancen al presupuesto, para que la "
+        "correspondencia no se erosione en el camino del plan al gasto."
+    )
 
     inv = InvestigacionQUIRA(
         id="QINV-001", dominio="d01", nombre="Planificación Estratégica", version="2026-Q1",
-        pregunta=_PREGUNTA, estado=estado, dato=dato_str, temp=temp,
+        pregunta=_PREGUNTA, estado=estado, dato="", temp=temp,
         hipotesis=("La fidelidad estratégica se mide por la correspondencia sostenida entre el plan "
                    "plurianual y su ejecución a lo largo de la cadena."),
         evidencia=lambda: _evidencia(d),
-        peritaje_headline=headline, peritaje=peritaje, peritaje_viz=per_viz,
-        veredicto_label="Correspondencia con el Plan", veredicto_pct=vpct,
-        divergencias="", prioridad="Foco · que el plan llegue al gasto", prioridad_temp=prioridad_temp,
-        conclusion=conclusion, conclusion_viz=con_viz,
+        peritaje_headline=headline, peritaje=peritaje, peritaje_viz=lambda: _peritaje_viz(sat_temp),
+        veredicto_label="la senda del plan", veredicto_pct=None,
+        divergencias="", prioridad="Foco · que el plan llegue al gasto", prioridad_temp=temp,
+        conclusion=conclusion, conclusion_viz=None,
         criterio_ia=criterio_ia,
     )
     inv.to_streamlit()
