@@ -13,6 +13,7 @@
 | ¿Dónde vive la verdad de…? | RECTOR (autoridad única) | Gobierna · NO toca |
 |---|---|---|
 | **Qué ES un cajón/dominio** (concepto · pregunta estratégica · exclusiones · indicador madre) | `docs/sprint-c/DICCIONARIO_CONCEPTUAL_QUIRA.md` (13 ADN · 11 campos · SELLADO) | el contenido conceptual · NO la forma |
+| **Qué ES por DENTRO un cajón** (MCD · MCM vs MCD · MCIP 5 motores · capas tipadas) | `docs/adr/ADR-031` | el modelo, no el dashboard · deriva del ADN · no recalcula el MCM |
 | **Qué CALCULA el sistema** (ICPI·TGI·índices · causalidad matemática) | **Gold Master Model** (Excel SIAP-ICPI · vía `app/connectors/gold_master.py`) | el número · NUNCA recalcular fuera (Regla 1) |
 | **Cómo se VE la UI** (card · dashboard · forma) | `docs/adr/ADR-030` | la forma · lee el contenido del Diccionario |
 | **Qué SIGNIFICA el dato** (causalidad relacional · circuitos · 4 congruencias · DCO) | Neo4j + `docs/sprint-c/CONSTITUCION_ONTOLOGICA_QUIRA.md` + ADR-016/017/019/021 | la doctrina · NO promedia |
