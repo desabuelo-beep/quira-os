@@ -119,24 +119,26 @@ trabajo, no como objeto-marca — el protagonista es el MCD, no el motor (cohere
 *el activo es el modelo, no el algoritmo*).
 
 **La Matriz del MCD — no para documentar, para TRABAJAR.** El tablero deja de ser Trello: *el tablero ES el
-MCD.* Cada MCD se construye y rastrea recorriendo estas 8 capas; el estado vivo va en `BOOT §AHORA`, no aquí.
-Construir un MCD = dejar cada capa CONECTADA — **NO re-ingerir lo que ya existe** (Regla #6).
+MCD.* Cada MCD se construye y rastrea recorriendo estas **7 capacidades**; el estado vivo va en `BOOT §AHORA`,
+no aquí. Construir un MCD = dejar cada capacidad **cableada** — **NO re-ingerir lo que ya existe** (Regla #6).
 
-| Capa | Fuente | Responsable | Rol |
-|---|---|---|---|
-| Matemática | Excel (MCM) | Canon | la verdad (números) |
-| Datos vivos | APIs (SERCOP·SIGEF…) | Runtime | la realidad transaccional |
-| Normativa | Supabase pgvector | Corpus | el significado legal (`ADR-005`: memoria de acceso rápido) |
-| Relaciones | Neo4j | Grafo | la cadena causal meta→…→impacto (`ADR-005`: el cerebro) |
-| Memoria | Obsidian | Diseño | el porqué de las decisiones (vía QUIRA IA) |
-| Interpretación | QUIRA IA | Cognición | criterio · hipótesis · riesgos (`ADR-030` §4) |
-| Visualización | Cajón/GeoTwin | UI | una de muchas vistas — al final, no al inicio |
-| **Diagnóstico (SAT)** | Gold Master (MCM) | Diagnóstico | la familia SAT del dominio — la calcula el MCM, QUIRA la rutea (§6.1) |
+| # | Capacidad (Cable) | Fuente | Responsable | Rol |
+|---|---|---|---|---|
+| 1 | Matemática | Excel (MCM) | Canon | la verdad (números) |
+| 2 | Datos vivos | APIs (SERCOP·SIGEF…) | Runtime | la realidad transaccional |
+| 3 | Normativa | Supabase | **Memoria Documental Verificable del Estado** | el significado jurídico (`ADR-005`) |
+| 4 | Relaciones | Neo4j | Grafo | la cadena causal meta→…→impacto (`ADR-005`: el cerebro) |
+| 5 | Memoria | Obsidian | memoria epistemológica | el porqué de las decisiones (vía QUIRA IA) |
+| 6 | Interpretación | QUIRA IA | Cognición | criterio · hipótesis · riesgos (`ADR-030` §4) |
+| 7 | Visualización | Cajón/GeoTwin | UI | una de muchas vistas — al final, no al inicio |
 
-> *Hallazgo (2026-06-29/30):* al instanciar la matriz para Planificación, **las 8 capas ya existen como
-> fuente** (incluidos los SAT, computados por el MCM); el trabajo del MCD es **tejer** (cablear lo faltante),
-> no construir. La mesa subcontó el canon 3 veces: inventario H06 · Supabase normativa (ratif. `ADR-005`) ·
-> mapeo SAT (ya en `SAT_Catalogo`).
+**→ El MCD, al evaluarse, PRODUCE un estado: la familia SAT.** No es una 8ª capa — es lo que *emerge* al
+correr el modelo (como la temperatura de un motor, no un cilindro · corrección del asesor 2026-06-30). La
+calcula el MCM; QUIRA la rutea a su dominio (ver §6.1).
+
+> *Hallazgo (2026-06-29/30):* al instanciar la matriz para Planificación, **las 7 capacidades ya existen como
+> fuente** (y el estado SAT también, computado por el MCM); el trabajo del MCD es **cablear**, no construir.
+> La mesa subcontó el canon 3 veces: inventario H06 · Supabase (ratif. `ADR-005`) · mapeo SAT (ya en `SAT_Catalogo`).
 
 ---
 
