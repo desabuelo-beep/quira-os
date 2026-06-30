@@ -441,6 +441,32 @@ def _tab_analisis(plan: dict) -> None:
                 f"mayor parte del PAC sigue en planificación. Es el <b>ritmo de publicación</b> —lo que QUIRA sigue "
                 f"mes a mes para anticipar si la contratación llegará a tiempo al presupuesto."),
                 unsafe_allow_html=True)
+        # El puente de partidas — POA↔SERCOP por partida compartida (lo que el Excel no cruza solo)
+        _poa_pt, _pub_pt = {}, {}
+        for _x in plan.get("poa_proyectos", []):
+            _k = str(_x.get("partida", "")).strip()
+            if _k:
+                _poa_pt.setdefault(_k, []).append(_x)
+        for _x in pub.get("procesos", []):
+            _k = str(_x.get("partida", "")).strip()
+            if _k:
+                _pub_pt.setdefault(_k, []).append(_x)
+        _puente = sorted(set(_poa_pt) & set(_pub_pt))
+        if _puente:
+            _rows = ""
+            for _pt in _puente:
+                _mp = sum(p.get("anual", 0) for p in _poa_pt[_pt])
+                _ms = sum(p.get("monto", 0) for p in _pub_pt[_pt])
+                _rows += (f'<tr><td class="mt-id">{_pt}</td>'
+                          f'<td class="mt-num">{len(_poa_pt[_pt])} · ${_mp:,.0f}</td>'
+                          f'<td class="mt-num">{len(_pub_pt[_pt])} · ${_ms:,.0f}</td></tr>')
+            st.markdown(_intro(
+                f"<b>El puente de partidas — la pregunta que QUIRA ya responde:</b> "
+                f"<b>{len(_puente)} líneas presupuestarias</b> conectan un proyecto planificado (POA) con un "
+                f"proceso ya publicado (SERCOP) que comparten la misma partida. Ayer era invisible —el Excel no "
+                f"lo cruza solo—; hoy se traza:"), unsafe_allow_html=True)
+            st.markdown(_tbl(["Partida", "POA · proyectos · monto", "Publicado SERCOP · procesos · monto"],
+                             _rows, mh=170), unsafe_allow_html=True)
         st.markdown(_div(), unsafe_allow_html=True)
 
     # D · La coherencia (SAT)
