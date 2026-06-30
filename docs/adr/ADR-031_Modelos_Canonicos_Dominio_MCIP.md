@@ -9,6 +9,9 @@ dirección contra el canon vigente (Regla #6 · anti-amnesia) y refrendado por e
 `ADR-026` (Topología Funcional de dominios) · `ADR-023` (3 niveles) · `DICCIONARIO_CONCEPTUAL_QUIRA.md`
 (13 ADN · contenido sellado) · `ADR-030` (render).
 
+> **📚 Stack de Descripción de QUIRA · NIVEL 3 — Ingeniería (construcción de un dominio).** §6 (Matriz del MCD · 7 capas)
+> responde *"¿cómo construyo un MCD?"* — la **anatomía interna de UN dominio**, no del sistema completo. **Subordinado al Nivel 1** (rector · `docs/architecture/QUIRA_OS_ARCHITECTURE_v1.md`) y derivado del Nivel 2 (`docs/ARQUITECTURA_CANONICA.md`). Las "7 capas del MCD" ≠ las "7 capas de soberanía" del Nivel 1. Mapa: `governance/QUIRA_MASTER_INDEX.md §1.A`.
+
 ---
 
 ## Por qué existe (y por qué NO refunda)

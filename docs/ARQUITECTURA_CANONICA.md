@@ -2,6 +2,10 @@
 **CANON OFICIAL — No modificar sin validación del equipo Dylus Lab**
 *Formalizado: 2026-05-26 · Sprint 3 Semana 3 · Actualizado: 2026-05-26 · Decisión Doctrinal Dos Mundos*
 
+> **📚 Stack de Descripción de QUIRA · NIVEL 2 — Arquitectura (Infraestructura / Despliegue).**
+> Responde *"¿cómo funciona técnicamente QUIRA?"* — los **6 tiers tecnológicos** (Excel·Pipeline·Supabase·Streamlit·Obsidian·GitHub) + las reglas de flujo del dato. **Subordinado al Nivel 1** (rector) → `docs/architecture/QUIRA_OS_ARCHITECTURE_v1.md`.
+> Estas **"6 capas" ≠ las "7 capas de soberanía"** del Nivel 1 **≠ las "7 capas del MCD"** del Nivel 3 (`docs/adr/ADR-031 §6`): **son niveles distintos del mismo sistema, NO un conflicto de conteo.** Mapa rector: `governance/QUIRA_MASTER_INDEX.md §1.A`.
+
 > Este documento responde a la pregunta: **¿cómo fluye la información entre las seis capas que componen QUIRA Intelligence?**
 > Antes de agregar un componente nuevo, pregunta: ¿en qué capa vive? ¿Respeta las reglas de comunicación de esta arquitectura?
 > Si la respuesta no es clara: es futuro, no PMV.
@@ -25,6 +29,11 @@ GOLD MASTER  →  PIPELINE  →  SUPABASE  →  STREAMLIT
 ---
 
 ## 0.B Doctrina de Producto — Los Dos Mundos
+
+> **⚠️ Doctrina de negocio SUPERADA — banner de deferencia (Regla #6: NO se reescribe §0.B; se conserva como histórico).**
+> El modelo *"SaaS · el municipio compra · GAD = cliente"* de esta sección **quedó superado**. **Rector vigente: `docs/adr/ADR-024` + `governance/BOOT.md §LA TESIS`.**
+> Doctrina vigente (Javo): **GAD = sujeto observado** (no cliente) · vender software a GADs es **válido pero NO el negocio central** ·
+> **familia QUIRA = 6 productos** (Operaciones · Ciudadana · Institucional · Impact · Cooperación · Economic). El texto de §0.B abajo es **registro histórico**, no doctrina activa.
 
 *Decisión doctrinal establecida 2026-05-26. Permanente e irrevocable sin revisión formal.*
 

@@ -18,7 +18,7 @@
 | **Cómo se VE la UI** (card · dashboard · forma) | `docs/adr/ADR-030` | la forma · lee el contenido del Diccionario |
 | **Qué SIGNIFICA el dato** (causalidad relacional · circuitos · 4 congruencias · DCO) | Neo4j + `docs/sprint-c/CONSTITUCION_ONTOLOGICA_QUIRA.md` + ADR-016/017/019/021 | la doctrina · NO promedia |
 | **Cómo está CABLEADO el código** (estructura · dependencias · contratos) | CodeGraph + `graphify-out/graph.json` + `docs/architecture/QUIRA_OS_DEPENDENCY_ATLAS_v1.md` | el plano + invariantes |
-| **La ARQUITECTURA** (7 capas · motores · flujo del dato) | `docs/architecture/QUIRA_OS_ARCHITECTURE_v1.md` | el mapa del metro |
+| **La ARQUITECTURA del sistema · Soberanía** (Nivel 1 del Stack §1.A · 7 capas · motores) | `docs/architecture/QUIRA_OS_ARCHITECTURE_v1.md` | el mapa del metro · ontología del SO |
 | **La RUTA** (sprints · fases · productos · CAF) | `governance/HOJA_DE_RUTA_MAESTRA.md` | el plan que no se mueve |
 | **El paso de HOY** (estado vivo) | `governance/BOOT.md §AHORA` | el detalle vivo · se reemplaza, no se apila |
 | **Lenguaje público vs interno** (firewall) | `ADR-027` + `scripts/dev/firewall_dictionary.json` + `firewall_audit.py` | la frontera de exposición |
@@ -26,6 +26,25 @@
 | **Una decisión de arquitectura** | `docs/adr/ADR-NNN` (cronológico) | el porqué de cada decisión |
 | **Principios · invariantes · reglas de oro** | `CLAUDE.md` + `BOOT.md §Reglas de Oro` + Atlas §invariantes | los axiomas inviolables |
 | **Compilador · CID · desexcelización** | `ADR-028` (Compilador+CID) · `ADR-029` (Modelo Canónico) | la Vía Sistema (Dylus) |
+
+## 1.A · Stack de Descripción de QUIRA (Marco Fundacional + 3 niveles anidados — aquí se responde "¿6 o 7 capas?")
+
+> **Por qué existe:** tres docs describen "capas" con conteos distintos (6/7/7). **No es conflicto:** son
+> **NIVELES** distintos del mismo sistema (anidados, no rivales), **enmarcados por un Marco Fundacional que los condiciona a
+> todos** (la Constitución no es un peldaño: **funda**, como la de un país no pertenece a ningún poder). Dentro del stack, el
+> nivel de arriba restringe al de abajo; ninguno recalcula la verdad del otro. *(Ratificado por Javo · 2026-06-30 · deriva del canon — Regla #6, no lo redefine.)*
+
+| Rol en el stack | Responde | Rector | Conteo propio |
+|---|---|---|---|
+| **Marco Fundacional** (Doctrina · ontología del OBJETO) | ¿Qué ES la integridad territorial que QUIRA observa? | `docs/sprint-c/CONSTITUCION_ONTOLOGICA_QUIRA.md` (BOOT §32: "capa 0") | 4 macroejes · 12 dominios |
+| **Nivel 1 · Ontología del Sistema** (Soberanía) | ¿Qué ES QUIRA como SO · qué verdades gobierna? | `docs/architecture/QUIRA_OS_ARCHITECTURE_v1.md` ⭐**rector del stack** | 7 capas de soberanía |
+| **Nivel 2 · Arquitectura** (infra / despliegue) | ¿Cómo funciona técnicamente? | `docs/ARQUITECTURA_CANONICA.md` | 6 capas (tiers) |
+| **Nivel 3 · Ingeniería** (construir un dominio) | ¿Cómo construyo un MCD? | `docs/adr/ADR-031 §6` (Matriz del MCD) | 7 capas del MCD |
+
+**Reglas del stack:** (1) el archivo `…OS_ARCHITECTURE…` es el Nivel **1** (ontología/soberanía) pese a su nombre histórico
+— el rótulo "Arquitectura" (Nivel 2) vive en `ARQUITECTURA_CANONICA`; (2) no se renombra archivo sellado (Regla #5);
+(3) *"¿6 o 7 capas?"* → ninguna y las tres: **son niveles distintos**, cada uno con su conteo legítimo; (4) el **Marco
+Fundacional** (Constitución) condiciona a los 3 niveles — no es un peldaño ni compite con ellos.
 
 ## 2 · Las 3 columnas del ecosistema (quién hace qué · ADR-024/027/029)
 

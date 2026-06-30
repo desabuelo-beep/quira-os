@@ -3,6 +3,11 @@
 **2026-06-20 · documento maestro de arquitectura (Javo + mesa) · sintetiza la evidencia verificada en silicio**
 **Estado:** vivo · es el mapa único del sistema. Subordinados: `QUIRA_OS_MOTORES_CLI-Q.md` · `QUIRA_OS_INVENTARIO_CODIGO.md` · ADR-023/027/028.
 
+> **📚 Stack de Descripción de QUIRA · NIVEL 1 — Ontología del Sistema (Soberanía) · ⭐ rector del stack.**
+> Responde *"¿qué ES QUIRA como SO · qué verdades gobierna?"*. Las **7 capas de soberanía** de aquí son el ápice de la descripción del SISTEMA.
+> **El nombre de archivo dice "architecture" por historia; su contenido es el Nivel 1 (Ontología/Soberanía), NO el Nivel 2** (Regla #5: no se renombra archivo sellado).
+> Vecinos: ↑ **Marco Fundacional (Doctrina)** → `docs/sprint-c/CONSTITUCION_ONTOLOGICA_QUIRA.md` · ↓ **2 Arquitectura** (infra · 6 capas) → `docs/ARQUITECTURA_CANONICA.md` · ↓ **3 Ingeniería** (construir un dominio · 7 capas MCD) → `docs/adr/ADR-031 §6`. Mapa: `governance/QUIRA_MASTER_INDEX.md §1.A`.
+
 > **Qué es QUIRA OS (1 párrafo).** QUIRA dejó de ser "un Excel" y dejó de ser "un dashboard". Es un
 > **sistema operativo de inteligencia pública**: 7 capas que convierten una constitución matemática
 > (el Gold Master) en lenguaje institucional verificable, sin que ninguna capa recalcule la verdad de otra.

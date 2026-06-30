@@ -5,6 +5,12 @@
 > Los dashboards cambian veinte veces; la ontología ocurre una sola vez.
 > Una vez cerrada (Doctrina + Ontología + Equivalencias), el resto es ingeniería.
 
+> **📚 Stack de Descripción de QUIRA · MARCO FUNDACIONAL — Doctrina (ontología del OBJETO).** No es un peldaño del stack:
+> es el **marco que condiciona a los tres niveles** (1 Sistema · 2 Arquitectura · 3 Ingeniería) — como la Constitución de un país
+> no pertenece a ningún poder, sino que los **funda** a todos. Responde *"¿qué ES la integridad territorial que QUIRA observa?"*.
+> *Ojo (Regla #6):* el *"¿qué ES QUIRA?"* del **sistema-como-SO** vive en el **Nivel 1** → `docs/architecture/QUIRA_OS_ARCHITECTURE_v1.md`;
+> este **Marco** es la doctrina del **territorio observado**. Mapa rector del stack: `governance/QUIRA_MASTER_INDEX.md §1.A`.
+
 ---
 
 ## CAPA 0 · DOCTRINA QUIRA (lo permanente · lo que NO cambia aunque cambien los dominios)
