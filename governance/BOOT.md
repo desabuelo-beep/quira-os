@@ -45,7 +45,7 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
 🔧 **SPRINT CANON · Backbone:** PDOT 25 metas · POA 257 proy $39.3M · Presup 135 part $45.98M · PAC $29.85M (98.6%).
 🔌 **SERCOP→H06→cajón ✅ CABLEADO** (Normalizador). H06 §PUBLICADO (7 proc GAD $1.05M) · QINV-001 cruce plan↔publicado **3.5%**.
 🧭 **ADR-031 RATIF:** cajón=MCD · GoldMaster=MCM · MCIP 5 motores · build vert.+horiz.
-🔑 rollback `FREEZE_20260629_PRE_SERCOP`. Siguiente: MCD Planif. capa Neo4j (meta→POA→PAC→SERCOP). Pend: cédulas·IGAP Lit.D·Holding·GeoTwin.
+🔑 rollback `FREEZE_20260629_PRE_SERCOP`. Cable Relaciones ✅dry-run (puente partidas); falta AuraDB vivo + link POA→Meta(Excel). Pend: cédulas·IGAP·Holding·GeoTwin.
 🔶 **CI:** BOOT ≤6KB.
 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 ratificado · detalle en el ADR)
