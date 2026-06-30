@@ -112,6 +112,32 @@ por otro, todo existía pero nada conversaba—, el problema que el propio equip
 
 ---
 
+## §6 · La Matriz del MCD + nombres (asesor · 2ª vuelta · refrendado)
+
+**Nombres:** los cinco son **Motores Analíticos QUIRA** (trabajan PARA el MCD). "MCIP" queda como sigla de
+trabajo, no como objeto-marca — el protagonista es el MCD, no el motor (coherente con la tesis de este ADR:
+*el activo es el modelo, no el algoritmo*).
+
+**La Matriz del MCD — no para documentar, para TRABAJAR.** El tablero deja de ser Trello: *el tablero ES el
+MCD.* Cada MCD se construye y rastrea recorriendo estas 7 capas; el estado vivo va en `BOOT §AHORA`, no aquí.
+Construir un MCD = dejar cada capa CONECTADA — **NO re-ingerir lo que ya existe** (Regla #6).
+
+| Capa | Fuente | Responsable | Rol |
+|---|---|---|---|
+| Matemática | Excel (MCM) | Canon | la verdad (números) |
+| Datos vivos | APIs (SERCOP·SIGEF…) | Runtime | la realidad transaccional |
+| Normativa | Supabase pgvector | Corpus | el significado legal (`ADR-005`: memoria de acceso rápido) |
+| Relaciones | Neo4j | Grafo | la cadena causal meta→…→impacto (`ADR-005`: el cerebro) |
+| Memoria | Obsidian | Diseño | el porqué de las decisiones (vía QUIRA IA) |
+| Interpretación | QUIRA IA | Cognición | criterio · hipótesis · riesgos (`ADR-030` §4) |
+| Visualización | Cajón/GeoTwin | UI | una de muchas vistas — al final, no al inicio |
+
+> *Hallazgo (2026-06-29):* al instanciar la matriz para Planificación, **7/7 capas ya existen como fuente**;
+> el trabajo del MCD es **tejer** (cablear las 4 faltantes), no construir. La mesa subcontaba el canon
+> (Supabase normativa marcado "pendiente" cuando ya es ratificado en `ADR-005`).
+
+---
+
 ## Consecuencias
 
 - **Cero refundación.** El canon de 6 capas, el Diccionario (13 ADN) y `ADR-026`/`029` siguen vigentes; este
