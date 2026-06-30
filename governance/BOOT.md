@@ -40,11 +40,12 @@ dashboards, es lo que se define UNA vez. Sprint C: ontología antes que ingenier
 BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo que no se mueve.
 
 ## AHORA (estado vivo · historial → `governance/historico/BOOT_2026-06-17.md`)
-**CENTRO DE INTELIGENCIA TERRITORIAL · 2026-06-24.** QUIRA preventiva (no forense). Excel=Canon INVISIBLE. 4 dims: Gob·Terr·Intel·Converg.
-✅ **P1/P2:** kernel `umi.py`+`qinv.py` · **QINV-001 nivel BI** (2 pestañas·Plotly) · QINV-006 · d03=72.73.
-🔧 **SPRINT CANON · Backbone COMPLETO:** PDOT 25 metas · POA 257 proy $39.3M · Presup 135 partidas $45.98M · PAC total $29.85M (98.6%).
-🔌 **PAC per-proceso → conector SERCOP** datos abiertos (validado: `search_ocds`+`record` OCDS · 221 GAD). Conector ✅ subsanado (`fetch_sercop`). Falta: →silo H06→cajón.
-🔑 `FREEZE_20260623`=rollback. Pendiente: cédulas MENSUALES · IGAP Literal D · entidades Holding · GeoTwin.
+**CENTRO DE INTELIGENCIA TERRITORIAL · 2026-06-29.** QUIRA preventiva. Excel=Canon INVISIBLE.
+✅ **P1/P2:** kernel `umi.py`+`qinv.py` · **QINV-001 nivel BI** · QINV-006 · d03=72.73.
+🔧 **SPRINT CANON · Backbone:** PDOT 25 metas · POA 257 proy $39.3M · Presup 135 part $45.98M · PAC $29.85M (98.6%).
+🔌 **SERCOP→H06→cajón ✅ CABLEADO** (Normalizador: conector→silo→Canon). H06 §PUBLICADO (7 proc GAD-2026 $1.05M) · QINV-001 cruce plan↔publicado **3.5%**.
+🧭 **Visión (posterior):** cajones=**Modelos Canónicos**/MCIP · falta docs dominios/INV.
+🔑 `FREEZE_20260629_PRE_SERCOP`=rollback. Pendiente: cédulas MENSUALES·IGAP Lit.D·Holding(H06)·GeoTwin.
 🔶 **CI:** BOOT ≤6KB.
 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 ratificado · detalle en el ADR)

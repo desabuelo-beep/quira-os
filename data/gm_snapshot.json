@@ -4507,6 +4507,92 @@
       "global": "SAT-0 ACTIVO — Revisar coherencia POA-PAC",
       "global_temp": "alerta",
       "diagnostico": "Detectada brecha entre programación operativa y plan de contratación. Revisar alineación POA-PAC para fortalecer la ejecución del plan anual."
+    },
+    "publicado": {
+      "fuente": "SERCOP Contrataciones Abiertas (OCDS) · GAD · verificado en vivo",
+      "corte": "2026-06-29",
+      "n_procesos": 7,
+      "total_usd": 1048154.43,
+      "por_etapa": [
+        {
+          "etapa": "Planificado",
+          "n": 6
+        },
+        {
+          "etapa": "En proceso",
+          "n": 1
+        }
+      ],
+      "procesos": [
+        {
+          "cod": "ocds-5wno2w-CPC-GADMCM-2026-01-2896",
+          "desc": "CONTRATACIÓN DE CONSULTORÍA ESPECIALIZADA PARA EL DISEÑO, IMPLEMENTACIÓN Y ",
+          "partida": "730601",
+          "monto": 29956.88,
+          "monto_tipo": "referencial",
+          "etapa": "Planificado",
+          "fecha": "2026-06-18"
+        },
+        {
+          "cod": "ocds-5wno2w-LICO-GADMCM-2026-01-2896",
+          "desc": "SERVICIO DE REPARACIÓN Y ADECUACIÓN DE EDIFICACIONES PROPIAS, ALQUILADAS O ",
+          "partida": "530402",
+          "monto": 39912.6735,
+          "monto_tipo": "referencial",
+          "etapa": "Planificado",
+          "fecha": "2026-06-03"
+        },
+        {
+          "cod": "ocds-5wno2w-LICS-GADMCM-2026-01-2896",
+          "desc": "SERVICIO PARA LA GESTIÓN DE COBRO PERSUASIVO, PRE COACTIVA Y COACTIVO A LOS",
+          "partida": "730607",
+          "monto": 338066.76,
+          "monto_tipo": "referencial",
+          "etapa": "Planificado",
+          "fecha": "2026-05-19"
+        },
+        {
+          "cod": "ocds-5wno2w-LICS-GADMCM-2026-02-2896",
+          "desc": "SERVICIO DE MANTENIMIENTO PREVENTIVO Y CORRECTIVO PARA LOS VEHICULOS LIVIAN",
+          "partida": "730404",
+          "monto": 89961.7,
+          "monto_tipo": "referencial",
+          "etapa": "Planificado",
+          "fecha": "2026-06-04"
+        },
+        {
+          "cod": "ocds-5wno2w-LICS-GADMCM-2026-03-2896",
+          "desc": "SERVICIO PARA LA GESTIÓN DE COBRO PERSUASIVO, PRE COACTIVA Y COACTIVO A LOS",
+          "partida": "730607",
+          "monto": 338066.76,
+          "monto_tipo": "referencial",
+          "etapa": "Planificado",
+          "fecha": "2026-06-19"
+        },
+        {
+          "cod": "ocds-5wno2w-LICS-GADMCM-2026-04-2896",
+          "desc": "SERVICIO DE MANTENIMIENTO PREVENTIVO Y CORRECTIVO DE MAQUINARIAS MARCAS, JO",
+          "partida": "730404",
+          "monto": 212189.66,
+          "monto_tipo": "referencial",
+          "etapa": "Planificado",
+          "fecha": "2026-06-19"
+        },
+        {
+          "cod": "ocds-5wno2w-SIE-GADMCM-2026-02-2896",
+          "desc": "SIE-GADMCM-2026-02-2896",
+          "partida": "",
+          "monto": 0,
+          "monto_tipo": "sin_publicar",
+          "etapa": "En proceso",
+          "fecha": "2026-06-16"
+        }
+      ],
+      "cruce": {
+        "plan_pac_usd": 29851094.99,
+        "publicado_usd": 1048154.43,
+        "cobertura_pct": 3.5
+      }
     }
   }
 }

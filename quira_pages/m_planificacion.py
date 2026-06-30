@@ -110,6 +110,27 @@ def _gauge(pct: float, color: str) -> go.Figure:
                    threshold=dict(line=dict(color="#E8EDF4", width=2), thickness=0.85, value=70))))
 
 
+def _pub_bar(pub: dict) -> go.Figure:
+    """Procesos publicados en SERCOP por monto (lo que el municipio YA sacó a contratar)."""
+    procs = sorted(pub.get("procesos", []), key=lambda x: x.get("monto", 0) or 0)
+
+    def _lab(p):
+        d = (p.get("desc") or "").strip()
+        return (d[:30] + "…") if len(d) > 31 else (d or str(p.get("cod", ""))[-12:])
+
+    labels = [_lab(p) for p in procs]
+    vals = [p.get("monto", 0) or 0 for p in procs]
+    colors = ["#FFB020" if v else "#3A4658" for v in vals]
+    fig = go.Figure(go.Bar(
+        x=vals, y=labels, orientation="h", marker=dict(color=colors),
+        text=[f"${v:,.0f}" if v else "sin publicar" for v in vals],
+        textposition="auto", textfont=dict(family="JetBrains Mono", color="#E8EDF4", size=10),
+        hoverinfo="skip", cliponaxis=False, width=0.62))
+    fig.update_xaxes(visible=False)
+    fig.update_yaxes(tickfont=dict(color="#A8B4C8", size=9.5))
+    return fig
+
+
 # ═══════════════════════ HTML premium ═══════════════════════
 def _head(num: str, tit: str, sub: str) -> str:
     return (f'<div class="pl-h"><span class="pl-n">{num}</span><span class="pl-t">{tit}</span>'
@@ -189,6 +210,21 @@ def _tabla_presupuesto(p: dict) -> str:
     return _tbl(["Rubro", "Monto (USD)"], rows, mh=200)
 
 
+def _tabla_publicado(procs: list[dict]) -> str:
+    rows = ""
+    for x in procs:
+        monto = f'${x["monto"]:,.0f}' if x.get("monto") else "sin publicar"
+        cod = str(x.get("cod", "")).replace("ocds-5wno2w-", "")
+        et = str(x.get("etapa", ""))
+        ec = "#22C55E" if ("proceso" in et.lower() or "licit" in et.lower()) else "#FFB020"
+        rows += (f'<tr><td class="mt-id">{cod}</td><td class="mt-meta">{x.get("desc", "")}</td>'
+                 f'<td class="mt-dir">{x.get("partida", "") or "—"}</td>'
+                 f'<td class="mt-num">{monto}</td>'
+                 f'<td class="mt-dir">{x.get("monto_tipo", "")}</td>'
+                 f'<td><span style="color:{ec};font-size:10.5px;font-weight:700">● {et}</span></td></tr>')
+    return _tbl(["Proceso", "Objeto de contratación", "Partida", "Monto", "Valor", "Etapa"], rows)
+
+
 def _pills(comps: list[dict]) -> str:
     out = ""
     for it in comps:
@@ -214,6 +250,28 @@ def _cruce(plan: dict) -> str:
         if i < len(arrows):
             html += f'<div class="cr-a" style="color:{arrows[i]}">→</div>'
     return html + '</div>'
+
+
+def _publicado_band(pub: dict) -> str:
+    cr = pub.get("cruce", {}) or {}
+    plan = cr.get("plan_pac_usd", 0) or 0
+    publ = cr.get("publicado_usd", 0) or 0
+    pct = cr.get("cobertura_pct", 0) or 0
+    n = pub.get("n_procesos", 0)
+    corte = pub.get("corte", "")
+    band = (f'<div class="cr">'
+            f'<div class="cr-card"><div class="cr-c">PLAN PAC 2026</div><div class="cr-v">${plan/1e6:.2f}M</div>'
+            f'<div class="cr-l">planificado oficial</div></div>'
+            f'<div class="cr-a" style="color:#FFB020">→</div>'
+            f'<div class="cr-card"><div class="cr-c">PUBLICADO SERCOP</div><div class="cr-v">${publ/1e3:.0f}k</div>'
+            f'<div class="cr-l">{n} procesos · corte {corte}</div></div>'
+            f'<div class="cr-a" style="color:#FFB020">→</div>'
+            f'<div class="cr-card"><div class="cr-c">COBERTURA</div>'
+            f'<div class="cr-v" style="color:#FFB020">{pct}%</div>'
+            f'<div class="cr-l">del plan ya en SERCOP</div></div></div>')
+    bar = (f'<div style="height:9px;background:rgba(255,255,255,.06);border-radius:6px;overflow:hidden;margin:0 0 14px">'
+           f'<div style="height:100%;width:{max(pct, 0.6)}%;background:linear-gradient(90deg,#00D4FF,#FFB020)"></div></div>')
+    return band + bar
 
 
 def _stepper(sat_temp: str) -> str:
@@ -300,15 +358,21 @@ def _tab_datos(plan: dict) -> None:
     st.markdown(_div(), unsafe_allow_html=True)
 
     _pac_total = plan.get("pac", {}).get("total_usd", 0)
+    pub = plan.get("publicado", {}) or {}
     st.markdown(_head("3", "PAC — LA CONTRATACIÓN",
                       f"qué contrata el municipio · total oficial ${_pac_total:,.0f}"),
                 unsafe_allow_html=True)
     st.markdown(_intro(
-        f"El Plan Anual de Contratación oficial (SERCOP) asciende a <b>${_pac_total:,.0f}</b>. De ese total, "
-        f"<b>$19.74M se itemizan en 91 procesos</b> y el resto corresponde a régimen especial. El PAC cubre el "
-        f"<b>98.6% del presupuesto de inversión</b> — la cadena plan→gasto es coherente. El detalle por proceso "
-        f"(descripción · tipo · estado · adjudicación) se incorporará desde los <b>datos abiertos de SERCOP</b> "
-        f"—fuente estructurada y en tiempo real— en el próximo conector."), unsafe_allow_html=True)
+        f"El Plan Anual de Contratación oficial asciende a <b>${_pac_total:,.0f}</b> y cubre el "
+        f"<b>98.6% del presupuesto de inversión</b> — la cadena plan→gasto es coherente. El paso siguiente es "
+        f"contrastar ese plan con lo que el municipio <b>ya publicó en SERCOP</b>: el estado vivo de la "
+        f"contratación, traído y verificado en tiempo real desde los datos abiertos."), unsafe_allow_html=True)
+    if pub.get("procesos"):
+        st.markdown(_intro(
+            f"<b>Publicado en SERCOP al corte {pub.get('corte', '')}:</b> {pub.get('n_procesos', 0)} procesos por "
+            f"<b>${pub.get('total_usd', 0):,.0f}</b> (valor referencial de planificación). El detalle, proceso a "
+            f"proceso, directo de la fuente:"), unsafe_allow_html=True)
+        st.markdown(_tabla_publicado(pub.get("procesos", [])), unsafe_allow_html=True)
     st.markdown(_div(), unsafe_allow_html=True)
 
     st.markdown(_head("4", "PRESUPUESTO — EL RECURSO", f"con qué inversión se cuenta · corte {pres.get('corte', '')}"),
@@ -358,9 +422,30 @@ def _tab_analisis(plan: dict) -> None:
             f"tardía). El punto preventivo: que la contratación alcance al presupuesto."), unsafe_allow_html=True)
     st.markdown(_div(), unsafe_allow_html=True)
 
-    # C · La coherencia (SAT)
+    # C · Integridad contractual — plan ↔ publicado en SERCOP (Modelo de Integridad Contractual)
+    pub = plan.get("publicado", {}) or {}
+    if pub.get("procesos"):
+        cr = pub.get("cruce", {}) or {}
+        pct = cr.get("cobertura_pct", 0)
+        st.markdown(_head("C", "INTEGRIDAD CONTRACTUAL", "del plan a lo publicado en SERCOP · el cruce fino"),
+                    unsafe_allow_html=True)
+        st.markdown(_publicado_band(pub), unsafe_allow_html=True)
+        c1, c2 = st.columns([1.1, 1], gap="medium")
+        with c1:
+            _show(_pub_bar(pub), 220)
+        with c2:
+            st.markdown(_narr(
+                f"El plan de contratación suma <b>${cr.get('plan_pac_usd', 0)/1e6:.1f}M</b>; en SERCOP el municipio "
+                f"ya publicó <b>{pub.get('n_procesos', 0)} procesos por ${pub.get('total_usd', 0)/1e3:.0f}k</b> —el "
+                f"<b>{pct}%</b> del plan, al corte {pub.get('corte', '')}—. No es alarma: a esta altura del año la "
+                f"mayor parte del PAC sigue en planificación. Es el <b>ritmo de publicación</b> —lo que QUIRA sigue "
+                f"mes a mes para anticipar si la contratación llegará a tiempo al presupuesto."),
+                unsafe_allow_html=True)
+        st.markdown(_div(), unsafe_allow_html=True)
+
+    # D · La coherencia (SAT)
     sat = plan.get("sat0", {}) or {}
-    st.markdown(_head("C", "LA COHERENCIA", "la señal preventiva · el análisis duro de QUIRA"),
+    st.markdown(_head("D", "LA COHERENCIA", "la señal preventiva · el análisis duro de QUIRA"),
                 unsafe_allow_html=True)
     c1, c2 = st.columns([1, 1.1], gap="medium")
     with c1:
@@ -377,7 +462,7 @@ def _tab_analisis(plan: dict) -> None:
     poa = plan.get("poa_detalle", [])
     if poa:
         st.markdown(_div(), unsafe_allow_html=True)
-        st.markdown(_head("D", "EL RITMO DEL PLAN", "cómo se distribuye la operación en el año (POA 2026)"),
+        st.markdown(_head("E", "EL RITMO DEL PLAN", "cómo se distribuye la operación en el año (POA 2026)"),
                     unsafe_allow_html=True)
         c1, c2 = st.columns([1.3, 1], gap="medium")
         with c1:

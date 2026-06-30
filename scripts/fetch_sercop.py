@@ -86,28 +86,41 @@ def _get(endpoint: str, params: dict) -> dict | None:
 # ══════════════════════════════════════════════════════════════════════════════
 # OBTENCIÓN (API actual: search_ocds + record)
 # ══════════════════════════════════════════════════════════════════════════════
-def buscar(year: int, search: str, buyer: str | None = None, max_pages: int = 25) -> list[dict]:
-    """Lista de procesos (ocid·buyer·date) por año + palabra clave (+ filtro buyer)."""
-    out, page = [], 1
-    while page <= max_pages:
-        params = {"year": year, "search": search, "page": page}
-        if buyer:
-            params["buyer"] = buyer
-        d = _get("search_ocds", params)
-        if not d:
-            break
-        for it in d.get("data", []):
-            out.append({"ocid": it.get("ocid"), "buyer": it.get("buyer"),
-                        "date": it.get("date"), "locality": it.get("locality")})
-        if page >= int(d.get("pages", 1) or 1):
-            break
-        page += 1
-        time.sleep(0.3)
-    return out
+def buscar(year: int, search: str, buyer: str | None = None, max_pages: int = 25,
+           passes: int = 3) -> list[dict]:
+    """Lista de procesos ÚNICOS (ocid·buyer·date) por año + palabra clave (+ filtro buyer).
+
+    El `search_ocds` es inestable: cada llamada puede omitir ±1 proceso en el borde de
+    página (universo `total` estable, muestreo no). Para un corte DEFENDIBLE del Canon
+    unimos `passes` recorridos FRESCOS (sin caché) → conjunto completo y reproducible.
+    Orden determinista por ocid.
+    """
+    uniq: dict[str, dict] = {}
+    for _ in range(max(1, passes)):
+        page = 1
+        while page <= max_pages:
+            params: dict = {"year": year, "search": search, "page": page}
+            if buyer:
+                params["buyer"] = buyer
+            d = api_get(f"{SERCOP_API}/search_ocds", params)  # fresco: capta la variación
+            if not d:
+                break
+            for it in d.get("data", []):
+                oc = it.get("ocid")
+                if oc and oc not in uniq:
+                    uniq[oc] = {"ocid": oc, "buyer": it.get("buyer"),
+                                "date": it.get("date"), "locality": it.get("locality")}
+            if page >= int(d.get("pages", 1) or 1):
+                break
+            page += 1
+            time.sleep(0.2)
+    return sorted(uniq.values(), key=lambda x: x["ocid"] or "")
 
 
 def detalle(ocid: str) -> dict:
-    """Detalle OCDS: monto · partida · descripción · etapa(tag) · estado · proveedor."""
+    """Detalle OCDS por proceso (estable: el `record` es por-ocid → reproducible).
+    monto sigue jerarquía adjudicado > licitado > referencial; `monto_tipo` lo declara
+    para no mezclar manzanas con naranjas en el Canon."""
     d = _get("record", {"ocid": ocid})
     rels = (d or {}).get("releases", [])
     if not rels:
@@ -119,11 +132,11 @@ def detalle(ocid: str) -> dict:
     pl = rel.get("planning") or {}
     bud = pl.get("budget") or {}
     out["partida"] = bud.get("id")
-    out["monto"] = (bud.get("amount") or {}).get("amount")
     out["descripcion"] = pl.get("rationale") or ""
+    monto, tipo = (bud.get("amount") or {}).get("amount"), "referencial"
     t = rel.get("tender") or {}
     if (t.get("value") or {}).get("amount") is not None:
-        out["monto"] = t["value"]["amount"]
+        monto, tipo = t["value"]["amount"], "licitado"
     if t.get("title"):
         out["descripcion"] = t["title"]
     if t.get("procurementMethod"):
@@ -132,10 +145,15 @@ def detalle(ocid: str) -> dict:
         out["estado"] = t["status"]
     aw = rel.get("awards") or []
     if aw:
+        av = (aw[0].get("value") or {}).get("amount")
+        if av is not None:
+            monto, tipo = av, "adjudicado"
         sups = aw[0].get("suppliers") or []
         if sups:
             out["proveedor"] = sups[0].get("name")
         out["estado"] = aw[0].get("status", out.get("estado"))
+    out["monto"] = monto
+    out["monto_tipo"] = tipo if monto is not None else "sin_publicar"
     return out
 
 
@@ -146,10 +164,16 @@ def build_contratacion_block(year: int, search: str, buyer_match: str = "") -> d
     """Construye el bloque 'contratacion' (procesos + conteos por etapa + alertas)
     de una entidad. `search` = palabra clave; `buyer_match` acota al comprador exacto."""
     lista = buscar(year, search)
-    procesos = []
+    procesos, seen = [], set()
     for it in lista:
-        if not buyer_match or buyer_match.upper() in (it.get("buyer") or "").upper():
-            procesos.append(detalle(it["ocid"]))
+        if buyer_match and buyer_match.upper() not in (it.get("buyer") or "").upper():
+            continue
+        oc = it.get("ocid")
+        if not oc or oc in seen:
+            continue
+        seen.add(oc)
+        procesos.append(detalle(oc))
+    procesos.sort(key=lambda p: p.get("ocid") or "")
 
     conteos: dict[str, int] = {}
     total_usd = 0.0
@@ -178,7 +202,7 @@ def build_contratacion_block(year: int, search: str, buyer_match: str = "") -> d
         "conteos_por_etapa": conteos,
         "procesos": procesos,
         "alertas": alertas,
-        "via_api": "ocds_search_record",
+        "via_api": "ocds_search_record_union",
     }
 
 

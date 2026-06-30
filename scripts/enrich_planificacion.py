@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 from collections import Counter
 
 import openpyxl
@@ -214,6 +215,57 @@ def build_block() -> dict:
             "anual": monto,
         })
 
+    # ── E · PUBLICADO SERCOP — estado vivo verificado (H06 sección VERIFICADO) ─
+    # Normalizador→silo: el conector escribió aquí el estado real publicado en SERCOP.
+    # El cajón lo lee del Canon, NO de la API (Regla 1). Cruce plan-PAC ↔ publicado.
+    ws = sh("H06_S4")
+    pub_proc, pub_total, pub_etapas = [], 0.0, Counter()
+    pub_corte, start_pub = "", None
+    for r in range(1, ws.max_row + 1):
+        v = ws.cell(r, 1).value
+        if v and str(v).startswith("▌ PUBLICADO SERCOP 2026"):
+            start_pub = r
+            m = re.search(r"corte (\d{4}-\d{2}-\d{2})", str(v))
+            pub_corte = m.group(1) if m else ""
+            break
+    if start_pub:
+        for r in range(start_pub + 2, ws.max_row + 1):
+            ent, cod = ws.cell(r, 1).value, ws.cell(r, 2).value
+            if not cod or not str(cod).startswith("ocds"):
+                if str(cod) == "TOTAL VERIFICADO":
+                    continue
+                if not ent and not cod:
+                    break
+                continue
+            monto = ws.cell(r, 5).value
+            monto = monto if isinstance(monto, (int, float)) else 0
+            etapa = str(ws.cell(r, 7).value or "")
+            pub_total += monto
+            pub_etapas[etapa] += 1
+            pub_proc.append({
+                "cod": str(cod),
+                "desc": str(ws.cell(r, 3).value or "").strip()[:75],
+                "partida": str(ws.cell(r, 4).value or "").strip(),
+                "monto": monto,
+                "monto_tipo": str(ws.cell(r, 6).value or "").strip(),
+                "etapa": etapa,
+                "fecha": str(ws.cell(r, 8).value or "")[:10],
+            })
+    plan_pac = total_pac or 0
+    publicado = {
+        "fuente": "SERCOP Contrataciones Abiertas (OCDS) · GAD · verificado en vivo",
+        "corte": pub_corte,
+        "n_procesos": len(pub_proc),
+        "total_usd": round(pub_total, 2),
+        "por_etapa": [{"etapa": k, "n": v} for k, v in pub_etapas.most_common()],
+        "procesos": pub_proc,
+        "cruce": {
+            "plan_pac_usd": plan_pac,
+            "publicado_usd": round(pub_total, 2),
+            "cobertura_pct": round(pub_total / plan_pac * 100, 1) if plan_pac else 0,
+        },
+    }
+
     return {
         "_fuente": "PDOT (planificación) · POA (operación) · PAC (contratación) · coherencia · corte Q1-2026",
         "metas_total": metas_total,
@@ -228,6 +280,7 @@ def build_block() -> dict:
         "poa_total": poa_total,
         "poa_proyectos": poa_proyectos,
         "sat0": sat0,
+        "publicado": publicado,
     }
 
 
@@ -238,10 +291,13 @@ def main() -> None:
     snap["planificacion"] = block
     with open(SNAP, "w", encoding="utf-8") as f:
         json.dump(snap, f, ensure_ascii=False, indent=2)
+    pub = block["publicado"]
     print("OK - bloque 'planificacion' escrito en gm_snapshot.json")
     print(f"   metas={block['metas_total']} · direcciones={block['n_direcciones']} "
           f"· PAC=${block['pac']['total_usd']:,} ({block['pac']['n_procesos']} proc) "
           f"· SAT-0={block['sat0']['global']}")
+    print(f"   PUBLICADO SERCOP: {pub['n_procesos']} proc · ${pub['total_usd']:,.2f} "
+          f"· cobertura {pub['cruce']['cobertura_pct']}% del plan-PAC (corte {pub['corte']})")
 
 
 if __name__ == "__main__":
