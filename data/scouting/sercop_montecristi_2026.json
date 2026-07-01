@@ -1,0 +1,95 @@
+{
+  "year": 2026,
+  "fuente": "SERCOP OCDS · montecristi · GOBIERNO AUTONOMO",
+  "fecha_corte": "2026-06-24",
+  "n_procesos": 7,
+  "total_usd": 1048154.43,
+  "conteos_por_etapa": {
+    "planning": 6,
+    "active": 1
+  },
+  "procesos": [
+    {
+      "ocid": "ocds-5wno2w-LICS-GADMCM-2026-01-2896",
+      "tag": [
+        "planning"
+      ],
+      "fecha": "2026-05-19T00:00:00-05:00",
+      "buyer": "GOBIERNO AUTONOMO DESCENTRALIZADO MUNICIPAL DEL CANTON MONTECRISTI",
+      "partida": "730607",
+      "monto": 338066.76,
+      "descripcion": "SERVICIO PARA LA GESTIÓN DE COBRO PERSUASIVO, PRE COACTIVA Y COACTIVO A LOS DEUDORES DEL GOBIERNO AUTÓNOMO DESCENTRALIZADO DEL CANTÓN MONTECRISTI"
+    },
+    {
+      "ocid": "ocds-5wno2w-SIE-GADMCM-2026-02-2896",
+      "tag": [
+        "planning",
+        "tender"
+      ],
+      "fecha": "2026-06-16T11:16:01-05:00",
+      "buyer": "GOBIERNO AUTONOMO DESCENTRALIZADO MUNICIPAL DEL CANTON MONTECRISTI",
+      "partida": null,
+      "monto": null,
+      "descripcion": "SIE-GADMCM-2026-02-2896",
+      "metodo": "open",
+      "estado": "active"
+    },
+    {
+      "ocid": "ocds-5wno2w-LICS-GADMCM-2026-02-2896",
+      "tag": [
+        "planning"
+      ],
+      "fecha": "2026-06-04T00:00:00-05:00",
+      "buyer": "GOBIERNO AUTONOMO DESCENTRALIZADO MUNICIPAL DEL CANTON MONTECRISTI",
+      "partida": "730404",
+      "monto": 89961.7,
+      "descripcion": "SERVICIO DE MANTENIMIENTO PREVENTIVO Y CORRECTIVO PARA LOS VEHICULOS LIVIANOS, TANQUEROS Y GRUA PERTENECIENTE AL GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DEL CANTÓN MONTECRISTI."
+    },
+    {
+      "ocid": "ocds-5wno2w-LICO-GADMCM-2026-01-2896",
+      "tag": [
+        "planning"
+      ],
+      "fecha": "2026-06-03T00:00:00-05:00",
+      "buyer": "GOBIERNO AUTONOMO DESCENTRALIZADO MUNICIPAL DEL CANTON MONTECRISTI",
+      "partida": "530402",
+      "monto": 39912.6735,
+      "descripcion": "SERVICIO DE REPARACIÓN Y ADECUACIÓN DE EDIFICACIONES PROPIAS, ALQUILADAS O EN CONVENIO DE USO POR PARTE DEL GOBIERNO AUTÓNOMO DESCENTRALIZADO DEL CANTÓN MONTECRISTI"
+    },
+    {
+      "ocid": "ocds-5wno2w-CPC-GADMCM-2026-01-2896",
+      "tag": [
+        "planning"
+      ],
+      "fecha": "2026-06-18T00:00:00-05:00",
+      "buyer": "GOBIERNO AUTONOMO DESCENTRALIZADO MUNICIPAL DEL CANTON MONTECRISTI",
+      "partida": "730601",
+      "monto": 29956.88,
+      "descripcion": "CONTRATACIÓN DE CONSULTORÍA ESPECIALIZADA PARA EL DISEÑO, IMPLEMENTACIÓN Y ACOMPAÑAMIENTO DEL SISTEMA DE GESTIÓN DE SEGURIDAD INTEGRAL DEL GOBIERNO AUTÓNOMO DESCENTRALIZADO DEL CANTÓN MONTECRISTI"
+    },
+    {
+      "ocid": "ocds-5wno2w-LICS-GADMCM-2026-03-2896",
+      "tag": [
+        "planning"
+      ],
+      "fecha": "2026-06-19T00:00:00-05:00",
+      "buyer": "GOBIERNO AUTONOMO DESCENTRALIZADO MUNICIPAL DEL CANTON MONTECRISTI",
+      "partida": "730607",
+      "monto": 338066.76,
+      "descripcion": "SERVICIO PARA LA GESTIÓN DE COBRO PERSUASIVO, PRE COACTIVA Y COACTIVO A LOS DEUDORES DEL GOBIERNO AUTÓNOMO DESCENTRALIZADO DEL CANTÓN MONTECRISTI"
+    },
+    {
+      "ocid": "ocds-5wno2w-LICS-GADMCM-2026-04-2896",
+      "tag": [
+        "planning"
+      ],
+      "fecha": "2026-06-19T00:00:00-05:00",
+      "buyer": "GOBIERNO AUTONOMO DESCENTRALIZADO MUNICIPAL DEL CANTON MONTECRISTI",
+      "partida": "730404",
+      "monto": 212189.66,
+      "descripcion": "SERVICIO DE MANTENIMIENTO PREVENTIVO Y CORRECTIVO DE MAQUINARIAS MARCAS, JOHN DEERE, BOMAG, KOMATSU Y VEHÍCULOS MARCA HINO E INTERNACIONAL DEL GOBIERNO AUTÓNOMO DESCENTRALIZADO DEL CANTÓN MONTECRISTI"
+    }
+  ],
+  "alertas": [],
+  "via_api": "ocds_search_record"
+}
