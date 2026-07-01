@@ -43,7 +43,7 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
 **CENTRO DE INTELIGENCIA TERRITORIAL · 2026-06-29.** QUIRA preventiva. Excel=Canon INVISIBLE.
 ✅ **P1/P2:** kernel `umi.py`+`qinv.py` · **QINV-001 nivel BI** · QINV-006 · d03=72.73.
 🔧 **SPRINT CANON · Backbone:** PDOT 25 metas · POA 257 proy $39.3M · Presup 135 part $45.98M · PAC $29.85M (98.6%).
-🔌 **MCD Planificación ✅ 7 CABLES en el cajón:** Excel·SERCOP(3.5%)·Relacional(puente)·Normativo(2608 arts)·IA(Haiku)·Visual·Memoria(repo).
+🔌 **MCD Planificación · arquitectura 7 cables ✅ · impl. desacoplada de infra:** Excel·SERCOP(3.5%)·Relacional(puente)·Normativo(2608)·IA(Haiku)·Visual·Memoria(repo).
 🧭 **ADR-031 RATIF:** cajón=MCD · GoldMaster=MCM · MCIP 5 motores · build vert.+horiz. **Stack-Descrip** Marco Fund.+3 niv (Sistema>Arquit>Ingen · Index §1.A).
 🔑 rollback `FREEZE_20260629_PRE_SERCOP`. Neo4j server pend (Aura caído·SAC·no urge). Falta link POA→Meta(Excel). Pend: cédulas·IGAP·Holding·GeoTwin·MCDs sig.
 🔶 **CI:** BOOT ≤6KB.
