@@ -329,12 +329,40 @@ hr.pl-div{border:none;border-top:1px solid rgba(255,255,255,.07);margin:16px 0}
 </style>"""
 
 
+def _base_normativa(bn: dict) -> str:
+    cov = bn.get("cobertura", [])
+    chips = "".join(
+        f'<span class="mt-tag" style="color:#00D4FF;border-color:#00D4FF44;margin-right:6px">'
+        f'{c["sigla"]} · {c["chunks"]:,}</span>' for c in cov)
+    anc = bn.get("articulo_ancla") or {}
+    anc_html = ""
+    if anc.get("texto"):
+        anc_html = (
+            f'<div style="margin-top:10px;padding:9px 12px;background:rgba(0,212,255,.03);'
+            f'border-left:2px solid #00D4FF55;border-radius:6px">'
+            f'<div style="font-size:9.5px;color:#5A6B7E;font-family:JetBrains Mono,monospace">'
+            f'COOTAD Art. {anc.get("articulo", "")} · verificado SHA-256 {anc.get("sha256", "")}</div>'
+            f'<div style="font-size:11.5px;color:#C7D2E0;line-height:1.5;margin-top:4px">{anc["texto"]}…</div></div>')
+    return f'<div style="margin-bottom:4px;line-height:2">{chips}</div>{anc_html}'
+
+
 def _tab_datos(plan: dict) -> None:
     metas = plan.get("metas_detalle", [])
     poa = plan.get("poa_detalle", [])
     pac = plan.get("pac_detalle", [])
     pres = plan.get("presupuesto", {}) or {}
     mmap = {m["id"]: m for m in metas}
+
+    bn = plan.get("base_normativa") or {}
+    if bn.get("cobertura"):
+        st.markdown(_head("0", "BASE NORMATIVA",
+                          f"el plan descansa sobre {bn.get('total_chunks', 0):,} artículos verificados · firma SHA-256"),
+                    unsafe_allow_html=True)
+        st.markdown(_intro("Antes de las metas, el marco legal que obliga y habilita el plan. Cada norma vive "
+                           "verificada en el corpus documental del Estado —no citada de memoria (Regla 3)—: "
+                           "QUIRA lee la ley, no la inventa."), unsafe_allow_html=True)
+        st.markdown(_base_normativa(bn), unsafe_allow_html=True)
+        st.markdown(_div(), unsafe_allow_html=True)
 
     st.markdown(_head("1", "PDOT — EL PLAN", "lo que el municipio se comprometió a lograr · 25 metas 2023-2027"),
                 unsafe_allow_html=True)
