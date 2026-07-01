@@ -437,6 +437,7 @@
   "planificacion": {
     "_fuente": "PDOT (planificación) · POA (operación) · PAC (contratación) · coherencia · corte Q1-2026",
     "metas_total": 25,
+    "cobertura_metas_poa": 96.0,
     "metas_detalle": [
       {
         "id": "SC-I-N-01",
@@ -4593,78 +4594,6 @@
         "publicado_usd": 1048154.43,
         "cobertura_pct": 3.5
       }
-    },
-    "criterio_ia": {
-      "texto": "**Criterio metodológico**\n\nMontecristi mantiene **correspondencia formal entre su PDOT y su ciclo operativo 2026**: las 25 metas plurianuales (8 críticas) se traducen en 257 proyectos operativos financiados con $39.3M. Sin embargo, la ejecución real muestra una **senda de desarrollo desacelerada**: al corte del año, apenas el 6.4% de la inversión codificada ($30.3M) se ha materializado. Este desfase inicial es típico en municipios con calendarios de contratación atrasados, pero requiere atención porque solo el 3.5% del PAC 2026 ha sido publicado en procesos de compra pública.\n\nLa **señal preventiva activa** entre plan y contratación sugiere un cuello de botella: los proyectos están diseñados (coherencia PDOT↔POA), el presupuesto está asignado (coherencia POA↔inversión codificada), pero la velocidad de contratación es baja. Si esta inercia se mantiene, las metas críticas correrán riesgo de incumplimiento en el horizonte 2027. El PAC cubre el 98.6% de la inversión codificada (buena señal de previsión), pero su publicación efectiva debe acelerarse en los próximos trimestres.\n\n**Recomendación:** Realice un diagnóstico de cuellos de botella en la gestión de contratación pública (tiempos de elaboración de bases, disponibilidad de profesionales en compras) y publique al menos el 25% del PAC 2026 en los próximos 60 días, priorizando los 8 proyectos de las metas críticas.",
-      "modelo": "claude-haiku-4-5",
-      "fecha": "2026-06-30"
-    },
-    "base_normativa": {
-      "fuente": "Corpus normativo verificado (Supabase · pgvector · sha256)",
-      "fecha": "2026-06-30",
-      "total_chunks": 2608,
-      "cobertura": [
-        {
-          "sigla": "CE",
-          "nombre": "Constitución del Ecuador",
-          "chunks": 465
-        },
-        {
-          "sigla": "COOTAD",
-          "nombre": "Código Orgánico de Organización Territorial (COOTAD)",
-          "chunks": 632
-        },
-        {
-          "sigla": "PDOT-MONTECRISTI",
-          "nombre": "Plan de Desarrollo y Ordenamiento Territorial (PDOT)",
-          "chunks": 594
-        },
-        {
-          "sigla": "PND-2025",
-          "nombre": "Plan Nacional de Desarrollo",
-          "chunks": 422
-        },
-        {
-          "sigla": "RLOSNCP",
-          "nombre": "Reglamento a la Ley de Contratación Pública",
-          "chunks": 495
-        }
-      ],
-      "articulo_ancla": {
-        "norma": "COOTAD",
-        "articulo": 238,
-        "sha256": "f682cd88ba15",
-        "texto": "Art. 238.- Participación ciudadana en la priorización del gasto.- Las prioridades de gasto se establecerán desde las unidades básicas de participación y serán recogidas por la asamblea local o el organismo que en cada gobierno autónomo descentralizado se establezca como máxima instancia de participación. El cálculo definitivo de ingresos será presentado en el mismo plazo del artículo anterior, por el ejecutivo, en la"
-      }
-    },
-    "memoria_diseno": {
-      "fuente": "Registro de diseño del repo (ADRs · BOOT · governance/historico) — no el vault de dominio",
-      "fecha": "2026-06-30",
-      "principios": [
-        "Preventiva, no forense: QUIRA señala dónde cerrar la coherencia ANTES de que el plan se erosione en el camino al gasto — no juzga el pasado.",
-        "El cajón es un modelo, no un tablero: integra las capas del ecosistema (Canon, datos vivos, relaciones, normativa, criterio) para responder UNA sola pregunta del dominio.",
-        "Lenguaje de gestión pública, nunca acusatorio: se muestran coherencias y brechas, jamás culpables.",
-        "QUIRA lee y conecta lo que ya existe; no inventa cifras ni estructuras — la verdad vive verificada en el Canon, la IA solo razona sobre ella."
-      ],
-      "fuentes": [
-        {
-          "adr": "ADR-031",
-          "titulo": "ADR-031 · Modelos Canónicos de Dominio (MCD) y el MCIP — reconciliación, no refu"
-        },
-        {
-          "adr": "ADR-025",
-          "titulo": "ADR-025 — Principio de Alertas QUIRA: Coherencia Institucional"
-        },
-        {
-          "adr": "ADR-030",
-          "titulo": "ADR-030 · Canon de Expresión de Interfaz QUIRA"
-        },
-        {
-          "adr": "ADR-023",
-          "titulo": "ADR-023 — Arquitectura de Tres Niveles QUIRA"
-        }
-      ],
-      "n_decisiones_documentadas": 16
     }
   }
 }

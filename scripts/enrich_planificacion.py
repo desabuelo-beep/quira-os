@@ -266,9 +266,18 @@ def build_block() -> dict:
         },
     }
 
+    # ── Cobertura de metas con dotación POA (H16b!B12 · cirugía 2026-07-01) ────
+    # 24/25 metas del PDOT tienen presupuesto POA del GAD; la restante (AH-I-X-03,
+    # grupos prioritarios · Art. 249 COOTAD) la ejecuta el Patronato adscrito (d12).
+    try:
+        cobertura_metas_poa = round((sh("H16b")["B12"].value or 0) * 100, 1)
+    except Exception:
+        cobertura_metas_poa = None
+
     return {
         "_fuente": "PDOT (planificación) · POA (operación) · PAC (contratación) · coherencia · corte Q1-2026",
         "metas_total": metas_total,
+        "cobertura_metas_poa": cobertura_metas_poa,
         "metas_detalle": list(metas.values()),
         "competencia": competencia,
         "direcciones": direcciones,

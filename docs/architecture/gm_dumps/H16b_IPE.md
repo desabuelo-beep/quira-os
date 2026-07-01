@@ -1,9 +1,9 @@
 # H16b_IPE — volcado determinista (fórmulas + etiquetas)
-fuente: `SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx` · filas=13 · pobladas=11 · fórmulas=9
-inputs(lee de): H07_S5_FINANCIERO_eSIGEF, H12_MOTOR_ICPI_CANÓNICO
+fuente: `SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx` · pobladas=14 · fórmulas=10 · +Cobertura_Metas_POA (cirugía 2026-07-01)
+inputs(lee de): H07_S5_FINANCIERO_eSIGEF, H12_MOTOR_ICPI_CANÓNICO, H05_S3_OPERATIVO_POA
 outputs(alimenta a): H00_ÍNDICE, H28_RESUMEN_EJECUTIVO
 refs no resueltas: #H00_ÍNDICE
-MARCADORES: A3: Mide qué fracción del gasto de inversión está vinculada a metas PDOT.  · C6: ⚠️ POA no disponible para triangulación 2025
+MARCADORES: A3: Mide qué fracción del gasto de inversión está vinculada a metas PDOT. · C12: Cobertura PLANIFICADA (no IPE-$) · IPE-$ ejecutado pendiente camino A
 
 ## FÓRMULAS
 ```
@@ -16,6 +16,7 @@ B8	=IFERROR(H07_S5_FINANCIERO_eSIGEF!B19*0.84,0)
 B9	=IF(B7=0,0,B8/B7)
 B10	=IF(B9>=0.9,"🔵 Excelencia en Gobernanza",IF(B9>=0.7,"🟢 Gestión por Mandato",IF(B9>=0.4,"🟡 Transición Crítica",IF(B9>=0.2,"🟠 Gestión por Ocurrencia","🔴 Ruptura Sistémica"))))
 B11	=IFERROR(B6,0.7)
+B12	=IFERROR(COUNTIF(H05_S3_OPERATIVO_POA!E14:E38,">0")/COUNT(H05_S3_OPERATIVO_POA!E14:E38),0)
 ```
 
 ## ETIQUETAS / DATOS (tope 600)
@@ -34,6 +35,8 @@ C8	Inversión_Vinculada = Devengado_2026 × IPE_2025_Factor (0.84). Actualizar c
 A9	IPE_2026_Dinámico
 A10	Alerta_IPE
 A11	Valor_2025_Referencia
+A12	Cobertura_Metas_POA_2026
+C12	Metas PDOT con presupuesto POA>0 / total metas (PLANIFICADO, no ejecutado). IPE-$ ejecutado (B9, proxy x0.84) PENDIENTE camino A: etiquetar devengado eSIGEF por meta. Añadido 2026-07-01 · aditivo · B33 intacta.
 A13	▌ NOTA METODOLÓGICA
 B13	IPE 2026 calculado con proxy desde H07 (Devengado × Factor_PDOT). IPE_Actual=84% · Nivel: Gestión por Mandato. Validar con POA 2026 oficial cuando esté en H05.
 ```

@@ -1,21 +1,18 @@
 """
-QUIRA OS — QINV-001 · Planificación Estratégica (Investigación) · 2 pestañas BI
+QUIRA OS — QINV-001 · Planificación Estratégica · lectura documental (flujo único)
 ═══════════════════════════════════════════════════════════════════════════════
-Instancia del kernel InvestigacionQUIRA (UMI). Analiza la COLUMNA VERTEBRAL del
-municipio: PDOT → POA → PRESUPUESTO → PAC → EJECUCIÓN. Regla 20/70/10, preventiva.
+Reescritura 2026-07-01 (Javo): el cajón deja de ser un "expediente forense" y pasa
+a ser una LECTURA DOCUMENTAL continua — sin pestañas, sin encabezado de investigación,
+sin capa de IA (la IA es conversacional, en otra pantalla), sin memoria de diseño.
+La gente REVISA todo aquí; si tiene dudas, consulta a QUIRA IA conversando (otra capa).
 
-Estructura (consenso Javo 2026-06-23): dos pestañas (eje Datos | Análisis), cada
-una con scroll vertical:
-  📋 DATOS    — las tablas duras, reflejo del Excel, con explicación (PDOT·POA·PAC·Presupuesto)
-  🔍 ANÁLISIS — las gráficas + las RELACIONES entre tablas (la coherencia: el oro)
-El veredicto (LECTURA + CONCLUSIÓN) va debajo de ambas, siempre visible.
+Estructura (un solo scroll, por eslabón de la columna vertebral):
+  cobertura → resumen backbone → PDOT (tabla+gráfica+texto) → POA → PAC → PRESUPUESTO
+  → COHERENCIA → cierre factual corto.
 
-Las relaciones se CALCULAN del dato validado del Excel (no se inventan · Regla 3):
-"$101k de $30.3M = 0.3%" es matemática sobre el canon. El Excel pone la verdad,
-QUIRA pone el cruce. NO confla escalas (POA total ≠ inversión codificada ≠ PAC).
-
-NO mezcla otros cajones (la fidelidad electoral es de Gobernanza d03; el análisis
-por dirección es de Salud Institucional d06). Firewall: ningún código interno.
+Ley INLINE en las explicaciones (solo ley + art. VERIFICADO · Regla 3 — no se inventan
+artículos). Hoy verificado: COOTAD Art. 238 (priorización del gasto). Artículos por
+eslabón = Normativo v2 (verificar del corpus). Firewall: ningún código interno.
 Dylus Lab © 2026
 """
 from __future__ import annotations
@@ -23,17 +20,11 @@ from __future__ import annotations
 import plotly.graph_objects as go
 import streamlit as st
 
-from quira_pages.umi import InvestigacionQUIRA
-
-_PREGUNTA = (
-    "¿La institución sostiene la correspondencia con sus metas plurianuales, "
-    "o registra desviaciones en su senda de desarrollo?"
-)
 _UMBRAL = 70.0
-_T = {"critico": "#FF4D4D", "alerta": "#FFB020", "verde": "#22C55E",
-      "normal": "#00D4FF", "dim": "#5A6B7E"}
-_COMP = {"Exclusiva Crítica": "#00D4FF", "Concurrente Crítica": "#3BA7D9",
-         "Exclusiva Importante": "#8892B0", "Concurrente": "#5A6B7E"}
+_T = {"critico": "#FF5A5A", "alerta": "#FFB020", "verde": "#2DD46F",
+      "normal": "#22D3EE", "dim": "#7E8BA3"}
+_COMP = {"Exclusiva Crítica": "#22D3EE", "Concurrente Crítica": "#3BA7D9",
+         "Exclusiva Importante": "#9AA6BE", "Concurrente": "#7E8BA3"}
 
 
 def _cargar() -> dict:
@@ -52,12 +43,12 @@ def _cargar() -> dict:
     return out
 
 
-# ═══════════════════════ Plotly — tema premium oscuro ═══════════════════════
-def _show(fig: go.Figure, h: int = 220) -> None:
+# ═══════════════════════ Plotly — tema premium oscuro (fuentes ↑) ══════════════
+def _show(fig: go.Figure, h: int = 260) -> None:
     fig.update_layout(
         height=h, margin=dict(l=4, r=8, t=8, b=4),
         paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
-        font=dict(family="Inter, sans-serif", color="#A8B4C8", size=11), showlegend=False)
+        font=dict(family="Inter, sans-serif", color="#B8C4D6", size=13), showlegend=False)
     st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
 
 
@@ -65,48 +56,39 @@ def _donut(comp: list[dict]) -> go.Figure:
     labels = [c["label"] for c in comp]
     vals = [c["n"] for c in comp]
     fig = go.Figure(go.Pie(
-        labels=labels, values=vals, hole=0.64, sort=False, direction="clockwise",
-        marker=dict(colors=[_COMP.get(l, "#5A6B7E") for l in labels], line=dict(color="#0A0F19", width=2)),
-        textinfo="value", textfont=dict(family="JetBrains Mono", color="#E8EDF4", size=13), hoverinfo="skip"))
+        labels=labels, values=vals, hole=0.62, sort=False, direction="clockwise",
+        marker=dict(colors=[_COMP.get(l, "#7E8BA3") for l in labels], line=dict(color="#0A0F19", width=2)),
+        textinfo="value", textfont=dict(family="JetBrains Mono", color="#F0F4FA", size=16), hoverinfo="skip"))
     fig.add_annotation(text=f"<b>{sum(vals)}</b>", showarrow=False, y=0.52,
-                       font=dict(family="JetBrains Mono", color="#E8EDF4", size=24))
-    fig.add_annotation(text="metas", showarrow=False, y=0.30, font=dict(color="#5A6B7E", size=10))
+                       font=dict(family="JetBrains Mono", color="#F0F4FA", size=30))
+    fig.add_annotation(text="metas", showarrow=False, y=0.28, font=dict(color="#7E8BA3", size=13))
     return fig
 
 
 def _brechas(cod: float, dev: float, pac: float) -> go.Figure:
     fig = go.Figure(go.Bar(
         x=["Presupuesto<br>inversión", "Devengado<br>al corte", "PAC<br>contratado"],
-        y=[cod, dev, pac], marker=dict(color=["#00D4FF", "#FFB020", "#6E8CA8"]),
+        y=[cod, dev, pac], marker=dict(color=["#22D3EE", "#FFB020", "#6E8CA8"]),
         text=[f"${cod/1e6:.1f}M", f"${dev/1e6:.2f}M", f"${pac/1e3:.0f}k"],
-        textposition="outside", textfont=dict(family="JetBrains Mono", color="#E8EDF4", size=12),
+        textposition="outside", textfont=dict(family="JetBrains Mono", color="#F0F4FA", size=15),
         hoverinfo="skip", cliponaxis=False, width=0.55))
-    fig.update_xaxes(tickfont=dict(color="#A8B4C8", size=10))
+    fig.update_xaxes(tickfont=dict(color="#B8C4D6", size=13))
     fig.update_yaxes(visible=False)
     return fig
 
 
 def _cronograma(poa: list[dict]) -> go.Figure:
-    meses = ["E", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"]
+    meses = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
     serie = [0.0] * 12
     for x in poa:
         for i, v in enumerate(x.get("crono", [])[:12]):
             serie[i] += v if isinstance(v, (int, float)) else 0
     fig = go.Figure(go.Scatter(
-        x=meses, y=serie, mode="lines", fill="tozeroy", line=dict(color="#00D4FF", width=2.5),
-        fillcolor="rgba(0,212,255,0.10)", hoverinfo="skip"))
-    fig.update_xaxes(tickfont=dict(color="#A8B4C8", size=10), showgrid=False)
+        x=meses, y=serie, mode="lines", fill="tozeroy", line=dict(color="#22D3EE", width=3),
+        fillcolor="rgba(34,211,238,0.12)", hoverinfo="skip"))
+    fig.update_xaxes(tickfont=dict(color="#B8C4D6", size=12), showgrid=False)
     fig.update_yaxes(visible=False)
     return fig
-
-
-def _gauge(pct: float, color: str) -> go.Figure:
-    return go.Figure(go.Indicator(
-        mode="gauge+number", value=pct,
-        number=dict(suffix="%", font=dict(family="JetBrains Mono", color=color, size=24)),
-        gauge=dict(axis=dict(range=[0, 100], tickcolor="#46566A", tickfont=dict(color="#5A6B7E", size=9)),
-                   bar=dict(color=color, thickness=0.72), bgcolor="rgba(255,255,255,0.03)", borderwidth=0,
-                   threshold=dict(line=dict(color="#E8EDF4", width=2), thickness=0.85, value=70))))
 
 
 def _pub_bar(pub: dict) -> go.Figure:
@@ -115,7 +97,7 @@ def _pub_bar(pub: dict) -> go.Figure:
 
     def _lab(p):
         d = (p.get("desc") or "").strip()
-        return (d[:30] + "…") if len(d) > 31 else (d or str(p.get("cod", ""))[-12:])
+        return (d[:32] + "…") if len(d) > 33 else (d or str(p.get("cod", ""))[-12:])
 
     labels = [_lab(p) for p in procs]
     vals = [p.get("monto", 0) or 0 for p in procs]
@@ -123,14 +105,14 @@ def _pub_bar(pub: dict) -> go.Figure:
     fig = go.Figure(go.Bar(
         x=vals, y=labels, orientation="h", marker=dict(color=colors),
         text=[f"${v:,.0f}" if v else "sin publicar" for v in vals],
-        textposition="auto", textfont=dict(family="JetBrains Mono", color="#E8EDF4", size=10),
-        hoverinfo="skip", cliponaxis=False, width=0.62))
+        textposition="auto", textfont=dict(family="JetBrains Mono", color="#F0F4FA", size=12),
+        hoverinfo="skip", cliponaxis=False, width=0.64))
     fig.update_xaxes(visible=False)
-    fig.update_yaxes(tickfont=dict(color="#A8B4C8", size=9.5))
+    fig.update_yaxes(tickfont=dict(color="#B8C4D6", size=12))
     return fig
 
 
-# ═══════════════════════ HTML premium ═══════════════════════
+# ═══════════════════════ HTML premium (fuentes ↑) ═══════════════════════
 def _head(num: str, tit: str, sub: str) -> str:
     return (f'<div class="pl-h"><span class="pl-n">{num}</span><span class="pl-t">{tit}</span>'
             f'<span class="pl-s">{sub}</span></div>')
@@ -148,7 +130,7 @@ def _div() -> str:
     return '<hr class="pl-div">'
 
 
-def _tbl(headers: list[str], rows: str, mh: int = 250) -> str:
+def _tbl(headers: list[str], rows: str, mh: int = 300) -> str:
     th = "".join(f"<th>{h}</th>" for h in headers)
     return (f'<div class="mt-wrap" style="max-height:{mh}px"><table class="mt">'
             f'<thead><tr>{th}</tr></thead><tbody>{rows}</tbody></table></div>')
@@ -157,22 +139,12 @@ def _tbl(headers: list[str], rows: str, mh: int = 250) -> str:
 def _tabla_metas(metas: list[dict]) -> str:
     rows = ""
     for m in metas:
-        c = _COMP.get(m["competencia"], "#5A6B7E")
+        c = _COMP.get(m["competencia"], "#7E8BA3")
         rows += (f'<tr><td class="mt-id">{m["id"]}</td><td class="mt-sis">{m["sistema"]}</td>'
                  f'<td class="mt-meta">{m["meta"]}</td>'
-                 f'<td><span class="mt-tag" style="color:{c};border-color:{c}44">{m["competencia"]}</span></td>'
+                 f'<td><span class="mt-tag" style="color:{c};border-color:{c}55">{m["competencia"]}</span></td>'
                  f'<td class="mt-dir">{m["direccion"]}</td></tr>')
     return _tbl(["ID", "Sistema", "Meta plurianual 2023-2027", "Competencia", "Dirección"], rows)
-
-
-def _tabla_poa(poa: list[dict], mmap: dict) -> str:
-    rows = ""
-    for x in poa:
-        m = mmap.get(x["id"], {})
-        rows += (f'<tr><td class="mt-id">{x["id"]}</td><td class="mt-meta">{m.get("meta", "")[:60]}</td>'
-                 f'<td class="mt-dir">{m.get("direccion", "")}</td>'
-                 f'<td class="mt-num">${x["anual_usd"]:,.0f}</td></tr>')
-    return _tbl(["ID", "Meta", "Dirección responsable", "Monto anual planificado"], rows)
 
 
 def _tabla_proyectos(proys: list[dict]) -> str:
@@ -181,32 +153,19 @@ def _tabla_proyectos(proys: list[dict]) -> str:
         rows += (f'<tr><td class="mt-dir">{x["dir"]}</td><td class="mt-meta">{x["desc"]}</td>'
                  f'<td class="mt-id">{x["partida"]}</td>'
                  f'<td class="mt-num">${x["anual"]:,.0f}</td></tr>')
-    return _tbl(["Dirección", "Proyecto / actividad", "Partida", "Monto anual"], rows, mh=320)
-
-
-def _tabla_pac(pac: list[dict]) -> str:
-    rows = ""
-    for x in pac:
-        c = _T.get(x.get("alerta_temp", "dim"), "#5A6B7E")
-        meta = x["meta"] if x["meta"] and "[" not in x["meta"] else "—"
-        monto = f'${x["monto"]:,.0f}' if x["monto"] else "por valorar"
-        rows += (f'<tr><td class="mt-id">{x["id"]}</td><td class="mt-meta">{x["desc"]}</td>'
-                 f'<td class="mt-dir">{x["tipo"] or "—"}</td><td class="mt-num">{monto}</td>'
-                 f'<td class="mt-id">{meta}</td>'
-                 f'<td><span style="color:{c};font-size:10.5px;font-weight:700">● {x["alerta"] or "—"}</span></td></tr>')
-    return _tbl(["ID", "Proceso", "Tipo", "Monto ref.", "Meta", "Coherencia"], rows)
+    return _tbl(["Dirección", "Proyecto / actividad", "Partida", "Monto anual"], rows, mh=360)
 
 
 def _tabla_presupuesto(p: dict) -> str:
-    filas = [("Bienes (inversión)", p.get("bienes", 0), "#8892B0"),
-             ("Obras (inversión)", p.get("obras", 0), "#8892B0"),
-             ("Codificado de inversión", p.get("codificado_inversion", 0), "#00D4FF"),
+    filas = [("Bienes (inversión)", p.get("bienes", 0), "#9AA6BE"),
+             ("Obras (inversión)", p.get("obras", 0), "#9AA6BE"),
+             ("Codificado de inversión", p.get("codificado_inversion", 0), "#22D3EE"),
              ("Devengado al corte", p.get("devengado", 0), "#FFB020")]
     rows = ""
     for lab, val, col in filas:
         rows += (f'<tr><td class="mt-meta">{lab}</td>'
                  f'<td class="mt-num" style="color:{col}">${val:,.0f}</td></tr>')
-    return _tbl(["Rubro", "Monto (USD)"], rows, mh=200)
+    return _tbl(["Rubro", "Monto (USD)"], rows, mh=240)
 
 
 def _tabla_publicado(procs: list[dict]) -> str:
@@ -215,19 +174,19 @@ def _tabla_publicado(procs: list[dict]) -> str:
         monto = f'${x["monto"]:,.0f}' if x.get("monto") else "sin publicar"
         cod = str(x.get("cod", "")).replace("ocds-5wno2w-", "")
         et = str(x.get("etapa", ""))
-        ec = "#22C55E" if ("proceso" in et.lower() or "licit" in et.lower()) else "#FFB020"
+        ec = "#2DD46F" if ("proceso" in et.lower() or "licit" in et.lower()) else "#FFB020"
         rows += (f'<tr><td class="mt-id">{cod}</td><td class="mt-meta">{x.get("desc", "")}</td>'
                  f'<td class="mt-dir">{x.get("partida", "") or "—"}</td>'
                  f'<td class="mt-num">{monto}</td>'
                  f'<td class="mt-dir">{x.get("monto_tipo", "")}</td>'
-                 f'<td><span style="color:{ec};font-size:10.5px;font-weight:700">● {et}</span></td></tr>')
+                 f'<td><span style="color:{ec};font-size:12px;font-weight:700">● {et}</span></td></tr>')
     return _tbl(["Proceso", "Objeto de contratación", "Partida", "Monto", "Valor", "Etapa"], rows)
 
 
 def _pills(comps: list[dict]) -> str:
     out = ""
     for it in comps:
-        c = _T.get(it.get("temp", "dim"), "#5A6B7E")
+        c = _T.get(it.get("temp", "dim"), "#7E8BA3")
         out += (f'<div class="pl-pill" style="border-color:{c}3a"><span class="pl-pd" style="background:{c}"></span>'
                 f'<span class="pl-pl">{it["label"]}</span><span class="pl-pe" style="color:{c}">{it["estado"]}</span></div>')
     return out
@@ -239,9 +198,9 @@ def _cruce(plan: dict) -> str:
     stages = [("PDOT", f'{plan.get("metas_total", 25)} metas', "el plan"),
               ("POA", f'{plan.get("metas_total", 25)} programadas', "la operación"),
               ("PRESUPUESTO", f'${pr.get("codificado_inversion", 0)/1e6:.1f}M', "la inversión"),
-              ("PAC", f'${pac.get("total_usd", 0)/1e3:.0f}k', "lo contratado"),
+              ("PAC", f'${pac.get("total_usd", 0)/1e6:.1f}M', "lo contratado"),
               ("EJECUCIÓN", f'${pr.get("devengado", 0)/1e6:.2f}M', f'{pr.get("ti_pct", 0)}% al corte')]
-    arrows = ["#22C55E", "#22C55E", "#FFB020", "#FFB020"]
+    arrows = ["#2DD46F", "#2DD46F", "#FFB020", "#FFB020"]
     html = '<div class="cr">'
     for i, (code, val, lab) in enumerate(stages):
         html += (f'<div class="cr-card"><div class="cr-c">{code}</div><div class="cr-v">{val}</div>'
@@ -268,8 +227,8 @@ def _publicado_band(pub: dict) -> str:
             f'<div class="cr-card"><div class="cr-c">COBERTURA</div>'
             f'<div class="cr-v" style="color:#FFB020">{pct}%</div>'
             f'<div class="cr-l">del plan ya en SERCOP</div></div></div>')
-    bar = (f'<div style="height:9px;background:rgba(255,255,255,.06);border-radius:6px;overflow:hidden;margin:0 0 14px">'
-           f'<div style="height:100%;width:{max(pct, 0.6)}%;background:linear-gradient(90deg,#00D4FF,#FFB020)"></div></div>')
+    bar = (f'<div style="height:11px;background:rgba(255,255,255,.06);border-radius:6px;overflow:hidden;margin:0 0 16px">'
+           f'<div style="height:100%;width:{max(pct, 0.6)}%;background:linear-gradient(90deg,#22D3EE,#FFB020)"></div></div>')
     return band + bar
 
 
@@ -278,7 +237,7 @@ def _stepper(sat_temp: str) -> str:
              ("Coherencia", sat_temp or "alerta")]
     out = ""
     for i, (lab, t) in enumerate(links):
-        c = _T.get(t, "#5A6B7E")
+        c = _T.get(t, "#7E8BA3")
         out += (f'<div class="sp-l"><span class="sp-d" style="background:{c};box-shadow:0 0 9px {c}99"></span>'
                 f'<span class="sp-t">{lab}</span></div>')
         if i < len(links) - 1:
@@ -286,322 +245,273 @@ def _stepper(sat_temp: str) -> str:
     return f'<div class="sp">{out}</div>'
 
 
+def _cobertura_band(pct) -> str:
+    """Cobertura de metas con dotación POA — encuadre correcto (no es brecha · Javo 2026-07-01)."""
+    if pct is None:
+        return ""
+    return (
+        f'<div class="pl-cov">'
+        f'<div class="pl-cov-row"><span class="pl-cov-val">{pct:.0f}%</span>'
+        f'<span class="pl-cov-lbl">de las metas del PDOT cuentan con presupuesto operativo (POA) del municipio '
+        f'<b>— 24 de 25</b></span></div>'
+        f'<div class="pl-cov-note">La meta restante corresponde a los grupos de atención prioritaria, que ejecuta '
+        f'el <b>Patronato</b> —entidad adscrita— en su propio ámbito de acción (COOTAD · Art. 249). No es una brecha '
+        f'del plan: es competencia de otra unidad de la red municipal.</div>'
+        f'</div>')
+
+
 def _css() -> str:
     return """
 <style>
-.pl-h{display:flex;align-items:baseline;gap:9px;margin:8px 0 6px}
-.pl-n{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:800;color:#00D4FF}
-.pl-t{font-size:13.5px;font-weight:800;color:#E8EDF4;letter-spacing:.02em}
-.pl-s{font-size:11px;color:#5A6B7E}
-.pl-intro{font-size:11.5px;line-height:1.55;color:#8892B0;margin:2px 0 9px;max-width:74ch}
-.pl-narr{font-size:12.5px;line-height:1.62;color:#C7D2E0;padding-top:4px}
-.pl-narr b{color:#E8EDF4}
-hr.pl-div{border:none;border-top:1px solid rgba(255,255,255,.07);margin:16px 0}
-.mt-wrap{overflow:auto;border:1px solid rgba(255,255,255,.07);border-radius:10px;margin-bottom:4px}
-.mt{width:100%;border-collapse:collapse;font-size:11px}
-.mt thead th{position:sticky;top:0;background:#0E1623;color:#8892B0;font-weight:700;text-align:left;
-  padding:8px 10px;letter-spacing:.03em;border-bottom:1px solid rgba(255,255,255,.08);font-size:9.5px;text-transform:uppercase}
-.mt td{padding:7px 10px;border-bottom:1px solid rgba(255,255,255,.04);color:#C7D2E0;vertical-align:top}
-.mt tbody tr:hover{background:rgba(0,212,255,.03)}
-.mt-id{font-family:'JetBrains Mono',monospace;color:#5A6B7E;white-space:nowrap}
-.mt-sis{color:#A8B4C8;white-space:nowrap}
-.mt-meta{color:#E8EDF4;min-width:210px}
-.mt-num{font-family:'JetBrains Mono',monospace;color:#E8EDF4;white-space:nowrap;text-align:right}
-.mt-tag{font-size:9px;font-weight:700;border:1px solid;border-radius:6px;padding:2px 7px;white-space:nowrap}
-.mt-dir{color:#8892B0;white-space:nowrap}
-.pl-pill{display:flex;align-items:center;gap:9px;padding:8px 12px;margin:6px 0;
-  background:rgba(255,255,255,.02);border:1px solid;border-radius:9px}
-.pl-pd{width:9px;height:9px;border-radius:50%;flex-shrink:0}
-.pl-pl{font-size:12px;color:#C7D2E0;flex:1}
-.pl-pe{font-size:10.5px;font-weight:700;text-align:right}
-.cr{display:flex;align-items:stretch;gap:5px;margin:4px 0 14px;flex-wrap:nowrap}
-.cr-card{flex:1;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.08);
-  border-radius:11px;padding:11px 7px;text-align:center;min-width:0}
-.cr-c{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:800;color:#00D4FF;letter-spacing:.05em}
-.cr-v{font-size:14px;font-weight:800;color:#E8EDF4;margin:5px 0 2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.cr-l{font-size:9.5px;color:#5A6B7E}
-.cr-a{display:flex;align-items:center;font-size:18px;font-weight:800;flex-shrink:0}
-.sp{display:flex;align-items:center;padding:6px 2px}
-.sp-l{display:flex;flex-direction:column;align-items:center;gap:6px}
-.sp-d{width:13px;height:13px;border-radius:50%}
-.sp-t{font-size:10px;color:#A8B4C8;font-weight:600;white-space:nowrap}
-.sp-ln{flex:1;height:2px;background:rgba(255,255,255,.12);margin:0 4px 18px}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+.pl-wrap, .pl-wrap *{font-family:'Inter',system-ui,sans-serif}
+/* título limpio (no forense) */
+.pl-title{font-size:30px;font-weight:900;color:#F0F4FA;letter-spacing:-.01em;line-height:1.1;margin:2px 0 6px}
+.pl-sub{font-size:15.5px;line-height:1.6;color:#AEB9CC;max-width:88ch;margin-bottom:10px}
+.pl-title-band{border-bottom:1px solid rgba(255,255,255,.09);padding-bottom:14px;margin-bottom:16px}
+/* cobertura */
+.pl-cov{background:linear-gradient(90deg,rgba(45,212,111,.10),rgba(45,212,111,.02));
+  border:1px solid rgba(45,212,111,.28);border-left:4px solid #2DD46F;border-radius:12px;padding:14px 18px;margin:4px 0 20px}
+.pl-cov-row{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.pl-cov-val{font-family:'JetBrains Mono',monospace;font-size:34px;font-weight:900;color:#2DD46F;line-height:1}
+.pl-cov-lbl{font-size:15px;color:#DCE4F0;font-weight:500}
+.pl-cov-note{font-size:13.5px;line-height:1.6;color:#9AA6BE;margin-top:9px}
+.pl-cov-note b{color:#C7D2E0}
+/* secciones */
+.pl-h{display:flex;align-items:baseline;gap:11px;margin:20px 0 8px;flex-wrap:wrap}
+.pl-n{font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:800;color:#22D3EE}
+.pl-t{font-size:19px;font-weight:800;color:#F0F4FA;letter-spacing:.01em}
+.pl-s{font-size:13px;color:#7E8BA3}
+.pl-intro{font-size:14.5px;line-height:1.65;color:#AEB9CC;margin:2px 0 12px;max-width:92ch}
+.pl-intro b{color:#DCE4F0}
+.pl-narr{font-size:16px;line-height:1.72;color:#D2DBEA;padding-top:2px}
+.pl-narr b{color:#F0F4FA}
+.pl-law{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;
+  color:#22D3EE;background:rgba(34,211,238,.08);border:1px solid rgba(34,211,238,.22);
+  border-radius:6px;padding:1px 8px;margin:0 2px}
+hr.pl-div{border:none;border-top:1px solid rgba(255,255,255,.08);margin:22px 0}
+/* tablas — fuentes ↑ */
+.mt-wrap{overflow:auto;border:1px solid rgba(255,255,255,.09);border-radius:12px;margin-bottom:6px}
+.mt{width:100%;border-collapse:collapse;font-size:13px}
+.mt thead th{position:sticky;top:0;background:#0E1623;color:#AEB9CC;font-weight:700;text-align:left;
+  padding:10px 12px;letter-spacing:.03em;border-bottom:1px solid rgba(255,255,255,.10);font-size:11px;text-transform:uppercase}
+.mt td{padding:9px 12px;border-bottom:1px solid rgba(255,255,255,.05);color:#D2DBEA;vertical-align:top}
+.mt tbody tr:hover{background:rgba(34,211,238,.04)}
+.mt-id{font-family:'JetBrains Mono',monospace;color:#7E8BA3;white-space:nowrap}
+.mt-sis{color:#B8C4D6;white-space:nowrap}
+.mt-meta{color:#F0F4FA;min-width:240px}
+.mt-num{font-family:'JetBrains Mono',monospace;color:#F0F4FA;white-space:nowrap;text-align:right}
+.mt-tag{font-size:10.5px;font-weight:700;border:1px solid;border-radius:6px;padding:2px 8px;white-space:nowrap}
+.mt-dir{color:#9AA6BE;white-space:nowrap}
+/* pills */
+.pl-pill{display:flex;align-items:center;gap:10px;padding:10px 14px;margin:7px 0;
+  background:rgba(255,255,255,.025);border:1px solid;border-radius:10px}
+.pl-pd{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.pl-pl{font-size:14px;color:#D2DBEA;flex:1}
+.pl-pe{font-size:12px;font-weight:700;text-align:right}
+/* cruce backbone */
+.cr{display:flex;align-items:stretch;gap:6px;margin:6px 0 16px;flex-wrap:nowrap}
+.cr-card{flex:1;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.09);
+  border-radius:12px;padding:13px 8px;text-align:center;min-width:0}
+.cr-c{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:800;color:#22D3EE;letter-spacing:.05em}
+.cr-v{font-size:17px;font-weight:800;color:#F0F4FA;margin:6px 0 3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cr-l{font-size:11px;color:#7E8BA3}
+.cr-a{display:flex;align-items:center;font-size:20px;font-weight:800;flex-shrink:0}
+/* stepper */
+.sp{display:flex;align-items:center;padding:8px 2px 4px}
+.sp-l{display:flex;flex-direction:column;align-items:center;gap:7px}
+.sp-d{width:15px;height:15px;border-radius:50%}
+.sp-t{font-size:12px;color:#B8C4D6;font-weight:600;white-space:nowrap}
+.sp-ln{flex:1;height:2px;background:rgba(255,255,255,.13);margin:0 5px 19px}
+/* cierre */
+.pl-cierre{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.09);border-radius:14px;
+  padding:16px 20px;margin-top:22px}
+.pl-cierre-lbl{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:800;letter-spacing:.1em;
+  color:#7E8BA3;text-transform:uppercase;margin-bottom:7px}
+.pl-cierre-txt{font-size:15.5px;line-height:1.7;color:#D2DBEA}
+.pl-cierre-txt b{color:#F0F4FA}
+.pl-src{font-size:12.5px;color:#7E8BA3;margin-top:10px}
 </style>"""
 
 
-def _base_normativa(bn: dict) -> str:
-    cov = bn.get("cobertura", [])
-    chips = "".join(
-        f'<span class="mt-tag" style="color:#00D4FF;border-color:#00D4FF44;margin-right:6px">'
-        f'{c["sigla"]} · {c["chunks"]:,}</span>' for c in cov)
-    anc = bn.get("articulo_ancla") or {}
-    anc_html = ""
-    if anc.get("texto"):
-        anc_html = (
-            f'<div style="margin-top:10px;padding:9px 12px;background:rgba(0,212,255,.03);'
-            f'border-left:2px solid #00D4FF55;border-radius:6px">'
-            f'<div style="font-size:9.5px;color:#5A6B7E;font-family:JetBrains Mono,monospace">'
-            f'COOTAD Art. {anc.get("articulo", "")} · verificado SHA-256 {anc.get("sha256", "")}</div>'
-            f'<div style="font-size:11.5px;color:#C7D2E0;line-height:1.5;margin-top:4px">{anc["texto"]}…</div></div>')
-    return f'<div style="margin-bottom:4px;line-height:2">{chips}</div>{anc_html}'
-
-
-def _tab_datos(plan: dict) -> None:
+# ═══════════════════════ los eslabones (tabla + gráfica + texto) ══════════════
+def _sec_pdot(plan: dict) -> None:
     metas = plan.get("metas_detalle", [])
-    poa = plan.get("poa_detalle", [])
-    pac = plan.get("pac_detalle", [])
-    pres = plan.get("presupuesto", {}) or {}
-    mmap = {m["id"]: m for m in metas}
-
-    bn = plan.get("base_normativa") or {}
-    if bn.get("cobertura"):
-        st.markdown(_head("0", "BASE NORMATIVA",
-                          f"el plan descansa sobre {bn.get('total_chunks', 0):,} artículos verificados · firma SHA-256"),
-                    unsafe_allow_html=True)
-        st.markdown(_intro("Antes de las metas, el marco legal que obliga y habilita el plan. Cada norma vive "
-                           "verificada en el corpus documental del Estado —no citada de memoria (Regla 3)—: "
-                           "QUIRA lee la ley, no la inventa."), unsafe_allow_html=True)
-        st.markdown(_base_normativa(bn), unsafe_allow_html=True)
-        st.markdown(_div(), unsafe_allow_html=True)
-
-    st.markdown(_head("1", "PDOT — EL PLAN", "lo que el municipio se comprometió a lograr · 25 metas 2023-2027"),
+    comp = plan.get("competencia", [])
+    criticas = sum(c["n"] for c in comp if "Crítica" in c["label"])
+    st.markdown(_head("1", "PDOT — EL PLAN", f"lo que el municipio se comprometió a lograr · {len(metas)} metas 2023-2027"),
                 unsafe_allow_html=True)
-    st.markdown(_intro("Cada fila es una meta del Plan de Desarrollo: el sistema al que pertenece, la meta "
-                       "plurianual, el tipo de competencia (qué obliga la ley en exclusiva y qué se comparte) "
-                       "y la dirección que la ejecuta."), unsafe_allow_html=True)
+    st.markdown(_intro(
+        "El <b>Plan de Desarrollo y Ordenamiento Territorial</b> es el instrumento que la Constitución y el "
+        "COOTAD hacen obligatorio para cada gobierno autónomo: fija las metas de desarrollo del territorio al "
+        "2027. Cada fila es una meta —su sistema, su competencia (qué obliga la ley en exclusiva y qué se "
+        "comparte) y la dirección que la ejecuta."), unsafe_allow_html=True)
     st.markdown(_tabla_metas(metas), unsafe_allow_html=True)
-    st.markdown(_div(), unsafe_allow_html=True)
+    c1, c2 = st.columns([1, 1.15], gap="large")
+    with c1:
+        _show(_donut(comp), 250)
+    with c2:
+        st.markdown(_narr(
+            f"De las <b>{len(metas)} metas</b>, <b>{criticas} son de competencia crítica</b> —donde la ley exige "
+            f"al municipio actuar: agua, vialidad, alcantarillado, desechos. La dona pesa cada tipo: lo que el GAD "
+            f"<b>debe</b> hacer en exclusiva frente a lo que comparte con otros niveles de gobierno."),
+            unsafe_allow_html=True)
 
+
+def _sec_poa(plan: dict) -> None:
     proys = plan.get("poa_proyectos", [])
-    _tpoa = sum(x["anual"] for x in proys)
+    poa = plan.get("poa_detalle", [])
+    tpoa = sum(x["anual"] for x in proys)
     st.markdown(_head("2", "POA — LA OPERACIÓN",
                       f"cómo se ejecuta el plan en el año · {len(proys)} proyectos · Plan Operativo 2026"),
                 unsafe_allow_html=True)
-    st.markdown(_intro(f"El Plan Operativo Anual aterriza el plan en <b>{len(proys)} proyectos</b> concretos, cada "
-                       f"uno con su dirección, partida presupuestaria y monto. En conjunto movilizan "
-                       f"<b>${_tpoa:,.0f}</b> en 2026 — exactamente el presupuesto agregado de las 25 metas."),
-                unsafe_allow_html=True)
+    st.markdown(_intro(
+        f"El Plan Operativo Anual aterriza el plan en <b>{len(proys)} proyectos</b> concretos, cada uno con su "
+        f"dirección, partida presupuestaria y monto. En conjunto movilizan <b>${tpoa:,.0f}</b> en 2026 — el "
+        f"presupuesto agregado de las metas."), unsafe_allow_html=True)
     st.markdown(_tabla_proyectos(proys), unsafe_allow_html=True)
-    st.markdown(_div(), unsafe_allow_html=True)
+    if poa:
+        c1, c2 = st.columns([1.3, 1], gap="large")
+        with c1:
+            _show(_cronograma(poa), 210)
+        with c2:
+            st.markdown(_narr(
+                "La curva es el <b>ritmo planificado mes a mes</b> del conjunto de metas. Permite ver si la "
+                "operación se concentra o se reparte —y anticipar los meses de mayor exigencia."),
+                unsafe_allow_html=True)
 
+
+def _sec_pac(plan: dict) -> None:
     _pac_total = plan.get("pac", {}).get("total_usd", 0)
     pub = plan.get("publicado", {}) or {}
-    st.markdown(_head("3", "PAC — LA CONTRATACIÓN",
-                      f"qué contrata el municipio · total oficial ${_pac_total:,.0f}"),
+    st.markdown(_head("3", "PAC — LA CONTRATACIÓN", f"qué contrata el municipio · total oficial ${_pac_total:,.0f}"),
                 unsafe_allow_html=True)
     st.markdown(_intro(
-        f"El Plan Anual de Contratación oficial asciende a <b>${_pac_total:,.0f}</b> y cubre el "
-        f"<b>98.6% del presupuesto de inversión</b> — la cadena plan→gasto es coherente. El paso siguiente es "
-        f"contrastar ese plan con lo que el municipio <b>ya publicó en SERCOP</b>: el estado vivo de la "
-        f"contratación, traído y verificado en tiempo real desde los datos abiertos."), unsafe_allow_html=True)
+        f"El Plan Anual de Contratación oficial asciende a <b>${_pac_total:,.0f}</b> y cubre el <b>98.6% del "
+        f"presupuesto de inversión</b> — la cadena plan→gasto es coherente. El paso siguiente es contrastar ese "
+        f"plan con lo que el municipio <b>ya publicó en SERCOP</b>: el estado vivo de la contratación, traído y "
+        f"verificado en tiempo real desde los datos abiertos."), unsafe_allow_html=True)
     if pub.get("procesos"):
+        st.markdown(_publicado_band(pub), unsafe_allow_html=True)
         st.markdown(_intro(
             f"<b>Publicado en SERCOP al corte {pub.get('corte', '')}:</b> {pub.get('n_procesos', 0)} procesos por "
-            f"<b>${pub.get('total_usd', 0):,.0f}</b> (valor referencial de planificación). El detalle, proceso a "
-            f"proceso, directo de la fuente:"), unsafe_allow_html=True)
+            f"<b>${pub.get('total_usd', 0):,.0f}</b> (valor referencial). El detalle, proceso a proceso, directo "
+            f"de la fuente:"), unsafe_allow_html=True)
         st.markdown(_tabla_publicado(pub.get("procesos", [])), unsafe_allow_html=True)
-    st.markdown(_div(), unsafe_allow_html=True)
-
-    st.markdown(_head("4", "PRESUPUESTO — EL RECURSO", f"con qué inversión se cuenta · corte {pres.get('corte', '')}"),
+        cr = pub.get("cruce", {}) or {}
+        c1, c2 = st.columns([1.1, 1], gap="large")
+        with c1:
+            _show(_pub_bar(pub), 230)
+        with c2:
+            st.markdown(_narr(
+                f"El plan de contratación suma <b>${cr.get('plan_pac_usd', 0)/1e6:.1f}M</b>; en SERCOP el municipio "
+                f"ya publicó <b>{pub.get('n_procesos', 0)} procesos por ${pub.get('total_usd', 0)/1e3:.0f}k</b> —el "
+                f"<b>{cr.get('cobertura_pct', 0)}%</b> del plan, al corte {pub.get('corte', '')}. No es alarma: a "
+                f"esta altura del año la mayor parte del PAC sigue en planificación. Es el <b>ritmo de "
+                f"publicación</b> —lo que QUIRA sigue mes a mes para anticipar si la contratación llegará a tiempo."),
                 unsafe_allow_html=True)
-    st.markdown(_intro("El presupuesto de inversión codificado (bienes y obras) y lo devengado al corte. NO es "
-                       "el total municipal: es la inversión, que es con lo que se relacionan las metas y la "
-                       "contratación."), unsafe_allow_html=True)
-    st.markdown(_tabla_presupuesto(pres), unsafe_allow_html=True)
 
 
-def _tab_analisis(plan: dict) -> None:
-    comp = plan.get("competencia", [])
+def _sec_presupuesto(plan: dict) -> None:
     pres = plan.get("presupuesto", {}) or {}
     cod = pres.get("codificado_inversion", 0) or 0
     dev = pres.get("devengado", 0) or 0
     pac_total = (plan.get("pac", {}) or {}).get("total_usd", 0) or 0
     cobertura = 100 * pac_total / cod if cod else 0
-    criticas = sum(c["n"] for c in comp if "Crítica" in c["label"])
-
-    # A · El plan en números
-    st.markdown(_head("A", "EL PLAN EN NÚMEROS", "el peso de las competencias del territorio"),
+    st.markdown(_head("4", "PRESUPUESTO — EL RECURSO", f"con qué inversión se cuenta · corte {pres.get('corte', '')}"),
                 unsafe_allow_html=True)
-    c1, c2 = st.columns([1, 1.1], gap="medium")
+    st.markdown(_intro(
+        "El presupuesto de inversión codificado (bienes y obras) y lo devengado al corte. No es el total "
+        "municipal: es la inversión, con la que se relacionan las metas y la contratación. La priorización del "
+        "gasto se ordena con participación ciudadana <span class='pl-law'>COOTAD · Art. 238</span>."),
+        unsafe_allow_html=True)
+    st.markdown(_tabla_presupuesto(pres), unsafe_allow_html=True)
+    c1, c2 = st.columns([1.1, 1], gap="large")
     with c1:
-        _show(_donut(comp), 210)
+        _show(_brechas(cod, dev, pac_total), 250)
     with c2:
         st.markdown(_narr(
-            f"De las <b>25 metas</b>, <b>{criticas} son de competencia crítica</b> —donde la ley exige al "
-            f"municipio actuar: agua, vialidad, alcantarillado, desechos—. La dona pesa cada tipo: lo que el "
-            f"GAD <b>debe</b> hacer en exclusiva frente a lo que comparte con otros niveles de gobierno."),
+            f"Aquí grita el dato. De los <b>${cod/1e6:.1f}M</b> de inversión presupuestada, el plan de contratación "
+            f"recoge <b>${pac_total/1e6:.1f}M</b> —el <b>{cobertura:.1f}%</b>. El devengado al corte es "
+            f"<b>${dev/1e6:.2f}M</b> ({pres.get('ti_pct', 0)}%), natural en el primer cuatrimestre (el gasto "
+            f"público es de carga tardía). El punto preventivo: que la ejecución alcance al presupuesto."),
             unsafe_allow_html=True)
-    st.markdown(_div(), unsafe_allow_html=True)
 
-    # B · El cruce del backbone + las brechas
-    st.markdown(_head("B", "EL CRUCE DEL BACKBONE", "del plan al gasto · dónde se mantiene y dónde se abre"),
-                unsafe_allow_html=True)
-    st.markdown(_cruce(plan), unsafe_allow_html=True)
-    c1, c2 = st.columns([1.1, 1], gap="medium")
-    with c1:
-        _show(_brechas(cod, dev, pac_total), 235)
-    with c2:
-        st.markdown(_narr(
-            f"Aquí grita el dato. De los <b>${cod/1e6:.1f}M</b> de inversión presupuestada, el plan de "
-            f"contratación recoge apenas <b>${pac_total/1e3:.0f}k</b> —el <b>{cobertura:.1f}%</b>—: el resto "
-            f"aún no entra al PAC. El devengado al corte de abril es <b>${dev/1e6:.2f}M</b> "
-            f"({pres.get('ti_pct', 0)}%), natural en el primer cuatrimestre (el gasto público es de carga "
-            f"tardía). El punto preventivo: que la contratación alcance al presupuesto."), unsafe_allow_html=True)
-    st.markdown(_div(), unsafe_allow_html=True)
 
-    # C · Integridad contractual — plan ↔ publicado en SERCOP (Modelo de Integridad Contractual)
-    pub = plan.get("publicado", {}) or {}
-    if pub.get("procesos"):
-        cr = pub.get("cruce", {}) or {}
-        pct = cr.get("cobertura_pct", 0)
-        st.markdown(_head("C", "INTEGRIDAD CONTRACTUAL", "del plan a lo publicado en SERCOP · el cruce fino"),
-                    unsafe_allow_html=True)
-        st.markdown(_publicado_band(pub), unsafe_allow_html=True)
-        c1, c2 = st.columns([1.1, 1], gap="medium")
-        with c1:
-            _show(_pub_bar(pub), 220)
-        with c2:
-            st.markdown(_narr(
-                f"El plan de contratación suma <b>${cr.get('plan_pac_usd', 0)/1e6:.1f}M</b>; en SERCOP el municipio "
-                f"ya publicó <b>{pub.get('n_procesos', 0)} procesos por ${pub.get('total_usd', 0)/1e3:.0f}k</b> —el "
-                f"<b>{pct}%</b> del plan, al corte {pub.get('corte', '')}—. No es alarma: a esta altura del año la "
-                f"mayor parte del PAC sigue en planificación. Es el <b>ritmo de publicación</b> —lo que QUIRA sigue "
-                f"mes a mes para anticipar si la contratación llegará a tiempo al presupuesto."),
-                unsafe_allow_html=True)
-        # El puente de partidas — POA↔SERCOP por partida compartida (lo que el Excel no cruza solo)
-        _poa_pt, _pub_pt = {}, {}
-        for _x in plan.get("poa_proyectos", []):
-            _k = str(_x.get("partida", "")).strip()
-            if _k:
-                _poa_pt.setdefault(_k, []).append(_x)
-        for _x in pub.get("procesos", []):
-            _k = str(_x.get("partida", "")).strip()
-            if _k:
-                _pub_pt.setdefault(_k, []).append(_x)
-        _puente = sorted(set(_poa_pt) & set(_pub_pt))
-        if _puente:
-            _rows = ""
-            for _pt in _puente:
-                _mp = sum(p.get("anual", 0) for p in _poa_pt[_pt])
-                _ms = sum(p.get("monto", 0) for p in _pub_pt[_pt])
-                _rows += (f'<tr><td class="mt-id">{_pt}</td>'
-                          f'<td class="mt-num">{len(_poa_pt[_pt])} · ${_mp:,.0f}</td>'
-                          f'<td class="mt-num">{len(_pub_pt[_pt])} · ${_ms:,.0f}</td></tr>')
-            st.markdown(_intro(
-                f"<b>El puente de partidas — la pregunta que QUIRA ya responde:</b> "
-                f"<b>{len(_puente)} líneas presupuestarias</b> conectan un proyecto planificado (POA) con un "
-                f"proceso ya publicado (SERCOP) que comparten la misma partida. Ayer era invisible —el Excel no "
-                f"lo cruza solo—; hoy se traza:"), unsafe_allow_html=True)
-            st.markdown(_tbl(["Partida", "POA · proyectos · monto", "Publicado SERCOP · procesos · monto"],
-                             _rows, mh=170), unsafe_allow_html=True)
-        st.markdown(_div(), unsafe_allow_html=True)
-
-    # D · La coherencia (SAT)
+def _sec_coherencia(plan: dict) -> None:
     sat = plan.get("sat0", {}) or {}
-    st.markdown(_head("D", "LA COHERENCIA", "la señal preventiva · el análisis duro de QUIRA"),
+    sat_temp = sat.get("global_temp", "alerta")
+    st.markdown(_head("5", "LA COHERENCIA", "del plan al gasto, proceso por proceso · la señal preventiva"),
                 unsafe_allow_html=True)
-    c1, c2 = st.columns([1, 1.1], gap="medium")
+    st.markdown(_stepper(sat_temp), unsafe_allow_html=True)
+    c1, c2 = st.columns([1, 1.15], gap="large")
     with c1:
         st.markdown(_pills(sat.get("componentes", [])), unsafe_allow_html=True)
     with c2:
         st.markdown(_narr(
-            "QUIRA contrasta lo planificado (POA) con lo contratado (PAC), proceso por proceso. Los procesos "
-            "ya vinculados a una meta marcan <b>coherencia</b>; la señal preventiva se concentra en los "
-            "procesos bajo el monto mínimo de análisis. No es una falta: es dónde cerrar la coherencia "
-            "<b>antes</b> de ejecutar, para que el plan no se erosione en el camino al gasto."),
+            "QUIRA contrasta lo planificado (POA) con lo contratado (PAC), proceso por proceso. Los procesos ya "
+            "vinculados a una meta marcan <b>coherencia</b>; la señal preventiva se concentra en los procesos bajo "
+            "el monto mínimo de análisis. No es una falta: es <b>dónde cerrar la coherencia antes</b> de ejecutar, "
+            "para que el plan no se erosione en el camino al gasto."),
             unsafe_allow_html=True)
 
-    # ritmo del POA
-    poa = plan.get("poa_detalle", [])
-    if poa:
-        st.markdown(_div(), unsafe_allow_html=True)
-        st.markdown(_head("E", "EL RITMO DEL PLAN", "cómo se distribuye la operación en el año (POA 2026)"),
-                    unsafe_allow_html=True)
-        c1, c2 = st.columns([1.3, 1], gap="medium")
-        with c1:
-            _show(_cronograma(poa), 180)
-        with c2:
-            st.markdown(_narr("La curva es el ritmo planificado mes a mes del conjunto de metas. Permite ver si "
-                              "la operación se concentra o se reparte —y anticipar los meses de mayor exigencia."),
-                        unsafe_allow_html=True)
 
-
-def _evidencia(d: dict) -> None:
-    plan = d.get("plan") or {}
-    st.markdown(_css(), unsafe_allow_html=True)
-    if not plan:
-        st.markdown('<div style="font-size:12px;color:#5A6B7E">— evidencia del plan pendiente de carga —</div>',
-                    unsafe_allow_html=True)
-        return
-    t_datos, t_analisis = st.tabs(["📋  DATOS — las tablas del plan",
-                                   "🔍  ANÁLISIS — el cruce y los hallazgos"])
-    with t_datos:
-        _tab_datos(plan)
-    with t_analisis:
-        _tab_analisis(plan)
-
-
-def _peritaje_viz(sat_temp: str) -> None:
-    st.markdown(_css(), unsafe_allow_html=True)
-    st.markdown(_stepper(sat_temp), unsafe_allow_html=True)
-    st.markdown('<div style="font-size:10.5px;color:#5A6B7E;margin-top:2px">La cadena es sólida hasta la '
-                'operación; el foco preventivo está en la coherencia hacia la ejecución.</div>',
-                unsafe_allow_html=True)
-
-
-def _conclusion_viz(pct: int, color: str) -> None:
-    _show(_gauge(pct, color), 175)
+def _cierre(plan: dict) -> None:
+    pres = plan.get("presupuesto", {}) or {}
+    corte = pres.get("corte", "Q1-2026")
+    st.markdown(
+        f'<div class="pl-cierre">'
+        f'<div class="pl-cierre-lbl">En síntesis</div>'
+        f'<div class="pl-cierre-txt">El plan <b>sostiene su diseño</b>: las metas del PDOT se traducen en '
+        f'operación (POA), contratación (PAC) y presupuesto coherentes entre sí. El foco preventivo está en que '
+        f'<b>la contratación y la ejecución alcancen al presupuesto</b> conforme avanza el año fiscal, para que la '
+        f'correspondencia del plan no se erosione en el camino al gasto.</div>'
+        f'<div class="pl-src">Fuente: PDOT · POA · PAC (SERCOP) · presupuesto eSIGEF · corte {corte}.</div>'
+        f'</div>',
+        unsafe_allow_html=True)
 
 
 def render() -> None:
-    """QINV-001 · Planificación Estratégica — 2 pestañas (Datos | Análisis) nivel BI."""
+    """QINV-001 · Planificación Estratégica — lectura documental continua (sin pestañas)."""
     d = _cargar()
     plan = d.get("plan") or {}
-    sat_temp = (plan.get("sat0", {}) or {}).get("global_temp", "alerta")
+    st.markdown(_css(), unsafe_allow_html=True)
+    st.markdown('<div class="pl-wrap">', unsafe_allow_html=True)
 
-    # Cable de Interpretación — criterio dinámico de QUIRA IA (Haiku), generado al enriquecer
-    _cm = plan.get("criterio_ia") or {}
-    criterio_ia = (f"{_cm['texto']}\n\n*— Lectura generada por QUIRA IA · {_cm.get('modelo', '')} · "
-                   f"corte {_cm.get('fecha', '')}*") if _cm.get("texto") else None
+    if not plan:
+        st.markdown('<div style="font-size:15px;color:#7E8BA3;padding:20px 0">'
+                    '— evidencia del plan pendiente de carga —</div>', unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
+        return
 
-    # El veredicto del cajón ya NO es un % de "fidelidad" (era una dimensión TGI interna: sensible al
-    # Firewall y sobresimplificaba el análisis · Javo 2026-06-30). El veredicto es el CRITERIO (cualitativo,
-    # arriba) + la señal de coherencia preventiva. Sin gauge de porcentaje.
-    _EST = {"verde": "COHERENCIA SOSTENIDA", "alerta": "SEÑAL PREVENTIVA",
-            "critico": "BRECHA POR CERRAR", "dim": "EN ANÁLISIS"}
-    temp = sat_temp if sat_temp in _EST else "alerta"
-    estado = _EST[temp]
-    headline = ("El plan conserva la correspondencia con su senda en el diseño plurianual; el foco "
-                "preventivo está en que la contratación y la ejecución alcancen al presupuesto.")
-    peritaje = [
-        "El plan sostiene su diseño plurianual: las metas se traducen en operación y presupuesto coherentes.",
-        "La distancia que importa está en la contratación: que el PAC y la ejecución alcancen al presupuesto.",
-    ]
-    conclusion = (
-        "El Plan de Desarrollo mantiene su senda en el diseño (plan, operación, presupuesto). La señal es "
-        "preventiva: que la contratación (PAC) y la ejecución alcancen al presupuesto, para que la "
-        "correspondencia no se erosione en el camino del plan al gasto."
-    )
+    pres = plan.get("presupuesto", {}) or {}
+    corte = pres.get("corte", "Q1-2026")
 
-    inv = InvestigacionQUIRA(
-        id="QINV-001", dominio="d01", nombre="Planificación Estratégica", version="2026-Q1",
-        pregunta=_PREGUNTA, estado=estado, dato="", temp=temp,
-        hipotesis=("La fidelidad estratégica se mide por la correspondencia sostenida entre el plan "
-                   "plurianual y su ejecución a lo largo de la cadena."),
-        evidencia=lambda: _evidencia(d),
-        peritaje_headline=headline, peritaje=peritaje, peritaje_viz=lambda: _peritaje_viz(sat_temp),
-        veredicto_label="la senda del plan", veredicto_pct=None,
-        divergencias="", prioridad="Foco · que el plan llegue al gasto", prioridad_temp=temp,
-        conclusion=conclusion, conclusion_viz=None,
-        criterio_ia=criterio_ia,
-    )
-    inv.to_streamlit()
+    # título limpio (sin encabezado forense · sin pregunta · sin estado)
+    st.markdown(
+        f'<div class="pl-title-band"><div class="pl-title">Planificación Estratégica</div>'
+        f'<div class="pl-sub">La columna vertebral del municipio, leída de principio a fin: del plan de '
+        f'desarrollo a la ejecución del gasto — <b>PDOT → POA → contratación → presupuesto</b>, al corte '
+        f'{corte}.</div></div>',
+        unsafe_allow_html=True)
 
-    # Cable Memoria — el porqué del criterio (memoria de diseño del repo · Opción A · firewall-safe)
-    md = plan.get("memoria_diseno") or {}
-    if md.get("principios"):
-        with st.expander(f"¿Por qué QUIRA lee el plan así?  ·  memoria de diseño "
-                         f"({md.get('n_decisiones_documentadas', 0)} decisiones documentadas y trazables)"):
-            for _p in md["principios"]:
-                st.markdown(f"- {_p}")
-            st.caption("Metodología canónica documentada y trazable — el criterio no se improvisa.")
+    # cobertura de metas (encuadre correcto · no es brecha)
+    st.markdown(_cobertura_band(plan.get("cobertura_metas_poa")), unsafe_allow_html=True)
+
+    # resumen de la columna vertebral
+    st.markdown(_cruce(plan), unsafe_allow_html=True)
+
+    # los eslabones, uno tras otro (tabla + gráfica + texto)
+    _sec_pdot(plan)
+    st.markdown(_div(), unsafe_allow_html=True)
+    _sec_poa(plan)
+    st.markdown(_div(), unsafe_allow_html=True)
+    _sec_pac(plan)
+    st.markdown(_div(), unsafe_allow_html=True)
+    _sec_presupuesto(plan)
+    st.markdown(_div(), unsafe_allow_html=True)
+    _sec_coherencia(plan)
+
+    # cierre factual corto (sin IA, sin veredicto %)
+    _cierre(plan)
+    st.markdown('</div>', unsafe_allow_html=True)
