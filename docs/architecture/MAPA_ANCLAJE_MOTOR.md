@@ -27,7 +27,8 @@ hueco de dato — típicamente columna 2026) · ❌ MISSING (fuente externa no c
 | Cajón (canónico) | Indicador madre (concepto) | Operativo REAL | Ancla en el motor | Estado |
 |---|---|---|---|---|
 | **d01** Planificación Estratégica | Cumplimiento de la planificación | Avance físico metas PDOT (4 ejes) | `H11b_MONITOR_POLITICAS` (41/47) · `H12c_ICPI_HISTÓRICO` · corpus METAS_PDOT (Supabase) | ✅ LIVE *(conexión TGI D1/D2 = auditoría B)* |
-| **d02** Presupuesto & Financiamiento | Captación y eficiencia del gasto | Sostenibilidad presupuestaria (ISP) | `H73_OUTPUT_API` → `ISP_SALUD_PRESUP` | ✅ LIVE |
+| | | Pertinencia estratégica del gasto (IPE) | `H16b_IPE` — Cobertura metas-POA **96%** ✅ · IPE-$ ejecutado ⏳ (camino A · objetivo+meta) | ⏳ PARCIAL |
+| **d02** Presupuesto & Financiamiento | Captación y eficiencia del gasto | Sostenibilidad presupuestaria (ISP) | `H73_OUTPUT_API` → `ISP_SALUD_PRESUP` (hoja `H19_ICS_ISP`) | ✅ LIVE |
 | | | Eficiencia de gestión (IED) | `H73_OUTPUT_API` (vector ICPI) | ✅ LIVE |
 | | | Ejecución presupuestaria (devengado) | `H07_S5_FINANCIERO_eSIGEF` (37/88 · zona 2026 cruda) | ⏳ PENDIENTE 2026 (CHK-08) |
 | | | Elegibilidad / fondos en riesgo | radar D02 · Supabase `fondos_*` *(no es Gold Master)* | ✅ LIVE |
@@ -47,6 +48,19 @@ hueco de dato — típicamente columna 2026) · ❌ MISSING (fuente externa no c
 | **d12** Inclusión, Equidad y Género | Protección de grupos prioritarios | Presupuesto con enfoque de género (PSG) | `H73_OUTPUT_API` → `PSG_EJECUCION` | ✅ LIVE |
 | **d13** Sostenibilidad y Resiliencia Ambiental | Integridad ecológica y resiliencia | ODS ambientales (ICODS) · riesgo biofísico · conservación | corpus biofísico (Supabase · 362 ind) · capa riesgo (KB_RIESGOS) · ICODS → `H73_OUTPUT_API` (sub-eje ambiental a precisar) | ✅ LIVE (corpus/riesgo) · ⚠️ ICODS-ambiental a confirmar |
 | | | IGM-A/B/C/F · ODS 5.x | RRHH/DAF · CNE · PNUD/INEC (externos) | ❌ MISSING |
+
+## Instrumentos transversales (Motores Analíticos QUIRA — NO son cajón)
+
+Ratificado 2026-07-01 (detalle: `CIRUGIA_GOLD_MASTER_20260701_IPE_COBERTURA.md`). Estas hojas
+NO pertenecen a un cajón: son lentes analíticos que **varias** investigaciones invocan —
+por eso quedan simétricas con el plan sin duplicarse (Regla #6/#7).
+
+| Hoja | Qué es | Consumidores | Nota |
+|---|---|---|---|
+| `H37_SENSIBILIDAD_ESTRATÉGICA` | Simulación de escenarios sobre el ICPI (Pi/Ri/Ti) | d01 · Simulador (`p13`) | ⚠️ Firewall: expone ICPI/Pi/Ri/Ti crudos — motor interno, NO se renderiza |
+| `H38_ALCANCE_PREVENTIVO` | Matriz SAT-0…VI → acción preventiva por señal | d04 Alertas · cada cajón lee su fila (d01 = SAT-0) | Lenguaje 100% preventivo |
+
+**Ruteo de las 5 hojas (2026-07-01):** `H11b`/`H16b` → d01 · `H19` → d02 · `H37`/`H38` transversales.
 
 ## Hallazgos del anclaje (lo que el mapa revela)
 
