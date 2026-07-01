@@ -10,9 +10,10 @@ Estructura (un solo scroll, por eslabón de la columna vertebral):
   cobertura → resumen backbone → PDOT (tabla+gráfica+texto) → POA → PAC → PRESUPUESTO
   → COHERENCIA → cierre factual corto.
 
-Ley INLINE en las explicaciones (solo ley + art. VERIFICADO · Regla 3 — no se inventan
-artículos). Hoy verificado: COOTAD Art. 238 (priorización del gasto). Artículos por
-eslabón = Normativo v2 (verificar del corpus). Firewall: ningún código interno.
+Ley INLINE por eslabón: un artículo VERIFICADO del corpus (sha256 · Regla 3 — no se
+inventan). CE 241 (PDOT) · COOTAD 233 (POA) · LOSNCP 22 (PAC) · COOTAD 215/238
+(presupuesto/priorización). Explicaciones en cards de color, ampliadas para no-expertos.
+Cronograma con marcador de corte (plan ≠ ejecución). Firewall: ningún código interno.
 Dylus Lab © 2026
 """
 from __future__ import annotations
@@ -77,7 +78,9 @@ def _brechas(cod: float, dev: float, pac: float) -> go.Figure:
     return fig
 
 
-def _cronograma(poa: list[dict]) -> go.Figure:
+def _cronograma(poa: list[dict], corte_idx: int = 4) -> go.Figure:
+    """Ritmo PLANIFICADO mes a mes (100% plan del POA). `corte_idx` = meses con ejecución
+    ingerida (Ene-Abr = 4) → marcador que separa el tramo ya transcurrido del plan futuro."""
     meses = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
     serie = [0.0] * 12
     for x in poa:
@@ -86,8 +89,14 @@ def _cronograma(poa: list[dict]) -> go.Figure:
     fig = go.Figure(go.Scatter(
         x=meses, y=serie, mode="lines", fill="tozeroy", line=dict(color="#22D3EE", width=3),
         fillcolor="rgba(34,211,238,0.12)", hoverinfo="skip"))
+    # sombreado del tramo aún NO transcurrido (plan a futuro) + línea de corte
+    _ymax = max(serie) * 1.15 if any(serie) else 1
+    fig.add_vrect(x0=corte_idx - 0.5, x1=11.5, fillcolor="rgba(255,176,32,0.05)", line_width=0)
+    fig.add_vline(x=corte_idx - 0.5, line=dict(color="#FFB020", width=1.5, dash="dot"))
+    fig.add_annotation(x=corte_idx - 0.5, y=_ymax, text="corte · abril", showarrow=False,
+                       font=dict(color="#FFB020", size=11), xanchor="left", xshift=4)
     fig.update_xaxes(tickfont=dict(color="#B8C4D6", size=12), showgrid=False)
-    fig.update_yaxes(visible=False)
+    fig.update_yaxes(visible=False, range=[0, _ymax])
     return fig
 
 
@@ -139,6 +148,20 @@ def _intro(txt: str) -> str:
 
 def _narr(txt: str) -> str:
     return f'<div class="pl-narr">{txt}</div>'
+
+
+_LEY_NOMBRE = {"CE": "Constitución", "COOTAD": "COOTAD", "LOSNCP": "LOSNCP",
+               "RLOSNCP": "Reglamento LOSNCP", "COPLAFIP": "COPLAFIP", "PND-2025": "Plan Nacional"}
+
+
+def _ley_row(plan: dict, stage: str, gloss: str) -> str:
+    """Fila de fundamento legal — artículo VERIFICADO del corpus (sha256 · Regla 3). '' si no hay."""
+    art = ((plan.get("base_normativa") or {}).get("por_eslabon") or {}).get(stage)
+    if not art:
+        return ""
+    nom = _LEY_NOMBRE.get(art["norma"], art["norma"])
+    return (f'<div class="pl-lawrow">⚖ <b>Fundamento legal:</b> '
+            f'<span class="pl-law">{nom} · Art. {art["articulo"]}</span> {gloss}</div>')
 
 
 def _div() -> str:
@@ -297,13 +320,20 @@ def _css() -> str:
 .pl-n{font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:800;color:#22D3EE}
 .pl-t{font-size:19px;font-weight:800;color:#F0F4FA;letter-spacing:.01em}
 .pl-s{font-size:13px;color:#7E8BA3}
-.pl-intro{font-size:14.5px;line-height:1.65;color:#AEB9CC;margin:2px 0 12px;max-width:92ch}
-.pl-intro b{color:#DCE4F0}
-.pl-narr{font-size:16px;line-height:1.72;color:#D2DBEA;padding-top:2px}
+.pl-intro{font-size:14.5px;line-height:1.72;color:#C2CDDE;margin:4px 0 14px;
+  background:rgba(255,255,255,.022);border:1px solid rgba(255,255,255,.07);
+  border-left:3px solid #3BA7D9;border-radius:11px;padding:14px 18px}
+.pl-intro b{color:#EAF0F8}
+.pl-narr{font-size:14.5px;line-height:1.74;color:#D2DBEA;
+  background:rgba(34,211,238,.045);border:1px solid rgba(34,211,238,.16);
+  border-left:3px solid #22D3EE;border-radius:12px;padding:15px 18px}
 .pl-narr b{color:#F0F4FA}
 .pl-law{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;
-  color:#22D3EE;background:rgba(34,211,238,.08);border:1px solid rgba(34,211,238,.22);
-  border-radius:6px;padding:1px 8px;margin:0 2px}
+  color:#22D3EE;background:rgba(34,211,238,.10);border:1px solid rgba(34,211,238,.26);
+  border-radius:6px;padding:1px 8px;margin:0 2px;white-space:nowrap}
+.pl-lawrow{margin-top:11px;padding-top:9px;border-top:1px dashed rgba(255,255,255,.12);
+  font-size:12.5px;color:#9AA6BE;line-height:1.55}
+.pl-lawrow b{color:#C7D2E0}
 hr.pl-div{border:none;border-top:1px solid rgba(255,255,255,.08);margin:22px 0}
 /* tablas — fuentes ↑ */
 .mt-wrap{overflow:auto;border:1px solid rgba(255,255,255,.09);border-radius:12px;margin-bottom:6px}
@@ -357,19 +387,30 @@ def _sec_pdot(plan: dict) -> None:
     st.markdown(_head("1", "PDOT — EL PLAN", f"lo que el municipio se comprometió a lograr · {len(metas)} metas 2023-2027"),
                 unsafe_allow_html=True)
     st.markdown(_intro(
-        "El <b>Plan de Desarrollo y Ordenamiento Territorial</b> es el instrumento que la Constitución y el "
-        "COOTAD hacen obligatorio para cada gobierno autónomo: fija las metas de desarrollo del territorio al "
-        "2027. Cada fila es una meta —su sistema, su competencia (qué obliga la ley en exclusiva y qué se "
-        "comparte) y la dirección que la ejecuta."), unsafe_allow_html=True)
+        "El <b>Plan de Desarrollo y Ordenamiento Territorial (PDOT)</b> es la hoja de ruta que cada municipio del "
+        "Ecuador está <b>obligado por ley</b> a definir. Fija, para el período <b>2023-2027</b>, las metas de "
+        "desarrollo del territorio —qué se quiere lograr en agua, vialidad, salud, ambiente, desechos— y quién "
+        "responde por cada una. No es un documento decorativo: es el <b>compromiso formal</b> contra el que se "
+        "mide toda la gestión municipal. Cada fila de la tabla es una meta, con cuatro datos que conviene leer "
+        "juntos:<br>• su <b>sistema</b> (el área a la que pertenece),<br>• la <b>meta plurianual</b>, con su "
+        "valor de partida y su valor de llegada al 2027,<br>• el <b>tipo de competencia</b> —qué obliga la ley "
+        "al municipio en exclusiva y qué comparte con otros niveles de gobierno—,<br>• y la <b>dirección "
+        "municipal</b> responsable de cumplirla."
+        + _ley_row(plan, "pdot", "— la planificación del desarrollo es obligatoria para todos los gobiernos "
+                   "autónomos descentralizados.")), unsafe_allow_html=True)
     st.markdown(_tabla_metas(metas), unsafe_allow_html=True)
     c1, c2 = st.columns([1, 1.15], gap="large")
     with c1:
         _show(_donut(comp), 250)
     with c2:
         st.markdown(_narr(
-            f"De las <b>{len(metas)} metas</b>, <b>{criticas} son de competencia crítica</b> —donde la ley exige "
-            f"al municipio actuar: agua, vialidad, alcantarillado, desechos. La dona pesa cada tipo: lo que el GAD "
-            f"<b>debe</b> hacer en exclusiva frente a lo que comparte con otros niveles de gobierno."),
+            f"De las <b>{len(metas)} metas</b>, <b>{criticas} son de competencia crítica</b>: las materias donde "
+            f"la ley no da opción y el municipio <b>debe</b> actuar en primera persona —agua potable, vialidad, "
+            f"alcantarillado, manejo de desechos—. La gráfica reparte las metas por tipo de competencia: en "
+            f"<b>azul intenso</b>, lo que el GAD ejecuta en exclusiva; en <b>tonos grises</b>, lo que comparte o "
+            f"coordina con el gobierno central y las juntas parroquiales. Ver este peso importa porque la ley "
+            f"exige <b>priorizar y financiar primero</b> las competencias exclusivas críticas: son la vara con "
+            f"la que se juzga si el plan está bien enfocado."),
             unsafe_allow_html=True)
 
 
@@ -381,18 +422,28 @@ def _sec_poa(plan: dict) -> None:
                       f"cómo se ejecuta el plan en el año · {len(proys)} proyectos · Plan Operativo 2026"),
                 unsafe_allow_html=True)
     st.markdown(_intro(
-        f"El Plan Operativo Anual aterriza el plan en <b>{len(proys)} proyectos</b> concretos, cada uno con su "
-        f"dirección, partida presupuestaria y monto. En conjunto movilizan <b>${tpoa:,.0f}</b> en 2026 — el "
-        f"presupuesto agregado de las metas."), unsafe_allow_html=True)
+        f"Si el PDOT dice <b>qué</b> lograr, el <b>Plan Operativo Anual (POA)</b> dice <b>cómo</b> y <b>con "
+        f"cuánto</b> hacerlo este año. Aterriza las metas en <b>{len(proys)} proyectos y actividades</b> "
+        f"concretos —una ampliación de alcantarillado, la compra de un vehículo hidrosuccionador, la "
+        f"construcción de un pozo— y a cada uno le asigna tres cosas: la <b>dirección</b> responsable, la "
+        f"<b>partida presupuestaria</b> (el código contable que identifica el tipo de gasto) y el <b>monto</b> "
+        f"previsto para 2026. En conjunto movilizan <b>${tpoa:,.0f}</b>. Es el <b>puente</b> entre la promesa "
+        f"del plan y el dinero que la vuelve realidad."
+        + _ley_row(plan, "poa", "— cada dirección municipal prepara su Plan Operativo Anual antes del cierre "
+                   "del ejercicio, articulado al presupuesto.")), unsafe_allow_html=True)
     st.markdown(_tabla_proyectos(proys), unsafe_allow_html=True)
     if poa:
         c1, c2 = st.columns([1.3, 1], gap="large")
         with c1:
-            _show(_cronograma(poa), 210)
+            _show(_cronograma(poa), 220)
         with c2:
             st.markdown(_narr(
-                "La curva es el <b>ritmo planificado mes a mes</b> del conjunto de metas. Permite ver si la "
-                "operación se concentra o se reparte —y anticipar los meses de mayor exigencia."),
+                "La curva muestra el <b>ritmo planificado mes a mes</b>: cuánto de la operación está previsto "
+                "ejecutar en cada mes, según lo que el propio municipio programó en el POA. <b>Ojo: es el plan, "
+                "no lo ya ejecutado.</b> La línea punteada marca el <b>corte actual</b> —la ejecución real "
+                "ingerida llega hasta abril—; a la derecha de esa línea (zona sombreada) es programación a "
+                "futuro. Leerla permite anticipar los <b>meses de mayor exigencia</b> y ver si la carga se "
+                "concentra o se reparte a lo largo del año."),
                 unsafe_allow_html=True)
 
 
@@ -402,16 +453,21 @@ def _sec_pac(plan: dict) -> None:
     st.markdown(_head("3", "PAC — LA CONTRATACIÓN", f"qué contrata el municipio · total oficial ${_pac_total:,.0f}"),
                 unsafe_allow_html=True)
     st.markdown(_intro(
-        f"El Plan Anual de Contratación oficial asciende a <b>${_pac_total:,.0f}</b> y cubre el <b>98.6% del "
-        f"presupuesto de inversión</b> — la cadena plan→gasto es coherente. El paso siguiente es contrastar ese "
-        f"plan con lo que el municipio <b>ya publicó en SERCOP</b>: el estado vivo de la contratación, traído y "
-        f"verificado en tiempo real desde los datos abiertos."), unsafe_allow_html=True)
+        f"El <b>Plan Anual de Contratación (PAC)</b> es la lista oficial de todo lo que el municipio va a comprar "
+        f"o contratar en el año —obras, bienes y servicios— con su costo estimado. Asciende a "
+        f"<b>${_pac_total:,.0f}</b> y cubre el <b>98.6% del presupuesto de inversión</b>: es decir, casi todo lo "
+        f"que se planea invertir ya tiene previsto un proceso de contratación. Eso es buena señal de coherencia "
+        f"entre el plan y el gasto. El siguiente paso —el que QUIRA verifica <b>en vivo</b>— es contrastar ese "
+        f"plan con lo que el municipio <b>ya publicó realmente en el SERCOP</b> (el Servicio Nacional de "
+        f"Contratación Pública), traído en tiempo real desde los datos abiertos del Estado."
+        + _ley_row(plan, "pac", "— toda entidad pública debe elaborar y publicar su Plan Anual de Contratación, "
+                   "en concordancia con su plan y su presupuesto.")), unsafe_allow_html=True)
     if pub.get("procesos"):
         st.markdown(_publicado_band(pub), unsafe_allow_html=True)
         st.markdown(_intro(
-            f"<b>Publicado en SERCOP al corte {pub.get('corte', '')}:</b> {pub.get('n_procesos', 0)} procesos por "
-            f"<b>${pub.get('total_usd', 0):,.0f}</b> (valor referencial). El detalle, proceso a proceso, directo "
-            f"de la fuente:"), unsafe_allow_html=True)
+            f"<b>Lo publicado en el SERCOP al corte {pub.get('corte', '')}:</b> {pub.get('n_procesos', 0)} procesos "
+            f"por <b>${pub.get('total_usd', 0):,.0f}</b> (valor referencial de planificación). El detalle, proceso "
+            f"por proceso y directo de la fuente oficial:"), unsafe_allow_html=True)
         st.markdown(_tabla_publicado(pub.get("procesos", [])), unsafe_allow_html=True)
         cr = pub.get("cruce", {}) or {}
         c1, c2 = st.columns([1.1, 1], gap="large")
@@ -419,11 +475,13 @@ def _sec_pac(plan: dict) -> None:
             _show(_pub_bar(pub), 230)
         with c2:
             st.markdown(_narr(
-                f"El plan de contratación suma <b>${cr.get('plan_pac_usd', 0)/1e6:.1f}M</b>; en SERCOP el municipio "
-                f"ya publicó <b>{pub.get('n_procesos', 0)} procesos por ${pub.get('total_usd', 0)/1e3:.0f}k</b> —el "
-                f"<b>{cr.get('cobertura_pct', 0)}%</b> del plan, al corte {pub.get('corte', '')}. No es alarma: a "
-                f"esta altura del año la mayor parte del PAC sigue en planificación. Es el <b>ritmo de "
-                f"publicación</b> —lo que QUIRA sigue mes a mes para anticipar si la contratación llegará a tiempo."),
+                f"El plan de contratación suma <b>${cr.get('plan_pac_usd', 0)/1e6:.1f}M</b>; en el SERCOP el "
+                f"municipio ya publicó <b>{pub.get('n_procesos', 0)} procesos por "
+                f"${pub.get('total_usd', 0)/1e3:.0f}k</b> —el <b>{cr.get('cobertura_pct', 0)}%</b> del plan, al "
+                f"corte {pub.get('corte', '')}—. <b>No es una alarma</b>: a esta altura del año la mayor parte del "
+                f"PAC todavía está en preparación, porque el gasto público arranca lento y se acelera en el "
+                f"segundo semestre. Lo que conviene seguir es el <b>ritmo de publicación</b> mes a mes: es la "
+                f"señal temprana de si la contratación llegará a tiempo a cubrir lo presupuestado."),
                 unsafe_allow_html=True)
 
 
@@ -436,20 +494,28 @@ def _sec_presupuesto(plan: dict) -> None:
     st.markdown(_head("4", "PRESUPUESTO — EL RECURSO", f"con qué inversión se cuenta · corte {pres.get('corte', '')}"),
                 unsafe_allow_html=True)
     st.markdown(_intro(
-        "El presupuesto de inversión codificado (bienes y obras) y lo devengado al corte. No es el total "
-        "municipal: es la inversión, con la que se relacionan las metas y la contratación. La priorización del "
-        "gasto se ordena con participación ciudadana <span class='pl-law'>COOTAD · Art. 238</span>."),
-        unsafe_allow_html=True)
+        "El <b>presupuesto de inversión</b> es el dinero con el que efectivamente se construye y se compra: "
+        "bienes y obras. La tabla separa dos cifras que suelen confundirse:<br>• lo <b>codificado</b> —lo "
+        "asignado y disponible para gastar—,<br>• y lo <b>devengado</b> —lo que ya se ejecutó al corte—.<br>"
+        "Importante: <b>no es el presupuesto municipal total</b> (que incluye sueldos y gasto corriente), sino "
+        "específicamente la <b>inversión</b>, que es la parte con la que se relacionan las metas del plan y la "
+        "contratación. Por ley, cómo se prioriza este gasto se decide con <b>participación ciudadana</b> "
+        "<span class='pl-law'>COOTAD · Art. 238</span>."
+        + _ley_row(plan, "presupuesto", "— el presupuesto de los GAD se ajusta obligatoriamente al plan de "
+                   "desarrollo y de ordenamiento territorial.")), unsafe_allow_html=True)
     st.markdown(_tabla_presupuesto(pres), unsafe_allow_html=True)
     c1, c2 = st.columns([1.1, 1], gap="large")
     with c1:
         _show(_brechas(cod, dev, pac_total), 250)
     with c2:
         st.markdown(_narr(
-            f"Aquí grita el dato. De los <b>${cod/1e6:.1f}M</b> de inversión presupuestada, el plan de contratación "
-            f"recoge <b>${pac_total/1e6:.1f}M</b> —el <b>{cobertura:.1f}%</b>. El devengado al corte es "
-            f"<b>${dev/1e6:.2f}M</b> ({pres.get('ti_pct', 0)}%), natural en el primer cuatrimestre (el gasto "
-            f"público es de carga tardía). El punto preventivo: que la ejecución alcance al presupuesto."),
+            f"Aquí se lee la tensión clave del año. De los <b>${cod/1e6:.1f}M</b> de inversión presupuestada, el "
+            f"plan de contratación recoge <b>${pac_total/1e6:.1f}M</b> —el <b>{cobertura:.1f}%</b>—: plan y "
+            f"presupuesto están alineados. Pero lo <b>devengado</b> —lo realmente ejecutado— es apenas "
+            f"<b>${dev/1e6:.2f}M</b> ({pres.get('ti_pct', 0)}%), algo <b>natural en el primer cuatrimestre</b> "
+            f"porque el gasto público es de <b>carga tardía</b> (las obras grandes arrancan a mitad de año). El "
+            f"punto preventivo no es el nivel bajo de hoy, sino <b>vigilar que la ejecución acelere</b> para "
+            f"alcanzar al presupuesto antes del cierre del ejercicio."),
             unsafe_allow_html=True)
 
 
@@ -483,10 +549,13 @@ def _sec_ipe(plan: dict) -> None:
         with c2:
             top = por[0]
             st.markdown(_narr(
-                f"El desglose reparte esos <b>${vinc/1e6:.2f}M</b> por objetivo del plan: el de mayor ejecución es "
-                f"<b>{top['objetivo'].lower()}</b> (${top['dev']/1e3:.0f}k), seguido de las coberturas de servicios "
-                f"y la movilidad. Así se ve, en dinero ya ejecutado, qué prioridades del plan están efectivamente "
-                f"moviéndose al corte."), unsafe_allow_html=True)
+                f"Este es un indicador de <b>calidad del gasto</b>: no basta con ejecutar dinero, importa que ese "
+                f"dinero responda a una meta del plan y no a decisiones improvisadas. El desglose reparte los "
+                f"<b>${vinc/1e6:.2f}M</b> vinculados por objetivo del plan: el de mayor ejecución es "
+                f"<b>{top['objetivo'].lower()}</b> (${top['dev']/1e3:.0f}k), seguido de las coberturas de "
+                f"servicios y la movilidad. Así se ve, en <b>dinero ya ejecutado</b>, qué prioridades del plan "
+                f"están efectivamente moviéndose al corte —y cuáles todavía no arrancan."),
+                unsafe_allow_html=True)
 
 
 def _sec_coherencia(plan: dict) -> None:
@@ -500,10 +569,13 @@ def _sec_coherencia(plan: dict) -> None:
         st.markdown(_pills(sat.get("componentes", [])), unsafe_allow_html=True)
     with c2:
         st.markdown(_narr(
-            "QUIRA contrasta lo planificado (POA) con lo contratado (PAC), proceso por proceso. Los procesos ya "
-            "vinculados a una meta marcan <b>coherencia</b>; la señal preventiva se concentra en los procesos bajo "
-            "el monto mínimo de análisis. No es una falta: es <b>dónde cerrar la coherencia antes</b> de ejecutar, "
-            "para que el plan no se erosione en el camino al gasto."),
+            "Esta es la lectura preventiva —el valor propio de QUIRA—. El sistema contrasta lo <b>planificado</b> "
+            "(POA) con lo <b>contratado</b> (PAC), <b>proceso por proceso</b>, y revisa cuatro señales: que no se "
+            "abra una brecha entre plan y contratación, que no se fragmenten montos, que cada proceso supere el "
+            "mínimo de análisis y que la evidencia llegue a tiempo. Los procesos ya vinculados a una meta marcan "
+            "<b>coherencia</b>; la señal preventiva se concentra donde ese vínculo aún no está cerrado. <b>No es "
+            "una falta ni una sanción</b>: es señalar <b>dónde cerrar la coherencia antes</b> de ejecutar, para "
+            "que el plan no se erosione en el camino del papel al gasto real."),
             unsafe_allow_html=True)
 
 

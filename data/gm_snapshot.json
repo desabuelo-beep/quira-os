@@ -4638,6 +4638,76 @@
         "publicado_usd": 1048154.43,
         "cobertura_pct": 3.5
       }
+    },
+    "base_normativa": {
+      "fuente": "Corpus normativo verificado (Supabase · pgvector · sha256)",
+      "fecha": "2026-07-01",
+      "total_chunks": 2608,
+      "cobertura": [
+        {
+          "sigla": "CE",
+          "nombre": "Constitución del Ecuador",
+          "chunks": 465
+        },
+        {
+          "sigla": "COOTAD",
+          "nombre": "Código Orgánico de Organización Territorial (COOTAD)",
+          "chunks": 632
+        },
+        {
+          "sigla": "PDOT-MONTECRISTI",
+          "nombre": "Plan de Desarrollo y Ordenamiento Territorial (PDOT)",
+          "chunks": 594
+        },
+        {
+          "sigla": "PND-2025",
+          "nombre": "Plan Nacional de Desarrollo",
+          "chunks": 422
+        },
+        {
+          "sigla": "RLOSNCP",
+          "nombre": "Reglamento a la Ley de Contratación Pública",
+          "chunks": 495
+        }
+      ],
+      "articulo_ancla": {
+        "norma": "COOTAD",
+        "articulo": 238,
+        "sha256": "f682cd88ba15",
+        "texto": "Art. 238.- Participación ciudadana en la priorización del gasto.- Las prioridades de gasto se establecerán desde las unidades básicas de participación y serán recogidas por la asamblea local o el organismo que en cada gobierno autónomo descentralizado se establezca como máxima instancia de participación. El cálculo definitivo de ingresos será presentado en el mismo plazo del artículo anterior, por el ejecutivo, en la"
+      },
+      "por_eslabon": {
+        "pdot": {
+          "norma": "CE",
+          "articulo": 241,
+          "sha256": "da13d3789caa",
+          "sumilla": "La planificación garantizará el ordenamiento territorial y será obligato"
+        },
+        "poa": {
+          "norma": "COOTAD",
+          "articulo": 233,
+          "sha256": "96e3b77f48fc",
+          "sumilla": "Plazo"
+        },
+        "presupuesto": {
+          "norma": "COOTAD",
+          "articulo": 215,
+          "sha256": "60f89aebd7b3",
+          "sumilla": "Presupuesto"
+        },
+        "pac": {
+          "norma": "LOSNCP",
+          "articulo": 22,
+          "sha256": "054779c8e813",
+          "sumilla": "Plan Anual de Contratación"
+        },
+        "gasto": {
+          "norma": "COOTAD",
+          "articulo": 238,
+          "sha256": "f682cd88ba15",
+          "sumilla": "Participación ciudadana en la priorización del gasto"
+        }
+      }
     }
   }
 }

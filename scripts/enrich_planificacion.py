@@ -336,6 +336,11 @@ def main() -> None:
     block = build_block()
     with open(SNAP, encoding="utf-8") as f:
         snap = json.load(f)
+    # Preservar la base normativa (la refresca scripts/normativa_planificacion.py) — que un
+    # re-run del enricher NO la borre. Pipeline: enricher → normativa_planificacion.
+    _prev_bn = (snap.get("planificacion") or {}).get("base_normativa")
+    if _prev_bn:
+        block["base_normativa"] = _prev_bn
     snap["planificacion"] = block
     with open(SNAP, "w", encoding="utf-8") as f:
         json.dump(snap, f, ensure_ascii=False, indent=2)

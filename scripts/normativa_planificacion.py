@@ -70,6 +70,41 @@ def main() -> int:
             ancla = {"norma": "COOTAD", "articulo": row[0], "sha256": (row[1] or "")[:12],
                      "texto": (row[2] or "").strip()[:420]}
 
+        # 3 · Un artículo VERIFICADO por eslabón del backbone (ley + art. + sumilla · no derogado · Regla 3)
+        import re as _re
+        ESLABONES = {
+            "pdot":        [("CE", "241", None), ("CE", "280", None)],
+            "poa":         [("COOTAD", "233", None), ("COOTAD", None, "%operativo anual%"),
+                            ("COPLAFIP", None, "%plan operativo%")],
+            "presupuesto": [("COOTAD", "215", None)],
+            "pac":         [("LOSNCP", "22", None), ("RLOSNCP", "64", None)],
+            "gasto":       [("COOTAD", "238", None)],
+        }
+
+        def _fetch(sigla, num, kw):
+            if num:
+                cur.execute("SELECT articulo_num, sha256, contenido FROM public.normativa_corpus "
+                            "WHERE norma_sigla=%s AND articulo_num=%s LIMIT 1", (sigla, num))
+            else:
+                cur.execute("SELECT articulo_num, sha256, contenido FROM public.normativa_corpus "
+                            "WHERE norma_sigla=%s AND contenido ILIKE %s ORDER BY length(contenido) DESC LIMIT 1",
+                            (sigla, kw))
+            r = cur.fetchone()
+            if not r or "derogado" in (r[2] or "")[:90].lower():
+                return None
+            cont = (r[2] or "").strip()
+            m = _re.match(r"Art\.\s*[\d.]+\.-\s*([^.\-]{3,72})", cont)
+            return {"norma": sigla, "articulo": r[0], "sha256": (r[1] or "")[:12],
+                    "sumilla": (m.group(1).strip() if m else "")}
+
+        por_eslabon = {}
+        for _k, _cands in ESLABONES.items():
+            for _sigla, _num, _kw in _cands:
+                _got = _fetch(_sigla, _num, _kw)
+                if _got:
+                    por_eslabon[_k] = _got
+                    break
+
         conn.close()
     except Exception as e:
         print(f"[skip] Supabase no disponible ({str(e)[:70]}) — el cajón omite la base normativa"); return 0
@@ -81,6 +116,7 @@ def main() -> int:
         "total_chunks": total,
         "cobertura": cobertura,
         "articulo_ancla": ancla,
+        "por_eslabon": por_eslabon,
     }
     snap["planificacion"] = plan
     SNAP.write_text(json.dumps(snap, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -89,6 +125,9 @@ def main() -> int:
         print(f"  {c['sigla']:<18} {c['chunks']:>5}  {c['nombre']}")
     if ancla:
         print(f"\n  Ancla COOTAD art.{ancla['articulo']} (sha {ancla['sha256']}): {ancla['texto'][:100]}…")
+    print(f"\n  Artículos por eslabón ({len(por_eslabon)}):")
+    for _k, _v in por_eslabon.items():
+        print(f"    {_k:<12} {_v['norma']} Art. {_v['articulo']} — {_v['sumilla']}  (sha {_v['sha256']})")
     return 0
 
 
