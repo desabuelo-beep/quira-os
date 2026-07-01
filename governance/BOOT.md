@@ -45,7 +45,7 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
 🔧 **SPRINT CANON · Backbone:** PDOT 25 metas · POA 257 proy $39.3M · Presup 135 part $45.98M · PAC $29.85M (98.6%).
 🔌 **MCD Planificación · 7 cables ✅ · impl. desacoplada de infra:** Excel·SERCOP·Relacional·Normativo·IA·Visual·Memoria.
 🧭 **ADR-031 RATIF:** cajón=MCD · GoldMaster=MCM · MCIP 5 motores · build vert.+horiz. **Stack-Descrip** Marco Fund.+3 niv (Index §1.A).
-🔑 rollback `FREEZE_20260701_PRE_IPE`. **Excel v5.5 +Cobertura_POA=96%→snapshot** · ruteo 5 hojas ratif · **cajón UI reescrito** (sin forense/IA/memoria). Detalle+sig (camino A·anclaje): `CIRUGIA_GOLD_MASTER_20260701_IPE_COBERTURA.md`.
+🔑 rollback `FREEZE_20260701_PRE_IPEEJEC`. **Excel v5.5 +Cobertura 96% +IPE-ejec 95.6%→snapshot** (B33✓·guardián✓). Ruteo anclado · **cajón Planificación finiquitado**. Sig: IPE 25-metas. `CIRUGIA_GOLD_MASTER_20260701_IPE_COBERTURA.md`.
 🔶 **CI:** BOOT ≤6KB.
 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 ratificado · detalle en el ADR)

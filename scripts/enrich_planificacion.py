@@ -18,7 +18,7 @@ from __future__ import annotations
 import json
 import os
 import re
-from collections import Counter
+from collections import Counter, defaultdict
 
 import openpyxl
 
@@ -274,10 +274,49 @@ def build_block() -> dict:
     except Exception:
         cobertura_metas_poa = None
 
+    # ── IPE-ejecutado (H16b · % del gasto de inversión vinculado a metas · cirugía 2026-07-01) ──
+    # Headline = valor de record del canon (Excel=Estado · B15). Desglose por objetivo = presentación
+    # (match jerárquico partida eSIGEF → proyecto POA → objetivo · "el Excel no cruza solo").
+    ipe_ejecutado = None
+    ipe_por_objetivo: list[dict] = []
+    try:
+        _w16 = sh("H16b")
+        ipe_ejecutado = {
+            "pct": round((_w16["B15"].value or 0) * 100, 1),
+            "vinculado": round(_w16["B16"].value or 0, 2),
+            "total": round(_w16["B7"].value or 0, 2),
+            "no_pdot": round(_w16["B17"].value or 0, 2),
+        }
+        import re as _re
+        def _nrm(t): return _re.sub(r"\s+", " ", (t or "").strip().upper())
+        _poa = defaultdict(set)
+        for _p in poa_proyectos:
+            _pt = (_p.get("partida") or "").strip()
+            _ob = _nrm(_p.get("meta"))
+            if _pt and _ob:
+                _poa[_pt].add(_ob)
+        _codes = sorted(_poa, key=len, reverse=True)
+        _objdev: dict = defaultdict(float)
+        for _x in presupuesto.get("partidas", []):
+            _cta = str(_x.get("cuenta") or "").strip()
+            if _cta[:1] not in ("7", "8"):
+                continue
+            _pc = next((c for c in _codes if _cta == c or _cta.startswith(c)), None)
+            if _pc:
+                _dev = _x.get("dev") or 0
+                for _o in _poa[_pc]:
+                    _objdev[_o] += _dev / len(_poa[_pc])
+        ipe_por_objetivo = [{"objetivo": _o.title(), "dev": round(_v, 2)}
+                            for _o, _v in sorted(_objdev.items(), key=lambda kv: -kv[1]) if _v > 0]
+    except Exception:
+        pass
+
     return {
         "_fuente": "PDOT (planificación) · POA (operación) · PAC (contratación) · coherencia · corte Q1-2026",
         "metas_total": metas_total,
         "cobertura_metas_poa": cobertura_metas_poa,
+        "ipe_ejecutado": ipe_ejecutado,
+        "ipe_por_objetivo": ipe_por_objetivo,
         "metas_detalle": list(metas.values()),
         "competencia": competencia,
         "direcciones": direcciones,

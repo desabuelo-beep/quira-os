@@ -112,6 +112,21 @@ def _pub_bar(pub: dict) -> go.Figure:
     return fig
 
 
+def _ipe_bar(por_obj: list[dict]) -> go.Figure:
+    """Devengado de inversión vinculado, por objetivo del plan (barras horizontales)."""
+    top = list(reversed(por_obj[:8]))            # mayor arriba
+    labels = [(o["objetivo"][:36] + "…") if len(o["objetivo"]) > 37 else o["objetivo"] for o in top]
+    vals = [o["dev"] for o in top]
+    fig = go.Figure(go.Bar(
+        x=vals, y=labels, orientation="h", marker=dict(color="#2DD46F"),
+        text=[f"${v/1e3:.0f}k" for v in vals], textposition="auto",
+        textfont=dict(family="JetBrains Mono", color="#F0F4FA", size=12),
+        hoverinfo="skip", cliponaxis=False, width=0.66))
+    fig.update_xaxes(visible=False)
+    fig.update_yaxes(tickfont=dict(color="#B8C4D6", size=11.5))
+    return fig
+
+
 # ═══════════════════════ HTML premium (fuentes ↑) ═══════════════════════
 def _head(num: str, tit: str, sub: str) -> str:
     return (f'<div class="pl-h"><span class="pl-n">{num}</span><span class="pl-t">{tit}</span>'
@@ -438,10 +453,46 @@ def _sec_presupuesto(plan: dict) -> None:
             unsafe_allow_html=True)
 
 
+def _sec_ipe(plan: dict) -> None:
+    """El gasto ejecutado vinculado a una meta del plan (IPE-ejecutado · lenguaje gobernanza)."""
+    ie = plan.get("ipe_ejecutado") or {}
+    if not ie or not ie.get("total"):
+        return
+    por = plan.get("ipe_por_objetivo") or []
+    pct = ie.get("pct", 0)
+    total = ie.get("total", 0) or 1
+    vinc = ie.get("vinculado", 0)
+    nop = ie.get("no_pdot", 0)
+    st.markdown(_head("5", "EL GASTO VINCULADO AL PLAN",
+                      "cuánto del gasto de inversión ejecutado responde a una meta del PDOT"),
+                unsafe_allow_html=True)
+    st.markdown(
+        f'<div class="pl-cov" style="border-color:rgba(34,211,238,.28);border-left-color:#22D3EE;'
+        f'background:linear-gradient(90deg,rgba(34,211,238,.10),rgba(34,211,238,.02))">'
+        f'<div class="pl-cov-row"><span class="pl-cov-val" style="color:#22D3EE">{pct:.1f}%</span>'
+        f'<span class="pl-cov-lbl">de la inversión ejecutada al corte (<b>${total/1e6:.2f}M</b>) está vinculada '
+        f'a una meta del PDOT vía su partida presupuestaria</span></div>'
+        f'<div class="pl-cov-note">Solo <b>${nop/1e3:.0f}k</b> ({100*nop/total:.1f}%) es gasto de inversión sin '
+        f'vínculo al plan (obras puntuales, seguros). El vínculo se traza cruzando cada partida ejecutada con el '
+        f'proyecto operativo que la imputa a un objetivo del plan —lo que antes no se leía de un vistazo.</div>'
+        f'</div>', unsafe_allow_html=True)
+    if por:
+        c1, c2 = st.columns([1.25, 1], gap="large")
+        with c1:
+            _show(_ipe_bar(por), 270)
+        with c2:
+            top = por[0]
+            st.markdown(_narr(
+                f"El desglose reparte esos <b>${vinc/1e6:.2f}M</b> por objetivo del plan: el de mayor ejecución es "
+                f"<b>{top['objetivo'].lower()}</b> (${top['dev']/1e3:.0f}k), seguido de las coberturas de servicios "
+                f"y la movilidad. Así se ve, en dinero ya ejecutado, qué prioridades del plan están efectivamente "
+                f"moviéndose al corte."), unsafe_allow_html=True)
+
+
 def _sec_coherencia(plan: dict) -> None:
     sat = plan.get("sat0", {}) or {}
     sat_temp = sat.get("global_temp", "alerta")
-    st.markdown(_head("5", "LA COHERENCIA", "del plan al gasto, proceso por proceso · la señal preventiva"),
+    st.markdown(_head("6", "LA COHERENCIA", "del plan al gasto, proceso por proceso · la señal preventiva"),
                 unsafe_allow_html=True)
     st.markdown(_stepper(sat_temp), unsafe_allow_html=True)
     c1, c2 = st.columns([1, 1.15], gap="large")
@@ -509,6 +560,8 @@ def render() -> None:
     _sec_pac(plan)
     st.markdown(_div(), unsafe_allow_html=True)
     _sec_presupuesto(plan)
+    st.markdown(_div(), unsafe_allow_html=True)
+    _sec_ipe(plan)
     st.markdown(_div(), unsafe_allow_html=True)
     _sec_coherencia(plan)
 

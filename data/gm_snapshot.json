@@ -438,6 +438,50 @@
     "_fuente": "PDOT (planificación) · POA (operación) · PAC (contratación) · coherencia · corte Q1-2026",
     "metas_total": 25,
     "cobertura_metas_poa": 96.0,
+    "ipe_ejecutado": {
+      "pct": 95.6,
+      "vinculado": 1861533.08,
+      "total": 1947738.29,
+      "no_pdot": 86205.21
+    },
+    "ipe_por_objetivo": [
+      {
+        "objetivo": "Fortalecer Y Mejorar Los Recursos Municipales",
+        "dev": 782776.36
+      },
+      {
+        "objetivo": "Mejorar Las Coberturas Y Calidad De Los Sistemas Públicos De",
+        "dev": 439937.25
+      },
+      {
+        "objetivo": "Desarrollar Estrategias Innovadoras Mediante La Instituciona",
+        "dev": 316777.27
+      },
+      {
+        "objetivo": "Mejorar La Movilidad Y Conectividad Del Cantón",
+        "dev": 190317.32
+      },
+      {
+        "objetivo": "Disminuir La Contaminación Ambiental Y El Riesgo Mediante Ac",
+        "dev": 46208.41
+      },
+      {
+        "objetivo": "Incrementar El Estímulo A La Economía, Mejorando La Estructu",
+        "dev": 32369.83
+      },
+      {
+        "objetivo": "Incrementar La Oferta Turística De Calidad, Fortaleciendo Lo",
+        "dev": 26573.32
+      },
+      {
+        "objetivo": "Fortalecer La Cultura Y El Patrimonio De La Ciudad Creativa",
+        "dev": 23378.32
+      },
+      {
+        "objetivo": "Fortalecer La Gobernabilidad E Institucionalidad, Mediante L",
+        "dev": 3195.0
+      }
+    ],
     "metas_detalle": [
       {
         "id": "SC-I-N-01",
