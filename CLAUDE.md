@@ -18,6 +18,7 @@ Detalle: `docs/adr/ADR-023` (3 niveles, inmutable).
 4. **No recalcular el motor.** Métricas vienen del Excel (Regla 1 de ADR-023). Documento nuevo → QUIRA. Métrica nueva → Excel.
 5. **No tocar congelados.** `governance/*` y `.github/workflows/*` no se modifican sin aprobación.
 6. **Repo PRIVADO.** Credenciales solo en `.streamlit/secrets.toml` local. Nunca al repo.
+7. **Anti-inflación del canon.** Ningún concepto entra si SOLO renombra: debe añadir capacidad, eliminar ambigüedad demostrable o reducir complejidad. Si solo cambia el nombre, no entra (asesor · 2026-06-30).
 
 ## PROHIBICIONES
 NUNCA: hardcodear sin snapshot · agregar un dominio que NO pase el PROTOCOLO DE EXPANSIÓN ONTOLÓGICA
