@@ -596,3 +596,12 @@ def render() -> None:
         criterio_ia=criterio_ia,
     )
     inv.to_streamlit()
+
+    # Cable Memoria — el porqué del criterio (memoria de diseño del repo · Opción A · firewall-safe)
+    md = plan.get("memoria_diseno") or {}
+    if md.get("principios"):
+        with st.expander(f"¿Por qué QUIRA lee el plan así?  ·  memoria de diseño "
+                         f"({md.get('n_decisiones_documentadas', 0)} decisiones documentadas y trazables)"):
+            for _p in md["principios"]:
+                st.markdown(f"- {_p}")
+            st.caption("Metodología canónica documentada y trazable — el criterio no se improvisa.")

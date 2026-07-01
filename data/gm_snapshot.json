@@ -4636,6 +4636,35 @@
         "sha256": "f682cd88ba15",
         "texto": "Art. 238.- Participación ciudadana en la priorización del gasto.- Las prioridades de gasto se establecerán desde las unidades básicas de participación y serán recogidas por la asamblea local o el organismo que en cada gobierno autónomo descentralizado se establezca como máxima instancia de participación. El cálculo definitivo de ingresos será presentado en el mismo plazo del artículo anterior, por el ejecutivo, en la"
       }
+    },
+    "memoria_diseno": {
+      "fuente": "Registro de diseño del repo (ADRs · BOOT · governance/historico) — no el vault de dominio",
+      "fecha": "2026-06-30",
+      "principios": [
+        "Preventiva, no forense: QUIRA señala dónde cerrar la coherencia ANTES de que el plan se erosione en el camino al gasto — no juzga el pasado.",
+        "El cajón es un modelo, no un tablero: integra las capas del ecosistema (Canon, datos vivos, relaciones, normativa, criterio) para responder UNA sola pregunta del dominio.",
+        "Lenguaje de gestión pública, nunca acusatorio: se muestran coherencias y brechas, jamás culpables.",
+        "QUIRA lee y conecta lo que ya existe; no inventa cifras ni estructuras — la verdad vive verificada en el Canon, la IA solo razona sobre ella."
+      ],
+      "fuentes": [
+        {
+          "adr": "ADR-031",
+          "titulo": "ADR-031 · Modelos Canónicos de Dominio (MCD) y el MCIP — reconciliación, no refu"
+        },
+        {
+          "adr": "ADR-025",
+          "titulo": "ADR-025 — Principio de Alertas QUIRA: Coherencia Institucional"
+        },
+        {
+          "adr": "ADR-030",
+          "titulo": "ADR-030 · Canon de Expresión de Interfaz QUIRA"
+        },
+        {
+          "adr": "ADR-023",
+          "titulo": "ADR-023 — Arquitectura de Tres Niveles QUIRA"
+        }
+      ],
+      "n_decisiones_documentadas": 16
     }
   }
 }
