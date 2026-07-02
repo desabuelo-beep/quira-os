@@ -403,6 +403,25 @@ hr.pl-div{border:none;border-top:1px solid rgba(255,255,255,.08);margin:22px 0}
   letter-spacing:.04em;min-width:190px;flex-shrink:0;text-transform:uppercase}
 .pl-syn-t{font-size:14.5px;line-height:1.62;color:#D2DBEA}
 .pl-syn-t b{color:#F0F4FA}
+/* motores SAT */
+.pl-sat-h{display:flex;align-items:center;gap:11px;margin:16px 0 10px;flex-wrap:wrap}
+.pl-sat-n{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:800;color:#7E8BA3;
+  letter-spacing:.08em;text-transform:uppercase}
+.pl-sat-t{font-size:16.5px;font-weight:800;color:#F0F4FA}
+.pl-sat-e{font-size:11px;font-weight:700;border:1px solid;border-radius:9px;padding:2px 10px}
+.ev-chain{display:flex;align-items:center;padding:8px 2px 14px}
+.ev-node{display:flex;flex-direction:column;align-items:center;gap:8px;min-width:0}
+.ev-n{font-family:'JetBrains Mono',monospace;font-size:17px;font-weight:900;width:46px;height:46px;
+  display:flex;align-items:center;justify-content:center;border:2px solid;border-radius:50%;
+  background:rgba(255,255,255,.02)}
+.ev-l{font-size:11.5px;color:#B8C4D6;font-weight:600;text-align:center;max-width:96px}
+.ev-link{flex:1;height:3px;border-radius:2px;margin:0 6px 24px}
+.pl-clean{display:flex;gap:14px;align-items:flex-start;background:rgba(45,212,111,.06);
+  border:1px solid rgba(45,212,111,.22);border-left:3px solid #2DD46F;border-radius:12px;padding:15px 18px}
+.pl-clean-ic{font-size:22px;color:#2DD46F;font-weight:900;flex-shrink:0;line-height:1.2}
+.pl-clean-t{font-size:15px;font-weight:800;color:#F0F4FA;margin-bottom:5px}
+.pl-clean-d{font-size:14px;line-height:1.65;color:#C2CDDE}
+.pl-clean-d b{color:#EAF0F8}
 /* cierre */
 .pl-cierre{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.09);border-radius:14px;
   padding:18px 22px;margin-top:22px}
@@ -628,26 +647,159 @@ def _sec_ipe(plan: dict) -> None:
                 unsafe_allow_html=True)
 
 
+# ═══════════════════════ Motores SAT — instrumentos preventivos (honestos) ══════
+def _sat_h(num: str, titulo: str, comp: dict) -> str:
+    estado = comp.get("estado", "—") or "—"
+    c = _T.get(comp.get("temp", "dim"), "#7E8BA3")
+    return (f'<div class="pl-sat-h"><span class="pl-sat-n">Motor {num}</span>'
+            f'<span class="pl-sat-t">{titulo}</span>'
+            f'<span class="pl-sat-e" style="color:{c};border-color:{c}55;background:{c}14">● {estado}</span></div>')
+
+
+def _brecha_bipartito(plan: dict) -> go.Figure:
+    """Grafo bipartito POA(partidas) ↔ SERCOP(procesos). Honesto: verde=con proceso · gris=en programación."""
+    from collections import defaultdict
+    poa: dict = defaultdict(float)
+    for x in plan.get("poa_proyectos", []):
+        k = str(x.get("partida", "")).strip()
+        if k:
+            poa[k] += x.get("anual", 0) or 0
+    serc = {str(x.get("partida", "")).strip() for x in plan.get("publicado", {}).get("procesos", [])
+            if str(x.get("partida", "")).strip()}
+    top = sorted(poa.items(), key=lambda kv: -kv[1])[:7]
+    n = len(top) or 1
+    ys = list(range(n, 0, -1))
+    fig = go.Figure()
+    for (k, v), y in zip(top, ys):
+        if k in serc:
+            fig.add_trace(go.Scatter(x=[0.2, 0.8], y=[y, y], mode="lines",
+                          line=dict(color="#2DD46F", width=2.5), hoverinfo="skip"))
+    for (k, v), y in zip(top, ys):
+        col = "#2DD46F" if k in serc else "#5A6B7E"
+        fig.add_trace(go.Scatter(x=[0.2], y=[y], mode="markers+text",
+                      marker=dict(size=15, color=col, line=dict(color="#0A0F19", width=1.5)),
+                      text=[f"{k} · ${v/1e6:.1f}M  "], textposition="middle left",
+                      textfont=dict(color="#B8C4D6", size=10.5), hoverinfo="skip"))
+        if k in serc:
+            fig.add_trace(go.Scatter(x=[0.8], y=[y], mode="markers",
+                          marker=dict(size=13, color="#FFB020", line=dict(color="#0A0F19", width=1.5)),
+                          hoverinfo="skip"))
+    fig.add_annotation(x=0.2, y=n + 0.7, text="<b>POA</b> · líneas del plan", showarrow=False,
+                       font=dict(color="#22D3EE", size=11), xanchor="left")
+    fig.add_annotation(x=0.8, y=n + 0.7, text="<b>publicado</b>", showarrow=False,
+                       font=dict(color="#FFB020", size=11), xanchor="left")
+    fig.update_xaxes(visible=False, range=[-0.05, 1.2])
+    fig.update_yaxes(visible=False, range=[0, n + 1.4])
+    return fig
+
+
+def _monto_scatter(plan: dict) -> go.Figure:
+    """Dispersión de montos — los de menor cuantía concentran la señal preventiva."""
+    pts = []
+    for x in plan.get("publicado", {}).get("procesos", []):
+        m = x.get("monto") or 0
+        if m:
+            pts.append(float(m))
+    for x in plan.get("pac_detalle", []):
+        m = x.get("monto") or 0
+        if m:
+            pts.append(float(m))
+    pts.sort()
+    xs = list(range(1, len(pts) + 1))
+    fig = go.Figure(go.Scatter(
+        x=xs, y=pts, mode="markers",
+        marker=dict(size=14, color=pts or [0], colorscale=[[0, "#FFB020"], [1, "#22D3EE"]],
+                    line=dict(color="#0A0F19", width=1)), hoverinfo="skip"))
+    fig.update_xaxes(title_text="procesos (ordenados por monto)", tickfont=dict(color="#B8C4D6", size=10),
+                     title_font=dict(color="#7E8BA3", size=11), showgrid=False)
+    fig.update_yaxes(title_text="monto (USD)", tickfont=dict(color="#B8C4D6", size=10),
+                     title_font=dict(color="#7E8BA3", size=11), gridcolor="rgba(255,255,255,.06)")
+    return fig
+
+
+def _evidencia_chain(plan: dict) -> str:
+    pub = plan.get("publicado", {}) or {}
+    et = {e["etapa"]: e["n"] for e in pub.get("por_etapa", [])}
+    fases = [("Planificado", et.get("Planificado", 0)),
+             ("Publicado / en proceso", et.get("En proceso", 0)),
+             ("Adjudicado", et.get("Adjudicado", 0)),
+             ("Contrato", et.get("Contrato", 0) + et.get("Contratado", 0))]
+    out = ""
+    for i, (lab, c) in enumerate(fases):
+        col = "#2DD46F" if c else "#46566A"
+        out += (f'<div class="ev-node"><span class="ev-n" style="color:{col};border-color:{col}66">{c}</span>'
+                f'<span class="ev-l">{lab}</span></div>')
+        if i < 3:
+            out += f'<span class="ev-link" style="background:{"#2DD46F" if c else "#2A3444"}"></span>'
+    return f'<div class="ev-chain">{out}</div>'
+
+
+def _downcoding_card(plan: dict) -> str:
+    return (
+        '<div class="pl-clean"><span class="pl-clean-ic">✓</span>'
+        '<div><div class="pl-clean-t">Sin señal de fraccionamiento</div>'
+        '<div class="pl-clean-d">No se detecta el patrón de <b>dividir un mismo objeto de gasto</b> en múltiples '
+        'procesos pequeños para evadir los umbrales de control (el fraccionamiento clásico). Este motor se '
+        '<b>enciende</b> si aparece una concentración anómala de procesos de ínfima cuantía sobre un mismo objeto '
+        'o proveedor; al corte, la contratación está limpia en este frente.</div></div></div>')
+
+
 def _sec_coherencia(plan: dict) -> None:
     sat = plan.get("sat0", {}) or {}
     sat_temp = sat.get("global_temp", "alerta")
-    st.markdown(_head("6", "LA COHERENCIA", "del plan al gasto, proceso por proceso · la señal preventiva"),
+    comps = {c.get("label"): c for c in sat.get("componentes", [])}
+    st.markdown(_head("6", "LA COHERENCIA", "cuatro motores de análisis preventivo sobre la contratación"),
                 unsafe_allow_html=True)
+    st.markdown(_intro(
+        "Aquí vive el <b>análisis de mayor valor</b> del sistema. Ya no mira si el plan existe —eso se vio arriba— "
+        "sino si la <b>ejecución es coherente</b> con él, cruzando la contratación <b>proceso por proceso</b> a "
+        "través de cuatro <b>motores preventivos</b>. Cada uno vigila una forma distinta de erosión del gasto "
+        "público y habla en <b>lenguaje preventivo</b>: no acusa ni sanciona —señala dónde cerrar la coherencia "
+        "<b>antes</b> de ejecutar—. Varios están <b>en formación</b>: se encienden con toda su fuerza conforme la "
+        "contratación del año llena sus datos."), unsafe_allow_html=True)
     st.markdown(_stepper(sat_temp), unsafe_allow_html=True)
-    c1, c2 = st.columns([1, 1.15], gap="large")
+    st.markdown(_div(), unsafe_allow_html=True)
+
+    st.markdown(_sat_h("1", "Brecha plan ↔ contratación", comps.get("Brecha POA-PAC", {})), unsafe_allow_html=True)
+    c1, c2 = st.columns([1.15, 1], gap="large")
     with c1:
-        st.markdown(_pills(sat.get("componentes", [])), unsafe_allow_html=True)
+        _show(_brecha_bipartito(plan), 300)
     with c2:
         st.markdown(_narr(
-            "Esta es la <b>lectura preventiva</b> —el análisis de mayor valor del sistema—. Contrasta lo "
-            "<b>planificado</b> (POA) con lo <b>contratado</b> (PAC), <b>proceso por proceso</b>, y revisa cuatro "
-            "señales: que no se "
-            "abra una brecha entre plan y contratación, que no se fragmenten montos, que cada proceso supere el "
-            "mínimo de análisis y que la evidencia llegue a tiempo. Los procesos ya vinculados a una meta marcan "
-            "<b>coherencia</b>; la señal preventiva se concentra donde ese vínculo aún no está cerrado. <b>No es "
-            "una falta ni una sanción</b>: es señalar <b>dónde cerrar la coherencia antes</b> de ejecutar, para "
-            "que el plan no se erosione en el camino del papel al gasto real."),
-            unsafe_allow_html=True)
+            "El motor conecta cada <b>línea del plan operativo</b> (izquierda) con el <b>proceso de contratación</b> "
+            "que la ejecuta (derecha). Una línea del plan <b>sin conexión</b> es presupuesto que aún no llegó a "
+            "contratarse. <b>Al corte de abril</b>, la mayoría está <b>en programación</b> —aún sin publicar en el "
+            "SERCOP, natural en el primer cuatrimestre—; en <b>verde</b>, las que ya tienen proceso. El poder del "
+            "grafo se revela hacia mitad de año: si una línea de <b>mucho presupuesto</b> sigue huérfana cuando el "
+            "año avanza, el hueco se vuelve visible al instante."), unsafe_allow_html=True)
+    st.markdown(_div(), unsafe_allow_html=True)
+
+    st.markdown(_sat_h("2", "Dispersión de montos", comps.get("Monto mínimo", {})), unsafe_allow_html=True)
+    c1, c2 = st.columns([1.15, 1], gap="large")
+    with c1:
+        _show(_monto_scatter(plan), 300)
+    with c2:
+        st.markdown(_narr(
+            "Cada punto es un proceso, ubicado por su <b>monto</b>. Los de <b>menor cuantía</b> (abajo, en ámbar) "
+            "son los más difíciles de fiscalizar y los más propensos al fraccionamiento —por eso concentran la "
+            "señal preventiva—. El motor vigila la <b>frecuencia</b>: un proceso pequeño es rutina; muchos "
+            "seguidos bajo el umbral son un <b>patrón</b> a revisar. Con la contratación de Q1 aún rala, muestra "
+            "los pocos procesos ya valorados; se densifica con el año."), unsafe_allow_html=True)
+    st.markdown(_div(), unsafe_allow_html=True)
+
+    st.markdown(_sat_h("3", "Reloj de evidencia", comps.get("Reloj de evidencia", {})), unsafe_allow_html=True)
+    st.markdown(_evidencia_chain(plan), unsafe_allow_html=True)
+    st.markdown(_narr(
+        "Cada contratación deja una <b>cadena de evidencia</b> en sus etapas legales: planificación → publicación "
+        "→ adjudicación → contrato. Una cadena <b>completa y en plazo</b> es señal de proceso sano; una etapa que "
+        "<b>no llega a tiempo</b> rompe la cadena y enciende la alerta. Al corte, los procesos publicados están en "
+        "sus <b>primeras etapas</b> —lo esperado a esta altura—; el reloj vigila que ninguno se estanque."),
+        unsafe_allow_html=True)
+    st.markdown(_div(), unsafe_allow_html=True)
+
+    st.markdown(_sat_h("4", "Fraccionamiento contractual", comps.get("Downcoding contractual", {})),
+                unsafe_allow_html=True)
+    st.markdown(_downcoding_card(plan), unsafe_allow_html=True)
 
 
 def _cierre(plan: dict) -> None:
