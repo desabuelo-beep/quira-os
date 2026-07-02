@@ -79,5 +79,32 @@ VIVO `…v5.5_TGI.xlsx` SHA256 `9528BA299DAD3A257C98C3B3E6048A386E48A398E1C917C2
 **Nivel 25-metas:** pendiente — 0/257 proyectos POA traen `ID_Meta` (traen objetivo-texto). Requiere
 meta-tagging de origen o heurística documentada con flag. No se fabrica (Regla 3).
 
+## 8 · Cierre AUDIT-GRADE — IPE-ejecutado NATIVO en el Excel (2026-07-02)
+
+**Riesgo cerrado (Javo: "¿y si nos auditan el Excel?"):** el IPE-ejecutado 95.6% vivía como **valor stampeado
+desde Python** en `H16b!B16` —sin derivación dentro del Gold Master—. Ante una auditoría de la hoja, el número
+no se podía rastrear. **Un dominio no está cerrado si el motor tiene un eslabón calculado fuera del Excel.**
+
+**Solución:** `B16` (vinculada) pasa de valor a **FÓRMULA VIVA**, calculada por Excel:
+```
+B16 = SUMPRODUCT( inversión(7/8 en H07) · devengado(H07!E) · en_POA(COUNTIF H05 exacto + prefijo de grupo) )
+```
+Referencias: `H07_S5_FINANCIERO_eSIGEF` (devengado por partida, rangos A/E 46:180) + `H05_S3_OPERATIVO_POA`
+(partidas del POA, E47:320). `B15` (IPE)=`=B16/B7` · `B17` (no-PDOT)=`=B7-B16`. Traceable celda a celda.
+
+**Verificación (Excel COM ↔ Python · la prueba de fuego):** la fórmula del Excel reproduce EXACTO el bridge:
+- `B16` = **$1,861,533.08** (idéntico) · `B15` = **95.57%** · `B17` = $86,205.21.
+- ✅ `H12!B33` = 0.27458226534062735 idéntica · ✅ guardián `B40` pasa · ✅ 5=5 errores, 0 nuevos.
+
+**Nivel objetivo = fiel a la fuente (verificado en H05):** el POA etiqueta los 257 proyectos por **OBJETIVO
+(12)**, no por las 25 metas (col "Meta" = texto de objetivo). Solo el 36% del presupuesto mapea a una meta vía
+Dirección; el 64% está en direcciones administrativas (Procuraduría, Comunicación, TI, Seguridad…) sin meta de
+desarrollo. El IPE nativo a nivel objetivo/plan es lo auditable; el 25-metas exigiría meta-tag por proyecto en
+la fuente (el municipio), no un mapeo derivado que un auditor objetaría.
+
+**Archivos:** FREEZE `…FREEZE_20260702_PRE_IPENATIVE.xlsx` · WORK `…WORK_20260702_IPENATIVE.xlsx` · VIVO SHA256
+`C8FE5F74367634144908FD4C7F89C5125E92FE14FD31B91395597A077649599E` · mtime 2026-07-02 05:09. Enricher/snapshot/UI
+sin cambio (mismo valor cacheado). **Dominio Planificación cerrado de cabo a rabo.**
+
 ---
 *Cirugía Gold Master · Dylus Lab © 2026 · la fórmula canónica es INMUTABLE · correcciones solo en inputs/semáforo/presentación, sobre copia, con evidencia verificada.*
