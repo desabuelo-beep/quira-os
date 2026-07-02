@@ -3,10 +3,11 @@ QUIRA OS — QINV-009 · Rendición de Cuentas · lectura documental (réplica d
 ═══════════════════════════════════════════════════════════════════════════════
 Réplica del patrón de Planificación (ADR-031), reusando el lenguaje visual del molde.
 Backbone de RDC = la TRIANGULACIÓN: narrativa oficial (discurso) ↔ evidencia física/
-financiera ↔ informe CPCCS. Tres pilares:
-  1. FIDELIDAD NARRATIVA (H34b) — lo dicho ↔ lo probado · el diferenciador de QUIRA
-  2. PRESUPUESTO PARTICIPATIVO (H10b) — serie 2024-2026 verificada (COOTAD 238)
-  3. REPORTE CPCCS (H31) — marco y compromisos (LOPC Art. 88)
+financiera ↔ informe CPCCS. Dos pilares:
+  1. FIDELIDAD NARRATIVA (H34b) — lo dicho ↔ lo probado · el diferenciador
+  2. REPORTE CPCCS (H31) — marco y compromisos (LOPC Art. 88)
+El Presupuesto Participativo (H10b) NO va aquí: es de Participación Ciudadana (d08),
+su dueño por la pregunta que responde (incidencia ciudadana). Ruteo · Javo 2026-07-02.
 
 Datos del canon vía snapshot (Regla 1). Firewall: lenguaje de gobernanza, sin códigos.
 Dylus Lab © 2026
@@ -46,19 +47,6 @@ def _fid_bar(claims: list[dict]) -> go.Figure:
     return fig
 
 
-def _pp_bar(comp: list[dict]) -> go.Figure:
-    top = list(reversed(comp))
-    labels = [c["componente"] for c in top]
-    vals = [c["monto"] for c in top]
-    fig = go.Figure(go.Bar(
-        x=vals, y=labels, orientation="h", marker=dict(color="#22D3EE"),
-        text=[f"  ${v/1e6:.2f}M · {c['pct']}" for v, c in zip(vals, top)], textposition="outside",
-        textfont=dict(family="Inter", color="#D2DBEA", size=12), hoverinfo="skip", cliponaxis=False, width=0.62))
-    fig.update_xaxes(visible=False, range=[0, (max(vals) * 1.6) if vals else 1])
-    fig.update_yaxes(tickfont=dict(color="#E8EDF4", size=12))
-    return fig
-
-
 # ═══════════════════════ tablas ═══════════════════════
 def _tabla_claims(claims: list[dict]) -> str:
     rows = ""
@@ -76,17 +64,6 @@ def _tabla_claims(claims: list[dict]) -> str:
                  f'<div style="color:{col};font-size:10px;font-weight:700">{c["clasificacion"]}</div></td></tr>')
     return _tbl(["Ente · momento del video", "Lo que se DIJO (rendición oficial)",
                  "Lo que muestra la EVIDENCIA", "Fidelidad"], rows, mh=480)
-
-
-def _tabla_serie(serie: list[dict]) -> str:
-    rows = ""
-    for s in serie:
-        p = s["presupuesto"]
-        pres = f'${p:,.0f}' if isinstance(p, (int, float)) else str(p)[:40]
-        rows += (f'<tr><td class="mt-meta">{s["anio"]}</td><td class="mt-dir">{s["talleres"]}</td>'
-                 f'<td class="mt-id">{s["fichas"]}</td><td class="mt-id">{s["parroquias"]}</td>'
-                 f'<td class="mt-num">{pres}</td><td class="mt-dir" style="font-size:10.5px">{s["acta"]}</td></tr>')
-    return _tbl(["Ciclo", "Método", "Fichas", "Parroquias", "Presupuesto PP", "Acta / fuente"], rows, mh=200)
 
 
 # ═══════════════════════ secciones ═══════════════════════
@@ -135,33 +112,8 @@ def _sec_fidelidad(fid: dict) -> None:
                 f"evidencia deben reconciliarse, con la prueba a la vista."), unsafe_allow_html=True)
 
 
-def _sec_participativo(pp: dict) -> None:
-    serie = pp.get("serie", [])
-    comp = pp.get("componentes_2025", [])
-    st.markdown(_head("2", "EL PRESUPUESTO PARTICIPATIVO",
-                      "cuánto del presupuesto decide directamente la ciudadanía · serie 2024-2026"),
-                unsafe_allow_html=True)
-    st.markdown(_intro(
-        f"El presupuesto participativo es el mecanismo por el que la ciudadanía <b>prioriza directamente</b> parte "
-        f"de la inversión, en asambleas por parroquia. La ley lo hace obligatorio "
-        f"<span class='pl-law'>COOTAD · Art. 238</span> <span class='pl-law'>LOPC · Art. 93</span>. Montecristi "
-        f"sostiene el ciclo en <b>7 de 7 parroquias</b> los tres años, con actas verificadas:"),
-        unsafe_allow_html=True)
-    st.markdown(_tabla_serie(serie), unsafe_allow_html=True)
-    if comp:
-        c1, c2 = st.columns([1.15, 1], gap="large")
-        with c1:
-            _show(_pp_bar(comp), 300)
-        with c2:
-            st.markdown(_narr(
-                "El destino de lo priorizado por la gente, por eje temático (ciclo 2025, verificado). "
-                "<b>Asentamientos humanos</b> (agua, alcantarillado, vialidad) y lo <b>físico-ambiental</b> "
-                "concentran la decisión ciudadana —coherente con las competencias críticas del cantón—. Leer este "
-                "reparto muestra si la voz ciudadana se dirige a lo esencial o se dispersa."), unsafe_allow_html=True)
-
-
 def _sec_cpccs(cp: dict) -> None:
-    st.markdown(_head("3", "EL CIRCUITO CPCCS",
+    st.markdown(_head("2", "EL CIRCUITO CPCCS",
                       "la rendición formal ante el órgano de control social"),
                 unsafe_allow_html=True)
     brecha = cp.get("brecha_compromisos") or "—"
@@ -178,24 +130,22 @@ def _cierre_rdc(r: dict) -> None:
     fid = r.get("fidelidad", {})
     g = fid.get("global_pct") or 0
     n_alta, n_baja = fid.get("n_alta", 0), fid.get("n_baja", 0)
-    serie = r.get("participativo", {}).get("serie", [])
+    n = fid.get("n_afirmaciones", 0)
     st.markdown(
         f'<div class="pl-cierre">'
         f'<div class="pl-cierre-lbl">Síntesis ejecutiva — la rendición, verificada</div>'
         f'<div class="pl-syn-row"><span class="pl-syn-c">Fidelidad · discurso ↔ hecho</span>'
-        f'<span class="pl-syn-t"><b>{g:.0f}%</b> de fidelidad narrativa: {n_alta} afirmaciones sostenidas en la '
-        f'evidencia, {n_baja} con brecha a reconciliar. La palabra oficial, contrastada con la prueba.</span></div>'
-        f'<div class="pl-syn-row"><span class="pl-syn-c">Participación · voz ciudadana</span>'
-        f'<span class="pl-syn-t">Presupuesto participativo sostenido en <b>7/7 parroquias</b> por <b>{len(serie)} '
-        f'ciclos</b> (2024-2026), con actas verificadas —el control social funciona.</span></div>'
+        f'<span class="pl-syn-t"><b>{g:.0f}%</b> de fidelidad narrativa: de {n} afirmaciones públicas, {n_alta} se '
+        f'sostienen en la evidencia y {n_baja} registra brecha a reconciliar. La palabra oficial, contrastada con '
+        f'la prueba documental.</span></div>'
         f'<div class="pl-syn-row"><span class="pl-syn-c">Control · circuito CPCCS</span>'
-        f'<span class="pl-syn-t">La rendición formal ante el CPCCS cierra el círculo: lo prometido se sigue año a '
-        f'año, no se olvida.</span></div>'
+        f'<span class="pl-syn-t">La rendición formal ante el Consejo de Participación Ciudadana y Control Social '
+        f'cierra el círculo: lo prometido se sigue año a año, no se diluye en un acto de un solo día.</span></div>'
         f'<div class="pl-cierre-txt" style="margin-top:15px">En conjunto, la rendición de cuentas de Montecristi '
-        f'<b>resiste el contraste con la evidencia</b>: la mayoría de las afirmaciones se sostienen, la '
-        f'participación ciudadana es real y sostenida. El valor de QUIRA es que ese contraste ya no depende de la '
-        f'confianza —está <b>documentado y verificable</b>, afirmación por afirmación.</div>'
-        f'<div class="pl-src">Fuente: informe RDC oficial · eSIGEF · PAC · actas CPCCS · presupuesto participativo · corte 2024-2026.</div>'
+        f'<b>resiste el contraste con la evidencia</b>: la mayoría de las afirmaciones se sostienen en la prueba '
+        f'documental. El valor de esta lectura es que ese contraste <b>ya no depende de la confianza</b> —está '
+        f'documentado y es verificable, afirmación por afirmación, con la evidencia a la vista.</div>'
+        f'<div class="pl-src">Fuente: informe de rendición oficial · eSIGEF · PAC · actas CPCCS · corte 2024.</div>'
         f'</div>', unsafe_allow_html=True)
 
 
@@ -215,12 +165,10 @@ def render() -> None:
         '<div class="pl-sub"><b>La palabra pública, contrastada con la evidencia.</b> Triangula lo que la '
         'autoridad afirma en su rendición con la prueba física y financiera verificable, y con el circuito formal '
         'de control social. Donde el discurso y el hecho coinciden, hay integridad; donde difieren, la brecha '
-        'queda a la vista. <b>Corte 2024 · participativo 2024-2026.</b></div></div>',
+        'queda a la vista. <b>Corte rendición 2024.</b></div></div>',
         unsafe_allow_html=True)
 
     _sec_fidelidad(r.get("fidelidad", {}))
-    st.markdown(_div(), unsafe_allow_html=True)
-    _sec_participativo(r.get("participativo", {}))
     st.markdown(_div(), unsafe_allow_html=True)
     _sec_cpccs(r.get("cpccs", {}))
     _cierre_rdc(r)

@@ -4733,7 +4733,7 @@
     }
   },
   "rendicion": {
-    "_fuente": "RDC: Fidelidad Narrativa (H34b) · Participativo (H10b) · CPCCS (H31) · corte 2024-2026",
+    "_fuente": "RDC: Fidelidad Narrativa (H34b) · CPCCS (H31) · corte 2024",
     "fidelidad": {
       "global_pct": 91.0,
       "n_afirmaciones": 9,
@@ -4850,103 +4850,6 @@
         }
       ],
       "fuente": "Matriz de Fidelidad Narrativa — Rendición de Cuentas 2024 (video oficial ↔ evidencia verificada)"
-    },
-    "participativo": {
-      "marco_legal": "COOTAD Art.238 / LOPC Art.93",
-      "fichas_2026": 149,
-      "serie": [
-        {
-          "anio": "PP 2024",
-          "metodo": "Formulario online (Google Forms) - convocatoria publica GAD web",
-          "talleres": "N/A (online)",
-          "fichas": "N/A (online)",
-          "parroquias": "7",
-          "presupuesto": 6118924,
-          "acta": "ACTA No.002-2023-JLAC-JPC-GADMCM - INFORME No.003-JLAC-JPC-GADCM-2023"
-        },
-        {
-          "anio": "PP 2025",
-          "metodo": "6 talleres presenciales - 7 parroquias - 6 mesas de trabajo",
-          "talleres": "6",
-          "fichas": "137",
-          "parroquias": "7",
-          "presupuesto": 5687954,
-          "acta": "ACTA No.005-2024-JLAC-JPC-GADMCM - MEMORANDO No.255 (30-oct-2024)"
-        },
-        {
-          "anio": "PP 2026",
-          "metodo": "6 talleres presenciales - 7 parroquias - 6 mesas de trabajo",
-          "talleres": "6",
-          "fichas": "149",
-          "parroquias": "7",
-          "presupuesto": "20982884 (base provisional ingresos — resolución GADM pendiente)",
-          "acta": "ACTA No.007-2025-JLAC-JPC-GADMCM · VERIFICADO CHK-12 2026-05-26 — Info"
-        }
-      ],
-      "componentes_2025": [
-        {
-          "componente": "Fisico Ambiental",
-          "monto": 1249758,
-          "pct": "22%",
-          "area": "Ambiente, ecosistemas"
-        },
-        {
-          "componente": "Territorial AAHH",
-          "monto": 1886695,
-          "pct": "33%",
-          "area": "Agua, alcantarillado, vialidad"
-        },
-        {
-          "componente": "Social Cultural",
-          "monto": 1331666,
-          "pct": "23%",
-          "area": "Educacion, salud, deporte"
-        },
-        {
-          "componente": "Economico Productivo",
-          "monto": 603279,
-          "pct": "11%",
-          "area": "Produccion, comercio"
-        },
-        {
-          "componente": "Politico Institucional",
-          "monto": 616554,
-          "pct": "11%",
-          "area": "Gestion, participacion"
-        }
-      ],
-      "prioridades": [
-        {
-          "id": "PP-GAD-2026-P01",
-          "desc": "Agua Potable / Saneamiento rural",
-          "id_meta": "AH-AP-01",
-          "fichas": "Fichas verificadas: 126 (1ra prioridad) - Monto pendiente resolucion GADM"
-        },
-        {
-          "id": "PP-GAD-2026-P02",
-          "desc": "Areas verdes / Parques / Recreacion",
-          "id_meta": "FA-C-X-01",
-          "fichas": "Fichas verificadas: 95 (2da prioridad)"
-        },
-        {
-          "id": "PP-GAD-2026-P03",
-          "desc": "Vialidad cantonal / Red interna",
-          "id_meta": "AH-V-X-01",
-          "fichas": "Fichas verificadas: 94 (3ra prioridad)"
-        },
-        {
-          "id": "PP-GAD-2026-P04",
-          "desc": "Salud / Equipamiento medico parroquial",
-          "id_meta": "SC-S-G-01",
-          "fichas": "Fichas verificadas: 80 (4ta prioridad)"
-        },
-        {
-          "id": "PP-GAD-2026-P05",
-          "desc": "Aseo / Recoleccion / Gestion ambiental",
-          "id_meta": "FA-R-X-01",
-          "fichas": "Fichas verificadas: 74 (5ta prioridad)"
-        }
-      ]
     },
     "cpccs": {
       "marco_legal": "LOPC Art.88 + Constitución Art.204",

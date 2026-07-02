@@ -81,45 +81,11 @@ def build_block() -> dict:
         "fuente": "Matriz de Fidelidad Narrativa — Rendición de Cuentas 2024 (video oficial ↔ evidencia verificada)",
     }
 
-    # ── 2 · PRESUPUESTO PARTICIPATIVO (H10b) — serie 2024-2026 verificada ──────────
-    ws = sh("H10b")
-    serie = []
-    for r in range(22, 25):                       # PP 2024 / 2025 / 2026
-        anio = ws.cell(r, 1).value
-        if not anio:
-            continue
-        serie.append({
-            "anio": _clean(anio),
-            "metodo": _clean(ws.cell(r, 2).value),
-            "talleres": _clean(ws.cell(r, 3).value),
-            "fichas": _clean(ws.cell(r, 4).value),
-            "parroquias": _clean(ws.cell(r, 5).value),
-            "presupuesto": ws.cell(r, 6).value if isinstance(ws.cell(r, 6).value, (int, float)) else _clean(ws.cell(r, 6).value),
-            "acta": _clean(ws.cell(r, 7).value)[:70],
-        })
-    comp_2025 = []
-    for r in range(31, 36):                        # componentes PP 2025 (verificado)
-        c = ws.cell(r, 1).value
-        m = ws.cell(r, 2).value
-        if c and isinstance(m, (int, float)):
-            comp_2025.append({"componente": _clean(c), "monto": m,
-                              "pct": _clean(ws.cell(r, 3).value), "area": _clean(ws.cell(r, 4).value)})
-    prioridades = []
-    for r in range(13, 18):                        # prioridades PP 2026 (fichas verificadas)
-        pid = ws.cell(r, 1).value
-        if not pid:
-            continue
-        prioridades.append({"id": _clean(pid), "desc": _clean(ws.cell(r, 2).value),
-                            "id_meta": _clean(ws.cell(r, 3).value), "fichas": _clean(ws.cell(r, 7).value)})
-    participativo = {
-        "marco_legal": _clean(ws.cell(8, 2).value) or "COOTAD Art. 238 / LOPC Art. 93",
-        "fichas_2026": ws.cell(10, 2).value,
-        "serie": serie,
-        "componentes_2025": comp_2025,
-        "prioridades": prioridades,
-    }
+    # NOTA: el Presupuesto Participativo (H10b) NO va aquí — pertenece a Participación
+    # Ciudadana (d08), su dueño por la pregunta que responde (incidencia ciudadana). Se
+    # cablea en su propio enricher cuando se construya d08. RDC = triangulación discurso↔evidencia.
 
-    # ── 3 · REPORTE CPCCS (H31) — marco + compromisos (lenguaje gobernanza) ─────────
+    # ── 2 · REPORTE CPCCS (H31) — marco + compromisos (lenguaje gobernanza) ─────────
     ws = sh("H31")
     cpccs = {
         "marco_legal": _clean(ws.cell(11, 2).value) or "LOPC Art. 88 · Constitución Art. 204",
@@ -129,9 +95,8 @@ def build_block() -> dict:
 
     wb.close()
     return {
-        "_fuente": "RDC: Fidelidad Narrativa (H34b) · Participativo (H10b) · CPCCS (H31) · corte 2024-2026",
+        "_fuente": "RDC: Fidelidad Narrativa (H34b) · CPCCS (H31) · corte 2024",
         "fidelidad": fidelidad,
-        "participativo": participativo,
         "cpccs": cpccs,
     }
 
@@ -147,8 +112,6 @@ def main() -> None:
     print("OK - bloque 'rendicion' escrito en gm_snapshot.json")
     print(f"   Fidelidad narrativa: {fi['n_afirmaciones']} afirmaciones · global {fi['global_pct']}% "
           f"· {fi['n_alta']} alta · {fi['n_baja']} baja")
-    print(f"   Participativo: {len(block['participativo']['serie'])} años · "
-          f"{len(block['participativo']['componentes_2025'])} componentes")
     print(f"   CPCCS: {block['cpccs']['marco_legal']}")
 
 
