@@ -393,9 +393,19 @@ hr.pl-div{border:none;border-top:1px solid rgba(255,255,255,.08);margin:22px 0}
 .sp-d{width:15px;height:15px;border-radius:50%}
 .sp-t{font-size:12px;color:#B8C4D6;font-weight:600;white-space:nowrap}
 .sp-ln{flex:1;height:2px;background:rgba(255,255,255,.13);margin:0 5px 19px}
+/* nota al pie de tabla */
+.pl-note{font-size:12.5px;line-height:1.6;color:#8493A8;background:rgba(255,255,255,.02);
+  border:1px dashed rgba(255,255,255,.12);border-radius:9px;padding:10px 14px;margin:2px 0 4px}
+.pl-note b{color:#B8C4D6}
+/* síntesis por eslabón */
+.pl-syn-row{display:flex;gap:14px;align-items:baseline;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.pl-syn-c{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:800;color:#22D3EE;
+  letter-spacing:.04em;min-width:190px;flex-shrink:0;text-transform:uppercase}
+.pl-syn-t{font-size:14.5px;line-height:1.62;color:#D2DBEA}
+.pl-syn-t b{color:#F0F4FA}
 /* cierre */
 .pl-cierre{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.09);border-radius:14px;
-  padding:16px 20px;margin-top:22px}
+  padding:18px 22px;margin-top:22px}
 .pl-cierre-lbl{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:800;letter-spacing:.1em;
   color:#7E8BA3;text-transform:uppercase;margin-bottom:7px}
 .pl-cierre-txt{font-size:15.5px;line-height:1.7;color:#D2DBEA}
@@ -509,6 +519,12 @@ def _sec_pac(plan: dict) -> None:
             f"monto referencial y su vínculo a una meta del plan (cuando el dato ya lo permite); la columna "
             f"<b>Coherencia</b> marca la señal preventiva del cruce plan↔contratación:"), unsafe_allow_html=True)
         st.markdown(_tabla_pac(pac_det), unsafe_allow_html=True)
+        st.markdown(
+            '<div class="pl-note"><b>Nota:</b> varios procesos figuran con monto <b>"por valorar"</b> — su '
+            'cuantía se define al concretarse el estudio de mercado y publicarse en el portal de compras públicas. '
+            'El <b>vínculo fino proceso↔meta</b> y el cruce con lo efectivamente publicado se completan y actualizan '
+            'en vivo conforme avanza el ejercicio; a esta altura del año varias celdas están en formación.</div>',
+            unsafe_allow_html=True)
     # Lo YA publicado en el SERCOP — estado vivo verificado
     if pub.get("procesos"):
         st.markdown(_intro(
@@ -635,15 +651,57 @@ def _sec_coherencia(plan: dict) -> None:
 
 
 def _cierre(plan: dict) -> None:
+    metas = plan.get("metas_detalle", [])
+    comp = plan.get("competencia", [])
+    criticas = sum(c["n"] for c in comp if "Crítica" in c["label"])
+    cob = plan.get("cobertura_metas_poa") or 0
+    proys = plan.get("poa_proyectos", [])
+    tpoa = sum(x.get("anual", 0) for x in proys)
+    pac_total = (plan.get("pac", {}) or {}).get("total_usd", 0) or 0
+    pub = plan.get("publicado", {}) or {}
+    pub_pct = (pub.get("cruce", {}) or {}).get("cobertura_pct", 0)
     pres = plan.get("presupuesto", {}) or {}
-    corte = pres.get("corte", "Q1-2026")
+    cod = pres.get("codificado_inversion", 0) or 0
+    dev = pres.get("devengado", 0) or 0
+    ti = pres.get("ti_pct", 0)
+    ipe = (plan.get("ipe_ejecutado") or {}).get("pct", 0)
+    corte = pres.get("corte", "enero–abril 2026")
+
+    def _r(code, txt):
+        return f'<div class="pl-syn-row"><span class="pl-syn-c">{code}</span><span class="pl-syn-t">{txt}</span></div>'
+
+    filas = (
+        _r("Plan · PDOT",
+           f"<b>{len(metas)} metas</b> plurianuales de desarrollo, <b>{criticas} de competencia crítica</b> "
+           f"(donde la ley obliga a actuar). El <b>{cob:.0f}%</b> ya bajó a la operación anual: la planificación "
+           f"de largo plazo no quedó en el papel.")
+        + _r("Operación · POA",
+             f"<b>{len(proys)} proyectos</b> movilizan <b>${tpoa/1e6:.1f}M</b> en 2026, cada uno con dirección, "
+             f"partida y cronograma —el plan traducido en actividades concretas y responsables.")
+        + _r("Contratación · PAC",
+             f"<b>${pac_total/1e6:.1f}M</b> planificados (el <b>98.6%</b> del presupuesto de inversión). "
+             f"<b>{pub_pct}%</b> ya publicado en el SERCOP —bajo, pero <b>natural en el primer cuatrimestre</b>; "
+             f"el gasto público se acelera en el segundo semestre.")
+        + _r("Recurso · Presupuesto",
+             f"<b>${cod/1e6:.1f}M</b> de inversión codificada; <b>${dev/1e6:.2f}M</b> devengados "
+             f"(<b>{ti}%</b>) —ejecución de arranque, carga tardía típica.")
+        + _r("Calidad · Gasto vinculado",
+             f"<b>{ipe:.1f}%</b> del gasto de inversión ya ejecutado responde a una meta del plan: el dinero se "
+             f"mueve <b>donde el plan manda</b>, no por impulso.")
+        + _r("Prevención · Coherencia",
+             "señal preventiva activa en la alineación plan↔contratación —el foco es <b>cerrar el vínculo antes</b> "
+             "de ejecutar, no sancionar después.")
+    )
     st.markdown(
         f'<div class="pl-cierre">'
-        f'<div class="pl-cierre-lbl">En síntesis</div>'
-        f'<div class="pl-cierre-txt">El plan <b>sostiene su diseño</b>: las metas del PDOT se traducen en '
-        f'operación (POA), contratación (PAC) y presupuesto coherentes entre sí. El foco preventivo está en que '
-        f'<b>la contratación y la ejecución alcancen al presupuesto</b> conforme avanza el año fiscal, para que la '
-        f'correspondencia del plan no se erosione en el camino al gasto.</div>'
+        f'<div class="pl-cierre-lbl">Síntesis ejecutiva — la cadena de extremo a extremo</div>'
+        f'{filas}'
+        f'<div class="pl-cierre-txt" style="margin-top:15px">En conjunto, <b>el plan sostiene su diseño</b>: la '
+        f'correspondencia entre lo planificado, lo presupuestado y lo contratado es sólida, y el gasto ya ejecutado '
+        f'es de <b>alta calidad</b> (vinculado a metas). La <b>atención es preventiva, no correctiva</b>: pasa por '
+        f'que la <b>contratación y la ejecución aceleren</b> en el segundo semestre para alcanzar al presupuesto '
+        f'antes del cierre del ejercicio, de modo que la promesa del PDOT no se erosione en el camino del papel al '
+        f'gasto real. Ese seguimiento mes a mes es, precisamente, lo que este cajón permite.</div>'
         f'<div class="pl-src">Fuente: PDOT · POA · PAC (SERCOP) · presupuesto eSIGEF · corte {corte}.</div>'
         f'</div>',
         unsafe_allow_html=True)
