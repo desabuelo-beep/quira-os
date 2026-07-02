@@ -66,13 +66,86 @@ def _tabla_claims(claims: list[dict]) -> str:
                  "Lo que muestra la EVIDENCIA", "Fidelidad"], rows, mh=480)
 
 
+# ═══════════════════════ serie 3 años ═══════════════════════
+def _serie_bar(serie: list[dict]) -> go.Figure:
+    xs = [s["periodo"] for s in serie]
+    ys = [s.get("asistentes") or 0 for s in serie]
+    fig = go.Figure(go.Bar(
+        x=xs, y=ys, marker=dict(color="#22D3EE"), text=[str(v) for v in ys], textposition="outside",
+        textfont=dict(family="JetBrains Mono", color="#F0F4FA", size=15), hoverinfo="skip", width=0.5))
+    fig.update_xaxes(tickfont=dict(color="#B8C4D6", size=13))
+    fig.update_yaxes(visible=False, range=[0, (max(ys) * 1.28) if ys else 1])
+    return fig
+
+
+def _tabla_serie_rdc(serie: list[dict]) -> str:
+    rows = ""
+    for s in serie:
+        rows += (f'<tr><td class="mt-meta">RDC {s["periodo"]}</td><td class="mt-id">N° {s["informe_n"]}</td>'
+                 f'<td class="mt-dir">{s["fecha_rdc"]}</td><td class="mt-dir">{s["lugar"]}</td>'
+                 f'<td class="mt-num">{s.get("asistentes") or "—"}</td>'
+                 f'<td class="mt-num">{s.get("n_componentes", 0)}</td></tr>')
+    return _tbl(["Período", "Informe", "Fecha RDC", "Lugar", "Asistentes", "Componentes"], rows, mh=200)
+
+
+def _tabla_cumplimiento(comps: list[dict]) -> str:
+    rows = ""
+    for c in comps:
+        rows += (f'<tr><td class="mt-meta" style="min-width:210px">{c["componente"]}</td>'
+                 f'<td style="color:#AEB9CC;padding:9px 12px;border-bottom:1px solid rgba(255,255,255,.05)">'
+                 f'{c.get("resultado") or "—"}</td></tr>')
+    return _tbl(["Componente del plan de trabajo", "Resultado reportado (informe oficial)"], rows, mh=380)
+
+
 # ═══════════════════════ secciones ═══════════════════════
+def _sec_serie(serie: list[dict]) -> None:
+    if not serie:
+        return
+    st.markdown(_head("1", "LA RENDICIÓN EN EL TIEMPO",
+                      "tres ciclos de rendición ante la ciudadanía · 2023-2025"), unsafe_allow_html=True)
+    st.markdown(_intro(
+        "La rendición de cuentas es un <b>ejercicio anual y obligatorio</b> ante la ciudadanía y el CPCCS "
+        "<span class='pl-law'>Constitución · Art. 204</span> <span class='pl-law'>LOPC · Art. 88</span>. Aquí, "
+        "los tres informes oficiales del período, con su evolución verificable —número de informe, fecha, lugar "
+        "y asistencia ciudadana:"), unsafe_allow_html=True)
+    st.markdown(_tabla_serie_rdc(serie), unsafe_allow_html=True)
+    if any(s.get("asistentes") for s in serie):
+        c1, c2 = st.columns([1.15, 1], gap="large")
+        with c1:
+            _show(_serie_bar(serie), 250)
+        with c2:
+            a0 = serie[0].get("asistentes") or 0
+            aN = serie[-1].get("asistentes") or 0
+            delta = f"+{100 * (aN - a0) / a0:.0f}%" if a0 else "—"
+            st.markdown(_narr(
+                f"La <b>asistencia ciudadana</b> a la rendición creció de <b>{a0}</b> ({serie[0]['periodo']}) a "
+                f"<b>{aN}</b> ({serie[-1]['periodo']}) —<b>{delta}</b>—: el control social no se debilita, se "
+                f"fortalece. Y el informe se hace más detallado año a año ({serie[0].get('n_componentes', 0)} → "
+                f"{serie[-1].get('n_componentes', 0)} componentes), señal de una rendición que profundiza en vez "
+                f"de simplificar."), unsafe_allow_html=True)
+
+
+def _sec_cumplimiento(cumpl: dict) -> None:
+    comps = (cumpl or {}).get("componentes", [])
+    if not comps:
+        return
+    per = (cumpl or {}).get("periodo", "")
+    st.markdown(_head("2", "EL CUMPLIMIENTO REPORTADO",
+                      f"lo que la autoridad declara haber ejecutado · informe {per}"), unsafe_allow_html=True)
+    st.markdown(_intro(
+        f"El cuerpo de la rendición: <b>{len(comps)} componentes del plan de trabajo</b> y el resultado que la "
+        f"autoridad reporta haber logrado en cada uno (informe oficial {per}). Es la <b>narrativa del "
+        f"cumplimiento</b> —lo que se afirma—; el paso siguiente es contrastarla con la evidencia (la fidelidad "
+        f"narrativa, más abajo):"), unsafe_allow_html=True)
+    st.markdown(_tabla_cumplimiento(comps), unsafe_allow_html=True)
+
+
 def _sec_fidelidad(fid: dict) -> None:
     claims = fid.get("claims", [])
     g = fid.get("global_pct") or 0
     n_alta = fid.get("n_alta", 0)
     n_baja = fid.get("n_baja", 0)
-    st.markdown(_head("1", "LA FIDELIDAD NARRATIVA",
+    st.markdown(_head("3", "LA FIDELIDAD NARRATIVA",
                       "lo que se dijo ↔ lo que muestra la evidencia · el corazón de la rendición"),
                 unsafe_allow_html=True)
     st.markdown(
@@ -113,7 +186,7 @@ def _sec_fidelidad(fid: dict) -> None:
 
 
 def _sec_cpccs(cp: dict) -> None:
-    st.markdown(_head("2", "EL CIRCUITO CPCCS",
+    st.markdown(_head("4", "EL CIRCUITO CPCCS",
                       "la rendición formal ante el órgano de control social"),
                 unsafe_allow_html=True)
     brecha = cp.get("brecha_compromisos") or "—"
@@ -131,9 +204,13 @@ def _cierre_rdc(r: dict) -> None:
     g = fid.get("global_pct") or 0
     n_alta, n_baja = fid.get("n_alta", 0), fid.get("n_baja", 0)
     n = fid.get("n_afirmaciones", 0)
+    serie = r.get("serie", [])
     st.markdown(
         f'<div class="pl-cierre">'
         f'<div class="pl-cierre-lbl">Síntesis ejecutiva — la rendición, verificada</div>'
+        f'<div class="pl-syn-row"><span class="pl-syn-c">Ejercicio · sostenido</span>'
+        f'<span class="pl-syn-t">Rendición cumplida los <b>{len(serie)} años</b> (2023-2025) con asistencia '
+        f'ciudadana <b>creciente</b> —el control social se consolida, no se debilita.</span></div>'
         f'<div class="pl-syn-row"><span class="pl-syn-c">Fidelidad · discurso ↔ hecho</span>'
         f'<span class="pl-syn-t"><b>{g:.0f}%</b> de fidelidad narrativa: de {n} afirmaciones públicas, {n_alta} se '
         f'sostienen en la evidencia y {n_baja} registra brecha a reconciliar. La palabra oficial, contrastada con '
@@ -165,9 +242,13 @@ def render() -> None:
         '<div class="pl-sub"><b>La palabra pública, contrastada con la evidencia.</b> Triangula lo que la '
         'autoridad afirma en su rendición con la prueba física y financiera verificable, y con el circuito formal '
         'de control social. Donde el discurso y el hecho coinciden, hay integridad; donde difieren, la brecha '
-        'queda a la vista. <b>Corte rendición 2024.</b></div></div>',
+        'queda a la vista. <b>Serie 2023-2025 · fidelidad narrativa del ejercicio 2024.</b></div></div>',
         unsafe_allow_html=True)
 
+    _sec_serie(r.get("serie", []))
+    st.markdown(_div(), unsafe_allow_html=True)
+    _sec_cumplimiento(r.get("cumplimiento_actual", {}))
+    st.markdown(_div(), unsafe_allow_html=True)
     _sec_fidelidad(r.get("fidelidad", {}))
     st.markdown(_div(), unsafe_allow_html=True)
     _sec_cpccs(r.get("cpccs", {}))
