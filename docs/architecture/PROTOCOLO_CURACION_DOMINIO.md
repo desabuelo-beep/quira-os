@@ -62,7 +62,7 @@ Objetivo: que dentro de un año cualquiera pueda responder *"¿por qué este dom
 ## 5 · Estado de aplicación
 | Dominio | PCD | Estado |
 |---|---|---|
-| d01 Planificación | `PCD-D01` (pendiente de redactar · material completo de la sesión 2026-07-01/02) | Cerrado de cabo a rabo · IPE nativo |
+| d01 Planificación | [`PCD-D01`](../pcd/PCD-D01_Planificacion.md) ✅ redactado | Cerrado de cabo a rabo · IPE nativo en Excel |
 | d09 Rendición de Cuentas | en curso | Re-aproximar por las 7 capas (auditar hojas H31/H34b/H10/H24b primero) |
 
 ---
