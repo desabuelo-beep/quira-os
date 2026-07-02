@@ -138,6 +138,7 @@ QINV: dict[str, dict] = {
                     "física y financiera registrada por los sistemas de control del Estado?",
         "gad": "Triangulación: motor físico vs. informe CPCCS vs. discurso (NLP).",
         "central": "Triangulación: motor físico vs. informe CPCCS vs. discurso (NLP).",
+        "page": "m_rdc",  # ✅ construida (réplica del molde · Fidelidad Narrativa + Participativo + CPCCS)
     },
     "d10": {
         "id": "QINV-010", "nombre": "Cobertura de Servicios e Infraestructura",

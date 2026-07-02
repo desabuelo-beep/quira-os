@@ -4731,5 +4731,227 @@
         }
       }
     }
+  },
+  "rendicion": {
+    "_fuente": "RDC: Fidelidad Narrativa (H34b) · Participativo (H10b) · CPCCS (H31) · corte 2024-2026",
+    "fidelidad": {
+      "global_pct": 91.0,
+      "n_afirmaciones": 9,
+      "n_alta": 8,
+      "n_baja": 1,
+      "claims": [
+        {
+          "id": "MFN-001",
+          "entidad": "GAD Montecristi",
+          "meta": "Aumentar del 39.25% al 42.38% la cobertura de agua potable",
+          "categoria": "Infraestructura / Financiamiento",
+          "timestamp": "[01:36:17]",
+          "discurso": "El proyecto de captación de agua ya tiene el crédito aprobado por la CAF por 28 millones de dólares",
+          "evidencia": "Oficio de solicitud 1028-2024 para ampliación de financiamiento por 28 millones. Aprobación préstamo CAF Res. P.E. 1478/2024.",
+          "if_n": 1.0,
+          "clasificacion": "Fidelidad Alta",
+          "temp": "verde"
+        },
+        {
+          "id": "MFN-002",
+          "entidad": "GAD Montecristi",
+          "meta": "Sistema Vial: conectividad a escala cantonal",
+          "categoria": "Vialidad / Equipamiento",
+          "timestamp": "[01:47:32]",
+          "discurso": "Vamos a tener un segundo kit de compactación: motoniveladora, rodillo y también dos retroexcavadoras",
+          "evidencia": "Etapa precontractual para adquisición de maquinaria pesada (Motoniveladora, Rodillo y 2 Retroexcavadora) a la espera de anticipo.",
+          "if_n": 1.0,
+          "clasificacion": "Fidelidad Alta",
+          "temp": "verde"
+        },
+        {
+          "id": "MFN-003",
+          "entidad": "GAD Montecristi",
+          "meta": "Incrementar establecimientos con certificación Ciudad Creativa",
+          "categoria": "Cultura / Promoción",
+          "timestamp": "[01:10:45]",
+          "discurso": "Hoy somos parte de la red de ciudades creativas de la UNESCO... ¿Cuánto le gastó a Montecristi? Cero centavos",
+          "evidencia": "Adhesión a la Red de Ciudades Creativas UNESCO. Ejecución PDOT lograda mediante planes de acción y alianzas, sin costo directo reportado en PAC para este fin.",
+          "if_n": 1.0,
+          "clasificacion": "Fidelidad Alta",
+          "temp": "verde"
+        },
+        {
+          "id": "MFN-004",
+          "entidad": "Patronato Municipal",
+          "meta": "Incrementar la población atendida en salud preventiva",
+          "categoria": "Inversión / Ejecución Financiera",
+          "timestamp": "[01:07:05]",
+          "discurso": "En total, con relación al Patronato... una inversión de 900,200 dólares",
+          "evidencia": "Balance General eSIGEF: Gasto de Inversión Ejecutado por $1,022,627.73.",
+          "if_n": 0.88,
+          "clasificacion": "Fidelidad Alta",
+          "temp": "verde"
+        },
+        {
+          "id": "MFN-005",
+          "entidad": "Patronato Municipal",
+          "meta": "Incrementar el 10% anualmente de la población atendida",
+          "categoria": "Servicios Médicos / Cobertura",
+          "timestamp": "[01:07:05]",
+          "discurso": "En la cual se han hecho 130,038 atenciones",
+          "evidencia": "Meta POA 5000: Brigadas médicas, visitas domiciliarias. Totales Cumplidos: 414,743.00.",
+          "if_n": 0.31,
+          "clasificacion": "Fidelidad Baja",
+          "temp": "critico"
+        },
+        {
+          "id": "MFN-006",
+          "entidad": "Cuerpo de Bomberos",
+          "meta": "Protección frente a riesgos y desastres",
+          "categoria": "Eficiencia Operativa / Emergencias",
+          "timestamp": "[01:39:55]",
+          "discurso": "1,683 emergencias atendidas... 13% de crecimiento en atenciones",
+          "evidencia": "Meta 1468.00: Número factible de emergencias atendidas. Totales Cumplidos: 1683.00 (114.65% de la gestión).",
+          "if_n": 1.0,
+          "clasificacion": "Fidelidad Alta",
+          "temp": "verde"
+        },
+        {
+          "id": "MFN-007",
+          "entidad": "Cuerpo de Bomberos",
+          "meta": "Incrementar el porcentaje de proyectos ejecutados",
+          "categoria": "Infraestructura Operativa",
+          "timestamp": "[01:40:13]",
+          "discurso": "Ya está el proyecto, ya está el presupuesto y estamos a pocos meses de empezar la construcción del Cuartel Leónidas Proaño",
+          "evidencia": "Meta POA GAD: Estudio de suelo en los predios previstos para la construcción del cuartel de bomberos de Leonidas Proaño.",
+          "if_n": 1.0,
+          "clasificacion": "Fidelidad Alta",
+          "temp": "verde"
+        },
+        {
+          "id": "MFN-008",
+          "entidad": "Aseo Integral EP",
+          "meta": "Aumentar a 17.32 m²/hab el IVU y Saneamiento",
+          "categoria": "Equipamiento / Saneamiento",
+          "timestamp": "[01:28:25]",
+          "discurso": "Teníamos solamente uno, ahora tenemos seis recolectores de basura que garantizan la cobertura",
+          "evidencia": "Meta 11: Fortalecer el servicio de recolección. Se realizó la adquisición de 6 vehículos recolectores de desechos sólidos.",
+          "if_n": 1.0,
+          "clasificacion": "Fidelidad Alta",
+          "temp": "verde"
+        },
+        {
+          "id": "MFN-009",
+          "entidad": "Aseo Integral EP",
+          "meta": "Recuperación de ecosistemas degradados",
+          "categoria": "Saneamiento Estratégico",
+          "timestamp": "[01:28:54]",
+          "discurso": "Logramos la viabilidad para una celda emergente y el cierre técnico del botadero de basura",
+          "evidencia": "Meta 31: Operativizar el cierre técnico. Estudio para el cierre del actual botadero y obtención de viabilidad de la celda emergente.",
+          "if_n": 1.0,
+          "clasificacion": "Fidelidad Alta",
+          "temp": "verde"
+        }
+      ],
+      "fuente": "Matriz de Fidelidad Narrativa — Rendición de Cuentas 2024 (video oficial ↔ evidencia verificada)"
+    },
+    "participativo": {
+      "marco_legal": "COOTAD Art.238 / LOPC Art.93",
+      "fichas_2026": 149,
+      "serie": [
+        {
+          "anio": "PP 2024",
+          "metodo": "Formulario online (Google Forms) - convocatoria publica GAD web",
+          "talleres": "N/A (online)",
+          "fichas": "N/A (online)",
+          "parroquias": "7",
+          "presupuesto": 6118924,
+          "acta": "ACTA No.002-2023-JLAC-JPC-GADMCM - INFORME No.003-JLAC-JPC-GADCM-2023"
+        },
+        {
+          "anio": "PP 2025",
+          "metodo": "6 talleres presenciales - 7 parroquias - 6 mesas de trabajo",
+          "talleres": "6",
+          "fichas": "137",
+          "parroquias": "7",
+          "presupuesto": 5687954,
+          "acta": "ACTA No.005-2024-JLAC-JPC-GADMCM - MEMORANDO No.255 (30-oct-2024)"
+        },
+        {
+          "anio": "PP 2026",
+          "metodo": "6 talleres presenciales - 7 parroquias - 6 mesas de trabajo",
+          "talleres": "6",
+          "fichas": "149",
+          "parroquias": "7",
+          "presupuesto": "20982884 (base provisional ingresos — resolución GADM pendiente)",
+          "acta": "ACTA No.007-2025-JLAC-JPC-GADMCM · VERIFICADO CHK-12 2026-05-26 — Info"
+        }
+      ],
+      "componentes_2025": [
+        {
+          "componente": "Fisico Ambiental",
+          "monto": 1249758,
+          "pct": "22%",
+          "area": "Ambiente, ecosistemas"
+        },
+        {
+          "componente": "Territorial AAHH",
+          "monto": 1886695,
+          "pct": "33%",
+          "area": "Agua, alcantarillado, vialidad"
+        },
+        {
+          "componente": "Social Cultural",
+          "monto": 1331666,
+          "pct": "23%",
+          "area": "Educacion, salud, deporte"
+        },
+        {
+          "componente": "Economico Productivo",
+          "monto": 603279,
+          "pct": "11%",
+          "area": "Produccion, comercio"
+        },
+        {
+          "componente": "Politico Institucional",
+          "monto": 616554,
+          "pct": "11%",
+          "area": "Gestion, participacion"
+        }
+      ],
+      "prioridades": [
+        {
+          "id": "PP-GAD-2026-P01",
+          "desc": "Agua Potable / Saneamiento rural",
+          "id_meta": "AH-AP-01",
+          "fichas": "Fichas verificadas: 126 (1ra prioridad) - Monto pendiente resolucion GADM"
+        },
+        {
+          "id": "PP-GAD-2026-P02",
+          "desc": "Areas verdes / Parques / Recreacion",
+          "id_meta": "FA-C-X-01",
+          "fichas": "Fichas verificadas: 95 (2da prioridad)"
+        },
+        {
+          "id": "PP-GAD-2026-P03",
+          "desc": "Vialidad cantonal / Red interna",
+          "id_meta": "AH-V-X-01",
+          "fichas": "Fichas verificadas: 94 (3ra prioridad)"
+        },
+        {
+          "id": "PP-GAD-2026-P04",
+          "desc": "Salud / Equipamiento medico parroquial",
+          "id_meta": "SC-S-G-01",
+          "fichas": "Fichas verificadas: 80 (4ta prioridad)"
+        },
+        {
+          "id": "PP-GAD-2026-P05",
+          "desc": "Aseo / Recoleccion / Gestion ambiental",
+          "id_meta": "FA-R-X-01",
+          "fichas": "Fichas verificadas: 74 (5ta prioridad)"
+        }
+      ]
+    },
+    "cpccs": {
+      "marco_legal": "LOPC Art.88 + Constitución Art.204",
+      "brecha_compromisos": "",
+      "fecha_rdc": "LOPC Art.88 + Constitución Art.204"
+    }
   }
 }
