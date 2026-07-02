@@ -105,6 +105,42 @@ def main() -> int:
                     por_eslabon[_k] = _got
                     break
 
+        # Marco legal AMPLIADO por eslabón (curado por Javo 2026-07-02 · VERIFICADO contra corpus · Regla 3)
+        _DISP = {"CE": "CE", "COOTAD": "COOTAD", "COPLAFIP": "COPLAFIP", "LOTUGS": "LOTUGS",
+                 "LOSNCP": "LOSNCP", "RLOSNCP": "Regl. LOSNCP"}
+
+        def _rng(a, b):
+            return [str(x) for x in range(a, b + 1)]
+
+        def _compress(nums):     # [224..231] -> "224-231" · [12,15] -> "12, 15"
+            ns = sorted({int(n) for n in nums}); out = []; i = 0
+            while i < len(ns):
+                j = i
+                while j + 1 < len(ns) and ns[j + 1] == ns[j] + 1:
+                    j += 1
+                out.append(str(ns[i]) if i == j else f"{ns[i]}-{ns[j]}"); i = j + 1
+            return ", ".join(out)
+
+        MARCO = {
+            "pdot": [("CE", ["241"] + _rng(262, 267)), ("COPLAFIP", ["12", "15"] + _rng(41, 44) + _rng(47, 48)),
+                     ("COOTAD", ["41", "54", "64", "295"]), ("LOTUGS", _rng(10, 11))],
+            "poa": [("COOTAD", ["233", "235", "295"]), ("COPLAFIP", ["4", "100"])],
+            "pac": [("LOSNCP", ["22"]), ("RLOSNCP", ["43", "45", "64"])],
+            "presupuesto": [("CE", ["271", "292"]), ("COOTAD", ["215"] + _rng(224, 231) + _rng(233, 245) + ["295"]),
+                            ("COPLAFIP", ["73"] + _rng(97, 101) + ["115", "124"])],
+            "gasto": [("COOTAD", ["238"])],
+        }
+        for _k, _leyes in MARCO.items():
+            _parts = []
+            for _sigla, _nums in _leyes:
+                cur.execute("SELECT DISTINCT articulo_num FROM public.normativa_corpus WHERE norma_sigla=%s", (_sigla,))
+                _have = {str(r[0]).strip() for r in cur.fetchall() if r[0] is not None}
+                _ok = [n for n in _nums if n in _have]
+                if _ok:
+                    _parts.append(f"{_DISP.get(_sigla, _sigla)} Art. {_compress(_ok)}")
+            if _parts:
+                por_eslabon.setdefault(_k, {})["marco"] = _parts
+
         conn.close()
     except Exception as e:
         print(f"[skip] Supabase no disponible ({str(e)[:70]}) — el cajón omite la base normativa"); return 0
@@ -127,7 +163,10 @@ def main() -> int:
         print(f"\n  Ancla COOTAD art.{ancla['articulo']} (sha {ancla['sha256']}): {ancla['texto'][:100]}…")
     print(f"\n  Artículos por eslabón ({len(por_eslabon)}):")
     for _k, _v in por_eslabon.items():
-        print(f"    {_k:<12} {_v['norma']} Art. {_v['articulo']} — {_v['sumilla']}  (sha {_v['sha256']})")
+        print(f"    {_k:<12} ancla {_v.get('norma','')} Art. {_v.get('articulo','')} — {_v.get('sumilla','')}")
+        _m = " · ".join(_v.get("marco", []))
+        if _m:
+            print(f"                 marco: {_m}")
     return 0
 
 

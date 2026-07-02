@@ -4681,31 +4681,53 @@
           "norma": "CE",
           "articulo": 241,
           "sha256": "da13d3789caa",
-          "sumilla": "La planificación garantizará el ordenamiento territorial y será obligato"
+          "sumilla": "La planificación garantizará el ordenamiento territorial y será obligato",
+          "marco": [
+            "CE Art. 241, 262-267",
+            "COPLAFIP Art. 12, 15, 41-44, 47-48",
+            "COOTAD Art. 41, 54, 64, 295",
+            "LOTUGS Art. 10-11"
+          ]
         },
         "poa": {
           "norma": "COOTAD",
           "articulo": 233,
           "sha256": "96e3b77f48fc",
-          "sumilla": "Plazo"
+          "sumilla": "Plazo",
+          "marco": [
+            "COOTAD Art. 233, 235, 295",
+            "COPLAFIP Art. 4, 100"
+          ]
         },
         "presupuesto": {
           "norma": "COOTAD",
           "articulo": 215,
           "sha256": "60f89aebd7b3",
-          "sumilla": "Presupuesto"
+          "sumilla": "Presupuesto",
+          "marco": [
+            "CE Art. 271, 292",
+            "COOTAD Art. 215, 224-231, 233-245, 295",
+            "COPLAFIP Art. 73, 97-101, 115, 124"
+          ]
         },
         "pac": {
           "norma": "LOSNCP",
           "articulo": 22,
           "sha256": "054779c8e813",
-          "sumilla": "Plan Anual de Contratación"
+          "sumilla": "Plan Anual de Contratación",
+          "marco": [
+            "LOSNCP Art. 22",
+            "Regl. LOSNCP Art. 43, 45, 64"
+          ]
         },
         "gasto": {
           "norma": "COOTAD",
           "articulo": 238,
           "sha256": "f682cd88ba15",
-          "sumilla": "Participación ciudadana en la priorización del gasto"
+          "sumilla": "Participación ciudadana en la priorización del gasto",
+          "marco": [
+            "COOTAD Art. 238"
+          ]
         }
       }
     }
