@@ -66,6 +66,29 @@ def _donut(comp: list[dict]) -> go.Figure:
     return fig
 
 
+def _competencia_bar(comp: list[dict], metas: list[dict], poa_detalle: list[dict]) -> go.Figure:
+    """Metas por tipo de competencia — número y presupuesto POA (más analítico que la dona)."""
+    mcomp = {m["id"]: m.get("competencia", "") for m in metas}
+    bud: dict = {}
+    for x in poa_detalle:
+        c = mcomp.get(x.get("id"), "")
+        bud[c] = bud.get(c, 0) + (x.get("anual_usd", 0) or 0)
+    order = ["Exclusiva Crítica", "Concurrente Crítica", "Exclusiva Importante", "Concurrente"]
+    items = sorted(comp, key=lambda c: order.index(c["label"]) if c["label"] in order else 99, reverse=True)
+    labels = [c["label"] for c in items]
+    counts = [c["n"] for c in items]
+    buds = [bud.get(c["label"], 0) for c in items]
+    colors = [_COMP.get(l, "#7E8BA3") for l in labels]
+    fig = go.Figure(go.Bar(
+        x=counts, y=labels, orientation="h", marker=dict(color=colors),
+        text=[f"  {n} metas · ${b/1e6:.1f}M" for n, b in zip(counts, buds)],
+        textposition="outside", textfont=dict(family="Inter", color="#D2DBEA", size=12.5),
+        hoverinfo="skip", cliponaxis=False, width=0.6))
+    fig.update_xaxes(visible=False, range=[0, (max(counts) * 1.6) if counts else 1])
+    fig.update_yaxes(tickfont=dict(color="#E8EDF4", size=12.5))
+    return fig
+
+
 def _brechas(cod: float, dev: float, pac: float) -> go.Figure:
     fig = go.Figure(go.Bar(
         x=["Presupuesto<br>inversión", "Devengado<br>al corte", "PAC<br>contratado"],
@@ -252,8 +275,10 @@ def _pills(comps: list[dict]) -> str:
 def _cruce(plan: dict) -> str:
     pr = plan.get("presupuesto", {}) or {}
     pac = plan.get("pac", {}) or {}
-    stages = [("PDOT", f'{plan.get("metas_total", 25)} metas', "el plan"),
-              ("POA", f'{plan.get("metas_total", 25)} programadas', "la operación"),
+    _mt = plan.get("metas_total", 25)
+    _np = len(plan.get("poa_proyectos", []))
+    stages = [("PDOT", f'{_mt} metas', "el plan"),
+              ("POA", f'{_np} proyectos', f'operan {_mt} metas'),
               ("PRESUPUESTO", f'${pr.get("codificado_inversion", 0)/1e6:.1f}M', "la inversión"),
               ("PAC", f'${pac.get("total_usd", 0)/1e6:.1f}M', "lo contratado"),
               ("EJECUCIÓN", f'${pr.get("devengado", 0)/1e6:.2f}M', f'{pr.get("ti_pct", 0)}% al corte')]
@@ -315,7 +340,7 @@ def _cobertura_band(pct, metas_total: int = 25) -> str:
         f'<div class="pl-cov-note">Este es el <b>primer eslabón de la trazabilidad</b>: mide cuánto del plan '
         f'<b>plurianual</b> de desarrollo (PDOT 2023-2027) se traduce en <b>programación operativa concreta</b> '
         f'este año —con actividades, responsables y recursos asignados en el POA—. Un porcentaje alto indica que '
-        f'la planificación de largo plazo <b>sí baja</b> a la operación anual, y no queda en el papel. '
+        f'la planificación de largo plazo <b>se traduce efectivamente</b> en la operación anual, y no permanece en el plano declarativo.'
         f'<b>Precisión conceptual:</b> el <b>POA</b> es el instrumento de <i>programación operativa</i> anual; '
         f'es distinto del <b>Presupuesto Municipal</b>, que es el instrumento <i>financiero</i> que asigna los '
         f'fondos —ambos se leen en detalle más abajo—. La meta que aún no figura en el POA del GAD central se '
@@ -444,9 +469,10 @@ def _sec_pdot(plan: dict) -> None:
         "El <b>Plan de Desarrollo y Ordenamiento Territorial (PDOT)</b> es el <b>instrumento rector</b> de la "
         "planificación cantonal: define, con carácter <b>obligatorio y vinculante</b>, el modelo de desarrollo "
         "del territorio para el período <b>2023-2027</b> y articula al municipio con el Sistema Nacional "
-        "Descentralizado de Planificación Participativa. Lo aprueba el Concejo Municipal y a él deben "
-        "<b>sujetarse el POA y el presupuesto</b> —nunca al revés—. No es un documento decorativo: es el "
-        "<b>compromiso formal</b> contra el que se mide toda la gestión. Cada fila de la tabla es una meta, con "
+        "Descentralizado de Planificación Participativa. Lo aprueba el Concejo Municipal, y el POA y el "
+        "presupuesto anual se <b>formulan en concordancia con él</b> —nunca a la inversa—. No es un instrumento "
+        "declarativo: es el <b>compromiso formal</b> contra el que se mide toda la gestión. Cada fila de la tabla "
+        "es una meta, con "
         "cuatro datos que conviene leer juntos:<br>• su <b>sistema</b> (el área a la que pertenece),<br>• la "
         "<b>meta plurianual</b>, con su valor de partida y su valor de llegada al 2027,<br>• el <b>tipo de "
         "competencia</b> —qué obliga la ley al municipio en exclusiva y qué comparte con otros niveles de "
@@ -457,14 +483,14 @@ def _sec_pdot(plan: dict) -> None:
     cm = {c["label"]: c["n"] for c in comp}
     ec, cc = cm.get("Exclusiva Crítica", 0), cm.get("Concurrente Crítica", 0)
     ei, co = cm.get("Exclusiva Importante", 0), cm.get("Concurrente", 0)
-    c1, c2 = st.columns([1, 1.25], gap="large")
+    c1, c2 = st.columns([1.05, 1.2], gap="large")
     with c1:
-        _show(_donut(comp), 260)
+        _show(_competencia_bar(comp, metas, plan.get("poa_detalle", [])), 260)
     with c2:
         st.markdown(_narr(
             f"La gráfica clasifica las <b>{len(metas)} metas</b> según el <b>tipo de competencia</b> que la ley "
             f"asigna al municipio —el criterio que define qué está <i>obligado</i> a hacer y con qué prioridad—. "
-            f"Cada número del anillo es una categoría:"
+            f"Cada barra muestra su número de metas y el presupuesto operativo que concentran:"
             f"<br>• <b>Exclusiva Crítica — {ec}:</b> competencias propias e indelegables en servicios esenciales "
             f"(agua potable, alcantarillado, desechos, vialidad). Máxima prioridad legal y presupuestaria."
             f"<br>• <b>Concurrente Crítica — {cc}:</b> servicios esenciales que el GAD ejerce <i>compartiendo</i> "
@@ -490,12 +516,12 @@ def _sec_poa(plan: dict) -> None:
         f"cuánto</b> hacerlo este año. En términos legales es la <b>desagregación anualizada del plan estratégico "
         f"plurianual</b>: convierte cada meta del PDOT en <b>metas físicas anuales</b>, con sus <b>indicadores de "
         f"gestión</b>, <b>responsables internos</b>, <b>cronograma de desembolsos</b> y la <b>asignación exacta "
-        f"de partidas</b> del gasto (permanente y no permanente). En la práctica aterriza el plan en "
+        f"de partidas</b> del gasto (permanente y no permanente). En la práctica, concreta el plan en"
         f"<b>{len(proys)} proyectos y actividades</b> concretos —una ampliación de alcantarillado, la compra de "
         f"un hidrosuccionador, la construcción de un pozo—, cada uno con su <b>dirección</b> responsable, su "
         f"<b>partida presupuestaria</b> (el código contable del gasto) y su <b>monto</b> 2026. En conjunto "
-        f"movilizan <b>${tpoa:,.0f}</b>: es el <b>puente</b> entre la promesa del plan y el dinero que la vuelve "
-        f"realidad."
+        f"movilizan <b>${tpoa:,.0f}</b>: es el <b>vínculo</b> entre los objetivos del plan y la asignación de "
+        f"recursos que los hace ejecutables."
         + _ley_row(plan, "poa", "El POA es la desagregación operativa anual del plan plurianual, articulada al "
                    "presupuesto.")), unsafe_allow_html=True)
     st.markdown(_tabla_proyectos(proys), unsafe_allow_html=True)
@@ -506,7 +532,7 @@ def _sec_poa(plan: dict) -> None:
         with c2:
             st.markdown(_narr(
                 "La curva muestra el <b>ritmo planificado mes a mes</b>: cuánto de la operación está previsto "
-                "ejecutar en cada mes, según lo que el propio municipio programó en el POA. <b>Ojo: es el plan, "
+                "ejecutar en cada mes, según lo que el propio municipio programó en el POA. <b>Precisión: es el plan,"
                 "no lo ya ejecutado.</b> La línea punteada marca el <b>corte actual</b> —la ejecución real "
                 "ingerida llega hasta abril—; a la derecha de esa línea (zona sombreada) es programación a "
                 "futuro. Leerla permite anticipar los <b>meses de mayor exigencia</b> y ver si la carga se "
@@ -566,7 +592,7 @@ def _sec_pac(plan: dict) -> None:
                 f"municipio ya publicó <b>{pub.get('n_procesos', 0)} procesos por "
                 f"${pub.get('total_usd', 0)/1e3:.0f}k</b> —el <b>{cr.get('cobertura_pct', 0)}%</b> del plan, al "
                 f"corte {pub.get('corte', '')}—. <b>No es una alarma</b>: a esta altura del año la mayor parte del "
-                f"PAC todavía está en preparación, porque el gasto público arranca lento y se acelera en el "
+                f"PAC todavía está en preparación, porque la ejecución del gasto público se concentra en el "
                 f"segundo semestre. Lo que conviene seguir es el <b>ritmo de publicación</b> mes a mes: es la "
                 f"señal temprana de si la contratación llegará a tiempo a cubrir lo presupuestado."),
                 unsafe_allow_html=True)
@@ -582,8 +608,8 @@ def _sec_presupuesto(plan: dict) -> None:
                 unsafe_allow_html=True)
     st.markdown(_intro(
         "El <b>Presupuesto Municipal</b> es el instrumento <b>financiero</b> anual que asigna los recursos a cada "
-        "programa y partida. Por mandato constitucional y legal debe <b>sujetarse al plan</b> —el presupuesto "
-        "sigue al PDOT y al POA, nunca al revés— y su priorización se decide con <b>participación ciudadana</b>. "
+        "programa y partida. Por mandato constitucional y legal <b>se formula en concordancia con el plan</b> —se "
+        "subordina al PDOT y al POA, no a la inversa— y su priorización se define con <b>participación ciudadana</b>. "
         "Aquí se muestra específicamente la <b>inversión</b> (bienes y obras), separando dos cifras que suelen "
         "confundirse:<br>• lo <b>codificado</b> —lo asignado y disponible para gastar—,<br>• y lo <b>devengado</b> "
         "—lo que ya se ejecutó al corte—.<br>No es el presupuesto municipal <i>total</i> (que incluye sueldos y "
@@ -602,7 +628,7 @@ def _sec_presupuesto(plan: dict) -> None:
             f"plan de contratación recoge <b>${pac_total/1e6:.1f}M</b> —el <b>{cobertura:.1f}%</b>—: plan y "
             f"presupuesto están alineados. Pero lo <b>devengado</b> —lo realmente ejecutado— es apenas "
             f"<b>${dev/1e6:.2f}M</b> ({pres.get('ti_pct', 0)}%), algo <b>natural en el primer cuatrimestre</b> "
-            f"porque el gasto público es de <b>carga tardía</b> (las obras grandes arrancan a mitad de año). El "
+            f"porque el gasto público es de <b>carga tardía</b> (las obras de mayor cuantía inician en el segundo semestre). El "
             f"punto preventivo no es el nivel bajo de hoy, sino <b>vigilar que la ejecución acelere</b> para "
             f"alcanzar al presupuesto antes del cierre del ejercicio."),
             unsafe_allow_html=True)
@@ -643,7 +669,7 @@ def _sec_ipe(plan: dict) -> None:
                 f"<b>${vinc/1e6:.2f}M</b> vinculados por objetivo del plan: el de mayor ejecución es "
                 f"<b>{top['objetivo'].lower()}</b> (${top['dev']/1e3:.0f}k), seguido de las coberturas de "
                 f"servicios y la movilidad. Así se ve, en <b>dinero ya ejecutado</b>, qué prioridades del plan "
-                f"están efectivamente moviéndose al corte —y cuáles todavía no arrancan."),
+                f"están en ejecución efectiva al corte —y cuáles aún no inician."),
                 unsafe_allow_html=True)
 
 
@@ -825,21 +851,21 @@ def _cierre(plan: dict) -> None:
     filas = (
         _r("Plan · PDOT",
            f"<b>{len(metas)} metas</b> plurianuales de desarrollo, <b>{criticas} de competencia crítica</b> "
-           f"(donde la ley obliga a actuar). El <b>{cob:.0f}%</b> ya bajó a la operación anual: la planificación "
-           f"de largo plazo no quedó en el papel.")
+           f"(donde la ley obliga a actuar). El <b>{cob:.0f}%</b> ya se incorporó a la operación anual: la "
+           f"planificación de largo plazo se tradujo en gestión concreta.")
         + _r("Operación · POA",
              f"<b>{len(proys)} proyectos</b> movilizan <b>${tpoa/1e6:.1f}M</b> en 2026, cada uno con dirección, "
              f"partida y cronograma —el plan traducido en actividades concretas y responsables.")
         + _r("Contratación · PAC",
              f"<b>${pac_total/1e6:.1f}M</b> planificados (el <b>98.6%</b> del presupuesto de inversión). "
              f"<b>{pub_pct}%</b> ya publicado en el SERCOP —bajo, pero <b>natural en el primer cuatrimestre</b>; "
-             f"el gasto público se acelera en el segundo semestre.")
+             f"la ejecución del gasto se concentra en el segundo semestre.")
         + _r("Recurso · Presupuesto",
              f"<b>${cod/1e6:.1f}M</b> de inversión codificada; <b>${dev/1e6:.2f}M</b> devengados "
-             f"(<b>{ti}%</b>) —ejecución de arranque, carga tardía típica.")
+             f"(<b>{ti}%</b>) —ejecución inicial, de carga tardía típica del gasto de inversión.")
         + _r("Calidad · Gasto vinculado",
-             f"<b>{ipe:.1f}%</b> del gasto de inversión ya ejecutado responde a una meta del plan: el dinero se "
-             f"mueve <b>donde el plan manda</b>, no por impulso.")
+             f"<b>{ipe:.1f}%</b> del gasto de inversión ya ejecutado corresponde a una meta del plan: se asigna "
+             f"<b>según lo planificado</b>, no por decisiones discrecionales.")
         + _r("Prevención · Coherencia",
              "señal preventiva activa en la alineación plan↔contratación —el foco es <b>cerrar el vínculo antes</b> "
              "de ejecutar, no sancionar después.")
@@ -852,8 +878,8 @@ def _cierre(plan: dict) -> None:
         f'correspondencia entre lo planificado, lo presupuestado y lo contratado es sólida, y el gasto ya ejecutado '
         f'es de <b>alta calidad</b> (vinculado a metas). La <b>atención es preventiva, no correctiva</b>: pasa por '
         f'que la <b>contratación y la ejecución aceleren</b> en el segundo semestre para alcanzar al presupuesto '
-        f'antes del cierre del ejercicio, de modo que la promesa del PDOT no se erosione en el camino del papel al '
-        f'gasto real. Ese seguimiento mes a mes es, precisamente, lo que este cajón permite.</div>'
+        f'antes del cierre del ejercicio, de modo que los compromisos del PDOT no se erosionen en el tránsito de la '
+        f'planificación a la ejecución. Ese seguimiento mes a mes es, precisamente, lo que este cajón permite.</div>'
         f'<div class="pl-src">Fuente: PDOT · POA · PAC (SERCOP) · presupuesto eSIGEF · corte {corte}.</div>'
         f'</div>',
         unsafe_allow_html=True)
@@ -878,10 +904,10 @@ def render() -> None:
     # título limpio (sin encabezado forense · sin pregunta · sin estado)
     st.markdown(
         '<div class="pl-title-band"><div class="pl-title">Planificación Estratégica</div>'
-        '<div class="pl-sub"><b>La arquitectura del gasto público municipal.</b> La trazabilidad real entre la '
-        'planificación plurianual del desarrollo cantonal (PDOT) y la ejecución programática y presupuestaria '
-        'anual (POA · PAC · Presupuesto): garantía de coherencia entre los objetivos territoriales y la '
-        'operatividad institucional. <b>Corte enero–abril 2026.</b></div></div>',
+        '<div class="pl-sub"><b>La arquitectura del gasto público municipal.</b> Traza la correspondencia entre '
+        'la planificación plurianual del desarrollo cantonal —el PDOT— y su ejecución programática y '
+        'presupuestaria anual, para verificar la coherencia entre los objetivos territoriales y la operación '
+        'institucional que los concreta. <b>Corte enero–abril 2026.</b></div></div>',
         unsafe_allow_html=True)
 
     # cobertura de metas en el POA (primer eslabón de la trazabilidad)
