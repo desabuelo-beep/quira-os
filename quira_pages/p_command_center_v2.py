@@ -48,7 +48,7 @@ _DOMAINS_V2: list[dict[str, Any]] = [
         "id": "d01", "num": "01", "nombre": "Planificación Estratégica",
         "concepto": "La consistencia entre lo que el cantón planificó a largo plazo "
                     "y los hitos que de verdad cumple — el rumbo, no el discurso.",
-        "estado": "EN RUTA", "metric": "56/56",
+        "estado": "EN RUTA", "metric": "96%",
         "gancho": "¿El cantón mantiene el rumbo hacia sus metas plurianuales, o se desvió en el camino?",
         "temp": "verde", "mod": "ods",
     },
