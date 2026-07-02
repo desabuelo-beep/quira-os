@@ -19,6 +19,8 @@ Detalle: `docs/adr/ADR-023` (3 niveles, inmutable).
 5. **No tocar congelados.** `governance/*` y `.github/workflows/*` no se modifican sin aprobación.
 6. **Repo PRIVADO.** Credenciales solo en `.streamlit/secrets.toml` local. Nunca al repo.
 7. **Anti-inflación del canon.** Ningún concepto entra si SOLO renombra: debe añadir capacidad, eliminar ambigüedad demostrable o reducir complejidad. Si solo cambia el nombre, no entra (asesor · 2026-06-30).
+8. **Segunda ingeniería (del canon a la pantalla).** No es mantenimiento: se audita, cura y potencia **dominio por dominio**, del canon (Gold Master + corpus verificado) a la UI, por las **7 capas** (GM·metodológica·matemática·semántica·cableado·visual·narrativa). Cada dominio cierra con su `PCD-DXX`. Protocolo: `docs/architecture/PROTOCOLO_CURACION_DOMINIO.md` (asesor · 2026-07-02).
+9. **Ningún cambio nace en Python.** Todo cambio conceptual (métrica, fórmula, definición) nace en el **canon**; Python solo deriva o implementa. El código refleja el canon, no es un segundo canon (asesor · 2026-07-02).
 
 ## PROHIBICIONES
 NUNCA: hardcodear sin snapshot · agregar un dominio que NO pase el PROTOCOLO DE EXPANSIÓN ONTOLÓGICA
