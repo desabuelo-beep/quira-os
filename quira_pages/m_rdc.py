@@ -30,6 +30,14 @@ def _cargar() -> dict:
         return {}
 
 
+def _ley_bloque(arts: list[str], gloss: str = "") -> str:
+    """Marco legal como bloque SEPARADO debajo del párrafo (patrón de Planificación
+    · _ley_row): las citas no van dentro del texto, sino en chips + glosa aparte."""
+    chips = " ".join(f'<span class="pl-law">{a}</span>' for a in arts)
+    g = f'<div style="margin-top:7px;color:#8493A8;font-style:italic">{gloss}</div>' if gloss else ""
+    return f'<div class="pl-lawrow">⚖ <b>Marco legal vigente:</b><br>{chips}{g}</div>'
+
+
 # ═══════════════════════ gráficos ═══════════════════════
 def _fid_bar(claims: list[dict]) -> go.Figure:
     top = list(reversed(claims))
@@ -104,10 +112,12 @@ def _sec_serie(serie: list[dict]) -> None:
     st.markdown(_head("1", "LA RENDICIÓN EN EL TIEMPO",
                       "tres ciclos de rendición ante la ciudadanía · 2023-2025"), unsafe_allow_html=True)
     st.markdown(_intro(
-        "La rendición de cuentas es un <b>ejercicio anual y obligatorio</b> ante la ciudadanía y el CPCCS "
-        "<span class='pl-law'>Constitución · Art. 204</span> <span class='pl-law'>LOPC · Art. 88</span>. Aquí, "
-        "los tres informes oficiales del período, con su evolución verificable —número de informe, fecha, lugar "
-        "y asistencia ciudadana:"), unsafe_allow_html=True)
+        "La rendición de cuentas es un <b>ejercicio anual y obligatorio</b> ante la ciudadanía y el Consejo de "
+        "Participación Ciudadana y Control Social. Aquí, los tres informes oficiales del período, con su evolución "
+        "verificable —número de informe, fecha, lugar y asistencia ciudadana:"), unsafe_allow_html=True)
+    st.markdown(_ley_bloque(["Constitución · Art. 204", "LOPC · Art. 88"],
+                            "Toda autoridad electa rinde cuentas una vez al año ante la ciudadanía y el CPCCS; el "
+                            "proceso es público, obligatorio y verificable."), unsafe_allow_html=True)
     st.markdown(_tabla_serie_rdc(serie), unsafe_allow_html=True)
     if any(s.get("asistentes") for s in serie):
         c1, c2 = st.columns([1.15, 1], gap="large")
@@ -162,9 +172,8 @@ def _sec_fidelidad(fid: dict) -> None:
         f'lo dicho coincide con lo probado; bajo = brecha. Es el control ciudadano hecho evidencia, no opinión.</div>'
         f'</div>', unsafe_allow_html=True)
     st.markdown(_intro(
-        "El marco lo exige: la rendición de cuentas es obligatoria y verificable "
-        "<span class='pl-law'>Constitución · Art. 204</span> <span class='pl-law'>LOPC · Art. 88</span>. "
-        "A continuación, cada afirmación pública del video de rendición, contrastada con su evidencia:"),
+        "El marco lo exige: la rendición de cuentas es <b>obligatoria y verificable</b>. A continuación, cada "
+        "afirmación pública del video de rendición, contrastada con su evidencia:"),
         unsafe_allow_html=True)
     st.markdown(_tabla_claims(claims), unsafe_allow_html=True)
     if claims:
@@ -192,11 +201,13 @@ def _sec_cpccs(cp: dict) -> None:
     brecha = cp.get("brecha_compromisos") or "—"
     st.markdown(_intro(
         f"Más allá del discurso, la rendición tiene un <b>circuito formal</b> ante el Consejo de Participación "
-        f"Ciudadana y Control Social (CPCCS): informe estructurado, compromisos y su seguimiento "
-        f"<span class='pl-law'>LOPC · Art. 88</span> <span class='pl-law'>Constitución · Art. 204</span>. El "
-        f"indicador clave es la <b>brecha de compromisos</b> —cuánto de lo prometido en la rendición anterior se "
-        f"cumplió—: <b>{brecha}</b>. Es la memoria que impide que la rendición sea un acto de un solo día."),
+        f"Ciudadana y Control Social (CPCCS): informe estructurado, compromisos y su seguimiento. El indicador "
+        f"clave es la <b>brecha de compromisos</b> —cuánto de lo prometido en la rendición anterior se cumplió—: "
+        f"<b>{brecha}</b>. Es la memoria que impide que la rendición sea un acto de un solo día."),
         unsafe_allow_html=True)
+    st.markdown(_ley_bloque(["LOPC · Art. 88", "Constitución · Art. 204"],
+                            "El CPCCS recibe y da seguimiento a los compromisos que la autoridad adquiere en la "
+                            "rendición; el ciclo no se agota en el evento anual."), unsafe_allow_html=True)
 
 
 # ═══════════════════════ APORTES CIUDADANOS (demanda → ejecución) ═══════════════
@@ -265,8 +276,9 @@ def _sec_aportes(ap: dict) -> None:
         return
     total = ap.get("total", len(det))
     est = ap.get("por_estado", {})
-    con_corr = est.get("atendido", 0) + est.get("por_validar", 0)
-    pct = round(100 * con_corr / total) if total else 0
+    n_at = est.get("atendido", 0)
+    n_sin = est.get("sin_correlato", 0)
+    pct = round(100 * n_at / total) if total else 0
     st.markdown(_head("5", "LA VOZ CIUDADANA",
                       "de lo que se pidió a lo que se ejecutó · trazabilidad del aporte ciudadano"),
                 unsafe_allow_html=True)
@@ -275,15 +287,17 @@ def _sec_aportes(ap: dict) -> None:
         f'background:linear-gradient(90deg,rgba(45,212,111,.10),rgba(45,212,111,.02))">'
         f'<div class="pl-cov-row"><span class="pl-cov-val" style="color:#2DD46F">{pct}%</span>'
         f'<span class="pl-cov-lbl">de los <b>{total} aportes ciudadanos</b> del período tienen '
-        f'<b>correspondencia</b> con la ejecución del gobierno ({est.get("atendido",0)} atendidos · '
-        f'{est.get("por_validar",0)} en seguimiento); <b>{est.get("sin_correlato",0)}</b> sin correlato</span></div>'
-        f'<div class="pl-cov-note">En la rendición, la ciudadanía plantea <b>demandas y aportes</b> '
-        f'<span class="pl-law">LOPC · Art. 89</span> —consultivos: orientan la gestión—. QUIRA rastrea cada aporte '
-        f'hasta la <b>ejecución real</b> (el POA, la contratación, el presupuesto) a lo largo de <b>todo el '
-        f'período de gobierno</b>, no solo del año siguiente. Así distingue lo atendido <b>a tiempo</b>, lo atendido '
-        f'<b>con demora</b> y lo que <b>quedó sin correlato</b>. La correspondencia se propone por análisis y se '
-        f'<b>confirma por revisión</b>: los aportes «en seguimiento» están por confirmar.</div>'
+        f'<b>correspondencia verificada</b> con una obra o servicio del gobierno (<b>{n_at}</b> atendidos); '
+        f'<b>{n_sin}</b> quedan sin correlato en la ejecución</span></div>'
+        f'<div class="pl-cov-note">En la rendición, la ciudadanía plantea <b>demandas y aportes</b> —consultivos: '
+        f'orientan la gestión—. QUIRA rastrea cada aporte hasta la <b>ejecución real</b> (el POA, la contratación, '
+        f'el presupuesto) a lo largo de <b>todo el período de gobierno</b>, no solo del año siguiente. Así distingue '
+        f'lo atendido <b>a tiempo</b>, lo atendido <b>con demora</b> y lo que <b>quedó sin correlato</b>. Cada '
+        f'correspondencia se propone por análisis y se <b>confirma afirmación por afirmación</b>.</div>'
         f'</div>', unsafe_allow_html=True)
+    st.markdown(_ley_bloque(["LOPC · Art. 89", "COOTAD · Art. 238"],
+                            "Los aportes ciudadanos en la rendición son consultivos (orientan la gestión); se "
+                            "distinguen del presupuesto participativo, que sí es vinculante."), unsafe_allow_html=True)
     c1, c2 = st.columns([1, 1.15], gap="large")
     with c1:
         st.markdown(_MINI_H.format("Tiempo de respuesta del gobierno"), unsafe_allow_html=True)
