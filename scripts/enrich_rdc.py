@@ -90,7 +90,8 @@ def build_block() -> dict:
     cpccs = {
         "marco_legal": _clean(ws.cell(11, 2).value) or "LOPC Art. 88 · Constitución Art. 204",
         "brecha_compromisos": _clean(ws.cell(65, 2).value),
-        "fecha_rdc": _clean(ws.cell(61, 2).value),
+        # fecha_rdc a nivel CPCCS eliminado (capa 4/5 · PCD-D09): la serie ya porta la
+        # fecha por año; B61 devolvía texto de marco legal (dato erróneo) y nunca se renderiza.
     }
 
     wb.close()

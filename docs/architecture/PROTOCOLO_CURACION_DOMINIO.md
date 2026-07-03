@@ -63,7 +63,7 @@ Objetivo: que dentro de un año cualquiera pueda responder *"¿por qué este dom
 | Dominio | PCD | Estado |
 |---|---|---|
 | d01 Planificación | [`PCD-D01`](../pcd/PCD-D01_Planificacion.md) ✅ redactado | Cerrado de cabo a rabo · IPE nativo en Excel |
-| d09 Rendición de Cuentas | en curso | Re-aproximar por las 7 capas (auditar hojas H31/H34b/H10/H24b primero) |
+| d09 Rendición de Cuentas | [`PCD-D09`](../pcd/PCD-D09_Rendicion_Cuentas.md) ✅ redactado | Cerrado · 7 capas · fix cableado `cpccs.fecha_rdc` · canon sin cirugía (sin artefacto) |
 
 ---
 *Protocolo de Curación de Dominio · Dylus Lab © 2026 · asesor externo + Javo + Claude (director técnico).*
