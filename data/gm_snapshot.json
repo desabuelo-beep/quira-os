@@ -4979,39 +4979,39 @@
         "validar": 0.52
       },
       "por_estado": {
-        "atendido": 55,
-        "por_validar": 37,
-        "sin_correlato": 4
+        "atendido": 46,
+        "por_validar": 31,
+        "sin_correlato": 19
       },
       "por_tiempo": {
-        "tarde": 14,
-        "a_tiempo": 78,
-        "olvidado": 4
+        "tarde": 12,
+        "a_tiempo": 65,
+        "olvidado": 19
       },
       "por_eje": {
         "Sociocultural": {
           "total": 20,
-          "atendidos": 18
+          "atendidos": 14
         },
         "Asentamientos Humanos": {
           "total": 23,
-          "atendidos": 23
+          "atendidos": 20
         },
         "Físico-Ambiental": {
           "total": 30,
-          "atendidos": 29
+          "atendidos": 25
         },
         "Económico Productivo": {
           "total": 8,
-          "atendidos": 7
+          "atendidos": 6
         },
         "Político Institucional": {
           "total": 14,
-          "atendidos": 14
+          "atendidos": 12
         },
         "—": {
           "total": 1,
-          "atendidos": 1
+          "atendidos": 0
         }
       },
       "detalle": [
@@ -5023,9 +5023,9 @@
           "estado": "atendido",
           "tiempo": "tarde",
           "anio_ejecucion": 2025,
-          "evidencia": "MONTECRISTI INCLUIDO MUSEO CULTURA Y PATRIMONIO",
-          "monto": 0.0,
-          "score": 0.637
+          "evidencia": "Implementación de la Agenda integral de eventos artísticos, cívicos y culturales · ADQUISICIÓN DE IMPLEMENTOS E INDUMENT",
+          "monto": 17000.0,
+          "score": 0.65
         },
         {
           "anio_aporte": 2023,
@@ -5035,45 +5035,45 @@
           "estado": "por_validar",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2024,
-          "evidencia": "Costrucción del parque la HUELLA en la comuna Carcel Simón",
-          "monto": 0.0,
-          "score": 0.613
+          "evidencia": "Construccción parque las Pampas",
+          "monto": 37960.0,
+          "score": 0.585
         },
         {
           "anio_aporte": 2023,
           "demanda": "Apoyo en aniversario de parroquialización",
           "sector": "Parroquia",
           "eje": "Sociocultural",
-          "estado": "por_validar",
-          "tiempo": "tarde",
-          "anio_ejecucion": 2025,
-          "evidencia": "parroquia colorado en el cantón Montecristi",
-          "monto": 0.0,
-          "score": 0.613
+          "estado": "sin_correlato",
+          "tiempo": "olvidado",
+          "anio_ejecucion": null,
+          "evidencia": "",
+          "monto": 4200.0,
+          "score": 0.47
         },
         {
           "anio_aporte": 2023,
           "demanda": "Arreglo de calles y alcantarillado vías San Jacinto",
           "sector": "San Jacinto",
           "eje": "Asentamientos Humanos",
-          "estado": "por_validar",
+          "estado": "atendido",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2024,
-          "evidencia": "parroquia Aníbal San Andrés y reparación de aceras en la calle",
-          "monto": 0.0,
-          "score": 0.617
+          "evidencia": "Mantenimiento de vías urbanas para el acceso de los barrios del cantón · PAVIMENTACION,REPAVIMENTACION, ADOQUINADO,BACHE",
+          "monto": 10000.0,
+          "score": 0.679
         },
         {
           "anio_aporte": 2023,
           "demanda": "Arreglo vías Eloy Alfaro Monterey",
           "sector": "Monterey",
           "eje": "Asentamientos Humanos",
-          "estado": "atendido",
-          "tiempo": "tarde",
-          "anio_ejecucion": 2025,
-          "evidencia": "Regeneración de calle Eloy Alfaro del sector de Bajo de",
-          "monto": 0.0,
-          "score": 0.64
+          "estado": "sin_correlato",
+          "tiempo": "olvidado",
+          "anio_ejecucion": null,
+          "evidencia": "",
+          "monto": 15000.0,
+          "score": 0.507
         },
         {
           "anio_aporte": 2023,
@@ -5083,9 +5083,9 @@
           "estado": "atendido",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2024,
-          "evidencia": "Fomentar la participación ciudadana y la",
-          "monto": 0.0,
-          "score": 0.782
+          "evidencia": "Proyecto de Estrategias Integrales de Comunicación y Percepción: Fortaleciendo la Imagen y Vinculación Institucional · C",
+          "monto": 150900.0,
+          "score": 0.684
         },
         {
           "anio_aporte": 2023,
@@ -5095,9 +5095,9 @@
           "estado": "por_validar",
           "tiempo": "tarde",
           "anio_ejecucion": 2025,
-          "evidencia": "“REHABILITACIÓN DE LAS ÁREAS RECREATIVAS DEL PASEO",
-          "monto": 0.0,
-          "score": 0.597
+          "evidencia": "Mantenimiento de vías urbanas para el acceso de los barrios del cantón · REHABILITACIÓN A NIVEL DE DOBLE TRATAMIENTO SUP",
+          "monto": 127060.0,
+          "score": 0.608
         },
         {
           "anio_aporte": 2023,
@@ -5107,9 +5107,9 @@
           "estado": "por_validar",
           "tiempo": "tarde",
           "anio_ejecucion": 2025,
-          "evidencia": "1 Y PAOLA 2 Y EL PADRINO DEL CANTÓN MONTECRISI",
-          "monto": 0.0,
-          "score": 0.581
+          "evidencia": "Ampliación de redes públicas pluviales · CONSTRUCCIÓN DEL ALCANTARILLADO SANITARIO DE LA CIUDADELA PAOLA 1 Y PAOLA 2 Y E",
+          "monto": 207375.14,
+          "score": 0.531
         },
         {
           "anio_aporte": 2023,
@@ -5119,9 +5119,9 @@
           "estado": "atendido",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2024,
-          "evidencia": "potable para los sitios Bajo de la Palma, Bajo del Pechiche, Los",
-          "monto": 0.0,
-          "score": 0.751
+          "evidencia": "Feriado carnaval, playa San José. Conciertos artisticos.",
+          "monto": 15000.0,
+          "score": 0.652
         },
         {
           "anio_aporte": 2023,
@@ -5131,9 +5131,9 @@
           "estado": "atendido",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2024,
-          "evidencia": "captacion de gua cruda en el canton Montecristi, provincia de",
-          "monto": 0.0,
-          "score": 0.625
+          "evidencia": "Contraparte municipal construccion del acueducto para la captacion de gua cruda en el canton Montecristi, provincia de M",
+          "monto": 646757.1,
+          "score": 0.647
         },
         {
           "anio_aporte": 2023,
@@ -5143,9 +5143,9 @@
           "estado": "atendido",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2024,
-          "evidencia": "Hidrosanitarios en la Dirección de Agua Potable y",
-          "monto": 0.0,
-          "score": 0.778
+          "evidencia": "Ampliación de redes públicas pluviales · Construcción de sistemas de alcantarillado pluvial en el cantón Montecristi · A",
+          "monto": 60000.0,
+          "score": 0.737
         },
         {
           "anio_aporte": 2023,
@@ -5164,12 +5164,12 @@
           "demanda": "¿Qué pasó con el cerro de Montecristi? (seguimiento)",
           "sector": "Montecristi",
           "eje": "Físico-Ambiental",
-          "estado": "atendido",
-          "tiempo": "tarde",
-          "anio_ejecucion": 2025,
-          "evidencia": "construcciones de la cabecera cantonal Montecristi.",
-          "monto": 0.0,
-          "score": 0.631
+          "estado": "sin_correlato",
+          "tiempo": "olvidado",
+          "anio_ejecucion": null,
+          "evidencia": "",
+          "monto": 60000.0,
+          "score": 0.507
         },
         {
           "anio_aporte": 2023,
@@ -5179,9 +5179,9 @@
           "estado": "atendido",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2024,
-          "evidencia": "Hidrosanitarios en la Dirección de Agua Potable y",
-          "monto": 0.0,
-          "score": 0.644
+          "evidencia": "Implementación del plan Recaudación Efectiva · “Pago de sentencias judiciales- Contrato de consultoría por lista corta N",
+          "monto": 39349.31,
+          "score": 0.654
         },
         {
           "anio_aporte": 2023,
@@ -5191,9 +5191,9 @@
           "estado": "atendido",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2024,
-          "evidencia": "Hidrosanitarios en la Dirección de Agua Potable y",
-          "monto": 0.0,
-          "score": 0.74
+          "evidencia": "Mantenimiento de infraestructura existente de agua potable · ADQUISICIÓN DE EQUIPOS PARA ACTIVIDADES OPERATIVAS EN LOS S",
+          "monto": 16000.0,
+          "score": 0.726
         },
         {
           "anio_aporte": 2023,
@@ -5215,21 +5215,21 @@
           "estado": "atendido",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2024,
-          "evidencia": "Incrementar la oferta turística y número de",
+          "evidencia": "CONTRATACIÓN DE SERVICIOS PARA LA PROMOCIÓN DE TURISMO DEPORTIVO RUTA DEL CARACOL · Eventos Públicos Promocionales",
           "monto": 0.0,
-          "score": 0.721
+          "score": 0.719
         },
         {
           "anio_aporte": 2023,
           "demanda": "Trabajo en conjunto en el sombrero de paja toquilla",
           "sector": "Cantón",
           "eje": "Económico Productivo",
-          "estado": "por_validar",
-          "tiempo": "tarde",
-          "anio_ejecucion": 2025,
-          "evidencia": "Contratación de refrigerios y almuerzos para atender los",
-          "monto": 0.0,
-          "score": 0.53
+          "estado": "sin_correlato",
+          "tiempo": "olvidado",
+          "anio_ejecucion": null,
+          "evidencia": "",
+          "monto": 3000.0,
+          "score": 0.49
         },
         {
           "anio_aporte": 2023,
@@ -5239,9 +5239,9 @@
           "estado": "atendido",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2024,
-          "evidencia": "Fomentar la participación ciudadana y la",
-          "monto": 0.0,
-          "score": 0.704
+          "evidencia": "Proyecto de Estrategias Integrales de Comunicación y Percepción: Fortaleciendo la Imagen y Vinculación Institucional · C",
+          "monto": 150900.0,
+          "score": 0.669
         },
         {
           "anio_aporte": 2023,
@@ -5251,9 +5251,9 @@
           "estado": "atendido",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2024,
-          "evidencia": "potable en área urbana / Gestión para la",
-          "monto": 0.0,
-          "score": 0.743
+          "evidencia": "Mantenimiento e implementación de arbolado en calles · Urbanizaciòn y Embellecimiento",
+          "monto": 267600.0,
+          "score": 0.686
         },
         {
           "anio_aporte": 2023,
@@ -5263,9 +5263,9 @@
           "estado": "atendido",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2024,
-          "evidencia": "Mantenimiento de vías urbanas para el acceso de los · Urbanizaciòn y Embellecimiento",
-          "monto": 261000.0,
-          "score": 0.63
+          "evidencia": "Fortalecimiento del Sistema de Información Territorial Municipal · CONTRATACIÓN DEL SERVICIO DE NUBE PARA LAS DISTINTAS ",
+          "monto": 10000.0,
+          "score": 0.641
         },
         {
           "anio_aporte": 2023,
@@ -5275,21 +5275,21 @@
           "estado": "atendido",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2024,
-          "evidencia": "DESTINO MONTECRISTI CIUDAD CREATIVA POR LA UNESCO",
-          "monto": 0.0,
-          "score": 0.706
+          "evidencia": "CONTRATACIÓN DE SERVICIO DE LOGÍSTICA Y PROMOCIÓN TURÍSTICA ARTESANAL Y ARTES ESCÉNICAS COMO MUESTRA EN VALOR DE CIUDAD ",
+          "monto": 15000.0,
+          "score": 0.647
         },
         {
           "anio_aporte": 2024,
           "demanda": "Realizar visitas periódicas a las empresas (control ambiental)",
           "sector": "Empresas del cantón",
           "eje": "Físico-Ambiental",
-          "estado": "atendido",
-          "tiempo": "a_tiempo",
-          "anio_ejecucion": 2025,
-          "evidencia": "monitoreos ambientales de las diferentes concesiones",
-          "monto": 0.0,
-          "score": 0.638
+          "estado": "sin_correlato",
+          "tiempo": "olvidado",
+          "anio_ejecucion": null,
+          "evidencia": "",
+          "monto": 17000.0,
+          "score": 0.504
         },
         {
           "anio_aporte": 2024,
@@ -5299,9 +5299,9 @@
           "estado": "por_validar",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2025,
-          "evidencia": "BITUMINOSO DE VÍAS DE LAS CDLAS. SANTA ISABEL Y TIERRA",
-          "monto": 0.0,
-          "score": 0.608
+          "evidencia": "Mantenimiento de vías urbanas para el acceso de los barrios del cantón · REHABILITACIÓN A NIVEL DE DOBLE TRATAMIENTO SUP",
+          "monto": 127060.0,
+          "score": 0.554
         },
         {
           "anio_aporte": 2024,
@@ -5311,21 +5311,21 @@
           "estado": "atendido",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2025,
-          "evidencia": "control y monitoreo de las aguas residuales del cantón",
-          "monto": 0.0,
-          "score": 0.738
+          "evidencia": "Mantenimiento de infraestructura existente de saneamiento · SERVICIO DE MANTENIMIENTO SISTEMA DE ALCANTARILLADO SANITARI",
+          "monto": 68500.0,
+          "score": 0.667
         },
         {
           "anio_aporte": 2024,
           "demanda": "Dar más control a las recicladoras",
           "sector": "Cantón",
           "eje": "Físico-Ambiental",
-          "estado": "por_validar",
+          "estado": "atendido",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2025,
-          "evidencia": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE · Repuestos y Accesorios",
-          "monto": 10000.0,
-          "score": 0.59
+          "evidencia": "Mantenimiento de infraestructura existente de saneamiento · “ALQUILER DE VEHICULO HIDROSUCCIONADOR PARA ATENDER LAS OBST",
+          "monto": 7200.0,
+          "score": 0.63
         },
         {
           "anio_aporte": 2024,
@@ -5335,21 +5335,21 @@
           "estado": "atendido",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2025,
-          "evidencia": "Laboratorio de la Direccon de agua potable y alcantarillado del",
-          "monto": 0.0,
-          "score": 0.698
+          "evidencia": "Gestión para la construcción de nueva infraestructura de tratamiento de aguas residuales · ADQUISICIÓN DE PRODUCTOS PARA",
+          "monto": 13000.0,
+          "score": 0.631
         },
         {
           "anio_aporte": 2024,
           "demanda": "Cumplir el horario de recolección de basura en Pepa de Huso",
           "sector": "Pepa de Huso",
           "eje": "Físico-Ambiental",
-          "estado": "por_validar",
+          "estado": "atendido",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2025,
-          "evidencia": "control y monitoreo de las aguas residuales del cantón",
-          "monto": 0.0,
-          "score": 0.538
+          "evidencia": "Mantenimiento de infraestructura existente de saneamiento · SERVICIO DE MANTENIMIENTO SISTEMA DE ALCANTARILLADO SANITARI",
+          "monto": 68500.0,
+          "score": 0.625
         },
         {
           "anio_aporte": 2024,
@@ -5359,9 +5359,9 @@
           "estado": "por_validar",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2025,
-          "evidencia": "control y monitoreo de las aguas residuales del cantón",
-          "monto": 0.0,
-          "score": 0.6
+          "evidencia": "Gestión para la construcción de nueva infraestructura de tratamiento de aguas residuales · Adquisición de químicos para ",
+          "monto": 137000.01,
+          "score": 0.618
         },
         {
           "anio_aporte": 2024,
@@ -5371,21 +5371,21 @@
           "estado": "atendido",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2025,
-          "evidencia": "CONTRATACIÓN DE SEGURO DE CAUCIÓN PARA LOS",
-          "monto": 0.0,
-          "score": 0.697
+          "evidencia": "Mejoramiento de la seguridad vial · Eventos Públicos Promocionales",
+          "monto": 2100.0,
+          "score": 0.648
         },
         {
           "anio_aporte": 2024,
           "demanda": "Visitas seguidas a chancheras por mal olor en la comunidad",
           "sector": "Cárcel Eloy Alfaro",
           "eje": "Físico-Ambiental",
-          "estado": "por_validar",
-          "tiempo": "a_tiempo",
-          "anio_ejecucion": 2025,
-          "evidencia": "alcantarillado sanitario de la parroquia eloy alfaro, canton",
-          "monto": 0.0,
-          "score": 0.559
+          "estado": "sin_correlato",
+          "tiempo": "olvidado",
+          "anio_ejecucion": null,
+          "evidencia": "",
+          "monto": 50000.0,
+          "score": 0.456
         },
         {
           "anio_aporte": 2024,
@@ -5395,9 +5395,9 @@
           "estado": "por_validar",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2025,
-          "evidencia": "“ALQUILER DE VEHICULO HIDROSUCCIONADOR PARA ATENDER LAS",
-          "monto": 0.0,
-          "score": 0.566
+          "evidencia": "Optimización y Modernización de la Gestión de Recursos Administrativos Municipales · SERVICIO DE PROVISIÓN DE COMBUSTIBL",
+          "monto": 148500.0,
+          "score": 0.553
         },
         {
           "anio_aporte": 2024,
@@ -5407,21 +5407,21 @@
           "estado": "atendido",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2025,
-          "evidencia": "Diseños Definitivos Para Los Sistemas De Agua Potable Y",
-          "monto": 0.0,
-          "score": 0.722
+          "evidencia": "Ampliación de redes públicas de agua potable en · Accesorios e Insumos Químicos y Orgánicos",
+          "monto": 11000.0,
+          "score": 0.668
         },
         {
           "anio_aporte": 2024,
           "demanda": "Reubicación de ladrilleras en la Y",
           "sector": "La Y",
           "eje": "Físico-Ambiental",
-          "estado": "atendido",
+          "estado": "por_validar",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2025,
-          "evidencia": "RECONSTRUCCIÓN DEL PARQUE UBICADO EN LAS COMUNAS",
-          "monto": 0.0,
-          "score": 0.662
+          "evidencia": "Recuperación integral de los espacios públicos · CONSTRUCCIÓN DEL MERCADO CENTRAL · Construcción de edificaciones",
+          "monto": 1000.0,
+          "score": 0.576
         },
         {
           "anio_aporte": 2024,
@@ -5431,9 +5431,9 @@
           "estado": "por_validar",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2025,
-          "evidencia": "vías, el mantenimiento adecuado de las existentes",
-          "monto": 0.0,
-          "score": 0.576
+          "evidencia": "Implementación de Señalización y control vial · SERVICIO DE SEÑALIZACIÓN VIAL HORIZONTAL Y VERTICAL, PARA VARIAS CALLES ",
+          "monto": 99.99,
+          "score": 0.593
         },
         {
           "anio_aporte": 2024,
@@ -5443,9 +5443,9 @@
           "estado": "atendido",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2025,
-          "evidencia": "de Espacios Públicos, Justicia y Vigilancia del Gobierno",
-          "monto": 0.0,
-          "score": 0.688
+          "evidencia": "Fortalecimiento para la reducción de indicadores territoriales del cantón Montecristi relacionados a las 5 Agendas de Ig",
+          "monto": 9500.0,
+          "score": 0.677
         },
         {
           "anio_aporte": 2024,
@@ -5464,24 +5464,24 @@
           "demanda": "Asignación de presupuesto para Isabel Muentes + mesas para cambio de domicilio",
           "sector": "Isabel Muentes",
           "eje": "Político Institucional",
-          "estado": "por_validar",
-          "tiempo": "a_tiempo",
-          "anio_ejecucion": 2025,
-          "evidencia": "CONSULTORIA PARA EL PLAN MASA DE LA CABECERA",
-          "monto": 0.0,
-          "score": 0.549
+          "estado": "sin_correlato",
+          "tiempo": "olvidado",
+          "anio_ejecucion": null,
+          "evidencia": "",
+          "monto": 688500.48,
+          "score": 0.515
         },
         {
           "anio_aporte": 2024,
           "demanda": "Mantener informados sobre dote/suspensión del líquido vital (agua)",
           "sector": "Cantón",
           "eje": "Asentamientos Humanos",
-          "estado": "atendido",
+          "estado": "por_validar",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2025,
-          "evidencia": "Laboratorio de la Direccon de agua potable y alcantarillado del",
-          "monto": 0.0,
-          "score": 0.738
+          "evidencia": "Servicios Profesionale, para elaboracion de Estudios Hidrosanitarios en la Dirección de Agua Potable y Alcantarillado Sa",
+          "monto": 14400.0,
+          "score": 0.614
         },
         {
           "anio_aporte": 2024,
@@ -5491,9 +5491,9 @@
           "estado": "atendido",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2025,
-          "evidencia": "de agua montecristi potable y alcantarillado del cantón",
-          "monto": 0.0,
-          "score": 0.762
+          "evidencia": "Ampliación de redes públicas pluviales · Construcción de sistemas de alcantarillado pluvial en el cantón Montecristi · A",
+          "monto": 60000.0,
+          "score": 0.736
         },
         {
           "anio_aporte": 2024,
@@ -5503,9 +5503,9 @@
           "estado": "por_validar",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2025,
-          "evidencia": "potable en área urbana / Gestión para la",
-          "monto": 0.0,
-          "score": 0.6
+          "evidencia": "Recuperación integral de los espacios públicos · Regeneración de calle Eloy Alfaro del sector de Bajo de pechiche del Ca",
+          "monto": 135000.0,
+          "score": 0.609
         },
         {
           "anio_aporte": 2024,
@@ -5515,9 +5515,9 @@
           "estado": "por_validar",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2025,
-          "evidencia": "potable en área urbana / Gestión para la",
-          "monto": 0.0,
-          "score": 0.599
+          "evidencia": "Mantenimiento de infraestructura existente de saneamiento · SERVICIO DE MANTENIMIENTO SISTEMA DE ALCANTARILLADO SANITARI",
+          "monto": 68500.0,
+          "score": 0.619
         },
         {
           "anio_aporte": 2024,
@@ -5527,9 +5527,9 @@
           "estado": "atendido",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2025,
-          "evidencia": "TURISMO DEPORTIVO BAJA MONTECRISTI TERCERA EDICIÓN",
-          "monto": 0.0,
-          "score": 0.662
+          "evidencia": "CONTRATACIÓN DE SERVICIOS PARA LA PROMOCIÓN DE TURISMO DEPORTIVO BAJA MONTECRISTI TERCERA EDICIÓN · Eventos Públicos Pro",
+          "monto": 2500.0,
+          "score": 0.783
         },
         {
           "anio_aporte": 2024,
@@ -5540,8 +5540,8 @@
           "tiempo": "olvidado",
           "anio_ejecucion": null,
           "evidencia": "",
-          "monto": 0.0,
-          "score": 0.443
+          "monto": 1200.0,
+          "score": 0.494
         },
         {
           "anio_aporte": 2024,
@@ -5549,23 +5549,23 @@
           "sector": "Nuevo Prado 1",
           "eje": "Económico Productivo",
           "estado": "por_validar",
-          "tiempo": "a_tiempo",
-          "anio_ejecucion": 2025,
-          "evidencia": "GESTIÓN DE NUEVAS COMPETENCIAS DE TRÁNSITO",
-          "monto": 0.0,
-          "score": 0.567
+          "tiempo": "tarde",
+          "anio_ejecucion": 2026,
+          "evidencia": "Optimización y Modernización de la Gestión de · Comisiones y Otros Cargos",
+          "monto": 371000.0,
+          "score": 0.564
         },
         {
           "anio_aporte": 2024,
           "demanda": "Generar actividades para emprendimientos en la localidad Monterrey",
           "sector": "Monterrey",
           "eje": "Económico Productivo",
-          "estado": "por_validar",
+          "estado": "atendido",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2025,
-          "evidencia": "CONSTRUCCIÓN DE ESCENARIO CAMERINO EN LA COMUNA",
-          "monto": 0.0,
-          "score": 0.534
+          "evidencia": "Fomento al Emprendimiento Artesanal y el Dinamismo Económico Local · “ADQUISICIÓN DE COMPRA DE ELECTRODOMÉSTICOS PARA CU",
+          "monto": 2992.18,
+          "score": 0.637
         },
         {
           "anio_aporte": 2024,
@@ -5575,9 +5575,9 @@
           "estado": "atendido",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2025,
-          "evidencia": "Construcciòn de Infraestructura comunitaria y Espacios",
-          "monto": 0.0,
-          "score": 0.73
+          "evidencia": "Construcción de Equipamientos para el servicio de la comunidad · Remodelación del área de emergencia y consulta externa ",
+          "monto": 62000.0,
+          "score": 0.657
         },
         {
           "anio_aporte": 2024,
@@ -5587,9 +5587,9 @@
           "estado": "atendido",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2025,
-          "evidencia": "Incrementar la oferta turística y número de",
-          "monto": 0.0,
-          "score": 0.698
+          "evidencia": "CONTRATACIÓN DE SERVICIOS PARA LA PROMOCIÓN DE TURISMO DEPORTIVO BAJA MONTECRISTI TERCERA EDICIÓN · Eventos Públicos Pro",
+          "monto": 2500.0,
+          "score": 0.726
         },
         {
           "anio_aporte": 2024,
@@ -5599,9 +5599,9 @@
           "estado": "atendido",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2025,
-          "evidencia": "vías, el mantenimiento adecuado de las existentes",
-          "monto": 0.0,
-          "score": 0.729
+          "evidencia": "Mantenimiento de vías urbanas para el acceso de los · Maquinarias y Equipos (Arrendamiento)",
+          "monto": 186000.0,
+          "score": 0.661
         },
         {
           "anio_aporte": 2024,
@@ -5611,9 +5611,9 @@
           "estado": "atendido",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2025,
-          "evidencia": "Formación y fortalecimiento del Talento Humano · Pasajes al Interior",
-          "monto": 6000.0,
-          "score": 0.685
+          "evidencia": "Formación y fortalecimiento del Talento Humano · Gestiones Interinstitucionales · Pasajes al Interior",
+          "monto": 6101.68,
+          "score": 0.693
         },
         {
           "anio_aporte": 2024,
@@ -5623,21 +5623,21 @@
           "estado": "atendido",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2025,
-          "evidencia": "Alarmas Comunitarias para Diferentes Sectores del Cantón",
-          "monto": 0.0,
-          "score": 0.624
+          "evidencia": "Recuperación integral de los espacios públicos · Transferencias A Entidades Descentralizadas y Autónomas (Aporte Patrona",
+          "monto": 920000.0,
+          "score": 0.638
         },
         {
           "anio_aporte": 2024,
           "demanda": "Llegar con más talleres socioculturales hacia las comunidades",
           "sector": "Cantón",
           "eje": "Sociocultural",
-          "estado": "atendido",
+          "estado": "por_validar",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2025,
-          "evidencia": "MONTECRISTI, INCLUYENDO MUSEO CULTURAL Y PATRIMONIO",
-          "monto": 0.0,
-          "score": 0.696
+          "evidencia": "Implementación de la Agenda integral de eventos artísticos, cívicos y culturales · Servicios profesionales para el desar",
+          "monto": 12000.0,
+          "score": 0.615
         },
         {
           "anio_aporte": 2024,
@@ -5647,33 +5647,33 @@
           "estado": "por_validar",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2025,
-          "evidencia": "complementarios de infraestructura urbana, orientados a",
-          "monto": 0.0,
-          "score": 0.595
+          "evidencia": "Mantenimiento de vías urbanas para el acceso de los barrios del cantón · ADQUISICION DE MATERIALES DE CONSTRUCCION Y HER",
+          "monto": 10000.0,
+          "score": 0.57
         },
         {
           "anio_aporte": 2024,
           "demanda": "Buscar mejoras en todos los centros de salud del cantón",
           "sector": "Cantón",
           "eje": "Sociocultural",
-          "estado": "por_validar",
+          "estado": "atendido",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2025,
-          "evidencia": "sensibilización sobre prácticas de salud preventiva",
-          "monto": 0.0,
-          "score": 0.555
+          "evidencia": "Proyecto Integral de Salud y Bienestar Juvenil · ADQUISICION DE INSTRUMENTOS MEDICO QUIRURGICO PARA LOS DIFERENTES CLUBE",
+          "monto": 9000.0,
+          "score": 0.631
         },
         {
           "anio_aporte": 2024,
           "demanda": "Regularizar la parroquia Isabel Muentes",
           "sector": "Isabel Muentes",
           "eje": "Político Institucional",
-          "estado": "por_validar",
-          "tiempo": "a_tiempo",
-          "anio_ejecucion": 2025,
-          "evidencia": "Centro Diario del Buen Vivir de la Parroquia Aníbal San Andrés",
-          "monto": 0.0,
-          "score": 0.568
+          "estado": "sin_correlato",
+          "tiempo": "olvidado",
+          "anio_ejecucion": null,
+          "evidencia": "",
+          "monto": 7200.0,
+          "score": 0.43
         },
         {
           "anio_aporte": 2024,
@@ -5692,24 +5692,24 @@
           "demanda": "Activación de ordenanza Día del Cholo (Eloy Alfaro)",
           "sector": "Eloy Alfaro",
           "eje": "Sociocultural",
-          "estado": "atendido",
-          "tiempo": "a_tiempo",
-          "anio_ejecucion": 2025,
-          "evidencia": "potable para los sitios Bajo de la Palma, Bajo del Pechiche, Los",
-          "monto": 0.0,
-          "score": 0.637
+          "estado": "sin_correlato",
+          "tiempo": "olvidado",
+          "anio_ejecucion": null,
+          "evidencia": "",
+          "monto": 13960.0,
+          "score": 0.477
         },
         {
           "anio_aporte": 2024,
           "demanda": "Avanzar con agua potable y vialidad en Isabel Muentes",
           "sector": "Isabel Muentes",
           "eje": "Asentamientos Humanos",
-          "estado": "atendido",
+          "estado": "por_validar",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2025,
-          "evidencia": "Alcantarillado Pluvial En La Parroquia Leónidas Proaño Del",
-          "monto": 0.0,
-          "score": 0.658
+          "evidencia": "Implementación del plan Recaudación Efectiva · “Pago de sentencias judiciales- Contrato de consultoría por lista corta N",
+          "monto": 39349.31,
+          "score": 0.575
         },
         {
           "anio_aporte": 2024,
@@ -5719,21 +5719,21 @@
           "estado": "atendido",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2025,
-          "evidencia": "Comercial en la Dirección de Agua Potable y Alcantarillado",
-          "monto": 0.0,
-          "score": 0.675
+          "evidencia": "Implementación del plan Recaudación Efectiva · “Pago de sentencias judiciales- Contrato de consultoría por lista corta N",
+          "monto": 39349.31,
+          "score": 0.69
         },
         {
           "anio_aporte": 2024,
           "demanda": "Postes en vida útil vencida + transformador Leónidas Proaño",
           "sector": "Leónidas Proaño",
           "eje": "Asentamientos Humanos",
-          "estado": "atendido",
-          "tiempo": "a_tiempo",
-          "anio_ejecucion": 2025,
-          "evidencia": "ADQUISION DE SOUVENIRS PARA LOS DIFERENTES PROYECTOS",
-          "monto": 0.0,
-          "score": 0.74
+          "estado": "sin_correlato",
+          "tiempo": "olvidado",
+          "anio_ejecucion": null,
+          "evidencia": "",
+          "monto": 3000.0,
+          "score": 0.484
         },
         {
           "anio_aporte": 2024,
@@ -5743,9 +5743,9 @@
           "estado": "atendido",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2025,
-          "evidencia": "Mantenimiento de vías urbanas para el acceso de los · Insumos, Materiales y Suministros para Construcción,",
-          "monto": 6500.0,
-          "score": 0.72
+          "evidencia": "Mantenimiento de vías urbanas para el acceso de los barrios del cantón · ADQUISICION DE MATERIALES DE CONSTRUCCION Y HER",
+          "monto": 20000.0,
+          "score": 0.751
         },
         {
           "anio_aporte": 2024,
@@ -5755,33 +5755,33 @@
           "estado": "atendido",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2025,
-          "evidencia": "Hidrosanitarios en la Dirección de Agua Potable y",
-          "monto": 0.0,
-          "score": 0.787
+          "evidencia": "Ampliación de redes públicas de agua potable en · Vehículos (Arrendamiento)",
+          "monto": 100000.0,
+          "score": 0.784
         },
         {
           "anio_aporte": 2024,
           "demanda": "Iluminarias + arreglo vías + alarmas comunitarias en San Eloy 4,6",
           "sector": "San Eloy 4,6 / Isabel Muentes",
           "eje": "Asentamientos Humanos",
-          "estado": "por_validar",
+          "estado": "atendido",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2025,
-          "evidencia": "Regeneración de calle Eloy Alfaro del sector de Bajo de",
-          "monto": 0.0,
-          "score": 0.604
+          "evidencia": "Construcción de Equipamientos para el servicio de la comunidad · Remodelación del área de emergencia y consulta externa ",
+          "monto": 62000.0,
+          "score": 0.674
         },
         {
           "anio_aporte": 2024,
           "demanda": "Arreglo del aljibe + vía Camarón de Abajo hacia Camarón de Arriba",
           "sector": "Camarón de Abajo",
           "eje": "Asentamientos Humanos",
-          "estado": "por_validar",
-          "tiempo": "a_tiempo",
-          "anio_ejecucion": 2025,
-          "evidencia": "MAQUINARIA Y TANQUERO HYUNDAI DEL PARQUE",
+          "estado": "sin_correlato",
+          "tiempo": "olvidado",
+          "anio_ejecucion": null,
+          "evidencia": "",
           "monto": 0.0,
-          "score": 0.56
+          "score": 0.444
         },
         {
           "anio_aporte": 2023,
@@ -5791,9 +5791,9 @@
           "estado": "atendido",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2024,
-          "evidencia": "Servicio de capacitación para Promoción para el cumplimiento de las normativas locales para su respectiva aplicación a t",
-          "monto": 12000.0,
-          "score": 0.647
+          "evidencia": "Fortalecimiento del Sistema de Información Territorial Municipal · SERVICIOS PROFESIONALES ESPECIALIZADOS PARA LA REVALO",
+          "monto": 10000.0,
+          "score": 0.696
         },
         {
           "anio_aporte": 2023,
@@ -5804,8 +5804,8 @@
           "tiempo": "olvidado",
           "anio_ejecucion": null,
           "evidencia": "",
-          "monto": 0.0,
-          "score": 0.445
+          "monto": 3000.0,
+          "score": 0.485
         },
         {
           "anio_aporte": 2023,
@@ -5815,21 +5815,21 @@
           "estado": "por_validar",
           "tiempo": "tarde",
           "anio_ejecucion": 2025,
-          "evidencia": "Recuperación y manejo integral de zonas de riesgo en · Maquinarias y Equipos (Arrendamiento)",
-          "monto": 250000.0,
-          "score": 0.601
+          "evidencia": "Recuperación integral de los espacios públicos · SERVICIO DE PERFORACIÓN, CARACTERIZACIÓN, REVESTIMIENTO Y DESARROLLO DE",
+          "monto": 1000.0,
+          "score": 0.614
         },
         {
           "anio_aporte": 2023,
           "demanda": "Habilitar área de psicología en comunidades para adolescentes",
           "sector": "Comunidades",
           "eje": "Sociocultural",
-          "estado": "atendido",
+          "estado": "por_validar",
           "tiempo": "tarde",
           "anio_ejecucion": 2025,
-          "evidencia": "por la vulneración de derehos a los niños, niñas y adolescentes",
-          "monto": 0.0,
-          "score": 0.659
+          "evidencia": "Proyecto Integral de Salud y Bienestar Juvenil · “ADQUISION DE SOUVENIRS PARA LOS DIFERENTES PROYECTOS QUE LLEVA A CABO ",
+          "monto": 3000.0,
+          "score": 0.563
         },
         {
           "anio_aporte": 2023,
@@ -5839,21 +5839,21 @@
           "estado": "por_validar",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2024,
-          "evidencia": "jornadas de capacitaciones, sensibilización y socialización",
-          "monto": 0.0,
-          "score": 0.611
+          "evidencia": "Promoción de la formación, participación · Menaje y Accesorios Descartable",
+          "monto": 6000.0,
+          "score": 0.591
         },
         {
           "anio_aporte": 2023,
           "demanda": "Campaña de papanicolaou y obstetricia",
           "sector": "Cantón",
           "eje": "Sociocultural",
-          "estado": "por_validar",
-          "tiempo": "tarde",
-          "anio_ejecucion": 2025,
-          "evidencia": "CONSULTORIA PARA LOS ESTUDIOS DE PREFACTIBILIDAD,",
-          "monto": 0.0,
-          "score": 0.588
+          "estado": "sin_correlato",
+          "tiempo": "olvidado",
+          "anio_ejecucion": null,
+          "evidencia": "",
+          "monto": 2050.0,
+          "score": 0.445
         },
         {
           "anio_aporte": 2023,
@@ -5884,12 +5884,12 @@
           "demanda": "Incrementar barrido en el sector Comuna Eloy Alfaro",
           "sector": "Eloy Alfaro",
           "eje": "Físico-Ambiental",
-          "estado": "atendido",
+          "estado": "por_validar",
           "tiempo": "tarde",
           "anio_ejecucion": 2025,
-          "evidencia": "Regeneración de calle Eloy Alfaro del sector de Bajo de",
-          "monto": 0.0,
-          "score": 0.736
+          "evidencia": "Mantenimiento de infraestructura existente de saneamiento · REHABILITACIÓN, REPOTENCIACIÓN Y MANTENIMIENTO DE ESTACIONES",
+          "monto": 90000.0,
+          "score": 0.552
         },
         {
           "anio_aporte": 2023,
@@ -5900,7 +5900,7 @@
           "tiempo": "olvidado",
           "anio_ejecucion": null,
           "evidencia": "",
-          "monto": 0.0,
+          "monto": 2100.0,
           "score": 0.37
         },
         {
@@ -5911,21 +5911,21 @@
           "estado": "por_validar",
           "tiempo": "tarde",
           "anio_ejecucion": 2025,
-          "evidencia": "Construccion del acueducto para la captacion de gua cruda en",
+          "evidencia": "Construccion del acueducto para la captacion de gua cruda en el canton Montecristi, provincia de Manabi · Agua Potable",
           "monto": 0.0,
-          "score": 0.601
+          "score": 0.539
         },
         {
           "anio_aporte": 2023,
           "demanda": "Respetar día de recolección + día adicional + colocar tanques en La Sequita",
           "sector": "La Sequita",
           "eje": "Físico-Ambiental",
-          "estado": "por_validar",
-          "tiempo": "tarde",
-          "anio_ejecucion": 2025,
-          "evidencia": "ALQUILER DE SERVICIO DE TANQUEROS PARA DISTRIBUCIÓN DE AGUA",
-          "monto": 0.0,
-          "score": 0.532
+          "estado": "sin_correlato",
+          "tiempo": "olvidado",
+          "anio_ejecucion": null,
+          "evidencia": "",
+          "monto": 1000.0,
+          "score": 0.501
         },
         {
           "anio_aporte": 2023,
@@ -5947,9 +5947,9 @@
           "estado": "atendido",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2024,
-          "evidencia": "Mantenimiento de vías urbanas para el acceso de los · Maquinarias y Equipos (Arrendamiento)",
-          "monto": 186000.0,
-          "score": 0.685
+          "evidencia": "Mantenimiento de vías urbanas para el acceso de los barrios del cantón · ADQUISICIÓN DE MAQUINARIA PESADA PARA EL GOBIER",
+          "monto": 500000.0,
+          "score": 0.71
         },
         {
           "anio_aporte": 2023,
@@ -5981,35 +5981,35 @@
           "sector": "Unidades educativas",
           "eje": "Físico-Ambiental",
           "estado": "por_validar",
-          "tiempo": "a_tiempo",
-          "anio_ejecucion": 2025,
-          "evidencia": "material árido y pétreo para el Gobierno Autónomo",
-          "monto": 0.0,
-          "score": 0.558
+          "tiempo": "tarde",
+          "anio_ejecucion": 2026,
+          "evidencia": "Promoción de la formación, participación · Menaje y Accesorios Descartable",
+          "monto": 6000.0,
+          "score": 0.526
         },
         {
           "anio_aporte": 2024,
           "demanda": "Dar a conocer a la ciudadanía el compost que elabora EMAIMEP",
           "sector": "Cantón",
           "eje": "Físico-Ambiental",
-          "estado": "atendido",
+          "estado": "por_validar",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2025,
-          "evidencia": "“ADQUISICIÓN DE VESTIMENTA (UNIFORME) PARA EL",
-          "monto": 0.0,
-          "score": 0.628
+          "evidencia": "Implementación de huertos órganicos familiares y comunitarios · “ADQUISICIÓN DE SEMILLAS, INSUMOS, FERTILIZANTES, ACCESO",
+          "monto": 9400.0,
+          "score": 0.563
         },
         {
           "anio_aporte": 2024,
           "demanda": "Entregar 2 contenedores al sector Río Manta",
           "sector": "Río Manta",
           "eje": "Físico-Ambiental",
-          "estado": "atendido",
+          "estado": "por_validar",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2025,
-          "evidencia": "Montecristi por parte de la Empresa Pública de Aguas de Manta",
+          "evidencia": "Construccion del acueducto para la captacion de gua cruda en el canton Montecristi, provincia de Manabi · Agua Potable",
           "monto": 0.0,
-          "score": 0.635
+          "score": 0.553
         },
         {
           "anio_aporte": 2024,
@@ -6019,9 +6019,9 @@
           "estado": "atendido",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2025,
-          "evidencia": "vías el mantenimiento adecuado de las existentes",
-          "monto": 0.0,
-          "score": 0.712
+          "evidencia": "Mantenimiento de infraestructura existente de saneamiento · SERVICIO DE MANTENIMIENTO SISTEMA DE ALCANTARILLADO SANITARI",
+          "monto": 68500.0,
+          "score": 0.71
         },
         {
           "anio_aporte": 2024,
@@ -6029,8 +6029,8 @@
           "sector": "Cantón",
           "eje": "Político Institucional",
           "estado": "atendido",
-          "tiempo": "a_tiempo",
-          "anio_ejecucion": 2025,
+          "tiempo": "tarde",
+          "anio_ejecucion": 2026,
           "evidencia": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE · Tasas Generales, Impuestos, Contribuciiones,",
           "monto": 10000.0,
           "score": 0.651
@@ -6040,12 +6040,12 @@
           "demanda": "Identificar bienes destinados a chatarrización para generar ingresos propios",
           "sector": "Cantón",
           "eje": "Político Institucional",
-          "estado": "atendido",
+          "estado": "por_validar",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2025,
-          "evidencia": "Cuentas por pagar, a proveedores por adquisición de bienes o",
-          "monto": 0.0,
-          "score": 0.645
+          "evidencia": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE · Tasas Generales, Impuestos, Contribuciiones,",
+          "monto": 10000.0,
+          "score": 0.612
         },
         {
           "anio_aporte": 2023,
@@ -6076,36 +6076,36 @@
           "demanda": "Revisión y construcción de estación bomberil en la comunidad de Río Caña",
           "sector": "Río Caña",
           "eje": "Asentamientos Humanos",
-          "estado": "por_validar",
+          "estado": "atendido",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2024,
-          "evidencia": "“REHABILITACIÓN DE LAS ÁREAS RECREATIVAS DEL PASEO",
-          "monto": 0.0,
-          "score": 0.568
+          "evidencia": "Construcción de Equipamientos para el servicio de la comunidad · Remodelación del área de emergencia y consulta externa ",
+          "monto": 62000.0,
+          "score": 0.646
         },
         {
           "anio_aporte": 2024,
           "demanda": "Acelerar la construcción del Cuartel Leónidas Proaño",
           "sector": "Leónidas Proaño",
           "eje": "Asentamientos Humanos",
-          "estado": "atendido",
-          "tiempo": "a_tiempo",
-          "anio_ejecucion": 2025,
-          "evidencia": "CONSTRUCCIÓN DE CUARTO DE GENERACIÓN Y MONTAJE DE",
-          "monto": 0.0,
-          "score": 0.691
+          "estado": "por_validar",
+          "tiempo": "tarde",
+          "anio_ejecucion": 2026,
+          "evidencia": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE · Vehículos",
+          "monto": 23000.0,
+          "score": 0.574
         },
         {
           "anio_aporte": 2024,
           "demanda": "Capacitación a niños y niñas de las escuelas en operaciones contra incendios y atención prehospitalaria",
           "sector": "Escuelas del cantón",
           "eje": "Sociocultural",
-          "estado": "por_validar",
-          "tiempo": "a_tiempo",
-          "anio_ejecucion": 2025,
-          "evidencia": "Capacitación de las personas de los grupos de atención prioritaria",
-          "monto": 0.0,
-          "score": 0.523
+          "estado": "sin_correlato",
+          "tiempo": "olvidado",
+          "anio_ejecucion": null,
+          "evidencia": "",
+          "monto": 3000.0,
+          "score": 0.52
         },
         {
           "anio_aporte": 2024,
@@ -6124,12 +6124,12 @@
           "demanda": "Mejorar capacidad de respuesta ante emergencias con Cuartel Leónidas Proaño",
           "sector": "Leónidas Proaño",
           "eje": "Asentamientos Humanos",
-          "estado": "atendido",
+          "estado": "por_validar",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2025,
-          "evidencia": "ELABORACIÓN DEL PLAN DE SEGURIDAD VIAL PARA EL CANTÓN",
-          "monto": 0.0,
-          "score": 0.668
+          "evidencia": "Construcción de Equipamientos para el servicio de la comunidad · Remodelación del área de emergencia y consulta externa ",
+          "monto": 62000.0,
+          "score": 0.601
         },
         {
           "anio_aporte": 2024,
@@ -6151,21 +6151,21 @@
           "estado": "por_validar",
           "tiempo": "a_tiempo",
           "anio_ejecucion": 2025,
-          "evidencia": "Contratación de servicios alimenticios para el desarrollo de",
-          "monto": 0.0,
-          "score": 0.532
+          "evidencia": "Fomento al Emprendimiento Artesanal y el Dinamismo Económico Local · “ADQUISCION DE ALIMENTOS DE PRIMERA NECESIDAD PARA ",
+          "monto": 3997.0,
+          "score": 0.523
         },
         {
           "anio_aporte": 2024,
           "demanda": "Mayoritario",
           "sector": "0.8",
           "eje": "—",
-          "estado": "por_validar",
-          "tiempo": "a_tiempo",
-          "anio_ejecucion": 2025,
-          "evidencia": "CODIGO DE TRABAJO SALARIOS UNIFICADOS 110",
-          "monto": 0.0,
-          "score": 0.551
+          "estado": "sin_correlato",
+          "tiempo": "olvidado",
+          "anio_ejecucion": null,
+          "evidencia": "",
+          "monto": 23000.0,
+          "score": 0.466
         }
       ]
     }

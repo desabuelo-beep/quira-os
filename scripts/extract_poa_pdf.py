@@ -35,7 +35,12 @@ POA_CFG = {
     # 2026: tabla de 30 col — descripción rica = proyecto(col9) + actividad(col17)
     "2026": {"file": "GAD Montecristi POA 2026.pdf", "engine": "pdfplumber",
              "desc_cols": [9, 17], "partida": 16, "monto": 20},
-    "2025": {"file": "GAD Monteristi POA 2025.pdf", "engine": "pymupdf"},
+    # 2025: el PDF sale scrambled; el DOCX (convertido por Javo) trae la tabla de
+    # 40 col limpia en el XML → col13 PROYECTO · col15 ACTIVIDAD · col18 DESCRIPCIÓN
+    # · col16 PARTIDA · col36-39 MONTO I-IV.
+    "2025": {"file": "GAD Monteristi POA 2025.docx", "engine": "docx_xml",
+             "desc_cols": [13, 15, 18], "partida": 16, "monto_cols": [36, 37, 38, 39],
+             "min_cols": 40, "key_col": 15},
 }
 
 _HDR_TOKENS = ("ACTIVIDAD", "ACTVIDAD", "DESCRIPCIÓN", "DESCRIPCION", "PROYECTO",
@@ -92,34 +97,33 @@ def _extract_pdfplumber(path: str, cfg: dict) -> list[dict]:
     return rows
 
 
-def _extract_pymupdf_2025(path: str) -> list[dict]:
-    """POA 2025: pdfplumber sale scrambled y find_tables cuelga (41 col × 12 pág).
-    get_text('blocks') sí sale legible → se toman los bloques descriptivos como
-    candidatos de ejecución, descartando objetivos ODS ('9. Propender…') y ejes
-    repetidos (dedup). Sin monto por-fila (se refina luego).
+def _extract_docx_xml(path: str, cfg: dict) -> list[dict]:
+    """POA 2025 desde el DOCX (Javo): las tablas viven en el XML como <w:tr>/<w:tc>
+    con 40 col limpias. Reconstruye filas y toma proyecto+actividad+descripción.
     """
-    import fitz
-    STOP = ("EJE", "OBJETIVO", "SISTEMA", "META ", "CRONOGRAMA", "PLAN OPERATIVO",
-            "GOBIERNO", "INSTITUCIONAL CODIGO", "TRIMESTR", "PORCENTAJE")
+    import zipfile
+    with zipfile.ZipFile(path) as z:
+        xml = z.read("word/document.xml").decode("utf-8", "ignore")
+    cols = cfg["desc_cols"]
+    kc = cfg["key_col"]
     rows: list[dict] = []
-    seen: set[str] = set()
-    doc = fitz.open(path)
-    for pg in doc:
-        for line in pg.get_text().split("\n"):
-            t = _clean(line)
-            letras = sum(c.isalpha() for c in t)
-            if len(t) < 40 or letras < 28 or len(t.split()) < 6:
-                continue
-            if re.match(r"^\d+\.\s", t):        # objetivo ODS numerado
-                continue
-            up = t.upper()
-            if any(up.startswith(s) for s in STOP):
-                continue
-            low = t.lower()
-            if low in seen:
-                continue
-            seen.add(low)
-            rows.append({"desc": t, "partida": "", "monto": 0.0})
+    for tr in re.findall(r"<w:tr[ >].*?</w:tr>", xml, re.DOTALL):
+        cells = []
+        for tc in re.findall(r"<w:tc[ >].*?</w:tc>", tr, re.DOTALL):
+            ts = re.findall(r"<w:t[^>]*>([^<]*)</w:t>", tc)
+            cells.append(_clean(" ".join(ts)))
+        if len(cells) < cfg["min_cols"]:
+            continue
+        key = cells[kc] if kc < len(cells) else ""
+        if not key or key.upper() in ("ACTIVIDAD", "DESCRIPCIÓN", "DESCRIPCION"):
+            continue                                   # encabezado de tabla
+        parts = [cells[ci] for ci in cols if ci < len(cells) and cells[ci]]
+        desc = " · ".join(dict.fromkeys(parts))
+        if len(desc) < 8:
+            continue
+        monto = sum(_monto(cells[ci]) for ci in cfg.get("monto_cols", []) if ci < len(cells))
+        partida = cells[cfg["partida"]] if cfg.get("partida") is not None and cfg["partida"] < len(cells) else ""
+        rows.append({"desc": desc, "partida": partida, "monto": monto})
     return rows
 
 
@@ -130,8 +134,8 @@ def extract_poa(anio: str) -> list[dict]:
     path = os.path.join(POA_BASE, cfg["file"])
     if not os.path.exists(path):
         return []
-    if cfg["engine"] == "pymupdf":
-        rows = _extract_pymupdf_2025(path)
+    if cfg["engine"] == "docx_xml":
+        rows = _extract_docx_xml(path, cfg)
     else:
         rows = _extract_pdfplumber(path, cfg)
     # dedup por (desc, monto) y etiqueta de año
