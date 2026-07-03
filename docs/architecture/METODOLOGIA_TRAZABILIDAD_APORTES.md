@@ -1,6 +1,6 @@
 # METODOLOGÍA — Trazabilidad de Aportes y Compromisos Ciudadanos (d09)
 
-> **PROPUESTA v0.2 · para revisión de Javo** (Regla 9: el cambio conceptual nace en el canon,
+> **PROPUESTA v0.3 · para revisión de Javo** (Regla 9: el cambio conceptual nace en el canon,
 > no en Python). Sesión 2026-07-03 · asesor + Javo + Claude. Fundamenta la expansión de d09
 > con la sección *Compromisos CPCCS + Aportes Ciudadanos*.
 
@@ -79,13 +79,20 @@ Partida · Monto · Proceso_SERCOP · Estado │ Nivel_Atención · Tiempo_Respu
   **vínculo validado** con su evidencia.
 - Nada se afirma sin evidencia (Regla 3): un aporte «Atendido» **muestra** su proyecto/partida/contrato.
 
-## 8 · Plan de construcción (7 capas · PCD)
-1. Canon: crear hoja de trazabilidad (cirugía Gold Master · sobre copia · B33 intacta).
-2. Poblar: cruce semiautomático + validación (arranque 2023-2024 con H10c).
-3. Cableado: enricher `enrich_aportes.py` → snapshot.
-4. Matemática: indicadores de atención + serie.
-5. Visual + Narrativa: sección nueva en la lectura de d09.
-6. Cierre: actualizar `PCD-D09`.
+## 8 · Construcción (ejecutada) y el canon de la trazabilidad
+**NO hay cirugía del Gold Master** (corrección v0.3 · Regla 1). El cruce aporte↔obra es una derivación
+**semántica** (embeddings + validación experta), **no una fórmula que el Excel recalcule** —a diferencia
+del IPE (`SUMAPRODUCTO` nativo, que el Excel sí calcula). Estampar su resultado en el Excel sería
+**Python→Excel**, prohibido por la Regla 1 (Excel→Python→Supabase→UI, *nunca al revés*). El canon de la
+trazabilidad de aportes NO es una hoja nueva, sino:
+- **Inputs (ya en el Gold Master):** `H10c` (aportes verificados) + los POA oficiales (PDF/DOCX).
+- **Decisiones ratificadas:** `data/aportes_validacion.json` (versionado en git · sello humano de Javo).
+- **Método:** esta metodología.
+- El cruce **DERIVA** de ahí: `extract_poa_pdf.py` + `enrich_aportes.py` → snapshot → UI.
+
+**Pasos ejecutados (2026-07-03/04):** (1) extracción POA 2024-2026 (2025 desde DOCX) · (2) cruce de
+ventana de periodo + validación experta ratificada → **49 atendido / 47 sin correlato** · (3) sección
+«La voz ciudadana» en la lectura de d09, marco legal en bloque · (4) cierre en `PCD-D09` (tras el NLP).
 
 ---
-*Metodología de Trazabilidad de Aportes · Dylus Lab © 2026 · PROPUESTA v0.2 (pendiente aval de Javo).*
+*Metodología de Trazabilidad de Aportes · Dylus Lab © 2026 · PROPUESTA v0.3 (pendiente aval de Javo).*
