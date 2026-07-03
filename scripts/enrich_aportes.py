@@ -72,6 +72,8 @@ def _embed(model, txts):
 
 def build() -> dict:
     aportes = _cargar_aportes()
+    valid_path = _ROOT / "data" / "aportes_validacion.json"
+    _VALID = json.loads(valid_path.read_text(encoding="utf-8")) if valid_path.exists() else {}
     poa = {y: extract_poa(str(y)) for y in AÑOS_POA}
     print(f"Aportes: {len(aportes)} · POA: {{{', '.join(f'{y}:{len(poa[y])}' for y in poa)}}}")
 
@@ -103,16 +105,28 @@ def build() -> dict:
         else:
             estado = "sin_correlato"
 
+        # ── validación experta (overrides trazables · data/aportes_validacion.json) ──
+        validado = False
+        dem = ap["demanda"]
+        resc = next((yr for pref, yr in _VALID.get("rescatar", {}).items() if dem.startswith(pref)), None)
+        if resc is not None:                       # falso negativo rescatado → atendido
+            estado, validado, ejec_y = "atendido", True, resc
+            if resc in by_year:
+                best_score, best_desc, best_monto = by_year[resc]
+        elif any(dem.startswith(p) for p in _VALID.get("rechazar", [])):   # falso positivo → sin correlato
+            estado, validado = "sin_correlato", True
+        elif estado == "por_validar":              # banda 0.52-0.62 no confirmada → sin correlato
+            estado, validado = "sin_correlato", True
+
         if estado == "sin_correlato":
-            tiempo = "olvidado"
-            ejec_y = None
+            tiempo, ejec_y = "olvidado", None
         else:
             tiempo = "a_tiempo" if ejec_y == ap["anio"] + 1 else "tarde"
 
         detalle.append({
             "anio_aporte": ap["anio"], "demanda": ap["demanda"], "sector": ap["sector"],
             "eje": ap["eje"], "estado": estado, "tiempo": tiempo,
-            "anio_ejecucion": ejec_y,
+            "anio_ejecucion": ejec_y, "validado": validado,
             "evidencia": best_desc[:120] if estado != "sin_correlato" else "",
             "monto": round(best_monto, 2) if best_monto else 0.0,
             "score": round(best_score, 3),
@@ -124,9 +138,11 @@ def build() -> dict:
     eje_atend = Counter(d["eje"] for d in detalle if d["estado"] != "sin_correlato")
     return {
         "_fuente": "H10c aportes (2023-24) × POA PDFs 2024-2026 · cruce semiautomático",
-        "_nota": "Método semiautomático (evaluación experta trazable). Banda 0.52-0.62 = por validar. "
-                 "Ventana = periodo de gobierno. 2025 con extracción parcial (PDF difícil).",
+        "_nota": "Método semiautomático + PRE-VALIDACIÓN experta (data/aportes_validacion.json, "
+                 "pendiente ratificación humana). Ventana = periodo de gobierno. La banda dudosa "
+                 "0.52-0.62 se degrada a sin_correlato salvo confirmación (fue ~74% falsos positivos).",
         "total": len(detalle),
+        "n_validados": sum(1 for d in detalle if d.get("validado")),
         "umbral": {"atendido": TH_ATENDIDO, "validar": TH_VALIDAR},
         "por_estado": dict(est),
         "por_tiempo": dict(tmp),

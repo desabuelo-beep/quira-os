@@ -1,0 +1,28 @@
+{
+  "_meta": "Pre-validación experta asistida por IA — 2026-07-04. Revisión caso por caso de los 96 aportes (H10c) contra sus candidatos de POA 2024-2026. PENDIENTE de ratificación humana (Javo). Match por PREFIJO de la demanda (startswith). Regla: un aporte 'por_validar' (banda 0.52-0.62) que NO esté en 'rescatar' se degrada a 'sin_correlato' — la banda demostró ser ~74% falsos positivos.",
+  "rescatar": {
+    "Mejoramiento vías del arroyo": 2025,
+    "Alcantarillado y vías Isla del Sol": 2025,
+    "Llegar con más talleres socioculturales": 2025,
+    "Avanzar con agua potable y vialidad en Isabel": 2026,
+    "Habilitar área de psicología": 2025,
+    "Ampliación del servicio de brigadas médicas": 2024,
+    "Capacitaciones bomberiles": 2025,
+    "Mejorar capacidad de respuesta ante emergencias": 2025,
+    "Arreglo vías Eloy Alfaro Monterey": 2025,
+    "Trabajo en conjunto en el sombrero de paja": 2024
+  },
+  "rechazar": [
+    "Sugerencias ciudadanas receptadas",
+    "Socialización de cambios de domicilio",
+    "Alcantarillado + casa comunal + cancha",
+    "Plan hidrosanitario en Las Marías 1",
+    "Ordenanza para proteger y valorar a diri",
+    "Seguimiento y compromiso a la planificac",
+    "Mesas técnicas del Patronato",
+    "Mayor control de seguridad a personas qu",
+    "Proyecto de siembra para la comunidad",
+    "Generar concursos para descubrir talento",
+    "Mejora de calles y alumbrado público"
+  ]
+}
