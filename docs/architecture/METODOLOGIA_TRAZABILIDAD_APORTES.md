@@ -1,6 +1,6 @@
 # METODOLOGÍA — Trazabilidad de Aportes y Compromisos Ciudadanos (d09)
 
-> **PROPUESTA v0.1 · para revisión de Javo** (Regla 9: el cambio conceptual nace en el canon,
+> **PROPUESTA v0.2 · para revisión de Javo** (Regla 9: el cambio conceptual nace en el canon,
 > no en Python). Sesión 2026-07-03 · asesor + Javo + Claude. Fundamenta la expansión de d09
 > con la sección *Compromisos CPCCS + Aportes Ciudadanos*.
 
@@ -21,7 +21,8 @@ sigue hasta su ejecución real (POA · PAC/SERCOP · presupuesto) y se **cuantif
 ## 3 · Fuente de verdad (canon)
 - **Aportes:** `H10c_RDC_APORTES` — **108 demandas verificadas** (43 en 2023 · 65 en 2024), cada una
   con actor, sector/lugar, eje PDOT, tipo y **link de verificación**. (2025 se estructura después.)
-- **Compromisos CPCCS:** `H24b` (tablero SAT-V, hoy `B7=0` — adquisición de dato pendiente).
+- **Compromisos CPCCS:** `H24b` (tablero SAT-V, hoy `B7=0`). El dato se **extrae de los informes RDC
+  del corpus** (Supabase · `RC-GAD-2023/2024/2025`) — no existe estructurado en otra fuente (Javo 2026-07-03).
 - **Ejecución (la evidencia — decisión Javo 2026-07-03: *ejecución real*, no auto-reporte):**
   - Proyectos POA `H05` (bloque «DETALLE PROYECTOS», col Descripción/Partida/Monto · ~257).
   - Procesos PAC/SERCOP `H05b` (descripción · monto · estado · ~32).
@@ -40,16 +41,24 @@ automático (el aporte es texto libre, sin ID común con la ejecución).
 
 ### Factibilidad probada (experimento 2026-07-03)
 108 aportes × 289 ítems de ejecución (POA+PAC). Match plausible `≥0.5`: **87%**; los vínculos fuertes
-son **correctos** (agua/vías/alcantarillado). **Subestimado**: se cruzó contra POA **2026** por ser lo
-único en el canon; con el POA/PAC de los años correctos mejora. Los scores bajos aíslan honestamente
-las demandas de otra competencia (p.ej. salud) o no atendidas.
+son **correctos** (agua/vías/alcantarillado). **Subestimado**: se cruzó contra POA **2026** — un solo
+año del periodo. Con el POA/PAC de **todos los años del periodo** (ventana §5) el correlato sube y se
+clasifica por `Tiempo_Respuesta`. Los scores bajos aíslan honestamente las demandas de otra competencia
+(p.ej. salud) o no atendidas.
 
 ## 5 · Estructura de la trazabilidad (hoja nueva en el Gold Master)
-Por cada aporte: `Año · Aporte · Sector · Eje_PDOT · Tipo │ Proyecto_POA · Partida · Monto ·
-Proceso_SERCOP · Estado │ Nivel_Atención · Score · Validado_por`.
-- **Nivel_Atención:** `Atendido` · `Parcial` · `Sin correlato (canon actual)` · `Fuera de competencia`.
-- Distinción crítica: **«sin correlato en el canon actual» ≠ «no atendido»** (puede faltar el año de
-  ejecución). Hasta tener los años completos, esos aportes se marcan **«en formación»**.
+Por cada aporte: `Año_Aporte · Aporte · Sector · Eje_PDOT · Tipo │ Proyecto_POA · Año_Ejecución ·
+Partida · Monto · Proceso_SERCOP · Estado │ Nivel_Atención · Tiempo_Respuesta · Score · Validado_por`.
+- **Nivel_Atención:** `Atendido` · `Parcial` · `Sin correlato` · `Fuera de competencia`.
+- **Tiempo_Respuesta** (aporte de Javo 2026-07-03 — **la ventana es el periodo de gobierno completo**,
+  no solo el año siguiente):
+  - ✅ `A tiempo` — atendido en el POA del **año siguiente** (lo legalmente esperable).
+  - 🟡 `Tarde` — atendido **después, dentro del periodo 2023-2027** (cumplió, con demora).
+  - 🔴 `Olvidado` — **no aparece en ningún POA del periodo**.
+  El cruce se hace contra la **unión multi-anual** de POA/PAC/eSIGEF (todos los años del periodo);
+  `Año_Ejecución` registra en qué año se materializó. Distingue *olvido* de *cumplimiento tardío*.
+- Distinción crítica: **«sin correlato en el canon actual» ≠ «olvidado»** — hoy solo está el POA 2026;
+  hasta poblar los años del periodo, los aportes sin match se marcan **«en formación»**, no «olvidado».
 
 ## 6 · Indicadores y visualización (elevar el nivel)
 - **% de aportes con correlato de ejecución**, por **año · eje PDOT · tipo · territorio**.
@@ -73,4 +82,4 @@ Proceso_SERCOP · Estado │ Nivel_Atención · Score · Validado_por`.
 6. Cierre: actualizar `PCD-D09`.
 
 ---
-*Metodología de Trazabilidad de Aportes · Dylus Lab © 2026 · PROPUESTA v0.1 (pendiente aval de Javo).*
+*Metodología de Trazabilidad de Aportes · Dylus Lab © 2026 · PROPUESTA v0.2 (pendiente aval de Javo).*
