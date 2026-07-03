@@ -879,7 +879,7 @@ def _cierre(plan: dict) -> None:
         f'es de <b>alta calidad</b> (vinculado a metas). La <b>atención es preventiva, no correctiva</b>: pasa por '
         f'que la <b>contratación y la ejecución aceleren</b> en el segundo semestre para alcanzar al presupuesto '
         f'antes del cierre del ejercicio, de modo que los compromisos del PDOT no se erosionen en el tránsito de la '
-        f'planificación a la ejecución. Ese seguimiento mes a mes es, precisamente, lo que este cajón permite.</div>'
+        f'planificación a la ejecución. Ese seguimiento mes a mes es, precisamente, el valor de observar la planificación de extremo a extremo, de la meta al gasto.</div>'
         f'<div class="pl-src">Fuente: PDOT · POA · PAC (SERCOP) · presupuesto eSIGEF · corte {corte}.</div>'
         f'</div>',
         unsafe_allow_html=True)
