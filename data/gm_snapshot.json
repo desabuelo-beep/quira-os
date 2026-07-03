@@ -4980,13 +4980,13 @@
         "validar": 0.52
       },
       "por_estado": {
-        "atendido": 45,
-        "sin_correlato": 51
+        "atendido": 49,
+        "sin_correlato": 47
       },
       "por_tiempo": {
-        "tarde": 9,
-        "olvidado": 51,
-        "a_tiempo": 36
+        "tarde": 11,
+        "olvidado": 47,
+        "a_tiempo": 38
       },
       "por_eje": {
         "Sociocultural": {
@@ -4995,15 +4995,15 @@
         },
         "Asentamientos Humanos": {
           "total": 23,
-          "atendidos": 15
+          "atendidos": 17
         },
         "Físico-Ambiental": {
           "total": 30,
-          "atendidos": 11
+          "atendidos": 12
         },
         "Económico Productivo": {
           "total": 8,
-          "atendidos": 5
+          "atendidos": 6
         },
         "Político Institucional": {
           "total": 14,
@@ -5124,13 +5124,13 @@
           "demanda": "Alcantarillado + casa comunal + cancha deportiva",
           "sector": "Estancias Las Palmas",
           "eje": "Asentamientos Humanos",
-          "estado": "sin_correlato",
-          "tiempo": "olvidado",
-          "anio_ejecucion": null,
+          "estado": "atendido",
+          "tiempo": "tarde",
+          "anio_ejecucion": 2025,
           "validado": true,
-          "evidencia": "",
-          "monto": 15000.0,
-          "score": 0.652
+          "evidencia": "Ampliación de redes públicas pluviales · CONSTRUCCIÓN DEL ALCANTARILLADO SANITARIO DE LA CIUDADELA PAOLA 1 Y PAOLA 2 Y E",
+          "monto": 207375.14,
+          "score": 0.528
         },
         {
           "anio_aporte": 2023,
@@ -5163,13 +5163,13 @@
           "demanda": "Mejora de calles y alumbrado público",
           "sector": "Bendición de Dios",
           "eje": "Asentamientos Humanos",
-          "estado": "sin_correlato",
-          "tiempo": "olvidado",
-          "anio_ejecucion": null,
+          "estado": "atendido",
+          "tiempo": "tarde",
+          "anio_ejecucion": 2025,
           "validado": true,
-          "evidencia": "",
-          "monto": 267600.0,
-          "score": 0.825
+          "evidencia": "Recuperación integral de los espacios públicos · CONSTRUCCIÓN DE ESCENARIO CAMERINO EN LA COMUNA TOALLA CHICA DEL CANTÓN",
+          "monto": 1000.0,
+          "score": 0.749
         },
         {
           "anio_aporte": 2023,
@@ -5189,13 +5189,13 @@
           "demanda": "Plan hidrosanitario en Las Marías 1",
           "sector": "Las Marías 1",
           "eje": "Físico-Ambiental",
-          "estado": "sin_correlato",
-          "tiempo": "olvidado",
-          "anio_ejecucion": null,
+          "estado": "atendido",
+          "tiempo": "a_tiempo",
+          "anio_ejecucion": 2024,
           "validado": true,
-          "evidencia": "",
-          "monto": 39349.31,
-          "score": 0.654
+          "evidencia": "Construcción de estación de bombeo y reservorio para la captacion de agua cruda, en el cantón Montecristi",
+          "monto": 1000.0,
+          "score": 0.615
         },
         {
           "anio_aporte": 2023,
@@ -5618,13 +5618,13 @@
           "demanda": "Proyecto de siembra para la comunidad",
           "sector": "Cantón",
           "eje": "Económico Productivo",
-          "estado": "sin_correlato",
-          "tiempo": "olvidado",
-          "anio_ejecucion": null,
+          "estado": "atendido",
+          "tiempo": "a_tiempo",
+          "anio_ejecucion": 2025,
           "validado": true,
-          "evidencia": "",
-          "monto": 62000.0,
-          "score": 0.657
+          "evidencia": "Implementación de huertos órganicos familiares y comunitarios · ADQUISICION DE SEMILLAS, INSUMOS, ACCESORIOS, MATERIALES",
+          "monto": 1250.0,
+          "score": 0.634
         },
         {
           "anio_aporte": 2024,

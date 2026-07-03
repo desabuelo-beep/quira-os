@@ -1,5 +1,5 @@
 {
-  "_meta": "Pre-validación experta asistida por IA — 2026-07-04. Revisión caso por caso de los 96 aportes (H10c) contra sus candidatos de POA 2024-2026. PENDIENTE de ratificación humana (Javo). Match por PREFIJO de la demanda (startswith). Regla: un aporte 'por_validar' (banda 0.52-0.62) que NO esté en 'rescatar' se degrada a 'sin_correlato' — la banda demostró ser ~74% falsos positivos.",
+  "_meta": "Validación experta asistida por IA + RATIFICADA por Javo (2026-07-04). Revisión caso por caso de los 96 aportes (H10c) contra sus candidatos de POA 2024-2026. Match por PREFIJO de la demanda (startswith). Regla: un aporte 'por_validar' (banda 0.52-0.62) que NO esté en 'rescatar' se degrada a 'sin_correlato' — la banda demostró ser ~74% falsos positivos. 'rescatar' admite un año (usa el mejor match del año) o {anio, obra} (usa el mejor match del año cuya descripción contiene el substring 'obra' — para cuando el mejor match del año es un falso positivo pero la obra correcta sí existe).",
   "rescatar": {
     "Mejoramiento vías del arroyo": 2025,
     "Alcantarillado y vías Isla del Sol": 2025,
@@ -10,19 +10,19 @@
     "Capacitaciones bomberiles": 2025,
     "Mejorar capacidad de respuesta ante emergencias": 2025,
     "Arreglo vías Eloy Alfaro Monterey": 2025,
-    "Trabajo en conjunto en el sombrero de paja": 2024
+    "Trabajo en conjunto en el sombrero de paja": 2024,
+    "Plan hidrosanitario en Las Marías 1": {"anio": 2024, "obra": "bombeo"},
+    "Proyecto de siembra para la comunidad": {"anio": 2025, "obra": "huertos"},
+    "Mejora de calles y alumbrado público": {"anio": 2025, "obra": "espacios públicos"},
+    "Alcantarillado + casa comunal + cancha": {"anio": 2025, "obra": "alcantarillado"}
   },
   "rechazar": [
     "Sugerencias ciudadanas receptadas",
     "Socialización de cambios de domicilio",
-    "Alcantarillado + casa comunal + cancha",
-    "Plan hidrosanitario en Las Marías 1",
     "Ordenanza para proteger y valorar a diri",
     "Seguimiento y compromiso a la planificac",
     "Mesas técnicas del Patronato",
     "Mayor control de seguridad a personas qu",
-    "Proyecto de siembra para la comunidad",
-    "Generar concursos para descubrir talento",
-    "Mejora de calles y alumbrado público"
+    "Generar concursos para descubrir talento"
   ]
 }

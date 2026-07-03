@@ -108,11 +108,25 @@ def build() -> dict:
         # ── validación experta (overrides trazables · data/aportes_validacion.json) ──
         validado = False
         dem = ap["demanda"]
-        resc = next((yr for pref, yr in _VALID.get("rescatar", {}).items() if dem.startswith(pref)), None)
+        resc = next((val for pref, val in _VALID.get("rescatar", {}).items() if dem.startswith(pref)), None)
         if resc is not None:                       # falso negativo rescatado → atendido
-            estado, validado, ejec_y = "atendido", True, resc
-            if resc in by_year:
-                best_score, best_desc, best_monto = by_year[resc]
+            estado, validado = "atendido", True
+            if isinstance(resc, dict):             # {anio, obra}: apunta a la obra correcta del POA
+                ejec_y = resc.get("anio")
+                obra = (resc.get("obra") or "").lower()
+                cand = []
+                if ejec_y in P:
+                    sc = A[i] @ P[ejec_y].T
+                    cand = [(float(sc[k]), poa[ejec_y][k]["desc"], poa[ejec_y][k].get("monto", 0.0))
+                            for k in range(len(poa[ejec_y])) if obra in poa[ejec_y][k]["desc"].lower()]
+                if cand:
+                    best_score, best_desc, best_monto = max(cand)
+                elif ejec_y in by_year:
+                    best_score, best_desc, best_monto = by_year[ejec_y]
+            else:                                   # año simple: mejor match del año
+                ejec_y = resc
+                if resc in by_year:
+                    best_score, best_desc, best_monto = by_year[resc]
         elif any(dem.startswith(p) for p in _VALID.get("rechazar", [])):   # falso positivo → sin correlato
             estado, validado = "sin_correlato", True
         elif estado == "por_validar":              # banda 0.52-0.62 no confirmada → sin correlato
