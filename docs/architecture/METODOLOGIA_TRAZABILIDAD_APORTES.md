@@ -24,9 +24,15 @@ sigue hasta su ejecución real (POA · PAC/SERCOP · presupuesto) y se **cuantif
 - **Compromisos CPCCS:** `H24b` (tablero SAT-V, hoy `B7=0`). El dato se **extrae de los informes RDC
   del corpus** (Supabase · `RC-GAD-2023/2024/2025`) — no existe estructurado en otra fuente (Javo 2026-07-03).
 - **Ejecución (la evidencia — decisión Javo 2026-07-03: *ejecución real*, no auto-reporte):**
-  - Proyectos POA `H05` (bloque «DETALLE PROYECTOS», col Descripción/Partida/Monto · ~257).
+  - Proyectos POA `H05` (bloque «DETALLE PROYECTOS», col Descripción/Partida/Monto · ~257 · **2026**).
   - Procesos PAC/SERCOP `H05b` (descripción · monto · estado · ~32).
   - Presupuesto ejecutado eSIGEF `H07`.
+  - **Ejecución multi-anual (2023-2026):** los PDFs oficiales de POA/PAC/Cédulas están en disco
+    (`Holding_Municipal_Montecristi`) y son **texto limpio extraíble** — `pdfplumber.extract_tables`
+    da `actividad · partida · monto · responsable` por año (verificado 2026-07-03).
+  - ⚠️ **NO usar el corpus vectorizado para el cruce de POA:** la vectorización de esos PDFs quedó
+    **corrupta** (OCR fallido — chunks de caracteres sueltos «n n n», «. . 4 7 0»). La fuente de
+    ejecución es el **PDF re-extraído**, no `POA-GAD-20xx` del corpus. (Los informes RDC sí son texto sano.)
 
 ## 4 · El método de cruce (semiautomático · *evaluación experta trazable*)
 Igual que el `IF_n` de fidelidad narrativa: **la máquina propone, el experto valida**. No es un JOIN
