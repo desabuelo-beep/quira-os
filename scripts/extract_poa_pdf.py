@@ -29,13 +29,17 @@ POA_BASE = (
 # Config por año. engine=pdfplumber usa columnas fijas; 2025 va aparte (pymupdf).
 POA_CFG = {
     "2023": {"file": "GAD Montecristi POA 2023.pdf", "engine": "pdfplumber",
-             "desc": 0, "partida": 2, "monto": 3, "hdr": "ACTVIDAD"},
+             "desc_cols": [0], "partida": 2, "monto": 3},
     "2024": {"file": "GAD Montecristi POA 2024.pdf", "engine": "pdfplumber",
-             "desc": 1, "partida": 2, "monto": 3, "hdr": "ACTIVIDAD"},
+             "desc_cols": [1], "partida": 2, "monto": 3},
+    # 2026: tabla de 30 col — descripción rica = proyecto(col9) + actividad(col17)
     "2026": {"file": "GAD Montecristi POA 2026.pdf", "engine": "pdfplumber",
-             "desc": 17, "partida": 16, "monto": 20, "hdr": None},
+             "desc_cols": [9, 17], "partida": 16, "monto": 20},
     "2025": {"file": "GAD Monteristi POA 2025.pdf", "engine": "pymupdf"},
 }
+
+_HDR_TOKENS = ("ACTIVIDAD", "ACTVIDAD", "DESCRIPCIÓN", "DESCRIPCION", "PROYECTO",
+               "PARTIDA", "MONTO", "NO. DE", "RESPONSABLE", "META")
 
 
 def _clean(s) -> str:
@@ -67,19 +71,20 @@ def _monto(s) -> float:
 
 def _extract_pdfplumber(path: str, cfg: dict) -> list[dict]:
     import pdfplumber
+    cols = cfg["desc_cols"]
     rows: list[dict] = []
     with pdfplumber.open(path) as pdf:
         for pg in pdf.pages:
             for tab in pg.extract_tables():
                 for r in tab:
-                    if not r or len(r) <= cfg["desc"]:
+                    if not r or len(r) <= max(cols):
                         continue
-                    desc = _clean(r[cfg["desc"]])
-                    # saltar encabezados / vacíos
+                    parts = [_clean(r[ci]) for ci in cols if ci < len(r) and _clean(r[ci])]
+                    desc = " · ".join(dict.fromkeys(parts))   # une columnas, sin repetir
                     if not desc or len(desc) < 6:
                         continue
                     up = desc.upper()
-                    if up in ("ACTIVIDAD", "ACTVIDAD", "DESCRIPCIÓN DE LA ACTIVIDAD") or "NO. DE" in up:
+                    if any(up == t or up.startswith(t + " ") or up == t + ":" for t in _HDR_TOKENS):
                         continue
                     monto = _monto(r[cfg["monto"]]) if len(r) > cfg["monto"] else 0.0
                     partida = _clean(r[cfg["partida"]]) if cfg.get("partida") is not None and len(r) > cfg["partida"] else ""
@@ -89,23 +94,32 @@ def _extract_pdfplumber(path: str, cfg: dict) -> list[dict]:
 
 def _extract_pymupdf_2025(path: str) -> list[dict]:
     """POA 2025: pdfplumber sale scrambled y find_tables cuelga (41 col × 12 pág).
-    get_text() sí sale legible → se toman las líneas descriptivas como candidatos
-    de ejecución (frases con verbo/objeto). Sin monto por-fila (se refina luego).
+    get_text('blocks') sí sale legible → se toman los bloques descriptivos como
+    candidatos de ejecución, descartando objetivos ODS ('9. Propender…') y ejes
+    repetidos (dedup). Sin monto por-fila (se refina luego).
     """
     import fitz
+    STOP = ("EJE", "OBJETIVO", "SISTEMA", "META ", "CRONOGRAMA", "PLAN OPERATIVO",
+            "GOBIERNO", "INSTITUCIONAL CODIGO", "TRIMESTR", "PORCENTAJE")
     rows: list[dict] = []
     seen: set[str] = set()
     doc = fitz.open(path)
     for pg in doc:
         for line in pg.get_text().split("\n"):
-            line = _clean(line)
-            letras = sum(c.isalpha() for c in line)
-            if len(line) >= 40 and letras >= 25 and len(line.split()) >= 6:
-                low = line.lower()
-                if low in seen:
-                    continue
-                seen.add(low)
-                rows.append({"desc": line, "partida": "", "monto": 0.0})
+            t = _clean(line)
+            letras = sum(c.isalpha() for c in t)
+            if len(t) < 40 or letras < 28 or len(t.split()) < 6:
+                continue
+            if re.match(r"^\d+\.\s", t):        # objetivo ODS numerado
+                continue
+            up = t.upper()
+            if any(up.startswith(s) for s in STOP):
+                continue
+            low = t.lower()
+            if low in seen:
+                continue
+            seen.add(low)
+            rows.append({"desc": t, "partida": "", "monto": 0.0})
     return rows
 
 
