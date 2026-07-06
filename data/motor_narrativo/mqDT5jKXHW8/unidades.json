@@ -1,0 +1,155 @@
+{
+  "video_id": "mqDT5jKXHW8",
+  "modelo": "claude-haiku-4-5-20251001",
+  "n_chunks": 5,
+  "n_unidades": 13,
+  "tokens": {
+    "in": 9459,
+    "out": 3376
+  },
+  "unidades": [
+    {
+      "t": 872,
+      "texto": "El Plan Bicentenario proporciona una hoja de ruta para los próximos 50 años con visión de desarrollo urbano rural sostenible e innovador",
+      "tipo": "compromiso",
+      "obra": "Plan Bicentenario",
+      "objetivo": "guiar el desarrollo del cantón Montecristi en los próximos 50 años",
+      "causalidad": "respuesta a desafíos y transformación territorial",
+      "magnitud": "50 años",
+      "eje": "institucional",
+      "_chunk": 1
+    },
+    {
+      "t": 954,
+      "texto": "Se avanza en agua potable, infraestructura digna, servicios digitales y espacios para el arte",
+      "tipo": "logro",
+      "obra": "agua potable, infraestructura, servicios digitales, espacios culturales",
+      "objetivo": "mejorar servicios básicos y calidad de vida",
+      "causalidad": "parte de la rendición de cuentas 2024",
+      "magnitud": "",
+      "eje": "agua",
+      "_chunk": 1
+    },
+    {
+      "t": 944,
+      "texto": "Se rinde cuentas de obras en agua potable, infraestructura digna, servicios digitales, espacios para arte, salud y deporte",
+      "tipo": "logro",
+      "obra": "agua potable, infraestructura, servicios digitales, espacios para arte, salud y deporte",
+      "objetivo": "desarrollo urbano rural sostenible",
+      "causalidad": "proyectar a Montecristi como ciudad para vivir, invertir y visitar",
+      "magnitud": "",
+      "eje": "agua|vías|salud|cultura|institucional",
+      "_chunk": 2
+    },
+    {
+      "t": 1073,
+      "texto": "Se realizó taller de capacitación virtual del Consejo de Participación Ciudadana y Control Social el 3 de abril de 2025",
+      "tipo": "logro",
+      "obra": "taller de capacitación virtual",
+      "objetivo": "participación ciudadana en rendición de cuentas",
+      "causalidad": "proceso de rendición de cuentas articulado",
+      "magnitud": "",
+      "eje": "institucional",
+      "_chunk": 2
+    },
+    {
+      "t": 1086,
+      "texto": "Se reunió el 14 de abril de 2025 para elaborar hoja de ruta de rendición de cuentas del año 2024",
+      "tipo": "logro",
+      "obra": "reunión para elaboración de hoja de ruta",
+      "objetivo": "planificar proceso de rendición de cuentas 2024",
+      "causalidad": "dar cumplimiento al rol protagónico de ciudadanía",
+      "magnitud": "",
+      "eje": "institucional",
+      "_chunk": 2
+    },
+    {
+      "t": 1113,
+      "texto": "Se realizaron actividades coordinadas los días 28, 29 y 30 de abril para consulta ciudadana sobre temas de rendición de cuentas",
+      "tipo": "logro",
+      "obra": "mesa de trabajo y consulta ciudadana",
+      "objetivo": "levantar temas y preguntas sobre gestión municipal",
+      "causalidad": "organización según plan de desarrollo y ordenamiento territorial",
+      "magnitud": "",
+      "eje": "institucional",
+      "_chunk": 2
+    },
+    {
+      "t": 1153,
+      "texto": "El 21 de abril de 2025 se recibió documentación: PDOT, plan de campaña, plan operativo anual 2024, presupuesto participativo y listado de empresas públicas",
+      "tipo": "logro",
+      "obra": "recepción de documentación oficial",
+      "objetivo": "evaluar gestión del GAC Montecristi",
+      "causalidad": "solicitud previa de mapeo de actores y hoja de ruta",
+      "magnitud": "",
+      "eje": "institucional",
+      "_chunk": 2
+    },
+    {
+      "t": 1206,
+      "texto": "Se conformó equipo técnico y dos subcomisiones (MICA y ciudadanía) el 15 de abril para evaluar rendición de cuentas y organizar evento público",
+      "tipo": "logro",
+      "obra": "conformación de comisiones técnicas y ciudadanas",
+      "objetivo": "evaluar gestión 2024 y organizar evento de rendición de cuentas",
+      "causalidad": "proceso participativo de control social",
+      "magnitud": "",
+      "eje": "institucional",
+      "_chunk": 2
+    },
+    {
+      "t": 1769,
+      "texto": "El 20 de junio del 2025 se publicó y realizó la difusión del informe de rendición de cuentas del año 2024",
+      "tipo": "logro",
+      "obra": "Informe de rendición de cuentas 2024",
+      "objetivo": "Difusión de información de gestión pública",
+      "causalidad": "",
+      "magnitud": "",
+      "eje": "institucional",
+      "_chunk": 4
+    },
+    {
+      "t": 1782,
+      "texto": "El 20 de junio se entregó al alcalde el informe de rendición de cuentas y demanda ciudadana",
+      "tipo": "logro",
+      "obra": "Entrega de informe de rendición de cuentas",
+      "objetivo": "Cumplimiento de obligación legal de transparencia",
+      "causalidad": "",
+      "magnitud": "",
+      "eje": "institucional",
+      "_chunk": 4
+    },
+    {
+      "t": 1797,
+      "texto": "El 23 de junio se entregó el informe de rendición de cuentas y se iniciaron invitaciones a concejales, autoridades civiles y representantes de instituciones educativas",
+      "tipo": "logro",
+      "obra": "Convocatoria a deliberación de rendición de cuentas",
+      "objetivo": "Participación ciudadana en evaluación de gestión",
+      "causalidad": "",
+      "magnitud": "",
+      "eje": "institucional",
+      "_chunk": 4
+    },
+    {
+      "t": 2039,
+      "texto": "Montecristi heredó una deuda de más de 6 millones de dólares al iniciar 2024",
+      "tipo": "cifra",
+      "obra": "Deuda municipal heredada",
+      "objetivo": "",
+      "causalidad": "Situación inicial que enfrentó la administración",
+      "magnitud": "6 millones de dólares",
+      "eje": "economía",
+      "_chunk": 4
+    },
+    {
+      "t": 2026,
+      "texto": "En 2024, Montecristi enfrentó emergencias climáticas y un municipio al borde de la inoperatividad económica",
+      "tipo": "logro",
+      "obra": "Respuesta a emergencias climáticas",
+      "objetivo": "Mantener operatividad municipal ante crisis",
+      "causalidad": "Emergencias climáticas y deuda heredada",
+      "magnitud": "",
+      "eje": "ambiente",
+      "_chunk": 4
+    }
+  ]
+}
