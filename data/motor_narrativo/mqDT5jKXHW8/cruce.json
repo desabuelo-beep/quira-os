@@ -1,0 +1,1777 @@
+{
+  "video_id": "mqDT5jKXHW8",
+  "n_unidades": 98,
+  "umbral": 0.45,
+  "por_relacion": {
+    "coherente": 69,
+    "promesa_sin_ejecucion": 19,
+    "obra_sin_promesa": 7,
+    "solo_narrativa": 3
+  },
+  "detalle": [
+    {
+      "t": 872,
+      "texto": "El Plan Bicentenario proporciona una hoja de ruta para los próximos 50 años con visión de desarrollo urbano rural sostenible e innovador",
+      "tipo": "compromiso",
+      "eje": "institucional",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.636
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.572,
+        "evidencia": "Desarrollo e implementación de Planes Estratégicos Institucionales · Servicios Profesionales: Implementacion d",
+        "anio": 2025,
+        "monto": 14400.0
+      }
+    },
+    {
+      "t": 859,
+      "texto": "Se inicia proceso de transformación del cantón con planificación, orden y justicia territorial",
+      "tipo": "compromiso",
+      "eje": "institucional",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.592
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.51,
+        "evidencia": "Eventos para Fortalecimiento para la reducción de indicadores territoriales del cantón Montecristi relacionado",
+        "anio": 2024,
+        "monto": 10000.0
+      }
+    },
+    {
+      "t": 954,
+      "texto": "Avanza en agua potable, infraestructura digna, servicios digitales y espacios para el arte",
+      "tipo": "logro",
+      "eje": "agua",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.614
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.673,
+        "evidencia": "Proyecto de Estrategias Integrales de Comunicación y Percepción: Fortaleciendo la Imagen y Vinculación Institu",
+        "anio": 2025,
+        "monto": 73200.0
+      }
+    },
+    {
+      "t": 944,
+      "texto": "Se rinde cuentas de obras en agua potable, infraestructura digna, servicios digitales, espacios para el arte, la salud y el deporte",
+      "tipo": "logro",
+      "eje": "agua|infraestructura|cultura|salud|otro",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.654
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.681,
+        "evidencia": "Gestión para la nueva infraestructura de · Agua Potable",
+        "anio": 2026,
+        "monto": 10881006.41
+      }
+    },
+    {
+      "t": 1000,
+      "texto": "Proceso de rendición de cuentas inicia de forma articulada entre ciudadanía y GAP Montecristi en enero de 2024",
+      "tipo": "compromiso",
+      "eje": "institucional",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.581
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.565,
+        "evidencia": "Fortalecimiento para la reducción de indicadores territoriales del cantón Montecristi relacionados a las 5 Age",
+        "anio": 2025,
+        "monto": 4250.0
+      }
+    },
+    {
+      "t": 1086,
+      "texto": "Taller de capacitación organizado de manera virtual con Consejo de Participación Ciudadana realizado el 3 de abril de 2025",
+      "tipo": "logro",
+      "eje": "institucional",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.583
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.666,
+        "evidencia": "Promoción de la formación, participación · A Entidades Descentralizadas y Autónomas",
+        "anio": 2026,
+        "monto": 30000.0
+      }
+    },
+    {
+      "t": 1086,
+      "texto": "Reunión en auditorio el 14 de abril de 2025 para elaborar hoja de ruta del proceso de rendición de cuenta del año 2024",
+      "tipo": "logro",
+      "eje": "institucional",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.582
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.505,
+        "evidencia": "Proyecto de Estrategias Integrales de Comunicación y Percepción: Fortaleciendo la Imagen y Vinculación Institu",
+        "anio": 2025,
+        "monto": 10000.0
+      }
+    },
+    {
+      "t": 1139,
+      "texto": "Actividades de organización de mesa de trabajo coordinadas para los días 28, 29 y 30 de abril de 2025",
+      "tipo": "logro",
+      "eje": "institucional",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.593
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.536,
+        "evidencia": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE · Equipos, Sistemas y Paquetes Informáticos",
+        "anio": 2026,
+        "monto": 15000.0
+      }
+    },
+    {
+      "t": 1167,
+      "texto": "Se solicitó documentación al GAC Montecristi: PDOT vigente, plan de campaña, plan operativo anual 2024, presupuesto participativo y listado de empresas públicas",
+      "tipo": "logro",
+      "eje": "institucional",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.669
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.594,
+        "evidencia": "Proyecto de Estrategias Integrales de Comunicación y Percepción: Fortaleciendo la Imagen y Vinculación Institu",
+        "anio": 2025,
+        "monto": 10000.0
+      }
+    },
+    {
+      "t": 1180,
+      "texto": "Se recibió documentación completa del GAC Montecristi el 21 de abril de 2025",
+      "tipo": "logro",
+      "eje": "institucional",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.543
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.535,
+        "evidencia": "Proyecto de Estrategias Integrales de Comunicación y Percepción: Fortaleciendo la Imagen y Vinculación Institu",
+        "anio": 2025,
+        "monto": 10000.0
+      }
+    },
+    {
+      "t": 1206,
+      "texto": "Se conformó equipo técnico y dos subcomisiones el 15 de abril para evaluar proceso y organizar evento de rendición pública",
+      "tipo": "logro",
+      "eje": "institucional",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.551
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.478,
+        "evidencia": "Fortalecimiento del Sistema de Información Territorial Municipal · Contratación equipo tecnico especializado e",
+        "anio": 2025,
+        "monto": 99970.0
+      }
+    },
+    {
+      "t": 1307,
+      "texto": "Rendición de cuenta para el Consejo de Participación Ciudadana presentada a través de plataforma virtual",
+      "tipo": "compromiso",
+      "eje": "institucional",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.602
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.587,
+        "evidencia": "Proyecto de Estrategias Integrales de Comunicación y Percepción: Fortaleciendo la Imagen y Vinculación Institu",
+        "anio": 2025,
+        "monto": 150900.0
+      }
+    },
+    {
+      "t": 1320,
+      "texto": "Redactar informe de rendición de cuenta para la ciudadanía en forma conjunta con la Asamblea Ciudadana",
+      "tipo": "compromiso",
+      "eje": "institucional",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.601
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.602,
+        "evidencia": "Fortalecimiento para la reducción de indicadores · Capacitación para la Ciudadanía en General",
+        "anio": 2026,
+        "monto": 1500.0
+      }
+    },
+    {
+      "t": 1389,
+      "texto": "Se realizaron mesas de trabajo los días 28, 29 y 30 de abril en comunidades y sectores del cantón Montecriste",
+      "tipo": "logro",
+      "eje": "institucional",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.473
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.512,
+        "evidencia": "Promoción de la formación, participación ciudadana y liderazgo en el cantón Montecristi · Contratación de serv",
+        "anio": 2025,
+        "monto": 5600.0
+      }
+    },
+    {
+      "t": 1403,
+      "texto": "El 5 de mayo de 2024 se enviaron formalmente preguntas al GAC Montecriste y instituciones adscritas",
+      "tipo": "logro",
+      "eje": "institucional",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.47
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.487,
+        "evidencia": "Proyecto de Estrategias Integrales de Comunicación y Percepción: Fortaleciendo la Imagen y Vinculación Institu",
+        "anio": 2025,
+        "monto": 10000.0
+      }
+    },
+    {
+      "t": 1523,
+      "texto": "El 5 de junio de 2025 se reunió comisión 1 para liberar evaluación y gestión institucional, revisión de respuestas a demandas ciudadanas",
+      "tipo": "logro",
+      "eje": "institucional",
+      "relacion": "promesa_sin_ejecucion",
+      "promesa": {
+        "correlato": true,
+        "score": 0.574
+      },
+      "plan": {
+        "correlato": false,
+        "score": 0.449,
+        "evidencia": "",
+        "anio": null,
+        "monto": 0.0
+      }
+    },
+    {
+      "t": 1549,
+      "texto": "El 9 de junio de 2025 se reunió comisión 2 para deliberación pública del informe de rendición de cuenta del año 2024",
+      "tipo": "logro",
+      "eje": "institucional",
+      "relacion": "promesa_sin_ejecucion",
+      "promesa": {
+        "correlato": true,
+        "score": 0.502
+      },
+      "plan": {
+        "correlato": false,
+        "score": 0.41,
+        "evidencia": "",
+        "anio": null,
+        "monto": 0.0
+      }
+    },
+    {
+      "t": 1587,
+      "texto": "El 20 de junio de 2025 se coordinó sesión en sala de reuniones de la alcaldía para continuar con actividades de rendición de cuenta del año 2024",
+      "tipo": "logro",
+      "eje": "institucional",
+      "relacion": "promesa_sin_ejecucion",
+      "promesa": {
+        "correlato": true,
+        "score": 0.532
+      },
+      "plan": {
+        "correlato": false,
+        "score": 0.428,
+        "evidencia": "",
+        "anio": null,
+        "monto": 0.0
+      }
+    },
+    {
+      "t": 1613,
+      "texto": "El 20 de junio de 2025 se reunieron comisión 1 y 2 para revisar formulario de plan de acción y deliberación con hoja de ruta de rendición de cuenta 2024",
+      "tipo": "logro",
+      "eje": "institucional",
+      "relacion": "promesa_sin_ejecucion",
+      "promesa": {
+        "correlato": true,
+        "score": 0.563
+      },
+      "plan": {
+        "correlato": false,
+        "score": 0.445,
+        "evidencia": "",
+        "anio": null,
+        "monto": 0.0
+      }
+    },
+    {
+      "t": 1769,
+      "texto": "El 20 de junio del 2025 se publicó y se realizó la difusión del informe de rendición de cuentas del año 2024",
+      "tipo": "logro",
+      "eje": "institucional",
+      "relacion": "promesa_sin_ejecucion",
+      "promesa": {
+        "correlato": true,
+        "score": 0.486
+      },
+      "plan": {
+        "correlato": false,
+        "score": 0.444,
+        "evidencia": "",
+        "anio": null,
+        "monto": 0.0
+      }
+    },
+    {
+      "t": 1782,
+      "texto": "El 20 de junio se entregó al alcalde el informe de rendición de cuentas y demanda ciudadana",
+      "tipo": "logro",
+      "eje": "institucional",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.512
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.486,
+        "evidencia": "Optimización y Modernización de la Gestión de Recursos Administrativos Municipales · “Contratación del servici",
+        "anio": 2025,
+        "monto": 4000.0
+      }
+    },
+    {
+      "t": 1797,
+      "texto": "El 23 de junio se entregó el informe de rendición de cuentas y se iniciaron entregas de invitaciones a concejales, autoridades civiles, representantes de instituciones educativas y presidentes de Consejos Barriales",
+      "tipo": "logro",
+      "eje": "institucional",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.522
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.506,
+        "evidencia": "Desarrollo e implementación de Planes · Honorarios por Contratos Civiles de Servicios",
+        "anio": 2026,
+        "monto": 14400.0
+      }
+    },
+    {
+      "t": 2039,
+      "texto": "Montecristi inició el 2024 enfrentando una deuda heredada de más de 6 millones de dólares y un municipio al borde de la inoperatividad económica",
+      "tipo": "cifra",
+      "eje": "economía",
+      "relacion": "promesa_sin_ejecucion",
+      "promesa": {
+        "correlato": true,
+        "score": 0.521
+      },
+      "plan": {
+        "correlato": false,
+        "score": 0.433,
+        "evidencia": "",
+        "anio": null,
+        "monto": 0.0
+      }
+    },
+    {
+      "t": 2419,
+      "texto": "En 2022 se recaudaron 3.7 millones de dólares en ingresos propios",
+      "tipo": "cifra",
+      "eje": "economía",
+      "relacion": "promesa_sin_ejecucion",
+      "promesa": {
+        "correlato": true,
+        "score": 0.554
+      },
+      "plan": {
+        "correlato": false,
+        "score": 0.402,
+        "evidencia": "",
+        "anio": null,
+        "monto": 0.0
+      }
+    },
+    {
+      "t": 2444,
+      "texto": "En 2024 se incrementaron ingresos propios a 6.2 millones de dólares",
+      "tipo": "logro",
+      "eje": "economía",
+      "relacion": "promesa_sin_ejecucion",
+      "promesa": {
+        "correlato": true,
+        "score": 0.525
+      },
+      "plan": {
+        "correlato": false,
+        "score": 0.373,
+        "evidencia": "",
+        "anio": null,
+        "monto": 0.0
+      }
+    },
+    {
+      "t": 2459,
+      "texto": "En 2025 se proyecta duplicar la recaudación con relación al año 2022",
+      "tipo": "promesa",
+      "eje": "economía",
+      "relacion": "promesa_sin_ejecucion",
+      "promesa": {
+        "correlato": true,
+        "score": 0.509
+      },
+      "plan": {
+        "correlato": false,
+        "score": 0.369,
+        "evidencia": "",
+        "anio": null,
+        "monto": 0.0
+      }
+    },
+    {
+      "t": 2536,
+      "texto": "En 2022 los ingresos por modelo de equidad territorial fueron 10.5 millones de dólares",
+      "tipo": "cifra",
+      "eje": "economía",
+      "relacion": "promesa_sin_ejecucion",
+      "promesa": {
+        "correlato": true,
+        "score": 0.545
+      },
+      "plan": {
+        "correlato": false,
+        "score": 0.369,
+        "evidencia": "",
+        "anio": null,
+        "monto": 0.0
+      }
+    },
+    {
+      "t": 2549,
+      "texto": "En 2024 los ingresos por equidad territorial bajaron a 7.9 millones de dólares",
+      "tipo": "cifra",
+      "eje": "economía",
+      "relacion": "promesa_sin_ejecucion",
+      "promesa": {
+        "correlato": true,
+        "score": 0.522
+      },
+      "plan": {
+        "correlato": false,
+        "score": 0.331,
+        "evidencia": "",
+        "anio": null,
+        "monto": 0.0
+      }
+    },
+    {
+      "t": 2605,
+      "texto": "En 2019 la ejecución presupuestaria fue del 47%",
+      "tipo": "cifra",
+      "eje": "institucional",
+      "relacion": "promesa_sin_ejecucion",
+      "promesa": {
+        "correlato": true,
+        "score": 0.499
+      },
+      "plan": {
+        "correlato": false,
+        "score": 0.349,
+        "evidencia": "",
+        "anio": null,
+        "monto": 0.0
+      }
+    },
+    {
+      "t": 2618,
+      "texto": "En 2024 se mejoró la ejecución presupuestaria al 84%",
+      "tipo": "logro",
+      "eje": "institucional",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.534
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.495,
+        "evidencia": "Optimización y Modernización de la Gestión de · De Cuentas por Pagar",
+        "anio": 2026,
+        "monto": 1628375.33
+      }
+    },
+    {
+      "t": 2722,
+      "texto": "En 2024 se alcanzó ejecución de ingresos del 99.79%",
+      "tipo": "logro",
+      "eje": "economía",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.626
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.473,
+        "evidencia": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE · Tasas Generales, Impuestos, Contribuciiones,",
+        "anio": 2026,
+        "monto": 10000.0
+      }
+    },
+    {
+      "t": 2735,
+      "texto": "En 2024 se alcanzó ejecución de egresos del 84.32%",
+      "tipo": "logro",
+      "eje": "institucional",
+      "relacion": "promesa_sin_ejecucion",
+      "promesa": {
+        "correlato": true,
+        "score": 0.521
+      },
+      "plan": {
+        "correlato": false,
+        "score": 0.415,
+        "evidencia": "",
+        "anio": null,
+        "monto": 0.0
+      }
+    },
+    {
+      "t": 2681,
+      "texto": "La ejecución presupuestaria de 2024 permitió elevar la asignación de equidad territorial para 2025",
+      "tipo": "promesa",
+      "eje": "economía",
+      "relacion": "promesa_sin_ejecucion",
+      "promesa": {
+        "correlato": true,
+        "score": 0.546
+      },
+      "plan": {
+        "correlato": false,
+        "score": 0.439,
+        "evidencia": "",
+        "anio": null,
+        "monto": 0.0
+      }
+    },
+    {
+      "t": 2892,
+      "texto": "Programa Kuna Emprendedores impartió 47 cursos y benefició a 1164 personas",
+      "tipo": "logro",
+      "eje": "economía",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.468
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.475,
+        "evidencia": "Contratación de activaciones, btl, difusión de educación vial masiva",
+        "anio": 2024,
+        "monto": 5000.0
+      }
+    },
+    {
+      "t": 2931,
+      "texto": "Deuda heredada de aproximadamente 20 millones de dólares reducida en 9 millones (5%)",
+      "tipo": "logro",
+      "eje": "institucional",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.529
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.525,
+        "evidencia": "Deuda de agua potable",
+        "anio": 2024,
+        "monto": 651399.24
+      }
+    },
+    {
+      "t": 2987,
+      "texto": "Pagó deuda actual con EPAN (empresa de aguas de Manta) y llegó a nuevo acuerdo para resolver limitaciones de agua en barrios entre Manta y Monte Cristi",
+      "tipo": "logro",
+      "eje": "agua",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.486
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.637,
+        "evidencia": "Deuda de agua potable",
+        "anio": 2024,
+        "monto": 651399.24
+      }
+    },
+    {
+      "t": 3080,
+      "texto": "Duplicó ingresos con relación al año 2022",
+      "tipo": "logro",
+      "eje": "institucional",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.61
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.455,
+        "evidencia": "Remuneraciones y beneficios de ley",
+        "anio": 2024,
+        "monto": 152553.7
+      }
+    },
+    {
+      "t": 3140,
+      "texto": "Convenio con Universidad Laica Leo Alfaro de Manaví para impartir cursos de gastronomía navideña, primeros auxilios, electricidad básica y agricultura",
+      "tipo": "compromiso",
+      "eje": "educación",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.492
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.589,
+        "evidencia": "Promoción de la formación, participación · Alimentos y Bebidas",
+        "anio": 2026,
+        "monto": 6000.0
+      }
+    },
+    {
+      "t": 3144,
+      "texto": "27 cursos impartidos en gastronomía navideña, primeros auxilios, electricidad básica y agricultura con la Universidad Laica de Manta",
+      "tipo": "logro",
+      "eje": "cultura",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.484
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.602,
+        "evidencia": "Promoción de la formación, participación · Alimentos y Bebidas",
+        "anio": 2026,
+        "monto": 6000.0
+      }
+    },
+    {
+      "t": 3156,
+      "texto": "856 beneficiarios capacitados con la Universidad Laica de Manta",
+      "tipo": "cifra",
+      "eje": "cultura",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.472
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.458,
+        "evidencia": "SERVICIOS PROFESIONALES PARA EL FORTALECIMIENTO TECNICO DE LA DIRECCIÓN DE OBRAS PÚBLICAS DEL CANTÓN MONTECRIS",
+        "anio": 2025,
+        "monto": 95000.0
+      }
+    },
+    {
+      "t": 3182,
+      "texto": "300 jóvenes capacitados en programas con Iglesia Arco Iris",
+      "tipo": "logro",
+      "eje": "cultura",
+      "relacion": "obra_sin_promesa",
+      "promesa": {
+        "correlato": false,
+        "score": 0.448
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.459,
+        "evidencia": "Becas Como Subsidio Para Cursos Con Acreditación",
+        "anio": 2024,
+        "monto": 18000.0
+      }
+    },
+    {
+      "t": 3222,
+      "texto": "Rescate y readecuación del Instituto Artesanal Aníbal Palacios",
+      "tipo": "logro",
+      "eje": "educación",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.597
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.635,
+        "evidencia": "Denominación Origen Artesanos · Menaje y Accesorios Descartable",
+        "anio": 2026,
+        "monto": 3000.0
+      }
+    },
+    {
+      "t": 3330,
+      "texto": "Inversión de 20,300 dólares para readecuación y mantenimiento de Unidad Educativa Flavio Palacios",
+      "tipo": "logro",
+      "eje": "educación",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.538
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.606,
+        "evidencia": "Realizar Trabajos De Readecuación A Los Infocentros Y Centros De Educación",
+        "anio": 2024,
+        "monto": 10000.0
+      }
+    },
+    {
+      "t": 3372,
+      "texto": "19 clubes de jóvenes conformados en comunidades rurales y urbanas",
+      "tipo": "logro",
+      "eje": "cultura",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.568
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.537,
+        "evidencia": "Proyecto Integral de Salud y Bienestar Juvenil · “COMPRA DE INSTRUMENTAL MÉDICO QUIRÚRGICO PARA LOS DIFERENTES",
+        "anio": 2025,
+        "monto": 9100.0
+      }
+    },
+    {
+      "t": 3480,
+      "texto": "Convenio de becas educativas llegando a 19 unidades educativas y 3,000 jóvenes anuales",
+      "tipo": "compromiso",
+      "eje": "educación",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.66
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.681,
+        "evidencia": "Realización de eventos públicos de educación vial",
+        "anio": 2024,
+        "monto": 2000.0
+      }
+    },
+    {
+      "t": 3480,
+      "texto": "Se suscribió un convenio con la administración anterior que permitió llegar a 19 unidades educativas beneficiando 3,000 jóvenes anuales",
+      "tipo": "logro",
+      "eje": "educación",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.615
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.486,
+        "evidencia": "Contratación de activaciones, btl, difusión de educación vial masiva",
+        "anio": 2024,
+        "monto": 5000.0
+      }
+    },
+    {
+      "t": 3533,
+      "texto": "300 personas capacitadas en clubes de salud para beneficiar a 3,000 personas con inversión de $9,100",
+      "tipo": "logro",
+      "eje": "salud",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.557
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.48,
+        "evidencia": "Compra De Instrumental Médico Quirúrgico Para Los Diferentes Clubes De Salud",
+        "anio": 2024,
+        "monto": 10000.0
+      }
+    },
+    {
+      "t": 3548,
+      "texto": "200 personas capacitadas en educación financiera a través del programa Cuna de Emprendedores con convenio de B Ecuador",
+      "tipo": "logro",
+      "eje": "economía",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.638
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.561,
+        "evidencia": "Formación y fortalecimiento del Talento Humano · OCASIONALES FONDO DE RESERVA210 · Fondo de Reserva",
+        "anio": 2025,
+        "monto": 5763.44
+      }
+    },
+    {
+      "t": 3600,
+      "texto": "Departamento de Acción Social benefició a 24,686 personas con inversión aproximada de $27,100",
+      "tipo": "cifra",
+      "eje": "social",
+      "relacion": "promesa_sin_ejecucion",
+      "promesa": {
+        "correlato": true,
+        "score": 0.493
+      },
+      "plan": {
+        "correlato": false,
+        "score": 0.407,
+        "evidencia": "",
+        "anio": null,
+        "monto": 0.0
+      }
+    },
+    {
+      "t": 3668,
+      "texto": "En 2024 se realizaron 94 brigadas médicas con atención de 15,587 personas y entrega de 100 ayudas técnicas",
+      "tipo": "logro",
+      "eje": "salud",
+      "relacion": "promesa_sin_ejecucion",
+      "promesa": {
+        "correlato": true,
+        "score": 0.505
+      },
+      "plan": {
+        "correlato": false,
+        "score": 0.333,
+        "evidencia": "",
+        "anio": null,
+        "monto": 0.0
+      }
+    },
+    {
+      "t": 3680,
+      "texto": "Se realizó estudio para remodelación de emergencia del hospital; se está iniciando ejecución en 2024",
+      "tipo": "compromiso",
+      "eje": "salud",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.482
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.491,
+        "evidencia": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE · Vehículos (Servicios para Mantenimiento y Reparación)",
+        "anio": 2026,
+        "monto": 20000.0
+      }
+    },
+    {
+      "t": 3694,
+      "texto": "Centro diario de Buen Vivir ampliará servicio a 24/7 con inversión de $61,240 y proceso de contratación en ejecución",
+      "tipo": "promesa",
+      "eje": "salud",
+      "relacion": "obra_sin_promesa",
+      "promesa": {
+        "correlato": false,
+        "score": 0.414
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.484,
+        "evidencia": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE · Servicios Técnicos Especializados",
+        "anio": 2026,
+        "monto": 5000.0
+      }
+    },
+    {
+      "t": 3747,
+      "texto": "Proyecto Alas de Libertad de Fundación FASE benefició a más de 1,069 personas en 2024 sin costo para el municipio",
+      "tipo": "logro",
+      "eje": "social",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.572
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.506,
+        "evidencia": "Manejo sustentable de los recursos de áridos · Honorarios por Contratos Civiles de Servicios",
+        "anio": 2026,
+        "monto": 14400.0
+      }
+    },
+    {
+      "t": 3859,
+      "texto": "Se estableció convenio entre el Ministerio de Constitución Económica Social (MES) y el municipio de Montecristi que no existía antes",
+      "tipo": "logro",
+      "eje": "institucional",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.658
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.51,
+        "evidencia": "Desarrollo del Bienestar Integral para Montecristi · A Entidades Descentralizadas y Autónomas",
+        "anio": 2026,
+        "monto": 932000.0
+      }
+    },
+    {
+      "t": 3911,
+      "texto": "Se ha reducido la deuda municipal con el IES en 6.2 millones de dólares; la deuda total es de aproximadamente 20 millones",
+      "tipo": "cifra",
+      "eje": "economía",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.473
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.51,
+        "evidencia": "Deuda de agua potable",
+        "anio": 2024,
+        "monto": 651399.24
+      }
+    },
+    {
+      "t": 3965,
+      "texto": "Se operan 8 CDIs (Centros de Desarrollo Infantil) para beneficiar a niños en situación de vulnerabilidad",
+      "tipo": "logro",
+      "eje": "salud",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.62
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.547,
+        "evidencia": "Proyecto Integral de Salud y Bienestar Juvenil · “ADQUISION DE SOUVENIRS PARA LOS DIFERENTES PROYECTOS QUE LLE",
+        "anio": 2025,
+        "monto": 3000.0
+      }
+    },
+    {
+      "t": 3978,
+      "texto": "Se atienden 306 niñas y niños en situación de vulnerabilidad mediante CDIs y 190 adultos mayores con atención domiciliaria",
+      "tipo": "cifra",
+      "eje": "salud",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.611
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.508,
+        "evidencia": "Proyecto Integral de Salud y Bienestar Juvenil · “ADQUISION DE SOUVENIRS PARA LOS DIFERENTES PROYECTOS QUE LLE",
+        "anio": 2025,
+        "monto": 3000.0
+      }
+    },
+    {
+      "t": 4009,
+      "texto": "Se han realizado 130,038 atenciones a través del patronato con inversión de $900,200",
+      "tipo": "cifra",
+      "eje": "salud",
+      "relacion": "solo_narrativa",
+      "promesa": {
+        "correlato": false,
+        "score": 0.43
+      },
+      "plan": {
+        "correlato": false,
+        "score": 0.309,
+        "evidencia": "",
+        "anio": null,
+        "monto": 0.0
+      }
+    },
+    {
+      "t": 4022,
+      "texto": "Centro diario del Buen Vivir atendió 66,898 personas en 2023 y 88,010 atenciones en 2024",
+      "tipo": "cifra",
+      "eje": "salud",
+      "relacion": "promesa_sin_ejecucion",
+      "promesa": {
+        "correlato": true,
+        "score": 0.543
+      },
+      "plan": {
+        "correlato": false,
+        "score": 0.364,
+        "evidencia": "",
+        "anio": null,
+        "monto": 0.0
+      }
+    },
+    {
+      "t": 4064,
+      "texto": "Unidad de servicios médicos comunitarios pasó de 1,243 atenciones en 2023 a 15,687 atenciones en 2024",
+      "tipo": "cifra",
+      "eje": "salud",
+      "relacion": "promesa_sin_ejecucion",
+      "promesa": {
+        "correlato": true,
+        "score": 0.689
+      },
+      "plan": {
+        "correlato": false,
+        "score": 0.402,
+        "evidencia": "",
+        "anio": null,
+        "monto": 0.0
+      }
+    },
+    {
+      "t": 4103,
+      "texto": "Proyecto Calarte benefició a 40 artesanos mediante capacitación en combinación de tejidos ancestrales",
+      "tipo": "logro",
+      "eje": "economía",
+      "relacion": "obra_sin_promesa",
+      "promesa": {
+        "correlato": false,
+        "score": 0.427
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.518,
+        "evidencia": "Fomento al Emprendimiento Artesanal y el · Menaje y Accesorios Descartable",
+        "anio": 2026,
+        "monto": 5000.0
+      }
+    },
+    {
+      "t": 4145,
+      "texto": "Proyecto Calarte incluyó capacitación de 5 meses con inversión de $7,000 en 40 artesanos para combinar tejido de paja toquilla con tejido encalado",
+      "tipo": "logro",
+      "eje": "economía",
+      "relacion": "obra_sin_promesa",
+      "promesa": {
+        "correlato": false,
+        "score": 0.382
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.506,
+        "evidencia": "Contratación materiales didácticos (Activaciones educación vial)",
+        "anio": 2024,
+        "monto": 7600.0
+      }
+    },
+    {
+      "t": 4145,
+      "texto": "Se invirtieron $7,000 en capacitación de 5 meses en técnica de tejido fino de paja toquilla combinado con tejido encalado",
+      "tipo": "logro",
+      "eje": "cultura",
+      "relacion": "obra_sin_promesa",
+      "promesa": {
+        "correlato": false,
+        "score": 0.269
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.479,
+        "evidencia": "Contratación materiales didácticos (Activaciones educación vial)",
+        "anio": 2024,
+        "monto": 7600.0
+      }
+    },
+    {
+      "t": 4225,
+      "texto": "Montecristi fue nominado por UNESCO como ciudad creativa en 2023",
+      "tipo": "logro",
+      "eje": "cultura",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.554
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.56,
+        "evidencia": "Promoción de Montecristi Ciudad Creativa de la · Eventos Públicos Promocionales",
+        "anio": 2026,
+        "monto": 10000.0
+      }
+    },
+    {
+      "t": 4303,
+      "texto": "Montecristi fue una de cinco ciudades del mundo seleccionadas para exponer manifiesto solicitando inclusión de cultura en agenda 2030",
+      "tipo": "logro",
+      "eje": "cultura",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.621
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.602,
+        "evidencia": "Fortalecimiento para la reducción de indicadores territoriales del cantón Montecristi relacionados a las 5 Age",
+        "anio": 2025,
+        "monto": 2500.0
+      }
+    },
+    {
+      "t": 4359,
+      "texto": "Se suscribió oficina comercial en restaurante Chapó en Madrid, España",
+      "tipo": "logro",
+      "eje": "economía",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.509
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.519,
+        "evidencia": "CONTRATACION DE SERVICIOS PARA EL EVENTO BARRO, RÉPLICAS PRECOLOMBINAS LA PILA , COMO PARTE DE LA PROMOCIÓN TU",
+        "anio": 2025,
+        "monto": 1200.0
+      }
+    },
+    {
+      "t": 4469,
+      "texto": "Se realizó primer encuentro de ciudades creativas de Ecuador en Montecristi",
+      "tipo": "logro",
+      "eje": "cultura",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.614
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.698,
+        "evidencia": "Promoción de Montecristi Ciudad Creativa de la · Eventos Públicos Promocionales",
+        "anio": 2026,
+        "monto": 10000.0
+      }
+    },
+    {
+      "t": 4496,
+      "texto": "Presentación de artesanía de Montecristi en Times Square, Nueva York",
+      "tipo": "logro",
+      "eje": "cultura",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.586
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.666,
+        "evidencia": "Promoción de Montecristi Ciudad Creativa de la · Eventos Públicos Promocionales",
+        "anio": 2026,
+        "monto": 10000.0
+      }
+    },
+    {
+      "t": 4601,
+      "texto": "Implementación de talleres de artes en cursos vacacionales con 311 beneficiarios en danza, música, canto, teatro, pintura, piano, violín y guitarra",
+      "tipo": "logro",
+      "eje": "cultura",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.6
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.794,
+        "evidencia": "Realizar talleres en artes (musica, danza, teatro, pinutra, canto, ceramica, tejido y futbol)",
+        "anio": 2024,
+        "monto": 24000.0
+      }
+    },
+    {
+      "t": 4614,
+      "texto": "80 técnicas ancestrales enseñadas incluyendo barro en cursos permanentes",
+      "tipo": "logro",
+      "eje": "cultura",
+      "relacion": "obra_sin_promesa",
+      "promesa": {
+        "correlato": false,
+        "score": 0.424
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.565,
+        "evidencia": "Capacitaciones",
+        "anio": 2024,
+        "monto": 45000.0
+      }
+    },
+    {
+      "t": 4707,
+      "texto": "60 intelectos capacitados en oratorio y geología usando recursos del GAT a bajo precio, inversión total de 44,500 para 451 beneficiarios",
+      "tipo": "logro",
+      "eje": "cultura",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.45
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.465,
+        "evidencia": "Capacitaciones En Talleres De Informática, Gastronomía, Globoflexia",
+        "anio": 2024,
+        "monto": 3900.0
+      }
+    },
+    {
+      "t": 4733,
+      "texto": "Promoción turística cultural con 3.467 visitantes extranjeros y 240.471 visitantes nacionales",
+      "tipo": "cifra",
+      "eje": "cultura",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.59
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.71,
+        "evidencia": "CONTRATACIÓN DE SERVICIOS PARA LA PROMOCIÓN DE TURISMO DEPORTIVO BAJA MONTECRISTI TERCERA EDICIÓN · Eventos Pú",
+        "anio": 2025,
+        "monto": 2500.0
+      }
+    },
+    {
+      "t": 4749,
+      "texto": "Creación segundo año consecutivo del evento 'Modela tu sombrero' con participación de ocho tiendas de artesanos",
+      "tipo": "logro",
+      "eje": "cultura",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.494
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.592,
+        "evidencia": "Fomento al Emprendimiento Artesanal y el · Eventos Públicos Promocionales",
+        "anio": 2026,
+        "monto": 5000.0
+      }
+    },
+    {
+      "t": 4775,
+      "texto": "Creación del Primer Museo del Sombrero de Paja Toquilla Fino",
+      "tipo": "logro",
+      "eje": "cultura",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.589
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.637,
+        "evidencia": "Entrega De Souvenirs",
+        "anio": 2024,
+        "monto": 3000.0
+      }
+    },
+    {
+      "t": 6800,
+      "texto": "2000 personas beneficiadas en parroquia Níval San Andrés con centro comunitario",
+      "tipo": "logro",
+      "eje": "cultura",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.576
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.517,
+        "evidencia": "Recuperación integral de los espacios públicos · Mantenimiento y adecuación de la cancha La Cabaña de la parro",
+        "anio": 2025,
+        "monto": 7200.0
+      }
+    },
+    {
+      "t": 6842,
+      "texto": "Inversión de $14,000 en escuela bilingüe",
+      "tipo": "cifra",
+      "eje": "cultura",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.475
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.464,
+        "evidencia": "Desarrollo del Fortalecimiento Educativo · Manteniento de Plataforma Para Rendir Examen Para Ingreso De La Uni",
+        "anio": 2025,
+        "monto": 1000.0
+      }
+    },
+    {
+      "t": 6854,
+      "texto": "Proyecto de agua con inversión de $28,000,000",
+      "tipo": "cifra",
+      "eje": "agua",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.522
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.608,
+        "evidencia": "Deuda de agua potable",
+        "anio": 2024,
+        "monto": 651399.24
+      }
+    },
+    {
+      "t": 6854,
+      "texto": "Alcantarillado primera fase parroquia General Alfaro con inversión de $5,000,000",
+      "tipo": "cifra",
+      "eje": "agua",
+      "relacion": "promesa_sin_ejecucion",
+      "promesa": {
+        "correlato": true,
+        "score": 0.463
+      },
+      "plan": {
+        "correlato": false,
+        "score": 0.421,
+        "evidencia": "",
+        "anio": null,
+        "monto": 0.0
+      }
+    },
+    {
+      "t": 6854,
+      "texto": "Parque de la Huella en proceso de contratación con valor de $84,000",
+      "tipo": "compromiso",
+      "eje": "ambiente",
+      "relacion": "solo_narrativa",
+      "promesa": {
+        "correlato": false,
+        "score": 0.331
+      },
+      "plan": {
+        "correlato": false,
+        "score": 0.431,
+        "evidencia": "",
+        "anio": null,
+        "monto": 0.0
+      }
+    },
+    {
+      "t": 6868,
+      "texto": "Reconstrucción del parque Las Pampas esperando anticipo",
+      "tipo": "compromiso",
+      "eje": "ambiente",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.546
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.838,
+        "evidencia": "Construccción parque las Pampas",
+        "anio": 2024,
+        "monto": 37960.0
+      }
+    },
+    {
+      "t": 6880,
+      "texto": "Regeneración calle Alfaro en bajo del Pechiche en proceso",
+      "tipo": "compromiso",
+      "eje": "vías",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.644
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.78,
+        "evidencia": "Recuperación integral de los espacios públicos · Regeneración de calle Eloy Alfaro del sector de Bajo de pechi",
+        "anio": 2025,
+        "monto": 135000.0
+      }
+    },
+    {
+      "t": 6895,
+      "texto": "Proyecto conducción mercado menor con inversión de $417,000",
+      "tipo": "cifra",
+      "eje": "economía",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.535
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.481,
+        "evidencia": "Optimización y Modernización de la Gestión de · Comisiones y Otros Cargos",
+        "anio": 2026,
+        "monto": 371000.0
+      }
+    },
+    {
+      "t": 6907,
+      "texto": "Proyecto con inversión de $17,000 desarrollado internamente",
+      "tipo": "cifra",
+      "eje": "institucional",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.629
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.567,
+        "evidencia": "Desarrollo e implementación de Planes Estratégicos · Consultoría, Asesoría e Investigación Especializada",
+        "anio": 2026,
+        "monto": 1.0
+      }
+    },
+    {
+      "t": 6948,
+      "texto": "Reubicación de comerciantes de Avenida Metropolitana al mercado menor",
+      "tipo": "compromiso",
+      "eje": "economía",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.637
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.575,
+        "evidencia": "Mantenimiento de vías urbanas para el acceso de los · Urbanizaciòn y Embellecimiento",
+        "anio": 2026,
+        "monto": 261000.0
+      }
+    },
+    {
+      "t": 7209,
+      "texto": "La Asamblea Ciudadana realizó cinco talleres en las comunas Río Caña, Ríobo, La Pila, Los Bajos, El Bajo de Medio y el cantón Montecristi",
+      "tipo": "logro",
+      "eje": "institucional",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.639
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.607,
+        "evidencia": "Promoción de la formación, participación ciudadana y liderazgo en el cantón Montecristi · Contratación de serv",
+        "anio": 2025,
+        "monto": 5600.0
+      }
+    },
+    {
+      "t": 7321,
+      "texto": "Se habilitará un formulario en la página del Consejo Nacional de Participación Ciudadana para evaluar la gestión tras el cierre del 13 de agosto",
+      "tipo": "compromiso",
+      "eje": "institucional",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.64
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.548,
+        "evidencia": "Estudio de conocimientos, opiniones y evaluaciones de satisfacción ciudadana sobre las competencias, políticas",
+        "anio": 2024,
+        "monto": 7400.0
+      }
+    },
+    {
+      "t": 7526,
+      "texto": "Existe un contrato de estudio ya contratado para intervención vial de 30 km que contempla regeneración de la vía principal en Bajo del Pechiche, Bajo de Afuera y Bajo de La Palma",
+      "tipo": "logro",
+      "eje": "vías",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.587
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.57,
+        "evidencia": "Implementación del plan Recaudación Efectiva · “Pago de sentencias judiciales- Contrato de consultoría por lis",
+        "anio": 2025,
+        "monto": 39349.31
+      }
+    },
+    {
+      "t": 8902,
+      "texto": "Entrega del nuevo escenario multifuncional de la comuna Toalla Grande",
+      "tipo": "logro",
+      "eje": "cultura",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.552
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.533,
+        "evidencia": "Construccción parque las Pampas",
+        "anio": 2024,
+        "monto": 37960.0
+      }
+    },
+    {
+      "t": 8916,
+      "texto": "Inversión de $5,000 en infraestructura con escenarios, camerinos y baños funcionales",
+      "tipo": "cifra",
+      "eje": "cultura",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.576
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.569,
+        "evidencia": "Gestión para la nueva infraestructura de · Honorarios por Contratos Civiles de Servicios",
+        "anio": 2026,
+        "monto": 314064.0
+      }
+    },
+    {
+      "t": 8931,
+      "texto": "Beneficiarios: más de 350 habitantes beneficiados directamente",
+      "tipo": "cifra",
+      "eje": "cultura",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.6
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.608,
+        "evidencia": "Remuneraciones y beneficios de ley",
+        "anio": 2024,
+        "monto": 152553.7
+      }
+    },
+    {
+      "t": 8945,
+      "texto": "Obra integrada en planes parciales del plan Bicentenario con visión hacia 50 años",
+      "tipo": "compromiso",
+      "eje": "institucional",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.562
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.499,
+        "evidencia": "Desarrollo e implementación de Planes Estratégicos Institucionales · Contratación de Estudios de Suelos Requer",
+        "anio": 2025,
+        "monto": 9999.0
+      }
+    },
+    {
+      "t": 8996,
+      "texto": "La cancha está en un plan de desarrollo y sirve para los niños",
+      "tipo": "logro",
+      "eje": "cultura",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.555
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.562,
+        "evidencia": "Proyecto Integral de Salud y Bienestar Juvenil · “ADQUISICIÓN DE MATERIALES DE OFICINA PARA LOS DIFERENTES PRO",
+        "anio": 2025,
+        "monto": 3000.0
+      }
+    },
+    {
+      "t": 9011,
+      "texto": "Se recuperó el parque en la cabaña con cámaras e internet",
+      "tipo": "logro",
+      "eje": "cultura",
+      "relacion": "obra_sin_promesa",
+      "promesa": {
+        "correlato": false,
+        "score": 0.355
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.537,
+        "evidencia": "Recuperación integral de los espacios públicos · Adquisición e instalación de cámaras de video vigilancia y al",
+        "anio": 2025,
+        "monto": 11500.0
+      }
+    },
+    {
+      "t": 9086,
+      "texto": "Se ofrecen cursos vacacionales con oportunidad de aprendizaje en artes y oficios",
+      "tipo": "logro",
+      "eje": "cultura",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.495
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.631,
+        "evidencia": "Realizar ferias de exposición de artes vinculada a la comunidad.",
+        "anio": 2024,
+        "monto": 12000.0
+      }
+    },
+    {
+      "t": 9169,
+      "texto": "Se entregó nuevo escenario multifuncional en la comuna Toalla Grande",
+      "tipo": "logro",
+      "eje": "cultura",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.465
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.466,
+        "evidencia": "Mantenimiento de Terrazas",
+        "anio": 2024,
+        "monto": 50000.0
+      }
+    },
+    {
+      "t": 9198,
+      "texto": "Inversión de $55,000 en infraestructura con escenarios, camerinos y baños funcionales",
+      "tipo": "cifra",
+      "eje": "cultura",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.593
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.579,
+        "evidencia": "Mantenimiento de infraestructura existente de · Agua Potable",
+        "anio": 2026,
+        "monto": 10.0
+      }
+    },
+    {
+      "t": 9211,
+      "texto": "350 habitantes beneficiados directamente por la obra del escenario multifuncional",
+      "tipo": "cifra",
+      "eje": "cultura",
+      "relacion": "solo_narrativa",
+      "promesa": {
+        "correlato": false,
+        "score": 0.445
+      },
+      "plan": {
+        "correlato": false,
+        "score": 0.356,
+        "evidencia": "",
+        "anio": null,
+        "monto": 0.0
+      }
+    },
+    {
+      "t": 9223,
+      "texto": "La obra forma parte del plan Bicentenario que proyecta Montecristi ordenado, digno y sostenible con visión hacia 50 años",
+      "tipo": "compromiso",
+      "eje": "institucional",
+      "relacion": "coherente",
+      "promesa": {
+        "correlato": true,
+        "score": 0.74
+      },
+      "plan": {
+        "correlato": true,
+        "score": 0.535,
+        "evidencia": "Desarrollo del Bienestar Integral para Montecristi · A Entidades Descentralizadas y Autónomas",
+        "anio": 2026,
+        "monto": 932000.0
+      }
+    }
+  ]
+}
