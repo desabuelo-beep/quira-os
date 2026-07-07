@@ -222,9 +222,27 @@ verificación (POA/PAC), añade la voz escrita del actor. **Hallazgo de auditor�
 la corroboración es baja (cifra_financiera 2/13, cobertura 3/7) → el alcalde menciona cifras en el
 video que **no siempre reescribe en el informe formal**. Eso ES una señal (dicho vs documentado).
 
-**Pendiente:** (B) fuente-sin-video (plumbing + extracción Haiku de unidades del informe) · capas de
-REGISTRO R4 (eSIGEF/presupuesto) y R6 (patronato) que verifican las cifras/coberturas contra el
-dato administrativo (no solo "declaradas") · ICN.
+**Pendiente:** (B) fuente-sin-video (plumbing + extracción Haiku de unidades del informe) · R6 patronato · ICN.
+
+## 18 · Capa R4 — cifras financieras vs cédula oficial (2026-07-07)
+Decisión de Javo: verificar la EJECUCIÓN presupuestaria del discurso. **Hallazgo al entrar al canon:** el
+Gold Master expone `PSG_EJECUCION`=2.83%, que es OTRA métrica (sub-índice analítico), **no** la ejecución
+presupuestaria general que dijo el alcalde (84%). Esa ejecución general NO es output del canon → vive en
+el documento fuente (**cédula de gastos**). Por eso R4 la verifica **documentalmente** contra la cédula,
+sin recalcular ninguna métrica del Gold Master (Regla 1/4 intactas · solo lectura · cifras públicas de
+presupuesto). Javo confirmó la ruta documental.
+
+Implementada (`extract_cedula_xls.py` + `_r4` en `motor_v3.py`): lee el total de gastos de la cédula
+oficial (codificado $27.9M / devengado $23.5M) → **ejecución 2024 = 84.32%**. Verifica los claims de
+ejecución general del año contra ese dato; ingresos/deuda/histórico → `requiere_registro` (sin fuente aún).
+
+**Resultado:** de 13 cifras financieras, **2 VERIFICADAS** contra la cédula (MN2024-030 "84%" y 032
+"84.32%" ↔ cédula 84.32%, exacto) · 9 `requiere_registro` · 2 sin cifra explícita. Aggregate **70%**
+(mantiene, con capacidad nueva). Guard: un claim financiero necesita una cifra (%/millones/$) para entrar
+a R4. El motor hoy: 4 capas de verificación (POA·PAC·R4) + corroboración CPCCS + filtro proceso.
+
+**Pendiente R4:** cédula de INGRESOS y registros de DEUDA (Javo los subirá) para las 9 restantes; la
+ejecución de ingresos (99.79%) necesita la cédula de ingresos.
 
 ---
 *PCD-MN01 · Dylus Lab © 2026 · el Motor Narrativo, motor transversal (v0.1 LOCKED · v0.3 con capa PAC) · corpus doctrinario propio.*

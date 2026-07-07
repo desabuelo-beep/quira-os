@@ -36,11 +36,20 @@ import ingest as _ing
 from extract_poa_pdf import extract_poa
 from extract_pac_docx import extract_pac
 from extract_informe_docx import extract_informe
+from extract_cedula_xls import ejecucion_gastos
 # reutiliza los helpers del v0.2 (no se duplican): filtro proceso + eje + embed
 from motor_v2 import TH, POA_AÑOS, _proc, _eje_de, _embed
 
 TH_PAC = 0.45  # mismo umbral; el guard real es la coincidencia de eje (R2)
 TH_INF = 0.50  # corroboración CPCCS: el informe es la voz ESCRITA del mismo actor
+TOL_EJEC = 2.0  # tolerancia (puntos %) para dar por coincidente la ejecución declarada
+
+# R4 · claim financiero (agregado): ejecución/ingresos/deuda. NO cifras de obra
+# (esas van al POA/PAC). El % afirmado se extrae para contrastar con la cédula.
+_FIN = re.compile(r"\b(ejecuci[oó]n|ingresos?|recaud|deuda|equidad\s+territorial|presupuestari)\b", re.I)
+_PCT = re.compile(r"(\d+(?:[.,]\d+)?)\s*%")
+_CIFRA = re.compile(r"\d\s*%|millones?|mill[oó]n|d[oó]lares|\$\s*\d", re.I)  # el claim trae cifra financiera
+_HIST = re.compile(r"\b(2019|2020|2021|2022|2023)\b")  # año histórico (fuera de la cédula del discurso)
 
 # tokens genéricos de gobierno/obra (no distinguen una obra de otra) — se ignoran
 # para el match por NOMBRE de obra (el embedding diluye los nombres propios).
@@ -60,6 +69,26 @@ def _sig_tokens(txt: str) -> set[str]:
     return {w for w in re.findall(r"[a-z]{5,}", _strip(txt)) if w not in _GENERIC}
 
 
+def _r4(texto: str, ced: dict | None) -> dict:
+    """CAPA R4 · claim financiero. La ejecución presupuestaria GENERAL del año se
+    verifica DOCUMENTALMENTE contra la cédula oficial de gastos (no contra el canon:
+    su PSG_EJECUCION es otra métrica). Ingresos/deuda/histórico → requiere_registro
+    (sin fuente aún). Cifras públicas de presupuesto, no métricas del Gold Master."""
+    t = texto.lower()
+    m = _PCT.search(texto)
+    es_ejec_gral = ("egreso" in t or "presupuestari" in t or ("ejecuci" in t and "ingreso" not in t))
+    if m and ced and es_ejec_gral and not _HIST.search(t):
+        claimed = float(m.group(1).replace(",", "."))
+        oficial = ced["ratio"] * 100
+        if abs(claimed - oficial) <= TOL_EJEC:
+            return {"clase": "verif_ejecucion",
+                    "evidencia": f"cédula oficial de gastos {ced['año']}: ejecución {oficial:.2f}% (dijo {claimed:g}%)"}
+        return {"clase": "discrepa_ejecucion",
+                "evidencia": f"dijo {claimed:g}% · cédula oficial {oficial:.2f}%"}
+    return {"clase": "requiere_registro",
+            "evidencia": "cifra financiera (ingresos/deuda/histórico) sin registro disponible aún"}
+
+
 def clasificar(video_id: str, año: str = "2024") -> list[dict]:
     d = _id.BASE / video_id
     unidades = json.loads((d / "unidades.json").read_text(encoding="utf-8"))["unidades"]
@@ -74,6 +103,7 @@ def clasificar(video_id: str, año: str = "2024") -> list[dict]:
     # del actor). Corrobora lo que DIJO en el video con lo que DECLARÓ por escrito.
     inf = list(extract_informe(año, "GAD"))
     INF = _embed(model, inf) if inf else None
+    ced = ejecucion_gastos(año)  # cédula oficial de gastos (capa R4 · ejecución)
 
     def _mejor(vec, banco_emb, banco_txt, eje_u, th, tipos=None):
         """mejor match del banco con eje coincidente (R2). -> (score, evidencia).
@@ -136,6 +166,8 @@ def clasificar(video_id: str, año: str = "2024") -> list[dict]:
                             break
             if bp >= TH_PAC:
                 res = {"clase": "en_contratacion", "score": round(bp, 3), "evidencia": f"PAC {evp}"}
+            elif _FIN.search(texto) and _CIFRA.search(texto):   # R4 · claim financiero (cédula)
+                res = _r4(texto, ced)
             else:
                 res = {"clase": "sin_correlato", "score": round(max(best, bp), 3)}
         # capa CPCCS (evidencia · aditiva, no cambia la clase de verificación)
@@ -164,8 +196,8 @@ if __name__ == "__main__":
         if (h == "proceso_rendicion" and cl == "proceso") \
            or (h == "OK" and cl == "coherente") \
            or (h == "verificar_pac" and cl in ("en_contratacion", "coherente")) \
-           or (h in ("falso_positivo_evidencia", "cifra_financiera",
-                     "logro_cobertura", "meta_narrativa") and cl == "sin_correlato"):
+           or (h == "cifra_financiera" and cl in ("verif_ejecucion", "requiere_registro", "discrepa_ejecucion", "sin_correlato")) \
+           or (h in ("falso_positivo_evidencia", "logro_cobertura", "meta_narrativa") and cl == "sin_correlato"):
             ok += 1
         if h == "verificar_pac":
             aciertos_pac.append((c["id"], cl, p.get("evidencia", "")))
@@ -184,3 +216,9 @@ if __name__ == "__main__":
         ct = [(c, p) for c, p in zip(banco, v3) if c["correccion_humana"] == tipo]
         n = sum(1 for _, p in ct if p.get("en_informe"))
         print(f"      {tipo}: {n}/{len(ct)} declaradas en el informe (R4/R6)")
+    # CAPA R4 · verificación de cifras financieras contra la cédula oficial de gastos
+    r4d = Counter(p["clase"] for c, p in zip(banco, v3) if c["correccion_humana"] == "cifra_financiera")
+    print(f"   CAPA R4 · 13 cifras financieras · distribución: {dict(r4d)}")
+    for c, p in zip(banco, v3):
+        if c["correccion_humana"] == "cifra_financiera" and p["clase"] in ("verif_ejecucion", "discrepa_ejecucion"):
+            print(f"      {c['id']} -> {p['clase']}: {p.get('evidencia', '')[:78]}")
