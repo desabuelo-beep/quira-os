@@ -3,7 +3,9 @@
   "_reglas": {
     "R1": "Proceso de rendición != gestión. Las unidades sobre la METODOLOGÍA del evento de rendición (conformación de comisiones, talleres, reuniones, fechas, solicitud/recepción de documentación, mesas de trabajo, difusión del informe) NO son afirmaciones de gestión pública verificables contra el POA: son meta-narrativa del proceso. Es el MAYOR falso positivo del motor v0.1. Acción: categoría 'proceso_rendicion' y excluirlas del ICN de gestión.",
     "R2": "Falso positivo de evidencia por eje. Cuando el eje de la afirmación (p.ej. agua) NO coincide con el eje del match del POA (p.ej. comunicación), la evidencia es espuria aunque el score supere 0.45. Acción: el cruce debe validar coincidencia de eje/tema, no solo similitud semántica bruta.",
-    "R3": "Meta-narrativa de marco. Afirmaciones de encuadre o retórica (el Plan Bicentenario como hoja de ruta, 'proceso de transformación', anuncios de lo que se va a rendir) no son obras específicas verificables. Acción: categoría 'meta_narrativa', fuera del ICN de gestión."
+    "R3": "Meta-narrativa de marco. Afirmaciones de encuadre o retórica (el Plan Bicentenario como hoja de ruta, 'proceso de transformación', anuncios de lo que se va a rendir) no son obras específicas verificables. Acción: categoría 'meta_narrativa', fuera del ICN de gestión.",
+    "R4": "Cifra financiera != obra del POA. Las afirmaciones de cifras financieras/presupuestarias (deuda heredada, ingresos propios, recaudación, % de ejecución presupuestaria de ingresos/egresos, asignación por equidad territorial) son verificables contra el PRESUPUESTO/eSIGEF (cédula presupuestaria), NO contra el POA. El motor v0.1 solo cruza contra POA -> las marca 'promesa_sin_ejecucion' o 'coherente' con match genérico ('Optimización de la Gestión'). Requiere sumar la capa PRESUPUESTO al cruce de 5 capas. Categoría: 'cifra_financiera'.",
+    "R5": "El motor ACIERTA cuando la obra está en el POA con eje coincidente (036 deuda EPAN->'Deuda de agua potable'; 043 readecuación->'readecuación de infocentros'; 044 clubes juveniles->'bienestar juvenil'). Confirma que el nucleo del cruce es valido; el problema son las categorias que el POA no cubre (proceso, cifras financieras) y los matches de eje cruzado."
   },
   "casos": {
     "MN2024-001": {"correccion": "meta_narrativa", "explicacion": "Marco general: el Plan Bicentenario como hoja de ruta a 50 años; no es una obra específica verificable.", "regla": "R3"},
@@ -25,6 +27,31 @@
     "MN2024-017": {"correccion": "proceso_rendicion", "explicacion": "Reunión de comisión 2 (deliberación) del proceso.", "regla": "R1"},
     "MN2024-018": {"correccion": "proceso_rendicion", "explicacion": "Sesión coordinada del proceso de rendición.", "regla": "R1"},
     "MN2024-019": {"correccion": "proceso_rendicion", "explicacion": "Reunión de comisiones para revisar formulario del proceso.", "regla": "R1"},
-    "MN2024-020": {"correccion": "proceso_rendicion", "explicacion": "Publicación y difusión del informe (cierre del proceso).", "regla": "R1"}
+    "MN2024-020": {"correccion": "proceso_rendicion", "explicacion": "Publicación y difusión del informe (cierre del proceso).", "regla": "R1"},
+    "MN2024-021": {"correccion": "proceso_rendicion", "explicacion": "Entrega del informe de rendición al alcalde (acto del proceso).", "regla": "R1"},
+    "MN2024-022": {"correccion": "proceso_rendicion", "explicacion": "Entrega del informe e inicio de la siguiente fase del proceso.", "regla": "R1"},
+    "MN2024-023": {"correccion": "cifra_financiera", "explicacion": "Deuda heredada de +6 millones: cifra financiera verificable contra presupuesto/eSIGEF, no POA.", "regla": "R4"},
+    "MN2024-024": {"correccion": "cifra_financiera", "explicacion": "Recaudación 2022 de 3.7 millones: cifra financiera.", "regla": "R4"},
+    "MN2024-025": {"correccion": "cifra_financiera", "explicacion": "Ingresos propios 2024 de 6.2 millones: cifra financiera.", "regla": "R4"},
+    "MN2024-026": {"correccion": "OK", "explicacion": "Proyección de duplicar recaudación en 2025: es una promesa/proyección futura; 'promesa_sin_ejecucion' es correcto conceptualmente.", "regla": ""},
+    "MN2024-027": {"correccion": "cifra_financiera", "explicacion": "Ingresos por equidad territorial 2022 (10.5M): cifra financiera.", "regla": "R4"},
+    "MN2024-028": {"correccion": "cifra_financiera", "explicacion": "Ingresos por equidad territorial 2024 (7.9M): cifra financiera.", "regla": "R4"},
+    "MN2024-029": {"correccion": "cifra_financiera", "explicacion": "Ejecución presupuestaria 2019 (47%): cifra financiera histórica.", "regla": "R4"},
+    "MN2024-030": {"correccion": "cifra_financiera", "explicacion": "Ejecución presupuestaria 2024 (84%): cifra financiera; match POA genérico ('Optimización de la Gestión').", "regla": "R4"},
+    "MN2024-031": {"correccion": "cifra_financiera", "explicacion": "Ejecución de ingresos 99.79%: cifra financiera.", "regla": "R4"},
+    "MN2024-032": {"correccion": "cifra_financiera", "explicacion": "Ejecución de egresos 84.32%: cifra financiera.", "regla": "R4"},
+    "MN2024-033": {"correccion": "cifra_financiera", "explicacion": "Elevación de asignación por equidad territorial: relación financiera.", "regla": "R4"},
+    "MN2024-034": {"correccion": "OK", "explicacion": "Kuna Emprendedores (47 cursos, 1164 beneficiarios): capacitación real; match POA aceptable (difusión/educación).", "regla": ""},
+    "MN2024-035": {"correccion": "cifra_financiera", "explicacion": "Reducción de deuda en 9 millones: cifra financiera (aunque el match toca agua).", "regla": "R4"},
+    "MN2024-036": {"correccion": "OK", "explicacion": "Pago de deuda con EPAN -> 'Deuda de agua potable': match CORRECTO, eje coincide. Acierto del motor.", "regla": "R5"},
+    "MN2024-037": {"correccion": "cifra_financiera", "explicacion": "Duplicó ingresos vs 2022: cifra financiera; el match 'Remuneraciones' es espurio (R2).", "regla": "R4"},
+    "MN2024-038": {"correccion": "OK", "explicacion": "Convenio con universidad para cursos -> 'Promoción de la formación': aceptable.", "regla": ""},
+    "MN2024-039": {"correccion": "OK", "explicacion": "27 cursos (gastronomía, primeros auxilios) -> 'Promoción de la formación': coherente.", "regla": ""},
+    "MN2024-040": {"correccion": "OK", "explicacion": "856 capacitados con Universidad Laica -> 'servicios de fortalecimiento técnico': aceptable.", "regla": ""},
+    "MN2024-041": {"correccion": "OK", "explicacion": "300 jóvenes capacitados (Iglesia Arco Iris) -> 'Becas subsidio cursos': aceptable (capacitación).", "regla": ""},
+    "MN2024-042": {"correccion": "OK", "explicacion": "Rescate del Instituto Artesanal Aníbal Palacios -> 'Denominación Origen Artesanos': aceptable (artesanal).", "regla": ""},
+    "MN2024-043": {"correccion": "OK", "explicacion": "Readecuación de Unidad Educativa -> 'Readecuación de infocentros': match CORRECTO. Acierto.", "regla": "R5"},
+    "MN2024-044": {"correccion": "OK", "explicacion": "19 clubes de jóvenes -> 'Salud y Bienestar Juvenil': coherente (eje juvenil). Acierto.", "regla": "R5"},
+    "MN2024-045": {"correccion": "falso_positivo_evidencia", "explicacion": "Convenio de becas educativas -> 'eventos de educación vial': match espurio, eje no coincide.", "regla": "R2"}
   }
 }

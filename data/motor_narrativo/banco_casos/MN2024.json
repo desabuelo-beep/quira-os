@@ -4,7 +4,7 @@
   "video_id": "mqDT5jKXHW8",
   "version_algoritmo": "mn-v0.1",
   "n_casos": 98,
-  "n_corregidos": 20,
+  "n_corregidos": 45,
   "_nota": "Jurisprudencia algorítmica de QUIRA. correccion_humana/explicacion/regla_aprendida se llenan uno por uno (Fase A calibración). NO exponer resultados hasta cerrar la matriz FP/FN.",
   "casos": [
     {
@@ -780,9 +780,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "proceso_rendicion",
+      "explicacion": "Entrega del informe de rendición al alcalde (acto del proceso).",
+      "regla_aprendida": "Proceso de rendición != gestión. Las unidades sobre la METODOLOGÍA del evento de rendición (conformación de comisiones, talleres, reuniones, fechas, solicitud/recepción de documentación, mesas de trabajo, difusión del informe) NO son afirmaciones de gestión pública verificables contra el POA: son meta-narrativa del proceso. Es el MAYOR falso positivo del motor v0.1. Acción: categoría 'proceso_rendicion' y excluirlas del ICN de gestión."
     },
     {
       "id": "MN2024-022",
@@ -817,9 +817,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "proceso_rendicion",
+      "explicacion": "Entrega del informe e inicio de la siguiente fase del proceso.",
+      "regla_aprendida": "Proceso de rendición != gestión. Las unidades sobre la METODOLOGÍA del evento de rendición (conformación de comisiones, talleres, reuniones, fechas, solicitud/recepción de documentación, mesas de trabajo, difusión del informe) NO son afirmaciones de gestión pública verificables contra el POA: son meta-narrativa del proceso. Es el MAYOR falso positivo del motor v0.1. Acción: categoría 'proceso_rendicion' y excluirlas del ICN de gestión."
     },
     {
       "id": "MN2024-023",
@@ -854,9 +854,9 @@
       },
       "relaciones_encontradas": "promesa_sin_ejecucion",
       "resultado_automatico": "promesa_sin_ejecucion",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "cifra_financiera",
+      "explicacion": "Deuda heredada de +6 millones: cifra financiera verificable contra presupuesto/eSIGEF, no POA.",
+      "regla_aprendida": "Cifra financiera != obra del POA. Las afirmaciones de cifras financieras/presupuestarias (deuda heredada, ingresos propios, recaudación, % de ejecución presupuestaria de ingresos/egresos, asignación por equidad territorial) son verificables contra el PRESUPUESTO/eSIGEF (cédula presupuestaria), NO contra el POA. El motor v0.1 solo cruza contra POA -> las marca 'promesa_sin_ejecucion' o 'coherente' con match genérico ('Optimización de la Gestión'). Requiere sumar la capa PRESUPUESTO al cruce de 5 capas. Categoría: 'cifra_financiera'."
     },
     {
       "id": "MN2024-024",
@@ -891,9 +891,9 @@
       },
       "relaciones_encontradas": "promesa_sin_ejecucion",
       "resultado_automatico": "promesa_sin_ejecucion",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "cifra_financiera",
+      "explicacion": "Recaudación 2022 de 3.7 millones: cifra financiera.",
+      "regla_aprendida": "Cifra financiera != obra del POA. Las afirmaciones de cifras financieras/presupuestarias (deuda heredada, ingresos propios, recaudación, % de ejecución presupuestaria de ingresos/egresos, asignación por equidad territorial) son verificables contra el PRESUPUESTO/eSIGEF (cédula presupuestaria), NO contra el POA. El motor v0.1 solo cruza contra POA -> las marca 'promesa_sin_ejecucion' o 'coherente' con match genérico ('Optimización de la Gestión'). Requiere sumar la capa PRESUPUESTO al cruce de 5 capas. Categoría: 'cifra_financiera'."
     },
     {
       "id": "MN2024-025",
@@ -928,9 +928,9 @@
       },
       "relaciones_encontradas": "promesa_sin_ejecucion",
       "resultado_automatico": "promesa_sin_ejecucion",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "cifra_financiera",
+      "explicacion": "Ingresos propios 2024 de 6.2 millones: cifra financiera.",
+      "regla_aprendida": "Cifra financiera != obra del POA. Las afirmaciones de cifras financieras/presupuestarias (deuda heredada, ingresos propios, recaudación, % de ejecución presupuestaria de ingresos/egresos, asignación por equidad territorial) son verificables contra el PRESUPUESTO/eSIGEF (cédula presupuestaria), NO contra el POA. El motor v0.1 solo cruza contra POA -> las marca 'promesa_sin_ejecucion' o 'coherente' con match genérico ('Optimización de la Gestión'). Requiere sumar la capa PRESUPUESTO al cruce de 5 capas. Categoría: 'cifra_financiera'."
     },
     {
       "id": "MN2024-026",
@@ -965,8 +965,8 @@
       },
       "relaciones_encontradas": "promesa_sin_ejecucion",
       "resultado_automatico": "promesa_sin_ejecucion",
-      "correccion_humana": null,
-      "explicacion": null,
+      "correccion_humana": "OK",
+      "explicacion": "Proyección de duplicar recaudación en 2025: es una promesa/proyección futura; 'promesa_sin_ejecucion' es correcto conceptualmente.",
       "regla_aprendida": null
     },
     {
@@ -1002,9 +1002,9 @@
       },
       "relaciones_encontradas": "promesa_sin_ejecucion",
       "resultado_automatico": "promesa_sin_ejecucion",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "cifra_financiera",
+      "explicacion": "Ingresos por equidad territorial 2022 (10.5M): cifra financiera.",
+      "regla_aprendida": "Cifra financiera != obra del POA. Las afirmaciones de cifras financieras/presupuestarias (deuda heredada, ingresos propios, recaudación, % de ejecución presupuestaria de ingresos/egresos, asignación por equidad territorial) son verificables contra el PRESUPUESTO/eSIGEF (cédula presupuestaria), NO contra el POA. El motor v0.1 solo cruza contra POA -> las marca 'promesa_sin_ejecucion' o 'coherente' con match genérico ('Optimización de la Gestión'). Requiere sumar la capa PRESUPUESTO al cruce de 5 capas. Categoría: 'cifra_financiera'."
     },
     {
       "id": "MN2024-028",
@@ -1039,9 +1039,9 @@
       },
       "relaciones_encontradas": "promesa_sin_ejecucion",
       "resultado_automatico": "promesa_sin_ejecucion",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "cifra_financiera",
+      "explicacion": "Ingresos por equidad territorial 2024 (7.9M): cifra financiera.",
+      "regla_aprendida": "Cifra financiera != obra del POA. Las afirmaciones de cifras financieras/presupuestarias (deuda heredada, ingresos propios, recaudación, % de ejecución presupuestaria de ingresos/egresos, asignación por equidad territorial) son verificables contra el PRESUPUESTO/eSIGEF (cédula presupuestaria), NO contra el POA. El motor v0.1 solo cruza contra POA -> las marca 'promesa_sin_ejecucion' o 'coherente' con match genérico ('Optimización de la Gestión'). Requiere sumar la capa PRESUPUESTO al cruce de 5 capas. Categoría: 'cifra_financiera'."
     },
     {
       "id": "MN2024-029",
@@ -1076,9 +1076,9 @@
       },
       "relaciones_encontradas": "promesa_sin_ejecucion",
       "resultado_automatico": "promesa_sin_ejecucion",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "cifra_financiera",
+      "explicacion": "Ejecución presupuestaria 2019 (47%): cifra financiera histórica.",
+      "regla_aprendida": "Cifra financiera != obra del POA. Las afirmaciones de cifras financieras/presupuestarias (deuda heredada, ingresos propios, recaudación, % de ejecución presupuestaria de ingresos/egresos, asignación por equidad territorial) son verificables contra el PRESUPUESTO/eSIGEF (cédula presupuestaria), NO contra el POA. El motor v0.1 solo cruza contra POA -> las marca 'promesa_sin_ejecucion' o 'coherente' con match genérico ('Optimización de la Gestión'). Requiere sumar la capa PRESUPUESTO al cruce de 5 capas. Categoría: 'cifra_financiera'."
     },
     {
       "id": "MN2024-030",
@@ -1113,9 +1113,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "cifra_financiera",
+      "explicacion": "Ejecución presupuestaria 2024 (84%): cifra financiera; match POA genérico ('Optimización de la Gestión').",
+      "regla_aprendida": "Cifra financiera != obra del POA. Las afirmaciones de cifras financieras/presupuestarias (deuda heredada, ingresos propios, recaudación, % de ejecución presupuestaria de ingresos/egresos, asignación por equidad territorial) son verificables contra el PRESUPUESTO/eSIGEF (cédula presupuestaria), NO contra el POA. El motor v0.1 solo cruza contra POA -> las marca 'promesa_sin_ejecucion' o 'coherente' con match genérico ('Optimización de la Gestión'). Requiere sumar la capa PRESUPUESTO al cruce de 5 capas. Categoría: 'cifra_financiera'."
     },
     {
       "id": "MN2024-031",
@@ -1150,9 +1150,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "cifra_financiera",
+      "explicacion": "Ejecución de ingresos 99.79%: cifra financiera.",
+      "regla_aprendida": "Cifra financiera != obra del POA. Las afirmaciones de cifras financieras/presupuestarias (deuda heredada, ingresos propios, recaudación, % de ejecución presupuestaria de ingresos/egresos, asignación por equidad territorial) son verificables contra el PRESUPUESTO/eSIGEF (cédula presupuestaria), NO contra el POA. El motor v0.1 solo cruza contra POA -> las marca 'promesa_sin_ejecucion' o 'coherente' con match genérico ('Optimización de la Gestión'). Requiere sumar la capa PRESUPUESTO al cruce de 5 capas. Categoría: 'cifra_financiera'."
     },
     {
       "id": "MN2024-032",
@@ -1187,9 +1187,9 @@
       },
       "relaciones_encontradas": "promesa_sin_ejecucion",
       "resultado_automatico": "promesa_sin_ejecucion",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "cifra_financiera",
+      "explicacion": "Ejecución de egresos 84.32%: cifra financiera.",
+      "regla_aprendida": "Cifra financiera != obra del POA. Las afirmaciones de cifras financieras/presupuestarias (deuda heredada, ingresos propios, recaudación, % de ejecución presupuestaria de ingresos/egresos, asignación por equidad territorial) son verificables contra el PRESUPUESTO/eSIGEF (cédula presupuestaria), NO contra el POA. El motor v0.1 solo cruza contra POA -> las marca 'promesa_sin_ejecucion' o 'coherente' con match genérico ('Optimización de la Gestión'). Requiere sumar la capa PRESUPUESTO al cruce de 5 capas. Categoría: 'cifra_financiera'."
     },
     {
       "id": "MN2024-033",
@@ -1224,9 +1224,9 @@
       },
       "relaciones_encontradas": "promesa_sin_ejecucion",
       "resultado_automatico": "promesa_sin_ejecucion",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "cifra_financiera",
+      "explicacion": "Elevación de asignación por equidad territorial: relación financiera.",
+      "regla_aprendida": "Cifra financiera != obra del POA. Las afirmaciones de cifras financieras/presupuestarias (deuda heredada, ingresos propios, recaudación, % de ejecución presupuestaria de ingresos/egresos, asignación por equidad territorial) son verificables contra el PRESUPUESTO/eSIGEF (cédula presupuestaria), NO contra el POA. El motor v0.1 solo cruza contra POA -> las marca 'promesa_sin_ejecucion' o 'coherente' con match genérico ('Optimización de la Gestión'). Requiere sumar la capa PRESUPUESTO al cruce de 5 capas. Categoría: 'cifra_financiera'."
     },
     {
       "id": "MN2024-034",
@@ -1261,8 +1261,8 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
+      "correccion_humana": "OK",
+      "explicacion": "Kuna Emprendedores (47 cursos, 1164 beneficiarios): capacitación real; match POA aceptable (difusión/educación).",
       "regla_aprendida": null
     },
     {
@@ -1298,9 +1298,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "cifra_financiera",
+      "explicacion": "Reducción de deuda en 9 millones: cifra financiera (aunque el match toca agua).",
+      "regla_aprendida": "Cifra financiera != obra del POA. Las afirmaciones de cifras financieras/presupuestarias (deuda heredada, ingresos propios, recaudación, % de ejecución presupuestaria de ingresos/egresos, asignación por equidad territorial) son verificables contra el PRESUPUESTO/eSIGEF (cédula presupuestaria), NO contra el POA. El motor v0.1 solo cruza contra POA -> las marca 'promesa_sin_ejecucion' o 'coherente' con match genérico ('Optimización de la Gestión'). Requiere sumar la capa PRESUPUESTO al cruce de 5 capas. Categoría: 'cifra_financiera'."
     },
     {
       "id": "MN2024-036",
@@ -1335,9 +1335,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "OK",
+      "explicacion": "Pago de deuda con EPAN -> 'Deuda de agua potable': match CORRECTO, eje coincide. Acierto del motor.",
+      "regla_aprendida": "El motor ACIERTA cuando la obra está en el POA con eje coincidente (036 deuda EPAN->'Deuda de agua potable'; 043 readecuación->'readecuación de infocentros'; 044 clubes juveniles->'bienestar juvenil'). Confirma que el nucleo del cruce es valido; el problema son las categorias que el POA no cubre (proceso, cifras financieras) y los matches de eje cruzado."
     },
     {
       "id": "MN2024-037",
@@ -1372,9 +1372,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "cifra_financiera",
+      "explicacion": "Duplicó ingresos vs 2022: cifra financiera; el match 'Remuneraciones' es espurio (R2).",
+      "regla_aprendida": "Cifra financiera != obra del POA. Las afirmaciones de cifras financieras/presupuestarias (deuda heredada, ingresos propios, recaudación, % de ejecución presupuestaria de ingresos/egresos, asignación por equidad territorial) son verificables contra el PRESUPUESTO/eSIGEF (cédula presupuestaria), NO contra el POA. El motor v0.1 solo cruza contra POA -> las marca 'promesa_sin_ejecucion' o 'coherente' con match genérico ('Optimización de la Gestión'). Requiere sumar la capa PRESUPUESTO al cruce de 5 capas. Categoría: 'cifra_financiera'."
     },
     {
       "id": "MN2024-038",
@@ -1409,8 +1409,8 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
+      "correccion_humana": "OK",
+      "explicacion": "Convenio con universidad para cursos -> 'Promoción de la formación': aceptable.",
       "regla_aprendida": null
     },
     {
@@ -1446,8 +1446,8 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
+      "correccion_humana": "OK",
+      "explicacion": "27 cursos (gastronomía, primeros auxilios) -> 'Promoción de la formación': coherente.",
       "regla_aprendida": null
     },
     {
@@ -1483,8 +1483,8 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
+      "correccion_humana": "OK",
+      "explicacion": "856 capacitados con Universidad Laica -> 'servicios de fortalecimiento técnico': aceptable.",
       "regla_aprendida": null
     },
     {
@@ -1520,8 +1520,8 @@
       },
       "relaciones_encontradas": "obra_sin_promesa",
       "resultado_automatico": "obra_sin_promesa",
-      "correccion_humana": null,
-      "explicacion": null,
+      "correccion_humana": "OK",
+      "explicacion": "300 jóvenes capacitados (Iglesia Arco Iris) -> 'Becas subsidio cursos': aceptable (capacitación).",
       "regla_aprendida": null
     },
     {
@@ -1557,8 +1557,8 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
+      "correccion_humana": "OK",
+      "explicacion": "Rescate del Instituto Artesanal Aníbal Palacios -> 'Denominación Origen Artesanos': aceptable (artesanal).",
       "regla_aprendida": null
     },
     {
@@ -1594,9 +1594,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "OK",
+      "explicacion": "Readecuación de Unidad Educativa -> 'Readecuación de infocentros': match CORRECTO. Acierto.",
+      "regla_aprendida": "El motor ACIERTA cuando la obra está en el POA con eje coincidente (036 deuda EPAN->'Deuda de agua potable'; 043 readecuación->'readecuación de infocentros'; 044 clubes juveniles->'bienestar juvenil'). Confirma que el nucleo del cruce es valido; el problema son las categorias que el POA no cubre (proceso, cifras financieras) y los matches de eje cruzado."
     },
     {
       "id": "MN2024-044",
@@ -1631,9 +1631,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "OK",
+      "explicacion": "19 clubes de jóvenes -> 'Salud y Bienestar Juvenil': coherente (eje juvenil). Acierto.",
+      "regla_aprendida": "El motor ACIERTA cuando la obra está en el POA con eje coincidente (036 deuda EPAN->'Deuda de agua potable'; 043 readecuación->'readecuación de infocentros'; 044 clubes juveniles->'bienestar juvenil'). Confirma que el nucleo del cruce es valido; el problema son las categorias que el POA no cubre (proceso, cifras financieras) y los matches de eje cruzado."
     },
     {
       "id": "MN2024-045",
@@ -1668,9 +1668,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "falso_positivo_evidencia",
+      "explicacion": "Convenio de becas educativas -> 'eventos de educación vial': match espurio, eje no coincide.",
+      "regla_aprendida": "Falso positivo de evidencia por eje. Cuando el eje de la afirmación (p.ej. agua) NO coincide con el eje del match del POA (p.ej. comunicación), la evidencia es espuria aunque el score supere 0.45. Acción: el cruce debe validar coincidencia de eje/tema, no solo similitud semántica bruta."
     },
     {
       "id": "MN2024-046",
