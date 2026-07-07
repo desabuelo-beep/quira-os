@@ -100,16 +100,32 @@ Resultado automático → Corrección humana → Explicación → Regla aprendid
   una **vista transversal** (no un dominio operativo) donde confluyen SAT · alertas · Motor Narrativo · Motor
   Causal · riesgos · tendencias · predicciones. El centro de inteligencia institucional. *(Cambio de dominio →
   dispara propagación Protocolo cond.5 + consenso cond.6 → se ejecuta con Javo.)*
-- **Formalizar los Motores en la Constitución (asesor · importante):** los Motores de Inteligencia
-  (Transversales) existen **de facto** pero sin el rango formal de los dominios. Institucionalizarlos ahora
-  evita que cada motor futuro (Causal · Prospectivo · Jurídico · Conversacional) repita la duda "¿cajón o
-  motor?". → editar `CONSTITUCION_ONTOLOGICA_QUIRA.md` **con aval de Javo** (Regla 5).
+- **Institucionalizar los Motores Cognitivos (asesor 2026-07-06):** existen de facto sin rango formal.
+  **NO se edita la Constitución aún** —registra hechos consolidados, no hipótesis en calibración—. Se abre
+  un **expediente de arquitectura** propio —*Propuesta de Institucionalización de Motores Cognitivos*— que
+  madura mientras el motor se calibra (por qué existen · qué los distingue de un dominio · reglas para
+  crear/retirar/propagar motores). Cuando el motor supere la Fase A, la Constitución **absorbe** ese
+  trabajo (Fase D). Evita que cada motor futuro (Causal · Prospectivo · Jurídico · Conversacional) repita
+  la duda "¿cajón o motor?".
 
-## 12 · Hoja de ruta (asesor · reemplaza el orden previo)
-- **Fase 1 (actual):** Banco de Casos · Matriz de Validación · FP/FN · ICN · Calibración.
-- **Fase 2:** RDC 2025 · comparación 2024↔2025 · estabilidad del motor.
-- **Fase 3:** Presidente · Ministros · Prefectos · otras autoridades.
-- **Fase 4:** entrenamiento doctrinal propio · embeddings especializados · Motor Narrativo **v2**.
+## 12 · Hoja de ruta A/B/C/D (asesor · refinada 2026-07-06)
+- **Fase A — Calibración científica (ACTUAL · misión única):** (1) Banco de Casos completo ✅ · (2)
+  corrección humana **una por una** · (3) reglas aprendidas · (4) clasificación de errores · (5) matriz
+  FP/FN · (6) ICN · (7) precisión/recall/F1. **Objetivo: conocer exactamente el comportamiento del motor.**
+  *Se detiene TODO lo demás (gráficos · Neo4j · UI · 2025) hasta cerrar esta fase.*
+- **Fase B — Generalización** (solo con motor estable): RDC 2025 · comparación 2024↔2025 · otros discursos
+  (eventos · entrevistas · cadenas · debates) → luego prefectos · ministros · presidente.
+- **Fase C — Inteligencia:** relaciones visibles/invisibles · contradicciones · silencios institucionales ·
+  promesas recicladas · evolución narrativa · grafos narrativos.
+- **Fase D — Ontología (al final):** formalizar los Motores Cognitivos en la Constitución · redefinir
+  d04 → Inteligencia Institucional · propagación completa.
+
+## 13 · Jurisprudencia algorítmica (asesor 2026-07-06) — el pilar
+El Banco de Casos **no es una base de datos**: es el comienzo de una **jurisprudencia algorítmica**. Cada
+caso validado responde *¿qué entiende QUIRA por una promesa? ¿qué es evidencia suficiente? ¿cuándo una
+narrativa es coherente? ¿cuándo hay contradicción? ¿qué es un silencio institucional?* Con el tiempo, cada
+decisión se **fundamenta en casos anteriores** → el motor se vuelve consistente, explicable y auditable.
+Es el activo que **independiza a QUIRA de los modelos generalistas**. La misión de la Fase A.
 
 ---
 *PCD-MN01 · Dylus Lab © 2026 · el Motor Narrativo, motor transversal · corpus doctrinario propio · fase de calibración.*
