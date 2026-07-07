@@ -38,7 +38,11 @@ def construir(video_id: str, año: str) -> dict:
     banco_dir.mkdir(parents=True, exist_ok=True)
     out_path = banco_dir / f"MN{año}.json"
 
-    # preservar correcciones humanas ya hechas (idempotente)
+    # correcciones humanas: archivo trazable (Fase A) + preservar las ya hechas (idempotente)
+    corr_path = banco_dir / f"correcciones_MN{año}.json"
+    corr = json.loads(corr_path.read_text(encoding="utf-8")) if corr_path.exists() else {}
+    reglas = corr.get("_reglas", {})
+    corr_casos = corr.get("casos", {})
     previo = {}
     if out_path.exists():
         for c in json.loads(out_path.read_text(encoding="utf-8")).get("casos", []):
@@ -48,6 +52,8 @@ def construir(video_id: str, año: str) -> dict:
     for i, (u, c) in enumerate(zip(unidades, cruce)):
         cid = f"MN{año}-{i + 1:03d}"
         prev = previo.get(cid, {})
+        cc = corr_casos.get(cid, {})
+        regla_cod = cc.get("regla")
         casos.append({
             "id": cid,
             "version_algoritmo": VERSION_ALGO,
@@ -61,10 +67,10 @@ def construir(video_id: str, año: str) -> dict:
             },
             "relaciones_encontradas": c.get("relacion"),
             "resultado_automatico": c.get("relacion"),
-            # ── a llenar por la corrección humana (calibración) ──
-            "correccion_humana": prev.get("correccion_humana"),      # relación correcta o "OK"
-            "explicacion": prev.get("explicacion"),
-            "regla_aprendida": prev.get("regla_aprendida"),
+            # ── corrección humana (calibración · Fase A) ──
+            "correccion_humana": cc.get("correccion") or prev.get("correccion_humana"),
+            "explicacion": cc.get("explicacion") or prev.get("explicacion"),
+            "regla_aprendida": (reglas.get(regla_cod, regla_cod) if regla_cod else prev.get("regla_aprendida")),
         })
 
     n_corr = sum(1 for c in casos if c["correccion_humana"])

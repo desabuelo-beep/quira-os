@@ -1,0 +1,30 @@
+{
+  "_meta": "Corrección humana asistida por IA (Fase A · calibración) — LOTE 1 (casos 001-020). Pre-validado por Claude, PENDIENTE de ratificación de Javo. Categorías de corrección: OK (auto correcto) · proceso_rendicion · meta_narrativa · falso_positivo_evidencia · + reclasificaciones.",
+  "_reglas": {
+    "R1": "Proceso de rendición != gestión. Las unidades sobre la METODOLOGÍA del evento de rendición (conformación de comisiones, talleres, reuniones, fechas, solicitud/recepción de documentación, mesas de trabajo, difusión del informe) NO son afirmaciones de gestión pública verificables contra el POA: son meta-narrativa del proceso. Es el MAYOR falso positivo del motor v0.1. Acción: categoría 'proceso_rendicion' y excluirlas del ICN de gestión.",
+    "R2": "Falso positivo de evidencia por eje. Cuando el eje de la afirmación (p.ej. agua) NO coincide con el eje del match del POA (p.ej. comunicación), la evidencia es espuria aunque el score supere 0.45. Acción: el cruce debe validar coincidencia de eje/tema, no solo similitud semántica bruta.",
+    "R3": "Meta-narrativa de marco. Afirmaciones de encuadre o retórica (el Plan Bicentenario como hoja de ruta, 'proceso de transformación', anuncios de lo que se va a rendir) no son obras específicas verificables. Acción: categoría 'meta_narrativa', fuera del ICN de gestión."
+  },
+  "casos": {
+    "MN2024-001": {"correccion": "meta_narrativa", "explicacion": "Marco general: el Plan Bicentenario como hoja de ruta a 50 años; no es una obra específica verificable.", "regla": "R3"},
+    "MN2024-002": {"correccion": "meta_narrativa", "explicacion": "Retórica de apertura ('proceso de transformación del cantón'), sin obra verificable.", "regla": "R3"},
+    "MN2024-003": {"correccion": "falso_positivo_evidencia", "explicacion": "Afirmación de gestión real (agua potable) pero el match del POA es 'Estrategias de Comunicación' (eje que no coincide). La obra de agua sí existe en el POA; el match automático es espurio.", "regla": "R2"},
+    "MN2024-004": {"correccion": "meta_narrativa", "explicacion": "Meta-afirmación: anuncia que se rendirá cuentas de obras; no es una obra en sí.", "regla": "R3"},
+    "MN2024-005": {"correccion": "proceso_rendicion", "explicacion": "Describe el arranque articulado del proceso de rendición ciudadanía-GAD.", "regla": "R1"},
+    "MN2024-006": {"correccion": "proceso_rendicion", "explicacion": "Taller de capacitación del proceso de rendición (con el CPCCS).", "regla": "R1"},
+    "MN2024-007": {"correccion": "proceso_rendicion", "explicacion": "Reunión para elaborar la hoja de ruta del proceso de rendición.", "regla": "R1"},
+    "MN2024-008": {"correccion": "proceso_rendicion", "explicacion": "Organización de mesa de trabajo del proceso de rendición.", "regla": "R1"},
+    "MN2024-009": {"correccion": "proceso_rendicion", "explicacion": "Solicitud de documentación (PDOT, plan de campaña) para el proceso.", "regla": "R1"},
+    "MN2024-010": {"correccion": "proceso_rendicion", "explicacion": "Recepción de documentación para el proceso de rendición.", "regla": "R1"},
+    "MN2024-011": {"correccion": "proceso_rendicion", "explicacion": "Conformación de equipo técnico y subcomisiones del proceso.", "regla": "R1"},
+    "MN2024-012": {"correccion": "proceso_rendicion", "explicacion": "Presentación de la rendición al CPCCS (acto del proceso).", "regla": "R1"},
+    "MN2024-013": {"correccion": "proceso_rendicion", "explicacion": "Redacción conjunta del informe de rendición.", "regla": "R1"},
+    "MN2024-014": {"correccion": "proceso_rendicion", "explicacion": "Mesas de trabajo del proceso (días 28-30 de abril).", "regla": "R1"},
+    "MN2024-015": {"correccion": "proceso_rendicion", "explicacion": "Envío formal de preguntas dentro del proceso de rendición.", "regla": "R1"},
+    "MN2024-016": {"correccion": "proceso_rendicion", "explicacion": "Reunión de comisión 1 del proceso; el auto la marcó 'promesa_sin_ejecucion' por match espurio.", "regla": "R1"},
+    "MN2024-017": {"correccion": "proceso_rendicion", "explicacion": "Reunión de comisión 2 (deliberación) del proceso.", "regla": "R1"},
+    "MN2024-018": {"correccion": "proceso_rendicion", "explicacion": "Sesión coordinada del proceso de rendición.", "regla": "R1"},
+    "MN2024-019": {"correccion": "proceso_rendicion", "explicacion": "Reunión de comisiones para revisar formulario del proceso.", "regla": "R1"},
+    "MN2024-020": {"correccion": "proceso_rendicion", "explicacion": "Publicación y difusión del informe (cierre del proceso).", "regla": "R1"}
+  }
+}

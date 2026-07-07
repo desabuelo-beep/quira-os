@@ -4,7 +4,7 @@
   "video_id": "mqDT5jKXHW8",
   "version_algoritmo": "mn-v0.1",
   "n_casos": 98,
-  "n_corregidos": 0,
+  "n_corregidos": 20,
   "_nota": "Jurisprudencia algorítmica de QUIRA. correccion_humana/explicacion/regla_aprendida se llenan uno por uno (Fase A calibración). NO exponer resultados hasta cerrar la matriz FP/FN.",
   "casos": [
     {
@@ -40,9 +40,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "meta_narrativa",
+      "explicacion": "Marco general: el Plan Bicentenario como hoja de ruta a 50 años; no es una obra específica verificable.",
+      "regla_aprendida": "Meta-narrativa de marco. Afirmaciones de encuadre o retórica (el Plan Bicentenario como hoja de ruta, 'proceso de transformación', anuncios de lo que se va a rendir) no son obras específicas verificables. Acción: categoría 'meta_narrativa', fuera del ICN de gestión."
     },
     {
       "id": "MN2024-002",
@@ -77,9 +77,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "meta_narrativa",
+      "explicacion": "Retórica de apertura ('proceso de transformación del cantón'), sin obra verificable.",
+      "regla_aprendida": "Meta-narrativa de marco. Afirmaciones de encuadre o retórica (el Plan Bicentenario como hoja de ruta, 'proceso de transformación', anuncios de lo que se va a rendir) no son obras específicas verificables. Acción: categoría 'meta_narrativa', fuera del ICN de gestión."
     },
     {
       "id": "MN2024-003",
@@ -114,9 +114,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "falso_positivo_evidencia",
+      "explicacion": "Afirmación de gestión real (agua potable) pero el match del POA es 'Estrategias de Comunicación' (eje que no coincide). La obra de agua sí existe en el POA; el match automático es espurio.",
+      "regla_aprendida": "Falso positivo de evidencia por eje. Cuando el eje de la afirmación (p.ej. agua) NO coincide con el eje del match del POA (p.ej. comunicación), la evidencia es espuria aunque el score supere 0.45. Acción: el cruce debe validar coincidencia de eje/tema, no solo similitud semántica bruta."
     },
     {
       "id": "MN2024-004",
@@ -151,9 +151,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "meta_narrativa",
+      "explicacion": "Meta-afirmación: anuncia que se rendirá cuentas de obras; no es una obra en sí.",
+      "regla_aprendida": "Meta-narrativa de marco. Afirmaciones de encuadre o retórica (el Plan Bicentenario como hoja de ruta, 'proceso de transformación', anuncios de lo que se va a rendir) no son obras específicas verificables. Acción: categoría 'meta_narrativa', fuera del ICN de gestión."
     },
     {
       "id": "MN2024-005",
@@ -188,9 +188,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "proceso_rendicion",
+      "explicacion": "Describe el arranque articulado del proceso de rendición ciudadanía-GAD.",
+      "regla_aprendida": "Proceso de rendición != gestión. Las unidades sobre la METODOLOGÍA del evento de rendición (conformación de comisiones, talleres, reuniones, fechas, solicitud/recepción de documentación, mesas de trabajo, difusión del informe) NO son afirmaciones de gestión pública verificables contra el POA: son meta-narrativa del proceso. Es el MAYOR falso positivo del motor v0.1. Acción: categoría 'proceso_rendicion' y excluirlas del ICN de gestión."
     },
     {
       "id": "MN2024-006",
@@ -225,9 +225,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "proceso_rendicion",
+      "explicacion": "Taller de capacitación del proceso de rendición (con el CPCCS).",
+      "regla_aprendida": "Proceso de rendición != gestión. Las unidades sobre la METODOLOGÍA del evento de rendición (conformación de comisiones, talleres, reuniones, fechas, solicitud/recepción de documentación, mesas de trabajo, difusión del informe) NO son afirmaciones de gestión pública verificables contra el POA: son meta-narrativa del proceso. Es el MAYOR falso positivo del motor v0.1. Acción: categoría 'proceso_rendicion' y excluirlas del ICN de gestión."
     },
     {
       "id": "MN2024-007",
@@ -262,9 +262,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "proceso_rendicion",
+      "explicacion": "Reunión para elaborar la hoja de ruta del proceso de rendición.",
+      "regla_aprendida": "Proceso de rendición != gestión. Las unidades sobre la METODOLOGÍA del evento de rendición (conformación de comisiones, talleres, reuniones, fechas, solicitud/recepción de documentación, mesas de trabajo, difusión del informe) NO son afirmaciones de gestión pública verificables contra el POA: son meta-narrativa del proceso. Es el MAYOR falso positivo del motor v0.1. Acción: categoría 'proceso_rendicion' y excluirlas del ICN de gestión."
     },
     {
       "id": "MN2024-008",
@@ -299,9 +299,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "proceso_rendicion",
+      "explicacion": "Organización de mesa de trabajo del proceso de rendición.",
+      "regla_aprendida": "Proceso de rendición != gestión. Las unidades sobre la METODOLOGÍA del evento de rendición (conformación de comisiones, talleres, reuniones, fechas, solicitud/recepción de documentación, mesas de trabajo, difusión del informe) NO son afirmaciones de gestión pública verificables contra el POA: son meta-narrativa del proceso. Es el MAYOR falso positivo del motor v0.1. Acción: categoría 'proceso_rendicion' y excluirlas del ICN de gestión."
     },
     {
       "id": "MN2024-009",
@@ -336,9 +336,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "proceso_rendicion",
+      "explicacion": "Solicitud de documentación (PDOT, plan de campaña) para el proceso.",
+      "regla_aprendida": "Proceso de rendición != gestión. Las unidades sobre la METODOLOGÍA del evento de rendición (conformación de comisiones, talleres, reuniones, fechas, solicitud/recepción de documentación, mesas de trabajo, difusión del informe) NO son afirmaciones de gestión pública verificables contra el POA: son meta-narrativa del proceso. Es el MAYOR falso positivo del motor v0.1. Acción: categoría 'proceso_rendicion' y excluirlas del ICN de gestión."
     },
     {
       "id": "MN2024-010",
@@ -373,9 +373,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "proceso_rendicion",
+      "explicacion": "Recepción de documentación para el proceso de rendición.",
+      "regla_aprendida": "Proceso de rendición != gestión. Las unidades sobre la METODOLOGÍA del evento de rendición (conformación de comisiones, talleres, reuniones, fechas, solicitud/recepción de documentación, mesas de trabajo, difusión del informe) NO son afirmaciones de gestión pública verificables contra el POA: son meta-narrativa del proceso. Es el MAYOR falso positivo del motor v0.1. Acción: categoría 'proceso_rendicion' y excluirlas del ICN de gestión."
     },
     {
       "id": "MN2024-011",
@@ -410,9 +410,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "proceso_rendicion",
+      "explicacion": "Conformación de equipo técnico y subcomisiones del proceso.",
+      "regla_aprendida": "Proceso de rendición != gestión. Las unidades sobre la METODOLOGÍA del evento de rendición (conformación de comisiones, talleres, reuniones, fechas, solicitud/recepción de documentación, mesas de trabajo, difusión del informe) NO son afirmaciones de gestión pública verificables contra el POA: son meta-narrativa del proceso. Es el MAYOR falso positivo del motor v0.1. Acción: categoría 'proceso_rendicion' y excluirlas del ICN de gestión."
     },
     {
       "id": "MN2024-012",
@@ -447,9 +447,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "proceso_rendicion",
+      "explicacion": "Presentación de la rendición al CPCCS (acto del proceso).",
+      "regla_aprendida": "Proceso de rendición != gestión. Las unidades sobre la METODOLOGÍA del evento de rendición (conformación de comisiones, talleres, reuniones, fechas, solicitud/recepción de documentación, mesas de trabajo, difusión del informe) NO son afirmaciones de gestión pública verificables contra el POA: son meta-narrativa del proceso. Es el MAYOR falso positivo del motor v0.1. Acción: categoría 'proceso_rendicion' y excluirlas del ICN de gestión."
     },
     {
       "id": "MN2024-013",
@@ -484,9 +484,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "proceso_rendicion",
+      "explicacion": "Redacción conjunta del informe de rendición.",
+      "regla_aprendida": "Proceso de rendición != gestión. Las unidades sobre la METODOLOGÍA del evento de rendición (conformación de comisiones, talleres, reuniones, fechas, solicitud/recepción de documentación, mesas de trabajo, difusión del informe) NO son afirmaciones de gestión pública verificables contra el POA: son meta-narrativa del proceso. Es el MAYOR falso positivo del motor v0.1. Acción: categoría 'proceso_rendicion' y excluirlas del ICN de gestión."
     },
     {
       "id": "MN2024-014",
@@ -521,9 +521,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "proceso_rendicion",
+      "explicacion": "Mesas de trabajo del proceso (días 28-30 de abril).",
+      "regla_aprendida": "Proceso de rendición != gestión. Las unidades sobre la METODOLOGÍA del evento de rendición (conformación de comisiones, talleres, reuniones, fechas, solicitud/recepción de documentación, mesas de trabajo, difusión del informe) NO son afirmaciones de gestión pública verificables contra el POA: son meta-narrativa del proceso. Es el MAYOR falso positivo del motor v0.1. Acción: categoría 'proceso_rendicion' y excluirlas del ICN de gestión."
     },
     {
       "id": "MN2024-015",
@@ -558,9 +558,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "proceso_rendicion",
+      "explicacion": "Envío formal de preguntas dentro del proceso de rendición.",
+      "regla_aprendida": "Proceso de rendición != gestión. Las unidades sobre la METODOLOGÍA del evento de rendición (conformación de comisiones, talleres, reuniones, fechas, solicitud/recepción de documentación, mesas de trabajo, difusión del informe) NO son afirmaciones de gestión pública verificables contra el POA: son meta-narrativa del proceso. Es el MAYOR falso positivo del motor v0.1. Acción: categoría 'proceso_rendicion' y excluirlas del ICN de gestión."
     },
     {
       "id": "MN2024-016",
@@ -595,9 +595,9 @@
       },
       "relaciones_encontradas": "promesa_sin_ejecucion",
       "resultado_automatico": "promesa_sin_ejecucion",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "proceso_rendicion",
+      "explicacion": "Reunión de comisión 1 del proceso; el auto la marcó 'promesa_sin_ejecucion' por match espurio.",
+      "regla_aprendida": "Proceso de rendición != gestión. Las unidades sobre la METODOLOGÍA del evento de rendición (conformación de comisiones, talleres, reuniones, fechas, solicitud/recepción de documentación, mesas de trabajo, difusión del informe) NO son afirmaciones de gestión pública verificables contra el POA: son meta-narrativa del proceso. Es el MAYOR falso positivo del motor v0.1. Acción: categoría 'proceso_rendicion' y excluirlas del ICN de gestión."
     },
     {
       "id": "MN2024-017",
@@ -632,9 +632,9 @@
       },
       "relaciones_encontradas": "promesa_sin_ejecucion",
       "resultado_automatico": "promesa_sin_ejecucion",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "proceso_rendicion",
+      "explicacion": "Reunión de comisión 2 (deliberación) del proceso.",
+      "regla_aprendida": "Proceso de rendición != gestión. Las unidades sobre la METODOLOGÍA del evento de rendición (conformación de comisiones, talleres, reuniones, fechas, solicitud/recepción de documentación, mesas de trabajo, difusión del informe) NO son afirmaciones de gestión pública verificables contra el POA: son meta-narrativa del proceso. Es el MAYOR falso positivo del motor v0.1. Acción: categoría 'proceso_rendicion' y excluirlas del ICN de gestión."
     },
     {
       "id": "MN2024-018",
@@ -669,9 +669,9 @@
       },
       "relaciones_encontradas": "promesa_sin_ejecucion",
       "resultado_automatico": "promesa_sin_ejecucion",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "proceso_rendicion",
+      "explicacion": "Sesión coordinada del proceso de rendición.",
+      "regla_aprendida": "Proceso de rendición != gestión. Las unidades sobre la METODOLOGÍA del evento de rendición (conformación de comisiones, talleres, reuniones, fechas, solicitud/recepción de documentación, mesas de trabajo, difusión del informe) NO son afirmaciones de gestión pública verificables contra el POA: son meta-narrativa del proceso. Es el MAYOR falso positivo del motor v0.1. Acción: categoría 'proceso_rendicion' y excluirlas del ICN de gestión."
     },
     {
       "id": "MN2024-019",
@@ -706,9 +706,9 @@
       },
       "relaciones_encontradas": "promesa_sin_ejecucion",
       "resultado_automatico": "promesa_sin_ejecucion",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "proceso_rendicion",
+      "explicacion": "Reunión de comisiones para revisar formulario del proceso.",
+      "regla_aprendida": "Proceso de rendición != gestión. Las unidades sobre la METODOLOGÍA del evento de rendición (conformación de comisiones, talleres, reuniones, fechas, solicitud/recepción de documentación, mesas de trabajo, difusión del informe) NO son afirmaciones de gestión pública verificables contra el POA: son meta-narrativa del proceso. Es el MAYOR falso positivo del motor v0.1. Acción: categoría 'proceso_rendicion' y excluirlas del ICN de gestión."
     },
     {
       "id": "MN2024-020",
@@ -743,9 +743,9 @@
       },
       "relaciones_encontradas": "promesa_sin_ejecucion",
       "resultado_automatico": "promesa_sin_ejecucion",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "proceso_rendicion",
+      "explicacion": "Publicación y difusión del informe (cierre del proceso).",
+      "regla_aprendida": "Proceso de rendición != gestión. Las unidades sobre la METODOLOGÍA del evento de rendición (conformación de comisiones, talleres, reuniones, fechas, solicitud/recepción de documentación, mesas de trabajo, difusión del informe) NO son afirmaciones de gestión pública verificables contra el POA: son meta-narrativa del proceso. Es el MAYOR falso positivo del motor v0.1. Acción: categoría 'proceso_rendicion' y excluirlas del ICN de gestión."
     },
     {
       "id": "MN2024-021",
