@@ -127,5 +127,35 @@ narrativa es coherente? ¿cuándo hay contradicción? ¿qué es un silencio inst
 decisión se **fundamenta en casos anteriores** → el motor se vuelve consistente, explicable y auditable.
 Es el activo que **independiza a QUIRA de los modelos generalistas**. La misión de la Fase A.
 
+## 14 · Directiva metodológica (asesor + Javo · 2026-07-06) — CONGELAR v0.1
+**El motor v0.1 se CONGELA — estado `LOCKED`:** no se toca, no se mejora, no se cambian prompts ni
+embeddings. Es el **sujeto experimental**. Modificarlo con 45/98 calibrado destruiría la capacidad de
+medir su error real. **NO se construye el v0.2 todavía.**
+
+**Propósito del motor (Javo):** NO interesa *cómo se llevó el proceso* de rendición —eso lo custodian el
+CPCCS y la asamblea ciudadana—. Interesa el **discurso de la autoridad y sus cumplimientos**. Por eso R1
+(filtrar proceso) es **doctrina**, no una simple mejora.
+
+**Sub-etapas de la estabilización del motor (asesor · dentro de la Fase A):**
+- **A1 — Banco de Casos 100%:** terminar los **98/98** sin tocar el algoritmo *(actual: 45/98)*.
+- **A2 — Matriz de confusión + taxonomía de errores:** precisión · recall · F1 · sensibilidad ·
+  especificidad. Recién con los 98.
+- **A3 — Diseño del Motor v0.2 (con evidencia, no intuición):** (1) filtro proceso/gestión [R1] · (2) capa
+  **PRESUPUESTO/eSIGEF** [R4] · (3) capa **PAC/SERCOP** (Javo: verificar si lo dicho tiene contrato en el
+  portal; si no, es **"paja"**) · (4) validar coincidencia de eje [R2].
+- **A4 — Comparación v0.1 vs v0.2** sobre el **mismo corpus** → demostrar científicamente la mejora.
+
+**NO calcular el ICN todavía (asesor):** depende de pesos/categorías/umbrales aún no estabilizados. Primero
+se descubre el comportamiento, luego se diseña el índice. Nunca al revés.
+
+**NO tocar d04 (asesor):** ni eliminar ni redefinir. Que el motor sea el centro transversal de inteligencia
+es aún **hipótesis**. Primero motor validado, después Constitución.
+
+**Banco de Casos — 16 campos (asesor):** ID · Video · Timestamp · Narrativa original · Unidad narrativa ·
+Claims derivados · Clasificación automática · Clasificación humana · Nivel de discrepancia · Tipo de error ·
+Fuente documental utilizada · Fuente documental faltante · Explicación · Regla aplicada · Regla nueva ·
+Versión del algoritmo · Fecha · Evaluador. *No es un dataset: es un **corpus doctrinario** —difícil de
+replicar, uno de los activos intelectuales más valiosos de QUIRA.*
+
 ---
-*PCD-MN01 · Dylus Lab © 2026 · el Motor Narrativo, motor transversal · corpus doctrinario propio · fase de calibración.*
+*PCD-MN01 · Dylus Lab © 2026 · el Motor Narrativo, motor transversal (v0.1 LOCKED) · corpus doctrinario propio.*
