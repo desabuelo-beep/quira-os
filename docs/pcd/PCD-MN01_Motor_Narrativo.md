@@ -16,9 +16,12 @@ Relacional → **Narrativo** → Causal → Prospectivo → Conversacional). Por
 de Expansión Ontológica** (Constitución §Mutabilidad: las capacidades transversales —como la Congruencia—
 no son dominios ni disparan el gate). Se evaluaron igual las 6 condiciones: cumple **1/2/4** (exportabilidad
 · masa crítica de información propia · ancla a fuente real), pero **no procede como dominio** porque (a) se
-solaparía con d09 —donde nació la fidelidad MFN (H34b)—, y (b) el slot d04 "Alertas Institucionales" es del
-**Macroeje 2 (Capacidad Operativa)**, incoherente con la naturaleza de **Transparencia/Control Social** del
-motor. Encuadrarlo como motor evita degradar la ontología en catálogo y respeta la Regla del gate.
+relaciona con d09 pero **no le pertenece** —allí se **descubrió** (fue el primer laboratorio), no *nació*
+(corrección del asesor): el mismo motor verificará mañana un discurso presidencial, una rueda de prensa
+ministerial o un informe del Banco Central—, y (b) el slot d04 es del **Macroeje 2 (Capacidad Operativa)**,
+incoherente con la naturaleza de **Transparencia/Control Social** del motor. Un **dominio** responde *¿qué
+área del Estado observo?* (vertical); un **motor** responde *¿cómo genero inteligencia sobre cualquier área?*
+(horizontal). Son planos distintos: encuadrarlo como motor respeta la ontología.
 - **Qué alimenta:** hoy d09 (fidelidad narrativa RDC · `H34b`); al escalar, cualquier dominio + el grafo.
 - **Vista propia (si se construye):** decisión de UI aparte, en el **Macroeje 3**, **nunca en d04**.
 - **d04 "Alertas Institucionales":** su eventual retiro es un tema **separado** (no lo resuelve este motor);
@@ -78,5 +81,35 @@ Hoy el grafo conecta documentos; mañana conecta **narrativas**:
 - **Versionado:** `3de6a6c` diseño v0.2 → `e8e78f2` identidad → `50a9fcb` transcripción → `f44cd57`
   98 unidades → `d452682` cruce 5 capas.
 
+## 11 · Actualización del asesor (2026-07-06) — el corpus doctrinario propio
+El **activo más valioso** que se construye (Javo + asesor): los 98 casos del RDC 2024 **no son solo
+validación** — son el **nacimiento del corpus de entrenamiento propio de QUIRA**. Con él, la plataforma
+dejará de depender de modelos generalistas: tendrá **doctrina, jurisprudencia, banco de casos y lenguaje**
+propios. Vale más que cualquier ajuste de prompts.
+
+**Nombre (asesor):** "Motor Narrativo" queda pequeño → **MIN** (Motor de Inteligencia Narrativa) o **MCN**
+(Motor de Congruencia Narrativa): analiza *Narrativa → Evidencia → Congruencia → Integridad*. Scoring =
+**ICN**. Javo define el definitivo.
+
+**Banco de Casos — estructura ampliada (asesor):**
+`CASO → Narrativa original → Unidad narrativa → Claims → Evidencia encontrada → Relaciones encontradas →
+Resultado automático → Corrección humana → Explicación → Regla aprendida → Versión del algoritmo`.
+
+### Propuestas ontológicas (para consenso de mesa + propagación — NO ejecutadas)
+- **d04 se REDEFINE, no se elimina:** "Alertas Institucionales" era pobre → **"Inteligencia Institucional"**:
+  una **vista transversal** (no un dominio operativo) donde confluyen SAT · alertas · Motor Narrativo · Motor
+  Causal · riesgos · tendencias · predicciones. El centro de inteligencia institucional. *(Cambio de dominio →
+  dispara propagación Protocolo cond.5 + consenso cond.6 → se ejecuta con Javo.)*
+- **Formalizar los Motores en la Constitución (asesor · importante):** los Motores de Inteligencia
+  (Transversales) existen **de facto** pero sin el rango formal de los dominios. Institucionalizarlos ahora
+  evita que cada motor futuro (Causal · Prospectivo · Jurídico · Conversacional) repita la duda "¿cajón o
+  motor?". → editar `CONSTITUCION_ONTOLOGICA_QUIRA.md` **con aval de Javo** (Regla 5).
+
+## 12 · Hoja de ruta (asesor · reemplaza el orden previo)
+- **Fase 1 (actual):** Banco de Casos · Matriz de Validación · FP/FN · ICN · Calibración.
+- **Fase 2:** RDC 2025 · comparación 2024↔2025 · estabilidad del motor.
+- **Fase 3:** Presidente · Ministros · Prefectos · otras autoridades.
+- **Fase 4:** entrenamiento doctrinal propio · embeddings especializados · Motor Narrativo **v2**.
+
 ---
-*PCD-MN01 · Dylus Lab © 2026 · el Motor Narrativo emancipado · fase de calibración científica.*
+*PCD-MN01 · Dylus Lab © 2026 · el Motor Narrativo, motor transversal · corpus doctrinario propio · fase de calibración.*
