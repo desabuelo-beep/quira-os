@@ -157,5 +157,29 @@ Fuente documental utilizada · Fuente documental faltante · Explicación · Reg
 Versión del algoritmo · Fecha · Evaluador. *No es un dataset: es un **corpus doctrinario** —difícil de
 replicar, uno de los activos intelectuales más valiosos de QUIRA.*
 
+## 15 · Resultado de la Fase A — matriz de confusión (2026-07-06)
+Los **98 casos** del RDC 2024 calibrados uno por uno (motor v0.1 `LOCKED`). Verdad humana: 36 OK ·
+20 proceso_rendición · 14 falso_positivo_evidencia · 13 cifra_financiera · 7 logro_cobertura ·
+5 meta_narrativa · 3 verificar_pac.
+
+**Precisión global: 37% (36/98).** Lectura clave: **48/98 son categorías que el POA no cubre** (proceso,
+cifras financieras, cobertura de servicios, contratación, retórica). De los **50 casos que sí son obra
+verificable contra el POA, el motor acierta 36 = 72%**. El núcleo del cruce es sólido; el error está en las
+**fuentes documentales que faltan**, no en el algoritmo base.
+
+**Roadmap del Motor v0.2 — con evidencia dura (no intuición):**
+
+| Mejora | Regla | Efecto medido en el corpus |
+|---|---|---|
+| Filtro proceso/gestión | R1 | −20 falsos positivos |
+| Validar coincidencia de eje | R2 | −14 falsos positivos |
+| Capa PRESUPUESTO / eSIGEF | R4 | +13 cifras financieras verificables |
+| Registro de programa (patronato, acción social) | R6 | +7 coberturas de servicio |
+| Capa PAC/SERCOP (punto de Javo) | R7 | +3 obras en contratación ("¿es paja?") |
+| Filtro meta-narrativa | R3 | −5 retórica de marco |
+
+**Estado Fase A:** A1 (Banco 98/98) ✅ · A2 (matriz + taxonomía) ✅ · sigue **A3 (diseño v0.2 con esta
+evidencia)** · A4 (comparación v0.1↔v0.2 mismo corpus). El ICN se diseña **después** de A3 (asesor).
+
 ---
-*PCD-MN01 · Dylus Lab © 2026 · el Motor Narrativo, motor transversal (v0.1 LOCKED) · corpus doctrinario propio.*
+*PCD-MN01 · Dylus Lab © 2026 · el Motor Narrativo, motor transversal (v0.1 LOCKED) · corpus doctrinario propio · Fase A cerrada.*
