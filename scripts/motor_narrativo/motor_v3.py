@@ -37,18 +37,25 @@ from extract_poa_pdf import extract_poa
 from extract_pac_docx import extract_pac
 from extract_informe_docx import extract_informe
 from extract_cedula_xls import ejecucion_gastos
+from extract_literal_d_xls import servicios_patronato
 # reutiliza los helpers del v0.2 (no se duplican): filtro proceso + eje + embed
 from motor_v2 import TH, POA_AÑOS, _proc, _eje_de, _embed
 
 TH_PAC = 0.45  # mismo umbral; el guard real es la coincidencia de eje (R2)
 TH_INF = 0.50  # corroboración CPCCS: el informe es la voz ESCRITA del mismo actor
+TH_COB = 0.45  # R6 · cruce de cobertura contra el registro Literal D del patronato
 TOL_EJEC = 2.0  # tolerancia (puntos %) para dar por coincidente la ejecución declarada
 
 # R4 · claim financiero (agregado): ejecución/ingresos/deuda. NO cifras de obra
 # (esas van al POA/PAC). El % afirmado se extrae para contrastar con la cédula.
-_FIN = re.compile(r"\b(ejecuci[oó]n|ingresos?|recaud|deuda|equidad\s+territorial|presupuestari)\b", re.I)
+# nota: SIN \b final → permite prefijos (recaud→recaudaron, presupuestari→presupuestaria)
+_FIN = re.compile(r"\b(ejecuci[oó]n|ingreso|recaud|deuda|equidad\s+territorial|presupuestari)", re.I)
 _PCT = re.compile(r"(\d+(?:[.,]\d+)?)\s*%")
 _CIFRA = re.compile(r"\d\s*%|millones?|mill[oó]n|d[oó]lares|\$\s*\d", re.I)  # el claim trae cifra financiera
+# R6 · claim de cobertura de servicio (atenciones/beneficiarios) — se cruza con Literal D.
+# SIN \b final → atenci→atenciones, benefici→beneficiados, brigada→brigadas.
+_COB = re.compile(r"\b(atenci|atendi|benefici|brigada|personas|usuarios|pacientes|"
+                  r"centro di|servicios? m[eé]dico|cobertura)", re.I)
 _HIST = re.compile(r"\b(2019|2020|2021|2022|2023)\b")  # año histórico (fuera de la cédula del discurso)
 
 # tokens genéricos de gobierno/obra (no distinguen una obra de otra) — se ignoran
@@ -89,6 +96,23 @@ def _r4(texto: str, ced: dict | None) -> dict:
             "evidencia": "ingresos/deuda: la DPE no publica cédula de ingresos → el ciudadano no puede comprobarlo"}
 
 
+def _r6(vec, svc_emb, svc_items, meses: int) -> dict:
+    """CAPA R6 · cobertura de servicio. Cruza el claim contra el registro Literal D del
+    patronato (servicio → personas). Ventana honesta: 2024 solo sep–dic → nivel PARCIAL;
+    jamás se extrapola al año ni se iguala 'personas' (registro) con 'atenciones' (discurso)."""
+    if svc_emb is None:
+        return {"clase": "sin_evidencia_publica",
+                "evidencia": "cobertura: sin registro público del patronato para el año"}
+    s = vec @ svc_emb.T
+    k = int(np.argmax(s))
+    if float(s[k]) >= TH_COB:
+        svc, n = svc_items[k]
+        return {"clase": "verif_cobertura", "score": round(float(s[k]), 3),
+                "evidencia": f"Literal D: '{svc[:44]}' {n:,.0f} personas ({meses}m disponibles · parcial)"}
+    return {"clase": "sin_evidencia_publica",
+            "evidencia": "cobertura sin correlato en el registro público del patronato"}
+
+
 def _nivel_evidencia(res: dict) -> str:
     """Taxonomía de VERIFICABILIDAD PÚBLICA (asesor 2026-07-07). QUIRA no certifica
     verdad: certifica el NIVEL de evidencia pública de cada afirmación. Inexpugnable —
@@ -99,6 +123,8 @@ def _nivel_evidencia(res: dict) -> str:
         return "independiente"      # registro administrativo EXTERNO (POA/PAC/cédula/SERCOP)
     if cl == "discrepa_ejecucion":
         return "contradiccion"      # hay evidencia pública y CONTRADICE lo declarado
+    if cl == "verif_cobertura":
+        return "parcial"            # registro Literal D con ventana temporal limitada (sep–dic 2024)
     if res.get("en_informe"):
         return "institucional"      # solo en el documento del PROPIO actor (informe CPCCS)
     return "sin_evidencia_publica"  # ni externo ni institucional (incl. documento no publicado)
@@ -119,6 +145,10 @@ def clasificar(video_id: str, año: str = "2024") -> list[dict]:
     inf = list(extract_informe(año, "GAD"))
     INF = _embed(model, inf) if inf else None
     ced = ejecucion_gastos(año)  # cédula oficial de gastos (capa R4 · ejecución)
+    svc = servicios_patronato(año)  # registro Literal D del patronato (capa R6 · cobertura)
+    svc_items = list(svc["servicios"].items()) if svc else []
+    SVC = _embed(model, [k for k, _ in svc_items]) if svc_items else None
+    svc_meses = svc["meses"] if svc else 0
 
     def _mejor(vec, banco_emb, banco_txt, eje_u, th, tipos=None):
         """mejor match del banco con eje coincidente (R2). -> (score, evidencia).
@@ -183,6 +213,8 @@ def clasificar(video_id: str, año: str = "2024") -> list[dict]:
                 res = {"clase": "en_contratacion", "score": round(bp, 3), "evidencia": f"PAC {evp}"}
             elif _FIN.search(texto) and _CIFRA.search(texto):   # R4 · claim financiero (cédula)
                 res = _r4(texto, ced)
+            elif _COB.search(texto):                            # R6 · cobertura (registro Literal D)
+                res = _r6(U[i], SVC, svc_items, svc_meses)
             else:
                 res = {"clase": "sin_correlato", "score": round(max(best, bp), 3)}
         # capa CPCCS (evidencia · aditiva, no cambia la clase de verificación)
@@ -213,7 +245,8 @@ if __name__ == "__main__":
            or (h == "OK" and cl == "coherente") \
            or (h == "verificar_pac" and cl in ("en_contratacion", "coherente")) \
            or (h == "cifra_financiera" and cl in ("verif_ejecucion", "sin_evidencia_publica", "discrepa_ejecucion", "sin_correlato")) \
-           or (h in ("falso_positivo_evidencia", "logro_cobertura", "meta_narrativa") and cl == "sin_correlato"):
+           or (h == "logro_cobertura" and cl in ("verif_cobertura", "sin_evidencia_publica", "sin_correlato")) \
+           or (h in ("falso_positivo_evidencia", "meta_narrativa") and cl == "sin_correlato"):
             ok += 1
         if h == "verificar_pac":
             aciertos_pac.append((c["id"], cl, p.get("evidencia", "")))
@@ -238,10 +271,16 @@ if __name__ == "__main__":
     for c, p in zip(banco, v3):
         if c["correccion_humana"] == "cifra_financiera" and p["clase"] in ("verif_ejecucion", "discrepa_ejecucion"):
             print(f"      {c['id']} -> {p['clase']}: {p.get('evidencia', '')[:78]}")
+    # CAPA R6 · coberturas de servicio vs registro Literal D del patronato
+    r6d = Counter(p["clase"] for c, p in zip(banco, v3) if c["correccion_humana"] == "logro_cobertura")
+    print(f"   CAPA R6 · 7 coberturas · distribución: {dict(r6d)}")
+    for c, p in zip(banco, v3):
+        if c["correccion_humana"] == "logro_cobertura":
+            print(f"      {c['id']} -> {p['clase']}: {p.get('evidencia', '')[:72]}")
     # TAXONOMÍA DE EVIDENCIA PÚBLICA (asesor) — el veredicto inexpugnable: no certifica
     # verdad, certifica el NIVEL de respaldo público de cada afirmación sustantiva.
     niv = Counter(p.get("nivel_evidencia") for p in v3 if p.get("nivel_evidencia"))
     print("   NIVEL DE EVIDENCIA PÚBLICA (afirmaciones sustantivas · no-proceso):")
-    for k in ("independiente", "institucional", "contradiccion", "sin_evidencia_publica"):
+    for k in ("independiente", "institucional", "parcial", "contradiccion", "sin_evidencia_publica"):
         if niv.get(k):
             print(f"      {k}: {niv[k]}")

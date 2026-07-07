@@ -275,5 +275,25 @@ el hallazgo "el GAD publica gastos pero oculta ingresos" pertenecen al **dominio
 RDC**. Como métrica nueva, el IEP **nace en el CANON, no en Python** (Regla 9). Aquí queda el insumo
 (los niveles por afirmación); el IEP se define en Transparencia.
 
+## 20 · Capa R6 — coberturas vs registro Literal D del patronato (2026-07-07)
+Fuente (Javo): `Literal D servicios institucionales/Patronato/*.xlsx` (LOTAIP Numeral 5-22) — registro
+oficial MENSUAL: servicio → "número de personas que acceden". No está en el canon ni en Supabase → se
+lee directo (`extract_literal_d_xls.py`). **Ventana honesta (aval Javo):** 2024 solo sep–dic (34,804
+personas/4 meses); 2025 completo (114,559/12 meses). JAMÁS se extrapola al año.
+
+Implementada (`_r6` en `motor_v3.py`): cruza las coberturas del discurso contra los servicios del
+registro. Match → `verif_cobertura` (nivel **parcial**: ventana + métrica distinta — el registro mide
+"personas", el discurso "atenciones"; se reporta el dato real sin igualar). Resultado (7 coberturas):
+**1 verificada** (059 Centro Diurno del Buen Vivir), 6 `sin_evidencia_publica` (Acción Social y servicios
+que no cruzan; las obras-beneficio 090/097 no son servicios del patronato). Honesto: la cobertura anual/
+atenciones no es plenamente verificable con un registro de ventana parcial.
+
+**Bug corregido:** el `\b` FINAL en las regex `_FIN`/`_COB` rompía el match por prefijo
+(atenci≠atenciones); removido → los claims de cobertura ya entran a R6.
+
+**Estado del motor — 5 capas + taxonomía:** POA · PAC/SERCOP · R4 cédula · R6 patronato + corroboración
+CPCCS → `nivel_evidencia` por afirmación. RDC 2024 (78 sustantivas): **45 independiente · 12 institucional
+· 2 parcial · 19 sin evidencia pública** (+20 proceso). R4-ingresos/deuda = sin fuente pública (§19).
+
 ---
 *PCD-MN01 · Dylus Lab © 2026 · el Motor Narrativo, motor transversal (v0.1 LOCKED · v0.3 con capa PAC) · corpus doctrinario propio.*
