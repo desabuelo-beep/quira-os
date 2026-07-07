@@ -1,0 +1,3637 @@
+{
+  "motor": "Motor Narrativo (MIN/MCN)",
+  "fuente": "RDC 2024",
+  "video_id": "mqDT5jKXHW8",
+  "version_algoritmo": "mn-v0.1",
+  "n_casos": 98,
+  "n_corregidos": 0,
+  "_nota": "Jurisprudencia algorítmica de QUIRA. correccion_humana/explicacion/regla_aprendida se llenan uno por uno (Fase A calibración). NO exponer resultados hasta cerrar la matriz FP/FN.",
+  "casos": [
+    {
+      "id": "MN2024-001",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 872,
+        "texto": "El Plan Bicentenario proporciona una hoja de ruta para los próximos 50 años con visión de desarrollo urbano rural sostenible e innovador"
+      },
+      "unidad_narrativa": {
+        "tipo": "compromiso",
+        "obra": "Plan Bicentenario",
+        "objetivo": "Guiar desarrollo del cantón para próximos 50 años",
+        "causalidad": "Visión compartida para transformación territorial",
+        "magnitud": "50 años",
+        "eje": "institucional"
+      },
+      "claims": [
+        "El Plan Bicentenario proporciona una hoja de ruta para los próximos 50 años con visión de desarrollo urbano rural sostenible e innovador"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.572,
+          "evidencia": "Desarrollo e implementación de Planes Estratégicos Institucionales · Servicios Profesionales: Implementacion d",
+          "anio": 2025,
+          "monto": 14400.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.636
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-002",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 859,
+        "texto": "Se inicia proceso de transformación del cantón con planificación, orden y justicia territorial"
+      },
+      "unidad_narrativa": {
+        "tipo": "compromiso",
+        "obra": "Transformación territorial de Montecristi",
+        "objetivo": "Transformar cada rincón del cantón desde su esencia",
+        "causalidad": "Planificación, orden y justicia territorial",
+        "magnitud": "",
+        "eje": "institucional"
+      },
+      "claims": [
+        "Se inicia proceso de transformación del cantón con planificación, orden y justicia territorial"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.51,
+          "evidencia": "Eventos para Fortalecimiento para la reducción de indicadores territoriales del cantón Montecristi relacionado",
+          "anio": 2024,
+          "monto": 10000.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.592
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-003",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 954,
+        "texto": "Avanza en agua potable, infraestructura digna, servicios digitales y espacios para el arte"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Agua potable, infraestructura, servicios digitales, espacios culturales",
+        "objetivo": "Servicios básicos y desarrollo social",
+        "causalidad": "",
+        "magnitud": "",
+        "eje": "agua"
+      },
+      "claims": [
+        "Avanza en agua potable, infraestructura digna, servicios digitales y espacios para el arte"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.673,
+          "evidencia": "Proyecto de Estrategias Integrales de Comunicación y Percepción: Fortaleciendo la Imagen y Vinculación Institu",
+          "anio": 2025,
+          "monto": 73200.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.614
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-004",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 944,
+        "texto": "Se rinde cuentas de obras en agua potable, infraestructura digna, servicios digitales, espacios para el arte, la salud y el deporte"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Agua potable, infraestructura, servicios digitales, arte, salud, deporte",
+        "objetivo": "Desarrollo urbano rural sostenible",
+        "causalidad": "Proyectar Montecristi como ciudad para vivir, invertir y visitar",
+        "magnitud": "",
+        "eje": "agua|infraestructura|cultura|salud|otro"
+      },
+      "claims": [
+        "Se rinde cuentas de obras en agua potable, infraestructura digna, servicios digitales, espacios para el arte, la salud y el deporte"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.681,
+          "evidencia": "Gestión para la nueva infraestructura de · Agua Potable",
+          "anio": 2026,
+          "monto": 10881006.41
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.654
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-005",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 1000,
+        "texto": "Proceso de rendición de cuentas inicia de forma articulada entre ciudadanía y GAP Montecristi en enero de 2024"
+      },
+      "unidad_narrativa": {
+        "tipo": "compromiso",
+        "obra": "Proceso de rendición de cuentas",
+        "objetivo": "Articulación entre ciudadanía y gobierno",
+        "causalidad": "",
+        "magnitud": "",
+        "eje": "institucional"
+      },
+      "claims": [
+        "Proceso de rendición de cuentas inicia de forma articulada entre ciudadanía y GAP Montecristi en enero de 2024"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.565,
+          "evidencia": "Fortalecimiento para la reducción de indicadores territoriales del cantón Montecristi relacionados a las 5 Age",
+          "anio": 2025,
+          "monto": 4250.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.581
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-006",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 1086,
+        "texto": "Taller de capacitación organizado de manera virtual con Consejo de Participación Ciudadana realizado el 3 de abril de 2025"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Taller de capacitación virtual",
+        "objetivo": "Capacitar sobre rendición de cuentas",
+        "causalidad": "",
+        "magnitud": "",
+        "eje": "institucional"
+      },
+      "claims": [
+        "Taller de capacitación organizado de manera virtual con Consejo de Participación Ciudadana realizado el 3 de abril de 2025"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.666,
+          "evidencia": "Promoción de la formación, participación · A Entidades Descentralizadas y Autónomas",
+          "anio": 2026,
+          "monto": 30000.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.583
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-007",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 1086,
+        "texto": "Reunión en auditorio el 14 de abril de 2025 para elaborar hoja de ruta del proceso de rendición de cuenta del año 2024"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Elaboración de hoja de ruta",
+        "objetivo": "Planificar actividades de rendición de cuentas",
+        "causalidad": "",
+        "magnitud": "",
+        "eje": "institucional"
+      },
+      "claims": [
+        "Reunión en auditorio el 14 de abril de 2025 para elaborar hoja de ruta del proceso de rendición de cuenta del año 2024"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.505,
+          "evidencia": "Proyecto de Estrategias Integrales de Comunicación y Percepción: Fortaleciendo la Imagen y Vinculación Institu",
+          "anio": 2025,
+          "monto": 10000.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.582
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-008",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 1139,
+        "texto": "Actividades de organización de mesa de trabajo coordinadas para los días 28, 29 y 30 de abril de 2025"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Organización de mesa de trabajo",
+        "objetivo": "Consulta ciudadana sobre temas de rendición de cuentas",
+        "causalidad": "",
+        "magnitud": "",
+        "eje": "institucional"
+      },
+      "claims": [
+        "Actividades de organización de mesa de trabajo coordinadas para los días 28, 29 y 30 de abril de 2025"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.536,
+          "evidencia": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE · Equipos, Sistemas y Paquetes Informáticos",
+          "anio": 2026,
+          "monto": 15000.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.593
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-009",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 1167,
+        "texto": "Se solicitó documentación al GAC Montecristi: PDOT vigente, plan de campaña, plan operativo anual 2024, presupuesto participativo y listado de empresas públicas"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Recopilación de documentación institucional",
+        "objetivo": "Preparar información para evaluación de gestión",
+        "causalidad": "",
+        "magnitud": "",
+        "eje": "institucional"
+      },
+      "claims": [
+        "Se solicitó documentación al GAC Montecristi: PDOT vigente, plan de campaña, plan operativo anual 2024, presupuesto participativo y listado de empresas públicas"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.594,
+          "evidencia": "Proyecto de Estrategias Integrales de Comunicación y Percepción: Fortaleciendo la Imagen y Vinculación Institu",
+          "anio": 2025,
+          "monto": 10000.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.669
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-010",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 1180,
+        "texto": "Se recibió documentación completa del GAC Montecristi el 21 de abril de 2025"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Recepción de documentación",
+        "objetivo": "Contar con insumos para rendición de cuentas",
+        "causalidad": "",
+        "magnitud": "",
+        "eje": "institucional"
+      },
+      "claims": [
+        "Se recibió documentación completa del GAC Montecristi el 21 de abril de 2025"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.535,
+          "evidencia": "Proyecto de Estrategias Integrales de Comunicación y Percepción: Fortaleciendo la Imagen y Vinculación Institu",
+          "anio": 2025,
+          "monto": 10000.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.543
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-011",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 1206,
+        "texto": "Se conformó equipo técnico y dos subcomisiones el 15 de abril para evaluar proceso y organizar evento de rendición pública"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Conformación de comisiones de evaluación",
+        "objetivo": "Evaluar gestión institucional y organizar rendición pública",
+        "causalidad": "",
+        "magnitud": "",
+        "eje": "institucional"
+      },
+      "claims": [
+        "Se conformó equipo técnico y dos subcomisiones el 15 de abril para evaluar proceso y organizar evento de rendición pública"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.478,
+          "evidencia": "Fortalecimiento del Sistema de Información Territorial Municipal · Contratación equipo tecnico especializado e",
+          "anio": 2025,
+          "monto": 99970.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.551
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-012",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 1307,
+        "texto": "Rendición de cuenta para el Consejo de Participación Ciudadana presentada a través de plataforma virtual"
+      },
+      "unidad_narrativa": {
+        "tipo": "compromiso",
+        "obra": "Rendición de cuenta pública",
+        "objetivo": "Informar a la ciudadanía",
+        "causalidad": "",
+        "magnitud": "",
+        "eje": "institucional"
+      },
+      "claims": [
+        "Rendición de cuenta para el Consejo de Participación Ciudadana presentada a través de plataforma virtual"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.587,
+          "evidencia": "Proyecto de Estrategias Integrales de Comunicación y Percepción: Fortaleciendo la Imagen y Vinculación Institu",
+          "anio": 2025,
+          "monto": 150900.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.602
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-013",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 1320,
+        "texto": "Redactar informe de rendición de cuenta para la ciudadanía en forma conjunta con la Asamblea Ciudadana"
+      },
+      "unidad_narrativa": {
+        "tipo": "compromiso",
+        "obra": "Informe de rendición de cuenta",
+        "objetivo": "Informar conjuntamente con Asamblea Ciudadana",
+        "causalidad": "",
+        "magnitud": "",
+        "eje": "institucional"
+      },
+      "claims": [
+        "Redactar informe de rendición de cuenta para la ciudadanía en forma conjunta con la Asamblea Ciudadana"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.602,
+          "evidencia": "Fortalecimiento para la reducción de indicadores · Capacitación para la Ciudadanía en General",
+          "anio": 2026,
+          "monto": 1500.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.601
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-014",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 1389,
+        "texto": "Se realizaron mesas de trabajo los días 28, 29 y 30 de abril en comunidades y sectores del cantón Montecriste"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Mesas de trabajo",
+        "objetivo": "Deliberación pública en territorios",
+        "causalidad": "",
+        "magnitud": "3 días",
+        "eje": "institucional"
+      },
+      "claims": [
+        "Se realizaron mesas de trabajo los días 28, 29 y 30 de abril en comunidades y sectores del cantón Montecriste"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.512,
+          "evidencia": "Promoción de la formación, participación ciudadana y liderazgo en el cantón Montecristi · Contratación de serv",
+          "anio": 2025,
+          "monto": 5600.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.473
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-015",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 1403,
+        "texto": "El 5 de mayo de 2024 se enviaron formalmente preguntas al GAC Montecriste y instituciones adscritas"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Envío de preguntas ciudadanas",
+        "objetivo": "Recolectar demandas para respuestas institucionales",
+        "causalidad": "",
+        "magnitud": "",
+        "eje": "institucional"
+      },
+      "claims": [
+        "El 5 de mayo de 2024 se enviaron formalmente preguntas al GAC Montecriste y instituciones adscritas"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.487,
+          "evidencia": "Proyecto de Estrategias Integrales de Comunicación y Percepción: Fortaleciendo la Imagen y Vinculación Institu",
+          "anio": 2025,
+          "monto": 10000.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.47
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-016",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 1523,
+        "texto": "El 5 de junio de 2025 se reunió comisión 1 para liberar evaluación y gestión institucional, revisión de respuestas a demandas ciudadanas"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Sesión de evaluación institucional",
+        "objetivo": "Revisar respuestas a demandas ciudadanas",
+        "causalidad": "",
+        "magnitud": "",
+        "eje": "institucional"
+      },
+      "claims": [
+        "El 5 de junio de 2025 se reunió comisión 1 para liberar evaluación y gestión institucional, revisión de respuestas a demandas ciudadanas"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": false,
+          "score": 0.449,
+          "evidencia": "",
+          "anio": null,
+          "monto": 0.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.574
+        }
+      },
+      "relaciones_encontradas": "promesa_sin_ejecucion",
+      "resultado_automatico": "promesa_sin_ejecucion",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-017",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 1549,
+        "texto": "El 9 de junio de 2025 se reunió comisión 2 para deliberación pública del informe de rendición de cuenta del año 2024"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Deliberación pública",
+        "objetivo": "Presentar informe de rendición de cuenta 2024",
+        "causalidad": "",
+        "magnitud": "",
+        "eje": "institucional"
+      },
+      "claims": [
+        "El 9 de junio de 2025 se reunió comisión 2 para deliberación pública del informe de rendición de cuenta del año 2024"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": false,
+          "score": 0.41,
+          "evidencia": "",
+          "anio": null,
+          "monto": 0.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.502
+        }
+      },
+      "relaciones_encontradas": "promesa_sin_ejecucion",
+      "resultado_automatico": "promesa_sin_ejecucion",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-018",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 1587,
+        "texto": "El 20 de junio de 2025 se coordinó sesión en sala de reuniones de la alcaldía para continuar con actividades de rendición de cuenta del año 2024"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Sesión de continuidad del proceso",
+        "objetivo": "Cumplimiento del proceso de rendición de cuenta 2024",
+        "causalidad": "",
+        "magnitud": "",
+        "eje": "institucional"
+      },
+      "claims": [
+        "El 20 de junio de 2025 se coordinó sesión en sala de reuniones de la alcaldía para continuar con actividades de rendición de cuenta del año 2024"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": false,
+          "score": 0.428,
+          "evidencia": "",
+          "anio": null,
+          "monto": 0.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.532
+        }
+      },
+      "relaciones_encontradas": "promesa_sin_ejecucion",
+      "resultado_automatico": "promesa_sin_ejecucion",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-019",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 1613,
+        "texto": "El 20 de junio de 2025 se reunieron comisión 1 y 2 para revisar formulario de plan de acción y deliberación con hoja de ruta de rendición de cuenta 2024"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Revisión de plan de acción",
+        "objetivo": "Validar plan de acción y deliberaciones para rendición de cuenta 2024",
+        "causalidad": "",
+        "magnitud": "",
+        "eje": "institucional"
+      },
+      "claims": [
+        "El 20 de junio de 2025 se reunieron comisión 1 y 2 para revisar formulario de plan de acción y deliberación con hoja de ruta de rendición de cuenta 2024"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": false,
+          "score": 0.445,
+          "evidencia": "",
+          "anio": null,
+          "monto": 0.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.563
+        }
+      },
+      "relaciones_encontradas": "promesa_sin_ejecucion",
+      "resultado_automatico": "promesa_sin_ejecucion",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-020",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 1769,
+        "texto": "El 20 de junio del 2025 se publicó y se realizó la difusión del informe de rendición de cuentas del año 2024"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Difusión de informe de rendición de cuentas 2024",
+        "objetivo": "Transparencia y participación ciudadana",
+        "causalidad": "",
+        "magnitud": "",
+        "eje": "institucional"
+      },
+      "claims": [
+        "El 20 de junio del 2025 se publicó y se realizó la difusión del informe de rendición de cuentas del año 2024"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": false,
+          "score": 0.444,
+          "evidencia": "",
+          "anio": null,
+          "monto": 0.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.486
+        }
+      },
+      "relaciones_encontradas": "promesa_sin_ejecucion",
+      "resultado_automatico": "promesa_sin_ejecucion",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-021",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 1782,
+        "texto": "El 20 de junio se entregó al alcalde el informe de rendición de cuentas y demanda ciudadana"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Entrega de informe de rendición de cuentas",
+        "objetivo": "Cumplimiento de obligación legal de rendición de cuentas",
+        "causalidad": "",
+        "magnitud": "",
+        "eje": "institucional"
+      },
+      "claims": [
+        "El 20 de junio se entregó al alcalde el informe de rendición de cuentas y demanda ciudadana"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.486,
+          "evidencia": "Optimización y Modernización de la Gestión de Recursos Administrativos Municipales · “Contratación del servici",
+          "anio": 2025,
+          "monto": 4000.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.512
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-022",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 1797,
+        "texto": "El 23 de junio se entregó el informe de rendición de cuentas y se iniciaron entregas de invitaciones a concejales, autoridades civiles, representantes de instituciones educativas y presidentes de Consejos Barriales"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Entrega de informe y convocatoria a ciudadanía",
+        "objetivo": "Participación ciudadana en rendición de cuentas",
+        "causalidad": "",
+        "magnitud": "",
+        "eje": "institucional"
+      },
+      "claims": [
+        "El 23 de junio se entregó el informe de rendición de cuentas y se iniciaron entregas de invitaciones a concejales, autoridades civiles, representantes de instituciones educativas y presidentes de Consejos Barriales"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.506,
+          "evidencia": "Desarrollo e implementación de Planes · Honorarios por Contratos Civiles de Servicios",
+          "anio": 2026,
+          "monto": 14400.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.522
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-023",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 2039,
+        "texto": "Montecristi inició el 2024 enfrentando una deuda heredada de más de 6 millones de dólares y un municipio al borde de la inoperatividad económica"
+      },
+      "unidad_narrativa": {
+        "tipo": "cifra",
+        "obra": "Situación inicial del municipio",
+        "objetivo": "",
+        "causalidad": "Deuda heredada",
+        "magnitud": "6 millones de dólares",
+        "eje": "economía"
+      },
+      "claims": [
+        "Montecristi inició el 2024 enfrentando una deuda heredada de más de 6 millones de dólares y un municipio al borde de la inoperatividad económica"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": false,
+          "score": 0.433,
+          "evidencia": "",
+          "anio": null,
+          "monto": 0.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.521
+        }
+      },
+      "relaciones_encontradas": "promesa_sin_ejecucion",
+      "resultado_automatico": "promesa_sin_ejecucion",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-024",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 2419,
+        "texto": "En 2022 se recaudaron 3.7 millones de dólares en ingresos propios"
+      },
+      "unidad_narrativa": {
+        "tipo": "cifra",
+        "obra": "Recaudación de ingresos propios",
+        "objetivo": "Financiamiento municipal",
+        "causalidad": "",
+        "magnitud": "3.7 millones USD",
+        "eje": "economía"
+      },
+      "claims": [
+        "En 2022 se recaudaron 3.7 millones de dólares en ingresos propios"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": false,
+          "score": 0.402,
+          "evidencia": "",
+          "anio": null,
+          "monto": 0.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.554
+        }
+      },
+      "relaciones_encontradas": "promesa_sin_ejecucion",
+      "resultado_automatico": "promesa_sin_ejecucion",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-025",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 2444,
+        "texto": "En 2024 se incrementaron ingresos propios a 6.2 millones de dólares"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Recaudación de ingresos propios",
+        "objetivo": "Incrementar capacidad de acción municipal",
+        "causalidad": "Esfuerzo institucional",
+        "magnitud": "6.2 millones USD",
+        "eje": "economía"
+      },
+      "claims": [
+        "En 2024 se incrementaron ingresos propios a 6.2 millones de dólares"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": false,
+          "score": 0.373,
+          "evidencia": "",
+          "anio": null,
+          "monto": 0.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.525
+        }
+      },
+      "relaciones_encontradas": "promesa_sin_ejecucion",
+      "resultado_automatico": "promesa_sin_ejecucion",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-026",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 2459,
+        "texto": "En 2025 se proyecta duplicar la recaudación con relación al año 2022"
+      },
+      "unidad_narrativa": {
+        "tipo": "promesa",
+        "obra": "Recaudación de ingresos propios",
+        "objetivo": "Duplicar ingresos para mayor capacidad de acción",
+        "causalidad": "Continuidad de esfuerzo institucional",
+        "magnitud": "Duplicación respecto a 3.7 millones USD",
+        "eje": "economía"
+      },
+      "claims": [
+        "En 2025 se proyecta duplicar la recaudación con relación al año 2022"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": false,
+          "score": 0.369,
+          "evidencia": "",
+          "anio": null,
+          "monto": 0.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.509
+        }
+      },
+      "relaciones_encontradas": "promesa_sin_ejecucion",
+      "resultado_automatico": "promesa_sin_ejecucion",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-027",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 2536,
+        "texto": "En 2022 los ingresos por modelo de equidad territorial fueron 10.5 millones de dólares"
+      },
+      "unidad_narrativa": {
+        "tipo": "cifra",
+        "obra": "Asignación por equidad territorial del gobierno central",
+        "objetivo": "Financiamiento municipal",
+        "causalidad": "",
+        "magnitud": "10.5 millones USD",
+        "eje": "economía"
+      },
+      "claims": [
+        "En 2022 los ingresos por modelo de equidad territorial fueron 10.5 millones de dólares"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": false,
+          "score": 0.369,
+          "evidencia": "",
+          "anio": null,
+          "monto": 0.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.545
+        }
+      },
+      "relaciones_encontradas": "promesa_sin_ejecucion",
+      "resultado_automatico": "promesa_sin_ejecucion",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-028",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 2549,
+        "texto": "En 2024 los ingresos por equidad territorial bajaron a 7.9 millones de dólares"
+      },
+      "unidad_narrativa": {
+        "tipo": "cifra",
+        "obra": "Asignación por equidad territorial",
+        "objetivo": "Financiamiento municipal",
+        "causalidad": "Nuevas resoluciones del gobierno central",
+        "magnitud": "7.9 millones USD",
+        "eje": "economía"
+      },
+      "claims": [
+        "En 2024 los ingresos por equidad territorial bajaron a 7.9 millones de dólares"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": false,
+          "score": 0.331,
+          "evidencia": "",
+          "anio": null,
+          "monto": 0.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.522
+        }
+      },
+      "relaciones_encontradas": "promesa_sin_ejecucion",
+      "resultado_automatico": "promesa_sin_ejecucion",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-029",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 2605,
+        "texto": "En 2019 la ejecución presupuestaria fue del 47%"
+      },
+      "unidad_narrativa": {
+        "tipo": "cifra",
+        "obra": "Ejecución presupuestaria municipal",
+        "objetivo": "Medir eficiencia en gasto",
+        "causalidad": "",
+        "magnitud": "47%",
+        "eje": "institucional"
+      },
+      "claims": [
+        "En 2019 la ejecución presupuestaria fue del 47%"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": false,
+          "score": 0.349,
+          "evidencia": "",
+          "anio": null,
+          "monto": 0.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.499
+        }
+      },
+      "relaciones_encontradas": "promesa_sin_ejecucion",
+      "resultado_automatico": "promesa_sin_ejecucion",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-030",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 2618,
+        "texto": "En 2024 se mejoró la ejecución presupuestaria al 84%"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Ejecución presupuestaria municipal",
+        "objetivo": "Incrementar eficiencia en gasto público",
+        "causalidad": "Sinceramiento del presupuesto",
+        "magnitud": "84%",
+        "eje": "institucional"
+      },
+      "claims": [
+        "En 2024 se mejoró la ejecución presupuestaria al 84%"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.495,
+          "evidencia": "Optimización y Modernización de la Gestión de · De Cuentas por Pagar",
+          "anio": 2026,
+          "monto": 1628375.33
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.534
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-031",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 2722,
+        "texto": "En 2024 se alcanzó ejecución de ingresos del 99.79%"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Ejecución de ingresos municipales",
+        "objetivo": "Maximizar recaudación presupuestada",
+        "causalidad": "",
+        "magnitud": "99.79%",
+        "eje": "economía"
+      },
+      "claims": [
+        "En 2024 se alcanzó ejecución de ingresos del 99.79%"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.473,
+          "evidencia": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE · Tasas Generales, Impuestos, Contribuciiones,",
+          "anio": 2026,
+          "monto": 10000.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.626
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-032",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 2735,
+        "texto": "En 2024 se alcanzó ejecución de egresos del 84.32%"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Ejecución de gastos municipales",
+        "objetivo": "Demostrar eficiencia presupuestaria",
+        "causalidad": "",
+        "magnitud": "84.32%",
+        "eje": "institucional"
+      },
+      "claims": [
+        "En 2024 se alcanzó ejecución de egresos del 84.32%"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": false,
+          "score": 0.415,
+          "evidencia": "",
+          "anio": null,
+          "monto": 0.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.521
+        }
+      },
+      "relaciones_encontradas": "promesa_sin_ejecucion",
+      "resultado_automatico": "promesa_sin_ejecucion",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-033",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 2681,
+        "texto": "La ejecución presupuestaria de 2024 permitió elevar la asignación de equidad territorial para 2025"
+      },
+      "unidad_narrativa": {
+        "tipo": "promesa",
+        "obra": "Asignación por equidad territorial",
+        "objetivo": "Incrementar financiamiento municipal",
+        "causalidad": "Eficiencia presupuestaria demostrada",
+        "magnitud": "",
+        "eje": "economía"
+      },
+      "claims": [
+        "La ejecución presupuestaria de 2024 permitió elevar la asignación de equidad territorial para 2025"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": false,
+          "score": 0.439,
+          "evidencia": "",
+          "anio": null,
+          "monto": 0.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.546
+        }
+      },
+      "relaciones_encontradas": "promesa_sin_ejecucion",
+      "resultado_automatico": "promesa_sin_ejecucion",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-034",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 2892,
+        "texto": "Programa Kuna Emprendedores impartió 47 cursos y benefició a 1164 personas"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Programa Kuna Emprendedores",
+        "objetivo": "Proporcionar herramientas de ingreso a jóvenes padres para dinamizar la economía",
+        "causalidad": "Capacitación en emprendimiento",
+        "magnitud": "47 cursos, 1164 beneficiarios",
+        "eje": "economía"
+      },
+      "claims": [
+        "Programa Kuna Emprendedores impartió 47 cursos y benefició a 1164 personas"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.475,
+          "evidencia": "Contratación de activaciones, btl, difusión de educación vial masiva",
+          "anio": 2024,
+          "monto": 5000.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.468
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-035",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 2931,
+        "texto": "Deuda heredada de aproximadamente 20 millones de dólares reducida en 9 millones (5%)"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Pago de deuda",
+        "objetivo": "Reducir pasivos heredados",
+        "causalidad": "Gestión financiera y priorización de pagos",
+        "magnitud": "Reducción de 9 millones de dólares de deuda (5% del total de 20 millones)",
+        "eje": "institucional"
+      },
+      "claims": [
+        "Deuda heredada de aproximadamente 20 millones de dólares reducida en 9 millones (5%)"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.525,
+          "evidencia": "Deuda de agua potable",
+          "anio": 2024,
+          "monto": 651399.24
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.529
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-036",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 2987,
+        "texto": "Pagó deuda actual con EPAN (empresa de aguas de Manta) y llegó a nuevo acuerdo para resolver limitaciones de agua en barrios entre Manta y Monte Cristi"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Acuerdo con EPAN para suministro de agua",
+        "objetivo": "Garantizar suministro de agua a barrios limitantes",
+        "causalidad": "Demostración de responsabilidad y compromiso con empresa proveedora",
+        "magnitud": "",
+        "eje": "agua"
+      },
+      "claims": [
+        "Pagó deuda actual con EPAN (empresa de aguas de Manta) y llegó a nuevo acuerdo para resolver limitaciones de agua en barrios entre Manta y Monte Cristi"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.637,
+          "evidencia": "Deuda de agua potable",
+          "anio": 2024,
+          "monto": 651399.24
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.486
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-037",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 3080,
+        "texto": "Duplicó ingresos con relación al año 2022"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Incremento de ingresos institucionales",
+        "objetivo": "Mejorar capacidad financiera de la institución",
+        "causalidad": "Gestión administrativa",
+        "magnitud": "100% de aumento respecto a 2022",
+        "eje": "institucional"
+      },
+      "claims": [
+        "Duplicó ingresos con relación al año 2022"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.455,
+          "evidencia": "Remuneraciones y beneficios de ley",
+          "anio": 2024,
+          "monto": 152553.7
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.61
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-038",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 3140,
+        "texto": "Convenio con Universidad Laica Leo Alfaro de Manaví para impartir cursos de gastronomía navideña, primeros auxilios, electricidad básica y agricultura"
+      },
+      "unidad_narrativa": {
+        "tipo": "compromiso",
+        "obra": "Alianza estratégica con Universidad Laica Leo Alfaro",
+        "objetivo": "Capacitación en oficios y habilidades técnicas",
+        "causalidad": "Maximizar recursos con alianzas estratégicas",
+        "magnitud": "",
+        "eje": "educación"
+      },
+      "claims": [
+        "Convenio con Universidad Laica Leo Alfaro de Manaví para impartir cursos de gastronomía navideña, primeros auxilios, electricidad básica y agricultura"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.589,
+          "evidencia": "Promoción de la formación, participación · Alimentos y Bebidas",
+          "anio": 2026,
+          "monto": 6000.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.492
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-039",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 3144,
+        "texto": "27 cursos impartidos en gastronomía navideña, primeros auxilios, electricidad básica y agricultura con la Universidad Laica de Manta"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Cursos de capacitación",
+        "objetivo": "Formación en oficios",
+        "causalidad": "Alianza con universidad y departamento de acción social",
+        "magnitud": "27 cursos",
+        "eje": "cultura"
+      },
+      "claims": [
+        "27 cursos impartidos en gastronomía navideña, primeros auxilios, electricidad básica y agricultura con la Universidad Laica de Manta"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.602,
+          "evidencia": "Promoción de la formación, participación · Alimentos y Bebidas",
+          "anio": 2026,
+          "monto": 6000.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.484
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-040",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 3156,
+        "texto": "856 beneficiarios capacitados con la Universidad Laica de Manta"
+      },
+      "unidad_narrativa": {
+        "tipo": "cifra",
+        "obra": "Programas de capacitación",
+        "objetivo": "Beneficiar a personas en formación",
+        "causalidad": "",
+        "magnitud": "856 beneficiarios",
+        "eje": "cultura"
+      },
+      "claims": [
+        "856 beneficiarios capacitados con la Universidad Laica de Manta"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.458,
+          "evidencia": "SERVICIOS PROFESIONALES PARA EL FORTALECIMIENTO TECNICO DE LA DIRECCIÓN DE OBRAS PÚBLICAS DEL CANTÓN MONTECRIS",
+          "anio": 2025,
+          "monto": 95000.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.472
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-041",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 3182,
+        "texto": "300 jóvenes capacitados en programas con Iglesia Arco Iris"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Programas de capacitación",
+        "objetivo": "Motivar, guiar e inspirar jóvenes",
+        "causalidad": "Convenio con Iglesia Cristiana Arco Iris",
+        "magnitud": "300 jóvenes",
+        "eje": "cultura"
+      },
+      "claims": [
+        "300 jóvenes capacitados en programas con Iglesia Arco Iris"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.459,
+          "evidencia": "Becas Como Subsidio Para Cursos Con Acreditación",
+          "anio": 2024,
+          "monto": 18000.0
+        },
+        "promesa": {
+          "correlato": false,
+          "score": 0.448
+        }
+      },
+      "relaciones_encontradas": "obra_sin_promesa",
+      "resultado_automatico": "obra_sin_promesa",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-042",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 3222,
+        "texto": "Rescate y readecuación del Instituto Artesanal Aníbal Palacios"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Instituto Artesanal Aníbal Palacios",
+        "objetivo": "Recuperar espacio para capacitación artesanal",
+        "causalidad": "Convenio con Mineduc",
+        "magnitud": "20,300 dólares invertidos",
+        "eje": "educación"
+      },
+      "claims": [
+        "Rescate y readecuación del Instituto Artesanal Aníbal Palacios"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.635,
+          "evidencia": "Denominación Origen Artesanos · Menaje y Accesorios Descartable",
+          "anio": 2026,
+          "monto": 3000.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.597
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-043",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 3330,
+        "texto": "Inversión de 20,300 dólares para readecuación y mantenimiento de Unidad Educativa Flavio Palacios"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Unidad Educativa Flavio Palacios",
+        "objetivo": "Mejorar infraestructura y calidad educativa",
+        "causalidad": "Escuela municipal con 100% financiamiento municipal",
+        "magnitud": "20,300 dólares; 220 estudiantes beneficiados",
+        "eje": "educación"
+      },
+      "claims": [
+        "Inversión de 20,300 dólares para readecuación y mantenimiento de Unidad Educativa Flavio Palacios"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.606,
+          "evidencia": "Realizar Trabajos De Readecuación A Los Infocentros Y Centros De Educación",
+          "anio": 2024,
+          "monto": 10000.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.538
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-044",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 3372,
+        "texto": "19 clubes de jóvenes conformados en comunidades rurales y urbanas"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Clubes de jóvenes",
+        "objetivo": "Formar líderes, alejar de alcohol, drogas y delincuencia",
+        "causalidad": "Alianza con Plan Internacional",
+        "magnitud": "19 clubes; 400 jóvenes beneficiados",
+        "eje": "cultura"
+      },
+      "claims": [
+        "19 clubes de jóvenes conformados en comunidades rurales y urbanas"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.537,
+          "evidencia": "Proyecto Integral de Salud y Bienestar Juvenil · “COMPRA DE INSTRUMENTAL MÉDICO QUIRÚRGICO PARA LOS DIFERENTES",
+          "anio": 2025,
+          "monto": 9100.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.568
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-045",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 3480,
+        "texto": "Convenio de becas educativas llegando a 19 unidades educativas y 3,000 jóvenes anuales"
+      },
+      "unidad_narrativa": {
+        "tipo": "compromiso",
+        "obra": "Programa de becas educativas",
+        "objetivo": "Acceso a educación superior pública",
+        "causalidad": "Convenio con administración actual (alcaldesa Marciana Valdivieso)",
+        "magnitud": "19 unidades educativas; 3,000 jóvenes anuales",
+        "eje": "educación"
+      },
+      "claims": [
+        "Convenio de becas educativas llegando a 19 unidades educativas y 3,000 jóvenes anuales"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.681,
+          "evidencia": "Realización de eventos públicos de educación vial",
+          "anio": 2024,
+          "monto": 2000.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.66
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-046",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 3480,
+        "texto": "Se suscribió un convenio con la administración anterior que permitió llegar a 19 unidades educativas beneficiando 3,000 jóvenes anuales"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Convenio educativo",
+        "objetivo": "Aumentar alcance educativo y acceso a cupos universitarios",
+        "causalidad": "Acuerdo institucional con administración anterior",
+        "magnitud": "19 unidades educativas, 3,000 jóvenes/año",
+        "eje": "educación"
+      },
+      "claims": [
+        "Se suscribió un convenio con la administración anterior que permitió llegar a 19 unidades educativas beneficiando 3,000 jóvenes anuales"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.486,
+          "evidencia": "Contratación de activaciones, btl, difusión de educación vial masiva",
+          "anio": 2024,
+          "monto": 5000.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.615
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-047",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 3533,
+        "texto": "300 personas capacitadas en clubes de salud para beneficiar a 3,000 personas con inversión de $9,100"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Clubes de salud",
+        "objetivo": "Capacitación en salud comunitaria",
+        "causalidad": "Programa de salud municipal",
+        "magnitud": "300 capacitados, 3,000 beneficiarios, $9,100 inversión",
+        "eje": "salud"
+      },
+      "claims": [
+        "300 personas capacitadas en clubes de salud para beneficiar a 3,000 personas con inversión de $9,100"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.48,
+          "evidencia": "Compra De Instrumental Médico Quirúrgico Para Los Diferentes Clubes De Salud",
+          "anio": 2024,
+          "monto": 10000.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.557
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-048",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 3548,
+        "texto": "200 personas capacitadas en educación financiera a través del programa Cuna de Emprendedores con convenio de B Ecuador"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Cuna de Emprendedores",
+        "objetivo": "Mejorar capacidades financieras y de venta",
+        "causalidad": "Convenio con B Ecuador",
+        "magnitud": "200 personas capacitadas",
+        "eje": "economía"
+      },
+      "claims": [
+        "200 personas capacitadas en educación financiera a través del programa Cuna de Emprendedores con convenio de B Ecuador"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.561,
+          "evidencia": "Formación y fortalecimiento del Talento Humano · OCASIONALES FONDO DE RESERVA210 · Fondo de Reserva",
+          "anio": 2025,
+          "monto": 5763.44
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.638
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-049",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 3600,
+        "texto": "Departamento de Acción Social benefició a 24,686 personas con inversión aproximada de $27,100"
+      },
+      "unidad_narrativa": {
+        "tipo": "cifra",
+        "obra": "Programas Acción Social",
+        "objetivo": "Beneficio social general",
+        "causalidad": "Gestión del Departamento de Acción Social",
+        "magnitud": "24,686 beneficiarios, $27,100 inversión",
+        "eje": "social"
+      },
+      "claims": [
+        "Departamento de Acción Social benefició a 24,686 personas con inversión aproximada de $27,100"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": false,
+          "score": 0.407,
+          "evidencia": "",
+          "anio": null,
+          "monto": 0.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.493
+        }
+      },
+      "relaciones_encontradas": "promesa_sin_ejecucion",
+      "resultado_automatico": "promesa_sin_ejecucion",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-050",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 3668,
+        "texto": "En 2024 se realizaron 94 brigadas médicas con atención de 15,587 personas y entrega de 100 ayudas técnicas"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Brigadas médicas",
+        "objetivo": "Atención médica comunitaria",
+        "causalidad": "Alianzas con prefectura",
+        "magnitud": "94 brigadas, 15,587 atenciones, 100 ayudas técnicas",
+        "eje": "salud"
+      },
+      "claims": [
+        "En 2024 se realizaron 94 brigadas médicas con atención de 15,587 personas y entrega de 100 ayudas técnicas"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": false,
+          "score": 0.333,
+          "evidencia": "",
+          "anio": null,
+          "monto": 0.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.505
+        }
+      },
+      "relaciones_encontradas": "promesa_sin_ejecucion",
+      "resultado_automatico": "promesa_sin_ejecucion",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-051",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 3680,
+        "texto": "Se realizó estudio para remodelación de emergencia del hospital; se está iniciando ejecución en 2024"
+      },
+      "unidad_narrativa": {
+        "tipo": "compromiso",
+        "obra": "Remodelación de emergencia",
+        "objetivo": "Mejorar infraestructura de salud",
+        "causalidad": "Evaluación y planificación municipal",
+        "magnitud": "",
+        "eje": "salud"
+      },
+      "claims": [
+        "Se realizó estudio para remodelación de emergencia del hospital; se está iniciando ejecución en 2024"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.491,
+          "evidencia": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE · Vehículos (Servicios para Mantenimiento y Reparación)",
+          "anio": 2026,
+          "monto": 20000.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.482
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-052",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 3694,
+        "texto": "Centro diario de Buen Vivir ampliará servicio a 24/7 con inversión de $61,240 y proceso de contratación en ejecución"
+      },
+      "unidad_narrativa": {
+        "tipo": "promesa",
+        "obra": "Repotenciación Centro de Buen Vivir",
+        "objetivo": "Expandir cobertura de servicios de salud a tiempo completo",
+        "causalidad": "Aumento de demanda y cambio de administración",
+        "magnitud": "$61,240 inversión, ampliación de 8 horas a 24/7",
+        "eje": "salud"
+      },
+      "claims": [
+        "Centro diario de Buen Vivir ampliará servicio a 24/7 con inversión de $61,240 y proceso de contratación en ejecución"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.484,
+          "evidencia": "OPTIMIZACIÓN Y MODERNIZACIÓN DE LA GESTIÓN DE · Servicios Técnicos Especializados",
+          "anio": 2026,
+          "monto": 5000.0
+        },
+        "promesa": {
+          "correlato": false,
+          "score": 0.414
+        }
+      },
+      "relaciones_encontradas": "obra_sin_promesa",
+      "resultado_automatico": "obra_sin_promesa",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-053",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 3747,
+        "texto": "Proyecto Alas de Libertad de Fundación FASE benefició a más de 1,069 personas en 2024 sin costo para el municipio"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Proyecto Alas de Libertad",
+        "objetivo": "Atención social integral incluyendo salud mental y protección de derechos",
+        "causalidad": "Convenio con Fundación FASE Iglesia Cristiana",
+        "magnitud": "1,069 personas beneficiadas",
+        "eje": "social"
+      },
+      "claims": [
+        "Proyecto Alas de Libertad de Fundación FASE benefició a más de 1,069 personas en 2024 sin costo para el municipio"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.506,
+          "evidencia": "Manejo sustentable de los recursos de áridos · Honorarios por Contratos Civiles de Servicios",
+          "anio": 2026,
+          "monto": 14400.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.572
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-054",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 3859,
+        "texto": "Se estableció convenio entre el Ministerio de Constitución Económica Social (MES) y el municipio de Montecristi que no existía antes"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Convenio MES-municipio",
+        "objetivo": "Beneficiar de manera social a niños y adultos mayores",
+        "causalidad": "Antes no había convenios; ahora se logró establecerlo",
+        "magnitud": "",
+        "eje": "institucional"
+      },
+      "claims": [
+        "Se estableció convenio entre el Ministerio de Constitución Económica Social (MES) y el municipio de Montecristi que no existía antes"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.51,
+          "evidencia": "Desarrollo del Bienestar Integral para Montecristi · A Entidades Descentralizadas y Autónomas",
+          "anio": 2026,
+          "monto": 932000.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.658
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-055",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 3911,
+        "texto": "Se ha reducido la deuda municipal con el IES en 6.2 millones de dólares; la deuda total es de aproximadamente 20 millones"
+      },
+      "unidad_narrativa": {
+        "tipo": "cifra",
+        "obra": "Reducción de deuda municipal",
+        "objetivo": "Disminuir endeudamiento",
+        "causalidad": "",
+        "magnitud": "6.2 millones reducidos de 20 millones totales",
+        "eje": "economía"
+      },
+      "claims": [
+        "Se ha reducido la deuda municipal con el IES en 6.2 millones de dólares; la deuda total es de aproximadamente 20 millones"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.51,
+          "evidencia": "Deuda de agua potable",
+          "anio": 2024,
+          "monto": 651399.24
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.473
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-056",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 3965,
+        "texto": "Se operan 8 CDIs (Centros de Desarrollo Infantil) para beneficiar a niños en situación de vulnerabilidad"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "8 CDIs",
+        "objetivo": "Atender a niños en situación de vulnerabilidad",
+        "causalidad": "Gracias al convenio con MES",
+        "magnitud": "8 CDIs",
+        "eje": "salud"
+      },
+      "claims": [
+        "Se operan 8 CDIs (Centros de Desarrollo Infantil) para beneficiar a niños en situación de vulnerabilidad"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.547,
+          "evidencia": "Proyecto Integral de Salud y Bienestar Juvenil · “ADQUISION DE SOUVENIRS PARA LOS DIFERENTES PROYECTOS QUE LLE",
+          "anio": 2025,
+          "monto": 3000.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.62
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-057",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 3978,
+        "texto": "Se atienden 306 niñas y niños en situación de vulnerabilidad mediante CDIs y 190 adultos mayores con atención domiciliaria"
+      },
+      "unidad_narrativa": {
+        "tipo": "cifra",
+        "obra": "Atención en CDIs y atención domiciliaria",
+        "objetivo": "Beneficiar a población vulnerable",
+        "causalidad": "",
+        "magnitud": "306 niños y 190 adultos mayores",
+        "eje": "salud"
+      },
+      "claims": [
+        "Se atienden 306 niñas y niños en situación de vulnerabilidad mediante CDIs y 190 adultos mayores con atención domiciliaria"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.508,
+          "evidencia": "Proyecto Integral de Salud y Bienestar Juvenil · “ADQUISION DE SOUVENIRS PARA LOS DIFERENTES PROYECTOS QUE LLE",
+          "anio": 2025,
+          "monto": 3000.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.611
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-058",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 4009,
+        "texto": "Se han realizado 130,038 atenciones a través del patronato con inversión de $900,200"
+      },
+      "unidad_narrativa": {
+        "tipo": "cifra",
+        "obra": "Atenciones del patronato",
+        "objetivo": "Beneficiar a la población",
+        "causalidad": "",
+        "magnitud": "130,038 atenciones; inversión $900,200",
+        "eje": "salud"
+      },
+      "claims": [
+        "Se han realizado 130,038 atenciones a través del patronato con inversión de $900,200"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": false,
+          "score": 0.309,
+          "evidencia": "",
+          "anio": null,
+          "monto": 0.0
+        },
+        "promesa": {
+          "correlato": false,
+          "score": 0.43
+        }
+      },
+      "relaciones_encontradas": "solo_narrativa",
+      "resultado_automatico": "solo_narrativa",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-059",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 4022,
+        "texto": "Centro diario del Buen Vivir atendió 66,898 personas en 2023 y 88,010 atenciones en 2024"
+      },
+      "unidad_narrativa": {
+        "tipo": "cifra",
+        "obra": "Centro diario del Buen Vivir",
+        "objetivo": "Atender a población",
+        "causalidad": "Aumento de cobertura de 2023 a 2024",
+        "magnitud": "66,898 en 2023; 88,010 en 2024",
+        "eje": "salud"
+      },
+      "claims": [
+        "Centro diario del Buen Vivir atendió 66,898 personas en 2023 y 88,010 atenciones en 2024"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": false,
+          "score": 0.364,
+          "evidencia": "",
+          "anio": null,
+          "monto": 0.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.543
+        }
+      },
+      "relaciones_encontradas": "promesa_sin_ejecucion",
+      "resultado_automatico": "promesa_sin_ejecucion",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-060",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 4064,
+        "texto": "Unidad de servicios médicos comunitarios pasó de 1,243 atenciones en 2023 a 15,687 atenciones en 2024"
+      },
+      "unidad_narrativa": {
+        "tipo": "cifra",
+        "obra": "Unidad de servicios médicos comunitarios",
+        "objetivo": "Atender a población con servicios médicos",
+        "causalidad": "Ampliación de servicios",
+        "magnitud": "1,243 en 2023; 15,687 en 2024",
+        "eje": "salud"
+      },
+      "claims": [
+        "Unidad de servicios médicos comunitarios pasó de 1,243 atenciones en 2023 a 15,687 atenciones en 2024"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": false,
+          "score": 0.402,
+          "evidencia": "",
+          "anio": null,
+          "monto": 0.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.689
+        }
+      },
+      "relaciones_encontradas": "promesa_sin_ejecucion",
+      "resultado_automatico": "promesa_sin_ejecucion",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-061",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 4103,
+        "texto": "Proyecto Calarte benefició a 40 artesanos mediante capacitación en combinación de tejidos ancestrales"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Proyecto Calarte",
+        "objetivo": "Repotenciar artesanos y preservar talento ancestral",
+        "causalidad": "Combinación de saberes en tejido fino de paja toquilla con tejido encalado",
+        "magnitud": "40 artesanos",
+        "eje": "economía"
+      },
+      "claims": [
+        "Proyecto Calarte benefició a 40 artesanos mediante capacitación en combinación de tejidos ancestrales"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.518,
+          "evidencia": "Fomento al Emprendimiento Artesanal y el · Menaje y Accesorios Descartable",
+          "anio": 2026,
+          "monto": 5000.0
+        },
+        "promesa": {
+          "correlato": false,
+          "score": 0.427
+        }
+      },
+      "relaciones_encontradas": "obra_sin_promesa",
+      "resultado_automatico": "obra_sin_promesa",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-062",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 4145,
+        "texto": "Proyecto Calarte incluyó capacitación de 5 meses con inversión de $7,000 en 40 artesanos para combinar tejido de paja toquilla con tejido encalado"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Capacitación Proyecto Calarte",
+        "objetivo": "Preservar saberes ancestrales y generar ingresos",
+        "causalidad": "Primera combinación de estas técnicas en la historia de Montecristi",
+        "magnitud": "$7,000; 5 meses; 40 artesanos",
+        "eje": "economía"
+      },
+      "claims": [
+        "Proyecto Calarte incluyó capacitación de 5 meses con inversión de $7,000 en 40 artesanos para combinar tejido de paja toquilla con tejido encalado"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.506,
+          "evidencia": "Contratación materiales didácticos (Activaciones educación vial)",
+          "anio": 2024,
+          "monto": 7600.0
+        },
+        "promesa": {
+          "correlato": false,
+          "score": 0.382
+        }
+      },
+      "relaciones_encontradas": "obra_sin_promesa",
+      "resultado_automatico": "obra_sin_promesa",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-063",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 4145,
+        "texto": "Se invirtieron $7,000 en capacitación de 5 meses en técnica de tejido fino de paja toquilla combinado con tejido encalado"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Capacitación en tejido de paja toquilla con técnica encalada",
+        "objetivo": "Preservar saber ancestral y dar valor agregado al producto",
+        "causalidad": "Inversión directa en capacitación artesanal",
+        "magnitud": "$7,000; 5 meses",
+        "eje": "cultura"
+      },
+      "claims": [
+        "Se invirtieron $7,000 en capacitación de 5 meses en técnica de tejido fino de paja toquilla combinado con tejido encalado"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.479,
+          "evidencia": "Contratación materiales didácticos (Activaciones educación vial)",
+          "anio": 2024,
+          "monto": 7600.0
+        },
+        "promesa": {
+          "correlato": false,
+          "score": 0.269
+        }
+      },
+      "relaciones_encontradas": "obra_sin_promesa",
+      "resultado_automatico": "obra_sin_promesa",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-064",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 4225,
+        "texto": "Montecristi fue nominado por UNESCO como ciudad creativa en 2023"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Nominación UNESCO como ciudad creativa",
+        "objetivo": "Reconocimiento internacional de potencial creativo",
+        "causalidad": "Reconocimiento de artesanía de paja toquilla y creatividad local",
+        "magnitud": "1 de 350 ciudades creativas del mundo (de 500,000 candidatas)",
+        "eje": "cultura"
+      },
+      "claims": [
+        "Montecristi fue nominado por UNESCO como ciudad creativa en 2023"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.56,
+          "evidencia": "Promoción de Montecristi Ciudad Creativa de la · Eventos Públicos Promocionales",
+          "anio": 2026,
+          "monto": 10000.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.554
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-065",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 4303,
+        "texto": "Montecristi fue una de cinco ciudades del mundo seleccionadas para exponer manifiesto solicitando inclusión de cultura en agenda 2030"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Exposición ante Naciones Unidas en Braga",
+        "objetivo": "Incluir cultura en agenda 2030",
+        "causalidad": "Designación por UNESCO como ciudad creativa",
+        "magnitud": "1 de 5 ciudades del mundo",
+        "eje": "cultura"
+      },
+      "claims": [
+        "Montecristi fue una de cinco ciudades del mundo seleccionadas para exponer manifiesto solicitando inclusión de cultura en agenda 2030"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.602,
+          "evidencia": "Fortalecimiento para la reducción de indicadores territoriales del cantón Montecristi relacionados a las 5 Age",
+          "anio": 2025,
+          "monto": 2500.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.621
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-066",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 4359,
+        "texto": "Se suscribió oficina comercial en restaurante Chapó en Madrid, España"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Oficina comercial en Madrid",
+        "objetivo": "Comercialización internacional de artesanía",
+        "causalidad": "Gestión durante viaje a España",
+        "magnitud": "",
+        "eje": "economía"
+      },
+      "claims": [
+        "Se suscribió oficina comercial en restaurante Chapó en Madrid, España"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.519,
+          "evidencia": "CONTRATACION DE SERVICIOS PARA EL EVENTO BARRO, RÉPLICAS PRECOLOMBINAS LA PILA , COMO PARTE DE LA PROMOCIÓN TU",
+          "anio": 2025,
+          "monto": 1200.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.509
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-067",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 4469,
+        "texto": "Se realizó primer encuentro de ciudades creativas de Ecuador en Montecristi"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Primer encuentro de ciudades creativas Ecuador",
+        "objetivo": "Articulación y fortalecimiento conjunto de ciudades creativas",
+        "causalidad": "Iniciativa de Montecristi como anfitrión",
+        "magnitud": "4 ciudades creativas participantes",
+        "eje": "cultura"
+      },
+      "claims": [
+        "Se realizó primer encuentro de ciudades creativas de Ecuador en Montecristi"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.698,
+          "evidencia": "Promoción de Montecristi Ciudad Creativa de la · Eventos Públicos Promocionales",
+          "anio": 2026,
+          "monto": 10000.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.614
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-068",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 4496,
+        "texto": "Presentación de artesanía de Montecristi en Times Square, Nueva York"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Exhibición en Times Square Manhattan",
+        "objetivo": "Promoción internacional en principal centro turístico mundial",
+        "causalidad": "Reconocimiento y visibilidad como ciudad creativa",
+        "magnitud": "",
+        "eje": "cultura"
+      },
+      "claims": [
+        "Presentación de artesanía de Montecristi en Times Square, Nueva York"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.666,
+          "evidencia": "Promoción de Montecristi Ciudad Creativa de la · Eventos Públicos Promocionales",
+          "anio": 2026,
+          "monto": 10000.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.586
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-069",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 4601,
+        "texto": "Implementación de talleres de artes en cursos vacacionales con 311 beneficiarios en danza, música, canto, teatro, pintura, piano, violín y guitarra"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Talleres de artes en cursos vacacionales",
+        "objetivo": "Formación artística en población rural",
+        "causalidad": "Programas de capacitación para transformar vidas",
+        "magnitud": "311 beneficiarios",
+        "eje": "cultura"
+      },
+      "claims": [
+        "Implementación de talleres de artes en cursos vacacionales con 311 beneficiarios en danza, música, canto, teatro, pintura, piano, violín y guitarra"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.794,
+          "evidencia": "Realizar talleres en artes (musica, danza, teatro, pinutra, canto, ceramica, tejido y futbol)",
+          "anio": 2024,
+          "monto": 24000.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.6
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-070",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 4614,
+        "texto": "80 técnicas ancestrales enseñadas incluyendo barro en cursos permanentes"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Cursos técnicas ancestrales",
+        "objetivo": "Preservación y transmisión de saberes ancestrales",
+        "causalidad": "Cambio de vidas a través de formación técnica",
+        "magnitud": "80 técnicas",
+        "eje": "cultura"
+      },
+      "claims": [
+        "80 técnicas ancestrales enseñadas incluyendo barro en cursos permanentes"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.565,
+          "evidencia": "Capacitaciones",
+          "anio": 2024,
+          "monto": 45000.0
+        },
+        "promesa": {
+          "correlato": false,
+          "score": 0.424
+        }
+      },
+      "relaciones_encontradas": "obra_sin_promesa",
+      "resultado_automatico": "obra_sin_promesa",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-071",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 4707,
+        "texto": "60 intelectos capacitados en oratorio y geología usando recursos del GAT a bajo precio, inversión total de 44,500 para 451 beneficiarios"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Capacitación en oratorio y geología",
+        "objetivo": "Formación intelectual de población local",
+        "causalidad": "Aprovechamiento de recursos existentes del GAT",
+        "magnitud": "44.500 inversión, 451 beneficiarios, 60 intelectos",
+        "eje": "cultura"
+      },
+      "claims": [
+        "60 intelectos capacitados en oratorio y geología usando recursos del GAT a bajo precio, inversión total de 44,500 para 451 beneficiarios"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.465,
+          "evidencia": "Capacitaciones En Talleres De Informática, Gastronomía, Globoflexia",
+          "anio": 2024,
+          "monto": 3900.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.45
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-072",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 4733,
+        "texto": "Promoción turística cultural con 3.467 visitantes extranjeros y 240.471 visitantes nacionales"
+      },
+      "unidad_narrativa": {
+        "tipo": "cifra",
+        "obra": "Promoción turística de patrimonio cultural",
+        "objetivo": "Incremento de visitantes y promoción turística",
+        "causalidad": "",
+        "magnitud": "3.467 visitantes extranjeros, 240.471 visitantes nacionales",
+        "eje": "cultura"
+      },
+      "claims": [
+        "Promoción turística cultural con 3.467 visitantes extranjeros y 240.471 visitantes nacionales"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.71,
+          "evidencia": "CONTRATACIÓN DE SERVICIOS PARA LA PROMOCIÓN DE TURISMO DEPORTIVO BAJA MONTECRISTI TERCERA EDICIÓN · Eventos Pú",
+          "anio": 2025,
+          "monto": 2500.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.59
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-073",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 4749,
+        "texto": "Creación segundo año consecutivo del evento 'Modela tu sombrero' con participación de ocho tiendas de artesanos"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Evento Modela tu sombrero",
+        "objetivo": "Mejorar calidad e innovación de sombreros, fortalecer competitividad artesanal",
+        "causalidad": "Promoción de competencia para mejorar calidad",
+        "magnitud": "8 tiendas participantes",
+        "eje": "cultura"
+      },
+      "claims": [
+        "Creación segundo año consecutivo del evento 'Modela tu sombrero' con participación de ocho tiendas de artesanos"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.592,
+          "evidencia": "Fomento al Emprendimiento Artesanal y el · Eventos Públicos Promocionales",
+          "anio": 2026,
+          "monto": 5000.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.494
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-074",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 4775,
+        "texto": "Creación del Primer Museo del Sombrero de Paja Toquilla Fino"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Primer Museo del Sombrero de Paja Toquilla Fino",
+        "objetivo": "Dar a conocer valor y herencia del sombrero fino de paja toquilla",
+        "causalidad": "Necesidad de demostrar valor del producto ancestral para mejor comercialización",
+        "magnitud": "",
+        "eje": "cultura"
+      },
+      "claims": [
+        "Creación del Primer Museo del Sombrero de Paja Toquilla Fino"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.637,
+          "evidencia": "Entrega De Souvenirs",
+          "anio": 2024,
+          "monto": 3000.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.589
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-075",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 6800,
+        "texto": "2000 personas beneficiadas en parroquia Níval San Andrés con centro comunitario"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Centro de la parroquia Níval San Andrés",
+        "objetivo": "Dignidad y desarrollo comunitario",
+        "causalidad": "Gestión conjunta de expresidente y junta cívica",
+        "magnitud": "2000 personas",
+        "eje": "cultura"
+      },
+      "claims": [
+        "2000 personas beneficiadas en parroquia Níval San Andrés con centro comunitario"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.517,
+          "evidencia": "Recuperación integral de los espacios públicos · Mantenimiento y adecuación de la cancha La Cabaña de la parro",
+          "anio": 2025,
+          "monto": 7200.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.576
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-076",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 6842,
+        "texto": "Inversión de $14,000 en escuela bilingüe"
+      },
+      "unidad_narrativa": {
+        "tipo": "cifra",
+        "obra": "Escuela bilingüe",
+        "objetivo": "Educación",
+        "causalidad": "",
+        "magnitud": "$14,000",
+        "eje": "cultura"
+      },
+      "claims": [
+        "Inversión de $14,000 en escuela bilingüe"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.464,
+          "evidencia": "Desarrollo del Fortalecimiento Educativo · Manteniento de Plataforma Para Rendir Examen Para Ingreso De La Uni",
+          "anio": 2025,
+          "monto": 1000.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.475
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-077",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 6854,
+        "texto": "Proyecto de agua con inversión de $28,000,000"
+      },
+      "unidad_narrativa": {
+        "tipo": "cifra",
+        "obra": "Proyecto de agua",
+        "objetivo": "Suministro de agua",
+        "causalidad": "",
+        "magnitud": "$28,000,000",
+        "eje": "agua"
+      },
+      "claims": [
+        "Proyecto de agua con inversión de $28,000,000"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.608,
+          "evidencia": "Deuda de agua potable",
+          "anio": 2024,
+          "monto": 651399.24
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.522
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-078",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 6854,
+        "texto": "Alcantarillado primera fase parroquia General Alfaro con inversión de $5,000,000"
+      },
+      "unidad_narrativa": {
+        "tipo": "cifra",
+        "obra": "Alcantarillado primera fase",
+        "objetivo": "Saneamiento",
+        "causalidad": "",
+        "magnitud": "$5,000,000",
+        "eje": "agua"
+      },
+      "claims": [
+        "Alcantarillado primera fase parroquia General Alfaro con inversión de $5,000,000"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": false,
+          "score": 0.421,
+          "evidencia": "",
+          "anio": null,
+          "monto": 0.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.463
+        }
+      },
+      "relaciones_encontradas": "promesa_sin_ejecucion",
+      "resultado_automatico": "promesa_sin_ejecucion",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-079",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 6854,
+        "texto": "Parque de la Huella en proceso de contratación con valor de $84,000"
+      },
+      "unidad_narrativa": {
+        "tipo": "compromiso",
+        "obra": "Parque de la Huella",
+        "objetivo": "Espacio público",
+        "causalidad": "",
+        "magnitud": "$84,000",
+        "eje": "ambiente"
+      },
+      "claims": [
+        "Parque de la Huella en proceso de contratación con valor de $84,000"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": false,
+          "score": 0.431,
+          "evidencia": "",
+          "anio": null,
+          "monto": 0.0
+        },
+        "promesa": {
+          "correlato": false,
+          "score": 0.331
+        }
+      },
+      "relaciones_encontradas": "solo_narrativa",
+      "resultado_automatico": "solo_narrativa",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-080",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 6868,
+        "texto": "Reconstrucción del parque Las Pampas esperando anticipo"
+      },
+      "unidad_narrativa": {
+        "tipo": "compromiso",
+        "obra": "Reconstrucción parque Las Pampas",
+        "objetivo": "Espacio público",
+        "causalidad": "",
+        "magnitud": "",
+        "eje": "ambiente"
+      },
+      "claims": [
+        "Reconstrucción del parque Las Pampas esperando anticipo"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.838,
+          "evidencia": "Construccción parque las Pampas",
+          "anio": 2024,
+          "monto": 37960.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.546
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-081",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 6880,
+        "texto": "Regeneración calle Alfaro en bajo del Pechiche en proceso"
+      },
+      "unidad_narrativa": {
+        "tipo": "compromiso",
+        "obra": "Regeneración calle Alfaro",
+        "objetivo": "Mejora de infraestructura vial",
+        "causalidad": "",
+        "magnitud": "",
+        "eje": "vías"
+      },
+      "claims": [
+        "Regeneración calle Alfaro en bajo del Pechiche en proceso"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.78,
+          "evidencia": "Recuperación integral de los espacios públicos · Regeneración de calle Eloy Alfaro del sector de Bajo de pechi",
+          "anio": 2025,
+          "monto": 135000.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.644
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-082",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 6895,
+        "texto": "Proyecto conducción mercado menor con inversión de $417,000"
+      },
+      "unidad_narrativa": {
+        "tipo": "cifra",
+        "obra": "Mercado menor",
+        "objetivo": "Comercio y ordenamiento",
+        "causalidad": "",
+        "magnitud": "$417,000",
+        "eje": "economía"
+      },
+      "claims": [
+        "Proyecto conducción mercado menor con inversión de $417,000"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.481,
+          "evidencia": "Optimización y Modernización de la Gestión de · Comisiones y Otros Cargos",
+          "anio": 2026,
+          "monto": 371000.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.535
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-083",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 6907,
+        "texto": "Proyecto con inversión de $17,000 desarrollado internamente"
+      },
+      "unidad_narrativa": {
+        "tipo": "cifra",
+        "obra": "Proyecto interno",
+        "objetivo": "Minimizar costos de consultoría",
+        "causalidad": "Contratación de equipo técnico interno reduce gastos",
+        "magnitud": "$17,000",
+        "eje": "institucional"
+      },
+      "claims": [
+        "Proyecto con inversión de $17,000 desarrollado internamente"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.567,
+          "evidencia": "Desarrollo e implementación de Planes Estratégicos · Consultoría, Asesoría e Investigación Especializada",
+          "anio": 2026,
+          "monto": 1.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.629
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-084",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 6948,
+        "texto": "Reubicación de comerciantes de Avenida Metropolitana al mercado menor"
+      },
+      "unidad_narrativa": {
+        "tipo": "compromiso",
+        "obra": "Reubicación comerciantes",
+        "objetivo": "Ordenamiento y dignidad en Avenida Metropolitana",
+        "causalidad": "Eliminación de desorden, suciedad e insalubridad",
+        "magnitud": "",
+        "eje": "economía"
+      },
+      "claims": [
+        "Reubicación de comerciantes de Avenida Metropolitana al mercado menor"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.575,
+          "evidencia": "Mantenimiento de vías urbanas para el acceso de los · Urbanizaciòn y Embellecimiento",
+          "anio": 2026,
+          "monto": 261000.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.637
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-085",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 7209,
+        "texto": "La Asamblea Ciudadana realizó cinco talleres en las comunas Río Caña, Ríobo, La Pila, Los Bajos, El Bajo de Medio y el cantón Montecristi"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Talleres de consulta ciudadana",
+        "objetivo": "Recopilar preguntas y temas de la ciudadanía para rendición de cuentas",
+        "causalidad": "Para determinar preguntas según manual de rendición de cuentas",
+        "magnitud": "5 talleres",
+        "eje": "institucional"
+      },
+      "claims": [
+        "La Asamblea Ciudadana realizó cinco talleres en las comunas Río Caña, Ríobo, La Pila, Los Bajos, El Bajo de Medio y el cantón Montecristi"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.607,
+          "evidencia": "Promoción de la formación, participación ciudadana y liderazgo en el cantón Montecristi · Contratación de serv",
+          "anio": 2025,
+          "monto": 5600.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.639
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-086",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 7321,
+        "texto": "Se habilitará un formulario en la página del Consejo Nacional de Participación Ciudadana para evaluar la gestión tras el cierre del 13 de agosto"
+      },
+      "unidad_narrativa": {
+        "tipo": "compromiso",
+        "obra": "Plataforma digital de evaluación ciudadana",
+        "objetivo": "Permitir seguimiento y evaluación de cumplimiento de compromisos",
+        "causalidad": "Para que el ejercicio de rendición de cuentas no quede solo en ideas",
+        "magnitud": "",
+        "eje": "institucional"
+      },
+      "claims": [
+        "Se habilitará un formulario en la página del Consejo Nacional de Participación Ciudadana para evaluar la gestión tras el cierre del 13 de agosto"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.548,
+          "evidencia": "Estudio de conocimientos, opiniones y evaluaciones de satisfacción ciudadana sobre las competencias, políticas",
+          "anio": 2024,
+          "monto": 7400.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.64
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-087",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 7526,
+        "texto": "Existe un contrato de estudio ya contratado para intervención vial de 30 km que contempla regeneración de la vía principal en Bajo del Pechiche, Bajo de Afuera y Bajo de La Palma"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Estudio de intervención vial",
+        "objetivo": "Mejorar infraestructura vial en comunas del cantón",
+        "causalidad": "Plan de mejora de infraestructura vial del municipio",
+        "magnitud": "30 km",
+        "eje": "vías"
+      },
+      "claims": [
+        "Existe un contrato de estudio ya contratado para intervención vial de 30 km que contempla regeneración de la vía principal en Bajo del Pechiche, Bajo de Afuera y Bajo de La Palma"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.57,
+          "evidencia": "Implementación del plan Recaudación Efectiva · “Pago de sentencias judiciales- Contrato de consultoría por lis",
+          "anio": 2025,
+          "monto": 39349.31
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.587
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-088",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 8902,
+        "texto": "Entrega del nuevo escenario multifuncional de la comuna Toalla Grande"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Escenario multifuncional",
+        "objetivo": "Rescatar identidad y promover desarrollo local, realizar noches culturales",
+        "causalidad": "Obra que simboliza esfuerzo conjunto para rescatar identidad",
+        "magnitud": "95 m²",
+        "eje": "cultura"
+      },
+      "claims": [
+        "Entrega del nuevo escenario multifuncional de la comuna Toalla Grande"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.533,
+          "evidencia": "Construccción parque las Pampas",
+          "anio": 2024,
+          "monto": 37960.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.552
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-089",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 8916,
+        "texto": "Inversión de $5,000 en infraestructura con escenarios, camerinos y baños funcionales"
+      },
+      "unidad_narrativa": {
+        "tipo": "cifra",
+        "obra": "Escenario multifuncional",
+        "objetivo": "Recibir artistas locales y eventos culturales",
+        "causalidad": "",
+        "magnitud": "$5,000",
+        "eje": "cultura"
+      },
+      "claims": [
+        "Inversión de $5,000 en infraestructura con escenarios, camerinos y baños funcionales"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.569,
+          "evidencia": "Gestión para la nueva infraestructura de · Honorarios por Contratos Civiles de Servicios",
+          "anio": 2026,
+          "monto": 314064.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.576
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-090",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 8931,
+        "texto": "Beneficiarios: más de 350 habitantes beneficiados directamente"
+      },
+      "unidad_narrativa": {
+        "tipo": "cifra",
+        "obra": "Escenario multifuncional",
+        "objetivo": "Servicio comunitario cultural",
+        "causalidad": "",
+        "magnitud": "350 habitantes",
+        "eje": "cultura"
+      },
+      "claims": [
+        "Beneficiarios: más de 350 habitantes beneficiados directamente"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.608,
+          "evidencia": "Remuneraciones y beneficios de ley",
+          "anio": 2024,
+          "monto": 152553.7
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.6
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-091",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 8945,
+        "texto": "Obra integrada en planes parciales del plan Bicentenario con visión hacia 50 años"
+      },
+      "unidad_narrativa": {
+        "tipo": "compromiso",
+        "obra": "Escenario multifuncional",
+        "objetivo": "Infraestructura para presente y visión sostenible a 50 años",
+        "causalidad": "Forma parte del plan Bicentenario de Montecristi ordenado, digno y sostenible",
+        "magnitud": "",
+        "eje": "institucional"
+      },
+      "claims": [
+        "Obra integrada en planes parciales del plan Bicentenario con visión hacia 50 años"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.499,
+          "evidencia": "Desarrollo e implementación de Planes Estratégicos Institucionales · Contratación de Estudios de Suelos Requer",
+          "anio": 2025,
+          "monto": 9999.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.562
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-092",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 8996,
+        "texto": "La cancha está en un plan de desarrollo y sirve para los niños"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Rehabilitación de cancha",
+        "objetivo": "Beneficiar a los niños de la comunidad",
+        "causalidad": "Parte del plan de desarrollo municipal",
+        "magnitud": "",
+        "eje": "cultura"
+      },
+      "claims": [
+        "La cancha está en un plan de desarrollo y sirve para los niños"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.562,
+          "evidencia": "Proyecto Integral de Salud y Bienestar Juvenil · “ADQUISICIÓN DE MATERIALES DE OFICINA PARA LOS DIFERENTES PRO",
+          "anio": 2025,
+          "monto": 3000.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.555
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-093",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 9011,
+        "texto": "Se recuperó el parque en la cabaña con cámaras e internet"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Recuperación de parque público con instalación de cámaras e internet",
+        "objetivo": "Recuperar espacios públicos para niños y personas que se sientan cómodos",
+        "causalidad": "Iniciativa de recuperación de espacios públicos",
+        "magnitud": "",
+        "eje": "cultura"
+      },
+      "claims": [
+        "Se recuperó el parque en la cabaña con cámaras e internet"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.537,
+          "evidencia": "Recuperación integral de los espacios públicos · Adquisición e instalación de cámaras de video vigilancia y al",
+          "anio": 2025,
+          "monto": 11500.0
+        },
+        "promesa": {
+          "correlato": false,
+          "score": 0.355
+        }
+      },
+      "relaciones_encontradas": "obra_sin_promesa",
+      "resultado_automatico": "obra_sin_promesa",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-094",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 9086,
+        "texto": "Se ofrecen cursos vacacionales con oportunidad de aprendizaje en artes y oficios"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Cursos vacacionales en artes",
+        "objetivo": "Permitir que los niños aprendan y se distraigan",
+        "causalidad": "Oportunidad brindada por el alcalde",
+        "magnitud": "",
+        "eje": "cultura"
+      },
+      "claims": [
+        "Se ofrecen cursos vacacionales con oportunidad de aprendizaje en artes y oficios"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.631,
+          "evidencia": "Realizar ferias de exposición de artes vinculada a la comunidad.",
+          "anio": 2024,
+          "monto": 12000.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.495
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-095",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 9169,
+        "texto": "Se entregó nuevo escenario multifuncional en la comuna Toalla Grande"
+      },
+      "unidad_narrativa": {
+        "tipo": "logro",
+        "obra": "Escenario multifuncional de la comuna Toalla Grande",
+        "objetivo": "Rescatar identidad y promover desarrollo local para noches culturales y eventos comunitarios",
+        "causalidad": "Esfuerzo conjunto de la comunidad y administración",
+        "magnitud": "95 m²",
+        "eje": "cultura"
+      },
+      "claims": [
+        "Se entregó nuevo escenario multifuncional en la comuna Toalla Grande"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.466,
+          "evidencia": "Mantenimiento de Terrazas",
+          "anio": 2024,
+          "monto": 50000.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.465
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-096",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 9198,
+        "texto": "Inversión de $55,000 en infraestructura con escenarios, camerinos y baños funcionales"
+      },
+      "unidad_narrativa": {
+        "tipo": "cifra",
+        "obra": "Escenario multifuncional",
+        "objetivo": "Contar con infraestructura para artistas locales y presentaciones comunitarias",
+        "causalidad": "Presupuesto municipal asignado",
+        "magnitud": "$55,000",
+        "eje": "cultura"
+      },
+      "claims": [
+        "Inversión de $55,000 en infraestructura con escenarios, camerinos y baños funcionales"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.579,
+          "evidencia": "Mantenimiento de infraestructura existente de · Agua Potable",
+          "anio": 2026,
+          "monto": 10.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.593
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-097",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 9211,
+        "texto": "350 habitantes beneficiados directamente por la obra del escenario multifuncional"
+      },
+      "unidad_narrativa": {
+        "tipo": "cifra",
+        "obra": "Escenario multifuncional Toalla Grande",
+        "objetivo": "Beneficiar a la comunidad local",
+        "causalidad": "Cobertura del proyecto",
+        "magnitud": "350 habitantes",
+        "eje": "cultura"
+      },
+      "claims": [
+        "350 habitantes beneficiados directamente por la obra del escenario multifuncional"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": false,
+          "score": 0.356,
+          "evidencia": "",
+          "anio": null,
+          "monto": 0.0
+        },
+        "promesa": {
+          "correlato": false,
+          "score": 0.445
+        }
+      },
+      "relaciones_encontradas": "solo_narrativa",
+      "resultado_automatico": "solo_narrativa",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    },
+    {
+      "id": "MN2024-098",
+      "version_algoritmo": "mn-v0.1",
+      "narrativa_original": {
+        "t_seg": 9223,
+        "texto": "La obra forma parte del plan Bicentenario que proyecta Montecristi ordenado, digno y sostenible con visión hacia 50 años"
+      },
+      "unidad_narrativa": {
+        "tipo": "compromiso",
+        "obra": "Plan Bicentenario de Montecristi",
+        "objetivo": "Lograr infraestructura para el presente y visión hacia 50 años",
+        "causalidad": "Planificación estratégica municipal de largo plazo",
+        "magnitud": "",
+        "eje": "institucional"
+      },
+      "claims": [
+        "La obra forma parte del plan Bicentenario que proyecta Montecristi ordenado, digno y sostenible con visión hacia 50 años"
+      ],
+      "evidencia_encontrada": {
+        "plan": {
+          "correlato": true,
+          "score": 0.535,
+          "evidencia": "Desarrollo del Bienestar Integral para Montecristi · A Entidades Descentralizadas y Autónomas",
+          "anio": 2026,
+          "monto": 932000.0
+        },
+        "promesa": {
+          "correlato": true,
+          "score": 0.74
+        }
+      },
+      "relaciones_encontradas": "coherente",
+      "resultado_automatico": "coherente",
+      "correccion_humana": null,
+      "explicacion": null,
+      "regla_aprendida": null
+    }
+  ]
+}
