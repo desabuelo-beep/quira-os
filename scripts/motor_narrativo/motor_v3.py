@@ -85,8 +85,23 @@ def _r4(texto: str, ced: dict | None) -> dict:
                     "evidencia": f"cédula oficial de gastos {ced['año']}: ejecución {oficial:.2f}% (dijo {claimed:g}%)"}
         return {"clase": "discrepa_ejecucion",
                 "evidencia": f"dijo {claimed:g}% · cédula oficial {oficial:.2f}%"}
-    return {"clase": "requiere_registro",
-            "evidencia": "cifra financiera (ingresos/deuda/histórico) sin registro disponible aún"}
+    return {"clase": "sin_evidencia_publica",
+            "evidencia": "ingresos/deuda: la DPE no publica cédula de ingresos → el ciudadano no puede comprobarlo"}
+
+
+def _nivel_evidencia(res: dict) -> str:
+    """Taxonomía de VERIFICABILIDAD PÚBLICA (asesor 2026-07-07). QUIRA no certifica
+    verdad: certifica el NIVEL de evidencia pública de cada afirmación. Inexpugnable —
+    cada veredicto se ancla a un documento o a la AUSENCIA documentada de uno (Regla 3).
+    El nivel se DERIVA de qué capa la respaldó (no es un juicio nuevo)."""
+    cl = res["clase"]
+    if cl in ("coherente", "en_contratacion", "verif_ejecucion"):
+        return "independiente"      # registro administrativo EXTERNO (POA/PAC/cédula/SERCOP)
+    if cl == "discrepa_ejecucion":
+        return "contradiccion"      # hay evidencia pública y CONTRADICE lo declarado
+    if res.get("en_informe"):
+        return "institucional"      # solo en el documento del PROPIO actor (informe CPCCS)
+    return "sin_evidencia_publica"  # ni externo ni institucional (incl. documento no publicado)
 
 
 def clasificar(video_id: str, año: str = "2024") -> list[dict]:
@@ -174,6 +189,7 @@ def clasificar(video_id: str, año: str = "2024") -> list[dict]:
         res["en_informe"], inf_ev = _corrobora(U[i])
         if inf_ev:
             res["informe_ev"] = inf_ev
+        res["nivel_evidencia"] = _nivel_evidencia(res)   # taxonomía de verificabilidad pública
         out.append(res)
     return out
 
@@ -196,7 +212,7 @@ if __name__ == "__main__":
         if (h == "proceso_rendicion" and cl == "proceso") \
            or (h == "OK" and cl == "coherente") \
            or (h == "verificar_pac" and cl in ("en_contratacion", "coherente")) \
-           or (h == "cifra_financiera" and cl in ("verif_ejecucion", "requiere_registro", "discrepa_ejecucion", "sin_correlato")) \
+           or (h == "cifra_financiera" and cl in ("verif_ejecucion", "sin_evidencia_publica", "discrepa_ejecucion", "sin_correlato")) \
            or (h in ("falso_positivo_evidencia", "logro_cobertura", "meta_narrativa") and cl == "sin_correlato"):
             ok += 1
         if h == "verificar_pac":
@@ -222,3 +238,10 @@ if __name__ == "__main__":
     for c, p in zip(banco, v3):
         if c["correccion_humana"] == "cifra_financiera" and p["clase"] in ("verif_ejecucion", "discrepa_ejecucion"):
             print(f"      {c['id']} -> {p['clase']}: {p.get('evidencia', '')[:78]}")
+    # TAXONOMÍA DE EVIDENCIA PÚBLICA (asesor) — el veredicto inexpugnable: no certifica
+    # verdad, certifica el NIVEL de respaldo público de cada afirmación sustantiva.
+    niv = Counter(p.get("nivel_evidencia") for p in v3 if p.get("nivel_evidencia"))
+    print("   NIVEL DE EVIDENCIA PÚBLICA (afirmaciones sustantivas · no-proceso):")
+    for k in ("independiente", "institucional", "contradiccion", "sin_evidencia_publica"):
+        if niv.get(k):
+            print(f"      {k}: {niv[k]}")

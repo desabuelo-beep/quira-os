@@ -241,8 +241,39 @@ ejecución general del año contra ese dato; ingresos/deuda/histórico → `requ
 (mantiene, con capacidad nueva). Guard: un claim financiero necesita una cifra (%/millones/$) para entrar
 a R4. El motor hoy: 4 capas de verificación (POA·PAC·R4) + corroboración CPCCS + filtro proceso.
 
-**Pendiente R4:** cédula de INGRESOS y registros de DEUDA (Javo los subirá) para las 9 restantes; la
-ejecución de ingresos (99.79%) necesita la cédula de ingresos.
+**Ingresos/deuda = NO públicos** (la DPE solo publica cédula de gastos, no de ingresos · confirmado por
+Javo). Esas 9 cifras son `sin_evidencia_publica`: un **HALLAZGO de transparencia, no un pendiente**. Ver §19.
+
+## 19 · Reencuadre — Taxonomía de Evidencia Pública (2026-07-07)
+Al no existir cédula de ingresos pública (ni registros de deuda; patronato 2024 solo sep–dic), Javo y el
+asesor deciden **no cambiar el rumbo**: la restricción no debilita el motor, **cambia la naturaleza de la
+evidencia**. Tesis afinada:
+
+> **QUIRA no certifica verdad: certifica el NIVEL DE VERIFICABILIDAD PÚBLICA de cada afirmación.**
+
+Nunca rellena un vacío documental; lo DOCUMENTA (Regla 3). La ausencia de respaldo público es un
+HALLAZGO irrebatible: no decimos "mintió", decimos "el ciudadano no puede comprobarlo con lo público".
+
+Taxonomía por afirmación (`nivel_evidencia` en `motor_v3.py`, derivada de qué capa la respaldó):
+| Nivel | Significado | Capa |
+|---|---|---|
+| **independiente** | registro administrativo EXTERNO verificable | POA · PAC/SERCOP · cédula de gastos |
+| **institucional** | solo en el documento del propio actor | informe CPCCS |
+| **parcial** | evidencia con ventana temporal limitada | R6 patronato (sep–dic 2024) — próximo |
+| **sin_evidencia_publica** | no hay documento público (incl. no publicado) | ingresos/deuda |
+| **contradiccion** | hay evidencia pública y contradice lo dicho | R4 discrepancia |
+
+Resultado RDC 2024 (78 afirmaciones sustantivas, 20 proceso filtradas): **45 independiente · 13
+institucional · 20 sin evidencia pública**. Ese gradiente, en lenguaje de gobernanza, ES el veredicto.
+
+**R8 (jurisprudencia):** la ausencia de respaldo público es un hallazgo, no una falla; se marca en
+lenguaje no acusatorio; JAMÁS se fabrica verificación.
+
+**Frontera arquitectónica (Javo):** el Motor (transversal) produce el `nivel_evidencia` por afirmación.
+El **Índice de Evidencia Pública (IEP)** —agregado que mide la calidad democrática de la información— y
+el hallazgo "el GAD publica gastos pero oculta ingresos" pertenecen al **dominio TRANSPARENCIA, NO a
+RDC**. Como métrica nueva, el IEP **nace en el CANON, no en Python** (Regla 9). Aquí queda el insumo
+(los niveles por afirmación); el IEP se define en Transparencia.
 
 ---
 *PCD-MN01 · Dylus Lab © 2026 · el Motor Narrativo, motor transversal (v0.1 LOCKED · v0.3 con capa PAC) · corpus doctrinario propio.*
