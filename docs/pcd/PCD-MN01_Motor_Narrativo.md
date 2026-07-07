@@ -181,5 +181,35 @@ verificable contra el POA, el motor acierta 36 = 72%**. El núcleo del cruce es 
 **Estado Fase A:** A1 (Banco 98/98) ✅ · A2 (matriz + taxonomía) ✅ · sigue **A3 (diseño v0.2 con esta
 evidencia)** · A4 (comparación v0.1↔v0.2 mismo corpus). El ICN se diseña **después** de A3 (asesor).
 
+## 16 · Construcción v0.2 y v0.3 (2026-07-07)
+**v0.2** (`motor_v2.py`, LOCKED como benchmark): R1 filtro proceso + R2 validación de eje.
+Comparación A4 sobre el mismo corpus (verdad humana): **v0.1 36% → v0.2 70%**.
+
+**v0.3** (`motor_v3.py`): suma la **capa PAC/SERCOP (R7)** — el "¿es paja?" de Javo. Extracción del
+PAC desde DOCX (`extract_pac_docx.py`; PDF sale con glyphs scrambled). Una unidad sin correlato en el
+POA se cruza contra el PAC del **periodo** (2024+2025+2026, no solo el año: una obra anunciada en la
+rendición 2024 se contrata en 2025). Clase nueva **`en_contratacion`** (real, verificable, aún no
+ejecutada) vs `sin_correlato` (no aparece en POA ni PAC).
+
+Dos técnicas nacidas del diagnóstico del corpus (no intuición):
+- **Guard de integridad** — `en_contratacion` solo con proceso tipo **Obra/Consultoría**, no compras
+  (Bien/Servicio). Filtró 2 falsos positivos (insumos quirúrgicos, refrigerios que matcheaban una obra
+  anunciada). Principio QUIRA: no afirmar contratación sin respaldo del tipo correcto.
+- **Override por nombre de obra** — el embedding puro diluye nombres propios ("Parque La Huella"
+  matcheaba 0.356 < umbral). Si el PAC nombra la misma obra (≥2 tokens propios compartidos) con eje y
+  tipo coincidentes → match. Recuperó el 079.
+
+**Resultado v0.3:** 71% (rúbrica más estricta: `verificar_pac` exige verificación positiva en POA o PAC,
+no basta "no encontrado"). **Los 3 casos R7 correctos** (078+079 `en_contratacion`, 087 `coherente`),
+`en_contratacion` = 2, **cero falsos positivos**.
+
+**Corrección honesta:** el Parque La Huella NO era "paja". La primera lectura ("no aparece en SERCOP")
+fue artefacto de un PAC 2025 sucio (print del portal, texto fragmentado). Javo mejoró los DOCX 2025/2026
+→ la obra sí existe como proceso. El motor con datos limpios la verifica. Lección: la calidad de la
+fuente determina el veredicto — de ahí la Regla 3 (sin evidencia verificada, no hay dato).
+
+**Pendiente v0.4:** capas PRESUPUESTO/eSIGEF (R4, +13 cifras) y programas/patronato (R6, +7 cobertura);
+capa del **informe CPCCS** (rendición sin video); mapeo de años ejercicio↔evento.
+
 ---
-*PCD-MN01 · Dylus Lab © 2026 · el Motor Narrativo, motor transversal (v0.1 LOCKED) · corpus doctrinario propio · Fase A cerrada.*
+*PCD-MN01 · Dylus Lab © 2026 · el Motor Narrativo, motor transversal (v0.1 LOCKED · v0.3 con capa PAC) · corpus doctrinario propio.*
