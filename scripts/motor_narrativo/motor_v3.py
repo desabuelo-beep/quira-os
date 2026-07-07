@@ -35,10 +35,12 @@ import identidad as _id
 import ingest as _ing
 from extract_poa_pdf import extract_poa
 from extract_pac_docx import extract_pac
+from extract_informe_docx import extract_informe
 # reutiliza los helpers del v0.2 (no se duplican): filtro proceso + eje + embed
 from motor_v2 import TH, POA_AÑOS, _proc, _eje_de, _embed
 
 TH_PAC = 0.45  # mismo umbral; el guard real es la coincidencia de eje (R2)
+TH_INF = 0.50  # corroboración CPCCS: el informe es la voz ESCRITA del mismo actor
 
 # tokens genéricos de gobierno/obra (no distinguen una obra de otra) — se ignoran
 # para el match por NOMBRE de obra (el embedding diluye los nombres propios).
@@ -58,7 +60,7 @@ def _sig_tokens(txt: str) -> set[str]:
     return {w for w in re.findall(r"[a-z]{5,}", _strip(txt)) if w not in _GENERIC}
 
 
-def clasificar(video_id: str) -> list[dict]:
+def clasificar(video_id: str, año: str = "2024") -> list[dict]:
     d = _id.BASE / video_id
     unidades = json.loads((d / "unidades.json").read_text(encoding="utf-8"))["unidades"]
     model = _ing._get_model()
@@ -68,6 +70,10 @@ def clasificar(video_id: str) -> list[dict]:
     P = {y: _embed(model, [p["desc"] for p in poa[y]]) for y in poa if poa[y]}
     pac = {y: extract_pac(str(y)) for y in POA_AÑOS}
     PA = {y: _embed(model, [p["desc"] for p in pac[y]]) for y in pac if pac[y]}
+    # CAPA CPCCS (evidencia): el informe ESCRITO de la misma rendición (voz escrita
+    # del actor). Corrobora lo que DIJO en el video con lo que DECLARÓ por escrito.
+    inf = list(extract_informe(año, "GAD"))
+    INF = _embed(model, inf) if inf else None
 
     def _mejor(vec, banco_emb, banco_txt, eje_u, th, tipos=None):
         """mejor match del banco con eje coincidente (R2). -> (score, evidencia).
@@ -91,6 +97,14 @@ def clasificar(video_id: str) -> list[dict]:
 
     poa_txt = {y: poa[y] for y in P}
     pac_txt = {y: pac[y] for y in PA}
+    def _corrobora(vec):
+        """capa CPCCS: ¿la unidad aparece en el informe escrito? -> (bool, evidencia)."""
+        if INF is None:
+            return False, ""
+        si = vec @ INF.T
+        k = int(np.argmax(si))
+        return (float(si[k]) >= TH_INF), (inf[k][:70] if float(si[k]) >= TH_INF else "")
+
     out = []
     for i, u in enumerate(unidades):
         texto = u.get("texto", "")
@@ -99,37 +113,43 @@ def clasificar(video_id: str) -> list[dict]:
         eje_u = _eje_de(texto) | ({u.get("eje")} if u.get("eje") else set())
         best, ev = _mejor(U[i], P, poa_txt, eje_u, TH)          # R2 · cruce POA
         if best >= TH:
-            out.append({"clase": "coherente", "score": round(best, 3), "evidencia": ev}); continue
-        # sin correlato en POA → CAPA PAC (R7 · ¿tiene proceso de contratación?)
-        bp, evp = _mejor(U[i], PA, pac_txt, eje_u, TH_PAC, tipos={"Obra", "Consultoría"})
-        if bp < TH_PAC:
-            # override por NOMBRE de obra: el embedding diluye nombres propios (ej.
-            # "Parque La Huella"). Si el PAC nombra la MISMA obra (≥2 tokens propios
-            # compartidos) con eje y tipo Obra/Consultoría coincidentes → match.
-            ut = _sig_tokens(texto)
-            if len(ut) >= 2:
-                for y in pac_txt:
-                    for it in pac_txt[y]:
-                        if it.get("tipo") not in ("Obra", "Consultoría"):
-                            continue
-                        comun = ut & _sig_tokens(it["desc"])
-                        if len(comun) >= 2 and (not eje_u or (_eje_de(it["desc"]) & eje_u)):
-                            bp = max(bp, TH_PAC)
-                            evp = f"{y}·{it['desc'][:60]} [nombre:{','.join(sorted(comun))}]"
-                            break
-                    if bp >= TH_PAC:
-                        break
-        if bp >= TH_PAC:
-            out.append({"clase": "en_contratacion", "score": round(bp, 3), "evidencia": f"PAC {evp}"})
+            res = {"clase": "coherente", "score": round(best, 3), "evidencia": ev}
         else:
-            out.append({"clase": "sin_correlato", "score": round(max(best, bp), 3)})
+            # sin correlato en POA → CAPA PAC (R7 · ¿tiene proceso de contratación?)
+            bp, evp = _mejor(U[i], PA, pac_txt, eje_u, TH_PAC, tipos={"Obra", "Consultoría"})
+            if bp < TH_PAC:
+                # override por NOMBRE de obra: el embedding diluye nombres propios (ej.
+                # "Parque La Huella"). Si el PAC nombra la MISMA obra (≥2 tokens propios
+                # compartidos) con eje y tipo Obra/Consultoría coincidentes → match.
+                ut = _sig_tokens(texto)
+                if len(ut) >= 2:
+                    for y in pac_txt:
+                        for it in pac_txt[y]:
+                            if it.get("tipo") not in ("Obra", "Consultoría"):
+                                continue
+                            comun = ut & _sig_tokens(it["desc"])
+                            if len(comun) >= 2 and (not eje_u or (_eje_de(it["desc"]) & eje_u)):
+                                bp = max(bp, TH_PAC)
+                                evp = f"{y}·{it['desc'][:60]} [nombre:{','.join(sorted(comun))}]"
+                                break
+                        if bp >= TH_PAC:
+                            break
+            if bp >= TH_PAC:
+                res = {"clase": "en_contratacion", "score": round(bp, 3), "evidencia": f"PAC {evp}"}
+            else:
+                res = {"clase": "sin_correlato", "score": round(max(best, bp), 3)}
+        # capa CPCCS (evidencia · aditiva, no cambia la clase de verificación)
+        res["en_informe"], inf_ev = _corrobora(U[i])
+        if inf_ev:
+            res["informe_ev"] = inf_ev
+        out.append(res)
     return out
 
 
 if __name__ == "__main__":
     año = sys.argv[1] if len(sys.argv) > 1 else "2024"
     vid = _id._video_id(_id.PILOTO[año]["url"])
-    v3 = clasificar(vid)
+    v3 = clasificar(vid, año)
     banco = json.loads((_id.BASE / "banco_casos" / f"MN{año}.json").read_text(encoding="utf-8"))["casos"]
 
     # ── scoring HONESTO v0.3 ──
@@ -156,3 +176,11 @@ if __name__ == "__main__":
     print("   CAPA PAC · los 3 casos R7 (¿es paja o está en contratación?):")
     for cid, cl, ev in aciertos_pac:
         print(f"      {cid} -> {cl}   {ev[:80]}")
+    # CAPA CPCCS · corroboración por el informe escrito (evidencia aditiva)
+    corr = sum(1 for p in v3 if p.get("en_informe"))
+    print(f"   CAPA CPCCS · {corr}/{N} unidades corroboradas por el informe escrito. "
+          "Declaradas por escrito en las categorías que el POA/PAC no cubren:")
+    for tipo in ("cifra_financiera", "logro_cobertura"):
+        ct = [(c, p) for c, p in zip(banco, v3) if c["correccion_humana"] == tipo]
+        n = sum(1 for _, p in ct if p.get("en_informe"))
+        print(f"      {tipo}: {n}/{len(ct)} declaradas en el informe (R4/R6)")

@@ -208,8 +208,23 @@ fue artefacto de un PAC 2025 sucio (print del portal, texto fragmentado). Javo m
 → la obra sí existe como proceso. El motor con datos limpios la verifica. Lección: la calidad de la
 fuente determina el veredicto — de ahí la Regla 3 (sin evidencia verificada, no hay dato).
 
-**Pendiente v0.4:** capas PRESUPUESTO/eSIGEF (R4, +13 cifras) y programas/patronato (R6, +7 cobertura);
-capa del **informe CPCCS** (rendición sin video); mapeo de años ejercicio↔evento.
+## 17 · Capa CPCCS — informe escrito (2026-07-07)
+Javo (aval): usar el **informe escrito de rendición** (CPCCS) de dos formas ("Ambas"):
+**(A) evidencia** — corroborar el discurso del video contra lo declarado por escrito; **(B) fuente** —
+cuando una rendición NO tiene video (ej. Aseo EP/Bomberos/Patronato 2024) el informe es la ENTRADA.
+Fuentes: `Rendición de cuentas 2023-2025/<entidad>/*.docx` (Javo pasó todo el holding de PDF a
+Word/Excel). Años: informe 2024 (evento 2025) e informe 2025 (evento 2026).
+
+**(A) implementada** (`extract_informe_docx.py` + flag `en_informe` en `motor_v3.py`): la matriz de
+rendición viene fragmentada en celdas → se une el texto y se corta en ventanas deslizantes (modo
+documento). Corrobora **41/98** unidades del discurso 2024. Aditiva: NO cambia las clases de
+verificación (POA/PAC), añade la voz escrita del actor. **Hallazgo de auditoría:** en cifras/cobertura
+la corroboración es baja (cifra_financiera 2/13, cobertura 3/7) → el alcalde menciona cifras en el
+video que **no siempre reescribe en el informe formal**. Eso ES una señal (dicho vs documentado).
+
+**Pendiente:** (B) fuente-sin-video (plumbing + extracción Haiku de unidades del informe) · capas de
+REGISTRO R4 (eSIGEF/presupuesto) y R6 (patronato) que verifican las cifras/coberturas contra el
+dato administrativo (no solo "declaradas") · ICN.
 
 ---
 *PCD-MN01 · Dylus Lab © 2026 · el Motor Narrativo, motor transversal (v0.1 LOCKED · v0.3 con capa PAC) · corpus doctrinario propio.*
