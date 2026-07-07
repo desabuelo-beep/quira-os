@@ -4,7 +4,7 @@
   "video_id": "mqDT5jKXHW8",
   "version_algoritmo": "mn-v0.1",
   "n_casos": 98,
-  "n_corregidos": 45,
+  "n_corregidos": 98,
   "_nota": "Jurisprudencia algorítmica de QUIRA. correccion_humana/explicacion/regla_aprendida se llenan uno por uno (Fase A calibración). NO exponer resultados hasta cerrar la matriz FP/FN.",
   "casos": [
     {
@@ -1337,7 +1337,7 @@
       "resultado_automatico": "coherente",
       "correccion_humana": "OK",
       "explicacion": "Pago de deuda con EPAN -> 'Deuda de agua potable': match CORRECTO, eje coincide. Acierto del motor.",
-      "regla_aprendida": "El motor ACIERTA cuando la obra está en el POA con eje coincidente (036 deuda EPAN->'Deuda de agua potable'; 043 readecuación->'readecuación de infocentros'; 044 clubes juveniles->'bienestar juvenil'). Confirma que el nucleo del cruce es valido; el problema son las categorias que el POA no cubre (proceso, cifras financieras) y los matches de eje cruzado."
+      "regla_aprendida": "El motor ACIERTA cuando la obra está en el POA con eje coincidente (036 deuda EPAN->'Deuda de agua potable'; 043 readecuación->'readecuación de infocentros'; 044 clubes juveniles->'bienestar juvenil'; 069 talleres de arte->'talleres en artes'; 072 turismo->'promoción de turismo'). Confirma que el nucleo del cruce es valido; el problema son las categorias que el POA no cubre y los matches de eje cruzado."
     },
     {
       "id": "MN2024-037",
@@ -1596,7 +1596,7 @@
       "resultado_automatico": "coherente",
       "correccion_humana": "OK",
       "explicacion": "Readecuación de Unidad Educativa -> 'Readecuación de infocentros': match CORRECTO. Acierto.",
-      "regla_aprendida": "El motor ACIERTA cuando la obra está en el POA con eje coincidente (036 deuda EPAN->'Deuda de agua potable'; 043 readecuación->'readecuación de infocentros'; 044 clubes juveniles->'bienestar juvenil'). Confirma que el nucleo del cruce es valido; el problema son las categorias que el POA no cubre (proceso, cifras financieras) y los matches de eje cruzado."
+      "regla_aprendida": "El motor ACIERTA cuando la obra está en el POA con eje coincidente (036 deuda EPAN->'Deuda de agua potable'; 043 readecuación->'readecuación de infocentros'; 044 clubes juveniles->'bienestar juvenil'; 069 talleres de arte->'talleres en artes'; 072 turismo->'promoción de turismo'). Confirma que el nucleo del cruce es valido; el problema son las categorias que el POA no cubre y los matches de eje cruzado."
     },
     {
       "id": "MN2024-044",
@@ -1633,7 +1633,7 @@
       "resultado_automatico": "coherente",
       "correccion_humana": "OK",
       "explicacion": "19 clubes de jóvenes -> 'Salud y Bienestar Juvenil': coherente (eje juvenil). Acierto.",
-      "regla_aprendida": "El motor ACIERTA cuando la obra está en el POA con eje coincidente (036 deuda EPAN->'Deuda de agua potable'; 043 readecuación->'readecuación de infocentros'; 044 clubes juveniles->'bienestar juvenil'). Confirma que el nucleo del cruce es valido; el problema son las categorias que el POA no cubre (proceso, cifras financieras) y los matches de eje cruzado."
+      "regla_aprendida": "El motor ACIERTA cuando la obra está en el POA con eje coincidente (036 deuda EPAN->'Deuda de agua potable'; 043 readecuación->'readecuación de infocentros'; 044 clubes juveniles->'bienestar juvenil'; 069 talleres de arte->'talleres en artes'; 072 turismo->'promoción de turismo'). Confirma que el nucleo del cruce es valido; el problema son las categorias que el POA no cubre y los matches de eje cruzado."
     },
     {
       "id": "MN2024-045",
@@ -1705,8 +1705,8 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
+      "correccion_humana": "OK",
+      "explicacion": "Convenio educativo (19 unidades, 3000 estudiantes) -> difusión/educación: eje educación coincide.",
       "regla_aprendida": null
     },
     {
@@ -1742,8 +1742,8 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
+      "correccion_humana": "OK",
+      "explicacion": "Capacitación en clubes de salud -> 'Instrumental Médico Quirúrgico': eje salud coincide.",
       "regla_aprendida": null
     },
     {
@@ -1779,8 +1779,8 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
+      "correccion_humana": "OK",
+      "explicacion": "Educación financiera -> 'Formación y fortalecimiento del Talento Humano': coherente.",
       "regla_aprendida": null
     },
     {
@@ -1816,9 +1816,9 @@
       },
       "relaciones_encontradas": "promesa_sin_ejecucion",
       "resultado_automatico": "promesa_sin_ejecucion",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "logro_cobertura",
+      "explicacion": "Acción Social benefició a 24,686 con inversión: cifra de cobertura, verificable contra registros del programa/presupuesto, no POA.",
+      "regla_aprendida": "Cifra de cobertura de servicios != obra del POA. Los logros de servicios sociales/salud con cifras de cobertura (atenciones, brigadas medicas, beneficiarios directos) se verifican contra los REGISTROS del programa/entidad (patronato, direccion de accion social) y el presupuesto, NO contra el POA de obras. El motor v0.1 los marca solo_narrativa/promesa_sin_ejecucion. Categoria: 'logro_cobertura'."
     },
     {
       "id": "MN2024-050",
@@ -1853,9 +1853,9 @@
       },
       "relaciones_encontradas": "promesa_sin_ejecucion",
       "resultado_automatico": "promesa_sin_ejecucion",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "logro_cobertura",
+      "explicacion": "94 brigadas médicas, 15,587 atenciones: cobertura de servicio, no obra POA.",
+      "regla_aprendida": "Cifra de cobertura de servicios != obra del POA. Los logros de servicios sociales/salud con cifras de cobertura (atenciones, brigadas medicas, beneficiarios directos) se verifican contra los REGISTROS del programa/entidad (patronato, direccion de accion social) y el presupuesto, NO contra el POA de obras. El motor v0.1 los marca solo_narrativa/promesa_sin_ejecucion. Categoria: 'logro_cobertura'."
     },
     {
       "id": "MN2024-051",
@@ -1890,9 +1890,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "falso_positivo_evidencia",
+      "explicacion": "Remodelación de emergencia del hospital -> 'Optimización de la Gestión' (genérico): match espurio.",
+      "regla_aprendida": "Falso positivo de evidencia por eje. Cuando el eje de la afirmación (p.ej. agua) NO coincide con el eje del match del POA (p.ej. comunicación), la evidencia es espuria aunque el score supere 0.45. Acción: el cruce debe validar coincidencia de eje/tema, no solo similitud semántica bruta."
     },
     {
       "id": "MN2024-052",
@@ -1927,9 +1927,9 @@
       },
       "relaciones_encontradas": "obra_sin_promesa",
       "resultado_automatico": "obra_sin_promesa",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "falso_positivo_evidencia",
+      "explicacion": "Centro Buen Vivir ampliará a 24/7 ($61,240) -> match genérico 'Optimización': promesa/obra sin correlato correcto.",
+      "regla_aprendida": "Falso positivo de evidencia por eje. Cuando el eje de la afirmación (p.ej. agua) NO coincide con el eje del match del POA (p.ej. comunicación), la evidencia es espuria aunque el score supere 0.45. Acción: el cruce debe validar coincidencia de eje/tema, no solo similitud semántica bruta."
     },
     {
       "id": "MN2024-053",
@@ -1964,9 +1964,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "falso_positivo_evidencia",
+      "explicacion": "Proyecto social Alas de Libertad -> 'Manejo de áridos': eje no coincide.",
+      "regla_aprendida": "Falso positivo de evidencia por eje. Cuando el eje de la afirmación (p.ej. agua) NO coincide con el eje del match del POA (p.ej. comunicación), la evidencia es espuria aunque el score supere 0.45. Acción: el cruce debe validar coincidencia de eje/tema, no solo similitud semántica bruta."
     },
     {
       "id": "MN2024-054",
@@ -2001,9 +2001,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "falso_positivo_evidencia",
+      "explicacion": "Convenio con Ministerio -> 'Desarrollo del Bienestar Integral' (genérico): match espurio.",
+      "regla_aprendida": "Falso positivo de evidencia por eje. Cuando el eje de la afirmación (p.ej. agua) NO coincide con el eje del match del POA (p.ej. comunicación), la evidencia es espuria aunque el score supere 0.45. Acción: el cruce debe validar coincidencia de eje/tema, no solo similitud semántica bruta."
     },
     {
       "id": "MN2024-055",
@@ -2038,9 +2038,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "cifra_financiera",
+      "explicacion": "Reducción de deuda con IESS en 6.2 millones: cifra financiera.",
+      "regla_aprendida": "Cifra financiera != obra del POA. Las afirmaciones de cifras financieras/presupuestarias (deuda heredada, ingresos propios, recaudación, % de ejecución presupuestaria de ingresos/egresos, asignación por equidad territorial) son verificables contra el PRESUPUESTO/eSIGEF (cédula presupuestaria), NO contra el POA. El motor v0.1 solo cruza contra POA -> las marca 'promesa_sin_ejecucion' o 'coherente' con match genérico ('Optimización de la Gestión'). Requiere sumar la capa PRESUPUESTO al cruce de 5 capas. Categoría: 'cifra_financiera'."
     },
     {
       "id": "MN2024-056",
@@ -2075,8 +2075,8 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
+      "correccion_humana": "OK",
+      "explicacion": "8 CDIs (Centros de Desarrollo Infantil) -> 'Salud y Bienestar Juvenil': eje coincide.",
       "regla_aprendida": null
     },
     {
@@ -2112,8 +2112,8 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
+      "correccion_humana": "OK",
+      "explicacion": "Atención a 306 niños vulnerables -> 'Salud y Bienestar Juvenil': coherente.",
       "regla_aprendida": null
     },
     {
@@ -2149,9 +2149,9 @@
       },
       "relaciones_encontradas": "solo_narrativa",
       "resultado_automatico": "solo_narrativa",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "logro_cobertura",
+      "explicacion": "130,038 atenciones del patronato: cobertura de servicio (es la MFN-005 de fidelidad baja en H34b), verificable contra registros del patronato, no POA.",
+      "regla_aprendida": "Cifra de cobertura de servicios != obra del POA. Los logros de servicios sociales/salud con cifras de cobertura (atenciones, brigadas medicas, beneficiarios directos) se verifican contra los REGISTROS del programa/entidad (patronato, direccion de accion social) y el presupuesto, NO contra el POA de obras. El motor v0.1 los marca solo_narrativa/promesa_sin_ejecucion. Categoria: 'logro_cobertura'."
     },
     {
       "id": "MN2024-059",
@@ -2186,9 +2186,9 @@
       },
       "relaciones_encontradas": "promesa_sin_ejecucion",
       "resultado_automatico": "promesa_sin_ejecucion",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "logro_cobertura",
+      "explicacion": "Buen Vivir atendió 66,898 (2023) y 88,010 (2024): cobertura de servicio.",
+      "regla_aprendida": "Cifra de cobertura de servicios != obra del POA. Los logros de servicios sociales/salud con cifras de cobertura (atenciones, brigadas medicas, beneficiarios directos) se verifican contra los REGISTROS del programa/entidad (patronato, direccion de accion social) y el presupuesto, NO contra el POA de obras. El motor v0.1 los marca solo_narrativa/promesa_sin_ejecucion. Categoria: 'logro_cobertura'."
     },
     {
       "id": "MN2024-060",
@@ -2223,9 +2223,9 @@
       },
       "relaciones_encontradas": "promesa_sin_ejecucion",
       "resultado_automatico": "promesa_sin_ejecucion",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "logro_cobertura",
+      "explicacion": "Servicios médicos comunitarios de 1,243 a 15,687 atenciones: cobertura.",
+      "regla_aprendida": "Cifra de cobertura de servicios != obra del POA. Los logros de servicios sociales/salud con cifras de cobertura (atenciones, brigadas medicas, beneficiarios directos) se verifican contra los REGISTROS del programa/entidad (patronato, direccion de accion social) y el presupuesto, NO contra el POA de obras. El motor v0.1 los marca solo_narrativa/promesa_sin_ejecucion. Categoria: 'logro_cobertura'."
     },
     {
       "id": "MN2024-061",
@@ -2260,9 +2260,9 @@
       },
       "relaciones_encontradas": "obra_sin_promesa",
       "resultado_automatico": "obra_sin_promesa",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "OK",
+      "explicacion": "Proyecto Calarte (40 artesanos) -> 'Fomento al Emprendimiento Artesanal': match CORRECTO.",
+      "regla_aprendida": "El motor ACIERTA cuando la obra está en el POA con eje coincidente (036 deuda EPAN->'Deuda de agua potable'; 043 readecuación->'readecuación de infocentros'; 044 clubes juveniles->'bienestar juvenil'; 069 talleres de arte->'talleres en artes'; 072 turismo->'promoción de turismo'). Confirma que el nucleo del cruce es valido; el problema son las categorias que el POA no cubre y los matches de eje cruzado."
     },
     {
       "id": "MN2024-062",
@@ -2297,8 +2297,8 @@
       },
       "relaciones_encontradas": "obra_sin_promesa",
       "resultado_automatico": "obra_sin_promesa",
-      "correccion_humana": null,
-      "explicacion": null,
+      "correccion_humana": "OK",
+      "explicacion": "Calarte, capacitación 5 meses ($7,000) -> materiales didácticos: coherente.",
       "regla_aprendida": null
     },
     {
@@ -2334,8 +2334,8 @@
       },
       "relaciones_encontradas": "obra_sin_promesa",
       "resultado_automatico": "obra_sin_promesa",
-      "correccion_humana": null,
-      "explicacion": null,
+      "correccion_humana": "OK",
+      "explicacion": "$7,000 en capacitación de tejido -> materiales didácticos: aceptable.",
       "regla_aprendida": null
     },
     {
@@ -2371,9 +2371,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "OK",
+      "explicacion": "Nominación UNESCO Ciudad Creativa -> 'Promoción de Montecristi Ciudad Creativa': match CORRECTO.",
+      "regla_aprendida": "El motor ACIERTA cuando la obra está en el POA con eje coincidente (036 deuda EPAN->'Deuda de agua potable'; 043 readecuación->'readecuación de infocentros'; 044 clubes juveniles->'bienestar juvenil'; 069 talleres de arte->'talleres en artes'; 072 turismo->'promoción de turismo'). Confirma que el nucleo del cruce es valido; el problema son las categorias que el POA no cubre y los matches de eje cruzado."
     },
     {
       "id": "MN2024-065",
@@ -2408,9 +2408,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "falso_positivo_evidencia",
+      "explicacion": "Una de 5 ciudades del mundo -> 'Fortalecimiento reducción de indicadores' (genérico): match espurio.",
+      "regla_aprendida": "Falso positivo de evidencia por eje. Cuando el eje de la afirmación (p.ej. agua) NO coincide con el eje del match del POA (p.ej. comunicación), la evidencia es espuria aunque el score supere 0.45. Acción: el cruce debe validar coincidencia de eje/tema, no solo similitud semántica bruta."
     },
     {
       "id": "MN2024-066",
@@ -2445,9 +2445,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "falso_positivo_evidencia",
+      "explicacion": "Oficina comercial en Madrid -> 'Evento Barro': match parcial/espurio.",
+      "regla_aprendida": "Falso positivo de evidencia por eje. Cuando el eje de la afirmación (p.ej. agua) NO coincide con el eje del match del POA (p.ej. comunicación), la evidencia es espuria aunque el score supere 0.45. Acción: el cruce debe validar coincidencia de eje/tema, no solo similitud semántica bruta."
     },
     {
       "id": "MN2024-067",
@@ -2482,9 +2482,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "OK",
+      "explicacion": "Encuentro de ciudades creativas -> 'Promoción Ciudad Creativa': match CORRECTO.",
+      "regla_aprendida": "El motor ACIERTA cuando la obra está en el POA con eje coincidente (036 deuda EPAN->'Deuda de agua potable'; 043 readecuación->'readecuación de infocentros'; 044 clubes juveniles->'bienestar juvenil'; 069 talleres de arte->'talleres en artes'; 072 turismo->'promoción de turismo'). Confirma que el nucleo del cruce es valido; el problema son las categorias que el POA no cubre y los matches de eje cruzado."
     },
     {
       "id": "MN2024-068",
@@ -2519,8 +2519,8 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
+      "correccion_humana": "OK",
+      "explicacion": "Artesanía en Times Square -> 'Promoción Ciudad Creativa': coherente (promoción cultural).",
       "regla_aprendida": null
     },
     {
@@ -2556,9 +2556,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "OK",
+      "explicacion": "Talleres de artes vacacionales (311) -> 'Realizar talleres en artes': match CORRECTO (score 0.79).",
+      "regla_aprendida": "El motor ACIERTA cuando la obra está en el POA con eje coincidente (036 deuda EPAN->'Deuda de agua potable'; 043 readecuación->'readecuación de infocentros'; 044 clubes juveniles->'bienestar juvenil'; 069 talleres de arte->'talleres en artes'; 072 turismo->'promoción de turismo'). Confirma que el nucleo del cruce es valido; el problema son las categorias que el POA no cubre y los matches de eje cruzado."
     },
     {
       "id": "MN2024-070",
@@ -2593,8 +2593,8 @@
       },
       "relaciones_encontradas": "obra_sin_promesa",
       "resultado_automatico": "obra_sin_promesa",
-      "correccion_humana": null,
-      "explicacion": null,
+      "correccion_humana": "OK",
+      "explicacion": "80 técnicas ancestrales (barro) -> 'Capacitaciones': aceptable.",
       "regla_aprendida": null
     },
     {
@@ -2630,8 +2630,8 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
+      "correccion_humana": "OK",
+      "explicacion": "60 capacitados en oratorio/geología -> 'Capacitaciones en Talleres': coherente.",
       "regla_aprendida": null
     },
     {
@@ -2667,9 +2667,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "OK",
+      "explicacion": "Promoción turística (3,467 visitantes) -> 'Promoción de Turismo': match CORRECTO.",
+      "regla_aprendida": "El motor ACIERTA cuando la obra está en el POA con eje coincidente (036 deuda EPAN->'Deuda de agua potable'; 043 readecuación->'readecuación de infocentros'; 044 clubes juveniles->'bienestar juvenil'; 069 talleres de arte->'talleres en artes'; 072 turismo->'promoción de turismo'). Confirma que el nucleo del cruce es valido; el problema son las categorias que el POA no cubre y los matches de eje cruzado."
     },
     {
       "id": "MN2024-073",
@@ -2704,8 +2704,8 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
+      "correccion_humana": "OK",
+      "explicacion": "Evento 'Modela tu sombrero' -> 'Fomento al Emprendimiento Artesanal · Eventos': coherente.",
       "regla_aprendida": null
     },
     {
@@ -2741,9 +2741,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "falso_positivo_evidencia",
+      "explicacion": "Museo del Sombrero de Paja Toquilla -> 'Entrega de Souvenirs': match espurio (el museo no es souvenirs).",
+      "regla_aprendida": "Falso positivo de evidencia por eje. Cuando el eje de la afirmación (p.ej. agua) NO coincide con el eje del match del POA (p.ej. comunicación), la evidencia es espuria aunque el score supere 0.45. Acción: el cruce debe validar coincidencia de eje/tema, no solo similitud semántica bruta."
     },
     {
       "id": "MN2024-075",
@@ -2778,8 +2778,8 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
+      "correccion_humana": "OK",
+      "explicacion": "Centro parroquial (2000 beneficiados) -> 'Recuperación de espacios públicos': aceptable.",
       "regla_aprendida": null
     },
     {
@@ -2815,8 +2815,8 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
+      "correccion_humana": "OK",
+      "explicacion": "$14,000 escuela bilingüe -> 'Fortalecimiento Educativo': eje educativo coincide.",
       "regla_aprendida": null
     },
     {
@@ -2852,8 +2852,8 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
+      "correccion_humana": "OK",
+      "explicacion": "Proyecto de agua $28M -> 'agua potable': eje agua coincide.",
       "regla_aprendida": null
     },
     {
@@ -2889,9 +2889,9 @@
       },
       "relaciones_encontradas": "promesa_sin_ejecucion",
       "resultado_automatico": "promesa_sin_ejecucion",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "verificar_pac",
+      "explicacion": "Alcantarillado fase 1 General Alfaro ($5M): obra en contratación, no en POA de ejecutadas -> verificar en PAC/SERCOP. Falso negativo del motor.",
+      "regla_aprendida": "Falso negativo por obra en contratacion. Obra real que el motor marca 'sin correlato' (score < 0.45) porque NO esta en el POA de obras ejecutadas sino EN CONTRATACION (alcantarillado $5M fase 1, Parque de la Huella 'en proceso de contratacion', intervencion vial 'ya contratada'). Se verifican contra PAC/SERCOP (el portal de contratacion), no solo POA. CONFIRMA el punto de Javo: sumar la capa PAC/SERCOP al v0.2 para determinar si lo que la autoridad dice tiene contrato o es 'paja'. Categoria: 'verificar_pac'."
     },
     {
       "id": "MN2024-079",
@@ -2926,9 +2926,9 @@
       },
       "relaciones_encontradas": "solo_narrativa",
       "resultado_automatico": "solo_narrativa",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "verificar_pac",
+      "explicacion": "Parque de la Huella ($84K) EN PROCESO DE CONTRATACIÓN -> verificar en PAC/SERCOP; el motor lo marcó solo_narrativa.",
+      "regla_aprendida": "Falso negativo por obra en contratacion. Obra real que el motor marca 'sin correlato' (score < 0.45) porque NO esta en el POA de obras ejecutadas sino EN CONTRATACION (alcantarillado $5M fase 1, Parque de la Huella 'en proceso de contratacion', intervencion vial 'ya contratada'). Se verifican contra PAC/SERCOP (el portal de contratacion), no solo POA. CONFIRMA el punto de Javo: sumar la capa PAC/SERCOP al v0.2 para determinar si lo que la autoridad dice tiene contrato o es 'paja'. Categoria: 'verificar_pac'."
     },
     {
       "id": "MN2024-080",
@@ -2963,9 +2963,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "OK",
+      "explicacion": "Reconstrucción parque Las Pampas -> 'Construcción parque las Pampas': match CORRECTO (score 0.84).",
+      "regla_aprendida": "El motor ACIERTA cuando la obra está en el POA con eje coincidente (036 deuda EPAN->'Deuda de agua potable'; 043 readecuación->'readecuación de infocentros'; 044 clubes juveniles->'bienestar juvenil'; 069 talleres de arte->'talleres en artes'; 072 turismo->'promoción de turismo'). Confirma que el nucleo del cruce es valido; el problema son las categorias que el POA no cubre y los matches de eje cruzado."
     },
     {
       "id": "MN2024-081",
@@ -3000,9 +3000,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "OK",
+      "explicacion": "Regeneración calle Alfaro -> 'Recuperación integral de espacios públicos': coherente (score 0.78).",
+      "regla_aprendida": "El motor ACIERTA cuando la obra está en el POA con eje coincidente (036 deuda EPAN->'Deuda de agua potable'; 043 readecuación->'readecuación de infocentros'; 044 clubes juveniles->'bienestar juvenil'; 069 talleres de arte->'talleres en artes'; 072 turismo->'promoción de turismo'). Confirma que el nucleo del cruce es valido; el problema son las categorias que el POA no cubre y los matches de eje cruzado."
     },
     {
       "id": "MN2024-082",
@@ -3037,9 +3037,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "falso_positivo_evidencia",
+      "explicacion": "Conducción mercado menor ($417K) -> 'Optimización de la Gestión' (genérico): match espurio.",
+      "regla_aprendida": "Falso positivo de evidencia por eje. Cuando el eje de la afirmación (p.ej. agua) NO coincide con el eje del match del POA (p.ej. comunicación), la evidencia es espuria aunque el score supere 0.45. Acción: el cruce debe validar coincidencia de eje/tema, no solo similitud semántica bruta."
     },
     {
       "id": "MN2024-083",
@@ -3074,9 +3074,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "falso_positivo_evidencia",
+      "explicacion": "Proyecto interno ($17K) -> 'Planes Estratégicos' (genérico): match espurio.",
+      "regla_aprendida": "Falso positivo de evidencia por eje. Cuando el eje de la afirmación (p.ej. agua) NO coincide con el eje del match del POA (p.ej. comunicación), la evidencia es espuria aunque el score supere 0.45. Acción: el cruce debe validar coincidencia de eje/tema, no solo similitud semántica bruta."
     },
     {
       "id": "MN2024-084",
@@ -3111,9 +3111,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "falso_positivo_evidencia",
+      "explicacion": "Reubicación de comerciantes -> 'Mantenimiento de vías urbanas': eje no coincide.",
+      "regla_aprendida": "Falso positivo de evidencia por eje. Cuando el eje de la afirmación (p.ej. agua) NO coincide con el eje del match del POA (p.ej. comunicación), la evidencia es espuria aunque el score supere 0.45. Acción: el cruce debe validar coincidencia de eje/tema, no solo similitud semántica bruta."
     },
     {
       "id": "MN2024-085",
@@ -3148,9 +3148,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "proceso_rendicion",
+      "explicacion": "La Asamblea Ciudadana realizó talleres: actividad del custodio del proceso, no gestión del alcalde (Javo).",
+      "regla_aprendida": "Proceso de rendición != gestión. Las unidades sobre la METODOLOGÍA del evento de rendición (conformación de comisiones, talleres, reuniones, fechas, solicitud/recepción de documentación, mesas de trabajo, difusión del informe) NO son afirmaciones de gestión pública verificables contra el POA: son meta-narrativa del proceso. Es el MAYOR falso positivo del motor v0.1. Acción: categoría 'proceso_rendicion' y excluirlas del ICN de gestión."
     },
     {
       "id": "MN2024-086",
@@ -3185,9 +3185,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "proceso_rendicion",
+      "explicacion": "Habilitación de formulario en la página del CNE: acto del proceso de rendición.",
+      "regla_aprendida": "Proceso de rendición != gestión. Las unidades sobre la METODOLOGÍA del evento de rendición (conformación de comisiones, talleres, reuniones, fechas, solicitud/recepción de documentación, mesas de trabajo, difusión del informe) NO son afirmaciones de gestión pública verificables contra el POA: son meta-narrativa del proceso. Es el MAYOR falso positivo del motor v0.1. Acción: categoría 'proceso_rendicion' y excluirlas del ICN de gestión."
     },
     {
       "id": "MN2024-087",
@@ -3222,9 +3222,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "verificar_pac",
+      "explicacion": "Estudio para intervención vial (30 km) 'ya contratado' -> verificar en PAC/SERCOP; el match 'Recaudación' es espurio.",
+      "regla_aprendida": "Falso negativo por obra en contratacion. Obra real que el motor marca 'sin correlato' (score < 0.45) porque NO esta en el POA de obras ejecutadas sino EN CONTRATACION (alcantarillado $5M fase 1, Parque de la Huella 'en proceso de contratacion', intervencion vial 'ya contratada'). Se verifican contra PAC/SERCOP (el portal de contratacion), no solo POA. CONFIRMA el punto de Javo: sumar la capa PAC/SERCOP al v0.2 para determinar si lo que la autoridad dice tiene contrato o es 'paja'. Categoria: 'verificar_pac'."
     },
     {
       "id": "MN2024-088",
@@ -3259,9 +3259,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "falso_positivo_evidencia",
+      "explicacion": "Escenario multifuncional Toalla Grande -> 'Construcción parque las Pampas': lugar/obra distinta.",
+      "regla_aprendida": "Falso positivo de evidencia por eje. Cuando el eje de la afirmación (p.ej. agua) NO coincide con el eje del match del POA (p.ej. comunicación), la evidencia es espuria aunque el score supere 0.45. Acción: el cruce debe validar coincidencia de eje/tema, no solo similitud semántica bruta."
     },
     {
       "id": "MN2024-089",
@@ -3296,8 +3296,8 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
+      "correccion_humana": "OK",
+      "explicacion": "$5,000 infraestructura (escenarios/camerinos) -> 'nueva infraestructura': aceptable.",
       "regla_aprendida": null
     },
     {
@@ -3333,9 +3333,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "logro_cobertura",
+      "explicacion": "350 habitantes beneficiados: cobertura; el match 'Remuneraciones' es espurio.",
+      "regla_aprendida": "Cifra de cobertura de servicios != obra del POA. Los logros de servicios sociales/salud con cifras de cobertura (atenciones, brigadas medicas, beneficiarios directos) se verifican contra los REGISTROS del programa/entidad (patronato, direccion de accion social) y el presupuesto, NO contra el POA de obras. El motor v0.1 los marca solo_narrativa/promesa_sin_ejecucion. Categoria: 'logro_cobertura'."
     },
     {
       "id": "MN2024-091",
@@ -3370,9 +3370,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "meta_narrativa",
+      "explicacion": "Obra integrada en los planes del Bicentenario: referencia de marco, no obra verificable en sí.",
+      "regla_aprendida": "Meta-narrativa de marco. Afirmaciones de encuadre o retórica (el Plan Bicentenario como hoja de ruta, 'proceso de transformación', anuncios de lo que se va a rendir) no son obras específicas verificables. Acción: categoría 'meta_narrativa', fuera del ICN de gestión."
     },
     {
       "id": "MN2024-092",
@@ -3407,8 +3407,8 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
+      "correccion_humana": "OK",
+      "explicacion": "Cancha para niños en plan de desarrollo -> 'Salud y Bienestar Juvenil': eje coincide.",
       "regla_aprendida": null
     },
     {
@@ -3444,8 +3444,8 @@
       },
       "relaciones_encontradas": "obra_sin_promesa",
       "resultado_automatico": "obra_sin_promesa",
-      "correccion_humana": null,
-      "explicacion": null,
+      "correccion_humana": "OK",
+      "explicacion": "Recuperación de parque con cámaras -> 'Recuperación de espacios públicos': coherente.",
       "regla_aprendida": null
     },
     {
@@ -3481,8 +3481,8 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
+      "correccion_humana": "OK",
+      "explicacion": "Cursos vacacionales -> 'Ferias de exposición de artes': eje cultura coincide.",
       "regla_aprendida": null
     },
     {
@@ -3518,9 +3518,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "falso_positivo_evidencia",
+      "explicacion": "Escenario multifuncional (95 m²) -> 'Mantenimiento de Terrazas': match espurio.",
+      "regla_aprendida": "Falso positivo de evidencia por eje. Cuando el eje de la afirmación (p.ej. agua) NO coincide con el eje del match del POA (p.ej. comunicación), la evidencia es espuria aunque el score supere 0.45. Acción: el cruce debe validar coincidencia de eje/tema, no solo similitud semántica bruta."
     },
     {
       "id": "MN2024-096",
@@ -3555,8 +3555,8 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
+      "correccion_humana": "OK",
+      "explicacion": "$55,000 infraestructura escenarios -> 'Mantenimiento de infraestructura existente': aceptable.",
       "regla_aprendida": null
     },
     {
@@ -3592,9 +3592,9 @@
       },
       "relaciones_encontradas": "solo_narrativa",
       "resultado_automatico": "solo_narrativa",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "logro_cobertura",
+      "explicacion": "350 habitantes beneficiados por el escenario: cobertura; el motor lo marcó solo_narrativa.",
+      "regla_aprendida": "Cifra de cobertura de servicios != obra del POA. Los logros de servicios sociales/salud con cifras de cobertura (atenciones, brigadas medicas, beneficiarios directos) se verifican contra los REGISTROS del programa/entidad (patronato, direccion de accion social) y el presupuesto, NO contra el POA de obras. El motor v0.1 los marca solo_narrativa/promesa_sin_ejecucion. Categoria: 'logro_cobertura'."
     },
     {
       "id": "MN2024-098",
@@ -3629,9 +3629,9 @@
       },
       "relaciones_encontradas": "coherente",
       "resultado_automatico": "coherente",
-      "correccion_humana": null,
-      "explicacion": null,
-      "regla_aprendida": null
+      "correccion_humana": "meta_narrativa",
+      "explicacion": "La obra forma parte del plan Bicentenario: referencia de marco.",
+      "regla_aprendida": "Meta-narrativa de marco. Afirmaciones de encuadre o retórica (el Plan Bicentenario como hoja de ruta, 'proceso de transformación', anuncios de lo que se va a rendir) no son obras específicas verificables. Acción: categoría 'meta_narrativa', fuera del ICN de gestión."
     }
   ]
 }
