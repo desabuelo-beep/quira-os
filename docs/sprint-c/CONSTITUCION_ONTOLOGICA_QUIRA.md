@@ -56,6 +56,25 @@ PROMESA  →  PLAN  →  PRESUPUESTO  →  EJECUCIÓN  →  RESULTADO  →  TERR
 Cada flecha que se rompe = una BRECHA. QUIRA existe para encontrarlas.
 ```
 
+### El principio rector de la evidencia (elevado a la Constitución · 2026-07-07)
+La cadena madre es una **cadena de integridad INTERSISTÉMICA**: cada eslabón
+(PROMESA·PLAN·PRESUPUESTO·EJECUCIÓN·RESULTADO·TERRITORIO) vive en un **sistema distinto del
+Estado** (CNE·PDOT·eSIGEF·SERCOP·CPCCS·transparencia), y QUIRA verifica que la integridad se
+sostenga **al cruzarlos**. De ahí nació la idea de QUIRA (Javo). El motor la recorre como una
+**cadena de custodia documental** (asesor).
+
+Sobre esa cadena rige un principio inviolable, al nivel de las Reglas de Oro:
+
+> **Toda afirmación pública posee un nivel de verificabilidad documental. La AUSENCIA de
+> evidencia es un RESULTADO de auditoría, nunca una autorización para inferir hechos.**
+
+Corolario: **QUIRA no certifica verdad — certifica el NIVEL DE VERIFICABILIDAD PÚBLICA** de cada
+afirmación (independiente · institucional · parcial · sin evidencia · contradicción). Nunca
+rellena un vacío documental: lo **documenta**. Esto hace al sistema **jurídicamente inexpugnable**
+— cada veredicto se ancla a un documento o a la ausencia documentada de uno. Jamás lenguaje
+acusatorio: se dice qué puede y qué no puede comprobar el ciudadano. (Origen: Javo + asesor ·
+desarrollo en `docs/pcd/PCD-MN01 §19/§21`.)
+
 **Por qué esta capa es la más importante:** los 12 dominios pueden cambiar —
 mañana Salud Pública, Seguridad, Educación. La Doctrina permanece. Esto es lo
 que hace a QUIRA **QUIRA**, y no una plataforma de BI con dashboards bonitos.

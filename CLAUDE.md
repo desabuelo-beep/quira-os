@@ -12,6 +12,7 @@ NINGÚN script lo recalcula** — se lee vía `app/connectors/gold_master.py`.
 Detalle: `docs/adr/ADR-023` (3 niveles, inmutable).
 
 ## REGLAS DE ORO (inviolables)
+> **⚖️ PRINCIPIO RECTOR (elevado a la Constitución · Javo + asesor · 2026-07-07):** Toda afirmación pública posee un nivel de verificabilidad documental. La **ausencia de evidencia es un RESULTADO de auditoría, nunca una autorización para inferir hechos.** QUIRA no certifica verdad: certifica el **nivel de verificabilidad pública** (independiente·institucional·parcial·sin evidencia·contradicción). Las cadenas de QUIRA son **cadenas de integridad intersistémica**. Detalle: `CONSTITUCION_ONTOLOGICA_QUIRA.md` CAPA 0 · `docs/pcd/PCD-MN01 §21`.
 1. **Excel = Estado.** Gold Master es fuente de verdad. Excel→Python→Supabase→UI, nunca al revés. **La fórmula canónica (H12!B33 ICPI) es INMUTABLE** — jamás se modifica; correcciones SOLO en inputs/semáforo/presentación, sobre COPIA de trabajo, con evidencia, verificadas con dumps (openpyxl corrompe el canon). Metodología estampada: `docs/architecture/METODOLOGIA_GOLD_MASTER.md`.
 2. **Bloomberg Firewall.** NUNCA en UI/API/público: ICPI·TGI·Ti·QTMP·H01-H99·Gold Master·node IDs (Dom07·C01·CE_226). Lenguaje de gobernanza, no metodología interna.
 3. **Sin norma verificada (SHA256), no hay dato.** Prohibido alucinar artículos o cifras.
