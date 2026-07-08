@@ -1,5 +1,30 @@
 {
-  "_meta": "Corrección humana asistida por IA (Fase A · calibración) — LOTE 1 (casos 001-020). Pre-validado por Claude, PENDIENTE de ratificación de Javo. Categorías de corrección: OK (auto correcto) · proceso_rendicion · meta_narrativa · falso_positivo_evidencia · + reclasificaciones.",
+  "_principio_rector": "Toda afirmacion publica posee un nivel de verificabilidad documental. La AUSENCIA de evidencia es un RESULTADO de auditoria, nunca una autorizacion para inferir hechos. (propuesto para elevar a la Constitucion · asesor + Javo 2026-07-07)",
+  "_familias": {
+    "A_clasificacion_narrativa": {
+      "_nota": "¿qué TIPO de afirmación es? proceso · meta · gestión",
+      "reglas": [
+        "R1",
+        "R3"
+      ]
+    },
+    "B_evidencia": {
+      "_nota": "¿qué NIVEL de respaldo público tiene? independiente · institucional · parcial · sin_respaldo",
+      "reglas": [
+        "R4",
+        "R6",
+        "R7",
+        "R8"
+      ]
+    },
+    "C_integridad": {
+      "_nota": "¿coincide al CRUZAR sistemas? temática · temporal · documental (cadena de integridad intersistémica)",
+      "reglas": [
+        "R2",
+        "R5"
+      ]
+    }
+  },
   "_reglas": {
     "R1": "Proceso de rendición != gestión. Las unidades sobre la METODOLOGÍA del evento de rendición (conformación de comisiones, talleres, reuniones, fechas, solicitud/recepción de documentación, mesas de trabajo, difusión del informe) NO son afirmaciones de gestión pública verificables contra el POA: son meta-narrativa del proceso. Es el MAYOR falso positivo del motor v0.1. Acción: categoría 'proceso_rendicion' y excluirlas del ICN de gestión.",
     "R2": "Falso positivo de evidencia por eje. Cuando el eje de la afirmación (p.ej. agua) NO coincide con el eje del match del POA (p.ej. comunicación), la evidencia es espuria aunque el score supere 0.45. Acción: el cruce debe validar coincidencia de eje/tema, no solo similitud semántica bruta.",
@@ -10,6 +35,7 @@
     "R7": "Falso negativo por obra en contratacion. Obra real que el motor marca 'sin correlato' (score < 0.45) porque NO esta en el POA de obras ejecutadas sino EN CONTRATACION (alcantarillado $5M fase 1, Parque de la Huella 'en proceso de contratacion', intervencion vial 'ya contratada'). Se verifican contra PAC/SERCOP (el portal de contratacion), no solo POA. CONFIRMA el punto de Javo: sumar la capa PAC/SERCOP al v0.2 para determinar si lo que la autoridad dice tiene contrato o es 'paja'. Categoria: 'verificar_pac'.",
     "R8": "Ausencia de respaldo publico = HALLAZGO, no falla. Cuando el documento que probaria una afirmacion NO es publico (ej. la DPE solo publica cedula de gastos, no de ingresos), se marca nivel_evidencia=sin_evidencia_publica en lenguaje no acusatorio (\"el ciudadano no puede comprobarlo\"). JAMAS se fabrica verificacion (Regla 3). QUIRA no certifica verdad: certifica el NIVEL de verificabilidad publica de cada afirmacion (independiente/institucional/parcial/sin_evidencia/contradiccion)."
   },
+  "_meta": "Corrección humana asistida por IA (Fase A · calibración) — LOTE 1 (casos 001-020). Pre-validado por Claude, PENDIENTE de ratificación de Javo. Categorías de corrección: OK (auto correcto) · proceso_rendicion · meta_narrativa · falso_positivo_evidencia · + reclasificaciones.",
   "casos": {
     "MN2024-001": {
       "correccion": "meta_narrativa",

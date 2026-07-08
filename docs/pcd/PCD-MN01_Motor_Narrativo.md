@@ -295,5 +295,34 @@ atenciones no es plenamente verificable con un registro de ventana parcial.
 CPCCS → `nivel_evidencia` por afirmación. RDC 2024 (78 sustantivas): **45 independiente · 12 institucional
 · 2 parcial · 19 sin evidencia pública** (+20 proceso). R4-ingresos/deuda = sin fuente pública (§19).
 
+## 21 · Principio rector y la Cadena de Integridad Intersistémica (2026-07-07)
+**Origen (Javo):** QUIRA nació de una intuición — *todas nuestras cadenas son cadenas de integridad
+INTERSISTÉMICA*. La cadena de la gestión (PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO) y la
+cadena del motor (discurso→POA→PAC→CPCCS→Literal D→cédula→taxonomía) son lo mismo: **verificar que la
+integridad se sostiene AL CRUZAR los sistemas del Estado** (planificación · SERCOP · CPCCS · transparencia
+· presupuesto). El asesor lo nombra igual desde otro ángulo: **cadena de custodia documental / trazabilidad
+multisistémica**. No es un algoritmo — es una cadena de custodia de la evidencia.
+
+**Principio rector** (formalizado · propuesto para elevar a la Constitución, casi al nivel del Canon):
+> Toda afirmación pública posee un nivel de verificabilidad documental. La **ausencia de evidencia es un
+> resultado de auditoría**, nunca una autorización para inferir hechos.
+
+Resume todas las decisiones del motor: no inventar verificaciones · no extrapolar ventanas · distinguir
+evidencia independiente de institucional · registrar los vacíos documentales.
+
+**Los 4 pilares (asesor):** ① Canon metodológico (cómo se evalúa) · ② Motor Narrativo (extrae las
+afirmaciones) · ③ Motor de Evidencia Pública (determina el nivel de respaldo) · ④ Corpus Doctrinario
+(jurisprudencia que deja aprender sin perder consistencia).
+
+**Corpus doctrinario en FAMILIAS** (no reglas sueltas · asesor):
+- **Familia A · Clasificación narrativa** — proceso · meta · gestión (R1, R3).
+- **Familia B · Evidencia** — independiente · institucional · parcial · sin respaldo (R4, R6, R7, R8).
+- **Familia C · Integridad** — coincidencia temática · temporal · documental (R2, R5, ventana de periodo).
+
+**Definición canónica de QUIRA (asesor):** *infraestructura metodológica para determinar el nivel de
+verificabilidad pública del discurso institucional mediante trazabilidad documental multisistémica.*
+Engloba Motor Narrativo, ICPI, PAC, CPCCS, cédulas, Literal D y cualquier fuente futura sin reescribir la
+arquitectura.
+
 ---
-*PCD-MN01 · Dylus Lab © 2026 · el Motor Narrativo, motor transversal (v0.1 LOCKED · v0.3 con capa PAC) · corpus doctrinario propio.*
+*PCD-MN01 · Dylus Lab © 2026 · Motor Narrativo + Motor de Evidencia Pública · cadena de integridad intersistémica · corpus doctrinario propio.*
