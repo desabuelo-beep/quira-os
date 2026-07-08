@@ -13,10 +13,22 @@ Cuando alguien ve QUIRA no debe pensar *"qué bonito dashboard"*, sino **"esto p
 de control"**. Sobrio, documental, institucional. La meta: que cualquier gráfico sea reconocible como *"un
 gráfico QUIRA"* sin leer el logo — como un gráfico de Bloomberg. Plano (sin gradientes, sin adornos).
 
-## 2 · Doble registro de lenguaje (FIREWALL · Regla 2)
-- **Hacia AFUERA (público):** lenguaje de **administración pública**. Nunca jerga interna, nunca acusatorio.
-- **Hacia ADENTRO (Dylus Lab):** el lenguaje interno (jerga tipo "paja", node IDs, nombres de motor).
-- Prohibido cruzar la jerga al producto. Ej.: interno *"no era paja"* → público *"proceso publicado en SERCOP"*.
+**Regla del concepto (Javo · como el cajón de Planificación):** todo gráfico va **acompañado de su
+explicación conceptual**, sección por sección, en **lenguaje de administración pública** — qué mide y por
+qué importa para la gestión. *El gráfico sin concepto no comunica.* Nunca un visual "pelado".
+
+## 2 · Triple registro de identidad y lenguaje (FIREWALL · Regla 2 · asesor 2026-07-08)
+Tres niveles que **jamás se mezclan**:
+1. **Identidad pública (externa)** — la propuesta de valor para alcalde/auditor/ciudadano/CAF:
+   *"QUIRA convierte evidencia pública dispersa en inteligencia territorial verificable, al servicio de la
+   decisión pública."* QUIRA **no es** "un sistema operativo" (eso es arquitectura interna).
+2. **Identidad institucional (producto)** — nombres funcionales: **Observatorio de Integridad Territorial**
+   (el que usan los encabezados de los cajones) · Plataforma de inteligencia territorial verificable.
+3. **Arquitectura interna (Dylus Lab)** — solo hacia adentro: Canon · Constitución Ontológica · Renderer ·
+   Motor Narrativo · QUIRA OS · jerga ("paja"). Nunca cruza al producto.
+
+Regla: hacia afuera, **lenguaje de administración pública**; jamás jerga interna ni lenguaje acusatorio.
+Ej.: interno *"no era paja"* → público *"proceso publicado en SERCOP"*.
 
 ## 3 · Los estados de evidencia (eje EVIDENCIA · el corazón del lenguaje)
 No es una paleta: es una **clasificación jurídica**. Cada estado es una categoría doctrinaria.
