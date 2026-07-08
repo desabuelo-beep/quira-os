@@ -1,4 +1,4 @@
-# 🎨 CONSTITUCIÓN VISUAL DE QUIRA · v1.0
+# 🎨 CONSTITUCIÓN VISUAL DE QUIRA · v1.2
 **Dylus Lab © 2026 · el lenguaje visual doctrinal — como la Constitución Ontológica define QUÉ ES QUIRA, esta define CÓMO SE VE.**
 
 > Regla 9: nace en el canon, no en Python. Cada cajón es una **implementación** de esta Constitución, igual
@@ -17,6 +17,11 @@ gráfico QUIRA"* sin leer el logo — como un gráfico de Bloomberg. Plano (sin 
 explicación conceptual**, sección por sección, en **lenguaje de administración pública** — qué mide y por
 qué importa para la gestión. *El gráfico sin concepto no comunica.* Nunca un visual "pelado".
 
+**Regla de las siglas (Javo · 2026-07-08):** JAMÁS siglas ni códigos internos en lo público (R1-R8, nombres
+de nivel/motor, node IDs). ¿Qué alcalde o ciudadano entiende "R4"? El **criterio se explica en palabras**
+("se contrastó con el presupuesto municipal ejecutado"), no en código. **Nada se deja sin explicar** — por
+pequeño que sea el elemento, se conceptualiza y se define. Nada al azar.
+
 ## 2 · Triple registro de identidad y lenguaje (FIREWALL · Regla 2 · asesor 2026-07-08)
 Tres niveles que **jamás se mezclan**:
 1. **Identidad pública (externa)** — la propuesta de valor para alcalde/auditor/ciudadano/CAF:
@@ -31,25 +36,29 @@ Regla: hacia afuera, **lenguaje de administración pública**; jamás jerga inte
 Ej.: interno *"no era paja"* → público *"proceso publicado en SERCOP"*.
 
 ## 3 · Los estados de evidencia (eje EVIDENCIA · el corazón del lenguaje)
-No es una paleta: es una **clasificación jurídica**. Cada estado es una categoría doctrinaria.
+No es una paleta: es una **clasificación jurídica**. El nombre interno (izq.) es de Dylus Lab;
+**al público SIEMPRE se muestra la etiqueta llana** (der.), nunca el nombre interno ni un código.
 
-| Estado epistemológico | Color | Significado (público) |
-|---|---|---|
-| **Independiente** | 🟢 `#1E8E3E` | Verificado en registro externo del Estado |
-| **Institucional** | 🔵 `#1A73E8` | Declarado solo en el documento de la propia entidad |
-| **Parcial** | 🟡 `#F9AB00` | Evidencia con ventana temporal limitada |
-| **Sin evidencia pública** | ⚪ `#9AA0A6` | No existe documento público (ausencia ≠ "malo") |
-| **Contradicción documental** | 🔴 `#D93025` | La evidencia pública contradice lo afirmado |
+| Estado (interno) | Color | Etiqueta PÚBLICA | Significado |
+|---|---|---|---|
+| Independiente | 🟢 `#1E8E3E` | **Comprobable / Verificado** | Respaldo en registro externo del Estado |
+| Institucional | 🔵 `#1A73E8` | **Solo en su propio informe** | Solo consta en el documento de la propia entidad |
+| Parcial | 🟡 `#F9AB00` | **Comprobable en parte** | Evidencia con ventana temporal limitada |
+| Sin evidencia pública | ⚪ `#767C82` | **No comprobable públicamente** | No hay documento público (ausencia ≠ "malo"; gris **con borde** para que no desaparezca) |
+| Contradicción documental | 🔴 `#D93025` | **Contradice el documento** | La evidencia pública contradice lo afirmado |
 
 Coexiste con el **semáforo de cumplimiento** del Gold Master (¿se cumplió? · otro eje · hermanos coherentes).
 Regla: cada gramática se muestra **etiquetada por su eje**, jamás un punto de color a secas.
 
 ## 4 · Tipografía y jerarquía
-- **Serif (`--font-voice`)** → la IDEA y las placas institucionales (gravedad).
-- **Sans (`--font-sans`)** → cuerpo y etiquetas.
-- **Mono (`--font-mono`)** → cifras, IDs de expediente, códigos (aire documental).
-- **El protagonista es la IDEA, no el número.** Arriba: *"Nivel de Evidencia Pública del Discurso"*. El
-  porcentaje es un **indicador secundario**, nunca el titular.
+- **Serif (`--font-voice`)** → la pregunta/idea y las placas institucionales (gravedad).
+- **Sans (`--font-sans`)** → cuerpo, explicaciones y etiquetas.
+- **Mono (`--font-mono`)** → cifras y N.º de expediente (aire documental). *Nunca* para exponer códigos internos.
+- **Jerarquía en 4 niveles (asesor):** **N1** la pregunta del cajón (serif, manda) · **N2** los bloques
+  (numerados 01·02·03…, discretos, subordinados) · **N3** la explicación conceptual · **N4** la evidencia
+  (datos, expedientes). Los bloques NO compiten con la pregunta.
+- **El protagonista es la pregunta, no el número.** Primero *¿qué parte del discurso puede verificarse?*;
+  después el porcentaje como **respuesta**, jamás como titular.
 
 ## 5 · Componentes canónicos (el vocabulario de todos los cajones)
 - **Indicador** — la cifra clave, subordinada a la idea.
@@ -82,4 +91,4 @@ color decorativo sin significado · lenguaje acusatorio · exponer ICPI/node IDs
   y el comparativo. Cada cajón es una implementación de esta Constitución.
 
 ---
-*Constitución Visual QUIRA v1.0 · Dylus Lab © 2026 · un gráfico QUIRA se reconoce sin leer el logo.*
+*Constitución Visual QUIRA v1.2 · Dylus Lab © 2026 · un gráfico QUIRA se reconoce sin leer el logo · lista para congelar antes del renderer.*
