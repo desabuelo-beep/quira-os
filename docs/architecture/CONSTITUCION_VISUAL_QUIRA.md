@@ -1,4 +1,4 @@
-# 🎨 CONSTITUCIÓN VISUAL DE QUIRA · v1.3
+# 🎨 CONSTITUCIÓN VISUAL DE QUIRA · v1.4
 **Dylus Lab © 2026 · el lenguaje visual doctrinal — como la Constitución Ontológica define QUÉ ES QUIRA, esta define CÓMO SE VE.**
 
 > Regla 9: nace en el canon, no en Python. Cada cajón es una **implementación** de esta Constitución, igual
@@ -13,9 +13,11 @@ Cuando alguien ve QUIRA no debe pensar *"qué bonito dashboard"*, sino **"esto p
 de control"**. Sobrio, documental, institucional. La meta: que cualquier gráfico sea reconocible como *"un
 gráfico QUIRA"* sin leer el logo — como un gráfico de Bloomberg. Plano (sin gradientes, sin adornos).
 
-**Regla del concepto (Javo · como el cajón de Planificación):** todo gráfico va **acompañado de su
-explicación conceptual**, sección por sección, en **lenguaje de administración pública** — qué mide y por
-qué importa para la gestión. *El gráfico sin concepto no comunica.* Nunca un visual "pelado".
+**Regla del concepto — DOS capas (Javo · como el cajón de Planificación):** cada gráfico lleva **(a) la
+conceptualización** —*qué mide* (el concepto, genérico)— **y (b) el análisis/interpretación** —*qué muestra
+aquí*: de qué **universo de gestión**, **quién · dónde · cuándo · cómo**, y la lectura de los datos—. En
+lenguaje de administración pública. *El gráfico sin concepto no comunica.* **Todas las fuentes se nombran**
+explícitamente (nada a la imaginación, nada al azar). Nunca un visual "pelado".
 
 **Regla de las siglas (Javo · 2026-07-08):** JAMÁS siglas ni códigos internos en lo público (R1-R8, nombres
 de nivel/motor, node IDs). ¿Qué alcalde o ciudadano entiende "R4"? El **criterio se explica en palabras**
@@ -81,7 +83,17 @@ Regla: cada gramática se muestra **etiquetada por su eje**, jamás un punto de 
 - **Conexiones** — las **relaciones entre cajones** deben evidenciarse (un cajón no es una isla: el de
   Holding lleva las entidades; este conecta con Holding y con la Evolución anual).
 - **Línea temporal** (2023→2025) y **comparativo del holding** (entidades) — componentes para la vista integral.
+- **Marco legal (bloque APARTE · Javo · como Planificación `_ley_row`/`pl-lawrow`)** — ⚖ *"Marco legal
+  vigente"* con las normas **verificadas del corpus (SHA-256 · Regla 3, jamás artículos inventados)**, en
+  bloque **fuera de los párrafos** (no inline). En **TODOS** los cajones, por sección.
+- **Síntesis Ejecutiva (cierre · Javo · buena práctica de Planificación)** — sección FINAL de todo DOM:
+  filas de hallazgos por dimensión con su **lectura interpretativa** + cierre ejecutivo + `Fuentes:`
+  nombrando todas. NO uniformiza los DOM (cada uno es distinto por su naturaleza); es el cierre estándar.
 - **Placa institucional** — el **principio rector** como firma/sello, con protagonismo (no una nota al pie).
+
+**Orden del cajón (Javo · 2026-07-08):** la **Triangulación / orientación va ARRIBA** (ubica al usuario en
+el DOM: qué se audita, de quién, dónde, con qué fuentes); **después** los gráficos del desarrollo (los
+datos); **al final** la Síntesis Ejecutiva.
 
 ## 6 · Versiones (un mismo objeto, tres salidas)
 - **Pantalla** → SVG / web (dashboard, interactivo).
@@ -96,9 +108,12 @@ color decorativo sin significado · lenguaje acusatorio · exponer ICPI/node IDs
 
 ## 8 · Alcance temporal (qué hay para pintar)
 - **2023** — sin video, poca evidencia documental del holding.
-- **2024** — la **base** del trabajo (primer proceso completo).
-- **2025** — **segundo proceso**, a completar. Con los dos procesos completos se habilitan la línea temporal
-  y el comparativo. Cada cajón es una implementación de esta Constitución.
+- **2024** — la **base** del trabajo, **construida y validada** (primer proceso completo).
+- **2025** — **segundo proceso**, **pendiente de completar TODO** (ingesta, motor, validación). Con los dos
+  procesos completos se habilitan la línea temporal y el comparativo. Cada cajón implementa esta Constitución.
+
+> **No se congela la Constitución Visual hasta cerrar el proceso 2025** (Javo · 2026-07-08). v1.4 es estable,
+> pero el sello final espera a que 2024 **y** 2025 estén completos y validados.
 
 ---
-*Constitución Visual QUIRA v1.3 · Dylus Lab © 2026 · un gráfico QUIRA se reconoce sin leer el logo · registro institucional · lista para congelar antes del renderer.*
+*Constitución Visual QUIRA v1.4 · Dylus Lab © 2026 · un gráfico QUIRA se reconoce sin leer el logo · registro institucional · dos capas + marco legal + síntesis ejecutiva · sello final tras cerrar 2025.*
