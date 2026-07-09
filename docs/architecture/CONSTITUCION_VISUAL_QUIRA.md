@@ -1,4 +1,4 @@
-# 🎨 CONSTITUCIÓN VISUAL DE QUIRA · v1.6
+# 🎨 CONSTITUCIÓN VISUAL DE QUIRA · v1.7
 **Dylus Lab © 2026 · el lenguaje visual doctrinal — como la Constitución Ontológica define QUÉ ES QUIRA, esta define CÓMO SE VE.**
 
 > Regla 9: nace en el canon, no en Python. Cada cajón es una **implementación** de esta Constitución, igual
@@ -8,10 +8,17 @@
 
 ---
 
-## 1 · Filosofía visual — instrumento de auditoría, NO dashboard
+## 1 · Filosofía visual — instrumento de VERIFICACIÓN e integridad, NO dashboard
 Cuando alguien ve QUIRA no debe pensar *"qué bonito dashboard"*, sino **"esto parece el panel de una entidad
 de control"**. Sobrio, documental, institucional. La meta: que cualquier gráfico sea reconocible como *"un
 gráfico QUIRA"* sin leer el logo — como un gráfico de Bloomberg. Plano (sin gradientes, sin adornos).
+
+**Prohibido el término "auditoría" (Javo · 2026-07-08):** reduce QUIRA a lo **punitivo**, y eso **no va
+nunca**. QUIRA hace **verificación · trazabilidad · integridad · contraste documental**, nunca "auditoría"
+ni lenguaje sancionador. QUIRA reconstruye la **trazabilidad biográfica del dato público** (primos
+académicos: *data biography* · *data provenance/lineage*): cada dato tiene una historia de vida —nace en el
+discurso, crece en la contratación, se consolida en la cédula—; se exige su **ciclo de vida documental**
+(planificación → contratación → ejecución), no cifras aisladas.
 
 **Regla del concepto — DOS capas (Javo · como el cajón de Planificación):** cada gráfico lleva **(a) la
 conceptualización** —*qué mide* (el concepto, genérico)— **y (b) el análisis/interpretación** —*qué muestra
@@ -26,7 +33,7 @@ pequeño que sea el elemento, se conceptualiza y se define. Nada al azar.
 
 **Regla del registro (Javo + asesor · 2026-07-08):** el lenguaje es el de la **administración pública, el
 derecho administrativo y la ciencia de datos** — *suficiencia probatoria · trazabilidad documental ·
-autocertificación · triangulación · auditoría algorítmica · certeza documental*. Autoridad institucional,
+autocertificación · triangulación · verificación algorítmica · certeza documental*. Autoridad institucional,
 **no coloquial ni literal** (*"busca uno a uno"* ✗ → *"triangulación de los subsistemas"* ✓). No describe
 lo que el sistema *hace* de forma literal, sino el **valor técnico e institucional** de ese proceso. Cada
 término se **explica y define** en su sección: autoritativo **y** comprensible.
@@ -73,21 +80,24 @@ Regla: cada gramática se muestra **etiquetada por su eje**, jamás un punto de 
 - **Indicador** — la cifra clave, subordinada a la idea.
 - **Nivel de Suficiencia Probatoria** (espectro) — clasifica el discurso por su **trazabilidad documental**;
   los estados **respiran** (separados), no una barra de progreso; prioriza la validación externa.
-- **Triangulación del Ecosistema de Control** (cadena de custodia) — flujo VERTICAL entre subsistemas
-  oficiales: *Planificación (POA) → Contratación (SERCOP) → Rendición (CPCCS) → Transparencia (LOTAIP) →
-  Ejecución presupuestaria → Dictamen*. Cada eslabón es una prueba; la ruptura evidencia falla del ciclo.
-  Firma conceptual de QUIRA.
-- **Fichas de Contraste Empírico** (expedientes · no "tarjetas") — la evidencia como ficha forense:
-  `Afirmación institucional · Método de contraste · Respaldo documental · Dictamen`. **Nunca** un código
-  interno; el método se enuncia en palabras. Aspecto documental (mono).
+- **Trazabilidad biográfica del dato** (cadena de custodia) — **PIPELINE HORIZONTAL** (izquierda→derecha,
+  como un *data pipeline* / cadena de bloques · Javo 2026-07-08), NO vertical (evita el aire de "checklist").
+  Bloques = ecosistemas: *Origen político → Planificación (POA) → Contratación (SERCOP) → Presupuesto
+  (cédula) → Nivel de evidencia*. Los **conectores son NODOS DE VALIDACIÓN** (la flecha lleva la regla:
+  *valida planificación · mercado · ejecución · transparencia*). El dato **viaja y se fortalece** etapa a
+  etapa. Firma conceptual de QUIRA. Puede envolver a dos filas si hay muchos bloques.
+- **Fichas de Contraste Empírico** (expedientes · no "tarjetas") — la evidencia como ficha documental
+  (encabezado + sello de estado + campos): `Aseveración · Fuente · Resultado`. **Nunca** un código interno;
+  el método se enuncia en palabras. Aspecto de expediente físico.
 - **Conexiones** — las **relaciones entre cajones** deben evidenciarse (un cajón no es una isla: el de
   Holding lleva las entidades; este conecta con Holding y con la Evolución anual).
 - **Línea temporal** (2023→2025) y **comparativo del holding** (entidades) — componentes para la vista integral.
-- **Marco legal (bloque APARTE · Javo · IDÉNTICO a Planificación `_ley_row`/`pl-lawrow`)** — ⚖ *"Marco legal
-  vigente"* **con los artículos** (`Sigla · Art. X`), normas **verificadas del corpus (SHA-256 · Regla 3,
-  jamás inventadas)**, en bloque **fuera de los párrafos** (no inline). Leyes en **SIGLA** (Constitución con
-  nombre completo; el resto siglas: LOPC · LOCPCCS · COOTAD · LOTAIP · LOSNCP · COPLAFIP). En **TODOS** los
-  cajones, por sección. Base normativa del DOM RDC: `data/motor_narrativo/base_normativa_rdc.json`.
+- **Marco legal (bloque APARTE · PLEGABLE 📖 · Javo/asesor 2026-07-08)** — un solo control **📖 "Fundamento
+  jurídico aplicable"** que **despliega** los artículos (`<details>`), NO cinco chips que distraigan: *"el
+  lector quiere saber que existen, no leerlos todos"*. Al desplegar: `Sigla · Art. X`, normas **verificadas
+  del corpus (SHA-256 · Regla 3, jamás inventadas)**. Leyes en **SIGLA** (Constitución con nombre completo;
+  resto: LOPC · LOCPCCS · COOTAD · LOTAIP · LOSNCP · COPLAFIP). En **TODOS** los cajones, por sección. Base
+  normativa del DOM RDC: `data/motor_narrativo/base_normativa_rdc.json`.
 - **Síntesis Ejecutiva (cierre · Javo · buena práctica de Planificación)** — sección FINAL de todo DOM:
   filas de hallazgos por dimensión con su **lectura interpretativa** + cierre ejecutivo + `Fuentes:`
   nombrando todas. NO uniformiza los DOM (cada uno es distinto por su naturaleza); es el cierre estándar.
@@ -98,7 +108,7 @@ Secuencia canónica. Cualquier cajón se reconoce como QUIRA por seguirla (no un
 distinto por naturaleza; da una **gramática reconocible**):
 1. **Pregunta** — abre el cajón (serif, la idea).
 2. **Principio metodológico** — recuadro compacto (qué mide, 1-2 líneas) + **fundamento legal del DOM**.
-3. **Procedimiento** — la **cadena de auditoría como FLUJO lógico**, con preguntas (*¿consta en la
+3. **Procedimiento** — la **trazabilidad biográfica como PIPELINE HORIZONTAL** (no vertical), con preguntas (*¿consta en la
    planificación? ¿se contrató? ¿se ejecutó? ¿es transparente?* → veredicto), NO una lista de sistemas.
 4. **Resultado** — el dato **es el CLÍMAX** del recorrido: *Pregunta → Procedimiento → **Resultado** →
    Explicación*. El porcentaje protagoniza **aquí** (no antes, no como titular). El caso real (autoridad ·
@@ -122,7 +132,7 @@ El renderer sigue ESTA Constitución, no los defaults de la librería. **Seaborn
 ## 7 · Prohibido (ejemplos)
 Gradientes/adornos · jerga interna en público · siglas/códigos internos (R1-R8) · el porcentaje como titular ·
 tarjetas genéricas tipo Bootstrap · color decorativo sin significado · lenguaje acusatorio · **lenguaje
-punitivo excesivo** (*"dictamen"* → *"resultado / nivel de evidencia"*; auditoría sin sobre-penalizar, sin
+punitivo excesivo** (*"dictamen"* → *"resultado / nivel de evidencia"*; **"auditoría" PROHIBIDO** → verificación/trazabilidad, sin
 perder nivel institucional) · exponer ICPI/node IDs/nombres de motor · artículos de ley inventados.
 
 ## 8 · Alcance temporal (qué hay para pintar)
@@ -135,4 +145,4 @@ perder nivel institucional) · exponer ICPI/node IDs/nombres de motor · artícu
 > pero el sello final espera a que 2024 **y** 2025 estén completos y validados.
 
 ---
-*Constitución Visual QUIRA v1.6 · Dylus Lab © 2026 · un gráfico QUIRA se reconoce sin leer el logo · la GRAMÁTICA/molde en 8 pasos (pregunta→principio→procedimiento→resultado→evidencia→interoperabilidad→síntesis→placa) · registro institucional · marco legal con artículos · validado en Montecristi, para 221 GAD, escalable a LAC · sello final tras cerrar 2025.*
+*Constitución Visual QUIRA v1.7 · Dylus Lab © 2026 · un gráfico QUIRA se reconoce sin leer el logo · GRAMÁTICA/molde en 8 pasos · trazabilidad biográfica del dato · pipeline horizontal · marco legal plegable 📖 · SIN "auditoría" (punitivo) · registro institucional · validado en Montecristi · sello final tras cerrar 2025.*
