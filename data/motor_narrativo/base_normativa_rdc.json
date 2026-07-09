@@ -1,0 +1,58 @@
+{
+  "dominio": "Rendición de Cuentas · Verificabilidad Pública del Discurso",
+  "_nota": "Base normativa provista por Javo (2026-07-08). Marco legal del DOM. Los artículos deben VERIFICARSE con SHA-256 en el corpus (Regla 3) antes de renderizarse; aquí queda el mapa autoritativo. Se cita: Constitución (nombre completo) + siglas para el resto (Constitución Visual §5). El marco legal se muestra en BLOQUE aparte por sección, como el cajón de Planificación.",
+  "normas": {
+    "Constitucion": {
+      "sigla_publica": "Constitución",
+      "nombre": "Constitución de la República del Ecuador",
+      "articulos": {
+        "61": "Derecho ciudadano a participar en asuntos de interés público y a fiscalizar los actos del poder público (num. 2 y 5).",
+        "83": "Deber de todo servidor público de rendir cuentas a la sociedad y a la autoridad (num. 11).",
+        "95": "Participación protagónica de la ciudadanía en el control popular, con transparencia y rendición de cuentas.",
+        "100": "La ciudadanía participa en la formulación, ejecución, evaluación y rendición de cuentas de planes y presupuestos de los GAD (num. 4).",
+        "127": "Los asambleístas rinden cuentas a sus mandantes, bajo pena de perder su curul.",
+        "204": "El pueblo es el mandante y primer fiscalizador del poder público.",
+        "208": "El CPCCS diseña, norma y establece los mecanismos de rendición de cuentas del sector público (num. 2)."
+      }
+    },
+    "LOPC": {
+      "sigla_publica": "LOPC",
+      "nombre": "Ley Orgánica de Participación Ciudadana",
+      "articulos": {
+        "88": "Concepto y derecho: la rendición de cuentas es un derecho ciudadano y un proceso continuo de evaluación de la gestión.",
+        "89": "Proceso sistemático, deliberado, interactivo y universal entre autoridades y mandantes.",
+        "90": "Sujetos obligados: autoridades electas, de libre remoción, representantes de empresas públicas, educación superior y toda persona jurídica privada que maneje fondos públicos.",
+        "91": "Objetivos: transparentar la gestión, facilitar el control social, prevenir la corrupción y mejorar la administración pública.",
+        "92": "Contenidos del informe: cumplimiento del plan de trabajo, presupuestos institucionales, procesos de contratación pública y metas del plan.",
+        "93": "Contenidos (complemento del Art. 92).",
+        "95": "Periodicidad: la rendición de cuentas se realiza obligatoriamente una vez al año."
+      }
+    },
+    "LOCPCCS": {
+      "sigla_publica": "LOCPCCS",
+      "nombre": "Ley Orgánica del Consejo de Participación Ciudadana y Control Social",
+      "articulos": {
+        "10": "Funciones del CPCCS: vigilar los procesos de rendición de cuentas, procesar denuncias de incumplimiento y consolidar las bases de datos de los informes.",
+        "11": "Incumplimiento: si el obligado no rinde cuentas, el CPCCS remite queja a la Contraloría General del Estado para sanciones administrativas o destituciones."
+      }
+    },
+    "COOTAD": {
+      "sigla_publica": "COOTAD",
+      "nombre": "Código Orgánico de Organización Territorial, Autonomía y Descentralización",
+      "articulos": {
+        "29": "Exige mecanismos de rendición de cuentas y control social en la organización territorial.",
+        "50": "Prefectos: informe anual escrito a la ciudadanía sobre ejecución presupuestaria y obras.",
+        "60": "Alcaldes: informe anual escrito a la ciudadanía y al concejo sobre ejecución presupuestaria y obras.",
+        "70": "Presidentes de juntas parroquiales: informe anual escrito.",
+        "266": "Obligación de rendir cuentas sobre la ejecución de los planes de desarrollo y de ordenamiento territorial."
+      }
+    }
+  },
+  "marco_por_seccion": {
+    "dominio_lead": ["Constitución Art. 61", "Constitución Art. 100", "LOPC Art. 90", "LOPC Art. 92", "COOTAD Art. 60"],
+    "01_triangulacion": ["Constitución Art. 95", "Constitución Art. 208", "LOCPCCS Art. 10"],
+    "02_suficiencia_probatoria": ["LOPC Art. 91", "LOPC Art. 92", "LOTAIP"],
+    "03_fichas_contraste": ["LOSNCP", "COPLAFIP", "LOTAIP"],
+    "04_analisis_sistemico": ["Constitución Art. 204", "LOCPCCS Art. 11", "COOTAD Art. 266"]
+  }
+}

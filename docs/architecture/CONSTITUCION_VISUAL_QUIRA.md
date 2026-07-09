@@ -1,4 +1,4 @@
-# 🎨 CONSTITUCIÓN VISUAL DE QUIRA · v1.4
+# 🎨 CONSTITUCIÓN VISUAL DE QUIRA · v1.5
 **Dylus Lab © 2026 · el lenguaje visual doctrinal — como la Constitución Ontológica define QUÉ ES QUIRA, esta define CÓMO SE VE.**
 
 > Regla 9: nace en el canon, no en Python. Cada cajón es una **implementación** de esta Constitución, igual
@@ -83,9 +83,11 @@ Regla: cada gramática se muestra **etiquetada por su eje**, jamás un punto de 
 - **Conexiones** — las **relaciones entre cajones** deben evidenciarse (un cajón no es una isla: el de
   Holding lleva las entidades; este conecta con Holding y con la Evolución anual).
 - **Línea temporal** (2023→2025) y **comparativo del holding** (entidades) — componentes para la vista integral.
-- **Marco legal (bloque APARTE · Javo · como Planificación `_ley_row`/`pl-lawrow`)** — ⚖ *"Marco legal
-  vigente"* con las normas **verificadas del corpus (SHA-256 · Regla 3, jamás artículos inventados)**, en
-  bloque **fuera de los párrafos** (no inline). En **TODOS** los cajones, por sección.
+- **Marco legal (bloque APARTE · Javo · IDÉNTICO a Planificación `_ley_row`/`pl-lawrow`)** — ⚖ *"Marco legal
+  vigente"* **con los artículos** (`Sigla · Art. X`), normas **verificadas del corpus (SHA-256 · Regla 3,
+  jamás inventadas)**, en bloque **fuera de los párrafos** (no inline). Leyes en **SIGLA** (Constitución con
+  nombre completo; el resto siglas: LOPC · LOCPCCS · COOTAD · LOTAIP · LOSNCP · COPLAFIP). En **TODOS** los
+  cajones, por sección. Base normativa del DOM RDC: `data/motor_narrativo/base_normativa_rdc.json`.
 - **Síntesis Ejecutiva (cierre · Javo · buena práctica de Planificación)** — sección FINAL de todo DOM:
   filas de hallazgos por dimensión con su **lectura interpretativa** + cierre ejecutivo + `Fuentes:`
   nombrando todas. NO uniformiza los DOM (cada uno es distinto por su naturaleza); es el cierre estándar.
@@ -93,7 +95,10 @@ Regla: cada gramática se muestra **etiquetada por su eje**, jamás un punto de 
 
 **Orden del cajón (Javo · 2026-07-08):** la **Triangulación / orientación va ARRIBA** (ubica al usuario en
 el DOM: qué se audita, de quién, dónde, con qué fuentes); **después** los gráficos del desarrollo (los
-datos); **al final** la Síntesis Ejecutiva.
+datos); **al final** la Síntesis Ejecutiva. La **sección 01 es doctrina genérica** (orienta); el **caso
+real** (autoridad · cantón · provincia · ejercicio) aterriza en la **sección 02**, tejido con el método
+(*audiovisual del discurso → triangulación del ecosistema → resultados*). La historia **decanta hacia
+abajo** hasta la síntesis: un solo relato, no piezas sueltas.
 
 ## 6 · Versiones (un mismo objeto, tres salidas)
 - **Pantalla** → SVG / web (dashboard, interactivo).
@@ -103,8 +108,10 @@ El renderer sigue ESTA Constitución, no los defaults de la librería. **Seaborn
 (exploración/calibración), nunca para el producto.
 
 ## 7 · Prohibido (ejemplos)
-Gradientes/adornos · jerga interna en público · el porcentaje como titular · tarjetas genéricas tipo Bootstrap ·
-color decorativo sin significado · lenguaje acusatorio · exponer ICPI/node IDs/nombres de motor.
+Gradientes/adornos · jerga interna en público · siglas/códigos internos (R1-R8) · el porcentaje como titular ·
+tarjetas genéricas tipo Bootstrap · color decorativo sin significado · lenguaje acusatorio · **lenguaje
+punitivo excesivo** (*"dictamen"* → *"resultado / nivel de evidencia"*; auditoría sin sobre-penalizar, sin
+perder nivel institucional) · exponer ICPI/node IDs/nombres de motor · artículos de ley inventados.
 
 ## 8 · Alcance temporal (qué hay para pintar)
 - **2023** — sin video, poca evidencia documental del holding.
@@ -116,4 +123,4 @@ color decorativo sin significado · lenguaje acusatorio · exponer ICPI/node IDs
 > pero el sello final espera a que 2024 **y** 2025 estén completos y validados.
 
 ---
-*Constitución Visual QUIRA v1.4 · Dylus Lab © 2026 · un gráfico QUIRA se reconoce sin leer el logo · registro institucional · dos capas + marco legal + síntesis ejecutiva · sello final tras cerrar 2025.*
+*Constitución Visual QUIRA v1.5 · Dylus Lab © 2026 · un gráfico QUIRA se reconoce sin leer el logo · registro institucional · dos capas + marco legal con artículos + síntesis ejecutiva · validado en Montecristi, para 221 GAD, escalable a LAC · sello final tras cerrar 2025.*
