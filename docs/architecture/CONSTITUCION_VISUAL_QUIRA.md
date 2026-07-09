@@ -1,4 +1,4 @@
-# 🎨 CONSTITUCIÓN VISUAL DE QUIRA · v1.2
+# 🎨 CONSTITUCIÓN VISUAL DE QUIRA · v1.3
 **Dylus Lab © 2026 · el lenguaje visual doctrinal — como la Constitución Ontológica define QUÉ ES QUIRA, esta define CÓMO SE VE.**
 
 > Regla 9: nace en el canon, no en Python. Cada cajón es una **implementación** de esta Constitución, igual
@@ -21,6 +21,13 @@ qué importa para la gestión. *El gráfico sin concepto no comunica.* Nunca un 
 de nivel/motor, node IDs). ¿Qué alcalde o ciudadano entiende "R4"? El **criterio se explica en palabras**
 ("se contrastó con el presupuesto municipal ejecutado"), no en código. **Nada se deja sin explicar** — por
 pequeño que sea el elemento, se conceptualiza y se define. Nada al azar.
+
+**Regla del registro (Javo + asesor · 2026-07-08):** el lenguaje es el de la **administración pública, el
+derecho administrativo y la ciencia de datos** — *suficiencia probatoria · trazabilidad documental ·
+autocertificación · triangulación · auditoría algorítmica · certeza documental*. Autoridad institucional,
+**no coloquial ni literal** (*"busca uno a uno"* ✗ → *"triangulación de los subsistemas"* ✓). No describe
+lo que el sistema *hace* de forma literal, sino el **valor técnico e institucional** de ese proceso. Cada
+término se **explica y define** en su sección: autoritativo **y** comprensible.
 
 ## 2 · Triple registro de identidad y lenguaje (FIREWALL · Regla 2 · asesor 2026-07-08)
 Tres niveles que **jamás se mezclan**:
@@ -62,12 +69,15 @@ Regla: cada gramática se muestra **etiquetada por su eje**, jamás un punto de 
 
 ## 5 · Componentes canónicos (el vocabulario de todos los cajones)
 - **Indicador** — la cifra clave, subordinada a la idea.
-- **Espectro de evidencia** — clasificación jurídica; los estados **respiran** (separados), no una barra de progreso.
-- **Cadena de custodia intersistémica** — el flujo `DISCURSO → [sistemas del Estado] → NIVEL`. Etiquetas
-  en admin pública: *Plan Operativo (POA) · Contratación (SERCOP) · Rendición (CPCCS) · Transparencia
-  (LOTAIP) · Presupuesto municipal*. Es la firma conceptual de QUIRA.
-- **Expediente** (no "tarjeta") — la evidencia como **ficha de auditoría**: `EXPEDIENTE · Estado · Fuente ·
-  Regla aplicada · Nivel · Resultado`. Aspecto documental (mono), no tarjeta genérica.
+- **Nivel de Suficiencia Probatoria** (espectro) — clasifica el discurso por su **trazabilidad documental**;
+  los estados **respiran** (separados), no una barra de progreso; prioriza la validación externa.
+- **Triangulación del Ecosistema de Control** (cadena de custodia) — flujo VERTICAL entre subsistemas
+  oficiales: *Planificación (POA) → Contratación (SERCOP) → Rendición (CPCCS) → Transparencia (LOTAIP) →
+  Ejecución presupuestaria → Dictamen*. Cada eslabón es una prueba; la ruptura evidencia falla del ciclo.
+  Firma conceptual de QUIRA.
+- **Fichas de Contraste Empírico** (expedientes · no "tarjetas") — la evidencia como ficha forense:
+  `Afirmación institucional · Método de contraste · Respaldo documental · Dictamen`. **Nunca** un código
+  interno; el método se enuncia en palabras. Aspecto documental (mono).
 - **Conexiones** — las **relaciones entre cajones** deben evidenciarse (un cajón no es una isla: el de
   Holding lleva las entidades; este conecta con Holding y con la Evolución anual).
 - **Línea temporal** (2023→2025) y **comparativo del holding** (entidades) — componentes para la vista integral.
@@ -91,4 +101,4 @@ color decorativo sin significado · lenguaje acusatorio · exponer ICPI/node IDs
   y el comparativo. Cada cajón es una implementación de esta Constitución.
 
 ---
-*Constitución Visual QUIRA v1.2 · Dylus Lab © 2026 · un gráfico QUIRA se reconoce sin leer el logo · lista para congelar antes del renderer.*
+*Constitución Visual QUIRA v1.3 · Dylus Lab © 2026 · un gráfico QUIRA se reconoce sin leer el logo · registro institucional · lista para congelar antes del renderer.*
