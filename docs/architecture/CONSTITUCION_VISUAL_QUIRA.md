@@ -1,4 +1,4 @@
-# 🎨 CONSTITUCIÓN VISUAL DE QUIRA · v1.5
+# 🎨 CONSTITUCIÓN VISUAL DE QUIRA · v1.6
 **Dylus Lab © 2026 · el lenguaje visual doctrinal — como la Constitución Ontológica define QUÉ ES QUIRA, esta define CÓMO SE VE.**
 
 > Regla 9: nace en el canon, no en Python. Cada cajón es una **implementación** de esta Constitución, igual
@@ -93,12 +93,24 @@ Regla: cada gramática se muestra **etiquetada por su eje**, jamás un punto de 
   nombrando todas. NO uniformiza los DOM (cada uno es distinto por su naturaleza); es el cierre estándar.
 - **Placa institucional** — el **principio rector** como firma/sello, con protagonismo (no una nota al pie).
 
-**Orden del cajón (Javo · 2026-07-08):** la **Triangulación / orientación va ARRIBA** (ubica al usuario en
-el DOM: qué se audita, de quién, dónde, con qué fuentes); **después** los gráficos del desarrollo (los
-datos); **al final** la Síntesis Ejecutiva. La **sección 01 es doctrina genérica** (orienta); el **caso
-real** (autoridad · cantón · provincia · ejercicio) aterriza en la **sección 02**, tejido con el método
-(*audiovisual del discurso → triangulación del ecosistema → resultados*). La historia **decanta hacia
-abajo** hasta la síntesis: un solo relato, no piezas sueltas.
+### La GRAMÁTICA del cajón — el MOLDE de todos los DOM (asesor + Javo · 2026-07-08)
+Secuencia canónica. Cualquier cajón se reconoce como QUIRA por seguirla (no uniformiza: cada DOM es
+distinto por naturaleza; da una **gramática reconocible**):
+1. **Pregunta** — abre el cajón (serif, la idea).
+2. **Principio metodológico** — recuadro compacto (qué mide, 1-2 líneas) + **fundamento legal del DOM**.
+3. **Procedimiento** — la **cadena de auditoría como FLUJO lógico**, con preguntas (*¿consta en la
+   planificación? ¿se contrató? ¿se ejecutó? ¿es transparente?* → veredicto), NO una lista de sistemas.
+4. **Resultado** — el dato **es el CLÍMAX** del recorrido: *Pregunta → Procedimiento → **Resultado** →
+   Explicación*. El porcentaje protagoniza **aquí** (no antes, no como titular). El caso real (autoridad ·
+   cantón · provincia · ejercicio) aterriza aquí, tejido con el método (audiovisual → triangulación → dato).
+5. **Evidencia** — los **expedientes como pequeñas historias** (afirmación → documento → resultado).
+6. **Interoperabilidad** — la innovación sistémica (cruce entre sistemas · entidades · tiempo · 221 GAD).
+7. **Síntesis ejecutiva** — hallazgos por dimensión + cierre + `Fuentes:`.
+8. **Placa institucional** — el principio rector.
+
+Cada sección lleva su **marco legal en bloque** (artículos verificados). **Menos texto, más aire** (asesor):
+*si un gráfico necesita demasiadas palabras, aún puede mejorar* — pero **sin perder claridad** (Javo: el
+miedo es que no se entienda). La historia **decanta hacia abajo**: un solo relato, no piezas sueltas.
 
 ## 6 · Versiones (un mismo objeto, tres salidas)
 - **Pantalla** → SVG / web (dashboard, interactivo).
@@ -123,4 +135,4 @@ perder nivel institucional) · exponer ICPI/node IDs/nombres de motor · artícu
 > pero el sello final espera a que 2024 **y** 2025 estén completos y validados.
 
 ---
-*Constitución Visual QUIRA v1.5 · Dylus Lab © 2026 · un gráfico QUIRA se reconoce sin leer el logo · registro institucional · dos capas + marco legal con artículos + síntesis ejecutiva · validado en Montecristi, para 221 GAD, escalable a LAC · sello final tras cerrar 2025.*
+*Constitución Visual QUIRA v1.6 · Dylus Lab © 2026 · un gráfico QUIRA se reconoce sin leer el logo · la GRAMÁTICA/molde en 8 pasos (pregunta→principio→procedimiento→resultado→evidencia→interoperabilidad→síntesis→placa) · registro institucional · marco legal con artículos · validado en Montecristi, para 221 GAD, escalable a LAC · sello final tras cerrar 2025.*
