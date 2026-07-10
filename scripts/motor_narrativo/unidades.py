@@ -24,8 +24,10 @@ sys.path.insert(0, str(_HERE))
 import identidad as _id
 
 MODEL = "claude-haiku-4-5-20251001"
-SEGS_POR_CHUNK = 140          # ~800-1000 palabras por ventana
+SEGS_POR_CHUNK = 140          # (legacy) — ahora se chunkea por caracteres
 OVERLAP = 10
+CHARS_POR_CHUNK = 4000        # presupuesto por ventana · robusto a la granularidad del
+                              # segmento (captions cortos vs Whisper largos). Haiku extrae a fondo.
 
 _SYS = (
     "Eres analista de rendición de cuentas públicas en Ecuador. De la transcripción "
@@ -48,18 +50,22 @@ _INSTR = (
 
 
 def _chunks(segs: list[dict]) -> list[tuple[float, str]]:
-    out = []
-    i = 0
+    """Chunks por PRESUPUESTO DE CARACTERES (~CHARS_POR_CHUNK). Robusto a la granularidad:
+    con captions (segmentos cortos) o Whisper (segmentos largos) da ventanas del mismo
+    tamaño, para que Haiku extraiga a fondo y no resuma. Solape de 1 segmento."""
+    out, i = [], 0
     while i < len(segs):
-        win = segs[i:i + SEGS_POR_CHUNK]
-        partes, last_t = [], None
-        for s in win:
+        partes, last_t, chars, j = [], None, 0, i
+        while j < len(segs) and chars < CHARS_POR_CHUNK:
+            s = segs[j]
             if last_t is None or s["t"] - last_t >= 12:   # marca de tiempo cada ~12s
                 partes.append(f'[t={int(s["t"])}s]')
                 last_t = s["t"]
             partes.append(s["texto"])
-        out.append((win[0]["t"], " ".join(partes)))
-        i += SEGS_POR_CHUNK - OVERLAP
+            chars += len(s["texto"]) + 1
+            j += 1
+        out.append((segs[i]["t"], " ".join(partes)))
+        i = max(j - 1, i + 1)   # solape de 1 segmento
     return out
 
 
