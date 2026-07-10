@@ -886,49 +886,20 @@ def _cierre(plan: dict) -> None:
 
 
 def render() -> None:
-    """QINV-001 · Planificación Estratégica — lectura documental continua (sin pestañas)."""
-    d = _cargar()
-    plan = d.get("plan") or {}
-    st.markdown(_css(), unsafe_allow_html=True)
-    st.markdown('<div class="pl-wrap">', unsafe_allow_html=True)
-
+    """QINV-001 · Planificación Estratégica — cajón de DOMINIO (patrón RDC · Javo 2026-07-10):
+    principio → procedimiento (backbone) → cobertura → trazabilidad → coherencia → evaluación → síntesis.
+    HTML autocontenido (Regla 1: la app NO recalcula; lee el snapshot del Gold Master)."""
+    plan = (_cargar() or {}).get("plan") or {}
     if not plan:
         st.markdown('<div style="font-size:15px;color:#7E8BA3;padding:20px 0">'
                     '— evidencia del plan pendiente de carga —</div>', unsafe_allow_html=True)
-        st.markdown('</div>', unsafe_allow_html=True)
         return
-
-    pres = plan.get("presupuesto", {}) or {}
-    corte = pres.get("corte", "Q1-2026")
-
-    # título limpio (sin encabezado forense · sin pregunta · sin estado)
-    st.markdown(
-        '<div class="pl-title-band"><div class="pl-title">Planificación Estratégica</div>'
-        '<div class="pl-sub"><b>La arquitectura del gasto público municipal.</b> Traza la correspondencia entre '
-        'la planificación plurianual del desarrollo cantonal —el PDOT— y su ejecución programática y '
-        'presupuestaria anual, para verificar la coherencia entre los objetivos territoriales y la operación '
-        'institucional que los concreta. <b>Corte enero–abril 2026.</b></div></div>',
-        unsafe_allow_html=True)
-
-    # cobertura de metas en el POA (primer eslabón de la trazabilidad)
-    st.markdown(_cobertura_band(plan.get("cobertura_metas_poa"), plan.get("metas_total", 25)),
-                unsafe_allow_html=True)
-
-    # resumen de la columna vertebral
-    st.markdown(_cruce(plan), unsafe_allow_html=True)
-
-    # los eslabones, uno tras otro (tabla + gráfica + texto)
-    _sec_pdot(plan)
-    st.markdown(_div(), unsafe_allow_html=True)
-    _sec_poa(plan)
-    st.markdown(_div(), unsafe_allow_html=True)
-    _sec_pac(plan)
-    st.markdown(_div(), unsafe_allow_html=True)
-    _sec_presupuesto(plan)
-    st.markdown(_div(), unsafe_allow_html=True)
-    _sec_ipe(plan)
-    st.markdown(_div(), unsafe_allow_html=True)
-    _sec_coherencia(plan)
+    try:
+        from app.viz.render.plan_render import cajon_plan_streamlit
+    except Exception as e:  # noqa: BLE001
+        st.error(f"Cajón de Planificación no disponible: {e}")
+        return
+    st.markdown(cajon_plan_streamlit(plan), unsafe_allow_html=True)
 
     # cierre factual corto (sin IA, sin veredicto %)
     _cierre(plan)
