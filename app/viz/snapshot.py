@@ -54,7 +54,7 @@ _FALLBACK = {
 
 # fuente del motor → nodo de la cadena documental donde se corroboró (mini-cadena del expediente)
 _STAGE = {"POA (planificación)": "poa", "PAC / SERCOP": "sercop", "Cédula presupuestaria": "cedula",
-          "Literal D (patronato)": "registro", "Informe CPCCS (propia entidad)": "informe"}
+          "Servicios del patronato (LOTAIP)": "registro", "Informe CPCCS (propia entidad)": "informe"}
 _RO = {"estrategica": 0, "programatica": 1, "administrativa": 2, "protocolaria": 3}
 
 
@@ -171,7 +171,7 @@ def construir(año: str, entidad: str = "GAD Montecristi") -> dict:
                 ("independiente", f"{res.get('contradiccion', 0)}", "aseveraciones contradichas por la evidencia documental."),
             ],
             "fuentes": ["Discurso RDC (audiovisual)", "POA", "Contratación (SERCOP)",
-                        "Cédula presupuestaria", "Literal D — patronato", "Informe CPCCS", "Transparencia (LOTAIP)"],
+                        "Cédula presupuestaria", "Servicios del patronato (LOTAIP)", "Informe CPCCS"],
         },
     }
 

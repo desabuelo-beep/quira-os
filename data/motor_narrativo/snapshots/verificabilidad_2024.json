@@ -15,10 +15,10 @@
     "proceso": 20,
     "pct_independiente": 55,
     "pct_sin_evidencia": 25,
-    "institucional": 10,
+    "institucional": 11,
     "independiente": 33,
     "sin_evidencia_publica": 15,
-    "parcial": 2
+    "parcial": 1
   },
   "embudo": {
     "extraidas": 98,
@@ -91,16 +91,16 @@
       "nivel": "institucional",
       "label": "Autocertificación",
       "sub": "solo su informe",
-      "n": 10,
-      "pct": 17,
+      "n": 11,
+      "pct": 18,
       "color": "#1A73E8"
     },
     {
       "nivel": "parcial",
       "label": "Prueba parcial",
       "sub": "ventana / cobertura",
-      "n": 2,
-      "pct": 3,
+      "n": 1,
+      "pct": 2,
       "color": "#F9AB00"
     },
     {
@@ -188,11 +188,11 @@
       "cadena": "poa"
     },
     {
-      "id": "MN2024-083",
+      "id": "MN2024-075",
       "estado": "Declarado institucionalmente",
-      "aseveracion": "Proyecto con inversión de $17,000 desarrollado internamente",
+      "aseveracion": "2000 personas beneficiadas en parroquia Níval San Andrés con centro comunitario",
       "fuente": "Informe CPCCS (propia entidad)",
-      "resultado": "Consta en su propio informe de rendición; sin registro externo que lo corrobore.",
+      "resultado": "cobertura sin correlato en el registro público del patronato",
       "nivel": "institucional",
       "color": "#1A73E8",
       "vd": 58,
@@ -202,7 +202,7 @@
         "Impacto cuantificado"
       ],
       "relevancia": "estrategica",
-      "eje": "institucional",
+      "eje": "cultura",
       "cadena": "informe"
     },
     {
@@ -224,21 +224,21 @@
       "cadena": "discurso"
     },
     {
-      "id": "MN2024-075",
+      "id": "MN2024-059",
       "estado": "Cobertura verificada",
-      "aseveracion": "2000 personas beneficiadas en parroquia Níval San Andrés con centro comunitario",
-      "fuente": "Literal D (patronato)",
-      "resultado": "Literal D: 'Trabajo Social Cl�nica MUNICIPAL DE Di�lisis' 40 personas (4m · ventana parcial)",
+      "aseveracion": "Centro diario del Buen Vivir atendió 66,898 personas en 2023 y 88,010 atenciones en 2024",
+      "fuente": "Servicios del patronato (LOTAIP)",
+      "resultado": "LOTAIP · servicios del patronato: 'Estimulacion temprano CENTRO DIARIO DEL BUEN' 218 personas (4m · ventana parcial)",
       "nivel": "parcial",
       "color": "#F9AB00",
-      "vd": 74,
+      "vd": 67,
       "badges": [
         "Cobertura parcial",
         "Registro de cobertura",
         "Impacto cuantificado"
       ],
-      "relevancia": "estrategica",
-      "eje": "cultura",
+      "relevancia": "programatica",
+      "eje": "salud",
       "cadena": "registro"
     }
   ],
@@ -294,9 +294,8 @@
       "POA",
       "Contratación (SERCOP)",
       "Cédula presupuestaria",
-      "Literal D — patronato",
-      "Informe CPCCS",
-      "Transparencia (LOTAIP)"
+      "Servicios del patronato (LOTAIP)",
+      "Informe CPCCS"
     ]
   }
 }

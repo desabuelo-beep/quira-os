@@ -349,10 +349,10 @@ def _cierre_rdc(r: dict) -> None:
         f'</div>', unsafe_allow_html=True)
 
 
-def _sec_verificabilidad() -> None:
-    """Cajones de VERIFICABILIDAD PÚBLICA DEL DISCURSO (Motor Narrativo) — 2024 y 2025 en
-    secciones separadas (Javo · 2026-07-10). Snapshot → HTML (Regla 1: la app NO corre el motor).
-    Cada dominio trabaja su universo completo: aquí van los dos ejercicios y su evolución."""
+def _sec_verificabilidad(rdc_serie=None) -> None:
+    """Cajón de VERIFICABILIDAD PÚBLICA DEL DISCURSO del DOMINIO (Motor Narrativo): explicación
+    compartida + LA RENDICIÓN EN EL TIEMPO (intro) + análisis por año + evaluación + síntesis, SIN
+    duplicar lo explicativo (Javo · 2026-07-10). Snapshot → HTML (Regla 1: la app NO corre el motor)."""
     import json
     from pathlib import Path
     base = Path(__file__).resolve().parents[1] / "data" / "motor_narrativo" / "snapshots"
@@ -368,17 +368,12 @@ def _sec_verificabilidad() -> None:
         from app.viz.render.html_render import cajon_dominio_streamlit
     except Exception:
         return
-    st.markdown(cajon_dominio_streamlit(serie), unsafe_allow_html=True)
+    st.markdown(cajon_dominio_streamlit(serie, rdc_serie), unsafe_allow_html=True)
 
 
 def render() -> None:
-    """QINV-009 · Rendición de Cuentas — lectura documental continua (réplica del molde)."""
+    """QINV-009 · Rendición de Cuentas — cajón de DOMINIO (Motor Narrativo): explicación + serie +
+    análisis por año + evaluación + síntesis, en una sola pieza (Javo · 2026-07-10)."""
     r = _cargar()
     st.markdown(_css(), unsafe_allow_html=True)
-    _sec_verificabilidad()   # cajón del DOMINIO (2024 + 2025 · sin duplicar lo explicativo) — ancho completo
-    # "LA RENDICIÓN EN EL TIEMPO" complementa el cajón (Javo · 2026-07-10); el resto del molde anterior se retira.
-    if not r or not r.get("serie"):
-        return
-    st.markdown('<div class="pl-wrap" style="margin-top:8px">', unsafe_allow_html=True)
-    _sec_serie(r.get("serie", []))
-    st.markdown('</div>', unsafe_allow_html=True)
+    _sec_verificabilidad(r.get("serie") if r else None)   # cajón del DOMINIO — serie integrada como intro

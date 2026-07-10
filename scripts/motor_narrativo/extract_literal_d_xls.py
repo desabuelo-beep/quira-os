@@ -56,7 +56,8 @@ def servicios_patronato(año: str) -> dict | None:
             continue
         meses += 1
         for _, row in df.iterrows():
-            svc = str(row[svc_col]).strip()
+            # sanea el nombre: quita el carácter de reemplazo (mojibake U+FFFD) y normaliza espacios
+            svc = re.sub(r"\s+", " ", str(row[svc_col]).replace("�", "")).strip()
             n = _num(row[num_col])
             if svc and svc.lower() not in ("nan", "") and n:
                 servicios[svc] = servicios.get(svc, 0.0) + n

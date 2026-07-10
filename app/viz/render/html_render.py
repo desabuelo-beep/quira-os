@@ -193,11 +193,12 @@ def _resultado(snap: dict, m: dict) -> str:
     ind, sinp = r.get("pct_independiente", 0), r.get("pct_sin_evidencia", 0)
     hero = (
         f'<div class="qc-hero">'
-        f'<div class="qc-hbar"><div class="fill g" style="width:{max(ind,2)}%"></div>'
-        f'<div class="qc-hnum g">{ind}%</div><div class="qc-hlbl">verificable con <b>registros públicos '
-        f'independientes</b></div></div>'
-        f'<div class="qc-hbar"><div class="fill s" style="width:{max(sinp,2)}%"></div>'
-        f'<div class="qc-hnum s">{sinp}%</div><div class="qc-hlbl"><b>sin respaldo público</b> verificable</div></div>'
+        f'<div class="qc-hbar"><div class="qc-hfill g" style="width:{max(ind,10)}%">'
+        f'<span class="qc-hnum">{ind}%</span></div>'
+        f'<div class="qc-hlbl">verificable con <b>registros públicos independientes</b></div></div>'
+        f'<div class="qc-hbar"><div class="qc-hfill s" style="width:{max(sinp,10)}%">'
+        f'<span class="qc-hnum d">{sinp}%</span></div>'
+        f'<div class="qc-hlbl"><b>sin respaldo público</b> verificable</div></div>'
         f'</div>')
     filas = ""
     for e in snap["espectro"]:
@@ -276,9 +277,10 @@ def _evolucion(serie: list, marco: dict) -> str:
         else:                                         # independiente: subir es mejor · sin: bajar es mejor
             dcol = "#1E8E3E" if ((d > 0) == (clave == "independiente")) else "#D93025"
         cards += (f'<div class="qc-ev"><div class="ev-l" style="color:{col}">{_esc(lbl)}</div>'
-                  f'<div class="ev-r"><span class="ev-y">{y0}</span><b>{v0}%</b>'
-                  f'<span class="ev-ar">→</span><span class="ev-y">{y1}</span><b style="color:{col}">{v1}%</b>'
-                  f'<span class="ev-d" style="color:{dcol}">{signo} {abs(d)}</span></div></div>')
+                  f'<div class="ev-r"><div class="ev-yr"><span class="ev-y">{y0}</span><b>{v0}%</b></div>'
+                  f'<span class="ev-ar">→</span>'
+                  f'<div class="ev-yr"><span class="ev-y">{y1}</span><b style="color:{col}">{v1}%</b></div>'
+                  f'<span class="ev-d" style="color:{dcol};border-color:{dcol}">{signo} {abs(d)}</span></div></div>')
     # PERFIL EVOLUTIVO por eje: no solo el %, el COMPORTAMIENTO (barra + cambio vs año anterior)
     e0, e1 = a0.get("por_eje", {}), a1.get("por_eje", {})
     ejes = sorted(set(e0) & set(e1), key=lambda k: -(e1[k]["n"]))
@@ -362,8 +364,8 @@ def _conclusion(snap: dict, m: dict) -> str:
         col = _COL.get(nivel, _COL["independiente"])
         sint += f'<div class="qc-sr"><b style="color:{col}">{_esc(val)}</b><span>{_esc(txt)}</span></div>'
     fuentes = " · ".join(_esc(f) for f in snap["sintesis"]["fuentes"])
-    return (f'<div class="qc-sint"><div class="qc-sint-lbl">Conclusión ejecutiva — Rendición de Cuentas '
-            f'{_esc(m.get("año"))}, {_esc(m.get("canton"))}</div><div class="qc-sint-b">{sint}'
+    return (f'<div class="qc-sint"><div class="qc-sint-lbl">Síntesis ejecutiva — Rendición de Cuentas · '
+            f'{_esc(m.get("canton"))} · ejercicio {_esc(m.get("año"))}</div><div class="qc-sint-b">{sint}'
             f'<div class="qc-fuente">Fuentes: {fuentes}.</div></div></div>')
 
 
@@ -381,26 +383,68 @@ def _analisis_anio(snap: dict, n: int) -> str:
 
 def _evaluacion(serie: list, marco: dict) -> str:
     """La evaluación COMPARTIDA (una vez): evolución + perfil + hallazgos + prospectiva + implicaciones."""
-    fuentes = " · ".join(_esc(f) for f in serie[-1]["sintesis"]["fuentes"])
     return (_evolucion(serie, marco)
             + '<div class="qc-subh">Hallazgos del análisis</div>'
             + '<p class="qc-p">Interpretación del dato —no una descripción—: el patrón que revela, y qué significa.</p>'
             + _hallazgos_html(_hallazgos(serie[-1], serie))
-            + _implicaciones(serie[-1], serie)
-            + f'<div class="qc-fuente" style="margin-top:14px">Fuentes: {fuentes}.</div>')
+            + _implicaciones(serie[-1], serie))
 
 
-def cajon_dominio_rdc(serie: list) -> str:
+def _rendicion_en_tiempo(serie: list) -> str:
+    """02 · LA RENDICIÓN EN EL TIEMPO — introductoria (Javo · 2026-07-10): los ejercicios del período
+    (informe, fecha, lugar, asistencia). Integra la serie en el formato del cajón."""
+    serie = [s for s in (serie or []) if s]
+    if not serie:
+        return ""
+    filas = ""
+    maxa = max((s.get("asistentes") or 0) for s in serie) or 1
+    for s in serie:
+        a = s.get("asistentes")
+        filas += (f'<tr><td>RDC {_esc(s.get("periodo"))}</td><td>N° {_esc(s.get("informe_n","—"))}</td>'
+                  f'<td>{_esc(s.get("fecha_rdc","—"))}</td><td>{_esc(s.get("lugar","—"))}</td>'
+                  f'<td class="num">{a if a else "—"}</td><td class="num">{s.get("n_componentes",0)}</td></tr>')
+    barras = "".join(
+        f'<div class="qc-att"><div class="qc-att-n">{(s.get("asistentes") or "—")}</div>'
+        f'<div class="qc-att-bar" style="height:{max(round(58*(s.get("asistentes") or 0)/maxa),3)}px"></div>'
+        f'<div class="qc-att-y">{_esc(s.get("periodo"))}</div></div>' for s in serie)
+    a0 = serie[0].get("asistentes") or 0
+    aN = serie[-1].get("asistentes") or 0
+    delta = f"+{round(100 * (aN - a0) / a0)}%" if a0 else "—"
+    return (
+        '<p class="qc-p">La rendición de cuentas es un <b>acto anual y obligatorio</b> ante la ciudadanía y el '
+        'Consejo de Participación Ciudadana y Control Social. Estos son los <b>ejercicios del período</b>, con su '
+        'evolución verificable —informe, fecha, lugar y asistencia ciudadana—; es el punto de partida de todo lo '
+        'que sigue:</p>'
+        f'<table class="qc-serie"><tr><th>Período</th><th>Informe</th><th>Fecha</th><th>Lugar</th>'
+        f'<th class="num">Asistentes</th><th class="num">Componentes</th></tr>{filas}</table>'
+        f'<div class="qc-att-h">Asistencia ciudadana a la rendición</div><div class="qc-atts">{barras}</div>'
+        f'<p class="qc-p" style="margin-top:12px">La <b>asistencia</b> creció de <b>{a0}</b> a <b>{aN}</b> '
+        f'(<b>{delta}</b>): el control social se fortalece. Es aún una participación <b>reducida</b> frente al tamaño '
+        f'del cantón —un margen de ampliación, no una falla del proceso—.</p>')
+
+
+def cajon_dominio_rdc(serie: list, rdc_serie: list | None = None) -> str:
     """Cajón RDC del DOMINIO completo: explicación compartida (principio + procedimiento, UNA vez) +
-    análisis por año (2024, 2025 …) + evaluación comparativa (una vez). No duplica lo explicativo
-    (Javo · 2026-07-10). `serie` = snapshots ordenados ascendente por año."""
+    LA RENDICIÓN EN EL TIEMPO (intro) + análisis por año (2024, 2025 …) + evaluación comparativa +
+    síntesis ejecutiva. No duplica lo explicativo (Javo · 2026-07-10). `serie` = snapshots del motor
+    (ascendente por año); `rdc_serie` = ejercicios de rendición (informe, fecha, asistencia)."""
     serie = [s for s in serie if s]
     if not serie:
         return ""
     ref = serie[-1]
     m, marco = ref["meta"], ref.get("marco_legal", {})
-    años = "".join(_analisis_anio(s, i + 2) for i, s in enumerate(serie))
-    nfin = f'0{len(serie) + 2}'
+    bloques = [_seccion('01', 'El procedimiento · cómo QUIRA lee una rendición', _procedimiento(marco))]
+    off = 2
+    serie_html = _rendicion_en_tiempo(rdc_serie or [])
+    if serie_html:                                            # LA RENDICIÓN EN EL TIEMPO como introducción (Javo)
+        bloques.append(_seccion('02', 'La rendición en el tiempo · los ejercicios del período', serie_html))
+        off = 3
+    for i, s in enumerate(serie):
+        bloques.append(_analisis_anio(s, off + i))            # 0X · Ejercicio 20XX (por año)
+    nfin = f'0{off + len(serie)}'
+    bloques.append(_seccion(nfin, 'La evaluación · comparación, patrones y prospectiva',
+                            _evaluacion(serie, marco), _ley(marco, '04_analisis_sistemico')))
+    cuerpo = "".join(bloques) + _conclusion(ref, m)           # síntesis ejecutiva al cierre (fundamental · Javo)
     return f"""{_CSS}
 <section class="qc">
   <div class="qc-hd">
@@ -415,20 +459,16 @@ def cajon_dominio_rdc(serie: list) -> str:
     público no se infiere: se registra como <b>ausencia de evidencia</b> —un resultado, nunca una acusación—.
     {_ley(marco, 'dominio_lead', 'Fundamento del dominio (Rendición de Cuentas)')}
   </div>
-  <div class="qc-body">
-    {_seccion('01', 'El procedimiento · cómo QUIRA lee una rendición', _procedimiento(marco))}
-    {años}
-    {_seccion(nfin, 'La evaluación · comparación, patrones y prospectiva', _evaluacion(serie, marco), _ley(marco, '04_analisis_sistemico'))}
-  </div>
+  <div class="qc-body">{cuerpo}</div>
   <div class="qc-placa"><div class="qc-placa-q">QUIRA no certifica la verdad. Certifica el nivel de<br>verificabilidad pública de cada afirmación.</div>
     <div class="qc-placa-s">La ausencia de evidencia es un resultado del análisis documental, nunca una acusación.</div>
   </div>
 </section>"""
 
 
-def cajon_dominio_streamlit(serie: list) -> str:
+def cajon_dominio_streamlit(serie: list, rdc_serie: list | None = None) -> str:
     """HTML del dominio RDC listo para st.markdown (sin sangría ni líneas en blanco)."""
-    h = cajon_dominio_rdc(serie)
+    h = cajon_dominio_rdc(serie, rdc_serie)
     return "\n".join(ln.lstrip() for ln in h.splitlines() if ln.strip())
 
 
@@ -515,24 +555,24 @@ details.qc-law[open] summary{margin-bottom:7px}
 .qc-fchip .d{width:9px;height:9px;border-radius:2px;flex:none}
 .qc-fchip.arch{opacity:.65}
 /* pipeline (respira) */
-.qc-pipe{display:flex;flex-wrap:wrap;align-items:stretch;justify-content:center;gap:10px 0;margin-top:4px}
-.qc-blk{width:152px;border:1px solid var(--bd);border-radius:6px;padding:11px 9px;text-align:center;background:var(--sf);display:flex;flex-direction:column;justify-content:center}
+.qc-pipe{display:flex;flex-wrap:nowrap;align-items:stretch;justify-content:center;gap:0;margin-top:4px;overflow-x:auto;padding-bottom:5px}
+.qc-blk{width:150px;flex:0 0 auto;border:1px solid var(--bd);border-radius:6px;padding:11px 9px;text-align:center;background:var(--sf);display:flex;flex-direction:column;justify-content:center}
 .qc-blk .bl{font-family:ui-monospace,monospace;font-size:9px;letter-spacing:.04em;text-transform:uppercase;color:var(--tx2);font-weight:700}
 .qc-blk .bq{font-size:10.5px;margin-top:5px;color:var(--tx2)}
 .qc-blk.src{border-color:var(--inst)}.qc-blk.src .bl{color:var(--inst)}
 .qc-blk.out{border-color:var(--ind);background:rgba(30,142,62,.1)}.qc-blk.out .bl{color:var(--ind)}
-.qc-conn{width:74px;display:flex;flex-direction:column;align-items:center;justify-content:center;flex:none}
+.qc-conn{width:46px;flex:0 0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center}
 .qc-conn .vl{font-size:7.5px;color:var(--tx2);text-align:center;line-height:1.15;margin-bottom:3px;font-style:italic}
 .qc-conn .aw{color:var(--law);font-size:17px}
 .qc-blk .bsys{font-family:ui-monospace,monospace;font-size:8.5px;color:var(--law);margin-top:3px;letter-spacing:.02em}
 /* resultado — el ojo primero */
 .qc-hero{margin:4px 0 18px;display:flex;flex-direction:column;gap:11px}
-.qc-hbar{position:relative;height:38px;border-radius:5px;background:rgba(255,255,255,.04);display:flex;align-items:center}
-.qc-hbar .fill{position:absolute;left:0;top:0;bottom:0;border-radius:5px;opacity:.9}
-.qc-hbar .fill.g{background:var(--ind)}.qc-hbar .fill.s{background:var(--sin)}
-.qc-hnum{position:relative;font-family:Georgia,serif;font-weight:700;font-size:26px;padding:0 14px;color:#fff}
-.qc-hnum.s{color:#0E1420}
-.qc-hlbl{position:relative;font-size:12.5px;color:var(--tx)}.qc-hlbl b{font-weight:700}
+.qc-hbar{display:flex;align-items:center;gap:14px}
+.qc-hfill{height:42px;border-radius:6px;display:flex;align-items:center;padding:0 16px;min-width:96px;flex:0 0 auto}
+.qc-hfill.g{background:var(--ind)}.qc-hfill.s{background:var(--sin)}
+.qc-hnum{font-family:Georgia,serif;font-weight:700;font-size:25px;color:#fff;white-space:nowrap}
+.qc-hnum.d{color:#0E1420}
+.qc-hlbl{font-size:13px;color:var(--tx);flex:1}.qc-hlbl b{font-weight:700}
 .qc-esp-h{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--tx2);margin:6px 0 9px}
 .qc-row{display:flex;align-items:center;gap:12px;margin-bottom:8px}
 .qc-lbl{width:220px;text-align:right;font-size:12px;flex:none;color:var(--tx)}.qc-lbl small{color:var(--tx2)}
@@ -551,18 +591,21 @@ details.qc-law[open] summary{margin-bottom:7px}
 .qc-mc{margin-top:9px;padding-top:8px;border-top:1px dashed var(--bd)}
 .qc-mc .mc-t{font-family:ui-monospace,monospace;font-size:8px;letter-spacing:.06em;text-transform:uppercase;color:var(--tx2);display:block;margin-bottom:5px}
 .qc-mc .mc-row{display:flex;flex-wrap:wrap;align-items:center;gap:4px}
-.mc-n{font-size:9.5px;padding:2px 7px;border-radius:3px;border:1px solid var(--bd)}
-.mc-n.on{color:#fff;background:rgba(30,142,62,.28);border-color:var(--ind);font-weight:600}
-.mc-n.off{color:var(--tx2);opacity:.5}
-.mc-a{color:var(--tx2);font-size:11px;opacity:.4}.mc-a.on{color:var(--ind);opacity:1}
+.mc-n{font-size:9.5px;padding:3px 8px;border-radius:3px;border:1px solid var(--bd)}
+.mc-n.on{color:#fff;background:rgba(30,142,62,.34);border-color:var(--ind);font-weight:600}
+.mc-n.off{color:#AEB8C6;border-color:rgba(255,255,255,.22);background:rgba(255,255,255,.03)}
+.mc-a{color:#8894A6;font-size:12px}.mc-a.on{color:var(--ind);font-weight:700}
 /* evolución */
-.qc-evs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px}
-.qc-ev{border:1px solid var(--bd);border-radius:6px;padding:11px 12px;background:var(--sf)}
-.qc-ev .ev-l{font-size:11px;font-weight:600;margin-bottom:7px}
-.qc-ev .ev-r{display:flex;align-items:baseline;gap:6px;font-family:ui-monospace,monospace;font-size:11px;color:var(--tx)}
-.qc-ev .ev-r b{font-family:Georgia,serif;font-size:19px}
-.qc-ev .ev-y{font-size:8.5px;color:var(--tx2)}.qc-ev .ev-ar{color:var(--law)}
-.qc-ev .ev-d{margin-left:auto;font-size:11px;font-weight:700}
+.qc-evs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:18px}
+.qc-ev{border:1px solid var(--bd);border-radius:8px;padding:15px 16px;background:var(--sf)}
+.qc-ev .ev-l{font-size:12.5px;font-weight:700;margin-bottom:13px}
+.qc-ev .ev-r{display:flex;align-items:center;gap:10px}
+.qc-ev .ev-yr{display:flex;flex-direction:column;gap:1px}
+.qc-ev .ev-yr .ev-y{font-family:ui-monospace,monospace;font-size:9px;color:var(--tx2);letter-spacing:.05em}
+.qc-ev .ev-yr b{font-family:Georgia,serif;font-size:25px;line-height:1}
+.qc-ev .ev-ar{color:var(--law);font-size:17px}
+.qc-ev .ev-d{margin-left:auto;font-family:ui-monospace,monospace;font-size:12px;font-weight:700;border:1px solid;border-radius:12px;padding:2px 9px;white-space:nowrap}
+@media(max-width:720px){.qc-evs{grid-template-columns:1fr}}
 .qc-ev-h{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--tx2);margin:2px 0 8px}
 .qc-evt{width:100%;border-collapse:collapse;font-size:11.5px}
 .qc-evt th{text-align:left;font-family:ui-monospace,monospace;font-size:9px;letter-spacing:.05em;text-transform:uppercase;color:var(--tx2);font-weight:700;padding:4px 8px;border-bottom:1px solid var(--bd)}
@@ -598,6 +641,18 @@ details.qc-law[open] summary{margin-bottom:7px}
 .qc-pf .pf-bar{height:11px;border-radius:2px;background:var(--ind);min-width:2px}
 .qc-pf .pf-v{width:36px;font-family:ui-monospace,monospace;font-size:11px;color:var(--tx);flex:none}
 .qc-pf .pf-d{width:46px;font-family:ui-monospace,monospace;font-size:10.5px;font-weight:700;flex:none}
+/* la rendición en el tiempo (intro) */
+.qc-serie{width:100%;border-collapse:collapse;font-size:12px;margin:4px 0 6px}
+.qc-serie th{text-align:left;font-family:ui-monospace,monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--tx2);font-weight:700;padding:6px 10px;border-bottom:1px solid var(--bd)}
+.qc-serie td{padding:7px 10px;border-bottom:1px solid rgba(255,255,255,.05);color:var(--tx2)}
+.qc-serie td:first-child{color:var(--tx);font-weight:600}
+.qc-serie .num{text-align:right;font-family:ui-monospace,monospace}
+.qc-att-h{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--tx2);margin:16px 0 8px}
+.qc-atts{display:flex;align-items:flex-end;gap:24px;justify-content:center;padding:6px 0 2px}
+.qc-att{display:flex;flex-direction:column;align-items:center;gap:5px;min-width:60px}
+.qc-att-bar{width:50px;background:linear-gradient(180deg,#3AA6D6,#1A73E8);border-radius:3px 3px 0 0}
+.qc-att-n{font-family:Georgia,serif;font-size:16px;font-weight:700;color:var(--tx)}
+.qc-att-y{font-family:ui-monospace,monospace;font-size:10px;color:var(--tx2)}
 /* implicaciones */
 .qc-impl{margin-top:16px;padding:14px 16px;border:1px solid var(--bd);border-left:3px solid var(--law);border-radius:7px;background:var(--sf)}
 .qc-impl-t{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--law);font-weight:700;margin-bottom:6px}

@@ -110,7 +110,7 @@ def _r6(vec, svc_emb, svc_items, meses: int) -> dict:
         completa = meses >= 12   # año completo (2025) → evidencia plena; ventana (2024 sep–dic) → parcial
         etiq = "año completo" if completa else f"{meses}m · ventana parcial"
         return {"clase": "verif_cobertura", "score": round(float(s[k]), 3), "ventana_completa": completa,
-                "evidencia": f"Literal D: '{svc[:44]}' {n:,.0f} personas ({etiq})"}
+                "evidencia": f"LOTAIP · servicios del patronato: '{svc[:44]}' {n:,.0f} personas ({etiq})"}
     return {"clase": "sin_evidencia_publica",
             "evidencia": "cobertura sin correlato en el registro público del patronato"}
 

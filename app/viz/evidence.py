@@ -49,7 +49,7 @@ _CLASE = {
     "coherente":             ("Verificado",            "POA (planificación)",   "gestión"),
     "en_contratacion":       ("En contratación",       "PAC / SERCOP",          "gestión"),
     "verif_ejecucion":       ("Ejecución verificada",  "Cédula presupuestaria", "gestión"),
-    "verif_cobertura":       ("Cobertura verificada",  "Literal D (patronato)", "gestión"),
+    "verif_cobertura":       ("Cobertura verificada",  "Servicios del patronato (LOTAIP)", "gestión"),
     "discrepa_ejecucion":    ("Contradicción",         "Cédula presupuestaria", "gestión"),
     "sin_evidencia_publica": ("Sin evidencia pública", "",                      "gestión"),
     "sin_correlato":         ("Sin correlato",         "",                      "gestión"),
