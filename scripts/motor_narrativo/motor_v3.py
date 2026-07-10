@@ -107,8 +107,10 @@ def _r6(vec, svc_emb, svc_items, meses: int) -> dict:
     k = int(np.argmax(s))
     if float(s[k]) >= TH_COB:
         svc, n = svc_items[k]
-        return {"clase": "verif_cobertura", "score": round(float(s[k]), 3),
-                "evidencia": f"Literal D: '{svc[:44]}' {n:,.0f} personas ({meses}m disponibles · parcial)"}
+        completa = meses >= 12   # año completo (2025) → evidencia plena; ventana (2024 sep–dic) → parcial
+        etiq = "año completo" if completa else f"{meses}m · ventana parcial"
+        return {"clase": "verif_cobertura", "score": round(float(s[k]), 3), "ventana_completa": completa,
+                "evidencia": f"Literal D: '{svc[:44]}' {n:,.0f} personas ({etiq})"}
     return {"clase": "sin_evidencia_publica",
             "evidencia": "cobertura sin correlato en el registro público del patronato"}
 
@@ -123,8 +125,8 @@ def _nivel_evidencia(res: dict) -> str:
         return "independiente"      # registro administrativo EXTERNO (POA/PAC/cédula/SERCOP)
     if cl == "discrepa_ejecucion":
         return "contradiccion"      # hay evidencia pública y CONTRADICE lo declarado
-    if cl == "verif_cobertura":
-        return "parcial"            # registro Literal D con ventana temporal limitada (sep–dic 2024)
+    if cl == "verif_cobertura":   # año completo (Literal D 12m) → independiente; ventana → parcial
+        return "independiente" if res.get("ventana_completa") else "parcial"
     if res.get("en_informe"):
         return "institucional"      # solo en el documento del PROPIO actor (informe CPCCS)
     return "sin_evidencia_publica"  # ni externo ni institucional (incl. documento no publicado)

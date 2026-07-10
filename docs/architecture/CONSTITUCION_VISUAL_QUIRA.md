@@ -115,8 +115,15 @@ distinto por naturaleza; da una **gramática reconocible**):
    cantón · provincia · ejercicio) aterriza aquí, tejido con el método (audiovisual → triangulación → dato).
 5. **Evidencia** — los **expedientes como pequeñas historias** (afirmación → documento → resultado).
 6. **Interoperabilidad** — la innovación sistémica (cruce entre sistemas · entidades · tiempo · 221 GAD).
-7. **Síntesis ejecutiva** — hallazgos por dimensión + cierre + `Fuentes:`.
+7. **Síntesis ejecutiva** — **hallazgos como inferencias CALCULADAS** (no texto libre: se computan del
+   dato —*¿por qué este resultado y no otro? ¿qué patrón aparece?*—) + cierre + `Fuentes:`. El sistema no
+   solo muestra indicadores: **produce conocimiento** (colega + Javo · 2026-07-10).
 8. **Placa institucional** — el principio rector.
+
+> **Regla de oro (colega · 2026-07-10 · DERIVADA — no es regla nueva):** cada paso responde **una pregunta
+> distinta** —¿qué se analizó? · ¿qué pudo verificarse? · ¿qué lo demuestra? · ¿qué cambió? · ¿qué aprendimos?—.
+> Es una **lectura del molde de 8 pasos**, no un concepto que se agrega (Regla 7 anti-inflación). Se deriva, no
+> se duplica.
 
 Cada sección lleva su **marco legal en bloque** (artículos verificados). **Menos texto, más aire** (asesor):
 *si un gráfico necesita demasiadas palabras, aún puede mejorar* — pero **sin perder claridad** (Javo: el

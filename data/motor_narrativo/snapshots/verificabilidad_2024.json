@@ -1,0 +1,302 @@
+{
+  "dominio": "Verificabilidad Pública del Discurso",
+  "meta": {
+    "autoridad": "alcalde Jonathan Toro",
+    "cargo": "Alcalde",
+    "canton": "Montecristi",
+    "provincia": "Manabí",
+    "municipio": "001",
+    "año": "2024",
+    "evento": "Rendición de Cuentas",
+    "n_afirmaciones": 98
+  },
+  "resumen": {
+    "sustantivas": 60,
+    "proceso": 20,
+    "pct_independiente": 55,
+    "pct_sin_evidencia": 25,
+    "institucional": 10,
+    "independiente": 33,
+    "sin_evidencia_publica": 15,
+    "parcial": 2
+  },
+  "embudo": {
+    "extraidas": 98,
+    "proceso": 20,
+    "con_gestion": 78,
+    "analizadas": 60,
+    "niveles": [
+      {
+        "clave": "estrategica",
+        "nivel": "A",
+        "label": "Estratégica",
+        "sub": "obra · sistema · inversión",
+        "n": 15,
+        "pct": 19,
+        "color": "#1E8E3E",
+        "analiza": true
+      },
+      {
+        "clave": "programatica",
+        "nivel": "B",
+        "label": "Programática",
+        "sub": "gestión · servicio recurrente",
+        "n": 34,
+        "pct": 44,
+        "color": "#1A73E8",
+        "analiza": true
+      },
+      {
+        "clave": "administrativa",
+        "nivel": "C",
+        "label": "Administrativa",
+        "sub": "acto de gestión menor",
+        "n": 11,
+        "pct": 14,
+        "color": "#6BA6C9",
+        "analiza": true
+      },
+      {
+        "clave": "prospectiva",
+        "nivel": "E",
+        "label": "Prospectiva",
+        "sub": "compromiso a futuro · seguimiento",
+        "n": 11,
+        "pct": 14,
+        "color": "#8B7BD8",
+        "analiza": false
+      },
+      {
+        "clave": "protocolaria",
+        "nivel": "D",
+        "label": "Protocolaria",
+        "sub": "sin contenido de gestión",
+        "n": 7,
+        "pct": 9,
+        "color": "#9AA0A6",
+        "analiza": false
+      }
+    ]
+  },
+  "espectro": [
+    {
+      "nivel": "independiente",
+      "label": "Prueba independiente",
+      "sub": "registro externo",
+      "n": 33,
+      "pct": 55,
+      "color": "#1E8E3E"
+    },
+    {
+      "nivel": "institucional",
+      "label": "Autocertificación",
+      "sub": "solo su informe",
+      "n": 10,
+      "pct": 17,
+      "color": "#1A73E8"
+    },
+    {
+      "nivel": "parcial",
+      "label": "Prueba parcial",
+      "sub": "ventana / cobertura",
+      "n": 2,
+      "pct": 3,
+      "color": "#F9AB00"
+    },
+    {
+      "nivel": "sin_evidencia_publica",
+      "label": "Sin respaldo público",
+      "sub": "no publicado",
+      "n": 15,
+      "pct": 25,
+      "color": "#9AA0A6"
+    },
+    {
+      "nivel": "contradiccion",
+      "label": "Prueba en contrario",
+      "sub": "",
+      "n": 0,
+      "pct": 0,
+      "color": "#D93025"
+    }
+  ],
+  "por_eje": {
+    "institucional": {
+      "n": 11,
+      "independiente": 4
+    },
+    "economía": {
+      "n": 12,
+      "independiente": 5
+    },
+    "agua": {
+      "n": 2,
+      "independiente": 2
+    },
+    "educación": {
+      "n": 4,
+      "independiente": 4
+    },
+    "cultura": {
+      "n": 22,
+      "independiente": 14
+    },
+    "salud": {
+      "n": 7,
+      "independiente": 3
+    },
+    "social": {
+      "n": 2,
+      "independiente": 1
+    }
+  },
+  "expedientes": [
+    {
+      "id": "MN2024-078",
+      "estado": "En contratación",
+      "aseveracion": "Alcantarillado primera fase parroquia General Alfaro con inversión de $5,000,000",
+      "fuente": "PAC / SERCOP",
+      "resultado": "PAC 2025·DE ALCANTARILLADO PLUVIAL EN EL CANTÓN MONTECRISTI",
+      "nivel": "independiente",
+      "color": "#1E8E3E",
+      "vd": 94,
+      "badges": [
+        "Registro independiente",
+        "En contratación",
+        "Impacto cuantificado"
+      ],
+      "relevancia": "estrategica",
+      "eje": "agua",
+      "cadena": "sercop"
+    },
+    {
+      "id": "MN2024-043",
+      "estado": "Verificado",
+      "aseveracion": "Inversión de 20,300 dólares para readecuación y mantenimiento de Unidad Educativa Flavio Palacios",
+      "fuente": "POA (planificación)",
+      "resultado": "2024·Realizar Trabajos De Readecuación A Los Infocentros Y Centros De Educa",
+      "nivel": "independiente",
+      "color": "#1E8E3E",
+      "vd": 88,
+      "badges": [
+        "Registro independiente",
+        "En planificación",
+        "Impacto cuantificado"
+      ],
+      "relevancia": "estrategica",
+      "eje": "educación",
+      "cadena": "poa"
+    },
+    {
+      "id": "MN2024-083",
+      "estado": "Declarado institucionalmente",
+      "aseveracion": "Proyecto con inversión de $17,000 desarrollado internamente",
+      "fuente": "Informe CPCCS (propia entidad)",
+      "resultado": "Consta en su propio informe de rendición; sin registro externo que lo corrobore.",
+      "nivel": "institucional",
+      "color": "#1A73E8",
+      "vd": 58,
+      "badges": [
+        "Autocertificado",
+        "Solo en informe",
+        "Impacto cuantificado"
+      ],
+      "relevancia": "estrategica",
+      "eje": "institucional",
+      "cadena": "informe"
+    },
+    {
+      "id": "MN2024-024",
+      "estado": "Sin evidencia pública",
+      "aseveracion": "En 2022 se recaudaron 3.7 millones de dólares en ingresos propios",
+      "fuente": "—",
+      "resultado": "ingresos/deuda: la DPE no publica cédula de ingresos → el ciudadano no puede comprobarlo",
+      "nivel": "sin_evidencia_publica",
+      "color": "#9AA0A6",
+      "vd": 35,
+      "badges": [
+        "Sin respaldo público",
+        "Solo en el discurso",
+        "Impacto cuantificado"
+      ],
+      "relevancia": "programatica",
+      "eje": "economía",
+      "cadena": "discurso"
+    },
+    {
+      "id": "MN2024-075",
+      "estado": "Cobertura verificada",
+      "aseveracion": "2000 personas beneficiadas en parroquia Níval San Andrés con centro comunitario",
+      "fuente": "Literal D (patronato)",
+      "resultado": "Literal D: 'Trabajo Social Cl�nica MUNICIPAL DE Di�lisis' 40 personas (4m · ventana parcial)",
+      "nivel": "parcial",
+      "color": "#F9AB00",
+      "vd": 74,
+      "badges": [
+        "Cobertura parcial",
+        "Registro de cobertura",
+        "Impacto cuantificado"
+      ],
+      "relevancia": "estrategica",
+      "eje": "cultura",
+      "cadena": "registro"
+    }
+  ],
+  "marco_legal": {
+    "dominio_lead": [
+      "Constitución Art. 61",
+      "Constitución Art. 100",
+      "LOPC Art. 90",
+      "LOPC Art. 92",
+      "COOTAD Art. 60"
+    ],
+    "01_triangulacion": [
+      "Constitución Art. 95",
+      "Constitución Art. 208",
+      "LOCPCCS Art. 10"
+    ],
+    "02_suficiencia_probatoria": [
+      "LOPC Art. 91",
+      "LOPC Art. 92",
+      "LOTAIP"
+    ],
+    "03_fichas_contraste": [
+      "LOSNCP",
+      "COPLAFIP",
+      "LOTAIP"
+    ],
+    "04_analisis_sistemico": [
+      "Constitución Art. 204",
+      "LOCPCCS Art. 11",
+      "COOTAD Art. 266"
+    ]
+  },
+  "sintesis": {
+    "hallazgos": [
+      [
+        "independiente",
+        "55%",
+        "del discurso se sostiene en registros externos e independientes."
+      ],
+      [
+        "sin_evidencia_publica",
+        "25%",
+        "sin respaldo público verificable."
+      ],
+      [
+        "independiente",
+        "0",
+        "aseveraciones contradichas por la evidencia documental."
+      ]
+    ],
+    "fuentes": [
+      "Discurso RDC (audiovisual)",
+      "POA",
+      "Contratación (SERCOP)",
+      "Cédula presupuestaria",
+      "Literal D — patronato",
+      "Informe CPCCS",
+      "Transparencia (LOTAIP)"
+    ]
+  }
+}

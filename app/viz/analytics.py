@@ -16,17 +16,20 @@ _HERE = Path(__file__).resolve().parent
 _ROOT = _HERE.parents[1]
 sys.path.insert(0, str(_HERE))
 sys.path.insert(0, str(_ROOT / "scripts" / "motor_narrativo"))
-from evidence import GRAMATICA, NarrativeEvidence, estado_fuente_tipo
+from evidence import GRAMATICA, NarrativeEvidence, analiza_relevancia, estado_fuente_tipo
 
 
 def a_evidencias(unidades: list[dict], resultados: list[dict], periodo: str,
-                 entidad: str = "GAD Montecristi") -> list[NarrativeEvidence]:
-    """Motor (unidades + resultados de `clasificar`) → objetos canónicos. Solo datos."""
+                 entidad: str = "GAD Montecristi",
+                 relevancias: list[str] | None = None) -> list[NarrativeEvidence]:
+    """Motor (unidades + resultados de `clasificar` + Capa 0 relevancia) → objetos canónicos.
+    Solo datos. `relevancias` alinea por índice el nivel ontológico (A/B/C/D)."""
     out = []
     for i, (u, r) in enumerate(zip(unidades, resultados)):
         clase = r.get("clase", "sin_correlato")
         estado, fuente, tipo = estado_fuente_tipo(clase)
         nivel = r.get("nivel_evidencia") or "sin_evidencia_publica"  # proceso → gris (no sustantivo)
+        rel = (relevancias[i] if relevancias and i < len(relevancias) else "estrategica")
         # el estado se ALINEA con el nivel final (no con la clase cruda): una unidad sin
         # correlato en POA/PAC pero corroborada por el informe es "Declarada", no "Sin correlato".
         if tipo != "proceso":
@@ -40,13 +43,20 @@ def a_evidencias(unidades: list[dict], resultados: list[dict], periodo: str,
             estado=estado, nivel_evidencia=nivel, fuente=fuente, tipo=tipo,
             explicacion=r.get("evidencia", ""), periodo=str(periodo),
             entidad=entidad, confianza=float(r.get("score", 0.0) or 0.0),
+            relevancia=rel, eje=u.get("eje", ""),
         ))
     return out
 
 
+def _sustantiva(e: NarrativeEvidence) -> bool:
+    """Entra al veredicto de verificabilidad: no es proceso Y es relevante (A/B/C · no D)."""
+    return e.tipo != "proceso" and analiza_relevancia(e.relevancia)
+
+
 def resumen(evidencias: list[NarrativeEvidence]) -> dict:
-    """Conteo por nivel de evidencia (el veredicto agregado del cajón)."""
-    return dict(Counter(e.nivel_evidencia for e in evidencias if e.tipo != "proceso"))
+    """Conteo por nivel de evidencia (el veredicto agregado del cajón), solo sobre las
+    afirmaciones CON valor público (Capa 0): excluye proceso y protocolarias."""
+    return dict(Counter(e.nivel_evidencia for e in evidencias if _sustantiva(e)))
 
 
 if __name__ == "__main__":

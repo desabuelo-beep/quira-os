@@ -324,5 +324,52 @@ verificabilidad pública del discurso institucional mediante trazabilidad docume
 Engloba Motor Narrativo, ICPI, PAC, CPCCS, cédulas, Literal D y cualquier fuente futura sin reescribir la
 arquitectura.
 
+## 22 · Capa 0 — Motor de Relevancia Ontológica (Javo + asesor · 2026-07-10)
+**Origen (Javo):** los expedientes se veían *flojos* — una afirmación como *"el sombrero de paja toquilla
+será lucido por los jugadores…"* ocupaba 1 de 4 expedientes. **Puede** verificarse, pero **no merece** ser
+expediente: no mide integridad de gestión. Eso le quitaba seriedad al proceso técnico. El asesor confirma
+que el problema **no es visual, es epistemológico**: QUIRA analizaba *todo lo dicho*; debe analizar solo las
+**afirmaciones con valor público verificable**.
+
+**La corrección — una capa ANTES de verificar (Capa 0):**
+```
+Transcripción → Extracción → [CAPA 0 · Relevancia Ontológica] → Verificación → Expediente
+```
+La pregunta de la Capa 0 **no es lingüística, es ONTOLÓGICA**: *¿esta afirmación pertenece realmente al
+dominio de la rendición de cuentas de gestión pública?* No elimina — **clasifica** (esa es la transparencia
+metodológica: no se esconde información, se explica por qué no forma parte del análisis). Cuatro niveles:
+
+| Nivel | Tipo | Qué es | Destino |
+|---|---|---|---|
+| **A** | Estratégica | Obra / sistema / infraestructura / inversión estructural YA realizada, con magnitud | **Se analiza — y los expedientes salen SOLO de aquí** |
+| **B** | Programática | Línea de gestión o servicio recurrente YA operando (catastro, ordenanzas, cobertura) | Se analiza |
+| **C** | Administrativa | Acto de gestión menor YA realizado (convenios, comisiones, talleres) | Se analiza (bajo peso) |
+| **E** | Prospectiva | **Compromiso o promesa a futuro** sobre una gestión concreta aún no ejecutada ("se construirá", "para 2027") | **No verificable hoy → se RASTREA entre años (seguimiento)** |
+| **D** | Protocolaria | Discurso ceremonial sin gestión (agradece, felicita, "será lucido", celebra, define) | **Se archiva y se cuenta** |
+
+**Se analiza A+B+C** (verificabilidad de HOY). La **E · Prospectiva** es la corrección de rigor (Javo · 2026-07-10):
+un compromiso a futuro **no es ruido ceremonial** (no es D) ni es verificable hoy (no es A/B/C) — se separa y se
+**registra para el seguimiento plurianual** (§23), que es exactamente lo que la ley de rendición manda rastrear.
+La **D · Protocolaria** se archiva. El **embudo de relevancia** (extraídas → A/B/C/E/D) se muestra como prueba de
+rigor; el nivel de verificabilidad se lee **solo sobre las afirmaciones con valor público verificable** —más
+honesto y robusto—. Los expedientes se seleccionan **solo de las estratégicas (A)**. **La E · Prospectiva es el
+puente natural entre la Capa 0 y el Módulo V longitudinal: las promesas de un año son el insumo del seguimiento
+del siguiente.**
+
+**Implementación:** `scripts/motor_narrativo/relevancia.py` (Haiku 4.5, pasada de clasificación sobre las
+unidades ya extraídas — respeta el Banco de Casos y los IDs). Campo `relevancia` en `NarrativeEvidence`;
+`embudo` en el snapshot. Es el **Módulo VI del canon metodológico** (asesor). No es un dominio: refina el
+motor. Nace en el canon (Regla 9), no en Python.
+
+## 23 · Evolución longitudinal DENTRO del cajón (Javo · 2026-07-10)
+El asesor propuso un **cajón aparte** para la comparación entre años. **Javo lo veta:** *cada cajón recoge
+todo su universo o dimensión* — lo temporal va en el **MISMO cajón RDC**, no en uno nuevo. Y añade: **hay ley
+de seguimiento plurianual que no se cumple** — la rendición da seguimiento a los compromisos de años previos
+(LOPC · CPCCS: el ciclo no se agota en el evento anual). Por tanto, el cajón RDC incluye una **sección
+longitudinal** que cruza los ejercicios (2024 ↔ 2025 → N): evolución del % de prueba independiente, de la
+autocertificación y del sin-respaldo, y por **eje temático** — graficado y explicado. Con dos años ya hay el
+mínimo para detectar **patrones** (ciencia política computacional servida como gestión pública). Es el
+**Módulo V del canon metodológico** (asesor), pero **embebido en el cajón**, no separado (decisión de Javo).
+
 ---
-*PCD-MN01 · Dylus Lab © 2026 · Motor Narrativo + Motor de Evidencia Pública · cadena de integridad intersistémica · corpus doctrinario propio.*
+*PCD-MN01 · Dylus Lab © 2026 · Motor Narrativo + Motor de Evidencia Pública · Relevancia Ontológica (Capa 0) · evolución longitudinal · cadena de integridad intersistémica · corpus doctrinario propio.*

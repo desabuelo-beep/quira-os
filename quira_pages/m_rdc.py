@@ -349,16 +349,47 @@ def _cierre_rdc(r: dict) -> None:
         f'</div>', unsafe_allow_html=True)
 
 
+def _sec_verificabilidad() -> None:
+    """Cajones de VERIFICABILIDAD PÚBLICA DEL DISCURSO (Motor Narrativo) — 2024 y 2025 en
+    secciones separadas (Javo · 2026-07-10). Snapshot → HTML (Regla 1: la app NO corre el motor).
+    Cada dominio trabaja su universo completo: aquí van los dos ejercicios y su evolución."""
+    import json
+    from pathlib import Path
+    base = Path(__file__).resolve().parents[1] / "data" / "motor_narrativo" / "snapshots"
+
+    def _load(a):
+        p = base / f"verificabilidad_{a}.json"
+        return json.loads(p.read_text(encoding="utf-8")) if p.exists() else None
+
+    s24, s25 = _load("2024"), _load("2025")
+    if not (s24 or s25):
+        return
+    try:
+        from app.viz.render.html_render import cajon_streamlit
+    except Exception:
+        return
+    for año, snap, serie in (("2024", s24, [s24] if s24 else []),
+                             ("2025", s25, [x for x in (s24, s25) if x])):
+        if not snap:
+            continue
+        st.markdown(
+            f'<div style="font-family:ui-monospace,monospace;font-size:11.5px;letter-spacing:.16em;'
+            f'text-transform:uppercase;color:#7E8BA3;margin:10px 0 12px;text-align:center">'
+            f'Rendición de Cuentas · Ejercicio {año}</div>', unsafe_allow_html=True)
+        st.markdown(cajon_streamlit(snap, serie), unsafe_allow_html=True)
+        st.markdown('<div style="height:30px"></div>', unsafe_allow_html=True)
+
+
 def render() -> None:
     """QINV-009 · Rendición de Cuentas — lectura documental continua (réplica del molde)."""
     r = _cargar()
     st.markdown(_css(), unsafe_allow_html=True)
     st.markdown('<div class="pl-wrap">', unsafe_allow_html=True)
+    _sec_verificabilidad()   # Motor Narrativo — cajones 2024 + 2025 (siempre; snapshot propio)
     if not r or not r.get("fidelidad"):
-        st.markdown('<div style="font-size:15px;color:#7E8BA3;padding:20px 0">'
-                    '— evidencia de rendición pendiente de carga —</div>', unsafe_allow_html=True)
         st.markdown('</div>', unsafe_allow_html=True)
         return
+    st.markdown(_div(), unsafe_allow_html=True)
 
     st.markdown(
         '<div class="pl-title-band"><div class="pl-title">Rendición de Cuentas</div>'

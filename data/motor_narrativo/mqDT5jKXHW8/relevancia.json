@@ -1,0 +1,606 @@
+{
+  "video_id": "mqDT5jKXHW8",
+  "modelo": "claude-haiku-4-5-20251001",
+  "n": 98,
+  "tokens": {
+    "in": 7200,
+    "out": 3435
+  },
+  "distribucion": {
+    "protocolaria": 10,
+    "administrativa": 24,
+    "prospectiva": 13,
+    "programatica": 36,
+    "estrategica": 15
+  },
+  "items": [
+    {
+      "i": 0,
+      "relevancia": "protocolaria",
+      "motivo": "Definición conceptual de plan, sin gestión verificable",
+      "texto": "El Plan Bicentenario proporciona una hoja de ruta para los próximos 50 años con "
+    },
+    {
+      "i": 1,
+      "relevancia": "protocolaria",
+      "motivo": "Declaración de intención general sin obra o acción específic",
+      "texto": "Se inicia proceso de transformación del cantón con planificación, orden y justic"
+    },
+    {
+      "i": 2,
+      "relevancia": "protocolaria",
+      "motivo": "Enumeración temática sin magnitud ni verificación",
+      "texto": "Avanza en agua potable, infraestructura digna, servicios digitales y espacios pa"
+    },
+    {
+      "i": 3,
+      "relevancia": "protocolaria",
+      "motivo": "Declaración de rendición sin datos de ejecución",
+      "texto": "Se rinde cuentas de obras en agua potable, infraestructura digna, servicios digi"
+    },
+    {
+      "i": 4,
+      "relevancia": "administrativa",
+      "motivo": "Acto administrativo de proceso iniciado en enero 2024",
+      "texto": "Proceso de rendición de cuentas inicia de forma articulada entre ciudadanía y GA"
+    },
+    {
+      "i": 5,
+      "relevancia": "administrativa",
+      "motivo": "Capacitación realizada, acto administrativo menor",
+      "texto": "Taller de capacitación organizado de manera virtual con Consejo de Participación"
+    },
+    {
+      "i": 6,
+      "relevancia": "administrativa",
+      "motivo": "Reunión administrativa realizada el 14 de abril",
+      "texto": "Reunión en auditorio el 14 de abril de 2025 para elaborar hoja de ruta del proce"
+    },
+    {
+      "i": 7,
+      "relevancia": "administrativa",
+      "motivo": "Coordinación de mesas de trabajo, acto administrativo",
+      "texto": "Actividades de organización de mesa de trabajo coordinadas para los días 28, 29 "
+    },
+    {
+      "i": 8,
+      "relevancia": "administrativa",
+      "motivo": "Solicitud de documentación, trámite administrativo",
+      "texto": "Se solicitó documentación al GAC Montecristi: PDOT vigente, plan de campaña, pla"
+    },
+    {
+      "i": 9,
+      "relevancia": "administrativa",
+      "motivo": "Recepción de documentación, acto administrativo verificado",
+      "texto": "Se recibió documentación completa del GAC Montecristi el 21 de abril de 2025"
+    },
+    {
+      "i": 10,
+      "relevancia": "administrativa",
+      "motivo": "Conformación de equipo y subcomisiones, acto administrativo",
+      "texto": "Se conformó equipo técnico y dos subcomisiones el 15 de abril para evaluar proce"
+    },
+    {
+      "i": 11,
+      "relevancia": "administrativa",
+      "motivo": "Presentación de rendición, acto administrativo realizado",
+      "texto": "Rendición de cuenta para el Consejo de Participación Ciudadana presentada a trav"
+    },
+    {
+      "i": 12,
+      "relevancia": "prospectiva",
+      "motivo": "Acción futura a redactar, promesa no ejecutada aún",
+      "texto": "Redactar informe de rendición de cuenta para la ciudadanía en forma conjunta con"
+    },
+    {
+      "i": 13,
+      "relevancia": "administrativa",
+      "motivo": "Mesas de trabajo realizadas 28-30 de abril",
+      "texto": "Se realizaron mesas de trabajo los días 28, 29 y 30 de abril en comunidades y se"
+    },
+    {
+      "i": 14,
+      "relevancia": "administrativa",
+      "motivo": "Envío de preguntas, acto administrativo realizado",
+      "texto": "El 5 de mayo de 2024 se enviaron formalmente preguntas al GAC Montecriste y inst"
+    },
+    {
+      "i": 15,
+      "relevancia": "administrativa",
+      "motivo": "Reunión de comisión realizada el 5 de junio",
+      "texto": "El 5 de junio de 2025 se reunió comisión 1 para liberar evaluación y gestión ins"
+    },
+    {
+      "i": 16,
+      "relevancia": "administrativa",
+      "motivo": "Reunión de comisión realizada el 9 de junio",
+      "texto": "El 9 de junio de 2025 se reunió comisión 2 para deliberación pública del informe"
+    },
+    {
+      "i": 17,
+      "relevancia": "administrativa",
+      "motivo": "Sesión coordinada el 20 de junio, acto administrativo",
+      "texto": "El 20 de junio de 2025 se coordinó sesión en sala de reuniones de la alcaldía pa"
+    },
+    {
+      "i": 18,
+      "relevancia": "administrativa",
+      "motivo": "Reunión de comisiones el 20 de junio, acto administrativo",
+      "texto": "El 20 de junio de 2025 se reunieron comisión 1 y 2 para revisar formulario de pl"
+    },
+    {
+      "i": 19,
+      "relevancia": "administrativa",
+      "motivo": "Publicación y difusión realizada el 20 de junio",
+      "texto": "El 20 de junio del 2025 se publicó y se realizó la difusión del informe de rendi"
+    },
+    {
+      "i": 20,
+      "relevancia": "administrativa",
+      "motivo": "Entrega de informe al alcalde, acto administrativo",
+      "texto": "El 20 de junio se entregó al alcalde el informe de rendición de cuentas y demand"
+    },
+    {
+      "i": 21,
+      "relevancia": "administrativa",
+      "motivo": "Entrega e invitaciones iniciadas el 23 de junio",
+      "texto": "El 23 de junio se entregó el informe de rendición de cuentas y se iniciaron entr"
+    },
+    {
+      "i": 22,
+      "relevancia": "protocolaria",
+      "motivo": "Caracterización de situación heredada, contexto ceremonial",
+      "texto": "Montecristi inició el 2024 enfrentando una deuda heredada de más de 6 millones d"
+    },
+    {
+      "i": 23,
+      "relevancia": "programatica",
+      "motivo": "Dato de recaudación verificable de gestión fiscal",
+      "texto": "En 2022 se recaudaron 3.7 millones de dólares en ingresos propios"
+    },
+    {
+      "i": 24,
+      "relevancia": "programatica",
+      "motivo": "Ingresos propios 2024 ya recaudados, verificables",
+      "texto": "En 2024 se incrementaron ingresos propios a 6.2 millones de dólares"
+    },
+    {
+      "i": 25,
+      "relevancia": "prospectiva",
+      "motivo": "Proyección a 2025, promesa concreta futura",
+      "texto": "En 2025 se proyecta duplicar la recaudación con relación al año 2022"
+    },
+    {
+      "i": 26,
+      "relevancia": "programatica",
+      "motivo": "Dato histórico 2022, ingresos ya ejecutados",
+      "texto": "En 2022 los ingresos por modelo de equidad territorial fueron 10.5 millones de d"
+    },
+    {
+      "i": 27,
+      "relevancia": "programatica",
+      "motivo": "Ingresos territoriales 2024 ya liquidados",
+      "texto": "En 2024 los ingresos por equidad territorial bajaron a 7.9 millones de dólares"
+    },
+    {
+      "i": 28,
+      "relevancia": "programatica",
+      "motivo": "Ejecución presupuestaria 2019 ya finalizada",
+      "texto": "En 2019 la ejecución presupuestaria fue del 47%"
+    },
+    {
+      "i": 29,
+      "relevancia": "programatica",
+      "motivo": "Ejecución presupuestaria 2024 ya cerrada",
+      "texto": "En 2024 se mejoró la ejecución presupuestaria al 84%"
+    },
+    {
+      "i": 30,
+      "relevancia": "programatica",
+      "motivo": "Ejecución ingresos 2024 ya verificable",
+      "texto": "En 2024 se alcanzó ejecución de ingresos del 99.79%"
+    },
+    {
+      "i": 31,
+      "relevancia": "programatica",
+      "motivo": "Ejecución egresos 2024 ya verificable",
+      "texto": "En 2024 se alcanzó ejecución de egresos del 84.32%"
+    },
+    {
+      "i": 32,
+      "relevancia": "prospectiva",
+      "motivo": "Promesa de asignación futura para 2025",
+      "texto": "La ejecución presupuestaria de 2024 permitió elevar la asignación de equidad ter"
+    },
+    {
+      "i": 33,
+      "relevancia": "programatica",
+      "motivo": "Programa operando, 47 cursos y 1164 beneficiarios",
+      "texto": "Programa Kuna Emprendedores impartió 47 cursos y benefició a 1164 personas"
+    },
+    {
+      "i": 34,
+      "relevancia": "programatica",
+      "motivo": "Reducción deuda histórica 9 millones ejecutada",
+      "texto": "Deuda heredada de aproximadamente 20 millones de dólares reducida en 9 millones "
+    },
+    {
+      "i": 35,
+      "relevancia": "programatica",
+      "motivo": "Pago deuda y acuerdo EPAN ya realizados",
+      "texto": "Pagó deuda actual con EPAN (empresa de aguas de Manta) y llegó a nuevo acuerdo p"
+    },
+    {
+      "i": 36,
+      "relevancia": "programatica",
+      "motivo": "Duplicó ingresos 2024 respecto 2022 verificable",
+      "texto": "Duplicó ingresos con relación al año 2022"
+    },
+    {
+      "i": 37,
+      "relevancia": "administrativa",
+      "motivo": "Convenio suscrito, acto administrativo menor",
+      "texto": "Convenio con Universidad Laica Leo Alfaro de Manaví para impartir cursos de gast"
+    },
+    {
+      "i": 38,
+      "relevancia": "programatica",
+      "motivo": "27 cursos impartidos, programa operando",
+      "texto": "27 cursos impartidos en gastronomía navideña, primeros auxilios, electricidad bá"
+    },
+    {
+      "i": 39,
+      "relevancia": "programatica",
+      "motivo": "856 beneficiarios capacitados, hecho verificable",
+      "texto": "856 beneficiarios capacitados con la Universidad Laica de Manta"
+    },
+    {
+      "i": 40,
+      "relevancia": "programatica",
+      "motivo": "300 jóvenes capacitados, programa ejecutado",
+      "texto": "300 jóvenes capacitados en programas con Iglesia Arco Iris"
+    },
+    {
+      "i": 41,
+      "relevancia": "estrategica",
+      "motivo": "Rescate y readecuación de instituto, infraestructura",
+      "texto": "Rescate y readecuación del Instituto Artesanal Aníbal Palacios"
+    },
+    {
+      "i": 42,
+      "relevancia": "estrategica",
+      "motivo": "Inversión 20.300 dólares ejecutada en unidad educativa",
+      "texto": "Inversión de 20,300 dólares para readecuación y mantenimiento de Unidad Educativ"
+    },
+    {
+      "i": 43,
+      "relevancia": "programatica",
+      "motivo": "19 clubes conformados, programa operando",
+      "texto": "19 clubes de jóvenes conformados en comunidades rurales y urbanas"
+    },
+    {
+      "i": 44,
+      "relevancia": "prospectiva",
+      "motivo": "Promesa de cobertura anual 3.000 jóvenes futura",
+      "texto": "Convenio de becas educativas llegando a 19 unidades educativas y 3,000 jóvenes a"
+    },
+    {
+      "i": 45,
+      "relevancia": "programatica",
+      "motivo": "Convenio suscrito ya beneficia 19 escuelas, 3.000 jóvenes",
+      "texto": "Se suscribió un convenio con la administración anterior que permitió llegar a 19"
+    },
+    {
+      "i": 46,
+      "relevancia": "programatica",
+      "motivo": "300 capacitados en clubes salud, programa operando",
+      "texto": "300 personas capacitadas en clubes de salud para beneficiar a 3,000 personas con"
+    },
+    {
+      "i": 47,
+      "relevancia": "programatica",
+      "motivo": "200 capacitados educación financiera, programa operando",
+      "texto": "200 personas capacitadas en educación financiera a través del programa Cuna de E"
+    },
+    {
+      "i": 48,
+      "relevancia": "programatica",
+      "motivo": "Servicio social recurrente ya operando con cifras",
+      "texto": "Departamento de Acción Social benefició a 24,686 personas con inversión aproxima"
+    },
+    {
+      "i": 49,
+      "relevancia": "programatica",
+      "motivo": "Brigadas médicas operadas en 2024, servicio ejecutado",
+      "texto": "En 2024 se realizaron 94 brigadas médicas con atención de 15,587 personas y entr"
+    },
+    {
+      "i": 50,
+      "relevancia": "prospectiva",
+      "motivo": "Estudio completado pero ejecución iniciándose en 2024",
+      "texto": "Se realizó estudio para remodelación de emergencia del hospital; se está inician"
+    },
+    {
+      "i": 51,
+      "relevancia": "prospectiva",
+      "motivo": "Ampliación futura a 24/7, contratación en proceso",
+      "texto": "Centro diario de Buen Vivir ampliará servicio a 24/7 con inversión de $61,240 y "
+    },
+    {
+      "i": 52,
+      "relevancia": "programatica",
+      "motivo": "Proyecto ejecutado en 2024 con beneficiarios verificables",
+      "texto": "Proyecto Alas de Libertad de Fundación FASE benefició a más de 1,069 personas en"
+    },
+    {
+      "i": 53,
+      "relevancia": "administrativa",
+      "motivo": "Convenio firmado, acto administrativo menor",
+      "texto": "Se estableció convenio entre el Ministerio de Constitución Económica Social (MES"
+    },
+    {
+      "i": 54,
+      "relevancia": "programatica",
+      "motivo": "Reducción de deuda ya realizada, gestión financiera",
+      "texto": "Se ha reducido la deuda municipal con el IES en 6.2 millones de dólares; la deud"
+    },
+    {
+      "i": 55,
+      "relevancia": "programatica",
+      "motivo": "Ocho CDIs operando, servicio recurrente en curso",
+      "texto": "Se operan 8 CDIs (Centros de Desarrollo Infantil) para beneficiar a niños en sit"
+    },
+    {
+      "i": 56,
+      "relevancia": "programatica",
+      "motivo": "Atenciones ya realizadas, cobertura operativa verificable",
+      "texto": "Se atienden 306 niñas y niños en situación de vulnerabilidad mediante CDIs y 190"
+    },
+    {
+      "i": 57,
+      "relevancia": "programatica",
+      "motivo": "Atenciones ejecutadas con inversión ya realizada",
+      "texto": "Se han realizado 130,038 atenciones a través del patronato con inversión de $900"
+    },
+    {
+      "i": 58,
+      "relevancia": "programatica",
+      "motivo": "Atenciones 2023 y 2024 ya realizadas, servicio en curso",
+      "texto": "Centro diario del Buen Vivir atendió 66,898 personas en 2023 y 88,010 atenciones"
+    },
+    {
+      "i": 59,
+      "relevancia": "programatica",
+      "motivo": "Atenciones 2023-2024 ya ejecutadas, cobertura operativa",
+      "texto": "Unidad de servicios médicos comunitarios pasó de 1,243 atenciones en 2023 a 15,6"
+    },
+    {
+      "i": 60,
+      "relevancia": "administrativa",
+      "motivo": "Proyecto capacitación realizado, acto administrativo",
+      "texto": "Proyecto Calarte benefició a 40 artesanos mediante capacitación en combinación d"
+    },
+    {
+      "i": 61,
+      "relevancia": "administrativa",
+      "motivo": "Capacitación de 5 meses ya ejecutada, inversión realizada",
+      "texto": "Proyecto Calarte incluyó capacitación de 5 meses con inversión de $7,000 en 40 a"
+    },
+    {
+      "i": 62,
+      "relevancia": "administrativa",
+      "motivo": "Capacitación completada, inversión menor ya hecha",
+      "texto": "Se invirtieron $7,000 en capacitación de 5 meses en técnica de tejido fino de pa"
+    },
+    {
+      "i": 63,
+      "relevancia": "protocolaria",
+      "motivo": "Nominación UNESCO, reconocimiento ceremonial simbólico",
+      "texto": "Montecristi fue nominado por UNESCO como ciudad creativa en 2023"
+    },
+    {
+      "i": 64,
+      "relevancia": "protocolaria",
+      "motivo": "Selección internacional, discurso de prestigio cultural",
+      "texto": "Montecristi fue una de cinco ciudades del mundo seleccionadas para exponer manif"
+    },
+    {
+      "i": 65,
+      "relevancia": "administrativa",
+      "motivo": "Suscripción de oficina comercial, acto administrativo",
+      "texto": "Se suscribió oficina comercial en restaurante Chapó en Madrid, España"
+    },
+    {
+      "i": 66,
+      "relevancia": "programatica",
+      "motivo": "Evento realizado en Montecristi, actividad ejecutada",
+      "texto": "Se realizó primer encuentro de ciudades creativas de Ecuador en Montecristi"
+    },
+    {
+      "i": 67,
+      "relevancia": "administrativa",
+      "motivo": "Presentación artesanía realizada, evento administrativo",
+      "texto": "Presentación de artesanía de Montecristi en Times Square, Nueva York"
+    },
+    {
+      "i": 68,
+      "relevancia": "programatica",
+      "motivo": "Talleres vacacionales ejecutados con 311 beneficiarios",
+      "texto": "Implementación de talleres de artes en cursos vacacionales con 311 beneficiarios"
+    },
+    {
+      "i": 69,
+      "relevancia": "programatica",
+      "motivo": "Técnicas ancestrales enseñadas en cursos permanentes",
+      "texto": "80 técnicas ancestrales enseñadas incluyendo barro en cursos permanentes"
+    },
+    {
+      "i": 70,
+      "relevancia": "programatica",
+      "motivo": "Capacitación 60 personas realizada con inversión ejecutada",
+      "texto": "60 intelectos capacitados en oratorio y geología usando recursos del GAT a bajo "
+    },
+    {
+      "i": 71,
+      "relevancia": "programatica",
+      "motivo": "Visitantes registrados, actividad turística ya realizada",
+      "texto": "Promoción turística cultural con 3.467 visitantes extranjeros y 240.471 visitant"
+    },
+    {
+      "i": 72,
+      "relevancia": "programatica",
+      "motivo": "Evento recurrente segundo año, participación verificable",
+      "texto": "Creación segundo año consecutivo del evento 'Modela tu sombrero' con participaci"
+    },
+    {
+      "i": 73,
+      "relevancia": "estrategica",
+      "motivo": "Infraestructura cultural creada, magnitud identificable",
+      "texto": "Creación del Primer Museo del Sombrero de Paja Toquilla Fino"
+    },
+    {
+      "i": 74,
+      "relevancia": "estrategica",
+      "motivo": "Centro comunitario realizado, beneficiarios cuantificados",
+      "texto": "2000 personas beneficiadas en parroquia Níval San Andrés con centro comunitario"
+    },
+    {
+      "i": 75,
+      "relevancia": "estrategica",
+      "motivo": "Inversión ejecutada en escuela, monto específico",
+      "texto": "Inversión de $14,000 en escuela bilingüe"
+    },
+    {
+      "i": 76,
+      "relevancia": "prospectiva",
+      "motivo": "Proyecto futuro, compromiso de inversión aún no realizado",
+      "texto": "Proyecto de agua con inversión de $28,000,000"
+    },
+    {
+      "i": 77,
+      "relevancia": "estrategica",
+      "motivo": "Obra en curso primera fase, inversión verificable",
+      "texto": "Alcantarillado primera fase parroquia General Alfaro con inversión de $5,000,000"
+    },
+    {
+      "i": 78,
+      "relevancia": "prospectiva",
+      "motivo": "En contratación, promesa aún no iniciada ejecución",
+      "texto": "Parque de la Huella en proceso de contratación con valor de $84,000"
+    },
+    {
+      "i": 79,
+      "relevancia": "prospectiva",
+      "motivo": "Esperando anticipo, promesa pendiente de financiamiento",
+      "texto": "Reconstrucción del parque Las Pampas esperando anticipo"
+    },
+    {
+      "i": 80,
+      "relevancia": "prospectiva",
+      "motivo": "En proceso, obra no finalizada aún",
+      "texto": "Regeneración calle Alfaro en bajo del Pechiche en proceso"
+    },
+    {
+      "i": 81,
+      "relevancia": "prospectiva",
+      "motivo": "Proyecto futuro, inversión no ejecutada aún",
+      "texto": "Proyecto conducción mercado menor con inversión de $417,000"
+    },
+    {
+      "i": 82,
+      "relevancia": "estrategica",
+      "motivo": "Proyecto desarrollado, inversión realizada internamente",
+      "texto": "Proyecto con inversión de $17,000 desarrollado internamente"
+    },
+    {
+      "i": 83,
+      "relevancia": "estrategica",
+      "motivo": "Reubicación ejecutada, gestión administrativa realizada",
+      "texto": "Reubicación de comerciantes de Avenida Metropolitana al mercado menor"
+    },
+    {
+      "i": 84,
+      "relevancia": "programatica",
+      "motivo": "Talleres realizados, programa comunitario operado",
+      "texto": "La Asamblea Ciudadana realizó cinco talleres en las comunas Río Caña, Ríobo, La "
+    },
+    {
+      "i": 85,
+      "relevancia": "prospectiva",
+      "motivo": "Se habilitará futuro, promesa de herramienta ciudadana",
+      "texto": "Se habilitará un formulario en la página del Consejo Nacional de Participación C"
+    },
+    {
+      "i": 86,
+      "relevancia": "prospectiva",
+      "motivo": "Contrato de estudio, proyecto vial futuro comprometido",
+      "texto": "Existe un contrato de estudio ya contratado para intervención vial de 30 km que "
+    },
+    {
+      "i": 87,
+      "relevancia": "estrategica",
+      "motivo": "Escenario entregado, infraestructura realizada",
+      "texto": "Entrega del nuevo escenario multifuncional de la comuna Toalla Grande"
+    },
+    {
+      "i": 88,
+      "relevancia": "estrategica",
+      "motivo": "Inversión infraestructura ejecutada con componentes específi",
+      "texto": "Inversión de $5,000 en infraestructura con escenarios, camerinos y baños funcion"
+    },
+    {
+      "i": 89,
+      "relevancia": "estrategica",
+      "motivo": "Beneficiarios cuantificados de obra realizada",
+      "texto": "Beneficiarios: más de 350 habitantes beneficiados directamente"
+    },
+    {
+      "i": 90,
+      "relevancia": "protocolaria",
+      "motivo": "Discurso sobre integración a planes, sin gestión concreta",
+      "texto": "Obra integrada en planes parciales del plan Bicentenario con visión hacia 50 año"
+    },
+    {
+      "i": 91,
+      "relevancia": "protocolaria",
+      "motivo": "Descripción de cancha sin acción gestión específica",
+      "texto": "La cancha está en un plan de desarrollo y sirve para los niños"
+    },
+    {
+      "i": 92,
+      "relevancia": "estrategica",
+      "motivo": "Parque recuperado con equipamiento instalado",
+      "texto": "Se recuperó el parque en la cabaña con cámaras e internet"
+    },
+    {
+      "i": 93,
+      "relevancia": "programatica",
+      "motivo": "Cursos vacacionales operando, programa recurrente",
+      "texto": "Se ofrecen cursos vacacionales con oportunidad de aprendizaje en artes y oficios"
+    },
+    {
+      "i": 94,
+      "relevancia": "estrategica",
+      "motivo": "Escenario multifuncional entregado, infraestructura realizad",
+      "texto": "Se entregó nuevo escenario multifuncional en la comuna Toalla Grande"
+    },
+    {
+      "i": 95,
+      "relevancia": "estrategica",
+      "motivo": "Inversión infraestructura ejecutada con componentes detallad",
+      "texto": "Inversión de $55,000 en infraestructura con escenarios, camerinos y baños funcio"
+    },
+    {
+      "i": 96,
+      "relevancia": "estrategica",
+      "motivo": "Obra realizada con magnitud cuantificable verificable",
+      "texto": "350 habitantes beneficiados directamente por la obra del escenario multifunciona"
+    },
+    {
+      "i": 97,
+      "relevancia": "protocolaria",
+      "motivo": "Declaración de visión y marco conceptual sin gestión",
+      "texto": "La obra forma parte del plan Bicentenario que proyecta Montecristi ordenado, dig"
+    }
+  ]
+}

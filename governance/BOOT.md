@@ -45,7 +45,7 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
 🔧 **SPRINT CANON · Backbone:** PDOT 25 metas · POA 257 proy $39.3M · Presup 135 part $45.98M · PAC $29.85M (98.6%).
 🔌 **MCD Planificación · 7 cables ✅ · impl. desacoplada de infra:** Excel·SERCOP·Relacional·Normativo·IA·Visual·Memoria.
 🧭 **ADR-031 RATIF:** cajón=MCD · GoldMaster=MCM · MCIP 5 motores · build vert.+horiz. **Stack-Descrip** Marco Fund.+3 niv (Index §1.A).
-🔑 **PCD**. **d01+d09✓·Aportes 49/47**. **Motor Narrativo** (`PCD-MN01`·v0.1 LOCKED·5 capas·8 reglas·§21 rector). **ConstVis v1.7** (v10·pipeline·sin auditoría). **STT Whisper✓**. **RDC25✓**(45/22/2/13). **DOM RDC 24+25✓**→código.
+🔑 **PCD**. **d01+d09✓·Aportes 49/47**. **Motor Narrativo** (`PCD-MN01`·§22 Relevancia Ontológica Capa0·§23 longitudinal). **ConstVis v1.7** (hallazgos·biografía dato). **RDC 24+25✓**→cajón `app/viz`→`m_rdc`→**deploy**.
 🔶 **CI:** BOOT ≤6KB.
 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 ratificado · detalle en el ADR)

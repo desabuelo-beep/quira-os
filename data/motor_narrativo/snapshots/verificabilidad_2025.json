@@ -1,0 +1,291 @@
+{
+  "dominio": "Verificabilidad Pública del Discurso",
+  "meta": {
+    "autoridad": "alcalde Jonathan Toro",
+    "cargo": "Alcalde",
+    "canton": "Montecristi",
+    "provincia": "Manabí",
+    "municipio": "001",
+    "año": "2025",
+    "evento": "Rendición de Cuentas",
+    "n_afirmaciones": 98
+  },
+  "resumen": {
+    "sustantivas": 55,
+    "proceso": 16,
+    "pct_independiente": 55,
+    "pct_sin_evidencia": 16,
+    "independiente": 30,
+    "institucional": 16,
+    "sin_evidencia_publica": 9
+  },
+  "embudo": {
+    "extraidas": 98,
+    "proceso": 16,
+    "con_gestion": 82,
+    "analizadas": 55,
+    "niveles": [
+      {
+        "clave": "estrategica",
+        "nivel": "A",
+        "label": "Estratégica",
+        "sub": "obra · sistema · inversión",
+        "n": 18,
+        "pct": 22,
+        "color": "#1E8E3E",
+        "analiza": true
+      },
+      {
+        "clave": "programatica",
+        "nivel": "B",
+        "label": "Programática",
+        "sub": "gestión · servicio recurrente",
+        "n": 28,
+        "pct": 34,
+        "color": "#1A73E8",
+        "analiza": true
+      },
+      {
+        "clave": "administrativa",
+        "nivel": "C",
+        "label": "Administrativa",
+        "sub": "acto de gestión menor",
+        "n": 9,
+        "pct": 11,
+        "color": "#6BA6C9",
+        "analiza": true
+      },
+      {
+        "clave": "prospectiva",
+        "nivel": "E",
+        "label": "Prospectiva",
+        "sub": "compromiso a futuro · seguimiento",
+        "n": 18,
+        "pct": 22,
+        "color": "#8B7BD8",
+        "analiza": false
+      },
+      {
+        "clave": "protocolaria",
+        "nivel": "D",
+        "label": "Protocolaria",
+        "sub": "sin contenido de gestión",
+        "n": 9,
+        "pct": 11,
+        "color": "#9AA0A6",
+        "analiza": false
+      }
+    ]
+  },
+  "espectro": [
+    {
+      "nivel": "independiente",
+      "label": "Prueba independiente",
+      "sub": "registro externo",
+      "n": 30,
+      "pct": 55,
+      "color": "#1E8E3E"
+    },
+    {
+      "nivel": "institucional",
+      "label": "Autocertificación",
+      "sub": "solo su informe",
+      "n": 16,
+      "pct": 29,
+      "color": "#1A73E8"
+    },
+    {
+      "nivel": "parcial",
+      "label": "Prueba parcial",
+      "sub": "ventana / cobertura",
+      "n": 0,
+      "pct": 0,
+      "color": "#F9AB00"
+    },
+    {
+      "nivel": "sin_evidencia_publica",
+      "label": "Sin respaldo público",
+      "sub": "no publicado",
+      "n": 9,
+      "pct": 16,
+      "color": "#9AA0A6"
+    },
+    {
+      "nivel": "contradiccion",
+      "label": "Prueba en contrario",
+      "sub": "",
+      "n": 0,
+      "pct": 0,
+      "color": "#D93025"
+    }
+  ],
+  "por_eje": {
+    "agua": {
+      "n": 8,
+      "independiente": 7
+    },
+    "institucional": {
+      "n": 19,
+      "independiente": 4
+    },
+    "salud": {
+      "n": 1,
+      "independiente": 1
+    },
+    "vías": {
+      "n": 6,
+      "independiente": 4
+    },
+    "otro": {
+      "n": 6,
+      "independiente": 4
+    },
+    "economía": {
+      "n": 3,
+      "independiente": 0
+    },
+    "ambiente": {
+      "n": 2,
+      "independiente": 1
+    },
+    "seguridad": {
+      "n": 6,
+      "independiente": 5
+    },
+    "cultura": {
+      "n": 4,
+      "independiente": 4
+    }
+  },
+  "expedientes": [
+    {
+      "id": "MN2025-005",
+      "estado": "Verificado",
+      "aseveracion": "Gestión de crédito de 28 millones de dólares para estructuración del sistema integral de Agua Potable en Monte Cristi",
+      "fuente": "POA (planificación)",
+      "resultado": "2024·Deuda de agua potable",
+      "nivel": "independiente",
+      "color": "#1E8E3E",
+      "vd": 89,
+      "badges": [
+        "Registro independiente",
+        "En planificación",
+        "Impacto cuantificado"
+      ],
+      "relevancia": "estrategica",
+      "eje": "agua",
+      "cadena": "poa"
+    },
+    {
+      "id": "MN2025-064",
+      "estado": "Verificado",
+      "aseveracion": "Recuperación del parque de las pampas con inversión de 84.7 mil dólares",
+      "fuente": "POA (planificación)",
+      "resultado": "2024·Construccción parque las Pampas",
+      "nivel": "independiente",
+      "color": "#1E8E3E",
+      "vd": 88,
+      "badges": [
+        "Registro independiente",
+        "En planificación",
+        "Impacto cuantificado"
+      ],
+      "relevancia": "estrategica",
+      "eje": "cultura",
+      "cadena": "poa"
+    },
+    {
+      "id": "MN2025-061",
+      "estado": "Declarado institucionalmente",
+      "aseveracion": "Obras viales grandes transcendentes como la tejedora IES, en conjunto con el gran provincial se invirtieron 165.000 dólares",
+      "fuente": "Informe CPCCS (propia entidad)",
+      "resultado": "Consta en su propio informe de rendición; sin registro externo que lo corrobore.",
+      "nivel": "institucional",
+      "color": "#1A73E8",
+      "vd": 58,
+      "badges": [
+        "Autocertificado",
+        "Solo en informe",
+        "Impacto cuantificado"
+      ],
+      "relevancia": "estrategica",
+      "eje": "vías",
+      "cadena": "informe"
+    },
+    {
+      "id": "MN2025-075",
+      "estado": "Sin evidencia pública",
+      "aseveracion": "Financiamiento internacional de 28 millones de dólares concretado por primera vez en historia de Monte Cristi, a través de CAF con garantía soberana del Estado ecuatoriano",
+      "fuente": "—",
+      "resultado": "No se localizó publicación en las fuentes oficiales consultadas.",
+      "nivel": "sin_evidencia_publica",
+      "color": "#9AA0A6",
+      "vd": 43,
+      "badges": [
+        "Sin respaldo público",
+        "Solo en el discurso",
+        "Impacto cuantificado"
+      ],
+      "relevancia": "estrategica",
+      "eje": "agua",
+      "cadena": "discurso"
+    }
+  ],
+  "marco_legal": {
+    "dominio_lead": [
+      "Constitución Art. 61",
+      "Constitución Art. 100",
+      "LOPC Art. 90",
+      "LOPC Art. 92",
+      "COOTAD Art. 60"
+    ],
+    "01_triangulacion": [
+      "Constitución Art. 95",
+      "Constitución Art. 208",
+      "LOCPCCS Art. 10"
+    ],
+    "02_suficiencia_probatoria": [
+      "LOPC Art. 91",
+      "LOPC Art. 92",
+      "LOTAIP"
+    ],
+    "03_fichas_contraste": [
+      "LOSNCP",
+      "COPLAFIP",
+      "LOTAIP"
+    ],
+    "04_analisis_sistemico": [
+      "Constitución Art. 204",
+      "LOCPCCS Art. 11",
+      "COOTAD Art. 266"
+    ]
+  },
+  "sintesis": {
+    "hallazgos": [
+      [
+        "independiente",
+        "55%",
+        "del discurso se sostiene en registros externos e independientes."
+      ],
+      [
+        "sin_evidencia_publica",
+        "16%",
+        "sin respaldo público verificable."
+      ],
+      [
+        "independiente",
+        "0",
+        "aseveraciones contradichas por la evidencia documental."
+      ]
+    ],
+    "fuentes": [
+      "Discurso RDC (audiovisual)",
+      "POA",
+      "Contratación (SERCOP)",
+      "Cédula presupuestaria",
+      "Literal D — patronato",
+      "Informe CPCCS",
+      "Transparencia (LOTAIP)"
+    ]
+  }
+}
