@@ -111,11 +111,11 @@ _DOMAINS_V2: list[dict[str, Any]] = [
     },
     {
         "id": "d09", "num": "09", "nombre": "Rendición de Cuentas",
-        "concepto": "La validación pública de la gestión: si la narrativa que el "
-                    "municipio declara coincide con la evidencia que el sistema observó.",
-        "estado": "VERIFICADO", "metric": "91%",
-        "gancho": "¿La narrativa pública coincide con la evidencia, o la rendición es solo autorreportada?",
-        "temp": "verde", "mod": "rdc",
+        "concepto": "El nivel de verificabilidad pública del discurso: qué parte de lo que la "
+                    "autoridad declara admite comprobación con registros oficiales independientes.",
+        "estado": "VERIFICABLE", "metric": "55%",
+        "gancho": "¿Qué parte del discurso se comprueba con registros independientes y qué queda sin respaldo público?",
+        "temp": "normal", "mod": "rdc",
     },
     {
         "id": "d10", "num": "10", "nombre": "Cobertura de Servicios e Infraestructura",
