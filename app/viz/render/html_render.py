@@ -358,14 +358,17 @@ def _implicaciones(snap: dict, serie: list) -> str:
     return f'<div class="qc-impl"><div class="qc-impl-t">Implicaciones</div><div class="qc-impl-b">{_esc(txt)}</div></div>'
 
 
-def _conclusion(snap: dict, m: dict) -> str:
+def _conclusion(snap: dict, m: dict, serie: list | None = None) -> str:
+    """Síntesis ejecutiva del DOMINIO (no de un año · Javo 2026-07-10): rotula el período completo."""
     sint = ""
     for nivel, val, txt in snap["sintesis"]["hallazgos"]:
         col = _COL.get(nivel, _COL["independiente"])
         sint += f'<div class="qc-sr"><b style="color:{col}">{_esc(val)}</b><span>{_esc(txt)}</span></div>'
     fuentes = " · ".join(_esc(f) for f in snap["sintesis"]["fuentes"])
-    return (f'<div class="qc-sint"><div class="qc-sint-lbl">Síntesis ejecutiva — Rendición de Cuentas · '
-            f'{_esc(m.get("canton"))} · ejercicio {_esc(m.get("año"))}</div><div class="qc-sint-b">{sint}'
+    años = [s["meta"]["año"] for s in serie if s] if serie else [m.get("año")]
+    periodo = f'{años[0]}–{años[-1]}' if len(años) > 1 else str(años[0])
+    return (f'<div class="qc-sint"><div class="qc-sint-lbl">Síntesis ejecutiva del dominio — Rendición de '
+            f'Cuentas · {_esc(m.get("canton"))} · período {_esc(periodo)}</div><div class="qc-sint-b">{sint}'
             f'<div class="qc-fuente">Fuentes: {fuentes}.</div></div></div>')
 
 
@@ -444,7 +447,7 @@ def cajon_dominio_rdc(serie: list, rdc_serie: list | None = None) -> str:
     nfin = f'0{off + len(serie)}'
     bloques.append(_seccion(nfin, 'La evaluación · comparación, patrones y prospectiva',
                             _evaluacion(serie, marco), _ley(marco, '04_analisis_sistemico')))
-    cuerpo = "".join(bloques) + _conclusion(ref, m)           # síntesis ejecutiva al cierre (fundamental · Javo)
+    cuerpo = "".join(bloques) + _conclusion(ref, m, serie)    # síntesis ejecutiva del DOMINIO al cierre (Javo)
     return f"""{_CSS}
 <section class="qc">
   <div class="qc-hd">
