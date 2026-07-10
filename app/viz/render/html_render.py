@@ -50,6 +50,11 @@ def _pct(part: int, whole: int) -> int:
     return round(100 * part / whole) if whole else 0
 
 
+def _seccion(n: str, titulo: str, cuerpo: str, ley: str = "", cls: str = "") -> str:
+    return (f'<div class="qc-sec {cls}"><div class="qc-h"><span class="qc-hn">{_esc(n)}</span>'
+            f'<span class="qc-ht">{_esc(titulo)}</span></div>{cuerpo}{ley}</div>')
+
+
 # ── HALLAZGOS · inferencias CALCULADAS del dato (paso 7 · produce conocimiento, no texto libre) ──
 _EJE_INFRA = {"agua", "vías", "vias", "ambiente"}                       # obra física
 _EJE_SOCIAL = {"salud", "cultura", "seguridad", "social", "educación", "educacion"}  # política pública
@@ -109,7 +114,7 @@ def _hallazgos_html(H: list) -> str:
 
 
 # ─────────────────────────── 01 · EL PROCEDIMIENTO ───────────────────────────
-def _embudo(emb: dict) -> str:
+def _embudo(emb: dict, breve: bool = False) -> str:
     niveles = emb.get("niveles", [])
     total = emb.get("con_gestion", 1) or 1
     seg = "".join(
@@ -120,11 +125,12 @@ def _embudo(emb: dict) -> str:
         grupo = ("analiza" if n["analiza"] else ("segui" if n.get("nivel") == "E" else "arch"))
         chips += (f'<div class="qc-fchip {grupo}"><span class="d" style="background:{n["color"]}"></span>'
                   f'<b>{n["n"]}</b> {_esc(n["label"])} <small>{_esc(n["sub"])}</small></div>')
+    intro = ('' if breve else
+             '<p class="qc-p">De todo lo dicho, QUIRA analiza solo lo que tiene <b>valor público verificable</b>: '
+             'no elimina nada, clasifica y explica por qué algo queda fuera (relevancia ontológica).</p>')
     return (
-        f'<p class="qc-p">Antes de verificar, QUIRA decide <b>qué afirmación merece análisis</b>. No toda '
-        f'frase de un discurso tiene valor público: se clasifican por su <b>relevancia ontológica</b> y solo '
-        f'las de gestión verificable entran. No se elimina nada —se explica por qué queda fuera—.</p>'
-        f'<div class="qc-embudo"><div class="qc-fhead"><span><b>{emb.get("extraidas",0)}</b> afirmaciones '
+        intro
+        + f'<div class="qc-embudo"><div class="qc-fhead"><span><b>{emb.get("extraidas",0)}</b> afirmaciones '
         f'extraídas</span><span class="ar">→</span><span><b>{emb.get("analizadas",0)}</b> con valor público '
         f'<b>entran al análisis</b></span></div>'
         f'<div class="qc-fbar">{seg}</div><div class="qc-fchips">{chips}</div>'
@@ -142,6 +148,43 @@ def _pipeline() -> str:
     return (f'<p class="qc-p" style="margin-top:18px">Cada afirmación admitida se somete a un <b>escrutinio de '
             f'trazabilidad</b> sobre los ecosistemas de información del Estado. Si el rastro se interrumpe, la '
             f'evidencia pública es nula:</p><div class="qc-pipe">{"".join(pasos)}</div>')
+
+
+# ── cadena FUSIONADA (Javo · 2026-07-10): pipeline + biografía en UNA cadena · concepto·sistema·pregunta ──
+_CAD = [
+    ("El discurso", "origen", "lo que afirma la autoridad", "src"),
+    ("Planificación", "POA", "¿consta la meta?", ""),
+    ("Contratación", "SERCOP", "¿se contrató?", ""),
+    ("Presupuesto", "cédula", "¿se ejecutó?", ""),
+    ("Integridad", "veredicto", "nivel de evidencia pública", "out"),
+]
+
+
+def _cadena() -> str:
+    nodos = []
+    for i, (n, sistema, q, cls) in enumerate(_CAD):
+        if i:
+            nodos.append('<div class="qc-conn"><div class="aw">→</div></div>')
+        nodos.append(f'<div class="qc-blk {cls}"><div class="bl">{_esc(n)}</div>'
+                     f'<div class="bsys">{_esc(sistema)}</div><div class="bq">{_esc(q)}</div></div>')
+    return f'<div class="qc-pipe">{"".join(nodos)}</div>'
+
+
+def _procedimiento(marco: dict) -> str:
+    """01 · La explicación COMPARTIDA del método (una vez, no por año). Fusiona la cadena de
+    trazabilidad y la biografía del dato en UNA sola (Javo · 2026-07-10). Prepara al lector."""
+    return (
+        '<p class="qc-p">La <b>rendición de cuentas</b> es el acto anual y obligatorio en que la autoridad informa '
+        'a la ciudadanía qué hizo con lo público. QUIRA toma cada <b>afirmación</b> de ese discurso y sigue su '
+        '<b>biografía documental</b> a través de los sistemas del Estado —planificación, contratación, '
+        'presupuesto— que históricamente operan en <b>silos</b>. Si el rastro se sostiene de extremo a extremo, '
+        'hay evidencia pública; si se interrumpe, la evidencia es nula. Nada se infiere: la ausencia de rastro es, '
+        'en sí misma, un resultado. El mismo método es <b>escalable a los 221 gobiernos locales</b>.</p>'
+        + _cadena()
+        + '<p class="qc-p" style="margin-top:13px">Cada afirmación termina con un <b>nivel de evidencia pública</b> '
+        '—no un juicio de verdad—: verificable con <b>registro independiente</b>, declarada solo en el <b>informe '
+        'propio</b>, o <b>sin respaldo público</b>. Eso es lo que se lee, año por año, a continuación.</p>'
+        + _ley(marco, '01_triangulacion') + _ley(marco, '02_suficiencia_probatoria', 'Suficiencia probatoria'))
 
 
 # ─────────────────────────── 02 · EL RESULTADO ───────────────────────────
@@ -163,9 +206,8 @@ def _resultado(snap: dict, m: dict) -> str:
                   f'<div class="qc-track"><div class="qc-bar" style="width:{max(e["pct"],1)}%;background:{e["color"]}"></div></div>'
                   f'<div class="qc-num"><b>{e["n"]}</b> · {e["pct"]}%</div></div>')
     return (
-        f'<p class="qc-p">Rendición del <b>{_esc(m.get("autoridad"))}</b> · <b>cantón {_esc(m.get("canton"))} '
-        f'({_esc(m.get("provincia"))})</b> · ejercicio <b>{_esc(m.get("año"))}</b>. Sobre las '
-        f'<b>{r.get("sustantivas",0)} afirmaciones con valor público</b>, contrastadas por toda la cadena:</p>'
+        f'<p class="qc-p">De las <b>{r.get("sustantivas",0)} afirmaciones con valor público</b> del ejercicio, '
+        f'contrastadas por toda la cadena documental:</p>'
         f'{hero}<div class="qc-esp-h">Desglose por nivel de evidencia</div>{filas}')
 
 
@@ -326,8 +368,72 @@ def _conclusion(snap: dict, m: dict) -> str:
 
 
 # ─────────────────────────── ensamblaje ───────────────────────────
+def _analisis_anio(snap: dict, n: int) -> str:
+    """Bloque de análisis de UN ejercicio (embudo + resultado + expedientes) — se repite por año.
+    Lo EXPLICATIVO no va aquí (está una sola vez en 01 El procedimiento · Javo 2026-07-10)."""
+    m = snap["meta"]
+    cuerpo = ('<div class="qc-subh">Qué entró al análisis</div>'
+              + _embudo(snap.get("embudo", {}), breve=True)
+              + '<div class="qc-subh">Qué pudo verificarse</div>' + _resultado(snap, m)
+              + '<div class="qc-subh">Los expedientes</div>' + _expedientes(snap))
+    return _seccion(f'0{n}', f'Ejercicio {m.get("año")} · {m.get("autoridad")}', cuerpo, cls="qc-anio")
+
+
+def _evaluacion(serie: list, marco: dict) -> str:
+    """La evaluación COMPARTIDA (una vez): evolución + perfil + hallazgos + prospectiva + implicaciones."""
+    fuentes = " · ".join(_esc(f) for f in serie[-1]["sintesis"]["fuentes"])
+    return (_evolucion(serie, marco)
+            + '<div class="qc-subh">Hallazgos del análisis</div>'
+            + '<p class="qc-p">Interpretación del dato —no una descripción—: el patrón que revela, y qué significa.</p>'
+            + _hallazgos_html(_hallazgos(serie[-1], serie))
+            + _implicaciones(serie[-1], serie)
+            + f'<div class="qc-fuente" style="margin-top:14px">Fuentes: {fuentes}.</div>')
+
+
+def cajon_dominio_rdc(serie: list) -> str:
+    """Cajón RDC del DOMINIO completo: explicación compartida (principio + procedimiento, UNA vez) +
+    análisis por año (2024, 2025 …) + evaluación comparativa (una vez). No duplica lo explicativo
+    (Javo · 2026-07-10). `serie` = snapshots ordenados ascendente por año."""
+    serie = [s for s in serie if s]
+    if not serie:
+        return ""
+    ref = serie[-1]
+    m, marco = ref["meta"], ref.get("marco_legal", {})
+    años = "".join(_analisis_anio(s, i + 2) for i, s in enumerate(serie))
+    nfin = f'0{len(serie) + 2}'
+    return f"""{_CSS}
+<section class="qc">
+  <div class="qc-hd">
+    <div class="qc-ey">QUIRA · Observatorio de Integridad Territorial · Municipio {_esc(m.get('municipio'))}</div>
+    <div class="qc-idea">{_esc(ref['dominio'])}</div>
+    <div class="qc-q">¿Qué parte del discurso de la autoridad admite verificación con fuentes públicas oficiales?</div>
+  </div>
+  <div class="qc-princ"><span class="t">Principio metodológico</span>
+    QUIRA <b>no certifica la veracidad</b> de lo que dice la autoridad: reconstruye la <b>trazabilidad biográfica
+    del dato público</b> —la historia documental de cada afirmación—. Cada logro declarado debe poder demostrarse a
+    lo largo de su <b>ciclo de vida documental</b>: planificación → contratación → ejecución. Lo que no deja rastro
+    público no se infiere: se registra como <b>ausencia de evidencia</b> —un resultado, nunca una acusación—.
+    {_ley(marco, 'dominio_lead', 'Fundamento del dominio (Rendición de Cuentas)')}
+  </div>
+  <div class="qc-body">
+    {_seccion('01', 'El procedimiento · cómo QUIRA lee una rendición', _procedimiento(marco))}
+    {años}
+    {_seccion(nfin, 'La evaluación · comparación, patrones y prospectiva', _evaluacion(serie, marco), _ley(marco, '04_analisis_sistemico'))}
+  </div>
+  <div class="qc-placa"><div class="qc-placa-q">QUIRA no certifica la verdad. Certifica el nivel de<br>verificabilidad pública de cada afirmación.</div>
+    <div class="qc-placa-s">La ausencia de evidencia es un resultado del análisis documental, nunca una acusación.</div>
+  </div>
+</section>"""
+
+
+def cajon_dominio_streamlit(serie: list) -> str:
+    """HTML del dominio RDC listo para st.markdown (sin sangría ni líneas en blanco)."""
+    h = cajon_dominio_rdc(serie)
+    return "\n".join(ln.lstrip() for ln in h.splitlines() if ln.strip())
+
+
 def cajon_verificabilidad(snap: dict, serie: list | None = None) -> str:
-    """Snapshot (+ serie opcional de años para lo longitudinal) → HTML del cajón."""
+    """(Legado · un año) Snapshot + serie opcional → HTML del cajón. Reemplazado por cajon_dominio_rdc."""
     m = snap["meta"]
     marco = snap.get("marco_legal", {})
 
@@ -373,7 +479,7 @@ def cajon_streamlit(snap: dict, serie: list | None = None) -> str:
 _CSS = """<style>
 .qc{--ind:#1E8E3E;--inst:#1A73E8;--parc:#F9AB00;--sin:#9AA0A6;--prosp:#8B7BD8;--law:#6BA6C9;
  --tx:#E7ECF3;--tx2:#97A3B8;--sf:rgba(255,255,255,.03);--bd:rgba(255,255,255,.14);
- font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--tx);max-width:920px;margin:0 auto;
+ font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--tx);max-width:1080px;margin:0 auto;
  font-size:14px;line-height:1.55;border:1px solid var(--bd);border-top:3px solid var(--ind);border-radius:5px;
  background:#0E1420;overflow:hidden}
 .qc *{box-sizing:border-box}
@@ -390,6 +496,9 @@ details.qc-law summary::-webkit-details-marker{display:none}
 details.qc-law[open] summary{margin-bottom:7px}
 .qc-lawc{display:inline-block;font-family:ui-monospace,monospace;font-size:10px;color:var(--tx2);border:1px solid var(--bd);border-radius:3px;padding:1px 6px;margin:3px 4px 0 0;white-space:nowrap}
 .qc-body{padding:8px 26px 22px}.qc-sec{margin-top:30px}
+.qc-subh{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--tx2);font-weight:700;margin:22px 0 11px}
+.qc-anio{border:1px solid var(--bd);border-radius:9px;padding:2px 18px 18px;margin-top:24px;background:rgba(255,255,255,.015)}
+.qc-anio>.qc-h{margin-top:16px}.qc-anio>.qc-h .qc-ht{font-size:17px;font-family:Georgia,serif}
 .qc-h{display:flex;align-items:baseline;gap:10px;margin:0 0 12px}
 .qc-hn{font-family:ui-monospace,monospace;font-size:12px;color:var(--ind);font-weight:700}
 .qc-ht{font-size:15px;font-weight:600}
@@ -415,6 +524,7 @@ details.qc-law[open] summary{margin-bottom:7px}
 .qc-conn{width:74px;display:flex;flex-direction:column;align-items:center;justify-content:center;flex:none}
 .qc-conn .vl{font-size:7.5px;color:var(--tx2);text-align:center;line-height:1.15;margin-bottom:3px;font-style:italic}
 .qc-conn .aw{color:var(--law);font-size:17px}
+.qc-blk .bsys{font-family:ui-monospace,monospace;font-size:8.5px;color:var(--law);margin-top:3px;letter-spacing:.02em}
 /* resultado — el ojo primero */
 .qc-hero{margin:4px 0 18px;display:flex;flex-direction:column;gap:11px}
 .qc-hbar{position:relative;height:38px;border-radius:5px;background:rgba(255,255,255,.04);display:flex;align-items:center}

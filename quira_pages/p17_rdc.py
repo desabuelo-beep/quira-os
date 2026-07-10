@@ -300,7 +300,7 @@ def _render_verificabilidad(show_tech: bool) -> None:
     import json
     from pathlib import Path
     try:
-        from app.viz.render.html_render import cajon_verificabilidad
+        from app.viz.render.html_render import cajon_dominio_rdc
     except Exception as exc:  # noqa: BLE001
         logger.warning(f"cajón de verificabilidad no disponible: {exc}")
         return
@@ -310,23 +310,15 @@ def _render_verificabilidad(show_tech: bool) -> None:
         p = base / f"verificabilidad_{a}.json"
         return json.loads(p.read_text(encoding="utf-8")) if p.exists() else None
 
-    s24, s25 = _load("2024"), _load("2025")
-    if not (s24 or s25):
+    serie = [s for s in (_load("2024"), _load("2025")) if s]
+    if not serie:
         return
     # re-reporta la altura del iframe al plegar/desplegar el marco legal (details no burbujea → capture)
     toggle_js = ("<script>document.addEventListener('toggle',function(){var h=Math.max("
                  "document.body.scrollHeight,document.documentElement.scrollHeight);"
                  "window.parent.postMessage({isStreamlitMessage:true,"
                  "type:'streamlit:setFrameHeight',height:h},'*');},true);</script>")
-    for año, snap, serie, h0 in (("2024", s24, [s24] if s24 else [], 2200),
-                                 ("2025", s25, [x for x in (s24, s25) if x], 2600)):
-        if not snap:
-            continue
-        st.markdown(
-            f'<div style="font-family:monospace;font-size:11px;letter-spacing:.16em;'
-            f'text-transform:uppercase;color:#7E8BA3;margin:16px 0 4px;text-align:center">'
-            f'Rendición de Cuentas · Ejercicio {año}</div>', unsafe_allow_html=True)
-        render_page(cajon_verificabilidad(snap, serie) + toggle_js, show_tech=show_tech, height=h0)
+    render_page(cajon_dominio_rdc(serie) + toggle_js, show_tech=show_tech, height=4600)
 
 
 def render() -> None:

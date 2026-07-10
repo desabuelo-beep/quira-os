@@ -361,54 +361,24 @@ def _sec_verificabilidad() -> None:
         p = base / f"verificabilidad_{a}.json"
         return json.loads(p.read_text(encoding="utf-8")) if p.exists() else None
 
-    s24, s25 = _load("2024"), _load("2025")
-    if not (s24 or s25):
+    serie = [s for s in (_load("2024"), _load("2025")) if s]
+    if not serie:
         return
     try:
-        from app.viz.render.html_render import cajon_streamlit
+        from app.viz.render.html_render import cajon_dominio_streamlit
     except Exception:
         return
-    for año, snap, serie in (("2024", s24, [s24] if s24 else []),
-                             ("2025", s25, [x for x in (s24, s25) if x])):
-        if not snap:
-            continue
-        st.markdown(
-            f'<div style="font-family:ui-monospace,monospace;font-size:11.5px;letter-spacing:.16em;'
-            f'text-transform:uppercase;color:#7E8BA3;margin:10px 0 12px;text-align:center">'
-            f'Rendición de Cuentas · Ejercicio {año}</div>', unsafe_allow_html=True)
-        st.markdown(cajon_streamlit(snap, serie), unsafe_allow_html=True)
-        st.markdown('<div style="height:30px"></div>', unsafe_allow_html=True)
+    st.markdown(cajon_dominio_streamlit(serie), unsafe_allow_html=True)
 
 
 def render() -> None:
     """QINV-009 · Rendición de Cuentas — lectura documental continua (réplica del molde)."""
     r = _cargar()
     st.markdown(_css(), unsafe_allow_html=True)
-    st.markdown('<div class="pl-wrap">', unsafe_allow_html=True)
-    _sec_verificabilidad()   # Motor Narrativo — cajones 2024 + 2025 (siempre; snapshot propio)
-    if not r or not r.get("fidelidad"):
-        st.markdown('</div>', unsafe_allow_html=True)
+    _sec_verificabilidad()   # cajón del DOMINIO (2024 + 2025 · sin duplicar lo explicativo) — ancho completo
+    # "LA RENDICIÓN EN EL TIEMPO" complementa el cajón (Javo · 2026-07-10); el resto del molde anterior se retira.
+    if not r or not r.get("serie"):
         return
-    st.markdown(_div(), unsafe_allow_html=True)
-
-    st.markdown(
-        '<div class="pl-title-band"><div class="pl-title">Rendición de Cuentas</div>'
-        '<div class="pl-sub"><b>La palabra pública, contrastada con la evidencia.</b> Triangula lo que la '
-        'autoridad afirma en su rendición con la prueba física y financiera verificable, y con el circuito formal '
-        'de control social. Donde el discurso y el hecho coinciden, hay integridad; donde difieren, la brecha '
-        'queda a la vista. <b>Serie 2023-2025 · fidelidad 2024 · trazabilidad del aporte ciudadano.</b></div></div>',
-        unsafe_allow_html=True)
-
+    st.markdown('<div class="pl-wrap" style="margin-top:8px">', unsafe_allow_html=True)
     _sec_serie(r.get("serie", []))
-    st.markdown(_div(), unsafe_allow_html=True)
-    _sec_cumplimiento(r.get("cumplimiento_actual", {}))
-    st.markdown(_div(), unsafe_allow_html=True)
-    _sec_fidelidad(r.get("fidelidad", {}))
-    st.markdown(_div(), unsafe_allow_html=True)
-    _sec_cpccs(r.get("cpccs", {}))
-    _ap = r.get("aportes", {})
-    if _ap.get("detalle"):
-        st.markdown(_div(), unsafe_allow_html=True)
-        _sec_aportes(_ap)
-    _cierre_rdc(r)
     st.markdown('</div>', unsafe_allow_html=True)
