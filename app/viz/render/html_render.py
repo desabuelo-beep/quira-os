@@ -13,6 +13,11 @@ from __future__ import annotations
 
 import html as _h
 
+try:  # sintetizador de hallazgos COMPARTIDO (un solo idioma para todos los DOM · asesor 2026-07-11)
+    from hallazgos import render_hallazgos as _hallazgos_html  # noqa: F401
+except ImportError:  # dentro del paquete app (Streamlit)
+    from app.viz.render.hallazgos import render_hallazgos as _hallazgos_html  # noqa: F401
+
 _COL = {"independiente": "#1E8E3E", "institucional": "#1A73E8", "parcial": "#F9AB00",
         "sin_evidencia_publica": "#9AA0A6", "contradiccion": "#D93025"}  # gramática canónica
 
@@ -58,9 +63,6 @@ def _seccion(n: str, titulo: str, cuerpo: str, ley: str = "", cls: str = "") -> 
 # ── HALLAZGOS · inferencias CALCULADAS del dato (paso 7 · produce conocimiento, no texto libre) ──
 _EJE_INFRA = {"agua", "vías", "vias", "ambiente"}                       # obra física
 _EJE_SOCIAL = {"salud", "cultura", "seguridad", "social", "educación", "educacion"}  # política pública
-_HTAG = {"up": "#1E8E3E", "warn": "#F9AB00", "info": "#1A73E8", "prosp": "#8B7BD8"}
-
-
 def _hallazgos(snap: dict, serie: list) -> list:
     """Inferencias sobre el dato del snapshot (y la serie): patrones, no descripción."""
     pe = snap.get("por_eje", {})
@@ -102,15 +104,7 @@ def _hallazgos(snap: dict, serie: list) -> list:
     return H[:4]
 
 
-def _hallazgos_html(H: list) -> str:
-    if not H:
-        return ""
-    rows = ""
-    for i, (tag, tit, det) in enumerate(H, 1):
-        c = _HTAG.get(tag, "#1A73E8")
-        rows += (f'<div class="qc-hz" style="border-left-color:{c}"><div class="hz-n" style="color:{c};border-color:{c}">{i:02d}</div>'
-                 f'<div class="hz-b"><div class="hz-t">{_esc(tit)}</div><div class="hz-d">{_esc(det)}</div></div></div>')
-    return f'<div class="qc-hzs">{rows}</div>'
+# _hallazgos_html: importado del sintetizador compartido hallazgos.render_hallazgos (ver top del módulo)
 
 
 # ─────────────────────────── 01 · EL PROCEDIMIENTO ───────────────────────────

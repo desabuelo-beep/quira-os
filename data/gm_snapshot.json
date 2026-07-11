@@ -437,6 +437,36 @@
   "planificacion": {
     "_fuente": "PDOT (planificación) · POA (operación) · PAC (contratación) · coherencia · corte Q1-2026",
     "metas_total": 25,
+    "serie_multianio": {
+      "metrica": "ejecución de la inversión planificada",
+      "ejecucion": [
+        {
+          "anio": 2023,
+          "pct": 68.0,
+          "cerrado": true
+        },
+        {
+          "anio": 2024,
+          "pct": 79.6,
+          "cerrado": true
+        },
+        {
+          "anio": 2025,
+          "pct": 59.9,
+          "cerrado": true
+        },
+        {
+          "anio": 2026,
+          "pct": 6.4,
+          "cerrado": false
+        }
+      ],
+      "proyeccion": {
+        "proyeccion": 70.9,
+        "promedio": 72.5
+      },
+      "fuente": "Cédulas presupuestarias eSIGEF 2023-2025 (dato real) · proyección del canon"
+    },
     "cobertura_metas_poa": 96.0,
     "ipe_ejecutado": {
       "pct": 95.6,

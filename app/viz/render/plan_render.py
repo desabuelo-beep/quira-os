@@ -15,8 +15,10 @@ import re
 # reutiliza la gramática visual + helpers del cajón RDC (una sola canon · no se duplica)
 try:
     from html_render import _CSS as _RDC_CSS, _esc, _corta, _ley, _seccion, _pct  # noqa: F401
+    from hallazgos import render_hallazgos as _hallazgos_html, h_serie, h_proyeccion  # sintetizador compartido  # noqa: F401
 except ImportError:  # dentro del paquete app (Streamlit)
     from app.viz.render.html_render import _CSS as _RDC_CSS, _esc, _corta, _ley, _seccion, _pct  # noqa: F401
+    from app.viz.render.hallazgos import render_hallazgos as _hallazgos_html, h_serie, h_proyeccion  # noqa: F401
 
 # CSS: la gramática RDC + lo específico del plan (strip de datos del backbone, cards SAT)
 _PLAN_EXTRA = """
@@ -274,18 +276,7 @@ def _hallazgos_plan(plan: dict) -> list:
     return H[:4]
 
 
-_HTAG = {"up": "#1E8E3E", "warn": "#F9AB00", "info": "#1A73E8"}
-
-
-def _hallazgos_html(H: list) -> str:
-    if not H:
-        return ""
-    rows = ""
-    for i, (tag, tit, det) in enumerate(H, 1):
-        c = _HTAG.get(tag, "#1A73E8")
-        rows += (f'<div class="qc-hz" style="border-left-color:{c}"><div class="hz-n" style="color:{c};border-color:{c}">{i:02d}</div>'
-                 f'<div class="hz-b"><div class="hz-t">{_esc(tit)}</div><div class="hz-d">{_esc(det)}</div></div></div>')
-    return f'<div class="qc-hzs">{rows}</div>'
+# _hallazgos_html: importado del sintetizador compartido hallazgos.render_hallazgos (ver top del módulo)
 
 
 def _implicaciones_plan(plan: dict) -> str:
@@ -343,6 +334,50 @@ def _ley_esl(plan: dict, esl: str, titulo: str) -> str:
     return f'<details class="qc-law"><summary>📖 {_esc(titulo)}</summary>{chips}</details>'
 
 
+def _longitudinal_plan(plan: dict) -> str:
+    """05 · La trayectoria en el tiempo + proyección (motor temporal → 5º motor Prospectivo).
+    Lee la serie del canon (H07b ejecución REAL 2023-2025 + H12c proyección); QUIRA la narra,
+    no la recalcula. Los ejercicios CRUZADOS en el cajón, como pidió la dirección."""
+    sm = plan.get("serie_multianio") or {}
+    ej = sm.get("ejecucion") or []
+    cerr = [e for e in ej if e.get("cerrado")]
+    if len(cerr) < 2:
+        return ""
+    curso = next((e for e in ej if not e.get("cerrado")), None)
+
+    def _col(p):
+        return "#22D3EE" if p >= 70 else ("#F9AB00" if p >= 55 else "#D93025")
+
+    cards = ""
+    for i, e in enumerate(cerr):
+        p = e["pct"]
+        delta = ""
+        if i > 0:
+            d = round(p - cerr[i - 1]["pct"], 1)
+            dc = "#1E8E3E" if d >= 0 else "#D93025"
+            delta = (f'<span style="font-family:ui-monospace,monospace;font-size:9px;color:{dc};'
+                     f'margin-left:5px">{"▲" if d >= 0 else "▼"}{abs(d)}pp</span>')
+        cards += (f'<div class="pl-si"><div class="k">Ejercicio {e["anio"]}</div>'
+                  f'<div class="v" style="color:{_col(p)}">{p:.0f}%</div>'
+                  f'<div class="s">ejecución de la inversión{delta}</div></div>')
+    if curso:
+        cards += (f'<div class="pl-si" style="border-style:dashed;opacity:.7"><div class="k">Ejercicio {curso["anio"]}</div>'
+                  f'<div class="v" style="color:var(--tx2)">{curso["pct"]:.0f}%</div>'
+                  f'<div class="s">en curso · parcial (no comparable)</div></div>')
+
+    H = [h_serie("Trayectoria de la ejecución", [(e["anio"], e["pct"]) for e in cerr])]
+    proy = sm.get("proyeccion") or {}
+    if proy.get("proyeccion"):
+        med = proy.get("promedio")
+        ancla = f"tendencia del período · media {med:.0f}%" if med else "tendencia del período"
+        H.append(h_proyeccion("Proyección del próximo ejercicio completo", proy["proyeccion"], ancla))
+
+    intro = ('<p class="qc-p">Los ejercicios <b>cruzados en el tiempo</b>: cómo la planificación se convirtió en '
+             'ejecución, año a año. El dato es real —cédulas presupuestarias eSIGEF—; la lectura, del observatorio. '
+             'El ejercicio en curso se muestra aparte porque es parcial y no admite comparación.</p>')
+    return intro + f'<div class="pl-strip">{cards}</div>' + _hallazgos_html(H)
+
+
 # ── ensamblaje ──
 def cajon_dominio_plan(plan: dict) -> str:
     if not plan:
@@ -365,7 +400,8 @@ def cajon_dominio_plan(plan: dict) -> str:
     {_seccion('02', 'El plan y su cobertura', _cobertura(plan), _ley_esl(plan, 'presupuesto', 'Fundamento jurídico aplicable'))}
     {_seccion('03', 'La trazabilidad · metas del plan', '<p class="qc-p">Cada expediente es la <b>biografía de una meta</b>: su recorrido desde el plan hasta el gasto, y hasta dónde llega la cadena documental.</p><p class="qc-cap">No se eligen al azar: se muestran las metas de mayor <b>Valor Demostrativo</b> —el puntaje (0-100) que resume cuánto demuestra el método cada expediente: profundidad de la cadena documental, peso presupuestario y tipo de competencia. A mayor puntaje, más completa y probatoria es la trazabilidad.</p>' + _expedientes_metas(plan), _ley_esl(plan, 'pac', 'Fundamento jurídico aplicable'))}
     {_seccion('04', 'La coherencia · análisis preventivo', _coherencia(plan), _ley_esl(plan, 'gasto', 'Fundamento jurídico aplicable'))}
-    {_seccion('05', 'La evaluación · hallazgos e implicaciones', '<p class="qc-p">Interpretación del dato —no una descripción—: el patrón que revela el análisis, y qué significa.</p>' + _hallazgos_html(_hallazgos_plan(plan)) + _implicaciones_plan(plan))}
+    {_seccion('05', 'La trayectoria en el tiempo · proyección', _longitudinal_plan(plan))}
+    {_seccion('06', 'La evaluación · hallazgos e implicaciones', '<p class="qc-p">Interpretación del dato —no una descripción—: el patrón que revela el análisis, y qué significa.</p>' + _hallazgos_html(_hallazgos_plan(plan)) + _implicaciones_plan(plan))}
     {_sintesis_plan(plan)}
   </div>
   <div class="qc-placa"><div class="qc-placa-q">QUIRA no certifica la verdad. Certifica la consistencia<br>documental de la cadena del plan al gasto.</div>

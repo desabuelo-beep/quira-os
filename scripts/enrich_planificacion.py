@@ -311,9 +311,41 @@ def build_block() -> dict:
     except Exception:
         pass
 
+    # ── SERIE MULTI-AÑO — trayectoria de ejecución + proyección (5º motor · H07b/H12c) ──
+    # Regla 1/4: se LEE la serie que el Gold Master ya calculó (histórico REAL + proyección
+    # del motor); QUIRA no recalcula, solo la narra. Firewall: etiqueta pública, sin códigos.
+    # Métrica = ejecución de la inversión (nativa del cajón · misma fuente eSIGEF, consistente).
+    serie_multianio = None
+    try:
+        _w7 = sh("H07b_Ti")
+        _ejec = []
+        for r in range(7, 11):                         # filas 2023..2026
+            _anio = _w7.cell(r, 1).value
+            _ti = _w7.cell(r, 4).value                 # Ti_Inversión (fracción 0-1)
+            _tipo = str(_w7.cell(r, 5).value or "").upper()
+            if isinstance(_anio, (int, float)) and isinstance(_ti, (int, float)):
+                _ejec.append({
+                    "anio": int(_anio),
+                    "pct": round(_ti * 100, 1),
+                    "cerrado": "VIVO" not in _tipo,     # 2026 = en curso (parcial, fuera de comparación)
+                })
+        _w12 = sh("H12c")
+        def _n12(addr):
+            v = _w12[addr].value
+            return round(v, 1) if isinstance(v, (int, float)) else None
+        serie_multianio = {
+            "metrica": "ejecución de la inversión planificada",
+            "ejecucion": _ejec,
+            "proyeccion": {"proyeccion": _n12("B17"), "promedio": _n12("B13")},
+            "fuente": "Cédulas presupuestarias eSIGEF 2023-2025 (dato real) · proyección del canon",
+        }
+    except Exception:
+        pass
+
     return {
         "_fuente": "PDOT (planificación) · POA (operación) · PAC (contratación) · coherencia · corte Q1-2026",
         "metas_total": metas_total,
+        "serie_multianio": serie_multianio,
         "cobertura_metas_poa": cobertura_metas_poa,
         "ipe_ejecutado": ipe_ejecutado,
         "ipe_por_objetivo": ipe_por_objetivo,
