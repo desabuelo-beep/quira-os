@@ -358,6 +358,87 @@ def _implicaciones(snap: dict, serie: list) -> str:
     return f'<div class="qc-impl"><div class="qc-impl-t">Implicaciones</div><div class="qc-impl-b">{_esc(txt)}</div></div>'
 
 
+# ── LOS APORTES CIUDADANOS — 3ª dimensión del RDC: el documento CPCCS (Javo · 2026-07-10) ──
+_CAD_AP = ["Demanda ciudadana", "Obra o servicio", "Ejecutado"]
+_AP_EST = {"atendido": ("Atendido", "#1E8E3E"), "por_validar": ("En seguimiento", "#F9AB00"),
+           "sin_correlato": ("Sin correlato", "#9AA0A6")}
+
+
+def _minichain_aporte(estado: str) -> str:
+    upto = {"atendido": 2, "por_validar": 1, "sin_correlato": 0}.get(estado, 0)
+    nodos = []
+    for j, s in enumerate(_CAD_AP):
+        if j:
+            nodos.append(f'<span class="mc-a {"on" if j <= upto else ""}">→</span>')
+        nodos.append(f'<span class="mc-n {"on" if j <= upto else "off"}">{_esc(s)}</span>')
+    return f'<div class="qc-mc"><span class="mc-t">Trazabilidad del aporte</span><div class="mc-row">{"".join(nodos)}</div></div>'
+
+
+def _aporte_vd(d: dict) -> tuple:
+    vd = {"atendido": 86, "por_validar": 56, "sin_correlato": 30}.get(d.get("estado"), 30)
+    if d.get("estado") == "atendido" and d.get("tiempo") == "a_tiempo":
+        vd += 10
+    badges = [_AP_EST.get(d.get("estado"), ("—", ""))[0]]
+    t = {"a_tiempo": "A tiempo", "tarde": "Con demora"}.get(d.get("tiempo"))
+    if t and d.get("estado") != "sin_correlato":
+        badges.append(t)
+    try:
+        mo = float(d.get("monto", 0) or 0)
+        if mo > 0:
+            badges.append(f"${mo:,.0f}")
+    except (TypeError, ValueError):
+        pass
+    return min(vd, 100), badges[:3]
+
+
+def _aportes(ap: dict) -> str:
+    det = (ap or {}).get("detalle") or []
+    if not det:
+        return ""
+    total = ap.get("total", len(det)) or 1
+    est = ap.get("por_estado", {}) or {}
+    pat, psin = _pct(est.get("atendido", 0), total), _pct(est.get("sin_correlato", 0), total)
+    hero = (f'<div class="qc-hero"><div class="qc-hbar"><div class="qc-hfill g" style="width:{max(pat,10)}%">'
+            f'<span class="qc-hnum">{pat}%</span></div><div class="qc-hlbl">de los aportes tienen '
+            f'<b>correspondencia verificada</b> con una obra o servicio</div></div>'
+            f'<div class="qc-hbar"><div class="qc-hfill s" style="width:{max(psin,10)}%">'
+            f'<span class="qc-hnum d">{psin}%</span></div><div class="qc-hlbl"><b>sin correlato</b> en la ejecución</div></div></div>')
+    ti = ap.get("por_tiempo", {}) or {}
+    filas_t = [("A tiempo", ti.get("a_tiempo", 0), "#1E8E3E"), ("Con demora", ti.get("tarde", 0), "#F9AB00"),
+               ("Sin respuesta", ti.get("olvidado", 0), "#9AA0A6")]
+    filas = "".join(f'<div class="qc-row"><div class="qc-lbl">{_esc(lbl)}</div>'
+                    f'<div class="qc-track"><div class="qc-bar" style="width:{max(_pct(nn,total),1)}%;background:{cc}"></div></div>'
+                    f'<div class="qc-num"><b>{nn}</b> · {_pct(nn,total)}%</div></div>' for lbl, nn, cc in filas_t)
+
+    def _by(e):
+        return sorted([d for d in det if d.get("estado") == e], key=lambda d: -_aporte_vd(d)[0])
+    sel = (_by("atendido")[:2] + _by("por_validar")[:1] + _by("sin_correlato")[:2])[:4]
+    exps = ""
+    for d in sel:
+        vd, badges = _aporte_vd(d)
+        lbl, col = _AP_EST.get(d.get("estado"), ("—", "#9AA0A6"))
+        bch = "".join(f'<span class="qc-bdg">{_esc(b)}</span>' for b in badges)
+        res = (f'{_corta(d.get("evidencia",""), 110)} ({d.get("anio_ejecucion","")})'
+               if d.get("estado") != "sin_correlato" and d.get("evidencia")
+               else "No se localizó obra o servicio correlativo en la ejecución del período.")
+        exps += (f'<div class="qc-exp"><div class="qc-exp-top">'
+                 f'<span class="qc-exp-id">APORTE CIUDADANO · {_esc(d.get("eje",""))} · pedido {_esc(d.get("anio_aporte",""))}</span>'
+                 f'<span class="qc-stamp" style="color:{col};border-color:{col}">{_esc(lbl)}</span></div>'
+                 f'<div class="qc-vd"><span class="qc-vd-s">Valor demostrativo <b>{vd}</b></span>{bch}</div>'
+                 f'<div class="qc-exp-b">'
+                 f'<div class="qc-kv"><span class="k">Demanda</span><span class="v">"{_esc(_corta(d.get("demanda",""),104))}"</span></div>'
+                 f'<div class="qc-kv"><span class="k">Sector</span><span class="v">{_esc(d.get("sector","—"))}</span></div>'
+                 f'<div class="qc-kv"><span class="k">Resultado</span><span class="v"><b>{_esc(res)}</b></span></div>'
+                 f'{_minichain_aporte(d.get("estado"))}</div></div>')
+    return (
+        '<p class="qc-p">El informe de rendición registra los <b>aportes ciudadanos</b> recibidos en el proceso. '
+        'No son vinculantes —orientan la gestión—, pero QUIRA rastrea cada <b>demanda</b> hasta la <b>obra o '
+        'servicio</b> que la atiende, a lo largo de todo el período de gobierno (no solo el año siguiente):</p>'
+        f'{hero}<div class="qc-esp-h">Tiempo de respuesta del gobierno</div>{filas}'
+        '<div class="qc-subh">Los aportes, rastreados</div>'
+        f'<div class="qc-exps">{exps}</div>')
+
+
 def _conclusion(snap: dict, m: dict, serie: list | None = None) -> str:
     """Síntesis ejecutiva del DOMINIO (no de un año · Javo 2026-07-10): rotula el período completo."""
     sint = ""
@@ -426,26 +507,28 @@ def _rendicion_en_tiempo(serie: list) -> str:
         f'del cantón —un margen de ampliación, no una falla del proceso—.</p>')
 
 
-def cajon_dominio_rdc(serie: list, rdc_serie: list | None = None) -> str:
-    """Cajón RDC del DOMINIO completo: explicación compartida (principio + procedimiento, UNA vez) +
-    LA RENDICIÓN EN EL TIEMPO (intro) + análisis por año (2024, 2025 …) + evaluación comparativa +
-    síntesis ejecutiva. No duplica lo explicativo (Javo · 2026-07-10). `serie` = snapshots del motor
-    (ascendente por año); `rdc_serie` = ejercicios de rendición (informe, fecha, asistencia)."""
+def cajon_dominio_rdc(serie: list, rdc_serie: list | None = None, aportes: dict | None = None) -> str:
+    """Cajón RDC del DOMINIO completo (3 dimensiones · Javo 2026-07-10): el DISCURSO (procedimiento +
+    análisis por año + evaluación), los EJERCICIOS en el tiempo (serie), y el DOCUMENTO CPCCS (aportes
+    ciudadanos). Explicación compartida una sola vez + síntesis ejecutiva. `serie` = snapshots del motor
+    (ascendente); `rdc_serie` = ejercicios de rendición; `aportes` = aportes ciudadanos (documento CPCCS)."""
     serie = [s for s in serie if s]
     if not serie:
         return ""
     ref = serie[-1]
     m, marco = ref["meta"], ref.get("marco_legal", {})
-    bloques = [_seccion('01', 'El procedimiento · cómo QUIRA lee una rendición', _procedimiento(marco))]
-    off = 2
+    bloques, n = [], 1
+    bloques.append(_seccion(f'0{n}', 'El procedimiento · cómo QUIRA lee una rendición', _procedimiento(marco))); n += 1
     serie_html = _rendicion_en_tiempo(rdc_serie or [])
     if serie_html:                                            # LA RENDICIÓN EN EL TIEMPO como introducción (Javo)
-        bloques.append(_seccion('02', 'La rendición en el tiempo · los ejercicios del período', serie_html))
-        off = 3
-    for i, s in enumerate(serie):
-        bloques.append(_analisis_anio(s, off + i))            # 0X · Ejercicio 20XX (por año)
-    nfin = f'0{off + len(serie)}'
-    bloques.append(_seccion(nfin, 'La evaluación · comparación, patrones y prospectiva',
+        bloques.append(_seccion(f'0{n}', 'La rendición en el tiempo · los ejercicios del período', serie_html)); n += 1
+    for s in serie:
+        bloques.append(_analisis_anio(s, n)); n += 1          # 0X · Ejercicio 20XX (por año · el discurso)
+    ap_html = _aportes(aportes or {})
+    if ap_html:                                               # 3ª dimensión · el documento CPCCS (Javo)
+        bloques.append(_seccion(f'0{n}', 'Los aportes ciudadanos · la voz que se rastrea', ap_html,
+                                _ley(marco, 'dominio_lead', 'Fundamento (aportes ciudadanos · LOPC)'))); n += 1
+    bloques.append(_seccion(f'0{n}', 'La evaluación · comparación, patrones y prospectiva',
                             _evaluacion(serie, marco), _ley(marco, '04_analisis_sistemico')))
     cuerpo = "".join(bloques) + _conclusion(ref, m, serie)    # síntesis ejecutiva del DOMINIO al cierre (Javo)
     return f"""{_CSS}
@@ -469,9 +552,9 @@ def cajon_dominio_rdc(serie: list, rdc_serie: list | None = None) -> str:
 </section>"""
 
 
-def cajon_dominio_streamlit(serie: list, rdc_serie: list | None = None) -> str:
+def cajon_dominio_streamlit(serie: list, rdc_serie: list | None = None, aportes: dict | None = None) -> str:
     """HTML del dominio RDC listo para st.markdown (sin sangría ni líneas en blanco)."""
-    h = cajon_dominio_rdc(serie, rdc_serie)
+    h = cajon_dominio_rdc(serie, rdc_serie, aportes)
     return "\n".join(ln.lstrip() for ln in h.splitlines() if ln.strip())
 
 
