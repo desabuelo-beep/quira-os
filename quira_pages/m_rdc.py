@@ -349,7 +349,7 @@ def _cierre_rdc(r: dict) -> None:
         f'</div>', unsafe_allow_html=True)
 
 
-def _sec_verificabilidad(rdc_serie=None, aportes=None) -> None:
+def _sec_verificabilidad(rdc_serie=None, doc=None) -> None:
     """Cajón de VERIFICABILIDAD PÚBLICA DEL DISCURSO del DOMINIO (Motor Narrativo): explicación
     compartida + LA RENDICIÓN EN EL TIEMPO (intro) + análisis por año + evaluación + síntesis, SIN
     duplicar lo explicativo (Javo · 2026-07-10). Snapshot → HTML (Regla 1: la app NO corre el motor)."""
@@ -368,7 +368,7 @@ def _sec_verificabilidad(rdc_serie=None, aportes=None) -> None:
         from app.viz.render.html_render import cajon_dominio_streamlit
     except Exception:
         return
-    st.markdown(cajon_dominio_streamlit(serie, rdc_serie, aportes), unsafe_allow_html=True)
+    st.markdown(cajon_dominio_streamlit(serie, rdc_serie, doc), unsafe_allow_html=True)
 
 
 def render() -> None:
@@ -376,5 +376,5 @@ def render() -> None:
     análisis por año + evaluación + síntesis, en una sola pieza (Javo · 2026-07-10)."""
     r = _cargar()
     st.markdown(_css(), unsafe_allow_html=True)
-    _sec_verificabilidad(r.get("serie") if r else None,   # cajón del DOMINIO — serie + aportes integrados
-                         r.get("aportes") if r else None)
+    _sec_verificabilidad(r.get("serie") if r else None,   # cajón del DOMINIO — serie + documento CPCCS
+                         r if r else None)

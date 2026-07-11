@@ -214,10 +214,12 @@ def _resultado(snap: dict, m: dict) -> str:
 
 # ─────────────────────────── 03 · EXPEDIENTES ───────────────────────────
 def _minichain(cadena: str) -> str:
-    if cadena in ("registro", "informe"):
-        pares = [("Discurso", True),
-                 ("Registro patronato" if cadena == "registro" else "Informe CPCCS", True)]
-    else:
+    # cada tipo de evidencia tiene su propia biografía documental (Javo · 2026-07-10)
+    if cadena == "registro":        # cobertura del patronato vía transparencia (LOTAIP)
+        pares = [("Discurso", True), ("Patronato", True), ("Transparencia Activa", True), ("Literal D", True)]
+    elif cadena == "informe":       # autocertificación (informe anual al CPCCS)
+        pares = [("Discurso", True), ("Informe Anual", True), ("CPCCS", True)]
+    else:                           # cadena de silos del Estado: POA → SERCOP → Presupuesto
         upto = _UPTO.get(cadena, 0)
         pares = [(s, i <= upto) for i, s in enumerate(_CANON)]
     nodos = []
@@ -293,12 +295,17 @@ def _evolucion(serie: list, marco: dict) -> str:
         perfil += (f'<div class="qc-pf"><div class="pf-l">{_esc(ej.capitalize())}</div>'
                    f'<div class="pf-track"><div class="pf-bar" style="width:{max(p1,2)}%"></div></div>'
                    f'<div class="pf-v">{p1}%</div><div class="pf-d" style="color:{dc}">{ar} {abs(d)}</div></div>')
-    perfil_html = (f'<div class="qc-ev-h">Perfil por eje temático · {y1} <small>(barra = % con prueba '
-                   f'independiente · ▲▼ vs {y0})</small></div><div class="qc-pfs">{perfil}</div>') if perfil else ""
+    perfil_html = (f'<div class="qc-ev-h">Perfil por eje temático · {y1}</div>'
+                   f'<p class="qc-cap">Cada barra es un <b>tema del cantón</b> (agua, salud, vías…): su largo es el '
+                   f'<b>porcentaje del discurso de ese tema que tiene prueba independiente</b> en {y1}; a la derecha, '
+                   f'cuánto cambió frente a {y0} (▲ mejoró · ▼ retrocedió · en puntos porcentuales).</p>'
+                   f'<div class="qc-pfs">{perfil}</div>') if perfil else ""
     return (
         f'<p class="qc-p">La rendición no es un acto de un solo año: la ley exige <b>seguimiento plurianual</b> '
         f'de los compromisos. Al cruzar los ejercicios <b>{y0} ↔ {y1}</b> aparece el <b>comportamiento del '
         f'discurso</b> —qué mejora, qué depende del informe propio, qué sigue sin respaldo—:</p>'
+        f'<p class="qc-cap">Cada tarjeta es un <b>indicador de verificabilidad</b>: muestra su valor en {y0} y en '
+        f'{y1}, y la <b>flecha</b> marca el cambio (<b>▲</b> subió · <b>▼</b> bajó · <b>■</b> estable).</p>'
         f'<div class="qc-evs">{cards}</div>{perfil_html}')
 
 
@@ -359,13 +366,14 @@ def _implicaciones(snap: dict, serie: list) -> str:
 
 
 # ── LOS APORTES CIUDADANOS — 3ª dimensión del RDC: el documento CPCCS (Javo · 2026-07-10) ──
-_CAD_AP = ["Demanda ciudadana", "Obra o servicio", "Ejecutado"]
+# la demanda ciudadana recorre los MISMOS silos del Estado que el discurso (fusión · Javo 2026-07-10)
+_CAD_AP = ["Demanda ciudadana", "POA", "SERCOP", "Ejecución"]
 _AP_EST = {"atendido": ("Atendido", "#1E8E3E"), "por_validar": ("En seguimiento", "#F9AB00"),
            "sin_correlato": ("Sin correlato", "#9AA0A6")}
 
 
 def _minichain_aporte(estado: str) -> str:
-    upto = {"atendido": 2, "por_validar": 1, "sin_correlato": 0}.get(estado, 0)
+    upto = {"atendido": 3, "por_validar": 1, "sin_correlato": 0}.get(estado, 0)
     nodos = []
     for j, s in enumerate(_CAD_AP):
         if j:
@@ -439,6 +447,26 @@ def _aportes(ap: dict) -> str:
         f'<div class="qc-exps">{exps}</div>')
 
 
+def _cumplimiento(cumpl: dict) -> str:
+    """El cumplimiento del plan de trabajo REPORTADO en el informe CPCCS (autocertificado · institucional).
+    Otra sección del documento, no del discurso (Javo · 2026-07-10)."""
+    comps = (cumpl or {}).get("componentes") or []
+    if not comps:
+        return ""
+    per = cumpl.get("periodo", "")
+    rows = ""
+    for c in comps:
+        rows += (f'<tr><td>{_esc(_corta(c.get("componente", ""), 64))}</td>'
+                 f'<td>{_esc(_corta((c.get("resultado", "") or "").strip(chr(34)), 150))}</td></tr>')
+    return (
+        f'<p class="qc-p">El informe formal declara el <b>cumplimiento del plan de trabajo</b>: '
+        f'<b>{len(comps)} componentes</b> con el resultado que la autoridad reporta haber logrado (informe CPCCS '
+        f'{_esc(per)}). Es la <b>narrativa institucional</b> del cumplimiento —autocertificada—; el sistema la '
+        f'registra como <b>declarada</b>, distinta de la verificación independiente del discurso:</p>'
+        f'<div class="qc-tbl-wrap"><table class="qc-serie"><tr><th>Componente del plan de trabajo</th>'
+        f'<th>Resultado reportado (informe)</th></tr>{rows}</table></div>')
+
+
 def _conclusion(snap: dict, m: dict, serie: list | None = None) -> str:
     """Síntesis ejecutiva del DOMINIO (no de un año · Javo 2026-07-10): rotula el período completo."""
     sint = ""
@@ -462,7 +490,7 @@ def _analisis_anio(snap: dict, n: int) -> str:
               + _embudo(snap.get("embudo", {}), breve=True)
               + '<div class="qc-subh">Qué pudo verificarse</div>' + _resultado(snap, m)
               + '<div class="qc-subh">Los expedientes</div>' + _expedientes(snap))
-    return _seccion(f'0{n}', f'Ejercicio {m.get("año")} · {m.get("autoridad")}', cuerpo, cls="qc-anio")
+    return _seccion(f'0{n}', f'Ejercicio Fiscal {m.get("año")} · {m.get("autoridad")}', cuerpo, cls="qc-anio")
 
 
 def _evaluacion(serie: list, marco: dict) -> str:
@@ -507,11 +535,11 @@ def _rendicion_en_tiempo(serie: list) -> str:
         f'del cantón —un margen de ampliación, no una falla del proceso—.</p>')
 
 
-def cajon_dominio_rdc(serie: list, rdc_serie: list | None = None, aportes: dict | None = None) -> str:
+def cajon_dominio_rdc(serie: list, rdc_serie: list | None = None, doc: dict | None = None) -> str:
     """Cajón RDC del DOMINIO completo (3 dimensiones · Javo 2026-07-10): el DISCURSO (procedimiento +
     análisis por año + evaluación), los EJERCICIOS en el tiempo (serie), y el DOCUMENTO CPCCS (aportes
-    ciudadanos). Explicación compartida una sola vez + síntesis ejecutiva. `serie` = snapshots del motor
-    (ascendente); `rdc_serie` = ejercicios de rendición; `aportes` = aportes ciudadanos (documento CPCCS)."""
+    ciudadanos + cumplimiento del plan de trabajo). `serie` = snapshots del motor (ascendente); `rdc_serie`
+    = ejercicios de rendición; `doc` = dict de rendición del GM (aportes, cumplimiento_actual, …)."""
     serie = [s for s in serie if s]
     if not serie:
         return ""
@@ -524,10 +552,15 @@ def cajon_dominio_rdc(serie: list, rdc_serie: list | None = None, aportes: dict 
         bloques.append(_seccion(f'0{n}', 'La rendición en el tiempo · los ejercicios del período', serie_html)); n += 1
     for s in serie:
         bloques.append(_analisis_anio(s, n)); n += 1          # 0X · Ejercicio 20XX (por año · el discurso)
-    ap_html = _aportes(aportes or {})
-    if ap_html:                                               # 3ª dimensión · el documento CPCCS (Javo)
+    doc = doc or {}                                           # 3ª dimensión · el DOCUMENTO CPCCS (Javo)
+    ap_html = _aportes(doc.get("aportes") or {})
+    if ap_html:
         bloques.append(_seccion(f'0{n}', 'Los aportes ciudadanos · la voz que se rastrea', ap_html,
                                 _ley(marco, 'dominio_lead', 'Fundamento (aportes ciudadanos · LOPC)'))); n += 1
+    cu_html = _cumplimiento(doc.get("cumplimiento_actual") or {})
+    if cu_html:
+        bloques.append(_seccion(f'0{n}', 'El cumplimiento reportado · el plan de trabajo', cu_html,
+                                _ley(marco, '02_suficiencia_probatoria', 'Fundamento (informe CPCCS)'))); n += 1
     bloques.append(_seccion(f'0{n}', 'La evaluación · comparación, patrones y prospectiva',
                             _evaluacion(serie, marco), _ley(marco, '04_analisis_sistemico')))
     cuerpo = "".join(bloques) + _conclusion(ref, m, serie)    # síntesis ejecutiva del DOMINIO al cierre (Javo)
@@ -552,9 +585,9 @@ def cajon_dominio_rdc(serie: list, rdc_serie: list | None = None, aportes: dict 
 </section>"""
 
 
-def cajon_dominio_streamlit(serie: list, rdc_serie: list | None = None, aportes: dict | None = None) -> str:
+def cajon_dominio_streamlit(serie: list, rdc_serie: list | None = None, doc: dict | None = None) -> str:
     """HTML del dominio RDC listo para st.markdown (sin sangría ni líneas en blanco)."""
-    h = cajon_dominio_rdc(serie, rdc_serie, aportes)
+    h = cajon_dominio_rdc(serie, rdc_serie, doc)
     return "\n".join(ln.lstrip() for ln in h.splitlines() if ln.strip())
 
 
@@ -682,9 +715,10 @@ details.qc-law[open] summary{margin-bottom:7px}
 .mc-n.off{color:#AEB8C6;border-color:rgba(255,255,255,.22);background:rgba(255,255,255,.03)}
 .mc-a{color:#8894A6;font-size:12px}.mc-a.on{color:var(--ind);font-weight:700}
 /* evolución */
-.qc-evs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:18px}
+.qc-evs{display:grid;grid-template-columns:repeat(auto-fit,minmax(252px,1fr));gap:12px;margin-bottom:14px}
 .qc-ev{border:1px solid var(--bd);border-radius:8px;padding:15px 16px;background:var(--sf)}
-.qc-ev .ev-l{font-size:12.5px;font-weight:700;margin-bottom:13px}
+.qc-ev .ev-l{font-size:12.5px;font-weight:700;margin-bottom:13px;overflow-wrap:normal;word-break:keep-all}
+.qc-cap{font-size:11px;color:var(--tx2);line-height:1.5;margin:0 0 12px;font-style:italic}.qc-cap b{color:var(--tx);font-style:normal}
 .qc-ev .ev-r{display:flex;align-items:center;gap:10px}
 .qc-ev .ev-yr{display:flex;flex-direction:column;gap:1px}
 .qc-ev .ev-yr .ev-y{font-family:ui-monospace,monospace;font-size:9px;color:var(--tx2);letter-spacing:.05em}
@@ -739,6 +773,10 @@ details.qc-law[open] summary{margin-bottom:7px}
 .qc-att-bar{width:50px;background:linear-gradient(180deg,#3AA6D6,#1A73E8);border-radius:3px 3px 0 0}
 .qc-att-n{font-family:Georgia,serif;font-size:16px;font-weight:700;color:var(--tx)}
 .qc-att-y{font-family:ui-monospace,monospace;font-size:10px;color:var(--tx2)}
+.qc-tbl-wrap{max-height:340px;overflow-y:auto;border:1px solid var(--bd);border-radius:7px;margin-top:4px}
+.qc-tbl-wrap .qc-serie{margin:0}
+.qc-tbl-wrap .qc-serie th{position:sticky;top:0;background:#141b28;z-index:1}
+.qc-tbl-wrap .qc-serie td:nth-child(2){color:var(--tx2)}
 /* implicaciones */
 .qc-impl{margin-top:16px;padding:14px 16px;border:1px solid var(--bd);border-left:3px solid var(--law);border-radius:7px;background:var(--sf)}
 .qc-impl-t{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--law);font-weight:700;margin-bottom:6px}
