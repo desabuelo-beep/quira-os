@@ -370,6 +370,61 @@ def _sintesis_plan(plan: dict) -> str:
             f'<div class="qc-fuente">Fuentes: PDOT 2023-2027 · POA · Presupuesto (cédula eSIGEF) · PAC · SERCOP.</div></div></div>')
 
 
+def _biografia_meta(plan: dict) -> str:
+    """La biografía de UNA meta: su vida documental Meta→Proyectos→Partidas→Ejecución→Contratos — la
+    UNIDAD NARRATIVA del observatorio (colega + Javo). Data limpia del canon (2026); ancla = META_UUID.
+    Un porcentaje aislado no explica; una biografía, sí."""
+    import re as _re
+    from collections import defaultdict
+
+    def _n(t):
+        return _re.sub(r"\s+", " ", (t or "").strip().upper())
+
+    poa = plan.get("poa_proyectos", [])
+    parts = {str(p["cuenta"]): p for p in plan.get("presupuesto", {}).get("partidas", [])}
+    pub = plan.get("publicado", {}).get("procesos", [])
+    by_meta = defaultdict(list)
+    for x in poa:
+        by_meta[_n(x.get("meta"))].append(x)
+    cand = []
+    for mk, proys in by_meta.items():
+        if not mk or "FORTALECER Y MEJORAR LOS RECURSOS" in mk:       # excluye el contenedor administrativo
+            continue
+        inv = [x for x in proys if str(x.get("partida", "")).strip()[:1] in ("7", "8")]
+        ptds = sorted(set(str(x.get("partida", "")).strip() for x in inv if x.get("partida")))
+        if not ptds:
+            continue
+        cod = sum((parts.get(pt, {}) or {}).get("cod", 0) or 0 for pt in ptds)
+        if cod < 100000:
+            continue
+        dev = sum((parts.get(pt, {}) or {}).get("dev", 0) or 0 for pt in ptds)
+        con = [c for c in pub if str(c.get("partida", "")).strip() in ptds]
+        cand.append((mk, len(inv), len(ptds), cod, dev, con))
+    if not cand:
+        return ""
+    mk, n_pro, n_ptd, cod, dev, con = max(cand, key=lambda t: t[3])
+    ti = 100 * dev / cod if cod else 0
+    titulo = _re.sub(r"\s+(de|del|la|los|las|y|en|a|el|con|para)\s*$", "",
+                     _corta(mk.capitalize(), 64), flags=_re.I)
+    nodos = [
+        {"sys": "META", "label": "compromiso del plan",
+         "edge": {"estado": "verificado", "nota": "actividades operativas de la meta en el POA"}},
+        {"sys": "POA", "label": f"{n_pro} proyectos",
+         "edge": {"estado": "verificado", "nota": "asignación presupuestaria"}},
+        {"sys": "PRESUPUESTO", "label": f"${cod/1e6:.1f}M · {n_ptd} partidas",
+         "edge": {"estado": "verificado" if ti >= 70 else "parcial", "pct": ti, "nota": "ejecución de la inversión"}},
+        {"sys": "EJECUCIÓN", "label": f"${dev/1e6:.2f}M devengado",
+         "edge": {"estado": "verificado" if con else "pendiente",
+                  "nota": "publicación en contratación pública"}},
+        {"sys": "SERCOP", "label": f"{len(con)} contratos"},
+    ]
+    intro = (f'<p class="qc-cap">Un porcentaje aislado no explica nada; una <b>biografía</b>, sí. La meta '
+             f'<b>«{_esc(titulo)}»</b> a lo largo de su vida documental —del compromiso al contrato, trazada de la '
+             f'fuente—. Esta es la <b>unidad narrativa</b> del observatorio; cada meta tiene la suya, anclada a su '
+             f'identificador canónico.</p>')
+    return intro + cadena_integridad(nodos, "Biografía de una meta · del plan al contrato")
+
+
 def _ley_esl(plan: dict, esl: str, titulo: str) -> str:
     """marco legal del eslabón desde base_normativa.por_eslabon[esl].marco (lista de citas verificadas)."""
     d = ((plan.get("base_normativa", {}) or {}).get("por_eslabon", {}) or {}).get(esl) or {}
@@ -477,7 +532,7 @@ def cajon_dominio_plan(plan: dict) -> str:
   <div class="qc-body">
     {_seccion('01', 'El procedimiento · del plan al gasto', _backbone(plan) + _cadena_relacional(plan), _ley_esl(plan, 'poa', 'Fundamento jurídico aplicable'))}
     {_seccion('02', 'El plan y su cobertura', _cobertura(plan), _ley_esl(plan, 'presupuesto', 'Fundamento jurídico aplicable'))}
-    {_seccion('03', 'La trazabilidad · metas del plan', '<p class="qc-p">Cada expediente es la <b>biografía de una meta</b>: su recorrido desde el plan hasta el gasto, y hasta dónde llega la cadena documental.</p><p class="qc-cap">No se eligen al azar: se muestran las metas de mayor <b>Valor Demostrativo</b> —el puntaje (0-100) que resume cuánto demuestra el método cada expediente: profundidad de la cadena documental, peso presupuestario y tipo de competencia. A mayor puntaje, más completa y probatoria es la trazabilidad.</p>' + _expedientes_metas(plan), _ley_esl(plan, 'pac', 'Fundamento jurídico aplicable'))}
+    {_seccion('03', 'La trazabilidad · metas del plan', '<p class="qc-p">Cada expediente es la <b>biografía de una meta</b>: su recorrido desde el plan hasta el gasto, y hasta dónde llega la cadena documental.</p><p class="qc-cap">No se eligen al azar: se muestran las metas de mayor <b>Valor Demostrativo</b> —el puntaje (0-100) que resume cuánto demuestra el método cada expediente: profundidad de la cadena documental, peso presupuestario y tipo de competencia. A mayor puntaje, más completa y probatoria es la trazabilidad.</p>' + _biografia_meta(plan) + _expedientes_metas(plan), _ley_esl(plan, 'pac', 'Fundamento jurídico aplicable'))}
     {_seccion('04', 'La coherencia · análisis preventivo', _coherencia(plan), _ley_esl(plan, 'gasto', 'Fundamento jurídico aplicable'))}
     {_seccion('05', 'La trayectoria en el tiempo · proyección', _longitudinal_plan(plan))}
     {_seccion('06', 'La evaluación · hallazgos e implicaciones', '<p class="qc-p">Interpretación del dato —no una descripción—: el patrón que revela el análisis, y qué significa.</p>' + _hallazgos_html(_hallazgos_plan(plan)) + _implicaciones_plan(plan))}
