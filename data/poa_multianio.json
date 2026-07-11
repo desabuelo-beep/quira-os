@@ -1,5 +1,1375 @@
 {
   "_fuente": "POA oficial GAD Montecristi por año (Excel) — vínculo meta↔actividad↔partida de la fuente",
+  "biografias_2025": [
+    {
+      "meta": "12 de roles  realizados",
+      "actividades": 220,
+      "partidas": 26,
+      "inversion": 13,
+      "plan": 11352144.12,
+      "codificado": 11648211.44,
+      "devengado": 9538359.03
+    },
+    {
+      "meta": "100% de gestión institucionales",
+      "actividades": 14,
+      "partidas": 13,
+      "inversion": 3,
+      "plan": 2183052.91,
+      "codificado": 1995460.89,
+      "devengado": 1499355.47
+    },
+    {
+      "meta": "Incrementar en el CUP el mantenimiento de 43.8 km de vías  hasta el año 2027",
+      "actividades": 20,
+      "partidas": 9,
+      "inversion": 9,
+      "plan": 1294868.52,
+      "codificado": 2376454.48,
+      "devengado": 1707881.38
+    },
+    {
+      "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2062",
+      "actividades": 6,
+      "partidas": 4,
+      "inversion": 1,
+      "plan": 1234806.71,
+      "codificado": 1297616.76,
+      "devengado": 839165.64
+    },
+    {
+      "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2032",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 0,
+      "plan": 920000.0,
+      "codificado": 930000.0,
+      "devengado": 702500.0
+    },
+    {
+      "meta": "Construir 10km hasta el 2027 de 93.65 km de vías en proyección del CUP",
+      "actividades": 7,
+      "partidas": 2,
+      "inversion": 2,
+      "plan": 786380.68,
+      "codificado": 1738343.16,
+      "devengado": 1179882.56
+    },
+    {
+      "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2060",
+      "actividades": 1,
+      "partidas": 0,
+      "inversion": 0,
+      "plan": 688500.48,
+      "codificado": 0,
+      "devengado": 0
+    },
+    {
+      "meta": "Aumentar a 10.73 m²/hab el índice de equipamiento del Centro Urbano Principal hasta el 2027",
+      "actividades": 17,
+      "partidas": 8,
+      "inversion": 8,
+      "plan": 676400.0,
+      "codificado": 2270177.85,
+      "devengado": 1122534.15
+    },
+    {
+      "meta": "Aumentar del 39.25% al 42.38% la cobertura de agua potable en el cantón hasta el 2027",
+      "actividades": 8,
+      "partidas": 5,
+      "inversion": 5,
+      "plan": 669657.1,
+      "codificado": 3830731.5,
+      "devengado": 2984432.73
+    },
+    {
+      "meta": "Aumentar del 91% de vehículos en funcionamiento en el año 2023, a 95% desde el 2024 manteniendo la métrica has",
+      "actividades": 32,
+      "partidas": 11,
+      "inversion": 6,
+      "plan": 574988.0,
+      "codificado": 1279237.74,
+      "devengado": 547486.85
+    },
+    {
+      "meta": "Aumentar la cobertura de redes pluviales de 0.97% a 2% hasta el año 2027",
+      "actividades": 4,
+      "partidas": 2,
+      "inversion": 2,
+      "plan": 551211.68,
+      "codificado": 637214.5,
+      "devengado": 335332.18
+    },
+    {
+      "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2036",
+      "actividades": 1,
+      "partidas": 0,
+      "inversion": 0,
+      "plan": 421685.48,
+      "codificado": 0,
+      "devengado": 0
+    },
+    {
+      "meta": "Mejorar al 10% el índice de continuidad del servicio de agua potable ALTO de 2 a 3 días por semana hasta el añ",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 400000.0,
+      "codificado": 880650.69,
+      "devengado": 715207.92
+    },
+    {
+      "meta": "Incrementar 4 km de vías con tratamiento (aceras y bordillos) del CUP hasta el 2027",
+      "actividades": 2,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 400000.0,
+      "codificado": 1021473.17,
+      "devengado": 723549.2
+    },
+    {
+      "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2061",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 374000.0,
+      "codificado": 631000.0,
+      "devengado": 140813.25
+    },
+    {
+      "meta": "Aumentar del 39.25% al 42.38% la cobertura de agua potable en el cantón hasta el",
+      "actividades": 7,
+      "partidas": 5,
+      "inversion": 5,
+      "plan": 359000.01,
+      "codificado": 2353382.36,
+      "devengado": 1955517.71
+    },
+    {
+      "meta": "Mantener y mejorar las instalaciones e infraestructuras municipales.",
+      "actividades": 21,
+      "partidas": 14,
+      "inversion": 4,
+      "plan": 343706.04,
+      "codificado": 1061326.43,
+      "devengado": 766479.47
+    },
+    {
+      "meta": "Aumentar del 39.25% al\n42.38% la cobertura de agua potable en el cantón hasta el 2027 / Mejorar el índice de l",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 300000.0,
+      "codificado": 1368081.0,
+      "devengado": 1366405.96
+    },
+    {
+      "meta": "Incrementar el número de trámites en línea implementados a 37 al año 2027",
+      "actividades": 2,
+      "partidas": 2,
+      "inversion": 1,
+      "plan": 253000.0,
+      "codificado": 167876.98,
+      "devengado": 8307.7
+    },
+    {
+      "meta": "Aumentar a 17.32 m²/hab el IVU  hasta el 2027",
+      "actividades": 18,
+      "partidas": 11,
+      "inversion": 11,
+      "plan": 252173.84,
+      "codificado": 3187282.08,
+      "devengado": 1967843.03
+    },
+    {
+      "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2056",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 0,
+      "plan": 250226.44,
+      "codificado": 716933.2,
+      "devengado": 575228.16
+    },
+    {
+      "meta": "Entregrar 900 m3 en el mes",
+      "actividades": 3,
+      "partidas": 2,
+      "inversion": 2,
+      "plan": 250000.0,
+      "codificado": 1127260.69,
+      "devengado": 902407.92
+    },
+    {
+      "meta": "Incrementar el 43.35% de\nautonomía financiera en el 2023 al 45.30% al 2031",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 250000.0,
+      "codificado": 387400.0,
+      "devengado": 346600.0
+    },
+    {
+      "meta": "Número de despidos intempestivos",
+      "actividades": 28,
+      "partidas": 8,
+      "inversion": 4,
+      "plan": 243349.26,
+      "codificado": 633960.65,
+      "devengado": 395543.15
+    },
+    {
+      "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2050",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 0,
+      "plan": 224008.32,
+      "codificado": 716933.2,
+      "devengado": 575228.16
+    },
+    {
+      "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2035",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 0,
+      "plan": 220000.0,
+      "codificado": 212300.0,
+      "devengado": 162837.06
+    },
+    {
+      "meta": "Aumentar la confianza institucional a 30%  al 2027",
+      "actividades": 4,
+      "partidas": 4,
+      "inversion": 2,
+      "plan": 214907.26,
+      "codificado": 833281.21,
+      "devengado": 411438.82
+    },
+    {
+      "meta": "Incrementar el número de procesos sistematizados a 9 al 2027",
+      "actividades": 14,
+      "partidas": 6,
+      "inversion": 3,
+      "plan": 214564.4,
+      "codificado": 801880.0,
+      "devengado": 350439.55
+    },
+    {
+      "meta": "Incrementar 4 km de vías con tratamiento (aceras y bordillos) del CUP hasta el",
+      "actividades": 2,
+      "partidas": 2,
+      "inversion": 2,
+      "plan": 197894.75,
+      "codificado": 881869.99,
+      "devengado": 621333.36
+    },
+    {
+      "meta": "Aumentar del 19.77% a 24.32% la cobertura de alcantarillado sanitario en el cantón hasta el 2027",
+      "actividades": 8,
+      "partidas": 6,
+      "inversion": 6,
+      "plan": 197553.46,
+      "codificado": 1976408.13,
+      "devengado": 1247890.76
+    },
+    {
+      "meta": "Incrementar los eventos turísticos de 10 en el año 2023, a 22 al 2027",
+      "actividades": 3,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 172450.0,
+      "codificado": 286015.0,
+      "devengado": 193650.0
+    },
+    {
+      "meta": "Aumentar el nivel de conocimiento de la gestión institucional al 55% al 2027",
+      "actividades": 3,
+      "partidas": 2,
+      "inversion": 0,
+      "plan": 170900.0,
+      "codificado": 308078.19,
+      "devengado": 174783.45
+    },
+    {
+      "meta": "Mejorar y aumentar los inidces de ingresos comerciales",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 156000.0,
+      "codificado": 631000.0,
+      "devengado": 140813.25
+    },
+    {
+      "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2051",
+      "actividades": 1,
+      "partidas": 0,
+      "inversion": 0,
+      "plan": 149073.76,
+      "codificado": 0,
+      "devengado": 0
+    },
+    {
+      "meta": "Aumentar a 10.73 m²/hab el índice de equipamiento del Centro Urbano Principal",
+      "actividades": 5,
+      "partidas": 4,
+      "inversion": 4,
+      "plan": 148562.89,
+      "codificado": 668080.03,
+      "devengado": 258171.7
+    },
+    {
+      "meta": "Incrementar las revisiones técnicas vehiculares de 4000\nen el año 2023, a 20000 al 2027",
+      "actividades": 2,
+      "partidas": 2,
+      "inversion": 2,
+      "plan": 144000.0,
+      "codificado": 655000.0,
+      "devengado": 140813.25
+    },
+    {
+      "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2039",
+      "actividades": 1,
+      "partidas": 0,
+      "inversion": 0,
+      "plan": 142619.04,
+      "codificado": 0,
+      "devengado": 0
+    },
+    {
+      "meta": "Aumentar hasta el 2027 el número de plantas y estaciones de bombeo operativas: 8/11 estaciones de bombeo al 72",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 137000.01,
+      "codificado": 174534.31,
+      "devengado": 9733.72
+    },
+    {
+      "meta": "100% de uniformes entregados",
+      "actividades": 3,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 134417.4,
+      "codificado": 229052.34,
+      "devengado": 102157.31
+    },
+    {
+      "meta": "Incrementar las visitas anuales de 2700 en el año 2023, a 4300 al 2027",
+      "actividades": 10,
+      "partidas": 4,
+      "inversion": 4,
+      "plan": 129060.0,
+      "codificado": 1117090.02,
+      "devengado": 576336.05
+    },
+    {
+      "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2057",
+      "actividades": 1,
+      "partidas": 0,
+      "inversion": 0,
+      "plan": 122230.6,
+      "codificado": 0,
+      "devengado": 0
+    },
+    {
+      "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2044",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 0,
+      "plan": 120726.64,
+      "codificado": 716933.2,
+      "devengado": 575228.16
+    },
+    {
+      "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2031",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 108000.0,
+      "codificado": 387400.0,
+      "devengado": 346600.0
+    },
+    {
+      "meta": "Incrementar en el CUP 23.77 km de vías con tratamiento medio hasta el año 2027",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 100000.0,
+      "codificado": 366472.0,
+      "devengado": 146030.68
+    },
+    {
+      "meta": "Incrementar el porcentaje del sistema de información local del 19,52% en el año 2023, a 80% al 2033",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 99970.0,
+      "codificado": 464603.02,
+      "devengado": 236655.37
+    },
+    {
+      "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2053",
+      "actividades": 1,
+      "partidas": 0,
+      "inversion": 0,
+      "plan": 99340.2,
+      "codificado": 0,
+      "devengado": 0
+    },
+    {
+      "meta": "Mejorar el sistema de cobertura de agua potable y alcantarillado sanitario",
+      "actividades": 2,
+      "partidas": 2,
+      "inversion": 2,
+      "plan": 98500.0,
+      "codificado": 1303193.63,
+      "devengado": 877562.54
+    },
+    {
+      "meta": "Alcanzar el 90% de ejecución de servicio de Transporte",
+      "actividades": 2,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 96993.02,
+      "codificado": 716869.99,
+      "devengado": 456333.36
+    },
+    {
+      "meta": "Mejorar el índice de calidad de la infraestructura  sanitaria BUENO de 23.02% al 33.02% hasta el año 2027",
+      "actividades": 4,
+      "partidas": 3,
+      "inversion": 3,
+      "plan": 95699.06,
+      "codificado": 1247439.36,
+      "devengado": 570878.32
+    },
+    {
+      "meta": "Alcanzar un PPTA del 80% al finalizar el año fiscal.",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 95000.0,
+      "codificado": 464603.02,
+      "devengado": 236655.37
+    },
+    {
+      "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2045",
+      "actividades": 1,
+      "partidas": 0,
+      "inversion": 0,
+      "plan": 90128.48,
+      "codificado": 0,
+      "devengado": 0
+    },
+    {
+      "meta": "Aumentar del 91% de vehículos en funcionamiento en el año 2023, a 95% desde el 2024 manteniendo la\nmétrica has",
+      "actividades": 3,
+      "partidas": 3,
+      "inversion": 2,
+      "plan": 85000.0,
+      "codificado": 358256.63,
+      "devengado": 163595.32
+    },
+    {
+      "meta": "Incrementar el porcentaje de proyectos ejecutados al 80% al 2027",
+      "actividades": 5,
+      "partidas": 4,
+      "inversion": 3,
+      "plan": 76600.0,
+      "codificado": 1332752.0,
+      "devengado": 882447.49
+    },
+    {
+      "meta": "Instalacion de 10 camaras de videovigilancia y 15 alarmas comunitarias",
+      "actividades": 4,
+      "partidas": 3,
+      "inversion": 3,
+      "plan": 76500.0,
+      "codificado": 946486.22,
+      "devengado": 704464.86
+    },
+    {
+      "meta": "Incrementar el número de beneficiarios que acceden a puntos digitales de 19265 en el año 2023, a 23265 al 2027",
+      "actividades": 2,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 67025.0,
+      "codificado": 369829.36,
+      "devengado": 242865.07
+    },
+    {
+      "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2048",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 0,
+      "plan": 66951.32,
+      "codificado": 716933.2,
+      "devengado": 575228.16
+    },
+    {
+      "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2038",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 0,
+      "plan": 62037.92,
+      "codificado": 81756.91,
+      "devengado": 81756.91
+    },
+    {
+      "meta": "Incrementar la superficie a 10 000 m2 de señalización en vías urbanas hasta el 2027",
+      "actividades": 5,
+      "partidas": 4,
+      "inversion": 4,
+      "plan": 62019.05,
+      "codificado": 888719.05,
+      "devengado": 509019.43
+    },
+    {
+      "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2054",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 0,
+      "plan": 61713.6,
+      "codificado": 716933.2,
+      "devengado": 575228.16
+    },
+    {
+      "meta": "cumplimiento del 85% en la adquisición de seguros",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 60000.0,
+      "codificado": 48267.8,
+      "devengado": 2085.0
+    },
+    {
+      "meta": "Incrementar el número de beneficiarios en eventos deportivos de 400 en el año 2023, a 500 al 2027",
+      "actividades": 3,
+      "partidas": 2,
+      "inversion": 2,
+      "plan": 52700.0,
+      "codificado": 481603.02,
+      "devengado": 236655.37
+    },
+    {
+      "meta": "100 % de realización y análisis de resultados de exámenes médicos",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 52000.0,
+      "codificado": 28175.8,
+      "devengado": 13175.8
+    },
+    {
+      "meta": "Aumentar la aceptación institucional a 35% al 2027",
+      "actividades": 3,
+      "partidas": 3,
+      "inversion": 0,
+      "plan": 51930.0,
+      "codificado": 202530.01,
+      "devengado": 51242.59
+    },
+    {
+      "meta": "Incrementar el número de participantes por eventos culturales de 8.000 en el año 2023, a 10.000 al 2027",
+      "actividades": 3,
+      "partidas": 3,
+      "inversion": 3,
+      "plan": 51500.0,
+      "codificado": 977615.0,
+      "devengado": 334463.25
+    },
+    {
+      "meta": "Incrementar a 8 el número de las intersecciones semafóricas hasta el 2027",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 51000.0,
+      "codificado": 281720.46,
+      "devengado": 154013.34
+    },
+    {
+      "meta": "Aumentar del 91% de\nvehículos en funcionamiento en el año 2023, a 95% desde el 2024 manteniendo la",
+      "actividades": 2,
+      "partidas": 2,
+      "inversion": 2,
+      "plan": 50000.0,
+      "codificado": 443710.46,
+      "devengado": 206169.86
+    },
+    {
+      "meta": "Cumplir con el cronograma de sesiones conmenorativas establecido por parte del área de secretaria general del ",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 50000.0,
+      "codificado": 49500.0,
+      "devengado": 30000.0
+    },
+    {
+      "meta": "Incrementar en el CUP 23.77 km de vías con tratamiento\nmedio hasta el año 2027",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 48500.0,
+      "codificado": 366472.0,
+      "devengado": 146030.68
+    },
+    {
+      "meta": "Incrementar el número de beneficiarios de programas de formación cultural de 400 en el año 2023, a 700 al 2027",
+      "actividades": 2,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 47500.0,
+      "codificado": 464603.02,
+      "devengado": 236655.37
+    },
+    {
+      "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2043",
+      "actividades": 1,
+      "partidas": 0,
+      "inversion": 0,
+      "plan": 45640.56,
+      "codificado": 0,
+      "devengado": 0
+    },
+    {
+      "meta": "Formar alianzas estratégicas entre el GADM del Cantón Montecristi y Entidades Publicas y Privadas Claves para ",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 0,
+      "plan": 39600.0,
+      "codificado": 237046.67,
+      "devengado": 134000.6
+    },
+    {
+      "meta": "Incrementar la población atendida en salud preventiva de 320 en el año 2023, a 480\nal 2027",
+      "actividades": 5,
+      "partidas": 5,
+      "inversion": 5,
+      "plan": 38400.0,
+      "codificado": 286432.2,
+      "devengado": 124015.81
+    },
+    {
+      "meta": "Mantener la ejecución anual del Plan de capacitación del 90% hasta el 2027.",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 0,
+      "plan": 34800.0,
+      "codificado": 10700.0,
+      "devengado": 0.0
+    },
+    {
+      "meta": "Incrementar las instancias de participación de 2 en el año 2023 a 4 al 2024 manteniendo estas instancias activ",
+      "actividades": 2,
+      "partidas": 2,
+      "inversion": 2,
+      "plan": 33800.0,
+      "codificado": 504453.02,
+      "devengado": 236655.37
+    },
+    {
+      "meta": "Mantener anualmente y hasta el 2027 el servicio de calidad del transporte en categoría bueno con el 60% de ace",
+      "actividades": 2,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 33100.0,
+      "codificado": 366472.0,
+      "devengado": 146030.68
+    },
+    {
+      "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2055",
+      "actividades": 1,
+      "partidas": 0,
+      "inversion": 0,
+      "plan": 32053.8,
+      "codificado": 0,
+      "devengado": 0
+    },
+    {
+      "meta": "Alcanzar un PEA del 100% antes del final del primer trimestre del año fiscal.",
+      "actividades": 3,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 31000.0,
+      "codificado": 610102.31,
+      "devengado": 511791.52
+    },
+    {
+      "meta": "Mejorar el índice de calidad de la infraestructura de agua potable BUENO de 22.74% al",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 30000.0,
+      "codificado": 369829.36,
+      "devengado": 242865.07
+    },
+    {
+      "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2033",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 0,
+      "plan": 30000.0,
+      "codificado": 930000.0,
+      "devengado": 702500.0
+    },
+    {
+      "meta": "100 % de Servidores Públicos hidratados",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 0,
+      "plan": 30000.0,
+      "codificado": 26800.0,
+      "devengado": 7591.71
+    },
+    {
+      "meta": "Alcanzar un 95% de cumplimiento del plan de adquisición al final del año",
+      "actividades": 3,
+      "partidas": 3,
+      "inversion": 3,
+      "plan": 29000.0,
+      "codificado": 315015.0,
+      "devengado": 222650.0
+    },
+    {
+      "meta": "Aumentar del 91% de vehículos en funcionamiento en el año 2023, a 95% desde el 2024 manteniendo la",
+      "actividades": 2,
+      "partidas": 2,
+      "inversion": 2,
+      "plan": 28000.0,
+      "codificado": 348255.63,
+      "devengado": 160079.92
+    },
+    {
+      "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2049",
+      "actividades": 1,
+      "partidas": 0,
+      "inversion": 0,
+      "plan": 26256.88,
+      "codificado": 0,
+      "devengado": 0
+    },
+    {
+      "meta": "Aumentar del 91% de vehículos en funcionamiento en el año 2023, a 95% desde",
+      "actividades": 2,
+      "partidas": 2,
+      "inversion": 1,
+      "plan": 25000.0,
+      "codificado": 286720.46,
+      "devengado": 154013.34
+    },
+    {
+      "meta": "Aumentar del 39.25% al\n42.38% la cobertura de agua potable en el cantón hasta el 2027 / Mejorar el índice de l",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 25000.0,
+      "codificado": 366472.0,
+      "devengado": 146030.68
+    },
+    {
+      "meta": "Alcanzar un 90% de cumplimiento de los objetivos del contrato al  final del periodo establecido",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 24000.0,
+      "codificado": 464603.02,
+      "devengado": 236655.37
+    },
+    {
+      "meta": "Incrementar los beneficiarios en programas de formación de 1645 en el año 2023, a 3100 al 2027",
+      "actividades": 3,
+      "partidas": 3,
+      "inversion": 3,
+      "plan": 21992.18,
+      "codificado": 48041.31,
+      "devengado": 191.31
+    },
+    {
+      "meta": "Aumentar a 17.32 m²/hab el IVU  hasta el 2028",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 20000.0,
+      "codificado": 366472.0,
+      "devengado": 146030.68
+    },
+    {
+      "meta": "Mejorar el indice de calidad de la descarga del agua residual (efluente) en base  a la normativa aplicable.",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 20000.0,
+      "codificado": 0,
+      "devengado": 0
+    },
+    {
+      "meta": "Aumentar del 39.25% al 42.38% la cobertura de agua potable en el cantón hasta el 2027 / Mejorar el índice de c",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 18000.0,
+      "codificado": 369829.36,
+      "devengado": 242865.07
+    },
+    {
+      "meta": "Aumentar del 91% de vehículos en funcionamiento",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 0,
+      "plan": 17000.0,
+      "codificado": 10001.0,
+      "devengado": 3515.4
+    },
+    {
+      "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2037",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 0,
+      "plan": 16286.36,
+      "codificado": 81756.91,
+      "devengado": 81756.91
+    },
+    {
+      "meta": "4 Agentes de control para el cantón Montecristi",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 15300.0,
+      "codificado": 464603.02,
+      "devengado": 236655.37
+    },
+    {
+      "meta": "Incrementar el 15% anualmente desde el año 2023, al 2027 de atenciones en programas para grupos de\natención pr",
+      "actividades": 3,
+      "partidas": 3,
+      "inversion": 3,
+      "plan": 15000.01,
+      "codificado": 42755.5,
+      "devengado": 18785.84
+    },
+    {
+      "meta": "Mantener el número de 680 beneficiarios de las campañas de asistencia\nmédica veterinaria dentro del Plan para ",
+      "actividades": 2,
+      "partidas": 2,
+      "inversion": 2,
+      "plan": 15000.0,
+      "codificado": 1074705.33,
+      "devengado": 748446.89
+    },
+    {
+      "meta": "Formular cuatro planes para la acción contra el cambio climático hasta el 2027",
+      "actividades": 2,
+      "partidas": 2,
+      "inversion": 1,
+      "plan": 15000.0,
+      "codificado": 381472.0,
+      "devengado": 146030.68
+    },
+    {
+      "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2059",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 0,
+      "plan": 15000.0,
+      "codificado": 114300.0,
+      "devengado": 45699.96
+    },
+    {
+      "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2046",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 0,
+      "plan": 14940.04,
+      "codificado": 716933.2,
+      "devengado": 575228.16
+    },
+    {
+      "meta": "Incrementar los beneficiarios en programas de formación de 1645 en el año 2023, a 3100 al 2031",
+      "actividades": 4,
+      "partidas": 4,
+      "inversion": 3,
+      "plan": 13900.0,
+      "codificado": 625830.89,
+      "devengado": 357994.05
+    },
+    {
+      "meta": "Aumentar hasta el 2027 el número de plantas y estaciones de bombeo",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 0,
+      "plan": 13000.0,
+      "codificado": 13000.0,
+      "devengado": 11802.53
+    },
+    {
+      "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2042",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 0,
+      "plan": 12126.28,
+      "codificado": 716933.2,
+      "devengado": 575228.16
+    },
+    {
+      "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2047",
+      "actividades": 1,
+      "partidas": 0,
+      "inversion": 0,
+      "plan": 11146.76,
+      "codificado": 0,
+      "devengado": 0
+    },
+    {
+      "meta": "Generar un espacio laboral para el area Legislativa del Gobierno Aútonomo Descentralizado del Cantón Montecris",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 0,
+      "plan": 10800.0,
+      "codificado": 13810.0,
+      "devengado": 10200.0
+    },
+    {
+      "meta": "Alcanzar un 90% de cumplimiento de los objetivos de contrato al final del periodo establecido",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 10722.58,
+      "codificado": 42376.98,
+      "devengado": 8307.7
+    },
+    {
+      "meta": "Incrementar los beneficiarios en programas de formación de 1645 en el año 2023, a 3100 al 2029",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 10000.0,
+      "codificado": 464603.02,
+      "devengado": 236655.37
+    },
+    {
+      "meta": "Contar con un Plan de Seguridad Ciudadana y convivencia Pacìfica, que permita prevenir el delito, promover la ",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 10000.0,
+      "codificado": 366472.0,
+      "devengado": 146030.68
+    },
+    {
+      "meta": "Incrementar en el CUP el\nmantenimiento de 43.8 km de vías  hasta el año 2027",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 10000.0,
+      "codificado": 161990.0,
+      "devengado": 52156.52
+    },
+    {
+      "meta": "Mantener anualmente a  40 Instituciones educativas en el programa de Educación Vial cantonal",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 9999.99,
+      "codificado": 464603.02,
+      "devengado": 236655.37
+    },
+    {
+      "meta": "para el 2025 conseguir la elbaoracion y diseño de 3 Proyectos Estratégicos y 7 Proyecto Operativos",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 9999.0,
+      "codificado": 366472.0,
+      "devengado": 146030.68
+    },
+    {
+      "meta": "Mantener anualmente la participación de grupos de atención prioritaria y otros grupos sociales en la capacitac",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 9500.0,
+      "codificado": 39850.0,
+      "devengado": 0.0
+    },
+    {
+      "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2041",
+      "actividades": 1,
+      "partidas": 0,
+      "inversion": 0,
+      "plan": 9350.6,
+      "codificado": 0,
+      "devengado": 0
+    },
+    {
+      "meta": "Formar alianzas estratégicas\nentre el GADM del Cantón Montecristi y Entidades Publicas y Privadas Claves para ",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 0,
+      "plan": 8800.0,
+      "codificado": 237046.67,
+      "devengado": 134000.6
+    },
+    {
+      "meta": "Incrementar los beneficiarios en programas de formación de 1645 en el año 2023, a 3100 al 2028",
+      "actividades": 2,
+      "partidas": 2,
+      "inversion": 2,
+      "plan": 7997.0,
+      "codificado": 30979.86,
+      "devengado": 12758.5
+    },
+    {
+      "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2052",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 0,
+      "plan": 7971.68,
+      "codificado": 716933.2,
+      "devengado": 575228.16
+    },
+    {
+      "meta": "Indice de cobertura y comunicación para el sistema hidrosdanitario",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 7000.0,
+      "codificado": 610102.31,
+      "devengado": 511791.52
+    },
+    {
+      "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2034",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 0,
+      "plan": 7000.0,
+      "codificado": 18200.0,
+      "devengado": 12179.28
+    },
+    {
+      "meta": "Generar un espacio fisciao adecuado para brindar el servicio desde la Registraduria de la Propiedad  del Gobie",
+      "actividades": 2,
+      "partidas": 2,
+      "inversion": 1,
+      "plan": 6900.0,
+      "codificado": 47811.0,
+      "devengado": 10200.0
+    },
+    {
+      "meta": "Al 2025 cinco procesos notariales efectuados",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 0,
+      "plan": 6679.0,
+      "codificado": 3979.0,
+      "devengado": 888.3
+    },
+    {
+      "meta": "Número de notificaciones planificadas/ Número de notificaciones ejecutadas",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 6500.0,
+      "codificado": 60600.0,
+      "devengado": 0.0
+    },
+    {
+      "meta": "Mantener  porcentualmente la   atención   con   servicio especializados         por violencia  intrafamiliar  ",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 6000.0,
+      "codificado": 39850.0,
+      "devengado": 0.0
+    },
+    {
+      "meta": "Alcanzar un 100% de cumplimiento en la adquisición del banco de pruebas al final del periodo establecido",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 6000.0,
+      "codificado": 610102.31,
+      "devengado": 511791.52
+    },
+    {
+      "meta": "Mejorar el índice de calidad de la infraestructura  sanitaria BUENO de 23.02% al",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 0,
+      "plan": 6000.0,
+      "codificado": 6000.0,
+      "devengado": 0.0
+    },
+    {
+      "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2040",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 0,
+      "plan": 5624.88,
+      "codificado": 716933.2,
+      "devengado": 575228.16
+    },
+    {
+      "meta": "Generar un espacio físico adecuado para brindar el servicio desde la\nRegistraduría de la Propiedad del Gobiern",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 0,
+      "plan": 5390.0,
+      "codificado": 5390.0,
+      "devengado": 5390.0
+    },
+    {
+      "meta": "Mejorar, la operatividad y optimización del área de Secretaria General",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 0,
+      "plan": 5000.0,
+      "codificado": 237046.67,
+      "devengado": 134000.6
+    },
+    {
+      "meta": "Incrementar los eventos\nturísticos de 10 en el año 2023, a 22 al 2027",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 5000.0,
+      "codificado": 286015.0,
+      "devengado": 193650.0
+    },
+    {
+      "meta": "Mantener el número de 124 beneficiarios de las campañas de esterilizaciones dentro del Plan para la\nprotección",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 5000.0,
+      "codificado": 5000.0,
+      "devengado": 0.0
+    },
+    {
+      "meta": "Incrementar los beneficiarios de programas y fortalecimiento productivo de 200 en el año 2023, a 900\nal 2027",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 5000.0,
+      "codificado": 286015.0,
+      "devengado": 193650.0
+    },
+    {
+      "meta": "Incrementar los beneficiarios en programas de formación de 1645 en el año 2023, a 3100 al 2030",
+      "actividades": 2,
+      "partidas": 2,
+      "inversion": 2,
+      "plan": 5000.0,
+      "codificado": 12191.31,
+      "devengado": 1051.65
+    },
+    {
+      "meta": "Cumplimiento del 85% en la adquisición de seguros",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 5000.0,
+      "codificado": 48267.8,
+      "devengado": 2085.0
+    },
+    {
+      "meta": "100%  entregadas",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 0,
+      "plan": 5000.0,
+      "codificado": 0,
+      "devengado": 0
+    },
+    {
+      "meta": "Incrementar el porcentaje del sistema de información local del 19,52% en el año 2023, a 80% al 2027",
+      "actividades": 2,
+      "partidas": 2,
+      "inversion": 2,
+      "plan": 4420.0,
+      "codificado": 613082.0,
+      "devengado": 333230.68
+    },
+    {
+      "meta": "Mantener  porcentualmente la gestión de las denuncias con el debido procesos  en el 75% desde el año 2023\nhast",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 4250.0,
+      "codificado": 39850.0,
+      "devengado": 0.0
+    },
+    {
+      "meta": "Incrementar la población atendida en salud preventiva de 320 en el año 2023, a 480\nal 2028",
+      "actividades": 2,
+      "partidas": 2,
+      "inversion": 1,
+      "plan": 3500.0,
+      "codificado": 8300.0,
+      "devengado": 0.0
+    },
+    {
+      "meta": "Alcanzar el 75% de Libros empastados y encuadernados dentro del periodo según cronograma",
+      "actividades": 2,
+      "partidas": 2,
+      "inversion": 1,
+      "plan": 3425.62,
+      "codificado": 94200.01,
+      "devengado": 7961.59
+    },
+    {
+      "meta": "Mejorar el índice de calidad de la infraestructura de agua",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 3000.0,
+      "codificado": 610102.31,
+      "devengado": 511791.52
+    },
+    {
+      "meta": "Mejorar el índice de calidad de la infraestructura de agua potable BUENO de 22.74% al 41.64% hasta el año 2027",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 3000.0,
+      "codificado": 12999.37,
+      "devengado": 5862.87
+    },
+    {
+      "meta": "Mantener   anualmente   la participación de grupos  de atención  prioritaria  y  otros grupos    sociales    e",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 2500.0,
+      "codificado": 39850.0,
+      "devengado": 0.0
+    },
+    {
+      "meta": "Al 2025 una licencia Lexis adquirida",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 0,
+      "plan": 1200.0,
+      "codificado": 114300.0,
+      "devengado": 45699.96
+    },
+    {
+      "meta": "Actualizar el estado del inventario de los bienes y equipos municipales",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 0,
+      "plan": 1000.0,
+      "codificado": 125500.0,
+      "devengado": 0.0
+    },
+    {
+      "meta": "Incrementar el número de estudiantes bachilleres que acceden a la plataforma de acceso a la Universidad de 900",
+      "actividades": 2,
+      "partidas": 2,
+      "inversion": 2,
+      "plan": 1000.0,
+      "codificado": 43376.98,
+      "devengado": 8307.7
+    },
+    {
+      "meta": "En el 2025 obtener el borrador de Crédito enviado por CAF",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 0.0,
+      "codificado": 464603.02,
+      "devengado": 236655.37
+    },
+    {
+      "meta": "Incrementar el porcentaje del sistema de información local del 19,52% en el año 2023, a 80% al 2029",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 0.0,
+      "codificado": 2100.0,
+      "devengado": 0.0
+    },
+    {
+      "meta": "Incrementar el porcentaje del sistema de información local del 19,52% en el año 2023, a 80% al 2030",
+      "actividades": 2,
+      "partidas": 2,
+      "inversion": 2,
+      "plan": 0.0,
+      "codificado": 0.0,
+      "devengado": 0.0
+    },
+    {
+      "meta": "Incrementar el porcentaje del sistema de información local del 19,52% en el año 2023, a 80% al 2032",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 0.0,
+      "codificado": 60600.0,
+      "devengado": 0.0
+    },
+    {
+      "meta": "Incrementar      el      15% anualmente  desde  el  año 2023,      al      2027      de atenciones  en  progra",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 0.0,
+      "codificado": 39850.0,
+      "devengado": 0.0
+    },
+    {
+      "meta": "Alcanzar una TME del 95% en el próximo ciclo de mantenimiento (semestral)",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 1,
+      "plan": 0.0,
+      "codificado": 281720.46,
+      "devengado": 154013.34
+    },
+    {
+      "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2027",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 0,
+      "plan": 0.0,
+      "codificado": 6101.67,
+      "devengado": 1400.42
+    },
+    {
+      "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2028",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 0,
+      "plan": 0.0,
+      "codificado": 5000.0,
+      "devengado": 0.0
+    },
+    {
+      "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2029",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 0,
+      "plan": 0.0,
+      "codificado": 0.0,
+      "devengado": 0.0
+    },
+    {
+      "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2030",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 0,
+      "plan": 0.0,
+      "codificado": 0.0,
+      "devengado": 0.0
+    },
+    {
+      "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2058",
+      "actividades": 1,
+      "partidas": 1,
+      "inversion": 0,
+      "plan": 0.0,
+      "codificado": 0.0,
+      "devengado": 0.0
+    }
+  ],
   "_nota_metodologica": "La 'meta' del POA es operativa (indicador). El mapa meta↔partida se toma del 2025 (único año con META explícita en la fuente); solo partidas DETERMINISTAS (una sola meta) anclan otros años — la ausencia de vínculo NO se infiere.",
   "anios": {
     "2025": {
@@ -1283,7 +2653,7 @@
         {
           "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2036",
           "actividad": "Convenio Purga de Mora (Capital) por deuda contratida con el IESS",
-          "partida": "960201",
+          "partida": "",
           "monto": 421685.48
         },
         {
@@ -1301,7 +2671,7 @@
         {
           "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2039",
           "actividad": "Amortización de Capital  Al Sector Público Financiero Crédito 60035 Construcción del Sistema de Alcantarillado Sanitario",
-          "partida": "960201",
+          "partida": "",
           "monto": 142619.04
         },
         {
@@ -1313,7 +2683,7 @@
         {
           "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2041",
           "actividad": "Amortización de Capital de Al Sector Publico Financiero - Credito # 60150 Catastro de los Predios Urbanos y Cabeceras Pa",
-          "partida": "960201",
+          "partida": "",
           "monto": 9350.6
         },
         {
@@ -1325,7 +2695,7 @@
         {
           "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2043",
           "actividad": "Amortización de Capital de Sector Publico Financiero - Credito # 60244 Prodesarrollo - Bid- Inversion: Cierre Técnico de",
-          "partida": "960201",
+          "partida": "",
           "monto": 45640.56
         },
         {
@@ -1337,7 +2707,7 @@
         {
           "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2045",
           "actividad": "Amortización de Capital de Credito BDE #6543-1 (Capital) Al Sector Público Financiero Constr. Sist. .AA.PP. Las Paolas",
-          "partida": "960201",
+          "partida": "",
           "monto": 90128.48
         },
         {
@@ -1349,7 +2719,7 @@
         {
           "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2047",
           "actividad": "Amortización de Capital de Credito BDE #6543-2 (Capital) Al Sector Público Financiero Constr. Sist. .AA.PP. Las Paolas",
-          "partida": "960201",
+          "partida": "",
           "monto": 11146.76
         },
         {
@@ -1361,7 +2731,7 @@
         {
           "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2049",
           "actividad": "Amortización de Capital Al Sector Público Credito 60858 Construcción de Alcantarillado de Agua Sanitario del Cerro Guaya",
-          "partida": "960201",
+          "partida": "",
           "monto": 26256.88
         },
         {
@@ -1373,7 +2743,7 @@
         {
           "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2051",
           "actividad": "Amorización de Capital del Sector Público Financiero - Crédito 60610 Construcción de Acueductos y Ampliación de Sistemas",
-          "partida": "960201",
+          "partida": "",
           "monto": 149073.76
         },
         {
@@ -1385,7 +2755,7 @@
         {
           "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2053",
           "actividad": "Armotización de Capital de Sector Público Financiero - Crédito BDE 60657 Adquisición de Vehículo Hidrosuccionador de 16Y",
-          "partida": "960201",
+          "partida": "",
           "monto": 99340.2
         },
         {
@@ -1397,7 +2767,7 @@
         {
           "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2055",
           "actividad": "Amortización Capital de Credito #60702 Construcción del Sistema de Agua Potable para La Parroquia La Pila, Cantón Montec",
-          "partida": "960201",
+          "partida": "",
           "monto": 32053.8
         },
         {
@@ -1409,7 +2779,7 @@
         {
           "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2057",
           "actividad": "Amorización de capital, Sector Público Financiero - Créd.BDE 60820 Construcción AA.SS. Parroquia La Pila",
-          "partida": "960201",
+          "partida": "",
           "monto": 122230.6
         },
         {
@@ -1427,7 +2797,7 @@
         {
           "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2060",
           "actividad": "Cuentas por pagar, a proveedores por adquisición de bienes o servicios de años anteriores.",
-          "partida": "970101",
+          "partida": "",
           "monto": 688500.48
         },
         {
@@ -3725,7 +5095,7 @@
         {
           "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2062",
           "actividad": "PAGO SENTENCIA JUDICIALES CONTRATO DE CON S ULTORÍA P OR LISTA CORTA N O. CLC-GA DCM-002-2015 PA RA LOS ESTUDIOS Y DIS E",
-          "partida": "990103",
+          "partida": "",
           "monto": 91000.0
         },
         {
@@ -3863,7 +5233,7 @@
         {
           "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2062",
           "actividad": "“Pago de sentencias judiciales-  Contrato de consultoría por lista corta No. GADCM-CLC-002-2011 para los estudios de agu",
-          "partida": "990103",
+          "partida": "",
           "monto": 39349.31
         },
         {
@@ -3884,918 +5254,976 @@
       "n_actividades": 152,
       "monto_total": 20229702.36,
       "con_meta_fuente": 0,
-      "anclados_por_partida": 0,
+      "anclados_por_partida": 58,
       "actividades": [
         {
           "meta": "",
           "actividad": "Mantenimiento preventivo y correctivo del Vehículo Hidrosuccionador de propiedad municipal",
-          "partida": "Vehículos (Servicio para Mantenimiento y Reparación)\n01.01.01.A100.110.2024.730405.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 10000.0
+          "partida": "730405",
+          "monto": 10000.0,
+          "meta_ancla": "Aumentar del 91% de vehículos en funcionamiento en el año 2023, a 95% desde el 2024 manteniendo la métrica hasta el 2027."
         },
         {
           "meta": "",
           "actividad": "Mantenimiento preventivo y correctivo del Vehículo Hidrosuccionador de propiedad municipal",
-          "partida": "Repuestos y Accesorios\n01.01.01.A100.110.2024.730813.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730813",
           "monto": 5000.0
         },
         {
           "meta": "",
           "actividad": "Mantenimiento preventivo y correctivo del Vehículo Hidrosuccionador de propiedad municipal",
-          "partida": "Lubricantes\n01.01.01.A100.110.2024.730803.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730803",
           "monto": 2000.0
         },
         {
           "meta": "",
           "actividad": "Mantenimiento correctivo y preventivo de maquinarias y equipos de propiedad Municipal",
-          "partida": "Maquinarias y Equipos (Instalación, Mantenimiento y Reparación)\n01.01.01.A100.110.2024.730404.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730404",
           "monto": 100000.0
         },
         {
           "meta": "",
           "actividad": "Mantenimiento correctivo y preventivo de maquinarias y equipos de propiedad Municipal",
-          "partida": "Repuestos y Accesorios\n01.01.01.A100.110.2024.730813.001.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730813",
           "monto": 80000.0
         },
         {
           "meta": "",
           "actividad": "Mantenimiento correctivo y preventivo de maquinarias y equipos de propiedad Municipal",
-          "partida": "Lubricantes\n01.01.01.A100.110.2024.730803.001.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730803",
           "monto": 30000.0
         },
         {
           "meta": "",
           "actividad": "Mantenimiento correctivo y preventivo de vehículos livianos de propiedad Municipal",
-          "partida": "Vehículos (Servicio para Mantenimiento y Reparación)\n01.01.01.A100.110.2024.730405.001.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 35000.0
+          "partida": "730405",
+          "monto": 35000.0,
+          "meta_ancla": "Aumentar del 91% de vehículos en funcionamiento en el año 2023, a 95% desde el 2024 manteniendo la métrica hasta el 2027."
         },
         {
           "meta": "",
           "actividad": "Mantenimiento correctivo y preventivo de vehículos livianos de propiedad Municipal",
-          "partida": "Repuestos y Accesorios\n01.01.01.A100.110.2024.730813.002.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730813",
           "monto": 10000.0
         },
         {
           "meta": "",
           "actividad": "Mantenimiento correctivo y preventivo de vehículos livianos de propiedad Municipal",
-          "partida": "Lubricantes\n01.01.01.A100.110.2024.730803.002.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730803",
           "monto": 5000.0
         },
         {
           "meta": "",
           "actividad": "Matriculación de maquinarias, equipos y vehículos de propiedad Municipal",
-          "partida": "Tasas Generales, Impuestos, Contribuciones, Permisos, Licencias y Patentes\n01.01.01.A100.110.2024.770102.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "770102",
           "monto": 10000.0
         },
         {
           "meta": "",
           "actividad": "Rastreo para la maquinaria, equipos e hidrosuccionador",
-          "partida": "Maquinarias y Equipos (Instalación, Mantenimiento y Reparación)\n01.01.01.A100.110.2024.730404.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730404",
           "monto": 20000.0
         },
         {
           "meta": "",
           "actividad": "Adquisición de llantas para maquinarias y equipos e hidrosuccionador",
-          "partida": "MAQUINARIAS01.01.01.A100.110.2024.730405.002.13.\n09.02.A13.99.99.99.99.002",
-          "monto": 50000.0
+          "partida": "730405",
+          "monto": 50000.0,
+          "meta_ancla": "Aumentar del 91% de vehículos en funcionamiento en el año 2023, a 95% desde el 2024 manteniendo la métrica hasta el 2027."
         },
         {
           "meta": "",
           "actividad": "Adquisición de llanta para vehículos livianos",
-          "partida": "Vehículos (Servicio para Mantenimiento y Reparación)\n01.01.01.A100.110.2024.730405.003.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 15000.0
+          "partida": "730405",
+          "monto": 15000.0,
+          "meta_ancla": "Aumentar del 91% de vehículos en funcionamiento en el año 2023, a 95% desde el 2024 manteniendo la métrica hasta el 2027."
         },
         {
           "meta": "",
           "actividad": "Adquisición de herramientas para los servicios de mantenimientos de los vehículos y maquinarias de propiedad Municipal",
-          "partida": "Herramientas y equipos menores\n01.01.01.A100.110.2024.731406.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "731406",
           "monto": 7000.0
         },
         {
           "meta": "",
           "actividad": "Adquisición de lubricantes, grasas, liquido refrigerante para los vehículos y maquinarias de propiedad Municipal",
-          "partida": "Lubricantes\n01.01.01.A100.110.2024.730803.003.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730803",
           "monto": 10000.0
         },
         {
           "meta": "",
           "actividad": "Adquisición de Repuestos y accesoros para la Instalación, mantenimiento y reparación de mobiliarios",
-          "partida": "Repuestos y Accesorios (Adquisiciòn de repuestos y accesorios para los bienes del GAD)\n01.01.01.A100.110.2024.730813.003.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730813",
           "monto": 20000.0
         },
         {
           "meta": "",
           "actividad": "Seguros (inmuebles, activos, vehículos, equipos y maquinarias)",
-          "partida": "Seguros\n01.01.01.A100.110.2024.770201.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "770201",
           "monto": 80000.0
         },
         {
           "meta": "",
           "actividad": "Adquisición y Adecuación de oficinas (contenedor)",
-          "partida": "Mobiliarios (Instalación, Mantenimiento y Reparación)\n01.01.01.A100.110.2024.730402.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730402",
           "monto": 5000.0
         },
         {
           "meta": "",
           "actividad": "Instalación de Fibras Ópticas",
-          "partida": "Edificios, Locales, Residencias y Cableado Estructurado (Mantenimiento, Reparación e Instalación)\n01.01.01.A100.110.2024.730402.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730402",
           "monto": 10000.0
         },
         {
           "meta": "",
           "actividad": "Gastos notariales :Costas Judiciales, Trámites Notariales, Legalización de Documentos y Arreglos Extrajudiciales",
-          "partida": "Costas Judiciales, Trámites Notariales, Legalización de Documentos y Arreglos Extrajudiciales\n01.01.01.A102.110.2024.770206.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "770206",
           "monto": 9847.0
         },
         {
           "meta": "",
           "actividad": "Adquisición de alimentos y bebidas para talleres de participacion ciudadana y liderazgo  en el canton Montecristi",
-          "partida": "Alimentos y Bebidas\n01.01.01.A100.110.2024.730801.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730801",
           "monto": 2500.0
         },
         {
           "meta": "",
           "actividad": "Estudio de conocimientos, opiniones y evaluaciones de satisfacción ciudadana sobre las competencias, políticas públicas ",
-          "partida": "Consultoría, Asesoría e Investigación Especializada\n01.01.01.A100.110.2024.730801.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730801",
           "monto": 7400.0
         },
         {
           "meta": "",
           "actividad": "Proyecto de fortalecimiento institucional",
-          "partida": "Honorarios por Contratos Civiles de Servicios\n01.01.01.A100.110.2024.730606.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730606",
           "monto": 4000.0
         },
         {
           "meta": "",
           "actividad": "Contratación de Estudios Geotécnicos Requeridos para Diseños de Proyectos Estrategicos",
-          "partida": "Consultoría, Asesoría e Investigación Especializada\n01.01.01.A100.110.2024.730601.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730601",
           "monto": 4000.0
         },
         {
           "meta": "",
           "actividad": "Consultoría Construcción de Centro Comercial",
-          "partida": "Consultoría, Asesoría e Investigación Especializada\n01.01.01.A100.110.2024.730601.001.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730601",
           "monto": 50000.0
         },
         {
           "meta": "",
           "actividad": "Deuda de agua potable",
-          "partida": "Agua Potable\n01.01.01.B300.330.2024.750101.007.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "750101",
           "monto": 651399.24
         },
         {
           "meta": "",
           "actividad": "Transferencia a la Empresa Pública de Vivienda",
-          "partida": "A Empresas Públicas\n01.01.01.B300.310.2024.780103.003.13.09.02.A13.99.9\n9.99.99.001",
+          "partida": "780103",
           "monto": 50400.0
         },
         {
           "meta": "",
           "actividad": "Servicio de señalización horizontal para fortalecer la\nseguridad vial y la infraestructura de movilidad del cantón Monte",
-          "partida": "Insumos,   Materiales   y   Suministros   para Construcción,   Electricidad,   Plomería,   Carpintería, Señalización   Vial, Navegación, Contra Incendios y Placas\n01.01.01.A100.130.2024.730811.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730811",
           "monto": 20000.0
         },
         {
           "meta": "",
           "actividad": "Adquisición de señalización vertical (señaleticas) para fortalecer la seguridad vial y la infraestructura de movilidad d",
-          "partida": "Insumos,   Materiales   y   Suministros   para Construcción,   Electricidad,   Plomería,   Carpintería, Señalización   Vial, Navegación, Contra Incendios y Placas\n01.01.01.A100.130.2024.730811.001.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730811",
           "monto": 25000.0
         },
         {
           "meta": "",
           "actividad": "Construcción, repotenciación de reductores de velocidad en las calles del cantón para fortalecer la seguridad vial y la ",
-          "partida": "Insumos,   Materiales   y   Suministros   para Construcción,   Electricidad,   Plomería,   Carpintería, Señalización   Vial, Navegación, Contra Incendios y Placas\n01.01.01.A100.130.2024.730811.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730811",
           "monto": 10000.0
         },
         {
           "meta": "",
           "actividad": "Adquisición de Dispositivos de Seguridad vial (conos, vallas, etc)",
-          "partida": "Insumos,   Materiales   y   Suministros   para Construcción,   Electricidad,   Plomería,   Carpintería, Señalización   Vial, Navegación, Contra Incendios y Placas\n01.01.01.A100.130.2024.730811.001.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730811",
           "monto": 2000.0
         },
         {
           "meta": "",
           "actividad": "Adquisición de nuevos semáforos",
-          "partida": "Maquinarias y equipos\n01.01.01.A100.130.2024.731404.002.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "731404",
           "monto": 70000.0
         },
         {
           "meta": "",
           "actividad": "Repotenciar instalaciones, mantenimiento y reparaciones del sistema semafórico",
-          "partida": "Maquinarias y Equipos (Instalación, Mantenimiento y Reparación)\n01.01.01.A100.130.2024.730404.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730404",
           "monto": 32000.0
         },
         {
           "meta": "",
           "actividad": "Adquisición de insumos, bienes, materiales y\nsuministros para el mantenimiento y repotenciación del sistema de semaforiz",
-          "partida": "Insumos,   Materiales   y   Suministros   para Construcción,   Electricidad,   Plomería,   Carpintería, Señalización   Vial, Navegación, Contra Incendios y Placas\n01.01.01.A100.130.2024.730811.003.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730811",
           "monto": 10000.0
         },
         {
           "meta": "",
           "actividad": "Contratación materiales didácticos (Activaciones educación vial)",
-          "partida": "Eventos Públicos Promocionales\n01.01.01.A100.130.2024.730249.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730249",
           "monto": 7600.0
         },
         {
           "meta": "",
           "actividad": "Contratación de activaciones, btl, difusión de educación vial masiva",
-          "partida": "Materiales Didácticos\n01.01.01.A100.130.2024.730812.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730812",
           "monto": 5000.0
         },
         {
           "meta": "",
           "actividad": "Realización de eventos públicos de educación vial",
-          "partida": "Eventos Públicos Promocionales\n01.01.01.A100.130.2024.730249.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730249",
           "monto": 2000.0
         },
         {
           "meta": "",
           "actividad": "Arrendamiento y licencias de usos de paquetes informáticos",
-          "partida": "Arrendamiento y Licencias de Uso de Paquetes Informáticos\n01.01.01.A100.130.2024.730702.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 24000.0
+          "partida": "730702",
+          "monto": 24000.0,
+          "meta_ancla": "Incrementar las revisiones técnicas vehiculares de 4000\nen el año 2023, a 20000 al 2027"
         },
         {
           "meta": "",
           "actividad": "Adquisición de caja fuerte para recaudaciones",
-          "partida": "Maquinarias y Equipos\n01.01.01.A100.130.2024.731404.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "731404",
           "monto": 400.0
         },
         {
           "meta": "",
           "actividad": "Realizar ferias de exposición de artes vinculada a la comunidad.",
-          "partida": "Espectáculos Culturales y Sociales\n01.01.01.A200.210.2024.730205.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 12000.0
+          "partida": "730205",
+          "monto": 12000.0,
+          "meta_ancla": "Cumplir con el cronograma de sesiones conmenorativas establecido por parte del área de secretaria general del Gobierno Autónomo Descentralizado del Cantón\nMontecristi"
         },
         {
           "meta": "",
           "actividad": "Programar y ejecutar desfiles, pregones, eventos culturales",
-          "partida": "Eventos Públicos Promocionales\n01.01.01.A200.210.2024.730249.001.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730249",
           "monto": 16000.0
         },
         {
           "meta": "",
           "actividad": "Realizar espectaculos públicos de nivel nacional",
-          "partida": "Espectáculos Culturales y Sociales\n01.01.01.A200.210.2024.730205.001.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 77000.0
+          "partida": "730205",
+          "monto": 77000.0,
+          "meta_ancla": "Cumplir con el cronograma de sesiones conmenorativas establecido por parte del área de secretaria general del Gobierno Autónomo Descentralizado del Cantón\nMontecristi"
         },
         {
           "meta": "",
           "actividad": "Realizar talleres en artes (musica, danza, teatro, pinutra, canto, ceramica, tejido y futbol)",
-          "partida": "Honorarios por Contratos Civiles de Servicios\n01.01.01.A200.210.2024.730606.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730606",
           "monto": 24000.0
         },
         {
           "meta": "",
           "actividad": "Mantenimiento  de la casa patrimonial",
-          "partida": "Edificios, Locales, Residencias y Cableado Estructurado (Mantenimiento, Reparación e Instalación)\n01.01.01.A200.210.2024.730402.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730402",
           "monto": 8000.0
         },
         {
           "meta": "",
           "actividad": "Servicio de capacitación para Promoción para el cumplimiento de las normativas locales para su respectiva aplicación a t",
-          "partida": "Capacitaciòn Para la Ciudadania en General\n01.01.01.B300.360.2024.730613.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730613",
           "monto": 12000.0
         },
         {
           "meta": "",
           "actividad": "Eventos para Fortalecimiento  para la reducción de indicadores territoriales del cantón Montecristi relacionados a las 5",
-          "partida": "Espectáculos Culturales y Sociales\n01.01.01.B300.360.2024.730205.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 10000.0
+          "partida": "730205",
+          "monto": 10000.0,
+          "meta_ancla": "Cumplir con el cronograma de sesiones conmenorativas establecido por parte del área de secretaria general del Gobierno Autónomo Descentralizado del Cantón\nMontecristi"
         },
         {
           "meta": "",
           "actividad": "Alimentación  para los beneficiarios de los programas para el fortalecimiento  para la reducción de indicadores territor",
-          "partida": "Alimentos y Bebidas\n01.01.01.B300.360.2024.730801.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730801",
           "monto": 1500.0
         },
         {
           "meta": "",
           "actividad": "Mantenimiento de instalaciones (gestionar con el área de estudios y  proyectos del GAD municipal, area administrativa, d",
-          "partida": "Edificios, Locales, Residencias y Cableado Estructurado (Mantenimiento, Reparación e Instalación)\n01.01.01.A100.110.2024.730402.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730402",
           "monto": 45552.7
         },
         {
           "meta": "",
           "actividad": "Suministro de tuberias de PVC, Hormigon simple y hormigon armando para las actividades del sistema de alcantarillado del",
-          "partida": "Insumos, Materiales y Suministros para Construcción, Electricidad, Plomería, Carpintería, Señalización Vial\n,Navegación, Contra Incendios y Placas\n01.01.01.B300.330.2024.730811.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730811",
           "monto": 100000.0
         },
         {
           "meta": "",
           "actividad": "Suministros de Tuberías, Tapas de Hierro y Hormigón, Accesorios, cemento y acero, Accesorios y válvulas para ampliación ",
-          "partida": "Insumos, Materiales y Suministros para Construcción, Electricidad, Plomería, Carpintería, Señalización Vial\n,Navegación, Contra Incendios y Placas\n01.01.01.B300.330.2024.730811.001.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730811",
           "monto": 120000.0
         },
         {
           "meta": "",
           "actividad": "Suministros de tuberías de PVC, PEAD y HD para las actividades a ejecutar en el sistema de  agua potable para el Canton ",
-          "partida": "Insumos, Materiales y Suministros para Construcción, Electricidad, Plomería, Carpintería, Señalización Vial\n,Navegación, Contra Incendios y Placas\n01.01.01.B300.330.2024.730811.002.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730811",
           "monto": 50000.0
         },
         {
           "meta": "",
           "actividad": "Construcción de estación de bombeo y reservorio para la captacion  de agua cruda,  en el cantón Montecristi",
-          "partida": "Obras de Infrestructura\n01.01.01.B300.330.2024.750101.001.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "750101",
           "monto": 1000.0
         },
         {
           "meta": "",
           "actividad": "Contrato Complementario Construcción de Alcantarillado de  Agua Sanitaria  del Cerro Guayabal",
-          "partida": "Agua Potable ( Construcción de sistemas de agua poatable)\n01.01.01.B300.330.2024.750101.004.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "750101",
           "monto": 200000.0
         },
         {
           "meta": "",
           "actividad": "Servicio de esterilización y desparacitación a perro y gatos de varios sectores del cantón Montecrsiti",
-          "partida": "Servicios Médicos Hospitalarios y Complementarios\n01.01.01.B300.320.2024.730226.000.13.09.02.A13.99.9\n9.99.99.004",
-          "monto": 5000.0
+          "partida": "730226",
+          "monto": 5000.0,
+          "meta_ancla": "100 % de realización y análisis de resultados de exámenes médicos"
         },
         {
           "meta": "",
           "actividad": "Charlas de educación ambiental en instituciones\neducativas, pertenecientes a la jurisdicción cantonal.",
-          "partida": "Materiales de Oficina\n01.01.01.B300.320.2024.730804.000.13.09.02.A13.99.9\n9.99.99.005",
+          "partida": "730804",
           "monto": 5000.0
         },
         {
           "meta": "",
           "actividad": "Adquisición de plantas para siembra de arboles en sectores identificados en gestión de riesgos ( la vía Portoviejo-Monte",
-          "partida": "Plantas\n01.01.01.B300.320.2024.731515.000.13.09.02.A13.99.9\n9.99.99.006",
-          "monto": 5000.0
+          "partida": "731515",
+          "monto": 5000.0,
+          "meta_ancla": "Aumentar a 17.32 m²/hab el IVU  hasta el 2027"
         },
         {
           "meta": "",
           "actividad": "Servicios Profesionales para elaboración de informes ambientales",
-          "partida": "Honorarios profesionales\n1.01.01.B300.320.2024.730606.000.13.09.02.A13.99.99.\n99.99.008",
+          "partida": "730606",
           "monto": 5000.0
         },
         {
           "meta": "",
           "actividad": "Adquisición kit de respuesta humanitaria",
-          "partida": "Gastos para Situaciones de Emergencia\n01.01.01.B300.310.2024.730821.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 52000.0
+          "partida": "730821",
+          "monto": 52000.0,
+          "meta_ancla": "Incrementar el porcentaje de proyectos ejecutados al 80% al 2027"
         },
         {
           "meta": "",
           "actividad": "Adquisición de estación total",
-          "partida": "Maquinaria y Equipo\n01.01.01.B300.310.2024.730821.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 10000.0
+          "partida": "730821",
+          "monto": 10000.0,
+          "meta_ancla": "Incrementar el porcentaje de proyectos ejecutados al 80% al 2027"
         },
         {
           "meta": "",
           "actividad": "Eventos de promoción turística, gastronómica, artesanal o deportiva que involucren visitas externas al cantón, ferias de",
-          "partida": "Eventos Públicos Promocionales\n01.01.01.A102.210.2024.730249.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730249",
           "monto": 30000.0
         },
         {
           "meta": "",
           "actividad": "Promoción Turística, ( souvenirs ela-boración de Gorras, Cami-setas, Mandiles, Artesanías,\nBolsos,   Lonas, Jarros, Esfe",
-          "partida": "Materiales de Impresión, Fotografía, Reproducción y Publicaciones\n01.01.01.A103.210.2024.730807.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730807",
           "monto": 10000.0
         },
         {
           "meta": "",
           "actividad": "Promoción Turística, (ela-boración de Gorras, Cami-setas, Mandiles, Artesanías, Bolsos,  Lonas, Jarros, Esferos, Promoci",
-          "partida": "Edición, Impresión, Reproducción, Publicaciones, Suscripciones, Fotocopiado, Traducción, Empastado, Enmarcación, Serigrafía, Fotografía, Carnetización, Filmación e Imágenes Satelitales.\n01.01.01.A105.210.2024.730204.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730204",
           "monto": 1500.0
         },
         {
           "meta": "",
           "actividad": "Feriado carnaval, playa San José. Conciertos artisticos.",
-          "partida": "Espectáculos Culturales y Sociales\n01.01.01.A106.210.2024.730205.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 15000.0
+          "partida": "730205",
+          "monto": 15000.0,
+          "meta_ancla": "Cumplir con el cronograma de sesiones conmenorativas establecido por parte del área de secretaria general del Gobierno Autónomo Descentralizado del Cantón\nMontecristi"
         },
         {
           "meta": "",
           "actividad": "Proyecto de fortalecimiento técnico para desarrollar e implementar el Sistema Catastral Integrado a los procesos de Plan",
-          "partida": "Honorarios por Contratos Civiles de Servicios\n01.01.01.B300.310.2024.730606.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730606",
           "monto": 77800.0
         },
         {
           "meta": "",
           "actividad": "Contraparte del Proyecto de Actualización catastral del suelo rural del cantón Montecristi (convenio MIDUVI)**",
-          "partida": "Consultoría, Asesoría e Investigación Especializada\n01.01.01.B300.310.2024.730601.002.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730601",
           "monto": 21600.0
         },
         {
           "meta": "",
           "actividad": "Adquisición de moto guarañas, moto sierra, carretillas, palas, martillos, escaleras tipo tijera, cortadora de césped, ma",
-          "partida": "Insumos, Materiales y Suministros para Construcción, Electricidad, Plomería, Carpintería, Señalización Vial, Navegación, Contra Incendios y Placas\n01.01.01.B300.320.2024.730811.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730811",
           "monto": 6000.0
         },
         {
           "meta": "",
           "actividad": "Adquisición de fertilizantes (Micronutrientes y macronutrientes). Fungicida, herbicida",
-          "partida": "Accesorios e Insumos Químicos y Orgánicos\n01.01.01.B300.320.2024.730819.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730819",
           "monto": 7000.0
         },
         {
           "meta": "",
           "actividad": "Servicio de mantenimiento de motoguadañas bombas de fumigas, hidrolavadora",
-          "partida": "Maquinarias y Equipos (Instalación, Mantenimiento y Reparación)\n01.01.01.B300.320.2024.730404.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730404",
           "monto": 2000.0
         },
         {
           "meta": "",
           "actividad": "Adquisición de materiales, herraminetas para la operatividad de espacios públicos",
-          "partida": "Materiales de Aseo\n01.01.01.B300.320.2024.730805.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730805",
+          "monto": 10000.0,
+          "meta_ancla": "Alcanzar un 95% de cumplimiento del plan de adquisición al final del año"
+        },
+        {
+          "meta": "",
+          "actividad": "",
+          "partida": "730811",
           "monto": 10000.0
         },
         {
           "meta": "",
           "actividad": "",
-          "partida": "Insumos, Materiales y Suministros para Construcción, Electricidad, Plomería, Carpintería, Señalización Vial, Navegación, Contra Incendios y Placas\n01.01.01.B300.320.2024.730811.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 10000.0
-        },
-        {
-          "meta": "",
-          "actividad": "",
-          "partida": "Herramientas y Equipos Menores\n01.01.01.B300.320.2024.731406.002.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "731406",
           "monto": 20000.0
         },
         {
           "meta": "",
           "actividad": "Prevenir y mitigar los daños en los espacios públicos del cantón Montecristi (veredas, parterres, mercados, plazas,canch",
-          "partida": "Urbanización y Embellecimiento\n01.01.01.B300.320.2024.750104.004.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "750104",
           "monto": 60000.0
         },
         {
           "meta": "",
           "actividad": "Mejoramiento de infraestructura de cementerios",
-          "partida": "Urbanización y Embellecimiento\n01.01.01.B300.320.2024.750104.006.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "750104",
           "monto": 57000.0
         },
         {
           "meta": "",
           "actividad": "Implementación de islas de juegos en parques del cantón",
-          "partida": "Urbanización y Embellecimiento\n01.01.01.B301.320.2024.750104.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "750104",
           "monto": 70000.0
         },
         {
           "meta": "",
           "actividad": "Transformadores , control automático para fuentes u otros de parques en el cantón Montecristi",
-          "partida": "Urbanización y Embellecimiento\n01.01.01.B300.320.2024.750104.001.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "750104",
           "monto": 6500.0
         },
         {
           "meta": "",
           "actividad": "Adquisición de equipamientos para personal de seguridad de los espacios públicos del cantón Montecristi",
-          "partida": "Vestuario, Lencería, Prendas de Protección, Insumos y Accesorios para uniformes de lpersonal de Protección,Vigilancia y Seguridad.\n01.01.01.B300.320.2024.730802.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730802",
           "monto": 15000.0
         },
         {
           "meta": "",
           "actividad": "Adquisicion ,instalación  y repotenciación de camaras de seguridad",
-          "partida": "Urbanización y Embellecimiento\n01.01.01.B300.320.2024.750104.002.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "750104",
           "monto": 34000.0
         },
         {
           "meta": "",
           "actividad": "Adquisición de alarmas  comunitarias en el cantón Montecristi",
-          "partida": "Urbanización y Embellecimiento\n01.01.01.B300.320.2024.750104.003.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "750104",
           "monto": 20000.0
         },
         {
           "meta": "",
           "actividad": "Mantenimiento de Terrazas",
-          "partida": "Urbanización y Embellecimiento\n01.01.01.B300.360.2024.750104.002.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "750104",
           "monto": 50000.0
         },
         {
           "meta": "",
           "actividad": "Construcción del Cerramiento, Parqueo, Protección de quebrada",
-          "partida": "Urbanización y Embellecimiento\n01.01.01.B300.360.2024.750104.003.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "750104",
           "monto": 50000.0
         },
         {
           "meta": "",
           "actividad": "Construccción parque las Pampas",
-          "partida": "Urbanización y Embellecimiento\n01.01.01.B300.360.2024.750104.001.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "750104",
           "monto": 37960.0
         },
         {
           "meta": "",
           "actividad": "Adecuación de tercer y cuarto piso del Municipio",
-          "partida": "Edificios, Locales, Residencias y Cableado Estructurado (Mantenimiento, Reparación e Instalación)\n01.01.01.B300.360.2024.730402.001.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730402",
           "monto": 85000.0
         },
         {
           "meta": "",
           "actividad": "Becas como subsidio a las certificaciones artesanales",
-          "partida": "Becas\n01.01.01.B300.360.2024.780206.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "780206",
           "monto": 3000.0
         },
         {
           "meta": "",
           "actividad": "Materiales e insumos para tejer (paja toquilla, madera, azufre)",
-          "partida": "Menaje y Accesorios Descartables\n01.01.01.B300.360.2024.730820.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730820",
           "monto": 3000.0
         },
         {
           "meta": "",
           "actividad": "Adquisición de compra de electrodomesticos para cursos a la ciudadana",
-          "partida": "Ayudas Técnicas para Compensar Discapacidades\n01.01.01.B300.360.2024.730825.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730825",
           "monto": 5000.0
         },
         {
           "meta": "",
           "actividad": "Adquisición Para Alimentos Y Bebidas Para Materia Prima De Talleres",
-          "partida": "Alimentos y Bebidas\n01.01.01.B300.360.2024.730801.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730801",
           "monto": 8000.0
         },
         {
           "meta": "",
           "actividad": "Becas Como Subsidio Para Cursos Con Acreditación",
-          "partida": "Becas\n01.01.01.B300.360.2024.780206.001.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "780206",
           "monto": 18000.0
         },
         {
           "meta": "",
           "actividad": "Alimentos Y Bebidas",
-          "partida": "Alimentos y Bebidas\n01.01.01.B300.360.2024.730801.002.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730801",
           "monto": 6500.0
         },
         {
           "meta": "",
           "actividad": "Materiales De Oficina /Didáctico Especializado",
-          "partida": "Materiales de Oficina\n01.01.01.B300.360.2024.730804.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730804",
           "monto": 1000.0
         },
         {
           "meta": "",
           "actividad": "Entrega De Souvenirs",
-          "partida": "Vestuario, Lencería, Prendas de Protección, Insumos y Accesorios para uniformes del personal de Protección,Vigilancia y Seguridad.\n01.01.01.B300.360.2024.730802.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730802",
           "monto": 3000.0
         },
         {
           "meta": "",
           "actividad": "Capacitaciones En Talleres De Informática, Gastronomía, Globoflexia",
-          "partida": "Capacitación para la Ciudadanía en General\n01.01.01.B300.360.2024.730613.001.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730613",
           "monto": 3900.0
         },
         {
           "meta": "",
           "actividad": "Compra De  Instrumental Médico Quirúrgico Para Los Diferentes Clubes De Salud",
-          "partida": "Instrumental Médico Quirúrgico\n01.01.01.B300.360.2024.730808.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 10000.0
+          "partida": "730808",
+          "monto": 10000.0,
+          "meta_ancla": "Incrementar la población atendida en salud preventiva de 320 en el año 2023, a 480\nal 2027"
         },
         {
           "meta": "",
           "actividad": "Dotación De Materiales De Limpieza",
-          "partida": "Materiales de Aseo\n01.01.01.B300.360.2024.730805.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 1000.0
+          "partida": "730805",
+          "monto": 1000.0,
+          "meta_ancla": "Alcanzar un 95% de cumplimiento del plan de adquisición al final del año"
         },
         {
           "meta": "",
           "actividad": "Realizar Trabajos De Readecuación A Los Infocentros Y Centros De Educación",
-          "partida": "Insumos, Materiales y Suministros para Construcción, Electricidad, Plomería, Carpintería, Señalización Vial, Navegación, Contra Incendios y Placas\n01.01.01.B300.360.2024.730811.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730811",
           "monto": 10000.0
         },
         {
           "meta": "",
           "actividad": "Levantamiento De Información Social A  El Territorio Montecristense",
-          "partida": "Alimentos y Bebidas\n01.01.01.B300.360.2024.730801.002.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730801",
           "monto": 7000.0
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Remuneraciones Unificadas\n01.01.01.A200.210.2024.710105.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 359580.0
+          "partida": "710105",
+          "monto": 359580.0,
+          "meta_ancla": "12 de roles  realizados"
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Salario Unificado\n01.01.01.A200.210.2024.710106.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 47124.0
+          "partida": "710106",
+          "monto": 47124.0,
+          "meta_ancla": "12 de roles  realizados"
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Decimo Tercer sueldo\n01.01.01.A200.210.2024.710203.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 33892.0
+          "partida": "710203",
+          "monto": 33892.0,
+          "meta_ancla": "12 de roles  realizados"
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Decimo Cuarto Sueldo\n01.01.01.A200.210.2024.710204.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "710204",
           "monto": 21850.0
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Aporte Patronal\n01.01.01.A200.210.2024.710601.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 47052.64
+          "partida": "710601",
+          "monto": 47052.64,
+          "meta_ancla": "12 de roles  realizados"
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Fondo de Reserva\n01.01.01.A200.210.2024.710602.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 33878.44
+          "partida": "710602",
+          "monto": 33878.44,
+          "meta_ancla": "12 de roles  realizados"
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Subsidio Alimentación\n01.01.01.A200.210.2024.710306.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 5040.0
+          "partida": "710306",
+          "monto": 5040.0,
+          "meta_ancla": "12 de roles  realizados"
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Subsidio de Transporte\n01.01.01.A200.210.2024.710304.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "710304",
           "monto": 420.0
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Subsidio Familiar\n01.01.01.A200.210.2024.710401.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 216.0
+          "partida": "710401",
+          "monto": 216.0,
+          "meta_ancla": "12 de roles  realizados"
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Subsidio de Antigüedad\n01.01.01.A200.210.2024.710408.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 471.24
+          "partida": "710408",
+          "monto": 471.24,
+          "meta_ancla": "12 de roles  realizados"
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Remuneraciones Unificadas\n01.01.01.B300.330.2024.710105.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 347762.66
+          "partida": "710105",
+          "monto": 347762.66,
+          "meta_ancla": "12 de roles  realizados"
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Salario Unificado\n01.01.01.B300.330.2024.710106.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 224064.0
+          "partida": "710106",
+          "monto": 224064.0,
+          "meta_ancla": "12 de roles  realizados"
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Decimo Tercer sueldo\n01.01.01.B300.330.2024.710203.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 47652.22
+          "partida": "710203",
+          "monto": 47652.22,
+          "meta_ancla": "12 de roles  realizados"
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Decimo Cuarto Sueldo\n01.01.01.B300.330.2024.710204.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "710204",
           "monto": 26125.0
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Aporte Patronal\n01.01.01.B300.330.2024.710601.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 67174.13
+          "partida": "710601",
+          "monto": 67174.13,
+          "meta_ancla": "12 de roles  realizados"
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Fondo de Reserva\n01.01.01.B300.330.2024.710602.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 47633.16
+          "partida": "710602",
+          "monto": 47633.16,
+          "meta_ancla": "12 de roles  realizados"
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Subsidio Alimentación\n01.01.01.B300.330.2024.710306.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 19440.0
+          "partida": "710306",
+          "monto": 19440.0,
+          "meta_ancla": "12 de roles  realizados"
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Subsidio de Transporte\n01.01.01.B300.330.2024.710304.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "710304",
           "monto": 1620.0
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Subsidio Familiar\n01.01.01.B300.330.2024.710401.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 1026.0
+          "partida": "710401",
+          "monto": 1026.0,
+          "meta_ancla": "12 de roles  realizados"
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Subsidio de Antigüedad\n01.01.01.B300.330.2024.710408.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 2240.64
+          "partida": "710408",
+          "monto": 2240.64,
+          "meta_ancla": "12 de roles  realizados"
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Remuneraciones Unificadas\n01.01.01.B300.360.2024.710105.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 292561.67
+          "partida": "710105",
+          "monto": 292561.67,
+          "meta_ancla": "12 de roles  realizados"
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Salario Unificado\n01.01.01.B300.360.2024.710106.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 1179168.0
+          "partida": "710106",
+          "monto": 1179168.0,
+          "meta_ancla": "12 de roles  realizados"
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Decimo Tercer sueldo01.01.01.B300.360.2024.710203.000.13.09.02.A1 3.99.99.99.99.002",
-          "monto": 122644.14
+          "partida": "710203",
+          "monto": 122644.14,
+          "meta_ancla": "12 de roles  realizados"
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Decimo Cuarto Sueldo\n01.01.01.B300.360.2024.710204.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "710204",
           "monto": 85975.0
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Aporte Patronal\n01.01.01.B300.360.2024.710601.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 176775.35
+          "partida": "710601",
+          "monto": 176775.35,
+          "meta_ancla": "12 de roles  realizados"
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Fondo de Reserva\n01.01.01.B300.360.2024.710602.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 122595.08
+          "partida": "710602",
+          "monto": 122595.08,
+          "meta_ancla": "12 de roles  realizados"
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Subsidio Alimentación\n01.01.01.B300.360.2024.710306.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 114480.0
+          "partida": "710306",
+          "monto": 114480.0,
+          "meta_ancla": "12 de roles  realizados"
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Subsidio de Transporte\n01.01.01.B300.360.2024.710304.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "710304",
           "monto": 9540.0
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Subsidio Familiar\n01.01.01.B300.360.2024.710401.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 5076.0
+          "partida": "710401",
+          "monto": 5076.0,
+          "meta_ancla": "12 de roles  realizados"
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Subsidio de Antigüedad\n01.01.01.B300.360.2024.710408.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 12308.52
+          "partida": "710408",
+          "monto": 12308.52,
+          "meta_ancla": "12 de roles  realizados"
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Remuneraciones Unificadas\n01.01.01.B300.330.2024.710105.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 158684.0
+          "partida": "710105",
+          "monto": 158684.0,
+          "meta_ancla": "12 de roles  realizados"
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Salario Unificado\n01.01.01.B300.330.2024.710106.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 928644.0
+          "partida": "710106",
+          "monto": 928644.0,
+          "meta_ancla": "12 de roles  realizados"
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Decimo Tercer sueldo\n01.01.01.B300.330.2024.710203.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 90610.67
+          "partida": "710203",
+          "monto": 90610.67,
+          "meta_ancla": "12 de roles  realizados"
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Decimo Cuarto Sueldo\n01.01.01.B300.330.2024.710204.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "710204",
           "monto": 60325.0
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Aporte Patronal\n01.01.01.B300.330.2024.710601.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 130895.93
+          "partida": "710601",
+          "monto": 130895.93,
+          "meta_ancla": "12 de roles  realizados"
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Fondo de Reserva\n01.01.01.B300.330.2024.710602.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 90574.42
+          "partida": "710602",
+          "monto": 90574.42,
+          "meta_ancla": "12 de roles  realizados"
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Subsidio Alimentación\n01.01.01.B300.330.2024.710306.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 82080.0
+          "partida": "710306",
+          "monto": 82080.0,
+          "meta_ancla": "12 de roles  realizados"
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Subsidio de Transporte\n01.01.01.B300.330.2024.710304.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "710304",
           "monto": 6840.0
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Subsidio Familiar\n01.01.01.B300.330.2024.710401.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 2916.0
+          "partida": "710401",
+          "monto": 2916.0,
+          "meta_ancla": "12 de roles  realizados"
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Subsidio de Antigüedad\n01.01.01.B300.330.2024.710408.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 9872.64
+          "partida": "710408",
+          "monto": 9872.64,
+          "meta_ancla": "12 de roles  realizados"
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Remuneraciones Unificadas\n01.01.01.B300.360.2024.710105.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 355462.0
+          "partida": "710105",
+          "monto": 355462.0,
+          "meta_ancla": "12 de roles  realizados"
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Salario Unificado\n01.01.01.B300.360.2024.710106.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 924036.0
+          "partida": "710106",
+          "monto": 924036.0,
+          "meta_ancla": "12 de roles  realizados"
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Decimo Tercer sueldo\n01.01.01.B300.360.2024.710203.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 106624.83
+          "partida": "710203",
+          "monto": 106624.83,
+          "meta_ancla": "12 de roles  realizados"
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Decimo Cuarto Sueldo\n01.01.01.B300.360.2024.710204.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "710204",
           "monto": 69825.0
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Aporte Patronal\n01.01.01.B300.360.2024.710601.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 152553.7
+          "partida": "710601",
+          "monto": 152553.7,
+          "meta_ancla": "12 de roles  realizados"
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Fondo de Reserva\n01.01.01.B300.360.2024.710602.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 106582.18
+          "partida": "710602",
+          "monto": 106582.18,
+          "meta_ancla": "12 de roles  realizados"
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Subsidio Alimentación\n01.01.01.B300.360.2024.710306.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 81360.0
+          "partida": "710306",
+          "monto": 81360.0,
+          "meta_ancla": "12 de roles  realizados"
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Subsidio de Transporte\n01.01.01.B300.360.2024.710304.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "710304",
           "monto": 6780.0
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Subsidio Familiar\n01.01.01.B300.360.2024.710401.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 3132.0
+          "partida": "710401",
+          "monto": 3132.0,
+          "meta_ancla": "12 de roles  realizados"
         },
         {
           "meta": "",
           "actividad": "Remuneraciones y beneficios de ley",
-          "partida": "Subsidio de Antigüedad\n01.01.01.B300.360.2024.710408.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 9708.24
+          "partida": "710408",
+          "monto": 9708.24,
+          "meta_ancla": "12 de roles  realizados"
         },
         {
           "meta": "",
           "actividad": "Capacitaciones",
-          "partida": "Capacitación a Servidores Públicos\n01.01.01.A100.110.2024.730612.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 45000.0
+          "partida": "730612",
+          "monto": 45000.0,
+          "meta_ancla": "Incrementar el porcentaje del sistema de información local del 19,52% en el año 2023, a 80% al 2030"
         },
         {
           "meta": "",
           "actividad": "Uniformes código de trabajo",
-          "partida": "Vestuario, Lencería, Prendas de Protección, Insumos y Accesorios para uniformes del personal de Protección,Vigilancia y Seguridad.\n01.01.01.A100.110.2024.730802.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730802",
           "monto": 36547.0
         },
         {
           "meta": "",
           "actividad": "Uniformes código de trabajo",
-          "partida": "Vestuario, Lencería, Prendas de Protección, Insumos y Accesorios para uniformes del personal de Protección,Vigilancia y Seguridad.\n01.01.01.A100.110.2024.730802.003.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730802",
           "monto": 86000.0
         },
         {
           "meta": "",
           "actividad": "Uniformes LOSEP (nombramiento)",
-          "partida": "Vestuario, Lencería, Prendas de Protección, Insumos y Accesorios para uniformes del personal de Protección,Vigilancia y Seguridad.\n01.01.01.A100.110.2024.730802.002.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730802",
           "monto": 25000.0
         },
         {
           "meta": "",
           "actividad": "Salud Ocupacional",
-          "partida": "Dispositivos Médicos para Laboratorio Clínico y de Patología\n01.01.01.A100.110.2024.730810.000.13.09.02.A13.99.9\n9.99.99.002",
+          "partida": "730810",
           "monto": 5000.0
         },
         {
           "meta": "",
           "actividad": "Salud Ocupacional (examenes periódicos)",
-          "partida": "Dispositivos Médicos de Uso General\n01.01.01.A100.110.2024.730826.000.13.09.02.A13.99.9\n9.99.99.002",
-          "monto": 58052.74
+          "partida": "730826",
+          "monto": 58052.74,
+          "meta_ancla": "Incrementar la población atendida en salud preventiva de 320 en el año 2023, a 480\nal 2027"
         },
         {
           "meta": "",
           "actividad": "",
-          "partida": "TOTAL DE INVERSIÓN",
+          "partida": "",
           "monto": 10114851.18
         }
       ]
@@ -4804,906 +6232,931 @@
       "n_actividades": 173,
       "monto_total": 23294082.9,
       "con_meta_fuente": 0,
-      "anclados_por_partida": 0,
+      "anclados_por_partida": 30,
       "actividades": [
         {
           "meta": "",
           "actividad": "Pasajes al Interior",
-          "partida": "01.01.01.B300.320.2023.530301.000.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "530301",
           "monto": 1000.0
         },
         {
           "meta": "",
           "actividad": "Viáticos y Subsistencias en el Interior",
-          "partida": "01.01.01.B300.320.2023.530303.000.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "530303",
           "monto": 1500.0
         },
         {
           "meta": "",
           "actividad": "Investigaciones profesionales y análisis de\nlaboratorios para control y monioreo de las aguas",
-          "partida": "01.01.01.B300.320.2023.530609.003.13.09.\n02.A13.99.99.99.99.002",
-          "monto": 20000.0
+          "partida": "530609",
+          "monto": 20000.0,
+          "meta_ancla": "Formular cuatro planes para la acción contra el cambio climático hasta el 2027"
         },
         {
           "meta": "",
           "actividad": "Adquisición de KIT de primera respuesta humanitaria. Gastos para Situaciones de Emergencia.",
-          "partida": "01.01.01.B300.310.2023.730821.000",
-          "monto": 70000.0
+          "partida": "730821",
+          "monto": 70000.0,
+          "meta_ancla": "Incrementar el porcentaje de proyectos ejecutados al 80% al 2027"
         },
         {
           "meta": "",
           "actividad": "Planificar e implementar ferias produtivas y foros de negocios para emprendedores del cantón de Montecristi.",
-          "partida": "01.01.01.B300.360.2023.730613.004.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "730613",
           "monto": 8000.0
         },
         {
           "meta": "",
           "actividad": "Talleres artesanales y técnicos (cursos: belleza, gastronomia, primeros auxilio, barber shop, fomix, globos, electricida",
-          "partida": "01.01.01.B300.360.2023.730613.005.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "730613",
           "monto": 12000.0
         },
         {
           "meta": "",
           "actividad": "Desarrollar y ejecutar el Sistema de Productivo y técnico para la Agricultura urbana y rural, que se denominan granjas p",
-          "partida": "01.01.01.B300.360.2023.730613.006.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "730613",
           "monto": 6600.0
         },
         {
           "meta": "",
           "actividad": "Participación en ferias de turismo cantonal y /o nacional.",
-          "partida": "01.01.01.I500.510.2023.530249.000.13.09.0\n2.A13.99.99.99.99.001",
+          "partida": "530249",
           "monto": 10000.0
         },
         {
           "meta": "",
           "actividad": "Desarrollo del mapa para posicionamiento turístico del Cantón Montecristi",
-          "partida": "01.01.01.A200.210.2023.730204.000.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "730204",
           "monto": 9000.0
         },
         {
           "meta": "",
           "actividad": "Construcción de la I Etapa del proyecto ecoturísitico para potencializar el balneario de la Playa San José.",
-          "partida": "01.01.01.A200.210.2023.750107",
-          "monto": 45160.0
+          "partida": "750107",
+          "monto": 45160.0,
+          "meta_ancla": "Aumentar a 10.73 m²/hab el índice de equipamiento del Centro Urbano Principal hasta el 2027"
         },
         {
           "meta": "",
           "actividad": "Estudio de Edificaciones con características patrimoniales (Convenio con Facultad de Arquitectura ULEAM)",
-          "partida": "01.01.01.A200.210.2023.530605.001.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "530605",
           "monto": 4000.0
         },
         {
           "meta": "",
           "actividad": "Eventos de promoción turística, gastronómica y artesanales que involuceen visitas al cantón",
-          "partida": "01.01.01.A200.210.2023.730249.005.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "730249",
           "monto": 4000.0
         },
         {
           "meta": "",
           "actividad": "Adquisición de Estación Total  SOUTH N6 + (PLUS) Modelo NTS-362R10 DE 2\"",
-          "partida": "01.01.01.A100.110.2023.840104.00",
+          "partida": "840104",
           "monto": 4500.0
         },
         {
           "meta": "",
           "actividad": "Mejoramiento de espacios de encuentro en las comunidades del Cantón Montecristi",
-          "partida": "01.01.01.B300.360.2023.730613.003.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "730613",
           "monto": 10000.0
         },
         {
           "meta": "",
           "actividad": "Equipamiento del Centro de Salud Municipal",
-          "partida": "01.01.01.B300.360.2023.730826.001.13.09.\n02.A13.99.99.99.99.001",
-          "monto": 5000.0
+          "partida": "730826",
+          "monto": 5000.0,
+          "meta_ancla": "Incrementar la población atendida en salud preventiva de 320 en el año 2023, a 480\nal 2027"
         },
         {
           "meta": "",
           "actividad": "Talleres para una zona libre de\nembarazo en adolescentes en las comunidades del Cantón (Convenio GAD MONTECRISTI Y\nPLAN ",
-          "partida": "01.01.01.B300.360.2023.730613.001.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "730613",
           "monto": 10000.0
         },
         {
           "meta": "",
           "actividad": "Adquisición de Accesorios e Insumos Químicos y Orgánicos",
-          "partida": "01.01.01.B300.360.2023.730819.001.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "730819",
           "monto": 3340.0
         },
         {
           "meta": "",
           "actividad": "Seguimiento en el cumplimiento de las medidas administrativas de protección de derechos a niñas, niños, adolescentes, mu",
-          "partida": "01.01.01.B300.360.2023.530241.002.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "530241",
           "monto": 7750.0
         },
         {
           "meta": "",
           "actividad": "Dietas a Miembros de la sociedad civil del Consejo Cantonal de Protección de Derechos del Cantón Montecristi",
-          "partida": "01.01.01.B300.360.2023.570301.001.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "570301",
           "monto": 3250.0
         },
         {
           "meta": "",
           "actividad": "Levantamiento de información para el desarrollo del diagnóstico cantonal para la Agenda de políticas públicas con la col",
-          "partida": "01.01.01.B300.360.2023.530224.001.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "530224",
           "monto": 1000.0
         },
         {
           "meta": "",
           "actividad": "Mesas de trabajo institucional e interinstitucional para la formulación de Políticas Públicas",
-          "partida": "01.01.01.B300.360.2023.530224.001.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "530224",
           "monto": 1000.0
         },
         {
           "meta": "",
           "actividad": "Reuniones ordinarias del CCPD y mesas de trabajo institucional e interinstitucional para la Formulación de Políticas Púb",
-          "partida": "01.01.01.B300.360.2023.530224.001.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "530224",
           "monto": 2000.0
         },
         {
           "meta": "",
           "actividad": "Acuerdos interinstitucionales y asistencia técnica",
-          "partida": "01.01.01.B300.360.2023.530241.001.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "530241",
           "monto": 800.0
         },
         {
           "meta": "",
           "actividad": "Monitoreo para prevenir y preservar los derechos de los grupos de Atención prioritaria",
-          "partida": "01.01.01.B300.360.2023.530241.001.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "530241",
           "monto": 2200.0
         },
         {
           "meta": "",
           "actividad": "Capacitaciones, cursos, seminarios y talleres locales, provinciales y nacionales para los Grupos de Atención Prioritaria",
-          "partida": "01.01.01.B300.360.2023.730613.007.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "730613",
           "monto": 3600.0
         },
         {
           "meta": "",
           "actividad": "Fortalecimiento tecnico para formulación de politica pública",
-          "partida": "01.01.01.B300.360.2023.730606.000.",
+          "partida": "730606",
           "monto": 3000.0
         },
         {
           "meta": "",
           "actividad": "Mejoramiento de punto de atención del CCPD",
-          "partida": "01.01.01.B300.360.2023.840103.000.",
+          "partida": "840103",
           "monto": 6000.0
         },
         {
           "meta": "",
           "actividad": "Transferencias corrientes al sector Público a la Dirección Penitenciaria",
-          "partida": "01.01.01.I500.520.2023.580102.004.13.09.0\n2.A13.99.99.99.99.002",
+          "partida": "580102",
           "monto": 1000.0
         },
         {
           "meta": "",
           "actividad": "Desarrollo de actividades cívicas, sesión solemne, desfile, pregón",
-          "partida": "01.01.01.A200.210.2023.730249.001.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "730249",
           "monto": 19000.0
         },
         {
           "meta": "",
           "actividad": "Actividades sociales en el mes de octubre",
-          "partida": "01.01.01.A200.210.2023.730205.001.13.09.\n02.A13.99.99.99.99.001",
-          "monto": 12150.5
+          "partida": "730205",
+          "monto": 12150.5,
+          "meta_ancla": "Cumplir con el cronograma de sesiones conmenorativas establecido por parte del área de secretaria general del Gobierno Autónomo Descentralizado del Cantón\nMontecristi"
         },
         {
           "meta": "",
           "actividad": "Consultoría Ciudad Creativa",
-          "partida": "01.01.01.A200.210.2023.730601.002.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "730601",
           "monto": 9000.0
         },
         {
           "meta": "",
           "actividad": "Espectáculos sociales y culturales",
-          "partida": "01.01.01.A200.210.2023.730205.000.13.09.\n02.A13.99.99.99.99.001",
-          "monto": 20000.0
+          "partida": "730205",
+          "monto": 20000.0,
+          "meta_ancla": "Cumplir con el cronograma de sesiones conmenorativas establecido por parte del área de secretaria general del Gobierno Autónomo Descentralizado del Cantón\nMontecristi"
         },
         {
           "meta": "",
           "actividad": "Proyecto del Tejido del sombrero fino de la Paja Toquilla del Cantón Montecristi",
-          "partida": "01.01.01.A200.210.2023.750104.003.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "750104",
           "monto": 275000.0
         },
         {
           "meta": "",
           "actividad": "Plan de Reactivación Deportiva",
-          "partida": "01.01.01.A200.210.2023.730249.006.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "730249",
           "monto": 20000.0
         },
         {
           "meta": "",
           "actividad": "Elaboración Símbolos cívicos: Banderas Ecuador, Manabí, Montecristi",
-          "partida": "01.01.01.A200.210.2023.731408.002.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "731408",
           "monto": 2000.0
         },
         {
           "meta": "",
           "actividad": "Cursos permanentes en artes: Musica, Danza, Teatro, Pintura, Oratoria",
-          "partida": "01.01.01.A200.210.2023.730606.002.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "730606",
           "monto": 30000.0
         },
         {
           "meta": "",
           "actividad": "Edificios, Locales, Residencias y Cableado Estructurado (Instalación, Mantenimiento y Reparación)",
-          "partida": "01.01.01.A200.210.2023.530402.000.13.09.\n02.A13.99.99.99.99.002",
-          "monto": 5000.0
+          "partida": "530402",
+          "monto": 5000.0,
+          "meta_ancla": "Mantener y mejorar las instalaciones e infraestructuras municipales."
         },
         {
           "meta": "",
           "actividad": "Plan de Acceso a Carreras Universitarias en el Sitio Los Bajos del Cantón Montecristi (Convenio Interinstitucional ULEAM",
-          "partida": "01.01.01.A200.210.2023.530613.001.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "530613",
           "monto": 10000.0
         },
         {
           "meta": "",
           "actividad": "Mantenimiento Torre Reloj Público",
-          "partida": "01.01.01.A200.210.2023.730405.001.13.09.\n02.A13.99.99.99.99.002",
-          "monto": 2000.0
+          "partida": "730405",
+          "monto": 2000.0,
+          "meta_ancla": "Aumentar del 91% de vehículos en funcionamiento en el año 2023, a 95% desde el 2024 manteniendo la métrica hasta el 2027."
         },
         {
           "meta": "",
           "actividad": "Crédito BDE -Proyecto de Espacio\nde Memoria Ciudadana implantado en la Casa Patrimonial Ex Escuela de Niñas Eloy Alfaro ",
-          "partida": "01.01.01.A200.210.2023.750104.004.13.09.\n02.A13.99.99.99.99.302",
+          "partida": "750104",
           "monto": 13444.69
         },
         {
           "meta": "",
           "actividad": "Espectáculos Culturales y Sociales",
-          "partida": "01.01.01.I500.510.2023.530205.000.13.09.0\n2.A13.99.99.99.99.001",
+          "partida": "530205",
           "monto": 10000.0
         },
         {
           "meta": "",
           "actividad": "Agua Potable",
-          "partida": "01.01.01.B300.330.2023.730101.000.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "730101",
           "monto": 100000.0
         },
         {
           "meta": "",
           "actividad": "Arrendamiento de Tanqueros para dotación de agua potable al cantón Montecristi, a través de Feria Inclusiva",
-          "partida": "01.01.01.B300.330.2023.730505.007.13.09.0",
+          "partida": "730505",
           "monto": 179134.86
         },
         {
           "meta": "",
           "actividad": "Mantenimiento y Repotenciación de Plantas de Tratamiento de Agua Potable Los Mangos y Cerro Guayabal del Cantón Montecri",
-          "partida": "01.01.01.B300.330.2023.750501.004.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "750501",
           "monto": 70736.82
         },
         {
           "meta": "",
           "actividad": "Construcción de Colectores. Hormigon Armado  y redes terciarias de Alcantarillado Sanitario  para la recolección y desca",
-          "partida": "01.01.01.B300.330.2023.750103.001.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "750103",
           "monto": 109000.0
         },
         {
           "meta": "",
           "actividad": "Suministros de Tuberías, Tapas de Hierro y Hormigón, Accesorios, cemento y acero, Accesorios y válvulas para ampliación ",
-          "partida": "01.01.01.B300.330.2023.750501.002.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "750501",
           "monto": 107638.39
         },
         {
           "meta": "",
           "actividad": "Operación y Mantenimiento de la Potabilización de Aguas en el Cantón Montecristi (Adquisición de Productos Quimicos)",
-          "partida": "01.01.01.B300.330.2023.750501.003.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "750501",
           "monto": 50000.0
         },
         {
           "meta": "",
           "actividad": "Suministros de tuberías para instalación de redes de agua potable en los diferentes sectores del Cantón Montecristi",
-          "partida": "01.01.01.B300.330.2023.750501.004.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "750501",
           "monto": 113800.0
         },
         {
           "meta": "",
           "actividad": "Adquisición de equipos para actividades operativas",
-          "partida": "01.01.01.B300.330.2023.840104.002.13.09.0",
+          "partida": "840104",
           "monto": 14496.6
         },
         {
           "meta": "",
           "actividad": "Construcción de estación de bombeo y reservorio de agua cruda en el cantón Montecristi",
-          "partida": "01.01.01.B300.330.2023.750101.000.13.09.0",
+          "partida": "750101",
           "monto": 5000.0
         },
         {
           "meta": "",
           "actividad": "Mantenimiento y repotenciación de estaciones de bombeo  en diferentes sectores  del cantón Montecristi",
-          "partida": "01.01.01.B300.330.2023.730404.002.13.09.0",
+          "partida": "730404",
           "monto": 50000.0
         },
         {
           "meta": "",
           "actividad": "Alquiler de carro Hidrosuccionador",
-          "partida": "01.01.01.B300.330.2023.730505.002.13.09.0",
+          "partida": "730505",
           "monto": 30000.0
         },
         {
           "meta": "",
           "actividad": "CRÉDITO BDE -Fiscalización Construcción Sistema de Agua Potable Parroquia La Pila",
-          "partida": "01.01.01.B300.330.2023.730604.001.13.09.\n02.A13.99.99.99.99.302",
+          "partida": "730604",
           "monto": 50000.0
         },
         {
           "meta": "",
           "actividad": "Crédito BDE -Fiscalización de la Construcción Sistema de Alcantarillado Parroquia La Pila",
-          "partida": "01.01.01.B300.330.2023.730604.002.13.09.\n02.A13.99.99.99.99.302",
+          "partida": "730604",
           "monto": 140000.0
         },
         {
           "meta": "",
           "actividad": "Crédito BDE -Fiscalizacion de la Construcción de Agua Potable y Alcantarillado Sanitario del Sitio\nCerro Guayabal del Ca",
-          "partida": "01.01.01.B300.330.2023.730604.003.13.09.\n02.A13.99.99.99.99.302",
+          "partida": "730604",
           "monto": 63720.69
         },
         {
           "meta": "",
           "actividad": "Insumos, Materiales y suministros para construcción.",
-          "partida": "01.01.01.B300.330.2023.730811.005.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "730811",
           "monto": 6200.0
         },
         {
           "meta": "",
           "actividad": "CRÉDITO BDE -Construcción Sistema de Agua Potable para la Parroquia La Pila",
-          "partida": "01.01.01.B300.330.2023.750101.001.13.09.\n02.A13.99.99.99.99.302",
+          "partida": "750101",
           "monto": 175028.69
         },
         {
           "meta": "",
           "actividad": "Contraparte Municipal - Construcción\nSistema de Alcantarillado para la Parroquia La Pila",
-          "partida": "01.01.01.B300.330.2023.750101.002.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "750101",
           "monto": 80000.0
         },
         {
           "meta": "",
           "actividad": "CRÉDITO BDE -Construcción Sistema de Alcantarillado Sanitario Parroquia La Pila",
-          "partida": "01.01.01.B300.330.2023.750101.002.13.09.\n02.A13.99.99.99.99.302",
+          "partida": "750101",
           "monto": 2080802.2
         },
         {
           "meta": "",
           "actividad": "Construccion de la red primaria de alacantarillado sanitario de los sectores Poala 1, Paola 2, Antonnella y El Padrino-R",
-          "partida": "01.01.01.B300.330.2023.750101",
+          "partida": "750101",
           "monto": 109000.0
         },
         {
           "meta": "",
           "actividad": "Contraparte Municipal -  Construcción sistema de Agua Potable para la parroquia La Pila",
-          "partida": "01.01.01.B300.330.2023.750101.001.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "750101",
           "monto": 24000.0
         },
         {
           "meta": "",
           "actividad": "Crédito BDE -Construcción de Agua Potable y Alcantarillado Sanitario del Sitio Cerro Guayabal del Cantón Montecristi",
-          "partida": "01.01.01.B300.330.2023.750101.004.13.09.\n02.A13.99.99.99.99.302",
+          "partida": "750101",
           "monto": 1342532.62
         },
         {
           "meta": "",
           "actividad": "Agua Potable INTAL",
-          "partida": "01.01.01.B300.330.2023.750101.007.13.09.\n02.A13.99.99.99.99.302",
+          "partida": "750101",
           "monto": 1028286.86
         },
         {
           "meta": "",
           "actividad": "Mantenimiento y Repotenciación de Planta de Tratamiento de Agua Potable Los Mangos del Cantón Montecristi",
-          "partida": "01.01.01.B300.330.2023.750501.004.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "750501",
           "monto": 16621.65
         },
         {
           "meta": "",
           "actividad": "Edificios, Locales y Residencias, Parqueaderos, Casilleros Judiciales y Bancarios (Arrendamientos)",
-          "partida": "01.01.01.B300.360.2023.530502.000.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "530502",
           "monto": 5000.0
         },
         {
           "meta": "",
           "actividad": "Contraparte Municipal PREMIO VERDE - Fiscalización del Proyecto de Rehabilitación del Edificio \"Casa de Formación Artesa",
-          "partida": "01.01.01.B300.360.2023.730604.006.13.09.\n02.A13.99.99.99.99.00",
+          "partida": "730604",
           "monto": 20000.0
         },
         {
           "meta": "",
           "actividad": "Mejoramiento del Cerramiento del Cementerio General",
-          "partida": "01.01.01.B300.360.2023.750104.010.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "750104",
           "monto": 70000.0
         },
         {
           "meta": "",
           "actividad": "Pavimentación, Repavimentación ,mejoramiento de carpeta asfáltica y bacheo en varias calles de los Sectores Urbanos y Ru",
-          "partida": "01.01.01.B300.360.2023.750105.016.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "750105",
           "monto": 689503.02
         },
         {
           "meta": "",
           "actividad": "Reconstrucción del Anillo Vial de los Sectores Tierra Santa y Santa Isabel del Cantón Montecristi",
-          "partida": "01.01.01.B300.360.2023.750105.017.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "750105",
           "monto": 242500.0
         },
         {
           "meta": "",
           "actividad": "Otras obras de infraestructura; Cubiertas espacios\npúblicos, Cerramientos, Adecuaciones incluye obras del Accion Social",
-          "partida": "01.01.01.B300.360.2023.750199.000.13.09.\n02.A13.99.99.99.99.001",
-          "monto": 50000.0
+          "partida": "750199",
+          "monto": 50000.0,
+          "meta_ancla": "Aumentar a 10.73 m²/hab el índice de equipamiento del Centro Urbano Principal"
         },
         {
           "meta": "",
           "actividad": "Mejoramiento Tipo MTO de Varias Calles en los Sectores Urbanos del Cantón Montecristi",
-          "partida": "01.01.01.B300.360.2023.750501.000.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "750501",
           "monto": 371234.24
         },
         {
           "meta": "",
           "actividad": "Mantenimiento e Iluminación de Redes Eléctricas y Alumbrado y Ubicación de Postes en Varios Sectores del Cantón Montecri",
-          "partida": "01.01.01.B300.360.2023.750504.001.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "750504",
           "monto": 240888.07
         },
         {
           "meta": "",
           "actividad": "Terrenos (varios)",
-          "partida": "01.01.01.B300.360.2023.840301.001.13.09.\n02.A13.99.99.99.99.001",
-          "monto": 27500.0
+          "partida": "840301",
+          "monto": 27500.0,
+          "meta_ancla": "Aumentar a 10.73 m²/hab el índice de equipamiento del Centro Urbano Principal hasta el 2027"
         },
         {
           "meta": "",
           "actividad": "Adquisición de Alcantarillas",
-          "partida": "01.01.01.B300.360.2023.730811.002.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "730811",
           "monto": 20000.0
         },
         {
           "meta": "",
           "actividad": "Estabilizar quebradas con piedra escollera muro de gaviones",
-          "partida": "01.01.01.B300.360.2023.750114.002.13.09.\n02.A13.99.99.99.99.002",
-          "monto": 50000.0
+          "partida": "750114",
+          "monto": 50000.0,
+          "meta_ancla": "Aumentar a 10.73 m²/hab el índice de equipamiento del Centro Urbano Principal hasta el 2027"
         },
         {
           "meta": "",
           "actividad": "Mejoramiento de material base y subase para varios sectores del cantón Montecristi",
-          "partida": "01.01.01.B300.360.2023.750501.002.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "750501",
           "monto": 80000.0
         },
         {
           "meta": "",
           "actividad": "Arrendamiento de Equipo Caminero para  cantón Montecristi, a través de Feria Inclusiva",
-          "partida": "01.01.01.B300.360.2023.730504.002.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "730504",
           "monto": 250000.0
         },
         {
           "meta": "",
           "actividad": "Construcción de Tanque Reservorio de Agua para el sector Pepa de Huso y La Sequita",
-          "partida": "01.01.01.B300.360.2023.750101",
+          "partida": "750101",
           "monto": 31000.0
         },
         {
           "meta": "",
           "actividad": "Mantenimiento y Recuperación de Espacios Públicos de los Sectores Urbanos\ny Rurales del Cantón Montecristi",
-          "partida": "01.01.01.B300.360.2023.750104.009.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "750104",
           "monto": 188765.76
         },
         {
           "meta": "",
           "actividad": "Pasajes al Interior",
-          "partida": "01.01.01.B300.360.2023.530301.000.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "530301",
           "monto": 1000.0
         },
         {
           "meta": "",
           "actividad": "Viáticos y Subsistencias en el Interior",
-          "partida": "01.01.01.B300.360.2023.530303.000.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "530303",
           "monto": 1500.0
         },
         {
           "meta": "",
           "actividad": "Construcción de Aceras-Bordillos, Adoquinamiento, Repavimentación y\nPavimentación; y, Doble Tratamiento Superficial Bitu",
-          "partida": "01.01.01.B300.360.2023.750105.021.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "750105",
           "monto": 629000.0
         },
         {
           "meta": "",
           "actividad": "Adquisición de moto guarañas, moto sierra, carretillas, palas, martillos, escaleras tipo tijera, cortadora de césped, ma",
-          "partida": "01.01.01.B300.320.2023.730811.000.01.01.\n01.B300.320.2023.730811.002.13.09.02.A13\n.99.99.99.99.002",
+          "partida": "730811",
           "monto": 2000.0
         },
         {
           "meta": "",
           "actividad": "",
-          "partida": "01.01.01.B300.320.2023.840104.002.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "840104",
           "monto": 4000.0
         },
         {
           "meta": "",
           "actividad": "Adquisición de fertilizantes (Micronutrientes y macronutrientes). Fungicida, herbicida",
-          "partida": "01.01.01.B300.320.2023.730819.002.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "730819",
           "monto": 7000.0
         },
         {
           "meta": "",
           "actividad": "Prevenir y mitigar los daños en los espacios públicos del cantón Montecristi",
-          "partida": "01.01.01.B300.320.2023.750501.002.13.A13\n.99.99.99.99.002",
+          "partida": "750501",
           "monto": 40000.0
         },
         {
           "meta": "",
           "actividad": "Adquisición de equipamientos para personal de seguridad de los espacios públicos del cantón Montecristi",
-          "partida": "01.01.01.B300.320.2023.730802.002.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "730802",
           "monto": 15000.0
         },
         {
           "meta": "",
           "actividad": "Adquisicion ,instalación  y repotenciación de camaras de seguridad",
-          "partida": "01.01.01.B300.320.2023.750104.000.",
+          "partida": "750104",
           "monto": 33600.0
         },
         {
           "meta": "",
           "actividad": "Adquisición de alarmas  comunitarias en el cantón Montecristi",
-          "partida": "01.01.01.B300.320.2023.750104.002.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "750104",
           "monto": 30000.0
         },
         {
           "meta": "",
           "actividad": "Transformadores , control auotomático para fuentes u otros de parques en el cantón Montecristi",
-          "partida": "01.01.01.B300.320.2023.750104.002.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "750104",
           "monto": 6500.0
         },
         {
           "meta": "",
           "actividad": "Pasajes al Interior",
-          "partida": "01.01.01.B300.330.2023.530301.000.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "530301",
           "monto": 1000.0
         },
         {
           "meta": "",
           "actividad": "Viáticos y Subsistencias en el Interior",
-          "partida": "01.01.01.B300.330.2023.530303.000.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "530303",
           "monto": 1000.0
         },
         {
           "meta": "",
           "actividad": "Adquisición de Estación Total  SOUTH N6 + (PLUS) Modelo NTS-362R10 DE 2\"",
-          "partida": "01.01.01.B300.320.2023.840104.000.",
+          "partida": "840104",
           "monto": 4500.0
         },
         {
           "meta": "",
           "actividad": "Adquisición de  equipamiento técnico para generar cartografía con fines catastratales:  1 Dron Fotogramétrico profesiona",
-          "partida": "01.01.01.B300.310.2023.840104.002.13.09.\n02.A13.99.99.99.99.002.",
+          "partida": "840104",
           "monto": 65000.0
         },
         {
           "meta": "",
           "actividad": "",
-          "partida": "01.01.01.B300.310.2023.840107.000.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "840107",
           "monto": 7400.0
         },
         {
           "meta": "",
           "actividad": "Adquisición de tablets para realizar mapeo móvil y mantener actualización catastral permanente",
-          "partida": "01.01.01.B300.310.2023.840107.002.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "840107",
           "monto": 1600.0
         },
         {
           "meta": "",
           "actividad": "Adquisición de mojones para densificar la red geodésica a nivel cantonal a 20 puntos de monitoreo ya que al momento se c",
-          "partida": "01.01.01.B300.310.2023.730811.002.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "730811",
           "monto": 200.0
         },
         {
           "meta": "",
           "actividad": "Proyecto de fortalecimiento técnico para desarrollar e implementar el sistema catastral del cantón Montecristi, mediante",
-          "partida": "01.01.01.B300.310.2023.730606.002.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "730606",
           "monto": 21920.0
         },
         {
           "meta": "",
           "actividad": "Pasajes al Interior",
-          "partida": "01.01.01.B300.310.2023.530301.000.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "530301",
           "monto": 1000.0
         },
         {
           "meta": "",
           "actividad": "Viáticos y Subsistencias en el Interior",
-          "partida": "01.01.01.B300.310.2023.530303.000.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "530303",
           "monto": 2800.0
         },
         {
           "meta": "",
           "actividad": "Materiales de impresión, fotografía, reproducción y publicaciones",
-          "partida": "01.01.01.B300.310.2023.530807.000.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "530807",
           "monto": 1500.0
         },
         {
           "meta": "",
           "actividad": "Maquinarias y Equipos",
-          "partida": "01.01.01.B300.310.2023.731404.000.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "731404",
           "monto": 9500.0
         },
         {
           "meta": "",
           "actividad": "Contratación de servicios de capacitación en Tránsito, Transporte y Seguriad Vial",
-          "partida": "01.01.01.A100.130.2023.730613.001.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "730613",
           "monto": 6000.0
         },
         {
           "meta": "",
           "actividad": "Instalación y repotenciación de sistemas semáforicos del cantón Montecristi",
-          "partida": "01.01.01.A100.130.2023.730811.001.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "730811",
           "monto": 110000.0
         },
         {
           "meta": "",
           "actividad": "Mantenimiento de semáforos del cantón Montecristi",
-          "partida": "01.01.01.A100.130.2023.730811.002.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "730811",
           "monto": 40000.0
         },
         {
           "meta": "",
           "actividad": "Nuevas Señaléticas horizontales",
-          "partida": "01.01.01.A100.130.2023.730811.004.13.09. A13.99.99.99.99.002",
+          "partida": "730811",
           "monto": 20000.0
         },
         {
           "meta": "",
           "actividad": "Nuevas señaléticas verticales",
-          "partida": "01.01.01.A100.130.2023.730811.003.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "730811",
           "monto": 10000.0
         },
         {
           "meta": "",
           "actividad": "Consultoría de Operadoras de Transporte Público del Cantón Montecristi",
-          "partida": "01.01.01.A100.130.2023.730601.000.",
+          "partida": "730601",
           "monto": 10000.0
         },
         {
           "meta": "",
           "actividad": "Servicio de conteo vehicular",
-          "partida": "01.01.01.A100.130.2023.730221.000.",
+          "partida": "730221",
           "monto": 6000.0
         },
         {
           "meta": "",
           "actividad": "Edificios, Locales y Residencias, Parqueaderos, Casilleros Judiciales y Bancarios (Arrendamientos)",
-          "partida": "01.01.01.A100.130.2023.530502.000.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "530502",
           "monto": 5000.0
         },
         {
           "meta": "",
           "actividad": "Establecer un plan de digitalizacion",
-          "partida": "01.01.01.A100.110.2023.730230.000.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "730230",
           "monto": 50000.0
         },
         {
           "meta": "",
           "actividad": "Mejoramiento y empastado de libros",
-          "partida": "01.01.01.A100.110.2023.730204.000.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "730204",
           "monto": 15000.0
         },
         {
           "meta": "",
           "actividad": "Adecuación de espacio (Obra civil), Adquisición de mobiliario, Instalación de climatización, eléctrica, fibra óptica, et",
-          "partida": "01.01.01.A100.110.2023.530402.001.13.09.\n02.A13.99.99.99.99.001",
-          "monto": 37398.51
+          "partida": "530402",
+          "monto": 37398.51,
+          "meta_ancla": "Mantener y mejorar las instalaciones e infraestructuras municipales."
         },
         {
           "meta": "",
           "actividad": "Adquisición de suministros de impresión para todas las direcciones y o Jefaturas que conforman la Municipalidad",
-          "partida": "01.01.01.A100.110.2023.730807.000.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "730807",
           "monto": 50000.0
         },
         {
           "meta": "",
           "actividad": "Suministrar los materiales y accesorios de oficina requeridos por las dependencias del GAD Municipal para su buen desemp",
-          "partida": "01.01.01.A100.110.2023.530804.000.13.09.\n02.A13.99.99.99.99.002",
-          "monto": 28085.22
+          "partida": "530804",
+          "monto": 28085.22,
+          "meta_ancla": "Mantener y mejorar las instalaciones e infraestructuras municipales."
         },
         {
           "meta": "",
           "actividad": "Mantener los espacios en optimas condiciones mediante la adquision de materiales de aseo y limpieza (Canecas de cloro, q",
-          "partida": "01.01.01.A100.110.2023.530805.000.13.09.\n02.A13.99.99.99.99.002",
-          "monto": 21138.87
+          "partida": "530805",
+          "monto": 21138.87,
+          "meta_ancla": "Mantener y mejorar las instalaciones e infraestructuras municipales."
         },
         {
           "meta": "",
           "actividad": "Seguros (Inmuebles, activos, vehículos, equipos y maquinarias)",
-          "partida": "01.01.01.A100.110.2023.770201.000.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "770201",
           "monto": 120000.0
         },
         {
           "meta": "",
           "actividad": "Adquisición de Pintura para el interior y exterior del Edificio Municipal",
-          "partida": "01.01.01.A100.110.2023.530402.000.13.09.\n02.A13.99.99.99.99.002",
-          "monto": 9000.0
+          "partida": "530402",
+          "monto": 9000.0,
+          "meta_ancla": "Mantener y mejorar las instalaciones e infraestructuras municipales."
         },
         {
           "meta": "",
           "actividad": "Adquisición de mobiliario (sillas) y mantenimiento",
-          "partida": "01.01.01.A100.110.2023.840103.000.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "840103",
           "monto": 30000.0
         },
         {
           "meta": "",
           "actividad": "Mobiliarios (Instalación, Mantenimiento y Reparación)",
-          "partida": "01.01.01.A100.110.2023.530403.000.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "530403",
           "monto": 14300.0
         },
         {
           "meta": "",
           "actividad": "Contratar el servicio de mantenimiento preventivo para camionetas tanquero FORD Cargo 06, Tanquero Hyundai, Motonivelado",
-          "partida": "01.01.01.A100.110.2023.730404.000.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "730404",
           "monto": 2799.53
         },
         {
           "meta": "",
           "actividad": "Abastecimiento de combustibles a vehiculos y maqunarias.",
-          "partida": "01.01.01.A100.110.2023.730803.000.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "730803",
           "monto": 250000.0
         },
         {
           "meta": "",
           "actividad": "Adquisición de herramientas para realización de mantenimientos preventivos y correctivos a los vehiculos del parque auto",
-          "partida": "01.01.01.A100.110.2023.731406.000.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "731406",
           "monto": 4500.0
         },
         {
           "meta": "",
           "actividad": "Cambio oportuno de neumaticos",
-          "partida": "01.01.01.A100.110.2023.730404.001.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "730404",
           "monto": 34000.0
         },
         {
           "meta": "",
           "actividad": "Mantenimientos correctivos y preventivos de maquinarias y equipos   de propiedad municipal",
-          "partida": "01.01.01.A100.110.2023.730405.001.13.09.\n02.A13.99.99.99.99.001",
-          "monto": 69339.0
+          "partida": "730405",
+          "monto": 69339.0,
+          "meta_ancla": "Aumentar del 91% de vehículos en funcionamiento en el año 2023, a 95% desde el 2024 manteniendo la métrica hasta el 2027."
         },
         {
           "meta": "",
           "actividad": "Mantenimientos correctivos y preventivos de maquinarias y equipos   de propiedad municipal",
-          "partida": "01.01.01.A100.110.2023.730404.002.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "730404",
           "monto": 183200.47
         },
         {
           "meta": "",
           "actividad": "Mantenimientos correctivos y repraciones de maquinaria y equipos",
-          "partida": "01.01.01.A100.110.2023.730813.000.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "730813",
           "monto": 59000.0
         },
         {
           "meta": "",
           "actividad": "Renovación rastreo satelital para vehículos",
-          "partida": "01.01.01.A100.110.2023.731407.001.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "731407",
           "monto": 12000.0
         },
         {
           "meta": "",
           "actividad": "Renovación de matrículas",
-          "partida": "01.01.01.A100.110.2023.770102.000.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "770102",
           "monto": 15000.0
         },
         {
           "meta": "",
           "actividad": "Mantenimientos correctivos y preventivos vehículo Hidrosuccionador",
-          "partida": "01.01.01.A100.110.2023.730405.002.13.09.\n02.A13.99.99.99.99.001",
-          "monto": 50000.0
+          "partida": "730405",
+          "monto": 50000.0,
+          "meta_ancla": "Aumentar del 91% de vehículos en funcionamiento en el año 2023, a 95% desde el 2024 manteniendo la métrica hasta el 2027."
         },
         {
           "meta": "",
           "actividad": "Alquiler de camionetas",
-          "partida": "01.01.01.A100.110.2023.530505.000.13.09.\n02.A13.99.99.99.99.002",
-          "monto": 36000.0
+          "partida": "530505",
+          "monto": 36000.0,
+          "meta_ancla": "Aumentar del 91% de vehículos en funcionamiento en el año 2023, a 95% desde"
         },
         {
           "meta": "",
           "actividad": "Manutención de Servicios de Telefonía Fija, Internet y Enlace de Datos y Desplegar zonas Wifi en los espacios públicos d",
-          "partida": "01.01.01.A100.110.2023.530105.000.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "530105",
           "monto": 30000.0
         },
         {
           "meta": "",
           "actividad": "Implementar gestor documental de la Institución",
-          "partida": "01.01.01.A100.110.2023.530702.001.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "530702",
           "monto": 10000.0
         },
         {
           "meta": "",
           "actividad": "Implementación de transformación digital",
-          "partida": "01.01.01.A100.110.2023.731407.001.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "731407",
           "monto": 34822.34
         },
         {
           "meta": "",
           "actividad": "Renovación y optimizaicón del Parque Tecnológico",
-          "partida": "01.01.01.A100.110.2023.731407.000.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "731407",
           "monto": 166000.0
         },
         {
           "meta": "",
           "actividad": "Energía Eléctrica",
-          "partida": "01.01.01.A100.110.2023.530104.000.13.09.\n02.A13.99.99.99.99.001",
-          "monto": 60000.0
+          "partida": "530104",
+          "monto": 60000.0,
+          "meta_ancla": "Mantener y mejorar las instalaciones e infraestructuras municipales."
         },
         {
           "meta": "",
           "actividad": "Servicios de Correo",
-          "partida": "01.01.01.A100.110.2023.530106.000.13.09.\n02.A13.99.99.99.99.001",
-          "monto": 3000.0
+          "partida": "530106",
+          "monto": 3000.0,
+          "meta_ancla": "Mantener y mejorar las instalaciones e infraestructuras municipales."
         },
         {
           "meta": "",
           "actividad": "Servicio de Hosting y Sitio Web",
-          "partida": "01.01.01.A100.110.2023.530702.002.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "530702",
           "monto": 500.0
         },
         {
           "meta": "",
           "actividad": "Mantenimiento y Reparación de Equipos y Sistemas Informático",
-          "partida": "01.01.01.A100.110.2023.530704.000.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "530704",
           "monto": 1500.0
         },
         {
           "meta": "",
           "actividad": "Alimentos y Bebidas",
-          "partida": "01.01.01.A100.110.2023.530801.000.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "530801",
           "monto": 5000.0
         },
         {
           "meta": "",
           "actividad": "Insumos, Materiales y Suministros para Construcción, Electricidad, Plomería, Carpintería, Señalización Vial,Navegación, ",
-          "partida": "01.01.01.A100.110.2023.530811.000.13.09.\n02.A13.99.99.99.99.002",
-          "monto": 14112.0
+          "partida": "530811",
+          "monto": 14112.0,
+          "meta_ancla": "Mantener y mejorar las instalaciones e infraestructuras municipales."
         },
         {
           "meta": "",
           "actividad": "Vehículos (Servicio para Mantenimiento y Reparación)",
-          "partida": "01.01.01.A100.110.2023.730405.000.13.09.\n02.A13.99.99.99.99.001",
-          "monto": 20000.0
+          "partida": "730405",
+          "monto": 20000.0,
+          "meta_ancla": "Aumentar del 91% de vehículos en funcionamiento en el año 2023, a 95% desde el 2024 manteniendo la métrica hasta el 2027."
         },
         {
           "meta": "",
           "actividad": "Mejoramiento e Interconectividad de Puntos Externos con la Red Local\nMunicipal, Centralización de Servicios de Internet ",
-          "partida": "01.01.01.A100.110.2023.730417.001.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "730417",
           "monto": 40000.0
         },
         {
           "meta": "",
           "actividad": "Equipos, sistemas y paquetes informáticos",
-          "partida": "01.01.01.A100.110.2023.840107.000.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "840107",
           "monto": 5900.0
         },
         {
           "meta": "",
           "actividad": "Poliza de caución",
-          "partida": "01.01.01.A100.110.2023.570201.000.13.09\n.02.A13.99.99.99.99.002",
-          "monto": 20000.0
+          "partida": "570201",
+          "monto": 20000.0,
+          "meta_ancla": "Mantener y mejorar las instalaciones e infraestructuras municipales."
         },
         {
           "meta": "",
           "actividad": "Adquisición de poliza de seguro de vida",
-          "partida": "01.01.01.A100.110.2023.570201.000.13.09\n.02.A13.99.99.99.99.002",
-          "monto": 33000.0
+          "partida": "570201",
+          "monto": 33000.0,
+          "meta_ancla": "Mantener y mejorar las instalaciones e infraestructuras municipales."
         },
         {
           "meta": "",
           "actividad": "Ejecutar el plan de capacitación anual del GAD Montecristi con instituciones públicas y privadas",
-          "partida": "01.01.01.A100.110.2023.730612.000.13.09.\n02.A13.99.99.99.99.002",
-          "monto": 15488.6
+          "partida": "730612",
+          "monto": 15488.6,
+          "meta_ancla": "Incrementar el porcentaje del sistema de información local del 19,52% en el año 2023, a 80% al 2030"
         },
         {
           "meta": "",
           "actividad": "Consultoría Implementación de Modelo de Gestión pública e alto desempeño. Estructura orgánica y sistema de control estra",
-          "partida": "01.01.01.A100.110.2023.530601.002.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "530601",
           "monto": 50000.0
         },
         {
           "meta": "",
           "actividad": "Gestionar el servicio de confeccion de uniformes de seguridad industrial para el personal del GAD Montecristi",
-          "partida": "01.01.01.A100.110.2023.730802.001.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "730802",
           "monto": 36547.0
         },
         {
           "meta": "",
           "actividad": "Adquisición de botas de trabajo para los trabajadores del GAD de Montecristi",
-          "partida": "01.01.01.A100.110.2023.730802.002.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "730802",
           "monto": 88000.0
         },
         {
@@ -5715,26 +7168,29 @@
         {
           "meta": "",
           "actividad": "Gestionar la adquisición de equipos e insumos médicos para consultorio del GAD del cantón Montecristi",
-          "partida": "01.01.01.A100.110.2023.730810.000.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "730810",
           "monto": 5000.0
         },
         {
           "meta": "",
           "actividad": "Gestionar la adquisicion de medicinas para consultorio del GAD del canton Montecristi",
-          "partida": "01.01.01.A100.110.2023.730826.000.13.09.\n02.A13.99.99.99.99.001",
-          "monto": 5000.0
+          "partida": "730826",
+          "monto": 5000.0,
+          "meta_ancla": "Incrementar la población atendida en salud preventiva de 320 en el año 2023, a 480\nal 2027"
         },
         {
           "meta": "",
           "actividad": "Gestionar la adquisición de exámenes ocupacionales periodicos y de retiros del personal operativo y administrativo el GA",
-          "partida": "01.01.01.A100.110.2023.730826.001.13.09.\n02.A13.99.99.99.99.001",
-          "monto": 67000.0
+          "partida": "730826",
+          "monto": 67000.0,
+          "meta_ancla": "Incrementar la población atendida en salud preventiva de 320 en el año 2023, a 480\nal 2027"
         },
         {
           "meta": "",
           "actividad": "Adquirir  Señaletica para seguridad industrial",
-          "partida": "01.01.01.A100.110.2023.530811.000.",
-          "monto": 5000.0
+          "partida": "530811",
+          "monto": 5000.0,
+          "meta_ancla": "Mantener y mejorar las instalaciones e infraestructuras municipales."
         },
         {
           "meta": "",
@@ -5745,107 +7201,109 @@
         {
           "meta": "",
           "actividad": "Pasajes al Interior",
-          "partida": "01.01.01.A100.110.2023.530301.000.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "530301",
           "monto": 4000.0
         },
         {
           "meta": "",
           "actividad": "Viáticos ysubsistencias en elInterior",
-          "partida": "01.01.01.A100.110.2023.530303.000.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "530303",
           "monto": 5000.0
         },
         {
           "meta": "",
           "actividad": "Honorarios por Contratos Civiles de Servicios",
-          "partida": "01.01.01.A100.110.2023.530606.000.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "530606",
           "monto": 174000.0
         },
         {
           "meta": "",
           "actividad": "Vestuario, Lencería, Prendas de Protección y Accesorios para uniformes del personal de Protección, Vigilancia y Segurida",
-          "partida": "01.01.01.A100.110.2023.530802.000.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "530802",
           "monto": 11185.0
         },
         {
           "meta": "",
           "actividad": "Obligaciones con el Iess por Responsabilidad Patronal",
-          "partida": "01.01.01.I500.510.2023.570216.000.13.09.0\n2.A13.99.99.99.99.002",
+          "partida": "570216",
           "monto": 20000.0
         },
         {
           "meta": "",
           "actividad": "Contrato Colectivo deObreros",
-          "partida": "01.01.01.I500.520.2023.580204.002.13.09.0\n2.A13.99.99.99.99.002",
+          "partida": "580204",
           "monto": 80000.0
         },
         {
           "meta": "",
           "actividad": "Difusion de informacion y publicidad del GAD Montecristi",
-          "partida": "01.01.01.A100.110.2023.730207.000.13.09.\n02.A13.99.99.99.99.001",
+          "partida": "730207",
           "monto": 72000.0
         },
         {
           "meta": "",
           "actividad": "Materiales de Impresión, Fotografía, Reproducción y Publicaciones",
-          "partida": "01.01.01.A100.130.2023.530807.000.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "530807",
           "monto": 46300.0
         },
         {
           "meta": "",
           "actividad": "Adquisición de equipos comunicacionales",
-          "partida": "01.01.01.A100.110.2023.840104.001.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "840104",
           "monto": 17000.0
         },
         {
           "meta": "",
           "actividad": "Edición, Impresión, Reproducción, Publicaciones, Suscripciones, Fotocopiado, Traducción, Empastado, Enmarcación, Serigra",
-          "partida": "01.01.01.A100.120.2023.530204.000.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "530204",
           "monto": 15500.0
         },
         {
           "meta": "",
           "actividad": "Consultoria , asesoría e ivestigacion especializada: Marca Ciudad",
-          "partida": "01.01.01.A100.110.2023.530601.000.",
+          "partida": "530601",
           "monto": 40000.0
         },
         {
           "meta": "",
           "actividad": "Digitalizacion de informacion de documentos públicos",
-          "partida": "01.01.01.A100.110.2023.530230.000.",
+          "partida": "530230",
           "monto": 3000.0
         },
         {
           "meta": "",
           "actividad": "Revisión y analisis legal de las solicitudes realizadas a la dirección, contando con el Sistema Lexis, el cual permitirá",
-          "partida": "01.01.01.A100.110.2023.530701.001.13.09.\n02.A13.99.99.99.99.002",
-          "monto": 1200.0
+          "partida": "530701",
+          "monto": 1200.0,
+          "meta_ancla": "Incrementar el número de procesos sistematizados a 9 al 2027"
         },
         {
           "meta": "",
           "actividad": "Edificios, Locales y Residencias, Parqueaderos, Casilleros Judiciales y Bancarios (Arrendamiento)",
-          "partida": "01.01.01.A100.110.2023.530502.000.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "530502",
           "monto": 38800.0
         },
         {
           "meta": "",
           "actividad": "Costas Judiciales, Trámites Notariales, Legalización de Documentos y Arreglos Extrajudiciales",
-          "partida": "01.01.01.A100.110.2023.570206.000.13.09.\n02.A13.99.99.99.99.002",
-          "monto": 5000.0
+          "partida": "570206",
+          "monto": 5000.0,
+          "meta_ancla": "Al 2025 cinco procesos notariales efectuados"
         },
         {
           "meta": "",
           "actividad": "Libros y colecciones",
-          "partida": "01.01.01.A100.110.2023.840109.000.13.09.\n02.A13.99.99.99.99.002",
+          "partida": "840109",
           "monto": 1000.0
         },
         {
           "meta": "",
           "actividad": "Desarrollo de actividades que promueven la participación ciudadana en el cantón Montecristi",
-          "partida": "01.01.01.A100.110.2023.530613.000.",
+          "partida": "530613",
           "monto": 2600.0
         }
       ]
     }
   },
-  "mapa_meta_partida_deterministas": 82
+  "mapa_meta_partida_deterministas": 80
 }

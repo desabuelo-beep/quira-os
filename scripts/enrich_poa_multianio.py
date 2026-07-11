@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 from collections import defaultdict
 
 import openpyxl
@@ -48,6 +49,19 @@ def _cell(row, i):
     return str(row[i]).strip() if (i is not None and i < len(row) and row[i] is not None) else ""
 
 
+def _partida_econ(raw: str) -> str:
+    """Normaliza la partida al CÓDIGO ECONÓMICO 6-díg (5-8XXXXX). Puro en 2025; embebido en
+    el código estructural en 2023/24 (tras el año: '.2024.730813.'). Así el puente cruza años."""
+    raw = str(raw or "").strip()
+    if re.fullmatch(r"[5-8]\d{5}", raw):                 # 2025: ya es económico puro
+        return raw
+    m = re.search(r"\.20\d\d\.([5-8]\d{5})", raw)        # 2023/24: económico tras el año
+    if m:
+        return m.group(1)
+    m = re.search(r"\b([5-8]\d{5})\b", raw)              # fallback: primer económico 6-díg
+    return m.group(1) if m else ""
+
+
 def _leer_anio(anio: int) -> list[dict]:
     a = _ARCH[anio]
     p = os.path.join(POA_DIR, a["file"])
@@ -65,7 +79,7 @@ def _leer_anio(anio: int) -> list[dict]:
         acts.append({
             "meta": _cell(row, a["meta"]) if a["meta"] is not None else "",
             "actividad": act[:120],
-            "partida": part,
+            "partida": _partida_econ(part),              # normalizada al código económico (cruza años)
             "monto": round(monto, 2),
         })
     return acts
@@ -81,8 +95,41 @@ def main() -> None:
     # solo las partidas DETERMINISTAS (una sola meta) sirven de ancla verificable
     ancla = {pt: next(iter(ms)) for pt, ms in p2m.items() if len(ms) == 1}
 
+    # ── ejecución 2025 (cédula de cierre LOTAIP diciembre) por partida económica ──
+    CED_2025 = (r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT\Holding_Municipal_Montecristi"
+                r"\Cedulas Presupuestarias 2023-2026\Presupuestos 2025\GAD Montecristi"
+                r"\2025-Diciembre-Numeral 6-6. Conjunto de datos_nov.csv.xlsx")
+    ejec: dict = {}
+    try:
+        wsx = openpyxl.load_workbook(CED_2025, read_only=True, data_only=True)["Sheet1"]
+        for row in list(wsx.iter_rows(values_only=True))[1:]:
+            cta = _partida_econ(_cell(row, 0))
+            if cta:
+                ejec[cta] = {"cod": _num(row[5]), "dev": _num(row[8])}
+    except Exception:
+        pass
+    # ── biografías 2025 por meta: plan (POA fuente) + ejecución (cédula) — año cerrado ──
+    bio = defaultdict(lambda: {"act": 0, "part": set(), "plan": 0.0})
+    for a in por_anio.get(2025, []):
+        if a["meta"]:
+            b = bio[a["meta"]]
+            b["act"] += 1
+            b["plan"] += a["monto"]
+            if a["partida"]:
+                b["part"].add(a["partida"])
+    biografias = []
+    for mk, b in bio.items():
+        cod = sum(ejec.get(pt, {}).get("cod", 0) for pt in b["part"])
+        dev = sum(ejec.get(pt, {}).get("dev", 0) for pt in b["part"])
+        inv = sum(1 for pt in b["part"] if pt[:1] in ("7", "8"))
+        biografias.append({"meta": mk[:110], "actividades": b["act"], "partidas": len(b["part"]),
+                           "inversion": inv, "plan": round(b["plan"], 2),
+                           "codificado": round(cod, 2), "devengado": round(dev, 2)})
+    biografias.sort(key=lambda x: -x["plan"])
+
     salida = {
         "_fuente": "POA oficial GAD Montecristi por año (Excel) — vínculo meta↔actividad↔partida de la fuente",
+        "biografias_2025": biografias,
         "_nota_metodologica": ("La 'meta' del POA es operativa (indicador). El mapa meta↔partida se toma del "
                                "2025 (único año con META explícita en la fuente); solo partidas DETERMINISTAS "
                                "(una sola meta) anclan otros años — la ausencia de vínculo NO se infiere."),

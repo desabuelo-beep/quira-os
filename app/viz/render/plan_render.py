@@ -371,10 +371,38 @@ def _sintesis_plan(plan: dict) -> str:
 
 
 def _biografia_meta(plan: dict) -> str:
-    """La biografía de UNA meta: su vida documental Meta→Proyectos→Partidas→Ejecución→Contratos — la
-    UNIDAD NARRATIVA del observatorio (colega + Javo). Data limpia del canon (2026); ancla = META_UUID.
-    Un porcentaje aislado no explica; una biografía, sí."""
+    """La biografía de UNA meta — unidad narrativa del observatorio. PRIMARIO: POA oficial 2025 (año
+    CERRADO · vínculo meta↔actividad DE LA FUENTE, no inferido · Principio Rector). Fallback: cadena
+    2026 del canon si el artefacto no está. Un porcentaje aislado no explica; una biografía, sí."""
     import re as _re
+    # ── primario: biografía 2025 desde el artefacto curado (POA oficial · re-vinculación de la fuente) ──
+    try:
+        import json as _json
+        import os as _os
+        _p = _os.path.join(_os.path.dirname(__file__), "..", "..", "..", "data", "poa_multianio.json")
+        _bios = _json.load(open(_p, encoding="utf-8")).get("biografias_2025", [])
+    except Exception:
+        _bios = []
+    _c = [b for b in _bios if b.get("inversion", 0) >= 4
+          and not any(k in b["meta"].lower() for k in ("roles", "institucional"))]
+    if _c:
+        b = _c[0]
+        _t = _re.sub(r"\s+(de|del|la|los|las|y|en|a|el|con|para|al)\s*$", "", _corta(b["meta"], 72), flags=_re.I)
+        _nodos = [
+            {"sys": "META", "label": "compromiso del plan",
+             "edge": {"estado": "verificado", "nota": "actividades operativas de la meta (POA oficial)"}},
+            {"sys": "POA", "label": f'{b["actividades"]} actividades',
+             "edge": {"estado": "verificado", "nota": "asignación por partida presupuestaria"}},
+            {"sys": "PARTIDAS", "label": f'{b["partidas"]} partidas · {b["inversion"]} de inversión',
+             "edge": {"estado": "verificado", "nota": "monto planificado del ejercicio"}},
+            {"sys": "PLAN 2025", "label": f'${b["plan"] / 1e6:.1f}M'},
+        ]
+        _in = (f'<p class="qc-cap">Un porcentaje aislado no explica nada; una <b>biografía</b>, sí. La meta '
+               f'<b>«{_esc(_t)}»</b> a lo largo de su vida documental en el <b>ejercicio 2025 (cerrado)</b> —del '
+               f'compromiso a la partida, trazada del <b>POA oficial</b> (la fuente, no inferido)—. Cada meta tiene la '
+               f'suya; este es su recorrido verificable.</p>')
+        return _in + cadena_integridad(_nodos, "Biografía de una meta · del plan a la partida · fuente 2025")
+    # ── fallback: cadena 2026 del canon (Gold Master) ──
     from collections import defaultdict
 
     def _n(t):
