@@ -321,12 +321,16 @@ def build_block() -> dict:
         _ejec = []
         for r in range(7, 11):                         # filas 2023..2026
             _anio = _w7.cell(r, 1).value
+            _cod = _w7.cell(r, 2).value                # B = Codificado_7+8 (inversión asignada)
+            _dev = _w7.cell(r, 3).value                # C = Devengado_7+8 (inversión ejecutada)
             _ti = _w7.cell(r, 4).value                 # Ti_Inversión (fracción 0-1)
             _tipo = str(_w7.cell(r, 5).value or "").upper()
             if isinstance(_anio, (int, float)) and isinstance(_ti, (int, float)):
                 _ejec.append({
                     "anio": int(_anio),
                     "pct": round(_ti * 100, 1),
+                    "codif": round(_cod) if isinstance(_cod, (int, float)) else None,       # magnitud confiable (cédula)
+                    "devengado": round(_dev) if isinstance(_dev, (int, float)) else None,
                     "cerrado": "VIVO" not in _tipo,     # 2026 = en curso (parcial, fuera de comparación)
                 })
         _w12 = sh("H12c")

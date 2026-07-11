@@ -443,21 +443,29 @@
         {
           "anio": 2023,
           "pct": 68.0,
+          "codif": 19257164,
+          "devengado": 13102087,
           "cerrado": true
         },
         {
           "anio": 2024,
           "pct": 79.6,
+          "codif": 13616171,
+          "devengado": 10840503,
           "cerrado": true
         },
         {
           "anio": 2025,
           "pct": 72.7,
+          "codif": 17524309,
+          "devengado": 12746168,
           "cerrado": true
         },
         {
           "anio": 2026,
           "pct": 6.4,
+          "codif": 30271812,
+          "devengado": 1947738,
           "cerrado": false
         }
       ],

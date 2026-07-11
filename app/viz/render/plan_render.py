@@ -491,13 +491,19 @@ def _longitudinal_plan(plan: dict) -> str:
             dc = "#1E8E3E" if d >= 0 else "#D93025"
             delta = (f'<span style="font-family:ui-monospace,monospace;font-size:9px;color:{dc};'
                      f'margin-left:5px">{"▲" if d >= 0 else "▼"}{abs(d)}pp</span>')
+        _mag = (f'<div style="font-size:9px;color:var(--tx2);margin-top:3px;font-family:ui-monospace,monospace">'
+                f'${e["devengado"]/1e6:.1f}M de ${e["codif"]/1e6:.1f}M</div>'
+                if e.get("codif") and e.get("devengado") else "")
         cards += (f'<div class="pl-si"><div class="k">Ejercicio {e["anio"]}</div>'
                   f'<div class="v" style="color:{_col(p)}">{p:.0f}%</div>'
-                  f'<div class="s">ejecución de la inversión{delta}</div></div>')
+                  f'<div class="s">ejecución de la inversión{delta}</div>{_mag}</div>')
     if curso:
+        _magc = (f'<div style="font-size:9px;color:var(--tx2);margin-top:3px;font-family:ui-monospace,monospace">'
+                 f'${curso["devengado"]/1e6:.1f}M de ${curso["codif"]/1e6:.1f}M</div>'
+                 if curso.get("codif") and curso.get("devengado") else "")
         cards += (f'<div class="pl-si" style="border-style:dashed;opacity:.7"><div class="k">Ejercicio {curso["anio"]}</div>'
                   f'<div class="v" style="color:var(--tx2)">{curso["pct"]:.0f}%</div>'
-                  f'<div class="s">en curso · parcial (no comparable)</div></div>')
+                  f'<div class="s">en curso · parcial (no comparable)</div>{_magc}</div>')
 
     H = [h_serie("Trayectoria de la ejecución", [(e["anio"], e["pct"]) for e in cerr])]
     proy = sm.get("proyeccion") or {}
