@@ -447,26 +447,6 @@ def _aportes(ap: dict) -> str:
         f'<div class="qc-exps">{exps}</div>')
 
 
-def _cumplimiento(cumpl: dict) -> str:
-    """El cumplimiento del plan de trabajo REPORTADO en el informe CPCCS (autocertificado · institucional).
-    Otra sección del documento, no del discurso (Javo · 2026-07-10)."""
-    comps = (cumpl or {}).get("componentes") or []
-    if not comps:
-        return ""
-    per = cumpl.get("periodo", "")
-    rows = ""
-    for c in comps:
-        rows += (f'<tr><td>{_esc(_corta(c.get("componente", ""), 64))}</td>'
-                 f'<td>{_esc(_corta((c.get("resultado", "") or "").strip(chr(34)), 150))}</td></tr>')
-    return (
-        f'<p class="qc-p">El informe formal declara el <b>cumplimiento del plan de trabajo</b>: '
-        f'<b>{len(comps)} componentes</b> con el resultado que la autoridad reporta haber logrado (informe CPCCS '
-        f'{_esc(per)}). Es la <b>narrativa institucional</b> del cumplimiento —autocertificada—; el sistema la '
-        f'registra como <b>declarada</b>, distinta de la verificación independiente del discurso:</p>'
-        f'<div class="qc-tbl-wrap"><table class="qc-serie"><tr><th>Componente del plan de trabajo</th>'
-        f'<th>Resultado reportado (informe)</th></tr>{rows}</table></div>')
-
-
 def _conclusion(snap: dict, m: dict, serie: list | None = None) -> str:
     """Síntesis ejecutiva del DOMINIO (no de un año · Javo 2026-07-10): rotula el período completo."""
     sint = ""
@@ -552,15 +532,11 @@ def cajon_dominio_rdc(serie: list, rdc_serie: list | None = None, doc: dict | No
         bloques.append(_seccion(f'0{n}', 'La rendición en el tiempo · los ejercicios del período', serie_html)); n += 1
     for s in serie:
         bloques.append(_analisis_anio(s, n)); n += 1          # 0X · Ejercicio 20XX (por año · el discurso)
-    doc = doc or {}                                           # 3ª dimensión · el DOCUMENTO CPCCS (Javo)
+    doc = doc or {}                                           # 3ª dimensión · el DOCUMENTO CPCCS (aportes · Javo)
     ap_html = _aportes(doc.get("aportes") or {})
     if ap_html:
         bloques.append(_seccion(f'0{n}', 'Los aportes ciudadanos · la voz que se rastrea', ap_html,
                                 _ley(marco, 'dominio_lead', 'Fundamento (aportes ciudadanos · LOPC)'))); n += 1
-    cu_html = _cumplimiento(doc.get("cumplimiento_actual") or {})
-    if cu_html:
-        bloques.append(_seccion(f'0{n}', 'El cumplimiento reportado · el plan de trabajo', cu_html,
-                                _ley(marco, '02_suficiencia_probatoria', 'Fundamento (informe CPCCS)'))); n += 1
     bloques.append(_seccion(f'0{n}', 'La evaluación · comparación, patrones y prospectiva',
                             _evaluacion(serie, marco), _ley(marco, '04_analisis_sistemico')))
     cuerpo = "".join(bloques) + _conclusion(ref, m, serie)    # síntesis ejecutiva del DOMINIO al cierre (Javo)
