@@ -95,6 +95,12 @@ def main() -> None:
     # solo las partidas DETERMINISTAS (una sola meta) sirven de ancla verificable
     ancla = {pt: next(iter(ms)) for pt, ms in p2m.items() if len(ms) == 1}
 
+    # anclar 2023/24 a meta por partida DETERMINISTA (de la fuente 2025) — ANTES de cruzar años
+    for y in (2023, 2024):
+        for a in por_anio.get(y, []):
+            if not a["meta"] and a["partida"] in ancla:
+                a["meta_ancla"] = ancla[a["partida"]]
+
     # ── ejecución 2025 (cédula de cierre LOTAIP diciembre) por partida económica ──
     CED_2025 = (r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT\Holding_Municipal_Montecristi"
                 r"\Cedulas Presupuestarias 2023-2026\Presupuestos 2025\GAD Montecristi"
@@ -127,7 +133,29 @@ def main() -> None:
                            "codificado": round(cod, 2), "devengado": round(dev, 2)})
     biografias.sort(key=lambda x: -x["plan"])
 
+    # ── biografía MULTI-AÑO: la misma meta a través de los años (CONTINUIDAD del compromiso) ──
+    # 2025 = nativo (vínculo de la fuente); 2023/24 = anclado por partida determinista (piso verificable).
+    # El valor es la PERSISTENCIA, no el monto (el histórico solo captura el subconjunto anclado).
+    ma: dict = defaultdict(lambda: defaultdict(lambda: {"act": 0, "plan": 0.0, "nativo": False}))
+    for y in (2023, 2024, 2025):
+        for a in por_anio.get(y, []):
+            meta = a["meta"] or a.get("meta_ancla")
+            if meta:
+                m = ma[meta[:110]][y]
+                m["act"] += 1
+                m["plan"] += a["monto"]
+                if a["meta"]:
+                    m["nativo"] = True
+    bio_ma = []
+    for meta, years in ma.items():
+        if len(years) >= 2 and not any(k in meta.lower() for k in ("roles", "institucional")):
+            bio_ma.append({"meta": meta,
+                           "anios": {str(y): {"act": v["act"], "plan": round(v["plan"], 2), "nativo": v["nativo"]}
+                                     for y, v in sorted(years.items())}})
+    bio_ma.sort(key=lambda x: (-len(x["anios"]), -sum(a["plan"] for a in x["anios"].values())))
+
     salida = {
+        "biografia_multianio": bio_ma,
         "_fuente": "POA oficial GAD Montecristi por año (Excel) — vínculo meta↔actividad↔partida de la fuente",
         "biografias_2025": biografias,
         "_nota_metodologica": ("La 'meta' del POA es operativa (indicador). El mapa meta↔partida se toma del "

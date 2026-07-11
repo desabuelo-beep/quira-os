@@ -383,11 +383,19 @@ def _biografia_meta(plan: dict) -> str:
         _bios = _json.load(open(_p, encoding="utf-8")).get("biografias_2025", [])
     except Exception:
         _bios = []
-    _c = [b for b in _bios if b.get("inversion", 0) >= 4
-          and not any(k in b["meta"].lower() for k in ("roles", "institucional"))]
-    if _c:
-        b = _c[0]
-        _t = _re.sub(r"\s+(de|del|la|los|las|y|en|a|el|con|para|al)\s*$", "", _corta(b["meta"], 72), flags=_re.I)
+    try:
+        _ma = _json.load(open(_p, encoding="utf-8")).get("biografia_multianio", [])
+    except Exception:
+        _ma = []
+    _b25 = {b["meta"]: b for b in _bios}
+    _ban = ("roles", "institucional", "vehículos", "vehiculos", "sesiones")
+    # flagship: la meta más SUSTANTIVA (mayor plan 2025) que cruce ≥2 años con cadena de inversión
+    _pool = [x for x in _ma if len(x["anios"]) >= 2 and _b25.get(x["meta"], {}).get("inversion", 0) >= 3
+             and not any(k in x["meta"].lower() for k in _ban)]
+    if _pool and _b25:
+        xm = max(_pool, key=lambda x: _b25[x["meta"]]["plan"])
+        b = _b25[xm["meta"]]
+        _t = _re.sub(r"\s+(de|del|la|los|las|y|en|a|el|con|para|al)\s*$", "", _corta(b["meta"], 70), flags=_re.I)
         _nodos = [
             {"sys": "META", "label": "compromiso del plan",
              "edge": {"estado": "verificado", "nota": "actividades operativas de la meta (POA oficial)"}},
@@ -398,10 +406,24 @@ def _biografia_meta(plan: dict) -> str:
             {"sys": "PLAN 2025", "label": f'${b["plan"] / 1e6:.1f}M'},
         ]
         _in = (f'<p class="qc-cap">Un porcentaje aislado no explica nada; una <b>biografía</b>, sí. La meta '
-               f'<b>«{_esc(_t)}»</b> a lo largo de su vida documental en el <b>ejercicio 2025 (cerrado)</b> —del '
-               f'compromiso a la partida, trazada del <b>POA oficial</b> (la fuente, no inferido)—. Cada meta tiene la '
-               f'suya; este es su recorrido verificable.</p>')
-        return _in + cadena_integridad(_nodos, "Biografía de una meta · del plan a la partida · fuente 2025")
+               f'<b>«{_esc(_t)}»</b> a lo largo de su vida documental —del compromiso a la partida, trazada del '
+               f'<b>POA oficial</b> (la fuente, no inferido)—. Cada meta tiene la suya; este es su recorrido verificable.</p>')
+        _chain = cadena_integridad(_nodos, "Biografía de la meta · su cadena en 2025 (año cerrado)")
+        # continuidad multi-año — la PERSISTENCIA del compromiso (no el monto)
+        _cards = ""
+        for _y, _v in xm["anios"].items():
+            _nat = _v.get("nativo")
+            _col = "#22D3EE" if _nat else "#9AA0A6"
+            _cards += (f'<div class="pl-si"><div class="k">Ejercicio {_y}</div>'
+                       f'<div class="v" style="color:{_col}">{_v["act"]}</div>'
+                       f'<div class="s">actividades · {"completo (fuente)" if _nat else "piso verificable"}</div></div>')
+        _cont = (f'<div class="rl-hd" style="margin-top:18px">Continuidad del compromiso · {len(xm["anios"])} ejercicios</div>'
+                 f'<p class="qc-cap">El mismo compromiso <b>persiste a lo largo del plan</b> —2023, 2024 y 2025—: eso es '
+                 f'<b>memoria institucional</b>. En años previos se muestra el <b>piso verificable</b> (solo los vínculos '
+                 f'deterministas de la fuente); en 2025, completo. El valor es la <b>continuidad</b>, no el monto: el '
+                 f'histórico capta apenas el subconjunto trazable, y esa ausencia es un resultado, no un hueco a inferir.</p>'
+                 f'<div class="pl-strip">{_cards}</div>')
+        return _in + _chain + _cont
     # ── fallback: cadena 2026 del canon (Gold Master) ──
     from collections import defaultdict
 

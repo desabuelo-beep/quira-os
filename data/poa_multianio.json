@@ -1,4 +1,271 @@
 {
+  "biografia_multianio": [
+    {
+      "meta": "Aumentar del 91% de vehículos en funcionamiento en el año 2023, a 95% desde el 2024 manteniendo la métrica has",
+      "anios": {
+        "2023": {
+          "act": 4,
+          "plan": 141339.0,
+          "nativo": false
+        },
+        "2024": {
+          "act": 4,
+          "plan": 110000.0,
+          "nativo": false
+        },
+        "2025": {
+          "act": 32,
+          "plan": 574988.0,
+          "nativo": true
+        }
+      }
+    },
+    {
+      "meta": "Incrementar el porcentaje de proyectos ejecutados al 80% al 2027",
+      "anios": {
+        "2023": {
+          "act": 1,
+          "plan": 70000.0,
+          "nativo": false
+        },
+        "2024": {
+          "act": 2,
+          "plan": 62000.0,
+          "nativo": false
+        },
+        "2025": {
+          "act": 5,
+          "plan": 76600.0,
+          "nativo": true
+        }
+      }
+    },
+    {
+      "meta": "Cumplir con el cronograma de sesiones conmenorativas establecido por parte del área de secretaria general del ",
+      "anios": {
+        "2023": {
+          "act": 2,
+          "plan": 32150.5,
+          "nativo": false
+        },
+        "2024": {
+          "act": 4,
+          "plan": 114000.0,
+          "nativo": false
+        },
+        "2025": {
+          "act": 1,
+          "plan": 50000.0,
+          "nativo": true
+        }
+      }
+    },
+    {
+      "meta": "Incrementar la población atendida en salud preventiva de 320 en el año 2023, a 480\nal 2027",
+      "anios": {
+        "2023": {
+          "act": 3,
+          "plan": 77000.0,
+          "nativo": false
+        },
+        "2024": {
+          "act": 2,
+          "plan": 68052.74,
+          "nativo": false
+        },
+        "2025": {
+          "act": 5,
+          "plan": 38400.0,
+          "nativo": true
+        }
+      }
+    },
+    {
+      "meta": "Incrementar el porcentaje del sistema de información local del 19,52% en el año 2023, a 80% al 2030",
+      "anios": {
+        "2023": {
+          "act": 1,
+          "plan": 15488.6,
+          "nativo": false
+        },
+        "2024": {
+          "act": 1,
+          "plan": 45000.0,
+          "nativo": false
+        },
+        "2025": {
+          "act": 2,
+          "plan": 0.0,
+          "nativo": true
+        }
+      }
+    },
+    {
+      "meta": "Aumentar a 10.73 m²/hab el índice de equipamiento del Centro Urbano Principal hasta el 2027",
+      "anios": {
+        "2023": {
+          "act": 3,
+          "plan": 122660.0,
+          "nativo": false
+        },
+        "2025": {
+          "act": 17,
+          "plan": 676400.0,
+          "nativo": true
+        }
+      }
+    },
+    {
+      "meta": "Mantener y mejorar las instalaciones e infraestructuras municipales.",
+      "anios": {
+        "2023": {
+          "act": 11,
+          "plan": 235734.6,
+          "nativo": false
+        },
+        "2025": {
+          "act": 21,
+          "plan": 343706.04,
+          "nativo": true
+        }
+      }
+    },
+    {
+      "meta": "Aumentar a 17.32 m²/hab el IVU  hasta el 2027",
+      "anios": {
+        "2024": {
+          "act": 1,
+          "plan": 5000.0,
+          "nativo": false
+        },
+        "2025": {
+          "act": 18,
+          "plan": 252173.84,
+          "nativo": true
+        }
+      }
+    },
+    {
+      "meta": "Incrementar el número de procesos sistematizados a 9 al 2027",
+      "anios": {
+        "2023": {
+          "act": 1,
+          "plan": 1200.0,
+          "nativo": false
+        },
+        "2025": {
+          "act": 14,
+          "plan": 214564.4,
+          "nativo": true
+        }
+      }
+    },
+    {
+      "meta": "Aumentar a 10.73 m²/hab el índice de equipamiento del Centro Urbano Principal",
+      "anios": {
+        "2023": {
+          "act": 1,
+          "plan": 50000.0,
+          "nativo": false
+        },
+        "2025": {
+          "act": 5,
+          "plan": 148562.89,
+          "nativo": true
+        }
+      }
+    },
+    {
+      "meta": "Incrementar las revisiones técnicas vehiculares de 4000\nen el año 2023, a 20000 al 2027",
+      "anios": {
+        "2024": {
+          "act": 1,
+          "plan": 24000.0,
+          "nativo": false
+        },
+        "2025": {
+          "act": 2,
+          "plan": 144000.0,
+          "nativo": true
+        }
+      }
+    },
+    {
+      "meta": "Aumentar del 91% de vehículos en funcionamiento en el año 2023, a 95% desde",
+      "anios": {
+        "2023": {
+          "act": 1,
+          "plan": 36000.0,
+          "nativo": false
+        },
+        "2025": {
+          "act": 2,
+          "plan": 25000.0,
+          "nativo": true
+        }
+      }
+    },
+    {
+      "meta": "100 % de realización y análisis de resultados de exámenes médicos",
+      "anios": {
+        "2024": {
+          "act": 1,
+          "plan": 5000.0,
+          "nativo": false
+        },
+        "2025": {
+          "act": 1,
+          "plan": 52000.0,
+          "nativo": true
+        }
+      }
+    },
+    {
+      "meta": "Alcanzar un 95% de cumplimiento del plan de adquisición al final del año",
+      "anios": {
+        "2024": {
+          "act": 2,
+          "plan": 11000.0,
+          "nativo": false
+        },
+        "2025": {
+          "act": 3,
+          "plan": 29000.0,
+          "nativo": true
+        }
+      }
+    },
+    {
+      "meta": "Formular cuatro planes para la acción contra el cambio climático hasta el 2027",
+      "anios": {
+        "2023": {
+          "act": 1,
+          "plan": 20000.0,
+          "nativo": false
+        },
+        "2025": {
+          "act": 2,
+          "plan": 15000.0,
+          "nativo": true
+        }
+      }
+    },
+    {
+      "meta": "Al 2025 cinco procesos notariales efectuados",
+      "anios": {
+        "2023": {
+          "act": 1,
+          "plan": 5000.0,
+          "nativo": false
+        },
+        "2025": {
+          "act": 1,
+          "plan": 6679.0,
+          "nativo": true
+        }
+      }
+    }
+  ],
   "_fuente": "POA oficial GAD Montecristi por año (Excel) — vínculo meta↔actividad↔partida de la fuente",
   "biografias_2025": [
     {
