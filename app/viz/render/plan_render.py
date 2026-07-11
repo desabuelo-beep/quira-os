@@ -16,9 +16,11 @@ import re
 try:
     from html_render import _CSS as _RDC_CSS, _esc, _corta, _ley, _seccion, _pct  # noqa: F401
     from hallazgos import render_hallazgos as _hallazgos_html, h_serie, h_proyeccion  # sintetizador compartido  # noqa: F401
+    from relacional import cadena_integridad, REL_CSS  # motor Relacional compartido  # noqa: F401
 except ImportError:  # dentro del paquete app (Streamlit)
     from app.viz.render.html_render import _CSS as _RDC_CSS, _esc, _corta, _ley, _seccion, _pct  # noqa: F401
     from app.viz.render.hallazgos import render_hallazgos as _hallazgos_html, h_serie, h_proyeccion  # noqa: F401
+    from app.viz.render.relacional import cadena_integridad, REL_CSS  # noqa: F401
 
 # CSS: la gramática RDC + lo específico del plan (strip de datos del backbone, cards SAT)
 _PLAN_EXTRA = """
@@ -44,7 +46,7 @@ _PLAN_EXTRA = """
 .pl-satc .sv{font-family:ui-monospace,monospace;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;float:right}
 @media(max-width:640px){.pl-sat{grid-template-columns:1fr}}
 """
-_CSS = _RDC_CSS.replace("</style>", _PLAN_EXTRA + "</style>")
+_CSS = _RDC_CSS.replace("</style>", _PLAN_EXTRA + REL_CSS + "</style>")
 
 # semáforo (temp) → color de la gramática
 _TEMP = {"critico": "#D93025", "alerta": "#F9AB00", "amarillo": "#F9AB00", "normal": "#1A73E8",
@@ -334,6 +336,39 @@ def _ley_esl(plan: dict, esl: str, titulo: str) -> str:
     return f'<details class="qc-law"><summary>📖 {_esc(titulo)}</summary>{chips}</details>'
 
 
+def _cadena_relacional(plan: dict) -> str:
+    """El Relacional ENCENDIDO: la cadena del plan al gasto como recorrido de integridad entre las
+    fuentes (ADR-029 §Precisión · la verdad vive en la fuente). El estado de cada arista se LEE del snapshot."""
+    pub = plan.get("publicado", {}) or {}
+    pr = plan.get("presupuesto", {}) or {}
+    cob = plan.get("cobertura_metas_poa") or 0
+    ipe = (plan.get("ipe_ejecutado", {}) or {}).get("pct") or 0
+    pac_usd = (plan.get("pac", {}) or {}).get("total_usd") or 0
+    cruce = (pub.get("cruce", {}) or {}).get("cobertura_pct") or 0
+    ti = pr.get("ti_pct") or 0
+
+    def _edo(pct, alto=70):
+        return "verificado" if pct >= alto else ("parcial" if pct > 0 else "pendiente")
+
+    nodos = [
+        {"sys": "PDOT", "label": "plan estratégico",
+         "edge": {"estado": _edo(cob), "pct": cob, "nota": "metas del plan con dotación en el POA"}},
+        {"sys": "POA", "label": "operación anual",
+         "edge": {"estado": _edo(ipe), "pct": ipe, "nota": "gasto vinculado a los objetivos del plan"}},
+        {"sys": "PRESUPUESTO", "label": "asignación",
+         "edge": {"estado": "verificado" if pac_usd else "pendiente", "nota": "contratación planificada (PAC)"}},
+        {"sys": "PAC", "label": "plan de compras",
+         "edge": {"estado": _edo(cruce), "pct": cruce, "nota": "publicado en SERCOP al corte del período"}},
+        {"sys": "SERCOP", "label": "contratación pública",
+         "edge": {"estado": _edo(ti), "pct": ti, "nota": "ejecución de la inversión (en curso)"}},
+        {"sys": "EJECUCIÓN", "label": "gasto devengado"},
+    ]
+    intro = ('<p class="qc-cap">La verdad no vive en QUIRA: vive en estas <b>fuentes</b>. El recorrido muestra '
+             'cuánto <b>sostiene documentalmente cada fuente a la siguiente</b> —la integración que QUIRA '
+             'verificó—. Un eslabón delgado no es una falta: es una fuente que aún no alcanza a la siguiente.</p>')
+    return intro + cadena_integridad(nodos, "Integridad de la cadena · fuente por fuente")
+
+
 def _longitudinal_plan(plan: dict) -> str:
     """05 · La trayectoria en el tiempo + proyección (motor temporal → 5º motor Prospectivo).
     Lee la serie del canon (H07b ejecución REAL 2023-2025 + H12c proyección); QUIRA la narra,
@@ -396,7 +431,7 @@ def cajon_dominio_plan(plan: dict) -> str:
     {_ley_esl(plan, 'pdot', 'Fundamento del dominio (Planificación)')}
   </div>
   <div class="qc-body">
-    {_seccion('01', 'El procedimiento · del plan al gasto', _backbone(plan), _ley_esl(plan, 'poa', 'Fundamento jurídico aplicable'))}
+    {_seccion('01', 'El procedimiento · del plan al gasto', _backbone(plan) + _cadena_relacional(plan), _ley_esl(plan, 'poa', 'Fundamento jurídico aplicable'))}
     {_seccion('02', 'El plan y su cobertura', _cobertura(plan), _ley_esl(plan, 'presupuesto', 'Fundamento jurídico aplicable'))}
     {_seccion('03', 'La trazabilidad · metas del plan', '<p class="qc-p">Cada expediente es la <b>biografía de una meta</b>: su recorrido desde el plan hasta el gasto, y hasta dónde llega la cadena documental.</p><p class="qc-cap">No se eligen al azar: se muestran las metas de mayor <b>Valor Demostrativo</b> —el puntaje (0-100) que resume cuánto demuestra el método cada expediente: profundidad de la cadena documental, peso presupuestario y tipo de competencia. A mayor puntaje, más completa y probatoria es la trazabilidad.</p>' + _expedientes_metas(plan), _ley_esl(plan, 'pac', 'Fundamento jurídico aplicable'))}
     {_seccion('04', 'La coherencia · análisis preventivo', _coherencia(plan), _ley_esl(plan, 'gasto', 'Fundamento jurídico aplicable'))}

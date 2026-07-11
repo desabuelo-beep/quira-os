@@ -54,5 +54,22 @@ Analogía: **Windows opera el computador; Microsoft opera Windows.** Dylus no ad
   Montecristi mostrable (Sprint D · CAF). La Desexcelización se construye cuando el producto lo permita.
 - Disparador: tracción multi-cantón / barrido nacional (Sprint F). Antes, el Excel-conector basta.
 
+## Precisión epistemológica (Javo · 2026-07-11) — el Modelo Canónico NO es "la verdad"
+
+Refinamiento que corrige el malentendido recurrente *"el Gold Master es la verdad"*:
+
+> **El Modelo Canónico es la _representación canónica de la evidencia procesada_ — la CAPA DE INTEGRACIÓN.
+> NO es la verdad.** La verdad-verificable vive en las **fuentes**: PDOT · POA · PAC · SERCOP · SIGAD ·
+> Presupuesto · Rendición. El Modelo integra, normaliza y representa esa evidencia. Cuando Regla 1 dice
+> "Modelo Canónico = Estado", ese *Estado* es el estado de la **integración**, jamás un sustituto de la fuente.
+
+Consecuencia metodológica (cambia bastante, no es cosmético):
+- QUIRA no demuestra *"contra el Gold Master"*: demuestra **desde la fuente, a través de la integración**.
+- El **motor Relacional (grafo)** es la capa que RE-ENLAZA la integración con las fuentes y las cruza entre
+  sí: la *cadena de integridad intersistémica* (Constitución CAPA 0). Un eslabón roto en el grafo es **una
+  fuente que no sostiene documentalmente a la siguiente**, nunca un error del Modelo ni una acusación.
+- La **ausencia de evidencia en la fuente es un RESULTADO** de verificabilidad, no una autorización a inferir
+  el hecho desde el Modelo. Coherente con el Principio Rector (CLAUDE.md · Constitución CAPA 0).
+
 ---
-*ADR-029 · Desexcelización · Dylus Lab © 2026 · "El Excel fue el molde, no la estatua. El Gold Master es un modelo canónico; su forma física es reemplazable, su metodología no."*
+*ADR-029 · Desexcelización · Dylus Lab © 2026 · "El Excel fue el molde, no la estatua. El Gold Master es un modelo canónico; su forma física es reemplazable, su metodología no. Integra la evidencia — no la sustituye: la verdad vive en la fuente."*
