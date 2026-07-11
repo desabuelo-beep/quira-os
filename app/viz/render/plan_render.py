@@ -20,6 +20,16 @@ except ImportError:  # dentro del paquete app (Streamlit)
 
 # CSS: la gramática RDC + lo específico del plan (strip de datos del backbone, cards SAT)
 _PLAN_EXTRA = """
+/* color propio del DOM Planificación (cada DOM es un universo · Javo 2026-07-10) — cian vivo sobre fondo oscuro */
+.qc{border-top-color:#22D3EE}
+.qc-hn{color:#22D3EE}
+.qc-q{border-left-color:#22D3EE}
+.qc-princ{background:rgba(34,211,238,.07);border-color:rgba(34,211,238,.28)}
+.qc-princ .t{color:#22D3EE}
+.qc-blk.out{border-color:#22D3EE;background:rgba(34,211,238,.1)}.qc-blk.out .bl{color:#22D3EE}
+.qc-sint{border-color:#22D3EE}
+.qc-sint-lbl{background:rgba(34,211,238,.13);color:#22D3EE;border-color:rgba(34,211,238,.32)}
+.qc-sr-cierre{font-family:Georgia,serif;font-size:13.5px;line-height:1.55;color:var(--tx);margin-top:13px;padding-top:12px;border-top:1px solid var(--bd)}.qc-sr-cierre b{color:#fff}
 .pl-strip{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 2px}
 .pl-si{flex:1 1 120px;border:1px solid var(--bd);border-radius:6px;padding:9px 11px;background:var(--sf)}
 .pl-si .k{font-family:ui-monospace,monospace;font-size:8.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--tx2);font-weight:700}
@@ -279,21 +289,29 @@ def _hallazgos_html(H: list) -> str:
 
 
 def _implicaciones_plan(plan: dict) -> str:
-    cob = plan.get("cobertura_metas_poa") or 0
-    ipe = (plan.get("ipe_ejecutado", {}) or {}).get("pct")
-    pr = plan.get("presupuesto", {}) or {}
-    ti = pr.get("ti_pct")
-    partes = []
-    if cob >= 80:
-        partes.append("el plan cantonal aterriza de forma amplia en la operación anual")
-    elif cob:
-        partes.append("una parte de las metas del plan aún no baja a la operación")
-    if ti is not None and ti < 35:
-        partes.append("la ejecución del gasto de inversión avanza con lentitud frente al calendario")
-    cuerpo = ", pero " .join(partes) if len(partes) == 2 else (partes[0] if partes else "la cadena del plan al gasto se sostiene")
-    txt = (f"Este análisis evidencia que {cuerpo}. Sugiere una planificación con buena bajada a la operación, "
-           f"cuyo desafío está en la velocidad de ejecución y en cerrar la contratación planificada dentro del año.")
-    return f'<div class="qc-impl"><div class="qc-impl-t">Implicaciones</div><div class="qc-impl-b">{_esc(txt)}</div></div>'
+    """Interpretación nacida del dato (registro de observatorio, no prosa genérica · Javo 2026-07-10):
+    diagnostica DÓNDE reside la brecha —en la formulación del plan o en la velocidad de ejecución—."""
+    cob = round(plan.get("cobertura_metas_poa") or 0)
+    ipe = round((plan.get("ipe_ejecutado", {}) or {}).get("pct") or 0)
+    ti = round((plan.get("presupuesto", {}) or {}).get("ti_pct") or 0)
+    alta_form = cob >= 80 and ipe >= 80
+    if alta_form and ti < 30:
+        txt = (f"La evidencia indica que Montecristi conserva una <b>alta consistencia entre la planificación "
+               f"estratégica y la operación institucional</b>: el {cob}% de las metas del PDOT desciende al POA y el "
+               f"{ipe}% del gasto ejecutado se vincula a los objetivos del plan de desarrollo. La <b>brecha del "
+               f"período no reside en la formulación</b> del plan, sino en la <b>velocidad con que la contratación "
+               f"transforma esa planificación en ejecución presupuestaria</b>: al corte, la inversión devengada "
+               f"alcanza apenas el {ti}%.")
+    elif alta_form:
+        txt = (f"La <b>correspondencia entre planificación y operación es alta</b> —{cob}% de las metas en el POA y "
+               f"{ipe}% del gasto vinculado al PDOT— y la ejecución de inversión avanza en el {ti}% al corte: la "
+               f"planificación estratégica se traduce en operación y comienza a materializarse en gasto dentro del "
+               f"calendario del ejercicio fiscal.")
+    else:
+        txt = (f"La cadena del plan al gasto presenta un <b>eslabón débil en el descenso del plan a la operación</b> "
+               f"(cobertura del {cob}% de las metas en el POA): una parte de la planificación estratégica no alcanza "
+               f"aún expresión programática, lo que condiciona su ejecución presupuestaria posterior.")
+    return f'<div class="qc-impl"><div class="qc-impl-t">Implicaciones</div><div class="qc-impl-b">{txt}</div></div>'
 
 
 def _sintesis_plan(plan: dict) -> str:
@@ -306,8 +324,12 @@ def _sintesis_plan(plan: dict) -> str:
         ("#F9AB00", f"{pr.get('ti_pct',0)}%", "de ejecución de inversión al corte del período."),
     ]
     sint = "".join(f'<div class="qc-sr"><b style="color:{c}">{_esc(v)}</b><span>{_esc(t)}</span></div>' for c, v, t in filas)
-    return (f'<div class="qc-sint"><div class="qc-sint-lbl">Síntesis ejecutiva — Planificación · Montecristi · '
-            f'corte {_esc(pr.get("corte",""))}</div><div class="qc-sint-b">{sint}'
+    cierre = ('<div class="qc-sr-cierre">En conjunto, la evidencia indica que Montecristi conserva <b>alta '
+              'consistencia entre la planificación estratégica y la operación institucional</b>. La principal brecha '
+              'del período no reside en la formulación del plan, sino en la <b>velocidad con que la contratación '
+              'transforma esa planificación en ejecución presupuestaria</b>.</div>')
+    return (f'<div class="qc-sint"><div class="qc-sint-lbl">Síntesis ejecutiva del dominio — Planificación · '
+            f'Montecristi · corte {_esc(pr.get("corte",""))}</div><div class="qc-sint-b">{sint}{cierre}'
             f'<div class="qc-fuente">Fuentes: PDOT 2023-2027 · POA · Presupuesto (cédula) · PAC · SERCOP · IPE.</div></div></div>')
 
 
@@ -341,7 +363,7 @@ def cajon_dominio_plan(plan: dict) -> str:
   <div class="qc-body">
     {_seccion('01', 'El procedimiento · del plan al gasto', _backbone(plan), _ley_esl(plan, 'poa', 'Fundamento jurídico aplicable'))}
     {_seccion('02', 'El plan y su cobertura', _cobertura(plan), _ley_esl(plan, 'presupuesto', 'Fundamento jurídico aplicable'))}
-    {_seccion('03', 'La trazabilidad · metas del plan', '<p class="qc-p">Cada expediente es la <b>biografía de una meta</b>: su recorrido desde el plan hasta el gasto, y hasta dónde llega la cadena documental.</p>' + _expedientes_metas(plan), _ley_esl(plan, 'pac', 'Fundamento jurídico aplicable'))}
+    {_seccion('03', 'La trazabilidad · metas del plan', '<p class="qc-p">Cada expediente es la <b>biografía de una meta</b>: su recorrido desde el plan hasta el gasto, y hasta dónde llega la cadena documental.</p><p class="qc-cap">No se eligen al azar: se muestran las metas de mayor <b>Valor Demostrativo</b> —el puntaje (0-100) que resume cuánto demuestra el método cada expediente: profundidad de la cadena documental, peso presupuestario y tipo de competencia. A mayor puntaje, más completa y probatoria es la trazabilidad.</p>' + _expedientes_metas(plan), _ley_esl(plan, 'pac', 'Fundamento jurídico aplicable'))}
     {_seccion('04', 'La coherencia · análisis preventivo', _coherencia(plan), _ley_esl(plan, 'gasto', 'Fundamento jurídico aplicable'))}
     {_seccion('05', 'La evaluación · hallazgos e implicaciones', '<p class="qc-p">Interpretación del dato —no una descripción—: el patrón que revela el análisis, y qué significa.</p>' + _hallazgos_html(_hallazgos_plan(plan)) + _implicaciones_plan(plan))}
     {_sintesis_plan(plan)}
