@@ -71,5 +71,25 @@ El IGAP lee `H02b.EVIDENCIA_PREDOMINANTE` para **NO castigar a las unidades que 
 
 **Construcción:** índice derivado nuevo (como IPE/IBSC) · **NO toca `H12!B33`** · sobre COPIA de trabajo · con evidencia · verificado con dumps · **openpyxl PROHIBIDO sobre el canon vivo** (corrompe la malla de 123 hojas). Cirugía documentada como la D2A.
 
+## Cirugía H07b-2025 — corte provisional → cierre LOTAIP (2026-07-11 · Javo ejecutó en Excel, Claude verificó con dump)
+
+**Motivo:** el multi-año profundo (Planificación) reveló que `H07b` 2025 usaba un corte **PROVISIONAL**
+("Presupuesto GAD" · Codif $10.2M · Ti 59.85%), no el cierre. La cédula LOTAIP de diciembre (Numeral 6,
+grupos 7+8 — **misma metodología que reprodujo 2026 con Δ=$0**) da el cierre real. Coherente con ADR-029
+§Precisión (la verdad vive en la fuente; el modelo la integra) y el patrón fuente→canon.
+
+**Cambio (input con evidencia · `B33` intacta · openpyxl NO usado — edición en Excel nativo):**
+| Celda | Antes | Después |
+|---|---|---|
+| `H07b!B9` Codificado 7+8 | 10 202 422,21 | **17 524 308,73** |
+| `H07b!C9` Devengado 7+8 | 6 106 506,58 | **12 746 168,09** |
+| `H07b!D9` Ti *(fórmula, no tocada)* | 0,5985 | **0,7273** (recalc automático) |
+| `H07b!E9/F9` trazabilidad | "Presupuesto GAD (provisional)" | "cierre LOTAIP diciembre (7+8)" |
+
+**Evidencia:** `Holding_Municipal_Montecristi\Cedulas Presupuestarias 2023-2026\Presupuestos 2025\GAD Montecristi\2025-Diciembre-…Conjunto de datos.xlsx`.
+**Blast radius (verificado en las 123 hojas):** `B9,C9 → D9 → H85_ALERTS_LOG` únicamente. **`H12!B33` (ICPI vivo = 0,2746)
+y `H12c` 2025 (69,93) INTACTOS.** Trayectoria Ti corregida: **68 → 80 → 73** (antes 68→80→60, artefacto del corte).
+Pendiente menor: `H85!D25` baseline 0,5985→0,7273 (log interno, no afecta motor).
+
 ---
 *Metodología Gold Master · Dylus Lab © 2026 · la fórmula canónica es INMUTABLE · correcciones solo en inputs/semáforo/presentación, sobre copia, con evidencia verificada.*
