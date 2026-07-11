@@ -900,7 +900,5 @@ def render() -> None:
         st.error(f"Cajón de Planificación no disponible: {e}")
         return
     st.markdown(cajon_plan_streamlit(plan), unsafe_allow_html=True)
-
-    # cierre factual corto (sin IA, sin veredicto %)
-    _cierre(plan)
-    st.markdown('</div>', unsafe_allow_html=True)
+    # La síntesis ejecutiva (6 eslabones) ahora vive DENTRO del cajón (_sintesis_plan) — ya no
+    # se renderiza aparte: el antiguo _cierre() quedaba fuera del cajón y sin CSS (flotaba).

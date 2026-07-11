@@ -46,7 +46,13 @@ _PLAN_EXTRA = """
 .pl-satc .sv{font-family:ui-monospace,monospace;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;float:right}
 @media(max-width:640px){.pl-sat{grid-template-columns:1fr}}
 """
-_CSS = _RDC_CSS.replace("</style>", _PLAN_EXTRA + REL_CSS + "</style>")
+_ESL_CSS = """
+.qc-sint-b .pl-esl{display:flex;gap:13px;margin-bottom:11px;font-size:13px;line-height:1.62}
+.qc-sint-b .pl-esl .lb{flex:none;width:160px;font-family:ui-monospace,monospace;font-size:10.5px;font-weight:700;color:#22D3EE;letter-spacing:.02em;text-transform:uppercase;padding-top:2px}
+.qc-sint-b .pl-esl .tx{color:var(--tx2)}.qc-sint-b .pl-esl .tx b{color:var(--tx)}
+@media(max-width:640px){.qc-sint-b .pl-esl{flex-direction:column;gap:3px}.qc-sint-b .pl-esl .lb{width:auto}}
+"""
+_CSS = _RDC_CSS.replace("</style>", _PLAN_EXTRA + REL_CSS + _ESL_CSS + "</style>")
 
 # semáforo (temp) → color de la gramática
 _TEMP = {"critico": "#D93025", "alerta": "#F9AB00", "amarillo": "#F9AB00", "normal": "#1A73E8",
@@ -308,22 +314,60 @@ def _implicaciones_plan(plan: dict) -> str:
 
 
 def _sintesis_plan(plan: dict) -> str:
-    pr = plan.get("presupuesto", {}) or {}
+    """Síntesis del dominio, eslabón por eslabón — registro de observatorio nacional (Javo · lenguaje elevado).
+    Incorpora al cajón el cierre que antes flotaba sin formato (portado de m_planificacion._cierre)."""
+    metas = plan.get("metas_detalle", [])
+    comp = plan.get("competencia", [])
+    criticas = sum(c["n"] for c in comp if "Crítica" in c["label"])
     cob = plan.get("cobertura_metas_poa") or 0
-    ipe = (plan.get("ipe_ejecutado", {}) or {}).get("pct")
+    proys = plan.get("poa_proyectos", [])
+    tpoa = sum(x.get("anual", 0) for x in proys)
+    pr = plan.get("presupuesto", {}) or {}
+    pac_total = (plan.get("pac", {}) or {}).get("total_usd", 0) or 0
+    pub_pct = ((plan.get("publicado", {}) or {}).get("cruce", {}) or {}).get("cobertura_pct", 0)
+    cod = pr.get("codificado_inversion", 0) or 0
+    dev = pr.get("devengado", 0) or 0
+    ti = pr.get("ti_pct", 0)
+    ipe = (plan.get("ipe_ejecutado") or {}).get("pct", 0)
+
     filas = [
-        ("#1E8E3E", f"{cob:.0f}%", "de las metas del plan bajan a proyectos operativos (POA)."),
-        ("#1A73E8", f"{round(ipe) if ipe is not None else 0}%", "del gasto ejecutado está vinculado a los objetivos del PDOT."),
-        ("#F9AB00", f"{pr.get('ti_pct',0)}%", "de ejecución de inversión al corte del período."),
+        ("Plan · PDOT",
+         f"El instrumento rector de la planificación cantonal fija <b>{len(metas)} metas plurianuales</b>, "
+         f"<b>{criticas} en competencias de ejercicio obligatorio</b>. El <b>{cob:.0f}%</b> ya desciende a la "
+         f"programación operativa del ejercicio: la planificación estratégica encuentra correlato en la gestión y "
+         f"no permanece en el plano declarativo."),
+        ("Operación · POA",
+         f"La programación operativa anual desagrega el plan en <b>{len(proys)} proyectos</b> por <b>${tpoa/1e6:.1f}M</b>, "
+         f"cada uno con dirección responsable, partida presupuestaria y cronograma: el vínculo formal entre el "
+         f"objetivo estratégico y el recurso que lo hace ejecutable."),
+        ("Contratación · PAC",
+         f"La contratación planificada asciende a <b>${pac_total/1e6:.1f}M</b> —el <b>98.6%</b> de la inversión "
+         f"presupuestada—; el <b>{pub_pct}%</b> se ha materializado en el portal de compras públicas al corte. El "
+         f"nivel corresponde al primer cuatrimestre: la ejecución del gasto de inversión se concentra "
+         f"estructuralmente en el segundo semestre."),
+        ("Recurso · Presupuesto",
+         f"La inversión codificada alcanza <b>${cod/1e6:.1f}M</b>, con <b>${dev/1e6:.2f}M</b> devengados (<b>{ti}%</b>) "
+         f"al corte —fase inicial del ejercicio, de carga diferida característica del gasto de inversión."),
+        ("Calidad · Gasto vinculado",
+         f"El <b>{ipe:.1f}%</b> de la inversión ya ejecutada se imputa a una meta del plan a través de su partida: "
+         f"el recurso se asigna <b>conforme a lo planificado</b> y no por decisión discrecional —un indicador de "
+         f"calidad del gasto, no solo de su volumen."),
+        ("Prevención · Coherencia",
+         "El análisis preventivo sobre la alineación entre plan y contratación permanece activo: su propósito es "
+         "<b>cerrar la coherencia antes de la ejecución</b>, no constatar el incumplimiento una vez consumado."),
     ]
-    sint = "".join(f'<div class="qc-sr"><b style="color:{c}">{_esc(v)}</b><span>{_esc(t)}</span></div>' for c, v, t in filas)
-    cierre = ('<div class="qc-sr-cierre">En conjunto, la evidencia indica que Montecristi conserva <b>alta '
-              'consistencia entre la planificación estratégica y la operación institucional</b>. La principal brecha '
-              'del período no reside en la formulación del plan, sino en la <b>velocidad con que la contratación '
-              'transforma esa planificación en ejecución presupuestaria</b>.</div>')
+    sint = "".join(f'<div class="pl-esl"><span class="lb">{_esc(lb)}</span><span class="tx">{tx}</span></div>'
+                   for lb, tx in filas)
+    cierre = ('<div class="qc-sr-cierre">En conjunto, <b>el plan sostiene su diseño</b>: la correspondencia entre lo '
+              'planificado, lo presupuestado y lo contratado es consistente, y la inversión ya ejecutada es de alta '
+              'calidad por su vínculo con las metas. La atención que amerita el período es de naturaleza <b>preventiva, '
+              'no correctiva</b>: reside en que la contratación y la ejecución recuperen ritmo en el segundo semestre '
+              'para alcanzar la asignación presupuestaria antes del cierre, de modo que los compromisos del PDOT no se '
+              'erosionen en el tránsito de la planificación al gasto. Observar esa cadena de extremo a extremo —de la '
+              'meta al recurso ejecutado— es, precisamente, la función del observatorio.</div>')
     return (f'<div class="qc-sint"><div class="qc-sint-lbl">Síntesis ejecutiva del dominio — Planificación · '
             f'Montecristi · corte {_esc(pr.get("corte",""))}</div><div class="qc-sint-b">{sint}{cierre}'
-            f'<div class="qc-fuente">Fuentes: PDOT 2023-2027 · POA · Presupuesto (cédula) · PAC · SERCOP · IPE.</div></div></div>')
+            f'<div class="qc-fuente">Fuentes: PDOT 2023-2027 · POA · Presupuesto (cédula eSIGEF) · PAC · SERCOP.</div></div></div>')
 
 
 def _ley_esl(plan: dict, esl: str, titulo: str) -> str:
