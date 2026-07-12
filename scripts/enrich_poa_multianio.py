@@ -125,12 +125,15 @@ def main() -> None:
                 b["part"].add(a["partida"])
     biografias = []
     for mk, b in bio.items():
-        cod = sum(ejec.get(pt, {}).get("cod", 0) for pt in b["part"])
-        dev = sum(ejec.get(pt, {}).get("dev", 0) for pt in b["part"])
+        # ejecución EXCLUSIVA: solo las partidas que pertenecen SOLO a esta meta (deterministas) —
+        # atribución limpia, sin doble conteo por partida compartida (FASE 1.5 · honestidad).
+        excl = [pt for pt in b["part"] if ancla.get(pt) == mk]
+        cod = sum(ejec.get(pt, {}).get("cod", 0) for pt in excl)
+        dev = sum(ejec.get(pt, {}).get("dev", 0) for pt in excl)
         inv = sum(1 for pt in b["part"] if pt[:1] in ("7", "8"))
         biografias.append({"meta": mk[:110], "actividades": b["act"], "partidas": len(b["part"]),
                            "inversion": inv, "plan": round(b["plan"], 2),
-                           "codificado": round(cod, 2), "devengado": round(dev, 2)})
+                           "partidas_excl": len(excl), "cod_excl": round(cod, 2), "dev_excl": round(dev, 2)})
     biografias.sort(key=lambda x: -x["plan"])
 
     # ── biografía MULTI-AÑO: la misma meta a través de los años (CONTINUIDAD del compromiso) ──
