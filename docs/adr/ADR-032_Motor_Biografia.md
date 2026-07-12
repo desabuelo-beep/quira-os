@@ -32,16 +32,21 @@ de fingir completitud.
 | ¿Qué actividades tuvo? | **verificado** | POA oficial (Excel) |
 | ¿Qué presupuesto planificó? | **verificado** | POA oficial |
 | ¿Qué % ejecutó? | **DOMINIO** (agregado, p.ej. 73%) — **NO per-meta** | cédula (partida compartida) |
-| ¿Qué contratos generó? | **DOMINIO** ($4.9M · 109 procesos) — per-meta solo subconjunto exclusivo (23/109) | PAC oficial (docx) |
+| ¿Qué contratos generó? | **reconciliado PAC↔POA por descripción** (100/109 · 92% · confianza alta) | POA + PAC oficial |
 | ¿Qué reformas sufrió? ¿Cómo terminó? | *ausencia documentada* | — |
 
-**Hallazgo estructural definitivo (FASE 1.5 · investigado ejecución Y contratos):** la cadena
-`meta↔actividad↔partida` es **limpia** (del POA fuente), pero **aguas abajo la partida presupuestaria
-se comparte entre metas** — por tanto *todo lo que cuelga de la partida (ejecución, contratos, reformas)
-no es atribuible limpiamente por meta*. No es un defecto de QUIRA: es la estructura presupuestaria del
-GAD (partidas genéricas). La atribución exclusiva (partidas deterministas) captura solo el subconjunto
-pequeño/específico; los ítems grandes (obras) van por partidas compartidas. **Conclusión: el núcleo
-verificado de la biografía es la CADENA DEL PLAN; aguas abajo se reporta a nivel de dominio.**
+**Hallazgo (FASE 1.5) — y la INNOVACIÓN que salta el muro (corrección de Javo · 2026-07-11):**
+La atribución **RAW por partida** es limitada: la partida se comparte entre metas (estructura del sistema
+SERCOP / presupuesto del GAD). *Declararlo como muro fue prematuro.* QUIRA lo **SALTA** con **reconciliación
+intersistémica por DESCRIPCIÓN**: el POA y el PAC describen el **mismo trabajo real** → el matching de
+descripción (restringido a la misma partida) atribuye el proceso a la actividad → su meta. **92% de los
+procesos, alta confianza (0.78–0.98).** Esto **no es inferencia** —es reconciliar dos fuentes del mismo
+hecho—, y es precisamente la *cadena de integridad intersistémica* que define a QUIRA como inteligencia,
+no como tablero. **Regla:** cuando el dato existe pero la estructura lo esconde, QUIRA innova para
+reconciliarlo; solo declara ausencia cuando el dato **no existe** en ninguna fuente.
+
+Pendiente por la misma vía: la **ejecución (devengado)** —hoy a nivel de partida en la cédula— es
+reconciliable por la cadena `proceso → contrato SERCOP → devengado`. Núcleo verificado hoy: **plan + contratos**.
 
 ## Límite documentado (la honestidad que distingue a QUIRA)
 

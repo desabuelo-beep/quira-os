@@ -15,10 +15,12 @@ Dylus Lab © 2026
 """
 from __future__ import annotations
 
+import glob
 import json
 import os
 import re
 from collections import defaultdict
+from difflib import SequenceMatcher
 
 import openpyxl
 
@@ -60,6 +62,52 @@ def _partida_econ(raw: str) -> str:
         return m.group(1)
     m = re.search(r"\b([5-8]\d{5})\b", raw)              # fallback: primer económico 6-díg
     return m.group(1) if m else ""
+
+
+def _norm(s: str) -> str:
+    return re.sub(r"[^A-ZÑ ]", " ", (s or "").upper())
+
+
+def _contratos_2025_por_meta(poa_2025: list) -> dict:
+    """INNOVACIÓN (Javo · 2026-07-11): reconciliar PAC↔POA por DESCRIPCIÓN salta el muro de la partida
+    compartida. El PAC y el POA describen el MISMO trabajo real (dos sistemas) → matching de descripción
+    (restringido a la misma partida) atribuye el proceso a la actividad → su meta. Cadena de integridad
+    INTERSISTÉMICA (no inferencia: reconciliación de dos fuentes del mismo hecho). Devuelve {meta: {...}}."""
+    hits = glob.glob(os.path.join(POA_DIR, "..", "..", "PAC 2023-2026", "**", "GAD_Montecristi_PAC_2025.docx"),
+                     recursive=True)
+    if not hits:
+        return {}
+    try:
+        import docx
+    except Exception:
+        return {}
+    by_part: dict = defaultdict(list)
+    for a in poa_2025:
+        if a.get("meta") and a.get("partida"):
+            by_part[a["partida"]].append(a)
+    porm: dict = defaultdict(lambda: {"n": 0, "monto": 0.0, "nombres": [], "sim": []})
+    for t in docx.Document(hits[0]).tables:
+        for row in t.rows:
+            c = [x.text.strip() for x in row.cells]
+            if len(c) < 9 or not re.fullmatch(r"\d+", c[0].split("\n")[0]):
+                continue
+            pt = _partida_econ(c[1])
+            if not pt or pt not in by_part:
+                continue
+            desc = c[4]
+            monto = _num(c[8].split("\n")[0])
+            best = max(by_part[pt], key=lambda a: SequenceMatcher(None, _norm(desc), _norm(a["actividad"])).ratio())
+            s = SequenceMatcher(None, _norm(desc), _norm(best["actividad"])).ratio()
+            if s < 0.55:                                  # reconciliación de baja confianza → no se atribuye
+                continue
+            d = porm[best["meta"][:110]]
+            d["n"] += 1
+            d["monto"] += monto
+            d["sim"].append(round(s, 2))
+            if len(d["nombres"]) < 4:
+                d["nombres"].append(re.sub(r"\s+", " ", desc)[:52])
+    return {m: {"n": v["n"], "monto": round(v["monto"], 2), "nombres": v["nombres"],
+                "conf": round(sum(v["sim"]) / len(v["sim"]), 2) if v["sim"] else 0} for m, v in porm.items()}
 
 
 def _leer_anio(anio: int) -> list[dict]:
@@ -123,17 +171,16 @@ def main() -> None:
             b["plan"] += a["monto"]
             if a["partida"]:
                 b["part"].add(a["partida"])
+    # CONTRATOS por meta — reconciliación intersistémica PAC↔POA (salta el muro de la partida · innovación)
+    contratos = _contratos_2025_por_meta(por_anio.get(2025, []))
     biografias = []
     for mk, b in bio.items():
-        # ejecución EXCLUSIVA: solo las partidas que pertenecen SOLO a esta meta (deterministas) —
-        # atribución limpia, sin doble conteo por partida compartida (FASE 1.5 · honestidad).
-        excl = [pt for pt in b["part"] if ancla.get(pt) == mk]
-        cod = sum(ejec.get(pt, {}).get("cod", 0) for pt in excl)
-        dev = sum(ejec.get(pt, {}).get("dev", 0) for pt in excl)
         inv = sum(1 for pt in b["part"] if pt[:1] in ("7", "8"))
+        con = contratos.get(mk[:110], {})
         biografias.append({"meta": mk[:110], "actividades": b["act"], "partidas": len(b["part"]),
                            "inversion": inv, "plan": round(b["plan"], 2),
-                           "partidas_excl": len(excl), "cod_excl": round(cod, 2), "dev_excl": round(dev, 2)})
+                           "contratos": con.get("n", 0), "contratos_monto": con.get("monto", 0),
+                           "contratos_nombres": con.get("nombres", []), "contratos_conf": con.get("conf", 0)})
     biografias.sort(key=lambda x: -x["plan"])
 
     # ── biografía MULTI-AÑO: la misma meta a través de los años (CONTINUIDAD del compromiso) ──

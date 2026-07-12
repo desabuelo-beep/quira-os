@@ -274,9 +274,10 @@
       "partidas": 26,
       "inversion": 13,
       "plan": 11352144.12,
-      "partidas_excl": 20,
-      "cod_excl": 9657599.2,
-      "dev_excl": 7976756.38
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "100% de gestión institucionales",
@@ -284,9 +285,12 @@
       "partidas": 13,
       "inversion": 3,
       "plan": 2183052.91,
-      "partidas_excl": 3,
-      "cod_excl": 1500.0,
-      "dev_excl": 264.5
+      "contratos": 1,
+      "contratos_monto": 3.0,
+      "contratos_nombres": [
+        "ADQUISICION Y MANTENIMIENTO DE EXTINTORES PARA LAS I"
+      ],
+      "contratos_conf": 0.98
     },
     {
       "meta": "Incrementar en el CUP el mantenimiento de 43.8 km de vías  hasta el año 2027",
@@ -294,9 +298,15 @@
       "partidas": 9,
       "inversion": 9,
       "plan": 1294868.52,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 7,
+      "contratos_monto": 1040.5,
+      "contratos_nombres": [
+        "ADQUISICIÓN DE TANQUERO PARA EL GOBIERNO AUTÓNOMO DE",
+        "OBRAS PUBLICAS DEL CANTON MONTECRISTI ADQUISICION DE",
+        "ADQUISICION DE MAQUINARIAS Y VEHICULOS PESADOS PARA ",
+        "ADQUISICION DE MATERIALES PARA DEMARCACION VIAL"
+      ],
+      "contratos_conf": 0.86
     },
     {
       "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2062",
@@ -304,9 +314,10 @@
       "partidas": 4,
       "inversion": 1,
       "plan": 1234806.71,
-      "partidas_excl": 1,
-      "cod_excl": 470467.07,
-      "dev_excl": 468509.67
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2032",
@@ -314,9 +325,10 @@
       "partidas": 1,
       "inversion": 0,
       "plan": 920000.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Construir 10km hasta el 2027 de 93.65 km de vías en proyección del CUP",
@@ -324,9 +336,13 @@
       "partidas": 2,
       "inversion": 2,
       "plan": 786380.68,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 2,
+      "contratos_monto": 300.0,
+      "contratos_nombres": [
+        "PAVIMENTACIÓN ASFÁLTICA EN LA VÍA PRINCIPAL DE LA CO",
+        "RECTIFICACIÓN, MEJORAMIENTO, AMPLIACIÓN Y REHABILITA"
+      ],
+      "contratos_conf": 0.78
     },
     {
       "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2060",
@@ -334,9 +350,10 @@
       "partidas": 0,
       "inversion": 0,
       "plan": 688500.48,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Aumentar a 10.73 m²/hab el índice de equipamiento del Centro Urbano Principal hasta el 2027",
@@ -344,9 +361,15 @@
       "partidas": 8,
       "inversion": 8,
       "plan": 676400.0,
-      "partidas_excl": 4,
-      "cod_excl": 22000.0,
-      "dev_excl": 0.0
+      "contratos": 9,
+      "contratos_monto": 748.87,
+      "contratos_nombres": [
+        "CONSTRUCCION DEL ESCENARIO, CAMERINO Y BAÑO DE LA PA",
+        "CONSTRUCCION DE OBRAS DE EMBELLECIMIENTO URBANO, TUR",
+        "MANTENIMIENTO Y REPARACIÓN DEL PARQUE PERTENECIENTE ",
+        "AMPLIACIÓN Y ADECUACIÓN DE PARQUE CENTRAL DE LA PARR"
+      ],
+      "contratos_conf": 0.93
     },
     {
       "meta": "Aumentar del 39.25% al 42.38% la cobertura de agua potable en el cantón hasta el 2027",
@@ -354,9 +377,12 @@
       "partidas": 5,
       "inversion": 5,
       "plan": 669657.1,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 1,
+      "contratos_monto": 10000.0,
+      "contratos_nombres": [
+        "ADQUISICION DE MEDIDORES PARA LA RENOVACION DEL PARQ"
+      ],
+      "contratos_conf": 1.0
     },
     {
       "meta": "Aumentar del 91% de vehículos en funcionamiento en el año 2023, a 95% desde el 2024 manteniendo la métrica has",
@@ -364,9 +390,15 @@
       "partidas": 11,
       "inversion": 6,
       "plan": 574988.0,
-      "partidas_excl": 4,
-      "cod_excl": 375833.1,
-      "dev_excl": 152145.51
+      "contratos": 6,
+      "contratos_monto": 1309.54,
+      "contratos_nombres": [
+        "ADQUISICION DE VEHICULO HIDROSUCCIONADOR PARA EL GOB",
+        "ADQUISICION DE VEHICULOS TIPO CAMIONETA DOBLE CABINA",
+        "SERVICIO DE REPARACIÓN DE NEUMÁTICOS ENLLANTAJE PARA",
+        "SERVICIO DE MONITOREO Y RASTREO SATELITAL PARA LOS V"
+      ],
+      "contratos_conf": 0.87
     },
     {
       "meta": "Aumentar la cobertura de redes pluviales de 0.97% a 2% hasta el año 2027",
@@ -374,9 +406,10 @@
       "partidas": 2,
       "inversion": 2,
       "plan": 551211.68,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2036",
@@ -384,9 +417,10 @@
       "partidas": 0,
       "inversion": 0,
       "plan": 421685.48,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Mejorar al 10% el índice de continuidad del servicio de agua potable ALTO de 2 a 3 días por semana hasta el añ",
@@ -394,9 +428,10 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 400000.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar 4 km de vías con tratamiento (aceras y bordillos) del CUP hasta el 2027",
@@ -404,9 +439,10 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 400000.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2061",
@@ -414,9 +450,10 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 374000.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Aumentar del 39.25% al 42.38% la cobertura de agua potable en el cantón hasta el",
@@ -424,9 +461,13 @@
       "partidas": 5,
       "inversion": 5,
       "plan": 359000.01,
-      "partidas_excl": 1,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 2,
+      "contratos_monto": 10007.3,
+      "contratos_nombres": [
+        "ADQUISICION DE TUBERIAS PARA EL MANTENIMIENTO PARA R",
+        "ALQUILER DE MAQUINARIA PARA EJECUTAR TRABAJOS EN LA "
+      ],
+      "contratos_conf": 0.88
     },
     {
       "meta": "Mantener y mejorar las instalaciones e infraestructuras municipales.",
@@ -434,9 +475,15 @@
       "partidas": 14,
       "inversion": 4,
       "plan": 343706.04,
-      "partidas_excl": 7,
-      "cod_excl": 216099.09,
-      "dev_excl": 171830.69
+      "contratos": 10,
+      "contratos_monto": 100191.0,
+      "contratos_nombres": [
+        "ADQUISICIÓN DE EQUIPOS DE CLIMATIZACIÓN PARA EL GOBI",
+        "SERVICIO DE REPARACIÓN Y ADECUACIÓN DE EDIFICACIONES",
+        "CONTRATACIÓN DEL SERVICIO DE OUTSOURCING DE IMPRESIÓ",
+        "CONTRATACION DE POLIZAS DE SEGUROS DE INCENDIO, LUCR"
+      ],
+      "contratos_conf": 0.87
     },
     {
       "meta": "Aumentar del 39.25% al\n42.38% la cobertura de agua potable en el cantón hasta el 2027 / Mejorar el índice de l",
@@ -444,9 +491,10 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 300000.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar el número de trámites en línea implementados a 37 al año 2027",
@@ -454,9 +502,12 @@
       "partidas": 2,
       "inversion": 1,
       "plan": 253000.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 1,
+      "contratos_monto": 1.0,
+      "contratos_nombres": [
+        "ADQUISICION DE EQUIPOS INFORMATICOS (EQUIPOS ESPECIA"
+      ],
+      "contratos_conf": 0.75
     },
     {
       "meta": "Aumentar a 17.32 m²/hab el IVU  hasta el 2027",
@@ -464,9 +515,13 @@
       "partidas": 11,
       "inversion": 11,
       "plan": 252173.84,
-      "partidas_excl": 1,
-      "cod_excl": 5000.0,
-      "dev_excl": 0.0
+      "contratos": 2,
+      "contratos_monto": 440.0,
+      "contratos_nombres": [
+        "CONSTRUCCIÓN DE PARQUE LA HUELLA EN LA COMUNA CÁRCEL",
+        "CONSTRUCCIÓN DE INFRAESTRUCTURA COMUNITARIA Y ESPACI"
+      ],
+      "contratos_conf": 0.91
     },
     {
       "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2056",
@@ -474,9 +529,10 @@
       "partidas": 1,
       "inversion": 0,
       "plan": 250226.44,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Entregrar 900 m3 en el mes",
@@ -484,9 +540,12 @@
       "partidas": 2,
       "inversion": 2,
       "plan": 250000.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 1,
+      "contratos_monto": 50.0,
+      "contratos_nombres": [
+        "ALQUILER DE SERVICIO DE TANQUEROS PARA DISTRIBUCIÓN "
+      ],
+      "contratos_conf": 0.99
     },
     {
       "meta": "Incrementar el 43.35% de\nautonomía financiera en el 2023 al 45.30% al 2031",
@@ -494,9 +553,10 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 250000.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Número de despidos intempestivos",
@@ -504,9 +564,10 @@
       "partidas": 8,
       "inversion": 4,
       "plan": 243349.26,
-      "partidas_excl": 4,
-      "cod_excl": 65352.34,
-      "dev_excl": 7853.36
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2050",
@@ -514,9 +575,10 @@
       "partidas": 1,
       "inversion": 0,
       "plan": 224008.32,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2035",
@@ -524,9 +586,10 @@
       "partidas": 1,
       "inversion": 0,
       "plan": 220000.0,
-      "partidas_excl": 1,
-      "cod_excl": 212300.0,
-      "dev_excl": 162837.06
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Aumentar la confianza institucional a 30%  al 2027",
@@ -534,9 +597,10 @@
       "partidas": 4,
       "inversion": 2,
       "plan": 214907.26,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar el número de procesos sistematizados a 9 al 2027",
@@ -544,9 +608,15 @@
       "partidas": 6,
       "inversion": 3,
       "plan": 214564.4,
-      "partidas_excl": 2,
-      "cod_excl": 18610.0,
-      "dev_excl": 7620.0
+      "contratos": 4,
+      "contratos_monto": 98.0,
+      "contratos_nombres": [
+        "ADQUISICIÓN DE EQUIPOS INFORMÁTICOS PARA LAS DIFEREN",
+        "ADQUISICION DE INSUMOS Y ACCESORIOS PARA EQUIPOS INF",
+        "ADQUISICION DE LICENCIAS PARA EL USO DE SOFTWARE PAR",
+        "CONTRATACION DE ENTORNO CLOUD PARA MIGRACION DE SERV"
+      ],
+      "contratos_conf": 0.93
     },
     {
       "meta": "Incrementar 4 km de vías con tratamiento (aceras y bordillos) del CUP hasta el",
@@ -554,9 +624,10 @@
       "partidas": 2,
       "inversion": 2,
       "plan": 197894.75,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Aumentar del 19.77% a 24.32% la cobertura de alcantarillado sanitario en el cantón hasta el 2027",
@@ -564,9 +635,12 @@
       "partidas": 6,
       "inversion": 6,
       "plan": 197553.46,
-      "partidas_excl": 1,
-      "cod_excl": 0.0,
-      "dev_excl": 0.0
+      "contratos": 1,
+      "contratos_monto": 10000.0,
+      "contratos_nombres": [
+        "CONSTRUCCION DE LA FASE I DEL SISTEMA DE ALCANTARILL"
+      ],
+      "contratos_conf": 0.94
     },
     {
       "meta": "Incrementar los eventos turísticos de 10 en el año 2023, a 22 al 2027",
@@ -574,9 +648,12 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 172450.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 1,
+      "contratos_monto": 71.0,
+      "contratos_nombres": [
+        "SERVICIO DE ORGANIZACION DE EVENTOS Y ACTIVIDADES QU"
+      ],
+      "contratos_conf": 0.77
     },
     {
       "meta": "Aumentar el nivel de conocimiento de la gestión institucional al 55% al 2027",
@@ -584,9 +661,13 @@
       "partidas": 2,
       "inversion": 0,
       "plan": 170900.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 2,
+      "contratos_monto": 73.11,
+      "contratos_nombres": [
+        "CONTRATACION DE SERVICIOS DE ESPACIOS COMUNICACIONAL",
+        "Servicio de trasmisión digital para eventos del Gad "
+      ],
+      "contratos_conf": 0.83
     },
     {
       "meta": "Mejorar y aumentar los inidces de ingresos comerciales",
@@ -594,9 +675,10 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 156000.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2051",
@@ -604,9 +686,10 @@
       "partidas": 0,
       "inversion": 0,
       "plan": 149073.76,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Aumentar a 10.73 m²/hab el índice de equipamiento del Centro Urbano Principal",
@@ -614,9 +697,10 @@
       "partidas": 4,
       "inversion": 4,
       "plan": 148562.89,
-      "partidas_excl": 1,
-      "cod_excl": 38374.35,
-      "dev_excl": 0.0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar las revisiones técnicas vehiculares de 4000\nen el año 2023, a 20000 al 2027",
@@ -624,9 +708,10 @@
       "partidas": 2,
       "inversion": 2,
       "plan": 144000.0,
-      "partidas_excl": 1,
-      "cod_excl": 24000.0,
-      "dev_excl": 0.0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2039",
@@ -634,9 +719,10 @@
       "partidas": 0,
       "inversion": 0,
       "plan": 142619.04,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Aumentar hasta el 2027 el número de plantas y estaciones de bombeo operativas: 8/11 estaciones de bombeo al 72",
@@ -644,9 +730,10 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 137000.01,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "100% de uniformes entregados",
@@ -654,9 +741,14 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 134417.4,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 3,
+      "contratos_monto": 122.25,
+      "contratos_nombres": [
+        "ADQUISICION DE VESTIMENTA UNIFORME PARA EL PERSONAL ",
+        "ADQUISICIÓN DE EQUIPOS DE PROTECCIÓN PERSONAL PARA L",
+        "ADQUISICION DE EQUIPOS DE PROTECCION PERSONAL PARA L"
+      ],
+      "contratos_conf": 0.88
     },
     {
       "meta": "Incrementar las visitas anuales de 2700 en el año 2023, a 4300 al 2027",
@@ -664,9 +756,15 @@
       "partidas": 4,
       "inversion": 4,
       "plan": 129060.0,
-      "partidas_excl": 1,
-      "cod_excl": 0.0,
-      "dev_excl": 0.0
+      "contratos": 7,
+      "contratos_monto": 3500.0,
+      "contratos_nombres": [
+        "CONTRATACION DEL SERVICIO DE UNA AGENCIA U OPERADORA",
+        "CONTRATACION DE SERVICIO DE LOGISTICA Y PROMOCION TU",
+        "CONTRATACION DE SERVICIOS PARA EL EVENTO BARRO, REPL",
+        "CONTRATACION DE SERVICIOS PARA EL EVENTO MODELA TU S"
+      ],
+      "contratos_conf": 0.92
     },
     {
       "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2057",
@@ -674,9 +772,10 @@
       "partidas": 0,
       "inversion": 0,
       "plan": 122230.6,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2044",
@@ -684,9 +783,10 @@
       "partidas": 1,
       "inversion": 0,
       "plan": 120726.64,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2031",
@@ -694,9 +794,10 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 108000.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar en el CUP 23.77 km de vías con tratamiento medio hasta el año 2027",
@@ -704,9 +805,10 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 100000.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar el porcentaje del sistema de información local del 19,52% en el año 2023, a 80% al 2033",
@@ -714,9 +816,10 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 99970.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2053",
@@ -724,9 +827,10 @@
       "partidas": 0,
       "inversion": 0,
       "plan": 99340.2,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Mejorar el sistema de cobertura de agua potable y alcantarillado sanitario",
@@ -734,9 +838,10 @@
       "partidas": 2,
       "inversion": 2,
       "plan": 98500.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Alcanzar el 90% de ejecución de servicio de Transporte",
@@ -744,9 +849,10 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 96993.02,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Mejorar el índice de calidad de la infraestructura  sanitaria BUENO de 23.02% al 33.02% hasta el año 2027",
@@ -754,9 +860,12 @@
       "partidas": 3,
       "inversion": 3,
       "plan": 95699.06,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 1,
+      "contratos_monto": 30.0,
+      "contratos_nombres": [
+        "ALQUILER DE VEHÍCULO HIDROSUCCIONADOR PARA ATENDER L"
+      ],
+      "contratos_conf": 0.97
     },
     {
       "meta": "Alcanzar un PPTA del 80% al finalizar el año fiscal.",
@@ -764,9 +873,10 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 95000.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2045",
@@ -774,9 +884,10 @@
       "partidas": 0,
       "inversion": 0,
       "plan": 90128.48,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Aumentar del 91% de vehículos en funcionamiento en el año 2023, a 95% desde el 2024 manteniendo la\nmétrica has",
@@ -784,9 +895,12 @@
       "partidas": 3,
       "inversion": 2,
       "plan": 85000.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 1,
+      "contratos_monto": 120.0,
+      "contratos_nombres": [
+        "SERVICIO DE MANTENIMIENTO PREVENTIVO Y CORRECTIVO DE"
+      ],
+      "contratos_conf": 0.81
     },
     {
       "meta": "Incrementar el porcentaje de proyectos ejecutados al 80% al 2027",
@@ -794,9 +908,10 @@
       "partidas": 4,
       "inversion": 3,
       "plan": 76600.0,
-      "partidas_excl": 1,
-      "cod_excl": 21000.0,
-      "dev_excl": 0.0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Instalacion de 10 camaras de videovigilancia y 15 alarmas comunitarias",
@@ -804,9 +919,13 @@
       "partidas": 3,
       "inversion": 3,
       "plan": 76500.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 2,
+      "contratos_monto": 70.0,
+      "contratos_nombres": [
+        "ADQUISICIÓN E INSTALACIÓN DE CÁMARAS DE VIDEO VIGILA",
+        "CONTRATACIÓN DE FIBRA ÓPTICA PARA LA CONECTIVIDAD DE"
+      ],
+      "contratos_conf": 0.97
     },
     {
       "meta": "Incrementar el número de beneficiarios que acceden a puntos digitales de 19265 en el año 2023, a 23265 al 2027",
@@ -814,9 +933,12 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 67025.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 1,
+      "contratos_monto": 26.12,
+      "contratos_nombres": [
+        "ADQUISICION DE MATERIALES Y SUMINISTROS DE CONSTRUCC"
+      ],
+      "contratos_conf": 0.8
     },
     {
       "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2048",
@@ -824,9 +946,10 @@
       "partidas": 1,
       "inversion": 0,
       "plan": 66951.32,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2038",
@@ -834,9 +957,10 @@
       "partidas": 1,
       "inversion": 0,
       "plan": 62037.92,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar la superficie a 10 000 m2 de señalización en vías urbanas hasta el 2027",
@@ -844,9 +968,13 @@
       "partidas": 4,
       "inversion": 4,
       "plan": 62019.05,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 2,
+      "contratos_monto": 10052.92,
+      "contratos_nombres": [
+        "IMPLEMENTACION DE PARADAS DE BUSES",
+        "REPOTENCIAR INSTALACIONES,MANTENIMIENTO Y REPARACION"
+      ],
+      "contratos_conf": 0.98
     },
     {
       "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2054",
@@ -854,9 +982,10 @@
       "partidas": 1,
       "inversion": 0,
       "plan": 61713.6,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "cumplimiento del 85% en la adquisición de seguros",
@@ -864,9 +993,12 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 60000.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 1,
+      "contratos_monto": 60.0,
+      "contratos_nombres": [
+        "CONTRATACIÓN DE POLIZA DE SEGURO DE VIDA COLECTIVO"
+      ],
+      "contratos_conf": 0.58
     },
     {
       "meta": "Incrementar el número de beneficiarios en eventos deportivos de 400 en el año 2023, a 500 al 2027",
@@ -874,9 +1006,10 @@
       "partidas": 2,
       "inversion": 2,
       "plan": 52700.0,
-      "partidas_excl": 1,
-      "cod_excl": 17000.0,
-      "dev_excl": 0.0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "100 % de realización y análisis de resultados de exámenes médicos",
@@ -884,9 +1017,12 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 52000.0,
-      "partidas_excl": 1,
-      "cod_excl": 28175.8,
-      "dev_excl": 13175.8
+      "contratos": 1,
+      "contratos_monto": 58.0,
+      "contratos_nombres": [
+        "SERVICIO DE EXAMENES MEDICOS OCUPACIONALES PARA LOS "
+      ],
+      "contratos_conf": 0.95
     },
     {
       "meta": "Aumentar la aceptación institucional a 35% al 2027",
@@ -894,9 +1030,12 @@
       "partidas": 3,
       "inversion": 0,
       "plan": 51930.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 1,
+      "contratos_monto": 12.5,
+      "contratos_nombres": [
+        "ELABORACION DE ESTUDIOS DE MEDICION, ALCANCE Y ACEPT"
+      ],
+      "contratos_conf": 0.96
     },
     {
       "meta": "Incrementar el número de participantes por eventos culturales de 8.000 en el año 2023, a 10.000 al 2027",
@@ -904,9 +1043,12 @@
       "partidas": 3,
       "inversion": 3,
       "plan": 51500.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 1,
+      "contratos_monto": 27.6,
+      "contratos_nombres": [
+        "SERVICIO DE LOGISTICA Y ORGANIZACION DE EVENTOS CIVI"
+      ],
+      "contratos_conf": 0.9
     },
     {
       "meta": "Incrementar a 8 el número de las intersecciones semafóricas hasta el 2027",
@@ -914,9 +1056,10 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 51000.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Aumentar del 91% de\nvehículos en funcionamiento en el año 2023, a 95% desde el 2024 manteniendo la",
@@ -924,9 +1067,12 @@
       "partidas": 2,
       "inversion": 2,
       "plan": 50000.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 1,
+      "contratos_monto": 30.0,
+      "contratos_nombres": [
+        "ADQUISICIÓN DE CAMIONETA PARA LA DIRECCIÓN DE ESPACI"
+      ],
+      "contratos_conf": 0.98
     },
     {
       "meta": "Cumplir con el cronograma de sesiones conmenorativas establecido por parte del área de secretaria general del ",
@@ -934,9 +1080,10 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 50000.0,
-      "partidas_excl": 1,
-      "cod_excl": 49500.0,
-      "dev_excl": 30000.0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar en el CUP 23.77 km de vías con tratamiento\nmedio hasta el año 2027",
@@ -944,9 +1091,10 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 48500.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar el número de beneficiarios de programas de formación cultural de 400 en el año 2023, a 700 al 2027",
@@ -954,9 +1102,10 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 47500.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2043",
@@ -964,9 +1113,10 @@
       "partidas": 0,
       "inversion": 0,
       "plan": 45640.56,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Formar alianzas estratégicas entre el GADM del Cantón Montecristi y Entidades Publicas y Privadas Claves para ",
@@ -974,9 +1124,10 @@
       "partidas": 1,
       "inversion": 0,
       "plan": 39600.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar la población atendida en salud preventiva de 320 en el año 2023, a 480\nal 2027",
@@ -984,9 +1135,12 @@
       "partidas": 5,
       "inversion": 5,
       "plan": 38400.0,
-      "partidas_excl": 2,
-      "cod_excl": 18100.0,
-      "dev_excl": 9100.0
+      "contratos": 1,
+      "contratos_monto": 7.04,
+      "contratos_nombres": [
+        "CONTRATACIÓN DE REFRIGERIOS Y ALMUERZOS PARA ATENDER"
+      ],
+      "contratos_conf": 0.98
     },
     {
       "meta": "Mantener la ejecución anual del Plan de capacitación del 90% hasta el 2027.",
@@ -994,9 +1148,12 @@
       "partidas": 1,
       "inversion": 0,
       "plan": 34800.0,
-      "partidas_excl": 1,
-      "cod_excl": 10700.0,
-      "dev_excl": 0.0
+      "contratos": 1,
+      "contratos_monto": 34.8,
+      "contratos_nombres": [
+        "SERVICIO DE CAPACITACION EN FORTALECIMIENTO EN COMPE"
+      ],
+      "contratos_conf": 0.81
     },
     {
       "meta": "Incrementar las instancias de participación de 2 en el año 2023 a 4 al 2024 manteniendo estas instancias activ",
@@ -1004,9 +1161,10 @@
       "partidas": 2,
       "inversion": 2,
       "plan": 33800.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Mantener anualmente y hasta el 2027 el servicio de calidad del transporte en categoría bueno con el 60% de ace",
@@ -1014,9 +1172,10 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 33100.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2055",
@@ -1024,9 +1183,10 @@
       "partidas": 0,
       "inversion": 0,
       "plan": 32053.8,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Alcanzar un PEA del 100% antes del final del primer trimestre del año fiscal.",
@@ -1034,9 +1194,10 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 31000.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Mejorar el índice de calidad de la infraestructura de agua potable BUENO de 22.74% al",
@@ -1044,9 +1205,13 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 30000.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 2,
+      "contratos_monto": 28.89,
+      "contratos_nombres": [
+        "SUMINISTRO DE ACCESORIOS PARA MANTENIMIENTO DE REDES",
+        "SUMINISTRO DE TUBERIA DE HORMIGON Y PVC PARA INSTALA"
+      ],
+      "contratos_conf": 0.82
     },
     {
       "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2033",
@@ -1054,9 +1219,10 @@
       "partidas": 1,
       "inversion": 0,
       "plan": 30000.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "100 % de Servidores Públicos hidratados",
@@ -1064,9 +1230,10 @@
       "partidas": 1,
       "inversion": 0,
       "plan": 30000.0,
-      "partidas_excl": 1,
-      "cod_excl": 26800.0,
-      "dev_excl": 7591.71
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Alcanzar un 95% de cumplimiento del plan de adquisición al final del año",
@@ -1074,9 +1241,12 @@
       "partidas": 3,
       "inversion": 3,
       "plan": 29000.0,
-      "partidas_excl": 2,
-      "cod_excl": 29000.0,
-      "dev_excl": 29000.0
+      "contratos": 1,
+      "contratos_monto": 5500.0,
+      "contratos_nombres": [
+        "ADQUISICION DE MATERIALES DE LIMPIEZA PARA LOS ESPAC"
+      ],
+      "contratos_conf": 0.96
     },
     {
       "meta": "Aumentar del 91% de vehículos en funcionamiento en el año 2023, a 95% desde el 2024 manteniendo la",
@@ -1084,9 +1254,12 @@
       "partidas": 2,
       "inversion": 2,
       "plan": 28000.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 1,
+      "contratos_monto": 40.0,
+      "contratos_nombres": [
+        "SERVICIO DE MANTENIMIENTO PREVENTIVO Y CORRECTIVO DE"
+      ],
+      "contratos_conf": 0.85
     },
     {
       "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2049",
@@ -1094,9 +1267,10 @@
       "partidas": 0,
       "inversion": 0,
       "plan": 26256.88,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Aumentar del 91% de vehículos en funcionamiento en el año 2023, a 95% desde",
@@ -1104,9 +1278,12 @@
       "partidas": 2,
       "inversion": 1,
       "plan": 25000.0,
-      "partidas_excl": 1,
-      "cod_excl": 5000.0,
-      "dev_excl": 0.0
+      "contratos": 1,
+      "contratos_monto": 40.0,
+      "contratos_nombres": [
+        "SERVICIO DE MANTENIMIENTO PREVENTIVO Y CORRECTIVO DE"
+      ],
+      "contratos_conf": 0.85
     },
     {
       "meta": "Aumentar del 39.25% al\n42.38% la cobertura de agua potable en el cantón hasta el 2027 / Mejorar el índice de l",
@@ -1114,9 +1291,10 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 25000.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Alcanzar un 90% de cumplimiento de los objetivos del contrato al  final del periodo establecido",
@@ -1124,9 +1302,10 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 24000.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar los beneficiarios en programas de formación de 1645 en el año 2023, a 3100 al 2027",
@@ -1134,9 +1313,10 @@
       "partidas": 3,
       "inversion": 3,
       "plan": 21992.18,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Aumentar a 17.32 m²/hab el IVU  hasta el 2028",
@@ -1144,9 +1324,10 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 20000.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Mejorar el indice de calidad de la descarga del agua residual (efluente) en base  a la normativa aplicable.",
@@ -1154,9 +1335,10 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 20000.0,
-      "partidas_excl": 1,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Aumentar del 39.25% al 42.38% la cobertura de agua potable en el cantón hasta el 2027 / Mejorar el índice de c",
@@ -1164,9 +1346,10 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 18000.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Aumentar del 91% de vehículos en funcionamiento",
@@ -1174,9 +1357,10 @@
       "partidas": 1,
       "inversion": 0,
       "plan": 17000.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2037",
@@ -1184,9 +1368,10 @@
       "partidas": 1,
       "inversion": 0,
       "plan": 16286.36,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "4 Agentes de control para el cantón Montecristi",
@@ -1194,9 +1379,10 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 15300.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar el 15% anualmente desde el año 2023, al 2027 de atenciones en programas para grupos de\natención pr",
@@ -1204,9 +1390,12 @@
       "partidas": 3,
       "inversion": 3,
       "plan": 15000.01,
-      "partidas_excl": 1,
-      "cod_excl": 9675.64,
-      "dev_excl": 6027.34
+      "contratos": 1,
+      "contratos_monto": 2.1,
+      "contratos_nombres": [
+        "CAMPAÑAS DE DIFUSION, SENSIBILIZACION Y SOCIALIZACIÓ"
+      ],
+      "contratos_conf": 0.73
     },
     {
       "meta": "Mantener el número de 680 beneficiarios de las campañas de asistencia\nmédica veterinaria dentro del Plan para ",
@@ -1214,9 +1403,10 @@
       "partidas": 2,
       "inversion": 2,
       "plan": 15000.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Formular cuatro planes para la acción contra el cambio climático hasta el 2027",
@@ -1224,9 +1414,10 @@
       "partidas": 2,
       "inversion": 1,
       "plan": 15000.0,
-      "partidas_excl": 1,
-      "cod_excl": 15000.0,
-      "dev_excl": 0.0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2059",
@@ -1234,9 +1425,12 @@
       "partidas": 1,
       "inversion": 0,
       "plan": 15000.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 1,
+      "contratos_monto": 15.0,
+      "contratos_nombres": [
+        "MANTENIMIENTO Y ACTUALIZACION DEL SISTEMA ERP OLIMPO"
+      ],
+      "contratos_conf": 0.97
     },
     {
       "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2046",
@@ -1244,9 +1438,10 @@
       "partidas": 1,
       "inversion": 0,
       "plan": 14940.04,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar los beneficiarios en programas de formación de 1645 en el año 2023, a 3100 al 2031",
@@ -1254,9 +1449,10 @@
       "partidas": 4,
       "inversion": 3,
       "plan": 13900.0,
-      "partidas_excl": 2,
-      "cod_excl": 10600.0,
-      "dev_excl": 9400.0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Aumentar hasta el 2027 el número de plantas y estaciones de bombeo",
@@ -1264,9 +1460,10 @@
       "partidas": 1,
       "inversion": 0,
       "plan": 13000.0,
-      "partidas_excl": 1,
-      "cod_excl": 13000.0,
-      "dev_excl": 11802.53
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2042",
@@ -1274,9 +1471,10 @@
       "partidas": 1,
       "inversion": 0,
       "plan": 12126.28,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2047",
@@ -1284,9 +1482,10 @@
       "partidas": 0,
       "inversion": 0,
       "plan": 11146.76,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Generar un espacio laboral para el area Legislativa del Gobierno Aútonomo Descentralizado del Cantón Montecris",
@@ -1294,9 +1493,12 @@
       "partidas": 1,
       "inversion": 0,
       "plan": 10800.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 1,
+      "contratos_monto": 10.8,
+      "contratos_nombres": [
+        "SERVICIO DE ARRENDAMIENTO DE OFICINAS PARA EL FUNCIO"
+      ],
+      "contratos_conf": 0.82
     },
     {
       "meta": "Alcanzar un 90% de cumplimiento de los objetivos de contrato al final del periodo establecido",
@@ -1304,9 +1506,10 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 10722.58,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar los beneficiarios en programas de formación de 1645 en el año 2023, a 3100 al 2029",
@@ -1314,9 +1517,10 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 10000.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Contar con un Plan de Seguridad Ciudadana y convivencia Pacìfica, que permita prevenir el delito, promover la ",
@@ -1324,9 +1528,10 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 10000.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar en el CUP el\nmantenimiento de 43.8 km de vías  hasta el año 2027",
@@ -1334,9 +1539,12 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 10000.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 1,
+      "contratos_monto": 450.0,
+      "contratos_nombres": [
+        "ADQUISICIÓN DE VOLQUETAS DE 12 M3 PARA EL GOBIERNO A"
+      ],
+      "contratos_conf": 0.97
     },
     {
       "meta": "Mantener anualmente a  40 Instituciones educativas en el programa de Educación Vial cantonal",
@@ -1344,9 +1552,10 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 9999.99,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "para el 2025 conseguir la elbaoracion y diseño de 3 Proyectos Estratégicos y 7 Proyecto Operativos",
@@ -1354,9 +1563,10 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 9999.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Mantener anualmente la participación de grupos de atención prioritaria y otros grupos sociales en la capacitac",
@@ -1364,9 +1574,10 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 9500.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2041",
@@ -1374,9 +1585,10 @@
       "partidas": 0,
       "inversion": 0,
       "plan": 9350.6,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Formar alianzas estratégicas\nentre el GADM del Cantón Montecristi y Entidades Publicas y Privadas Claves para ",
@@ -1384,9 +1596,10 @@
       "partidas": 1,
       "inversion": 0,
       "plan": 8800.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar los beneficiarios en programas de formación de 1645 en el año 2023, a 3100 al 2028",
@@ -1394,9 +1607,12 @@
       "partidas": 2,
       "inversion": 2,
       "plan": 7997.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 1,
+      "contratos_monto": 4.0,
+      "contratos_nombres": [
+        "ADQUISCION DE ALIMENTOS DE PRIMERA NECESIDAD PARA AT"
+      ],
+      "contratos_conf": 0.84
     },
     {
       "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2052",
@@ -1404,9 +1620,10 @@
       "partidas": 1,
       "inversion": 0,
       "plan": 7971.68,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Indice de cobertura y comunicación para el sistema hidrosdanitario",
@@ -1414,9 +1631,12 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 7000.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 1,
+      "contratos_monto": 7.0,
+      "contratos_nombres": [
+        "ADQUISICIÓN DE RADIOS PORTÁTILES PARA COMUNICACIÓN D"
+      ],
+      "contratos_conf": 0.7
     },
     {
       "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2034",
@@ -1424,9 +1644,10 @@
       "partidas": 1,
       "inversion": 0,
       "plan": 7000.0,
-      "partidas_excl": 1,
-      "cod_excl": 18200.0,
-      "dev_excl": 12179.28
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Generar un espacio fisciao adecuado para brindar el servicio desde la Registraduria de la Propiedad  del Gobie",
@@ -1434,9 +1655,12 @@
       "partidas": 2,
       "inversion": 1,
       "plan": 6900.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 1,
+      "contratos_monto": 52.6,
+      "contratos_nombres": [
+        "ADECUACION REPARACION MANTENIMIENTO DE INSTALACIONES"
+      ],
+      "contratos_conf": 0.82
     },
     {
       "meta": "Al 2025 cinco procesos notariales efectuados",
@@ -1444,9 +1668,10 @@
       "partidas": 1,
       "inversion": 0,
       "plan": 6679.0,
-      "partidas_excl": 1,
-      "cod_excl": 3979.0,
-      "dev_excl": 888.3
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Número de notificaciones planificadas/ Número de notificaciones ejecutadas",
@@ -1454,9 +1679,10 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 6500.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Mantener  porcentualmente la   atención   con   servicio especializados         por violencia  intrafamiliar  ",
@@ -1464,9 +1690,12 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 6000.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 1,
+      "contratos_monto": 6.0,
+      "contratos_nombres": [
+        "BRINDAR ATENCION ESPECIALIZADA A LAS DENUNCIAS Y CAS"
+      ],
+      "contratos_conf": 0.87
     },
     {
       "meta": "Alcanzar un 100% de cumplimiento en la adquisición del banco de pruebas al final del periodo establecido",
@@ -1474,9 +1703,12 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 6000.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 1,
+      "contratos_monto": 6.0,
+      "contratos_nombres": [
+        "ADQUISICIÓN DE BANCO DE PRUEBAS DE MEDIDOR"
+      ],
+      "contratos_conf": 1.0
     },
     {
       "meta": "Mejorar el índice de calidad de la infraestructura  sanitaria BUENO de 23.02% al",
@@ -1484,9 +1716,10 @@
       "partidas": 1,
       "inversion": 0,
       "plan": 6000.0,
-      "partidas_excl": 1,
-      "cod_excl": 6000.0,
-      "dev_excl": 0.0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2040",
@@ -1494,9 +1727,10 @@
       "partidas": 1,
       "inversion": 0,
       "plan": 5624.88,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Generar un espacio físico adecuado para brindar el servicio desde la\nRegistraduría de la Propiedad del Gobiern",
@@ -1504,9 +1738,10 @@
       "partidas": 1,
       "inversion": 0,
       "plan": 5390.0,
-      "partidas_excl": 1,
-      "cod_excl": 5390.0,
-      "dev_excl": 5390.0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Mejorar, la operatividad y optimización del área de Secretaria General",
@@ -1514,9 +1749,10 @@
       "partidas": 1,
       "inversion": 0,
       "plan": 5000.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar los eventos\nturísticos de 10 en el año 2023, a 22 al 2027",
@@ -1524,9 +1760,12 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 5000.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 1,
+      "contratos_monto": 5.0,
+      "contratos_nombres": [
+        "CONTRATACION DE SERVICIOS POR EVENTOS DE PROMOCION T"
+      ],
+      "contratos_conf": 0.96
     },
     {
       "meta": "Mantener el número de 124 beneficiarios de las campañas de esterilizaciones dentro del Plan para la\nprotección",
@@ -1534,9 +1773,10 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 5000.0,
-      "partidas_excl": 1,
-      "cod_excl": 5000.0,
-      "dev_excl": 0.0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar los beneficiarios de programas y fortalecimiento productivo de 200 en el año 2023, a 900\nal 2027",
@@ -1544,9 +1784,12 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 5000.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 1,
+      "contratos_monto": 5.0,
+      "contratos_nombres": [
+        "CONTRATACION DEL SERVICIO DE LOGISTICA PARA FERIA DE"
+      ],
+      "contratos_conf": 0.98
     },
     {
       "meta": "Incrementar los beneficiarios en programas de formación de 1645 en el año 2023, a 3100 al 2030",
@@ -1554,9 +1797,10 @@
       "partidas": 2,
       "inversion": 2,
       "plan": 5000.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Cumplimiento del 85% en la adquisición de seguros",
@@ -1564,9 +1808,10 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 5000.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "100%  entregadas",
@@ -1574,9 +1819,10 @@
       "partidas": 1,
       "inversion": 0,
       "plan": 5000.0,
-      "partidas_excl": 1,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar el porcentaje del sistema de información local del 19,52% en el año 2023, a 80% al 2027",
@@ -1584,9 +1830,10 @@
       "partidas": 2,
       "inversion": 2,
       "plan": 4420.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Mantener  porcentualmente la gestión de las denuncias con el debido procesos  en el 75% desde el año 2023\nhast",
@@ -1594,9 +1841,12 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 4250.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 1,
+      "contratos_monto": 4.25,
+      "contratos_nombres": [
+        "BRINDAR ATENCION ESPECIALIZADA A LAS DENUNCIAS Y CAS"
+      ],
+      "contratos_conf": 0.8
     },
     {
       "meta": "Incrementar la población atendida en salud preventiva de 320 en el año 2023, a 480\nal 2028",
@@ -1604,9 +1854,12 @@
       "partidas": 2,
       "inversion": 1,
       "plan": 3500.0,
-      "partidas_excl": 1,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 1,
+      "contratos_monto": 50000.0,
+      "contratos_nombres": [
+        "ADQUISICION DE EQUIPOS Y MATERIALES DE OFICINA PARA "
+      ],
+      "contratos_conf": 0.96
     },
     {
       "meta": "Alcanzar el 75% de Libros empastados y encuadernados dentro del periodo según cronograma",
@@ -1614,9 +1867,12 @@
       "partidas": 2,
       "inversion": 1,
       "plan": 3425.62,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 1,
+      "contratos_monto": 50000.0,
+      "contratos_nombres": [
+        "ENCUADERNADOS Y EMPASTADOS DE LIBROS"
+      ],
+      "contratos_conf": 1.0
     },
     {
       "meta": "Mejorar el índice de calidad de la infraestructura de agua",
@@ -1624,9 +1880,10 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 3000.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Mejorar el índice de calidad de la infraestructura de agua potable BUENO de 22.74% al 41.64% hasta el año 2027",
@@ -1634,9 +1891,10 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 3000.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Mantener   anualmente   la participación de grupos  de atención  prioritaria  y  otros grupos    sociales    e",
@@ -1644,9 +1902,10 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 2500.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Al 2025 una licencia Lexis adquirida",
@@ -1654,9 +1913,12 @@
       "partidas": 1,
       "inversion": 0,
       "plan": 1200.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 1,
+      "contratos_monto": 1.8,
+      "contratos_nombres": [
+        "ADQUIRIR LICENCIA DEL SISTEMA LEXIS, EL CUAL PERMITI"
+      ],
+      "contratos_conf": 0.97
     },
     {
       "meta": "Actualizar el estado del inventario de los bienes y equipos municipales",
@@ -1664,9 +1926,12 @@
       "partidas": 1,
       "inversion": 0,
       "plan": 1000.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 1,
+      "contratos_monto": 1.0,
+      "contratos_nombres": [
+        "CONSULTORIA ESPECIALIZADA PARA LA REVALORIZACION DE "
+      ],
+      "contratos_conf": 0.73
     },
     {
       "meta": "Incrementar el número de estudiantes bachilleres que acceden a la plataforma de acceso a la Universidad de 900",
@@ -1674,9 +1939,13 @@
       "partidas": 2,
       "inversion": 2,
       "plan": 1000.0,
-      "partidas_excl": 1,
-      "cod_excl": 1000.0,
-      "dev_excl": 0.0
+      "contratos": 2,
+      "contratos_monto": 4.0,
+      "contratos_nombres": [
+        "ADQUISICION DE MATERIALES Y EQUIPOS ELECTRONICOS PAR",
+        "MANTENIMIENTO DE PLATAFORMA PARA RENDIR EXAMEN PARA "
+      ],
+      "contratos_conf": 0.93
     },
     {
       "meta": "En el 2025 obtener el borrador de Crédito enviado por CAF",
@@ -1684,9 +1953,10 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 0.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar el porcentaje del sistema de información local del 19,52% en el año 2023, a 80% al 2029",
@@ -1694,9 +1964,10 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 0.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar el porcentaje del sistema de información local del 19,52% en el año 2023, a 80% al 2030",
@@ -1704,9 +1975,12 @@
       "partidas": 2,
       "inversion": 2,
       "plan": 0.0,
-      "partidas_excl": 2,
-      "cod_excl": 0.0,
-      "dev_excl": 0.0
+      "contratos": 1,
+      "contratos_monto": 2.0,
+      "contratos_nombres": [
+        "MANTENIMIENTO PREVENTIVO DE LOS EQUIPOS TOPOGRAFICOS"
+      ],
+      "contratos_conf": 0.98
     },
     {
       "meta": "Incrementar el porcentaje del sistema de información local del 19,52% en el año 2023, a 80% al 2032",
@@ -1714,9 +1988,10 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 0.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar      el      15% anualmente  desde  el  año 2023,      al      2027      de atenciones  en  progra",
@@ -1724,9 +1999,12 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 0.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 1,
+      "contratos_monto": 1.25,
+      "contratos_nombres": [
+        "ATENCION Y CREACION DE PROGRAMAS TALLERES DE DIFUSIO"
+      ],
+      "contratos_conf": 0.95
     },
     {
       "meta": "Alcanzar una TME del 95% en el próximo ciclo de mantenimiento (semestral)",
@@ -1734,9 +2012,10 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 0.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2027",
@@ -1744,9 +2023,10 @@
       "partidas": 1,
       "inversion": 0,
       "plan": 0.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2028",
@@ -1754,9 +2034,10 @@
       "partidas": 1,
       "inversion": 0,
       "plan": 0.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2029",
@@ -1764,9 +2045,10 @@
       "partidas": 1,
       "inversion": 0,
       "plan": 0.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2030",
@@ -1774,9 +2056,10 @@
       "partidas": 1,
       "inversion": 0,
       "plan": 0.0,
-      "partidas_excl": 0,
-      "cod_excl": 0,
-      "dev_excl": 0
+      "contratos": 0,
+      "contratos_monto": 0,
+      "contratos_nombres": [],
+      "contratos_conf": 0
     },
     {
       "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2058",
@@ -1784,9 +2067,12 @@
       "partidas": 1,
       "inversion": 0,
       "plan": 0.0,
-      "partidas_excl": 1,
-      "cod_excl": 0.0,
-      "dev_excl": 0.0
+      "contratos": 1,
+      "contratos_monto": 25.0,
+      "contratos_nombres": [
+        "SERVICIO DE TRANSPORTE BLINDADO Y CUSTODIA DE VALORE"
+      ],
+      "contratos_conf": 0.88
     }
   ],
   "_nota_metodologica": "La 'meta' del POA es operativa (indicador). El mapa meta↔partida se toma del 2025 (único año con META explícita en la fuente); solo partidas DETERMINISTAS (una sola meta) anclan otros años — la ausencia de vínculo NO se infiere.",

@@ -396,6 +396,7 @@ def _biografia_meta(plan: dict) -> str:
         xm = max(_pool, key=lambda x: _b25[x["meta"]]["plan"])
         b = _b25[xm["meta"]]
         _t = _re.sub(r"\s+(de|del|la|los|las|y|en|a|el|con|para|al)\s*$", "", _corta(b["meta"], 70), flags=_re.I)
+        _nc = b.get("contratos", 0)
         _nodos = [
             {"sys": "META", "label": "compromiso del plan",
              "edge": {"estado": "verificado", "nota": "actividades operativas de la meta (POA oficial)"}},
@@ -403,12 +404,22 @@ def _biografia_meta(plan: dict) -> str:
              "edge": {"estado": "verificado", "nota": "asignación por partida presupuestaria"}},
             {"sys": "PARTIDAS", "label": f'{b["partidas"]} partidas · {b["inversion"]} de inversión',
              "edge": {"estado": "verificado", "nota": "monto planificado del ejercicio"}},
-            {"sys": "PLAN 2025", "label": f'${b["plan"] / 1e6:.1f}M'},
+            {"sys": "PLAN 2025", "label": f'${b["plan"] / 1e6:.1f}M',
+             "edge": {"estado": "verificado" if _nc else "pendiente", "nota": "reconciliación PAC↔POA por descripción"}},
+            {"sys": "CONTRATOS", "label": f'{_nc} procesos' if _nc else "sin reconciliar"},
         ]
         _in = (f'<p class="qc-cap">Un porcentaje aislado no explica nada; una <b>biografía</b>, sí. La meta '
-               f'<b>«{_esc(_t)}»</b> a lo largo de su vida documental —del compromiso a la partida, trazada del '
-               f'<b>POA oficial</b> (la fuente, no inferido)—. Cada meta tiene la suya; este es su recorrido verificable.</p>')
-        _chain = cadena_integridad(_nodos, "Biografía de la meta · su cadena en 2025 (año cerrado)")
+               f'<b>«{_esc(_t)}»</b> a lo largo de su vida documental —del compromiso <b>al contrato</b>, trazada de la '
+               f'<b>fuente oficial</b> (POA + PAC reconciliados, no inferido)—. Cada meta tiene la suya; su recorrido verificable.</p>')
+        _chain = cadena_integridad(_nodos, "Biografía de la meta · del plan al contrato · 2025 (año cerrado)")
+        _nombres = b.get("contratos_nombres", [])
+        _qc = ""
+        if _nombres:
+            _li = "".join(f'<li>{_esc(nn)}</li>' for nn in _nombres)
+            _qc = (f'<p class="qc-cap" style="margin-top:11px"><b>¿Qué contrató?</b> — procesos de su plan de contratación, '
+                   f'reconciliados con el PAC por la <b>descripción del trabajo</b> (no por la partida, que es compartida · '
+                   f'confianza {b.get("contratos_conf", 0)}):</p>'
+                   f'<ul style="margin:5px 0 0;padding-left:20px;font-size:12.5px;color:var(--tx2);line-height:1.6">{_li}</ul>')
         # continuidad multi-año — la PERSISTENCIA del compromiso (no el monto)
         _cards = ""
         for _y, _v in xm["anios"].items():
@@ -425,7 +436,7 @@ def _biografia_meta(plan: dict) -> str:
                  f'años previos es <b>inferido</b> —la partida que en 2025 pertenece a una sola meta—, y asume que ese mapeo se '
                  f'mantiene. Es un <b>indicio, no una certeza</b>; lo no vinculable queda como ausencia declarada, no se rellena.</p>'
                  f'<div class="pl-strip">{_cards}</div>')
-        return _in + _chain + _cont
+        return _in + _chain + _qc + _cont
     # ── fallback: cadena 2026 del canon (Gold Master) ──
     from collections import defaultdict
 
