@@ -65,7 +65,10 @@ def _partida_econ(raw: str) -> str:
 
 
 def _norm(s: str) -> str:
-    return re.sub(r"[^A-ZÑ ]", " ", (s or "").upper())
+    s = (s or "").upper()
+    for a, b in (("Á", "A"), ("É", "E"), ("Í", "I"), ("Ó", "O"), ("Ú", "U"), ("Ü", "U")):
+        s = s.replace(a, b)                              # transliterar acentos (validación colega: subían falsos negativos)
+    return re.sub(r"[^A-ZÑ ]", " ", s)
 
 
 def _contratos_2025_por_meta(poa_2025: list) -> dict:

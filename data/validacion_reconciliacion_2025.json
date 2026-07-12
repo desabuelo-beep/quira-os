@@ -1,0 +1,808 @@
+{
+  "_desc": "Muestra para validación humana · reconciliación PAC↔POA 2025 · llenar revision_humana=OK/ERROR",
+  "n": 100,
+  "alta_conf_pct": 83,
+  "ambiguas_pct": 2,
+  "matches": [
+    {
+      "pac": "RECTIFICACIÓN, MEJORAMIENTO, AMPLIACIÓN Y REHABILITACIÓN A NIVEL DE CARPETA ASFÁ",
+      "poa_actividad": "Rectificación, mejoramiento, ampliación y rehabilitación a nivel de carpeta asfá",
+      "meta": "Construir 10km hasta el 2027 de 93.65 km de vías en proyección del CUP",
+      "sim": 0.556,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "CONTRATACIÓN DE POLIZA DE SEGURO DE VIDA COLECTIVO",
+      "poa_actividad": "CONTRATACIÓN DE PÓLIZA DE SEGURO DE VIDA COLECTIVO PARA LOS SERVIDORES PÚBLICOS ",
+      "meta": "cumplimiento del 85% en la adquisición de seguros",
+      "sim": 0.588,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "CONTRATACION DE POLIZAS DE SEGUROS DE INCENDIO, LUCRO CESANTE POR INCENDIO, ROBO",
+      "poa_actividad": "CONTRATACIÓN DE PÓLIZAS DE SEGUROS DE INCENDIO, LUCRO CESANTE POR INCENDIO, ROBO",
+      "meta": "Mantener y mejorar las instalaciones e infraestructuras municipales.",
+      "sim": 0.623,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "CONSTRUCCIÓN DE OBRAS PARA CONTROL HIDRÁULICO Y MITIGACIÓN DE RIESGOS EN ÉPOCA I",
+      "poa_actividad": "CONSTRUCCIÓN DE OBRAS DE EMBELLECIMIENTO URBANO, TURÍSTICO Y DEPORTIVO EN EL CAN",
+      "meta": "Aumentar a 10.73 m²/hab el índice de equipamiento del Centro Urbano Pr",
+      "sim": 0.647,
+      "ambigua": true,
+      "revision_humana": null
+    },
+    {
+      "pac": "ADQUISICION DE MATERIALES PARA DEMARCACION VIAL",
+      "poa_actividad": "ADQUISICION DE MATERIAL PARA PEDRAPLEN  EN EL CANTON MONTECRISTI",
+      "meta": "Incrementar en el CUP el mantenimiento de 43.8 km de vías  hasta el añ",
+      "sim": 0.667,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "CONTRATACION DE SERVICIOS DE ESPACIOS COMUNICACIONALES PARA LA DIFUSION DE OBRAS",
+      "poa_actividad": "Contratacion de servicios de espacios comunicacionales para la difusion de obras",
+      "meta": "Aumentar el nivel de conocimiento de la gestión institucional al 55% a",
+      "sim": 0.667,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "SUMINISTRO DE TUBERIA DE HORMIGON Y PVC PARA INSTALACION DE COLECTORES DE ALCANT",
+      "poa_actividad": "Suministro de accesorios para mantenimiento de redes de AA.PP y Alcantarillado d",
+      "meta": "Mejorar el índice de calidad de la infraestructura de agua potable BUE",
+      "sim": 0.673,
+      "ambigua": true,
+      "revision_humana": null
+    },
+    {
+      "pac": "ADQUISICIÓN DE RADIOS PORTÁTILES PARA COMUNICACIÓN DE OPERADORES",
+      "poa_actividad": "Adquisición de radios portátiles para comunicación de operadores de los sistemas",
+      "meta": "Indice de cobertura y comunicación para el sistema hidrosdanitario",
+      "sim": 0.696,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "CONTRATACION DEL SERVICIO DE UNA AGENCIA U OPERADORA DE VIAJES, QUE INCLUYA, BOL",
+      "poa_actividad": "CONTRATACIÓN DEL SERVICIO DE UNA AGENCIA U OPERADORA DE VIAJES, QUE INCLUYA, BOL",
+      "meta": "Incrementar las visitas anuales de 2700 en el año 2023, a 4300 al 2027",
+      "sim": 0.734,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "CAMPAÑAS DE DIFUSION, SENSIBILIZACION Y SOCIALIZACIÓN DE LOS DERECHOS CONSAGRADO",
+      "poa_actividad": "Capacitaciones, sensibilización y socialización sobre los derechos de los grupos",
+      "meta": "Incrementar el 15% anualmente desde el año 2023, al 2027 de atenciones",
+      "sim": 0.747,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "CONSULTORIA ESPECIALIZADA PARA LA REVALORIZACION DE BIENES DE PROPIEDAD, PLANTA ",
+      "poa_actividad": "CONSULTORÍA ESPECIALIZADA PARA LA REVALORIZACIÓN DE BIENES DE PROPIEDAD, PLANTA ",
+      "meta": "Actualizar el estado del inventario de los bienes y equipos municipale",
+      "sim": 0.752,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "ADQUISICION DE EQUIPOS INFORMATICOS (EQUIPOS ESPECIALIZADOS EN SEGURIDAD INFORMA",
+      "poa_actividad": "ADQUISICIÓN DE EQUIPOS INFORMÁTICOS (EQUIPOS ESPECIALIZADOS EN SEGURIDAD INFORMÁ",
+      "meta": "Incrementar el número de trámites en línea implementados a 37 al año 2",
+      "sim": 0.77,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "SERVICIO DE PROVISIÓN DE COMBUSTIBLE DIESEL Y EXTRA CON ETANOL PARA LOS VEHÍCULO",
+      "poa_actividad": "SERVICIO DE PROVISIÓN DE COMBUSTIBLE DIESEL Y EXTRA CON ETANOL PARA LOS VEHÍCULO",
+      "meta": "Aumentar del 91% de vehículos en funcionamiento en el año 2023, a 95% ",
+      "sim": 0.772,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "SERVICIO DE PROVISIÓN DE COMBUSTIBLE DIESEL Y EXTRA CON ETANOL PARA LOS VEHÍCULO",
+      "poa_actividad": "SERVICIO DE PROVISIÓN DE COMBUSTIBLE DIESEL Y EXTRA CON ETANOL PARA LOS VEHÍCULO",
+      "meta": "Aumentar del 91% de vehículos en funcionamiento en el año 2023, a 95% ",
+      "sim": 0.772,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "ADQUISICION DE INSUMOS DE PAPELERIA PARA LAS OFICINAS DE LAS DIFERENTES DIRECCIO",
+      "poa_actividad": "ADQUISICIÓN DE INSUMOS DE PAPELERÍA PARA LAS OFICINAS  DE LAS DIFERENTES DIRECCI",
+      "meta": "Mantener y mejorar las instalaciones e infraestructuras municipales.",
+      "sim": 0.778,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "SERVICIO DE ORGANIZACION DE EVENTOS Y ACTIVIDADES QUE FOMENTEN Y PROMUEVAN EL TU",
+      "poa_actividad": "“SERVICIO DE ORGANIZACIÓN DE EVENTOS Y ACTIVIDADES QUE FOMENTEN Y PROMUEVAN EL T",
+      "meta": "Incrementar los eventos turísticos de 10 en el año 2023, a 22 al 2027",
+      "sim": 0.789,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "ADQUISICION DE MAQUINARIAS Y VEHICULOS PESADOS PARA EL DOBLE TRATAMIENTO SUPERFI",
+      "poa_actividad": "ADQUISICIÓN DE MAQUINARIAS Y VEHÍCULOS PESADOS  PARA EL DOBLE TRATAMIENTO SUPERF",
+      "meta": "Incrementar en el CUP el mantenimiento de 43.8 km de vías  hasta el añ",
+      "sim": 0.793,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "ALQUILER DE MAQUINARIA PARA EJECUTAR TRABAJOS EN LA DIRECCION DE AA.PP Y AA.SS D",
+      "poa_actividad": "Alquiler de maquinaria para ejecutar trabajos en la Dirección de AA.PP y AA.SS d",
+      "meta": "Aumentar del 39.25% al 42.38% la cobertura de agua potable en el cantó",
+      "sim": 0.813,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "ADQUISICION DE MATERIALES Y SUMINISTROS DE CONSTRUCCION, ELECTRICIDAD, PLOMERIA,",
+      "poa_actividad": "“ADQUISICIÓN DE MATERIALES Y SUMINISTROS DE CONSTRUCCIÓN, PLOMERIA, CARPINTERIA,",
+      "meta": "Incrementar el número de beneficiarios que acceden a puntos digitales ",
+      "sim": 0.814,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "BRINDAR ATENCION ESPECIALIZADA A LAS DENUNCIAS Y CASOS RECEPTADOS POR LA VULNERA",
+      "poa_actividad": "Brindar atención especializada a las denuncias y casos receptados por la vulnera",
+      "meta": "Mantener  porcentualmente la gestión de las denuncias con el debido pr",
+      "sim": 0.816,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "SERVICIO DE MANTENIMIENTO PREVENTIVO Y CORRECTIVO DE MAQUINARIAS MARCAS, JOHN DE",
+      "poa_actividad": "SERVICIO DE MANTENIMIENTO PREVENTIVO Y CORRECTIVO DE MAQUINARIAS MARCAS, JOHN DE",
+      "meta": "Aumentar del 91% de vehículos en funcionamiento en el año 2023, a 95% ",
+      "sim": 0.816,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "SERVICIO DE CAPACITACION EN FORTALECIMIENTO EN COMPETENCIAS PARA SERVIDORES PUBL",
+      "poa_actividad": "“SERVICIO DE CAPACITACIÓN EN FORTALECIMIENTO EN COMPETENCIAS PARA SERVIDORES PÚB",
+      "meta": "Mantener la ejecución anual del Plan de capacitación del 90% hasta el ",
+      "sim": 0.835,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "SERVICIO DE ARRENDAMIENTO DE OFICINAS PARA EL FUNCIONAMIENTO DEL DESPACHO DEL AR",
+      "poa_actividad": "“SERVICIO DE ARRENDAMIENTO DE OFICINAS PARA EL FUNCIONAMIENTO DEL DESPACHO DEL Á",
+      "meta": "Generar un espacio laboral para el area Legislativa del Gobierno Aúton",
+      "sim": 0.835,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "ADECUACION REPARACION MANTENIMIENTO DE INSTALACIONES (GESTIONAR CON EL AREA DE E",
+      "poa_actividad": "Adecuación-reparación -Mantenimiento de instalaciones (gestionar con el área de ",
+      "meta": "Generar un espacio fisciao adecuado para brindar el servicio desde la ",
+      "sim": 0.838,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "ADQUISCION DE ALIMENTOS DE PRIMERA NECESIDAD PARA ATENDER LOS TALLERES DE GASTRO",
+      "poa_actividad": "ADQUISCION DE ALIMENTOS DE PRIMERA NECESIDAD PARA ATENDER LOS TALLERES DE GASTRO",
+      "meta": "Incrementar los beneficiarios en programas de formación de 1645 en el ",
+      "sim": 0.839,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "SERVICIO DE REPARACIÓN Y ADECUACIÓN DE EDIFICACIONES PROPIAS, ALQUILADAS O EN CO",
+      "poa_actividad": "SERVICIO DE REPARACIÓN Y ADECUACIÓN DE EDIFICACIONES PROPIAS, ALQUILADAS O EN CO",
+      "meta": "Mantener y mejorar las instalaciones e infraestructuras municipales.",
+      "sim": 0.845,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "OBRAS PUBLICAS DEL CANTON MONTECRISTI ADQUISICION DE MAQUINARIA PESADA PARA EL G",
+      "poa_actividad": "ADQUISICIÓN DE MAQUINARIA PESADA PARA EL GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNIC",
+      "meta": "Incrementar en el CUP el mantenimiento de 43.8 km de vías  hasta el añ",
+      "sim": 0.846,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "ADQUISICION DE VESTIMENTA UNIFORME PARA EL PERSONAL BAJO EL REGIMEN CODIGO DE TR",
+      "poa_actividad": "“ADQUISICIÓN DE VESTIMENTA (UNIFORME) PARA EL PERSONAL BAJO EL RÉGIMEN CÓDIGO DE",
+      "meta": "100% de uniformes entregados",
+      "sim": 0.848,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "SERVICIO DE MANTENIMIENTO PREVENTIVO Y CORRECTIVO DEL VEHICULO HIDROSUCCIONADOR ",
+      "poa_actividad": "SERVICIO DE MANTENIMIENTO PREVENTIVO Y CORRECTIVO DEL VEHICULO HIDROSUCCIONADOR ",
+      "meta": "Aumentar del 91% de vehículos en funcionamiento en el año 2023, a 95% ",
+      "sim": 0.848,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "CONSTRUCCIÓN DE PARQUE LA HUELLA EN LA COMUNA CÁRCEL SIMÓN BOLÍVAR DE LA PARROQU",
+      "poa_actividad": "Costrucción del parque la HUELLA en la comuna Carcel Simón Bolivar del Cantón Mo",
+      "meta": "Aumentar a 17.32 m²/hab el IVU  hasta el 2027",
+      "sim": 0.85,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "SERVICIO DE MANTENIMIENTO PREVENTIVO Y CORRECTIVO DE LA MOTONIVELADORA KOMATSU P",
+      "poa_actividad": "SERVICIO DE MANTENIMIENTO PREVENTIVO Y CORRECTIVO DE LA MOTONIVELADORA KOMATSU P",
+      "meta": "Aumentar del 91% de vehículos en funcionamiento en el año 2023, a 95% ",
+      "sim": 0.851,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "ADQUISICION DE INSUMOS Y TINTAS PARA LAS IMPRESORAS DE LAS UNIDADES DEPARTAMENTA",
+      "poa_actividad": "ADQUISICIÓN DE INSUMOS Y TINTAS PARA LAS IMPRESORAS DE LAS UNIDADES DEPARTAMENTA",
+      "meta": "Mantener y mejorar las instalaciones e infraestructuras municipales.",
+      "sim": 0.876,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "SERVICIO DE MONITOREO Y RASTREO SATELITAL PARA LOS VEHÍCULOS LIVIANOS, PESADOS Y",
+      "poa_actividad": "SERVICIO DE MONITOREO Y RASTREO SATELITAL PARA LOS VEHICULOS LIVIANOS, PESADOS Y",
+      "meta": "Aumentar del 91% de vehículos en funcionamiento en el año 2023, a 95% ",
+      "sim": 0.879,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "SERVICIO DE TRANSPORTE BLINDADO Y CUSTODIA DE VALORES CON PERSONAL PARA LA RECAU",
+      "poa_actividad": "Servicio de transporte blindado y custoria de valores con personal para la recau",
+      "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al ",
+      "sim": 0.887,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "ADQUISICIÓN DE EQUIPOS INFORMÁTICOS PARA LAS DIFERENTES DIRECCIONES Y JEFATURAS ",
+      "poa_actividad": "ADQUISICIÓN DE EQUIPOS INFORMÁTICOS PARA LAS DIFERENTES DIRECCIONES Y JEFATURAS ",
+      "meta": "Incrementar el número de procesos sistematizados a 9 al 2027",
+      "sim": 0.889,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "SERVICIO DE REPARACIÓN DE NEUMÁTICOS ENLLANTAJE PARA VEHÍCULOS Y MAQUINARIAS DEL",
+      "poa_actividad": "SERVICIO DE REPARACION DE NEUMATICOS, ENLLANTAJE PARA VEHICULOS Y MAQUINARIAS DE",
+      "meta": "Aumentar del 91% de vehículos en funcionamiento en el año 2023, a 95% ",
+      "sim": 0.891,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "BRINDAR ATENCION ESPECIALIZADA A LAS DENUNCIAS Y CASOS RECEPTADOS POR VIOLENCIA ",
+      "poa_actividad": "Brindar atención especializada a las denuncias y casos receptados por violencia ",
+      "meta": "Mantener  porcentualmente la   atención   con   servicio especializado",
+      "sim": 0.892,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "ESTUDIO DE SUELO PARA DISEÑO Y CONTROL DE CALIDAD PARA LA EJECUCIÓN DE OBRAS DEL",
+      "poa_actividad": "ESTUDIO DE SUELO PARA DISEÑO Y CONTROL DE CALIDAD PARA LA EJECUCION DE OBRAS DEL",
+      "meta": "Aumentar a 10.73 m²/hab el índice de equipamiento del Centro Urbano Pr",
+      "sim": 0.9,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "ADQUISICION DE MATERIALES Y EQUIPOS ELECTRONICOS PARA EL DESARROLLO DEL CURSO DE",
+      "poa_actividad": "Adquisición de materiales y equipos electrónicos para el desarrollo del curso de",
+      "meta": "Incrementar el número de estudiantes bachilleres que acceden a la plat",
+      "sim": 0.906,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "ADQUISICION DE EQUIPOS DE PROTECCION PERSONAL PARA LOS TRABAJADORES DEL GOBIERNO",
+      "poa_actividad": "ADQUISICIÓN DE EQUIPOS DE PROTECCIÓN PERSONAL PARA LOS TRABAJADORES DEL GOBIERNO",
+      "meta": "100% de uniformes entregados",
+      "sim": 0.906,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "CONTRATACION DE SERVICIO DE LOGISTICA Y PROMOCION TURISTICA ARTESANAL Y ARTES ES",
+      "poa_actividad": "CONTRATACIÓN DE SERVICIO DE LOGÍSTICA  Y PROMOCIÓN TURÍSTICA ARTESANAL Y ARTES E",
+      "meta": "Incrementar las visitas anuales de 2700 en el año 2023, a 4300 al 2027",
+      "sim": 0.908,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "ADQUISICIÓN DE INSUMOS Y MATERIALES DE ASEO PARA MANTENER LOS ESPACIOS EN CONDIC",
+      "poa_actividad": "ADQUISICIÓN DE INSUMOS Y MATERIALES DE ASEO PARA MANTENER LOS ESPACIOS EN CONDIC",
+      "meta": "Mantener y mejorar las instalaciones e infraestructuras municipales.",
+      "sim": 0.909,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "ALQUILER DE MAQUINARIA PARA DIFERENTES ACTIVIDADES DE LIMPIEZA Y DESAZOLVE DE QU",
+      "poa_actividad": "ALQUILER DE MAQUINARIA PARA DIFERENTES ACTIVIDADES DE LIMPIEZA Y DESAZOLVE DE QU",
+      "meta": "Incrementar en el CUP el mantenimiento de 43.8 km de vías  hasta el añ",
+      "sim": 0.916,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "CONTRATACIÓN DEL SERVICIO DE OUTSOURCING DE IMPRESIÓN Y FOTOCOPIADO PARA EL GOBI",
+      "poa_actividad": "CONTRATACIÓN DEL SERVICIO DE OUTSOURCING DE IMPRESIÓN Y FOTOCOPIADO PARA EL GOBI",
+      "meta": "Mantener y mejorar las instalaciones e infraestructuras municipales.",
+      "sim": 0.916,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "ADQUISICION DE REPUESTOS Y ACCESORIOS PARA LA INSTALACION, MANTENIMIENTO Y REPAR",
+      "poa_actividad": "ADQUISICIÓN DE REPUESTOS Y ACCESORIOS PARA LA INSTALACIÓN, MANTENIMIENTO Y REPAR",
+      "meta": "Mantener y mejorar las instalaciones e infraestructuras municipales.",
+      "sim": 0.92,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "CONTRATACION DE ENTORNO CLOUD PARA MIGRACION DE SERVICIOS INFORMATICOS DEL GOBIE",
+      "poa_actividad": "CONTRATACIÓN DE ENTORNO CLOUD PARA MIGRACIÓN DE SERVICIOS INFORMÁTICOS DEL GOBIE",
+      "meta": "Incrementar el número de procesos sistematizados a 9 al 2027",
+      "sim": 0.92,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "SERVICIO DE LOGISTICA Y ORGANIZACION DE EVENTOS CIVICOS Y CULTURALES DEL GOBIERN",
+      "poa_actividad": "SERVICIO DE LOGÍSTICA Y ORGANIZACIÓN DE EVENTOS CÍVICOS Y CULTURALES DEL GOBIERN",
+      "meta": "Incrementar el número de participantes por eventos culturales de 8.000",
+      "sim": 0.927,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "SERVICIO DE CONTROL Y MONITOREO DE LAS MAQUINARIAS DE LA DIRECCIÓN DE OBRAS PÚBL",
+      "poa_actividad": "Control y monitoreo de las maquinarias de la Direccion de Obras Publicas del Gad",
+      "meta": "Incrementar en el CUP el mantenimiento de 43.8 km de vías  hasta el añ",
+      "sim": 0.939,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "ADQUISICIÓN E INSTALACIÓN DE CÁMARAS DE VIDEO VIGILANCIA Y ALARMAS COMUNITARIAS ",
+      "poa_actividad": "Adquisición e instalación de cámaras de video vigelancia y alarmas comunitarias ",
+      "meta": "Instalacion de 10 camaras de videovigilancia y 15 alarmas comunitarias",
+      "sim": 0.943,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "CONSTRUCCION DE LA FASE I DEL SISTEMA DE ALCANTARILLADO SANITARIO DE LA PARROQUI",
+      "poa_actividad": "Construccion de la Fase I del sistema de alcantarillado sanitario de la parroqui",
+      "meta": "Aumentar del 19.77% a 24.32% la cobertura de alcantarillado sanitario ",
+      "sim": 0.945,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "ADQUISICION DE INSUMOS, MATERIALES, PINTURAS Y ACCESORIOS PARA ADECUACION DE ESP",
+      "poa_actividad": "ADQUISICIÓN DE INSUMOS, MATERIALES, PINTURAS Y ACCESORIOS PARA ADECUACIÓN DE ESP",
+      "meta": "Mantener y mejorar las instalaciones e infraestructuras municipales.",
+      "sim": 0.945,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "ADQUISICIÓN DE EQUIPOS DE PROTECCIÓN PERSONAL PARA LOS TRABAJADORES DEL GOBIERNO",
+      "poa_actividad": "ADQUISICIÓN DE EQUIPOS DE PROTECCIÓN PERSONAL PARA LOS TRABAJADORES DEL GOBIERNO",
+      "meta": "100% de uniformes entregados",
+      "sim": 0.949,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "ADQUISICION DE EQUIPOS Y MATERIALES DE OFICINA PARA FORTALECIMIENTO DE LA MESA T",
+      "poa_actividad": "ADQUISICION DE EQUIPOS Y MATERIALES DE OFICINA PARA FORTALECIMIENTO DE LA MESA T",
+      "meta": "Incrementar la población atendida en salud preventiva de 320 en el año",
+      "sim": 0.964,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "ADQUISICION DE VEHICULOS TIPO CAMIONETA DOBLE CABINA PARA EL GOBIERNO AUTONOMO D",
+      "poa_actividad": "ADQUISICIÓN DE VEHICULOS TIPO CAMIONETA DOBLE CABINA PARA EL GOBIERNO AUTÓNOMO D",
+      "meta": "Aumentar del 91% de vehículos en funcionamiento en el año 2023, a 95% ",
+      "sim": 0.972,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "ADQUISICIÓN DE CAMIONETA PARA LA DIRECCIÓN DE ESPACIOS PÚBLICOS DEL GOBIERNO AUT",
+      "poa_actividad": "ADQUISICIÓN DE CAMIONETA PARA LA DIRECCIÓN DE ESPACIOS PÚBLICOS DEL GOBIERNO AUT",
+      "meta": "Aumentar del 91% de\nvehículos en funcionamiento en el año 2023, a 95% ",
+      "sim": 0.975,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "ALQUILER DE VEHÍCULO HIDROSUCCIONADOR PARA ATENDER LAS OBSTRUCCIONES EN LA RED D",
+      "poa_actividad": "“ALQUILER DE VEHICULO HIDROSUCCIONADOR PARA ATENDER LAS OBSTRUCCIONES EN LA RED ",
+      "meta": "Mejorar el índice de calidad de la infraestructura  sanitaria BUENO de",
+      "sim": 0.979,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "ADQUISICION DE LICENCIAS PARA EL USO DE SOFTWARE PARA EL GOBIERNO AUTONOMO DESCE",
+      "poa_actividad": "ADQUISICIÓN DE LICENCIAS PARA EL USO DE SOFTWARE  PARA EL GOBIERNO AUTÓNOMO DESC",
+      "meta": "Incrementar el número de procesos sistematizados a 9 al 2027",
+      "sim": 0.979,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "ADQUIRIR LICENCIA DEL SISTEMA LEXIS, EL CUAL PERMITIRA RECIBIR ACTUALIZACIONES L",
+      "poa_actividad": "Adquirir licencia del  sistema Lexis, el cual permitirá recibir actualizaciones ",
+      "meta": "Al 2025 una licencia Lexis adquirida",
+      "sim": 0.979,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "CONTRATACIÓN DE REFRIGERIOS Y ALMUERZOS PARA ATENDER LOS DIFERENTES PROYECTOS SO",
+      "poa_actividad": "Contratación de refrigerios y almuerzos para atender los diferentes proyectos so",
+      "meta": "Incrementar la población atendida en salud preventiva de 320 en el año",
+      "sim": 0.98,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "ADQUISICION DE TUBERIAS PARA EL MANTENIMIENTO PARA REDES DE AGUA MONTECRISTI POT",
+      "poa_actividad": "Adquiscición de de tuberías para el mantenimiento para redes de agua montecristi",
+      "meta": "Aumentar del 39.25% al 42.38% la cobertura de agua potable en el cantó",
+      "sim": 0.982,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "ATENCION Y CREACION DE PROGRAMAS TALLERES DE DIFUSION DE DERECHOS DE LA FAMILIA,",
+      "poa_actividad": "Atención y creación de programas talleres de de difusión de derechos de la famil",
+      "meta": "Incrementar      el      15% anualmente  desde  el  año 2023,      al ",
+      "sim": 0.982,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "SERVICIO DE EXAMENES MEDICOS OCUPACIONALES PARA LOS TRABAJADORES DE GOBIERNO AUT",
+      "poa_actividad": "SERVICIO DE EXÁMENES MÉDICOS OCUPACIONALES PARA LOS TRABAJADORES DE GOBIERNO AUT",
+      "meta": "100 % de realización y análisis de resultados de exámenes médicos",
+      "sim": 0.984,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "ADQUISICIÓN DE MATERIALES DE OFICINA PARA EL PERSONAL DEL GOBIERNO AUTÓNOMO DESC",
+      "poa_actividad": "ADQUISICIÓN DE MATERIALES DE OFICINA PARA EL PERSONAL DEL GOBIERNO AUTÓNOMO DESC",
+      "meta": "Mantener y mejorar las instalaciones e infraestructuras municipales.",
+      "sim": 0.984,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "ADECUACION DEL TERCER Y CUARTO PISO ADYACENTE AL EDIFICIO PALACIO MUNICIPAL DEL ",
+      "poa_actividad": "ADECUACION DEL TERCER Y CUARTO PISO ADYACENTE AL EDIFICIO PALACION MUNICIPAL DEL",
+      "meta": "Aumentar a 10.73 m²/hab el índice de equipamiento del Centro Urbano Pr",
+      "sim": 0.985,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "RECONSTRUCCIÓN Y ADECUACIÓN DE VARIOS PARQUES DEL CANTÓN MONTECRISTI",
+      "poa_actividad": "Reconstruccion y adecuacion de varios parques  del canton Montecristi.",
+      "meta": "Aumentar a 10.73 m²/hab el índice de equipamiento del Centro Urbano Pr",
+      "sim": 0.986,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "AMPLIACIÓN Y ADECUACIÓN DE PARQUE CENTRAL DE LA PARROQUIA COLORADO DEL CANTÓN MO",
+      "poa_actividad": "AMPLIACIÓN Y ADECUACIÓN DE PARQUE CENTRAL DE LA PARROQUIA COLORADO, DEL CANTÓN M",
+      "meta": "Aumentar a 10.73 m²/hab el índice de equipamiento del Centro Urbano Pr",
+      "sim": 0.989,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "MANTENIMIENTO DE PLATAFORMA PARA RENDIR EXAMEN PARA INGRESO DE LA UNIVERSIDAD MO",
+      "poa_actividad": "Manteniento de Plataforma Para Rendir Examen Para Ingreso De La Universidad Mont",
+      "meta": "Incrementar el número de estudiantes bachilleres que acceden a la plat",
+      "sim": 0.99,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "MANTENIMIENTO Y ACTUALIZACION DEL SISTEMA ERP OLIMPO",
+      "poa_actividad": "Mantenimiento y actualización del sistema ERP Olimpo.",
+      "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al ",
+      "sim": 0.99,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "CONSTRUCCIÓN DE INFRAESTRUCTURA COMUNITARIA Y ESPACIOS PÚBLICOS EN LA ZONA URBAN",
+      "poa_actividad": "Construcciòn de Infraestructura comunitaria y Espacios Publicos en la zona Urban",
+      "meta": "Aumentar a 17.32 m²/hab el IVU  hasta el 2027",
+      "sim": 0.991,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "Servicio de trasmisión digital para eventos del Gad Montecristi durante el ejerc",
+      "poa_actividad": "Serivicio de Transmisión digital para eventos del GAD Montecristi durante el eje",
+      "meta": "Aumentar el nivel de conocimiento de la gestión institucional al 55% a",
+      "sim": 0.991,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "ADQUISICIÓN DE MATERIAL PARA PEDRAPLEN EN EL CANTÓN MONTECRISTI",
+      "poa_actividad": "ADQUISICION DE MATERIAL PARA PEDRAPLEN  EN EL CANTON MONTECRISTI",
+      "meta": "Incrementar en el CUP el mantenimiento de 43.8 km de vías  hasta el añ",
+      "sim": 0.992,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "MANTENIMIENTO PREVENTIVO DE LOS EQUIPOS TOPOGRAFICOS Y UAVS DEL GOBIERNO AUTONOM",
+      "poa_actividad": "Mantenimiento preventivo  de los equipos topograficos y UAVs del Gobierno autono",
+      "meta": "Incrementar el porcentaje del sistema de información local del 19,52% ",
+      "sim": 0.992,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "ADQUISICIÓN DE TANQUERO PARA EL GOBIERNO AUTÓNOMO DESCENTRALIZADO DEL CANTÓN MON",
+      "poa_actividad": "Adquisición de tanquero para el Gobierno Autonomo descentralizado del canton Mon",
+      "meta": "Incrementar en el CUP el mantenimiento de 43.8 km de vías  hasta el añ",
+      "sim": 0.994,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "ADQUISICION DE MATERIALES DE LIMPIEZA PARA LOS ESPACIOS PUBLICOS DEL CANTON MONT",
+      "poa_actividad": "Adquisición de materiales  de Limpieza para los Espacios Públicos del Cantón Mon",
+      "meta": "Alcanzar un 95% de cumplimiento del plan de adquisición al final del a",
+      "sim": 0.994,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "REPOTENCIAR INSTALACIONES,MANTENIMIENTO Y REPARACIONES DEL SISTEMA SEMAFÓRICO",
+      "poa_actividad": "Repotenciar instalaciones, mantenimiento y reparaciones del sistema semafórico",
+      "meta": "Incrementar la superficie a 10 000 m2 de señalización en vías urbanas ",
+      "sim": 0.994,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "CONTRATACION DE SERVICIOS PARA LA PROMOCION DE TURISMO DEPORTIVO DE SURF PLAYA S",
+      "poa_actividad": "CONTRATACIÓN DE SERVICIOS PARA LA PROMOCIÓN DE TURISMO DEPORTIVO DE SURF PLAYA S",
+      "meta": "Incrementar las visitas anuales de 2700 en el año 2023, a 4300 al 2027",
+      "sim": 0.994,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "ADQUISICIÓN DE VOLQUETAS DE 12 M3 PARA EL GOBIERNO AUTÓNOMO DESCENTRALIZADO DEL ",
+      "poa_actividad": "Adquisición de volquetas de 12 m3 para el Gobierno Autonomo descentralizado del ",
+      "meta": "Incrementar en el CUP el\nmantenimiento de 43.8 km de vías  hasta el añ",
+      "sim": 0.995,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "CONSTRUCCION DEL ESCENARIO, CAMERINO Y BAÑO DE LA PARROQUIA COLORADO DEL CANTON ",
+      "poa_actividad": "CONSTRUCCION DEL ESCENARIO, CAMERINO Y BAÑO DE LA PARROQUIA COLORADO DEL CANTON ",
+      "meta": "Aumentar a 10.73 m²/hab el índice de equipamiento del Centro Urbano Pr",
+      "sim": 0.995,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "MANTENIMIENTO Y REPARACIÓN DEL PARQUE PERTENECIENTE A LA COMUNA RIO CAÑA DEL CAN",
+      "poa_actividad": "Mantenimiento y Reparación del parque perteneciente a la comuna rio caña del can",
+      "meta": "Aumentar a 10.73 m²/hab el índice de equipamiento del Centro Urbano Pr",
+      "sim": 0.995,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "SUMINISTRO DE ACCESORIOS PARA MANTENIMIENTO DE REDES DE AA.PP Y ALCANTARILLADO D",
+      "poa_actividad": "Suministro de accesorios para mantenimiento de redes de AA.PP y Alcantarillado d",
+      "meta": "Mejorar el índice de calidad de la infraestructura de agua potable BUE",
+      "sim": 0.995,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "CONTRATACION DEL SERVICIO DE LOGISTICA PARA FERIA DE EMPRENDIMIENTO QUE PROMUEVA",
+      "poa_actividad": "CONTRATACIÓN DEL SERVICIO DE LOGÍSTICA PARA  FERIA DE EMPRENDIMIENTO QUE PROMUEV",
+      "meta": "Incrementar los beneficiarios de programas y fortalecimiento productiv",
+      "sim": 0.996,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "CONTRATACION DE SERVICIOS PARA EL EVENTO BARRO, REPLICAS PRECOLOMBINAS LA PILA, ",
+      "poa_actividad": "CONTRATACION DE SERVICIOS PARA EL EVENTO BARRO, RÉPLICAS PRECOLOMBINAS LA PILA ,",
+      "meta": "Incrementar las visitas anuales de 2700 en el año 2023, a 4300 al 2027",
+      "sim": 0.996,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "CONTRATACION DE SERVICIOS PARA EL EVENTO MODELA TU SOMBRERO CUARTA EDICION, COMO",
+      "poa_actividad": "CONTRATACION DE SERVICIOS PARA EL EVENTO MODELA TU SOMBRERO CUARTA EDICIÓN , COM",
+      "meta": "Incrementar las visitas anuales de 2700 en el año 2023, a 4300 al 2027",
+      "sim": 0.996,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "ADQUISICION DE VEHICULO HIDROSUCCIONADOR PARA EL GOBIERNO AUTONOMO DESCENTRALIZA",
+      "poa_actividad": "ADQUISICIÓN DE VEHICULO HIDROSUCCIONADOR PARA EL GOBIERNO AUTONOMO DESCENTRALIZA",
+      "meta": "Aumentar del 91% de vehículos en funcionamiento en el año 2023, a 95% ",
+      "sim": 1.0,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "ADQUISICIÓN DE EQUIPOS DE CLIMATIZACIÓN PARA EL GOBIERNO AUTÓNOMO DESCENTRALIZAD",
+      "poa_actividad": "ADQUISICIÓN DE EQUIPOS DE CLIMATIZACIÓN PARA EL GOBIERNO AUTÓNOMO DESCENTRALIZAD",
+      "meta": "Mantener y mejorar las instalaciones e infraestructuras municipales.",
+      "sim": 1.0,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "ADQUISICIÓN DE BANCO DE PRUEBAS DE MEDIDOR",
+      "poa_actividad": "Adquisición de banco de pruebas de medidor",
+      "meta": "Alcanzar un 100% de cumplimiento en la adquisición del banco de prueba",
+      "sim": 1.0,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "ADQUISICION DE MEDIDORES PARA LA RENOVACION DEL PARQUE DE MEDIDORES EN EL CANTON",
+      "poa_actividad": "Adquisicion de medidores para la renovacion del parque de medidores en el canton",
+      "meta": "Aumentar del 39.25% al 42.38% la cobertura de agua potable en el cantó",
+      "sim": 1.0,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "PAVIMENTACIÓN ASFÁLTICA EN LA VÍA PRINCIPAL DE LA COMUNA PILE, DEL CANTÓN MONTEC",
+      "poa_actividad": "PAVIMENTACIÓN ASFÁLTICA EN LA VÍA PRINCIPAL DE LA COMUNA PILE, DEL CANTÓN MONTEC",
+      "meta": "Construir 10km hasta el 2027 de 93.65 km de vías en proyección del CUP",
+      "sim": 1.0,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "CONSTRUCCION DE OBRAS DE EMBELLECIMIENTO URBANO, TURISTICO Y DEPORTIVO EN EL CAN",
+      "poa_actividad": "CONSTRUCCIÓN DE OBRAS DE EMBELLECIMIENTO URBANO, TURÍSTICO Y DEPORTIVO EN EL CAN",
+      "meta": "Aumentar a 10.73 m²/hab el índice de equipamiento del Centro Urbano Pr",
+      "sim": 1.0,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "CONSTRUCCIÓN DE ESCENARIO CAMERINO EN LA COMUNA TOALLA CHICA DEL CANTÓN MONTECRI",
+      "poa_actividad": "CONSTRUCCIÓN DE ESCENARIO CAMERINO EN LA COMUNA TOALLA CHICA DEL CANTÓN MONTECRI",
+      "meta": "Aumentar a 10.73 m²/hab el índice de equipamiento del Centro Urbano Pr",
+      "sim": 1.0,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "IMPLEMENTACION DE PARADAS DE BUSES",
+      "poa_actividad": "IMPLEMENTACIÓN DE PARADAS DE BUSES",
+      "meta": "Incrementar la superficie a 10 000 m2 de señalización en vías urbanas ",
+      "sim": 1.0,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "CONTRATACION DE SERVICIOS PARA LA PROMOCION DE TURISMO DEPORTIVO BAJA MONTECRIST",
+      "poa_actividad": "CONTRATACIÓN DE SERVICIOS PARA LA PROMOCIÓN DE TURISMO DEPORTIVO BAJA MONTECRIST",
+      "meta": "Incrementar las visitas anuales de 2700 en el año 2023, a 4300 al 2027",
+      "sim": 1.0,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "CONTRATACION DE SERVICIOS PARA LA PROMOCION DE TURISMO DEPORTIVO RUTA DEL CARACO",
+      "poa_actividad": "CONTRATACIÓN DE SERVICIOS PARA LA PROMOCIÓN DE TURISMO DEPORTIVO RUTA DEL CARACO",
+      "meta": "Incrementar las visitas anuales de 2700 en el año 2023, a 4300 al 2027",
+      "sim": 1.0,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "CONTRATACION DE SERVICIOS POR EVENTOS DE PROMOCION TURISTICA EN FERIADOS",
+      "poa_actividad": "CONTRATACIÓN DE SERVICIOS POR EVENTOS DE PROMOCIÓN TURÍSTICA EN FERIADOS",
+      "meta": "Incrementar los eventos\nturísticos de 10 en el año 2023, a 22 al 2027",
+      "sim": 1.0,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "ENCUADERNADOS Y EMPASTADOS DE LIBROS",
+      "poa_actividad": "Encuadernados y empastados de libros",
+      "meta": "Alcanzar el 75% de Libros empastados y encuadernados dentro del period",
+      "sim": 1.0,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "ADQUISICION Y MANTENIMIENTO DE EXTINTORES PARA LAS INSTALACIONES DEL GAD MUNICIP",
+      "poa_actividad": "ADQUISICIÓN Y MANTENIMIENTO DE EXTINTORES PARA LAS INSTALACIONES DEL GAD MUNICIP",
+      "meta": "100% de gestión institucionales",
+      "sim": 1.0,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "CONTRATACIÓN DE FIBRA ÓPTICA PARA LA CONECTIVIDAD DE PUNTOS DE VIDEO VIGILANCIA ",
+      "poa_actividad": "Contratación de fibra óptica para la conectividad de puntos de video vigilancia ",
+      "meta": "Instalacion de 10 camaras de videovigilancia y 15 alarmas comunitarias",
+      "sim": 1.0,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "ALQUILER DE SERVICIO DE TANQUEROS PARA DISTRIBUCIÓN DE AGUA POTABLE EN EL CANTÓN",
+      "poa_actividad": "Alquiler de servicio de Tanqueros para distribucion de agua potable en el cantón",
+      "meta": "Entregrar 900 m3 en el mes",
+      "sim": 1.0,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "ADQUISICION DE INSUMOS Y ACCESORIOS PARA EQUIPOS INFORMATICOS DEL GAD MUNICIPAL ",
+      "poa_actividad": "ADQUISICIÓN DE INSUMOS Y ACCESORIOS PARA EQUIPOS INFORMÁTICOS DEL GAD MUNICIPAL ",
+      "meta": "Incrementar el número de procesos sistematizados a 9 al 2027",
+      "sim": 1.0,
+      "ambigua": false,
+      "revision_humana": null
+    },
+    {
+      "pac": "ELABORACION DE ESTUDIOS DE MEDICION, ALCANCE Y ACEPTACION DE LA GESTION DEL GAD ",
+      "poa_actividad": "Elaboración de estudios de medición, alcance y aceptación de la gestión del GAD ",
+      "meta": "Aumentar la aceptación institucional a 35% al 2027",
+      "sim": 1.0,
+      "ambigua": false,
+      "revision_humana": null
+    }
+  ]
+}
