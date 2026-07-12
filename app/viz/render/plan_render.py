@@ -416,12 +416,14 @@ def _biografia_meta(plan: dict) -> str:
             _col = "#22D3EE" if _nat else "#9AA0A6"
             _cards += (f'<div class="pl-si"><div class="k">Ejercicio {_y}</div>'
                        f'<div class="v" style="color:{_col}">{_v["act"]}</div>'
-                       f'<div class="s">actividades · {"completo (fuente)" if _nat else "piso verificable"}</div></div>')
-        _cont = (f'<div class="rl-hd" style="margin-top:18px">Continuidad del compromiso · {len(xm["anios"])} ejercicios</div>'
-                 f'<p class="qc-cap">El mismo compromiso <b>persiste a lo largo del plan</b> —2023, 2024 y 2025—: eso es '
-                 f'<b>memoria institucional</b>. En años previos se muestra el <b>piso verificable</b> (solo los vínculos '
-                 f'deterministas de la fuente); en 2025, completo. El valor es la <b>continuidad</b>, no el monto: el '
-                 f'histórico capta apenas el subconjunto trazable, y esa ausencia es un resultado, no un hueco a inferir.</p>'
+                       f'<div class="s">actividades · {"verificado (fuente)" if _nat else "inferido (partida)"}</div></div>')
+        _ys = list(xm["anios"].keys())
+        _yrs = _ys[0] if len(_ys) == 1 else " y ".join([", ".join(_ys[:-1]), _ys[-1]])
+        _cont = (f'<div class="rl-hd" style="margin-top:18px">Continuidad del compromiso · {len(_ys)} ejercicios</div>'
+                 f'<p class="qc-cap">El mismo compromiso <b>reaparece en {_yrs}</b>: indicio de <b>memoria institucional</b>. '
+                 f'<b>Precisión epistemológica:</b> en <b>2025</b> el vínculo meta↔actividad es <b>directo de la fuente</b>; en '
+                 f'años previos es <b>inferido</b> —la partida que en 2025 pertenece a una sola meta—, y asume que ese mapeo se '
+                 f'mantiene. Es un <b>indicio, no una certeza</b>; lo no vinculable queda como ausencia declarada, no se rellena.</p>'
                  f'<div class="pl-strip">{_cards}</div>')
         return _in + _chain + _cont
     # ── fallback: cadena 2026 del canon (Gold Master) ──
