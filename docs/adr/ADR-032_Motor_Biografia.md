@@ -73,5 +73,19 @@ jamás estimada como si fuera dato per-meta.
   nivel de actividad— que hoy **no existe públicamente**. Esa ausencia es, en sí misma, un hallazgo de
   verificabilidad del GAD, no un defecto de QUIRA.
 
+## Principio rector — la contribución metodológica (Javo · 2026-07-11, cierre de sesión)
+
+> **La Biografía Administrativa es un OBJETO CANÓNICO reconciliado entre sistemas heterogéneos — y ese
+> concepto es más potente que cualquier tecnología concreta.**
+> Neo4j puede cambiar. Supabase puede cambiar. Python puede cambiar. Pero la idea de que **un compromiso
+> público tiene una biografía verificable desde que nace hasta que termina** es una **contribución
+> metodológica** que sobrevive a todas esas herramientas.
+
+**Implicación estratégica:** el valor de QUIRA no reside en su *stack* (reemplazable) sino en el **método**
+—reconstruir, desde fuentes heterogéneas que hablan del mismo hecho, la vida verificable de cada compromiso,
+declarando el nivel de verificabilidad de cada eslabón—. *Las herramientas implementan; el método permanece.*
+Esto es lo publicable (tesis / estándar), lo escalable a los 221 GAD, y lo que ninguna migración tecnológica
+puede volver obsoleto. La Biografía Administrativa es la contribución de QUIRA a la ciencia de la gestión pública.
+
 ---
-*ADR-032 · Motor de Biografía · Dylus Lab © 2026 · "QUIRA no inventa la historia de una meta: la reconstruye hasta donde la fuente la sostiene, y declara dónde la fuente calla."*
+*ADR-032 · Motor de Biografía · Dylus Lab © 2026 · "QUIRA no inventa la historia de una meta: la reconstruye hasta donde la fuente la sostiene, y declara dónde la fuente calla. Las herramientas implementan; el método permanece."*
