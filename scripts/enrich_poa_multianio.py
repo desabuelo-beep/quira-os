@@ -99,9 +99,14 @@ def _contratos_2025_por_meta(poa_2025: list) -> dict:
                 continue
             desc = c[4]
             monto = _num(c[8].split("\n")[0])
-            best = max(by_part[pt], key=lambda a: SequenceMatcher(None, _norm(desc), _norm(a["actividad"])).ratio())
-            s = SequenceMatcher(None, _norm(desc), _norm(best["actividad"])).ratio()
+            scored = sorted(((SequenceMatcher(None, _norm(desc), _norm(a["actividad"])).ratio(), a)
+                             for a in by_part[pt]), key=lambda t: t[0], reverse=True)
+            s, best = scored[0]
             if s < 0.55:                                  # reconciliación de baja confianza → no se atribuye
+                continue
+            # AMBIGÜEDAD (VAL-001 · revisión Javo): 2º candidato con meta DISTINTA y score cercano →
+            # no se puede decidir la meta con certeza → NO se atribuye (es donde vivían los errores).
+            if len(scored) > 1 and scored[1][1]["meta"] != best["meta"] and (s - scored[1][0]) < 0.08:
                 continue
             d = porm[best["meta"][:110]]
             d["n"] += 1

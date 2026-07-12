@@ -361,15 +361,15 @@
       "partidas": 8,
       "inversion": 8,
       "plan": 676400.0,
-      "contratos": 9,
-      "contratos_monto": 748.87,
+      "contratos": 8,
+      "contratos_monto": 663.87,
       "contratos_nombres": [
         "CONSTRUCCION DEL ESCENARIO, CAMERINO Y BAÑO DE LA PA",
         "CONSTRUCCION DE OBRAS DE EMBELLECIMIENTO URBANO, TUR",
         "MANTENIMIENTO Y REPARACIÓN DEL PARQUE PERTENECIENTE ",
         "AMPLIACIÓN Y ADECUACIÓN DE PARQUE CENTRAL DE LA PARR"
       ],
-      "contratos_conf": 0.94
+      "contratos_conf": 0.98
     },
     {
       "meta": "Aumentar del 39.25% al 42.38% la cobertura de agua potable en el cantón hasta el 2027",
@@ -1205,13 +1205,12 @@
       "partidas": 1,
       "inversion": 1,
       "plan": 30000.0,
-      "contratos": 2,
-      "contratos_monto": 28.89,
+      "contratos": 1,
+      "contratos_monto": 2.8,
       "contratos_nombres": [
-        "SUMINISTRO DE ACCESORIOS PARA MANTENIMIENTO DE REDES",
-        "SUMINISTRO DE TUBERIA DE HORMIGON Y PVC PARA INSTALA"
+        "SUMINISTRO DE ACCESORIOS PARA MANTENIMIENTO DE REDES"
       ],
-      "contratos_conf": 0.83
+      "contratos_conf": 1.0
     },
     {
       "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2033",
