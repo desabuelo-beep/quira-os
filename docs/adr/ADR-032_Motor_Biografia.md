@@ -32,8 +32,16 @@ de fingir completitud.
 | ¿Qué actividades tuvo? | **verificado** | POA oficial (Excel) |
 | ¿Qué presupuesto planificó? | **verificado** | POA oficial |
 | ¿Qué % ejecutó? | **DOMINIO** (agregado, p.ej. 73%) — **NO per-meta** | cédula (partida compartida) |
-| ¿Qué contratos generó? | *pendiente* (PAC · FASE 1.5 sig.) | — |
+| ¿Qué contratos generó? | **DOMINIO** ($4.9M · 109 procesos) — per-meta solo subconjunto exclusivo (23/109) | PAC oficial (docx) |
 | ¿Qué reformas sufrió? ¿Cómo terminó? | *ausencia documentada* | — |
+
+**Hallazgo estructural definitivo (FASE 1.5 · investigado ejecución Y contratos):** la cadena
+`meta↔actividad↔partida` es **limpia** (del POA fuente), pero **aguas abajo la partida presupuestaria
+se comparte entre metas** — por tanto *todo lo que cuelga de la partida (ejecución, contratos, reformas)
+no es atribuible limpiamente por meta*. No es un defecto de QUIRA: es la estructura presupuestaria del
+GAD (partidas genéricas). La atribución exclusiva (partidas deterministas) captura solo el subconjunto
+pequeño/específico; los ítems grandes (obras) van por partidas compartidas. **Conclusión: el núcleo
+verificado de la biografía es la CADENA DEL PLAN; aguas abajo se reporta a nivel de dominio.**
 
 ## Límite documentado (la honestidad que distingue a QUIRA)
 
