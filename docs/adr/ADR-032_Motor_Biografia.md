@@ -45,8 +45,14 @@ hecho—, y es precisamente la *cadena de integridad intersistémica* que define
 no como tablero. **Regla:** cuando el dato existe pero la estructura lo esconde, QUIRA innova para
 reconciliarlo; solo declara ausencia cuando el dato **no existe** en ninguna fuente.
 
-Pendiente por la misma vía: la **ejecución (devengado)** —hoy a nivel de partida en la cédula— es
-reconciliable por la cadena `proceso → contrato SERCOP → devengado`. Núcleo verificado hoy: **plan + contratos**.
+**Ejecución real per-meta — investigado (2026-07-11) · la lección en ambos sentidos:** intenté cerrar el
+eslabón `ejecutó` por SERCOP real (H06). Resultado: para el GAD 2025 el SERCOP publicado es **genuinamente
+escaso** —20 contratos, *por_verificar*, la descripción es el **nombre del proveedor** (no el objeto)—; y la
+cédula devenga por **partida compartida**. A diferencia del PAC (info *escondida por la estructura*, que se
+**recupera** por reconciliación), aquí el dato **es thin en la fuente**: el GAD publicó poco en SERCOP 2025.
+**Esconder ≠ no existir:** lo primero se innova, lo segundo se **declara**. → Ejecución real per-meta 2025 =
+**nivel de dominio** (Ti 73%); la escasez del SERCOP es, en sí, un hallazgo de transparencia del GAD.
+**Núcleo verificado de la biografía: nació → planificó → contrató (planificado).**
 
 ## Límite documentado (la honestidad que distingue a QUIRA)
 
