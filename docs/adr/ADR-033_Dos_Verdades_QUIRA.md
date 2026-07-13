@@ -37,14 +37,27 @@ calcula, sintetiza. Con máxima precisión: los documentos contienen la **eviden
 la **representación canónica + los resultados analíticos derivados**. *(Por eso "verdad analítica" es un atajo:
 rigurosamente es una inferencia reproducible, no un hecho.)*
 
-### III · Interpretación (QUIRA IA) — la TERCERA capa (colega · 2026-07-13)
-Responde **"¿qué significa esto?"**. Aquí aparece lenguaje explicativo, comparaciones, narrativa. **Estatus
-epistemológico MENOR:** una explicación de la IA **NO tiene el mismo peso** que un documento oficial (evidencia)
-ni que un índice matemático (inferencia). Es interpretación — útil, pero **subordinada** a las dos capas que la
-sostienen, y se declara como tal (anti-alucinación · Principio Rector).
+### III · Interpretación — la TERCERA capa epistemológica (Javo + colega · corregido)
+Responde **"¿qué significa esto?"**: lenguaje explicativo, comparaciones, narrativa. **Estatus epistemológico
+MENOR:** una interpretación **NO tiene el mismo peso** que un documento (evidencia) ni que un índice (inferencia);
+se declara como tal (anti-alucinación · Principio Rector).
 
-> **Tres capas, autoridad decreciente: evidencia > inferencia analítica > interpretación.** NO confundir con los
-> 3 niveles ARQUITECTÓNICOS de ADR-023 (Motor · SO · UI) — son ejes ortogonales (epistemología vs arquitectura).
+**⚠️ Precisión de Javo (2026-07-13) — la interpretación NO es QUIRA IA (el colega las fundió):**
+- La **interpretación CURADA** vive en la **capa DOM** (L2 dashboards): ahí se evidencia y explica todo —gráfica,
+  analítica, conceptualmente— en **lenguaje de administración pública** (sin exponer lo canónico), y **queda definido**.
+  Es parte del producto entregado.
+- **QUIRA IA es OTRA capa — la CONVERSACIONAL** (arquitectónica · aún por construir): el usuario **conversa** sobre
+  todo lo que hay en QUIRA, **anclado a evidencia + índices, sin alucinar**. No "es la interpretación": es el **acceso
+  conversacional** a las tres capas. *(Igual: **GeoTwin → GEO IA** es otra capa por construir.)*
+
+> **Tres capas EPISTEMOLÓGICAS (autoridad decreciente): evidencia > inferencia analítica > interpretación.**
+> NO confundir con las capas ARQUITECTÓNICAS (ADR-023 Motor·SO·UI · UI: L1 Mando · L2 DOM · L3 GeoTwin→GEO IA ·
+> **+ QUIRA IA conversacional** · aún por construir). Son **ejes ortogonales**: *qué autoridad tiene una afirmación*
+> ≠ *en qué capa del sistema vive*.
+
+**Nomenclatura (Javo · Regla 7 anti-inflación):** lo que QUIRA administra NO se llama "cadena de confianza"
+(propuesta del colega, rechazada). El término canónico —ya en la Constitución CAPA 0— es **cadena de integridad
+intersistémica**. El nivel de confianza por proveniencia es una **dimensión** de esa cadena, no un concepto nuevo.
 
 ### Reconciliación con ADR-029 §Precisión — NO hay contradicción
 - La verdad **documental** NO vive en el Gold Master (vive en la fuente) → ADR-029, correcto.
@@ -67,7 +80,7 @@ Toda afirmación de QUIRA se clasifica **automáticamente** en una de tres, con 
 |---|---|---|
 | **Evidencia** | documento oficial | *"El PAC registra 109 procesos."* |
 | **Resultado analítico** | Gold Master | *"El índice de congruencia es 53,56%."* |
-| **Interpretación** | QUIRA IA | *"La planificación muestra alta coherencia, pero ejecución desigual."* |
+| **Interpretación** | DOM (curada) / QUIRA IA (conversacional) | *"La planificación muestra alta coherencia, pero ejecución desigual."* |
 
 El usuario debe saber siempre cuál ve — un **hecho reconstruido**, una **inferencia matemática**, o una
 **explicación de la IA**. **Bloomberg Firewall:** valor + etiqueta pública; el código interno (ICPI/TGI/SAT) jamás.
