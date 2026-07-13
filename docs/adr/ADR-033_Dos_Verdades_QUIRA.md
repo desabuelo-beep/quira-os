@@ -29,6 +29,23 @@ matemáticas reproducibles sobre documentos oficiales**. **Vive en el Gold Maste
 
 > Los documentos contienen la **evidencia**. El Gold Master contiene el **conocimiento**. No es un repositorio: es un laboratorio.
 
+**Precisión (colega · 2026-07-13) — el índice NO es un hecho nuevo:** el ICPI no "existe" en el documento del
+GAD — es una **inferencia cuantitativa reproducible**. Existe porque se definió un **algoritmo transparente**
+sobre documentos oficiales; su **legitimidad es la reproducibilidad** (cualquiera repite el cálculo y obtiene
+lo mismo), no la primacía. El Gold Master **no crea realidad administrativa**: integra, normaliza, compara,
+calcula, sintetiza. Con máxima precisión: los documentos contienen la **evidencia primaria**; el Gold Master,
+la **representación canónica + los resultados analíticos derivados**. *(Por eso "verdad analítica" es un atajo:
+rigurosamente es una inferencia reproducible, no un hecho.)*
+
+### III · Interpretación (QUIRA IA) — la TERCERA capa (colega · 2026-07-13)
+Responde **"¿qué significa esto?"**. Aquí aparece lenguaje explicativo, comparaciones, narrativa. **Estatus
+epistemológico MENOR:** una explicación de la IA **NO tiene el mismo peso** que un documento oficial (evidencia)
+ni que un índice matemático (inferencia). Es interpretación — útil, pero **subordinada** a las dos capas que la
+sostienen, y se declara como tal (anti-alucinación · Principio Rector).
+
+> **Tres capas, autoridad decreciente: evidencia > inferencia analítica > interpretación.** NO confundir con los
+> 3 niveles ARQUITECTÓNICOS de ADR-023 (Motor · SO · UI) — son ejes ortogonales (epistemología vs arquitectura).
+
 ### Reconciliación con ADR-029 §Precisión — NO hay contradicción
 - La verdad **documental** NO vive en el Gold Master (vive en la fuente) → ADR-029, correcto.
 - La verdad **analítica** SÍ vive en el Gold Master (los índices) → ADR-033, se completa.
@@ -43,14 +60,19 @@ un excelente sistema de auditoría documental. Con él, es **además** un sistem
 desempeño gubernamental**. *(Se conserva el nombre "Gold Master" como artefacto — Regla 7, anti-churn;
 "Motor Analítico Canónico" es su ROL epistemológico, no un renombre.)*
 
-## Regla nueva — PROVENIENCIA EXPLÍCITA
-Toda respuesta de QUIRA **declara de qué capa proviene**:
-- **Documental:** *"Según el PAC 2025 existe el proceso X."* → hecho reconstruido de la fuente.
-- **Analítica:** *"El índice de cumplimiento de la gestión, calculado sobre los documentos oficiales, es 53.56%."*
-  → conclusión matemática derivada de múltiples fuentes.
+## Regla — PROVENIENCIA EXPLÍCITA (3 tipos · colega 2026-07-13)
+Toda afirmación de QUIRA se clasifica **automáticamente** en una de tres, con autoridad decreciente:
 
-Ambas son verdad, pero de **capas epistemológicas diferentes**, y el usuario debe saber cuál está viendo.
-**Bloomberg Firewall:** se muestra el **valor + etiqueta pública**; el código interno (ICPI/TGI/SAT) jamás.
+| Tipo | Procedencia | Ejemplo |
+|---|---|---|
+| **Evidencia** | documento oficial | *"El PAC registra 109 procesos."* |
+| **Resultado analítico** | Gold Master | *"El índice de congruencia es 53,56%."* |
+| **Interpretación** | QUIRA IA | *"La planificación muestra alta coherencia, pero ejecución desigual."* |
+
+El usuario debe saber siempre cuál ve — un **hecho reconstruido**, una **inferencia matemática**, o una
+**explicación de la IA**. **Bloomberg Firewall:** valor + etiqueta pública; el código interno (ICPI/TGI/SAT) jamás.
+Además, la analítica **hereda la confianza de la evidencia** sobre la que se calcula (capa dependiente · ver ADR-032:
+ejec. per-meta *thin* ⇒ índice per-meta limitado; a nivel de dominio, firme).
 
 ## Por qué es ciencia — el ejemplo del IPE
 Al corregir el IPE **no se cambió la realidad ni un documento — se cambió un CÁLCULO**. La evidencia siguió
@@ -76,6 +98,10 @@ FUENTES OFICIALES → Motor de Evidencia → verdad DOCUMENTAL
 > indicadores matemáticos reproducibles calculados sobre esa misma evidencia (qué tan bien gobernó la
 > institución).** La primera explica qué ocurrió; la segunda mide qué tan bien se gobernó. La combinación
 > distingue a QUIRA de un repositorio documental o de un tablero de indicadores aislado.
+
+**Formulación canónica (colega · resiste revisión académica/tesis):**
+> **QUIRA no sustituye la verdad documental por una verdad analítica; transforma evidencia oficial en
+> conocimiento reproducible mediante reglas explícitas, preservando siempre la trazabilidad entre ambos niveles.**
 
 ## Consecuencia práctica (el trabajo que sigue)
 Los DOM deben presentar **las dos mitades**: la trazabilidad documental (biografía) **Y** la evaluación
