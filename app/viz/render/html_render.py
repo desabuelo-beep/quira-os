@@ -55,9 +55,9 @@ def _pct(part: int, whole: int) -> int:
     return round(100 * part / whole) if whole else 0
 
 
-def _seccion(n: str, titulo: str, cuerpo: str, ley: str = "", cls: str = "") -> str:
+def _seccion(n: str, titulo: str, cuerpo: str, ley: str = "", cls: str = "", prov: str = "") -> str:
     return (f'<div class="qc-sec {cls}"><div class="qc-h"><span class="qc-hn">{_esc(n)}</span>'
-            f'<span class="qc-ht">{_esc(titulo)}</span></div>{cuerpo}{ley}</div>')
+            f'<span class="qc-ht">{_esc(titulo)}</span>{prov}</div>{cuerpo}{ley}</div>')
 
 
 # ── HALLAZGOS · inferencias CALCULADAS del dato (paso 7 · produce conocimiento, no texto libre) ──

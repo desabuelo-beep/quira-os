@@ -17,10 +17,12 @@ try:
     from html_render import _CSS as _RDC_CSS, _esc, _corta, _ley, _seccion, _pct  # noqa: F401
     from hallazgos import render_hallazgos as _hallazgos_html, h_serie, h_proyeccion  # sintetizador compartido  # noqa: F401
     from relacional import cadena_integridad, REL_CSS  # motor Relacional compartido  # noqa: F401
+    from provenance import prov, prov_leyenda, PROV_CSS  # proveniencia ADR-033  # noqa: F401
 except ImportError:  # dentro del paquete app (Streamlit)
     from app.viz.render.html_render import _CSS as _RDC_CSS, _esc, _corta, _ley, _seccion, _pct  # noqa: F401
     from app.viz.render.hallazgos import render_hallazgos as _hallazgos_html, h_serie, h_proyeccion  # noqa: F401
     from app.viz.render.relacional import cadena_integridad, REL_CSS  # noqa: F401
+    from app.viz.render.provenance import prov, prov_leyenda, PROV_CSS  # noqa: F401
 
 # CSS: la gramática RDC + lo específico del plan (strip de datos del backbone, cards SAT)
 _PLAN_EXTRA = """
@@ -52,7 +54,7 @@ _ESL_CSS = """
 .qc-sint-b .pl-esl .tx{color:var(--tx2)}.qc-sint-b .pl-esl .tx b{color:var(--tx)}
 @media(max-width:640px){.qc-sint-b .pl-esl{flex-direction:column;gap:3px}.qc-sint-b .pl-esl .lb{width:auto}}
 """
-_CSS = _RDC_CSS.replace("</style>", _PLAN_EXTRA + REL_CSS + _ESL_CSS + "</style>")
+_CSS = _RDC_CSS.replace("</style>", _PLAN_EXTRA + REL_CSS + _ESL_CSS + PROV_CSS + "</style>")
 
 # semáforo (temp) → color de la gramática
 _TEMP = {"critico": "#D93025", "alerta": "#F9AB00", "amarillo": "#F9AB00", "normal": "#1A73E8",
@@ -599,12 +601,13 @@ def cajon_dominio_plan(plan: dict) -> str:
     {_ley_esl(plan, 'pdot', 'Fundamento del dominio (Planificación)')}
   </div>
   <div class="qc-body">
-    {_seccion('01', 'El procedimiento · del plan al gasto', _backbone(plan) + _cadena_relacional(plan), _ley_esl(plan, 'poa', 'Fundamento jurídico aplicable'))}
-    {_seccion('02', 'El plan y su cobertura', _cobertura(plan), _ley_esl(plan, 'presupuesto', 'Fundamento jurídico aplicable'))}
-    {_seccion('03', 'La trazabilidad · metas del plan', '<p class="qc-p">Cada expediente es la <b>biografía de una meta</b>: su recorrido desde el plan hasta el gasto, y hasta dónde llega la cadena documental.</p><p class="qc-cap">No se eligen al azar: se muestran las metas de mayor <b>Valor Demostrativo</b> —el puntaje (0-100) que resume cuánto demuestra el método cada expediente: profundidad de la cadena documental, peso presupuestario y tipo de competencia. A mayor puntaje, más completa y probatoria es la trazabilidad.</p>' + _biografia_meta(plan) + _expedientes_metas(plan), _ley_esl(plan, 'pac', 'Fundamento jurídico aplicable'))}
-    {_seccion('04', 'La coherencia · análisis preventivo', _coherencia(plan), _ley_esl(plan, 'gasto', 'Fundamento jurídico aplicable'))}
-    {_seccion('05', 'La trayectoria en el tiempo · proyección', _longitudinal_plan(plan))}
-    {_seccion('06', 'La evaluación · hallazgos e implicaciones', '<p class="qc-p">Interpretación del dato —no una descripción—: el patrón que revela el análisis, y qué significa.</p>' + _hallazgos_html(_hallazgos_plan(plan)) + _implicaciones_plan(plan))}
+    {prov_leyenda()}
+    {_seccion('01', 'El procedimiento · del plan al gasto', _backbone(plan) + _cadena_relacional(plan), _ley_esl(plan, 'poa', 'Fundamento jurídico aplicable'), prov=prov('doc'))}
+    {_seccion('02', 'El plan y su cobertura', _cobertura(plan), _ley_esl(plan, 'presupuesto', 'Fundamento jurídico aplicable'), prov=prov('ana'))}
+    {_seccion('03', 'La trazabilidad · metas del plan', '<p class="qc-p">Cada expediente es la <b>biografía de una meta</b>: su recorrido desde el plan hasta el gasto, y hasta dónde llega la cadena documental.</p><p class="qc-cap">No se eligen al azar: se muestran las metas de mayor <b>Valor Demostrativo</b> —el puntaje (0-100) que resume cuánto demuestra el método cada expediente: profundidad de la cadena documental, peso presupuestario y tipo de competencia. A mayor puntaje, más completa y probatoria es la trazabilidad.</p>' + _biografia_meta(plan) + _expedientes_metas(plan), _ley_esl(plan, 'pac', 'Fundamento jurídico aplicable'), prov=prov('doc'))}
+    {_seccion('04', 'La coherencia · análisis preventivo', _coherencia(plan), _ley_esl(plan, 'gasto', 'Fundamento jurídico aplicable'), prov=prov('ana'))}
+    {_seccion('05', 'La trayectoria en el tiempo · proyección', _longitudinal_plan(plan), prov=prov('ana'))}
+    {_seccion('06', 'La evaluación · hallazgos e implicaciones', '<p class="qc-p">Interpretación del dato —no una descripción—: el patrón que revela el análisis, y qué significa.</p>' + _hallazgos_html(_hallazgos_plan(plan)) + _implicaciones_plan(plan), prov=prov('int'))}
     {_sintesis_plan(plan)}
   </div>
   <div class="qc-placa"><div class="qc-placa-q">QUIRA no certifica la verdad. Certifica la consistencia<br>documental de la cadena del plan al gasto.</div>
