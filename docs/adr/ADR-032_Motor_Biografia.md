@@ -87,5 +87,15 @@ declarando el nivel de verificabilidad de cada eslabón—. *Las herramientas im
 Esto es lo publicable (tesis / estándar), lo escalable a los 221 GAD, y lo que ninguna migración tecnológica
 puede volver obsoleto. La Biografía Administrativa es la contribución de QUIRA a la ciencia de la gestión pública.
 
+## Objeto Canónico Compartido — se REFERENCIA, no se mueve (Javo + colega · 2026-07-13)
+La Biografía ya es un **objeto canónico** (como la meta o la partida). Se ratifica su corolario: **un objeto
+canónico nace donde nace su significado y puede ser consumido por varios DOMs — se REFERENCIA, jamás se mueve
+ni se duplica.** NO es una "cuarta familia" nueva (Regla 7 · propuesta del colega): "objeto canónico" ya es
+canon, y el Gold Master ya garantiza **cálculo único + consumo múltiple** (Regla 1). Lo genuinamente aditivo es
+hacer **explícito el consumo cruzado** en el Mapa de Anclaje (columna *Consumidores*). *Caso fundacional:*
+**H11b** (mapa estratégico PDOT↔PND) **nace en d01 Planificación**; **d02 Presupuesto y Cooperación lo CONSUMEN**
+como elegibilidad de financiamiento — no lo mueven. Esto resuelve de raíz los conflictos de frontera (el amago
+de mover H11b; el ruteo del IED).
+
 ---
 *ADR-032 · Motor de Biografía · Dylus Lab © 2026 · "QUIRA no inventa la historia de una meta: la reconstruye hasta donde la fuente la sostiene, y declara dónde la fuente calla. Las herramientas implementan; el método permanece."*

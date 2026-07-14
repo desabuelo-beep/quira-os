@@ -62,6 +62,8 @@ por eso quedan simétricas con el plan sin duplicarse (Regla #6/#7).
 
 **Ruteo de las 5 hojas (2026-07-01):** `H11b`/`H16b` → d01 · `H19` → d02 · `H37`/`H38` transversales.
 
+**Consumo cruzado (objeto canónico compartido · ADR-032 · 2026-07-13):** `H11b` (mapa estratégico PDOT↔PND) **nace en d01**; **consumido por d02 Presupuesto y Cooperación** como elegibilidad de financiamiento — se **referencia, no se mueve** (zanja la duda de Javo sobre moverlo a Presupuesto).
+
 ## Hallazgos del anclaje (lo que el mapa revela)
 
 1. **El motor está ~97% poblado** (119/123 LLENAS). La auditoría de may-26 quedó stale:
