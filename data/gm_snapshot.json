@@ -1020,15 +1020,6 @@
         "alerta_temp": "dim"
       },
       {
-        "id": "NOTA:",
-        "desc": "H05b es el puente PAC-SERCOP. Cuando H05b esté poblada ",
-        "tipo": "",
-        "monto": 0,
-        "meta": "",
-        "alerta": "",
-        "alerta_temp": "dim"
-      },
-      {
         "id": "FUENTE PAC:",
         "desc": "https://www.compraspublicas.gob.ec/ProcesoContratacion/",
         "tipo": "",

@@ -45,6 +45,15 @@ def _clean(s: str) -> str:
     return s.strip(" ·—-")
 
 
+_HCODE = re.compile(r"\bH\d{1,2}[a-z]?\b")
+
+
+def _fw(s) -> bool:
+    """Seguro para público: sin nomenclatura canónica (H01-H99) ni fila-nota (Bloomberg Firewall)."""
+    s = str(s or "")
+    return not _HCODE.search(s) and not s.strip().upper().startswith("NOTA")
+
+
 def build_block() -> dict:
     wb = openpyxl.load_workbook(EXCEL, read_only=True, data_only=True)
 
@@ -170,9 +179,12 @@ def build_block() -> dict:
         pid = ws.cell(r, 1).value
         if not pid:
             continue
+        _pdesc = str(ws.cell(r, 2).value or "").strip()
+        if not (_fw(pid) and _fw(_pdesc)):
+            continue    # fila-nota o nomenclatura canónica (H05b…) → fuera del público (Firewall)
         pac_detalle.append({
             "id": str(pid).strip(),
-            "desc": str(ws.cell(r, 2).value or "").strip()[:55],
+            "desc": _pdesc[:55],
             "tipo": str(ws.cell(r, 3).value or "").strip(),
             "monto": ws.cell(r, 4).value or 0,
             "meta": str(ws.cell(r, 5).value or "").strip(),

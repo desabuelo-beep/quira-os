@@ -173,9 +173,14 @@ def _cobertura(plan: dict) -> str:
         f'articulación. La cobertura mide el aterrizaje del plan en la operación, no su ejecución final.</div></div>')
 
 
+_HCODE_FW = re.compile(r"\bH\d{1,2}[a-z]?\b")   # Firewall: nomenclatura canónica H01-H99
+
+
 def _tabla_ev(summary: str, headers: list, rows: list, scroll: bool = False) -> str:
     """Tabla de respaldo como EVIDENCIA bajo demanda (Primacía Narrativa · patrón <details>).
-    rows: lista de filas; cada fila es lista de celdas (texto, clase_css)."""
+    rows: lista de filas; cada fila es lista de celdas (texto, clase_css). Filtra filas con
+    nomenclatura canónica (H01-H99) — defensa de Firewall a nivel de render."""
+    rows = [f for f in rows if not any(_HCODE_FW.search(str(v)) for v, _ in f)]
     if not rows:
         return ""
     th = "".join(f'<th>{_esc(h)}</th>' for h in headers)
