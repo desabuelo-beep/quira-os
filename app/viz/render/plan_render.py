@@ -204,7 +204,8 @@ def _tablas_plan(plan: dict) -> str:
         out += _tabla_ev(f"Ver los {len(poa)} proyectos del POA (operación anual)",
                          ["Dirección", "Proyecto", "Partida", "Anual"], rows, scroll=True)
     if pac:
-        rows = [[(pc.get("id", ""), ""), (pc.get("desc", "")[:70], ""), (_m(pc.get("monto")), "sc"),
+        rows = [[(pc.get("id", ""), ""), (pc.get("desc", "")[:70], ""),
+                 (_m(pc["monto"]) if pc.get("monto") else "Referencial", "sc"),
                  (pc.get("meta", ""), ""), (pc.get("alerta", ""), "")] for pc in pac]
         out += _tabla_ev(f"Ver los {len(pac)} procesos del PAC (contratación)",
                          ["Código", "Objeto", "Monto", "Meta", "Coherencia"], rows, scroll=True)
@@ -749,10 +750,82 @@ def _cabecera_plan(plan: dict) -> str:
         + prov_leyenda() + _semaforo_leyenda())
 
 
+def _seccion_anio_cerrado(plan: dict):
+    """Ejercicio fiscal CERRADO (columna vertebral · modelo RDC): ejecución + biografía + expedientes,
+    todo DENTRO del año. Devuelve (año, cuerpo)."""
+    sm = plan.get("serie_multianio") or {}
+    cerr = [e for e in (sm.get("ejecucion") or []) if e.get("cerrado")]
+    if not cerr:
+        return None, ""
+    e = cerr[-1]
+    cuerpo = (
+        f'<p class="qc-p">El <b>ejercicio {e["anio"]}</b> está <b>cerrado</b>: se puede evaluar completo, del '
+        'plan al gasto. Aquí, cómo ejecutó su inversión, la vida documental de una de sus metas, y los '
+        'expedientes de mayor valor probatorio.</p>'
+        + '<div class="qc-subh">La ejecución del ejercicio</div>' + _bloque_anio(e, True)
+        + '<div class="qc-subh">La biografía de una meta · del plan al contrato</div>' + _biografia_meta(plan)
+        + '<div class="qc-subh">Los expedientes de mayor valor demostrativo</div>'
+        '<p class="qc-cap">Se muestran las metas de mayor <b>Valor Demostrativo</b> (0-100): profundidad de la '
+        'cadena documental, peso presupuestario y tipo de competencia.</p>' + _expedientes_metas(plan))
+    return e["anio"], cuerpo
+
+
+def _seccion_anio_curso(plan: dict):
+    """Ejercicio fiscal EN CURSO (parcial): ejecución al corte + coherencia + programación (POA/PAC).
+    Devuelve (año, cuerpo)."""
+    sm = plan.get("serie_multianio") or {}
+    curso = next((e for e in (sm.get("ejecucion") or []) if not e.get("cerrado")), None)
+    if not curso:
+        return None, ""
+    cuerpo = (
+        f'<p class="qc-p">El <b>ejercicio {curso["anio"]}</b> está <b>en curso</b>: su ejecución apenas '
+        'comienza. Se lee su avance al corte, la coherencia de su programación, y sus tablas oficiales como '
+        'evidencia.</p>'
+        + '<div class="qc-subh">La ejecución al corte</div>' + _bloque_anio(curso, False)
+        + '<div class="qc-subh">La coherencia de la programación</div>' + _coherencia(plan)
+        + '<div class="qc-subh">La programación vigente · POA y PAC</div>'
+        '<p class="qc-p">Lo que el municipio programó operar (POA) y contratar (PAC) este año. Las tablas '
+        'oficiales, como evidencia bajo demanda:</p>' + _tablas_plan(plan))
+    return curso["anio"], cuerpo
+
+
+def _consolidada_plan(plan: dict) -> str:
+    """Evaluación consolidada (una vez, tras los años · modelo RDC): trayectoria + proyección + hallazgos."""
+    sm = plan.get("serie_multianio") or {}
+    cerr = [e for e in (sm.get("ejecucion") or []) if e.get("cerrado")]
+    out = ('<p class="qc-p">Todos los ejercicios juntos: la <b>trayectoria</b> de la ejecución, el '
+           '<b>patrón</b> que revela y su <b>proyección</b>.</p>')
+    if len(cerr) >= 2:
+        cards = "".join(
+            f'<div class="pl-si"><div class="k">Ejercicio {e["anio"]}</div>'
+            f'<div class="v" style="color:{_ejec_col(e["pct"])}">{e["pct"]:.0f}%</div>'
+            f'<div class="s">ejecución (cerrado)</div></div>' for e in cerr)
+        out += f'<div class="pl-strip">{cards}</div>'
+        H = [h_serie("Trayectoria de la ejecución", [(e["anio"], e["pct"]) for e in cerr])]
+        proy = sm.get("proyeccion") or {}
+        if proy.get("proyeccion"):
+            med = proy.get("promedio")
+            ancla = f"tendencia del período · media {med:.0f}%" if med else "tendencia del período"
+            H.append(h_proyeccion("Proyección del próximo ejercicio completo", proy["proyeccion"], ancla))
+        out += _hallazgos_html(H)
+    out += ('<div class="qc-subh">Hallazgos e implicaciones</div>'
+            '<p class="qc-p">Interpretación del dato —no una descripción—: el patrón que revela el análisis, '
+            'y qué significa.</p>' + _hallazgos_html(_hallazgos_plan(plan)) + _implicaciones_plan(plan))
+    return out
+
+
 # ── ensamblaje ──
 def cajon_dominio_plan(plan: dict) -> str:
     if not plan:
         return ""
+    a_cerr, cuerpo_cerr = _seccion_anio_cerrado(plan)
+    a_curso, cuerpo_curso = _seccion_anio_curso(plan)
+    sec_cerr = (_seccion('03', f'Ejercicio Fiscal {a_cerr} · cerrado', cuerpo_cerr,
+                         _ley_esl(plan, 'gasto', 'Fundamento jurídico aplicable'), cls='qc-anio', prov=prov('ana'))
+                if a_cerr else '')
+    sec_curso = (_seccion('04', f'Ejercicio Fiscal {a_curso} · en curso', cuerpo_curso,
+                          _ley_esl(plan, 'pac', 'Fundamento jurídico aplicable'), cls='qc-anio', prov=prov('ana'))
+                 if a_curso else '')
     return f"""{_CSS}
 <section class="qc">
   <div class="qc-hd">
@@ -762,11 +835,10 @@ def cajon_dominio_plan(plan: dict) -> str:
   </div>
   <div class="qc-body">
     {_seccion('01', 'Comprender este dominio', _cabecera_plan(plan), _ley_esl(plan, 'poa', 'Fundamento jurídico aplicable'))}
-    {_seccion('02', 'El PDOT · documento rector del desarrollo cantonal', _pdot_rector(plan) + _cobertura(plan) + _alineacion_pnd(plan) + _tablas_plan(plan), _ley_esl(plan, 'presupuesto', 'Fundamento jurídico aplicable'), prov=prov('ana'))}
-    {_seccion('03', 'La trazabilidad · metas del plan', '<p class="qc-p">Cada expediente es la <b>biografía de una meta</b>: su recorrido desde el plan hasta el gasto, y hasta dónde llega la cadena documental.</p><p class="qc-cap">No se eligen al azar: se muestran las metas de mayor <b>Valor Demostrativo</b> —el puntaje (0-100) que resume cuánto demuestra el método cada expediente: profundidad de la cadena documental, peso presupuestario y tipo de competencia. A mayor puntaje, más completa y probatoria es la trazabilidad.</p>' + _expedientes_metas(plan), _ley_esl(plan, 'pac', 'Fundamento jurídico aplicable'), prov=prov('doc'))}
-    {_seccion('04', 'La coherencia · análisis preventivo', _coherencia(plan), _ley_esl(plan, 'gasto', 'Fundamento jurídico aplicable'), prov=prov('ana'))}
-    {_seccion('05', 'Los ejercicios de gestión · por año y evaluación consolidada', _longitudinal_plan(plan), prov=prov('ana'))}
-    {_seccion('06', 'La evaluación · hallazgos e implicaciones', '<p class="qc-p">Interpretación del dato —no una descripción—: el patrón que revela el análisis, y qué significa.</p>' + _hallazgos_html(_hallazgos_plan(plan)) + _implicaciones_plan(plan), prov=prov('int'))}
+    {_seccion('02', 'El PDOT · documento rector del desarrollo cantonal', _pdot_rector(plan) + _cobertura(plan) + _alineacion_pnd(plan), _ley_esl(plan, 'presupuesto', 'Fundamento jurídico aplicable'), prov=prov('ana'))}
+    {sec_cerr}
+    {sec_curso}
+    {_seccion('05', 'Evaluación consolidada · trayectoria y prospectiva', _consolidada_plan(plan), prov=prov('int'))}
     {_sintesis_plan(plan)}
   </div>
   <div class="qc-placa"><div class="qc-placa-q">QUIRA no certifica la verdad. Certifica la consistencia<br>documental de la cadena del plan al gasto.</div>

@@ -853,7 +853,7 @@
         "desc": "ADQUISICIÓN DE EQUIPOS INFORMÁTICOS, DESTINADOS A LA RE",
         "tipo": "Catalogo Electrónico",
         "monto": 15000,
-        "meta": "[ID_Meta]",
+        "meta": "Por definir",
         "alerta": "Brecha PAC > 20%",
         "alerta_temp": "alerta"
       },
@@ -862,7 +862,7 @@
         "desc": "ADQUISICIÓN DE MOTOCICLETAS PARA EL CONTROL DE ESPACIOS",
         "tipo": "Subasta Inversa Electrónica",
         "monto": 23000,
-        "meta": "[ID_Meta]",
+        "meta": "Por definir",
         "alerta": "Brecha PAC > 20%",
         "alerta_temp": "alerta"
       },
@@ -871,7 +871,7 @@
         "desc": "ADQUISICIÓN DE EQUIPOS DE PARA IMPLEMENTACION DE LABORA",
         "tipo": "Subasta Inversa Electrónica",
         "monto": 48000,
-        "meta": "[ID_Meta]",
+        "meta": "Por definir",
         "alerta": "Brecha PAC > 20%",
         "alerta_temp": "alerta"
       },
@@ -880,7 +880,7 @@
         "desc": "REPOTENCIACIÓN DE PLANTA DE TRATAMIENTO DE AGUA POTABLE",
         "tipo": "Subasta Inversa Electronica",
         "monto": 0,
-        "meta": "[ID_Meta]",
+        "meta": "Por definir",
         "alerta": "Coherente",
         "alerta_temp": "verde"
       },
@@ -889,7 +889,7 @@
         "desc": "ADQUISICIÓN DE MOBILIARIOS PARA EQUIPAMIENTO DEL GOBIER",
         "tipo": "Subasta Inversa Electronica",
         "monto": 0,
-        "meta": "[ID_Meta]",
+        "meta": "Por definir",
         "alerta": "Coherente",
         "alerta_temp": "verde"
       },
@@ -898,7 +898,7 @@
         "desc": "CONSTRUCCIÓN DEL MERCADO MENOR DEL CANTÓN MONTECRISTI",
         "tipo": "Subasta Inversa Electronica",
         "monto": 0,
-        "meta": "[ID_Meta]",
+        "meta": "Por definir",
         "alerta": "Coherente",
         "alerta_temp": "verde"
       },
@@ -907,7 +907,7 @@
         "desc": "CONSTRUCCIÓN DEL MERCADO MENOR DEL CANTÓN MONTECRISTI",
         "tipo": "Subasta Inversa Electronica",
         "monto": 0,
-        "meta": "[ID_Meta]",
+        "meta": "Por definir",
         "alerta": "Coherente",
         "alerta_temp": "verde"
       },
@@ -916,7 +916,7 @@
         "desc": "PAVIMENTACIÓN, REPAVIMENTACIÓN, ADOQUINADO, BACHEO, DOB",
         "tipo": "Subasta Inversa Electronica",
         "monto": 0,
-        "meta": "[ID_Meta]",
+        "meta": "Por definir",
         "alerta": "Coherente",
         "alerta_temp": "verde"
       },
@@ -925,7 +925,7 @@
         "desc": "PAVIMENTACIÓN ASFÁLTICA EN LA VÍA PRINCIPAL DE LA COMUN",
         "tipo": "Subasta Inversa Electronica",
         "monto": 0,
-        "meta": "[ID_Meta]",
+        "meta": "Por definir",
         "alerta": "Coherente",
         "alerta_temp": "verde"
       },
@@ -934,7 +934,7 @@
         "desc": "LA RECTIFICACIÓN, MEJORAMIENTO, AMPLIACIÓN Y REHABILITA",
         "tipo": "Subasta Inversa Electronica",
         "monto": 0,
-        "meta": "[ID_Meta]",
+        "meta": "Por definir",
         "alerta": "Coherente",
         "alerta_temp": "verde"
       },
@@ -943,7 +943,7 @@
         "desc": "REGENERACIÓN DE CALLE ELOY ALFARO DEL SECTOR DE BAJO DE",
         "tipo": "Subasta Inversa Electronica",
         "monto": 0,
-        "meta": "[ID_Meta]",
+        "meta": "Por definir",
         "alerta": "Coherente",
         "alerta_temp": "verde"
       },
@@ -952,7 +952,7 @@
         "desc": "ADQUISICIÓN DE MATERIAL PÉTREO PARA EL MEJORAMIENTO VIA",
         "tipo": "Subasta Inversa Electronica",
         "monto": 0,
-        "meta": "[ID_Meta]",
+        "meta": "Por definir",
         "alerta": "Coherente",
         "alerta_temp": "verde"
       },
@@ -961,7 +961,7 @@
         "desc": "PAVIMENTACION, ACERAS Y BORDILLOS EN VARIAS VIAS DEL CA",
         "tipo": "Subasta Inversa Electronica",
         "monto": 0,
-        "meta": "[ID_Meta]",
+        "meta": "Por definir",
         "alerta": "Coherente",
         "alerta_temp": "verde"
       },
@@ -970,7 +970,7 @@
         "desc": "MEJORAMIENTO DE VARIAS CALLES EN LA ZONA RURAL DEL CANT",
         "tipo": "Subasta Inversa Electronica",
         "monto": 0,
-        "meta": "[ID_Meta]",
+        "meta": "Por definir",
         "alerta": "Coherente",
         "alerta_temp": "verde"
       },
@@ -979,7 +979,7 @@
         "desc": "CONSTRUCCIÓN DE INFRAESTRUCTURA COMUNITARIA Y ESPACIOS ",
         "tipo": "Subasta Inversa Electronica",
         "monto": 0,
-        "meta": "[ID_Meta]",
+        "meta": "Por definir",
         "alerta": "Coherente",
         "alerta_temp": "verde"
       },
@@ -988,7 +988,7 @@
         "desc": "CONSTRUCCIÓN DEL PARQUE LA HUELLA EN LA COMUNA CARCEL S",
         "tipo": "Subasta Inversa Electronica",
         "monto": 0,
-        "meta": "[ID_Meta]",
+        "meta": "Por definir",
         "alerta": "Coherente",
         "alerta_temp": "verde"
       },
@@ -997,7 +997,7 @@
         "desc": "AMPLIACIÓN Y ADECUACIÓN DE PARQUE CENTRAL DE LA PARROQU",
         "tipo": "Subasta Inversa Electronica",
         "monto": 0,
-        "meta": "[ID_Meta]",
+        "meta": "Por definir",
         "alerta": "Coherente",
         "alerta_temp": "verde"
       },
@@ -1006,7 +1006,7 @@
         "desc": "CONSTRUCCIÓN DE ESCENARIO CAMERINO EN LA COMUNA TOALLA ",
         "tipo": "Subasta Inversa Electronica",
         "monto": 0,
-        "meta": "[ID_Meta]",
+        "meta": "Por definir",
         "alerta": "Coherente",
         "alerta_temp": "verde"
       },
@@ -1015,7 +1015,7 @@
         "desc": "Total_Procesos_PAC",
         "tipo": "91",
         "monto": 0,
-        "meta": "",
+        "meta": "Por definir",
         "alerta": "",
         "alerta_temp": "dim"
       },
@@ -1024,7 +1024,7 @@
         "desc": "https://www.compraspublicas.gob.ec/ProcesoContratacion/",
         "tipo": "",
         "monto": 0,
-        "meta": "",
+        "meta": "Por definir",
         "alerta": "",
         "alerta_temp": "dim"
       }
@@ -2566,7 +2566,7 @@
         "dir": "Dirección de Agua Potable y Alcantarillado Sanitar",
         "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
         "proyecto": "Gestión para la construcción de nueva",
-        "desc": "ADQUISICIÓ N D E M I CR O O R G AN I S M O S P ARA PTARS E N E L C A N T Ó N M O",
+        "desc": "ADQUISICIÓNDEMICROORGANISMOSPARAPTARSENELCANTÓNMO",
         "partida": "730819",
         "anual": 20000
       },
@@ -4333,7 +4333,7 @@
       {
         "dir": "Dirección de Obras Públicas",
         "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
-        "proyecto": "F o r t a le c i m i e n t o e st r a t é g i co p",
+        "proyecto": "Fortalecimientoestratégicop",
         "desc": "DECLARATORIA DE UTILIDAD PUBLICA Y EXPROPIACION PARA PROYECTO DE EQUIPAMIENTO DE",
         "partida": "840301",
         "anual": 236293.51
@@ -4397,7 +4397,7 @@
       {
         "dir": "Dirección de Obras Públicas",
         "meta": "Mejorar las coberturas y calidad de los sistemas públicos de",
-        "proyecto": "F o r t a le c i m i e n t o e st r a t é g i co p",
+        "proyecto": "Fortalecimientoestratégicop",
         "desc": "CONSTRUCCIÓN DEL MERCADO MENOR DEL CANTÓN MONTECRISTI",
         "partida": "750107",
         "anual": 1000

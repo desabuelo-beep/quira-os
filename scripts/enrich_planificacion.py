@@ -54,6 +54,24 @@ def _fw(s) -> bool:
     return not _HCODE.search(s) and not s.strip().upper().startswith("NOTA")
 
 
+def _despace(s: str) -> str:
+    """Corrige strings con letras espaciadas ('F o r t a l e c i m i e n t o') — error del origen."""
+    s = str(s or "")
+    if re.search(r"(?:\b\w\b\s){4,}", s):            # 4+ tokens de 1 carácter seguidos = roto
+        partes = re.split(r"\s{2,}", s)              # 2+ espacios = separador real de palabra
+        partes = [re.sub(r"(?<=\w)\s(?=\w)", "", p) for p in partes]
+        return " ".join(partes).strip()
+    return s
+
+
+def _meta_ref(v) -> str:
+    """Limpia el campo meta del PAC: placeholder de desarrollo ([ID_Meta]) → 'Por definir'."""
+    s = str(v or "").strip()
+    if not s or s.startswith("[") or s.lower() in ("id_meta", "sin meta"):
+        return "Por definir"
+    return s
+
+
 def build_block() -> dict:
     wb = openpyxl.load_workbook(EXCEL, read_only=True, data_only=True)
 
@@ -187,7 +205,7 @@ def build_block() -> dict:
             "desc": _pdesc[:55],
             "tipo": str(ws.cell(r, 3).value or "").strip(),
             "monto": ws.cell(r, 4).value or 0,
-            "meta": str(ws.cell(r, 5).value or "").strip(),
+            "meta": _meta_ref(ws.cell(r, 5).value),
             "alerta": _clean(str(ws.cell(r, 8).value or "")),
             "alerta_temp": _temp(str(ws.cell(r, 8).value or "")),
         })
@@ -221,8 +239,8 @@ def build_block() -> dict:
         poa_proyectos.append({
             "dir": str(d).strip(),
             "meta": str(ws.cell(r, 2).value or "").strip(),
-            "proyecto": str(ws.cell(r, 3).value or "").strip(),
-            "desc": str(ws.cell(r, 4).value or "").strip(),
+            "proyecto": _despace(str(ws.cell(r, 3).value or "").strip()),
+            "desc": _despace(str(ws.cell(r, 4).value or "").strip()),
             "partida": str(ws.cell(r, 5).value or "").strip(),
             "anual": monto,
         })
