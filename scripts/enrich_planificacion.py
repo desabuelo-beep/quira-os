@@ -346,6 +346,31 @@ def build_block() -> dict:
     except Exception:
         pass
 
+    # ── E · Alineación estratégica — vinculación PDOT↔Plan Nacional (H11b) ─────
+    # Objeto canónico compartido (ADR-032): nace en d01, consumido por d02/Cooperación.
+    wsa = sh("H11b_MONITOR")
+    _eje = defaultdict(lambda: [0, 0.0])   # eje -> [n_metas, suma_score]
+    _n, _ssum = 0, 0.0
+    for r in wsa.iter_rows(min_row=13, values_only=True):
+        if len(r) < 6:
+            continue
+        eje, score = r[2], r[5]
+        if isinstance(score, (int, float)) and 0 < score <= 1 and eje and "Eje" in str(eje):
+            _n += 1
+            _ssum += score
+            _eje[str(eje).strip()][0] += 1
+            _eje[str(eje).strip()][1] += score
+    alineacion_pnd = {
+        "metrica": "vinculación de las metas del PDOT con el Plan Nacional de Desarrollo",
+        "n_metas": _n,
+        "vinculacion_media": round(_ssum / _n, 3) if _n else 0.0,
+        "por_eje": sorted(
+            [{"eje": k, "n_metas": v[0], "vinculacion": round(v[1] / v[0], 3)}
+             for k, v in _eje.items()],
+            key=lambda x: -x["n_metas"]),
+        "fuente": "Monitor de vinculación PDOT-PND (Gold Master) · dato del canon",
+    }
+
     return {
         "_fuente": "PDOT (planificación) · POA (operación) · PAC (contratación) · coherencia · corte Q1-2026",
         "metas_total": metas_total,
@@ -364,6 +389,7 @@ def build_block() -> dict:
         "poa_total": poa_total,
         "poa_proyectos": poa_proyectos,
         "sat0": sat0,
+        "alineacion_pnd": alineacion_pnd,
         "publicado": publicado,
     }
 

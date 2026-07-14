@@ -59,6 +59,15 @@ _PLAN_EXTRA = """
 .pl-bar-tk{height:11px;border-radius:6px;background:var(--bd);overflow:hidden}
 .pl-bar-fl{height:100%;border-radius:6px}
 .pl-yr-x{font-size:11px;color:var(--tx2);line-height:1.5;margin-top:8px}.pl-yr-x b{color:var(--tx)}
+/* Alineación PDOT↔Plan Nacional (H11b) — barras por eje */
+.pl-al{margin:11px 0 2px;display:flex;flex-direction:column;gap:8px}
+.pl-al-row{display:grid;grid-template-columns:1fr 84px auto 46px;align-items:center;gap:10px}
+.pl-al-eje{font-size:11.5px;color:var(--tx);font-weight:600;line-height:1.3}
+.pl-al-bar{height:9px;border-radius:5px;background:var(--bd);overflow:hidden}
+.pl-al-fill{height:100%;border-radius:5px;background:#22D3EE}
+.pl-al-n{font-family:ui-monospace,monospace;font-size:10px;color:var(--tx2);white-space:nowrap;text-align:right}
+.pl-al-v{font-family:Georgia,serif;font-size:14px;font-weight:700;text-align:right}
+@media(max-width:640px){.pl-al-row{grid-template-columns:1fr auto 44px;gap:8px}.pl-al-bar{display:none}}
 """
 _ESL_CSS = """
 .qc-sint-b .pl-esl{display:flex;gap:13px;margin-bottom:11px;font-size:13px;line-height:1.62}
@@ -573,6 +582,32 @@ def _bloque_anio(e: dict, cerrado: bool) -> str:
             f'<div class="pl-yr-x">{x}</div></div>')
 
 
+def _alineacion_pnd(plan: dict) -> str:
+    """02b · Alineación estratégica del PDOT con el Plan Nacional (H11b · objeto canónico
+    compartido · nace en d01, lo consume d02). Índice como GRÁFICA + explicación (🔵).
+    Dato del canon; QUIRA lo narra, no lo recalcula."""
+    a = plan.get("alineacion_pnd") or {}
+    ejes = a.get("por_eje") or []
+    if not ejes:
+        return ""
+    n, vm = a.get("n_metas", 0), a.get("vinculacion_media", 0)
+    mx = max((e["n_metas"] for e in ejes), default=1)
+    filas = ""
+    for e in ejes:
+        w = e["n_metas"] / mx * 100
+        v = e["vinculacion"]
+        vcol = "#22D3EE" if v >= 0.85 else ("#5AA9E6" if v >= 0.78 else "#F9AB00")
+        filas += (f'<div class="pl-al-row"><div class="pl-al-eje">{_esc(e["eje"])}</div>'
+                  f'<div class="pl-al-bar"><div class="pl-al-fill" style="width:{w:.0f}%"></div></div>'
+                  f'<div class="pl-al-n">{e["n_metas"]} metas</div>'
+                  f'<div class="pl-al-v" style="color:{vcol}">{v*100:.0f}%</div></div>')
+    intro = ('<div class="qc-cap" style="margin-top:15px"><b>Alineación con el Plan Nacional de Desarrollo</b></div>'
+             f'<p class="qc-p">Las <b>{n} metas del PDOT</b> se articulan con los <b>{len(ejes)} ejes</b> del '
+             f'Plan Nacional, con una vinculación media del <b>{vm*100:.0f}%</b>. Esta alineación —que existe '
+             '<b>antes del presupuesto</b>— es la que habilita la elegibilidad de financiamiento y cooperación.</p>')
+    return intro + f'<div class="pl-al">{filas}</div>'
+
+
 def _longitudinal_plan(plan: dict) -> str:
     """05 · Los ejercicios de gestión — desagregados por año (último cerrado + en curso, cada uno
     con su gráfica de ejecución) y luego la evaluación consolidada (trayectoria + prospectiva).
@@ -633,7 +668,7 @@ def cajon_dominio_plan(plan: dict) -> str:
   <div class="qc-body">
     {prov_leyenda()}
     {_seccion('01', 'El procedimiento · del plan al gasto', _backbone(plan) + _cadena_relacional(plan), _ley_esl(plan, 'poa', 'Fundamento jurídico aplicable'), prov=prov('doc'))}
-    {_seccion('02', 'El plan y su cobertura', _cobertura(plan), _ley_esl(plan, 'presupuesto', 'Fundamento jurídico aplicable'), prov=prov('ana'))}
+    {_seccion('02', 'El plan y su cobertura', _cobertura(plan) + _alineacion_pnd(plan), _ley_esl(plan, 'presupuesto', 'Fundamento jurídico aplicable'), prov=prov('ana'))}
     {_seccion('03', 'La trazabilidad · metas del plan', '<p class="qc-p">Cada expediente es la <b>biografía de una meta</b>: su recorrido desde el plan hasta el gasto, y hasta dónde llega la cadena documental.</p><p class="qc-cap">No se eligen al azar: se muestran las metas de mayor <b>Valor Demostrativo</b> —el puntaje (0-100) que resume cuánto demuestra el método cada expediente: profundidad de la cadena documental, peso presupuestario y tipo de competencia. A mayor puntaje, más completa y probatoria es la trazabilidad.</p>' + _biografia_meta(plan) + _expedientes_metas(plan), _ley_esl(plan, 'pac', 'Fundamento jurídico aplicable'), prov=prov('doc'))}
     {_seccion('04', 'La coherencia · análisis preventivo', _coherencia(plan), _ley_esl(plan, 'gasto', 'Fundamento jurídico aplicable'), prov=prov('ana'))}
     {_seccion('05', 'Los ejercicios de gestión · por año y evaluación consolidada', _longitudinal_plan(plan), prov=prov('ana'))}

@@ -4591,6 +4591,39 @@
       "global_temp": "alerta",
       "diagnostico": "Detectada brecha entre programación operativa y plan de contratación. Revisar alineación POA-PAC para fortalecer la ejecución del plan anual."
     },
+    "alineacion_pnd": {
+      "metrica": "vinculación de las metas del PDOT con el Plan Nacional de Desarrollo",
+      "n_metas": 25,
+      "vinculacion_media": 0.832,
+      "por_eje": [
+        {
+          "eje": "Eje 3 — Servicios Básicos y Habitat",
+          "n_metas": 8,
+          "vinculacion": 0.85
+        },
+        {
+          "eje": "Eje 4 — Gobernanza",
+          "n_metas": 5,
+          "vinculacion": 0.86
+        },
+        {
+          "eje": "Eje 2 — Economía al Servicio de la Vida",
+          "n_metas": 4,
+          "vinculacion": 0.788
+        },
+        {
+          "eje": "Eje 1 — Derechos para Todos",
+          "n_metas": 4,
+          "vinculacion": 0.837
+        },
+        {
+          "eje": "Eje 5 — Ambiente y Seguridad",
+          "n_metas": 4,
+          "vinculacion": 0.8
+        }
+      ],
+      "fuente": "Monitor de vinculación PDOT-PND (Gold Master) · dato del canon"
+    },
     "publicado": {
       "fuente": "SERCOP Contrataciones Abiertas (OCDS) · GAD · verificado en vivo",
       "corte": "2026-06-29",
