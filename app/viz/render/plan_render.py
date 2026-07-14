@@ -66,10 +66,11 @@ _PLAN_EXTRA = """
 .qc-ev>summary::before{content:"▸  "}
 .qc-ev[open]>summary::before{content:"▾  "}
 .qc-evw{overflow-x:auto}
+.qc-evw.scroll{max-height:320px;overflow-y:auto}
 .qc-evt{width:100%;border-collapse:collapse;font-size:11px}
 .qc-evt th{text-align:left;padding:7px 13px;color:var(--tx2);font-family:ui-monospace,monospace;font-size:8px;text-transform:uppercase;letter-spacing:.05em;border-top:1px solid var(--bd);white-space:nowrap}
 .qc-evt td{padding:7px 13px;color:var(--tx2);border-top:1px solid var(--bd);vertical-align:top;line-height:1.4}
-.qc-evt td:first-child{color:var(--tx);min-width:220px}
+.qc-evt td:first-child{color:var(--tx)}
 .qc-evt td.sc{font-family:Georgia,serif;font-weight:700;color:#22D3EE;text-align:right;white-space:nowrap}
 /* Cabecera del dominio — subsecciones + semáforo */
 .pl-sub{font-family:ui-monospace,monospace;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#22D3EE;margin:20px 0 9px;padding-bottom:5px;border-bottom:1px solid var(--bd)}
@@ -153,6 +154,39 @@ def _cobertura(plan: dict) -> str:
         f'<div class="qc-fbar">{seg}</div><div class="qc-fchips">{chips}</div>'
         f'<div class="qc-fnote">Distribución de las metas por <b>competencia</b>: exclusiva, concurrente y de '
         f'articulación. La cobertura mide el aterrizaje del plan en la operación, no su ejecución final.</div></div>')
+
+
+def _tabla_ev(summary: str, headers: list, rows: list, scroll: bool = False) -> str:
+    """Tabla de respaldo como EVIDENCIA bajo demanda (Primacía Narrativa · patrón <details>).
+    rows: lista de filas; cada fila es lista de celdas (texto, clase_css)."""
+    if not rows:
+        return ""
+    th = "".join(f'<th>{_esc(h)}</th>' for h in headers)
+    body = "".join('<tr>' + "".join(f'<td class="{cls}">{_esc(str(val))}</td>' for val, cls in fila) + '</tr>'
+                   for fila in rows)
+    wcls = "qc-evw scroll" if scroll else "qc-evw"
+    return (f'<details class="qc-ev"><summary>{_esc(summary)}</summary>'
+            f'<div class="{wcls}"><table class="qc-evt"><thead><tr>{th}</tr></thead>'
+            f'<tbody>{body}</tbody></table></div></details>')
+
+
+def _tablas_plan(plan: dict) -> str:
+    """Tablas de respaldo del plan (POA · PAC) como evidencia bajo demanda — reusa la data del
+    snapshot (equivalente a las tablas de la v1), bajo el patrón normativa, sin protagonismo."""
+    poa = plan.get("poa_proyectos") or []
+    pac = plan.get("pac_detalle") or []
+    out = ""
+    if poa:
+        rows = [[(pj.get("dir", "")[:42], ""), (pj.get("proyecto", "")[:70], ""),
+                 (pj.get("partida", ""), ""), (_m(pj.get("anual")), "sc")] for pj in poa]
+        out += _tabla_ev(f"Ver los {len(poa)} proyectos del POA (operación anual)",
+                         ["Dirección", "Proyecto", "Partida", "Anual"], rows, scroll=True)
+    if pac:
+        rows = [[(pc.get("id", ""), ""), (pc.get("desc", "")[:70], ""), (_m(pc.get("monto")), "sc"),
+                 (pc.get("meta", ""), ""), (pc.get("alerta", ""), "")] for pc in pac]
+        out += _tabla_ev(f"Ver los {len(pac)} procesos del PAC (contratación)",
+                         ["Código", "Objeto", "Monto", "Meta", "Coherencia"], rows, scroll=True)
+    return out
 
 
 # ── 03 · TRAZABILIDAD — metas como expedientes (Valor Demostrativo = trazabilidad) ──
@@ -701,7 +735,7 @@ def cajon_dominio_plan(plan: dict) -> str:
   </div>
   <div class="qc-body">
     {_seccion('01', 'El dominio · qué es y cómo leerlo', _cabecera_plan(plan), _ley_esl(plan, 'poa', 'Fundamento jurídico aplicable'))}
-    {_seccion('02', 'El plan y su cobertura', _cobertura(plan) + _alineacion_pnd(plan), _ley_esl(plan, 'presupuesto', 'Fundamento jurídico aplicable'), prov=prov('ana'))}
+    {_seccion('02', 'El plan y su cobertura', _cobertura(plan) + _alineacion_pnd(plan) + _tablas_plan(plan), _ley_esl(plan, 'presupuesto', 'Fundamento jurídico aplicable'), prov=prov('ana'))}
     {_seccion('03', 'La trazabilidad · metas del plan', '<p class="qc-p">Cada expediente es la <b>biografía de una meta</b>: su recorrido desde el plan hasta el gasto, y hasta dónde llega la cadena documental.</p><p class="qc-cap">No se eligen al azar: se muestran las metas de mayor <b>Valor Demostrativo</b> —el puntaje (0-100) que resume cuánto demuestra el método cada expediente: profundidad de la cadena documental, peso presupuestario y tipo de competencia. A mayor puntaje, más completa y probatoria es la trazabilidad.</p>' + _biografia_meta(plan) + _expedientes_metas(plan), _ley_esl(plan, 'pac', 'Fundamento jurídico aplicable'), prov=prov('doc'))}
     {_seccion('04', 'La coherencia · análisis preventivo', _coherencia(plan), _ley_esl(plan, 'gasto', 'Fundamento jurídico aplicable'), prov=prov('ana'))}
     {_seccion('05', 'Los ejercicios de gestión · por año y evaluación consolidada', _longitudinal_plan(plan), prov=prov('ana'))}
