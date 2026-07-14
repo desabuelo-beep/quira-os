@@ -50,10 +50,8 @@ _DOMAINS_V2: list[dict[str, Any]] = [
                     "territorial, la programación operativa, la asignación presupuestaria y la "
                     "ejecución pública.",
         "estado": "EN RUTA", "metric": "96%",
-        "radiografia": ["25 metas estratégicas", "Cobertura PDOT → POA: 96%",
-                        "Vinculación al Plan Nacional: 83%", "257 proyectos operativos",
-                        "27 procesos de contratación (PAC)", "Ejercicios fiscales 2025 y 2026",
-                        "Biografías de metas y expedientes", "Evaluación consolidada"],
+        "folio_estado": "EN LÍNEA", "periodo": "Ejercicios 2025 y 2026",
+        "radiografia_macro": [("METAS", "25"), ("COBERTURA", "96%"), ("ALINEACIÓN PND", "83%")],
         "gancho": "¿El cantón mantiene el rumbo hacia sus metas plurianuales, o se desvió en el camino?",
         "temp": "verde", "mod": "ods",
     },
@@ -120,9 +118,8 @@ _DOMAINS_V2: list[dict[str, Any]] = [
                     "recursos aprobada contra la ejecución real devengada en territorio, "
                     "garantizando el cumplimiento normativo de la rendición.",
         "estado": "CONSOLIDADO", "metric": "72.7%",
-        "radiografia": ["Verificabilidad del discurso público", "Eficacia de ejecución 2025: 72.7%",
-                        "Inversión devengada: $12.7M de $17.5M", "Ejercicios de rendición 2023-2025",
-                        "Cumplimiento del plan de trabajo", "Aportes ciudadanos rastreados"],
+        "folio_estado": "EN LÍNEA", "periodo": "Ejercicios 2023 - 2025",
+        "radiografia_macro": [("CUMPLIMIENTO", "100%"), ("EFICACIA", "72.7%"), ("INVERSIÓN", "$12.7M/$17.5M")],
         "gancho": "¿Qué parte del discurso se comprueba con registros independientes y qué queda sin respaldo público?",
         "temp": "normal", "mod": "rdc",
     },
@@ -405,6 +402,7 @@ def render() -> None:
             with col:
                 with st.container(border=True, key=f"card_{dom['id']}"):
                     t = _TEMP[dom["temp"]]
+                    color = _DOM_COL.get(dom["id"], "#5AA9E6")
                     # d04 dinámico: verde sin alertas
                     estado = dom.get("estado", "")
                     if dom.get("dynamic_d04"):
@@ -425,30 +423,45 @@ def render() -> None:
                             _nav(f"qinv_{dom['id']}")
                     with nm:
                         st.markdown(
-                            f'<div style="font-size:13.5px;font-weight:800;color:#E8EDF4;'
-                            f'line-height:1.18;padding-top:8px">{dom["nombre"]}</div>',
+                            f'<div style="font-family:\'JetBrains Mono\',monospace;font-size:7.5px;'
+                            f'font-weight:800;letter-spacing:.14em;color:{color};padding-top:6px">DOMINIO</div>'
+                            f'<div style="font-size:13px;font-weight:800;color:#E8EDF4;'
+                            f'line-height:1.15;margin-top:1px">{dom["nombre"]}</div>',
                             unsafe_allow_html=True,
                         )
                     # cuerpo: concepto (izq) | métrica + estado (der)
-                    color = _DOM_COL.get(dom["id"], "#5AA9E6")
-                    # cuerpo tipo EXPEDIENTE MADRE (Javo 2026-07-14): conceptualización + mini radiografía.
-                    # Sin pregunta, sin narrativa, sin interpretación — eso empieza AL ENTRAR al DOM.
-                    radio = dom.get("radiografia", [])
-                    radio_html = ""
-                    if radio:
-                        items = "".join(
-                            f'<div style="font-size:10.5px;color:#B8C4D6;line-height:1.62">'
-                            f'<span style="color:{color}">•</span> {r}</div>' for r in radio)
-                        radio_html = (f'<div style="border-top:1px solid {color}30;margin-top:10px;padding-top:8px">'
-                                      f'<div style="font-size:8px;font-weight:800;letter-spacing:.1em;'
-                                      f'text-transform:uppercase;color:{color};margin-bottom:6px">Mini radiografía</div>'
-                                      f'{items}</div>')
+                    # cuerpo tipo FOLIO / MEMORANDO — documento sellado (Javo 2026-07-14): alcance + estado
+                    # + radiografía de 3 indicadores macro. El detalle se descubre AL ENTRAR (no es un índice).
+                    rm = dom.get("radiografia_macro", [])
+                    est = dom.get("folio_estado", "")
+                    per = dom.get("periodo", "")
+                    mono = "font-family:'JetBrains Mono',monospace"
+                    box = ""
+                    if rm:
+                        sep = f'<span style="color:{color};opacity:.55;margin:0 6px">→</span>'
+                        cells = sep.join(
+                            f'<span style="white-space:nowrap"><span style="font-size:7.5px;font-weight:800;'
+                            f'letter-spacing:.05em;color:#7E8BA3">{lab}</span> '
+                            f'<span style="{mono};font-size:13px;font-weight:900;color:{color}">{val}</span></span>'
+                            for lab, val in rm)
+                        box = (f'<div style="{mono};font-size:7.5px;font-weight:800;letter-spacing:.1em;'
+                               f'text-transform:uppercase;color:#7E8BA3;margin-top:11px;margin-bottom:5px">'
+                               f'Radiografía documental · métricas de consistencia</div>'
+                               f'<div style="border:1px solid {color}45;border-radius:6px;padding:9px 8px;'
+                               f'text-align:center;background:{color}0d">{cells}</div>')
+                    estado_html = ""
+                    if est or per:
+                        _p = f' · {per}' if per else ""
+                        estado_html = (f'<div style="{mono};font-size:8.5px;color:#8494A8;margin-top:10px;'
+                                       f'letter-spacing:.02em"><span style="color:{color};font-weight:800">'
+                                       f'ESTADO:</span> <b style="color:#C4D0E0">{est}</b>{_p}</div>')
                     st.markdown(
                         f'<div style="padding:2px 2px 0">'
-                        f'<div style="height:3px;background:{color};border-radius:2px;opacity:.65;'
-                        f'margin-bottom:9px"></div>'
-                        f'<div style="font-size:11.5px;color:#A8B4C8;line-height:1.5">{dom["concepto"]}</div>'
-                        f'{radio_html}</div>',
+                        f'<div style="height:3px;background:{color};border-radius:2px;opacity:.7;margin-bottom:10px"></div>'
+                        f'<div style="{mono};font-size:8px;font-weight:800;letter-spacing:.08em;color:{color};'
+                        f'margin-bottom:3px">[ ALCANCE ]</div>'
+                        f'<div style="font-size:11px;color:#A8B4C8;line-height:1.5">{dom["concepto"]}</div>'
+                        f'{estado_html}{box}</div>',
                         unsafe_allow_html=True,
                     )
                     if dom.get("disabled"):
