@@ -46,11 +46,14 @@ _TEMP: dict[str, dict[str, str]] = {
 _DOMAINS_V2: list[dict[str, Any]] = [
     {
         "id": "d01", "num": "01", "nombre": "Planificación Estratégica",
-        "concepto": "La consistencia entre lo que el cantón planificó a largo plazo "
-                    "y los hitos que de verdad cumple — el rumbo, no el discurso.",
+        "concepto": "Instrumento rector que verifica la consistencia entre la planificación "
+                    "territorial, la programación operativa, la asignación presupuestaria y la "
+                    "ejecución pública.",
         "estado": "EN RUTA", "metric": "96%",
-        "metric_label": "Cobertura de metas · PDOT → POA",
-        "macro": ["Alineación al Plan Nacional: 83%", "Metas activas: 24 de 25 en ejecución"],
+        "radiografia": ["25 metas estratégicas", "Cobertura PDOT → POA: 96%",
+                        "Vinculación al Plan Nacional: 83%", "257 proyectos operativos",
+                        "27 procesos de contratación (PAC)", "Ejercicios fiscales 2025 y 2026",
+                        "Biografías de metas y expedientes", "Evaluación consolidada"],
         "gancho": "¿El cantón mantiene el rumbo hacia sus metas plurianuales, o se desvió en el camino?",
         "temp": "verde", "mod": "ods",
     },
@@ -113,11 +116,13 @@ _DOMAINS_V2: list[dict[str, Any]] = [
     },
     {
         "id": "d09", "num": "09", "nombre": "Rendición de Cuentas",
-        "concepto": "El nivel de verificabilidad pública del discurso: qué parte de lo que la "
-                    "autoridad declara admite comprobación con registros oficiales independientes.",
+        "concepto": "Espacio de fiscalización y control social que contrasta la asignación de "
+                    "recursos aprobada contra la ejecución real devengada en territorio, "
+                    "garantizando el cumplimiento normativo de la rendición.",
         "estado": "CONSOLIDADO", "metric": "72.7%",
-        "metric_label": "Eficacia de ejecución · año cerrado 2025",
-        "macro": ["Inversión devengada: $12.7M de $17.5M", "Estatus: evaluado y consolidado"],
+        "radiografia": ["Verificabilidad del discurso público", "Eficacia de ejecución 2025: 72.7%",
+                        "Inversión devengada: $12.7M de $17.5M", "Ejercicios de rendición 2023-2025",
+                        "Cumplimiento del plan de trabajo", "Aportes ciudadanos rastreados"],
         "gancho": "¿Qué parte del discurso se comprueba con registros independientes y qué queda sin respaldo público?",
         "temp": "normal", "mod": "rdc",
     },
@@ -387,6 +392,13 @@ def render() -> None:
         "d06": "🩺", "d07": "🔍", "d08": "🗳", "d09": "📣", "d10": "🗺",
         "d11": "📈", "d12": "🤝", "d13": "🌿",
     }
+    # Color propio por dominio (Javo 2026-07-14 · diferenciación visual por colores)
+    _DOM_COL = {
+        "d01": "#22D3EE", "d02": "#A78BFA", "d03": "#F9AB00", "d04": "#EF5350",
+        "d05": "#26A69A", "d06": "#EC407A", "d07": "#42A5F5", "d08": "#66BB6A",
+        "d09": "#FFA726", "d10": "#8D6E63", "d11": "#FFEE58", "d12": "#AB47BC",
+        "d13": "#9CCC65",
+    }
     for fila in range(0, len(_DOMAINS_V2), 3):
         cols = st.columns(3, gap="small")
         for col, dom in zip(cols, _DOMAINS_V2[fila:fila + 3]):
@@ -418,40 +430,25 @@ def render() -> None:
                             unsafe_allow_html=True,
                         )
                     # cuerpo: concepto (izq) | métrica + estado (der)
-                    _ms = str(metric).strip()
-                    barw = None
-                    if _ms.endswith("%"):
-                        try:
-                            barw = min(float(_ms[:-1]), 100)
-                        except ValueError:
-                            barw = None
-                    bar = (f'<div style="height:6px;border-radius:3px;background:rgba(255,255,255,.08);'
-                           f'margin-top:8px;overflow:hidden"><div style="height:100%;width:{barw:.0f}%;'
-                           f'background:{t["c"]};border-radius:3px"></div></div>') if barw is not None else ""
-                    _macro = dom.get("macro", [])
-                    if isinstance(_macro, str):
-                        _macro = [_macro] if _macro else []
-                    macro_html = ""
-                    if _macro:
-                        _lines = "".join(f'<div style="margin-top:2px">{m}</div>' for m in _macro)
-                        macro_html = (f'<div style="font-size:9.5px;color:#8494A8;line-height:1.5;'
-                                      f'border-top:1px solid rgba(255,255,255,.05);padding-top:6px;'
-                                      f'margin-top:8px">{_lines}</div>')
-                    _mlab = dom.get("metric_label", "")
-                    mlab_html = (f'<div style="font-size:8px;color:#7E8BA3;letter-spacing:.02em;'
-                                 f'margin-top:3px;line-height:1.3">{_mlab}</div>') if _mlab else ""
-                    # cuerpo: conceptualización (izq) | métrica + etiqueta + estado (der) + barra + data macro
+                    color = _DOM_COL.get(dom["id"], "#5AA9E6")
+                    # cuerpo tipo EXPEDIENTE MADRE (Javo 2026-07-14): conceptualización + mini radiografía.
+                    # Sin pregunta, sin narrativa, sin interpretación — eso empieza AL ENTRAR al DOM.
+                    radio = dom.get("radiografia", [])
+                    radio_html = ""
+                    if radio:
+                        items = "".join(
+                            f'<div style="font-size:10.5px;color:#B8C4D6;line-height:1.62">'
+                            f'<span style="color:{color}">•</span> {r}</div>' for r in radio)
+                        radio_html = (f'<div style="border-top:1px solid {color}30;margin-top:10px;padding-top:8px">'
+                                      f'<div style="font-size:8px;font-weight:800;letter-spacing:.1em;'
+                                      f'text-transform:uppercase;color:{color};margin-bottom:6px">Mini radiografía</div>'
+                                      f'{items}</div>')
                     st.markdown(
-                        f'<div style="padding:6px 2px 0">'
-                        f'<div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:2px">'
-                        f'<div style="flex:1;font-size:11px;color:#A8B4C8;'
-                        f'line-height:1.45">{dom["concepto"]}</div>'
-                        f'<div style="text-align:right;flex-shrink:0;min-width:100px">'
-                        f'<div style="font-family:\'JetBrains Mono\',monospace;font-size:25px;'
-                        f'font-weight:900;color:{t["c"]};line-height:1">{metric}</div>'
-                        f'<div style="font-size:8.5px;font-weight:800;letter-spacing:.04em;'
-                        f'color:{t["c"]};margin-top:4px">● {estado}</div>{mlab_html}</div></div>'
-                        f'{bar}{macro_html}</div>',
+                        f'<div style="padding:2px 2px 0">'
+                        f'<div style="height:3px;background:{color};border-radius:2px;opacity:.65;'
+                        f'margin-bottom:9px"></div>'
+                        f'<div style="font-size:11.5px;color:#A8B4C8;line-height:1.5">{dom["concepto"]}</div>'
+                        f'{radio_html}</div>',
                         unsafe_allow_html=True,
                     )
                     if dom.get("disabled"):
