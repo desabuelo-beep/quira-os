@@ -15,8 +15,10 @@ import html as _h
 
 try:  # sintetizador de hallazgos COMPARTIDO (un solo idioma para todos los DOM · asesor 2026-07-11)
     from hallazgos import render_hallazgos as _hallazgos_html  # noqa: F401
+    from provenance import prov, prov_leyenda, PROV_CSS  # proveniencia ADR-033 (compartido)  # noqa: F401
 except ImportError:  # dentro del paquete app (Streamlit)
     from app.viz.render.hallazgos import render_hallazgos as _hallazgos_html  # noqa: F401
+    from app.viz.render.provenance import prov, prov_leyenda, PROV_CSS  # noqa: F401
 
 _COL = {"independiente": "#1E8E3E", "institucional": "#1A73E8", "parcial": "#F9AB00",
         "sin_evidencia_publica": "#9AA0A6", "contradiccion": "#D93025"}  # gramática canónica
@@ -464,7 +466,7 @@ def _analisis_anio(snap: dict, n: int) -> str:
               + _embudo(snap.get("embudo", {}), breve=True)
               + '<div class="qc-subh">Qué pudo verificarse</div>' + _resultado(snap, m)
               + '<div class="qc-subh">Los expedientes</div>' + _expedientes(snap))
-    return _seccion(f'0{n}', f'Ejercicio Fiscal {m.get("año")} · {m.get("autoridad")}', cuerpo, cls="qc-anio")
+    return _seccion(f'0{n}', f'Ejercicio Fiscal {m.get("año")} · {m.get("autoridad")}', cuerpo, cls="qc-anio", prov=prov('doc'))
 
 
 def _evaluacion(serie: list, marco: dict) -> str:
@@ -520,7 +522,7 @@ def cajon_dominio_rdc(serie: list, rdc_serie: list | None = None, doc: dict | No
     ref = serie[-1]
     m, marco = ref["meta"], ref.get("marco_legal", {})
     bloques, n = [], 1
-    bloques.append(_seccion(f'0{n}', 'El procedimiento · cómo QUIRA lee una rendición', _procedimiento(marco))); n += 1
+    bloques.append(_seccion(f'0{n}', 'Cómo leer este dominio · el procedimiento', prov_leyenda() + _procedimiento(marco))); n += 1
     serie_html = _rendicion_en_tiempo(rdc_serie or [])
     if serie_html:                                            # LA RENDICIÓN EN EL TIEMPO como introducción (Javo)
         bloques.append(_seccion(f'0{n}', 'La rendición en el tiempo · los ejercicios del período', serie_html)); n += 1
@@ -762,6 +764,7 @@ details.qc-law[open] summary{margin-bottom:7px}
 .qc-placa-s{font-size:12px;color:var(--tx2);margin-top:9px}
 @media(max-width:640px){.qc-exps,.qc-evs{grid-template-columns:1fr}.qc-lbl{width:150px}}
 </style>"""
+_CSS = _CSS.replace("</style>", PROV_CSS + "</style>")   # proveniencia (ADR-033 · compartido)
 
 
 if __name__ == "__main__":
