@@ -72,6 +72,11 @@ def _meta_ref(v) -> str:
     return s
 
 
+def _noeng(s) -> str:
+    """Traduce términos en inglés que vienen del motor (estamos en Ecuador · Javo 2026-07-14)."""
+    return re.sub(r"downcoding", "fraccionamiento", str(s or ""), flags=re.I)
+
+
 def build_block() -> dict:
     wb = openpyxl.load_workbook(EXCEL, read_only=True, data_only=True)
 
@@ -150,7 +155,7 @@ def build_block() -> dict:
     sat0 = {
         "componentes": [
             {"label": "Brecha POA-PAC", "estado": _clean(cell("B14")), "temp": _temp(cell("B14"))},
-            {"label": "Downcoding contractual", "estado": _clean(cell("B15")), "temp": _temp(cell("B15"))},
+            {"label": "Fraccionamiento contractual", "estado": _noeng(_clean(cell("B15"))), "temp": _temp(cell("B15"))},
             {"label": "Monto mínimo", "estado": _clean(cell("B16")), "temp": _temp(cell("B16"))},
             {"label": "Reloj de evidencia", "estado": _clean(cell("B17")), "temp": _temp(cell("B17"))},
         ],
@@ -397,7 +402,7 @@ def build_block() -> dict:
         eje, score = r[2], r[5]
         if isinstance(score, (int, float)) and 0 < score <= 1 and eje and "Eje" in str(eje):
             _eje[str(eje).strip()] += 1
-            _metas_vinc.append({"meta": str(r[1] or "").strip()[:85],
+            _metas_vinc.append({"id": str(r[0] or "").strip(), "meta": str(r[1] or "").strip()[:85],
                                 "eje": str(eje).strip(), "score": round(float(score), 2)})
     alineacion_pnd = {
         "metrica": "vinculación de las metas del PDOT con el Plan Nacional de Desarrollo",

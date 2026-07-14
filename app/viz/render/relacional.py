@@ -31,7 +31,7 @@ REL_CSS = """
 .rl-n{flex:0 0 auto;min-width:94px;border:1px solid var(--bd);border-radius:7px;padding:9px 10px;background:var(--sf);text-align:center}
 .rl-sys{font-family:ui-monospace,monospace;font-size:10.5px;font-weight:700;color:var(--tx);letter-spacing:.04em}
 .rl-lb{font-size:9px;color:var(--tx2);margin-top:3px;line-height:1.2}
-.rl-e{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:54px;padding:0 5px}
+.rl-e{flex:1 1 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:40px;padding:0 5px}
 .rl-line{width:100%;height:2px;border-radius:2px;opacity:.85}
 .rl-arw{font-size:13px;line-height:1;margin-top:2px}
 .rl-pct{font-family:ui-monospace,monospace;font-size:10px;font-weight:700;margin-top:1px}

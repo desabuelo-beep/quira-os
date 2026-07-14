@@ -76,6 +76,16 @@ _PLAN_EXTRA = """
 .pl-sub{font-family:ui-monospace,monospace;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#22D3EE;margin:20px 0 9px;padding-bottom:5px;border-bottom:1px solid var(--bd)}
 .pl-sub:first-child{margin-top:2px}
 .qc-sem{width:11px;height:11px;border-radius:3px;display:inline-block;flex:none}
+/* Distribución por eje (Plan Nacional) — tabla con color */
+.pl-ejes{display:flex;flex-direction:column;gap:6px;margin:11px 0 2px}
+.pl-eje{display:grid;grid-template-columns:1fr 90px 26px;align-items:center;gap:10px}
+.pl-eje-l{font-size:11.5px;color:var(--tx);font-weight:600}
+.pl-eje-t{height:9px;border-radius:5px;background:var(--bd);overflow:hidden}
+.pl-eje-f{display:block;height:100%;border-radius:5px}
+.pl-eje-n{font-family:Georgia,serif;font-size:14px;font-weight:700;color:var(--tx);text-align:right}
+.qc-evt td.cod{font-family:ui-monospace,monospace;font-size:9.5px;color:#22D3EE;white-space:nowrap}
+.qc-evt thead th{position:sticky;top:0;background:var(--sf);border-top:none;border-bottom:1px solid var(--bd);z-index:2}
+@media(max-width:640px){.pl-eje{grid-template-columns:1fr auto 24px}.pl-eje-t{display:none}}
 """
 _ESL_CSS = """
 .qc-sint-b .pl-esl{display:flex;gap:13px;margin-bottom:11px;font-size:13px;line-height:1.62}
@@ -639,30 +649,39 @@ def _bloque_anio(e: dict, cerrado: bool) -> str:
             f'<div class="pl-yr-x">{x}</div></div>')
 
 
+_EJE_COL = ["#22D3EE", "#5AA9E6", "#8B7BD8", "#1E8E3E", "#F9AB00"]
+
+
 def _alineacion_pnd(plan: dict) -> str:
-    """02b · Alineación PDOT↔Plan Nacional (H11b · objeto canónico compartido · nace en d01).
-    Primacía Narrativa (ADR-033): se NARRA (promedio CANÓNICO — QUIRA no recalcula) y la tabla
-    por meta va como EVIDENCIA bajo demanda (<details>), nunca como protagonista."""
+    """02b · Alineación PDOT↔Plan Nacional (H11b · objeto canónico compartido). Primacía Narrativa:
+    se NARRA (promedio CANÓNICO en %, QUIRA no recalcula) + distribución por eje con color + la
+    tabla por meta (con código) como EVIDENCIA bajo demanda."""
     a = plan.get("alineacion_pnd") or {}
     ejes = a.get("por_eje") or []
     metas = a.get("metas") or []
     if not ejes:
         return ""
     n, vm = a.get("n_metas", 0), a.get("vinculacion_media") or 0
-    dist = " · ".join(f'{_esc(e["eje"].split("—")[0].strip())} ({e["n_metas"]})' for e in ejes)
+    mx = max((e["n_metas"] for e in ejes), default=1)
+    eje_rows = ""
+    for i, e in enumerate(ejes):
+        c = _EJE_COL[i % len(_EJE_COL)]
+        w = max(e["n_metas"] / mx * 100, 7)
+        eje_rows += (f'<div class="pl-eje"><span class="pl-eje-l">{_esc(e["eje"])}</span>'
+                     f'<span class="pl-eje-t"><span class="pl-eje-f" style="width:{w:.0f}%;background:{c}"></span></span>'
+                     f'<span class="pl-eje-n">{e["n_metas"]}</span></div>')
     intro = ('<div class="qc-cap" style="margin-top:15px"><b>Alineación con el Plan Nacional de Desarrollo</b></div>'
              f'<p class="qc-p">Las <b>{n} metas del PDOT</b> se articulan con los <b>{len(ejes)} ejes</b> del '
-             f'Plan Nacional de Desarrollo. Cada meta recibe una <b>calificación de vinculación</b> con la '
-             f'política nacional; en promedio es <b>{vm:.2f} sobre 1</b>. Es un <b>resultado analítico</b> '
-             '—se calcula una sola vez sobre la evidencia oficial y este dominio lo <b>reporta, no lo rehace</b>—. '
-             'La alineación estratégica '
-             '<b>existe antes del presupuesto</b>: es la que habilita la elegibilidad de financiamiento y '
-             f'cooperación. Las metas se reparten así entre los ejes: {dist}.</p>')
+             f'Plan Nacional. La vinculación promedio es del <b>{vm * 100:.0f}%</b> —un <b>resultado analítico</b> '
+             'que se calcula una sola vez sobre la evidencia oficial y este dominio <b>reporta, no rehace</b>—. '
+             'La alineación <b>existe antes del presupuesto</b>: habilita la elegibilidad de financiamiento y '
+             'cooperación. Así se reparten las metas entre los ejes:</p>'
+             f'<div class="pl-ejes">{eje_rows}</div>')
     filas = "".join(
-        f'<tr><td>{_esc(m["meta"])}</td><td>{_esc(m["eje"])}</td><td class="sc">{m["score"]:.2f}</td></tr>'
-        for m in metas)
+        f'<tr><td class="cod">{_esc(m.get("id", "—"))}</td><td>{_esc(m["meta"])}</td>'
+        f'<td>{_esc(m["eje"])}</td><td class="sc">{m["score"] * 100:.0f}%</td></tr>' for m in metas)
     ev = (f'<details class="qc-ev"><summary>Ver las {n} metas y su vinculación al Plan Nacional</summary>'
-          '<div class="qc-evw"><table class="qc-evt"><thead><tr><th>Meta del PDOT</th>'
+          '<div class="qc-evw scroll"><table class="qc-evt"><thead><tr><th>Código</th><th>Meta del PDOT</th>'
           '<th>Eje · Plan Nacional</th><th>Vinculación</th></tr></thead>'
           f'<tbody>{filas}</tbody></table></div></details>')
     return intro + ev

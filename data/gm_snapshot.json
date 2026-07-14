@@ -4563,8 +4563,8 @@
           "temp": "dim"
         },
         {
-          "label": "Downcoding contractual",
-          "estado": "Sin downcoding",
+          "label": "Fraccionamiento contractual",
+          "estado": "Sin fraccionamiento",
           "temp": "verde"
         },
         {
@@ -4610,126 +4610,151 @@
       ],
       "metas": [
         {
+          "id": "SC-I-N-01",
           "meta": "Agua potable: cobertura 39.25%→42.38%; calidad 100% INEN 1108; infraestructura BUENA ",
           "eje": "Eje 3 — Servicios Básicos y Habitat",
           "score": 0.9
         },
         {
+          "id": "SC-L-N-02",
           "meta": "Gestión del talento humano municipal: desempeño 80%→90%; plan capacitación 90% anual",
           "eje": "Eje 2 — Economía al Servicio de la Vida",
           "score": 0.85
         },
         {
+          "id": "AH-I-X-01",
           "meta": "Sostenibilidad financiera: autonomía 43.35%→45.30%; gestión cobros y coactivas",
           "eje": "Eje 4 — Gobernanza",
           "score": 0.9
         },
         {
+          "id": "AH-I-X-02",
           "meta": "Vialidad cantonal: mantenimiento 43.8 km vías CUP + 57.22 km rurales; 23.77 km tratam",
           "eje": "Eje 3 — Servicios Básicos y Habitat",
           "score": 0.85
         },
         {
+          "id": "AH-I-X-03",
           "meta": "Salud integral municipal: población atendida 57,401→84,041 personas (+10% anual)",
           "eje": "Eje 1 — Derechos para Todos",
           "score": 0.9
         },
         {
+          "id": "AH-I-N-01",
           "meta": "Gestión integral desechos sólidos: 20,118→23,086 Tn/año; relleno sanitario; capacidad",
           "eje": "Eje 3 — Servicios Básicos y Habitat",
           "score": 0.85
         },
         {
+          "id": "SC-L-G-01",
           "meta": "Alcantarillado sanitario: cobertura 19.77%→24.32%; PTAR 0%→75%; estaciones bombeo 36%",
           "eje": "Eje 3 — Servicios Básicos y Habitat",
           "score": 0.9
         },
         {
+          "id": "AH-I-X-04",
           "meta": "Modernización recursos administrativos: parque automotor, tecnología e infraestructur",
           "eje": "Eje 4 — Gobernanza",
           "score": 0.85
         },
         {
+          "id": "PI-I-G-01",
           "meta": "Equipamientos públicos: terminal terrestre, mercado, estación bomberil, centro salud ",
           "eje": "Eje 3 — Servicios Básicos y Habitat",
           "score": 0.8
         },
         {
+          "id": "AH-C-X-01",
           "meta": "Protección derechos sociales: atenciones grupos prioritarios 943→1,649 (+15%/año); CD",
           "eje": "Eje 1 — Derechos para Todos",
           "score": 0.9
         },
         {
+          "id": "AH-C-X-02",
           "meta": "Sistema información territorial: catastro urbano-rural 19.52%→80%; 12 procesos sistem",
           "eje": "Eje 4 — Gobernanza",
           "score": 0.8
         },
         {
+          "id": "SC-I-N-03",
           "meta": "Participación ciudadana: 50→100 Unidades Territoriales; 2→4 instancias efectivas (COP",
           "eje": "Eje 4 — Gobernanza",
           "score": 0.85
         },
         {
+          "id": "FA-I-X-01",
           "meta": "Gestión del riesgo: reducir 10% infraestructura susceptible (3,655→2,398 unidades); a",
           "eje": "Eje 5 — Ambiente y Seguridad",
           "score": 0.8
         },
         {
+          "id": "FA-C-X-01",
           "meta": "Áreas verdes y parques: IVU 10.94→17.32 m²/hab; parques inter-barriales; recuperación",
           "eje": "Eje 5 — Ambiente y Seguridad",
           "score": 0.75
         },
         {
+          "id": "FA-I-X-02",
           "meta": "Índice equipamiento urbano CUP 9.96→10.73 m²/hab; recolección desechos 91.95%→97.95%;",
           "eje": "Eje 3 — Servicios Básicos y Habitat",
           "score": 0.8
         },
         {
+          "id": "FA-L-N-01",
           "meta": "Inventario patrimonial 100% al 2026; 8,000→10,000 participantes eventos culturales; M",
           "eje": "Eje 1 — Derechos para Todos",
           "score": 0.75
         },
         {
+          "id": "PI-I-G-02",
           "meta": "Cumplimiento PDOT/PUGS 0%→80%; SIL 19.52%→80%; 37 trámites digitales implementados",
           "eje": "Eje 4 — Gobernanza",
           "score": 0.9
         },
         {
+          "id": "PI-L-G-01",
           "meta": "Señalización vial 0→10,000 m²; 0→8 semáforos; revisiones técnicas 4,000→20,000; educa",
           "eje": "Eje 3 — Servicios Básicos y Habitat",
           "score": 0.85
         },
         {
+          "id": "EP-L-N-01",
           "meta": "Vivienda de interés social: 50 VIS/VIP hasta 2027; reducción déficit habitacional cua",
           "eje": "Eje 1 — Derechos para Todos",
           "score": 0.8
         },
         {
+          "id": "EP-L-X-01",
           "meta": "Fortalecimiento productivo: beneficiarios artesanos, mipymes, emprendedores, huertos ",
           "eje": "Eje 2 — Economía al Servicio de la Vida",
           "score": 0.85
         },
         {
+          "id": "PI-TUR-01",
           "meta": "Turismo cantonal: establecimientos certificación Montecristi Ciudad Creativa 0→60 al ",
           "eje": "Eje 2 — Economía al Servicio de la Vida",
           "score": 0.75
         },
         {
+          "id": "PI-TUR-02",
           "meta": "Eventos turísticos anuales: 10 eventos/año 2023 → 22 eventos/año al 2027",
           "eje": "Eje 2 — Economía al Servicio de la Vida",
           "score": 0.7
         },
         {
+          "id": "FA-CC-01",
           "meta": "Cambio climático: formulación de 4 planes de acción al 2027 (0%→100%)",
           "eje": "Eje 5 — Ambiente y Seguridad",
           "score": 0.8
         },
         {
+          "id": "AH-AP-04",
           "meta": "Continuidad servicio agua potable: índice ALTO de 0% → 10% al 2027",
           "eje": "Eje 3 — Servicios Básicos y Habitat",
           "score": 0.85
         },
         {
+          "id": "FA-DIS-01",
           "meta": "Disposición final desechos sólidos: capacidad operativa 0%→20% al 2027",
           "eje": "Eje 5 — Ambiente y Seguridad",
           "score": 0.85
