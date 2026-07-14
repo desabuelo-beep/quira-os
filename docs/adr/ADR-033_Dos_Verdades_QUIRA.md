@@ -121,5 +121,16 @@ Los DOM deben presentar **las dos mitades**: la trazabilidad documental (biograf
 analítica (los índices, bajo etiqueta pública). Hasta hoy se construyó la documental; **incorporar los
 índices al DOM es la otra mitad de QUIRA** — con proveniencia explícita (documental vs analítica).
 
+## Corolario de presentación — PRIMACÍA NARRATIVA (Javo + colega · 2026-07-13)
+Las tres capas **no se mezclan visualmente**. El DOM es un **espacio narrativo de conocimiento**, no un
+tablero: primero **explica** (documental) → **interpreta** (analítica) → **comunica** una conclusión
+(interpretación). La **evidencia** —tablas, tableros, gráficos, documentos, el detalle de las metas— es
+**desplegable BAJO DEMANDA** (patrón normativa ya en el cajón: `<details>` · *clic → se abre*), **nunca el
+protagonista**. Regla: *el usuario primero comprende, después verifica; ninguna tabla reemplaza el relato del
+dominio.* NO es un renombre (Regla 7): es el **corolario de UI** de las tres capas — y lo que separa a QUIRA de
+un Power BI. Reencuadra el trabajo de cada DOM: la pregunta deja de ser *"¿qué hoja del Excel falta mostrar?"*
+y pasa a ser *"¿qué idea falta explicar?"* — con la evidencia detrás de un *"Ver …"*. *(Principio en maduración;
+se cita como corolario de ADR-033, no abre ADR nuevo.)*
+
 ---
 *ADR-033 · Dos verdades de QUIRA · Dylus Lab © 2026 · "Los documentos contienen la evidencia; el Gold Master contiene el conocimiento. QUIRA dice qué ocurrió, y mide qué tan bien se gobernó."*
