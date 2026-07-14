@@ -71,6 +71,10 @@ _PLAN_EXTRA = """
 .qc-evt td{padding:7px 13px;color:var(--tx2);border-top:1px solid var(--bd);vertical-align:top;line-height:1.4}
 .qc-evt td:first-child{color:var(--tx);min-width:220px}
 .qc-evt td.sc{font-family:Georgia,serif;font-weight:700;color:#22D3EE;text-align:right;white-space:nowrap}
+/* Cabecera del dominio — subsecciones + semáforo */
+.pl-sub{font-family:ui-monospace,monospace;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#22D3EE;margin:20px 0 9px;padding-bottom:5px;border-bottom:1px solid var(--bd)}
+.pl-sub:first-child{margin-top:2px}
+.qc-sem{width:11px;height:11px;border-radius:3px;display:inline-block;flex:none}
 """
 _ESL_CSS = """
 .qc-sint-b .pl-esl{display:flex;gap:13px;margin-bottom:11px;font-size:13px;line-height:1.62}
@@ -647,6 +651,43 @@ def _longitudinal_plan(plan: dict) -> str:
     return intro + foco + ctx + cons
 
 
+def _semaforo_leyenda() -> str:
+    """Leyenda del semáforo de estado (verde/ámbar/rojo) — parte de 'cómo leer el dominio'."""
+    items = [
+        ("#1E8E3E", "Verde", "el eslabón se sostiene: evidencia suficiente y consistente"),
+        ("#F9AB00", "Ámbar", "señal preventiva: una brecha o dato parcial que conviene vigilar"),
+        ("#D93025", "Rojo", "brecha crítica documentada: el eslabón no se sostiene"),
+    ]
+    filas = "".join(
+        f'<div class="qc-provl-i"><span class="qc-sem" style="background:{c}"></span>'
+        f'<span><b style="color:var(--tx)">{lbl}</b> — {desc}</span></div>' for c, lbl, desc in items)
+    return ('<div class="qc-provl"><div class="qc-provl-t">La semaforización · qué dicen los colores</div>'
+            f'{filas}</div>')
+
+
+def _cabecera_plan(plan: dict) -> str:
+    """01 · Cabecera del dominio — funde principio + cómo leer + procedimiento (directiva Javo · 2026-07-13):
+    qué es · cómo leerlo (proveniencia + semaforización) · el procedimiento (la cadena de extremo a extremo)."""
+    return (
+        '<div class="pl-sub">Qué es este dominio</div>'
+        '<p class="qc-p">La <b>planificación estratégica</b> es la promesa institucional del cantón: el '
+        'compromiso, inscrito en instrumentos oficiales, de convertir la política pública en obras y servicios '
+        'para la gente. Este dominio <b>observa esa promesa a lo largo de toda su cadena</b> —del Plan Nacional '
+        'al gasto ejecutado— y la evalúa en <b>dos planos complementarios</b>: su <b>integridad</b> (¿cada '
+        'eslabón sostiene documentalmente al siguiente?) y su <b>desempeño</b> (¿con qué eficacia se ejecutó lo '
+        'planificado?). No certifica intenciones ni emite juicios: <b>verifica la consistencia de la cadena</b> '
+        'y señala, con evidencia, dónde se sostiene y dónde se rompe. Una brecha es un <b>resultado del '
+        'análisis</b>, nunca una acusación.</p>'
+        + _ley_esl(plan, 'pdot', 'Fundamento del dominio (Planificación)')
+        + '<div class="pl-sub">Cómo leer este dominio</div>'
+        '<p class="qc-p">Cada afirmación declara <b>de dónde viene</b> —un hecho, un cálculo o una lectura del '
+        'observatorio— y las señales usan un <b>semáforo</b>. Así el lector distingue de un vistazo la '
+        'naturaleza de cada dato y qué exige atención.</p>'
+        + prov_leyenda() + _semaforo_leyenda()
+        + '<div class="pl-sub">El procedimiento · del plan al gasto</div>'
+        + _backbone(plan) + _cadena_relacional(plan))
+
+
 # ── ensamblaje ──
 def cajon_dominio_plan(plan: dict) -> str:
     if not plan:
@@ -658,15 +699,8 @@ def cajon_dominio_plan(plan: dict) -> str:
     <div class="qc-idea">Planificación Estratégica</div>
     <div class="qc-q">¿El cantón mantiene el rumbo hacia sus metas plurianuales, o se desvió en el camino?</div>
   </div>
-  <div class="qc-princ"><span class="t">Principio metodológico</span>
-    QUIRA mide la <b>consistencia de la cadena que va del plan al gasto</b>: PDOT → POA → PRESUPUESTO → PAC →
-    EJECUCIÓN. No certifica intenciones: verifica que cada eslabón <b>sostenga documentalmente</b> al siguiente.
-    Un eslabón roto es una <b>brecha</b>, nunca una inferencia.
-    {_ley_esl(plan, 'pdot', 'Fundamento del dominio (Planificación)')}
-  </div>
   <div class="qc-body">
-    {prov_leyenda()}
-    {_seccion('01', 'El procedimiento · del plan al gasto', _backbone(plan) + _cadena_relacional(plan), _ley_esl(plan, 'poa', 'Fundamento jurídico aplicable'), prov=prov('doc'))}
+    {_seccion('01', 'El dominio · qué es y cómo leerlo', _cabecera_plan(plan), _ley_esl(plan, 'poa', 'Fundamento jurídico aplicable'))}
     {_seccion('02', 'El plan y su cobertura', _cobertura(plan) + _alineacion_pnd(plan), _ley_esl(plan, 'presupuesto', 'Fundamento jurídico aplicable'), prov=prov('ana'))}
     {_seccion('03', 'La trazabilidad · metas del plan', '<p class="qc-p">Cada expediente es la <b>biografía de una meta</b>: su recorrido desde el plan hasta el gasto, y hasta dónde llega la cadena documental.</p><p class="qc-cap">No se eligen al azar: se muestran las metas de mayor <b>Valor Demostrativo</b> —el puntaje (0-100) que resume cuánto demuestra el método cada expediente: profundidad de la cadena documental, peso presupuestario y tipo de competencia. A mayor puntaje, más completa y probatoria es la trazabilidad.</p>' + _biografia_meta(plan) + _expedientes_metas(plan), _ley_esl(plan, 'pac', 'Fundamento jurídico aplicable'), prov=prov('doc'))}
     {_seccion('04', 'La coherencia · análisis preventivo', _coherencia(plan), _ley_esl(plan, 'gasto', 'Fundamento jurídico aplicable'), prov=prov('ana'))}
