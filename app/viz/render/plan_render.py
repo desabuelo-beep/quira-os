@@ -59,15 +59,18 @@ _PLAN_EXTRA = """
 .pl-bar-tk{height:11px;border-radius:6px;background:var(--bd);overflow:hidden}
 .pl-bar-fl{height:100%;border-radius:6px}
 .pl-yr-x{font-size:11px;color:var(--tx2);line-height:1.5;margin-top:8px}.pl-yr-x b{color:var(--tx)}
-/* Alineación PDOT↔Plan Nacional (H11b) — barras por eje */
-.pl-al{margin:11px 0 2px;display:flex;flex-direction:column;gap:8px}
-.pl-al-row{display:grid;grid-template-columns:1fr 84px auto 46px;align-items:center;gap:10px}
-.pl-al-eje{font-size:11.5px;color:var(--tx);font-weight:600;line-height:1.3}
-.pl-al-bar{height:9px;border-radius:5px;background:var(--bd);overflow:hidden}
-.pl-al-fill{height:100%;border-radius:5px;background:#22D3EE}
-.pl-al-n{font-family:ui-monospace,monospace;font-size:10px;color:var(--tx2);white-space:nowrap;text-align:right}
-.pl-al-v{font-family:Georgia,serif;font-size:14px;font-weight:700;text-align:right}
-@media(max-width:640px){.pl-al-row{grid-template-columns:1fr auto 44px;gap:8px}.pl-al-bar{display:none}}
+/* Evidencia bajo demanda (Primacía Narrativa · patrón <details>) — tabla desplegable */
+.qc-ev{margin:11px 0 2px;border:1px solid var(--bd);border-radius:8px;overflow:hidden}
+.qc-ev>summary{cursor:pointer;padding:9px 13px;font-family:ui-monospace,monospace;font-size:10px;font-weight:700;letter-spacing:.03em;color:#22D3EE;background:var(--sf);list-style:none}
+.qc-ev>summary::-webkit-details-marker{display:none}
+.qc-ev>summary::before{content:"▸  "}
+.qc-ev[open]>summary::before{content:"▾  "}
+.qc-evw{overflow-x:auto}
+.qc-evt{width:100%;border-collapse:collapse;font-size:11px}
+.qc-evt th{text-align:left;padding:7px 13px;color:var(--tx2);font-family:ui-monospace,monospace;font-size:8px;text-transform:uppercase;letter-spacing:.05em;border-top:1px solid var(--bd);white-space:nowrap}
+.qc-evt td{padding:7px 13px;color:var(--tx2);border-top:1px solid var(--bd);vertical-align:top;line-height:1.4}
+.qc-evt td:first-child{color:var(--tx);min-width:220px}
+.qc-evt td.sc{font-family:Georgia,serif;font-weight:700;color:#22D3EE;text-align:right;white-space:nowrap}
 """
 _ESL_CSS = """
 .qc-sint-b .pl-esl{display:flex;gap:13px;margin-bottom:11px;font-size:13px;line-height:1.62}
@@ -576,29 +579,32 @@ def _bloque_anio(e: dict, cerrado: bool) -> str:
 
 
 def _alineacion_pnd(plan: dict) -> str:
-    """02b · Alineación estratégica del PDOT con el Plan Nacional (H11b · objeto canónico
-    compartido · nace en d01, lo consume d02). Índice como GRÁFICA + explicación (🔵).
-    Dato del canon; QUIRA lo narra, no lo recalcula."""
+    """02b · Alineación PDOT↔Plan Nacional (H11b · objeto canónico compartido · nace en d01).
+    Primacía Narrativa (ADR-033): se NARRA (promedio CANÓNICO — QUIRA no recalcula) y la tabla
+    por meta va como EVIDENCIA bajo demanda (<details>), nunca como protagonista."""
     a = plan.get("alineacion_pnd") or {}
     ejes = a.get("por_eje") or []
+    metas = a.get("metas") or []
     if not ejes:
         return ""
-    n, vm = a.get("n_metas", 0), a.get("vinculacion_media", 0)
-    mx = max((e["n_metas"] for e in ejes), default=1)
-    filas = ""
-    for e in ejes:
-        w = e["n_metas"] / mx * 100
-        v = e["vinculacion"]
-        vcol = "#22D3EE" if v >= 0.85 else ("#5AA9E6" if v >= 0.78 else "#F9AB00")
-        filas += (f'<div class="pl-al-row"><div class="pl-al-eje">{_esc(e["eje"])}</div>'
-                  f'<div class="pl-al-bar"><div class="pl-al-fill" style="width:{w:.0f}%"></div></div>'
-                  f'<div class="pl-al-n">{e["n_metas"]} metas</div>'
-                  f'<div class="pl-al-v" style="color:{vcol}">{v*100:.0f}%</div></div>')
+    n, vm = a.get("n_metas", 0), a.get("vinculacion_media") or 0
+    dist = " · ".join(f'{_esc(e["eje"].split("—")[0].strip())} ({e["n_metas"]})' for e in ejes)
     intro = ('<div class="qc-cap" style="margin-top:15px"><b>Alineación con el Plan Nacional de Desarrollo</b></div>'
              f'<p class="qc-p">Las <b>{n} metas del PDOT</b> se articulan con los <b>{len(ejes)} ejes</b> del '
-             f'Plan Nacional, con una vinculación media del <b>{vm*100:.0f}%</b>. Esta alineación —que existe '
-             '<b>antes del presupuesto</b>— es la que habilita la elegibilidad de financiamiento y cooperación.</p>')
-    return intro + f'<div class="pl-al">{filas}</div>'
+             f'Plan Nacional de Desarrollo. Cada meta recibe una <b>calificación de vinculación</b> con la '
+             f'política nacional; en promedio es <b>{vm:.2f} sobre 1</b>. Es un <b>resultado analítico</b> '
+             '—se calcula una sola vez sobre la evidencia oficial y este dominio lo <b>reporta, no lo rehace</b>—. '
+             'La alineación estratégica '
+             '<b>existe antes del presupuesto</b>: es la que habilita la elegibilidad de financiamiento y '
+             f'cooperación. Las metas se reparten así entre los ejes: {dist}.</p>')
+    filas = "".join(
+        f'<tr><td>{_esc(m["meta"])}</td><td>{_esc(m["eje"])}</td><td class="sc">{m["score"]:.2f}</td></tr>'
+        for m in metas)
+    ev = (f'<details class="qc-ev"><summary>Ver las {n} metas y su vinculación al Plan Nacional</summary>'
+          '<div class="qc-evw"><table class="qc-evt"><thead><tr><th>Meta del PDOT</th>'
+          '<th>Eje · Plan Nacional</th><th>Vinculación</th></tr></thead>'
+          f'<tbody>{filas}</tbody></table></div></details>')
+    return intro + ev
 
 
 def _longitudinal_plan(plan: dict) -> str:

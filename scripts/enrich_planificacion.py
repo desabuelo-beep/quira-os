@@ -348,27 +348,35 @@ def build_block() -> dict:
 
     # ── E · Alineación estratégica — vinculación PDOT↔Plan Nacional (H11b) ─────
     # Objeto canónico compartido (ADR-032): nace en d01, consumido por d02/Cooperación.
+    # QUIRA NO recalcula: LEE el promedio CANÓNICO y los scores por meta del Gold Master;
+    # por eje solo CUENTA metas (agrupar no es recalcular). Sin promedios propios.
     wsa = sh("H11b_MONITOR")
-    _eje = defaultdict(lambda: [0, 0.0])   # eje -> [n_metas, suma_score]
-    _n, _ssum = 0, 0.0
-    for r in wsa.iter_rows(min_row=13, values_only=True):
+    _eje = defaultdict(int)              # eje -> n_metas (conteo)
+    _metas_vinc, _vm_canon = [], None
+    for r in wsa.iter_rows(min_row=6, values_only=True):
+        if not r:
+            continue
+        for i, c in enumerate(r):       # promedio CANÓNICO (Score_Vinculación promedio · dato del motor)
+            if isinstance(c, str) and "promedio" in c.lower() and "vincula" in c.lower():
+                for nx in r[i + 1:]:
+                    if isinstance(nx, (int, float)):
+                        _vm_canon = round(float(nx), 3)
+                        break
         if len(r) < 6:
             continue
         eje, score = r[2], r[5]
         if isinstance(score, (int, float)) and 0 < score <= 1 and eje and "Eje" in str(eje):
-            _n += 1
-            _ssum += score
-            _eje[str(eje).strip()][0] += 1
-            _eje[str(eje).strip()][1] += score
+            _eje[str(eje).strip()] += 1
+            _metas_vinc.append({"meta": str(r[1] or "").strip()[:85],
+                                "eje": str(eje).strip(), "score": round(float(score), 2)})
     alineacion_pnd = {
         "metrica": "vinculación de las metas del PDOT con el Plan Nacional de Desarrollo",
-        "n_metas": _n,
-        "vinculacion_media": round(_ssum / _n, 3) if _n else 0.0,
-        "por_eje": sorted(
-            [{"eje": k, "n_metas": v[0], "vinculacion": round(v[1] / v[0], 3)}
-             for k, v in _eje.items()],
-            key=lambda x: -x["n_metas"]),
-        "fuente": "Monitor de vinculación PDOT-PND (Gold Master) · dato del canon",
+        "n_metas": len(_metas_vinc),
+        "vinculacion_media": _vm_canon,     # CANÓNICO (H11b), no calculado por QUIRA
+        "por_eje": sorted([{"eje": k, "n_metas": v} for k, v in _eje.items()],
+                          key=lambda x: -x["n_metas"]),
+        "metas": _metas_vinc,               # per-meta (evidencia bajo demanda)
+        "fuente": "Monitor de vinculación PDOT-PND (Gold Master) · promedio y scores del canon; QUIRA no recalcula",
     }
 
     return {
