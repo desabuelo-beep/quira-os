@@ -727,26 +727,26 @@ def _semaforo_leyenda() -> str:
 
 
 def _cabecera_plan(plan: dict) -> str:
-    """01 · Cabecera del dominio — funde principio + cómo leer + procedimiento (directiva Javo · 2026-07-13):
-    qué es · cómo leerlo (proveniencia + semaforización) · el procedimiento (la cadena de extremo a extremo)."""
+    """01 · Comprender el dominio — un solo relato de lectura (colega + Javo · 2026-07-14): qué observa ·
+    qué no · cómo se interpreta · el PROCESO (ciclo) antes del diagrama · los colores. Se retira el
+    gráfico de integridad (96%/4%) por falta de autonomía visual (rediseño pendiente)."""
     return (
-        '<div class="pl-sub">Qué es este dominio</div>'
-        '<p class="qc-p">La <b>planificación estratégica</b> es la promesa institucional del cantón: el '
-        'compromiso, inscrito en instrumentos oficiales, de convertir la política pública en obras y servicios '
-        'para la gente. Este dominio <b>observa esa promesa a lo largo de toda su cadena</b> —del Plan Nacional '
-        'al gasto ejecutado— y la evalúa en <b>dos planos complementarios</b>: su <b>integridad</b> (¿cada '
-        'eslabón sostiene documentalmente al siguiente?) y su <b>desempeño</b> (¿con qué eficacia se ejecutó lo '
-        'planificado?). No certifica intenciones ni emite juicios: <b>verifica la consistencia de la cadena</b> '
-        'y señala, con evidencia, dónde se sostiene y dónde se rompe. Una brecha es un <b>resultado del '
-        'análisis</b>, nunca una acusación.</p>'
+        '<p class="qc-p">Este dominio observa la <b>planificación pública</b> del cantón como lo que es: un '
+        '<b>ciclo</b> —se planifica, se programa, se asignan recursos, se contrata y se ejecuta; luego se '
+        'monitorea, se evalúa y se mejora—. <b>Qué observa:</b> la consistencia de esa cadena, del Plan '
+        'Nacional al gasto. <b>Qué no observa:</b> intenciones, calidad de la obra ni mérito político —solo lo '
+        'que la evidencia documental sostiene—. <b>Cómo se interpreta:</b> en dos planos, su <b>integridad</b> '
+        '(¿cada eslabón sostiene al siguiente?) y su <b>desempeño</b> (¿con qué eficacia se ejecutó?). Una '
+        'brecha es un <b>resultado del análisis</b>, nunca una acusación.</p>'
+        '<p class="qc-p">El Estado no ejecuta la política de forma directa: primero la <b>planifica</b> '
+        '(el PDOT, alineado al Plan Nacional), luego la <b>programa</b> (POA), le <b>asigna recursos</b> '
+        '(Presupuesto), planifica su <b>contratación</b> (PAC), la <b>adjudica</b> (SERCOP) y finalmente la '
+        '<b>ejecuta</b>. Esa es la cadena que sigue el dominio, eslabón por eslabón:</p>'
+        + _backbone(plan)
         + _ley_esl(plan, 'pdot', 'Fundamento del dominio (Planificación)')
-        + '<div class="pl-sub">Cómo leer este dominio</div>'
-        '<p class="qc-p">Cada afirmación declara <b>de dónde viene</b> —un hecho, un cálculo o una lectura del '
-        'observatorio— y las señales usan un <b>semáforo</b>. Así el lector distingue de un vistazo la '
-        'naturaleza de cada dato y qué exige atención.</p>'
-        + prov_leyenda() + _semaforo_leyenda()
-        + '<div class="pl-sub">El procedimiento · del plan al gasto</div>'
-        + _backbone(plan) + _cadena_relacional(plan))
+        + '<p class="qc-p"><b>Cómo leer lo que sigue.</b> Cada afirmación declara <b>de dónde viene</b> '
+        '—un hecho, un cálculo o una lectura del observatorio— y las señales usan un <b>semáforo</b>:</p>'
+        + prov_leyenda() + _semaforo_leyenda())
 
 
 # ── ensamblaje ──
@@ -761,7 +761,7 @@ def cajon_dominio_plan(plan: dict) -> str:
     <div class="qc-q">¿El cantón mantiene el rumbo hacia sus metas plurianuales, o se desvió en el camino?</div>
   </div>
   <div class="qc-body">
-    {_seccion('01', 'El dominio · qué es y cómo leerlo', _cabecera_plan(plan), _ley_esl(plan, 'poa', 'Fundamento jurídico aplicable'))}
+    {_seccion('01', 'Comprender este dominio', _cabecera_plan(plan), _ley_esl(plan, 'poa', 'Fundamento jurídico aplicable'))}
     {_seccion('02', 'El PDOT · documento rector del desarrollo cantonal', _pdot_rector(plan) + _cobertura(plan) + _alineacion_pnd(plan) + _tablas_plan(plan), _ley_esl(plan, 'presupuesto', 'Fundamento jurídico aplicable'), prov=prov('ana'))}
     {_seccion('03', 'La trazabilidad · metas del plan', '<p class="qc-p">Cada expediente es la <b>biografía de una meta</b>: su recorrido desde el plan hasta el gasto, y hasta dónde llega la cadena documental.</p><p class="qc-cap">No se eligen al azar: se muestran las metas de mayor <b>Valor Demostrativo</b> —el puntaje (0-100) que resume cuánto demuestra el método cada expediente: profundidad de la cadena documental, peso presupuestario y tipo de competencia. A mayor puntaje, más completa y probatoria es la trazabilidad.</p>' + _expedientes_metas(plan), _ley_esl(plan, 'pac', 'Fundamento jurídico aplicable'), prov=prov('doc'))}
     {_seccion('04', 'La coherencia · análisis preventivo', _coherencia(plan), _ley_esl(plan, 'gasto', 'Fundamento jurídico aplicable'), prov=prov('ana'))}
