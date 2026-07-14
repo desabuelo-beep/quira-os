@@ -135,6 +135,23 @@ def _backbone(plan: dict) -> str:
 
 
 # ── 02 · EL PLAN Y SU COBERTURA (embudo) ──
+def _pdot_rector(plan: dict) -> str:
+    """02 · El PDOT como documento RECTOR — relato (qué representa · cómo se construye · qué
+    significa) antes de la evidencia (Primacía Narrativa · directiva Javo). Cifras finas: en las
+    tablas desplegables y por año."""
+    mt = plan.get("metas_total", 25) or 25
+    vm = (plan.get("alineacion_pnd") or {}).get("vinculacion_media") or 0
+    return (
+        '<p class="qc-p">El <b>PDOT</b> —Plan de Desarrollo y Ordenamiento Territorial— es el <b>documento '
+        'rector</b> del cantón: la carta de navegación <b>2023-2027</b> que traduce la política pública en '
+        'compromisos verificables de desarrollo. Es el instrumento de <b>mayor jerarquía</b> de la planificación '
+        'local —todo lo que el municipio opera, presupuesta y contrata debe poder <b>remontarse a él</b>—.</p>'
+        f'<p class="qc-p">Se construye sobre <b>{mt} metas plurianuales</b>, repartidas por <b>competencia</b> '
+        '(exclusiva, concurrente y de articulación) y articuladas con los ejes del <b>Plan Nacional de '
+        f'Desarrollo</b> (vinculación media <b>{vm:.2f} sobre 1</b>). Lo que sigue muestra cómo ese plan '
+        '<b>aterriza</b> en la operación y con qué <b>coherencia</b>; su ejecución real se detalla por año.</p>')
+
+
 def _cobertura(plan: dict) -> str:
     mt = plan.get("metas_total", 25) or 25
     cob = plan.get("cobertura_metas_poa") or 0
@@ -147,8 +164,8 @@ def _cobertura(plan: dict) -> str:
     chips = "".join(f'<div class="qc-fchip"><span class="d" style="background:{cols[i%len(cols)]}"></span>'
                     f'<b>{c.get("n",0)}</b> {_esc(c.get("label",""))}</div>' for i, c in enumerate(comp))
     return (
-        f'<p class="qc-p">El plan cantonal fija <b>{mt} metas</b> plurianuales (PDOT 2023-2027). El primer eslabón '
-        f'de la trazabilidad es cuántas <b>bajan a la operación</b> anual (POA):</p>'
+        f'<p class="qc-p"><b>Cómo aterriza el plan.</b> El primer eslabón de la trazabilidad es cuántas de las '
+        f'<b>{mt} metas</b> <b>bajan a la operación</b> anual (POA):</p>'
         f'<div class="qc-embudo"><div class="qc-fhead"><span><b>{mt}</b> metas del plan</span>'
         f'<span class="ar">→</span><span><b>{n_cob}</b> con proyectos en el POA (<b>{cob:.0f}%</b>)</span></div>'
         f'<div class="qc-fbar">{seg}</div><div class="qc-fchips">{chips}</div>'
@@ -735,7 +752,7 @@ def cajon_dominio_plan(plan: dict) -> str:
   </div>
   <div class="qc-body">
     {_seccion('01', 'El dominio · qué es y cómo leerlo', _cabecera_plan(plan), _ley_esl(plan, 'poa', 'Fundamento jurídico aplicable'))}
-    {_seccion('02', 'El plan y su cobertura', _cobertura(plan) + _alineacion_pnd(plan) + _tablas_plan(plan), _ley_esl(plan, 'presupuesto', 'Fundamento jurídico aplicable'), prov=prov('ana'))}
+    {_seccion('02', 'El PDOT · documento rector del desarrollo cantonal', _pdot_rector(plan) + _cobertura(plan) + _alineacion_pnd(plan) + _tablas_plan(plan), _ley_esl(plan, 'presupuesto', 'Fundamento jurídico aplicable'), prov=prov('ana'))}
     {_seccion('03', 'La trazabilidad · metas del plan', '<p class="qc-p">Cada expediente es la <b>biografía de una meta</b>: su recorrido desde el plan hasta el gasto, y hasta dónde llega la cadena documental.</p><p class="qc-cap">No se eligen al azar: se muestran las metas de mayor <b>Valor Demostrativo</b> —el puntaje (0-100) que resume cuánto demuestra el método cada expediente: profundidad de la cadena documental, peso presupuestario y tipo de competencia. A mayor puntaje, más completa y probatoria es la trazabilidad.</p>' + _biografia_meta(plan) + _expedientes_metas(plan), _ley_esl(plan, 'pac', 'Fundamento jurídico aplicable'), prov=prov('doc'))}
     {_seccion('04', 'La coherencia · análisis preventivo', _coherencia(plan), _ley_esl(plan, 'gasto', 'Fundamento jurídico aplicable'), prov=prov('ana'))}
     {_seccion('05', 'Los ejercicios de gestión · por año y evaluación consolidada', _longitudinal_plan(plan), prov=prov('ana'))}
