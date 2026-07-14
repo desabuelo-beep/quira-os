@@ -97,40 +97,33 @@ def _m(v: float) -> str:
 
 
 # ── 01 · EL PROCEDIMIENTO — el backbone como biografía del plan ──
-_BACK = [  # (concepto, instrumento, pregunta, clase)
-    ("PDOT", "el plan", "¿qué se comprometió?", "src"),
-    ("POA", "la operación", "¿se programó?", ""),
+_BACK = [  # (concepto, instrumento, pregunta, clase) — cadena de EXTREMO A EXTREMO
+    ("Plan Nacional", "la política pública", "¿está alineado?", "src"),
+    ("PDOT", "el plan local", "¿qué se comprometió?", ""),
+    ("POA", "la operación anual", "¿se programó?", ""),
     ("Presupuesto", "el recurso", "¿se asignó?", ""),
-    ("PAC", "la contratación", "¿se contrató?", ""),
+    ("PAC", "la contratación", "¿se planificó comprar?", ""),
+    ("SERCOP", "la adjudicación", "¿se adjudicó?", ""),
     ("Ejecución", "el gasto", "¿se ejecutó?", "out"),
 ]
 
 
 def _backbone(plan: dict) -> str:
+    """01 · La cadena de extremo a extremo, EXPLICADA eslabón por eslabón (conceptual, sin cifras
+    — las cifras van por año). Dos planos (ADR-033): integridad documental + desempeño analítico."""
     nodos = []
     for i, (n, ins, q, cls) in enumerate(_BACK):
         if i:
             nodos.append('<div class="qc-conn"><div class="aw">→</div></div>')
         nodos.append(f'<div class="qc-blk {cls}"><div class="bl">{_esc(n)}</div>'
                      f'<div class="bsys">{_esc(ins)}</div><div class="bq">{_esc(q)}</div></div>')
-    pr = plan.get("presupuesto", {}) or {}
-    pac = plan.get("pac", {}) or {}
-    strip = [
-        ("PDOT", f'{plan.get("metas_total", 0)} metas', "2023-2027"),
-        ("POA", f'{len(plan.get("poa_proyectos", []))} proyectos', "operación anual"),
-        ("Presupuesto", _m(pr.get("codificado_inversion")), "codificado inversión"),
-        ("PAC", _m(pac.get("total_usd")), f'{pac.get("n_procesos", 0)} procesos'),
-        ("Ejecución", _m(pr.get("devengado")), f'{pr.get("ti_pct", 0)}% al corte'),
-    ]
-    si = "".join(f'<div class="pl-si"><div class="k">{_esc(k)}</div><div class="v">{_esc(v)}</div>'
-                 f'<div class="s">{_esc(s)}</div></div>' for k, v, s in strip)
     return (
-        '<p class="qc-p">La <b>planificación</b> no es un documento: es una <b>cadena</b> que debe sostenerse '
-        'del plan al gasto. QUIRA sigue la <b>biografía del plan</b> a través de los sistemas del Estado —cada '
-        'eslabón debe respaldar al siguiente—. Si la meta no baja al POA, o el POA no tiene presupuesto, o el '
-        'presupuesto no se contrata, la cadena se rompe: eso es una <b>brecha documentada</b>, no una inferencia.</p>'
-        f'<div class="qc-pipe">{"".join(nodos)}</div>'
-        f'<div class="pl-strip">{si}</div>')
+        '<p class="qc-p">La <b>planificación</b> no es un documento: es una <b>cadena</b> que va de la '
+        '<b>política pública nacional</b> hasta el <b>gasto ejecutado</b>. QUIRA la observa en <b>dos planos</b>: '
+        'su <b>integridad</b> —¿cada eslabón sostiene al siguiente, o hay una brecha documentada?— y su '
+        '<b>desempeño</b> —qué tan bien se ejecutó lo planificado—. Aquí se explica la cadena <b>de extremo a '
+        'extremo</b>, eslabón por eslabón; las cifras de cada ejercicio se detallan por año, más adelante.</p>'
+        f'<div class="qc-pipe">{"".join(nodos)}</div>')
 
 
 # ── 02 · EL PLAN Y SU COBERTURA (embudo) ──
