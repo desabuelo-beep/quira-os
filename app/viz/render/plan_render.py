@@ -47,6 +47,18 @@ _PLAN_EXTRA = """
 .pl-satc .sd{font-size:11.5px;color:var(--tx2);line-height:1.5}
 .pl-satc .sv{font-family:ui-monospace,monospace;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;float:right}
 @media(max-width:640px){.pl-sat{grid-template-columns:1fr}}
+/* Bloque primario por año (2025 cerrado · 2026 parcial) + gráfica de ejecución */
+.pl-yr{border:1px solid var(--bd);border-radius:9px;padding:13px 15px;background:var(--sf);margin:11px 0}
+.pl-yr.part{border-style:dashed}
+.pl-yr-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:9px}
+.pl-yr-y{font-family:Georgia,serif;font-size:16px;font-weight:700;color:var(--tx)}
+.pl-yr-st{font-family:ui-monospace,monospace;font-size:8px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 8px;border-radius:9px;border:1px solid;white-space:nowrap}
+.pl-bar-t{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:5px}
+.pl-bar-p{font-family:Georgia,serif;font-size:19px;font-weight:700}
+.pl-bar-m{font-family:ui-monospace,monospace;font-size:9.5px;color:var(--tx2)}
+.pl-bar-tk{height:11px;border-radius:6px;background:var(--bd);overflow:hidden}
+.pl-bar-fl{height:100%;border-radius:6px}
+.pl-yr-x{font-size:11px;color:var(--tx2);line-height:1.5;margin-top:8px}.pl-yr-x b{color:var(--tx)}
 """
 _ESL_CSS = """
 .qc-sint-b .pl-esl{display:flex;gap:13px;margin-bottom:11px;font-size:13px;line-height:1.62}
@@ -533,42 +545,61 @@ def _cadena_relacional(plan: dict) -> str:
     return intro + cadena_integridad(nodos, "Integridad de la cadena · fuente por fuente")
 
 
+def _ejec_col(p: float) -> str:
+    return "#22D3EE" if p >= 70 else ("#F9AB00" if p >= 55 else "#D93025")
+
+
+def _bloque_anio(e: dict, cerrado: bool) -> str:
+    """Bloque primario de un ejercicio: gráfica de ejecución (barra devengado/codificado) + lectura."""
+    p = e["pct"]
+    col = _ejec_col(p) if cerrado else "#9AA0A6"
+    w = max(2.0, min(100.0, p))
+    estado = "Cerrado" if cerrado else "Parcial · en curso"
+    ecol = "#1E8E3E" if cerrado else "#F9AB00"
+    mag = (f'${e["devengado"]/1e6:.1f}M de ${e["codif"]/1e6:.1f}M devengados'
+           if e.get("codif") and e.get("devengado") else "")
+    if cerrado:
+        x = (f'Ejercicio <b>cerrado y evaluable</b>: la inversión planificada se ejecutó al '
+             f'<b>{p:.1f}%</b>. El resto quedó comprometido o sin devengar al cierre fiscal.')
+    else:
+        x = (f'Ejercicio <b>en curso</b>: al corte lleva <b>{p:.1f}%</b> devengado sobre un plan de '
+             f'${e["codif"]/1e6:.1f}M. Es <b>parcial</b> — se lee aparte, no se compara con años cerrados.')
+    return (f'<div class="pl-yr{"" if cerrado else " part"}">'
+            f'<div class="pl-yr-h"><span class="pl-yr-y">Ejercicio {e["anio"]}</span>'
+            f'<span class="pl-yr-st" style="color:{ecol};border-color:{ecol}55;background:{ecol}14">{estado}</span></div>'
+            f'<div class="pl-bar-t"><span class="pl-bar-p" style="color:{col}">{p:.1f}%</span>'
+            f'<span class="pl-bar-m">{mag}</span></div>'
+            f'<div class="pl-bar-tk"><div class="pl-bar-fl" style="width:{w:.1f}%;background:{col}"></div></div>'
+            f'<div class="pl-yr-x">{x}</div></div>')
+
+
 def _longitudinal_plan(plan: dict) -> str:
-    """05 · La trayectoria en el tiempo + proyección (motor temporal → 5º motor Prospectivo).
-    Lee la serie del canon (H07b ejecución REAL 2023-2025 + H12c proyección); QUIRA la narra,
-    no la recalcula. Los ejercicios CRUZADOS en el cajón, como pidió la dirección."""
+    """05 · Los ejercicios de gestión — desagregados por año (último cerrado + en curso, cada uno
+    con su gráfica de ejecución) y luego la evaluación consolidada (trayectoria + prospectiva).
+    Estructura RDC pedida por la dirección: por año, luego consolidar. Dato real (H07b eSIGEF);
+    QUIRA lo narra, no lo recalcula."""
     sm = plan.get("serie_multianio") or {}
     ej = sm.get("ejecucion") or []
     cerr = [e for e in ej if e.get("cerrado")]
     if len(cerr) < 2:
         return ""
     curso = next((e for e in ej if not e.get("cerrado")), None)
+    ultimo, previos = cerr[-1], cerr[:-1]
 
-    def _col(p):
-        return "#22D3EE" if p >= 70 else ("#F9AB00" if p >= 55 else "#D93025")
+    intro = ('<p class="qc-p">Cada <b>ejercicio de gestión</b> por separado: el último <b>cerrado</b> '
+             '(evaluable completo) y el <b>en curso</b> (parcial). El dato es real —cédulas presupuestarias '
+             'eSIGEF—; la lectura, del observatorio.</p>')
 
-    cards = ""
-    for i, e in enumerate(cerr):
-        p = e["pct"]
-        delta = ""
-        if i > 0:
-            d = round(p - cerr[i - 1]["pct"], 1)
-            dc = "#1E8E3E" if d >= 0 else "#D93025"
-            delta = (f'<span style="font-family:ui-monospace,monospace;font-size:9px;color:{dc};'
-                     f'margin-left:5px">{"▲" if d >= 0 else "▼"}{abs(d)}pp</span>')
-        _mag = (f'<div style="font-size:9px;color:var(--tx2);margin-top:3px;font-family:ui-monospace,monospace">'
-                f'${e["devengado"]/1e6:.1f}M de ${e["codif"]/1e6:.1f}M</div>'
-                if e.get("codif") and e.get("devengado") else "")
-        cards += (f'<div class="pl-si"><div class="k">Ejercicio {e["anio"]}</div>'
-                  f'<div class="v" style="color:{_col(p)}">{p:.0f}%</div>'
-                  f'<div class="s">ejecución de la inversión{delta}</div>{_mag}</div>')
-    if curso:
-        _magc = (f'<div style="font-size:9px;color:var(--tx2);margin-top:3px;font-family:ui-monospace,monospace">'
-                 f'${curso["devengado"]/1e6:.1f}M de ${curso["codif"]/1e6:.1f}M</div>'
-                 if curso.get("codif") and curso.get("devengado") else "")
-        cards += (f'<div class="pl-si" style="border-style:dashed;opacity:.7"><div class="k">Ejercicio {curso["anio"]}</div>'
-                  f'<div class="v" style="color:var(--tx2)">{curso["pct"]:.0f}%</div>'
-                  f'<div class="s">en curso · parcial (no comparable)</div>{_magc}</div>')
+    foco = _bloque_anio(ultimo, True) + (_bloque_anio(curso, False) if curso else "")
+
+    ctx = ""
+    if previos:
+        cards = "".join(
+            f'<div class="pl-si"><div class="k">Ejercicio {e["anio"]}</div>'
+            f'<div class="v" style="color:{_ejec_col(e["pct"])}">{e["pct"]:.0f}%</div>'
+            f'<div class="s">ejecución (cerrado)</div></div>' for e in previos)
+        ctx = ('<div class="qc-cap" style="margin-top:15px">Ejercicios anteriores · contexto de trayectoria:</div>'
+               f'<div class="pl-strip">{cards}</div>')
 
     H = [h_serie("Trayectoria de la ejecución", [(e["anio"], e["pct"]) for e in cerr])]
     proy = sm.get("proyeccion") or {}
@@ -576,11 +607,10 @@ def _longitudinal_plan(plan: dict) -> str:
         med = proy.get("promedio")
         ancla = f"tendencia del período · media {med:.0f}%" if med else "tendencia del período"
         H.append(h_proyeccion("Proyección del próximo ejercicio completo", proy["proyeccion"], ancla))
+    cons = ('<div class="qc-cap" style="margin-top:16px"><b>Evaluación consolidada</b> — comparación, '
+            'patrón y prospectiva sobre los ejercicios cerrados:</div>' + _hallazgos_html(H))
 
-    intro = ('<p class="qc-p">Los ejercicios <b>cruzados en el tiempo</b>: cómo la planificación se convirtió en '
-             'ejecución, año a año. El dato es real —cédulas presupuestarias eSIGEF—; la lectura, del observatorio. '
-             'El ejercicio en curso se muestra aparte porque es parcial y no admite comparación.</p>')
-    return intro + f'<div class="pl-strip">{cards}</div>' + _hallazgos_html(H)
+    return intro + foco + ctx + cons
 
 
 # ── ensamblaje ──
@@ -606,7 +636,7 @@ def cajon_dominio_plan(plan: dict) -> str:
     {_seccion('02', 'El plan y su cobertura', _cobertura(plan), _ley_esl(plan, 'presupuesto', 'Fundamento jurídico aplicable'), prov=prov('ana'))}
     {_seccion('03', 'La trazabilidad · metas del plan', '<p class="qc-p">Cada expediente es la <b>biografía de una meta</b>: su recorrido desde el plan hasta el gasto, y hasta dónde llega la cadena documental.</p><p class="qc-cap">No se eligen al azar: se muestran las metas de mayor <b>Valor Demostrativo</b> —el puntaje (0-100) que resume cuánto demuestra el método cada expediente: profundidad de la cadena documental, peso presupuestario y tipo de competencia. A mayor puntaje, más completa y probatoria es la trazabilidad.</p>' + _biografia_meta(plan) + _expedientes_metas(plan), _ley_esl(plan, 'pac', 'Fundamento jurídico aplicable'), prov=prov('doc'))}
     {_seccion('04', 'La coherencia · análisis preventivo', _coherencia(plan), _ley_esl(plan, 'gasto', 'Fundamento jurídico aplicable'), prov=prov('ana'))}
-    {_seccion('05', 'La trayectoria en el tiempo · proyección', _longitudinal_plan(plan), prov=prov('ana'))}
+    {_seccion('05', 'Los ejercicios de gestión · por año y evaluación consolidada', _longitudinal_plan(plan), prov=prov('ana'))}
     {_seccion('06', 'La evaluación · hallazgos e implicaciones', '<p class="qc-p">Interpretación del dato —no una descripción—: el patrón que revela el análisis, y qué significa.</p>' + _hallazgos_html(_hallazgos_plan(plan)) + _implicaciones_plan(plan), prov=prov('int'))}
     {_sintesis_plan(plan)}
   </div>
