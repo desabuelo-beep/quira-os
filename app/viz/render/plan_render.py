@@ -679,7 +679,12 @@ def _longitudinal_plan(plan: dict) -> str:
              '(evaluable completo) y el <b>en curso</b> (parcial). El dato es real —cédulas presupuestarias '
              'eSIGEF—; la lectura, del observatorio.</p>')
 
-    foco = _bloque_anio(ultimo, True) + (_bloque_anio(curso, False) if curso else "")
+    bio = _biografia_meta(plan)   # la biografía (2025) baja a SU año — directiva Javo
+    foco = _bloque_anio(ultimo, True)
+    if bio:
+        foco += ('<div class="qc-cap" style="margin-top:8px">En profundidad · la <b>biografía de una meta</b> '
+                 'cerrada — del plan al contrato:</div>' + bio)
+    foco += (_bloque_anio(curso, False) if curso else "")
 
     ctx = ""
     if previos:
@@ -753,7 +758,7 @@ def cajon_dominio_plan(plan: dict) -> str:
   <div class="qc-body">
     {_seccion('01', 'El dominio · qué es y cómo leerlo', _cabecera_plan(plan), _ley_esl(plan, 'poa', 'Fundamento jurídico aplicable'))}
     {_seccion('02', 'El PDOT · documento rector del desarrollo cantonal', _pdot_rector(plan) + _cobertura(plan) + _alineacion_pnd(plan) + _tablas_plan(plan), _ley_esl(plan, 'presupuesto', 'Fundamento jurídico aplicable'), prov=prov('ana'))}
-    {_seccion('03', 'La trazabilidad · metas del plan', '<p class="qc-p">Cada expediente es la <b>biografía de una meta</b>: su recorrido desde el plan hasta el gasto, y hasta dónde llega la cadena documental.</p><p class="qc-cap">No se eligen al azar: se muestran las metas de mayor <b>Valor Demostrativo</b> —el puntaje (0-100) que resume cuánto demuestra el método cada expediente: profundidad de la cadena documental, peso presupuestario y tipo de competencia. A mayor puntaje, más completa y probatoria es la trazabilidad.</p>' + _biografia_meta(plan) + _expedientes_metas(plan), _ley_esl(plan, 'pac', 'Fundamento jurídico aplicable'), prov=prov('doc'))}
+    {_seccion('03', 'La trazabilidad · metas del plan', '<p class="qc-p">Cada expediente es la <b>biografía de una meta</b>: su recorrido desde el plan hasta el gasto, y hasta dónde llega la cadena documental.</p><p class="qc-cap">No se eligen al azar: se muestran las metas de mayor <b>Valor Demostrativo</b> —el puntaje (0-100) que resume cuánto demuestra el método cada expediente: profundidad de la cadena documental, peso presupuestario y tipo de competencia. A mayor puntaje, más completa y probatoria es la trazabilidad.</p>' + _expedientes_metas(plan), _ley_esl(plan, 'pac', 'Fundamento jurídico aplicable'), prov=prov('doc'))}
     {_seccion('04', 'La coherencia · análisis preventivo', _coherencia(plan), _ley_esl(plan, 'gasto', 'Fundamento jurídico aplicable'), prov=prov('ana'))}
     {_seccion('05', 'Los ejercicios de gestión · por año y evaluación consolidada', _longitudinal_plan(plan), prov=prov('ana'))}
     {_seccion('06', 'La evaluación · hallazgos e implicaciones', '<p class="qc-p">Interpretación del dato —no una descripción—: el patrón que revela el análisis, y qué significa.</p>' + _hallazgos_html(_hallazgos_plan(plan)) + _implicaciones_plan(plan), prov=prov('int'))}
