@@ -49,6 +49,8 @@ _DOMAINS_V2: list[dict[str, Any]] = [
         "concepto": "La consistencia entre lo que el cantón planificó a largo plazo "
                     "y los hitos que de verdad cumple — el rumbo, no el discurso.",
         "estado": "EN RUTA", "metric": "96%",
+        "metric_label": "Cobertura de metas · PDOT → POA",
+        "macro": ["Alineación al Plan Nacional: 83%", "Metas activas: 24 de 25 en ejecución"],
         "gancho": "¿El cantón mantiene el rumbo hacia sus metas plurianuales, o se desvió en el camino?",
         "temp": "verde", "mod": "ods",
     },
@@ -113,7 +115,9 @@ _DOMAINS_V2: list[dict[str, Any]] = [
         "id": "d09", "num": "09", "nombre": "Rendición de Cuentas",
         "concepto": "El nivel de verificabilidad pública del discurso: qué parte de lo que la "
                     "autoridad declara admite comprobación con registros oficiales independientes.",
-        "estado": "VERIFICABLE", "metric": "55%",
+        "estado": "CONSOLIDADO", "metric": "72.7%",
+        "metric_label": "Eficacia de ejecución · año cerrado 2025",
+        "macro": ["Inversión devengada: $12.7M de $17.5M", "Estatus: evaluado y consolidado"],
         "gancho": "¿Qué parte del discurso se comprueba con registros independientes y qué queda sin respaldo público?",
         "temp": "normal", "mod": "rdc",
     },
@@ -153,6 +157,11 @@ _DOMAINS_V2: list[dict[str, Any]] = [
         "temp": "dim", "mod": None, "disabled": True,
     },
 ]
+
+# Solo los DOM CURADOS son entrables; el resto queda BLOQUEADO (Javo 2026-07-14).
+_ENTRABLES = {"d01", "d09"}
+for _dm in _DOMAINS_V2:
+    _dm["disabled"] = _dm["id"] not in _ENTRABLES
 
 # Las 4 DIMENSIONES del sistema (lentes · NO contenido · NUNCA duplican los 13).
 # Ciclo: ¿Qué? (Gobierno) · ¿Dónde? (Territorio) · ¿Por qué? (Inteligencia) · ¿Con quién? (Convergencia).
@@ -395,8 +404,12 @@ def render() -> None:
                     ic, nm = st.columns([0.17, 0.83], gap="small")
                     with ic:
                         # Las 13 abren su investigación sobre el kernel (qinv · UMI)
-                        if st.button(icono, key=f"nav_{dom['id']}",
-                                     help=f"Entrar · {dom['nombre']}"):
+                        if dom.get("disabled"):
+                            st.markdown('<div style="font-size:18px;text-align:center;opacity:.4;'
+                                        'padding-top:6px" title="En preparación">🔒</div>',
+                                        unsafe_allow_html=True)
+                        elif st.button(icono, key=f"nav_{dom['id']}",
+                                       help=f"Entrar · {dom['nombre']}"):
                             _nav(f"qinv_{dom['id']}")
                     with nm:
                         st.markdown(
@@ -405,21 +418,40 @@ def render() -> None:
                             unsafe_allow_html=True,
                         )
                     # cuerpo: concepto (izq) | métrica + estado (der)
+                    _ms = str(metric).strip()
+                    barw = None
+                    if _ms.endswith("%"):
+                        try:
+                            barw = min(float(_ms[:-1]), 100)
+                        except ValueError:
+                            barw = None
+                    bar = (f'<div style="height:6px;border-radius:3px;background:rgba(255,255,255,.08);'
+                           f'margin-top:8px;overflow:hidden"><div style="height:100%;width:{barw:.0f}%;'
+                           f'background:{t["c"]};border-radius:3px"></div></div>') if barw is not None else ""
+                    _macro = dom.get("macro", [])
+                    if isinstance(_macro, str):
+                        _macro = [_macro] if _macro else []
+                    macro_html = ""
+                    if _macro:
+                        _lines = "".join(f'<div style="margin-top:2px">{m}</div>' for m in _macro)
+                        macro_html = (f'<div style="font-size:9.5px;color:#8494A8;line-height:1.5;'
+                                      f'border-top:1px solid rgba(255,255,255,.05);padding-top:6px;'
+                                      f'margin-top:8px">{_lines}</div>')
+                    _mlab = dom.get("metric_label", "")
+                    mlab_html = (f'<div style="font-size:8px;color:#7E8BA3;letter-spacing:.02em;'
+                                 f'margin-top:3px;line-height:1.3">{_mlab}</div>') if _mlab else ""
+                    # cuerpo: conceptualización (izq) | métrica + etiqueta + estado (der) + barra + data macro
                     st.markdown(
                         f'<div style="padding:6px 2px 0">'
-                        f'<div style="display:flex;gap:12px;align-items:flex-start;'
-                        f'margin-bottom:7px">'
+                        f'<div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:2px">'
                         f'<div style="flex:1;font-size:11px;color:#A8B4C8;'
                         f'line-height:1.45">{dom["concepto"]}</div>'
-                        f'<div style="text-align:right;flex-shrink:0;min-width:84px">'
+                        f'<div style="text-align:right;flex-shrink:0;min-width:100px">'
                         f'<div style="font-family:\'JetBrains Mono\',monospace;font-size:25px;'
                         f'font-weight:900;color:{t["c"]};line-height:1">{metric}</div>'
                         f'<div style="font-size:8.5px;font-weight:800;letter-spacing:.04em;'
-                        f'color:{t["c"]};margin-top:4px">● {estado}</div></div></div>'
-                        # pregunta estratégica al pie (itálica)
-                        f'<div style="font-size:10.5px;color:#7E8BA3;font-style:italic;'
-                        f'line-height:1.4;border-top:1px solid rgba(255,255,255,.05);'
-                        f'padding-top:6px">{dom["gancho"]}</div></div>',
+                        f'color:{t["c"]};margin-top:4px">● {estado}</div>{mlab_html}</div></div>'
+                        f'{bar}{macro_html}</div>',
                         unsafe_allow_html=True,
                     )
                     if dom.get("disabled"):
