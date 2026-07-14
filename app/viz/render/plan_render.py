@@ -404,60 +404,57 @@ def _implicaciones_plan(plan: dict) -> str:
 
 
 def _sintesis_plan(plan: dict) -> str:
-    """Síntesis del dominio, eslabón por eslabón — registro de observatorio nacional (Javo · lenguaje elevado).
-    Incorpora al cajón el cierre que antes flotaba sin formato (portado de m_planificacion._cierre)."""
+    """Conclusión Ejecutiva — DICTAMEN, no re-explicación (colega 10 · Javo 2026-07-14). Cita lo ya
+    demostrado (dialoga) y emite un juicio en la voz de una Dirección de Planificación."""
     metas = plan.get("metas_detalle", [])
-    comp = plan.get("competencia", [])
-    criticas = sum(c["n"] for c in comp if "Crítica" in c["label"])
     cob = plan.get("cobertura_metas_poa") or 0
-    proys = plan.get("poa_proyectos", [])
-    tpoa = sum(x.get("anual", 0) for x in proys)
     pr = plan.get("presupuesto", {}) or {}
-    pac_total = (plan.get("pac", {}) or {}).get("total_usd", 0) or 0
-    pub_pct = ((plan.get("publicado", {}) or {}).get("cruce", {}) or {}).get("cobertura_pct", 0)
-    cod = pr.get("codificado_inversion", 0) or 0
-    dev = pr.get("devengado", 0) or 0
     ti = pr.get("ti_pct", 0)
     ipe = (plan.get("ipe_ejecutado") or {}).get("pct", 0)
 
-    filas = [
-        ("Plan · PDOT",
-         f"El instrumento rector de la planificación cantonal fija <b>{len(metas)} metas plurianuales</b>, "
-         f"<b>{criticas} en competencias de ejercicio obligatorio</b>. El <b>{cob:.0f}%</b> ya desciende a la "
-         f"programación operativa del ejercicio: la planificación estratégica encuentra correlato en la gestión y "
-         f"no permanece en el plano declarativo."),
-        ("Operación · POA",
-         f"La programación operativa anual desagrega el plan en <b>{len(proys)} proyectos</b> por <b>${tpoa/1e6:.1f}M</b>, "
-         f"cada uno con dirección responsable, partida presupuestaria y cronograma: el vínculo formal entre el "
-         f"objetivo estratégico y el recurso que lo hace ejecutable."),
-        ("Contratación · PAC",
-         f"La contratación planificada asciende a <b>${pac_total/1e6:.1f}M</b> —el <b>98.6%</b> de la inversión "
-         f"presupuestada—; el <b>{pub_pct}%</b> se ha materializado en el portal de compras públicas al corte. El "
-         f"nivel corresponde al primer cuatrimestre: la ejecución del gasto de inversión se concentra "
-         f"estructuralmente en el segundo semestre."),
-        ("Recurso · Presupuesto",
-         f"La inversión codificada alcanza <b>${cod/1e6:.1f}M</b>, con <b>${dev/1e6:.2f}M</b> devengados (<b>{ti}%</b>) "
-         f"al corte —fase inicial del ejercicio, de carga diferida característica del gasto de inversión."),
-        ("Calidad · Gasto vinculado",
-         f"El <b>{ipe:.1f}%</b> de la inversión ya ejecutada se imputa a una meta del plan a través de su partida: "
-         f"el recurso se asigna <b>conforme a lo planificado</b> y no por decisión discrecional —un indicador de "
-         f"calidad del gasto, no solo de su volumen."),
-        ("Prevención · Coherencia",
-         "El análisis preventivo sobre la alineación entre plan y contratación permanece activo: su propósito es "
-         "<b>cerrar la coherencia antes de la ejecución</b>, no constatar el incumplimiento una vez consumado."),
-    ]
-    sint = "".join(f'<div class="pl-esl"><span class="lb">{_esc(lb)}</span><span class="tx">{tx}</span></div>'
-                   for lb, tx in filas)
-    cierre = ('<div class="qc-sr-cierre">En conjunto, <b>el plan sostiene su diseño</b>: la correspondencia entre lo '
-              'planificado, lo presupuestado y lo contratado es consistente, y la inversión ya ejecutada es de alta '
-              'calidad por su vínculo con las metas. La atención que amerita el período es de naturaleza <b>preventiva, '
-              'no correctiva</b>: reside en que la contratación y la ejecución recuperen ritmo en el segundo semestre '
-              'para alcanzar la asignación presupuestaria antes del cierre, de modo que los compromisos del PDOT no se '
-              'erosionen en el tránsito de la planificación al gasto. Observar esa cadena de extremo a extremo —de la '
-              'meta al recurso ejecutado— es, precisamente, la función del observatorio.</div>')
-    return (f'<div class="qc-sint"><div class="qc-sint-lbl">Síntesis ejecutiva del dominio — Planificación · '
-            f'Montecristi · corte {_esc(pr.get("corte",""))}</div><div class="qc-sint-b">{sint}{cierre}'
+    dictamen = (
+        '<div class="qc-sr-cierre">El análisis documental evidencia que el <b>sistema de planificación del GAD '
+        f'mantiene una elevada consistencia estructural</b>: el <b>{cob:.0f}%</b> de las {len(metas)} metas del '
+        f'PDOT desciende a la programación operativa, y el <b>{ipe:.0f}%</b> de la inversión ejecutada se imputa a '
+        'una meta del plan —el recurso se asigna conforme a lo planificado, no de forma discrecional—. <b>Las '
+        'alertas del período no residen en la formulación estratégica</b> —que es sólida— <b>sino en el ritmo</b> '
+        f'con que la planificación se transforma en contratación y ejecución: la inversión avanza en el <b>{ti}%</b> '
+        'al corte, propio de la fase inicial del ejercicio y de la carga diferida del gasto de inversión. En '
+        'consecuencia, la atención del período es <b>preventiva, no correctiva</b>: sostener la coherencia de la '
+        'cadena para que la contratación y el devengo recuperen ritmo antes del cierre fiscal, de modo que los '
+        'compromisos del PDOT no se erosionen en el tránsito de la planificación al gasto.</div>')
+    return (f'<div class="qc-sint"><div class="qc-sint-lbl">Conclusión Ejecutiva — Dirección de Planificación · '
+            f'Montecristi · corte {_esc(pr.get("corte",""))}</div><div class="qc-sint-b">{dictamen}'
             f'<div class="qc-fuente">Fuentes: PDOT 2023-2027 · POA · Presupuesto (cédula eSIGEF) · PAC · SERCOP.</div></div></div>')
+
+
+def _cadena_plan_gasto(plan: dict) -> str:
+    """La cadena del plan al gasto · 2025 — AGGREGATE, EN PLATA y HASTA lo ejecutado (Javo + académico
+    2026-07-14): PDOT → POA → Presupuesto → PAC → Ejecución. Reemplaza la biografía per-meta (unidades
+    confusas — mezclaba actividades/partidas/$/procesos y no llegaba a la ejecución). Ejecución a nivel
+    de DOMINIO (ADR-032 · la partida se comparte entre metas, no se finge por meta)."""
+    metas = plan.get("metas_total", 25)
+    nproy = len(plan.get("poa_proyectos", []))
+    pac = plan.get("pac", {}) or {}
+    e = next((x for x in (plan.get("serie_multianio", {}).get("ejecucion", []) or [])
+              if x.get("anio") == 2025), {})
+    codif, dev, ti = e.get("codif", 0), e.get("devengado", 0), e.get("pct", 0)
+    nodos = [
+        {"sys": "PDOT", "label": f"{metas} metas del plan",
+         "edge": {"estado": "verificado", "nota": "las metas descienden a la operación anual (POA)"}},
+        {"sys": "POA", "label": f"{nproy} proyectos",
+         "edge": {"estado": "verificado", "nota": "cada proyecto con su partida presupuestaria"}},
+        {"sys": "PRESUPUESTO", "label": f"${codif / 1e6:.1f}M codificado",
+         "edge": {"estado": "verificado", "nota": "recurso planificado para la contratación"}},
+        {"sys": "PAC", "label": f"{pac.get('n_procesos', 0)} procesos",
+         "edge": {"estado": "verificado" if ti >= 70 else "parcial", "pct": ti,
+                  "nota": "de la inversión codificada, cuánto se devengó al cierre"}},
+        {"sys": "EJECUCIÓN", "label": f"${dev / 1e6:.1f}M devengado"},
+    ]
+    intro = ('<p class="qc-cap">La cadena completa del <b>plan al gasto</b>, en plata y hasta lo <b>ejecutado</b> '
+             'en territorio: del compromiso del PDOT a la inversión devengada. La ejecución se reporta a '
+             '<b>nivel de dominio</b> —la partida presupuestaria se comparte entre metas, no se finge por meta.</p>')
+    return intro + cadena_integridad(nodos, "La cadena del plan al gasto · 2025 (año cerrado)")
 
 
 def _biografia_meta(plan: dict) -> str:
@@ -782,7 +779,7 @@ def _seccion_anio_cerrado(plan: dict):
         'plan al gasto. Aquí, cómo ejecutó su inversión, la vida documental de una de sus metas, y los '
         'expedientes de mayor valor probatorio.</p>'
         + '<div class="qc-subh">La ejecución del ejercicio</div>' + _bloque_anio(e, True)
-        + '<div class="qc-subh">La biografía de una meta · del plan al contrato</div>' + _biografia_meta(plan)
+        + '<div class="qc-subh">La cadena del plan al gasto · en plata, hasta lo ejecutado</div>' + _cadena_plan_gasto(plan)
         + '<div class="qc-subh">Los expedientes de mayor valor demostrativo</div>'
         '<p class="qc-cap">Se muestran las metas de mayor <b>Valor Demostrativo</b> (0-100): profundidad de la '
         'cadena documental, peso presupuestario y tipo de competencia.</p>' + _expedientes_metas(plan))
