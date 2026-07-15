@@ -106,18 +106,18 @@ def build_block() -> dict:
         nivel, col, gloss = _NIVEL.get(sc, ("Sin correspondencia", "#D93025", ""))
         eje = str(r[1] or "").strip()
         ejes[eje] = ejes.get(eje, 0) + 1
-        # NIVEL DE VERIFICACIÓN (Principio Rector · instrucción del canon 2026-07-15):
-        # EC/IN/SC = vinculación contrastada contra el documento del CNE (verificada).
-        # PR-xx    = meta asignada pero "Pendiente detalle CNE" → asignada, NO verificada.
-        # Tener meta ≠ estar verificada: la diferencia se DECLARA, no se disimula.
-        verificada = not pid.startswith("PR-")
+        # NIVEL DE VERIFICACIÓN — se LEE del canon (col G · curada por Javo 2026-07-15).
+        # Antes se INFERÍA del prefijo del ID ("PR-" = pendiente): eso nacía en Python y violaba
+        # la Regla 9. El DOM reveló el defecto y el canon lo absorbió: ahora el estado es dato.
+        estado_canon = str(r[6] or "").strip() if len(r) > 6 else ""
+        verificada = estado_canon.lower().startswith("verific")
         promesas.append({
             "id": pid, "eje": eje, "promesa": desc[:150],
             "meta": meta if meta and meta not in ("—", "-") else "",
             "nivel": nivel, "color": col, "glosa": gloss,
             "tipo": tipo if _fw(tipo) else "", "score": sc if sc is not None else 0,
             "verificada": verificada,
-            "estado": "Vinculación verificada" if verificada else "Pendiente de contraste documental",
+            "estado": estado_canon if _fw(estado_canon) else "",
         })
 
     # LAS DOS VERDADES (familia de fidelidad · aporte del colega 2026-07-15):

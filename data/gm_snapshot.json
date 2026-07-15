@@ -6663,7 +6663,7 @@
         "tipo": "Directa",
         "score": 1.0,
         "verificada": true,
-        "estado": "Vinculación verificada"
+        "estado": "Verificada"
       },
       {
         "id": "EC-002",
@@ -6676,7 +6676,7 @@
         "tipo": "Directa",
         "score": 1.0,
         "verificada": true,
-        "estado": "Vinculación verificada"
+        "estado": "Verificada"
       },
       {
         "id": "EC-003",
@@ -6689,7 +6689,7 @@
         "tipo": "Directa con matiz",
         "score": 0.75,
         "verificada": true,
-        "estado": "Vinculación verificada"
+        "estado": "Verificada"
       },
       {
         "id": "EC-004",
@@ -6702,7 +6702,7 @@
         "tipo": "Parcial",
         "score": 0.5,
         "verificada": true,
-        "estado": "Vinculación verificada"
+        "estado": "Verificada"
       },
       {
         "id": "EC-005",
@@ -6715,7 +6715,7 @@
         "tipo": "Sin vínculo",
         "score": 0.0,
         "verificada": true,
-        "estado": "Vinculación verificada"
+        "estado": "Verificada"
       },
       {
         "id": "IN-001",
@@ -6728,7 +6728,7 @@
         "tipo": "Directa",
         "score": 1.0,
         "verificada": true,
-        "estado": "Vinculación verificada"
+        "estado": "Verificada"
       },
       {
         "id": "IN-002",
@@ -6741,7 +6741,7 @@
         "tipo": "Directa",
         "score": 1.0,
         "verificada": true,
-        "estado": "Vinculación verificada"
+        "estado": "Verificada"
       },
       {
         "id": "IN-003",
@@ -6754,7 +6754,7 @@
         "tipo": "Directa con matiz",
         "score": 0.75,
         "verificada": true,
-        "estado": "Vinculación verificada"
+        "estado": "Verificada"
       },
       {
         "id": "IN-004",
@@ -6767,7 +6767,7 @@
         "tipo": "Directa",
         "score": 1.0,
         "verificada": true,
-        "estado": "Vinculación verificada"
+        "estado": "Verificada"
       },
       {
         "id": "IN-005",
@@ -6780,7 +6780,7 @@
         "tipo": "Parcial",
         "score": 0.5,
         "verificada": true,
-        "estado": "Vinculación verificada"
+        "estado": "Verificada"
       },
       {
         "id": "IN-006",
@@ -6793,7 +6793,7 @@
         "tipo": "Sin vínculo",
         "score": 0.0,
         "verificada": true,
-        "estado": "Vinculación verificada"
+        "estado": "Verificada"
       },
       {
         "id": "SC-001",
@@ -6806,7 +6806,7 @@
         "tipo": "Directa",
         "score": 1.0,
         "verificada": true,
-        "estado": "Vinculación verificada"
+        "estado": "Verificada"
       },
       {
         "id": "SC-002",
@@ -6819,7 +6819,7 @@
         "tipo": "Directa",
         "score": 1.0,
         "verificada": true,
-        "estado": "Vinculación verificada"
+        "estado": "Verificada"
       },
       {
         "id": "SC-003",
@@ -6832,7 +6832,7 @@
         "tipo": "Directa con matiz",
         "score": 0.75,
         "verificada": true,
-        "estado": "Vinculación verificada"
+        "estado": "Verificada"
       },
       {
         "id": "SC-004",
@@ -6845,7 +6845,7 @@
         "tipo": "Directa con matiz",
         "score": 0.75,
         "verificada": true,
-        "estado": "Vinculación verificada"
+        "estado": "Verificada"
       },
       {
         "id": "SC-005",
@@ -6858,7 +6858,7 @@
         "tipo": "Directa",
         "score": 1.0,
         "verificada": true,
-        "estado": "Vinculación verificada"
+        "estado": "Verificada"
       },
       {
         "id": "SC-006",
@@ -6871,7 +6871,7 @@
         "tipo": "Directa con matiz",
         "score": 0.75,
         "verificada": true,
-        "estado": "Vinculación verificada"
+        "estado": "Verificada"
       },
       {
         "id": "SC-007",
@@ -6884,7 +6884,7 @@
         "tipo": "Directa",
         "score": 1.0,
         "verificada": true,
-        "estado": "Vinculación verificada"
+        "estado": "Verificada"
       },
       {
         "id": "SC-008",
@@ -6897,7 +6897,7 @@
         "tipo": "Parcial",
         "score": 0.5,
         "verificada": true,
-        "estado": "Vinculación verificada"
+        "estado": "Verificada"
       },
       {
         "id": "SC-009",
@@ -6910,7 +6910,7 @@
         "tipo": "Parcial",
         "score": 0.5,
         "verificada": true,
-        "estado": "Vinculación verificada"
+        "estado": "Verificada"
       },
       {
         "id": "PR-21",
@@ -6923,7 +6923,7 @@
         "tipo": "Directa con matiz",
         "score": 0.75,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-22",
@@ -6936,7 +6936,7 @@
         "tipo": "Directa",
         "score": 1.0,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-23",
@@ -6949,7 +6949,7 @@
         "tipo": "Directa con matiz",
         "score": 0.75,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-24",
@@ -6962,7 +6962,7 @@
         "tipo": "Parcial",
         "score": 0.5,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-25",
@@ -6975,7 +6975,7 @@
         "tipo": "Directa",
         "score": 1.0,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-26",
@@ -6988,7 +6988,7 @@
         "tipo": "Directa",
         "score": 1.0,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-27",
@@ -7001,7 +7001,7 @@
         "tipo": "Directa con matiz",
         "score": 0.75,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-28",
@@ -7014,7 +7014,7 @@
         "tipo": "Directa con matiz",
         "score": 0.75,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-29",
@@ -7027,7 +7027,7 @@
         "tipo": "Directa con matiz",
         "score": 0.75,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-30",
@@ -7040,7 +7040,7 @@
         "tipo": "Parcial",
         "score": 0.5,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-31",
@@ -7053,7 +7053,7 @@
         "tipo": "Directa",
         "score": 1.0,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-32",
@@ -7066,7 +7066,7 @@
         "tipo": "Parcial",
         "score": 0.5,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-33",
@@ -7079,7 +7079,7 @@
         "tipo": "Parcial",
         "score": 0.5,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-34",
@@ -7092,7 +7092,7 @@
         "tipo": "Directa con matiz",
         "score": 0.75,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-35",
@@ -7105,7 +7105,7 @@
         "tipo": "Parcial",
         "score": 0.5,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-36",
@@ -7118,7 +7118,7 @@
         "tipo": "Directa con matiz",
         "score": 0.75,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-37",
@@ -7131,7 +7131,7 @@
         "tipo": "Directa con matiz",
         "score": 0.75,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-38",
@@ -7144,7 +7144,7 @@
         "tipo": "Parcial",
         "score": 0.5,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-39",
@@ -7157,7 +7157,7 @@
         "tipo": "Directa",
         "score": 1.0,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-40",
@@ -7170,7 +7170,7 @@
         "tipo": "Directa con matiz",
         "score": 0.75,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-41",
@@ -7183,7 +7183,7 @@
         "tipo": "Directa con matiz",
         "score": 0.75,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-42",
@@ -7196,7 +7196,7 @@
         "tipo": "Directa con matiz",
         "score": 0.75,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-43",
@@ -7209,7 +7209,7 @@
         "tipo": "Directa con matiz",
         "score": 0.75,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-44",
@@ -7222,7 +7222,7 @@
         "tipo": "Parcial",
         "score": 0.5,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-45",
@@ -7235,7 +7235,7 @@
         "tipo": "Directa con matiz",
         "score": 0.75,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-46",
@@ -7248,7 +7248,7 @@
         "tipo": "Parcial",
         "score": 0.5,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-47",
@@ -7261,7 +7261,7 @@
         "tipo": "Directa",
         "score": 1.0,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-48",
@@ -7274,7 +7274,7 @@
         "tipo": "Directa con matiz",
         "score": 0.75,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-49",
@@ -7287,7 +7287,7 @@
         "tipo": "Directa",
         "score": 1.0,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-50",
@@ -7300,7 +7300,7 @@
         "tipo": "Directa con matiz",
         "score": 0.75,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-51",
@@ -7313,7 +7313,7 @@
         "tipo": "Directa con matiz",
         "score": 0.75,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-52",
@@ -7326,7 +7326,7 @@
         "tipo": "Directa",
         "score": 1.0,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-53",
@@ -7339,7 +7339,7 @@
         "tipo": "Parcial",
         "score": 0.5,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-54",
@@ -7352,7 +7352,7 @@
         "tipo": "Parcial",
         "score": 0.5,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-55",
@@ -7365,7 +7365,7 @@
         "tipo": "Directa con matiz",
         "score": 0.75,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-56",
@@ -7378,7 +7378,7 @@
         "tipo": "Directa",
         "score": 1.0,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-57",
@@ -7391,7 +7391,7 @@
         "tipo": "Directa con matiz",
         "score": 0.75,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-58",
@@ -7404,7 +7404,7 @@
         "tipo": "Parcial",
         "score": 0.5,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-59",
@@ -7417,7 +7417,7 @@
         "tipo": "Directa con matiz",
         "score": 0.75,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-60",
@@ -7430,7 +7430,7 @@
         "tipo": "Parcial",
         "score": 0.5,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-61",
@@ -7443,7 +7443,7 @@
         "tipo": "Directa",
         "score": 1.0,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-62",
@@ -7456,7 +7456,7 @@
         "tipo": "Directa",
         "score": 1.0,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-63",
@@ -7469,7 +7469,7 @@
         "tipo": "Directa con matiz",
         "score": 0.75,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-64",
@@ -7482,7 +7482,7 @@
         "tipo": "Parcial",
         "score": 0.5,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-65",
@@ -7495,7 +7495,7 @@
         "tipo": "Directa con matiz",
         "score": 0.75,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       },
       {
         "id": "PR-66",
@@ -7508,7 +7508,7 @@
         "tipo": "Directa con matiz",
         "score": 0.75,
         "verificada": false,
-        "estado": "Pendiente de contraste documental"
+        "estado": "Pendiente detalle CNE"
       }
     ],
     "autoridades": {
