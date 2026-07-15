@@ -457,6 +457,51 @@ def _conclusion(snap: dict, m: dict, serie: list | None = None) -> str:
             f'<div class="qc-fuente">Fuentes: {fuentes}.</div></div></div>')
 
 
+_FOLD_CSS = (
+    ".qc-fold{margin:11px 0 2px;border:1px solid var(--bd);border-radius:8px;overflow:hidden}"
+    ".qc-fold>summary{cursor:pointer;padding:9px 13px;font-family:ui-monospace,monospace;font-size:10px;"
+    "font-weight:700;letter-spacing:.03em;color:var(--tx2);background:var(--sf);list-style:none}"
+    ".qc-fold>summary::-webkit-details-marker{display:none}"
+    ".qc-fold>summary::before{content:'\\25B8  '}.qc-fold[open]>summary::before{content:'\\25BE  '}"
+    ".qc-foldw{overflow-x:auto}.qc-foldt{width:100%;border-collapse:collapse;font-size:11px}"
+    ".qc-foldt th{text-align:left;padding:7px 13px;color:var(--tx2);font-family:ui-monospace,monospace;"
+    "font-size:8px;text-transform:uppercase;letter-spacing:.05em;border-top:1px solid var(--bd);white-space:nowrap}"
+    ".qc-foldt td{padding:7px 13px;color:var(--tx2);border-top:1px solid var(--bd)}"
+    ".qc-foldt td:first-child{color:var(--tx)}"
+    ".qc-foldt td.n{text-align:right;font-family:ui-monospace,monospace;font-weight:700;color:var(--tx)}"
+)
+
+
+def _tabla_fold(summary: str, headers: list, filas: list) -> str:
+    """Tabla como EVIDENCIA bajo demanda (Primacía Narrativa · patrón desplegable). Cada fila es una
+    lista de celdas (texto, clase). No es protagonista: se abre con clic."""
+    if not filas:
+        return ""
+    th = "".join(f"<th>{_esc(h)}</th>" for h in headers)
+    cuerpo = "".join("<tr>" + "".join(f'<td class="{c}">{_esc(v)}</td>' for v, c in fila) + "</tr>" for fila in filas)
+    return (f'<details class="qc-fold"><summary>{_esc(summary)}</summary>'
+            f'<div class="qc-foldw"><table class="qc-foldt"><thead><tr>{th}</tr></thead>'
+            f'<tbody>{cuerpo}</tbody></table></div></details>')
+
+
+def _evidencia_por_eje(snap: dict) -> str:
+    """Tabla de evidencia (Javo · como Planificación): distribución de las afirmaciones por área de
+    gestión y cuántas tienen prueba independiente. Dato del snapshot; no se protagoniza."""
+    pe = snap.get("por_eje", {}) or {}
+    if not pe:
+        return ""
+    filas = []
+    for eje, v in sorted(pe.items(), key=lambda kv: -((kv[1] or {}).get("n", 0) or 0)):
+        v = v or {}
+        n = v.get("n", 0) or 0
+        ind = v.get("independiente", 0) or 0
+        pct = round(100 * ind / n) if n else 0
+        filas.append([(eje.replace("_", " ").capitalize(), ""), (str(n), "n"), (str(ind), "n"), (f"{pct}%", "n")])
+    tabla = _tabla_fold("Ver el detalle por área de gestión",
+                        ["Área de gestión", "Afirmaciones", "Con prueba independiente", "Verificable"], filas)
+    return '<div class="qc-subh">La evidencia por área de gestión</div>' + tabla
+
+
 # ─────────────────────────── ensamblaje ───────────────────────────
 def _analisis_anio(snap: dict, n: int) -> str:
     """Bloque de análisis de UN ejercicio (embudo + resultado + expedientes) — se repite por año.
@@ -465,7 +510,8 @@ def _analisis_anio(snap: dict, n: int) -> str:
     cuerpo = ('<div class="qc-subh">Qué entró al análisis</div>'
               + _embudo(snap.get("embudo", {}), breve=True)
               + '<div class="qc-subh">Qué pudo verificarse</div>' + _resultado(snap, m)
-              + '<div class="qc-subh">Los expedientes</div>' + _expedientes(snap))
+              + '<div class="qc-subh">Los expedientes</div>' + _expedientes(snap)
+              + _evidencia_por_eje(snap))
     return _seccion(f'0{n}', f'Ejercicio Fiscal {m.get("año")} · {m.get("autoridad")}', cuerpo, cls="qc-anio", prov=prov('doc'))
 
 
@@ -764,7 +810,7 @@ details.qc-law[open] summary{margin-bottom:7px}
 .qc-placa-s{font-size:12px;color:var(--tx2);margin-top:9px}
 @media(max-width:640px){.qc-exps,.qc-evs{grid-template-columns:1fr}.qc-lbl{width:150px}}
 </style>"""
-_CSS = _CSS.replace("</style>", PROV_CSS + "</style>")   # proveniencia (ADR-033 · compartido)
+_CSS = _CSS.replace("</style>", PROV_CSS + _FOLD_CSS + "</style>")   # proveniencia + tabla plegable (compartido)
 
 
 if __name__ == "__main__":
