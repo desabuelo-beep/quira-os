@@ -183,6 +183,24 @@ def _procedimiento(marco: dict) -> str:
         + _ley(marco, '01_triangulacion') + _ley(marco, '02_suficiencia_probatoria', 'Suficiencia probatoria'))
 
 
+def _leyenda_niveles() -> str:
+    """El SEMÁFORO de la evidencia — qué dice cada color (cómo leer los resultados de RDC · Javo 2026-07-14).
+    Reusa el contenedor de leyenda de la proveniencia (qc-provl), con un cuadro de color por nivel."""
+    niveles = [
+        ("#1E8E3E", "Prueba independiente", "verificable con un registro público que la autoridad NO controla"),
+        ("#1A73E8", "Autocertificación", "declarado solo en el informe propio del GAD, sin un tercero que lo confirme"),
+        ("#F9AB00", "Prueba parcial", "hay rastro, pero la cadena documental no se sostiene completa"),
+        ("#9AA0A6", "Sin respaldo público", "no existe registro público que lo compruebe — ausencia declarada"),
+        ("#D93025", "Prueba en contrario", "el registro público contradice lo afirmado"),
+    ]
+    filas = "".join(
+        f'<div class="qc-provl-i"><span style="width:11px;height:11px;border-radius:3px;background:{c};'
+        f'display:inline-block;flex:none"></span><span><b style="color:var(--tx)">{lbl}</b> — {desc}</span></div>'
+        for c, lbl, desc in niveles)
+    return ('<div class="qc-provl" style="margin-top:12px"><div class="qc-provl-t">El semáforo de la evidencia · '
+            f'qué dice cada color</div>{filas}</div>')
+
+
 # ─────────────────────────── 02 · EL RESULTADO ───────────────────────────
 def _resultado(snap: dict, m: dict) -> str:
     r = snap["resumen"]
@@ -568,7 +586,7 @@ def cajon_dominio_rdc(serie: list, rdc_serie: list | None = None, doc: dict | No
     ref = serie[-1]
     m, marco = ref["meta"], ref.get("marco_legal", {})
     bloques, n = [], 1
-    bloques.append(_seccion(f'0{n}', 'Cómo leer este dominio · el procedimiento', prov_leyenda() + _procedimiento(marco))); n += 1
+    bloques.append(_seccion(f'0{n}', 'Cómo leer este dominio · el procedimiento', prov_leyenda() + _procedimiento(marco) + _leyenda_niveles())); n += 1
     serie_html = _rendicion_en_tiempo(rdc_serie or [])
     if serie_html:                                            # LA RENDICIÓN EN EL TIEMPO como introducción (Javo)
         bloques.append(_seccion(f'0{n}', 'La rendición en el tiempo · los ejercicios del período', serie_html)); n += 1
