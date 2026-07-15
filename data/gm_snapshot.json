@@ -6564,25 +6564,28 @@
         {
           "nombre": "Reforma presupuestaria tardía",
           "estado": "sin_senal",
+          "norma": "COPFP Art. 115",
+          "regla": "las reformas no deben superar el 5% del presupuesto anual",
           "indicador": "0% del presupuesto reformado",
           "umbral": "máx 5%",
-          "norma": "COPFP Art. 115",
           "vigila": "reformas significativas fuera del cronograma anual — señal de programación inestable"
         },
         {
           "nombre": "Parálisis presupuestaria",
           "estado": "sin_senal",
+          "norma": "COPFP Art. 113",
+          "regla": "ninguna meta debe ejecutar menos del 10% de lo asignado",
           "indicador": "0 meta(s) en parálisis",
           "umbral": "ejecución mínima 10%",
-          "norma": "COPFP Art. 113",
           "vigila": "metas cuya ejecución financiera se estanca bajo el mínimo — riesgo de subejecución"
         },
         {
           "nombre": "Alerta fiscal · estructura COOTAD",
           "estado": "sin_senal",
+          "norma": "COOTAD Art. 192",
+          "regla": "la inversión no debe caer bajo el 65% del presupuesto",
           "indicador": "estructura inversión/corriente conforme",
           "umbral": "inversión ≥ 65% del presupuesto",
-          "norma": "COOTAD Art. 192",
           "vigila": "que la inversión no caiga bajo el mínimo legal frente al gasto corriente"
         }
       ],

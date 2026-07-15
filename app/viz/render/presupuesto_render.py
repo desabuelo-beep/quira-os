@@ -60,6 +60,11 @@ _D02_CSS = (
     ".d2-sat-x{font-size:11.5px;color:var(--tx2);line-height:1.45;margin:3px 0 6px}"
     ".d2-sat-m{font-size:11px;color:var(--tx2)}.d2-sat-m b{color:var(--tx)}"
     ".d2-sat-n{font-family:ui-monospace,monospace;font-size:10px;color:var(--tx2)}"
+    ".d2-cad{display:flex;flex-wrap:nowrap;align-items:stretch;gap:0;margin-top:9px;overflow-x:auto;padding-bottom:2px}"
+    ".d2-cad-n{flex:0 0 auto;border:1px solid var(--bd);border-radius:6px;padding:6px 10px;background:var(--sf);font-size:11px;color:var(--tx);line-height:1.3;max-width:200px}"
+    ".d2-cad-n .k{display:block;font-family:ui-monospace,monospace;font-size:7.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--tx2);margin-bottom:2px}"
+    ".d2-cad-n.law{border-color:var(--law);border-left-width:3px}.d2-cad-n.est{font-weight:700}"
+    ".d2-cad-a{flex:0 0 auto;display:flex;align-items:center;padding:0 7px;color:var(--tx2);font-size:12px}"
     "@media(max-width:640px){.d2-sem,.d2-pfg{grid-template-columns:1fr}}"
 )
 _CSS = _BASE_CSS.replace("</style>", PROV_CSS + _D02_CSS + "</style>")
@@ -266,12 +271,18 @@ def _senal(s: dict) -> str:
     activa = s.get("estado") == "activa"
     col = "#F9AB00" if activa else "#1E8E3E"
     chip = "&#9888; SEÑAL ACTIVA" if activa else "&#9679; SIN SEÑAL"
+    est_txt = "señal activa" if activa else "sin señal"
+    # La cadena que materializa la ley (aporte del colega): Norma → Regla → Indicador → Señal.
+    cad = [("norma", _esc(s.get("norma", "")), "law"), ("regla", _esc(s.get("regla", "")), ""),
+           ("indicador · hoy", _esc(s.get("indicador", "")), ""), ("señal", est_txt, "est")]
+    nodos = '<span class="d2-cad-a">&rarr;</span>'.join(
+        f'<span class="d2-cad-n {c}"' + (f' style="color:{col}"' if c == "est" else "")
+        + f'><span class="k">{k}</span>{v}</span>' for k, v, c in cad)
     return (f'<div class="d2-sat" style="border-left-color:{col}">'
             f'<div class="d2-sat-h"><span class="d2-sat-t">{_esc(s.get("nombre", ""))}</span>'
             f'<span class="d2-sat-e" style="color:{col}">{chip}</span></div>'
             f'<div class="d2-sat-x">{_esc(s.get("vigila", ""))}</div>'
-            f'<div class="d2-sat-m"><b>{_esc(s.get("indicador", ""))}</b> &middot; umbral {_esc(s.get("umbral", ""))} '
-            f'&middot; <span class="d2-sat-n">{_esc(s.get("norma", ""))}</span></div></div>')
+            f'<div class="d2-cad">{nodos}</div></div>')
 
 
 def _senales_preventivas(d: dict) -> str:

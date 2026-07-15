@@ -152,18 +152,22 @@ def build_block() -> dict:
     u3 = _num(find(ws3, "Umbral_Deveng")) or 0.10
     np3 = _num(find(ws3, "Metas_Con_Paralisis")) or 0
     u4 = _num(find(ws4, "Pct_Inversion_Minimo")) or 0.65
+    # Cada señal expone su CADENA normativa (aporte del colega · 2026-07-15): la norma engendra una REGLA
+    # (condición lógica), la regla se mide con un indicador, y el indicador dispara —o no— la señal.
+    # QUIRA no inventa la regla: la deriva del umbral que el motor ya calcula sobre la norma verificada.
     senales = [
-        {"nombre": "Reforma presupuestaria tardía", "estado": e2,
+        {"nombre": "Reforma presupuestaria tardía", "estado": e2, "norma": "COPFP Art. 115",
+         "regla": f"las reformas no deben superar el {u2 * 100:.0f}% del presupuesto anual",
          "indicador": f"{v2 * 100:.0f}% del presupuesto reformado", "umbral": f"máx {u2 * 100:.0f}%",
-         "norma": "COPFP Art. 115",
          "vigila": "reformas significativas fuera del cronograma anual — señal de programación inestable"},
-        {"nombre": "Parálisis presupuestaria", "estado": e3,
+        {"nombre": "Parálisis presupuestaria", "estado": e3, "norma": "COPFP Art. 113",
+         "regla": f"ninguna meta debe ejecutar menos del {u3 * 100:.0f}% de lo asignado",
          "indicador": f"{int(np3)} meta(s) en parálisis", "umbral": f"ejecución mínima {u3 * 100:.0f}%",
-         "norma": "COPFP Art. 113",
          "vigila": "metas cuya ejecución financiera se estanca bajo el mínimo — riesgo de subejecución"},
-        {"nombre": "Alerta fiscal · estructura COOTAD", "estado": e4,
+        {"nombre": "Alerta fiscal · estructura COOTAD", "estado": e4, "norma": "COOTAD Art. 192",
+         "regla": f"la inversión no debe caer bajo el {u4 * 100:.0f}% del presupuesto",
          "indicador": "estructura inversión/corriente conforme" if e4 == "sin_senal" else "estructura fiscal en alerta",
-         "umbral": f"inversión ≥ {u4 * 100:.0f}% del presupuesto", "norma": "COOTAD Art. 192",
+         "umbral": f"inversión ≥ {u4 * 100:.0f}% del presupuesto",
          "vigila": "que la inversión no caiga bajo el mínimo legal frente al gasto corriente"},
     ]
     senales = [s for s in senales if _fw(s["nombre"]) and _fw(s["indicador"])]
