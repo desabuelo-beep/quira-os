@@ -6474,5 +6474,77 @@
         }
       ]
     }
+  },
+  "presupuesto_dom": {
+    "_fuente": "Presupuesto (cédula eSIGEF) · Salud presupuestaria (ISP) · Eficiencia financiera / fondos externos (IEF) · alineaciones consumidas · corte Abril 2026",
+    "vision": "La salud financiera del municipio como base para captar financiamiento internacional (reembolsable y no reembolsable).",
+    "isp": {
+      "global_pct": 58.4,
+      "clasificacion": "Atención Alta — Plan de mejora",
+      "umbral_cootad": 65
+    },
+    "ejecucion": {
+      "codificado": 30271812,
+      "devengado": 1947738,
+      "ti_pct": 6.4,
+      "corte": "Abril 2026 (Ene-Abr)"
+    },
+    "serie": [
+      {
+        "anio": 2023,
+        "ti_pct": 68.0
+      },
+      {
+        "anio": 2024,
+        "ti_pct": 79.6
+      },
+      {
+        "anio": 2026,
+        "ti_pct": 6.4
+      }
+    ],
+    "captacion": {
+      "total_externo": 1874500,
+      "n_convenios": 4,
+      "detalle": [
+        {
+          "meta": "SC-I-N-01",
+          "nombre": "Agua Potable Rural — convenio MIDUVI/BanEcuador",
+          "tipo": "Fondo Externo",
+          "monto": 487500,
+          "modalidad": "no reembolsable"
+        },
+        {
+          "meta": "SC-L-G-01",
+          "nombre": "Alcantarillado rural — aporte sectorial SENAGUA",
+          "tipo": "Fondo Externo",
+          "monto": 312000,
+          "modalidad": "no reembolsable"
+        },
+        {
+          "meta": "AH-I-X-02",
+          "nombre": "Vialidad — convenio MTOP rehabilitación",
+          "tipo": "Fondo Externo",
+          "monto": 850000,
+          "modalidad": "no reembolsable"
+        },
+        {
+          "meta": "EP-L-N-01",
+          "nombre": "Vivienda social — MIDUVI bono entrega vivienda",
+          "tipo": "Fondo Externo",
+          "monto": 225000,
+          "modalidad": "no reembolsable"
+        }
+      ],
+      "umbrales": {
+        "alto": 0.2,
+        "bueno": 0.1
+      }
+    },
+    "elegibilidad": {
+      "alineacion_pnd_pct": 83,
+      "nota": "Qué fondo específico aplica lo resuelve QUIRA Cooperación (producto), no este dominio."
+    },
+    "publicado": true
   }
 }
