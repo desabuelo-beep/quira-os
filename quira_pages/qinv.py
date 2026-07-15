@@ -88,6 +88,7 @@ QINV: dict[str, dict] = {
                     "asignados frente a la rigidez del gasto y el riesgo de subejecución?",
         "gad": "Cédulas de ingreso/gasto · competencias del territorio (eSIGEF local).",
         "central": "Ejecución por programas sectoriales (Presupuesto General del Estado).",
+        "page": "m_presupuesto",  # ✅ construida (capacidad financiera territorial · d02)
     },
     "d03": {
         "id": "QINV-003", "nombre": "Gobernanza del Mandato",

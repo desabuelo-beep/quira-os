@@ -119,7 +119,7 @@ _DOMAINS_V2: list[dict[str, Any]] = [
                     "garantizando el cumplimiento normativo de la rendición.",
         "estado": "CONSOLIDADO", "metric": "72.7%",
         "folio_estado": "EN LÍNEA", "periodo": "Ejercicios 2023 - 2025",
-        "radiografia_macro": [("CUMPLIMIENTO", "100%"), ("EFICACIA", "72.7%"), ("INVERSIÓN", "$12.7M/$17.5M")],
+        "radiografia_macro": [("VERIFICABLE", "55%"), ("SIN RESPALDO", "16%"), ("EFICACIA", "72.7%")],
         "gancho": "¿Qué parte del discurso se comprueba con registros independientes y qué queda sin respaldo público?",
         "temp": "normal", "mod": "rdc",
     },
@@ -161,7 +161,7 @@ _DOMAINS_V2: list[dict[str, Any]] = [
 ]
 
 # Solo los DOM CURADOS son entrables; el resto queda BLOQUEADO (Javo 2026-07-14).
-_ENTRABLES = {"d01", "d09"}
+_ENTRABLES = {"d01", "d02", "d09"}
 for _dm in _DOMAINS_V2:
     _dm["disabled"] = _dm["id"] not in _ENTRABLES
 
