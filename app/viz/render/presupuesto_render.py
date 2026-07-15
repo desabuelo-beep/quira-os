@@ -31,6 +31,7 @@ except ImportError:  # dentro del paquete app (Streamlit)
 _COL = "#A78BFA"   # color propio del dominio (violeta · finanzas)
 
 _D02_CSS = (
+    ".qc.d2{--ind:" + _COL + "}"  # identidad violeta del dominio: tiñe los acentos ESTRUCTURALES (nº de sección, borde de la pregunta). Los semáforos ✓/✗ usan color hardcoded → NO cambian.
     ".d2-cap{border:1px solid var(--bd);border-left-width:3px;border-radius:8px;padding:13px 15px;margin:10px 0;background:var(--sf)}"
     ".d2-cap-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:4px}"
     ".d2-cap-t{font-family:Georgia,serif;font-size:15px;font-weight:700;color:var(--tx)}"
@@ -285,7 +286,7 @@ def cajon_presupuesto(d: dict) -> str:
     if not d:
         return ""
     return f"""{_CSS}
-<section class="qc">
+<section class="qc d2">
   <div class="qc-hd">
     <div class="qc-ey">QUIRA · Observatorio de Integridad Territorial · Municipio 001</div>
     <div class="qc-idea">Presupuesto &amp; Financiamiento</div>
