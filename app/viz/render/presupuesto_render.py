@@ -65,6 +65,12 @@ _D02_CSS = (
     ".d2-cad-n .k{display:block;font-family:ui-monospace,monospace;font-size:7.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--tx2);margin-bottom:2px}"
     ".d2-cad-n.law{border-color:var(--law);border-left-width:3px}.d2-cad-n.est{font-weight:700}"
     ".d2-cad-a{flex:0 0 auto;display:flex;align-items:center;padding:0 7px;color:var(--tx2);font-size:12px}"
+    ".d2-fl{display:flex;flex-wrap:nowrap;align-items:stretch;gap:0;margin:6px 0;overflow-x:auto;padding-bottom:2px}"
+    ".d2-fl-n{flex:0 0 auto;border:1px solid var(--bd);border-radius:7px;padding:8px 12px;background:var(--sf);text-align:center;min-width:88px;opacity:.55}"
+    ".d2-fl-n.here{opacity:1;border-color:var(--ind);border-width:2px;background:rgba(167,139,250,.1)}"
+    ".d2-fl-n .t{display:block;font-family:Georgia,serif;font-size:13px;font-weight:700;color:var(--tx)}"
+    ".d2-fl-n .s{display:block;font-size:9px;color:var(--tx2);margin-top:2px}"
+    ".d2-fl-a{flex:0 0 auto;display:flex;align-items:center;padding:0 5px;color:var(--tx2);font-size:12px}"
     "@media(max-width:640px){.d2-sem,.d2-pfg{grid-template-columns:1fr}}"
 )
 _CSS = _BASE_CSS.replace("</style>", PROV_CSS + _D02_CSS + "</style>")
@@ -304,6 +310,27 @@ def _senales_preventivas(d: dict) -> str:
         + "".join(_senal(s) for s in sen))
 
 
+def _cadena_estado() -> str:
+    """La cadena de valor público (Constitución: PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO).
+    Ubica a d02 como ESLABÓN, no como isla (aporte del colega · 2026-07-15): el presupuesto recibe de la
+    planificación y entrega a la ejecución; su huella se mide en el territorio."""
+    fases = [
+        ("Promesa", "plan de gobierno", False), ("Plan", "PDOT · metas", False),
+        ("Presupuesto", "movilización de recursos", True), ("Ejecución", "contratación · obra", False),
+        ("Resultado", "bienes y servicios", False), ("Territorio", "impacto en la gente", False),
+    ]
+    nodos = '<span class="d2-fl-a">&rarr;</span>'.join(
+        f'<span class="d2-fl-n{" here" if aqui else ""}"><span class="t">{_esc(t)}</span>'
+        f'<span class="s">{_esc(sub)}</span></span>' for t, sub, aqui in fases)
+    return (
+        '<p class="qc-cap" style="margin-top:10px">Este dominio no es una isla: es un <b>eslabón</b> de la cadena '
+        'de valor público que QUIRA vigila de extremo a extremo. Aquí es dónde vive:</p>'
+        f'<div class="d2-fl">{nodos}</div>'
+        '<p class="qc-cap">La <b>movilización de recursos</b> (aquí) <b>recibe</b> la alineación de la planificación '
+        '—su llave de elegibilidad— y <b>entrega</b> a la ejecución; su huella final se mide en el <b>territorio</b>. '
+        'Una brecha aquí se propaga aguas abajo.</p>')
+
+
 def cajon_presupuesto(d: dict) -> str:
     if not d:
         return ""
@@ -315,7 +342,7 @@ def cajon_presupuesto(d: dict) -> str:
     <div class="qc-q">¿El municipio moviliza, administra y transforma sus recursos para cumplir los objetivos del territorio?</div>
   </div>
   <div class="qc-body">
-    {_seccion('01', 'Comprender este dominio · la capacidad financiera territorial', _cabecera(d))}
+    {_seccion('01', 'Comprender este dominio · la capacidad financiera territorial', _cabecera(d) + _cadena_estado())}
     {_seccion('02', 'La radiografía · las cuatro capacidades', _radiografia(d) + _elegibilidad(d) + _movilizacion(d) + _perfil_financiamiento(d) + _absorcion(d) + _sostenibilidad(d), prov=prov('ana'))}
     {_seccion('03', 'Señales preventivas · el presupuesto que se anticipa', _senales_preventivas(d), prov=prov('ana'))}
     {_seccion('04', 'La biografía del capital público · del ODS al dólar ejecutado', _biografia_capital(d), prov=prov('doc'))}
