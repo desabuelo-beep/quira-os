@@ -109,14 +109,33 @@ def build_block() -> dict:
         "detalle": fondos, "umbrales": ief_umbral,
     }
 
-    # ── ② LLAVES DE ELEGIBILIDAD (consumidas · no propias) ────────────────────
-    #  Alineación al Plan Nacional (H11b) — objeto compartido que nace en d01.
+    # ── ② ELEGIBILIDAD — vinculación ODS (H11 · Agenda 2030) + PND consumido ───
+    ws = sh("H11_S9")
+    icods = _num(find(ws, "ICODS_Preliminar"))
+    ods_cub = _num(find(ws, "ODS_Cubiertos_PDOT"))
+    ods_por_meta = {}
+    for r in ws.iter_rows(min_row=14, max_row=45, values_only=True):
+        if r and r[0] and _fw(str(r[0])) and "ODS" in str(r[2] or ""):
+            ods_por_meta[str(r[0]).strip()] = {"principal": str(r[2] or "").strip(),
+                                               "meta_ods": str(r[4] or "").strip()}
+    ods = {
+        "icods_pct": round(icods * 100, 1) if icods and icods <= 1 else None,
+        "ods_cubiertos": int(ods_cub) if ods_cub else None, "total_ods": 17,
+        "n_metas_vinculadas": len(ods_por_meta),
+    }
+    # Alineación PND (H11b) + eje PND por meta — objeto compartido que NACE en d01 (se consume).
     try:
         _snap = json.load(open(SNAP, encoding="utf-8"))
-        vm = ((_snap.get("planificacion", {}) or {}).get("alineacion_pnd", {}) or {}).get("vinculacion_media")
-        alineacion_pnd = round(vm * 100) if vm else None
+        _al = (_snap.get("planificacion", {}) or {}).get("alineacion_pnd", {}) or {}
+        alineacion_pnd = round((_al.get("vinculacion_media") or 0) * 100) or None
+        pnd_metas = {m.get("id"): m.get("eje", "") for m in (_al.get("metas") or [])}
     except Exception:
-        alineacion_pnd = None
+        alineacion_pnd, pnd_metas = None, {}
+    # Trazabilidad del financiamiento: cada convenio con su ODS + eje PND (la cadena que se financia).
+    for f in fondos:
+        o = ods_por_meta.get(f["meta"], {})
+        f["ods"] = o.get("principal", "")
+        f["pnd_eje"] = pnd_metas.get(f["meta"], "")
 
     return {
         "_fuente": "Presupuesto (cédula eSIGEF) · Salud presupuestaria (ISP) · Eficiencia financiera / fondos "
@@ -127,6 +146,7 @@ def build_block() -> dict:
         "ejecucion": ejecucion,
         "serie": serie,
         "captacion": captacion,
+        "ods": ods,
         "elegibilidad": {
             "alineacion_pnd_pct": alineacion_pnd,     # consumido de H11b (d01)
             "nota": "Qué fondo específico aplica lo resuelve QUIRA Cooperación (producto), no este dominio.",

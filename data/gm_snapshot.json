@@ -6512,34 +6512,48 @@
           "nombre": "Agua Potable Rural — convenio MIDUVI/BanEcuador",
           "tipo": "Fondo Externo",
           "monto": 487500,
-          "modalidad": "no reembolsable"
+          "modalidad": "no reembolsable",
+          "ods": "ODS 6 — Agua limpia",
+          "pnd_eje": "Eje 3 — Servicios Básicos y Habitat"
         },
         {
           "meta": "SC-L-G-01",
           "nombre": "Alcantarillado rural — aporte sectorial SENAGUA",
           "tipo": "Fondo Externo",
           "monto": 312000,
-          "modalidad": "no reembolsable"
+          "modalidad": "no reembolsable",
+          "ods": "ODS 6 — Agua limpia",
+          "pnd_eje": "Eje 3 — Servicios Básicos y Habitat"
         },
         {
           "meta": "AH-I-X-02",
           "nombre": "Vialidad — convenio MTOP rehabilitación",
           "tipo": "Fondo Externo",
           "monto": 850000,
-          "modalidad": "no reembolsable"
+          "modalidad": "no reembolsable",
+          "ods": "ODS 9 — Infraestructura",
+          "pnd_eje": "Eje 3 — Servicios Básicos y Habitat"
         },
         {
           "meta": "EP-L-N-01",
           "nombre": "Vivienda social — MIDUVI bono entrega vivienda",
           "tipo": "Fondo Externo",
           "monto": 225000,
-          "modalidad": "no reembolsable"
+          "modalidad": "no reembolsable",
+          "ods": "ODS 11 — Ciudades",
+          "pnd_eje": "Eje 1 — Derechos para Todos"
         }
       ],
       "umbrales": {
         "alto": 0.2,
         "bueno": 0.1
       }
+    },
+    "ods": {
+      "icods_pct": 87.5,
+      "ods_cubiertos": 9,
+      "total_ods": 17,
+      "n_metas_vinculadas": 27
     },
     "elegibilidad": {
       "alineacion_pnd_pct": 83,
