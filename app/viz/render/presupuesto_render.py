@@ -53,6 +53,13 @@ _D02_CSS = (
     ".d2-pf .l{font-size:11px;color:var(--tx)}.d2-pf .t{height:8px;border-radius:4px;background:var(--bd);overflow:hidden}"
     ".d2-pf .f{display:block;height:100%;border-radius:4px}.d2-pf .n{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;color:var(--tx);text-align:right}"
     ".d2-chip{display:inline-block;font-size:10px;color:var(--tx2);border:1px solid var(--bd);border-radius:12px;padding:2px 10px;margin:6px 6px 0 0}.d2-chip b{color:var(--tx)}"
+    ".d2-sat{border:1px solid var(--bd);border-left-width:3px;border-radius:8px;padding:11px 14px;margin:9px 0;background:var(--sf)}"
+    ".d2-sat-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px}"
+    ".d2-sat-t{font-family:Georgia,serif;font-size:14px;font-weight:700;color:var(--tx)}"
+    ".d2-sat-e{font-family:ui-monospace,monospace;font-size:9px;font-weight:800;letter-spacing:.05em;white-space:nowrap}"
+    ".d2-sat-x{font-size:11.5px;color:var(--tx2);line-height:1.45;margin:3px 0 6px}"
+    ".d2-sat-m{font-size:11px;color:var(--tx2)}.d2-sat-m b{color:var(--tx)}"
+    ".d2-sat-n{font-family:ui-monospace,monospace;font-size:10px;color:var(--tx2)}"
     "@media(max-width:640px){.d2-sem,.d2-pfg{grid-template-columns:1fr}}"
 )
 _CSS = _BASE_CSS.replace("</style>", PROV_CSS + _D02_CSS + "</style>")
@@ -223,12 +230,15 @@ def _perfil_financiamiento(d: dict) -> str:
                        f'<span class="n">{v/total*100:.0f}%</span></div>'
                        for k, v in sorted(dd.items(), key=lambda x: -x[1]))
     chips = "".join(f'<span class="d2-chip">{_esc(k)}: <b>{v/total*100:.0f}%</b></span>' for k, v in modal.items())
+    conc = round(max(coop.values()) / total * 100) if coop else 0
     return (
         '<p class="qc-cap" style="margin-top:11px"><b>Perfil del financiamiento externo</b> — de dónde viene y en '
         'qué modalidad (revela autonomía y dependencia):</p>'
         f'<div class="d2-pfg"><div><div class="d2-pft">Por origen / cooperante</div>{_barras(coop, _COL)}</div>'
         f'<div><div class="d2-pft">Por sector financiado</div>{_barras(sect, "#5AA9E6")}</div></div>'
-        f'<div>{chips}</div>')
+        f'<div>{chips}</div>'
+        f'<p class="qc-cap" style="margin-top:5px">El mayor origen concentra <b>{conc}%</b> del capital externo — '
+        f'a más concentración, más expuesto queda el municipio si una fuente se retira.</p>')
 
 
 def _sintesis(d: dict) -> str:
@@ -252,34 +262,35 @@ def _sintesis(d: dict) -> str:
             f'externos captados · alineación al Plan Nacional / Agenda 2030 (consumidas de Planificación).</div></div></div>')
 
 
-def _riesgo_financiero(d: dict) -> str:
-    """Panel de riesgo del financiador (aporte del colega · 2026-07-15): el juicio forense que un banco de
-    desarrollo (BID·CAF·BM) hace antes de comprometer capital. Todo derivado del dato — sin inventar."""
-    from collections import defaultdict
-    ej = d.get("ejecucion") or {}
-    cap = d.get("captacion") or {}
-    ti = ej.get("ti_pct") or 0
-    ext = cap.get("total_externo") or 0
-    fondos = cap.get("detalle") or []
-    absorbe = round(5_000_000 * ti / 100)
-    coop = defaultdict(float)
-    _C = ["MIDUVI", "MTOP", "BanEcuador", "MIES", "MAG", "MSP", "SE"]
-    for f in fondos:
-        k = next((x for x in _C if x.lower() in f.get("nombre", "").lower()), "Sectorial")
-        coop[k] += f.get("monto", 0)
-    conc = round(max(coop.values()) / ext * 100) if ext and coop else 0
-    filas = [
-        ("Elasticidad de absorción", f"{ti:.1f}%", _col_pct(ti, 50, 25),
-         f'La pregunta que desvela a un financiador: <b>si mañana llegan $5M, ¿el municipio los absorbe?</b> Al '
-         f'ritmo actual ejecutaría solo <b>{_m(absorbe)}</b> este ejercicio. El cuello de botella no es captar '
-         f'—es <b>ejecutar</b>: por eso la capacidad de absorción condiciona a todas las demás.'),
-        ("Concentración de fuentes", f"{conc}%", _col_pct(100 - conc, 60, 40),
-         f'El mayor cooperante concentra <b>{conc}%</b> del capital externo captado. A más concentración, más '
-         f'expuesto queda el municipio si una sola fuente se retira: diversificar es reducir riesgo.'),
-    ]
-    return ('<p class="qc-cap" style="margin-top:11px"><b>Panel de riesgo del financiador</b> — lo que un banco de '
-            'desarrollo evalúa antes de comprometer capital (derivado del dato, no proyectado):</p>'
-            + "".join(_capacidad(k, v, c, x) for k, v, c, x in filas))
+def _senal(s: dict) -> str:
+    activa = s.get("estado") == "activa"
+    col = "#F9AB00" if activa else "#1E8E3E"
+    chip = "&#9888; SEÑAL ACTIVA" if activa else "&#9679; SIN SEÑAL"
+    return (f'<div class="d2-sat" style="border-left-color:{col}">'
+            f'<div class="d2-sat-h"><span class="d2-sat-t">{_esc(s.get("nombre", ""))}</span>'
+            f'<span class="d2-sat-e" style="color:{col}">{chip}</span></div>'
+            f'<div class="d2-sat-x">{_esc(s.get("vigila", ""))}</div>'
+            f'<div class="d2-sat-m"><b>{_esc(s.get("indicador", ""))}</b> &middot; umbral {_esc(s.get("umbral", ""))} '
+            f'&middot; <span class="d2-sat-n">{_esc(s.get("norma", ""))}</span></div></div>')
+
+
+def _senales_preventivas(d: dict) -> str:
+    """El salto descriptivo → PREDICTIVO (SAT presupuestario · decisión Javo 2026-07-15: cada SAT en su dominio).
+    Las señales las calcula el MOTOR y las contrasta contra umbrales legales; d02 las OBSERVA —no gestiona—."""
+    sat = d.get("sat_presupuestario") or {}
+    sen = sat.get("senales") or []
+    if not sen:
+        return ""
+    activas = sat.get("n_activas", 0)
+    ccol = "#F9AB00" if activas else "#1E8E3E"
+    return (
+        '<p class="qc-p">Un expediente no solo describe: <b>anticipa</b>. Estas señales las calcula el motor y las '
+        'contrasta contra <b>umbrales legales</b> (COPFP · COOTAD). Cuando una se enciende no es una acusación: es '
+        'una <b>alerta temprana</b> que alimenta la gestión — el dominio <b>observa</b>, los motores gestionan.</p>'
+        f'<p class="qc-cap"><b>{len(sen)} señales</b> vigiladas · '
+        f'<b style="color:{ccol}">{activas} activa{"" if activas == 1 else "s"}</b>. '
+        f'Al corte, el presupuesto de Montecristi no dispara alertas:</p>'
+        + "".join(_senal(s) for s in sen))
 
 
 def cajon_presupuesto(d: dict) -> str:
@@ -294,8 +305,9 @@ def cajon_presupuesto(d: dict) -> str:
   </div>
   <div class="qc-body">
     {_seccion('01', 'Comprender este dominio · la capacidad financiera territorial', _cabecera(d))}
-    {_seccion('02', 'La radiografía · las cuatro capacidades', _radiografia(d) + _elegibilidad(d) + _movilizacion(d) + _perfil_financiamiento(d) + _absorcion(d) + _sostenibilidad(d) + _riesgo_financiero(d), prov=prov('ana'))}
-    {_seccion('03', 'La biografía del capital público · del ODS al dólar ejecutado', _biografia_capital(d), prov=prov('doc'))}
+    {_seccion('02', 'La radiografía · las cuatro capacidades', _radiografia(d) + _elegibilidad(d) + _movilizacion(d) + _perfil_financiamiento(d) + _absorcion(d) + _sostenibilidad(d), prov=prov('ana'))}
+    {_seccion('03', 'Señales preventivas · el presupuesto que se anticipa', _senales_preventivas(d), prov=prov('ana'))}
+    {_seccion('04', 'La biografía del capital público · del ODS al dólar ejecutado', _biografia_capital(d), prov=prov('doc'))}
     {_sintesis(d)}
   </div>
   <div class="qc-placa"><div class="qc-placa-q">QUIRA no certifica la verdad. Certifica la capacidad<br>documental del municipio para movilizar y ejecutar recursos.</div>

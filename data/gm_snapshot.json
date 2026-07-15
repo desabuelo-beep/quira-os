@@ -6559,6 +6559,36 @@
       "alineacion_pnd_pct": 83,
       "nota": "Qué fondo específico aplica lo resuelve QUIRA Cooperación (producto), no este dominio."
     },
+    "sat_presupuestario": {
+      "senales": [
+        {
+          "nombre": "Reforma presupuestaria tardía",
+          "estado": "sin_senal",
+          "indicador": "0% del presupuesto reformado",
+          "umbral": "máx 5%",
+          "norma": "COPFP Art. 115",
+          "vigila": "reformas significativas fuera del cronograma anual — señal de programación inestable"
+        },
+        {
+          "nombre": "Parálisis presupuestaria",
+          "estado": "sin_senal",
+          "indicador": "0 meta(s) en parálisis",
+          "umbral": "ejecución mínima 10%",
+          "norma": "COPFP Art. 113",
+          "vigila": "metas cuya ejecución financiera se estanca bajo el mínimo — riesgo de subejecución"
+        },
+        {
+          "nombre": "Alerta fiscal · estructura COOTAD",
+          "estado": "sin_senal",
+          "indicador": "estructura inversión/corriente conforme",
+          "umbral": "inversión ≥ 65% del presupuesto",
+          "norma": "COOTAD Art. 192",
+          "vigila": "que la inversión no caiga bajo el mínimo legal frente al gasto corriente"
+        }
+      ],
+      "n_senales": 3,
+      "n_activas": 0
+    },
     "publicado": true
   }
 }

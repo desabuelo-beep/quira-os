@@ -137,6 +137,39 @@ def build_block() -> dict:
         f["ods"] = o.get("principal", "")
         f["pnd_eje"] = pnd_metas.get(f["meta"], "")
 
+    # ── ③ SEÑALES PREVENTIVAS · SAT presupuestario (H22/H23/H24 — LEÍDOS del motor, no recalculados) ──
+    # Decisión Javo · 2026-07-15: se elimina el DOM Alertas → cada SAT vive en su dominio (12 DOM).
+    # d02 toma las 3 señales FINANCIERAS. Descriptivo → PREDICTIVO (Datos→Umbral→Alerta→Diagnóstico).
+    def _estado(ws) -> str:
+        raw = str(find(ws, "_Estado") or "")
+        activa = ("sin señal" not in raw.lower()) and any(x in raw for x in ("⚠", "🔴", "🟠"))
+        return "activa" if activa else "sin_senal"
+
+    ws2, ws3, ws4 = sh("H22"), sh("H23"), sh("H24_SAT")
+    e2, e3, e4 = _estado(ws2), _estado(ws3), _estado(ws4)
+    u2 = _num(find(ws2, "Umbral_Reforma")) or 0.05
+    v2 = _num(find(ws2, "Pct_Reforma")) or 0
+    u3 = _num(find(ws3, "Umbral_Deveng")) or 0.10
+    np3 = _num(find(ws3, "Metas_Con_Paralisis")) or 0
+    u4 = _num(find(ws4, "Pct_Inversion_Minimo")) or 0.65
+    senales = [
+        {"nombre": "Reforma presupuestaria tardía", "estado": e2,
+         "indicador": f"{v2 * 100:.0f}% del presupuesto reformado", "umbral": f"máx {u2 * 100:.0f}%",
+         "norma": "COPFP Art. 115",
+         "vigila": "reformas significativas fuera del cronograma anual — señal de programación inestable"},
+        {"nombre": "Parálisis presupuestaria", "estado": e3,
+         "indicador": f"{int(np3)} meta(s) en parálisis", "umbral": f"ejecución mínima {u3 * 100:.0f}%",
+         "norma": "COPFP Art. 113",
+         "vigila": "metas cuya ejecución financiera se estanca bajo el mínimo — riesgo de subejecución"},
+        {"nombre": "Alerta fiscal · estructura COOTAD", "estado": e4,
+         "indicador": "estructura inversión/corriente conforme" if e4 == "sin_senal" else "estructura fiscal en alerta",
+         "umbral": f"inversión ≥ {u4 * 100:.0f}% del presupuesto", "norma": "COOTAD Art. 192",
+         "vigila": "que la inversión no caiga bajo el mínimo legal frente al gasto corriente"},
+    ]
+    senales = [s for s in senales if _fw(s["nombre"]) and _fw(s["indicador"])]
+    sat = {"senales": senales, "n_senales": len(senales),
+           "n_activas": sum(1 for s in senales if s["estado"] == "activa")}
+
     return {
         "_fuente": "Presupuesto (cédula eSIGEF) · Salud presupuestaria (ISP) · Eficiencia financiera / fondos "
                    "externos (IEF) · alineaciones consumidas · corte Abril 2026",
@@ -151,6 +184,7 @@ def build_block() -> dict:
             "alineacion_pnd_pct": alineacion_pnd,     # consumido de H11b (d01)
             "nota": "Qué fondo específico aplica lo resuelve QUIRA Cooperación (producto), no este dominio.",
         },
+        "sat_presupuestario": sat,   # señales preventivas leídas del motor (H22/H23/H24)
         "publicado": True,
     }
 
