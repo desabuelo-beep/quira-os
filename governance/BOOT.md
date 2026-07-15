@@ -42,10 +42,11 @@ BOOT.md §AHORA = detalle vivo del paso actual. Hoja de Ruta = el mapa completo 
 ## AHORA (estado vivo · historial → `governance/historico/BOOT_2026-06-17.md`)
 **CENTRO DE INTELIGENCIA TERRITORIAL · 2026-07-01.** QUIRA preventiva. Excel=Canon INVISIBLE.
 ✅ **P1/P2:** kernel `umi.py`+`qinv.py` · **QINV-001 nivel BI** · QINV-006 · d03=72.73.
-🔧 **SPRINT CANON · Backbone:** PDOT 25 metas · POA 257 proy $39.3M · Presup 135 part $45.98M · PAC $29.85M (98.6%).
-🔌 **MCD Planificación · 7 cables ✅ · impl. desacoplada de infra:** Excel·SERCOP·Relacional·Normativo·IA·Visual·Memoria.
-🧭 **ADR-031 RATIF:** cajón=MCD · GoldMaster=MCM · MCIP 5 motores · build vert.+horiz. **Stack-Descrip** Marco Fund.+3 niv (Index §1.A).
-🔑 **Planif✓ · RDC✓ · d02 v3✓** — 4 capacidades + SAT (Norma→Regla→Señal) + cadena inter-dominio. **ADR-035 MCN propuesto · 12 DOM. Sig: ratificar MCN.**
+🔧 **Backbone:** PDOT 25 metas · POA 257 proy $39.3M · Presup $45.98M · PAC $29.85M.
+🔌 **MCD Planif · 7 cables ✅:** Excel·SERCOP·Relacional·Normativo·IA·Visual·Memoria.
+🧭 **ADR-031 RATIF:** cajón=MCD · GoldMaster=MCM · MCIP 5 motores (Index §1.A).
+🔑 **Planif✓ · RDC✓ · d02 v3✓** — 4 capacidades + SAT (Norma→Regla→Señal) + cadena inter-dominio.
+📚 **ADR-035 BRN RATIF:** DOM Alertas **transmuta** en Biblioteca de Reglas (no se elimina). Ley→BRN→GoldMaster (único motor)→QUIRA. **IA propone, humano valida.**
 🔶 **CI:** BOOT ≤6KB.
 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 ratificado · detalle en el ADR)
