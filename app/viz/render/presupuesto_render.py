@@ -37,6 +37,10 @@ _D02_CSS = (
     ".d2-cap-t{font-family:Georgia,serif;font-size:15px;font-weight:700;color:var(--tx)}"
     ".d2-cap-v{font-family:ui-monospace,monospace;font-size:19px;font-weight:900}"
     ".d2-cap-x{font-size:11.5px;color:var(--tx2);line-height:1.5}.d2-cap-x b{color:var(--tx)}"
+    ".d2-cap-b{position:relative;height:9px;border-radius:5px;background:var(--bd);overflow:visible;margin:7px 0 3px}"
+    ".d2-cap-b .f{display:block;height:100%;border-radius:5px}"
+    ".d2-cap-u{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--tx);opacity:.85;border-radius:1px}"
+    ".d2-cap-l{display:flex;justify-content:space-between;font-family:ui-monospace,monospace;font-size:8px;color:var(--tx2);margin-bottom:6px}"
     ".d2-sem{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 2px}"
     ".d2-semc{flex:1 1 120px;border:1px solid var(--bd);border-radius:7px;padding:9px 11px;background:var(--sf)}"
     ".d2-semc .k{font-family:ui-monospace,monospace;font-size:8.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--tx2);font-weight:700}"
@@ -49,7 +53,7 @@ _D02_CSS = (
     ".d2-bn.wn{background:rgba(249,171,0,.1)}.d2-bn.no{background:rgba(217,48,37,.1)}"
     ".d2-pfg{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:8px 0 6px}"
     ".d2-pft{font-family:ui-monospace,monospace;font-size:8px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--tx2);margin-bottom:6px}"
-    ".d2-pf{display:grid;grid-template-columns:1fr 70px 30px;align-items:center;gap:8px;margin-bottom:5px}"
+    ".d2-pf{display:grid;grid-template-columns:minmax(74px,auto) 1fr 34px;align-items:center;gap:9px;margin-bottom:5px}"
     ".d2-pf .l{font-size:11px;color:var(--tx)}.d2-pf .t{height:8px;border-radius:4px;background:var(--bd);overflow:hidden}"
     ".d2-pf .f{display:block;height:100%;border-radius:4px}.d2-pf .n{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;color:var(--tx);text-align:right}"
     ".d2-chip{display:inline-block;font-size:10px;color:var(--tx2);border:1px solid var(--bd);border-radius:12px;padding:2px 10px;margin:6px 6px 0 0}.d2-chip b{color:var(--tx)}"
@@ -60,13 +64,13 @@ _D02_CSS = (
     ".d2-sat-x{font-size:11.5px;color:var(--tx2);line-height:1.45;margin:3px 0 6px}"
     ".d2-sat-m{font-size:11px;color:var(--tx2)}.d2-sat-m b{color:var(--tx)}"
     ".d2-sat-n{font-family:ui-monospace,monospace;font-size:10px;color:var(--tx2)}"
-    ".d2-cad{display:flex;flex-wrap:nowrap;align-items:stretch;gap:0;margin-top:9px;overflow-x:auto;padding-bottom:2px}"
-    ".d2-cad-n{flex:0 0 auto;border:1px solid var(--bd);border-radius:6px;padding:6px 10px;background:var(--sf);font-size:11px;color:var(--tx);line-height:1.3;max-width:200px}"
+    ".d2-cad{display:flex;flex-wrap:nowrap;align-items:stretch;gap:0;margin-top:9px;width:100%;overflow-x:auto;padding-bottom:2px}"
+    ".d2-cad-n{flex:1 1 0;min-width:104px;border:1px solid var(--bd);border-radius:6px;padding:6px 10px;background:var(--sf);font-size:11px;color:var(--tx);line-height:1.3}"
     ".d2-cad-n .k{display:block;font-family:ui-monospace,monospace;font-size:7.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--tx2);margin-bottom:2px}"
     ".d2-cad-n.law{border-color:var(--law);border-left-width:3px}.d2-cad-n.est{font-weight:700}"
     ".d2-cad-a{flex:0 0 auto;display:flex;align-items:center;padding:0 7px;color:var(--tx2);font-size:12px}"
-    ".d2-fl{display:flex;flex-wrap:nowrap;align-items:stretch;gap:0;margin:6px 0;overflow-x:auto;padding-bottom:2px}"
-    ".d2-fl-n{flex:0 0 auto;border:1px solid var(--bd);border-radius:7px;padding:8px 12px;background:var(--sf);text-align:center;min-width:88px;opacity:.55}"
+    ".d2-fl{display:flex;flex-wrap:nowrap;align-items:stretch;gap:0;margin:6px 0;width:100%;overflow-x:auto;padding-bottom:2px}"
+    ".d2-fl-n{flex:1 1 0;min-width:82px;border:1px solid var(--bd);border-radius:7px;padding:8px 10px;background:var(--sf);text-align:center;opacity:.55}"
     ".d2-fl-n.here{opacity:1;border-color:var(--ind);border-width:2px;background:rgba(167,139,250,.1)}"
     ".d2-fl-n .t{display:block;font-family:Georgia,serif;font-size:13px;font-weight:700;color:var(--tx)}"
     ".d2-fl-n .s{display:block;font-size:9px;color:var(--tx2);margin-top:2px}"
@@ -123,11 +127,20 @@ def _radiografia(d: dict) -> str:
             f'<div class="d2-sem">{cel}</div>')
 
 
-def _capacidad(titulo, valor, color, texto) -> str:
+def _capacidad(titulo, valor, color, texto, pct=None, umbral=None, umbral_lbl="") -> str:
+    """pct → dibuja la barra (patrón de los otros DOM · imagen 4 de Javo). umbral → marca el mínimo legal
+    sobre la barra: así el valor NO se lee solo, se lee CONTRA la norma (la brecha se ve)."""
+    barra = ""
+    if pct is not None:
+        marca = (f'<span class="d2-cap-u" style="left:{min(umbral, 100)}%"></span>' if umbral else "")
+        pie = (f'<div class="d2-cap-l"><span>0%</span><span>{_esc(umbral_lbl)}</span><span>100%</span></div>'
+               if umbral_lbl else "")
+        barra = (f'<div class="d2-cap-b"><span class="f" style="width:{min(max(pct, 0), 100):.0f}%;'
+                 f'background:{color}"></span>{marca}</div>{pie}')
     return (f'<div class="d2-cap" style="border-left-color:{color}">'
             f'<div class="d2-cap-h"><span class="d2-cap-t">{_esc(titulo)}</span>'
             f'<span class="d2-cap-v" style="color:{color}">{valor}</span></div>'
-            f'<div class="d2-cap-x">{texto}</div></div>')
+            f'{barra}<div class="d2-cap-x">{texto}</div></div>')
 
 
 def _elegibilidad(d: dict) -> str:
@@ -142,7 +155,7 @@ def _elegibilidad(d: dict) -> str:
            f'{icods:.0f}%</b> ({cub} de {tot} ODS cubiertos). Ambas <b>se consumen de la planificación</b> '
            f'(nacen en su dominio, aquí se usan como llave). Un municipio bien alineado es <b>elegible</b>: tiene '
            f'con qué justificar por qué merece la inversión.')
-    return _capacidad("Capacidad de elegibilidad", f"{elig}%", _col_pct(elig), txt)
+    return _capacidad("Capacidad de elegibilidad", f"{elig}%", _col_pct(elig), txt, pct=elig)
 
 
 def _movilizacion(d: dict) -> str:
@@ -164,7 +177,7 @@ def _absorcion(d: dict) -> str:
            f'devengada es <b>{_m(dev)} de {_m(cod)}</b> (<b>{ti:.1f}%</b>). Es fase inicial del ejercicio, de carga '
            f'diferida; pero un ritmo bajo sostenido es <b>riesgo de subejecución</b> —la principal alerta de '
            f'cualquier financiador—.')
-    return _capacidad("Capacidad de absorción", f"{ti:.1f}%", _col_pct(ti), txt)
+    return _capacidad("Capacidad de absorción", f"{ti:.1f}%", _col_pct(ti), txt, pct=ti)
 
 
 def _sostenibilidad(d: dict) -> str:
@@ -175,7 +188,9 @@ def _sostenibilidad(d: dict) -> str:
            f'índice de salud presupuestaria es <b>{p:.1f}%</b> —<b>{_esc(clasif)}</b>—, por debajo del <b>65% '
            f'mínimo de inversión que fija el COOTAD (Art. 192)</b>. Es la capacidad que sostiene a las otras tres: '
            f'sin salud fiscal, la elegibilidad y la captación no se traducen en inversión duradera.')
-    return _capacidad("Capacidad de sostenibilidad", f"{p:.0f}%", _col_pct(p, 65, 50), txt)
+    return _capacidad("Capacidad de sostenibilidad", f"{p:.0f}%", _col_pct(p, 65, 50), txt,
+                      pct=p, umbral=isp.get("umbral_cootad") or 65,
+                      umbral_lbl=f'mínimo COOTAD {isp.get("umbral_cootad") or 65}%')
 
 
 _EST = {"ok": ("#1E8E3E", "&#10003;"), "wn": ("#F9AB00", "!"), "no": ("#D93025", "&#10007;")}
@@ -198,9 +213,15 @@ def _biografia_capital(d: dict) -> str:
     for f in fondos:
         ods = f.get("ods", "") or "ODS por precisar"
         eje = (f.get("pnd_eje", "") or "Plan Nacional").split("—")[0].strip()
+        # El código de meta solo no comunica (Javo): se le adosa el ASUNTO (lo que la meta ES), y el
+        # nodo Convenio se queda con el INSTRUMENTO. Así ningún eslabón repite al otro.
+        nom = f.get("nombre", "")
+        asunto, _, instr = (nom.partition("—") if "—" in nom else (nom, "", ""))
+        asunto = asunto.strip() or (ods.split("—")[-1].strip() if "—" in ods else "por precisar")
+        instr = instr.strip() or "convenio de financiamiento"
         nodos = [
             ("ODS", ods.split("—")[0].strip(), "ok"), ("Plan Nac.", eje, "ok"),
-            ("Meta PDOT", f.get("meta", ""), "ok"), ("Convenio", _esc(f.get("nombre", ""))[:26], "ok"),
+            (f'Meta {f.get("meta", "")}', asunto, "ok"), ("Convenio", instr, "ok"),
             ("Capital", _m(f.get("monto")), "ok"), ("Contrato", "en proceso", "wn"),
             ("Devengado", "nivel dominio", "wn"), ("Resultado", "sin medición", "no"),
         ]
@@ -310,6 +331,26 @@ def _senales_preventivas(d: dict) -> str:
         + "".join(_senal(s) for s in sen))
 
 
+def _marco_legal(d: dict) -> str:
+    """Marco legal del dominio (patrón de d01/d09 · Javo: 'se da clic y se abren los art.').
+    Se DERIVA de las normas ya verificadas en el snapshot — no se inventa ni una cita (Regla 3)."""
+    sen = (d.get("sat_presupuestario") or {}).get("senales") or []
+    if not sen:
+        return ""
+    vistos, chips = [], ""
+    for s in sen:
+        n = s.get("norma", "")
+        if n and n not in vistos:
+            vistos.append(n)
+            chips += f'<span class="qc-lawc">{_esc(n)} — {_esc(s.get("regla", ""))}</span>'
+    umb = (d.get("isp") or {}).get("umbral_cootad")
+    if umb and "COOTAD Art. 192" not in vistos:
+        vistos.append("COOTAD Art. 192")
+        chips += f'<span class="qc-lawc">COOTAD Art. 192 — inversión mínima del {umb}%</span>'
+    return (f'<details class="qc-law"><summary>&#128214; Marco legal que gobierna este dominio · '
+            f'{len(vistos)} normas verificadas</summary>{chips}</details>')
+
+
 def _cadena_estado() -> str:
     """La cadena de valor público (Constitución: PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO).
     Ubica a d02 como ESLABÓN, no como isla (aporte del colega · 2026-07-15): el presupuesto recibe de la
@@ -343,7 +384,7 @@ def cajon_presupuesto(d: dict) -> str:
   </div>
   <div class="qc-body">
     {_seccion('01', 'Comprender este dominio · la capacidad financiera territorial', _cabecera(d) + _cadena_estado())}
-    {_seccion('02', 'La radiografía · las cuatro capacidades', _radiografia(d) + _elegibilidad(d) + _movilizacion(d) + _perfil_financiamiento(d) + _absorcion(d) + _sostenibilidad(d), prov=prov('ana'))}
+    {_seccion('02', 'La radiografía · las cuatro capacidades', _radiografia(d) + _elegibilidad(d) + _movilizacion(d) + _perfil_financiamiento(d) + _absorcion(d) + _sostenibilidad(d) + _marco_legal(d), prov=prov('ana'))}
     {_seccion('03', 'Señales preventivas · el presupuesto que se anticipa', _senales_preventivas(d), prov=prov('ana'))}
     {_seccion('04', 'La biografía del capital público · del ODS al dólar ejecutado', _biografia_capital(d), prov=prov('doc'))}
     {_sintesis(d)}
