@@ -59,7 +59,9 @@ _DOMAINS_V2: list[dict[str, Any]] = [
         "id": "d02", "num": "02", "nombre": "Presupuesto & Financiamiento",
         "concepto": "La capacidad del cantón de captar, mover y ejecutar recursos a "
                     "tiempo — y de apalancar capital externo sin caer en subejecución.",
-        "estado": "CONDICIONADO", "metric": "$3.66M",
+        "estado": "CONDICIONADO", "metric": "58%",
+        "folio_estado": "EN LÍNEA", "periodo": "Ejercicio 2026 · corte Abril",
+        "radiografia_macro": [("CAPTADO", "$1.87M"), ("EJECUCIÓN", "6.4%"), ("SALUD PRESUP.", "58%")],
         "gancho": "¿Con qué eficiencia y oportunidad se ejecutan los recursos frente al riesgo de subejecución?",
         "temp": "funds", "mod": "cooperacion",
     },
