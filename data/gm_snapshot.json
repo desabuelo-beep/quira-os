@@ -6593,5 +6593,841 @@
       "n_activas": 0
     },
     "publicado": true
+  },
+  "mandato_dom": {
+    "_fuente": "Plan de Trabajo del CNE 2023 (documento verificado por huella SHA256) · metas del plan de desarrollo · corte 2026",
+    "vision": "La palabra empeñada: qué proporción de lo prometido en campaña se convirtió en meta del plan de desarrollo. Mide el origen democrático de lo que hoy se planifica.",
+    "eleccion": {
+      "anio": 2023,
+      "periodo": "2023-2027",
+      "documento": "Plan de Trabajo presentado ante el Consejo Nacional Electoral",
+      "sha256": "7dcbc36a5977be12"
+    },
+    "incorporacion": {
+      "con_meta": 64,
+      "total": 66,
+      "sin_meta": 2,
+      "pct": 97.0,
+      "pregunta": "¿La promesa ingresó al plan de desarrollo?"
+    },
+    "calidad": {
+      "pct": 72.7,
+      "pct_recalculado": 73.86,
+      "suma_score": 48.75,
+      "base": 66,
+      "clasificacion": "Fidelidad Electoral Media",
+      "interpretacion": "El GAD convirtió el 73% de sus promesas electorales en metas estratégicas del PDOT.",
+      "escala": [
+        {
+          "umbral": "≥85%",
+          "nivel": "Fidelidad Electoral Alta"
+        },
+        {
+          "umbral": "60–84%",
+          "nivel": "Fidelidad Electoral Media"
+        },
+        {
+          "umbral": "<60%",
+          "nivel": "Fidelidad Electoral Baja"
+        }
+      ],
+      "pregunta": "¿Con qué nivel de congruencia ingresó?"
+    },
+    "auditoria_canon": {
+      "parametro_declarado": 48,
+      "conteo_real_con_meta": 64,
+      "suma_score_real": 48.75,
+      "nota": "El parámetro declarado corresponde a la suma de puntajes de vinculación, no al número de promesas con meta."
+    },
+    "por_eje": {
+      "Económico": 15,
+      "Institucional": 15,
+      "Social": 20,
+      "Ambiental": 9,
+      "Infraestructura": 7
+    },
+    "promesas": [
+      {
+        "id": "EC-001",
+        "eje": "Económico",
+        "promesa": "Convertir a Montecristi en destino turístico nacional/internacional; rutas gastronómicas, ecoturísticas, eventos culturales",
+        "meta": "EP-L-X-01",
+        "nivel": "Directa",
+        "color": "#1E8E3E",
+        "glosa": "la promesa se convirtió en meta del plan",
+        "tipo": "Directa",
+        "score": 1.0
+      },
+      {
+        "id": "EC-002",
+        "eje": "Económico",
+        "promesa": "Fomento al sector artesanal, MIPYMES y emprendedores; programa Ka-Larte es por Ti; Cuna de Emprendedores",
+        "meta": "EP-L-N-01",
+        "nivel": "Directa",
+        "color": "#1E8E3E",
+        "glosa": "la promesa se convirtió en meta del plan",
+        "tipo": "Directa",
+        "score": 1.0
+      },
+      {
+        "id": "EC-003",
+        "eje": "Económico",
+        "promesa": "Gestión para repotenciar y ordenar el mercado municipal",
+        "meta": "PI-I-G-01",
+        "nivel": "Sustancial",
+        "color": "#1E8E3E",
+        "glosa": "la meta recoge la promesa casi por completo",
+        "tipo": "Directa con matiz",
+        "score": 0.75
+      },
+      {
+        "id": "EC-004",
+        "eje": "Económico",
+        "promesa": "Impulsar desarrollo turístico Playa San José e Isla de la Plata; manglar; Paseo Lúdico",
+        "meta": "EP-L-X-01",
+        "nivel": "Parcial",
+        "color": "#F9AB00",
+        "glosa": "la meta la recoge solo en parte",
+        "tipo": "Parcial",
+        "score": 0.5
+      },
+      {
+        "id": "EC-005",
+        "eje": "Económico",
+        "promesa": "Generación de ordenanzas para exoneración de tributos a nuevas empresas; alianzas sector privado",
+        "meta": "",
+        "nivel": "Sin correspondencia",
+        "color": "#D93025",
+        "glosa": "no hay meta del plan que la recoja",
+        "tipo": "Sin vínculo",
+        "score": 0.0
+      },
+      {
+        "id": "IN-001",
+        "eje": "Institucional",
+        "promesa": "Elaborar PDOT 2023 con ODS; planificación territorial 30 años; Plan Bicentenario",
+        "meta": "PI-I-G-02",
+        "nivel": "Directa",
+        "color": "#1E8E3E",
+        "glosa": "la promesa se convirtió en meta del plan",
+        "tipo": "Directa",
+        "score": 1.0
+      },
+      {
+        "id": "IN-002",
+        "eje": "Institucional",
+        "promesa": "Actualización catastral urbana y rural; base de datos grupos vulnerables; registro y delimitación comunal",
+        "meta": "AH-C-X-02",
+        "nivel": "Directa",
+        "color": "#1E8E3E",
+        "glosa": "la promesa se convirtió en meta del plan",
+        "tipo": "Directa",
+        "score": 1.0
+      },
+      {
+        "id": "IN-003",
+        "eje": "Institucional",
+        "promesa": "Transformación digital del GAD; plataforma digital de trámites; gobierno electrónico abierto",
+        "meta": "AH-C-X-02",
+        "nivel": "Sustancial",
+        "color": "#1E8E3E",
+        "glosa": "la meta recoge la promesa casi por completo",
+        "tipo": "Directa con matiz",
+        "score": 0.75
+      },
+      {
+        "id": "IN-004",
+        "eje": "Institucional",
+        "promesa": "Acceso a información pública (LOTAIP); rendición de cuentas transparente; convenios interinstitucionales",
+        "meta": "PI-L-G-01",
+        "nivel": "Directa",
+        "color": "#1E8E3E",
+        "glosa": "la promesa se convirtió en meta del plan",
+        "tipo": "Directa",
+        "score": 1.0
+      },
+      {
+        "id": "IN-005",
+        "eje": "Institucional",
+        "promesa": "Seguridad ciudadana: alarmas comunitarias, habilitación UPC Aníbal San Andrés y Colorado, cuarteles bomberos",
+        "meta": "PI-I-G-01",
+        "nivel": "Parcial",
+        "color": "#F9AB00",
+        "glosa": "la meta la recoge solo en parte",
+        "tipo": "Parcial",
+        "score": 0.5
+      },
+      {
+        "id": "IN-006",
+        "eje": "Institucional",
+        "promesa": "Creación y fortalecimiento de marca ciudad Montecristi; posicionamiento nacional como referente",
+        "meta": "",
+        "nivel": "Sin correspondencia",
+        "color": "#D93025",
+        "glosa": "no hay meta del plan que la recoja",
+        "tipo": "Sin vínculo",
+        "score": 0.0
+      },
+      {
+        "id": "SC-001",
+        "eje": "Social",
+        "promesa": "Construcción Centro de Salud Tipo C; Centro Geriátrico; Plan Nacer Aquí; Concejo de Salud Montecristi",
+        "meta": "AH-I-X-03",
+        "nivel": "Directa",
+        "color": "#1E8E3E",
+        "glosa": "la promesa se convirtió en meta del plan",
+        "tipo": "Directa",
+        "score": 1.0
+      },
+      {
+        "id": "SC-002",
+        "eje": "Social",
+        "promesa": "Salud integral gratuita e ininterrumpida; clubes de salud; medicina preventiva; atención puerta a puerta",
+        "meta": "SC-I-N-01",
+        "nivel": "Directa",
+        "color": "#1E8E3E",
+        "glosa": "la promesa se convirtió en meta del plan",
+        "tipo": "Directa",
+        "score": 1.0
+      },
+      {
+        "id": "SC-003",
+        "eje": "Social",
+        "promesa": "Mejorar calidad de vida fauna urbana: albergue, programas de esterilización, ordenanza de protección animal",
+        "meta": "FA-L-N-01",
+        "nivel": "Sustancial",
+        "color": "#1E8E3E",
+        "glosa": "la meta recoge la promesa casi por completo",
+        "tipo": "Directa con matiz",
+        "score": 0.75
+      },
+      {
+        "id": "SC-004",
+        "eje": "Social",
+        "promesa": "Capacitaciones ciudadanas con certificación; plataforma digital; Cuna de Emprendedores; becas universitarias",
+        "meta": "SC-L-N-02",
+        "nivel": "Sustancial",
+        "color": "#1E8E3E",
+        "glosa": "la meta recoge la promesa casi por completo",
+        "tipo": "Directa con matiz",
+        "score": 0.75
+      },
+      {
+        "id": "SC-005",
+        "eje": "Social",
+        "promesa": "Participación ciudadana activa; instancias participativas barriales; liderazgo juvenil en política cantonal",
+        "meta": "PI-L-G-01",
+        "nivel": "Directa",
+        "color": "#1E8E3E",
+        "glosa": "la promesa se convirtió en meta del plan",
+        "tipo": "Directa",
+        "score": 1.0
+      },
+      {
+        "id": "SC-006",
+        "eje": "Social",
+        "promesa": "Espacios de recreación deportivos, culturales y sociales; wifi en parques y plazas públicas",
+        "meta": "AH-I-N-01",
+        "nivel": "Sustancial",
+        "color": "#1E8E3E",
+        "glosa": "la meta recoge la promesa casi por completo",
+        "tipo": "Directa con matiz",
+        "score": 0.75
+      },
+      {
+        "id": "SC-007",
+        "eje": "Social",
+        "promesa": "Protección especial a grupos vulnerables: niñez, adolescentes, adultos mayores, discapacidad, género",
+        "meta": "AH-C-X-01",
+        "nivel": "Directa",
+        "color": "#1E8E3E",
+        "glosa": "la promesa se convirtió en meta del plan",
+        "tipo": "Directa",
+        "score": 1.0
+      },
+      {
+        "id": "SC-008",
+        "eje": "Social",
+        "promesa": "Programa de becas estudiantiles para educación superior; convenios con universidades; investigación cantonal",
+        "meta": "SC-L-N-02",
+        "nivel": "Parcial",
+        "color": "#F9AB00",
+        "glosa": "la meta la recoge solo en parte",
+        "tipo": "Parcial",
+        "score": 0.5
+      },
+      {
+        "id": "SC-009",
+        "eje": "Social",
+        "promesa": "Mejorar infraestructura de unidades educativas del cantón; mobiliario y equipamiento",
+        "meta": "PI-I-G-01",
+        "nivel": "Parcial",
+        "color": "#F9AB00",
+        "glosa": "la meta la recoge solo en parte",
+        "tipo": "Parcial",
+        "score": 0.5
+      },
+      {
+        "id": "PR-21",
+        "eje": "Económico",
+        "promesa": "Construcción del parque industrial de Montecristi para artesanos del sombrero",
+        "meta": "EP-L-N-01",
+        "nivel": "Sustancial",
+        "color": "#1E8E3E",
+        "glosa": "la meta recoge la promesa casi por completo",
+        "tipo": "Directa con matiz",
+        "score": 0.75
+      },
+      {
+        "id": "PR-22",
+        "eje": "Social",
+        "promesa": "Ampliación de la red de alcantarillado sanitario en parroquias Sucre y Leónidas Plaza",
+        "meta": "SC-L-G-01",
+        "nivel": "Directa",
+        "color": "#1E8E3E",
+        "glosa": "la promesa se convirtió en meta del plan",
+        "tipo": "Directa",
+        "score": 1.0
+      },
+      {
+        "id": "PR-23",
+        "eje": "Ambiental",
+        "promesa": "Implementación de biodigestores y compostaje en el relleno sanitario cantonal",
+        "meta": "FA-DIS-01",
+        "nivel": "Sustancial",
+        "color": "#1E8E3E",
+        "glosa": "la meta recoge la promesa casi por completo",
+        "tipo": "Directa con matiz",
+        "score": 0.75
+      },
+      {
+        "id": "PR-24",
+        "eje": "Económico",
+        "promesa": "Reactivación del puerto artesanal de Jaramijó con infraestructura pesquera",
+        "meta": "PI-I-G-01",
+        "nivel": "Parcial",
+        "color": "#F9AB00",
+        "glosa": "la meta la recoge solo en parte",
+        "tipo": "Parcial",
+        "score": 0.5
+      },
+      {
+        "id": "PR-25",
+        "eje": "Social",
+        "promesa": "Construcción y equipamiento de centros de desarrollo infantil CIBV en Montecristi",
+        "meta": "AH-I-X-03",
+        "nivel": "Directa",
+        "color": "#1E8E3E",
+        "glosa": "la promesa se convirtió en meta del plan",
+        "tipo": "Directa",
+        "score": 1.0
+      },
+      {
+        "id": "PR-26",
+        "eje": "Institucional",
+        "promesa": "Modernización del sistema de atención al ciudadano y ventanilla única",
+        "meta": "AH-I-X-04",
+        "nivel": "Directa",
+        "color": "#1E8E3E",
+        "glosa": "la promesa se convirtió en meta del plan",
+        "tipo": "Directa",
+        "score": 1.0
+      },
+      {
+        "id": "PR-27",
+        "eje": "Ambiental",
+        "promesa": "Descontaminación y recuperación del estero La Jagua y manglares asociados",
+        "meta": "FA-CC-01",
+        "nivel": "Sustancial",
+        "color": "#1E8E3E",
+        "glosa": "la meta recoge la promesa casi por completo",
+        "tipo": "Directa con matiz",
+        "score": 0.75
+      },
+      {
+        "id": "PR-28",
+        "eje": "Económico",
+        "promesa": "Fomento de la exportación de artesanías de paja toquilla — certificación UNESCO",
+        "meta": "EP-L-X-01",
+        "nivel": "Sustancial",
+        "color": "#1E8E3E",
+        "glosa": "la meta recoge la promesa casi por completo",
+        "tipo": "Directa con matiz",
+        "score": 0.75
+      },
+      {
+        "id": "PR-29",
+        "eje": "Infraestructura",
+        "promesa": "Rehabilitación de la vía Montecristi–Jaramijó–Crucita y circuito costero",
+        "meta": "AH-I-X-02",
+        "nivel": "Sustancial",
+        "color": "#1E8E3E",
+        "glosa": "la meta recoge la promesa casi por completo",
+        "tipo": "Directa con matiz",
+        "score": 0.75
+      },
+      {
+        "id": "PR-30",
+        "eje": "Social",
+        "promesa": "Programa de alimentación escolar complementaria en comunidades rurales",
+        "meta": "AH-I-X-03",
+        "nivel": "Parcial",
+        "color": "#F9AB00",
+        "glosa": "la meta la recoge solo en parte",
+        "tipo": "Parcial",
+        "score": 0.5
+      },
+      {
+        "id": "PR-31",
+        "eje": "Institucional",
+        "promesa": "Implementación del sistema de rendición de cuentas digital abierto",
+        "meta": "PI-L-G-01",
+        "nivel": "Directa",
+        "color": "#1E8E3E",
+        "glosa": "la promesa se convirtió en meta del plan",
+        "tipo": "Directa",
+        "score": 1.0
+      },
+      {
+        "id": "PR-32",
+        "eje": "Ambiental",
+        "promesa": "Reforestación de 500 hectáreas de bosque seco tropical en el cantón",
+        "meta": "FA-CC-01",
+        "nivel": "Parcial",
+        "color": "#F9AB00",
+        "glosa": "la meta la recoge solo en parte",
+        "tipo": "Parcial",
+        "score": 0.5
+      },
+      {
+        "id": "PR-33",
+        "eje": "Infraestructura",
+        "promesa": "Construcción del complejo deportivo multicancha en Parroquia Leonidas Plaza",
+        "meta": "PI-I-G-01",
+        "nivel": "Parcial",
+        "color": "#F9AB00",
+        "glosa": "la meta la recoge solo en parte",
+        "tipo": "Parcial",
+        "score": 0.5
+      },
+      {
+        "id": "PR-34",
+        "eje": "Social",
+        "promesa": "Ampliación del programa de atención médica móvil en comunidades rurales",
+        "meta": "AH-I-X-03",
+        "nivel": "Sustancial",
+        "color": "#1E8E3E",
+        "glosa": "la meta recoge la promesa casi por completo",
+        "tipo": "Directa con matiz",
+        "score": 0.75
+      },
+      {
+        "id": "PR-35",
+        "eje": "Económico",
+        "promesa": "Creación del centro de acopio y procesamiento para pequeños agricultores",
+        "meta": "EP-L-N-01",
+        "nivel": "Parcial",
+        "color": "#F9AB00",
+        "glosa": "la meta la recoge solo en parte",
+        "tipo": "Parcial",
+        "score": 0.5
+      },
+      {
+        "id": "PR-36",
+        "eje": "Institucional",
+        "promesa": "Implementación de cámaras de seguridad CCTV en zonas críticas del cantón",
+        "meta": "FA-I-X-01",
+        "nivel": "Sustancial",
+        "color": "#1E8E3E",
+        "glosa": "la meta recoge la promesa casi por completo",
+        "tipo": "Directa con matiz",
+        "score": 0.75
+      },
+      {
+        "id": "PR-37",
+        "eje": "Social",
+        "promesa": "Construcción de casas comunales y espacios para adultos mayores en parroquias",
+        "meta": "AH-I-X-03",
+        "nivel": "Sustancial",
+        "color": "#1E8E3E",
+        "glosa": "la meta recoge la promesa casi por completo",
+        "tipo": "Directa con matiz",
+        "score": 0.75
+      },
+      {
+        "id": "PR-38",
+        "eje": "Ambiental",
+        "promesa": "Implementación de energía solar en edificios municipales y alumbrado público",
+        "meta": "FA-CC-01",
+        "nivel": "Parcial",
+        "color": "#F9AB00",
+        "glosa": "la meta la recoge solo en parte",
+        "tipo": "Parcial",
+        "score": 0.5
+      },
+      {
+        "id": "PR-39",
+        "eje": "Infraestructura",
+        "promesa": "Ampliación de la red de agua potable sector rural Noroeste del cantón",
+        "meta": "SC-I-N-01",
+        "nivel": "Directa",
+        "color": "#1E8E3E",
+        "glosa": "la promesa se convirtió en meta del plan",
+        "tipo": "Directa",
+        "score": 1.0
+      },
+      {
+        "id": "PR-40",
+        "eje": "Económico",
+        "promesa": "Creación de zona franca turística en la ruta del sombrero de paja toquilla",
+        "meta": "PI-TUR-01",
+        "nivel": "Sustancial",
+        "color": "#1E8E3E",
+        "glosa": "la meta recoge la promesa casi por completo",
+        "tipo": "Directa con matiz",
+        "score": 0.75
+      },
+      {
+        "id": "PR-41",
+        "eje": "Social",
+        "promesa": "Programa integral de vivienda con bono para familias en pobreza extrema",
+        "meta": "EP-L-N-01",
+        "nivel": "Sustancial",
+        "color": "#1E8E3E",
+        "glosa": "la meta recoge la promesa casi por completo",
+        "tipo": "Directa con matiz",
+        "score": 0.75
+      },
+      {
+        "id": "PR-42",
+        "eje": "Institucional",
+        "promesa": "Convenio con MIDUVI para regularización de asentamientos informales",
+        "meta": "EP-L-N-01",
+        "nivel": "Sustancial",
+        "color": "#1E8E3E",
+        "glosa": "la meta recoge la promesa casi por completo",
+        "tipo": "Directa con matiz",
+        "score": 0.75
+      },
+      {
+        "id": "PR-43",
+        "eje": "Ambiental",
+        "promesa": "Plan de manejo de cuencas hídricas y prevención de inundaciones",
+        "meta": "FA-I-X-01",
+        "nivel": "Sustancial",
+        "color": "#1E8E3E",
+        "glosa": "la meta recoge la promesa casi por completo",
+        "tipo": "Directa con matiz",
+        "score": 0.75
+      },
+      {
+        "id": "PR-44",
+        "eje": "Económico",
+        "promesa": "Programa de microcrédito para emprendedores artesanales con BanEcuador",
+        "meta": "EP-L-X-01",
+        "nivel": "Parcial",
+        "color": "#F9AB00",
+        "glosa": "la meta la recoge solo en parte",
+        "tipo": "Parcial",
+        "score": 0.5
+      },
+      {
+        "id": "PR-45",
+        "eje": "Infraestructura",
+        "promesa": "Pavimentación de calles en sector urbano marginal de Montecristi centro",
+        "meta": "AH-I-X-02",
+        "nivel": "Sustancial",
+        "color": "#1E8E3E",
+        "glosa": "la meta recoge la promesa casi por completo",
+        "tipo": "Directa con matiz",
+        "score": 0.75
+      },
+      {
+        "id": "PR-46",
+        "eje": "Social",
+        "promesa": "Creación del banco de medicamentos para familias en pobreza extrema",
+        "meta": "AH-I-X-03",
+        "nivel": "Parcial",
+        "color": "#F9AB00",
+        "glosa": "la meta la recoge solo en parte",
+        "tipo": "Parcial",
+        "score": 0.5
+      },
+      {
+        "id": "PR-47",
+        "eje": "Institucional",
+        "promesa": "Implementación del presupuesto participativo como política permanente",
+        "meta": "SC-I-N-03",
+        "nivel": "Directa",
+        "color": "#1E8E3E",
+        "glosa": "la promesa se convirtió en meta del plan",
+        "tipo": "Directa",
+        "score": 1.0
+      },
+      {
+        "id": "PR-48",
+        "eje": "Ambiental",
+        "promesa": "Control y erradicación del plástico de un solo uso en playas del cantón",
+        "meta": "FA-C-X-01",
+        "nivel": "Sustancial",
+        "color": "#1E8E3E",
+        "glosa": "la meta recoge la promesa casi por completo",
+        "tipo": "Directa con matiz",
+        "score": 0.75
+      },
+      {
+        "id": "PR-49",
+        "eje": "Económico",
+        "promesa": "Fortalecimiento de la marca \"Sombrero de Paja Toquilla de Montecristi\" a nivel global",
+        "meta": "EP-L-X-01",
+        "nivel": "Directa",
+        "color": "#1E8E3E",
+        "glosa": "la promesa se convirtió en meta del plan",
+        "tipo": "Directa",
+        "score": 1.0
+      },
+      {
+        "id": "PR-50",
+        "eje": "Infraestructura",
+        "promesa": "Construcción de aceras y bordillos en barrios periféricos de Montecristi",
+        "meta": "AH-I-X-02",
+        "nivel": "Sustancial",
+        "color": "#1E8E3E",
+        "glosa": "la meta recoge la promesa casi por completo",
+        "tipo": "Directa con matiz",
+        "score": 0.75
+      },
+      {
+        "id": "PR-51",
+        "eje": "Social",
+        "promesa": "Implementación de techos propios para familias sin vivienda adecuada",
+        "meta": "EP-L-N-01",
+        "nivel": "Sustancial",
+        "color": "#1E8E3E",
+        "glosa": "la meta recoge la promesa casi por completo",
+        "tipo": "Directa con matiz",
+        "score": 0.75
+      },
+      {
+        "id": "PR-52",
+        "eje": "Institucional",
+        "promesa": "Fortalecimiento institucional y reestructuración orgánica del GAD",
+        "meta": "SC-L-N-02",
+        "nivel": "Directa",
+        "color": "#1E8E3E",
+        "glosa": "la promesa se convirtió en meta del plan",
+        "tipo": "Directa",
+        "score": 1.0
+      },
+      {
+        "id": "PR-53",
+        "eje": "Ambiental",
+        "promesa": "Creación del humedal artificial como sistema de tratamiento aguas residuales",
+        "meta": "FA-I-X-02",
+        "nivel": "Parcial",
+        "color": "#F9AB00",
+        "glosa": "la meta la recoge solo en parte",
+        "tipo": "Parcial",
+        "score": 0.5
+      },
+      {
+        "id": "PR-54",
+        "eje": "Económico",
+        "promesa": "Apoyo a cooperativas de pescadores con equipos de frío y comercialización",
+        "meta": "EP-L-N-01",
+        "nivel": "Parcial",
+        "color": "#F9AB00",
+        "glosa": "la meta la recoge solo en parte",
+        "tipo": "Parcial",
+        "score": 0.5
+      },
+      {
+        "id": "PR-55",
+        "eje": "Social",
+        "promesa": "Implementación del programa \"Mujer Productiva\" con IEPS y organizaciones locales",
+        "meta": "AH-I-X-03",
+        "nivel": "Sustancial",
+        "color": "#1E8E3E",
+        "glosa": "la meta recoge la promesa casi por completo",
+        "tipo": "Directa con matiz",
+        "score": 0.75
+      },
+      {
+        "id": "PR-56",
+        "eje": "Infraestructura",
+        "promesa": "Rehabilitación del sistema de agua potable de parroquia La Pila",
+        "meta": "SC-I-N-01",
+        "nivel": "Directa",
+        "color": "#1E8E3E",
+        "glosa": "la promesa se convirtió en meta del plan",
+        "tipo": "Directa",
+        "score": 1.0
+      },
+      {
+        "id": "PR-57",
+        "eje": "Institucional",
+        "promesa": "Creación del archivo digital municipal y digitalización de documentos históricos",
+        "meta": "AH-C-X-02",
+        "nivel": "Sustancial",
+        "color": "#1E8E3E",
+        "glosa": "la meta recoge la promesa casi por completo",
+        "tipo": "Directa con matiz",
+        "score": 0.75
+      },
+      {
+        "id": "PR-58",
+        "eje": "Ambiental",
+        "promesa": "Plan de silvicultura urbana — 10.000 árboles en el cantón Montecristi",
+        "meta": "FA-C-X-01",
+        "nivel": "Parcial",
+        "color": "#F9AB00",
+        "glosa": "la meta la recoge solo en parte",
+        "tipo": "Parcial",
+        "score": 0.5
+      },
+      {
+        "id": "PR-59",
+        "eje": "Económico",
+        "promesa": "Desarrollo del circuito ecoturístico Cerro Hojas-Jaboncillo-Agua Blanca",
+        "meta": "PI-TUR-02",
+        "nivel": "Sustancial",
+        "color": "#1E8E3E",
+        "glosa": "la meta recoge la promesa casi por completo",
+        "tipo": "Directa con matiz",
+        "score": 0.75
+      },
+      {
+        "id": "PR-60",
+        "eje": "Social",
+        "promesa": "Convenio con MSP para dispensarios móviles en comunidades indígenas Montubia",
+        "meta": "AH-I-X-03",
+        "nivel": "Parcial",
+        "color": "#F9AB00",
+        "glosa": "la meta la recoge solo en parte",
+        "tipo": "Parcial",
+        "score": 0.5
+      },
+      {
+        "id": "PR-61",
+        "eje": "Institucional",
+        "promesa": "Actualización del Plan de Uso y Gestión del Suelo PUGS 2026",
+        "meta": "AH-C-X-02",
+        "nivel": "Directa",
+        "color": "#1E8E3E",
+        "glosa": "la promesa se convirtió en meta del plan",
+        "tipo": "Directa",
+        "score": 1.0
+      },
+      {
+        "id": "PR-62",
+        "eje": "Infraestructura",
+        "promesa": "Ampliación de la planta de tratamiento de agua potable de Montecristi",
+        "meta": "SC-I-N-01",
+        "nivel": "Directa",
+        "color": "#1E8E3E",
+        "glosa": "la promesa se convirtió en meta del plan",
+        "tipo": "Directa",
+        "score": 1.0
+      },
+      {
+        "id": "PR-63",
+        "eje": "Ambiental",
+        "promesa": "Implementación del sistema de alerta temprana para prevención de riesgos",
+        "meta": "FA-I-X-01",
+        "nivel": "Sustancial",
+        "color": "#1E8E3E",
+        "glosa": "la meta recoge la promesa casi por completo",
+        "tipo": "Directa con matiz",
+        "score": 0.75
+      },
+      {
+        "id": "PR-64",
+        "eje": "Económico",
+        "promesa": "Creación de la ruta gastronómica del seco de pato y mariscos de Montecristi",
+        "meta": "PI-TUR-02",
+        "nivel": "Parcial",
+        "color": "#F9AB00",
+        "glosa": "la meta la recoge solo en parte",
+        "tipo": "Parcial",
+        "score": 0.5
+      },
+      {
+        "id": "PR-65",
+        "eje": "Social",
+        "promesa": "Implementación de talleres de formación para personas con discapacidad",
+        "meta": "AH-I-X-03",
+        "nivel": "Sustancial",
+        "color": "#1E8E3E",
+        "glosa": "la meta recoge la promesa casi por completo",
+        "tipo": "Directa con matiz",
+        "score": 0.75
+      },
+      {
+        "id": "PR-66",
+        "eje": "Institucional",
+        "promesa": "Fortalecimiento del sistema de control de uso del suelo urbano",
+        "meta": "PI-I-G-02",
+        "nivel": "Sustancial",
+        "color": "#1E8E3E",
+        "glosa": "la meta recoge la promesa casi por completo",
+        "tipo": "Directa con matiz",
+        "score": 0.75
+      }
+    ],
+    "autoridades": {
+      "detalle": [
+        {
+          "cargo": "Alcalde",
+          "nombre": "Ing. Jonathan Toro Largacha",
+          "movimiento": "Movimiento MOVER Ecuador",
+          "verificado": true
+        },
+        {
+          "cargo": "Vice-Alcalde",
+          "nombre": "",
+          "movimiento": "",
+          "verificado": false
+        },
+        {
+          "cargo": "Concejal Urbano 1",
+          "nombre": "",
+          "movimiento": "",
+          "verificado": false
+        },
+        {
+          "cargo": "Concejal Urbano 2",
+          "nombre": "",
+          "movimiento": "",
+          "verificado": false
+        },
+        {
+          "cargo": "Concejal Urbano 3",
+          "nombre": "",
+          "movimiento": "",
+          "verificado": false
+        },
+        {
+          "cargo": "Concejal Rural 1",
+          "nombre": "",
+          "movimiento": "",
+          "verificado": false
+        },
+        {
+          "cargo": "Concejal Rural 2",
+          "nombre": "",
+          "movimiento": "",
+          "verificado": false
+        },
+        {
+          "cargo": "Pdte. Junta Parroquial La Pila",
+          "nombre": "",
+          "movimiento": "",
+          "verificado": false
+        }
+      ],
+      "sin_verificar": 7,
+      "total": 8
+    },
+    "publicado": true
   }
 }
