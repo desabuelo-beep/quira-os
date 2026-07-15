@@ -617,6 +617,7 @@ def cajon_dominio_rdc(serie: list, rdc_serie: list | None = None, doc: dict | No
   <div class="qc-body">{cuerpo}</div>
   <div class="qc-placa"><div class="qc-placa-q">QUIRA no certifica la verdad. Certifica el nivel de<br>verificabilidad pública de cada afirmación.</div>
     <div class="qc-placa-s">La ausencia de evidencia es un resultado del análisis documental, nunca una acusación.</div>
+    <div style="margin-top:15px;padding-top:12px;border-top:1px solid var(--bd);font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--tx2)">⬡ QUIRA · <b style="color:var(--tx)">by Dylus&nbsp;Lab</b></div>
   </div>
 </section>"""
 
@@ -660,6 +661,7 @@ def cajon_verificabilidad(snap: dict, serie: list | None = None) -> str:
   </div>
   <div class="qc-placa"><div class="qc-placa-q">QUIRA no certifica la verdad. Certifica el nivel de<br>verificabilidad pública de cada afirmación.</div>
     <div class="qc-placa-s">La ausencia de evidencia es un resultado del análisis documental, nunca una acusación.</div>
+    <div style="margin-top:15px;padding-top:12px;border-top:1px solid var(--bd);font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--tx2)">⬡ QUIRA · <b style="color:var(--tx)">by Dylus&nbsp;Lab</b></div>
   </div>
 </section>"""
 

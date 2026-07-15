@@ -423,8 +423,8 @@ def _sintesis_plan(plan: dict) -> str:
         'consecuencia, la atención del período es <b>preventiva, no correctiva</b>: sostener la coherencia de la '
         'cadena para que la contratación y el devengo recuperen ritmo antes del cierre fiscal, de modo que los '
         'compromisos del PDOT no se erosionen en el tránsito de la planificación al gasto.</div>')
-    return (f'<div class="qc-sint"><div class="qc-sint-lbl">Conclusión Ejecutiva — Dirección de Planificación · '
-            f'Montecristi · corte {_esc(pr.get("corte",""))}</div><div class="qc-sint-b">{dictamen}'
+    return (f'<div class="qc-sint"><div class="qc-sint-lbl">Síntesis ejecutiva del dominio — Planificación '
+            f'Estratégica · Montecristi · ejercicios 2025–2026</div><div class="qc-sint-b">{dictamen}'
             f'<div class="qc-fuente">Fuentes: PDOT 2023-2027 · POA · Presupuesto (cédula eSIGEF) · PAC · SERCOP.</div></div></div>')
 
 
@@ -859,6 +859,7 @@ def cajon_dominio_plan(plan: dict) -> str:
   </div>
   <div class="qc-placa"><div class="qc-placa-q">QUIRA no certifica la verdad. Certifica la consistencia<br>documental de la cadena del plan al gasto.</div>
     <div class="qc-placa-s">Una cadena rota es un resultado del análisis documental, nunca una acusación.</div>
+    <div style="margin-top:15px;padding-top:12px;border-top:1px solid var(--bd);font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--tx2)">⬡ QUIRA · <b style="color:var(--tx)">by Dylus&nbsp;Lab</b></div>
   </div>
 </section>"""
 
