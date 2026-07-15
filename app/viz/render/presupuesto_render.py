@@ -45,7 +45,14 @@ _D02_CSS = (
     ".d2-bn .s{font-family:ui-monospace,monospace;font-size:8px;font-weight:700;letter-spacing:.05em;color:var(--tx2);text-transform:uppercase}"
     ".d2-bn .l{font-size:10px;color:var(--tx);margin-top:2px;line-height:1.25}"
     ".d2-ba{flex:1 1 auto;display:flex;align-items:center;justify-content:center;color:" + _COL + ";min-width:22px;font-size:13px}"
-    "@media(max-width:640px){.d2-sem{flex-direction:column}}"
+    ".d2-bn.wn{background:rgba(249,171,0,.1)}.d2-bn.no{background:rgba(217,48,37,.1)}"
+    ".d2-pfg{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:8px 0 6px}"
+    ".d2-pft{font-family:ui-monospace,monospace;font-size:8px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--tx2);margin-bottom:6px}"
+    ".d2-pf{display:grid;grid-template-columns:1fr 70px 30px;align-items:center;gap:8px;margin-bottom:5px}"
+    ".d2-pf .l{font-size:11px;color:var(--tx)}.d2-pf .t{height:8px;border-radius:4px;background:var(--bd);overflow:hidden}"
+    ".d2-pf .f{display:block;height:100%;border-radius:4px}.d2-pf .n{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;color:var(--tx);text-align:right}"
+    ".d2-chip{display:inline-block;font-size:10px;color:var(--tx2);border:1px solid var(--bd);border-radius:12px;padding:2px 10px;margin:6px 6px 0 0}.d2-chip b{color:var(--tx)}"
+    "@media(max-width:640px){.d2-sem,.d2-pfg{grid-template-columns:1fr}}"
 )
 _CSS = _BASE_CSS.replace("</style>", PROV_CSS + _D02_CSS + "</style>")
 
@@ -152,28 +159,75 @@ def _sostenibilidad(d: dict) -> str:
     return _capacidad("Capacidad de sostenibilidad", f"{p:.0f}%", _col_pct(p, 65, 50), txt)
 
 
+_EST = {"ok": ("#1E8E3E", "&#10003;"), "wn": ("#F9AB00", "!"), "no": ("#D93025", "&#10007;")}
+
+
 def _biografia_capital(d: dict) -> str:
-    """La cadena del capital: por cada convenio, ODS→PND→PDOT·Meta→Convenio→$. Impacto = ausencia declarada."""
+    """Cronología FORENSE (aporte del colega · 2026-07-15): la línea de vida del capital de cada convenio,
+    con el ESTADO de cada eslabón (✓ validado · ! en proceso · ✗ sin dato). La ausencia se VE en el nodo."""
     fondos = (d.get("captacion") or {}).get("detalle") or []
     if not fondos:
         return ""
+
+    def _nodo(sistema, label, est):
+        col, mk = _EST[est]
+        cls = "" if est == "ok" else est
+        return (f'<div class="d2-bn {cls}"><div class="s">{_esc(sistema)} <span style="color:{col}">{mk}</span></div>'
+                f'<div class="l">{_esc(label)}</div></div>')
+
     bloques = ""
     for f in fondos:
         ods = f.get("ods", "") or "ODS por precisar"
         eje = (f.get("pnd_eje", "") or "Plan Nacional").split("—")[0].strip()
-        nodos = [("ODS", ods), ("Plan Nacional", eje), ("PDOT · meta", f.get("meta", "")),
-                 ("Convenio", _esc(f.get("nombre", ""))[:34]), ("Capital", f'{_m(f.get("monto"))} · {f.get("modalidad","")}')]
-        chain = ('<div class="d2-ba">&#9656;</div>').join(
-            f'<div class="d2-bn"><div class="s">{_esc(s)}</div><div class="l">{_esc(l)}</div></div>' for s, l in nodos)
+        nodos = [
+            ("ODS", ods.split("—")[0].strip(), "ok"), ("Plan Nac.", eje, "ok"),
+            ("Meta PDOT", f.get("meta", ""), "ok"), ("Convenio", _esc(f.get("nombre", ""))[:26], "ok"),
+            ("Capital", _m(f.get("monto")), "ok"), ("Contrato", "en proceso", "wn"),
+            ("Devengado", "nivel dominio", "wn"), ("Resultado", "sin medición", "no"),
+        ]
+        chain = ('<div class="d2-ba">&#9656;</div>').join(_nodo(s, l, e) for s, l, e in nodos)
         bloques += f'<div class="d2-bio">{chain}</div>'
+    ley = ('<p class="qc-cap"><span style="color:#1E8E3E">&#10003; validado</span> &nbsp;·&nbsp; '
+           '<span style="color:#F9AB00">! en proceso</span> &nbsp;·&nbsp; '
+           '<span style="color:#D93025">&#10007; sin dato (ausencia declarada)</span></p>')
     return (
-        '<p class="qc-p">Lo que un cooperante realmente financia no es "el presupuesto": es una <b>cadena</b> que '
-        'va del compromiso global al dólar ejecutado en el territorio. Esta es la <b>biografía del capital</b> de '
-        'cada convenio —del ODS que lo justifica al recurso comprometido—:</p>'
-        + bloques
-        + '<p class="qc-cap">El último eslabón —el <b>impacto territorial medido</b> y el <b>ODS efectivamente '
-        'alcanzado</b>— es hoy una <b>ausencia declarada</b>: el municipio aún no publica medición de resultados. '
-        'Es hacia dónde se cierra el ciclo, no lo que hoy se demuestra. QUIRA lo señala, no lo inventa.</p>')
+        '<p class="qc-p">Lo que un cooperante financia no es "el presupuesto": es una <b>cadena</b> del compromiso '
+        'global al dólar ejecutado en el territorio. La <b>línea de vida</b> del capital de cada convenio, con el '
+        '<b>estado de cada eslabón</b>:</p>' + ley + bloques
+        + '<p class="qc-cap">Fíjese en el último nodo: el <b>impacto/resultado medido</b> aparece en <b>rojo</b> '
+        'porque el municipio aún no publica medición de resultados. La <b>ausencia se ve</b> en el nodo — no se '
+        'explica ni se rellena (es un hallazgo en sí, no una inferencia).</p>')
+
+
+def _perfil_financiamiento(d: dict) -> str:
+    """Perfil del financiamiento (aporte del colega): de dónde viene el capital externo (cooperante, sector,
+    modalidad) — revela autonomía y dependencia. Todo desde el dato del snapshot."""
+    from collections import defaultdict
+    fondos = (d.get("captacion") or {}).get("detalle") or []
+    if not fondos:
+        return ""
+    total = sum(f.get("monto", 0) for f in fondos) or 1
+    _COOP = ["MIDUVI", "MTOP", "BanEcuador", "MIES", "MAG", "MSP", "MTOP", "SE"]
+    coop, sect, modal = defaultdict(float), defaultdict(float), defaultdict(float)
+    for f in fondos:
+        nom = f.get("nombre", "")
+        c = next((k for k in _COOP if k.lower() in nom.lower()), "Sectorial")
+        coop[c] += f.get("monto", 0)
+        sect[(f.get("ods", "").split("—")[-1].strip() or "Otro")] += f.get("monto", 0)
+        modal[f.get("modalidad", "")] += f.get("monto", 0)
+
+    def _barras(dd, col):
+        return "".join(f'<div class="d2-pf"><span class="l">{_esc(k)}</span>'
+                       f'<span class="t"><span class="f" style="width:{v/total*100:.0f}%;background:{col}"></span></span>'
+                       f'<span class="n">{v/total*100:.0f}%</span></div>'
+                       for k, v in sorted(dd.items(), key=lambda x: -x[1]))
+    chips = "".join(f'<span class="d2-chip">{_esc(k)}: <b>{v/total*100:.0f}%</b></span>' for k, v in modal.items())
+    return (
+        '<p class="qc-cap" style="margin-top:11px"><b>Perfil del financiamiento externo</b> — de dónde viene y en '
+        'qué modalidad (revela autonomía y dependencia):</p>'
+        f'<div class="d2-pfg"><div><div class="d2-pft">Por origen / cooperante</div>{_barras(coop, _COL)}</div>'
+        f'<div><div class="d2-pft">Por sector financiado</div>{_barras(sect, "#5AA9E6")}</div></div>'
+        f'<div>{chips}</div>')
 
 
 def _sintesis(d: dict) -> str:
@@ -197,6 +251,36 @@ def _sintesis(d: dict) -> str:
             f'externos captados · alineación al Plan Nacional / Agenda 2030 (consumidas de Planificación).</div></div></div>')
 
 
+def _riesgo_financiero(d: dict) -> str:
+    """Panel de riesgo del financiador (aporte del colega · 2026-07-15): el juicio forense que un banco de
+    desarrollo (BID·CAF·BM) hace antes de comprometer capital. Todo derivado del dato — sin inventar."""
+    from collections import defaultdict
+    ej = d.get("ejecucion") or {}
+    cap = d.get("captacion") or {}
+    ti = ej.get("ti_pct") or 0
+    ext = cap.get("total_externo") or 0
+    fondos = cap.get("detalle") or []
+    absorbe = round(5_000_000 * ti / 100)
+    coop = defaultdict(float)
+    _C = ["MIDUVI", "MTOP", "BanEcuador", "MIES", "MAG", "MSP", "SE"]
+    for f in fondos:
+        k = next((x for x in _C if x.lower() in f.get("nombre", "").lower()), "Sectorial")
+        coop[k] += f.get("monto", 0)
+    conc = round(max(coop.values()) / ext * 100) if ext and coop else 0
+    filas = [
+        ("Elasticidad de absorción", f"{ti:.1f}%", _col_pct(ti, 50, 25),
+         f'La pregunta que desvela a un financiador: <b>si mañana llegan $5M, ¿el municipio los absorbe?</b> Al '
+         f'ritmo actual ejecutaría solo <b>{_m(absorbe)}</b> este ejercicio. El cuello de botella no es captar '
+         f'—es <b>ejecutar</b>: por eso la capacidad de absorción condiciona a todas las demás.'),
+        ("Concentración de fuentes", f"{conc}%", _col_pct(100 - conc, 60, 40),
+         f'El mayor cooperante concentra <b>{conc}%</b> del capital externo captado. A más concentración, más '
+         f'expuesto queda el municipio si una sola fuente se retira: diversificar es reducir riesgo.'),
+    ]
+    return ('<p class="qc-cap" style="margin-top:11px"><b>Panel de riesgo del financiador</b> — lo que un banco de '
+            'desarrollo evalúa antes de comprometer capital (derivado del dato, no proyectado):</p>'
+            + "".join(_capacidad(k, v, c, x) for k, v, c, x in filas))
+
+
 def cajon_presupuesto(d: dict) -> str:
     if not d:
         return ""
@@ -209,7 +293,7 @@ def cajon_presupuesto(d: dict) -> str:
   </div>
   <div class="qc-body">
     {_seccion('01', 'Comprender este dominio · la capacidad financiera territorial', _cabecera(d))}
-    {_seccion('02', 'La radiografía · las cuatro capacidades', _radiografia(d) + _elegibilidad(d) + _movilizacion(d) + _absorcion(d) + _sostenibilidad(d), prov=prov('ana'))}
+    {_seccion('02', 'La radiografía · las cuatro capacidades', _radiografia(d) + _elegibilidad(d) + _movilizacion(d) + _perfil_financiamiento(d) + _absorcion(d) + _sostenibilidad(d) + _riesgo_financiero(d), prov=prov('ana'))}
     {_seccion('03', 'La biografía del capital público · del ODS al dólar ejecutado', _biografia_capital(d), prov=prov('doc'))}
     {_sintesis(d)}
   </div>
