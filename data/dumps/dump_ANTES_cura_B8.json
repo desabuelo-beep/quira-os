@@ -1,0 +1,52 @@
+{
+  "H03_S1_ELECTORAL_CNE!A8": {
+    "valor": "Promesas_Con_Meta_PDOT",
+    "formula": null
+  },
+  "H03_S1_ELECTORAL_CNE!B8": {
+    "valor": "64",
+    "formula": null
+  },
+  "H03_S1_ELECTORAL_CNE!C8": {
+    "valor": "Dato verificado (66 × 72.83% IFE)",
+    "formula": null
+  },
+  "H03_S1_ELECTORAL_CNE!B7": {
+    "valor": "66",
+    "formula": "=H01_PARÁMETROS!B17"
+  },
+  "H03_S1_ELECTORAL_CNE!B9": {
+    "valor": "0.9696969696969697",
+    "formula": "=B8/B7"
+  },
+  "H03_S1_ELECTORAL_CNE!B10": {
+    "valor": "⚠️ Fidelidad Electoral Media",
+    "formula": null
+  },
+  "H16_IFE!B6": {
+    "valor": "0.9696969696969697",
+    "formula": "=H03_S1_ELECTORAL_CNE!B9"
+  },
+  "H16_IFE!B7": {
+    "valor": "✅ Fidelidad Electoral Alta",
+    "formula": "=IF(B6>=0.85,\"✅ Fidelidad Electoral Alta\",IF(B6>=0.6,\"⚠️ Fidelidad Ele"
+  },
+  "H16_IFE!B10": {
+    "valor": "64",
+    "formula": "=H03_S1_ELECTORAL_CNE!B8"
+  },
+  "H85_ALERTS_LOG!D21": {
+    "valor": "⚠️ REVISAR",
+    "formula": "=IF(ABS(H16_IFE!B6-0.7273)<0.01,\"✅ CORRECTO\",\"⚠️ REVISAR\")"
+  },
+  "H12_MOTOR_ICPI_CANÓNICO!B33": {
+    "valor": "0.27458226534062735",
+    "formula": "=B31/B32"
+  },
+  "H73_OUTPUT_API!B20": {
+    "valor": "0.9696969696969697",
+    "formula": "=H16_IFE!B6"
+  },
+  "_ts": "2026-07-15T15:56:46",
+  "_estado": "ANTES de la cura — B8 contiene 64 (conteo) alimentando B9=B8/B7"
+}

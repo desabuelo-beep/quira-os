@@ -106,11 +106,18 @@ def build_block() -> dict:
         nivel, col, gloss = _NIVEL.get(sc, ("Sin correspondencia", "#D93025", ""))
         eje = str(r[1] or "").strip()
         ejes[eje] = ejes.get(eje, 0) + 1
+        # NIVEL DE VERIFICACIÓN (Principio Rector · instrucción del canon 2026-07-15):
+        # EC/IN/SC = vinculación contrastada contra el documento del CNE (verificada).
+        # PR-xx    = meta asignada pero "Pendiente detalle CNE" → asignada, NO verificada.
+        # Tener meta ≠ estar verificada: la diferencia se DECLARA, no se disimula.
+        verificada = not pid.startswith("PR-")
         promesas.append({
             "id": pid, "eje": eje, "promesa": desc[:150],
             "meta": meta if meta and meta not in ("—", "-") else "",
             "nivel": nivel, "color": col, "glosa": gloss,
             "tipo": tipo if _fw(tipo) else "", "score": sc if sc is not None else 0,
+            "verificada": verificada,
+            "estado": "Vinculación verificada" if verificada else "Pendiente de contraste documental",
         })
 
     # LAS DOS VERDADES (familia de fidelidad · aporte del colega 2026-07-15):
@@ -119,6 +126,7 @@ def build_block() -> dict:
     # No se inventan los demás eslabones (POA/presupuesto/ejecución): sin dato, no hay índice (Regla 3),
     # y esas transiciones ya se miden en d01/d02 — aquí se REFERENCIAN, no se recalculan (Regla 4 · ADR-032).
     reg_con_meta = sum(1 for p in promesas if p["meta"])
+    n_verif = sum(1 for p in promesas if p["verificada"] and p["meta"])
     suma_score = round(sum(p["score"] for p in promesas), 2)
     n_reg = len(promesas)
 
@@ -162,12 +170,19 @@ def build_block() -> dict:
             "documento": "Plan de Trabajo presentado ante el Consejo Nacional Electoral",
             "sha256": _sha(PLAN_CNE)[:16],
         },
-        # ── LAS DOS VERDADES · no compiten: responden preguntas distintas ──────
+        # ── INCORPORACIÓN · con su NIVEL DE VERIFICABILIDAD (Principio Rector) ──
+        # Tener meta asignada ≠ tener la vinculación verificada. Publicar "97%" a secas
+        # sería inferir: solo 20 de las 66 están contrastadas contra el documento del CNE.
         "incorporacion": {   # 🟢 HECHO documental (contar el registro)
             "con_meta": reg_con_meta, "total": n_reg,
             "sin_meta": n_reg - reg_con_meta,
             "pct": round(reg_con_meta / n_reg * 100, 1) if n_reg else 0,
             "pregunta": "¿La promesa ingresó al plan de desarrollo?",
+            "verificadas": n_verif,
+            "pendientes": reg_con_meta - n_verif,
+            "pct_verificado": round(n_verif / n_reg * 100, 1) if n_reg else 0,
+            "cautela": "El registro asigna meta a casi todas, pero solo una parte está contrastada "
+                       "contra el documento electoral. La diferencia se declara: asignada no es verificada.",
         },
         "calidad": {         # 🔵 ÍNDICE del motor (pondera CÓMO ingresó)
             "pct": round(ife * 100, 1) if ife <= 1 else round(ife, 1),
@@ -178,14 +193,16 @@ def build_block() -> dict:
             "escala": escala,
             "pregunta": "¿Con qué nivel de congruencia ingresó?",
         },
-        # Auditoría del canon (2026-07-15): el parámetro rotulado "Promesas_Con_Meta_PDOT = 48"
-        # NO es un conteo de promesas — es la SUMA DE SCORES (48.75 redondeada). El conteo real
-        # de promesas con meta es 64/66. Se registra la discrepancia; el canon se cura aparte.
+        # Auditoría del canon (2026-07-15 · CURADA por Javo el mismo día):
+        # El parámetro rotulado "Promesas_Con_Meta_PDOT = 48" NO era un conteo sino la suma de
+        # scores. Se curó: A8 pasó a "Suma_Score_Vinculación" y el conteo real (64) vive en su
+        # propia celda, sin alimentar el índice. Ninguna fórmula fue tocada; el centinela del
+        # motor volvió a ✅ y el ICPI quedó idéntico. Este bloque queda como acta de trazabilidad.
         "auditoria_canon": {
-            "parametro_declarado": con_meta, "conteo_real_con_meta": reg_con_meta,
+            "parametro_conteo": con_meta, "conteo_real_con_meta": reg_con_meta,
             "suma_score_real": suma_score,
-            "nota": "El parámetro declarado corresponde a la suma de puntajes de vinculación, "
-                    "no al número de promesas con meta.",
+            "coherente": con_meta == reg_con_meta,
+            "nota": "Canon curado: el rótulo ya distingue la suma de puntajes del conteo de promesas.",
         },
         "por_eje": ejes,
         "promesas": promesas,
@@ -205,11 +222,12 @@ def main() -> None:
         json.dump(snap, f, ensure_ascii=False, indent=2)
     inc, cal, aud = block["incorporacion"], block["calidad"], block["auditoria_canon"]
     print("OK - bloque 'mandato_dom' escrito en gm_snapshot.json")
-    print(f"   INCORPORACIÓN (hecho) : {inc['con_meta']}/{inc['total']} = {inc['pct']}%")
-    print(f"   CALIDAD (índice)      : {cal['pct']}% declarado · {cal['pct_recalculado']}% "
-          f"recalculado (suma score {cal['suma_score']}/{cal['base']})")
-    print(f"   AUDITORÍA canon       : parámetro dice {aud['parametro_declarado']} 'promesas con meta' "
-          f"pero el conteo real es {aud['conteo_real_con_meta']} (48 = suma de scores)")
+    print(f"   INCORPORACIÓN (hecho) : {inc['con_meta']}/{inc['total']} = {inc['pct']}% con meta")
+    print(f"     · verificadas       : {inc['verificadas']} ({inc['pct_verificado']}%) "
+          f"· pendientes de contraste: {inc['pendientes']} · sin meta: {inc['sin_meta']}")
+    print(f"   CALIDAD (índice motor): {cal['pct']}% (suma score {cal['suma_score']}/{cal['base']})")
+    print(f"   AUDITORÍA canon       : conteo declarado={aud['parametro_conteo']} · real="
+          f"{aud['conteo_real_con_meta']} · coherente={aud['coherente']}")
     print(f"   autoridades sin verificar: {block['autoridades']['sin_verificar']}/{block['autoridades']['total']}")
 
 

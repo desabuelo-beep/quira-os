@@ -6608,7 +6608,11 @@
       "total": 66,
       "sin_meta": 2,
       "pct": 97.0,
-      "pregunta": "¿La promesa ingresó al plan de desarrollo?"
+      "pregunta": "¿La promesa ingresó al plan de desarrollo?",
+      "verificadas": 18,
+      "pendientes": 46,
+      "pct_verificado": 27.3,
+      "cautela": "El registro asigna meta a casi todas, pero solo una parte está contrastada contra el documento electoral. La diferencia se declara: asignada no es verificada."
     },
     "calidad": {
       "pct": 72.7,
@@ -6634,10 +6638,11 @@
       "pregunta": "¿Con qué nivel de congruencia ingresó?"
     },
     "auditoria_canon": {
-      "parametro_declarado": 48,
+      "parametro_conteo": 64,
       "conteo_real_con_meta": 64,
       "suma_score_real": 48.75,
-      "nota": "El parámetro declarado corresponde a la suma de puntajes de vinculación, no al número de promesas con meta."
+      "coherente": true,
+      "nota": "Canon curado: el rótulo ya distingue la suma de puntajes del conteo de promesas."
     },
     "por_eje": {
       "Económico": 15,
@@ -6656,7 +6661,9 @@
         "color": "#1E8E3E",
         "glosa": "la promesa se convirtió en meta del plan",
         "tipo": "Directa",
-        "score": 1.0
+        "score": 1.0,
+        "verificada": true,
+        "estado": "Vinculación verificada"
       },
       {
         "id": "EC-002",
@@ -6667,7 +6674,9 @@
         "color": "#1E8E3E",
         "glosa": "la promesa se convirtió en meta del plan",
         "tipo": "Directa",
-        "score": 1.0
+        "score": 1.0,
+        "verificada": true,
+        "estado": "Vinculación verificada"
       },
       {
         "id": "EC-003",
@@ -6678,7 +6687,9 @@
         "color": "#1E8E3E",
         "glosa": "la meta recoge la promesa casi por completo",
         "tipo": "Directa con matiz",
-        "score": 0.75
+        "score": 0.75,
+        "verificada": true,
+        "estado": "Vinculación verificada"
       },
       {
         "id": "EC-004",
@@ -6689,7 +6700,9 @@
         "color": "#F9AB00",
         "glosa": "la meta la recoge solo en parte",
         "tipo": "Parcial",
-        "score": 0.5
+        "score": 0.5,
+        "verificada": true,
+        "estado": "Vinculación verificada"
       },
       {
         "id": "EC-005",
@@ -6700,7 +6713,9 @@
         "color": "#D93025",
         "glosa": "no hay meta del plan que la recoja",
         "tipo": "Sin vínculo",
-        "score": 0.0
+        "score": 0.0,
+        "verificada": true,
+        "estado": "Vinculación verificada"
       },
       {
         "id": "IN-001",
@@ -6711,7 +6726,9 @@
         "color": "#1E8E3E",
         "glosa": "la promesa se convirtió en meta del plan",
         "tipo": "Directa",
-        "score": 1.0
+        "score": 1.0,
+        "verificada": true,
+        "estado": "Vinculación verificada"
       },
       {
         "id": "IN-002",
@@ -6722,7 +6739,9 @@
         "color": "#1E8E3E",
         "glosa": "la promesa se convirtió en meta del plan",
         "tipo": "Directa",
-        "score": 1.0
+        "score": 1.0,
+        "verificada": true,
+        "estado": "Vinculación verificada"
       },
       {
         "id": "IN-003",
@@ -6733,7 +6752,9 @@
         "color": "#1E8E3E",
         "glosa": "la meta recoge la promesa casi por completo",
         "tipo": "Directa con matiz",
-        "score": 0.75
+        "score": 0.75,
+        "verificada": true,
+        "estado": "Vinculación verificada"
       },
       {
         "id": "IN-004",
@@ -6744,7 +6765,9 @@
         "color": "#1E8E3E",
         "glosa": "la promesa se convirtió en meta del plan",
         "tipo": "Directa",
-        "score": 1.0
+        "score": 1.0,
+        "verificada": true,
+        "estado": "Vinculación verificada"
       },
       {
         "id": "IN-005",
@@ -6755,7 +6778,9 @@
         "color": "#F9AB00",
         "glosa": "la meta la recoge solo en parte",
         "tipo": "Parcial",
-        "score": 0.5
+        "score": 0.5,
+        "verificada": true,
+        "estado": "Vinculación verificada"
       },
       {
         "id": "IN-006",
@@ -6766,7 +6791,9 @@
         "color": "#D93025",
         "glosa": "no hay meta del plan que la recoja",
         "tipo": "Sin vínculo",
-        "score": 0.0
+        "score": 0.0,
+        "verificada": true,
+        "estado": "Vinculación verificada"
       },
       {
         "id": "SC-001",
@@ -6777,7 +6804,9 @@
         "color": "#1E8E3E",
         "glosa": "la promesa se convirtió en meta del plan",
         "tipo": "Directa",
-        "score": 1.0
+        "score": 1.0,
+        "verificada": true,
+        "estado": "Vinculación verificada"
       },
       {
         "id": "SC-002",
@@ -6788,7 +6817,9 @@
         "color": "#1E8E3E",
         "glosa": "la promesa se convirtió en meta del plan",
         "tipo": "Directa",
-        "score": 1.0
+        "score": 1.0,
+        "verificada": true,
+        "estado": "Vinculación verificada"
       },
       {
         "id": "SC-003",
@@ -6799,7 +6830,9 @@
         "color": "#1E8E3E",
         "glosa": "la meta recoge la promesa casi por completo",
         "tipo": "Directa con matiz",
-        "score": 0.75
+        "score": 0.75,
+        "verificada": true,
+        "estado": "Vinculación verificada"
       },
       {
         "id": "SC-004",
@@ -6810,7 +6843,9 @@
         "color": "#1E8E3E",
         "glosa": "la meta recoge la promesa casi por completo",
         "tipo": "Directa con matiz",
-        "score": 0.75
+        "score": 0.75,
+        "verificada": true,
+        "estado": "Vinculación verificada"
       },
       {
         "id": "SC-005",
@@ -6821,7 +6856,9 @@
         "color": "#1E8E3E",
         "glosa": "la promesa se convirtió en meta del plan",
         "tipo": "Directa",
-        "score": 1.0
+        "score": 1.0,
+        "verificada": true,
+        "estado": "Vinculación verificada"
       },
       {
         "id": "SC-006",
@@ -6832,7 +6869,9 @@
         "color": "#1E8E3E",
         "glosa": "la meta recoge la promesa casi por completo",
         "tipo": "Directa con matiz",
-        "score": 0.75
+        "score": 0.75,
+        "verificada": true,
+        "estado": "Vinculación verificada"
       },
       {
         "id": "SC-007",
@@ -6843,7 +6882,9 @@
         "color": "#1E8E3E",
         "glosa": "la promesa se convirtió en meta del plan",
         "tipo": "Directa",
-        "score": 1.0
+        "score": 1.0,
+        "verificada": true,
+        "estado": "Vinculación verificada"
       },
       {
         "id": "SC-008",
@@ -6854,7 +6895,9 @@
         "color": "#F9AB00",
         "glosa": "la meta la recoge solo en parte",
         "tipo": "Parcial",
-        "score": 0.5
+        "score": 0.5,
+        "verificada": true,
+        "estado": "Vinculación verificada"
       },
       {
         "id": "SC-009",
@@ -6865,7 +6908,9 @@
         "color": "#F9AB00",
         "glosa": "la meta la recoge solo en parte",
         "tipo": "Parcial",
-        "score": 0.5
+        "score": 0.5,
+        "verificada": true,
+        "estado": "Vinculación verificada"
       },
       {
         "id": "PR-21",
@@ -6876,7 +6921,9 @@
         "color": "#1E8E3E",
         "glosa": "la meta recoge la promesa casi por completo",
         "tipo": "Directa con matiz",
-        "score": 0.75
+        "score": 0.75,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-22",
@@ -6887,7 +6934,9 @@
         "color": "#1E8E3E",
         "glosa": "la promesa se convirtió en meta del plan",
         "tipo": "Directa",
-        "score": 1.0
+        "score": 1.0,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-23",
@@ -6898,7 +6947,9 @@
         "color": "#1E8E3E",
         "glosa": "la meta recoge la promesa casi por completo",
         "tipo": "Directa con matiz",
-        "score": 0.75
+        "score": 0.75,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-24",
@@ -6909,7 +6960,9 @@
         "color": "#F9AB00",
         "glosa": "la meta la recoge solo en parte",
         "tipo": "Parcial",
-        "score": 0.5
+        "score": 0.5,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-25",
@@ -6920,7 +6973,9 @@
         "color": "#1E8E3E",
         "glosa": "la promesa se convirtió en meta del plan",
         "tipo": "Directa",
-        "score": 1.0
+        "score": 1.0,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-26",
@@ -6931,7 +6986,9 @@
         "color": "#1E8E3E",
         "glosa": "la promesa se convirtió en meta del plan",
         "tipo": "Directa",
-        "score": 1.0
+        "score": 1.0,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-27",
@@ -6942,7 +6999,9 @@
         "color": "#1E8E3E",
         "glosa": "la meta recoge la promesa casi por completo",
         "tipo": "Directa con matiz",
-        "score": 0.75
+        "score": 0.75,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-28",
@@ -6953,7 +7012,9 @@
         "color": "#1E8E3E",
         "glosa": "la meta recoge la promesa casi por completo",
         "tipo": "Directa con matiz",
-        "score": 0.75
+        "score": 0.75,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-29",
@@ -6964,7 +7025,9 @@
         "color": "#1E8E3E",
         "glosa": "la meta recoge la promesa casi por completo",
         "tipo": "Directa con matiz",
-        "score": 0.75
+        "score": 0.75,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-30",
@@ -6975,7 +7038,9 @@
         "color": "#F9AB00",
         "glosa": "la meta la recoge solo en parte",
         "tipo": "Parcial",
-        "score": 0.5
+        "score": 0.5,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-31",
@@ -6986,7 +7051,9 @@
         "color": "#1E8E3E",
         "glosa": "la promesa se convirtió en meta del plan",
         "tipo": "Directa",
-        "score": 1.0
+        "score": 1.0,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-32",
@@ -6997,7 +7064,9 @@
         "color": "#F9AB00",
         "glosa": "la meta la recoge solo en parte",
         "tipo": "Parcial",
-        "score": 0.5
+        "score": 0.5,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-33",
@@ -7008,7 +7077,9 @@
         "color": "#F9AB00",
         "glosa": "la meta la recoge solo en parte",
         "tipo": "Parcial",
-        "score": 0.5
+        "score": 0.5,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-34",
@@ -7019,7 +7090,9 @@
         "color": "#1E8E3E",
         "glosa": "la meta recoge la promesa casi por completo",
         "tipo": "Directa con matiz",
-        "score": 0.75
+        "score": 0.75,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-35",
@@ -7030,7 +7103,9 @@
         "color": "#F9AB00",
         "glosa": "la meta la recoge solo en parte",
         "tipo": "Parcial",
-        "score": 0.5
+        "score": 0.5,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-36",
@@ -7041,7 +7116,9 @@
         "color": "#1E8E3E",
         "glosa": "la meta recoge la promesa casi por completo",
         "tipo": "Directa con matiz",
-        "score": 0.75
+        "score": 0.75,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-37",
@@ -7052,7 +7129,9 @@
         "color": "#1E8E3E",
         "glosa": "la meta recoge la promesa casi por completo",
         "tipo": "Directa con matiz",
-        "score": 0.75
+        "score": 0.75,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-38",
@@ -7063,7 +7142,9 @@
         "color": "#F9AB00",
         "glosa": "la meta la recoge solo en parte",
         "tipo": "Parcial",
-        "score": 0.5
+        "score": 0.5,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-39",
@@ -7074,7 +7155,9 @@
         "color": "#1E8E3E",
         "glosa": "la promesa se convirtió en meta del plan",
         "tipo": "Directa",
-        "score": 1.0
+        "score": 1.0,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-40",
@@ -7085,7 +7168,9 @@
         "color": "#1E8E3E",
         "glosa": "la meta recoge la promesa casi por completo",
         "tipo": "Directa con matiz",
-        "score": 0.75
+        "score": 0.75,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-41",
@@ -7096,7 +7181,9 @@
         "color": "#1E8E3E",
         "glosa": "la meta recoge la promesa casi por completo",
         "tipo": "Directa con matiz",
-        "score": 0.75
+        "score": 0.75,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-42",
@@ -7107,7 +7194,9 @@
         "color": "#1E8E3E",
         "glosa": "la meta recoge la promesa casi por completo",
         "tipo": "Directa con matiz",
-        "score": 0.75
+        "score": 0.75,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-43",
@@ -7118,7 +7207,9 @@
         "color": "#1E8E3E",
         "glosa": "la meta recoge la promesa casi por completo",
         "tipo": "Directa con matiz",
-        "score": 0.75
+        "score": 0.75,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-44",
@@ -7129,7 +7220,9 @@
         "color": "#F9AB00",
         "glosa": "la meta la recoge solo en parte",
         "tipo": "Parcial",
-        "score": 0.5
+        "score": 0.5,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-45",
@@ -7140,7 +7233,9 @@
         "color": "#1E8E3E",
         "glosa": "la meta recoge la promesa casi por completo",
         "tipo": "Directa con matiz",
-        "score": 0.75
+        "score": 0.75,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-46",
@@ -7151,7 +7246,9 @@
         "color": "#F9AB00",
         "glosa": "la meta la recoge solo en parte",
         "tipo": "Parcial",
-        "score": 0.5
+        "score": 0.5,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-47",
@@ -7162,7 +7259,9 @@
         "color": "#1E8E3E",
         "glosa": "la promesa se convirtió en meta del plan",
         "tipo": "Directa",
-        "score": 1.0
+        "score": 1.0,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-48",
@@ -7173,7 +7272,9 @@
         "color": "#1E8E3E",
         "glosa": "la meta recoge la promesa casi por completo",
         "tipo": "Directa con matiz",
-        "score": 0.75
+        "score": 0.75,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-49",
@@ -7184,7 +7285,9 @@
         "color": "#1E8E3E",
         "glosa": "la promesa se convirtió en meta del plan",
         "tipo": "Directa",
-        "score": 1.0
+        "score": 1.0,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-50",
@@ -7195,7 +7298,9 @@
         "color": "#1E8E3E",
         "glosa": "la meta recoge la promesa casi por completo",
         "tipo": "Directa con matiz",
-        "score": 0.75
+        "score": 0.75,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-51",
@@ -7206,7 +7311,9 @@
         "color": "#1E8E3E",
         "glosa": "la meta recoge la promesa casi por completo",
         "tipo": "Directa con matiz",
-        "score": 0.75
+        "score": 0.75,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-52",
@@ -7217,7 +7324,9 @@
         "color": "#1E8E3E",
         "glosa": "la promesa se convirtió en meta del plan",
         "tipo": "Directa",
-        "score": 1.0
+        "score": 1.0,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-53",
@@ -7228,7 +7337,9 @@
         "color": "#F9AB00",
         "glosa": "la meta la recoge solo en parte",
         "tipo": "Parcial",
-        "score": 0.5
+        "score": 0.5,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-54",
@@ -7239,7 +7350,9 @@
         "color": "#F9AB00",
         "glosa": "la meta la recoge solo en parte",
         "tipo": "Parcial",
-        "score": 0.5
+        "score": 0.5,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-55",
@@ -7250,7 +7363,9 @@
         "color": "#1E8E3E",
         "glosa": "la meta recoge la promesa casi por completo",
         "tipo": "Directa con matiz",
-        "score": 0.75
+        "score": 0.75,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-56",
@@ -7261,7 +7376,9 @@
         "color": "#1E8E3E",
         "glosa": "la promesa se convirtió en meta del plan",
         "tipo": "Directa",
-        "score": 1.0
+        "score": 1.0,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-57",
@@ -7272,7 +7389,9 @@
         "color": "#1E8E3E",
         "glosa": "la meta recoge la promesa casi por completo",
         "tipo": "Directa con matiz",
-        "score": 0.75
+        "score": 0.75,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-58",
@@ -7283,7 +7402,9 @@
         "color": "#F9AB00",
         "glosa": "la meta la recoge solo en parte",
         "tipo": "Parcial",
-        "score": 0.5
+        "score": 0.5,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-59",
@@ -7294,7 +7415,9 @@
         "color": "#1E8E3E",
         "glosa": "la meta recoge la promesa casi por completo",
         "tipo": "Directa con matiz",
-        "score": 0.75
+        "score": 0.75,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-60",
@@ -7305,7 +7428,9 @@
         "color": "#F9AB00",
         "glosa": "la meta la recoge solo en parte",
         "tipo": "Parcial",
-        "score": 0.5
+        "score": 0.5,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-61",
@@ -7316,7 +7441,9 @@
         "color": "#1E8E3E",
         "glosa": "la promesa se convirtió en meta del plan",
         "tipo": "Directa",
-        "score": 1.0
+        "score": 1.0,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-62",
@@ -7327,7 +7454,9 @@
         "color": "#1E8E3E",
         "glosa": "la promesa se convirtió en meta del plan",
         "tipo": "Directa",
-        "score": 1.0
+        "score": 1.0,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-63",
@@ -7338,7 +7467,9 @@
         "color": "#1E8E3E",
         "glosa": "la meta recoge la promesa casi por completo",
         "tipo": "Directa con matiz",
-        "score": 0.75
+        "score": 0.75,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-64",
@@ -7349,7 +7480,9 @@
         "color": "#F9AB00",
         "glosa": "la meta la recoge solo en parte",
         "tipo": "Parcial",
-        "score": 0.5
+        "score": 0.5,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-65",
@@ -7360,7 +7493,9 @@
         "color": "#1E8E3E",
         "glosa": "la meta recoge la promesa casi por completo",
         "tipo": "Directa con matiz",
-        "score": 0.75
+        "score": 0.75,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       },
       {
         "id": "PR-66",
@@ -7371,7 +7506,9 @@
         "color": "#1E8E3E",
         "glosa": "la meta recoge la promesa casi por completo",
         "tipo": "Directa con matiz",
-        "score": 0.75
+        "score": 0.75,
+        "verificada": false,
+        "estado": "Pendiente de contraste documental"
       }
     ],
     "autoridades": {
