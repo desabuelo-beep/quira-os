@@ -14,6 +14,15 @@ Escala de score (la del canon · H03 f16):
   0.50 Parcial            — la toca solo en parte / es un medio para ella
   0.00 Sin vinculación    — ninguna meta del PDOT la recoge
 
+DIRECCIÓN DEL DOMINIO (corrección de Javo · 2026-07-16 — doctrina, no detalle):
+  d03 mide  → promesa → ¿llegó al plan?      (UNIDIRECCIONAL)
+  d03 NO mide → meta → ¿venía de una promesa?
+Una meta del PDOT sin promesa electoral es NORMAL y LEGÍTIMA: el PDOT no se deriva del plan
+de campaña, nace del DIAGNÓSTICO TÉCNICO del territorio, y estando en el PDOT ya cumple el
+Art. 264 núm. 1 de la Constitución (planificar el desarrollo cantonal). Tratarlo como
+"hallazgo" insinuaría que el GAD solo debe planificar lo prometido — falso, y lenguaje
+acusatorio disfrazado de dato. Ese análisis, si procede, es de d01 Planificación.
+
 Uso:  python scripts/vincular_promesas_d03.py
 Dylus Lab © 2026
 """
