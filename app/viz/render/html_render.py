@@ -472,7 +472,35 @@ def _conclusion(snap: dict, m: dict, serie: list | None = None) -> str:
     periodo = f'{años[0]}–{años[-1]}' if len(años) > 1 else str(años[0])
     return (f'<div class="qc-sint"><div class="qc-sint-lbl">Síntesis ejecutiva del dominio — Rendición de '
             f'Cuentas · {_esc(m.get("canton"))} · período {_esc(periodo)}</div><div class="qc-sint-b">{sint}'
+            f'{_dictamen_rdc(snap, serie)}'
             f'<div class="qc-fuente">Fuentes: {fuentes}.</div></div></div>')
+
+
+def _dictamen_rdc(snap: dict, serie: list | None = None) -> str:
+    """DICTAMEN de cierre — la pieza del molde de d01 que a este dominio le faltaba (Javo · 2026-07-16).
+    La síntesis listaba hallazgos pero no emitía juicio. Dictamina: cita lo ya demostrado y concluye.
+    Nada se recalcula: todo sale de lo que el expediente ya probó arriba."""
+    fid = (snap.get("fidelidad") or {})
+    pct = fid.get("global_pct")
+    n_af, n_baja = fid.get("n_afirmaciones"), fid.get("n_baja")
+    if pct is None or not n_af:
+        return ""
+    cerr = [s for s in (serie or []) if s]
+    n_años = len(cerr) or 1
+    baja_txt = (f'<b>{n_baja}</b> no encontró respaldo suficiente' if n_baja else
+                'todas hallaron respaldo documental')
+    return (
+        '<div class="qc-sr-cierre">El análisis documental evidencia que <b>la rendición de cuentas se cumple '
+        'como acto</b> —la ley la impone y el municipio la celebra— <b>pero el valor de este dominio no está en '
+        'verificar que el acto ocurra, sino en contrastar lo que en él se afirma</b>. De las '
+        f'<b>{n_af} afirmaciones</b> sostenidas ante la ciudadanía en {"el período" if n_años == 1 else f"los {n_años} ejercicios"}, '
+        f'<b>{pct:.0f}%</b> se apoya en registros verificables y {baja_txt}. <b>El discurso, en lo esencial, '
+        'resiste el contraste</b>: lo que se dijo en el estrado se sostiene, en su mayoría, en el expediente. '
+        '<b>La alerta del período no está en lo que se afirmó, sino en lo que no puede comprobarse</b>: cada '
+        'afirmación sin registro público que la respalde no constituye, por sí misma, una falta —constituye una '
+        '<b>imposibilidad de auditoría</b>, y el deber de rendir cuentas incluye el de hacerlas verificables. En '
+        'consecuencia, la atención es <b>preventiva</b>: fortalecer el respaldo documental de lo que se declara, '
+        'para que la palabra rendida ante la ciudadanía sea siempre demostrable y no solo enunciable.</div>')
 
 
 _FOLD_CSS = (
