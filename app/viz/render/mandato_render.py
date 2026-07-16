@@ -108,14 +108,11 @@ def _indice(d: dict) -> str:
         f'<div class="d3-esc"><span>0%</span><span>umbral de fidelidad alta: 85%</span><span>100%</span></div>'
         f'</div>'
         f'<p class="qc-cap">Escala oficial: {esc_txt}. El valor lo calcula el motor del modelo; este expediente '
-        f'lo <b>lee y lo explica</b> — no lo recalcula.</p>'
-        # NO-COMPARABILIDAD (precisión del colega · 2026-07-16): decir "subió de 72.73% a 79.28%"
-        # sería estadísticamente incorrecto — son universos distintos. Se declara el corte de serie.
-        '<p class="qc-cap"><b>Corte de serie.</b> Este valor corresponde a la <b>reconstrucción del registro '
-        'documental depurado</b> —las promesas del plan de trabajo efectivamente verificadas— y <b>no es '
-        'directamente comparable</b> con la serie histórica anterior, calculada sobre un universo que se '
-        'identificó después como <b>contaminado</b> (contenía compromisos ajenos al cantón). No se lea como '
-        'una variación de la gestión: es un cambio de la base documental que se mide.</p>')
+        f'lo <b>lee y lo explica</b> — no lo recalcula.</p>')
+    # NOTA INTERNA (Javo · 2026-07-16 · Regla 2): aquí NO se narra la cocina. La no-comparabilidad
+    # con la serie anterior y el porqué (registro depurado) son historia de CONSTRUCCIÓN nuestra:
+    # viven en OBS-010 y ADR-036, no en el producto. El DOM publica el resultado curado, no el
+    # diario de obra. Contarlo aquí solo sembraría dudas sobre QUIRA sin aportar nada sobre el GAD.
 
 
 def _niveles(d: dict) -> str:
