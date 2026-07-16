@@ -33,6 +33,8 @@ la Doctrina permanece. Hoja de Ruta = el mapa que no se mueve. BOOT §AHORA = el
 🔌 **MCD Planif · 7 cables ✅:** Excel·SERCOP·Relacional·Normativo·IA·Visual·Memoria.
 🧭 **ADR-031 RATIF:** cajón=MCD · GoldMaster=MCM · MCIP 5 motores (Index §1.A).
 🔑 **Planif✓ · RDC✓ · d02 v3✓** — 4 capacidades + SAT (Norma→Regla→Señal) + cadena inter-dominio.
+🏛️ **d03 Mandato✓ (entrable)** — 66 promesas CNE (Plan SHA256). CAPA1 índice del motor 72.7% · CAPA2 biografía (eslabones aguas abajo se REFERENCIAN, no se recalculan). **3 niveles de prueba: 18 verificadas · 46 pendientes · 2 sin correspondencia** (asignada≠verificada). **Sig: contraste de los 46** → `data/contraste_cne/` (Javo valida; la IA no autoverifica · ADR-035 §5).
+🩺 **Canon curado por el DOM (Regla 8):** H03 rótulo `Suma_Score_Vinculación` (48≠conteo) + conteo 64 aparte + B10 ya es fórmula + col G `Estado_Verificación`. ICPI intacto · centinela ✅. **Gate real = `python scripts/ci/check_health.py` (BOOT≤6000·CLAUDE≤4000): NO adivinar.**
 📚 **ADR-035 BRN RATIF:** DOM Alertas **transmuta** en Biblioteca de Reglas (no se elimina). Ley→BRN→GoldMaster (único motor)→QUIRA. **IA propone, humano valida.**
 🔶 **CI:** BOOT ≤6KB.
 
