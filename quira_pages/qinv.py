@@ -94,6 +94,7 @@ QINV: dict[str, dict] = {
         "id": "QINV-003", "nombre": "Gobernanza del Mandato",
         "pregunta": "¿Existe correspondencia material entre el mandato rector "
                     "originario y la programación operativa real de la entidad?",
+        "page": "m_mandato",  # ✅ construida (la palabra empeñada · d03)
         "gad": "Plan de Trabajo inscrito ante el CNE.",
         "central": "Agendas sectoriales · decretos · mandatos del Ejecutivo.",
     },
