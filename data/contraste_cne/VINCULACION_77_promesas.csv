@@ -1,0 +1,101 @@
+﻿FILA en H03;ID nuevo;Eje;Promesa REAL del Plan CNE;>> Meta PDOT (D);>> Score (E);>> Tipo vinculacion (F)
+17;EC-001;Económico;Mejoramiento de las infraestructuras del entorno empresarial para optimizar y atraer nuevas industrias.;;;
+18;EC-002;Económico;Generar ordenanzas municipales para la exoneración de tributos a las empresas que se asienten dentro del cantón a realiz;;;
+19;EC-003;Económico;Gestión para repotenciar y ordenar del mercado.;;;
+20;EC-004;Económico;Crear y fomentar programas para el fortalecimiento del sector artesanal.;;;
+21;EC-005;Económico;Generar ordenanzas municipales para reordenar estratégicamente a los vendedores ambulantes.;;;
+22;EC-006;Económico;Fortalecer y planificar las festividades cantonales de noviembre, mediante la coordinación con la Cámara de Comercio ins;;;
+23;EC-007;Económico;Repotenciar el Paseo Lúdico;;;
+24;EC-008;Económico;Impulsar y desarrollar programas de promocionamiento para las artesanías de los sectores del cantón.;;;
+25;EC-009;Económico;Creación de rutas para ciclismos de montaña.;;;
+26;EC-010;Económico;Elaborar un plan para promocionar la gastronomía del cantón Montecristi;;;
+27;EC-011;Económico;Elaborar un plan de posicionamiento para que Montecristi se convierta en un destino turístico.;;;
+28;EC-012;Económico;Gestionar la creación de una ruta turística.;;;
+29;EC-013;Económico;Impulsar el desarrollo turístico de la Playa San José de Montecristi e Isla de la Plata.;;;
+30;EC-014;Económico;Impulsar el desarrollo turístico del Manglar de Montecristi.;;;
+31;IN-001;Institucional;Estudios y elaboración de un plan de desarrollo territorial para Montecristi, enfocado hacia los próximos 30 años;;;
+32;IN-002;Institucional;Elaborar el Plan de Desarrollo Territorial (PDOT) 2023 con la incorporación de los Objetivos de Desarrollo Sostenible (O;;;
+33;IN-003;Institucional;Actualización del sistema catastral del cantón Montecristi.;;;
+34;IN-004;Institucional;Elaboración de una base de datos para identificar a los grupos sociales más vulnerables dentro del cantón.;;;
+35;IN-005;Institucional;Gestionar y promover la creación de una Base de Datos de un Registro Comunal.;;;
+36;IN-006;Institucional;Gestionar y coordinar acciones para la delimitación de los terrenos comunales dentro del cantón;;;
+37;IN-007;Institucional;Creación y fortalecimiento de marca ciudad (Montecristi).;;;
+38;IN-008;Institucional;Mejorar los equipos informáticos del GAD Montecristi;;;
+39;IN-009;Institucional;Elaboración de una Plataforma Digital del GAD, que facilite y ayude a la realización de trámites al usuario;;;
+40;IN-010;Institucional;Promover la transparencia y la rendición de cuentas del presupuesto del GAD de Montecristi;;;
+41;IN-011;Institucional;Repotenciar y transparentar los procesos del registro de la propiedad;;;
+42;IN-012;Institucional;Buscar y coordinar alianzas con los con los diferentes niveles de gobiernos e instituciones internacionales para desarro;;;
+43;IN-013;Institucional;Gestionar la instalación de alarmas comunitarias en puntos críticos del cantón;;;
+44;IN-014;Institucional;Gestionar la habilitación y el uso de los UPC en los sectores de la Aníbal San Andrés, Parroquia Colorado, entre otros. ;;;
+45;IN-015;Institucional;Gestión para las aperturas de cuarteles del cuerpo de bomberos en zonas estratégicas del cantón.;;;
+46;SC-001;Social;Realizar una ordenanza para la creación del Concejo de Salud en Montecristi que articule las metas y objetivos trazados.;;;
+47;SC-002;Social;Gestionar la construcción de un Centro de Salud Tipo C. PLAN NACER AQUÍ;;;
+48;SC-003;Social;Gestionar para la construcción de un Centro Geriátrico.;;;
+49;SC-004;Social;Repotenciar y reorganizar el correcto funcionamiento de las instituciones municipales existentes;;;
+50;SC-005;Social;Realizar atención en salud puerta a puerta, a la población que no pueda movilizarse lo que nos permita un diagnóstico cl;;;
+51;SC-006;Social;Difundir a través de diferentes medios de comunicación charlas educativas que fomenten la participación ciudadana;;;
+52;SC-007;Social;Creación de clubes municipales de salud donde se incentive constantemente, los buenos hábitos para una mejor salud.;;;
+53;SC-008;Social;Evaluación periódica de avances y resultados del plan y estrategias trazadas;;;
+54;SC-009;Social;Gestión para la donación y construcción de un albergue para Gatos y Perros, además de programas de campañas de esteriliz;;;
+55;SC-010;Social;Gestión para la implementación de una Plataforma Digital que brinde capacitaciones a los ciudadanos y emita certificacio;;;
+56;SC-011;Social;Gestionar un centro de emprendedores que brinde asesoría y acompañamiento en el desarrollo de sus proyectos. (CUNA DE EM;;;
+57;SC-012;Social;Promover y desarrollar programas de capacitación para comerciantes con certificaciones sobre temas de manejo de finanzas;;;
+58;SC-013;Social;Promover la formación, participación y liderazgo de jóvenes en la política del cantón.;;;
+59;SC-014;Social;Brindar becas de preparación para el examen de ingreso a la universidad;;;
+60;SC-015;Social;Fomentar programas para incentivar la lectura, pintura, cultura, oratoria, deportes;;;
+61;SC-016;Social;Programa de Centro de Formación Artesanal (KA-LARTE ES POR TI).;;;
+62;SC-017;Social;Gestionar la instalación de Infocentro dentro del territorio del cantón;;;
+63;SC-018;Social;Promover la participación ciudadana en programas barriales;;;
+64;SC-019;Social;Gestionar la construcción y mejoramiento de espacios deportivos y de recreación;;;
+65;SC-020;Social;Gestionar la construcción y mejoramiento de espacios culturales y sociales;;;
+66;SC-021;Social;Evaluar e incorporar redes wifi en parques y espacios públicos;;;
+67;AM-001;Ambiental;Impulsar la protección de flora y fauna nativa del cantón, incluyendo la explotación minera en la Playa San José y en la;;;
+68;AM-002;Ambiental;Gestionar y planificar medidas de remediación ambiental.;;;
+69;AM-003;Ambiental;Control de evaluación y monitoreo de los contaminantes de la calidad de aire;;;
+70;AM-004;Ambiental;Desarrollo de programas para la gestión de los residuos sólidos desde la fuente;;;
+71;AM-005;Ambiental;Estudios técnicos y ambiental para la ampliación del basurero municipal;;;
+72;AM-006;Ambiental;Ampliar la cobertura en recolección de desechos en las zonas urbanas y rurales.;;;
+73;AM-007;Ambiental;Gestionar el diseño de una planta de oxidación para el tratamiento de aguas residuales;;;
+74;AM-008;Ambiental;Gestionar con el gobierno nacional una solicitud para la derogación del decreto ejecutivo en donde se nombró al cerro de;;;
+75;AM-009;Ambiental;Elaborar y planificar programas de arborización urbano y rural.;;;
+76;TE-001;Territorial;Gestión para la adquisición de equipo de pavimento asfaltico.;;;
+77;TE-002;Territorial;Planificar la construcción y mantenimientos de las vías del cantón.;;;
+78;TE-003;Territorial;Ampliar el sistema de alcantarillado en los sectores de Eloy Alfaro, Leónidas Proaño, Colorado y demás sectores del cant;;;
+79;TE-004;Territorial;Ampliar la construcción de aceras y bordillos;;;
+80;TE-005;Territorial;Planificación y construcción de paradas de buses.;;;
+81;TE-006;Territorial;Mejorar la señalización de las calles en las áreas urbanas y rurales;;;
+82;TE-007;Territorial;Elaboración de un inventario de las vías del cantón Montecristi;;;
+83;TE-008;Territorial;Gestionar y planificar el reordenamiento Vial;;;
+84;TE-009;Territorial;Gestión para la implementación de un Nuevo Terminal;;;
+85;TE-010;Territorial;Gestión para la construcción de un camal;;;
+86;TE-011;Territorial;Estudios técnicos y de impacto ambiental para la construcción de un cementerio para la Parroquia Leónidas Proaño.;;;
+87;TE-012;Territorial;Realizar los estudios técnicos y de impacto ambiental para la construcción de un nuevo cementerio general de Montecristi;;;
+88;TE-013;Territorial;Mantenimiento de los Cementerios Municipales.;;;
+89;TE-014;Territorial;Aumentar la cobertura cantonal de los servicios de agua potable;;;
+90;TE-015;Territorial;Ampliar la cobertura de los tanques de reservorios de la planta potabilizadora de agua;;;
+91;TE-016;Territorial;Gestión para construcción de pozos acuíferos para suministrar agua de consumo para el sector rural y para ejecutar proye;;;
+92;TE-017;Territorial;Implementar un macro medidor en la toma de agua Los Mangos y un sistema de control eficaz para transparentar la comercia;;;
+93;TE-018;Territorial;Gestión para la construcción de varios reservorios de agua para los sectores rurales del cantón;;;
+
+--- REFERENCIA: sus 20 vinculaciones anteriores (para reutilizar la meta donde aplique) ---
+ID viejo;Promesa (canon anterior);Meta PDOT;Score;Tipo
+EC-001;"Convertir a Montecristi en destino turístico nacional/internacional; rutas gastronómicas, ecoturísticas, event";EP-L-X-01;1;Directa
+EC-002;"Fomento al sector artesanal, MIPYMES y emprendedores; programa Ka-Larte es por Ti; Cuna de Emprendedores";EP-L-N-01;1;Directa
+EC-003;Gestión para repotenciar y ordenar el mercado municipal;PI-I-G-01;0.75;Directa con matiz
+EC-004;"Impulsar desarrollo turístico Playa San José e Isla de la Plata; manglar; Paseo Lúdico";EP-L-X-01;0.5;Parcial
+EC-005;"Generación de ordenanzas para exoneración de tributos a nuevas empresas; alianzas sector privado";—;0;Sin vínculo
+IN-001;"Elaborar PDOT 2023 con ODS; planificación territorial 30 años; Plan Bicentenario";PI-I-G-02;1;Directa
+IN-002;"Actualización catastral urbana y rural; base de datos grupos vulnerables; registro y delimitación comunal";AH-C-X-02;1;Directa
+IN-003;"Transformación digital del GAD; plataforma digital de trámites; gobierno electrónico abierto";AH-C-X-02;0.75;Directa con matiz
+IN-004;"Acceso a información pública (LOTAIP); rendición de cuentas transparente; convenios interinstitucionales";PI-L-G-01;1;Directa
+IN-005;Seguridad ciudadana: alarmas comunitarias, habilitación UPC Aníbal San Andrés y Colorado, cuarteles bomberos;PI-I-G-01;0.5;Parcial
+IN-006;"Creación y fortalecimiento de marca ciudad Montecristi; posicionamiento nacional como referente";—;0;Sin vínculo
+SC-001;"Construcción Centro de Salud Tipo C; Centro Geriátrico; Plan Nacer Aquí; Concejo de Salud Montecristi";AH-I-X-03;1;Directa
+SC-002;"Salud integral gratuita e ininterrumpida; clubes de salud; medicina preventiva; atención puerta a puerta";SC-I-N-01;1;Directa
+SC-003;Mejorar calidad de vida fauna urbana: albergue, programas de esterilización, ordenanza de protección animal;FA-L-N-01;0.75;Directa con matiz
+SC-004;"Capacitaciones ciudadanas con certificación; plataforma digital; Cuna de Emprendedores; becas universitarias";SC-L-N-02;0.75;Directa con matiz
+SC-005;"Participación ciudadana activa; instancias participativas barriales; liderazgo juvenil en política cantonal";PI-L-G-01;1;Directa
+SC-006;"Espacios de recreación deportivos, culturales y sociales; wifi en parques y plazas públicas";AH-I-N-01;0.75;Directa con matiz
+SC-007;Protección especial a grupos vulnerables: niñez, adolescentes, adultos mayores, discapacidad, género;AH-C-X-01;1;Directa
+SC-008;"Programa de becas estudiantiles para educación superior; convenios con universidades; investigación cantonal";SC-L-N-02;0.5;Parcial
+SC-009;"Mejorar infraestructura de unidades educativas del cantón; mobiliario y equipamiento";PI-I-G-01;0.5;Parcial
