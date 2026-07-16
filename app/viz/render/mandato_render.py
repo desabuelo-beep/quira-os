@@ -93,6 +93,12 @@ def _indice(d: dict) -> str:
         '<p class="qc-p">La <b>fidelidad del mandato</b> no cuenta promesas: las <b>pondera</b>. Una promesa puede '
         'entrar al plan de forma <b>directa</b>, <b>con matices</b> o solo <b>parcial</b>, y no es honesto que las '
         'tres pesen igual. El índice mide, con esa ponderación, cuánto del mandato sobrevivió al pasar al plan:</p>'
+        # DECLARACIÓN DE ALCANCE (ADR-036 · exigida): el dominio mide contra el subconjunto
+        # estratégico del canon, NO contra el PDOT completo. Callarlo sería el error que OBS-010 destapó.
+        '<p class="qc-cap"><b>Alcance de esta medición.</b> El modelo evalúa la correspondencia contra el '
+        '<b>universo estratégico del plan</b> —el subconjunto de metas que el motor representa—, no contra el '
+        'plan de desarrollo en su totalidad. Una promesa cuya meta exista en el plan pero <b>fuera de ese '
+        'subconjunto</b> se declara <b>fuera de alcance</b>: no se computa como incumplimiento del municipio.</p>'
         f'<div class="d3-hero"><div class="d3-hero-h"><div>'
         f'<div class="d3-hero-t">Fidelidad del mandato electoral</div>'
         f'<div class="d3-hero-c">{clasif}</div></div>'
@@ -102,7 +108,14 @@ def _indice(d: dict) -> str:
         f'<div class="d3-esc"><span>0%</span><span>umbral de fidelidad alta: 85%</span><span>100%</span></div>'
         f'</div>'
         f'<p class="qc-cap">Escala oficial: {esc_txt}. El valor lo calcula el motor del modelo; este expediente '
-        f'lo <b>lee y lo explica</b> — no lo recalcula.</p>')
+        f'lo <b>lee y lo explica</b> — no lo recalcula.</p>'
+        # NO-COMPARABILIDAD (precisión del colega · 2026-07-16): decir "subió de 72.73% a 79.28%"
+        # sería estadísticamente incorrecto — son universos distintos. Se declara el corte de serie.
+        '<p class="qc-cap"><b>Corte de serie.</b> Este valor corresponde a la <b>reconstrucción del registro '
+        'documental depurado</b> —las promesas del plan de trabajo efectivamente verificadas— y <b>no es '
+        'directamente comparable</b> con la serie histórica anterior, calculada sobre un universo que se '
+        'identificó después como <b>contaminado</b> (contenía compromisos ajenos al cantón). No se lea como '
+        'una variación de la gestión: es un cambio de la base documental que se mide.</p>')
 
 
 def _niveles(d: dict) -> str:
@@ -196,9 +209,14 @@ def _sintesis(d: dict) -> str:
     ver, tot = inc.get("verificadas", 0), inc.get("total", 0)
     sin = inc.get("sin_meta", 0)
     return _seccion("", "Síntesis ejecutiva del dominio — Gobernanza del Mandato · Montecristi · período 2023-2027",
+        # Precisión del colega (2026-07-16): "la mayoría encontró meta; 1 no encontró ninguna" haría
+        # creer que se agotó el PDOT completo. Se acota al universo que el canon representa.
         f'<p class="qc-p">La palabra empeñada <b>sí llegó al plan</b>: la fidelidad del mandato alcanza '
         f'<b>{pct:.1f}%</b> —{_esc(cal.get("clasificacion",""))}—, por debajo del 85% que marca fidelidad alta. '
-        f'La mayoría de las promesas encontró una meta que las recogiera; <b>{sin}</b> no encontró ninguna.</p>'
+        f'Dentro del <b>universo estratégico que el canon representa</b>, <b>{tot - sin}</b> promesas '
+        f'encontraron correspondencia documental y <b>{sin}</b> permaneció sin correspondencia — lo que no '
+        f'significa que el plan de desarrollo se haya agotado: fuera de ese subconjunto puede existir la meta '
+        f'que la recoja.</p>'
         f'<p class="qc-p">Pero el dato que gobierna este expediente es otro: de las <b>{tot} promesas</b>, solo '
         f'<b>{ver}</b> tienen su vinculación <b>contrastada contra el documento electoral</b>. El resto está '
         f'asignado, no probado. Por eso este dominio publica un índice <b>y</b> el nivel de prueba que lo sostiene: '
