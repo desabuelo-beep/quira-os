@@ -89,11 +89,15 @@ def build_block() -> dict:
     clasif = re.sub(r"[🔴🟡🟢🟠⚠️✅]", "", str(find(ws, "Clasificación_IFE") or "")).strip(" —·")
     anio = int(_num(find(ws, "Año_Elección")) or 2023)
 
-    # OJO (lección 2026-07-15): el filtro previo exigía len(id)>=6 y perdía las 46 promesas
-    # "PR-21".."PR-66" (5 chars) → se auditaba sobre una muestra mutilada. Filtro correcto:
-    _PID = re.compile(r"^(EC|IN|SC|PR)-\d{2,3}$")
+    # OJO — los filtros ya nos costaron dos sustos (2026-07-15/16):
+    #   1º `len(id)>=6` descartaba "PR-21" (5 chars) → se auditó sobre 20 de 66.
+    #   2º el patrón (EC|IN|SC|PR) era del universo contaminado → perdía las AM y TE del
+    #      registro curado (leía 50 de 76). Los ejes del Plan CNE real son:
+    #      EC Económico · IN Institucional · SC Social · AM Ambiental · TE Territorial.
+    # Si mañana aparece un eje nuevo, ESTE es el sitio que hay que tocar.
+    _PID = re.compile(r"^(EC|IN|SC|AM|TE)-\d{2,3}$")
     promesas, ejes = [], {}
-    for r in ws.iter_rows(min_row=1, max_row=90, values_only=True):
+    for r in ws.iter_rows(min_row=1, max_row=100, values_only=True):
         if not (r and r[0] and isinstance(r[0], str) and _PID.match(r[0].strip())):
             continue
         pid = r[0].strip()
@@ -110,7 +114,9 @@ def build_block() -> dict:
         # Antes se INFERÍA del prefijo del ID ("PR-" = pendiente): eso nacía en Python y violaba
         # la Regla 9. El DOM reveló el defecto y el canon lo absorbió: ahora el estado es dato.
         estado_canon = str(r[6] or "").strip() if len(r) > 6 else ""
-        verificada = estado_canon.lower().startswith("verific")
+        # El canon usa "Verificada" (ingesta de Javo) y "Validada/Validado" (revisión conjunta
+        # 2026-07-16). Ambos significan: un humano dictaminó sobre esta vinculación.
+        verificada = estado_canon.lower().startswith(("verific", "valid"))
         promesas.append({
             "id": pid, "eje": eje, "promesa": desc[:150],
             "meta": meta if meta and meta not in ("—", "-") else "",

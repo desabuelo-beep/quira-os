@@ -69,9 +69,11 @@ _DOMAINS_V2: list[dict[str, Any]] = [
         "id": "d03", "num": "03", "nombre": "Gobernanza del Mandato",
         "concepto": "La correspondencia entre lo que se prometió en campaña y lo que "
                     "el plan de gobierno realmente ejecuta — la palabra empeñada, medida.",
-        "estado": "EN RUTA", "metric": "—",
-        "folio_estado": "EN CURACIÓN", "periodo": "Período 2023 – 2027",
-        "radiografia_macro": [("PROMESAS", "77"), ("REGISTRO", "en curación"), ("ÍNDICE", "pendiente")],
+        "estado": "EN RUTA", "metric": "76",
+        "folio_estado": "EN LÍNEA", "periodo": "Período 2023 – 2027",
+        # El índice queda "pendiente" a propósito: los 4 parámetros del canon aún describen el
+        # universo viejo (48/66). No se publica un porcentaje que sabemos desactualizado.
+        "radiografia_macro": [("PROMESAS", "76"), ("VINCULADAS", "75"), ("ÍNDICE", "pendiente")],
         "gancho": "¿La gestión mantiene la correspondencia con los compromisos que la ciudadanía validó en las urnas?",
         "temp": "alerta", "mod": "metas",
     },
@@ -165,11 +167,10 @@ _DOMAINS_V2: list[dict[str, Any]] = [
 ]
 
 # Solo los DOM CURADOS son entrables; el resto queda BLOQUEADO (Javo 2026-07-14).
-# d03 queda FUERA hasta que el canon se cure (OBS-010 · 2026-07-16): su registro publica hoy
-# 46 promesas que no salieron del Plan CNE —3 de otros cantones (Sucre, Jaramijó, Crucita)—.
-# Regla 3 aplicada a nosotros mismos: sin dato verificado, no hay dato publicado. Se reabre
-# cuando la copia curada (77 promesas reales) se promueva a canon y Javo valide la vinculación.
-_ENTRABLES = {"d01", "d02", "d09"}
+# d03 REABIERTO (2026-07-16): el canon fue curado y promovido — 76 promesas reales del Plan
+# CNE, cero contaminación (antes: 66 con 3 de otros cantones). Las vinculaciones están
+# validadas por Javo y corroboradas contra las 25 metas del universo operacional (ADR-036).
+_ENTRABLES = {"d01", "d02", "d03", "d09"}
 for _dm in _DOMAINS_V2:
     _dm["disabled"] = _dm["id"] not in _ENTRABLES
 
@@ -463,13 +464,20 @@ def render() -> None:
                         estado_html = (f'<div style="{mono};font-size:8.5px;color:#8494A8;margin-top:10px;'
                                        f'letter-spacing:.02em"><span style="color:{color};font-weight:800">'
                                        f'ESTADO:</span> <b style="color:#C4D0E0">{est}</b>{_p}</div>')
+                    # Rejilla de 3 filas fijas (Javo · 2026-07-16): el ALCANCE fluía libre y su
+                    # largo variable empujaba ESTADO y RADIOGRAFÍA a alturas distintas en cada
+                    # tarjeta. Con alto fijo en el alcance y la radiografía anclada al fondo,
+                    # las tres franjas caen SIEMPRE en la misma línea, sea cual sea el texto.
                     st.markdown(
-                        f'<div style="padding:2px 2px 0">'
+                        f'<div style="padding:2px 2px 0;display:flex;flex-direction:column;'
+                        f'min-height:196px">'
                         f'<div style="height:3px;background:{color};border-radius:2px;opacity:.7;margin-bottom:10px"></div>'
                         f'<div style="{mono};font-size:8px;font-weight:800;letter-spacing:.08em;color:{color};'
                         f'margin-bottom:3px">[ ALCANCE ]</div>'
-                        f'<div style="font-size:11px;color:#A8B4C8;line-height:1.5">{dom["concepto"]}</div>'
-                        f'{estado_html}{box}</div>',
+                        f'<div style="font-size:11px;color:#A8B4C8;line-height:1.5;height:66px;'
+                        f'overflow:hidden">{dom["concepto"]}</div>'
+                        f'<div style="margin-top:auto">{estado_html}{box}</div>'
+                        f'</div>',
                         unsafe_allow_html=True,
                     )
                     if dom.get("disabled"):
