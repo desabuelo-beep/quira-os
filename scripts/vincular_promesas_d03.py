@@ -76,7 +76,11 @@ V = {
     "SC-014": ("AH-C-X-01", 0.75, "Directa con matiz"),   # becas universidad → derechos sociales
     "SC-015": ("FA-L-N-01", 1.00, "Directa"),             # lectura, pintura, cultura → cultura
     "SC-016": ("EP-L-X-01", 1.00, "Directa"),             # Centro Formación Artesanal → productivo (artesanos)
-    "SC-017": ("AH-C-X-02", 0.50, "Parcial"),             # Infocentro → información/conectividad
+    # SC-017 · el caso que destapó OBS-010. El director la forzó a Parcial contra AH-C-X-02 porque
+    # no hallaba nada mejor entre las 25. Javo: es DIRECTA contra una meta social real (puntos
+    # digitales 19.265→23.265 · PDOT 3.SOC f7) que NO está en las 25 → FUERA del universo
+    # operacional v1 (ADR-036). No es incumplimiento del GAD: es fuera del alcance del modelo.
+    "SC-017": ("", 0.00, "Fuera del universo operacional"),
     "SC-018": ("SC-I-N-03", 1.00, "Directa"),             # participación barrial → participación
     "SC-019": ("FA-I-X-02", 0.75, "Directa con matiz"),   # espacios deportivos → equipamiento urbano
     "SC-020": ("FA-L-N-01", 0.75, "Directa con matiz"),   # espacios culturales → cultura
@@ -86,10 +90,13 @@ V = {
     "AM-002": ("FA-CC-01", 0.75, "Directa con matiz"),    # remediación ambiental → cambio climático
     "AM-003": ("FA-CC-01", 0.50, "Parcial"),              # calidad del aire → cambio climático
     "AM-004": ("AH-I-N-01", 1.00, "Directa"),             # residuos desde la fuente → desechos sólidos
-    "AM-005": ("AH-I-N-01", 1.00, "Directa"),             # ampliación del basurero → desechos
+    # CORRECCIÓN del director (corroboración 2026-07-16): estaba en AH-I-N-01 (gestión integral).
+    # El basurero ES disposición final → FA-DIS-01. La detectó la meta huérfana.
+    "AM-005": ("FA-DIS-01", 1.00, "Directa"),             # ampliación del basurero → disposición final
     "AM-006": ("AH-I-N-01", 1.00, "Directa"),             # cobertura de recolección → desechos
     "AM-007": ("SC-L-G-01", 1.00, "Directa"),             # planta de oxidación → alcantarillado (PTAR)
-    "AM-008": ("", 0.00, "Sin vinculación"),              # derogación de decreto nacional → NO es competencia del GAD
+    # AM-008 ELIMINADA por Javo (2026-07-15): "derogación de un decreto nacional" no es competencia
+    # municipal ni vinculable en POA/presupuesto. Excluirla evita penalizar al GAD en el denominador.
     "AM-009": ("FA-C-X-01", 1.00, "Directa"),             # arborización → áreas verdes (IVU)
     # ── TERRITORIAL ──────────────────────────────────────────────────────────
     "TE-001": ("AH-I-X-02", 0.75, "Directa con matiz"),   # equipo de pavimento → vialidad
