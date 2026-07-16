@@ -58,21 +58,24 @@ _D03_CSS = (
     ".d3-bn .l{font-size:11px;color:var(--tx);margin-top:3px;line-height:1.25;font-weight:600}"
     ".d3-bn .d{font-size:8.5px;color:var(--tx2);margin-top:2px}"
     ".d3-ba{flex:0 0 auto;display:flex;align-items:center;justify-content:center;color:" + _COL + ";min-width:20px;font-size:13px}"
-    # cadena legal del mandato
-    ".d3-ley{display:flex;flex-wrap:nowrap;gap:7px;margin:9px 0 4px;width:100%;overflow-x:auto;padding-bottom:2px}"
-    ".d3-ley-n{flex:1 1 0;min-width:118px;border:1px solid var(--bd);border-radius:7px;padding:8px 10px;background:var(--sf);opacity:.62}"
-    ".d3-ley-n.aqui{opacity:1;border-color:" + _COL + ";border-width:2px;background:rgba(249,171,0,.09)}"
-    ".d3-ley-n .f{font-family:Georgia,serif;font-size:12px;font-weight:700;color:var(--tx)}"
-    ".d3-ley-n .a{font-family:ui-monospace,monospace;font-size:8px;font-weight:800;color:" + _COL + ";margin:2px 0 3px;letter-spacing:.02em}"
-    ".d3-ley-n .t{font-size:9.5px;color:var(--tx2);line-height:1.35}"
-    ".d3-ley-g{margin-bottom:8px}"
-    ".d3-ley-t{font-family:ui-monospace,monospace;font-size:8px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--tx2);margin-bottom:4px}"
     "@media(max-width:640px){.d3-niv{grid-template-columns:1fr}}"
 )
 
 _CSS = _BASE_CSS.replace("</style>", PROV_CSS + _D03_CSS + "</style>")
 
 _VERDE, _AMBAR, _ROJO = "#1E8E3E", "#F9AB00", "#D93025"
+
+
+def _ley_esl(d: dict, esl: str, titulo: str) -> str:
+    """Marco legal del eslabón desde base_normativa.por_eslabon[esl].marco — MOLDE de d01.
+    Los artículos vienen del CORPUS VERIFICADO (sha256) vía `scripts/normativa_mandato.py`;
+    aquí solo se leen (Regla 1). Nunca se hardcodean en el render (Regla 9 · Regla 3)."""
+    b = ((d.get("base_normativa", {}) or {}).get("por_eslabon", {}) or {}).get(esl) or {}
+    arts = b.get("marco") or []
+    if not arts:
+        return ""
+    chips = "".join(f'<span class="qc-lawc">{_esc(a)}</span>' for a in arts)
+    return f'<details class="qc-law"><summary>&#128214; {_esc(titulo)}</summary>{chips}</details>'
 
 
 def _cabecera(d: dict) -> str:
@@ -96,70 +99,6 @@ def _cabecera(d: dict) -> str:
         f'<p class="qc-cap">Documento fuente: <b>{_esc(el.get("documento", ""))}</b> · elección '
         f'<b>{el.get("anio", "")}</b> · período <b>{_esc(el.get("periodo", ""))}</b> · huella de integridad '
         f'<code>{_esc(sha)}</code> — el archivo auditado es exactamente este, y cualquier alteración lo delata.</p>')
-
-
-# ── MARCO LEGAL DEL MANDATO (aportado por Javo · 2026-07-16) ──────────────────────────────
-# El ciclo completo que la ley ecuatoriana impone al mandato electoral. La pieza decisiva es
-# COPFP Art. 34: obliga a que los planes locales RECOJAN las propuestas que justificaron la
-# elección — es decir, la correspondencia que este dominio mide NO es una buena práctica que
-# QUIRA decidió observar: es una OBLIGACIÓN LEGAL. Y el Art. 105 de la Constitución la dota
-# de consecuencia: su incumplimiento es causal de revocatoria del mandato.
-_CICLO = [
-    ("Inscripción", "Código de la Democracia · Art. 97",
-     "El candidato inscribe obligatoriamente su Plan de Trabajo ante el CNE", False),
-    ("Posesión", "COOTAD · Art. 58 y 59",
-     "Gana la elección y toma posesión del cargo", False),
-    ("Traducción al plan", "COPFP · Art. 34, 41 y 42",
-     "El plan local DEBE recoger las propuestas que justificaron la elección", True),
-    ("Rendición", "L.O. Participación Ciudadana · Art. 89",
-     "Rinde cuentas cada año sobre ese mismo Plan", False),
-    ("Revocatoria", "Constitución · Art. 105",
-     "Si incumple el Plan de Trabajo, el electorado puede revocar el mandato", False),
-]
-
-# SELECTIVIDAD (colega · 2026-07-16): solo la cadena que SOSTIENE el índice. Quedan fuera —por
-# correctos que sean— elegibilidad, edad mínima, prohibiciones, cómputo de votos y credenciales:
-# este dominio no trata de candidatura, trata de la TRANSFORMACIÓN JURÍDICA del Plan de Trabajo.
-# Un informe pericial cita lo que sostiene su tesis, no la norma entera.
-_ARTICULOS = [
-    ("El compromiso", ["Código de la Democracia Art. 97 — el Plan de Trabajo es OBLIGATORIO al inscribir "
-                       "la candidatura: objetivos, diagnóstico, financiamiento y rendición de cuentas"]),
-    ("La investidura", ["COOTAD Art. 58 y 59 — instalación del Concejo y posesión del Alcalde",
-                        "COOTAD Art. 60 lit. a — el Alcalde lidera el desarrollo cantonal bajo su plan"]),
-    ("La traducción · lo que este dominio verifica",
-     ["COPFP Art. 34 — el plan local DEBE recoger las propuestas que justificaron la elección",
-      "COPFP Art. 41 y 42 — formular el plan al inicio de la gestión, con sus contenidos mínimos",
-      "COPFP Art. 101 y 103 — ningún gasto público fuera de las metas de ese plan"]),
-    ("La rendición", ["L.O. Participación Ciudadana Art. 89 y 90 — rendición anual comparando los avances "
-                      "frente al Plan de Trabajo depositado en el CNE"]),
-    ("La consecuencia", ["Constitución Art. 105 — revocatoria del mandato por incumplir el Plan de Trabajo",
-                         "L.O. Participación Ciudadana Art. 25 — el incumplimiento del plan, primera causal"]),
-]
-
-
-def _marco_legal() -> str:
-    """El ciclo legal del mandato + el fundamento completo bajo demanda (molde de d01: `_ley_esl`)."""
-    nodos = "".join(
-        f'<div class="d3-ley-n{" aqui" if aqui else ""}">'
-        f'<div class="f">{_esc(fase)}</div><div class="a">{_esc(art)}</div>'
-        f'<div class="t">{_esc(txt)}</div></div>' for fase, art, txt, aqui in _CICLO)
-    chips = "".join(
-        f'<div class="d3-ley-g"><div class="d3-ley-t">{_esc(bloque)}</div>'
-        + "".join(f'<span class="qc-lawc">{_esc(a)}</span>' for a in arts) + '</div>'
-        for bloque, arts in _ARTICULOS)
-    n = sum(len(a) for _, a in _ARTICULOS)
-    return (
-        '<p class="qc-p">Nada de esto es una buena práctica que este observatorio decidiera mirar: es <b>lo que '
-        'la ley ordena</b>. El plan de trabajo se inscribe por mandato legal, debe trasladarse al plan de '
-        'desarrollo por mandato legal, se rinde cuentas sobre él por mandato legal — y su incumplimiento es '
-        'causal de <b>revocatoria del mandato</b>. Este es el ciclo completo:</p>'
-        f'<div class="d3-ley">{nodos}</div>'
-        '<p class="qc-cap">El eslabón resaltado es <b>exactamente lo que este dominio verifica</b>: el '
-        '<b>COPFP Art. 34</b> obliga a que el plan local <b>recoja las propuestas que justificaron la elección</b>, '
-        'y los <b>Art. 41 y 42</b> obligan a formular el plan con esos contenidos al inicio de la gestión. La '
-        'correspondencia entre lo prometido y lo planificado <b>no es opinable: es exigible</b>.</p>'
-        f'<details class="qc-law"><summary>&#128214; Fundamento jurídico completo · {n} disposiciones</summary>'
-        f'{chips}</details>')
 
 
 def _indice(d: dict) -> str:
@@ -341,10 +280,10 @@ def cajon_mandato(d: dict) -> str:
   </div>
   <div class="qc-body">
     {prov_leyenda()}
-    {_seccion('01', 'Comprender este dominio · la palabra empeñada', _cabecera(d) + _marco_legal(), prov=prov('doc'))}
-    {_seccion('02', 'La fidelidad del mandato · el índice y su nivel de prueba', _indice(d) + _niveles(d), prov=prov('ana'))}
-    {_seccion('03', 'El registro del mandato · promesa por promesa, con su evidencia', _registro(d), prov=prov('doc'))}
-    {_seccion('04', 'La biografía del mandato · del voto al territorio', _biografia(d), prov=prov('doc'))}
+    {_seccion('01', 'Comprender este dominio · la palabra empeñada', _cabecera(d), _ley_esl(d, 'compromiso', 'Fundamento del dominio (Mandato Electoral)'))}
+    {_seccion('02', 'La fidelidad del mandato · el índice y su nivel de prueba', _indice(d) + _niveles(d), _ley_esl(d, 'traduccion', 'Fundamento jurídico aplicable'), prov=prov('ana'))}
+    {_seccion('03', 'El registro del mandato · promesa por promesa, con su evidencia', _registro(d), _ley_esl(d, 'investidura', 'Fundamento jurídico aplicable'), prov=prov('doc'))}
+    {_seccion('04', 'La biografía del mandato · del voto al territorio', _biografia(d), _ley_esl(d, 'consecuencia', 'Fundamento jurídico aplicable'), prov=prov('doc'))}
     {_sintesis(d)}
   </div>
   <div class="qc-plate">&#11041; QUIRA &middot; by Dylus Lab</div>
