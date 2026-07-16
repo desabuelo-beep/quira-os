@@ -6615,12 +6615,12 @@
       "cautela": "El registro asigna meta a casi todas, pero solo una parte está contrastada contra el documento electoral. La diferencia se declara: asignada no es verificada."
     },
     "calidad": {
-      "pct": 72.7,
+      "pct": 79.3,
       "pct_recalculado": 79.28,
       "suma_score": 60.25,
       "base": 76,
       "clasificacion": "Fidelidad Electoral Media",
-      "interpretacion": "El GAD convirtió el 73% de sus promesas electorales en metas estratégicas del PDOT.",
+      "interpretacion": "El GAD convirtió el 79% de sus promesas electorales en metas estratégicas del PDOT.",
       "escala": [
         {
           "umbral": "≥85%",
@@ -6638,10 +6638,10 @@
       "pregunta": "¿Con qué nivel de congruencia ingresó?"
     },
     "auditoria_canon": {
-      "parametro_conteo": 64,
+      "parametro_conteo": 75,
       "conteo_real_con_meta": 75,
       "suma_score_real": 60.25,
-      "coherente": false,
+      "coherente": true,
       "nota": "Canon curado: el rótulo ya distingue la suma de puntajes del conteo de promesas."
     },
     "por_eje": {

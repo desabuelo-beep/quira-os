@@ -69,11 +69,9 @@ _DOMAINS_V2: list[dict[str, Any]] = [
         "id": "d03", "num": "03", "nombre": "Gobernanza del Mandato",
         "concepto": "La correspondencia entre lo que se prometió en campaña y lo que "
                     "el plan de gobierno realmente ejecuta — la palabra empeñada, medida.",
-        "estado": "EN RUTA", "metric": "76",
+        "estado": "EN RUTA", "metric": "79.3%",
         "folio_estado": "EN LÍNEA", "periodo": "Período 2023 – 2027",
-        # El índice queda "pendiente" a propósito: los 4 parámetros del canon aún describen el
-        # universo viejo (48/66). No se publica un porcentaje que sabemos desactualizado.
-        "radiografia_macro": [("PROMESAS", "76"), ("VINCULADAS", "75"), ("ÍNDICE", "pendiente")],
+        "radiografia_macro": [("PROMESAS", "76"), ("VINCULADAS", "75"), ("FIDELIDAD", "79.3%")],
         "gancho": "¿La gestión mantiene la correspondencia con los compromisos que la ciudadanía validó en las urnas?",
         "temp": "alerta", "mod": "metas",
     },
