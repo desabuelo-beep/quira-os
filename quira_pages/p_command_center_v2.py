@@ -66,7 +66,7 @@ _DOMAINS_V2: list[dict[str, Any]] = [
         "temp": "funds", "mod": "cooperacion",
     },
     {
-        "id": "d03", "num": "03", "nombre": "Gobernanza del Mandato",
+        "id": "d03", "num": "03", "nombre": "Gobernanza del Mandato Electoral",
         "concepto": "La correspondencia entre lo que se prometió en campaña y lo que "
                     "el plan de gobierno realmente ejecuta — la palabra empeñada, medida.",
         "estado": "EN RUTA", "metric": "79.3%",

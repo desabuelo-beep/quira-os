@@ -91,7 +91,7 @@ QINV: dict[str, dict] = {
         "page": "m_presupuesto",  # ✅ construida (capacidad financiera territorial · d02)
     },
     "d03": {
-        "id": "QINV-003", "nombre": "Gobernanza del Mandato",
+        "id": "QINV-003", "nombre": "Gobernanza del Mandato Electoral",
         "pregunta": "¿Existe correspondencia material entre el mandato rector "
                     "originario y la programación operativa real de la entidad?",
         "page": "m_mandato",  # ✅ construida (la palabra empeñada · d03)
