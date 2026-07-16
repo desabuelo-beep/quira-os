@@ -33,7 +33,7 @@ la Doctrina permanece. Hoja de Ruta = el mapa que no se mueve. BOOT §AHORA = el
 🔌 **MCD Planif · 7 cables ✅:** Excel·SERCOP·Relacional·Normativo·IA·Visual·Memoria.
 🧭 **ADR-031 RATIF:** cajón=MCD · GoldMaster=MCM · MCIP 5 motores (Index §1.A).
 🔑 **Planif✓ · RDC✓ · d02 v3✓** — 4 capacidades + SAT (Norma→Regla→Señal) + cadena inter-dominio.
-🏛️ **d03 Mandato✓ (entrable)** — **canon CURADO**: 76 promesas reales del Plan CNE (antes 66, con 46 falsas y 3 de otros cantones). Vinculación validada por Javo + corroborada. **Canon coherente=True · fidelidad 79.3%** (≠ comparable con 72.7%: otro universo — eso vive en OBS-010, NO en el DOM · Regla 2). CAPA1 índice del motor · CAPA2 biografía. **Alcance declarado: universo estratégico, no el PDOT completo (ADR-036).** **Sig: centinela H85!D21 0.7273→0.7928; PCD-D03.**
+🏛️ **d03 Mandato CERRADO✓ (PCD-D03)** — canon CURADO: 76 promesas reales (antes 66, con 46 falsas). **Coherente=True · fidelidad 79.3% · centinela ✅ · ICPI intacto.** Doctrina: **IFE unidireccional** (meta sin promesa = normal, Art.264) · **la cocina NO va al DOM** (Regla 2) · alcance declarado (ADR-036) · **el DOM cura el canon** (Regla 8). **Sig: PCD-D02/BRN, o d04.**
 🩺 **Canon curado por el DOM (Regla 8):** H03 rótulo `Suma_Score_Vinculación` (48≠conteo) + conteo 64 aparte + B10 ya es fórmula + col G `Estado_Verificación`. ICPI intacto · centinela ✅. **Gate real = `python scripts/ci/check_health.py` (BOOT≤6000·CLAUDE≤4000): NO adivinar.**
 📚 **ADR-035 BRN RATIF:** DOM Alertas **transmuta** en Biblioteca de Reglas (no se elimina). Ley→BRN→GoldMaster (único motor)→QUIRA. **IA propone, humano valida.**
 🔶 **CI:** BOOT ≤6KB.
