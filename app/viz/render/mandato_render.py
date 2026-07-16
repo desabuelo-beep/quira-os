@@ -74,9 +74,16 @@ def _cabecera(d: dict) -> str:
         'inscribió ante el <b>Consejo Nacional Electoral</b> para pedir el voto. Ese documento es un '
         '<b>compromiso público verificable</b>, no una pieza de campaña que caduca el día de la elección.</p>'
         '<p class="qc-p">Este dominio hace una sola pregunta, y la hace en serio: <b>¿qué pasó con esa palabra '
-        'después de ganar?</b> No mide si la obra se construyó —eso se mide aguas abajo—: mide el <b>origen '
-        'democrático</b> de lo que hoy se planifica. Una meta que nadie prometió carece de mandato; una promesa '
-        'que no llegó al plan quedó, por ahora, en el discurso.</p>'
+        'después de ganar?</b> No mide si la obra se construyó —eso se mide aguas abajo—: mide si el compromiso '
+        '<b>encontró correspondencia</b> en la planificación institucional. Una promesa que no llegó al plan '
+        'quedó, por ahora, en el discurso.</p>'
+        # CORRECCIÓN (colega · 2026-07-16): la versión previa decía "una meta que nadie prometió carece de
+        # mandato". Es inconstitucional: una meta nacida del diagnóstico técnico tiene mandato —el del
+        # Art. 264— aunque no tenga mandato ELECTORAL. Javo ya había corregido esta doctrina; la frase
+        # había sobrevivido en el texto. La medición es unidireccional: promesa → ¿llegó al plan?
+        '<p class="qc-p">La lectura inversa <b>no aplica</b>: que una meta no provenga de una promesa electoral '
+        '<b>no es una irregularidad</b>. Muchas nacen legítimamente del <b>diagnóstico técnico</b> del plan y del '
+        'deber constitucional de planificar el desarrollo cantonal.</p>'
         f'<p class="qc-cap">Documento fuente: <b>{_esc(el.get("documento", ""))}</b> · elección '
         f'<b>{el.get("anio", "")}</b> · período <b>{_esc(el.get("periodo", ""))}</b> · huella de integridad '
         f'<code>{_esc(sha)}</code> — el archivo auditado es exactamente este, y cualquier alteración lo delata.</p>')
@@ -93,12 +100,6 @@ def _indice(d: dict) -> str:
         '<p class="qc-p">La <b>fidelidad del mandato</b> no cuenta promesas: las <b>pondera</b>. Una promesa puede '
         'entrar al plan de forma <b>directa</b>, <b>con matices</b> o solo <b>parcial</b>, y no es honesto que las '
         'tres pesen igual. El índice mide, con esa ponderación, cuánto del mandato sobrevivió al pasar al plan:</p>'
-        # DECLARACIÓN DE ALCANCE (ADR-036 · exigida): el dominio mide contra el subconjunto
-        # estratégico del canon, NO contra el PDOT completo. Callarlo sería el error que OBS-010 destapó.
-        '<p class="qc-cap"><b>Alcance de esta medición.</b> El modelo evalúa la correspondencia contra el '
-        '<b>universo estratégico del plan</b> —el subconjunto de metas que el motor representa—, no contra el '
-        'plan de desarrollo en su totalidad. Una promesa cuya meta exista en el plan pero <b>fuera de ese '
-        'subconjunto</b> se declara <b>fuera de alcance</b>: no se computa como incumplimiento del municipio.</p>'
         f'<div class="d3-hero"><div class="d3-hero-h"><div>'
         f'<div class="d3-hero-t">Fidelidad del mandato electoral</div>'
         f'<div class="d3-hero-c">{clasif}</div></div>'
@@ -120,54 +121,73 @@ def _niveles(d: dict) -> str:
     inc = d.get("incorporacion") or {}
     ver, pend, sin = inc.get("verificadas", 0), inc.get("pendientes", 0), inc.get("sin_meta", 0)
     tot = inc.get("total", 0)
+    # Rótulos prudentes (colega · 2026-07-16): "sin correspondencia" a secas suena definitivo;
+    # lo exacto es que no se identificó dentro del universo auditado.
     filas = [
-        (ver, "Verificada", _VERDE, "la vinculación fue contrastada contra el documento electoral: "
-                                   "hay prueba documental de que la promesa llegó al plan"),
-        (pend, "Pendiente de contraste", _AMBAR, "el registro le asigna una meta, pero ese vínculo aún no se "
-                                                 "contrastó contra el documento. Asignada <b>no es</b> verificada"),
-        (sin, "Sin correspondencia", _ROJO, "se contrastó y se confirmó que <b>ninguna meta del plan la recoge</b>: "
-                                            "la promesa quedó fuera de la planificación"),
+        (ver, "Correspondencia verificada", _VERDE,
+         "contrastada contra el documento electoral: hay prueba documental de que el compromiso "
+         "encontró su meta en la planificación"),
+        (pend, "Pendiente de contraste", _AMBAR,
+         "el registro le asigna una meta, pero ese vínculo aún no se contrastó contra el documento"),
+        (sin, "Sin correspondencia identificada", _ROJO,
+         "no se identificó ninguna meta que la recoja <b>dentro del universo auditado</b>"),
     ]
     cel = "".join(f'<div class="d3-nivc" style="border-left-color:{c}">'
                   f'<div class="n" style="color:{c}">{n}</div><div class="k">{_esc(k)}</div>'
                   f'<div class="x">{x}</div></div>' for n, k, c, x in filas)
+    # NOTA (colega · Regla 2): se retiró "aquí este expediente se aplica a sí mismo el estándar…".
+    # Hablaba de QUIRA; el lector vino a evaluar al municipio, no al observatorio. Eso es interno.
     return (
-        '<p class="qc-p">Aquí este expediente se aplica a sí mismo el estándar con que juzga al municipio. '
-        '<b>Tener una meta asignada no es lo mismo que tener la vinculación probada.</b> De las '
-        f'<b>{tot} promesas</b>, este es el nivel de prueba real de cada afirmación:</p>'
-        f'<div class="d3-niv">{cel}</div>'
-        '<p class="qc-cap">Que <b>la mayoría siga pendiente de contraste no es un vacío que ocultar: es el '
-        'resultado de la auditoría</b>. Publicar un porcentaje de cumplimiento sobre vínculos no probados sería '
-        'inferir — y la ausencia de evidencia nunca autoriza a inferir un hecho.</p>')
+        '<p class="qc-p"><b>Tener una meta asignada no es lo mismo que tener la correspondencia probada.</b> '
+        f'De las <b>{tot} promesas</b>, este es el nivel de prueba de cada afirmación:</p>'
+        f'<div class="d3-niv">{cel}</div>')
 
 
 def _registro(d: dict) -> str:
-    """El registro completo: las promesas, una a una, con su meta y su nivel de prueba."""
+    """La EVIDENCIA del mandato, bajo demanda (molde de d01 · Primacía Narrativa · patrón qc-ev).
+    Una tabla por eje: el lector abre la que le interesa y ve la relación completa —promesa
+    literal, meta que la recoge, grado de correspondencia y nivel de prueba—."""
     pr = d.get("promesas") or []
     if not pr:
         return ""
-    ejes = d.get("por_eje") or {}
-    chips = "".join(f'<span class="d3-eje">{_esc(k)} · <b>{v}</b></span>' for k, v in
-                    sorted(ejes.items(), key=lambda x: -x[1]))
-    filas = ""
+    inc = d.get("incorporacion") or {}
+    # agrupar por eje, en el orden del plan de trabajo
+    orden, grupos = [], {}
     for p in pr:
-        ver = p.get("verificada")
-        col = _VERDE if ver else _AMBAR
-        if not p.get("meta"):
-            col = _ROJO
-        est = _esc(p.get("estado", "")) or ("Verificada" if ver else "Pendiente")
-        filas += (f'<tr><td><code>{_esc(p.get("id",""))}</code></td>'
-                  f'<td>{_esc(p.get("promesa",""))[:96]}</td>'
-                  f'<td><code>{_esc(p.get("meta","")) or "—"}</code></td>'
-                  f'<td>{_esc(p.get("tipo",""))}</td>'
-                  f'<td><span class="d3-pill" style="color:{col};border:1px solid {col}">{est}</span></td></tr>')
+        e = p.get("eje", "—")
+        if e not in grupos:
+            grupos[e] = []
+            orden.append(e)
+        grupos[e].append(p)
+
+    bloques = ""
+    for eje in orden:
+        ps = grupos[eje]
+        con = sum(1 for p in ps if p.get("meta"))
+        filas = ""
+        for p in ps:
+            tiene = bool(p.get("meta"))
+            col = _VERDE if tiene else _AMBAR
+            # Rótulos precisos (colega · 2026-07-16): "sin correspondencia" a secas suena definitivo;
+            # lo cierto es que no se identificó DENTRO del universo auditado.
+            grado = _esc(p.get("tipo", "")) or "—"
+            filas += (f'<tr><td class="cod">{_esc(p.get("id",""))}</td>'
+                      f'<td>{_esc(p.get("promesa",""))}</td>'
+                      f'<td class="cod">{_esc(p.get("meta","")) or "—"}</td>'
+                      f'<td style="color:{col}">{grado}</td></tr>')
+        bloques += (f'<details class="qc-ev"><summary>{_esc(eje)} · <b>{len(ps)} promesas</b> — '
+                    f'{con} con correspondencia documental</summary>'
+                    '<div class="qc-evw scroll"><table class="qc-evt"><thead><tr>'
+                    '<th>Código</th><th>Promesa literal del plan de trabajo</th>'
+                    '<th>Meta que la recoge</th><th>Grado de correspondencia</th></tr></thead>'
+                    f'<tbody>{filas}</tbody></table></div></details>')
     return (
-        f'<p class="qc-cap">Las <b>{len(pr)} promesas</b> del plan de trabajo, por área: {chips}</p>'
-        '<details class="qc-fold"><summary>Ver el registro completo · promesa por promesa, con su meta y su '
-        'nivel de prueba</summary>'
-        '<div style="overflow-x:auto"><table class="d3-tab"><thead><tr><th>ID</th><th>Promesa ante el CNE</th>'
-        '<th>Meta del plan</th><th>Vinculación</th><th>Nivel de prueba</th></tr></thead>'
-        f'<tbody>{filas}</tbody></table></div></details>')
+        '<p class="qc-p">Cada promesa se contrasta, una a una, contra las metas de la planificación. La tabla de '
+        'cada área abre la <b>relación completa</b>: el texto literal comprometido ante el electorado, la meta que '
+        'lo recoge y con qué <b>grado</b> lo hace —directo, con matices o parcial—. Ese grado es lo que pondera el '
+        'índice: no es lo mismo asumir un compromiso que rozarlo.</p>'
+        f'<p class="qc-cap"><b>{len(pr)} promesas</b> · <b>{inc.get("con_meta", 0)}</b> con correspondencia '
+        f'documental identificada. Abra el área que le interese:</p>' + bloques)
 
 
 def _biografia(d: dict) -> str:
@@ -177,7 +197,9 @@ def _biografia(d: dict) -> str:
     tot, con = inc.get("total", 0), inc.get("con_meta", 0)
     nodos = [
         ("Promesa", f"{tot} registradas", "documento del CNE · verificado", "ok"),
-        ("Plan de desarrollo", f"{con} con meta", "medido aquí", "ok"),
+        # Rótulo preciso (colega): "75 con meta" hacía leer que el plan tiene 75 metas. Lo que
+        # decimos es que 75 PROMESAS encontraron correspondencia.
+        ("Plan de desarrollo", f"{con} con correspondencia", "medido aquí", "ok"),
         ("Programación", "se mide en Planificación", "otro dominio", "ref"),
         ("Presupuesto", "se mide en Presupuesto", "otro dominio", "ref"),
         ("Ejecución", "se mide en Presupuesto", "otro dominio", "ref"),
@@ -214,14 +236,21 @@ def _sintesis(d: dict) -> str:
         f'encontraron correspondencia documental y <b>{sin}</b> permaneció sin correspondencia — lo que no '
         f'significa que el plan de desarrollo se haya agotado: fuera de ese subconjunto puede existir la meta '
         f'que la recoja.</p>'
-        f'<p class="qc-p">Pero el dato que gobierna este expediente es otro: de las <b>{tot} promesas</b>, solo '
-        f'<b>{ver}</b> tienen su vinculación <b>contrastada contra el documento electoral</b>. El resto está '
-        f'asignado, no probado. Por eso este dominio publica un índice <b>y</b> el nivel de prueba que lo sostiene: '
-        f'un porcentaje sin respaldo documental es exactamente lo que QUIRA existe para detectar.</p>'
+        f'<p class="qc-p">De las <b>{tot} promesas</b>, <b>{ver}</b> tienen su correspondencia <b>contrastada '
+        f'contra el documento electoral</b>. Por eso este dominio publica el índice <b>junto al nivel de prueba</b> '
+        f'que lo sostiene: un porcentaje sin respaldo documental no es una medición, es una afirmación.</p>'
+        # Cierre técnico (colega · 2026-07-16): "la cadena no cierra" sonaba a conclusión. El dominio
+        # observó una AUSENCIA — eso se enuncia, no se concluye.
         f'<p class="qc-p">Dos ausencias completan el cuadro, y ninguna se disimula: <b>{aut.get("sin_verificar",0)} de '
-        f'{aut.get("total",0)} autoridades electas</b> siguen sin datos verificados, y <b>el resultado territorial '
-        f'del mandato no tiene medición publicada</b>. La cadena que va del voto a la obra <b>no cierra hoy</b> — y '
-        f'saber exactamente dónde se corta es, en sí mismo, el hallazgo.</p>',
+        f'{aut.get("total",0)} autoridades electas</b> permanecen sin datos verificados, y <b>la última etapa de la '
+        f'cadena —el resultado territorial— no puede auditarse</b>: no existe información pública suficiente para '
+        f'reconstruir documentalmente los resultados obtenidos.</p>'
+        # ALCANCE al pie (colega): primero qué mide y el resultado; el alcance al final, como nota
+        # metodológica. Antes abría el dominio y hacía pensar "¿entonces no miden todo?".
+        f'<p class="qc-cap"><b>Nota metodológica · alcance.</b> La correspondencia se evalúa contra el '
+        f'<b>universo estratégico</b> de la planificación —el conjunto de metas que el modelo representa—, no '
+        f'contra el plan de desarrollo en su totalidad. Una promesa cuya meta exista fuera de ese conjunto se '
+        f'declara <b>fuera de alcance</b> y <b>no se computa como incumplimiento</b> del municipio.</p>',
         prov=prov("doc"))
 
 
