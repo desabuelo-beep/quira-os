@@ -392,6 +392,15 @@ def _render_analisis() -> None:
         st.error(f"Módulo Análisis no disponible: {e}")
 
 
+def _render_gobierno() -> None:
+    """Gobierno · ¿QUÉ? — la 1ª dimensión del frame (ADR-037): página propia, como Territorio."""
+    try:
+        from quira_pages.p_gobierno import render as _r
+        _r()
+    except Exception as e:
+        st.error(f"Módulo Gobierno no disponible: {e}")
+
+
 def _render_geotwin() -> None:
     try:
         from quira_pages.p4_geotwin import render as _r
@@ -480,6 +489,7 @@ _MODULE_RENDER: dict[str, tuple] = {
     # Sección Técnica
     "cadena":       (_render_cadena,       "Cadena Institucional"),   # Sprint E.1
     "analisis":     (_render_analisis,     "Análisis Estratégico"),
+    "gobierno":     (_render_gobierno,     "Gobierno · el mandato"),   # ADR-037 · dimensión ¿QUÉ?
     "geotwin":      (_render_geotwin,      "GeoTwin Territorio"),
     "congruencias": (_render_congruencias, "Congruencias PDOT"),
     "simulador":    (_render_simulador,    "Simulador de Escenarios"),

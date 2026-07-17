@@ -181,8 +181,7 @@ for _dm in _DOMAINS_V2:
 # no actúa.
 _DIMS = [
     {"key": "dim_gob",    "icon": "🏛", "nombre": "Gobierno",
-     "desc": "¿Qué? · la institución, el mandato y sus investigaciones", "dest": None,
-     "hero": True, "abre": True},
+     "desc": "¿Qué? · la institución, el mandato y sus investigaciones", "dest": "gobierno"},
     {"key": "dim_terr",   "icon": "🗺", "nombre": "Territorio",
      "desc": "¿Dónde? · el cantón en el mapa · el encuentro entre las QUIRAs", "dest": "geotwin"},
     {"key": "dim_intel",  "icon": "◎", "nombre": "Inteligencia",
@@ -195,100 +194,6 @@ _DIMS = [
 def _esc_h(s) -> str:
     """Escape mínimo para el HTML inline de esta página."""
     return (str(s or "").replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;"))
-
-
-def _panel_gobierno(g: dict) -> None:
-    """Gobierno (¿QUÉ?): alcalde, mandato con contador, Concejo, Consejo de Planificación y la
-    ESTRUCTURA orgánica vigente. Sin nombres de directores: las personas cambian, el orgánico
-    permanece — QUIRA observa estructuras, no personas (Javo + colega · 2026-07-16)."""
-    if not g:
-        return
-    a, m = g.get("alcalde") or {}, g.get("mandato") or {}
-    if not a:
-        return
-    mono = "font-family:'JetBrains Mono',monospace"
-    # El cajón ya es el disparador (Javo): aquí solo se despliega el contenido — un expander
-    # obligaría a un segundo clic sobre lo que el usuario ya abrió.
-    with st.container(border=True, key="panel_gobierno"):
-        st.markdown(
-            f'<div style="display:flex;justify-content:space-between;align-items:baseline;'
-            f'margin-bottom:8px"><span style="font-size:13px;font-weight:800;color:#E8EDF4">'
-            f'🏛 El mandato en curso</span>'
-            f'<span style="{mono};font-size:9px;color:#5A6B7E">GOBIERNO · ¿QUÉ?</span></div>',
-            unsafe_allow_html=True)
-        # ficha del alcalde + contador
-        if m.get("disponible"):
-            cel = [("EN EL CARGO", f"{m['dias_transcurridos']:,}", "días", "#00D4FF"),
-                   ("RESTAN", f"{m['dias_restantes']:,}", "días", "#F9AB00"),
-                   ("AVANCE", f"{m['avance_pct']:.0f}", "% del período", "#22C55E")]
-            tiles = "".join(
-                f'<div style="flex:1 1 110px;border:1px solid rgba(255,255,255,.08);'
-                f'border-radius:7px;padding:8px 11px;background:rgba(255,255,255,.02)">'
-                f'<div style="{mono};font-size:8px;font-weight:800;letter-spacing:.07em;'
-                f'color:#5A6B7E">{k}</div>'
-                f'<div style="{mono};font-size:20px;font-weight:900;color:{c};line-height:1.1">{v}</div>'
-                f'<div style="font-size:9px;color:#8892B0">{u}</div></div>' for k, v, u, c in cel)
-            st.markdown(
-                f'<div style="font-size:11.5px;color:#A8B4C8;margin-bottom:7px">'
-                f'<b style="color:#E8EDF4">{_esc_h(a.get("nombre"))}</b> · '
-                f'{_esc_h(a.get("movimiento"))} — posesión <b>{_esc_h(m["inicio"])}</b>, '
-                f'hasta <b>{_esc_h(m["fin"])}</b></div>'
-                f'<div style="display:flex;gap:8px;flex-wrap:wrap">{tiles}</div>',
-                unsafe_allow_html=True)
-
-        # LÍNEAS DE FLUJO (Javo · 2026-07-16): fuera las tablas — sin bordes de grilla, sin
-        # filas rayadas. Tarjetas limpias con acento vertical, degradado sutil y aire. El
-        # nombre manda (peso), el cargo susurra (ultra-delgado). Contraste polar cian/hielo.
-        def _flujo(titulo: str, gente: list) -> str:
-            if not gente:
-                return ""
-            tarjetas = "".join(
-                f'<div style="flex:1 1 232px;padding:7px 12px;border-left:2px solid rgba(0,240,255,.30);'
-                f'background:linear-gradient(90deg,rgba(0,240,255,.045),transparent 82%);'
-                f'border-radius:0 6px 6px 0">'
-                f'<div style="font-size:11.5px;color:#E0F7FA;font-weight:500;line-height:1.3">'
-                f'{_esc_h(x.get("nombre"))}</div>'
-                f'<div style="{mono};font-size:8.5px;font-weight:300;color:#7E8BA3;'
-                f'letter-spacing:.04em;margin-top:2px">{_esc_h(x.get("cargo"))}</div></div>'
-                for x in gente)
-            return (f'<div style="{mono};font-size:8px;font-weight:800;letter-spacing:.12em;'
-                    f'color:#00F0FF;margin:20px 0 9px;opacity:.85">{titulo}'
-                    f'<span style="font-weight:300;color:#5A6B7E;margin-left:8px">'
-                    f'{len(gente)}</span></div>'
-                    f'<div style="display:flex;flex-wrap:wrap;gap:9px">{tarjetas}</div>')
-
-        st.markdown(
-            _flujo("CONCEJO CANTONAL", (g.get("concejo") or {}).get("detalle") or [])
-            + _flujo("CONSEJO CANTONAL DE PLANIFICACIÓN",
-                     (g.get("consejo_planificacion") or {}).get("detalle") or []),
-            unsafe_allow_html=True)
-
-        # organigrama: la estructura, no la plantilla
-        org = g.get("organico") or {}
-        niveles = org.get("niveles") or {}
-        if niveles:
-            # el organigrama también como flujo: columnas de aire, sin cajas ni bordes
-            cols = "".join(
-                f'<div style="flex:1 1 210px;min-width:190px">'
-                f'<div style="{mono};font-size:7.5px;font-weight:800;letter-spacing:.12em;'
-                f'color:#00F0FF;opacity:.8;padding-bottom:7px;margin-bottom:8px;'
-                f'border-bottom:1px solid rgba(0,240,255,.16);min-height:26px">{_esc_h(niv).upper()}</div>'
-                + "".join(
-                    f'<div style="font-size:9.5px;font-weight:300;color:#A8B4C8;padding:4px 0 4px 10px;'
-                    f'margin-bottom:2px;border-left:1px solid rgba(224,247,250,.14);line-height:1.35">'
-                    f'{_esc_h(u)}</div>' for u in unidades)
-                + '</div>' for niv, unidades in niveles.items())
-            st.markdown(
-                f'<div style="{mono};font-size:8px;font-weight:800;letter-spacing:.12em;'
-                f'color:#00F0FF;margin:22px 0 11px;opacity:.85">ESTRUCTURA ORGÁNICA VIGENTE'
-                f'<span style="font-weight:300;color:#5A6B7E;margin-left:8px">'
-                f'{org.get("n_unidades", 0)}</span></div>'
-                f'<div style="display:flex;gap:22px;flex-wrap:wrap">{cols}</div>'
-                f'<div style="font-size:8.5px;font-weight:300;color:#5A6B7E;margin-top:14px;'
-                f'padding-top:9px;border-top:1px solid rgba(255,255,255,.05)">'
-                f'{_esc_h(org.get("norma"))} — se publica la <span style="color:#7E8BA3">estructura</span>, '
-                f'no la plantilla: las personas cambian, el orgánico permanece.</div>',
-                unsafe_allow_html=True)
 
 
 def _cargar_gobierno() -> dict:
@@ -485,11 +390,7 @@ def render() -> None:
                                     unsafe_allow_html=True)
                     elif st.button(dim["icon"], key=f"go_{dim['key']}",
                                    help=f"Entrar · {dim['nombre']}"):
-                        if dim.get("abre"):
-                            st.session_state["_ver_gobierno"] = not st.session_state.get("_ver_gobierno", False)
-                            st.rerun()
-                        else:
-                            _nav(dim["dest"])
+                        _nav(dim["dest"])
                 with nm:
                     prox = ('<span style="font-size:8.5px;color:#5A6B7E;margin-left:6px">'
                             '— próximamente —</span>') if dim.get("proximamente") else ""
@@ -501,10 +402,6 @@ def render() -> None:
                         f'line-height:1.4;height:26px;overflow:hidden">{dim["desc"]}</div></div>',
                         unsafe_allow_html=True,
                     )
-
-    # ── GOBIERNO · el mandato en curso (ADR-037) — se abre desde su propio cajón ──
-    if st.session_state.get("_ver_gobierno"):
-        _panel_gobierno(_gob)
 
     st.markdown(
         '<div style="display:flex;justify-content:space-between;margin:4px 2px 0">'
