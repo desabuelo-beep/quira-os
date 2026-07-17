@@ -75,14 +75,11 @@ _DOMAINS_V2: list[dict[str, Any]] = [
         "gancho": "¿La gestión mantiene la correspondencia con los compromisos que la ciudadanía validó en las urnas?",
         "temp": "alerta", "mod": "metas",
     },
-    {
-        "id": "d04", "num": "04", "nombre": "Alertas Institucionales",
-        "concepto": "La vigilancia preventiva del cantón: las desviaciones y riesgos "
-                    "detectados antes de que se vuelvan crisis.",
-        "metric_key": "n_alertas", "metric_suffix": " activas",
-        "gancho": "¿Qué riesgos están activos hoy y cuáles exigen intervención antes de volverse crisis?",
-        "temp": "critico", "mod": "alertas", "dynamic_d04": True,
-    },
+    # d04 "Alertas Institucionales" SE RETIRA de las áreas de gestión (ADR-035 · Javo 2026-07-15):
+    # no se elimina — TRANSMUTA en la Biblioteca de Reglas Normativas, y cada señal (SAT) vive en
+    # el dominio que le corresponde (d02 ya publica las 3 financieras con su norma). La BRN no es
+    # un dominio: no observa una capacidad del Estado, es la FUENTE de la lógica normativa. Por eso
+    # ocupa la 4ª dimensión del frame (ADR-037), no una tarjeta aquí.
     {
         "id": "d05", "num": "05", "nombre": "Holding e Integración Municipal",
         "concepto": "El desempeño coordinado de las entidades adscritas del municipio "
@@ -177,16 +174,134 @@ for _dm in _DOMAINS_V2:
 # La ACCIÓN (¿y ahora qué?) la cierra el GOBIERNO, FUERA de QUIRA: QUIRA informa y
 # conecta, no actúa (frontera · Javo 2026-06-21). El 4to = match entre QUIRAs.
 # Frame universal a las 6 QUIRAs; el contenido es propio de cada una.
+# ADR-037 (RATIFICADO · Javo 2026-07-16): Convergencia NO se elimina — se ABSORBE en Territorio,
+# que es donde las QUIRAs se encuentran de verdad (el mapa). Su lugar lo toma la BRN: "¿bajo qué
+# norma?" es la pregunta que sostiene a las otras tres (sin norma verificada no hay dato · Regla 3).
+# El frame sigue siendo universal a las 6 QUIRAs. La frontera se conserva: QUIRA informa y conecta,
+# no actúa.
 _DIMS = [
     {"key": "dim_gob",    "icon": "🏛", "nombre": "Gobierno",
-     "desc": "¿Qué? · la institución y sus 13 investigaciones", "dest": None, "activo": True},
+     "desc": "¿Qué? · la institución, el mandato y sus investigaciones", "dest": None, "activo": True},
     {"key": "dim_terr",   "icon": "🗺", "nombre": "Territorio",
-     "desc": "¿Dónde? · el cantón en el mapa", "dest": "geotwin"},
+     "desc": "¿Dónde? · el cantón en el mapa · el encuentro entre las QUIRAs", "dest": "geotwin"},
     {"key": "dim_intel",  "icon": "◎", "nombre": "Inteligencia",
-     "desc": "¿Por qué? · QUIRA lee y anticipa", "dest": "control"},
-    {"key": "dim_conv", "icon": "🔗", "nombre": "Convergencia",
-     "desc": "¿Con quién? · el encuentro entre las QUIRAs", "dest": None, "proximamente": True},
+     "desc": "¿Por qué? · QUIRA IA: lee, explica y anticipa", "dest": "control"},
+    {"key": "dim_brn", "icon": "📖", "nombre": "Norma",
+     "desc": "¿Bajo qué norma? · la ley que sostiene cada verificación", "dest": None, "proximamente": True},
 ]
+
+
+def _esc_h(s) -> str:
+    """Escape mínimo para el HTML inline de esta página."""
+    return (str(s or "").replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;"))
+
+
+def _gobierno_hero(g: dict) -> str:
+    """El pie del cajón Gobierno: la cuenta regresiva del mandato. Se alimenta de las fechas
+    DEL CANON (SCHEMA_CNE). Si el canon no las tiene, no hay contador — no se deduce."""
+    m = g.get("mandato") or {}
+    if not m.get("disponible"):
+        return ('<div style="font-size:9.5px;color:#22C55E;text-align:center;'
+                'padding:4px 0 2px;font-weight:700">● estás aquí</div>')
+    rest, av = m.get("dias_restantes", 0), m.get("avance_pct", 0)
+    col = "#EF5350" if rest < 180 else ("#F9AB00" if rest < 365 else "#22C55E")
+    return (
+        f'<div style="padding:2px 6px 4px">'
+        f'<div style="height:5px;border-radius:3px;background:rgba(255,255,255,.08);overflow:hidden">'
+        f'<span style="display:block;height:100%;width:{min(av,100):.0f}%;background:{col};'
+        f'border-radius:3px"></span></div>'
+        f'<div style="display:flex;justify-content:space-between;margin-top:4px">'
+        f'<span style="font-size:9px;color:#8892B0;font-family:\'JetBrains Mono\',monospace">'
+        f'{av:.0f}% del mandato</span>'
+        f'<span style="font-size:9px;font-weight:800;color:{col};'
+        f'font-family:\'JetBrains Mono\',monospace">{rest:,} días restantes</span></div></div>')
+
+
+def _panel_gobierno(g: dict) -> None:
+    """Gobierno (¿QUÉ?): alcalde, mandato con contador, Concejo, Consejo de Planificación y la
+    ESTRUCTURA orgánica vigente. Sin nombres de directores: las personas cambian, el orgánico
+    permanece — QUIRA observa estructuras, no personas (Javo + colega · 2026-07-16)."""
+    if not g:
+        return
+    a, m = g.get("alcalde") or {}, g.get("mandato") or {}
+    if not a:
+        return
+    mono = "font-family:'JetBrains Mono',monospace"
+    with st.expander(f"🏛  El mandato en curso · {a.get('nombre','')}", expanded=False):
+        # ficha del alcalde + contador
+        if m.get("disponible"):
+            cel = [("EN EL CARGO", f"{m['dias_transcurridos']:,}", "días", "#00D4FF"),
+                   ("RESTAN", f"{m['dias_restantes']:,}", "días", "#F9AB00"),
+                   ("AVANCE", f"{m['avance_pct']:.0f}", "% del período", "#22C55E")]
+            tiles = "".join(
+                f'<div style="flex:1 1 110px;border:1px solid rgba(255,255,255,.08);'
+                f'border-radius:7px;padding:8px 11px;background:rgba(255,255,255,.02)">'
+                f'<div style="{mono};font-size:8px;font-weight:800;letter-spacing:.07em;'
+                f'color:#5A6B7E">{k}</div>'
+                f'<div style="{mono};font-size:20px;font-weight:900;color:{c};line-height:1.1">{v}</div>'
+                f'<div style="font-size:9px;color:#8892B0">{u}</div></div>' for k, v, u, c in cel)
+            st.markdown(
+                f'<div style="font-size:11.5px;color:#A8B4C8;margin-bottom:7px">'
+                f'<b style="color:#E8EDF4">{_esc_h(a.get("nombre"))}</b> · '
+                f'{_esc_h(a.get("movimiento"))} — posesión <b>{_esc_h(m["inicio"])}</b>, '
+                f'hasta <b>{_esc_h(m["fin"])}</b></div>'
+                f'<div style="display:flex;gap:8px;flex-wrap:wrap">{tiles}</div>',
+                unsafe_allow_html=True)
+
+        def _lista(titulo: str, gente: list, nota: str = "") -> str:
+            if not gente:
+                return ""
+            filas = "".join(
+                f'<div style="display:flex;justify-content:space-between;gap:10px;'
+                f'padding:3px 0;border-bottom:1px solid rgba(255,255,255,.04)">'
+                f'<span style="font-size:11px;color:#E8EDF4">{_esc_h(x.get("nombre"))}</span>'
+                f'<span style="{mono};font-size:9px;color:#8892B0;text-align:right">'
+                f'{_esc_h(x.get("cargo"))}</span></div>' for x in gente)
+            n = f' <span style="{mono};font-size:9px;color:#5A6B7E">· {len(gente)}</span>'
+            return (f'<div style="{mono};font-size:8.5px;font-weight:800;letter-spacing:.08em;'
+                    f'color:#00D4FF;margin:12px 0 5px">▎{titulo}{n}</div>{filas}'
+                    + (f'<div style="font-size:9px;color:#5A6B7E;margin-top:4px">{nota}</div>' if nota else ""))
+
+        st.markdown(
+            _lista("CONCEJO CANTONAL", (g.get("concejo") or {}).get("detalle") or [])
+            + _lista("CONSEJO CANTONAL DE PLANIFICACIÓN",
+                     (g.get("consejo_planificacion") or {}).get("detalle") or []),
+            unsafe_allow_html=True)
+
+        # organigrama: la estructura, no la plantilla
+        org = g.get("organico") or {}
+        niveles = org.get("niveles") or {}
+        if niveles:
+            cols = st.columns(len(niveles), gap="small")
+            for c, (niv, unidades) in zip(cols, niveles.items()):
+                with c:
+                    items = "".join(
+                        f'<div style="font-size:9.5px;color:#A8B4C8;padding:3px 7px;margin-bottom:3px;'
+                        f'border-left:2px solid rgba(0,212,255,.35);background:rgba(255,255,255,.02);'
+                        f'border-radius:0 4px 4px 0">{_esc_h(u)}</div>' for u in unidades)
+                    st.markdown(
+                        f'<div style="{mono};font-size:8px;font-weight:800;letter-spacing:.06em;'
+                        f'color:#00D4FF;margin-bottom:5px;min-height:22px">{_esc_h(niv).upper()}</div>'
+                        f'{items}', unsafe_allow_html=True)
+            st.markdown(
+                f'<div style="font-size:9px;color:#5A6B7E;margin-top:8px">'
+                f'Estructura orgánica vigente · {_esc_h(org.get("norma"))} · '
+                f'{org.get("n_unidades", 0)} unidades. Se publica la <b>estructura</b>, no la '
+                f'plantilla: las personas cambian, el orgánico permanece.</div>',
+                unsafe_allow_html=True)
+
+
+def _cargar_gobierno() -> dict:
+    """Bloque `gobierno` del snapshot (ADR-037 · dimensión ¿QUÉ?): alcalde, mandato, concejo,
+    consejo de planificación y estructura orgánica. Todo viene del canon y del corpus
+    verificado vía `scripts/enrich_gobierno.py`; aquí solo se lee (Regla 1)."""
+    try:
+        import json
+        from pathlib import Path
+        p = Path(__file__).resolve().parent.parent / "data" / "gm_snapshot.json"
+        return (json.loads(p.read_text(encoding="utf-8")) or {}).get("gobierno") or {}
+    except Exception:  # noqa: BLE001
+        return {}
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -287,12 +402,6 @@ button[data-testid="collapsedControl"] {{
 html, body, .stApp, .stApp * {{ font-family:'Inter',system-ui,sans-serif; }}
 
 /* Header buttons */
-.st-key-btn_quira_ia button {{
-  background:rgba(0,212,255,.08)!important; border:1px solid rgba(0,212,255,.4)!important;
-  color:#00D4FF!important; font-weight:700!important; font-size:12px!important;
-  border-radius:9px!important;
-}}
-.st-key-btn_quira_ia button:hover {{ background:rgba(0,212,255,.18)!important; }}
 .st-key-btn_salir button {{
   background:transparent!important; border:1px solid rgba(255,255,255,.14)!important;
   color:#8892B0!important; font-size:12px!important; border-radius:9px!important;
@@ -317,7 +426,13 @@ def render() -> None:
     rol = get_rol() or "ejecutivo"
 
     # ── Header ────────────────────────────────────────────────────────────────
-    h1, h2, h3, h4 = st.columns([5.2, 1.1, 1.5, 0.9])
+    # ADR-037: fuera el chip de rol ("Ejecutivo") y el botón "Preguntar a QUIRA" — si la
+    # dimensión Inteligencia ES QUIRA IA, un botón aparte la duplica. El corte se lee del
+    # canon (no se escribe a mano: envejece en silencio).
+    _gob = _cargar_gobierno()
+    _man = _gob.get("mandato") or {}
+    _corte = _gob.get("corte") or "Corte Q1-2026"
+    h1, h2, h3 = st.columns([6.4, 1.5, 0.9])
     with h1:
         st.markdown(
             '<div style="display:flex;align-items:center;gap:14px">'
@@ -325,50 +440,54 @@ def render() -> None:
             'letter-spacing:.04em">⬡ QUIRA</span>'
             '<div style="border-left:1px solid rgba(255,255,255,.12);padding-left:14px">'
             '<div style="font-size:14px;font-weight:800;color:#E8EDF4">Centro de Inteligencia Territorial</div>'
-            '<div style="font-size:10.5px;color:#8892B0">GAD Municipal de Montecristi · '
-            'Corte Q1-2026</div></div></div>',
+            f'<div style="font-size:10.5px;color:#8892B0">GAD Municipal de Montecristi · '
+            f'{_esc_h(_corte)}</div></div></div>',
             unsafe_allow_html=True,
         )
     with h2:
         st.markdown(
-            f'<div style="text-align:right;padding-top:8px">'
-            f'<span style="font-size:10px;font-weight:700;color:#22C55E;'
-            f'border:1px solid rgba(34,197,94,.35);border-radius:12px;'
-            f'padding:3px 10px">● EN LÍNEA</span> '
-            f'<span style="font-size:10px;font-weight:700;color:#00D4FF;'
-            f'border:1px solid rgba(0,212,255,.35);border-radius:12px;'
-            f'padding:3px 10px;text-transform:capitalize">{rol}</span></div>',
+            '<div style="text-align:right;padding-top:8px">'
+            '<span style="font-size:10px;font-weight:700;color:#22C55E;'
+            'border:1px solid rgba(34,197,94,.35);border-radius:12px;'
+            'padding:3px 10px">● EN LÍNEA</span></div>',
             unsafe_allow_html=True,
         )
     with h3:
-        if st.button("◎ Preguntar a QUIRA", key="btn_quira_ia", use_container_width=True):
-            _nav("control")
-    with h4:
         if st.button("⎋ Salir", key="btn_salir", use_container_width=True):
             logout()
             st.rerun()
 
+    # ── Subtítulo de la franja superior (ADR-037: como ÁREAS DE GESTIÓN lo tiene abajo) ──
+    st.markdown(
+        '<div style="display:flex;justify-content:space-between;margin:8px 2px 2px">'
+        '<span style="font-size:10.5px;font-weight:800;letter-spacing:.1em;'
+        'color:#00D4FF">▎LECTURA DEL SISTEMA</span>'
+        '<span style="font-size:9.5px;color:#5A6B7E;font-family:\'JetBrains Mono\',monospace">'
+        'qué · dónde · por qué · bajo qué norma</span></div>',
+        unsafe_allow_html=True,
+    )
+
     # ── Banda de 4 DIMENSIONES (lentes del sistema · no duplican los 13) ──────
+    # Simetría (Javo): alto fijo en la descripción + pie anclado → las 4 franjas caen siempre
+    # en la misma línea, sea cual sea el texto.
     dcols = st.columns(4, gap="small")
     for col, dim in zip(dcols, _DIMS):
         with col:
             with st.container(border=True, key=dim["key"]):
                 st.markdown(
-                    f'<div style="padding:4px 6px 2px">'
+                    f'<div style="padding:4px 6px 2px;display:flex;flex-direction:column;'
+                    f'min-height:92px">'
                     f'<div style="display:flex;align-items:center;gap:8px">'
                     f'<span style="font-size:18px">{dim["icon"]}</span>'
                     f'<span style="font-size:15px;font-weight:800;color:#E8EDF4">'
                     f'{dim["nombre"]}</span></div>'
                     f'<div style="font-size:10px;color:#8892B0;margin-top:4px;'
-                    f'line-height:1.35">{dim["desc"]}</div></div>',
+                    f'line-height:1.35;height:40px;overflow:hidden">{dim["desc"]}</div>'
+                    f'</div>',
                     unsafe_allow_html=True,
                 )
                 if dim.get("activo"):
-                    st.markdown(
-                        '<div style="font-size:9.5px;color:#22C55E;text-align:center;'
-                        'padding:4px 0 2px;font-weight:700">● estás aquí</div>',
-                        unsafe_allow_html=True,
-                    )
+                    st.markdown(_gobierno_hero(_gob), unsafe_allow_html=True)
                 elif dim.get("proximamente"):
                     st.markdown(
                         '<div style="font-size:9.5px;color:#5A6B7E;text-align:center;'
@@ -379,6 +498,9 @@ def render() -> None:
                     if st.button("entrar →", key=f"go_{dim['key']}", use_container_width=True):
                         _nav(dim["dest"])
 
+    # ── GOBIERNO · el mandato en curso (ADR-037 · dato del canon y del corpus) ──
+    _panel_gobierno(_gob)
+
     st.markdown(
         '<div style="display:flex;justify-content:space-between;margin:4px 2px 0">'
         '<span style="font-size:10.5px;font-weight:800;letter-spacing:.1em;'
@@ -388,8 +510,7 @@ def render() -> None:
         unsafe_allow_html=True,
     )
 
-    # ── Grid · 13 cajones · dimensiones iguales · ÍCONO = entrada ─────────────
-    n_alertas = int(d.get("n_alertas", 0) or 0)
+    # ── Grid · 12 cajones · dimensiones iguales · ÍCONO = entrada ─────────────
     # Ícono alusivo por cajón (reemplaza la numeración · ningún cajón manda sobre otro)
     _ICON = {
         "d01": "🧭", "d02": "💰", "d03": "📜", "d04": "🚨", "d05": "🏢",
@@ -410,11 +531,7 @@ def render() -> None:
                 with st.container(border=True, key=f"card_{dom['id']}"):
                     t = _TEMP[dom["temp"]]
                     color = _DOM_COL.get(dom["id"], "#5AA9E6")
-                    # d04 dinámico: verde sin alertas
                     estado = dom.get("estado", "")
-                    if dom.get("dynamic_d04"):
-                        estado = "SIN ALERTAS" if n_alertas == 0 else f"{n_alertas} ACTIVAS"
-                        t = _TEMP["verde"] if n_alertas == 0 else _TEMP["critico"]
                     metric = _metric_of(dom, d)
                     icono = _ICON.get(dom["id"], "◉")
                     # título: ÍCONO-entrada (disparador) + nombre
