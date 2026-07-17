@@ -7782,5 +7782,178 @@
         }
       }
     }
+  },
+  "gobierno": {
+    "_fuente": "Autoridades electas y mandato: canon (SCHEMA_CNE) · Consejo de Planificación y estructura orgánica: corpus documental verificado (sha256)",
+    "alcalde": {
+      "cargo": "Alcalde",
+      "nombre": "Ing. Jonathan Toro Largacha",
+      "movimiento": "Movimiento Avanza Listas 8",
+      "posesion": "2023-05-14",
+      "hasta": "2027-05-13"
+    },
+    "mandato": {
+      "disponible": true,
+      "inicio": "2023-05-14",
+      "fin": "2027-05-13",
+      "dias_totales": 1460,
+      "dias_transcurridos": 1159,
+      "dias_restantes": 301,
+      "avance_pct": 79.4,
+      "vigente": true
+    },
+    "concejo": {
+      "detalle": [
+        {
+          "cargo": "Vice-Alcalde 1",
+          "nombre": "Ing. Flor Arteaga",
+          "movimiento": "",
+          "posesion": "2023-05-14",
+          "hasta": "2027-05-13"
+        },
+        {
+          "cargo": "Concejal Urbano",
+          "nombre": "Sr. Miguel Delgado",
+          "movimiento": "",
+          "posesion": "2023-05-14",
+          "hasta": "2027-05-13"
+        },
+        {
+          "cargo": "Concejal Urbano",
+          "nombre": "Sr. Miguel López",
+          "movimiento": "",
+          "posesion": "2023-05-14",
+          "hasta": "2027-05-13"
+        },
+        {
+          "cargo": "Concejal Urbano",
+          "nombre": "r. Luis Pachay",
+          "movimiento": "",
+          "posesion": "2023-05-14",
+          "hasta": "2027-05-13"
+        },
+        {
+          "cargo": "Concejal Urbano",
+          "nombre": "Econ. Adrián Pazmiño",
+          "movimiento": "",
+          "posesion": "2023-05-14",
+          "hasta": "2027-05-13"
+        },
+        {
+          "cargo": "Concejal Urbano",
+          "nombre": "Sr. Leonidas Robles",
+          "movimiento": "",
+          "posesion": "2023-05-14",
+          "hasta": "2027-05-13"
+        },
+        {
+          "cargo": "Concejal Rural",
+          "nombre": "Sr. Neptaly Santana",
+          "movimiento": "",
+          "posesion": "2023-05-14",
+          "hasta": "2027-05-13"
+        }
+      ],
+      "total": 8
+    },
+    "consejo_planificacion": {
+      "detalle": [
+        {
+          "nombre": "Ing. Luis Jonathan Toro Largacha",
+          "cargo": "Presidente Del Consejo De"
+        },
+        {
+          "nombre": "Econ. Jimmy Adrián Pazmiño Ruíz",
+          "cargo": "Vicepresidente Del Consejo"
+        },
+        {
+          "nombre": "Arq. Christian Bolívar Mazón Pilligua",
+          "cargo": "Coordinador General"
+        },
+        {
+          "nombre": "Lcda. Cecilia Dolores Macías Mieles",
+          "cargo": "Coordinadora Institucional"
+        },
+        {
+          "nombre": "Ing. Patricio Alexander Vélez Saeteros",
+          "cargo": "Coordinador Territorial"
+        },
+        {
+          "nombre": "Abg. Cristóbal Antonio Castro Alcívar",
+          "cargo": "Procurador Síndico"
+        },
+        {
+          "nombre": "Sr. Carlos Alberto Santana Santana",
+          "cargo": "Presidente Gad Parroquial La Pila"
+        },
+        {
+          "nombre": "Sr. Cristhian Renzo Gilces Calderón",
+          "cargo": "Representante Ciudadano"
+        },
+        {
+          "nombre": "Sra. Jahaira Vanessa Castro Delgado",
+          "cargo": "Representante Ciudadana"
+        },
+        {
+          "nombre": "Sr. David Jahir Santana Chóez",
+          "cargo": "Representante Ciudadano"
+        },
+        {
+          "nombre": "Ing. Flor Arteaga Barre",
+          "cargo": "Vicealcaldesa"
+        }
+      ],
+      "total": 11,
+      "sha256": "defe12c46b67"
+    },
+    "organico": {
+      "niveles": {
+        "Gobernantes": [
+          "Alcaldía",
+          "Concejo Municipal"
+        ],
+        "Adjetivos O Habilitantes De Asesoría": [
+          "Coordinación de Planificación Institucional y Control de Gestión",
+          "Coordinación de Planificación Urbana y Ordenamiento Territorial",
+          "Dirección de Comunicación, Relaciones Públicas y Marketing",
+          "Dirección de Participación Ciudadana",
+          "Dirección de Planificación Estratégica",
+          "Dirección de Proyectos Estratégicos",
+          "Procuraduría Síndica"
+        ],
+        "Sustantivos O Agregadores De Valor": [
+          "Coordinación Comercial",
+          "Coordinación de Catastro",
+          "Coordinación de Permisos y Habilitación del Suelo",
+          "Coordinación de Seguridad Ciudadana y Control del Espacio Público",
+          "Dirección General de Desarrollo Territorial",
+          "Dirección de Catastro y Gestión del Suelo",
+          "Dirección de Gestión Ambiental y Riesgos",
+          "Dirección de Obras Públicas y Fiscalización",
+          "Dirección de Seguridad, Control Territorial y Comisarías"
+        ],
+        "Adjetivos O Habilitantes De Apoyo": [
+          "Coordinación de Administración de Talento Humano",
+          "Coordinación de Bienes e Insumos",
+          "Coordinación de Cobro y Coactiva",
+          "Coordinación de Compras Públicas",
+          "Coordinación de Contabilidad",
+          "Coordinación de Mantenimiento Vehicular y Maquinarias",
+          "Coordinación de Presupuesto",
+          "Coordinación de Rentas",
+          "Coordinación de Tecnología",
+          "Dirección Administrativa",
+          "Dirección Financiera",
+          "Dirección General de Desarrollo Institucional",
+          "Dirección de Registro de la Propiedad y Mercantil",
+          "Dirección de Talento Humano"
+        ]
+      },
+      "n_unidades": 32,
+      "norma": "Orgánico Estructural vigente · Art. 9",
+      "sha256": "00728bcee005",
+      "nota": "Se publica la estructura, no la plantilla: las personas cambian, el orgánico permanece."
+    },
+    "publicado": true
   }
 }

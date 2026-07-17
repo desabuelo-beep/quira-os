@@ -1,6 +1,6 @@
 # ADR-037 · El frame de las 4 dimensiones — la BRN entra donde estaba Convergencia
 
-**Estado:** PROPUESTO · 2026-07-16 (Javo decide · director técnico redacta) · **pendiente de ratificación**
+**Estado:** **RATIFICADO** · 2026-07-16 (Javo ratifica · director técnico redacta)
 **Contexto de origen:** revisión del Centro de Inteligencia Territorial. Javo: *"Territorio es el
 punto de encuentro entre las QUIRA's en el territorio. Inteligencia debería ser QUIRA IA.
 Convergencia debería salir para colocar aquí a la BRN."*
@@ -23,7 +23,7 @@ el **2026-06-21** y **universal a las 6 QUIRAs** (el contenido cambia; el frame 
 Con una frontera explícita: *la ACCIÓN (¿y ahora qué?) la cierra el GOBIERNO, fuera de QUIRA:
 QUIRA informa y conecta, no actúa.*
 
-**El problema:** Javo precisa que **Territorio ES el punto de encuentro entre las QUIRAs en el
+**El problema:** Javo precisa que **Territorio es el punto de encuentro entre las QUIRAs en el
 territorio**. Si eso es así, **Convergencia queda redundante**: el "¿con quién?" ya vive en el
 "¿dónde?". Y al mismo tiempo, la **BRN** (ADR-035) no tiene lugar propio: hoy no es un dominio
 —no observa una capacidad del Estado— pero es la **fuente de la lógica normativa** de todo el
@@ -63,17 +63,27 @@ espacio, que estaba reservado a algo aún "— próximamente —".
 - La franja superior recibe **subtítulo propio**, como *ÁREAS DE GESTIÓN* lo tiene abajo.
 
 ### 5. LÍMITE DURO — solo se publica lo verificado (Regla 3)
-Al construir Gobierno se auditó el canon:
 
-| Dato | Estado |
-|---|---|
-| Alcalde · movimiento · **posesión 2023-05-14** | ✅ verificado (SCHEMA_CNE) |
-| **Inicio 14-05-2023 · fin 13-05-2027** | ✅ **dictado por Javo (2026-07-16)** → debe cargarse en el canon (SCHEMA_CNE), no en el código |
-| Vice-Alcalde, 3 Concejales Urbanos, 2 Rurales, Pdte. Junta La Pila | ❌ **7 de 8 sin dato** |
+| Dato | Fuente | Estado |
+|---|---|---|
+| Alcalde · movimiento · posesión · **`Mandato_Hasta 2027-05-13`** | `SCHEMA_CNE` (cargado por Javo · 2026-07-16) | ✅ |
+| **Concejo Cantonal** — Alcalde, Vicealcaldesa, 5 Concejales Urbanos, 1 Rural | `SCHEMA_CNE` + PDOT `sha defe12c46b` | ✅ |
+| **Consejo Cantonal de Planificación** | PDOT `sha defe12c46b` | ✅ |
+| **Estructura orgánica** (organigrama) | Orgánico `RES-ORG-GADMCM-2025` Art. 9 · `sha 368e809a4f` | ✅ |
+| Direcciones listadas en el PDOT | — | ❌ **DEROGADAS** por el Orgánico 2025 |
 
-**La nómina del concejo NO se publica hasta que exista en el canon.** Se muestran los cargos con
-su **ausencia declarada** — que es un resultado de auditoría, no un hueco a rellenar. El
-contador se alimenta de las fechas **del canon**; si no están, no hay contador.
+**Los nombres de directores NO se publican** (criterio de Javo + colega): las personas cambian,
+**el orgánico permanece**. Se muestra la **estructura**, no la nómina técnica — *QUIRA observa
+estructuras, no personas*. Sí se publican los **cargos electos** (Alcalde, Concejo) y los
+**órganos colegiados**: son mandato, no plantilla.
+
+> ### ⚠️ Corrección de método (Javo · 2026-07-16) — la lección más cara de la sesión
+> El director declaró *"7 de 8 autoridades sin dato"* habiendo consultado **solo `SCHEMA_CNE`**.
+> **Era falso: la nómina completa estaba en el corpus** (PDOT, págs. 16-17). Declarar una
+> ausencia sin revisar el corpus es tan grave como inventar un dato — porque **una ausencia
+> declarada es un resultado de auditoría**, y se falsificó.
+> **REGLA: antes de afirmar que un dato no existe, revisar el CORPUS documental, no solo el
+> canon estructurado.**
 
 ## Consecuencia práctica
 
