@@ -181,7 +181,8 @@ for _dm in _DOMAINS_V2:
 # no actúa.
 _DIMS = [
     {"key": "dim_gob",    "icon": "🏛", "nombre": "Gobierno",
-     "desc": "¿Qué? · la institución, el mandato y sus investigaciones", "dest": None, "activo": True},
+     "desc": "¿Qué? · la institución, el mandato y sus investigaciones", "dest": None,
+     "hero": True, "abre": True},
     {"key": "dim_terr",   "icon": "🗺", "nombre": "Territorio",
      "desc": "¿Dónde? · el cantón en el mapa · el encuentro entre las QUIRAs", "dest": "geotwin"},
     {"key": "dim_intel",  "icon": "◎", "nombre": "Inteligencia",
@@ -201,12 +202,12 @@ def _gobierno_hero(g: dict) -> str:
     DEL CANON (SCHEMA_CNE). Si el canon no las tiene, no hay contador — no se deduce."""
     m = g.get("mandato") or {}
     if not m.get("disponible"):
-        return ('<div style="font-size:9.5px;color:#22C55E;text-align:center;'
-                'padding:4px 0 2px;font-weight:700">● estás aquí</div>')
+        # sin fechas en el canon no hay contador — y el hueco mantiene la simetría
+        return '<div style="height:34px"></div>'
     rest, av = m.get("dias_restantes", 0), m.get("avance_pct", 0)
     col = "#EF5350" if rest < 180 else ("#F9AB00" if rest < 365 else "#22C55E")
     return (
-        f'<div style="padding:2px 6px 4px">'
+        f'<div style="padding:2px 6px 4px;height:34px">'
         f'<div style="height:5px;border-radius:3px;background:rgba(255,255,255,.08);overflow:hidden">'
         f'<span style="display:block;height:100%;width:{min(av,100):.0f}%;background:{col};'
         f'border-radius:3px"></span></div>'
@@ -227,7 +228,15 @@ def _panel_gobierno(g: dict) -> None:
     if not a:
         return
     mono = "font-family:'JetBrains Mono',monospace"
-    with st.expander(f"🏛  El mandato en curso · {a.get('nombre','')}", expanded=False):
+    # El cajón ya es el disparador (Javo): aquí solo se despliega el contenido — un expander
+    # obligaría a un segundo clic sobre lo que el usuario ya abrió.
+    with st.container(border=True, key="panel_gobierno"):
+        st.markdown(
+            f'<div style="display:flex;justify-content:space-between;align-items:baseline;'
+            f'margin-bottom:8px"><span style="font-size:13px;font-weight:800;color:#E8EDF4">'
+            f'🏛 El mandato en curso</span>'
+            f'<span style="{mono};font-size:9px;color:#5A6B7E">GOBIERNO · ¿QUÉ?</span></div>',
+            unsafe_allow_html=True)
         # ficha del alcalde + contador
         if m.get("disponible"):
             cel = [("EN EL CARGO", f"{m['dias_transcurridos']:,}", "días", "#00D4FF"),
@@ -486,20 +495,37 @@ def render() -> None:
                     f'</div>',
                     unsafe_allow_html=True,
                 )
-                if dim.get("activo"):
+                # SIMETRÍA (Javo · 2026-07-16): el pie ocupa SIEMPRE el mismo alto en las 4.
+                # Antes cada rama ponía algo distinto (contador / texto / botón) y las tarjetas
+                # quedaban desparejas.
+                # franja media: 34px en las 4 (contador · aviso · vacío) → misma línea siempre
+                if dim.get("hero"):
                     st.markdown(_gobierno_hero(_gob), unsafe_allow_html=True)
                 elif dim.get("proximamente"):
                     st.markdown(
-                        '<div style="font-size:9.5px;color:#5A6B7E;text-align:center;'
-                        'padding:4px 0 2px">— próximamente —</div>',
+                        '<div style="height:34px;display:flex;align-items:center;'
+                        'justify-content:center"><span style="font-size:9.5px;color:#5A6B7E">'
+                        '— próximamente —</span></div>',
                         unsafe_allow_html=True,
                     )
                 else:
-                    if st.button("entrar →", key=f"go_{dim['key']}", use_container_width=True):
-                        _nav(dim["dest"])
+                    st.markdown('<div style="height:34px"></div>', unsafe_allow_html=True)
+                if dim.get("dest") or dim.get("abre"):
+                    # Gobierno TAMBIÉN abre (Javo: "el ícono no abre Gobierno"): despliega el
+                    # mandato aquí mismo; el resto navega a su destino.
+                    lbl = "ver el mandato →" if dim.get("abre") else "entrar →"
+                    if st.button(lbl, key=f"go_{dim['key']}", use_container_width=True):
+                        if dim.get("abre"):
+                            st.session_state["_ver_gobierno"] = not st.session_state.get("_ver_gobierno", False)
+                            st.rerun()
+                        else:
+                            _nav(dim["dest"])
+                else:
+                    st.markdown('<div style="height:38px"></div>', unsafe_allow_html=True)
 
-    # ── GOBIERNO · el mandato en curso (ADR-037 · dato del canon y del corpus) ──
-    _panel_gobierno(_gob)
+    # ── GOBIERNO · el mandato en curso (ADR-037) — se abre desde su propio cajón ──
+    if st.session_state.get("_ver_gobierno"):
+        _panel_gobierno(_gob)
 
     st.markdown(
         '<div style="display:flex;justify-content:space-between;margin:4px 2px 0">'
