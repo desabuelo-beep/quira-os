@@ -137,8 +137,14 @@ def _del_corpus() -> dict:
             # publica "Nombre <cargo EN MAYÚSCULAS>" y el cargo termina donde arranca el
             # tratamiento del siguiente (Ing./Econ./Arq./Lcda./Abg./Sr./Sra.).
             _TRAT = r"(?:Ing|Econ|Arq|Lcda|Lcdo|Abg|Sr|Sra)\."
+            # OJO (corrección de Javo · 2026-07-16): el patrón incluía ALCALDE|VICEALCALDESA y
+            # colaba a la Vicealcaldesa en este consejo. En el PDOT ella está en la COLUMNA DEL
+            # CONCEJO CANTONAL; el texto aplanado junta ambas columnas y el regex las mezcló.
+            # Flor Arteaga es solo Vicealcaldesa: NO integra el Consejo de Planificación.
+            # El único concejal que lo integra es Pazmiño, y lo hace como VICEPRESIDENTE.
             _CARGOS = (r"PRESIDENTE|VICEPRESIDENTE|COORDINADOR|COORDINADORA|PROCURADOR|"
-                       r"REPRESENTANTE|ALCALDE|VICEALCALDESA")
+                       r"REPRESENTANTE")
+            _NO_SON = ("vicealcald", "concejal", "alcalde")
             pares = re.findall(
                 rf"({_TRAT}\s*[A-ZÁÉÍÓÚÑ][^.]{{4,46}}?)\s+"
                 rf"((?:{_CARGOS})[A-ZÁÉÍÓÚÑ\s]*?)(?=\s+{_TRAT}|\s*$|\s+[A-ZÁÉÍÓÚÑ][a-z])", txt)
@@ -148,6 +154,8 @@ def _del_corpus() -> dict:
                 # el cargo se limpia de la inicial huérfana que precede al siguiente nombre
                 c = re.sub(r"\s+[A-ZÁÉÍÓÚÑ]$", "", re.sub(r"\s+", " ", car).strip())
                 if not n or n in vistos or not _fw(n) or len(c) < 5:
+                    continue
+                if any(x in c.lower() for x in _NO_SON):   # cargos del Concejo, no de este consejo
                     continue
                 vistos.add(n)
                 out["consejo_planificacion"].append({"nombre": n, "cargo": c.title()})

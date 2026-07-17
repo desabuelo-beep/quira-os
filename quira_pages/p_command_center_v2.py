@@ -180,13 +180,15 @@ for _dm in _DOMAINS_V2:
 # El frame sigue siendo universal a las 6 QUIRAs. La frontera se conserva: QUIRA informa y conecta,
 # no actúa.
 _DIMS = [
-    {"key": "dim_gob",    "icon": "🏛", "nombre": "Gobierno",
+    # Color propio por lente (Javo · 2026-07-16): cada una se reconoce por su acento, igual que
+    # los dominios. Norma queda en gris hasta que la BRN exista — el color se gana al estar viva.
+    {"key": "dim_gob",    "icon": "🏛", "nombre": "Gobierno", "col": "#00D4FF",
      "desc": "¿Qué? · la institución, el mandato y sus investigaciones", "dest": "gobierno"},
-    {"key": "dim_terr",   "icon": "🗺", "nombre": "Territorio",
+    {"key": "dim_terr",   "icon": "🗺", "nombre": "Territorio", "col": "#22C55E",
      "desc": "¿Dónde? · el cantón en el mapa · el encuentro entre las QUIRAs", "dest": "geotwin"},
-    {"key": "dim_intel",  "icon": "◎", "nombre": "Inteligencia",
+    {"key": "dim_intel",  "icon": "◎", "nombre": "Inteligencia", "col": "#A78BFA",
      "desc": "¿Por qué? · QUIRA IA: lee, explica y anticipa", "dest": "control"},
-    {"key": "dim_brn", "icon": "📖", "nombre": "Norma",
+    {"key": "dim_brn", "icon": "📖", "nombre": "Norma", "col": "#5A6B7E",
      "desc": "¿Bajo qué norma? · la ley que sostiene cada verificación", "dest": None, "proximamente": True},
 ]
 
@@ -392,14 +394,17 @@ def render() -> None:
                                    help=f"Entrar · {dim['nombre']}"):
                         _nav(dim["dest"])
                 with nm:
+                    c = dim.get("col", "#00D4FF")
                     prox = ('<span style="font-size:8.5px;color:#5A6B7E;margin-left:6px">'
                             '— próximamente —</span>') if dim.get("proximamente") else ""
                     st.markdown(
                         f'<div style="padding-top:2px">'
-                        f'<div style="font-size:14px;font-weight:800;color:#E8EDF4">'
+                        f'<div style="font-size:14px;font-weight:800;color:{c}">'
                         f'{dim["nombre"]}{prox}</div>'
-                        f'<div style="font-size:9.5px;color:#8892B0;margin-top:2px;'
-                        f'line-height:1.4;height:26px;overflow:hidden">{dim["desc"]}</div></div>',
+                        f'<div style="height:2px;width:34px;background:{c};opacity:.55;'
+                        f'border-radius:1px;margin:4px 0 3px"></div>'
+                        f'<div style="font-size:9.5px;color:#8892B0;line-height:1.4;'
+                        f'height:26px;overflow:hidden">{dim["desc"]}</div></div>',
                         unsafe_allow_html=True,
                     )
 

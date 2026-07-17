@@ -58,113 +58,6 @@ from utils.css_tokens import C
 # Mantiene contexto de los 4 KPIs mientras el operador explora un dominio
 # ══════════════════════════════════════════════════════════════════════════════
 
-def _render_mini_kpi_band() -> None:
-    """
-    Banda compacta de 4 KPI tiles — persiste en drill-down del Ejecutivo.
-    Misma fuente de datos que p_command_center.py · misma doctrina de labels.
-    Regla: ningún nombre interno (ICPI, TGI, SAT, Ti) en labels públicos.
-    """
-    try:
-        snap, _ = cargar_snapshot()
-        gm      = cargar_gm_snapshot()
-
-        icpi_pct    = None
-        icpi_clasif = "—"
-        n_alertas   = 0
-        hold_avg    = None
-
-        if snap:
-            icpi_d      = snap.get("icpi", {})
-            icpi_pct    = icpi_d.get("global_pct") or icpi_d.get("global")
-            icpi_clasif = icpi_d.get("clasificacion", "—")
-            sat_d       = snap.get("sat", {})
-            n_alertas   = sat_d.get("total_activas", 0)
-
-        if gm and gm.get("icpi"):
-            icpi_gm     = gm.get("icpi", {})
-            icpi_pct    = icpi_gm.get("global_pct") or icpi_gm.get("global")
-            icpi_clasif = icpi_gm.get("clasificacion", "—")
-
-        if gm:
-            _h90 = gm.get("financiero", {}).get("h90_consolidado", {}) or {}
-            if _h90.get("holding_ti_q1_pct") is not None:
-                hold_avg = _h90["holding_ti_q1_pct"]            # consolidado real del motor
-
-        _parcial    = any(t in str(icpi_clasif).lower() for t in ("parcial", "preliminar"))
-        icpi_color  = "#F59E0B" if _parcial else (C.sem(icpi_pct) if icpi_pct is not None else "#EF4444")
-        alert_color = "#EF4444" if n_alertas > 0 else "#22C55E"
-        hold_color  = C.sem(hold_avg) if hold_avg is not None else "#EF4444"
-        icpi_str    = f"{icpi_pct:.1f}%" if icpi_pct is not None else "—"
-        hold_str    = f"{hold_avg:.1f}%" if hold_avg is not None else "—"
-
-        def _t(label: str, val: str, color: str, sub: str) -> str:
-            return f"""
-<div style="flex:1;min-width:0;padding:8px 12px;
-            background:rgba(8,13,24,.97);border:1px solid {color}22;
-            border-top:2px solid {color};border-radius:8px">
-  <div style="font-size:7px;font-weight:700;letter-spacing:.09em;
-              text-transform:uppercase;color:rgba(255,255,255,.25);
-              margin-bottom:5px">{label}</div>
-  <div style="font-size:1.1rem;font-weight:900;color:{color};
-              font-family:'JetBrains Mono',monospace;letter-spacing:-.03em;
-              line-height:1;margin-bottom:4px">{val}</div>
-  <div style="font-size:7.5px;color:rgba(255,255,255,.26);
-              line-height:1.35">{sub}</div>
-</div>"""
-
-        tiles_html = (
-            _t("Cumplimiento Institucional", icpi_str, icpi_color,
-               icpi_clasif) +
-            _t("Fondos en Riesgo", "$3.66M", "#7C5CFC",
-               "3 fuentes condicionadas") +
-            _t("Alertas Activas", str(n_alertas), alert_color,
-               "Sistema activo") +
-            _t("Holding Municipal", hold_str, hold_color,
-               "Consolidado 4 entidades")
-        )
-
-        st.markdown(f"""
-<div style="display:flex;gap:8px;margin-bottom:14px;padding:0 2px">
-  {tiles_html}
-</div>
-""", unsafe_allow_html=True)
-
-    except Exception:
-        # Falla silenciosa — el KPI band es contextual, no bloquea el drill-down
-        pass
-
-
-# ── Catálogo de módulos GOV ───────────────────────────────────────────────────
-# (key, icon, label, tecnico_only)
-# tecnico_only=True → solo visible para Técnico, Operador, Administrador
-_GOV_MODULES: list[tuple[str, str, str, bool]] = [
-    # ── Sección Ejecutiva (todos los roles GOV) ────────────────────────────
-    ("inicio",       "🏛",  "Centro de Inteligencia Territorial",               False),
-    ("situacion",    "📊",  "Situación Institucional",      False),
-    ("alertas",      "🚨",  "Alertas y Riesgos SAT",        False),
-    ("municipal",    "🏛",  "Gestión Municipal",             False),
-    ("ods",          "🌐",  "ODS y Metas PDOT",              False),
-    ("confianza",    "🤝",  "Confianza Ciudadana",           False),
-    ("rdc",          "📋",  "Rendición de Cuentas",          False),
-    ("cooperacion",  "🌍",  "Cooperación Internacional",     False),
-    ("genero",       "💜",  "Género y Ambiente",             False),
-    ("territorio",   "🗺",  "Territorio & Cobertura",        False),   # Dom10 · ADR-013
-    ("transparencia","👁",  "Transparencia Institucional",   False),   # Dom07 · ADR-013 Sprint 4
-    # ── Sección Técnica (Técnico, Operador, Administrador) ─────────────────
-    ("cadena",       "🔗",  "Cadena Institucional",          True),   # Sprint E.1
-    ("analisis",     "📈",  "Análisis Estratégico",          True),
-    ("geotwin",      "🗺",  "GeoTwin Territorio",            True),
-    ("congruencias", "🔗",  "Congruencias PDOT",             True),
-    ("simulador",    "🎮",  "Simulador de Escenarios",       True),
-    ("control",      "⚙",  "Centro de Control",             True),
-]
-
-# Claves de módulos exclusivos de la sección técnica
-_TECNICO_MODULES: frozenset[str] = frozenset(
-    key for key, *_, tec_only in _GOV_MODULES if tec_only
-)
-
-
 def _can_see(module_key: str) -> bool:
     """Determina si el rol actual puede ver este módulo."""
     if module_key in _TECNICO_MODULES:
@@ -585,9 +478,11 @@ button[data-testid="collapsedControl"] {
                 st.rerun()
 
             # KPI band: SOLO módulos legacy. Los cajones QINV van limpios, sin cromo viejo
-            # (Javo 2026-06-23: las 4 tiles son de pantallas antiguas — eliminar del cajón).
-            if not is_qinv:
-                _render_mini_kpi_band()
+            # Las 4 tiles eran de pantallas antiguas de QUIRA (Javo 2026-06-23 → se quitaron del
+            # cajón; 2026-07-16 → salen del todo: seguían apareciendo en Territorio y demás).
+            # Además publicaban dato FALSO hardcodeado: "$3.66M · 3 fuentes condicionadas" cuando
+            # lo captado real son $1.87M en 4 convenios, y "Consolidado 4 entidades". La lectura
+            # del sistema vive ahora en las 4 lentes del frame (ADR-037), con dato del canon.
 
             fn_drill()
             return

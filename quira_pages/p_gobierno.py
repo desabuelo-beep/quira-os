@@ -67,17 +67,23 @@ def _titulo(t: str, n: int | None = None) -> str:
             f'color:#00F0FF;margin:26px 0 10px;opacity:.85">{t}{extra}</div>')
 
 
-def _flujo(gente: list) -> str:
-    """Líneas de flujo (Javo): sin grillas ni filas rayadas — acento vertical, aire y contraste polar."""
-    return '<div style="display:flex;flex-wrap:wrap;gap:9px">' + "".join(
-        f'<div style="flex:1 1 236px;padding:8px 13px;border-left:2px solid rgba(0,240,255,.30);'
+def _flujo(gente: list, cols: int = 4) -> str:
+    """Líneas de flujo (Javo): sin grillas ni filas rayadas — acento vertical, aire y contraste
+    polar. Rejilla de ancho FIJO: con flex libre los nombres cortos y largos descuadraban las
+    filas (Javo · 2026-07-16). Ahora todas las tarjetas miden igual y caen en línea."""
+    if not gente:
+        return ""
+    tarjetas = "".join(
+        f'<div style="padding:9px 13px;border-left:2px solid rgba(0,240,255,.30);'
         f'background:linear-gradient(90deg,rgba(0,240,255,.05),transparent 82%);'
-        f'border-radius:0 6px 6px 0">'
+        f'border-radius:0 6px 6px 0;min-height:46px">'
         f'<div style="font-size:11.5px;color:#E0F7FA;font-weight:500;line-height:1.3">'
         f'{_esc(x.get("nombre"))}</div>'
         f'<div style="{_MONO};font-size:8.5px;font-weight:300;color:#7E8BA3;'
-        f'letter-spacing:.04em;margin-top:2px">{_esc(x.get("cargo"))}</div></div>'
-        for x in gente) + '</div>'
+        f'letter-spacing:.04em;margin-top:3px">{_esc(x.get("cargo"))}</div></div>'
+        for x in gente)
+    return (f'<div style="display:grid;grid-template-columns:repeat({cols},1fr);gap:9px">'
+            f'{tarjetas}</div>')
 
 
 def render() -> None:
@@ -100,10 +106,13 @@ def render() -> None:
 
     conc = (g.get("concejo") or {}).get("detalle") or []
     plan = (g.get("consejo_planificacion") or {}).get("detalle") or []
+    # El Concejo cabe en UNA línea (Javo): tantas columnas como integrantes. El Consejo de
+    # Planificación, en rejilla de 5 — dos filas parejas para sus 10.
     if conc:
-        st.markdown(_titulo("CONCEJO CANTONAL", len(conc)) + _flujo(conc), unsafe_allow_html=True)
+        st.markdown(_titulo("CONCEJO CANTONAL", len(conc)) + _flujo(conc, cols=len(conc)),
+                    unsafe_allow_html=True)
     if plan:
-        st.markdown(_titulo("CONSEJO CANTONAL DE PLANIFICACIÓN", len(plan)) + _flujo(plan),
+        st.markdown(_titulo("CONSEJO CANTONAL DE PLANIFICACIÓN", len(plan)) + _flujo(plan, cols=5),
                     unsafe_allow_html=True)
 
     org = g.get("organico") or {}

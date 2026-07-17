@@ -7797,15 +7797,15 @@
       "inicio": "2023-05-14",
       "fin": "2027-05-13",
       "dias_totales": 1460,
-      "dias_transcurridos": 1159,
-      "dias_restantes": 301,
-      "avance_pct": 79.4,
+      "dias_transcurridos": 1160,
+      "dias_restantes": 300,
+      "avance_pct": 79.5,
       "vigente": true
     },
     "concejo": {
       "detalle": [
         {
-          "cargo": "Vice-Alcalde 1",
+          "cargo": "Vice-Alcalde",
           "nombre": "Ing. Flor Arteaga",
           "movimiento": "",
           "posesion": "2023-05-14",
@@ -7827,7 +7827,7 @@
         },
         {
           "cargo": "Concejal Urbano",
-          "nombre": "r. Luis Pachay",
+          "nombre": "Sr. Luis Pachay",
           "movimiento": "",
           "posesion": "2023-05-14",
           "hasta": "2027-05-13"
@@ -7897,13 +7897,9 @@
         {
           "nombre": "Sr. David Jahir Santana Chóez",
           "cargo": "Representante Ciudadano"
-        },
-        {
-          "nombre": "Ing. Flor Arteaga Barre",
-          "cargo": "Vicealcaldesa"
         }
       ],
-      "total": 11,
+      "total": 10,
       "sha256": "defe12c46b67"
     },
     "organico": {
