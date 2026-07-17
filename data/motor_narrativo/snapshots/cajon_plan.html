@@ -1,0 +1,203 @@
+<style>
+.qc{--ind:#1E8E3E;--inst:#1A73E8;--parc:#F9AB00;--sin:#9AA0A6;--prosp:#8B7BD8;--law:#6BA6C9;
+ --tx:#E7ECF3;--tx2:#97A3B8;--sf:rgba(255,255,255,.03);--bd:rgba(255,255,255,.14);
+ font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--tx);max-width:1080px;margin:0 auto;
+ font-size:14px;line-height:1.55;border:1px solid var(--bd);border-top:3px solid var(--ind);border-radius:5px;
+ background:#0E1420;overflow:hidden}
+.qc *{box-sizing:border-box}
+.qc-hd{padding:22px 26px 18px;border-bottom:1px solid var(--bd)}
+.qc-ey{font-family:ui-monospace,monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--tx2)}
+.qc-idea{font-family:Georgia,serif;font-size:26px;font-weight:600;margin:8px 0 11px}
+.qc-q{font-family:Georgia,serif;font-size:16px;font-style:italic;line-height:1.4;border-left:3px solid var(--ind);padding-left:14px}
+.qc-princ{margin:20px 26px 0;padding:13px 16px;background:rgba(30,142,62,.08);border:1px solid rgba(30,142,62,.3);border-radius:7px;font-size:13px;color:var(--tx2)}
+.qc-princ .t{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ind);font-weight:700;display:block;margin-bottom:4px}
+.qc-princ b{color:var(--tx)}
+.qc-law{margin-top:11px;font-size:11.5px}
+details.qc-law summary{cursor:pointer;list-style:none;color:var(--law);font-family:ui-monospace,monospace;font-size:11px;font-weight:600;padding:5px 9px;border:1px solid var(--law);border-radius:4px;display:inline-block}
+details.qc-law summary::-webkit-details-marker{display:none}
+details.qc-law[open] summary{margin-bottom:7px}
+.qc-lawc{display:inline-block;font-family:ui-monospace,monospace;font-size:10px;color:var(--tx2);border:1px solid var(--bd);border-radius:3px;padding:1px 6px;margin:3px 4px 0 0;white-space:nowrap}
+.qc-body{padding:8px 26px 22px}.qc-sec{margin-top:30px}
+.qc-subh{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--tx2);font-weight:700;margin:22px 0 11px}
+.qc-anio{border:1px solid var(--bd);border-radius:9px;padding:2px 18px 18px;margin-top:24px;background:rgba(255,255,255,.015)}
+.qc-anio>.qc-h{margin-top:16px}.qc-anio>.qc-h .qc-ht{font-size:17px;font-family:Georgia,serif}
+.qc-h{display:flex;align-items:baseline;gap:10px;margin:0 0 12px}
+.qc-hn{font-family:ui-monospace,monospace;font-size:12px;color:var(--ind);font-weight:700}
+.qc-ht{font-size:15px;font-weight:600}
+.qc-p{font-size:12.5px;color:var(--tx2);margin:0 0 13px}.qc-p b{color:var(--tx);font-weight:600}
+/* embudo */
+.qc-embudo{border:1px solid var(--bd);border-radius:8px;padding:14px 16px;background:var(--sf)}
+.qc-fhead{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--tx2);margin-bottom:10px}
+.qc-fhead b{color:var(--tx);font-size:15px}.qc-fhead .ar{color:var(--law);font-size:16px}
+.qc-fbar{display:flex;height:16px;border-radius:3px;overflow:hidden;gap:2px}
+.qc-fseg{min-width:5px}
+.qc-fchips{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:11px}
+.qc-fchip{font-size:11.5px;color:var(--tx2);display:flex;align-items:center;gap:6px}
+.qc-fchip b{color:var(--tx)}.qc-fchip small{opacity:.7}
+.qc-fchip .d{width:9px;height:9px;border-radius:2px;flex:none}
+.qc-fchip.arch{opacity:.65}
+/* pipeline (respira) */
+.qc-pipe{display:flex;flex-wrap:nowrap;align-items:stretch;justify-content:center;gap:0;margin-top:4px;overflow-x:auto;padding-bottom:5px}
+.qc-blk{width:150px;flex:0 0 auto;border:1px solid var(--bd);border-radius:6px;padding:11px 9px;text-align:center;background:var(--sf);display:flex;flex-direction:column;justify-content:center}
+.qc-blk .bl{font-family:ui-monospace,monospace;font-size:9px;letter-spacing:.04em;text-transform:uppercase;color:var(--tx2);font-weight:700}
+.qc-blk .bq{font-size:10.5px;margin-top:5px;color:var(--tx2)}
+.qc-blk.src{border-color:var(--inst)}.qc-blk.src .bl{color:var(--inst)}
+.qc-blk.out{border-color:var(--ind);background:rgba(30,142,62,.1)}.qc-blk.out .bl{color:var(--ind)}
+.qc-conn{width:46px;flex:0 0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.qc-conn .vl{font-size:7.5px;color:var(--tx2);text-align:center;line-height:1.15;margin-bottom:3px;font-style:italic}
+.qc-conn .aw{color:var(--law);font-size:17px}
+.qc-blk .bsys{font-family:ui-monospace,monospace;font-size:8.5px;color:var(--law);margin-top:3px;letter-spacing:.02em}
+/* resultado — el ojo primero */
+.qc-hero{margin:4px 0 18px;display:flex;flex-direction:column;gap:11px}
+.qc-hbar{display:flex;align-items:center;gap:14px}
+.qc-hfill{height:42px;border-radius:6px;display:flex;align-items:center;padding:0 16px;min-width:96px;flex:0 0 auto}
+.qc-hfill.g{background:var(--ind)}.qc-hfill.s{background:var(--sin)}
+.qc-hnum{font-family:Georgia,serif;font-weight:700;font-size:25px;color:#fff;white-space:nowrap}
+.qc-hnum.d{color:#0E1420}
+.qc-hlbl{font-size:13px;color:var(--tx);flex:1}.qc-hlbl b{font-weight:700}
+.qc-esp-h{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--tx2);margin:6px 0 9px}
+.qc-row{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.qc-lbl{width:220px;text-align:right;font-size:12px;flex:none;color:var(--tx)}.qc-lbl small{color:var(--tx2)}
+.qc-track{flex:1;height:13px}.qc-bar{height:13px;border-radius:2px;min-width:2px}
+.qc-num{width:66px;font-family:ui-monospace,monospace;font-size:11.5px;color:var(--tx2);flex:none}.qc-num b{color:var(--tx);font-size:13px}
+/* expedientes + mini-cadena */
+.qc-exps{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.qc-exp{border:1px solid var(--bd);border-radius:4px;overflow:hidden;background:var(--sf)}
+.qc-exp-top{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:6px 11px;background:rgba(255,255,255,.05);border-bottom:1px solid var(--bd)}
+.qc-exp-id{font-family:ui-monospace,monospace;font-size:8.5px;letter-spacing:.03em;font-weight:700;color:var(--tx2)}
+.qc-stamp{font-family:ui-monospace,monospace;font-size:8.5px;font-weight:700;padding:2px 6px;border:1.5px solid;border-radius:3px;text-transform:uppercase;white-space:nowrap}
+.qc-exp-b{padding:9px 11px}
+.qc-kv{font-size:11.5px;margin:3px 0;display:flex;gap:8px}
+.qc-kv .k{font-family:ui-monospace,monospace;font-size:8.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--tx2);flex:none;width:66px;padding-top:2px}
+.qc-kv .v{flex:1;color:var(--tx2)}.qc-kv .v b{color:var(--tx)}
+.qc-mc{margin-top:9px;padding-top:8px;border-top:1px dashed var(--bd)}
+.qc-mc .mc-t{font-family:ui-monospace,monospace;font-size:8px;letter-spacing:.06em;text-transform:uppercase;color:var(--tx2);display:block;margin-bottom:5px}
+.qc-mc .mc-row{display:flex;flex-wrap:wrap;align-items:center;gap:4px}
+.mc-n{font-size:9.5px;padding:3px 8px;border-radius:3px;border:1px solid var(--bd)}
+.mc-n.on{color:#fff;background:rgba(30,142,62,.34);border-color:var(--ind);font-weight:600}
+.mc-n.off{color:#AEB8C6;border-color:rgba(255,255,255,.22);background:rgba(255,255,255,.03)}
+.mc-a{color:#8894A6;font-size:12px}.mc-a.on{color:var(--ind);font-weight:700}
+/* evolución */
+.qc-evs{display:grid;grid-template-columns:repeat(auto-fit,minmax(252px,1fr));gap:12px;margin-bottom:14px}
+.qc-ev{border:1px solid var(--bd);border-radius:8px;padding:15px 16px;background:var(--sf)}
+.qc-ev .ev-l{font-size:12.5px;font-weight:700;margin-bottom:13px;overflow-wrap:normal;word-break:keep-all}
+.qc-cap{font-size:11px;color:var(--tx2);line-height:1.5;margin:0 0 12px;font-style:italic}.qc-cap b{color:var(--tx);font-style:normal}
+.qc-ev .ev-r{display:flex;align-items:center;gap:10px}
+.qc-ev .ev-yr{display:flex;flex-direction:column;gap:1px}
+.qc-ev .ev-yr .ev-y{font-family:ui-monospace,monospace;font-size:9px;color:var(--tx2);letter-spacing:.05em}
+.qc-ev .ev-yr b{font-family:Georgia,serif;font-size:25px;line-height:1}
+.qc-ev .ev-ar{color:var(--law);font-size:17px}
+.qc-ev .ev-d{margin-left:auto;font-family:ui-monospace,monospace;font-size:12px;font-weight:700;border:1px solid;border-radius:12px;padding:2px 9px;white-space:nowrap}
+@media(max-width:720px){.qc-evs{grid-template-columns:1fr}}
+.qc-ev-h{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--tx2);margin:2px 0 8px}
+.qc-evt{width:100%;border-collapse:collapse;font-size:11.5px}
+.qc-evt th{text-align:left;font-family:ui-monospace,monospace;font-size:9px;letter-spacing:.05em;text-transform:uppercase;color:var(--tx2);font-weight:700;padding:4px 8px;border-bottom:1px solid var(--bd)}
+.qc-evt td{padding:5px 8px;border-bottom:1px solid rgba(255,255,255,.05);color:var(--tx2)}
+.qc-evt td:first-child{color:var(--tx)}.qc-evt td:nth-child(4){font-family:ui-monospace,monospace;font-weight:700}
+/* embudo · nota */
+.qc-fnote{margin-top:11px;padding-top:10px;border-top:1px solid var(--bd);font-size:11px;color:var(--tx2);line-height:1.5}
+.qc-fnote b{color:var(--tx)}
+/* biografía del dato (interoperabilidad · la tesis · UNA sola línea) */
+.qc-bio{display:flex;flex-wrap:nowrap;align-items:stretch;justify-content:center;gap:2px 0;margin:4px 0;overflow-x:auto;padding-bottom:3px}
+.bio-n{min-width:110px;flex:1 0 auto;max-width:158px;text-align:center;padding:11px 6px;border:1px solid var(--bd);border-radius:7px;background:var(--sf)}
+.bio-n .bn{font-family:Georgia,serif;font-size:14px;font-weight:600;color:var(--tx)}
+.bio-n .bc{font-family:ui-monospace,monospace;font-size:9.5px;color:var(--law);margin-top:2px;letter-spacing:.02em}
+.bio-n .bs{font-size:9px;color:var(--tx2);margin-top:3px;line-height:1.25}
+.bio-n.last{border-color:var(--ind);background:rgba(30,142,62,.1)}.bio-n.last .bn{color:var(--ind)}
+.bio-a{display:flex;align-items:center;color:var(--law);font-size:14px;padding:0 3px;flex:none}
+/* hallazgos calculados */
+.qc-hzs{display:flex;flex-direction:column;gap:9px}
+.qc-hz{display:flex;gap:12px;align-items:flex-start;padding:11px 13px;border:1px solid var(--bd);border-left-width:3px;border-radius:6px;background:var(--sf)}
+.qc-hz .hz-n{font-family:Georgia,serif;font-size:15px;font-weight:700;border:1.5px solid;border-radius:5px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;flex:none}
+.qc-hz .hz-t{font-size:13px;font-weight:700;color:var(--tx);margin-bottom:2px}
+.qc-hz .hz-d{font-size:11.5px;color:var(--tx2);line-height:1.5}
+/* valor demostrativo (expedientes) */
+.qc-vd{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:6px 11px;background:rgba(255,255,255,.02);border-bottom:1px solid var(--bd)}
+.qc-vd-s{font-family:ui-monospace,monospace;font-size:9px;letter-spacing:.03em;text-transform:uppercase;color:var(--tx2)}
+.qc-vd-s b{font-family:Georgia,serif;font-size:15px;color:var(--tx);margin-left:3px}
+.qc-bdg{font-size:8.5px;color:var(--tx2);border:1px solid var(--bd);border-radius:10px;padding:1px 7px;white-space:nowrap}
+/* perfil evolutivo */
+.qc-pfs{display:flex;flex-direction:column;gap:6px}
+.qc-pf{display:flex;align-items:center;gap:10px}
+.qc-pf .pf-l{width:100px;text-align:right;font-size:11.5px;color:var(--tx);flex:none}
+.qc-pf .pf-track{flex:1;height:11px;background:rgba(255,255,255,.04);border-radius:2px}
+.qc-pf .pf-bar{height:11px;border-radius:2px;background:var(--ind);min-width:2px}
+.qc-pf .pf-v{width:36px;font-family:ui-monospace,monospace;font-size:11px;color:var(--tx);flex:none}
+.qc-pf .pf-d{width:46px;font-family:ui-monospace,monospace;font-size:10.5px;font-weight:700;flex:none}
+/* la rendición en el tiempo (intro) */
+.qc-serie{width:100%;border-collapse:collapse;font-size:12px;margin:4px 0 6px}
+.qc-serie th{text-align:left;font-family:ui-monospace,monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--tx2);font-weight:700;padding:6px 10px;border-bottom:1px solid var(--bd)}
+.qc-serie td{padding:7px 10px;border-bottom:1px solid rgba(255,255,255,.05);color:var(--tx2)}
+.qc-serie td:first-child{color:var(--tx);font-weight:600}
+.qc-serie .num{text-align:right;font-family:ui-monospace,monospace}
+.qc-att-h{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--tx2);margin:16px 0 8px}
+.qc-atts{display:flex;align-items:flex-end;gap:24px;justify-content:center;padding:6px 0 2px}
+.qc-att{display:flex;flex-direction:column;align-items:center;gap:5px;min-width:60px}
+.qc-att-bar{width:50px;background:linear-gradient(180deg,#3AA6D6,#1A73E8);border-radius:3px 3px 0 0}
+.qc-att-n{font-family:Georgia,serif;font-size:16px;font-weight:700;color:var(--tx)}
+.qc-att-y{font-family:ui-monospace,monospace;font-size:10px;color:var(--tx2)}
+.qc-tbl-wrap{max-height:340px;overflow-y:auto;border:1px solid var(--bd);border-radius:7px;margin-top:4px}
+.qc-tbl-wrap .qc-serie{margin:0}
+.qc-tbl-wrap .qc-serie th{position:sticky;top:0;background:#141b28;z-index:1}
+.qc-tbl-wrap .qc-serie td:nth-child(2){color:var(--tx2)}
+/* implicaciones */
+.qc-impl{margin-top:16px;padding:14px 16px;border:1px solid var(--bd);border-left:3px solid var(--law);border-radius:7px;background:var(--sf)}
+.qc-impl-t{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--law);font-weight:700;margin-bottom:6px}
+.qc-impl-b{font-family:Georgia,serif;font-size:14px;line-height:1.55;color:var(--tx)}
+/* síntesis + placa */
+.qc-sint{margin:30px 0 0;border:1.5px solid var(--ind);border-radius:7px;overflow:hidden}
+.qc-sint-lbl{font-family:Georgia,serif;font-size:16px;font-weight:700;background:rgba(30,142,62,.14);color:var(--ind);padding:12px 18px;border-bottom:1px solid rgba(30,142,62,.35)}
+.qc-sint-b{padding:16px 18px}
+.qc-sr{display:flex;gap:12px;margin-bottom:8px;font-size:13px}.qc-sr b{flex:none;width:70px;font-weight:700}.qc-sr span{color:var(--tx2)}
+.qc-fuente{font-family:ui-monospace,monospace;font-size:10px;color:var(--tx2);margin-top:12px;line-height:1.6}
+.qc-placa{margin:20px 26px 24px;padding:20px;border:1px solid var(--bd);border-radius:5px;text-align:center;background:var(--sf)}
+.qc-placa-q{font-family:Georgia,serif;font-size:18px;font-weight:600;line-height:1.4;color:var(--tx)}
+.qc-placa-s{font-size:12px;color:var(--tx2);margin-top:9px}
+@media(max-width:640px){.qc-exps,.qc-evs{grid-template-columns:1fr}.qc-lbl{width:150px}}
+
+/* color propio del DOM Planificación (cada DOM es un universo · Javo 2026-07-10) — cian vivo sobre fondo oscuro */
+.qc{border-top-color:#22D3EE}
+.qc-hn{color:#22D3EE}
+.qc-q{border-left-color:#22D3EE}
+.qc-princ{background:rgba(34,211,238,.07);border-color:rgba(34,211,238,.28)}
+.qc-princ .t{color:#22D3EE}
+.qc-blk.out{border-color:#22D3EE;background:rgba(34,211,238,.1)}.qc-blk.out .bl{color:#22D3EE}
+.qc-sint{border-color:#22D3EE}
+.qc-sint-lbl{background:rgba(34,211,238,.13);color:#22D3EE;border-color:rgba(34,211,238,.32)}
+.qc-sr-cierre{font-family:Georgia,serif;font-size:13.5px;line-height:1.55;color:var(--tx);margin-top:13px;padding-top:12px;border-top:1px solid var(--bd)}.qc-sr-cierre b{color:#fff}
+.pl-strip{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 2px}
+.pl-si{flex:1 1 120px;border:1px solid var(--bd);border-radius:6px;padding:9px 11px;background:var(--sf)}
+.pl-si .k{font-family:ui-monospace,monospace;font-size:8.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--tx2);font-weight:700}
+.pl-si .v{font-family:Georgia,serif;font-size:18px;font-weight:700;color:var(--tx);margin-top:2px}
+.pl-si .s{font-size:9.5px;color:var(--tx2);margin-top:1px}
+.pl-sat{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.pl-satc{border:1px solid var(--bd);border-left-width:3px;border-radius:7px;padding:12px 14px;background:var(--sf)}
+.pl-satc .st{font-size:12.5px;font-weight:700;color:var(--tx);margin-bottom:3px}
+.pl-satc .sd{font-size:11.5px;color:var(--tx2);line-height:1.5}
+.pl-satc .sv{font-family:ui-monospace,monospace;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;float:right}
+@media(max-width:640px){.pl-sat{grid-template-columns:1fr}}
+</style>
+<section class="qc">
+  <div class="qc-hd">
+    <div class="qc-ey">QUIRA · Observatorio de Integridad Territorial · Municipio 001</div>
+    <div class="qc-idea">Planificación Estratégica</div>
+    <div class="qc-q">¿El cantón mantiene el rumbo hacia sus metas plurianuales, o se desvió en el camino?</div>
+  </div>
+  <div class="qc-princ"><span class="t">Principio metodológico</span>
+    QUIRA mide la <b>consistencia de la cadena que va del plan al gasto</b>: PDOT → POA → PRESUPUESTO → PAC →
+    EJECUCIÓN. No certifica intenciones: verifica que cada eslabón <b>sostenga documentalmente</b> al siguiente.
+    Un eslabón roto es una <b>brecha</b>, nunca una inferencia.
+    <details class="qc-law"><summary>📖 Fundamento del dominio (Planificación)</summary><span class="qc-lawc">CE Art. 241, 262-267</span><span class="qc-lawc">COPLAFIP Art. 12, 15, 41-44, 47-48</span><span class="qc-lawc">COOTAD Art. 41, 54, 64, 295</span><span class="qc-lawc">LOTUGS Art. 10-11</span></details>
+  </div>
+  <div class="qc-body">
+    <div class="qc-sec "><div class="qc-h"><span class="qc-hn">01</span><span class="qc-ht">El procedimiento · del plan al gasto</span></div><p class="qc-p">La <b>planificación</b> no es un documento: es una <b>cadena</b> que debe sostenerse del plan al gasto. QUIRA sigue la <b>biografía del plan</b> a través de los sistemas del Estado —cada eslabón debe respaldar al siguiente—. Si la meta no baja al POA, o el POA no tiene presupuesto, o el presupuesto no se contrata, la cadena se rompe: eso es una <b>brecha documentada</b>, no una inferencia.</p><div class="qc-pipe"><div class="qc-blk src"><div class="bl">PDOT</div><div class="bsys">el plan</div><div class="bq">¿qué se comprometió?</div></div><div class="qc-conn"><div class="aw">→</div></div><div class="qc-blk "><div class="bl">POA</div><div class="bsys">la operación</div><div class="bq">¿se programó?</div></div><div class="qc-conn"><div class="aw">→</div></div><div class="qc-blk "><div class="bl">Presupuesto</div><div class="bsys">el recurso</div><div class="bq">¿se asignó?</div></div><div class="qc-conn"><div class="aw">→</div></div><div class="qc-blk "><div class="bl">PAC</div><div class="bsys">la contratación</div><div class="bq">¿se contrató?</div></div><div class="qc-conn"><div class="aw">→</div></div><div class="qc-blk out"><div class="bl">Ejecución</div><div class="bsys">el gasto</div><div class="bq">¿se ejecutó?</div></div></div><div class="pl-strip"><div class="pl-si"><div class="k">PDOT</div><div class="v">25 metas</div><div class="s">2023-2027</div></div><div class="pl-si"><div class="k">POA</div><div class="v">257 proyectos</div><div class="s">operación anual</div></div><div class="pl-si"><div class="k">Presupuesto</div><div class="v">$30.3M</div><div class="s">codificado inversión</div></div><div class="pl-si"><div class="k">PAC</div><div class="v">$29.9M</div><div class="s">27 procesos</div></div><div class="pl-si"><div class="k">Ejecución</div><div class="v">$1.9M</div><div class="s">6.4% al corte</div></div></div><details class="qc-law"><summary>📖 Fundamento jurídico aplicable</summary><span class="qc-lawc">COOTAD Art. 233, 235, 295</span><span class="qc-lawc">COPLAFIP Art. 4, 100</span></details></div>
+    <div class="qc-sec "><div class="qc-h"><span class="qc-hn">02</span><span class="qc-ht">El plan y su cobertura</span></div><p class="qc-p">El plan cantonal fija <b>25 metas</b> plurianuales (PDOT 2023-2027). El primer eslabón de la trazabilidad es cuántas <b>bajan a la operación</b> anual (POA):</p><div class="qc-embudo"><div class="qc-fhead"><span><b>25</b> metas del plan</span><span class="ar">→</span><span><b>24</b> con proyectos en el POA (<b>96%</b>)</span></div><div class="qc-fbar"><div class="qc-fseg" style="flex:6;background:#1E8E3E"></div><div class="qc-fseg" style="flex:2;background:#1A73E8"></div><div class="qc-fseg" style="flex:14;background:#6BA6C9"></div><div class="qc-fseg" style="flex:3;background:#8B7BD8"></div></div><div class="qc-fchips"><div class="qc-fchip"><span class="d" style="background:#1E8E3E"></span><b>6</b> Exclusiva Crítica</div><div class="qc-fchip"><span class="d" style="background:#1A73E8"></span><b>2</b> Concurrente Crítica</div><div class="qc-fchip"><span class="d" style="background:#6BA6C9"></span><b>14</b> Exclusiva Importante</div><div class="qc-fchip"><span class="d" style="background:#8B7BD8"></span><b>3</b> Concurrente</div></div><div class="qc-fnote">Distribución de las metas por <b>competencia</b>: exclusiva, concurrente y de articulación. La cobertura mide el aterrizaje del plan en la operación, no su ejecución final.</div></div><details class="qc-law"><summary>📖 Fundamento jurídico aplicable</summary><span class="qc-lawc">CE Art. 271, 292</span><span class="qc-lawc">COOTAD Art. 215, 224-231, 233-245, 295</span><span class="qc-lawc">COPLAFIP Art. 73, 97-101, 115, 124</span></details></div>
+    <div class="qc-sec "><div class="qc-h"><span class="qc-hn">03</span><span class="qc-ht">La trazabilidad · metas del plan</span></div><p class="qc-p">Cada expediente es la <b>biografía de una meta</b>: su recorrido desde el plan hasta el gasto, y hasta dónde llega la cadena documental.</p><p class="qc-cap">No se eligen al azar: se muestran las metas de mayor <b>Valor Demostrativo</b> —el puntaje (0-100) que resume cuánto demuestra el método cada expediente: profundidad de la cadena documental, peso presupuestario y tipo de competencia. A mayor puntaje, más completa y probatoria es la trazabilidad.</p><div class="qc-exps"><div class="qc-exp"><div class="qc-exp-top"><span class="qc-exp-id">EXPEDIENTE · meta del plan · AH-I-X-02</span><span class="qc-stamp" style="color:#1E8E3E;border-color:#1E8E3E">Trazable · completa</span></div><div class="qc-vd"><span class="qc-vd-s">Valor demostrativo <b>100</b></span><span class="qc-bdg">Cadena completa</span><span class="qc-bdg">35 proyectos POA</span><span class="qc-bdg">$3.7M</span></div><div class="qc-exp-b"><div class="qc-kv"><span class="k">Meta</span><span class="v">"Vialidad cantonal: mantenimiento 43.8 km vías CUP + 57.22 km rurales; 23.77 km tratamiento medi"</span></div><div class="qc-kv"><span class="k">Dirección</span><span class="v">Obras Públicas y Fiscalización</span></div><div class="qc-kv"><span class="k">Resultado</span><span class="v"><b>35 proyecto(s) en el POA · $3.7M programado · alerta: Coherente</b></span></div><div class="qc-mc"><span class="mc-t">Trazabilidad de la meta</span><div class="mc-row"><span class="mc-n on">PDOT</span><span class="mc-a on">→</span><span class="mc-n on">POA</span><span class="mc-a on">→</span><span class="mc-n on">Presupuesto</span><span class="mc-a on">→</span><span class="mc-n on">PAC</span></div></div></div></div><div class="qc-exp"><div class="qc-exp-top"><span class="qc-exp-id">EXPEDIENTE · meta del plan · SC-I-N-01</span><span class="qc-stamp" style="color:#1A73E8;border-color:#1A73E8">Con presupuesto</span></div><div class="qc-vd"><span class="qc-vd-s">Valor demostrativo <b>82</b></span><span class="qc-bdg">Con presupuesto</span><span class="qc-bdg">29 proyectos POA</span><span class="qc-bdg">$1.2M</span></div><div class="qc-exp-b"><div class="qc-kv"><span class="k">Meta</span><span class="v">"Agua potable: cobertura 39.25%→42.38%; calidad 100% INEN 1108; infraestructura BUENA 22.74%→41."</span></div><div class="qc-kv"><span class="k">Dirección</span><span class="v">Agua Potable y Alcantarillado Sanitario</span></div><div class="qc-kv"><span class="k">Resultado</span><span class="v"><b>29 proyecto(s) en el POA · $1.2M programado</b></span></div><div class="qc-mc"><span class="mc-t">Trazabilidad de la meta</span><div class="mc-row"><span class="mc-n on">PDOT</span><span class="mc-a on">→</span><span class="mc-n on">POA</span><span class="mc-a on">→</span><span class="mc-n on">Presupuesto</span><span class="mc-a ">→</span><span class="mc-n off">PAC</span></div></div></div></div><div class="qc-exp"><div class="qc-exp-top"><span class="qc-exp-id">EXPEDIENTE · meta del plan · AH-I-X-03</span><span class="qc-stamp" style="color:#9AA0A6;border-color:#9AA0A6">Sin bajar al POA</span></div><div class="qc-vd"><span class="qc-vd-s">Valor demostrativo <b>28</b></span><span class="qc-bdg">Solo en el plan</span></div><div class="qc-exp-b"><div class="qc-kv"><span class="k">Meta</span><span class="v">"Salud integral municipal: población atendida 57,401→84,041 personas (+10% anual)"</span></div><div class="qc-kv"><span class="k">Dirección</span><span class="v">Patronato Municipal de Montecristi</span></div><div class="qc-kv"><span class="k">Resultado</span><span class="v"><b>La meta consta en el plan pero no se localizó proyecto operativo en el POA.</b></span></div><div class="qc-mc"><span class="mc-t">Trazabilidad de la meta</span><div class="mc-row"><span class="mc-n on">PDOT</span><span class="mc-a ">→</span><span class="mc-n off">POA</span><span class="mc-a ">→</span><span class="mc-n off">Presupuesto</span><span class="mc-a ">→</span><span class="mc-n off">PAC</span></div></div></div></div><div class="qc-exp"><div class="qc-exp-top"><span class="qc-exp-id">EXPEDIENTE · meta del plan · SC-L-N-02</span><span class="qc-stamp" style="color:#1A73E8;border-color:#1A73E8">Con presupuesto</span></div><div class="qc-vd"><span class="qc-vd-s">Valor demostrativo <b>82</b></span><span class="qc-bdg">Con presupuesto</span><span class="qc-bdg">42 proyectos POA</span><span class="qc-bdg">$12.6M</span></div><div class="qc-exp-b"><div class="qc-kv"><span class="k">Meta</span><span class="v">"Gestión del talento humano municipal: desempeño 80%→90%; plan capacitación 90% anual"</span></div><div class="qc-kv"><span class="k">Dirección</span><span class="v">Talento Humano</span></div><div class="qc-kv"><span class="k">Resultado</span><span class="v"><b>42 proyecto(s) en el POA · $12.6M programado</b></span></div><div class="qc-mc"><span class="mc-t">Trazabilidad de la meta</span><div class="mc-row"><span class="mc-n on">PDOT</span><span class="mc-a on">→</span><span class="mc-n on">POA</span><span class="mc-a on">→</span><span class="mc-n on">Presupuesto</span><span class="mc-a ">→</span><span class="mc-n off">PAC</span></div></div></div></div></div><details class="qc-law"><summary>📖 Fundamento jurídico aplicable</summary><span class="qc-lawc">LOSNCP Art. 22</span><span class="qc-lawc">Regl. LOSNCP Art. 43, 45, 64</span></details></div>
+    <div class="qc-sec "><div class="qc-h"><span class="qc-hn">04</span><span class="qc-ht">La coherencia · análisis preventivo</span></div><p class="qc-p">Más allá de la trazabilidad, QUIRA corre un <b>análisis preventivo</b> sobre la contratación: cuatro motores que leen la coherencia entre lo planificado, lo presupuestado y lo que se contrata, para detectar desvíos <b>antes</b> de que se vuelvan brecha.</p><div class="pl-sat"><div class="pl-satc" style="border-left-color:#9AA0A6"><div class="st">Brecha POA-PAC<span class="sv" style="color:#9AA0A6">Sin datos</span></div></div><div class="pl-satc" style="border-left-color:#1E8E3E"><div class="st">Downcoding contractual<span class="sv" style="color:#1E8E3E">Sin downcoding</span></div></div><div class="pl-satc" style="border-left-color:#F9AB00"><div class="st">Monto mínimo<span class="sv" style="color:#F9AB00">Procesos bajo monto mínimo</span></div></div><div class="pl-satc" style="border-left-color:#1E8E3E"><div class="st">Reloj de evidencia<span class="sv" style="color:#1E8E3E">Evidencia en plazo — 4 proceso(s) verificados</span></div></div></div><div class="qc-impl" style="margin-top:14px"><div class="qc-impl-t">Diagnóstico · SAT-0 ACTIVO — Revisar coherencia POA-PAC</div><div class="qc-impl-b">Detectada brecha entre programación operativa y plan de contratación. Revisar alineación POA-PAC para fortalecer la ejecución del plan anual.</div></div><details class="qc-law"><summary>📖 Fundamento jurídico aplicable</summary><span class="qc-lawc">COOTAD Art. 238</span></details></div>
+    <div class="qc-sec "><div class="qc-h"><span class="qc-hn">05</span><span class="qc-ht">La evaluación · hallazgos e implicaciones</span></div><p class="qc-p">Interpretación del dato —no una descripción—: el patrón que revela el análisis, y qué significa.</p><div class="qc-hzs"><div class="qc-hz" style="border-left-color:#1E8E3E"><div class="hz-n" style="color:#1E8E3E;border-color:#1E8E3E">01</div><div class="hz-b"><div class="hz-t">Cobertura del plan en la operación</div><div class="hz-d">El 96% de las 25 metas del PDOT baja a proyectos operativos en el POA: el plan aterriza en la gestión.</div></div></div><div class="qc-hz" style="border-left-color:#1A73E8"><div class="hz-n" style="color:#1A73E8;border-color:#1A73E8">02</div><div class="hz-b"><div class="hz-t">Gasto vinculado al plan</div><div class="hz-d">El 96% del gasto ejecutado está vinculado a objetivos del PDOT; el resto responde a operación no planificada en el plan de desarrollo.</div></div></div><div class="qc-hz" style="border-left-color:#1A73E8"><div class="hz-n" style="color:#1A73E8;border-color:#1A73E8">03</div><div class="hz-b"><div class="hz-t">Ejecución al corte</div><div class="hz-d">Al corte Abril 2026 (Ene-Abr), la ejecución presupuestaria de inversión alcanza el 6.4%: el ritmo del gasto frente al riesgo de subejecución.</div></div></div><div class="qc-hz" style="border-left-color:#F9AB00"><div class="hz-n" style="color:#F9AB00;border-color:#F9AB00">04</div><div class="hz-b"><div class="hz-t">Lo planificado ya en SERCOP</div><div class="hz-d">Solo el 4% del plan de contratación (PAC) aparece publicado en SERCOP al corte: la brecha entre lo planificado y lo que ya está en el mercado público.</div></div></div></div><div class="qc-impl"><div class="qc-impl-t">Implicaciones</div><div class="qc-impl-b">La evidencia indica que Montecristi conserva una <b>alta consistencia entre la planificación estratégica y la operación institucional</b>: el 96% de las metas del PDOT desciende al POA y el 96% del gasto ejecutado se vincula a los objetivos del plan de desarrollo. La <b>brecha del período no reside en la formulación</b> del plan, sino en la <b>velocidad con que la contratación transforma esa planificación en ejecución presupuestaria</b>: al corte, la inversión devengada alcanza apenas el 6%.</div></div></div>
+    <div class="qc-sint"><div class="qc-sint-lbl">Síntesis ejecutiva del dominio — Planificación · Montecristi · corte Abril 2026 (Ene-Abr)</div><div class="qc-sint-b"><div class="qc-sr"><b style="color:#1E8E3E">96%</b><span>de las metas del plan bajan a proyectos operativos (POA).</span></div><div class="qc-sr"><b style="color:#1A73E8">96%</b><span>del gasto ejecutado está vinculado a los objetivos del PDOT.</span></div><div class="qc-sr"><b style="color:#F9AB00">6.4%</b><span>de ejecución de inversión al corte del período.</span></div><div class="qc-sr-cierre">En conjunto, la evidencia indica que Montecristi conserva <b>alta consistencia entre la planificación estratégica y la operación institucional</b>. La principal brecha del período no reside en la formulación del plan, sino en la <b>velocidad con que la contratación transforma esa planificación en ejecución presupuestaria</b>.</div><div class="qc-fuente">Fuentes: PDOT 2023-2027 · POA · Presupuesto (cédula) · PAC · SERCOP · IPE.</div></div></div>
+  </div>
+  <div class="qc-placa"><div class="qc-placa-q">QUIRA no certifica la verdad. Certifica la consistencia<br>documental de la cadena del plan al gasto.</div>
+    <div class="qc-placa-s">Una cadena rota es un resultado del análisis documental, nunca una acusación.</div>
+  </div>
+</section>

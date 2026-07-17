@@ -66,23 +66,58 @@ REGLAS = [
      "nombre": "Ejecución mínima de la meta",
      "condicion": "ninguna meta debe ejecutar menos del 10% de lo asignado",
      "sat": "Parálisis presupuestaria", "kw": "%devengad%"},
-    {"norma": "COOTAD", "art": "192", "tipo": "limite", "dom": "d02",
-     "nombre": "Inversión mínima frente al gasto corriente",
-     "condicion": "la inversión no debe caer bajo el 65% del presupuesto",
-     "sat": "Alerta fiscal · estructura COOTAD", "kw": "%inversión%"},
+    # CORRECCIÓN (2026-07-16): el director acusó a esta regla de citar el artículo equivocado.
+    # SE EQUIVOCÓ ÉL, no el canon. El 65% SÍ existe: es la REGLA DE ASIGNACIÓN MÍNIMA
+    # PRIORITARIA que introduce la reforma COOTAD de feb-2026 (COOTAD-2026):
+    #   Art. 4 → agrega el 198.1 "Regla de asignación mínima prioritaria"
+    #   Art. 3 → sustituye el 192: el 21% de transferencias aplica SI se cumple el 198.1;
+    #            si no, se cae a los porcentajes del Art. 271 de la Constitución
+    #   Art. 7 → agrega el 198.6: el incumplimiento se informa a la CONTRALORÍA
+    #   Transitoria 1ª → el umbral es 65%, con seguimiento desde el 1-dic-2026
+    # El Gold Master no estaba errado: estaba ADELANTADO (SAT_IV_Activa en espera de la reforma).
+    # Lección, por tercera vez: revisar el corpus no basta — hay que revisar el documento correcto.
+    {"norma": "COOTAD-2026", "art": "4", "tipo": "limite", "dom": "d02",
+     "nombre": "Regla de asignación mínima prioritaria (65%)",
+     "condicion": "el GAD debe cumplir la regla de asignación mínima prioritaria del 65%; su "
+                  "incumplimiento reduce sus transferencias a los porcentajes del Art. 271 CE",
+     "sat": "Alerta fiscal · estructura COOTAD", "kw": "%asignación mínima prioritaria%"},
+    {"norma": "COOTAD-2026", "art": "3", "tipo": "limite", "dom": "d02",
+     "nombre": "Transferencias condicionadas al cumplimiento de la regla",
+     "condicion": "el 21% de ingresos permanentes aplica solo si se cumple la regla del 198.1",
+     "sat": "", "kw": "%monto total a transferir%"},
+    {"norma": "COOTAD-2026", "art": "7", "tipo": "obligacion", "dom": "d02",
+     "nombre": "Consecuencia del incumplimiento — informe a Contraloría",
+     "condicion": "incumplida la regla, el ente rector aplica el Art. 271 CE e informa a la "
+                  "Contraloría General del Estado",
+     "sat": "", "kw": "%incumplimiento de la regla%"},
     # ── mandato electoral · la cadena que d03 verifica ────────────────────────
+    {"norma": "CE", "art": "112", "tipo": "obligacion", "dom": "d03",
+     "nombre": "Programa de gobierno al inscribir la candidatura",
+     "condicion": "quienes postulen su candidatura presentarán su programa de gobierno o sus "
+                  "propuestas (concordancia: Código de la Democracia Arts. 93-95)",
+     "sat": "", "kw": "%programa de gobierno%"},
     {"norma": "COD", "art": "97", "tipo": "obligacion", "dom": "d03",
      "nombre": "Plan de Trabajo ante el CNE",
      "condicion": "todo candidato debe inscribir su Plan de Trabajo al presentar la candidatura",
      "sat": "", "kw": "%plan de trabajo%"},
-    {"norma": "COPLAFIP", "art": "34", "tipo": "obligacion", "dom": "d03",
-     "nombre": "Traducción del mandato al plan",
-     "condicion": "el plan local debe recoger las propuestas que justificaron la elección",
-     "sat": "", "kw": "%plan de desarrollo%"},
+    # CORRECCIÓN (2026-07-16): el COPLAFIP Art. 34 NO es "el plan local recoge las propuestas de
+    # la elección" — su texto real es "Plan Nacional de Desarrollo: máxima directriz política".
+    # Esa cita venía del marco legal y el director la repitió sin leer el artículo. La obligación
+    # de planificar del GAD sí existe, pero en los Art. 12, 41 y 42 (todos verificados).
+    {"norma": "COPLAFIP", "art": "12", "tipo": "obligacion", "dom": "d01",
+     "nombre": "Planificación de los GAD",
+     "condicion": "la planificación del desarrollo y el ordenamiento territorial es competencia "
+                  "de los gobiernos autónomos descentralizados",
+     "sat": "", "kw": "%planificación de los gobiernos%"},
     {"norma": "COPLAFIP", "art": "41", "tipo": "obligacion", "dom": "d03",
-     "nombre": "Formulación del plan de desarrollo",
-     "condicion": "el GAD debe formular o actualizar su plan al inicio de la gestión",
-     "sat": "", "kw": "%formular%"},
+     "nombre": "Planes de desarrollo del GAD",
+     "condicion": "los planes de desarrollo son las directrices principales del GAD sobre las "
+                  "decisiones estratégicas en el territorio",
+     "sat": "", "kw": "%planes de desarrollo%"},
+    {"norma": "COPLAFIP", "art": "42", "tipo": "obligacion", "dom": "d03",
+     "nombre": "Contenidos mínimos del plan de desarrollo",
+     "condicion": "el plan del GAD debe contener los contenidos mínimos que fija la norma",
+     "sat": "", "kw": "%contenidos mínimos%"},
     {"norma": "LOPC", "art": "89", "tipo": "plazo", "dom": "d09",
      "nombre": "Rendición de cuentas anual",
      "condicion": "la rendición se realiza cada año frente al Plan de Trabajo del CNE",
@@ -144,6 +179,13 @@ def main() -> int:
             sin_verificar.append(f'{r["norma"]} Art. {r["art"]}')
             continue
         sha, cont = (row[0] or "")[:16], re.sub(r"\s+", " ", row[1] or "").strip()
+        # CONTROL DE CONCORDANCIA (2026-07-16): que el artículo exista y tenga sha NO basta —
+        # el sha puede probar el ARTÍCULO EQUIVOCADO. Eso es lo que pasó con "COOTAD 192 = 65%":
+        # la cita parecía verificada y no lo estaba. Aquí se exige que la palabra clave de la
+        # regla aparezca EN EL TEXTO del artículo. Si no aparece, la regla se marca para revisión
+        # humana en vez de publicarse como si estuviera probada.
+        kw_limpia = r["kw"].strip("%").lower()
+        concuerda = kw_limpia in cont.lower() if kw_limpia else True
         m = re.match(r"Art\.\s*[\d.]+\.-\s*([^.\-]{3,70})", cont)
         tipo_lbl, satizable, _ = TIPOS[r["tipo"]]
         catalogo.append({
