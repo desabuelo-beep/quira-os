@@ -76,6 +76,28 @@ CNO-IV-001 · Regla de Asignación Mínima Prioritaria
 **Consultar una CNO obliga a recorrer toda su cadena.** Ninguna IA —ni ningún humano— podrá citar
 un artículo aislado creyendo que entendió la regla.
 
+### 1b. Entre la CNO y la SAT va la REGLA OPERATIVA (aporte del colega · 2026-07-17)
+Una CNO **todavía es Derecho**; una SAT **ya es control**. Falta la pieza que traduce una en
+otra sin mezclarlas. Cuatro niveles, no tres:
+```
+Nivel 0 · Corpus          → el texto oficial (SHA)
+Nivel 1 · CNO             → la cadena normativa completa           [ esto ES Derecho ]
+Nivel 2 · Regla Operativa → variable · umbral · periodo · consecuencia   [ esto ya es lógica ]
+Nivel 3 · SAT             → solo MIDE (consume la RO)
+```
+**Ejemplo (el 65%):** `CNO-IV-001` describe la cadena `CE 271 → COOTAD 192/198.1-6 → Transitoria`
+—y ahí se detiene, es Derecho—. `RO-IV-001` dice *variable* `Pct_Gasto_No_Permanente` · *umbral*
+`65%` · *periodo* jun-dic 2026 · *consecuencia* `SAT-IV-001`. La SAT solo mide.
+
+**Por qué desacopla frente a reformas** (la ventaja real):
+- cambia el **umbral** (65→70%) → cambia solo la **RO**; CNO, SAT y Gold Master intactos.
+- cambia la **cadena** (nuevo artículo) → cambia solo la **CNO**; RO y SAT intactas.
+- La lógica de negocio deja de dispersarse por el ecosistema: vive en un único nivel.
+
+**Salvaguarda (director · Regla 3):** la RO **nace de la CNO**, y la CNO **apunta al Corpus con
+SHA**. La BRN modela el Estado, pero **no crea obligación que no esté en el texto verificado**.
+Modelar no es inventar.
+
 ### 2. La relación cambia: `Ley → BRN → SAT` (antes `Ley → SAT`)
 Hoy la SAT lleva su fundamento jurídico escrito adentro (y por eso hereda lecturas parciales).
 En v2, **la SAT ya no conoce la ley**: lleva **solo el ID de la CNO** que consume.
@@ -134,10 +156,14 @@ aparece. La v1 (catálogo de artículos · commit `e003a7d`) queda **superada**.
 
 **Orden de trabajo (corregido por el colega — el MOLDE antes que el piloto):**
 1. Ratificar este ADR.
-2. **Definir el MOLDE de una CNO** (identificador · nombre · estado · vigencia · cadena normativa ·
-   variables · procedimientos · metodologías · SAT consumidoras · DOM consumidores · evidencias ·
-   SHA). *Esa estructura no debe cambiar nunca:* si el molde cambia tras migrar 80 CNO, se
-   reconstruye todo. Es el error del catálogo de artículos, otra vez, pero peor.
+2. **Definir el MOLDE de la CNO y de la Regla Operativa** — y antes de una línea de código,
+   responder las **7 preguntas de diseño** (colega) que deben tener respuesta estable:
+   *(a)* qué es exactamente una CNO · *(b)* qué información mínima contiene · *(c)* cómo referencia
+   al Corpus (SHA por eslabón) · *(d)* cómo una SAT referencia su RO · *(e)* cómo QUIRA IA consulta
+   una CNO · *(f)* cómo se versiona una CNO/RO cuando cambia una norma · *(g)* qué ocurre si una
+   reforma afecta a 12 SAT distintas.
+   *El molde no debe cambiar nunca:* si cambia tras migrar 80 CNO, se reconstruye todo — el error
+   del catálogo de artículos, otra vez y peor.
 3. Inventariar la norma nacional en el corpus y subir lo que falta (todo lo que genera obligación
    operativa · §4).
 4. Migrar la **CNO-IV-001** (asignación mínima prioritaria) como piloto — la misma regla que rompió
