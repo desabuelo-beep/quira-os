@@ -6,7 +6,7 @@
 > reutilizables** por las SAT, los DOM y QUIRA IA, manteniendo un **único punto de verdad
 > normativa**.*
 
-**Estado:** PROPUESTO · 2026-07-17 (Javo decide · director técnico redacta · síntesis del colega) · **pendiente de ratificación**
+**Estado:** **RATIFICADO** · 2026-07-17 (Javo ratifica con los ajustes del colega aplicados · director técnico redacta)
 **Contexto de origen:** el error del "65% = COOTAD Art. 192". La BRN v1 (ADR-035) catalogaba
 **artículos aislados**; el error demostró que ese diseño es insuficiente. Javo: *"la BRN debe
 trabajar con TODA la norma nacional… crear las condiciones lógicas con las cadenas de artículos
@@ -49,9 +49,14 @@ Su **cajón** (4ª lente del frame · ADR-037) es solo su **cara de auditoría**
 `📖 Base de Reglas Normativas`: lista las CNO, su estado, vigencia, SHA, normas involucradas y
 las SAT/DOM que las consumen. **No calcula, no decide: permite auditar el cerebro.**
 
-**Consecuencia en QUIRA IA:** consulta **la BRN primero**; solo si la BRN no tiene la regla,
-baja al Corpus. Como un abogado: primero la doctrina consolidada, después abre la ley. **Con una
-salvaguarda (Regla 3 · Principio Rector):** la BRN no "sabe" — la respuesta de toda CNO **apunta
+**Consecuencia en QUIRA IA** (precisión del colega · 2026-07-17): consulta **la RO/CNO primero**
+y responde con ella. Baja al Corpus **no porque no encontró la regla, sino porque necesita
+PROBARLA**:
+```
+QUIRA IA → RO vigente → responde → (¿justificar?) → abre la CNO → (¿probar?) → abre el Corpus (SHA)
+```
+Como un abogado: aplica la doctrina consolidada, cita la cadena para justificar, abre la ley para
+demostrar. **Salvaguarda (Regla 3 · Principio Rector):** la BRN no "sabe" — toda CNO **apunta
 siempre al Corpus con el SHA de cada eslabón**. El Corpus prueba; la BRN organiza el camino.
 Ninguna CNO responde sin traza al texto verificado, o sería una IA interpretando Derecho.
 
@@ -59,18 +64,19 @@ Ninguna CNO responde sin traza al texto verificado, o sería una IA interpretand
 La BRN deja de almacenar artículos. Almacena **Reglas de Negocio Públicas**, cada una como una
 **CNO**: una unidad viva que consolida toda la cadena que la sostiene. Los artículos pasan a ser
 **evidencia** de la CNO, no su objeto.
+La CNO es **puro Derecho** — la cadena y nada más (colega · 2026-07-17). NO contiene variable,
+umbral, SAT ni motor: eso es lógica, y vive en la RO (§1b). Si mañana el Ministerio cambia el
+mecanismo de medición, la CNO **no cambia**.
 ```
 CNO-IV-001 · Regla de Asignación Mínima Prioritaria
+  ├── objeto                    : la regla de asignación mínima prioritaria de los GAD
   ├── fundamento constitucional : CE Art. 271
   ├── fundamento legal          : COOTAD Art. 192 · 198.1 · 198.2 · 198.6
   ├── reforma                   : COOTAD-2026 (Arts. 3, 4, 7)
   ├── disposición               : Transitoria Primera
-  ├── metodología / procedimiento: (Min. Finanzas · seguimiento anual)   ← si está en el canon
-  ├── variable(s)               : Pct_Gasto_No_Permanente
-  ├── umbral                    : 65 %  (desde 1-dic-2026)
-  ├── dominios que la consumen  : d02
-  ├── señal que la materializa  : Alerta fiscal (Gold Master · H24_SAT-IV)
-  ├── estado                    : propuesta | vigente | derogada
+  ├── metodología / procedimiento: (Min. Finanzas)   ← eslabón normativo, si está en el canon
+  ├── estado / vigencia         : propuesta | vigente | derogada · desde/hasta
+  ├── derogaciones              : qué reemplazó, qué la reemplaza
   └── SHA256                    : de CADA eslabón de la cadena
 ```
 **Consultar una CNO obliga a recorrer toda su cadena.** Ninguna IA —ni ningún humano— podrá citar
@@ -86,8 +92,17 @@ Nivel 2 · Regla Operativa → variable · umbral · periodo · consecuencia   [
 Nivel 3 · SAT             → solo MIDE (consume la RO)
 ```
 **Ejemplo (el 65%):** `CNO-IV-001` describe la cadena `CE 271 → COOTAD 192/198.1-6 → Transitoria`
-—y ahí se detiene, es Derecho—. `RO-IV-001` dice *variable* `Pct_Gasto_No_Permanente` · *umbral*
-`65%` · *periodo* jun-dic 2026 · *consecuencia* `SAT-IV-001`. La SAT solo mide.
+—y ahí se detiene, es Derecho—. La lógica vive entera en la RO:
+```
+RO-IV-001
+  ├── deriva de   : CNO-IV-001
+  ├── variable    : Pct_Gasto_No_Permanente
+  ├── umbral      : 65 %
+  ├── periodo     : jun-dic 2026 · frecuencia mensual
+  ├── motor       : Gold Master (H24_SAT-IV)
+  ├── consecuencia: Alerta fiscal
+  └── consumida por: SAT-IV-001 · dominio d02
+```
 
 **Por qué desacopla frente a reformas** (la ventaja real):
 - cambia el **umbral** (65→70%) → cambia solo la **RO**; CNO, SAT y Gold Master intactos.
@@ -112,7 +127,8 @@ compartido** (ADR-032) llevado al plano normativo: la regla nace UNA vez, y todo
 que la necesite la **referencia**, no la recopia.
 
 ### 3. LÍMITE DURO — la BRN DESTILA, no calcula (Regla 1 + Regla 4)
-El colega la llama "Motor de Operativización Normativa": es un motor de **conocimiento**, no de
+La BRN es **infraestructura de conocimiento jurídico** (no "motor de conocimiento": el término
+sobrevive aunque en diez años no exista IA · colega 2026-07-17). Consolida conocimiento, no de
 cálculo. La CNO provee la **regla, la variable y el umbral**; el **Gold Master** (único motor)
 **computa** la señal con ese umbral. Una BRN que calculara métricas sería el motor de cálculo
 paralelo prohibido. *La BRN dice cuál es la regla vigente; el Gold Master mide si se cumple.*
@@ -129,7 +145,7 @@ paralelo prohibido. *La BRN dice cuál es la regla vigente; el Gold Master mide 
   y SHA. **No recopia texto: referencia el corpus.**
 
 ### 5. La BRN trabaja por DOMINIOS NORMATIVOS, no artículo por artículo
-No se cataloga el corpus linealmente. Se destila por **dominio normativo**:
+No se cataloga el corpus linealmente. Se **consolida** por **dominio normativo**:
 ```
 Finanzas Públicas Municipales  →  N normas · M artículos · K metodologías  →  CNO-IV-*
 Participación Ciudadana        →  …                                        →  CNO-PC-*
@@ -149,7 +165,8 @@ cadena, versionada y auditable. *(Formato y ubicación se definen al construir e
 
 ## Consecuencia práctica
 
-**Las SAT ya canonizadas son el germen, no el conflicto** (Javo). No se fusionan ni se reemplazan:
+**Las SAT ya canonizadas son el germen — y el CLIENTE NATURAL de la BRN** (Javo + colega): la BRN
+existe para que ellas no tengan que conocer Derecho. No se fusionan ni se reemplazan:
 sueltan su fundamento jurídico disperso, ese fundamento se **consolida en una CNO**, y la SAT pasa
 a **referenciarla**. Las 3 SAT financieras de d02 y la cadena del mandato de d03 son las primeras
 candidatas a migrar. **El error del 65% queda estructuralmente imposible**: la CNO-IV-001 obliga a
@@ -189,4 +206,4 @@ cómo se deroga y cómo se propaga una reforma que toca 12 SAT. Si crece, se sep
 6. Reconstruir `brn_catalogo.py` como catálogo de CNO · enlazar SAT → RO → CNO.
 
 ---
-*ADR-038 · BRN sobre Cadenas Normativas Operativas · Dylus Lab © 2026 · "El error del 65% no fue leer mal un artículo: fue creer que un artículo era una regla. La BRN no almacena Derecho: lo destila en reglas operativas verificables. La ley manda, la BRN la consolida, el Gold Master la mide, QUIRA la explica — y nadie vuelve a tomar una porción."*
+*ADR-038 · BRN sobre Cadenas Normativas Operativas · Dylus Lab © 2026 · "El error del 65% no fue leer mal un artículo: fue creer que un artículo era una regla. La BRN no interpreta el Derecho: consolida piezas dispersas en reglas operativas verificables. La ley manda, la BRN la consolida, el Gold Master la mide, QUIRA la explica — y nadie vuelve a tomar una porción."*

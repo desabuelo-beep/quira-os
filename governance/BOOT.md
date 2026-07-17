@@ -34,9 +34,10 @@ la Doctrina permanece. Hoja de Ruta = el mapa que no se mueve. BOOT §AHORA = el
 🧭 **ADR-031 RATIF:** cajón=MCD · GoldMaster=MCM · MCIP 5 motores (Index §1.A).
 🔑 **Planif✓ · RDC✓ · d02 v3✓** — 4 capacidades + SAT (Norma→Regla→Señal) + cadena inter-dominio.
 🏛️ **d03 Mandato ELECTORAL CERRADO✓ (PCD-D03)** — canon CURADO: 76 promesas reales (antes 66, 46 falsas). Coherente=True · fidelidad 79.3% · centinela ✅ · ICPI intacto. Doctrina: **IFE unidireccional** (meta sin promesa = normal, Art.264) · **la cocina NO va al DOM** (Regla 2) · **el DOM cura el canon** (Regla 8).
-✅ **4 DOM cerrados con PCD: d01 · d02 · d03 · d09** (todos al molde de d01: dictamen + evidencia qc-ev + fundamento jurídico). **Sig: BRN (ADR-035) — catalogar reglas; la IA propone, el humano valida.**
+✅ **4 DOM cerrados con PCD: d01·d02·d03·d09** (molde d01: dictamen + qc-ev + fundamento jurídico).
+📚 **ADR-038 BRN v2 RATIF:** nodo = REGLA, no artículo. 4 niveles **Corpus→CNO(Derecho)→RO(lógica)→SAT**. BRN = CAPA (no cajón) que CONSOLIDA (no interpreta). Canon legal ya en Supabase+`Normativa_Word` (43 docs · sin Lexis). **Sig: (1) ciclo de vida de una regla (2) molde CNO/RO — antes de código.**
 🩺 **Canon curado por el DOM (Regla 8):** H03 rótulo `Suma_Score_Vinculación` (48≠conteo) + conteo 64 aparte + B10 ya es fórmula + col G `Estado_Verificación`. ICPI intacto · centinela ✅. **Gate real = `python scripts/ci/check_health.py` (BOOT≤6000·CLAUDE≤4000): NO adivinar.**
-📚 **ADR-035 BRN + ADR-037 frame (RATIF):** DOM Alertas→Biblioteca de Reglas. Ley→BRN→GoldMaster (único motor)→QUIRA. **IA propone, humano valida.** Frame: **Gobierno·Territorio·Inteligencia·Norma(BRN)**; Gobierno = página propia (canon+corpus). **Sig: BRN — catalogar las reglas que YA operan (d02 SAT · d03 mandato): ID+tipo+sha.**
+📚 **ADR-035/037 (RATIF):** Ley→BRN→GoldMaster(único motor)→QUIRA · IA propone, humano valida. Frame: Gobierno(página propia)·Territorio·Inteligencia·Norma(BRN).
 🔶 **CI:** BOOT ≤6KB.
 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 ratificado · detalle en el ADR)
