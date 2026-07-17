@@ -160,12 +160,12 @@ aparece. La v1 (catálogo de artículos · commit `e003a7d`) queda **superada**.
 Construir conocimiento jurídico y **gobernarlo** son procesos distintos. Falta nombrar el segundo:
 el ciclo por el que una regla nace, vive, se audita y muere.
 ```
-norma nueva → Lexis (evidencia) → Corpus (SHA) → PROPUESTA de CNO → VALIDACIÓN HUMANA →
+norma nueva → FUENTE (evidencia) → Corpus (SHA) → PROPUESTA de CNO → VALIDACIÓN HUMANA →
 CNO vigente → Regla Operativa → Gold Master → SAT → DOM → auditoría → (reforma → reinicia)
 ```
-Es un **ciclo**, no una arquitectura. **Lexis está en la fase de CONSTRUCCIÓN, no dentro de la
-BRN** (Lexis es herramienta; la BRN es activo; SAT/DOM/QUIRA IA son consumidores — ninguno
-gobierna la BRN). Este ciclo definirá cómo se **versiona** una RO, cuándo una reemplaza a otra,
+Es un **ciclo**, no una arquitectura. **La fuente está en la fase de CONSTRUCCIÓN del Corpus, no
+dentro de la BRN** (la fuente es herramienta reemplazable; la BRN es activo; SAT/DOM/QUIRA IA son
+consumidores — ninguno gobierna la BRN). Este ciclo definirá cómo se **versiona** una RO, cuándo una reemplaza a otra,
 cómo se deroga y cómo se propaga una reforma que toca 12 SAT. Si crece, se separa a un ADR propio.
 
 ## Orden de trabajo (corregido por el colega — **el CICLO antes que el molde**)
@@ -181,8 +181,9 @@ cómo se deroga y cómo se propaga una reforma que toca 12 SAT. Si crece, se sep
    reforma afecta a 12 SAT distintas.
    *El molde no debe cambiar nunca:* si cambia tras migrar 80 CNO, se reconstruye todo — el error
    del catálogo de artículos, otra vez y peor.
-4. Inventariar la norma en el corpus y subir lo que falta vía el puente Lexis (todo lo que genera
-   obligación operativa · §4 · `PROTOCOLO_PUENTE_LEXIS_BRN.md`).
+4. Inventariar la norma en el corpus y curar lo que falte (todo lo que genera obligación
+   operativa · §4 · `PROTOCOLO_CURACION_CORPUS_BRN.md`). El canon GAD ya está (Supabase +
+   `Normativa_Word/`, 43 docs); la ampliación es de 2ª fase (Municipio 002+).
 5. Migrar la **CNO-IV-001** (asignación mínima prioritaria) como piloto — la misma regla que rompió
    la v1, ahora sobre el molde y el ciclo definitivos.
 6. Reconstruir `brn_catalogo.py` como catálogo de CNO · enlazar SAT → RO → CNO.
