@@ -95,7 +95,9 @@ Nivel 3 · SAT             → solo MIDE (consume la RO)
 - La lógica de negocio deja de dispersarse por el ecosistema: vive en un único nivel.
 
 **Salvaguarda (director · Regla 3):** la RO **nace de la CNO**, y la CNO **apunta al Corpus con
-SHA**. La BRN modela el Estado, pero **no crea obligación que no esté en el texto verificado**.
+SHA**. La BRN modela la **lógica normativa de la gestión pública** —no "el Estado" (precisión
+del colega · 2026-07-17: una es defendible ante una institución o cooperación, la otra abre un
+debate jurídico que no queremos)— y **no crea obligación que no esté en el texto verificado**.
 Modelar no es inventar.
 
 ### 2. La relación cambia: `Ley → BRN → SAT` (antes `Ley → SAT`)
@@ -154,9 +156,24 @@ candidatas a migrar. **El error del 65% queda estructuralmente imposible**: la C
 recorrer `CE 271 → COOTAD 192/198.1-6 → Transitoria`, y el 65% aparece con toda su cadena o no
 aparece. La v1 (catálogo de artículos · commit `e003a7d`) queda **superada**.
 
-**Orden de trabajo (corregido por el colega — el MOLDE antes que el piloto):**
+### 8. El CICLO DE VIDA de una regla (aporte del colega · 2026-07-17)
+Construir conocimiento jurídico y **gobernarlo** son procesos distintos. Falta nombrar el segundo:
+el ciclo por el que una regla nace, vive, se audita y muere.
+```
+norma nueva → Lexis (evidencia) → Corpus (SHA) → PROPUESTA de CNO → VALIDACIÓN HUMANA →
+CNO vigente → Regla Operativa → Gold Master → SAT → DOM → auditoría → (reforma → reinicia)
+```
+Es un **ciclo**, no una arquitectura. **Lexis está en la fase de CONSTRUCCIÓN, no dentro de la
+BRN** (Lexis es herramienta; la BRN es activo; SAT/DOM/QUIRA IA son consumidores — ninguno
+gobierna la BRN). Este ciclo definirá cómo se **versiona** una RO, cuándo una reemplaza a otra,
+cómo se deroga y cómo se propaga una reforma que toca 12 SAT. Si crece, se separa a un ADR propio.
+
+## Orden de trabajo (corregido por el colega — **el CICLO antes que el molde**)
 1. Ratificar este ADR.
-2. **Definir el MOLDE de la CNO y de la Regla Operativa** — y antes de una línea de código,
+2. **Definir el CICLO DE VIDA completo de una regla** (§8): de la norma nueva al consumo por la SAT,
+   incluidos versionado, derogación, herencia y propagación de reformas. Es lo que estabiliza todo
+   lo demás.
+3. **Definir el MOLDE de la CNO y de la Regla Operativa** — y antes de una línea de código,
    responder las **7 preguntas de diseño** (colega) que deben tener respuesta estable:
    *(a)* qué es exactamente una CNO · *(b)* qué información mínima contiene · *(c)* cómo referencia
    al Corpus (SHA por eslabón) · *(d)* cómo una SAT referencia su RO · *(e)* cómo QUIRA IA consulta
@@ -164,11 +181,11 @@ aparece. La v1 (catálogo de artículos · commit `e003a7d`) queda **superada**.
    reforma afecta a 12 SAT distintas.
    *El molde no debe cambiar nunca:* si cambia tras migrar 80 CNO, se reconstruye todo — el error
    del catálogo de artículos, otra vez y peor.
-3. Inventariar la norma nacional en el corpus y subir lo que falta (todo lo que genera obligación
-   operativa · §4).
-4. Migrar la **CNO-IV-001** (asignación mínima prioritaria) como piloto — la misma regla que rompió
-   la v1, ahora sobre el molde definitivo.
-5. Reconstruir `brn_catalogo.py` como catálogo de CNO · enlazar SAT → CNO.
+4. Inventariar la norma en el corpus y subir lo que falta vía el puente Lexis (todo lo que genera
+   obligación operativa · §4 · `PROTOCOLO_PUENTE_LEXIS_BRN.md`).
+5. Migrar la **CNO-IV-001** (asignación mínima prioritaria) como piloto — la misma regla que rompió
+   la v1, ahora sobre el molde y el ciclo definitivos.
+6. Reconstruir `brn_catalogo.py` como catálogo de CNO · enlazar SAT → RO → CNO.
 
 ---
 *ADR-038 · BRN sobre Cadenas Normativas Operativas · Dylus Lab © 2026 · "El error del 65% no fue leer mal un artículo: fue creer que un artículo era una regla. La BRN no almacena Derecho: lo destila en reglas operativas verificables. La ley manda, la BRN la consolida, el Gold Master la mide, QUIRA la explica — y nadie vuelve a tomar una porción."*

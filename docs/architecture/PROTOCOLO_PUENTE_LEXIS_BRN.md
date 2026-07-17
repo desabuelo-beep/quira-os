@@ -35,10 +35,13 @@ orden obliga a Lexis a buscar la **cadena completa**, no piezas sueltas:
 - fecha de vigencia y estado (vigente / derogado / suspendido).
 > Antídoto contra el error del 65%: la orden **prohíbe** entregar un artículo sin su cadena.
 
-### FASE 2 · El extractor de cadenas (en Lexis IA)
-Lexis devuelve **Markdown limpio**, un bloque por eslabón, con: norma · artículo · texto literal ·
-fecha de vigencia · reforma que lo modificó (si aplica). Ese Markdown es la **materia prima** —aún
-no es canon—.
+### FASE 2 · El extractor de EVIDENCIA (en Lexis IA)
+**Lexis no propone la cadena — propone EVIDENCIA** (precisión del colega · 2026-07-17: la cadena
+responde a una decisión metodológica de QUIRA, no de Lexis; construirla en Lexis cedería la
+soberanía metodológica). Lexis devuelve **el texto** en Markdown limpio, un bloque por artículo,
+con: norma · artículo · texto literal · fecha de vigencia · reforma que lo modificó (si aplica).
+**La CADENA la arma QUIRA** en Fase 3, decidiendo qué eslabones la componen. Ese Markdown es
+**materia prima** —aún no es canon—.
 
 ### FASE 3 · Consolidación en la BRN (Claude, de vuelta)
 El arquitecto:
