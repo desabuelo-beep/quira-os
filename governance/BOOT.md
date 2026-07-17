@@ -33,10 +33,10 @@ la Doctrina permanece. Hoja de Ruta = el mapa que no se mueve. BOOT §AHORA = el
 🔌 **MCD Planif · 7 cables ✅:** Excel·SERCOP·Relacional·Normativo·IA·Visual·Memoria.
 🧭 **ADR-031 RATIF:** cajón=MCD · GoldMaster=MCM · MCIP 5 motores (Index §1.A).
 🔑 **Planif✓ · RDC✓ · d02 v3✓** — 4 capacidades + SAT (Norma→Regla→Señal) + cadena inter-dominio.
-🏛️ **d03 Gobernanza del Mandato ELECTORAL CERRADO✓** — canon CURADO: 76 promesas reales (antes 66, con 46 falsas). **Coherente=True · fidelidad 79.3% · centinela ✅ · ICPI intacto.** Fundamento jurídico: **CD Art.97 → COPFP Art.34/41/42 → LOPC 89 → Const. 105** (la correspondencia NO es opinable: es exigible). Doctrina: **IFE unidireccional** (meta sin promesa = normal, Art.264) · **la cocina NO va al DOM** (Regla 2) · alcance declarado (ADR-036) · **el DOM cura el canon** (Regla 8).
+🏛️ **d03 Mandato ELECTORAL CERRADO✓ (PCD-D03)** — canon CURADO: 76 promesas reales (antes 66, 46 falsas). Coherente=True · fidelidad 79.3% · centinela ✅ · ICPI intacto. Doctrina: **IFE unidireccional** (meta sin promesa = normal, Art.264) · **la cocina NO va al DOM** (Regla 2) · **el DOM cura el canon** (Regla 8).
 ✅ **4 DOM cerrados con PCD: d01 · d02 · d03 · d09** (todos al molde de d01: dictamen + evidencia qc-ev + fundamento jurídico). **Sig: BRN (ADR-035) — catalogar reglas; la IA propone, el humano valida.**
 🩺 **Canon curado por el DOM (Regla 8):** H03 rótulo `Suma_Score_Vinculación` (48≠conteo) + conteo 64 aparte + B10 ya es fórmula + col G `Estado_Verificación`. ICPI intacto · centinela ✅. **Gate real = `python scripts/ci/check_health.py` (BOOT≤6000·CLAUDE≤4000): NO adivinar.**
-📚 **ADR-035 BRN RATIF:** DOM Alertas **transmuta** en Biblioteca de Reglas (no se elimina). Ley→BRN→GoldMaster (único motor)→QUIRA. **IA propone, humano valida.**
+📚 **ADR-035 BRN + ADR-037 frame (RATIF):** DOM Alertas→Biblioteca de Reglas. Ley→BRN→GoldMaster (único motor)→QUIRA. **IA propone, humano valida.** Frame: **Gobierno·Territorio·Inteligencia·Norma(BRN)**; Gobierno = página propia (canon+corpus). **Sig: BRN — catalogar las reglas que YA operan (d02 SAT · d03 mandato): ID+tipo+sha.**
 🔶 **CI:** BOOT ≤6KB.
 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 ratificado · detalle en el ADR)
