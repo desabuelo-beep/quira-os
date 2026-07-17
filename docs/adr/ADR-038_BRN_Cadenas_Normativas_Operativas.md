@@ -1,4 +1,10 @@
-# ADR-038 · La BRN opera sobre Cadenas Normativas Operativas (CNO), no sobre artículos
+# ADR-038 · La BRN — capa de conocimiento normativo del ecosistema (opera sobre CNO, no artículos)
+
+> **Definición canónica (colega · 2026-07-17):** *La BRN no es una biblioteca de reglas ni un
+> motor de cálculo. Es la **capa de conocimiento normativo** del ecosistema QUIRA. Su función es
+> transformar el ordenamiento jurídico vigente en **reglas operativas únicas, trazables y
+> reutilizables** por las SAT, los DOM y QUIRA IA, manteniendo un **único punto de verdad
+> normativa**.*
 
 **Estado:** PROPUESTO · 2026-07-17 (Javo decide · director técnico redacta · síntesis del colega) · **pendiente de ratificación**
 **Contexto de origen:** el error del "65% = COOTAD Art. 192". La BRN v1 (ADR-035) catalogaba
@@ -28,6 +34,26 @@ fue de diseño.** Preguntar por artículos aislados invita a tomar porciones. La
 imposible tomar una porción.
 
 ## Decisión
+
+### 0. La BRN es una CAPA, no un módulo (precisión del colega — la pieza que faltaba)
+Prueba: *¿puede existir QUIRA sin BRN?* No. Un módulo puede desaparecer; la BRN no. Por tanto
+**no es un cajón**: es una **capa transversal bajo todo el ecosistema** — todo pasa por ella.
+```
+QUIRA IA
+  DOM
+    SAT
+════════ BRN — capa de conocimiento normativo (único punto de verdad normativa) ════════
+  Gold Master · Corpus · Canon
+```
+Su **cajón** (4ª lente del frame · ADR-037) es solo su **cara de auditoría** para el humano —
+`📖 Base de Reglas Normativas`: lista las CNO, su estado, vigencia, SHA, normas involucradas y
+las SAT/DOM que las consumen. **No calcula, no decide: permite auditar el cerebro.**
+
+**Consecuencia en QUIRA IA:** consulta **la BRN primero**; solo si la BRN no tiene la regla,
+baja al Corpus. Como un abogado: primero la doctrina consolidada, después abre la ley. **Con una
+salvaguarda (Regla 3 · Principio Rector):** la BRN no "sabe" — la respuesta de toda CNO **apunta
+siempre al Corpus con el SHA de cada eslabón**. El Corpus prueba; la BRN organiza el camino.
+Ninguna CNO responde sin traza al texto verificado, o sería una IA interpretando Derecho.
 
 ### 1. El nodo de la BRN es la REGLA, no el artículo — la Cadena Normativa Operativa (CNO)
 La BRN deja de almacenar artículos. Almacena **Reglas de Negocio Públicas**, cada una como una
@@ -69,9 +95,11 @@ paralelo prohibido. *La BRN dice cuál es la regla vigente; el Gold Master mide 
 
 ### 4. Dos capas separadas (arquitectura del colega)
 - **Capa 1 · Corpus Jurídico Nacional** (Supabase · SHA256, ya existe con 12.992 chunks): el
-  **texto oficial íntegro** — Constitución, leyes, reglamentos, resoluciones, acuerdos, normas
-  técnicas, **metodologías, manuales y procedimientos** (Javo). Es la fuente primaria. **Falta
-  subir la norma nacional restante** — trabajo previo a poblar la BRN por dominio.
+  **texto oficial íntegro**. No se sube "solo normas": se sube **todo lo que genera obligación
+  operativa** (regla del colega) — Constitución, leyes, **reglamentos, reformas, resoluciones,
+  acuerdos, manuales, metodologías, procedimientos, instructivos, normas técnicas y dictámenes
+  vinculantes**. El 65% no nació de una ley sola: nació de una reforma + una transitoria; el
+  próximo puede nacer de una metodología del Ministerio de Finanzas. **Falta subir el resto.**
 - **Capa 2 · BRN** (las CNO): el puente que traduce el Derecho en reglas operativas. Contiene la
   regla, su cadena completa, variables, indicadores, dominios que la consumen, vigencia, evidencia
   y SHA. **No recopia texto: referencia el corpus.**
@@ -104,9 +132,17 @@ candidatas a migrar. **El error del 65% queda estructuralmente imposible**: la C
 recorrer `CE 271 → COOTAD 192/198.1-6 → Transitoria`, y el 65% aparece con toda su cadena o no
 aparece. La v1 (catálogo de artículos · commit `e003a7d`) queda **superada**.
 
-**Orden de trabajo:** (1) ratificar este ADR · (2) inventariar la norma nacional en el corpus y
-subir lo que falta · (3) migrar la **CNO-IV-001** (asignación mínima prioritaria) como piloto ·
-(4) reconstruir `brn_catalogo.py` como catálogo de CNO · (5) enlazar SAT → CNO.
+**Orden de trabajo (corregido por el colega — el MOLDE antes que el piloto):**
+1. Ratificar este ADR.
+2. **Definir el MOLDE de una CNO** (identificador · nombre · estado · vigencia · cadena normativa ·
+   variables · procedimientos · metodologías · SAT consumidoras · DOM consumidores · evidencias ·
+   SHA). *Esa estructura no debe cambiar nunca:* si el molde cambia tras migrar 80 CNO, se
+   reconstruye todo. Es el error del catálogo de artículos, otra vez, pero peor.
+3. Inventariar la norma nacional en el corpus y subir lo que falta (todo lo que genera obligación
+   operativa · §4).
+4. Migrar la **CNO-IV-001** (asignación mínima prioritaria) como piloto — la misma regla que rompió
+   la v1, ahora sobre el molde definitivo.
+5. Reconstruir `brn_catalogo.py` como catálogo de CNO · enlazar SAT → CNO.
 
 ---
 *ADR-038 · BRN sobre Cadenas Normativas Operativas · Dylus Lab © 2026 · "El error del 65% no fue leer mal un artículo: fue creer que un artículo era una regla. La BRN no almacena Derecho: lo destila en reglas operativas verificables. La ley manda, la BRN la consolida, el Gold Master la mide, QUIRA la explica — y nadie vuelve a tomar una porción."*
