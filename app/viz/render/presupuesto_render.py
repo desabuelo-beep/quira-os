@@ -161,10 +161,12 @@ def _elegibilidad(d: dict) -> str:
 def _movilizacion(d: dict) -> str:
     cap = d.get("captacion") or {}
     total, n = cap.get("total_externo") or 0, cap.get("n_convenios") or 0
-    txt = (f'La capacidad de <b>captar recursos más allá del presupuesto propio</b>. El municipio ha movilizado '
-           f'<b>{_m(total)}</b> en <b>{n} convenios</b> de financiamiento externo (todos <b>no reembolsables</b>: '
-           f'transferencias sectoriales y bonos, no deuda). Es la diferencia entre depender solo de lo propio y '
-           f'apalancar capital de terceros para la inversión.')
+    # No se afirma la modalidad (reembolsable/no) ni "no hay deuda": el canon no trae cédula de
+    # ingresos que lo respalde — sería inferir (Javo · 2026-07-18 · Regla 3). Se dice solo lo
+    # verificable: monto y número de convenios registrados.
+    txt = (f'La capacidad de <b>captar recursos más allá del presupuesto propio</b>. El registro documenta '
+           f'<b>{_m(total)}</b> en <b>{n} convenios</b> de financiamiento externo. Es la diferencia entre depender '
+           f'solo de lo propio y apalancar capital de terceros para la inversión.')
     return _capacidad("Capacidad de movilización", _m(total), _COL, txt)
 
 
@@ -184,10 +186,14 @@ def _sostenibilidad(d: dict) -> str:
     isp = d.get("isp") or {}
     p = isp.get("global_pct") or 0
     clasif = isp.get("clasificacion") or ""
+    # NO se cita "COOTAD Art. 192" (era cita errada: el 192 es "Monto total a transferir 21%").
+    # El umbral 65% es la regla de asignación mínima prioritaria de la reforma COOTAD-2026 — su
+    # cadena normativa la construirá la BRN (ADR-038). Hasta entonces no se cita artículo suelto
+    # (Javo · 2026-07-18 · Regla 3). Se menciona el umbral, sin atribuírselo a un artículo errado.
     txt = (f'La salud fiscal de fondo: si la estructura presupuestaria es coherente y sostenible en el tiempo. El '
-           f'índice de salud presupuestaria es <b>{p:.1f}%</b> —<b>{_esc(clasif)}</b>—, por debajo del <b>65% '
-           f'mínimo de inversión que fija el COOTAD (Art. 192)</b>. Es la capacidad que sostiene a las otras tres: '
-           f'sin salud fiscal, la elegibilidad y la captación no se traducen en inversión duradera.')
+           f'índice de salud presupuestaria es <b>{p:.1f}%</b> —<b>{_esc(clasif)}</b>—, por debajo del <b>umbral '
+           f'del 65%</b> de referencia. Es la capacidad que sostiene a las otras tres: sin salud fiscal, la '
+           f'elegibilidad y la captación no se traducen en inversión duradera.')
     return _capacidad("Capacidad de sostenibilidad", f"{p:.0f}%", _col_pct(p, 65, 50), txt,
                       pct=p, umbral=isp.get("umbral_cootad") or 65,
                       umbral_lbl=f'mínimo COOTAD {isp.get("umbral_cootad") or 65}%')
@@ -282,7 +288,7 @@ def _sintesis(d: dict) -> str:
     dictamen = (
         f'<div class="qc-sr-cierre">El análisis documental muestra un municipio con <b>alta capacidad de '
         f'elegibilidad</b> —alineación al Plan Nacional del {pnd}% y a la Agenda 2030 del {icods:.0f}%— y una '
-        f'<b>movilización externa relevante</b> ({_m(cap)} en convenios no reembolsables). La restricción no está '
+        f'<b>movilización externa relevante</b> ({_m(cap)} en convenios registrados). La restricción no está '
         f'en <b>conseguir</b> recursos, sino en <b>absorberlos</b>: la ejecución al corte ({ti:.1f}%) y la salud '
         f'presupuestaria ({isp:.1f}%, bajo el umbral COOTAD) marcan el <b>riesgo de subejecución</b> como la '
         f'principal alerta. En consecuencia: el municipio es <b>elegible y capta</b>, pero su valor como destino '
@@ -300,8 +306,13 @@ def _senal(s: dict) -> str:
     chip = "&#9888; SEÑAL ACTIVA" if activa else "&#9679; SIN SEÑAL"
     est_txt = "señal activa" if activa else "sin señal"
     # La cadena que materializa la ley (aporte del colega): Norma → Regla → Indicador → Señal.
-    cad = [("norma", _esc(s.get("norma", "")), "law"), ("regla", _esc(s.get("regla", "")), ""),
-           ("indicador · hoy", _esc(s.get("indicador", "")), ""), ("señal", est_txt, "est")]
+    # El nodo "norma" se OMITE si no hay cita verificada (Javo 2026-07-18): la cadena legal la
+    # proveerá la BRN. Se muestra Regla → Indicador → Señal, sin inventar el artículo.
+    cad = []
+    if s.get("norma"):
+        cad.append(("norma", _esc(s["norma"]), "law"))
+    cad += [("regla", _esc(s.get("regla", "")), ""),
+            ("indicador · hoy", _esc(s.get("indicador", "")), ""), ("señal", est_txt, "est")]
     nodos = '<span class="d2-cad-a">&rarr;</span>'.join(
         f'<span class="d2-cad-n {c}"' + (f' style="color:{col}"' if c == "est" else "")
         + f'><span class="k">{k}</span>{v}</span>' for k, v, c in cad)
@@ -332,23 +343,12 @@ def _senales_preventivas(d: dict) -> str:
 
 
 def _marco_legal(d: dict) -> str:
-    """Marco legal del dominio (patrón de d01/d09 · Javo: 'se da clic y se abren los art.').
-    Se DERIVA de las normas ya verificadas en el snapshot — no se inventa ni una cita (Regla 3)."""
-    sen = (d.get("sat_presupuestario") or {}).get("senales") or []
-    if not sen:
-        return ""
-    vistos, chips = [], ""
-    for s in sen:
-        n = s.get("norma", "")
-        if n and n not in vistos:
-            vistos.append(n)
-            chips += f'<span class="qc-lawc">{_esc(n)} — {_esc(s.get("regla", ""))}</span>'
-    umb = (d.get("isp") or {}).get("umbral_cootad")
-    if umb and "COOTAD Art. 192" not in vistos:
-        vistos.append("COOTAD Art. 192")
-        chips += f'<span class="qc-lawc">COOTAD Art. 192 — inversión mínima del {umb}%</span>'
-    return (f'<details class="qc-law"><summary>&#128214; Marco legal que gobierna este dominio · '
-            f'{len(vistos)} normas verificadas</summary>{chips}</details>')
+    """Marco legal del dominio. SUSPENDIDO (Javo · 2026-07-18): las citas que traía el snapshot
+    estaban ERRADAS —COOTAD Art. 192 es "monto a transferir 21%", no la regla del 65% (que es
+    COOTAD-2026 · 198.1/Transitoria); COPLAFIP 113/115 tampoco corresponden—. No se muestra un
+    artículo hasta que la BRN (ADR-038) provea la CADENA verificada con su SHA. Regla 3: sin norma
+    verificada, no hay cita."""
+    return ""
 
 
 def _cadena_estado() -> str:

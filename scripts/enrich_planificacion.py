@@ -152,16 +152,26 @@ def build_block() -> dict:
     ws = sh("H21b_SAT")
     def cell(addr):
         return str(ws[addr].value or "")
+    # FIREWALL (Regla 2 · Javo 2026-07-18): las celdas del Gold Master traen nomenclatura interna
+    # ("SAT-0", "POA-PAC") que JAMÁS cruza al producto. Se traduce a lenguaje de administración
+    # pública en el cruce Excel→Python. No toca el canon (Regla 1): solo la presentación.
+    def _fw_txt(s: str) -> str:
+        """Traduce la jerga interna del canon (SAT-0, POA-PAC) a lenguaje público. NO confundir con
+        _fw() de módulo, que es el filtro booleano de filas-nota. (Regla 2 · Javo 2026-07-18)."""
+        s = re.sub(r"\bSAT-?0\b\s*(ACTIVO|ACTIVA)?", "Señal preventiva activa", s, flags=re.I)
+        s = re.sub(r"\bPOA\s*[-–↔/y]\s*PAC\b", "entre la programación operativa y la contratación", s, flags=re.I)
+        s = s.replace("POA-PAC", "entre la programación operativa y la contratación")
+        return s.strip(" ·—-")
     sat0 = {
         "componentes": [
-            {"label": "Brecha POA-PAC", "estado": _clean(cell("B14")), "temp": _temp(cell("B14"))},
+            {"label": "Brecha plan-contratación", "estado": _clean(cell("B14")), "temp": _temp(cell("B14"))},
             {"label": "Fraccionamiento contractual", "estado": _noeng(_clean(cell("B15"))), "temp": _temp(cell("B15"))},
             {"label": "Monto mínimo", "estado": _clean(cell("B16")), "temp": _temp(cell("B16"))},
             {"label": "Reloj de evidencia", "estado": _clean(cell("B17")), "temp": _temp(cell("B17"))},
         ],
-        "global": _clean(cell("B19")),
+        "global": _fw_txt(_clean(cell("B19"))),
         "global_temp": _temp(cell("B19")),
-        "diagnostico": _clean(cell("B21")),
+        "diagnostico": _fw_txt(_clean(cell("B21"))),
     }
 
     # ── PRESUPUESTO — eSIGEF inversión codificado (H07) ──────────────────────

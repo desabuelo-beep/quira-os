@@ -248,7 +248,8 @@ def _sintesis(d: dict) -> str:
         f'Electoral encontraron correspondencia en las metas del plan de desarrollo, y el grado con que lo '
         f'hicieron —ponderado— sitúa la fidelidad en <b>{pct:.1f}%</b>: <b>{_esc(cal.get("clasificacion",""))}</b>, '
         'por debajo del 85% que marca fidelidad alta. <b>El compromiso no se diluyó al pasar del discurso al '
-        'documento</b>, que es precisamente lo que el <b>COPFP Art. 34</b> exige y lo que este dominio verifica. '
+        'documento</b>, que es precisamente lo que exige el deber de planificación del desarrollo y lo que este '
+        'dominio verifica. '
         f'La distancia con ese umbral no proviene de promesas olvidadas —solo <b>{sin}</b> no halló correspondencia '
         'identificada— sino del <b>grado</b> con que muchas se incorporaron: recogidas con matices o solo en '
         'parte. <b>La atención del período es preventiva, no correctiva</b>: el mandato está en el plan; lo que '
@@ -258,15 +259,15 @@ def _sintesis(d: dict) -> str:
         'existe información pública suficiente para reconstruir documentalmente los resultados obtenidos.</div>')
     # ALCANCE al pie (colega): primero qué mide y el resultado; el alcance al final, como nota
     # metodológica. Antes abría el dominio y hacía pensar "¿entonces no miden todo?".
-    nota = ('<p class="qc-cap" style="margin-top:9px"><b>Nota metodológica · alcance.</b> La correspondencia se '
-            'evalúa contra el <b>universo estratégico</b> de la planificación —el conjunto de metas que el modelo '
-            'representa—, no contra el plan de desarrollo en su totalidad. Una promesa cuya meta exista fuera de '
-            'ese conjunto se declara <b>fuera de alcance</b> y <b>no se computa como incumplimiento</b> del '
-            'municipio.</p>')
+    nota = ('<p class="qc-cap" style="margin-top:9px"><b>Nota metodológica · alcance.</b> El PDOT vigente '
+            'contiene <b>67 metas</b>; la correspondencia se evalúa contra un <b>muestreo estratégico</b> de '
+            'ellas —el conjunto que el modelo representa para <b>validación empírica</b> del método—, no contra '
+            'el plan de desarrollo en su totalidad. Una promesa cuya meta exista fuera de ese conjunto se '
+            'declara <b>fuera de alcance</b> y <b>no se computa como incumplimiento</b> del municipio.</p>')
     return (f'<div class="qc-sint"><div class="qc-sint-lbl">Síntesis ejecutiva del dominio — Gobernanza del '
             f'Mandato Electoral · Montecristi · período 2023–2027</div><div class="qc-sint-b">{dictamen}{nota}'
             f'<div class="qc-fuente">Fuentes: Plan de Trabajo inscrito ante el CNE 2023 (verificado por huella '
-            f'documental) · metas del plan de desarrollo · Código de la Democracia Art. 97 · COPFP Art. 34, 41 y '
+            f'documental) · metas del plan de desarrollo · Código de la Democracia Art. 97 · COPLAFIP Art. 41 y '
             f'42.</div></div></div>')
 
 

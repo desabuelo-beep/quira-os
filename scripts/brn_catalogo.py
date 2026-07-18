@@ -51,21 +51,31 @@ TIPOS = {
     "plazo":      ("Plazo", True, "fija una fecha o periodicidad"),
     "competencia": ("Competencia", False, "asigna atribuciones — control indirecto"),
     "principio":  ("Principio", False, "declara un valor — NO SATizable"),
+    "operativo":  ("Umbral operativo", True, "el motor fija el corte; la ley da el marco, no la cifra"),
 }
 
 # ── EL CATÁLOGO · reglas que YA operan, con su origen exacto ──────────────────
 # `sat` = la señal que el Gold Master YA calcula sobre esta regla (si la hay).
 # Nada se inventa: la condición sale del enricher que ya opera; el sha, del corpus.
 REGLAS = [
-    # ── financieras · las 3 que d02 ya publica con su norma ───────────────────
-    {"norma": "COPLAFIP", "art": "115", "tipo": "limite", "dom": "d02",
-     "nombre": "Reforma presupuestaria significativa",
-     "condicion": "las reformas no deben superar el 5% del presupuesto anual",
-     "sat": "Reforma presupuestaria tardía", "kw": "%reforma%"},
-    {"norma": "COPLAFIP", "art": "113", "tipo": "limite", "dom": "d02",
-     "nombre": "Ejecución mínima de la meta",
-     "condicion": "ninguna meta debe ejecutar menos del 10% de lo asignado",
-     "sat": "Parálisis presupuestaria", "kw": "%devengad%"},
+    # ── financieras · las que d02 vigila, con su norma CORREGIDA ──────────────
+    # AUDITORÍA Javo 2026-07-18: las citas COPLAFIP 115/113 estaban ERRADAS. El corpus prueba
+    # (sha) que 115 = "Certificación Presupuestaria" y 113 = "Contenido y finalidad" — ninguna
+    # trata de reformas ni de un mínimo de ejecución. La reforma presupuestaria está reglada en
+    # COOTAD Art. 255. Los umbrales 5%/10% son CALIBRACIÓN OPERATIVA del Gold Master, NO cifras
+    # de la ley: se marcan como tales. (Regla 3: sin norma verificada, no hay cita.)
+    {"norma": "COOTAD", "art": "255", "tipo": "operativo", "dom": "d02",
+     "nombre": "Reforma al presupuesto aprobado",
+     "condicion": "el Art. 255 sujeta toda reforma del presupuesto ya aprobado a modalidades "
+                  "regladas (traspasos, suplementos, reducciones); el motor marca como significativa "
+                  "la que supera el 5% — umbral operativo del Gold Master, no un tope legal",
+     "sat": "Reforma presupuestaria tardía", "kw": "%reforma presupuestaria%"},
+    {"norma": "COPLAFIP", "art": "113", "tipo": "operativo", "dom": "d02",
+     "nombre": "Ejecución presupuestaria de la meta",
+     "condicion": "el Art. 113 define la ejecución como el uso de los recursos para cumplir las "
+                  "metas; el motor marca 'parálisis' cuando el devengado de una meta se estanca bajo "
+                  "el 10% — umbral operativo del Gold Master, no un mínimo fijado por la ley",
+     "sat": "Parálisis presupuestaria", "kw": "%contenido y finalidad%"},
     # CORRECCIÓN (2026-07-16): el director acusó a esta regla de citar el artículo equivocado.
     # SE EQUIVOCÓ ÉL, no el canon. El 65% SÍ existe: es la REGLA DE ASIGNACIÓN MÍNIMA
     # PRIORITARIA que introduce la reforma COOTAD de feb-2026 (COOTAD-2026):

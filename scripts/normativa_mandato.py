@@ -15,7 +15,10 @@ Verdad: el texto normativo viene del corpus verificado (sha256), NO SE INVENTA (
 LA CADENA DEL MANDATO (marco aportado por Javo · 2026-07-16):
   Código de la Democracia Art. 97 → inscribe el Plan de Trabajo ante el CNE
   COOTAD Art. 58-60                → gana y toma posesión
-  COPLAFIP Art. 34, 41-42          → DEBE traducir ese Plan al PDOT  ← lo que d03 verifica
+  COPLAFIP Art. 41-42              → DEBE traducir ese Plan al plan de desarrollo  ← lo que d03 verifica
+    (Corrección Javo 2026-07-18: el ancla era Art. 34, pero el corpus prueba que Art. 34 = "Plan
+     NACIONAL de Desarrollo", no la obligación del GAD. La obligación vive en Art. 41 "Planes de
+     Desarrollo — directrices principales de los GAD" y Art. 42 "Contenidos mínimos". Regla 3.)
   LOPC Art. 89-90                  → rinde cuentas anualmente sobre ese Plan
   Constitución Art. 105            → si incumple, el electorado puede revocarlo
 
@@ -47,7 +50,7 @@ _NOMBRE = {"CE": "Constitución del Ecuador", "COD": "Código de la Democracia",
 ESLABONES = {
     "compromiso":  [("COD", "97", None), ("COD", None, "%plan de trabajo%")],
     "investidura": [("COOTAD", "60", None), ("COOTAD", "58", None)],
-    "traduccion":  [("COPLAFIP", "34", None), ("COPLAFIP", "41", None),
+    "traduccion":  [("COPLAFIP", "41", None), ("COPLAFIP", "42", None),
                     ("COPLAFIP", None, "%plan de desarrollo%")],
     "rendicion":   [("LOPC", "89", None), ("LOPC", None, "%rendición de cuentas%")],
     "consecuencia": [("CE", "105", None), ("LOPC", "25", None)],
@@ -59,7 +62,7 @@ ESLABONES = {
 MARCO = {
     "compromiso":   [("COD", ["97"])],
     "investidura":  [("COOTAD", ["58", "59", "60"])],
-    "traduccion":   [("COPLAFIP", ["12", "34", "41", "42", "44", "101", "103"])],
+    "traduccion":   [("COPLAFIP", ["12", "41", "42", "44"])],
     "rendicion":    [("CE", ["100"]), ("LOPC", ["89", "90"])],
     "consecuencia": [("CE", ["105"]), ("LOPC", ["25"])],
 }

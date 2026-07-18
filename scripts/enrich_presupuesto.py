@@ -155,16 +155,20 @@ def build_block() -> dict:
     # Cada señal expone su CADENA normativa (aporte del colega · 2026-07-15): la norma engendra una REGLA
     # (condición lógica), la regla se mide con un indicador, y el indicador dispara —o no— la señal.
     # QUIRA no inventa la regla: la deriva del umbral que el motor ya calcula sobre la norma verificada.
+    # AUDITORÍA Javo 2026-07-18: las citas de artículo estaban ERRADAS (COOTAD 192 = "monto a
+    # transferir 21%", no la regla del 65%; COPLAFIP 113/115 tampoco corresponden). Se QUITA la
+    # cita de artículo (norma="") — la cadena verificada la proveerá la BRN (ADR-038). Se conserva
+    # la REGLA operativa y el umbral, que el motor sí calcula. Regla 3: sin norma verificada, sin cita.
     senales = [
-        {"nombre": "Reforma presupuestaria tardía", "estado": e2, "norma": "COPFP Art. 115",
+        {"nombre": "Reforma presupuestaria tardía", "estado": e2, "norma": "",
          "regla": f"las reformas no deben superar el {u2 * 100:.0f}% del presupuesto anual",
          "indicador": f"{v2 * 100:.0f}% del presupuesto reformado", "umbral": f"máx {u2 * 100:.0f}%",
          "vigila": "reformas significativas fuera del cronograma anual — señal de programación inestable"},
-        {"nombre": "Parálisis presupuestaria", "estado": e3, "norma": "COPFP Art. 113",
+        {"nombre": "Parálisis presupuestaria", "estado": e3, "norma": "",
          "regla": f"ninguna meta debe ejecutar menos del {u3 * 100:.0f}% de lo asignado",
          "indicador": f"{int(np3)} meta(s) en parálisis", "umbral": f"ejecución mínima {u3 * 100:.0f}%",
          "vigila": "metas cuya ejecución financiera se estanca bajo el mínimo — riesgo de subejecución"},
-        {"nombre": "Alerta fiscal · estructura COOTAD", "estado": e4, "norma": "COOTAD Art. 192",
+        {"nombre": "Alerta fiscal · estructura COOTAD", "estado": e4, "norma": "",
          "regla": f"la inversión no debe caer bajo el {u4 * 100:.0f}% del presupuesto",
          "indicador": "estructura inversión/corriente conforme" if e4 == "sin_senal" else "estructura fiscal en alerta",
          "umbral": f"inversión ≥ {u4 * 100:.0f}% del presupuesto",

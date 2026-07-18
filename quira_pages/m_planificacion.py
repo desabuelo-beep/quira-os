@@ -463,7 +463,13 @@ def _sec_pdot(plan: dict) -> None:
     metas = plan.get("metas_detalle", [])
     comp = plan.get("competencia", [])
     criticas = sum(c["n"] for c in comp if "Crítica" in c["label"])
-    st.markdown(_head("1", "PDOT — EL PLAN", f"lo que el municipio se comprometió a lograr · {len(metas)} metas 2023-2027"),
+    # UNIVERSO REAL del PDOT (Javo 2026-07-18 · fuente: Plan Plurianual PDOT 2023-2027 GAD Montecristi,
+    # hoja DESPL, columna "Meta" = 67 metas). QUIRA audita un MUESTREO ESTRATÉGICO de len(metas) para
+    # validación empírica del método — no el plan completo. No se infla ni se oculta: se declara.
+    PDOT_UNIVERSO = 67
+    st.markdown(_head("1", "PDOT — EL PLAN",
+                      f"lo que el municipio se comprometió a lograr · muestreo estratégico de {len(metas)} "
+                      f"de {PDOT_UNIVERSO} metas del PDOT 2023-2027"),
                 unsafe_allow_html=True)
     st.markdown(_intro(
         "El <b>Plan de Desarrollo y Ordenamiento Territorial (PDOT)</b> es el <b>instrumento rector</b> de la "
@@ -471,8 +477,13 @@ def _sec_pdot(plan: dict) -> None:
         "del territorio para el período <b>2023-2027</b> y articula al municipio con el Sistema Nacional "
         "Descentralizado de Planificación Participativa. Lo aprueba el Concejo Municipal, y el POA y el "
         "presupuesto anual se <b>formulan en concordancia con él</b> —nunca a la inversa—. No es un instrumento "
-        "declarativo: es el <b>compromiso formal</b> contra el que se mide toda la gestión. Cada fila de la tabla "
-        "es una meta, con "
+        "declarativo: es el <b>compromiso formal</b> contra el que se mide toda la gestión. "
+        f"<br><br><b>Alcance de esta lectura.</b> El PDOT vigente contiene <b>{PDOT_UNIVERSO} metas</b>; "
+        f"aquí se auditan <b>{len(metas)}</b>, seleccionadas como <b>muestreo estratégico para validación "
+        "empírica</b> del método —las de mayor peso presupuestario y competencia crítica—. No es el plan "
+        "completo ni pretende serlo: es la muestra sobre la que se prueba, meta por meta, que la cadena "
+        "plan→presupuesto→contratación se sostiene documentalmente. Ampliar la cobertura al universo total "
+        "es trabajo de la siguiente fase. Cada fila de la tabla es una meta, con "
         "cuatro datos que conviene leer juntos:<br>• su <b>sistema</b> (el área a la que pertenece),<br>• la "
         "<b>meta plurianual</b>, con su valor de partida y su valor de llegada al 2027,<br>• el <b>tipo de "
         "competencia</b> —qué obliga la ley al municipio en exclusiva y qué comparte con otros niveles de "
@@ -786,7 +797,7 @@ def _sec_coherencia(plan: dict) -> None:
     st.markdown(_stepper(sat_temp), unsafe_allow_html=True)
     st.markdown(_div(), unsafe_allow_html=True)
 
-    st.markdown(_sat_h("1", "Brecha plan ↔ contratación", comps.get("Brecha POA-PAC", {})), unsafe_allow_html=True)
+    st.markdown(_sat_h("1", "Brecha plan ↔ contratación", comps.get("Brecha plan-contratación", {})), unsafe_allow_html=True)
     c1, c2 = st.columns([1.15, 1], gap="large")
     with c1:
         _show(_brecha_bipartito(plan), 300)

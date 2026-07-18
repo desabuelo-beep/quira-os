@@ -4558,7 +4558,7 @@
     "sat0": {
       "componentes": [
         {
-          "label": "Brecha POA-PAC",
+          "label": "Brecha plan-contratación",
           "estado": "Sin datos",
           "temp": "dim"
         },
@@ -4578,9 +4578,9 @@
           "temp": "verde"
         }
       ],
-      "global": "SAT-0 ACTIVO — Revisar coherencia POA-PAC",
+      "global": "Señal preventiva activa — Revisar coherencia entre la programación operativa y la contratación",
       "global_temp": "alerta",
-      "diagnostico": "Detectada brecha entre programación operativa y plan de contratación. Revisar alineación POA-PAC para fortalecer la ejecución del plan anual."
+      "diagnostico": "Detectada brecha entre programación operativa y plan de contratación. Revisar alineación entre la programación operativa y la contratación para fortalecer la ejecución del plan anual."
     },
     "alineacion_pnd": {
       "metrica": "vinculación de las metas del PDOT con el Plan Nacional de Desarrollo",
@@ -6564,7 +6564,7 @@
         {
           "nombre": "Reforma presupuestaria tardía",
           "estado": "sin_senal",
-          "norma": "COPFP Art. 115",
+          "norma": "",
           "regla": "las reformas no deben superar el 5% del presupuesto anual",
           "indicador": "0% del presupuesto reformado",
           "umbral": "máx 5%",
@@ -6573,7 +6573,7 @@
         {
           "nombre": "Parálisis presupuestaria",
           "estado": "sin_senal",
-          "norma": "COPFP Art. 113",
+          "norma": "",
           "regla": "ninguna meta debe ejecutar menos del 10% de lo asignado",
           "indicador": "0 meta(s) en parálisis",
           "umbral": "ejecución mínima 10%",
@@ -6582,7 +6582,7 @@
         {
           "nombre": "Alerta fiscal · estructura COOTAD",
           "estado": "sin_senal",
-          "norma": "COOTAD Art. 192",
+          "norma": "",
           "regla": "la inversión no debe caer bajo el 65% del presupuesto",
           "indicador": "estructura inversión/corriente conforme",
           "umbral": "inversión ≥ 65% del presupuesto",
@@ -7698,7 +7698,7 @@
     "publicado": true,
     "base_normativa": {
       "fuente": "Corpus normativo verificado (Supabase · pgvector · sha256)",
-      "fecha": "2026-07-16",
+      "fecha": "2026-07-18",
       "total_chunks": 1825,
       "cobertura": [
         {
@@ -7754,11 +7754,11 @@
         },
         "traduccion": {
           "norma": "COPLAFIP",
-          "articulo": 34,
-          "sha256": "c3d1256576f9",
-          "sumilla": "Plan Nacional de Desarrollo",
+          "articulo": 41,
+          "sha256": "b49b8c942524",
+          "sumilla": "Planes de Desarrollo",
           "marco": [
-            "COPLAFIP Art. 12, 34, 41-42, 44, 101, 103"
+            "COPLAFIP Art. 12, 41-42, 44"
           ]
         },
         "rendicion": {
@@ -7955,25 +7955,25 @@
   "brn": {
     "_fuente": "Corpus normativo verificado (Supabase · pgvector · sha256)",
     "_doctrina": "La BRN organiza; el Gold Master calcula; QUIRA explica. La IA propone, el humano valida (ADR-035).",
-    "fecha": "2026-07-17",
+    "fecha": "2026-07-18",
     "total": 17,
     "con_señal_activa": 3,
     "estado_catalogo": "propuesta · pendiente de validación humana",
     "reglas": [
       {
-        "id": "COPLAFIP-115-R01",
-        "norma": "COPLAFIP",
-        "norma_nombre": "COPLAFIP",
-        "articulo": "115",
-        "sumilla": "Certificación Presupuestaria",
-        "nombre": "Reforma presupuestaria significativa",
-        "condicion": "las reformas no deben superar el 5% del presupuesto anual",
-        "tipo": "Límite",
+        "id": "COOTAD-255-R01",
+        "norma": "COOTAD",
+        "norma_nombre": "COOTAD",
+        "articulo": "255",
+        "sumilla": "Reforma presupuestaria",
+        "nombre": "Reforma al presupuesto aprobado",
+        "condicion": "el Art. 255 sujeta toda reforma del presupuesto ya aprobado a modalidades regladas (traspasos, suplementos, reducciones); el motor marca como significativa la que supera el 5% — umbral operativo del Gold Master, no un tope legal",
+        "tipo": "Umbral operativo",
         "satizable": true,
         "señal": "Reforma presupuestaria tardía",
         "opera_en": "d02",
-        "sha256": "09bc593d027040d1",
-        "verbatim": "Art. 115.- Certificación Presupuestaria.- Ninguna entidad u organismo público podrán contraer compromisos, celebrar contratos, ni autorizar o contraer obligaciones, sin la emisión de la respectiva certificación presupuestaria.",
+        "sha256": "e36046a99ee54fe2",
+        "verbatim": "Art. 255.- Reforma presupuestaria.- Una vez sancionado y aprobado el presupuesto sólo podrá ser reformado por alguno de los siguientes medios: traspasos, suplementos y reducciones de créditos. Estas operaciones se efectuarán de conformidad con lo previsto en las siguientes secciones de este Código. ",
         "estado": "propuesta"
       },
       {
@@ -7982,9 +7982,9 @@
         "norma_nombre": "COPLAFIP",
         "articulo": "113",
         "sumilla": "Contenido y finalidad",
-        "nombre": "Ejecución mínima de la meta",
-        "condicion": "ninguna meta debe ejecutar menos del 10% de lo asignado",
-        "tipo": "Límite",
+        "nombre": "Ejecución presupuestaria de la meta",
+        "condicion": "el Art. 113 define la ejecución como el uso de los recursos para cumplir las metas; el motor marca 'parálisis' cuando el devengado de una meta se estanca bajo el 10% — umbral operativo del Gold Master, no un mínimo fijado por la ley",
+        "tipo": "Umbral operativo",
         "satizable": true,
         "señal": "Parálisis presupuestaria",
         "opera_en": "d02",
