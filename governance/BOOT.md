@@ -32,7 +32,7 @@ la Doctrina permanece. Hoja de Ruta = el mapa que no se mueve. BOOT §AHORA = el
 🔧 **Backbone:** PDOT 25 metas · POA 257 proy $39.3M · Presup $45.98M · PAC $29.85M.
 🔌 **MCD Planif · 7 cables ✅:** Excel·SERCOP·Relacional·Normativo·IA·Visual·Memoria.
 🧭 **ADR-031 RATIF:** cajón=MCD · GoldMaster=MCM · MCIP 5 motores (Index §1.A).
-🔑 **Planif✓ · RDC✓ · d02 v3✓** — 4 capacidades + SAT (Norma→Regla→Señal) + cadena inter-dominio.
+🔑 **AUDIT 18-jul:** COOTAD-2026 70%/piso65% dic-2026 · d03 COPLAFIP41-42 · PDOT 67 metas=25 muestreo · firewall.
 🏛️ **d03 Mandato ELECTORAL CERRADO✓ (PCD-D03)** — canon CURADO: 76 promesas reales (antes 66, 46 falsas). Coherente=True · fidelidad 79.3% · centinela ✅ · ICPI intacto. Doctrina: **IFE unidireccional** (meta sin promesa = normal, Art.264) · **la cocina NO va al DOM** (Regla 2) · **el DOM cura el canon** (Regla 8).
 ✅ **4 DOM cerrados con PCD: d01·d02·d03·d09** (molde d01: dictamen + qc-ev + fundamento jurídico).
 📚 **ADR-038 BRN v2 RATIF:** nodo = REGLA, no artículo. 4 niveles **Corpus→CNO(Derecho)→RO(lógica)→SAT**. BRN = CAPA (no cajón) que CONSOLIDA (no interpreta). Canon legal ya en Supabase+`Normativa_Word` (43 docs · sin Lexis). **Sig: (1) ciclo de vida de una regla (2) molde CNO/RO — antes de código.**
