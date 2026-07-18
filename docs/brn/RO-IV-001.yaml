@@ -9,14 +9,18 @@
 # ESTADO: VIGENTE — ratificada por Javo el 2026-07-18 (ADR-035 §5), junto con su CNO.
 # ═══════════════════════════════════════════════════════════════════════════════
 id: RO-IV-001
-version: "1.0"                    # el vigente HOY (2026) = piso transitorio 65%; el 70% pleno será v1.1
+version: "1.0"                    # sube por REFORMA del texto, NUNCA por el paso del tiempo (molde §4b)
 deriva_de: CNO-IV-001 v1.0       # SIEMPRE nace de una CNO (Regla 3)
 
 # ── La lógica ─────────────────────────────────────────────────────────────────────
 variable: Pct_Gasto_No_Permanente
-umbral: 65                        # % — piso transitorio VIGENTE 2026 (Disp. Transitoria Primera); es el que usa el motor
-umbral_regla_plena:
-  valor: 70                       # % — regla plena (Art. 198.1); al terminar el transitorio → RO v1.1
+# VIGENCIA OPERATIVA (colega · 2026-07-18): el paso 65→70 lo prevé la propia norma (Disposición
+# Transitoria Primera → Art. 198.1). Es una TRANSICIÓN temporal, no una reforma: se modela como
+# tramos dentro de la MISMA RO v1.0 — no genera versión nueva. El motor toma el umbral del tramo
+# vigente a la fecha de cálculo.
+vigencia_operativa:
+  - { desde: "2026-02-21", hasta: "2026-12-31", umbral: 65 }   # piso transitorio (Disp. Transitoria 1ª)
+  - { desde: "2027-01-01", hasta: null,         umbral: 70 }   # regla plena (Art. 198.1)
 seguimiento_desde: "2026-12-01"   # antes de esta fecha la señal es PREVENTIVA (no un incumplimiento exigible)
 periodo:
   desde: "2026-06"

@@ -42,6 +42,20 @@ SECRETS = REPO / ".streamlit" / "secrets.toml"
 BRN_DIR = REPO / "docs" / "brn"
 
 
+def _umbral_vigente(ro: dict, hoy: str) -> tuple:
+    """Umbral del tramo de VIGENCIA OPERATIVA vigente a la fecha (molde §4b). Si la RO no usa
+    tramos, cae al campo `umbral` plano. Devuelve (umbral_hoy, tramos)."""
+    tramos = ro.get("vigencia_operativa")
+    if not tramos:
+        return ro.get("umbral"), None
+    vig = None
+    for t in tramos:
+        d, h = str(t.get("desde", "")), t.get("hasta")
+        if d <= hoy and (h is None or hoy <= str(h)):
+            vig = t.get("umbral")
+    return vig, tramos
+
+
 def _uri() -> str:
     try:
         return tomllib.load(open(SECRETS, "rb"))["database"]["supabase_uri"]
@@ -113,10 +127,14 @@ def main() -> int:
         if integra:
             integras += 1
         ro_ligadas = []
+        hoy = date.today().isoformat()
         for ro in ro_por_cno.get(cno["id"], []):
+            umbral_hoy, tramos = _umbral_vigente(ro, hoy)
             ro_ligadas.append({
                 "id": ro["id"], "version": ro.get("version"),
-                "variable": ro.get("variable"), "umbral": ro.get("umbral"),
+                "variable": ro.get("variable"),
+                "umbral_vigente": umbral_hoy,            # el del tramo vigente a la fecha (§4b)
+                "vigencia_operativa": tramos,            # todos los tramos (transición, no reforma)
                 "consumida_por": ro.get("consumida_por", []), "opera_en": ro.get("opera_en"),
                 "estado": ro.get("estado", "propuesta"),
             })

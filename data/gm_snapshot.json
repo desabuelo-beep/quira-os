@@ -8308,7 +8308,19 @@
             "id": "RO-IV-001",
             "version": "1.0",
             "variable": "Pct_Gasto_No_Permanente",
-            "umbral": 65,
+            "umbral_vigente": 65,
+            "vigencia_operativa": [
+              {
+                "desde": "2026-02-21",
+                "hasta": "2026-12-31",
+                "umbral": 65
+              },
+              {
+                "desde": "2027-01-01",
+                "hasta": null,
+                "umbral": 70
+              }
+            ],
             "consumida_por": [
               "SAT-IV-001"
             ],

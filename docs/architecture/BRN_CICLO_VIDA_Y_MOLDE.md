@@ -68,6 +68,15 @@ propuesta ──(validada)──▶ vigente ──(cambia la lógica)──▶ o
 - **Toda versión es inmutable una vez `vigente`.** No se edita: se crea la siguiente y la anterior
   pasa a `obsoleta`. Así la traza histórica nunca se pierde.
 
+### 4b. Vigencia operativa ≠ versión (colega · 2026-07-18)
+Un cambio de umbral **previsto por la propia norma** (una transición temporal: piso 65% en 2026 →
+70% pleno en 2027, fijado por una Disposición Transitoria) **NO es una reforma y NO versiona la RO**.
+Se modela como **tramos de vigencia operativa** dentro de la **misma** RO (`vigencia_operativa`, §9).
+Solo un cambio del **texto** de la norma (una reforma real, p. ej. el legislador sube el 70→75) crea
+una versión nueva. Regla práctica: *si el cambio ya estaba escrito en la norma, es vigencia; si hizo
+falta reformar la norma, es versión.* Esto evita inflar el versionado por el mero paso del tiempo —
+crítico al escalar a 222 cantones, donde las transiciones normativas son constantes.
+
 ### 5. Propagación de una reforma — el caso "toca 12 SAT" (7ª pregunta · ADR-038 §226)
 El MDN (grafo · ADR-038 §9) hace esto **determinista**:
 ```
@@ -158,12 +167,14 @@ autorizada.
 ### 9. Campos mínimos (el molde — no cambia)
 ```yaml
 id:            RO-IV-001               # RO-<dominio>-<secuencia>
-version:       "1.1"                   # N.M — N hereda de la CNO, M por cambio de parámetro
-deriva_de:     CNO-IV-001 v2           # SIEMPRE nace de una CNO vigente (Regla 3)
+version:       "1.0"                   # N.M — sube por REFORMA, nunca por el paso del tiempo (§4b)
+deriva_de:     CNO-IV-001 v1.0         # SIEMPRE nace de una CNO vigente (Regla 3)
 variable:      Pct_Gasto_No_Permanente
-umbral:        70                      # %  (v1.0 fue 65 · piso transitorio; v1.1 = 70 regla plena)
-umbral_nota:   "piso transitorio 65% con seguimiento desde 1-dic-2026; regla plena 70%"
-periodo:       { desde: "2026-06", hasta: "2026-12", frecuencia: mensual }
+vigencia_operativa:                    # tramos previstos por la NORMA (transición, no reforma · §4b)
+  - { desde: "2026-02-21", hasta: "2026-12-31", umbral: 65 }   # piso transitorio (Disp. Transitoria 1ª)
+  - { desde: "2027-01-01", hasta: null,         umbral: 70 }   # regla plena (Art. 198.1)
+seguimiento_desde: "2026-12-01"        # antes de esta fecha la señal es preventiva (no exigible)
+periodo:       { frecuencia: mensual }
 motor:         "Gold Master · H24_SAT-IV"    # quién computa (NO lo consulta · ADR-039)
 consecuencia:  "Alerta fiscal preventiva"
 consumida_por: [ SAT-IV-001 ]          # bidireccional (MDN)
@@ -225,13 +236,12 @@ constante y el Gold Master casi nunca — por eso la BRN existe entre ambos: abs
 sin tocar el motor.
 
 ## Siguiente paso
-**Hecho:** piloto CNO-IV-001 (6/6 eslabones íntegros) · catálogo de CNO (`brn_cno.py` · MDN) ·
-plano maestro (`BRN_PLANO_MAESTRO.md`) · glosario (`BRN_GLOSARIO.md`). Todo en `propuesta`.
+**Hecho:** piloto CNO-IV-001 **VIGENTE** (Javo · 2026-07-18) · catálogo de CNO (`brn_cno.py` · MDN) ·
+plano maestro · glosario · **reforma simulada superada** (`REFORMA_SIMULADA_CNO-IV-001.md`: reforma
+70→75 y excepción; se distingue vigencia de reforma).
 
-**Pendiente — probar la gobernanza antes que el motor (colega · 2026-07-18):**
-1. **Validación humana** del piloto por Javo → `propuesta` a `vigente`.
-2. **Reforma simulada** — cambiar un umbral (65→70) o agregar un artículo ficticio y verificar que
-   la propagación documental funciona como está descrita, ANTES de tocar Python.
-3. Solo entonces: compilador RO→Gold Master (ADR-039), migrar d03, ampliar el Corpus.
+**Pendiente — implementación incremental (no rediseño):** compilador RO→Gold Master (ADR-039);
+migrar la cadena del mandato (d03) y las SAT financieras; ampliar el Corpus a más dominios normativos
+— **listo para operativizar progresivamente los 222 cantones** sobre el mismo molde.
 
 *BRN · Ciclo de Vida y Molde · Dylus Lab © 2026 · "Una regla nace de una cadena, se representa en una lógica, se mide en un motor y se explica en un dominio. El molde es el mismo para las 80 que vendrán — por eso se decide una vez, y cambiarlo después es un ADR, no un parche."*

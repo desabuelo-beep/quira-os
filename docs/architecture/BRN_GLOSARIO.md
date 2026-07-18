@@ -17,6 +17,7 @@
 | **Compilador** | El **proceso** (no un software) que transforma una RO vigente en un **artefacto de configuración** consumible por el Gold Master. **No decide, materializa**; es determinista, reproducible e idempotente. | ADR-039 |
 | **Configuración** | Los **parámetros de entrada** del motor (umbral, periodicidad). Mandan la RO. Distinta del Estado: la configuración entra por **compilación**, no por runtime. | ADR-039 |
 | **Estado** | El **resultado** del cálculo (ICPI, Ti, SAT…). Manda **Excel siempre** (Regla 1): `Excel → Python → Supabase → UI`. La Regla 1 protege el estado, no la configuración. | ADR-039 · Regla 1 |
+| **Vigencia operativa** | Tramos temporales (`desde·hasta·umbral`) dentro de **una misma RO**, cuando la **norma ya prevé** un cambio de parámetro por calendario (ej. piso 65% en 2026 → 70% en 2027). Es una **transición, no una reforma**: **no versiona** la RO. Distingue el paso del tiempo de un cambio real del texto. | Molde §4b |
 
 ## Estados del ciclo de vida (referencia rápida)
 - **CNO:** `propuesta` → `vigente` → `en_reforma` → `derogada`
