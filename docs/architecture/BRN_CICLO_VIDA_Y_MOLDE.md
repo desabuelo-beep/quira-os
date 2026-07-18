@@ -2,8 +2,10 @@
 
 > **Qué es este documento.** Cierra los pasos **2 (ciclo de vida)** y **3 (molde CNO/RO)** del
 > *Orden de trabajo* del ADR-038. Es el **contrato estable** sobre el que se construirá el piloto
-> CNO-IV-001 y, después, todas las CNO. **El molde no debe cambiar nunca:** si cambia tras migrar
-> 80 CNO, se reconstruye todo (el error del catálogo de artículos, otra vez y peor · ADR-038 §227).
+> CNO-IV-001 y, después, todas las CNO. **El molde se considera estable:** cualquier modificación
+> posterior constituye un **cambio arquitectónico mayor que requiere un ADR propio** (precisión del
+> colega · 2026-07-18: en arquitectura se evitan los absolutos — no es un dogma, es una barrera de
+> gobernanza). Si cambia tras migrar 80 CNO, se reconstruye todo (ADR-038 §227).
 
 **Estado:** PROPUESTA · 2026-07-18 (director técnico redacta sobre ADR-038/039 · Javo valida)
 **Relacionado:** ADR-038 (define CNO/RO/MDN · §8 ciclo, §221 las 7 preguntas) · ADR-039
@@ -102,9 +104,9 @@ objeto:        "la obligación del GAD de destinar un mínimo del presupuesto a 
 dominio_normativo: finanzas_publicas_municipales
 cadena:                                # cada eslabón = evidencia con su SHA (Regla 3)
   - rol: fundamento_constitucional
-    norma: CE            articulo: "271"        sha256: da13d3789c…
+    norma: CE            articulo: "271"        sha256: a76e4e0dea62…
   - rol: fundamento_legal
-    norma: COOTAD        articulo: "192"        sha256: 60f89aebd7…   reformado_por: COOTAD-2026#3
+    norma: COOTAD        articulo: "192"        sha256: 42e8c07e33cb…   reformado_por: COOTAD-2026#3
   - rol: regla
     norma: COOTAD-2026   articulo: "198.1"      sha256: 66255f1d91…
   - rol: gasto_computable
@@ -132,6 +134,13 @@ Una **RO** es la **única representación operativa autorizada** de la lógica d
 §67). Traduce una CNO (Derecho) en lógica ejecutable (variable·umbral·periodo·consecuencia) sin
 mezclar los planos. **No es "la verdad"** — la verdad es la norma; la RO es su representación
 autorizada.
+
+> **Principio de Neutralidad Operativa** (colega · 2026-07-18): *la RO **nunca interpreta** el
+> Derecho; únicamente **operacionaliza una interpretación previamente validada por autoridad
+> humana**.* Protege al proyecto de responsabilidad jurídica futura: si en cinco años alguien
+> pregunta *"¿quién decidió que el umbral era 70?"*, la respuesta no es la RO, ni el compilador, ni
+> la IA — **lo decidió la validación humana** (ADR-035 §5). La RO es el registro de esa decisión,
+> no su autor.
 
 ### 9. Campos mínimos (el molde — no cambia)
 ```yaml
@@ -172,8 +181,9 @@ Gold Master **nunca consulta la RO en runtime** — nace ya configurado. La Regl
 
 ---
 
-## Parte V — Invariantes del molde (lo que nunca cambia)
+## Parte V — Invariantes del molde (principios estables · cambiarlos exige ADR)
 1. **CNO = Derecho; RO = lógica; SAT = medición.** Nunca se mezclan los tres planos.
+   La RO **operacionaliza, no interpreta** (Principio de Neutralidad Operativa · Parte III).
 2. **Toda CNO apunta al Corpus con SHA por eslabón.** Sin SHA, no hay eslabón (Regla 3).
 3. **Solo Javo promueve a `vigente`.** Ninguna IA deriva ni declara vigencia (ADR-035 §5).
 4. **Las versiones vigentes son inmutables.** Se crea la siguiente; la anterior se conserva.
@@ -183,6 +193,24 @@ Gold Master **nunca consulta la RO en runtime** — nace ya configurado. La Regl
 
 ---
 
+## Parte VI — Gobernanza: propietario y estabilidad de cada artefacto (colega · 2026-07-18)
+
+Saber qué hace cada pieza no basta; hay que dejar claro **quién la gobierna** y **cada cuánto cambia**.
+
+| Artefacto | Propietario | Frecuencia de cambio esperada |
+|---|---|---|
+| **Corpus** | el Estado (fuente jurídica oficial) | **alta** — reformas, resoluciones, metodologías |
+| **CNO** | Dylus · validación **jurídica** (Javo promueve) | **media** — cambia con la cadena normativa |
+| **RO** | Dylus · **operacionalización** (Javo valida) | **media** — cambia con umbral/periodo |
+| **Compilación** | proceso (no software · ADR-039) | **baja** — el contrato del compilador es estable |
+| **Gold Master** | motor matemático (fórmula `H12!B33` inmutable) | **muy baja** — Regla 1 |
+| **SAT** | consumidor (lleva solo el ID de la RO) | **casi nunca** — solo si cambia qué regla consume |
+
+Dos lecturas de la tabla: **la propiedad** dice a quién reclamar cuando algo falla; **la frecuencia**
+dice dónde concentrar el mantenimiento (arriba se mueve seguido, abajo casi nunca). El Corpus cambia
+constante y el Gold Master casi nunca — por eso la BRN existe entre ambos: absorbe el cambio jurídico
+sin tocar el motor.
+
 ## Siguiente paso
 Cerrados el ciclo y el molde, procede — en este orden (ADR-038 §216):
 1. **Piloto CNO-IV-001** (asignación mínima prioritaria) sobre este molde — la misma regla que
@@ -191,4 +219,4 @@ Cerrados el ciclo y el molde, procede — en este orden (ADR-038 §216):
 3. Escribir el **plano maestro "Arquitectura General de la BRN v2"** (ADR-039 nota) que mapee cómo
    se relacionan ADR-035/037/038/039 y este documento.
 
-*BRN · Ciclo de Vida y Molde · Dylus Lab © 2026 · "Una regla nace de una cadena, se representa en una lógica, se mide en un motor y se explica en un dominio. El molde es el mismo para las 80 que vendrán — por eso se decide una vez y no se toca."*
+*BRN · Ciclo de Vida y Molde · Dylus Lab © 2026 · "Una regla nace de una cadena, se representa en una lógica, se mide en un motor y se explica en un dominio. El molde es el mismo para las 80 que vendrán — por eso se decide una vez, y cambiarlo después es un ADR, no un parche."*

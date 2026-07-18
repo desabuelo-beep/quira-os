@@ -1,0 +1,84 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# CNO-IV-001 · Regla de Asignación Mínima Prioritaria
+# Primera Cadena Normativa Operativa de la BRN v2 · piloto (ADR-038 §232).
+# Es la misma regla que rompió la BRN v1 (el "65% = Art. 192"), ahora sobre el molde
+# definitivo — estructuralmente a prueba de porciones: consultarla obliga a recorrer
+# toda la cadena. Molde: docs/architecture/BRN_CICLO_VIDA_Y_MOLDE.md (Parte II).
+#
+# ESTADO: propuesta — NO vigente. Ninguna IA la promueve. Solo Javo la valida a
+# 'vigente' (ADR-035 §5). Hasta entonces, no la consume ninguna RO en producción.
+# ═══════════════════════════════════════════════════════════════════════════════
+id: CNO-IV-001
+version: 1
+titulo: Regla de Asignación Mínima Prioritaria
+objeto: >-
+  la obligación de los GAD provinciales y municipales de destinar un mínimo del
+  presupuesto de egresos no financieros a inversión, mantenimiento y reposición.
+dominio_normativo: finanzas_publicas_municipales
+
+# ── La cadena · puro Derecho · cada eslabón apunta al Corpus con su SHA (Regla 3) ──
+cadena:
+  - rol: fundamento_constitucional
+    norma: CE
+    articulo: "271"
+    sha256: a76e4e0dea62
+    sumilla: "los GAD participarán de las rentas del Estado (base de la corresponsabilidad fiscal)"
+
+  - rol: fundamento_legal_base
+    norma: COOTAD
+    articulo: "192"
+    sha256: 42e8c07e33cb
+    sumilla: "Monto total a transferir — 21% de ingresos permanentes + 10% de los no permanentes"
+    reformado_por: COOTAD-2026 (Art. 3 sustituye el primer inciso)
+
+  - rol: regla
+    norma: COOTAD-2026
+    articulo: "198.1"
+    sha256: 66255f1d914d
+    sumilla: >-
+      Regla de asignación mínima prioritaria — al menos el 70% del presupuesto
+      codificado de egresos no financieros a gasto no permanente de inversión,
+      mantenimiento y reposición de infraestructura, bienes y activos públicos.
+
+  - rol: gasto_computable
+    norma: COOTAD-2026
+    articulo: "198.2"
+    sha256: ab87de75fc43
+    sumilla: "Determinación del gasto computable para el cumplimiento de la regla"
+
+  - rol: consecuencia
+    norma: COOTAD-2026
+    articulo: "198.6"
+    sha256: e885aa007ee9
+    sumilla: "Incumplimiento de la regla → se informa a la Contraloría General del Estado"
+
+  - rol: disposicion_transitoria
+    norma: COOTAD-2026
+    articulo: "Disposición Transitoria Primera"
+    sha256: e885aa007ee9
+    sumilla: >-
+      piso inicial del 65% con seguimiento del ente rector a partir del 1-dic-2026,
+      sobre el presupuesto codificado al 31-dic-2026.
+
+# ── Estado y gobierno del ciclo de vida ───────────────────────────────────────────
+estado: propuesta                 # propuesta | vigente | en_reforma | derogada
+vigencia:
+  desde: "2026-02-21"             # publicación de la Ley Reformatoria COOTAD-2026
+  hasta: null
+derogaciones:
+  reemplaza_a: null
+  reemplazada_por: null
+
+# ── Dependencias (bidireccional · Modelo de Dependencias Normativas · ADR-038 §9) ──
+deriva_ro:
+  - RO-IV-001                     # la lógica (variable·umbral·periodo) vive en la RO, no aquí
+
+# ── Validación humana (regla constitucional · ADR-035 §5) ─────────────────────────
+validacion:
+  propuesta_por: "BRN (extracción asistida)"
+  validada_por: null              # ← Javo escribe su validación aquí para promover a 'vigente'
+  fecha_validacion: null
+notas: >-
+  Corrección de fondo (2026-07-18): la REGLA PLENA es 70% (Art. 198.1); el 65% es solo
+  el piso transitorio con seguimiento desde 1-dic-2026. La BRN v1 citó únicamente el
+  Art. 192 y concluyó que el 65% era falso — el error no fue de lectura, fue de diseño.

@@ -1,0 +1,46 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# RO-IV-001 · Regla Operativa derivada de CNO-IV-001
+# La ÚNICA representación operativa autorizada de la lógica de la regla de asignación
+# mínima prioritaria (ADR-039 §67). Traduce la CNO (Derecho) en lógica ejecutable
+# (variable·umbral·periodo·consecuencia) sin mezclar los planos.
+# NO es "la verdad": la verdad es la norma; esta es su representación autorizada.
+# Molde: docs/architecture/BRN_CICLO_VIDA_Y_MOLDE.md (Parte III).
+#
+# ESTADO: propuesta — no se compila al Gold Master hasta que su CNO esté 'vigente'
+# y Javo la valide (ADR-038 §156 · ADR-039 §86).
+# ═══════════════════════════════════════════════════════════════════════════════
+id: RO-IV-001
+version: "1.1"                    # v1.0 fue 65% (piso); v1.1 = 70% (regla plena) — misma CNO
+deriva_de: CNO-IV-001 v1         # SIEMPRE nace de una CNO (Regla 3)
+
+# ── La lógica ─────────────────────────────────────────────────────────────────────
+variable: Pct_Gasto_No_Permanente
+umbral: 70                        # % — regla plena (Art. 198.1)
+umbral_transitorio:
+  valor: 65                       # % — piso inicial (Disposición Transitoria Primera)
+  vigente_desde: "2026-12-01"     # el seguimiento del ente rector arranca aquí
+  nota: >-
+    hasta el 1-dic-2026 la señal es PREVENTIVA (anticipa el cumplimiento antes de que
+    el seguimiento formal comience); no es un incumplimiento exigible.
+periodo:
+  desde: "2026-06"
+  hasta: "2026-12"
+  frecuencia: mensual
+
+# ── Ejecución (el motor computa; NO consulta esta RO en runtime · ADR-039) ─────────
+motor: "Gold Master · H24_SAT-IV"
+consecuencia: "Alerta fiscal preventiva"
+
+# ── Consumo (bidireccional · MDN) ─────────────────────────────────────────────────
+consumida_por:
+  - SAT-IV-001                    # la SAT lleva SOLO este ID; ya no conoce la ley (ADR-038 §118)
+opera_en: d02                     # dominio funcional (Presupuesto & Financiamiento)
+
+# ── Estado y trazabilidad de compilación (ADR-039 §5) ─────────────────────────────
+estado: propuesta                 # propuesta | vigente | obsoleta | retirada
+compilada:
+  build: null                     # se llena cuando el compilador la materializa al Gold Master
+  sha_artefacto: null
+validacion:
+  validada_por: null              # ← Javo valida para promover a 'vigente'
+  fecha_validacion: null
