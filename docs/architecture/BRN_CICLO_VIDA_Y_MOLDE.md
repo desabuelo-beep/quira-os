@@ -164,24 +164,30 @@ autorizada.
 > la IA — **lo decidió la validación humana** (ADR-035 §5). La RO es el registro de esa decisión,
 > no su autor.
 
-### 9. Campos mínimos (el molde — no cambia)
+### 9. Campos mínimos — estructura de TRES PLANOS (colega · 2026-07-18)
+La RO separa **métrica** (qué se mide) · **parámetros** (con qué valores) · **método** (cómo, si el
+dominio lo requiere — algoritmo conceptual, NO parámetros). **La RO no conoce el motor** (Regla 1):
+solo declara a quién alimenta (`consume`) y dónde opera (`opera_en`).
 ```yaml
 id:            RO-IV-001               # RO-<dominio>-<secuencia>
 version:       "1.0"                   # N.M — sube por REFORMA, nunca por el paso del tiempo (§4b)
 deriva_de:     CNO-IV-001 v1.0         # SIEMPRE nace de una CNO vigente (Regla 3)
-variable:      Pct_Gasto_No_Permanente
-vigencia_operativa:                    # tramos previstos por la NORMA (transición, no reforma · §4b)
-  - { desde: "2026-02-21", hasta: "2026-12-31", umbral: 65 }   # piso transitorio (Disp. Transitoria 1ª)
-  - { desde: "2027-01-01", hasta: null,         umbral: 70 }   # regla plena (Art. 198.1)
-seguimiento_desde: "2026-12-01"        # antes de esta fecha la señal es preventiva (no exigible)
-periodo:       { frecuencia: mensual }
-motor:         "Gold Master · H24_SAT-IV"    # quién computa (NO lo consulta · ADR-039)
+metrica:                               # QUÉ se mide
+  nombre:      Pct_Gasto_No_Permanente
+  unidad:      porcentaje
+parametros:                            # CON QUÉ valores
+  frecuencia:  mensual
+  vigencia_operativa:                  # tramos previstos por la NORMA (transición, no reforma · §4b)
+    - { desde: "2026-02-21", hasta: "2026-12-31", umbral: 65 }   # piso transitorio (Disp. Transitoria 1ª)
+    - { desde: "2027-01-01", hasta: null,         umbral: 70 }   # regla plena (Art. 198.1)
+# metodo:                              # CÓMO (solo si el dominio lo requiere, p. ej. d03 congruencia)
 consecuencia:  "Alerta fiscal preventiva"
-consumida_por: [ SAT-IV-001 ]          # bidireccional (MDN)
+consume:       [ SAT-IV-001 ]          # a quién alimenta (la RO NO nombra el motor · MDN bidireccional)
 opera_en:      d02                     # dominio funcional (no normativo)
 estado:        vigente                 # propuesta | vigente | obsoleta | retirada
-compilada:     { build: "2026.07.18", sha_artefacto: "…" }   # trazabilidad ADR-039 §5
 ```
+El **mapeo métrica → celda del Gold Master** NO vive en la RO ni en el Corpus: es implementación,
+lo resuelve el paso de aplicación del artefacto al motor (ADR-039 · pendiente de diseño).
 **Cómo la SAT la referencia (pregunta d):** la SAT lleva **solo el ID de la RO** (`SAT-IV-001 →
 RO-IV-001`); ya no conoce la ley (ADR-038 §118). Para justificar, sube a la CNO; para probar, al
 Corpus (SHA).

@@ -64,17 +64,20 @@ def _firma(contenido: dict) -> str:
 
 def _parametros_de(ro: dict) -> list[dict]:
     """Traduce una RO en filas de EJECUCIÓN — un tramo de vigencia = una fila (molde §4b).
-    Entrega TODOS los tramos; el runtime elige el de la fecha de cálculo. El compilador no decide."""
+    Lee la estructura de tres planos (métrica·parámetros·método): del config solo salen métrica y
+    parámetros; el método es algoritmo conceptual, no ejecución. Entrega TODOS los tramos; el
+    runtime elige el de la fecha. El compilador no decide y NO conoce el motor (la RO tampoco)."""
+    m = ro.get("metrica") or {}
+    p = ro.get("parametros") or {}
+    tramos = p.get("vigencia_operativa") or [{"desde": None, "hasta": None, "umbral": p.get("umbral")}]
     filas = []
-    tramos = ro.get("vigencia_operativa") or [{"desde": None, "hasta": None, "umbral": ro.get("umbral")}]
     for t in tramos:
         filas.append({
-            "variable": ro.get("variable"),
+            "variable": m.get("nombre"),
             "umbral": t.get("umbral"),
             "desde": t.get("desde"),
             "hasta": t.get("hasta"),
-            "frecuencia": (ro.get("periodo") or {}).get("frecuencia"),
-            "motor_ref": ro.get("motor"),        # ancla mínima para que el motor sepa qué configurar
+            "frecuencia": p.get("frecuencia"),
             "opera_en": ro.get("opera_en"),
         })
     return filas
@@ -97,7 +100,7 @@ def main() -> int:
         traza.append({
             "ro": ro["id"], "ro_version": ro.get("version"),
             "cno": cno_id, "cno_version": cno.get("version"),
-            "consumida_por": ro.get("consumida_por", []),
+            "consume": ro.get("consume", []),
             "cadena_sha": [e.get("sha256") for e in cno.get("cadena", []) if e.get("sha256")],
         })
 
@@ -117,7 +120,7 @@ def main() -> int:
     print(f"BRN · Compilador {COMPILADOR_VERSION} (schema {ARTIFACT_SCHEMA}) — "
           f"{len(traza)} RO vigente(s), {len(parametros)} fila(s) de ejecución")
     for c in traza:
-        print(f'   ✓ {c["ro"]} v{c["ro_version"]} ← {c["cno"]} v{c["cno_version"]} → {", ".join(c["consumida_por"]) or "—"}')
+        print(f'   ✓ {c["ro"]} v{c["ro_version"]} ← {c["cno"]} v{c["cno_version"]} → {", ".join(c["consume"]) or "—"}')
     if saltadas:
         print(f'   ⏭ no compiladas (no vigentes): {", ".join(saltadas)}')
     print(f"   {artifact_id}", "(sin cambios · idempotente)" if firma == firma_previa else "(NUEVA firma)")

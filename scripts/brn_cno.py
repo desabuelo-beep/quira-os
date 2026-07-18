@@ -45,9 +45,10 @@ BRN_DIR = REPO / "docs" / "brn"
 def _umbral_vigente(ro: dict, hoy: str) -> tuple:
     """Umbral del tramo de VIGENCIA OPERATIVA vigente a la fecha (molde §4b). Si la RO no usa
     tramos, cae al campo `umbral` plano. Devuelve (umbral_hoy, tramos)."""
-    tramos = ro.get("vigencia_operativa")
+    p = ro.get("parametros") or {}
+    tramos = p.get("vigencia_operativa")
     if not tramos:
-        return ro.get("umbral"), None
+        return p.get("umbral"), None
     vig = None
     for t in tramos:
         d, h = str(t.get("desde", "")), t.get("hasta")
@@ -132,10 +133,10 @@ def main() -> int:
             umbral_hoy, tramos = _umbral_vigente(ro, hoy)
             ro_ligadas.append({
                 "id": ro["id"], "version": ro.get("version"),
-                "variable": ro.get("variable"),
+                "variable": (ro.get("metrica") or {}).get("nombre"),
                 "umbral_vigente": umbral_hoy,            # el del tramo vigente a la fecha (§4b)
                 "vigencia_operativa": tramos,            # todos los tramos (transición, no reforma)
-                "consumida_por": ro.get("consumida_por", []), "opera_en": ro.get("opera_en"),
+                "consume": ro.get("consume", []), "opera_en": ro.get("opera_en"),
                 "estado": ro.get("estado", "propuesta"),
             })
         catalogo.append({

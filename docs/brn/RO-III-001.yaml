@@ -1,43 +1,44 @@
 # ═══════════════════════════════════════════════════════════════════════════════
 # RO-III-001 · Regla Operativa derivada de CNO-III-001
-# La lógica de medición del mandato electoral. AQUÍ se valida el diseño (colega · 2026-07-18):
-# el mandato no parametriza un % presupuestario, sino un PROCEDIMIENTO DE EVALUACIÓN de
-# congruencia. Pero conserva la MISMA estructura del molde (variable·umbral·periodo) para que
-# el compilador la transforme sin una sola línea específica de d03 — ese es el examen.
+# La lógica de medición del mandato electoral. Estructura en TRES PLANOS (colega · 2026-07-18):
+#   · metrica    — qué se mide (la fidelidad del mandato)
+#   · parametros — con qué valores (umbral, frecuencia)
+#   · metodo     — cómo se evalúa (congruencia·cobertura·trazabilidad): algoritmo conceptual,
+#                  NO parámetros. El motor ya sabe calcularlo; aquí se DEFINE, no se ejecuta.
+# La RO NO conoce el motor (Regla 1): solo declara a quién alimenta (consume) y dónde opera.
 #
 # Javo (2026-07-18): todos los dominios tienen su lógica de medición; d03 no es excepción.
-# Su medición: la fidelidad del mandato (congruencia promesa→plan, ponderada), umbral 85%.
-#
-# ESTADO: propuesta — vigente solo tras validación de Javo (ADR-035 §5).
+# ESTADO: propuesta — vigente solo tras validación de Javo (ADR-035 §5), con la misma revisión
+# que tuvo CNO-IV-001. El compilador la incorpora automáticamente al promoverse.
 # ═══════════════════════════════════════════════════════════════════════════════
 id: RO-III-001
 version: "1.0"
 deriva_de: CNO-III-001 v1.0      # SIEMPRE nace de una CNO (Regla 3)
 
-# ── La lógica de medición ─────────────────────────────────────────────────────────
-variable: Pct_Fidelidad_Mandato   # congruencia ponderada promesa (Plan de Trabajo) → plan de desarrollo
-umbral: 85                        # % — piso de FIDELIDAD ALTA; por debajo, atención preventiva
-# CRITERIOS de evaluación (la naturaleza distinta a d02: no es un techo de gasto, es un
-# procedimiento de congruencia). Son la DEFINICIÓN de la lógica; el motor ya sabe calcularla.
-# El compilador NO los baja al config de ejecución — quedan en el canon/manifest para trazar.
-criterios:
+# ── Definición de la métrica (qué se mide) ────────────────────────────────────────
+metrica:
+  nombre: Pct_Fidelidad_Mandato   # congruencia ponderada promesa (Plan de Trabajo) → plan de desarrollo
+  unidad: porcentaje
+
+# ── Parámetros operativos (con qué valores) ───────────────────────────────────────
+parametros:
+  umbral: 85                      # % — piso de FIDELIDAD ALTA; por debajo, atención preventiva
+  frecuencia: anual               # el mandato se evalúa por período, no mensualmente
+
+# ── Método (cómo se evalúa · algoritmo conceptual, NO parámetros) ──────────────────
+metodo:
   congruencia: "correspondencia entre cada promesa inscrita y una meta del plan de desarrollo"
   cobertura: "proporción de promesas que hallaron correspondencia identificada"
   trazabilidad: "existencia de evidencia documental que sostiene cada correspondencia"
-periodo: { frecuencia: anual }    # el mandato se evalúa por período, no mensualmente
-motor: "Gold Master · fidelidad del mandato (d03)"   # el motor computa; NO consulta esta RO (ADR-039)
+
 consecuencia: "Atención preventiva del mandato (no correctiva): el mandato está en el plan; se vigila su viaje aguas abajo"
 
-# ── Consumo (MDN) ─────────────────────────────────────────────────────────────────
-consumida_por:
-  - SAT-III-001                   # la señal del mandato lleva solo este ID (ADR-038 §118)
+# ── Consumo (la RO no conoce el motor · colega 2026-07-18) ─────────────────────────
+consume: [ SAT-III-001 ]          # la señal del mandato lleva solo este ID (ADR-038 §118)
 opera_en: d03                     # Gobernanza del Mandato Electoral
 
 # ── Estado y trazabilidad ─────────────────────────────────────────────────────────
 estado: propuesta                 # propuesta | vigente | obsoleta | retirada
-compilada:
-  build: null
-  sha_artefacto: null
 validacion:
   validada_por: null              # ← Javo valida para promover a 'vigente'
   fecha_validacion: null

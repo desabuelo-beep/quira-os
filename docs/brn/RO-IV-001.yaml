@@ -1,46 +1,38 @@
 # ═══════════════════════════════════════════════════════════════════════════════
 # RO-IV-001 · Regla Operativa derivada de CNO-IV-001
-# La ÚNICA representación operativa autorizada de la lógica de la regla de asignación
-# mínima prioritaria (ADR-039 §67). Traduce la CNO (Derecho) en lógica ejecutable
-# (variable·umbral·periodo·consecuencia) sin mezclar los planos.
-# NO es "la verdad": la verdad es la norma; esta es su representación autorizada.
-# Molde: docs/architecture/BRN_CICLO_VIDA_Y_MOLDE.md (Parte III).
+# La única representación operativa autorizada de la regla de asignación mínima prioritaria.
+# Estructura en TRES PLANOS (colega · 2026-07-18): métrica (qué se mide) · parámetros (con qué
+# valores) · método (cómo, si aplica). La RO NO conoce el motor — eso es implementación (Regla 1).
 #
-# ESTADO: VIGENTE — ratificada por Javo el 2026-07-18 (ADR-035 §5), junto con su CNO.
+# ESTADO: VIGENTE — ratificada por Javo el 2026-07-18 (ADR-035 §5).
 # ═══════════════════════════════════════════════════════════════════════════════
 id: RO-IV-001
 version: "1.0"                    # sube por REFORMA del texto, NUNCA por el paso del tiempo (molde §4b)
 deriva_de: CNO-IV-001 v1.0       # SIEMPRE nace de una CNO (Regla 3)
 
-# ── La lógica ─────────────────────────────────────────────────────────────────────
-variable: Pct_Gasto_No_Permanente
-# VIGENCIA OPERATIVA (colega · 2026-07-18): el paso 65→70 lo prevé la propia norma (Disposición
-# Transitoria Primera → Art. 198.1). Es una TRANSICIÓN temporal, no una reforma: se modela como
-# tramos dentro de la MISMA RO v1.0 — no genera versión nueva. El motor toma el umbral del tramo
-# vigente a la fecha de cálculo.
-vigencia_operativa:
-  - { desde: "2026-02-21", hasta: "2026-12-31", umbral: 65 }   # piso transitorio (Disp. Transitoria 1ª)
-  - { desde: "2027-01-01", hasta: null,         umbral: 70 }   # regla plena (Art. 198.1)
-seguimiento_desde: "2026-12-01"   # antes de esta fecha la señal es PREVENTIVA (no un incumplimiento exigible)
-periodo:
-  desde: "2026-06"
-  hasta: "2026-12"
-  frecuencia: mensual
+# ── Definición de la métrica (qué se mide) ────────────────────────────────────────
+metrica:
+  nombre: Pct_Gasto_No_Permanente
+  unidad: porcentaje
 
-# ── Ejecución (el motor computa; NO consulta esta RO en runtime · ADR-039) ─────────
-motor: "Gold Master · H24_SAT-IV"
+# ── Parámetros operativos (con qué valores) ───────────────────────────────────────
+# VIGENCIA OPERATIVA (§4b): el paso 65→70 lo prevé la propia norma (Transitoria → Art. 198.1).
+# Es una TRANSICIÓN, no una reforma: tramos dentro de la MISMA RO v1.0; el runtime elige por fecha.
+parametros:
+  frecuencia: mensual
+  seguimiento_desde: "2026-12-01"    # antes: señal preventiva (no exigible)
+  vigencia_operativa:
+    - { desde: "2026-02-21", hasta: "2026-12-31", umbral: 65 }   # piso transitorio (Disp. Transitoria 1ª)
+    - { desde: "2027-01-01", hasta: null,         umbral: 70 }   # regla plena (Art. 198.1)
+
 consecuencia: "Alerta fiscal preventiva"
 
-# ── Consumo (bidireccional · MDN) ─────────────────────────────────────────────────
-consumida_por:
-  - SAT-IV-001                    # la SAT lleva SOLO este ID; ya no conoce la ley (ADR-038 §118)
+# ── Consumo (la RO no conoce el motor · colega 2026-07-18) ─────────────────────────
+consume: [ SAT-IV-001 ]           # la SAT lleva solo este ID (ADR-038 §118)
 opera_en: d02                     # dominio funcional (Presupuesto & Financiamiento)
 
-# ── Estado y trazabilidad de compilación (ADR-039 §5) ─────────────────────────────
+# ── Estado y trazabilidad ─────────────────────────────────────────────────────────
 estado: vigente                   # propuesta | vigente | obsoleta | retirada
-compilada:
-  build: null                     # se llena cuando el compilador la materializa al Gold Master
-  sha_artefacto: null
 validacion:
   validada_por: "Javo"            # ADR-035 §5 — ratificado
   fecha_validacion: "2026-07-18"

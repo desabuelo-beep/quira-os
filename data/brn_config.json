@@ -1,6 +1,6 @@
 {
   "artifact_schema": "1.0",
-  "artifact_id": "BRN-BUILD-bb71dced",
+  "artifact_id": "BRN-BUILD-f279f06b",
   "parametros": [
     {
       "variable": "Pct_Gasto_No_Permanente",
@@ -8,7 +8,6 @@
       "desde": "2026-02-21",
       "hasta": "2026-12-31",
       "frecuencia": "mensual",
-      "motor_ref": "Gold Master · H24_SAT-IV",
       "opera_en": "d02"
     },
     {
@@ -17,7 +16,6 @@
       "desde": "2027-01-01",
       "hasta": null,
       "frecuencia": "mensual",
-      "motor_ref": "Gold Master · H24_SAT-IV",
       "opera_en": "d02"
     }
   ]

@@ -8333,7 +8333,7 @@
             "variable": "Pct_Fidelidad_Mandato",
             "umbral_vigente": 85,
             "vigencia_operativa": null,
-            "consumida_por": [
+            "consume": [
               "SAT-III-001"
             ],
             "opera_en": "d03",
@@ -8422,7 +8422,7 @@
                 "umbral": 70
               }
             ],
-            "consumida_por": [
+            "consume": [
               "SAT-IV-001"
             ],
             "opera_en": "d02",
