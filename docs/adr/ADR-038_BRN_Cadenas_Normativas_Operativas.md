@@ -185,6 +185,33 @@ dentro de la BRN** (la fuente es herramienta reemplazable; la BRN es activo; SAT
 consumidores — ninguno gobierna la BRN). Este ciclo definirá cómo se **versiona** una RO, cuándo una reemplaza a otra,
 cómo se deroga y cómo se propaga una reforma que toca 12 SAT. Si crece, se separa a un ADR propio.
 
+### 9. Principio de Dependencia Normativa + el grafo normativo (aporte del colega · 2026-07-17)
+> **Principio de Dependencia Normativa:** *toda RO, SAT, DOM o componente funcional debe poder
+> reconstruir su dependencia jurídica completa mediante la BRN —desde el activo operativo hasta el
+> texto oficial del Corpus— con **trazabilidad bidireccional**.*
+
+La BRN no es una lista: es un **grafo normativo** (implementado sobre Neo4j, ya en el stack). Cada
+CNO, RO, SAT y DOM es un **nodo**; las dependencias son **aristas**. Una CNO nunca vive sola:
+```
+CNO-IV-001  ──depende de──▶  CE-271 · COOTAD-192 · 198.1 · 198.2 · 198.6 · Transitoria
+            ◀──deriva────  RO-IV-001 · RO-IV-014 …
+                           RO ──consumida por──▶ SAT-IV · SAT-013 … ──▶ DOM d02 · dashboards
+```
+**Trazabilidad completa hasta el final de la cadena:** una reforma deja de decir "cambió el Art.
+198" y dice "cambió CNO-IV-001 → afecta 3 RO → recompila el Gold Master (ADR-039) → 7 SAT → 2 DOM →
+12 dashboards → informes". Es **memoria normativa viva** y un **sistema de gestión del cambio
+normativo**: almacena cómo todo el ecosistema depende jurídicamente de todo lo demás. El error del 65% no solo sería imposible: si
+ocurriera una inconsistencia, el grafo mostraría al instante qué quedó afectado.
+
+**LÍMITE DURO — la BRN traza el motor, NO lo alimenta (Regla 1 · ADR-023):** el colega propone que
+el Gold Master "solo conozca `RO-IV-001`" y la BRN le responda variable/fórmula/umbral. **Eso
+invertiría el flujo** (`Excel → Python → Supabase → UI, nunca al revés`) y tocaría un motor
+**inmutable**. Corrección: el Gold Master **no consulta la BRN** —sigue siendo la fuente autónoma
+del cálculo, con sus umbrales curados sobre copia con evidencia—. La BRN **registra la relación**
+`umbral del H24 ← funda en → CNO-IV-001` y **detecta divergencias**; la traza va del motor **hacia**
+la BRN (para explicar), nunca de la BRN **hacia** el motor (para dictar). La BRN **explica** al
+Gold Master; no lo gobierna.
+
 ## Orden de trabajo (corregido por el colega — **el CICLO antes que el molde**)
 1. Ratificar este ADR.
 2. **Definir el CICLO DE VIDA completo de una regla** (§8): de la norma nueva al consumo por la SAT,
