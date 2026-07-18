@@ -42,6 +42,14 @@ Motor Canónico de Medición.* Puede ejecutarse con Python, Excel, Power Query, 
 mano — es una **etapa del pipeline**, no un programa. Así el canon sobrevive aunque cambie la
 tecnología. El compilador **no modifica** el Gold Master: **produce** un artefacto compatible con él.
 
+**El compilador NO decide — solo materializa** (precisión del colega · 2026-07-17): *la compilación
+es un proceso de construcción de artefactos, no un proceso de decisión jurídica. El compilador no
+interpreta la norma ni calcula resultados; únicamente materializa una Regla Operativa previamente
+validada en un formato consumible por el Gold Master.* Esto separa cuatro roles que nunca deben
+confundirse: **interpretación jurídica** (humana, sobre el Corpus) · **validación** (Javo, ADR-035
+§5) · **compilación** (mecánica, sin criterio) · **ejecución** (el Gold Master). Nadie convierte el
+compilador en un "motor inteligente".
+
 ### 2. La RO es la única REPRESENTACIÓN OPERATIVA AUTORIZADA de la configuración
 La RO **no es "la verdad"** —la verdad sigue siendo la norma (precisión del colega · 2026-07-17):
 la RO es la única **representación operativa autorizada** de una regla normativa. Nunca reemplaza
