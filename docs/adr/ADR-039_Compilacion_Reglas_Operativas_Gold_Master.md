@@ -1,6 +1,8 @@
 # ADR-039 · Compilación de Reglas Operativas hacia el Gold Master
 
-**Estado:** PROPUESTO · 2026-07-17 (síntesis del colega · director técnico redacta) · **pendiente de ratificación**
+**Estado:** ACEPTADO CONCEPTUALMENTE · 2026-07-17 (síntesis del colega · director técnico redacta)
+· *no "cerrado": el contrato del compilador —entradas, salidas, versionado, artefactos— se
+especifica en el documento del ciclo de vida (precisión del colega · 2026-07-17)*
 **Contexto de origen:** al cerrar el ADR-038 quedó una contradicción: *"la BRN explica al Gold
 Master, no lo gobierna"* + *"el Gold Master es fuente autónoma del cálculo"* producen **dos
 verdades del mismo parámetro** (el 65% viviría en la RO **y** estampado en Excel). Eso rompe el
@@ -49,6 +51,18 @@ validada en un formato consumible por el Gold Master.* Esto separa cuatro roles 
 confundirse: **interpretación jurídica** (humana, sobre el Corpus) · **validación** (Javo, ADR-035
 §5) · **compilación** (mecánica, sin criterio) · **ejecución** (el Gold Master). Nadie convierte el
 compilador en un "motor inteligente".
+
+**El compilador debe ser DETERMINISTA, REPRODUCIBLE e IDEMPOTENTE** (colega · 2026-07-17): la misma
+RO produce siempre el mismo artefacto; recompilar sin cambios no altera nada. Sin esas tres, la
+trazabilidad se rompe.
+
+### 5. Trazabilidad de la versión jurídica del cálculo (agenda del ciclo de vida)
+El Gold Master debe **registrar de qué versión de RO fue configurado**, para poder responder *"¿con
+qué versión jurídica se calculó este ICPI?"* — hoy esa traza está incompleta. Se especifica en el
+documento del ciclo de vida:
+```
+RO-IV-001 v3.2 → Compilación → Gold Master build 2026.07.18 (guarda: RO usada · versión · SHA · fecha)
+```
 
 ### 2. La RO es la única REPRESENTACIÓN OPERATIVA AUTORIZADA de la configuración
 La RO **no es "la verdad"** —la verdad sigue siendo la norma (precisión del colega · 2026-07-17):
