@@ -8249,7 +8249,7 @@
         "version": "1.0",
         "titulo": "Traducción del Mandato Electoral a la Gestión Pública",
         "dominio_normativo": "mandato_electoral_y_representacion",
-        "estado": "propuesta",
+        "estado": "vigente",
         "cadena_integra": true,
         "n_eslabones": 9,
         "cadena": [
@@ -8337,7 +8337,7 @@
               "SAT-III-001"
             ],
             "opera_en": "d03",
-            "estado": "propuesta"
+            "estado": "vigente"
           }
         ],
         "vigencia": {

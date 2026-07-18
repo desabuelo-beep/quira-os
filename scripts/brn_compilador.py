@@ -63,10 +63,12 @@ def _firma(contenido: dict) -> str:
 
 
 def _parametros_de(ro: dict) -> list[dict]:
-    """Traduce una RO en filas de EJECUCIÓN — un tramo de vigencia = una fila (molde §4b).
-    Lee la estructura de tres planos (métrica·parámetros·método): del config solo salen métrica y
-    parámetros; el método es algoritmo conceptual, no ejecución. Entrega TODOS los tramos; el
-    runtime elige el de la fecha. El compilador no decide y NO conoce el motor (la RO tampoco)."""
+    """ADAPTADOR RO → filas de ejecución (colega · 2026-07-18): ESTE es el ÚNICO punto que conoce
+    la estructura YAML de la RO. Si en BRN v3 cambia el YAML, solo cambia esta función — el resto del
+    compilador permanece intacto. Un tramo de vigencia = una fila (molde §4b).
+    Lee los tres planos (métrica·parámetros·método): del config solo salen métrica y parámetros; el
+    método es algoritmo conceptual, no ejecución. Entrega TODOS los tramos; el runtime elige el de la
+    fecha. El compilador no decide y NO conoce el motor (la RO tampoco)."""
     m = ro.get("metrica") or {}
     p = ro.get("parametros") or {}
     tramos = p.get("vigencia_operativa") or [{"desde": None, "hasta": None, "umbral": p.get("umbral")}]

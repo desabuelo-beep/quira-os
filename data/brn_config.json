@@ -1,7 +1,15 @@
 {
   "artifact_schema": "1.0",
-  "artifact_id": "BRN-BUILD-f279f06b",
+  "artifact_id": "BRN-BUILD-89c1294f",
   "parametros": [
+    {
+      "variable": "Pct_Fidelidad_Mandato",
+      "umbral": 85,
+      "desde": null,
+      "hasta": null,
+      "frecuencia": "anual",
+      "opera_en": "d03"
+    },
     {
       "variable": "Pct_Gasto_No_Permanente",
       "umbral": 65,

@@ -1,12 +1,32 @@
 {
   "artifact_schema": "1.0",
-  "artifact_id": "BRN-BUILD-f279f06b",
+  "artifact_id": "BRN-BUILD-89c1294f",
   "compilador_version": "1.0",
   "build": "2026.07.18",
-  "build_utc": "2026-07-18T18:18:33+00:00",
-  "firma_sha256": "f279f06b1e16a55cc1b1443e7b88301fa48fb3730734b3276ebbeb9a54978a46",
+  "build_utc": "2026-07-18T18:29:15+00:00",
+  "firma_sha256": "89c1294fbb8622b9056b480d03b6775df8dabe1fca9b0f257bd48f626fddddec",
   "_nota": "config.json = ejecución (motor) · manifest.json = trazabilidad (BRN). El compilador entrega todos los tramos; el runtime resuelve la vigencia (§4b).",
   "generado_de": [
+    {
+      "ro": "RO-III-001",
+      "ro_version": "1.0",
+      "cno": "CNO-III-001",
+      "cno_version": "1.0",
+      "consume": [
+        "SAT-III-001"
+      ],
+      "cadena_sha": [
+        "982c97e9b32f",
+        "189b101bf567",
+        "d1d6b65f18fc",
+        "54bce2bf7235",
+        "b49b8c942524",
+        "349a6ad45c33",
+        "d3e1686814de",
+        "547b900b8a8f",
+        "8fb8c8f1ace3"
+      ]
+    },
     {
       "ro": "RO-IV-001",
       "ro_version": "1.0",

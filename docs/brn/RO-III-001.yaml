@@ -8,8 +8,7 @@
 # La RO NO conoce el motor (Regla 1): solo declara a quién alimenta (consume) y dónde opera.
 #
 # Javo (2026-07-18): todos los dominios tienen su lógica de medición; d03 no es excepción.
-# ESTADO: propuesta — vigente solo tras validación de Javo (ADR-035 §5), con la misma revisión
-# que tuvo CNO-IV-001. El compilador la incorpora automáticamente al promoverse.
+# ESTADO: VIGENTE — ratificada por Javo el 2026-07-18 (ADR-035 §5), junto con su CNO.
 # ═══════════════════════════════════════════════════════════════════════════════
 id: RO-III-001
 version: "1.0"
@@ -26,10 +25,15 @@ parametros:
   frecuencia: anual               # el mandato se evalúa por período, no mensualmente
 
 # ── Método (cómo se evalúa · algoritmo conceptual, NO parámetros) ──────────────────
+# ESTRUCTURADO (colega · 2026-07-18): metadatos, no narrativa — para que otro componente pueda
+# interpretar la naturaleza del método. Criterios como LISTA de objetos: admiten peso/obligatorio/
+# origen a futuro sin romper compatibilidad. El compilador NO baja el método al config de ejecución.
 metodo:
-  congruencia: "correspondencia entre cada promesa inscrita y una meta del plan de desarrollo"
-  cobertura: "proporción de promesas que hallaron correspondencia identificada"
-  trazabilidad: "existencia de evidencia documental que sostiene cada correspondencia"
+  tipo: congruencia_documental
+  criterios:
+    - { id: congruencia,  obligatorio: true,  descripcion: "correspondencia entre cada promesa inscrita y una meta del plan de desarrollo" }
+    - { id: cobertura,    obligatorio: true,  descripcion: "proporción de promesas que hallaron correspondencia identificada" }
+    - { id: trazabilidad, obligatorio: true,  descripcion: "existencia de evidencia documental que sostiene cada correspondencia" }
 
 consecuencia: "Atención preventiva del mandato (no correctiva): el mandato está en el plan; se vigila su viaje aguas abajo"
 
@@ -38,7 +42,7 @@ consume: [ SAT-III-001 ]          # la señal del mandato lleva solo este ID (AD
 opera_en: d03                     # Gobernanza del Mandato Electoral
 
 # ── Estado y trazabilidad ─────────────────────────────────────────────────────────
-estado: propuesta                 # propuesta | vigente | obsoleta | retirada
+estado: vigente                   # propuesta | vigente | obsoleta | retirada
 validacion:
-  validada_por: null              # ← Javo valida para promover a 'vigente'
-  fecha_validacion: null
+  validada_por: "Javo"            # ADR-035 §5 — ratificado
+  fecha_validacion: "2026-07-18"

@@ -8,7 +8,8 @@
 # La CNO responde SOLO a: ¿qué obligación jurídica conecta el mandato electoral con la gestión
 # pública? Es puro Derecho — NO contiene variable, umbral ni criterio de medición (eso es la RO).
 #
-# ESTADO: propuesta — NO vigente. Solo Javo la promueve (ADR-035 §5), como hizo con CNO-IV-001.
+# ESTADO: VIGENTE — ratificada por Javo el 2026-07-18 (ADR-035 §5). Segunda CNO promovida:
+# el molde queda validado sobre DOS naturalezas distintas de regla (umbral · congruencia).
 # ═══════════════════════════════════════════════════════════════════════════════
 id: CNO-III-001
 version: "1.0"
@@ -75,7 +76,7 @@ cadena:
     sumilla: "revocatoria del mandato: la consecuencia del incumplimiento ante el electorado"
 
 # ── Estado y ciclo de vida ────────────────────────────────────────────────────────
-estado: propuesta                 # propuesta | vigente | en_reforma | derogada
+estado: vigente                   # propuesta | vigente | en_reforma | derogada
 vigencia:
   desde: "2008-10-20"             # vigencia de la Constitución (marco del mandato)
   hasta: null
@@ -90,8 +91,8 @@ deriva_ro:
 # ── Validación humana (ADR-035 §5) ────────────────────────────────────────────────
 validacion:
   propuesta_por: "BRN (extracción asistida)"
-  validada_por: null              # ← Javo valida para promover a 'vigente'
-  fecha_validacion: null
+  validada_por: "Javo"            # ADR-035 §5 — ratificado
+  fecha_validacion: "2026-07-18"
 notas: >-
   Examen de generalidad: esta cadena NO desemboca en un umbral presupuestario sino en una
   obligación de congruencia y trazabilidad. Si el molde, el catálogo y el compilador la
