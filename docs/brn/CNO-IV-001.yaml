@@ -5,11 +5,10 @@
 # definitivo — estructuralmente a prueba de porciones: consultarla obliga a recorrer
 # toda la cadena. Molde: docs/architecture/BRN_CICLO_VIDA_Y_MOLDE.md (Parte II).
 #
-# ESTADO: propuesta — NO vigente. Ninguna IA la promueve. Solo Javo la valida a
-# 'vigente' (ADR-035 §5). Hasta entonces, no la consume ninguna RO en producción.
+# ESTADO: VIGENTE — ratificada por Javo el 2026-07-18 (ADR-035 §5). Primera CNO promovida.
 # ═══════════════════════════════════════════════════════════════════════════════
 id: CNO-IV-001
-version: 1
+version: "1.0"                    # objeto canónico (colega · 2026-07-18)
 titulo: Regla de Asignación Mínima Prioritaria
 objeto: >-
   la obligación de los GAD provinciales y municipales de destinar un mínimo del
@@ -61,7 +60,7 @@ cadena:
       sobre el presupuesto codificado al 31-dic-2026.
 
 # ── Estado y gobierno del ciclo de vida ───────────────────────────────────────────
-estado: propuesta                 # propuesta | vigente | en_reforma | derogada
+estado: vigente                   # propuesta | vigente | en_reforma | derogada
 vigencia:
   desde: "2026-02-21"             # publicación de la Ley Reformatoria COOTAD-2026
   hasta: null
@@ -76,8 +75,8 @@ deriva_ro:
 # ── Validación humana (regla constitucional · ADR-035 §5) ─────────────────────────
 validacion:
   propuesta_por: "BRN (extracción asistida)"
-  validada_por: null              # ← Javo escribe su validación aquí para promover a 'vigente'
-  fecha_validacion: null
+  validada_por: "Javo"            # ADR-035 §5 — ratificado
+  fecha_validacion: "2026-07-18"
 notas: >-
   Corrección de fondo (2026-07-18): la REGLA PLENA es 70% (Art. 198.1); el 65% es solo
   el piso transitorio con seguimiento desde 1-dic-2026. La BRN v1 citó únicamente el

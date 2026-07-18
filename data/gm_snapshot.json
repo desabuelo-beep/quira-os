@@ -8246,10 +8246,10 @@
     "cno": [
       {
         "id": "CNO-IV-001",
-        "version": 1,
+        "version": "1.0",
         "titulo": "Regla de Asignación Mínima Prioritaria",
         "dominio_normativo": "finanzas_publicas_municipales",
-        "estado": "propuesta",
+        "estado": "vigente",
         "cadena_integra": true,
         "n_eslabones": 6,
         "cadena": [
@@ -8306,14 +8306,14 @@
         "deriva_ro": [
           {
             "id": "RO-IV-001",
-            "version": "1.1",
+            "version": "1.0",
             "variable": "Pct_Gasto_No_Permanente",
-            "umbral": 70,
+            "umbral": 65,
             "consumida_por": [
               "SAT-IV-001"
             ],
             "opera_en": "d02",
-            "estado": "propuesta"
+            "estado": "vigente"
           }
         ],
         "vigencia": {
