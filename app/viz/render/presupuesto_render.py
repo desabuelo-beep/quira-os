@@ -186,17 +186,22 @@ def _sostenibilidad(d: dict) -> str:
     isp = d.get("isp") or {}
     p = isp.get("global_pct") or 0
     clasif = isp.get("clasificacion") or ""
-    # NO se cita "COOTAD Art. 192" (era cita errada: el 192 es "Monto total a transferir 21%").
-    # El umbral 65% es la regla de asignación mínima prioritaria de la reforma COOTAD-2026 — su
-    # cadena normativa la construirá la BRN (ADR-038). Hasta entonces no se cita artículo suelto
-    # (Javo · 2026-07-18 · Regla 3). Se menciona el umbral, sin atribuírselo a un artículo errado.
+    # Norma SHA-verificada (corpus · COOTAD-2026): la reforma agrega el Art. 198.1 "Regla de
+    # asignación mínima prioritaria" — los GAD destinan al menos el 70% del presupuesto codificado
+    # de egresos no financieros a inversión. La Disposición Transitoria Primera fija un PISO INICIAL
+    # del 65% con seguimiento DESDE EL 1-dic-2026 → hoy (jul-2026) la lectura es PREVENTIVA, no un
+    # incumplimiento exigible. NO se cita el Art. 192 (era errado = "monto a transferir 21%"). Javo 2026-07-18.
     txt = (f'La salud fiscal de fondo: si la estructura presupuestaria es coherente y sostenible en el tiempo. El '
-           f'índice de salud presupuestaria es <b>{p:.1f}%</b> —<b>{_esc(clasif)}</b>—, por debajo del <b>umbral '
-           f'del 65%</b> de referencia. Es la capacidad que sostiene a las otras tres: sin salud fiscal, la '
-           f'elegibilidad y la captación no se traducen en inversión duradera.')
+           f'índice de salud presupuestaria es <b>{p:.1f}%</b> —<b>{_esc(clasif)}</b>—. La <b>reforma al COOTAD '
+           f'de 2026</b> introdujo la <b>regla de asignación mínima prioritaria</b>: los municipios deben '
+           f'destinar al menos el <b>70%</b> del presupuesto de egresos no financieros a inversión, con un '
+           f'<b>piso transitorio del 65%</b> cuyo seguimiento arranca el <b>1 de diciembre de 2026</b>. Por eso '
+           f'esta lectura es <b>preventiva</b>: anticipa el cumplimiento antes de que el seguimiento formal '
+           f'comience. Es la capacidad que sostiene a las otras tres: sin salud fiscal, la elegibilidad y la '
+           f'captación no se traducen en inversión duradera.')
     return _capacidad("Capacidad de sostenibilidad", f"{p:.0f}%", _col_pct(p, 65, 50), txt,
                       pct=p, umbral=isp.get("umbral_cootad") or 65,
-                      umbral_lbl=f'mínimo COOTAD {isp.get("umbral_cootad") or 65}%')
+                      umbral_lbl=f'piso transitorio {isp.get("umbral_cootad") or 65}% · regla 70% (dic-2026)')
 
 
 _EST = {"ok": ("#1E8E3E", "&#10003;"), "wn": ("#F9AB00", "!"), "no": ("#D93025", "&#10007;")}

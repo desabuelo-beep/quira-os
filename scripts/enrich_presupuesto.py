@@ -64,7 +64,10 @@ def build_block() -> dict:
     isp = {
         "global_pct": isp_pct,
         "clasificacion": re.sub(r"[🔴🟡🟢🟠⚠️✅]", "", isp_clasif).strip(" —·"),
-        "umbral_cootad": 65,  # COOTAD Art. 192 — mínimo de inversión
+        # Piso TRANSITORIO 2026 (65%) de la regla de asignación mínima prioritaria — COOTAD-2026
+        # Art. 198.1 fija la regla plena en 70%; la Disposición Transitoria Primera fija el piso del
+        # 65% con seguimiento desde el 1-dic-2026. NO es el Art. 192 (ese es "monto a transferir 21%").
+        "umbral_cootad": 65,
     }
 
     # ── ① EJECUCIÓN PRESUPUESTARIA (H07 eSIGEF) ───────────────────────────────

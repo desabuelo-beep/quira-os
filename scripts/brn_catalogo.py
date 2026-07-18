@@ -76,20 +76,21 @@ REGLAS = [
                   "metas; el motor marca 'parálisis' cuando el devengado de una meta se estanca bajo "
                   "el 10% — umbral operativo del Gold Master, no un mínimo fijado por la ley",
      "sat": "Parálisis presupuestaria", "kw": "%contenido y finalidad%"},
-    # CORRECCIÓN (2026-07-16): el director acusó a esta regla de citar el artículo equivocado.
-    # SE EQUIVOCÓ ÉL, no el canon. El 65% SÍ existe: es la REGLA DE ASIGNACIÓN MÍNIMA
-    # PRIORITARIA que introduce la reforma COOTAD de feb-2026 (COOTAD-2026):
-    #   Art. 4 → agrega el 198.1 "Regla de asignación mínima prioritaria"
-    #   Art. 3 → sustituye el 192: el 21% de transferencias aplica SI se cumple el 198.1;
-    #            si no, se cae a los porcentajes del Art. 271 de la Constitución
+    # REGLA DE ASIGNACIÓN MÍNIMA PRIORITARIA — reforma COOTAD de feb-2026 (COOTAD-2026, SHA-verif):
+    #   Art. 4 → agrega el 198.1: los GAD destinan al menos el 70% del presupuesto de egresos no
+    #            financieros a inversión, mantenimiento y reposición  ← LA REGLA PLENA ES 70%
+    #   Art. 5/6 → agregan 198.2-198.5 (gasto computable, cumplimiento, seguimiento del ente rector)
+    #   Art. 3 → sustituye el 192: 21% de ingresos permanentes + 10% de los no permanentes
     #   Art. 7 → agrega el 198.6: el incumplimiento se informa a la CONTRALORÍA
-    #   Transitoria 1ª → el umbral es 65%, con seguimiento desde el 1-dic-2026
-    # El Gold Master no estaba errado: estaba ADELANTADO (SAT_IV_Activa en espera de la reforma).
-    # Lección, por tercera vez: revisar el corpus no basta — hay que revisar el documento correcto.
+    #   Transitoria 1ª → PISO INICIAL del 65% con seguimiento DESDE el 1-dic-2026 (no antes)
+    # CORRECCIÓN Javo 2026-07-18: la regla es 70%, no 65%. El 65% es solo el piso transitorio del
+    # ejercicio 2026. El motor calcula contra 65% (piso vigente 2026), lo cual es correcto para el
+    # año, pero la lectura debe declarar la regla plena (70%) y que el seguimiento arranca en dic-2026.
     {"norma": "COOTAD-2026", "art": "4", "tipo": "limite", "dom": "d02",
-     "nombre": "Regla de asignación mínima prioritaria (65%)",
-     "condicion": "el GAD debe cumplir la regla de asignación mínima prioritaria del 65%; su "
-                  "incumplimiento reduce sus transferencias a los porcentajes del Art. 271 CE",
+     "nombre": "Regla de asignación mínima prioritaria (70% · piso transitorio 65%)",
+     "condicion": "el Art. 198.1 obliga a destinar al menos el 70% del presupuesto de egresos no "
+                  "financieros a inversión; la Disposición Transitoria Primera fija un piso inicial del "
+                  "65% con seguimiento DESDE el 1-dic-2026 — hasta entonces la señal es preventiva",
      "sat": "Alerta fiscal · estructura COOTAD", "kw": "%asignación mínima prioritaria%"},
     {"norma": "COOTAD-2026", "art": "3", "tipo": "limite", "dom": "d02",
      "nombre": "Transferencias condicionadas al cumplimiento de la regla",
