@@ -8239,11 +8239,112 @@
     "_doctrina": "El nodo es la REGLA (CNO), no el artículo. La cadena íntegra o no entra (Regla 3). La IA propone, el humano valida (ADR-035 §5).",
     "_modelo": "MDN — Modelo de Dependencias Normativas (ADR-038 §9): CNO ↔ RO ↔ SAT.",
     "fecha": "2026-07-18",
-    "total_cno": 1,
-    "cadenas_integras": 1,
-    "total_ro": 1,
+    "total_cno": 2,
+    "cadenas_integras": 2,
+    "total_ro": 2,
     "estado_catalogo": "propuesta · pendiente de validación humana (ADR-035 §5)",
     "cno": [
+      {
+        "id": "CNO-III-001",
+        "version": "1.0",
+        "titulo": "Traducción del Mandato Electoral a la Gestión Pública",
+        "dominio_normativo": "mandato_electoral_y_representacion",
+        "estado": "propuesta",
+        "cadena_integra": true,
+        "n_eslabones": 9,
+        "cadena": [
+          {
+            "rol": "fundamento_constitucional",
+            "norma": "CE",
+            "articulo": "61",
+            "sumilla": "derechos de participación — elegir y ser elegidos: origen del mandato popular",
+            "sha256": "982c97e9b32f",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "compromiso",
+            "norma": "COD",
+            "articulo": "97",
+            "sumilla": "el candidato inscribe su Plan de Trabajo ante el CNE — la palabra empeñada",
+            "sha256": "189b101bf567",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "investidura",
+            "norma": "COOTAD",
+            "articulo": "60",
+            "sumilla": "atribuciones del alcalde: dirige la gestión con que debe cumplir el mandato",
+            "sha256": "d1d6b65f18fc",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "investidura_legislativa",
+            "norma": "COOTAD",
+            "articulo": "58",
+            "sumilla": "atribuciones de los concejales: fiscalizan y aprueban los instrumentos",
+            "sha256": "54bce2bf7235",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "traduccion",
+            "norma": "COPLAFIP",
+            "articulo": "41",
+            "sumilla": "el mandato se traduce en el plan de desarrollo (directrices del GAD)",
+            "sha256": "b49b8c942524",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "traduccion_contenido",
+            "norma": "COPLAFIP",
+            "articulo": "42",
+            "sumilla": "contenidos mínimos del plan de desarrollo",
+            "sha256": "349a6ad45c33",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "rendicion",
+            "norma": "LOPC",
+            "articulo": "89",
+            "sumilla": "rendición de cuentas: el mandatario responde por el mandato ejercido",
+            "sha256": "d3e1686814de",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "rendicion_sujetos",
+            "norma": "LOPC",
+            "articulo": "90",
+            "sumilla": "sujetos obligados a rendir cuentas — autoridades electas",
+            "sha256": "547b900b8a8f",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "consecuencia",
+            "norma": "CE",
+            "articulo": "105",
+            "sumilla": "revocatoria del mandato: la consecuencia del incumplimiento ante el electorado",
+            "sha256": "8fb8c8f1ace3",
+            "verificacion": "verificado"
+          }
+        ],
+        "deriva_ro": [
+          {
+            "id": "RO-III-001",
+            "version": "1.0",
+            "variable": "Pct_Fidelidad_Mandato",
+            "umbral_vigente": 85,
+            "vigencia_operativa": null,
+            "consumida_por": [
+              "SAT-III-001"
+            ],
+            "opera_en": "d03",
+            "estado": "propuesta"
+          }
+        ],
+        "vigencia": {
+          "desde": "2008-10-20",
+          "hasta": null
+        }
+      },
       {
         "id": "CNO-IV-001",
         "version": "1.0",
