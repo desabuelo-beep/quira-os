@@ -76,10 +76,13 @@ jurídico sin tocar el motor**. Esa es su razón de ser.
 ## 8. Estado actual y frontera
 - **Cerrado:** doctrina (ADR-035/037/038/039), molde (ciclo+CNO/RO), piloto **CNO-IV-001** (6/6 eslabones
   íntegros → RO-IV-001), catálogo de CNO (`brn_cno.py` · MDN como datos). Todo en estado `propuesta`.
-- **Pendiente (implementación, no rediseño):** (a) **validación humana** del piloto por Javo → `vigente`;
-  (b) migrar la cadena del mandato (d03) y las otras SAT financieras; (c) ampliar el Corpus a más dominios
-  normativos (2ª fase · Municipio 002+); (d) conectar el compilador RO→Gold Master (ADR-039) cuando haya
-  ≥2 CNO vigentes.
+- **Pendiente — en el orden del colega (probar la gobernanza antes que el motor · 2026-07-18):**
+  1. **Validación humana** del piloto por Javo → `propuesta` a `vigente` (CNO-IV-001 · RO-IV-001).
+  2. **Reforma simulada** — cambiar un umbral o agregar un artículo ficticio y comprobar que la
+     propagación documental (Corpus→CNO→RO→SAT→DOM) se comporta **exactamente como está descrita**,
+     ANTES de escribir una línea de integración con el motor.
+  3. Solo entonces la implementación: compilador RO→Gold Master (ADR-039), migrar la cadena del
+     mandato (d03) y las SAT financieras, y ampliar el Corpus (2ª fase · Municipio 002+).
 
 ---
 *BRN v2 · Plano Maestro · Dylus Lab © 2026 · "Cuatro ADR, un molde y un corpus dejaron de ser piezas sueltas: son una sola capa que consolida el Derecho en reglas, lo prueba con SHA y lo entrega compilado al motor — sin interpretarlo, sin calcularlo, sin tocarlo."*

@@ -85,6 +85,19 @@ El MDN (grafo · ADR-038 §9) hace esto **determinista**:
 reforma deja de decir *"cambió el Art. 198"* y dice *"cambió CNO-IV-001 → 3 RO → 7 SAT → 2 DOM →
 12 dashboards"* (ADR-038 §201).
 
+### 5b. El ciclo de LIBERACIÓN — de la regla validada a la pantalla (colega · 2026-07-18)
+El ciclo de vida (§2-5) gobierna *cómo nace y cambia* una regla. El de **liberación** gobierna *cómo
+se publica* una vez vigente, y **completa toda la trazabilidad** empalmando con la Regla 1:
+```
+Corpus actualizado → CNO propuesta → VALIDACIÓN HUMANA → RO vigente → Compilación →
+   artefacto firmado → Gold Master → Python → Supabase → UI
+```
+Dos mitades que no se cruzan: de **Corpus a RO vigente** manda la BRN (conocimiento); de **artefacto
+a UI** manda la Regla 1 (`Excel → Python → Supabase → UI, nunca al revés`). El **artefacto firmado**
+es la bisagra: lo produce la Compilación (determinista·reproducible·idempotente · ADR-039), lleva la
+huella de la RO que lo originó (`RO-IV-001 v1.1 · SHA`) y es lo único que toca al Gold Master. Así,
+ante cualquier número en pantalla, se puede rebobinar hasta el texto oficial con SHA — y al revés.
+
 ---
 
 ## Parte II — El molde de la CNO
@@ -212,11 +225,13 @@ constante y el Gold Master casi nunca — por eso la BRN existe entre ambos: abs
 sin tocar el motor.
 
 ## Siguiente paso
-Cerrados el ciclo y el molde, procede — en este orden (ADR-038 §216):
-1. **Piloto CNO-IV-001** (asignación mínima prioritaria) sobre este molde — la misma regla que
-   rompió la v1, ahora estructuralmente a prueba de porciones.
-2. Reconstruir `brn_catalogo.py` como **catálogo de CNO** (enlazar SAT → RO → CNO).
-3. Escribir el **plano maestro "Arquitectura General de la BRN v2"** (ADR-039 nota) que mapee cómo
-   se relacionan ADR-035/037/038/039 y este documento.
+**Hecho:** piloto CNO-IV-001 (6/6 eslabones íntegros) · catálogo de CNO (`brn_cno.py` · MDN) ·
+plano maestro (`BRN_PLANO_MAESTRO.md`) · glosario (`BRN_GLOSARIO.md`). Todo en `propuesta`.
+
+**Pendiente — probar la gobernanza antes que el motor (colega · 2026-07-18):**
+1. **Validación humana** del piloto por Javo → `propuesta` a `vigente`.
+2. **Reforma simulada** — cambiar un umbral (65→70) o agregar un artículo ficticio y verificar que
+   la propagación documental funciona como está descrita, ANTES de tocar Python.
+3. Solo entonces: compilador RO→Gold Master (ADR-039), migrar d03, ampliar el Corpus.
 
 *BRN · Ciclo de Vida y Molde · Dylus Lab © 2026 · "Una regla nace de una cadena, se representa en una lógica, se mide en un motor y se explica en un dominio. El molde es el mismo para las 80 que vendrán — por eso se decide una vez, y cambiarlo después es un ADR, no un parche."*
