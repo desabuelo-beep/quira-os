@@ -184,10 +184,12 @@ _DIMS = [
     # los dominios. Norma queda en gris hasta que la BRN exista — el color se gana al estar viva.
     {"key": "dim_gob",    "icon": "🏛", "nombre": "Gobierno", "col": "#00D4FF",
      "desc": "¿Qué? · la institución, el mandato y sus investigaciones", "dest": "gobierno"},
-    {"key": "dim_terr",   "icon": "🗺", "nombre": "Territorio", "col": "#22C55E",
-     "desc": "¿Dónde? · el cantón en el mapa · el encuentro entre las QUIRAs", "dest": "geotwin"},
-    {"key": "dim_intel",  "icon": "◎", "nombre": "Inteligencia", "col": "#A78BFA",
-     "desc": "¿Por qué? · QUIRA IA: lee, explica y anticipa", "dest": "control"},
+    # Territorio e Inteligencia: SIN acceso hasta trabajarlas (Javo · 2026-07-17). Como Norma,
+    # quedan en "próximamente" — el color se gana al estar vivas.
+    {"key": "dim_terr",   "icon": "🗺", "nombre": "Territorio", "col": "#5A6B7E",
+     "desc": "¿Dónde? · el cantón en el mapa · el encuentro entre las QUIRAs", "dest": None, "proximamente": True},
+    {"key": "dim_intel",  "icon": "◎", "nombre": "Inteligencia", "col": "#5A6B7E",
+     "desc": "¿Por qué? · QUIRA IA: lee, explica y anticipa", "dest": None, "proximamente": True},
     {"key": "dim_brn", "icon": "📖", "nombre": "Norma", "col": "#5A6B7E",
      "desc": "¿Bajo qué norma? · la ley que sostiene cada verificación", "dest": None, "proximamente": True},
 ]
