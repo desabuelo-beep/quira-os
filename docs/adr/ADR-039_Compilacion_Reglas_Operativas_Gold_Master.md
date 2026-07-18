@@ -93,10 +93,19 @@ la RO; el motor solo lo ejecuta.** El caso del 65% deja de tener dos hogares. Y 
 `CNO → RO → [recompilar] → Gold Master → SAT → DOM → dashboard → informe` — trazabilidad completa
 del cambio normativo, algo que ningún software municipal tiene.
 
-**Pendiente de diseño** (tras ratificar): el formato del artefacto compilado, cómo el compilador
-localiza los parámetros en el Gold Master sin tocar fórmulas, y el disparo de recompilación cuando
-una RO cambia de estado. Es **implementación** — no se toca Python hasta cerrar el ciclo de vida y
-el molde CNO/RO del ADR-038.
+**Formato del artefacto — RESUELTO** (`scripts/brn_compilador.py` · refuerzos del colega 2026-07-18):
+el compilado se parte en **dos planos** para desacoplar el motor de la BRN:
+- **`data/brn_config.json`** — SOLO ejecución (variable·umbral·desde·hasta·frecuencia·ancla del
+  motor). Lo único que el Gold Master lee. **No conoce RO, CNO ni SHA.**
+- **`data/brn_manifest.json`** — trazabilidad (RO·CNO·SHA de la cadena·build·firma·fecha). Lo que
+  audita la BRN; el motor nunca lo mira.
+Ambos llevan **`artifact_schema`** (versión del FORMATO, independiente del compilador) y un
+**`artifact_id`** derivado de la firma (`BRN-BUILD-<sha8>`) para auditoría. Y una separación de
+roles: **el compilador entrega TODOS los tramos de vigencia; el RUNTIME resuelve cuál aplica a la
+fecha** (molde §4b) — la compilación nunca pregunta "¿qué tramo toca hoy?".
+
+**Pendiente de diseño** (implementación futura): cómo el compilador localiza los parámetros en el
+Gold Master sin tocar fórmulas, y el disparo de recompilación cuando una RO cambia de estado.
 
 **Nota de método (advertencia del colega · 2026-07-17):** la BRN v2 ya se articula en subsistemas
 (Corpus · CNO · RO · MDN · Compilación Operativa) sobre 3 ADR (035/038/039). Antes de abrir un

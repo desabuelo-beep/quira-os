@@ -2,26 +2,28 @@
 """
 scripts/brn_compilador.py — BRN v2 · Compilación de Reglas Operativas (ADR-039)
 ═══════════════════════════════════════════════════════════════════════════════════
-Materializa cada RO **vigente** en un ARTEFACTO DE CONFIGURACIÓN firmado, consumible por el
-Gold Master. Es la "bisagra" del ciclo de liberación (molde §5b): de aquí hacia el motor manda
-la Regla 1; de aquí hacia atrás manda la BRN.
+Materializa cada RO **vigente** en un ARTEFACTO consumible por el Gold Master. Es la "bisagra"
+del ciclo de liberación (molde §5b): de aquí hacia el motor manda la Regla 1.
 
-QUÉ ES (ADR-039):
-  · La compilación es un PROCESO, no un motor. NO decide, NO interpreta, NO calcula: MATERIALIZA
-    una RO ya validada en un formato que el Gold Master puede leer.
-  · DETERMINISTA · REPRODUCIBLE · IDEMPOTENTE: la misma RO produce siempre el mismo artefacto
-    (misma firma SHA256); recompilar sin cambios no altera nada.
+DOS PLANOS SEPARADOS (colega · 2026-07-18) — desacoplan el motor de la BRN:
+  · data/brn_config.json   → SOLO EJECUCIÓN. Lo único que el Gold Master lee: variable, umbral,
+    desde, hasta, frecuencia, ancla del motor. NO conoce RO, CNO ni SHA.
+  · data/brn_manifest.json → TRAZABILIDAD. RO·CNO·SHA de la cadena·build·firma·fecha·compilador.
+    Es lo que audita la BRN. El motor nunca lo mira.
 
-LÍMITES DUROS (ADR-039 §4 · Regla 1):
-  · NO toca la fórmula canónica (H12!B33). Solo produce la TABLA DE PARÁMETROS (umbrales,
-    periodicidades) — inputs, nunca la lógica de cálculo.
-  · NO escribe el Gold Master vivo: GENERA un artefacto; su aplicación al motor es aparte, sobre
-    COPIA, con evidencia (metodología del Gold Master). Este script se detiene en el artefacto.
-  · Solo compila RO `vigente` cuya CNO también esté `vigente` (ADR-035 §5). Una RO `propuesta`
-    NUNCA llega al motor.
+PROPIEDADES (ADR-039):
+  · PROCESO, no motor: no decide, no interpreta, no calcula — MATERIALIZA una RO ya validada.
+  · DETERMINISTA·REPRODUCIBLE·IDEMPOTENTE: la firma es el SHA256 del config; recompilar sin
+    cambios = misma firma, mismo artifact_id.
+  · El compilador ENTREGA TODOS LOS TRAMOS de vigencia; NUNCA pregunta "¿qué tramo toca hoy?".
+    Resolver la vigencia a una fecha es tarea del RUNTIME (molde §4b), no de la compilación.
 
-SALIDA:  data/brn_artefacto_config.json  (firmado · NO editar a mano)
-Uso:     python scripts/brn_compilador.py [--verificar]   (--verificar: no escribe, solo compara firma)
+LÍMITES DUROS (ADR-039 §4 · Regla 1): NO toca la fórmula canónica (H12!B33); NO escribe el Gold
+Master vivo — genera artefactos; aplicarlos al motor es aparte, sobre COPIA con evidencia.
+Solo compila RO `vigente` cuya CNO también esté `vigente` (ADR-035 §5).
+
+SALIDA:  data/brn_config.json · data/brn_manifest.json   (firmados · NO editar a mano)
+Uso:     python scripts/brn_compilador.py [--verificar]
 Dylus Lab © 2026
 """
 from __future__ import annotations
@@ -29,7 +31,7 @@ from __future__ import annotations
 import hashlib
 import json
 import sys
-from datetime import date, datetime, timezone
+from datetime import datetime, timezone
 from pathlib import Path
 
 import yaml
@@ -39,8 +41,10 @@ if hasattr(sys.stdout, "reconfigure"):
 
 REPO = Path(__file__).resolve().parent.parent
 BRN_DIR = REPO / "docs" / "brn"
-ARTEFACTO = REPO / "data" / "brn_artefacto_config.json"
+CONFIG = REPO / "data" / "brn_config.json"
+MANIFEST = REPO / "data" / "brn_manifest.json"
 COMPILADOR_VERSION = "1.0"
+ARTIFACT_SCHEMA = "1.0"          # versión del FORMATO del artefacto (independiente del compilador)
 
 
 def _cargar(patron: str) -> list[dict]:
@@ -53,26 +57,24 @@ def _cargar(patron: str) -> list[dict]:
 
 
 def _firma(contenido: dict) -> str:
-    """SHA256 del contenido en orden canónico (sin la firma). Garantiza idempotencia:
-    la misma RO produce siempre la misma firma."""
+    """SHA256 del config en orden canónico. Idempotente: mismo config = misma firma."""
     payload = json.dumps(contenido, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
 
 def _parametros_de(ro: dict) -> list[dict]:
-    """Traduce una RO en filas de parámetros — un tramo de vigencia = una fila (molde §4b).
-    El compilador NO elige el umbral de hoy: entrega TODOS los tramos y el motor toma el que
-    corresponde a la fecha de cálculo. Así una transición prevista no obliga a recompilar."""
+    """Traduce una RO en filas de EJECUCIÓN — un tramo de vigencia = una fila (molde §4b).
+    Entrega TODOS los tramos; el runtime elige el de la fecha de cálculo. El compilador no decide."""
     filas = []
     tramos = ro.get("vigencia_operativa") or [{"desde": None, "hasta": None, "umbral": ro.get("umbral")}]
     for t in tramos:
         filas.append({
             "variable": ro.get("variable"),
             "umbral": t.get("umbral"),
-            "vigente_desde": t.get("desde"),
-            "vigente_hasta": t.get("hasta"),
+            "desde": t.get("desde"),
+            "hasta": t.get("hasta"),
             "frecuencia": (ro.get("periodo") or {}).get("frecuencia"),
-            "ro": ro["id"], "ro_version": ro.get("version"),
+            "motor_ref": ro.get("motor"),        # ancla mínima para que el motor sepa qué configurar
             "opera_en": ro.get("opera_en"),
         })
     return filas
@@ -83,64 +85,62 @@ def main() -> int:
     cnos = {c["id"]: c for c in _cargar("CNO-*.yaml")}
     ros = _cargar("RO-*.yaml")
 
-    compiladas, saltadas = [], []
-    parametros = []
+    parametros, traza, saltadas = [], [], []
     for ro in ros:
         cno_id = str(ro.get("deriva_de", "")).split()[0]
         cno = cnos.get(cno_id, {})
-        # el compilador NO decide: solo materializa lo YA validado (ADR-039)
         if ro.get("estado") != "vigente":
-            saltadas.append(f'{ro["id"]} (RO {ro.get("estado")})')
-            continue
+            saltadas.append(f'{ro["id"]} (RO {ro.get("estado")})'); continue
         if cno.get("estado") != "vigente":
-            saltadas.append(f'{ro["id"]} (CNO {cno.get("estado", "ausente")})')
-            continue
+            saltadas.append(f'{ro["id"]} (CNO {cno.get("estado", "ausente")})'); continue
         parametros.extend(_parametros_de(ro))
-        compiladas.append({
+        traza.append({
             "ro": ro["id"], "ro_version": ro.get("version"),
             "cno": cno_id, "cno_version": cno.get("version"),
             "consumida_por": ro.get("consumida_por", []),
-            # traza jurídica: los SHA de la cadena que funda estos parámetros (ADR-039 §5)
             "cadena_sha": [e.get("sha256") for e in cno.get("cadena", []) if e.get("sha256")],
         })
 
-    # contenido determinista (sin build ni firma → idempotente ante recompilación)
-    contenido = {
-        "_tipo": "artefacto_configuracion_compilado",
-        "_advertencia": "GENERADO POR COMPILACIÓN · NO editar a mano · NO es el Gold Master · "
-                        "aplicar al motor es aparte, sobre COPIA con evidencia (Regla 1)",
-        "compilador_version": COMPILADOR_VERSION,
-        "generado_de": compiladas,
-        "parametros_tabla": parametros,
-    }
-    firma = _firma(contenido)
+    # ── PLANO 1 · config de EJECUCIÓN (lo único que el motor lee) ──────────────
+    config = {"artifact_schema": ARTIFACT_SCHEMA, "parametros": parametros}
+    firma = _firma(config)
+    artifact_id = f"BRN-BUILD-{firma[:8]}"        # derivado de la firma → idempotente y auditable
+    config = {"artifact_schema": ARTIFACT_SCHEMA, "artifact_id": artifact_id, "parametros": parametros}
 
-    # ¿idempotente? comparar contra el artefacto previo
     firma_previa = None
-    if ARTEFACTO.exists():
+    if MANIFEST.exists():
         try:
-            firma_previa = json.loads(ARTEFACTO.read_text(encoding="utf-8")).get("firma_sha256")
+            firma_previa = json.loads(MANIFEST.read_text(encoding="utf-8")).get("firma_sha256")
         except Exception:
             pass
 
-    print(f"BRN · Compilador {COMPILADOR_VERSION} — {len(compiladas)} RO vigente(s) compilada(s), "
-          f"{len(parametros)} fila(s) de parámetros")
-    for c in compiladas:
+    print(f"BRN · Compilador {COMPILADOR_VERSION} (schema {ARTIFACT_SCHEMA}) — "
+          f"{len(traza)} RO vigente(s), {len(parametros)} fila(s) de ejecución")
+    for c in traza:
         print(f'   ✓ {c["ro"]} v{c["ro_version"]} ← {c["cno"]} v{c["cno_version"]} → {", ".join(c["consumida_por"]) or "—"}')
     if saltadas:
         print(f'   ⏭ no compiladas (no vigentes): {", ".join(saltadas)}')
-    print(f"   firma: {firma[:16]}…", "(sin cambios · idempotente)" if firma == firma_previa else "(NUEVA)")
+    print(f"   {artifact_id}", "(sin cambios · idempotente)" if firma == firma_previa else "(NUEVA firma)")
 
     if solo_verificar:
         ok = firma == firma_previa
         print("VERIFICACIÓN:", "OK — artefacto al día" if ok else "DIVERGE — falta recompilar")
         return 0 if ok else 1
 
-    salida = {**contenido, "build": datetime.now(timezone.utc).strftime("%Y.%m.%d"),
-              "build_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-              "firma_sha256": firma}
-    ARTEFACTO.write_text(json.dumps(salida, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"OK — artefacto firmado escrito: {ARTEFACTO.relative_to(REPO)}")
+    # ── PLANO 2 · manifest de TRAZABILIDAD (lo que audita la BRN; el motor no lo mira) ──
+    ahora = datetime.now(timezone.utc)
+    manifest = {
+        "artifact_schema": ARTIFACT_SCHEMA, "artifact_id": artifact_id,
+        "compilador_version": COMPILADOR_VERSION,
+        "build": ahora.strftime("%Y.%m.%d"), "build_utc": ahora.isoformat(timespec="seconds"),
+        "firma_sha256": firma,                    # firma del config (identidad idempotente)
+        "_nota": "config.json = ejecución (motor) · manifest.json = trazabilidad (BRN). "
+                 "El compilador entrega todos los tramos; el runtime resuelve la vigencia (§4b).",
+        "generado_de": traza,
+    }
+    CONFIG.write_text(json.dumps(config, ensure_ascii=False, indent=2), encoding="utf-8")
+    MANIFEST.write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"OK — {CONFIG.relative_to(REPO)} + {MANIFEST.relative_to(REPO)} ({artifact_id})")
     return 0
 
 
