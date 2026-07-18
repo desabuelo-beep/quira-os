@@ -190,8 +190,9 @@ cómo se deroga y cómo se propaga una reforma que toca 12 SAT. Si crece, se sep
 > reconstruir su dependencia jurídica completa mediante la BRN —desde el activo operativo hasta el
 > texto oficial del Corpus— con **trazabilidad bidireccional**.*
 
-La BRN no es una lista: es un **grafo normativo** (implementado sobre Neo4j, ya en el stack). Cada
-CNO, RO, SAT y DOM es un **nodo**; las dependencias son **aristas**. Una CNO nunca vive sola:
+La BRN no es una lista: es un **Modelo de Dependencias Normativas (MDN)** —un grafo— *(implementación
+recomendada: Neo4j, ya en el stack; el canon habla del MODELO, no de la base · colega 2026-07-17)*.
+Cada CNO, RO, SAT y DOM es un **nodo**; las dependencias son **aristas**. Una CNO nunca vive sola:
 ```
 CNO-IV-001  ──depende de──▶  CE-271 · COOTAD-192 · 198.1 · 198.2 · 198.6 · Transitoria
             ◀──deriva────  RO-IV-001 · RO-IV-014 …

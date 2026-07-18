@@ -32,15 +32,23 @@ La RO no alimenta al motor en runtime (eso sí rompería la Regla 1). Se introdu
 ```
 Corpus → CNO → RO → [ COMPILADOR ] → Gold Master (ya configurado) → calcula → estado
 ```
-El Gold Master **nunca pregunta, nunca consulta, nunca abre una API ni Neo4j**. Nace **ya
-configurado** desde un artefacto que el compilador genera **una sola vez**. Después, Excel hace lo
-suyo — el estado se calcula igual que hoy. **La Regla 1 queda intacta.**
+El Gold Master **nunca pregunta, nunca consulta, nunca abre una API ni un grafo**. Nace **ya
+configurado** desde un artefacto que la Compilación Operativa **materializa una sola vez**. Después,
+Excel hace lo suyo — el estado se calcula igual que hoy. **La Regla 1 queda intacta.**
 
-### 2. Un único punto de verdad de la configuración: la RO
-El 65% vive **solo en la RO-IV-001**. El compilador lo lleva a la tabla de parámetros que consume
-el Gold Master. **No se vuelve a escribir a mano en Excel.** Cuando la norma cambia (65 → 70), se
-edita **un solo lugar** (la RO); se recompila; el nuevo artefacto configura el motor. Adiós a las
-dos verdades.
+**La Compilación Operativa es un PROCESO, no un software** (precisión del colega): *proceso mediante
+el cual una Regla Operativa vigente se transforma en un artefacto de configuración compatible con el
+Motor Canónico de Medición.* Puede ejecutarse con Python, Excel, Power Query, GitHub Actions o a
+mano — es una **etapa del pipeline**, no un programa. Así el canon sobrevive aunque cambie la
+tecnología. El compilador **no modifica** el Gold Master: **produce** un artefacto compatible con él.
+
+### 2. La RO es la única REPRESENTACIÓN OPERATIVA AUTORIZADA de la configuración
+La RO **no es "la verdad"** —la verdad sigue siendo la norma (precisión del colega · 2026-07-17):
+la RO es la única **representación operativa autorizada** de una regla normativa. Nunca reemplaza
+al Derecho. El umbral 65% se especifica **solo en la RO-IV-001**; el compilador lo **materializa**
+en el artefacto de configuración del Gold Master. **No se vuelve a escribir a mano en Excel.**
+Cuando la norma cambia (65 → 70), se edita **un solo lugar** (la RO); se recompila; el nuevo
+artefacto configura el motor. Adiós a las dos verdades.
 
 ### 3. Separación conceptual: Gold Master Matemático vs. Configurado
 - **Gold Master Matemático** — solo fórmulas, relaciones y operaciones. **Nada jurídico.** Es el
@@ -67,6 +75,12 @@ del cambio normativo, algo que ningún software municipal tiene.
 localiza los parámetros en el Gold Master sin tocar fórmulas, y el disparo de recompilación cuando
 una RO cambia de estado. Es **implementación** — no se toca Python hasta cerrar el ciclo de vida y
 el molde CNO/RO del ADR-038.
+
+**Nota de método (advertencia del colega · 2026-07-17):** la BRN v2 ya se articula en subsistemas
+(Corpus · CNO · RO · MDN · Compilación Operativa) sobre 3 ADR (035/038/039). Antes de abrir un
+ADR-040, se escribirá un **plano maestro — "Arquitectura General de la BRN v2"** que mapee cómo se
+relacionan estos ADR; los ADR pasan a documentar decisiones sobre ese plano, no a construirlo pieza
+por pieza. Con 3 ADR aún se lee bien; el plano se escribe al cerrar el ciclo de vida y el molde.
 
 ---
 *ADR-039 · Compilación de Reglas Operativas · Dylus Lab © 2026 · "La Regla 1 protege el estado, no la configuración. El Gold Master no consulta la ley: nace ya configurado por un compilador que lee la RO. El 65% vive en un solo lugar — y cuando la norma cambie, se cambia una vez."*
