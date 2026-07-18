@@ -59,6 +59,18 @@ propuesta ──(validada)──▶ vigente ──(cambia la lógica)──▶ o
   versión jurídica se calculó este ICPI en jun-2026?"* (ADR-039 §5).
 - **retirada** — su CNO se derogó; la SAT que la consumía queda sin control activo (se marca, no se borra).
 
+### 3b. Gobernanza de los estados — revisión técnica ≠ aprobación formal (colega · 2026-07-18)
+Qué significa cada estado en el **flujo de gobernanza** (no confundir con corrección técnica):
+| Estado | Qué afirma | Quién lo otorga |
+|---|---|---|
+| **propuesta** | la cadena/lógica está **construida y es técnicamente correcta** (SHA verificados, molde cumplido) | la BRN (extracción asistida) + revisión técnica del director |
+| **validada** | además, **una autoridad humana la aprobó formalmente** — la interpretación jurídica es suya (Neutralidad Operativa) | **solo Javo**, de forma explícita (ADR-035 §5) |
+| **vigente** | validada **y** en efecto: es la que el compilador materializa y la SAT consume | consecuencia de la validación |
+**Regla dura:** *revisión técnica y aprobación formal son actos distintos.* Que una CNO/RO sea
+técnicamente impecable **no** la vuelve `vigente`: requiere el acto formal de Javo. Un "sí, avancemos"
+informal habilita construir; **no** promueve a `vigente` — eso exige validación explícita sobre el
+artefacto nombrado. Esta distinción es lo que hace de la BRN una arquitectura *gobernada*, no solo correcta.
+
 ### 4. Versionado — regla de numeración
 - **CNO `vN`** (entero): sube cuando la **cadena** cambia. `v1 → v2` = se agregó/derogó/sustituyó un
   eslabón. Cada versión guarda el SHA de **cada** eslabón en ese momento.

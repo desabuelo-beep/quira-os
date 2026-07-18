@@ -33,8 +33,10 @@ congruencia** (promesa→plan, ponderado). Resultado con ambas CNO/RO ya `vigent
    con 1); el runtime resuelve la vigencia igual para ambos.
 4. **Solo cambió la RO** ✅ — molde, catálogo y compilador intactos; la suite de regresión (7/7) verde.
 
-**Conclusión:** el molde deja de estar validado sobre **un** caso y pasa a estarlo sobre **dos
-naturalezas distintas** de regla — el salto de "caso de uso validado" a "**modelo BRN** validado".
+**Conclusión (con el matiz del colega · 2026-07-18):** el molde queda validado sobre **dos CLASES de
+dominio** — el **financiero** (d02, umbral) y el **programático** (d03, congruencia). No se afirma que
+sirva para *cualquier* dominio imaginable: se afirma, con evidencia, que sirve para estas dos clases,
+y que la suite protege esa propiedad al añadir la siguiente. Es el salto de "caso de uso" a "modelo".
 
 ## Criterio de escalamiento a 222 cantones
 El molde se considera **suficientemente validado para escalar** cuando ≥2 dominios de **naturaleza
@@ -46,8 +48,10 @@ d02 (umbral) y d03 (congruencia) validados. El siguiente dominio ya no *valida* 
 No urgente; se abordará cuando aparezca la necesidad, cada una con su ADR si toca decisión:
 - **Método estructurado** — ✅ hecho (RO-III-001: `metodo.tipo` + `criterios` como lista de objetos,
   extensibles con peso/obligatorio/origen sin romper compatibilidad).
-- **Adaptador formalizado** — hoy `_parametros_de` es el único punto de acoplamiento al YAML
-  (documentado); si BRN v3 cambia el formato, solo cambia el adaptador.
+- **Adaptador formalizado** — ✅ hecho (`brn_ro_adapter.py`: `RO YAML → ROModel estable → compilador·
+  catálogo`). Único punto que conoce el YAML; si BRN v3 cambia claves, solo cambia el adaptador.
+- **Pruebas semánticas** — ✅ hecho (suite checks 8-10: vigencia por fecha, medición real, esquema).
+- **Gobernanza de estados** — ✅ documentada (molde §3b: revisión técnica ≠ aprobación formal).
 - **Artefacto multi-consumidor** — cuando haya más consumidores (Dashboard·API·Auditor·IA), el
   artefacto podría estructurarse en `runtime · metadata · provenance · schema`.
 - **BRN Readiness Index** — convertir esta matriz en un índice con puntaje por dominio (Corpus·CNO·

@@ -28,6 +28,8 @@ from pathlib import Path
 
 import yaml
 
+from brn_ro_adapter import adaptar, umbral_en
+
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
@@ -110,8 +112,37 @@ def main() -> int:
     _check(traza_ok, "7 · manifest.json conserva la cadena de SHA (trazabilidad)",
            "7 · manifest.json sin trazabilidad completa")
 
+    # ══ PRUEBAS SEMÁNTICAS (colega · 2026-07-18: distintas de las arquitectónicas) ══
+    # No verifican la forma, sino el COMPORTAMIENTO: que la regla haga lo correcto.
+    models = {m.id: m for m in (adaptar(r) for r in ros)}
+
+    # 8 · Resolución de vigencia: el tramo correcto para cada fecha (§4b)
+    ro_iv = models.get("RO-IV-001")
+    sem_ok = ro_iv and umbral_en(ro_iv, "2026-07-01") == 65 and umbral_en(ro_iv, "2027-03-01") == 70
+    _check(sem_ok, "8 · vigencia: RO-IV-001 resuelve 65 en 2026 y 70 en 2027 (tramo correcto)",
+           "8 · vigencia MAL resuelta — el runtime tomaría el umbral equivocado")
+
+    # 9 · Toda RO vigente tiene una métrica y al menos un umbral no nulo (medición real)
+    sin_medicion = [m.id for m in models.values() if m.estado == "vigente"
+                    and (not m.metrica or all(t.umbral is None for t in m.tramos))]
+    _check(not sin_medicion, "9 · toda RO vigente tiene métrica y umbral (lógica de medición real)",
+           f"9 · RO vigente sin medición: {sin_medicion}")
+
+    # 10 · Esquema del config: schema versionado + cada fila con las claves de ejecución
+    CLAVES = {"variable", "umbral", "desde", "hasta", "frecuencia", "opera_en"}
+    fuera, schema = [], None
+    if CONFIG.exists():
+        cfg = json.loads(CONFIG.read_text(encoding="utf-8"))
+        schema = cfg.get("artifact_schema")
+        for i, fila in enumerate(cfg.get("parametros", [])):
+            if set(fila) != CLAVES:
+                fuera.append(f"fila{i}:{set(fila) ^ CLAVES}")
+    _check(bool(schema) and not fuera,
+           f"10 · config.json cumple el esquema de ejecución (artifact_schema {schema})",
+           f"10 · config.json rompe el esquema: schema={schema} · {fuera}")
+
     # ── Reporte ───────────────────────────────────────────────────────────────
-    print("BRN · Suite de Regresión Arquitectónica")
+    print("BRN · Suite de Regresión Arquitectónica + Semántica")
     for ok, msg in _res:
         print(f"   {'✅' if ok else '❌'} {msg}")
     fallos = sum(1 for ok, _ in _res if not ok)

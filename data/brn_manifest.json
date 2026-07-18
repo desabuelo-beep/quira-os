@@ -3,7 +3,7 @@
   "artifact_id": "BRN-BUILD-89c1294f",
   "compilador_version": "1.0",
   "build": "2026.07.18",
-  "build_utc": "2026-07-18T18:29:15+00:00",
+  "build_utc": "2026-07-18T21:04:22+00:00",
   "firma_sha256": "89c1294fbb8622b9056b480d03b6775df8dabe1fca9b0f257bd48f626fddddec",
   "_nota": "config.json = ejecución (motor) · manifest.json = trazabilidad (BRN). El compilador entrega todos los tramos; el runtime resuelve la vigencia (§4b).",
   "generado_de": [

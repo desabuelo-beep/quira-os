@@ -36,6 +36,8 @@ from pathlib import Path
 
 import yaml
 
+from brn_ro_adapter import adaptar, ROModel
+
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
@@ -62,27 +64,19 @@ def _firma(contenido: dict) -> str:
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
 
-def _parametros_de(ro: dict) -> list[dict]:
-    """ADAPTADOR RO → filas de ejecución (colega · 2026-07-18): ESTE es el ÚNICO punto que conoce
-    la estructura YAML de la RO. Si en BRN v3 cambia el YAML, solo cambia esta función — el resto del
-    compilador permanece intacto. Un tramo de vigencia = una fila (molde §4b).
-    Lee los tres planos (métrica·parámetros·método): del config solo salen métrica y parámetros; el
-    método es algoritmo conceptual, no ejecución. Entrega TODOS los tramos; el runtime elige el de la
-    fecha. El compilador no decide y NO conoce el motor (la RO tampoco)."""
-    m = ro.get("metrica") or {}
-    p = ro.get("parametros") or {}
-    tramos = p.get("vigencia_operativa") or [{"desde": None, "hasta": None, "umbral": p.get("umbral")}]
-    filas = []
-    for t in tramos:
-        filas.append({
-            "variable": m.get("nombre"),
-            "umbral": t.get("umbral"),
-            "desde": t.get("desde"),
-            "hasta": t.get("hasta"),
-            "frecuencia": p.get("frecuencia"),
-            "opera_en": ro.get("opera_en"),
-        })
-    return filas
+def _parametros_de(model: ROModel) -> list[dict]:
+    """Filas de EJECUCIÓN desde el modelo interno estable (el YAML ya lo tradujo el ROAdapter).
+    Un tramo de vigencia = una fila (molde §4b). Del config solo salen métrica y parámetros; el
+    método es algoritmo conceptual, no ejecución. Entrega TODOS los tramos; el runtime elige el de
+    la fecha. El compilador no decide y NO conoce el motor (la RO tampoco)."""
+    return [{
+        "variable": model.metrica,
+        "umbral": t.umbral,
+        "desde": t.desde,
+        "hasta": t.hasta,
+        "frecuencia": model.frecuencia,
+        "opera_en": model.opera_en,
+    } for t in model.tramos]
 
 
 def main() -> int:
@@ -92,17 +86,17 @@ def main() -> int:
 
     parametros, traza, saltadas = [], [], []
     for ro in ros:
-        cno_id = str(ro.get("deriva_de", "")).split()[0]
-        cno = cnos.get(cno_id, {})
-        if ro.get("estado") != "vigente":
-            saltadas.append(f'{ro["id"]} (RO {ro.get("estado")})'); continue
+        model = adaptar(ro)                       # YAML → modelo interno estable (único acoplamiento)
+        cno = cnos.get(model.cno_id, {})
+        if model.estado != "vigente":
+            saltadas.append(f'{model.id} (RO {model.estado})'); continue
         if cno.get("estado") != "vigente":
-            saltadas.append(f'{ro["id"]} (CNO {cno.get("estado", "ausente")})'); continue
-        parametros.extend(_parametros_de(ro))
+            saltadas.append(f'{model.id} (CNO {cno.get("estado", "ausente")})'); continue
+        parametros.extend(_parametros_de(model))
         traza.append({
-            "ro": ro["id"], "ro_version": ro.get("version"),
-            "cno": cno_id, "cno_version": cno.get("version"),
-            "consume": ro.get("consume", []),
+            "ro": model.id, "ro_version": model.version,
+            "cno": model.cno_id, "cno_version": cno.get("version"),
+            "consume": list(model.consume),
             "cadena_sha": [e.get("sha256") for e in cno.get("cadena", []) if e.get("sha256")],
         })
 

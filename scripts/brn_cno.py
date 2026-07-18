@@ -33,6 +33,8 @@ from pathlib import Path
 
 import yaml
 
+from brn_ro_adapter import adaptar, umbral_en
+
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
@@ -43,18 +45,15 @@ BRN_DIR = REPO / "docs" / "brn"
 
 
 def _umbral_vigente(ro: dict, hoy: str) -> tuple:
-    """Umbral del tramo de VIGENCIA OPERATIVA vigente a la fecha (molde §4b). Si la RO no usa
-    tramos, cae al campo `umbral` plano. Devuelve (umbral_hoy, tramos)."""
-    p = ro.get("parametros") or {}
-    tramos = p.get("vigencia_operativa")
-    if not tramos:
-        return p.get("umbral"), None
-    vig = None
-    for t in tramos:
-        d, h = str(t.get("desde", "")), t.get("hasta")
-        if d <= hoy and (h is None or hoy <= str(h)):
-            vig = t.get("umbral")
-    return vig, tramos
+    """Umbral del tramo vigente a la fecha (molde §4b), vía el ROAdapter (contrato estable).
+    Devuelve (umbral_hoy, tramos_serializados)."""
+    model = adaptar(ro)
+    umbral = umbral_en(model, hoy)
+    tramos = [{"desde": t.desde, "hasta": t.hasta, "umbral": t.umbral} for t in model.tramos]
+    # si es umbral plano (un tramo sin fechas), no se reporta como vigencia_operativa
+    if len(tramos) == 1 and tramos[0]["desde"] is None:
+        tramos = None
+    return umbral, tramos
 
 
 def _uri() -> str:
