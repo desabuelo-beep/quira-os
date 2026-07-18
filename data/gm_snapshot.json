@@ -8233,5 +8233,94 @@
         "estado": "propuesta"
       }
     ]
+  },
+  "brn_cno": {
+    "_fuente": "Canon BRN (docs/brn/*.yaml) verificado contra el corpus (SHA256)",
+    "_doctrina": "El nodo es la REGLA (CNO), no el artículo. La cadena íntegra o no entra (Regla 3). La IA propone, el humano valida (ADR-035 §5).",
+    "_modelo": "MDN — Modelo de Dependencias Normativas (ADR-038 §9): CNO ↔ RO ↔ SAT.",
+    "fecha": "2026-07-18",
+    "total_cno": 1,
+    "cadenas_integras": 1,
+    "total_ro": 1,
+    "estado_catalogo": "propuesta · pendiente de validación humana (ADR-035 §5)",
+    "cno": [
+      {
+        "id": "CNO-IV-001",
+        "version": 1,
+        "titulo": "Regla de Asignación Mínima Prioritaria",
+        "dominio_normativo": "finanzas_publicas_municipales",
+        "estado": "propuesta",
+        "cadena_integra": true,
+        "n_eslabones": 6,
+        "cadena": [
+          {
+            "rol": "fundamento_constitucional",
+            "norma": "CE",
+            "articulo": "271",
+            "sumilla": "los GAD participarán de las rentas del Estado (base de la corresponsabilidad fiscal)",
+            "sha256": "a76e4e0dea62",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "fundamento_legal_base",
+            "norma": "COOTAD",
+            "articulo": "192",
+            "sumilla": "Monto total a transferir — 21% de ingresos permanentes + 10% de los no permanentes",
+            "reformado_por": "COOTAD-2026 (Art. 3 sustituye el primer inciso)",
+            "sha256": "42e8c07e33cb",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "regla",
+            "norma": "COOTAD-2026",
+            "articulo": "198.1",
+            "sumilla": "Regla de asignación mínima prioritaria — al menos el 70% del presupuesto codificado de egresos no financieros a gasto no permanente de inversión, mantenimiento y reposición de infraestructura, bienes y activos públicos.",
+            "sha256": "66255f1d914d",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "gasto_computable",
+            "norma": "COOTAD-2026",
+            "articulo": "198.2",
+            "sumilla": "Determinación del gasto computable para el cumplimiento de la regla",
+            "sha256": "ab87de75fc43",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "consecuencia",
+            "norma": "COOTAD-2026",
+            "articulo": "198.6",
+            "sumilla": "Incumplimiento de la regla → se informa a la Contraloría General del Estado",
+            "sha256": "e885aa007ee9",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "disposicion_transitoria",
+            "norma": "COOTAD-2026",
+            "articulo": "Disposición Transitoria Primera",
+            "sumilla": "piso inicial del 65% con seguimiento del ente rector a partir del 1-dic-2026, sobre el presupuesto codificado al 31-dic-2026.",
+            "sha256": "e885aa007ee9",
+            "verificacion": "verificado"
+          }
+        ],
+        "deriva_ro": [
+          {
+            "id": "RO-IV-001",
+            "version": "1.1",
+            "variable": "Pct_Gasto_No_Permanente",
+            "umbral": 70,
+            "consumida_por": [
+              "SAT-IV-001"
+            ],
+            "opera_en": "d02",
+            "estado": "propuesta"
+          }
+        ],
+        "vigencia": {
+          "desde": "2026-02-21",
+          "hasta": null
+        }
+      }
+    ]
   }
 }
