@@ -8239,11 +8239,124 @@
     "_doctrina": "El nodo es la REGLA (CNO), no el artículo. La cadena íntegra o no entra (Regla 3). La IA propone, el humano valida (ADR-035 §5).",
     "_modelo": "MDN — Modelo de Dependencias Normativas (ADR-038 §9): CNO ↔ RO ↔ SAT.",
     "fecha": "2026-07-20",
-    "total_cno": 3,
-    "cadenas_integras": 3,
-    "total_ro": 3,
+    "total_cno": 4,
+    "cadenas_integras": 4,
+    "total_ro": 5,
     "estado_catalogo": "propuesta · pendiente de validación humana (ADR-035 §5)",
     "cno": [
+      {
+        "id": "CNO-I-001",
+        "version": "1.0",
+        "titulo": "Articulación de la Planificación con el Presupuesto y la Contratación",
+        "dominio_normativo": "planificacion_del_desarrollo",
+        "estado": "propuesta",
+        "cadena_integra": true,
+        "n_eslabones": 9,
+        "cadena": [
+          {
+            "rol": "fundamento_constitucional",
+            "norma": "CE",
+            "articulo": "241",
+            "sumilla": "la planificación garantizará el ordenamiento territorial y será obligatoria",
+            "sha256": "da13d3789caa",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "articulacion_nacional",
+            "norma": "CE",
+            "articulo": "280",
+            "sumilla": "el Plan Nacional de Desarrollo como instrumento al que se sujeta la planificación",
+            "sha256": "5d25f2ee7268",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "competencia",
+            "norma": "COPLAFIP",
+            "articulo": "12",
+            "sumilla": "la planificación del desarrollo y el ordenamiento territorial es competencia del GAD",
+            "sha256": "916241847fcb",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "ordenamiento_territorial",
+            "norma": "COPLAFIP",
+            "articulo": "44",
+            "sumilla": "disposiciones generales sobre los planes de ordenamiento territorial de los GAD",
+            "sha256": "d8f56a1d3206",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "programacion_operativa_plazo",
+            "norma": "COOTAD",
+            "articulo": "233",
+            "sumilla": "plazo: las dependencias preparan su programación operativa antes del 10 de septiembre",
+            "sha256": "96e3b77f48fc",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "programacion_operativa_contenido",
+            "norma": "COOTAD",
+            "articulo": "234",
+            "sumilla": "contenido: cada plan operativo anual debe contener las metas del plan de desarrollo",
+            "sha256": "6837117fda64",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "sujecion_presupuestaria",
+            "norma": "COOTAD",
+            "articulo": "215",
+            "sumilla": "el presupuesto del GAD se ajusta a los planes de desarrollo",
+            "sha256": "60f89aebd7b3",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "aprobacion",
+            "norma": "COOTAD",
+            "articulo": "245",
+            "sumilla": "aprobación del presupuesto por el legislativo del GAD",
+            "sha256": "78317417e719",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "contratacion",
+            "norma": "LOSNCP",
+            "articulo": "22",
+            "sumilla": "el Plan Anual de Contratación se formula conforme al plan y al presupuesto",
+            "sha256": "054779c8e813",
+            "verificacion": "verificado"
+          }
+        ],
+        "deriva_ro": [
+          {
+            "id": "RO-I-001",
+            "version": "1.0",
+            "variable": "Pct_Metas_Con_Programacion",
+            "umbral_vigente": 100,
+            "vigencia_operativa": null,
+            "consume": [
+              "SAT-I-001"
+            ],
+            "opera_en": "d01",
+            "estado": "propuesta"
+          },
+          {
+            "id": "RO-I-002",
+            "version": "1.0",
+            "variable": "Pct_Coherencia_Programacion_Contratacion",
+            "umbral_vigente": 100,
+            "vigencia_operativa": null,
+            "consume": [
+              "SAT-I-002"
+            ],
+            "opera_en": "d01",
+            "estado": "propuesta"
+          }
+        ],
+        "vigencia": {
+          "desde": "2010-10-19",
+          "hasta": null
+        }
+      },
       {
         "id": "CNO-III-001",
         "version": "1.0",

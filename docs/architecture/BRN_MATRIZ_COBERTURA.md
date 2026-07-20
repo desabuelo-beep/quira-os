@@ -19,7 +19,7 @@
 | **d02 · Finanzas** | umbral cuantitativo (65/70%) | ✓ vigente · 6/6 SHA | ✓ vigente | ✓ compila | ✓ | **Conforme v2.1** |
 | **d03 · Mandato** | congruencia programática (fidelidad ≥85%) | ✓ vigente · 9/9 SHA | ✓ vigente | ✓ compila (sin `if`) | ✓ | **Conforme v2.1** |
 | **d09 · Rendición** | obligación de hacer: plazo · contenido mínimo · cierre público | ✓ vigente · 10/10 SHA | ✓ vigente | ✓ compila · **diff infra = 0** | ✓ | **Conforme v2.1** |
-| d01 · Planificación | — | pendiente | | | | Pendiente |
+| **d01 · Planificación** | articulación en cadena (plan→POA→PAC) · **1 CNO → 2 RO** | ✓ 9/9 SHA | ✓ ×2 | ✓ **diff = 0** | — | **Propuesta** · pend. aprobación formal |
 | … | | | | | | |
 
 > **Lenguaje (colega · 2026-07-20):** no se habla de "dominios certificados" sino de **dominios
@@ -78,6 +78,21 @@ No se afirma generalidad absoluta ni "transversalidad demostrada": tres dominios
 sustancialmente más fuerte que uno, pero no una demostración. Cada dominio nuevo **fortalece —o
 eventualmente cuestiona—** el modelo; el lenguaje debe dejar espacio para lo segundo sin obligar a
 retractarse de afirmaciones excesivas.
+
+## Prueba de topología — d01 (2026-07-20)
+d01 **no aporta una clase nueva de regla** (sus obligaciones son de articulación y contenido, como
+d09), pero aporta un estrés que ninguno ejercía: la **multiplicidad 1 CNO → N RO**. Una sola cadena
+jurídica sostiene dos obligaciones operativas distintas: `plan → programación operativa` (RO-I-001) y
+`programación → contratación` (RO-I-002). Así opera realmente la continuidad de la planificación.
+
+**Resultado:** cadena de 9 eslabones íntegros; el catálogo enlazó ambas RO a la misma CNO y la suite
+quedó 12/12 con **`diff infra = 0`**. El MDN soporta relaciones 1:N tal como el molde las describe,
+sin cambios en la plataforma.
+
+**Nota de alcance (Javo · 2026-07-20):** la BRN es **una capa** del dominio, no el dominio. d01 ya
+era un DOM construido y cerrado con su PCD; esta CNO/RO completa su **capa normativa**. Para los
+dominios aún no construidos (d04+), el trabajo es **integral** —las 7 capas del Protocolo de Curación,
+canon→UI, cerrando con su PCD— y la BRN será una capa más, no el eje.
 
 ## Criterio de escalamiento a 222 cantones
 El molde se considera **suficientemente respaldado para escalar** cuando ≥2 dominios de **clase

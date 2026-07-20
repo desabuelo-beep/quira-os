@@ -1,0 +1,43 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# RO-I-001 · Articulación plan → programación operativa (deriva de CNO-I-001)
+# Primera de las dos RO que cuelgan de la misma cadena. Verifica el primer eslabón de la
+# continuidad: que cada meta del plan de desarrollo tenga programación operativa anual.
+#
+# ESTADO: propuesta — aprobación formal de Javo pendiente (molde §3b).
+# ═══════════════════════════════════════════════════════════════════════════════
+id: RO-I-001
+version: "1.0"
+deriva_de: CNO-I-001 v1.0
+
+# ── Definición de la métrica (qué se mide) ────────────────────────────────────────
+metrica:
+  nombre: Pct_Metas_Con_Programacion
+  unidad: porcentaje
+
+# ── Parámetros operativos (con qué valores) ───────────────────────────────────────
+parametros:
+  # El COOTAD Art. 234 exige que el plan operativo contenga las metas del plan de desarrollo:
+  # es una obligación de contenido, no un umbral de rendimiento → se expresa como 100%.
+  # (Misma deuda conceptual anotada en d09: `metrica.tipo` es candidato a BRN v3.)
+  umbral: 100
+  frecuencia: anual               # ciclo de formulación (COOTAD Art. 233 · antes del 10-sep)
+
+# ── Método (cómo se evalúa) ───────────────────────────────────────────────────────
+metodo:
+  tipo: verificacion_documental
+  criterios:
+    - { id: meta_con_proyecto,    obligatorio: true,  descripcion: "cada meta del plan tiene al menos una línea de programación operativa que la opera" }
+    - { id: dotacion_asignada,    obligatorio: true,  descripcion: "esa programación tiene asignación presupuestaria identificable" }
+    - { id: responsable_definido, obligatorio: false, descripcion: "la programación identifica la dependencia responsable de ejecutarla" }
+
+consecuencia: "Meta sin programación operativa: queda registrada como planificación sin traducción anual (observación preventiva)"
+
+# ── Consumo ───────────────────────────────────────────────────────────────────────
+consume: [ SAT-I-001 ]
+opera_en: d01                     # Planificación Estratégica
+
+# ── Estado y trazabilidad ─────────────────────────────────────────────────────────
+estado: propuesta
+validacion:
+  validada_por: null
+  fecha_validacion: null
