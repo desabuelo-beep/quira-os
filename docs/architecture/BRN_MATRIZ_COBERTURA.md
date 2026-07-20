@@ -18,7 +18,7 @@
 |---|---|---|---|---|---|---|
 | **d02 · Finanzas** | umbral cuantitativo (65/70%) | ✓ vigente · 6/6 SHA | ✓ vigente | ✓ compila | ✓ | **Conforme v2.1** |
 | **d03 · Mandato** | congruencia programática (fidelidad ≥85%) | ✓ vigente · 9/9 SHA | ✓ vigente | ✓ compila (sin `if`) | ✓ | **Conforme v2.1** |
-| **d09 · Rendición** | obligación de hacer: plazo · contenido mínimo · cierre público | ✓ 10/10 SHA | ✓ | ✓ **diff infra = 0** | — | **Propuesta** · pend. aprobación formal |
+| **d09 · Rendición** | obligación de hacer: plazo · contenido mínimo · cierre público | ✓ vigente · 10/10 SHA | ✓ vigente | ✓ compila · **diff infra = 0** | ✓ | **Conforme v2.1** |
 | d01 · Planificación | — | pendiente | | | | Pendiente |
 | … | | | | | | |
 
@@ -65,6 +65,11 @@ CPCCS al bloque constitucional y legal.
 **Resultado:** cadena de **10 eslabones íntegros**; la RO cupo en el molde de tres planos con
 `umbral: 100` (obligación que no admite cumplimiento parcial) y método de verificación documental.
 **`Infrastructure diff = 0`** — no se tocó adaptador, compilador, contrato ni catálogo. Suite 12/12.
+
+**Ciclo de 6 pasos cerrado por primera vez completo (2026-07-20)** — con la condición que lo hace
+válido cumplida (precisión del colega): la **aprobación formal de Javo promovió** CNO-IX-001 y
+RO-IX-001 a `vigente`. El compilador pasó de 2 a **3 RO vigentes (4 filas)** sin una línea de cambio
+en `scripts/`. La documentación no anticipó el estado: lo registró cuando ocurrió.
 
 **Formulación prudente (precisión del colega · 2026-07-20):** *la evidencia empírica disponible
 muestra que el contrato BRN v2.1 ha incorporado satisfactoriamente **tres clases distintas de reglas**

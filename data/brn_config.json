@@ -1,6 +1,6 @@
 {
   "artifact_schema": "1.0",
-  "artifact_id": "BRN-BUILD-89c1294f",
+  "artifact_id": "BRN-BUILD-d13514a4",
   "parametros": [
     {
       "variable": "Pct_Fidelidad_Mandato",
@@ -25,6 +25,14 @@
       "hasta": null,
       "frecuencia": "mensual",
       "opera_en": "d02"
+    },
+    {
+      "variable": "Pct_Cumplimiento_Rendicion",
+      "umbral": 100,
+      "desde": null,
+      "hasta": null,
+      "frecuencia": "anual",
+      "opera_en": "d09"
     }
   ]
 }

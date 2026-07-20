@@ -8439,7 +8439,7 @@
         "version": "1.0",
         "titulo": "Obligación de Rendición de Cuentas del GAD",
         "dominio_normativo": "participacion_y_control_social",
-        "estado": "propuesta",
+        "estado": "vigente",
         "cadena_integra": true,
         "n_eslabones": 10,
         "cadena": [
@@ -8535,7 +8535,7 @@
               "SAT-IX-001"
             ],
             "opera_en": "d09",
-            "estado": "propuesta"
+            "estado": "vigente"
           }
         ],
         "vigencia": {

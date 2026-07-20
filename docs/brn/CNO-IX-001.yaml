@@ -9,7 +9,8 @@
 # contra la línea base brn-v2.1. Si obligara a tocar adaptador/compilador/contrato, eso sería
 # evidencia de una limitación → ADR de evolución (v2.2/v3), nunca un parche.
 #
-# ESTADO: propuesta — revisión técnica hecha; la aprobación formal es de Javo (molde §3b).
+# ESTADO: VIGENTE — aprobada formalmente por Javo el 2026-07-20 (ADR-035 §5 · molde §3b).
+# Tercera CNO conforme al contrato BRN v2.1, incorporada con Infrastructure diff = 0.
 # ═══════════════════════════════════════════════════════════════════════════════
 id: CNO-IX-001
 version: "1.0"
@@ -82,7 +83,7 @@ cadena:
     sumilla: "entrega de informes incumplidos de períodos fiscales anteriores"
 
 # ── Estado y ciclo de vida ────────────────────────────────────────────────────────
-estado: propuesta                 # propuesta | vigente | en_reforma | derogada
+estado: vigente                   # propuesta | vigente | en_reforma | derogada
 vigencia:
   desde: "2026-01-01"             # Reglamento CPCCS de Rendición de Cuentas vigente
   hasta: null
@@ -97,8 +98,8 @@ deriva_ro:
 # ── Validación humana (ADR-035 §5) ────────────────────────────────────────────────
 validacion:
   propuesta_por: "BRN (extracción asistida)"
-  validada_por: null              # ← Javo aprueba formalmente para promover a 'vigente'
-  fecha_validacion: null
+  validada_por: "Javo"            # ADR-035 §5 — aprobación formal
+  fecha_validacion: "2026-07-20"
 notas: >-
   Estrés arquitectónico: a diferencia de d02 (umbral cuantitativo) y d03 (congruencia), esta
   cadena impone una obligación de HACER en un PLAZO, con CONTENIDO MÍNIMO y CIERRE (deliberación

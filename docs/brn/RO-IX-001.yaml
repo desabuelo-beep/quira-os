@@ -45,7 +45,7 @@ consume: [ SAT-IX-001 ]
 opera_en: d09                     # Rendición de Cuentas
 
 # ── Estado y trazabilidad ─────────────────────────────────────────────────────────
-estado: propuesta                 # propuesta | vigente | obsoleta | retirada
+estado: vigente                   # propuesta | vigente | obsoleta | retirada
 validacion:
-  validada_por: null              # ← Javo aprueba formalmente para promover a 'vigente'
-  fecha_validacion: null
+  validada_por: "Javo"            # ADR-035 §5 — aprobación formal
+  fecha_validacion: "2026-07-20"
