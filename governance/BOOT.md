@@ -35,7 +35,7 @@ la Doctrina permanece. Hoja de Ruta = el mapa que no se mueve. BOOT §AHORA = el
 🔑 **AUDIT 18-jul:** COOTAD-2026 70%/piso65% dic-2026 · d03 COPLAFIP41-42 · PDOT 67 metas=25 muestreo · firewall.
 🏛️ **d03 Mandato ELECTORAL CERRADO✓ (PCD-D03)** — canon CURADO: 76 promesas reales (antes 66, 46 falsas). Coherente=True · fidelidad 79.3% · centinela ✅ · ICPI intacto. Doctrina: **IFE unidireccional** (meta sin promesa = normal, Art.264) · **la cocina NO va al DOM** (Regla 2) · **el DOM cura el canon** (Regla 8).
 ✅ **4 DOM cerrados con PCD: d01·d02·d03·d09** (molde d01: dictamen + qc-ev + fundamento jurídico).
-📚 **ADR-038 BRN v2 RATIF:** nodo = REGLA, no artículo. 4 niveles **Corpus→CNO(Derecho)→RO(lógica)→SAT**. BRN = CAPA (no cajón) que CONSOLIDA (no interpreta). Canon legal ya en Supabase+`Normativa_Word` (43 docs · sin Lexis). **BRN v2.1 CONGELADA**: d02+d03 VIGENTES·contrato ROModel·suite 12·I1-I8. Sig: d04 con diff infra=0.
+📚 **ADR-038 BRN v2 RATIF:** nodo = REGLA, no artículo. 4 niveles **Corpus→CNO(Derecho)→RO(lógica)→SAT**. BRN = CAPA (no cajón) que CONSOLIDA (no interpreta). Canon legal ya en Supabase+`Normativa_Word` (43 docs · sin Lexis). **BRN v2.1**: d02+d03 conformes · d09 propuesta (10/10 SHA, diff infra=0) · suite 12✓. Sig: Javo aprueba d09.
 🩺 **Canon curado por el DOM (Regla 8):** H03 rótulo `Suma_Score_Vinculación` (48≠conteo) + conteo 64 aparte + B10 ya es fórmula + col G `Estado_Verificación`. ICPI intacto · centinela ✅. **Gate real = `python scripts/ci/check_health.py` (BOOT≤6000·CLAUDE≤4000): NO adivinar.**
 📚 **ADR-035/037 (RATIF):** Ley→BRN→GoldMaster(único motor)→QUIRA · IA propone, humano valida. Frame: Gobierno(página propia)·Territorio·Inteligencia·Norma(BRN).
 

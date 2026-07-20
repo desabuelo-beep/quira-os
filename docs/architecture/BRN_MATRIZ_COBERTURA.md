@@ -16,11 +16,28 @@
 ## Matriz
 | Dominio | Naturaleza de la regla | CNO | RO | Compilador | Runtime | Estado |
 |---|---|---|---|---|---|---|
-| **d02 · Finanzas** | umbral cuantitativo (65/70%) | ✓ vigente · 6/6 SHA | ✓ vigente | ✓ compila | ✓ | **Validado** |
-| **d03 · Mandato** | congruencia programática (fidelidad ≥85%) | ✓ vigente · 9/9 SHA | ✓ vigente | ✓ compila (sin `if`) | ✓ | **Validado** |
+| **d02 · Finanzas** | umbral cuantitativo (65/70%) | ✓ vigente · 6/6 SHA | ✓ vigente | ✓ compila | ✓ | **Conforme v2.1** |
+| **d03 · Mandato** | congruencia programática (fidelidad ≥85%) | ✓ vigente · 9/9 SHA | ✓ vigente | ✓ compila (sin `if`) | ✓ | **Conforme v2.1** |
+| **d09 · Rendición** | obligación de hacer: plazo · contenido mínimo · cierre público | ✓ 10/10 SHA | ✓ | ✓ **diff infra = 0** | — | **Propuesta** · pend. aprobación formal |
 | d01 · Planificación | — | pendiente | | | | Pendiente |
-| d09 · Rendición | — | pendiente | | | | Pendiente |
 | … | | | | | | |
+
+> **Lenguaje (colega · 2026-07-20):** no se habla de "dominios certificados" sino de **dominios
+> conformes al contrato BRN v2.1**. El objeto estable es el **contrato**; los dominios simplemente
+> lo satisfacen. Eso mantiene la plataforma en el centro y evita que cada dominio se vuelva un caso especial.
+
+## Ciclo repetible de incorporación (BRN v2.1)
+Estabilizado tras d09; se repite igual para d01, d05… y para los 222 cantones:
+```
+1. Seleccionar dominio (por estrés arquitectónico, no por importancia)
+2. Modelar CNO (puro Derecho · SHA por eslabón)      → docs/brn/CNO-*.yaml
+3. Modelar RO (métrica · parámetros · método)        → docs/brn/RO-*.yaml
+4. Ejecutar la suite (12/12 verde)
+5. Verificar Infrastructure diff = 0 (check 12)
+6. Aprobación formal de Javo → `vigente` → conforme al contrato BRN v2.1
+```
+**Los pasos 2-3 tocan SOLO `docs/brn/`.** Si en el paso 5 aparece diff en `scripts/`, se detiene la
+incorporación y se abre un ADR de evolución de plataforma (v2.2/v3). Nunca un parche ad hoc.
 
 ## Lectura del examen d03 — los 4 invariantes CONFIRMADOS
 d03 era la prueba dura: su regla **no** desemboca en un techo de gasto sino en un **procedimiento de
@@ -37,6 +54,21 @@ congruencia** (promesa→plan, ponderado). Resultado con ambas CNO/RO ya `vigent
 dominio** — el **financiero** (d02, umbral) y el **programático** (d03, congruencia). No se afirma que
 sirva para *cualquier* dominio imaginable: se afirma, con evidencia, que sirve para estas dos clases,
 y que la suite protege esa propiedad al añadir la siguiente. Es el salto de "caso de uso" a "modelo".
+
+## Prueba de transversalidad — d09 (2026-07-20)
+d09 se eligió **por capacidad de estrés arquitectónico**, no por importancia (criterio del colega):
+d01 comparte demasiada semántica con d03 y habría validado poco. d09 introduce una naturaleza que
+**ninguno de los dos anteriores ejercía**: una obligación de **hacer** (plazo · contenido mínimo ·
+deliberación pública · consecuencia por incumplimiento), sobre una cadena que suma el Reglamento
+CPCCS al bloque constitucional y legal.
+
+**Resultado:** cadena de **10 eslabones íntegros**; la RO cupo en el molde de tres planos con
+`umbral: 100` (obligación que no admite cumplimiento parcial) y método de verificación documental.
+**`Infrastructure diff = 0`** — no se tocó adaptador, compilador, contrato ni catálogo. Suite 12/12.
+
+Con tres clases de regla (cuantitativa · programática · obligación de hacer) representadas sobre el
+mismo contrato sin modificarlo, la transversalidad de BRN v2.1 queda sustentada con evidencia, no con
+argumento.
 
 ## Criterio de escalamiento a 222 cantones
 El molde se considera **suficientemente validado para escalar** cuando ≥2 dominios de **naturaleza

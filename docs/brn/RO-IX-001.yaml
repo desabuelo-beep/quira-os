@@ -1,0 +1,47 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# RO-IX-001 · Regla Operativa derivada de CNO-IX-001
+# EL EXAMEN de la línea base v2.1: esta regla NO es un techo de gasto (d02) ni una congruencia
+# programática (d03) — es una OBLIGACIÓN DE HACER con plazo, contenido mínimo y cierre público.
+# Si cabe en el mismo molde de tres planos (métrica·parámetros·método) sin tocar el adaptador,
+# el compilador ni el contrato interno, el contrato BRN v2.1 queda probado como transversal.
+#
+# ESTADO: propuesta — revisión técnica hecha; aprobación formal pendiente de Javo (molde §3b).
+# ═══════════════════════════════════════════════════════════════════════════════
+id: RO-IX-001
+version: "1.0"
+deriva_de: CNO-IX-001 v1.0       # SIEMPRE nace de una CNO (Regla 3)
+
+# ── Definición de la métrica (qué se mide) ────────────────────────────────────────
+# La obligación es de cumplimiento íntegro, no de grado: se mide qué proporción del ciclo
+# obligatorio quedó documentalmente acreditada en el período.
+metrica:
+  nombre: Pct_Cumplimiento_Rendicion
+  unidad: porcentaje
+
+# ── Parámetros operativos (con qué valores) ───────────────────────────────────────
+parametros:
+  umbral: 100                     # % — la obligación se cumple o no; no admite cumplimiento parcial
+  frecuencia: anual               # un ciclo por período fiscal (LOPC 89 · Reglamento CPCCS)
+
+# ── Método (cómo se evalúa · algoritmo conceptual, NO parámetros) ──────────────────
+# Naturaleza distinta a d02/d03: verificación DOCUMENTAL de actos cumplidos, más el contraste
+# entre lo que el informe afirma y la evidencia que lo sostiene.
+metodo:
+  tipo: verificacion_documental
+  criterios:
+    - { id: informe_presentado,   obligatorio: true,  descripcion: "el informe del período existe y fue entregado al CPCCS" }
+    - { id: contenido_minimo,     obligatorio: true,  descripcion: "el informe cubre el contenido mínimo exigido (Reglamento Art. 10)" }
+    - { id: deliberacion_publica, obligatorio: true,  descripcion: "se realizó la deliberación pública del proceso (Art. 15)" }
+    - { id: fidelidad_narrativa,  obligatorio: false, descripcion: "correspondencia entre lo que el informe afirma y la evidencia documental que lo sostiene" }
+
+consecuencia: "Observación de cumplimiento: el período sin acreditación documental completa queda registrado como pendiente de subsanación (Reglamento Art. 21)"
+
+# ── Consumo (la RO no conoce el motor) ────────────────────────────────────────────
+consume: [ SAT-IX-001 ]
+opera_en: d09                     # Rendición de Cuentas
+
+# ── Estado y trazabilidad ─────────────────────────────────────────────────────────
+estado: propuesta                 # propuesta | vigente | obsoleta | retirada
+validacion:
+  validada_por: null              # ← Javo aprueba formalmente para promover a 'vigente'
+  fecha_validacion: null

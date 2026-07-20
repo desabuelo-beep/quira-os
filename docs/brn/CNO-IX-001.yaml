@@ -1,0 +1,106 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# CNO-IX-001 · Obligación de Rendición de Cuentas del GAD
+# Tercer dominio incorporado a la BRN — elegido por CAPACIDAD DE ESTRÉS ARQUITECTÓNICO
+# (colega · 2026-07-20), no por importancia: d09 introduce una naturaleza jurídica que ni d02
+# (umbral de gasto) ni d03 (congruencia programática) ejercían — una obligación de PLAZO,
+# CONTENIDO MÍNIMO y CIERRE INSTITUCIONAL, con evidencia documental y deliberación pública.
+#
+# Objetivo de esta incorporación: NO modificar la plataforma. Éxito = `Infrastructure diff = 0`
+# contra la línea base brn-v2.1. Si obligara a tocar adaptador/compilador/contrato, eso sería
+# evidencia de una limitación → ADR de evolución (v2.2/v3), nunca un parche.
+#
+# ESTADO: propuesta — revisión técnica hecha; la aprobación formal es de Javo (molde §3b).
+# ═══════════════════════════════════════════════════════════════════════════════
+id: CNO-IX-001
+version: "1.0"
+titulo: Obligación de Rendición de Cuentas del GAD
+objeto: >-
+  el deber de las autoridades electas del GAD de rendir cuentas anualmente ante la ciudadanía,
+  con un contenido mínimo verificable, deliberación pública y consecuencia por incumplimiento.
+dominio_normativo: participacion_y_control_social
+
+# ── La cadena · puro Derecho · SHA por eslabón (Regla 3) ──────────────────────────
+cadena:
+  - rol: fundamento_constitucional
+    norma: CE
+    articulo: "100"
+    sha256: a2ee651aa41b
+    sumilla: "instancias de participación en todos los niveles de gobierno"
+
+  - rol: fundamento_control
+    norma: CE
+    articulo: "208"
+    sha256: 8c269ae98217
+    sumilla: "deberes y atribuciones del Consejo de Participación Ciudadana y Control Social"
+
+  - rol: definicion
+    norma: LOPC
+    articulo: "89"
+    sha256: d3e1686814de
+    sumilla: "definición: la rendición de cuentas como proceso participativo y obligatorio"
+
+  - rol: sujetos_obligados
+    norma: LOPC
+    articulo: "90"
+    sha256: 547b900b8a8f
+    sumilla: "autoridades del Estado, electas o de libre remoción, están obligadas a rendir cuentas"
+
+  - rol: objetivos
+    norma: LOPC
+    articulo: "91"
+    sha256: e15fda6c996c
+    sumilla: "objetivos de la rendición de cuentas"
+
+  - rol: alcance_programatico
+    norma: LOPC
+    articulo: "93"
+    sha256: a8c2e19406b1
+    sumilla: "nivel programático y operativo sobre el que se rinde cuentas"
+
+  - rol: contenido_minimo
+    norma: RES-CPCCS-RC-2026
+    articulo: "10"
+    sha256: c42af183a03c
+    sumilla: "contenido mínimo obligatorio del informe de rendición de cuentas"
+
+  - rol: sujeto_gad
+    norma: RES-CPCCS-RC-2026
+    articulo: "13"
+    sha256: 8acba6e937f8
+    sumilla: "reglas específicas para los Gobiernos Autónomos Descentralizados"
+
+  - rol: deliberacion_publica
+    norma: RES-CPCCS-RC-2026
+    articulo: "15"
+    sha256: f2648b154be4
+    sumilla: "la deliberación pública como espacio obligatorio del proceso"
+
+  - rol: consecuencia
+    norma: RES-CPCCS-RC-2026
+    articulo: "21"
+    sha256: 867833dc5f90
+    sumilla: "entrega de informes incumplidos de períodos fiscales anteriores"
+
+# ── Estado y ciclo de vida ────────────────────────────────────────────────────────
+estado: propuesta                 # propuesta | vigente | en_reforma | derogada
+vigencia:
+  desde: "2026-01-01"             # Reglamento CPCCS de Rendición de Cuentas vigente
+  hasta: null
+derogaciones:
+  reemplaza_a: null
+  reemplazada_por: null
+
+# ── Dependencias (MDN · bidireccional) ────────────────────────────────────────────
+deriva_ro:
+  - RO-IX-001
+
+# ── Validación humana (ADR-035 §5) ────────────────────────────────────────────────
+validacion:
+  propuesta_por: "BRN (extracción asistida)"
+  validada_por: null              # ← Javo aprueba formalmente para promover a 'vigente'
+  fecha_validacion: null
+notas: >-
+  Estrés arquitectónico: a diferencia de d02 (umbral cuantitativo) y d03 (congruencia), esta
+  cadena impone una obligación de HACER en un PLAZO, con CONTENIDO MÍNIMO y CIERRE (deliberación
+  pública + consecuencia por incumplimiento). Si el molde la representa sin cambios en la
+  plataforma, la generalidad del contrato BRN v2.1 queda mucho mejor sustentada.

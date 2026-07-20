@@ -8239,9 +8239,9 @@
     "_doctrina": "El nodo es la REGLA (CNO), no el artículo. La cadena íntegra o no entra (Regla 3). La IA propone, el humano valida (ADR-035 §5).",
     "_modelo": "MDN — Modelo de Dependencias Normativas (ADR-038 §9): CNO ↔ RO ↔ SAT.",
     "fecha": "2026-07-20",
-    "total_cno": 2,
-    "cadenas_integras": 2,
-    "total_ro": 2,
+    "total_cno": 3,
+    "cadenas_integras": 3,
+    "total_ro": 3,
     "estado_catalogo": "propuesta · pendiente de validación humana (ADR-035 §5)",
     "cno": [
       {
@@ -8431,6 +8431,115 @@
         ],
         "vigencia": {
           "desde": "2026-02-21",
+          "hasta": null
+        }
+      },
+      {
+        "id": "CNO-IX-001",
+        "version": "1.0",
+        "titulo": "Obligación de Rendición de Cuentas del GAD",
+        "dominio_normativo": "participacion_y_control_social",
+        "estado": "propuesta",
+        "cadena_integra": true,
+        "n_eslabones": 10,
+        "cadena": [
+          {
+            "rol": "fundamento_constitucional",
+            "norma": "CE",
+            "articulo": "100",
+            "sumilla": "instancias de participación en todos los niveles de gobierno",
+            "sha256": "a2ee651aa41b",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "fundamento_control",
+            "norma": "CE",
+            "articulo": "208",
+            "sumilla": "deberes y atribuciones del Consejo de Participación Ciudadana y Control Social",
+            "sha256": "8c269ae98217",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "definicion",
+            "norma": "LOPC",
+            "articulo": "89",
+            "sumilla": "definición: la rendición de cuentas como proceso participativo y obligatorio",
+            "sha256": "d3e1686814de",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "sujetos_obligados",
+            "norma": "LOPC",
+            "articulo": "90",
+            "sumilla": "autoridades del Estado, electas o de libre remoción, están obligadas a rendir cuentas",
+            "sha256": "547b900b8a8f",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "objetivos",
+            "norma": "LOPC",
+            "articulo": "91",
+            "sumilla": "objetivos de la rendición de cuentas",
+            "sha256": "e15fda6c996c",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "alcance_programatico",
+            "norma": "LOPC",
+            "articulo": "93",
+            "sumilla": "nivel programático y operativo sobre el que se rinde cuentas",
+            "sha256": "a8c2e19406b1",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "contenido_minimo",
+            "norma": "RES-CPCCS-RC-2026",
+            "articulo": "10",
+            "sumilla": "contenido mínimo obligatorio del informe de rendición de cuentas",
+            "sha256": "c42af183a03c",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "sujeto_gad",
+            "norma": "RES-CPCCS-RC-2026",
+            "articulo": "13",
+            "sumilla": "reglas específicas para los Gobiernos Autónomos Descentralizados",
+            "sha256": "8acba6e937f8",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "deliberacion_publica",
+            "norma": "RES-CPCCS-RC-2026",
+            "articulo": "15",
+            "sumilla": "la deliberación pública como espacio obligatorio del proceso",
+            "sha256": "f2648b154be4",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "consecuencia",
+            "norma": "RES-CPCCS-RC-2026",
+            "articulo": "21",
+            "sumilla": "entrega de informes incumplidos de períodos fiscales anteriores",
+            "sha256": "867833dc5f90",
+            "verificacion": "verificado"
+          }
+        ],
+        "deriva_ro": [
+          {
+            "id": "RO-IX-001",
+            "version": "1.0",
+            "variable": "Pct_Cumplimiento_Rendicion",
+            "umbral_vigente": 100,
+            "vigencia_operativa": null,
+            "consume": [
+              "SAT-IX-001"
+            ],
+            "opera_en": "d09",
+            "estado": "propuesta"
+          }
+        ],
+        "vigencia": {
+          "desde": "2026-01-01",
           "hasta": null
         }
       }
