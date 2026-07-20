@@ -8,7 +8,7 @@
 # Nota de alcance (Javo · 2026-07-20): d01 ya es un DOM construido y cerrado con su PCD. Esta
 # CNO/RO completa su CAPA NORMATIVA — la BRN es una capa del dominio, no el dominio entero.
 #
-# ESTADO: propuesta — revisión técnica hecha; aprobación formal de Javo pendiente (molde §3b).
+# ESTADO: VIGENTE — aprobada formalmente por Javo el 2026-07-20 (ADR-035 §5).
 # ═══════════════════════════════════════════════════════════════════════════════
 id: CNO-I-001
 version: "1.0"
@@ -76,7 +76,7 @@ cadena:
     sumilla: "el Plan Anual de Contratación se formula conforme al plan y al presupuesto"
 
 # ── Estado y ciclo de vida ────────────────────────────────────────────────────────
-estado: propuesta                 # propuesta | vigente | en_reforma | derogada
+estado: vigente                   # propuesta | vigente | en_reforma | derogada
 vigencia:
   desde: "2010-10-19"             # COOTAD / COPLAFIP vigentes
   hasta: null
@@ -92,8 +92,8 @@ deriva_ro:
 # ── Validación humana (ADR-035 §5) ────────────────────────────────────────────────
 validacion:
   propuesta_por: "BRN (extracción asistida)"
-  validada_por: null              # ← Javo aprueba formalmente para promover a 'vigente'
-  fecha_validacion: null
+  validada_por: "Javo"            # ADR-035 §5 — aprobación formal
+  fecha_validacion: "2026-07-20"
 notas: >-
   Esta cadena no introduce una CLASE nueva de regla (sus obligaciones son de articulación y
   contenido, cercanas a d09), pero sí una topología nueva: una CNO que sostiene varias RO. Si el

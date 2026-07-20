@@ -6,7 +6,7 @@
 #
 # Que dos RO distintas cuelguen de una sola CNO es el estrés topológico (1:N) que aporta d01.
 #
-# ESTADO: propuesta — aprobación formal de Javo pendiente (molde §3b).
+# ESTADO: VIGENTE — aprobada formalmente por Javo el 2026-07-20 (ADR-035 §5).
 # ═══════════════════════════════════════════════════════════════════════════════
 id: RO-I-002
 version: "1.0"
@@ -39,7 +39,7 @@ consume: [ SAT-I-002 ]
 opera_en: d01                     # Planificación Estratégica
 
 # ── Estado y trazabilidad ─────────────────────────────────────────────────────────
-estado: propuesta
+estado: vigente
 validacion:
-  validada_por: null
-  fecha_validacion: null
+  validada_por: "Javo"
+  fecha_validacion: "2026-07-20"

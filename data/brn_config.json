@@ -1,7 +1,23 @@
 {
   "artifact_schema": "1.0",
-  "artifact_id": "BRN-BUILD-d13514a4",
+  "artifact_id": "BRN-BUILD-09ea2b00",
   "parametros": [
+    {
+      "variable": "Pct_Metas_Con_Programacion",
+      "umbral": 100,
+      "desde": null,
+      "hasta": null,
+      "frecuencia": "anual",
+      "opera_en": "d01"
+    },
+    {
+      "variable": "Pct_Coherencia_Programacion_Contratacion",
+      "umbral": 100,
+      "desde": null,
+      "hasta": null,
+      "frecuencia": "anual",
+      "opera_en": "d01"
+    },
     {
       "variable": "Pct_Fidelidad_Mandato",
       "umbral": 85,
