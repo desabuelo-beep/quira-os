@@ -5,7 +5,7 @@ Réplica del patrón de Planificación (ADR-031), reusando el lenguaje visual de
 Backbone de RDC = la TRIANGULACIÓN: narrativa oficial (discurso) ↔ evidencia física/
 financiera ↔ informe CPCCS. Dos pilares:
   1. FIDELIDAD NARRATIVA (H34b) — lo dicho ↔ lo probado · el diferenciador
-  2. REPORTE CPCCS (H31) — marco y compromisos (LOPC Art. 89)
+  2. REPORTE CPCCS (H31) — marco y compromisos (LOPC Art. 88)
 El Presupuesto Participativo (H10b) NO va aquí: es de Participación Ciudadana (d08),
 su dueño por la pregunta que responde (incidencia ciudadana). Ruteo · Javo 2026-07-02.
 
@@ -115,7 +115,7 @@ def _sec_serie(serie: list[dict]) -> None:
         "La rendición de cuentas es un <b>ejercicio anual y obligatorio</b> ante la ciudadanía y el Consejo de "
         "Participación Ciudadana y Control Social. Aquí, los tres informes oficiales del período, con su evolución "
         "verificable —número de informe, fecha, lugar y asistencia ciudadana:"), unsafe_allow_html=True)
-    st.markdown(_ley_bloque(["Constitución · Art. 204", "LOPC · Art. 89"],
+    st.markdown(_ley_bloque(["Constitución · Art. 204", "LOPC · Art. 88"],
                             "Toda autoridad electa rinde cuentas una vez al año ante la ciudadanía y el CPCCS; el "
                             "proceso es público, obligatorio y verificable."), unsafe_allow_html=True)
     st.markdown(_tabla_serie_rdc(serie), unsafe_allow_html=True)
@@ -205,7 +205,7 @@ def _sec_cpccs(cp: dict) -> None:
         f"clave es la <b>brecha de compromisos</b> —cuánto de lo prometido en la rendición anterior se cumplió—: "
         f"<b>{brecha}</b>. Es la memoria que impide que la rendición sea un acto de un solo día."),
         unsafe_allow_html=True)
-    st.markdown(_ley_bloque(["LOPC · Art. 89", "Constitución · Art. 204"],
+    st.markdown(_ley_bloque(["LOPC · Art. 88", "Constitución · Art. 204"],
                             "El CPCCS recibe y da seguimiento a los compromisos que la autoridad adquiere en la "
                             "rendición; el ciclo no se agota en el evento anual."), unsafe_allow_html=True)
 

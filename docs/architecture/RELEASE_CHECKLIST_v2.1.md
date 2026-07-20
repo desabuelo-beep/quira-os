@@ -9,6 +9,30 @@
 
 **Fecha de verificación:** 2026-07-20 · **Alcance:** d01 · d02 · d03 · d09 (los 4 DOM construidos)
 
+## 🚫 BLOQUEO — el checklist NO da verde (2026-07-20)
+**Hallazgo de Javo:** el `LOPC Art. 88` que se citaba en d09 **es válido y pertinente**; yo concluí
+que "no existía" porque no lo encontré en el corpus. **Fue una inferencia sobre una ausencia** — lo
+que el Principio Rector prohíbe (`CLAUDE.md`: *la ausencia de evidencia es un RESULTADO de auditoría,
+nunca autorización para inferir hechos*).
+
+**Causa raíz (dos bugs en `scripts/normativa/chunker.py`, ya corregidos):**
+1. El grupo del número **tragaba el título** (`Art. 89 Definición` → capturaba `"89 Definición"`) y la
+   alternancia `\w+` producía falsos matches (`"reformado"`).
+2. El ancla exigía que `Art.` **abriera la línea**. La LOPC viene maquetada como
+   `"De la rendición de cuentas Art. 88\nDerecho ciudadano...-"` → esos artículos **se perdían** y su
+   contenido se absorbía en el artículo anterior.
+
+**Impacto medido (docx vs corpus):** LOPC **77 de 103** (faltaban 26) · COD 386 de 393 (faltaban 7).
+COOTAD (548), CE (444), LOSNCP (108), Contraloría (100) estaban **completas**. *No era una falla
+generalizada del corpus, pero sí de la ley que sostiene d09 y parte de d03.*
+
+**Tras el fix (validado, aún no re-ingerido):** LOPC 103/103 · COD 393 · las demás sin degradar.
+
+**Para levantar el bloqueo:** (a) re-ingerir LOPC y COD al corpus · (b) verificar que las CNO
+afectadas sigan íntegras · (c) añadir el **check 13 de cobertura del corpus** (docx vs corpus) para
+que un hueco de ingesta no vuelva a pasar inadvertido · (d) registrar en el molde el estado
+`pendiente_corpus`, para que una norma real sin SHA **se reporte como brecha, no se borre**.
+
 ## Checklist
 
 | # | Verificación | Estado | Evidencia |
@@ -27,7 +51,7 @@
 ## Hallazgos del repaso de cierre (y su corrección)
 | DOM | Hallazgo | Acción |
 |---|---|---|
-| **d09** | `LOPC Art. 88` citado en la UI **no existe en el corpus** (3 ocurrencias) — violaba la Regla 3 | Corregido a **LOPC Art. 89** (Definición de rendición de cuentas · SHA `d3e1686814de`), que es el fundamento real y ya está en CNO-IX-001 |
+| **d09** | ~~`LOPC Art. 88` no existe~~ **← CONCLUSIÓN ERRÓNEA, REVERTIDA** | El Art. 88 LOPC **sí existe** (*Derecho ciudadano a la rendición de cuentas*): faltaba en el **corpus**, no en el Derecho. Se restauró la cita y se corrigió la **causa raíz** (ver §Bloqueo) |
 | d01·d02·d03 | citas de artículo revisadas contra las cadenas verificadas | Sin hallazgos — COOTAD 215/233, LOSNCP 22, COPLAFIP 41/42, COD 97 coinciden con sus CNO |
 | todos | jerga interna en UI | Sin leaks: las 3 coincidencias eran docstrings de código, no texto de producto |
 | d09 | afirmaciones categóricas (el patrón que produjo la inferencia de d02) | Sin hallazgos |
