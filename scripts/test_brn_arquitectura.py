@@ -141,6 +141,23 @@ def main() -> int:
            f"10 · config.json cumple el esquema de ejecución (artifact_schema {schema})",
            f"10 · config.json rompe el esquema: schema={schema} · {fuera}")
 
+    # 11 · CONTRATO (colega · 2026-07-20): solo el ROAdapter puede leer el YAML de una RO.
+    # Evita que dentro de seis meses alguien vuelva a hacer ro["metrica"]["nombre"] desde otro módulo.
+    CLAVES_RO = ("metrica", "parametros", "vigencia_operativa", "deriva_de", "consume")
+    infractores = []
+    for py in sorted((REPO / "scripts").glob("brn_*.py")):
+        if py.name == "brn_ro_adapter.py":
+            continue
+        cuerpo = "\n".join(l for l in py.read_text(encoding="utf-8").splitlines()
+                           if not l.strip().startswith("#"))
+        for k in CLAVES_RO:
+            # solo cuenta si se lee sobre la RO cruda (variable `ro`), no sobre dicts propios
+            if re.search(rf'\bro\b\s*(\.get\(["\']{k}["\']|\[["\']{k}["\']\])', cuerpo):
+                infractores.append(f"{py.name}:{k}")
+    _check(not infractores,
+           "11 · contrato respetado: solo el ROAdapter lee el YAML de la RO",
+           f"11 · lectura directa del YAML fuera del adaptador: {infractores}")
+
     # ── Reporte ───────────────────────────────────────────────────────────────
     print("BRN · Suite de Regresión Arquitectónica + Semántica")
     for ok, msg in _res:

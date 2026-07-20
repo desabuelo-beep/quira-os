@@ -118,7 +118,7 @@ def main() -> int:
     # Índice de RO por CNO de la que derivan (MDN · trazabilidad bidireccional)
     ro_por_cno: dict[str, list[dict]] = {}
     for ro in ros:
-        cno_id = str(ro.get("deriva_de", "")).split()[0]  # "CNO-IV-001 v1" → "CNO-IV-001"
+        cno_id = adaptar(ro).cno_id                      # vía ROAdapter (contrato · nunca el YAML crudo)
         ro_por_cno.setdefault(cno_id, []).append(ro)
 
     catalogo, integras = [], 0
@@ -129,14 +129,17 @@ def main() -> int:
         ro_ligadas = []
         hoy = date.today().isoformat()
         for ro in ro_por_cno.get(cno["id"], []):
+            # CONTRATO (colega · 2026-07-20): ningún módulo salvo el ROAdapter lee el YAML de una RO.
+            # Todo lo de abajo sale del modelo interno estable.
+            m = adaptar(ro)
             umbral_hoy, tramos = _umbral_vigente(ro, hoy)
             ro_ligadas.append({
-                "id": ro["id"], "version": ro.get("version"),
-                "variable": (ro.get("metrica") or {}).get("nombre"),
+                "id": m.id, "version": m.version,
+                "variable": m.metrica,
                 "umbral_vigente": umbral_hoy,            # el del tramo vigente a la fecha (§4b)
                 "vigencia_operativa": tramos,            # todos los tramos (transición, no reforma)
-                "consume": ro.get("consume", []), "opera_en": ro.get("opera_en"),
-                "estado": ro.get("estado", "propuesta"),
+                "consume": list(m.consume), "opera_en": m.opera_en,
+                "estado": m.estado,
             })
         catalogo.append({
             "id": cno["id"], "version": cno.get("version"), "titulo": cno.get("titulo"),

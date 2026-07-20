@@ -74,15 +74,29 @@ jurídico sin tocar el motor**. Esa es su razón de ser.
 3. **ADR-035 §5** — ninguna IA promueve a `vigente`; la interpretación jurídica es humana (Neutralidad Operativa).
 
 ## 8. Estado actual y frontera
-- **Cerrado:** doctrina (ADR-035/037/038/039), molde (ciclo+CNO/RO), piloto **CNO-IV-001** (6/6 eslabones
-  íntegros → RO-IV-001), catálogo de CNO (`brn_cno.py` · MDN como datos). Todo en estado `propuesta`.
-- **Pendiente — en el orden del colega (probar la gobernanza antes que el motor · 2026-07-18):**
-  1. **Validación humana** del piloto por Javo → `propuesta` a `vigente` (CNO-IV-001 · RO-IV-001).
-  2. **Reforma simulada** — cambiar un umbral o agregar un artículo ficticio y comprobar que la
-     propagación documental (Corpus→CNO→RO→SAT→DOM) se comporta **exactamente como está descrita**,
-     ANTES de escribir una línea de integración con el motor.
-  3. Solo entonces la implementación: compilador RO→Gold Master (ADR-039), migrar la cadena del
-     mandato (d03) y las SAT financieras, y ampliar el Corpus (2ª fase · Municipio 002+).
+### 🔒 BRN v2.0 — LÍNEA BASE CONGELADA (2026-07-20)
+Se congela esta versión como **línea base estable** (disciplina del colega): d04 y los siguientes se
+modelan **sin tocar infraestructura**. Si un dominio nuevo obliga a modificar el compilador, el
+adaptador o el contrato interno, **eso no se parchea: se registra como candidato a BRN v2.1/v3** — así
+se distingue *estabilidad* de *evolución* de la plataforma.
+
+**El contrato interno oficial:**
+```
+RO YAML → [ROAdapter] → ROModel (ÚNICO contrato interno) → Compilador · Catálogo
+```
+**Regla dura:** *ningún componente salvo `brn_ro_adapter.py` puede leer directamente el YAML de una
+RO.* Verificado automáticamente (suite, check 11) — no depende de memoria humana.
+
+**Contenido de la línea base v2.0:** doctrina (ADR-035/037/038/039) · molde (ciclo·CNO/RO·vigencia
+operativa·gobernanza de estados) · ROAdapter + contrato ROModel · compilador (config/manifest,
+`artifact_schema`, `artifact_id`) · catálogo/MDN · **2 dominios vigentes de clases distintas**
+(d02 financiero · d03 programático) · suite de regresión **11/11** (8 arquitectónicas + 3 semánticas).
+- **Siguiente (sobre la línea base, sin tocarla):** modelar **d04** u otro dominio — ya no *valida* la
+  arquitectura, la **ejerce**. Criterio de éxito: incorporarlo **sin cambiar** compilador, adaptador ni
+  contrato interno. Si algo de eso cambia, se descubrió una limitación → candidato a v2.1/v3.
+- **Evolución diferida** (no se abren en paralelo · una a la vez, con ADR si toca decisión): JSON
+  Schema formal de config/manifest · artefacto multi-consumidor · BRN Readiness Index · reorganizar
+  las pruebas en `tests/{arquitectura,semantica,contratos}` cuando el volumen lo pida.
 
 ---
 *BRN v2 · Plano Maestro · Dylus Lab © 2026 · "Cuatro ADR, un molde y un corpus dejaron de ser piezas sueltas: son una sola capa que consolida el Derecho en reglas, lo prueba con SHA y lo entrega compilado al motor — sin interpretarlo, sin calcularlo, sin tocarlo."*

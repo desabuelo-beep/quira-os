@@ -8238,7 +8238,7 @@
     "_fuente": "Canon BRN (docs/brn/*.yaml) verificado contra el corpus (SHA256)",
     "_doctrina": "El nodo es la REGLA (CNO), no el artículo. La cadena íntegra o no entra (Regla 3). La IA propone, el humano valida (ADR-035 §5).",
     "_modelo": "MDN — Modelo de Dependencias Normativas (ADR-038 §9): CNO ↔ RO ↔ SAT.",
-    "fecha": "2026-07-18",
+    "fecha": "2026-07-20",
     "total_cno": 2,
     "cadenas_integras": 2,
     "total_ro": 2,
