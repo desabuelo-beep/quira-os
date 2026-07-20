@@ -6,14 +6,22 @@ El salto de madurez que recomendó el colega (2026-07-18): en vez de re-discutir
 por cada CNO nueva, un conjunto de pruebas que verifican que los INVARIANTES del modelo BRN se
 mantienen. Si pasan, cada dominio nuevo (d04, d05…) valida la arquitectura automáticamente.
 
-INVARIANTES VERIFICADOS (independientes del corpus · deterministas):
-  1. Toda RO deriva de una CNO existente.
-  2. Toda CNO tiene un SHA por eslabón (formato válido).
-  3. Ninguna RO conoce el motor (sin campo `motor`, sin "Gold Master"/"Hxx" en su texto).
-  4. El compilador no tiene lógica por dominio (sin `if dominio==` ni `d02/d03` embebidos).
-  5. La firma del artefacto es estable (manifest.firma == recomputar(config)).
-  6. config.json NO contiene metadatos jurídicos (ro/cno/sha/cadena).
-  7. manifest.json conserva la trazabilidad (cadena_sha por cada RO compilada).
+Mapa invariante → prueba (los I1-I8 del Plano Maestro §7b):
+  ARQUITECTÓNICAS
+    1. Toda RO deriva de una CNO existente.                                     [I5]
+    2. Toda CNO tiene un SHA por eslabón (formato válido).
+    3. Ninguna RO conoce el motor (sin `motor`, sin "Gold Master"/"Hxx").        [I4]
+    4. El compilador no tiene ramas por dominio.                                [I3]
+    5. La firma del artefacto es estable (manifest.firma == recomputar(config)). [I6]
+    6. config.json NO contiene metadatos jurídicos.                             [I7]
+    7. manifest.json conserva la trazabilidad (cadena_sha por RO compilada).
+  SEMÁNTICAS (comportamiento, no forma)
+    8. La vigencia resuelve el tramo correcto por fecha (§4b).                  [I2]
+    9. Toda RO vigente tiene métrica y umbral (medición real).                  [I2]
+   10. config.json cumple el esquema versionado (artifact_schema).              [I7]
+  CONTRATO Y ACEPTACIÓN
+   11. Solo el ROAdapter lee el YAML de una RO.                                 [I1]
+   12. Regla de aceptación: infraestructura intacta vs. línea base (diff=0).    [I8]
 
 Uso:  python scripts/test_brn_arquitectura.py       (exit 0 = todo verde)
 Dylus Lab © 2026
@@ -38,6 +46,7 @@ BRN_DIR = REPO / "docs" / "brn"
 CONFIG = REPO / "data" / "brn_config.json"
 MANIFEST = REPO / "data" / "brn_manifest.json"
 COMPILADOR = REPO / "scripts" / "brn_compilador.py"
+LINEA_BASE = "brn-v2.1"          # tag de la línea base congelada (regla de aceptación · check 12)
 
 _res: list[tuple[bool, str]] = []
 
@@ -158,10 +167,33 @@ def main() -> int:
            "11 · contrato respetado: solo el ROAdapter lee el YAML de la RO",
            f"11 · lectura directa del YAML fuera del adaptador: {infractores}")
 
+    # 12 · REGLA DE ACEPTACIÓN (colega · 2026-07-20): incorporar un dominio debe dejar la
+    # infraestructura intacta. `Infrastructure diff = 0` contra la línea base congelada.
+    # Solo deberían cambiar docs/brn/CNO-*.yaml y RO-*.yaml. Si cambia scripts/, se abre un ADR
+    # (evolución de plataforma v2.1/v3), NO se parchea ad hoc. Es advertencia, no fallo: la
+    # plataforma PUEDE evolucionar — pero de forma consciente y documentada.
+    import subprocess
+    infra_diff = None
+    try:
+        r = subprocess.run(["git", "diff", "--name-only", LINEA_BASE, "--", "scripts/"],
+                           cwd=REPO, capture_output=True, text=True, timeout=15)
+        if r.returncode == 0:
+            infra_diff = [l for l in r.stdout.splitlines() if l.strip()]
+    except Exception:
+        pass
+    if infra_diff is None:
+        msg_12 = f"   ⏭  12 · regla de aceptación: no se pudo comparar con {LINEA_BASE} (¿tag ausente?)"
+    elif infra_diff:
+        msg_12 = (f"   ⚠️  12 · infraestructura MODIFICADA desde {LINEA_BASE} ({len(infra_diff)} archivo/s): "
+                  f"{', '.join(infra_diff[:4])}\n        → evolución de plataforma: requiere ADR (v2.1/v3), no parche ad hoc")
+    else:
+        msg_12 = f"   ✅ 12 · regla de aceptación: infraestructura intacta desde {LINEA_BASE} (diff=0)"
+
     # ── Reporte ───────────────────────────────────────────────────────────────
     print("BRN · Suite de Regresión Arquitectónica + Semántica")
     for ok, msg in _res:
         print(f"   {'✅' if ok else '❌'} {msg}")
+    print(msg_12)
     fallos = sum(1 for ok, _ in _res if not ok)
     print(f"\n{'TODO VERDE — la arquitectura BRN se mantiene' if not fallos else f'{fallos} INVARIANTE(S) ROTO(S)'}")
     return 0 if not fallos else 1

@@ -18,6 +18,11 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
+# VERSIÓN DEL CONTRATO INTERNO (colega · 2026-07-20) — independiente del formato YAML externo y del
+# artifact_schema. Un YAML de RO v3 puede seguir traduciéndose a ROModel 2.0 sin tocar el compilador:
+# esa es la fuerza de la frontera. Solo sube si cambia la FORMA del modelo interno (romper aguas abajo).
+CONTRATO_VERSION = "2.0"
+
 
 @dataclass(frozen=True)
 class Tramo:

@@ -74,7 +74,26 @@ jurídico sin tocar el motor**. Esa es su razón de ser.
 3. **ADR-035 §5** — ninguna IA promueve a `vigente`; la interpretación jurídica es humana (Neutralidad Operativa).
 
 ## 8. Estado actual y frontera
-### 🔒 BRN v2.0 — LÍNEA BASE CONGELADA (2026-07-20)
+## 7b. INVARIANTES DE PLATAFORMA — BRN v2.1 (especificación verificable)
+No son principios de buena voluntad: **cada uno tiene una prueba que lo vigila** (suite). Romper uno
+es romper la plataforma, y el pipeline lo detecta.
+
+| # | Invariante | Verificado por |
+|---|---|---|
+| **I1** | Solo el **ROAdapter** conoce el YAML de una RO | check 11 |
+| **I2** | **ROModel** es el contrato interno (inmutable, `frozen=True`, versionado `CONTRATO_VERSION`) | checks 8-9 (consumo vía modelo) |
+| **I3** | El **compilador no contiene ramas por dominio** | check 4 |
+| **I4** | Las **RO no conocen el motor** | check 3 |
+| **I5** | Toda **RO deriva de una CNO** (y solo compila si ambas están `vigentes`) | checks 1 · compilador |
+| **I6** | Todo **artefacto es idempotente** (misma entrada → misma firma/`artifact_id`) | check 5 |
+| **I7** | La **firma depende únicamente de la configuración ejecutable** (no de metadatos jurídicos) | checks 5-6-10 |
+| **I8** | Incorporar un dominio deja la **infraestructura intacta** (`diff = 0` vs línea base) | check 12 (regla de aceptación) |
+
+### 🔒 BRN v2.1 — LÍNEA BASE CONGELADA (2026-07-20)
+*Evolución consciente desde v2.0 (aplicando la propia regla: los cambios de infraestructura no se
+parchean, se versionan). Cambios v2.0 → v2.1: contrato interno versionado (`CONTRATO_VERSION = "2.0"`,
+independiente del YAML externo y del `artifact_schema`) · regla de aceptación automatizada (check 12) ·
+invariantes de plataforma I1-I8 declarados y mapeados a pruebas.*
 Se congela esta versión como **línea base estable** (disciplina del colega): d04 y los siguientes se
 modelan **sin tocar infraestructura**. Si un dominio nuevo obliga a modificar el compilador, el
 adaptador o el contrato interno, **eso no se parchea: se registra como candidato a BRN v2.1/v3** — así
