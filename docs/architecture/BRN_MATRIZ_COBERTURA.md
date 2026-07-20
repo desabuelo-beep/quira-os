@@ -66,15 +66,20 @@ CPCCS al bloque constitucional y legal.
 `umbral: 100` (obligación que no admite cumplimiento parcial) y método de verificación documental.
 **`Infrastructure diff = 0`** — no se tocó adaptador, compilador, contrato ni catálogo. Suite 12/12.
 
-Con tres clases de regla (cuantitativa · programática · obligación de hacer) representadas sobre el
-mismo contrato sin modificarlo, la transversalidad de BRN v2.1 queda sustentada con evidencia, no con
-argumento.
+**Formulación prudente (precisión del colega · 2026-07-20):** *la evidencia empírica disponible
+muestra que el contrato BRN v2.1 ha incorporado satisfactoriamente **tres clases distintas de reglas**
+—cuantitativa, programática y obligación de hacer— **sin requerir modificaciones de infraestructura**.*
+No se afirma generalidad absoluta ni "transversalidad demostrada": tres dominios son evidencia
+sustancialmente más fuerte que uno, pero no una demostración. Cada dominio nuevo **fortalece —o
+eventualmente cuestiona—** el modelo; el lenguaje debe dejar espacio para lo segundo sin obligar a
+retractarse de afirmaciones excesivas.
 
 ## Criterio de escalamiento a 222 cantones
-El molde se considera **suficientemente validado para escalar** cuando ≥2 dominios de **naturaleza
-distinta** cumplan los 4 invariantes con CNO/RO `vigentes` y compiladas. **Estado hoy: CUMPLIDO** —
-d02 (umbral) y d03 (congruencia) validados. El siguiente dominio ya no *valida* la arquitectura: la
-*ejerce*. No se escala por percepción — esta tabla lo muestra.
+El molde se considera **suficientemente respaldado para escalar** cuando ≥2 dominios de **clase
+distinta** cumplen los invariantes con CNO/RO `vigentes` y compiladas. **Estado hoy: cumplido** —
+d02 (cuantitativa) y d03 (programática) conformes; d09 (obligación de hacer) incorporado con
+`diff = 0`, pendiente de aprobación formal. El siguiente dominio ya no *valida* la arquitectura: la
+*ejerce*. No se escala por percepción — esta tabla lo muestra, y admite que la evidencia siga creciendo.
 
 ## Evolución prevista (colega · 2026-07-18 · refinamiento, no fundamento)
 No urgente; se abordará cuando aparezca la necesidad, cada una con su ADR si toca decisión:
@@ -88,6 +93,14 @@ No urgente; se abordará cuando aparezca la necesidad, cada una con su ADR si to
   artefacto podría estructurarse en `runtime · metadata · provenance · schema`.
 - **BRN Readiness Index** — convertir esta matriz en un índice con puntaje por dominio (Corpus·CNO·
   RO·SAT·Compilación·Validación·Runtime·Evidencia) para medir objetivamente la madurez de producción.
+- **Tipos de métrica** (candidato **v3** · colega 2026-07-20) — hoy toda métrica se expresa como
+  porcentaje, y `umbral: 100` en d09 fuerza una obligación jurídica a forma porcentual. Una obligación
+  de hacer es naturalmente **booleana**. El contrato podría admitir
+  `metrica.tipo: porcentaje | booleana | ordinal | cardinal` (d02/d03 porcentaje · d09 booleana o
+  índice compuesto). **No se cambia hoy**: exigiría tocar adaptador y compilador → ADR de evolución.
+- **ROAdapter → parser formal** (candidato v2.2/v3 · colega) — evolucionar de adaptador a parser con
+  fases explícitas: `YAML → validaciones estructurales → validaciones semánticas → ROModel`. Permitiría
+  errores expresivos ("falta criterio obligatorio", "vigencia mal formada") **sin afectar al compilador**.
 
 ---
 *BRN v2 · Matriz de Cobertura · Dylus Lab © 2026 · "El molde no está validado porque funcione una vez, sino cuando dos reglas de naturaleza distinta pasan por él sin que el compilador se entere de la diferencia. Ese punto ya se cruzó."*

@@ -20,6 +20,10 @@ metrica:
 
 # ── Parámetros operativos (con qué valores) ───────────────────────────────────────
 parametros:
+  # NOTA CONCEPTUAL (colega · 2026-07-20): 100% es una representación PORCENTUAL de algo que
+  # jurídicamente es BOOLEANO (cumplió / no cumplió). El contrato v2.1 solo admite porcentaje, así
+  # que se expresa así de forma explícita y honesta. Admitir `metrica.tipo: booleana` es candidato
+  # a BRN v3 (exigiría tocar adaptador y compilador → ADR). No se fuerza la plataforma hoy.
   umbral: 100                     # % — la obligación se cumple o no; no admite cumplimiento parcial
   frecuencia: anual               # un ciclo por período fiscal (LOPC 89 · Reglamento CPCCS)
 
