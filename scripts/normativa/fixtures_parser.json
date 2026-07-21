@@ -1,0 +1,38 @@
+{
+  "CE": {
+    "chunks": 466,
+    "arts_unicos": 444,
+    "art_max": 444,
+    "disposiciones": 9
+  },
+  "COOTAD": {
+    "chunks": 632,
+    "arts_unicos": 548,
+    "art_max": 598,
+    "disposiciones": 21
+  },
+  "COOTAD-2026": {
+    "chunks": 20,
+    "arts_unicos": 5,
+    "art_max": 198,
+    "disposiciones": 2
+  },
+  "LOPC": {
+    "chunks": 115,
+    "arts_unicos": 100,
+    "art_max": 101,
+    "disposiciones": 9
+  },
+  "LOSNCP": {
+    "chunks": 151,
+    "arts_unicos": 108,
+    "art_max": 108,
+    "disposiciones": 13
+  },
+  "RLOTAIP": {
+    "chunks": 35,
+    "arts_unicos": 29,
+    "art_max": 215,
+    "disposiciones": 1
+  }
+}

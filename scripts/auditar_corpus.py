@@ -97,9 +97,44 @@ def auditoria_estructural() -> int:
     return 1 if anom else 0
 
 
+def check_fixtures() -> int:
+    """REGRESIÓN DEL PARSER (colega · 2026-07-20): compara el parser actual contra el baseline
+    congelado en fixtures_parser.json. Detecta que un cambio futuro no rompa la segmentación —
+    sin repetir la auditoría completa. Idempotencia incluida (SHA estables entre corridas)."""
+    import json
+    from scripts.normativa.chunker import chunk_docx
+    fx_path = REPO / "scripts" / "normativa" / "fixtures_parser.json"
+    if not fx_path.exists():
+        print("[skip] no hay fixtures_parser.json — genera el baseline primero"); return 0
+    fx = json.loads(fx_path.read_text(encoding="utf-8"))
+    docs = {"CE": "Constitución del Ecuador.docx", "COOTAD": "COOTAD.docx",
+            "COOTAD-2026": "COOTAD PARA LA SOSTENIBILIDAD Y EFICIENCIA 2026.docx",
+            "LOPC": "LEY-ORGANICA-DE-PARTICIPACION-CIUDADANA.docx", "LOSNCP": "losncp.docx",
+            "RLOTAIP": "LOTAIP - REGLAMENTO-24-01-2024.docx"}
+    print("REGRESIÓN DEL PARSER — parser actual vs. baseline (fixtures)")
+    roto = 0
+    for sig, f in docs.items():
+        c = chunk_docx(str(WORD_DIR / f))
+        arts = {x.articulo_num for x in c if x.articulo_raw.startswith("Art.") and x.articulo_num}
+        actual = {"chunks": len(c), "arts_unicos": len(arts),
+                  "art_max": max(arts) if arts else 0,
+                  "disposiciones": sum(1 for x in c if "Disposici" in x.articulo_raw)}
+        c2 = chunk_docx(str(WORD_DIR / f))            # idempotencia
+        idem = [x.sha256 for x in c] == [x.sha256 for x in c2]
+        esp = fx.get(sig, {})
+        ok = actual == esp and idem
+        print(f"  {'✅' if ok else '❌'} {sig:12} {actual}" + ("" if ok else f"  ≠ esperado {esp} idem={idem}"))
+        if not ok:
+            roto += 1
+    print(f"\n{'PARSER ESTABLE — sin regresión' if not roto else f'{roto} REGRESIONES'}")
+    return 1 if roto else 0
+
+
 def main() -> int:
     if "--estructural" in sys.argv:
         return auditoria_estructural()
+    if "--fixtures" in sys.argv:
+        return check_fixtures()
     detalle = "--detalle" in sys.argv
     try:
         uri = tomllib.load(open(SECRETS, "rb"))["database"]["supabase_uri"]
