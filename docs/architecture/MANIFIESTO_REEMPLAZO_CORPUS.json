@@ -1,0 +1,353 @@
+{
+  "generado": "2026-07-21T14:34:06+00:00",
+  "version_parser": "parser-v1.0",
+  "version_corpus_previa": "pre-v1.0 (sin congelar)",
+  "total_documentos": 43,
+  "requieren_reemplazo": 43,
+  "documentos": [
+    {
+      "sigla": "CE",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 465,
+      "chunks_nuevos": 466,
+      "sha_actuales_no_en_nuevos": 372,
+      "sha_nuevos_no_en_actuales": 373
+    },
+    {
+      "sigla": "LOTAIP",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 56,
+      "chunks_nuevos": 59,
+      "sha_actuales_no_en_nuevos": 29,
+      "sha_nuevos_no_en_actuales": 32
+    },
+    {
+      "sigla": "RLOTAIP",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 29,
+      "chunks_nuevos": 35,
+      "sha_actuales_no_en_nuevos": 19,
+      "sha_nuevos_no_en_actuales": 25
+    },
+    {
+      "sigla": "GUIA-LOTAIP-MEC",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 100,
+      "chunks_nuevos": 241,
+      "sha_actuales_no_en_nuevos": 94,
+      "sha_nuevos_no_en_actuales": 235
+    },
+    {
+      "sigla": "GUIA-LOTAIP-ENT",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 87,
+      "chunks_nuevos": 123,
+      "sha_actuales_no_en_nuevos": 83,
+      "sha_nuevos_no_en_actuales": 118
+    },
+    {
+      "sigla": "LOPC",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 94,
+      "chunks_nuevos": 115,
+      "sha_actuales_no_en_nuevos": 61,
+      "sha_nuevos_no_en_actuales": 82
+    },
+    {
+      "sigla": "COD",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 435,
+      "chunks_nuevos": 438,
+      "sha_actuales_no_en_nuevos": 319,
+      "sha_nuevos_no_en_actuales": 322
+    },
+    {
+      "sigla": "RCOD",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 25,
+      "chunks_nuevos": 31,
+      "sha_actuales_no_en_nuevos": 13,
+      "sha_nuevos_no_en_actuales": 19
+    },
+    {
+      "sigla": "COOTAD",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 632,
+      "chunks_nuevos": 632,
+      "sha_actuales_no_en_nuevos": 373,
+      "sha_nuevos_no_en_actuales": 373
+    },
+    {
+      "sigla": "COOTAD-2026",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 19,
+      "chunks_nuevos": 20,
+      "sha_actuales_no_en_nuevos": 5,
+      "sha_nuevos_no_en_actuales": 6
+    },
+    {
+      "sigla": "COPLAFIP",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 199,
+      "chunks_nuevos": 200,
+      "sha_actuales_no_en_nuevos": 99,
+      "sha_nuevos_no_en_actuales": 100
+    },
+    {
+      "sigla": "RCOPLAFIP",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 295,
+      "chunks_nuevos": 296,
+      "sha_actuales_no_en_nuevos": 75,
+      "sha_nuevos_no_en_actuales": 76
+    },
+    {
+      "sigla": "PND-2025",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 422,
+      "chunks_nuevos": 502,
+      "sha_actuales_no_en_nuevos": 87,
+      "sha_nuevos_no_en_actuales": 161
+    },
+    {
+      "sigla": "ACUERDO-PDOT-2023",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 40,
+      "chunks_nuevos": 44,
+      "sha_actuales_no_en_nuevos": 15,
+      "sha_nuevos_no_en_actuales": 19
+    },
+    {
+      "sigla": "LINEAMIENTOS-PDOT-2023",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 9,
+      "chunks_nuevos": 7,
+      "sha_actuales_no_en_nuevos": 3,
+      "sha_nuevos_no_en_actuales": 1
+    },
+    {
+      "sigla": "LINEAMIENTOS-PFI",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 21,
+      "chunks_nuevos": 46,
+      "sha_actuales_no_en_nuevos": 20,
+      "sha_nuevos_no_en_actuales": 45
+    },
+    {
+      "sigla": "LOTUGS",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 148,
+      "chunks_nuevos": 150,
+      "sha_actuales_no_en_nuevos": 57,
+      "sha_nuevos_no_en_actuales": 59
+    },
+    {
+      "sigla": "LOC-CGE",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 115,
+      "chunks_nuevos": 116,
+      "sha_actuales_no_en_nuevos": 82,
+      "sha_nuevos_no_en_actuales": 83
+    },
+    {
+      "sigla": "NCI-CGE",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 111,
+      "chunks_nuevos": 179,
+      "sha_actuales_no_en_nuevos": 107,
+      "sha_nuevos_no_en_actuales": 175
+    },
+    {
+      "sigla": "CONA",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 474,
+      "chunks_nuevos": 475,
+      "sha_actuales_no_en_nuevos": 296,
+      "sha_nuevos_no_en_actuales": 297
+    },
+    {
+      "sigla": "LODISC",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 131,
+      "chunks_nuevos": 134,
+      "sha_actuales_no_en_nuevos": 64,
+      "sha_nuevos_no_en_actuales": 67
+    },
+    {
+      "sigla": "LOPAM",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 96,
+      "chunks_nuevos": 99,
+      "sha_actuales_no_en_nuevos": 40,
+      "sha_nuevos_no_en_actuales": 43
+    },
+    {
+      "sigla": "LMH",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 181,
+      "chunks_nuevos": 184,
+      "sha_actuales_no_en_nuevos": 153,
+      "sha_nuevos_no_en_actuales": 156
+    },
+    {
+      "sigla": "LPEVM",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 104,
+      "chunks_nuevos": 106,
+      "sha_actuales_no_en_nuevos": 50,
+      "sha_nuevos_no_en_actuales": 52
+    },
+    {
+      "sigla": "CEDAW",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 33,
+      "chunks_nuevos": 41,
+      "sha_actuales_no_en_nuevos": 29,
+      "sha_nuevos_no_en_actuales": 37
+    },
+    {
+      "sigla": "CADH",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 80,
+      "chunks_nuevos": 85,
+      "sha_actuales_no_en_nuevos": 41,
+      "sha_nuevos_no_en_actuales": 46
+    },
+    {
+      "sigla": "CDN",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 96,
+      "chunks_nuevos": 96,
+      "sha_actuales_no_en_nuevos": 15,
+      "sha_nuevos_no_en_actuales": 15
+    },
+    {
+      "sigla": "PIDESC",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 32,
+      "chunks_nuevos": 33,
+      "sha_actuales_no_en_nuevos": 9,
+      "sha_nuevos_no_en_actuales": 10
+    },
+    {
+      "sigla": "LOSNCP",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 148,
+      "chunks_nuevos": 151,
+      "sha_actuales_no_en_nuevos": 110,
+      "sha_nuevos_no_en_actuales": 113
+    },
+    {
+      "sigla": "RLOSNCP",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 495,
+      "chunks_nuevos": 498,
+      "sha_actuales_no_en_nuevos": 161,
+      "sha_nuevos_no_en_actuales": 164
+    },
+    {
+      "sigla": "LOSEP",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 186,
+      "chunks_nuevos": 189,
+      "sha_actuales_no_en_nuevos": 124,
+      "sha_nuevos_no_en_actuales": 127
+    },
+    {
+      "sigla": "RLOSEP",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 313,
+      "chunks_nuevos": 312,
+      "sha_actuales_no_en_nuevos": 146,
+      "sha_nuevos_no_en_actuales": 145
+    },
+    {
+      "sigla": "COA",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 364,
+      "chunks_nuevos": 366,
+      "sha_actuales_no_en_nuevos": 342,
+      "sha_nuevos_no_en_actuales": 344
+    },
+    {
+      "sigla": "COA-AMB",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 367,
+      "chunks_nuevos": 373,
+      "sha_actuales_no_en_nuevos": 164,
+      "sha_nuevos_no_en_actuales": 170
+    },
+    {
+      "sigla": "RCOA-AMB",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 873,
+      "chunks_nuevos": 883,
+      "sha_actuales_no_en_nuevos": 436,
+      "sha_nuevos_no_en_actuales": 446
+    },
+    {
+      "sigla": "LOTD",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 94,
+      "chunks_nuevos": 95,
+      "sha_actuales_no_en_nuevos": 40,
+      "sha_nuevos_no_en_actuales": 41
+    },
+    {
+      "sigla": "CLASP-2026",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 78,
+      "chunks_nuevos": 117,
+      "sha_actuales_no_en_nuevos": 78,
+      "sha_nuevos_no_en_actuales": 117
+    },
+    {
+      "sigla": "RES-ORG-GADMCM-2025",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 92,
+      "chunks_nuevos": 100,
+      "sha_actuales_no_en_nuevos": 73,
+      "sha_nuevos_no_en_actuales": 81
+    },
+    {
+      "sigla": "RES-CPCCS-RC-2026",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 104,
+      "chunks_nuevos": 113,
+      "sha_actuales_no_en_nuevos": 52,
+      "sha_nuevos_no_en_actuales": 61
+    },
+    {
+      "sigla": "PDOT-MONTECRISTI",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 594,
+      "chunks_nuevos": 825,
+      "sha_actuales_no_en_nuevos": 451,
+      "sha_nuevos_no_en_actuales": 681
+    },
+    {
+      "sigla": "PLAN-GOB-MCR",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 18,
+      "chunks_nuevos": 55,
+      "sha_actuales_no_en_nuevos": 18,
+      "sha_nuevos_no_en_actuales": 55
+    },
+    {
+      "sigla": "PAGCC-2024",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 64,
+      "chunks_nuevos": 104,
+      "sha_actuales_no_en_nuevos": 58,
+      "sha_nuevos_no_en_actuales": 98
+    },
+    {
+      "sigla": "LOIEME",
+      "estado": "REEMPLAZO_NECESARIO",
+      "chunks_actuales": 32,
+      "chunks_nuevos": 36,
+      "sha_actuales_no_en_nuevos": 9,
+      "sha_nuevos_no_en_actuales": 13
+    }
+  ]
+}

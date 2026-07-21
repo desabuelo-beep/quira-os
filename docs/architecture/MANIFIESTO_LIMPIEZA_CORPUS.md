@@ -4,6 +4,19 @@
 > eliminar un registro de Supabase se deja evidencia reproducible de qué es, de dónde vino y por
 > qué se propone la acción. **Nada se ha borrado.** Este documento solo describe el hallazgo.
 
+## Limitación conocida — `COOTAD-2026` Art. 5/6/7 (registrada, no resuelta)
+
+Durante la reingesta (2026-07-21) se detectó que el chunker fusiona los Art. 5, 6 y 7 de la ley
+reformatoria bajo el rótulo `Art. 198` cuando su texto contiene, cerca, una referencia cruzada del
+tipo `"Artículo 5 .- Agréguese... del artículo 198.4..."`. Se intentaron 3 ajustes sucesivos al
+regex (`ARTICLE_RE`); cada uno resolvía ese caso pero introducía una regresión distinta en otro
+documento (LOPC Art. 9, o el título completo de la ley fusionado con Art. 1). Se decidió **revertir
+al regex ya validado y usado en la reingesta real** (el que generó los 42 documentos reemplazados
+exitosamente) en vez de seguir iterando sobre datos de producción sin una batería de regresión más
+amplia. **El contenido de los Art. 5/6/7 SÍ está íntegro en el corpus** (nada se pierde) — solo el
+número de artículo asignado a esos 3 chunks es incorrecto. Pendiente: un ajuste acotado y muy
+probado (o corrección manual de esos 3 registros) en una sesión dedicada, no un parche apresurado.
+
 ## Hallazgo 1 — `RES-ORG-GAD-2025` duplica a `RES-ORG-GADMCM-2025`
 
 | Campo | `RES-ORG-GAD-2025` (candidato a limpieza) | `RES-ORG-GADMCM-2025` (correcto, en manifest) |
