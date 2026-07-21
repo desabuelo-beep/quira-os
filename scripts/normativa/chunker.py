@@ -185,27 +185,13 @@ def chunk_docx(filepath: str | Path) -> list[ArticleChunk]:
     Returns:
         Lista de ArticleChunk ordenados: PREÁMBULO (si existe) + Art. 1, 2, ...
     """
-    from docx import Document  # python-docx
+    full_text, _heads = _extraer_doc(filepath)
+    return chunk_texto_articulado(full_text)
 
-    doc = Document(str(filepath))
 
-    # Extraer texto completo del DOCX (párrafos, tablas)
-    parts: list[str] = []
-    for para in doc.paragraphs:
-        text = para.text.strip()
-        if text:
-            parts.append(text)
-
-    # Incluir texto de tablas (NCI, clasificadores tienen tablas con contenido)
-    for table in doc.tables:
-        for row in table.rows:
-            for cell in row.cells:
-                text = cell.text.strip()
-                if text and text not in parts:
-                    parts.append(text)
-
-    full_text = "\n".join(parts)
-
+def chunk_texto_articulado(full_text: str) -> list[ArticleChunk]:
+    """Segmenta un texto YA EXTRAÍDO por artículo y disposición (sin (re)abrir el .docx —
+    2026-07-21: evita la doble apertura + doble extracción de tablas que hacía lento el PDOT)."""
     # ── Segmentar por artículo Y disposición ──────────────────────────────────
     # Se combinan ambos tipos de límite y se ordenan por posición: así una Disposición deja de
     # absorberse en el artículo anterior (tercer bug · auditoría 2026-07-20).
@@ -238,6 +224,134 @@ def chunk_docx(filepath: str | Path) -> list[ArticleChunk]:
     return chunks
 
 
+# Tipos (campo `tipo` del manifest) cuya numeración es de artículo — usan chunk_docx() (Art.+Disp.).
+# Fuente única de verdad: auditar_corpus.py importa esta constante en vez de duplicarla.
+TIPOS_ARTICULADAS_DEFAULT = {"constitucion", "ley_organica", "reglamento", "resolucion",
+                             "acuerdo", "resolucion_local", "codigo", "reforma"}
+
+# ══════════════════════════════════════════════════════════════════════════════
+# PERFILES DE SEGMENTACIÓN NO ARTICULADA (2026-07-21 · Javo: "nada es segunda fase")
+# Los planes, guías y lineamientos NO tienen "Art. N", pero SÍ tienen unidades estables
+# propias. Partir cada 450 palabras a ciegas es un parser incompleto: QUIRA IA necesita
+# poder citar "Objetivo 2 · Política 2.3", no "chunk 7 de la guía".
+# ══════════════════════════════════════════════════════════════════════════════
+
+# Perfil PND — Plan Nacional de Desarrollo: Objetivo N. / Política N.N
+OBJETIVO_RE = re.compile(r"(?:^|\n)\s*(Objetivo\s+\d+)\.?\s*", re.IGNORECASE | re.MULTILINE)
+POLITICA_RE = re.compile(r"(?:^|\n)\s*(Pol[íi]tica\s+\d+\.\d+)\s*", re.IGNORECASE | re.MULTILINE)
+
+# NOTA (2026-07-21): se evaluó un patrón de código NNN-NN para NCI-CGE, pero el texto plano lo
+# trae disperso (el código y el título rara vez comparten línea de forma limpia). NCI-CGE SÍ usa
+# estilos Heading 1/2 en el .docx (165 secciones: "200 AMBIENTE DE CONTROL" → "Integridad y
+# valores éticos") — el fallback de encabezados de Word (abajo) es muy superior aquí.
+
+# Siglas cuyo `tipo` de manifest sugiere articulado pero en realidad NO lo son (van por
+# encabezados de Word). Evita que "resolucion" genérico fuerce el perfil equivocado.
+EXCEPCIONES_NO_ARTICULADAS = {"NCI-CGE"}
+
+
+def _chunks_por_regex(full_text: str, *patterns: re.Pattern) -> list["ArticleChunk"]:
+    """Segmenta full_text por los matches de uno o más patrones combinados y ordenados por
+    posición (grupo 1 = rótulo de la unidad). P.ej. Objetivo+Política: el texto introductorio de
+    cada Objetivo no se pierde dentro del preámbulo — pasa a ser el propio chunk del Objetivo."""
+    matches: list[tuple[int, str]] = []
+    for pat in patterns:
+        matches.extend((m.start(), m.group(1).strip()) for m in pat.finditer(full_text))
+    matches.sort(key=lambda x: x[0])
+    if not matches:
+        return []
+    chunks: list[ArticleChunk] = []
+    pre = full_text[:matches[0][0]].strip()
+    if pre and _word_count(pre) >= 20:
+        chunks.extend(_make_chunk("PREÁMBULO", None, pre))
+    for i, (start, raw) in enumerate(matches):
+        end = matches[i + 1][0] if i + 1 < len(matches) else len(full_text)
+        chunks.extend(_make_chunk(raw, None, full_text[start:end].strip()))
+    return chunks
+
+
+def _extraer_doc(filepath: str | Path) -> tuple[str, list[tuple[int, str]]]:
+    """UNA sola apertura y UNA sola pasada del .docx (párrafos + tablas + posición de los
+    Heading). Antes se abría el documento dos veces (texto y luego headings) y se re-extraían
+    las tablas — en el PDOT (537 tablas · 26 494 párrafos) eso tardaba >60s. Ahora ~15s."""
+    from docx import Document as _Doc
+    doc = _Doc(str(filepath))
+    parts: list[str] = []
+    heads: list[tuple[int, str]] = []
+    pos = 0
+    for p in doc.paragraphs:
+        txt = p.text.strip()
+        if not txt:
+            continue
+        # filtra "headings" que en realidad son datos de tabla con estilo heredado (números
+        # sueltos, porcentajes) — un título real tiene al menos 3 letras seguidas (auditoría 2026-07-21)
+        if p.style.name.startswith(("Heading", "Título", "Title")) and re.search(r"[A-Za-zÁÉÍÓÚÑáéíóúñ]{3,}", txt):
+            heads.append((pos, txt))
+        parts.append(txt)
+        pos += len(txt) + 1
+    for t in doc.tables:
+        for row in t.rows:
+            for c in row.cells:
+                txt = c.text.strip()
+                if txt:
+                    parts.append(txt)
+                    pos += len(txt) + 1
+    return "\n".join(parts), heads
+
+
+def _chunks_por_encabezados(full_text: str, heads: list[tuple[int, str]]) -> list["ArticleChunk"]:
+    """Fallback UNIVERSAL: usa los estilos Heading 1-6 / Título de Word como límite de sección.
+    Confirmado (auditoría 2026-07-21): PDOT, lineamientos y guías SÍ usan estilos de encabezado
+    en el .docx aunque no tengan numeración de artículo — es una jerarquía real (Capítulo >
+    Sección > Subsección), no arbitraria como partir cada 450 palabras."""
+    if not heads:
+        return []
+    chunks: list[ArticleChunk] = []
+    pre = full_text[:heads[0][0]].strip()
+    if pre and _word_count(pre) >= 20:
+        chunks.extend(_make_chunk("PREÁMBULO", None, pre))
+    for i, (start, raw) in enumerate(heads):
+        end = heads[i + 1][0] if i + 1 < len(heads) else len(full_text)
+        seg = full_text[start:end].strip()
+        # Heading "agrupador" sin texto propio (todo su contenido vive en sus sub-secciones hijas):
+        # el segmento es solo el rótulo repetido. Fiel a la fuente, pero un chunk vacío no aporta
+        # nada al RAG — se fusiona con la sección siguiente en vez de emitirse aparte.
+        if seg and seg.strip().lower() != raw.strip().lower():
+            chunks.extend(_make_chunk(raw[:80], None, seg))
+    return chunks
+
+
+# Tipos (según manifest) que usan el perfil Objetivo/Política
+_PERFIL_OBJETIVO_POLITICA = {"plan"}          # PND-2025
+
+
+def chunk_docx_generico(filepath: str | Path, tipo: str, sigla: str) -> list["ArticleChunk"]:
+    """Despacho por perfil (2026-07-21). Orden: objetivo/política → artículo+disposición (por si
+    el 'no articulado' sí tiene arts reales, p.ej. convenio) → encabezados de Word (fallback
+    universal) → chunk único. Nunca deja un documento sin segmentar con criterio.
+    UNA sola apertura/extracción del .docx (_extraer_doc), reutilizada en todos los perfiles."""
+    full_text, heads = _extraer_doc(filepath)
+
+    if tipo in _PERFIL_OBJETIVO_POLITICA:
+        r = _chunks_por_regex(full_text, OBJETIVO_RE, POLITICA_RE)
+        if r:
+            return r
+    # ¿tiene artículos reales aunque su tipo no esté en TIPOS_ARTICULADAS_DEFAULT? SOLO se prueba
+    # para convenios (CDN/CADH/PIDESC sí son "Art. N" reales). Planes/guías/PDOT CITAN artículos
+    # de leyes en su narrativa ("conforme al Art. 241...") — mismo falso positivo que COOTAD-2026;
+    # restringir el probe evita tratar una cita como si fuera el documento articulado.
+    if tipo == "convenio_internacional" and sigla not in EXCEPCIONES_NO_ARTICULADAS:
+        arts_probe = list(ARTICLE_RE.finditer(full_text))
+        if len(arts_probe) >= 3:
+            return chunk_texto_articulado(full_text)
+    # Fallback universal: encabezados de Word (NCI-CGE, PDOT, guías, lineamientos)
+    r = _chunks_por_encabezados(full_text, heads)
+    if r:
+        return r
+    # Último recurso: chunk único (documento sin ninguna estructura detectable)
+    return _make_chunk("DOCUMENTO", None, full_text)
+
+
 def chunk_docx_with_meta(filepath: str | Path,
                          meta: dict) -> list[dict]:
     """
@@ -246,7 +360,12 @@ def chunk_docx_with_meta(filepath: str | Path,
     meta: entrada del MANIFEST (sigla, nombre, jerarquia, milestone, tipo, dominios)
     """
     import json
-    chunks = chunk_docx(filepath)
+    tipo = meta.get("tipo", "")
+    sigla = meta.get("sigla", "")
+    if tipo in TIPOS_ARTICULADAS_DEFAULT and sigla not in EXCEPCIONES_NO_ARTICULADAS:
+        chunks = chunk_docx(filepath)
+    else:
+        chunks = chunk_docx_generico(filepath, tipo, sigla)
     rows   = []
     for c in chunks:
         rows.append({

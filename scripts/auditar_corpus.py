@@ -39,11 +39,11 @@ SECRETS = REPO / ".streamlit" / "secrets.toml"
 sys.path.insert(0, str(REPO))
 from scripts.normativa.manifest import MANIFEST  # noqa: E402
 
-# Tipos con numeración de artículos secuencial → se auditan por CONTEO de artículos.
-# Los demás (reforma cita otras leyes · plan/PDOT por metas · guía metodológica) darían falso
-# positivo con el conteo: se auditan por presencia de chunks, no por artículos.
-TIPOS_ARTICULADOS = {"constitucion", "ley_organica", "reglamento", "resolucion",
-                     "acuerdo", "resolucion_local", "codigo", "convenio_internacional"}
+# FUENTE ÚNICA DE VERDAD (colega 2026-07-20: "no mantengas dos lógicas distintas"): se reutiliza
+# la misma constante que usa chunk_docx_with_meta() para decidir el perfil de segmentación —
+# el auditor no puede tener su propio criterio de "qué es articulado".
+from scripts.normativa.chunker import TIPOS_ARTICULADAS_DEFAULT, EXCEPCIONES_NO_ARTICULADAS  # noqa: E402
+TIPOS_ARTICULADOS = TIPOS_ARTICULADAS_DEFAULT | {"convenio_internacional"}  # + convenios con Art. N real
 MAPEO = {m["archivo"]: m["sigla"] for m in MANIFEST}
 TIPO = {m["archivo"]: m.get("tipo", "?") for m in MANIFEST}
 
@@ -74,25 +74,27 @@ def _arts_docx(texto: str) -> set[int]:
 
 def auditoria_estructural() -> int:
     """AUDITORÍA A (colega · 2026-07-20): ¿el chunker reconoció bien la estructura? NO consulta
-    Supabase. Caza bugs del PARSER antes de re-ingerir: chunks vacíos, gigantes, errores, o
-    documentos sin artículos ni disposiciones."""
-    from scripts.normativa.chunker import chunk_docx
-    print("AUDITORÍA ESTRUCTURAL (parser) — no consulta Supabase")
+    Supabase. Corre el DESPACHO REAL (chunk_docx_with_meta — articulado o perfil genérico según
+    el manifest, igual que hace la ingesta) sobre los 43 documentos. Caza bugs del PARSER antes
+    de re-ingerir: chunks vacíos, gigantes, errores, o documentos sin ninguna unidad detectada."""
+    from scripts.normativa.chunker import chunk_docx_with_meta
+    import time
+    print("AUDITORÍA ESTRUCTURAL (parser · despacho real) — no consulta Supabase")
     anom = 0
+    t0 = time.time()
     for m in MANIFEST:
         f = WORD_DIR / m["archivo"]
         if not f.exists():
             print(f"  ❌ {m['sigla']:16} ARCHIVO FALTANTE"); anom += 1; continue
         try:
-            c = chunk_docx(str(f))
+            rows = chunk_docx_with_meta(str(f), m)
         except Exception as e:
             print(f"  ❌ {m['sigla']:16} ERROR: {str(e)[:45]}"); anom += 1; continue
-        vacios = sum(1 for x in c if len((x.contenido or "").strip()) < 10)
-        gigantes = sum(1 for x in c if x.palabras > 600)
-        disp = sum(1 for x in c if "Disposici" in x.articulo_raw)
-        if not c or vacios or gigantes:
-            print(f"  ⚠ {m['sigla']:16} chunks={len(c)} vacíos={vacios} gigantes={gigantes}"); anom += 1
-    print(f"\n{len(MANIFEST)} documentos · {anom} con anomalías estructurales"
+        vacios = sum(1 for r in rows if len((r["contenido"] or "").strip()) < 10)
+        gigantes = sum(1 for r in rows if r["palabras"] > 600)
+        if not rows or vacios or gigantes:
+            print(f"  ⚠ {m['sigla']:16} chunks={len(rows)} vacíos={vacios} gigantes={gigantes}"); anom += 1
+    print(f"\n{len(MANIFEST)} documentos · {anom} con anomalías estructurales · {time.time()-t0:.1f}s"
           f"{'  → PARSER ESTABLE' if not anom else '  → REVISAR PARSER'}")
     return 1 if anom else 0
 
@@ -130,11 +132,55 @@ def check_fixtures() -> int:
     return 1 if roto else 0
 
 
+def check_integridad_referencial() -> int:
+    """CHECK DE NEGOCIO (colega · 2026-07-20), previo a congelar: el corpus debe formar un grafo
+    cerrado — sin SHA duplicados/huérfanos, sin chunks sin contenido, sin siglas del corpus fuera
+    del manifest y viceversa. Barato de ejecutar, evita dolores de cabeza antes de la reingesta."""
+    try:
+        uri = tomllib.load(open(SECRETS, "rb"))["database"]["supabase_uri"]
+    except Exception:
+        print("[skip] sin supabase_uri"); return 0
+    import psycopg2
+    cur = psycopg2.connect(uri, connect_timeout=30).cursor()
+    print("INTEGRIDAD REFERENCIAL DEL CORPUS")
+    fallos = 0
+
+    cur.execute("SELECT count(*), count(DISTINCT sha256) FROM public.normativa_corpus")
+    tot, sha = cur.fetchone()
+    dup = tot - sha
+    print(f"  {'✅' if not dup else '❌'} SHA duplicados: {dup} (de {tot} chunks)")
+    fallos += 1 if dup else 0
+
+    cur.execute("SELECT count(*) FROM public.normativa_corpus WHERE sha256 IS NULL OR contenido IS NULL")
+    huerfanos = cur.fetchone()[0]
+    print(f"  {'✅' if not huerfanos else '❌'} chunks sin SHA o sin contenido: {huerfanos}")
+    fallos += 1 if huerfanos else 0
+
+    cur.execute("SELECT DISTINCT norma_sigla FROM public.normativa_corpus")
+    corp_siglas = {r[0] for r in cur.fetchall()}
+    man_siglas = {m["sigla"] for m in MANIFEST}
+    fuera_manifest = sorted(corp_siglas - man_siglas)
+    fuera_corpus = sorted(man_siglas - corp_siglas)
+    # Siglas de OTRO PIPELINE (Holding: evidencia municipal — PAC/POA/PP/PAI/RC/SIGAD/PRESUP/
+    # PLAN-BICENTENARIO) no son normativa legal y no cuentan como fallo de ESTE corpus.
+    _PREFIJOS_HOLDING = r"^(PAC|POA|PP|PAI|RC|SIGAD|PRESUP|PLAN-BICENTENARIO)-"
+    normativas_huerfanas = [s for s in fuera_manifest if not re.match(_PREFIJOS_HOLDING, s)]
+    print(f"  {'✅' if not normativas_huerfanas else '❌ DUPLICADO PROBABLE'} "
+          f"siglas normativas en corpus sin manifest: {normativas_huerfanas}")
+    print(f"  {'✅' if not fuera_corpus else '❌'} siglas en manifest sin ingestar: {fuera_corpus}")
+    fallos += 1 if (normativas_huerfanas or fuera_corpus) else 0
+
+    print(f"\n{'GRAFO CERRADO' if not fallos else f'{fallos} PROBLEMA(S) DE INTEGRIDAD'}")
+    return 1 if fallos else 0
+
+
 def main() -> int:
     if "--estructural" in sys.argv:
         return auditoria_estructural()
     if "--fixtures" in sys.argv:
         return check_fixtures()
+    if "--integridad" in sys.argv:
+        return check_integridad_referencial()
     detalle = "--detalle" in sys.argv
     try:
         uri = tomllib.load(open(SECRETS, "rb"))["database"]["supabase_uri"]
