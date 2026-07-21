@@ -39,21 +39,21 @@ ARTICLE_RE = re.compile(
     # el derecho ciudadano a exigir rendición de cuentas — fundamento de d09).
     # El texto previo se admite SOLO si el número cierra la línea (patrón de encabezado); una
     # referencia cruzada ("conforme al Art. 5 de esta ley") sigue el texto y por eso no matchea.
-    r"(?:^|\n)(?:[^\n]{0,80}?\s)?"
+    r"(?:^|\n)(?:[^\n]{0,80}?\s)?"                # inicio de línea; opcional TÍTULO previo (caso LOPC)
     r"(?:"
     r"Art(?:í|i|Í|I)cul(?:o|a|os|as)?s?\.\s*"
     r"|ARTÍCULO\s+"
     r"|Art\.\s*"
     r")"
-    # CORRECCIÓN (2026-07-20 · hallazgo de Javo): el grupo consumía el TÍTULO del artículo
-    # (`Art. 89 Definición` → capturaba "89 Definición") y la alternancia `\w+` producía falsos
-    # matches ("reformado"). En leyes con formato `Art. N\nTítulo.-` (LOPC) eso hacía PERDER
-    # artículos: la LOPC quedó con 77 de 103. El sufijo alfabético (226A) debe ir PEGADO al
-    # número, sin espacios ni saltos de línea.
     r"("
-    r"\d+(?:\.\d+)?[A-Za-záéíóúÁÉÍÓÚ]?"          # 226 / 226.1 / 226A  (sin tragar el título)
+    r"\d+(?:\.\d+)?[A-Za-záéíóúÁÉÍÓÚ]?"          # 226 / 226.1 / 226A  (sin tragar el título · fix Javo)
     r"|único|única|innumerado|innumerada"         # literales, NO \w+ (evita falsos matches)
-    r")(?=[\s.\-–—·]|$)\s*[\.\-–—·]?",
+    r")"
+    # DISCRIMINADOR (2026-07-20 · hallazgo de Javo): un ARTÍCULO real va seguido del guión
+    # dispositivo (`.-`) o CIERRA la línea (LOPC: `Art. 88\nTítulo.-`). Una REFERENCIA cruzada
+    # ("del artículo 168 del Código") va seguida de espacio+palabra → el lookahead la EXCLUYE.
+    # Sin esto, en leyes reformatorias (COOTAD-2026) se contaban las referencias como artículos.
+    r"[ \t]*(?=[.\-–—·]|\n|$)\s*[.\-–—·]?",
     re.IGNORECASE | re.MULTILINE,
 )
 
