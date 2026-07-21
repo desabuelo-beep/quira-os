@@ -164,15 +164,21 @@ def cargar_chunks(cur, limit: int | None, sample: int | None) -> list[dict]:
 # ── Extracción Haiku ──────────────────────────────────────────────────────────
 
 def extraer_chunk(client, chunk: dict) -> tuple[list[dict], str]:
-    """Un chunk (con ventana) → (indicadores, status). status: ok|api_error.
+    """Un chunk (con ventana) → (indicadores, status). status: ok|parse_error|api_error.
 
     CRÍTICO: distinguir [] legítimo (chunk sin datos) de fallo de API
     (créditos agotados / red) — un fallo marcado 'vacio' es pérdida
     silenciosa de contenido (lección corrida 2026-06-10: 76 falsos vacíos).
+
+    DISTINCIÓN 2026-07-21 (colega, tras la racha de "JSON inválido" en tablas densas):
+    'parse_error' (JSON truncado/malformado tras 3 reintentos — típicamente contenido difícil,
+    NO créditos) es DISTINTO de 'api_error' (excepción real de conexión/rate-limit/créditos).
+    Solo 'api_error' cuenta para el aborto — un chunk con tabla rara no debe frenar los otros miles.
     """
     user_msg = (
         f"Documento: {chunk['sigla']} · fragmento #{chunk['seq']}\n\n{chunk['ventana']}"
     )
+    hubo_error_conexion = False
     for intento in range(1, MAX_RETRIES + 1):
         try:
             resp = client.messages.create(
@@ -193,8 +199,9 @@ def extraer_chunk(client, chunk: dict) -> tuple[list[dict], str]:
             logger.warning("JSON inválido chunk %s (intento %d)", chunk["id"], intento)
         except Exception as e:  # rate limit / créditos / red — backoff
             logger.warning("API error chunk %s: %s (intento %d)", chunk["id"], e, intento)
+            hubo_error_conexion = True
             time.sleep(2 * intento)
-    return [], "api_error"
+    return [], ("api_error" if hubo_error_conexion else "parse_error")
 
 
 def _valido(d: dict) -> bool:
@@ -298,14 +305,24 @@ def main() -> None:
                           "=", d.get("valor_texto"), f"({d.get('territorio')})")
                 continue
 
+            if status == "parse_error":
+                # SKIP AND CONTINUE (colega 2026-07-21): JSON truncado/malformado tras 3 reintentos
+                # es típicamente una tabla difícil de parsear, NO créditos agotados. No debe frenar
+                # la corrida — se registra como error y se sigue con el resto del corpus.
+                api_errors_consecutivos = 0
+                log_chunk(cur, ch, 0, "error", "parse_error tras reintentos (JSON truncado/malformado)")
+                conn.commit()
+                continue
+
             if status == "api_error":
                 api_errors_consecutivos += 1
                 log_chunk(cur, ch, 0, "error", "api_error tras reintentos")
                 conn.commit()
-                # 5 fallos API seguidos = créditos agotados o API caída → ABORTAR
+                # 5 fallos de CONEXIÓN/CRÉDITO seguidos (no parse_error) → ABORTAR de verdad
                 if api_errors_consecutivos >= 5:
-                    print(f"\n⛔ ABORTADO: {api_errors_consecutivos} fallos API consecutivos "
-                          f"(¿créditos agotados?). {i} chunks intentados — corrida reanudable.")
+                    print(f"\n⛔ ABORTADO: {api_errors_consecutivos} fallos de conexión/API "
+                          f"consecutivos (créditos agotados o API caída). {i} chunks intentados "
+                          f"— corrida reanudable.")
                     conn.close()
                     return
                 continue
