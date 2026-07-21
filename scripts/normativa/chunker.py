@@ -57,6 +57,20 @@ ARTICLE_RE = re.compile(
     re.IGNORECASE | re.MULTILINE,
 )
 
+# DISPOSICIONES (2026-07-20 · tercer bug hallado en la auditoría): las Disposiciones
+# (Transitorias/Generales/Derogatorias/Reformatorias/Finales) NO llevan "Art. N" y el chunker las
+# ABSORBÍA en el último artículo previo. Ahí viven reglas operativas reales — p. ej. el umbral 65%
+# de COOTAD-2026 está en la Disposición Transitoria Primera. Se reconocen como límite de chunk.
+DISPOSITION_RE = re.compile(
+    r"(?:^|\n)\s*"
+    r"(DISPOSICI(?:Ó|O)N(?:ES)?\s+"
+    r"(?:TRANSITORIA|GENERAL|DEROGATORIA|REFORMATORIA|FINAL|INTERPRETATIVA)(?:ES)?"
+    r"(?:\s+(?:PRIMERA|SEGUNDA|TERCERA|CUARTA|QUINTA|SEXTA|S(?:É|E)PTIMA|OCTAVA|NOVENA|"
+    r"D(?:É|E)CIMA|(?:Ú|U)NICA))?"
+    r")",
+    re.IGNORECASE | re.MULTILINE,
+)
+
 # Límite de palabras por chunk (alineado con CHUNK_MAX_TOKENS del RAG config)
 CHUNK_MAX_WORDS = 450
 
@@ -192,32 +206,34 @@ def chunk_docx(filepath: str | Path) -> list[ArticleChunk]:
 
     full_text = "\n".join(parts)
 
-    # ── Segmentar por artículo ────────────────────────────────────────────────
-    matches = list(ARTICLE_RE.finditer(full_text))
+    # ── Segmentar por artículo Y disposición ──────────────────────────────────
+    # Se combinan ambos tipos de límite y se ordenan por posición: así una Disposición deja de
+    # absorberse en el artículo anterior (tercer bug · auditoría 2026-07-20).
+    limites: list[tuple[int, str, Optional[int]]] = []
+    for m in ARTICLE_RE.finditer(full_text):
+        raw = m.group(1).strip()
+        limites.append((m.start(), f"Art. {raw}", _parse_art_num(raw)))
+    for m in DISPOSITION_RE.finditer(full_text):
+        raw = re.sub(r"\s+", " ", m.group(1).strip()).title()
+        limites.append((m.start(), raw, None))
+    limites.sort(key=lambda x: x[0])
 
-    if not matches:
-        # Documento sin artículos detectables → todo como chunk único PREÁMBULO
+    if not limites:
+        # Documento sin artículos ni disposiciones → todo como chunk único
         return _make_chunk("DOCUMENTO", None, full_text)
 
     chunks: list[ArticleChunk] = []
 
-    # Preámbulo (texto antes del primer artículo)
-    preamble_text = full_text[:matches[0].start()].strip()
+    # Preámbulo (texto antes del primer límite)
+    preamble_text = full_text[:limites[0][0]].strip()
     if preamble_text and _word_count(preamble_text) >= 20:
         chunks.extend(_make_chunk("PREÁMBULO", None, preamble_text))
 
-    # Artículos
-    for i, match in enumerate(matches):
-        art_raw_num = match.group(1).strip()  # ej: "226", "único", "226.1"
-        art_num     = _parse_art_num(art_raw_num)
-        art_raw     = f"Art. {art_raw_num}"
-
-        # Texto del artículo: desde el match hasta el siguiente (o fin)
-        start = match.start()
-        end   = matches[i + 1].start() if i + 1 < len(matches) else len(full_text)
-        art_text = full_text[start:end].strip()
-
-        chunks.extend(_make_chunk(art_raw, art_num, art_text))
+    # Artículos y disposiciones
+    for i, (start, raw, num) in enumerate(limites):
+        end = limites[i + 1][0] if i + 1 < len(limites) else len(full_text)
+        seg_text = full_text[start:end].strip()
+        chunks.extend(_make_chunk(raw, num, seg_text))
 
     return chunks
 

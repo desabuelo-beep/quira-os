@@ -72,7 +72,34 @@ def _arts_docx(texto: str) -> set[int]:
     return out
 
 
+def auditoria_estructural() -> int:
+    """AUDITORÍA A (colega · 2026-07-20): ¿el chunker reconoció bien la estructura? NO consulta
+    Supabase. Caza bugs del PARSER antes de re-ingerir: chunks vacíos, gigantes, errores, o
+    documentos sin artículos ni disposiciones."""
+    from scripts.normativa.chunker import chunk_docx
+    print("AUDITORÍA ESTRUCTURAL (parser) — no consulta Supabase")
+    anom = 0
+    for m in MANIFEST:
+        f = WORD_DIR / m["archivo"]
+        if not f.exists():
+            print(f"  ❌ {m['sigla']:16} ARCHIVO FALTANTE"); anom += 1; continue
+        try:
+            c = chunk_docx(str(f))
+        except Exception as e:
+            print(f"  ❌ {m['sigla']:16} ERROR: {str(e)[:45]}"); anom += 1; continue
+        vacios = sum(1 for x in c if len((x.contenido or "").strip()) < 10)
+        gigantes = sum(1 for x in c if x.palabras > 600)
+        disp = sum(1 for x in c if "Disposici" in x.articulo_raw)
+        if not c or vacios or gigantes:
+            print(f"  ⚠ {m['sigla']:16} chunks={len(c)} vacíos={vacios} gigantes={gigantes}"); anom += 1
+    print(f"\n{len(MANIFEST)} documentos · {anom} con anomalías estructurales"
+          f"{'  → PARSER ESTABLE' if not anom else '  → REVISAR PARSER'}")
+    return 1 if anom else 0
+
+
 def main() -> int:
+    if "--estructural" in sys.argv:
+        return auditoria_estructural()
     detalle = "--detalle" in sys.argv
     try:
         uri = tomllib.load(open(SECRETS, "rb"))["database"]["supabase_uri"]
