@@ -219,6 +219,13 @@ def chunk_texto_articulado(full_text: str) -> list[ArticleChunk]:
     for i, (start, raw, num) in enumerate(limites):
         end = limites[i + 1][0] if i + 1 < len(limites) else len(full_text)
         seg_text = full_text[start:end].strip()
+        # RUIDO (auditoría de calidad 2026-07-21 · LODISC): las leyes con veto presidencial
+        # parcial incluyen una sección de "Objeción al artículo N" que menciona el número real
+        # del artículo sin ser su encabezado — ARTICLE_RE la captura como si fuera "Art. N" y
+        # genera un chunk-basura de pocas palabras. El artículo REAL ya se capturó aparte (con
+        # su contenido completo) en otro punto del documento; esta mención se descarta.
+        if _word_count(seg_text) < 15 and re.search(r"\bobjeci[oó]n\b", seg_text, re.IGNORECASE):
+            continue
         chunks.extend(_make_chunk(raw, num, seg_text))
 
     return chunks
@@ -321,33 +328,95 @@ def _chunks_por_encabezados(full_text: str, heads: list[tuple[int, str]]) -> lis
     return chunks
 
 
-# Tipos (según manifest) que usan el perfil Objetivo/Política
-_PERFIL_OBJETIVO_POLITICA = {"plan"}          # PND-2025
+# ══════════════════════════════════════════════════════════════════════════════
+# REGISTRO DE PERFILES — Strategy pattern (colega · 2026-07-21)
+# Antes el despacho era un if/tipo disperso en chunk_docx_generico. Cada perfil es ahora una
+# estrategia independiente con su propio `aplica()` (¿me toca este documento?) y `segmentar()`
+# (cómo lo corto). Agregar un formato nuevo (p. ej. normativa peruana/colombiana) es AGREGAR un
+# perfil a PERFILES_REGISTRO — nunca tocar el despachador ni los perfiles existentes.
+# ══════════════════════════════════════════════════════════════════════════════
+
+class PerfilSegmentacion:
+    """Contrato de una estrategia de segmentación."""
+    nombre: str = "base"
+
+    def aplica(self, tipo: str, sigla: str) -> bool:
+        raise NotImplementedError
+
+    def segmentar(self, full_text: str, heads: list[tuple[int, str]]) -> list["ArticleChunk"]:
+        """Devuelve [] si decide no producir chunks (el despachador prueba el siguiente perfil)."""
+        raise NotImplementedError
+
+
+class PerfilArticulado(PerfilSegmentacion):
+    """Constitución, ley orgánica, código, reglamento, reforma, resolución/acuerdo — Art. + Disposición."""
+    nombre = "articulado"
+
+    def aplica(self, tipo: str, sigla: str) -> bool:
+        return tipo in TIPOS_ARTICULADAS_DEFAULT and sigla not in EXCEPCIONES_NO_ARTICULADAS
+
+    def segmentar(self, full_text: str, heads: list[tuple[int, str]]) -> list["ArticleChunk"]:
+        return chunk_texto_articulado(full_text)
+
+
+class PerfilObjetivoPolitica(PerfilSegmentacion):
+    """Plan Nacional de Desarrollo — Objetivo N. / Política N.N."""
+    nombre = "objetivo_politica"
+    _TIPOS = {"plan"}
+
+    def aplica(self, tipo: str, sigla: str) -> bool:
+        return tipo in self._TIPOS
+
+    def segmentar(self, full_text: str, heads: list[tuple[int, str]]) -> list["ArticleChunk"]:
+        return _chunks_por_regex(full_text, OBJETIVO_RE, POLITICA_RE)
+
+
+class PerfilConvenioArticulado(PerfilSegmentacion):
+    """Convenios internacionales con Art. N real (CDN, CADH, PIDESC) — NO planes/guías/PDOT, que
+    solo CITAN artículos de leyes en su narrativa (mismo falso positivo que COOTAD-2026)."""
+    nombre = "convenio_articulado"
+
+    def aplica(self, tipo: str, sigla: str) -> bool:
+        return tipo == "convenio_internacional" and sigla not in EXCEPCIONES_NO_ARTICULADAS
+
+    def segmentar(self, full_text: str, heads: list[tuple[int, str]]) -> list["ArticleChunk"]:
+        if len(list(ARTICLE_RE.finditer(full_text))) >= 3:
+            return chunk_texto_articulado(full_text)
+        return []   # no tiene arts reales → el despachador prueba el siguiente perfil
+
+
+class PerfilEncabezadosWord(PerfilSegmentacion):
+    """Fallback UNIVERSAL: estilos Heading 1-6/Título de Word (NCI-CGE, PDOT, guías, lineamientos,
+    convenios sin arts). Confirmado (auditoría 2026-07-21): es jerarquía real de la fuente, no
+    arbitraria como partir cada 450 palabras."""
+    nombre = "encabezados_word"
+
+    def aplica(self, tipo: str, sigla: str) -> bool:
+        return True   # siempre puede intentarlo; si no hay heads, segmentar() devuelve []
+
+    def segmentar(self, full_text: str, heads: list[tuple[int, str]]) -> list["ArticleChunk"]:
+        return _chunks_por_encabezados(full_text, heads)
+
+
+# Orden de intento: el primer perfil cuyo aplica()==True Y segmentar() devuelva algo, gana.
+PERFILES_REGISTRO: list[PerfilSegmentacion] = [
+    PerfilArticulado(),
+    PerfilObjetivoPolitica(),
+    PerfilConvenioArticulado(),
+    PerfilEncabezadosWord(),
+]
 
 
 def chunk_docx_generico(filepath: str | Path, tipo: str, sigla: str) -> list["ArticleChunk"]:
-    """Despacho por perfil (2026-07-21). Orden: objetivo/política → artículo+disposición (por si
-    el 'no articulado' sí tiene arts reales, p.ej. convenio) → encabezados de Word (fallback
-    universal) → chunk único. Nunca deja un documento sin segmentar con criterio.
-    UNA sola apertura/extracción del .docx (_extraer_doc), reutilizada en todos los perfiles."""
+    """Despacho por REGISTRO DE PERFILES (2026-07-21 · Strategy pattern). Prueba cada perfil en
+    orden; el primero que aplica Y produce chunks, gana. Si ninguno produce nada, chunk único.
+    UNA sola apertura/extracción del .docx (_extraer_doc), reutilizada por todos los perfiles."""
     full_text, heads = _extraer_doc(filepath)
-
-    if tipo in _PERFIL_OBJETIVO_POLITICA:
-        r = _chunks_por_regex(full_text, OBJETIVO_RE, POLITICA_RE)
-        if r:
-            return r
-    # ¿tiene artículos reales aunque su tipo no esté en TIPOS_ARTICULADAS_DEFAULT? SOLO se prueba
-    # para convenios (CDN/CADH/PIDESC sí son "Art. N" reales). Planes/guías/PDOT CITAN artículos
-    # de leyes en su narrativa ("conforme al Art. 241...") — mismo falso positivo que COOTAD-2026;
-    # restringir el probe evita tratar una cita como si fuera el documento articulado.
-    if tipo == "convenio_internacional" and sigla not in EXCEPCIONES_NO_ARTICULADAS:
-        arts_probe = list(ARTICLE_RE.finditer(full_text))
-        if len(arts_probe) >= 3:
-            return chunk_texto_articulado(full_text)
-    # Fallback universal: encabezados de Word (NCI-CGE, PDOT, guías, lineamientos)
-    r = _chunks_por_encabezados(full_text, heads)
-    if r:
-        return r
+    for perfil in PERFILES_REGISTRO:
+        if perfil.aplica(tipo, sigla):
+            r = perfil.segmentar(full_text, heads)
+            if r:
+                return r
     # Último recurso: chunk único (documento sin ninguna estructura detectable)
     return _make_chunk("DOCUMENTO", None, full_text)
 

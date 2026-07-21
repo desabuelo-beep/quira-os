@@ -99,6 +99,51 @@ def auditoria_estructural() -> int:
     return 1 if anom else 0
 
 
+def cobertura_estructural() -> int:
+    """AUDITORÍA DE COBERTURA POR PERFIL (colega · 2026-07-21): que el parser no se caiga no
+    demuestra que capture TODAS las unidades. Para cada documento se determina el PERFIL GANADOR
+    REAL (el mismo registro que usa la ingesta) y SOLO si ganó `encabezados_word` se compara el
+    número de Heading reales del .docx contra las unidades emitidas — comparar headings de Word
+    en documentos que ganaron con otro perfil (Objetivo/Política, Convenio articulado) es una
+    métrica inválida (dio 4 falsos positivos en la primera versión de este check: PND-2025,
+    CADH, CDN, PIDESC — ninguno usa headings como límite real, así que "headings_docx" no es lo
+    que el chunker debía capturar ahí). Una diferencia es aceptable SOLO si coincide exactamente
+    con headings 'agrupadores' (sin texto propio, se fusionan por diseño · fix 2026-07-21)."""
+    from scripts.normativa.chunker import (chunk_docx_with_meta, _extraer_doc,
+                                            PERFILES_REGISTRO, PerfilEncabezadosWord)
+    print("COBERTURA ESTRUCTURAL POR PERFIL (solo donde el perfil ganador es 'encabezados_word')")
+    anom = 0
+    for m in MANIFEST:
+        tipo, sigla = m.get("tipo", ""), m["sigla"]
+        f = WORD_DIR / m["archivo"]
+        if not f.exists():
+            continue
+        full_text, heads = _extraer_doc(str(f))
+        # ¿qué perfil gana REALMENTE para este documento? (mismo criterio que el despachador)
+        ganador = None
+        for perfil in PERFILES_REGISTRO:
+            if perfil.aplica(tipo, sigla) and perfil.segmentar(full_text, heads):
+                ganador = perfil
+                break
+        if not isinstance(ganador, PerfilEncabezadosWord):
+            continue   # el check de headings no aplica a este perfil
+        agrupadores = 0
+        for i, (start, raw) in enumerate(heads):
+            end = heads[i + 1][0] if i + 1 < len(heads) else len(full_text)
+            if full_text[start:end].strip().lower() == raw.strip().lower():
+                agrupadores += 1
+        rows = chunk_docx_with_meta(str(f), m)
+        emitidas = sum(1 for r in rows if r["chunk_seq"] == 0 and r["articulo_raw"] != "PREÁMBULO")
+        esperado_min = len(heads) - agrupadores
+        ok = emitidas == esperado_min
+        print(f"  {'✅' if ok else '❌'} {sigla:20} headings_docx={len(heads):4} "
+              f"agrupadores={agrupadores:3} emitidas={emitidas:4} (esperado {esperado_min})")
+        if not ok:
+            anom += 1
+    print(f"\n{'COBERTURA EXACTA — 0 unidades perdidas' if not anom else f'{anom} DOC(S) CON PÉRDIDA REAL'}")
+    return 1 if anom else 0
+
+
 def check_fixtures() -> int:
     """REGRESIÓN DEL PARSER (colega · 2026-07-20): compara el parser actual contra el baseline
     congelado en fixtures_parser.json. Detecta que un cambio futuro no rompa la segmentación —
@@ -130,6 +175,40 @@ def check_fixtures() -> int:
             roto += 1
     print(f"\n{'PARSER ESTABLE — sin regresión' if not roto else f'{roto} REGRESIONES'}")
     return 1 if roto else 0
+
+
+def calidad_semantica() -> int:
+    """MÉTRICAS DE CALIDAD, no solo cantidad (colega · 2026-07-21). El SHA nunca detecta que un
+    chunk quedó "solo un título" o que se fusionaron dos unidades en una. Sobre los 43 docs:
+      · chunks casi vacíos (<8 palabras, no-PREÁMBULO) → posible título sin cuerpo
+      · chunks outlier de longitud (>3x la mediana del propio documento) → posible fusión de
+        dos unidades que debieron quedar separadas (p.ej. dos Políticas en un solo chunk)."""
+    from scripts.normativa.chunker import chunk_docx_with_meta
+    import statistics
+    print("CALIDAD SEMÁNTICA (no solo cantidad)")
+    total_casi_vacios, total_outliers, docs_con_alerta = 0, 0, 0
+    for m in MANIFEST:
+        f = WORD_DIR / m["archivo"]
+        if not f.exists():
+            continue
+        rows = chunk_docx_with_meta(str(f), m)
+        principales = [r for r in rows if r["chunk_seq"] == 0 and r["articulo_raw"] not in ("PREÁMBULO", "DOCUMENTO")]
+        if len(principales) < 3:
+            continue
+        palabras = [r["palabras"] for r in principales]
+        mediana = statistics.median(palabras)
+        casi_vacios = [r["articulo_raw"] for r in principales if r["palabras"] < 8]
+        outliers = [r["articulo_raw"] for r in principales if mediana > 0 and r["palabras"] > mediana * 6]
+        if casi_vacios or outliers:
+            docs_con_alerta += 1
+            print(f"  ⚠ {m['sigla']:20} mediana={mediana:.0f}p  "
+                  f"casi_vacíos={len(casi_vacios)}{casi_vacios[:3] if casi_vacios else ''} "
+                  f"outliers={len(outliers)}{outliers[:2] if outliers else ''}")
+        total_casi_vacios += len(casi_vacios)
+        total_outliers += len(outliers)
+    print(f"\n{docs_con_alerta} documento(s) con alertas · {total_casi_vacios} chunks casi vacíos · "
+          f"{total_outliers} outliers de longitud (revisar si son fusiones o son legítimos)")
+    return 0   # informativo: no bloquea — requiere revisión humana de los casos señalados
 
 
 def check_integridad_referencial() -> int:
@@ -181,6 +260,10 @@ def main() -> int:
         return check_fixtures()
     if "--integridad" in sys.argv:
         return check_integridad_referencial()
+    if "--cobertura-perfil" in sys.argv:
+        return cobertura_estructural()
+    if "--calidad" in sys.argv:
+        return calidad_semantica()
     detalle = "--detalle" in sys.argv
     try:
         uri = tomllib.load(open(SECRETS, "rb"))["database"]["supabase_uri"]
