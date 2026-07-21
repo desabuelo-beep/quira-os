@@ -177,7 +177,8 @@ def extraer_chunk(client, chunk: dict) -> tuple[list[dict], str]:
         try:
             resp = client.messages.create(
                 model=HAIKU_MODEL,
-                max_tokens=2048,
+                max_tokens=4096,   # 2026-07-21: tablas densas (áreas verdes/equipamiento por núcleo
+                                   # urbano) generan arrays largos que truncaban el JSON en 2048
                 system=_SYSTEM_PROMPT,
                 messages=[{"role": "user", "content": user_msg}],
             )
