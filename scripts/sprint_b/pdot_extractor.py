@@ -45,7 +45,15 @@ ROOT = Path(__file__).resolve().parents[2]
 
 HAIKU_MODEL = "claude-haiku-4-5"
 EXTRACTOR_VER = "v1"
-SIGLAS_PDOT = ("PDOT-MONTECRISTI", "PLAN-BICENTENARIO-MCR", "PAI-PLURIANUAL-GAD")
+# NORMALIZACIÓN DOCUMENTAL (Javo + colega · 2026-07-21): PLAN-BICENTENARIO-MCR (PDF comprimido,
+# pipeline holding-v1.0) y PDOT-MONTECRISTI (.docx, Corpus v1.0 oficial) son el MISMO Plan de
+# Desarrollo y Ordenamiento Territorial de Montecristi — dos manifestaciones documentales del
+# mismo instrumento, no dos documentos. PDOT-MONTECRISTI queda como fuente ÚNICA AUTORITATIVA
+# (mejor parser, mejor chunking, mejor trazabilidad). PLAN-BICENTENARIO-MCR se retira de esta
+# lista para no seguir extrayendo indicadores redundantes — sus 3,430 indicadores ya extraídos
+# se conservan como fuente histórica (marcados fuente_autoritativa=false), no se borran.
+# Ver docs/architecture/NORMALIZACION_PDOT_MULTIPLES_FUENTES.md
+SIGLAS_PDOT = ("PDOT-MONTECRISTI", "PAI-PLURIANUAL-GAD")
 VENTANA_CHARS = 500          # cola del chunk previo + cabeza del siguiente
 MAX_RETRIES = 3
 

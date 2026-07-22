@@ -7,12 +7,22 @@
 - **Corpus Normativo** — los 43 documentos del `manifest.py` (QLEP-CORPUS). **v1.0 congelado, 100%
   completo.**
 - **Banco Semántico de Indicadores** — `pdot_indicadores` + `pdot_extract_log`, poblado por
-  `pdot_extractor.py` sobre `SIGLAS_PDOT = (PDOT-MONTECRISTI, PLAN-BICENTENARIO-MCR,
-  PAI-PLURIANUAL-GAD)`. **Solo `PDOT-MONTECRISTI` es parte del Corpus Normativo** (está en el
-  manifest, `.docx`, pipeline `qlep-corpus`). Las otras dos siglas son documentos DISTINTOS
-  (`PLAN-BICENTENARIO-MCR` = un PDF comprimido separado, pipeline `holding-v1.0`) que el mismo
-  extractor procesa por compartir dominio territorial — no son duplicados del PDOT, son fuentes
-  aparte. Confundir ambos activos llevó a decir "extracción completa" cuando solo el Corpus lo estaba.
+  `pdot_extractor.py`. **Solo `PDOT-MONTECRISTI` es parte del Corpus Normativo** (está en el
+  manifest, `.docx`, pipeline `qlep-corpus`).
+
+  **Corrección tras el hallazgo de Javo (mismo día):** mi primera redacción llamó a
+  `PLAN-BICENTENARIO-MCR` "documento distinto" del PDOT — impreciso. Es el **mismo Plan de
+  Desarrollo y Ordenamiento Territorial** (confirmado por coincidencia textual literal de portada),
+  ingerido dos veces: `.docx` (oficial, pipeline `qlep-corpus`) y un PDF comprimido (pipeline
+  `holding-v1.0`, anterior). Se verificaron **157 coincidencias exactas** de indicadores entre
+  ambas — piso del solapamiento real. Normalización aplicada (ver
+  `NORMALIZACION_PDOT_MULTIPLES_FUENTES.md`): `PDOT-MONTECRISTI` queda como fuente única
+  autoritativa (`pdot_indicadores.fuente_autoritativa = true`); `PLAN-BICENTENARIO-MCR` se marca
+  `false` (no se borra, no se vuelve a extraer). Lección: "documentos distintos" es una afirmación
+  que exige verificar CONTENIDO, no solo metadatos de sigla/pipeline — dos siglas distintas pueden
+  ser el mismo instrumento territorial. La tercera sigla del extractor, `PAI-PLURIANUAL-GAD`, sí es
+  un documento distinto (Plan Anual de Inversión) — no comparte este problema. Confundir el Corpus
+  con el Banco de Indicadores llevó a decir "extracción completa" cuando solo el Corpus lo estaba.
 
 ## 2. El límite real era del extractor, no del parser
 Tras reemplazar el PDOT con el parser nuevo, una racha de "JSON inválido" parecía apuntar a un
