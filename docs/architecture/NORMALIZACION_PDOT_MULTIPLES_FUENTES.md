@@ -10,27 +10,38 @@
 DOCUMENTO CANÓNICO                      (nivel semántico — el instrumento institucional)
   PDOT-MONTECRISTI-2023-2027
         │
-        ├── Manifestación DOCX  (PDOT-MONTECRISTI)      ← CANÓNICA
-        ├── Manifestación PDF   (PLAN-BICENTENARIO-MCR) ← réplica
-        └── Manifestación KB    (PDOT-KB-EXCEL)         ← réplica
+        ├── Manifestación DOCX  (PDOT-MONTECRISTI)       ← CANÓNICA
+        ├── Manifestación PDF   (PLAN-BICENTENARIO-MCR)  ← réplica
+        ├── Manifestación KB    (PDOT-KB-EXCEL)          ← réplica
+        └── Manifestación PAI   (PAI-PLURIANUAL-GAD)     ← réplica (capítulo/extracto)
 ```
+**Segunda corrección de Javo (mismo día):** `PAI-PLURIANUAL-GAD` había quedado clasificado como
+"documento distinto" — error mío por no verificar su contenido, repitiendo el mismo fallo de
+método que ya había cometido con `PLAN-BICENTENARIO-MCR`. Evidencia: el propio nombre del archivo
+lo delata (`PLAN PLURIANUAL DE INVERSIONES GAD Montecristi PDOT.docx`), no está en el manifest de
+los 43 documentos normativos (pipeline `holding-v1.0`), y su contenido es la misma narrativa del
+PDOT ("Visión de desarrollo del Cantón Montecristi", metas de áreas verdes por habitante). Es el
+Plan Plurianual de Inversiones — en la práctica de planificación ecuatoriana, un capítulo/anexo del
+propio PDOT, no un instrumento aparte. **Lección aplicada:** verificar CONTENIDO de las tres siglas
+por igual, no asumir que la tercera es distinta solo porque las primeras dos coincidieron.
 **La autoridad no es propiedad de un indicador — es propiedad de la manifestación** de la que ese
 indicador fue extraído. Un booleano suelto en `pdot_indicadores` no escala si mañana aparece una
 manifestación HTML o XML del mismo documento; una capa de Entidad Documental Canónica sí.
 
-## Las tres manifestaciones, con evidencia
+## Las cuatro manifestaciones, con evidencia
 | Manifestación | `norma_sigla` | Tipo | Pipeline | ¿Canónica? |
 |---|---|---|---|---|
-| `.docx` completo | `PDOT-MONTECRISTI` | docx | `qlep-corpus-v1.0` | **sí** — mejor parser (Strategy pattern), mejor chunking (headings de Word), fuente del Corpus v1.0 |
-| PDF comprimido | `PLAN-BICENTENARIO-MCR` | pdf | `holding-v1.0` | no — réplica; 157 indicadores exactos duplicados con la canónica (piso — el solapamiento semántico real es mayor, ver nota) |
+| `.docx` completo | `PDOT-MONTECRISTI` | docx | `qlep-corpus-v1.0` | **sí** — mejor parser (Strategy pattern), mejor chunking (headings de Word), fuente del Corpus v1.0; en el manifest de los 43 |
+| PDF comprimido | `PLAN-BICENTENARIO-MCR` | pdf | `holding-v1.0` | no — réplica; 157 indicadores exactos duplicados con la canónica (piso, ver nota) |
 | Knowledge Base Excel | `PDOT-KB-EXCEL` | kb_excel | `v1-kb-parser` | no — **certificado por Javo**: construido antes de QUIRA para maximizar cobertura de indicadores del PDOT, con énfasis en PUGS (confirmado: su categoría PUGS existe con 24 registros) |
+| Plan Plurianual de Inversiones | `PAI-PLURIANUAL-GAD` | docx | `holding-v1.0` | no — réplica/capítulo; nombre de archivo `...GAD Montecristi PDOT.docx`, fuera del manifest de los 43, misma narrativa del PDOT |
 
 **Nota sobre "157 duplicados" (precisión del colega):** ese número es una comparación de
 **igualdad literal** (`indicador` + `valor_texto` + `territorio` idénticos carácter a carácter).
 Es un **piso conservador**, no el solapamiento real: Haiku puede redactar el mismo dato territorial
 como *"Área urbana consolidada"* en una extracción y *"Superficie urbana consolidada"* en otra —
 semánticamente idénticos, textualmente distintos, y esa comparación NO los detecta. El
-solapamiento semántico real entre las tres manifestaciones es mayor a 157/3317. No se ha
+solapamiento semántico real entre las cuatro manifestaciones es mayor a 157/3317. No se ha
 cuantificado con precisión — requeriría comparación semántica (embeddings), no literal.
 
 ## Esquema implementado
@@ -50,9 +61,8 @@ manifestacion_documental (
 cada consulta) pero **ahora se sincroniza desde `manifestacion_documental.es_canonica`** — la tabla
 de manifestaciones es la fuente de verdad; el booleano es una proyección, no el diseño.
 
-También se registró `PAI-PLURIANUAL-GAD` como su propio `documento_canonico` (documento distinto,
-no comparte este problema) — así el modelo cubre las tres siglas del extractor de forma uniforme,
-sin casos especiales.
+Las cuatro siglas que usa `pdot_extractor.py` quedan cubiertas por el mismo `documento_canonico`
+`PDOT-MONTECRISTI-2023-2027` — ninguna es un instrumento aparte.
 
 ## Qué NO se hizo (deliberadamente)
 - **No se borró nada** de `normativa_corpus` ni `pdot_indicadores`. Las réplicas quedan consultables
