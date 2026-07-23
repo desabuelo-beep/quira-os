@@ -31,12 +31,11 @@ la Doctrina permanece. Hoja de Ruta = el mapa que no se mueve. BOOT §AHORA = el
 🔌 **MCD Planif · 7 cables ✅:** Excel·SERCOP·Relacional·Normativo·IA·Visual·Memoria.
 🧭 **ADR-031 RATIF:** cajón=MCD · GoldMaster=MCM · MCIP 5 motores (Index §1.A).
 🔑 **AUDIT 18-jul:** COOTAD-2026 70%/piso65% dic-2026 · d03 COPLAFIP41-42.
-🏛️ **d03 Mandato ELECTORAL CERRADO✓ (PCD-D03)** — 76 promesas reales · fidelidad 79.3% · centinela ✅.
 ✅ **4 DOM cerrados con PCD: d01·d02·d03·d09** (molde d01: dictamen + qc-ev + fundamento jurídico).
 📚 **ADR-038 BRN v2 RATIF:** nodo = REGLA, no artículo. 4 niveles **Corpus→CNO(Derecho)→RO(lógica)→SAT**. BRN = CAPA (no cajón) que CONSOLIDA (no interpreta). **Corpus v1.0 CONGELADO** (43 docs·9158 chunks·grafo cerrado·`parser-v1.0`; v1.1=refs cruzadas). **BRN v2.1**: d01+d02+d03+d09 CONFORMES·5 RO·suite 12✓·diff=0.
 🩺 **Canon curado por el DOM (Regla 8), ICPI intacto · centinela ✅. Gate real = `python scripts/ci/check_health.py` (BOOT≤6000·CLAUDE≤4000): NO adivinar.**
 📚 **ADR-035/037 (RATIF):** Ley→BRN→GoldMaster(único motor)→QUIRA · IA propone, humano valida. Frame: Gobierno(página propia)·Territorio·Inteligencia·Norma(BRN).
-🏛️ **d02 migrado (2026-07-23):** motor.py envuelve `enrich_presupuesto.py` (ya prod) — 4 capacidades+3 SAT (solo SAT-IV con CNO-IV-001 verificado). **Bug hallado+corregido: ICPI÷100 doble en 13 celdas** (OBS-013, ICPI intacto). Antes: 26/34 SHA BRN obsoletos+CE Art.241 perdido → corregidos (OBS-012, Corpus v1.0.1). d07/d01/d02 IMPORTAN `_template`. Neo4j 127 nodos. Falta d03/d09. **Fase4/Haiku=pausa**.
+🏛️ **d02+d03 migrados (2026-07-23):** motor.py envuelve `enrich_presupuesto.py`/`enrich_mandato.py` (ya prod). d02: 4 capacidades+3 SAT — **bug ICPI÷100 doble en 13 celdas, corregido** (OBS-013). d03: 2 métricas (incorporación=hecho 98.7%·calidad=índice 79.3%), Fase2 auditoría sin hallazgos, drift YAML↔Neo4j=0 (`EVIDENCIA_d03`). Antes: 26/34 SHA BRN obsoletos+CE Art.241 perdido → corregidos (OBS-012, Corpus v1.0.1). d07/d01/d02/d03 IMPORTAN `_template`. Neo4j 145 nodos. Falta d09. **Fase4/Haiku=pausa**.
 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 ratificado · detalle en el ADR)
 GAD = sujeto observado, NO cliente. 4 capas: A Núcleo (motor·grafos·conectores·índices) · B Operaciones (Dylus) · C Productos (Institucional·Ciudadana·Impact·Economic·Cooperación · 1 motor) · D Portal `quiraintelligence.com` (radar 221 GAD). Montecristi = Municipio 001.
@@ -62,7 +61,7 @@ no redefinas · al cierre `/graphify . --update`) · **no congelar teoría antes
 | Estado histórico completo (snapshot) | `governance/historico/QUIRA_STATE_2026-06-03.md` |
 
 ## INFRA (credenciales en `.streamlit/secrets.toml` local, NUNCA al repo)
-Neo4j AuraDB Free instancia `6c134c35` (user=DB=instance ID · patrón MATCH+MERGE) · Supabase `normativa_corpus` · repo PRIVADO.
+Neo4j AuraDB Free instancia `8dc8519a` (user=DB=instance ID · patrón MATCH+MERGE) · Supabase `normativa_corpus` · repo PRIVADO.
 
 ## EQUIPO
 Javo (fundador, decide) · Claude (director técnico, ejecuta) · Colega (asesor externo, revisa).

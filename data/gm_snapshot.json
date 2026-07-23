@@ -7646,142 +7646,56 @@
         {
           "cargo": "Alcalde",
           "nombre": "Ing. Jonathan Toro Largacha",
-          "movimiento": "Movimiento MOVER Ecuador",
+          "movimiento": "Movimiento Avanza Listas 8",
           "verificado": true
         },
         {
           "cargo": "Vice-Alcalde",
-          "nombre": "",
+          "nombre": "Ing. Flor Arteaga",
           "movimiento": "",
-          "verificado": false
+          "verificado": true
         },
         {
-          "cargo": "Concejal Urbano 1",
-          "nombre": "",
+          "cargo": "Concejal Urbano",
+          "nombre": "Sr. Miguel Delgado",
           "movimiento": "",
-          "verificado": false
+          "verificado": true
         },
         {
-          "cargo": "Concejal Urbano 2",
-          "nombre": "",
+          "cargo": "Concejal Urbano",
+          "nombre": "Sr. Miguel López",
           "movimiento": "",
-          "verificado": false
+          "verificado": true
         },
         {
-          "cargo": "Concejal Urbano 3",
-          "nombre": "",
+          "cargo": "Concejal Urbano",
+          "nombre": "Sr. Luis Pachay",
           "movimiento": "",
-          "verificado": false
+          "verificado": true
         },
         {
-          "cargo": "Concejal Rural 1",
-          "nombre": "",
+          "cargo": "Concejal Urbano",
+          "nombre": "Econ. Adrián Pazmiño",
           "movimiento": "",
-          "verificado": false
+          "verificado": true
         },
         {
-          "cargo": "Concejal Rural 2",
-          "nombre": "",
+          "cargo": "Concejal Urbano",
+          "nombre": "Sr. Leonidas Robles",
           "movimiento": "",
-          "verificado": false
+          "verificado": true
         },
         {
-          "cargo": "Pdte. Junta Parroquial La Pila",
-          "nombre": "",
+          "cargo": "Concejal Rural",
+          "nombre": "Sr. Neptaly Santana",
           "movimiento": "",
-          "verificado": false
+          "verificado": true
         }
       ],
-      "sin_verificar": 7,
+      "sin_verificar": 0,
       "total": 8
     },
-    "publicado": true,
-    "base_normativa": {
-      "fuente": "Corpus normativo verificado (Supabase · pgvector · sha256)",
-      "fecha": "2026-07-18",
-      "total_chunks": 1825,
-      "cobertura": [
-        {
-          "sigla": "CE",
-          "nombre": "Constitución del Ecuador",
-          "chunks": 465
-        },
-        {
-          "sigla": "COD",
-          "nombre": "Código de la Democracia",
-          "chunks": 435
-        },
-        {
-          "sigla": "COPLAFIP",
-          "nombre": "Código Orgánico de Planificación y Finanzas Públicas",
-          "chunks": 199
-        },
-        {
-          "sigla": "LOPC",
-          "nombre": "Ley Orgánica de Participación Ciudadana",
-          "chunks": 94
-        },
-        {
-          "sigla": "COOTAD",
-          "nombre": "Código Orgánico de Organización Territorial (COOTAD)",
-          "chunks": 632
-        }
-      ],
-      "articulo_ancla": {
-        "norma": "COPLAFIP",
-        "articulo": 43,
-        "sha256": "ea13f2bb6c4d",
-        "texto": "Art. 43.- Planes de Ordenamiento Territorial.- Los planes de ordenamiento territorial son los instrumentos de la planificación del desarrollo que tienen por objeto el ordenar, compatibilizar y armonizar las decisiones estratégicas de desarrollo respecto de los asentamientos humanos, las actividades económico-productivas y el manejo de los recursos naturales en función de las cualidades territoriales, a través de la d"
-      },
-      "por_eslabon": {
-        "compromiso": {
-          "norma": "COD",
-          "articulo": 97,
-          "sha256": "189b101bf567",
-          "sumilla": "Todos los candidatos y candidatas a Presidente o Presidenta, Gobernador",
-          "marco": [
-            "Cód. Democracia Art. 97"
-          ]
-        },
-        "investidura": {
-          "norma": "COOTAD",
-          "articulo": 60,
-          "sha256": "d1d6b65f18fc",
-          "sumilla": "Atribuciones del alcalde o alcaldesa",
-          "marco": [
-            "COOTAD Art. 58-60"
-          ]
-        },
-        "traduccion": {
-          "norma": "COPLAFIP",
-          "articulo": 41,
-          "sha256": "b49b8c942524",
-          "sumilla": "Planes de Desarrollo",
-          "marco": [
-            "COPLAFIP Art. 12, 41-42, 44"
-          ]
-        },
-        "rendicion": {
-          "norma": "LOPC",
-          "articulo": 89,
-          "sha256": "d3e1686814de",
-          "sumilla": "",
-          "marco": [
-            "CE Art. 100",
-            "LOPC Art. 89-90"
-          ]
-        },
-        "consecuencia": {
-          "norma": "CE",
-          "articulo": 105,
-          "sha256": "8fb8c8f1ace3",
-          "sumilla": "Las personas en goce de los derechos políticos podrán revocar el mandato",
-          "marco": [
-            "CE Art. 105"
-          ]
-        }
-      }
-    }
+    "publicado": true
   },
   "gobierno": {
     "_fuente": "Autoridades electas y mandato: canon (SCHEMA_CNE) · Consejo de Planificación y estructura orgánica: corpus documental verificado (sha256)",

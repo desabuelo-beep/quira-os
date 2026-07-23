@@ -1,0 +1,65 @@
+# Catálogo Canónico d03 — Gobernanza del Mandato
+# Fuente única de verdad para: Excel(referencia)/Neo4j/pipeline (Regla 9).
+# Extraído 2026-07-23 de docs/pcd/PCD-D03_Gobernanza_Mandato.md (CERRADO 2026-07-16)
+# + scripts/enrich_mandato.py (motor real ya en producción, valores verificados con
+# ejecución fresca del enricher hoy) + docs/brn/CNO-III-001.yaml (9/9 SHA verificados,
+# corregidos en la auditoría de ayer, OBS-012).
+#
+# VISIÓN: la palabra empeñada. Qué proporción de lo prometido ante el CNE se convirtió
+# en meta del plan de desarrollo. No mide si la obra se hizo (eso es d01/d02): mide el
+# origen democrático de lo que hoy se planifica.
+catalogo: CATALOGO_D03_GOBERNANZA_MANDATO
+version: "1.0.0"
+dominio: d03
+cno: CNO-III-001
+
+# Las "dos verdades" del dominio (aporte del colega, PCD-D03): INCORPORACIÓN (hecho
+# documental, se cuenta) vs CALIDAD (índice del motor, se lee). Ninguna se recalcula.
+metricas:
+  - id: incorporacion
+    nombre: "Incorporación — ¿la promesa ingresó al plan?"
+    naturaleza: "HECHO documental — se cuenta el registro curado, no se recalcula"
+    valor_ref_pct: 98.7
+    hoja_gold_master: H03_S1_ELECTORAL_CNE
+    campo: "conteo de promesas con meta / total"
+    cautela: "asignada no es lo mismo que verificada — el registro lo declara aparte"
+
+  - id: calidad
+    nombre: "Calidad (IFE) — ¿con qué nivel de congruencia ingresó?"
+    naturaleza: "ÍNDICE del motor — se LEE, no se recalcula (Regla 1)"
+    valor_ref_pct: 79.3
+    hoja_gold_master: H16_IFE
+    campo: IFE_Global
+    celda: B6
+    formula_viva: true   # corregido en el PCD: antes era texto estampado
+    umbral_alto: 85       # RO-III-001 — piso de Fidelidad Alta
+    umbral_medio: 60
+    naturaleza_bug_previo: "Clasificación_IFE era texto estampado, podía desincronizarse de H16 — ya corregido (PCD-D03), verificado hoy como fórmula viva"
+
+# Señal preventiva (única — el mandato no tiene 3 señales SAT como d02, tiene 1)
+senal_sat:
+  id: SAT-III-001
+  nombre: "Fidelidad del mandato bajo el piso preventivo"
+  hoja_gold_master: H85_ALERTS_LOG
+  celda_centinela: D21
+  estado_2026-07-23: "✅ CORRECTO"
+  cno: CNO-III-001   # verificada, 9/9 SHA
+
+fuentes:
+  - {id: PlanCNE, origen: "Plan de Trabajo del CNE (docx, SHA256 verificado)", descripcion: "la palabra empeñada — fuente primaria de las promesas"}
+  - {id: PDOT_metas, origen: "H03/PDOT (consumido de d01)", descripcion: "metas del plan de desarrollo, reuso — no se re-extrae"}
+  - {id: AutoridadesCNE, origen: SCHEMA_CNE, descripcion: "autoridades electas (alcalde/concejales/juntas)"}
+
+# 9 eslabones de CNO-III-001 (verificados 2026-07-23, ver docs/brn/CNO-III-001.yaml)
+eslabones:
+  - {orden: 1, rol: fundamento_constitucional, norma: CE,       articulo: "61",  sha256: 981cf97fbafe, sumilla: "derechos de participación — elegir y ser elegidos: origen del mandato popular"}
+  - {orden: 2, rol: compromiso,                norma: COD,      articulo: "97",  sha256: b243e8693685, sumilla: "el candidato inscribe su Plan de Trabajo ante el CNE — la palabra empeñada"}
+  - {orden: 3, rol: investidura,                norma: COOTAD,   articulo: "60",  sha256: 1baac1f8b508, sumilla: "atribuciones del alcalde: dirige la gestión con que debe cumplir el mandato"}
+  - {orden: 4, rol: investidura_legislativa,    norma: COOTAD,   articulo: "58",  sha256: 240cb67911e9, sumilla: "atribuciones de los concejales: fiscalizan y aprueban los instrumentos"}
+  - {orden: 5, rol: traduccion,                 norma: COPLAFIP, articulo: "41",  sha256: e3c9fad328f3, sumilla: "el mandato se traduce en el plan de desarrollo (directrices del GAD)"}
+  - {orden: 6, rol: traduccion_contenido,       norma: COPLAFIP, articulo: "42",  sha256: 349a6ad45c33, sumilla: "contenidos mínimos del plan de desarrollo"}
+  - {orden: 7, rol: rendicion,                  norma: LOPC,     articulo: "89",  sha256: 086fc826f996, sumilla: "rendición de cuentas: el mandatario responde por el mandato ejercido"}
+  - {orden: 8, rol: rendicion_sujetos,          norma: LOPC,     articulo: "90",  sha256: 547b900b8a8f, sumilla: "sujetos obligados a rendir cuentas — autoridades electas"}
+  - {orden: 9, rol: consecuencia,               norma: CE,       articulo: "105", sha256: f7819a49cbe9, sumilla: "revocatoria del mandato: la consecuencia del incumplimiento ante el electorado"}
+
+municipio_molde: MCR-001

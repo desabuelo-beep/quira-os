@@ -34,13 +34,15 @@
 | **Motor Capacidades (lectura)** | d02 | Gold Master (H19/H07/H20c/H11) | ISP·Ti·fondos·PND | **Determinístico** | ✅ `motor.py` envuelve `enrich_presupuesto.py` ya en producción | ❌ específico (4 celdas propias) | d02 |
 | **Resultado Agent** | d02 | web GAD / transparencia | ¿existe medición de impacto? | IA | ⬜ Fase 4 (`fuentes.py`) | ✅ genérico (Portal Navigator) | d02, único hueco agéntico real del dominio |
 | **eSIGEF (Fuente)** | d02 | Gold Master H07 | cédula ejecución | — | ✅ reuso confirmado | ✅ **YA compartido** | **d02 = d01 Presupuesto = d07 CD-06** (misma cédula) |
-| *(d02/d03/d09)* | — | — | — | — | ⬜ pendiente de migrar | — | — |
+| **Motor Mandato (lectura)** | d03 | Gold Master H03/H16 | incorporación%, calidad_IFE%, centinela | **Determinístico** | ✅ `motor.py` envuelve `enrich_mandato.py` ya en producción | ❌ específico (2 métricas propias) | d03 |
+| **Contraste Documental Agent** | d03 | Plan CNE original + SCHEMA_CNE | promesa verificada / autoridad actualizada | IA | ⬜ Fase 4 (`fuentes.py`) | ✅ genérico (Portal Navigator) | d03, único hueco agéntico real del dominio |
+| *(d09)* | — | — | — | — | ⬜ pendiente de migrar | — | — |
 
 ## Lecturas del catálogo (lo que revela)
 
-- **Solo 4 piezas son determinísticas** (Compliance Evaluator, SITA Engine, Motor IPE-lectura, ICPI
-  Engine). Todo lo demás — la mayoría — es IA. Confirma la doctrina: QUIRA IA es un ecosistema de
-  agentes, no un motor de scripts con un extractor aislado.
+- **Solo 5 piezas son determinísticas** (Compliance Evaluator, SITA Engine, Motor IPE-lectura, Motor
+  Mandato-lectura, ICPI Engine). Todo lo demás — la mayoría — es IA. Confirma la doctrina: QUIRA IA
+  es un ecosistema de agentes, no un motor de scripts con un extractor aislado.
 - **El ICPI Engine es el único intocable** (Regla 1). Todos los demás determinísticos LEEN o
   agregan; ninguno redefine el motor canónico.
 - **Budget Agent se comparte** (d01 lo consume, d07 lo produce) — es la memoria operacional de
