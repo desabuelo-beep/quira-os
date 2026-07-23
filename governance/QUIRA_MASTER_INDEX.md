@@ -34,6 +34,7 @@
 | **Qué ES la cadena de d01** (eslabones BRN, RO, fuentes, métricas) | `data/d01/catalogo_d01_v1.0.0.yaml` (SSoT) | Neo4j deriva de aquí, nunca al revés |
 | **Qué ES d02** (4 capacidades, 3 señales SAT, cadena BRN) | `data/d02/catalogo_d02_v1.0.0.yaml` (SSoT) — motor real: `scripts/enrich_presupuesto.py` | Neo4j deriva de aquí; el enricher YA existía, no se reimplementó |
 | **Qué ES d03** (2 métricas: incorporación=hecho, calidad=índice, cadena BRN) | `data/d03/catalogo_d03_v1.0.0.yaml` (SSoT) — motor real: `scripts/enrich_mandato.py` | Neo4j deriva de aquí; evaluación ANUAL (no mensual) |
+| **Qué ES d09** (1 índice fidelidad narrativa + 4 hechos documentales incl. aportes ciudadanos, cadena BRN 10 eslabones) | `data/d09/catalogo_d09_v1.0.0.yaml` (SSoT) — motores: `scripts/enrich_rdc.py` (vivo) + `scripts/enrich_rdc_docx.py`/`enrich_aportes.py` (persistidos) | Neo4j deriva de aquí; último dominio BRN-conforme, evaluación ANUAL |
 
 ## 1.A · Stack de Descripción de QUIRA (Marco Fundacional + 3 niveles anidados — aquí se responde "¿6 o 7 capas?")
 

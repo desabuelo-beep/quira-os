@@ -36,13 +36,16 @@
 | **eSIGEF (Fuente)** | d02 | Gold Master H07 | cédula ejecución | — | ✅ reuso confirmado | ✅ **YA compartido** | **d02 = d01 Presupuesto = d07 CD-06** (misma cédula) |
 | **Motor Mandato (lectura)** | d03 | Gold Master H03/H16 | incorporación%, calidad_IFE%, centinela | **Determinístico** | ✅ `motor.py` envuelve `enrich_mandato.py` ya en producción | ❌ específico (2 métricas propias) | d03 |
 | **Contraste Documental Agent** | d03 | Plan CNE original + SCHEMA_CNE | promesa verificada / autoridad actualizada | IA | ⬜ Fase 4 (`fuentes.py`) | ✅ genérico (Portal Navigator) | d03, único hueco agéntico real del dominio |
-| *(d09)* | — | — | — | — | ⬜ pendiente de migrar | — | — |
+| **Motor RDC (lectura mixta)** | d09 | Gold Master H34b/H31 (vivo) + snapshot persistido (DOCX+embeddings) | fidelidad narrativa, cpccs, serie, cumplimiento, aportes | **Determinístico** | ✅ `motor.py` envuelve `enrich_rdc.py` + lee `enrich_rdc_docx.py`/`enrich_aportes.py` persistidos | ❌ específico (única fuente triple del catálogo) | d09 |
+| **Trazabilidad de Aportes Agent** | d09 | H10c aportes + POA (embeddings locales) | aporte↔obra ejecutada, nivel de atención | IA/ML (semiautomático) | ✅ `enrich_aportes.py` ya en producción (metodología v0.3 pendiente aval formal) | ❌ específico (cruce semántico propio) | d09 |
+| **Contenido Mínimo Agent** | d09 | informe RDC + Reglamento Art.10 | ¿cumple contenido mínimo? | IA | ⬜ Fase 4 (`fuentes.py`) | ✅ genérico (Evidence Interpreter) | d09 |
+| **NLP Video RDC Agent** | d09 | video oficial rendición | discurso→afirmaciones (fidelidad narrativa) | IA | ⬜ Fase 4, pendiente 2025 (diferenciador, PCD-D09) | ❌ específico (NLP de video) | d09 |
 
 ## Lecturas del catálogo (lo que revela)
 
-- **Solo 5 piezas son determinísticas** (Compliance Evaluator, SITA Engine, Motor IPE-lectura, Motor
-  Mandato-lectura, ICPI Engine). Todo lo demás — la mayoría — es IA. Confirma la doctrina: QUIRA IA
-  es un ecosistema de agentes, no un motor de scripts con un extractor aislado.
+- **Solo 6 piezas son determinísticas** (Compliance Evaluator, SITA Engine, Motor IPE-lectura, Motor
+  Mandato-lectura, Motor RDC-lectura, ICPI Engine). Todo lo demás — la mayoría — es IA. Confirma la
+  doctrina: QUIRA IA es un ecosistema de agentes, no un motor de scripts con un extractor aislado.
 - **El ICPI Engine es el único intocable** (Regla 1). Todos los demás determinísticos LEEN o
   agregan; ninguno redefine el motor canónico.
 - **Budget Agent se comparte** (d01 lo consume, d07 lo produce) — es la memoria operacional de

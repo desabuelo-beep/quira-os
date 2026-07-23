@@ -106,7 +106,11 @@ def main() -> None:
     block = build_block()
     with open(SNAP, encoding="utf-8") as f:
         snap = json.load(f)
-    snap["rendicion"] = block
+    # merge, no sobrescribe lo que enrich_rdc_docx.py / enrich_aportes.py ya fusionaron
+    # (hallazgo 2026-07-23, migración d09: un overwrite ciego aquí borraba 'aportes')
+    rend = snap.get("rendicion") or {}
+    rend.update(block)
+    snap["rendicion"] = rend
     with open(SNAP, "w", encoding="utf-8") as f:
         json.dump(snap, f, ensure_ascii=False, indent=2)
     fi = block["fidelidad"]

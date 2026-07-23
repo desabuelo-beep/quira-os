@@ -1,0 +1,97 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# CATALOGO_D09_RENDICION_CUENTAS · v1.0.0 · 2026-07-23
+# SSoT del dominio d09 (Rendición de Cuentas, QINV-009). Neo4j deriva de aquí,
+# nunca al revés (Regla #6). Fuente BRN: docs/brn/CNO-IX-001.yaml + RO-IX-001.yaml
+# (10 eslabones, SHA256 verificados 2026-07-23, OBS-012). Canon ya curado:
+# docs/pcd/PCD-D09_Rendicion_Cuentas.md (CERRADO 2026-07-02).
+#
+# NATURALEZA MIXTA (d09 es el dominio más heterogéneo migrado hasta hoy — 4 hechos
+# distintos, dos fuentes distintas):
+#   · fidelidad_narrativa = ÍNDICE (evaluación experta trazable, NO cómputo
+#     automático — hallazgo PCD-D09 #3) · vive en Excel (H34b!B21) · se LEE en vivo.
+#   · cpccs_brecha        = HECHO documental, hoy "sin dato" honesto (Reglamento
+#     Art.21) · vive en Excel (H31!B65) · se LEE en vivo.
+#   · serie 3 años        = HECHO documental · extraído de informes DOCX oficiales
+#     (no vive en el Excel) · se LEE del snapshot ya persistido (Regla 1: no se
+#     re-parsean los DOCX en cada evaluación; PCD-D09 lo documenta como aceptable).
+#   · cumplimiento_actual = HECHO documental (21 componentes 2025) · misma fuente
+#     DOCX que la serie.
+# ═══════════════════════════════════════════════════════════════════════════════
+catalogo: CATALOGO_D09_RENDICION_CUENTAS
+version: 1.0.0
+dominio: d09
+cno: CNO-IX-001
+ro: RO-IX-001
+
+metricas:
+  - id: fidelidad_narrativa
+    nombre: Fidelidad Narrativa (discurso oficial ↔ evidencia)
+    naturaleza: "ÍNDICE del motor — evaluación experta trazable (discurso↔evidencia), no cómputo automático"
+    hoja_gold_master: H34b_MFN_FIDELIDAD_NARRATIVA
+    celda: B21
+    formula_viva: true
+    valor_ref_pct: 91.0
+    cobertura: "ejercicio 2024 · 9 afirmaciones (8 alta fidelidad, 1 baja)"
+    pendiente_honesto: "2025 requiere NLP sobre el video de la rendición (diferenciador, workstream aparte)"
+
+hechos_documentales:
+  - id: cpccs_brecha_compromisos
+    nombre: Brecha de Compromisos CPCCS
+    naturaleza: "HECHO — hoy sin evidencia (los informes no publican tabla de compromisos), canon devuelve honesto, no 0% falso"
+    hoja_gold_master: H31_REPORTE_CPCCS
+    celda: B65
+    fuente_derivada: H24b_SAT-V_ALERTA_CPCCS (B7=B8=0 → sin ratio)
+  - id: serie_rendiciones
+    nombre: Serie de Rendiciones (2023-2025)
+    naturaleza: "HECHO — extraído de los informes DOCX oficiales del CPCCS por año, persistido en snapshot"
+    fuente: informes oficiales RC-GAD (N°17649/22844/28432)
+    campos: [informe_n, fecha_rdc, lugar, asistentes, n_componentes, periodo]
+  - id: cumplimiento_actual
+    nombre: Cumplimiento del Ejercicio Vigente (2025)
+    naturaleza: "HECHO — 21 componentes del informe 2025, misma fuente DOCX que la serie"
+  - id: aportes_ciudadanos
+    nombre: Trazabilidad de Aportes y Compromisos Ciudadanos
+    naturaleza: "HECHO — cruce semiautomático H10c (aportes) × POA (ejecución), evaluación experta trazable, como IF_n"
+    fuente: "scripts/enrich_aportes.py (merge, no sobrescribe fidelidad/cpccs/serie — corregido 2026-07-23)"
+    marco_legal: "LOPC Art.89 (advisory, consultivo — ya en la cadena CNO-IX-001 eslabón 3); Presupuesto Participativo (vinculante, COOTAD Art.238) se rutea a d08, no aquí"
+    estado_gobernanza: "OPERACIONAL desde 2026-07-03/04 (49 atendido/47 sin correlato, 44 validados); metodología formal `docs/architecture/METODOLOGIA_TRAZABILIDAD_APORTES.md` sigue v0.3 PENDIENTE DE AVAL de Javo — se cataloga honestamente con ese estado, no como RO ratificada"
+
+senal_sat:
+  id: SAT-IX-001
+  cno: CNO-IX-001
+  id_interno_gold_master: H24b_SAT-V_ALERTA_CPCCS
+  nota: "el Gold Master la nombra internamente 'SAT-V' (numeración histórica H-series); la BRN la referencia como SAT-IX-001 (dominio d09) — mismo hallazgo de nomenclatura dual que ya se documentó para d02/SAT-IV."
+
+fuentes:
+  - id: H34b_fidelidad
+    origen: "Gold Master H34b_MFN_FIDELIDAD_NARRATIVA"
+    tipo: excel_formula
+  - id: H31_cpccs
+    origen: "Gold Master H31_REPORTE_CPCCS"
+    tipo: excel_formula
+  - id: informes_rdc_docx
+    origen: "3 informes DOCX oficiales de Rendición de Cuentas (2023-2025)"
+    tipo: documento_oficial
+  - id: H10c_aportes
+    origen: "Gold Master H10c_RDC_APORTES (108 demandas verificadas) × POA oficial (extracción PDF)"
+    tipo: excel_mas_documento
+    nota: "cruce por embeddings locales, sin API; ver METODOLOGIA_TRAZABILIDAD_APORTES.md"
+  - id: corpus_rdc_supabase
+    origen: "scripts/ingest_rdc_corpus.py — 114 chunks (2023=20·2024=38·2025=56), tipo_documento=informe_rendicion"
+    tipo: corpus_semantico
+    nota: "distinguible de los 25 chunks EVIDENCIA_OBSERVACIONAL del Holding (holding-v1.0); filtrar por tipo_documento"
+
+# ── Cadena BRN (CNO-IX-001, 10 eslabones — copiado de docs/brn/CNO-IX-001.yaml) ──
+eslabones:
+  - {orden: 1,  rol: fundamento_constitucional, norma: CE, articulo: "100", sha256: 8282b964440e, sumilla: "instancias de participación en todos los niveles de gobierno"}
+  - {orden: 2,  rol: fundamento_control, norma: CE, articulo: "208", sha256: 8c269ae98217, sumilla: "deberes y atribuciones del Consejo de Participación Ciudadana y Control Social"}
+  - {orden: 3,  rol: definicion, norma: LOPC, articulo: "89", sha256: 086fc826f996, sumilla: "definición: la rendición de cuentas como proceso participativo y obligatorio"}
+  - {orden: 4,  rol: sujetos_obligados, norma: LOPC, articulo: "90", sha256: 547b900b8a8f, sumilla: "autoridades del Estado, electas o de libre remoción, están obligadas a rendir cuentas"}
+  - {orden: 5,  rol: objetivos, norma: LOPC, articulo: "91", sha256: 79733cc71e4f, sumilla: "objetivos de la rendición de cuentas"}
+  - {orden: 6,  rol: alcance_programatico, norma: LOPC, articulo: "93", sha256: 871a7da338fe, sumilla: "nivel programático y operativo sobre el que se rinde cuentas"}
+  - {orden: 7,  rol: contenido_minimo, norma: RES-CPCCS-RC-2026, articulo: "10", sha256: 835f120780a9, sumilla: "contenido mínimo obligatorio del informe de rendición de cuentas"}
+  - {orden: 8,  rol: sujeto_gad, norma: RES-CPCCS-RC-2026, articulo: "13", sha256: c2456d489297, sumilla: "reglas específicas para los Gobiernos Autónomos Descentralizados"}
+  - {orden: 9,  rol: deliberacion_publica, norma: RES-CPCCS-RC-2026, articulo: "15", sha256: f2648b154be4, sumilla: "la deliberación pública como espacio obligatorio del proceso"}
+  - {orden: 10, rol: consecuencia, norma: RES-CPCCS-RC-2026, articulo: "21", sha256: 9c5c442d147a, sumilla: "entrega de informes incumplidos de períodos fiscales anteriores"}
+
+municipio_molde: MCR-001
