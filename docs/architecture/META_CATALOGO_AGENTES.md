@@ -31,6 +31,9 @@
 | **Alignment Agent** | d01 | PDOT+POA+PAC+SERCOP | hallazgos RO-I-001/002 | IA | ⬜ Fase 4 (`articulacion.py`) | ❌ específico (reglas RO de cada CNO) | d01 |
 | **Motor IPE (lectura)** | d01 | Gold Master H16b | IPE, cobertura | **Determinístico** | ✅ `motor.py` (LEE, no calcula) | ❌ específico (celda propia) | d01 |
 | **ICPI Engine** | Core | índices | ICPI (H12!B33) | **Determinístico** | ✅ Gold Master (INMUTABLE) | — (único, no se replica) | todos los DOM lo consumen |
+| **Motor Capacidades (lectura)** | d02 | Gold Master (H19/H07/H20c/H11) | ISP·Ti·fondos·PND | **Determinístico** | ✅ `motor.py` envuelve `enrich_presupuesto.py` ya en producción | ❌ específico (4 celdas propias) | d02 |
+| **Resultado Agent** | d02 | web GAD / transparencia | ¿existe medición de impacto? | IA | ⬜ Fase 4 (`fuentes.py`) | ✅ genérico (Portal Navigator) | d02, único hueco agéntico real del dominio |
+| **eSIGEF (Fuente)** | d02 | Gold Master H07 | cédula ejecución | — | ✅ reuso confirmado | ✅ **YA compartido** | **d02 = d01 Presupuesto = d07 CD-06** (misma cédula) |
 | *(d02/d03/d09)* | — | — | — | — | ⬜ pendiente de migrar | — | — |
 
 ## Lecturas del catálogo (lo que revela)

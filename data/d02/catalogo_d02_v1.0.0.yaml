@@ -1,0 +1,83 @@
+# Catálogo Canónico d02 — Presupuesto & Financiamiento
+# Fuente única de verdad para: Excel(referencia)/Neo4j/pipeline (Regla 9).
+# Extraído 2026-07-23 de docs/pcd/PCD-D02_Presupuesto_Financiamiento.md (CERRADO 2026-07-16)
+# + scripts/enrich_presupuesto.py (motor real ya en producción, valores verificados con
+# ejecución fresca del enricher hoy — no de memoria).
+#
+# VISIÓN (Javo, corrección 2026-07-14): no es "presupuesto interno". Es la salud financiera
+# COMO BASE para captar financiamiento internacional (reembolsable y no reembolsable).
+catalogo: CATALOGO_D02_PRESUPUESTO
+version: "1.0.0"
+dominio: d02
+cno: CNO-IV-001   # única de las 3 señales SAT con cadena normativa verificada (Alerta fiscal)
+
+# Las 4 capacidades del dominio (marco propio, PCD-D02) — TODAS leídas del Gold Master,
+# ninguna se recalcula (Regla 1). Valores verificados con ejecución real del enricher, 2026-07-23.
+capacidades:
+  - id: sostenibilidad
+    nombre: "Salud presupuestaria (ISP)"
+    valor_ref_pct: 58.4
+    hoja_gold_master: H19_ICS_ISP
+    campo: ISP_Global
+    columna: 3   # BUG HISTÓRICO (PCD-D02 hallazgo #1): antes leía col 2 (Ti=3.2%), no ISP real
+    umbral_cootad_pct: 65
+    naturaleza: "se LEE, no se recalcula (Regla 1)"
+
+  - id: absorcion
+    nombre: "Ejecución presupuestaria (Ti)"
+    valor_ref_pct: 6.4
+    hoja_gold_master: H07_S5_FINANCIERO_eSIGEF
+    campo: Ti_Global_2026
+    corte: abril-2026
+    naturaleza: "se LEE, no se recalcula (Regla 1)"
+
+  - id: movilizacion
+    nombre: "Captación de fondos externos"
+    valor_ref_usd: 1874500
+    n_convenios: 4
+    modalidad: "todos no reembolsables"
+    hoja_gold_master: H20c_IEF_EFICIENCIA_FINANCIERA
+    naturaleza: "se LEE, no se recalcula (Regla 1)"
+
+  - id: elegibilidad
+    nombre: "Alineación PND + vinculación ODS"
+    alineacion_pnd_pct: 83
+    icods_pct: 87.5
+    ods_cubiertos: 9
+    total_ods: 17
+    hoja_gold_master: "H11_S9_AGENDA_GLOBAL_ODS + H11b (consumido de d01, ADR-032)"
+    nota: "Qué fondo específico aplica lo resuelve QUIRA Cooperación (producto), no este dominio."
+    naturaleza: "se LEE, no se recalcula (Regla 1)"
+
+# Señales preventivas SAT (Javo, 2026-07-15: se elimina el DOM Alertas, cada señal vive en su
+# dominio). LEÍDAS del motor (H22/H23/H24), no recalculadas. Estado real verificado hoy: 0/3 activas.
+senales_sat:
+  - id: SAT-II
+    nombre: "Reforma presupuestaria tardía"
+    hoja_gold_master: H22_SAT-II
+    umbral: "máx 5% del presupuesto anual"
+    estado_2026-07-23: sin_senal
+    cno: null   # PENDIENTE — norma retirada por auditoría 2026-07-18 (cita errada), sin BRN aún
+    nota: "COPFP Art.115 citado originalmente era incorrecto (ver enrich_presupuesto.py). Sin cadena normativa verificada todavía."
+
+  - id: SAT-III
+    nombre: "Parálisis presupuestaria"
+    hoja_gold_master: H23_SAT-III
+    umbral: "ejecución mínima 10%"
+    estado_2026-07-23: sin_senal
+    cno: null   # PENDIENTE — mismo caso que SAT-II
+    nota: "COPFP Art.113 citado originalmente era incorrecto. Sin cadena normativa verificada todavía."
+
+  - id: SAT-IV
+    nombre: "Alerta fiscal · estructura COOTAD"
+    hoja_gold_master: H24_SAT-IV
+    umbral: "inversión ≥ 65% del presupuesto"
+    estado_2026-07-23: sin_senal
+    cno: CNO-IV-001   # VERIFICADA hoy — mismo 65% que la Disposición Transitoria Primera COOTAD-2026
+    nota: "Único caso con cadena normativa completa: CE Art.271 → COOTAD Art.192 → COOTAD-2026 Art.198.1-198.6 + Disp. Transitoria (34/34 SHA verificados, OBS-012)."
+
+fuentes:
+  - {id: eSIGEF,      origen: "Gold Master H07",  descripcion: "Cédula presupuestaria — ejecución (=CD-06 d07, reuso)"}
+  - {id: FondosExternos, origen: "Gold Master H20c", descripcion: "Convenios de cooperación (concursables, donación, cooperación)"}
+
+municipio_molde: MCR-001

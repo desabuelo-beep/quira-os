@@ -32,6 +32,7 @@
 | **Quién razona vs quién solo calcula** (organigrama de agentes IA) | `docs/architecture/META_CATALOGO_AGENTES.md` | IA=juicio/API · Determinístico=lectura fija, gratis |
 | **Cómo se implementa el pipeline de un DOM** (código) | `app/agents/d0X/` — importa `app/agents/_template/` (genérico), nunca lo duplica | la forma; NUNCA recalcula el Gold Master |
 | **Qué ES la cadena de d01** (eslabones BRN, RO, fuentes, métricas) | `data/d01/catalogo_d01_v1.0.0.yaml` (SSoT) | Neo4j deriva de aquí, nunca al revés |
+| **Qué ES d02** (4 capacidades, 3 señales SAT, cadena BRN) | `data/d02/catalogo_d02_v1.0.0.yaml` (SSoT) — motor real: `scripts/enrich_presupuesto.py` | Neo4j deriva de aquí; el enricher YA existía, no se reimplementó |
 
 ## 1.A · Stack de Descripción de QUIRA (Marco Fundacional + 3 niveles anidados — aquí se responde "¿6 o 7 capas?")
 
