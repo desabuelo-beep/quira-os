@@ -11,6 +11,11 @@
 #
 # ESTADO: VIGENTE — aprobada formalmente por Javo el 2026-07-20 (ADR-035 §5 · molde §3b).
 # Tercera CNO conforme al contrato BRN v2.1, incorporada con Infrastructure diff = 0.
+#
+# CORREGIDO 2026-07-23 (auditoría integral): los 7 SHA256 quedaron obsoletos tras el
+# reemplazo del Corpus v1.0 el 2026-07-21 (aprobación 07-20, un día antes). Recalculados
+# contra el corpus vigente, contenido verificado sin cambios. Backup:
+# data/backups/brn_pre_correccion_sha_20260723/.
 # ═══════════════════════════════════════════════════════════════════════════════
 id: CNO-IX-001
 version: "1.0"
@@ -25,7 +30,7 @@ cadena:
   - rol: fundamento_constitucional
     norma: CE
     articulo: "100"
-    sha256: a2ee651aa41b
+    sha256: 8282b964440e
     sumilla: "instancias de participación en todos los niveles de gobierno"
 
   - rol: fundamento_control
@@ -37,7 +42,7 @@ cadena:
   - rol: definicion
     norma: LOPC
     articulo: "89"
-    sha256: d3e1686814de
+    sha256: 086fc826f996
     sumilla: "definición: la rendición de cuentas como proceso participativo y obligatorio"
 
   - rol: sujetos_obligados
@@ -49,25 +54,25 @@ cadena:
   - rol: objetivos
     norma: LOPC
     articulo: "91"
-    sha256: e15fda6c996c
+    sha256: 79733cc71e4f
     sumilla: "objetivos de la rendición de cuentas"
 
   - rol: alcance_programatico
     norma: LOPC
     articulo: "93"
-    sha256: a8c2e19406b1
+    sha256: 871a7da338fe
     sumilla: "nivel programático y operativo sobre el que se rinde cuentas"
 
   - rol: contenido_minimo
     norma: RES-CPCCS-RC-2026
     articulo: "10"
-    sha256: c42af183a03c
+    sha256: 835f120780a9
     sumilla: "contenido mínimo obligatorio del informe de rendición de cuentas"
 
   - rol: sujeto_gad
     norma: RES-CPCCS-RC-2026
     articulo: "13"
-    sha256: 8acba6e937f8
+    sha256: c2456d489297
     sumilla: "reglas específicas para los Gobiernos Autónomos Descentralizados"
 
   - rol: deliberacion_publica
@@ -79,7 +84,7 @@ cadena:
   - rol: consecuencia
     norma: RES-CPCCS-RC-2026
     articulo: "21"
-    sha256: 867833dc5f90
+    sha256: 9c5c442d147a
     sumilla: "entrega de informes incumplidos de períodos fiscales anteriores"
 
 # ── Estado y ciclo de vida ────────────────────────────────────────────────────────

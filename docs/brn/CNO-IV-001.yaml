@@ -6,6 +6,13 @@
 # toda la cadena. Molde: docs/architecture/BRN_CICLO_VIDA_Y_MOLDE.md (Parte II).
 #
 # ESTADO: VIGENTE — ratificada por Javo el 2026-07-18 (ADR-035 §5). Primera CNO promovida.
+#
+# CORREGIDO 2026-07-23 (auditoría integral): los 5 SHA256 (192, 198.1, 198.2, 198.6,
+# Disposición Transitoria) quedaron obsoletos tras el reemplazo del Corpus v1.0 el
+# 2026-07-21 (ratificación 07-18, un día antes) — recalculados contra el corpus vigente,
+# CONTENIDO VERIFICADO SIN CAMBIOS (el chunker etiquetó el bloque bajo "Art. 4"/"Art. 5"
+# de la ley reformatoria, límite conocido v1.1 ya documentado en CORPUS_v1.0_CIERRE.md;
+# el texto legal sí está íntegro). Backup: data/backups/brn_pre_correccion_sha_20260723/.
 # ═══════════════════════════════════════════════════════════════════════════════
 id: CNO-IV-001
 version: "1.0"                    # objeto canónico (colega · 2026-07-18)
@@ -26,14 +33,14 @@ cadena:
   - rol: fundamento_legal_base
     norma: COOTAD
     articulo: "192"
-    sha256: 42e8c07e33cb
+    sha256: d5d1431a8a38
     sumilla: "Monto total a transferir — 21% de ingresos permanentes + 10% de los no permanentes"
     reformado_por: COOTAD-2026 (Art. 3 sustituye el primer inciso)
 
   - rol: regla
     norma: COOTAD-2026
     articulo: "198.1"
-    sha256: 66255f1d914d
+    sha256: bbe4c79ad522
     sumilla: >-
       Regla de asignación mínima prioritaria — al menos el 70% del presupuesto
       codificado de egresos no financieros a gasto no permanente de inversión,
@@ -42,19 +49,19 @@ cadena:
   - rol: gasto_computable
     norma: COOTAD-2026
     articulo: "198.2"
-    sha256: ab87de75fc43
+    sha256: fb68a4b54330
     sumilla: "Determinación del gasto computable para el cumplimiento de la regla"
 
   - rol: consecuencia
     norma: COOTAD-2026
     articulo: "198.6"
-    sha256: e885aa007ee9
+    sha256: 7c01b48dce14
     sumilla: "Incumplimiento de la regla → se informa a la Contraloría General del Estado"
 
   - rol: disposicion_transitoria
     norma: COOTAD-2026
     articulo: "Disposición Transitoria Primera"
-    sha256: e885aa007ee9
+    sha256: b5d7a5aab557
     sumilla: >-
       piso inicial del 65% con seguimiento del ente rector a partir del 1-dic-2026,
       sobre el presupuesto codificado al 31-dic-2026.

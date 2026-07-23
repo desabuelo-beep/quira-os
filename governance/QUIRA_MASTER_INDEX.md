@@ -26,6 +26,12 @@
 | **Una decisión de arquitectura** | `docs/adr/ADR-NNN` (cronológico) | el porqué de cada decisión |
 | **Principios · invariantes · reglas de oro** | `CLAUDE.md` + `BOOT.md §Reglas de Oro` + Atlas §invariantes | los axiomas inviolables |
 | **Compilador · CID · desexcelización** | `ADR-028` (Compilador+CID) · `ADR-029` (Modelo Canónico) | la Vía Sistema (Dylus) |
+| **Qué ES un CD / evaluación en d07** (unidad de medición, no numeral de ley) | `docs/architecture/CATALOGO_CANONICO_CD_D07.md` v1.0.0 (SSoT) | el catálogo · deriva Excel/Neo4j/JSON, nunca al revés |
+| **Cómo se califica LOTAIP** (algoritmo SITA, CTA/ETA/RP/CI) | `docs/architecture/METODOLOGIA_D07_CUMPLIMIENTO_LOTAIP.md` | estándar oficial DPE reconstruido, no inventado |
+| **Memoria operacional entre dominios** (grafo compartido, no solo circuitos) | Neo4j AuraDB `8dc8519a` + `scripts/cypher/00N_*.cypher` | evidencia reutilizada (`MISMA_FUENTE_QUE`), nunca re-extraída |
+| **Quién razona vs quién solo calcula** (organigrama de agentes IA) | `docs/architecture/META_CATALOGO_AGENTES.md` | IA=juicio/API · Determinístico=lectura fija, gratis |
+| **Cómo se implementa el pipeline de un DOM** (código) | `app/agents/d0X/` — importa `app/agents/_template/` (genérico), nunca lo duplica | la forma; NUNCA recalcula el Gold Master |
+| **Qué ES la cadena de d01** (eslabones BRN, RO, fuentes, métricas) | `data/d01/catalogo_d01_v1.0.0.yaml` (SSoT) | Neo4j deriva de aquí, nunca al revés |
 
 ## 1.A · Stack de Descripción de QUIRA (Marco Fundacional + 3 niveles anidados — aquí se responde "¿6 o 7 capas?")
 

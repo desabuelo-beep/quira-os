@@ -27,17 +27,16 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO y halla las B
 la Doctrina permanece. Hoja de Ruta = el mapa que no se mueve. BOOT §AHORA = el paso actual.
 
 ## AHORA (estado vivo · historial → `governance/historico/BOOT_2026-06-17.md`)
-**CENTRO DE INTELIGENCIA TERRITORIAL · 2026-07-01.** QUIRA preventiva. Excel=Canon INVISIBLE.
 ✅ **P1/P2:** kernel `umi.py`+`qinv.py` · **QINV-001 nivel BI** · QINV-006 · d03=72.73.
-🔧 **Backbone:** PDOT 25 metas · POA 257 proy $39.3M · Presup $45.98M · PAC $29.85M.
 🔌 **MCD Planif · 7 cables ✅:** Excel·SERCOP·Relacional·Normativo·IA·Visual·Memoria.
 🧭 **ADR-031 RATIF:** cajón=MCD · GoldMaster=MCM · MCIP 5 motores (Index §1.A).
-🔑 **AUDIT 18-jul:** COOTAD-2026 70%/piso65% dic-2026 · d03 COPLAFIP41-42 · PDOT 67 metas=25 muestreo · firewall.
-🏛️ **d03 Mandato ELECTORAL CERRADO✓ (PCD-D03)** — canon CURADO: 76 promesas reales (antes 66, 46 falsas). Coherente=True · fidelidad 79.3% · centinela ✅ · ICPI intacto. Doctrina: **IFE unidireccional** (meta sin promesa = normal, Art.264) · **la cocina NO va al DOM** (Regla 2) · **el DOM cura el canon** (Regla 8).
+🔑 **AUDIT 18-jul:** COOTAD-2026 70%/piso65% dic-2026 · d03 COPLAFIP41-42.
+🏛️ **d03 Mandato ELECTORAL CERRADO✓ (PCD-D03)** — 76 promesas reales · fidelidad 79.3% · centinela ✅.
 ✅ **4 DOM cerrados con PCD: d01·d02·d03·d09** (molde d01: dictamen + qc-ev + fundamento jurídico).
 📚 **ADR-038 BRN v2 RATIF:** nodo = REGLA, no artículo. 4 niveles **Corpus→CNO(Derecho)→RO(lógica)→SAT**. BRN = CAPA (no cajón) que CONSOLIDA (no interpreta). **Corpus v1.0 CONGELADO** (43 docs·9158 chunks·grafo cerrado·`parser-v1.0`; v1.1=refs cruzadas). **BRN v2.1**: d01+d02+d03+d09 CONFORMES·5 RO·suite 12✓·diff=0.
-🩺 **Canon curado por el DOM (Regla 8):** H03 rótulo `Suma_Score_Vinculación` (48≠conteo) + conteo 64 aparte + B10 ya es fórmula + col G `Estado_Verificación`. ICPI intacto · centinela ✅. **Gate real = `python scripts/ci/check_health.py` (BOOT≤6000·CLAUDE≤4000): NO adivinar.**
+🩺 **Canon curado por el DOM (Regla 8), ICPI intacto · centinela ✅. Gate real = `python scripts/ci/check_health.py` (BOOT≤6000·CLAUDE≤4000): NO adivinar.**
 📚 **ADR-035/037 (RATIF):** Ley→BRN→GoldMaster(único motor)→QUIRA · IA propone, humano valida. Frame: Gobierno(página propia)·Territorio·Inteligencia·Norma(BRN).
+🏛️ **AUDITORÍA INTEGRAL BRN 2026-07-23 (OBS-012):** 26/34 SHA256 BRN obsoletos (corpus reemplazado 1 día post-ratif.) — **corregidos 34/34**. **CE Art.241 (fundamento d01) perdido** — recuperado, Corpus **v1.0.1**. d07+d01 IMPORTAN `_template`. Eval **MENSUAL** (EvaluationID). Neo4j `8dc8519a`. Migrar d02/03/09: 1º ver si GM ya calcula. **Fase4/Haiku=pausa**.
 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 ratificado · detalle en el ADR)
 GAD = sujeto observado, NO cliente. 4 capas: A Núcleo (motor·grafos·conectores·índices) · B Operaciones (Dylus) · C Productos (Institucional·Ciudadana·Impact·Economic·Cooperación · 1 motor) · D Portal `quiraintelligence.com` (radar 221 GAD). Montecristi = Municipio 001.
@@ -59,6 +58,7 @@ no redefinas · al cierre `/graphify . --update`) · **no congelar teoría antes
 | Tocar el grafo Neo4j | `docs/adr/ADR-017` + `ADR-018` |
 | Clasificar documentos | `docs/adr/ADR-021` + `docs/architecture/CANONICAL_CHUNK_SCHEMA.md` |
 | Hallazgos territoriales | `docs/observations/OBS-005/006/008/009` |
+| Retomar d07 Transparencia | `docs/architecture/CATALOGO_CANONICO_CD_D07.md` + `METODOLOGIA_D07_CUMPLIMIENTO_LOTAIP.md` + `app/agents/d07/` |
 | Estado histórico completo (snapshot) | `governance/historico/QUIRA_STATE_2026-06-03.md` |
 
 ## INFRA (credenciales en `.streamlit/secrets.toml` local, NUNCA al repo)

@@ -1,0 +1,74 @@
+# Catálogo Canónico d01 — Planificación Estratégica
+# Fuente única de verdad para: Excel(referencia)/Neo4j/pipeline (Regla 9).
+# Extraído 2026-07-23 de docs/brn/CNO-I-001.yaml + RO-I-001.yaml + RO-I-002.yaml
+# (verificados, no inventados) — antes vivía inline en un script de generación
+# del cypher; se corrige para que Neo4j derive de aquí, no al revés.
+catalogo: CATALOGO_D01_PLANIFICACION
+version: "1.0.0"
+dominio: d01
+cno: CNO-I-001
+
+eslabones:
+  - {orden: 1, rol: fundamento_constitucional,        norma: CE,       articulo: "241", sha256: c4565a2cab21, sumilla: "la planificación garantizará el ordenamiento territorial y será obligatoria"}
+  - {orden: 2, rol: articulacion_nacional,             norma: CE,       articulo: "280", sha256: f78ab0db6e71, sumilla: "el Plan Nacional de Desarrollo como instrumento al que se sujeta la planificación"}
+  - {orden: 3, rol: competencia,                       norma: COPLAFIP, articulo: "12",  sha256: ee8ddf2a336e, sumilla: "la planificación del desarrollo y el OT es competencia del GAD"}
+  - {orden: 4, rol: ordenamiento_territorial,          norma: COPLAFIP, articulo: "44",  sha256: d8f56a1d3206, sumilla: "disposiciones generales sobre los planes de OT de los GAD"}
+  - {orden: 5, rol: programacion_operativa_plazo,      norma: COOTAD,   articulo: "233", sha256: 1522597f54b1, sumilla: "plazo: programación operativa antes del 10 de septiembre"}
+  - {orden: 6, rol: programacion_operativa_contenido,  norma: COOTAD,   articulo: "234", sha256: 236c87c6b3f9, sumilla: "cada POA debe contener las metas del plan de desarrollo"}
+  - {orden: 7, rol: sujecion_presupuestaria,           norma: COOTAD,   articulo: "215", sha256: a34ebad6963c, sumilla: "el presupuesto del GAD se ajusta a los planes de desarrollo"}
+  - {orden: 8, rol: aprobacion,                        norma: COOTAD,   articulo: "245", sha256: 78317417e719, sumilla: "aprobación del presupuesto por el legislativo del GAD"}
+  - {orden: 9, rol: contratacion,                      norma: LOSNCP,   articulo: "22",  sha256: 1d6c1b3ae153, sumilla: "el PAC se formula conforme al plan y al presupuesto"}
+
+normas:
+  CE:       {nombre: "Constitución de la República del Ecuador", tipo: constitucion, jerarquia: 1}
+  COPLAFIP: {nombre: "Código Orgánico de Planificación y Finanzas Públicas", tipo: codigo, jerarquia: 2}
+  COOTAD:   {nombre: "Código Orgánico de Organización Territorial, Autonomía y Descentralización", tipo: codigo, jerarquia: 2}
+  LOSNCP:   {nombre: "Ley Orgánica del Sistema Nacional de Contratación Pública", tipo: ley_organica, jerarquia: 1}
+
+reglas_operativas:
+  - id: RO-I-001
+    metrica: Pct_Metas_Con_Programacion
+    umbral: 100
+    frecuencia: anual
+    consume: SAT-I-001
+    descripcion: "articulación plan → programación operativa"
+    criterios: [meta_con_proyecto, dotacion_asignada, responsable_definido]
+  - id: RO-I-002
+    metrica: Pct_Coherencia_Programacion_Contratacion
+    umbral: 100
+    frecuencia: anual
+    consume: SAT-I-002
+    descripcion: "articulación programación operativa → contratación"
+    criterios: [linea_en_pac, partida_coincidente, publicacion_portal]
+
+fuentes:
+  - {id: PDOT,        origen: web_GAD,                  descripcion: "Plan de Desarrollo y Ordenamiento Territorial"}
+  - {id: POA,         origen: web_GAD,                  descripcion: "Plan Operativo Anual"}
+  - {id: PAC,         origen: "portal_SERCOP / web_GAD", descripcion: "Plan Anual de Contratación"}
+  - {id: Presupuesto, origen: portal_transparencia_DPE,  descripcion: "Cédula presupuestaria", reuso_de: CD-06}
+  - {id: SERCOP,      origen: portal_compras_publicas,   descripcion: "Contratación real ejecutada"}
+  - {id: eSIGEF,      origen: "transparencia / informe",  descripcion: "Devengado de ejecución"}
+
+articula:
+  - [PDOT, POA]
+  - [POA, PAC]
+  - [PAC, SERCOP]
+  - [POA, Presupuesto]
+
+metricas:
+  - id: IPE
+    nombre: "Índice de Planificación Estratégica (ejecutado)"
+    valor_ref: 95.6
+    hoja_gold_master: H16b_IPE
+    celda: B15
+    deriva_de: "H12!B33 (ICPI, INMUTABLE)"
+    naturaleza: "se LEE, no se recalcula (Regla 1/4)"
+  - id: Cobertura_Metas_POA
+    nombre: "Cobertura de metas del PDOT en el POA"
+    valor_ref: 96.0
+    hoja_gold_master: H16b_IPE
+    celda: B12
+    deriva_de: "H12!B33 (ICPI, INMUTABLE)"
+    naturaleza: "se LEE, no se recalcula (Regla 1/4)"
+
+municipio_molde: MCR-001

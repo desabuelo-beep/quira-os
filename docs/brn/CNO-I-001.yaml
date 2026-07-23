@@ -9,6 +9,12 @@
 # CNO/RO completa su CAPA NORMATIVA — la BRN es una capa del dominio, no el dominio entero.
 #
 # ESTADO: VIGENTE — aprobada formalmente por Javo el 2026-07-20 (ADR-035 §5).
+#
+# CORREGIDO 2026-07-23 (auditoría integral): los 7 SHA256 quedaron obsoletos tras el
+# reemplazo del Corpus v1.0 el 2026-07-21 (aprobación 07-20, un día antes). Recalculados
+# contra el corpus vigente. CE Art.241 (fundamento_constitucional) estaba genuinamente
+# PERDIDO del corpus (no solo mal indexado) — recuperado y re-ingerido (id=22931), ver
+# OBS-012. Backup: data/backups/brn_pre_correccion_sha_20260723/.
 # ═══════════════════════════════════════════════════════════════════════════════
 id: CNO-I-001
 version: "1.0"
@@ -24,19 +30,19 @@ cadena:
   - rol: fundamento_constitucional
     norma: CE
     articulo: "241"
-    sha256: da13d3789caa
+    sha256: c4565a2cab21
     sumilla: "la planificación garantizará el ordenamiento territorial y será obligatoria"
 
   - rol: articulacion_nacional
     norma: CE
     articulo: "280"
-    sha256: 5d25f2ee7268
+    sha256: f78ab0db6e71
     sumilla: "el Plan Nacional de Desarrollo como instrumento al que se sujeta la planificación"
 
   - rol: competencia
     norma: COPLAFIP
     articulo: "12"
-    sha256: 916241847fcb
+    sha256: ee8ddf2a336e
     sumilla: "la planificación del desarrollo y el ordenamiento territorial es competencia del GAD"
 
   - rol: ordenamiento_territorial
@@ -48,19 +54,19 @@ cadena:
   - rol: programacion_operativa_plazo
     norma: COOTAD
     articulo: "233"
-    sha256: 96e3b77f48fc
+    sha256: 1522597f54b1
     sumilla: "plazo: las dependencias preparan su programación operativa antes del 10 de septiembre"
 
   - rol: programacion_operativa_contenido
     norma: COOTAD
     articulo: "234"
-    sha256: 6837117fda64
+    sha256: 236c87c6b3f9
     sumilla: "contenido: cada plan operativo anual debe contener las metas del plan de desarrollo"
 
   - rol: sujecion_presupuestaria
     norma: COOTAD
     articulo: "215"
-    sha256: 60f89aebd7b3
+    sha256: a34ebad6963c
     sumilla: "el presupuesto del GAD se ajusta a los planes de desarrollo"
 
   - rol: aprobacion
@@ -72,7 +78,7 @@ cadena:
   - rol: contratacion
     norma: LOSNCP
     articulo: "22"
-    sha256: 054779c8e813
+    sha256: 1d6c1b3ae153
     sumilla: "el Plan Anual de Contratación se formula conforme al plan y al presupuesto"
 
 # ── Estado y ciclo de vida ────────────────────────────────────────────────────────

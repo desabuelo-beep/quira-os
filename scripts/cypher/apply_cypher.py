@@ -9,7 +9,7 @@ USO:
 
 PRERREQUISITO:
     AuraDB debe estar activo (no pausado).
-    Reanudar en: https://console.neo4j.io → instancia 6c134c35 → Resume
+    Reanudar en: https://console.neo4j.io → instancia 8dc8519a → Resume
 
 NOTA:
     Si AuraDB está pausado, el script falla con ServiceUnavailable.
@@ -94,7 +94,7 @@ def apply_cypher_file(filepath: str, dry_run: bool = False) -> dict:
         logger.error(
             f"No se pudo conectar a AuraDB: {e}\n"
             f"  → Reanudar instancia en https://console.neo4j.io\n"
-            f"  → Instancia: 6c134c35 → Resume"
+            f"  → Instancia: 8dc8519a → Resume"
         )
         return {"ok": 0, "errores": 1, "mensajes": [str(e)]}
 

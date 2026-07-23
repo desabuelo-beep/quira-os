@@ -99,6 +99,11 @@ MANIFEST: list[dict] = [
         "circuit_refs":     ["C01"],
     },
     {
+        # HISTÓRICA — verificado en corpus (id=14565/14567, SHA en Supabase): se funda en
+        # Resolución 007-DPE-CGAJ y en la LOTAIP original (RO 34, 18-may-2004), anteriores a
+        # la reforma LOTAIP vigente (RO 245, 7-feb-2023) y a la Resolución 019-DPE-CGAJ-2024
+        # que rige hoy (ver GUIA-LOTAIP-MEC). No se borra (preserva evidencia histórica);
+        # se marca no vigente para que ningún ACK la cite como fuente de obligación actual.
         "archivo":          "LOTAIP - guia-para-el-cumplimiento-entidades-obligadas-LOTAIP.docx",
         "sigla":            "GUIA-LOTAIP-ENT",
         "nombre":           "Guía para el Cumplimiento de Entidades Obligadas — LOTAIP",
@@ -106,7 +111,12 @@ MANIFEST: list[dict] = [
         "milestone":        "F0.2",
         "tipo":             "guia",
         "dominios":         ["Dom07"],
-        "vigente":          True,
+        "vigente":          False,
+        "estado_normativo": {
+            "vigente":          False,
+            "valor_documental": "historico",
+            "reemplazada_por":  ["GUIA-LOTAIP-MEC"],
+        },
         "document_class":   "METODOLOGIA",
         "authority_level":  55,
         "source_entity":    "SNP",
