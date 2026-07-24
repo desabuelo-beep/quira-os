@@ -62,9 +62,17 @@ instancias:
         JERARQUÍA NORMATIVA (Javo · 2026-07-24): la estructura del Sistema de PC está normada en
         la LEY (LOPC 64/65 · CE 100 · COOTAD 304); la ordenanza municipal la REPLICA íntegra por
         mandato — la Ley está sobre la ordenanza. QUIRA evalúa el Sistema contra la estructura
-        LEGAL (verificada, universal a los 222 GAD), SIN depender de la ordenanza específica de
-        Montecristi. No tener el documento de la ordenanza NO impide evaluar el Sistema: su
-        estructura exigible es la de la Ley (verificada, SHA256) y sus mecanismos operan (evidencia).
+        LEGAL (verificada, universal a los 222 GAD), SIN depender de la ordenanza específica.
+        EVIDENCIA LOCAL AÑADIDA (PDOT · 2026-07-24): el PDOT de Montecristi (corpus, SHA verificado)
+        DOCUMENTA la conformación del sistema — Tabla 202 (pág. 295-299) cita 3 ordenanzas: (1) del
+        Sistema de Participación + Transparencia + Consejo de Planificación (sha 48b09357576b),
+        (2) del Derecho de Participación por Silla Vacía, (3) Reformada de la Asamblea Ciudadana.
+        El acto normativo NO solo se presume por mandato: está documentado localmente.
+      evidencia_local_pdot:
+        fuente: "PDOT-MONTECRISTI / PLAN-BICENTENARIO-MCR (corpus) · Tabla 202 · pág. 295-299 y 432"
+        sha_ancla: "48b09357576b"
+        ordenanzas_citadas: ["Sistema de Participación+Transparencia+Consejo Planificación", "Silla Vacía", "Asamblea Ciudadana (reformada)"]
+        instancias_declaradas: ["Asamblea Ciudadana", "Silla vacía", "Asamblea sectorial", "Cabildos populares", "Rendición de Cuentas"]
   - cno: CNO-VIII-002
     mecanismo: asamblea_ciudadana
     tipo: organo_representacion_ciudadano_autonomo    # NO administrativo del GAD
@@ -129,13 +137,16 @@ instancias:
     mecanismo: silla_vacia
     tipo: mecanismo
     evidencia:
-      estado: pendiente_adquisicion              # actas de concejo — Javo intentará conseguir 2025
-      esperada: "actas de sesiones del Concejo del GAD (donde consta la silla vacía)"
+      estado: normada_operacion_no_evidenciada    # la ordenanza existe (PDOT); su OPERACIÓN (actas) no consta
+      acreditacion: normada_sin_operacion
+      esperada: "actas de sesiones del Concejo del GAD (donde constaría la ocupación de la silla)"
       nota: >-
-        Las actas de sesión del Concejo no están disponibles hoy; Javo intentará conseguir al
-        menos 2025. NOTA ESTRATÉGICA (Javo): estas actas son una VETA MAYOR para QUIRA — de las
-        sesiones del Concejo emana gran parte de la operatividad del GAD, no solo la silla vacía.
-        Cruzarlas es un workstream futuro grande ("colosal"), fuera del alcance de d08 hoy.
+        NORMADA localmente: el PDOT cita la "Ordenanza que regula el Derecho de Participación por
+        Silla Vacía en las Sesiones del GAD Municipal de Montecristi" — el mecanismo está reglado
+        y su norma verificada en el corpus. Lo que NO consta es su OPERACIÓN: si la silla se ocupó
+        en las sesiones. Esa evidencia son las actas de sesión del Concejo, no disponibles hoy
+        (Javo intentará 2025). Esas actas son la VETA del workstream futuro "Gobernanza
+        Deliberativa del Concejo" — de ellas emana gran parte de la operatividad del GAD; fuera de d08.
 
 # ── Clasificación documental canónica (tabla del asesor + terreno de Javo · 2026-07-23) ──
 clasificacion_documental:
