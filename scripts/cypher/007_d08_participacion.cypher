@@ -66,11 +66,16 @@ SET a.norma = 'LOPC', a.articulo = '64', a.sha256 = '9490de910d1a',
     a.rol = 'instancia_local', a.sumilla = 'instancia de participación ciudadana a nivel local: elaborar planes y políticas entre gobierno y ciudadanía', a.updated_at = datetime();
 MATCH (a:Articulo {id:'LOPC_64'}), (n:Norma {sigla:'LOPC'}) MERGE (a)-[:PARTE_DE]->(n);
 MATCH (a:Articulo {id:'LOPC_64'}), (c:CNO {id:'CNO-VIII-001'}) MERGE (a)-[:ESLABON_DE {orden: 2}]->(c);
+MERGE (a:Articulo {id: 'LOPC_65'})
+SET a.norma = 'LOPC', a.articulo = '65', a.sha256 = 'a1302c84530e',
+    a.rol = 'estructura_composicion', a.sumilla = 'composición y convocatoria de las instancias de participación local: autoridades electas + régimen dependiente + representantes de la sociedad — la estructura LEGAL que la ordenanza municipal replica', a.updated_at = datetime();
+MATCH (a:Articulo {id:'LOPC_65'}), (n:Norma {sigla:'LOPC'}) MERGE (a)-[:PARTE_DE]->(n);
+MATCH (a:Articulo {id:'LOPC_65'}), (c:CNO {id:'CNO-VIII-001'}) MERGE (a)-[:ESLABON_DE {orden: 3}]->(c);
 MERGE (a:Articulo {id: 'COOTAD_312'})
 SET a.norma = 'COOTAD', a.articulo = '312', a.sha256 = '2ed574a48921',
     a.rol = 'consecuencia_sancion', a.sumilla = 'sanción: el incumplimiento de las disposiciones de participación ciudadana genera responsabilidades y sanciones a las autoridades del GAD', a.updated_at = datetime();
 MATCH (a:Articulo {id:'COOTAD_312'}), (n:Norma {sigla:'COOTAD'}) MERGE (a)-[:PARTE_DE]->(n);
-MATCH (a:Articulo {id:'COOTAD_312'}), (c:CNO {id:'CNO-VIII-001'}) MERGE (a)-[:ESLABON_DE {orden: 3}]->(c);
+MATCH (a:Articulo {id:'COOTAD_312'}), (c:CNO {id:'CNO-VIII-001'}) MERGE (a)-[:ESLABON_DE {orden: 4}]->(c);
 
 MERGE (c:CNO {id: 'CNO-VIII-002'})
 SET c.titulo = 'Asamblea Ciudadana Cantonal', c.tipo = 'operativa', c.mecanismo = 'asamblea_ciudadana',
@@ -86,21 +91,26 @@ SET a.norma = 'LOPC', a.articulo = '57', a.sha256 = '0366370fb8ac',
     a.rol = 'composicion_diversidad', a.sumilla = 'composición de las asambleas locales: pluralidad, identidades territoriales, equidad de género y generacional', a.updated_at = datetime();
 MATCH (a:Articulo {id:'LOPC_57'}), (n:Norma {sigla:'LOPC'}) MERGE (a)-[:PARTE_DE]->(n);
 MATCH (a:Articulo {id:'LOPC_57'}), (c:CNO {id:'CNO-VIII-002'}) MERGE (a)-[:ESLABON_DE {orden: 2}]->(c);
+MERGE (a:Articulo {id: 'LOPC_58'})
+SET a.norma = 'LOPC', a.articulo = '58', a.sha256 = 'ce1103859360',
+    a.rol = 'autonomia_estatutos', a.sumilla = 'funcionamiento de las asambleas: democracia, equidad, alternabilidad — SE REGULAN POR SUS PROPIOS ESTATUTOS (fundamento legal verificado de la autonomía de la ACC ante el GAD)', a.updated_at = datetime();
+MATCH (a:Articulo {id:'LOPC_58'}), (n:Norma {sigla:'LOPC'}) MERGE (a)-[:PARTE_DE]->(n);
+MATCH (a:Articulo {id:'LOPC_58'}), (c:CNO {id:'CNO-VIII-002'}) MERGE (a)-[:ESLABON_DE {orden: 3}]->(c);
 MERGE (a:Articulo {id: 'LOPC_61'})
 SET a.norma = 'LOPC', a.articulo = '61', a.sha256 = 'd1d0e67b3aec',
     a.rol = 'interrelacion_cantonal', a.sumilla = 'interrelación entre asambleas de diversos niveles territoriales (cantonales, provinciales, regionales)', a.updated_at = datetime();
 MATCH (a:Articulo {id:'LOPC_61'}), (n:Norma {sigla:'LOPC'}) MERGE (a)-[:PARTE_DE]->(n);
-MATCH (a:Articulo {id:'LOPC_61'}), (c:CNO {id:'CNO-VIII-002'}) MERGE (a)-[:ESLABON_DE {orden: 3}]->(c);
+MATCH (a:Articulo {id:'LOPC_61'}), (c:CNO {id:'CNO-VIII-002'}) MERGE (a)-[:ESLABON_DE {orden: 4}]->(c);
 MERGE (a:Articulo {id: 'COOTAD_306'})
 SET a.norma = 'COOTAD', a.articulo = '306', a.sha256 = '349beae574ee',
     a.rol = 'unidad_basica_territorial', a.sumilla = 'barrios y parroquias urbanas como unidades básicas de participación — consejos barriales como órganos de representación comunitaria articulados al sistema', a.updated_at = datetime();
 MATCH (a:Articulo {id:'COOTAD_306'}), (n:Norma {sigla:'COOTAD'}) MERGE (a)-[:PARTE_DE]->(n);
-MATCH (a:Articulo {id:'COOTAD_306'}), (c:CNO {id:'CNO-VIII-002'}) MERGE (a)-[:ESLABON_DE {orden: 4}]->(c);
+MATCH (a:Articulo {id:'COOTAD_306'}), (c:CNO {id:'CNO-VIII-002'}) MERGE (a)-[:ESLABON_DE {orden: 5}]->(c);
 MERGE (a:Articulo {id: 'COOTAD_307'})
 SET a.norma = 'COOTAD', a.articulo = '307', a.sha256 = '600dc6063347',
     a.rol = 'funciones_representacion', a.sumilla = 'funciones de los consejos barriales y parroquiales: representar a la ciudadanía del territorio y ejercer control social', a.updated_at = datetime();
 MATCH (a:Articulo {id:'COOTAD_307'}), (n:Norma {sigla:'COOTAD'}) MERGE (a)-[:PARTE_DE]->(n);
-MATCH (a:Articulo {id:'COOTAD_307'}), (c:CNO {id:'CNO-VIII-002'}) MERGE (a)-[:ESLABON_DE {orden: 5}]->(c);
+MATCH (a:Articulo {id:'COOTAD_307'}), (c:CNO {id:'CNO-VIII-002'}) MERGE (a)-[:ESLABON_DE {orden: 6}]->(c);
 
 MERGE (c:CNO {id: 'CNO-VIII-003'})
 SET c.titulo = 'Consejo de Planificación', c.tipo = 'operativa', c.mecanismo = 'consejo_planificacion',

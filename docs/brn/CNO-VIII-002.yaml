@@ -50,6 +50,11 @@ cadena:
     articulo: "57"
     sha256: 0366370fb8ac
     sumilla: "composición de las asambleas locales: pluralidad, identidades territoriales, equidad de género y generacional"
+  - rol: autonomia_estatutos
+    norma: LOPC
+    articulo: "58"
+    sha256: ce1103859360
+    sumilla: "funcionamiento de las asambleas: democracia, equidad, alternabilidad — SE REGULAN POR SUS PROPIOS ESTATUTOS (fundamento legal verificado de la autonomía de la ACC ante el GAD)"
   - rol: interrelacion_cantonal
     norma: LOPC
     articulo: "61"

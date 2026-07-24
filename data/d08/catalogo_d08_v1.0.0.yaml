@@ -56,13 +56,15 @@ instancias:
     mecanismo: sistema_cantonal
     tipo: estructura_permanente
     evidencia:
-      estado: existe_documento_no_accesible     # confirmado por Javo (terreno) — NO es hallazgo negativo
-      esperada: "ordenanza que conforma el Sistema de Participación (COOTAD 304)"
+      estado: estructura_verificable_por_ley     # la estructura la da la Ley; la ordenanza la replica (Javo 2026-07-24)
+      acreditacion: acreditada                    # estructura legal verificada (LOPC 64/65) + mecanismos operando (evidencia)
       nota: >-
-        El GAD SÍ tiene el Sistema Cantonal (ordenanza) — confirmado por Javo. La ordenanza
-        específica no es accesible hoy, pero su estructura está dada por la ley (LOPC/COOTAD,
-        verificada en el corpus) y las ordenanzas cantonales la replican. Dato pendiente de
-        acceso al documento, no ausencia del hecho.
+        JERARQUÍA NORMATIVA (Javo · 2026-07-24): la estructura del Sistema de PC está normada en
+        la LEY (LOPC 64/65 · CE 100 · COOTAD 304); la ordenanza municipal la REPLICA íntegra por
+        mandato — la Ley está sobre la ordenanza. QUIRA evalúa el Sistema contra la estructura
+        LEGAL (verificada, universal a los 222 GAD), SIN depender de la ordenanza específica de
+        Montecristi. No tener el documento de la ordenanza NO impide evaluar el Sistema: su
+        estructura exigible es la de la Ley (verificada, SHA256) y sus mecanismos operan (evidencia).
   - cno: CNO-VIII-002
     mecanismo: asamblea_ciudadana
     tipo: organo_representacion_ciudadano_autonomo    # NO administrativo del GAD

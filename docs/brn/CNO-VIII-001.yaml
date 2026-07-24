@@ -9,6 +9,15 @@
 # registra "no se encontró evidencia verificable" + cita COOTAD 312. NO dicta "incumplió/
 # destitución" — esa consecuencia la determina el CPCCS/Contraloría (firewall · Regla 2).
 #
+# JERARQUÍA NORMATIVA (aporte de Javo · 2026-07-24) — clave para los 222 GAD:
+#   La ESTRUCTURA del Sistema de Participación está normada en la LEY (LOPC 64/65 · CE 100 ·
+#   COOTAD 304), igual que el COPLAFIP fija la del Consejo de Planificación. La ordenanza
+#   municipal (COOTAD 304) NO inventa la estructura: la REPLICA íntegra por mandato, porque la
+#   Ley está sobre la ordenanza. Por eso QUIRA evalúa el Sistema contra la ESTRUCTURA LEGAL
+#   —verificada y universal a los 222 GAD— y NO depende de la ordenanza específica de cada
+#   cantón. No tener acceso a la ordenanza de Montecristi NO impide evaluar el Sistema: la
+#   estructura exigible es la de la Ley, que sí está verificada (SHA256) en el corpus.
+#
 # ESTADO: propuesta — verificada contra el corpus (SHA256); ratificación de Javo pendiente.
 # ═══════════════════════════════════════════════════════════════════════════════
 id: CNO-VIII-001
@@ -36,6 +45,11 @@ cadena:
     articulo: "64"
     sha256: 9490de910d1a
     sumilla: "instancia de participación ciudadana a nivel local: elaborar planes y políticas entre gobierno y ciudadanía"
+  - rol: estructura_composicion
+    norma: LOPC
+    articulo: "65"
+    sha256: a1302c84530e
+    sumilla: "composición y convocatoria de las instancias de participación local: autoridades electas + régimen dependiente + representantes de la sociedad — la estructura LEGAL que la ordenanza municipal replica"
   - rol: consecuencia_sancion
     norma: COOTAD
     articulo: "312"

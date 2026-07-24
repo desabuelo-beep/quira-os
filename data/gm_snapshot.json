@@ -8650,7 +8650,7 @@
         "dominio_normativo": "participacion_y_control_social",
         "estado": "propuesta",
         "cadena_integra": true,
-        "n_eslabones": 3,
+        "n_eslabones": 4,
         "cadena": [
           {
             "rol": "sistema_obligatorio",
@@ -8666,6 +8666,14 @@
             "articulo": "64",
             "sumilla": "instancia de participación ciudadana a nivel local: elaborar planes y políticas entre gobierno y ciudadanía",
             "sha256": "9490de910d1a",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "estructura_composicion",
+            "norma": "LOPC",
+            "articulo": "65",
+            "sumilla": "composición y convocatoria de las instancias de participación local: autoridades electas + régimen dependiente + representantes de la sociedad — la estructura LEGAL que la ordenanza municipal replica",
+            "sha256": "a1302c84530e",
             "verificacion": "verificado"
           },
           {
@@ -8690,7 +8698,7 @@
         "dominio_normativo": "participacion_y_control_social",
         "estado": "propuesta",
         "cadena_integra": true,
-        "n_eslabones": 5,
+        "n_eslabones": 6,
         "cadena": [
           {
             "rol": "asamblea_local",
@@ -8706,6 +8714,14 @@
             "articulo": "57",
             "sumilla": "composición de las asambleas locales: pluralidad, identidades territoriales, equidad de género y generacional",
             "sha256": "0366370fb8ac",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "autonomia_estatutos",
+            "norma": "LOPC",
+            "articulo": "58",
+            "sumilla": "funcionamiento de las asambleas: democracia, equidad, alternabilidad — SE REGULAN POR SUS PROPIOS ESTATUTOS (fundamento legal verificado de la autonomía de la ACC ante el GAD)",
+            "sha256": "ce1103859360",
             "verificacion": "verificado"
           },
           {
