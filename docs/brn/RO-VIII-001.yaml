@@ -1,0 +1,47 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# RO-VIII-001 · Regla Operativa · INTEGRIDAD NORMATIVA del Sistema de Participación
+# Primera de las TRES dimensiones de d08 (Javo · 2026-07-23):
+#   1. INTEGRIDAD NORMATIVA  (esta RO)  → ¿existe / se instaló / convocó / documentó / aprobó?
+#   2. Vitalidad democrática (RO-VIII-002) → ¿cuántos participaron / qué diversidad?
+#   3. Efectividad/incidencia (RO-VIII-003) → ¿lo pedido se volvió POA/PAC/presupuesto/obra?
+#
+# ★ CORRECCIÓN (Javo · 2026-07-24 · OBS-016): la versión anterior modelaba 7 SAT
+# (SAT-VIII-001..007, una por mecanismo). ERROR: las SAT no son 1:1 con mecanismos —
+# son señales de alerta del Gold Master (SAT-0..VIII por dimensión TGI), y "SAT-VIII" ya
+# existe en el motor (Equidad Territorial). La verificabilidad documental por instancia
+# NO es una SAT: es el ESTADO DE LA EVIDENCIA. Esta RO evalúa ese estado por CRITERIOS,
+# sin inventar señales. La única SAT de participación en el motor es SAT-VI (Desvío PP),
+# consumida por la dimensión de efectividad (RO-VIII-003), no por esta.
+#
+# LÍMITE (Regla 4): NO recalcula el IGP. Produce la verificabilidad documental que lo sostiene.
+#
+# ESTADO: propuesta — ratificación de Javo pendiente (ADR-035 §5).
+# ═══════════════════════════════════════════════════════════════════════════════
+id: RO-VIII-001
+version: "1.0"
+dimension: integridad_normativa
+deriva_de: CNO-VIII-000 v1.0
+integra: [ CNO-VIII-001, CNO-VIII-002, CNO-VIII-003, CNO-VIII-004, CNO-VIII-005, CNO-VIII-006, CNO-VIII-007 ]
+metrica: { nombre: Integridad_Normativa_Sistema_Participacion, unidad: porcentaje }
+parametros: { umbral_alto: 85, umbral_medio: 60, frecuencia: anual }
+
+# La integridad NO consume SAT: evalúa el estado de la evidencia documental por instancia.
+consume: []
+
+# ── Método · verificación documental, criterios por instancia (NO son señales SAT) ──
+metodo:
+  tipo: verificacion_documental
+  nota: "cada criterio evalúa el ESTADO DE LA EVIDENCIA de una instancia/mecanismo — es verificabilidad, no una señal de alerta del motor (OBS-016)."
+  criterios:
+    - { instancia: sistema_cantonal,        cno: CNO-VIII-001, obligatorio: true,  norma: "COOTAD 304",       descripcion: "existe la ORDENANZA que conforma el sistema de participación" }
+    - { instancia: asamblea_ciudadana,      cno: CNO-VIII-002, obligatorio: true,  norma: "LOPC 56/57 · COOTAD 306", descripcion: "el GAD reconoce/articula la Asamblea (órgano ciudadano autónomo — evidencia indirecta en actas de mecanismos)" }
+    - { instancia: consejo_planificacion,   cno: CNO-VIII-003, obligatorio: true,  norma: "COPLAFIP 28/29",   descripcion: "Consejo conformado + RESOLUCIÓN favorable (evidencia en carpeta)" }
+    - { instancia: audiencia_publica,       cno: CNO-VIII-004, obligatorio: true,  norma: "LOPC 73/75 · COOTAD 60", descripcion: "audiencia realizada + RESOLUCIÓN + habilitación/delegación ★" }
+    - { instancia: presupuesto_participativo, cno: CNO-VIII-005, obligatorio: true, norma: "LOPC 71 · COOTAD 238", descripcion: "PP formulado y articulado al plan" }
+    - { instancia: cabildo_popular,         cno: CNO-VIII-006, obligatorio: false, norma: "LOPC 76",          descripcion: "cabildo realizado en convocatoria abierta" }
+    - { instancia: silla_vacia,             cno: CNO-VIII-007, obligatorio: false, norma: "CE 101 · LOPC 77 · COOTAD 311", descripcion: "silla vacía en sesiones (evidencia: actas de Concejo — workstream futuro)" }
+
+consecuencia: "Observación de verificabilidad por instancia: la no acreditación documental (p. ej. audiencia sin resolución Art. 75) se registra como PARCIAL o SIN EVIDENCIA + cita COOTAD 312. Nunca 'incumple/ilegal' (Regla 2)."
+opera_en: d08
+estado: propuesta
+validacion: { validada_por: null, fecha_validacion: null }

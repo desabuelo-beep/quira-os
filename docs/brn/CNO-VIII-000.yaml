@@ -1,0 +1,67 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# CNO-VIII-000 · Marco Constitucional del Sistema de Participación Ciudadana
+# CNO ARQUITECTÓNICA (no auditora). Fundamento constitucional compartido por toda la
+# familia VIII. Tras el aporte de terreno de Javo (2026-07-23) el dominio se reorganiza en
+# JERARQUÍA INSTITUCIONAL, no en lista de mecanismos:
+#
+#   000 Marco constitucional            (por qué existe · esta CNO)
+#    └─ 001 Sistema Cantonal de Participación   (la estructura permanente · ordenanza)
+#         └─ 002 Asamblea Ciudadana Cantonal    (el ÓRGANO ciudadano · representación territorial)
+#              └─ 003 Consejo de Planificación  (delegados ciudadanos vienen de la Asamblea)
+#                   └─ 004 Audiencia · 005 PP · 006 Cabildo · 007 Silla Vacía  (mecanismos)
+#
+# DISTINCIÓN CLAVE (aporte de Javo, verificada): la Asamblea Ciudadana NO es un mecanismo
+# más — es el órgano de representación del Sistema (LOPC 56/57/61 · COOTAD 306/307). Los
+# mecanismos son los instrumentos que ese órgano opera. Esa jerarquía es la de la LOPC.
+#
+# PRINCIPIO DE UNIVERSALIDAD (aporte de Javo): QUIRA no audita el modelo administrativo de
+# cada cantón ("¿cómo participa Montecristi?") sino el cumplimiento constitucional ("¿cumplió
+# el mandato?"). Por eso la representación territorial se modela como PRINCIPIO (barrios ·
+# parroquias · comunas · recintos, según el territorio), no como forma única. Aplica a los 222 GAD.
+#
+# ESTADO: propuesta — cadena verificada contra el corpus (SHA256); ratificación de Javo pendiente.
+# ═══════════════════════════════════════════════════════════════════════════════
+id: CNO-VIII-000
+version: "1.0"
+titulo: Marco Constitucional del Sistema de Participación Ciudadana
+tipo: arquitectonica
+mecanismo: marco
+objeto: >-
+  el fundamento constitucional del derecho de participación protagónica que legitima el
+  Sistema Cantonal de Participación y toda la familia CNO-VIII (001..007).
+dominio_normativo: participacion_y_control_social
+familia: CNO-VIII
+
+cadena:
+  - rol: fundamento_principio
+    norma: CE
+    articulo: "95"
+    sha256: d7053ac933f4
+    sumilla: "participación protagónica en las decisiones, planificación y gestión de lo público — el principio matriz"
+  - rol: fundamento_derechos
+    norma: CE
+    articulo: "61"
+    sha256: 981cf97fbafe
+    sumilla: "derechos de participación: participar en asuntos públicos, ser consultado, fiscalizar los actos del poder"
+  - rol: fundamento_instancias
+    norma: CE
+    articulo: "100"
+    sha256: 8282b964440e
+    sumilla: "instancias de participación en todos los niveles de gobierno y sus mecanismos"
+
+estado: propuesta
+vigencia: { desde: "2008-10-20", hasta: null }
+derogaciones: { reemplaza_a: null, reemplazada_por: null }
+deriva_ro: []
+ancla_ro_sistema: [ RO-VIII-001, RO-VIII-002 ]   # integridad normativa + vitalidad democrática
+micro_cno: [ CNO-VIII-001, CNO-VIII-002, CNO-VIII-003, CNO-VIII-004, CNO-VIII-005, CNO-VIII-006, CNO-VIII-007 ]
+dos_dimensiones:
+  integridad_normativa: "¿existe/se instaló/convocó/documentó/aprobó? → RO-VIII-001 (lee el IGP del Gold Master)"
+  vitalidad_democratica: "¿cuántos participaron/qué diversidad territorial-género-generacional? → RO-VIII-002 (índice nace en el Gold Master · Regla 1/4)"
+validacion:
+  propuesta_por: "BRN (extracción asistida sobre corpus verificado · d08 build 2026-07-23)"
+  validada_por: null
+  fecha_validacion: null
+notas: >-
+  Marco arquitectónico. La jerarquía institucional (Sistema→Asamblea→Consejo→mecanismos)
+  deriva del aporte de terreno de Javo (15 años GAD), verificado contra el corpus.

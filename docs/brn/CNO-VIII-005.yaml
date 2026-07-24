@@ -1,0 +1,47 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# CNO-VIII-005 · Micro-CNO OPERATIVA · Presupuesto Participativo
+# Familia CNO-VIII (d08). Se funda en CNO-VIII-000. Medida por RO-VIII-001 (integridad) y
+# alimenta RO-VIII-003 (efectividad/incidencia): el PP es VINCULANTE (COOTAD 238), por eso su
+# incorporación al plan/presupuesto es exigible y verificable. Los aportes se extraen de las
+# ACTAS DE PP (no del H10c-RDC, que es control social/d09 — corrección de naturaleza, Javo).
+# Mecanismo más maduro: evidencia en Gold Master/corpus (PP-GAD-2024/2025/2026) + informes docx.
+#
+# ESTADO: propuesta — verificada contra el corpus (SHA256); ratificación de Javo pendiente.
+# ═══════════════════════════════════════════════════════════════════════════════
+id: CNO-VIII-005
+version: "1.0"
+titulo: Presupuesto Participativo
+tipo: operativa
+mecanismo: presupuesto_participativo
+naturaleza_juridica: vinculante          # COOTAD 238 — a diferencia de los aportes advisory (LOPC 89)
+objeto: >-
+  la obligación de formular el presupuesto participativo articulado a los planes de
+  desarrollo, en convocatoria abierta, recogiendo las prioridades de gasto desde las
+  unidades básicas de participación — y de incorporarlas efectivamente (vinculante).
+dominio_normativo: participacion_y_control_social
+familia: CNO-VIII
+fundamenta_en: CNO-VIII-000
+medida_por: RO-VIII-001
+alimenta_ro: RO-VIII-003                  # dimensión efectividad/incidencia (¿lo priorizado se ejecutó?)
+
+cadena:
+  - rol: definicion
+    norma: LOPC
+    articulo: "67"
+    sha256: 71d0907bfb13
+    sumilla: "presupuesto participativo: proceso por el cual la ciudadanía contribuye a la toma de decisiones sobre los recursos"
+  - rol: obligatoriedad
+    norma: LOPC
+    articulo: "71"
+    sha256: f8cbbe8dccbd
+    sumilla: "obligatoriedad del presupuesto participativo articulado a los planes de desarrollo, en convocatoria abierta"
+  - rol: priorizacion_gasto_vinculante
+    norma: COOTAD
+    articulo: "238"
+    sha256: f682cd88ba15
+    sumilla: "las prioridades de gasto se establecen desde las unidades básicas de participación — carácter vinculante del PP en el GAD"
+
+estado: propuesta
+vigencia: { desde: "2010-10-19", hasta: null }
+deriva_ro: []
+validacion: { propuesta_por: "BRN · d08 build 2026-07-23", validada_por: null, fecha_validacion: null }

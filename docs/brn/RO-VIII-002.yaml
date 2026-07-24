@@ -1,0 +1,43 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# RO-VIII-002 · Regla Operativa · VITALIDAD DEMOCRÁTICA (2ª dimensión de d08)
+# Idea de Javo (2026-07-23): no basta que el mecanismo EXISTA (integridad, RO-VIII-001);
+# importa si la democracia está VIVA — cuánta gente participa y con qué diversidad. En
+# Montecristi (~100 mil hab.) los participantes en PP/RDC son ínfimos: eso, aunque el
+# mecanismo se cumpla formalmente, es una señal democrática distinta.
+#
+# FUNDAMENTO NORMATIVO (no es capricho — verificado): LOPC Art. 57 exige que la composición
+# garantice "diversas identidades territoriales… equidad de género y generacional". La
+# diversidad es mandato legal; medirla es verificar su cumplimiento.
+#
+# ★ LÍMITE DURO (Regla 1/4 — dirección técnica): el ÍNDICE de vitalidad, cuando se calcule
+# como número, NACE EN EL GOLD MASTER (el motor), NO en QUIRA. Javo mismo lo dijo: "nos falta
+# en el Excel". Esta RO DISEÑA la dimensión (qué mide, con qué fundamento y datos); su fórmula
+# se sella en el Gold Master. QUIRA la DEMOSTRARÁ, no la inventa. Por eso: estado = diseño.
+#
+# ESTADO: propuesta · DISEÑO — índice pendiente de sellarse en el Gold Master (decisión de Javo).
+# ═══════════════════════════════════════════════════════════════════════════════
+id: RO-VIII-002
+version: "1.0"
+dimension: vitalidad_democratica
+deriva_de: CNO-VIII-000 v1.0
+metrica: { nombre: Vitalidad_Democratica_Participacion, unidad: indice }
+parametros: { frecuencia: anual }
+estado_calculo: DISENO_INDICE_EN_GOLD_MASTER    # Regla 1/4 · el número nace en el Excel, no en QUIRA
+
+# ── Componentes de la dimensión (qué medirá el índice cuando se selle en el Excel) ──
+componentes:
+  - { id: cobertura_poblacional,   fundamento: "LOPC 64", descripcion: "participantes / población cantonal — ¿es representativo o marginal?" }
+  - { id: diversidad_territorial,  fundamento: "COOTAD 306 · LOPC 57", descripcion: "cuántas unidades básicas (barrios/parroquias/comunas) estuvieron representadas" }
+  - { id: equidad_genero,          fundamento: "LOPC 57", descripcion: "participación por género (mandato de equidad de género)" }
+  - { id: equidad_generacional,    fundamento: "LOPC 57", descripcion: "participación por grupo etario (mandato de equidad generacional)" }
+
+fuente_datos:
+  - "registros de asistencia RDC (ya en snapshot: 201/261/322 asistentes 2023/2024/2025)"
+  - "hojas de registro de audiencias públicas (PDF escaneado → requiere OCR certificado)"
+  - "listas de asistencia de PP y cabildos (informes docx)"
+
+nota_firewall: "En UI, lenguaje de administración pública: 'representatividad' / 'alcance' / 'diversidad territorial', nunca jerga interna."
+consume: []                                     # dimensión transversal — no consume SAT por mecanismo
+opera_en: d08
+estado: propuesta
+validacion: { validada_por: null, fecha_validacion: null }

@@ -1,0 +1,48 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# CNO-VIII-001 · Micro-CNO OPERATIVA · Sistema Cantonal de Participación
+# La ESTRUCTURA PERMANENTE (no un evento). La LOPC/COOTAD mandan al GAD conformar un
+# sistema de participación por acto normativo (ordenanza). Aquí vive también la
+# CONSECUENCIA del incumplimiento (COOTAD 312, verificado): la ausencia del sistema no es
+# "dato faltante" — la norma prevé responsabilidades y sanciones. Se funda en CNO-VIII-000.
+#
+# EVIDENCIA NEGATIVA (aporte de Javo · encuadre QUIRA): si no se acredita el sistema, QUIRA
+# registra "no se encontró evidencia verificable" + cita COOTAD 312. NO dicta "incumplió/
+# destitución" — esa consecuencia la determina el CPCCS/Contraloría (firewall · Regla 2).
+#
+# ESTADO: propuesta — verificada contra el corpus (SHA256); ratificación de Javo pendiente.
+# ═══════════════════════════════════════════════════════════════════════════════
+id: CNO-VIII-001
+version: "1.0"
+titulo: Sistema Cantonal de Participación
+tipo: operativa
+mecanismo: sistema_cantonal
+objeto: >-
+  el deber del GAD de conformar por acto normativo (ordenanza) el sistema de participación
+  ciudadana cantonal, estructura permanente dentro de la cual operan la Asamblea, el Consejo
+  y los mecanismos; su incumplimiento genera responsabilidades y sanciones (COOTAD 312).
+dominio_normativo: participacion_y_control_social
+familia: CNO-VIII
+fundamenta_en: CNO-VIII-000
+medida_por: RO-VIII-001
+
+cadena:
+  - rol: sistema_obligatorio
+    norma: COOTAD
+    articulo: "304"
+    sha256: a1ccfa62c16f
+    sumilla: "el GAD conformará un sistema de participación ciudadana regulado por acto normativo — estructura obligatoria"
+  - rol: instancia_local
+    norma: LOPC
+    articulo: "64"
+    sha256: 9490de910d1a
+    sumilla: "instancia de participación ciudadana a nivel local: elaborar planes y políticas entre gobierno y ciudadanía"
+  - rol: consecuencia_sancion
+    norma: COOTAD
+    articulo: "312"
+    sha256: 2ed574a48921
+    sumilla: "sanción: el incumplimiento de las disposiciones de participación ciudadana genera responsabilidades y sanciones a las autoridades del GAD"
+
+estado: propuesta
+vigencia: { desde: "2010-10-19", hasta: null }
+deriva_ro: []
+validacion: { propuesta_por: "BRN · d08 build 2026-07-23", validada_por: null, fecha_validacion: null }

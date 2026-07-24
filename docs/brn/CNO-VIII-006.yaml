@@ -1,0 +1,40 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# CNO-VIII-006 · Micro-CNO OPERATIVA · Cabildo Popular
+# Familia CNO-VIII (d08). Se funda en CNO-VIII-000. Medida por RO-VIII-001. Evidencia
+# física: Cabildo Popular 2025 (docx + pdf, texto limpio).
+#
+# El cabildo es DELIBERATIVO (sesión pública cantonal de convocatoria abierta), no
+# resolutivo como la audiencia: la norma no le exige instrumento resolutivo equivalente al
+# Art. 75 LOPC. Su verificabilidad mide realización y apertura.
+#
+# ESTADO: propuesta — verificada contra el corpus (SHA256); ratificación de Javo pendiente.
+# ═══════════════════════════════════════════════════════════════════════════════
+id: CNO-VIII-006
+version: "1.0"
+titulo: Cabildo Popular
+tipo: operativa
+mecanismo: cabildo_popular
+objeto: >-
+  la obligación de realizar el cabildo popular como sesión pública cantonal de convocatoria
+  abierta a toda la ciudadanía para discutir asuntos específicos de interés comunitario.
+dominio_normativo: participacion_y_control_social
+familia: CNO-VIII
+fundamenta_en: CNO-VIII-000
+medida_por: RO-VIII-001
+
+cadena:
+  - rol: fundamento_mecanismos
+    norma: CE
+    articulo: "100"
+    sha256: 8282b964440e
+    sumilla: "los mecanismos de participación en los niveles de gobierno incluyen los cabildos populares"
+  - rol: definicion
+    norma: LOPC
+    articulo: "76"
+    sha256: 14fefd6d0ece
+    sumilla: "cabildo popular: instancia cantonal de sesión pública, convocatoria abierta, para discutir asuntos específicos"
+
+estado: propuesta
+vigencia: { desde: "2010-10-19", hasta: null }
+deriva_ro: []
+validacion: { propuesta_por: "BRN · d08 build 2026-07-23", validada_por: null, fecha_validacion: null }

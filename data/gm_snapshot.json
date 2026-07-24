@@ -8152,10 +8152,10 @@
     "_fuente": "Canon BRN (docs/brn/*.yaml) verificado contra el corpus (SHA256)",
     "_doctrina": "El nodo es la REGLA (CNO), no el artículo. La cadena íntegra o no entra (Regla 3). La IA propone, el humano valida (ADR-035 §5).",
     "_modelo": "MDN — Modelo de Dependencias Normativas (ADR-038 §9): CNO ↔ RO ↔ SAT.",
-    "fecha": "2026-07-20",
-    "total_cno": 4,
-    "cadenas_integras": 4,
-    "total_ro": 5,
+    "fecha": "2026-07-24",
+    "total_cno": 12,
+    "cadenas_integras": 12,
+    "total_ro": 8,
     "estado_catalogo": "propuesta · pendiente de validación humana (ADR-035 §5)",
     "cno": [
       {
@@ -8163,7 +8163,7 @@
         "version": "1.0",
         "titulo": "Articulación de la Planificación con el Presupuesto y la Contratación",
         "dominio_normativo": "planificacion_del_desarrollo",
-        "estado": "propuesta",
+        "estado": "vigente",
         "cadena_integra": true,
         "n_eslabones": 9,
         "cadena": [
@@ -8172,7 +8172,7 @@
             "norma": "CE",
             "articulo": "241",
             "sumilla": "la planificación garantizará el ordenamiento territorial y será obligatoria",
-            "sha256": "da13d3789caa",
+            "sha256": "c4565a2cab21",
             "verificacion": "verificado"
           },
           {
@@ -8180,7 +8180,7 @@
             "norma": "CE",
             "articulo": "280",
             "sumilla": "el Plan Nacional de Desarrollo como instrumento al que se sujeta la planificación",
-            "sha256": "5d25f2ee7268",
+            "sha256": "f78ab0db6e71",
             "verificacion": "verificado"
           },
           {
@@ -8188,7 +8188,7 @@
             "norma": "COPLAFIP",
             "articulo": "12",
             "sumilla": "la planificación del desarrollo y el ordenamiento territorial es competencia del GAD",
-            "sha256": "916241847fcb",
+            "sha256": "ee8ddf2a336e",
             "verificacion": "verificado"
           },
           {
@@ -8204,7 +8204,7 @@
             "norma": "COOTAD",
             "articulo": "233",
             "sumilla": "plazo: las dependencias preparan su programación operativa antes del 10 de septiembre",
-            "sha256": "96e3b77f48fc",
+            "sha256": "1522597f54b1",
             "verificacion": "verificado"
           },
           {
@@ -8212,7 +8212,7 @@
             "norma": "COOTAD",
             "articulo": "234",
             "sumilla": "contenido: cada plan operativo anual debe contener las metas del plan de desarrollo",
-            "sha256": "6837117fda64",
+            "sha256": "236c87c6b3f9",
             "verificacion": "verificado"
           },
           {
@@ -8220,7 +8220,7 @@
             "norma": "COOTAD",
             "articulo": "215",
             "sumilla": "el presupuesto del GAD se ajusta a los planes de desarrollo",
-            "sha256": "60f89aebd7b3",
+            "sha256": "a34ebad6963c",
             "verificacion": "verificado"
           },
           {
@@ -8236,7 +8236,7 @@
             "norma": "LOSNCP",
             "articulo": "22",
             "sumilla": "el Plan Anual de Contratación se formula conforme al plan y al presupuesto",
-            "sha256": "054779c8e813",
+            "sha256": "1d6c1b3ae153",
             "verificacion": "verificado"
           }
         ],
@@ -8251,7 +8251,7 @@
               "SAT-I-001"
             ],
             "opera_en": "d01",
-            "estado": "propuesta"
+            "estado": "vigente"
           },
           {
             "id": "RO-I-002",
@@ -8263,7 +8263,7 @@
               "SAT-I-002"
             ],
             "opera_en": "d01",
-            "estado": "propuesta"
+            "estado": "vigente"
           }
         ],
         "vigencia": {
@@ -8285,7 +8285,7 @@
             "norma": "CE",
             "articulo": "61",
             "sumilla": "derechos de participación — elegir y ser elegidos: origen del mandato popular",
-            "sha256": "982c97e9b32f",
+            "sha256": "981cf97fbafe",
             "verificacion": "verificado"
           },
           {
@@ -8293,7 +8293,7 @@
             "norma": "COD",
             "articulo": "97",
             "sumilla": "el candidato inscribe su Plan de Trabajo ante el CNE — la palabra empeñada",
-            "sha256": "189b101bf567",
+            "sha256": "b243e8693685",
             "verificacion": "verificado"
           },
           {
@@ -8301,7 +8301,7 @@
             "norma": "COOTAD",
             "articulo": "60",
             "sumilla": "atribuciones del alcalde: dirige la gestión con que debe cumplir el mandato",
-            "sha256": "d1d6b65f18fc",
+            "sha256": "1baac1f8b508",
             "verificacion": "verificado"
           },
           {
@@ -8309,7 +8309,7 @@
             "norma": "COOTAD",
             "articulo": "58",
             "sumilla": "atribuciones de los concejales: fiscalizan y aprueban los instrumentos",
-            "sha256": "54bce2bf7235",
+            "sha256": "240cb67911e9",
             "verificacion": "verificado"
           },
           {
@@ -8317,7 +8317,7 @@
             "norma": "COPLAFIP",
             "articulo": "41",
             "sumilla": "el mandato se traduce en el plan de desarrollo (directrices del GAD)",
-            "sha256": "b49b8c942524",
+            "sha256": "e3c9fad328f3",
             "verificacion": "verificado"
           },
           {
@@ -8333,7 +8333,7 @@
             "norma": "LOPC",
             "articulo": "89",
             "sumilla": "rendición de cuentas: el mandatario responde por el mandato ejercido",
-            "sha256": "d3e1686814de",
+            "sha256": "086fc826f996",
             "verificacion": "verificado"
           },
           {
@@ -8349,7 +8349,7 @@
             "norma": "CE",
             "articulo": "105",
             "sumilla": "revocatoria del mandato: la consecuencia del incumplimiento ante el electorado",
-            "sha256": "8fb8c8f1ace3",
+            "sha256": "f7819a49cbe9",
             "verificacion": "verificado"
           }
         ],
@@ -8395,7 +8395,7 @@
             "articulo": "192",
             "sumilla": "Monto total a transferir — 21% de ingresos permanentes + 10% de los no permanentes",
             "reformado_por": "COOTAD-2026 (Art. 3 sustituye el primer inciso)",
-            "sha256": "42e8c07e33cb",
+            "sha256": "d5d1431a8a38",
             "verificacion": "verificado"
           },
           {
@@ -8403,7 +8403,7 @@
             "norma": "COOTAD-2026",
             "articulo": "198.1",
             "sumilla": "Regla de asignación mínima prioritaria — al menos el 70% del presupuesto codificado de egresos no financieros a gasto no permanente de inversión, mantenimiento y reposición de infraestructura, bienes y activos públicos.",
-            "sha256": "66255f1d914d",
+            "sha256": "bbe4c79ad522",
             "verificacion": "verificado"
           },
           {
@@ -8411,7 +8411,7 @@
             "norma": "COOTAD-2026",
             "articulo": "198.2",
             "sumilla": "Determinación del gasto computable para el cumplimiento de la regla",
-            "sha256": "ab87de75fc43",
+            "sha256": "fb68a4b54330",
             "verificacion": "verificado"
           },
           {
@@ -8419,7 +8419,7 @@
             "norma": "COOTAD-2026",
             "articulo": "198.6",
             "sumilla": "Incumplimiento de la regla → se informa a la Contraloría General del Estado",
-            "sha256": "e885aa007ee9",
+            "sha256": "7c01b48dce14",
             "verificacion": "verificado"
           },
           {
@@ -8427,7 +8427,7 @@
             "norma": "COOTAD-2026",
             "articulo": "Disposición Transitoria Primera",
             "sumilla": "piso inicial del 65% con seguimiento del ente rector a partir del 1-dic-2026, sobre el presupuesto codificado al 31-dic-2026.",
-            "sha256": "e885aa007ee9",
+            "sha256": "b5d7a5aab557",
             "verificacion": "verificado"
           }
         ],
@@ -8475,7 +8475,7 @@
             "norma": "CE",
             "articulo": "100",
             "sumilla": "instancias de participación en todos los niveles de gobierno",
-            "sha256": "a2ee651aa41b",
+            "sha256": "8282b964440e",
             "verificacion": "verificado"
           },
           {
@@ -8491,7 +8491,7 @@
             "norma": "LOPC",
             "articulo": "89",
             "sumilla": "definición: la rendición de cuentas como proceso participativo y obligatorio",
-            "sha256": "d3e1686814de",
+            "sha256": "086fc826f996",
             "verificacion": "verificado"
           },
           {
@@ -8507,7 +8507,7 @@
             "norma": "LOPC",
             "articulo": "91",
             "sumilla": "objetivos de la rendición de cuentas",
-            "sha256": "e15fda6c996c",
+            "sha256": "79733cc71e4f",
             "verificacion": "verificado"
           },
           {
@@ -8515,7 +8515,7 @@
             "norma": "LOPC",
             "articulo": "93",
             "sumilla": "nivel programático y operativo sobre el que se rinde cuentas",
-            "sha256": "a8c2e19406b1",
+            "sha256": "871a7da338fe",
             "verificacion": "verificado"
           },
           {
@@ -8523,7 +8523,7 @@
             "norma": "RES-CPCCS-RC-2026",
             "articulo": "10",
             "sumilla": "contenido mínimo obligatorio del informe de rendición de cuentas",
-            "sha256": "c42af183a03c",
+            "sha256": "835f120780a9",
             "verificacion": "verificado"
           },
           {
@@ -8531,7 +8531,7 @@
             "norma": "RES-CPCCS-RC-2026",
             "articulo": "13",
             "sumilla": "reglas específicas para los Gobiernos Autónomos Descentralizados",
-            "sha256": "8acba6e937f8",
+            "sha256": "c2456d489297",
             "verificacion": "verificado"
           },
           {
@@ -8547,7 +8547,7 @@
             "norma": "RES-CPCCS-RC-2026",
             "articulo": "21",
             "sumilla": "entrega de informes incumplidos de períodos fiscales anteriores",
-            "sha256": "867833dc5f90",
+            "sha256": "9c5c442d147a",
             "verificacion": "verificado"
           }
         ],
@@ -8567,6 +8567,383 @@
         ],
         "vigencia": {
           "desde": "2026-01-01",
+          "hasta": null
+        }
+      },
+      {
+        "id": "CNO-VIII-000",
+        "version": "1.0",
+        "titulo": "Marco Constitucional del Sistema de Participación Ciudadana",
+        "dominio_normativo": "participacion_y_control_social",
+        "estado": "propuesta",
+        "cadena_integra": true,
+        "n_eslabones": 3,
+        "cadena": [
+          {
+            "rol": "fundamento_principio",
+            "norma": "CE",
+            "articulo": "95",
+            "sumilla": "participación protagónica en las decisiones, planificación y gestión de lo público — el principio matriz",
+            "sha256": "d7053ac933f4",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "fundamento_derechos",
+            "norma": "CE",
+            "articulo": "61",
+            "sumilla": "derechos de participación: participar en asuntos públicos, ser consultado, fiscalizar los actos del poder",
+            "sha256": "981cf97fbafe",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "fundamento_instancias",
+            "norma": "CE",
+            "articulo": "100",
+            "sumilla": "instancias de participación en todos los niveles de gobierno y sus mecanismos",
+            "sha256": "8282b964440e",
+            "verificacion": "verificado"
+          }
+        ],
+        "deriva_ro": [
+          {
+            "id": "RO-VIII-001",
+            "version": "1.0",
+            "variable": "Integridad_Normativa_Sistema_Participacion",
+            "umbral_vigente": null,
+            "vigencia_operativa": null,
+            "consume": [],
+            "opera_en": "d08",
+            "estado": "propuesta"
+          },
+          {
+            "id": "RO-VIII-002",
+            "version": "1.0",
+            "variable": "Vitalidad_Democratica_Participacion",
+            "umbral_vigente": null,
+            "vigencia_operativa": null,
+            "consume": [],
+            "opera_en": "d08",
+            "estado": "propuesta"
+          },
+          {
+            "id": "RO-VIII-003",
+            "version": "1.0",
+            "variable": "Efectividad_Incidencia_Participacion",
+            "umbral_vigente": null,
+            "vigencia_operativa": null,
+            "consume": [
+              "SAT-VI"
+            ],
+            "opera_en": "d08",
+            "estado": "propuesta"
+          }
+        ],
+        "vigencia": {
+          "desde": "2008-10-20",
+          "hasta": null
+        }
+      },
+      {
+        "id": "CNO-VIII-001",
+        "version": "1.0",
+        "titulo": "Sistema Cantonal de Participación",
+        "dominio_normativo": "participacion_y_control_social",
+        "estado": "propuesta",
+        "cadena_integra": true,
+        "n_eslabones": 3,
+        "cadena": [
+          {
+            "rol": "sistema_obligatorio",
+            "norma": "COOTAD",
+            "articulo": "304",
+            "sumilla": "el GAD conformará un sistema de participación ciudadana regulado por acto normativo — estructura obligatoria",
+            "sha256": "a1ccfa62c16f",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "instancia_local",
+            "norma": "LOPC",
+            "articulo": "64",
+            "sumilla": "instancia de participación ciudadana a nivel local: elaborar planes y políticas entre gobierno y ciudadanía",
+            "sha256": "9490de910d1a",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "consecuencia_sancion",
+            "norma": "COOTAD",
+            "articulo": "312",
+            "sumilla": "sanción: el incumplimiento de las disposiciones de participación ciudadana genera responsabilidades y sanciones a las autoridades del GAD",
+            "sha256": "2ed574a48921",
+            "verificacion": "verificado"
+          }
+        ],
+        "deriva_ro": [],
+        "vigencia": {
+          "desde": "2010-10-19",
+          "hasta": null
+        }
+      },
+      {
+        "id": "CNO-VIII-002",
+        "version": "1.0",
+        "titulo": "Asamblea Ciudadana Cantonal",
+        "dominio_normativo": "participacion_y_control_social",
+        "estado": "propuesta",
+        "cadena_integra": true,
+        "n_eslabones": 5,
+        "cadena": [
+          {
+            "rol": "asamblea_local",
+            "norma": "LOPC",
+            "articulo": "56",
+            "sumilla": "asambleas locales: espacio de deliberación pública para fortalecer la interlocución ciudadana con el gobierno",
+            "sha256": "53a22c333f1b",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "composicion_diversidad",
+            "norma": "LOPC",
+            "articulo": "57",
+            "sumilla": "composición de las asambleas locales: pluralidad, identidades territoriales, equidad de género y generacional",
+            "sha256": "0366370fb8ac",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "interrelacion_cantonal",
+            "norma": "LOPC",
+            "articulo": "61",
+            "sumilla": "interrelación entre asambleas de diversos niveles territoriales (cantonales, provinciales, regionales)",
+            "sha256": "d1d0e67b3aec",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "unidad_basica_territorial",
+            "norma": "COOTAD",
+            "articulo": "306",
+            "sumilla": "barrios y parroquias urbanas como unidades básicas de participación — consejos barriales como órganos de representación comunitaria articulados al sistema",
+            "sha256": "349beae574ee",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "funciones_representacion",
+            "norma": "COOTAD",
+            "articulo": "307",
+            "sumilla": "funciones de los consejos barriales y parroquiales: representar a la ciudadanía del territorio y ejercer control social",
+            "sha256": "600dc6063347",
+            "verificacion": "verificado"
+          }
+        ],
+        "deriva_ro": [],
+        "vigencia": {
+          "desde": "2010-10-19",
+          "hasta": null
+        }
+      },
+      {
+        "id": "CNO-VIII-003",
+        "version": "1.0",
+        "titulo": "Consejo de Planificación",
+        "dominio_normativo": "participacion_y_control_social",
+        "estado": "propuesta",
+        "cadena_integra": true,
+        "n_eslabones": 4,
+        "cadena": [
+          {
+            "rol": "planificacion_participativa",
+            "norma": "COPLAFIP",
+            "articulo": "13",
+            "sumilla": "planificación participativa: mecanismos de participación para la formulación de planes y políticas",
+            "sha256": "6e5fe9c9ec8c",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "conformacion",
+            "norma": "COPLAFIP",
+            "articulo": "28",
+            "sumilla": "conformación del Consejo de Planificación del GAD — órgano de participación en la planificación",
+            "sha256": "b987e68379f6",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "formalizacion_resolucion",
+            "norma": "COPLAFIP",
+            "articulo": "29",
+            "sumilla": "el Consejo emite RESOLUCIÓN favorable sobre las prioridades estratégicas — formalización que SÍ consta en la evidencia",
+            "sha256": "52cd154eaa35",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "formulacion_pdot",
+            "norma": "COPLAFIP",
+            "articulo": "46",
+            "sumilla": "formulación participativa del PDOT — el Consejo participa en el plan de desarrollo y ordenamiento territorial",
+            "sha256": "653cf4898187",
+            "verificacion": "verificado"
+          }
+        ],
+        "deriva_ro": [],
+        "vigencia": {
+          "desde": "2010-10-22",
+          "hasta": null
+        }
+      },
+      {
+        "id": "CNO-VIII-004",
+        "version": "1.0",
+        "titulo": "Audiencia Pública",
+        "dominio_normativo": "participacion_y_control_social",
+        "estado": "propuesta",
+        "cadena_integra": true,
+        "n_eslabones": 4,
+        "cadena": [
+          {
+            "rol": "habilitacion",
+            "norma": "LOPC",
+            "articulo": "73",
+            "sumilla": "audiencia pública: instancia habilitada por la autoridad responsable — exige acto de habilitación",
+            "sha256": "a1596df98b10",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "convocatoria",
+            "norma": "LOPC",
+            "articulo": "74",
+            "sumilla": "convocatoria a audiencias públicas: la solicitud ciudadana debe ser atendida por la autoridad",
+            "sha256": "29970f83790d",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "formalizacion_resolucion",
+            "norma": "LOPC",
+            "articulo": "75",
+            "sumilla": "RESOLUCIONES de las audiencias públicas: la autoridad resuelve el mismo día o en 10 días hábiles — la formalización exigible (★)",
+            "sha256": "6c126fb90c51",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "habilitacion_delegacion",
+            "norma": "COOTAD",
+            "articulo": "60",
+            "sumilla": "el alcalde delega atribuciones y preside directa o por delegado: si no preside la audiencia, el acto de delegación debe existir (★)",
+            "sha256": "a83bf2157a76",
+            "verificacion": "verificado"
+          }
+        ],
+        "deriva_ro": [],
+        "vigencia": {
+          "desde": "2010-10-19",
+          "hasta": null
+        }
+      },
+      {
+        "id": "CNO-VIII-005",
+        "version": "1.0",
+        "titulo": "Presupuesto Participativo",
+        "dominio_normativo": "participacion_y_control_social",
+        "estado": "propuesta",
+        "cadena_integra": true,
+        "n_eslabones": 3,
+        "cadena": [
+          {
+            "rol": "definicion",
+            "norma": "LOPC",
+            "articulo": "67",
+            "sumilla": "presupuesto participativo: proceso por el cual la ciudadanía contribuye a la toma de decisiones sobre los recursos",
+            "sha256": "71d0907bfb13",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "obligatoriedad",
+            "norma": "LOPC",
+            "articulo": "71",
+            "sumilla": "obligatoriedad del presupuesto participativo articulado a los planes de desarrollo, en convocatoria abierta",
+            "sha256": "f8cbbe8dccbd",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "priorizacion_gasto_vinculante",
+            "norma": "COOTAD",
+            "articulo": "238",
+            "sumilla": "las prioridades de gasto se establecen desde las unidades básicas de participación — carácter vinculante del PP en el GAD",
+            "sha256": "f682cd88ba15",
+            "verificacion": "verificado"
+          }
+        ],
+        "deriva_ro": [],
+        "vigencia": {
+          "desde": "2010-10-19",
+          "hasta": null
+        }
+      },
+      {
+        "id": "CNO-VIII-006",
+        "version": "1.0",
+        "titulo": "Cabildo Popular",
+        "dominio_normativo": "participacion_y_control_social",
+        "estado": "propuesta",
+        "cadena_integra": true,
+        "n_eslabones": 2,
+        "cadena": [
+          {
+            "rol": "fundamento_mecanismos",
+            "norma": "CE",
+            "articulo": "100",
+            "sumilla": "los mecanismos de participación en los niveles de gobierno incluyen los cabildos populares",
+            "sha256": "8282b964440e",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "definicion",
+            "norma": "LOPC",
+            "articulo": "76",
+            "sumilla": "cabildo popular: instancia cantonal de sesión pública, convocatoria abierta, para discutir asuntos específicos",
+            "sha256": "14fefd6d0ece",
+            "verificacion": "verificado"
+          }
+        ],
+        "deriva_ro": [],
+        "vigencia": {
+          "desde": "2010-10-19",
+          "hasta": null
+        }
+      },
+      {
+        "id": "CNO-VIII-007",
+        "version": "1.0",
+        "titulo": "Silla Vacía",
+        "dominio_normativo": "participacion_y_control_social",
+        "estado": "propuesta",
+        "cadena_integra": true,
+        "n_eslabones": 3,
+        "cadena": [
+          {
+            "rol": "fundamento_constitucional",
+            "norma": "CE",
+            "articulo": "101",
+            "sumilla": "sesiones públicas del GAD con silla vacía para un representante ciudadano según el tema",
+            "sha256": "86ec8e96fbf1",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "mecanismo_lopc",
+            "norma": "LOPC",
+            "articulo": "77",
+            "sumilla": "silla vacía operativa en las sesiones del GAD: participación con voz y voto",
+            "sha256": "52d1ccab33d4",
+            "verificacion": "verificado"
+          },
+          {
+            "rol": "mecanismo_cootad",
+            "norma": "COOTAD",
+            "articulo": "311",
+            "sumilla": "silla vacía en las sesiones del GAD: representante de la ciudadanía en función de los temas a tratarse",
+            "sha256": "9055359360bb",
+            "verificacion": "verificado"
+          }
+        ],
+        "deriva_ro": [],
+        "vigencia": {
+          "desde": "2010-10-19",
           "hasta": null
         }
       }

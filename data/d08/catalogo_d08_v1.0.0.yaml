@@ -1,0 +1,181 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# CATALOGO_D08_PARTICIPACION_CIUDADANA · v1.0.0 · 2026-07-23
+# SSoT del dominio d08 (Participación Ciudadana). Neo4j deriva de aquí (Regla #6).
+# Fuente BRN: familia CNO-VIII (000..007) + RO-VIII-001/002/003 — 12 cadenas verificadas
+# contra el corpus (brn_cno.py). Diseño en 5 niveles + 3 dimensiones (aporte de Javo, 15
+# años GAD): la Asamblea es ÓRGANO, no mecanismo; la participación se mide en integridad
+# normativa + vitalidad democrática + efectividad/incidencia.
+#
+# FRONTERA d08/d09 (corrección de naturaleza · Javo): los aportes de d08 emanan de las
+# instancias/mecanismos de participación (actas de PP, audiencias, cabildos), NO del informe
+# de RDC (d09/control social). Mismo término, distinta fuente. NO se reusa enrich_aportes.py.
+#
+# NIVEL 4 · EVIDENCIA DOCUMENTAL: inventario real de
+# Holding_Municipal_Montecristi/Participación Ciudadana, clasificado (tabla del asesor):
+#   procesable · ocr_certificado · parcial · no_localizada
+# ═══════════════════════════════════════════════════════════════════════════════
+catalogo: CATALOGO_D08_PARTICIPACION_CIUDADANA
+version: 1.0.0
+dominio: d08
+familia_cno: CNO-VIII
+indicador_madre: IGP          # Índice de Gobernanza Participativa — vector del ICPI (se LEE del Gold Master, Regla 1/4)
+
+# ── Las 3 dimensiones (Javo · 2026-07-23) ──────────────────────────────────────────
+dimensiones:
+  - id: integridad_normativa
+    ro: RO-VIII-001
+    pregunta: "¿existe / se instaló / convocó / documentó / aprobó cada instancia y mecanismo?"
+    estado: operable          # se evalúa con la evidencia documental disponible
+  - id: vitalidad_democratica
+    ro: RO-VIII-002
+    pregunta: "¿cuántos participaron y con qué diversidad territorial/género/generacional?"
+    estado: diseno            # índice nace en el Gold Master (Regla 1/4) — pendiente de sellar con Javo
+    fundamento: "LOPC 57 (diversidad como mandato)"
+  - id: efectividad_incidencia
+    ro: RO-VIII-003
+    pregunta: "¿lo pedido en las instancias se volvió POA/PAC/presupuesto/obra?"
+    estado: diseno            # motor de extracción de aportes de participación PENDIENTE (no es enrich_aportes.py)
+
+# ── Señales SAT del Gold Master (OBS-016 · corrección Javo 2026-07-24) ──────────────
+# Las SAT NO son 1:1 con mecanismos: son señales de alerta del motor (SAT-0..VIII por
+# dimensión TGI). De todas, solo UNA es de participación:
+sat_gold_master:
+  existente:
+    id: SAT-VI
+    nombre: "Desvío Presupuesto Participativo"
+    dimension_tgi: D4
+    hoja: H24c_SAT-VI_DESVÍO_PP
+    consumida_por: RO-VIII-003        # efectividad/incidencia
+    estado: "sin datos (Hay_Datos_PP = NO) — coherente con OBS-015 (IGP_PP=0)"
+  a_crear_fase_2: "las que hagan falta para vigilar la participación (a diseñar con Javo al operar el Excel) — NO 7 mecánicas"
+  nota: "la verificabilidad documental por instancia (integridad, RO-VIII-001) NO es una SAT: es estado de evidencia."
+
+# ── Instancias y mecanismos (jerarquía institucional) + evidencia ───────────────────
+instancias:
+  - cno: CNO-VIII-001
+    mecanismo: sistema_cantonal
+    tipo: estructura_permanente
+    evidencia:
+      estado: existe_documento_no_accesible     # confirmado por Javo (terreno) — NO es hallazgo negativo
+      esperada: "ordenanza que conforma el Sistema de Participación (COOTAD 304)"
+      nota: >-
+        El GAD SÍ tiene el Sistema Cantonal (ordenanza) — confirmado por Javo. La ordenanza
+        específica no es accesible hoy, pero su estructura está dada por la ley (LOPC/COOTAD,
+        verificada en el corpus) y las ordenanzas cantonales la replican. Dato pendiente de
+        acceso al documento, no ausencia del hecho.
+  - cno: CNO-VIII-002
+    mecanismo: asamblea_ciudadana
+    tipo: organo_representacion_ciudadano_autonomo    # NO administrativo del GAD
+    evidencia:
+      estado: evidencia_indirecta                # la ACC es ciudadana autónoma — su doc. propia no es exigible al GAD
+      esperada: "manifestación de la ACC en las actas de los mecanismos que avala (PP y demás)"
+      nota: >-
+        FRONTERA DOCTRINAL (aporte de Javo · 2026-07-23): la Asamblea Ciudadana Cantonal es
+        una ESTRUCTURA CIUDADANA AUTÓNOMA, regulada por sus propios estatutos — "la organización
+        social se regula sola". NO es parte administrativa del GAD; sus actas reposan en sus
+        archivos (sin web, no accesibles). QUIRA NO audita el funcionamiento interno de la ACC
+        (es ciudadanía, no GAD). Lo que audita es que el GAD la RECONOZCA y ARTICULE (COOTAD 306).
+        La operatividad de la ACC se reconoce INDIRECTAMENTE en las actas de PP y demás mecanismos
+        que ella avala — esas actas son la evidencia disponible de que la ACC opera.
+  - cno: CNO-VIII-003
+    mecanismo: consejo_planificacion
+    tipo: organo_planificacion
+    evidencia:
+      estado: procesable
+      formato: docx_y_pdf_texto
+      documentos:
+        - "RESOLUCION CONSEJO PLANIFICACION MONTECRISTI 2023 (docx)"
+        - "1.2 RESOLUCIONES DEL CONSEJO DE PLANIFICACION 01 signed (docx) · 2024"
+        - "2.1 RESOLUCION CONSEJO PLANIFICACION MONTECRISTI signed (docx) · 2024"
+        - "RESOLUCION CONSEJO PLANIFICACION MONTECRISTI 03-signed-signed (pdf texto) · 2025"
+      cobertura: "2023 · 2024 · 2025 — formalización por RESOLUCIÓN acreditada (contraste con audiencias)"
+  - cno: CNO-VIII-004
+    mecanismo: audiencia_publica
+    tipo: mecanismo
+    evidencia:
+      estado: mixto
+      procesable:
+        formato: pdf_texto
+        n: 7
+        documentos: ["BAJO DE LA PALMA 2", "CLUB PICHINCHA", "DIRIGENTE LEONIDAS PROAÑO", "ESTANCIA LAS PALMAS", "HORIZONTE AZUL", "LA SILLA", "VERGELES"]
+      ocr_certificado:
+        formato: pdf_escaneado
+        n: 16
+        nota: "Javo extrae el texto de estos escaneados y confirma para incorporar"
+      hallazgo_pendiente: "★ ¿consta RESOLUCIÓN (LOPC 75) y acto de delegación (COOTAD 60) en cada acta? — se verifica al procesar el texto"
+  - cno: CNO-VIII-005
+    mecanismo: presupuesto_participativo
+    tipo: mecanismo
+    naturaleza_juridica: vinculante
+    evidencia:
+      estado: procesable
+      formato: docx_y_pdf_texto
+      documentos:
+        - "GAD Montecristi Informe Presupuesto Participativo 2024 (docx+pdf)"
+        - "GAD Montecristi Informe Presupuesto Participativo 2025 (pdf texto · docx vacío)"
+        - "GAD Montecristi Informe Presupuesto Participativo 2026 (docx+pdf)"
+      cobertura: "2024 · 2025 · 2026 — también en corpus (PP-GAD-*) y Gold Master"
+  - cno: CNO-VIII-006
+    mecanismo: cabildo_popular
+    tipo: mecanismo
+    evidencia:
+      estado: procesable
+      formato: docx
+      documentos: ["Cabildo popular 2025 (docx)"]
+      cobertura: "2025"
+  - cno: CNO-VIII-007
+    mecanismo: silla_vacia
+    tipo: mecanismo
+    evidencia:
+      estado: pendiente_adquisicion              # actas de concejo — Javo intentará conseguir 2025
+      esperada: "actas de sesiones del Concejo del GAD (donde consta la silla vacía)"
+      nota: >-
+        Las actas de sesión del Concejo no están disponibles hoy; Javo intentará conseguir al
+        menos 2025. NOTA ESTRATÉGICA (Javo): estas actas son una VETA MAYOR para QUIRA — de las
+        sesiones del Concejo emana gran parte de la operatividad del GAD, no solo la silla vacía.
+        Cruzarlas es un workstream futuro grande ("colosal"), fuera del alcance de d08 hoy.
+
+# ── Clasificación documental canónica (tabla del asesor + terreno de Javo · 2026-07-23) ──
+clasificacion_documental:
+  procesable: "texto limpio (docx / pdf con capa de texto) — se ingiere ya"
+  ocr_certificado: "documento oficial escaneado — requiere OCR certificado (probatorio)"
+  parcial: "documento incompleto"
+  existe_documento_no_accesible: "el hecho existe (confirmado), el documento no está disponible hoy — dato pendiente de acceso, NO hallazgo"
+  evidencia_indirecta: "el hecho se reconoce por su manifestación en otros documentos (p. ej. la ACC en las actas de PP)"
+  pendiente_adquisicion: "documento existe pero fuera de alcance de adquisición hoy (p. ej. actas de Concejo)"
+  no_localizada: "no consta y no se ha confirmado su existencia — solo entonces es candidato a hallazgo (lo decide Javo)"
+
+# ── Workstream futuro registrado (NO se abre ahora · asesor + Javo · 2026-07-24) ────
+# Candidato a dominio propio, fuera del alcance de d08. Pasaría por el Protocolo de
+# Expansión Ontológica (6 condiciones) si algún día se abre. Se registra para no perderlo.
+workstream_futuro:
+  nombre: "Gobernanza Deliberativa del Concejo Municipal"
+  fuente: "actas ÍNTEGRAS de sesión del Concejo (hoy el GAD solo publica RESOLUCIONES · numeral 24 transparencia/d07)"
+  permitiria:
+    - "Silla Vacía (evidencia real de ocupación)"
+    - "formación de consensos · cambios de proyectos"
+    - "evolución de ordenanzas · trazabilidad deliberativa"
+    - "congruencia entre debate y resolución"
+  nota: "es un universo propio — NO contaminar d08 con este trabajo. La silla vacía en d08 queda como pendiente_adquisicion hasta que exista este workstream."
+
+# ── Frontera doctrinal GAD / ciudadanía (aporte de Javo · 2026-07-23) ───────────────
+# Distinción que QUIRA debe respetar en TODO el dominio de participación:
+frontera_gad_ciudadania:
+  audita_al_gad: "lo que el GAD debe conformar, convocar, documentar y garantizar (ordenanza del sistema, resoluciones del Consejo, informes de PP, actas de audiencias, silla vacía en sus sesiones)"
+  no_audita_a_la_ciudadania: "la organización social autónoma se regula sola (estatutos propios). La ACC no se audita por dentro; QUIRA verifica que el GAD la RECONOZCA y ARTICULE (COOTAD 306), no que la ciudadanía sesione"
+  implicacion: "la ausencia de documentación CIUDADANA (actas de la ACC) NUNCA es hallazgo contra el GAD — no es su documento. Solo la ausencia de lo que el GAD debe producir puede ser hallazgo."
+
+# ── Fuentes del dominio ─────────────────────────────────────────────────────────────
+fuentes:
+  - id: carpeta_participacion_mcr
+    origen: "Holding_Municipal_Montecristi/Participación Ciudadana (39 archivos)"
+    tipo: documento_oficial
+  - id: gold_master_igp
+    origen: "Gold Master — IGP (vector del ICPI)"
+    tipo: excel_indice
+    nota: "se LEE, no se recalcula (Regla 1/4)"
+  - id: corpus_pp
+    origen: "Supabase — PP-GAD-2024/2025/2026 (ya ingerido)"
+    tipo: corpus_semantico
+
+municipio_molde: MCR-001

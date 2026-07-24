@@ -1,0 +1,52 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# CNO-VIII-003 · Micro-CNO OPERATIVA · Consejo de Planificación
+# Familia CNO-VIII (d08). Se funda en CNO-VIII-000. En la jerarquía institucional, el
+# Consejo recibe sus DELEGADOS CIUDADANOS desde la Asamblea (CNO-VIII-002) — aporte de Javo.
+# Evidencia física: RESOLUCIONES del Consejo 2023/2024/2025 (texto limpio, procesable ya).
+#
+# CONTRASTE: aquí la formalización por RESOLUCIÓN (Art. 29 COPLAFIP) SÍ consta en la
+# evidencia — mismo estándar que la audiencia (004) incumple documentalmente.
+#
+# ESTADO: propuesta — verificada contra el corpus (SHA256); ratificación de Javo pendiente.
+# ═══════════════════════════════════════════════════════════════════════════════
+id: CNO-VIII-003
+version: "1.0"
+titulo: Consejo de Planificación
+tipo: operativa
+mecanismo: consejo_planificacion
+objeto: >-
+  la obligación del GAD de conformar su Consejo de Planificación con delegados ciudadanos
+  designados por la Asamblea, y de que emita RESOLUCIÓN favorable sobre las prioridades
+  estratégicas del plan de desarrollo.
+dominio_normativo: participacion_y_control_social
+familia: CNO-VIII
+fundamenta_en: CNO-VIII-000
+recibe_delegados_de: CNO-VIII-002        # la Asamblea designa los delegados ciudadanos (aporte de Javo)
+medida_por: RO-VIII-001
+
+cadena:
+  - rol: planificacion_participativa
+    norma: COPLAFIP
+    articulo: "13"
+    sha256: 6e5fe9c9ec8c
+    sumilla: "planificación participativa: mecanismos de participación para la formulación de planes y políticas"
+  - rol: conformacion
+    norma: COPLAFIP
+    articulo: "28"
+    sha256: b987e68379f6
+    sumilla: "conformación del Consejo de Planificación del GAD — órgano de participación en la planificación"
+  - rol: formalizacion_resolucion
+    norma: COPLAFIP
+    articulo: "29"
+    sha256: 52cd154eaa35
+    sumilla: "el Consejo emite RESOLUCIÓN favorable sobre las prioridades estratégicas — formalización que SÍ consta en la evidencia"
+  - rol: formulacion_pdot
+    norma: COPLAFIP
+    articulo: "46"
+    sha256: 653cf4898187
+    sumilla: "formulación participativa del PDOT — el Consejo participa en el plan de desarrollo y ordenamiento territorial"
+
+estado: propuesta
+vigencia: { desde: "2010-10-22", hasta: null }
+deriva_ro: []
+validacion: { propuesta_por: "BRN · d08 build 2026-07-23", validada_por: null, fecha_validacion: null }

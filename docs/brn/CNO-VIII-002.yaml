@@ -1,0 +1,72 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# CNO-VIII-002 · Micro-CNO OPERATIVA · Asamblea Ciudadana Cantonal (representación territorial)
+# EL DESCUBRIMIENTO CLAVE (aporte de Javo · 2026-07-23): la Asamblea Ciudadana NO es un
+# mecanismo — es el ÓRGANO ciudadano del Sistema. Se forma DESDE el territorio: los consejos
+# barriales y parroquiales son la unidad básica (COOTAD 306), y su suma + los consejos
+# parroquiales dan vida a la Asamblea (LOPC 56/57/61). La Asamblea legitima, articula,
+# representa y avala el Sistema — y de ella salen los delegados ciudadanos al Consejo (003).
+#
+# REPRESENTACIÓN TERRITORIAL COMO PRINCIPIO (no forma única): la ley reconoce barrios y
+# parroquias urbanas como unidades básicas (COOTAD 306); en la zona rural el peso lo llevan
+# las comunas (cabildo comunal). QUIRA exige que EXISTA representación territorial, sin
+# imponer una forma — así aplica a los 222 GAD sea cual sea su estructura social.
+#
+# FUNDAMENTO de la VITALIDAD DEMOCRÁTICA (RO-VIII-002): LOPC 57 exige que la composición
+# garantice "diversas identidades territoriales… equidad de género y generacional". La
+# diversidad no es opcional: es mandato. Por eso medir cobertura y diversidad tiene base legal.
+#
+# ESTADO: propuesta — verificada contra el corpus (SHA256); ratificación de Javo pendiente.
+# ═══════════════════════════════════════════════════════════════════════════════
+id: CNO-VIII-002
+version: "1.0"
+titulo: Asamblea Ciudadana Cantonal
+tipo: operativa
+mecanismo: asamblea_ciudadana
+naturaleza: organo_ciudadano_autonomo    # NO es mecanismo NI parte administrativa del GAD (aporte de Javo)
+objeto: >-
+  la existencia y operación de la Asamblea Ciudadana Cantonal como órgano de representación
+  ciudadana del Sistema de Participación, conformada desde las unidades básicas del territorio
+  (consejos barriales y parroquiales urbanos, comunas rurales), que legitima y avala el
+  Sistema y designa los delegados ciudadanos al Consejo de Planificación.
+# FRONTERA DOCTRINAL (Javo · 2026-07-23): la ACC es estructura CIUDADANA AUTÓNOMA, regulada por
+# sus propios estatutos — "la organización social se regula sola". NO es parte administrativa del
+# GAD. Por eso QUIRA NO audita su funcionamiento interno (es ciudadanía, no GAD); lo que la cadena
+# exige del GAD es RECONOCERLA y ARTICULARLA (COOTAD 306). Su operatividad se reconoce
+# INDIRECTAMENTE en las actas de los mecanismos que ella avala (PP y demás). La ausencia de
+# documentación propia de la ACC NUNCA es hallazgo contra el GAD — no es su documento.
+dominio_normativo: participacion_y_control_social
+familia: CNO-VIII
+fundamenta_en: CNO-VIII-000
+medida_por: RO-VIII-001
+
+cadena:
+  - rol: asamblea_local
+    norma: LOPC
+    articulo: "56"
+    sha256: 53a22c333f1b
+    sumilla: "asambleas locales: espacio de deliberación pública para fortalecer la interlocución ciudadana con el gobierno"
+  - rol: composicion_diversidad
+    norma: LOPC
+    articulo: "57"
+    sha256: 0366370fb8ac
+    sumilla: "composición de las asambleas locales: pluralidad, identidades territoriales, equidad de género y generacional"
+  - rol: interrelacion_cantonal
+    norma: LOPC
+    articulo: "61"
+    sha256: d1d0e67b3aec
+    sumilla: "interrelación entre asambleas de diversos niveles territoriales (cantonales, provinciales, regionales)"
+  - rol: unidad_basica_territorial
+    norma: COOTAD
+    articulo: "306"
+    sha256: 349beae574ee
+    sumilla: "barrios y parroquias urbanas como unidades básicas de participación — consejos barriales como órganos de representación comunitaria articulados al sistema"
+  - rol: funciones_representacion
+    norma: COOTAD
+    articulo: "307"
+    sha256: 600dc6063347
+    sumilla: "funciones de los consejos barriales y parroquiales: representar a la ciudadanía del territorio y ejercer control social"
+
+estado: propuesta
+vigencia: { desde: "2010-10-19", hasta: null }
+deriva_ro: []
+validacion: { propuesta_por: "BRN · d08 build 2026-07-23 · aporte territorial de Javo", validada_por: null, fecha_validacion: null }

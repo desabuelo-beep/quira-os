@@ -40,12 +40,22 @@
 | **Trazabilidad de Aportes Agent** | d09 | H10c aportes + POA (embeddings locales) | aporte↔obra ejecutada, nivel de atención | IA/ML (semiautomático) | ✅ `enrich_aportes.py` ya en producción (metodología v0.3 pendiente aval formal) | ❌ específico (cruce semántico propio) | d09 |
 | **Contenido Mínimo Agent** | d09 | informe RDC + Reglamento Art.10 | ¿cumple contenido mínimo? | IA | ⬜ Fase 4 (`fuentes.py`) | ✅ genérico (Evidence Interpreter) | d09 |
 | **NLP Video RDC Agent** | d09 | video oficial rendición | discurso→afirmaciones (fidelidad narrativa) | IA | ⬜ Fase 4, pendiente 2025 (diferenciador, PCD-D09) | ❌ específico (NLP de video) | d09 |
+| **Motor Integridad (lectura+evaluación)** | d08 | catálogo d08 (evidencia clasificada, 7 instancias) | verificabilidad documental por instancia | **Determinístico** | ✅ `motor.py::evaluar_integridad` | ❌ específico (criterios propios RO-VIII-001) | d08 |
+| **Motor IGP (lectura diagnóstica)** | d08 | Gold Master H20b | IGP + 3 componentes + hallazgos OBS-015 | **Determinístico** | ✅ `motor.py::leer_igp_diagnostico` — NO canónico aún (modelo de cálculo a reconstruir fase 2) | ❌ específico | d08 |
+| **Extracción de Actas de Participación Agent** | d08 | actas PP/audiencias/cabildos (docx/pdf) | aportes ciudadanos↔ejecución (RO-VIII-003) | IA | ⬜ Fase 4 (`fuentes.py`) — motor propio, NO reusa `enrich_aportes.py` (ese es d09/RDC, OBS-016 frontera) | ❌ específico | d08 |
+| **OCR Certificado Agent** | d08 | 16 audiencias públicas escaneadas | texto probatorio | IA | ⬜ Fase 4, Javo extrae y confirma | ✅ genérico (cualquier PDF escaneado oficial) | d08, candidato d07/otros |
 
 ## Lecturas del catálogo (lo que revela)
 
-- **Solo 6 piezas son determinísticas** (Compliance Evaluator, SITA Engine, Motor IPE-lectura, Motor
-  Mandato-lectura, Motor RDC-lectura, ICPI Engine). Todo lo demás — la mayoría — es IA. Confirma la
-  doctrina: QUIRA IA es un ecosistema de agentes, no un motor de scripts con un extractor aislado.
+- **Solo 8 piezas son determinísticas** (Compliance Evaluator, SITA Engine, Motor IPE-lectura, Motor
+  Mandato-lectura, Motor RDC-lectura, Motor Integridad-d08, Motor IGP-lectura, ICPI Engine). Todo lo
+  demás — la mayoría — es IA. Confirma la doctrina: QUIRA IA es un ecosistema de agentes, no un
+  motor de scripts con un extractor aislado.
+- **Los índices/SAT se LEEN, nunca se recalculan, y su modelo de cálculo se reconstruye desde el
+  dominio cuando está mal compuesto** (OBS-015/016, d08): el IGP mezclaba d09 y tenía PP=0 pese a
+  evidencia; las "SAT por mecanismo" no existían así en el Gold Master (las SAT reales son
+  SAT-0..VIII por dimensión TGI, no 1:1 con cada CNO). Verificar contra el motor real
+  (`SAT_Catalogo`), no contra una nomenclatura propia — mismo rigor que el SHA256 normativo.
 - **El ICPI Engine es el único intocable** (Regla 1). Todos los demás determinísticos LEEN o
   agregan; ninguno redefine el motor canónico.
 - **Budget Agent se comparte** (d01 lo consume, d07 lo produce) — es la memoria operacional de

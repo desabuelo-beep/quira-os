@@ -27,15 +27,13 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO y halla las B
 la Doctrina permanece. Hoja de Ruta = el mapa que no se mueve. BOOT §AHORA = el paso actual.
 
 ## AHORA (estado vivo · historial → `governance/historico/BOOT_2026-06-17.md`)
-✅ **P1/P2:** kernel `umi.py`+`qinv.py` · **QINV-001 nivel BI** · QINV-006 · d03=72.73.
 🔌 **MCD Planif · 7 cables ✅:** Excel·SERCOP·Relacional·Normativo·IA·Visual·Memoria.
 🧭 **ADR-031 RATIF:** cajón=MCD · GoldMaster=MCM · MCIP 5 motores (Index §1.A).
-🔑 **AUDIT 18-jul:** COOTAD-2026 70%/piso65% dic-2026 · d03 COPLAFIP41-42.
 ✅ **4 DOM cerrados con PCD: d01·d02·d03·d09.**
 📚 **ADR-038 BRN v2 RATIF:** nodo = REGLA, no artículo. 4 niveles **Corpus→CNO(Derecho)→RO(lógica)→SAT**. BRN = CAPA (no cajón) que CONSOLIDA (no interpreta). **Corpus v1.0 CONGELADO** (43 docs·9158 chunks·grafo cerrado·`parser-v1.0`; v1.1=refs cruzadas). **BRN v2.1**: d01+d02+d03+d09 CONFORMES·5 RO·suite 12✓·diff=0.
 🩺 **Canon curado por el DOM (Regla 8), ICPI intacto · centinela ✅. Gate real = `python scripts/ci/check_health.py` (BOOT≤6000·CLAUDE≤4000): NO adivinar.**
 📚 **ADR-035/037 (RATIF):** Ley→BRN→GoldMaster(único motor)→QUIRA · IA propone, humano valida. Frame: Gobierno(página propia)·Territorio·Inteligencia·Norma(BRN).
-🏛️ **d02+d03+d09 migrados (2026-07-23) — LOS 5 DOM BRN COMPLETOS EN `app/agents/`:** motor.py envuelve `enrich_presupuesto/mandato/rdc.py` (ya prod). d02: 4 capacidades+3 SAT — **bug ICPI÷100 doble en 13 celdas, corregido** (OBS-013). d03: 2 métricas (98.7%·79.3%). d09: 1 índice+4 hechos (incl. aportes) — **bug sobrescritura enrich_rdc.py borraba 'aportes', corregido** (OBS-014). Los 3: drift YAML↔Neo4j=0 (`EVIDENCIA_d0X`). Antes: 26/34 SHA BRN obsoletos+CE Art.241 perdido → corregidos (OBS-012). Neo4j 169 nodos. **Fase4/Haiku=pausa**.
+🏛️ **d02+d03+d09 (2026-07-23) + d08 (2026-07-24) migrados:** d02 4 capacidades+3SAT — **bug ICPI÷100, corregido** (OBS-013). d09 1 índice+4 hechos(aportes) — **bug sobrescritura enrich_rdc.py, corregido** (OBS-014). Antes: 26/34 SHA BRN obsoletos+CE241 perdido → corregidos (OBS-012). d08 = jerarquía (Marco→Sistema→**Asamblea=órgano ciudadano autónomo, NO GAD**→Consejo→mecanismos) · CNO-VIII (8 CNO·27 eslabones) · 3 dimensiones (integridad operable·resto=diseño) · **OBS-015** (IGP mezcla d09+PP=0) · **OBS-016** (SAT NO 1:1/mecanismo, real=SAT-VI). Frontera d08≠d09 en aportes (NO reusar enrich_aportes.py). Silla vacía→workstream futuro "Gob. Deliberativa Concejo" (registrado). Neo4j 205 nodos. **Fase4/Haiku=pausa**.
 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 ratificado · detalle en el ADR)
 GAD = sujeto observado, NO cliente. 4 capas: A Núcleo (motor·grafos·conectores·índices) · B Operaciones (Dylus) · C Productos (Institucional·Ciudadana·Impact·Economic·Cooperación · 1 motor) · D Portal `quiraintelligence.com` (radar 221 GAD). Montecristi = Municipio 001.

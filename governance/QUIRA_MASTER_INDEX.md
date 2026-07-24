@@ -35,6 +35,7 @@
 | **Qué ES d02** (4 capacidades, 3 señales SAT, cadena BRN) | `data/d02/catalogo_d02_v1.0.0.yaml` (SSoT) — motor real: `scripts/enrich_presupuesto.py` | Neo4j deriva de aquí; el enricher YA existía, no se reimplementó |
 | **Qué ES d03** (2 métricas: incorporación=hecho, calidad=índice, cadena BRN) | `data/d03/catalogo_d03_v1.0.0.yaml` (SSoT) — motor real: `scripts/enrich_mandato.py` | Neo4j deriva de aquí; evaluación ANUAL (no mensual) |
 | **Qué ES d09** (1 índice fidelidad narrativa + 4 hechos documentales incl. aportes ciudadanos, cadena BRN 10 eslabones) | `data/d09/catalogo_d09_v1.0.0.yaml` (SSoT) — motores: `scripts/enrich_rdc.py` (vivo) + `scripts/enrich_rdc_docx.py`/`enrich_aportes.py` (persistidos) | Neo4j deriva de aquí; último dominio BRN-conforme, evaluación ANUAL |
+| **Qué ES d08** (jerarquía institucional: marco→Sistema→Asamblea(órgano autónomo)→Consejo→4 mecanismos · 3 dimensiones integridad/vitalidad/efectividad · familia BRN CNO-VIII de 8 CNO) | `data/d08/catalogo_d08_v1.0.0.yaml` (SSoT) | Neo4j deriva de aquí; IGP se LEE (diagnóstico, OBS-015); SAT real = SAT-VI, no 1:1 con mecanismos (OBS-016) |
 
 ## 1.A · Stack de Descripción de QUIRA (Marco Fundacional + 3 niveles anidados — aquí se responde "¿6 o 7 capas?")
 

@@ -1,0 +1,67 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# RO-VIII-003 · Regla Operativa · EFECTIVIDAD / INCIDENCIA REAL (3ª dimensión de d08)
+# Idea de Javo (2026-07-23) — la que cierra el modelo: no basta que el mecanismo exista
+# (integridad) ni que participe gente (vitalidad); lo decisivo es si lo que la ciudadanía
+# pidió EN LAS INSTANCIAS DE PARTICIPACIÓN se convirtió en POA / PAC / presupuesto / obra.
+#
+# ★ CORRECCIÓN DE NATURALEZA (Javo · 2026-07-23): la primera versión reusó por error
+# scripts/enrich_aportes.py — pero ESE motor cruza los aportes al INFORME DE RENDICIÓN DE
+# CUENTAS (H10c), que son CONTROL SOCIAL (d09), no participación. Frontera LOPC:
+#   · d09 (RDC · control social)   → aportes ciudadanos AL informe de rendición.
+#   · d08 (participación ciudadana) → aportes emanados DE las instancias/mecanismos:
+#       actas de PP, actas de audiencias públicas, actas de cabildos populares.
+# Mismo término ("aporte ciudadano"), distinta fuente y naturaleza jurídica. NO se reusa
+# el motor de d09; los aportes de d08 se extraen de las actas de participación (Nivel 4).
+#
+# MOTOR: NO EXISTE AÚN (a diferencia de d09). Es workstream propio de d08 — extraer los
+# aportes diseminados en las actas de las instancias y cruzarlos contra la ejecución
+# (POA/PAC/presupuesto). Muchas actas están escaneadas (audiencias) → requieren OCR
+# certificado; PP y cabildo son docx (texto). Por eso: estado = diseño, motor pendiente.
+#
+# DISTINCIÓN JURÍDICA (verificada) para la exigibilidad de la incorporación:
+#   · PRESUPUESTO PARTICIPATIVO = VINCULANTE (COOTAD 238) → incorporación EXIGIBLE.
+#   · Aportes de audiencia / cabildo = ADVISORY/deliberativo (LOPC 73-76) → se mide la
+#     ACOGIDA (revela voluntad política), no como incumplimiento.
+#
+# DESTINO COMPARTIDO (reuso cross-dominio real): el cruce va contra POA (d01), PAC/SERCOP y
+# presupuesto (d02) — la ejecución se lee una vez y varios dominios la consultan. Lo que NO
+# se comparte con d09 es el ORIGEN de los aportes (ese es el error que se corrige aquí).
+#
+# LÍMITE (Regla 1/4): el cruce será derivación semántica (embeddings + validación experta),
+# NO fórmula que el Excel recalcule; su resultado no se estampa en el Gold Master.
+#
+# ESTADO: propuesta · DISEÑO — motor de extracción de aportes de participación PENDIENTE.
+# ═══════════════════════════════════════════════════════════════════════════════
+id: RO-VIII-003
+version: "1.0"
+dimension: efectividad_incidencia
+deriva_de: CNO-VIII-000 v1.0
+metrica: { nombre: Efectividad_Incidencia_Participacion, unidad: porcentaje }
+parametros: { umbral_alto: 60, umbral_medio: 40, frecuencia: anual }   # atención realista, a calibrar con Javo
+
+metodo:
+  tipo: trazabilidad_documental_semiautomatica
+  motor: "PENDIENTE — workstream propio de d08 (NO reusa enrich_aportes.py, que es de d09/RDC)"
+  fuente_aportes:
+    naturaleza: "aportes emanados de las instancias/mecanismos de participación (d08), NO del informe de RDC (d09)"
+    documentos:
+      - "actas de Presupuesto Participativo (docx · texto)"
+      - "actas de Audiencias Públicas (PDF escaneado → OCR certificado)"
+      - "actas de Cabildos Populares (docx · texto)"
+      - "actas/resoluciones de la Asamblea Ciudadana y el Consejo de Planificación"
+  clasificacion:
+    nivel_atencion: [ atendido, por_validar, sin_correlato ]
+    tiempo_respuesta: [ a_tiempo, tarde, olvidado ]
+  criterios:
+    - { id: aporte_pp_incorporado,  naturaleza: vinculante, norma: "COOTAD 238 · LOPC 71", descripcion: "lo priorizado en el PP se incorporó al POA/presupuesto (exigible)" }
+    - { id: aporte_audiencia_acogido, naturaleza: advisory, norma: "LOPC 73-75",           descripcion: "los aportes/resoluciones de audiencias fueron acogidos en la gestión (revela voluntad política)" }
+    - { id: aporte_cabildo_acogido,   naturaleza: deliberativo, norma: "LOPC 76",          descripcion: "lo deliberado en cabildos tuvo correlato en la acción del GAD" }
+
+destino_cruce: [ d01_POA, d02_presupuesto_PAC ]   # se comparte el DESTINO, no el origen de los aportes
+consecuencia: "Observación de incidencia: aporte VINCULANTE (PP) sin correlato de ejecución → no acreditación de incorporación (COOTAD 238); aporte ADVISORY sin acogida → seguimiento (no exigible). Lenguaje de administración pública, nunca acusatorio (Regla 2)."
+# SAT real del Gold Master relevante a la efectividad (OBS-016): SAT-VI Desvío PP (D4).
+# Hoy sin datos (Hay_Datos_PP=NO). Las SAT que falten para d08 se diseñan en fase 2.
+consume: [ SAT-VI ]
+opera_en: d08
+estado: propuesta
+validacion: { validada_por: null, fecha_validacion: null }

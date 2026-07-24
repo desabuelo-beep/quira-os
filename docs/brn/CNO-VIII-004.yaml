@@ -1,0 +1,55 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# CNO-VIII-004 · Micro-CNO OPERATIVA · Audiencia Pública
+# Familia CNO-VIII (d08). Se funda en CNO-VIII-000. Medida por RO-VIII-001.
+#
+# ★ AQUÍ VIVE EL HALLAZGO (fundado, no afirmado — Regla 3):
+#   · Art. 73 LOPC — la audiencia es instancia "habilitada por la autoridad responsable".
+#   · Art. 75 LOPC — "De las RESOLUCIONES de las audiencias públicas": resuelve el mismo día
+#     o en 10 días hábiles. La formalización es exigible.
+#   · Art. 60 COOTAD — el alcalde delega y preside directa o por delegado: si no la preside,
+#     el acto de delegación debe existir.
+#   Redacción (RO-VIII-001): "no se encontró evidencia documental del acto resolutivo / de
+#   delegación previsto en la cadena" — QUIRA mide evidencia, no sanciona.
+#
+# ESTADO: propuesta — verificada contra el corpus (SHA256); ratificación de Javo pendiente.
+# ═══════════════════════════════════════════════════════════════════════════════
+id: CNO-VIII-004
+version: "1.0"
+titulo: Audiencia Pública
+tipo: operativa
+mecanismo: audiencia_publica
+objeto: >-
+  la obligación de la autoridad de habilitar la audiencia pública, atender la convocatoria
+  ciudadana y cerrarla con RESOLUCIÓN formal; y de que quien la dirija esté habilitado
+  (delegación) si no la preside el alcalde.
+dominio_normativo: participacion_y_control_social
+familia: CNO-VIII
+fundamenta_en: CNO-VIII-000
+medida_por: RO-VIII-001
+
+cadena:
+  - rol: habilitacion
+    norma: LOPC
+    articulo: "73"
+    sha256: a1596df98b10
+    sumilla: "audiencia pública: instancia habilitada por la autoridad responsable — exige acto de habilitación"
+  - rol: convocatoria
+    norma: LOPC
+    articulo: "74"
+    sha256: 29970f83790d
+    sumilla: "convocatoria a audiencias públicas: la solicitud ciudadana debe ser atendida por la autoridad"
+  - rol: formalizacion_resolucion
+    norma: LOPC
+    articulo: "75"
+    sha256: 6c126fb90c51
+    sumilla: "RESOLUCIONES de las audiencias públicas: la autoridad resuelve el mismo día o en 10 días hábiles — la formalización exigible (★)"
+  - rol: habilitacion_delegacion
+    norma: COOTAD
+    articulo: "60"
+    sha256: a83bf2157a76
+    sumilla: "el alcalde delega atribuciones y preside directa o por delegado: si no preside la audiencia, el acto de delegación debe existir (★)"
+
+estado: propuesta
+vigencia: { desde: "2010-10-19", hasta: null }
+deriva_ro: []
+validacion: { propuesta_por: "BRN · d08 build 2026-07-23", validada_por: null, fecha_validacion: null }

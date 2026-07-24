@@ -1,0 +1,51 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# CNO-VIII-007 · Micro-CNO OPERATIVA · Silla Vacía
+# Familia CNO-VIII (d08). Se funda en CNO-VIII-000. Medida por RO-VIII-001.
+#
+# EXISTE COMO MICRO-CNO porque la OBLIGACIÓN JURÍDICA existe (Nivel 3), con independencia de
+# que hoy la evidencia esté distribuida (Nivel 4). La CNO modela la obligación; el estado de
+# la evidencia se declara aparte, no borra la norma.
+#   Estado de evidencia : no localizada de forma independiente
+#   Fuente esperada     : actas del Concejo (sesiones del GAD)
+#   Trazabilidad        : PENDIENTE
+#
+# ESTADO: propuesta — verificada contra el corpus (SHA256); ratificación de Javo pendiente.
+# ═══════════════════════════════════════════════════════════════════════════════
+id: CNO-VIII-007
+version: "1.0"
+titulo: Silla Vacía
+tipo: operativa
+mecanismo: silla_vacia
+objeto: >-
+  la obligación de que las sesiones del GAD sean públicas y cuenten con una silla vacía
+  ocupada por un representante ciudadano, con voz y voto, en función de los temas a tratar.
+dominio_normativo: participacion_y_control_social
+familia: CNO-VIII
+fundamenta_en: CNO-VIII-000
+medida_por: RO-VIII-001
+evidencia:
+  estado: no_localizada_independiente
+  fuente_esperada: "actas del Concejo (sesiones del GAD)"
+  trazabilidad: pendiente
+
+cadena:
+  - rol: fundamento_constitucional
+    norma: CE
+    articulo: "101"
+    sha256: 86ec8e96fbf1
+    sumilla: "sesiones públicas del GAD con silla vacía para un representante ciudadano según el tema"
+  - rol: mecanismo_lopc
+    norma: LOPC
+    articulo: "77"
+    sha256: 52d1ccab33d4
+    sumilla: "silla vacía operativa en las sesiones del GAD: participación con voz y voto"
+  - rol: mecanismo_cootad
+    norma: COOTAD
+    articulo: "311"
+    sha256: 9055359360bb
+    sumilla: "silla vacía en las sesiones del GAD: representante de la ciudadanía en función de los temas a tratarse"
+
+estado: propuesta
+vigencia: { desde: "2010-10-19", hasta: null }
+deriva_ro: []
+validacion: { propuesta_por: "BRN · d08 build 2026-07-23", validada_por: null, fecha_validacion: null }
