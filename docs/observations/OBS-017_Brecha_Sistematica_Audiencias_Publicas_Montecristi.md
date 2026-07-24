@@ -1,0 +1,86 @@
+# OBS-017 · Brecha sistemática entre cumplimiento narrado y documental — Audiencias Públicas (MCR)
+
+**Fecha:** 2026-07-24 · **Dominio:** d08 (Participación Ciudadana) · **Mecanismo:** Audiencia
+Pública (CNO-VIII-004). **Primer hallazgo EMPÍRICO de d08** — medido sobre evidencia real, no
+inferido. Hipótesis planteada por el asesor externo; verificada determinísticamente.
+
+## Hipótesis (asesor · 2026-07-24)
+> ¿Existe una brecha sistemática entre el **cumplimiento narrado** (el acta declara cumplir la
+> ley) y el **cumplimiento documental** (el instrumento resolutivo que la ley exige)?
+
+## Fuente oficial de la evidencia (Javo · 2026-07-24) — refuerza el hallazgo
+Estos documentos NO son una carpeta suelta: son el **medio de verificación oficial que el propio
+GAD declara** en su Informe de Rendición de Cuentas anual (CPCCS), sección **"Mecanismos de
+Participación Ciudadana"**. Esa sección declara, por año:
+
+| Mecanismo | ¿Cumplió? (dice el GAD) | Link de verificación (montecristi.gob.ec) |
+|---|---|---|
+| Asamblea Local | SÍ | `cloud.montecristi.gob.ec/…/EjFCAgyasTiWZ4e` |
+| Audiencia Pública | SÍ | `…/yKbMxSdB49GxexE` → **las 28 actas de este hallazgo** |
+| Cabildo Popular | SÍ | `…/4qgix3o9c4X94DT` |
+| Consejo de Planificación Local | SÍ | `…/n6AeGJLpXpB2Kry` |
+| Otros | NO | No aplica |
+
+**NO existe otra evidencia** (confirmado por Javo). Por tanto el contraste es directo y potente:
+el GAD **declara "SÍ cumplió"** la audiencia pública en su RDC, y el link que él mismo aporta como
+prueba lleva a 28 actas que acreditan la REALIZACIÓN pero **no la formalización resolutiva** que
+la ley exige. Es la brecha entre *lo declarado* (d09/RDC) y *lo verificable* (d08) — el núcleo de
+lo que QUIRA demuestra. La sección Mecanismos del informe RDC es el **puente estructural d09↔d08**.
+
+## Método (determinístico · sin IA · reproducible)
+Sobre las **28 actas** de audiencia pública 2023-2025 (extraídas a texto por Javo, incluidas las
+16 que estaban escaneadas), búsqueda de patrones:
+- cita de la norma: `art[íi]culos? 73-75` / `Ley Orgánica de Participación` / `LOPC`
+- resolución formal: `\bresuelve\b` / `Resolución (Legislativa) Nro` (el formato resolutivo que
+  sí aparece, p. ej., en las resoluciones del Concejo o del Consejo de Planificación)
+- presidencia: mención de `alcalde` · delegación: `delega` / `en representación del alcalde`
+
+Script: `scratchpad/analisis_audiencias.py` (reproducible).
+
+## Resultado
+| Señal | Resultado |
+|---|---|
+| Actas que citan la LOPC (Arts. 73-75) | **28 / 28 (100%)** |
+| Actas con RESOLUCIÓN formal | **0 / 28 (0%)** |
+| **Patrón del hallazgo** (cita la norma, acta simple sin resolución) | **28 / 28 (100%)** |
+| Alcalde presente/mencionado | 28 / 28 |
+| Delegación explícita | 0 / 28 |
+
+## Hallazgo (lenguaje de verificabilidad · Regla 2 · firewall)
+En **las 28 audiencias públicas del período 2023-2025**, todas invocan expresamente los Arts.
+73-75 de la LOPC, y en **ninguna se encontró evidencia documental del acto resolutivo previsto
+en el Art. 75** (la resolución que la autoridad debe emitir el mismo día o en 10 días hábiles).
+
+- **NO se afirma** "el GAD incumple/es ilegal" — QUIRA mide evidencia, no sanciona. La
+  consecuencia jurídica (COOTAD 312 · responsabilidad) la determina el órgano competente.
+- El fenómeno, en lenguaje de administración pública: **la audiencia pública se realiza y se
+  documenta como acta, pero no se acredita su formalización resolutiva.** El mecanismo opera en
+  su fase deliberativa y se detiene antes de la fase resolutiva que la ley prevé.
+
+## Contraste que refuerza la verificabilidad (dentro del mismo dominio)
+El Consejo de Planificación (CNO-VIII-003) **sí** produce su resolución (COPLAFIP 29 — consta en
+la carpeta). Mismo GAD, misma exigencia de formalización resolutiva, cumplida en un mecanismo
+(Consejo) y **sistemáticamente ausente en otro** (Audiencia). El contraste es objetivo, no
+interpretativo.
+
+## Sobre la delegación (COOTAD 60) — NO aplica a este caso
+Se había previsto verificar si, en ausencia del alcalde, constaba el acto de delegación. El dato
+lo descarta: en las 28 actas el alcalde está presente. El punto del hallazgo es **la resolución
+(Art. 75)**, no la habilitación de quien preside.
+
+## Límites del método (honestidad)
+- Es búsqueda de texto: detecta la resolución **en los documentos del medio de verificación
+  oficial**. Como el GAD declara estos documentos como su prueba en la RDC y NO existe otra
+  evidencia (Javo), el hallazgo es sólido: "no consta en la evidencia que el propio GAD designa
+  como verificación". No es "falta buscar en otro lado".
+- La presencia del alcalde se infiere de la mención; el acta no siempre formaliza quién preside.
+
+## Valor para QUIRA
+Este es el tipo de hallazgo que justifica el dominio: no un número del motor, sino una **brecha
+verificable documentalmente** entre lo que la gestión declara (cumple la ley de participación) y
+lo que la evidencia sostiene (no produce el instrumento resolutivo). Alimenta RO-VIII-001
+(integridad normativa) del mecanismo audiencia con estado **acreditación PARCIAL** (el acto se
+realiza; su formalización no consta), en las 28 del período.
+
+---
+*OBS-017 · Dylus Lab © 2026 · el primer hallazgo empírico de d08: la evidencia habla, QUIRA la escucha.*

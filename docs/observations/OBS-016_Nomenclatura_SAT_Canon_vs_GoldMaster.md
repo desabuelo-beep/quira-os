@@ -47,6 +47,27 @@ motor**. La cadena CNO→RO→SAT queda trazada contra una nomenclatura propia, 
 - La verificabilidad documental por instancia (integridad, RO-VIII-001) **no es una SAT** —
   es el estado de la evidencia; se queda como criterios de evaluación.
 
+## DOCTRINA DE 3 NIVELES SAT (consagrada · asesor 2026-07-24 + terreno Javo)
+El asesor propuso separar "señal conceptual BRN" de "SAT operacional Excel". La doctrina es
+correcta y se consagra AQUÍ para que d10/d11/… la hereden — pero con la ubicación precisa que
+evita la colisión de nomenclatura (que el asesor no vio por no conocer el `SAT_Catalogo`):
+
+- **Nivel 1 · BRN (conceptual):** las señales/riesgos que el dominio identifica y vigila viven
+  como **CRITERIOS de la RO** (¿consta la ordenanza? ¿la resolución?), NO como nodos "SAT-…" con
+  nomenclatura del motor. Así el BRN queda libre de decisiones de implementación (cuántas SAT,
+  si se fusionan) SIN inventar ids que colisionen con el Gold Master.
+- **Nivel 2 · Excel Gold Master (operacional):** las SAT reales (`SAT-0..VIII` por dimensión
+  TGI), cada una con fórmula, fuente, variable, ponderación y salida. Solo entran las
+  operacionalizadas. El BRN las **REFERENCIA por su id real del GM** (RO `consume: [SAT-VI]`),
+  nunca las inventa.
+- **Nivel 3 · QUIRA (evidencia):** QUIRA **no crea SAT**. Produce la evidencia documental que
+  alimenta las variables del Excel; el Excel calcula la SAT; la SAT alimenta el IGP.
+
+Flujo único: `evidencia (QUIRA) → variable (Excel) → SAT (Excel) → IGP (Excel)`. El BRN traza
+la relación `RO ← consume ← SAT-real`, no una capa paralela de señales conceptuales numeradas.
+Por eso d08 quedó con criterios en RO-VIII-001 (Nivel 1) + SAT-VI referenciada (Nivel 2) +
+motor `evaluar_integridad` (Nivel 3): los tres niveles del asesor, sin resucitar las 7 SAT.
+
 ## Pendiente (auditoría transversal · NO ahora)
 Revisar y realinear la nomenclatura SAT del canon (d01/d02/d03/d09) contra `SAT_Catalogo` del
 Gold Master, decidiendo una convención única (id del GM vs alias por dominio con mapeo

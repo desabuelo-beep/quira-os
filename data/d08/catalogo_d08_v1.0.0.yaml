@@ -93,16 +93,16 @@ instancias:
     mecanismo: audiencia_publica
     tipo: mecanismo
     evidencia:
-      estado: mixto
-      procesable:
-        formato: pdf_texto
-        n: 7
-        documentos: ["BAJO DE LA PALMA 2", "CLUB PICHINCHA", "DIRIGENTE LEONIDAS PROAÑO", "ESTANCIA LAS PALMAS", "HORIZONTE AZUL", "LA SILLA", "VERGELES"]
-      ocr_certificado:
-        formato: pdf_escaneado
-        n: 16
-        nota: "Javo extrae el texto de estos escaneados y confirma para incorporar"
-      hallazgo_pendiente: "★ ¿consta RESOLUCIÓN (LOPC 75) y acto de delegación (COOTAD 60) en cada acta? — se verifica al procesar el texto"
+      estado: procesable
+      formato: txt
+      n: 28
+      cobertura: "2023-2025 completo (28 actas, incluidas las 16 que estaban escaneadas — extraídas por Javo)"
+      acreditacion: parcial          # el acto se realiza; su formalización resolutiva NO consta
+      hallazgo: >-
+        ★ OBS-017 — hallazgo empírico verificado: 28/28 actas citan expresamente los Arts. 73-75
+        LOPC, 0/28 contienen la RESOLUCIÓN formal del Art. 75. Brecha sistemática entre
+        cumplimiento narrado y documental (2023-2025). Delegación NO aplica: alcalde presente en
+        las 28. Lenguaje de verificabilidad, no acusación (Regla 2).
   - cno: CNO-VIII-005
     mecanismo: presupuesto_participativo
     tipo: mecanismo
@@ -167,8 +167,29 @@ frontera_gad_ciudadania:
 
 # ── Fuentes del dominio ─────────────────────────────────────────────────────────────
 fuentes:
+  - id: rdc_mecanismos_participacion
+    origen: "Informe RDC anual (CPCCS) · sección 'Mecanismos de Participación Ciudadana'"
+    tipo: declaracion_con_medio_de_verificacion
+    misma_fuente_que: d09           # el informe RDC es fuente compartida (como la cédula d07↔d01↔d02)
+    nota: >-
+      PUENTE ESTRUCTURAL d09↔d08 (Javo · 2026-07-24): el GAD DECLARA cada mecanismo (SÍ/NO) en su
+      RDC —control social, d09— y aporta un LINK de verificación oficial. d08 VERIFICA el contenido
+      de esos links contra la norma. La brecha entre lo DECLARADO (p. ej. "Audiencia Pública: SÍ")
+      y lo VERIFICABLE (28 actas sin resolución Art.75, OBS-017) es el hallazgo. NO existe otra
+      evidencia: estos son los documentos que el propio GAD designa como prueba.
+    declarados_2023_2025: { asamblea_local: SI, audiencia_publica: SI, cabildo_popular: SI, consejo_planificacion: SI, otros: NO }
+    links_verificacion:
+      asamblea_local: "cloud.montecristi.gob.ec/index.php/s/EjFCAgyasTiWZ4e"
+      audiencia_publica: "cloud.montecristi.gob.ec/index.php/s/yKbMxSdB49GxexE"
+      cabildo_popular: "cloud.montecristi.gob.ec/index.php/s/4qgix3o9c4X94DT"
+      consejo_planificacion: "cloud.montecristi.gob.ec/index.php/s/n6AeGJLpXpB2Kry"
+    nota_asamblea: >-
+      El GAD declara "Asamblea Local: SÍ" y su link se sustenta en las ACTAS DE PP (Javo ·
+      2026-07-24): la ACC es ente ciudadano AUTÓNOMO (estatutos propios) y NO entrega actas
+      propias al GAD — por eso su acreditación es evidencia_indirecta, coherente con la frontera
+      GAD/ciudadanía. Toda la evidencia de d08 se descargó de estos 4 links.
   - id: carpeta_participacion_mcr
-    origen: "Holding_Municipal_Montecristi/Participación Ciudadana (39 archivos)"
+    origen: "Holding_Municipal_Montecristi/Participación Ciudadana (documentos descargados de los links RDC)"
     tipo: documento_oficial
   - id: gold_master_igp
     origen: "Gold Master — IGP (vector del ICPI)"

@@ -84,7 +84,10 @@ def evaluar_integridad(catalogo: dict[str, Any]) -> dict[str, Any]:
     for inst in catalogo["instancias"]:
         ev = inst.get("evidencia", {})
         estado = ev.get("estado")
-        acreditacion = {
+        # un campo `acreditacion` explícito gana sobre la derivación por estado: p. ej. la
+        # audiencia es documentalmente 'procesable' pero su acreditación es PARCIAL por OBS-017
+        # (el acto se realiza, la resolución del Art. 75 no consta).
+        acreditacion = ev.get("acreditacion") or {
             "procesable": "acreditada",
             "mixto": "parcial",
             "existe_documento_no_accesible": "existe_no_verificable_aun",
