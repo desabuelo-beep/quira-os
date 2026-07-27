@@ -3,8 +3,8 @@
   "_autoridad": "Carta de Gobernanza Art. 1 (Derivación) y Art. 3 (representaciones)",
   "generado": "2026-07-27",
   "raiz": "CONSTITUCION-001",
-  "total_nodos": 107,
-  "total_aristas": 107,
+  "total_nodos": 108,
+  "total_aristas": 108,
   "aristas_rotas": 0,
   "huerfanos": 0,
   "cumplimiento_derivacion_pct": 100.0,
@@ -126,6 +126,13 @@
       "kind": "decision",
       "level": 1,
       "path": "governance/decisions/DEC-0009.md",
+      "declared": true
+    },
+    {
+      "id": "DEC-0010",
+      "kind": "decision",
+      "level": 1,
+      "path": "governance/decisions/DEC-0010.md",
       "declared": true
     },
     {
@@ -852,6 +859,12 @@
     },
     {
       "from": "DEC-0009",
+      "to": "GOVERNANCE-001",
+      "type": "DERIVES_FROM",
+      "resuelto": true
+    },
+    {
+      "from": "DEC-0010",
       "to": "GOVERNANCE-001",
       "type": "DERIVES_FROM",
       "resuelto": true

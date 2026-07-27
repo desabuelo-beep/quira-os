@@ -87,11 +87,16 @@ Carta de Gobernanza (reglas)
       ↓
 Canon (conocimiento normativo)
       ↓
-Registry (certifica qué existe)
-      ↓
 Implementación (código, datos, agentes)
+
+      ⟂  Registry — VISTA GENERADA, transversal a toda la cadena
 ```
-La cadena **nunca se invierte**: el Registry no gobierna a la Carta; el código no modifica el Canon.
+La cadena **nunca se invierte**: el código no modifica el Canon; el Canon no reescribe la Carta.
+
+**El Registry NO es una capa de la cadena** (precisión del asesor · 2026-07-27): no está *entre*
+el Canon y la Implementación — es una **fotografía transversal** que las retrata a todas. Situarlo
+dentro de la cadena induciría a pensar, en el futuro, que tiene autoridad propia. No la tiene: la
+recibe de esta Carta (Art. 1) y **la certifica, no la crea**.
 
 ---
 
@@ -115,6 +120,21 @@ Neo4j). No existen dos documentos para la misma realidad.
 ### Artefactos generados — nunca se editan a mano
 `TRACEABILITY_MATRIX.md` e `INSTITUTIONAL_STATE.md` se **generan** desde el Registry.
 Editarlos manualmente rompe la trazabilidad: una matriz escrita a mano termina mintiendo.
+
+### 3.1 · El cumplimiento es un indicador, no un fin
+
+> **El porcentaje de cumplimiento del Principio de Derivación es un indicador operativo,
+> nunca un fin institucional.**
+
+La autoridad **no existe para que el Registry marque 100%**: el Registry existe porque la
+autoridad existe. Invertir esa relación degradaría la cultura del proyecto — se optimizaría la
+métrica en lugar de la sustancia, declarando autoridades vacías para "subir el número".
+
+En consecuencia:
+- El Authority Graph **evoluciona por necesidad real**, no por completitud teórica: no se añaden
+  tipos de relación ni nodos para que el grafo "se vea completo".
+- Un 100% con autoridades mal declaradas vale **menos** que un 95% con cadena sustantiva.
+- Ninguna decisión institucional se toma *porque* una métrica lo indique (ver Art. 8).
 
 ---
 
@@ -249,8 +269,18 @@ de un documento ya autorizado**.
 > su capacidad de **demostrar que toda la plataforma obedece la cadena de autoridad** definida
 > por su Constitución, su Carta y su Canon.
 
-**Levantamiento del freeze:** requiere que el `INSTITUTIONAL_STATE` reporte cadena de autoridad
-completa y Registry íntegro.
+### Levantamiento del Freeze — lo decide un órgano, no una métrica
+
+> El Freeze se levanta cuando el **Órgano de Gobernanza certifica** que la cadena de autoridad
+> es **suficiente para continuar**, apoyándose en las métricas del `INSTITUTIONAL_STATE` — no
+> por el mero hecho de que una métrica alcance determinado valor.
+
+Puede coincidir con el 100%, con el 98% o con el 95%: **la autoridad reside en el órgano, no en
+el número** (Art. 3.1). El levantamiento se formaliza mediante un DEC en `decisions/`.
+
+Esto evita el vicio de "gobernar por indicador": una cadena al 100% con autoridades declaradas
+mecánicamente no habilita nada; una cadena al 95% con autoridad sustantiva sí puede hacerlo, si
+el órgano así lo certifica.
 
 ---
 

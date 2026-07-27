@@ -1,11 +1,11 @@
 {
   "timestamp": "2026-07-27",
   "constitutional_compliance": 1.0,
-  "active_assets": 107,
+  "active_assets": 108,
   "orphans": 0,
   "broken_edges": 0,
   "edge_types": {
-    "DERIVES_FROM": 78,
+    "DERIVES_FROM": 79,
     "IMPLEMENTS": 14,
     "DEPENDS_ON": 6,
     "VALIDATES": 1,
@@ -13,5 +13,5 @@
     "SUPERSEDES": 1
   },
   "governance_version": "1.0",
-  "freeze": "ARCHITECTURE_FREEZE_v1.0_ACTIVO"
+  "freeze": "LEVANTADO_2026-07-27_por_DEC-0010"
 }

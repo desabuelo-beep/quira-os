@@ -4,7 +4,7 @@
 # Autoridad: Carta de Gobernanza Art. 1 (Derivación) y Art. 3 (describe, no gobierna).
 # ═══════════════════════════════════════════════════════════════════
 generado: 2026-07-27
-total_activos: 107
+total_activos: 108
 huerfanos: 0   # sin bloque authority: → no pueden promoverse a vigente (Art. 1)
 
 componentes:
@@ -26,7 +26,7 @@ componentes:
     kind: normative
     level: 1
     path: governance/GOVERNANCE_CHARTER.md
-    hash: 5a76f2587e1483a1
+    hash: 9dc8428e7706b4f5
     authority_declared: true
     parent: CONSTITUCION-001
   - id: NORMATIVE-HOJA_DE_RUTA_MAESTRA
@@ -125,6 +125,13 @@ componentes:
     level: 1
     path: governance/decisions/DEC-0009.md
     hash: 7fac5b988363bd5e
+    authority_declared: true
+    parent: GOVERNANCE-001
+  - id: DEC-0010
+    kind: decision
+    level: 1
+    path: governance/decisions/DEC-0010.md
+    hash: 94ffa863f42436ca
     authority_declared: true
     parent: GOVERNANCE-001
   - id: IDENTITY-CONSTITUCION_ONTOLOGICA_QUIRA
@@ -705,7 +712,7 @@ componentes:
     kind: gate
     level: 3
     path: scripts/ci/check_health.py
-    hash: aebd74325fb34126
+    hash: 3c7d1bcf95b993e3
     authority_declared: true
     parent: GOVERNANCE-001
   - id: GRAPH-001_crdc_circuit

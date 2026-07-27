@@ -15,7 +15,7 @@
 | L0 · Identidad | Constitución Institucional | ✅ vigente |
 | L0 · Identidad | Constitución Ontológica | ✅ presente |
 | L1 · Gobernanza | Carta de Gobernanza | ✅ vigente |
-| L1 · Gobernanza | Decisiones institucionales | 9 registradas |
+| L1 · Gobernanza | Decisiones institucionales | 10 registradas |
 | L2 · Canon | CNO · RO · ADR · PCD | 12 · 8 · 28 · 5 |
 | L2 · Canon | Observaciones | 15 |
 | L3 · Implementación | Dominios con catálogo | d01, d02, d03, d07, d08, d09 |
@@ -23,7 +23,7 @@
 
 ## Cumplimiento del Principio de Derivación (Carta Art. 1)
 
-**100.0%** — 107 de 107 activos declaran su autoridad.
+**100.0%** — 108 de 108 activos declaran su autoridad.
 
 ⚠️ **0 artefactos HUÉRFANOS** — sin bloque `authority:`, no pueden
 promoverse a `vigente` (Carta Art. 1). Desglose:
@@ -35,7 +35,7 @@ promoverse a `vigente` (Carta Art. 1). Desglose:
 | canon_pcd | 5 | 0 |
 | canon_ro | 8 | 0 |
 | connector | 1 | 0 |
-| decision | 9 | 0 |
+| decision | 10 | 0 |
 | domain_catalog | 6 | 0 |
 | domain_pipeline | 6 | 0 |
 | gate | 1 | 0 |
@@ -59,11 +59,11 @@ promoverse a `vigente` (Carta Art. 1). Desglose:
 
 ## Architecture Freeze v1.0
 
-**ACTIVO.** Solo se permite: declarar autoridad · completar trazabilidad · documentar
+**LEVANTADO** el 2026-07-27 por DEC-0010 (acto del Órgano de Gobernanza, no automatismo
 decisiones · verificar cumplimiento. Prohibido crear conceptos nuevos (Carta Art. 7).
 
-**Condición de levantamiento:** cumplimiento de derivación = 100% (hoy **100.0%**)
-y Registry íntegro (hoy ✅).
+debe declarar autoridad; el gate lo verifica. Cumplimiento vigente: **100.0%**
+(indicador operativo, no fin institucional — Carta Art. 3.1). Registry íntegro ✅.
 
 ---
 *Estado Institucional · GENERADO · Dylus Lab © 2026*

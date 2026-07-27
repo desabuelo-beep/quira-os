@@ -126,7 +126,7 @@ def main() -> int:
         "broken_edges": len(rotas),
         "edge_types": dict(tipos_rel),
         "governance_version": "1.0",
-        "freeze": "ARCHITECTURE_FREEZE_v1.0_ACTIVO",
+        "freeze": "LEVANTADO_2026-07-27_por_DEC-0010",
     }
     (REPO / "registry" / "institutional_state.json").write_text(
         json.dumps(snapshot, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -189,11 +189,11 @@ def main() -> int:
         "",
         "## Architecture Freeze v1.0",
         "",
-        f"**ACTIVO.** Solo se permite: declarar autoridad · completar trazabilidad · documentar",
+        f"**LEVANTADO** el 2026-07-27 por DEC-0010 (acto del Órgano de Gobernanza, no automatismo",
         "decisiones · verificar cumplimiento. Prohibido crear conceptos nuevos (Carta Art. 7).",
         "",
-        f"**Condición de levantamiento:** cumplimiento de derivación = 100% (hoy **{cumplimiento}%**)",
-        f"y Registry íntegro (hoy {'✅' if not rotas else '⚠️'}).",
+        f"debe declarar autoridad; el gate lo verifica. Cumplimiento vigente: **{cumplimiento}%**",
+        f"(indicador operativo, no fin institucional — Carta Art. 3.1). Registry {'íntegro ✅' if not rotas else '⚠️'}.",
         "",
         "---",
         "*Estado Institucional · GENERADO · Dylus Lab © 2026*",
