@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [5, 20]
+  type: ARQUITECTONICA
+---
+
 # ADR-015 — Validación de OBS-QNKC-02: DPE como Infraestructura Observacional Canónica Nacional
 
 **Estado:** ACEPTADO — OBS-QNKC-02 validada · N4 completado · C10 registrado · 2026-06-01  

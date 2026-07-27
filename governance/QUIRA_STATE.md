@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [9]
+  type: OPERATIVA
+---
+
 # QUIRA_STATE.md — MOVIDO
 
 > **El estado vivo ahora vive SOLO en `governance/BOOT.md`** (decisión 2026-06-03).

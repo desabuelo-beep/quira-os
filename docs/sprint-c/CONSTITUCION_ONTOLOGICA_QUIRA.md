@@ -1,3 +1,10 @@
+---
+authority:
+  parent: CONSTITUCION-001
+  constitution_articles: [4, 13]
+  type: CONSTITUCIONAL
+---
+
 # 📜 CONSTITUCIÓN ONTOLÓGICA DE QUIRA
 **Dylus Lab © 2026 · Sprint C · la definición formal del universo QUIRA**
 

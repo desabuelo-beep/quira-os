@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [5, 20]
+  type: ARQUITECTONICA
+---
+
 # ADR-014 — BETA-CORE: Estrategia de Completación del Gemelo Institucional de Montecristi
 
 **Estado:** Aceptado  

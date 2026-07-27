@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [5, 20]
+  type: ARQUITECTONICA
+---
+
 # ADR-013 — Mapeo Canónico QTMP → 12 Dominios del Centro de Mando
 
 **Estado:** Aceptado  

@@ -51,6 +51,20 @@ authority:
   type: CONSTITUCIONAL | NORMATIVA | ARQUITECTONICA | OPERATIVA | TECNICA
 ```
 
+### 1.2 · Principio de Subsidiariedad Normativa
+
+> **Ninguna regla podrá existir en un nivel superior cuando pueda residir completamente en un
+> nivel inferior.**
+
+Principio hermano del de Derivación: aquel ordena la autoridad **hacia arriba** (todo declara de
+qué deriva); este ordena las reglas **hacia abajo** (nada sube más de lo necesario). Juntos
+resumen la filosofía anti-inflación (Art. 4.7) y **cierran de antemano las discusiones futuras**
+sobre dónde ubicar una norma: en el nivel más bajo que la contenga por completo.
+
+Aplicaciones ya realizadas: el Principio de Derivación quedó en la Carta y no en la Constitución
+(DEC-0002); la Doctrina de Gobernanza quedó como artículo y no como documento (Art. 7); los
+invariantes operativos quedaron en la Carta y no como artículos constitucionales.
+
 ---
 
 ## Artículo 2 · Los Cuatro Órganos Permanentes
@@ -109,18 +123,22 @@ Editarlos manualmente rompe la trazabilidad: una matriz escrita a mano termina m
 Estos invariantes son **gobernanza, no identidad** (por eso viven aquí y no en la Constitución),
 pero su violación compromete la validez de todo el sistema. Detalle operativo: `CLAUDE.md`.
 
-**4.1 · Motor Único (Regla de Oro 1 y 4).** El Gold Master (Excel SIAP-ICPI) es el **único motor
-de cálculo**. QUIRA **lee** sus valores vía `app/connectors/gold_master.py`; **jamás los
-recalcula** ni construye un motor paralelo. La fórmula canónica `H12!B33` (ICPI) es **INMUTABLE**.
-Flujo: `Excel → Python → Supabase → UI`, nunca al revés. *(Implementa Constitución Art. 2 y 9.)*
+> **Frontera (asesor · 2026-07-27):** esta Carta enuncia **principios**, no implementaciones.
+> No nombra archivos, celdas ni lenguajes: debe sobrevivir aunque mañana Python se sustituya
+> por otra tecnología. Las referencias concretas (rutas, conectores, celdas del motor) viven en
+> `CLAUDE.md` y en el ADR correspondiente.
 
-**4.2 · Firewall de Lenguaje (Regla de Oro 2).** La jerga interna (ICPI · TGI · Ti · QTMP ·
-H01-H99 · Gold Master · node IDs) **jamás cruza al producto**. Afuera: lenguaje de administración
-pública. Adentro: lenguaje interno. Prohibido el lenguaje acusatorio (*incumplió · violó ·
-ilegal*). *(Implementa Constitución Art. 8 — neutralidad institucional.)*
+**4.1 · Motor Único (Regla de Oro 1 y 4).** Existe **un único mecanismo autorizado de cálculo**.
+QUIRA **lee** sus valores; **jamás los recalcula** ni construye un motor paralelo. La fórmula
+canónica del índice de cumplimiento institucional es **INMUTABLE**. El flujo va del motor hacia
+la plataforma y de ahí a la interfaz, **nunca al revés**. *(Constitución Art. 2 y 9.)*
 
-**4.3 · Evidencia verificada (Regla de Oro 3).** Sin norma verificada por SHA-256, no hay dato.
-Prohibido alucinar artículos o cifras. *(Implementa Constitución Art. 1 y 2.)*
+**4.2 · Firewall de Lenguaje (Regla de Oro 2).** La nomenclatura interna del sistema **jamás
+cruza al producto**. Afuera: lenguaje de administración pública. Adentro: lenguaje interno.
+Prohibido el lenguaje acusatorio. *(Constitución Art. 8 — neutralidad institucional.)*
+
+**4.3 · Evidencia verificada (Regla de Oro 3).** Sin norma verificada criptográficamente, no hay
+dato. Prohibido afirmar artículos o cifras sin respaldo. *(Constitución Art. 1 y 2.)*
 
 **4.4 · Sujeto observado.** El GAD es **sujeto observado, no cliente**. QUIRA es un Observatorio
 Nacional de Integridad Territorial (222 GADs); Montecristi es el **molde** (Municipio 001), no el
@@ -141,12 +159,16 @@ añadir capacidad, eliminar ambigüedad o reducir complejidad.
 
 ## Artículo 5 · Política de Enmiendas
 
-| Nivel | Quién aprueba | Requisito |
-|---|---|---|
-| **Constitución** | Javo (fundador) | constatar que preserva identidad y principios (Const. Art. 20) |
-| **Carta de Gobernanza** | Javo | registrar la decisión en `decisions/` |
-| **Canon** (Ontología, BRN, ADR) | Javo ratifica; la IA propone (ADR-035 §5) | verificación SHA-256 contra corpus |
-| **Implementación** | Director técnico | no puede alterar canon ni invariantes |
+El ciclo de vida de un cambio tiene **dos actos, no uno**: quién lo **propone** y quién lo
+**aprueba**. Separarlos es lo que hace auditable la evolución del sistema.
+
+| Nivel | Quién **propone** | Quién **aprueba** | Requisito |
+|---|---|---|---|
+| **Constitución** | Dirección + asesoría externa | Javo (fundador) | constatar que preserva identidad y principios (Const. Art. 20) |
+| **Carta de Gobernanza** | Dirección | Javo | registrar la decisión en `decisions/` |
+| **Canon** (Ontología, BRN, ADR) | IA + Dirección (ADR-035 §5) | Javo ratifica | verificación criptográfica contra corpus |
+| **Registry / artefactos generados** | *(nadie: se generan)* | *(automático)* | no se editan a mano — Art. 3 |
+| **Implementación** | Dirección técnica | Dirección técnica | no puede alterar canon ni invariantes |
 
 **Congelados (Regla de Oro 5):** `governance/*` y `.github/workflows/*` no se modifican sin
 aprobación explícita de Javo.

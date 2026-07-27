@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [2]
+  type: OPERATIVA
+---
+
 # PROMPT — AUDITORÍA INTEGRAL DEL GOLD MASTER (pegar en chat NUEVO · los tokens no importan ahí)
 
 > Objetivo: conocer y registrar TODO el Excel canónico de una vez, para nunca más dudar "si hay o no hay".

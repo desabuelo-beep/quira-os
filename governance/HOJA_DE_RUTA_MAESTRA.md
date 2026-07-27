@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [13]
+  type: ARQUITECTONICA
+---
+
 # QUIRA · HOJA DE RUTA MAESTRA
 **Dylus Lab © 2026 · consolidada 2026-06-12 · el mapa completo, nada al garete**
 

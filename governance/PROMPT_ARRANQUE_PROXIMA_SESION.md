@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [5]
+  type: OPERATIVA
+---
+
 # PROMPT DE ARRANQUE — PRÓXIMA SESIÓN (copiar/pegar en chat nuevo)
 
 > Lean a propósito: **BOOT.md §AHORA es la fuente VIVA** (al día). Este prompt solo orienta.

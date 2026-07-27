@@ -183,6 +183,54 @@ def check_references() -> list[str]:
     return errors
 
 
+def check_registry() -> list[str]:
+    """[5/5] Cumplimiento del Principio de Derivación (Carta de Gobernanza Art. 1 y 6).
+
+    El gate VERIFICA ESTADOS, no interpreta filosofía. Es la extensión del gate
+    existente — no un componente paralelo (Carta Art. 4.7, anti-inflación).
+    """
+    errors: list[str] = []
+    print("\n[5/5] Cadena de autoridad (Carta de Gobernanza Art. 1)")
+    reg = ROOT / "registry" / "registry.yaml"
+    if not reg.exists():
+        print("   >> registry/registry.yaml NO EXISTE — ejecutar build_registry.py")
+        return ["Registry ausente: el Principio de Derivación no puede verificarse"]
+
+    txt = reg.read_text(encoding="utf-8", errors="replace")
+    total = int(re.search(r"^total_activos:\s*(\d+)", txt, re.M).group(1))
+    huerfanos = int(re.search(r"^huerfanos:\s*(\d+)", txt, re.M).group(1))
+    con_autoridad = total - huerfanos
+    pct = round(100 * con_autoridad / max(total, 1), 1)
+
+    # 1 · ¿hay artefactos sin autoridad declarada?
+    print(f"      activos registrados : {total}")
+    print(f"      declaran autoridad  : {con_autoridad} ({pct}%)")
+    if huerfanos:
+        print(f"   >> HUÉRFANOS: {huerfanos} — no promovibles a vigente (Art. 1)")
+        errors.append(f"{huerfanos} artefacto(s) sin declarar autoridad (Carta Art. 1)")
+    else:
+        print("      OK — todo artefacto declara su autoridad")
+
+    # 2 · ¿la cadena es reconstruible? (aristas rotas = padre inexistente)
+    graph = ROOT / "registry" / "authority_graph.json"
+    if graph.exists():
+        import json as _json
+        g = _json.loads(graph.read_text(encoding="utf-8"))
+        rotas = g.get("aristas_rotas", 0)
+        if rotas:
+            print(f"   >> {rotas} arista(s) rota(s): padre declarado inexistente")
+            errors.append(f"{rotas} cadena(s) de autoridad no reconstruible(s) hasta la Constitución")
+        else:
+            print(f"      OK — cadena reconstruible ({g.get('total_aristas', 0)} aristas, 0 rotas)")
+
+    # 3 · ¿el Registry está al día con el disco? (hash de un centinela)
+    frozen = ROOT / "identity" / "CONSTITUCION_INSTITUCIONAL.md"
+    if not frozen.exists():
+        errors.append("Constitución Institucional ausente: la raíz de autoridad no existe")
+        print("   >> identity/CONSTITUCION_INSTITUCIONAL.md NO EXISTE")
+    return errors
+
+
 def main() -> int:
     print("=" * 60)
     print("  QUIRA Health Check — guardián de arranque + secretos")
@@ -193,6 +241,7 @@ def main() -> int:
     all_errors += check_no_secrets()
     all_errors += check_python_syntax()
     all_errors += check_references()
+    all_errors += check_registry()
 
     print("\n" + "=" * 60)
     if all_errors:

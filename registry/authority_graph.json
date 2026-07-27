@@ -3,11 +3,11 @@
   "_autoridad": "Carta de Gobernanza Art. 1 (Derivación) y Art. 3 (representaciones)",
   "generado": "2026-07-27",
   "raiz": "CONSTITUCION-001",
-  "total_nodos": 106,
-  "total_aristas": 105,
+  "total_nodos": 107,
+  "total_aristas": 107,
   "aristas_rotas": 0,
-  "huerfanos": 10,
-  "cumplimiento_derivacion_pct": 90.6,
+  "huerfanos": 0,
+  "cumplimiento_derivacion_pct": 100.0,
   "nodes": [
     {
       "id": "CONSTITUCION-001",
@@ -21,7 +21,7 @@
       "kind": "normative",
       "level": 1,
       "path": "governance/BOOT.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "GOVERNANCE-001",
@@ -35,56 +35,35 @@
       "kind": "normative",
       "level": 1,
       "path": "governance/HOJA_DE_RUTA_MAESTRA.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "NORMATIVE-PROMPT_ARRANQUE_PROXIMA_SESION",
       "kind": "normative",
       "level": 1,
       "path": "governance/PROMPT_ARRANQUE_PROXIMA_SESION.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "NORMATIVE-PROMPT_AUDITORIA_EXCEL",
       "kind": "normative",
       "level": 1,
       "path": "governance/PROMPT_AUDITORIA_EXCEL.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "NORMATIVE-QUIRA_MASTER_INDEX",
       "kind": "normative",
       "level": 1,
       "path": "governance/QUIRA_MASTER_INDEX.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "NORMATIVE-QUIRA_STATE",
       "kind": "normative",
       "level": 1,
       "path": "governance/QUIRA_STATE.md",
-      "declared": false
-    },
-    {
-      "id": "DECISION-ADR-013_Mapeo_QTMP_Dominios",
-      "kind": "decision",
-      "level": 1,
-      "path": "governance/decisions/ADR-013_Mapeo_QTMP_Dominios.md",
-      "declared": false
-    },
-    {
-      "id": "DECISION-ADR-014_BETA_CORE_Roadmap",
-      "kind": "decision",
-      "level": 1,
-      "path": "governance/decisions/ADR-014_BETA_CORE_Roadmap.md",
-      "declared": false
-    },
-    {
-      "id": "DECISION-ADR-015_Validacion_OBS-QNKC-02",
-      "kind": "decision",
-      "level": 1,
-      "path": "governance/decisions/ADR-015_Validacion_OBS-QNKC-02.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "DEC-0001",
@@ -143,11 +122,18 @@
       "declared": true
     },
     {
+      "id": "DEC-0009",
+      "kind": "decision",
+      "level": 1,
+      "path": "governance/decisions/DEC-0009.md",
+      "declared": true
+    },
+    {
       "id": "IDENTITY-CONSTITUCION_ONTOLOGICA_QUIRA",
       "kind": "identity",
       "level": 0,
       "path": "docs/sprint-c/CONSTITUCION_ONTOLOGICA_QUIRA.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CNO-I-001",
@@ -287,6 +273,27 @@
       "kind": "canon_ro",
       "level": 2,
       "path": "docs/brn/RO-VIII-003.yaml",
+      "declared": true
+    },
+    {
+      "id": "CANON_ADR-ADR-013_Mapeo_QTMP_Dominios",
+      "kind": "canon_adr",
+      "level": 2,
+      "path": "docs/adr/ADR-013_Mapeo_QTMP_Dominios.md",
+      "declared": true
+    },
+    {
+      "id": "CANON_ADR-ADR-014_BETA_CORE_Roadmap",
+      "kind": "canon_adr",
+      "level": 2,
+      "path": "docs/adr/ADR-014_BETA_CORE_Roadmap.md",
+      "declared": true
+    },
+    {
+      "id": "CANON_ADR-ADR-015_Validacion_OBS-QNKC-02",
+      "kind": "canon_adr",
+      "level": 2,
+      "path": "docs/adr/ADR-015_Validacion_OBS-QNKC-02.md",
       "declared": true
     },
     {
@@ -755,7 +762,7 @@
   "edges": [
     {
       "from": "NORMATIVE-BOOT",
-      "to": "CONSTITUCION-001",
+      "to": "GOVERNANCE-001",
       "type": "DERIVES_FROM",
       "resuelto": true
     },
@@ -767,48 +774,30 @@
     },
     {
       "from": "NORMATIVE-HOJA_DE_RUTA_MAESTRA",
-      "to": "CONSTITUCION-001",
+      "to": "GOVERNANCE-001",
       "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "NORMATIVE-PROMPT_ARRANQUE_PROXIMA_SESION",
-      "to": "CONSTITUCION-001",
+      "to": "GOVERNANCE-001",
       "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "NORMATIVE-PROMPT_AUDITORIA_EXCEL",
-      "to": "CONSTITUCION-001",
+      "to": "GOVERNANCE-001",
       "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "NORMATIVE-QUIRA_MASTER_INDEX",
-      "to": "CONSTITUCION-001",
+      "to": "GOVERNANCE-001",
       "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "NORMATIVE-QUIRA_STATE",
-      "to": "CONSTITUCION-001",
-      "type": "DERIVES_FROM",
-      "resuelto": true
-    },
-    {
-      "from": "DECISION-ADR-013_Mapeo_QTMP_Dominios",
-      "to": "GOVERNANCE-001",
-      "type": "DERIVES_FROM",
-      "resuelto": true
-    },
-    {
-      "from": "DECISION-ADR-014_BETA_CORE_Roadmap",
-      "to": "GOVERNANCE-001",
-      "type": "DERIVES_FROM",
-      "resuelto": true
-    },
-    {
-      "from": "DECISION-ADR-015_Validacion_OBS-QNKC-02",
       "to": "GOVERNANCE-001",
       "type": "DERIVES_FROM",
       "resuelto": true
@@ -858,6 +847,18 @@
     {
       "from": "DEC-0008",
       "to": "GOVERNANCE-001",
+      "type": "DERIVES_FROM",
+      "resuelto": true
+    },
+    {
+      "from": "DEC-0009",
+      "to": "GOVERNANCE-001",
+      "type": "DERIVES_FROM",
+      "resuelto": true
+    },
+    {
+      "from": "IDENTITY-CONSTITUCION_ONTOLOGICA_QUIRA",
+      "to": "CONSTITUCION-001",
       "type": "DERIVES_FROM",
       "resuelto": true
     },
@@ -979,6 +980,24 @@
       "from": "RO-VIII-003",
       "to": "CNO-VIII-000",
       "type": "IMPLEMENTS",
+      "resuelto": true
+    },
+    {
+      "from": "CANON_ADR-ADR-013_Mapeo_QTMP_Dominios",
+      "to": "GOVERNANCE-001",
+      "type": "DERIVES_FROM",
+      "resuelto": true
+    },
+    {
+      "from": "CANON_ADR-ADR-014_BETA_CORE_Roadmap",
+      "to": "GOVERNANCE-001",
+      "type": "DERIVES_FROM",
+      "resuelto": true
+    },
+    {
+      "from": "CANON_ADR-ADR-015_Validacion_OBS-QNKC-02",
+      "to": "GOVERNANCE-001",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {

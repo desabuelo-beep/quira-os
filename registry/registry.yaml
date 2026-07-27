@@ -4,8 +4,8 @@
 # Autoridad: Carta de Gobernanza Art. 1 (Derivación) y Art. 3 (describe, no gobierna).
 # ═══════════════════════════════════════════════════════════════════
 generado: 2026-07-27
-total_activos: 106
-huerfanos: 10   # sin bloque authority: → no pueden promoverse a vigente (Art. 1)
+total_activos: 107
+huerfanos: 0   # sin bloque authority: → no pueden promoverse a vigente (Art. 1)
 
 componentes:
   - id: CONSTITUCION-001
@@ -19,71 +19,50 @@ componentes:
     kind: normative
     level: 1
     path: governance/BOOT.md
-    hash: 3b8907890514d61f
-    authority_declared: false
-    parent: CONSTITUCION-001
+    hash: f77cd3df7e970453
+    authority_declared: true
+    parent: GOVERNANCE-001
   - id: GOVERNANCE-001
     kind: normative
     level: 1
     path: governance/GOVERNANCE_CHARTER.md
-    hash: b48e17f5d19ee431
+    hash: 5a76f2587e1483a1
     authority_declared: true
     parent: CONSTITUCION-001
   - id: NORMATIVE-HOJA_DE_RUTA_MAESTRA
     kind: normative
     level: 1
     path: governance/HOJA_DE_RUTA_MAESTRA.md
-    hash: f0c05ed9636e0668
-    authority_declared: false
-    parent: CONSTITUCION-001
+    hash: 53c09e97529e35a5
+    authority_declared: true
+    parent: GOVERNANCE-001
   - id: NORMATIVE-PROMPT_ARRANQUE_PROXIMA_SESION
     kind: normative
     level: 1
     path: governance/PROMPT_ARRANQUE_PROXIMA_SESION.md
-    hash: 1c1e788933f65f56
-    authority_declared: false
-    parent: CONSTITUCION-001
+    hash: 036df36f2f07e0a4
+    authority_declared: true
+    parent: GOVERNANCE-001
   - id: NORMATIVE-PROMPT_AUDITORIA_EXCEL
     kind: normative
     level: 1
     path: governance/PROMPT_AUDITORIA_EXCEL.md
-    hash: 7b73ee2873aa5815
-    authority_declared: false
-    parent: CONSTITUCION-001
+    hash: cea966e66258ac03
+    authority_declared: true
+    parent: GOVERNANCE-001
   - id: NORMATIVE-QUIRA_MASTER_INDEX
     kind: normative
     level: 1
     path: governance/QUIRA_MASTER_INDEX.md
-    hash: e4fa6cba2ffeb358
-    authority_declared: false
-    parent: CONSTITUCION-001
+    hash: 0309f907b4ce99d3
+    authority_declared: true
+    parent: GOVERNANCE-001
   - id: NORMATIVE-QUIRA_STATE
     kind: normative
     level: 1
     path: governance/QUIRA_STATE.md
-    hash: e70c2b5ca56374b1
-    authority_declared: false
-    parent: CONSTITUCION-001
-  - id: DECISION-ADR-013_Mapeo_QTMP_Dominios
-    kind: decision
-    level: 1
-    path: governance/decisions/ADR-013_Mapeo_QTMP_Dominios.md
-    hash: 42029119b0735e90
-    authority_declared: false
-    parent: GOVERNANCE-001
-  - id: DECISION-ADR-014_BETA_CORE_Roadmap
-    kind: decision
-    level: 1
-    path: governance/decisions/ADR-014_BETA_CORE_Roadmap.md
-    hash: 7859ee6bbd343e57
-    authority_declared: false
-    parent: GOVERNANCE-001
-  - id: DECISION-ADR-015_Validacion_OBS-QNKC-02
-    kind: decision
-    level: 1
-    path: governance/decisions/ADR-015_Validacion_OBS-QNKC-02.md
-    hash: 5ef4ccf9f7413f42
-    authority_declared: false
+    hash: 69cefbc876f0e349
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: DEC-0001
     kind: decision
@@ -141,13 +120,20 @@ componentes:
     hash: afea6d2b4a7b288f
     authority_declared: true
     parent: GOVERNANCE-001
+  - id: DEC-0009
+    kind: decision
+    level: 1
+    path: governance/decisions/DEC-0009.md
+    hash: 7fac5b988363bd5e
+    authority_declared: true
+    parent: GOVERNANCE-001
   - id: IDENTITY-CONSTITUCION_ONTOLOGICA_QUIRA
     kind: identity
     level: 0
     path: docs/sprint-c/CONSTITUCION_ONTOLOGICA_QUIRA.md
-    hash: 30d8cfe9da8d6d17
-    authority_declared: false
-    parent: null
+    hash: 479a3f8552edb567
+    authority_declared: true
+    parent: CONSTITUCION-001
   - id: CNO-I-001
     kind: canon_cno
     level: 2
@@ -288,6 +274,27 @@ componentes:
     hash: a88f7d058767c726
     authority_declared: true
     parent: CNO-VIII-000
+  - id: CANON_ADR-ADR-013_Mapeo_QTMP_Dominios
+    kind: canon_adr
+    level: 2
+    path: docs/adr/ADR-013_Mapeo_QTMP_Dominios.md
+    hash: a13563528eb3aaa0
+    authority_declared: true
+    parent: GOVERNANCE-001
+  - id: CANON_ADR-ADR-014_BETA_CORE_Roadmap
+    kind: canon_adr
+    level: 2
+    path: docs/adr/ADR-014_BETA_CORE_Roadmap.md
+    hash: 4bbb3eff5f47caea
+    authority_declared: true
+    parent: GOVERNANCE-001
+  - id: CANON_ADR-ADR-015_Validacion_OBS-QNKC-02
+    kind: canon_adr
+    level: 2
+    path: docs/adr/ADR-015_Validacion_OBS-QNKC-02.md
+    hash: a5a9e0b4a16f69a7
+    authority_declared: true
+    parent: GOVERNANCE-001
   - id: CANON_ADR-ADR-016_DCO_Dominio_Constitucion
     kind: canon_adr
     level: 2

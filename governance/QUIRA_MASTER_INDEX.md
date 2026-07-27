@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [5, 9]
+  type: ARQUITECTONICA
+---
+
 # QUIRA MASTER INDEX — Constitución Operacional (el DNS del conocimiento)
 
 **2026-06-21 · el índice de índices · mesa (colega + académico + Javo)**

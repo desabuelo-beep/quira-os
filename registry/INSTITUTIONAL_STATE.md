@@ -15,33 +15,33 @@
 | L0 · Identidad | Constitución Institucional | ✅ vigente |
 | L0 · Identidad | Constitución Ontológica | ✅ presente |
 | L1 · Gobernanza | Carta de Gobernanza | ✅ vigente |
-| L1 · Gobernanza | Decisiones institucionales | 11 registradas |
-| L2 · Canon | CNO · RO · ADR · PCD | 12 · 8 · 25 · 5 |
+| L1 · Gobernanza | Decisiones institucionales | 9 registradas |
+| L2 · Canon | CNO · RO · ADR · PCD | 12 · 8 · 28 · 5 |
 | L2 · Canon | Observaciones | 15 |
 | L3 · Implementación | Dominios con catálogo | d01, d02, d03, d07, d08, d09 |
 | Registry | Integridad | ✅ íntegro |
 
 ## Cumplimiento del Principio de Derivación (Carta Art. 1)
 
-**90.6%** — 96 de 106 activos declaran su autoridad.
+**100.0%** — 107 de 107 activos declaran su autoridad.
 
-⚠️ **10 artefactos HUÉRFANOS** — sin bloque `authority:`, no pueden
+⚠️ **0 artefactos HUÉRFANOS** — sin bloque `authority:`, no pueden
 promoverse a `vigente` (Carta Art. 1). Desglose:
 
 | Tipo | Total | Huérfanos |
 |---|---|---|
-| canon_adr | 25 | 0 |
+| canon_adr | 28 | 0 |
 | canon_cno | 12 | 0 |
 | canon_pcd | 5 | 0 |
 | canon_ro | 8 | 0 |
 | connector | 1 | 0 |
-| decision | 11 | 3 |
+| decision | 9 | 0 |
 | domain_catalog | 6 | 0 |
 | domain_pipeline | 6 | 0 |
 | gate | 1 | 0 |
 | graph | 7 | 0 |
-| identity | 2 | 1 |
-| normative | 7 | 6 |
+| identity | 2 | 0 |
+| normative | 7 | 0 |
 | observation | 15 | 0 |
 
 ## Activos externos declarados (Carta Art. 3 — se declaran, no se mueven)
@@ -62,7 +62,7 @@ promoverse a `vigente` (Carta Art. 1). Desglose:
 **ACTIVO.** Solo se permite: declarar autoridad · completar trazabilidad · documentar
 decisiones · verificar cumplimiento. Prohibido crear conceptos nuevos (Carta Art. 7).
 
-**Condición de levantamiento:** cumplimiento de derivación = 100% (hoy **90.6%**)
+**Condición de levantamiento:** cumplimiento de derivación = 100% (hoy **100.0%**)
 y Registry íntegro (hoy ✅).
 
 ---

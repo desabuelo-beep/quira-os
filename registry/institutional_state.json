@@ -1,11 +1,11 @@
 {
   "timestamp": "2026-07-27",
-  "constitutional_compliance": 0.906,
-  "active_assets": 106,
-  "orphans": 10,
+  "constitutional_compliance": 1.0,
+  "active_assets": 107,
+  "orphans": 0,
   "broken_edges": 0,
   "edge_types": {
-    "DERIVES_FROM": 76,
+    "DERIVES_FROM": 78,
     "IMPLEMENTS": 14,
     "DEPENDS_ON": 6,
     "VALIDATES": 1,
