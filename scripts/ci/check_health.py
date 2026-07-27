@@ -18,6 +18,12 @@ Salida: exit 0 si todo OK, exit 1 si alguna verificación crítica falla.
 
 Uso local:  python scripts/ci/check_health.py
 """
+# ---
+# authority:
+#   parent: GOVERNANCE-001
+#   constitution_articles: [1, 5, 9]
+#   type: OPERATIVA
+# ---
 
 from __future__ import annotations
 

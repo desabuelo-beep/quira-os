@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [5, 20]
+  type: ARQUITECTONICA
+---
+
 # ADR-023 — Arquitectura de Tres Niveles QUIRA
 
 **Estado**: ACTIVO — principio fundacional inmutable  

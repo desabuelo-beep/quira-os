@@ -1,3 +1,7 @@
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [1, 9]
+  type: TECNICA
 # Catálogo Canónico d02 — Presupuesto & Financiamiento
 # Fuente única de verdad para: Excel(referencia)/Neo4j/pipeline (Regla 9).
 # Extraído 2026-07-23 de docs/pcd/PCD-D02_Presupuesto_Financiamiento.md (CERRADO 2026-07-16)

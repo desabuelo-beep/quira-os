@@ -25,6 +25,12 @@ PIPELINE:
 
 Grafo: scripts/cypher/005_d03_gobernanza.cypher.
 """
+# ---
+# authority:
+#   parent: GOVERNANCE-001
+#   constitution_articles: [3, 9]
+#   type: TECNICA
+# ---
 from . import catalogo, fuentes, motor, persistencia
 
 __all__ = ["catalogo", "fuentes", "motor", "persistencia"]

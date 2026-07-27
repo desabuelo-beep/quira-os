@@ -13,6 +13,12 @@ Uso:  python scripts/governance/build_registry.py
 Salida: registry/registry.yaml
 Dylus Lab © 2026
 """
+# ---
+# authority:
+#   parent: GOVERNANCE-001
+#   constitution_articles: [9]
+#   type: OPERATIVA
+# ---
 from __future__ import annotations
 
 import hashlib
@@ -27,9 +33,12 @@ if hasattr(sys.stdout, "reconfigure"):
 
 REPO = Path(__file__).resolve().parents[2]
 EXTERNO = REPO.parent                     # C:\...\Dylus Lab
-RE_AUTHORITY = re.compile(r"^authority:", re.M)
+# El bloque de autoridad aparece como clave YAML (`authority:`), como front-matter en .md,
+# o COMENTADO en .py/.cypher (`# authority:` / `// authority:`). El detector debe reconocer
+# las tres formas: si no, el Registry miente y marca huérfano lo que sí declaró.
+RE_AUTHORITY = re.compile(r"^\s*(#|//)?\s*authority:", re.M)
 RE_ID = re.compile(r"^id:\s*(\S+)", re.M)
-RE_PARENT = re.compile(r"^\s*parent:\s*(\S+)", re.M)
+RE_PARENT = re.compile(r"^\s*(#|//)?\s*parent:\s*(\S+)", re.M)
 
 # Qué se cataloga como ACTIVO INSTITUCIONAL (no cada .py: eso sería ruido)
 CATALOGO = [
@@ -81,7 +90,7 @@ def analizar(p: Path) -> tuple[str | None, str | None, bool]:
     mid = RE_ID.search(txt)
     mpar = RE_PARENT.search(txt)
     return (mid.group(1) if mid else None,
-            mpar.group(1) if mpar else None,
+            mpar.group(2) if mpar else None,
             tiene)
 
 

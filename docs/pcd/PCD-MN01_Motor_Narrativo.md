@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [1, 2]
+  type: NORMATIVA
+---
+
 # PCD-MN01 · Motor Narrativo de QUIRA
 
 > **Expediente con ENTIDAD PROPIA** (asesor + Javo · 2026-07-06). El Motor Narrativo es un **MOTOR

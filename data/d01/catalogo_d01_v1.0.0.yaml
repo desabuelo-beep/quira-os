@@ -1,3 +1,7 @@
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [1, 9]
+  type: TECNICA
 # Catálogo Canónico d01 — Planificación Estratégica
 # Fuente única de verdad para: Excel(referencia)/Neo4j/pipeline (Regla 9).
 # Extraído 2026-07-23 de docs/brn/CNO-I-001.yaml + RO-I-001.yaml + RO-I-002.yaml

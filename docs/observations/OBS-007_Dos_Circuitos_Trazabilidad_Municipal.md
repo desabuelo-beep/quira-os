@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [1, 2, 8]
+  type: OPERATIVA
+---
+
 # OBS-007 — Dos Circuitos de Trazabilidad Pública Municipal
 
 **Estado**: ACTIVO — formulacion arquitectonica pendiente de validacion con Fases 2-4  

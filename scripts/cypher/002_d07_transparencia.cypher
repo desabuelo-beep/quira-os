@@ -1,3 +1,9 @@
+// ---
+// authority:
+//   parent: GOVERNANCE-001
+//   constitution_articles: [1, 9]
+//   type: TECNICA
+// ---
 // ============================================================
 // Cypher 002 — d07 Transparencia: ontologia completa (CD-XX)
 // QUIRA Gov . AuraDB . Dylus Lab (c) 2026

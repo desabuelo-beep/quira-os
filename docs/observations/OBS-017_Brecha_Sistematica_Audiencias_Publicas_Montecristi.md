@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [1, 2, 8]
+  type: OPERATIVA
+---
+
 # OBS-017 · Brecha sistemática entre cumplimiento narrado y documental — Audiencias Públicas (MCR)
 
 **Fecha:** 2026-07-24 · **Dominio:** d08 (Participación Ciudadana) · **Mecanismo:** Audiencia

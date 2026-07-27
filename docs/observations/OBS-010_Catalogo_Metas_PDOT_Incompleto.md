@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [1, 2, 8]
+  type: OPERATIVA
+---
+
 # OBS-010 · El universo operacional del canon: 25 de las 66 metas del PDOT
 
 > **RESUELTO el mismo día → `ADR-036`.** El canon **no está incompleto por error**: opera sobre

@@ -7,6 +7,10 @@
 # ESTADO: VIGENTE — ratificada por Javo el 2026-07-18 (ADR-035 §5).
 # ═══════════════════════════════════════════════════════════════════════════════
 id: RO-IV-001
+authority:
+  parent: CNO-IV-001
+  constitution_articles: [1, 9]
+  type: NORMATIVA
 version: "1.0"                    # sube por REFORMA del texto, NUNCA por el paso del tiempo (molde §4b)
 deriva_de: CNO-IV-001 v1.0       # SIEMPRE nace de una CNO (Regla 3)
 

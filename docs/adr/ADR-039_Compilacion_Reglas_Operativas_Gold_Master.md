@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [5, 20]
+  type: ARQUITECTONICA
+---
+
 # ADR-039 · Compilación de Reglas Operativas hacia el Gold Master
 
 **Estado:** ACEPTADO CONCEPTUALMENTE · 2026-07-17 (síntesis del colega · director técnico redacta)

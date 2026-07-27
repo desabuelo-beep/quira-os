@@ -30,6 +30,12 @@ Versiones soportadas:
 El conector lee v5.5 primero; si no existe, cae a v6.0 automáticamente.
 Dylus Lab © 2026
 """
+# ---
+# authority:
+#   parent: GOVERNANCE-001
+#   constitution_articles: [2]
+#   type: TECNICA
+# ---
 from __future__ import annotations
 
 import logging

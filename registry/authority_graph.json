@@ -4,10 +4,10 @@
   "generado": "2026-07-27",
   "raiz": "CONSTITUCION-001",
   "total_nodos": 106,
-  "total_aristas": 84,
+  "total_aristas": 105,
   "aristas_rotas": 0,
-  "huerfanos": 96,
-  "cumplimiento_derivacion_pct": 9.4,
+  "huerfanos": 10,
+  "cumplimiento_derivacion_pct": 90.6,
   "nodes": [
     {
       "id": "CONSTITUCION-001",
@@ -154,1107 +154,1233 @@
       "kind": "canon_cno",
       "level": 2,
       "path": "docs/brn/CNO-I-001.yaml",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CNO-III-001",
       "kind": "canon_cno",
       "level": 2,
       "path": "docs/brn/CNO-III-001.yaml",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CNO-IV-001",
       "kind": "canon_cno",
       "level": 2,
       "path": "docs/brn/CNO-IV-001.yaml",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CNO-IX-001",
       "kind": "canon_cno",
       "level": 2,
       "path": "docs/brn/CNO-IX-001.yaml",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CNO-VIII-000",
       "kind": "canon_cno",
       "level": 2,
       "path": "docs/brn/CNO-VIII-000.yaml",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CNO-VIII-001",
       "kind": "canon_cno",
       "level": 2,
       "path": "docs/brn/CNO-VIII-001.yaml",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CNO-VIII-002",
       "kind": "canon_cno",
       "level": 2,
       "path": "docs/brn/CNO-VIII-002.yaml",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CNO-VIII-003",
       "kind": "canon_cno",
       "level": 2,
       "path": "docs/brn/CNO-VIII-003.yaml",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CNO-VIII-004",
       "kind": "canon_cno",
       "level": 2,
       "path": "docs/brn/CNO-VIII-004.yaml",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CNO-VIII-005",
       "kind": "canon_cno",
       "level": 2,
       "path": "docs/brn/CNO-VIII-005.yaml",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CNO-VIII-006",
       "kind": "canon_cno",
       "level": 2,
       "path": "docs/brn/CNO-VIII-006.yaml",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CNO-VIII-007",
       "kind": "canon_cno",
       "level": 2,
       "path": "docs/brn/CNO-VIII-007.yaml",
-      "declared": false
+      "declared": true
     },
     {
       "id": "RO-I-001",
       "kind": "canon_ro",
       "level": 2,
       "path": "docs/brn/RO-I-001.yaml",
-      "declared": false
+      "declared": true
     },
     {
       "id": "RO-I-002",
       "kind": "canon_ro",
       "level": 2,
       "path": "docs/brn/RO-I-002.yaml",
-      "declared": false
+      "declared": true
     },
     {
       "id": "RO-III-001",
       "kind": "canon_ro",
       "level": 2,
       "path": "docs/brn/RO-III-001.yaml",
-      "declared": false
+      "declared": true
     },
     {
       "id": "RO-IV-001",
       "kind": "canon_ro",
       "level": 2,
       "path": "docs/brn/RO-IV-001.yaml",
-      "declared": false
+      "declared": true
     },
     {
       "id": "RO-IX-001",
       "kind": "canon_ro",
       "level": 2,
       "path": "docs/brn/RO-IX-001.yaml",
-      "declared": false
+      "declared": true
     },
     {
       "id": "RO-VIII-001",
       "kind": "canon_ro",
       "level": 2,
       "path": "docs/brn/RO-VIII-001.yaml",
-      "declared": false
+      "declared": true
     },
     {
       "id": "RO-VIII-002",
       "kind": "canon_ro",
       "level": 2,
       "path": "docs/brn/RO-VIII-002.yaml",
-      "declared": false
+      "declared": true
     },
     {
       "id": "RO-VIII-003",
       "kind": "canon_ro",
       "level": 2,
       "path": "docs/brn/RO-VIII-003.yaml",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CANON_ADR-ADR-016_DCO_Dominio_Constitucion",
       "kind": "canon_adr",
       "level": 2,
       "path": "docs/adr/ADR-016_DCO_Dominio_Constitucional_Operacionalizable.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CANON_ADR-ADR-017_Circuitos_Constitucional",
       "kind": "canon_adr",
       "level": 2,
       "path": "docs/adr/ADR-017_Circuitos_Constitucionales.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CANON_ADR-ADR-018_NRC_Nodos_Raiz_Constituc",
       "kind": "canon_adr",
       "level": 2,
       "path": "docs/adr/ADR-018_NRC_Nodos_Raiz_Constitucionales.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CANON_ADR-ADR-019_Dominios_Legitimacion_De",
       "kind": "canon_adr",
       "level": 2,
       "path": "docs/adr/ADR-019_Dominios_Legitimacion_Democratica.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CANON_ADR-ADR-020_Analitica_Constitucional",
       "kind": "canon_adr",
       "level": 2,
       "path": "docs/adr/ADR-020_Analitica_Constitucional.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CANON_ADR-ADR-021_Ontologia_Corpus_Motor_T",
       "kind": "canon_adr",
       "level": 2,
       "path": "docs/adr/ADR-021_Ontologia_Corpus_Motor_Trazabilidad.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CANON_ADR-ADR-022_Principio_Divergencia_A_",
       "kind": "canon_adr",
       "level": 2,
       "path": "docs/adr/ADR-022_Principio_Divergencia_A_D.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CANON_ADR-ADR-023_Arquitectura_Tres_Nivele",
       "kind": "canon_adr",
       "level": 2,
       "path": "docs/adr/ADR-023_Arquitectura_Tres_Niveles_QUIRA.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CANON_ADR-ADR-024_Inversion_Arquitectura_Q",
       "kind": "canon_adr",
       "level": 2,
       "path": "docs/adr/ADR-024_Inversion_Arquitectura_QUIRA_Radar_Nacional.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CANON_ADR-ADR-025_Principio_Alertas_QUIRA_",
       "kind": "canon_adr",
       "level": 2,
       "path": "docs/adr/ADR-025_Principio_Alertas_QUIRA_Coherencia_Institucional.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CANON_ADR-ADR-026_Topologia_Funcional_QUIR",
       "kind": "canon_adr",
       "level": 2,
       "path": "docs/adr/ADR-026_Topologia_Funcional_QUIRA.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CANON_ADR-ADR-027_Tres_Capas_Soberania_Len",
       "kind": "canon_adr",
       "level": 2,
       "path": "docs/adr/ADR-027_Tres_Capas_Soberania_Lenguaje.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CANON_ADR-ADR-028_Compilador_Lenguaje_Inst",
       "kind": "canon_adr",
       "level": 2,
       "path": "docs/adr/ADR-028_Compilador_Lenguaje_Institucional_CID.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CANON_ADR-ADR-029_Desexcelizacion_Modelo_C",
       "kind": "canon_adr",
       "level": 2,
       "path": "docs/adr/ADR-029_Desexcelizacion_Modelo_Canonico.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CANON_ADR-ADR-030_Manual_Canonico_Interfac",
       "kind": "canon_adr",
       "level": 2,
       "path": "docs/adr/ADR-030_Manual_Canonico_Interfaces_QUIRA.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CANON_ADR-ADR-031_Modelos_Canonicos_Domini",
       "kind": "canon_adr",
       "level": 2,
       "path": "docs/adr/ADR-031_Modelos_Canonicos_Dominio_MCIP.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CANON_ADR-ADR-032_Motor_Biografia",
       "kind": "canon_adr",
       "level": 2,
       "path": "docs/adr/ADR-032_Motor_Biografia.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CANON_ADR-ADR-033_Dos_Verdades_QUIRA",
       "kind": "canon_adr",
       "level": 2,
       "path": "docs/adr/ADR-033_Dos_Verdades_QUIRA.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CANON_ADR-ADR-034_Orquestacion_Operaciones",
       "kind": "canon_adr",
       "level": 2,
       "path": "docs/adr/ADR-034_Orquestacion_Operaciones_Capa_B.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CANON_ADR-ADR-035_Biblioteca_Reglas_Normat",
       "kind": "canon_adr",
       "level": 2,
       "path": "docs/adr/ADR-035_Biblioteca_Reglas_Normativas_BRN.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CANON_ADR-ADR-036_Universo_Operacional_Met",
       "kind": "canon_adr",
       "level": 2,
       "path": "docs/adr/ADR-036_Universo_Operacional_Metas.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CANON_ADR-ADR-037_Frame_Cuatro_Dimensiones",
       "kind": "canon_adr",
       "level": 2,
       "path": "docs/adr/ADR-037_Frame_Cuatro_Dimensiones_BRN.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CANON_ADR-ADR-038_BRN_Cadenas_Normativas_O",
       "kind": "canon_adr",
       "level": 2,
       "path": "docs/adr/ADR-038_BRN_Cadenas_Normativas_Operativas.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CANON_ADR-ADR-039_Compilacion_Reglas_Opera",
       "kind": "canon_adr",
       "level": 2,
       "path": "docs/adr/ADR-039_Compilacion_Reglas_Operativas_Gold_Master.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CANON_ADR-ADR-040_ACK_LOTAIP_19_Version_De",
       "kind": "canon_adr",
       "level": 2,
       "path": "docs/adr/ADR-040_ACK_LOTAIP_19_Version_Desactualizada.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CANON_PCD-PCD-D01_Planificacion",
       "kind": "canon_pcd",
       "level": 2,
       "path": "docs/pcd/PCD-D01_Planificacion.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CANON_PCD-PCD-D02_Presupuesto_Financiamien",
       "kind": "canon_pcd",
       "level": 2,
       "path": "docs/pcd/PCD-D02_Presupuesto_Financiamiento.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CANON_PCD-PCD-D03_Gobernanza_Mandato",
       "kind": "canon_pcd",
       "level": 2,
       "path": "docs/pcd/PCD-D03_Gobernanza_Mandato.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CANON_PCD-PCD-D09_Rendicion_Cuentas",
       "kind": "canon_pcd",
       "level": 2,
       "path": "docs/pcd/PCD-D09_Rendicion_Cuentas.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CANON_PCD-PCD-MN01_Motor_Narrativo",
       "kind": "canon_pcd",
       "level": 2,
       "path": "docs/pcd/PCD-MN01_Motor_Narrativo.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "OBSERVATION-OBS-003_Cierre_Normativo_Ciclo_D",
       "kind": "observation",
       "level": 2,
       "path": "docs/observations/OBS-003_Cierre_Normativo_Ciclo_Democratico.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "OBSERVATION-OBS-004_Calidad_Corpus_Evidencia",
       "kind": "observation",
       "level": 2,
       "path": "docs/observations/OBS-004_Calidad_Corpus_Evidencia.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "OBSERVATION-OBS-005_Ciclo_PP_RC_Evidencia_Te",
       "kind": "observation",
       "level": 2,
       "path": "docs/observations/OBS-005_Ciclo_PP_RC_Evidencia_Territorial.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "OBSERVATION-OBS-006_CPCCS_Cobertura_Holding",
       "kind": "observation",
       "level": 2,
       "path": "docs/observations/OBS-006_CPCCS_Cobertura_Holding.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "OBSERVATION-OBS-007_Dos_Circuitos_Trazabilid",
       "kind": "observation",
       "level": 2,
       "path": "docs/observations/OBS-007_Dos_Circuitos_Trazabilidad_Municipal.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "OBSERVATION-OBS-008_Cobertura_Ejecucion_Fina",
       "kind": "observation",
       "level": 2,
       "path": "docs/observations/OBS-008_Cobertura_Ejecucion_Financiera_Mensual.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "OBSERVATION-OBS-009_Divergencia_SIGAD_LOTAIP",
       "kind": "observation",
       "level": 2,
       "path": "docs/observations/OBS-009_Divergencia_SIGAD_LOTAIP_GAD_MCR.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "OBSERVATION-OBS-010_Catalogo_Metas_PDOT_Inco",
       "kind": "observation",
       "level": 2,
       "path": "docs/observations/OBS-010_Catalogo_Metas_PDOT_Incompleto.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "OBSERVATION-OBS-011_Incongruencia_Intersiste",
       "kind": "observation",
       "level": 2,
       "path": "docs/observations/OBS-011_Incongruencia_Intersistemica_LOTAIP_Numeral6.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "OBSERVATION-OBS-012_Auditoria_Integral_BRN_S",
       "kind": "observation",
       "level": 2,
       "path": "docs/observations/OBS-012_Auditoria_Integral_BRN_SHA_Obsoletos.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "OBSERVATION-OBS-013_Bug_Doble_Division_ICPI_",
       "kind": "observation",
       "level": 2,
       "path": "docs/observations/OBS-013_Bug_Doble_Division_ICPI_Elegibilidad.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "OBSERVATION-OBS-014_Bug_Sobrescritura_Snapsh",
       "kind": "observation",
       "level": 2,
       "path": "docs/observations/OBS-014_Bug_Sobrescritura_Snapshot_RDC_y_Enricher_No_Descubierto.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "OBSERVATION-OBS-015_IGP_Inconsistencias_Domi",
       "kind": "observation",
       "level": 2,
       "path": "docs/observations/OBS-015_IGP_Inconsistencias_Dominio_d08.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "OBSERVATION-OBS-016_Nomenclatura_SAT_Canon_v",
       "kind": "observation",
       "level": 2,
       "path": "docs/observations/OBS-016_Nomenclatura_SAT_Canon_vs_GoldMaster.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "OBSERVATION-OBS-017_Brecha_Sistematica_Audie",
       "kind": "observation",
       "level": 2,
       "path": "docs/observations/OBS-017_Brecha_Sistematica_Audiencias_Publicas_Montecristi.md",
-      "declared": false
+      "declared": true
     },
     {
       "id": "DOMAIN_CATALOG-catalogo_d01_v1.0.0",
       "kind": "domain_catalog",
       "level": 3,
       "path": "data/d01/catalogo_d01_v1.0.0.yaml",
-      "declared": false
+      "declared": true
     },
     {
       "id": "DOMAIN_CATALOG-catalogo_d02_v1.0.0",
       "kind": "domain_catalog",
       "level": 3,
       "path": "data/d02/catalogo_d02_v1.0.0.yaml",
-      "declared": false
+      "declared": true
     },
     {
       "id": "DOMAIN_CATALOG-catalogo_d03_v1.0.0",
       "kind": "domain_catalog",
       "level": 3,
       "path": "data/d03/catalogo_d03_v1.0.0.yaml",
-      "declared": false
+      "declared": true
     },
     {
       "id": "DOMAIN_CATALOG-catalogo_cd_d07_v1.0.0",
       "kind": "domain_catalog",
       "level": 3,
       "path": "data/d07/catalogo_cd_d07_v1.0.0.yaml",
-      "declared": false
+      "declared": true
     },
     {
       "id": "DOMAIN_CATALOG-catalogo_d08_v1.0.0",
       "kind": "domain_catalog",
       "level": 3,
       "path": "data/d08/catalogo_d08_v1.0.0.yaml",
-      "declared": false
+      "declared": true
     },
     {
       "id": "DOMAIN_CATALOG-catalogo_d09_v1.0.0",
       "kind": "domain_catalog",
       "level": 3,
       "path": "data/d09/catalogo_d09_v1.0.0.yaml",
-      "declared": false
+      "declared": true
     },
     {
       "id": "DOMAIN_PIPELINE-__init__",
       "kind": "domain_pipeline",
       "level": 3,
       "path": "app/agents/d01/__init__.py",
-      "declared": false
+      "declared": true
     },
     {
       "id": "DOMAIN_PIPELINE-__init__",
       "kind": "domain_pipeline",
       "level": 3,
       "path": "app/agents/d02/__init__.py",
-      "declared": false
+      "declared": true
     },
     {
       "id": "DOMAIN_PIPELINE-__init__",
       "kind": "domain_pipeline",
       "level": 3,
       "path": "app/agents/d03/__init__.py",
-      "declared": false
+      "declared": true
     },
     {
       "id": "DOMAIN_PIPELINE-__init__",
       "kind": "domain_pipeline",
       "level": 3,
       "path": "app/agents/d07/__init__.py",
-      "declared": false
+      "declared": true
     },
     {
       "id": "DOMAIN_PIPELINE-__init__",
       "kind": "domain_pipeline",
       "level": 3,
       "path": "app/agents/d08/__init__.py",
-      "declared": false
+      "declared": true
     },
     {
       "id": "DOMAIN_PIPELINE-__init__",
       "kind": "domain_pipeline",
       "level": 3,
       "path": "app/agents/d09/__init__.py",
-      "declared": false
+      "declared": true
     },
     {
       "id": "CONNECTOR-gold_master",
       "kind": "connector",
       "level": 3,
       "path": "app/connectors/gold_master.py",
-      "declared": false
+      "declared": true
     },
     {
       "id": "GATE-check_health",
       "kind": "gate",
       "level": 3,
       "path": "scripts/ci/check_health.py",
-      "declared": false
+      "declared": true
     },
     {
       "id": "GRAPH-001_crdc_circuit",
       "kind": "graph",
       "level": 3,
       "path": "scripts/cypher/001_crdc_circuit.cypher",
-      "declared": false
+      "declared": true
     },
     {
       "id": "GRAPH-002_d07_transparencia",
       "kind": "graph",
       "level": 3,
       "path": "scripts/cypher/002_d07_transparencia.cypher",
-      "declared": false
+      "declared": true
     },
     {
       "id": "GRAPH-003_d01_planificacion",
       "kind": "graph",
       "level": 3,
       "path": "scripts/cypher/003_d01_planificacion.cypher",
-      "declared": false
+      "declared": true
     },
     {
       "id": "GRAPH-004_d02_presupuesto",
       "kind": "graph",
       "level": 3,
       "path": "scripts/cypher/004_d02_presupuesto.cypher",
-      "declared": false
+      "declared": true
     },
     {
       "id": "GRAPH-005_d03_gobernanza",
       "kind": "graph",
       "level": 3,
       "path": "scripts/cypher/005_d03_gobernanza.cypher",
-      "declared": false
+      "declared": true
     },
     {
       "id": "GRAPH-006_d09_rendicion",
       "kind": "graph",
       "level": 3,
       "path": "scripts/cypher/006_d09_rendicion.cypher",
-      "declared": false
+      "declared": true
     },
     {
       "id": "GRAPH-007_d08_participacion",
       "kind": "graph",
       "level": 3,
       "path": "scripts/cypher/007_d08_participacion.cypher",
-      "declared": false
+      "declared": true
     }
   ],
   "edges": [
     {
       "from": "NORMATIVE-BOOT",
       "to": "CONSTITUCION-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "GOVERNANCE-001",
       "to": "CONSTITUCION-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "NORMATIVE-HOJA_DE_RUTA_MAESTRA",
       "to": "CONSTITUCION-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "NORMATIVE-PROMPT_ARRANQUE_PROXIMA_SESION",
       "to": "CONSTITUCION-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "NORMATIVE-PROMPT_AUDITORIA_EXCEL",
       "to": "CONSTITUCION-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "NORMATIVE-QUIRA_MASTER_INDEX",
       "to": "CONSTITUCION-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "NORMATIVE-QUIRA_STATE",
       "to": "CONSTITUCION-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "DECISION-ADR-013_Mapeo_QTMP_Dominios",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "DECISION-ADR-014_BETA_CORE_Roadmap",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "DECISION-ADR-015_Validacion_OBS-QNKC-02",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "DEC-0001",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "DEC-0002",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "DEC-0003",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "DEC-0004",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "DEC-0005",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "DEC-0006",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "DEC-0007",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "DEC-0008",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "CNO-I-001",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "CNO-III-001",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "CNO-IV-001",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "CNO-IX-001",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "CNO-VIII-000",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "CNO-VIII-001",
-      "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "to": "CNO-VIII-000",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "CNO-VIII-002",
-      "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "to": "CNO-VIII-000",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "CNO-VIII-003",
-      "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "to": "CNO-VIII-000",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "CNO-VIII-004",
-      "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "to": "CNO-VIII-000",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "CNO-VIII-005",
-      "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "to": "CNO-VIII-000",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "CNO-VIII-006",
-      "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "to": "CNO-VIII-000",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "CNO-VIII-007",
-      "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "to": "CNO-VIII-000",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "RO-I-001",
-      "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "to": "CNO-I-001",
+      "type": "IMPLEMENTS",
       "resuelto": true
     },
     {
       "from": "RO-I-002",
-      "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "to": "CNO-I-001",
+      "type": "IMPLEMENTS",
       "resuelto": true
     },
     {
       "from": "RO-III-001",
-      "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "to": "CNO-III-001",
+      "type": "IMPLEMENTS",
       "resuelto": true
     },
     {
       "from": "RO-IV-001",
-      "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "to": "CNO-IV-001",
+      "type": "IMPLEMENTS",
       "resuelto": true
     },
     {
       "from": "RO-IX-001",
-      "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "to": "CNO-IX-001",
+      "type": "IMPLEMENTS",
       "resuelto": true
     },
     {
       "from": "RO-VIII-001",
-      "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "to": "CNO-VIII-000",
+      "type": "IMPLEMENTS",
       "resuelto": true
     },
     {
       "from": "RO-VIII-002",
-      "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "to": "CNO-VIII-000",
+      "type": "IMPLEMENTS",
       "resuelto": true
     },
     {
       "from": "RO-VIII-003",
-      "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "to": "CNO-VIII-000",
+      "type": "IMPLEMENTS",
       "resuelto": true
     },
     {
       "from": "CANON_ADR-ADR-016_DCO_Dominio_Constitucion",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "CANON_ADR-ADR-017_Circuitos_Constitucional",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "CANON_ADR-ADR-018_NRC_Nodos_Raiz_Constituc",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "CANON_ADR-ADR-019_Dominios_Legitimacion_De",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "CANON_ADR-ADR-020_Analitica_Constitucional",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "CANON_ADR-ADR-021_Ontologia_Corpus_Motor_T",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "CANON_ADR-ADR-022_Principio_Divergencia_A_",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "CANON_ADR-ADR-023_Arquitectura_Tres_Nivele",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "CANON_ADR-ADR-024_Inversion_Arquitectura_Q",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "CANON_ADR-ADR-025_Principio_Alertas_QUIRA_",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "CANON_ADR-ADR-026_Topologia_Funcional_QUIR",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "CANON_ADR-ADR-027_Tres_Capas_Soberania_Len",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "CANON_ADR-ADR-028_Compilador_Lenguaje_Inst",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "CANON_ADR-ADR-029_Desexcelizacion_Modelo_C",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "CANON_ADR-ADR-030_Manual_Canonico_Interfac",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "CANON_ADR-ADR-031_Modelos_Canonicos_Domini",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "CANON_ADR-ADR-032_Motor_Biografia",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "CANON_ADR-ADR-033_Dos_Verdades_QUIRA",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "CANON_ADR-ADR-034_Orquestacion_Operaciones",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "CANON_ADR-ADR-035_Biblioteca_Reglas_Normat",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "CANON_ADR-ADR-036_Universo_Operacional_Met",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "CANON_ADR-ADR-037_Frame_Cuatro_Dimensiones",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "CANON_ADR-ADR-038_BRN_Cadenas_Normativas_O",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "CANON_ADR-ADR-039_Compilacion_Reglas_Opera",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "CANON_ADR-ADR-040_ACK_LOTAIP_19_Version_De",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "CANON_PCD-PCD-D01_Planificacion",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "CANON_PCD-PCD-D02_Presupuesto_Financiamien",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "CANON_PCD-PCD-D03_Gobernanza_Mandato",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "CANON_PCD-PCD-D09_Rendicion_Cuentas",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "CANON_PCD-PCD-MN01_Motor_Narrativo",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "OBSERVATION-OBS-003_Cierre_Normativo_Ciclo_D",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "OBSERVATION-OBS-004_Calidad_Corpus_Evidencia",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "OBSERVATION-OBS-005_Ciclo_PP_RC_Evidencia_Te",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "OBSERVATION-OBS-006_CPCCS_Cobertura_Holding",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "OBSERVATION-OBS-007_Dos_Circuitos_Trazabilid",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "OBSERVATION-OBS-008_Cobertura_Ejecucion_Fina",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "OBSERVATION-OBS-009_Divergencia_SIGAD_LOTAIP",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "OBSERVATION-OBS-010_Catalogo_Metas_PDOT_Inco",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "OBSERVATION-OBS-011_Incongruencia_Intersiste",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "OBSERVATION-OBS-012_Auditoria_Integral_BRN_S",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "OBSERVATION-OBS-013_Bug_Doble_Division_ICPI_",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "OBSERVATION-OBS-014_Bug_Sobrescritura_Snapsh",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "OBSERVATION-OBS-015_IGP_Inconsistencias_Domi",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "OBSERVATION-OBS-016_Nomenclatura_SAT_Canon_v",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "OBSERVATION-OBS-017_Brecha_Sistematica_Audie",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "DERIVES_FROM",
+      "resuelto": true
+    },
+    {
+      "from": "DOMAIN_CATALOG-catalogo_d01_v1.0.0",
+      "to": "GOVERNANCE-001",
+      "type": "IMPLEMENTS",
+      "resuelto": true
+    },
+    {
+      "from": "DOMAIN_CATALOG-catalogo_d02_v1.0.0",
+      "to": "GOVERNANCE-001",
+      "type": "IMPLEMENTS",
+      "resuelto": true
+    },
+    {
+      "from": "DOMAIN_CATALOG-catalogo_d03_v1.0.0",
+      "to": "GOVERNANCE-001",
+      "type": "IMPLEMENTS",
+      "resuelto": true
+    },
+    {
+      "from": "DOMAIN_CATALOG-catalogo_cd_d07_v1.0.0",
+      "to": "GOVERNANCE-001",
+      "type": "IMPLEMENTS",
+      "resuelto": true
+    },
+    {
+      "from": "DOMAIN_CATALOG-catalogo_d08_v1.0.0",
+      "to": "GOVERNANCE-001",
+      "type": "IMPLEMENTS",
+      "resuelto": true
+    },
+    {
+      "from": "DOMAIN_CATALOG-catalogo_d09_v1.0.0",
+      "to": "GOVERNANCE-001",
+      "type": "IMPLEMENTS",
+      "resuelto": true
+    },
+    {
+      "from": "DOMAIN_PIPELINE-__init__",
+      "to": "GOVERNANCE-001",
+      "type": "DEPENDS_ON",
+      "resuelto": true
+    },
+    {
+      "from": "DOMAIN_PIPELINE-__init__",
+      "to": "GOVERNANCE-001",
+      "type": "DEPENDS_ON",
+      "resuelto": true
+    },
+    {
+      "from": "DOMAIN_PIPELINE-__init__",
+      "to": "GOVERNANCE-001",
+      "type": "DEPENDS_ON",
+      "resuelto": true
+    },
+    {
+      "from": "DOMAIN_PIPELINE-__init__",
+      "to": "GOVERNANCE-001",
+      "type": "DEPENDS_ON",
+      "resuelto": true
+    },
+    {
+      "from": "DOMAIN_PIPELINE-__init__",
+      "to": "GOVERNANCE-001",
+      "type": "DEPENDS_ON",
+      "resuelto": true
+    },
+    {
+      "from": "DOMAIN_PIPELINE-__init__",
+      "to": "GOVERNANCE-001",
+      "type": "DEPENDS_ON",
+      "resuelto": true
+    },
+    {
+      "from": "CONNECTOR-gold_master",
+      "to": "GOVERNANCE-001",
+      "type": "DERIVES_FROM",
       "resuelto": true
     },
     {
       "from": "GATE-check_health",
       "to": "GOVERNANCE-001",
-      "type": "DERIVA_DE",
+      "type": "VALIDATES",
+      "resuelto": true
+    },
+    {
+      "from": "GRAPH-001_crdc_circuit",
+      "to": "GOVERNANCE-001",
+      "type": "GENERATES",
+      "resuelto": true
+    },
+    {
+      "from": "GRAPH-002_d07_transparencia",
+      "to": "GOVERNANCE-001",
+      "type": "GENERATES",
+      "resuelto": true
+    },
+    {
+      "from": "GRAPH-003_d01_planificacion",
+      "to": "GOVERNANCE-001",
+      "type": "GENERATES",
+      "resuelto": true
+    },
+    {
+      "from": "GRAPH-004_d02_presupuesto",
+      "to": "GOVERNANCE-001",
+      "type": "GENERATES",
+      "resuelto": true
+    },
+    {
+      "from": "GRAPH-005_d03_gobernanza",
+      "to": "GOVERNANCE-001",
+      "type": "GENERATES",
+      "resuelto": true
+    },
+    {
+      "from": "GRAPH-006_d09_rendicion",
+      "to": "GOVERNANCE-001",
+      "type": "GENERATES",
+      "resuelto": true
+    },
+    {
+      "from": "GRAPH-007_d08_participacion",
+      "to": "GOVERNANCE-001",
+      "type": "GENERATES",
+      "resuelto": true
+    },
+    {
+      "from": "DEC-0001",
+      "to": "CONSTITUCION_VERSION_A",
+      "type": "SUPERSEDES",
       "resuelto": true
     }
   ]

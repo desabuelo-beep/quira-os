@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [5, 20]
+  type: ARQUITECTONICA
+---
+
 # ADR-032 · Motor de Biografía — la unidad narrativa canónica de QUIRA
 
 **Estado:** RATIFICADO · 2026-07-11 (Javo + colega + auto-revisión del director técnico)

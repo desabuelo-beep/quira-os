@@ -18,6 +18,10 @@
 # ESTADO: propuesta — verificada contra el corpus (SHA256); ratificación de Javo pendiente.
 # ═══════════════════════════════════════════════════════════════════════════════
 id: CNO-VIII-002
+authority:
+  parent: CNO-VIII-000
+  constitution_articles: [1, 2, 9]
+  type: NORMATIVA
 version: "1.0"
 titulo: Asamblea Ciudadana Cantonal
 tipo: operativa

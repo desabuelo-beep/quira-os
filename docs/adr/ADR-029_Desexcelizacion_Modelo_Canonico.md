@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [5, 20]
+  type: ARQUITECTONICA
+---
+
 # ADR-029 · Desexcelización — el Gold Master es un Modelo Canónico, el Excel es un conector
 
 **Estado:** RATIFICADO · 2026-06-21 (Javo + mesa) · decisión estratégica de escala

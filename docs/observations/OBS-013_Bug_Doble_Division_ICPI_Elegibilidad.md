@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [1, 2, 8]
+  type: OPERATIVA
+---
+
 # OBS-013 — Bug de doble división ICPI/100 en H69/H08/H19b/H85
 
 **Estado**: RESUELTO — corregido el mismo día · 2026-07-23

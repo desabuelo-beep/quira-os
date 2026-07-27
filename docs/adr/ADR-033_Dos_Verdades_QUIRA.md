@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [5, 20]
+  type: ARQUITECTONICA
+---
+
 # ADR-033 · Las dos verdades de QUIRA — Motor de Evidencia + Motor de Evaluación
 
 **Estado:** RATIFICADO · 2026-07-13 (Javo + colega + director técnico)

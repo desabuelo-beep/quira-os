@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [1, 2, 8]
+  type: OPERATIVA
+---
+
 # OBS-012 — Auditoría Integral: BRN con SHA256 obsoletos + Art.241 CE perdido
 
 **Estado**: RESUELTO — corregido el mismo día · 2026-07-23

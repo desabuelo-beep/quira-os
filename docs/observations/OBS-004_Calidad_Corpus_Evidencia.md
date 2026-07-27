@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [1, 2, 8]
+  type: OPERATIVA
+---
+
 # OBS-004 — Calidad del Corpus de Evidencia Observacional
 
 **Estado**: CONFIRMED — FIX APLICADO  

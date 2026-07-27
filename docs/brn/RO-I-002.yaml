@@ -9,6 +9,10 @@
 # ESTADO: VIGENTE — aprobada formalmente por Javo el 2026-07-20 (ADR-035 §5).
 # ═══════════════════════════════════════════════════════════════════════════════
 id: RO-I-002
+authority:
+  parent: CNO-I-001
+  constitution_articles: [1, 9]
+  type: NORMATIVA
 version: "1.0"
 deriva_de: CNO-I-001 v1.0
 

@@ -1,3 +1,9 @@
+// ---
+// authority:
+//   parent: GOVERNANCE-001
+//   constitution_articles: [1, 9]
+//   type: TECNICA
+// ---
 // ============================================================
 // Cypher 006 -- d09 Rendicion de Cuentas: modelo conceptual
 // QUIRA Gov . AuraDB . Dylus Lab (c) 2026

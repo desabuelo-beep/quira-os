@@ -1,0 +1,17 @@
+{
+  "timestamp": "2026-07-27",
+  "constitutional_compliance": 0.906,
+  "active_assets": 106,
+  "orphans": 10,
+  "broken_edges": 0,
+  "edge_types": {
+    "DERIVES_FROM": 76,
+    "IMPLEMENTS": 14,
+    "DEPENDS_ON": 6,
+    "VALIDATES": 1,
+    "GENERATES": 7,
+    "SUPERSEDES": 1
+  },
+  "governance_version": "1.0",
+  "freeze": "ARCHITECTURE_FREEZE_v1.0_ACTIVO"
+}

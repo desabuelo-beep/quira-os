@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [5, 20]
+  type: ARQUITECTONICA
+---
+
 # ADR-030 · Canon de Expresión de Interfaz QUIRA
 
 **Estado:** RATIFICADO · 2026-06-21 (Javo) · reescrito estrecho para NO duplicar el Diccionario

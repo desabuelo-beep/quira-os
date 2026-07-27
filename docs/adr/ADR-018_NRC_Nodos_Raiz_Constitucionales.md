@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [5, 20]
+  type: ARQUITECTONICA
+---
+
 # ADR-018 — Nodos Raíz Constitucionales (NRC)
 ## Categoría Formal de ACKs con Alcance Multi-Dominio
 

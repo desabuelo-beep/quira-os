@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [1, 2]
+  type: NORMATIVA
+---
+
 # PCD-D01 · Planificación Estratégica (QINV-001)
 
 > **Expediente de Curación de Dominio** — primer aplicación del `PROTOCOLO_CURACION_DOMINIO.md`.

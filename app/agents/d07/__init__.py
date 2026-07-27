@@ -32,6 +32,12 @@ de este mismo catálogo, para navegación y consulta — nunca una segunda
 fuente de verdad. Cambios de fondo nacen en el YAML, se regeneran hacia
 Neo4j (Regla 9).
 """
+# ---
+# authority:
+#   parent: GOVERNANCE-001
+#   constitution_articles: [3, 9]
+#   type: TECNICA
+# ---
 from . import catalogo, evidencia, persistencia, reportes, scoring
 
 __all__ = ["catalogo", "evidencia", "persistencia", "reportes", "scoring"]

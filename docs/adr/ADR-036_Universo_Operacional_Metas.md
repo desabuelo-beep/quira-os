@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [5, 20]
+  type: ARQUITECTONICA
+---
+
 # ADR-036 · El universo operacional del modelo — 25 metas estratégicas (v1) y su evolución a 66 (v2)
 
 **Estado:** RATIFICADO · 2026-07-15 (Javo + director técnico · propuesta del colega)

@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [5, 20]
+  type: ARQUITECTONICA
+---
+
 # ADR-035 · Biblioteca de Reglas Normativas (BRN) — la ley como fuente autorizada de lógica de cumplimiento
 
 **Estado:** RATIFICADO · 2026-07-15 (Javo + director técnico · refinado por el colega)

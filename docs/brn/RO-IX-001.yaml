@@ -13,6 +13,10 @@
 # libre. Sin impacto en datos: solo higiene documental.
 # ═══════════════════════════════════════════════════════════════════════════════
 id: RO-IX-001
+authority:
+  parent: CNO-IX-001
+  constitution_articles: [1, 9]
+  type: NORMATIVA
 version: "1.0"
 deriva_de: CNO-IX-001 v1.0       # SIEMPRE nace de una CNO (Regla 3)
 

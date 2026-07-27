@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [1, 2, 8]
+  type: OPERATIVA
+---
+
 # OBS-011 — Incongruencia Intersistémica: Numeral 6 LOTAIP (Cédula de Ingresos)
 
 **Estado**: CONFIRMED — evidencia documental de tres fuentes independientes (norma · corpus · correspondencia oficial)

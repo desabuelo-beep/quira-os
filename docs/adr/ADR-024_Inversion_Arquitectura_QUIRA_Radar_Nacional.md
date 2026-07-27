@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [5, 20]
+  type: ARQUITECTONICA
+---
+
 # ADR-024 — Inversión de Arquitectura: QUIRA como Radar Nacional
 
 **Estado**: RATIFICADO — 2026-06-04 · Consenso equipo Dylus Lab (Javo + Claude + Colega)

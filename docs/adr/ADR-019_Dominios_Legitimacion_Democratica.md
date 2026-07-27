@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [5, 20]
+  type: ARQUITECTONICA
+---
+
 # ADR-019 — Dominios de Legitimación Democrática: Hipótesis Arquitectónica
 
 **Estado**: STRONGLY_SUPPORTED  

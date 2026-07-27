@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [1, 2, 8]
+  type: OPERATIVA
+---
+
 # OBS-009 — Divergencia entre Evaluación Externa (SIGAD) y Transparencia Real (LOTAIP)
 
 **Estado**: CONFIRMED — divergencia medida con datos de fuentes independientes  

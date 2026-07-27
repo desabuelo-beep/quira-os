@@ -17,6 +17,10 @@
 # OBS-012. Backup: data/backups/brn_pre_correccion_sha_20260723/.
 # ═══════════════════════════════════════════════════════════════════════════════
 id: CNO-I-001
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [1, 2, 9]
+  type: NORMATIVA
 version: "1.0"
 titulo: Articulación de la Planificación con el Presupuesto y la Contratación
 objeto: >-

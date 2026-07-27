@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [1, 2, 8]
+  type: OPERATIVA
+---
+
 # OBS-008 — Cobertura Diferencial de Ejecución Financiera Mensual (LOTAIP)
 
 **Estado**: CONFIRMED  

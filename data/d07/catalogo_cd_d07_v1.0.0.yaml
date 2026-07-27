@@ -1,3 +1,7 @@
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [1, 9]
+  type: TECNICA
 catalogo: CATALOGO_CANONICO_CD_D07
 version: 1.0.0
 dominio: d07

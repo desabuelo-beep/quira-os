@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [1, 2, 8]
+  type: OPERATIVA
+---
+
 # OBS-005 — Ciclo PP→RC→PP: Tres Capas de Evidencia Convergentes
 
 **Estado**: CONFIRMED  

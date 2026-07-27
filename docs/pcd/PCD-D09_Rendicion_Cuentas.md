@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [1, 2]
+  type: NORMATIVA
+---
+
 # PCD-D09 · Rendición de Cuentas (QINV-009)
 
 > **Expediente de Curación de Dominio** — segunda aplicación del `PROTOCOLO_CURACION_DOMINIO.md`

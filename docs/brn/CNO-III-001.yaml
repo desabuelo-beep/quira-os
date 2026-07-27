@@ -18,6 +18,10 @@
 # data/backups/brn_pre_correccion_sha_20260723/.
 # ═══════════════════════════════════════════════════════════════════════════════
 id: CNO-III-001
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [1, 2, 9]
+  type: NORMATIVA
 version: "1.0"
 titulo: Traducción del Mandato Electoral a la Gestión Pública
 objeto: >-

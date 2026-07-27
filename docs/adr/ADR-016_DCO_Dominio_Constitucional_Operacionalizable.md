@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [5, 20]
+  type: ARQUITECTONICA
+---
+
 # ADR-016 — Dominio Constitucional Operacionalizable (DCO)
 
 **Estado:** CONGELADO v1.0 — Dom07 caso de referencia activo  

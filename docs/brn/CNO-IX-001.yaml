@@ -18,6 +18,10 @@
 # data/backups/brn_pre_correccion_sha_20260723/.
 # ═══════════════════════════════════════════════════════════════════════════════
 id: CNO-IX-001
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [1, 2, 9]
+  type: NORMATIVA
 version: "1.0"
 titulo: Obligación de Rendición de Cuentas del GAD
 objeto: >-

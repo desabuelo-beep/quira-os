@@ -22,6 +22,10 @@
 # ESTADO: propuesta — cadena verificada contra el corpus (SHA256); ratificación de Javo pendiente.
 # ═══════════════════════════════════════════════════════════════════════════════
 id: CNO-VIII-000
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [1, 2, 9]
+  type: NORMATIVA
 version: "1.0"
 titulo: Marco Constitucional del Sistema de Participación Ciudadana
 tipo: arquitectonica

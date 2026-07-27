@@ -23,26 +23,26 @@
 
 ## Cumplimiento del Principio de Derivación (Carta Art. 1)
 
-**9.4%** — 10 de 106 activos declaran su autoridad.
+**90.6%** — 96 de 106 activos declaran su autoridad.
 
-⚠️ **96 artefactos HUÉRFANOS** — sin bloque `authority:`, no pueden
+⚠️ **10 artefactos HUÉRFANOS** — sin bloque `authority:`, no pueden
 promoverse a `vigente` (Carta Art. 1). Desglose:
 
 | Tipo | Total | Huérfanos |
 |---|---|---|
-| canon_adr | 25 | 25 |
-| canon_cno | 12 | 12 |
-| canon_pcd | 5 | 5 |
-| canon_ro | 8 | 8 |
-| connector | 1 | 1 |
+| canon_adr | 25 | 0 |
+| canon_cno | 12 | 0 |
+| canon_pcd | 5 | 0 |
+| canon_ro | 8 | 0 |
+| connector | 1 | 0 |
 | decision | 11 | 3 |
-| domain_catalog | 6 | 6 |
-| domain_pipeline | 6 | 6 |
-| gate | 1 | 1 |
-| graph | 7 | 7 |
+| domain_catalog | 6 | 0 |
+| domain_pipeline | 6 | 0 |
+| gate | 1 | 0 |
+| graph | 7 | 0 |
 | identity | 2 | 1 |
 | normative | 7 | 6 |
-| observation | 15 | 15 |
+| observation | 15 | 0 |
 
 ## Activos externos declarados (Carta Art. 3 — se declaran, no se mueven)
 
@@ -62,7 +62,7 @@ promoverse a `vigente` (Carta Art. 1). Desglose:
 **ACTIVO.** Solo se permite: declarar autoridad · completar trazabilidad · documentar
 decisiones · verificar cumplimiento. Prohibido crear conceptos nuevos (Carta Art. 7).
 
-**Condición de levantamiento:** cumplimiento de derivación = 100% (hoy **9.4%**)
+**Condición de levantamiento:** cumplimiento de derivación = 100% (hoy **90.6%**)
 y Registry íntegro (hoy ✅).
 
 ---

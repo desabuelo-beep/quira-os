@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [5, 20]
+  type: ARQUITECTONICA
+---
+
 # ADR-040 · ACK `LOTAIP_19` construido sobre versión anterior de la ley
 
 **Estado:** REGISTRADO · pendiente de reconstrucción · 2026-07-22 (hallazgo director técnico ·

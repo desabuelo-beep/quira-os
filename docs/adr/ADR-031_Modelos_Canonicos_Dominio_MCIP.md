@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [5, 20]
+  type: ARQUITECTONICA
+---
+
 # ADR-031 · Modelos Canónicos de Dominio (MCD) y el MCIP — reconciliación, no refundación
 
 **Estado:** RATIFICADO · 2026-06-29 (Javo) · refrendado por el asesor en 2ª vuelta (alineado tras revisión)

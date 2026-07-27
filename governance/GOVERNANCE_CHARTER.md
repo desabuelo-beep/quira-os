@@ -170,7 +170,47 @@ El gate **verifica estados, no interpreta filosofía**.
 
 ---
 
-## Artículo 7 · Architecture Freeze v1.0
+## Artículo 7 · Doctrina de Gobernanza — criterios de ubicación
+
+> *"Evita que dentro de dos años el equipo vuelva a discutir dónde debe vivir una regla."*
+> Es la **jurisprudencia** del ecosistema: no define reglas ni arquitectura, define **criterios**.
+> Vive como artículo (no como documento aparte) para respetar el Freeze y la Regla 7. Si crece
+> lo suficiente, se extrae a `governance/DOCTRINA_DE_GOBERNANZA.md` por enmienda.
+
+### 7.1 · ¿Dónde vive una regla?
+
+| Pregunta que responde | Va en | Órgano |
+|---|---|---|
+| ¿Qué **nunca puede cambiar** sin dejar de ser QUIRA? | Constitución | Constituyente |
+| ¿Cómo se **gobierna** QUIRA? (autoridad, enmiendas, invariantes) | Carta | Gobernanza |
+| ¿Cómo **modela** QUIRA el conocimiento normativo? | Canon (Ontología, BRN, ADR, Glosario) | Canónico |
+| ¿Cómo **funciona**? | Implementación (`app/`, `scripts/`, `data/`) | Operativo |
+| ¿**Qué existe** y con qué autoridad? | Registry | *(certifica, no gobierna)* |
+
+**Prueba decisiva:** si el artefacto puede cambiar sin que QUIRA deje de ser QUIRA, **no es
+constitucional**. La mayoría de las reglas son de Gobernanza o Canon, no de Constitución.
+
+### 7.2 · ¿Cuándo nace cada artefacto?
+
+| Artefacto | Responde | Ejemplo real |
+|---|---|---|
+| **DEC** (decisión institucional) | ¿Qué **decisión adoptó QUIRA** como institución? | *"Se adopta la numeración constitucional B"* (DEC-0001) |
+| **ADR** (decisión de arquitectura) | ¿Por qué se tomó una decisión **técnica**? | *"Elegimos Neo4j frente a otra base de grafos"* |
+| **OBS** (observación) | ¿Qué **hallazgo** produjo la evidencia? | *"28/28 audiencias sin resolución Art. 75"* (OBS-017) |
+| **PCD** (expediente de curación) | ¿Cómo quedó **curado un dominio**, capa por capa? | PCD-D09 |
+| **Enmienda constitucional** | ¿Cambia la **identidad** de QUIRA? | *(ninguna aún)* |
+
+**No se mezclan.** Un DEC no es un ADR: uno decide institucionalmente, el otro técnicamente.
+Un OBS no decide nada: reporta lo que la evidencia mostró.
+
+### 7.3 · Relación con el Master Index
+`governance/QUIRA_MASTER_INDEX.md` responde *"¿dónde vive la verdad de X?"* para lo que **ya
+existe** (rutea a rectores). Este artículo responde *"¿dónde debe vivir X?"* para lo que **va a
+nacer** (criterio de creación). Se complementan; no se duplican.
+
+---
+
+## Artículo 8 · Architecture Freeze v1.0
 
 A partir de la ratificación de esta Carta se declara **Architecture Freeze v1.0**.
 

@@ -5,7 +5,7 @@
 # ═══════════════════════════════════════════════════════════════════
 generado: 2026-07-27
 total_activos: 106
-huerfanos: 96   # sin bloque authority: → no pueden promoverse a vigente (Art. 1)
+huerfanos: 10   # sin bloque authority: → no pueden promoverse a vigente (Art. 1)
 
 componentes:
   - id: CONSTITUCION-001
@@ -26,7 +26,7 @@ componentes:
     kind: normative
     level: 1
     path: governance/GOVERNANCE_CHARTER.md
-    hash: 9e89a77feee62f4b
+    hash: b48e17f5d19ee431
     authority_declared: true
     parent: CONSTITUCION-001
   - id: NORMATIVE-HOJA_DE_RUTA_MAESTRA
@@ -152,604 +152,604 @@ componentes:
     kind: canon_cno
     level: 2
     path: docs/brn/CNO-I-001.yaml
-    hash: 3717e38de55a4f37
-    authority_declared: false
+    hash: 4c1b9f94388d14c1
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: CNO-III-001
     kind: canon_cno
     level: 2
     path: docs/brn/CNO-III-001.yaml
-    hash: 96b7df386afb0ac4
-    authority_declared: false
+    hash: 6a06815a18eb7e51
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: CNO-IV-001
     kind: canon_cno
     level: 2
     path: docs/brn/CNO-IV-001.yaml
-    hash: edf87702e5599d82
-    authority_declared: false
+    hash: 417517dbe2732700
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: CNO-IX-001
     kind: canon_cno
     level: 2
     path: docs/brn/CNO-IX-001.yaml
-    hash: 2e2b254c750d8be5
-    authority_declared: false
+    hash: 1611a04df7d29944
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: CNO-VIII-000
     kind: canon_cno
     level: 2
     path: docs/brn/CNO-VIII-000.yaml
-    hash: 1329fa15f19d3147
-    authority_declared: false
+    hash: 0b1b2b74e126905e
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: CNO-VIII-001
     kind: canon_cno
     level: 2
     path: docs/brn/CNO-VIII-001.yaml
-    hash: 99bffd0d2f01b977
-    authority_declared: false
-    parent: GOVERNANCE-001
+    hash: 089c97285768ffb4
+    authority_declared: true
+    parent: CNO-VIII-000
   - id: CNO-VIII-002
     kind: canon_cno
     level: 2
     path: docs/brn/CNO-VIII-002.yaml
-    hash: 55a3279c298de33b
-    authority_declared: false
-    parent: GOVERNANCE-001
+    hash: 323f182c9bd0867b
+    authority_declared: true
+    parent: CNO-VIII-000
   - id: CNO-VIII-003
     kind: canon_cno
     level: 2
     path: docs/brn/CNO-VIII-003.yaml
-    hash: b63fbd6b8db8f884
-    authority_declared: false
-    parent: GOVERNANCE-001
+    hash: 0fbc1666b7265681
+    authority_declared: true
+    parent: CNO-VIII-000
   - id: CNO-VIII-004
     kind: canon_cno
     level: 2
     path: docs/brn/CNO-VIII-004.yaml
-    hash: 92f7650ef2990a06
-    authority_declared: false
-    parent: GOVERNANCE-001
+    hash: f084740e71a29b79
+    authority_declared: true
+    parent: CNO-VIII-000
   - id: CNO-VIII-005
     kind: canon_cno
     level: 2
     path: docs/brn/CNO-VIII-005.yaml
-    hash: 8f4e03e9a5097344
-    authority_declared: false
-    parent: GOVERNANCE-001
+    hash: 8dc4244ab0c5f614
+    authority_declared: true
+    parent: CNO-VIII-000
   - id: CNO-VIII-006
     kind: canon_cno
     level: 2
     path: docs/brn/CNO-VIII-006.yaml
-    hash: 1cf48f2cd0926708
-    authority_declared: false
-    parent: GOVERNANCE-001
+    hash: 5d8614faa5e0262f
+    authority_declared: true
+    parent: CNO-VIII-000
   - id: CNO-VIII-007
     kind: canon_cno
     level: 2
     path: docs/brn/CNO-VIII-007.yaml
-    hash: 0fd01b2460dbc561
-    authority_declared: false
-    parent: GOVERNANCE-001
+    hash: e98a8f43452a4cab
+    authority_declared: true
+    parent: CNO-VIII-000
   - id: RO-I-001
     kind: canon_ro
     level: 2
     path: docs/brn/RO-I-001.yaml
-    hash: 9cae37b3f1f770ea
-    authority_declared: false
-    parent: GOVERNANCE-001
+    hash: 7d8e9c06faddfced
+    authority_declared: true
+    parent: CNO-I-001
   - id: RO-I-002
     kind: canon_ro
     level: 2
     path: docs/brn/RO-I-002.yaml
-    hash: d0d864f3914747b1
-    authority_declared: false
-    parent: GOVERNANCE-001
+    hash: 4565a948f16e4d8d
+    authority_declared: true
+    parent: CNO-I-001
   - id: RO-III-001
     kind: canon_ro
     level: 2
     path: docs/brn/RO-III-001.yaml
-    hash: 69e8d6c6a5ed8841
-    authority_declared: false
-    parent: GOVERNANCE-001
+    hash: 24d2b35ef99e1e7b
+    authority_declared: true
+    parent: CNO-III-001
   - id: RO-IV-001
     kind: canon_ro
     level: 2
     path: docs/brn/RO-IV-001.yaml
-    hash: ac64712d64bb93b5
-    authority_declared: false
-    parent: GOVERNANCE-001
+    hash: 289f2b86cbcc8f92
+    authority_declared: true
+    parent: CNO-IV-001
   - id: RO-IX-001
     kind: canon_ro
     level: 2
     path: docs/brn/RO-IX-001.yaml
-    hash: a6e1af3b86043822
-    authority_declared: false
-    parent: GOVERNANCE-001
+    hash: 1d95c49349d9eba7
+    authority_declared: true
+    parent: CNO-IX-001
   - id: RO-VIII-001
     kind: canon_ro
     level: 2
     path: docs/brn/RO-VIII-001.yaml
-    hash: 8f477c6b43700856
-    authority_declared: false
-    parent: GOVERNANCE-001
+    hash: 50899611835fea1e
+    authority_declared: true
+    parent: CNO-VIII-000
   - id: RO-VIII-002
     kind: canon_ro
     level: 2
     path: docs/brn/RO-VIII-002.yaml
-    hash: ff0eba1078ffa1c3
-    authority_declared: false
-    parent: GOVERNANCE-001
+    hash: ff073b67cd50beed
+    authority_declared: true
+    parent: CNO-VIII-000
   - id: RO-VIII-003
     kind: canon_ro
     level: 2
     path: docs/brn/RO-VIII-003.yaml
-    hash: e7dcdc0185f2dd20
-    authority_declared: false
-    parent: GOVERNANCE-001
+    hash: a88f7d058767c726
+    authority_declared: true
+    parent: CNO-VIII-000
   - id: CANON_ADR-ADR-016_DCO_Dominio_Constitucion
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-016_DCO_Dominio_Constitucional_Operacionalizable.md
-    hash: fa452d7ecc4fa671
-    authority_declared: false
+    hash: 6e7c0b8716ad3853
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_ADR-ADR-017_Circuitos_Constitucional
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-017_Circuitos_Constitucionales.md
-    hash: 7760786025112290
-    authority_declared: false
+    hash: 52a4f9b58d3bdf08
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_ADR-ADR-018_NRC_Nodos_Raiz_Constituc
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-018_NRC_Nodos_Raiz_Constitucionales.md
-    hash: ac34fbee437a2872
-    authority_declared: false
+    hash: d5b592d843b87ef5
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_ADR-ADR-019_Dominios_Legitimacion_De
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-019_Dominios_Legitimacion_Democratica.md
-    hash: f42db651789644c0
-    authority_declared: false
+    hash: aab0845dd1b75d7b
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_ADR-ADR-020_Analitica_Constitucional
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-020_Analitica_Constitucional.md
-    hash: 4202a8c2e4d1787c
-    authority_declared: false
+    hash: 8018af2b2f7b4cf9
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_ADR-ADR-021_Ontologia_Corpus_Motor_T
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-021_Ontologia_Corpus_Motor_Trazabilidad.md
-    hash: c4e5ca4d9b7a3732
-    authority_declared: false
+    hash: 36ff85366141f5c8
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_ADR-ADR-022_Principio_Divergencia_A_
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-022_Principio_Divergencia_A_D.md
-    hash: 611a7260cc6d3cd5
-    authority_declared: false
+    hash: d57a5720c0e31506
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_ADR-ADR-023_Arquitectura_Tres_Nivele
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-023_Arquitectura_Tres_Niveles_QUIRA.md
-    hash: 8986ca9767869378
-    authority_declared: false
+    hash: 448674b99fe18596
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_ADR-ADR-024_Inversion_Arquitectura_Q
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-024_Inversion_Arquitectura_QUIRA_Radar_Nacional.md
-    hash: 53a7c4d6b3d07f6c
-    authority_declared: false
+    hash: a6489294b812fd99
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_ADR-ADR-025_Principio_Alertas_QUIRA_
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-025_Principio_Alertas_QUIRA_Coherencia_Institucional.md
-    hash: db19b77ccd791a18
-    authority_declared: false
+    hash: c3e7bc7cfe8ff581
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_ADR-ADR-026_Topologia_Funcional_QUIR
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-026_Topologia_Funcional_QUIRA.md
-    hash: 95d0e3f0ed0f004c
-    authority_declared: false
+    hash: 6335055ce25c87c9
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_ADR-ADR-027_Tres_Capas_Soberania_Len
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-027_Tres_Capas_Soberania_Lenguaje.md
-    hash: 5bff67d770ce7d21
-    authority_declared: false
+    hash: 02b9d12d55fbd362
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_ADR-ADR-028_Compilador_Lenguaje_Inst
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-028_Compilador_Lenguaje_Institucional_CID.md
-    hash: df4feb141459f235
-    authority_declared: false
+    hash: d91024741cd63b27
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_ADR-ADR-029_Desexcelizacion_Modelo_C
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-029_Desexcelizacion_Modelo_Canonico.md
-    hash: 8972343ff4c5ac55
-    authority_declared: false
+    hash: 04f221b09fd8ed56
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_ADR-ADR-030_Manual_Canonico_Interfac
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-030_Manual_Canonico_Interfaces_QUIRA.md
-    hash: 43bff82eb6675d78
-    authority_declared: false
+    hash: a6a8109db8275b28
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_ADR-ADR-031_Modelos_Canonicos_Domini
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-031_Modelos_Canonicos_Dominio_MCIP.md
-    hash: e60084c1bad3454c
-    authority_declared: false
+    hash: c4380d0924c3b776
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_ADR-ADR-032_Motor_Biografia
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-032_Motor_Biografia.md
-    hash: 91ac4a9ca2fa10f8
-    authority_declared: false
+    hash: c469def525b6eba0
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_ADR-ADR-033_Dos_Verdades_QUIRA
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-033_Dos_Verdades_QUIRA.md
-    hash: 41cfc5fe7d19cf93
-    authority_declared: false
+    hash: 41511e08b17f8672
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_ADR-ADR-034_Orquestacion_Operaciones
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-034_Orquestacion_Operaciones_Capa_B.md
-    hash: 175bb48c287db907
-    authority_declared: false
+    hash: 4ce56a93e7d20579
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_ADR-ADR-035_Biblioteca_Reglas_Normat
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-035_Biblioteca_Reglas_Normativas_BRN.md
-    hash: e894b3c61c678eb6
-    authority_declared: false
+    hash: 778fac98a01e6922
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_ADR-ADR-036_Universo_Operacional_Met
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-036_Universo_Operacional_Metas.md
-    hash: accb9e51ef9a80ac
-    authority_declared: false
+    hash: 086bc1a7e33b1c5d
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_ADR-ADR-037_Frame_Cuatro_Dimensiones
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-037_Frame_Cuatro_Dimensiones_BRN.md
-    hash: c2da9408d58b9c92
-    authority_declared: false
+    hash: 1f430cf2b5bb397f
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_ADR-ADR-038_BRN_Cadenas_Normativas_O
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-038_BRN_Cadenas_Normativas_Operativas.md
-    hash: 6138c75d12e3bd14
-    authority_declared: false
+    hash: 48e2f5b00674f160
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_ADR-ADR-039_Compilacion_Reglas_Opera
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-039_Compilacion_Reglas_Operativas_Gold_Master.md
-    hash: 17d58b672a502d59
-    authority_declared: false
+    hash: 1b07a5a295f46759
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_ADR-ADR-040_ACK_LOTAIP_19_Version_De
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-040_ACK_LOTAIP_19_Version_Desactualizada.md
-    hash: 2afc865ecbef9dec
-    authority_declared: false
+    hash: 86bf149bac86aaa7
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_PCD-PCD-D01_Planificacion
     kind: canon_pcd
     level: 2
     path: docs/pcd/PCD-D01_Planificacion.md
-    hash: af4be109a0d1b6eb
-    authority_declared: false
+    hash: 438471559ffd98d0
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_PCD-PCD-D02_Presupuesto_Financiamien
     kind: canon_pcd
     level: 2
     path: docs/pcd/PCD-D02_Presupuesto_Financiamiento.md
-    hash: 05192a0a491ebcd0
-    authority_declared: false
+    hash: 0e6b815e63749fa7
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_PCD-PCD-D03_Gobernanza_Mandato
     kind: canon_pcd
     level: 2
     path: docs/pcd/PCD-D03_Gobernanza_Mandato.md
-    hash: 4bc63ec9fca7a882
-    authority_declared: false
+    hash: f76e7c2d09651137
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_PCD-PCD-D09_Rendicion_Cuentas
     kind: canon_pcd
     level: 2
     path: docs/pcd/PCD-D09_Rendicion_Cuentas.md
-    hash: dd7fe687f45187ab
-    authority_declared: false
+    hash: 1f33eb5de5c05a76
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_PCD-PCD-MN01_Motor_Narrativo
     kind: canon_pcd
     level: 2
     path: docs/pcd/PCD-MN01_Motor_Narrativo.md
-    hash: 2be8ece0f280fd37
-    authority_declared: false
+    hash: 265144d277f021e8
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: OBSERVATION-OBS-003_Cierre_Normativo_Ciclo_D
     kind: observation
     level: 2
     path: docs/observations/OBS-003_Cierre_Normativo_Ciclo_Democratico.md
-    hash: e6dc32e93cc88fc3
-    authority_declared: false
+    hash: 07c66f11150b8def
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: OBSERVATION-OBS-004_Calidad_Corpus_Evidencia
     kind: observation
     level: 2
     path: docs/observations/OBS-004_Calidad_Corpus_Evidencia.md
-    hash: fd841af21df1feef
-    authority_declared: false
+    hash: 22f25cb482654ae0
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: OBSERVATION-OBS-005_Ciclo_PP_RC_Evidencia_Te
     kind: observation
     level: 2
     path: docs/observations/OBS-005_Ciclo_PP_RC_Evidencia_Territorial.md
-    hash: efb064c5d5055605
-    authority_declared: false
+    hash: 2d67aff14ceaa0d5
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: OBSERVATION-OBS-006_CPCCS_Cobertura_Holding
     kind: observation
     level: 2
     path: docs/observations/OBS-006_CPCCS_Cobertura_Holding.md
-    hash: 2d2496e8fdc5395b
-    authority_declared: false
+    hash: 35f1017fda7cc26d
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: OBSERVATION-OBS-007_Dos_Circuitos_Trazabilid
     kind: observation
     level: 2
     path: docs/observations/OBS-007_Dos_Circuitos_Trazabilidad_Municipal.md
-    hash: b2d48bcac470bab4
-    authority_declared: false
+    hash: 0f7ae2be390aa063
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: OBSERVATION-OBS-008_Cobertura_Ejecucion_Fina
     kind: observation
     level: 2
     path: docs/observations/OBS-008_Cobertura_Ejecucion_Financiera_Mensual.md
-    hash: f1b692f6df67431d
-    authority_declared: false
+    hash: d1edbcba22a66b91
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: OBSERVATION-OBS-009_Divergencia_SIGAD_LOTAIP
     kind: observation
     level: 2
     path: docs/observations/OBS-009_Divergencia_SIGAD_LOTAIP_GAD_MCR.md
-    hash: 2f42c2b9bc4d9d29
-    authority_declared: false
+    hash: e06e8c47f543a54b
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: OBSERVATION-OBS-010_Catalogo_Metas_PDOT_Inco
     kind: observation
     level: 2
     path: docs/observations/OBS-010_Catalogo_Metas_PDOT_Incompleto.md
-    hash: d97345714e16537a
-    authority_declared: false
+    hash: 87346a5118a9988e
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: OBSERVATION-OBS-011_Incongruencia_Intersiste
     kind: observation
     level: 2
     path: docs/observations/OBS-011_Incongruencia_Intersistemica_LOTAIP_Numeral6.md
-    hash: d4661f8e3f696571
-    authority_declared: false
+    hash: 4f8b210d5fff9502
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: OBSERVATION-OBS-012_Auditoria_Integral_BRN_S
     kind: observation
     level: 2
     path: docs/observations/OBS-012_Auditoria_Integral_BRN_SHA_Obsoletos.md
-    hash: 1b89e0ba9df16750
-    authority_declared: false
+    hash: a0b5c00dfd0d8b21
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: OBSERVATION-OBS-013_Bug_Doble_Division_ICPI_
     kind: observation
     level: 2
     path: docs/observations/OBS-013_Bug_Doble_Division_ICPI_Elegibilidad.md
-    hash: c93be63ec5bf8c22
-    authority_declared: false
+    hash: f1eb09d0312db461
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: OBSERVATION-OBS-014_Bug_Sobrescritura_Snapsh
     kind: observation
     level: 2
     path: docs/observations/OBS-014_Bug_Sobrescritura_Snapshot_RDC_y_Enricher_No_Descubierto.md
-    hash: bc7256499d4d7159
-    authority_declared: false
+    hash: 4c41b4e40783aa1e
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: OBSERVATION-OBS-015_IGP_Inconsistencias_Domi
     kind: observation
     level: 2
     path: docs/observations/OBS-015_IGP_Inconsistencias_Dominio_d08.md
-    hash: 303aa0c6fd390559
-    authority_declared: false
+    hash: c029cce199dde812
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: OBSERVATION-OBS-016_Nomenclatura_SAT_Canon_v
     kind: observation
     level: 2
     path: docs/observations/OBS-016_Nomenclatura_SAT_Canon_vs_GoldMaster.md
-    hash: 75f7e0235036a3e9
-    authority_declared: false
+    hash: d8a5fa215e87240c
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: OBSERVATION-OBS-017_Brecha_Sistematica_Audie
     kind: observation
     level: 2
     path: docs/observations/OBS-017_Brecha_Sistematica_Audiencias_Publicas_Montecristi.md
-    hash: 3dc1dd837cea0473
-    authority_declared: false
+    hash: cd063a833347c8e2
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: DOMAIN_CATALOG-catalogo_d01_v1.0.0
     kind: domain_catalog
     level: 3
     path: data/d01/catalogo_d01_v1.0.0.yaml
-    hash: cc639dd680b4cdaf
-    authority_declared: false
-    parent: null
+    hash: 5605891d479139aa
+    authority_declared: true
+    parent: GOVERNANCE-001
   - id: DOMAIN_CATALOG-catalogo_d02_v1.0.0
     kind: domain_catalog
     level: 3
     path: data/d02/catalogo_d02_v1.0.0.yaml
-    hash: 8c780bfa47c1ae7e
-    authority_declared: false
-    parent: null
+    hash: d270902404f25829
+    authority_declared: true
+    parent: GOVERNANCE-001
   - id: DOMAIN_CATALOG-catalogo_d03_v1.0.0
     kind: domain_catalog
     level: 3
     path: data/d03/catalogo_d03_v1.0.0.yaml
-    hash: d5f64b229b3ee474
-    authority_declared: false
-    parent: null
+    hash: cc87dc6b16308490
+    authority_declared: true
+    parent: GOVERNANCE-001
   - id: DOMAIN_CATALOG-catalogo_cd_d07_v1.0.0
     kind: domain_catalog
     level: 3
     path: data/d07/catalogo_cd_d07_v1.0.0.yaml
-    hash: 95fc0efa8df3b251
-    authority_declared: false
-    parent: null
+    hash: e5a5724555d08c7f
+    authority_declared: true
+    parent: GOVERNANCE-001
   - id: DOMAIN_CATALOG-catalogo_d08_v1.0.0
     kind: domain_catalog
     level: 3
     path: data/d08/catalogo_d08_v1.0.0.yaml
-    hash: a799219d96d18c35
-    authority_declared: false
-    parent: null
+    hash: 9968120485881eea
+    authority_declared: true
+    parent: GOVERNANCE-001
   - id: DOMAIN_CATALOG-catalogo_d09_v1.0.0
     kind: domain_catalog
     level: 3
     path: data/d09/catalogo_d09_v1.0.0.yaml
-    hash: 9c6f33dd71f6caa2
-    authority_declared: false
-    parent: null
+    hash: c8dbd6aa31e4b893
+    authority_declared: true
+    parent: GOVERNANCE-001
   - id: DOMAIN_PIPELINE-__init__
     kind: domain_pipeline
     level: 3
     path: app/agents/d01/__init__.py
-    hash: 9a07abb713e6fbcc
-    authority_declared: false
-    parent: null
+    hash: d0c7bb39c09c5b93
+    authority_declared: true
+    parent: GOVERNANCE-001
   - id: DOMAIN_PIPELINE-__init__
     kind: domain_pipeline
     level: 3
     path: app/agents/d02/__init__.py
-    hash: 127f8191adde94e4
-    authority_declared: false
-    parent: null
+    hash: c555e74c0299be32
+    authority_declared: true
+    parent: GOVERNANCE-001
   - id: DOMAIN_PIPELINE-__init__
     kind: domain_pipeline
     level: 3
     path: app/agents/d03/__init__.py
-    hash: 5e3565766669aa42
-    authority_declared: false
-    parent: null
+    hash: 21b51f2710ce21ec
+    authority_declared: true
+    parent: GOVERNANCE-001
   - id: DOMAIN_PIPELINE-__init__
     kind: domain_pipeline
     level: 3
     path: app/agents/d07/__init__.py
-    hash: d26f7fa181faa58a
-    authority_declared: false
-    parent: null
+    hash: c18018ee8e1a64f0
+    authority_declared: true
+    parent: GOVERNANCE-001
   - id: DOMAIN_PIPELINE-__init__
     kind: domain_pipeline
     level: 3
     path: app/agents/d08/__init__.py
-    hash: fc79285fcad0ba6b
-    authority_declared: false
-    parent: null
+    hash: 9de8551566fd7bb6
+    authority_declared: true
+    parent: GOVERNANCE-001
   - id: DOMAIN_PIPELINE-__init__
     kind: domain_pipeline
     level: 3
     path: app/agents/d09/__init__.py
-    hash: 9a3a1b68aa5453a6
-    authority_declared: false
-    parent: null
+    hash: 9d00c8fbfa5b5217
+    authority_declared: true
+    parent: GOVERNANCE-001
   - id: CONNECTOR-gold_master
     kind: connector
     level: 3
     path: app/connectors/gold_master.py
-    hash: b15ff78992b6233c
-    authority_declared: false
-    parent: null
+    hash: 588b3a4625b26327
+    authority_declared: true
+    parent: GOVERNANCE-001
   - id: GATE-check_health
     kind: gate
     level: 3
     path: scripts/ci/check_health.py
-    hash: ec96a593168c2b61
-    authority_declared: false
+    hash: aebd74325fb34126
+    authority_declared: true
     parent: GOVERNANCE-001
   - id: GRAPH-001_crdc_circuit
     kind: graph
     level: 3
     path: scripts/cypher/001_crdc_circuit.cypher
-    hash: c866fbd51ab13cf6
-    authority_declared: false
-    parent: null
+    hash: e44ea120369bf7f3
+    authority_declared: true
+    parent: GOVERNANCE-001
   - id: GRAPH-002_d07_transparencia
     kind: graph
     level: 3
     path: scripts/cypher/002_d07_transparencia.cypher
-    hash: 125c5a13449b30a6
-    authority_declared: false
-    parent: null
+    hash: 8e29bdeded18dae5
+    authority_declared: true
+    parent: GOVERNANCE-001
   - id: GRAPH-003_d01_planificacion
     kind: graph
     level: 3
     path: scripts/cypher/003_d01_planificacion.cypher
-    hash: 95bc480eab19595d
-    authority_declared: false
-    parent: null
+    hash: 4ae48d3c2c985d62
+    authority_declared: true
+    parent: GOVERNANCE-001
   - id: GRAPH-004_d02_presupuesto
     kind: graph
     level: 3
     path: scripts/cypher/004_d02_presupuesto.cypher
-    hash: 426c3b51acd65cb6
-    authority_declared: false
-    parent: null
+    hash: 99af5e025717b4bd
+    authority_declared: true
+    parent: GOVERNANCE-001
   - id: GRAPH-005_d03_gobernanza
     kind: graph
     level: 3
     path: scripts/cypher/005_d03_gobernanza.cypher
-    hash: d94530cc52ec1f61
-    authority_declared: false
-    parent: null
+    hash: 703ec9c67a147100
+    authority_declared: true
+    parent: GOVERNANCE-001
   - id: GRAPH-006_d09_rendicion
     kind: graph
     level: 3
     path: scripts/cypher/006_d09_rendicion.cypher
-    hash: f3bb689e1e257bcb
-    authority_declared: false
-    parent: null
+    hash: 495e1ac20e9d846b
+    authority_declared: true
+    parent: GOVERNANCE-001
   - id: GRAPH-007_d08_participacion
     kind: graph
     level: 3
     path: scripts/cypher/007_d08_participacion.cypher
-    hash: 93404c82e1d7499d
-    authority_declared: false
-    parent: null
+    hash: 9c263f0a6263a3bd
+    authority_declared: true
+    parent: GOVERNANCE-001
 
 # Activos EXTERNOS al repo — se declaran, no se mueven (Carta Art. 3)
 externos:

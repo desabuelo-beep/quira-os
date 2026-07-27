@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [1, 2, 8]
+  type: OPERATIVA
+---
+
 # OBS-016 · Desalineación de nomenclatura SAT — canon BRN vs Gold Master
 
 **Fecha:** 2026-07-24 · **Contexto:** al modelar las SAT de d08 (participación).

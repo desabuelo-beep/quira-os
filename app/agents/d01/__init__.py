@@ -26,6 +26,12 @@ jurídicos + 2 RO + fuentes + métricas marcadas INMUTABLE). La Fuente
 presupuestaria se extrae UNA vez (en transparencia) y la consumen ambos
 dominios.
 """
+# ---
+# authority:
+#   parent: GOVERNANCE-001
+#   constitution_articles: [3, 9]
+#   type: TECNICA
+# ---
 from . import articulacion, catalogo, fuentes, motor, persistencia
 
 __all__ = ["articulacion", "catalogo", "fuentes", "motor", "persistencia"]

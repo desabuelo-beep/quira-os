@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [5, 20]
+  type: ARQUITECTONICA
+---
+
 # ADR-038 · La BRN — capa de conocimiento normativo del ecosistema (opera sobre CNO, no artículos)
 
 > **Definición canónica (colega · 2026-07-17):** *La BRN no es una biblioteca de reglas ni un

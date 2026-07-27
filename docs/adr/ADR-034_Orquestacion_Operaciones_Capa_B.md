@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [5, 20]
+  type: ARQUITECTONICA
+---
+
 # ADR-034 · Orquestación de Operaciones — encender la Capa B (el ciclo mensual de dominio)
 
 **Estado:** RATIFICADO · 2026-07-13 (Javo + director técnico · a partir de una propuesta del colega)

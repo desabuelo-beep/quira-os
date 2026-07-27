@@ -1,3 +1,9 @@
+// ---
+// authority:
+//   parent: GOVERNANCE-001
+//   constitution_articles: [1, 9]
+//   type: TECNICA
+// ---
 // ============================================================
 // Cypher 001 — C-RDC: Circuito de Rendición Anual
 // QUIRA Gov · AuraDB · Dylus Lab © 2026

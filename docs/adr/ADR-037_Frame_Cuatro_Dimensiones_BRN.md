@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [5, 20]
+  type: ARQUITECTONICA
+---
+
 # ADR-037 · El frame de las 4 dimensiones — la BRN entra donde estaba Convergencia
 
 **Estado:** **RATIFICADO** · 2026-07-16 (Javo ratifica · director técnico redacta)

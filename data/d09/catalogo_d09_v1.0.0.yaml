@@ -1,3 +1,7 @@
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [1, 9]
+  type: TECNICA
 # ═══════════════════════════════════════════════════════════════════════════════
 # CATALOGO_D09_RENDICION_CUENTAS · v1.0.0 · 2026-07-23
 # SSoT del dominio d09 (Rendición de Cuentas, QINV-009). Neo4j deriva de aquí,

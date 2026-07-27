@@ -12,6 +12,12 @@ El JSON es cargable al grafo para que QUIRA IA responda "¿qué depende del Art.
 Uso:  python scripts/governance/build_authority_graph.py
 Dylus Lab © 2026
 """
+# ---
+# authority:
+#   parent: GOVERNANCE-001
+#   constitution_articles: [9]
+#   type: OPERATIVA
+# ---
 from __future__ import annotations
 
 import json
@@ -56,6 +62,17 @@ def main() -> int:
     comps, exts, meta = parse_registry()
 
     # ── nodos y aristas ──
+    # SEIS tipos de relación (asesor · 2026-07-27): el grafo deja de ser un árbol y
+    # pasa a ser una red institucional. Se INFIEREN del `kind` (robusto), nunca del
+    # substring del path (frágil). No se fuerza ninguna relación que no exista.
+    TIPO_POR_KIND = {
+        "canon_ro":        "IMPLEMENTS",    # la RO implementa la cadena jurídica de su CNO
+        "domain_catalog":  "IMPLEMENTS",    # el catálogo implementa el canon del dominio
+        "gate":            "VALIDATES",     # el gate valida el cumplimiento
+        "domain_pipeline": "DEPENDS_ON",    # el pipeline depende de su catálogo
+        "graph":           "GENERATES",     # el cypher genera el subgrafo del dominio
+        "observation":     "DERIVES_FROM",
+    }
     nodes, edges = [], []
     ids = {c["id"] for c in comps}
     for c in comps:
@@ -65,8 +82,21 @@ def main() -> int:
         })
         par = c.get("parent")
         if par and par != "null":
-            edges.append({"from": c["id"], "to": par, "type": "DERIVA_DE",
+            edges.append({"from": c["id"], "to": par,
+                          "type": TIPO_POR_KIND.get(c["kind"], "DERIVES_FROM"),
                           "resuelto": par in ids})
+
+    # relaciones GENERATES explícitas de la cadena de gobernanza (hecho verificable:
+    # estos scripts producen estos artefactos)
+    for src, dst in [("OPERATIVA-build_registry", "REGISTRY"),
+                     ("OPERATIVA-build_authority_graph", "AUTHORITY_GRAPH"),
+                     ("OPERATIVA-build_authority_graph", "INSTITUTIONAL_STATE")]:
+        if any(n["id"].endswith(src.split("-")[-1]) for n in nodes):
+            edges.append({"from": src, "to": dst, "type": "GENERATES", "resuelto": True})
+
+    # SUPERSEDES: decisiones que derogan (declarado en el propio DEC)
+    edges.append({"from": "DEC-0001", "to": "CONSTITUCION_VERSION_A",
+                  "type": "SUPERSEDES", "resuelto": True})
 
     rotas = [e for e in edges if not e["resuelto"]]
     huerfanos = [n for n in nodes if not n["declared"]]
@@ -84,6 +114,22 @@ def main() -> int:
     }
     (REPO / "registry" / "authority_graph.json").write_text(
         json.dumps(graph, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    # ── snapshot institucional en JSON (FUENTE) — el .md se deriva de aquí ──
+    # Precisión del asesor: el Institutional State no es un documento, es un snapshot.
+    tipos_rel = Counter(e["type"] for e in edges)
+    snapshot = {
+        "timestamp": date.today().isoformat(),
+        "constitutional_compliance": round(cumplimiento / 100, 3),
+        "active_assets": len(nodes),
+        "orphans": len(huerfanos),
+        "broken_edges": len(rotas),
+        "edge_types": dict(tipos_rel),
+        "governance_version": "1.0",
+        "freeze": "ARCHITECTURE_FREEZE_v1.0_ACTIVO",
+    }
+    (REPO / "registry" / "institutional_state.json").write_text(
+        json.dumps(snapshot, ensure_ascii=False, indent=2), encoding="utf-8")
 
     # ── Estado Institucional (GENERADO — el panel de control del Estado de QUIRA) ──
     por_kind = Counter(n["kind"] for n in nodes)

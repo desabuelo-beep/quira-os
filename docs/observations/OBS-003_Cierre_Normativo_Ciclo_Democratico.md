@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [1, 2, 8]
+  type: OPERATIVA
+---
+
 # OBS-003 — Cierre Normativo del Ciclo Democrático Municipal
 
 **Tipo**: Observación de investigación (no ADR — requiere más evidencia antes de congelar)  

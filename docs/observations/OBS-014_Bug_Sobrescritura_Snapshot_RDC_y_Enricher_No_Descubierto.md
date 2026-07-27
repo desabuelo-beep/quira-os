@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [1, 2, 8]
+  type: OPERATIVA
+---
+
 # OBS-014 · Bug de sobrescritura en `enrich_rdc.py` + enricher no descubierto en Fase 1 (d09)
 
 **Fecha:** 2026-07-23 · **Contexto:** migración de d09 (Rendición de Cuentas) al patrón DOM_TEMPLATE.

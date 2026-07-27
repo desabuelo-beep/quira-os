@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [1, 2]
+  type: NORMATIVA
+---
+
 # PCD-D02 · Presupuesto & Financiamiento (QINV-002)
 
 **Estado:** CERRADO · 2026-07-16 · Javo + director técnico · aportes del colega

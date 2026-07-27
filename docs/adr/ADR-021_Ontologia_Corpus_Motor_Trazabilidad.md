@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [5, 20]
+  type: ARQUITECTONICA
+---
+
 # ADR-021 — Ontología del Corpus: 4 Capas + authority_level
 
 **Estado**: ACTIVO  

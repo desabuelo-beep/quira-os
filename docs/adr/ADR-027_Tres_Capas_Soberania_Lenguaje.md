@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [5, 20]
+  type: ARQUITECTONICA
+---
+
 # ADR-027 · Tres Capas de Soberanía de Lenguaje
 
 **Estado:** RATIFICADO · 2026-06-17 (Javo + mesa: colega asesor + académico)

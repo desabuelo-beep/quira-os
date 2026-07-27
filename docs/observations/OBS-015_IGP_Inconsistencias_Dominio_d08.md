@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [1, 2, 8]
+  type: OPERATIVA
+---
+
 # OBS-015 · IGP del Gold Master — inconsistencias respecto al dominio d08
 
 **Fecha:** 2026-07-24 · **Contexto:** definición del dominio d08 (Participación Ciudadana).

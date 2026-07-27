@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [5, 20]
+  type: ARQUITECTONICA
+---
+
 # ADR-020 — Analítica Constitucional: Metodología de Medición del Grafo QUIRA
 
 **Estado**: ACTIVO  

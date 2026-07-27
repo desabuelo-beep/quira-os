@@ -1,3 +1,9 @@
+// ---
+// authority:
+//   parent: GOVERNANCE-001
+//   constitution_articles: [1, 9]
+//   type: TECNICA
+// ---
 // ============================================================
 // Cypher 007 -- d08 Participación Ciudadana: modelo conceptual
 // QUIRA Gov . AuraDB . Dylus Lab (c) 2026

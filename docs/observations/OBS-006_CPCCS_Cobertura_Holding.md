@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [1, 2, 8]
+  type: OPERATIVA
+---
+
 # OBS-006 — Cobertura CPCCS y Ejecucion Presupuestaria del Holding
 
 **Estado**: CONFIRMED

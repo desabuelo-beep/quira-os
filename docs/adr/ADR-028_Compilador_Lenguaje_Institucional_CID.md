@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [5, 20]
+  type: ARQUITECTONICA
+---
+
 # ADR-028 · Compilador de Lenguaje Institucional + Ciclo de Inteligencia Determinista (CID)
 
 **Estado:** RATIFICADO · 2026-06-20 (Javo + mesa: colega asesor + académico · reframe post-Blitz)

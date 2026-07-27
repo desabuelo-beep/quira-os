@@ -1,3 +1,10 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [5, 20]
+  type: ARQUITECTONICA
+---
+
 # ADR-025 — Principio de Alertas QUIRA: Coherencia Institucional
 
 **Estado**: RATIFICADO — 2026-06-05 · Consenso equipo Dylus Lab (Javo + Claude + Colega)

@@ -33,6 +33,10 @@
 # ESTADO: propuesta · DISEÑO — motor de extracción de aportes de participación PENDIENTE.
 # ═══════════════════════════════════════════════════════════════════════════════
 id: RO-VIII-003
+authority:
+  parent: CNO-VIII-000
+  constitution_articles: [1, 9]
+  type: NORMATIVA
 version: "1.0"
 dimension: efectividad_incidencia
 deriva_de: CNO-VIII-000 v1.0
