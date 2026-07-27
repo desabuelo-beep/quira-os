@@ -68,5 +68,16 @@
   y su Alignment Agent. Esto es lo que hace viable el DOM_TEMPLATE (ver §DOM_TEMPLATE en
   `docs/architecture/QUIRA_OS_ARCHITECTURE_v1.md` o el módulo `app/agents/_template/`).
 
+## Opción para despausar la Fase 4 sin costo de API (registrado · 2026-07-24)
+Los agentes IA (Navigator/Interpreter/Report Generator/etc.) están en pausa por presupuesto de
+Haiku. Camino identificado al revisar **dashAI** (herramienta abierta de la U. de Chile/CENIA,
+respaldo ANID): **inferencia local con `llama-cpp-python` + modelos GGUF** (Mistral/Qwen…),
+100% local, sin nube ni API keys — el mismo stack que dashAI usa por debajo. QUIRA adoptaría la
+**librería** (no la app de escritorio, que no encaja con nuestro pipeline de agentes) directo en
+Fase 4. Caveats: (1) un LLM local pequeño en CPU es **menos capaz que Haiku** para interpretación
+legal fina — sirve para clasificar/extraer campos; la interpretación compleja hay que probarla;
+(2) verificar **licencia** antes de integrar. NO se adopta hoy: queda como **vía preferente para
+reactivar la Fase 4** cuando se decida, sin depender del presupuesto de API. (Idea de Javo.)
+
 ---
 *Meta-Catálogo de Agentes · Dylus Lab © 2026 · "El organigrama cognitivo: quién razona, quién solo calcula."*

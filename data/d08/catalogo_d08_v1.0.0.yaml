@@ -36,6 +36,22 @@ dimensiones:
     pregunta: "¿lo pedido en las instancias se volvió POA/PAC/presupuesto/obra?"
     estado: diseno            # motor de extracción de aportes de participación PENDIENTE (no es enrich_aportes.py)
 
+# ── Naturaleza de verificación (asesor · 2026-07-24) — DOCTRINA · molde para d10/d11/d12 ──
+# Distinción ORTOGONAL a las 3 dimensiones, que emergió al modelar el Sistema desde la Ley:
+# cada componente de un dominio se verifica contra la Ley (estructural) o contra evidencia
+# (operativo). Distinguirlo desde el inicio evita el error de marcar "sin evidencia" algo que
+# es estructural (verificable por Ley). Esto simplifica los dominios que vienen.
+naturaleza_verificacion:
+  doctrina:
+    estructural: "qué DEBE EXISTIR según la Ley (sistema · órganos/instancias · competencias) → se verifica contra la LEY (universal, SHA256) + conformación local (ordenanza/PDOT). NO requiere evidencia de 'operación'."
+    operativa: "qué actos SE REALIZARON (audiencias · cabildos · PP · sesiones) → se verifica contra la EVIDENCIA documental de cada acto."
+    mixta: "órgano con aspecto estructural (debe existir) Y operativo (debe actuar)."
+    regla_de_oro: "un componente ESTRUCTURAL nunca se marca 'sin evidencia' por faltar la ordenanza local — su estructura es la de la Ley. (Error corregido hoy en el Sistema Cantonal, aporte de Javo.)"
+  clasificacion_d08:
+    estructural: [ sistema_cantonal, asamblea_ciudadana ]     # existen por Ley + conformación (PDOT)
+    operativa: [ audiencia_publica, presupuesto_participativo, cabildo_popular ]   # actos verificados contra evidencia
+    mixta: [ consejo_planificacion, silla_vacia ]             # órgano/norma (estructural) + resolución/ocupación (operativo)
+
 # ── Señales SAT del Gold Master (OBS-016 · corrección Javo 2026-07-24) ──────────────
 # Las SAT NO son 1:1 con mecanismos: son señales de alerta del motor (SAT-0..VIII por
 # dimensión TGI). De todas, solo UNA es de participación:

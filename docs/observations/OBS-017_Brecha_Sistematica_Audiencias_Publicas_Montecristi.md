@@ -46,16 +46,27 @@ Script: `scratchpad/analisis_audiencias.py` (reproducible).
 | Alcalde presente/mencionado | 28 / 28 |
 | Delegación explícita | 0 / 28 |
 
-## Hallazgo (lenguaje de verificabilidad · Regla 2 · firewall)
-En **las 28 audiencias públicas del período 2023-2025**, todas invocan expresamente los Arts.
-73-75 de la LOPC, y en **ninguna se encontró evidencia documental del acto resolutivo previsto
-en el Art. 75** (la resolución que la autoridad debe emitir el mismo día o en 10 días hábiles).
+## Hallazgo — redacción canónica (precisión del asesor · 2026-07-24)
+La formulación EXACTA que QUIRA emite, ni un grado más:
 
-- **NO se afirma** "el GAD incumple/es ilegal" — QUIRA mide evidencia, no sanciona. La
-  consecuencia jurídica (COOTAD 312 · responsabilidad) la determina el órgano competente.
-- El fenómeno, en lenguaje de administración pública: **la audiencia pública se realiza y se
-  documenta como acta, pero no se acredita su formalización resolutiva.** El mecanismo opera en
-  su fase deliberativa y se detiene antes de la fase resolutiva que la ley prevé.
+> **"En la evidencia documental oficial utilizada por el propio GAD para acreditar las
+> Audiencias Públicas (28 actas analizadas, período 2023-2025), no consta un acto resolutivo
+> identificable conforme al Art. 75 de la LOPC."**
+
+### Las TRES cosas que QUIRA distingue (y no confunde jamás)
+| Nivel | Qué es | ¿QUIRA lo afirma? |
+|---|---|---|
+| **Ausencia documental** | no consta el documento en la evidencia oficial disponible | **SÍ** — es lo único que QUIRA certifica aquí |
+| **Ausencia jurídica** | el acto no existe en Derecho | **NO** — exige más que no hallar el documento |
+| **Incumplimiento** | juicio de que se violó la norma, con consecuencia | **NO** — lo determina el CPCCS/Contraloría |
+
+QUIRA se detiene en el primer nivel. Que las 28 actas inviten el Art. 75 y no contengan la
+resolución es **ausencia documental verificada** — no "el GAD incumple". La consecuencia
+normativa (COOTAD 312) existe en la Ley y se cita como contexto, pero **QUIRA no la aplica**.
+
+El fenómeno, en lenguaje de administración pública: la audiencia se realiza y se documenta como
+acta, pero **en la evidencia oficial no se acredita su formalización resolutiva** — el acto
+consta en su fase deliberativa, no en la resolutiva que la ley prevé.
 
 ## Contraste que refuerza la verificabilidad (dentro del mismo dominio)
 El Consejo de Planificación (CNO-VIII-003) **sí** produce su resolución (COPLAFIP 29 — consta en
