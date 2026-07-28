@@ -22,7 +22,7 @@ corresponde al dom, sus indicadores y sus sat"*
 |---|---|---|---|
 | Conector no leía el IGP | lectura directa del GM · 2026-07-29 | Python (conector) | ✅ **hecho** |
 | Composición del IGP mezcla d09 | **OBS-015** | Excel · **Javo** | ⏳ |
-| `IGP_2 = 0` — faltan montos por proyecto PP | lectura `H10b!D13:E17` | **terreno** (dato inexistente) | ⛔ bloqueado |
+| `IGP_2 = 0` — el GAD no desagrega montos PP | lectura `H10b!D13:E17` | **R-F**: no se pide | ✅ **medido** (es el hallazgo) |
 | Nomenclatura SAT · serie sigue en IX | **OBS-016** | Excel · **Javo** | ⏳ |
 | `SAT-IX` Brecha de Atención (46,2%) | `trazabilidad_demandas.json` | Excel · **Javo** | ⏳ |
 | CVI como 2ª dimensión del IOC | **OBS-020** | Excel · **Javo** · *dominio d01* | ⏳ |
@@ -66,7 +66,7 @@ con `openpyxl` es viable sin destruir el libro** — pero ver §2 antes de escri
 | Componente | Valor | Dominio real | Acción |
 |---|---:|---|---|
 | **IGP_1** · Asamblea CPCCS | 0,54 | d08 ✅ | conservar |
-| **IGP_2** · Presupuesto Participativo | **0,00** | d08 ✅ | **alimentar** — §2 |
+| **IGP_2** · Presupuesto Participativo | **0,00** | d08 ✅ | **sellar como medido** — §2 |
 | **IGP_3** · Fidelidad Narrativa MFN (`H34b`) | 0,91 | **d09** ❌ | **retirar o migrar** |
 
 **Por qué se retira IGP_3:** la Fidelidad Narrativa es *control social* (d09), no *participación
@@ -81,7 +81,7 @@ indicador madre de d08— incorpora una variable de otro dominio.
 **Decisión pendiente de Javo:** ¿retirar IGP_3 (IGP queda con 2 componentes) o sustituirlo por
 un tercer componente propio de d08? Candidato natural en §4.
 
-## 2 · IGP_2 = 0 — **no es un bug: es ausencia de dato** ⛔
+## 2 · IGP_2 = 0 — **no es un bug ni un pendiente: es el hallazgo**
 
 `H10b_S8b_PARTICIPATIVO` **sí tiene registro de PP 2026**: `Ingresos_Base` = 20.982.884,
 `Fichas_PP` = 149, y cinco prioridades verificadas con su meta PDOT:
@@ -97,10 +97,14 @@ un tercer componente propio de d08? Candidato natural en §4.
 `IGP_2 = AVERAGE(H10b!F13:F17)/100` → promedio de cinco ceros → **0**. **La fórmula funciona
 perfectamente.** El cero refleja que **no hay montos cargados por proyecto**.
 
-> **Y ese dato no lo tengo.** Las actas procesadas producen *demandas*, no *montos asignados
-> ni ejecutados por proyecto*. Rellenarlo con una estimación sería inventar cifra pública —
-> exactamente lo prohibido. **`IGP_2` queda bloqueado hasta obtener del GAD el desglose de
-> montos del PP** (vía acceso a información pública, como el XLSX del POA).
+> **Y ese dato no existe — ni se pide (R-F · Javo, 2026-07-29).** Las actas de PP **son los
+> documentos institucionales oficiales del GAD**: eso es todo lo que tienen. Solicitar el
+> desglose haría que **lo construyan recién**, y ese documento nacería después de nuestra
+> pregunta: dejaría de ser evidencia de gestión para ser evidencia de reacción a QUIRA.
+>
+> **Por tanto `IGP_2 = 0` NO está bloqueado: está MEDIDO.** El cero es el resultado, y es
+> definitivo mientras el GAD no publique el desglose por iniciativa propia. Registrarlo como
+> "pendiente de dato" sería tratar un hallazgo como un hueco.
 >
 > **Esto es en sí un hallazgo de CVI:** el instrumento de PP publica *prioridades* y *número
 > de fichas*, pero **no publica cuánto se asignó ni cuánto se ejecutó por prioridad**. Sin eso,
@@ -124,11 +128,12 @@ perfectamente.** El cero refleja que **no hay montos cargados por proyecto**.
 > Es la trampa más peligrosa encontrada hoy: *parece* un arreglo de una línea y **mete una cifra
 > falsa al motor**. Probablemente por eso alguien anuló la fórmula en su momento.
 
-**La fórmula correcta sería** `=SUM(H10b!D13:D17)` (suma de montos aprobados por proyecto) —
-pero **da 0 hasta que §2 se desbloquee**. Se deja documentada, no aplicada.
+**La fórmula correcta es** `=SUM(H10b!D13:D17)` — suma de montos aprobados por proyecto. Da **0**,
+y ese 0 es correcto: el GAD no los desagrega (§2 · R-F).
 
-**Acción:** ninguna sobre el Excel hasta tener los montos. Se corrige el **comentario** de `C7`
-para que no vuelva a inducir la restauración equivocada — eso sí es presentación (Regla 1).
+**Acción:** aplicarla con su resultado 0, y corregir el comentario de `C7` para que nadie vuelva
+a intentar la restauración equivocada. `SAT-VI` queda **sin señal por ausencia declarada** — que
+no es lo mismo que *sin datos*: es una **ausencia medida**.
 
 > ⛔ **CORRECCIÓN DE NOMENCLATURA — colisión detectada.** La propuesta de numerar las nuevas
 > señales como `SAT-1 · SAT-2 · SAT-3 · SAT-4` **pisaría cuatro señales existentes** del Gold
@@ -216,17 +221,18 @@ refleja el canon, nunca lo precede (Regla 9).
 | # | Acción | Quién | Estado |
 |---|---|---|---|
 | 0 | Leer IGP desde `H73` en el conector + bloque `participacion` | dirección técnica | ✅ **hecho** |
-| 1 | **Conseguir del GAD los montos del PP por proyecto** (acceso a información pública) | **Javo** — *terreno* | ⛔ **bloquea 2 y 3** |
-| 2 | Cargar montos en `H10b!D13:E17` → `IGP_2` se calcula solo | **Javo** (Excel) | depende de 1 |
-| 3 | `H24c!B7 = SUM(H10b!D13:D17)` — **jamás** `H10b!B9` | **Javo** (Excel) | depende de 1 |
+| 1 | ~~Solicitar montos del PP al GAD~~ | — | ⛔ **PROHIBIDO por R-F** — induciría su creación |
+| 2 | `IGP_2 = 0` se sella como **medido**, no como pendiente | **Javo** (Excel) | libre |
+| 3 | `H24c!B7 = SUM(H10b!D13:D17)` (=0) — **jamás** `H10b!B9` · `SAT-VI` queda **sin señal por ausencia declarada** | **Javo** (Excel) | libre |
 | 4 | Decidir destino de IGP_3 (retirar / migrar / sustituir) | **Javo** | libre — §1 |
 | 5 | Sellar métricas observables de §4 (223 · 191 · 103 · 28/28) | **Javo** (Excel) | libre |
 | 6 | Crear `SAT-IX` Brecha de Atención (umbral y peso) | **Javo** (Excel) | tras 5 |
 | 7 | Exponer claves nuevas de d08 en `H73` + añadirlas al conector | Javo → dirección técnica | tras 5-6 |
 | 8 | Añadir el **CVI** como 2ª dimensión del IOC (`H41`) | **Javo** — *transversal, es d01* | libre |
 
-> **Se puede avanzar YA con 4, 5, 6 y 8.** Solo 2 y 3 dependen de un dato que hoy no existe en
-> ningún documento disponible.
+> **Se puede avanzar con TODO.** Ya no hay pasos bloqueados: R-F convierte la ausencia de montos
+> de *dato pendiente* en *hallazgo cerrado*. El universo documental de Montecristi está cerrado
+> (R-E + R-F): **lo que hay es lo que hay, y eso es exactamente lo que se mide.**
 
 **Nada de esto recalcula el motor.** El ICPI (`H12!B33`) permanece intacto: son inputs, señales
 nuevas y exposición de contrato.

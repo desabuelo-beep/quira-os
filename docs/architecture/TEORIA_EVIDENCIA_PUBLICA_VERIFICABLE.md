@@ -170,10 +170,17 @@ cómo fue publicada*.
 El sistema **NUNCA falla ni se detiene**: marca `ESTADO_EXTRACCION: OPACIDAD_TECNICA_DOCUMENTAL`
 y continúa. El fallo es el dato.
 
-### Regla operativa (nace de OBS-018)
+### Regla operativa (nace de OBS-018 · **acotada por R-F el 2026-07-29**)
 > **Antes de recurrir a OCR o a un corpus derivado, verificar si existe la fuente en un peldaño
-> superior.** El GAD casi siempre tiene el XLSX aunque publique el PDF: se solicita por acceso a
-> información pública.
+> superior.** El GAD casi siempre tiene el XLSX aunque publique el PDF.
+
+> ⚠️ **LÍMITE (R-F · no inducción documental).** Esta regla vale **solo cuando el documento ya
+> existe** y está mal publicado — ahí solicitarlo **recupera** algo preexistente. **NO vale
+> cuando el dato nunca se produjo**: pedirlo hace que el GAD **lo construya para responder**, y
+> ese documento nace después de la pregunta. Deja de ser evidencia de gestión.
+>
+> **Prueba:** *¿el dato tiene fecha anterior a mi pregunta?* Si no, no se pide: **se mide su
+> ausencia**. Detalle en `PROTOCOLO_CURACION_DOMINIO.md` **R-F**.
 
 En el cruce de d08 se usó un corpus vectorizado (nivel 4, corrupto) cuando el XLSX oficial
 (nivel 1, limpio) estaba disponible. El canon ya advertía la corrupción y no se consultó. Esa es

@@ -110,6 +110,43 @@ Patrón definitivo  →  PCD-DXX (documentación del dominio)
   > *"instrumento nacional"* no solo requiere replicación: requiere **primero** cerrar
   > Montecristi. Ese hallazgo permanece como **C10 · incertidumbre estructurada**, sin fecha.
 
+- **R-F · No inducción documental: no se le pide al GAD un dato que no produjo.** *(Javo · 2026-07-29.)*
+
+  > **Si QUIRA solicita un dato que el GAD nunca desagregó, el GAD lo construye para responder.
+  > Ese documento nace DESPUÉS de la pregunta: deja de ser evidencia de gestión y pasa a ser
+  > evidencia de reacción a QUIRA.** El silencio documental se mide; no se rellena pidiéndolo.
+
+  **Formulación de Javo:** *"si pedimos van a construir recién. Este mismo hecho es otra
+  evidencia; no vamos a inferir. Si tenemos esta evidencia, nos da la pauta para trabajar."*
+
+  ### La distinción que hay que hacer siempre
+
+  | | Situación | ¿Solicitar? | Por qué |
+  |---|---|---|---|
+  | **A** | el documento **existe** y está mal publicado *(POA en XLSX limpio, publicado en PDF escaneado)* | ✅ **sí** | recupera un documento **preexistente**; no crea nada |
+  | **B** | el documento **no existe** *(montos por proyecto PP nunca desagregados)* | ⛔ **no** | la solicitud **induce su creación** |
+
+  **Prueba de discriminación:** *¿el dato tiene fecha anterior a mi pregunta?* Si nace después,
+  no sirve como evidencia de gestión. Es la misma bifurcación de **R-D**, aplicada al acto de
+  observación en vez de al motor.
+
+  ### Por qué es regla y no criterio
+
+  1. **Preserva la validez.** Medir lo que el GAD produjo ≠ medir lo que produce cuando se le
+     pregunta. Lo segundo no dice nada sobre su gestión.
+  2. **Preserva la comparabilidad entre los 222 GAD.** Si a Montecristi se le solicitan datos y
+     a los demás se les mide por lo publicado, **el molde deja de ser molde**. El CVI solo es
+     comparable si todos se miden por la misma superficie: **lo que el GAD publicó por sí mismo**.
+  3. **Preserva al sujeto observado.** El GAD es **sujeto observado, no cliente** (BOOT §LA TESIS).
+     Pedirle insumos lo convierte en proveedor de QUIRA y disuelve la frontera.
+
+  > **Corolario operativo — el universo documental de Montecristi está CERRADO.** Lo que hay es
+  > lo que hay. Eso hace el trabajo finito, auditable y replicable: **QUIRA se mide contra la
+  > evidencia pública realmente existente, no contra la que podría existir si la pidiéramos.**
+
+  **Complementa** al concepto *"el silencio como dato"*: aquél dice cómo **interpretar** una
+  ausencia; éste dice cómo **no destruirla**.
+
 *(Ratificación de R-A/R-B como Reglas de Oro en `CLAUDE.md` / `BOOT.md`: pendiente de Javo — son archivos congelados, Regla 5.)*
 
 ## 4 · Plantilla PCD-DXX (cada dominio cierra con su documento)
