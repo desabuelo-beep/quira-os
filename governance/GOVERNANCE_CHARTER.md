@@ -65,6 +65,13 @@ Aplicaciones ya realizadas: el Principio de Derivación quedó en la Carta y no 
 (DEC-0002); la Doctrina de Gobernanza quedó como artículo y no como documento (Art. 7); los
 invariantes operativos quedaron en la Carta y no como artículos constitucionales.
 
+**Criterio operativo permanente** (asesor · 2026-07-27) — protege a QUIRA de su principal riesgo
+futuro: *crecer más rápido en arquitectura que en evidencia*:
+
+> Toda ampliación del marco institucional deberá justificarse demostrando que **aumenta la
+> capacidad de explicar, verificar o gobernar un proceso real**; no por mejorar la simetría
+> conceptual del sistema.
+
 ---
 
 ## Artículo 2 · Los Cuatro Órganos Permanentes

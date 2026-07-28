@@ -182,6 +182,9 @@ clasificacion_documental:
 # Candidato a dominio propio, fuera del alcance de d08. Pasaría por el Protocolo de
 # Expansión Ontológica (6 condiciones) si algún día se abre. Se registra para no perderlo.
 workstream_futuro:
+  estado: "EN ADQUISICIÓN — Javo solicitó las actas al GAD vía acceso a información pública
+    (2026-07-27). Deja de ser 'futuro': se construye cuando lleguen, no en una 2ª fase.
+    Alcance: TODAS las actas de sesión del año fiscal, para monitoreo y evaluación continua."
   nombre: "Gobernanza Deliberativa del Concejo Municipal"
   fuente: "actas ÍNTEGRAS de sesión del Concejo (hoy el GAD solo publica RESOLUCIONES · numeral 24 transparencia/d07)"
   permitiria:

@@ -81,10 +81,39 @@ la carpeta). Mismo GAD, misma exigencia de formalización resolutiva, cumplida e
 (Consejo) y **sistemáticamente ausente en otro** (Audiencia). El contraste es objetivo, no
 interpretativo.
 
-## Sobre la delegación (COOTAD 60) — NO aplica a este caso
-Se había previsto verificar si, en ausencia del alcalde, constaba el acto de delegación. El dato
-lo descarta: en las 28 actas el alcalde está presente. El punto del hallazgo es **la resolución
-(Art. 75)**, no la habilitación de quien preside.
+## Sobre la delegación (COOTAD 60) — CORREGIDO 2026-07-27
+
+**Corrección de una afirmación mal fundada.** Una versión anterior de este OBS afirmaba
+*"delegación NO aplica: el alcalde está presente en las 28"*. Esa conclusión se infirió de que la
+palabra «alcalde» aparecía en el texto — **que se mencione no significa que presida**. Javo
+(15 años en gestión de GAD) advirtió que en la práctica muchas audiencias las dirigen delegados.
+
+Re-verificación sobre las 28 actas:
+
+| Señal | Resultado |
+|---|---|
+| Actas que registran una delegación explícita | **1 / 28** — y es delegación de TAREA (*"delego al Ing. Rómulo Santana para que inicie y lleve adelante…"*), no de presidencia |
+| Actas donde el alcalde actúa directamente (bienvenida, interviene) | 23 / 28 |
+| Actas que **formalizan quién presidió y con qué habilitación** | **0 / 28** |
+
+**Hallazgo corregido:** el problema no es que falte un acto de delegación puntual, sino que
+**ninguna acta acredita quién presidió la audiencia ni bajo qué habilitación** (LOPC 73 exige que
+la instancia esté *habilitada por la autoridad responsable*; COOTAD 60 regula la delegación). La
+actuación del alcalde se infiere de la narración, no de una fórmula de constitución del acto.
+
+**Consecuencia institucional (aporte de Javo):** si un delegado dirige la audiencia sin acto de
+delegación que lo habilite, los acuerdos y compromisos asumidos allí **carecen de respaldo
+institucional vinculante**. Se registra como verificabilidad, no como juicio de legalidad.
+
+## Hallazgo cruzado d08 ↔ d07 (aporte de Javo · 2026-07-27)
+Estos documentos se reportan como **instancias y mecanismos de participación EJECUTADOS** en los
+informes de RDC que el GAD sube anualmente al portal del CPCCS — pero **no figuran en
+transparencia activa** (d07). Es decir: la misma evidencia existe en el circuito de control
+social (d09) y está ausente del circuito de transparencia (d07).
+
+**Pendiente de verificación en d07** (no se afirma aún): confirmar si estos mecanismos deben
+publicarse en transparencia activa y, de ser así, registrar la ausencia como hallazgo de ese
+dominio. Se anota aquí para no perder la pista; la verificación corresponde a d07.
 
 ## Límites del método (honestidad)
 - Es búsqueda de texto: detecta la resolución **en los documentos del medio de verificación
