@@ -105,6 +105,10 @@ un tercer componente propio de d08? Candidato natural en §4.
 `IGP_2 = AVERAGE(H10b!F13:F17)/100` → promedio de cinco ceros → **0**. **La fórmula funciona
 perfectamente.** El cero refleja que **no hay montos cargados por proyecto**.
 
+> **Naturaleza de la limitación (precisión de la asesoría):** no es una limitación **del GAD**
+> —no se le imputa conducta— ni una limitación **de QUIRA**. Es una limitación **del instrumento
+> administrativo**. Fijar eso por escrito evita interpretaciones políticas posteriores.
+>
 > **HECHO VERIFICADO, no inferencia (Javo · 15 años en gestión GAD):** los documentos de
 > Presupuesto Participativo de Montecristi **puntúan la PRIORIDAD de cada obra o servicio
 > solicitado, pero no establecen su COSTO económico**. No es que el dato esté mal publicado ni
@@ -142,7 +146,7 @@ perfectamente.** El cero refleja que **no hay montos cargados por proyecto**.
 > Es la trampa más peligrosa encontrada hoy: *parece* un arreglo de una línea y **mete una cifra
 > falsa al motor**. Probablemente por eso alguien anuló la fórmula en su momento.
 
-### ★ CASO DE ESTUDIO INTERNO · "la corrección técnica que degrada la integridad"
+### ★ PRECEDENTE H24c · Integridad Semántica de Fórmulas
 
 Se registra como caso canónico de la Carta, a pedido de la asesoría. Reconstrucción:
 
@@ -154,10 +158,17 @@ Se registra como caso canónico de la Carta, a pedido de la asesoría. Reconstru
 | 4 | El PP es una **fracción de la inversión**, no el ingreso total → la fórmula era **conceptualmente errónea** |
 | 5 | Restaurarla habría puesto cifra falsa en `B7` → `Hay_Datos_PP` a **"SÍ"** por fórmula → **`SAT-VI` disparada sobre un dato inventado** |
 
-> **Lección:** *una corrección aparentemente técnica puede degradar la integridad epistemológica.*
-> Lo que impidió el error no fue desconfiar del Excel: fue **leer qué significaba la celda de
-> origen antes de conectarla**. Toda restauración de fórmula exige verificar la **semántica** del
-> operando, no solo su existencia.
+> ### Enunciado canónico del **Precedente H24c**
+>
+> **La validez sintáctica de una fórmula no garantiza su validez semántica.** Restaurar un
+> operando cuyo significado corresponde a **otra entidad** —`Ingresos_Base` en lugar de
+> `Monto_PP`— degrada la integridad del motor aunque la fórmula sea correcta.
+>
+> **Una fórmula correcta puede producir un dato falso si el operando representa otra realidad.**
+>
+> **Regla derivada:** toda restauración o reconexión de fórmula exige verificar la **semántica del
+> operando**, no solo su existencia. Lo que impidió el error no fue desconfiar del Excel: fue
+> **leer qué significaba la celda de origen antes de conectarla**.
 
 **La fórmula correcta es** `=SUM(H10b!D13:D17)` — suma de montos aprobados por proyecto. Da **0**,
 y ese 0 es correcto: el GAD no los desagrega (§2 · R-F).

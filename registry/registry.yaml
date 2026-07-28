@@ -19,7 +19,7 @@ componentes:
     kind: normative
     level: 1
     path: governance/BOOT.md
-    hash: b665dd8c15b37c75
+    hash: 7dda11969cc9dc60
     authority_declared: true
     parent: GOVERNANCE-001
   - id: GOVERNANCE-001
@@ -152,7 +152,7 @@ componentes:
     kind: marco_teorico
     level: 1
     path: marco_teorico/INVENTARIO_CONCEPTOS_FUNDACIONALES.md
-    hash: 90e8eccbdc82d10a
+    hash: 37437ce2037ee8f5
     authority_declared: true
     parent: MARCO-TEORICO-001
   - id: MARCO-TEORICO-001
@@ -656,7 +656,7 @@ componentes:
     kind: observation
     level: 2
     path: docs/observations/OBS-020_Ficha_POA_No_Habilita_Monitoreo_Territorial.md
-    hash: 503aa89f581b38ab
+    hash: 110e94cacef70c62
     authority_declared: true
     parent: GOVERNANCE-001
   - id: DOMAIN_CATALOG-catalogo_d01_v1.0.0

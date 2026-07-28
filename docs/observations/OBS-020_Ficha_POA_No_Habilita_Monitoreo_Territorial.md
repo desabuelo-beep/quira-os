@@ -218,6 +218,26 @@ siempre cabe la particularidad local. La secuencia obligatoria antes de elevar e
 | **3 · Tercer GAD, otra provincia** | confirmación | ⏳ pendiente |
 | **4 · Elevación** | afirmación sobre el **diseño del instrumento** | ⛔ **prohibido hasta completar 1-3** |
 
+### Hipótesis H-ARQ-01 · Opacidad Estructural del Registro
+
+El patrón se observó ya en **dos instrumentos distintos del mismo GAD** —el POA no localiza el
+gasto (1,1%), el PP no desagrega montos por prioridad— lo que sugiere una propiedad de la
+arquitectura documental y no un defecto puntual. **Sugiere; no demuestra.** Se registra con
+estatus de hipótesis, no de hallazgo:
+
+> **H-ARQ-01** — *La ausencia sistemática de metadatos de localización territorial y de
+> desagregación financiera en los instrumentos locales no es un descuido administrativo de un
+> GAD, sino una propiedad del diseño de la arquitectura documental pública ecuatoriana.*
+
+| Campo | Valor |
+|---|---|
+| **Estatus** | ⏳ **hipótesis de trabajo** — NO conclusión |
+| **Evidencia a favor** | 2 instrumentos · 1 municipio (POA · PP) |
+| **Por qué no basta** | ambos del **mismo GAD**: puede ser una práctica local |
+| **Condición de contraste** | otro GAD sometido **al mismo protocolo**, con su instrumento en UDC-I |
+| **Bloqueada por** | **R-E** — no antes de cerrar Montecristi |
+| **Registro** | **C10 · incertidumbre estructurada** |
+
 Hasta el paso 4, la formulación admisible es una **pregunta abierta**, no una conclusión:
 *¿es un defecto de este municipio o una propiedad del instrumento?* Registrarla como pregunta
 —y no como hallazgo— es un caso **C10 · Metacognición institucional** (Modelo Causal §XV): lo

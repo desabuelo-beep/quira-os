@@ -186,31 +186,47 @@ Patrón definitivo  →  PCD-DXX (documentación del dominio)
   > no existe) ≠ *evidencia no encontrada* (universo abierto, aún no se buscó lo suficiente).
   > Confundirlas es afirmar un hallazgo sobre un vacío de método.
 
-  #### ★ El UDC se declara POR INSTRUMENTO, no por GAD *(precisión de la dirección técnica)*
+  #### Dos niveles: UDC-I (operativo) y UDC-G (derivado) *(asesoría · 2026-07-29)*
 
-  Declarar "Montecristi es UDC" en bloque sería **prematuro y falso**: solo 4 de 12 dominios están
-  cerrados con PCD, y el canon registra **10 ítems "sin acceso"**, 2 "no localizada" y 1 "no tengo".
-  Pero sí es cierto que el **PP** está cerrado. Ambas cosas son verdad porque **el UDC es una
-  propiedad del instrumento, no del municipio**.
+  El UDC **no es binario por municipio**. Se declara en dos niveles jerárquicos, y el segundo se
+  **deriva** del primero por conjunción — no por juicio:
 
-  **Estado real de Montecristi (`GAD-001`) · verificado 2026-07-29:**
+  | Nivel | Qué es | Cómo se declara |
+  |---|---|---|
+  | **UDC-I** *(Instrumento)* | estado **operativo** de cada instrumento: POA · PP · actas · LOTAIP… | se verifica contra las 3 condiciones |
+  | **UDC-G** *(GAD)* | estado **derivado** del municipio | `UDC-G = UDC-I₁ ∧ UDC-I₂ ∧ … ∧ UDC-Iₙ` |
 
-  | Instrumento / fuente | UDC | Fundamento |
+  > **UDC-G es verdadero si y solo si TODOS los instrumentos obligatorios cumplen UDC-I.** No es
+  > una apreciación: es una conjunción booleana. Eso elimina toda declaración prematura de cierre.
+
+  **Por qué importa el cambio:** convierte un concepto binario en uno **gradual y medible**. La
+  pregunta deja de ser *"¿el GAD está cerrado?"* y pasa a ser **"¿qué instrumentos siguen
+  abiertos?"** — que sí permite medir progreso.
+
+  ### Tablero UDC · Montecristi (`GAD-001`) — verificado 2026-07-29
+
+  | Instrumento / dominio | UDC-I | Justificación verificada |
   |---|:---:|---|
-  | **Presupuesto Participativo** | ✅ | se conocen sus documentos oficiales: **puntúan prioridad, no fijan costo** |
-  | **POA 2023-2026** | ✅ | 4 XLSX oficiales completos (fuente nivel A) |
-  | **Audiencias públicas** | ✅ | 28/28 procesadas (OBS-017) |
-  | **Portal LOTAIP / transparencia** | ❌ | **d07 sin cerrar** |
-  | **Actas de sesión del Concejo** | ❌ | declaradas inexistentes en nuestro poder; Javo gestiona |
-  | **Holding municipal** (bomberos · aseo EP · Patronato) | ❌ | dominio no construido |
-  | **GAD Montecristi como conjunto** | ❌ | **4/12 dominios cerrados** — condición 3 incumplida |
+  | **Presupuesto Participativo** | ✅ | 191 demandas catalogadas · actas procesadas · **no existe dimensión económica en origen** |
+  | **POA 2023-2026** | ✅ | 4 XLSX nativos, 1.027 filas · localización subcantonal 1,1% |
+  | **Audiencias públicas** | ✅ | **28/28 actas extraídas a texto** (incluidas las 16 escaneadas) · cadena **C01→C09 (9 nodos)** tipificada |
+  | **Cabildo popular** | ✅ | 4 demandas · universo documental conocido |
+  | **Portal LOTAIP / transparencia** | ❌ | **d07 abierto** — falta consolidar la ingesta |
+  | **Actas de sesión del Concejo** | ❌ | no obran en nuestro poder; Javo gestiona |
+  | **Holding municipal** (bomberos · aseo EP · Patronato) | ❌ | repositorios no localizados |
+  | **`GAD-001` como conjunto** | **❌ UDC-G = FALSO** | **4 / 12 dominios cerrados** — la conjunción falla |
 
-  **Consecuencia inmediata:** `IGP_2 = 0` **es afirmable** porque el PP sí está en UDC. Un hallazgo
+  > ⚠️ **Correcciones al tablero propuesto por la asesoría, verificadas contra el canon:**
+  > la cadena participativa tiene **9 nodos (C01→C09)**, no 8 —`docs/brn/RO-VIII-001.yaml`—; y las
+  > **28 actas SÍ están completas**: 16 de ellas produjeron demandas extraíbles y 12 no aportaron
+  > ninguna, lo cual **no es un hueco documental** sino un dato sobre el registro (nodo C06).
+
+  **Consecuencia inmediata:** `IGP_2 = 0` **es afirmable** porque el PP está en UDC-I. Un hallazgo
   equivalente sobre el portal de transparencia **no lo sería** todavía.
 
-  > **R-E y UDC no son lo mismo y no se sustituyen.** R-E fija *dónde se trabaja* (solo Montecristi).
-  > El UDC fija *cuándo una ausencia puede afirmarse*. Montecristi puede ser el único universo
-  > activo y a la vez tener instrumentos aún abiertos: es exactamente la situación de hoy.
+  > **R-E y UDC no se sustituyen.** R-E fija *dónde se trabaja* (solo Montecristi). El UDC fija
+  > *cuándo una ausencia puede afirmarse*. Montecristi es el único universo activo **y** conserva
+  > instrumentos abiertos: es exactamente la situación de hoy.
 
 *(Ratificación de R-A/R-B como Reglas de Oro en `CLAUDE.md` / `BOOT.md`: pendiente de Javo — son archivos congelados, Regla 5.)*
 

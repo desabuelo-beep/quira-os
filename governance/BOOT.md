@@ -39,11 +39,12 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO y halla las B
 🩺 **Canon curado por DOM (R.8), ICPI intacto. Gate `check_health.py`: NO adivinar tamaños.**
 📚 **ADR-035/037:** Ley→BRN→GoldMaster(único motor)→QUIRA · IA propone, humano valida.
 🏛️ **d02·d03·d09·d08 migrados** (OBS-012/013/014). **d08**: **Asamblea ciudadana AUTÓNOMA (no GAD)** · CNO-VIII(8) · **OBS-015/016/017** · d08≠d09.
-🏛️ **GOBERNANZA v1.0:** `identity/`Constitución → `governance/`Carta → `marco_teorico/`(Postulados+Inventario+**Mapa Gobernanza**) → Canon → `registry/`. ⚠️ Derivación 100% **solo en lo catalogado** (`docs/architecture/` = 47 .md sin autoridad).
-🔬 **d08 · MRSPP v3** (5 niveles; embedding PROPONE, modelo DECIDE): 68·27·**0**·25 · 103 nulas. **OBS-019** REGLA 0: quién ejecuta ≠ qué se hace.
-🏛️ **REGLAS Protocolo §3** — **R-C** el dueño del instrumento califica (OBS-020 → **d01**) · **R-D** ¿limitación del ALGORITMO o del INSTRUMENTO? si del instrumento **se mide, no se parcha** · **R-E (LEY)** Montecristi = único universo activo hasta cerrarlo · **R-F** pedir depende del CONOCIMIENTO del universo: mal publicado→pedir · **conocido inexistente→NO** (lo construiría → evid. de REACCIÓN) · **no conocido→SÍ vía Observatorio**.
-🔬 POA localiza el **1%** → **CVI** = 2ª dim. del IOC (`IOC=f(ICEP,CVI)`). `instrumental=0` ES el hallazgo.
-🔒 **UDC** (R-F.1): fuentes agotadas + solicitudes vencidas + sin repositorios pendientes → **se declara POR INSTRUMENTO, no por GAD**. Montecristi ✅ PP·POA·audiencias · ❌ LOTAIP·actas Concejo·Holding · ❌ como GAD (4/12). `IGP_2=0` es afirmable **porque el PP está en UDC**.
+🏛️ **GOBERNANZA v1.0:** `identity/`Constitución → `governance/`Carta → `marco_teorico/`(Postulados+Inventario+**Mapa**) → Canon → `registry/`. ⚠️ Derivación 100% **solo en lo catalogado** (`docs/architecture/` = 47 .md sin autoridad).
+🔬 **d08 · MRSPP v3** (5 niveles; embedding PROPONE, modelo DECIDE): 68·27·**0**·25 · 103 nulas. **OBS-019** REGLA 0.
+🏛️ **R-C..R-F → `PROTOCOLO_CURACION_DOMINIO.md` §3.** R-C el dueño del instrumento califica (OBS-020→**d01**) · R-D ¿limitación del ALGORITMO o del INSTRUMENTO? del instrumento **se mide, no se parcha** · **R-E (LEY)** solo Montecristi hasta cerrarlo · R-F pedir depende del CONOCIMIENTO del universo (**inexistente conocido→NO**: lo construiría).
+🔬 POA localiza el **1%** → **CVI** = 2ª dim. del IOC (`IOC=f(ICEP,CVI)`). `instrumental=0` ES el hallazgo (PP: **limitación estructural del instrumento**).
+🔒 **UDC** (R-F.1): **UDC-I** por instrumento · **UDC-G** derivado `= ∧ UDC-Iₖ`. Montecristi ✅ PP·POA·audiencias·cabildo · ❌ LOTAIP·Concejo·Holding → **UDC-G=FALSO** (4/12). `IGP_2=0` afirmable porque el PP está en UDC-I.
+🧪 **H-ARQ-01** (HIPÓTESIS, no hallazgo): ¿falta de localización y desagregación financiera = propiedad de la arquitectura documental EC? 2 instrumentos, 1 GAD → contraste bloqueado por R-E. **Precedente H24c**: fórmula válida ≠ operando válido.
 ⏭️ **EXCEL d08** → `ESPECIFICACION_GOLD_MASTER_D08.md` (⛔ NO restaurar `H24c!B7=H10b!B9`: cifra falsa). **Nada bloqueado**: IGP_3(d09) · `IGP_2=0` **medido** · **SAT-IX** 46,2% · CVI en IOC.
 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 ratificado · detalle en el ADR)
@@ -62,7 +63,6 @@ no redefinas · cierre `/graphify . --update`) · **no congelar teoría antes qu
 | Leer métricas del Gold Master | `app/connectors/gold_master.py` → NO recalcular |
 | Reglas de construcción/UI/dominios | `docs/REFERENCE.md` |
 | Tocar el grafo Neo4j | `docs/adr/ADR-017` + `ADR-018` |
-| Clasificar documentos | `docs/adr/ADR-021` + `docs/architecture/CANONICAL_CHUNK_SCHEMA.md` |
 | Retomar d07 Transparencia | `docs/architecture/CATALOGO_CANONICO_CD_D07.md` + `app/agents/d07/` |
 
 ## INFRA (credenciales en `.streamlit/secrets.toml` local, NUNCA al repo)
