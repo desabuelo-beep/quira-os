@@ -58,19 +58,59 @@ TH_FUERTE = 0.62      # candidato fuerte → hipótesis de correspondencia
 TH_REVISAR = 0.52     # banda de validación experta obligatoria
 
 
+POA_XLSX = Path(r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT\Holding_Municipal_Montecristi"
+                r"\POA 2023-2026\GAD Montecristi")
+
+# Membretes, títulos y filas de encabezado — NO son proyectos. Los tokens provienen del
+# extractor ya existente (scripts/extract_poa_pdf.py::_HDR_TOKENS): la solución estaba en
+# el canon. Sin este filtro, el cruce empareja demandas contra el membrete institucional.
+_HDR = ("ACTIVIDAD", "ACTVIDAD", "DESCRIPCIÓN", "DESCRIPCION", "PROYECTO", "PARTIDA",
+        "MONTO", "NO. DE", "RESPONSABLE", "META", "GOBIERNO AUTONOMO", "GOBIERNO AUTÓNOMO",
+        "MISIÓN INSTITUCIONAL", "VISIÓN INSTITUCIONAL", "PLAN OPERATIVO ANUAL",
+        "ALINEACIÓN", "OBJETIVO DE DESARROLLO SOS", "SEGUIMIENTO EJECUCIÓN",
+        "PROGRAMACIÓN DE LA META", "TIPO DE FINANCIAMIENTO", "UNIDAD ADMINISTRATIVA")
+
+
+def es_encabezado(texto: str) -> bool:
+    """True si la fila es membrete/título/cabecera de tabla, no un proyecto."""
+    up = texto.upper()
+    hits = sum(1 for t in _HDR if t in up)
+    return hits >= 2 or up.startswith(("GOBIERNO AUTONOMO", "GOBIERNO AUTÓNOMO"))
+
+
 def cargar_poa(anios: tuple[str, ...]) -> list[dict]:
-    """Lee los proyectos POA del corpus verificado (Supabase). HECHO OBSERVABLE."""
-    uri = tomllib.load(open(REPO / ".streamlit" / "secrets.toml", "rb"))["database"]["supabase_uri"]
-    import psycopg2
-    cur = psycopg2.connect(uri, connect_timeout=30).cursor()
-    siglas = tuple(f"POA-GAD-{a}%" for a in anios)
-    cur.execute("""SELECT norma_sigla, left(sha256,12), contenido
-                   FROM public.normativa_corpus
-                   WHERE norma_sigla LIKE ANY(%s) AND palabras > 8
-                   ORDER BY norma_sigla, chunk_seq""", (list(siglas),))
-    out = [{"fuente": s, "sha": h, "texto": " ".join(str(t).split())[:400]}
-           for s, h, t in cur.fetchall()]
-    cur.connection.close()
+    """Lee los proyectos POA de los XLSX oficiales del GAD. HECHO OBSERVABLE.
+
+    ★ NO se usa el corpus vectorizado (POA-GAD-*): el canon lo PROHÍBE expresamente
+    (`docs/architecture/METODOLOGIA_TRAZABILIDAD_APORTES.md` §3): "la vectorización de
+    esos PDFs quedó CORRUPTA (OCR fallido — chunks de caracteres sueltos)". Un primer
+    intento ignoró esa advertencia y produjo correspondencias contra texto ilegible
+    ("bsta idl s iae d r li eao s INDICADOR OPERATIVO...") — resultado descartado (OBS-018).
+
+    El XLSX es la fuente estructurada y limpia: sin OCR, sin corrupción.
+    """
+    import openpyxl
+    out = []
+    for anio in anios:
+        f = POA_XLSX / f"GAD Montecristi POA {anio}.xlsx"
+        if not f.exists():
+            f = POA_XLSX / f"GAD Monteristi POA {anio}.xlsx"     # typo en el archivo oficial
+        if not f.exists():
+            print(f"  [skip] POA {anio}: no existe XLSX")
+            continue
+        wb = openpyxl.load_workbook(f, read_only=True, data_only=True)
+        ws = wb[wb.sheetnames[0]]
+        n = 0
+        for row in ws.iter_rows(values_only=True):
+            celdas = [" ".join(str(c).split()) for c in row if c not in (None, "")]
+            # se conserva el texto sustantivo de la fila (proyecto · actividad · meta)
+            texto = " · ".join(c for c in celdas if len(c) > 12)[:400]
+            if len(texto) < 40 or es_encabezado(texto):
+                continue
+            out.append({"fuente": f"POA {anio} (XLSX oficial)", "sha": "", "texto": texto})
+            n += 1
+        wb.close()
+        print(f"  POA {anio}: {n} filas con contenido sustantivo (XLSX limpio)")
     return out
 
 
@@ -82,8 +122,8 @@ def main() -> int:
     demandas = d["demandas"]
     print(f"=== FASE 2 · Trazabilidad Biográfica de {len(demandas)} demandas ===\n")
 
-    poa = cargar_poa(("2025", "2026"))
-    print(f"  POA cargado del corpus verificado: {len(poa)} registros")
+    poa = cargar_poa(("2023", "2024", "2025", "2026"))
+    print(f"  TOTAL POA (fuente XLSX oficial, sin OCR): {len(poa)} registros\n")
     if not poa:
         print("  ERROR: sin POA — no se puede cruzar")
         return 1

@@ -4,7 +4,7 @@
 # Autoridad: Carta de Gobernanza Art. 1 (Derivación) y Art. 3 (describe, no gobierna).
 # ═══════════════════════════════════════════════════════════════════
 generado: 2026-07-27
-total_activos: 111
+total_activos: 112
 huerfanos: 0   # sin bloque authority: → no pueden promoverse a vigente (Art. 1)
 
 componentes:
@@ -636,6 +636,13 @@ componentes:
     level: 2
     path: docs/observations/OBS-017_Brecha_Sistematica_Audiencias_Publicas_Montecristi.md
     hash: a74ad8628b6c861c
+    authority_declared: true
+    parent: GOVERNANCE-001
+  - id: OBSERVATION-OBS-018_Fuente_Corrupta_En_El_Cr
+    kind: observation
+    level: 2
+    path: docs/observations/OBS-018_Fuente_Corrupta_En_El_Cruce_Fase2.md
+    hash: e532533f2c6845f5
     authority_declared: true
     parent: GOVERNANCE-001
   - id: DOMAIN_CATALOG-catalogo_d01_v1.0.0
