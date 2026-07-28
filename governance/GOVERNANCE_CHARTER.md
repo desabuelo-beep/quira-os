@@ -177,13 +177,30 @@ cliente. *(Implementa Constitución Art. 4 y 8.)*
 |---|---|---|
 | **Ausencia documental** | no consta el documento en la evidencia oficial | **SÍ** |
 | **Ausencia de habilitación documental** | el acto existe y el funcionario actuó, pero **no consta el instrumento que acredita su competencia** para ejercerlo | **SÍ** |
+| **Fragmentación intersistémica** | dos o más **fuentes oficiales del Estado se contradicen** sobre un mismo hecho administrativo (una declara que existe, otra lo omite) | **SÍ** |
 | **Ausencia jurídica** | el acto no existe en Derecho | NO |
 | **Incumplimiento** | juicio de que se violó la norma, con consecuencia | NO — lo determina la autoridad competente |
 
-La segunda categoría (asesor · 2026-07-27, a partir de OBS-017B) es **ruptura de la cadena de
+**Ausencia de habilitación documental** (a partir de OBS-017B) es **ruptura de la cadena de
 autoridad**, no simple falta de papel: conecta con el Principio de Derivación (Art. 1) — así como
 ningún artefacto de QUIRA puede existir sin declarar su autoridad, ningún acto administrativo
 puede acreditarse sin su instrumento habilitante.
+
+**Fragmentación intersistémica** (a partir del hallazgo cruzado d08↔d07) no es ausencia ni
+incumplimiento: es **fricción e inarticulación estatal**. Revela que el GAD opera en silos y que
+la rendición de cuentas es de papeleo, no de datos integrados. Es precisamente el objeto de
+estudio del índice de cumplimiento institucional: la **congruencia intersistémica**.
+
+### Principio de No-Inferencia
+QUIRA **no juzga intenciones ni deduce ausencias físicas**: mide la capacidad del expediente
+público para probar la legalidad del acto. La redacción de todo hallazgo debe ser inexpugnable:
+
+| ❌ Vulnerable (infiere) | ✅ Canónica (acredita) |
+|---|---|
+| *"nadie presidió la sesión"* · *"el alcalde no estuvo"* | *"la documentación analizada no acredita formalmente la autoridad que presidió"* |
+
+Si el expediente no lo prueba, **la evidencia formal es nula** — eso es lo que se certifica, no lo
+que ocurrió en la sala.
 
 **Regla de medición (Javo · 2026-07-27):** una brecha documental **no anula la evaluación del
 mecanismo**. Cada criterio de la cadena reporta su estado de forma independiente; ninguno cancela

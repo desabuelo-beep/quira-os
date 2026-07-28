@@ -32,6 +32,35 @@ parametros: { umbral_alto: 85, umbral_medio: 60, frecuencia: anual }
 # La integridad NO consume SAT: evalúa el estado de la evidencia documental por instancia.
 consume: []
 
+# ═══════════════════════════════════════════════════════════════════════════════
+# MATRIZ CANÓNICA DE LA CADENA PARTICIPATIVA (asesores · 2026-07-27)
+# ═══════════════════════════════════════════════════════════════════════════════
+# INFRAESTRUCTURA METODOLÓGICA REUTILIZABLE, no una solución de un solo uso para d08.
+# Todo mecanismo participativo (audiencia · PP · cabildo · asamblea · silla vacía) se
+# proyecta sobre estos MISMOS 9 nodos. El motor de verificación queda AGNÓSTICO AL
+# MECANISMO: mañana se audita un Cabildo o una Asamblea con la misma canalización.
+#
+# Cambio de paradigma (Javo + asesores): d08 deja de evaluar "¿cumple sí/no?" y pasa a
+# ser una AUDITORÍA DE INTEGRIDAD DEL PROCESO — cada nodo recibe su propia calificación
+# con evidencia propia, y la falla de uno NO invalida a los demás (Carta Art. 4.5).
+# Resultado posible: "el mecanismo existe, pero su integridad institucional está
+# fragmentada" — mucho más fino que "cumple / no cumple".
+cadena_participativa_canonica:
+  - { id: C01, nodo: convocatoria,            pregunta: "¿consta la convocatoria o la atención a la solicitud ciudadana?" }
+  - { id: C02, nodo: instalacion,             pregunta: "¿consta la instalación formal del acto (quórum, apertura)?" }
+  - { id: C03, nodo: presidencia_acreditada,  pregunta: "¿el expediente ACREDITA formalmente qué autoridad presidió?" }
+  - { id: C04, nodo: habilitacion_delegacion, pregunta: "¿consta el instrumento que habilita a quien dirigió (delegación/competencia)?" }
+  - { id: C05, nodo: participacion_efectiva,  pregunta: "¿consta quiénes participaron y en qué magnitud/diversidad?" }
+  - { id: C06, nodo: registro_demandas,       pregunta: "¿el expediente registra las demandas ciudadanas planteadas?" }
+  - { id: C07, nodo: compromisos_asumidos,    pregunta: "¿constan los compromisos o acuerdos asumidos por la institución?" }
+  - { id: C08, nodo: resolucion_cierre,       pregunta: "¿consta el instrumento resolutivo de cierre exigido por la norma?" }
+  - { id: C09, nodo: publicidad_intersistemica, pregunta: "¿el acto consta de forma congruente en TODOS los sistemas oficiales (transparencia, CPCCS)?" }
+
+# Estados posibles por nodo (Carta Art. 4.5 · cinco categorías):
+#   acreditado · ausencia_documental · ausencia_habilitacion_documental ·
+#   fragmentacion_intersistemica · no_aplica
+# NUNCA: "incumple" / "ilegal" — eso lo determina la autoridad competente.
+
 # ── Método · verificación documental, criterios por instancia (NO son señales SAT) ──
 metodo:
   tipo: verificacion_documental
@@ -40,18 +69,19 @@ metodo:
     - { instancia: sistema_cantonal,        cno: CNO-VIII-001, obligatorio: true,  norma: "COOTAD 304",       descripcion: "existe la ORDENANZA que conforma el sistema de participación" }
     - { instancia: asamblea_ciudadana,      cno: CNO-VIII-002, obligatorio: true,  norma: "LOPC 56/57 · COOTAD 306", descripcion: "el GAD reconoce/articula la Asamblea (órgano ciudadano autónomo — evidencia indirecta en actas de mecanismos)" }
     - { instancia: consejo_planificacion,   cno: CNO-VIII-003, obligatorio: true,  norma: "COPLAFIP 28/29",   descripcion: "Consejo conformado + RESOLUCIÓN favorable (evidencia en carpeta)" }
-    # AUDIENCIA PÚBLICA — cadena desglosada en criterios INDEPENDIENTES (Javo · 2026-07-27):
-    # una brecha documental NO anula el mecanismo. Cada criterio reporta su propio estado;
-    # ninguno cancela a los demás. Poner el mecanismo en cero por una brecha puntual sería
-    # castigar la evidencia en lugar de medirla (Carta Art. 4.5).
-    - { instancia: audiencia_publica, criterio: convocatoria,           cno: CNO-VIII-004, obligatorio: true,  norma: "LOPC 74",   descripcion: "consta la convocatoria / atención a la solicitud ciudadana" }
-    - { instancia: audiencia_publica, criterio: habilitacion_instancia, cno: CNO-VIII-004, obligatorio: true,  norma: "LOPC 73",   descripcion: "la instancia fue habilitada por la autoridad responsable" }
-    - { instancia: audiencia_publica, criterio: realizacion,            cno: CNO-VIII-004, obligatorio: true,  norma: "LOPC 73",   descripcion: "la audiencia se realizó (acta como evidencia) — ACREDITADO 28/28" }
-    - { instancia: audiencia_publica, criterio: presidencia_acreditada, cno: CNO-VIII-004, obligatorio: true,  norma: "LOPC 73",   descripcion: "el acta formaliza quién presidió — ★ OBS-017A: 0/28" }
-    - { instancia: audiencia_publica, criterio: habilitacion_actuante,  cno: CNO-VIII-004, obligatorio: true,  norma: "COOTAD 60", descripcion: "consta el acto administrativo de delegación cuando no preside el alcalde — ★ OBS-017B: no consta" }
-    - { instancia: audiencia_publica, criterio: resolucion_cierre,      cno: CNO-VIII-004, obligatorio: true,  norma: "LOPC 75",   descripcion: "consta la RESOLUCIÓN de la audiencia (mismo día o 10 días hábiles) — ★ OBS-017: 0/28" }
-    - { instancia: audiencia_publica, criterio: demandas_recogidas,     cno: CNO-VIII-004, obligatorio: false, norma: "LOPC 73",   descripcion: "el acta registra las demandas ciudadanas — ACREDITADO: 28 demandas catalogadas" }
-    - { instancia: audiencia_publica, criterio: compromisos_asumidos,   cno: CNO-VIII-004, obligatorio: false, norma: "LOPC 75",   descripcion: "el acta registra compromisos/acuerdos de la autoridad" }
+    # AUDIENCIA PÚBLICA — proyección sobre la matriz canónica (28 actas 2023-2025).
+    # Cada nodo con estado INDEPENDIENTE: la falla de uno NO invalida a los demás.
+    # Redacción según el Principio de No-Inferencia (Carta Art. 4.5): se certifica lo que
+    # el expediente ACREDITA, nunca lo que se supone que ocurrió en la sala.
+    - { instancia: audiencia_publica, nodo: C01, cno: CNO-VIII-004, obligatorio: true,  norma: "LOPC 74",   estado: pendiente_verificacion, descripcion: "convocatoria / atención a la solicitud ciudadana" }
+    - { instancia: audiencia_publica, nodo: C02, cno: CNO-VIII-004, obligatorio: true,  norma: "LOPC 73",   estado: acreditado,             descripcion: "el acto se realizó — acreditado en 28/28 expedientes" }
+    - { instancia: audiencia_publica, nodo: C03, cno: CNO-VIII-004, obligatorio: true,  norma: "LOPC 73",   estado: ausencia_documental,    descripcion: "★ OBS-017A — la documentación analizada NO ACREDITA formalmente la autoridad que presidió (0/28). No se infiere quién presidió ni su ausencia" }
+    - { instancia: audiencia_publica, nodo: C04, cno: CNO-VIII-004, obligatorio: true,  norma: "COOTAD 60", estado: ausencia_habilitacion_documental, descripcion: "★ OBS-017B — no consta acto administrativo de delegación que permita reconstruir la cadena de competencia de quien dirigió" }
+    - { instancia: audiencia_publica, nodo: C05, cno: CNO-VIII-004, obligatorio: false, norma: "LOPC 73",   estado: pendiente_verificacion, descripcion: "participación efectiva: magnitud y diversidad (dimensión vitalidad · RO-VIII-002)" }
+    - { instancia: audiencia_publica, nodo: C06, cno: CNO-VIII-004, obligatorio: false, norma: "LOPC 73",   estado: acreditado,             descripcion: "registro de demandas — 28 demandas catalogadas (Fase 1)" }
+    - { instancia: audiencia_publica, nodo: C07, cno: CNO-VIII-004, obligatorio: false, norma: "LOPC 75",   estado: pendiente_verificacion, descripcion: "compromisos/acuerdos asumidos por la institución" }
+    - { instancia: audiencia_publica, nodo: C08, cno: CNO-VIII-004, obligatorio: true,  norma: "LOPC 75",   estado: ausencia_documental,    descripcion: "★ OBS-017 — no consta el instrumento resolutivo de cierre exigido (0/28)" }
+    - { instancia: audiencia_publica, nodo: C09, cno: CNO-VIII-004, obligatorio: true,  norma: "LOTAIP · RES-CPCCS", estado: fragmentacion_intersistemica, descripcion: "★ el mecanismo consta como ejecutado en el informe RDC/CPCCS pero no figura en transparencia activa — pendiente de verificación en d07" }
     - { instancia: presupuesto_participativo, cno: CNO-VIII-005, obligatorio: true, norma: "LOPC 71 · COOTAD 238", descripcion: "PP formulado y articulado al plan" }
     - { instancia: cabildo_popular,         cno: CNO-VIII-006, obligatorio: false, norma: "LOPC 76",          descripcion: "cabildo realizado en convocatoria abierta" }
     - { instancia: silla_vacia,             cno: CNO-VIII-007, obligatorio: false, norma: "CE 101 · LOPC 77 · COOTAD 311", descripcion: "silla vacía en sesiones (evidencia: actas de Concejo — workstream futuro)" }

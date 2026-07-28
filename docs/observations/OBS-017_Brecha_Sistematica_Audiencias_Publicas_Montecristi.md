@@ -133,7 +133,13 @@ Re-verificación sobre las 28 actas:
 |---|---|
 | Actas que registran una delegación explícita | **1 / 28** — y es delegación de TAREA (*"delego al Ing. Rómulo Santana para que inicie y lleve adelante…"*), no de presidencia |
 | Actas donde el alcalde actúa directamente (bienvenida, interviene) | 23 / 28 |
-| Actas que **formalizan quién presidió y con qué habilitación** | **0 / 28** |
+| Expedientes que **acreditan formalmente la autoridad que presidió y su habilitación** | **0 / 28** |
+
+> **Principio de No-Inferencia (Carta Art. 4.5).** «0/28» significa exactamente que *la
+> documentación analizada no acredita formalmente la presidencia ni la habilitación*. **NO**
+> significa «nadie presidió», ni «no presidió el alcalde», ni «presidió un delegado». La fuerza
+> del hallazgo está en no inferir: QUIRA mide la capacidad del expediente para probar la
+> legalidad del acto, no lo que ocurrió en la sala.
 
 **Hallazgo corregido:** el problema no es que falte un acto de delegación puntual, sino que
 **ninguna acta acredita quién presidió la audiencia ni bajo qué habilitación** (LOPC 73 exige que
