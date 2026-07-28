@@ -152,14 +152,14 @@ componentes:
     kind: marco_teorico
     level: 1
     path: marco_teorico/INVENTARIO_CONCEPTOS_FUNDACIONALES.md
-    hash: d897ef8b6f581933
+    hash: 2976735629ad7c9c
     authority_declared: true
     parent: MARCO-TEORICO-001
   - id: MARCO-TEORICO-001
     kind: marco_teorico
     level: 1
     path: marco_teorico/MARCO_TEORICO_QUIRA.md
-    hash: 7db72719ff9a86cf
+    hash: 94205165116a35b8
     authority_declared: true
     parent: CONSTITUCION-001
   - id: CNO-I-001

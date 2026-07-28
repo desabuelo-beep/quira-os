@@ -35,21 +35,25 @@ hace visible la genealogía completa para que no se repita.
 
 ## Inventario
 
-| # | Concepto | Primera formulación | Documento fuente | Operacionalización actual | Estado |
-|---|---|---|---|---|---|
-| 1 | **Trazabilidad Biográfica del Dato** *(Postulado I)* | borrador de tesis | `marco_teorico/MARCO_TEORICO_QUIRA.md` · tesis | Matriz Canónica C01→C09 · cadenas CNO de la BRN | **activo** |
-| 2 | **Cadena de Integridad Intersistémica** *(Postulado II)* | borrador de tesis | `MARCO_TEORICO_QUIRA.md` · tesis | 5ª categoría · nodo C09 · objeto del índice | **activo** |
-| 3 | **Preservación Cognitiva** *(Postulado III)* | Constitución del proyecto | `identity/CONSTITUCION_INSTITUCIONAL.md` Art. 6·12·18·21 | jerarquía Evidencia→Inteligencia Pública | **activo** *(norma en Constitución; teoría en Marco)* |
-| 4 | **Unidad mínima de valor = cadena causal verificable** | Teoría de Valor · mayo 2026 | `../governance/QUIRA_THEORY_OF_VALUE_v1.0.md` | define que QUIRA **no es un dashboard** ni una auditoría | **activo** |
-| 5 | **El silencio como dato** | Marco Epistémico · mayo 2026 | `../governance/QUIRA_EPISTEMIC_FRAMEWORK_v1.0.md` | las 5 categorías de la Carta Art. 4.5 | **activo** |
-| 6 | **Horizonte de Verdad** *(4 estados epistémicos)* | Marco Epistémico · mayo 2026 | `QUIRA_EPISTEMIC_FRAMEWORK_v1.0.md` | Principio de No-Inferencia *(forma binaria — el Horizonte prevalece)* | **parcial** |
-| 7 | **C10 · Metacognición institucional** | Marco Epistémico · mayo 2026 | `QUIRA_EPISTEMIC_FRAMEWORK_v1.0.md` | — *(el nivel donde QUIRA admite que no sabe)* | **pendiente** |
-| 8 | **La metodología es el activo, no el software** | Teoría de Valor · mayo 2026 | `QUIRA_THEORY_OF_VALUE_v1.0.md` | Constitución Art. 16 y 19 | **activo** |
-| 9 | **Longitudinalidad = evidencia irrebatible** | Teoría de Valor · mayo 2026 | `QUIRA_THEORY_OF_VALUE_v1.0.md` | serie histórica del grafo · Constitución Art. 19 | **activo** |
-| 10 | **Un solo grafo, cinco verbos** | Marco Epistémico · mayo 2026 | `QUIRA_EPISTEMIC_FRAMEWORK_v1.0.md` | los productos son lecturas del mismo grafo | **activo** |
-| 11 | **Integridad procedimental** | emergente · julio 2026 | `MARCO_TEORICO_QUIRA.md` | dimensión que abren los Postulados I y II | **activo** |
-| 12 | **Espectro intersistémico** *(continuidad→restauración)* | asesoría · julio 2026 | `MARCO_TEORICO_QUIRA.md` | solo *fragmentación* tipificada hoy | **parcial** |
+> **Los cuatro atributos permanentes** (asesoría · 2026-07-27): todo concepto declara *dónde
+> nació* · *dónde quedó formalizado* · *dónde se implementa* · *cómo se mide*. Es aplicar la
+> **Trazabilidad Biográfica del Dato a las ideas del propio proyecto**: los conceptos también
+> tienen biografía, y perderla es cómo se re-descubren.
 
+| # | Concepto | Primera formulación | Definición canónica (documento fuente) | Instrumentación | Métrica asociada | Estado |
+|---|---|---|---|---|---|---|
+| 1 | **Trazabilidad Biográfica del Dato** *(Postulado I)* | borrador de tesis | `marco_teorico/MARCO_TEORICO_QUIRA.md` · tesis | Matriz Canónica C01→C09 · cadenas CNO de la BRN | IGP · integridad procedimental | **activo** |
+| 2 | **Cadena de Integridad Intersistémica** *(Postulado II)* | borrador de tesis | `MARCO_TEORICO_QUIRA.md` · tesis | 5ª categoría · nodo C09 · objeto del índice | índice de cumplimiento institucional | **activo** |
+| 3 | **Preservación Cognitiva** *(Postulado III)* | Constitución del proyecto | `identity/CONSTITUCION_INSTITUCIONAL.md` Art. 6·12·18·21 | jerarquía Evidencia→Inteligencia Pública | —  (finalidad, no se mide) | **activo** *(norma en Constitución; teoría en Marco)* |
+| 4 | **Unidad mínima de valor = cadena causal verificable** | Teoría de Valor · mayo 2026 | `../governance/QUIRA_THEORY_OF_VALUE_v1.0.md` | define que QUIRA **no es un dashboard** ni una auditoría | toda cadena causal del sistema | **activo** |
+| 5 | **El silencio como dato** | Marco Epistémico · mayo 2026 | `../governance/QUIRA_EPISTEMIC_FRAMEWORK_v1.0.md` | las 5 categorías de la Carta Art. 4.5 | 5 categorías de ausencia | **activo** |
+| 6 | **Horizonte de Verdad** *(4 estados epistémicos)* | Marco Epistémico · mayo 2026 | `QUIRA_EPISTEMIC_FRAMEWORK_v1.0.md` | Principio de No-Inferencia *(forma binaria — el Horizonte prevalece)* | estado epistémico por dato | **parcial** |
+| 7 | **C10 · Metacognición institucional** | Marco Epistémico · mayo 2026 | `QUIRA_EPISTEMIC_FRAMEWORK_v1.0.md` | — *(el nivel donde QUIRA admite que no sabe)* | backlog de conocimiento | **pendiente** |
+| 8 | **La metodología es el activo, no el software** | Teoría de Valor · mayo 2026 | `QUIRA_THEORY_OF_VALUE_v1.0.md` | Constitución Art. 16 y 19 | — | **activo** |
+| 9 | **Longitudinalidad = evidencia irrebatible** | Teoría de Valor · mayo 2026 | `QUIRA_THEORY_OF_VALUE_v1.0.md` | serie histórica del grafo · Constitución Art. 19 | serie histórica del grafo | **activo** |
+| 10 | **Un solo grafo, cinco verbos** | Marco Epistémico · mayo 2026 | `QUIRA_EPISTEMIC_FRAMEWORK_v1.0.md` | los productos son lecturas del mismo grafo | — | **activo** |
+| 11 | **Integridad procedimental** | emergente · julio 2026 | `MARCO_TEORICO_QUIRA.md` | dimensión que abren los Postulados I y II | matriz C01→C09 | **activo** |
+| 12 | **Espectro intersistémico** *(continuidad→restauración)* | asesoría · julio 2026 | `MARCO_TEORICO_QUIRA.md` | solo *fragmentación* tipificada hoy | estado del nodo C09 | **parcial** |
 ### Estados
 `activo` — declarado y operando · `parcial` — declarado, implementación incompleta ·
 `pendiente` — declarado, sin implementar · `implícito` — opera sin estar declarado *(a evitar)*

@@ -48,6 +48,17 @@ La trazabilidad intelectual es tan importante como la documental.
 
 ---
 
+## DEFINICIÓN CANÓNICA DEL PROYECTO
+
+> **QUIRA no transforma datos en informes: transforma evidencia administrativa dispersa en
+> patrimonio cognitivo público.**
+
+Una sola frase que contiene toda la jerarquía del Postulado III y explica por qué **la auditoría
+es apenas una fase**: la auditoría *verifica*; QUIRA **preserva, estructura, acumula y genera
+capacidad institucional**.
+
+---
+
 ## AXIOMA UNIFICADOR
 
 > **Ninguna transformación puede perder su trazabilidad.**
