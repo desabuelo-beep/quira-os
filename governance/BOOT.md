@@ -36,21 +36,21 @@ la Doctrina permanece. Hoja de Ruta = el mapa que no se mueve. BOOT §AHORA = el
 ## AHORA (estado vivo · historial → `governance/historico/BOOT_2026-06-17.md`)
 🧭 **ADR-031 RATIF:** cajón=MCD · GoldMaster=MCM · MCIP 5 motores (Index §1.A).
 ✅ **4 DOM cerrados con PCD: d01·d02·d03·d09.**
-📚 **ADR-038 BRN v2 RATIF:** nodo = REGLA, no artículo. **Corpus→CNO(Derecho)→RO(lógica)→SAT**. BRN CONSOLIDA, no interpreta. **Corpus v1.0 CONGELADO**. **BRN v2.1**: d01-03+08-09 CONFORMES·diff=0.
+📚 **ADR-038 BRN v2 RATIF:** nodo = REGLA, no artículo. **Corpus→CNO(Derecho)→RO(lógica)→SAT**. **Corpus v1.0 CONGELADO**. **BRN v2.1**: d01-03+08-09 CONFORMES·diff=0.
 🩺 **Canon curado por DOM (Regla 8), ICPI intacto. Gate = `scripts/ci/check_health.py`: NO adivinar tamaños.**
 📚 **ADR-035/037:** Ley→BRN→GoldMaster(único motor)→QUIRA · IA propone, humano valida.
-🏛️ **d02·d03·d09·d08 migrados** (OBS-012/013/014). **d08** = Marco→Sistema→**Asamblea (ciudadana AUTÓNOMA, no GAD)**→Consejo→mecanismos · CNO-VIII(8) · **OBS-015/016/017** · frontera d08≠d09.
-🏛️ **GOBERNANZA v1.0:** `identity/`Constitución(21art) → `governance/`Carta(8art) → `marco_teorico/`(Postulados+Inventario) → Canon → `registry/`(GENERADO). Derivación 100%. DEC-0001..0011.
+🏛️ **d02·d03·d09·d08 migrados** (OBS-012/013/014). **d08** = Marco→…→**Asamblea ciudadana AUTÓNOMA (no GAD)** · CNO-VIII(8) · **OBS-015/016/017** · frontera d08≠d09.
+🏛️ **GOBERNANZA v1.0:** `identity/`Constitución → `governance/`Carta(8art) → `marco_teorico/`(Postulados+Inventario) → Canon → `registry/`(GENERADO). Derivación 100%. DEC-0001..0011.
 🔬 **d08 · MRSPP v3** (5 niveles; embedding PROPONE, modelo DECIDE): 68·27·**0**·25 · 103 nulas. **OBS-019** REGLA 0: quién ejecuta ≠ qué se hace. Regla T1 ya estaba en el canon — el Inventario funcionó.
-🏛️ **OBS-020 es de d01, NO de d08** (Javo): *quien es dueño del instrumento lo califica; quien lo usa solo consume*. La ficha POA localiza el **1%** del gasto (2 métodos) → **CVI** = 2ª dimensión del IOC junto al ICEP. `instrumental=0` ES el hallazgo.
-⏭️ **SIGUIENTE:** 2ª validación experta · SAT a Excel (Cáscara·Opacidad·Brecha·CVI) · ¿neutralizar programa presupuestario? · firmar CNO-VIII · **CVI en 2º GAD (Gate 7): ¿Montecristi o instrumento nacional?**
+🏛️ **R-C** (Javo): *el propietario del instrumento lo califica; el consumidor solo lo usa* → OBS-020 es de **d01**. **R-D**: ¿la limitación es del ALGORITMO o del INSTRUMENTO? si es del instrumento **se mide, no se parcha**. POA localiza el **1%** (2 métodos) → **CVI** = 2ª dim. del IOC. `instrumental=0` ES el hallazgo. ⛔ no elevar a "nacional" sin 2º/3er GAD.
+⏭️ **SIGUIENTE:** 2ª validación experta · SAT a Excel (Cáscara·Opacidad·Brecha·CVI) · ¿neutralizar programa presup.? · firmar CNO-VIII · CVI en 2º GAD (Gate 7).
 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 ratificado · detalle en el ADR)
 GAD = sujeto observado, NO cliente. 4 capas: A Núcleo · B Operaciones (Dylus) · C Productos (los 6 de §LA TESIS · 1 solo motor) · D Portal `quiraintelligence.com` (radar 221 GAD).
 
 ## REGLAS DE ORO → **las 9 viven en `CLAUDE.md`** (se lee siempre · no se duplican aquí)
-Recordatorio de las 2 que más se olvidan: **el grafo es autoridad** (antes de definir: ¿existe? → DERIVA,
-no redefinas · al cierre `/graphify . --update`) · **no congelar teoría antes que el grafo hable** (ADR-019).
+Las 2 que más se olvidan: **antes de definir, consultar el Inventario de Conceptos** (¿existe? → DERIVA,
+no redefinas · cierre `/graphify . --update`) · **no congelar teoría antes que el grafo hable** (ADR-019).
 
 ## LAZY LOAD — lee SOLO lo que aplica a tu tarea
 | Si vas a... | Lee primero |

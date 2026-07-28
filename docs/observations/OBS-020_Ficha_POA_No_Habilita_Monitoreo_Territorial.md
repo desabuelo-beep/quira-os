@@ -177,10 +177,44 @@ y por eso **la decisión es de Javo, no del motor**. Esas correspondencias queda
 | 6 | Decidir si el programa presupuestario se neutraliza | ⏳ decisión de Javo |
 | 7 | Replicar el diagnóstico en un segundo GAD (¿es Montecristi o es el modelo nacional?) | ⏳ Gate 7 |
 
-> **La pregunta que abre para los 222 GAD:** si la ficha POA de Montecristi no localiza el
-> gasto, ¿es un defecto de este municipio o **la forma nacional del instrumento**? La
-> respuesta cambia el alcance de QUIRA: de auditar un GAD a **auditar el instrumento con
-> que Ecuador planifica su desarrollo local**.
+## 8 · Redacción canónica del hallazgo
+
+Toda cita de esta observación —en la tesis, en la UI o ante un revisor— usa **esta
+formulación y no otra**, porque es la única enteramente demostrada:
+
+> **Aplicando dos métodos independientes de identificación territorial (registro de topónimos
+> y detección de marcadores espaciales), únicamente entre el 1,1% y el 1,3% de las filas del
+> POA 2023-2026 del GAD Montecristi contienen una referencia territorial subcantonal explícita
+> que permita reconstruir el lugar efectivo de ejecución del gasto.**
+
+## 9 · El hallazgo que trasciende el 1%
+
+> **El 1% es el resultado, no el hallazgo.** *(precisión de la asesoría · 2026-07-29)*
+>
+> El hallazgo es un principio metodológico que trasciende Montecristi y trasciende Ecuador:
+>
+> **La verificabilidad de una política pública depende de la ESTRUCTURA SEMÁNTICA del
+> instrumento, no únicamente de su disponibilidad documental.**
+>
+> El 1% simplemente lo demuestra empíricamente. Un instrumento puede estar publicado, ser
+> legible y estar completo, y aun así no habilitar verificación alguna.
+
+## 10 · Protocolo de elevación — qué NO se puede afirmar todavía
+
+**No se afirma nada sobre "el instrumento nacional" con un solo municipio.** Con un caso
+siempre cabe la particularidad local. La secuencia obligatoria antes de elevar el hallazgo:
+
+| Paso | Alcance | Estatus de la afirmación |
+|---|---|---|
+| **1 · Montecristi** | observación | ✅ **hecho** — hallazgo local, plenamente demostrado |
+| **2 · Segundo GAD** | replicación | ⏳ Gate 7 |
+| **3 · Tercer GAD, otra provincia** | confirmación | ⏳ pendiente |
+| **4 · Elevación** | afirmación sobre el **diseño del instrumento** | ⛔ **prohibido hasta completar 1-3** |
+
+Hasta el paso 4, la formulación admisible es una **pregunta abierta**, no una conclusión:
+*¿es un defecto de este municipio o una propiedad del instrumento?* Registrarla como pregunta
+—y no como hallazgo— es un caso **C10 · Metacognición institucional** (Modelo Causal §XV): lo
+que QUIRA lleva a la red académica **son sus incertidumbres estructuradas, no sus resultados**.
 
 ---
 *OBS-020 · Dylus Lab © 2026 · hallazgo de Javo, medido por QUIRA · deriva de OBS-019.*

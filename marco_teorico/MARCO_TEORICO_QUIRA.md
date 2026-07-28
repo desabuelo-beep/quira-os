@@ -251,7 +251,15 @@ la forma completa y prevalece**.
 
 ---
 
-## MRSPP · Modelo de Relaciones de Satisfacción de Política Pública
+## MRSPP · Taxonomía de Relaciones de Satisfacción de Política Pública
+
+> **Estatuto epistémico (precisión de la asesoría · 2026-07-29):** el MRSPP es una **taxonomía
+> operacional, NO un modelo explicativo.** *Clasifica* relaciones; no *explica* causalidad —
+> eso ya lo hace el Modelo Causal, y competir con él sería inflación (Regla 7). La sigla se
+> conserva porque ya tiene biografía en el Inventario (concepto 13); lo que se corrige es la
+> pretensión, no el nombre.
+>
+> **El Modelo Causal explica. El MRSPP clasifica.**
 
 **Formulado julio-2026** sobre una observación de campo de Javo: *"¿y si SÍ existe relación
 entre recolección de basura y Carnaval? Es feriado, aumenta el trabajo de las EP de aseo,
@@ -275,6 +283,12 @@ expediente**"*. Es una afirmación de naturaleza distinta — y auditable.
 | **I** | **Instrumental** | existe un **componente operativo explícito** declarado en el expediente |
 | **C** | **Complementaria** | contribuye indirectamente a las condiciones del entorno |
 | **N** | **Nula** | no existe evidencia verificable de relación |
+
+> **Nota de honestidad sobre `Complementaria`** *(reserva de la asesoría, adoptada):* se adopta
+> el término **por coherencia terminológica, manteniendo la misma semántica operacional** que
+> tenía `indirecta`. **No añade capacidad analítica y no debe presentarse como innovación.** Lo
+> que sí supera la Regla 7 es otra cosa: `funcional` pasó de *compatible* a **compatible Y
+> declarado** — ese cambio elimina una cantidad enorme de inferencias.
 
 **Ningún nivel se presume; cada uno exige su evidencia.** Los dos ejemplos que fijan la regla:
 

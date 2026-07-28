@@ -46,6 +46,48 @@ Patrón definitivo  →  PCD-DXX (documentación del dominio)
 - **R-B · Ningún cambio nace en Python.** Todo cambio **conceptual** (métrica, fórmula, definición) nace en el **canon** (Gold Master o corpus verificado). Python solo **implementa o deriva**. El código es reflejo del canon, jamás un segundo canon.
   *(Corolario: las cruces que "el Excel no cruza solo" —puentes de partidas, SERCOP— DERIVAN de datos del canon; no inventan verdad. Si una cruz se vuelve métrica de record, se estampa/formula en el canon, como el IPE.)*
 
+- **R-C · Deslinde de dominios: el propietario califica, el consumidor solo usa.** *(Javo · 2026-07-29 — generaliza el precedente d07 de `TEORIA_EVIDENCIA_PUBLICA_VERIFICABLE.md`.)*
+
+  > **El dominio propietario del instrumento evalúa la CALIDAD del instrumento; los dominios
+  > consumidores solo evalúan su CAPACIDAD DE USO.**
+
+  | Dominio | Rol frente a la evidencia | Qué califica |
+  |---|---|---|
+  | **d01 Planificación** | **propietario** del POA | el **CVI** del instrumento (estructura) |
+  | **d07 Transparencia** | **publicador** | el **ICEP** de la publicación (formato) |
+  | **d08 Participación** | **consumidor** | nada del instrumento — solo reporta **qué no pudo verificar** |
+
+  **Por qué es una regla y no una preferencia:** sin ella, un dominio consumidor emite juicios
+  sobre defectos que pertenecen a otro, y el mismo hallazgo termina duplicado —o contradicho—
+  en dos dominios. Es **Subsidiariedad Normativa** (Carta Art. 1.2) aplicada a la frontera entre
+  dominios: la regla vive en el nivel más bajo que la contiene por completo.
+
+  **Caso que la originó:** OBS-020 nació en d08 (cruce demanda↔POA) pero su objeto es el POA,
+  instrumento de d01. Anclaje corregido; d08 conserva solo el efecto (sus `sin_correlato`
+  quedan explicados por causa externa).
+
+- **R-D · Antes de corregir el motor, determinar de quién es la limitación.** *(extiende el
+  Principio 6 · Autocuración Metodológica del Modelo Causal, mayo-2026.)*
+
+  El ciclo original asumía que toda anomalía detectada era una limitación **del modelo**:
+  `construir → observar → detectar limitación → documentar (C10) → mejorar`. Falta la
+  bifurcación:
+
+  ```
+  el motor detecta una inconsistencia
+        ↓
+  ¿la limitación es del ALGORITMO o del INSTRUMENTO observado?
+        ├── del algoritmo   → se corrige el motor (+ test de regresión)
+        └── del instrumento → NO se corrige el motor: se MIDE y se registra
+                              como hallazgo sobre el sujeto observado (CVI)
+  ```
+
+  **Evidencia de que la bifurcación hacía falta:** el cruce d08 se rompió cuatro veces. Las
+  tres primeras eran del algoritmo (membrete · unidad ejecutora · homógrafo) y se corrigieron.
+  La cuarta era del instrumento, y **corregirla habría sido el error**: parchar el programa
+  presupuestario habría ocultado que el POA no localiza el gasto. Se midió en vez de parchar,
+  y de ahí salió OBS-020.
+
 *(Ratificación de R-A/R-B como Reglas de Oro en `CLAUDE.md` / `BOOT.md`: pendiente de Javo — son archivos congelados, Regla 5.)*
 
 ## 4 · Plantilla PCD-DXX (cada dominio cierra con su documento)
