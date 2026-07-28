@@ -3,8 +3,8 @@
   "_autoridad": "Carta de Gobernanza Art. 1 (Derivación) y Art. 3 (representaciones)",
   "generado": "2026-07-27",
   "raiz": "CONSTITUCION-001",
-  "total_nodos": 110,
-  "total_aristas": 110,
+  "total_nodos": 111,
+  "total_aristas": 111,
   "aristas_rotas": 0,
   "huerfanos": 0,
   "cumplimiento_derivacion_pct": 100.0,
@@ -147,6 +147,13 @@
       "kind": "identity",
       "level": 0,
       "path": "docs/sprint-c/CONSTITUCION_ONTOLOGICA_QUIRA.md",
+      "declared": true
+    },
+    {
+      "id": "INVENTARIO-CONCEPTOS-001",
+      "kind": "marco_teorico",
+      "level": 1,
+      "path": "marco_teorico/INVENTARIO_CONCEPTOS_FUNDACIONALES.md",
       "declared": true
     },
     {
@@ -892,6 +899,12 @@
     {
       "from": "IDENTITY-CONSTITUCION_ONTOLOGICA_QUIRA",
       "to": "CONSTITUCION-001",
+      "type": "DERIVES_FROM",
+      "resuelto": true
+    },
+    {
+      "from": "INVENTARIO-CONCEPTOS-001",
+      "to": "MARCO-TEORICO-001",
       "type": "DERIVES_FROM",
       "resuelto": true
     },

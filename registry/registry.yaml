@@ -4,7 +4,7 @@
 # Autoridad: Carta de Gobernanza Art. 1 (Derivación) y Art. 3 (describe, no gobierna).
 # ═══════════════════════════════════════════════════════════════════
 generado: 2026-07-27
-total_activos: 110
+total_activos: 111
 huerfanos: 0   # sin bloque authority: → no pueden promoverse a vigente (Art. 1)
 
 componentes:
@@ -26,7 +26,7 @@ componentes:
     kind: normative
     level: 1
     path: governance/GOVERNANCE_CHARTER.md
-    hash: 69c6038b09cc8467
+    hash: 8f813f4357d65b31
     authority_declared: true
     parent: CONSTITUCION-001
   - id: NORMATIVE-HOJA_DE_RUTA_MAESTRA
@@ -138,7 +138,7 @@ componentes:
     kind: decision
     level: 1
     path: governance/decisions/DEC-0011.md
-    hash: d101a75b0c7367a9
+    hash: c63b9d9f6e609455
     authority_declared: true
     parent: GOVERNANCE-001
   - id: IDENTITY-CONSTITUCION_ONTOLOGICA_QUIRA
@@ -148,11 +148,18 @@ componentes:
     hash: 479a3f8552edb567
     authority_declared: true
     parent: CONSTITUCION-001
+  - id: INVENTARIO-CONCEPTOS-001
+    kind: marco_teorico
+    level: 1
+    path: marco_teorico/INVENTARIO_CONCEPTOS_FUNDACIONALES.md
+    hash: d897ef8b6f581933
+    authority_declared: true
+    parent: MARCO-TEORICO-001
   - id: MARCO-TEORICO-001
     kind: marco_teorico
     level: 1
     path: marco_teorico/MARCO_TEORICO_QUIRA.md
-    hash: 383da8c2db0a385e
+    hash: 7db72719ff9a86cf
     authority_declared: true
     parent: CONSTITUCION-001
   - id: CNO-I-001
@@ -278,7 +285,7 @@ componentes:
     kind: canon_ro
     level: 2
     path: docs/brn/RO-VIII-001.yaml
-    hash: 5322fe1f9bb031d9
+    hash: 9e3353b6c5a046fb
     authority_declared: true
     parent: CNO-VIII-000
   - id: RO-VIII-002

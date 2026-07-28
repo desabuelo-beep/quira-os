@@ -23,7 +23,7 @@
 
 ## Cumplimiento del Principio de Derivación (Carta Art. 1)
 
-**100.0%** — 110 de 110 activos declaran su autoridad.
+**100.0%** — 111 de 111 activos declaran su autoridad.
 
 ⚠️ **0 artefactos HUÉRFANOS** — sin bloque `authority:`, no pueden
 promoverse a `vigente` (Carta Art. 1). Desglose:
@@ -41,7 +41,7 @@ promoverse a `vigente` (Carta Art. 1). Desglose:
 | gate | 1 | 0 |
 | graph | 7 | 0 |
 | identity | 2 | 0 |
-| marco_teorico | 1 | 0 |
+| marco_teorico | 2 | 0 |
 | normative | 7 | 0 |
 | observation | 15 | 0 |
 

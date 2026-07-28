@@ -60,6 +60,42 @@ institucional**. Ambos convergen en la definición de integridad que sostiene to
 
 ---
 
+## LA TEORÍA UNIFICADA · los postulados no son ideas aisladas
+
+Los dos postulados **no son conceptos independientes: son dos dimensiones del mismo objeto**
+(síntesis de la asesoría · 2026-07-27), y juntos definen la variable que QUIRA mide:
+
+> **Integridad Pública = f( Biografía , Congruencia )**
+>
+> *(formulación conceptual, no fórmula de cálculo: el índice lo computa el motor)*
+
+| Dimensión | Postulado | Qué explica |
+|---|---|---|
+| **Temporal** | I · Trazabilidad Biográfica | **cómo cambia** el dato — su evolución |
+| **Estructural** | II · Cadena de Integridad Intersistémica | **cómo se conserva** — sus relaciones |
+
+La biografía explica la *transformación*; la cadena explica la *conservación*. Ambos describen
+el mismo objeto desde perspectivas distintas.
+
+### Jerarquía causal — la teoría nunca depende del instrumento
+```
+POSTULADOS FUNDACIONALES  (I Biografía · II Congruencia)
+        ↓
+MARCO TEÓRICO  (esta capa)
+        ↓
+MODELO  (integridad procedimental · horizonte de verdad)
+        ↓
+MATRIZ CANÓNICA  (C01→C09) ← INSTRUMENTO, no teoría
+        ↓
+REGLAS OPERATIVAS  (RO · OBS · PCD)
+        ↓
+MÉTRICAS E ÍNDICES  (índice de cumplimiento institucional)
+```
+**La matriz depende de los postulados; los postulados jamás dependen de la matriz.** El código es
+la manifestación de la teoría, nunca su fundamento.
+
+---
+
 ## Postulado I · Trazabilidad Biográfica del Dato
 *(eje TEMPORAL — la historia de vida de la evidencia)*
 
@@ -90,8 +126,48 @@ CNO de la BRN (biografía jurídica de una obligación) · el cruce
 **Consecuencia:** cuando un sistema declara *"existe"* y otro *"no existe"*, no falta un papel: se
 **nombra y mide la ruptura de la cadena de integridad entre sistemas del Estado**.
 
+### El espectro intersistémico *(precisión de la asesoría · 2026-07-27)*
+La *Fragmentación Intersistémica* **no es una categoría independiente**: es **una manifestación
+observable** de este postulado — y la más negativa. El eje tiene un **espectro completo**:
+
+```
+continuidad → congruencia → fragmentación → ruptura → restauración
+```
+
+Hoy la Carta (Art. 4.5) solo tipifica la **fragmentación**, porque es la que la evidencia de
+Montecristi hizo visible. Los demás estados quedan **declarados y disponibles** para cuando la
+evidencia los muestre — no se implementan por completitud teórica (Carta Art. 3.1).
+
 **Deriva de aquí:** 5ª categoría *Fragmentación Intersistémica* (Carta Art. 4.5) · nodo C09 · el
 objeto mismo del índice de cumplimiento institucional.
+
+## Postulado III · Preservación Cognitiva
+*(eje de FINALIDAD — por qué QUIRA no termina en la auditoría)*
+
+> **Ninguna evidencia pública debe agotarse en el cumplimiento administrativo: toda evidencia
+> debe poder transformarse en memoria institucional, patrimonio cognitivo, capital cognitivo e
+> inteligencia pública.**
+
+> ⚠️ **Este postulado NO es nuevo ni se añade al canon: es la formulación TEÓRICA de lo que la
+> Constitución ya norma** (Art. 6 acumulación · Art. 12 jerarquía del conocimiento · Art. 18
+> preservación · Art. 21 acumulación). Se declara aquí para completar la teoría, **sin duplicar
+> la norma** (Regla 7 · Principio de Subsidiariedad, Carta Art. 1.2). Su fuerza normativa vive
+> en la Constitución; su fuerza explicativa, aquí.
+
+**El salto que define al proyecto:**
+
+| | Pregunta |
+|---|---|
+| Auditoría convencional | *¿se cumplió la ley?* — reactiva, punitiva, muere en el informe |
+| **QUIRA** | *¿qué aprendió la institución? ¿qué vacíos estructurales quedaron al descubierto? **¿qué patrimonio cognitivo hereda el territorio para la siguiente generación?*** |
+
+**La secuencia completa de producción de conocimiento público:**
+```
+Evidencia → Dato Público → Trazabilidad Biográfica → Cadena de Integridad
+   → Memoria Pública Digital → Patrimonio Cognitivo → Capital Cognitivo → Inteligencia Pública
+```
+Esto ya no describe una herramienta: describe una **teoría de producción de conocimiento
+público**. Es la razón por la que QUIRA no es —ni puede reducirse a— una auditoría.
 
 ---
 
