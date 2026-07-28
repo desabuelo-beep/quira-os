@@ -110,80 +110,87 @@ Patrón definitivo  →  PCD-DXX (documentación del dominio)
   > *"instrumento nacional"* no solo requiere replicación: requiere **primero** cerrar
   > Montecristi. Ese hallazgo permanece como **C10 · incertidumbre estructurada**, sin fecha.
 
-- **R-F · La solicitud se rige por el ESTADO DE CONOCIMIENTO del universo documental.** *(Javo · 2026-07-29, precisado el mismo día.)*
+- **R-F · Las TRES vías canónicas de ingesta — solicitar es ejercer la norma, no contaminar el objeto.** *(Javo · 2026-07-29, corrige la versión anterior.)*
 
-  > **Pedirle un documento a un GAD es legítimo. Lo que NO es legítimo es pedir un dato que ya
-  > sabemos que no existe** — porque entonces el GAD lo construye para responder, y ese documento
-  > nace DESPUÉS de la pregunta: deja de ser evidencia de gestión y pasa a ser evidencia de
-  > reacción a QUIRA.
+  > ⚠️ **CORRECCIÓN DE FONDO.** La primera R-F trataba la solicitud como *contaminación de la
+  > muestra* — reactividad, efecto observador. **Ese marco no corresponde al objeto.** QUIRA no
+  > realiza un experimento de laboratorio: **operacionaliza un derecho público**. El error fue de
+  > la dirección técnica al adoptar un encuadre sociológico sobre un objeto jurídico.
 
-  **La regla depende de si conocemos el universo documental del GAD, no del acto de pedir:**
+  ### Fundamento normativo
 
-  | # | Estado del universo | ¿Solicitar? | Fundamento |
-  |---|---|---|---|
-  | **1** | **CONOCIDO** · el documento **existe** pero está mal publicado *(POA en XLSX limpio, publicado en PDF escaneado)* | ✅ **sí** | recupera un documento **preexistente**; no crea nada |
-  | **2** | **CONOCIDO** · el dato **no existe** *(Montecristi: el PP puntúa prioridad, no establece costo)* | ⛔ **no** | **induciría su creación** |
-  | **3** | **NO CONOCIDO** · GAD sin documentos hallables en web ni en transparencia | ✅ **sí — es obligatorio** | **la solicitud es el instrumento que determina si estamos en el caso 1 o en el 2** |
+  | Norma | Qué establece |
+  |---|---|
+  | **Constitución Art. 226** | principio de legalidad — en el sector público **solo se hace lo que la ley manda** |
+  | **Constitución Art. 18** | toda información generada con recursos públicos es **pública** |
+  | **LOTAIP** | fija el **procedimiento** de acceso: **10 días término + 5 de prórroga** |
+  | **Acción constitucional de acceso** | si no entregan, la vía judicial **avala la exigencia** |
 
-  ### El caso 3 es el que hace escalable a QUIRA
+  **En los GAD no existe reserva de Estado.** La información reservada corresponde a seguridad
+  nacional y fuerzas del orden. Todo expediente, acta, comprobante o plano municipal es documento
+  público **de pleno derecho**. Pedirlo no es un favor: es ejercer una garantía.
 
-  En un GAD cuyo universo documental **aún no conocemos**, no se puede saber si el documento
-  existe y está mal publicado (caso 1) o si nunca se produjo (caso 2). **La solicitud es el único
-  modo de averiguarlo — y su resultado es, en sí mismo, evidencia:**
+  ### Las tres vías canónicas
 
   ```
-  se solicita  →  entregan documento con fecha anterior  →  EXISTÍA: caso 1 · mide su publicación
-               →  no entregan / silencio administrativo  →  evidencia de opacidad (IOC)
-               →  entregan algo construido al momento    →  NO EXISTÍA: caso 2 · se anota y no se usa
+                            EVIDENCIA PÚBLICA
+                                   │
+        ┌──────────────────────────┼──────────────────────────┐
+        ▼                          ▼                          ▼
+  TRANSPARENCIA ACTIVA      SILOS INTERSISTÉMICOS      TRANSPARENCIA PASIVA
+  portal GAD · LOTAIP       CPCCS · SERCOP · e-SIGEF   LOTAIP 10+5 · vía judicial
+  (lo que publican)         (lo que reportan al Estado) (lo que están obligados a entregar)
   ```
 
-  **Canal obligatorio:** la solicitud se cursa desde el **Observatorio QUIRA** o **QUIRA
-  Ciudadana**, ejerciendo el **derecho de acceso a la información pública**. Nunca como QUIRA
-  pidiéndole insumos al auditado: eso convertiría al GAD en proveedor y disolvería su condición
-  de **sujeto observado** (BOOT §LA TESIS).
+  **Las tres son oficiales y legítimas.** QUIRA no espera a ver qué decide subir la secretaría al
+  portal: agota las tres.
 
-  ### Estado por GAD
+  ### Lo que se controla no es SI se pide, sino cómo se califica lo que llega
 
-  | GAD | Universo documental | Régimen |
+  El riesgo del documento fabricado *ex post* **no se resuelve absteniéndose de pedir** — se
+  resuelve verificando la **trazabilidad del acto administrativo**. Las tres respuestas posibles
+  son evidencia:
+
+  | Respuesta del GAD | Verificación | Estatus |
   |---|---|---|
-  | **Montecristi (001)** | ✅ **CONOCIDO y CERRADO** — se sabe qué documentos existen y cuáles no | **casos 1 y 2** · no se solicita lo inexistente |
-  | **Los otros 221** | ❌ no conocido | **caso 3** · se solicita vía Observatorio cuando no haya documento hallable |
+  | entrega documento con **fe de presentación · fe de recepción · fe de acta · partida e-SIGEF · Gaceta**, de **fecha anterior** | consta el acto | ✅ **evidencia de gestión, 100% válida** |
+  | entrega un borrador **sin respaldo formal** | no consta acto administrativo | ⚠️ **ausencia de habilitación formal** — no se usa como dato |
+  | **vencen los 10 + 5 días sin entregar** | plazo legal incumplido | ❌ **opacidad crítica + incumplimiento LOTAIP**, con respaldo legal |
 
-  **Hecho verificado sobre Montecristi (Javo · 15 años en gestión GAD):** los documentos de
-  Presupuesto Participativo **puntúan la prioridad de cada obra o servicio, pero no establecen su
-  costo económico**. No es una suposición sobre lo que el GAD tendría: es conocimiento del
-  instrumento. Por eso `IGP_2 = 0` está **medido**, no pendiente.
+  > **La fecha del acto administrativo es el discriminador objetivo** — no una suposición sobre
+  > intenciones. Eso es lo que preserva la integridad sin renunciar al derecho.
 
-  ### Por qué es regla y no criterio
+  ### Lo único que sobrevive de la versión anterior
 
-  1. **Preserva la validez.** Medir lo que el GAD produjo ≠ medir lo que produce cuando se le pregunta.
-  2. **Preserva la comparabilidad entre los 222 GAD.** El CVI solo compara si todos se miden por la
-     misma superficie: **la evidencia pública realmente existente**.
-  3. **Preserva al sujeto observado.** El canal (Observatorio · derecho de acceso) mantiene la frontera.
+  **No se pide lo que ya se sabe inexistente por conocimiento verificado del instrumento** — no
+  porque contamine, sino porque es **redundante**. Caso Montecristi/PP: se conoce que el
+  instrumento puntúa prioridad y no fija costo.
+
+  > ⚠️ **Y aun así, solicitarlo MEJORARÍA el hallazgo.** Una respuesta oficial del GAD declarando
+  > que el PP no desagrega montos convierte el hallazgo de *inferido documentalmente* a
+  > **declarado oficialmente**. Es una decisión de oportunidad de Javo, no un impedimento
+  > metodológico. Ver la nota sobre la condición 2 del UDC más abajo.
 
   **Complementa** al concepto *"el silencio como dato"*: aquél dice cómo **interpretar** una
-  ausencia; éste dice cómo **no fabricarla ni destruirla**.
+  ausencia; éste dice **por qué vías se agota la búsqueda antes de declararla**.
 
   ---
 
   ### R-F.1 · UDC — Universo Documental Cerrado *(definición operativa · asesoría 2026-07-29)*
 
-  R-F depende de saber si el universo es *conocido* o *desconocido*. Sin una condición objetiva
-  eso quedaba **al criterio del investigador** — inaceptable para 222 GAD. Un universo entra en
-  **UDC** solo cuando se cumplen las **tres condiciones verificables**:
+  Un universo entra en **UDC** solo cuando se cumplen las **tres condiciones verificables**:
 
   | # | Condición | Verificación |
   |---|---|---|
-  | 1 | **Fuentes públicas obligatorias agotadas** | portal LOTAIP 2024 · CPCCS · SERCOP · e-SIGEF auditados y procesados |
-  | 2 | **Solicitudes de acceso agotadas** | respondidas, o **vencido el plazo legal de 10 días término** |
-  | 3 | **Sin repositorios pendientes** | no consta evidencia de archivos o bases institucionales sin revisar |
+  | 1 | **Transparencia activa agotada** | portal LOTAIP auditado y procesado |
+  | 2 | **Transparencia pasiva agotada** | solicitud cursada y **respondida, o vencido el plazo 10+5** |
+  | 3 | **Silos intersistémicos agotados** | CPCCS · SERCOP · e-SIGEF revisados · sin repositorios pendientes |
 
-  **Regla de operación:** alcanzado el UDC, **no se solicita ningún documento nuevo**. Toda
-  información no hallada **deja de buscarse** y se registra como *ausencia documental* o
-  *limitación del instrumento*. Antes del UDC, la ausencia **no es afirmable**: puede ser opacidad.
+  **Las tres condiciones son las tres vías de R-F.** Alcanzado el UDC, toda información no hallada
+  **deja de buscarse** y se registra como *ausencia documental* o *limitación del instrumento*.
 
   > **Distinción que el UDC vuelve operable:** *ausencia de evidencia* (universo cerrado, el dato
-  > no existe) ≠ *evidencia no encontrada* (universo abierto, aún no se buscó lo suficiente).
+  > no existe) ≠ *evidencia no encontrada* (universo abierto, aún no se agotaron las vías).
   > Confundirlas es afirmar un hallazgo sobre un vacío de método.
 
   #### Dos niveles: UDC-I (operativo) y UDC-G (derivado) *(asesoría · 2026-07-29)*
@@ -203,26 +210,52 @@ Patrón definitivo  →  PCD-DXX (documentación del dominio)
   pregunta deja de ser *"¿el GAD está cerrado?"* y pasa a ser **"¿qué instrumentos siguen
   abiertos?"** — que sí permite medir progreso.
 
-  ### Tablero UDC · Montecristi (`GAD-001`) — verificado 2026-07-29
+  ### Tablero UDC · Montecristi (`GAD-001`) — revisado 2026-07-29 tras la corrección de R-F
 
-  | Instrumento / dominio | UDC-I | Justificación verificada |
-  |---|:---:|---|
-  | **Presupuesto Participativo** | ✅ | 191 demandas catalogadas · actas procesadas · **no existe dimensión económica en origen** |
-  | **POA 2023-2026** | ✅ | 4 XLSX nativos, 1.027 filas · localización subcantonal 1,1% |
-  | **Audiencias públicas** | ✅ | **28/28 actas extraídas a texto** (incluidas las 16 escaneadas) · cadena **C01→C09 (9 nodos)** tipificada |
-  | **Cabildo popular** | ✅ | 4 demandas · universo documental conocido |
-  | **Portal LOTAIP / transparencia** | ❌ | **d07 abierto** — falta consolidar la ingesta |
-  | **Actas de sesión del Concejo** | ❌ | no obran en nuestro poder; Javo gestiona |
-  | **Holding municipal** (bomberos · aseo EP · Patronato) | ❌ | repositorios no localizados |
-  | **`GAD-001` como conjunto** | **❌ UDC-G = FALSO** | **4 / 12 dominios cerrados** — la conjunción falla |
+  > ⚠️ **Este tablero BAJA de nivel respecto de la versión anterior, y es correcto que baje.**
+  > Al incorporar la transparencia pasiva como condición 2, el estándar se volvió **más
+  > exigente**: no basta con tener los documentos que el GAD publicó. **Hay que haber agotado las
+  > tres vías.** Varios ✅ anteriores se apoyaban solo en la vía 1.
 
-  > ⚠️ **Correcciones al tablero propuesto por la asesoría, verificadas contra el canon:**
-  > la cadena participativa tiene **9 nodos (C01→C09)**, no 8 —`docs/brn/RO-VIII-001.yaml`—; y las
-  > **28 actas SÍ están completas**: 16 de ellas produjeron demandas extraíbles y 12 no aportaron
-  > ninguna, lo cual **no es un hueco documental** sino un dato sobre el registro (nodo C06).
+  | Instrumento | Vía 1 activa | Vía 2 silos | Vía 3 pasiva | UDC-I | Nota |
+  |---|:---:|:---:|:---:|:---:|---|
+  | **POA 2023-2026** | ✅ 4 XLSX nativos | ✅ | **n/a** | ✅ | sin vacío pendiente: la vía 3 no tiene objeto |
+  | **Cabildo popular** | ✅ | ✅ | **n/a** | ✅ | universo conocido, sin vacío |
+  | **Presupuesto Participativo** | ✅ actas completas | ✅ | ❌ **no cursada** | ⚠️ | **vacío conocido**: desglose de montos |
+  | **Audiencias públicas** | ✅ 28/28 actas | ✅ | ❌ **no cursada** | ⚠️ | **vacío conocido**: resoluciones Art. 75 |
+  | **Portal LOTAIP / transparencia** | ❌ d07 abierto | — | — | ❌ | instrumento sin auditar |
+  | **Actas de sesión del Concejo** | ❌ | — | ❌ **no cursada** | ❌ | no obran en nuestro poder |
+  | **Holding municipal** | ❌ | ❌ | ❌ | ❌ | repositorios no localizados |
+  | **`GAD-001` conjunto** | | | | **❌ UDC-G = FALSO** | 4 / 12 dominios cerrados |
 
-  **Consecuencia inmediata:** `IGP_2 = 0` **es afirmable** porque el PP está en UDC-I. Un hallazgo
-  equivalente sobre el portal de transparencia **no lo sería** todavía.
+  **`n/a`** = no aplica porque **no existe vacío documental que solicitar**. La vía 3 se exige solo
+  cuando las vías 1 y 2 dejan un hueco identificado.
+
+  ### Las dos solicitudes LOTAIP que cierran PP y audiencias
+
+  Cursarlas **fortalece los hallazgos**, no los pone en riesgo — convierte lo *inferido
+  documentalmente* en **declarado oficialmente**, y cualquiera de las tres respuestas sirve:
+
+  | # | Solicitud | Qué produce cada respuesta |
+  |---|---|---|
+  | 1 | **desglose de montos asignados y ejecutados por prioridad del PP** (2023-2026) | entregan con respaldo → dato real · declaran inexistencia → **confirma la limitación estructural** · vencen 10+5 → **incumplimiento LOTAIP** |
+  | 2 | **resoluciones formales de las audiencias públicas** (Art. 75 LOPC, 2023-2025) | igual estructura — hoy OBS-017 afirma 0/28 por lectura de actas; una declaración oficial lo vuelve inapelable |
+
+  > **Decisión de Javo (oportunidad, no metodología):** cursarlas o no. Sin ellas, PP y audiencias
+  > quedan en **UDC-I parcial** y sus hallazgos siguen siendo válidos pero **inferidos**. Con ellas,
+  > quedan cerrados y los hallazgos pasan a **declarados**.
+
+  ### ICD · Índice de Cierre Documental *(asesoría · 2026-07-29)*
+
+  El UDC-G es booleano y no permite ver avance. Se añade una medida **continua** que no lo
+  sustituye:
+
+  ```
+  ICD = instrumentos con UDC-I / instrumentos totales
+  ```
+
+  **Montecristi hoy: ICD = 2/7 ≈ 29%** *(POA y cabildo cerrados; PP y audiencias parciales)*.
+  Sirve para gestionar el avance sin relajar el criterio lógico de cierre.
 
   > **R-E y UDC no se sustituyen.** R-E fija *dónde se trabaja* (solo Montecristi). El UDC fija
   > *cuándo una ausencia puede afirmarse*. Montecristi es el único universo activo **y** conserva
