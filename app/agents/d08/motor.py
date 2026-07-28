@@ -15,15 +15,18 @@ lecturas distintas, coherentes con la asesoría de dirección (2026-07-24):
      NORMATIVA por la presencia/estado de la evidencia documental de cada
      instancia/mecanismo (del catálogo). Determinístico, sin IA.
 
-Las dimensiones 2 (vitalidad, RO-VIII-002) y 3 (efectividad, RO-VIII-003) son
-diseño: la vitalidad requiere sellar su índice en el Excel; la efectividad
-requiere el motor de extracción de aportes de las actas de participación
-(workstream propio de d08, NO enrich_aportes.py que es de d09).
+  3. leer_efectividad() — 3ª dimensión (RO-VIII-003): LEE la trazabilidad
+     biográfica de la demanda ya cruzada (scripts/d08/cruzar_demandas.py). Cada
+     correspondencia conserva su estado epistémico; QUIRA propone, no afirma.
+
+La dimensión 2 (vitalidad, RO-VIII-002) sigue en diseño: su índice debe sellarse
+en el Gold Master (Regla 1), no en QUIRA.
 
 LÍMITE (Regla 1/4): el IGP NO se recalcula. Aquí solo se LEE para diagnóstico.
 """
 from __future__ import annotations
 
+import json
 import pathlib
 from typing import Any
 
@@ -74,6 +77,36 @@ def leer_igp_diagnostico() -> dict[str, Any]:
         "igp_ref_2025": etiquetas.get("Ref_2025_IGP"),
         "componentes": componentes,
         "hallazgos_obs": ["OBS-015 h1: IGP mezcla d08+d09 (MFN)", "OBS-015 h2: IGP_PP=0 con evidencia"],
+    }
+
+
+def leer_efectividad() -> dict[str, Any]:
+    """3ª dimensión (RO-VIII-003): trazabilidad biográfica de la demanda ciudadana.
+
+    LEE el resultado del cruce ya ejecutado (`scripts/d08/cruzar_demandas.py`), no lo
+    recalcula. Cada correspondencia conserva su ESTADO EPISTÉMICO (Horizonte de Verdad):
+    QUIRA propone; nunca afirma que una demanda fue satisfecha (Constitución Art. 3).
+    """
+    demandas = pathlib.Path("data/d08/demandas_ciudadanas.json")
+    traza = pathlib.Path("data/d08/trazabilidad_demandas.json")
+    if not (demandas.exists() and traza.exists()):
+        return {"dimension": "efectividad_incidencia", "estado": "sin_datos",
+                "nota": "ejecutar scripts/d08/extraer_demandas.py y cruzar_demandas.py"}
+
+    d = json.loads(demandas.read_text(encoding="utf-8"))
+    t = json.loads(traza.read_text(encoding="utf-8"))
+    return {
+        "dimension": "efectividad_incidencia",
+        "ro": "RO-VIII-003",
+        "postulado": "I · Trazabilidad Biográfica del Dato",
+        "naturaleza": "QUIRA PROPONE correspondencias; el humano valida (Horizonte de Verdad)",
+        "demandas_catalogadas": d["total"],
+        "por_mecanismo": d["por_mecanismo"],
+        "por_naturaleza_juridica": d["por_naturaleza"],
+        "registros_poa_contrastados": t["registros_poa_contrastados"],
+        "por_estado_epistemico": t["por_estado_epistemico"],
+        "vinculantes_por_estado": t["vinculantes_por_estado"],
+        "advertencia": "'hipotesis' NO significa 'atendida'; 'sin_correlato' NO significa 'no se atendió'",
     }
 
 

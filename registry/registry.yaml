@@ -3,7 +3,7 @@
 # GENERADO por scripts/governance/build_registry.py · NO editar a mano.
 # Autoridad: Carta de Gobernanza Art. 1 (Derivación) y Art. 3 (describe, no gobierna).
 # ═══════════════════════════════════════════════════════════════════
-generado: 2026-07-27
+generado: 2026-07-28
 total_activos: 112
 huerfanos: 0   # sin bloque authority: → no pueden promoverse a vigente (Art. 1)
 
@@ -19,7 +19,7 @@ componentes:
     kind: normative
     level: 1
     path: governance/BOOT.md
-    hash: f77cd3df7e970453
+    hash: 0bba43dddfd28d7b
     authority_declared: true
     parent: GOVERNANCE-001
   - id: GOVERNANCE-001
@@ -54,7 +54,7 @@ componentes:
     kind: normative
     level: 1
     path: governance/QUIRA_MASTER_INDEX.md
-    hash: 0309f907b4ce99d3
+    hash: 5505b621eaaf526c
     authority_declared: true
     parent: GOVERNANCE-001
   - id: NORMATIVE-QUIRA_STATE
@@ -159,7 +159,7 @@ componentes:
     kind: marco_teorico
     level: 1
     path: marco_teorico/MARCO_TEORICO_QUIRA.md
-    hash: 94205165116a35b8
+    hash: b2ebd936a3d7444b
     authority_declared: true
     parent: CONSTITUCION-001
   - id: CNO-I-001
@@ -677,7 +677,7 @@ componentes:
     kind: domain_catalog
     level: 3
     path: data/d08/catalogo_d08_v1.0.0.yaml
-    hash: 89176e4dae030b2f
+    hash: 5f86e44af9e6e7b8
     authority_declared: true
     parent: GOVERNANCE-001
   - id: DOMAIN_CATALOG-catalogo_d09_v1.0.0

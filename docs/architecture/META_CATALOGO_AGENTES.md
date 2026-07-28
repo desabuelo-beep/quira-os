@@ -43,6 +43,8 @@
 | **Motor Integridad (lectura+evaluación)** | d08 | catálogo d08 (evidencia clasificada, 7 instancias) | verificabilidad documental por instancia | **Determinístico** | ✅ `motor.py::evaluar_integridad` | ❌ específico (criterios propios RO-VIII-001) | d08 |
 | **Motor IGP (lectura diagnóstica)** | d08 | Gold Master H20b | IGP + 3 componentes + hallazgos OBS-015 | **Determinístico** | ✅ `motor.py::leer_igp_diagnostico` — NO canónico aún (modelo de cálculo a reconstruir fase 2) | ❌ específico | d08 |
 | **Extracción de Actas de Participación Agent** | d08 | actas PP/audiencias/cabildos (docx/pdf) | aportes ciudadanos↔ejecución (RO-VIII-003) | IA | ⬜ Fase 4 (`fuentes.py`) — motor propio, NO reusa `enrich_aportes.py` (ese es d09/RDC, OBS-016 frontera) | ❌ específico | d08 |
+| **Extractor de Demandas** | d08 | actas PP/audiencias/cabildo (docx·pdf·txt) | catálogo de 223 demandas con trazabilidad al documento | **Determinístico** | ✅ `scripts/d08/extraer_demandas.py` (Fase 1) | ✅ genérico (cualquier acta de participación) | d08 |
+| **Trazabilidad Biográfica** | d08 | demandas + POA (XLSX oficial) | correspondencias con ESTADO EPISTÉMICO (Horizonte de Verdad) | IA/ML local (sin API) | ✅ `scripts/d08/cruzar_demandas.py` (Fase 2) | ✅ genérico (demanda→ejecución en cualquier DOM) | d08, candidato d01/d02 |
 | **OCR Certificado Agent** | d08 | 16 audiencias públicas escaneadas | texto probatorio | IA | ⬜ Fase 4, Javo extrae y confirma | ✅ genérico (cualquier PDF escaneado oficial) | d08, candidato d07/otros |
 
 ## Lecturas del catálogo (lo que revela)

@@ -78,7 +78,9 @@ Los dos postulados **no son conceptos independientes: son dos dimensiones del mi
 
 > **Integridad Pública = f( Biografía , Congruencia )**
 >
-> *(formulación conceptual, no fórmula de cálculo: el índice lo computa el motor)*
+> ⚠️ **RELACIÓN EXPLICATIVA, no función matemática ni índice operativo** (precaución de la
+> asesoría · 2026-07-27). No es susceptible de cálculo: enuncia que la integridad pública se
+> explica por esas dos dimensiones. Los índices los computa el motor (Regla 1).
 
 | Dimensión | Postulado | Qué explica |
 |---|---|---|

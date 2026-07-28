@@ -38,7 +38,18 @@ dimensiones:
   - id: efectividad_incidencia
     ro: RO-VIII-003
     pregunta: "¿lo pedido en las instancias se volvió POA/PAC/presupuesto/obra?"
-    estado: diseno            # motor de extracción de aportes de participación PENDIENTE (no es enrich_aportes.py)
+    estado: operable_parcial  # Fase 1+2 EJECUTADAS (2026-07-27): 223 demandas catalogadas y
+                              # cruzadas contra 1027 filas POA (XLSX oficial). Motor propio:
+                              # scripts/d08/extraer_demandas.py + cruzar_demandas.py.
+                              # PARCIAL porque: (a) falta validación experta de las 129
+                              # correspondencias en banda 0.52-0.62; (b) falta extender el cruce
+                              # a PAC/presupuesto/ejecución (hoy solo llega al POA).
+    resultado_fase2:
+      demandas_catalogadas: 223
+      registros_poa_contrastados: 1027
+      por_estado_epistemico: { hipotesis: 39, pendiente_validacion: 129, sin_correlato: 55 }
+      vinculantes_por_estado: { hipotesis: 32, pendiente_validacion: 118, sin_correlato: 41 }
+      advertencia: "QUIRA PROPONE correspondencias; nunca afirma que una demanda fue satisfecha (Horizonte de Verdad · Constitución Art. 3)"
 
 # ── Naturaleza de verificación (asesor · 2026-07-24) — DOCTRINA · molde para d10/d11/d12 ──
 # Distinción ORTOGONAL a las 3 dimensiones, que emergió al modelar el Sistema desde la Ley:
