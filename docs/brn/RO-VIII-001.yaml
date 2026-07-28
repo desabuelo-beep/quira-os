@@ -40,7 +40,18 @@ metodo:
     - { instancia: sistema_cantonal,        cno: CNO-VIII-001, obligatorio: true,  norma: "COOTAD 304",       descripcion: "existe la ORDENANZA que conforma el sistema de participación" }
     - { instancia: asamblea_ciudadana,      cno: CNO-VIII-002, obligatorio: true,  norma: "LOPC 56/57 · COOTAD 306", descripcion: "el GAD reconoce/articula la Asamblea (órgano ciudadano autónomo — evidencia indirecta en actas de mecanismos)" }
     - { instancia: consejo_planificacion,   cno: CNO-VIII-003, obligatorio: true,  norma: "COPLAFIP 28/29",   descripcion: "Consejo conformado + RESOLUCIÓN favorable (evidencia en carpeta)" }
-    - { instancia: audiencia_publica,       cno: CNO-VIII-004, obligatorio: true,  norma: "LOPC 73/75 · COOTAD 60", descripcion: "audiencia realizada + RESOLUCIÓN + habilitación/delegación ★" }
+    # AUDIENCIA PÚBLICA — cadena desglosada en criterios INDEPENDIENTES (Javo · 2026-07-27):
+    # una brecha documental NO anula el mecanismo. Cada criterio reporta su propio estado;
+    # ninguno cancela a los demás. Poner el mecanismo en cero por una brecha puntual sería
+    # castigar la evidencia en lugar de medirla (Carta Art. 4.5).
+    - { instancia: audiencia_publica, criterio: convocatoria,           cno: CNO-VIII-004, obligatorio: true,  norma: "LOPC 74",   descripcion: "consta la convocatoria / atención a la solicitud ciudadana" }
+    - { instancia: audiencia_publica, criterio: habilitacion_instancia, cno: CNO-VIII-004, obligatorio: true,  norma: "LOPC 73",   descripcion: "la instancia fue habilitada por la autoridad responsable" }
+    - { instancia: audiencia_publica, criterio: realizacion,            cno: CNO-VIII-004, obligatorio: true,  norma: "LOPC 73",   descripcion: "la audiencia se realizó (acta como evidencia) — ACREDITADO 28/28" }
+    - { instancia: audiencia_publica, criterio: presidencia_acreditada, cno: CNO-VIII-004, obligatorio: true,  norma: "LOPC 73",   descripcion: "el acta formaliza quién presidió — ★ OBS-017A: 0/28" }
+    - { instancia: audiencia_publica, criterio: habilitacion_actuante,  cno: CNO-VIII-004, obligatorio: true,  norma: "COOTAD 60", descripcion: "consta el acto administrativo de delegación cuando no preside el alcalde — ★ OBS-017B: no consta" }
+    - { instancia: audiencia_publica, criterio: resolucion_cierre,      cno: CNO-VIII-004, obligatorio: true,  norma: "LOPC 75",   descripcion: "consta la RESOLUCIÓN de la audiencia (mismo día o 10 días hábiles) — ★ OBS-017: 0/28" }
+    - { instancia: audiencia_publica, criterio: demandas_recogidas,     cno: CNO-VIII-004, obligatorio: false, norma: "LOPC 73",   descripcion: "el acta registra las demandas ciudadanas — ACREDITADO: 28 demandas catalogadas" }
+    - { instancia: audiencia_publica, criterio: compromisos_asumidos,   cno: CNO-VIII-004, obligatorio: false, norma: "LOPC 75",   descripcion: "el acta registra compromisos/acuerdos de la autoridad" }
     - { instancia: presupuesto_participativo, cno: CNO-VIII-005, obligatorio: true, norma: "LOPC 71 · COOTAD 238", descripcion: "PP formulado y articulado al plan" }
     - { instancia: cabildo_popular,         cno: CNO-VIII-006, obligatorio: false, norma: "LOPC 76",          descripcion: "cabildo realizado en convocatoria abierta" }
     - { instancia: silla_vacia,             cno: CNO-VIII-007, obligatorio: false, norma: "CE 101 · LOPC 77 · COOTAD 311", descripcion: "silla vacía en sesiones (evidencia: actas de Concejo — workstream futuro)" }

@@ -81,6 +81,45 @@ la carpeta). Mismo GAD, misma exigencia de formalización resolutiva, cumplida e
 (Consejo) y **sistemáticamente ausente en otro** (Audiencia). El contraste es objetivo, no
 interpretativo.
 
+## Estructura del hallazgo: 017A y 017B (asesor · 2026-07-27)
+
+El hallazgo se desdobla en dos observaciones de naturaleza distinta:
+
+### OBS-017A · Presidencia de las audiencias
+> La documentación disponible **no permite acreditar de forma suficiente quién ejerció
+> formalmente la presidencia** de cada audiencia. La actuación se infiere de la narración del
+> acta, no de una fórmula de constitución del acto.
+
+### OBS-017B · Habilitación de la autoridad actuante *(el más fuerte jurídicamente)*
+> **No fue posible acreditar documentalmente la habilitación jurídica de la autoridad que
+> presidió las audiencias públicas cuando la conducción no correspondió directamente al alcalde.
+> El corpus documental analizado no incorpora actos administrativos de delegación, resoluciones
+> u otros instrumentos que permitan reconstruir la cadena de legitimación institucional de quien
+> dirigió dichas actuaciones.**
+
+017B es más robusto que 017A porque **no depende de interpretar el lenguaje del acta**: depende
+de verificar la existencia (o inexistencia) del acto habilitante. Cadena rota:
+
+```
+Audiencia Pública → ¿quién dirigió? → ¿con qué competencia?
+                                   → ¿dónde está el acto administrativo? → NO CONSTA
+```
+
+### ★ PRECISIÓN DE JAVO — la ausencia de habilitación NO anula la evaluación
+> *"Aunque no exista la delegación, con todo hay que medir y evaluar la cadena de la audiencia
+> pública para determinar los hallazgos y el cumplimiento."*
+
+**Corrige una lectura posible del hallazgo.** La falta del acto habilitante es **un hallazgo
+puntual, no un anulador del mecanismo**: la audiencia se realizó, recogió demandas y generó
+compromisos — todo eso es evidencia real que debe medirse. Poner el mecanismo en cero por una
+brecha documental sería **castigar la evidencia en lugar de medirla**, y perdería información
+sustantiva sobre la participación efectiva.
+
+Por eso la cadena de la audiencia se evalúa **criterio por criterio, con estados independientes**
+(RO-VIII-001): convocatoria · habilitación de la instancia · realización · presidencia acreditada
+· habilitación del actuante · resolución de cierre · demandas recogidas · compromisos asumidos.
+Cada uno reporta su propio estado; ninguno cancela a los demás.
+
 ## Sobre la delegación (COOTAD 60) — CORREGIDO 2026-07-27
 
 **Corrección de una afirmación mal fundada.** Una versión anterior de este OBS afirmaba

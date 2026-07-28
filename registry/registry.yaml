@@ -26,7 +26,7 @@ componentes:
     kind: normative
     level: 1
     path: governance/GOVERNANCE_CHARTER.md
-    hash: 9dc8428e7706b4f5
+    hash: d8640b01bc7753a3
     authority_declared: true
     parent: CONSTITUCION-001
   - id: NORMATIVE-HOJA_DE_RUTA_MAESTRA
@@ -264,7 +264,7 @@ componentes:
     kind: canon_ro
     level: 2
     path: docs/brn/RO-VIII-001.yaml
-    hash: 50899611835fea1e
+    hash: 445de2272c7948f6
     authority_declared: true
     parent: CNO-VIII-000
   - id: RO-VIII-002
@@ -614,7 +614,7 @@ componentes:
     kind: observation
     level: 2
     path: docs/observations/OBS-017_Brecha_Sistematica_Audiencias_Publicas_Montecristi.md
-    hash: cd063a833347c8e2
+    hash: c28832eef1113ad0
     authority_declared: true
     parent: GOVERNANCE-001
   - id: DOMAIN_CATALOG-catalogo_d01_v1.0.0
@@ -649,7 +649,7 @@ componentes:
     kind: domain_catalog
     level: 3
     path: data/d08/catalogo_d08_v1.0.0.yaml
-    hash: 9968120485881eea
+    hash: 89176e4dae030b2f
     authority_declared: true
     parent: GOVERNANCE-001
   - id: DOMAIN_CATALOG-catalogo_d09_v1.0.0

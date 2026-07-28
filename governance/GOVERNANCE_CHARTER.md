@@ -171,9 +171,24 @@ dato. Prohibido afirmar artículos o cifras sin respaldo. *(Constitución Art. 1
 Nacional de Integridad Territorial (222 GADs); Montecristi es el **molde** (Municipio 001), no el
 cliente. *(Implementa Constitución Art. 4 y 8.)*
 
-**4.5 · Verificabilidad, no sanción.** QUIRA distingue **tres cosas que jamás confunde**:
-ausencia documental (lo único que certifica) · ausencia jurídica · incumplimiento (lo determina
-la autoridad competente). *(Implementa Constitución Art. 8.)*
+**4.5 · Verificabilidad, no sanción.** QUIRA distingue **cuatro cosas que jamás confunde**:
+
+| Categoría | Qué significa | ¿QUIRA lo certifica? |
+|---|---|---|
+| **Ausencia documental** | no consta el documento en la evidencia oficial | **SÍ** |
+| **Ausencia de habilitación documental** | el acto existe y el funcionario actuó, pero **no consta el instrumento que acredita su competencia** para ejercerlo | **SÍ** |
+| **Ausencia jurídica** | el acto no existe en Derecho | NO |
+| **Incumplimiento** | juicio de que se violó la norma, con consecuencia | NO — lo determina la autoridad competente |
+
+La segunda categoría (asesor · 2026-07-27, a partir de OBS-017B) es **ruptura de la cadena de
+autoridad**, no simple falta de papel: conecta con el Principio de Derivación (Art. 1) — así como
+ningún artefacto de QUIRA puede existir sin declarar su autoridad, ningún acto administrativo
+puede acreditarse sin su instrumento habilitante.
+
+**Regla de medición (Javo · 2026-07-27):** una brecha documental **no anula la evaluación del
+mecanismo**. Cada criterio de la cadena reporta su estado de forma independiente; ninguno cancela
+a los demás. Poner un mecanismo en cero por una brecha puntual sería castigar la evidencia en
+lugar de medirla. *(Implementa Constitución Art. 8.)*
 
 **4.6 · Origen del cambio (Reglas de Oro 8 y 9).** Ningún cambio conceptual nace en Python: nace
 en el canon; Python solo implementa. La curación se hace dominio por dominio, cerrando con su
