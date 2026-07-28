@@ -88,6 +88,28 @@ Patrón definitivo  →  PCD-DXX (documentación del dominio)
   presupuestario habría ocultado que el POA no localiza el gasto. Se midió en vez de parchar,
   y de ahí salió OBS-020.
 
+- **R-E · Montecristi es el ÚNICO universo activo hasta cerrar el ecosistema.** *(Javo · 2026-07-29 — **"eso es ley"**.)*
+
+  > **No se incorpora un segundo GAD sin haber terminado y validado empíricamente todo el
+  > ecosistema en Montecristi.** Las réplicas quedan para cuando Montecristi esté cerrado, y
+  > desde ahí se avanza **progresivamente** hacia los 222 GAD del país.
+
+  | | |
+  |---|---|
+  | **Universo activo** | GAD Montecristi (`Municipio 001`) — POA 2023-2026 · actas PP · audiencias · contratos |
+  | **Estado de los demás GAD** | ⛔ **fuera de alcance** — no se ingiere, no se mide, no se compara |
+  | **Condición de apertura** | ecosistema Montecristi **cerrado y validado en las 7 capas** |
+
+  **Por qué es regla y no preferencia:** un segundo municipio incorporado antes de cerrar el
+  molde **multiplica el trabajo sin validar el método**. Montecristi no es un caso de estudio:
+  es **el molde** (BOOT §LA TESIS). Un molde a medio construir replicado 222 veces produce 222
+  errores, no 222 auditorías.
+
+  > ⚠️ **Consecuencia sobre OBS-020 §10.** El protocolo de elevación del CVI mantiene sus 4
+  > pasos, pero **el paso 2 (segundo GAD) queda BLOQUEADO por R-E**. La afirmación sobre el
+  > *"instrumento nacional"* no solo requiere replicación: requiere **primero** cerrar
+  > Montecristi. Ese hallazgo permanece como **C10 · incertidumbre estructurada**, sin fecha.
+
 *(Ratificación de R-A/R-B como Reglas de Oro en `CLAUDE.md` / `BOOT.md`: pendiente de Javo — son archivos congelados, Regla 5.)*
 
 ## 4 · Plantilla PCD-DXX (cada dominio cierra con su documento)

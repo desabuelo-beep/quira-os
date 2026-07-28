@@ -78,6 +78,10 @@ _KEYS_OF_INTEREST = {
     "PROCESOS_CANCELADOS_PCT",
     # CPCCS / RdC
     "RDC_SCORE", "RDC_CLASIFICACION",
+    # Participación ciudadana (d08) — el motor YA las publicaba en H73 filas 21-22;
+    # el conector no las leía, así que la UI de d08 no tenía de dónde tomar su
+    # indicador madre. No es cambio conceptual: es consumir lo que el canon ya declara.
+    "IGP_2026_ACTUAL", "IGP_REF_2025",
     # SAT
     "SAT_RIESGO_TOTAL", "SAT_CLASIF_RIESGO", "SAT_ACTIVAS_COUNT",
     # TGI
@@ -274,6 +278,15 @@ def _normalize_h73(raw: dict) -> dict:
         "accountability": {
             "rdc_score":         _float("RDC_SCORE"),
             "rdc_clasificacion": _str("RDC_CLASIFICACION"),
+        },
+        # Participación ciudadana (d08). El IGP se compone hoy de IGP_1 (Asamblea
+        # CPCCS) + IGP_2 (Presupuesto Participativo) + IGP_3 (Fidelidad Narrativa).
+        # ⚠️ IGP_3 pertenece a d09 (control social) y cruza la frontera DEC-0004;
+        # IGP_2 vale 0 porque H10b no tiene montos por proyecto PP, no por un bug.
+        # Ambas correcciones se sellan en el Excel — ver ESPECIFICACION_GOLD_MASTER_D08.
+        "participacion": {
+            "igp_actual": _float("IGP_2026_ACTUAL"),
+            "igp_ref_2025": _float("IGP_REF_2025"),
         },
         "sat_engine": {
             "riesgo_total":   _float("SAT_RIESGO_TOTAL"),

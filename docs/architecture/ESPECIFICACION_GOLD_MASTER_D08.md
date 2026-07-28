@@ -16,22 +16,46 @@ corresponde al dom, sus indicadores y sus sat"*
 
 ---
 
-## 0 · El diagnóstico que motiva esto
+## Matriz de trazabilidad *(qué cambio nace de qué evidencia)*
 
-**d08 está fuera del contrato del motor.** `H73_OUTPUT_API` —la única hoja que QUIRA lee
-(`app/connectors/gold_master.py`)— expone 24 claves y **ninguna es de participación**:
+| Cambio | Evidencia origen | Dónde se decide | Estado |
+|---|---|---|---|
+| Conector no leía el IGP | lectura directa del GM · 2026-07-29 | Python (conector) | ✅ **hecho** |
+| Composición del IGP mezcla d09 | **OBS-015** | Excel · **Javo** | ⏳ |
+| `IGP_2 = 0` — faltan montos por proyecto PP | lectura `H10b!D13:E17` | **terreno** (dato inexistente) | ⛔ bloqueado |
+| Nomenclatura SAT · serie sigue en IX | **OBS-016** | Excel · **Javo** | ⏳ |
+| `SAT-IX` Brecha de Atención (46,2%) | `trazabilidad_demandas.json` | Excel · **Javo** | ⏳ |
+| CVI como 2ª dimensión del IOC | **OBS-020** | Excel · **Javo** · *dominio d01* | ⏳ |
 
-```
-ICPI_* · ISP_* · PSG_* · IFE_* · PAC_* · RDC_* · SAT_RIESGO_* · TGI_D1..D5
-```
+---
 
-`TGI_D4` existe —es la dimensión donde vive participación— pero **el IGP no se expone**. El
-indicador madre de d08 se calcula en `H20b_IGP_GOBERNANZA_PARTICIPATIVA` y **no sale al
-contrato**. Los dominios d01·d02·d03·d09 sí están; d08 no.
+## 0 · El diagnóstico, corregido contra el Excel real
 
-**Consecuencia:** la UI de participación no puede leer su propio indicador del motor. Cualquier
-número que muestre hoy vendría de fuera del Gold Master — exactamente lo que las Reglas 1 y 4
-prohíben.
+> ⚠️ **Corrección (2026-07-29).** La primera versión de este documento afirmaba que *"d08 está
+> fuera del contrato del motor"*. **Era falso**, y el error fue mío: revisé
+> `_KEYS_OF_INTEREST` del conector en vez del Excel. Al leer el Gold Master:
+>
+> **`H73_OUTPUT_API` SÍ publica el IGP** — fila 21 `IGP_REF_2025` = 0,2798 · fila 22
+> `IGP_2026_ACTUAL` = 0,4833. El motor **nunca dejó de exponerlo**.
+
+**El hueco real estaba en Python, no en el Excel:** `app/connectors/gold_master.py` no incluía
+esas claves en `_KEYS_OF_INTEREST`, así que QUIRA no las leía aunque el canon las publicara.
+**Ya corregido** — el conector expone ahora un bloque `participacion`.
+
+### Lo que el Excel dice de verdad *(verificado celda a celda)*
+
+| Celda | Contenido real | Lectura |
+|---|---|---|
+| `H20b!B6` IGP_1 Asamblea CPCCS | 0,54 — `AVERAGE(H10!E18:E42)` | ✅ d08, conectado |
+| `H20b!B7` IGP_2 Presup. Participativo | **0** — `AVERAGE(H10b!F13:F17)/100` | ⚠️ ver §2 |
+| `H20b!B8` IGP_3 Fidelidad Narrativa | 0,91 — `AVERAGE(H34b!J11:J3x)` | ❌ **es d09** |
+| `H20b!B9` IGP_Global | 0,4833 — `AVERAGE(B6:B8)` | fórmula sana |
+| `H24c!B7` Monto_PP_Aprobado | **`0` literal — sin fórmula** | ⚠️ ver §3 |
+| `H24c!B8` Hay_Datos_PP | `NO` — `=IF(B7>0,"SÍ","NO")` | consecuencia de B7 |
+
+**Riesgo de escritura medido:** 0 reglas de formato condicional · 0 gráficos · 0 macros · 6
+validaciones · 123 hojas. Los semáforos son emojis en texto, no formato condicional. **Escribir
+con `openpyxl` es viable sin destruir el libro** — pero ver §2 antes de escribir nada.
 
 ---
 
@@ -57,26 +81,54 @@ indicador madre de d08— incorpora una variable de otro dominio.
 **Decisión pendiente de Javo:** ¿retirar IGP_3 (IGP queda con 2 componentes) o sustituirlo por
 un tercer componente propio de d08? Candidato natural en §4.
 
-## 2 · Alimentar IGP_2 — PP en 0 con evidencia de tres años *(OBS-015 · Hallazgo 2)*
+## 2 · IGP_2 = 0 — **no es un bug: es ausencia de dato** ⛔
 
-`IGP_2 = 0,00` pese a existir actas de Presupuesto Participativo de **2023, 2024 y 2025**
-(`…/Participación Ciudadana`, ya procesadas por `scripts/d08/extraer_demandas.py`).
+`H10b_S8b_PARTICIPATIVO` **sí tiene registro de PP 2026**: `Ingresos_Base` = 20.982.884,
+`Fichas_PP` = 149, y cinco prioridades verificadas con su meta PDOT:
 
-El flag interno `Hay_Datos_PP = NO` es lo que mantiene el cero, y **ya no es cierto**.
+| Fila | Proyecto PP 2026 | `D` Monto_Aprobado | `E` Monto_Ejecutado | `F` Cumplimiento_% |
+|---|---|---:|---:|---:|
+| 13 | Agua Potable / Saneamiento rural | **0** | **0** | 0 |
+| 14 | Áreas verdes / Parques | **0** | **0** | 0 |
+| 15 | Vialidad cantonal | **0** | **0** | 0 |
+| 16 | Salud / Equipamiento médico | **0** | **0** | 0 |
+| 17 | Aseo / Recolección | **0** | **0** | 0 |
 
-| Insumo disponible hoy | Origen |
-|---|---|
-| 223 demandas ciudadanas extraídas, con documento y año | `data/d08/demandas_ciudadanas.json` |
-| 191 de naturaleza **vinculante** (COOTAD 238) | idem |
-| Actas de PP de 3 ejercicios | fuente documental oficial |
+`IGP_2 = AVERAGE(H10b!F13:F17)/100` → promedio de cinco ceros → **0**. **La fórmula funciona
+perfectamente.** El cero refleja que **no hay montos cargados por proyecto**.
 
-**Acción:** `Hay_Datos_PP = SÍ` + cargar los insumos de PP. La **fórmula de IGP_2 no se toca**:
-se alimentan sus inputs (Regla 1 — corrección sobre inputs, nunca sobre la fórmula canónica).
+> **Y ese dato no lo tengo.** Las actas procesadas producen *demandas*, no *montos asignados
+> ni ejecutados por proyecto*. Rellenarlo con una estimación sería inventar cifra pública —
+> exactamente lo prohibido. **`IGP_2` queda bloqueado hasta obtener del GAD el desglose de
+> montos del PP** (vía acceso a información pública, como el XLSX del POA).
+>
+> **Esto es en sí un hallazgo de CVI:** el instrumento de PP publica *prioridades* y *número
+> de fichas*, pero **no publica cuánto se asignó ni cuánto se ejecutó por prioridad**. Sin eso,
+> el cumplimiento del PP es **inverificable por construcción** — el mismo patrón que OBS-020
+> encontró en el POA, ahora en el PP.
 
-## 3 · Activar SAT-VI — la única SAT de participación *(OBS-016)*
+## 3 · `H24c!B7` — la fórmula rota que NO debe restaurarse tal cual ⚠️
 
 `H24c_SAT-VI_DESVÍO_PP` · dimensión **D4** · consumida por `RO-VIII-003`.
-Estado actual: **"sin datos (Hay_Datos_PP = NO)"** — se destraba con §2.
+
+`B7` (Monto_PP_Aprobado) es un **`0` literal sin fórmula**, y su comentario dice que debería ser
+`IFERROR(H10b!B9,0)` — la llamada "FALLA 17".
+
+> ⛔ **NO restaurar esa fórmula.** `H10b!B9` es **`Ingresos_Base_2026` = 20.982.884**, es decir
+> **los ingresos del GAD**, no el monto del Presupuesto Participativo. El PP es una fracción de
+> la inversión, no el ingreso total. Restaurarla haría que:
+> - `B7` = 20.982.884 (cifra **falsa** como monto PP)
+> - `B8` `Hay_Datos_PP` → **"SÍ"** automáticamente
+> - **SAT-VI se activaría sobre un dato inventado**
+>
+> Es la trampa más peligrosa encontrada hoy: *parece* un arreglo de una línea y **mete una cifra
+> falsa al motor**. Probablemente por eso alguien anuló la fórmula en su momento.
+
+**La fórmula correcta sería** `=SUM(H10b!D13:D17)` (suma de montos aprobados por proyecto) —
+pero **da 0 hasta que §2 se desbloquee**. Se deja documentada, no aplicada.
+
+**Acción:** ninguna sobre el Excel hasta tener los montos. Se corrige el **comentario** de `C7`
+para que no vuelva a inducir la restauración equivocada — eso sí es presentación (Regla 1).
 
 > ⛔ **CORRECCIÓN DE NOMENCLATURA — colisión detectada.** La propuesta de numerar las nuevas
 > señales como `SAT-1 · SAT-2 · SAT-3 · SAT-4` **pisaría cuatro señales existentes** del Gold
@@ -161,16 +213,20 @@ refleja el canon, nunca lo precede (Regla 9).
 
 ## 6 · Orden de ejecución sugerido
 
-| # | Acción | Quién | Bloquea a |
+| # | Acción | Quién | Estado |
 |---|---|---|---|
-| 1 | `Hay_Datos_PP = SÍ` + cargar insumos de PP | **Javo** (Excel) | 2, 3 |
-| 2 | Decidir destino de IGP_3 (retirar / migrar / sustituir) | **Javo** | 4 |
-| 3 | Activar `SAT-VI` con datos reales | **Javo** (Excel) | 5 |
-| 4 | Sellar métricas observables de §4 | **Javo** (Excel) | 5 |
-| 5 | Crear `SAT-IX` Brecha de Atención (umbral y peso) | **Javo** (Excel) | 6 |
-| 6 | Exponer claves d08 en `H73_OUTPUT_API` | **Javo** (Excel) | 7 |
-| 7 | Añadir claves a `_KEYS_OF_INTEREST` + leerlas en la UI | dirección técnica | — |
-| 8 | Añadir el **CVI** como 2ª dimensión del IOC (`H41`) | **Javo** — *transversal, no d08* | — |
+| 0 | Leer IGP desde `H73` en el conector + bloque `participacion` | dirección técnica | ✅ **hecho** |
+| 1 | **Conseguir del GAD los montos del PP por proyecto** (acceso a información pública) | **Javo** — *terreno* | ⛔ **bloquea 2 y 3** |
+| 2 | Cargar montos en `H10b!D13:E17` → `IGP_2` se calcula solo | **Javo** (Excel) | depende de 1 |
+| 3 | `H24c!B7 = SUM(H10b!D13:D17)` — **jamás** `H10b!B9` | **Javo** (Excel) | depende de 1 |
+| 4 | Decidir destino de IGP_3 (retirar / migrar / sustituir) | **Javo** | libre — §1 |
+| 5 | Sellar métricas observables de §4 (223 · 191 · 103 · 28/28) | **Javo** (Excel) | libre |
+| 6 | Crear `SAT-IX` Brecha de Atención (umbral y peso) | **Javo** (Excel) | tras 5 |
+| 7 | Exponer claves nuevas de d08 en `H73` + añadirlas al conector | Javo → dirección técnica | tras 5-6 |
+| 8 | Añadir el **CVI** como 2ª dimensión del IOC (`H41`) | **Javo** — *transversal, es d01* | libre |
+
+> **Se puede avanzar YA con 4, 5, 6 y 8.** Solo 2 y 3 dependen de un dato que hoy no existe en
+> ningún documento disponible.
 
 **Nada de esto recalcula el motor.** El ICPI (`H12!B33`) permanece intacto: son inputs, señales
 nuevas y exposición de contrato.

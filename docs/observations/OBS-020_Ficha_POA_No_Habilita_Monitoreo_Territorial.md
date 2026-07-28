@@ -165,6 +165,13 @@ información; conservarlo produce correspondencias débiles. Ambas opciones son 
 y por eso **la decisión es de Javo, no del motor**. Esas correspondencias quedan en
 `pendiente_validacion`: es exactamente donde deben quedar.
 
+> ✅ **DECISIÓN TOMADA (2026-07-29): NO se neutraliza.** Hoy no se sabe si su bajo poder
+> discriminante es defecto del instrumento, defecto del algoritmo o **característica estable
+> del fenómeno** — y distinguirlo es precisamente lo que exige **R-D**. Retirarlo ahora sería
+> decidir sin evidencia y perder señal temática de forma irreversible. Se conserva activo con
+> sus correspondencias en `pendiente_validacion`. La reclasificación como variable auxiliar
+> solo procede si, **cerrado Montecristi** (R-E), la señal sigue siendo débil.
+
 ## 7 · Acciones
 
 | # | Acción | Estado |
@@ -207,7 +214,7 @@ siempre cabe la particularidad local. La secuencia obligatoria antes de elevar e
 | Paso | Alcance | Estatus de la afirmación |
 |---|---|---|
 | **1 · Montecristi** | observación | ✅ **hecho** — hallazgo local, plenamente demostrado |
-| **2 · Segundo GAD** | replicación | ⏳ Gate 7 |
+| **2 · Segundo GAD** | replicación | ⛔ **BLOQUEADO por R-E** — no antes de cerrar Montecristi |
 | **3 · Tercer GAD, otra provincia** | confirmación | ⏳ pendiente |
 | **4 · Elevación** | afirmación sobre el **diseño del instrumento** | ⛔ **prohibido hasta completar 1-3** |
 

@@ -217,6 +217,15 @@ legible y **completamente inauditable**.
 
 > **El CVI no mide cumplimiento ni ejecución. Mide cuánto permite demostrar un instrumento.**
 
+**Definición formal de la arquitectura** *(precisión de la asesoría · 2026-07-29):*
+
+> **ICEP** evalúa la **legibilidad documental**.
+> **CVI** evalúa la **verificabilidad estructural**.
+> **IOC** integra ambas dimensiones: `IOC = f(ICEP, CVI)`.
+
+Las tres categorías no se solapan y ninguna es una SAT: **ICEP → formato · CVI → estructura ·
+IOC → opacidad · SAT → alertas.** Mantener esa separación es lo que impide inflar el marco.
+
 ### Por qué es un meta-indicador y no una métrica de dominio
 
 Se aplica con la **misma regla** a todo instrumento documental del Estado, y cada dominio lo

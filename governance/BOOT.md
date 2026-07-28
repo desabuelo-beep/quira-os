@@ -30,20 +30,20 @@ Negocio = complementario, no licencias. **Detalle: `HOJA_DE_RUTA_MAESTRA.md §0`
 
 ## 📜 CONSTITUCIÓN → `docs/sprint-c/CONSTITUCION_ONTOLOGICA_QUIRA.md` · 🗺️ RUTA → `governance/HOJA_DE_RUTA_MAESTRA.md`
 Constitución = QUÉ ES QUIRA (CAPA 0 Doctrina + 4 macroejes + 12 dominios): mide la CONGRUENCIA de
-PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO y halla las BRECHAS. Los dominios cambian;
-la Doctrina permanece. BOOT §AHORA = el paso actual.
+PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO y halla las BRECHAS. BOOT §AHORA = el paso actual.
 
 ## AHORA (estado vivo · historial → `governance/historico/BOOT_2026-06-17.md`)
 🧭 **ADR-031 RATIF:** cajón=MCD · GoldMaster=MCM · MCIP 5 motores (Index §1.A).
 ✅ **4 DOM cerrados con PCD: d01·d02·d03·d09.**
-📚 **ADR-038 BRN v2:** nodo = REGLA, no artículo. **Corpus→CNO→RO→SAT**. **Corpus v1.0 CONGELADO**. **BRN v2.1**: d01-03+08-09 CONFORMES·diff=0.
+📚 **ADR-038 BRN v2:** nodo = REGLA, no artículo. **Corpus→CNO→RO→SAT** · **v1.0 CONGELADO** · **BRN v2.1** d01-03+08-09 CONFORMES·diff=0.
 🩺 **Canon curado por DOM (Regla 8), ICPI intacto. Gate = `scripts/ci/check_health.py`: NO adivinar tamaños.**
 📚 **ADR-035/037:** Ley→BRN→GoldMaster(único motor)→QUIRA · IA propone, humano valida.
 🏛️ **d02·d03·d09·d08 migrados** (OBS-012/013/014). **d08**: **Asamblea ciudadana AUTÓNOMA (no GAD)** · CNO-VIII(8) · **OBS-015/016/017** · frontera d08≠d09.
-🏛️ **GOBERNANZA v1.0:** `identity/`Constitución → `governance/`Carta → `marco_teorico/`(Postulados+Inventario+**Mapa de Gobernanza**) → Canon → `registry/`. ⚠️ Derivación 100% **solo en lo catalogado**: `docs/architecture/` = 47 .md sin autoridad, FUERA del registry.
-🔬 **d08 · MRSPP v3** (5 niveles; embedding PROPONE, modelo DECIDE): 68·27·**0**·25 · 103 nulas. **OBS-019** REGLA 0: quién ejecuta ≠ qué se hace. T1 ya estaba en canon — el Inventario funcionó.
-🏛️ **R-C/R-D** (Protocolo §3): *el propietario del instrumento lo califica* → OBS-020 es de **d01** · *¿limitación del ALGORITMO o del INSTRUMENTO? si es del instrumento **se mide, no se parcha***. POA localiza el **1%** → **CVI** = 2ª dim. del IOC. `instrumental=0` ES el hallazgo. ⛔ no elevar a "nacional" sin 2º/3er GAD.
-⏭️ **SELLAR EXCEL d08** (Javo · Regla 1) → `ESPECIFICACION_GOLD_MASTER_D08.md`: **d08 NO está en `H73_OUTPUT_API`** · IGP mezcla d09 · IGP_2 PP=0 · SAT-VI sin datos · brecha 46,2%→**SAT-IX** (Cáscara/Opacidad/CVI **NO son SAT**: son dimensiones del IOC). Luego: 2ª validación · CVI en 2º GAD.
+🏛️ **GOBERNANZA v1.0:** `identity/`Constitución → `governance/`Carta → `marco_teorico/`(Postulados+Inventario+**Mapa Gobernanza**) → Canon → `registry/`. ⚠️ Derivación 100% **solo en lo catalogado**: `docs/architecture/` = 47 .md sin autoridad, FUERA del registry.
+🔬 **d08 · MRSPP v3** (5 niveles; embedding PROPONE, modelo DECIDE): 68·27·**0**·25 · 103 nulas. **OBS-019** REGLA 0: quién ejecuta ≠ qué se hace. T1 ya estaba en canon.
+🏛️ **R-C/R-D** (Protocolo §3): *el propietario del instrumento lo califica* → OBS-020 es de **d01** · *¿limitación del ALGORITMO o del INSTRUMENTO? si es del instrumento **se mide, no se parcha***. POA localiza el **1%** → **CVI** = 2ª dim. del IOC. `instrumental=0` ES el hallazgo.
+⚖️ **R-E (LEY de Javo): Montecristi es el ÚNICO universo activo.** No se incorpora otro GAD sin cerrar y validar todo el ecosistema aquí. Réplicas a los 222 = después.
+⏭️ **EXCEL d08** → `ESPECIFICACION_GOLD_MASTER_D08.md`. GM leído: H73 **SÍ** publica IGP (f.21-22) — el hueco era el conector, **ya corregido**. `IGP_2=0` **NO es bug: faltan montos PP** (`H10b!D13:E17`) → pedirlos al GAD. ⛔ **NO restaurar `H24c!B7=H10b!B9`**: son Ingresos_Base, cifra falsa. Libre YA: IGP_3(d09) · **SAT-IX** brecha 46,2% · CVI en IOC.
 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 ratificado · detalle en el ADR)
 GAD = sujeto observado, NO cliente. 4 capas: A Núcleo · B Operaciones · C Productos (los 6 de §LA TESIS · 1 motor) · D Portal `quiraintelligence.com` (radar 221 GAD).
@@ -57,7 +57,6 @@ no redefinas · cierre `/graphify . --update`) · **no congelar teoría antes qu
 |---|---|
 | **Arranque normal** | **SOLO este BOOT.md. No leas nada más hasta saber tu tarea.** |
 | Arquitectura 3 niveles (inmutable) | `docs/adr/ADR-023` |
-| Gate 6.6 / tagging / bridge Excel | `docs/architecture/BRIDGE_EXCEL_CORPUS.md` |
 | Gate 7 (segundo municipio) | `docs/adr/GATE-007_Validacion_Externa_Municipio2.md` |
 | Leer métricas del Gold Master | `app/connectors/gold_master.py` → NO recalcular |
 | Reglas de construcción/UI/dominios | `docs/REFERENCE.md` |
@@ -66,7 +65,6 @@ no redefinas · cierre `/graphify . --update`) · **no congelar teoría antes qu
 | Clasificar documentos | `docs/adr/ADR-021` + `docs/architecture/CANONICAL_CHUNK_SCHEMA.md` |
 | Hallazgos territoriales | `docs/observations/OBS-005/006/008/009` |
 | Retomar d07 Transparencia | `docs/architecture/CATALOGO_CANONICO_CD_D07.md` + `app/agents/d07/` |
-| Estado histórico completo (snapshot) | `governance/historico/QUIRA_STATE_2026-06-03.md` |
 
 ## INFRA (credenciales en `.streamlit/secrets.toml` local, NUNCA al repo)
 Neo4j AuraDB `8dc8519a` (user=DB=instance ID · MATCH+MERGE) · Supabase `normativa_corpus` · repo PRIVADO.
