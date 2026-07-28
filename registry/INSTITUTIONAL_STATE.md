@@ -34,7 +34,6 @@ promoverse a `vigente` (Carta Art. 1). Desglose:
 | canon_cno | 12 | 0 |
 | canon_pcd | 5 | 0 |
 | canon_ro | 8 | 0 |
-| canon_teorico | 1 | 0 |
 | connector | 1 | 0 |
 | decision | 11 | 0 |
 | domain_catalog | 6 | 0 |
@@ -42,6 +41,7 @@ promoverse a `vigente` (Carta Art. 1). Desglose:
 | gate | 1 | 0 |
 | graph | 7 | 0 |
 | identity | 2 | 0 |
+| marco_teorico | 1 | 0 |
 | normative | 7 | 0 |
 | observation | 15 | 0 |
 

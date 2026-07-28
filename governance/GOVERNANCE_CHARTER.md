@@ -83,7 +83,8 @@ y **no invade** la competencia de otro.
 |---|---|---|---|
 | **Constituyente** | Identidad | `identity/` | especificaciones técnicas |
 | **Gobernanza** | Reglas, decisiones, autoridad | `governance/` | código |
-| **Canónico** | Conocimiento normativo (Ontología, BRN, ADR, CNO, RO, Glosario) | `canon/`, `docs/` | infraestructura |
+| **Teórico** | Explicación científica (postulados, conceptos fundacionales) | `marco_teorico/` | normas ni código |
+| **Canónico** | Conocimiento normativo (Ontología, BRN, ADR, CNO, RO, Glosario) | `docs/` | infraestructura |
 | **Operativo** | Funcionamiento (Core, ETL, APIs, agentes, grafos) | `app/`, `scripts/`, `data/` | **nunca modifica el Canon** |
 
 ### Cadena de autoridad
@@ -92,12 +93,17 @@ Constitución (identidad)
       ↓
 Carta de Gobernanza (reglas)
       ↓
+Marco Teórico (explicación científica)      ← marco_teorico/
+      ↓
 Canon (conocimiento normativo)
       ↓
 Implementación (código, datos, agentes)
 
       ⟂  Registry — VISTA GENERADA, transversal a toda la cadena
 ```
+**El Marco Teórico es capa propia**, no parte del Canon (asesoría · 2026-07-27): en QUIRA el
+*Canon* es conocimiento normativo e institucional; los postulados son de otra naturaleza —
+**explican, no norman**. De ahí derivan las herramientas metodológicas (matrices, RO, OBS).
 La cadena **nunca se invierte**: el código no modifica el Canon; el Canon no reescribe la Carta.
 
 **El Registry NO es una capa de la cadena** (precisión del asesor · 2026-07-27): no está *entre*
@@ -194,7 +200,7 @@ la **congruencia intersistémica**.
 > **Fundamento (corrección de atribución · 2026-07-27):** esta categoría NO nació de la asesoría
 > externa — es la operacionalización del **Postulado II de Javo** (*Cadena de Integridad
 > Intersistémica*), formulado en su tesis antes de existir en la plataforma. Ver
-> `canon/MARCO_TEORICO_QUIRA.md`.
+> `marco_teorico/MARCO_TEORICO_QUIRA.md`.
 
 ### Principio de No-Inferencia
 QUIRA **no juzga intenciones ni deduce ausencias físicas**: mide la capacidad del expediente

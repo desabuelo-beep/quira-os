@@ -149,10 +149,10 @@ componentes:
     authority_declared: true
     parent: CONSTITUCION-001
   - id: MARCO-TEORICO-001
-    kind: canon_teorico
-    level: 2
-    path: canon/MARCO_TEORICO_QUIRA.md
-    hash: a922ef51ac5cbe15
+    kind: marco_teorico
+    level: 1
+    path: marco_teorico/MARCO_TEORICO_QUIRA.md
+    hash: 383da8c2db0a385e
     authority_declared: true
     parent: CONSTITUCION-001
   - id: CNO-I-001

@@ -151,9 +151,9 @@
     },
     {
       "id": "MARCO-TEORICO-001",
-      "kind": "canon_teorico",
-      "level": 2,
-      "path": "canon/MARCO_TEORICO_QUIRA.md",
+      "kind": "marco_teorico",
+      "level": 1,
+      "path": "marco_teorico/MARCO_TEORICO_QUIRA.md",
       "declared": true
     },
     {
