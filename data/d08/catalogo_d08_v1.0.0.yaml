@@ -47,8 +47,9 @@ dimensiones:
     resultado_fase2:
       demandas_catalogadas: 223
       registros_poa_contrastados: 1027
-      por_estado_epistemico: { hipotesis: 39, pendiente_validacion: 129, sin_correlato: 55 }
-      vinculantes_por_estado: { hipotesis: 32, pendiente_validacion: 118, sin_correlato: 41 }
+      por_estado_epistemico: { hipotesis: 15, pendiente_validacion: 98, sin_correlato: 110 }
+      vinculantes_por_estado: { hipotesis: 9, pendiente_validacion: 89, sin_correlato: 93 }
+      filtro_ontologico: "QUIRA v1 — 264 candidatos rechazados (139 sin rubro compatible · 125 incompatibilidad temática). El embedding PROPONE top-10; el filtro DECIDE. Validación experta de Javo (25 casos, 13 falsos positivos) convertida en reglas reutilizables."
       advertencia: "QUIRA PROPONE correspondencias; nunca afirma que una demanda fue satisfecha (Horizonte de Verdad · Constitución Art. 3)"
 
 # ── Naturaleza de verificación (asesor · 2026-07-24) — DOCTRINA · molde para d10/d11/d12 ──

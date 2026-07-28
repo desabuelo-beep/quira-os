@@ -677,7 +677,7 @@ componentes:
     kind: domain_catalog
     level: 3
     path: data/d08/catalogo_d08_v1.0.0.yaml
-    hash: 5f86e44af9e6e7b8
+    hash: 08ba58a3d62efc56
     authority_declared: true
     parent: GOVERNANCE-001
   - id: DOMAIN_CATALOG-catalogo_d09_v1.0.0

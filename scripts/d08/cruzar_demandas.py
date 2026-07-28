@@ -140,19 +140,39 @@ def main() -> int:
     D = emb([x["demanda"][:300] for x in demandas])
     P = emb([x["texto"] for x in poa])
 
+    import filtro_ontologico as fo
+    print("  Filtro Ontológico QUIRA v1 cargado — el embedding PROPONE, el filtro DECIDE\n")
+
     resultados = []
+    descartes = Counter()
     for i, dem in enumerate(demandas):
         sims = D[i] @ P.T
-        j = int(sims.argmax())
-        score = float(sims[j])
+        # ★ EL EMBEDDING YA NO DECIDE: propone los TOP-10 candidatos.
+        top = sims.argsort()[-10:][::-1]
+
+        j, score, motivo = None, 0.0, "sin_candidato_que_pase_el_filtro"
+        for k in top:
+            cand_score = float(sims[k])
+            if cand_score < TH_REVISAR:
+                break                                   # por debajo del piso no vale evaluar
+            pasa, razon = fo.evaluar(dem["demanda"], poa[k]["texto"])
+            if pasa:
+                j, score, motivo = int(k), cand_score, razon
+                break
+            descartes[razon.split(":")[0]] += 1
 
         # ★ ESTADO EPISTÉMICO — la frontera de la Fase 2
-        if score >= TH_FUERTE:
-            estado, naturaleza = "hipotesis", "INFERENCIA ANALÍTICA — correspondencia propuesta, requiere validación experta"
-        elif score >= TH_REVISAR:
-            estado, naturaleza = "pendiente_validacion", "banda de revisión — la máquina propone, el analista confirma"
+        if j is not None and score >= TH_FUERTE:
+            estado, naturaleza = "hipotesis", "INFERENCIA ANALÍTICA — correspondencia propuesta (pasó filtro ontológico), requiere validación experta"
+        elif j is not None and score >= TH_REVISAR:
+            estado, naturaleza = "pendiente_validacion", "banda de revisión — pasó filtro ontológico, el analista confirma"
         else:
-            estado, naturaleza = "sin_correlato", "no se halló proyecto asociable en la evidencia disponible (NO significa que no se atendió)"
+            j = int(sims.argmax())                       # se conserva el más próximo solo como referencia
+            score = float(sims[j])
+            estado = "sin_correlato"
+            naturaleza = ("SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el "
+                          "filtro ontológico. NO significa que no se atendió: significa que el "
+                          "expediente no acredita correspondencia (alimenta la brecha de atención)")
 
         resultados.append({
             # HECHOS OBSERVABLES (confirmados)
@@ -162,9 +182,10 @@ def main() -> int:
             "anio_demanda": dem["anio"],
             "fuente_demanda": dem["fuente"],
             "similitud": round(score, 3),
-            "proyecto_poa_mas_proximo": poa[j]["texto"][:200] if score >= TH_REVISAR else "",
-            "fuente_poa": poa[j]["fuente"] if score >= TH_REVISAR else "",
-            "sha_poa": poa[j]["sha"] if score >= TH_REVISAR else "",
+            "proyecto_poa_mas_proximo": poa[j]["texto"][:200] if estado != "sin_correlato" else "",
+            "fuente_poa": poa[j]["fuente"] if estado != "sin_correlato" else "",
+            "sha_poa": poa[j]["sha"] if estado != "sin_correlato" else "",
+            "filtro_ontologico": motivo,
             # INFERENCIA (declarada como tal)
             "estado_epistemico": estado,
             "naturaleza_del_juicio": naturaleza,
@@ -194,6 +215,10 @@ def main() -> int:
     }
     SALIDA.write_text(json.dumps(salida, ensure_ascii=False, indent=2), encoding="utf-8")
 
+    print(f"  DESCARTES DEL FILTRO ONTOLÓGICO: {sum(descartes.values())} candidatos rechazados")
+    for k, v in descartes.most_common():
+        print(f"     {k:32} {v:>5}")
+    print()
     print(f"  {'ESTADO EPISTÉMICO':<24} {'TODAS':>7}   {'VINCULANTES (COOTAD 238)':>26}")
     for e in ("hipotesis", "pendiente_validacion", "sin_correlato"):
         print(f"  {e:<24} {est.get(e,0):>7}   {est_vinc.get(e,0):>26}")
