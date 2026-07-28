@@ -36,15 +36,16 @@ la Doctrina permanece. Hoja de Ruta = el mapa que no se mueve. BOOT §AHORA = el
 ## AHORA (estado vivo · historial → `governance/historico/BOOT_2026-06-17.md`)
 🧭 **ADR-031 RATIF:** cajón=MCD · GoldMaster=MCM · MCIP 5 motores (Index §1.A).
 ✅ **4 DOM cerrados con PCD: d01·d02·d03·d09.**
-📚 **ADR-038 BRN v2 RATIF:** nodo = REGLA, no artículo. **Corpus→CNO(Derecho)→RO(lógica)→SAT**. BRN = CAPA que CONSOLIDA, no interpreta. **Corpus v1.0 CONGELADO** (43 docs·9158 chunks). **BRN v2.1**: d01-03+08-09 CONFORMES·diff=0.
+📚 **ADR-038 BRN v2 RATIF:** nodo = REGLA, no artículo. **Corpus→CNO(Derecho)→RO(lógica)→SAT**. BRN CONSOLIDA, no interpreta. **Corpus v1.0 CONGELADO** (43 docs·9158 chunks). **BRN v2.1**: d01-03+08-09 CONFORMES·diff=0.
 🩺 **Canon curado por DOM (Regla 8), ICPI intacto. Gate real = `scripts/ci/check_health.py`: NO adivinar tamaños.**
 📚 **ADR-035/037:** Ley→BRN→GoldMaster(único motor)→QUIRA · IA propone, humano valida.
-🏛️ **d02·d03·d09·d08 migrados** (bugs OBS-012/013/014 corregidos). **d08** = jerarquía Marco→Sistema→**Asamblea (órgano ciudadano autónomo, NO GAD)**→Consejo→mecanismos · CNO-VIII(8) · 3 dimensiones · **OBS-015/016/017** (IGP mezcla d09 · SAT real=SAT-VI · 28/28 audiencias sin resolución Art.75 ni habilitación). Frontera d08≠d09. **Fase4/Haiku=pausa**.
-🏛️ **GOBERNANZA v1.0 (2026-07-27):** `identity/`Constitución(21art) → `governance/`Carta(8art) → `marco_teorico/`(Postulados I·II·III + Inventario de Conceptos) → Canon → `registry/`(GENERADO). Derivación 100% · Freeze LEVANTADO (DEC-0010). DEC-0001..0011.
-🔬 **d08 Fase1+2:** 223 demandas (191 vinculantes) × 1027 filas POA → 39 hipótesis·129 pendientes·55 sin correlato, con **estado epistémico** (QUIRA propone, humano valida). **OBS-018**: el corpus OCR corrupto invalidó el 1er cruce (el canon lo advertía) → `ESCALERA_DE_FUENTES.md`: XLSX>PDF-texto>OCR>opacidad→IOC.
+🏛️ **d02·d03·d09·d08 migrados** (OBS-012/013/014 corregidos). **d08** = Marco→Sistema→**Asamblea (ciudadana AUTÓNOMA, no GAD)**→Consejo→mecanismos · CNO-VIII(8) · 3 dimensiones · **OBS-015/016/017** · frontera d08≠d09.
+🏛️ **GOBERNANZA v1.0:** `identity/`Constitución(21art) → `governance/`Carta(8art) → `marco_teorico/`(Postulados I·II·III + Inventario) → Canon → `registry/`(GENERADO). Derivación 100% · Freeze LEVANTADO (DEC-0010). DEC-0001..0011.
+🔬 **d08 Fase1+2:** 223 demandas × 1027 POA. **Filtro Ontológico v2** (5 niveles relacionales): el embedding PROPONE, el filtro DECIDE → 131 con correlato · 92 sin. **OBS-018** OCR corrupto → `TEORIA_EVIDENCIA_PUBLICA_VERIFICABLE.md` (ICEP→IOC). **OBS-019 REGLA 0**: quién ejecuta ≠ qué se hace (3ª vez de *metadato leído como contenido*) + test-invariante.
+⏭️ **SIGUIENTE d08:** 2ª validación experta (`preparar_validacion.py`) · 3 SAT a sellar en Excel (Cáscara·Opacidad·Brecha) · desenvolver 9 demandas narrativas · firmar CNO-VIII.
 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 ratificado · detalle en el ADR)
-GAD = sujeto observado, NO cliente. 4 capas: A Núcleo (motor·grafos·conectores·índices) · B Operaciones (Dylus) · C Productos (Institucional·Ciudadana·Impact·Economic·Cooperación · 1 motor) · D Portal `quiraintelligence.com` (radar 221 GAD). Montecristi = Municipio 001.
+GAD = sujeto observado, NO cliente. 4 capas: A Núcleo (motor·grafos·conectores·índices) · B Operaciones (Dylus) · C Productos (los 6 de §LA TESIS · 1 solo motor) · D Portal `quiraintelligence.com` (radar 221 GAD).
 
 ## REGLAS DE ORO → **las 9 viven en `CLAUDE.md`** (se lee siempre · no se duplican aquí)
 Recordatorio de las 2 que más se olvidan: **el grafo es autoridad** (antes de definir: ¿existe? → DERIVA,
