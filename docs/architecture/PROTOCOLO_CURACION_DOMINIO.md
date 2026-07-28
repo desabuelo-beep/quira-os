@@ -110,42 +110,59 @@ Patrón definitivo  →  PCD-DXX (documentación del dominio)
   > *"instrumento nacional"* no solo requiere replicación: requiere **primero** cerrar
   > Montecristi. Ese hallazgo permanece como **C10 · incertidumbre estructurada**, sin fecha.
 
-- **R-F · No inducción documental: no se le pide al GAD un dato que no produjo.** *(Javo · 2026-07-29.)*
+- **R-F · La solicitud se rige por el ESTADO DE CONOCIMIENTO del universo documental.** *(Javo · 2026-07-29, precisado el mismo día.)*
 
-  > **Si QUIRA solicita un dato que el GAD nunca desagregó, el GAD lo construye para responder.
-  > Ese documento nace DESPUÉS de la pregunta: deja de ser evidencia de gestión y pasa a ser
-  > evidencia de reacción a QUIRA.** El silencio documental se mide; no se rellena pidiéndolo.
+  > **Pedirle un documento a un GAD es legítimo. Lo que NO es legítimo es pedir un dato que ya
+  > sabemos que no existe** — porque entonces el GAD lo construye para responder, y ese documento
+  > nace DESPUÉS de la pregunta: deja de ser evidencia de gestión y pasa a ser evidencia de
+  > reacción a QUIRA.
 
-  **Formulación de Javo:** *"si pedimos van a construir recién. Este mismo hecho es otra
-  evidencia; no vamos a inferir. Si tenemos esta evidencia, nos da la pauta para trabajar."*
+  **La regla depende de si conocemos el universo documental del GAD, no del acto de pedir:**
 
-  ### La distinción que hay que hacer siempre
-
-  | | Situación | ¿Solicitar? | Por qué |
+  | # | Estado del universo | ¿Solicitar? | Fundamento |
   |---|---|---|---|
-  | **A** | el documento **existe** y está mal publicado *(POA en XLSX limpio, publicado en PDF escaneado)* | ✅ **sí** | recupera un documento **preexistente**; no crea nada |
-  | **B** | el documento **no existe** *(montos por proyecto PP nunca desagregados)* | ⛔ **no** | la solicitud **induce su creación** |
+  | **1** | **CONOCIDO** · el documento **existe** pero está mal publicado *(POA en XLSX limpio, publicado en PDF escaneado)* | ✅ **sí** | recupera un documento **preexistente**; no crea nada |
+  | **2** | **CONOCIDO** · el dato **no existe** *(Montecristi: el PP puntúa prioridad, no establece costo)* | ⛔ **no** | **induciría su creación** |
+  | **3** | **NO CONOCIDO** · GAD sin documentos hallables en web ni en transparencia | ✅ **sí — es obligatorio** | **la solicitud es el instrumento que determina si estamos en el caso 1 o en el 2** |
 
-  **Prueba de discriminación:** *¿el dato tiene fecha anterior a mi pregunta?* Si nace después,
-  no sirve como evidencia de gestión. Es la misma bifurcación de **R-D**, aplicada al acto de
-  observación en vez de al motor.
+  ### El caso 3 es el que hace escalable a QUIRA
+
+  En un GAD cuyo universo documental **aún no conocemos**, no se puede saber si el documento
+  existe y está mal publicado (caso 1) o si nunca se produjo (caso 2). **La solicitud es el único
+  modo de averiguarlo — y su resultado es, en sí mismo, evidencia:**
+
+  ```
+  se solicita  →  entregan documento con fecha anterior  →  EXISTÍA: caso 1 · mide su publicación
+               →  no entregan / silencio administrativo  →  evidencia de opacidad (IOC)
+               →  entregan algo construido al momento    →  NO EXISTÍA: caso 2 · se anota y no se usa
+  ```
+
+  **Canal obligatorio:** la solicitud se cursa desde el **Observatorio QUIRA** o **QUIRA
+  Ciudadana**, ejerciendo el **derecho de acceso a la información pública**. Nunca como QUIRA
+  pidiéndole insumos al auditado: eso convertiría al GAD en proveedor y disolvería su condición
+  de **sujeto observado** (BOOT §LA TESIS).
+
+  ### Estado por GAD
+
+  | GAD | Universo documental | Régimen |
+  |---|---|---|
+  | **Montecristi (001)** | ✅ **CONOCIDO y CERRADO** — se sabe qué documentos existen y cuáles no | **casos 1 y 2** · no se solicita lo inexistente |
+  | **Los otros 221** | ❌ no conocido | **caso 3** · se solicita vía Observatorio cuando no haya documento hallable |
+
+  **Hecho verificado sobre Montecristi (Javo · 15 años en gestión GAD):** los documentos de
+  Presupuesto Participativo **puntúan la prioridad de cada obra o servicio, pero no establecen su
+  costo económico**. No es una suposición sobre lo que el GAD tendría: es conocimiento del
+  instrumento. Por eso `IGP_2 = 0` está **medido**, no pendiente.
 
   ### Por qué es regla y no criterio
 
-  1. **Preserva la validez.** Medir lo que el GAD produjo ≠ medir lo que produce cuando se le
-     pregunta. Lo segundo no dice nada sobre su gestión.
-  2. **Preserva la comparabilidad entre los 222 GAD.** Si a Montecristi se le solicitan datos y
-     a los demás se les mide por lo publicado, **el molde deja de ser molde**. El CVI solo es
-     comparable si todos se miden por la misma superficie: **lo que el GAD publicó por sí mismo**.
-  3. **Preserva al sujeto observado.** El GAD es **sujeto observado, no cliente** (BOOT §LA TESIS).
-     Pedirle insumos lo convierte en proveedor de QUIRA y disuelve la frontera.
-
-  > **Corolario operativo — el universo documental de Montecristi está CERRADO.** Lo que hay es
-  > lo que hay. Eso hace el trabajo finito, auditable y replicable: **QUIRA se mide contra la
-  > evidencia pública realmente existente, no contra la que podría existir si la pidiéramos.**
+  1. **Preserva la validez.** Medir lo que el GAD produjo ≠ medir lo que produce cuando se le pregunta.
+  2. **Preserva la comparabilidad entre los 222 GAD.** El CVI solo compara si todos se miden por la
+     misma superficie: **la evidencia pública realmente existente**.
+  3. **Preserva al sujeto observado.** El canal (Observatorio · derecho de acceso) mantiene la frontera.
 
   **Complementa** al concepto *"el silencio como dato"*: aquél dice cómo **interpretar** una
-  ausencia; éste dice cómo **no destruirla**.
+  ausencia; éste dice cómo **no fabricarla ni destruirla**.
 
 *(Ratificación de R-A/R-B como Reglas de Oro en `CLAUDE.md` / `BOOT.md`: pendiente de Javo — son archivos congelados, Regla 5.)*
 

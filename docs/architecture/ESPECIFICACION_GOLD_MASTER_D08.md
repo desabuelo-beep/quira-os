@@ -97,10 +97,16 @@ un tercer componente propio de d08? Candidato natural en §4.
 `IGP_2 = AVERAGE(H10b!F13:F17)/100` → promedio de cinco ceros → **0**. **La fórmula funciona
 perfectamente.** El cero refleja que **no hay montos cargados por proyecto**.
 
-> **Y ese dato no existe — ni se pide (R-F · Javo, 2026-07-29).** Las actas de PP **son los
-> documentos institucionales oficiales del GAD**: eso es todo lo que tienen. Solicitar el
-> desglose haría que **lo construyan recién**, y ese documento nacería después de nuestra
-> pregunta: dejaría de ser evidencia de gestión para ser evidencia de reacción a QUIRA.
+> **HECHO VERIFICADO, no inferencia (Javo · 15 años en gestión GAD):** los documentos de
+> Presupuesto Participativo de Montecristi **puntúan la PRIORIDAD de cada obra o servicio
+> solicitado, pero no establecen su COSTO económico**. No es que el dato esté mal publicado ni
+> que falte una fuente: **el instrumento no lo produce**. Se conoce el universo documental
+> completo de este GAD, así que la ausencia está **determinada**, no supuesta.
+>
+> **Por eso no se solicita (R-F · caso 2).** Pedirlo haría que el GAD lo construya recién, y ese
+> documento nacería después de nuestra pregunta: sería evidencia de reacción, no de gestión.
+> *(En un GAD cuyo universo NO conocemos, el régimen sería el caso 3 y sí se solicitaría, vía
+> Observatorio QUIRA — pero R-E mantiene a los otros 221 fuera de alcance por ahora.)*
 >
 > **Por tanto `IGP_2 = 0` NO está bloqueado: está MEDIDO.** El cero es el resultado, y es
 > definitivo mientras el GAD no publique el desglose por iniciativa propia. Registrarlo como
