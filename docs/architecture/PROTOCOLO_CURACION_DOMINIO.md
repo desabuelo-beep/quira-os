@@ -164,6 +164,54 @@ Patrón definitivo  →  PCD-DXX (documentación del dominio)
   **Complementa** al concepto *"el silencio como dato"*: aquél dice cómo **interpretar** una
   ausencia; éste dice cómo **no fabricarla ni destruirla**.
 
+  ---
+
+  ### R-F.1 · UDC — Universo Documental Cerrado *(definición operativa · asesoría 2026-07-29)*
+
+  R-F depende de saber si el universo es *conocido* o *desconocido*. Sin una condición objetiva
+  eso quedaba **al criterio del investigador** — inaceptable para 222 GAD. Un universo entra en
+  **UDC** solo cuando se cumplen las **tres condiciones verificables**:
+
+  | # | Condición | Verificación |
+  |---|---|---|
+  | 1 | **Fuentes públicas obligatorias agotadas** | portal LOTAIP 2024 · CPCCS · SERCOP · e-SIGEF auditados y procesados |
+  | 2 | **Solicitudes de acceso agotadas** | respondidas, o **vencido el plazo legal de 10 días término** |
+  | 3 | **Sin repositorios pendientes** | no consta evidencia de archivos o bases institucionales sin revisar |
+
+  **Regla de operación:** alcanzado el UDC, **no se solicita ningún documento nuevo**. Toda
+  información no hallada **deja de buscarse** y se registra como *ausencia documental* o
+  *limitación del instrumento*. Antes del UDC, la ausencia **no es afirmable**: puede ser opacidad.
+
+  > **Distinción que el UDC vuelve operable:** *ausencia de evidencia* (universo cerrado, el dato
+  > no existe) ≠ *evidencia no encontrada* (universo abierto, aún no se buscó lo suficiente).
+  > Confundirlas es afirmar un hallazgo sobre un vacío de método.
+
+  #### ★ El UDC se declara POR INSTRUMENTO, no por GAD *(precisión de la dirección técnica)*
+
+  Declarar "Montecristi es UDC" en bloque sería **prematuro y falso**: solo 4 de 12 dominios están
+  cerrados con PCD, y el canon registra **10 ítems "sin acceso"**, 2 "no localizada" y 1 "no tengo".
+  Pero sí es cierto que el **PP** está cerrado. Ambas cosas son verdad porque **el UDC es una
+  propiedad del instrumento, no del municipio**.
+
+  **Estado real de Montecristi (`GAD-001`) · verificado 2026-07-29:**
+
+  | Instrumento / fuente | UDC | Fundamento |
+  |---|:---:|---|
+  | **Presupuesto Participativo** | ✅ | se conocen sus documentos oficiales: **puntúan prioridad, no fijan costo** |
+  | **POA 2023-2026** | ✅ | 4 XLSX oficiales completos (fuente nivel A) |
+  | **Audiencias públicas** | ✅ | 28/28 procesadas (OBS-017) |
+  | **Portal LOTAIP / transparencia** | ❌ | **d07 sin cerrar** |
+  | **Actas de sesión del Concejo** | ❌ | declaradas inexistentes en nuestro poder; Javo gestiona |
+  | **Holding municipal** (bomberos · aseo EP · Patronato) | ❌ | dominio no construido |
+  | **GAD Montecristi como conjunto** | ❌ | **4/12 dominios cerrados** — condición 3 incumplida |
+
+  **Consecuencia inmediata:** `IGP_2 = 0` **es afirmable** porque el PP sí está en UDC. Un hallazgo
+  equivalente sobre el portal de transparencia **no lo sería** todavía.
+
+  > **R-E y UDC no son lo mismo y no se sustituyen.** R-E fija *dónde se trabaja* (solo Montecristi).
+  > El UDC fija *cuándo una ausencia puede afirmarse*. Montecristi puede ser el único universo
+  > activo y a la vez tener instrumentos aún abiertos: es exactamente la situación de hoy.
+
 *(Ratificación de R-A/R-B como Reglas de Oro en `CLAUDE.md` / `BOOT.md`: pendiente de Javo — son archivos congelados, Regla 5.)*
 
 ## 4 · Plantilla PCD-DXX (cada dominio cierra con su documento)

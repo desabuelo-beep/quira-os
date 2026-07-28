@@ -81,7 +81,15 @@ indicador madre de d08— incorpora una variable de otro dominio.
 **Decisión pendiente de Javo:** ¿retirar IGP_3 (IGP queda con 2 componentes) o sustituirlo por
 un tercer componente propio de d08? Candidato natural en §4.
 
-## 2 · IGP_2 = 0 — **no es un bug ni un pendiente: es el hallazgo**
+## 2 · Limitación Estructural del Instrumento de Participación Presupuestaria
+
+> **Denominación canónica del hallazgo** *(asesoría · 2026-07-29).* `IGP_2 = 0` **no se registra
+> como "dato faltante"**. Se registra con su nombre: **limitación estructural del instrumento**.
+> El PP prioriza proyectos por puntuación, pero **no incorpora la dimensión financiera en su
+> origen**. No es error del Excel, ni del algoritmo, ni del conector: es una **característica del
+> instrumento administrativo**. Ese lenguaje es el defendible académicamente.
+>
+> **Afirmable porque el PP está en UDC** (Protocolo R-F.1): se conoce su universo documental.
 
 `H10b_S8b_PARTICIPATIVO` **sí tiene registro de PP 2026**: `Ingresos_Base` = 20.982.884,
 `Fichas_PP` = 149, y cinco prioridades verificadas con su meta PDOT:
@@ -133,6 +141,23 @@ perfectamente.** El cero refleja que **no hay montos cargados por proyecto**.
 >
 > Es la trampa más peligrosa encontrada hoy: *parece* un arreglo de una línea y **mete una cifra
 > falsa al motor**. Probablemente por eso alguien anuló la fórmula en su momento.
+
+### ★ CASO DE ESTUDIO INTERNO · "la corrección técnica que degrada la integridad"
+
+Se registra como caso canónico de la Carta, a pedido de la asesoría. Reconstrucción:
+
+| Paso | Qué pasó |
+|---|---|
+| 1 | Se detecta `H24c!B7 = 0` **sin fórmula**, con un comentario que indica cuál debería ser |
+| 2 | **Intuición inicial:** restaurar `IFERROR(H10b!B9,0)`. Parece corrección obvia de una línea |
+| 3 | **Verificación:** `H10b!B9` = `Ingresos_Base_2026` = **20.982.884** — los ingresos del GAD |
+| 4 | El PP es una **fracción de la inversión**, no el ingreso total → la fórmula era **conceptualmente errónea** |
+| 5 | Restaurarla habría puesto cifra falsa en `B7` → `Hay_Datos_PP` a **"SÍ"** por fórmula → **`SAT-VI` disparada sobre un dato inventado** |
+
+> **Lección:** *una corrección aparentemente técnica puede degradar la integridad epistemológica.*
+> Lo que impidió el error no fue desconfiar del Excel: fue **leer qué significaba la celda de
+> origen antes de conectarla**. Toda restauración de fórmula exige verificar la **semántica** del
+> operando, no solo su existencia.
 
 **La fórmula correcta es** `=SUM(H10b!D13:D17)` — suma de montos aprobados por proyecto. Da **0**,
 y ese 0 es correcto: el GAD no los desagrega (§2 · R-F).
