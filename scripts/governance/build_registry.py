@@ -61,12 +61,28 @@ CATALOGO = [
     ("scripts/cypher/*.cypher",        "graph",      3, None),
 ]
 
+# ★ HUECO DE ALCANCE DECLARADO (2026-07-29) ────────────────────────────────────
+# `docs/architecture/*.md` NO está en el CATALOGO de arriba. Son 49 documentos, y
+# solo 2 declaran autoridad. Entre los 47 restantes hay canon vivo:
+# PROTOCOLO_CURACION_DOMINIO (donde viven R-A..R-D) y METODOLOGIA_GOLD_MASTER
+# (citada por CLAUDE.md como método canónico).
+#
+# Es decir: el "derivación 100% · 0 huérfanos" que este script venía reportando
+# era cierto SOBRE LO QUE MIRA, y falso como afirmación general.
+#
+# NO se estampan los 47 bloques de golpe: atribuir un `parent` sin verificarlo
+# sería INVENTAR AUTORIDAD, que es justo lo que la Carta Art. 1 prohíbe. Se aplica
+# R-D (bifurcación algoritmo/instrumento) a nosotros mismos: la limitación es de
+# ALCANCE, así que se MIDE y se DECLARA en vez de parchar a ciegas.
+# Se usa el mecanismo que ya existe (EXTERNOS), no uno nuevo (Subsidiariedad).
+
 # Activos externos al repo (se DECLARAN, no se mueven — Art. 3)
 EXTERNOS = [
     ("ProyecT/SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx", "gold_master", "MOTOR ÚNICO de cálculo (Carta Art. 4.1) — se LEE, jamás se recalcula"),
     ("ProyecT/Holding_Municipal_Montecristi",       "fuente_evidencia", "documentos oficiales del GAD (PDOT, RDC, participación, POA/PAC)"),
     ("quira-harvester",                              "repo_hermano", "código de cosecha de evidencia — repo separado"),
     ("governance",                                   "gobernanza_legacy", "17 docs de gobernanza fuera del repo — PENDIENTE de fusión (Fase 2)"),
+    ("docs/architecture",                            "canon_sin_catalogar", "49 .md · solo 2 declaran autoridad — HUECO DE ALCANCE del registry, contiene canon vivo (PROTOCOLO_CURACION_DOMINIO · METODOLOGIA_GOLD_MASTER). PENDIENTE de derivación verificada, no de estampado ciego"),
     ("documentos_proyecto",                          "insumo", "Manual Técnico v5.0, doctrinal, PDOT, Plan CNE"),
     ("metodologia_beta_Dctos",                       "insumo", "SIAP-ICPI maestras, TERRA, tesis"),
     ("_historico",                                   "archivo", "23 items legacy"),
@@ -161,6 +177,17 @@ def main() -> int:
     print(f"   con autoridad       : {len(activos) - len(huerfanos)}")
     print(f"   HUÉRFANOS           : {len(huerfanos)}  (Art. 1: no promovibles a vigente)")
     print(f"   externos declarados : {len(ext)}  ({sum(1 for e in ext if e['existe'])} existen en disco)")
+
+    # ★ El registro CERTIFICA lo que mira. Decir "derivación 100%" sin este matiz
+    #   sería una afirmación no verificada — el error que el propio sistema combate.
+    sin_cat = sum(1 for f in (REPO / "docs" / "architecture").glob("*.md")
+                  if not re.search(r"^\s*(#|//)?\s*authority:",
+                                   f.read_text(encoding="utf-8", errors="replace")[:400], re.M))
+    if sin_cat:
+        print(f"\n   ⚠️  ALCANCE: 0 huérfanos es cierto SOBRE LO CATALOGADO, no en general.")
+        print(f"       docs/architecture/ tiene {sin_cat} .md sin autoridad declarada y NO entra")
+        print(f"       al catálogo. Contiene canon vivo. Se declara como externo pendiente:")
+        print(f"       derivación verificada, nunca estampado ciego (Carta Art. 1).")
     print("\n   Desglose por tipo:")
     from collections import Counter
     for k, n in sorted(Counter(a["kind"] for a in activos).items()):

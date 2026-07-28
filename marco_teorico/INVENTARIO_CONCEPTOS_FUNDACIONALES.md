@@ -33,6 +33,46 @@ hace visible la genealogía completa para que no se repita.
 > **Regla:** antes de "crear" un concepto, **se consulta este inventario**. Si ya existe, se
 > **declara y opera**, no se reinventa (Regla de Oro 6: *deriva, no redefinas*).
 
+## Mapa de Gobernanza Metodológica
+
+> **Por qué existe** *(asesoría · 2026-07-29):* el ecosistema ya tiene bastantes siglas
+> (R-C · R-D · CVI · ICEP · IOC · MRSPP · C10). Todas tienen sentido, pero sin jerarquía visible
+> dentro de seis meses habrá que reconstruir de memoria dónde vive cada una. **Este mapa no añade
+> ni un concepto: solo muestra de quién depende cada cosa.** Va aquí, no en un documento nuevo,
+> porque decir *dónde vive una verdad* es justamente la función de este inventario.
+
+```
+EJE 1 · GOBERNANZA CAUSAL                    EJE 2 · GOBERNANZA DE LA PRUEBA
+
+     MODELO CAUSAL QUIRA                     TEORÍA DE LA EVIDENCIA PÚBLICA
+     (norma → resultado · C1-C9)                        │
+              │                                         ▼
+      ┌───────┴────────┐                    ÍNDICE DE OPACIDAD CANTONAL (IOC)
+      ▼                ▼                                │
+   MRSPP        AUTOCURACIÓN                   ┌────────┴────────┐
+ (taxonomía)     METODOLÓGICA                  ▼                 ▼
+  demanda ↔      (Principio 6)               ICEP               CVI
+ intervención         │                    (formato)        (estructura)
+                      ├── R-C  deslinde    ¿se puede        ¿lo leído
+                      │   de dominios         leer?          permite
+                      └── R-D  bifurcación                   probar?
+                          algoritmo /
+                          instrumento
+```
+
+**Los dos ejes no se cruzan y por eso no compiten:** el **Eje 1** gobierna *cómo QUIRA razona*;
+el **Eje 2** gobierna *qué puede probar*. Un concepto que no encaje en ninguno de los dos debe
+justificar su entrada ante la Regla 7 antes de existir.
+
+| Sigla | Qué es | Depende de |
+|---|---|---|
+| **MRSPP** | taxonomía operacional demanda↔intervención | Modelo Causal |
+| **R-C** | deslinde de dominios: el propietario califica | Autocuración *(Protocolo §3)* |
+| **R-D** | bifurcación algoritmo / instrumento | Autocuración *(Protocolo §3)* |
+| **ICEP** | dimensión de FORMATO del IOC | Teoría de la Evidencia |
+| **CVI** | dimensión de ESTRUCTURA del IOC | Teoría de la Evidencia |
+| **C10** | dónde QUIRA registra lo que aún no sabe | Marco Epistémico |
+
 ## Inventario
 
 > **Los cuatro atributos permanentes** (asesoría · 2026-07-27): todo concepto declara *dónde

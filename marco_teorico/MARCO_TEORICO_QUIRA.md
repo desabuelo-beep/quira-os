@@ -251,7 +251,7 @@ la forma completa y prevalece**.
 
 ---
 
-## MRSPP · Taxonomía de Relaciones de Satisfacción de Política Pública
+## MRSPP · Taxonomía Operacional de Relaciones de Satisfacción Programática
 
 > **Estatuto epistémico (precisión de la asesoría · 2026-07-29):** el MRSPP es una **taxonomía
 > operacional, NO un modelo explicativo.** *Clasifica* relaciones; no *explica* causalidad —

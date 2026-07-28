@@ -19,7 +19,7 @@ componentes:
     kind: normative
     level: 1
     path: governance/BOOT.md
-    hash: 2adc15a58a1b6293
+    hash: c93b93adaf797895
     authority_declared: true
     parent: GOVERNANCE-001
   - id: GOVERNANCE-001
@@ -152,14 +152,14 @@ componentes:
     kind: marco_teorico
     level: 1
     path: marco_teorico/INVENTARIO_CONCEPTOS_FUNDACIONALES.md
-    hash: b46ed1b333d49269
+    hash: 0e17ac61f871e596
     authority_declared: true
     parent: MARCO-TEORICO-001
   - id: MARCO-TEORICO-001
     kind: marco_teorico
     level: 1
     path: marco_teorico/MARCO_TEORICO_QUIRA.md
-    hash: 229a10956c307d91
+    hash: 2bf25197960d5178
     authority_declared: true
     parent: CONSTITUCION-001
   - id: CNO-I-001
@@ -825,6 +825,10 @@ externos:
     kind: gobernanza_legacy
     existe: true
     nota: "17 docs de gobernanza fuera del repo — PENDIENTE de fusión (Fase 2)"
+  - path: ../docs/architecture
+    kind: canon_sin_catalogar
+    existe: false
+    nota: "49 .md · solo 2 declaran autoridad — HUECO DE ALCANCE del registry, contiene canon vivo (PROTOCOLO_CURACION_DOMINIO · METODOLOGIA_GOLD_MASTER). PENDIENTE de derivación verificada, no de estampado ciego"
   - path: ../documentos_proyecto
     kind: insumo
     existe: true
