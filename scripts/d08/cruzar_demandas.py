@@ -56,6 +56,10 @@ SALIDA = REPO / "data" / "d08" / "trazabilidad_demandas.json"
 # Umbrales calibrados y ya validados por Javo en el cruce de d09 (METODOLOGIA_TRAZABILIDAD_APORTES)
 TH_FUERTE = 0.62      # candidato fuerte → hipótesis de correspondencia
 TH_REVISAR = 0.52     # banda de validación experta obligatoria
+# Piso de evaluación: por debajo es ruido puro y no vale ni pasar por el filtro.
+# Más bajo que TH_REVISAR a propósito: el filtro ontológico puede rescatar una
+# relación legítima que el embedding rankeó bajo por ruido OCR en la demanda.
+PISO_EVALUACION = 0.42
 
 
 POA_XLSX = Path(r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT\Holding_Municipal_Montecristi"
@@ -141,31 +145,46 @@ def main() -> int:
     P = emb([x["texto"] for x in poa])
 
     import filtro_ontologico as fo
-    print("  Filtro Ontológico QUIRA v1 cargado — el embedding PROPONE, el filtro DECIDE\n")
+    print("  Filtro Ontológico QUIRA v2 cargado — el embedding PROPONE, el filtro DECIDE\n")
 
     resultados = []
     descartes = Counter()
     for i, dem in enumerate(demandas):
         sims = D[i] @ P.T
-        # ★ EL EMBEDDING YA NO DECIDE: propone los TOP-10 candidatos.
-        top = sims.argsort()[-10:][::-1]
+        # ★ EL EMBEDDING YA NO DECIDE: propone candidatos; el filtro elige.
+        # TOP-30 (no 10): ahora que el filtro garantiza precisión, se prioriza el
+        # RECALL. Con top-10 se perdían correspondencias legítimas que el embedding
+        # rankeaba bajo por ruido OCR ("REALIZAR AREAS VERDES-EL SECAL" quedaba sin
+        # correlato aunque el POA sí tenía proyectos de áreas verdes).
+        top = sims.argsort()[-30:][::-1]
 
-        j, score, motivo = None, 0.0, "sin_candidato_que_pase_el_filtro"
+        # ★ DIVISIÓN DE RESPONSABILIDADES (corrección 2026-07-29):
+        #   el FILTRO ONTOLÓGICO decide SI existe relación y de qué TIPO;
+        #   el SCORE decide CUÁNTA CONFIANZA merece esa relación.
+        # Antes el piso de score cortaba ANTES de evaluar el filtro, y demandas
+        # legítimas ("REALIZAR AREAS VERDES-EL SECAL") quedaban sin correlato pese a
+        # existir proyectos de áreas verdes en el POA. El umbral gobernaba el recall
+        # cuando debía gobernarlo el conocimiento institucional.
+        j, score, motivo, tipo = None, 0.0, "sin_candidato_que_pase_el_filtro", "nula"
         for k in top:
             cand_score = float(sims[k])
-            if cand_score < TH_REVISAR:
-                break                                   # por debajo del piso no vale evaluar
-            pasa, razon = fo.evaluar(dem["demanda"], poa[k]["texto"])
-            if pasa:
-                j, score, motivo = int(k), cand_score, razon
+            if cand_score < PISO_EVALUACION:
+                break                                   # ruido puro, ni evaluar
+            tipo_rel, razon = fo.evaluar_relacion(dem["demanda"], poa[k]["texto"])
+            if tipo_rel != "nula":
+                j, score, motivo, tipo = int(k), cand_score, f"{tipo_rel}: {razon}", tipo_rel
                 break
             descartes[razon.split(":")[0]] += 1
 
-        # ★ ESTADO EPISTÉMICO — la frontera de la Fase 2
-        if j is not None and score >= TH_FUERTE:
-            estado, naturaleza = "hipotesis", "INFERENCIA ANALÍTICA — correspondencia propuesta (pasó filtro ontológico), requiere validación experta"
-        elif j is not None and score >= TH_REVISAR:
-            estado, naturaleza = "pendiente_validacion", "banda de revisión — pasó filtro ontológico, el analista confirma"
+        # ★ ESTADO EPISTÉMICO = tipo de relación × confianza del score
+        fuerte = tipo in ("directa", "funcional")
+        if j is not None and fuerte and score >= TH_FUERTE:
+            estado, naturaleza = "hipotesis", f"INFERENCIA ANALÍTICA — relación {tipo} con alta similitud; requiere validación experta"
+        elif j is not None and fuerte:
+            estado, naturaleza = "pendiente_validacion", f"relación {tipo} verificada ontológicamente, similitud media — el analista confirma"
+        elif j is not None:
+            # instrumental/indirecta son débiles por naturaleza: nunca ascienden solas
+            estado, naturaleza = "pendiente_validacion", f"relación {tipo} — débil por naturaleza, requiere validación experta"
         else:
             j = int(sims.argmax())                       # se conserva el más próximo solo como referencia
             score = float(sims[j])
@@ -182,7 +201,11 @@ def main() -> int:
             "anio_demanda": dem["anio"],
             "fuente_demanda": dem["fuente"],
             "similitud": round(score, 3),
-            "proyecto_poa_mas_proximo": poa[j]["texto"][:200] if estado != "sin_correlato" else "",
+            # ★ TEXTO ÍNTEGRO, no recortado: se guarda EXACTAMENTE lo que el filtro
+            #   juzgó. Con el recorte a 200 chars el token que disparaba el veredicto
+            #   quedaba fuera del expediente y la correspondencia era inauditable —
+            #   así se ocultó durante una corrida el falso positivo de REGLA 0.
+            "proyecto_poa_mas_proximo": poa[j]["texto"] if estado != "sin_correlato" else "",
             "fuente_poa": poa[j]["fuente"] if estado != "sin_correlato" else "",
             "sha_poa": poa[j]["sha"] if estado != "sin_correlato" else "",
             "filtro_ontologico": motivo,
