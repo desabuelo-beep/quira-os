@@ -4,7 +4,7 @@
 # Autoridad: Carta de Gobernanza Art. 1 (Derivación) y Art. 3 (describe, no gobierna).
 # ═══════════════════════════════════════════════════════════════════
 generado: 2026-07-27
-total_activos: 108
+total_activos: 110
 huerfanos: 0   # sin bloque authority: → no pueden promoverse a vigente (Art. 1)
 
 componentes:
@@ -26,7 +26,7 @@ componentes:
     kind: normative
     level: 1
     path: governance/GOVERNANCE_CHARTER.md
-    hash: d8640b01bc7753a3
+    hash: 69c6038b09cc8467
     authority_declared: true
     parent: CONSTITUCION-001
   - id: NORMATIVE-HOJA_DE_RUTA_MAESTRA
@@ -134,11 +134,25 @@ componentes:
     hash: 94ffa863f42436ca
     authority_declared: true
     parent: GOVERNANCE-001
+  - id: DEC-0011
+    kind: decision
+    level: 1
+    path: governance/decisions/DEC-0011.md
+    hash: d101a75b0c7367a9
+    authority_declared: true
+    parent: GOVERNANCE-001
   - id: IDENTITY-CONSTITUCION_ONTOLOGICA_QUIRA
     kind: identity
     level: 0
     path: docs/sprint-c/CONSTITUCION_ONTOLOGICA_QUIRA.md
     hash: 479a3f8552edb567
+    authority_declared: true
+    parent: CONSTITUCION-001
+  - id: MARCO-TEORICO-001
+    kind: canon_teorico
+    level: 2
+    path: canon/MARCO_TEORICO_QUIRA.md
+    hash: a922ef51ac5cbe15
     authority_declared: true
     parent: CONSTITUCION-001
   - id: CNO-I-001
@@ -264,7 +278,7 @@ componentes:
     kind: canon_ro
     level: 2
     path: docs/brn/RO-VIII-001.yaml
-    hash: 445de2272c7948f6
+    hash: 5322fe1f9bb031d9
     authority_declared: true
     parent: CNO-VIII-000
   - id: RO-VIII-002
@@ -614,7 +628,7 @@ componentes:
     kind: observation
     level: 2
     path: docs/observations/OBS-017_Brecha_Sistematica_Audiencias_Publicas_Montecristi.md
-    hash: c28832eef1113ad0
+    hash: a74ad8628b6c861c
     authority_declared: true
     parent: GOVERNANCE-001
   - id: DOMAIN_CATALOG-catalogo_d01_v1.0.0

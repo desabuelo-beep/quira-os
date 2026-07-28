@@ -48,6 +48,7 @@ CATALOGO = [
     ("governance/decisions/*.md",      "decision",   1, "GOVERNANCE-001"),
     ("governance/policies/*.md",       "policy",     1, "GOVERNANCE-001"),
     ("docs/sprint-c/CONSTITUCION_ONTOLOGICA_QUIRA.md", "identity", 0, None),
+    ("canon/*.md",                     "canon_teorico", 2, "CONSTITUCION-001"),
     ("docs/brn/CNO-*.yaml",            "canon_cno",  2, "GOVERNANCE-001"),
     ("docs/brn/RO-*.yaml",             "canon_ro",   2, "GOVERNANCE-001"),
     ("docs/adr/ADR-*.md",              "canon_adr",  2, "GOVERNANCE-001"),

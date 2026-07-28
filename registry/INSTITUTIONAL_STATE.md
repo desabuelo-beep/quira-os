@@ -15,7 +15,7 @@
 | L0 · Identidad | Constitución Institucional | ✅ vigente |
 | L0 · Identidad | Constitución Ontológica | ✅ presente |
 | L1 · Gobernanza | Carta de Gobernanza | ✅ vigente |
-| L1 · Gobernanza | Decisiones institucionales | 10 registradas |
+| L1 · Gobernanza | Decisiones institucionales | 11 registradas |
 | L2 · Canon | CNO · RO · ADR · PCD | 12 · 8 · 28 · 5 |
 | L2 · Canon | Observaciones | 15 |
 | L3 · Implementación | Dominios con catálogo | d01, d02, d03, d07, d08, d09 |
@@ -23,7 +23,7 @@
 
 ## Cumplimiento del Principio de Derivación (Carta Art. 1)
 
-**100.0%** — 108 de 108 activos declaran su autoridad.
+**100.0%** — 110 de 110 activos declaran su autoridad.
 
 ⚠️ **0 artefactos HUÉRFANOS** — sin bloque `authority:`, no pueden
 promoverse a `vigente` (Carta Art. 1). Desglose:
@@ -34,8 +34,9 @@ promoverse a `vigente` (Carta Art. 1). Desglose:
 | canon_cno | 12 | 0 |
 | canon_pcd | 5 | 0 |
 | canon_ro | 8 | 0 |
+| canon_teorico | 1 | 0 |
 | connector | 1 | 0 |
-| decision | 10 | 0 |
+| decision | 11 | 0 |
 | domain_catalog | 6 | 0 |
 | domain_pipeline | 6 | 0 |
 | gate | 1 | 0 |

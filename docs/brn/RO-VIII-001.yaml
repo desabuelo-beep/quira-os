@@ -33,8 +33,17 @@ parametros: { umbral_alto: 85, umbral_medio: 60, frecuencia: anual }
 consume: []
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# MATRIZ CANÓNICA DE LA CADENA PARTICIPATIVA (asesores · 2026-07-27)
+# MATRIZ CANÓNICA DE LA CADENA PARTICIPATIVA
 # ═══════════════════════════════════════════════════════════════════════════════
+# FUNDAMENTO (corrección de atribución · 2026-07-27): esta matriz implementa el
+# POSTULADO I de Javo — la TRAZABILIDAD BIOGRÁFICA DEL DATO (canon/MARCO_TEORICO_QUIRA.md):
+# "el dato público no es una cifra estática: es un organismo vivo que nace en el discurso,
+# se formaliza en la planificación, se compromete en la contratación y se consolida —o
+# muere— en la ejecución". La matriz es la herramienta para auditar esa historia de vida
+# sin saltarse eslabones. La asesoría externa afinó su forma (9 nodos, agnóstica al
+# mecanismo); el fundamento teórico es anterior y es de Javo.
+# El nodo C09 implementa el POSTULADO II (Cadena de Integridad Intersistémica).
+#
 # INFRAESTRUCTURA METODOLÓGICA REUTILIZABLE, no una solución de un solo uso para d08.
 # Todo mecanismo participativo (audiencia · PP · cabildo · asamblea · silla vacía) se
 # proyecta sobre estos MISMOS 9 nodos. El motor de verificación queda AGNÓSTICO AL

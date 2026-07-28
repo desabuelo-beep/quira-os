@@ -186,10 +186,15 @@ autoridad**, no simple falta de papel: conecta con el Principio de Derivación (
 ningún artefacto de QUIRA puede existir sin declarar su autoridad, ningún acto administrativo
 puede acreditarse sin su instrumento habilitante.
 
-**Fragmentación intersistémica** (a partir del hallazgo cruzado d08↔d07) no es ausencia ni
-incumplimiento: es **fricción e inarticulación estatal**. Revela que el GAD opera en silos y que
-la rendición de cuentas es de papeleo, no de datos integrados. Es precisamente el objeto de
-estudio del índice de cumplimiento institucional: la **congruencia intersistémica**.
+**Fragmentación intersistémica** no es ausencia ni incumplimiento: es **fricción e inarticulación
+estatal**. Revela que el GAD opera en silos y que la rendición de cuentas es de papeleo, no de
+datos integrados. Es precisamente el objeto de estudio del índice de cumplimiento institucional:
+la **congruencia intersistémica**.
+
+> **Fundamento (corrección de atribución · 2026-07-27):** esta categoría NO nació de la asesoría
+> externa — es la operacionalización del **Postulado II de Javo** (*Cadena de Integridad
+> Intersistémica*), formulado en su tesis antes de existir en la plataforma. Ver
+> `canon/MARCO_TEORICO_QUIRA.md`.
 
 ### Principio de No-Inferencia
 QUIRA **no juzga intenciones ni deduce ausencias físicas**: mide la capacidad del expediente

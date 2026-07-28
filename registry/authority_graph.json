@@ -3,8 +3,8 @@
   "_autoridad": "Carta de Gobernanza Art. 1 (Derivación) y Art. 3 (representaciones)",
   "generado": "2026-07-27",
   "raiz": "CONSTITUCION-001",
-  "total_nodos": 108,
-  "total_aristas": 108,
+  "total_nodos": 110,
+  "total_aristas": 110,
   "aristas_rotas": 0,
   "huerfanos": 0,
   "cumplimiento_derivacion_pct": 100.0,
@@ -136,10 +136,24 @@
       "declared": true
     },
     {
+      "id": "DEC-0011",
+      "kind": "decision",
+      "level": 1,
+      "path": "governance/decisions/DEC-0011.md",
+      "declared": true
+    },
+    {
       "id": "IDENTITY-CONSTITUCION_ONTOLOGICA_QUIRA",
       "kind": "identity",
       "level": 0,
       "path": "docs/sprint-c/CONSTITUCION_ONTOLOGICA_QUIRA.md",
+      "declared": true
+    },
+    {
+      "id": "MARCO-TEORICO-001",
+      "kind": "canon_teorico",
+      "level": 2,
+      "path": "canon/MARCO_TEORICO_QUIRA.md",
       "declared": true
     },
     {
@@ -870,7 +884,19 @@
       "resuelto": true
     },
     {
+      "from": "DEC-0011",
+      "to": "GOVERNANCE-001",
+      "type": "DERIVES_FROM",
+      "resuelto": true
+    },
+    {
       "from": "IDENTITY-CONSTITUCION_ONTOLOGICA_QUIRA",
+      "to": "CONSTITUCION-001",
+      "type": "DERIVES_FROM",
+      "resuelto": true
+    },
+    {
+      "from": "MARCO-TEORICO-001",
       "to": "CONSTITUCION-001",
       "type": "DERIVES_FROM",
       "resuelto": true
