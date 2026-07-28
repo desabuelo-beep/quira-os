@@ -54,8 +54,10 @@ hace visible la genealogía completa para que no se repita.
 | 10 | **Un solo grafo, cinco verbos** | Marco Epistémico · mayo 2026 | `QUIRA_EPISTEMIC_FRAMEWORK_v1.0.md` | los productos son lecturas del mismo grafo | — | **activo** |
 | 11 | **Integridad procedimental** | emergente · julio 2026 | `MARCO_TEORICO_QUIRA.md` | dimensión que abren los Postulados I y II | matriz C01→C09 | **activo** |
 | 12 | **Espectro intersistémico** *(continuidad→restauración)* | asesoría · julio 2026 | `MARCO_TEORICO_QUIRA.md` | solo *fragmentación* tipificada hoy | estado del nodo C09 | **parcial** |
-| 13 | **MRSPP** — Modelo de Relaciones de Satisfacción de Política Pública | asesoría + academia · julio 2026 · sobre el caso Carnaval↔basura de Javo | `MARCO_TEORICO_QUIRA.md` §MRSPP | `scripts/d08/filtro_ontologico.py` (v3) | tipo de satisfacción por par demanda↔intervención | **activo** |
-| 14 | **Ficha POA Agregada** *(opacidad de estructura, no de formato)* | Javo · julio 2026 | `docs/observations/OBS-020` + `TEORIA_EVIDENCIA_PUBLICA_VERIFICABLE.md` | `scripts/d08/diagnostico_ficha_poa.py` | % de filas que declaran territorio y componentes | **activo** |
+| 13 | **MRSPP** — Modelo de Relaciones de Satisfacción de Política Pública | asesoría + academia · julio 2026 · sobre el caso Carnaval↔basura de Javo | `MARCO_TEORICO_QUIRA.md` §MRSPP | `scripts/d08/filtro_ontologico.py` (v3) | tipo de satisfacción por par demanda↔intervención | **activo** *(subordinado al Modelo Causal — eje demanda↔intervención)* |
+| 14 | **Ficha POA Agregada** *(opacidad de estructura, no de formato)* | Javo · julio 2026 | `TEORIA_EVIDENCIA_PUBLICA_VERIFICABLE.md` + `OBS-020` | `scripts/d08/diagnostico_ficha_poa.py` | el CVI del POA | **activo** |
+| 15 | **CVI** — Capacidad Verificativa del Instrumento | emergente · asesoría + academia · julio 2026, al medir el concepto 14 | `TEORIA_EVIDENCIA_PUBLICA_VERIFICABLE.md` §6-bis | por dominio: d01 POA · d02 presupuesto · d03 PAC · d09 RDC | **2ª dimensión del IOC** (hermana del ICEP) | **parcial** *(solo medido en POA)* |
+| 16 | **Quien es dueño del instrumento lo califica** *(regla de frontera entre dominios)* | Javo · julio 2026 *("¿esto no va en su dom de planificación?")* | `OBS-020` §0 | d01 califica el POA · d07 el portal · d08 solo consume | — *(regla, no métrica)* | **activo** |
 ### Estados
 `activo` — declarado y operando · `parcial` — declarado, implementación incompleta ·
 `pendiente` — declarado, sin implementar · `implícito` — opera sin estar declarado *(a evitar)*

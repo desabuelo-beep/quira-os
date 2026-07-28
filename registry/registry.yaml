@@ -19,7 +19,7 @@ componentes:
     kind: normative
     level: 1
     path: governance/BOOT.md
-    hash: 2dd30d2897dc4723
+    hash: 2b6cfb68cf7b3554
     authority_declared: true
     parent: GOVERNANCE-001
   - id: GOVERNANCE-001
@@ -152,7 +152,7 @@ componentes:
     kind: marco_teorico
     level: 1
     path: marco_teorico/INVENTARIO_CONCEPTOS_FUNDACIONALES.md
-    hash: d750514c9547e2c1
+    hash: fa67b5945431ba93
     authority_declared: true
     parent: MARCO-TEORICO-001
   - id: MARCO-TEORICO-001
@@ -502,7 +502,7 @@ componentes:
     kind: canon_pcd
     level: 2
     path: docs/pcd/PCD-D01_Planificacion.md
-    hash: 438471559ffd98d0
+    hash: 31a4e74387dd92cc
     authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_PCD-PCD-D02_Presupuesto_Financiamien
@@ -656,7 +656,7 @@ componentes:
     kind: observation
     level: 2
     path: docs/observations/OBS-020_Ficha_POA_No_Habilita_Monitoreo_Territorial.md
-    hash: 3d70696d31ba2807
+    hash: e637dfd57b0fe4d6
     authority_declared: true
     parent: GOVERNANCE-001
   - id: DOMAIN_CATALOG-catalogo_d01_v1.0.0

@@ -52,5 +52,33 @@ meta-tag de origen · verificado inexistente en corpus), no un cómputo pendient
 → `f40a87f` (marco legal) → `cb24266` (síntesis) → `0926662` (motores SAT) → `c80c7be` (pinceladas) →
 `6bc4d62` (IPE nativo audit-grade).
 
+## Hallazgo posterior al cierre · OBS-020 (2026-07-29)
+
+> **No reabre la curación** (Regla 8): un dominio cerrado incorpora hallazgos posteriores por
+> la vía de OBS, no reabriendo su PCD. Se registra aquí para que d01 no quede desactualizado.
+
+**Origen:** descubierto desde d08 al cruzar demandas ciudadanas contra el POA. **El objeto
+auditado, sin embargo, es de d01** — el POA es el instrumento de este dominio. Anclaje
+corregido a pedido de Javo, aplicando la regla *quien es dueño del instrumento lo califica*
+(OBS-020 §0).
+
+**Qué se midió** — `scripts/d08/diagnostico_ficha_poa.py` · POA 2023-2026 · 1.027 filas:
+
+| Atributo de la ficha POA | % |
+|---|---:|
+| Declara **territorio** de ejecución | **1,1%** *(corroborado por método independiente: 1,3%)* |
+| Declara **componentes operativos** | 29,8% |
+
+**Qué significa para d01:** el instrumento de planificación **no habilita** la verificación
+documental de dónde se ejecuta el gasto. No es incumplimiento —eso lo determina el órgano de
+control— sino **ausencia de habilitación documental** (Carta Art. 4.5).
+
+**Métrica que instrumenta:** **CVI · Capacidad Verificativa del Instrumento**
+(`TEORIA_EVIDENCIA_PUBLICA_VERIFICABLE.md` §6-bis), 2ª dimensión del IOC junto al ICEP.
+El POA es su primera medición registrada.
+
+**Pendiente:** replicar en un segundo GAD (Gate 7). Si el patrón persiste, deja de ser un
+hallazgo sobre Montecristi y pasa a ser evidencia sobre el diseño nacional del instrumento.
+
 ---
 *PCD-D01 · Dylus Lab © 2026 · el molde del Protocolo de Curación de Dominio.*

@@ -25,7 +25,9 @@ sin separarlos:
 
 Cada capa de metadato que se filtra (REGLA 0 · homógrafos · programa) destapa la
 siguiente. Eso deja de ser un defecto del algoritmo y pasa a ser una propiedad del
-documento: **la ficha no fue construida para ser leída, sino para ser aprobada.**
+documento. NO se afirma por qué se construyó así — eso atribuiría intención institucional
+y no está demostrado. Se afirma lo observable: la ficha no contiene información suficiente
+para reconstruir territorialmente la ejecución mediante evidencia documental verificable.
 
 LO QUE SE MIDE (por fila del POA, sin juicio de valor)
   1. ¿Declara OBJETO?     — hay una descripción sustantiva de qué se hace

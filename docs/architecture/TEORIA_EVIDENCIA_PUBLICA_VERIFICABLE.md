@@ -122,8 +122,10 @@ Medido en Montecristi (`scripts/d08/diagnostico_ficha_poa.py`, 1.027 filas, dos 
 independientes que convergen): **~1% de las filas declara dónde se ejecuta el gasto**;
 70% no declara componentes operativos.
 
-> **La ficha no fue construida para ser leída, sino para ser aprobada.** Cumple el trámite
-> financiero; no habilita el monitoreo de la planificación del desarrollo.
+> **Lo demostrado, sin atribuir intención:** la ficha observada **no contiene la información
+> suficiente para reconstruir territorialmente la ejecución mediante evidencia documental
+> verificable**. Por qué fue diseñada así es una pregunta distinta — exigiría contrastar el
+> diseño normativo del instrumento con su implementación, y hoy no hay evidencia para eso.
 
 **Consecuencia para la escalera de fuentes:** un documento puede estar en el **peldaño 1
 (óptimo)** y ser igualmente inauditable. La calidad del *formato* no garantiza la
@@ -197,6 +199,57 @@ GAD, no un hueco en QUIRA (Horizonte de Verdad · Principio de No-Inferencia).
 
 **Pendiente de decisión de Javo (Regla 1):** la fórmula que integra el ICEP al IOC **se sella en
 el Gold Master**, no en QUIRA. Aquí solo se produce el dato de nivel por documento.
+
+## 6-bis · CVI — Capacidad Verificativa del Instrumento
+
+> **NO es una capa nueva** (Subsidiariedad · Carta Art. 1.2): es la **segunda dimensión del
+> IOC**, hermana del ICEP. Vive aquí, junto a él, porque miden la misma cosa por dos caras.
+
+El ICEP responde *"¿pude leer el documento?"*. **OBS-020 demostró que eso no basta**: el POA
+de Montecristi es XLSX nativo —**nivel A, la mejor calificación posible del ICEP**— y aun
+así no permite verificar dónde se ejecutó el gasto. Un instrumento puede ser perfectamente
+legible y **completamente inauditable**.
+
+| | Pregunta | Naturaleza de la opacidad |
+|---|---|---|
+| **ICEP** | ¿el documento se puede **leer**? | de **formato** |
+| **CVI** | lo que se lee, ¿permite **demostrar** algo? | de **estructura de contenido** |
+
+> **El CVI no mide cumplimiento ni ejecución. Mide cuánto permite demostrar un instrumento.**
+
+### Por qué es un meta-indicador y no una métrica de dominio
+
+Se aplica con la **misma regla** a todo instrumento documental del Estado, y cada dominio lo
+instrumenta para el suyo (§0 de OBS-020: *quien es dueño del instrumento lo califica*):
+
+| Instrumento | Dominio | Qué mide el CVI |
+|---|---|---|
+| **POA** | d01 Planificación | % de fichas con territorio y componentes declarados |
+| **PAC** | d03 Contratación | % de contrataciones vinculables a un proyecto del POA |
+| **Presupuesto** | d02 Presupuesto | % de cédulas con desglose de inversión territorial |
+| **Rendición de Cuentas** | d09 | % de afirmaciones respaldadas por código de contratación o cédula |
+| **Portal / LOTAIP** | d07 Transparencia | *(lo cubre el ICEP — es la cara de formato)* |
+
+**Primera medición registrada:** POA Montecristi 2023-2026 → **territorio 1,1%** ·
+**componentes 29,8%** (`scripts/d08/diagnostico_ficha_poa.py`, dos métodos convergentes).
+
+### Frontera — lo que el CVI NO dice
+
+| ❌ No afirma | ✅ Certifica |
+|---|---|
+| *"el GAD planifica mal"* · *"el instrumento fue diseñado para no ser auditado"* | *"el instrumento **no habilita** la verificación documental de X"* |
+
+Atribuir intención de diseño exigiría contrastar el diseño normativo del instrumento con su
+implementación, o comparar varios municipios. **Hoy es hipótesis, no hallazgo.**
+
+**Pendiente de decisión de Javo (Regla 1):** cómo el CVI se integra al IOC **se sella en el
+Gold Master**, no en QUIRA. Aquí solo se produce el dato por instrumento.
+
+> **Por qué esto puede pesar más que el propio MRSPP:** el MRSPP mejora cómo QUIRA clasifica
+> una correspondencia. El CVI abre una pregunta que **nadie está haciendo en Ecuador**:
+> *¿cuánto permiten demostrar los instrumentos con que el Estado planifica?* Y si el patrón
+> se repite en un segundo GAD, deja de ser un hallazgo sobre Montecristi para convertirse en
+> evidencia sobre **el diseño nacional del instrumento** (Gate 7).
 
 ## 7 · Por qué esto sirve a la familia QUIRA
 

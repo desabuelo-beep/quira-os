@@ -7,15 +7,59 @@ authority:
 
 # OBS-020 · La ficha POA no habilita el monitoreo territorial del desarrollo
 
-**2026-07-29 · d08 · hallazgo de Javo (15 años en gestión pública de GAD) · medido por QUIRA**
+**2026-07-29 · hallazgo de Javo (15 años en gestión pública de GAD) · medido por QUIRA**
 
-> **El instrumento, no el algoritmo.** Tras tres rondas de corrección del cruce
+| | |
+|---|---|
+| **Dominio del OBJETO** | **d01 · Planificación Estratégica** — el POA es su instrumento |
+| **Dominio del DESCUBRIMIENTO** | d08 · Participación Ciudadana (cruce demanda↔POA) |
+| **Métrica que instrumenta** | **CVI** · Capacidad Verificativa del Instrumento |
+
+> **El instrumento, no el algoritmo.** Tras cuatro rondas de corrección del cruce
 > demanda↔POA —cada una destapando la siguiente— el límite dejó de ser el motor y pasó a
 > ser el documento. Esta observación **mide** lo que Javo formuló:
 >
 > *"El problema real es la forma metodológica de construcción de la ficha de POA. Es una
 > cuestión muy general que no aterriza las necesidades para un monitoreo y evaluación real
 > e integral de la planificación del desarrollo cantonal."*
+
+---
+
+## 0 · Anclaje de dominio *(corrección de Javo · 2026-07-29)*
+
+Javo preguntó: *"todo esto de planificación debe tratarse en su dom que es planificación
+estratégica, ¿o no?"* — **Sí. Estaba anclado en el dominio equivocado**, y el propio canon
+ya tenía la regla escrita.
+
+`TEORIA_EVIDENCIA_PUBLICA_VERIFICABLE.md` fija el precedente para d07:
+
+> *"d08 y los demás dominios **consumen** la evidencia; **d07 califica cómo fue publicada**."*
+
+La misma estructura, aplicada al instrumento en vez de al formato:
+
+| Dominio | Rol frente al POA |
+|---|---|
+| **d01 · Planificación** | **CALIFICA** cómo fue construido el instrumento — el POA es suyo |
+| **d07 · Transparencia** | CALIFICA cómo fue publicado (formato · ICEP) |
+| **d08 · Participación** | **CONSUME** el POA para verificar satisfacción de demandas |
+
+**Regla que se deriva y generaliza a los 12 dominios:**
+
+> **Quien es dueño del instrumento lo califica; quien lo usa solo lo consume.** Un dominio
+> que consume no puede emitir juicio sobre la calidad del instrumento ajeno — solo reportar
+> qué NO pudo verificar con él.
+
+Es **Subsidiariedad Normativa** (Carta Art. 1.2) aplicada a los dominios: la regla vive en
+el nivel más bajo que la contiene por completo. d08 no necesita saber por qué el POA es
+opaco; necesita saber que no puede verificar territorio con él.
+
+### Qué implica operativamente
+
+- El hallazgo **pertenece a d01** y debe reflejarse en `docs/pcd/PCD-D01_Planificacion.md`.
+  d01 está cerrado con PCD; esta observación es la vía canónica para incorporarle un
+  hallazgo posterior sin reabrir su curación (Regla 8).
+- d08 **conserva** el efecto: sus `sin_correlato` quedan explicados por causa externa.
+- La **medición** es transversal (CVI), no de d08 ni de d01: se aplica a todo instrumento.
 
 ---
 
@@ -75,8 +119,16 @@ formato**. Éste es de naturaleza distinta: la **opacidad de estructura de conte
 | **PDF Trampa** | formato | el documento existe pero es ilegible por máquina |
 | **Ficha POA Agregada** *(nuevo)* | **estructura** | el documento es **perfectamente legible** y aun así **no permite verificar nada**: mezcla partida · programa · actividad · unidad en una sola fila, y omite el territorio |
 
-> **La ficha no fue construida para ser leída, sino para ser aprobada.** Cumple el trámite
-> financiero; no habilita el monitoreo de la planificación del desarrollo.
+> **Frontera de la afirmación (corrección de la asesoría · 2026-07-29).** Decir que la ficha
+> *"fue construida para ser aprobada y no para ser monitoreada"* **atribuye intención
+> institucional** y NO está demostrado. Es el mismo error que este sistema corrige en el
+> filtro, cometido en la prosa. Lo que sí se demuestra es lo observable:
+>
+> *"La ficha POA observada no contiene información suficiente para reconstruir
+> territorialmente la ejecución mediante evidencia documental verificable."*
+>
+> Establecer el **por qué** exigiría contrastar el diseño normativo del instrumento con su
+> implementación, o comparar varios municipios. Es hipótesis, no hallazgo.
 
 Que sea legible es lo que lo hace más grave: ningún OCR, ningún modelo, ninguna mejora de
 ingesta lo resuelve. **Es el techo de la auditoría automatizada sobre planificación.**
