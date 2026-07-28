@@ -54,6 +54,8 @@ hace visible la genealogía completa para que no se repita.
 | 10 | **Un solo grafo, cinco verbos** | Marco Epistémico · mayo 2026 | `QUIRA_EPISTEMIC_FRAMEWORK_v1.0.md` | los productos son lecturas del mismo grafo | — | **activo** |
 | 11 | **Integridad procedimental** | emergente · julio 2026 | `MARCO_TEORICO_QUIRA.md` | dimensión que abren los Postulados I y II | matriz C01→C09 | **activo** |
 | 12 | **Espectro intersistémico** *(continuidad→restauración)* | asesoría · julio 2026 | `MARCO_TEORICO_QUIRA.md` | solo *fragmentación* tipificada hoy | estado del nodo C09 | **parcial** |
+| 13 | **MRSPP** — Modelo de Relaciones de Satisfacción de Política Pública | asesoría + academia · julio 2026 · sobre el caso Carnaval↔basura de Javo | `MARCO_TEORICO_QUIRA.md` §MRSPP | `scripts/d08/filtro_ontologico.py` (v3) | tipo de satisfacción por par demanda↔intervención | **activo** |
+| 14 | **Ficha POA Agregada** *(opacidad de estructura, no de formato)* | Javo · julio 2026 | `docs/observations/OBS-020` + `TEORIA_EVIDENCIA_PUBLICA_VERIFICABLE.md` | `scripts/d08/diagnostico_ficha_poa.py` | % de filas que declaran territorio y componentes | **activo** |
 ### Estados
 `activo` — declarado y operando · `parcial` — declarado, implementación incompleta ·
 `pendiente` — declarado, sin implementar · `implícito` — opera sin estar declarado *(a evitar)*
@@ -64,10 +66,23 @@ Los documentos archivados contienen más conceptos **sin declarar**. Se incorpor
 evaluando cada uno con la Regla 7 (anti-inflación): solo entra el que añade capacidad, elimina
 ambigüedad o reduce complejidad.
 
+> **✅ 2026-07-29 — el inventario funcionó, y es la primera vez.** Antes de nombrar el
+> MRSPP se consultó esta tabla (Regla de la §Inventario). Señalaba dos fuentes de prioridad
+> alta; ambas contenían la respuesta:
+>
+> - `QUIRA_TERRITORIAL_SEMANTICS` §IX **Regla T1** — *"parroquia → parroquia: PROHIBIDO
+>   (territorios distintos, sin base empírica)"* — resolvía el falso positivo
+>   *Las Paolas ↔ Las Pampas* sin inventar nada. **Estaba escrito desde mayo-2026.**
+> - `QUIRA_CAUSAL_MODEL` §III y §IX — gobierna la causalidad **norma→resultado** (cadena
+>   C1-C9), eje distinto del MRSPP (**demanda↔intervención**). No lo duplica: lo subordina.
+>
+> Las tres veces anteriores el canon tenía la respuesta y **no se consultó**. Esta vez sí.
+> Ése era exactamente el propósito de este documento.
+
 | Fuente archivada | Conceptos que contiene | Prioridad |
 |---|---|---|
-| `QUIRA_TERRITORIAL_SEMANTICS_v1.0.md` | jerarquía territorial canónica de 7 niveles | alta *(afecta GeoTwin y d10-d12)* |
-| `QUIRA_CAUSAL_MODEL_v1.0.md` | el modelo causal (24 KB) | alta *(fundamenta las cadenas)* |
+| `QUIRA_TERRITORIAL_SEMANTICS_v1.0.md` | jerarquía territorial de 7 niveles · **Reglas T1-T5** · anti-patrones | ✅ **navegado** *(T1 en producción · faltan T2-T5 y GeoTwin)* |
+| `QUIRA_CAUSAL_MODEL_v1.0.md` | cadena QNKC-002 · **Reglas C1-C7** · anti-patrones causales · tipología de conclusiones | ✅ **navegado** *(pendiente: conciliar CONFIRMADA·HIPÓTESIS·**SEÑAL** con el Horizonte de Verdad — hoy no existe el estado `señal`)* |
 | `QUIRA_THEORY_OF_CHANGE_v1.0.md` | teoría de cambio en 5 capas | media |
 | `QUIRA_THEORY_OF_VALUE_v1.0.md` | los cinco productos · unidad de valor *(parcialmente extraído)* | media |
 | tesis (3 borradores) | *"trayecto de vida"* ≈ Trazabilidad Biográfica · marco punitivo vs no punitivo | alta *(autoría)* |

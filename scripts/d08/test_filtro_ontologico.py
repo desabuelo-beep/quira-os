@@ -8,18 +8,24 @@ authority:
   type: TECNICA
 
 POR QUÉ EXISTE ESTE ARCHIVO
-El filtro se ha roto TRES veces por la misma clase de error: **metadato
-institucional leído como contenido sustantivo**.
+El cruce se ha roto CUATRO veces por la misma clase de error: **metadato de la
+ficha POA leído como contenido sustantivo**.
 
   1. Membretes  — "GOBIERNO AUTONOMO DESCENTRALIZADO..." emparejaba con todo.
   2. Carnaval   — un rubro de festejos capturaba demandas de infraestructura.
   3. REGLA 0    — la dirección ejecutora ("Obras Públicas") figuraba como rubro
                   compatible de tres familias, y todo proyecto suyo heredaba
                   afinidad temática: "INUNDACIONES" ↔ "Arriendo de parqueaderos".
+  4. Homógrafo  — "Parqueaderos" contiene "parque"; un estacionamiento no es
+                  un área verde. Coincidir letras no es reconocer un rubro.
 
-Cada vez se detectó por muestreo manual, tarde. Este archivo convierte esos
-hallazgos en verificación permanente: si alguien vuelve a meter el nombre de una
-unidad administrativa en una whitelist, esto falla antes de llegar al expediente.
+Que cada capa filtrada destape la siguiente NO es casualidad: es una propiedad
+del documento (OBS-020 · la ficha POA mezcla partida·programa·actividad·unidad
+en una sola fila). El motor se corrige aquí; el instrumento se mide allá.
+
+Este archivo convierte esos hallazgos en verificación permanente: si alguien
+vuelve a meter una unidad administrativa en una whitelist, falla antes de llegar
+al expediente.
 
 Uso:  python scripts/d08/test_filtro_ontologico.py
 Dylus Lab © 2026
@@ -69,20 +75,46 @@ CASOS: list[tuple[str, str, str]] = [
      "aguas servidas y alcantarillado",
      "no-nula"),
 
-    # ── Estructural = indirecta, nunca directa (evaluado ANTES que incompatibles)
+    # ── Estructural = complementaria, nunca directa (se evalúa ANTES que incompatibles)
     ("MEJORA DEL PARQUE",
      "Actualizacion del catastro predial urbano y rural del canton",
-     "indirecta"),
+     "complementaria"),
 
-    # ── CUESTIÓN ABIERTA PARA JAVO (2026-07-29) ───────────────────────────────
-    # ¿La siembra de árboles es instrumento FUNCIONAL de mitigación de riesgo en
-    # quebradas? Técnicamente la reforestación estabiliza taludes. Hoy el filtro
-    # dice `nula` de forma CONSERVADORA: no hay rubro técnico que lo acredite, y
-    # `sin_correlato` no afirma que no se atendió (Principio de No-Inferencia).
-    # Antes daba `funcional`, pero por el bug de REGLA 0 — no por conocimiento.
-    # Si Javo confirma la relación, se añade el rubro; no se infiere sin él.
+    # ── REGLA T1 · territorios distintos no se sustituyen ─────────────────────
+    # Javo (2026-07-29): Las Paolas es zona urbana de la parroquia Colorado;
+    # Las Pampas es comuna rural. El emparejador las cruzó por la palabra "parque".
+    # Canon territorial §IX: "parroquia → parroquia: PROHIBIDO".
+    ("MEJORA DEL PARQUE. (LAS PAOLAS)",
+     "Construccción parque las Pampas · Urbanización y Embellecimiento",
+     "nula"),
+    # …pero un proyecto SIN ancla territorial es cantonal: "cantón → parroquia: PERMITIDO"
+    ("MEJORA DEL PARQUE. (LAS PAOLAS)",
+     "Construcción y regeneración de parques del cantón",
+     "directa"),
+
+    # ── Homógrafos administrativos: coincidir letras ≠ reconocer un rubro ─────
+    # "parqueadero" contiene "parque" pero un estacionamiento no es un área verde.
+    ("MEJORA DEL PARQUE. (LAS PAOLAS)",
+     "Edificios, Locales y Residencias, Parqueaderos, Casilleros Judiciales (Arrendamientos)",
+     "nula"),
+    # "plantas de tratamiento" contiene "planta" pero no es arborización
+    ("CREAR AREAS VERDES EN EL BARRIO",
+     "Mantenimiento y operación de las Plantas de Tratamiento de aguas servidas",
+     "nula"),
+
+    # ── Satisfacción FUNCIONAL entre familias · exige declaración técnica ─────
+    # Criterio fijado por Javo: reforestación NO se presume mitigación de riesgo.
+    # Sin propósito declarado en la ficha → nula.
     ("DAR PROTECCION A LAS QUEBRADAS MITIGANDO RIESGO",
      "Adquisicion de plantas para siembra de arboles en sectores identificados",
+     "nula"),
+    # Con propósito declarado → funcional. La diferencia la hace el expediente.
+    ("DAR PROTECCION A LAS QUEBRADAS MITIGANDO RIESGO",
+     "Siembra de arboles para estabilizacion de taludes y control de erosion en quebradas",
+     "funcional"),
+    # Declaración de ornato NO acredita mitigación
+    ("DAR PROTECCION A LAS QUEBRADAS MITIGANDO RIESGO",
+     "Siembra de plantas ornamentales para embellecimiento de aceras",
      "nula"),
 ]
 
@@ -96,7 +128,7 @@ def _ok(tipo: str, esperado: str) -> bool:
 
 
 def main() -> int:
-    print("=== REGRESIÓN · Filtro Ontológico QUIRA v2 ===\n")
+    print("=== REGRESIÓN · Filtro Ontológico QUIRA v3 · MRSPP ===\n")
     fallos = 0
     for demanda, poa, esperado in CASOS:
         tipo, razon = fo.evaluar_relacion(demanda, poa)

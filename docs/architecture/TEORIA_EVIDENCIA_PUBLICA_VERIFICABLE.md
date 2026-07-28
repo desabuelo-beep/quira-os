@@ -109,6 +109,27 @@ eso, la práctica municipal produce patrones identificables:
 | **PDF Trampa** | el enlace lleva a un documento **impreso y escaneado a 150 DPI** | ilegible para máquina — no es dato abierto |
 | **Silos de información** | CPCCS en PDF propio · SERCOP en PDF · portal del GAD con **accesos rotos** — cada sistema encerrado en sí mismo | fragmentación intersistémica (Postulado II) |
 
+### El tercer patrón — opacidad de ESTRUCTURA, no de formato *(Javo · 2026-07-29 · OBS-020)*
+
+Los dos patrones anteriores son de **formato**: el documento no se puede leer. Existe un
+tercero, de naturaleza distinta y **más grave porque el documento sí se lee**:
+
+| Patrón | Naturaleza | En qué consiste |
+|---|---|---|
+| **Ficha POA Agregada** | **estructura del contenido** | el POA es un XLSX limpio, nivel A del ICEP — y aun así **no permite verificar nada**: mezcla `partida · programa · actividad · unidad` en una fila y **omite el territorio** |
+
+Medido en Montecristi (`scripts/d08/diagnostico_ficha_poa.py`, 1.027 filas, dos métodos
+independientes que convergen): **~1% de las filas declara dónde se ejecuta el gasto**;
+70% no declara componentes operativos.
+
+> **La ficha no fue construida para ser leída, sino para ser aprobada.** Cumple el trámite
+> financiero; no habilita el monitoreo de la planificación del desarrollo.
+
+**Consecuencia para la escalera de fuentes:** un documento puede estar en el **peldaño 1
+(óptimo)** y ser igualmente inauditable. La calidad del *formato* no garantiza la
+**habilitación del contenido** — son dos dimensiones distintas del ICEP, y ninguna mejora
+de ingesta, OCR o modelo resuelve la segunda.
+
 > **Precisión terminológica (Javo · 2026-07-27):** se dice **silos de información**, no
 > "archipiélago de formatos". El archipiélago describe la *forma*; el silo describe la
 > **conducta institucional**: cada sistema opera encerrado, sin obligación de dialogar. Es la

@@ -251,6 +251,74 @@ la forma completa y prevalece**.
 
 ---
 
+## MRSPP · Modelo de Relaciones de Satisfacción de Política Pública
+
+**Formulado julio-2026** sobre una observación de campo de Javo: *"¿y si SÍ existe relación
+entre recolección de basura y Carnaval? Es feriado, aumenta el trabajo de las EP de aseo,
+hay más gente."* La observación era correcta, y reveló que el motor operaba con una lógica
+binaria —existe relación / no existe— **cuando la política pública no es binaria**.
+
+> **Cambio de pregunta.** El motor deja de preguntar *"¿se parecen estos textos?"*, e incluso
+> *"¿qué política satisface esta demanda?"*, para preguntar:
+>
+> **¿Qué TIPO de satisfacción pública demuestra la EVIDENCIA DISPONIBLE entre esta demanda
+> ciudadana y esta intervención institucional?**
+
+Por eso QUIRA no responde *"sí corresponde"*, sino: *"la demanda presenta **satisfacción
+instrumental documentada** mediante componente operativo de limpieza **declarado en el
+expediente**"*. Es una afirmación de naturaleza distinta — y auditable.
+
+| Nivel | Relación | Evidencia que EXIGE |
+|---|---|---|
+| **D** | **Directa** | el proyecto ejecuta el objeto solicitado, **en el territorio solicitado** |
+| **F** | **Funcional** | el objeto es distinto pero produce el efecto buscado — **con propósito técnico declarado en la ficha** |
+| **I** | **Instrumental** | existe un **componente operativo explícito** declarado en el expediente |
+| **C** | **Complementaria** | contribuye indirectamente a las condiciones del entorno |
+| **N** | **Nula** | no existe evidencia verificable de relación |
+
+**Ningún nivel se presume; cada uno exige su evidencia.** Los dos ejemplos que fijan la regla:
+
+```
+reforestación                                 ⇏ mitigación de riesgo      → nula
+reforestación + "estabilización de taludes"   ⇒ mitigación de riesgo      → FUNCIONAL
+reforestación + "embellecimiento"             ⇒ ornato, no mitigación     → nula
+
+Carnaval                                      ⇏ recolección de basura     → nula
+Carnaval + "operativo especial de limpieza"   ⇒ atiende parcialmente      → INSTRUMENTAL
+```
+
+La diferencia entre **auditar** y **suponer** está en si el expediente lo dice.
+
+### Posición en la jerarquía — qué gobierna y qué no
+
+El MRSPP **no reemplaza ni duplica** el Modelo Causal (`QUIRA_CAUSAL_MODEL_v1.0.md`): operan
+en ejes distintos y el segundo lo subordina.
+
+| | Eje | Pregunta |
+|---|---|---|
+| **Modelo Causal** (QNKC-002, C1→C9) | **vertical** | ¿cómo se transmite la norma hasta el resultado territorial, y **dónde se rompe**? |
+| **MRSPP** | **transversal** | ¿qué tipo de satisfacción acredita la evidencia entre **demanda ciudadana** e **intervención**? |
+
+El MRSPP alimenta los nodos **C4 (proceso)** y **C5 (evidencia)** de esa cadena, y **hereda
+sus reglas**:
+
+- **Regla C2** — solo el estado `confirmado` activa inferencia causal formal. Las relaciones
+  en `pendiente_validacion` informan hipótesis, **nunca conclusiones**.
+- **Anti-patrón "Correlación como causalidad"** — es literalmente lo que hace un *embedding*.
+  El MRSPP es su corrección: **el embedding PROPONE, el modelo DECIDE**.
+- **Regla T1** (canon territorial §IX) — `parroquia → parroquia: PROHIBIDO`;
+  `cantón → parroquia: PERMITIDO`. Un proyecto sin ancla es de alcance cantonal.
+
+### Límite conocido *(no se oculta)*
+
+El MRSPP solo puede clasificar lo que el documento declara. **OBS-020** midió que el 99% de
+las filas del POA de Montecristi no registra territorio y el 70% no declara componentes
+operativos — por eso la satisfacción **instrumental da cero**. No es un vacío del modelo:
+es la **medida de la opacidad estructural del instrumento** (*Ficha POA Agregada*).
+
+**Implementación:** `scripts/d08/filtro_ontologico.py` (v3) · regresión en
+`scripts/d08/test_filtro_ontologico.py`.
+
 ## Narrativa científica del proyecto *(orden metodológico correcto · asesoría)*
 
 Para evitar la impresión de que la teoría se construyó *a posteriori* para justificar la

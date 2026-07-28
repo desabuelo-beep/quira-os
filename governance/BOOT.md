@@ -36,13 +36,13 @@ la Doctrina permanece. Hoja de Ruta = el mapa que no se mueve. BOOT §AHORA = el
 ## AHORA (estado vivo · historial → `governance/historico/BOOT_2026-06-17.md`)
 🧭 **ADR-031 RATIF:** cajón=MCD · GoldMaster=MCM · MCIP 5 motores (Index §1.A).
 ✅ **4 DOM cerrados con PCD: d01·d02·d03·d09.**
-📚 **ADR-038 BRN v2 RATIF:** nodo = REGLA, no artículo. **Corpus→CNO(Derecho)→RO(lógica)→SAT**. BRN CONSOLIDA, no interpreta. **Corpus v1.0 CONGELADO** (43 docs·9158 chunks). **BRN v2.1**: d01-03+08-09 CONFORMES·diff=0.
+📚 **ADR-038 BRN v2 RATIF:** nodo = REGLA, no artículo. **Corpus→CNO(Derecho)→RO(lógica)→SAT**. BRN CONSOLIDA, no interpreta. **Corpus v1.0 CONGELADO**. **BRN v2.1**: d01-03+08-09 CONFORMES·diff=0.
 🩺 **Canon curado por DOM (Regla 8), ICPI intacto. Gate real = `scripts/ci/check_health.py`: NO adivinar tamaños.**
 📚 **ADR-035/037:** Ley→BRN→GoldMaster(único motor)→QUIRA · IA propone, humano valida.
-🏛️ **d02·d03·d09·d08 migrados** (OBS-012/013/014 corregidos). **d08** = Marco→Sistema→**Asamblea (ciudadana AUTÓNOMA, no GAD)**→Consejo→mecanismos · CNO-VIII(8) · 3 dimensiones · **OBS-015/016/017** · frontera d08≠d09.
-🏛️ **GOBERNANZA v1.0:** `identity/`Constitución(21art) → `governance/`Carta(8art) → `marco_teorico/`(Postulados I·II·III + Inventario) → Canon → `registry/`(GENERADO). Derivación 100% · Freeze LEVANTADO (DEC-0010). DEC-0001..0011.
-🔬 **d08 Fase1+2:** 223 demandas × 1027 POA. **Filtro Ontológico v2** (5 niveles relacionales): el embedding PROPONE, el filtro DECIDE → 131 con correlato · 92 sin. **OBS-018** OCR corrupto → `TEORIA_EVIDENCIA_PUBLICA_VERIFICABLE.md` (ICEP→IOC). **OBS-019 REGLA 0**: quién ejecuta ≠ qué se hace (3ª vez de *metadato leído como contenido*) + test-invariante.
-⏭️ **SIGUIENTE d08:** 2ª validación experta (`preparar_validacion.py`) · 3 SAT a sellar en Excel (Cáscara·Opacidad·Brecha) · desenvolver 9 demandas narrativas · firmar CNO-VIII.
+🏛️ **d02·d03·d09·d08 migrados** (OBS-012/013/014 corregidos). **d08** = Marco→Sistema→**Asamblea (ciudadana AUTÓNOMA, no GAD)**→Consejo→mecanismos · CNO-VIII(8) · **OBS-015/016/017** · frontera d08≠d09.
+🏛️ **GOBERNANZA v1.0:** `identity/`Constitución(21art) → `governance/`Carta(8art) → `marco_teorico/`(Postulados+Inventario) → Canon → `registry/`(GENERADO). Derivación 100% · Freeze LEVANTADO. DEC-0001..0011.
+🔬 **d08 Fase1+2 · MRSPP v3** (directa·funcional·instrumental·complementaria·nula — el embedding PROPONE, el modelo DECIDE): 68·27·**0**·25 · 103 nulas. **OBS-019** REGLA 0: quién ejecuta ≠ qué se hace. **OBS-020 (Javo):** la ficha POA localiza solo el **1%** del gasto → *opacidad de ESTRUCTURA*, no de formato; `instrumental=0` ES el hallazgo. Regla T1 territorial ya estaba en el canon desde mayo — el Inventario funcionó.
+⏭️ **SIGUIENTE d08:** 2ª validación experta · SAT a sellar en Excel (Cáscara·Opacidad·Brecha·habilitación-ficha) · ¿neutralizar programa presupuestario? · firmar CNO-VIII.
 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 ratificado · detalle en el ADR)
 GAD = sujeto observado, NO cliente. 4 capas: A Núcleo (motor·grafos·conectores·índices) · B Operaciones (Dylus) · C Productos (los 6 de §LA TESIS · 1 solo motor) · D Portal `quiraintelligence.com` (radar 221 GAD).

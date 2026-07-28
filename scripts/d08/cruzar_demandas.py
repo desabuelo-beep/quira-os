@@ -145,7 +145,7 @@ def main() -> int:
     P = emb([x["texto"] for x in poa])
 
     import filtro_ontologico as fo
-    print("  Filtro Ontológico QUIRA v2 cargado — el embedding PROPONE, el filtro DECIDE\n")
+    print("  MRSPP v3 cargado — el embedding PROPONE, el modelo de satisfacción DECIDE\n")
 
     resultados = []
     descartes = Counter()
@@ -183,7 +183,7 @@ def main() -> int:
         elif j is not None and fuerte:
             estado, naturaleza = "pendiente_validacion", f"relación {tipo} verificada ontológicamente, similitud media — el analista confirma"
         elif j is not None:
-            # instrumental/indirecta son débiles por naturaleza: nunca ascienden solas
+            # instrumental/complementaria son débiles por naturaleza: nunca ascienden solas
             estado, naturaleza = "pendiente_validacion", f"relación {tipo} — débil por naturaleza, requiere validación experta"
         else:
             j = int(sims.argmax())                       # se conserva el más próximo solo como referencia
