@@ -8,7 +8,7 @@
     "sin_correlato": "el expediente no acredita correspondencia — NO afirma que no se atendió"
   },
   "_advertencia": "QUIRA NUNCA afirma 'la demanda fue satisfecha' como hecho. Propone; el humano valida (Constitución Art. 3).",
-  "generado": "2026-07-28",
+  "generado": "2026-07-29",
   "umbrales": {
     "fuerte": 0.62,
     "revisar": 0.52
@@ -16,14 +16,14 @@
   "total_demandas": 223,
   "registros_poa_contrastados": 1027,
   "por_estado_epistemico": {
-    "sin_correlato": 103,
-    "pendiente_validacion": 113,
-    "hipotesis": 7
+    "sin_correlato": 180,
+    "pendiente_validacion": 40,
+    "hipotesis": 3
   },
   "vinculantes_por_estado": {
-    "sin_correlato": 89,
-    "pendiente_validacion": 98,
-    "hipotesis": 4
+    "sin_correlato": 162,
+    "pendiente_validacion": 28,
+    "hipotesis": 1
   },
   "trazabilidad": [
     {
@@ -144,13 +144,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 28",
-      "similitud": 0.435,
-      "proyecto_poa_mas_proximo": "Mantenimiento de Terrazas · Urbanización y Embellecimiento 01.01.01.B300.360.2024.750104.002.13.09.02.A13.99.9 9.99.99.002 · Dirección de Obras Públicas.",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "similitud": 0.53,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'areas_verdes' (rubro afín)",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación directa verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "CREAR PARQUES EN NUESTRA COMUNIDAD • BAJO DE LA PALMA",
@@ -256,13 +256,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 28",
-      "similitud": 0.495,
-      "proyecto_poa_mas_proximo": "Transformadores , control automático para fuentes u otros de parques en el cantón Montecristi · Urbanización y Embellecimiento 01.01.01.B300.320.2024.750104.001.13.09.02.A13.99.9 9.99.99.002 · Dirección de Espacios Públicos Justicia y Vigilancia.",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "similitud": 0.559,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'areas_verdes' (rubro afín)",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación directa verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "ESCENARIO TOALLA CHICA",
@@ -284,13 +284,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 28",
-      "similitud": 0.581,
-      "proyecto_poa_mas_proximo": "Construccción parque las Pampas · Urbanización y Embellecimiento 01.01.01.B300.360.2024.750104.001.13.09.02.A13.99.9 9.99.99.002 · Dirección de Obras Públicas.",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "similitud": 0.624,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'areas_verdes' (rubro afín)",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación directa verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "UBICAR MAS AREAS VERDES EN LOSPARQUES, ASI COMO EN PUNTOS ESTRATEGICOS. BAJO DEL PECHICHE.",
@@ -312,13 +312,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 28",
-      "similitud": 0.495,
-      "proyecto_poa_mas_proximo": "Mantenimiento de Terrazas · Urbanización y Embellecimiento 01.01.01.B300.360.2024.750104.002.13.09.02.A13.99.9 9.99.99.002 · Dirección de Obras Públicas.",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "similitud": 0.58,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'areas_verdes' (rubro afín)",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación directa verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "DE MANERA PERIODICA- BAJO DE AFUERA",
@@ -354,13 +354,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 28",
-      "similitud": 0.545,
-      "proyecto_poa_mas_proximo": "Dotación De Materiales De Limpieza · Materiales de Aseo 01.01.01.B300.360.2024.730805.000.13.09.02.A13.99.9 9.99.99.002 · Dirección de Desarrollo, Acción e Inclusión Social, Comunitaria y Porductiva",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "similitud": 0.605,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "funcional: objeto distinto ('dotacion') que produce el efecto buscado por la demanda 'residuos'",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación funcional verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "LIMPIEZA DELPARQUE • TOALLA CHICA",
@@ -368,13 +368,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 28",
-      "similitud": 0.486,
-      "proyecto_poa_mas_proximo": "Dotación De Materiales De Limpieza · Materiales de Aseo 01.01.01.B300.360.2024.730805.000.13.09.02.A13.99.9 9.99.99.002 · Dirección de Desarrollo, Acción e Inclusión Social, Comunitaria y Porductiva",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "similitud": 0.55,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "funcional: objeto distinto ('dotacion') que produce el efecto buscado por la demanda 'residuos'",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación funcional verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "PARQUES Y CANCHA- BAJO DE AFUERA",
@@ -382,13 +382,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 28",
-      "similitud": 0.484,
-      "proyecto_poa_mas_proximo": "Crédito BDE -Proyecto de Espacio de Memoria Ciudadana implantado en la Casa Patrimonial Ex Escuela de Niñas Eloy Alfaro del Cantón Montecristi · 01.01.01.A200.210.2023.750104.004.13.09. 02.A13.99.99.99.99.302 · Crédito BDE -Proyecto de Espacio de Memoria Ciudadana implantado en la Casa Patrimonial Ex Escuela de Niñas Eloy Alfaro del Cantón Montecristi · Dirección de Cultura, Patrimonio y Desarroll",
-      "fuente_poa": "POA 2023 (XLSX oficial)",
+      "similitud": 0.604,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'areas_verdes' (rubro afín)",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación directa verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "QUE SE REALICE REFORESTACION EN COMUNAS· CARCEL SIMON BOLIVAR",
@@ -410,13 +410,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 28",
-      "similitud": 0.436,
-      "proyecto_poa_mas_proximo": "Adquisición y plantación de árboles forestales en varios sectores del cantón Montecristi · 01.01.01.B300.320.2023.731515.000.13.09. 02.A13.99.99.99.99.002 · 7.3.15.15.000 Plantas · Dirección de Gestión Ambiental",
-      "fuente_poa": "POA 2023 (XLSX oficial)",
+      "similitud": 0.594,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "funcional: objeto distinto ('adquisicion') que produce el efecto buscado por la demanda 'areas_verdes'",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación funcional verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "SUPERVISAR V QUE SE MITIGUE LA CONTAMINACION POR LA QUEMA DE LADRILLOS- CARCEL SIMON BOLIVAR",
@@ -438,13 +438,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 28",
-      "similitud": 0.442,
-      "proyecto_poa_mas_proximo": "Desarrollo de actividades que promueven la participación ciudadana en el cantón Montecristi · 01.01.01.A100.110.2023.530613.000. · Capacitación para la Ciu · Planificación Institucional",
-      "fuente_poa": "POA 2023 (XLSX oficial)",
+      "similitud": 0.6,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "complementaria: proyecto estructural: contribuye a las condiciones del entorno, no ejecuta el objeto",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación complementaria — débil por naturaleza, requiere validación experta"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "ORDENAR DE ACUERDO A LAS CALLES-EL SECAL",
@@ -452,13 +452,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 28",
-      "similitud": 0.423,
-      "proyecto_poa_mas_proximo": "Reconstrucción del Anillo Vial de los Sectores Tierra Santa y Santa Isabel del Cantón Montecristi · 01.01.01.B300.360.2023.750105.017.13.09. 02.A13.99.99.99.99.001 · Reconstrucción del Anillo Vial de los Sectores Tierra Santa y Santa Isabel del Cantón · Dirección de Obras Públicas.",
-      "fuente_poa": "POA 2023 (XLSX oficial)",
+      "similitud": 0.491,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'vialidad' (rubro afín)",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación directa verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "BRINDAR MAYOR SEGURIDAD EN LOS BARRIOS DE NUESTRA COMUNIDAD- BAJO DE LA PALMA",
@@ -467,12 +467,12 @@
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 28",
       "similitud": 0.611,
-      "proyecto_poa_mas_proximo": "Entrega De Souvenirs · Vestuario, Lencería, Prendas de Protección, Insumos y Accesorios para uniformes del personal de Protección,Vigilancia y Seguridad. 01.01.01.B300.360.2024.730802.000.13.09.02.A13.99.9 9.99.99.002 · Dirección de Desarrollo, Acción e Inclusión Social, Comunitaria y Porductiva",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "funcional: objeto distinto ('insumo') que produce el efecto buscado por la demanda 'seguridad'",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación funcional verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "CURSO DE CAPACITACION- LOS CRUCES",
@@ -481,12 +481,12 @@
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 28",
       "similitud": 0.624,
-      "proyecto_poa_mas_proximo": "Realizar Trabajos De Readecuación A Los Infocentros Y Centros De Educación · Insumos, Materiales y Suministros para Construcción, Electricidad, Plomería, Carpintería, Señalización Vial, Navegación, Contra Incendios y Placas 01.01.01.B300.360.2024.730811.000.13.09.02.A13.99.9 9.99.99.002 · Dirección de Desarrollo, Acción e Inclusión Social, Comunitaria y Porductiva",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "funcional: objeto distinto ('suministro') que produce el efecto buscado por la demanda 'social'",
-      "estado_epistemico": "hipotesis",
-      "naturaleza_del_juicio": "INFERENCIA ANALÍTICA — relación funcional con alta similitud; requiere validación experta"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "TIEMPO DE INVIERNO DESBORDE CEL RIO· CERRO COPETON",
@@ -522,13 +522,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 28",
-      "similitud": 0.455,
-      "proyecto_poa_mas_proximo": "Desarrollo de actividades que promueven la participación ciudadana en el cantón Montecristi · 01.01.01.A100.110.2023.530613.000. · Capacitación para la Ciu · Planificación Institucional",
-      "fuente_poa": "POA 2023 (XLSX oficial)",
+      "similitud": 0.541,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "complementaria: proyecto estructural: contribuye a las condiciones del entorno, no ejecuta el objeto",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación complementaria — débil por naturaleza, requiere validación experta"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "PRIORIZAR UNA ZONA DE ALBERGUE QUE SE CREE· CARCEL SIMON BOLIVAR",
@@ -550,13 +550,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 28",
-      "similitud": 0.454,
-      "proyecto_poa_mas_proximo": "Contraparte del Proyecto de Actualización catastral del suelo rural del cantón Montecristi (convenio MIDUVI)** · Consultoría, Asesoría e Investigación Especializada 01.01.01.B300.310.2024.730601.002.13.09.02.A13.99.9 9.99.99.002 · Dirección de Avalúos y Catastros",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "similitud": 0.57,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "complementaria: proyecto estructural: contribuye a las condiciones del entorno, no ejecuta el objeto",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación complementaria — débil por naturaleza, requiere validación experta"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "PROTECCION A LA CANCHA- LOS CRUCES",
@@ -578,13 +578,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 28",
-      "similitud": 0.533,
-      "proyecto_poa_mas_proximo": "Dotación De Materiales De Limpieza · Materiales de Aseo 01.01.01.B300.360.2024.730805.000.13.09.02.A13.99.9 9.99.99.002 · Dirección de Desarrollo, Acción e Inclusión Social, Comunitaria y Porductiva",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "similitud": 0.695,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "funcional: objeto distinto ('dotacion') que produce el efecto buscado por la demanda 'residuos'",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación funcional verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "ZONAS DE PROTECOON EN LA PLAYA SANJOSEY COMUNAS • PUEBLOS MONTUBIO DELCANTON MONTECRISTI",
@@ -606,13 +606,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 37",
-      "similitud": 0.575,
-      "proyecto_poa_mas_proximo": "Adquisición y plantación de árboles forestales en varios sectores del cantón Montecristi · 01.01.01.B300.320.2023.731515.000.13.09. 02.A13.99.99.99.99.002 · 7.3.15.15.000 Plantas · Dirección de Gestión Ambiental",
-      "fuente_poa": "POA 2023 (XLSX oficial)",
+      "similitud": 0.592,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "funcional: objeto distinto ('adquisicion') que produce el efecto buscado por la demanda 'areas_verdes'",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación funcional verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "ILUMINACJON AOECUAOA Y VIGILANCIA OE CONSUMODESUSTANCIASENPARQUES • MONTECRISTI CALLE ELOY ALFARO",
@@ -634,13 +634,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 37",
-      "similitud": 0.541,
-      "proyecto_poa_mas_proximo": "Mantenimiento de Terrazas · Urbanización y Embellecimiento 01.01.01.B300.360.2024.750104.002.13.09.02.A13.99.9 9.99.99.002 · Dirección de Obras Públicas.",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "similitud": 0.589,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'areas_verdes' (rubro afín)",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación directa verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "MEJORAMIENTO DELA CANCHA DELA CALLE PICHINCHA",
@@ -677,12 +677,12 @@
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 37",
       "similitud": 0.633,
-      "proyecto_poa_mas_proximo": "Construccción parque las Pampas · Urbanización y Embellecimiento 01.01.01.B300.360.2024.750104.001.13.09.02.A13.99.9 9.99.99.002 · Dirección de Obras Públicas.",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'areas_verdes' (rubro afín)",
-      "estado_epistemico": "hipotesis",
-      "naturaleza_del_juicio": "INFERENCIA ANALÍTICA — relación directa con alta similitud; requiere validación experta"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "CREAR ESPACIOS RECREATIVOS Y DONAR TERRENOS -BARRIOSAN JOSE",
@@ -705,12 +705,12 @@
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 37",
       "similitud": 0.558,
-      "proyecto_poa_mas_proximo": "Contraparte del Proyecto de Actualización catastral del suelo rural del cantón Montecristi (convenio MIDUVI)** · Consultoría, Asesoría e Investigación Especializada 01.01.01.B300.310.2024.730601.002.13.09.02.A13.99.9 9.99.99.002 · Dirección de Avalúos y Catastros",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "complementaria: proyecto estructural: contribuye a las condiciones del entorno, no ejecuta el objeto",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación complementaria — débil por naturaleza, requiere validación experta"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "MANTENIMIENTOSOEPARQUESOE LA PARROQUIA ANIBALSAN ANDRES",
@@ -760,13 +760,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 37",
-      "similitud": 0.589,
-      "proyecto_poa_mas_proximo": "Construccción parque las Pampas · Urbanización y Embellecimiento 01.01.01.B300.360.2024.750104.001.13.09.02.A13.99.9 9.99.99.002 · Dirección de Obras Públicas.",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "similitud": 0.638,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'areas_verdes' (rubro afín)",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación directa verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "NUESTRACOMUNIOAO NO CUENTA CONPARQUE PARAISOLOS ROBLES",
@@ -788,13 +788,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 37",
-      "similitud": 0.437,
-      "proyecto_poa_mas_proximo": "Mantenimiento de Terrazas · Urbanización y Embellecimiento 01.01.01.B300.360.2024.750104.002.13.09.02.A13.99.9 9.99.99.002 · Dirección de Obras Públicas.",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "similitud": 0.54,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'areas_verdes' (rubro afín)",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación directa verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "LOSNlflOSNOTIENEN UNPARQUE NECESITAMOS TODO NOHAY NADA - PARAISO LOSROBLES",
@@ -830,13 +830,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 37",
-      "similitud": 0.466,
-      "proyecto_poa_mas_proximo": "Mantenimiento de Terrazas · Urbanización y Embellecimiento 01.01.01.B300.360.2024.750104.002.13.09.02.A13.99.9 9.99.99.002 · Dirección de Obras Públicas.",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "similitud": 0.661,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'areas_verdes' (rubro afín)",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación directa verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "SISENECESITA EN LA CANCHA BRASIL",
@@ -929,12 +929,12 @@
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 37",
       "similitud": 0.587,
-      "proyecto_poa_mas_proximo": "Construccción parque las Pampas · Urbanización y Embellecimiento 01.01.01.B300.360.2024.750104.001.13.09.02.A13.99.9 9.99.99.002 · Dirección de Obras Públicas.",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'areas_verdes' (rubro afín)",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación directa verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "LIMPIEZA DEL PARAISOLOSROBLES",
@@ -1026,13 +1026,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 37",
-      "similitud": 0.545,
-      "proyecto_poa_mas_proximo": "Mantenimiento de Terrazas · Urbanización y Embellecimiento 01.01.01.B300.360.2024.750104.002.13.09.02.A13.99.9 9.99.99.002 · Dirección de Obras Públicas.",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "similitud": 0.62,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'areas_verdes' (rubro afín)",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación directa verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "ESMUY NECESARIO A TRAVES DELCUIDADO PERSONALO GRUPAL -PARAISO DELOS ROBLES",
@@ -1040,13 +1040,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 37",
-      "similitud": 0.517,
-      "proyecto_poa_mas_proximo": "Desarrollo de actividades que promueven la participación ciudadana en el cantón Montecristi · 01.01.01.A100.110.2023.530613.000. · Capacitación para la Ciu · Planificación Institucional",
-      "fuente_poa": "POA 2023 (XLSX oficial)",
+      "similitud": 0.53,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "complementaria: proyecto estructural: contribuye a las condiciones del entorno, no ejecuta el objeto",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación complementaria — débil por naturaleza, requiere validación experta"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "NOSAfECTA EL HUMO DE FABRICAS • PARAISO OELOSROBLES",
@@ -1082,13 +1082,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 37",
-      "similitud": 0.447,
-      "proyecto_poa_mas_proximo": "Adquisición y plantación de árboles forestales en varios sectores del cantón Montecristi · 01.01.01.B300.320.2023.731515.000.13.09. 02.A13.99.99.99.99.002 · 7.3.15.15.000 Plantas · Dirección de Gestión Ambiental",
-      "fuente_poa": "POA 2023 (XLSX oficial)",
+      "similitud": 0.516,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "funcional: objeto distinto ('adquisicion') que produce el efecto buscado por la demanda 'areas_verdes'",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación funcional verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "GENERAR ESPACIOSABIERTOSCON ACCIONESDE fORESTACION BARRIOSANJOSE",
@@ -1194,13 +1194,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 37",
-      "similitud": 0.538,
-      "proyecto_poa_mas_proximo": "Arrendamiento de Equipo Caminero para cantón Montecristi, a través de Feria Inclusiva · 01.01.01.B300.360.2023.730504.002.13.09. 02.A13.99.99.99.99.002 · Maquinarias y Equipos (Arrendamiento) Emergencia · Dirección de Obras Públicas.",
-      "fuente_poa": "POA 2023 (XLSX oficial)",
+      "similitud": 0.55,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'vialidad' (rubro afín)",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación directa verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "SEGURID,._O EN EL CANTON • CANTON MONTECRISTI",
@@ -1222,13 +1222,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 37",
-      "similitud": 0.607,
-      "proyecto_poa_mas_proximo": "INFRAESTRUCTURA, ENERGÍA Y MEDIO AMBIENTE · 7. Precautelar el uso responsable de los recursos naturales con un entorno ambientalmente sostenible. · 11. CIUDADES Y COMUNIDADES SOSTENIBLES · Asentamientos Humanos · Montecristi Hábitat digno y sostenible: Garantizar un territorio equitativo, saludable y provisto de los servicios básicos. · Mejorar la movilidad y conectividad del cantón · urbana, prom",
-      "fuente_poa": "POA 2025 (XLSX oficial)",
+      "similitud": 0.61,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'social' (rubro afín)",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación directa verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "PARROQUIAS URBANAS INVITAOAS: PARROQUIA GENERAL ELOY ALFARO YPARROQUIA !SABEL MUENTES.",
@@ -1236,13 +1236,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 45",
-      "similitud": 0.443,
-      "proyecto_poa_mas_proximo": "Desarrollo de actividades que promueven la participación ciudadana en el cantón Montecristi · 01.01.01.A100.110.2023.530613.000. · Capacitación para la Ciu · Planificación Institucional",
-      "fuente_poa": "POA 2023 (XLSX oficial)",
+      "similitud": 0.578,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "complementaria: proyecto estructural: contribuye a las condiciones del entorno, no ejecuta el objeto",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación complementaria — débil por naturaleza, requiere validación experta"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "REQUERIMOS AREAS VERDES, PARQUES Y PROTECCION (SAN ELOY PUNT04.6)",
@@ -1250,9 +1250,9 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 46",
-      "similitud": 0.49,
-      "proyecto_poa_mas_proximo": "Transformadores , control automático para fuentes u otros de parques en el cantón Montecristi · Urbanización y Embellecimiento 01.01.01.B300.320.2024.750104.001.13.09.02.A13.99.9 9.99.99.002 · Dirección de Espacios Públicos Justicia y Vigilancia.",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "similitud": 0.509,
+      "proyecto_poa_mas_proximo": "Crédito BDE -Proyecto de Espacio de Memoria Ciudadana implantado en la Casa Patrimonial Ex Escuela de Niñas Eloy Alfaro del Cantón Montecristi · 01.01.01.A200.210.2023.750104.004.13.09. 02.A13.99.99.99.99.302 · Crédito BDE -Proyecto de Espacio de Memoria Ciudadana implantado en la Casa Patrimonial Ex Escuela de Niñas Eloy Alfaro del Cantón Montecristi · Dirección de Cultura, Patrimonio y Desarroll",
+      "fuente_poa": "POA 2023 (XLSX oficial)",
       "sha_poa": "",
       "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'areas_verdes' (rubro afín)",
       "estado_epistemico": "pendiente_validacion",
@@ -1292,13 +1292,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 46",
-      "similitud": 0.552,
-      "proyecto_poa_mas_proximo": "Transformadores , control automático para fuentes u otros de parques en el cantón Montecristi · Urbanización y Embellecimiento 01.01.01.B300.320.2024.750104.001.13.09.02.A13.99.9 9.99.99.002 · Dirección de Espacios Públicos Justicia y Vigilancia.",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "similitud": 0.559,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'areas_verdes' (rubro afín)",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación directa verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "PROTECCION MANTENIMIENTO DE ARBORIZACION PlANTAS ORNAMENTALES{SANTA !SABELLA)",
@@ -1320,9 +1320,9 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 46",
-      "similitud": 0.483,
-      "proyecto_poa_mas_proximo": "Mantenimiento de Terrazas · Urbanización y Embellecimiento 01.01.01.B300.360.2024.750104.002.13.09.02.A13.99.9 9.99.99.002 · Dirección de Obras Públicas.",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "similitud": 0.482,
+      "proyecto_poa_mas_proximo": "Crédito BDE -Proyecto de Espacio de Memoria Ciudadana implantado en la Casa Patrimonial Ex Escuela de Niñas Eloy Alfaro del Cantón Montecristi · 01.01.01.A200.210.2023.750104.004.13.09. 02.A13.99.99.99.99.302 · Crédito BDE -Proyecto de Espacio de Memoria Ciudadana implantado en la Casa Patrimonial Ex Escuela de Niñas Eloy Alfaro del Cantón Montecristi · Dirección de Cultura, Patrimonio y Desarroll",
+      "fuente_poa": "POA 2023 (XLSX oficial)",
       "sha_poa": "",
       "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'areas_verdes' (rubro afín)",
       "estado_epistemico": "pendiente_validacion",
@@ -1334,13 +1334,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 46",
-      "similitud": 0.475,
-      "proyecto_poa_mas_proximo": "Mantenimiento de Terrazas · Urbanización y Embellecimiento 01.01.01.B300.360.2024.750104.002.13.09.02.A13.99.9 9.99.99.002 · Dirección de Obras Públicas.",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "similitud": 0.571,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'areas_verdes' (rubro afín)",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación directa verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "PROTECCION MANTENIMIENTO DE ARBORIZACION PLANTAS ORNAMENTALES",
@@ -1390,13 +1390,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 46",
-      "similitud": 0.538,
-      "proyecto_poa_mas_proximo": "Transformadores , control automático para fuentes u otros de parques en el cantón Montecristi · Urbanización y Embellecimiento 01.01.01.B300.320.2024.750104.001.13.09.02.A13.99.9 9.99.99.002 · Dirección de Espacios Públicos Justicia y Vigilancia.",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "similitud": 0.592,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'areas_verdes' (rubro afín)",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación directa verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "CANCHA Y PARQUE SITUAOO EN MONTERREY (MONTERREY)",
@@ -1418,13 +1418,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 46",
-      "similitud": 0.615,
-      "proyecto_poa_mas_proximo": "Transformadores , control automático para fuentes u otros de parques en el cantón Montecristi · Urbanización y Embellecimiento 01.01.01.B300.320.2024.750104.001.13.09.02.A13.99.9 9.99.99.002 · Dirección de Espacios Públicos Justicia y Vigilancia.",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "similitud": 0.619,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'areas_verdes' (rubro afín)",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación directa verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "REQUERIMIENTO OE PARQUES .4.6 (SAN ELOY PUNTO 4.6)",
@@ -1432,8 +1432,8 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 46",
-      "similitud": 0.478,
-      "proyecto_poa_mas_proximo": "Renovación y optimizaicón del Parque Tecnológico · 01.01.01.A100.110.2023.731407.000.13.09. 02.A13.99.99.99.99.001 · 7.3.14.07.000.001 Equipos, Sistemas y Paquetes Informáticos · Dirección Administrativa",
+      "similitud": 0.437,
+      "proyecto_poa_mas_proximo": "Crédito BDE -Proyecto de Espacio de Memoria Ciudadana implantado en la Casa Patrimonial Ex Escuela de Niñas Eloy Alfaro del Cantón Montecristi · 01.01.01.A200.210.2023.750104.004.13.09. 02.A13.99.99.99.99.302 · Crédito BDE -Proyecto de Espacio de Memoria Ciudadana implantado en la Casa Patrimonial Ex Escuela de Niñas Eloy Alfaro del Cantón Montecristi · Dirección de Cultura, Patrimonio y Desarroll",
       "fuente_poa": "POA 2023 (XLSX oficial)",
       "sha_poa": "",
       "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'areas_verdes' (rubro afín)",
@@ -1446,13 +1446,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 46",
-      "similitud": 0.499,
-      "proyecto_poa_mas_proximo": "",
-      "fuente_poa": "",
+      "similitud": 0.473,
+      "proyecto_poa_mas_proximo": "Crédito BDE -Proyecto de Espacio de Memoria Ciudadana implantado en la Casa Patrimonial Ex Escuela de Niñas Eloy Alfaro del Cantón Montecristi · 01.01.01.A200.210.2023.750104.004.13.09. 02.A13.99.99.99.99.302 · Crédito BDE -Proyecto de Espacio de Memoria Ciudadana implantado en la Casa Patrimonial Ex Escuela de Niñas Eloy Alfaro del Cantón Montecristi · Dirección de Cultura, Patrimonio y Desarroll",
+      "fuente_poa": "POA 2023 (XLSX oficial)",
       "sha_poa": "",
-      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
-      "estado_epistemico": "sin_correlato",
-      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
+      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'areas_verdes' (rubro afín)",
+      "estado_epistemico": "pendiente_validacion",
+      "naturaleza_del_juicio": "relación directa verificada ontológicamente, similitud media — el analista confirma"
     },
     {
       "demanda": "SE REQUIERE ZONAS OE PARQUES NO EXISTEN PARQUES (TIERRA SANTA}",
@@ -1502,13 +1502,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 46",
-      "similitud": 0.43,
-      "proyecto_poa_mas_proximo": "Crédito BDE -Proyecto de Espacio de Memoria Ciudadana implantado en la Casa Patrimonial Ex Escuela de Niñas Eloy Alfaro del Cantón Montecristi · 01.01.01.A200.210.2023.750104.004.13.09. 02.A13.99.99.99.99.302 · Crédito BDE -Proyecto de Espacio de Memoria Ciudadana implantado en la Casa Patrimonial Ex Escuela de Niñas Eloy Alfaro del Cantón Montecristi · Dirección de Cultura, Patrimonio y Desarroll",
-      "fuente_poa": "POA 2023 (XLSX oficial)",
+      "similitud": 0.558,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'areas_verdes' (rubro afín)",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación directa verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "ESTAN EN ABANDONO (LAS JACUATAS 2)",
@@ -1572,13 +1572,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 46",
-      "similitud": 0.459,
-      "proyecto_poa_mas_proximo": "Dotación De Materiales De Limpieza · Materiales de Aseo 01.01.01.B300.360.2024.730805.000.13.09.02.A13.99.9 9.99.99.002 · Dirección de Desarrollo, Acción e Inclusión Social, Comunitaria y Porductiva",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "similitud": 0.519,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "funcional: objeto distinto ('dotacion') que produce el efecto buscado por la demanda 'residuos'",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación funcional verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "NO TENEMOS AREAS VERDES {SAN ELOY PUNTO 4.6)",
@@ -1614,13 +1614,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 55",
-      "similitud": 0.517,
-      "proyecto_poa_mas_proximo": "Mantenimiento de Terrazas · Urbanización y Embellecimiento 01.01.01.B300.360.2024.750104.002.13.09.02.A13.99.9 9.99.99.002 · Dirección de Obras Públicas.",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "similitud": 0.577,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'areas_verdes' (rubro afín)",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación directa verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "MANTENIMIENTOS DE PARQUE EN LA CABECERA CANTONAL Y COMUNIDADES- LA PILA",
@@ -1628,13 +1628,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 55",
-      "similitud": 0.529,
-      "proyecto_poa_mas_proximo": "Mantenimiento de Terrazas · Urbanización y Embellecimiento 01.01.01.B300.360.2024.750104.002.13.09.02.A13.99.9 9.99.99.002 · Dirección de Obras Públicas.",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "similitud": 0.629,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'areas_verdes' (rubro afín)",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación directa verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "FORMACION DEL PARQUE - COLA VIRGEN DELPILAS",
@@ -1642,13 +1642,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 55",
-      "similitud": 0.582,
-      "proyecto_poa_mas_proximo": "Construccción parque las Pampas · Urbanización y Embellecimiento 01.01.01.B300.360.2024.750104.001.13.09.02.A13.99.9 9.99.99.002 · Dirección de Obras Públicas.",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "similitud": 0.626,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'areas_verdes' (rubro afín)",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación directa verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "REPARACION DEPARQUE - LASLAGUNAS",
@@ -1656,13 +1656,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 55",
-      "similitud": 0.422,
-      "proyecto_poa_mas_proximo": "Mantenimiento de Terrazas · Urbanización y Embellecimiento 01.01.01.B300.360.2024.750104.002.13.09.02.A13.99.9 9.99.99.002 · Dirección de Obras Públicas.",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "similitud": 0.576,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'areas_verdes' (rubro afín)",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación directa verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "NEGOCIO ENLOS PARQUES • LA PILA",
@@ -1670,13 +1670,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 55",
-      "similitud": 0.514,
-      "proyecto_poa_mas_proximo": "Mantenimiento de Terrazas · Urbanización y Embellecimiento 01.01.01.B300.360.2024.750104.002.13.09.02.A13.99.9 9.99.99.002 · Dirección de Obras Públicas.",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "similitud": 0.585,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'areas_verdes' (rubro afín)",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación directa verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "AREAS VERDES Y NUEVOS SEMBRIOS LA PILA",
@@ -1712,13 +1712,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 55",
-      "similitud": 0.526,
-      "proyecto_poa_mas_proximo": "Mantenimiento de Terrazas · Urbanización y Embellecimiento 01.01.01.B300.360.2024.750104.002.13.09.02.A13.99.9 9.99.99.002 · Dirección de Obras Públicas.",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "similitud": 0.589,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'areas_verdes' (rubro afín)",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación directa verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "MANTENIMIENTO DE AREAS VERDES COMO CONSERVACION DE BOSQUE - LAS LAGUNAS",
@@ -1726,13 +1726,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 55",
-      "similitud": 0.506,
-      "proyecto_poa_mas_proximo": "Mantenimiento de Terrazas · Urbanización y Embellecimiento 01.01.01.B300.360.2024.750104.002.13.09.02.A13.99.9 9.99.99.002 · Dirección de Obras Públicas.",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "similitud": 0.631,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'areas_verdes' (rubro afín)",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación directa verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "SANCIONES POR DEFORESTACION SIN PLANIFICACION LA PILA",
@@ -1768,13 +1768,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 55",
-      "similitud": 0.455,
-      "proyecto_poa_mas_proximo": "Desarrollo de actividades que promueven la participación ciudadana en el cantón Montecristi · 01.01.01.A100.110.2023.530613.000. · Capacitación para la Ciu · Planificación Institucional",
-      "fuente_poa": "POA 2023 (XLSX oficial)",
+      "similitud": 0.605,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "complementaria: proyecto estructural: contribuye a las condiciones del entorno, no ejecuta el objeto",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación complementaria — débil por naturaleza, requiere validación experta"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "INTERVENCION EN ESTERO SECO LA PILA",
@@ -1838,13 +1838,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 55",
-      "similitud": 0.561,
-      "proyecto_poa_mas_proximo": "Levantamiento De Información Social A El Territorio Montecristense · Alimentos y Bebidas 01.01.01.B300.360.2024.730801.002.13.09.02.A13.99.9 9.99.99.002 · Dirección de Desarrollo, Acción e Inclusión Social, Comunitaria y Porductiva",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "similitud": 0.628,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'social' (rubro afín)",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación directa verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "CAPAOTACION A LA POBLACION ENCASO DEDESASTRES NATURALES-LA PILA",
@@ -1866,13 +1866,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 55",
-      "similitud": 0.434,
-      "proyecto_poa_mas_proximo": "Contraparte del Proyecto de Actualización catastral del suelo rural del cantón Montecristi (convenio MIDUVI)** · Consultoría, Asesoría e Investigación Especializada 01.01.01.B300.310.2024.730601.002.13.09.02.A13.99.9 9.99.99.002 · Dirección de Avalúos y Catastros",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "similitud": 0.536,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "complementaria: proyecto estructural: contribuye a las condiciones del entorno, no ejecuta el objeto",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación complementaria — débil por naturaleza, requiere validación experta"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "CREAR ESPACIOS ESTRATEGICOS - LA PILA",
@@ -1936,13 +1936,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 55",
-      "similitud": 0.527,
-      "proyecto_poa_mas_proximo": "Dotación De Materiales De Limpieza · Materiales de Aseo 01.01.01.B300.360.2024.730805.000.13.09.02.A13.99.9 9.99.99.002 · Dirección de Desarrollo, Acción e Inclusión Social, Comunitaria y Porductiva",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "similitud": 0.58,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "funcional: objeto distinto ('dotacion') que produce el efecto buscado por la demanda 'residuos'",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación funcional verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "SE NECESITA QUE SE REALICE RECOLECCION DEBASURA NO HAY EN COLA VIRGEN DELPILAR",
@@ -2020,13 +2020,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 62",
-      "similitud": 0.549,
-      "proyecto_poa_mas_proximo": "Mantenimiento de Terrazas · Urbanización y Embellecimiento 01.01.01.B300.360.2024.750104.002.13.09.02.A13.99.9 9.99.99.002 · Dirección de Obras Públicas.",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "similitud": 0.603,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'areas_verdes' (rubro afín)",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación directa verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "NUEVOS PARQUES PRIORIDADES (JUNTA CfVICA COLORADO)",
@@ -2034,13 +2034,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 62",
-      "similitud": 0.592,
-      "proyecto_poa_mas_proximo": "Adquisición y plantación de árboles forestales en varios sectores del cantón Montecristi · 01.01.01.B300.320.2023.731515.000.13.09. 02.A13.99.99.99.99.002 · 7.3.15.15.000 Plantas · Dirección de Gestión Ambiental",
-      "fuente_poa": "POA 2023 (XLSX oficial)",
+      "similitud": 0.6,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "funcional: objeto distinto ('adquisicion') que produce el efecto buscado por la demanda 'areas_verdes'",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación funcional verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "SE LO NECESITA PARA NlflOS, PARA ADULTOS MAYORES, URGENTE ES UN DERECHO. (PAOLA 2)",
@@ -2062,13 +2062,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 62",
-      "similitud": 0.451,
-      "proyecto_poa_mas_proximo": "Adquisición y plantación de árboles forestales en varios sectores del cantón Montecristi · 01.01.01.B300.320.2023.731515.000.13.09. 02.A13.99.99.99.99.002 · 7.3.15.15.000 Plantas · Dirección de Gestión Ambiental",
-      "fuente_poa": "POA 2023 (XLSX oficial)",
+      "similitud": 0.592,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "funcional: objeto distinto ('adquisicion') que produce el efecto buscado por la demanda 'areas_verdes'",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación funcional verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "POQUITO (COLORADO)",
@@ -2091,12 +2091,12 @@
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 62",
       "similitud": 0.453,
-      "proyecto_poa_mas_proximo": "Construccción parque las Pampas · Urbanización y Embellecimiento 01.01.01.B300.360.2024.750104.001.13.09.02.A13.99.9 9.99.99.002 · Dirección de Obras Públicas.",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'areas_verdes' (rubro afín)",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación directa verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "NO HAY PARQUE (SECTOR MARZO DELGADO)",
@@ -2105,12 +2105,12 @@
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 62",
       "similitud": 0.434,
-      "proyecto_poa_mas_proximo": "Construccción parque las Pampas · Urbanización y Embellecimiento 01.01.01.B300.360.2024.750104.001.13.09.02.A13.99.9 9.99.99.002 · Dirección de Obras Públicas.",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'areas_verdes' (rubro afín)",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación directa verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "PARQUE DE COLORADO, MAS PLANTAS, FUNCION DE PILETA E ILUMINACl6N (COLORADO)",
@@ -2119,12 +2119,12 @@
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 62",
       "similitud": 0.577,
-      "proyecto_poa_mas_proximo": "Adquisición y plantación de árboles forestales en varios sectores del cantón Montecristi · 01.01.01.B300.320.2023.731515.000.13.09. 02.A13.99.99.99.99.002 · 7.3.15.15.000 Plantas · Dirección de Gestión Ambiental",
-      "fuente_poa": "POA 2023 (XLSX oficial)",
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "funcional: objeto distinto ('adquisicion') que produce el efecto buscado por la demanda 'areas_verdes'",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación funcional verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "NECESITAMOS AREAS VERDES (SENDERO AZUL))",
@@ -2147,12 +2147,12 @@
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 62",
       "similitud": 0.554,
-      "proyecto_poa_mas_proximo": "Adquisición y plantación de árboles forestales en varios sectores del cantón Montecristi · 01.01.01.B300.320.2023.731515.000.13.09. 02.A13.99.99.99.99.002 · 7.3.15.15.000 Plantas · Dirección de Gestión Ambiental",
-      "fuente_poa": "POA 2023 (XLSX oficial)",
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "funcional: objeto distinto ('adquisicion') que produce el efecto buscado por la demanda 'areas_verdes'",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación funcional verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "QUE SE MEJORE (JUNTA CfVICA COLORADO)",
@@ -2174,13 +2174,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 62",
-      "similitud": 0.472,
-      "proyecto_poa_mas_proximo": "Desarrollo de actividades que promueven la participación ciudadana en el cantón Montecristi · 01.01.01.A100.110.2023.530613.000. · Capacitación para la Ciu · Planificación Institucional",
-      "fuente_poa": "POA 2023 (XLSX oficial)",
+      "similitud": 0.587,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "complementaria: proyecto estructural: contribuye a las condiciones del entorno, no ejecuta el objeto",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación complementaria — débil por naturaleza, requiere validación experta"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "PUNTO PARA ALBERGUES (JUNTA CIVICA COLORADO)",
@@ -2244,13 +2244,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 62",
-      "similitud": 0.447,
-      "proyecto_poa_mas_proximo": "Dotación De Materiales De Limpieza · Materiales de Aseo 01.01.01.B300.360.2024.730805.000.13.09.02.A13.99.9 9.99.99.002 · Dirección de Desarrollo, Acción e Inclusión Social, Comunitaria y Porductiva",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "similitud": 0.535,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "funcional: objeto distinto ('dotacion') que produce el efecto buscado por la demanda 'residuos'",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación funcional verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "RECOLECCION DE BASURA DIARIA EN COLORADO (COLORADO)",
@@ -2258,13 +2258,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 62",
-      "similitud": 0.424,
-      "proyecto_poa_mas_proximo": "Dotación De Materiales De Limpieza · Materiales de Aseo 01.01.01.B300.360.2024.730805.000.13.09.02.A13.99.9 9.99.99.002 · Dirección de Desarrollo, Acción e Inclusión Social, Comunitaria y Porductiva",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "similitud": 0.518,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "funcional: objeto distinto ('dotacion') que produce el efecto buscado por la demanda 'residuos'",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación funcional verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "QUE SE DEN CHARLAS A LA COMUNIDAD (BARRIO SANTA LUCIA)",
@@ -2272,13 +2272,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 62",
-      "similitud": 0.432,
-      "proyecto_poa_mas_proximo": "Desarrollo de actividades que promueven la participación ciudadana en el cantón Montecristi · 01.01.01.A100.110.2023.530613.000. · Capacitación para la Ciu · Planificación Institucional",
-      "fuente_poa": "POA 2023 (XLSX oficial)",
+      "similitud": 0.593,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "complementaria: proyecto estructural: contribuye a las condiciones del entorno, no ejecuta el objeto",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación complementaria — débil por naturaleza, requiere validación experta"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "AGUAS RESIDUALES EN QUEBRADA CONTAMNA El AMBIENTE (EL Arroyo)",
@@ -2314,13 +2314,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 67",
-      "similitud": 0.497,
-      "proyecto_poa_mas_proximo": "Crédito BDE -Proyecto de Espacio de Memoria Ciudadana implantado en la Casa Patrimonial Ex Escuela de Niñas Eloy Alfaro del Cantón Montecristi · 01.01.01.A200.210.2023.750104.004.13.09. 02.A13.99.99.99.99.302 · Crédito BDE -Proyecto de Espacio de Memoria Ciudadana implantado en la Casa Patrimonial Ex Escuela de Niñas Eloy Alfaro del Cantón Montecristi · Dirección de Cultura, Patrimonio y Desarroll",
-      "fuente_poa": "POA 2023 (XLSX oficial)",
+      "similitud": 0.54,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'areas_verdes' (rubro afín)",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación directa verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "CREACl6N DE NUEVO PARQUE (BARRIO SANTA ANA)",
@@ -2329,12 +2329,12 @@
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 67",
       "similitud": 0.543,
-      "proyecto_poa_mas_proximo": "Transformadores , control automático para fuentes u otros de parques en el cantón Montecristi · Urbanización y Embellecimiento 01.01.01.B300.320.2024.750104.001.13.09.02.A13.99.9 9.99.99.002 · Dirección de Espacios Públicos Justicia y Vigilancia.",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'areas_verdes' (rubro afín)",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación directa verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "PARQUE PORQUE JAMAS NOSDEJARON AREAS VERDES (SECTOR 6 DE MARZO)",
@@ -2342,13 +2342,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 67",
-      "similitud": 0.427,
-      "proyecto_poa_mas_proximo": "Construccción parque las Pampas · Urbanización y Embellecimiento 01.01.01.B300.360.2024.750104.001.13.09.02.A13.99.9 9.99.99.002 · Dirección de Obras Públicas.",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "similitud": 0.631,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'areas_verdes' (rubro afín)",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación directa verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "DARLE VIDA A LA CANCHA DETRAS DEL UPC (SECTOR BRISA$ DEL SUR)",
@@ -2370,13 +2370,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 67",
-      "similitud": 0.451,
-      "proyecto_poa_mas_proximo": "Arrendamiento de Equipo Caminero para cantón Montecristi, a través de Feria Inclusiva · 01.01.01.B300.360.2023.730504.002.13.09. 02.A13.99.99.99.99.002 · Maquinarias y Equipos (Arrendamiento) Emergencia · Dirección de Obras Públicas.",
-      "fuente_poa": "POA 2023 (XLSX oficial)",
+      "similitud": 0.592,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'vialidad' (rubro afín)",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación directa verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "TENEMOS AREAS PARA REALIZAR EN CENTRO DE LEONIDAS PROANO (COMITE DE SERVICIO SOCIAL I i=n,11nAC DD� ,.,�,",
@@ -2384,13 +2384,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 67",
-      "similitud": 0.527,
-      "proyecto_poa_mas_proximo": "Desarrollo de actividades que promueven la participación ciudadana en el cantón Montecristi · 01.01.01.A100.110.2023.530613.000. · Capacitación para la Ciu · Planificación Institucional",
-      "fuente_poa": "POA 2023 (XLSX oficial)",
+      "similitud": 0.642,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "complementaria: proyecto estructural: contribuye a las condiciones del entorno, no ejecuta el objeto",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación complementaria — débil por naturaleza, requiere validación experta"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "HAY ZONAS QUE PUEDEN SER PARQUES EN LA CIUOAOELA TOHALLY",
@@ -2412,13 +2412,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 67",
-      "similitud": 0.469,
-      "proyecto_poa_mas_proximo": "Desarrollo de actividades que promueven la participación ciudadana en el cantón Montecristi · 01.01.01.A100.110.2023.530613.000. · Capacitación para la Ciu · Planificación Institucional",
-      "fuente_poa": "POA 2023 (XLSX oficial)",
+      "similitud": 0.506,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "complementaria: proyecto estructural: contribuye a las condiciones del entorno, no ejecuta el objeto",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación complementaria — débil por naturaleza, requiere validación experta"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "NECESITAMOS PARQUE (SECTOR NUEVO MONTECRISTI)",
@@ -2427,12 +2427,12 @@
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 67",
       "similitud": 0.674,
-      "proyecto_poa_mas_proximo": "Construccción parque las Pampas · Urbanización y Embellecimiento 01.01.01.B300.360.2024.750104.001.13.09.02.A13.99.9 9.99.99.002 · Dirección de Obras Públicas.",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'areas_verdes' (rubro afín)",
-      "estado_epistemico": "hipotesis",
-      "naturaleza_del_juicio": "INFERENCIA ANALÍTICA — relación directa con alta similitud; requiere validación experta"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "CREAR NUEVO PARQUE (BARRIO SANTA ANA) (SECTOR NUEVO MONTECRISTI)",
@@ -2440,13 +2440,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 67",
-      "similitud": 0.54,
-      "proyecto_poa_mas_proximo": "Transformadores , control automático para fuentes u otros de parques en el cantón Montecristi · Urbanización y Embellecimiento 01.01.01.B300.320.2024.750104.001.13.09.02.A13.99.9 9.99.99.002 · Dirección de Espacios Públicos Justicia y Vigilancia.",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "similitud": 0.571,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'areas_verdes' (rubro afín)",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación directa verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "ARBORIZAR LA COMUNIOAO (BARRIO SANTA ANA)",
@@ -2454,13 +2454,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 67",
-      "similitud": 0.433,
-      "proyecto_poa_mas_proximo": "Mantenimiento de Terrazas · Urbanización y Embellecimiento 01.01.01.B300.360.2024.750104.002.13.09.02.A13.99.9 9.99.99.002 · Dirección de Obras Públicas.",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "similitud": 0.658,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'areas_verdes' (rubro afín)",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación directa verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "ZONA$ EN MAL ESTAOO (SECTOR 6 DE MARZO)",
@@ -2524,13 +2524,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 67",
-      "similitud": 0.534,
-      "proyecto_poa_mas_proximo": "Desarrollo de actividades que promueven la participación ciudadana en el cantón Montecristi · 01.01.01.A100.110.2023.530613.000. · Capacitación para la Ciu · Planificación Institucional",
-      "fuente_poa": "POA 2023 (XLSX oficial)",
+      "similitud": 0.578,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "complementaria: proyecto estructural: contribuye a las condiciones del entorno, no ejecuta el objeto",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación complementaria — débil por naturaleza, requiere validación experta"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "ELIMINACION DE LETRINAS POZO SEPTICO (BARRIO SANTA ANA)",
@@ -2538,13 +2538,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 67",
-      "similitud": 0.442,
-      "proyecto_poa_mas_proximo": "Mantenimiento y Repotenciación de Plantas de Tratamiento de Agua Potable Los Mangos y Cerro Guayabal del Cantón Montecristi · 01.01.01.B300.330.2023.750501.004.13.09. 02.A13.99.99.99.99.002 · Mantenimiento y Repotenciación de Plantas de Tratamiento de Agua Potable Los Mangos y Cerro Guayabal del Cantón Montecristi · Dirección de Agua Potable y Alcantarillado Sanitario.",
-      "fuente_poa": "POA 2023 (XLSX oficial)",
+      "similitud": 0.519,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'agua' (rubro afín)",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación directa verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "ELIMINACION DE LETRINAS POZO SEPTICO(BARRIO SANTA ANA)(SECTOR NUEVO MONTECRISTI)",
@@ -2552,13 +2552,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 67",
-      "similitud": 0.477,
-      "proyecto_poa_mas_proximo": "Construcción de Colectores. Hormigon Armado y redes terciarias de Alcantarillado Sanitario para la recolección y descargas de aguas residuales del cantón Montecristi · 01.01.01.B300.330.2023.750103.001.13.09. 02.A13.99.99.99.99.001 · Construcción de Colectores. Hormigon Armado y redes terciarias de Alcantarillado Sanitario para la recolección y · Dirección de Agua Potable y Alcantarillado Sanitari",
-      "fuente_poa": "POA 2023 (XLSX oficial)",
+      "similitud": 0.523,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'agua' (rubro afín)",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación directa verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "SEMBRAR ARBOLES Y REALIZAR LIMPIEZA DE AREAS OE RECREACIQN VERDE (COMITE DE SERVICIO SOCIAL LEONIDAS PROANO)",
@@ -2566,13 +2566,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 67",
-      "similitud": 0.577,
-      "proyecto_poa_mas_proximo": "Dotación De Materiales De Limpieza · Materiales de Aseo 01.01.01.B300.360.2024.730805.000.13.09.02.A13.99.9 9.99.99.002 · Dirección de Desarrollo, Acción e Inclusión Social, Comunitaria y Porductiva",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "similitud": 0.639,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "funcional: objeto distinto ('dotacion') que produce el efecto buscado por la demanda 'residuos'",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación funcional verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "EUMINACION DE POLVO EN LAS VfAS (BARRIO SANTA ANA)",
@@ -2594,13 +2594,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 67",
-      "similitud": 0.528,
-      "proyecto_poa_mas_proximo": "Dotación De Materiales De Limpieza · Materiales de Aseo 01.01.01.B300.360.2024.730805.000.13.09.02.A13.99.9 9.99.99.002 · Dirección de Desarrollo, Acción e Inclusión Social, Comunitaria y Porductiva",
-      "fuente_poa": "POA 2024 (XLSX oficial)",
+      "similitud": 0.617,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "funcional: objeto distinto ('dotacion') que produce el efecto buscado por la demanda 'residuos'",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación funcional verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "VECINOS LIMPIEN (CALLE ELOY ALFARO)",
@@ -2608,13 +2608,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 67",
-      "similitud": 0.469,
-      "proyecto_poa_mas_proximo": "Arrendamiento de Equipo Caminero para cantón Montecristi, a través de Feria Inclusiva · 01.01.01.B300.360.2023.730504.002.13.09. 02.A13.99.99.99.99.002 · Maquinarias y Equipos (Arrendamiento) Emergencia · Dirección de Obras Públicas.",
-      "fuente_poa": "POA 2023 (XLSX oficial)",
+      "similitud": 0.619,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'vialidad' (rubro afín)",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación directa verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "VECINO$ LIMPIEN FRENTERA (CALLE ELOY ALFARO)",
@@ -2622,13 +2622,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 67",
-      "similitud": 0.476,
-      "proyecto_poa_mas_proximo": "Arrendamiento de Equipo Caminero para cantón Montecristi, a través de Feria Inclusiva · 01.01.01.B300.360.2023.730504.002.13.09. 02.A13.99.99.99.99.002 · Maquinarias y Equipos (Arrendamiento) Emergencia · Dirección de Obras Públicas.",
-      "fuente_poa": "POA 2023 (XLSX oficial)",
+      "similitud": 0.618,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'vialidad' (rubro afín)",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación directa verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "EUMINACIQN DEL POLVO EN VfAS (BARRIO SANTA ANA) (SECTOR NUEVO MONTECRISTI)",
@@ -2636,13 +2636,13 @@
       "naturaleza_juridica": "vinculante",
       "anio_demanda": "2026",
       "fuente_demanda": "GAD Montecristi Informe Presupuesto Participativo 2026.docx · tabla 67",
-      "similitud": 0.469,
-      "proyecto_poa_mas_proximo": "Desarrollo de actividades que promueven la participación ciudadana en el cantón Montecristi · 01.01.01.A100.110.2023.530613.000. · Capacitación para la Ciu · Planificación Institucional",
-      "fuente_poa": "POA 2023 (XLSX oficial)",
+      "similitud": 0.607,
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "complementaria: proyecto estructural: contribuye a las condiciones del entorno, no ejecuta el objeto",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación complementaria — débil por naturaleza, requiere validación experta"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "REVISION DE ZONA OE RIESGO (BARRIO SANTA ANA)",
@@ -2805,12 +2805,12 @@
       "anio_demanda": "2024",
       "fuente_demanda": "ACTA DE AUDIENCIA DE LA PARROQUIA ELOY ALFARO.txt",
       "similitud": 0.44,
-      "proyecto_poa_mas_proximo": "Desarrollo de actividades que promueven la participación ciudadana en el cantón Montecristi · 01.01.01.A100.110.2023.530613.000. · Capacitación para la Ciu · Planificación Institucional",
-      "fuente_poa": "POA 2023 (XLSX oficial)",
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "complementaria: proyecto estructural: contribuye a las condiciones del entorno, no ejecuta el objeto",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación complementaria — débil por naturaleza, requiere validación experta"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "Expresó que estos temas ya habían sido tratados en reuniones anteriores sin obtener resultados concretos, por lo cual solicitó a los directores presentes explicar las razones de dichos retrasos",
@@ -3057,12 +3057,12 @@
       "anio_demanda": "2025",
       "fuente_demanda": "ACTA DE AUDIENCIA PUBLICA CALLE SAN GREGORIO Y OLMEDO (1).txt",
       "similitud": 0.477,
-      "proyecto_poa_mas_proximo": "Desarrollo de actividades que promueven la participación ciudadana en el cantón Montecristi · 01.01.01.A100.110.2023.530613.000. · Capacitación para la Ciu · Planificación Institucional",
-      "fuente_poa": "POA 2023 (XLSX oficial)",
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "complementaria: proyecto estructural: contribuye a las condiciones del entorno, no ejecuta el objeto",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación complementaria — débil por naturaleza, requiere validación experta"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "La ciudadanía solicitó: * La colocación de un contenedor de basura para evitar la acumulación de desechos que afectan el ornato y la salud",
@@ -3098,8 +3098,8 @@
       "naturaleza_juridica": "deliberativo",
       "anio_demanda": "2025",
       "fuente_demanda": "Cabildo popular 2025.docx",
-      "similitud": 0.456,
-      "proyecto_poa_mas_proximo": "Proyecto de fortalecimiento institucional · Honorarios por Contratos Civiles de Servicios 01.01.01.A100.110.2024.730606.000.13.09.02.A13.99.9 9.99.99.002 · Planificación Institucional - Participación Ciudadana",
+      "similitud": 0.455,
+      "proyecto_poa_mas_proximo": "Estudio de conocimientos, opiniones y evaluaciones de satisfacción ciudadana sobre las competencias, políticas públicas y servicios que presta el gobierno municipal de Montecristi · Consultoría, Asesoría e Investigación Especializada 01.01.01.A100.110.2024.730801.000.13.09.02.A13.99.9 9.99.99.002 · Planificación Institucional - Participación Ciudadana",
       "fuente_poa": "POA 2024 (XLSX oficial)",
       "sha_poa": "",
       "filtro_ontologico": "complementaria: proyecto estructural: contribuye a las condiciones del entorno, no ejecuta el objeto",
@@ -3113,12 +3113,12 @@
       "anio_demanda": "2025",
       "fuente_demanda": "Cabildo popular 2025.docx",
       "similitud": 0.578,
-      "proyecto_poa_mas_proximo": "Construcción de Colectores. Hormigon Armado y redes terciarias de Alcantarillado Sanitario para la recolección y descargas de aguas residuales del cantón Montecristi · 01.01.01.B300.330.2023.750103.001.13.09. 02.A13.99.99.99.99.001 · Construcción de Colectores. Hormigon Armado y redes terciarias de Alcantarillado Sanitario para la recolección y · Dirección de Agua Potable y Alcantarillado Sanitari",
-      "fuente_poa": "POA 2023 (XLSX oficial)",
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "directa: ejecuta el objeto de la demanda 'residuos' (rubro afín)",
-      "estado_epistemico": "pendiente_validacion",
-      "naturaleza_del_juicio": "relación directa verificada ontológicamente, similitud media — el analista confirma"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     },
     {
       "demanda": "En la colina de la Proaño hay derrame de agua servida, necesitamos agua potable, queremos un contenedor de basura atrós de la unidad educativa Kerly Torres-Rosario Zambrano - Parroquia Leónidas Proafto",
@@ -3141,12 +3141,12 @@
       "anio_demanda": "2025",
       "fuente_demanda": "Cabildo popular 2025.docx",
       "similitud": 0.634,
-      "proyecto_poa_mas_proximo": "Arrendamiento de Tanqueros para dotación de agua potable al cantón Montecristi, a través de Feria Inclusiva · 01.01.01.B300.330.2023.730505.007.13.09.0 · Vehiculo arrendamiento · Dirección de Agua Potable y Alcantarillado Sanitario.",
-      "fuente_poa": "POA 2023 (XLSX oficial)",
+      "proyecto_poa_mas_proximo": "",
+      "fuente_poa": "",
       "sha_poa": "",
-      "filtro_ontologico": "funcional: objeto distinto ('dotacion') que produce el efecto buscado por la demanda 'agua'",
-      "estado_epistemico": "hipotesis",
-      "naturaleza_del_juicio": "INFERENCIA ANALÍTICA — relación funcional con alta similitud; requiere validación experta"
+      "filtro_ontologico": "sin_candidato_que_pase_el_filtro",
+      "estado_epistemico": "sin_correlato",
+      "naturaleza_del_juicio": "SIN CORRELATO PRESUPUESTARIO VERIFICABLE — ningún candidato superó el filtro ontológico. NO significa que no se atendió: significa que el expediente no acredita correspondencia (alimenta la brecha de atención)"
     }
   ]
 }

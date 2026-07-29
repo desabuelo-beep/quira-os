@@ -40,14 +40,13 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO y halla las B
 📚 **ADR-035/037:** Ley→BRN→GoldMaster(único motor)→QUIRA · IA propone, humano valida.
 🏛️ **d02·d03·d09·d08 migrados**. **d08**: **Asamblea ciudadana AUTÓNOMA (no GAD)** · CNO-VIII(8) · **OBS-012..017**.
 🏛️ **GOBERNANZA v1.0:** `identity/`→`governance/`Carta→ `marco_teorico/`(Postulados+Inventario+**Mapa**)→Canon→`registry/`. ⚠️ Derivación 100% **solo en lo catalogado** (47 .md de `docs/architecture/` sin autoridad).
-🔬 **d08 · MRSPP v3** (5 niveles; embedding PROPONE, modelo DECIDE): 68·27·**0**·25 · 103 nulas.
-🏛️ **R-C..R-F → `PROTOCOLO_CURACION_DOMINIO.md` §3.** R-C dueño del instrumento califica (OBS-020→**d01**) · R-D ¿ALGORITMO o INSTRUMENTO? **se mide, no se parcha** · **R-E (LEY)** solo Montecristi hasta cerrarlo · **R-F** 3 vías (activa·silos·**pasiva LOTAIP**): solicitar **ES ejercer la norma** (Const. 18·226), se controla la **trazabilidad del acto**.
-🔬 POA localiza el **1%** → **CVI** = 2ª dim. IOC (`IOC=f(ICEP,CVI)`). `instrumental=0` ES el hallazgo (PP: **limitación estructural del instrumento**).
-🔒 **UDC/ICD** (R-F.1): **UDC-G** `= ∧ UDC-Iₖ`. MCR ✅ POA·cabildo · ⚠️ PP·audiencias · ❌ LOTAIP·Concejo·Holding → **UDC-G=FALSO**.
-📄 **Vía 3 viable** (precedente `OFICIO 0143-2026`, no se audita aquí). Qué vía usar en cada GAD se decide **al incorporarlo**, no ahora.
-⚖️ **3 CAPAS**: A jurídica (**Guía LOTAIP 2024 = LEY, no canon**) · B operativa (**d07** tramita) · C analítica (QUIRA audita, **no tramita**). Aportes QUIRA **diferenciados**.
-🧪 **H-ARQ-01** (HIPÓTESIS): ¿falta de localización/desagregación = propiedad de la arquitectura documental EC? 2 instrumentos·1 GAD → bloqueado por R-E. **Precedente H24c**: fórmula válida ≠ operando válido.
-⏭️ **JAVO: (1)** validar `data/d08/validacion_experta.csv` (24 casos por TIPO MRSPP) **(2)** `ESPECIFICACION_GOLD_MASTER_D08.md` (⛔ NO `H24c!B7=H10b!B9`: cifra falsa). Libre: IGP_3(d09) · `IGP_2=0` medido · **SAT-IX** 46,2% · CVI en IOC.
+🔬 **d08 · MRSPP v4**: 26·8·**0**·9 · **180 sin correlato (81%)**. **OBS-021**: v3 daba **12%** de precisión → **REGLA T0: el territorio es CONSTITUTIVO** («X en el lugar Y»), no un filtro. Ancla por **patrón**, no por lista. El 81% **ES la brecha**, no un fallo.
+🏛️ **R-C..R-F → `PROTOCOLO_CURACION_DOMINIO.md` §3.** R-C dueño del instrumento califica (OBS-020→**d01**) · R-D ¿ALGORITMO o INSTRUMENTO? **se mide, no se parcha** · **R-E (LEY)** solo Montecristi · **R-F** 3 vías (activa·silos·**pasiva LOTAIP**): solicitar **ES ejercer la norma** (Const. 18·226); se controla la **trazabilidad del acto**.
+🔬 POA localiza el **1%** (OBS-020) → **CVI** = 2ª dim. IOC (`IOC=f(ICEP,CVI)`). OBS-021 lo confirma desde la demanda. `inverificable` ≠ `no atendido`.
+🔒 **UDC/ICD** (R-F.1): **UDC-G** `= ∧ UDC-Iₖ`. MCR ✅ POA·cabildo · ⚠️ PP·audiencias · ❌ LOTAIP·Concejo·Holding → **FALSO**. Vía 3 viable (`OFICIO 0143-2026`); qué vía usar se decide al incorporar cada GAD.
+⚖️ **3 CAPAS**: A jurídica (**Guía LOTAIP 2024 = LEY, no canon**) · B operativa (**d07** tramita) · C analítica (QUIRA audita, **no tramita**).
+🧪 **H-ARQ-01** (HIPÓTESIS): ¿falta de localización/desagregación = propiedad de la arquitectura documental EC? 2 instrumentos·1 GAD → bloqueado por R-E. **H24c**: fórmula válida ≠ operando válido.
+⏭️ **JAVO: (1)** 2ª validación sobre la mezcla v4 · ¿se retira `complementaria` (0/8)? **(2)** `ESPECIFICACION_GOLD_MASTER_D08.md` (⛔ NO `H24c!B7=H10b!B9`: cifra falsa). Libre: IGP_3(d09) · `IGP_2=0` medido · **SAT-IX** 46,2% · CVI en IOC.
 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 ratificado · detalle en el ADR)
 GAD = sujeto observado, NO cliente. 4 capas: A Núcleo · B Operaciones · C Productos (§LA TESIS · 1 motor) · D Portal `quiraintelligence.com` (radar 221 GAD).
@@ -61,7 +60,6 @@ no redefinas · cierre `/graphify . --update`) · **no congelar teoría antes qu
 |---|---|
 | **Arranque** | **SOLO este BOOT.md hasta saber tu tarea.** |
 | Arquitectura 3 niveles (inmutable) | `docs/adr/ADR-023` |
-| Gate 7 (segundo municipio) | `docs/adr/GATE-007_Validacion_Externa_Municipio2.md` |
 | Leer métricas del Gold Master | `app/connectors/gold_master.py` → NO recalcular |
 | Construcción/UI/dominios | `docs/REFERENCE.md` |
 | Retomar d07 Transparencia | `docs/architecture/CATALOGO_CANONICO_CD_D07.md` + `app/agents/d07/` |

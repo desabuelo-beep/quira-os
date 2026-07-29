@@ -188,6 +188,41 @@ TOPONIMOS: dict[str, tuple[int, str]] = {
 RE_SECTOR = re.compile(r"\b(" + "|".join(sorted(TOPONIMOS, key=len, reverse=True)) + r")\b", re.I)
 
 
+# ── Detección GENÉRICA de ancla territorial ───────────────────────────────────
+# El registro de topónimos nunca estará completo, y menos para 222 GAD. Pero el
+# territorio casi siempre viene marcado por PATRÓN, no por nombre conocido:
+#   demanda: "NECESITAMOS PARQUE (SECTOR NUEVO MONTECRISTI)" · "... - BARRIO SAN JOSE"
+#   POA:     "... Parroquia La Pila" · "... sector Los Bajos"
+# Detectar el patrón permite aplicar REGLA T0 sin conocer el topónimo: basta saber
+# que la demanda SÍ dice dónde y que el proyecto NO lo dice.
+RE_ANCLA = re.compile(
+    r"(?:sector|barrio|comunidad|comuna|parroquia|ciudadela|urbanizacion|recinto|sitio)\s+"
+    r"([a-z0-9ñ][a-z0-9ñ\s]{2,28})", re.I)
+RE_ANCLA_PAREN = re.compile(r"[(•\-]\s*([A-ZÑ][A-ZÑ0-9\s]{3,30})\s*[)•]?\s*$")
+
+
+def _ancla_territorial(texto: str) -> str | None:
+    """Lugar declarado en el texto, por topónimo conocido o por patrón. None si no lo declara."""
+    t = _territorios(texto)
+    if t:
+        return sorted(t)[0]
+    n = _norm(texto)
+    m = RE_ANCLA.search(n)
+    if m:
+        return " ".join(m.group(1).split())[:28]
+    m = RE_ANCLA_PAREN.search(str(texto).strip())
+    if m:
+        return _norm(m.group(1)).strip()[:28]
+    return None
+
+
+def _mismo_lugar(a: str, b: str) -> bool:
+    """True si dos anclas nombran el mismo territorio (solapamiento de palabras significativas)."""
+    pa = {w for w in _norm(a).split() if len(w) > 3}
+    pb = {w for w in _norm(b).split() if len(w) > 3}
+    return bool(pa & pb)
+
+
 def _territorios(texto: str) -> set[str]:
     """Anclas territoriales SUB-CANTONALES del texto (nivel ≥ 3).
 
@@ -287,6 +322,14 @@ COMPONENTES_OPERATIVOS = {
 MEDIOS_NO_EJECUTORES = ["adquisicion", "compra", "suministro", "insumo", "dotacion",
                         "entrega", "siembra", "plantacion", "reforestacion", "arriendo"]
 
+# Proyectos genéricos del POA: enunciados institucionales que no describen una obra ni
+# un servicio concreto. Emparejan con todo y no satisfacen ninguna demanda específica.
+PROYECTOS_GENERICOS = [
+    "actividades que promueven la participacion", "fortalecimiento institucional",
+    "desarrollo institucional", "gestion administrativa", "apoyo a la gestion",
+    "coordinacion interinstitucional", "asistencia tecnica general",
+]
+
 # Rubros estructurales: no satisfacen directamente, pero mejoran condiciones.
 RUBROS_ESTRUCTURALES = ["catastr", "planificacion", "ordenamiento", "estudio", "diagnostico",
                         "actualizacion", "sistema de informacion", "normativa"]
@@ -302,17 +345,43 @@ def evaluar_relacion(demanda: str, proyecto_poa: str) -> tuple[str, str]:
     d, p = _norm(demanda), _sin_unidad_ejecutora(_norm(proyecto_poa))
     fam = _familia_de(d)
 
-    # ── REGLA T1 · territorios distintos NO se sustituyen entre sí ──
-    # Canon territorial §IX: "parroquia → parroquia: PROHIBIDO (territorios distintos,
-    # sin base empírica)". Un proyecto SIN ancla territorial es de alcance cantonal y
-    # sí puede satisfacer una demanda parroquial ("cantón → parroquia: PERMITIDO").
-    ter_d, ter_p = _territorios(demanda), _territorios(proyecto_poa)
-    if ter_d and ter_p and not (ter_d & ter_p):
-        a, b = sorted(ter_d)[0], sorted(ter_p)[0]
-        na, nb = TOPONIMOS.get(a, (0, "?")), TOPONIMOS.get(b, (0, "?"))
-        return "nula", (f"territorio_incompatible (REGLA T1): la demanda se ancla en "
-                        f"'{a}' ({na[1]}, nivel {na[0]}) y el proyecto en '{b}' "
-                        f"({nb[1]}, nivel {nb[0]}) — territorios distintos")
+    # ── REGLA T0 · EL TERRITORIO ES CONSTITUTIVO DE LA DEMANDA ──────────────────
+    # Validación de campo de Javo (2026-07-29, precisión 12%): el motor emparejaba
+    # "parque en Nuevo Montecristi" con "parque las Pampas" y lo llamaba DIRECTA.
+    #
+    #   "la única relación es que en ambas se pide un parque. NO, eso no es incorporar
+    #    las necesidades ciudadanas a la planificación: son distintos lugares."
+    #
+    # Una demanda ciudadana NO es "X": es **"X en el lugar Y"**. El lugar no es un
+    # atributo secundario que refine el match — es parte del objeto demandado. Si el
+    # proyecto ejecuta X en otro lugar, o no dice dónde, **no atendió esa demanda**.
+    #
+    # El contraste que lo prueba (caso 5, el único directo que Javo validó):
+    #   "tapas de alcantarillado LA PILA" ↔ "alcantarillado Parroquia LA PILA"  → SÍ
+    # Ambos lados declaran el MISMO territorio. Ésa es la condición.
+    anc_d, anc_p = _ancla_territorial(demanda), _ancla_territorial(proyecto_poa)
+    ter_d, ter_p = ({anc_d} if anc_d else set()), ({anc_p} if anc_p else set())
+    if ter_d:
+        if not ter_p:
+            # No es incompatibilidad: es INDETERMINACIÓN. El POA no dice dónde ejecuta
+            # (99% de las filas · OBS-020), así que la correspondencia no es verificable
+            # ni afirmable. Javo: "esa opacidad hace que no se pueda determinar si las
+            # peticiones fueron atendidas realmente en POA, PAC y presupuesto."
+            return "nula", (f"inverificable_territorialmente: la demanda se ancla en "
+                            f"'{sorted(ter_d)[0]}' y el proyecto NO declara territorio "
+                            f"(alimenta el CVI · OBS-020)")
+        if not _mismo_lugar(anc_d, anc_p):
+            return "nula", (f"territorio_incompatible (REGLA T1): demanda en '{anc_d}' "
+                            f"vs proyecto en '{anc_p}' — lugares distintos")
+
+    # ── Proyectos genéricos institucionales: no satisfacen una demanda concreta ──
+    # 6 de las 8 'complementarias' rechazadas por Javo emparejaban contra el mismo
+    # proyecto: "Desarrollo de actividades que promueven la participación ciudadana".
+    # Es el patrón del membrete y de la unidad ejecutora, por tercera vez: texto
+    # institucional genérico que empareja con cualquier cosa.
+    if any(g in p for g in PROYECTOS_GENERICOS):
+        return "nula", ("proyecto_generico_institucional: no describe una obra o servicio "
+                        "concreto que pueda satisfacer una demanda")
 
     # ── COMPLEMENTARIA se evalúa PRIMERO: un proyecto estructural (catastro,
     # planificación, ordenamiento) mejora las condiciones del entorno aunque no

@@ -70,10 +70,19 @@ CASOS: list[tuple[str, str, str]] = [
     ("AREAS VERDES",
      "Construccción parque las Pampas · Urbanización y Embellecimiento",
      "directa"),
+    # ★ CAMBIADO tras la validación de campo (2026-07-29): antes se esperaba `no-nula`.
+    # La demanda se ancla en BARRIO SANTA ANA y el proyecto no dice dónde se ejecuta →
+    # inverificable. Criterio de Javo: "si no se sabe dónde fue hecha la obra... esa
+    # opacidad hace que no se pueda determinar si las peticiones fueron atendidas".
     ("ELIMINACION DE LETRINAS POZO SEPTICO (BARRIO SANTA ANA)",
      "Mantenimiento, operación y tratamientos de las Plantas de Tratamiento de "
      "aguas servidas y alcantarillado",
-     "no-nula"),
+     "nula"),
+    # …pero SÍ pasa cuando ambos lados declaran el MISMO lugar (caso 5 de la validación,
+    # el único `directa` que Javo confirmó):
+    ("MANTENIMIENTO DE TAPAS DE ALCANTARILLADO PARROQUIA LA PILA",
+     "Crédito BDE - Construcción Sistema de Alcantarillado Sanitario Parroquia La Pila",
+     "directa"),
 
     # ── Estructural = complementaria, nunca directa (se evalúa ANTES que incompatibles)
     ("MEJORA DEL PARQUE",
@@ -87,10 +96,13 @@ CASOS: list[tuple[str, str, str]] = [
     ("MEJORA DEL PARQUE. (LAS PAOLAS)",
      "Construccción parque las Pampas · Urbanización y Embellecimiento",
      "nula"),
-    # …pero un proyecto SIN ancla territorial es cantonal: "cantón → parroquia: PERMITIDO"
+    # ★ CAMBIADO tras la validación de campo: un proyecto CANTONAL genérico NO acredita
+    # atención a una demanda de barrio. La regla T1 ("cantón → parroquia: PERMITIDO")
+    # habilita PROXIES ESTADÍSTICOS (NBI, cobertura), no la acreditación de que una
+    # petición concreta fue atendida. Eran dos cosas distintas y estaban mezcladas.
     ("MEJORA DEL PARQUE. (LAS PAOLAS)",
      "Construcción y regeneración de parques del cantón",
-     "directa"),
+     "nula"),
 
     # ── Homógrafos administrativos: coincidir letras ≠ reconocer un rubro ─────
     # "parqueadero" contiene "parque" pero un estacionamiento no es un área verde.

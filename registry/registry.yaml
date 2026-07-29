@@ -3,8 +3,8 @@
 # GENERADO por scripts/governance/build_registry.py · NO editar a mano.
 # Autoridad: Carta de Gobernanza Art. 1 (Derivación) y Art. 3 (describe, no gobierna).
 # ═══════════════════════════════════════════════════════════════════
-generado: 2026-07-28
-total_activos: 114
+generado: 2026-07-29
+total_activos: 115
 huerfanos: 0   # sin bloque authority: → no pueden promoverse a vigente (Art. 1)
 
 componentes:
@@ -19,7 +19,7 @@ componentes:
     kind: normative
     level: 1
     path: governance/BOOT.md
-    hash: 193ec52fb86bab78
+    hash: dd823892c25591bf
     authority_declared: true
     parent: GOVERNANCE-001
   - id: GOVERNANCE-001
@@ -657,6 +657,13 @@ componentes:
     level: 2
     path: docs/observations/OBS-020_Ficha_POA_No_Habilita_Monitoreo_Territorial.md
     hash: 110e94cacef70c62
+    authority_declared: true
+    parent: GOVERNANCE-001
+  - id: OBSERVATION-OBS-021_Validacion_Campo_Territo
+    kind: observation
+    level: 2
+    path: docs/observations/OBS-021_Validacion_Campo_Territorio_Constitutivo.md
+    hash: 525071a964b08ddf
     authority_declared: true
     parent: GOVERNANCE-001
   - id: DOMAIN_CATALOG-catalogo_d01_v1.0.0
