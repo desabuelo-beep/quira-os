@@ -145,6 +145,25 @@ Patrón definitivo  →  PCD-DXX (documentación del dominio)
   **Las tres son oficiales y legítimas.** QUIRA no espera a ver qué decide subir la secretaría al
   portal: agota las tres.
 
+  ### Separación de planos: la Guía LOTAIP NO es canon QUIRA *(Javo · 2026-07-29)*
+
+  Javo preguntó si el procedimiento de transparencia es trabajo operativo de d07. **No se
+  equivoca: lo es.** Y de ahí se sigue una separación que debe quedar explícita para que el
+  procedimiento legal no se confunda nunca con el procedimiento analítico.
+
+  | Capa | Qué es | Quién la opera |
+  |---|---|---|
+  | **A · Jurídica** | Const. 18 · 226 → **LOTAIP** → **Guía Metodológica Integral LOTAIP 2024** *(en el corpus · es LEY del Estado)* | marco legal — **QUIRA no lo modifica ni lo interpreta** |
+  | **B · Operativa** | ejecuta las 3 vías: portal · silos · **oficios LOTAIP 10+5** | **d07 Transparencia** |
+  | **C · Analítica** | **no tramita oficios**: recibe la evidencia, verifica **trazabilidad del acto administrativo** y calcula CVI · ICEP · MRSPP | motor QUIRA |
+
+  > **La Guía regula CÓMO SE SOLICITA. QUIRA regula CÓMO SE AUDITA lo obtenido.** Son planos
+  > distintos y no se fusionan. Todo aporte metodológico que QUIRA cree se registra **diferenciado**
+  > de la norma —nunca mezclado con ella— conforme al principio de legalidad (Const. 226).
+
+  Es **R-C aplicado al canal de ingesta**: d07 es propietario del procedimiento de acceso; los
+  demás dominios **consumen** la evidencia que ese canal produce.
+
   ### Lo que se controla no es SI se pide, sino cómo se califica lo que llega
 
   El riesgo del documento fabricado *ex post* **no se resuelve absteniéndose de pedir** — se
@@ -231,19 +250,55 @@ Patrón definitivo  →  PCD-DXX (documentación del dominio)
   **`n/a`** = no aplica porque **no existe vacío documental que solicitar**. La vía 3 se exige solo
   cuando las vías 1 y 2 dejan un hueco identificado.
 
-  ### Las dos solicitudes LOTAIP que cierran PP y audiencias
+  ### ★ La vía 3 YA fue ejercida en Montecristi — y el oficio no cubre lo que se supuso
 
-  Cursarlas **fortalece los hallazgos**, no los pone en riesgo — convierte lo *inferido
-  documentalmente* en **declarado oficialmente**, y cualquiera de las tres respuestas sirve:
+  **`OFICIO N.º 0143-2026-SG-JAMZ-GADMCM`** · leído íntegro 2026-07-29.
 
-  | # | Solicitud | Qué produce cada respuesta |
-  |---|---|---|
-  | 1 | **desglose de montos asignados y ejecutados por prioridad del PP** (2023-2026) | entregan con respaldo → dato real · declaran inexistencia → **confirma la limitación estructural** · vencen 10+5 → **incumplimiento LOTAIP** |
-  | 2 | **resoluciones formales de las audiencias públicas** (Art. 75 LOPC, 2023-2025) | igual estructura — hoy OBS-017 afirma 0/28 por lectura de actas; una declaración oficial lo vuelve inapelable |
+  | Campo | Contenido verificado |
+  |---|---|
+  | **Solicitud** | Oficio S/N de **10-feb-2026** · Ronald Javier Delgado Santana |
+  | **Respuesta** | **17-mar-2026** · Abg. Jonathan Alfredo Mero Zamora, Secretario General y de Concejo |
+  | **Vía interna** | MEMORANDUM 0511-CNCV-DF-GADMCM-2026 · Ing. Carlos Vélez Cedeño, Director Financiero |
+  | **Lo entregado** | *"documentación correspondiente al **numeral 2** del requerimiento: **cédulas presupuestarias de gastos reportadas al Ministerio de Economía y Finanzas, periodos fiscales 2023 y 2024**"* |
+  | **Adjuntos localizados** | ✅ `Cedulas Presupuestarias 2023-2026/Presupuestos 2023|2024/*.xls` |
 
-  > **Decisión de Javo (oportunidad, no metodología):** cursarlas o no. Sin ellas, PP y audiencias
-  > quedan en **UDC-I parcial** y sus hallazgos siguen siendo válidos pero **inferidos**. Con ellas,
-  > quedan cerrados y los hallazgos pasan a **declarados**.
+  #### Tres correcciones al tablero propuesto por la asesoría
+
+  | Afirmación | Veredicto |
+  |---|---|
+  | *"Presupuesto Participativo (Vía 1 + Vía 3)"* | ❌ **falso** — el oficio entrega **cédulas presupuestarias**, instrumento de **d02**. No menciona PP |
+  | *"Audiencias públicas cubiertas"* | ❌ **falso** — no aparecen en el oficio |
+  | *"ICD ≈ 50%"* | ❌ **no se sigue** — el oficio cierra un instrumento de d02, no dos de d08 |
+
+  **Lo que el oficio SÍ acredita, y es valioso:**
+
+  1. **La vía 3 funciona en Montecristi.** Existe precedente de solicitud cursada y **respondida con
+     entrega documental**. Deja de ser hipótesis operativa.
+  2. **Cédulas presupuestarias de gastos 2023-2024** → instrumento de **d02** con **vía 3 ejercida y
+     satisfecha**, con trazabilidad completa: número de oficio · fecha · firma electrónica ·
+     memorando interno · dirección responsable. Es el estándar de prueba más alto disponible.
+
+  #### Dos observaciones que el oficio abre — ninguna afirmable todavía
+
+  - **Respuesta parcial.** El texto dice *"correspondiente al **numeral 2** del requerimiento"*, lo
+    que implica que el requerimiento tenía **más numerales**. Los demás **no constan respondidos en
+    este oficio**. ⚠️ **No se puede evaluar la completitud sin la solicitud original**
+    (Oficio S/N de 10-feb-2026), que **no obra en el repositorio**. Es documento de Javo, no del GAD.
+  - **Plazo aparentemente excedido.** Del 10-feb al 17-mar median ~25 días término, frente a los
+    **10 + 5** que fija la LOTAIP. ⚠️ **Verificable por d07**, no afirmable aquí: habría que
+    descontar feriados y comprobar si hubo prórroga notificada.
+
+  ### Tablero UDC actualizado con el oficio
+
+  | Instrumento | Vía 1 | Vía 2 | Vía 3 | UDC-I |
+  |---|:---:|:---:|:---:|:---:|
+  | **Cédulas presupuestarias 2023-2024** (d02) | ✅ | ✅ | ✅ **oficio 0143-2026** | ✅ **cerrado con respuesta oficial** |
+  | POA 2023-2026 · Cabildo popular | ✅ | ✅ | n/a | ✅ |
+  | Presupuesto Participativo | ✅ | ✅ | ❌ | ⚠️ vacío: desglose de montos |
+  | Audiencias públicas | ✅ | ✅ | ❌ | ⚠️ vacío: resoluciones Art. 75 |
+  | Portal LOTAIP · Actas de Concejo · Holding | ❌ | — | ❌ | ❌ |
+
+  **`ICD = 3 / 8 ≈ 38%`** *(cédulas, POA y cabildo cerrados)*. **UDC-G = FALSO.**
 
   ### ICD · Índice de Cierre Documental *(asesoría · 2026-07-29)*
 
