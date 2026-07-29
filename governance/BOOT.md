@@ -39,13 +39,14 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO y halla las B
 🩺 **Canon curado por DOM (R.8), ICPI intacto. Gate `check_health.py`: NO adivinar tamaños.**
 📚 **ADR-035/037:** Ley→BRN→GoldMaster(único motor)→QUIRA · IA propone, humano valida.
 🏛️ **d02·d03·d09·d08 migrados**. **d08**: **Asamblea ciudadana AUTÓNOMA (no GAD)** · CNO-VIII(8) · **OBS-012..017**.
-🏛️ **GOBERNANZA v1.0:** `identity/`→`governance/`Carta→ `marco_teorico/`(Postulados+Inventario+**Mapa**)→Canon→`registry/`. ⚠️ Derivación 100% **solo en lo catalogado** (47 .md de `docs/architecture/` sin autoridad).
-🔬 **d08 · MRSPP v4**: 26·8·**0**·9 · **180 sin correlato (81%)**. **OBS-021**: v3 daba **12%** de precisión → **REGLA T0: el territorio es CONSTITUTIVO** («X en el lugar Y»), no un filtro. Ancla por **patrón**, no por lista. El 81% **ES la brecha**, no un fallo.
-🏛️ **R-C..R-F → `PROTOCOLO_CURACION_DOMINIO.md` §3.** R-C dueño del instrumento califica (OBS-020→**d01**) · R-D ¿ALGORITMO o INSTRUMENTO? **se mide, no se parcha** · **R-E (LEY)** solo Montecristi · **R-F** 3 vías (activa·silos·**pasiva LOTAIP**): solicitar **ES ejercer la norma** (Const. 18·226); se controla la **trazabilidad del acto**.
-🔬 POA localiza el **1%** (OBS-020) → **CVI** = 2ª dim. IOC (`IOC=f(ICEP,CVI)`). OBS-021 lo confirma desde la demanda. `inverificable` ≠ `no atendido`.
-🔒 **UDC/ICD** (R-F.1): **UDC-G** `= ∧ UDC-Iₖ`. MCR ✅ POA·cabildo · ⚠️ PP·audiencias · ❌ LOTAIP·Concejo·Holding → **FALSO**. Vía 3 viable (`OFICIO 0143-2026`); qué vía usar se decide al incorporar cada GAD.
-⚖️ **3 CAPAS**: A jurídica (**Guía LOTAIP 2024 = LEY, no canon**) · B operativa (**d07** tramita) · C analítica (QUIRA audita, **no tramita**).
-🧪 **H-ARQ-01** (HIPÓTESIS): ¿falta de localización/desagregación = propiedad de la arquitectura documental EC? 2 instrumentos·1 GAD → bloqueado por R-E. **H24c**: fórmula válida ≠ operando válido.
+🏛️ **GOBERNANZA v1.0:** `identity/`→`governance/`Carta→`marco_teorico/`(Postulados+Inventario+**Mapa**)→Canon→`registry/`. ⚠️ Derivación 100% **solo en lo catalogado** (47 .md sin autoridad).
+🔬 **d08 · MRSPP v4**: 26·8·**0**·9 · **180 sin correlato (81%)**. **OBS-021**: v3 daba **12%** → **REGLA T0: el territorio es CONSTITUTIVO** («X en el lugar Y»). Ancla por **patrón**, no por lista. El 81% **ES la brecha**.
+🔌 **CABLEADO** (`MATRIZ_CABLEADO_CANONICO.md`): **GoldMaster→SILOS S1..S9→DOM→QUIRA**, nunca al revés. `H36_QUIRA_BRIDGE` YA existía (95% sano). **S3 POA SÍ es silo** (verifica *incorporación programática*, por eso no entra en `Vi`=SERCOP·eSIGEF·LOTAIP·CPCCS). **S1·S6·S9 sin DOM.** NO reestructurar.
+🏛️ **R-C..R-G → `PROTOCOLO_CURACION_DOMINIO.md` §3.** C: el dueño del instrumento califica · D: ¿ALGORITMO o INSTRUMENTO? **se mide, no se parcha** · **E (LEY)**: solo Montecristi · F: 3 vías, solicitar **ES ejercer la norma** (Const. 18·226) · G: todo DOM declara su cableado.
+🔬 POA localiza el **1%** (OBS-020) → **CVI** = 2ª dim. IOC (`IOC=f(ICEP,CVI)`). `inverificable` ≠ `no atendido`.
+🔒 **UDC/ICD**: **UDC-G** `= ∧ UDC-Iₖ`. MCR ✅ POA·cabildo · ⚠️ PP·audiencias · ❌ LOTAIP·Concejo·Holding → **FALSO**.
+⚖️ **3 CAPAS**: jurídica (**Guía LOTAIP = LEY, no canon**) · operativa (**d07** tramita) · analítica (QUIRA audita, **no tramita**).
+🧪 **H-ARQ-01** (HIPÓTESIS): ¿falta de localización/desagregación = propiedad de la arquitectura documental EC? 2 instrumentos·1 GAD → bloqueado por R-E.
 ⏭️ **JAVO: (1)** 2ª validación sobre la mezcla v4 · ¿se retira `complementaria` (0/8)? **(2)** `ESPECIFICACION_GOLD_MASTER_D08.md` (⛔ NO `H24c!B7=H10b!B9`: cifra falsa). Libre: IGP_3(d09) · `IGP_2=0` medido · **SAT-IX** 46,2% · CVI en IOC.
 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 ratificado · detalle en el ADR)

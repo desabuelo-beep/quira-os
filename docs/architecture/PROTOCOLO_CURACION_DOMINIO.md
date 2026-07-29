@@ -289,6 +289,23 @@ Patrón definitivo  →  PCD-DXX (documentación del dominio)
   > *cuándo una ausencia puede afirmarse*. Montecristi es el único universo activo **y** conserva
   > instrumentos abiertos: es exactamente la situación de hoy.
 
+- **R-G · Todo DOM declara su cableado al motor.** *(Javo · 2026-07-29 — "con los DOM desnaturalizamos el Excel".)*
+
+  > Un dominio no puede cerrarse con PCD sin declarar explícitamente: **qué silo alimenta · qué
+  > variable del ICPI produce · qué hojas del Gold Master consume**.
+
+  **Dirección única del cableado** — la que ya imponen las Reglas 1 y 9:
+
+  ```
+  GOLD MASTER (fórmula H12!B33) → SILOS S1..S9 (H13) → DOM (PCD) → QUIRA (UI)
+  ```
+
+  **Nunca al revés.** Si un DOM deja de corresponder con su silo, la implementación documental se
+  desvía del modelo matemático y el Excel queda desnaturalizado.
+
+  Matriz completa y verificada: `MATRIZ_CABLEADO_CANONICO.md`. Hallazgo asociado: **tres silos del
+  motor (S1 electoral · S6 SIGAD · S9 ODS) no tienen DOM que los cure.**
+
 *(Ratificación de R-A/R-B como Reglas de Oro en `CLAUDE.md` / `BOOT.md`: pendiente de Javo — son archivos congelados, Regla 5.)*
 
 ## 4 · Plantilla PCD-DXX (cada dominio cierra con su documento)
