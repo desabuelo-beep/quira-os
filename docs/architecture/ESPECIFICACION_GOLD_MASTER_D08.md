@@ -16,6 +16,34 @@ corresponde al dom, sus indicadores y sus sat"*
 
 ---
 
+## ★ CANDIDATO GENERADO · procedimiento de promoción
+
+**Archivo:** `ProyecT/_CANDIDATO_d08_REVISAR_NO_ES_CANONICO.xlsx` — copia de v5.5 con 5 celdas
+cambiadas. **NO es el canónico** y el conector lo ignora por el prefijo `_`.
+
+| Celda | Antes | Ahora |
+|---|---|---|
+| `H24c!B7` | `0` literal | `=SUM(H10b_S8b_PARTICIPATIVO!D13:D17)` |
+| `H24c!C7` | *"FALLA 17: IFERROR(H10b!B9,0)"* | advertencia de **no** usar `B9` (Ingresos_Base) |
+| `H24c!C8` | *"sin datos PP"* | *"ausencia MEDIDA, no pendiente"* (OBS-021) |
+| `H36!A9` | `H05_S3_COMPETENCIAS_COOTAD` | `H05_S3_OPERATIVO_POA` |
+| `H36!A14` | `H13_S6_VERIFICACIÓN` | `H13_VARIABLES_Vi` |
+
+**Verificado:** diff completo = **5 celdas** · 123 hojas en ambos · `H12!B31/B32/B33` **idénticas**
+· 3 fórmulas matriciales preservadas (texto y `ref` iguales).
+
+### Cómo se promueve a canónico *(decisión de Javo)*
+
+1. Abrir el candidato en Excel y **guardar** — openpyxl no deja valores cacheados; Excel recalcula.
+2. Verificar que `H12!B33` siga dando **0,27458226534062735**.
+3. Renombrar a **`SIAP-ICPI_GOLD_MASTER_v5.6_TGI.xlsx`** *(el sufijo `_TGI` es obligatorio:
+   es lo que el conector reconoce como slot vivo)*.
+4. El conector lo toma **automáticamente** — ya no hay que tocar código.
+
+> ⚠️ **Nunca** renombrar un `_FREEZE` a `_TGI`: son respaldos pre-cirugía, no motores.
+
+---
+
 ## Matriz de trazabilidad *(qué cambio nace de qué evidencia)*
 
 | Cambio | Evidencia origen | Dónde se decide | Estado |

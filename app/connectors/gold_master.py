@@ -39,6 +39,7 @@ Dylus Lab © 2026
 from __future__ import annotations
 
 import logging
+import re
 from pathlib import Path
 from typing import Any
 
@@ -52,12 +53,58 @@ _DEFAULT_GOLD_MASTER_V6 = Path(
     r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT"
     r"\TGI_GOLD_MASTER_v6.0_20260525.xlsx"
 )
-_DEFAULT_GOLD_MASTER_V55 = Path(
-    r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT"
-    r"\SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx"
-)
-# v5.5 es el Gold Master canónico activo
-_DEFAULT_GOLD_MASTER = _DEFAULT_GOLD_MASTER_V55
+_PROYECT = Path(r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT")
+_DEFAULT_GOLD_MASTER_V55 = _PROYECT / "SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx"
+
+
+def _resolver_gold_master() -> Path:
+    """Localiza el Gold Master vigente SIN depender del número de versión en el nombre.
+
+    ★ Corrección 2026-07-29 (Javo): "el ecosistema está conectado al v5.5_TGI por el
+    NOMBRE; si se cambia, todo se desajusta. Ya nos pasó una vez y fue un problema."
+
+    Tenía razón: la versión estaba **hardcodeada en la ruta**, así que subir a v5.6
+    exigía tocar código — y olvidarlo rompía el sistema en silencio. La versión debe
+    ser metadato del CONTENIDO, no del nombre del archivo.
+
+    ⚠️ PRIMER INTENTO FALLIDO — se documenta para que no se repita. Resolver por
+    "versión más alta" ELIGIÓ UN FREEZE: la carpeta tiene 4 archivos y tres son
+    respaldos pre-cirugía (`..._v5.5_FREEZE_20260701_PRE_IPEEJEC`, etc.), todos
+    v5.5. El sistema habría leído un motor congelado **en silencio**. Es el mismo
+    fallo que Javo advertía, cometido al intentar corregirlo.
+
+    Lo que distingue al canónico NO es la versión: es el **sufijo `_TGI`**.
+
+    Reglas de resolución:
+      1. Solo `SIAP-ICPI_GOLD_MASTER_v*_TGI.xlsx` — el sufijo `_TGI` marca el slot vivo.
+      2. Se EXCLUYE `_FREEZE` (respaldos), `_` inicial (candidatos) y `~$` (temporales
+         de Excel). Un respaldo jamás debe convertirse en canónico por accidente.
+      3. Entre los válidos gana la versión más alta, numérica: v5.10 > v5.9.
+      4. Sin coincidencias → nombre histórico v5.5 (el contrato documentado arriba).
+    """
+    if not _PROYECT.is_dir():
+        return _DEFAULT_GOLD_MASTER_V55
+
+    validos = []
+    for f in _PROYECT.glob("SIAP-ICPI_GOLD_MASTER_v*_TGI.xlsx"):
+        if f.name.startswith(("_", "~$")) or "_FREEZE" in f.name.upper():
+            continue
+        m = re.search(r"_v(\d+)\.(\d+)_TGI", f.name)
+        if m:
+            validos.append(((int(m.group(1)), int(m.group(2))), f))
+
+    if not validos:
+        logger.warning(
+            "[GoldMaster] Ningún 'SIAP-ICPI_GOLD_MASTER_v*_TGI.xlsx' válido en %s — "
+            "se usa la ruta histórica. Candidatos descartados: %s",
+            _PROYECT, [f.name for f in _PROYECT.glob("SIAP-ICPI_GOLD_MASTER*.xlsx")],
+        )
+        return _DEFAULT_GOLD_MASTER_V55
+    return max(validos, key=lambda x: x[0])[1]
+
+
+# Gold Master canónico activo — se resuelve por contenido de carpeta, no por nombre fijo
+_DEFAULT_GOLD_MASTER = _resolver_gold_master()
 
 # Hoja de salida API — v5.5 canónico (v6.0 template como fallback)
 _OUTPUT_API_SHEET     = "H73_OUTPUT_API"    # v5.5 canónico activo
