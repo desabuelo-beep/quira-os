@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-scripts/d08/preparar_validacion.py — Instrumento de validación experta (d08 · Fase 2b)
+scripts/d08/preparar_validacion.py — Validación experta del MRSPP (d08 · Fase 2b)
 ═══════════════════════════════════════════════════════════════════════════════
 authority:
   parent: MARCO-TEORICO-001
@@ -8,22 +8,17 @@ authority:
   type: TECNICA
 
 Javo no puede revisar 223 correspondencias a mano. Este instrumento las PRIORIZA y
-las prepara para validación humana eficiente — y, sobre todo, **convierte cada
-decisión suya en calibración del motor**: no es revisar por revisar, es enseñarle
-al sistema dónde está el umbral real.
+convierte cada decisión suya en calibración del motor.
 
-CÓMO FUNCIONA (construido para decidir rápido)
-  1. Prioriza: primero las VINCULANTES (COOTAD 238, incorporación exigible) y las
-     que están en la banda de decisión (0.52-0.62), donde el juicio humano vale más.
-  2. Muestrea por estratos: no se validan 223 — se validan ~30 bien elegidas, y de
-     ahí sale la tasa real de aciertos por tramo de score.
-  3. Produce un CSV editable: Javo escribe `si` / `no` / `duda` en una columna.
-  4. Al reimportarlo (`--aplicar`), calcula precisión por tramo y RECOMIENDA los
-     umbrales reales — la calibración deja de ser una suposición.
+★ v2 (2026-07-29) — CAMBIA LA PREGUNTA. Antes se muestreaba por tramo de score y se
+preguntaba "¿corresponde?", porque lo que se calibraba era un umbral. Con el MRSPP v3
+lo que decide ya no es el score sino el TIPO DE SATISFACCIÓN, así que se muestrea por
+NIVEL y la pregunta pasa a ser:
 
-ESTO ES AUTOMATIZAR CONSTRUYENDO JUNTOS: el humano no valida para siempre; valida
-una muestra, el sistema aprende dónde cortar, y el resto se automatiza con umbral
-fundado en evidencia — no en un número copiado de otro dominio.
+    "¿corresponde CON ESTE TIPO de satisfacción?"
+
+Eso permite medir la precisión de CADA nivel por separado y ver cuál está mal
+calibrado — un umbral global ya no diría nada útil.
 
 Uso:
   python scripts/d08/preparar_validacion.py            → genera la muestra a validar
@@ -35,7 +30,7 @@ from __future__ import annotations
 import csv
 import json
 import sys
-from collections import defaultdict
+from collections import Counter, defaultdict
 from pathlib import Path
 
 if hasattr(sys.stdout, "reconfigure"):
@@ -45,55 +40,65 @@ REPO = Path(__file__).resolve().parents[2]
 TRAZA = REPO / "data" / "d08" / "trazabilidad_demandas.json"
 CSV_VAL = REPO / "data" / "d08" / "validacion_experta.csv"
 
-# Tramos de score: se muestrea en TODOS para medir precisión en cada uno.
-TRAMOS = [(0.70, 1.01, "alto"), (0.62, 0.70, "fuerte"),
-          (0.56, 0.62, "banda_alta"), (0.52, 0.56, "banda_baja"),
-          (0.40, 0.52, "bajo")]
-POR_TRAMO = 6          # muestras por tramo → ~30 decisiones, no 223
+# Niveles del MRSPP que se validan (nula no se muestrea: es la ausencia)
+TIPOS = ["directa", "funcional", "complementaria", "instrumental"]
+POR_TIPO = 8           # ~30 decisiones, no 223
+
+COL = "¿CORRECTO? (si/no/otro-tipo)"
 
 
-def tramo_de(score: float) -> str:
-    for lo, hi, nombre in TRAMOS:
-        if lo <= score < hi:
-            return nombre
-    return "muy_bajo"
+def tipo_de(r: dict) -> str:
+    """Tipo MRSPP declarado en el expediente ('directa: ...' → 'directa')."""
+    return (r.get("filtro_ontologico") or "nula").split(":")[0].strip()
 
 
 def generar() -> int:
     t = json.loads(TRAZA.read_text(encoding="utf-8"))["trazabilidad"]
+    con_correlato = [r for r in t if r["estado_epistemico"] != "sin_correlato"]
+
     # prioriza vinculantes (COOTAD 238): su incorporación es EXIGIBLE
-    por_tramo: dict[str, list] = defaultdict(list)
-    for r in sorted(t, key=lambda x: (x["naturaleza_juridica"] != "vinculante", -x["similitud"])):
-        por_tramo[tramo_de(r["similitud"])].append(r)
+    por_tipo: dict[str, list] = defaultdict(list)
+    for r in sorted(con_correlato,
+                    key=lambda x: (x["naturaleza_juridica"] != "vinculante", -x["similitud"])):
+        por_tipo[tipo_de(r)].append(r)
 
     muestra = []
-    for _, _, nombre in TRAMOS:
-        muestra += por_tramo[nombre][:POR_TRAMO]
+    for tp in TIPOS:
+        muestra += por_tipo[tp][:POR_TIPO]
 
     with open(CSV_VAL, "w", encoding="utf-8-sig", newline="") as f:
         w = csv.writer(f, delimiter=";")
-        w.writerow(["#", "TRAMO", "SCORE", "VINCULANTE", "DEMANDA CIUDADANA",
-                    "PROYECTO POA MÁS PRÓXIMO", "¿CORRESPONDE? (si/no/duda)", "NOTA DE JAVO"])
+        w.writerow(["#", "TIPO MRSPP", "SCORE", "VINCULANTE", "DEMANDA CIUDADANA",
+                    "PROYECTO DEL POA", "POR QUÉ EL MOTOR LO CLASIFICÓ ASÍ",
+                    COL, "NOTA DE JAVO"])
         for i, r in enumerate(muestra, 1):
-            w.writerow([i, tramo_de(r["similitud"]), r["similitud"],
+            w.writerow([i, tipo_de(r).upper(), r["similitud"],
                         "SÍ" if r["naturaleza_juridica"] == "vinculante" else "no",
-                        r["demanda"][:160],
-                        r["proyecto_poa_mas_proximo"][:160] or "(sin proyecto próximo)",
-                        "", ""])
+                        r["demanda"][:170],
+                        (r["proyecto_poa_mas_proximo"] or "(ninguno)")[:170],
+                        r["filtro_ontologico"][:130], "", ""])
 
-    print(f"=== INSTRUMENTO DE VALIDACIÓN EXPERTA ===\n")
+    print("=== VALIDACIÓN EXPERTA · MRSPP v3 ===")
+    print()
     print(f"  Generado: {CSV_VAL.relative_to(REPO)}")
-    print(f"  {len(muestra)} correspondencias a validar (de {len(t)} totales)\n")
-    print("  Muestreo por tramo de score — para medir precisión en CADA tramo:")
-    for _, _, nombre in TRAMOS:
-        print(f"    {nombre:12} {min(len(por_tramo[nombre]), POR_TRAMO)} muestras "
-              f"(de {len(por_tramo[nombre])} disponibles)")
-    print("\n  INSTRUCCIONES PARA JAVO:")
+    print(f"  {len(muestra)} correspondencias a validar (de {len(con_correlato)} con correlato)")
+    print()
+    print("  Muestreo por TIPO DE SATISFACCIÓN — se mide si cada NIVEL clasifica bien:")
+    for tp in TIPOS:
+        disp = len(por_tipo[tp])
+        print(f"    {tp:16} {min(disp, POR_TIPO):>2} muestras   (de {disp} disponibles)")
+    print()
+    print("  CÓMO SE VALIDA (Javo):")
     print("    1. Abrir el CSV en Excel (separador ';').")
-    print("    2. En '¿CORRESPONDE?' escribir: si · no · duda")
-    print("       → ¿el proyecto del POA responde REALMENTE a esa demanda ciudadana?")
+    print("    2. En '¿CORRECTO?' escribir:")
+    print("         si   -> el tipo asignado es el correcto")
+    print("         no   -> no hay relación alguna (debió ser NULA)")
+    print("         directa | funcional | instrumental | complementaria")
+    print("              -> sí hay relación, pero es de OTRO tipo")
     print("    3. Guardar y ejecutar:  python scripts/d08/preparar_validacion.py --aplicar")
-    print("\n  Con ~30 decisiones suyas el sistema calcula el umbral REAL y automatiza el resto.")
+    print()
+    print("  Con ~30 decisiones se mide la precisión de CADA nivel del MRSPP,")
+    print("  no un umbral global. Ahí se ve qué nivel está mal calibrado.")
     return 0
 
 
@@ -102,38 +107,64 @@ def aplicar() -> int:
         print("ERROR: no existe el CSV. Ejecutar primero sin --aplicar.")
         return 1
     filas = list(csv.DictReader(open(CSV_VAL, encoding="utf-8-sig"), delimiter=";"))
-    col = "¿CORRESPONDE? (si/no/duda)"
-    validadas = [f for f in filas if (f.get(col) or "").strip().lower() in ("si", "sí", "no", "duda")]
+    validas = ("si", "sí", "no") + tuple(TIPOS)
+    validadas = [f for f in filas if (f.get(COL) or "").strip().lower() in validas]
     if not validadas:
-        print("Aún no hay validaciones. Complete la columna '¿CORRESPONDE?' y vuelva a ejecutar.")
+        print("Aún no hay validaciones. Complete la columna '¿CORRECTO?' y vuelva a ejecutar.")
         return 0
 
-    por_tramo: dict[str, dict] = defaultdict(lambda: {"si": 0, "no": 0, "duda": 0})
+    # ok = el tipo era correcto · nula = no había relación · confusion = era otro tipo
+    res: dict[str, dict] = defaultdict(lambda: {"ok": 0, "nula": 0, "confusion": 0})
+    confusiones: Counter = Counter()
     for f in validadas:
-        v = (f[col] or "").strip().lower().replace("sí", "si")
-        por_tramo[f["TRAMO"]][v] += 1
+        v = (f[COL] or "").strip().lower().replace("sí", "si")
+        tp = (f["TIPO MRSPP"] or "").strip().lower()
+        if v == "si":
+            res[tp]["ok"] += 1
+        elif v == "no":
+            res[tp]["nula"] += 1
+        else:
+            res[tp]["confusion"] += 1
+            confusiones[f"{tp} -> {v}"] += 1
 
-    print(f"=== CALIBRACIÓN CON {len(validadas)} DECISIONES DE JAVO ===\n")
-    print(f"  {'TRAMO':13} {'✓ SÍ':>6} {'✗ NO':>6} {'? DUDA':>7}   PRECISIÓN")
-    umbral_recomendado = None
-    for _, _, nombre in TRAMOS:
-        d = por_tramo.get(nombre)
-        if not d or not (d["si"] + d["no"]):
+    print(f"=== CALIBRACIÓN DEL MRSPP · {len(validadas)} decisiones de Javo ===")
+    print()
+    print(f"  {'NIVEL':16} {'OK':>5} {'NULA':>7} {'OTRO':>7}   PRECISIÓN")
+    debiles = []
+    for tp in TIPOS:
+        d = res.get(tp)
+        n = d and (d["ok"] + d["nula"] + d["confusion"])
+        if not n:
             continue
-        prec = d["si"] / (d["si"] + d["no"])
-        print(f"  {nombre:13} {d['si']:>6} {d['no']:>6} {d['duda']:>7}   {prec:.0%}")
-        if prec >= 0.80 and umbral_recomendado is None:
-            umbral_recomendado = nombre
+        prec = d["ok"] / n
+        print(f"  {tp:16} {d['ok']:>5} {d['nula']:>7} {d['confusion']:>7}   {prec:.0%}")
+        if prec < 0.80:
+            debiles.append((tp, prec, d))
 
-    print("\n  RECOMENDACIÓN (fundada en evidencia, no en suposición):")
-    if umbral_recomendado:
-        lo = next(l for l, h, n in TRAMOS if n == umbral_recomendado)
-        print(f"    Umbral de auto-aceptación: score >= {lo}  (precisión >= 80% en '{umbral_recomendado}')")
-        print(f"    Por debajo → mantener validación humana.")
+    if confusiones:
+        print()
+        print("  CONFUSIONES ENTRE NIVELES (hay relación, el motor erró el tipo):")
+        for k, n in confusiones.most_common():
+            print(f"    {k:38} {n}")
+
+    print()
+    print("  DIAGNÓSTICO:")
+    if not debiles:
+        print("    Todos los niveles >=80%. El MRSPP está calibrado: se puede automatizar")
+        print("    el resto con validación por muestreo.")
     else:
-        print("    Ningún tramo alcanza 80% de precisión: el cruce necesita mejor señal")
-        print("    (limpiar OCR de las demandas o enriquecer el texto del POA) antes de automatizar.")
-    print("\n  Las decisiones quedan en el CSV como registro trazable de la validación experta.")
+        for tp, prec, d in debiles:
+            if d["nula"] >= d["confusion"]:
+                print(f"    · '{tp}' {prec:.0%} — FALSOS POSITIVOS ({d['nula']} sin relación real):")
+                print("      endurecer su regla en filtro_ontologico.py + añadir el caso al test.")
+            else:
+                print(f"    · '{tp}' {prec:.0%} — CONFUSIÓN DE NIVEL ({d['confusion']} casos):")
+                print("      la relación existe; falta precisión en el criterio que separa niveles.")
+        print()
+        print("    NO se automatiza un nivel por debajo de 80%: se corrige la regla primero.")
+
+    print()
+    print("  Las decisiones quedan en el CSV como registro trazable (Constitución Art. 3).")
     return 0
 
 

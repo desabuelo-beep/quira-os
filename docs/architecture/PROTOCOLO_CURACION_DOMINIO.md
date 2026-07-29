@@ -250,55 +250,28 @@ Patrón definitivo  →  PCD-DXX (documentación del dominio)
   **`n/a`** = no aplica porque **no existe vacío documental que solicitar**. La vía 3 se exige solo
   cuando las vías 1 y 2 dejan un hueco identificado.
 
-  ### ★ La vía 3 YA fue ejercida en Montecristi — y el oficio no cubre lo que se supuso
+  ### Precedente de viabilidad de la vía 3
 
-  **`OFICIO N.º 0143-2026-SG-JAMZ-GADMCM`** · leído íntegro 2026-07-29.
+  **`OFICIO N.º 0143-2026-SG-JAMZ-GADMCM`** (10-feb-2026 → 17-mar-2026) acredita que la
+  transparencia pasiva **es operable en Montecristi**: solicitud cursada, respuesta oficial
+  firmada por Secretaría General, con entrega documental (cédulas presupuestarias de gastos
+  2023-2024 reportadas al MEF). **Se registra como prueba de viabilidad del canal, nada más** —
+  no se audita aquí (Javo · 2026-07-29).
 
-  | Campo | Contenido verificado |
-  |---|---|
-  | **Solicitud** | Oficio S/N de **10-feb-2026** · Ronald Javier Delgado Santana |
-  | **Respuesta** | **17-mar-2026** · Abg. Jonathan Alfredo Mero Zamora, Secretario General y de Concejo |
-  | **Vía interna** | MEMORANDUM 0511-CNCV-DF-GADMCM-2026 · Ing. Carlos Vélez Cedeño, Director Financiero |
-  | **Lo entregado** | *"documentación correspondiente al **numeral 2** del requerimiento: **cédulas presupuestarias de gastos reportadas al Ministerio de Economía y Finanzas, periodos fiscales 2023 y 2024**"* |
-  | **Adjuntos localizados** | ✅ `Cedulas Presupuestarias 2023-2026/Presupuestos 2023|2024/*.xls` |
+  > **Qué vía usar en cada GAD se decide al incorporarlo**, no ahora: portal, silos, solicitud
+  > d07 o QUIRA Ciudadana, según lo que exista. Las tres están habilitadas; la elección es
+  > operativa y corresponde a d07.
 
-  #### Tres correcciones al tablero propuesto por la asesoría
+  ### Tablero UDC · Montecristi (`GAD-001`)
 
-  | Afirmación | Veredicto |
-  |---|---|
-  | *"Presupuesto Participativo (Vía 1 + Vía 3)"* | ❌ **falso** — el oficio entrega **cédulas presupuestarias**, instrumento de **d02**. No menciona PP |
-  | *"Audiencias públicas cubiertas"* | ❌ **falso** — no aparecen en el oficio |
-  | *"ICD ≈ 50%"* | ❌ **no se sigue** — el oficio cierra un instrumento de d02, no dos de d08 |
+  | Instrumento | UDC-I | Nota |
+  |---|:---:|---|
+  | **POA 2023-2026** · **Cabildo popular** | ✅ | universo agotado por vía 1 |
+  | **Presupuesto Participativo** | ⚠️ | vacío conocido: el instrumento **no fija costo por prioridad** |
+  | **Audiencias públicas** | ⚠️ | vacío conocido: **0/28 resoluciones** Art. 75 (OBS-017) |
+  | **Portal LOTAIP** · **Actas de Concejo** · **Holding** | ❌ | instrumentos abiertos |
 
-  **Lo que el oficio SÍ acredita, y es valioso:**
-
-  1. **La vía 3 funciona en Montecristi.** Existe precedente de solicitud cursada y **respondida con
-     entrega documental**. Deja de ser hipótesis operativa.
-  2. **Cédulas presupuestarias de gastos 2023-2024** → instrumento de **d02** con **vía 3 ejercida y
-     satisfecha**, con trazabilidad completa: número de oficio · fecha · firma electrónica ·
-     memorando interno · dirección responsable. Es el estándar de prueba más alto disponible.
-
-  #### Dos observaciones que el oficio abre — ninguna afirmable todavía
-
-  - **Respuesta parcial.** El texto dice *"correspondiente al **numeral 2** del requerimiento"*, lo
-    que implica que el requerimiento tenía **más numerales**. Los demás **no constan respondidos en
-    este oficio**. ⚠️ **No se puede evaluar la completitud sin la solicitud original**
-    (Oficio S/N de 10-feb-2026), que **no obra en el repositorio**. Es documento de Javo, no del GAD.
-  - **Plazo aparentemente excedido.** Del 10-feb al 17-mar median ~25 días término, frente a los
-    **10 + 5** que fija la LOTAIP. ⚠️ **Verificable por d07**, no afirmable aquí: habría que
-    descontar feriados y comprobar si hubo prórroga notificada.
-
-  ### Tablero UDC actualizado con el oficio
-
-  | Instrumento | Vía 1 | Vía 2 | Vía 3 | UDC-I |
-  |---|:---:|:---:|:---:|:---:|
-  | **Cédulas presupuestarias 2023-2024** (d02) | ✅ | ✅ | ✅ **oficio 0143-2026** | ✅ **cerrado con respuesta oficial** |
-  | POA 2023-2026 · Cabildo popular | ✅ | ✅ | n/a | ✅ |
-  | Presupuesto Participativo | ✅ | ✅ | ❌ | ⚠️ vacío: desglose de montos |
-  | Audiencias públicas | ✅ | ✅ | ❌ | ⚠️ vacío: resoluciones Art. 75 |
-  | Portal LOTAIP · Actas de Concejo · Holding | ❌ | — | ❌ | ❌ |
-
-  **`ICD = 3 / 8 ≈ 38%`** *(cédulas, POA y cabildo cerrados)*. **UDC-G = FALSO.**
+  **`UDC-G = FALSO`** — 4 / 12 dominios cerrados con PCD.
 
   ### ICD · Índice de Cierre Documental *(asesoría · 2026-07-29)*
 

@@ -43,11 +43,11 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO y halla las B
 🔬 **d08 · MRSPP v3** (5 niveles; embedding PROPONE, modelo DECIDE): 68·27·**0**·25 · 103 nulas.
 🏛️ **R-C..R-F → `PROTOCOLO_CURACION_DOMINIO.md` §3.** R-C dueño del instrumento califica (OBS-020→**d01**) · R-D ¿ALGORITMO o INSTRUMENTO? **se mide, no se parcha** · **R-E (LEY)** solo Montecristi hasta cerrarlo · **R-F** 3 vías (activa·silos·**pasiva LOTAIP**): solicitar **ES ejercer la norma** (Const. 18·226), se controla la **trazabilidad del acto**.
 🔬 POA localiza el **1%** → **CVI** = 2ª dim. IOC (`IOC=f(ICEP,CVI)`). `instrumental=0` ES el hallazgo (PP: **limitación estructural del instrumento**).
-🔒 **UDC/ICD** (R-F.1): **UDC-G** `= ∧ UDC-Iₖ`. MCR ✅ cédulas d02(vía3)·POA·cabildo · ⚠️ PP·audiencias · ❌ LOTAIP·Concejo·Holding → **UDC-G=FALSO·ICD≈38%**.
-📄 **Vía 3 ejercida**: `OFICIO 0143-2026` → **cédulas presup. 2023-24** (=d02, **NO** PP/audiencias). Solo numeral 2; falta la solicitud S/N. Plazo ~25d vs 10+5 → ver d07.
+🔒 **UDC/ICD** (R-F.1): **UDC-G** `= ∧ UDC-Iₖ`. MCR ✅ POA·cabildo · ⚠️ PP·audiencias · ❌ LOTAIP·Concejo·Holding → **UDC-G=FALSO**.
+📄 **Vía 3 viable** (precedente `OFICIO 0143-2026`, no se audita aquí). Qué vía usar en cada GAD se decide **al incorporarlo**, no ahora.
 ⚖️ **3 CAPAS**: A jurídica (**Guía LOTAIP 2024 = LEY, no canon**) · B operativa (**d07** tramita) · C analítica (QUIRA audita, **no tramita**). Aportes QUIRA **diferenciados**.
 🧪 **H-ARQ-01** (HIPÓTESIS): ¿falta de localización/desagregación = propiedad de la arquitectura documental EC? 2 instrumentos·1 GAD → bloqueado por R-E. **Precedente H24c**: fórmula válida ≠ operando válido.
-⏭️ **EXCEL d08** → `ESPECIFICACION_GOLD_MASTER_D08.md` (⛔ NO `H24c!B7=H10b!B9`: cifra falsa). Libre: IGP_3(d09) · `IGP_2=0` medido · **SAT-IX** 46,2% · CVI en IOC.
+⏭️ **JAVO: (1)** validar `data/d08/validacion_experta.csv` (24 casos por TIPO MRSPP) **(2)** `ESPECIFICACION_GOLD_MASTER_D08.md` (⛔ NO `H24c!B7=H10b!B9`: cifra falsa). Libre: IGP_3(d09) · `IGP_2=0` medido · **SAT-IX** 46,2% · CVI en IOC.
 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 ratificado · detalle en el ADR)
 GAD = sujeto observado, NO cliente. 4 capas: A Núcleo · B Operaciones · C Productos (§LA TESIS · 1 motor) · D Portal `quiraintelligence.com` (radar 221 GAD).
