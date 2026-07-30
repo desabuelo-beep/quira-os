@@ -16,7 +16,77 @@ corresponde al dom, sus indicadores y sus sat"*
 
 ---
 
-## ★ CANDIDATO GENERADO · procedimiento de promoción
+## ✅ v5.6_TGI PROMOVIDO · 2026-07-29
+
+**El canónico activo es ahora `SIAP-ICPI_GOLD_MASTER_v5.6_TGI.xlsx`.** Javo lo promovió, lo abrió
+en Excel (recalculó) y **retiró IGP_3 él mismo**. El conector lo tomó **automáticamente**, sin
+tocar código — la corrección del resolver funcionó en producción.
+
+| | v5.5 | **v5.6** |
+|---|---:|---:|
+| `H20b!B8` IGP_3 (MFN · d09) | 0,91 | **retirado** |
+| `H20b!B9` **IGP_Global** | 0,4833 | **0,27** |
+| `H73` IGP_2026_ACTUAL | 0,4833 | **0,27** |
+| `H12!B33` ICPI | 0,27458226534062735 | **idéntico** ✅ |
+
+> **La baja de 48,33% → 27% es corrección metodológica, no deterioro de gestión.** El IGP ya no
+> mezcla d09. Debe citarse siempre con esa nota o la serie histórica se vuelve ilegible.
+
+## ★ CANDIDATO v5.7 · `_CANDIDATO_v5.7_IGP3-SATIX-CVI.xlsx`
+
+Lo que falta, sobre copia de v5.6:
+
+| Cambio | Detalle |
+|---|---|
+| **Limpieza IGP** | `B9`/`B10` aún referencian `B8`; pasan a `AVERAGE(B6:B7)` · etiqueta `IGP_3_RETIRADO` + nota metodológica |
+| **`SAT-IX`** | Brecha de Atención Ciudadana · **D4** · COOTAD 238 · umbral **0,50** · peso **0,05** |
+| **Panel CVI** | `H41!A19:C23` — `CVI_POA = 0,989` · `IOC_COMPUESTO = AVERAGE(ICEP, CVI)` **como propuesta**, no reemplaza `IOC_Global` |
+
+### Por qué esos números
+
+**`SAT-IX` umbral 0,50** — se mide sobre demandas **vinculantes** (COOTAD 238, incorporación
+exigible), no sobre todas: **84,8% (162 de 191)** sin correlato verificable. El umbral en 0,50
+dice: *si más de la mitad de lo legalmente exigible no puede verificarse, el mecanismo no cumple
+su función*. Peso 0,05, el mismo de `SAT-VI` por ser de la misma dimensión D4.
+
+**`IOC_COMPUESTO` no se aplica, se propone.** Cambiar `IOC_Global` afecta lo que ya lo consume;
+el panel deja el dato calculado y visible para que Javo decida si lo promueve.
+
+## Procedimiento de promoción *(el mismo que funcionó)*
+
+1. Abrir el candidato en Excel y **guardar** — openpyxl no deja valores cacheados.
+2. Verificar `H12!B33` = **0,27458226534062735**.
+3. Renombrar a **`SIAP-ICPI_GOLD_MASTER_v5.7_TGI.xlsx`** *(sufijo `_TGI` obligatorio)*.
+4. El conector lo toma solo.
+
+> ⚠️ **Nunca** renombrar un `_FREEZE` a `_TGI`: son respaldos, no motores.
+
+---
+
+## Presupuesto Haiku · monitoreo d07 LOTAIP
+
+Precios Haiku 4.5: **$1/MTok** entrada · **$5/MTok** salida.
+
+| Escenario | 6 meses (solo 2026) | **18 meses (2025+2026)** |
+|---|---:|---:|
+| Conservador (55 docs/mes · 6k tok) | $7,42 | **$22,27** |
+| Pesado (80 docs/mes · 10k tok) | $16,80 | **$50,40** |
+
+*(cifras con factor ×2,5 por reprocesos y desarrollo)*
+
+> **Recomendación: comprar $60 y hacer los 18 meses completos.** No hay razón para recortar a
+> 2026: la serie de 2025 es lo que da **longitudinalidad** —el activo que un competidor no puede
+> comprar (Constitución Art. 19)— y el costo diferencial son ~$30.
+>
+> Con *prompt caching* (los prompts de sistema se repiten en cada documento) la entrada baja
+> 40-50%, así que el escenario real estará más cerca de $25 que de $50.
+
+**Antes de gastar:** procesar **1 mes real** de LOTAIP mide tokens efectivos y convierte esta
+estimación en cifra exacta. Requiere construir primero el extractor de d07, que hoy no existe.
+
+---
+
+## ★ CANDIDATO ANTERIOR (v5.6) · histórico
 
 **Archivo:** `ProyecT/_CANDIDATO_d08_REVISAR_NO_ES_CANONICO.xlsx` — copia de v5.5 con 5 celdas
 cambiadas. **NO es el canónico** y el conector lo ignora por el prefijo `_`.
