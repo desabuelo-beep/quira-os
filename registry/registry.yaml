@@ -4,7 +4,7 @@
 # Autoridad: Carta de Gobernanza Art. 1 (Derivación) y Art. 3 (describe, no gobierna).
 # ═══════════════════════════════════════════════════════════════════
 generado: 2026-07-30
-total_activos: 115
+total_activos: 116
 huerfanos: 0   # sin bloque authority: → no pueden promoverse a vigente (Art. 1)
 
 componentes:
@@ -19,7 +19,7 @@ componentes:
     kind: normative
     level: 1
     path: governance/BOOT.md
-    hash: dd58ce2ccea1e4c1
+    hash: 66cec457cdd4d41b
     authority_declared: true
     parent: GOVERNANCE-001
   - id: GOVERNANCE-001
@@ -663,7 +663,14 @@ componentes:
     kind: observation
     level: 2
     path: docs/observations/OBS-021_Validacion_Campo_Territorio_Constitutivo.md
-    hash: 525071a964b08ddf
+    hash: 839664e1ccacb72e
+    authority_declared: true
+    parent: GOVERNANCE-001
+  - id: OBSERVATION-OBS-022_Grieta_Sistemica_SAT_sin
+    kind: observation
+    level: 2
+    path: docs/observations/OBS-022_Grieta_Sistemica_SAT_sin_cadena_BRN.md
+    hash: 33e7c3cf975e506c
     authority_declared: true
     parent: GOVERNANCE-001
   - id: DOMAIN_CATALOG-catalogo_d01_v1.0.0

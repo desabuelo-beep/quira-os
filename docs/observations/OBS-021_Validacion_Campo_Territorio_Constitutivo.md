@@ -96,7 +96,7 @@ Ambas estaban en el test y eran supuestos de la dirección técnica, no criterio
 | complementaria | 25 | **9** |
 | **sin correlato** | 103 | **180 · 81%** |
 
-**El 81% no es una falla del motor: es la medida de la brecha.** Y confirma **OBS-020 desde el
+**El 81% no es una falla del motor: es la medida de la brecha.** Y "brecha" aquí significa exactamente esto y nada más: **el % de demandas sin correlato verificable bajo la metodología ICPI**. NO implica que no se ejecutaran, ni que se ignoraran, ni que exista incumplimiento administrativo. Y confirma **OBS-020 desde el
 lado opuesto** — allí se midió que el POA localiza el 1% del gasto; aquí se mide la consecuencia:
 **cuatro de cada cinco demandas ciudadanas no tienen correspondencia verificable en la
 planificación.**

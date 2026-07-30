@@ -63,7 +63,9 @@ el panel deja el dato calculado y visible para que Javo decida si lo promueve.
 
 ---
 
-## Presupuesto Haiku · monitoreo d07 LOTAIP
+## ESTIMACIÓN Haiku · monitoreo d07 LOTAIP
+
+> ⚠️ **Es una ESTIMACIÓN basada en hipótesis de volumen, no un presupuesto** (asesoría). Hasta procesar un mes real no se conoce el tamaño medio de los PDF y Excel, los tokens efectivos ni el porcentaje de caché. Sirve para decidir cuánto comprar, no para facturar.
 
 Precios Haiku 4.5: **$1/MTok** entrada · **$5/MTok** salida.
 
