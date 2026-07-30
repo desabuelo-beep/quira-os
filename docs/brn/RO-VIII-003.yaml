@@ -41,7 +41,11 @@ version: "1.0"
 dimension: efectividad_incidencia
 deriva_de: CNO-VIII-000 v1.0
 metrica: { nombre: Efectividad_Incidencia_Participacion, unidad: porcentaje }
-parametros: { umbral_alto: 60, umbral_medio: 40, frecuencia: anual }   # atención realista, a calibrar con Javo
+parametros: { umbral_alto: 60, umbral_medio: 40, frecuencia: anual }
+# ★ CALIBRADO EMPÍRICAMENTE 2026-07-29 (antes decía "a calibrar con Javo"):
+#   medición sobre demandas VINCULANTES (COOTAD 238 · las exigibles), no sobre el total.
+#   162 de 191 sin correlato verificable = 84,8%.  Universo total (223) daría 80,7%, pero
+#   mezclar advisory con vinculante subestima lo que la ley hace EXIGIBLE.
 
 metodo:
   tipo: trazabilidad_documental_semiautomatica
@@ -66,6 +70,34 @@ consecuencia: "Observación de incidencia: aporte VINCULANTE (PP) sin correlato 
 # SAT real del Gold Master relevante a la efectividad (OBS-016): SAT-VI Desvío PP (D4).
 # Hoy sin datos (Hay_Datos_PP=NO). Las SAT que falten para d08 se diseñan en fase 2.
 consume: [ SAT-VI ]
+
+# ── SAT QUE ESTA RO PRODUCE ────────────────────────────────────────────────────
+# ADR-038 §1b: "una CNO todavía es Derecho; una SAT ya es control". El UMBRAL y el
+# PESO son LÓGICA y por tanto viven aquí, no en SAT_Catalogo del Gold Master —
+# el Excel solo REFLEJA lo que esta RO declara.
+#
+# ⚠️ Corrección de procedimiento (Javo · 2026-07-29): SAT-IX se había escrito
+# directamente en el Excel, saltándose CNO→RO. Javo lo detectó: "¿por las SAT no
+# debería pasar la BRN?". Sí debe. Queda restituida la cadena.
+produce:
+  - id: SAT-IX
+    nombre: "Brecha de Atencion Ciudadana"
+    dimension_tgi: D4                     # misma que SAT-VI (participación)
+    deriva_de: CNO-VIII-005               # COOTAD 238 · verificado con SHA en el corpus
+    metrica: "demandas_vinculantes_sin_correlato / demandas_vinculantes"
+    umbral_activacion: 0.50
+    justificacion_umbral: >-
+      Si más de la mitad de lo que la ley hace EXIGIBLE (COOTAD 238) no puede
+      verificarse documentalmente, el mecanismo participativo no está cumpliendo su
+      función legal. Umbral conservador: no afirma desatención, afirma no-verificabilidad.
+    peso_severidad: 0.05                  # igual a SAT-VI por compartir dimensión D4
+    tipo: ALERTA
+    medicion_2026: { valor: 0.848, numerador: 162, denominador: 191, fuente: "data/d08/trazabilidad_demandas.json" }
+    frontera_interpretativa: >-
+      NO acredita desatención del GAD. Acredita ausencia de habilitación documental
+      (Carta Art. 4.5). OBS-021: la causa dominante es que el POA localiza el 1% del
+      gasto, así que la correspondencia es inverificable por el instrumento, no negada.
+    refleja_en_gold_master: "SAT_Catalogo fila 15 + H75_SAT_ENGINE"
 opera_en: d08
 estado: propuesta
 validacion: { validada_por: null, fecha_validacion: null }
