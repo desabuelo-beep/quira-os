@@ -94,6 +94,45 @@ este sistema combate.
    desproporcionado frente a saldar la deuda dominio por dominio.
 3. **R-E** — el esfuerzo disponible está comprometido en cerrar Montecristi.
 
+## 4-bis · Saldo parcial ejecutado (2026-07-29)
+
+**Deuda: 90% → 60%.** Se declararon los mapeos **verificables**; los dudosos NO se forzaron.
+
+| RO | métrica | → SAT del motor | Fundamento del mapeo |
+|---|---|---|---|
+| `RO-I-001` | Pct_Metas_Con_Programacion | **SAT-0** | faceta *programación* de Coherencia POA-PAC |
+| `RO-I-002` | Pct_Coherencia_Programacion_Contratacion | **SAT-0** | faceta *contratación* — misma señal |
+| `RO-IV-001` | Pct_Gasto_No_Permanente | **SAT-IV** | **inequívoco**: umbral 65%→70% = `inversion_pct < 65%` de SAT-IV |
+| `RO-IX-001` | Pct_Cumplimiento_Rendicion | **SAT-V** | rendición = CPCCS (OBS-016 ya lo decía) |
+| `RO-VIII-003` | Efectividad_Incidencia | **SAT-IX** | declarada hoy |
+
+### ⛔ Desvarío atajado: `SAT-IX` NO es `SAT-IX-001`
+
+La asesoría propuso una tabla de equivalencias con `SAT-IX ≡ SAT-IX-001 · d08/d09 · 🟢 saneada`.
+**Habría fusionado dos señales de dominios distintos:**
+
+| Id | Qué es | Dominio | RO |
+|---|---|---|---|
+| **`SAT-IX`** | Brecha de Atención Ciudadana | **d08** | `RO-VIII-003` |
+| `SAT-IX-001` | id BRN heredado de rendición de cuentas → **es `SAT-V`** | **d09** | `RO-IX-001` |
+
+Coinciden en el numeral romano por **casualidad de dos nomenclaturas distintas**, no por
+identidad. Quedan declaradas como `equivalencia_heredada` en cada RO, nunca fusionadas.
+
+### Las 6 que siguen pendientes — y por qué
+
+| SAT | Dominio | Por qué no se saldó |
+|---|---|---|
+| **SAT-I** Fragmentación Selectiva | d03 | existe `RO-III-001` pero su métrica es *Pct_Fidelidad_Mandato* — **no es evidente** que sea fragmentación. **Requiere criterio de Javo**, no se fuerza |
+| **SAT-II** Reforma Tardía | d02 | **no existe RO de d02** para reformas — hay que crearla con su CNO |
+| **SAT-III** Parálisis Presupuestaria | d02 | ídem |
+| **SAT-VI** Desvío PP | d08 | `RO-VIII-003` la **consume**; falta decidir si la produce ella o requiere RO propia |
+| **SAT-VII** Vi Sináptico | informacional | **sin dominio asignado** — es señal de pulso del sistema, no de un DOM |
+| **SAT-VIII** Equidad Territorial | d10/d12 | **dominios no construidos** |
+
+> **Cuatro de las seis no son deuda de documentación: son dominios o reglas que aún no existen.**
+> Saldarlas exige crear CNO verificadas contra el corpus, no escribir YAML.
+
 ## 5 · Acciones
 
 | # | Acción | Estado |

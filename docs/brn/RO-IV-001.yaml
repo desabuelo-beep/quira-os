@@ -32,6 +32,19 @@ parametros:
 consecuencia: "Alerta fiscal preventiva"
 
 # ── Consumo (la RO no conoce el motor · colega 2026-07-18) ─────────────────────────
+# ── SAT QUE ESTA RO PRODUCE (OBS-022) ────────────────────────────────────────
+# Mapeo INEQUÍVOCO: el umbral de esta RO (65% hasta 2026, 70% desde 2027) es
+# exactamente el de SAT-IV "Alerta Fiscal COOTAD" (metrica GM: inversion_pct < 65%).
+produce:
+  - id: SAT-IV
+    nombre_gold_master: "Alerta Fiscal COOTAD"
+    dimension_tgi: D3
+    deriva_de: CNO-IV-001
+    metrica: Pct_Gasto_No_Permanente
+    umbral_activacion: "vigencia_operativa (65% hasta 2026-12-31 · 70% desde 2027-01-01)"
+    equivalencia_heredada: SAT-IV-001
+    refleja_en_gold_master: "SAT_Catalogo fila 10"
+
 consume: [ SAT-IV-001 ]           # la SAT lleva solo este ID (ADR-038 §118)
 opera_en: d02                     # dominio funcional (Presupuesto & Financiamiento)
 

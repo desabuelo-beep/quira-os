@@ -39,6 +39,20 @@ metodo:
 consecuencia: "Brecha entre programación y contratación: se señala de forma preventiva antes de ejecutar, no como incumplimiento consumado"
 
 # ── Consumo ───────────────────────────────────────────────────────────────────────
+# ── SAT QUE ESTA RO PRODUCE (OBS-022) ────────────────────────────────────────
+# Segunda faceta de la MISMA señal SAT-0: no basta que la meta esté programada,
+# la programación debe tener correlato en contratación (PAC).
+produce:
+  - id: SAT-0
+    nombre_gold_master: "Coherencia POA-PAC"
+    dimension_tgi: D2
+    deriva_de: CNO-I-001
+    metrica: Pct_Coherencia_Programacion_Contratacion
+    umbral_activacion: 100
+    faceta: "contratación — la programación llega al PAC"
+    equivalencia_heredada: SAT-I-002
+    refleja_en_gold_master: "SAT_Catalogo fila 6"
+
 consume: [ SAT-I-002 ]
 opera_en: d01                     # Planificación Estratégica
 

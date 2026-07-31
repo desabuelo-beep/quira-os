@@ -50,6 +50,24 @@ metodo:
 consecuencia: "Observación de cumplimiento: el período sin acreditación documental completa queda registrado como pendiente de subsanación (Reglamento Art. 21)"
 
 # ── Consumo (la RO no conoce el motor) ────────────────────────────────────────────
+# ── SAT QUE ESTA RO PRODUCE (OBS-022) ────────────────────────────────────────
+# ⚠️ CORRECCIÓN DE NOMENCLATURA (OBS-016 · confirmada 2026-07-29). Esta RO citaba
+# SAT-IX-001, que NO EXISTE en el Gold Master. La señal real de rendición de
+# cuentas es SAT-V "Brecha Compromiso CPCCS" (D5).
+#
+# ⛔ NO confundir con SAT-IX (Brecha de Atención Ciudadana), que es de d08 y la
+# produce RO-VIII-003. Son señales DISTINTAS de dominios distintos: la asesoría
+# propuso fusionarlas por equivalencia de nombre y habría corrompido el canon.
+produce:
+  - id: SAT-V
+    nombre_gold_master: "Brecha Compromiso CPCCS"
+    dimension_tgi: D5
+    deriva_de: CNO-IX-001
+    metrica: Pct_Cumplimiento_Rendicion
+    umbral_activacion: 100
+    equivalencia_heredada: SAT-IX-001   # ⚠️ id BRN antiguo · NO es SAT-IX
+    refleja_en_gold_master: "SAT_Catalogo fila 11"
+
 consume: [ SAT-IX-001 ]
 opera_en: d09                     # Rendición de Cuentas
 

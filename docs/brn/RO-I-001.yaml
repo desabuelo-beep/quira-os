@@ -37,6 +37,21 @@ metodo:
 consecuencia: "Meta sin programación operativa: queda registrada como planificación sin traducción anual (observación preventiva)"
 
 # ── Consumo ───────────────────────────────────────────────────────────────────────
+# ── SAT QUE ESTA RO PRODUCE (OBS-022 · saldo de deuda BRN) ────────────────────
+# ADR-038 §1b: el umbral es LÓGICA y vive aquí; SAT_Catalogo solo lo refleja.
+# Mapeo verificado 2026-07-29: la nomenclatura BRN heredada (SAT-I-001) NO existe
+# en el Gold Master. La señal real es SAT-0 "Coherencia POA-PAC" (OBS-016).
+produce:
+  - id: SAT-0
+    nombre_gold_master: "Coherencia POA-PAC"
+    dimension_tgi: D2
+    deriva_de: CNO-I-001
+    metrica: Pct_Metas_Con_Programacion
+    umbral_activacion: 100          # toda meta del PDOT debe tener programación operativa
+    faceta: "programación — la meta existe en el POA"
+    equivalencia_heredada: SAT-I-001   # ⚠️ id BRN antiguo, no existe en el motor
+    refleja_en_gold_master: "SAT_Catalogo fila 6"
+
 consume: [ SAT-I-001 ]
 opera_en: d01                     # Planificación Estratégica
 

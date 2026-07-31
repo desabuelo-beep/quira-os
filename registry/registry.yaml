@@ -3,7 +3,7 @@
 # GENERADO por scripts/governance/build_registry.py · NO editar a mano.
 # Autoridad: Carta de Gobernanza Art. 1 (Derivación) y Art. 3 (describe, no gobierna).
 # ═══════════════════════════════════════════════════════════════════
-generado: 2026-07-30
+generado: 2026-07-31
 total_activos: 116
 huerfanos: 0   # sin bloque authority: → no pueden promoverse a vigente (Art. 1)
 
@@ -19,7 +19,7 @@ componentes:
     kind: normative
     level: 1
     path: governance/BOOT.md
-    hash: 66cec457cdd4d41b
+    hash: c4ae318735847217
     authority_declared: true
     parent: GOVERNANCE-001
   - id: GOVERNANCE-001
@@ -250,14 +250,14 @@ componentes:
     kind: canon_ro
     level: 2
     path: docs/brn/RO-I-001.yaml
-    hash: 7d8e9c06faddfced
+    hash: f45c105408c5e7cf
     authority_declared: true
     parent: CNO-I-001
   - id: RO-I-002
     kind: canon_ro
     level: 2
     path: docs/brn/RO-I-002.yaml
-    hash: 4565a948f16e4d8d
+    hash: 3aa25633b87fad56
     authority_declared: true
     parent: CNO-I-001
   - id: RO-III-001
@@ -271,14 +271,14 @@ componentes:
     kind: canon_ro
     level: 2
     path: docs/brn/RO-IV-001.yaml
-    hash: 289f2b86cbcc8f92
+    hash: 8f416a9965fb4403
     authority_declared: true
     parent: CNO-IV-001
   - id: RO-IX-001
     kind: canon_ro
     level: 2
     path: docs/brn/RO-IX-001.yaml
-    hash: 1d95c49349d9eba7
+    hash: 08498d1e82be5811
     authority_declared: true
     parent: CNO-IX-001
   - id: RO-VIII-001
@@ -670,7 +670,7 @@ componentes:
     kind: observation
     level: 2
     path: docs/observations/OBS-022_Grieta_Sistemica_SAT_sin_cadena_BRN.md
-    hash: 33e7c3cf975e506c
+    hash: f960da4cb0af9e5c
     authority_declared: true
     parent: GOVERNANCE-001
   - id: DOMAIN_CATALOG-catalogo_d01_v1.0.0
