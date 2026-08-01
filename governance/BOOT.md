@@ -33,21 +33,22 @@ Constitución = QUÉ ES QUIRA (CAPA 0 Doctrina + 4 macroejes + 12 dominios): mid
 PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO y halla las BRECHAS.
 
 ## AHORA (estado vivo · historial → `governance/historico/BOOT_2026-06-17.md`)
-🧭 **ADR-031:** cajón=MCD · GoldMaster=MCM · MCIP 5 motores (Index §1.A).
+🧭 **ADR-031:** cajón=MCD · GoldMaster=MCM · MCIP 5 motores.
 ✅ **4 DOM cerrados con PCD: d01·d02·d03·d09.**
-📚 **ADR-038 BRN v2:** nodo = REGLA, no artículo. **Corpus→CNO→RO→SAT** · **v1.0 CONGELADO** · **v2.1** d01-03+08-09 CONFORMES·diff=0.
-🩺 **Canon curado por DOM (R.8), ICPI intacto. Gate `check_health.py`: NO adivinar tamaños.**
+📚 **ADR-038 BRN v2:** nodo = REGLA. **Corpus→CNO→RO→SAT** · **v1.0 CONGELADO** · **v2.1** CONFORMES·diff=0.
+🩺 **Canon curado por DOM (R.8), ICPI intacto. Gate `check_health.py`: NO adivinar.**
 📚 **ADR-035/037:** Ley→BRN→GoldMaster(único motor)→QUIRA · IA propone, humano valida.
-🏛️ **d02·d03·d09·d08 migrados**. **d08**: **Asamblea ciudadana AUTÓNOMA (no GAD)** · CNO-VIII(8) · **OBS-012..017**.
-🏛️ **GOBERNANZA v1.0:** `identity/`→`governance/`Carta→`marco_teorico/`(Postulados+Inventario+**Mapa**)→Canon→`registry/`. ⚠️ Derivación 100% **solo en lo catalogado** (47 .md sin autoridad).
-🔬 **d08 · MRSPP v4**: 26·8·**0**·9 · **180 sin correlato (81%)**. **OBS-021**: v3 daba **12%** → **T0: territorio CONSTITUTIVO** («X en el lugar Y»); ancla por **patrón**.
-🔌 **CABLEADO** (`MATRIZ_CABLEADO_CANONICO.md`): **GoldMaster→SILOS→DOM→QUIRA**. `H36_QUIRA_BRIDGE` YA existía. **S3 POA SÍ es silo** (*incorporación programática*, no entra en `Vi`). **S1·S6·S9 sin DOM.**
-🚨 **OBS-022 (Javo): SAT sin cadena BRN — deuda 90%→60%.** Saldadas SAT-0·IV·V·IX. Faltan: I (criterio Javo) · II·III (sin RO d02) · VI · VII (sin DOM) · VIII (d10/d12). PCD → **`cerrado con deuda declarada`** (R.8). Gate `check_sat_brn.py`. ⛔ `SAT-IX`(d08) ≠ `SAT-IX-001`(=SAT-V, d09).
-🏛️ **R-C..R-G → `PROTOCOLO_CURACION_DOMINIO.md` §3.** C: el dueño del instrumento califica · D: ¿ALGORITMO o INSTRUMENTO? **se mide, no se parcha** · **E (LEY)**: solo Montecristi · F: 3 vías, solicitar **ES ejercer la norma** (Const. 18·226) · G: todo DOM declara su cableado.
+🏛️ **d02·d03·d09·d08 migrados**. **d08**: **Asamblea ciudadana AUTÓNOMA** · CNO-VIII(8) · **OBS-012..017**.
+🏛️ **GOBERNANZA v1.0:** `identity/`→`governance/`Carta→`marco_teorico/`→Canon→`registry/`. ⚠️ Derivación 100% **solo en lo catalogado** (47 .md sin autoridad).
+🔬 **d08 · MRSPP v4**: 26·8·**0**·9 · **180 sin correlato (81%)**. **OBS-021**: v3 daba 12% → **T0: territorio CONSTITUTIVO**; ancla por **patrón**.
+🔌 **CABLEADO** (`MATRIZ_CABLEADO_CANONICO.md`): **GoldMaster→SILOS→DOM→QUIRA**. `H36_QUIRA_BRIDGE` YA existía. **S3 POA SÍ es silo** (no entra en `Vi`). **S1·S6·S9 sin DOM.**
+🧨 **OBS-023 (Javo): BRECHA ICM↔ICPI MAL CALCULADA.** `B36`=0,7254 (fracción) vs umbral 30/15 (puntos) → dice ✅"mínima" con **72,5 pts**; `H08!B10`=−0,26 vs `H12!B36`=+0,73 (**signos opuestos**). NO citable. **`SAT-I` = S6 SIGAD, no d03.** GAD reportó **5/25 metas 2023 · 9/25 2024**.
+🚨 **OBS-022: SAT sin cadena BRN, deuda 90%→60%.** Saldadas SAT-0·IV·V·IX. PCD → **`cerrado con deuda declarada`** (R.8). Gate `check_sat_brn.py`. ⛔ `SAT-IX`(d08) ≠ `SAT-IX-001`(=SAT-V, d09).
+🏛️ **R-C..R-G → `PROTOCOLO_CURACION_DOMINIO.md` §3.** C: el dueño del instrumento califica · D: ¿ALGORITMO o INSTRUMENTO? **se mide, no se parcha** · **E (LEY)**: solo Montecristi · F: 3 vías, solicitar **ES ejercer la norma** · G: cada DOM declara su cableado.
 🔬 POA localiza el **1%** (OBS-020) → **CVI** = 2ª dim. IOC. `inverificable` ≠ `no atendido`.
 🔒 **UDC/ICD**: **UDC-G** `= ∧ UDC-Iₖ`. MCR ✅ POA·cabildo · ⚠️ PP·audiencias · ❌ LOTAIP·Concejo·Holding → **FALSO**.
-⚖️ **3 CAPAS**: jurídica (**Guía LOTAIP = LEY, no canon**) · operativa (**d07**) · analítica (QUIRA audita, **no tramita**).
-🧪 **H-ARQ-01** (HIPÓTESIS): ¿falta de localización/desagregación = propiedad de la arquitectura documental EC? 2 instrumentos·1 GAD → bloqueado por R-E.
+⚖️ **3 CAPAS**: jurídica (**Guía LOTAIP = LEY, no canon**) · operativa (**d07**) · analítica (QUIRA **no tramita**).
+🧪 **H-ARQ-01** (HIPÓTESIS): ¿falta de localización/desagregación = propiedad de la arquitectura documental EC? 2 instrumentos·1 GAD → bloq. R-E.
 ⏭️ **JAVO: (1)** 2ª validación v4 · ¿retirar `complementaria` (0/8)? **(2)** promover `_CANDIDATO_v5.7` → `v5.7_TGI`. **(3)** Haiku ~$60 los 18 meses.
 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 ratificado · detalle en el ADR)
@@ -60,10 +61,10 @@ no redefinas · cierre `/graphify . --update`) · **no congelar teoría antes qu
 ## LAZY LOAD — lee SOLO lo que aplica a tu tarea
 | Si vas a... | Lee primero |
 |---|---|
-| **Arranque** | **SOLO este BOOT.md hasta saber tu tarea.** |
+| **Arranque** | **SOLO este BOOT.md hasta saber la tarea.** |
 | Arquitectura 3 niveles (inmutable) | `docs/adr/ADR-023` |
 | Leer métricas del Gold Master | `app/connectors/gold_master.py` → NO recalcular |
-| Construcción/UI/dominios | `docs/REFERENCE.md` |
+| Construcción/UI/dom | `docs/REFERENCE.md` |
 | Retomar d07 Transparencia | `docs/architecture/CATALOGO_CANONICO_CD_D07.md` + `app/agents/d07/` |
 
 ## INFRA (credenciales en `.streamlit/secrets.toml` local, NUNCA al repo)

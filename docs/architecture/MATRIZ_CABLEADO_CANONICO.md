@@ -65,12 +65,19 @@ SERCOP; 1 si además hay LOTAIP **o** CPCCS; 0,5 si hay ejecución sin publicida
 | **S3** | `H05_S3_OPERATIVO_POA` | **d01** | **incorporación programática** | `V_POA` · `SAT-0` |
 | **S3b** | `H05b_S3b_PAC_CONTRATACIÓN` | **d03** | programación de compras | `SAT-0` coherencia POA-PAC |
 | **S4** | `H06_S4_CONTRATACIÓN_SERCOP` | **d03** | legalidad y adjudicación | **`V_SERCOP`** ★ 850 filas |
+
 | **S5** | `H07_S5_FINANCIERO_eSIGEF` | **d02** | ejecución presupuestaria | **`V_eSIGEF`** · `T_i` |
-| **S6** | `H08_S6_AUTOREPORTE_SIGAD` | *d06 — no existe aún* | autoreporte vs evidencia | brecha `ICM − ICPI` |
+| **S6** | `H08_S6_AUTOREPORTE_SIGAD` | *d06 — no existe aún* | autoreporte vs evidencia | brecha `ICM − ICPI` · **`SAT-I`** ★ |
 | **S7** | `H09_S7_TRANSPARENCIA_LOTAIP` | **d07** | publicidad activa | **`V_LOTAIP`** · `H18_ITAM` |
 | **S8** | `H10_S8_PARTICIPACIÓN_CPCCS` | **d09** | rendición · imputabilidad | **`V_CPCCS`** · `C_i` |
 | **S8b** | `H10b_S8b_PARTICIPATIVO` | **d08** | presupuesto participativo | `IGP_2` · `SAT-VI` |
 | **S9** | `H11_S9_AGENDA_GLOBAL_ODS` | *d05 — no existe aún* | vinculación ODS | `H20_ICODS` |
+
+> ⚠️ **Corrección 2026-07-29 (Javo · OBS-023):** `SAT-I` *"Fragmentación Selectiva"* estaba
+> mapeada aquí a **d03** por su nombre. **Es de S6 (SIGAD)**: su base legal es COPFP Art. 54
+> (reportar *todas* las metas al SIGAD) y su métrica es `ICM_Global >= 80% AND
+> pct_metas_reportadas <= 10%`. No mide fragmentación de contratos: mide **fragmentación del
+> reporte** — calificación alta sobre un universo mínimo de metas.
 
 > ⚠️ **Precisión sobre la propuesta original:** `d00`, `d05` y `d06` **no existen** en
 > `app/agents/`. Hoy hay seis: d01·d02·d03·d07·d08·d09. **Tres silos del motor no tienen dominio

@@ -1,0 +1,121 @@
+---
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [1, 2, 3, 4, 9]
+  type: OBSERVACION
+---
+
+# OBS-023 · La Brecha de Verificación ICM↔ICPI está mal calculada e interpretada
+
+**2026-07-29 · hallazgo abierto por Javo · silo S6 (SIGAD) · afecta el núcleo de la tesis**
+
+> **Lo que Javo dijo:** *"SAT-I mide o analiza el tema de ICM de SIGAD… pero creo **no la
+> aterrizamos bien metodológica y legalmente**, habría que revisar."* Tenía razón en las dos
+> cosas: el mapeo estaba mal **y** el cálculo también.
+
+---
+
+## 1 · Primer error: SAT-I no es de contratación, es de SIGAD
+
+La matriz de cableado la había ubicado en **d03 Contratación** por su nombre *"Fragmentación
+Selectiva"*. El catálogo dice otra cosa:
+
+| Campo | Valor real (`SAT_Catalogo` fila 7) |
+|---|---|
+| Base legal | **COPFP Art. 54** — *"las entidades deben reportar avances de **todas** las metas del plan operativo en el SIGAD"* |
+| Métrica | `ICM_Global >= 80% AND pct_metas_reportadas <= 10%` |
+| Doctrina | *"calificación alta con universo de metas mínimo es señal de fragmentación"* |
+
+**`SAT-I` pertenece al silo S6 (SIGAD)**, que es uno de los tres **sin DOM que lo cure**
+(MATRIZ_CABLEADO_CANONICO). No a d03. Corregido.
+
+### Qué mide realmente
+
+No fragmentación de contratos: **fragmentación del reporte**. El GAD obtiene calificación alta
+en SIGAD **reportando solo una fracción de sus metas**.
+
+## 2 · La evidencia de campo lo confirma
+
+Informes oficiales del GAD (`Holding_Municipal_Montecristi/Reporte ICM SIGAD/`):
+
+| Año | Metas ingresadas al SIGAD | Metas del PDOT en el motor | Cobertura |
+|---|---:|---:|---:|
+| **2023** | **5** | 25 | **20%** |
+| **2024** | **9** | 25 | **36%** |
+
+Ambos informes constan **ENVIADOS** en las cinco etapas (programación + 4 trimestres). El GAD
+cumple el trámite; lo que no hace es reportar el universo completo de metas.
+
+> ⚠️ **No se afirma incumplimiento.** Se observa que el universo reportado es una fracción del
+> universo planificado. Determinar si eso infringe el COPFP 54 corresponde al ente rector, no a
+> QUIRA (Carta Art. 4.5).
+
+## 3 · Segundo error, más grave: el cálculo de la brecha
+
+La **Brecha de Verificación** (`ICM autoreportado − ICPI verificable`) es el hallazgo central de
+QUIRA: *lo que el GAD dice de sí mismo frente a lo que puede demostrarse*. Está mal en dos hojas
+a la vez, **con signos opuestos**:
+
+| Celda | Fórmula | Valor | Problema |
+|---|---|---:|---|
+| `H08!B7` ICM_Global_SIGAD_2026 | *(input)* | **0,01** | la nota de `B13` dice *"ICM autoreportado (**100%**)"* — **contradice el input** |
+| `H08!B10` Brecha_Verificacion | `B7 − ICPI` | **−0,2646** | **negativa**: diría que el GAD se autorreporta POR DEBAJO de lo verificable |
+| `H12!B35` ICM_SIGAD_Oficial | `H08!B7 × 100` | **1** | ¿1% o 100%? la escala es ambigua |
+| `H12!B36` Brecha_Verificacion | `B35 − B33` | **+0,7254** | **positiva** — signo contrario a `H08!B10` |
+| `H12!B37` Interpretación | `IF(B36>30,"🔴 Alta",IF(B36>15,"🟡 Media","✅ mínima"))` | ✅ ***"mínima"*** | **el bug** |
+
+### El bug de escala
+
+`B36` está en **fracción** (0,7254 = 72,54%). `B37` la compara contra **30 y 15 como puntos
+porcentuales**. Como `0,7254 > 30` es falso, el motor concluye:
+
+> ✅ *"Brecha de Verificación **mínima** — Consistencia entre ICM autoreportado y verificación"*
+
+**Cuando la brecha real es de ~72,5 puntos.** El indicador más potente de la tesis está
+reportando lo contrario de lo que muestra.
+
+### Y las dos hojas no coinciden
+
+`H08!B10 = −0,2646` frente a `H12!B36 = +0,7254`. **La misma magnitud con signo opuesto**, porque
+`H08` usa `B7 = 0,01` crudo y `H12` lo multiplica por 100. Una de las dos escalas está mal, y
+mientras no se resuelva **ninguna de las dos cifras es citable**.
+
+## 4 · Lo que NO se corrige aquí, y por qué
+
+**No se toca el motor.** Falta el dato que resuelve la ambigüedad: **cuál es el ICM real
+reportado por el GAD**. Está en los informes SIGAD, pero extraerlo con rigor es trabajo del silo
+S6 — que **no tiene DOM**. Poner un número supuesto sería inventar cifra pública.
+
+| Corrección | Naturaleza | Quién |
+|---|---|---|
+| `H12!B37` — comparar contra la misma escala que `B36` | **presentación** (Regla 1 lo permite) | dirección técnica, tras fijar la escala |
+| `H08!B7` — cargar el ICM real de los informes | **input** | requiere extracción S6 |
+| `H08!B10` vs `H12!B36` — unificar signo y escala | **metodológica** | **Javo** |
+
+## 5 · Por qué esto importa más que un bug
+
+La brecha ICM↔ICPI **es la tesis**: el GAD se autorreporta alto y solo una fracción es
+verificable. Es el mismo patrón que OBS-020 encontró en el POA y OBS-021 en las demandas.
+
+Con los datos disponibles el orden de magnitud sería: **autoreporte cercano al 100% frente a
+27,46% verificable**. Pero **no es citable** hasta unificar la escala — y publicar una brecha mal
+calculada sería exactamente el error que este sistema existe para evitar.
+
+## 6 · Acciones
+
+| # | Acción | Estado |
+|---|---|---|
+| 1 | Corregir el mapeo: `SAT-I` → **S6 SIGAD**, no d03 | ✅ |
+| 2 | Documentar la cobertura de reporte (5/25 · 9/25) | ✅ |
+| 3 | Detectar el bug de escala en `B36`/`B37` y el signo opuesto | ✅ |
+| 4 | Extraer el ICM real de los informes SIGAD 2023-2024 | ⏳ **requiere S6** |
+| 5 | Unificar escala y signo entre `H08` y `H12` | ⏳ **Javo** |
+| 6 | Corregir `H12!B37` una vez fijada la escala | ⏳ |
+| 7 | Crear el DOM que cure S6 (SIGAD) | ⏳ — hoy **ningún dominio lo audita** |
+
+> **La acción 7 es la de fondo.** Tres silos del motor no tienen dominio (S1 electoral · **S6
+> SIGAD** · S9 ODS), y S6 es el que mide la distancia entre discurso y evidencia. Sin él, el
+> hallazgo más potente de QUIRA queda sin custodio.
+
+---
+*OBS-023 · Dylus Lab © 2026 · hallazgo de Javo · silo S6 · relacionada con OBS-020 y OBS-021.*
