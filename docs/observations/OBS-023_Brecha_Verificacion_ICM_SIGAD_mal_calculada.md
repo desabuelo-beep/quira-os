@@ -34,21 +34,66 @@ Selectiva"*. El catálogo dice otra cosa:
 No fragmentación de contratos: **fragmentación del reporte**. El GAD obtiene calificación alta
 en SIGAD **reportando solo una fracción de sus metas**.
 
-## 2 · La evidencia de campo lo confirma
+## 2 · ⛔ DESCALCE DE HORIZONTES — la comparación que yo había hecho es INVÁLIDA
 
-Informes oficiales del GAD (`Holding_Municipal_Montecristi/Reporte ICM SIGAD/`):
+> **Dato decisivo de Javo (2026-07-30):** *"el PDOT 2023-2027 de Montecristi fue aprobado vía
+> **ordenanza el 5 de noviembre de 2024**. Es decir que esos años 2023 y 2024 fueron trabajados
+> con el **PDOT 2019-2023**."*
 
-| Año | Metas ingresadas al SIGAD | Metas del PDOT en el motor | Cobertura |
+La primera versión de esta observación decía:
+
+| ~~Año~~ | ~~Metas al SIGAD~~ | ~~Metas del PDOT en el motor~~ | ~~Cobertura~~ |
 |---|---:|---:|---:|
-| **2023** | **5** | 25 | **20%** |
-| **2024** | **9** | 25 | **36%** |
+| ~~2023~~ | ~~5~~ | ~~25~~ | ~~20%~~ |
+| ~~2024~~ | ~~9~~ | ~~25~~ | ~~36%~~ |
 
-Ambos informes constan **ENVIADOS** en las cinco etapas (programación + 4 trimestres). El GAD
-cumple el trámite; lo que no hace es reportar el universo completo de metas.
+**Está mal.** Las 5 y 9 metas pertenecen al **PDOT 2019-2023**; las 25 del motor son del **PDOT
+2023-2027**. Dividir unas entre otras compara **universos programáticos distintos**:
 
-> ⚠️ **No se afirma incumplimiento.** Se observa que el universo reportado es una fracción del
-> universo planificado. Determinar si eso infringe el COPFP 54 corresponde al ente rector, no a
-> QUIRA (Carta Art. 4.5).
+```
+ICM 2023 ─┐
+          ├──► PDOT 2019-2023      (plan anterior)
+ICM 2024 ─┘
+
+ICPI ─────────► PDOT 2023-2027      (plan vigente, ordenanza 05-nov-2024)
+```
+
+**Cualquier "brecha" calculada así sería un artefacto del descalce de horizontes**, no evidencia
+sobre el GAD. Habría sido una crítica metodológica fatal ante una revisión académica.
+
+### Lo que SÍ permiten los informes 2023-2024
+
+| ✅ Sirven para | ❌ NO sirven para |
+|---|---|
+| caracterizar el patrón histórico del autorreporte | afirmar *"Montecristi tuvo X de congruencia"* |
+| entender cómo el SIGAD calcula el ICM | fundar la brecha ICM↔ICPI |
+| construir el ETL y calibrar el parser de **d06** | comparación longitudinal con el ICPI actual |
+
+## 2-bis · Estructura temporal de SAT-I *(3 fases · asesoría + Javo)*
+
+| Fase | Período | Estatus del dato | Uso admisible |
+|---|---|---|---|
+| **A · Evidencia histórica** | 2023-2024 · PDOT 2019-2023 | ✅ **hecho documentado** | caracterizar el SIGAD · calibrar el parser |
+| **B · Escenario proyectado** | 2025-2026 · sin informe oficial | ⚠️ **proyección, NO dato** | simulación etiquetada |
+| **C · Auditoría empírica** | cuando exista ICM oficial del PDOT 2023-2027 | ⏳ pendiente | **única comparación ICM↔ICPI válida** |
+
+### La proyección, redactada como corresponde
+
+Javo aporta conocimiento de campo: *"cuando se revisan los portales oficiales, los ICM de los GAD
+siempre autorreportan por encima del 90%"*. Es observación válida — **pero no es un dato de
+Montecristi 2025**. La formulación admisible:
+
+| ❌ Inadmisible | ✅ Admisible |
+|---|---|
+| *"el ICM 2025 fue del 95%"* | *"para efectos de simulación se proyecta un ICM > 90%, siguiendo el patrón histórico observado en portales oficiales de GAD, hasta disponer del informe oficial"* |
+
+> **Este hallazgo FORTALECE la tesis en vez de debilitarla.** En lugar de comparar dos indicadores
+> construidos sobre planes distintos —crítica fatal—, el argumento pasa a ser: *2023-2024 modelan
+> el funcionamiento del SIGAD; 2025-2026 son el primer ciclo auditable del nuevo PDOT; la
+> confrontación ICM↔ICPI se certifica cuando existan los reportes del mismo horizonte.*
+
+> ⚠️ **Nada de esto afirma incumplimiento.** Determinar si el reporte al SIGAD infringe el COPFP 54
+> corresponde al ente rector, no a QUIRA (Carta Art. 4.5).
 
 ## 3 · Segundo error, más grave: el cálculo de la brecha
 
@@ -97,18 +142,23 @@ S6 — que **no tiene DOM**. Poner un número supuesto sería inventar cifra pú
 La brecha ICM↔ICPI **es la tesis**: el GAD se autorreporta alto y solo una fracción es
 verificable. Es el mismo patrón que OBS-020 encontró en el POA y OBS-021 en las demandas.
 
-Con los datos disponibles el orden de magnitud sería: **autoreporte cercano al 100% frente a
-27,46% verificable**. Pero **no es citable** hasta unificar la escala — y publicar una brecha mal
-calculada sería exactamente el error que este sistema existe para evitar.
+**Doble impedimento para citarla hoy:**
+
+1. **Escala** — `B36` y `B37` operan en unidades distintas (§3).
+2. **Horizonte** — no existe ICM oficial calculado sobre el PDOT 2023-2027 (§2).
+
+Publicar una brecha mal calculada **y** construida sobre planes distintos sería exactamente el
+error que este sistema existe para evitar.
 
 ## 6 · Acciones
 
 | # | Acción | Estado |
 |---|---|---|
 | 1 | Corregir el mapeo: `SAT-I` → **S6 SIGAD**, no d03 | ✅ |
-| 2 | Documentar la cobertura de reporte (5/25 · 9/25) | ✅ |
+| 2 | ⛔ **RETIRADA** la comparación 5/25 · 9/25 — descalce de horizontes PDOT (Javo) | ✅ corregida |
 | 3 | Detectar el bug de escala en `B36`/`B37` y el signo opuesto | ✅ |
-| 4 | Extraer el ICM real de los informes SIGAD 2023-2024 | ⏳ **requiere S6** |
+| 4 | Extraer el ICM real de los informes SIGAD 2023-2024 **como calibración, no como dato de congruencia** | ⏳ **requiere S6** |
+| 4b | Etiquetar 2025-2026 como **proyección de escenario**, nunca como hecho | ⏳ |
 | 5 | Unificar escala y signo entre `H08` y `H12` | ⏳ **Javo** |
 | 6 | Corregir `H12!B37` una vez fijada la escala | ⏳ |
 | 7 | Crear el DOM que cure S6 (SIGAD) | ⏳ — hoy **ningún dominio lo audita** |
