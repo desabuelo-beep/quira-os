@@ -19,7 +19,7 @@ componentes:
     kind: normative
     level: 1
     path: governance/BOOT.md
-    hash: ffb645607574722a
+    hash: a27dc839cf3c1ce6
     authority_declared: true
     parent: GOVERNANCE-001
   - id: GOVERNANCE-001
@@ -152,7 +152,7 @@ componentes:
     kind: marco_teorico
     level: 1
     path: marco_teorico/INVENTARIO_CONCEPTOS_FUNDACIONALES.md
-    hash: 4adbfa26059d5f18
+    hash: 382af6f63b057bf4
     authority_declared: true
     parent: MARCO-TEORICO-001
   - id: MARCO-TEORICO-001

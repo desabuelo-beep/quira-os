@@ -33,7 +33,7 @@ Constitución = QUÉ ES QUIRA (CAPA 0 Doctrina + 4 macroejes + 12 dominios): mid
 PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO y halla las BRECHAS.
 
 ## AHORA (estado vivo · historial → `governance/historico/BOOT_2026-06-17.md`)
-🧭 **ADR-031** cajón=MCD·GM=MCM · **ADR-035/037** Ley→BRN→GM(motor único)→QUIRA, IA propone/humano valida · **ADR-038** BRN v2: nodo=REGLA, **Corpus→CNO→RO→SAT**, v1.0 CONGELADO.
+🧭 **ADR-031** cajón=MCD·GM=MCM·**MCIP=5 motores tipados** · **ADR-035/037** Ley→BRN→GM→QUIRA, IA propone/humano valida · **ADR-038** BRN v2: nodo=REGLA, **Corpus→CNO→RO→SAT**.
 ✅ **4 DOM con PCD: d01·d02·d03·d09** · d08 en curso (**Asamblea ciudadana AUTÓNOMA** · CNO-VIII(8) · **OBS-012..017**).
 🩺 **Canon curado por DOM (R.8), ICPI intacto. Gate `check_health.py`: NO adivinar.**
 🏛️ **GOBERNANZA v1.0:** `identity/`→`governance/`→`marco_teorico/`→Canon→`registry/`. ⚠️ Derivación 100% **solo en lo catalogado**.
@@ -44,7 +44,7 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO y halla las B
 🏛️ **R-C..R-H → `PROTOCOLO_CURACION_DOMINIO.md` §3.** C: el dueño del instrumento califica · D: ¿ALGORITMO o INSTRUMENTO? **se mide, no se parcha** · **E (LEY)**: solo MCR · F: 3 vías de ingesta · G: cada DOM declara su cableado · **H: no se comparan horizontes distintos**.
 🔬 POA localiza el **1%** (OBS-020) → **CVI**=2ª dim. IOC. `inverificable` ≠ `no atendido`. **UDC-G**`= ∧ UDC-Iₖ`: MCR ✅ POA·cabildo · ⚠️ PP·audiencias · ❌ LOTAIP·Concejo·Holding → **FALSO**.
 ⚖️ **3 CAPAS**: jurídica (**Guía LOTAIP = LEY, no canon**) · operativa (**d07**) · analítica (QUIRA **no tramita**). 🧪 **H-ARQ-01** (HIPÓTESIS, 1 GAD → bloq. R-E).
-🧠 **MOTOR C10** (`MOTOR_C10_DESCUBRIMIENTO_NORMATIVO.md`): detecta hechos que la norma no explica → expediente `C10-{año}-{n}` **NO VIGENTE** → sella Javo. **NO viola "no más motores"** (la prohibición es de *motores de CÁLCULO*; precedente PCD-MN01). **Ya existía como C10 desde mayo** — se instrumenta, no se inventa. ⛔ bloq. R-E.
+🧠 **DESCUBRIMIENTO NORMATIVO** (`DESCUBRIMIENTO_NORMATIVO_ADR031.md`): **NO es motor nuevo** — es el 4º de los **5 MCIP de ADR-031** (Javo tenía razón). Vacío → expediente `C10-{n}` **NO VIGENTE** → sella Javo. **Laboratorio, NO runtime**; arranca **en el grafo**. ADR-031: *"el SAT nace en el Excel, no en un motor analítico"*. ⛔ bloq. R-E.
 ⏭️ **JAVO: (1)** 2ª validación v4 (¿retirar `complementaria`?) **(2)** promover `_CANDIDATO_v5.7`→`v5.7_TGI` **(3)** Haiku ~$60/18 meses.
 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 ratificado · detalle en el ADR)
