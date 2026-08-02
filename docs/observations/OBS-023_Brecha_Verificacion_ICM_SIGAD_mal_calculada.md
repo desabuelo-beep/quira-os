@@ -69,13 +69,65 @@ sobre el GAD. Habría sido una crítica metodológica fatal ante una revisión a
 | entender cómo el SIGAD calcula el ICM | fundar la brecha ICM↔ICPI |
 | construir el ETL y calibrar el parser de **d06** | comparación longitudinal con el ICPI actual |
 
-## 2-bis · Estructura temporal de SAT-I *(3 fases · asesoría + Javo)*
+## 2-bis · Naturaleza del ICM: se calcula sobre el PDOT VIGENTE de cada año
+
+> **Precisión de Javo (2026-07-30), para que quede claro:** *"no es que haya otros ICM para medir
+> el nuevo PDOT. Los ICM se miden **anualmente con el instrumento PDOT vigente para cada año**.
+> No existe un ICM 2023 o 2024 en base al PDOT 2023-2027: **los únicos y oficiales son los que
+> tenemos**, aunque corran con el PDOT 2019-2023."*
+
+Eso corrige la Fase C que la asesoría formuló como *"cuando exista el ICM del PDOT 2023-2027"*.
+**No hay ICM retroactivo — no puede haberlo.** La secuencia real:
+
+| Año | PDOT vigente | ICM | Comparable con el ICPI |
+|---|---|---|---|
+| 2023 | 2019-2023 | ✅ existe · **oficial y único** | ❌ otro plan |
+| 2024 | 2019-2023 *(hasta 05-nov)* | ✅ existe · **oficial y único** | ❌ otro plan |
+| **2025** | **2023-2027** | ⏳ **aún no publicado** | ✅ **el primero comparable** |
+
+**La Fase C no espera un dato imposible: espera el ICM 2025**, primer ejercicio completo bajo el
+plan vigente. Por el patrón de envío observado (informe 2023 → mayo 2024; informe 2024 → mayo
+2025), sería exigible hacia **mayo de 2026**.
+
+### Estructura temporal de d06
 
 | Fase | Período | Estatus del dato | Uso admisible |
 |---|---|---|---|
-| **A · Evidencia histórica** | 2023-2024 · PDOT 2019-2023 | ✅ **hecho documentado** | caracterizar el SIGAD · calibrar el parser |
-| **B · Escenario proyectado** | 2025-2026 · sin informe oficial | ⚠️ **proyección, NO dato** | simulación etiquetada |
-| **C · Auditoría empírica** | cuando exista ICM oficial del PDOT 2023-2027 | ⏳ pendiente | **única comparación ICM↔ICPI válida** |
+| **A · Caracterización** | 2023-2024 · PDOT 2019-2023 | ✅ **hecho documentado** | estudiar el SIGAD · calibrar el parser · **NO comparar** |
+| **B · Escenario** | 2025-2026 · sin informe publicado | ⚠️ **proyección, NO dato** | simulación etiquetada (HCI-01) |
+| **C · Auditoría empírica** | **al publicarse el ICM 2025** | ⏳ ~mayo 2026 | **única comparación ICM↔ICPI válida** |
+
+## 2-ter · ⛔ Lo que NO se hace: redefinir SAT-I
+
+La asesoría propuso *"convertir SAT-I en una SAT de elegibilidad metodológica"* que responda
+*"¿existe comparabilidad temporal?"*. **La idea es buena; la ubicación es incorrecta.**
+
+`SAT-I` está definida en el Gold Master, que es **la autoridad** (Regla 1):
+
+```
+ICM_Global >= 80% AND pct_metas_reportadas <= 10%
+```
+
+Eso mide **fragmentación del reporte**, no elegibilidad. Redefinirla desde QUIRA sería construir
+un segundo canon — exactamente lo que R-B prohíbe.
+
+**Lo correcto es una PRECONDICIÓN aguas arriba**, que no toca la SAT:
+
+```
+   ¿ICM y ICPI pertenecen al MISMO horizonte PDOT?
+            │
+    ┌───────┴────────┐
+   NO               SÍ
+    │                │
+    ▼                ▼
+"no comparable    se evalúa SAT-I
+ por descalce"    tal como la define
+ → no se calcula   el Gold Master
+```
+
+La SAT conserva su definición canónica. Lo que se añade es un **guard de comparabilidad** que
+decide *si procede evaluarla*, no *qué mide*. Es la misma lógica que `Hay_Datos_PP` en `H24c`:
+una guardia que bloquea el cálculo sin alterar la fórmula.
 
 ### La proyección, redactada como corresponde
 

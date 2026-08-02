@@ -306,6 +306,44 @@ Patrón definitivo  →  PCD-DXX (documentación del dominio)
   Matriz completa y verificada: `MATRIZ_CABLEADO_CANONICO.md`. Hallazgo asociado: **tres silos del
   motor (S1 electoral · S6 SIGAD · S9 ODS) no tienen DOM que los cure.**
 
+- **R-H · No se comparan indicadores de horizontes programáticos distintos.** *(Javo · 2026-07-30 · formulada por la asesoría.)*
+
+  > **Antes de comparar dos indicadores, el sistema verifica que pertenezcan a la MISMA biografía
+  > programática.** Si no coinciden, el resultado no es una brecha: es **`no_comparable_por_descalce`**.
+
+  **El caso que la originó:** se comparó el ICM del SIGAD 2023-2024 —calculado sobre el
+  **PDOT 2019-2023**— contra el ICPI, construido sobre el **PDOT 2023-2027** (ordenanza
+  05-nov-2024). La "brecha" resultante habría sido un **artefacto del descalce**, no evidencia
+  sobre el GAD. Una sola pregunta de un evaluador sobre horizontes de planificación la habría
+  desmontado.
+
+  **Por qué es regla y no criterio:** QUIRA gira en torno a la **Trazabilidad Biográfica del Dato**
+  (Postulado I). Comparar indicadores de dos planes distintos **viola el propio postulado que
+  funda el proyecto**.
+
+  ### Dónde vive el guard — NO en la SAT
+
+  La asesoría propuso convertir `SAT-I` en *"SAT de elegibilidad metodológica"*. **Se rechaza:**
+  las SAT están definidas en el Gold Master, que es la autoridad (Regla 1), y redefinirlas desde
+  QUIRA construiría un segundo canon (R-B). La comparabilidad se resuelve **aguas arriba**:
+
+  ```
+  ¿mismo horizonte programático?
+        ├── NO → "no_comparable_por_descalce"  · no se calcula · NO es incumplimiento
+        └── SÍ → se evalúa la SAT tal como el Gold Master la define
+  ```
+
+  Es el mismo patrón de `Hay_Datos_PP` en `H24c`: una **guardia que bloquea el cálculo sin alterar
+  la fórmula**.
+
+  ### Estados que esto habilita
+
+  | Estado | Significado |
+  |---|---|
+  | `comparable` | mismo horizonte · procede el cálculo |
+  | **`no_comparable_por_descalce`** | horizontes distintos · **restricción metodológica, no hallazgo** |
+  | `pendiente_horizonte` | el dato del horizonte vigente aún no se publica |
+
 *(Ratificación de R-A/R-B como Reglas de Oro en `CLAUDE.md` / `BOOT.md`: pendiente de Javo — son archivos congelados, Regla 5.)*
 
 ## 4 · Plantilla PCD-DXX (cada dominio cierra con su documento)

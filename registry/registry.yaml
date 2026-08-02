@@ -19,7 +19,7 @@ componentes:
     kind: normative
     level: 1
     path: governance/BOOT.md
-    hash: 123fa67b29ad6f0c
+    hash: c0c8093580bbe633
     authority_declared: true
     parent: GOVERNANCE-001
   - id: GOVERNANCE-001
@@ -152,7 +152,7 @@ componentes:
     kind: marco_teorico
     level: 1
     path: marco_teorico/INVENTARIO_CONCEPTOS_FUNDACIONALES.md
-    hash: cc9c35009154807a
+    hash: 745c5eb54f17f126
     authority_declared: true
     parent: MARCO-TEORICO-001
   - id: MARCO-TEORICO-001
@@ -670,14 +670,14 @@ componentes:
     kind: observation
     level: 2
     path: docs/observations/OBS-022_Grieta_Sistemica_SAT_sin_cadena_BRN.md
-    hash: f960da4cb0af9e5c
+    hash: 17545b8d8c343366
     authority_declared: true
     parent: GOVERNANCE-001
   - id: OBSERVATION-OBS-023_Brecha_Verificacion_ICM_
     kind: observation
     level: 2
     path: docs/observations/OBS-023_Brecha_Verificacion_ICM_SIGAD_mal_calculada.md
-    hash: af8372030e0778f2
+    hash: 289a9a8f199b8e96
     authority_declared: true
     parent: GOVERNANCE-001
   - id: DOMAIN_CATALOG-catalogo_d01_v1.0.0

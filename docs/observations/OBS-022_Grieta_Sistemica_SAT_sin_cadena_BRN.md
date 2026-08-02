@@ -119,11 +119,24 @@ La asesoría propuso una tabla de equivalencias con `SAT-IX ≡ SAT-IX-001 · d0
 Coinciden en el numeral romano por **casualidad de dos nomenclaturas distintas**, no por
 identidad. Quedan declaradas como `equivalencia_heredada` en cada RO, nunca fusionadas.
 
+### Dos tipos de deuda, no uno *(distinción de la asesoría · 2026-07-30)*
+
+| Tipo | En qué consiste | Se resuelve con |
+|---|---|---|
+| **Estructural** | falta el bloque `produce:` en la RO | **trabajo de cableado** — se puede hacer hoy |
+| **Epistemológica** | la SAT **no puede cerrarse** porque el dato que la valida aún no existe | **esperar la evidencia** — no hay YAML que lo arregle |
+
+**`SAT-I` es deuda epistemológica, no estructural.** No está incompleta por falta de YAML: está
+pendiente porque **el ICM del PDOT vigente aún no se publica** (OBS-023 · R-H). Forzar su cierre
+sería inventar comparabilidad.
+
+Esa distinción cambia la lectura del 60%: **no todo es trabajo pendiente nuestro.**
+
 ### Las 6 que siguen pendientes — y por qué
 
 | SAT | Dominio | Por qué no se saldó |
 |---|---|---|
-| **SAT-I** Fragmentación Selectiva | d03 | existe `RO-III-001` pero su métrica es *Pct_Fidelidad_Mandato* — **no es evidente** que sea fragmentación. **Requiere criterio de Javo**, no se fuerza |
+| **SAT-I** Fragmentación Selectiva | **S6 SIGAD** *(no d03 — corregido, OBS-023)* | **deuda EPISTEMOLÓGICA**: espera el ICM 2025, primer ejercicio bajo el PDOT vigente (~mayo 2026). Estado: **condicional · modo caracterización** |
 | **SAT-II** Reforma Tardía | d02 | **no existe RO de d02** para reformas — hay que crearla con su CNO |
 | **SAT-III** Parálisis Presupuestaria | d02 | ídem |
 | **SAT-VI** Desvío PP | d08 | `RO-VIII-003` la **consume**; falta decidir si la produce ella o requiere RO propia |

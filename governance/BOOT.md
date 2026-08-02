@@ -40,11 +40,11 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO y halla las B
 📚 **ADR-035/037:** Ley→BRN→GoldMaster(único motor)→QUIRA · IA propone, humano valida.
 🏛️ **d02·d03·d09·d08 migrados**. **d08**: **Asamblea ciudadana AUTÓNOMA** · CNO-VIII(8) · **OBS-012..017**.
 🏛️ **GOBERNANZA v1.0:** `identity/`→`governance/`→`marco_teorico/`→Canon→`registry/`. ⚠️ Derivación 100% **solo en lo catalogado** (47 .md sin autoridad).
-🔬 **d08 · MRSPP v4**: 26·8·**0**·9 · **180 sin correlato (81%)**. **OBS-021**: v3 daba 12% → **T0: territorio CONSTITUTIVO**, ancla por patrón.
+🔬 **d08 · MRSPP v4**: 26·8·**0**·9 · **180 sin correlato (81%)**. **OBS-021**: v3 daba 12% → **T0: territorio CONSTITUTIVO**.
 🔌 **CABLEADO** (`MATRIZ_CABLEADO_CANONICO.md`): **GoldMaster→SILOS→DOM→QUIRA**. `H36_QUIRA_BRIDGE` YA existía. **S3 POA SÍ es silo**. **S1·S6·S9 sin DOM.**
-🧨 **OBS-023 · brecha ICM↔ICPI NO citable, por DOS razones.** (a) escala: `B36`=0,7254 (fracción) vs umbral 30/15 (puntos) → dice ✅"mínima" con 72,5 pts; `H08!B10`=−0,26 vs `H12!B36`=+0,73. (b) **DESCALCE PDOT** (Javo): ICM 2023-24 = **PDOT 2019-2023**, ICPI = **2023-2027** (ordenanza 05-nov-24). **`SAT-I` = S6 SIGAD.** 3 fases: A calibra · B proyección etiquetada · C auditoría real.
+🧨 **OBS-023 · brecha ICM↔ICPI NO citable:** (a) bug escala `B36`(fracción) vs umbral en puntos → dice ✅"mínima" con 72,5 pts. (b) **DESCALCE PDOT** (Javo): el ICM se calcula sobre el **PDOT vigente de cada año**; el 1º comparable es el **ICM 2025** (~may-26). **`SAT-I`=S6 SIGAD**, deuda **epistemológica**. ⛔ NO redefinir SAT-I (R.1): el guard va **aguas arriba** (R-H).
 🚨 **OBS-022: SAT sin cadena BRN, deuda 90%→60%.** Saldadas SAT-0·IV·V·IX. PCD → **`cerrado con deuda declarada`** (R.8). Gate `check_sat_brn.py`. ⛔ `SAT-IX`(d08) ≠ `SAT-IX-001`(=SAT-V).
-🏛️ **R-C..R-G → `PROTOCOLO_CURACION_DOMINIO.md` §3.** C: el dueño del instrumento califica · D: ¿ALGORITMO o INSTRUMENTO? **se mide, no se parcha** · **E (LEY)**: solo MCR · F: 3 vías, solicitar **ES ejercer la norma** · G: cada DOM declara su cableado.
+🏛️ **R-C..R-H → `PROTOCOLO_CURACION_DOMINIO.md` §3.** C: el dueño del instrumento califica · D: ¿ALGORITMO o INSTRUMENTO? **se mide, no se parcha** · **E (LEY)**: solo MCR · F: 3 vías de ingesta · G: cada DOM declara su cableado · **H: no se comparan horizontes distintos**.
 🔬 POA localiza el **1%** (OBS-020) → **CVI**=2ª dim. IOC. `inverificable` ≠ `no atendido`.
 🔒 **UDC/ICD**: **UDC-G** `= ∧ UDC-Iₖ`. MCR ✅ POA·cabildo · ⚠️ PP·audiencias · ❌ LOTAIP·Concejo·Holding → **FALSO**.
 ⚖️ **3 CAPAS**: jurídica (**Guía LOTAIP = LEY, no canon**) · operativa (**d07**) · analítica (QUIRA **no tramita**).
