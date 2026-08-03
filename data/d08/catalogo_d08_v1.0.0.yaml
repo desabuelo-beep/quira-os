@@ -41,15 +41,26 @@ dimensiones:
     estado: operable_parcial  # Fase 1+2 EJECUTADAS (2026-07-27): 223 demandas catalogadas y
                               # cruzadas contra 1027 filas POA (XLSX oficial). Motor propio:
                               # scripts/d08/extraer_demandas.py + cruzar_demandas.py.
-                              # PARCIAL porque: (a) falta validación experta de las 129
-                              # correspondencias en banda 0.52-0.62; (b) falta extender el cruce
-                              # a PAC/presupuesto/ejecución (hoy solo llega al POA).
+                              # PARCIAL porque: (a) falta la 2ª validación experta del filtro v4;
+                              # (b) falta extender el cruce a PAC/presupuesto/ejecución (hoy solo
+                              # llega al POA).
+    # ★ ACTUALIZADO 2026-08-03 · filtro ontológico v4 (REGLA T0 · territorio constitutivo).
+    # Los valores anteriores (hipotesis 15 · pendiente 98 · sin_correlato 110) eran del filtro v3,
+    # que daba 12% de precisión porque validaba correspondencias SEMÁNTICAS sin exigir que el
+    # proyecto declarara el territorio de la demanda (OBS-021). No se borran por prolijidad:
+    # se sustituyen porque el instrumento de medición cambió, no el hecho medido.
     resultado_fase2:
       demandas_catalogadas: 223
       registros_poa_contrastados: 1027
-      por_estado_epistemico: { hipotesis: 15, pendiente_validacion: 98, sin_correlato: 110 }
-      vinculantes_por_estado: { hipotesis: 9, pendiente_validacion: 89, sin_correlato: 93 }
-      filtro_ontologico: "QUIRA v1 — 264 candidatos rechazados (139 sin rubro compatible · 125 incompatibilidad temática). El embedding PROPONE top-10; el filtro DECIDE. Validación experta de Javo (25 casos, 13 falsos positivos) convertida en reglas reutilizables."
+      por_estado_epistemico: { hipotesis: 3, pendiente_validacion: 40, sin_correlato: 180 }
+      vinculantes_por_estado: { hipotesis: 1, pendiente_validacion: 28, sin_correlato: 162 }
+      # Desglose de las DOS CAUSAS del sin_correlato vinculante (162) — la distinción que impide
+      # leer la cifra como desatención. Partición reproducible sobre el ancla territorial de la
+      # demanda (scripts/enrich_participacion.py):
+      causas_sin_correlato:
+        inverificable_por_el_instrumento: 66   # la demanda nombra lugar; el POA localiza el 1,1% (OBS-020)
+        sin_correspondencia_tematica: 96       # ningún proyecto con objeto compatible
+      filtro_ontologico: "QUIRA v4 — REGLA 0 (la unidad ejecutora no acredita el objeto del gasto) + REGLA T0 (el territorio es constitutivo de la demanda) + REGLA T1 (parroquia→parroquia prohibido). El embedding PROPONE top-30; el filtro DECIDE. 16 casos de regresión en scripts/d08/test_filtro_ontologico.py."
       advertencia: "QUIRA PROPONE correspondencias; nunca afirma que una demanda fue satisfecha (Horizonte de Verdad · Constitución Art. 3)"
 
 # ── Naturaleza de verificación (asesor · 2026-07-24) — DOCTRINA · molde para d10/d11/d12 ──

@@ -133,6 +133,7 @@ QINV: dict[str, dict] = {
                     "vinculante en la política institucional, o son un proceso meramente formal?",
         "gad": "Sistema de Participación local (asambleas, cabildos, silla vacía).",
         "central": "Consejos consultivos · audiencias públicas · veedurías nacionales.",
+        "page": "m_participacion",  # ✅ construida (3 dimensiones · integridad · vitalidad · efectividad)
     },
     "d09": {
         "id": "QINV-009", "nombre": "Rendición de Cuentas",

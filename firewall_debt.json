@@ -1,21 +1,14 @@
 {
  "env_gov.py": [
   {
-   "line": 144,
-   "terms": "SAT",
-   "alt": "Alerta de reincidencia",
-   "risk": "ALTO",
-   "snippet": "Alertas y Riesgos SAT"
-  },
-  {
-   "line": 470,
+   "line": 372,
    "terms": "IFE",
    "alt": "—",
    "risk": "ALTO",
    "snippet": "Metas PDOT · IFE"
   },
   {
-   "line": 471,
+   "line": 373,
    "terms": "SAT",
    "alt": "Alerta de reincidencia",
    "risk": "ALTO",
@@ -113,6 +106,42 @@
    "alt": "Cumplimiento institucional",
    "risk": "BAJO",
    "snippet": "ICPI"
+  }
+ ],
+ "m_mandato.py": [
+  {
+   "line": 15,
+   "terms": "gm_snapshot",
+   "alt": "—",
+   "risk": "ALTO",
+   "snippet": "gm_snapshot.json"
+  }
+ ],
+ "m_participacion.py": [
+  {
+   "line": 18,
+   "terms": "gm_snapshot",
+   "alt": "—",
+   "risk": "ALTO",
+   "snippet": "gm_snapshot.json"
+  }
+ ],
+ "m_planificacion.py": [
+  {
+   "line": 352,
+   "terms": "SAT",
+   "alt": "Alerta de reincidencia",
+   "risk": "ALTO",
+   "snippet": "<style> @import url('https://fonts.googleapis.com/css2?family=Inter:..."
+  }
+ ],
+ "m_presupuesto.py": [
+  {
+   "line": 15,
+   "terms": "gm_snapshot",
+   "alt": "—",
+   "risk": "ALTO",
+   "snippet": "gm_snapshot.json"
   }
  ],
  "p07_transparencia.py": [
@@ -532,6 +561,15 @@
    "snippet": "MMP"
   }
  ],
+ "p_command_center_v2.py": [
+  {
+   "line": 210,
+   "terms": "gm_snapshot",
+   "alt": "—",
+   "risk": "ALTO",
+   "snippet": "gm_snapshot.json"
+  }
+ ],
  "p_concejo.py": [
   {
    "line": 194,
@@ -632,6 +670,15 @@
    "alt": "QUIRA Intelligence v1.0",
    "risk": "BAJO",
    "snippet": "v6.0"
+  }
+ ],
+ "p_gobierno.py": [
+  {
+   "line": 22,
+   "terms": "gm_snapshot",
+   "alt": "—",
+   "risk": "ALTO",
+   "snippet": "gm_snapshot.json"
   }
  ],
  "p_sentinel_hub.py": [
