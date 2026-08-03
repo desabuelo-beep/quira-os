@@ -253,6 +253,36 @@ en verificación permanente.
 > Metodológica nació hace dos días justamente para evitarla. Un concepto declarado en mayo no
 > necesita cuatro nombres nuevos en julio.
 
+## 6-bis · Revisión final de la asesoría (2026-07-31) — converge, sin desvarío
+
+El colega llegó **por su cuenta** a las mismas conclusiones que la verificación contra el canon:
+
+| Su conclusión | Estado |
+|---|---|
+| *"No debe implementarse como un nuevo motor — ADR-031 ya define el Motor de Descubrimiento"* | ✅ coincide |
+| *"Lo correcto sería especializar el motor existente"* | ✅ coincide |
+| *"No hacía falta inventar un Motor C10; C10 ya existía, faltaba operacionalizarlo"* | ✅ coincide |
+| *"Lo nuevo no es el motor: es el TIPO DE PREGUNTA que puede responder"* | ✅ **la formulación más precisa de todas** |
+| Su diagrama arranca en **Motor Grafos** antes del Descubrimiento | ✅ respeta la secuencia de ADR-031 |
+
+> **Su mejor frase, y vale conservarla:** *"No cambia el motor. **Cambia el tipo de pregunta que el
+> motor puede responder.**"* Y la consecuencia: QUIRA pasa de responder *"¿se incumplió una regla
+> existente?"* a *"**¿existe un fenómeno recurrente para el cual todavía no existe una regla?**"* —
+> aprendizaje de gobernanza, no aprendizaje automático.
+
+### La única propuesta nueva — y por qué NO entra
+
+Propone llamar **`CNC` · Configuración Normativa Candidata** al expediente, en vez de *"SAT candidata"*,
+porque puede terminar siendo SAT, CNO, RO o nota metodológica.
+
+**El razonamiento es correcto y ya está incorporado** (§4): el identificador es `C10-{año}-{n}`
+precisamente porque *"todavía no se sabe si será una SAT"*. **La sigla nueva no añade capacidad, no
+elimina ambigüedad y no reduce complejidad** — falla las tres condiciones de la Regla 7.
+
+Y hay una razón adicional: ayer se descartaron **seis nombres** para esta misma cosa (`MDCN`, `MDN`,
+`SDNA`, `CNC`, `OBS-NORM`, *"Motor de SAT Emergentes"*). `C10-{año}-{n}` ya comunica lo mismo **sin
+sigla nueva**, y deriva de un concepto que existe desde mayo.
+
 ## 7 · Estado y condición de arranque
 
 **No se construye todavía.** El motor ya está declarado en ADR-031; lo que queda pendiente es *este uso*,
