@@ -830,15 +830,26 @@ _FICHA = {"registros": 1027, "anios": "2023 · 2024 · 2025 · 2026",
 
 
 def _legibilidad_instrumento(plan: dict) -> str:
-    """Dónde se rompe la cadena madre, y POR QUÉ.
+    """Qué atributos consigna el POA, y qué explica el contraste entre unos registros y otros.
 
     Constitución Institucional (CONSTITUCION-001, raíz del árbol de autoridad): QUIRA es
     infraestructura de conocimiento verificable, no una auditoría. Y la Ontológica marca el
     salto: SIAP-ICPI MIDE el incumplimiento, QUADRUM DETECTA la incoherencia, QUIRA EXPLICA
-    la causalidad. Por eso este bloque no se queda en "el 99% no localiza" —eso sería
-    detectar—: mide las tres preguntas de la cadena, señala el eslabón roto, expone la CAUSA
-    (el requisito existe cuando lo pone un financiador externo, no en el formato propio) y
-    entrega la decisión que la corrige. Versión anterior corregida por Javo · 2026-08-05."""
+    la causalidad. Por eso no basta con "el 99% no localiza" —eso sería detectar—: se mide,
+    se contrasta y se entrega la intervención mínima.
+
+    ★ RIGOR DE INFERENCIA (2ª pasada de la asesoría · 2026-08-05). Tres afirmaciones se
+    retiraron por decir MÁS de lo medido — el error es siempre el mismo: hablar de la
+    realidad cuando solo se sabe del documento (Carta Art. 4.5 · No-Inferencia):
+      · "la cadena no se puede recorrer"  → la cadena EXISTE; lo que falta son los atributos
+        para recorrerla DOCUMENTALMENTE.
+      · "el municipio sabe localizar"     → no medido. Lo medido es el CONTRASTE entre dos
+        grupos de registros del mismo municipio.
+      · "falta el requisito en su ficha"  → no se sabe si el origen es el formulario, el
+        procedimiento o el sistema. Verificable: el formato no lo exige sistemáticamente.
+    Se añade un límite que la asesoría no vio: atribuir el contraste a una exigencia del
+    financiador TAMBIÉN es inferencia —no se verificaron sus formatos—. Va declarada como
+    hipótesis pendiente de contraste, no como causa establecida."""
     f = _FICHA
     tarjetas = "".join(
         f'<div class="pl-si"><div class="k">{k}</div>'
@@ -851,37 +862,59 @@ def _legibilidad_instrumento(plan: dict) -> str:
              f'{f["sujeto_n"]} nombran al destinatario · <b>ninguno</b> lo dimensiona'),
         ])
     return (
-        '<p class="qc-p">La cadena que este sistema sigue va de la <b>promesa</b> al <b>territorio</b>: lo '
-        'prometido se vuelve plan, el plan se vuelve presupuesto, el presupuesto se ejecuta y termina siendo '
-        'un resultado en un lugar concreto, sobre personas concretas. Cada eslabón vive en un sistema distinto '
-        'del Estado, y la pregunta que importa no es si cada uno funciona por separado, sino <b>si la cadena '
-        'se sostiene al cruzarlos</b>. Aquí se ve dónde se rompe.</p>'
+        '<p class="qc-p">El plan operativo anual es el instrumento donde la planificación se vuelve '
+        'programación concreta. Además de ordenar el trabajo del año, es el <b>registro público</b> del que '
+        'dependen, aguas abajo, el presupuesto y el seguimiento de lo comprometido. Por eso importa una '
+        'pregunta previa a cualquier evaluación de resultados: <b>¿qué atributos consigna este instrumento</b>, '
+        'y cuáles no?</p>'
         f'<p class="qc-cap">Medición sobre el consolidado de los <b>cuatro planes operativos anuales</b> '
-        f'({f["anios"]}) — <b>{f["registros"]:,}</b> registros—, pregunta por pregunta:</p>'.replace(",", ".") +
+        f'({f["anios"]}) — <b>{f["registros"]:,}</b> registros—, atributo por atributo:</p>'.replace(",", ".") +
         f'<div class="pl-strip">{tarjetas}</div>'
-        f'<p class="qc-p">El instrumento describe <b>con precisión qué se hace</b> y se queda mudo en lo demás. '
-        f'Pero el dato decisivo no es ninguno de los tres por separado: es <b>cruzarlos</b>. De los '
-        f'<b>{f["registros"]:,}</b> registros, <b>{f["ambas_n"]}</b> responde a la vez dónde se ejecuta y sobre '
-        f'quién recae. Uno. La cadena, en su último tramo, <b>no se puede recorrer</b> — y no por falta de '
-        f'método de análisis, sino porque el dato no fue escrito.</p>'.replace(",", ".") +
-        '<div class="qc-impl"><div class="qc-impl-t">La causa — y aquí está lo que cambia la conclusión</div>'
-        f'<div class="qc-impl-b">Quedarse en «el 99% no localiza» sería <b>describir</b> el problema. La '
-        f'pregunta útil es otra: <b>¿qué distingue a los registros que sí lo hacen?</b> Y la respuesta es '
-        f'nítida. Entre las intervenciones con <b>financiador externo</b> —crédito, contraparte— localiza el '
-        f'<b>{f["ext_pct"]}%</b> ({f["ext_loc"]} de {f["ext_n"]}); entre las que se rigen solo por el formato '
-        f'propio del municipio, el <b>{f["prop_pct"]}%</b> ({f["prop_loc"]} de {f["prop_n"]:,}). Una razón de '
-        f'<b>{f["razon"]} a 1</b>.<br><br>Lo que eso muestra es lo contrario de una carencia: <b>el municipio '
-        f'sabe localizar el gasto y lo hace correctamente cuando alguien se lo pide</b>. No falta capacidad '
-        f'técnica ni voluntad — falta el <b>requisito en su propia ficha</b>. El grupo con financiador externo '
-        f'es pequeño ({f["ext_n"]} registros), así que esto se presenta como <b>patrón fuertemente sugerido</b> '
-        f'y no como ley: el sistema lo propone, la validación es humana.</div></div>'.replace(",", ".") +
-        '<p class="qc-cap"><b>La decisión que se desprende</b> — que es para lo que existe esta lectura, no '
-        'para emitir un juicio: incorporar <b>dos campos obligatorios</b> a la ficha de planificación —unidad '
-        'territorial y población destinataria— devolvería trazabilidad a la totalidad del plan desde el '
-        'ejercicio siguiente. No exige más obra ni más presupuesto: exige <b>escribir dos datos que el '
-        'municipio ya conoce</b> en el momento de formular. Y su efecto se propaga: el presupuesto y el '
-        'seguimiento de lo que la ciudadanía priorizó <b>leen esta misma ficha</b> — en el dominio de '
-        '<b>Participación Ciudadana</b> puede verse cuánto pesa hoy esa ausencia.</p>')
+        f'<p class="qc-p">El instrumento describe <b>con precisión qué se hace</b> y consigna poco de lo demás. '
+        f'El dato decisivo, sin embargo, no es ninguno de los tres por separado: es <b>cruzarlos</b>. De los '
+        f'<b>{f["registros"]:,}</b> registros, <b>{f["ambas_n"]}</b> declara a la vez dónde se ejecuta y sobre '
+        f'quién recae. Uno.</p>'.replace(",", ".") +
+        '<p class="qc-p">Conviene decirlo con exactitud, porque la diferencia no es de matiz: <b>la cadena que '
+        'va del plan al territorio existe</b> —las obras se ejecutan en lugares reales y sobre personas '
+        'reales—. Lo que el instrumento no aporta son los <b>atributos necesarios para recorrer '
+        'documentalmente</b> ese último tramo. No es una afirmación sobre la gestión: es una propiedad '
+        'medible del registro.</p>'
+        '<p class="qc-p">La pregunta siguiente es la que decide cómo debe leerse todo lo anterior: '
+        '<b>¿esta ausencia responde a una limitación del municipio, o a una característica del instrumento '
+        'que utiliza?</b> Los propios datos permiten distinguirlo.</p>'
+        '<div class="qc-impl"><div class="qc-impl-t">El contraste que responde esa pregunta</div>'
+        f'<div class="qc-impl-b">Los registros no se comportan igual entre sí. Los vinculados a '
+        f'<b>financiamiento externo</b> —crédito, contraparte— declaran territorio en un '
+        f'<b>{f["ext_pct"]}%</b> ({f["ext_loc"]} de {f["ext_n"]}). Los que se rigen únicamente por el formato '
+        f'institucional propio, en un <b>{f["prop_pct"]}%</b> ({f["prop_loc"]} de {f["prop_n"]:,}).'
+        f'<div style="margin:13px 0 11px;padding:11px 14px;border:1px solid var(--ind);border-radius:7px;'
+        f'background:rgba(30,142,62,.10);text-align:center">'
+        f'<span style="font-family:Georgia,serif;font-size:27px;font-weight:700;color:var(--ind)">'
+        f'{f["razon"]} a 1</span><br>'
+        f'<span style="font-size:11px;color:var(--tx2)">más frecuente la declaración territorial cuando el '
+        f'registro está vinculado a financiamiento externo</span></div>'
+        f'Es decir: <b>el mismo municipio, el mismo equipo y el mismo año</b> consignan la ubicación cuando el '
+        f'registro se vincula a financiamiento externo, y no lo hacen cuando responde solo al formato propio. '
+        f'La diferencia no está en quién formula — está en <b>bajo qué formato</b> se formula.</div></div>'
+        .replace(",", ".") +
+        f'<p class="qc-cap"><b>Hasta dónde llega lo demostrado.</b> El contraste está medido. Su explicación '
+        f'más plausible —que el financiamiento externo trae consigo una exigencia documental de localización— '
+        f'es una <b>hipótesis todavía no verificada</b>: haría falta contrastar los formatos que exige cada '
+        f'entidad financiadora. Y el grupo es pequeño ({f["ext_n"]} registros), de modo que esto se presenta '
+        f'como <b>patrón fuertemente sugerido</b>, no como ley. Tampoco puede afirmarse dónde se origina la '
+        f'ausencia —el formulario, el procedimiento o el sistema informático—: lo verificable es que el '
+        f'<b>formato institucional no exige sistemáticamente la identificación territorial</b>.</p>'
+        '<p class="qc-p"><b>La intervención mínima que se desprende</b> —que es el propósito de esta lectura, '
+        'no emitir un juicio—: incorporar de forma <b>obligatoria</b> los atributos <b>unidad territorial</b> y '
+        '<b>población destinataria</b> en el instrumento de formulación del plan operativo. No exige más obra '
+        'ni más presupuesto: exige consignar, al momento de formular, dos datos que <b>ya se conocen</b> '
+        'entonces —el contraste anterior lo evidencia—. Su efecto se propaga aguas abajo, porque el '
+        'presupuesto y el seguimiento de lo que la ciudadanía priorizó leen este mismo registro; en el dominio '
+        'de <b>Participación Ciudadana</b> puede verse cuánto pesa hoy esa ausencia.</p>'
+        '<p class="qc-cap">Esa es la diferencia entre señalar una carencia y explicarla: no se afirma que '
+        'falte información territorial, se identifica <b>la causa documental</b> que impide reconstruir el '
+        'tramo entre la planificación y el territorio, y se propone <b>la modificación mínima</b> capaz de '
+        'restituir esa trazabilidad.</p>')
 
 
 def _consolidada_plan(plan: dict) -> str:
@@ -933,7 +966,7 @@ def cajon_dominio_plan(plan: dict) -> str:
     {_seccion('02', 'El PDOT · documento rector del desarrollo cantonal', _pdot_rector(plan) + _cobertura(plan) + _alineacion_pnd(plan), _ley_esl(plan, 'presupuesto', 'Fundamento jurídico aplicable'), prov=prov('ana'))}
     {sec_cerr}
     {sec_curso}
-    {_seccion('05', 'Dónde se rompe la cadena · del plan al territorio, y por qué', _legibilidad_instrumento(plan), prov=prov('doc'))}
+    {_seccion('05', 'El plan operativo como instrumento de trazabilidad territorial', _legibilidad_instrumento(plan), prov=prov('doc'))}
     {_seccion('06', 'Evaluación consolidada · trayectoria y prospectiva', _consolidada_plan(plan), prov=prov('int'))}
     {_sintesis_plan(plan)}
   </div>
