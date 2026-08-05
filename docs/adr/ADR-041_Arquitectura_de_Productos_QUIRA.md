@@ -22,59 +22,85 @@ entramos por institucional"*. Corregir la pantalla sin corregir antes el canon h
 implementado en Python una arquitectura que el canon no declara — **Regla 9: ningún cambio
 nace en Python**. De ahí este documento, y no un rediseño directo.
 
-## 2 · La distinción que resuelve la contradicción
+## 2 · Tres planos que no deben confundirse
 
-Javo señala que *"el observatorio nació como operaciones, así que ese operaciones debe ser el
-observatorio"*. Y `NOMENCLATURA_CANONICA.md` dice que **"OPS no es una plataforma pública; no
-aparece como tarjeta en la landing"**. Ambas cosas son ciertas porque hablan de **planos
-distintos** — la misma confusión producto/identidad que se corrigió hoy en el BOOT:
+Javo señaló que *"el observatorio nació como operaciones"*, y `NOMENCLATURA_CANONICA.md` dice
+que **"OPS no es una plataforma pública; no aparece como tarjeta en la landing"**. La primera
+versión de este ADR resolvió la tensión diciendo que *"el Observatorio es la cara pública de
+lo que OPS ejecuta"*. **Javo lo corrigió, y con razón** (2026-08-05):
+
+> *"QUIRA Operaciones es trabajo directo y único de Dylus Lab, por eso no lo tomamos; no es
+> producto, sino la sección de mantenimiento del ecosistema. Eso es otra cosa."*
+
+No son dos caras de lo mismo: son **funciones distintas**. El Observatorio **produce
+conocimiento** —Javo monitorea los GAD con QUIRA IA—; Operaciones **mantiene la máquina** que
+lo hace posible. Atarlos habría hecho creer que el panel del Observatorio es la consola de
+mantenimiento, y no lo es.
 
 | Plano | Qué es | Ejemplo | ¿Público? |
 |---|---|---|---|
-| **Producto** | lo que el mundo ve y usa | Observatorio Nacional de Integridad Territorial | sí |
-| **Ambiente** | dónde corre la maquinaria | `ops` — scheduler, agentes, colas, ETL, logs | **no** |
-| **Núcleo** | dónde converge el conocimiento | Centro de Inteligencia Territorial | sí, vía productos |
+| **Producto** | genera o incorpora conocimiento | Observatorio · QUIRA Ciudadana | sí |
+| **Mantenimiento** | sostiene el ecosistema | Operaciones — Dylus Lab, uso interno | **no, y no es producto** |
+| **Motor** | calcula (ADR-023, inmutable) | Gold Master | no — se lee, nunca se expone |
+| **Núcleo** | dónde converge y se lee el conocimiento | Centro de Inteligencia Territorial | sí, vía productos |
 
-**El Observatorio es la cara pública de lo que OPS ejecuta.** No se renombra `ops` a
-"Observatorio": se declara que el Observatorio es el producto que OPS hace posible. La
-maquinaria sigue sin aparecer en la landing.
+## 3 · Un solo motor, dos entradas
 
-## 3 · El Centro de Inteligencia Territorial es el NÚCLEO, no un producto
-
-Todos los productos escriben y leen del mismo lugar. Esa es la consecuencia arquitectónica
-más importante de esta decisión, y evita el peor final posible: cinco bases de conocimiento
-que se contradicen entre sí.
+Segunda corrección, esta de la propia dirección técnica al releer el ADR con la explicación de
+Javo delante: **el primer diagrama ponía los productos escribiendo directo al Centro, y eso se
+salta el motor** — contra ADR-023, que es inmutable. La formulación de Javo pone el orden
+correcto: *"tenemos un solo motor, que se alimenta con nuestro producto principal QUIRA
+Observatorio… y por otro lado con otra entrada, QUIRA Ciudadana"*.
 
 ```
-   Observatorio ──┐                     ┌── QUIRA Institucional  (F2)
-                  ▼                     ▼
-            CENTRO DE INTELIGENCIA TERRITORIAL          ← núcleo único
-                  ▲                     ▲
-   QUIRA Ciudadana┘                     └── QUIRA Cooperación    (F2)
-                                        └── QUIRA Economic       (F3)
+  QUIRA Observatorio ──┐
+  (Dylus monitorea)    │
+                       ├──→   MOTOR   ──→   CENTRO DE INTELIGENCIA TERRITORIAL
+  QUIRA Ciudadana ─────┘   (Gold Master)                    │
+  (control social)                                          │
+                                        consumen ───────────┤
+                                        · QUIRA Cooperación / Impact
+                                        · QUIRA Institucional
+                                        · QUIRA Economic
 ```
 
-## 4 · Las fases, reordenadas
+**Dos entradas de evidencia, un motor, un núcleo de lectura.** Los productos posteriores no
+son otra fuente: **consumen** lo que las dos entradas construyeron. Eso evita el peor final
+posible —varias bases de conocimiento contradiciéndose— y respeta la arquitectura de tres
+niveles sin abrirle una puerta lateral.
+
+## 4 · El orden no es de prioridad: es de DEPENDENCIA
 
 | Fase | Productos | Misión |
 |---|---|---|
 | **1** | **Observatorio** · **QUIRA Ciudadana** | **construir la evidencia** |
-| 2 | QUIRA Institucional · QUIRA Cooperación | ofrecer inteligencia al Estado y a la cooperación |
+| 2 | QUIRA Cooperación / Impact · QUIRA Institucional | ofrecer inteligencia a partir de esa evidencia |
 | 3 | QUIRA Economic | inteligencia económica del territorio |
+
+**El orden no es una preferencia: es una restricción.** Javo lo formula así: *"con estas dos
+QUIRAs podríamos completar la información nacional que le dará vida a QUIRA Impact"*. Impact no
+está en Fase 2 porque sea menos importante — **no puede existir antes**: su valor para
+universidades, bilaterales y ONG es la cobertura nacional, y esa cobertura la producen las dos
+entradas de Fase 1. Construirlo antes daría un producto sin nada que ofrecer.
 
 **Cambia respecto del canon vigente** (`BOOT §LA TESIS` decía Fase 1 = Operaciones · Ciudadana
 · Institucional; `NOMENCLATURA_CANONICA` daba `civic` como Fase 3):
 
-- **Institucional baja a Fase 2.** No es una degradación: es coherencia con la Tesis —*"el GAD
-  es SUJETO OBSERVADO, no cliente"*—. Lo que hoy existe en el ambiente `gov` es la herramienta
-  con la que Dylus Lab construye el molde; el **producto para el GAD** llega después, cuando
-  haya evidencia que ofrecerle.
-- **Ciudadana sube a Fase 1.** Primero se construye la evidencia; sin ella los demás productos
-  no tienen qué consumir.
+- **Institucional baja a Fase 2.** No es degradación: es coherencia con la Tesis —*"el GAD es
+  SUJETO OBSERVADO, no cliente"*—. Javo: *"dejamos posterior a QUIRA GAD o institucional, ya
+  que no vendemos software a municipios"*. Lo que hoy existe en el ambiente `gov` es la
+  herramienta con la que Dylus Lab construye el molde, no el producto para el GAD.
+- **Ciudadana sube a Fase 1.** Es entrada de evidencia, no consumo: sin ella y sin el
+  Observatorio, los productos de Fase 2 no tienen qué leer.
+- **Operaciones desaparece de la lista de productos.** Nunca lo fue.
+
+> ⚠️ **Discrepancia a zanjar (Javo):** el canon dice **221 GAD** en cinco lugares (BOOT ×2,
+> ADR-024 ×3) y Javo escribe **222**. Es dato oficial y no se corrige por inferencia (Regla 3):
+> queda señalado para que lo fije quien tiene la fuente.
 
 ## 5 · Qué hace cada producto de Fase 1
 
-### 5.1 · Observatorio — genera evidencia de forma proactiva
+### 5.1 · Observatorio — el producto principal · genera evidencia de forma proactiva
 
 Panel de control desde el que se despachan agentes a los sistemas del Estado, con monitoreo
 mensual y cobertura progresiva de GAD:
@@ -90,7 +116,11 @@ El eslabón **validación humana** no es opcional: ADR-035 fija que *la IA propo
 valida*, y la Constitución Institucional Art. 3 que *la inteligencia artificial no constituye
 fuente de verdad institucional*.
 
-### 5.2 · QUIRA Ciudadana — incorpora evidencia desde la sociedad
+### 5.2 · QUIRA Ciudadana — la segunda entrada · el control social, operacionalizado
+
+No es "la versión pública del Observatorio": es una **entrada distinta de evidencia**, y su
+fundamento no es comercial sino constitucional — el control social que *"manda la Constitución
+y la ley"* (Javo). Alcance nacional desde el primer día, porque el derecho lo es.
 
 Dos funciones, y **su naturaleza jurídica no es la misma**:
 
