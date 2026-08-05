@@ -94,9 +94,44 @@ entradas de Fase 1. Construirlo antes daría un producto sin nada que ofrecer.
   Observatorio, los productos de Fase 2 no tienen qué leer.
 - **Operaciones desaparece de la lista de productos.** Nunca lo fue.
 
-> ⚠️ **Discrepancia a zanjar (Javo):** el canon dice **221 GAD** en cinco lugares (BOOT ×2,
-> ADR-024 ×3) y Javo escribe **222**. Es dato oficial y no se corrige por inferencia (Regla 3):
-> queda señalado para que lo fije quien tiene la fuente.
+## 4-bis · El universo son 222 GAD, no 221 — y el 222 no es comparable
+
+El canon decía **221 GAD** en cinco lugares (BOOT ×2, ADR-024 ×3). Javo aportó la fuente y se
+corrigieron los cinco:
+
+| | |
+|---|---|
+| **Cantón 222** | **Sevilla Don Bosco** — Morona Santiago, Región Amazónica |
+| Origen | parroquia rural del cantón Morona, separada de Macas por el río Upano |
+| Consulta popular | 5 de febrero de 2023 — mayoría a favor de la cantonización |
+| **Ley de creación** | **8 de octubre de 2024** — Asamblea Nacional, por unanimidad |
+| Primeras elecciones | 17 de agosto de 2025 (CNE) |
+| Primer alcalde | Carlos Fabricio Narváez — credenciales el 5 de septiembre de 2025 |
+
+> ⏳ **Deuda documental:** el hecho está verificado por fuente pública, pero la **Ley de
+> creación publicada en Registro Oficial** aún no está en el corpus con su SHA256. Mientras no
+> lo esté, el dato se cita por su fuente, no por su norma sellada (Regla 3).
+
+### La consecuencia que no es aritmética
+
+Sumar uno al universo es lo de menos. **Sevilla Don Bosco no tiene histórico comparable con
+los otros 221**, y el radar nacional debe saberlo desde su diseño:
+
+| Instrumento | Situación del GAD 222 |
+|---|---|
+| PDOT 2023-2027 | **no existe** — el cantón se creó después del ciclo |
+| Rendición de cuentas 2023 · 2024 | **no aplica** — no había autoridad que rindiera |
+| ICM 2023 · 2024 | **no aplica** — sin PDOT vigente que medir |
+| Serie histórica de ejecución | arranca en 2026, primer ejercicio completo |
+
+Es exactamente **R-H** —*no se comparan horizontes distintos*— aplicada a un sujeto nuevo. En
+un ranking nacional, un GAD sin histórico aparecería con los peores indicadores por una razón
+que no tiene que ver con su gestión: **todavía no ha tenido tiempo de generarlos**. Ponerlo en
+la misma tabla sin marcar su condición produciría una afirmación falsa por construcción.
+
+**El radar necesita, desde el diseño, un estado `sin ciclo comparable`** — igual que el
+sistema ya distingue `inverificable` de `no atendido`. Se registra, se muestra, no se computa
+en comparaciones ni en promedios nacionales.
 
 ## 5 · Qué hace cada producto de Fase 1
 

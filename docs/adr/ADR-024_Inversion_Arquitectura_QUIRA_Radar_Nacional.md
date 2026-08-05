@@ -42,7 +42,7 @@ QUIRA Institucional (raíz)
 ```
 
 Javo planteó una inversión: quiraintelligence.com no es la vitrina de Montecristi
-ni el demo de Institucional. Es el **radar vivo e independiente de los 221 GAD
+ni el demo de Institucional. Es el **radar vivo e independiente de los 222 GAD
 del Ecuador**. Y lo que llevamos meses construyendo no es un dashboard municipal —
 es la infraestructura de un sistema operativo de inteligencia pública.
 
@@ -80,7 +80,7 @@ Es la función interna de Dylus Lab que alimenta el núcleo.
 **Corrección del Colega: quiraintelligence.com NO es landing ni demo. Es el producto.**
 - **quiraintelligence.com** = Radar Nacional de Gobernanza Explicable
 - El visitante NO entra a ver Montecristi. Entra a ver ECUADOR:
-  221 GAD monitoreados · 24 provincias · semáforo nacional · ranking de coherencia
+  222 GAD monitoreados · 24 provincias · semáforo nacional · ranking de coherencia
   mapa Ecuador · alertas críticas · ejecución · transparencia · contratación · cooperación
 - Luego puede entrar a un GAD: Montecristi · Manta · Cuenca · Quito...
 - Referencia: Bloomberg Government · FiscalNote · OpenGov — pero ecuatoriano
@@ -91,7 +91,7 @@ Es la función interna de Dylus Lab que alimenta el núcleo.
 
 ```
 ANTES: vender software (SaaS) a municipios → depende de buena voluntad política
-AHORA: monitoreo INDEPENDIENTE de los 221 GAD desde fuentes públicas
+AHORA: monitoreo INDEPENDIENTE de los 222 GAD desde fuentes públicas
        → el municipio es OBJETO de análisis, no cliente
        → se monetiza a cooperantes, academia, inversores, prensa
        → el GAD viene después (licencia Institucional = su espejo privado)
