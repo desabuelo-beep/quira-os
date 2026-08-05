@@ -34,7 +34,7 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO y halla las B
 
 ## AHORA (estado vivo · historial → `governance/historico/BOOT_2026-06-17.md`)
 🧭 **ADR-031** cajón=MCD·GM=MCM·**MCIP=5 motores tipados** · **ADR-035/037** Ley→BRN→GM→QUIRA, IA propone/humano valida · **ADR-038** BRN v2: nodo=REGLA, **Corpus→CNO→RO→SAT**.
-✅ **4 DOM con PCD: d01·d02·d03·d09** · d08 en curso (**Asamblea AUTÓNOMA** · CNO-VIII(8) · **OBS-012..017**).
+✅ **PCD: d01·d02·d03·d09** · **d08 ENTRABLE** (**Asamblea AUTÓNOMA** · CNO-VIII(8) · **OBS-012..017**).
 🩺 **Canon curado por DOM (R.8), ICPI intacto. Gate `check_health.py`: NO adivinar.**
 🏛️ **GOBERNANZA v1.0:** `identity/`→`governance/`→`marco_teorico/`→Canon→`registry/`. ⚠️ Derivación 100% **solo en lo catalogado**.
 🖥️ **d08 EN WEB** (`m_participacion`·`participacion_render`·`enrich_*`): **2 CAUSAS** del sin-correlato vinc. (162): **66 inverificable-por-instrumento** (POA localiza 1,1%) · **96 sin-tema**. MRSPP v4 26·8·**0**·9 · **T0 CONSTITUTIVO** (v3=12%).

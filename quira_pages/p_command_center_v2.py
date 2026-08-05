@@ -109,8 +109,17 @@ _DOMAINS_V2: list[dict[str, Any]] = [
         "id": "d08", "num": "08", "nombre": "Participación Ciudadana",
         "concepto": "La incidencia real de la ciudadanía en las decisiones públicas — "
                     "no cuántos talleres hubo, sino cuánto cambiaron lo que se decidió.",
-        "estado": "BAJO OBJETIVO", "metric_key": "igp_pct", "metric_suffix": "%",
+        # La métrica de portada NO es el índice del motor (48,33%): su composición no se
+        # puede explicar todavía y el cajón la deja fuera por eso mismo (Regla 3). Se
+        # publica lo que sí se sostiene documento a documento — la correspondencia
+        # acreditada sobre lo que la ley hace exigible: 29 de 191.
+        "estado": "OBSERVADO", "metric": "15%",
+        "folio_estado": "EN LÍNEA", "periodo": "Ejercicios 2023 - 2026",
+        "radiografia_macro": [("EXIGIBLES", "191"), ("SIN ACREDITAR", "162"), ("ACREDITADO", "15%")],
         "gancho": "¿La ciudadanía incide de verdad en las decisiones, o la participación es solo formal?",
+        # "alerta", no "crítico": la causa dominante de la brecha es que el instrumento no
+        # localiza el gasto, no la gestión. Un rojo en portada sería un veredicto que la
+        # evidencia no sostiene (Regla 2 · el cajón lo desarrolla en sus dos causas).
         "temp": "alerta", "mod": "confianza",
     },
     {
@@ -165,7 +174,10 @@ _DOMAINS_V2: list[dict[str, Any]] = [
 # d03 REABIERTO (2026-07-16): el canon fue curado y promovido — 76 promesas reales del Plan
 # CNE, cero contaminación (antes: 66 con 3 de otros cantones). Las vinculaciones están
 # validadas por Javo y corroboradas contra las 25 metas del universo operacional (ADR-036).
-_ENTRABLES = {"d01", "d02", "d03", "d09"}
+# d08 ABIERTO (2026-08-05): cajón construido sobre las tres dimensiones del catálogo d08
+# v1.0.0 — integridad (7 instancias), vitalidad (declarada y reservada) y efectividad
+# (223 demandas contra 1027 registros del plan operativo, con el desglose de dos causas).
+_ENTRABLES = {"d01", "d02", "d03", "d08", "d09"}
 for _dm in _DOMAINS_V2:
     _dm["disabled"] = _dm["id"] not in _ENTRABLES
 
