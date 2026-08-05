@@ -34,17 +34,18 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO y halla las B
 
 ## AHORA (estado vivo · historial → `governance/historico/BOOT_2026-06-17.md`)
 🧭 **ADR-031** cajón=MCD·GM=MCM·**MCIP=5 motores tipados** · **ADR-035/037** Ley→BRN→GM→QUIRA, IA propone/humano valida · **ADR-038** BRN v2: nodo=REGLA, **Corpus→CNO→RO→SAT**.
-✅ **4 DOM con PCD: d01·d02·d03·d09** · d08 en curso (**Asamblea ciudadana AUTÓNOMA** · CNO-VIII(8) · **OBS-012..017**).
+✅ **4 DOM con PCD: d01·d02·d03·d09** · d08 en curso (**Asamblea AUTÓNOMA** · CNO-VIII(8) · **OBS-012..017**).
 🩺 **Canon curado por DOM (R.8), ICPI intacto. Gate `check_health.py`: NO adivinar.**
 🏛️ **GOBERNANZA v1.0:** `identity/`→`governance/`→`marco_teorico/`→Canon→`registry/`. ⚠️ Derivación 100% **solo en lo catalogado**.
-🖥️ **d08 EN WEB** (`m_participacion`·`participacion_render`·`enrich_*` · QINV-008 rutea): 3 dims · **2 CAUSAS** del sin-correlato vinculante (162): **66 inverificable-por-instrumento** (POA localiza 1,1%) · **96 sin-tema**. MRSPP v4 26·8·**0**·9 · **T0 CONSTITUTIVO** (v3=12% · OBS-021).
-🔌 **CABLEADO** (`MATRIZ_CABLEADO_CANONICO.md`): **GoldMaster→SILOS→DOM→QUIRA**. `H36_QUIRA_BRIDGE` YA existía. **S1·S6·S9 sin DOM.**
-🧨 **OBS-023 · brecha ICM↔ICPI NO citable:** (a) bug escala `B36`(fracción) vs umbral en puntos → dice ✅"mínima" con 72,5 pts. (b) **DESCALCE PDOT**: el ICM va sobre el **PDOT vigente de cada año**; el 1º comparable es el **ICM 2025** (~may-26). **`SAT-I`=S6 SIGAD**, deuda **epistemológica**. ⛔ NO redefinir SAT-I (R.1): guard **aguas arriba** (R-H).
+🖥️ **d08 EN WEB** (`m_participacion`·`participacion_render`·`enrich_*`): **2 CAUSAS** del sin-correlato vinc. (162): **66 inverificable-por-instrumento** (POA localiza 1,1%) · **96 sin-tema**. MRSPP v4 26·8·**0**·9 · **T0 CONSTITUTIVO** (v3=12%).
+🩹 **2 BUGS PROD (19 d) corregidos** — app rota p/ Directivo·Técnico·Admin: (a) `81467c8` borró `_GOV_MODULES`/`_TECNICO_MODULES` → NameError; (b) `qinv_*` no era clave de `_MODULE_RENDER` → clic en tarjeta **volvía al inicio en silencio**. Gate **`smoke_cajones.py`** (AppTest 8×2 roles, verifica HUELLA: sin ella, falso OK).
+🔌 **CABLEADO** (`MATRIZ_CABLEADO_CANONICO.md`): **GM→SILOS→DOM→QUIRA**. `H36_QUIRA_BRIDGE` YA existía. **S1·S6·S9 sin DOM.**
+🧨 **OBS-023 · brecha ICM↔ICPI NO citable:** (a) bug escala `B36` fracción vs umbral en puntos. (b) **DESCALCE PDOT**: 1º comparable = **ICM 2025** (~may-26). **`SAT-I`=S6 SIGAD**, deuda **epistemológica**. ⛔ NO redefinir (R.1).
 🚨 **OBS-022: SAT sin cadena BRN, deuda 90%→60%.** PCD → **`cerrado con deuda declarada`** (R.8). Gate `check_sat_brn.py`. ⛔ `SAT-IX`(d08) ≠ `SAT-IX-001`(=SAT-V).
-🏛️ **R-C..R-H → `PROTOCOLO_CURACION_DOMINIO.md` §3.** C: el dueño del instrumento califica · D: ¿ALGORITMO o INSTRUMENTO? **se mide, no se parcha** · **E (LEY)**: solo MCR · F: 3 vías de ingesta · G: cada DOM declara su cableado · **H: no se comparan horizontes distintos**.
+🏛️ **R-C..R-H → `PROTOCOLO_CURACION_DOMINIO.md` §3** (C dueño califica · D **se mide, no se parcha** · **E LEY**: solo MCR · F 3 vías · G cableado · **H no comparar horizontes**).
 🔬 **CVI**=2ª dim. IOC (OBS-020). `inverificable` ≠ `no atendido`. **UDC-G**`= ∧ UDC-Iₖ`: MCR ✅ POA·cabildo · ⚠️ PP·audiencias · ❌ LOTAIP·Concejo·Holding → **FALSO**.
-⚖️ **3 CAPAS**: jurídica (**Guía LOTAIP = LEY, no canon**) · operativa (**d07**) · analítica (QUIRA **no tramita**). 🧪 **H-ARQ-01** (HIPÓTESIS · bloq. R-E).
-🧠 **DESCUBRIMIENTO NORMATIVO** (doc homónimo): NO es motor nuevo — es el 4º de los **5 MCIP (ADR-031)**. Vacío → `C10-{n}` NO VIGENTE → sella Javo. **Laboratorio, NO runtime**, arranca en el grafo. ⛔ bloq. R-E.
+⚖️ **3 CAPAS**: jurídica (**Guía LOTAIP = LEY, no canon**) · operativa (**d07**) · analítica (QUIRA **no tramita**). 🧪 **H-ARQ-01** HIPÓTESIS ⛔R-E.
+🧠 **DESCUBRIMIENTO NORMATIVO**: NO es motor nuevo — 4º de los **5 MCIP (ADR-031)**. Vacío → `C10-{n}` NO VIGENTE → sella Javo. **Laboratorio, NO runtime**. ⛔ bloq. R-E.
 ⏭️ **JAVO: (1)** 2ª validación v4 (¿retirar `complementaria`?) **(2)** promover `_CANDIDATO_v5.7`→`v5.7_TGI` **(3)** Haiku ~$60/18 meses.
 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 ratificado · detalle en el ADR)

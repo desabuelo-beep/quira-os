@@ -54,9 +54,49 @@ from utils.css_tokens import C
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# KPI BAND PERSISTENTE — visible en drill-down del Ejecutivo
-# Mantiene contexto de los 4 KPIs mientras el operador explora un dominio
+# MENÚ DEL SIDEBAR — orden y visibilidad por rol
+#
+# ⚠️ RESTAURADO 2026-08-05. El commit 81467c8 (17-jul, "fuera las tiles viejas")
+# eliminó estas dos definiciones al quitar la banda de KPIs, pero dejó vivas sus
+# TRES referencias: `_can_see` (abajo) y dos bucles de `render_sidebar_nav`. El
+# resultado fue un NameError para todo rol Directivo/Técnico/Administrador —
+# el Ejecutivo se salvaba solo porque ambas funciones retornan antes que él.
+# Estuvo 19 días en producción sin detectarse; lo encontró `scripts/ci/smoke_cajones.py`.
+#
+# Se mantiene coherente con `_MODULE_RENDER` (abajo): toda clave ruteable aparece
+# aquí, incluidas `metas` (Dom03) y `gobierno` (ADR-037), posteriores al commit
+# que borró el bloque.
 # ══════════════════════════════════════════════════════════════════════════════
+
+_GOV_MODULES: list[tuple[str, str, str, bool]] = [
+    # ── Sección Ejecutiva (todos los roles GOV) ────────────────────────────
+    ("inicio",       "🏛",  "Centro de Inteligencia Territorial", False),
+    ("situacion",    "📊",  "Situación Institucional",       False),
+    ("metas",        "🎯",  "Metas PDOT",                    False),   # Dom03 · ADR-026
+    ("alertas",      "🚨",  "Alertas y Riesgos",             False),
+    ("municipal",    "🏛",  "Gestión Municipal",             False),
+    ("ods",          "🌐",  "ODS y Metas PDOT",              False),
+    ("confianza",    "🤝",  "Confianza Ciudadana",           False),
+    ("rdc",          "📋",  "Rendición de Cuentas",          False),
+    ("cooperacion",  "🌍",  "Cooperación Internacional",     False),
+    ("genero",       "💜",  "Género y Ambiente",             False),
+    ("territorio",   "🗺",  "Territorio & Cobertura",        False),   # Dom10 · ADR-013
+    ("transparencia","👁",  "Transparencia Institucional",   False),   # Dom07 · ADR-013 Sprint 4
+    # ── Sección Técnica (Técnico, Operador, Administrador) ─────────────────
+    ("cadena",       "🔗",  "Cadena Institucional",          True),    # Sprint E.1
+    ("analisis",     "📈",  "Análisis Estratégico",          True),
+    ("gobierno",     "🏛",  "Gobierno · el mandato",         True),    # ADR-037 · dimensión ¿QUÉ?
+    ("geotwin",      "🗺",  "GeoTwin Territorio",            True),
+    ("congruencias", "🔗",  "Congruencias PDOT",             True),
+    ("simulador",    "🎮",  "Simulador de Escenarios",       True),
+    ("control",      "⚙",  "Centro de Control",             True),
+]
+
+# Claves de módulos exclusivos de la sección técnica
+_TECNICO_MODULES: frozenset[str] = frozenset(
+    key for key, *_, tec_only in _GOV_MODULES if tec_only
+)
+
 
 def _can_see(module_key: str) -> bool:
     """Determina si el rol actual puede ver este módulo."""
@@ -369,8 +409,12 @@ _MODULE_RENDER: dict[str, tuple] = {
     # Sección Ejecutiva
     "inicio":       (_render_inicio,       "Centro de Inteligencia Territorial"),
     "situacion":    (_render_situacion,    "Situación Institucional"),
-    "metas":        (_render_metas_d03,   "Metas PDOT · IFE"),          # Dom03 · ADR-026
-    "alertas":      (_render_alertas,      "Alertas y Riesgos SAT"),
+    # Etiquetas SIN jerga interna (Regla 2): eran "Metas PDOT · IFE" y "Alertas y Riesgos
+    # SAT" — las dos únicas fugas ALTO que el auditor de frontera marcaba en este archivo.
+    # Se corrigen ahora porque el menú restaurado arriba las volvía inconsistentes: el
+    # sidebar diría una cosa y la cabecera del módulo otra.
+    "metas":        (_render_metas_d03,   "Metas PDOT"),                # Dom03 · ADR-026
+    "alertas":      (_render_alertas,      "Alertas y Riesgos"),
     "municipal":    (_render_municipal,    "Gestión Municipal"),
     "ods":          (_render_ods,          "ODS y Metas PDOT"),
     "confianza":    (_render_confianza,    "Confianza Ciudadana"),
@@ -507,6 +551,23 @@ button[data-testid="collapsedControl"] {
 
     # ── Directivo / Administrador: módulo activo con header GOV ──────────────
     module_key = _current_module()
+
+    # Drill-in a un cajón (`qinv_*`) — antes SOLO funcionaba para el Ejecutivo: como
+    # `qinv_d08` no es clave de `_MODULE_RENDER`, el `.get(...)` caía al default y
+    # devolvía al inicio en silencio. Es decir, el Directivo/Técnico hacía clic en una
+    # tarjeta del Centro de Mando y no pasaba nada. Los cajones son de todos los roles
+    # GOV; lo exclusivo del Ejecutivo es la NAVEGACIÓN sin sidebar, no el contenido.
+    # (Hallado por smoke_cajones.py · 2026-08-05.)
+    if module_key.startswith("qinv_"):
+        from quira_pages.qinv import render as _r_qinv, label_of as _label_qinv
+        _dom = module_key[len("qinv_"):]
+        _render_gov_header(_label_qinv(_dom))
+        if st.button("← Centro de Inteligencia Territorial", key="gov_back_centro"):
+            st.session_state["gov_module"] = "inicio"
+            st.rerun()
+        _r_qinv(_dom)
+        return
+
     fn, label  = _MODULE_RENDER.get(module_key, (_render_inicio, "Inicio"))
     _render_gov_header(label)
     fn()
