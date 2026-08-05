@@ -29,10 +29,11 @@ Uso:  python scripts/enrich_participacion.py
 from __future__ import annotations
 
 import json
-import re
 import sys
 from collections import Counter
 from pathlib import Path
+
+import yaml
 
 _RAIZ = Path(__file__).resolve().parents[1]
 _SNAP = _RAIZ / "data" / "gm_snapshot.json"
@@ -43,7 +44,12 @@ _RO_003 = _RAIZ / "docs" / "brn" / "RO-VIII-003.yaml"
 sys.path.insert(0, str(_RAIZ / "scripts" / "d08"))
 from filtro_ontologico import _territorios  # noqa: E402  (motor de d08, función pura de texto)
 
-# Localización del gasto en el POA — OBS-020, dos métodos convergentes.
+# ── GUARDIÁN OBS-020 · NO RECALCULAR ──────────────────────────────────────────
+# El 1,1% es un HECHO MEDIDO y certificado bajo el protocolo de OBS-020 (dos métodos
+# independientes y convergentes sobre el POA oficial). No es un parámetro de ajuste ni un
+# valor a estimar en tiempo de ejecución: modificarlo sin una recalibración oficial de
+# OBS-020 rompería la trazabilidad de todo el desglose de causas que descansa sobre él.
+# Se cambia SOLO si la auditoría OBS-020 se rehace y publica otro número.
 _POA_LOCALIZA_PCT = 1.1
 
 # Rótulo público de cada mecanismo (frontera de lenguaje · Regla 2).
@@ -74,58 +80,49 @@ def _leer_json(p: Path) -> dict:
     return json.loads(p.read_text(encoding="utf-8"))
 
 
-def _yaml_bloque_instancias(txt: str) -> list[dict]:
-    """Extrae mecanismo + estado/acreditación/cobertura del catálogo sin dependencia de PyYAML
-    (el catálogo lleva bloques de texto libre que un parser estricto rechaza)."""
+def _leer_yaml(p: Path) -> dict:
+    """Lectura con parser real. La primera versión de este script usó expresiones regulares
+    bajo la premisa —FALSA, verificada 2026-08-05— de que el catálogo tenía bloques que un
+    parser estricto rechazaba: `yaml.safe_load` lo carga entero. El regex habría dejado de
+    encontrar campos ante un cambio de sangría o un comentario movido; el parser no."""
+    return yaml.safe_load(p.read_text(encoding="utf-8")) or {}
+
+
+def _instancias_del_catalogo(cat: dict) -> list[dict]:
+    """Las 7 instancias/mecanismos con el estado de su evidencia documental."""
     out: list[dict] = []
-    for m in re.finditer(r"- cno:\s*(CNO-VIII-\d+)\s*\n\s+mecanismo:\s*(\w+)", txt):
-        cno, mec = m.group(1), m.group(2)
-        cola = txt[m.end():m.end() + 2200]
-        corte = re.search(r"\n  - cno:", cola)
-        if corte:
-            cola = cola[:corte.start()]
-
-        def _campo(k: str) -> str:
-            g = re.search(rf"\n\s+{k}:\s*([^\n#]+)", cola)
-            return g.group(1).strip().strip('"') if g else ""
-
-        docs = re.findall(r'\n\s+- "([^"]+)"', cola)
+    for i in cat.get("instancias") or []:
+        ev = i.get("evidencia") or {}
         out.append({
-            "cno": cno, "mecanismo": mec,
-            "tipo": _campo("tipo"),
-            "estado_evidencia": _campo("estado"),
-            "acreditacion": _campo("acreditacion"),
-            "cobertura": _campo("cobertura"),
-            "formato": _campo("formato"),
-            "n_documentos": len(docs),
+            "cno": i.get("cno", ""), "mecanismo": i.get("mecanismo", ""),
+            "tipo": i.get("tipo", ""),
+            "estado_evidencia": ev.get("estado", ""),
+            "acreditacion": ev.get("acreditacion", ""),
+            "cobertura": ev.get("cobertura", ""),
+            "formato": ev.get("formato", ""),
+            "n_documentos": len(ev.get("documentos") or []),
         })
     return out
 
 
-def _naturaleza_verificacion(txt: str) -> dict[str, str]:
+def _naturaleza_verificacion(cat: dict) -> dict[str, str]:
     """estructural / operativa / mixta — la doctrina que evita marcar 'sin evidencia'
     algo que la Ley ya define (regla de oro del catálogo)."""
-    nat: dict[str, str] = {}
-    for clase in ("estructural", "operativa", "mixta"):
-        g = re.search(rf"\n    {clase}:\s*\[([^\]]+)\]", txt)
-        if g:
-            for mec in g.group(1).split(","):
-                nat[mec.strip()] = clase
-    return nat
+    clas = ((cat.get("naturaleza_verificacion") or {}).get("clasificacion_d08")) or {}
+    return {mec: clase for clase, mecs in clas.items() for mec in (mecs or [])}
 
 
-def _senal_ro003(txt: str) -> dict:
+def _senal_ro003(ro: dict) -> dict:
     """La señal preventiva que RO-VIII-003 declara producir (ADR-038 §1b: umbral y peso
     viven en la regla, no en el Excel — el motor solo la refleja)."""
-    def _g(pat: str, d=""):
-        m = re.search(pat, txt)
-        return m.group(1).strip().strip('"') if m else d
+    prod = (ro.get("produce") or [{}])[0]
+    med = prod.get("medicion_2026") or {}
     return {
-        "nombre": _g(r'nombre:\s*"([^"]+)"'),
-        "umbral": float(_g(r"umbral_activacion:\s*([\d.]+)", "0") or 0),
-        "valor": float(_g(r"medicion_2026:\s*\{\s*valor:\s*([\d.]+)", "0") or 0),
-        "numerador": int(_g(r"numerador:\s*(\d+)", "0") or 0),
-        "denominador": int(_g(r"denominador:\s*(\d+)", "0") or 0),
+        "nombre": prod.get("nombre", ""),
+        "umbral": float(prod.get("umbral_activacion") or 0),
+        "valor": float(med.get("valor") or 0),
+        "numerador": int(med.get("numerador") or 0),
+        "denominador": int(med.get("denominador") or 0),
         "regla": "más de la mitad de lo exigible sin correspondencia verificable",
         "frontera": ("No acredita desatención: acredita ausencia de habilitación documental. "
                      "La causa dominante es que el instrumento no localiza el gasto."),
@@ -134,14 +131,14 @@ def _senal_ro003(txt: str) -> dict:
 
 def construir() -> dict:
     traza = _leer_json(_TRAZA)
-    cat_txt = _CATALOGO.read_text(encoding="utf-8")
-    ro_txt = _RO_003.read_text(encoding="utf-8")
+    cat = _leer_yaml(_CATALOGO)
+    ro = _leer_yaml(_RO_003)
     snap = _leer_json(_SNAP)
 
     # ── 1 · INTEGRIDAD NORMATIVA ────────────────────────────────────────────────
-    nat = _naturaleza_verificacion(cat_txt)
+    nat = _naturaleza_verificacion(cat)
     instancias = []
-    for i in _yaml_bloque_instancias(cat_txt):
+    for i in _instancias_del_catalogo(cat):
         rot, norma = _MECANISMOS.get(i["mecanismo"], (i["mecanismo"], ""))
         lbl, sem = _ESTADO_EV.get(i["estado_evidencia"], ("Estado por clasificar", "wn"))
         instancias.append({
@@ -224,7 +221,7 @@ def construir() -> dict:
         },
         "vitalidad": vitalidad,
         "efectividad": efectividad,
-        "senal": _senal_ro003(ro_txt),
+        "senal": _senal_ro003(ro),
     }
 
 

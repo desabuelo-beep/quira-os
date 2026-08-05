@@ -29,6 +29,16 @@ bloque para cuando su composición se documente; la radiografía de este dominio
 tres dimensiones, no una cifra única.
 
 Regla 1: consume el SNAPSHOT (bloque `participacion_dom`), no el motor.
+
+DEUDA TÉCNICA REGISTRADA (CSS · medida, no estimada · 2026-08-05): de las 60 reglas
+`.d8-*`, **17 son copia literal de las `.d2-*`** de Presupuesto — dos familias completas:
+la cadena `norma → regla → indicador → señal` (`.d8-cad*`) y la cadena de valor público
+(`.d8-fl*`). Ya se repiten en DOS dominios, así que corresponde promoverlas a `_CSS` base.
+NO se hace ahora, y la razón importa: `_CSS` lo consumen los cuatro cajones en producción,
+y tocarlo justo antes de publicar el acumulado convertiría un refactor cosmético en un
+riesgo de regresión sobre dominios ya cerrados (Regla 8). Se hace después del despliegue,
+con los cuatro cajones verificados. Las otras 43 reglas son propias del dominio: el patrón
+de la casa es un prefijo por dominio, y disolverlo acoplaría los cajones entre sí.
 """
 from __future__ import annotations
 
@@ -67,10 +77,16 @@ _D08_CSS = (
     ".d8-cau-i{display:flex;gap:10px;align-items:flex-start;font-size:11.5px;color:var(--tx2);line-height:1.5}"
     ".d8-cau-i b{color:var(--tx)}"
     ".d8-cau-d{width:11px;height:11px;border-radius:3px;flex:none;margin-top:3px}"
-    # ── hero del resultado ──
-    ".d8-hero{display:flex;align-items:center;gap:16px;border:1px solid var(--bd);border-left:3px solid " + _COL + ";border-radius:8px;padding:14px 17px;background:var(--sf);margin:4px 0 12px}"
-    ".d8-hero-v{font-family:Georgia,serif;font-size:38px;font-weight:700;line-height:1;flex:none}"
-    ".d8-hero-x{font-size:12.5px;color:var(--tx2);line-height:1.5}.d8-hero-x b{color:var(--tx)}"
+    # ── hero del resultado · el CONTEXTO antes que la cifra de síntesis ──
+    ".d8-hero{border:1px solid var(--bd);border-left:3px solid " + _COL + ";border-radius:8px;padding:15px 18px;background:var(--sf);margin:4px 0 12px}"
+    ".d8-vol{display:flex;flex-wrap:wrap;gap:26px;margin-bottom:11px}"
+    ".d8-vol-i{display:flex;flex-direction:column;gap:1px}"
+    ".d8-vol-i .n{font-family:Georgia,serif;font-size:31px;font-weight:700;line-height:1;color:var(--tx)}"
+    ".d8-vol-i .l{font-size:10.5px;color:var(--tx2);line-height:1.35;max-width:190px}"
+    ".d8-hero-x{font-size:12.5px;color:var(--tx2);line-height:1.55}.d8-hero-x b{color:var(--tx)}"
+    ".d8-sint-l{display:flex;align-items:baseline;gap:9px;margin-top:12px;padding-top:11px;border-top:1px solid var(--bd)}"
+    ".d8-sint-l .v{font-family:ui-monospace,monospace;font-size:17px;font-weight:800}"
+    ".d8-sint-l .t{font-size:11.5px;color:var(--tx2)}"
     # ── tabla de trazabilidad ──
     ".d8-tw{max-height:400px;overflow-y:auto;border:1px solid var(--bd);border-radius:7px;margin-top:8px}"
     ".d8-t{width:100%;border-collapse:collapse;font-size:11.5px}"
@@ -249,13 +265,16 @@ def _vitalidad(d: dict) -> str:
         'cien mil habitantes, unas decenas de participantes es una señal democrática distinta a la que sugiere el '
         'acta. Esta dimensión mide eso: <b>si la democracia local está viva</b>.</p>'
         f'<div class="d8-vit"><div style="font-family:ui-monospace,monospace;font-size:9px;letter-spacing:.12em;'
-        f'text-transform:uppercase;color:#F9AB00;font-weight:700">Dimensión en diseño — qué medirá</div>'
+        f'text-transform:uppercase;color:#F9AB00;font-weight:700">Dimensión declarada y reservada — '
+        f'qué medirá al operacionalizarse</div>'
         f'<div class="d8-vc">{cards}</div>'
         f'<div style="font-size:11.5px;color:var(--tx2);line-height:1.55;margin-top:8px;border-top:1px solid '
-        f'var(--bd);padding-top:10px">Aquí <b style="color:var(--tx)">no se publica un número</b>, y es deliberado. '
-        f'El índice se sella en el motor del canon, no en esta pantalla; anticiparlo sería inventar una medición. '
-        f'Además hay un obstáculo material declarado: <b style="color:var(--tx)">{_esc(v.get("bloqueo", ""))}</b>'
-        f'</div>{serie}</div>'
+        f'var(--bd);padding-top:10px">Esta dimensión <b style="color:var(--tx)">no está vacía: está reservada</b>. '
+        f'Sus cuatro componentes y su fundamento legal ya están definidos; lo que falta es el índice, y ese '
+        f'<b style="color:var(--tx)">se sella en el motor del canon, no en esta pantalla</b> — anticiparlo aquí '
+        f'sería inventar una medición. Hay además un obstáculo material declarado: '
+        f'<b style="color:var(--tx)">{_esc(v.get("bloqueo", ""))}</b> Mostrar el hueco es parte del método: un '
+        f'dominio que oculta lo que aún no mide no es auditable.</div>{serie}</div>'
         '<p class="qc-cap" style="margin-top:11px">Fundamento del mandato de diversidad: <b>Ley Orgánica de '
         'Participación Ciudadana, artículo 57</b> —la composición debe garantizar las diversas identidades '
         'territoriales y la equidad de género y generacional—.</p>')
@@ -263,20 +282,35 @@ def _vitalidad(d: dict) -> str:
 
 # ══════════════════════════ 04 · efectividad ══════════════════════════
 def _hero_incidencia(d: dict) -> str:
+    """El volumen y la naturaleza PRIMERO; el porcentaje al cierre, como síntesis.
+    Un número de una cifra abriendo el bloque se lee como veredicto antes de que el lector
+    sepa sobre qué universo se calcula — y aquí el universo es justamente lo que hay que
+    entender (observación del colega · 2026-08-05)."""
     ef = d.get("efectividad") or {}
+    tot = ef.get("total_demandas") or 0
     vinc = ef.get("vinculantes") or 0
     ve = ef.get("vinculantes_por_estado") or {}
     sin_c = ve.get("sin_correlato", 0)
     con = vinc - sin_c
     pct = round(100 * con / vinc) if vinc else 0
     col = "#D93025" if pct < 25 else ("#F9AB00" if pct < 60 else "#1E8E3E")
+    vol = [
+        (tot, "demandas recogidas en las instancias de participación (2023-2026)"),
+        (vinc, "de ellas son <b>jurídicamente exigibles</b> (presupuesto participativo)"),
+        (sin_c, "sin correspondencia acreditada <b>en el expediente</b>"),
+    ]
+    cifras = "".join(f'<div class="d8-vol-i"><span class="n">{n}</span><span class="l">{t}</span></div>'
+                     for n, t in vol)
     return (
-        f'<div class="d8-hero"><div class="d8-hero-v" style="color:{col}">{pct}%</div>'
-        f'<div class="d8-hero-x">de las <b>{vinc} demandas ciudadanas exigibles</b> del período tiene '
-        f'correspondencia acreditada en la planificación operativa del municipio (<b>{con}</b> de {vinc}). '
-        f'Las <b>{sin_c}</b> restantes no la tienen <b>en el expediente</b> — y esa frase debe leerse con '
-        f'precisión: <b>no dice que no se atendieron</b>. Dice que, con los documentos públicos disponibles, '
-        f'la correspondencia no puede verificarse. Abajo se separa por qué.</div></div>')
+        f'<div class="d8-hero"><div class="d8-vol">{cifras}</div>'
+        f'<div class="d8-hero-x">Esa última cifra debe leerse con precisión, porque de ella depende todo lo '
+        f'demás: <b>no dice que esas demandas no se atendieron</b>. Dice que, con los documentos públicos '
+        f'disponibles, la correspondencia <b>no puede verificarse</b>. Son dos afirmaciones distintas, y '
+        f'confundirlas convertiría una auditoría documental en una acusación. El bloque siguiente separa las '
+        f'<b>dos causas</b> que producen esa cifra — y solo una de ellas señala a la gestión.</div>'
+        f'<div class="d8-sint-l"><span class="v" style="color:{col}">{pct}%</span>'
+        f'<span class="t">de correspondencia acreditada sobre lo exigible (<b>{con}</b> de {vinc}) — '
+        f'la síntesis, una vez entendido de dónde sale</span></div></div>')
 
 
 def _dos_causas(d: dict) -> str:
