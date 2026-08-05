@@ -77,6 +77,20 @@ RE_MONTO = re.compile(r"\b\d{1,3}(?:[.,]\d{3})*[.,]\d{2}\b")
 RE_MARCADOR_LUGAR = re.compile(
     r"\b(barrio|sector|comunidad|comuna|parroquia|sitio|recinto|ciudadela|km )\s+\w+", re.I)
 
+# ★ EL SUJETO (ampliación 2026-08-05 · Javo). Saber DÓNDE no basta: sin sujeto
+# declarado, la intervención tampoco puede seguirse hasta el RESULTADO. Se mide en dos
+# niveles porque no es lo mismo nombrar al destinatario que dimensionarlo.
+RE_SUJETO = re.compile(
+    r"\b(familias?|habitantes?|beneficiari|moradores?|pobladores?|usuarios?|estudiantes?"
+    r"|ninos?|niñas?|adultos? mayores?|personas con discapacidad|grupos? de atencion prioritaria"
+    r"|mujeres|jovenes|jóvenes|productores?|artesanos?)\b", re.I)
+RE_SUJETO_CUANT = re.compile(
+    r"\b\d{2,6}\s*(familias|habitantes|beneficiarios|personas|usuarios|moradores)\b", re.I)
+
+# ★ LA CAUSA. Marca de intervención con financiador externo: es el contraste que explica
+# por qué unas filas localizan y otras no (el requisito del tercero existe; el propio, no).
+RE_FINANCIADOR = re.compile(r"\b(BDE|cr[ée]dito|contraparte|banco de desarrollo)\b", re.I)
+
 
 def main() -> int:
     poa = cargar_poa(("2023", "2024", "2025", "2026"))
@@ -106,27 +120,64 @@ def main() -> int:
         else:
             con_objeto += 1
 
+    # ── AMPLIACIÓN 2026-08-05 · el SUJETO y la CAUSA (observación de Javo) ──────
+    # Javo: "falta otra pregunta que pormenorice el territorio y el actor". Tenía razón:
+    # medir solo el LUGAR deja fuera la mitad de la cadena. Una intervención sin sujeto
+    # declarado tampoco puede seguirse hasta el RESULTADO, aunque se sepa dónde ocurre.
+    con_sujeto = sum(1 for f in poa if RE_SUJETO.search(f["texto"]))
+    con_sujeto_cuant = sum(1 for f in poa if RE_SUJETO_CUANT.search(f["texto"]))
+    con_ambos = sum(1 for f in poa
+                    if fo._territorios(f["texto"]) and RE_SUJETO.search(f["texto"]))
+
+    # ── LA CAUSA · lo que eleva el hallazgo de descriptivo a explicativo ────────
+    # Constitución CAPA 0: QUIRA no DETECTA la incoherencia (eso es QUADRUM), EXPLICA
+    # su causalidad. La pregunta no es "¿cuántas filas localizan?" sino "¿QUÉ hace que
+    # unas localicen y otras no?". Con financiador externo el requisito existe; con el
+    # formato propio, no. El GAD sabe localizar — lo demuestra cuando se lo exigen.
+    ext = [f for f in poa if RE_FINANCIADOR.search(f["texto"])]
+    ext_loc = [f for f in ext if fo._territorios(f["texto"])]
+    prop = [f for f in poa if not RE_FINANCIADOR.search(f["texto"])]
+    prop_loc = [f for f in prop if fo._territorios(f["texto"])]
+
     def pct(x: int) -> str:
         return f"{x:>5}  ({x / n:>5.1%})"
 
-    print(f"\n=== DIAGNÓSTICO DE LA FICHA POA · {n} filas · GAD Montecristi 2023-2026 ===\n")
-    print("  ¿El instrumento permite monitorear la planificación del desarrollo?\n")
-    print(f"  Declara OBJETO sustantivo .................. {pct(con_objeto)}")
-    print(f"  Declara TERRITORIO de ejecución ............ {pct(con_territorio)}   ← decisiva")
+    print(f"\n=== DIAGNÓSTICO DE LA FICHA POA · {n} filas · GAD Montecristi ===")
+    print("    (consolidado de CUATRO planes operativos ANUALES: 2023 · 2024 · 2025 · 2026)\n")
+    print("  ¿El instrumento permite seguir la intervención hasta el territorio?\n")
+    print(f"  ¿QUÉ se hace?  · objeto sustantivo ......... {pct(con_objeto)}")
+    print(f"  ¿DÓNDE se ejecuta? · unidad territorial .... {pct(con_territorio)}   ← decisiva")
     print(f"     ↳ corroboración independiente ........... {pct(con_marcador)}   (marcador de lugar)")
-    print(f"  Declara COMPONENTES operativos ............. {pct(con_componente)}")
+    print(f"  ¿SOBRE QUIÉN recae? · sujeto declarado ..... {pct(con_sujeto)}")
+    print(f"     ↳ con la población CUANTIFICADA ......... {pct(con_sujeto_cuant)}")
+    print(f"  AMBAS a la vez (dónde + sobre quién) ....... {pct(con_ambos)}   ← la cadena completa")
     print(f"  Solo clasificación presupuestaria .......... {pct(solo_clasificacion)}")
+    # Se conserva por continuidad de OBS-020, con su nombre real: son componentes
+    # OPERATIVOS de la intervención (residuos, seguridad, salud, vialidad), NO los
+    # componentes del PDOT (biofísico, sociocultural…), cuya vinculación es ~100%.
+    # Confundirlos fue un error de nomenclatura corregido hoy (Javo + asesoría).
+    print(f"  [ref. OBS-020] rubro operativo reconocible . {pct(con_componente)}")
+
+    print("\n  LA CAUSA — qué distingue a las filas que SÍ localizan:")
+    r_ext = 100 * len(ext_loc) / len(ext) if ext else 0
+    r_prop = 100 * len(prop_loc) / len(prop) if prop else 0
+    print(f"    · con financiador externo (BDE/crédito/contraparte): "
+          f"{len(ext_loc)} de {len(ext)}  ({r_ext:.1f}%)")
+    print(f"    · solo con formato propio ........................: "
+          f"{len(prop_loc)} de {len(prop)}  ({r_prop:.2f}%)")
+    if r_prop:
+        print(f"    → razón {r_ext / r_prop:.0f} a 1. El GAD SÍ sabe localizar el gasto: lo hace")
+        print("      cuando un tercero lo exige. Lo que falta no es capacidad — es el")
+        print("      requisito en su propio formato. (n=%d en el grupo externo: patrón" % len(ext))
+        print("      fuertemente sugerido, no ley; se propone, el humano valida.)")
 
     print("\n  LECTURA (frontera Carta Art. 4.5 — no se afirma incumplimiento):")
-    print(f"    · {1 - con_territorio / n:.0%} de las filas NO permite saber DÓNDE se ejecuta el gasto.")
-    print("      Sin ancla territorial, verificar si la demanda de un barrio fue atendida")
-    print("      es imposible POR CONSTRUCCIÓN del documento, no por falta de algoritmo.")
-    print(f"    · {1 - con_componente / n:.0%} no declara componentes operativos → la satisfacción")
-    print("      INSTRUMENTAL es inverificable (por eso el cruce arroja instrumental = 0:")
-    print("      no es que no exista, es que el expediente no la declara).")
-    print("\n  QUIRA certifica: AUSENCIA DE HABILITACIÓN DOCUMENTAL del instrumento de")
-    print("  planificación para el monitoreo y evaluación que la ley le exige.")
-    print("  NO certifica: que el GAD haya incumplido. Eso lo determina el órgano de control.\n")
+    print(f"    · {1 - con_territorio / n:.0%} de las filas no permite saber DÓNDE se ejecuta el gasto,")
+    print(f"      y {1 - con_ambos / n:.0%} no permite saber dónde Y sobre quién a la vez.")
+    print("      La cadena PLAN→…→TERRITORIO no se puede recorrer POR CONSTRUCCIÓN del")
+    print("      documento, no por falta de algoritmo.")
+    print("\n  QUIRA no dictamina incumplimiento: localiza DÓNDE se rompe la cadena, explica")
+    print("  POR QUÉ, y devuelve una decisión accionable — aquí, un campo en la ficha.\n")
     return 0
 
 

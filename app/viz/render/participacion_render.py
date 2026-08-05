@@ -306,7 +306,7 @@ def _hero_incidencia(d: dict) -> str:
         f'<div class="d8-hero-x">Esa última cifra debe leerse con precisión, porque de ella depende todo lo '
         f'demás: <b>no dice que esas demandas no se atendieron</b>. Dice que, con los documentos públicos '
         f'disponibles, la correspondencia <b>no puede verificarse</b>. Son dos afirmaciones distintas, y '
-        f'confundirlas convertiría una auditoría documental en una acusación. El bloque siguiente separa las '
+        f'confundirlas convertiría una lectura documental en una acusación. El bloque siguiente separa las '
         f'<b>dos causas</b> que producen esa cifra — y solo una de ellas señala a la gestión.</div>'
         f'<div class="d8-sint-l"><span class="v" style="color:{col}">{pct}%</span>'
         f'<span class="t">de correspondencia acreditada sobre lo exigible (<b>{con}</b> de {vinc}) — '
@@ -325,7 +325,7 @@ def _dos_causas(d: dict) -> str:
     segs = (f'<div class="d8-cau-s" style="width:{p_inv}%;background:#5AA9E6">{inv}</div>'
             f'<div class="d8-cau-s" style="width:{100 - p_inv}%;background:#C9782E">{tem}</div>')
     return (
-        '<p class="qc-p">Aquí está la distinción que separa una auditoría seria de una acusación. Las '
+        '<p class="qc-p">Aquí está la distinción que separa explicar una brecha de imputarla. Las '
         f'<b>{tot} demandas</b> sin correspondencia acreditada <b>no son un solo fenómeno</b>: son dos, y tienen '
         'consecuencias opuestas para el municipio.</p>'
         f'<div class="d8-cau"><div class="d8-cau-b">{segs}</div><div class="d8-cau-l">'

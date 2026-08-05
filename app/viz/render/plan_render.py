@@ -805,60 +805,83 @@ def _seccion_anio_curso(plan: dict):
     return curso["anio"], cuerpo
 
 
-# ── GUARDIÁN OBS-020 · NO RECALCULAR ─────────────────────────────────────────
-# Medición certificada sobre las 1.027 filas del plan operativo 2023-2026 del GAD, por
-# DOS caminos independientes que convergen (registro de topónimos → 1,1%; marcadores de
-# lugar, que no dependen de conocer ningún nombre → 1,3%). Un solo método podría
-# subestimar por registro incompleto; dos con la misma medida es lo que la vuelve
-# afirmable. No se recalcula aquí ni se parametriza: se cambia SOLO si OBS-020 se rehace.
-# El primer conteo dio 75,7% y era falso —769 de 777 aciertos eran la palabra
-# "Montecristi", el membrete institucional, no la ubicación del proyecto—.
-_OBS020 = {"filas": 1027, "objeto_pct": 100.0, "territorio_pct": 1.1,
-           "territorio_filas": 11, "corroboracion_pct": 1.3, "componentes_pct": 29.8,
-           "periodo": "2023-2026"}
+# ── GUARDIÁN · MEDICIÓN CERTIFICADA · NO RECALCULAR ──────────────────────────
+# Fuente reproducible: scripts/d08/diagnostico_ficha_poa.py sobre el consolidado de los
+# CUATRO planes operativos ANUALES (2023 · 2024 · 2025 · 2026 = 1.027 registros). Un POA
+# NUNCA es plurianual: decir "el plan operativo 2023-2026" mezcla el instrumento anual
+# con el horizonte del PDOT (error corregido por Javo · 2026-08-05).
+#
+# El territorio se midió por DOS caminos independientes que convergen (topónimos 1,1% ·
+# marcadores de lugar 1,3%, que no dependen de conocer ningún nombre); eso es lo que lo
+# vuelve afirmable. El primer conteo dio 75,7% y era falso: 769 de 777 aciertos eran la
+# palabra "Montecristi" —el membrete institucional, no la ubicación del proyecto—.
+#
+# NO se publica "componentes": en este dominio esa palabra designa los componentes del
+# PDOT (biofísico · sociocultural · económico-productivo · asentamientos humanos ·
+# político-institucional), cuya vinculación con el POA es prácticamente total. Lo que el
+# diagnóstico mide es otra cosa —rubro operativo reconocible— y usar el mismo término
+# habría afirmado lo contrario de lo que ocurre (Javo + asesoría · 2026-08-05).
+_FICHA = {"registros": 1027, "anios": "2023 · 2024 · 2025 · 2026",
+          "objeto_pct": 100.0, "territorio_pct": 1.1, "territorio_n": 11,
+          "corroboracion_pct": 1.3, "sujeto_pct": 3.5, "sujeto_n": 36,
+          "sujeto_cuantificado_pct": 0.0, "ambas_n": 1,
+          "ext_loc": 7, "ext_n": 12, "ext_pct": 58.3,
+          "prop_loc": 4, "prop_n": 1015, "prop_pct": 0.39, "razon": 148}
 
 
 def _legibilidad_instrumento(plan: dict) -> str:
-    """Qué se puede verificar CON el plan operativo — una propiedad del instrumento, no de
-    la gestión. Publicado aquí (2026-08-05) porque el POA es el instrumento del que d02 y
-    d08 también dependen: el límite que impone se hereda aguas abajo, y hasta hoy solo
-    constaba en OBS-020, fuera de la vista de quien abre este dominio."""
-    o = _OBS020
+    """Dónde se rompe la cadena madre, y POR QUÉ.
+
+    Constitución Institucional (CONSTITUCION-001, raíz del árbol de autoridad): QUIRA es
+    infraestructura de conocimiento verificable, no una auditoría. Y la Ontológica marca el
+    salto: SIAP-ICPI MIDE el incumplimiento, QUADRUM DETECTA la incoherencia, QUIRA EXPLICA
+    la causalidad. Por eso este bloque no se queda en "el 99% no localiza" —eso sería
+    detectar—: mide las tres preguntas de la cadena, señala el eslabón roto, expone la CAUSA
+    (el requisito existe cuando lo pone un financiador externo, no en el formato propio) y
+    entrega la decisión que la corrige. Versión anterior corregida por Javo · 2026-08-05."""
+    f = _FICHA
     tarjetas = "".join(
         f'<div class="pl-si"><div class="k">{k}</div>'
         f'<div class="v" style="color:{c}">{v}</div><div class="s">{s}</div></div>'
         for k, v, c, s in [
-            ("¿QUÉ se hace?", f'{o["objeto_pct"]:.0f}%', "#1E8E3E", "declara el objeto del gasto"),
-            ("¿DÓNDE se ejecuta?", f'{o["territorio_pct"]}%', "#D93025",
-             f'solo {o["territorio_filas"]} de {o["filas"]:,} filas'.replace(",", ".")),
-            ("¿CON QUÉ componentes?", f'{o["componentes_pct"]}%', "#F9AB00", "detalla la operación"),
+            ("¿QUÉ se hace?", f'{f["objeto_pct"]:.0f}%', "#1E8E3E", "declara el objeto de la intervención"),
+            ("¿DÓNDE se ejecuta?", f'{f["territorio_pct"]}%', "#D93025",
+             f'{f["territorio_n"]} de {f["registros"]:,} registros'.replace(",", ".")),
+            ("¿SOBRE QUIÉN recae?", f'{f["sujeto_pct"]}%', "#D93025",
+             f'{f["sujeto_n"]} nombran al destinatario · <b>ninguno</b> lo dimensiona'),
         ])
     return (
-        '<p class="qc-p">Antes de evaluar lo que el plan <b>consigue</b>, hay una pregunta previa que casi '
-        'nunca se hace: <b>¿qué se puede verificar con él?</b> Un plan operativo es, además de un instrumento '
-        'de gestión, el <b>registro público</b> del que dependen el control social y la auditoría. Si el '
-        'registro no dice algo, ese algo queda fuera del alcance de cualquiera que quiera comprobarlo — '
-        'incluida esta plataforma.</p>'
-        f'<p class="qc-cap">Medición sobre las <b>{o["filas"]:,}</b> filas del plan operativo '.replace(",", ".") +
-        f'<b>{o["periodo"]}</b>, atributo por atributo:</p>'
+        '<p class="qc-p">La cadena que este sistema sigue va de la <b>promesa</b> al <b>territorio</b>: lo '
+        'prometido se vuelve plan, el plan se vuelve presupuesto, el presupuesto se ejecuta y termina siendo '
+        'un resultado en un lugar concreto, sobre personas concretas. Cada eslabón vive en un sistema distinto '
+        'del Estado, y la pregunta que importa no es si cada uno funciona por separado, sino <b>si la cadena '
+        'se sostiene al cruzarlos</b>. Aquí se ve dónde se rompe.</p>'
+        f'<p class="qc-cap">Medición sobre el consolidado de los <b>cuatro planes operativos anuales</b> '
+        f'({f["anios"]}) — <b>{f["registros"]:,}</b> registros—, pregunta por pregunta:</p>'.replace(",", ".") +
         f'<div class="pl-strip">{tarjetas}</div>'
-        '<p class="qc-p">El instrumento describe <b>con precisión qué se hace</b> y <b>casi nunca dónde</b>. '
-        f'Cerca del <b>99%</b> de las filas no permite saber en qué lugar del cantón se ejecuta el gasto. La '
-        f'cifra es afirmable porque se midió por <b>dos caminos independientes</b> que convergen: el registro '
-        f'de topónimos ({o["territorio_pct"]}%) y la búsqueda de marcadores de lugar —"barrio", "sector", '
-        f'"comuna", "km"—, que no depende de conocer ningún nombre ({o["corroboracion_pct"]}%).</p>'
-        '<div class="qc-impl"><div class="qc-impl-t">Por qué importa más allá de este dominio</div>'
-        '<div class="qc-impl-b">El plan operativo no es un documento de la planificación solamente: es el '
-        '<b>instrumento compartido</b> del que dependen el presupuesto y el seguimiento de lo que la '
-        'ciudadanía priorizó. Cuando el registro no localiza el gasto, ese límite <b>se hereda aguas '
-        'abajo</b> — la verificación territorial deja de ser posible para todos los que lo consultan, por '
-        'buena que sea la gestión. En el dominio de <b>Participación Ciudadana</b> puede verse el efecto '
-        'cuantificado sobre las demandas exigibles.</div></div>'
-        '<p class="qc-cap">Es importante leerlo con precisión: esto <b>no mide la gestión del municipio</b>. '
-        'Mide la <b>legibilidad de su instrumento de registro</b>, y son cosas distintas — una obra bien '
-        'ejecutada y bien localizada en el terreno queda igual de invisible si la ficha no consigna dónde '
-        'está. Por eso también se corrige distinto: no exige más obra, exige <b>un campo más en el '
-        'formato</b>.</p>')
+        f'<p class="qc-p">El instrumento describe <b>con precisión qué se hace</b> y se queda mudo en lo demás. '
+        f'Pero el dato decisivo no es ninguno de los tres por separado: es <b>cruzarlos</b>. De los '
+        f'<b>{f["registros"]:,}</b> registros, <b>{f["ambas_n"]}</b> responde a la vez dónde se ejecuta y sobre '
+        f'quién recae. Uno. La cadena, en su último tramo, <b>no se puede recorrer</b> — y no por falta de '
+        f'método de análisis, sino porque el dato no fue escrito.</p>'.replace(",", ".") +
+        '<div class="qc-impl"><div class="qc-impl-t">La causa — y aquí está lo que cambia la conclusión</div>'
+        f'<div class="qc-impl-b">Quedarse en «el 99% no localiza» sería <b>describir</b> el problema. La '
+        f'pregunta útil es otra: <b>¿qué distingue a los registros que sí lo hacen?</b> Y la respuesta es '
+        f'nítida. Entre las intervenciones con <b>financiador externo</b> —crédito, contraparte— localiza el '
+        f'<b>{f["ext_pct"]}%</b> ({f["ext_loc"]} de {f["ext_n"]}); entre las que se rigen solo por el formato '
+        f'propio del municipio, el <b>{f["prop_pct"]}%</b> ({f["prop_loc"]} de {f["prop_n"]:,}). Una razón de '
+        f'<b>{f["razon"]} a 1</b>.<br><br>Lo que eso muestra es lo contrario de una carencia: <b>el municipio '
+        f'sabe localizar el gasto y lo hace correctamente cuando alguien se lo pide</b>. No falta capacidad '
+        f'técnica ni voluntad — falta el <b>requisito en su propia ficha</b>. El grupo con financiador externo '
+        f'es pequeño ({f["ext_n"]} registros), así que esto se presenta como <b>patrón fuertemente sugerido</b> '
+        f'y no como ley: el sistema lo propone, la validación es humana.</div></div>'.replace(",", ".") +
+        '<p class="qc-cap"><b>La decisión que se desprende</b> — que es para lo que existe esta lectura, no '
+        'para emitir un juicio: incorporar <b>dos campos obligatorios</b> a la ficha de planificación —unidad '
+        'territorial y población destinataria— devolvería trazabilidad a la totalidad del plan desde el '
+        'ejercicio siguiente. No exige más obra ni más presupuesto: exige <b>escribir dos datos que el '
+        'municipio ya conoce</b> en el momento de formular. Y su efecto se propaga: el presupuesto y el '
+        'seguimiento de lo que la ciudadanía priorizó <b>leen esta misma ficha</b> — en el dominio de '
+        '<b>Participación Ciudadana</b> puede verse cuánto pesa hoy esa ausencia.</p>')
 
 
 def _consolidada_plan(plan: dict) -> str:
@@ -910,7 +933,7 @@ def cajon_dominio_plan(plan: dict) -> str:
     {_seccion('02', 'El PDOT · documento rector del desarrollo cantonal', _pdot_rector(plan) + _cobertura(plan) + _alineacion_pnd(plan), _ley_esl(plan, 'presupuesto', 'Fundamento jurídico aplicable'), prov=prov('ana'))}
     {sec_cerr}
     {sec_curso}
-    {_seccion('05', 'La legibilidad del instrumento · qué se puede verificar con el plan', _legibilidad_instrumento(plan), prov=prov('doc'))}
+    {_seccion('05', 'Dónde se rompe la cadena · del plan al territorio, y por qué', _legibilidad_instrumento(plan), prov=prov('doc'))}
     {_seccion('06', 'Evaluación consolidada · trayectoria y prospectiva', _consolidada_plan(plan), prov=prov('int'))}
     {_sintesis_plan(plan)}
   </div>
