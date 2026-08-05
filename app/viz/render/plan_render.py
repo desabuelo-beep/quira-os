@@ -805,6 +805,62 @@ def _seccion_anio_curso(plan: dict):
     return curso["anio"], cuerpo
 
 
+# ── GUARDIÁN OBS-020 · NO RECALCULAR ─────────────────────────────────────────
+# Medición certificada sobre las 1.027 filas del plan operativo 2023-2026 del GAD, por
+# DOS caminos independientes que convergen (registro de topónimos → 1,1%; marcadores de
+# lugar, que no dependen de conocer ningún nombre → 1,3%). Un solo método podría
+# subestimar por registro incompleto; dos con la misma medida es lo que la vuelve
+# afirmable. No se recalcula aquí ni se parametriza: se cambia SOLO si OBS-020 se rehace.
+# El primer conteo dio 75,7% y era falso —769 de 777 aciertos eran la palabra
+# "Montecristi", el membrete institucional, no la ubicación del proyecto—.
+_OBS020 = {"filas": 1027, "objeto_pct": 100.0, "territorio_pct": 1.1,
+           "territorio_filas": 11, "corroboracion_pct": 1.3, "componentes_pct": 29.8,
+           "periodo": "2023-2026"}
+
+
+def _legibilidad_instrumento(plan: dict) -> str:
+    """Qué se puede verificar CON el plan operativo — una propiedad del instrumento, no de
+    la gestión. Publicado aquí (2026-08-05) porque el POA es el instrumento del que d02 y
+    d08 también dependen: el límite que impone se hereda aguas abajo, y hasta hoy solo
+    constaba en OBS-020, fuera de la vista de quien abre este dominio."""
+    o = _OBS020
+    tarjetas = "".join(
+        f'<div class="pl-si"><div class="k">{k}</div>'
+        f'<div class="v" style="color:{c}">{v}</div><div class="s">{s}</div></div>'
+        for k, v, c, s in [
+            ("¿QUÉ se hace?", f'{o["objeto_pct"]:.0f}%', "#1E8E3E", "declara el objeto del gasto"),
+            ("¿DÓNDE se ejecuta?", f'{o["territorio_pct"]}%', "#D93025",
+             f'solo {o["territorio_filas"]} de {o["filas"]:,} filas'.replace(",", ".")),
+            ("¿CON QUÉ componentes?", f'{o["componentes_pct"]}%', "#F9AB00", "detalla la operación"),
+        ])
+    return (
+        '<p class="qc-p">Antes de evaluar lo que el plan <b>consigue</b>, hay una pregunta previa que casi '
+        'nunca se hace: <b>¿qué se puede verificar con él?</b> Un plan operativo es, además de un instrumento '
+        'de gestión, el <b>registro público</b> del que dependen el control social y la auditoría. Si el '
+        'registro no dice algo, ese algo queda fuera del alcance de cualquiera que quiera comprobarlo — '
+        'incluida esta plataforma.</p>'
+        f'<p class="qc-cap">Medición sobre las <b>{o["filas"]:,}</b> filas del plan operativo '.replace(",", ".") +
+        f'<b>{o["periodo"]}</b>, atributo por atributo:</p>'
+        f'<div class="pl-strip">{tarjetas}</div>'
+        '<p class="qc-p">El instrumento describe <b>con precisión qué se hace</b> y <b>casi nunca dónde</b>. '
+        f'Cerca del <b>99%</b> de las filas no permite saber en qué lugar del cantón se ejecuta el gasto. La '
+        f'cifra es afirmable porque se midió por <b>dos caminos independientes</b> que convergen: el registro '
+        f'de topónimos ({o["territorio_pct"]}%) y la búsqueda de marcadores de lugar —"barrio", "sector", '
+        f'"comuna", "km"—, que no depende de conocer ningún nombre ({o["corroboracion_pct"]}%).</p>'
+        '<div class="qc-impl"><div class="qc-impl-t">Por qué importa más allá de este dominio</div>'
+        '<div class="qc-impl-b">El plan operativo no es un documento de la planificación solamente: es el '
+        '<b>instrumento compartido</b> del que dependen el presupuesto y el seguimiento de lo que la '
+        'ciudadanía priorizó. Cuando el registro no localiza el gasto, ese límite <b>se hereda aguas '
+        'abajo</b> — la verificación territorial deja de ser posible para todos los que lo consultan, por '
+        'buena que sea la gestión. En el dominio de <b>Participación Ciudadana</b> puede verse el efecto '
+        'cuantificado sobre las demandas exigibles.</div></div>'
+        '<p class="qc-cap">Es importante leerlo con precisión: esto <b>no mide la gestión del municipio</b>. '
+        'Mide la <b>legibilidad de su instrumento de registro</b>, y son cosas distintas — una obra bien '
+        'ejecutada y bien localizada en el terreno queda igual de invisible si la ficha no consigna dónde '
+        'está. Por eso también se corrige distinto: no exige más obra, exige <b>un campo más en el '
+        'formato</b>.</p>')
+
+
 def _consolidada_plan(plan: dict) -> str:
     """Evaluación consolidada (una vez, tras los años · modelo RDC): trayectoria + proyección + hallazgos."""
     sm = plan.get("serie_multianio") or {}
@@ -854,7 +910,8 @@ def cajon_dominio_plan(plan: dict) -> str:
     {_seccion('02', 'El PDOT · documento rector del desarrollo cantonal', _pdot_rector(plan) + _cobertura(plan) + _alineacion_pnd(plan), _ley_esl(plan, 'presupuesto', 'Fundamento jurídico aplicable'), prov=prov('ana'))}
     {sec_cerr}
     {sec_curso}
-    {_seccion('05', 'Evaluación consolidada · trayectoria y prospectiva', _consolidada_plan(plan), prov=prov('int'))}
+    {_seccion('05', 'La legibilidad del instrumento · qué se puede verificar con el plan', _legibilidad_instrumento(plan), prov=prov('doc'))}
+    {_seccion('06', 'Evaluación consolidada · trayectoria y prospectiva', _consolidada_plan(plan), prov=prov('int'))}
     {_sintesis_plan(plan)}
   </div>
   <div class="qc-placa"><div class="qc-placa-q">QUIRA no certifica la verdad. Certifica la consistencia<br>documental de la cadena del plan al gasto.</div>
