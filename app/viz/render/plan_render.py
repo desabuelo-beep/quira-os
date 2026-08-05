@@ -849,7 +849,22 @@ def _legibilidad_instrumento(plan: dict) -> str:
         procedimiento o el sistema. Verificable: el formato no lo exige sistemáticamente.
     Se añade un límite que la asesoría no vio: atribuir el contraste a una exigencia del
     financiador TAMBIÉN es inferencia —no se verificaron sus formatos—. Va declarada como
-    hipótesis pendiente de contraste, no como causa establecida."""
+    hipótesis pendiente de contraste, no como causa establecida.
+
+    ★ 3ª pasada (2026-08-05). Caía otra vez en lo mismo: "la diferencia está en bajo qué
+    formato se formula" atribuía la causa a UNA de las variables que separan a los grupos
+    (podían ser el procedimiento, la unidad que formula, el control previo…). Se sustituye
+    por lo que el contraste SÍ sostiene —descarta la incapacidad general del municipio,
+    porque el mismo municipio consigna en un grupo y no en el otro— y el resto se declara
+    espacio de causas compatibles. Y la "intervención mínima" se retira como prescripción:
+    la frontera de Javo (2026-06-21, `qinv.py`) es explícita — "la ACCIÓN la cierra el
+    GOBIERNO, FUERA de QUIRA: QUIRA informa y conecta, no actúa". Se aportan los atributos;
+    el mecanismo lo determina la autoridad competente.
+
+    Los planos epistemológicos NO se etiquetan con un esquema nuevo (Regla 7): se usan los
+    badges de proveniencia que ya existen —documental > analítico > interpretación, con
+    autoridad decreciente (`provenance.py` · ADR-033)— aplicados por bloque, porque la
+    sección mezcla los tres y antes iba marcada entera como documental."""
     f = _FICHA
     tarjetas = "".join(
         f'<div class="pl-si"><div class="k">{k}</div>'
@@ -879,10 +894,13 @@ def _legibilidad_instrumento(plan: dict) -> str:
         'reales—. Lo que el instrumento no aporta son los <b>atributos necesarios para recorrer '
         'documentalmente</b> ese último tramo. No es una afirmación sobre la gestión: es una propiedad '
         'medible del registro.</p>'
-        '<p class="qc-p">La pregunta siguiente es la que decide cómo debe leerse todo lo anterior: '
-        '<b>¿esta ausencia responde a una limitación del municipio, o a una característica del instrumento '
-        'que utiliza?</b> Los propios datos permiten distinguirlo.</p>'
-        '<div class="qc-impl"><div class="qc-impl-t">El contraste que responde esa pregunta</div>'
+        '<p class="qc-p">Hasta aquí solo se ha <b>descrito</b> el comportamiento observable del instrumento: '
+        'cuántos registros consignan cada atributo. La pregunta siguiente pertenece a otro plano —ya no es '
+        f'cuánto falta, sino <b>qué podría explicar esa ausencia</b>—, y por eso lo que viene se lee con otra '
+        f'exigencia: {prov("ana")} para lo calculado sobre la evidencia, {prov("int")} para la lectura que se '
+        'propone sobre ella.</p>'
+        '<div class="qc-impl"><div class="qc-impl-t">El contraste interno · qué distingue a unos registros '
+        f'de otros {prov("ana")}</div>'
         f'<div class="qc-impl-b">Los registros no se comportan igual entre sí. Los vinculados a '
         f'<b>financiamiento externo</b> —crédito, contraparte— declaran territorio en un '
         f'<b>{f["ext_pct"]}%</b> ({f["ext_loc"]} de {f["ext_n"]}). Los que se rigen únicamente por el formato '
@@ -893,28 +911,32 @@ def _legibilidad_instrumento(plan: dict) -> str:
         f'{f["razon"]} a 1</span><br>'
         f'<span style="font-size:11px;color:var(--tx2)">más frecuente la declaración territorial cuando el '
         f'registro está vinculado a financiamiento externo</span></div>'
-        f'Es decir: <b>el mismo municipio, el mismo equipo y el mismo año</b> consignan la ubicación cuando el '
-        f'registro se vincula a financiamiento externo, y no lo hacen cuando responde solo al formato propio. '
-        f'La diferencia no está en quién formula — está en <b>bajo qué formato</b> se formula.</div></div>'
+        f'Ambos grupos provienen del <b>mismo municipio</b> y de los <b>mismos ejercicios</b>. Eso es lo que '
+        f'vuelve informativo el contraste: descarta la explicación más obvia —una incapacidad general del '
+        f'municipio para localizar el gasto—, porque ese mismo municipio sí lo consigna en uno de los dos '
+        f'grupos. La causa, sea cual sea, está en <b>algo que difiere entre ambos</b>.</div></div>'
         .replace(",", ".") +
-        f'<p class="qc-cap"><b>Hasta dónde llega lo demostrado.</b> El contraste está medido. Su explicación '
-        f'más plausible —que el financiamiento externo trae consigo una exigencia documental de localización— '
-        f'es una <b>hipótesis todavía no verificada</b>: haría falta contrastar los formatos que exige cada '
-        f'entidad financiadora. Y el grupo es pequeño ({f["ext_n"]} registros), de modo que esto se presenta '
-        f'como <b>patrón fuertemente sugerido</b>, no como ley. Tampoco puede afirmarse dónde se origina la '
-        f'ausencia —el formulario, el procedimiento o el sistema informático—: lo verificable es que el '
-        f'<b>formato institucional no exige sistemáticamente la identificación territorial</b>.</p>'
-        '<p class="qc-p"><b>La intervención mínima que se desprende</b> —que es el propósito de esta lectura, '
-        'no emitir un juicio—: incorporar de forma <b>obligatoria</b> los atributos <b>unidad territorial</b> y '
-        '<b>población destinataria</b> en el instrumento de formulación del plan operativo. No exige más obra '
-        'ni más presupuesto: exige consignar, al momento de formular, dos datos que <b>ya se conocen</b> '
-        'entonces —el contraste anterior lo evidencia—. Su efecto se propaga aguas abajo, porque el '
-        'presupuesto y el seguimiento de lo que la ciudadanía priorizó leen este mismo registro; en el dominio '
-        'de <b>Participación Ciudadana</b> puede verse cuánto pesa hoy esa ausencia.</p>'
-        '<p class="qc-cap">Esa es la diferencia entre señalar una carencia y explicarla: no se afirma que '
-        'falte información territorial, se identifica <b>la causa documental</b> que impide reconstruir el '
-        'tramo entre la planificación y el territorio, y se propone <b>la modificación mínima</b> capaz de '
-        'restituir esa trazabilidad.</p>')
+        f'<p class="qc-cap">{prov("int")} <b>Hasta dónde llega lo demostrado, y dónde empieza la lectura.</b> '
+        f'Lo medido es el contraste. Lo que ese contraste <b>descarta</b> ya es sólido: no se trata de una '
+        f'limitación general del municipio. Lo que <b>no</b> permite establecer es cuál de las diferencias '
+        f'entre ambos grupos lo produce —el formulario, el procedimiento, la unidad que formula, el control '
+        f'previo o una exigencia de la entidad financiadora—. La explicación más plausible es la última, pero '
+        f'sigue siendo una <b>hipótesis pendiente de contraste</b>: exigiría revisar los formatos que cada '
+        f'entidad requiere, y eso no se ha hecho. El grupo es además pequeño ({f["ext_n"]} registros). Lo '
+        f'verificable, sin inferencia añadida: el <b>formato institucional no exige sistemáticamente la '
+        f'identificación territorial</b>, y existe al menos un contexto documental donde sí aparece.</p>'
+        '<p class="qc-p"><b>Qué queda accionable.</b> La evidencia identifica <b>dos atributos</b> —unidad '
+        'territorial y población destinataria— cuya ausencia interrumpe la reconstrucción documental del tramo '
+        'entre la planificación y el territorio. Consignarlos no exige más obra ni más presupuesto: son datos '
+        'que ya existen al momento de formular, como lo evidencia el grupo que sí los registra. <b>Determinar '
+        'el mecanismo</b> por el cual pasen a formar parte del instrumento de formulación —y en qué punto del '
+        'procedimiento— <b>corresponde a la autoridad competente</b>: esta lectura aporta la evidencia, no la '
+        'decisión. Su efecto se propagaría aguas abajo, porque el presupuesto y el seguimiento de lo que la '
+        'ciudadanía priorizó leen este mismo registro; en el dominio de <b>Participación Ciudadana</b> puede '
+        'verse cuánto pesa hoy esa ausencia.</p>'
+        '<p class="qc-cap">Esa es la diferencia entre señalar una carencia y reducir la incertidumbre sobre '
+        'su origen: no se afirma una causa, se <b>acota el espacio de causas compatibles</b> con la evidencia '
+        'y se identifican los atributos cuya presencia restituiría la trazabilidad.</p>')
 
 
 def _consolidada_plan(plan: dict) -> str:
