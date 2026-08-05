@@ -37,15 +37,16 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO y halla las B
 ✅ **PCD: d01·d02·d03·d09** · **d08 ENTRABLE** (**Asamblea AUTÓNOMA** · CNO-VIII(8) · **OBS-012..017**).
 🩺 **Canon curado por DOM (R.8), ICPI intacto. Gate `check_health.py`: NO adivinar.**
 🏛️ **GOBERNANZA v1.0:** `identity/`→`governance/`→`marco_teorico/`→Canon→`registry/`. ⚠️ Derivación 100% **solo en lo catalogado**.
-🖥️ **d08 EN WEB + ENTRABLE** (tarjeta: 191 exigibles→162 sin acreditar→**15%**, NO el 48,33 del motor): **2 CAUSAS**: **66 inverificable-por-instrumento** · **96 sin-tema**. MRSPP v4 26·8·**0**·9 · **T0** (v3=12%).
-🩹 **2 BUGS PROD (19 d) corregidos** — app rota p/ Directivo·Técnico·Admin: (a) `81467c8` borró `_GOV_MODULES`/`_TECNICO_MODULES` → NameError; (b) `qinv_*` no era clave de `_MODULE_RENDER` → clic en tarjeta **volvía al inicio en silencio**. Gate **`smoke_cajones.py`** (AppTest 8×2 roles, verifica HUELLA: sin ella, falso OK).
+🖥️ **d08 EN WEB + ENTRABLE** (tarjeta 191→162→**15%**, NO el 48,33 del motor): **2 CAUSAS**: **66 inverificable-por-instrumento** · **96 sin-tema**. MRSPP v4 26·8·**0**·9 · **T0**.
+🩹 **2 BUGS PROD (19 d)**: `_GOV_MODULES` borrado → NameError p/ Directivo·Técnico·Admin · `qinv_*` no ruteaba → volvía al inicio. Gate **`smoke_cajones.py`** (AppTest 8×2 roles · HUELLA).
+🎚️ **Gate `check_epistemico.py`**: 4 de las 10 verificaciones son léxicas (inferencia·prescripción·alcance·terminología) → automatizadas; las 6 de juicio, lectura. **d01·d08 = 0 señales**. Suprime negaciones.
 🔌 **CABLEADO** (`MATRIZ_CABLEADO_CANONICO.md`): **GM→SILOS→DOM→QUIRA**. `H36_QUIRA_BRIDGE` YA existía. **S1·S6·S9 sin DOM.**
 🧨 **OBS-023 · brecha ICM↔ICPI NO citable:** (a) bug escala `B36` fracción vs umbral en puntos. (b) **DESCALCE PDOT**: 1º comparable = **ICM 2025** (~may-26). **`SAT-I`=S6 SIGAD**, deuda **epistemológica**. ⛔ NO redefinir (R.1).
 🚨 **OBS-022: SAT sin cadena BRN, deuda 90%→60%.** PCD → **`cerrado con deuda declarada`** (R.8). Gate `check_sat_brn.py`. ⛔ `SAT-IX`(d08) ≠ `SAT-IX-001`(=SAT-V).
 🏛️ **R-C..R-H → `PROTOCOLO_CURACION_DOMINIO.md` §3** (C dueño califica · D **se mide, no se parcha** · **E LEY**: solo MCR · F 3 vías · G cableado · **H no comparar horizontes**).
-🔬 **CVI**=2ª dim. IOC (OBS-020) → **publicado en d01 §05**: POA 100% QUÉ · **1,1% DÓNDE**. `inverificable` ≠ `no atendido`. **UDC-G**`=∧UDC-Iₖ`: ✅POA·cabildo ⚠️PP·audiencias ❌LOTAIP·Concejo → FALSO.
-⚖️ **3 CAPAS**: jurídica (**Guía LOTAIP = LEY, no canon**) · operativa (**d07**) · analítica (QUIRA **no tramita**). 🧪 **H-ARQ-01** HIPÓTESIS ⛔R-E.
-🧠 **DESCUBRIMIENTO NORMATIVO**: NO es motor nuevo — 4º de los **5 MCIP (ADR-031)**. Vacío → `C10-{n}` NO VIGENTE → sella Javo. **Laboratorio, NO runtime**. ⛔ bloq. R-E.
+🔬 **d01 §05** (CVI · OBS-020): POA **100% QUÉ · 1,1% DÓNDE · 3,5% QUIÉN · 1 de 1027 ambas**. Causa: **148 a 1** con financiador externo (hipótesis, n=12). `inverificable` ≠ `no atendido`.
+⚖️ **3 CAPAS**: jurídica (**Guía LOTAIP = LEY**) · operativa (**d07**) · analítica (QUIRA **no tramita**). 🧪 **H-ARQ-01** HIPÓTESIS ⛔R-E.
+🧠 **DESCUBRIMIENTO NORMATIVO**: NO es motor nuevo — 4º de los **5 MCIP (ADR-031)**. Vacío → `C10-{n}` → sella Javo. **Laboratorio, NO runtime**. ⛔R-E.
 ⏭️ **JAVO: (1)** 2ª validación v4 (¿retirar `complementaria`?) **(2)** promover `_CANDIDATO_v5.7`→`v5.7_TGI` **(3)** Haiku ~$60/18 meses.
 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 ratificado · detalle en el ADR)
