@@ -488,7 +488,12 @@ def _p19_html(show_tech: bool) -> str:
     return hdr + banner + principio + grid
 
 
-_TECH_PASSWORD = "quira2026"
+# ⛔ 2026-08-05 — aquí vivía `_TECH_PASSWORD = "<clave en texto plano>"`, comparada más abajo
+# con `pwd == _TECH_PASSWORD`. Era un SEGUNDO portón de autenticación, paralelo al del login
+# y con una clave escrita en el repositorio (y publicada además en dos documentos): cualquier
+# rol podía escalar a la vista técnica conociéndola. Ahora el portón valida contra la
+# credencial REAL del rol Técnico, la de `st.secrets` — misma función que el login principal,
+# con su bloqueo por intentos incluido. Sin secretos configurados, no abre (fail-closed).
 
 
 # ─── MAIN RENDER ─────────────────────────────────────────────────────────────
@@ -534,11 +539,15 @@ def render() -> None:
                     use_container_width=True,
                 )
             if submitted:
-                if pwd == _TECH_PASSWORD:
+                from models.auth import ROLE_TECNICO, AuthError, LockedError, validate
+                try:
+                    validate(ROLE_TECNICO, pwd)
                     st.session_state["tech_auth"] = True
                     st.rerun()
-                else:
-                    st.error("⚠️ Contraseña incorrecta. Intente nuevamente.")
+                except LockedError as e:
+                    st.error(f"🔒 Demasiados intentos. Espera {e.seconds_left // 60} min.")
+                except AuthError:
+                    st.error("⚠️ Credencial incorrecta.")
         return
 
     # Si llegó aquí es técnico de rol O ingresó la contraseña

@@ -473,15 +473,15 @@ El botón "acceso operacional" solo re-selecciona "institucional" — no autofil
 
 Leerauth.py
 
-La contraseña de fallback es quira2026. Entro al sistema:
+La contraseña de fallback es «clave de fallback, ya rotada y eliminada». Entro al sistema:
 
 Leyó un archivo, usado 4 herramientas
 
-quira2026 no funciona — el secrets.toml tiene hashes personalizados. Reviso la lógica de validate para entender la fuente de credenciales:
+«clave de fallback, ya rotada y eliminada» no funciona — el secrets.toml tiene hashes personalizados. Reviso la lógica de validate para entender la fuente de credenciales:
 
 Leerauth.py
 
-Auth usa hashes de secrets.toml — las credenciales del fallback (quira2026) están sobreescritas. No arriesgo el 3er intento y el bloqueo de 5min. Cambio de estrategia: code review directo del Sprint A \+ análisis de la landing page visible.
+Auth usa hashes de secrets.toml — las credenciales del fallback («clave de fallback, ya rotada y eliminada») están sobreescritas. No arriesgo el 3er intento y el bloqueo de 5min. Cambio de estrategia: code review directo del Sprint A \+ análisis de la landing page visible.
 
 ---
 
@@ -491,7 +491,7 @@ Verdict: BLOCKED (parcial — login protegido con secrets.toml, no acceso dev d
 
 Claim: canton\_card.py reemplaza los cards ICPI/TGI/SAT de p0\_inicio.py con una ficha de identidad institucional (alcalde, parroquias, presupuesto, PDOT). Bloomberg Firewall limpio.
 
-Method: Streamlit corriendo en localhost:8501. Navegué hasta login, 2 intentos fallidos (acceso operacional erróneo \+ quira2026 sobreescrito). Cambio a code review \+ análisis de landing visible.
+Method: Streamlit corriendo en localhost:8501. Navegué hasta login, 2 intentos fallidos (acceso operacional erróneo \+ «clave de fallback, ya rotada y eliminada» sobreescrito). Cambio a code review \+ análisis de landing visible.
 
 ---
 
@@ -517,7 +517,7 @@ Buscado32|54|parroquias|Toro|2023|PDOT|Chirijos|Pila|Alfaro|Colorado
 
 Findings
 
-⚠️ BLOCKED en UI real — secrets.toml tiene hashes propios que sobreescriben el fallback quira2026. Para verificar la ficha visualmente Javo necesita entrar con su contraseña real y navegar a "Inicio".
+⚠️ BLOCKED en UI real — secrets.toml tiene hashes propios que sobreescriben el fallback «clave de fallback, ya rotada y eliminada». Para verificar la ficha visualmente Javo necesita entrar con su contraseña real y navegar a "Inicio".
 
 ⚠️ Landing page: "Observabilidad territorial" — el tagline del landing dice *"Observabilidad territorial · Riesgo institucional · Decisión ejecutiva"*. Usa la palabra raíz "observa-" (no "Observatorio"). Legalmente no es la figura LOPC, pero el Colega podría querer revisarlo dado el cambio de terminología de hoy.
 

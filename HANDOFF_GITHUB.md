@@ -109,9 +109,9 @@ En ese modo:
 
 | Usuario   | Password  | Rol       |
 |-----------|-----------|-----------|
-| alcalde   | quira2026 | Alcalde   |
-| concejal  | quira2026 | Concejal  |
-| tecnico   | quira2026 | Técnico   |
+| alcalde   | «definida en secrets — no se publica» | Alcalde   |
+| concejal  | «definida en secrets — no se publica» | Concejal  |
+| tecnico   | «definida en secrets — no se publica» | Técnico   |
 
 ---
 

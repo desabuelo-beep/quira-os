@@ -18,9 +18,9 @@ Este script detecta: errores UX, textos confusos, estados ambiguos, fricciones i
 
 | Rol             | Usuario    | Contraseña |
 |-----------------|------------|------------|
-| Alcalde         | alcalde    | quira2026  |
-| Analista        | tecnico    | quira2026  |
-| Director        | concejal   | quira2026  |
+| Alcalde         | alcalde    | «definida en secrets — no se publica»  |
+| Analista        | tecnico    | «definida en secrets — no se publica»  |
+| Director        | concejal   | «definida en secrets — no se publica»  |
 
 ---
 
@@ -29,7 +29,7 @@ Este script detecta: errores UX, textos confusos, estados ambiguos, fricciones i
 ### Paso 1 · Iniciar sesión como Analista
 
 - [ ] Abrir QUIRA OS en el navegador
-- [ ] Ingresar usuario `tecnico` y contraseña `quira2026`
+- [ ] Ingresar usuario `tecnico` y contraseña `«definida en secrets — no se publica»`
 - [ ] Verificar: aparece sidebar con secciones CONTROL, ENTENDER, GOBERNAR
 - [ ] Verificar: nombre de rol visible en el panel de sesión
 - [ ] **UX:** ¿el login es fluido? ¿hay lag notable?
@@ -138,7 +138,7 @@ Este script detecta: errores UX, textos confusos, estados ambiguos, fricciones i
 ### Paso 11 · Cerrar sesión y entrar como Alcalde
 
 - [ ] Presionar **← Cerrar Sesión**
-- [ ] Ingresar usuario `alcalde` y contraseña `quira2026`
+- [ ] Ingresar usuario `alcalde` y contraseña `«definida en secrets — no se publica»`
 - [ ] Verificar: pantalla de inicio muestra Vista Ejecutiva como primer ítem
 
 ### Paso 12 · Revisar Vista Ejecutiva

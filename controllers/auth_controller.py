@@ -101,8 +101,15 @@ def run() -> None:
         '<div style="font:400 10.5px/1.6 Inter,sans-serif;color:#8892B0">'
         'Universidades, organismos bilaterales, ONG y equipos de investigación: '
         'la evidencia territorial verificada se abre en la Fase 2. Para conversar antes — '
-        '<span style="font:600 10.5px/1 \'JetBrains Mono\',monospace;color:#9B79FF;'
-        'letter-spacing:.03em">acceso@quira.ec</span></div></div>',
+        # Correo real de Javo (2026-08-05); "acceso@quira.ec" no existía y una dirección
+        # que rebota en una landing institucional cuesta más que no poner ninguna.
+        # NO se publica su teléfono: un número personal en una página pública queda
+        # expuesto a rastreo automatizado y no se puede retirar de donde ya se copió.
+        # El correo basta para abrir conversación; el teléfono se comparte en privado.
+        '<a href="mailto:javodesantana@gmail.com" '
+        'style="font:600 11.5px/1 \'JetBrains Mono\',monospace;color:#9B79FF;'
+        'letter-spacing:.03em;text-decoration:none">javodesantana@gmail.com</a>'
+        '</div></div>',
         unsafe_allow_html=True,
     )
 

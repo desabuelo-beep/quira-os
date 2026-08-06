@@ -67,13 +67,17 @@ def _safe_eq(a: str, b: str) -> bool:
 #   operador_hash      = "<resultado de _hash('tu_password')>"
 #   administrador_hash = "<resultado de _hash('tu_password')>"
 
-_FALLBACK_HASHES: dict[str, str] = {
-    # Generados con _hash("quira2026") — cambiar en producción
-    ROLE_EJECUTIVO:     _hash("quira2026"),
-    ROLE_TECNICO:       _hash("quira2026"),
-    ROLE_OPERADOR:      _hash("quira2026"),
-    ROLE_ADMINISTRADOR: _hash("quira2026"),
-}
+# ⛔ FALLBACK ELIMINADO — 2026-08-05, tras reporte de acceso no autorizado (Javo).
+#
+# Aquí vivía `_FALLBACK_HASHES`, con el hash de una contraseña ESCRITA EN TEXTO PLANO en
+# este mismo archivo, idéntica para los cuatro roles. Y `_stored_hash` caía en ella con un
+# `except Exception` amplio: bastaba que la lectura de secrets fallara por cualquier motivo
+# —sección ausente, error de red, typo en el panel— para que la aplicación aceptara una
+# contraseña que cualquiera con acceso al repositorio podía leer. Diseño FAIL-OPEN.
+#
+# Ahora es FAIL-CLOSED: sin secretos configurados no se autentica a nadie. Un despliegue
+# mal configurado queda inaccesible, que es el comportamiento correcto — nunca abierto.
+# Para desarrollo local, configurar `.streamlit/secrets.toml` (no se rastrea en git).
 
 _USER_META: dict[str, dict] = {
     ROLE_EJECUTIVO:     {"rol": "Ejecutivo",     "emoji": "🏛"},
@@ -84,11 +88,15 @@ _USER_META: dict[str, dict] = {
 
 
 def _stored_hash(rol_key: str) -> str:
-    """Lee el hash desde st.secrets (prod) o fallback (dev)."""
+    """Hash almacenado para el rol, o cadena vacía si no hay credencial configurada.
+
+    Devolver "" hace que `validate` rechace SIEMPRE (ver `if not stored`): sin secretos,
+    nadie entra. Es deliberado — la versión anterior devolvía aquí un hash de respaldo con
+    contraseña conocida, y ese era el agujero."""
     try:
-        return st.secrets["auth"][f"{rol_key}_hash"]
+        return st.secrets["auth"][f"{rol_key}_hash"] or ""
     except Exception:
-        return _FALLBACK_HASHES.get(rol_key, "")
+        return ""
 
 
 # ── Público ───────────────────────────────────────────────────────────────────
@@ -171,9 +179,8 @@ def validate_any(password: str) -> AuthUser:
     Orden de prueba: ejecutivo → tecnico → operador → administrador.
     En producción, cada rol tiene un hash único; el primero que coincida es el rol.
 
-    Nota dev: los fallbacks usan el mismo hash ("quira2026"), por lo que en
-    entornos de desarrollo siempre se autenticará como 'ejecutivo'. Usar
-    validate(rol_key, password) para probar roles específicos en dev.
+    Desde 2026-08-05 cada rol tiene credencial PROPIA y no hay hash de respaldo:
+    si un rol no está configurado en secrets, simplemente nunca coincide.
 
     Lanza LockedError si está bloqueado, AuthError si ningún rol coincide.
     """
