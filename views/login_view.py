@@ -176,6 +176,22 @@ CSS = """<style>
 .ql-prod-d{font:400 13.8px/1.72 'Inter',sans-serif;color:var(--tx2)}
 .ql-prod-d b{color:var(--tx);font-weight:600}
 
+/* ══ LA LÍNEA · qué se puede contratar y qué no ══ */
+.ql-linea{border:1px solid var(--bd);border-radius:13px;padding:20px 23px;margin:20px 0;
+  background:var(--sf)}
+.ql-linea-t{font:700 10px/1 'JetBrains Mono',monospace;letter-spacing:.17em;
+  text-transform:uppercase;color:var(--tx3);margin-bottom:14px}
+.ql-linea-g{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.ql-linea-c{border-radius:10px;padding:15px 18px;font:400 13.2px/1.68 'Inter',sans-serif;
+  color:var(--tx2)}
+.ql-linea-c b{color:var(--tx);font-weight:600}
+.ql-linea-c.no{border:1px solid rgba(232,115,74,.26);background:rgba(232,115,74,.055)}
+.ql-linea-c.si{border:1px solid rgba(0,224,150,.24);background:rgba(0,224,150,.05)}
+.ql-linea-k{display:block;font:700 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;
+  text-transform:uppercase;margin-bottom:7px}
+.ql-linea-c.no .ql-linea-k{color:var(--coral)}
+.ql-linea-c.si .ql-linea-k{color:var(--verde)}
+
 /* ══ HUMAN IN THE LOOP ══ */
 .ql-hil{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:16px}
 .ql-hil-c{border:1px solid var(--bd);border-radius:12px;padding:18px 21px;background:var(--sf)}
@@ -251,7 +267,7 @@ button.ql-ops-btn:hover,.ql-ops-section button:hover{opacity:.75 !important;
   .ql-brand{font-size:48px}.ql-os{font-size:17px}.ql-h2{font-size:24px}
   .ql-tagline{font-size:14px}.ql-p{font-size:14.5px}
   .ql-quote{font-size:17px}.ql-prod-n{font-size:17px}
-  .ql-hil,.ql-trust{grid-template-columns:1fr}
+  .ql-hil,.ql-trust,.ql-linea-g{grid-template-columns:1fr}
   .ql-hero{padding:40px 18px 22px}.ql-sec{margin-top:40px}
 }
 </style>
@@ -403,10 +419,11 @@ _PRODUCTOS = [
      "esa cobertura la construyen antes las dos entradas.",
      "FASE 2", "var(--azul-cl)"),
     ("inst", "QUIRA Institucional",
-     "Gobiernos locales",
-     "Inteligencia para que el propio gobierno local use la evidencia sobre su gestión: "
-     "identificar dónde se corta su cadena documental y corregirlo. <b>Llega después, y esa "
-     "secuencia es deliberada</b> —abajo se explica por qué—.",
+     "Gobiernos locales · licencia independiente",
+     "Herramientas para que el propio gobierno local <b>gestione lo suyo</b> con la evidencia "
+     "ya publicada: ver dónde se corta su cadena documental y corregirlo. Licencia "
+     "independiente, con soporte de Dylus Lab y <b>bajo una regla explícita: contratarla no "
+     "modifica nada de lo que el Observatorio publica</b> sobre ese municipio.",
      "FASE 2", "var(--coral)"),
     ("econ", "QUIRA Economic",
      "Inversión y desarrollo económico local",
@@ -455,25 +472,39 @@ def independencia() -> str:
     que respalda un tercero independiente sirve ante banca y cooperación; la que emite un
     proveedor contratado por el observado, no. Deja de ser un reproche y pasa a ser una
     propuesta de valor, sin ceder nada."""
-    return _sec("Una aclaración necesaria", "Por qué QUIRA no le vende software a los municipios",
+    return _sec("Una aclaración necesaria", "Independencia y servicio no se estorban",
         '<p class="ql-p">Conviene decirlo con franqueza, porque suele malinterpretarse: '
-        '<b>el municipio es sujeto observado, no cliente</b>. Y esa distinción no nace de '
-        'desconfianza hacia los gobiernos locales — nace de lo que hace falta para que la '
-        'evidencia <b>sirva de algo</b>.</p>'
+        '<b>el municipio es sujeto observado, no cliente de la observación</b>. Nadie paga '
+        'por ser observado, ni por cómo resulta observado. Y esa regla no nace de desconfianza '
+        'hacia los gobiernos locales — nace de lo que hace falta para que la evidencia '
+        '<b>sirva de algo</b>.</p>'
         '<p class="ql-p">Un informe que un municipio encarga y paga vale poco ante un banco '
         'de desarrollo, una agencia de cooperación o una universidad: procede de la parte '
         'interesada. En cambio, un registro <b>reconstruido de forma independiente a partir de '
         'fuentes públicas</b> resiste esa pregunta. <b>La independencia no está dirigida contra '
-        'el municipio: es justamente lo que vuelve utilizable su evidencia.</b></p>'
-        '<p class="ql-p">Un gobierno local con buena gestión sale <b>beneficiado</b> de un '
-        'sistema así, porque por primera vez alguien puede demostrar su trazabilidad sin que '
-        'la afirmación provenga de él mismo. Y cuando QUIRA encuentra un corte en la cadena, '
-        'lo que señala casi siempre no es una falta: es un <b>instrumento de registro que no '
-        'fue diseñado para dejar rastro</b> — algo que se corrige con una decisión '
-        'administrativa, no con un proceso.</p>'
+        'el municipio: es justamente lo que vuelve utilizable su evidencia.</b> Un gobierno con '
+        'buena gestión sale <b>beneficiado</b>, porque por primera vez alguien puede demostrar '
+        'su trazabilidad sin que la afirmación provenga de él mismo.</p>'
+        '<div class="ql-linea"><div class="ql-linea-t">Dónde está la línea</div>'
+        '<div class="ql-linea-g">'
+        '<div class="ql-linea-c no"><span class="ql-linea-k">Nunca</span>'
+        'Pagar por ser observado, por la evaluación o por lo que se publica. '
+        'La observación no se contrata, no se negocia y no se retira.</div>'
+        '<div class="ql-linea-c si"><span class="ql-linea-k">Sí, y con gusto</span>'
+        'Licenciar herramientas para <b>gestionar lo propio</b> con la evidencia ya publicada, '
+        'con soporte de Dylus Lab. Contratarlas <b>no cambia una sola línea</b> de lo que el '
+        'Observatorio dice de ese municipio.</div></div></div>'
+        '<p class="ql-p">Es la misma distinción de siempre: nadie le paga al instituto de '
+        'estadística para que le cambie el censo, pero cualquiera puede usar herramientas para '
+        'trabajar con esos datos. Aquí igual — <b>la observación es pública e independiente; '
+        'las herramientas de gestión son otra cosa</b>, y separarlas explícitamente es lo que '
+        'permite ofrecer ambas sin que una contamine a la otra.</p>'
         '<p class="ql-p">Por eso el lenguaje de este sistema es deliberadamente preciso: '
         'nunca dice que alguien incumplió. Dice qué <b>puede</b> comprobarse con los '
-        'documentos disponibles y qué <b>no</b>. La diferencia entre ambas cosas es todo.</p>')
+        'documentos disponibles y qué <b>no</b>. Y cuando encuentra un corte en la cadena, lo '
+        'que señala casi nunca es una falta: es un <b>instrumento de registro que no fue '
+        'diseñado para dejar rastro</b> — algo que se corrige con una decisión administrativa, '
+        'no con un proceso.</p>')
 
 
 # ══════════════════════════════ ACCESO ══════════════════════════════

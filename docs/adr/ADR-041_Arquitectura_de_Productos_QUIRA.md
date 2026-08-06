@@ -133,6 +133,34 @@ la misma tabla sin marcar su condición produciría una afirmación falsa por co
 sistema ya distingue `inverificable` de `no atendido`. Se registra, se muestra, no se computa
 en comparaciones ni en promedios nacionales.
 
+## 4-ter · "No cliente" significa "no cliente de la OBSERVACIÓN"
+
+Javo (2026-08-05) planteó el caso real: *"¿si el GAD Montecristi, que es la validación
+empírica, una vez ve el producto nos pide software para su gestión?"* — y con razón: los
+módulos de gestión existen, fueron la idea primera, y negarse cerraría una vertiente
+escalable. *"También pienso como fundador y a nivel de economía."*
+
+**No hay contradicción con la Tesis, pero la formulación era imprecisa.** Lo que la Tesis
+protege no es la ausencia de ingresos: es que **el observado no pueda influir sobre la
+observación**. La línea, explícita:
+
+| ⛔ Nunca | ✅ Sí, y con soporte |
+|---|---|
+| Pagar por ser observado, por la evaluación o por lo que se publica | Licenciar herramientas para gestionar lo propio con la evidencia ya publicada |
+| Contratar para que un hallazgo cambie, se matice o se retire | Licencia **independiente**, con soporte de Dylus Lab |
+| Condicionar la cobertura de un municipio a que contrate | Contratar **no modifica una sola línea** de lo que el Observatorio publica sobre él |
+
+Analogía que lo zanja: **nadie le paga al instituto de estadística para que le cambie el
+censo, pero cualquiera puede contratar herramientas para trabajar con esos datos.** La
+observación es pública e independiente; las herramientas de gestión son otro producto.
+Separarlas explícitamente es lo que permite ofrecer ambas sin que una contamine a la otra.
+
+> ⚠️ **Punto que sí toca decidir a Javo:** `BOOT §LA TESIS` dice *"negocio = complementario,
+> **no licencias**"*. Esta vertiente lo contradice. Pero es **estrategia comercial, no
+> doctrina epistemológica** —la doctrina es "sujeto observado", y queda intacta—, así que es
+> decisión del fundador, no de la dirección técnica. Mientras no se resuelva, el BOOT y la
+> landing dicen cosas distintas.
+
 ## 5 · Qué hace cada producto de Fase 1
 
 ### 5.1 · Observatorio — el producto principal · genera evidencia de forma proactiva
