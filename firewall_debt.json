@@ -1,11 +1,39 @@
 {
- "dashboard_controller.py": [
+ "dashboard_view.py": [
   {
-   "line": 26,
-   "terms": "ICGI",
-   "alt": "Calificacion de gestion",
+   "line": 17,
+   "terms": "ICPI, ICGI",
+   "alt": "Cumplimiento institucional",
    "risk": "ALTO",
-   "snippet": "¿Por qué el ICGI-T bajó de"
+   "snippet": "ICGI-T · Motor: ICPI canónico"
+  },
+  {
+   "line": 55,
+   "terms": "ICPI, ICGI",
+   "alt": "Cumplimiento institucional",
+   "risk": "ALTO",
+   "snippet": "ICGI-T · ICPI canónico · SIAP v1.0222"
+  },
+  {
+   "line": 100,
+   "terms": "PSG",
+   "alt": "Presupuesto con enfoque de genero",
+   "risk": "ALTO",
+   "snippet": "PSG · mandato de género"
+  },
+  {
+   "line": 97,
+   "terms": "IED",
+   "alt": "Eficiencia directiva",
+   "risk": "ALTO",
+   "snippet": "IED · rendimiento direcciones"
+  },
+  {
+   "line": 94,
+   "terms": "ISP",
+   "alt": "Salud presupuestaria",
+   "risk": "ALTO",
+   "snippet": "ISP · peso estructural"
   }
  ]
 }

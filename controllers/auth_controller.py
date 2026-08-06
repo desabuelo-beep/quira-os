@@ -1,6 +1,7 @@
 """
-QUIRA OS — Controller: Auth  (Sprint Landing v3 · 2026-05-27)
-4 cajones iguales, clic directo = acción, sin botones redundantes.
+QUIRA OS — Controller: Acceso  ·  landing v5 "Chaquira"  ·  2026-08-05
+La portada EXPLICA (origen · qué es · problema · cómo · ecosistema · método ·
+independencia) y luego deja entrar por una sola puerta: el Observatorio.
 Dylus Lab © 2026
 """
 from __future__ import annotations
@@ -9,8 +10,9 @@ import streamlit as st
 from models.auth      import validate_any, AuthError, LockedError, is_locked
 from utils.session    import set_user
 from utils.audit_log  import log_login_ok, log_login_fail, log_lockout
-from views.login_view import (CSS, landing_hero, que_es, como_funciona, ecosistema,
-                              form_header, trust_badges, footer)
+from views.login_view import (CSS, landing_hero, origen, que_es, problema, como_funciona,
+                              ecosistema, humano, independencia, form_header,
+                              trust_badges, footer)
 
 
 def _st_key(name: str) -> str:
@@ -21,15 +23,16 @@ def _st_key(name: str) -> str:
 # justo el error que Javo señaló ("al observatorio entramos por institucional")—; el ruteo
 # interno NO se toca: sigue entrando al ambiente `gov`. Es la distinción producto/ambiente
 # de ADR-041 §2 aplicada: cambia lo que el mundo ve, no la maquinaria.
-_LABEL_ACCESO = "🔭\n\nEntrar al Observatorio\n\nAcceso al Centro de Inteligencia Territorial\nDylus Lab · equipo autorizado"
+_LABEL_ACCESO = "🔭\n\nEntrar al Observatorio\n\nCentro de Inteligencia Territorial · equipo Dylus Lab"
 
 
 def run() -> None:
     st.markdown(CSS, unsafe_allow_html=True)
-    st.markdown(landing_hero(), unsafe_allow_html=True)
-    st.markdown(que_es(), unsafe_allow_html=True)
-    st.markdown(como_funciona(), unsafe_allow_html=True)
-    st.markdown(ecosistema(), unsafe_allow_html=True)
+    # Orden narrativo: quién soy → de dónde vengo → qué hago → qué problema resuelvo →
+    # cómo → con qué productos → con qué método → y la aclaración que evita el malentendido.
+    for bloque in (landing_hero, origen, que_es, problema,
+                   como_funciona, ecosistema, humano, independencia):
+        st.markdown(bloque(), unsafe_allow_html=True)
 
     _SEL = _st_key("platform_selected")
     if _SEL not in st.session_state:
@@ -51,13 +54,13 @@ def run() -> None:
     _, col_acc, _ = st.columns([1, 2, 1])
     with col_acc:
         if st.button(_LABEL_ACCESO, key="card_acceso", use_container_width=True):
-            st.session_state[_SEL] = "institucional"
+            st.session_state[_SEL] = "observatorio"
             st.rerun()
 
     # ══════════════════════════════════════════════════════════════════════════
-    # FORMULARIO DE LOGIN (aparece bajo los cajones cuando INSTITUCIONAL activo)
+    # FORMULARIO DE ACCESO AL OBSERVATORIO
     # ══════════════════════════════════════════════════════════════════════════
-    if selected == "institucional":
+    if selected == "observatorio":
         locked, secs_left = is_locked()
         _, col_form, _ = st.columns([1, 3, 1])
         with col_form:
@@ -95,10 +98,10 @@ def run() -> None:
     # CONTACTO — vía abierta para quien quiera sumarse antes de la Fase 2
     # ══════════════════════════════════════════════════════════════════════════
     st.markdown(
-        '<div style="max-width:820px;margin:14px auto 0;padding:13px 18px;text-align:center;'
-        'border:1px solid rgba(124,92,252,.14);border-radius:10px;'
-        'background:rgba(124,92,252,.045);font-family:Inter,sans-serif">'
-        '<div style="font:400 10.5px/1.6 Inter,sans-serif;color:#8892B0">'
+        '<div style="max-width:900px;margin:26px auto 0;padding:18px 24px;text-align:center;'
+        'border:1px solid rgba(110,151,232,.16);border-radius:12px;'
+        'background:rgba(58,98,184,.05);font-family:Inter,sans-serif">'
+        '<div style="font:400 13.5px/1.7 Inter,sans-serif;color:#96A1BE">'
         'Universidades, organismos bilaterales, ONG y equipos de investigación: '
         'la evidencia territorial verificada se abre en la Fase 2. Para conversar antes — '
         # Correo real de Javo (2026-08-05); "acceso@quira.ec" no existía y una dirección
@@ -127,10 +130,10 @@ def run() -> None:
     _, col_ops, _ = st.columns([4, 1, 4])
     with col_ops:
         if st.button(
-            "⚙ acceso operacional",
+            "⚙ mantenimiento del ecosistema",
             key="btn_ops_access",
             use_container_width=True,
-            help="Acceso exclusivo Dylus Lab",
+            help="Mantenimiento del ecosistema — uso interno Dylus Lab. No es un producto.",
         ):
-            st.session_state[_SEL] = "institucional"
+            st.session_state[_SEL] = "observatorio"
             st.rerun()

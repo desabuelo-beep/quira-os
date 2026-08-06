@@ -1,468 +1,508 @@
 """
-QUIRA OS — View: Landing + Login  (Sprint Landing v3 · 2026-05-27)
-Pantalla cero limpia: 4 cajones iguales, clic directo, sin botones extra.
+QUIRA OS — View: Landing + Acceso  ·  v5 "Chaquira"  ·  2026-08-05
+
+Reescrita sobre `identity/CONSTITUCION_INSTITUCIONAL.md` (CONSTITUCION-001, raíz del árbol
+de autoridad) y ADR-041. La versión anterior era del modelo "software municipal": cuatro
+tarjetas-producto, una de ellas interna, y una identidad —"Sistema Operativo de Coherencia
+Institucional"— que el propio canon había dejado atrás.
+
+QUÉ CAMBIA, Y POR QUÉ (Javo · 2026-08-05):
+  · EL ORIGEN. La chaquira manteña entra como sección propia. Es lo que vuelve a QUIRA
+    originaria en vez de una plataforma que podría ser de cualquier país — y explica de paso
+    el nombre del laboratorio: spon·DYLUS.
+  · QUIRA CIUDADANA es CIVICTECH, no una mesa de partes. Comunidad que crece de Ecuador a
+    LAC, con IA que acompaña y educa para que el humano incida.
+  · LA TESIS SE RESPETA, SE EXPLICA MEJOR. "El municipio es sujeto observado, no cliente"
+    permanece —es doctrina congelada— pero deja de leerse como reproche: se muestra POR QUÉ
+    esa independencia le sirve al propio municipio (evidencia que un tercero respalda vale
+    ante banca y cooperación; evidencia de su proveedor, no).
+  · Tipografía con carácter (Fraunces para titulares) y el logo real del proyecto.
+
+Paleta: azul manteño del logo · coral Spondylus · cian de datos. El coral es nuevo y es
+deliberado — es el color de la concha de la que viene el nombre.
 Dylus Lab © 2026
 """
 from __future__ import annotations
 
+from pathlib import Path
+
+# Logo real (assets/quira_logo_b64.txt). Se lee UNA vez por proceso, no por render.
+try:
+    _LOGO_B64 = (Path(__file__).resolve().parents[1] / "assets" / "quira_logo_b64.txt"
+                 ).read_text(encoding="utf-8").strip()
+except Exception:  # noqa: BLE001
+    _LOGO_B64 = ""
+
 QUIRA_SVG = (
-    '<svg viewBox="0 0 100 118" xmlns="http://www.w3.org/2000/svg" '
-    'fill="currentColor" style="width:52px;height:62px">'
-    '<rect x="6"  y="107" width="88" height="11" rx="4"/>'
-    '<rect x="44" y="75"  width="12" height="32" rx="3"/>'
-    '<path d="M14,80 L14,44 A36,36 0 0,1 86,44 L86,80 L74,80 L74,44 A24,24 0 0,0 26,44 L26,80 Z"/>'
-    '<path d="M50,26 A12,12 0 0,1 62,38 Q62,56 50,74 Q38,56 38,38 A12,12 0 0,1 50,26 Z"/>'
-    '<path d="M14,80 Q14,60 0,60 L0,70 Q8,70 8,80 Z M0,60 L0,107 L8,107 L8,60 Z"/>'
-    '<path d="M86,80 Q86,60 100,60 L100,70 Q92,70 92,80 Z M100,60 L100,107 L92,107 L92,60 Z"/>'
-    '</svg>'
+    f'<img src="data:image/png;base64,{_LOGO_B64}" alt="QUIRA" class="ql-mark">'
+    if _LOGO_B64 else
+    '<div style="font:900 42px \'Fraunces\',serif;color:#4A7BD4">⬡</div>'
 )
 
 CSS = """<style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root{
+  --azul:#3A62B8;        /* azul manteño del logo */
+  --azul-cl:#6E97E8;
+  --coral:#E8734A;       /* Spondylus — el color de la concha */
+  --cian:#00D4FF;        /* dato verificado */
+  --verde:#00E096;       /* evidencia ciudadana */
+  --tx:#EDF1FA;
+  --tx2:#96A1BE;
+  --tx3:#5E6A85;
+  --bg:#070C16;
+  --sf:rgba(255,255,255,.026);
+  --bd:rgba(255,255,255,.085);
+}
 
 [data-testid="stHeader"],[data-testid="stToolbar"],
 [data-testid="stDecoration"],footer { display:none !important }
 
 [data-testid="stAppViewContainer"] {
     background:
-        radial-gradient(ellipse 80% 45% at 50% -5%,
-            rgba(0,212,255,.065) 0%, transparent 55%),
-        #080F1E !important;
+        radial-gradient(ellipse 62% 38% at 50% -6%, rgba(58,98,184,.19) 0%, transparent 62%),
+        radial-gradient(ellipse 42% 26% at 88% 12%, rgba(232,115,74,.07) 0%, transparent 60%),
+        var(--bg) !important;
     min-height:100vh;
 }
-[data-testid="stMain"] .block-container {
-    padding:0 !important; max-width:100% !important;
+[data-testid="stMain"] .block-container { padding:0 !important; max-width:100% !important }
+
+/* grano sutil — evita el plano digital perfecto */
+[data-testid="stAppViewContainer"]::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.028'/%3E%3C/svg%3E");
 }
 
-/* ── HERO ── */
-.ql-hero {
-    display:flex; flex-direction:column; align-items:center;
-    padding:46px 20px 28px; text-align:center;
-}
-.ql-logo { color:#00D4FF; margin-bottom:14px;
-    animation:ql-glow 2.8s ease-in-out infinite; }
-@keyframes ql-glow {
-    0%,100%{filter:drop-shadow(0 0 16px rgba(0,212,255,.38))}
-    50%{filter:drop-shadow(0 0 32px rgba(0,212,255,.75))} }
-.ql-brand { font:900 46px/1 'Inter',sans-serif;
-    color:#F0F4FF; letter-spacing:-.03em; margin-bottom:9px; }
-.ql-os { font:600 20px/1.3 'Inter',sans-serif;
-    color:rgba(240,244,255,.86); margin-bottom:8px; }
-.ql-pow { font:500 10px/1 'JetBrains Mono',monospace;
-    color:rgba(0,212,255,.55); letter-spacing:.14em;
-    text-transform:uppercase; margin-bottom:13px; }
-.ql-tagline { font:400 14px/1.6 'Inter',sans-serif;
-    color:rgba(150,161,190,.8); }
+.ql-wrap{max-width:900px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
 
-/* ── CARD-BUTTONS (los 4 cajones) ── */
-[data-testid="stButton"] button {
-    background: rgba(8,13,30,.88) !important;
-    border: 1px solid rgba(255,255,255,.09) !important;
-    border-radius: 14px !important;
-    min-height: 174px !important;
-    height: auto !important;
-    white-space: pre-line !important;
-    text-align: center !important;
-    padding: 26px 16px 22px !important;
-    font-family: 'Inter',sans-serif !important;
-    color: rgba(240,244,255,.84) !important;
-    font-size: 14px !important;
-    line-height: 1.7 !important;
-    letter-spacing: .01em !important;
-    transition: border-color .2s, background .2s !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    cursor: pointer !important;
-    width: 100% !important;
-}
-[data-testid="stButton"] button p,
-[data-testid="stButton"] button span {
-    white-space: pre-line !important;
-}
-[data-testid="stButton"] button:hover {
-    color: #F0F4FF !important;
-}
-[data-testid="stButton"] button:disabled {
-    opacity: .35 !important;
-    cursor: default !important;
-}
+/* ══ HERO ══ */
+.ql-hero{display:flex;flex-direction:column;align-items:center;text-align:center;
+  padding:62px 24px 30px;position:relative;z-index:1}
+.ql-mark{width:96px;height:auto;margin-bottom:20px;
+  filter:drop-shadow(0 0 30px rgba(58,98,184,.5));
+  animation:ql-rise 1.1s cubic-bezier(.2,.7,.3,1) both}
+@keyframes ql-rise{from{opacity:0;transform:translateY(16px) scale(.94)}to{opacity:1;transform:none}}
+.ql-brand{font:900 74px/.92 'Fraunces',Georgia,serif;color:var(--tx);
+  letter-spacing:-.035em;margin-bottom:6px;
+  animation:ql-rise 1.1s cubic-bezier(.2,.7,.3,1) .1s both}
+.ql-os{font:400 21px/1.35 'Fraunces',Georgia,serif;color:var(--azul-cl);
+  letter-spacing:.005em;margin-bottom:16px;font-style:italic;
+  animation:ql-rise 1.1s cubic-bezier(.2,.7,.3,1) .18s both}
+.ql-tagline{font:400 15.5px/1.7 'Inter',sans-serif;color:var(--tx2);max-width:600px;
+  animation:ql-rise 1.1s cubic-bezier(.2,.7,.3,1) .26s both}
+.ql-tagline b{color:var(--tx);font-weight:600}
+.ql-pow{font:500 10px/1 'JetBrains Mono',monospace;color:var(--tx3);
+  letter-spacing:.2em;text-transform:uppercase;margin-top:18px;
+  animation:ql-rise 1.1s cubic-bezier(.2,.7,.3,1) .34s both}
 
-/* Colores por columna — JS agrega .ql-col-* al stColumn */
-.ql-col-inst .stButton button {
-    border-color: rgba(0,212,255,.25) !important;
-}
-.ql-col-inst .stButton button:hover {
-    border-color: rgba(0,212,255,.52) !important;
-    background: rgba(0,212,255,.04) !important;
-}
-.ql-col-civ .stButton button {
-    border-color: rgba(34,197,94,.2) !important;
-}
-.ql-col-civ .stButton button:hover {
-    border-color: rgba(34,197,94,.45) !important;
-    background: rgba(34,197,94,.04) !important;
-}
-.ql-col-coop .stButton button {
-    border-color: rgba(124,92,252,.2) !important;
-}
-.ql-col-coop .stButton button:hover {
-    border-color: rgba(124,92,252,.45) !important;
-    background: rgba(124,92,252,.04) !important;
-}
-.ql-col-ops .stButton button {
-    border-color: rgba(249,115,22,.16) !important;
-}
-.ql-col-ops .stButton button:hover {
-    border-color: rgba(249,115,22,.38) !important;
-    background: rgba(249,115,22,.03) !important;
-}
+/* ══ SECCIONES ══ */
+.ql-sec{margin:52px auto 0;max-width:900px;padding:0 24px;position:relative;z-index:1}
+.ql-kicker{font:700 10.5px/1 'JetBrains Mono',monospace;letter-spacing:.19em;
+  text-transform:uppercase;color:var(--tx3);margin-bottom:13px;display:flex;
+  align-items:center;gap:11px}
+.ql-kicker::after{content:"";flex:1;height:1px;
+  background:linear-gradient(90deg,var(--bd),transparent)}
+.ql-h2{font:600 30px/1.22 'Fraunces',Georgia,serif;color:var(--tx);
+  letter-spacing:-.015em;margin-bottom:14px}
+.ql-p{font:400 15.5px/1.78 'Inter',sans-serif;color:var(--tx2);max-width:760px}
+.ql-p b{color:var(--tx);font-weight:600}
+.ql-p + .ql-p{margin-top:13px}
 
-/* ── FORM ── */
-div[data-testid="stForm"] {
-    background:rgba(6,12,26,.92) !important;
-    border:1px solid rgba(0,212,255,.17) !important;
-    border-radius:16px !important;
-    padding:22px 26px 18px !important;
-    backdrop-filter:blur(16px) !important;
-    margin-top:0 !important;
-}
-.ql-form-title {
-    font:700 10px/1 'Inter',sans-serif; color:rgba(136,146,176,.7);
-    text-transform:uppercase; letter-spacing:.1em;
-    text-align:center; margin-bottom:10px;
-}
-.ql-badge {
-    display:block; width:fit-content; margin:0 auto 16px;
-    background:rgba(0,212,255,.06); border:1px solid rgba(0,212,255,.18);
-    border-radius:20px; padding:4px 14px;
-    font:500 8px/1 'JetBrains Mono',monospace; color:rgba(0,212,255,.7);
-}
-div[data-testid="stTextInput"] input {
-    background:#030A18 !important;
-    border:1px solid rgba(255,255,255,.1) !important;
-    color:#F0F4FF !important; border-radius:8px !important;
-}
-div[data-testid="stTextInput"] input:focus {
-    border-color:rgba(0,212,255,.5) !important;
-}
-div[data-testid="stTextInput"] label {
-    color:rgba(136,146,176,.7) !important; font-size:10px !important;
-    font-weight:700 !important; text-transform:uppercase !important;
-    letter-spacing:.08em !important;
-}
+/* ══ ORIGEN · chaquira ══ */
+.ql-origen{border:1px solid var(--bd);border-left:3px solid var(--coral);
+  border-radius:14px;padding:26px 30px;background:
+    linear-gradient(105deg,rgba(232,115,74,.055),rgba(232,115,74,0) 62%),var(--sf)}
+.ql-quote{font:400 19.5px/1.62 'Fraunces',Georgia,serif;color:var(--tx);
+  font-style:italic;margin-bottom:15px}
+.ql-quote em{color:var(--coral);font-style:italic}
+.ql-collar{display:flex;align-items:center;gap:7px;margin:19px 0 15px;flex-wrap:wrap}
+.ql-bead{width:15px;height:15px;border-radius:50%;
+  background:radial-gradient(circle at 32% 30%,#F4A183,var(--coral) 55%,#A83F22);
+  box-shadow:0 0 12px rgba(232,115,74,.42);flex:none;
+  animation:ql-bead 3.4s ease-in-out infinite}
+.ql-bead:nth-child(2){animation-delay:.18s}.ql-bead:nth-child(3){animation-delay:.36s}
+.ql-bead:nth-child(4){animation-delay:.54s}.ql-bead:nth-child(5){animation-delay:.72s}
+.ql-bead:nth-child(6){animation-delay:.9s}.ql-bead:nth-child(7){animation-delay:1.08s}
+@keyframes ql-bead{0%,100%{opacity:.55;transform:scale(.9)}50%{opacity:1;transform:scale(1.06)}}
+.ql-thread{flex:1;height:1px;background:linear-gradient(90deg,var(--coral),transparent);
+  min-width:40px;opacity:.4}
+.ql-origen-p{font:400 14.5px/1.75 'Inter',sans-serif;color:var(--tx2)}
+.ql-origen-p b{color:var(--tx);font-weight:600}
 
-/* Botón ACCEDER (form submit) — override del card-style general */
+/* ══ NEGACIONES ══ */
+.ql-nos{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px}
+.ql-no{font:500 13px/1 'JetBrains Mono',monospace;color:var(--azul-cl);
+  border:1px solid rgba(110,151,232,.28);border-radius:16px;padding:9px 17px;
+  background:rgba(58,98,184,.075);white-space:nowrap}
+
+/* ══ PROBLEMA · cadena rota ══ */
+.ql-rota{display:flex;flex-wrap:wrap;align-items:center;gap:0;margin:18px 0 6px}
+.ql-link{font:600 12.5px/1 'JetBrains Mono',monospace;color:var(--tx2);
+  border:1px solid var(--bd);border-radius:7px;padding:10px 14px;margin:4px;
+  background:var(--sf);transition:all .25s}
+.ql-link.on{color:var(--cian);border-color:rgba(0,212,255,.35);
+  background:rgba(0,212,255,.07)}
+.ql-cut{color:var(--coral);font-size:17px;margin:0 3px;opacity:.85}
+.ql-arrow{color:var(--tx3);font-size:14px;margin:0 2px}
+.ql-syst{font:400 9.5px/1 'JetBrains Mono',monospace;color:var(--tx3);
+  display:block;margin-top:4px;letter-spacing:.04em}
+
+/* ══ FLUJO ══ */
+.ql-flow{display:flex;flex-wrap:wrap;align-items:stretch;justify-content:center;
+  gap:12px;margin:22px 0 8px}
+.ql-node{flex:1 1 190px;border:1px solid var(--bd);border-radius:13px;padding:17px 19px;
+  background:var(--sf);position:relative}
+.ql-node.entrada{border-top:2px solid var(--verde)}
+.ql-node.motor{border-top:2px solid var(--coral)}
+.ql-node.centro{border-top:2px solid var(--cian);background:rgba(0,212,255,.045)}
+.ql-node-t{font:700 14.5px/1.3 'Inter',sans-serif;color:var(--tx);margin-bottom:5px}
+.ql-node-d{font:400 12px/1.6 'Inter',sans-serif;color:var(--tx2)}
+.ql-node-k{font:700 8.5px/1 'JetBrains Mono',monospace;letter-spacing:.13em;
+  text-transform:uppercase;margin-bottom:7px;display:block}
+
+/* ══ PRODUCTOS ══ */
+.ql-prods{display:flex;flex-direction:column;gap:11px;margin-top:18px}
+.ql-prod{border:1px solid var(--bd);border-left:3px solid var(--pc,var(--azul));
+  border-radius:12px;padding:19px 23px;background:var(--sf);transition:all .3s}
+.ql-prod:hover{background:rgba(255,255,255,.045);transform:translateX(3px)}
+.ql-prod-h{display:flex;align-items:baseline;justify-content:space-between;
+  gap:15px;flex-wrap:wrap;margin-bottom:4px}
+.ql-prod-n{font:600 19px/1.28 'Fraunces',Georgia,serif;color:var(--tx)}
+.ql-prod-e{font:700 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.11em;
+  color:var(--pc,var(--azul));white-space:nowrap}
+.ql-prod-r{font:500 11.5px/1 'Inter',sans-serif;color:var(--pc,var(--azul));
+  margin-bottom:9px;opacity:.9}
+.ql-prod-d{font:400 13.8px/1.72 'Inter',sans-serif;color:var(--tx2)}
+.ql-prod-d b{color:var(--tx);font-weight:600}
+
+/* ══ HUMAN IN THE LOOP ══ */
+.ql-hil{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:16px}
+.ql-hil-c{border:1px solid var(--bd);border-radius:12px;padding:18px 21px;background:var(--sf)}
+.ql-hil-t{font:700 13px/1.3 'Inter',sans-serif;margin-bottom:6px}
+.ql-hil-d{font:400 13px/1.68 'Inter',sans-serif;color:var(--tx2)}
+.ql-hil-cierre{font:400 17px/1.6 'Fraunces',Georgia,serif;color:var(--tx);
+  font-style:italic;text-align:center;margin-top:19px;padding-top:17px;
+  border-top:1px solid var(--bd)}
+
+/* ══ ACCESO ══ */
+[data-testid="stButton"] button{
+  background:rgba(58,98,184,.09) !important;
+  border:1px solid rgba(110,151,232,.3) !important;
+  border-radius:14px !important;min-height:auto !important;height:auto !important;
+  white-space:pre-line !important;text-align:center !important;
+  padding:20px 22px !important;font-family:'Inter',sans-serif !important;
+  color:var(--tx) !important;font-size:15px !important;font-weight:600 !important;
+  line-height:1.6 !important;transition:all .25s !important;
+  display:flex !important;flex-direction:column !important;align-items:center !important;
+  cursor:pointer !important;width:100% !important}
+[data-testid="stButton"] button:hover{
+  border-color:rgba(110,151,232,.62) !important;
+  background:rgba(58,98,184,.16) !important;transform:translateY(-1px) !important}
+[data-testid="stButton"] button p,[data-testid="stButton"] button span{white-space:pre-line !important}
+
+div[data-testid="stForm"]{background:rgba(7,12,22,.93) !important;
+  border:1px solid rgba(110,151,232,.22) !important;border-radius:16px !important;
+  padding:24px 28px 20px !important;backdrop-filter:blur(18px) !important}
+.ql-form-title{font:700 10.5px/1 'JetBrains Mono',monospace;color:var(--tx3);
+  text-transform:uppercase;letter-spacing:.15em;text-align:center;margin-bottom:12px}
+.ql-badge{display:block;width:fit-content;margin:0 auto 18px;
+  background:rgba(58,98,184,.1);border:1px solid rgba(110,151,232,.24);
+  border-radius:20px;padding:6px 16px;
+  font:500 10.5px/1 'JetBrains Mono',monospace;color:var(--azul-cl)}
+div[data-testid="stTextInput"] input{background:#040910 !important;
+  border:1px solid var(--bd) !important;color:var(--tx) !important;
+  border-radius:9px !important;font-size:15px !important}
+div[data-testid="stTextInput"] input:focus{border-color:rgba(110,151,232,.6) !important}
+div[data-testid="stTextInput"] label{color:var(--tx3) !important;font-size:10.5px !important;
+  font-weight:700 !important;text-transform:uppercase !important;letter-spacing:.1em !important}
 div[data-testid="stForm"] button[kind="primaryFormSubmit"],
-div[data-testid="stForm"] button[data-testid="baseButton-primaryFormSubmit"] {
-    background:linear-gradient(135deg,#00D4FF 0%,#7C5CFC 100%) !important;
-    color:#060E1C !important; font-weight:900 !important;
-    font-size:12px !important; border:none !important;
-    border-radius:10px !important; letter-spacing:.07em !important;
-    min-height: auto !important; height: auto !important;
-    padding:14px !important; white-space: normal !important;
-    flex-direction: row !important;
-}
-div[data-testid="stForm"] button:hover { opacity:.88 !important }
+div[data-testid="stForm"] button[data-testid="baseButton-primaryFormSubmit"]{
+  background:linear-gradient(135deg,var(--azul) 0%,#2A3F7A 100%) !important;
+  color:#FFF !important;font-weight:800 !important;font-size:13px !important;
+  border:none !important;border-radius:10px !important;letter-spacing:.09em !important;
+  min-height:auto !important;padding:15px !important;white-space:normal !important;
+  flex-direction:row !important}
+div[data-testid="stForm"] button:hover{opacity:.9 !important}
 
-/* ── TRUST BADGES ── */
-.ql-trust {
-    display:grid; grid-template-columns:1fr 1fr; gap:6px;
-    max-width:370px; margin:16px auto 12px;
-}
-.ql-trust-item {
-    display:flex; align-items:center; gap:7px;
-    background:rgba(255,255,255,.02);
-    border:1px solid rgba(255,255,255,.06);
-    border-radius:8px; padding:7px 10px;
-}
-.ql-trust-label {
-    font:700 11px/1.3 'Inter',sans-serif;
-    text-transform:uppercase; letter-spacing:.05em;
-}
-.ql-trust-sub { font:400 11px/1.4 'Inter',sans-serif; color:#8892B0; }
+/* ══ CONFIANZA ══ */
+.ql-trust{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin:26px auto 14px}
+.ql-trust-item{border:1px solid var(--bd);border-radius:10px;padding:12px 14px;
+  background:var(--sf)}
+.ql-trust-label{font:700 10.5px/1.3 'Inter',sans-serif;text-transform:uppercase;
+  letter-spacing:.06em}
+.ql-trust-sub{font:400 11px/1.45 'Inter',sans-serif;color:var(--tx3);margin-top:3px}
 
-/* ── QUÉ ES · las tres negaciones + la cadena madre ──
-   Tipografía subida en toda la sección (Javo · 2026-08-05: "el tamaño de las letras es muy
-   pequeñas, deben ser mucho más grandes").
-   Y las negaciones salen del ROJO: no son advertencias ni errores — son declaraciones de
-   identidad ("QUIRA no es X"). El rojo las leía como alertas. Pasan al cian de marca. */
-.ql-que { max-width:840px; margin:0 auto 6px; padding:0 20px; text-align:center }
-.ql-no-row { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-bottom:18px }
-.ql-no { font:500 13px/1 'JetBrains Mono',monospace; color:rgba(0,212,255,.78);
-    border:1px solid rgba(0,212,255,.26); border-radius:14px; padding:8px 16px;
-    letter-spacing:.02em; white-space:nowrap; background:rgba(0,212,255,.05) }
-.ql-que-t { font:400 16px/1.75 'Inter',sans-serif; color:rgba(224,232,246,.9) }
-.ql-que-t b { color:#F0F4FF; font-weight:700 }
-.ql-cadena { display:flex; flex-wrap:wrap; gap:0; justify-content:center; align-items:center;
-    margin:18px 0 14px }
-.ql-esl { font:600 12.5px/1 'JetBrains Mono',monospace; color:rgba(0,212,255,.75);
-    border:1px solid rgba(0,212,255,.22); border-radius:6px; padding:7px 12px; margin:4px }
-.ql-que-s { font:400 13.5px/1.7 'Inter',sans-serif; color:rgba(150,161,190,.85) }
-.ql-que-s b { color:rgba(224,232,246,.95) }
+/* ══ FOOTER ══ */
+.ql-footer{text-align:center;padding:26px 24px 30px;
+  font:400 11.5px/1.95 'JetBrains Mono',monospace;color:var(--tx3);
+  border-top:1px solid var(--bd);margin-top:34px;position:relative;z-index:1}
+.ql-footer b{color:var(--tx2)}
 
-/* ── CÓMO FUNCIONA ── */
-.ql-flow-t, .ql-eco-t { font:700 11.5px/1 'JetBrains Mono',monospace; letter-spacing:.16em;
-    text-transform:uppercase; color:rgba(0,212,255,.6); text-align:center; margin:30px 0 14px }
-.ql-flow { display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:10px;
-    max-width:840px; margin:0 auto 4px; padding:0 20px }
-.ql-fin, .ql-fm, .ql-fc { display:flex; flex-direction:column; align-items:center; gap:4px;
-    border:1px solid rgba(255,255,255,.1); border-radius:11px; padding:14px 19px;
-    background:rgba(8,13,30,.6) }
-.ql-fin { gap:7px }
-.ql-fe { font:600 14px/1 'Inter',sans-serif; color:#00E096 }
-.ql-fmt { font:700 15.5px/1 'Inter',sans-serif; color:#FFB800 }
-.ql-fct { font:700 15.5px/1.3 'Inter',sans-serif; color:#00D4FF; text-align:center }
-.ql-fl { font:400 11px/1.4 'Inter',sans-serif; color:rgba(150,161,190,.75); text-align:center }
-.ql-fa { color:rgba(0,212,255,.4); font-size:20px }
+button.ql-ops-btn,.ql-ops-section button{background:transparent !important;
+  border:1px solid rgba(255,255,255,.05) !important;color:var(--tx3) !important;
+  font:500 9.5px/1 'JetBrains Mono',monospace !important;letter-spacing:.09em !important;
+  border-radius:6px !important;padding:7px 14px !important;opacity:.4 !important;
+  white-space:normal !important;flex-direction:row !important}
+button.ql-ops-btn:hover,.ql-ops-section button:hover{opacity:.75 !important;
+  border-color:rgba(232,115,74,.25) !important;transform:none !important}
 
-/* ── ECOSISTEMA ── */
-.ql-eco-s { font:400 13.5px/1.65 'Inter',sans-serif; color:rgba(150,161,190,.82);
-    text-align:center; max-width:680px; margin:0 auto 16px; padding:0 20px }
-.ql-prods { display:flex; flex-direction:column; gap:10px; max-width:840px;
-    margin:0 auto 4px; padding:0 20px }
-.ql-prod { border:1px solid rgba(255,255,255,.08); border-left:3px solid var(--pc);
-    border-radius:10px; padding:15px 19px; background:rgba(8,13,30,.55) }
-.ql-prod-h { display:flex; align-items:baseline; justify-content:space-between; gap:14px;
-    flex-wrap:wrap; margin-bottom:6px }
-.ql-prod-n { font:700 16px/1.3 'Inter',sans-serif; color:#F0F4FF }
-.ql-prod-e { font:700 10px/1 'JetBrains Mono',monospace; letter-spacing:.09em;
-    color:var(--pc); white-space:nowrap; opacity:.95 }
-.ql-prod-d { font:400 13px/1.65 'Inter',sans-serif; color:rgba(150,161,190,.88) }
-
-/* ── FOOTER ── */
-.ql-footer {
-    text-align:center; padding:14px 20px 26px;
-    font:400 11px/1.9 'JetBrains Mono',monospace;
-    color:rgba(136,146,176,.34);
-}
-
-/* Ops ghost — JS agrega .ql-ops-btn */
-button.ql-ops-btn, .ql-ops-section button {
-    background:transparent !important;
-    border:1px solid rgba(255,255,255,.05) !important;
-    color:rgba(136,146,176,.18) !important;
-    font:500 8px/1 'JetBrains Mono',monospace !important;
-    letter-spacing:.07em !important;
-    border-radius:5px !important;
-    min-height: auto !important;
-    height: auto !important;
-    padding:5px 12px !important;
-    white-space: normal !important;
-    flex-direction: row !important;
-}
-button.ql-ops-btn:hover, .ql-ops-section button:hover {
-    border-color:rgba(249,115,22,.22) !important;
-    color:rgba(249,115,22,.4) !important;
-}
-
-@media(max-width:680px){
-    .ql-brand{font-size:34px} .ql-os{font-size:16px}
-    .ql-no{font-size:11.5px;padding:6px 12px} .ql-que-t{font-size:14px}
-    .ql-prod-n{font-size:14.5px} .ql-prod-d{font-size:12px}
-    .ql-hero{padding:30px 16px 18px}
-    div[data-testid="stForm"]{padding:18px 14px !important}
-    [data-testid="stButton"] button { min-height:150px !important; padding:18px 12px !important; }
+@media(max-width:720px){
+  .ql-brand{font-size:48px}.ql-os{font-size:17px}.ql-h2{font-size:24px}
+  .ql-tagline{font-size:14px}.ql-p{font-size:14.5px}
+  .ql-quote{font-size:17px}.ql-prod-n{font-size:17px}
+  .ql-hil,.ql-trust{grid-template-columns:1fr}
+  .ql-hero{padding:40px 18px 22px}.ql-sec{margin-top:40px}
 }
 </style>
 
 <script>
-(function(){
-    /* autocomplete */
-    var _o1=new MutationObserver(function(){
-        var p=document.querySelector('input[type=password]');
-        if(p){p.autocomplete='current-password';_o1.disconnect();}
-    });
-    _o1.observe(document.body,{childList:true,subtree:true});
-})();
-(function(){
-    /* Tag columnas del primer bloque horizontal para colorear cada card */
-    var _tagged=false;
-    var _CLASSES=['ql-col-inst','ql-col-civ','ql-col-coop','ql-col-ops'];
-    function _tag(){
-        if(_tagged) return;
-        var blocks=document.querySelectorAll('[data-testid="stHorizontalBlock"]');
-        if(!blocks.length) return;
-        var cols=blocks[0].querySelectorAll('[data-testid="stColumn"]');
-        if(cols.length<2) return;
-        cols.forEach(function(c,i){ if(_CLASSES[i]) c.classList.add(_CLASSES[i]); });
-        _tagged=true;
-    }
-    var _o2=new MutationObserver(function(){ _tag(); });
-    _o2.observe(document.body,{childList:true,subtree:true});
-    setTimeout(_tag,300);
-})();
-(function(){
-    /* Tag ops ghost button */
-    function _tagOps(){
-        document.querySelectorAll('[data-testid="stButton"] button').forEach(function(b){
-            if((b.innerText||'').trim().toLowerCase().indexOf('acceso operacional')!==-1){
-                b.classList.add('ql-ops-btn');
-                var w=b.closest('[data-testid="stButton"]');
-                if(w) w.classList.add('ql-ops-section');
-            }
-        });
-    }
-    var _o3=new MutationObserver(_tagOps);
-    _o3.observe(document.body,{childList:true,subtree:true});
-})();
+(function(){var o=new MutationObserver(function(){
+  var p=document.querySelector('input[type=password]');
+  if(p){p.autocomplete='current-password';o.disconnect();}});
+  o.observe(document.body,{childList:true,subtree:true});})();
+(function(){function t(){
+  document.querySelectorAll('[data-testid="stButton"] button').forEach(function(b){
+    if((b.innerText||'').trim().toLowerCase().indexOf('mantenimiento')!==-1){
+      b.classList.add('ql-ops-btn');
+      var w=b.closest('[data-testid="stButton"]'); if(w) w.classList.add('ql-ops-section');}});}
+  new MutationObserver(t).observe(document.body,{childList:true,subtree:true});})();
 </script>"""
 
 
-def landing_hero() -> str:
-    """La identidad, según CONSTITUCION-001 (raíz del árbol de autoridad).
+def _sec(kicker: str, h2: str, cuerpo: str) -> str:
+    return (f'<div class="ql-sec"><div class="ql-kicker">{kicker}</div>'
+            f'<div class="ql-h2">{h2}</div>{cuerpo}</div>')
 
-    La versión anterior decía "Sistema Operativo de Coherencia Institucional" y las tarjetas
-    presentaban a QUIRA como cuatro productos sueltos, uno de ellos interno. Javo (2026-08-05):
-    "es una versión muy muy antigua y no representa nada de lo que tenemos ahora". Se
-    reconstruye sobre la Constitución Institucional y ADR-041."""
+
+# ══════════════════════════════ HERO ══════════════════════════════
+def landing_hero() -> str:
     return (
-        f'<div class="ql-hero">'
-        f'<div class="ql-logo">{QUIRA_SVG}</div>'
+        f'<div class="ql-hero">{QUIRA_SVG}'
         f'<div class="ql-brand">QUIRA</div>'
         f'<div class="ql-os">Plataforma de Inteligencia Pública</div>'
-        f'<div class="ql-pow">Development by Dylus Lab</div>'
-        f'<div class="ql-tagline">'
-        f'Infraestructura de conocimiento verificable para gobiernos,<br>'
-        f'ciudadanía, academia y cooperación internacional'
-        f'</div>'
-        f'</div>'
-    )
+        f'<div class="ql-tagline">Infraestructura de <b>conocimiento verificable</b> sobre la '
+        f'gestión del territorio, al servicio de gobiernos, ciudadanía, academia y '
+        f'cooperación internacional.</div>'
+        f'<div class="ql-pow">Dylus Lab · Ecuador</div></div>')
 
 
+# ══════════════════════════════ ORIGEN ══════════════════════════════
+def origen() -> str:
+    """La chaquira manteña (Javo · 2026-08-05). Es lo que ancla QUIRA en un territorio y una
+    historia concretos, y de paso explica el nombre del laboratorio: spon·DYLUS."""
+    collar = ('<div class="ql-collar">' + '<span class="ql-bead"></span>' * 7 +
+              '<span class="ql-thread"></span></div>')
+    return _sec("El origen", "Una chaquira a la vez",
+        '<div class="ql-origen">'
+        '<div class="ql-quote">QUIRA viene de <em>chaquira</em>, del antiguo dialecto manteño '
+        'de Cancebí. Las chaquiras eran fragmentos de la concha <em>Spondylus</em> con los que '
+        'los pueblos manteños y huancavilcas labraban los collares de su élite.</div>'
+        + collar +
+        '<div class="ql-origen-p">Para esos pueblos, el <b>Spondylus</b> era reserva de valor '
+        'e intercambio entre territorios —la estructura madre de la que todo se desprende, y de '
+        'la que este laboratorio toma su nombre: spon<b>·DYLUS</b>—. Cada fragmento labrado con '
+        'paciencia era una <b>chaquira</b>: la unidad indivisible de valor.<br><br>'
+        'Un collar de chaquiras no era un adorno. Era <b>símbolo de autoridad y acuerdo entre '
+        'comunidades</b>. Aquí cada dato, cada documento y cada aporte ciudadano es una '
+        'chaquira; QUIRA las enhebra hasta formar un <b>collar de integridad para el '
+        'territorio</b>: ninguna pieza sostiene sola el conjunto, pero el conjunto no existe '
+        'sin cada pieza.</div></div>')
+
+
+# ══════════════════════════════ QUÉ ES ══════════════════════════════
 def que_es() -> str:
-    """Qué es y qué NO es. Las tres negaciones son las tres reducciones que el propio canon
-    de arranque inducía y que Javo corrigió: auditoría (función menor), observatorio
-    (producto) y software municipal (contra la Tesis: el GAD es sujeto observado)."""
-    noes = "".join(
-        f'<span class="ql-no">{t}</span>' for t in
-        ("no es un software municipal", "no es una auditoría", "no es solo un observatorio"))
-    return (
-        '<div class="ql-que">'
-        f'<div class="ql-no-row">{noes}</div>'
-        '<div class="ql-que-t">QUIRA convierte la evidencia pública dispersa en '
-        '<b>conocimiento verificable</b>. No mide trámites ni obras aisladas: sigue la cadena '
-        'que va de la <b>promesa</b> al <b>territorio</b> —plan, presupuesto, ejecución, '
-        'resultado— y muestra <b>dónde se rompe y por qué</b>.</div>'
-        '<div class="ql-cadena">'
-        + "".join(f'<span class="ql-esl">{e}</span>' for e in
-                  ("Promesa", "Plan", "Presupuesto", "Ejecución", "Resultado", "Territorio"))
-        + '</div>'
-        '<div class="ql-que-s">Cada afirmación se ancla a un documento — o a la ausencia '
-        '<b>documentada</b> de uno. QUIRA no certifica la verdad: certifica qué puede '
-        'comprobar el ciudadano y qué no.</div>'
-        '</div>')
+    nos = "".join(f'<span class="ql-no">{t}</span>' for t in
+                  ("no es un software municipal", "no es una auditoría",
+                   "no es solo un observatorio"))
+    return _sec("Qué es", "Conocimiento verificable, no opinión",
+        f'<div class="ql-nos">{nos}</div>'
+        '<p class="ql-p">QUIRA convierte <b>evidencia pública dispersa</b> en conocimiento '
+        'que puede comprobarse. No mide trámites ni obras aisladas: sigue la cadena que va '
+        'de la <b>promesa</b> al <b>territorio</b> y muestra dónde se interrumpe.</p>'
+        '<p class="ql-p">Cada afirmación se ancla a un documento —o a la ausencia '
+        '<b>documentada</b> de uno. QUIRA <b>no sustituye a los órganos de control ni '
+        'determina responsabilidades</b>: establece el <b>nivel de verificabilidad</b> de la '
+        'evidencia disponible. Qué existe, qué puede comprobarse y qué permanece sin '
+        'demostrar.</p>')
 
 
+# ══════════════════════════════ PROBLEMA ══════════════════════════════
+_CADENA = [("Promesa", "plan de gobierno"), ("Plan", "PDOT"), ("Presupuesto", "asignación"),
+           ("Ejecución", "contratación"), ("Resultado", "bienes y servicios"),
+           ("Territorio", "impacto en la gente")]
+
+
+def problema() -> str:
+    """La cadena madre (Constitución Ontológica). NO se renombra ni se marca: cada eslabón
+    está atado a un sistema distinto del Estado, y ahí reside su verificabilidad."""
+    nodos = ""
+    for i, (t, s) in enumerate(_CADENA):
+        if i:
+            nodos += ('<span class="ql-cut">✕</span>' if i == 3
+                      else '<span class="ql-arrow">→</span>')
+        nodos += (f'<span class="ql-link{" on" if i < 3 else ""}">{t}'
+                  f'<span class="ql-syst">{s}</span></span>')
+    return _sec("El problema", "La información existe. La trazabilidad, no siempre",
+        '<p class="ql-p">Un compromiso de campaña puede no aparecer en la planificación. La '
+        'planificación puede no reflejarse en el presupuesto. El presupuesto puede ejecutarse '
+        'sin que conste <b>dónde</b> ni <b>sobre quién</b>. Cada eslabón vive en un sistema '
+        'distinto del Estado, y ninguno fue diseñado para hablar con los otros.</p>'
+        f'<div class="ql-rota">{nodos}</div>'
+        '<p class="ql-p">El problema rara vez es la falta de datos: es que <b>la cadena se '
+        'corta</b> en algún punto y nadie puede señalar dónde. QUIRA reconstruye esa cadena '
+        'documento por documento, y cuando encuentra el corte, <b>lo nombra</b>.</p>')
+
+
+# ══════════════════════════════ CÓMO FUNCIONA ══════════════════════════════
 def como_funciona() -> str:
-    """Dos entradas · un motor · un núcleo (ADR-041 §3). El motor NO se salta: la primera
-    versión del ADR ponía los productos escribiendo directo al núcleo, contra ADR-023."""
-    return (
-        '<div class="ql-flow-t">Cómo funciona</div>'
-        '<div class="ql-flow">'
-        '<div class="ql-fin">'
-        '<span class="ql-fe">Observatorio</span>'
-        '<span class="ql-fe">Ciudadanía</span>'
-        '<span class="ql-fl">dos entradas de evidencia</span></div>'
-        '<span class="ql-fa">→</span>'
-        '<div class="ql-fm"><span class="ql-fmt">Motor</span>'
-        '<span class="ql-fl">calcula</span></div>'
-        '<span class="ql-fa">→</span>'
-        '<div class="ql-fc"><span class="ql-fct">Centro de Inteligencia Territorial</span>'
-        '<span class="ql-fl">núcleo único · todo converge aquí</span></div>'
-        '</div>')
+    """Dos entradas · un sistema · un núcleo (ADR-041 §3). El motor no se salta y tampoco se
+    detalla: la portada responde QUÉ ES, no cómo está implementado."""
+    n = [("entrada", "var(--verde)", "Entrada", "Observatorio Nacional",
+          "Monitorea de forma progresiva los sistemas públicos de los 222 municipios."),
+         ("entrada", "var(--verde)", "Entrada", "QUIRA Ciudadana",
+          "Incorpora la evidencia que la ciudadanía aporta desde el territorio."),
+         ("motor", "var(--coral)", "Proceso", "Sistema de inteligencia",
+          "Contrasta ambas fuentes contra la norma y reconstruye la cadena."),
+         ("centro", "var(--cian)", "Núcleo", "Centro de Inteligencia Territorial",
+          "Donde la evidencia se vuelve conocimiento consultable. Único: todo converge aquí.")]
+    nodos = "".join(
+        f'<div class="ql-node {c}"><span class="ql-node-k" style="color:{col}">{k}</span>'
+        f'<div class="ql-node-t">{t}</div><div class="ql-node-d">{d}</div></div>'
+        for c, col, k, t, d in n)
+    return _sec("Cómo funciona", "Dos fuentes, un solo cuerpo de conocimiento",
+        f'<div class="ql-flow">{nodos}</div>'
+        '<p class="ql-p" style="margin-top:14px">Las dos entradas son <b>distintas por '
+        'naturaleza</b>: una detecta la evidencia que ya existe en los sistemas del Estado; la '
+        'otra ayuda a producir la que falta. Ninguna sustituye a la otra, y ambas alimentan '
+        'el mismo cuerpo de conocimiento — no bases separadas que después se contradicen.</p>')
 
 
-# (fase, clave, nombre, qué hace, estado, color)
-_ECOSISTEMA = [
-    ("1", "obs", "Observatorio Nacional de Integridad Territorial",
-     "Monitorea los 222 municipios del país de forma progresiva. Agentes de inteligencia "
-     "artificial revisan los sistemas públicos —transparencia, contratación, rendición de "
-     "cuentas, portales institucionales— y la evidencia se valida antes de publicarse.",
-     "ACTIVO · producto principal", "#00D4FF"),
-    ("1", "civ", "QUIRA Ciudadana",
-     "La puerta del control social que manda la Constitución. Cualquier persona puede aportar "
-     "documentos que falten y construir solicitudes de acceso a información pública con ayuda "
-     "del sistema. Alcance nacional.",
-     "EN CONSTRUCCIÓN", "#00E096"),
-    ("2", "coop", "QUIRA Cooperación",
-     "Evidencia territorial verificada para universidades, organismos bilaterales y ONG. "
-     "Requiere la cobertura nacional que producen las dos entradas.",
-     "FASE 2", "#7C5CFC"),
-    ("2", "inst", "QUIRA Institucional",
-     "Inteligencia para el propio gobierno local. Llega después, y no antes: el municipio es "
-     "sujeto observado, no cliente.",
-     "FASE 2", "#FFB800"),
-    ("3", "econ", "QUIRA Economic",
-     "Inteligencia económica del territorio: inversión y desarrollo económico local.",
-     "FASE 3", "#8892B0"),
+# ══════════════════════════════ ECOSISTEMA ══════════════════════════════
+# (clave, nombre, rótulo, descripción, estado, color)
+_PRODUCTOS = [
+    ("obs", "Observatorio Nacional de Integridad Territorial",
+     "Evidencia institucional · escala nacional",
+     "Monitoreo progresivo de los <b>222 municipios</b> del país, incorporados según su "
+     "disponibilidad documental y su ciclo administrativo. Agentes de inteligencia artificial "
+     "revisan los sistemas públicos —transparencia, contratación, rendición de cuentas, "
+     "portales institucionales— y <b>toda captura se valida antes de publicarse</b>.",
+     "FASE 1 · ACTIVO", "var(--cian)"),
+    ("civ", "QUIRA Ciudadana",
+     "CivicTech · evidencia social · capilaridad territorial",
+     "Una <b>comunidad de control social</b> que nace en Ecuador para crecer hacia América "
+     "Latina. Personas, organizaciones comunitarias y academia aportan la evidencia que falta "
+     "—actas, informes, fotografías de obra— y la inteligencia artificial <b>acompaña y "
+     "enseña</b>: explica qué acredita cada documento, qué norma lo respalda y cómo encaja en "
+     "el mapa de su territorio. No reemplaza al ciudadano: <b>lo fortalece para incidir</b>.",
+     "FASE 1 · EN CONSTRUCCIÓN", "var(--verde)"),
+    ("coop", "QUIRA Cooperación",
+     "Universidades · organismos bilaterales · ONG",
+     "Evidencia territorial verificada para investigación, cooperación e inversión basada en "
+     "datos. Llega después por una razón práctica: <b>su valor es la cobertura nacional</b>, y "
+     "esa cobertura la construyen antes las dos entradas.",
+     "FASE 2", "var(--azul-cl)"),
+    ("inst", "QUIRA Institucional",
+     "Gobiernos locales",
+     "Inteligencia para que el propio gobierno local use la evidencia sobre su gestión: "
+     "identificar dónde se corta su cadena documental y corregirlo. <b>Llega después, y esa "
+     "secuencia es deliberada</b> —abajo se explica por qué—.",
+     "FASE 2", "var(--coral)"),
+    ("econ", "QUIRA Economic",
+     "Inversión y desarrollo económico local",
+     "Inteligencia económica del territorio sobre la misma base de evidencia verificada.",
+     "FASE 3", "var(--tx3)"),
 ]
 
 
 def ecosistema() -> str:
-    """Los productos. Operaciones NO aparece: es mantenimiento del ecosistema, no producto
-    (Javo · ADR-041 §2) — y NOMENCLATURA_CANONICA ya prohibía publicarlo en la landing."""
-    filas = ""
-    for fase, k, nombre, desc, estado, col in _ECOSISTEMA:
-        filas += (
-            f'<div class="ql-prod ql-p-{k}" style="--pc:{col}">'
-            f'<div class="ql-prod-h">'
-            f'<span class="ql-prod-n">{nombre}</span>'
-            f'<span class="ql-prod-e">{estado}</span></div>'
-            f'<div class="ql-prod-d">{desc}</div></div>')
-    return (
-        '<div class="ql-eco-t">El ecosistema</div>'
-        '<div class="ql-eco-s">QUIRA es la plataforma. Estos son sus productos — cada uno con '
-        'una misión distinta, todos sobre el mismo núcleo de conocimiento.</div>'
+    filas = "".join(
+        f'<div class="ql-prod" style="--pc:{col}">'
+        f'<div class="ql-prod-h"><span class="ql-prod-n">{n}</span>'
+        f'<span class="ql-prod-e">{e}</span></div>'
+        f'<div class="ql-prod-r">{r}</div><div class="ql-prod-d">{d}</div></div>'
+        for _, n, r, d, e, col in _PRODUCTOS)
+    return _sec("El ecosistema", "Un sistema, varias puertas",
+        '<p class="ql-p">QUIRA no es un conjunto de aplicaciones independientes: es <b>un solo '
+        'cuerpo de conocimiento</b> al que se entra por puertas distintas. Cada producto cumple '
+        'una función propia dentro del mismo ecosistema.</p>'
         f'<div class="ql-prods">{filas}</div>')
 
 
+# ══════════════════════════════ HUMAN IN THE LOOP ══════════════════════════════
+def humano() -> str:
+    cols = [("var(--coral)", "La máquina encuentra",
+             "Procesa volúmenes de documentos que ninguna persona podría revisar, detecta "
+             "patrones y señala dónde la evidencia falta o no concuerda."),
+            ("var(--verde)", "Las personas deciden",
+             "Interpretan el contexto, conocen el territorio y validan cada hallazgo. "
+             "Ninguna afirmación pública se publica sin ese paso.")]
+    return _sec("El método", "Inteligencia aumentada, no automatización ciega",
+        '<div class="ql-hil">' + "".join(
+            f'<div class="ql-hil-c"><div class="ql-hil-t" style="color:{c}">{t}</div>'
+            f'<div class="ql-hil-d">{d}</div></div>' for c, t, d in cols) + '</div>'
+        '<div class="ql-hil-cierre">La inteligencia artificial no constituye fuente de verdad '
+        'institucional.<br>Encuentra patrones; el significado lo aportan las personas.</div>')
+
+
+# ══════════════════════════════ INDEPENDENCIA ══════════════════════════════
+def independencia() -> str:
+    """La Tesis, íntegra pero EXPLICADA (Javo · 2026-08-05: "respetemos la tesis, pero
+    mejoremos el texto para que no suene chocante con los políticos").
+
+    No se suaviza la doctrina —"sujeto observado, no cliente" permanece—: se muestra que la
+    independencia es lo que vuelve útil la evidencia PARA el propio municipio. Una evidencia
+    que respalda un tercero independiente sirve ante banca y cooperación; la que emite un
+    proveedor contratado por el observado, no. Deja de ser un reproche y pasa a ser una
+    propuesta de valor, sin ceder nada."""
+    return _sec("Una aclaración necesaria", "Por qué QUIRA no le vende software a los municipios",
+        '<p class="ql-p">Conviene decirlo con franqueza, porque suele malinterpretarse: '
+        '<b>el municipio es sujeto observado, no cliente</b>. Y esa distinción no nace de '
+        'desconfianza hacia los gobiernos locales — nace de lo que hace falta para que la '
+        'evidencia <b>sirva de algo</b>.</p>'
+        '<p class="ql-p">Un informe que un municipio encarga y paga vale poco ante un banco '
+        'de desarrollo, una agencia de cooperación o una universidad: procede de la parte '
+        'interesada. En cambio, un registro <b>reconstruido de forma independiente a partir de '
+        'fuentes públicas</b> resiste esa pregunta. <b>La independencia no está dirigida contra '
+        'el municipio: es justamente lo que vuelve utilizable su evidencia.</b></p>'
+        '<p class="ql-p">Un gobierno local con buena gestión sale <b>beneficiado</b> de un '
+        'sistema así, porque por primera vez alguien puede demostrar su trazabilidad sin que '
+        'la afirmación provenga de él mismo. Y cuando QUIRA encuentra un corte en la cadena, '
+        'lo que señala casi siempre no es una falta: es un <b>instrumento de registro que no '
+        'fue diseñado para dejar rastro</b> — algo que se corrige con una decisión '
+        'administrativa, no con un proceso.</p>'
+        '<p class="ql-p">Por eso el lenguaje de este sistema es deliberadamente preciso: '
+        'nunca dice que alguien incumplió. Dice qué <b>puede</b> comprobarse con los '
+        'documentos disponibles y qué <b>no</b>. La diferencia entre ambas cosas es todo.</p>')
+
+
+# ══════════════════════════════ ACCESO ══════════════════════════════
 def form_header() -> str:
-    return (
-        '<div class="ql-form-title">Acceso Institucional</div>'
-        '<div style="text-align:center">'
-        '<span class="ql-badge">Acceso Restringido · QUIRA Institucional</span>'
-        '</div>'
-    )
+    return ('<div class="ql-form-title">Acceso restringido</div>'
+            '<div style="text-align:center">'
+            '<span class="ql-badge">🔭 Observatorio Nacional · Dylus Lab</span></div>')
 
 
 def trust_badges() -> str:
-    badges = [
-        ("#00E096", "ACCESO PROTEGIDO",     "Cifrado institucional"),
-        ("#00D4FF", "SESIÓN TEMPORAL",       "Expira en 60 minutos"),
-        ("#7C5CFC", "INTENTOS MONITOREADOS", "Bloqueo tras 3 fallos"),
-        ("#FFB800", "ACTIVIDAD AUDITADA",    "Registro de accesos"),
-    ]
+    badges = [("var(--verde)", "ACCESO PROTEGIDO", "Credencial cifrada"),
+              ("var(--cian)", "SESIÓN TEMPORAL", "Expira en 60 minutos"),
+              ("var(--azul-cl)", "INTENTOS LIMITADOS", "Bloqueo tras 3 fallos"),
+              ("var(--coral)", "ACTIVIDAD REGISTRADA", "Trazabilidad de accesos")]
     items = "".join(
-        f'<div class="ql-trust-item">'
-        f'<div><div class="ql-trust-label" style="color:{c}">{lbl}</div>'
-        f'<div class="ql-trust-sub">{sub}</div></div>'
-        f'</div>'
-        for c, lbl, sub in badges
-    )
-    return f'<div class="ql-trust">{items}</div>'
+        f'<div class="ql-trust-item"><div class="ql-trust-label" style="color:{c}">{l}</div>'
+        f'<div class="ql-trust-sub">{s}</div></div>' for c, l, s in badges)
+    return f'<div class="ql-wrap"><div class="ql-trust">{items}</div></div>'
 
 
 def footer() -> str:
-    # BUILD_STAMP visible pre-auth: permite verificar QUÉ commit corre el
-    # deploy SIN credenciales (Playwright/director) + la VERSIÓN del runtime
-    # Streamlit del servidor (diagnóstico de features no soportadas).
-    # Lección 2026-06-11: fin de los deploys a ciegas.
     import streamlit as _st_v
-    return (
-        '<div class="ql-footer">'
-        'QUIRA · Dylus Lab © 2026<br>'
-        # "de gobernanza pública" era casi correcto pero no es lo que dice la Constitución
-        # Institucional: infraestructura de CONOCIMIENTO VERIFICABLE (Art. 1-5).
-        '<span style="color:rgba(255,184,0,.2)">Infraestructura de conocimiento verificable</span><br>'
-        '<span style="color:rgba(255,255,255,.18);font-family:monospace;font-size:9px">'
-        f'build cc-v2-r2 · 2026-06-11 · st {_st_v.__version__}</span>'
-        '</div>'
-    )
+    return ('<div class="ql-footer">'
+            '<b>QUIRA</b> · Dylus Lab © 2026 · Ecuador<br>'
+            'Infraestructura de conocimiento verificable<br>'
+            f'<span style="opacity:.45">build v5-chaquira · st {_st_v.__version__}</span></div>')
 
 
-# ── Backward compat ───────────────────────────────────────────────────────────
+# ── Compatibilidad hacia atrás ────────────────────────────────────────────────
 def platform_cards(selected: str = "") -> str: return ""
 def card_institucional_html(active: bool = False) -> str: return ""
 def card_ciudadano_html(active: bool = False) -> str: return ""
@@ -471,8 +511,6 @@ def card_operations_html() -> str: return ""
 def splash_top(corte: str = "") -> str: return landing_hero()
 def splash_bottom(gad: str = "", corte: str = "") -> str: return footer()
 def error_html(msg: str) -> str:
-    return (
-        f'<div style="background:rgba(255,77,109,.1);border:1px solid rgba(255,77,109,.3);'
-        f'border-radius:8px;padding:10px 14px;color:#FF8FA3;font-size:12px;'
-        f'font-family:Inter,sans-serif;margin-top:4px">⚠️ {msg}</div>'
-    )
+    return (f'<div style="background:rgba(232,115,74,.1);border:1px solid rgba(232,115,74,.3);'
+            f'border-radius:9px;padding:11px 15px;color:#F0A184;font-size:13px;'
+            f'font-family:Inter,sans-serif;margin-top:5px">⚠️ {msg}</div>')

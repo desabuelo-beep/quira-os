@@ -38,6 +38,19 @@ _PBKDF2_ITERS  = 260_000    # iteraciones PBKDF2 (OWASP 2024)
 _APP_SALT = b"QUIRA_OS_v1_Dylus_Lab_2026"
 
 # ── Constantes de roles (usar estas, nunca strings literales en código) ───────
+#
+# ★ ROL VIGENTE (2026-08-05 · Javo · deriva de ADR-041)
+# `observatorio` es el único acceso activo. Los cuatro roles de abajo nacieron del modelo
+# donde el GAD era CLIENTE —alcalde, concejales, técnico municipal—; con la Tesis vigente el
+# municipio es sujeto observado, así que un "rol ejecutivo del alcalde" ya no tiene a quién
+# representar. No se borran todavía (el ruteo interno los consulta en decenas de sitios):
+# quedan INACTIVOS por la vía más segura — sin hash configurado en secrets, y con el
+# fail-closed de hoy eso significa que nadie puede entrar con ellos.
+#
+# QUIRA Ciudadana NO llevará credencial: es control social de acceso abierto (Fase 1).
+ROLE_OBSERVATORIO  = "observatorio"
+
+# ── Legacy · inactivos (sin credencial configurada) ──────────────────────────
 ROLE_EJECUTIVO     = "ejecutivo"
 ROLE_TECNICO       = "tecnico"
 ROLE_OPERADOR      = "operador"
@@ -80,8 +93,9 @@ def _safe_eq(a: str, b: str) -> bool:
 # Para desarrollo local, configurar `.streamlit/secrets.toml` (no se rastrea en git).
 
 _USER_META: dict[str, dict] = {
-    ROLE_EJECUTIVO:     {"rol": "Ejecutivo",     "emoji": "🏛"},
-    ROLE_TECNICO:       {"rol": "Directivo",       "emoji": "📐"},
+    ROLE_OBSERVATORIO:  {"rol": "Observatorio",   "emoji": "🔭"},   # ← el único activo
+    ROLE_EJECUTIVO:     {"rol": "Ejecutivo",      "emoji": "🏛"},
+    ROLE_TECNICO:       {"rol": "Directivo",      "emoji": "📐"},
     ROLE_OPERADOR:      {"rol": "Operador",       "emoji": "⚙️"},
     ROLE_ADMINISTRADOR: {"rol": "Administrador",  "emoji": "🔑"},
 }
@@ -189,7 +203,11 @@ def validate_any(password: str) -> AuthUser:
         raise LockedError(secs)
 
     pw_hash = _hash(password)
-    for rol_key in (ROLE_EJECUTIVO, ROLE_TECNICO, ROLE_OPERADOR, ROLE_ADMINISTRADOR):
+    # `observatorio` primero: es el único con credencial activa. Los legacy siguen en la
+    # lista para que un despliegue antiguo con sus hashes puestos no quede tapiado de golpe;
+    # sin hash configurado, `_stored_hash` devuelve "" y nunca coinciden.
+    for rol_key in (ROLE_OBSERVATORIO, ROLE_EJECUTIVO, ROLE_TECNICO,
+                    ROLE_OPERADOR, ROLE_ADMINISTRADOR):
         stored = _stored_hash(rol_key)
         if stored and _safe_eq(pw_hash, stored):
             # Login exitoso — resetear contadores

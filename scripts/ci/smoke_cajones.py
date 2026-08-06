@@ -38,10 +38,11 @@ DESTINOS: list[tuple[str, str, str]] = [
     ("territorio", "d10 · Territorio & Cobertura", "erritorio"),
 ]
 
-# Los cajones son de TODOS los roles GOV; lo exclusivo del Ejecutivo es navegar sin
-# sidebar. Por eso se prueban los dos caminos del router — el bug de navegación vivía
-# justo en el que no se probaba.
-ROLES = ("ejecutivo", "tecnico")
+# `observatorio` es el rol vigente (ADR-041): único con credencial y con acceso pleno.
+# Se conserva `tecnico` —legacy, ya sin credencial— porque recorre el OTRO camino del
+# router: el de sidebar, donde vivía el bug de navegación que este archivo destapó. Probar
+# solo el camino del canvas dejaría ese tramo sin cubrir otra vez.
+ROLES = ("observatorio", "tecnico")
 
 
 def _correr(modulo: str, rol: str = "tecnico", timeout: int = 120):

@@ -97,38 +97,46 @@ def navigate_to(page: str) -> None:
 
 # ── Helpers de rol (nomenclatura canónica v3) ────────────────────────────────
 
+# ★ 2026-08-05 · ADR-041. `observatorio` es el rol vigente y tiene acceso PLENO: es desde
+# donde Dylus Lab construye los dominios y opera el Centro de Inteligencia Territorial. Por
+# eso responde True a todas las comprobaciones de privilegio —incluida `is_ejecutivo`, que no
+# concede permisos sino que elige la NAVEGACIÓN por canvas (el Centro como pantalla completa,
+# sin sidebar), que es justamente la del Observatorio—.
+# Los roles de abajo son legacy del modelo "GAD cliente" y ya no tienen credencial.
+_OBSERVATORIO = "observatorio"
+
+
 def _rol() -> str:
-    """Devuelve el rol canónico (key) en minúsculas para comparación robusta.
-    Mapea el nombre visible ('Directivo') al key interno ('tecnico').
-    """
+    """Rol canónico (key) en minúsculas. Normaliza los nombres visibles a su key interno."""
     raw = st.session_state.get("rol", "").lower()
-    # "directivo" es el display del ROLE_TECNICO — normalizar para comparaciones
-    return "tecnico" if raw == "directivo" else raw
+    if raw == "directivo":      # display histórico de ROLE_TECNICO
+        return "tecnico"
+    return raw
 
 
 def is_ejecutivo() -> bool:
-    """True solo para Ejecutivo — alcalde, concejales. (COOTAD: el alcalde es el Ejecutivo.)"""
-    return _rol() == "ejecutivo"
+    """True si la navegación debe ser el canvas del Centro (sin sidebar), no una vista con menú."""
+    return _rol() in (_OBSERVATORIO, "ejecutivo")
 
 
 def is_tecnico() -> bool:
-    """True para Técnico y roles de mayor privilegio (incluye OPS)."""
-    return _rol() in ("tecnico", "operador", "administrador")
+    """True para el Observatorio y los roles legacy de mayor privilegio."""
+    return _rol() in (_OBSERVATORIO, "tecnico", "operador", "administrador")
 
 
 def is_operador() -> bool:
-    """True para Operador o Administrador — acceso OPS."""
-    return _rol() in ("operador", "administrador")
+    """True para acceso OPS — mantenimiento del ecosistema."""
+    return _rol() in (_OBSERVATORIO, "operador", "administrador")
 
 
 def is_admin() -> bool:
-    """True solo para Administrador — acceso total."""
-    return _rol() == "administrador"
+    """True para acceso total."""
+    return _rol() in (_OBSERVATORIO, "administrador")
 
 
 def is_gov_user() -> bool:
-    """True para roles con acceso a GOV: Directivo, Técnico, Administrador."""
-    return _rol() in ("ejecutivo", "tecnico", "administrador")
+    """True para roles con acceso al Centro de Inteligencia Territorial."""
+    return _rol() in (_OBSERVATORIO, "ejecutivo", "tecnico", "administrador")
 
 
 def is_ops_user() -> bool:
