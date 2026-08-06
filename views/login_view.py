@@ -32,12 +32,27 @@ from pathlib import Path
 _MARCA = Path(__file__).resolve().parents[1] / "assets" / "marca"
 
 
+#: El logo NO es cuadrado — su lienzo es 150×160 (relación 0,9375). Forzar width=height
+#: lo estiraría, así que la altura manda y el ancho se deriva.
+_ASPECTO = 150 / 160
+
+
 def _logo(variante: str = "coral", px: int = 96) -> str:
     """Inserta el SVG aprobado tal cual, ajustando solo su tamaño de render.
-    No se reconstruye la geometría — se lee el activo (error corregido: 2026-08-06)."""
+
+    La geometría NO se reconstruye: se lee el activo de `assets/marca/`, que proviene de la
+    vectorización que aportó Javo (2026-08-06) con dos artefactos retirados — el contorno
+    duplicado del trazado y el destello decorativo que las herramientas de IA añaden a sus
+    salidas, y que se habría publicado como parte de la marca.
+
+    Historial de esta función, porque el error se repitió dos veces:
+      1ª · redibujé la Q con paths propios → no era el logo de Javo.
+      2ª · usé un SVG de conversión automática que solo tenía 2 paths y perdía los niveles
+           interiores → se publicó una versión pobre.
+    Regla: si el logo cambia, se cambia el ARCHIVO. Aquí nunca se dibuja."""
     try:
         svg = (_MARCA / f"quira_{variante}.svg").read_text(encoding="utf-8")
-        return re.sub(r"<svg ", f'<svg width="{px}" height="{px}" ', svg, count=1)
+        return re.sub(r"<svg ", f'<svg width="{round(px * _ASPECTO)}" height="{px}" ', svg, count=1)
     except Exception:  # noqa: BLE001
         return f'<div style="font:800 {px//2}px Archivo,sans-serif;color:#C1392B">Q</div>'
 
