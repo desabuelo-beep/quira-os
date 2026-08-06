@@ -1,5 +1,5 @@
 """
-QUIRA OS — View: Landing + Acceso  ·  v6 "Marfil"  ·  2026-08-06
+QUIRA OS — View: Landing + Acceso  ·  v7 "Papel de plano"  ·  2026-08-06
 
 Identidad cerrada (Javo · 2026-08-05/06). Este archivo NO redibuja la marca: consume el
 SVG aprobado desde `assets/marca/`. Si hace falta cambiar el logo, se cambia el activo.
@@ -8,6 +8,7 @@ LA MARCA
   · Q manteña: espiral cuadrada de dos trazos + chaquira central. Geometría intocable
     (`assets/marca/_ORIGINAL_APROBADO.svg` es la referencia).
   · Coral Spondylus #C1392B — el color de la concha que da nombre al proyecto.
+    Único acento identitario: una marca con un color es más reconocible que con dos.
   · Nombre en Archivo, mayúsculas, tracking amplio: no compite con la Q.
   · Promesa: «Evidencia que transforma». Categoría: «Inteligencia pública».
 
@@ -16,8 +17,15 @@ Un fondo oscuro es literalmente opaco, y toda la tesis del proyecto es que la in
 pública debe poder verse. El registro del documento y el archivo DICE lo que QUIRA hace.
 Dos registros, cada uno en su contexto (precedente exacto: la terminal de Bloomberg es
 negra, el sitio de Bloomberg es blanco):
-  · MARFIL     → landing, informes, fichas, QUIRA Ciudadana. Todo lo público.
-  · VOLCÁNICO  → Centro de Inteligencia Territorial, cajones, panel del Observatorio.
+  · PAPEL DE PLANO → landing, informes, fichas, QUIRA Ciudadana. Todo lo público.
+  · VOLCÁNICO      → Centro de Inteligencia Territorial, cajones, panel del Observatorio.
+
+UN SOLO ACENTO. El jade salió del sistema: rojo + verde es un SEMÁFORO, y un semáforo
+dicta «bueno / malo» — QUIRA certifica verificabilidad, no verdad. Y la escala del canon
+tiene CINCO niveles (independiente · institucional · parcial · sin evidencia ·
+contradicción): dos colores opuestos solo pueden expresar dos. Se resuelve con una RAMPA
+del Spondylus a la ausencia, donde la intensidad indica cuánto sostiene el documento y la
+falta de color indica falta de evidencia — nunca un suspenso.
 
 Contenido: ADR-041 (arquitectura de productos) + CONSTITUCION-001 (identidad) +
 Constitución Ontológica (la cadena madre). La Tesis se respeta íntegra y se EXPLICA
@@ -61,18 +69,31 @@ CSS = """<style>
 @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
 :root{
-  --coral:#C1392B;        /* Spondylus */
-  --coral-cl:#D9604F;
-  --coral-bg:rgba(193,57,43,.055);
-  --marfil:#F4EFE7;
-  --papel:#EAE3D7;
-  --volcan:#1C1917;
-  --tx:#241F1C;
-  --tx2:#6B6057;
-  --tx3:#9C9089;
-  --petroleo:#2E5C6E;
-  --bd:rgba(36,31,28,.11);
-  --sf:rgba(255,255,255,.55);
+  /* ── SISTEMA VISUAL v1.1 · UN SOLO ACENTO ───────────────────────────────────
+     El marfil cálido salió: estaba a Δ=7 del fondo de Anthropic y a Δ=15 de su
+     texto — se distinguía el acento y no lo que ocupa el 90% de la pantalla.
+     Base nueva: el gris-azul del PAPEL DE PLANO, el del levantamiento
+     topográfico y del plano de ordenamiento territorial. Baja 7 puntos de
+     luminosidad y voltea la temperatura a frío, que es lo que el ojo distingue.
+
+     Y el jade salió también, por una razón doctrinal: rojo + verde es un
+     SEMÁFORO, y un semáforo dicta «bueno / malo». QUIRA certifica
+     verificabilidad, no verdad. Además la escala del canon tiene CINCO niveles
+     y dos colores opuestos solo pueden expresar dos: hace falta una RAMPA.
+     Un solo acento identitario, además, es más reconocible que dos. */
+  --coral:#C1392B;        /* Spondylus · LA marca. Único acento identitario   */
+  --coral-cl:#D4715F;     /* Spondylus claro · verificabilidad parcial        */
+  --coral-dp:#8E2419;     /* Spondylus profundo · verificabilidad independiente */
+  --coral-bg:rgba(193,57,43,.06);
+  --plano:#D9E0E5;        /* base · papel de levantamiento                    */
+  --sup:#F3F6F7;          /* superficie de tarjeta — se levanta del plano     */
+  --carril:#C2CDD4;       /* ausencia de evidencia · fondo de barra           */
+  --pizarra:#4E6674;      /* dato sin evidencia · 4,53:1 sobre el plano (AA)  */
+  --tx:#18232B;           /* tinta · azul-pizarra profundo                    */
+  --tx2:#52616B;
+  --tx3:#8296A2;
+  --bd:#B9C6CD;
+  --sf:#F3F6F7;
 }
 
 [data-testid="stHeader"],[data-testid="stToolbar"],
@@ -81,7 +102,7 @@ CSS = """<style>
 [data-testid="stAppViewContainer"]{
   background:
     radial-gradient(ellipse 58% 34% at 50% -8%, rgba(193,57,43,.055) 0%, transparent 60%),
-    var(--marfil) !important;
+    var(--plano) !important;
   min-height:100vh;
 }
 [data-testid="stMain"] .block-container{padding:0 !important;max-width:100% !important}
@@ -89,7 +110,7 @@ CSS = """<style>
 /* textura de papel — no un degradado digital */
 [data-testid="stAppViewContainer"]::before{
   content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)' opacity='.045'/%3E%3C/svg%3E");
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)' opacity='.03'/%3E%3C/svg%3E");
 }
 
 .qw{max-width:880px;margin:0 auto;padding:0 26px;position:relative;z-index:1}
@@ -144,7 +165,7 @@ CSS = """<style>
 .q-cad{display:flex;flex-wrap:wrap;align-items:center;margin:18px 0 4px}
 .q-link{font:600 12px/1 'JetBrains Mono',monospace;color:var(--tx2);border:1px solid var(--bd);
   border-radius:6px;padding:10px 13px;margin:4px;background:var(--sf)}
-.q-link.on{color:var(--petroleo);border-color:rgba(46,92,110,.32);background:rgba(46,92,110,.06)}
+.q-link.on{color:var(--pizarra);border-color:rgba(78,102,116,.4);background:rgba(78,102,116,.09)}
 .q-link small{display:block;font:400 9px/1 'JetBrains Mono';color:var(--tx3);
   margin-top:4px;letter-spacing:.03em}
 .q-cut{color:var(--coral);font-size:16px;margin:0 4px}
@@ -189,11 +210,11 @@ CSS = """<style>
 .q-linea-c{border-radius:9px;padding:15px 18px;font:400 13.2px/1.68 'Inter',sans-serif;color:var(--tx2)}
 .q-linea-c b{color:var(--tx);font-weight:600}
 .q-linea-c.no{border:1px solid rgba(193,57,43,.26);background:var(--coral-bg)}
-.q-linea-c.si{border:1px solid rgba(46,92,110,.24);background:rgba(46,92,110,.05)}
+.q-linea-c.si{border:1px solid rgba(78,102,116,.3);background:rgba(78,102,116,.07)}
 .q-linea-k{display:block;font:700 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;
   text-transform:uppercase;margin-bottom:7px}
 .q-linea-c.no .q-linea-k{color:var(--coral)}
-.q-linea-c.si .q-linea-k{color:var(--petroleo)}
+.q-linea-c.si .q-linea-k{color:var(--pizarra)}
 
 /* ═══ ACCESO ═══ */
 [data-testid="stButton"] button{
@@ -208,7 +229,7 @@ CSS = """<style>
   background:rgba(193,57,43,.1) !important;transform:translateY(-1px) !important}
 [data-testid="stButton"] button p,[data-testid="stButton"] button span{white-space:pre-line !important}
 
-div[data-testid="stForm"]{background:rgba(255,255,255,.72) !important;
+div[data-testid="stForm"]{background:var(--sup) !important;
   border:1px solid rgba(193,57,43,.2) !important;border-radius:14px !important;
   padding:24px 28px 20px !important;backdrop-filter:blur(10px) !important}
 .q-form-t{font:700 10.5px/1 'JetBrains Mono',monospace;color:var(--tx3);text-transform:uppercase;
@@ -359,9 +380,9 @@ def problema() -> str:
 
 # ══════════════════════════ CÓMO FUNCIONA ══════════════════════════
 def como_funciona() -> str:
-    n = [("var(--petroleo)", "Entrada", "Observatorio Nacional",
+    n = [("var(--pizarra)", "Entrada", "Observatorio Nacional",
           "Monitorea de forma progresiva los sistemas públicos de los 222 municipios."),
-         ("var(--petroleo)", "Entrada", "QUIRA Ciudadana",
+         ("var(--pizarra)", "Entrada", "QUIRA Ciudadana",
           "Incorpora la evidencia que la ciudadanía aporta desde el territorio."),
          ("var(--coral)", "Proceso", "Sistema de inteligencia",
           "Contrasta ambas fuentes contra la norma y reconstruye la cadena."),
@@ -395,7 +416,7 @@ _PRODUCTOS = [
      "—actas, informes, fotografías de obra— y la inteligencia artificial <b>acompaña y "
      "enseña</b>: explica qué acredita cada documento, qué norma lo respalda y cómo encaja en el "
      "mapa de su territorio. No reemplaza al ciudadano: <b>lo fortalece para incidir</b>.",
-     "FASE 1 · EN CONSTRUCCIÓN", "var(--petroleo)"),
+     "FASE 1 · EN CONSTRUCCIÓN", "var(--pizarra)"),
     ("QUIRA Cooperación",
      "Universidades · organismos bilaterales · ONG",
      "Evidencia territorial verificada para investigación, cooperación e inversión basada en "
@@ -435,7 +456,7 @@ def humano() -> str:
     cols = [("var(--coral)", "La máquina encuentra",
              "Procesa volúmenes de documentos que ninguna persona podría revisar, detecta "
              "patrones y señala dónde la evidencia falta o no concuerda."),
-            ("var(--petroleo)", "Las personas deciden",
+            ("var(--pizarra)", "Las personas deciden",
              "Interpretan el contexto, conocen el territorio y validan cada hallazgo. Ninguna "
              "afirmación pública se publica sin ese paso.")]
     return _sec("El método", "Inteligencia aumentada, no automatización ciega",
@@ -489,7 +510,7 @@ def form_header() -> str:
 
 
 def trust_badges() -> str:
-    badges = [("var(--petroleo)", "ACCESO PROTEGIDO", "Credencial cifrada"),
+    badges = [("var(--pizarra)", "ACCESO PROTEGIDO", "Credencial cifrada"),
               ("var(--coral)", "SESIÓN TEMPORAL", "Expira en 60 minutos"),
               ("var(--tx2)", "INTENTOS LIMITADOS", "Bloqueo tras 3 fallos"),
               ("var(--tx2)", "ACTIVIDAD REGISTRADA", "Trazabilidad de accesos")]

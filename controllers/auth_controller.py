@@ -1,5 +1,5 @@
 """
-QUIRA OS — Controller: Acceso  ·  landing v6 "Marfil"  ·  2026-08-06
+QUIRA OS — Controller: Acceso  ·  landing v7 "Papel de plano"  ·  2026-08-06
 La portada EXPLICA (origen · qué es · problema · cómo · ecosistema · método ·
 independencia) y luego deja entrar por una sola puerta: el Observatorio.
 Dylus Lab © 2026
@@ -103,9 +103,9 @@ def run() -> None:
     # ══════════════════════════════════════════════════════════════════════════
     st.markdown(
         '<div style="max-width:900px;margin:26px auto 0;padding:18px 24px;text-align:center;'
-        'border:1px solid rgba(46,92,110,.2);border-radius:12px;'
-        'background:rgba(46,92,110,.05);font-family:Inter,sans-serif">'
-        '<div style="font:400 13.5px/1.7 Inter,sans-serif;color:#6B6057">'
+        'border:1px solid rgba(78,102,116,.26);border-radius:12px;'
+        'background:rgba(78,102,116,.07);font-family:Inter,sans-serif">'
+        '<div style="font:400 13.5px/1.7 Inter,sans-serif;color:#52616B">'
         'Universidades, organismos bilaterales, ONG y equipos de investigación: '
         'la evidencia territorial verificada se abre en la Fase 2. Para conversar antes — '
         # Correo real de Javo (2026-08-05); "acceso@quira.ec" no existía y una dirección
@@ -114,7 +114,7 @@ def run() -> None:
         # expuesto a rastreo automatizado y no se puede retirar de donde ya se copió.
         # El correo basta para abrir conversación; el teléfono se comparte en privado.
         '<a href="mailto:javodesantana@gmail.com" '
-        'style="font:600 11.5px/1 \'JetBrains Mono\',monospace;color:#2E5C6E;'
+        'style="font:600 11.5px/1 \'JetBrains Mono\',monospace;color:#4E6674;'
         'letter-spacing:.03em;text-decoration:none">javodesantana@gmail.com</a>'
         '</div></div>',
         unsafe_allow_html=True,
@@ -128,7 +128,7 @@ def run() -> None:
     st.markdown(
         '<div style="text-align:center;padding:2px 0 4px;'
         "font:400 8px/1 'JetBrains Mono',monospace;"
-        'color:rgba(36,31,28,.12);letter-spacing:.1em">· · ·</div>',
+        'color:rgba(24,35,43,.16);letter-spacing:.1em">· · ·</div>',
         unsafe_allow_html=True,
     )
     _, col_ops, _ = st.columns([4, 1, 4])
