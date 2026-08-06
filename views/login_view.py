@@ -44,15 +44,15 @@ CSS = """<style>
 @keyframes ql-glow {
     0%,100%{filter:drop-shadow(0 0 16px rgba(0,212,255,.38))}
     50%{filter:drop-shadow(0 0 32px rgba(0,212,255,.75))} }
-.ql-brand { font:900 34px/1 'Inter',sans-serif;
-    color:#F0F4FF; letter-spacing:-.03em; margin-bottom:7px; }
-.ql-os { font:600 15px/1.3 'Inter',sans-serif;
-    color:rgba(240,244,255,.72); margin-bottom:6px; }
-.ql-pow { font:500 8px/1 'JetBrains Mono',monospace;
-    color:rgba(0,212,255,.48); letter-spacing:.14em;
-    text-transform:uppercase; margin-bottom:10px; }
-.ql-tagline { font:400 11px/1.5 'Inter',sans-serif;
-    color:rgba(136,146,176,.6); }
+.ql-brand { font:900 46px/1 'Inter',sans-serif;
+    color:#F0F4FF; letter-spacing:-.03em; margin-bottom:9px; }
+.ql-os { font:600 20px/1.3 'Inter',sans-serif;
+    color:rgba(240,244,255,.86); margin-bottom:8px; }
+.ql-pow { font:500 10px/1 'JetBrains Mono',monospace;
+    color:rgba(0,212,255,.55); letter-spacing:.14em;
+    text-transform:uppercase; margin-bottom:13px; }
+.ql-tagline { font:400 14px/1.6 'Inter',sans-serif;
+    color:rgba(150,161,190,.8); }
 
 /* ── CARD-BUTTONS (los 4 cajones) ── */
 [data-testid="stButton"] button {
@@ -65,9 +65,9 @@ CSS = """<style>
     text-align: center !important;
     padding: 26px 16px 22px !important;
     font-family: 'Inter',sans-serif !important;
-    color: rgba(240,244,255,.72) !important;
-    font-size: 11px !important;
-    line-height: 1.65 !important;
+    color: rgba(240,244,255,.84) !important;
+    font-size: 14px !important;
+    line-height: 1.7 !important;
     letter-spacing: .01em !important;
     transition: border-color .2s, background .2s !important;
     display: flex !important;
@@ -178,60 +178,64 @@ div[data-testid="stForm"] button:hover { opacity:.88 !important }
     border-radius:8px; padding:7px 10px;
 }
 .ql-trust-label {
-    font:700 8px/1 'Inter',sans-serif;
+    font:700 11px/1.3 'Inter',sans-serif;
     text-transform:uppercase; letter-spacing:.05em;
 }
-.ql-trust-sub { font:400 8px/1 'Inter',sans-serif; color:#8892B0; }
+.ql-trust-sub { font:400 11px/1.4 'Inter',sans-serif; color:#8892B0; }
 
-/* ── QUÉ ES · las tres negaciones + la cadena madre ── */
-.ql-que { max-width:820px; margin:0 auto 6px; padding:0 20px; text-align:center }
-.ql-no-row { display:flex; flex-wrap:wrap; gap:7px; justify-content:center; margin-bottom:14px }
-.ql-no { font:500 9px/1 'JetBrains Mono',monospace; color:rgba(255,109,128,.55);
-    border:1px solid rgba(255,109,128,.18); border-radius:11px; padding:4px 11px;
-    letter-spacing:.03em; white-space:nowrap }
-.ql-que-t { font:400 13px/1.7 'Inter',sans-serif; color:rgba(216,224,240,.82) }
+/* ── QUÉ ES · las tres negaciones + la cadena madre ──
+   Tipografía subida en toda la sección (Javo · 2026-08-05: "el tamaño de las letras es muy
+   pequeñas, deben ser mucho más grandes").
+   Y las negaciones salen del ROJO: no son advertencias ni errores — son declaraciones de
+   identidad ("QUIRA no es X"). El rojo las leía como alertas. Pasan al cian de marca. */
+.ql-que { max-width:840px; margin:0 auto 6px; padding:0 20px; text-align:center }
+.ql-no-row { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-bottom:18px }
+.ql-no { font:500 13px/1 'JetBrains Mono',monospace; color:rgba(0,212,255,.78);
+    border:1px solid rgba(0,212,255,.26); border-radius:14px; padding:8px 16px;
+    letter-spacing:.02em; white-space:nowrap; background:rgba(0,212,255,.05) }
+.ql-que-t { font:400 16px/1.75 'Inter',sans-serif; color:rgba(224,232,246,.9) }
 .ql-que-t b { color:#F0F4FF; font-weight:700 }
 .ql-cadena { display:flex; flex-wrap:wrap; gap:0; justify-content:center; align-items:center;
-    margin:15px 0 12px }
-.ql-esl { font:600 9.5px/1 'JetBrains Mono',monospace; color:rgba(0,212,255,.62);
-    border:1px solid rgba(0,212,255,.16); border-radius:5px; padding:5px 9px; margin:3px }
-.ql-que-s { font:400 11px/1.65 'Inter',sans-serif; color:rgba(136,146,176,.72) }
-.ql-que-s b { color:rgba(216,224,240,.9) }
+    margin:18px 0 14px }
+.ql-esl { font:600 12.5px/1 'JetBrains Mono',monospace; color:rgba(0,212,255,.75);
+    border:1px solid rgba(0,212,255,.22); border-radius:6px; padding:7px 12px; margin:4px }
+.ql-que-s { font:400 13.5px/1.7 'Inter',sans-serif; color:rgba(150,161,190,.85) }
+.ql-que-s b { color:rgba(224,232,246,.95) }
 
 /* ── CÓMO FUNCIONA ── */
-.ql-flow-t, .ql-eco-t { font:700 9px/1 'JetBrains Mono',monospace; letter-spacing:.16em;
-    text-transform:uppercase; color:rgba(0,212,255,.42); text-align:center; margin:26px 0 12px }
-.ql-flow { display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:8px;
-    max-width:820px; margin:0 auto 4px; padding:0 20px }
-.ql-fin, .ql-fm, .ql-fc { display:flex; flex-direction:column; align-items:center; gap:3px;
-    border:1px solid rgba(255,255,255,.08); border-radius:10px; padding:11px 15px;
+.ql-flow-t, .ql-eco-t { font:700 11.5px/1 'JetBrains Mono',monospace; letter-spacing:.16em;
+    text-transform:uppercase; color:rgba(0,212,255,.6); text-align:center; margin:30px 0 14px }
+.ql-flow { display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:10px;
+    max-width:840px; margin:0 auto 4px; padding:0 20px }
+.ql-fin, .ql-fm, .ql-fc { display:flex; flex-direction:column; align-items:center; gap:4px;
+    border:1px solid rgba(255,255,255,.1); border-radius:11px; padding:14px 19px;
     background:rgba(8,13,30,.6) }
-.ql-fin { gap:5px }
-.ql-fe { font:600 11px/1 'Inter',sans-serif; color:#00E096 }
-.ql-fmt { font:700 12px/1 'Inter',sans-serif; color:#FFB800 }
-.ql-fct { font:700 12px/1.3 'Inter',sans-serif; color:#00D4FF; text-align:center }
-.ql-fl { font:400 8.5px/1.3 'Inter',sans-serif; color:rgba(136,146,176,.6); text-align:center }
-.ql-fa { color:rgba(0,212,255,.3); font-size:15px }
+.ql-fin { gap:7px }
+.ql-fe { font:600 14px/1 'Inter',sans-serif; color:#00E096 }
+.ql-fmt { font:700 15.5px/1 'Inter',sans-serif; color:#FFB800 }
+.ql-fct { font:700 15.5px/1.3 'Inter',sans-serif; color:#00D4FF; text-align:center }
+.ql-fl { font:400 11px/1.4 'Inter',sans-serif; color:rgba(150,161,190,.75); text-align:center }
+.ql-fa { color:rgba(0,212,255,.4); font-size:20px }
 
 /* ── ECOSISTEMA ── */
-.ql-eco-s { font:400 11px/1.6 'Inter',sans-serif; color:rgba(136,146,176,.7);
-    text-align:center; max-width:640px; margin:0 auto 14px; padding:0 20px }
-.ql-prods { display:flex; flex-direction:column; gap:8px; max-width:820px;
+.ql-eco-s { font:400 13.5px/1.65 'Inter',sans-serif; color:rgba(150,161,190,.82);
+    text-align:center; max-width:680px; margin:0 auto 16px; padding:0 20px }
+.ql-prods { display:flex; flex-direction:column; gap:10px; max-width:840px;
     margin:0 auto 4px; padding:0 20px }
-.ql-prod { border:1px solid rgba(255,255,255,.07); border-left:2px solid var(--pc);
-    border-radius:9px; padding:12px 16px; background:rgba(8,13,30,.55) }
-.ql-prod-h { display:flex; align-items:baseline; justify-content:space-between; gap:12px;
-    flex-wrap:wrap; margin-bottom:4px }
-.ql-prod-n { font:700 13px/1.3 'Inter',sans-serif; color:#F0F4FF }
-.ql-prod-e { font:700 7.5px/1 'JetBrains Mono',monospace; letter-spacing:.09em;
-    color:var(--pc); white-space:nowrap; opacity:.85 }
-.ql-prod-d { font:400 10.5px/1.6 'Inter',sans-serif; color:rgba(136,146,176,.82) }
+.ql-prod { border:1px solid rgba(255,255,255,.08); border-left:3px solid var(--pc);
+    border-radius:10px; padding:15px 19px; background:rgba(8,13,30,.55) }
+.ql-prod-h { display:flex; align-items:baseline; justify-content:space-between; gap:14px;
+    flex-wrap:wrap; margin-bottom:6px }
+.ql-prod-n { font:700 16px/1.3 'Inter',sans-serif; color:#F0F4FF }
+.ql-prod-e { font:700 10px/1 'JetBrains Mono',monospace; letter-spacing:.09em;
+    color:var(--pc); white-space:nowrap; opacity:.95 }
+.ql-prod-d { font:400 13px/1.65 'Inter',sans-serif; color:rgba(150,161,190,.88) }
 
 /* ── FOOTER ── */
 .ql-footer {
-    text-align:center; padding:10px 20px 24px;
-    font:400 9px/1.8 'JetBrains Mono',monospace;
-    color:rgba(136,146,176,.18);
+    text-align:center; padding:14px 20px 26px;
+    font:400 11px/1.9 'JetBrains Mono',monospace;
+    color:rgba(136,146,176,.34);
 }
 
 /* Ops ghost — JS agrega .ql-ops-btn */
@@ -254,7 +258,9 @@ button.ql-ops-btn:hover, .ql-ops-section button:hover {
 }
 
 @media(max-width:680px){
-    .ql-brand{font-size:26px} .ql-os{font-size:13px}
+    .ql-brand{font-size:34px} .ql-os{font-size:16px}
+    .ql-no{font-size:11.5px;padding:6px 12px} .ql-que-t{font-size:14px}
+    .ql-prod-n{font-size:14.5px} .ql-prod-d{font-size:12px}
     .ql-hero{padding:30px 16px 18px}
     div[data-testid="stForm"]{padding:18px 14px !important}
     [data-testid="stButton"] button { min-height:150px !important; padding:18px 12px !important; }
