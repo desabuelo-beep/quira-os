@@ -183,6 +183,50 @@ div[data-testid="stForm"] button:hover { opacity:.88 !important }
 }
 .ql-trust-sub { font:400 8px/1 'Inter',sans-serif; color:#8892B0; }
 
+/* ── QUÉ ES · las tres negaciones + la cadena madre ── */
+.ql-que { max-width:820px; margin:0 auto 6px; padding:0 20px; text-align:center }
+.ql-no-row { display:flex; flex-wrap:wrap; gap:7px; justify-content:center; margin-bottom:14px }
+.ql-no { font:500 9px/1 'JetBrains Mono',monospace; color:rgba(255,109,128,.55);
+    border:1px solid rgba(255,109,128,.18); border-radius:11px; padding:4px 11px;
+    letter-spacing:.03em; white-space:nowrap }
+.ql-que-t { font:400 13px/1.7 'Inter',sans-serif; color:rgba(216,224,240,.82) }
+.ql-que-t b { color:#F0F4FF; font-weight:700 }
+.ql-cadena { display:flex; flex-wrap:wrap; gap:0; justify-content:center; align-items:center;
+    margin:15px 0 12px }
+.ql-esl { font:600 9.5px/1 'JetBrains Mono',monospace; color:rgba(0,212,255,.62);
+    border:1px solid rgba(0,212,255,.16); border-radius:5px; padding:5px 9px; margin:3px }
+.ql-que-s { font:400 11px/1.65 'Inter',sans-serif; color:rgba(136,146,176,.72) }
+.ql-que-s b { color:rgba(216,224,240,.9) }
+
+/* ── CÓMO FUNCIONA ── */
+.ql-flow-t, .ql-eco-t { font:700 9px/1 'JetBrains Mono',monospace; letter-spacing:.16em;
+    text-transform:uppercase; color:rgba(0,212,255,.42); text-align:center; margin:26px 0 12px }
+.ql-flow { display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:8px;
+    max-width:820px; margin:0 auto 4px; padding:0 20px }
+.ql-fin, .ql-fm, .ql-fc { display:flex; flex-direction:column; align-items:center; gap:3px;
+    border:1px solid rgba(255,255,255,.08); border-radius:10px; padding:11px 15px;
+    background:rgba(8,13,30,.6) }
+.ql-fin { gap:5px }
+.ql-fe { font:600 11px/1 'Inter',sans-serif; color:#00E096 }
+.ql-fmt { font:700 12px/1 'Inter',sans-serif; color:#FFB800 }
+.ql-fct { font:700 12px/1.3 'Inter',sans-serif; color:#00D4FF; text-align:center }
+.ql-fl { font:400 8.5px/1.3 'Inter',sans-serif; color:rgba(136,146,176,.6); text-align:center }
+.ql-fa { color:rgba(0,212,255,.3); font-size:15px }
+
+/* ── ECOSISTEMA ── */
+.ql-eco-s { font:400 11px/1.6 'Inter',sans-serif; color:rgba(136,146,176,.7);
+    text-align:center; max-width:640px; margin:0 auto 14px; padding:0 20px }
+.ql-prods { display:flex; flex-direction:column; gap:8px; max-width:820px;
+    margin:0 auto 4px; padding:0 20px }
+.ql-prod { border:1px solid rgba(255,255,255,.07); border-left:2px solid var(--pc);
+    border-radius:9px; padding:12px 16px; background:rgba(8,13,30,.55) }
+.ql-prod-h { display:flex; align-items:baseline; justify-content:space-between; gap:12px;
+    flex-wrap:wrap; margin-bottom:4px }
+.ql-prod-n { font:700 13px/1.3 'Inter',sans-serif; color:#F0F4FF }
+.ql-prod-e { font:700 7.5px/1 'JetBrains Mono',monospace; letter-spacing:.09em;
+    color:var(--pc); white-space:nowrap; opacity:.85 }
+.ql-prod-d { font:400 10.5px/1.6 'Inter',sans-serif; color:rgba(136,146,176,.82) }
+
 /* ── FOOTER ── */
 .ql-footer {
     text-align:center; padding:10px 20px 24px;
@@ -261,17 +305,111 @@ button.ql-ops-btn:hover, .ql-ops-section button:hover {
 
 
 def landing_hero() -> str:
+    """La identidad, según CONSTITUCION-001 (raíz del árbol de autoridad).
+
+    La versión anterior decía "Sistema Operativo de Coherencia Institucional" y las tarjetas
+    presentaban a QUIRA como cuatro productos sueltos, uno de ellos interno. Javo (2026-08-05):
+    "es una versión muy muy antigua y no representa nada de lo que tenemos ahora". Se
+    reconstruye sobre la Constitución Institucional y ADR-041."""
     return (
         f'<div class="ql-hero">'
         f'<div class="ql-logo">{QUIRA_SVG}</div>'
-        f'<div class="ql-brand">QUIRA Intelligence</div>'
-        f'<div class="ql-os">Sistema Operativo de Coherencia Institucional</div>'
+        f'<div class="ql-brand">QUIRA</div>'
+        f'<div class="ql-os">Plataforma de Inteligencia Pública</div>'
         f'<div class="ql-pow">Development by Dylus Lab</div>'
         f'<div class="ql-tagline">'
-        f'Observabilidad territorial · Riesgo institucional · Decisión ejecutiva'
+        f'Infraestructura de conocimiento verificable para gobiernos,<br>'
+        f'ciudadanía, academia y cooperación internacional'
         f'</div>'
         f'</div>'
     )
+
+
+def que_es() -> str:
+    """Qué es y qué NO es. Las tres negaciones son las tres reducciones que el propio canon
+    de arranque inducía y que Javo corrigió: auditoría (función menor), observatorio
+    (producto) y software municipal (contra la Tesis: el GAD es sujeto observado)."""
+    noes = "".join(
+        f'<span class="ql-no">{t}</span>' for t in
+        ("no es un software municipal", "no es una auditoría", "no es solo un observatorio"))
+    return (
+        '<div class="ql-que">'
+        f'<div class="ql-no-row">{noes}</div>'
+        '<div class="ql-que-t">QUIRA convierte la evidencia pública dispersa en '
+        '<b>conocimiento verificable</b>. No mide trámites ni obras aisladas: sigue la cadena '
+        'que va de la <b>promesa</b> al <b>territorio</b> —plan, presupuesto, ejecución, '
+        'resultado— y muestra <b>dónde se rompe y por qué</b>.</div>'
+        '<div class="ql-cadena">'
+        + "".join(f'<span class="ql-esl">{e}</span>' for e in
+                  ("Promesa", "Plan", "Presupuesto", "Ejecución", "Resultado", "Territorio"))
+        + '</div>'
+        '<div class="ql-que-s">Cada afirmación se ancla a un documento — o a la ausencia '
+        '<b>documentada</b> de uno. QUIRA no certifica la verdad: certifica qué puede '
+        'comprobar el ciudadano y qué no.</div>'
+        '</div>')
+
+
+def como_funciona() -> str:
+    """Dos entradas · un motor · un núcleo (ADR-041 §3). El motor NO se salta: la primera
+    versión del ADR ponía los productos escribiendo directo al núcleo, contra ADR-023."""
+    return (
+        '<div class="ql-flow-t">Cómo funciona</div>'
+        '<div class="ql-flow">'
+        '<div class="ql-fin">'
+        '<span class="ql-fe">Observatorio</span>'
+        '<span class="ql-fe">Ciudadanía</span>'
+        '<span class="ql-fl">dos entradas de evidencia</span></div>'
+        '<span class="ql-fa">→</span>'
+        '<div class="ql-fm"><span class="ql-fmt">Motor</span>'
+        '<span class="ql-fl">calcula</span></div>'
+        '<span class="ql-fa">→</span>'
+        '<div class="ql-fc"><span class="ql-fct">Centro de Inteligencia Territorial</span>'
+        '<span class="ql-fl">núcleo único · todo converge aquí</span></div>'
+        '</div>')
+
+
+# (fase, clave, nombre, qué hace, estado, color)
+_ECOSISTEMA = [
+    ("1", "obs", "Observatorio Nacional de Integridad Territorial",
+     "Monitorea los 222 municipios del país de forma progresiva. Agentes de inteligencia "
+     "artificial revisan los sistemas públicos —transparencia, contratación, rendición de "
+     "cuentas, portales institucionales— y la evidencia se valida antes de publicarse.",
+     "ACTIVO · producto principal", "#00D4FF"),
+    ("1", "civ", "QUIRA Ciudadana",
+     "La puerta del control social que manda la Constitución. Cualquier persona puede aportar "
+     "documentos que falten y construir solicitudes de acceso a información pública con ayuda "
+     "del sistema. Alcance nacional.",
+     "EN CONSTRUCCIÓN", "#00E096"),
+    ("2", "coop", "QUIRA Cooperación",
+     "Evidencia territorial verificada para universidades, organismos bilaterales y ONG. "
+     "Requiere la cobertura nacional que producen las dos entradas.",
+     "FASE 2", "#7C5CFC"),
+    ("2", "inst", "QUIRA Institucional",
+     "Inteligencia para el propio gobierno local. Llega después, y no antes: el municipio es "
+     "sujeto observado, no cliente.",
+     "FASE 2", "#FFB800"),
+    ("3", "econ", "QUIRA Economic",
+     "Inteligencia económica del territorio: inversión y desarrollo económico local.",
+     "FASE 3", "#8892B0"),
+]
+
+
+def ecosistema() -> str:
+    """Los productos. Operaciones NO aparece: es mantenimiento del ecosistema, no producto
+    (Javo · ADR-041 §2) — y NOMENCLATURA_CANONICA ya prohibía publicarlo en la landing."""
+    filas = ""
+    for fase, k, nombre, desc, estado, col in _ECOSISTEMA:
+        filas += (
+            f'<div class="ql-prod ql-p-{k}" style="--pc:{col}">'
+            f'<div class="ql-prod-h">'
+            f'<span class="ql-prod-n">{nombre}</span>'
+            f'<span class="ql-prod-e">{estado}</span></div>'
+            f'<div class="ql-prod-d">{desc}</div></div>')
+    return (
+        '<div class="ql-eco-t">El ecosistema</div>'
+        '<div class="ql-eco-s">QUIRA es la plataforma. Estos son sus productos — cada uno con '
+        'una misión distinta, todos sobre el mismo núcleo de conocimiento.</div>'
+        f'<div class="ql-prods">{filas}</div>')
 
 
 def form_header() -> str:
@@ -308,8 +446,10 @@ def footer() -> str:
     import streamlit as _st_v
     return (
         '<div class="ql-footer">'
-        'QUIRA Intelligence · Dylus Lab © 2026<br>'
-        '<span style="color:rgba(255,184,0,.2)">Infraestructura de gobernanza pública</span><br>'
+        'QUIRA · Dylus Lab © 2026<br>'
+        # "de gobernanza pública" era casi correcto pero no es lo que dice la Constitución
+        # Institucional: infraestructura de CONOCIMIENTO VERIFICABLE (Art. 1-5).
+        '<span style="color:rgba(255,184,0,.2)">Infraestructura de conocimiento verificable</span><br>'
         '<span style="color:rgba(255,255,255,.18);font-family:monospace;font-size:9px">'
         f'build cc-v2-r2 · 2026-06-11 · st {_st_v.__version__}</span>'
         '</div>'

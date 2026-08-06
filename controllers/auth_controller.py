@@ -9,23 +9,27 @@ import streamlit as st
 from models.auth      import validate_any, AuthError, LockedError, is_locked
 from utils.session    import set_user
 from utils.audit_log  import log_login_ok, log_login_fail, log_lockout
-from views.login_view import CSS, landing_hero, form_header, trust_badges, footer
+from views.login_view import (CSS, landing_hero, que_es, como_funciona, ecosistema,
+                              form_header, trust_badges, footer)
 
 
 def _st_key(name: str) -> str:
     return f"_ql_{name}"
 
 
-# Labels de los 4 cajones — pre-line rendering en el button
-_LABEL_INST = "🏛\n\nQUIRA Institucional\n\nCentro de comando institucional\npara Alcaldía y Holding Municipal."
-_LABEL_CIV  = "🌎\n\nQUIRA Ciudadano\n\nTransparencia territorial y\nseguimiento ciudadano."
-_LABEL_COOP = "📑\n\nQUIRA Cooperación\n\nEvidencia territorial para\ninvestigación y cooperación."
-_LABEL_OPS  = "⚡\n\nQUIRA Operations\n\nMonitoreo institucional en\ntiempo real — En construcción."
+# Acceso al trabajo vivo. La etiqueta pública cambia —antes "QUIRA Institucional", que era
+# justo el error que Javo señaló ("al observatorio entramos por institucional")—; el ruteo
+# interno NO se toca: sigue entrando al ambiente `gov`. Es la distinción producto/ambiente
+# de ADR-041 §2 aplicada: cambia lo que el mundo ve, no la maquinaria.
+_LABEL_ACCESO = "🔭\n\nEntrar al Observatorio\n\nAcceso al Centro de Inteligencia Territorial\nDylus Lab · equipo autorizado"
 
 
 def run() -> None:
     st.markdown(CSS, unsafe_allow_html=True)
     st.markdown(landing_hero(), unsafe_allow_html=True)
+    st.markdown(que_es(), unsafe_allow_html=True)
+    st.markdown(como_funciona(), unsafe_allow_html=True)
+    st.markdown(ecosistema(), unsafe_allow_html=True)
 
     _SEL = _st_key("platform_selected")
     if _SEL not in st.session_state:
@@ -33,29 +37,22 @@ def run() -> None:
     selected = st.session_state[_SEL]
 
     # ══════════════════════════════════════════════════════════════════════════
-    # 4 CAJONES IGUALES — clic = acción directa
+    # ACCESO — un solo punto de entrada real
+    #
+    # Antes había cuatro tarjetas-botón, una de ellas "QUIRA Operations", que
+    # NOMENCLATURA_CANONICA prohíbe expresamente publicar: "OPS no es una plataforma
+    # pública. No aparece como tarjeta en la landing". Operaciones es mantenimiento del
+    # ecosistema, no producto (Javo · ADR-041 §2) — sale de la portada; su acceso sigue
+    # siendo el enlace discreto del pie, que no es una tarjeta.
+    #
+    # Los productos ahora se EXPLICAN en el ecosistema (arriba) en vez de fingir cuatro
+    # accesos donde solo uno existe. Cooperación mantiene su vía de contacto abajo.
     # ══════════════════════════════════════════════════════════════════════════
-    c1, c2, c3, c4 = st.columns(4)
-
-    with c1:
-        if st.button(_LABEL_INST, key="card_inst", use_container_width=True):
+    _, col_acc, _ = st.columns([1, 2, 1])
+    with col_acc:
+        if st.button(_LABEL_ACCESO, key="card_acceso", use_container_width=True):
             st.session_state[_SEL] = "institucional"
             st.rerun()
-
-    with c2:
-        if st.button(_LABEL_CIV, key="card_civ", use_container_width=True):
-            st.session_state[_SEL] = "ciudadano"
-            st.session_state["civic_direct"] = True
-            st.rerun()
-
-    with c3:
-        if st.button(_LABEL_COOP, key="card_coop", use_container_width=True):
-            st.session_state[_SEL] = "cooperacion"
-            st.rerun()
-
-    with c4:
-        # Operations: sin acción — cajón visual, en construcción
-        st.button(_LABEL_OPS, key="card_ops", use_container_width=True, disabled=True)
 
     # ══════════════════════════════════════════════════════════════════════════
     # FORMULARIO DE LOGIN (aparece bajo los cajones cuando INSTITUCIONAL activo)
@@ -95,27 +92,19 @@ def run() -> None:
                         st.warning(str(e))
 
     # ══════════════════════════════════════════════════════════════════════════
-    # COOPERACIÓN: datos de contacto
+    # CONTACTO — vía abierta para quien quiera sumarse antes de la Fase 2
     # ══════════════════════════════════════════════════════════════════════════
-    if selected == "cooperacion":
-        _, col_coop, _ = st.columns([1, 2, 1])
-        with col_coop:
-            st.markdown(
-                '<div style="background:rgba(124,92,252,.06);'
-                'border:1px solid rgba(124,92,252,.15);'
-                'border-radius:12px;padding:18px 22px;text-align:center;'
-                'font-family:Inter,sans-serif;margin-top:8px">'
-                '<div style="font-size:20px;margin-bottom:8px">📑</div>'
-                '<div style="font:700 12px/1.2 Inter,sans-serif;color:#E2E8F0;margin-bottom:6px">'
-                'Acceso para cooperación e investigación</div>'
-                '<div style="font:400 10px/1.6 Inter,sans-serif;color:#8892B0;margin-bottom:12px">'
-                'Academia, ONGs y organismos de cooperación internacional. '
-                'Datos longitudinales verificados.</div>'
-                '<div style="font:600 11px/1 JetBrains Mono,monospace;color:#9B79FF;letter-spacing:.04em">'
-                'acceso@quira.ec</div>'
-                '</div>',
-                unsafe_allow_html=True,
-            )
+    st.markdown(
+        '<div style="max-width:820px;margin:14px auto 0;padding:13px 18px;text-align:center;'
+        'border:1px solid rgba(124,92,252,.14);border-radius:10px;'
+        'background:rgba(124,92,252,.045);font-family:Inter,sans-serif">'
+        '<div style="font:400 10.5px/1.6 Inter,sans-serif;color:#8892B0">'
+        'Universidades, organismos bilaterales, ONG y equipos de investigación: '
+        'la evidencia territorial verificada se abre en la Fase 2. Para conversar antes — '
+        '<span style="font:600 10.5px/1 \'JetBrains Mono\',monospace;color:#9B79FF;'
+        'letter-spacing:.03em">acceso@quira.ec</span></div></div>',
+        unsafe_allow_html=True,
+    )
 
     # ── Trust badges + footer ─────────────────────────────────────────────────
     st.markdown(trust_badges(), unsafe_allow_html=True)

@@ -1,1 +1,11 @@
-{}
+{
+ "dashboard_controller.py": [
+  {
+   "line": 26,
+   "terms": "ICGI",
+   "alt": "Calificacion de gestion",
+   "risk": "ALTO",
+   "snippet": "¿Por qué el ICGI-T bajó de"
+  }
+ ]
+}
