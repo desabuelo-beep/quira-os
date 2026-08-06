@@ -5,8 +5,16 @@ Identidad cerrada (Javo · 2026-08-05/06). Este archivo NO redibuja la marca: co
 SVG aprobado desde `assets/marca/`. Si hace falta cambiar el logo, se cambia el activo.
 
 LA MARCA
-  · Q manteña: espiral cuadrada de dos trazos + chaquira central. Geometría intocable
+  · Q manteña: espiral cuadrada de dos trazos + nodo central. Geometría intocable
     (`assets/marca/_ORIGINAL_APROBADO.svg` es la referencia).
+
+REGISTRO DEL ORIGEN (Javo · 2026-08-06). La sección "origen" NO folcloriza. En español
+moderno «chaquira» significa bisutería: usarla como titular o como metáfora repetida
+—«cada dato es una chaquira»— hace leer QUIRA como proyecto patrimonial y MINUSVALORA el
+dato ante un ministro o un director de banca de desarrollo. La palabra aparece UNA vez,
+como etimología explicada, y el vocabulario de la sección es el de arquitectura de datos:
+unidad de evidencia · cadena verificable · nodo de integridad. El origen manteño se queda
+porque respalda soberanía, no porque decore.
   · Coral Spondylus #C1392B — el color de la concha que da nombre al proyecto.
     Único acento identitario: una marca con un color es más reconocible que con dos.
   · Nombre en Archivo, mayúsculas, tracking amplio: no compite con la Q.
@@ -314,29 +322,33 @@ def landing_hero() -> str:
         f'<div class="q-name">QUIRA</div>'
         f'<div class="q-promesa">EVIDENCIA QUE TRANSFORMA</div>'
         f'<div class="q-cat">INTELIGENCIA PÚBLICA · DYLUS LAB · ECUADOR</div>'
-        f'<div class="q-tag">Infraestructura de <b>conocimiento verificable</b> sobre la gestión '
-        f'del territorio, al servicio de gobiernos, ciudadanía, academia y cooperación '
+        f'<div class="q-tag">Infraestructura de <b>conocimiento verificable</b> para la gestión '
+        f'pública territorial, al servicio de gobiernos, ciudadanía, academia y cooperación '
         f'internacional.</div></div>')
 
 
 # ══════════════════════════ ORIGEN ══════════════════════════
 def origen() -> str:
-    return _sec("El origen", "Una chaquira a la vez",
+    return _sec("El origen", "El estándar de valor territorial",
         '<div class="q-origen">'
-        '<div class="q-quote">QUIRA viene de <em>chaquira</em>, del antiguo dialecto manteño de '
-        'Cancebí: fragmentos de la concha <em>Spondylus</em> con los que los pueblos manteños y '
-        'huancavilcas labraban los collares de su élite.</div>'
-        '<div class="q-txt">Para esos pueblos el <b>Spondylus</b> era reserva de valor e '
-        'intercambio entre territorios — la estructura madre de la que todo se desprende, y de '
-        'la que este laboratorio toma su nombre: spon<b>·DYLUS</b>. Cada fragmento labrado con '
-        'paciencia era una <b>chaquira</b>: la unidad indivisible de valor.<br><br>'
-        'Un collar de chaquiras no era un adorno: era <b>símbolo de autoridad y de acuerdo entre '
-        'comunidades</b>. Aquí cada dato, cada documento y cada aporte ciudadano es una chaquira; '
-        'QUIRA las enhebra hasta formar un <b>collar de integridad para el territorio</b>. '
-        'Ninguna pieza sostiene sola el conjunto, y el conjunto no existe sin cada pieza.<br><br>'
-        'El símbolo que ves arriba es la <b>espiral cuadrada</b> manteña, que los señores de la '
-        'Ciudad de los Cerros reservaban para la autoridad legítima. Es una línea que se recorre '
-        'hasta su origen — y en su centro, la chaquira.</div></div>')
+        '<div class="q-quote">QUIRA toma su nombre de la raíz manteña de Cancebí asociada al '
+        '<em>Spondylus princeps</em>: la estructura de intercambio y reserva de valor sobre la que '
+        'se articulaban los acuerdos entre territorios.</div>'
+        '<div class="q-txt">Para la cultura manteño-huancavilca, la pieza labrada de esa concha '
+        '—la <i>chaquira</i>— no era ornamento: era la <b>unidad indivisible de valor</b>. Un '
+        'collar de esas piezas constituía un <b>instrumento de autoridad y de compromiso entre '
+        'comunidades</b>, y su integridad dependía de que ninguna faltara. De la concha entera '
+        'toma su nombre este laboratorio: spon<b>·DYLUS</b>.<br><br>'
+        'QUIRA traslada esa lógica al entorno digital. Cada documento público, cada registro de '
+        'ejecución presupuestaria y cada aporte ciudadano constituye una <b>unidad de '
+        'evidencia</b>; el sistema las enhebra en una <b>cadena verificable de integridad '
+        'territorial</b>. Ningún dato aislado sostiene el control social, y la trazabilidad del '
+        'Estado no existe sin la suma de todos.<br><br>'
+        'El isotipo integra la <b>espiral cuadrada manteña</b>, geometría que el registro '
+        'arqueológico asocia a quienes ejercían autoridad en la Ciudad de los Cerros. Su trazado '
+        'continuo en ángulo recto representa el <b>recorrido auditable de la evidencia hasta su '
+        'origen</b>; en el núcleo, el nodo central concentra la unidad indivisible de integridad '
+        'del dato.</div></div>')
 
 
 # ══════════════════════════ QUÉ ES ══════════════════════════
@@ -347,18 +359,29 @@ def que_es() -> str:
     return _sec("Qué es", "Conocimiento verificable, no opinión",
         f'<div class="q-nos">{nos}</div>'
         '<p class="q-p">QUIRA convierte <b>evidencia pública dispersa</b> en conocimiento que '
-        'puede comprobarse. No mide trámites ni obras aisladas: sigue la cadena que va de la '
-        '<b>promesa</b> al <b>territorio</b> y muestra dónde se interrumpe.</p>'
+        'puede comprobarse y sostener decisiones. No mide trámites ni obras aisladas: recorre el '
+        '<b>ciclo completo de la gestión pública</b> —del mandato electoral al impacto '
+        'territorial— y muestra dónde se interrumpe la trazabilidad.</p>'
         '<p class="q-p">Cada afirmación se ancla a un documento — o a la ausencia '
         '<b>documentada</b> de uno. QUIRA <b>no sustituye a los órganos de control ni determina '
         'responsabilidades</b>: establece el <b>nivel de verificabilidad</b> de la evidencia '
-        'disponible. Qué existe, qué puede comprobarse y qué permanece sin demostrar.</p>')
+        'disponible. Qué existe, qué puede comprobarse y qué permanece sin demostrar — insumo '
+        'para el monitoreo, la evaluación y la toma de decisiones basada en evidencia.</p>')
 
 
 # ══════════════════════════ PROBLEMA ══════════════════════════
-_CADENA = [("Promesa", "plan de gobierno"), ("Plan", "PDOT"), ("Presupuesto", "asignación"),
-           ("Ejecución", "contratación"), ("Resultado", "bienes y servicios"),
-           ("Territorio", "impacto en la gente")]
+# La cadena madre del canon es PROMESA·PLAN·PRESUPUESTO·EJECUCIÓN·RESULTADO·TERRITORIO
+# (Constitución Ontológica). Aquí se presenta con el vocabulario de la administración
+# pública —el que usan las secretarías de planificación, la banca de desarrollo y los
+# órganos de control—, con el sistema del Estado que custodia cada eslabón. El canon NO
+# cambia: cambia el registro, igual que se dice "participación ciudadana" en superficie y
+# no el nombre interno del índice. (Javo · 2026-08-06.)
+_CADENA = [("Mandato electoral", "plan de trabajo · CNE"),
+           ("Planificación territorial", "PDOT · PNBV"),
+           ("Asignación presupuestaria", "presupuesto codificado"),
+           ("Contratación y ejecución", "PAC · devengado"),
+           ("Bienes y servicios", "resultado entregado"),
+           ("Impacto territorial", "cobertura en el territorio")]
 
 
 def problema() -> str:
@@ -368,14 +391,59 @@ def problema() -> str:
             nodos += ('<span class="q-cut">✕</span>' if i == 3 else '<span class="q-arw">→</span>')
         nodos += (f'<span class="q-link{" on" if i < 3 else ""}">{t}<small>{s}</small></span>')
     return _sec("El problema", "La información existe. La trazabilidad, no siempre",
-        '<p class="q-p">Un compromiso de campaña puede no aparecer en la planificación. La '
-        'planificación puede no reflejarse en el presupuesto. El presupuesto puede ejecutarse sin '
-        'que conste <b>dónde</b> ni <b>sobre quién</b>. Cada eslabón vive en un sistema distinto '
-        'del Estado, y ninguno fue diseñado para hablar con los otros.</p>'
+        '<p class="q-p">Un compromiso inscrito ante la autoridad electoral puede no incorporarse '
+        'al plan de desarrollo. La planificación puede no reflejarse en la asignación '
+        'presupuestaria. El presupuesto puede ejecutarse sin que conste <b>dónde</b> ni '
+        '<b>sobre qué población</b>. Cada eslabón del ciclo de la gestión pública vive en un '
+        '<b>sistema distinto del Estado</b>, y ninguno fue diseñado para interoperar con los '
+        'otros.</p>'
         f'<div class="q-cad">{nodos}</div>'
-        '<p class="q-p">El problema rara vez es la falta de datos: es que <b>la cadena se corta</b> '
-        'en algún punto y nadie puede señalar dónde. QUIRA la reconstruye documento por documento '
-        'y, cuando encuentra el corte, <b>lo nombra</b>.</p>')
+        '<p class="q-p">El problema rara vez es la ausencia de datos: es que <b>la cadena de '
+        'valor público se interrumpe</b> en algún punto y nadie puede señalar dónde. QUIRA la '
+        'reconstruye documento por documento y, cuando encuentra el corte, <b>lo nombra</b> — '
+        'que es la condición para que el monitoreo y la evaluación dejen de depender de la '
+        'declaración de la propia entidad.</p>')
+
+
+# ══════════════════════════ EL MOTOR ══════════════════════════
+def motor() -> str:
+    """El diferenciador que faltaba (Javo · 2026-08-06): QUIRA calcula con un motor
+    DETERMINISTA, no generativo. En 2026 todo proyecto dice «usamos IA»; poder decir que
+    la cifra NO la produce la IA es lo que un evaluador de banca de desarrollo necesita
+    oír, porque es lo que hace la métrica reproducible y auditable.
+
+    Fundamento canónico: ADR-023 (arquitectura de tres niveles, inmutable) y Reglas 1 y 4
+    — «si un número existe en el motor, ningún proceso lo recalcula fuera»."""
+    filas = [("La inteligencia artificial", "#C1392B",
+              "Lee documentos, extrae, clasifica y <b>propone</b> correspondencias. Trabaja "
+              "sobre volúmenes que ninguna persona podría revisar."),
+             ("El motor de cálculo", "#18232B",
+              "<b>No es un modelo de lenguaje.</b> Es un motor matemático determinista: mismas "
+              "entradas, mismo resultado, siempre. Cada indicador tiene su fórmula explícita y "
+              "su fuente declarada."),
+             ("La validación humana", "#4E6674",
+              "Contrasta cada propuesta automatizada contra la fuente documental y la acepta o "
+              "la descarta. Ninguna cifra publicada existe sin ese paso.")]
+    cards = "".join(
+        f'<div class="q-duo-c" style="border-left:3px solid {c}">'
+        f'<div class="q-duo-t" style="color:{c}">{t}</div><div class="q-duo-d">{d}</div></div>'
+        for t, c, d in filas)
+    return _sec("El cálculo", "La cifra no la produce la inteligencia artificial",
+        '<p class="q-p">Conviene precisarlo, porque hoy casi todo sistema declara usar '
+        'inteligencia artificial y eso ha vuelto la afirmación poco informativa. En QUIRA la IA '
+        'cumple una función acotada —<b>leer, extraer y proponer</b>— y <b>ninguna cifra publicada '
+        'proviene de ella</b>.</p>'
+        f'<div class="q-duo" style="grid-template-columns:1fr">{cards}</div>'
+        '<p class="q-p" style="margin-top:16px">La separación no es un detalle de arquitectura: '
+        'es lo que hace la métrica <b>reproducible</b> —un tercero con las mismas fuentes obtiene '
+        'el mismo número— y <b>auditable</b> —cada resultado puede rastrearse hasta su fórmula y '
+        'hasta el documento que lo sostiene—. Un modelo generativo no ofrece ninguna de las dos '
+        'cosas: puede dar respuestas distintas a la misma pregunta y no permite reconstruir cómo '
+        'llegó a ellas.</p>'
+        '<p class="q-cap">Por eso el modelo de cálculo es <b>inspeccionable</b> y sus fórmulas '
+        'permanecen estables: si una cifra cambia, es porque cambió la evidencia — nunca porque '
+        'cambió el modelo. Es el requisito mínimo para que una medición sirva ante un órgano de '
+        'control, una entidad de financiamiento o una revisión académica.</p>')
 
 
 # ══════════════════════════ CÓMO FUNCIONA ══════════════════════════
@@ -406,8 +474,7 @@ _PRODUCTOS = [
      "Evidencia institucional · escala nacional",
      "Monitoreo progresivo de los <b>222 municipios</b> del país, incorporados según su "
      "disponibilidad documental y su ciclo administrativo. Agentes de inteligencia artificial "
-     "revisan los sistemas públicos —transparencia, contratación, rendición de cuentas, portales "
-     "institucionales— y <b>toda captura se valida antes de publicarse</b>.",
+     "revisan los sistemas nacionales de información —transparencia activa, contratación pública, rendición de cuentas, portales institucionales— y <b>toda captura se valida antes de publicarse</b>. Insumo directo para monitoreo, evaluación y fortalecimiento de la capacidad institucional.",
      "FASE 1 · ACTIVO", "var(--coral)"),
     ("QUIRA Ciudadana",
      "CivicTech · evidencia social · capilaridad territorial",
@@ -418,10 +485,13 @@ _PRODUCTOS = [
      "mapa de su territorio. No reemplaza al ciudadano: <b>lo fortalece para incidir</b>.",
      "FASE 1 · EN CONSTRUCCIÓN", "var(--pizarra)"),
     ("QUIRA Cooperación",
-     "Universidades · organismos bilaterales · ONG",
-     "Evidencia territorial verificada para investigación, cooperación e inversión basada en "
-     "datos. Llega después por una razón práctica: <b>su valor es la cobertura nacional</b>, y "
-     "esa cobertura la construyen antes las dos entradas.",
+     "Multilaterales · banca de desarrollo · cooperación bilateral · academia",
+     "Evidencia territorial verificada para <b>organismos multilaterales y banca de desarrollo</b> "
+     "(CAF, BID, Banco Mundial, PNUD), <b>agencias de cooperación bilateral</b> (GIZ, AECID, JICA, "
+     "KOICA), universidades, centros de investigación, fundaciones y organizaciones de la sociedad "
+     "civil. Insumo para inversión basada en evidencia y para gestión por resultados. Llega después "
+     "por una razón práctica: <b>su valor es la cobertura nacional</b>, y esa cobertura la "
+     "construyen antes las dos entradas.",
      "FASE 2", "var(--tx2)"),
     ("QUIRA Institucional",
      "Gobiernos locales · licencia independiente",
@@ -447,18 +517,19 @@ def ecosistema() -> str:
     return _sec("El ecosistema", "Un sistema, varias puertas",
         '<p class="q-p">QUIRA no es un conjunto de aplicaciones independientes: es <b>un solo '
         'cuerpo de conocimiento</b> al que se entra por puertas distintas. Cada producto cumple '
-        'una función propia dentro del mismo ecosistema.</p>'
+        'una función propia dentro del mismo ecosistema, y todos operan sobre la misma base de '
+        'evidencia verificada.</p>'
         f'<div class="q-prods">{filas}</div>')
 
 
 # ══════════════════════════ MÉTODO ══════════════════════════
 def humano() -> str:
     cols = [("var(--coral)", "La máquina encuentra",
-             "Procesa volúmenes de documentos que ninguna persona podría revisar, detecta "
-             "patrones y señala dónde la evidencia falta o no concuerda."),
+             "Procesa volúmenes documentales que ninguna persona podría revisar, detecta patrones "
+             "y señala dónde la evidencia falta o no concuerda entre sistemas."),
             ("var(--pizarra)", "Las personas deciden",
-             "Interpretan el contexto, conocen el territorio y validan cada hallazgo. Ninguna "
-             "afirmación pública se publica sin ese paso.")]
+             "Interpretan el contexto normativo, conocen el territorio y validan cada hallazgo. "
+             "Ninguna afirmación pública se publica sin ese paso.")]
     return _sec("El método", "Inteligencia aumentada, no automatización ciega",
         '<div class="q-duo">' + "".join(
             f'<div class="q-duo-c"><div class="q-duo-t" style="color:{c}">{t}</div>'
@@ -491,11 +562,15 @@ def independencia() -> str:
         'Licenciar herramientas para <b>gestionar lo propio</b> con la evidencia ya publicada, con '
         'soporte de Dylus Lab. Contratarlas <b>no cambia una sola línea</b> de lo que el '
         'Observatorio dice de ese municipio.</div></div></div>'
-        '<p class="q-p">Es la misma distinción de siempre: nadie le paga al instituto de '
-        'estadística para que le cambie el censo, pero cualquiera puede usar herramientas para '
-        'trabajar con esos datos. Aquí igual — <b>la observación es pública e independiente; las '
-        'herramientas de gestión son otra cosa</b>, y separarlas explícitamente es lo que permite '
-        'ofrecer ambas sin que una contamine a la otra.</p>'
+        '<p class="q-p">El principio es conocido en cualquier sistema de información pública: '
+        '<b>la utilidad de una evidencia depende de que pueda verificarse sin que la entidad '
+        'observada intervenga en su producción, evaluación o publicación</b>. La independencia '
+        'metodológica no es una postura: es la condición técnica que hace utilizable el dato.</p>'
+        '<p class="q-p">Con un ejemplo cercano: ningún gobierno local financia al <b>INEC</b> '
+        'para modificar una cifra censal, y sin embargo todos usan esa estadística para planificar '
+        'y para sustentar sus proyectos ante quien los financia. <b>La estadística es independiente; '
+        'las herramientas para trabajar con ella son otra cosa.</b> Separar ambas explícitamente es '
+        'lo que permite ofrecer las dos sin que una contamine a la otra.</p>'
         '<p class="q-cap">Por eso el lenguaje de este sistema es deliberadamente preciso: nunca '
         'dice que alguien incumplió. Dice qué <b>puede</b> comprobarse con los documentos '
         'disponibles y qué <b>no</b>. Y cuando encuentra un corte en la cadena, lo que señala casi '

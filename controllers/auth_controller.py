@@ -11,8 +11,8 @@ from models.auth      import validate_any, AuthError, LockedError, is_locked
 from utils.session    import set_user
 from utils.audit_log  import log_login_ok, log_login_fail, log_lockout
 from views.login_view import (CSS, landing_hero, origen, que_es, problema, como_funciona,
-                              ecosistema, humano, independencia, greca, form_header,
-                              trust_badges, footer)
+                              motor, ecosistema, humano, independencia, greca,
+                              form_header, trust_badges, footer)
 
 
 def _st_key(name: str) -> str:
@@ -32,8 +32,11 @@ def run() -> None:
     # cómo → con qué productos → con qué método → y la aclaración que evita el malentendido.
     # Greca manteña entre bloques: el sistema gráfico secundario. La pirámide
     # escalonada —"la idea de montaña o cerro"— entra aquí, no en el logotipo.
+    # `motor` va justo tras `como_funciona`: primero se ve el flujo, después se
+    # aclara QUIÉN calcula — que es lo que sostiene la reproducibilidad del dato.
     for i, bloque in enumerate((landing_hero, origen, que_es, problema,
-                                como_funciona, ecosistema, humano, independencia)):
+                                como_funciona, motor, ecosistema, humano,
+                                independencia)):
         if i and i % 3 == 0:
             st.markdown(greca(), unsafe_allow_html=True)
         st.markdown(bloque(), unsafe_allow_html=True)
@@ -106,8 +109,13 @@ def run() -> None:
         'border:1px solid rgba(78,102,116,.26);border-radius:12px;'
         'background:rgba(78,102,116,.07);font-family:Inter,sans-serif">'
         '<div style="font:400 13.5px/1.7 Inter,sans-serif;color:#52616B">'
-        'Universidades, organismos bilaterales, ONG y equipos de investigación: '
-        'la evidencia territorial verificada se abre en la Fase 2. Para conversar antes — '
+        # Diferenciado por tipo de actor (Javo · 2026-08-06): "organismos bilaterales" metía
+        # en un mismo saco a la banca de desarrollo, las agencias de cooperación y la
+        # academia, que son interlocutores distintos con mandatos distintos.
+        '<b style="color:#18232B">Organismos multilaterales y banca de desarrollo · agencias de '
+        'cooperación bilateral · universidades y centros de investigación · fundaciones y '
+        'organizaciones de la sociedad civil:</b> la evidencia territorial verificada se abre '
+        'en la Fase 2. Para conversar antes — '
         # Correo real de Javo (2026-08-05); "acceso@quira.ec" no existía y una dirección
         # que rebota en una landing institucional cuesta más que no poner ninguna.
         # NO se publica su teléfono: un número personal en una página pública queda
