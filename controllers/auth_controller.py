@@ -1,5 +1,5 @@
 """
-QUIRA OS — Controller: Acceso  ·  landing v5 "Chaquira"  ·  2026-08-05
+QUIRA OS — Controller: Acceso  ·  landing v6 "Marfil"  ·  2026-08-06
 La portada EXPLICA (origen · qué es · problema · cómo · ecosistema · método ·
 independencia) y luego deja entrar por una sola puerta: el Observatorio.
 Dylus Lab © 2026
@@ -11,7 +11,7 @@ from models.auth      import validate_any, AuthError, LockedError, is_locked
 from utils.session    import set_user
 from utils.audit_log  import log_login_ok, log_login_fail, log_lockout
 from views.login_view import (CSS, landing_hero, origen, que_es, problema, como_funciona,
-                              ecosistema, humano, independencia, form_header,
+                              ecosistema, humano, independencia, greca, form_header,
                               trust_badges, footer)
 
 
@@ -23,15 +23,19 @@ def _st_key(name: str) -> str:
 # justo el error que Javo señaló ("al observatorio entramos por institucional")—; el ruteo
 # interno NO se toca: sigue entrando al ambiente `gov`. Es la distinción producto/ambiente
 # de ADR-041 §2 aplicada: cambia lo que el mundo ve, no la maquinaria.
-_LABEL_ACCESO = "🔭\n\nEntrar al Observatorio\n\nCentro de Inteligencia Territorial · equipo Dylus Lab"
+_LABEL_ACCESO = "Entrar al Observatorio\n\nCentro de Inteligencia Territorial · equipo Dylus Lab"
 
 
 def run() -> None:
     st.markdown(CSS, unsafe_allow_html=True)
     # Orden narrativo: quién soy → de dónde vengo → qué hago → qué problema resuelvo →
     # cómo → con qué productos → con qué método → y la aclaración que evita el malentendido.
-    for bloque in (landing_hero, origen, que_es, problema,
-                   como_funciona, ecosistema, humano, independencia):
+    # Greca manteña entre bloques: el sistema gráfico secundario. La pirámide
+    # escalonada —"la idea de montaña o cerro"— entra aquí, no en el logotipo.
+    for i, bloque in enumerate((landing_hero, origen, que_es, problema,
+                                como_funciona, ecosistema, humano, independencia)):
+        if i and i % 3 == 0:
+            st.markdown(greca(), unsafe_allow_html=True)
         st.markdown(bloque(), unsafe_allow_html=True)
 
     _SEL = _st_key("platform_selected")
@@ -99,9 +103,9 @@ def run() -> None:
     # ══════════════════════════════════════════════════════════════════════════
     st.markdown(
         '<div style="max-width:900px;margin:26px auto 0;padding:18px 24px;text-align:center;'
-        'border:1px solid rgba(110,151,232,.16);border-radius:12px;'
-        'background:rgba(58,98,184,.05);font-family:Inter,sans-serif">'
-        '<div style="font:400 13.5px/1.7 Inter,sans-serif;color:#96A1BE">'
+        'border:1px solid rgba(46,92,110,.2);border-radius:12px;'
+        'background:rgba(46,92,110,.05);font-family:Inter,sans-serif">'
+        '<div style="font:400 13.5px/1.7 Inter,sans-serif;color:#6B6057">'
         'Universidades, organismos bilaterales, ONG y equipos de investigación: '
         'la evidencia territorial verificada se abre en la Fase 2. Para conversar antes — '
         # Correo real de Javo (2026-08-05); "acceso@quira.ec" no existía y una dirección
@@ -110,7 +114,7 @@ def run() -> None:
         # expuesto a rastreo automatizado y no se puede retirar de donde ya se copió.
         # El correo basta para abrir conversación; el teléfono se comparte en privado.
         '<a href="mailto:javodesantana@gmail.com" '
-        'style="font:600 11.5px/1 \'JetBrains Mono\',monospace;color:#9B79FF;'
+        'style="font:600 11.5px/1 \'JetBrains Mono\',monospace;color:#2E5C6E;'
         'letter-spacing:.03em;text-decoration:none">javodesantana@gmail.com</a>'
         '</div></div>',
         unsafe_allow_html=True,
@@ -124,7 +128,7 @@ def run() -> None:
     st.markdown(
         '<div style="text-align:center;padding:2px 0 4px;'
         "font:400 8px/1 'JetBrains Mono',monospace;"
-        'color:rgba(136,146,176,.08);letter-spacing:.1em">· · ·</div>',
+        'color:rgba(36,31,28,.12);letter-spacing:.1em">· · ·</div>',
         unsafe_allow_html=True,
     )
     _, col_ops, _ = st.columns([4, 1, 4])

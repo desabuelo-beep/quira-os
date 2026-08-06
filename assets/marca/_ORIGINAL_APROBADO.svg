@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%" role="img" aria-label="QUIRA Logo">
+  <!-- Fondo Marfil Concha opcional (remover fill o cambiar a 'transparent' según necesidad) -->
+  <rect width="120" height="120" fill="#F4EFE7" rx="8" />
+
+  <g fill="none" stroke="#C1392B" stroke-width="11" stroke-linejoin="miter" stroke-linecap="square">
+    <!-- Trazo exterior y canal interior de la Q Manteña -->
+    <path d="M10 10 L110 10 L110 78 L92 96 L74 78 L74 40 L46 40 L46 74 L64 74" />
+    <path d="M10 10 L10 96 L74 96" />
+  </g>
+
+  <!-- Chaquira Central / Nodo de Datos -->
+  <circle cx="60" cy="57" r="9" fill="#C1392B" />
+</svg>
