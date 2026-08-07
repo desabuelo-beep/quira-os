@@ -336,23 +336,39 @@ def _tab_config() -> None:
 # ══════════════════════════════════════════════════════════════════════════════
 
 def render() -> None:
-    st.markdown("""
-<div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
-    <span style="font-size:1.1rem;font-weight:800;color:#F97316">⚙ Ops</span>
-    <span style="font-size:9px;font-weight:700;color:#F97316;
-                 background:rgba(249,115,22,.12);border:1px solid rgba(249,115,22,.3);
-                 border-radius:4px;padding:1px 6px;letter-spacing:.06em">INTERNO</span>
-    <span style="font-size:10px;color:rgba(255,255,255,.3)">
-        Solo equipo QUIRA · Nunca visible para el municipio
-    </span>
+    """OPERACIONES — mantenimiento técnico del sistema (Javo · 2026-08-06).
+
+    NO es el Observatorio, y conviene dejarlo escrito porque el director los
+    fusionó y estuvo mal: aquí vive el sostenimiento técnico que hace Dylus Lab
+    cuando algo se rompe —cargas, conectores, cache, versiones del motor—. El
+    Observatorio es otra cosa: un instrumento de administración pública cuyos
+    interlocutores son el sector público y la cooperación internacional, y es el
+    PRODUCTO PRINCIPAL (ADR-041 §5.1). Vive en `env_obs.py`.
+
+    Las etiquetas sí salen de la jerga: este ambiente es interno pero sigue
+    siendo una pantalla, y la Regla 2 no distingue."""
+    from utils.css_tokens import C
+    from utils.marca import logo
+
+    st.markdown(f"""
+<div style="display:flex;align-items:center;gap:11px;margin-bottom:6px">
+    <span style="line-height:0">{logo("marfil", 22)}</span>
+    <div>
+      <div style="font-size:14px;font-weight:800;color:{C.V_TX}">Operaciones</div>
+      <div style="font-size:10px;color:{C.V_TX2}">Mantenimiento técnico del
+        sistema · equipo Dylus Lab</div>
+    </div>
+    <span style="margin-left:auto;font:700 9px/1 'JetBrains Mono',monospace;
+                 color:{C.V_TX3};border:1px solid {C.V_BD_FUERTE};border-radius:6px;
+                 padding:4px 9px;letter-spacing:.08em">USO INTERNO</span>
 </div>
     """, unsafe_allow_html=True)
 
     t1, t2, t3, t4, t5 = st.tabs([
-        "⚡ Pipeline",
-        "📦 Snapshots",
-        "📡 Reliability",
-        "📋 Gold Master",
+        "⚡ Procesos",
+        "📦 Cargas",
+        "📡 Confiabilidad de fuentes",
+        "📋 Motor de cálculo",
         "⚙ Configuración",
     ])
 

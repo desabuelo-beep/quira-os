@@ -607,14 +607,17 @@ def render() -> None:
         unsafe_allow_html=True,
     )
 
-    # ── Panel del Observatorio — acceso discreto ──────────────────────────────
-    # Va en el pie y no como área de gestión ni como lente: Operaciones es
-    # mantenimiento del ecosistema, NO producto (ADR-041 §2). Ponerlo entre los
-    # 13 dominios lo convertiría en uno, que es justo lo que el ADR niega.
+    # ── Salida al Observatorio — acceso discreto ──────────────────────────────
+    # No abre un módulo dentro del Centro: CAMBIA DE AMBIENTE. El Observatorio es
+    # donde la evidencia se genera y el Centro donde se lee; en el ciclo de
+    # ADR-041 §5.1 el Observatorio va antes, así que no puede colgar del Centro
+    # como si fuera una de sus secciones. El botón es discreto porque Operaciones
+    # es mantenimiento del ecosistema, no producto (ADR-041 §2).
     _, col_panel, _ = st.columns([3.4, 1.2, 3.4])
     with col_panel:
-        if st.button("◷ Estado de la operación", key="btn_panel_obs",
+        if st.button("◷ Ir al Observatorio", key="btn_panel_obs",
                      use_container_width=True,
-                     help="Panel del Observatorio — qué hay capturado, qué falta "
-                          "y qué se debe. Uso interno del equipo."):
-            _nav("panel_obs")
+                     help="Estado de la operación — qué hay capturado, qué falta "
+                          "y qué se debe."):
+            st.session_state["page"] = "obs"
+            st.rerun()

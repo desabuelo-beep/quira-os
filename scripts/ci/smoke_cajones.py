@@ -27,7 +27,12 @@ sys.path.insert(0, str(_RAIZ))
 # renderizó de verdad. Sin ella el chequeo daba falsos OK — "no lanzó excepción" es
 # compatible con "el router devolvió al inicio en silencio", que es exactamente el
 # bug que este archivo destapó el 2026-08-05. Un test que no distingue no sirve.
-DESTINOS: list[tuple[str, str, str]] = [
+#
+# Un 4º campo opcional declara CON QUÉ ROLES se prueba el destino. Sin él se
+# usan los dos de `ROLES`. Los ambientes propios lo necesitan porque el rol
+# legacy `tecnico` no tiene acceso a ellos: probarlos con ese rol no comprobaba
+# nada — el router lo desviaba al Centro y el fallo era del test, no del código.
+DESTINOS: list[tuple] = [
     ("inicio", "Centro de Inteligencia Territorial", "Centro de Inteligencia Territorial"),
     ("qinv_d01", "d01 · Planificación Estratégica", "Planificación"),
     ("qinv_d02", "d02 · Presupuesto & Financiamiento", "capacidad financiera"),
@@ -36,10 +41,12 @@ DESTINOS: list[tuple[str, str, str]] = [
     ("qinv_d09", "d09 · Rendición de Cuentas", "rendición"),
     ("transparencia", "d07 · Transparencia", "ransparencia"),
     ("territorio", "d10 · Territorio & Cobertura", "erritorio"),
-    # La huella del panel es una etiqueta que solo se emite si las cifras se
-    # contaron contra el registro: si el panel se pintara sin datos, el título
-    # saldría igual pero esta sección caería en «sin dato».
-    ("panel_obs", "Panel del Observatorio", "Consultables en el portal"),
+    # El Observatorio es un AMBIENTE, no un módulo del Centro. La huella es una
+    # etiqueta que solo se emite si las cifras se contaron contra el registro: si
+    # el panel se pintara sin datos, el título saldría igual pero la sección
+    # caería en «sin dato».
+    ("env:obs", "Observatorio · panel", "Consultables en el portal", ("observatorio",)),
+    ("env:ops", "Operaciones · mantenimiento", "Mantenimiento técnico", ("observatorio",)),
 ]
 
 # `observatorio` es el rol vigente (ADR-041): único con credencial y con acceso pleno.
@@ -50,6 +57,11 @@ ROLES = ("observatorio", "tecnico")
 
 
 def _correr(modulo: str, rol: str = "tecnico", timeout: int = 120):
+    """Monta la app con la sesión ya autenticada y navega al destino.
+
+    Un destino con prefijo `env:` cambia de AMBIENTE en vez de módulo — el
+    Observatorio no cuelga del Centro, así que probarlo exige entrar por su
+    propia puerta."""
     from streamlit.testing.v1 import AppTest
     at = AppTest.from_file(str(_RAIZ / "app.py"), default_timeout=timeout)
     at.session_state["authenticated"] = True
@@ -57,15 +69,21 @@ def _correr(modulo: str, rol: str = "tecnico", timeout: int = 120):
     at.session_state["rol"] = rol
     at.session_state["login_time"] = time.time()
     at.session_state["session_id"] = "sess_smoke"
-    at.session_state["page"] = "gov"
-    at.session_state["gov_module"] = modulo
+    if modulo.startswith("env:"):
+        at.session_state["page"] = modulo.split(":", 1)[1]
+    else:
+        at.session_state["page"] = "gov"
+        at.session_state["gov_module"] = modulo
     return at.run()
 
 
 def _verificar(modulo: str, huella: str, rol: str) -> tuple[bool, str]:
     """(pasa, detalle). Tres condiciones: sin excepción, sin `st.error` —así reporta el
-    router un módulo caído sin tumbar la app— y con la huella del cajón en el HTML."""
-    at = _correr(modulo, rol=rol)
+    router un módulo caído sin tumbar la app— y con la huella del cajón en el HTML.
+
+    Operaciones monta el centro de control completo y tarda más de dos minutos,
+    así que se le da margen: el timeout medía la lentitud, no un fallo."""
+    at = _correr(modulo, rol=rol, timeout=300 if modulo == "env:ops" else 120)
     if at.exception:
         return False, f"EXCEPCIÓN: {str(at.exception[0].message)[:80]}"
     errores = [e.value for e in at.error]
@@ -83,8 +101,9 @@ def main(argv: list[str]) -> int:
     print("  SMOKE · la app monta, entra al cajón y lo RENDERIZA · roles: " + " · ".join(ROLES))
     print("=" * 72)
     fallos = 0
-    for modulo, nombre, huella in destinos:
-        for rol in ROLES:
+    for destino in destinos:
+        modulo, nombre, huella = destino[0], destino[1], destino[2]
+        for rol in (destino[3] if len(destino) > 3 else ROLES):
             t0 = time.time()
             try:
                 ok, detalle = _verificar(modulo, huella, rol)

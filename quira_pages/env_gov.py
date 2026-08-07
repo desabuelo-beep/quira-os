@@ -410,24 +410,15 @@ def _render_transparencia_d07() -> None:
         st.error(f"Módulo Transparencia Institucional no disponible: {e}")
 
 
-def _render_panel_observatorio() -> None:
-    """Panel del Observatorio (ADR-041 §5.1) — estado de la OPERACIÓN.
-
-    No es una de las 13 áreas de gestión ni una de las 4 lentes: Operaciones es
-    mantenimiento del ecosistema, no producto (ADR-041 §2). Por eso se entra por
-    el pie del Centro y no ocupa un lugar en el menú."""
-    try:
-        from quira_pages.p_panel_observatorio import render as _r
-        _r()
-    except Exception as e:  # noqa: BLE001
-        st.error(f"Panel del Observatorio no disponible: {e}")
-
+# El Panel del Observatorio NO se rutea desde aquí. Vive en su propio ambiente
+# (`env_ops`, portada) porque es donde la evidencia SE GENERA, mientras que este
+# ambiente es donde SE LEE. Tenerlo también como módulo de gov abría dos caminos
+# al mismo sitio y obligaba a elegir cuál era el bueno.
 
 # ── Mapa key → (renderer, label) ─────────────────────────────────────────────
 _MODULE_RENDER: dict[str, tuple] = {
     # Sección Ejecutiva
     "inicio":       (_render_inicio,       "Centro de Inteligencia Territorial"),
-    "panel_obs":    (_render_panel_observatorio, "Panel del Observatorio"),
     "situacion":    (_render_situacion,    "Situación Institucional"),
     # Etiquetas SIN jerga interna (Regla 2): eran "Metas PDOT · IFE" y "Alertas y Riesgos
     # SAT" — las dos únicas fugas ALTO que el auditor de frontera marcaba en este archivo.

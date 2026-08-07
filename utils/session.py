@@ -140,8 +140,16 @@ def is_gov_user() -> bool:
 
 
 def is_ops_user() -> bool:
-    """True para roles con acceso a OPS: Operador, Administrador."""
-    return _rol() in ("operador", "administrador")
+    """True para roles con acceso al Observatorio — el ambiente de trabajo del
+    equipo Dylus Lab.
+
+    `observatorio` FALTABA aquí (2026-08-06). Cuando los roles se unificaron en
+    uno solo, las otras seis funciones de este módulo se actualizaron y esta no,
+    de modo que el único rol existente no podía entrar: `app.py` rutea con
+    `"ops" if is_ops_user() else "gov"`, así que el acceso caía siempre en el
+    Centro y el ambiente quedaba inalcanzable — incluido el botón del pie de la
+    portada."""
+    return _rol() in (_OBSERVATORIO, "operador", "administrador")
 
 
 def is_viewer() -> bool:

@@ -230,6 +230,7 @@ except Exception:
 from quira_pages.env_gov    import render as _render_gov
 from quira_pages.env_civic  import render as _render_civic
 from quira_pages.env_impact import render as _render_impact
+from quira_pages.env_obs    import render as _render_obs
 from quira_pages.env_ops    import render as _render_ops
 
 
@@ -238,48 +239,67 @@ from quira_pages.env_ops    import render as _render_ops
 # GOV / Civic / Impact: todos los roles autenticados.
 # Ops: solo Operator / Admin.
 
+# Etiquetas y colores al sistema v1.1 (2026-08-06). Las anteriores publicaban
+# «QUIRA Institucional» —el nombre retirado de la portada— y la paleta previa.
+from utils.css_tokens import C as _C
+
 ENVIRONMENTS = {
     "gov": {
-        "label":       "GOV",
+        "label":       "Centro",
         "icon":        "🏛",
         "render":      _render_gov,
-        # Ejecutivo + Directivo: usuarios del producto. Administrador: verificación cruzada.
-        "roles":       ["Ejecutivo", "Directivo", "Administrador"],
-        "desc":        "QUIRA Institucional",
-        "badge_color": "#00D4FF",
+        "roles":       ["Observatorio", "Ejecutivo", "Directivo", "Administrador"],
+        "desc":        "Centro de Inteligencia Territorial",
+        "badge_color": _C.ACENTO,
         "ops_only":    False,
     },
     "civic": {
-        "label":       "Civic",
+        "label":       "Ciudadana",
         "icon":        "🌎",
         "render":      _render_civic,
-        "roles":       ["Ejecutivo", "Directivo", "Operador", "Administrador"],
-        "desc":        "QUIRA Ciudadano · Fase 3",
-        "badge_color": "#22C55E",
+        "roles":       ["Observatorio", "Ejecutivo", "Directivo", "Operador", "Administrador"],
+        "desc":        "QUIRA Ciudadana · control social",
+        "badge_color": _C.V_TX3,
         "ops_only":    False,
     },
     "impact": {
-        "label":       "Impact",
+        "label":       "Cooperación",
         "icon":        "📑",
         "render":      _render_impact,
-        "roles":       ["Ejecutivo", "Directivo", "Operador", "Administrador"],
-        "desc":        "QUIRA Cooperación · Placeholder",
-        "badge_color": "#7C5CFC",
+        "roles":       ["Observatorio", "Ejecutivo", "Directivo", "Operador", "Administrador"],
+        "desc":        "Cooperación internacional · Fase 2",
+        "badge_color": _C.V_TX3,
+        "ops_only":    False,
+    },
+    # EL OBSERVATORIO — producto principal (ADR-041 §5.1), ambiente propio.
+    # Va SEPARADO de Operaciones (Javo · 2026-08-06, corrigiendo al director, que
+    # los había fusionado). No son el mismo concepto con dos nombres:
+    #   · Observatorio → instrumento de administración pública y desarrollo. Sus
+    #     interlocutores son el sector público, los multilaterales y la
+    #     cooperación. Lo que se ve aquí se enseña.
+    #   · Operaciones  → mantenimiento técnico, para cuando algo se rompe.
+    # Fusionarlos degradaba el producto principal a herramienta de soporte.
+    "obs": {
+        "label":       "Observatorio",
+        "icon":        "◷",
+        "render":      _render_obs,
+        "roles":       ["Observatorio", "Ejecutivo", "Directivo", "Administrador"],
+        "desc":        "Observatorio de Integridad Territorial",
+        "badge_color": _C.ACENTO,
         "ops_only":    False,
     },
     "ops": {
-        "label":       "OPS",
+        "label":       "Operaciones",
         "icon":        "⚙",
         "render":      _render_ops,
-        # Operador + Administrador: equipo Dylus Lab. Solo ellos ven este ambiente.
-        "roles":       ["Operador", "Administrador"],
-        "desc":        "Operaciones — infraestructura crítica",
-        "badge_color": "#F97316",
+        "roles":       ["Observatorio", "Operador", "Administrador"],
+        "desc":        "Mantenimiento técnico · equipo Dylus Lab",
+        "badge_color": _C.V_TX3,
         "ops_only":    True,
     },
 }
 
-_ENV_ORDER = ["gov", "civic", "impact", "ops"]
+_ENV_ORDER = ["gov", "obs", "civic", "impact", "ops"]
 
 # Mapa legacy: cualquier ruta del Sprint 1-2 → su ambiente correcto
 _LEGACY: dict[str, str] = {
@@ -325,8 +345,16 @@ _LEGACY: dict[str, str] = {
 
 
 def _accessible() -> set[str]:
-    rol = st.session_state.get("rol", "")
-    return {k for k, v in ENVIRONMENTS.items() if rol in v.get("roles", [])}
+    """Ambientes que el rol activo puede abrir.
+
+    La comparación es sin distinguir mayúsculas a propósito: la sesión guarda el
+    nombre VISIBLE del rol («Observatorio») mientras que el resto del sistema
+    —y las pruebas— usan la clave en minúsculas. Con la comparación literal,
+    `observatorio` no coincidía con ninguna entrada y el router caía siempre en
+    su rama de emergencia, de modo que el camino real nunca se ejercitaba."""
+    rol = str(st.session_state.get("rol", "")).strip().lower()
+    return {k for k, v in ENVIRONMENTS.items()
+            if any(rol == str(r).lower() for r in v.get("roles", []))}
 
 
 # ── SIDEBAR ───────────────────────────────────────────────────────────────────
@@ -334,26 +362,26 @@ with st.sidebar:
     rol       = st.session_state.get("rol", "")
     rol_emoji = st.session_state.get("rol_emoji", "")
 
-    # ── Identidad QUIRA Intelligence ─────────────────────────────────────────
+    # ── Identidad ────────────────────────────────────────────────────────────
+    # La MARCA, no un glifo: decía «⬡ QUIRA Intelligence» con un hexágono
+    # tipográfico. Y bajo él, «GOV · CIVIC · IMPACT · OPS» —nombres internos de
+    # los ambientes— que la frontera de lenguaje no admite en pantalla.
+    from utils.marca import logo as _logo_marca
     st.markdown(f"""
-<div style="padding:16px 0 12px">
-    <div style="font-size:1.4rem;font-weight:900;color:#00D4FF;letter-spacing:-0.03em;
-                margin-bottom:1px">⬡ QUIRA Intelligence</div>
-    <div style="font-size:9px;color:rgba(255,255,255,.25);letter-spacing:.04em;margin-top:1px">
-        GOV · CIVIC · IMPACT · OPS</div>
-    <div style="display:flex;align-items:center;gap:6px;margin-top:3px">
-        <span style="font-size:9px;font-weight:700;color:#00D4FF;background:rgba(0,212,255,0.12);
-                     border:1px solid rgba(0,212,255,0.25);border-radius:4px;
-                     padding:1px 6px;letter-spacing:.06em">INTELLIGENCE</span>
-        <span style="font-size:9px;color:rgba(255,255,255,0.3);letter-spacing:.05em">
-            {APP_VERSION} · {GAD_NOMBRE}</span>
+<div style="padding:14px 0 12px">
+    <div style="display:flex;align-items:center;gap:10px">
+      <span style="line-height:0">{_logo_marca("marfil", 26)}</span>
+      <span style="font:600 16px/1 Archivo,Inter,sans-serif;letter-spacing:.19em;
+                   color:{_C.V_TX}">QUIRA</span>
     </div>
+    <div style="font-size:9px;color:{_C.V_TX3};letter-spacing:.05em;margin-top:7px">
+        {APP_VERSION} · {GAD_NOMBRE}</div>
 </div>
-<div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);
+<div style="background:{_C.VOLCAN_UP};border:1px solid {_C.V_BD};
             border-radius:10px;padding:10px 12px;margin-bottom:16px">
-    <div style="font-size:10px;color:rgba(255,255,255,0.4);margin-bottom:3px">SESIÓN ACTIVA</div>
-    <div style="font-size:12px;font-weight:700;color:#E2E8F0">{rol_emoji} {rol}</div>
-    <div style="font-size:9px;color:rgba(255,255,255,0.3);margin-top:1px">{GAD_NOMBRE}</div>
+    <div style="font-size:10px;color:{_C.V_TX3};margin-bottom:3px">SESIÓN ACTIVA</div>
+    <div style="font-size:12px;font-weight:700;color:{_C.V_TX}">{rol_emoji} {rol}</div>
+    <div style="font-size:9px;color:{_C.V_TX3};margin-top:1px">{GAD_NOMBRE}</div>
 </div>
     """, unsafe_allow_html=True)
 
@@ -393,11 +421,13 @@ if page_key in _LEGACY:
     page_key = _LEGACY[page_key]
     st.session_state["page"] = page_key
 
-# Resolver acceso — fallback según el rol
+# Resolver acceso — ante un destino inválido, el Centro; si tampoco, el primero
+# accesible. Antes el fallback era `"ops" if is_ops_user() else "gov"`, y desde
+# que el rol único alcanza ambos ambientes eso habría mandado al panel de
+# operación a quien pidiera cualquier ruta rota. El Centro es el destino natural.
 acc = _accessible()
 if page_key not in acc or page_key not in ENVIRONMENTS:
-    from utils.session import is_ops_user
-    page_key = "ops" if is_ops_user() else "gov"
+    page_key = "gov" if "gov" in acc else next(iter(sorted(acc)), "gov")
     st.session_state["page"] = page_key
 
 log_page(page_key)

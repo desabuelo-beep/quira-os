@@ -38,9 +38,28 @@ def _db_mode() -> str:
         return "sqlite"
 
 
+# El pooler de Supabase expone dos puertos y NO son intercambiables:
+#   5432 → session mode. Aquí ACEPTA la conexión y la cierra sin responder, y
+#          psycopg2 se queda esperando ~20 s antes de rendirse.
+#   6543 → transaction mode. Conecta en ~4 s.
+# La URI guardada apuntaba a 5432, así que cada consulta costaba 20 segundos y
+# fallaba igual: por eso el ambiente de Operaciones tardaba media hora en montar
+# —bastaban unas pocas consultas encadenadas—. Se normaliza aquí, en el único
+# punto por el que la aplicación abre conexiones, para que un secreto mal
+# apuntado no vuelva a colgar la interfaz.
+_PUERTO_POOLER = ":6543/"
+_PUERTO_SESION = ":5432/"
+
+# Sin esto, una base inalcanzable congela la pantalla en vez de dar un error.
+_TIMEOUT_CONEXION = 8
+
+
 def _supabase_uri() -> str:
     import streamlit as st
-    return st.secrets["database"]["supabase_uri"]
+    uri = str(st.secrets["database"]["supabase_uri"])
+    if ".pooler.supabase.com" in uri and _PUERTO_SESION in uri:
+        uri = uri.replace(_PUERTO_SESION, _PUERTO_POOLER)
+    return uri
 
 
 # ── CURSOR UNIFICADO ──────────────────────────────────────────────────────────
@@ -99,7 +118,8 @@ class DbConn:
         if self.mode == "supabase":
             import psycopg2
             import psycopg2.extras
-            self._raw = psycopg2.connect(_supabase_uri())
+            self._raw = psycopg2.connect(_supabase_uri(),
+                                         connect_timeout=_TIMEOUT_CONEXION)
             self._cf  = psycopg2.extras.RealDictCursor
         else:
             self._raw = sqlite3.connect(DB_PATH)
@@ -876,7 +896,20 @@ def db_info() -> dict:
 
 
 # ── AUTO-INIT ─────────────────────────────────────────────────────────────────
+# SOLO en SQLite. Contra Supabase esto ejecutaba las trece migraciones en cada
+# arranque —y por ser código a nivel de módulo, con solo IMPORTAR el archivo—:
+# 51 segundos antes de que la aplicación mostrara nada. Con la URI apuntando al
+# puerto equivocado, cada migración sumaba además sus 20 segundos de conexión
+# fallida, y el ambiente de Operaciones tardaba media hora en abrir.
+#
+# En SQLite el init es local y cuesta milisegundos, así que se conserva: es lo
+# que permite que un clon nuevo del repositorio funcione sin preparar nada.
+#
+# Contra Supabase el esquema ya existe y migrar es una operación DELIBERADA, no
+# algo que deba ocurrir al abrir una pantalla. Cuando haya que aplicar una
+# migración nueva se llama `init_db()` explícitamente.
 try:
-    init_db()
+    if _db_mode() != "supabase":
+        init_db()
 except Exception:
-    pass   # Fallback: no bloquear el arranque si Supabase no está disponible aún
+    pass   # Un fallo de esquema local no puede impedir el arranque.
