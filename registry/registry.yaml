@@ -3,8 +3,8 @@
 # GENERADO por scripts/governance/build_registry.py · NO editar a mano.
 # Autoridad: Carta de Gobernanza Art. 1 (Derivación) y Art. 3 (describe, no gobierna).
 # ═══════════════════════════════════════════════════════════════════
-generado: 2026-08-02
-total_activos: 117
+generado: 2026-08-07
+total_activos: 119
 huerfanos: 0   # sin bloque authority: → no pueden promoverse a vigente (Art. 1)
 
 componentes:
@@ -19,7 +19,7 @@ componentes:
     kind: normative
     level: 1
     path: governance/BOOT.md
-    hash: a27dc839cf3c1ce6
+    hash: 570d30ed18d7e1bc
     authority_declared: true
     parent: GOVERNANCE-001
   - id: GOVERNANCE-001
@@ -383,7 +383,7 @@ componentes:
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-024_Inversion_Arquitectura_QUIRA_Radar_Nacional.md
-    hash: a6489294b812fd99
+    hash: 430d662753edba7e
     authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_ADR-ADR-025_Principio_Alertas_QUIRA_
@@ -498,6 +498,20 @@ componentes:
     hash: 86bf149bac86aaa7
     authority_declared: true
     parent: GOVERNANCE-001
+  - id: ADR-041
+    kind: canon_adr
+    level: 2
+    path: docs/adr/ADR-041_Arquitectura_de_Productos_QUIRA.md
+    hash: d17fa971083e6b12
+    authority_declared: true
+    parent: CONSTITUCION-001
+  - id: ADR-042
+    kind: canon_adr
+    level: 2
+    path: docs/adr/ADR-042_Consola_de_Monitoreo.md
+    hash: ae2be5cb7317cfd4
+    authority_declared: true
+    parent: ADR-041
   - id: CANON_PCD-PCD-D01_Planificacion
     kind: canon_pcd
     level: 2
@@ -712,7 +726,7 @@ componentes:
     kind: domain_catalog
     level: 3
     path: data/d08/catalogo_d08_v1.0.0.yaml
-    hash: 08ba58a3d62efc56
+    hash: 403cc3f381084ee8
     authority_declared: true
     parent: GOVERNANCE-001
   - id: DOMAIN_CATALOG-catalogo_d09_v1.0.0

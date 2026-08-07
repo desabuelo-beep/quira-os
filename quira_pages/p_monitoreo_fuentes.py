@@ -24,11 +24,32 @@ captura. Lo que SÍ pertenece a cada dominio es la cobertura de SUS datos —qu�
 periodo abarcan y cuándo se actualizaron—, y ahí es donde debe verse.
 
 ────────────────────────────────────────────────────────────────────────────────
-LOS SILOS — no es solo Transparencia
+LOS SILOS — y la relación con los dominios NO es uno a uno
 ────────────────────────────────────────────────────────────────────────────────
 La consola vigila las fuentes públicas que alimentan a TODOS los dominios, no a
-uno. Cada silo declara qué dominios alimenta y si hay con qué capturarlo: un
-silo sin conector se muestra como pendiente, nunca como si estuviera listo.
+uno. Y la correspondencia es de muchos a muchos: una fuente aporta evidencia a
+varios dominios, y un dominio necesita evidencia de varias fuentes. Escribirlo
+como «SERCOP → d02» sería tratar el sistema como un conjunto de raspadores con
+destino fijo; lo que lo hace una infraestructura de conocimiento es justamente
+que las fuentes se cruzan.
+
+Un silo sin capturador se muestra pendiente, nunca como si estuviera listo.
+
+────────────────────────────────────────────────────────────────────────────────
+DÓNDE DESEMBOCA LA EVIDENCIA — dos universos, un contrato
+────────────────────────────────────────────────────────────────────────────────
+No todo converge en el Gold Master. ADR-023 es explícito: «Excel = motor ·
+Corpus = evidencia verificable del motor», y la MATRIZ_CANONICA es el contrato
+semántico entre ambos — «la tabla de correspondencia entre el universo Excel y
+el universo documental».
+
+  · La evidencia DOCUMENTAL capturada vive en el corpus y en el grafo.
+  · Las MÉTRICAS las calcula el Gold Master, y solo él.
+  · La MATRIZ_CANONICA es lo que impide que sean dos mundos.
+
+Importa para esta consola porque decide dónde deja lo que captura: un documento
+del portal no «entra al Gold Master», entra al corpus con su huella; lo que
+llega al motor son los insumos numéricos que ya estaban previstos en la matriz.
 
 ────────────────────────────────────────────────────────────────────────────────
 DOCTRINA
@@ -78,6 +99,12 @@ _MESES = ("E", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D")
 # `conector` apunta al módulo que sabe hablar con la fuente. Si no existe, el
 # silo se muestra como pendiente: declarar la falta es el trabajo, fingir que
 # está listo sería lo contrario de lo que hace este sistema.
+#
+# `aporta_a` NO es «pertenece a». Es la lista de dominios a los que esa fuente
+# puede aportar evidencia, y varias fuentes concurren sobre el mismo dominio —
+# el mandato electoral solo se puede contrastar cruzando CNE con planificación y
+# con lo efectivamente contratado, por ejemplo. Cada dominio decide qué evidencia
+# admite; la consola solo dice de dónde puede venir.
 _SILOS: list[dict[str, Any]] = [
     {
         "id": "transparencia",
@@ -88,7 +115,7 @@ _SILOS: list[dict[str, Any]] = [
                "cumple: se lee ese registro sin pedirle nada al GAD.",
         "conector": "app/connectors/dpe.py",
         "herramienta": "scripts/rc_scout.py",
-        "dominios": ["d07 Transparencia"],
+        "dominios": ["d07 Transparencia", "d02 Presupuesto", "d09 Rendición"],
         "cadencia": "mensual",
     },
     {
@@ -99,7 +126,7 @@ _SILOS: list[dict[str, Any]] = [
                "planificado contra lo efectivamente contratado.",
         "conector": "app/connectors/sercop.py",
         "herramienta": None,
-        "dominios": ["d02 Presupuesto", "d05 Holding"],
+        "dominios": ["d02 Presupuesto", "d05 Holding", "d01 Planificación"],
         "cadencia": "mensual",
     },
     {
@@ -110,7 +137,7 @@ _SILOS: list[dict[str, Any]] = [
                "ante el consejo de participación.",
         "conector": "app/connectors/cpccs.py",
         "herramienta": "scripts/fetch_rdc_cpccs.py",
-        "dominios": ["d09 Rendición de Cuentas"],
+        "dominios": ["d09 Rendición de Cuentas", "d08 Participación"],
         "cadencia": "anual",
     },
     {
@@ -122,7 +149,7 @@ _SILOS: list[dict[str, Any]] = [
                "planificación.",
         "conector": None,
         "herramienta": None,
-        "dominios": ["d03 Mandato electoral"],
+        "dominios": ["d03 Mandato electoral", "d01 Planificación"],
         "cadencia": "por período",
     },
     {
@@ -133,7 +160,7 @@ _SILOS: list[dict[str, Any]] = [
                "por ningún registro central.",
         "conector": None,
         "herramienta": None,
-        "dominios": ["varios"],
+        "dominios": ["d07 Transparencia", "d08 Participación", "otros"],
         "cadencia": "continua",
     },
 ]
@@ -419,9 +446,9 @@ div[data-testid="stVerticalBlock"] {{ gap:.5rem!important; }}
         f'<div style="line-height:0">{logo("marfil", 27)}</div>'
         f'<div style="border-left:1px solid {C.V_BD_FUERTE};padding-left:13px">'
         f'<div style="font-size:14px;font-weight:800;color:{C.V_TX}">'
-        f'Monitoreo de Fuentes</div>'
-        f'<div style="font-size:10.5px;color:{C.V_TX2}">Desde aquí se despacha la '
-        f'captura de los silos públicos y se alimenta cada dominio</div></div></div>',
+        f'Consola de Monitoreo</div>'
+        f'<div style="font-size:10.5px;color:{C.V_TX2}">Monitoreo, captura y '
+        f'validación de fuentes públicas</div></div></div>',
         unsafe_allow_html=True)
 
     if d["faltantes"]:
@@ -436,8 +463,8 @@ div[data-testid="stVerticalBlock"] {{ gap:.5rem!important; }}
     operables = [(s, *_estado_silo(s)) for s in _SILOS]
     n_ok = sum(1 for _, ok, _ in operables if ok)
     st.markdown(_franja("SILOS DE INFORMACIÓN PÚBLICA",
-                        f"{n_ok} de {len(_SILOS)} con capturador · alimentan a "
-                        f"todos los dominios, no a uno"),
+                        f"{n_ok} de {len(_SILOS)} con capturador · una fuente "
+                        f"aporta a varios dominios y un dominio bebe de varias"),
                 unsafe_allow_html=True)
     fila1 = st.columns(3, gap="small")
     fila2 = st.columns(3, gap="small")
