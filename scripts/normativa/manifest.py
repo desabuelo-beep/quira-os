@@ -83,6 +83,48 @@ MANIFEST: list[dict] = [
         "canton_id":        None,
         "circuit_refs":     ["C01"],
     },
+    # ── CADENA DPE DE TRANSPARENCIA ACTIVA — tres piezas vigentes ─────────────
+    # Ninguna anula a otra y se necesitan las tres (Javo · 2026-08-06):
+    #   019 · Guía Metodológica      → el marco: QUÉ debe publicarse
+    #   015 · Parámetros Técnicos    → CÓMO se construye y se sube
+    #   Instructivo de Monitoreo     → CÓMO CALIFICA la Defensoría
+    # `app/agents/d07/scoring.py` implementa las reglas del tercero, así que sin
+    # él cada puntaje citaría una norma que el sistema no tiene verificada
+    # (Regla 3: sin norma verificada, no hay dato).
+    {
+        "archivo":          "LOTAIP_Resolución n.º 015-DPE_CGAJ_2024_Instructivo "
+                            "para la Aplicación de los Parámetros Acceso a la "
+                            "Información Pública.docx",
+        "sigla":            "INST-LOTAIP-PAR",
+        "nombre":           "Instructivo para la Aplicación de los Parámetros Técnicos "
+                            "de Transparencia — DPE (Res. 015-DPE-CGAJ-2024)",
+        "jerarquia":        5,
+        "milestone":        "F0.2",
+        "tipo":             "instructivo",
+        "dominios":         ["Dom07"],
+        "vigente":          True,
+        "document_class":   "METODOLOGIA",
+        "authority_level":  55,
+        "source_entity":    "DPE",
+        "canton_id":        None,
+        "circuit_refs":     ["C01"],
+    },
+    {
+        "archivo":          "LOTAIP - Instructivo-monitoreo-transparencia-activa-2024.docx",
+        "sigla":            "INST-LOTAIP-MON",
+        "nombre":           "Instructivo para Evaluar el Nivel de Cumplimiento de "
+                            "Transparencia Activa — DPE (Instructivo de Monitoreo 2024)",
+        "jerarquia":        5,
+        "milestone":        "F0.2",
+        "tipo":             "instructivo",
+        "dominios":         ["Dom07"],
+        "vigente":          True,
+        "document_class":   "METODOLOGIA",
+        "authority_level":  55,
+        "source_entity":    "DPE",
+        "canton_id":        None,
+        "circuit_refs":     ["C01"],
+    },
     {
         "archivo":          "LOTAIP - guia-metodologica-mecanismos.docx",
         "sigla":            "GUIA-LOTAIP-MEC",

@@ -59,6 +59,12 @@ FUENTES PÚBLICAS                          QUIRA CIUDADANA
                         ↓
         CENTRO DE INTELIGENCIA TERRITORIAL
               donde se consulta y se relaciona
+                        ↓
+                    QUIRA IA
+        conversa y explica en lenguaje natural
+        ┌───────────────┴───────────────┐
+        ↓                               ↓
+  usuario del Observatorio      usuario de Ciudadana
 ```
 
 ## 3 · Qué es cada cosa — y qué NO es
@@ -72,6 +78,7 @@ FUENTES PÚBLICAS                          QUIRA CIUDADANA
 | **MATRIZ_CANONICA** | el **contrato de integración** entre ambos universos | una tabla auxiliar |
 | **DOM** | la **unidad de conocimiento** por dominio | un informe, ni un resultado suelto |
 | **Centro** | la **capa de consulta** y articulación | el sitio donde se opera |
+| **QUIRA IA** | la **capa conversacional**: explica en lenguaje natural | una fuente de cifras |
 
 ### 3-bis · El punto de integración es la MATRIZ, no el Gold Master
 
@@ -85,6 +92,44 @@ numéricos ya previstos en la matriz.
 
 Decir «todo se integra en el Gold Master» invitaría a meter documentos en un libro de
 cálculo de 123 hojas, y a que el motor deje de ser el motor.
+
+### 3-ter · La cadena cierra en QUIRA IA, y explica sin calcular
+
+El recorrido no termina en el Centro. Termina cuando una persona —del Observatorio o de
+Ciudadana— **pregunta y entiende**.
+
+> **Precisión de Javo (2026-08-06):** esto **no es nuevo**. QUIRA IA está planificada
+> desde hace tiempo como una de las capas finales, junto con GeoTwin, y su organigrama de
+> agentes ya está escrito en `docs/architecture/META_CATALOGO_AGENTES.md` —28 piezas con
+> su tipo, estado y dependencias—, con la ruta en `governance/HOJA_DE_RUTA_MAESTRA.md`.
+> Se incorpora a este ADR porque **faltaba en la cadena**, no porque se acabe de decidir.
+>
+> El problema real que esto revela no es de planificación sino de **integración**: las
+> piezas están consensuadas y avanzadas, pero al trabajarlas por separado cada una vuelve
+> a parecer un descubrimiento. Antes de proponer algo, se consulta la Hoja de Ruta y el
+> Meta-Catálogo — ahí suele estar ya.
+
+QUIRA IA conversa en **lenguaje de administración pública y desarrollo territorial** sobre
+el cantón que se monitorea, y bebe de cuatro sitios: el corpus normativo, el corpus
+metodológico, los análisis y los resultados de los dominios. Responde lo que se le
+pregunte sobre ese territorio.
+
+**Y no calcula.** Esta es la frontera, y es la misma que la portada declara públicamente:
+*la cifra no la produce la inteligencia artificial*. QUIRA IA **lee, relaciona, cita y
+explica**; los números salen del motor y la evidencia del corpus. Si la capa
+conversacional produjera una cifra propia, se convertiría en una segunda fuente de verdad
+—lo que prohíbe el Art. 3 de la Constitución Institucional— y todo el trabajo de
+reproducibilidad quedaría anulado en la última pantalla.
+
+De ahí tres obligaciones para esta capa:
+
+1. **Cita siempre.** Cada afirmación remite a la norma o al documento que la sostiene.
+2. **Declara el nivel de verificabilidad** de lo que dice (los cinco niveles del canon), y
+   dice «no hay evidencia» cuando no la hay, en vez de completar el hueco.
+3. **No emite juicio jurídico.** Explica qué muestra la evidencia; calificar un
+   incumplimiento no le corresponde a QUIRA.
+
+Es la cuarta lente del frame (ADR-037 · *Inteligencia: ¿por qué?*), hoy en preparación.
 
 ## 4 · Las seis preguntas que la consola debe responder
 
@@ -200,9 +245,12 @@ decide cuál admite.
 
 - **Qué dominios se curan primero.** Sigue siendo el Protocolo de Curación.
 - **El estatuto del aporte ciudadano** como evidencia — queda abierto en ADR-041 §6.
-- **La ingesta del Instructivo de Monitoreo**, que es precondición de la primera corrida:
-  `app/agents/d07/scoring.py` implementa sus reglas y el documento no está en el corpus.
-  Sin él, cada puntaje citaría una norma sin verificar (Regla 3).
+- **La interfaz de QUIRA IA**, más allá de la frontera fijada en §3-ter. El organigrama
+  de agentes ya existe y no se rehace aquí: `docs/architecture/META_CATALOGO_AGENTES.md`.
+
+- **Cuándo se reactiva la Fase 4.** Los agentes están en pausa por presupuesto, y la vía
+  sin costo de API ya está registrada (idea de Javo, 2026-07-24): inferencia local con
+  `llama-cpp-python` y modelos GGUF. Este ADR no decide si se adopta.
 
 ---
 *ADR-042 · Dylus Lab © 2026 · propuesto por el director sobre revisión del colega,
