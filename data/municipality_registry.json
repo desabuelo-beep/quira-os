@@ -15,10 +15,10 @@
       "municipio_name": "GAD Municipal de Montecristi",
       "nombre_oficial": "GOBIERNO AUTÓNOMO DESCENTRALIZADO MUNICIPAL DEL CANTÓN MONTECRISTI",
       "provincia": "Manabí",
-      "ruc": "1360000430001",
-      "dpe_establishment_id": null,
-      "dpe_id_verificado": false,
-      "dpe_nota": "Obtener vía: python scripts/rc_scout.py --ruc 1360000430001",
+      "ruc": "1360001010001",
+      "dpe_establishment_id": 937,
+      "dpe_id_verificado": true,
+      "dpe_nota": "RUC corregido y confirmado por Javo (2026-08-06). El registro usaba 1360000430001, con el que el portal de la Defensoria no devuelve la entidad; el portal publica al GAD con 1360001010001 (establishment 937). El snapshot del motor conserva el RUC anterior y debe corregirse en su origen.",
       "sercop_entity_id": null,
       "cpccs_slug": null,
       "youtube_channel": null,
@@ -456,7 +456,6 @@
   "lookup": {
     "_nota": "Índices de acceso rápido para evitar O(n) searches en el pipeline",
     "por_ruc": {
-      "1360000430001": "130801",
       "1360000980001": "130901",
       "1360000630001": "130601",
       "1360000550001": "130401",
@@ -472,7 +471,8 @@
       "1360000470001": "130301",
       "1360002920001": "131101",
       "1360001790001": "131601",
-      "1360003300001": "131801"
+      "1360003300001": "131801",
+      "1360001010001": "130801"
     },
     "por_dpe_id": {
       "936": "130901",
@@ -490,7 +490,8 @@
       "931": "130301",
       "945": "131101",
       "943": "131601",
-      "947": "131801"
+      "947": "131801",
+      "937": "130801"
     }
   }
 }

@@ -44,12 +44,12 @@ from utils.marca import logo
 
 
 def _tab_estado() -> None:
-    """Estado de la operación — el panel."""
+    """Monitoreo de Fuentes — la consola desde la que se despacha la captura."""
     try:
-        from quira_pages.p_panel_observatorio import render as _panel
-        _panel()
+        from quira_pages.p_monitoreo_fuentes import render as _consola
+        _consola()
     except Exception as e:  # noqa: BLE001
-        st.error(f"Panel del Observatorio no disponible: {e}")
+        st.error(f"Monitoreo de Fuentes no disponible: {e}")
 
 
 def _tab_monitoreo() -> None:
@@ -90,8 +90,8 @@ def render() -> None:
 </div>
     """, unsafe_allow_html=True)
 
-    t1, t2 = st.tabs(["◷ Estado de la operación",
-                      "🗓 Monitoreo mensual de transparencia"])
+    t1, t2 = st.tabs(["◷ Monitoreo de Fuentes",
+                      "🗓 Verificación por dominio"])
     with t1:
         _tab_estado()
     with t2:
