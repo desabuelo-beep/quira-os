@@ -131,7 +131,7 @@ CSS = """<style>
 .q-name{font:600 54px/1 'Archivo',sans-serif;letter-spacing:.19em;color:var(--tx);
   margin:24px 0 0;animation:q-in 1s cubic-bezier(.2,.7,.3,1) .1s both}
 .q-promesa{font:500 11.5px/1 'JetBrains Mono',monospace;letter-spacing:.26em;
-  color:var(--coral);margin-top:15px;animation:q-in 1s cubic-bezier(.2,.7,.3,1) .2s both}
+  color:var(--coral-dp);margin-top:15px;animation:q-in 1s cubic-bezier(.2,.7,.3,1) .2s both}
 .q-cat{font:400 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.22em;color:var(--tx3);
   margin-top:7px;animation:q-in 1s cubic-bezier(.2,.7,.3,1) .26s both}
 .q-tag{font:400 16.5px/1.75 'Inter',sans-serif;color:var(--tx2);max-width:600px;
@@ -144,7 +144,7 @@ CSS = """<style>
 /* ═══ SECCIONES ═══ */
 .q-sec{margin:44px auto 0;max-width:880px;padding:0 26px;position:relative;z-index:1}
 .q-kick{font:700 10px/1 'JetBrains Mono',monospace;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--coral);margin-bottom:12px;display:flex;align-items:center;gap:11px}
+  color:var(--coral-dp);margin-bottom:12px;display:flex;align-items:center;gap:11px}
 .q-kick::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--bd),transparent)}
 .q-h2{font:600 31px/1.2 'Fraunces',Georgia,serif;color:var(--tx);letter-spacing:-.015em;
   margin-bottom:15px}
@@ -159,13 +159,13 @@ CSS = """<style>
   padding:26px 30px;background:linear-gradient(102deg,var(--coral-bg),transparent 66%),var(--sf)}
 .q-quote{font:400 20px/1.6 'Fraunces',Georgia,serif;color:var(--tx);font-style:italic;
   margin-bottom:14px}
-.q-quote em{color:var(--coral);font-style:italic}
+.q-quote em{color:var(--coral-dp);font-style:italic}
 .q-txt{font:400 14.5px/1.76 'Inter',sans-serif;color:var(--tx2)}
 .q-txt b{color:var(--tx);font-weight:600}
 
 /* ═══ NEGACIONES ═══ */
 .q-nos{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:19px}
-.q-no{font:500 12.5px/1 'JetBrains Mono',monospace;color:var(--coral);
+.q-no{font:500 12.5px/1 'JetBrains Mono',monospace;color:var(--coral-dp);
   border:1px solid rgba(193,57,43,.26);border-radius:15px;padding:8px 16px;
   background:var(--coral-bg);white-space:nowrap}
 
@@ -176,7 +176,7 @@ CSS = """<style>
 .q-link.on{color:var(--pizarra);border-color:rgba(78,102,116,.4);background:rgba(78,102,116,.09)}
 .q-link small{display:block;font:400 9px/1 'JetBrains Mono';color:var(--tx3);
   margin-top:4px;letter-spacing:.03em}
-.q-cut{color:var(--coral);font-size:16px;margin:0 4px}
+.q-cut{color:var(--coral-dp);font-size:16px;margin:0 4px}
 .q-arw{color:var(--tx3);font-size:13px;margin:0 2px}
 
 /* ═══ FLUJO ═══ */
@@ -221,7 +221,7 @@ CSS = """<style>
 .q-linea-c.si{border:1px solid rgba(78,102,116,.3);background:rgba(78,102,116,.07)}
 .q-linea-k{display:block;font:700 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;
   text-transform:uppercase;margin-bottom:7px}
-.q-linea-c.no .q-linea-k{color:var(--coral)}
+.q-linea-c.no .q-linea-k{color:var(--coral-dp)}
 .q-linea-c.si .q-linea-k{color:var(--pizarra)}
 
 /* ═══ ACCESO ═══ */
@@ -244,7 +244,7 @@ div[data-testid="stForm"]{background:var(--sup) !important;
   letter-spacing:.15em;text-align:center;margin-bottom:12px}
 .q-badge{display:block;width:fit-content;margin:0 auto 18px;background:var(--coral-bg);
   border:1px solid rgba(193,57,43,.24);border-radius:18px;padding:6px 16px;
-  font:500 10.5px/1 'JetBrains Mono',monospace;color:var(--coral)}
+  font:500 10.5px/1 'JetBrains Mono',monospace;color:var(--coral-dp)}
 div[data-testid="stTextInput"] input{background:#FFF !important;border:1px solid var(--bd) !important;
   color:var(--tx) !important;border-radius:8px !important;font-size:15px !important}
 div[data-testid="stTextInput"] input:focus{border-color:var(--coral) !important}
@@ -414,7 +414,10 @@ def motor() -> str:
 
     Fundamento canónico: ADR-023 (arquitectura de tres niveles, inmutable) y Reglas 1 y 4
     — «si un número existe en el motor, ningún proceso lo recalcula fuera»."""
-    filas = [("La inteligencia artificial", "#C1392B",
+    # Coral PROFUNDO, no el pleno: este color pinta el título de la fila, y el
+    # coral pleno sobre el plano da 4,05:1 — no alcanza AA para texto (gate
+    # `check_sistema_visual.py`). El pleno queda para marca, greca y bordes.
+    filas = [("La inteligencia artificial", "#8E2419",
               "Lee documentos, extrae, clasifica y <b>propone</b> correspondencias. Trabaja "
               "sobre volúmenes que ninguna persona podría revisar."),
              ("El motor de cálculo", "#18232B",

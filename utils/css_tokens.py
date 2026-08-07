@@ -1,15 +1,49 @@
 """
-QUIRA Intelligence — Design Tokens Canónicos
-Sprint D.4/D.5 · Hardening Visual + Design System Extraction
+QUIRA — Sistema Visual Canónico  ·  v1.1 "Papel de plano"  ·  2026-08-06
 
-Fuente única de verdad para colores, tipografía, spacing y animaciones.
-Cualquier componente Python o React debe importar desde aquí — nunca hardcodear.
+Fuente única de color, tipografía, spacing y animación. Ningún módulo escribe
+un hex a mano: si un color no está aquí, no existe.
 
-Usar en HTML builders:
+────────────────────────────────────────────────────────────────────────────────
+DOS REGISTROS — no son dos temas, son dos contextos con función distinta
+────────────────────────────────────────────────────────────────────────────────
+  · PLANO (claro)      → landing, informes, fichas, QUIRA Ciudadana. Lo público.
+    Un fondo oscuro es literalmente opaco y la tesis del proyecto es que la
+    información pública debe poder verse.
+  · VOLCÁNICO (oscuro) → Centro de Inteligencia, cajones, panel del Observatorio.
+    Ambiente de trabajo prolongado. Precedente exacto: la terminal de Bloomberg
+    es negra, el sitio de Bloomberg es blanco.
+
+────────────────────────────────────────────────────────────────────────────────
+UN SOLO ACENTO — el coral Spondylus
+────────────────────────────────────────────────────────────────────────────────
+El jade salió del sistema: rojo + verde es un SEMÁFORO, y un semáforo dicta
+«bueno / malo». QUIRA certifica verificabilidad, no verdad. Una marca con un
+color es además más reconocible que con dos.
+
+⚠ El coral base NO se usa sobre fondo oscuro: da 2,96:1 y no alcanza ni el
+mínimo gráfico de 3:1. Adentro se usa `ACENTO` (#E08B7A, AA sobre volcánico y
+sobre tarjeta). Medido, no estimado — ver `CONTRASTES` al pie.
+
+────────────────────────────────────────────────────────────────────────────────
+DOS ESCALAS QUE NO SE MEZCLAN — confundirlas sería el error más caro
+────────────────────────────────────────────────────────────────────────────────
+ 1 · VERIFICABILIDAD (`verificabilidad()`) — CANON. Qué tan sostenida está una
+     afirmación por la evidencia: independiente · institucional · parcial · sin
+     evidencia · contradicción. NO dice nada sobre si la gestión es buena.
+     Referencia: `CONSTITUCION_ONTOLOGICA_QUIRA.md` CAPA 0 · `PCD-MN01 §21`.
+
+ 2 · ATENCIÓN (`atencion()`) — qué tan lejos está un indicador de su umbral.
+     La calcula el Gold Master (Regla 1: el semáforo es corregible en
+     presentación, la fórmula no). Aquí solo se pinta.
+
+Una afirmación puede ser de verificabilidad *independiente* y de atención
+*crítica* a la vez: son ejes distintos. Pintarlas con la misma rampa haría
+ilegible esa diferencia, que es justo lo que QUIRA vende.
+
+Uso:
     from utils.css_tokens import C, T, S, A
-
-Usar en React (exportar como JSON o TypeScript):
-    python -c "from utils.css_tokens import export_json; print(export_json())"
+    C.ACENTO · C.verificabilidad("parcial") · C.css_vars("volcanico")
 
 Dylus Lab © 2026
 """
@@ -18,105 +52,182 @@ import json
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# C — COLOR TOKENS
+# C — COLOR
 # ══════════════════════════════════════════════════════════════════════════════
 
 class C:
-    """Paleta canónica QUIRA. Todas las instancias de color en el sistema."""
+    """Paleta canónica QUIRA v1.1. Todo color del sistema sale de aquí."""
 
-    # Identidad
-    ACCENT    = "#00D4FF"    # Cyan — identidad QUIRA, links, ecosistema, IA
-    BG        = "#050A12"    # Negro institucional — background global
+    # ── IDENTIDAD ────────────────────────────────────────────────────────────
+    CORAL      = "#C1392B"   # Spondylus. El color de la concha que da nombre al
+                             # proyecto. Sobre PLANO. Nunca sobre volcánico.
+    CORAL_CL   = "#D4715F"   # Coral claro — gráficos y bordes sobre oscuro (4,81:1)
+    CORAL_DP   = "#8E2419"   # Coral profundo — hover y presionado sobre plano
 
-    # Semáforo institucional
-    RUPTURA   = "#EF4444"    # Rojo — TOP ruptura, SAT-III, alertas críticas
-    ALERTA    = "#F97316"    # Naranja — SAT activas, cierre Q2
-    AMBER     = "#F59E0B"    # Ámbar — concejo, compromisos urgentes, SAT-IV
-    SOSTENIB  = "#22C55E"    # Verde — TOP sobre ritmo, D5, SISTEMA VIVO
+    # ── REGISTRO PLANO (afuera · lo público) ─────────────────────────────────
+    PLANO      = "#D9E0E5"   # Papel de levantamiento — fondo
+    SUP        = "#F3F6F7"   # Superficie elevada (tarjeta, ficha)
+    CARRIL     = "#C2CDD4"   # Carril, riel, pista de fondo
+    PIZARRA    = "#4E6674"   # Instrumental sobre plano (4,53:1 · AA)
+    TX         = "#18232B"   # Texto principal
+    TX2        = "#52616B"   # Texto secundario
+    TX3        = "#8296A2"   # Metadatos
+    BD         = "#B9C6CD"   # Borde
 
-    # Especiales
-    PURPLE    = "#7C5CFC"    # Púrpura — fondos bloqueados, reencuadre político
-    PURPLE_L  = "#C084FC"    # Púrpura claro — argumentario, destacados suaves
-    AMBER_TGI = "#FFB700"    # Ámbar TGI — transición (no usar para SAT)
+    # ── REGISTRO VOLCÁNICO (adentro · el trabajo) ────────────────────────────
+    # El volcánico es el mismo #18232B que afuera es el texto: la tinta de fuera
+    # es el fondo de dentro. No es coincidencia, es el mismo sistema dado vuelta.
+    VOLCAN     = "#18232B"   # Fondo
+    VOLCAN_UP  = "#212F3A"   # Superficie elevada. Separación 1,17:1 — deliberado:
+                             # la tarjeta se distingue por BORDE, no por fondo.
+    ACENTO     = "#E08B7A"   # Acento de texto adentro (6,20:1 fondo · 5,31:1 tarjeta)
+    V_TX       = "#E6EDF1"   # Texto principal (13,51:1 · AAA)
+    V_TX2      = "#A9BAC5"   # Texto secundario (8,00:1 · AAA)
+    V_TX3      = "#8FA5B2"   # Metadatos (6,23:1 · AA en ambos fondos)
+    V_BD       = "rgba(255,255,255,.09)"   # Borde base
+    V_BD_FUERTE= "rgba(255,255,255,.17)"   # Borde de énfasis
 
-    # Texto
-    TEXT      = "#E2E8F0"    # Texto principal — blanco frío
-    TEXT_SEC  = "rgba(255,255,255,.35)"   # Texto secundario
-    TEXT_MUTED = "rgba(255,255,255,.18)"  # Metadata, labels
-    TEXT_DIM  = "rgba(255,255,255,.12)"   # Ultra sutil, fuentes, footers
+    # ── ATENCIÓN — sin verde, y la razón importa ─────────────────────────────
+    # No hay color de "bien". La ausencia de señal es ausencia de señal, no un
+    # aprobado: QUIRA no certifica que la gestión esté bien, certifica qué se
+    # puede verificar. Un verde en pantalla sería un veredicto que la evidencia
+    # no sostiene — el mismo error que se corrigió en la portada de d08.
+    SIN_SENAL  = "#8FA5B2"   # Dentro de umbral. Instrumental, no celebratorio.
+    OCRE       = "#C89B3C"   # Requiere atención (6,25:1 · AA)
+    CRITICO    = "#E08B7A"   # Fuera de umbral. Es el acento: lo que pide tu ojo.
 
-    # Superficies
-    SURFACE   = "rgba(255,255,255,.025)"  # Cards, zonas
-    SURFACE_Z5 = "rgba(0,212,255,.02)"   # Ecosistema (tint cyan)
-    SURFACE_Z6 = "rgba(255,255,255,.02)" # IA (neutro)
+    # ── COMPATIBILIDAD ───────────────────────────────────────────────────────
+    # Nombres del sistema anterior, remapeados. No usar en código nuevo.
+    ACCENT     = ACENTO
+    BG         = VOLCAN
+    RUPTURA    = CRITICO
+    ALERTA     = OCRE
+    AMBER      = OCRE
+    AMBER_TGI  = OCRE
+    SOSTENIB   = SIN_SENAL
+    TEXT       = V_TX
+    TEXT_SEC   = V_TX2
+    TEXT_MUTED = V_TX3
+    TEXT_DIM   = "rgba(255,255,255,.12)"
+    SURFACE    = VOLCAN_UP
+    BORDER     = V_BD
+    DIVIDER    = "rgba(255,255,255,.06)"
 
-    # Bordes
-    BORDER    = "rgba(255,255,255,.07)"   # Borde base
-    BORDER_Z1 = "rgba(255,255,255,.09)"   # Z1 dominante (levemente más visible)
-    BORDER_Z5 = "rgba(0,212,255,.12)"     # Ecosistema
-    BORDER_Z6 = "rgba(255,255,255,.06)"   # IA
-
-    # Separadores
-    DIVIDER   = "rgba(255,255,255,.05)"   # Líneas internas de separación
+    # ── ESCALA 1 · VERIFICABILIDAD (CANON) ───────────────────────────────────
+    # Rampa del Spondylus a la ausencia: la INTENSIDAD dice cuánto sostiene el
+    # documento; la falta de color dice falta de evidencia — nunca un suspenso.
+    #
+    # `contradiccion` NO pertenece a la rampa. No es "menos evidencia": es
+    # evidencia en conflicto, que es un hallazgo distinto en naturaleza, no en
+    # grado. Por eso lleva marca propia (trama) y no una intensidad menor.
+    _VERIF: dict[str, dict[str, str]] = {
+        "independiente": {"c": ACENTO,    "op": "1",    "trama": "",
+                          "label": "Verificación independiente"},
+        "institucional": {"c": ACENTO,    "op": ".72",  "trama": "",
+                          "label": "Fuente institucional"},
+        "parcial":       {"c": ACENTO,    "op": ".45",  "trama": "",
+                          "label": "Evidencia parcial"},
+        "sin_evidencia": {"c": "transparent", "op": "1", "trama": "punteado",
+                          "label": "Sin evidencia localizada"},
+        "contradiccion": {"c": OCRE,      "op": "1",    "trama": "diagonal",
+                          "label": "Contradicción entre fuentes"},
+    }
 
     @classmethod
-    def sem(cls, valor: float) -> str:
-        """
-        Semáforo TGI estándar (0–100).
-        Función canónica — único lugar donde vive esta lógica.
-        """
-        if valor >= 70: return cls.SOSTENIB
-        if valor >= 50: return cls.AMBER_TGI
-        if valor >= 30: return cls.ALERTA
-        return cls.RUPTURA
+    def verificabilidad(cls, nivel: str) -> dict[str, str]:
+        """Tratamiento visual de un nivel de verificabilidad (CANON · 5 niveles).
+
+        Devuelve color, opacidad, trama y etiqueta pública. Un nivel desconocido
+        cae en `sin_evidencia`: ante la duda, la ausencia de evidencia es un
+        RESULTADO de auditoría, nunca autorización para inferir."""
+        return cls._VERIF.get(str(nivel or "").lower(), cls._VERIF["sin_evidencia"])
 
     @classmethod
-    def top_color(cls, categoria: str) -> str:
-        """Mapa canónico categoría TOP → color."""
-        _MAP = {
-            "ruptura":   cls.RUPTURA,
-            "alerta":    cls.ALERTA,
-            "sostenible": cls.SOSTENIB,
-        }
-        return _MAP.get(categoria, cls.RUPTURA)
+    def niveles_verificabilidad(cls) -> list[tuple[str, dict[str, str]]]:
+        """Los 5 niveles en orden canónico — para leyendas y catálogos."""
+        return list(cls._VERIF.items())
+
+    # ── ESCALA 2 · ATENCIÓN (la calcula el motor) ────────────────────────────
+    @classmethod
+    def atencion(cls, valor: float | None, umbral: float = 70.0,
+                 alerta: float = 50.0) -> str:
+        """Color de atención para un indicador 0–100 que el motor ya clasificó.
+
+        Tres niveles, no cuatro, y ninguno dice "bien" (ver SIN_SENAL). Sin
+        valor devuelve el instrumental: no saber no es estar mal."""
+        if valor is None:
+            return cls.SIN_SENAL
+        if valor >= umbral:
+            return cls.SIN_SENAL
+        if valor >= alerta:
+            return cls.OCRE
+        return cls.CRITICO
+
+    @classmethod
+    def sem(cls, valor: float | None) -> str:
+        """Alias histórico de `atencion()`. Se conserva porque el Centro de Mando
+        y su v1 lo llaman; el comportamiento cambió a propósito — ya no devuelve
+        verde, porque no hay color de "bien" en el sistema."""
+        return cls.atencion(valor)
 
     @classmethod
     def sat_color(cls, clasif: str) -> str:
-        """Mapa canónico clasificación SAT → color."""
-        _MAP = {
-            "BAJO":    cls.SOSTENIB,
-            "MEDIO":   cls.AMBER,
-            "ALTO":    cls.ALERTA,
-            "CRÍTICO": cls.RUPTURA,
-        }
-        return _MAP.get(clasif, cls.ALERTA)
+        """Clasificación SAT → color de atención."""
+        _MAP = {"BAJO": cls.SIN_SENAL, "MEDIO": cls.OCRE,
+                "ALTO": cls.OCRE, "CRÍTICO": cls.CRITICO}
+        return _MAP.get(str(clasif or "").upper(), cls.SIN_SENAL)
 
     @classmethod
-    def alpha(cls, hex_color: str, opacity: float) -> str:
-        """
-        Convierte hex + opacidad a string CSS para background inline.
-        Ej: C.alpha(C.RUPTURA, 0.1) → 'rgba(239,68,68,.10)'
-        Solo funciona con los 6 colores base definidos.
-        """
-        _HEX_TO_RGB = {
-            "#00D4FF": (0, 212, 255),
-            "#EF4444": (239, 68, 68),
-            "#F97316": (249, 115, 22),
-            "#F59E0B": (245, 158, 11),
-            "#22C55E": (34, 197, 94),
-            "#7C5CFC": (124, 92, 252),
-            "#C084FC": (192, 132, 252),
-            "#FFB700": (255, 183, 0),
-        }
-        rgb = _HEX_TO_RGB.get(hex_color)
-        if not rgb:
+    def top_color(cls, categoria: str) -> str:
+        """Categoría TOP → color de atención."""
+        _MAP = {"ruptura": cls.CRITICO, "alerta": cls.OCRE,
+                "sostenible": cls.SIN_SENAL}
+        return _MAP.get(str(categoria or "").lower(), cls.SIN_SENAL)
+
+    # ── UTILIDADES ───────────────────────────────────────────────────────────
+    @staticmethod
+    def alpha(hex_color: str, opacity: float) -> str:
+        """hex + opacidad → rgba(). Convierte cualquier hex de 3 o 6 dígitos.
+
+        La versión anterior solo conocía 8 colores y devolvía el hex CRUDO para
+        el resto: pedir 10% de opacidad entregaba el color pleno, en silencio."""
+        h = str(hex_color or "").strip().lstrip("#")
+        if len(h) == 3:
+            h = "".join(ch * 2 for ch in h)
+        if len(h) != 6:
             return hex_color
-        r, g, b = rgb
-        return f"rgba({r},{g},{b},{opacity:.2f})"
+        try:
+            r, g, b = (int(h[i:i + 2], 16) for i in (0, 2, 4))
+        except ValueError:
+            return hex_color
+        return f"rgba({r},{g},{b},{opacity:.3f})"
+
+    @classmethod
+    def css_vars(cls, registro: str = "volcanico") -> str:
+        """Bloque `:root{…}` con las variables del registro pedido.
+
+        Que el CSS beba de aquí es lo que impide que el sistema se bifurque en
+        dos verdades — que es exactamente lo que pasó hasta hoy: este módulo
+        existía y solo 3 archivos lo importaban."""
+        if registro == "plano":
+            pares = [("coral", cls.CORAL), ("coral-cl", cls.CORAL_CL),
+                     ("coral-dp", cls.CORAL_DP), ("plano", cls.PLANO),
+                     ("sup", cls.SUP), ("carril", cls.CARRIL),
+                     ("pizarra", cls.PIZARRA), ("tx", cls.TX),
+                     ("tx2", cls.TX2), ("tx3", cls.TX3), ("bd", cls.BD)]
+        else:
+            pares = [("bg", cls.VOLCAN), ("sup", cls.VOLCAN_UP),
+                     ("acento", cls.ACENTO), ("acento-gr", cls.CORAL_CL),
+                     ("tx", cls.V_TX), ("tx2", cls.V_TX2), ("tx3", cls.V_TX3),
+                     ("bd", cls.V_BD), ("bd-f", cls.V_BD_FUERTE),
+                     ("sin-senal", cls.SIN_SENAL), ("ocre", cls.OCRE),
+                     ("critico", cls.CRITICO)]
+        cuerpo = "".join(f"--q-{k}:{v};" for k, v in pares)
+        return f":root{{{cuerpo}}}"
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# T — TYPOGRAPHY TOKENS
+# T — TIPOGRAFÍA
 # ══════════════════════════════════════════════════════════════════════════════
 
 class T:
@@ -124,21 +235,22 @@ class T:
 
     FAMILY_SANS  = "Inter, sans-serif"
     FAMILY_MONO  = "'JetBrains Mono', monospace"
+    FAMILY_MARCA = "Archivo, Inter, sans-serif"   # solo el nombre QUIRA
 
-    # Métricas dominantes (TOP, TGI grandes)
+    # Métricas dominantes
     METRIC_XL = "font:900 3rem/1 Inter,sans-serif;letter-spacing:-.04em"
     METRIC_LG = "font:900 2.8rem/1 Inter,sans-serif;letter-spacing:-.05em"
     METRIC_MD = "font:900 1.6rem/1 Inter,sans-serif;letter-spacing:-.03em"
     METRIC_SM = "font:900 1.5rem/1.1 Inter,sans-serif"
     METRIC_XS = "font:900 1.2rem/1 Inter,sans-serif"
 
-    # Texto ejecutivo
+    # Texto
     BODY_LG   = "font:400 13px/1.7 Inter,sans-serif"
     BODY_MD   = "font:400 11px/1.7 Inter,sans-serif"
     BODY_SM   = "font:400 10px/1.55 Inter,sans-serif"
     BODY_XS   = "font:400 9px/1.4 Inter,sans-serif"
 
-    # Labels institucionales
+    # Labels
     LABEL_LG  = "font:700 11px/1.2 Inter,sans-serif"
     LABEL_MD  = "font:700 9px/1 Inter,sans-serif"
     LABEL_SM  = "font:700 8px/1 Inter,sans-serif"
@@ -150,98 +262,110 @@ class T:
     CAPS_SM = "font:700 8px/1 Inter,sans-serif;letter-spacing:.07em;text-transform:uppercase"
     CAPS_XS = "font:700 7px/1 Inter,sans-serif;letter-spacing:.07em;text-transform:uppercase"
 
-    # Mono (metadatos, fuentes, código)
+    # Mono — metadatos, folios, trazabilidad
     MONO_SM = "font:400 9px/1 'JetBrains Mono',monospace;letter-spacing:.04em"
     MONO_XS = "font:400 8px/1 'JetBrains Mono',monospace;letter-spacing:.04em"
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# S — SPACING TOKENS
+# S — SPACING
 # ══════════════════════════════════════════════════════════════════════════════
 
 class S:
     """Tokens de spacing. Todos en px. Múltiplos de 2."""
 
-    GAP_GRID   = 14    # Gap entre zonas principales
-    GAP_CARD   = 12    # Gap entre entity cards
-    GAP_INNER  = 10    # Gap interno en zona
-    GAP_TIGHT  = 8     # Gap reducido
-    GAP_MICRO  = 6     # Gap mínimo entre elementos inline
+    GAP_GRID   = 14
+    GAP_CARD   = 12
+    GAP_INNER  = 10
+    GAP_TIGHT  = 8
+    GAP_MICRO  = 6
 
-    PAD_ZONE   = 20    # Padding zona estándar
-    PAD_COMPACT = 14   # Padding zona compacta (Z34)
-    PAD_CARD   = 14    # Padding entity card vertical
-    PAD_CARD_H = 12    # Padding entity card horizontal
-    PAD_HEADER = 11    # Padding header vertical
-    PAD_HEADER_H = 18  # Padding header horizontal
-    PAD_CHIP_V = 5     # Padding chip vertical (KPI header)
-    PAD_CHIP_H = 12    # Padding chip horizontal
+    PAD_ZONE     = 20
+    PAD_COMPACT  = 14
+    PAD_CARD     = 14
+    PAD_CARD_H   = 12
+    PAD_HEADER   = 11
+    PAD_HEADER_H = 18
+    PAD_CHIP_V   = 5
+    PAD_CHIP_H   = 12
 
-    RADIUS_ZONE = 14   # Border-radius zona
-    RADIUS_CARD = 12   # Border-radius card
-    RADIUS_CHIP = 8    # Border-radius chip/badge pequeño
-    RADIUS_BADGE = 4   # Border-radius badge inline
+    RADIUS_ZONE  = 14
+    RADIUS_CARD  = 12
+    RADIUS_CHIP  = 8
+    RADIUS_BADGE = 4
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# A — ANIMATION TOKENS
+# A — ANIMACIÓN
 # ══════════════════════════════════════════════════════════════════════════════
 
 class A:
-    """Tokens de animación. Sprint C.3 — Observabilidad Viva."""
+    """Tokens de animación. Sobrio por doctrina: nada parpadea para alarmar."""
 
-    # Duraciones
-    LIVE_DOT      = "1.8s"    # Heartbeat SISTEMA VIVO
-    RUPTURA_GLOW  = "2.8s"    # TOP ruptura box
-    BRIEFING_GLOW = "3.2s"    # Briefing strip border
+    LIVE_DOT      = "1.8s"
+    ATENCION_GLOW = "2.8s"
+    BRIEFING_GLOW = "3.2s"
+    EASING        = "ease-in-out"
 
-    # Timings distintos intencionalmente — ritmos orgánicos, no sincronizados
-    EASING = "ease-in-out"
+    CLASS_ATENCION = "q-atencion-pulse"
+    CLASS_LIVE_DOT = "q-live-dot"
+    CLASS_BRIEFING = "q-briefing-live"
 
-    # Clases CSS
-    CLASS_RUPTURA  = "ve-ruptura-pulse"
-    CLASS_LIVE_DOT = "ve-live-dot"
-    CLASS_BRIEFING = "ve-briefing-live"
-
-    # Umbrales de opacidad para ve-live-beat
     DOT_OPACITY_MAX = 1.0
     DOT_OPACITY_MIN = 0.28
     DOT_SCALE_MIN   = 0.58
 
+    # Compatibilidad con el nombre anterior
+    RUPTURA_GLOW  = ATENCION_GLOW
+    CLASS_RUPTURA = CLASS_ATENCION
+
 
 # ══════════════════════════════════════════════════════════════════════════════
-# EXPORT PARA REACT/TYPESCRIPT
+# CONTRASTES VERIFICADOS — medidos con `_contraste()`, no estimados
+# ══════════════════════════════════════════════════════════════════════════════
+# Sobre VOLCÁNICO #18232B          Sobre TARJETA #212F3A
+#   CORAL    #C1392B   2,96  ✗       CORAL    #C1392B   2,54  ✗   ← nunca adentro
+#   CORAL_CL #D4715F   4,81  AA      CORAL_CL #D4715F   4,13  gráfico
+#   ACENTO   #E08B7A   6,20  AA      ACENTO   #E08B7A   5,31  AA
+#   V_TX     #E6EDF1  13,51  AAA     V_TX     #E6EDF1  11,58  AAA
+#   V_TX2    #A9BAC5   8,00  AAA     V_TX2    #A9BAC5   6,86  AA
+#   V_TX3    #8FA5B2   6,23  AA      V_TX3    #8FA5B2   5,35  AA
+#   OCRE     #C89B3C   6,25  AA      OCRE     #C89B3C   5,36  AA
+
+def _luminancia(hx: str) -> float:
+    """Luminancia relativa WCAG de un hex."""
+    h = hx.lstrip("#")
+    def _lin(c: float) -> float:
+        return c / 12.92 if c <= 0.03928 else ((c + 0.055) / 1.055) ** 2.4
+    r, g, b = (int(h[i:i + 2], 16) / 255 for i in (0, 2, 4))
+    return 0.2126 * _lin(r) + 0.7152 * _lin(g) + 0.0722 * _lin(b)
+
+
+def contraste(a: str, b: str) -> float:
+    """Razón de contraste WCAG entre dos hex. Para verificar, no para adivinar."""
+    la, lb = _luminancia(a), _luminancia(b)
+    return (max(la, lb) + 0.05) / (min(la, lb) + 0.05)
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# EXPORT
 # ══════════════════════════════════════════════════════════════════════════════
 
 def export_json() -> str:
-    """
-    Exporta todos los tokens como JSON.
-    Usar para generar design-tokens.json o tokens.ts en React.
+    """Tokens como JSON — para generar design-tokens.json o tokens.ts.
 
-    Usage:
         python -c "from utils.css_tokens import export_json; print(export_json())"
     """
-    tokens = {
-        "colors": {
-            k: v for k, v in vars(C).items()
-            if not k.startswith("_") and isinstance(v, str)
-        },
-        "spacing": {
-            k: v for k, v in vars(S).items()
-            if not k.startswith("_") and isinstance(v, int)
-        },
+    return json.dumps({
+        "colors":  {k: v for k, v in vars(C).items()
+                    if not k.startswith("_") and isinstance(v, str)},
+        "spacing": {k: v for k, v in vars(S).items()
+                    if not k.startswith("_") and isinstance(v, int)},
         "animation": {
-            "durations": {
-                "liveDot":     A.LIVE_DOT,
-                "rupturaGlow": A.RUPTURA_GLOW,
-                "briefingGlow": A.BRIEFING_GLOW,
-            },
+            "durations": {"liveDot": A.LIVE_DOT, "atencionGlow": A.ATENCION_GLOW,
+                          "briefingGlow": A.BRIEFING_GLOW},
             "easing": A.EASING,
-            "classes": {
-                "ruptura":  A.CLASS_RUPTURA,
-                "liveDot":  A.CLASS_LIVE_DOT,
-                "briefing": A.CLASS_BRIEFING,
-            }
-        }
-    }
-    return json.dumps(tokens, indent=2, ensure_ascii=False)
+            "classes": {"atencion": A.CLASS_ATENCION, "liveDot": A.CLASS_LIVE_DOT,
+                        "briefing": A.CLASS_BRIEFING},
+        },
+    }, indent=2, ensure_ascii=False)
