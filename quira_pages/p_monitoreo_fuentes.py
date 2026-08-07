@@ -321,6 +321,19 @@ def _mono() -> str:
     return "font-family:'JetBrains Mono',monospace"
 
 
+def _resumen_estados():
+    """Los ocho estados de captura (ADR-042 §6). La semántica vive en
+    `app/observatorio/estados.py`, no aquí: esta pantalla la muestra, no la
+    define."""
+    from app.observatorio import resumen
+    return resumen()
+
+
+def _color_estado(clave: str) -> str:
+    from app.observatorio import color
+    return color(clave)
+
+
 def _dato(valor: str, de: str, etiqueta: str, nota: str = "",
           color: str | None = None) -> str:
     """Una cifra con su denominador visible."""
@@ -621,6 +634,40 @@ div[data-testid="stVerticalBlock"] {{ gap:.5rem!important; }}
                               "el circuito todavía no ha corrido.",
                               C.V_TX3 if pendientes == "0" else C.OCRE),
                         unsafe_allow_html=True)
+
+    # ── 5 · SEMÁNTICA DE ESTADOS ─────────────────────────────────────────────
+    st.markdown(_franja("SEMÁNTICA DE LA CAPTURA",
+                        "ADR-042 §6 · qué puede y qué no puede afirmarse"),
+                unsafe_allow_html=True)
+    st.markdown(
+        f'<div style="background:{C.alpha(C.ACENTO,.07)};border:1px solid '
+        f'{C.alpha(C.ACENTO,.28)};border-radius:10px;padding:11px 14px;'
+        f'font-size:11px;color:{C.V_TX2};line-height:1.6;margin-bottom:9px">'
+        f'<b style="color:{C.ACENTO}">«No existe evidencia» no es lo mismo que '
+        f'«no pude obtener evidencia» ni que «el capturador falló».</b> Si un '
+        f'portal cambia su formato y el conector deja de entenderlo, eso habla '
+        f'de nuestro instrumento — no del municipio. Solo dos de los ocho '
+        f'estados pueden llegar a un producto publicado, y el sistema lo '
+        f'verifica solo.</div>',
+        unsafe_allow_html=True)
+    filas_e = "".join(
+        f'<div style="display:flex;align-items:center;gap:12px;padding:7px 0;'
+        f'border-bottom:1px solid {C.V_BD};font-size:11px">'
+        f'<span style="width:11px;height:11px;border-radius:3px;flex:0 0 auto;'
+        f'background:{_color_estado(clave)}"></span>'
+        f'<span style="flex:0 0 175px;color:{C.V_TX}">{s.etiqueta}</span>'
+        f'<span style="flex:0 0 150px;{_mono()};font-size:9.5px;'
+        f'color:{C.V_TX3}">habla de {s.habla_de}</span>'
+        f'<span style="flex:0 0 96px;{_mono()};font-size:9px;'
+        f'color:{C.ACENTO if s.publicable else C.V_TX3}">'
+        f'{"PUBLICABLE" if s.publicable else "no publicable"}</span>'
+        f'<span style="flex:1;color:{C.V_TX2};font-size:10.5px">'
+        f'{s.explicacion}</span></div>'
+        for clave, s in _resumen_estados())
+    st.markdown(
+        f'<div style="background:{C.VOLCAN_UP};border:1px solid {C.V_BD};'
+        f'border-radius:10px;padding:13px 15px">{filas_e}</div>',
+        unsafe_allow_html=True)
 
     st.markdown(
         f'<div style="margin-top:20px;padding-top:10px;border-top:1px solid '
