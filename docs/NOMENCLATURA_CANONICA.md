@@ -56,15 +56,33 @@ administrador_hash = "<PBKDF2-SHA256 del password>"
 
 | Key interno | Label sidebar | Nombre público | Audiencia | Estado |
 |---|---|---|---|---|
-| `gov` | GOV | Observatorio | Ejecutivo, Técnico (+ Admin para verificación) | ✅ Activo |
-| `civic` | Civic | QUIRA Ciudadano | Ciudadanía, academia, ONGs | 🔄 Fase 3 |
-| `impact` | Impact | QUIRA Cooperación | Cooperación internacional, investigadores | ⏳ Placeholder |
-| `ops` | OPS | Operaciones | Equipo Dylus Lab | ✅ Activo |
+| `gov` | Centro | Centro de Inteligencia Territorial | donde se consulta el conocimiento | ✅ Activo |
+| `obs` | Observatorio | Observatorio de Integridad Territorial | sector público · multilaterales · cooperación | ✅ Activo |
+| `civic` | Ciudadana | QUIRA Ciudadana | ciudadanía · control social | 🔄 **Fase 1** |
+| `impact` | Cooperación | QUIRA Cooperación | bilaterales y multilaterales · financiamiento | ⏳ Fase 2 |
+| `ops` | Operaciones | Operaciones | equipo Dylus Lab — **no es producto** | ✅ Activo |
+
+> **Actualizado tras el sello de ADR-041 (2026-08-07).** Tres cambios y su razón:
+>
+> · **`civic` sube de Fase 3 a Fase 1.** No es un producto que consume: es una de las dos
+>   ENTRADAS de evidencia. Sin ella y sin el Observatorio, los productos de Fase 2 no tienen
+>   qué leer (ADR-041 §4).
+> · **`obs` aparece como ambiente propio** (ADR-042). El Observatorio es la función de
+>   vigilancia; Operaciones es mantenimiento técnico. No son lo mismo.
+> · **`gov` deja de llamarse «QUIRA Institucional»** y pasa a ser el Centro. Cuidado: «QUIRA
+>   Institucional» sigue existiendo como PRODUCTO —la licencia de gestión para el GAD,
+>   ADR-041 §4-ter—, que es otra cosa y aún no tiene ambiente.
+>
+> ⚠️ **`impact` arrastra una ambigüedad sin resolver.** La clave dice `impact` y el nombre
+> público dice «Cooperación», porque el canon los trató como uno solo. Son productos
+> distintos: Cooperación responde *«¿qué puede financiarse y con qué instrumento?»*; Impact,
+> *«¿qué pueden investigar y reproducir terceros?»*. Separarlos exige decidir la familia
+> completa — pendiente de un ADR propio, no de este archivo.
 
 ### Reglas de ambientes
 
-- Los keys internos son en minúsculas: `gov`, `civic`, `impact`, `ops`.
-- Los labels del sidebar son los códigos cortos: `GOV`, `Civic`, `Impact`, `OPS`.
+- Los keys internos son en minúsculas: `gov`, `obs`, `civic`, `impact`, `ops`.
+- Los labels son los nombres cortos en lenguaje de administración, nunca códigos internos.
 - Los nombres públicos (landing page) son los nombres de producto.
 - **Nunca** usar un nombre público en lógica de código — solo el key interno.
 - **OPS no es una plataforma pública**. No aparece como tarjeta en la landing.

@@ -30,6 +30,20 @@ GOLD MASTER  →  PIPELINE  →  SUPABASE  →  STREAMLIT
 
 ## 0.B Doctrina de Producto — Los Dos Mundos
 
+> ⚠️ **Sección anterior a ADR-041, sellado el 2026-08-07.** La tabla de ambientes de más abajo
+> quedó desactualizada en tres puntos, y la versión vigente está en
+> `docs/NOMENCLATURA_CANONICA.md §2`:
+>
+> · **QUIRA Ciudadana pasa de Fase 3 a Fase 1** — es una ENTRADA de evidencia, no un producto
+>   que consume.
+> · **Falta el ambiente `obs`** — el Observatorio se separó de Operaciones (ADR-042): el
+>   primero es la función de vigilancia, el segundo mantenimiento técnico.
+> · **`GOV` ya no es «QUIRA Institucional»** sino el Centro de Inteligencia Territorial.
+>   «QUIRA Institucional» designa ahora el producto de gestión para el GAD (ADR-041 §4-ter),
+>   que es otra cosa y todavía no tiene ambiente.
+>
+> Ante discrepancia manda ADR-041.
+
 > **⚠️ Doctrina de negocio SUPERADA — banner de deferencia (Regla #6: NO se reescribe §0.B; se conserva como histórico).**
 > El modelo *"SaaS · el municipio compra · GAD = cliente"* de esta sección **quedó superado**. **Rector vigente: `docs/adr/ADR-024` + `governance/BOOT.md §LA TESIS`.**
 > Doctrina vigente (Javo): **GAD = sujeto observado** (no cliente) · vender software a GADs es **válido pero NO el negocio central** ·

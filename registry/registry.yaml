@@ -19,7 +19,7 @@ componentes:
     kind: normative
     level: 1
     path: governance/BOOT.md
-    hash: 570d30ed18d7e1bc
+    hash: 1fe40359a3c0baa7
     authority_declared: true
     parent: GOVERNANCE-001
   - id: GOVERNANCE-001
@@ -33,14 +33,14 @@ componentes:
     kind: normative
     level: 1
     path: governance/HOJA_DE_RUTA_MAESTRA.md
-    hash: 53c09e97529e35a5
+    hash: 90a404bb888b9eef
     authority_declared: true
     parent: GOVERNANCE-001
   - id: NORMATIVE-PROMPT_ARRANQUE_PROXIMA_SESION
     kind: normative
     level: 1
     path: governance/PROMPT_ARRANQUE_PROXIMA_SESION.md
-    hash: 036df36f2f07e0a4
+    hash: 865e39155df2471c
     authority_declared: true
     parent: GOVERNANCE-001
   - id: NORMATIVE-PROMPT_AUDITORIA_EXCEL
@@ -54,7 +54,7 @@ componentes:
     kind: normative
     level: 1
     path: governance/QUIRA_MASTER_INDEX.md
-    hash: 5505b621eaaf526c
+    hash: 2971a8dd7973091a
     authority_declared: true
     parent: GOVERNANCE-001
   - id: NORMATIVE-QUIRA_STATE
@@ -313,14 +313,14 @@ componentes:
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-014_BETA_CORE_Roadmap.md
-    hash: 4bbb3eff5f47caea
+    hash: 395318a7563e7f6b
     authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_ADR-ADR-015_Validacion_OBS-QNKC-02
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-015_Validacion_OBS-QNKC-02.md
-    hash: a5a9e0b4a16f69a7
+    hash: 99822fe15426bde7
     authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_ADR-ADR-016_DCO_Dominio_Constitucion
@@ -362,14 +362,14 @@ componentes:
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-021_Ontologia_Corpus_Motor_Trazabilidad.md
-    hash: 36ff85366141f5c8
+    hash: 51959db0d3b0a1eb
     authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_ADR-ADR-022_Principio_Divergencia_A_
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-022_Principio_Divergencia_A_D.md
-    hash: d57a5720c0e31506
+    hash: f563c0c3f55deed8
     authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_ADR-ADR-023_Arquitectura_Tres_Nivele
@@ -383,21 +383,21 @@ componentes:
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-024_Inversion_Arquitectura_QUIRA_Radar_Nacional.md
-    hash: 430d662753edba7e
+    hash: c2c015315aee5e2f
     authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_ADR-ADR-025_Principio_Alertas_QUIRA_
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-025_Principio_Alertas_QUIRA_Coherencia_Institucional.md
-    hash: c3e7bc7cfe8ff581
+    hash: 0a6af658e1175701
     authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_ADR-ADR-026_Topologia_Funcional_QUIR
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-026_Topologia_Funcional_QUIRA.md
-    hash: 6335055ce25c87c9
+    hash: b6e606068b05b521
     authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_ADR-ADR-027_Tres_Capas_Soberania_Len
@@ -418,7 +418,7 @@ componentes:
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-029_Desexcelizacion_Modelo_Canonico.md
-    hash: 04f221b09fd8ed56
+    hash: ed754ca02203ff92
     authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_ADR-ADR-030_Manual_Canonico_Interfac
@@ -439,7 +439,7 @@ componentes:
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-032_Motor_Biografia.md
-    hash: c469def525b6eba0
+    hash: 54c11f4aae30a381
     authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_ADR-ADR-033_Dos_Verdades_QUIRA
@@ -453,7 +453,7 @@ componentes:
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-034_Orquestacion_Operaciones_Capa_B.md
-    hash: 4ce56a93e7d20579
+    hash: a56bc529529c200d
     authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_ADR-ADR-035_Biblioteca_Reglas_Normat
@@ -467,7 +467,7 @@ componentes:
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-036_Universo_Operacional_Metas.md
-    hash: 086bc1a7e33b1c5d
+    hash: 352048478250eaea
     authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_ADR-ADR-037_Frame_Cuatro_Dimensiones
@@ -502,14 +502,14 @@ componentes:
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-041_Arquitectura_de_Productos_QUIRA.md
-    hash: d17fa971083e6b12
+    hash: b4c1882551a46cb1
     authority_declared: true
     parent: CONSTITUCION-001
   - id: ADR-042
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-042_Consola_de_Monitoreo.md
-    hash: ae2be5cb7317cfd4
+    hash: 85375f09f575912a
     authority_declared: true
     parent: ADR-041
   - id: CANON_PCD-PCD-D01_Planificacion
@@ -530,7 +530,7 @@ componentes:
     kind: canon_pcd
     level: 2
     path: docs/pcd/PCD-D03_Gobernanza_Mandato.md
-    hash: f76e7c2d09651137
+    hash: b5e783d4683d8b1f
     authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_PCD-PCD-D09_Rendicion_Cuentas
@@ -600,7 +600,7 @@ componentes:
     kind: observation
     level: 2
     path: docs/observations/OBS-010_Catalogo_Metas_PDOT_Incompleto.md
-    hash: 87346a5118a9988e
+    hash: fea7dee6cccb0734
     authority_declared: true
     parent: GOVERNANCE-001
   - id: OBSERVATION-OBS-011_Incongruencia_Intersiste

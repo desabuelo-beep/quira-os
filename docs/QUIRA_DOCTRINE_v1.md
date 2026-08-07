@@ -254,6 +254,18 @@ Todo lo demás deriva de él.
 
 ## 2. Los cuatro productos — arquitectura del ecosistema
 
+> ⚠️ **Sección anterior a ADR-041, sellado el 2026-08-07.** Describe el modelo en que el GAD
+> era cliente que operaba la herramienta. El ADR lo cambió: **el GAD es SUJETO OBSERVADO**, y
+> el orden de fases pasa a ser F1 Observatorio + Ciudadana (entradas de evidencia) · F2
+> Institucional + Cooperación + Impact · F3 Economic.
+>
+> Lo que **sí sigue vigente** de esta sección: QUIRA Institucional existe como producto de
+> GESTIÓN para el GAD —la licencia de ADR-041 §4-ter—. No es cliente de la OBSERVACIÓN; puede
+> serlo de una herramienta de gestión. Son cosas distintas y este documento las separa mal.
+>
+> No se reescribe aquí: el modelo de familia completo se fija en su propio ADR, con el
+> criterio funcional acordado. Mientras tanto, **ante discrepancia manda ADR-041**.
+
 ```
 QUIRA PLATFORM
 │

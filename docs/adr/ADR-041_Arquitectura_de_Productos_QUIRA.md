@@ -4,7 +4,7 @@ authority:
   parent: CONSTITUCION-001
   constitution_articles: [1, 2, 4, 5]
   type: ARQUITECTONICA
-status: PROPUESTA — pendiente de sello de Javo (ADR-035 §5)
+status: APROBADO — sellado por Javo (2026-08-07)
 fecha: 2026-08-05
 ---
 
@@ -223,8 +223,8 @@ evidencia · contradicción*—. Un documento ciudadano no entra ni rechazado ni
 
 | # | Qué se toca | Estado |
 |---|---|---|
-| 1 | `NOMENCLATURA_CANONICA.md` — fases de `civic` e `impact`; Observatorio como producto de `ops` | ⏳ tras el sello |
-| 2 | `BOOT §LA TESIS` — orden de fases | ⏳ tras el sello |
+| 1 | `NOMENCLATURA_CANONICA.md` — fases de `civic` e `impact`; Observatorio como producto de `ops` | ✅ propagado (2026-08-07) |
+| 2 | `BOOT §LA TESIS` — orden de fases | ✅ propagado (2026-08-07) |
 | 3 | Pantalla de acceso — reconstrucción sobre esta arquitectura | ✅ hecha (2026-08-06) |
 | 4 | R-F — estatuto del aporte ciudadano (§6) | ⛔ decisión de Javo |
 
