@@ -18,6 +18,34 @@ import streamlit as st
 
 
 # ══════════════════════════════════════════════════════════════════════════════
+# CARGA PEREZOSA — por qué existe (2026-08-07)
+# ══════════════════════════════════════════════════════════════════════════════
+# Abrir Operaciones costaba 326 segundos. La causa no era la red ni la base:
+# `st.expander` NO es perezoso en Streamlit — el contenido de un expander se
+# EJECUTA aunque esté cerrado— y `st.tabs` renderiza todas las pestañas, no solo
+# la activa. Con cinco pestañas y siete expanders, cada uno montando una página
+# entera, se ejecutaban doce páginas completas para mostrar una.
+#
+# Medido por pestaña antes del cambio:
+#   Configuración 150 s · Cargas 113 s · Procesos 58 s · Confiabilidad 4 s
+# El servicio local ausente aportaba solo 12 s de los 326: la sospecha inicial
+# era la equivocada, y por eso se midió en vez de suponer.
+
+def _perezosa(etiqueta: str, clave: str, cargar, ayuda: str = "") -> None:
+    """Sección que se monta SOLO cuando se abre.
+
+    Sustituye a `st.expander`, que ejecuta su contenido esté abierto o cerrado.
+    El interruptor conserva su estado entre recargas, así que lo que el usuario
+    dejó abierto sigue abierto."""
+    if st.toggle(etiqueta, key=f"ops_ver_{clave}", help=ayuda or None):
+        with st.container(border=True):
+            try:
+                cargar()
+            except Exception as e:  # noqa: BLE001
+                st.info(f"Sección no disponible: {e}")
+
+
+# ══════════════════════════════════════════════════════════════════════════════
 # Tab 1 — Pipeline
 # ══════════════════════════════════════════════════════════════════════════════
 
@@ -31,28 +59,28 @@ def _tab_pipeline() -> None:
             st.success("Cache invalidado — recargando datos...")
             st.rerun()
 
-    # Delegar al Centro de Control existente
-    try:
-        from quira_pages.p_sentinel_hub import render as _sentinel
-        _sentinel()
-    except Exception:
-        pass
+    # El centro de control consulta un servicio local que normalmente no está
+    # corriendo, y agota su espera en cada uno de tres extremos. Se carga bajo
+    # demanda: son 12 s que no tiene sentido pagar al abrir la pantalla.
+    def _sentinel():
+        from quira_pages.p_sentinel_hub import render as r
+        r()
+
+    _perezosa("🛰 Centro de control", "sentinel", _sentinel,
+              "Consulta el servicio local de vigilancia; tarda si no está activo")
 
     st.markdown("---")
-    # Panel de Carga y Ingesta Mensual como sub-secciones
-    with st.expander("⬆️ Panel de Carga manual"):
-        try:
-            from quira_pages.p_carga import render as _carga
-            _carga()
-        except Exception as e:
-            st.info(f"Panel de Carga no disponible: {e}")
 
-    with st.expander("📥 Ingesta Mensual (Gold Master)"):
-        try:
-            from quira_pages.p_ingesta import render as _ingesta
-            _ingesta()
-        except Exception as e:
-            st.info(f"Módulo de ingesta no disponible: {e}")
+    def _carga():
+        from quira_pages.p_carga import render as r
+        r()
+
+    def _ingesta():
+        from quira_pages.p_ingesta import render as r
+        r()
+
+    _perezosa("⬆️ Panel de carga manual", "carga", _carga)
+    _perezosa("📥 Ingesta mensual", "ingesta", _ingesta)
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -68,19 +96,17 @@ def _tab_snapshots() -> None:
         pass
 
     st.markdown("---")
-    with st.expander("📊 Seguimiento de snapshots"):
-        try:
-            from quira_pages.p_seguimiento import render as _seg
-            _seg()
-        except Exception as e:
-            st.info(f"Módulo de seguimiento no disponible: {e}")
 
-    with st.expander("📄 Reportes"):
-        try:
-            from quira_pages.p_reportes import render as _rep
-            _rep()
-        except Exception as e:
-            st.info(f"Módulo de reportes no disponible: {e}")
+    def _seg():
+        from quira_pages.p_seguimiento import render as r
+        r()
+
+    def _rep():
+        from quira_pages.p_reportes import render as r
+        r()
+
+    _perezosa("📊 Seguimiento de cargas", "seguimiento", _seg)
+    _perezosa("📄 Reportes", "reportes", _rep)
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -309,26 +335,25 @@ def _tab_config() -> None:
     except Exception:
         pass
 
-    with st.expander("🔮 Sentinel IA"):
-        try:
-            from quira_pages.p_aprendizaje import render as _aprendizaje
-            _aprendizaje()
-        except Exception as e:
-            st.info(f"Sentinel IA no disponible: {e}")
+    st.markdown("---")
 
-    with st.expander("🗓 Gestión"):
-        try:
-            from quira_pages.p_gestion import render as _gestion
-            _gestion()
-        except Exception as e:
-            st.info(f"Módulo de gestión no disponible: {e}")
+    def _aprendizaje():
+        from quira_pages.p_aprendizaje import render as r
+        r()
 
-    with st.expander("🔔 Monitor de Alertas"):
-        try:
-            from quira_pages.p_alertas import render as _alertas
-            _alertas()
-        except Exception as e:
-            st.info(f"Monitor de alertas no disponible: {e}")
+    def _gestion():
+        from quira_pages.p_gestion import render as r
+        r()
+
+    def _alertas():
+        from quira_pages.p_alertas import render as r
+        r()
+
+    # Estas tres eran las más caras: montaban una página completa cada una
+    # aunque el expander estuviera cerrado — 150 s de los 326 totales.
+    _perezosa("🔮 Aprendizaje del sistema", "aprendizaje", _aprendizaje)
+    _perezosa("🗓 Gestión", "gestion", _gestion)
+    _perezosa("🔔 Monitor de señales", "alertas", _alertas)
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -364,21 +389,17 @@ def render() -> None:
 </div>
     """, unsafe_allow_html=True)
 
-    t1, t2, t3, t4, t5 = st.tabs([
-        "⚡ Procesos",
-        "📦 Cargas",
-        "📡 Confiabilidad de fuentes",
-        "📋 Motor de cálculo",
-        "⚙ Configuración",
-    ])
-
-    with t1:
-        _tab_pipeline()
-    with t2:
-        _tab_snapshots()
-    with t3:
-        _tab_reliability()
-    with t4:
-        _tab_gold_master()
-    with t5:
-        _tab_config()
+    # Un selector en vez de `st.tabs`: las pestañas de Streamlit renderizan su
+    # contenido TODAS a la vez, esté visible o no. Con un selector se monta
+    # únicamente la sección elegida, que es lo que el usuario está mirando.
+    SECCIONES = {
+        "⚡ Procesos":                 _tab_pipeline,
+        "📦 Cargas":                   _tab_snapshots,
+        "📡 Confiabilidad de fuentes": _tab_reliability,
+        "📋 Motor de cálculo":         _tab_gold_master,
+        "⚙ Configuración":             _tab_config,
+    }
+    elegida = st.radio("Sección", list(SECCIONES), horizontal=True,
+                       key="ops_seccion", label_visibility="collapsed")
+    st.markdown("---")
+    SECCIONES[elegida]()

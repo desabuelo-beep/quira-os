@@ -81,9 +81,10 @@ def _verificar(modulo: str, huella: str, rol: str) -> tuple[bool, str]:
     """(pasa, detalle). Tres condiciones: sin excepción, sin `st.error` —así reporta el
     router un módulo caído sin tumbar la app— y con la huella del cajón en el HTML.
 
-    Operaciones monta el centro de control completo y tarda más de dos minutos,
-    así que se le da margen: el timeout medía la lentitud, no un fallo."""
-    at = _correr(modulo, rol=rol, timeout=300 if modulo == "env:ops" else 120)
+    El margen especial que necesitaba Operaciones se retiró: montaba doce
+    páginas completas para mostrar una y tardaba casi cuatro minutos. Con carga
+    perezosa entra en seis segundos, como cualquier otro destino."""
+    at = _correr(modulo, rol=rol)
     if at.exception:
         return False, f"EXCEPCIÓN: {str(at.exception[0].message)[:80]}"
     errores = [e.value for e in at.error]
