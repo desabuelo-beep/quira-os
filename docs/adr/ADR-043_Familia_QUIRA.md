@@ -4,7 +4,7 @@ authority:
   parent: ADR-041
   constitution_articles: [1, 2, 3, 4, 5]
   type: ARQUITECTONICA
-status: PROPUESTA — pendiente de sello de Javo (ADR-035 §5)
+status: APROBADO — sellado por Javo (2026-08-07)
 fecha: 2026-08-07
 ---
 
@@ -14,6 +14,10 @@ fecha: 2026-08-07
 > de cada una para establecer la familia real?"*. La pregunta correcta no es cuántas hay,
 > sino **qué tiene que demostrar una propuesta para ser una**. Este ADR fija esa prueba, y
 > la aplica a lo que existe hoy.
+>
+> ⚖️ **Alcance.** Este ADR **no crea productos nuevos**: establece el criterio por el cual una
+> capacidad futura puede ser reconocida como producto QUIRA — y por el cual otra puede ser
+> rechazada por ser una vista.
 
 ## 1 · El problema que se resuelve
 
@@ -112,10 +116,30 @@ técnica, es la razón real de que esté en Fase 3.
   con posición y cualquier señalado podrá alegar parte interesada. Se perdería lo que sostiene
   todo lo demás.
 - **Impact NO genera evidencia primaria** ni sustituye al Observatorio.
+
+  > **Impact puede habilitar investigación aplicada, pero no sustituye la función
+  > epistemológica del investigador.**
+  >
+  > Si una universidad publica un estudio con datos de QUIRA, el mérito interpretativo es de
+  > quien investiga — y la responsabilidad por la interpretación, también. QUIRA entrega
+  > evidencia, método, trazabilidad y reproducibilidad; **no entrega opinión, ni ranking
+  > ideológico, ni juicio político.** La distinción protege al investigador, que conserva su
+  > autoría, y a Dylus Lab, que no responde por conclusiones ajenas.
 - **Cooperación NO decide financiamiento** ni gestiona fondos: informa la decisión de quien
   la toma.
 - **Institucional NO convierte al GAD en cliente de la observación** (ADR-041 §4-ter). Puede
   serlo de una herramienta de gestión; el GAD sigue siendo sujeto observado.
+
+  > **El usuario institucional puede ser el GAD como entidad de gestión, pero nunca como
+  > sujeto que controla, condiciona o modifica la observación pública que realiza el
+  > Observatorio.**
+  >
+  > Es la cláusula que hace viable el modelo mixto. QUIRA observa al GAD y a la vez puede
+  > venderle herramientas para gestionarse: sin esta línea, un municipio con licencia tendría
+  > una palanca sobre lo que se publica de él, y la independencia del Observatorio quedaría
+  > en entredicho ante cualquier tercero. **Gestionar ≠ influir en la observación.** La
+  > relación comercial se establece sobre la herramienta de gestión, jamás sobre el alcance,
+  > el método o el resultado de la observación.
 - **Ningún producto certifica verdad.** Certifican verificabilidad, con la escala de cinco
   niveles del canon.
 
@@ -126,8 +150,21 @@ articulación**. Este ADR añade la consecuencia:
 
 > **El Centro organiza el conocimiento para ser consultado; no monopoliza el acceso a él.**
 
-Los productos **no cuelgan** del Centro: son hermanos suyos, y cada uno entra por donde su
-contrato lo exige.
+Los productos **no cuelgan** del Centro. **El Centro y los productos son capas paralelas de
+explotación del mismo conocimiento** —no son de la misma naturaleza: el Centro no es un
+producto, es la capa de consulta— y cada uno entra por donde su contrato lo exige.
+
+```
+                    GOLD MASTER
+                         │
+                         ▼
+        CONOCIMIENTO TERRITORIAL VERIFICABLE
+                         │
+              ┌──────────┴──────────┐
+              │                     │
+            CENTRO              PRODUCTOS
+        capa de consulta    contratos especializados
+```
 
 | Producto | Entra por |
 |---|---|
@@ -145,8 +182,27 @@ cuello de botella de todo el sistema.
 |---|---|---|
 | 1 | `NOMENCLATURA_CANONICA §2` — `impact` reservado, `coop` activo | ✅ hecho (2026-08-07) |
 | 2 | Portada — publicar la familia con entradas y productos separados | ⏳ tras el sello |
-| 3 | `ADR-024` §Capa C — Impact y Cooperación con el mismo destinatario | ⏳ corregir tras el sello |
+| 3 | `ADR-024` §Capa C — Impact y Cooperación con el mismo destinatario | ⏳ **ADR-044 de rectificación** — NO se edita |
 | 4 | Ambiente para `QUIRA Institucional` como producto de gestión | ⛔ no existe; depende del modelo de licencia |
+
+### 6-bis · Por qué ADR-024 no se corrige editándolo
+
+`ADR-024 §Capa C` da a Impact y a Cooperación el mismo destinatario. Este ADR dice lo
+contrario, y la contradicción es real. **Pero no se resuelve reescribiendo el documento
+anterior.**
+
+Un ADR sellado registra una decisión tomada con el vocabulario y la información de su
+momento. Cambiarle las palabras no corrige un error: **borra la evidencia de que se cometió**,
+y con ella la posibilidad de entender por qué se decidió así.
+
+La lección es reciente y costó cuatro reversiones: el 2026-08-07 un reemplazo automático de
+«QUIRA Institucional» por «Observatorio» alcanzó a ADR-024, ADR-026 y al propio ADR-041, y
+produjo afirmaciones falsas —entre ellas que el Observatorio era a la vez entrada de Fase 1
+y consumidor de Fase 2—. La contradicción no estaba en los ADR: la introdujo la edición.
+
+Forma correcta: **ADR-044 · Rectificación de taxonomía de productos heredada**, que declare
+expresamente qué parte de ADR-024 queda superada y por qué. La trazabilidad documental vale
+más que la pulcritud del texto viejo.
 
 ## 7 · Lo que este ADR NO decide
 
