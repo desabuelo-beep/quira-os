@@ -38,13 +38,14 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 
 ✅ **PCD: d01·d02·d03·d09** · **d08 ENTRABLE** (**Asamblea AUTÓNOMA** · CNO-VIII(8) · **OBS-012..017**).
 🩺 **Canon curado por DOM (R.8), ICPI intacto. Gate `check_health.py`: NO adivinar.**
 🏛️ **GOBERNANZA v1.0:** `identity/`→`governance/`→`marco_teorico/`→Canon→`registry/`. ⚠️ Derivación **solo en lo catalogado**.
-🖥️ **d08 EN WEB + ENTRABLE** (tarjeta 191→162→**15%**, NO el 48,33): **2 CAUSAS**: **66 inverificable-instrumento** · **96 sin-tema**. MRSPP v4 26·8·**0**·9 · **T0**.
-🩹 **2 BUGS PROD (19 d)**: `_GOV_MODULES` borrado → NameError p/ no-Ejecutivo · `qinv_*` no ruteaba. Gate **`smoke_cajones.py`** (AppTest 8×2 roles · HUELLA).
-🎚️ **Gate `check_epistemico.py`**: 4 de 10 verificaciones son léxicas (inferencia·prescripción·alcance·terminología); las 6 de juicio, lectura. **d01·d08 = 0**.
+🖥️ **d08 EN WEB** (tarjeta 191→162→**15%**, NO el 48,33): **2 CAUSAS**: **66 inverificable-instrumento** · **96 sin-tema**. MRSPP v4 26·8·**0**·9 · **T0**.
+🩹 Gate **`smoke_cajones.py`** (AppTest 8×2 roles · **HUELLA**: sin ella daba falsos OK).
+🎚️ Gate **`check_epistemico.py`**: 4 de 10 checks léxicos; 6 de juicio = lectura. **d01·d08·landing = 0**.
+🎨 **Landing v7 · identidad v1.1**: marca = **asset, NO se redibuja** · 1 acento coral · **plano afuera/volcánico adentro** · **acceso único: Observatorio** · fail-open cerrado → docstring `login_view.py`.
 🔌 **CABLEADO** (`MATRIZ_CABLEADO_CANONICO.md`): **GM→SILOS→DOM→QUIRA**. **S1·S6·S9 sin DOM.**
-🧨 **OBS-023 · brecha ICM↔ICPI NO citable:** bug escala `B36` + **DESCALCE PDOT** (1º comparable = **ICM 2025**, ~may-26). **`SAT-I`=S6 SIGAD**, deuda **epistemológica**. ⛔ NO redefinir (R.1).
+🧨 **OBS-023 · brecha ICM↔ICPI NO citable:** bug escala `B36` + **DESCALCE PDOT** (1º comparable = **ICM 2025**, ~may-26). **`SAT-I`=S6 SIGAD**. ⛔ NO redefinir (R.1).
 🚨 **OBS-022: SAT sin BRN, deuda 90%→60%.** PCD → **`cerrado con deuda declarada`** (R.8). Gate `check_sat_brn.py`. ⛔ `SAT-IX`(d08) ≠ `SAT-IX-001`(=SAT-V).
-🏛️ **R-C..R-H → `PROTOCOLO_CURACION_DOMINIO.md` §3** (C dueño califica · D **se mide, no se parcha** · **E LEY**: solo MCR · F 3 vías · G cableado · **H no comparar horizontes**).
+🏛️ **R-C..R-H → `PROTOCOLO_CURACION_DOMINIO.md` §3** (D **se mide, no se parcha** · **E LEY**: solo MCR · **H no comparar horizontes**).
 🔬 **d01 §05** (CVI · OBS-020): POA **100% QUÉ · 1,1% DÓNDE · 3,5% QUIÉN · 1 de 1027 ambas**. **148 a 1** con financiador externo (hipótesis, n=12). `inverificable` ≠ `no atendido`.
 ⚖️ **3 CAPAS**: jurídica (**Guía LOTAIP=LEY**) · operativa (**d07**) · analítica (**no tramita**). 🧪 **H-ARQ-01** HIPÓTESIS ⛔R-E.
 🧠 **DESCUBRIMIENTO NORMATIVO**: NO es motor nuevo — 4º de los **5 MCIP**. Vacío → `C10-{n}` → sella Javo. **Laboratorio, NO runtime**. ⛔R-E.
