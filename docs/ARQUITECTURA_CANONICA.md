@@ -39,7 +39,7 @@ GOLD MASTER  →  PIPELINE  →  SUPABASE  →  STREAMLIT
 
 QUIRA Intelligence opera en **dos mundos separados con propósitos, audiencias y reglas completamente distintas**. Esta separación no es de implementación — es de doctrina.
 
-### El Primer Mundo: QUIRA Institucional (Núcleo Soberano)
+### El Primer Mundo: Observatorio (Núcleo Soberano)
 
 ```
 MUNICIPIO
@@ -87,9 +87,9 @@ CIUDADANÍA / ACADEMIA / ONGs
 
 ### Tabla de Mundos
 
-| Dimensión | QUIRA Institucional | QUIRA Ciudadano |
+| Dimensión | Observatorio | QUIRA Ciudadano |
 |---|---|---|
-| Nombre público | QUIRA Institucional | QUIRA Ciudadano |
+| Nombre público | Observatorio | QUIRA Ciudadano |
 | Código interno | `GOV` | `CIV` |
 | Audiencia | Funcionarios, Alcaldía, Analistas, Equipo QUIRA | Ciudadanía, Academia, ONGs, Cooperación |
 | Acceso | Restringido (autenticación por roles) | Público (sin autenticación) |
@@ -105,7 +105,7 @@ CIUDADANÍA / ACADEMIA / ONGs
 
 | Código Interno | Nombre Público | Audiencia Principal | Estado |
 |---|---|---|---|
-| `GOV` | QUIRA Institucional | Funcionarios municipales, Alcaldía | PMV operativo |
+| `GOV` | Observatorio | Funcionarios municipales, Alcaldía | PMV operativo |
 | `CIV` | QUIRA Ciudadano | Ciudadanía, Academia, ONGs | Fase 3 (futuro) |
 | `IMPACT` | QUIRA Cooperación | Cooperación internacional, Investigadores | Placeholder |
 | `OPS` | Operaciones (interno) | Equipo Dylus Lab | PMV operativo |
@@ -591,7 +591,7 @@ La hoja de ruta está organizada en tres fases que siguen la lógica de consolid
 
 ### Fase 2 — Consolidación GOV (Sprint 4)
 
-**Objetivo:** QUIRA Institucional con experiencia completa, narrativa institucional y herramientas del ciclo mensual.
+**Objetivo:** Observatorio con experiencia completa, narrativa institucional y herramientas del ciclo mensual.
 
 | Ítem | Descripción |
 |---|---|

@@ -4,7 +4,7 @@ Infraestructura de monitoreo institucional preventivo para GADs del Ecuador.
 Dylus Lab © 2026
 
 ARQUITECTURA 4 AMBIENTES (regla canónica permanente — ver docs/NOMENCLATURA_CANONICA.md):
-  🏛 GOV    — QUIRA Institucional · Ejecutivo + Técnico · ACTIVO
+  🏛 GOV    — Observatorio · Ejecutivo + Técnico · ACTIVO
   🌎 Civic  — QUIRA Ciudadano · acceso público · Fase 3
   📑 Impact — QUIRA Cooperación · academia/cooperación · Placeholder
   ⚙  OPS   — Operaciones · Operador + Administrador · ACTIVO

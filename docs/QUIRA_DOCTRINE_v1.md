@@ -258,6 +258,14 @@ Todo lo demás deriva de él.
 QUIRA PLATFORM
 │
 ├── QUIRA INSTITUCIONAL  ──  Para el GAD (alcalde, técnico, planificación)
+│      ⚠️ NO renombrar a «Observatorio» (2026-08-07). Aquí «Institucional»
+│      nombra el producto DE GESTIÓN para el GAD —lo que ADR-041 §4-ter
+│      llama la licencia de gestión—, no el ambiente de observación. El
+│      Observatorio OBSERVA al GAD; este producto le da herramientas. Decir
+│      que el GAD «opera el Observatorio» invertiría la Tesis: el GAD es
+│      sujeto observado, no operador de su propio observador.
+│      El resto de este documento sí se renombró, porque ahí «Institucional»
+│      nombraba el ambiente que hoy es el Observatorio.
 │     Produce: gobernanza, trazabilidad, cumplimiento, alertas
 │
 ├── QUIRA CIUDADANA  ──  Para la ciudadanía
@@ -515,7 +523,7 @@ no memoria presupuestaria, sino memoria de compromiso público.
 
 ---
 
-## 6. Arquitectura de experiencia — QUIRA Institucional
+## 6. Arquitectura de experiencia — Observatorio
 
 ### 6.0 Nombre del motor — Motor Predictivo Institucional v1
 
@@ -538,7 +546,7 @@ La lógica TOP y la arquitectura del Ecosistema sobrevivirán cualquier migraci�
 ### 6.1 El modelo cognitivo correcto
 
 ```
-QUIRA INSTITUCIONAL
+OBSERVATORIO
 │
 ├── VISTA EJECUTIVA  (automático: rol ejecutivo)
 │     Bloomberg-style · 5 zonas · sin sidebar de módulos · QUIRA IA integrado
@@ -747,7 +755,7 @@ validar modelo y demostrar resultados antes de vender a terceros.
 ```
 HOY
 Dylus Lab hace: ingesta · pipeline · snapshot · análisis · alertas
-GAD tiene: acceso de lectura a QUIRA Institucional
+GAD tiene: acceso de lectura a Observatorio
 Metodología: completamente bajo control de Dylus Lab
 
 FUTURO (primer contrato municipal)
@@ -769,7 +777,7 @@ Sí:
 
 ## 10. QUIRA Operaciones — Centro Nacional de Observabilidad Municipal
 
-OPS no pertenece cognitivamente a QUIRA Institucional.
+OPS no pertenece cognitivamente a Observatorio.
 OPS pertenece al negocio QUIRA / Dylus Lab.
 
 **OPS NO ES** el lugar donde se carga información del municipio.

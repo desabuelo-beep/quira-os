@@ -56,7 +56,7 @@ administrador_hash = "<PBKDF2-SHA256 del password>"
 
 | Key interno | Label sidebar | Nombre público | Audiencia | Estado |
 |---|---|---|---|---|
-| `gov` | GOV | QUIRA Institucional | Ejecutivo, Técnico (+ Admin para verificación) | ✅ Activo |
+| `gov` | GOV | Observatorio | Ejecutivo, Técnico (+ Admin para verificación) | ✅ Activo |
 | `civic` | Civic | QUIRA Ciudadano | Ciudadanía, academia, ONGs | 🔄 Fase 3 |
 | `impact` | Impact | QUIRA Cooperación | Cooperación internacional, investigadores | ⏳ Placeholder |
 | `ops` | OPS | Operaciones | Equipo Dylus Lab | ✅ Activo |

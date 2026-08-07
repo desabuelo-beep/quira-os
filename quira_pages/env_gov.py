@@ -1,6 +1,6 @@
 """
 QUIRA Intelligence — Ambiente 🏛 GOV  (Router v4 · Sprint A+ · 2026-05-27)
-QUIRA Institucional — Monitoreo preventivo para GADs del Ecuador.
+Observatorio — Monitoreo preventivo para GADs del Ecuador.
 
 Regla doctrinal permanente:
   env_gov.py ES UN ROUTER. No contiene contenido ni lógica de negocio.

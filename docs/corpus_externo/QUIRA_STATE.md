@@ -115,7 +115,7 @@ adr021_candidato: "LOPC como ley de coordinación constitucional (LOPC_101=27>CE
 
 ### Las 5 Dimensiones
 ```
-QUIRA Institucional  → núcleo activo (PMV en construcción)
+Observatorio  → núcleo activo (PMV en construcción)
 QUIRA Ciudadana      → concepto congelado (quira_ciudadana_concept.md)
 QUIRA Operaciones    → Consola C1 spec congelada (spec_consola_c1_v1.md)
 QUIRA Impact         → placeholder futuro

@@ -98,7 +98,7 @@ dashboard — un sistema operativo territorial. **6 productos, un solo motor**
 | Producto | Usuario | Qué resuelve · rol en el observatorio | Línea CAF |
 |---|---|---|---|
 | **QUIRA Operaciones** | Dylus Lab (ingesta nacional) | Datos dispersos → decisiones · MOTOR 1 (barrido activo) | 3 |
-| **QUIRA Institucional / Gestión** | GAD, control | GAD predictivo/preventivo · MOTOR 3 (el GAD aporta dato ORO) | 3 + 8 |
+| **Observatorio / Gestión** | GAD, control | GAD predictivo/preventivo · MOTOR 3 (el GAD aporta dato ORO) | 3 + 8 |
 | **QUIRA Ciudadana** | Ciudadanía, OSC | Participación y control social · MOTOR 2 (la gente exige+sube) | 8 |
 
 **FASE 2 — los 3 posteriores (vistas de EXPLOTACIÓN, mientras se opera):**

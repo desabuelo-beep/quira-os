@@ -60,7 +60,7 @@ Observatorio… y por otro lado con otra entrada, QUIRA Ciudadana"*.
   (control social)                                          │
                                         consumen ───────────┤
                                         · QUIRA Cooperación / Impact
-                                        · QUIRA Institucional
+                                        · Observatorio
                                         · QUIRA Economic
 ```
 
@@ -74,7 +74,7 @@ niveles sin abrirle una puerta lateral.
 | Fase | Productos | Misión |
 |---|---|---|
 | **1** | **Observatorio** · **QUIRA Ciudadana** | **construir la evidencia** |
-| 2 | QUIRA Cooperación / Impact · QUIRA Institucional | ofrecer inteligencia a partir de esa evidencia |
+| 2 | QUIRA Cooperación / Impact · Observatorio | ofrecer inteligencia a partir de esa evidencia |
 | 3 | QUIRA Economic | inteligencia económica del territorio |
 
 **El orden no es una preferencia: es una restricción.** Javo lo formula así: *"con estas dos
@@ -225,8 +225,26 @@ evidencia · contradicción*—. Un documento ciudadano no entra ni rechazado ni
 |---|---|---|
 | 1 | `NOMENCLATURA_CANONICA.md` — fases de `civic` e `impact`; Observatorio como producto de `ops` | ⏳ tras el sello |
 | 2 | `BOOT §LA TESIS` — orden de fases | ⏳ tras el sello |
-| 3 | Pantalla de acceso — reconstrucción sobre esta arquitectura | ⏳ tras el sello |
+| 3 | Pantalla de acceso — reconstrucción sobre esta arquitectura | ✅ hecha (2026-08-06) |
 | 4 | R-F — estatuto del aporte ciudadano (§6) | ⛔ decisión de Javo |
+
+### 7-bis · Lo ya implementado sin esperar el sello, y por qué
+
+La pantalla de acceso se reconstruyó porque **publicaba una arquitectura que ya no existía**
+—era el defecto que abrió este ADR— y dejarla así seguía mostrando al mundo un modelo
+retirado. Se implementó lo que el ADR describe: una sola puerta, el Observatorio; Operaciones
+fuera de la portada; el Centro como núcleo.
+
+De ahí derivó, ya con el modelo delante, la infraestructura que le faltaba: **ADR-042**
+—aprobado el 2026-08-07— separa el Observatorio (la función) de la Consola de Monitoreo (la
+infraestructura que la ejecuta) y de Operaciones (mantenimiento técnico), y fija que la
+integración pasa por la MATRIZ_CANONICA y no por el Gold Master.
+
+**Lo que sigue esperando el sello es el canon escrito**, y con razón: mientras este ADR no se
+selle, `BOOT §LA TESIS` mantiene el orden vigente —*Fase 1 = Operaciones · Ciudadana ·
+Institucional*—, que **contradice** el §4 de este documento (Fase 1 = Observatorio +
+Ciudadana; Operaciones no es producto). Esa contradicción es visible y deliberada: cambiar el
+BOOT antes del sello sería dar por decidido lo que no lo está.
 
 ## 8 · Lo que este ADR NO decide, y conviene decirlo
 

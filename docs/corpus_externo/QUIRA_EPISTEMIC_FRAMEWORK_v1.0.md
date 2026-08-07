@@ -239,7 +239,7 @@ La prohibición de alucinación es arquitectónica, no solo operacional.
 ## VII. LOS CINCO PRODUCTOS — Un solo grafo, cinco verbos
 
 ```
-QUIRA Institucional → verbo: GESTIONAR → GADs, alcaldía, direcciones técnicas, academia
+Observatorio → verbo: GESTIONAR → GADs, alcaldía, direcciones técnicas, academia
 QUIRA Ciudadana     → verbo: EXIGIR    → ciudadanos, periodistas, candidatos
 QUIRA Operaciones   → verbo: OBSERVAR  → Dylus Lab, QUIRA Operaciones (interno)
 QUIRA Impact        → verbo: TRAZAR    → CAF, BID, BM, PNUD, UE, GIZ, JICA

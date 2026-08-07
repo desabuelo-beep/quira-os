@@ -97,7 +97,7 @@ Uno es el motor epistemológico que los sustenta a todos.
 └────────────────────────▲─────────────────────────────┘
                          │
 ┌────────────────────────┴─────────────────────────────┐
-│  QUIRA INSTITUCIONAL                                 │
+│  OBSERVATORIO                                 │
 │  Alcaldías · Direcciones · Mancomunidades            │
 │  Gestión preventiva e integridad                     │
 └────────────────────────▲─────────────────────────────┘
@@ -139,7 +139,7 @@ Con el Core, son inteligencia causal verificable.
 
 ---
 
-### QUIRA Institucional — Gestión Preventiva
+### Observatorio — Gestión Preventiva
 
 **Audiencia:** Alcaldías, Concejo Municipal, Direcciones departamentales,  
 Empresas públicas municipales, Mancomunidades

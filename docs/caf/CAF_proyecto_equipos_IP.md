@@ -72,7 +72,7 @@ Transformar datos dispersos en decisiones operativas.
 
 ---
 
-**2\. QUIRA Institucional**
+**2\. Observatorio**
 
 **Usuario:** GAD, entidades de control, cooperación internacional.
 
@@ -147,7 +147,7 @@ El ecosistema se estructura en tres productos complementarios:
 
 • QUIRA Operaciones: apoyo a la toma de decisiones mediante integración de datos territoriales, indicadores, planificación y financiamiento.
 
-• QUIRA Institucional: gobernanza preventiva, seguimiento de instrumentos de planificación, trazabilidad y control de gestión.
+• Observatorio: gobernanza preventiva, seguimiento de instrumentos de planificación, trazabilidad y control de gestión.
 
 • QUIRA Ciudadana: acceso comprensible a la información pública, transparencia y participación informada.
 

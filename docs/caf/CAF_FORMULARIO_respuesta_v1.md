@@ -43,7 +43,7 @@ de gestión pública y un grafo territorial).
 Se estructura en tres productos complementarios sobre un mismo motor:
 • QUIRA Operaciones — integra datos territoriales, indicadores, planificación y
   financiamiento para apoyar decisiones.
-• QUIRA Institucional — gobernanza preventiva: trazabilidad plan–presupuesto–
+• Observatorio — gobernanza preventiva: trazabilidad plan–presupuesto–
   ejecución, integridad documental y alertas de riesgo.
 • QUIRA Ciudadana — traduce la información pública a lenguaje comprensible y
   habilita participación y control social informados.

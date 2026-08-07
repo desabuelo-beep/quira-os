@@ -528,7 +528,7 @@ def _html_header(data: dict, ts: str = "") -> str:
         f'<div style="font:900 14px/1 Inter,sans-serif;color:#E2E8F0;letter-spacing:-.02em">'
         f'{GAD_NOMBRE}</div>'
         f'<div style="font:400 9px/1 Inter,sans-serif;color:rgba(255,255,255,.25);'
-        f'margin-top:2px">QUIRA Institucional · Vista Ejecutiva · Corte {CORTE}</div>'
+        f'margin-top:2px">Observatorio · Vista Ejecutiva · Corte {CORTE}</div>'
         f'</div></div>'
 
         # Right: KPI chips + VIVO
