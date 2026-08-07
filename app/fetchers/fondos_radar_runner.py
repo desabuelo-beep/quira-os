@@ -296,7 +296,12 @@ def _get_db_connection():
             uri = getattr(cfg, "SUPABASE_URI", "")
         except ImportError:
             pass
-    conn = psycopg2.connect(uri, sslmode="require", connect_timeout=20)
+    # Normaliza el puerto del pooler: este módulo abre su conexión sin pasar
+    # por `get_connection()`, así que no heredaba el fix y esperaba 20 s por
+    # intento contra un puerto que acepta y cierra sin responder.
+    from sentinel.db_config import normalizar_uri
+    conn = psycopg2.connect(normalizar_uri(uri), sslmode="require",
+                            connect_timeout=20)
     conn.autocommit = True
     return conn
 

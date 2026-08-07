@@ -54,12 +54,22 @@ _PUERTO_SESION = ":5432/"
 _TIMEOUT_CONEXION = 8
 
 
+def normalizar_uri(uri: str) -> str:
+    """Corrige el puerto del pooler si viene el que no responde.
+
+    Es pública porque **diecinueve archivos abren conexiones sin pasar por
+    `get_connection()`** —motores, fetchers y guiones— y todos heredarían el
+    mismo cuelgue de veinte segundos. Cualquiera que lea la URI de los secretos
+    debe pasarla por aquí antes de conectar."""
+    u = str(uri or "")
+    if ".pooler.supabase.com" in u and _PUERTO_SESION in u:
+        return u.replace(_PUERTO_SESION, _PUERTO_POOLER)
+    return u
+
+
 def _supabase_uri() -> str:
     import streamlit as st
-    uri = str(st.secrets["database"]["supabase_uri"])
-    if ".pooler.supabase.com" in uri and _PUERTO_SESION in uri:
-        uri = uri.replace(_PUERTO_SESION, _PUERTO_POOLER)
-    return uri
+    return normalizar_uri(st.secrets["database"]["supabase_uri"])
 
 
 # ── CURSOR UNIFICADO ──────────────────────────────────────────────────────────

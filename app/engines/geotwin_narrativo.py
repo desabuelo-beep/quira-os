@@ -55,7 +55,11 @@ PARROQUIAS_CUP = [
 def _conn():
     with open(ROOT / ".streamlit" / "secrets.toml", "rb") as f:
         s = tomllib.load(f)
-    return psycopg2.connect(s["database"]["supabase_uri"])
+    # Normaliza el puerto del pooler: la URI guardada apunta al que acepta la
+    # conexión y la cierra sin responder, y psycopg2 espera ~20 s por intento.
+    from sentinel.db_config import normalizar_uri
+    return psycopg2.connect(normalizar_uri(s["database"]["supabase_uri"]),
+                            connect_timeout=8)
 
 
 def _q(cur, sql: str, params=()) -> list[tuple]:

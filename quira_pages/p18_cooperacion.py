@@ -103,7 +103,11 @@ def _load_elegibilidad() -> list[dict]:
             import config as cfg
             uri = getattr(cfg, "SUPABASE_URI", "")
 
-        conn = psycopg2.connect(uri, sslmode="require", connect_timeout=10)
+        # El puerto del pooler se normaliza: esta página abre su propia
+        # conexión sin pasar por `get_connection()`, así que no heredaba el fix.
+        from sentinel.db_config import normalizar_uri
+        conn = psycopg2.connect(normalizar_uri(uri), sslmode="require",
+                                connect_timeout=10)
         cur  = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
 
         cur.execute("""

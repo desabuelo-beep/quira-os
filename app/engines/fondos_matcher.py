@@ -50,23 +50,34 @@ _CONF_PEND     = "pendiente"        # fuente no disponible
 # ── Lectura de indicadores ────────────────────────────────────────────────────
 
 def _get_supabase_uri() -> str:
-    """Resuelve la URI de Supabase desde Streamlit secrets o config."""
+    """Resuelve la URI de Supabase desde los secretos, o cadena vacía.
+
+    ⚠️ SEGURIDAD (2026-08-06). Esta función terminaba con un «fallback directo
+    (solo dev)» que traía **la contraseña de la base en texto plano**, en un
+    archivo rastreado por git. Una credencial en el código no es un atajo de
+    desarrollo: viaja a cada clon del repositorio y queda en el historial de
+    versiones aunque después se borre. Es el mismo patrón que ya se retiró de
+    `models/auth.py`, donde un fallback guardaba la contraseña de acceso.
+
+    Devolver "" hace que la conexión falle de forma explícita y ruidosa, que es
+    lo correcto: sin credencial configurada no hay conexión, y el sistema lo
+    dice en vez de conectarse con una clave escondida en el código.
+
+    El puerto se normaliza aquí porque este módulo abre su conexión por su
+    cuenta, sin pasar por `get_connection()`."""
+    from sentinel.db_config import normalizar_uri
     try:
         import streamlit as st
-        return st.secrets.get("database", {}).get("supabase_uri", "")
-    except Exception:
+        uri = st.secrets.get("database", {}).get("supabase_uri", "")
+        if uri:
+            return normalizar_uri(uri)
+    except Exception:  # noqa: BLE001
         pass
     try:
         import config as cfg
-        return getattr(cfg, "SUPABASE_URI", "")
+        return normalizar_uri(getattr(cfg, "SUPABASE_URI", ""))
     except ImportError:
-        pass
-    # Fallback directo (solo dev — en producción usar secrets.toml)
-    return (
-        "postgresql://postgres.whogonqaadkkyxcnudth:"
-        "Z4tilmich3$1"
-        "@aws-1-sa-east-1.pooler.supabase.com:5432/postgres"
-    )
+        return ""
 
 
 def _read_gad_indicators() -> dict[str, tuple[Any, str, str]]:
