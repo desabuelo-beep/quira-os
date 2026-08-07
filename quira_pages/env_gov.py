@@ -410,10 +410,24 @@ def _render_transparencia_d07() -> None:
         st.error(f"Módulo Transparencia Institucional no disponible: {e}")
 
 
+def _render_panel_observatorio() -> None:
+    """Panel del Observatorio (ADR-041 §5.1) — estado de la OPERACIÓN.
+
+    No es una de las 13 áreas de gestión ni una de las 4 lentes: Operaciones es
+    mantenimiento del ecosistema, no producto (ADR-041 §2). Por eso se entra por
+    el pie del Centro y no ocupa un lugar en el menú."""
+    try:
+        from quira_pages.p_panel_observatorio import render as _r
+        _r()
+    except Exception as e:  # noqa: BLE001
+        st.error(f"Panel del Observatorio no disponible: {e}")
+
+
 # ── Mapa key → (renderer, label) ─────────────────────────────────────────────
 _MODULE_RENDER: dict[str, tuple] = {
     # Sección Ejecutiva
     "inicio":       (_render_inicio,       "Centro de Inteligencia Territorial"),
+    "panel_obs":    (_render_panel_observatorio, "Panel del Observatorio"),
     "situacion":    (_render_situacion,    "Situación Institucional"),
     # Etiquetas SIN jerga interna (Regla 2): eran "Metas PDOT · IFE" y "Alertas y Riesgos
     # SAT" — las dos únicas fugas ALTO que el auditor de frontera marcaba en este archivo.
@@ -499,24 +513,19 @@ button[data-testid="collapsedControl"] {
 </style>
 """, unsafe_allow_html=True)
 
-            # Banda de retorno contextual
+            # Banda de retorno contextual — mismo registro volcánico que el
+            # Centro. Llevaba otro "⬡ QUIRA" tipográfico y la paleta anterior.
             st.markdown(f"""
-<div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;
-            padding:8px 14px;background:rgba(0,212,255,.04);
-            border:1px solid rgba(0,212,255,.10);border-radius:8px">
-  <span style="font-size:9px;color:rgba(0,212,255,.55);font-weight:700;
-               letter-spacing:.08em;text-transform:uppercase">⬡ QUIRA</span>
-  <span style="font-size:9px;color:rgba(255,255,255,.20)">›</span>
-  <span style="font-size:9px;color:rgba(255,255,255,.35);font-weight:700;
+<div style="display:flex;align-items:center;gap:9px;margin-bottom:14px;
+            padding:7px 13px;background:{C.VOLCAN_UP};
+            border:1px solid {C.V_BD};border-radius:8px">
+  <span style="line-height:0">{logo("marfil", 15)}</span>
+  <span style="font-size:9px;color:{C.V_TX3}">›</span>
+  <span style="font-size:9px;color:{C.V_TX3};font-weight:700;
                letter-spacing:.06em;text-transform:uppercase">Centro de Inteligencia Territorial</span>
-  <span style="font-size:9px;color:rgba(255,255,255,.20)">›</span>
-  <span style="font-size:9px;color:#E2E8F0;font-weight:700;
+  <span style="font-size:9px;color:{C.V_TX3}">›</span>
+  <span style="font-size:9px;color:{C.V_TX};font-weight:700;
                letter-spacing:.06em;text-transform:uppercase">{label_drill}</span>
-  <div style="margin-left:auto">
-    <span id="__back_hint__"
-          style="font-size:9px;color:rgba(0,212,255,.45);cursor:default">
-      ← volver</span>
-  </div>
 </div>
 """, unsafe_allow_html=True)
 

@@ -36,6 +36,10 @@ DESTINOS: list[tuple[str, str, str]] = [
     ("qinv_d09", "d09 · Rendición de Cuentas", "rendición"),
     ("transparencia", "d07 · Transparencia", "ransparencia"),
     ("territorio", "d10 · Territorio & Cobertura", "erritorio"),
+    # La huella del panel es una etiqueta que solo se emite si las cifras se
+    # contaron contra el registro: si el panel se pintara sin datos, el título
+    # saldría igual pero esta sección caería en «sin dato».
+    ("panel_obs", "Panel del Observatorio", "Consultables en el portal"),
 ]
 
 # `observatorio` es el rol vigente (ADR-041): único con credencial y con acceso pleno.

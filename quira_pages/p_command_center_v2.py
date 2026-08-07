@@ -367,6 +367,16 @@ html, body, .stApp, .stApp * {{ font-family:'Inter',system-ui,sans-serif; }}
 .st-key-btn_salir button:hover {{ color:{C.V_TX}!important;
   border-color:{C.alpha(C.ACENTO, .55)}!important; }}
 
+/* Acceso al panel de operación: presente pero discreto — no compite con los
+   13 dominios porque no es uno de ellos. */
+.st-key-btn_panel_obs button {{
+  background:transparent!important; border:1px solid {C.V_BD}!important;
+  color:{C.V_TX3}!important; font-size:10px!important; border-radius:8px!important;
+  min-height:28px!important; letter-spacing:.05em!important;
+}}
+.st-key-btn_panel_obs button:hover {{ color:{C.V_TX2}!important;
+  border-color:{C.V_BD_FUERTE}!important; }}
+
 /* Compactar gaps verticales */
 div[data-testid="stVerticalBlock"] {{ gap:.45rem!important; }}
 
@@ -596,3 +606,15 @@ def render() -> None:
         f'opacity:.75">{UI_VERSION}</span></span></div>',
         unsafe_allow_html=True,
     )
+
+    # ── Panel del Observatorio — acceso discreto ──────────────────────────────
+    # Va en el pie y no como área de gestión ni como lente: Operaciones es
+    # mantenimiento del ecosistema, NO producto (ADR-041 §2). Ponerlo entre los
+    # 13 dominios lo convertiría en uno, que es justo lo que el ADR niega.
+    _, col_panel, _ = st.columns([3.4, 1.2, 3.4])
+    with col_panel:
+        if st.button("◷ Estado de la operación", key="btn_panel_obs",
+                     use_container_width=True,
+                     help="Panel del Observatorio — qué hay capturado, qué falta "
+                          "y qué se debe. Uso interno del equipo."):
+            _nav("panel_obs")
