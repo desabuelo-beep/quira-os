@@ -47,7 +47,7 @@ import time
 from datetime import datetime
 from pathlib import Path
 from urllib.request import Request, urlopen
-from urllib.error import HTTPError
+from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 
 # ── UTF-8 stdout (evita UnicodeEncodeError en Windows CP1252) ─────────────────
@@ -108,31 +108,74 @@ def log(msg: str, level: str = "INFO") -> None:
     print(f"[{ts}] {prefix} {msg}", flush=True)
 
 
-def api_get(url: str, timeout: int = 15) -> dict | list | None:
+# ══════════════════════════════════════════════════════════════════════════════
+# ACCESO A LA API — con estado explícito (ADR-042 §6)
+# ══════════════════════════════════════════════════════════════════════════════
+# Las funciones `api_get`/`api_post` devolvían `None` para TODO: un 404, un
+# timeout, un error del servidor y un JSON corrupto eran indistinguibles entre
+# sí. Quien las llamaba solo podía interpretar el `None` como «no hay datos» —
+# y así un fallo de red terminaba registrado como que un municipio no publicó.
+#
+# Las variantes `_con_estado` devuelven además QUÉ pasó, para que el llamador
+# no tenga que adivinar. Las originales se conservan sobre ellas: siguen
+# devolviendo solo los datos, así que ningún llamador existente se rompe.
+
+def _pedir(url: str, timeout: int, payload: dict | None = None):
+    """(datos, estado). Traduce lo que ocurrió al vocabulario de ADR-042 §6."""
+    from app.observatorio import Estado
     try:
-        req = Request(url, headers=HEADERS)
+        if payload is None:
+            req = Request(url, headers=HEADERS)
+        else:
+            req = Request(url, data=json.dumps(payload).encode("utf-8"),
+                          headers={**HEADERS, "Content-Type": "application/json"})
         with urlopen(req, timeout=timeout) as r:
-            return json.loads(r.read())
+            crudo = r.read()
+        try:
+            datos = json.loads(crudo)
+        except json.JSONDecodeError:
+            # La fuente respondió, pero lo que devolvió no es lo que sabemos
+            # leer. Habla de NUESTRO instrumento, no del municipio.
+            log(f"respuesta no interpretable → {url[:60]}", "WARN")
+            return None, Estado.CAPTURADOR_DEGRADADO
+        # Una respuesta vacía es una respuesta: la fuente contestó y no hay nada.
+        if datos in (None, [], {}):
+            return None, Estado.EVIDENCIA_AUSENTE
+        return datos, Estado.CAPTURADA
     except HTTPError as e:
-        log(f"HTTP {e.code} → {url[:80]}", "WARN")
-        return None
-    except Exception as e:
-        log(f"ERR api_get {url[:60]}: {e}", "WARN")
-        return None
+        # 404/400 en estos endpoints significan «no hay dato para ese período»:
+        # la fuente respondió y la respuesta es la ausencia. Cualquier otro
+        # código habla del servidor, no del sujeto observado.
+        if e.code in (400, 404):
+            return None, Estado.EVIDENCIA_AUSENTE
+        log(f"HTTP {e.code} → {url[:60]}", "WARN")
+        return None, Estado.FUENTE_NO_DISPONIBLE
+    except (URLError, TimeoutError, OSError) as e:
+        log(f"sin respuesta de la fuente ({type(e).__name__}) → {url[:60]}", "WARN")
+        return None, Estado.FUENTE_NO_DISPONIBLE
+    except Exception as e:  # noqa: BLE001
+        log(f"fallo interno en la consulta: {type(e).__name__}: {e}", "WARN")
+        return None, Estado.ERROR_TECNICO
+
+
+def api_get_con_estado(url: str, timeout: int = 15):
+    """(datos, estado) de una consulta GET."""
+    return _pedir(url, timeout)
+
+
+def api_post_con_estado(url: str, payload: dict, timeout: int = 12):
+    """(datos, estado) de una consulta POST."""
+    return _pedir(url, timeout, payload)
+
+
+def api_get(url: str, timeout: int = 15) -> dict | list | None:
+    """Solo los datos. Para saber POR QUÉ no hay, usar `api_get_con_estado`."""
+    return _pedir(url, timeout)[0]
 
 
 def api_post(url: str, payload: dict, timeout: int = 12) -> dict | list | None:
-    try:
-        data = json.dumps(payload).encode("utf-8")
-        req = Request(url, data=data, headers={**HEADERS, "Content-Type": "application/json"})
-        with urlopen(req, timeout=timeout) as r:
-            return json.loads(r.read())
-    except HTTPError as e:
-        if e.code not in (404, 400):
-            log(f"HTTP {e.code} → {url[:60]}", "WARN")
-        return None
-    except Exception:
-        return None
+    """Solo los datos. Para saber POR QUÉ no hay, usar `api_post_con_estado`."""
+    return _pedir(url, timeout, payload)[0]
 
 
 def save_json(path: Path, data: object) -> None:
