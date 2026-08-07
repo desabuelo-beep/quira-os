@@ -16,10 +16,13 @@ Dylus Lab © 2026
 from __future__ import annotations
 
 import hashlib
+import logging
 from datetime import datetime
 from typing import Optional
 
 from sentinel.db_config import get_connection
+
+_log = logging.getLogger(__name__)
 
 # ── CONSTANTES ────────────────────────────────────────────────────────────────
 EXPECTED_ENTITIES = ["GAD", "BOMBEROS", "EMAI-EP", "PATRONATO"]
@@ -322,8 +325,15 @@ def save_alerts(alerts: list[dict]) -> int:
       - Si el hash no existe → INSERT nueva alerta
       - Si cambia la severidad → nuevo hash → nueva alerta (la anterior queda histórica)
     Retorna el número de filas nuevas insertadas.
+
+    Un fallo aquí NO se silencia (2026-08-06). Antes, un `except: pass` envolvía
+    la inserción entera y también el `close()`: si algo fallaba a mitad, las
+    alertas no se guardaban, nadie se enteraba y la conexión quedaba abierta.
+    Una alerta que no se persiste y no avisa es peor que ninguna alerta — el
+    sistema queda creyendo que vigiló.
     """
     inserted = 0
+    conn = None
     try:
         conn = get_connection()
         c    = conn.cursor()
@@ -386,8 +396,11 @@ def save_alerts(alerts: list[dict]) -> int:
                         ).fetchone()
                         if new_row:
                             update_alert_sla(conn, new_row)
-                    except Exception:
-                        pass
+                    except Exception as _e:  # noqa: BLE001
+                        # Sin plazo asignado la señal existe pero queda fuera
+                        # del seguimiento de vencimientos: nadie la reclama.
+                        _log.warning("señal guardada sin plazo de atención "
+                                     "(%s: %s)", type(_e).__name__, _e)
                 else:
                     # UNIQUE conflict con registro antiguo sin hash → backfill
                     c.execute(
@@ -399,9 +412,18 @@ def save_alerts(alerts: list[dict]) -> int:
                     )
 
         conn.commit()
-        conn.close()
-    except Exception:
-        pass
+    except Exception as e:  # noqa: BLE001
+        _log.error("no se pudieron persistir %d alerta(s): %s: %s — "
+                   "la vigilancia de este ciclo NO quedó registrada",
+                   len(alerts), type(e).__name__, e)
+    finally:
+        # El cierre estaba dentro del `try`: un fallo previo dejaba la conexión
+        # abierta y, con el pooler, esas conexiones se acumulan.
+        if conn is not None:
+            try:
+                conn.close()
+            except Exception:  # noqa: BLE001
+                _log.warning("no se pudo cerrar la conexión tras guardar alertas")
     return inserted
 
 
@@ -580,6 +602,7 @@ def get_tendencias() -> list[dict]:
     Retorna una lista de tendencias relevantes para mostrar en UI.
     """
     tendencias = []
+    conn = None
     try:
         conn = get_connection()
         c    = conn.cursor()
@@ -632,9 +655,16 @@ def get_tendencias() -> list[dict]:
                         "status":        "warning",
                     })
 
-        conn.close()
-    except Exception:
-        pass
+    except Exception as e:  # noqa: BLE001
+        _log.warning("no se pudo calcular la tendencia institucional: %s: %s — "
+                     "se devuelve lo obtenido hasta el fallo, no una serie "
+                     "completa", type(e).__name__, e)
+    finally:
+        if conn is not None:
+            try:
+                conn.close()
+            except Exception:  # noqa: BLE001
+                pass
     return tendencias
 
 

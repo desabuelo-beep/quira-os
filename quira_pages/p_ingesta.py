@@ -16,9 +16,12 @@ from __future__ import annotations
 
 import calendar
 import io
+import logging
 import time
 
 import streamlit as st
+
+_log = logging.getLogger(__name__)
 import streamlit.components.v1 as components
 
 from quira_pages.html_engine import DEMO_CSS, page_frame
@@ -425,8 +428,16 @@ def render() -> None:
                         # Resolver ejecución solo si Ti superó umbral crítico
                         if _ti >= 15.0:
                             auto_resolve_alerts(entidad, _yr, _mo, "ejecucion", _ref)
-                    except Exception:
-                        pass
+                    except Exception as _e:  # noqa: BLE001
+                        # Silenciar esto dejaba vivas señales que el documento
+                        # recién cargado ya resolvía: el usuario seguía viendo
+                        # avisos de algo que acababa de subsanar.
+                        _log.warning("no se pudieron resolver las señales de %s "
+                                     "%s-%s: %s", entidad, _yr, _mo, _e)
+                        st.warning("El documento se registró, pero las señales "
+                                   "asociadas no pudieron actualizarse. Pueden "
+                                   "seguir apareciendo hasta la próxima "
+                                   "revisión.")
                     # Ejecutar check de integridad post-ingesta
                     try:
                         from sentinel.integrity_engine import run_integrity_check
@@ -436,8 +447,18 @@ def render() -> None:
                         _lbl   = int_result.get("label", "")
                         _sub   = int_result.get("sublabel", "")
                         st.info(f"{_emoji} Integridad Semántica: **{_lbl}** — {_sub}")
-                    except Exception:
-                        pass
+                    except Exception as _e:  # noqa: BLE001
+                        # Un fallo aquí NO puede pasar inadvertido: sin este
+                        # control el documento queda cargado sin verificar, y
+                        # el sistema —y quien lo opera— darían por hecha una
+                        # comprobación que nunca ocurrió.
+                        _log.error("la verificación de integridad no se ejecutó "
+                                   "tras la carga: %s: %s", type(_e).__name__, _e)
+                        st.session_state.pop("integrity_result", None)
+                        st.warning("⚠ El documento se registró, pero **la "
+                                   "verificación de integridad no llegó a "
+                                   "ejecutarse**. Conviene repetirla antes de "
+                                   "dar por buena esta carga.")
                     # Limpiar caché para refrescar vista
                     st.session_state.pop("_ingesta_cache_key", None)
                     time.sleep(1.5)

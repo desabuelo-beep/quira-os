@@ -7,11 +7,25 @@ Dylus Lab © 2026
 """
 from __future__ import annotations
 import json
+import logging
 import os
 import datetime
 
 _AUDIT_DIR  = os.path.join(os.path.dirname(__file__), "..", "logs")
 _AUDIT_FILE = os.path.join(_AUDIT_DIR, "sentinel_audit.jsonl")
+
+_log = logging.getLogger(__name__)
+
+#: Cuántas veces falló el registro en esta sesión. Se expone porque un sistema
+#: que perdió su traza y no lo sabe es peor que uno que no la lleva: cree tener
+#: respaldo de algo que no puede reconstruir.
+_fallos_registro = 0
+
+
+def fallos_de_registro() -> int:
+    """Fallos de auditoría acumulados en esta sesión. Cero es lo esperado; si
+    crece, la trazabilidad está rota aunque la aplicación se vea sana."""
+    return _fallos_registro
 
 
 def log_interaction(
@@ -49,8 +63,17 @@ def log_interaction(
         }
         with open(_AUDIT_FILE, "a", encoding="utf-8") as f:
             f.write(json.dumps(entry, ensure_ascii=False) + "\n")
-    except Exception:
-        pass  # Audit failures must never crash the main flow
+    except Exception as e:  # noqa: BLE001
+        # Un fallo de auditoría NO debe tumbar el flujo principal — ese
+        # razonamiento se conserva. Lo que no se conserva es el silencio: si la
+        # traza se pierde y nadie se entera, el sistema cree estar registrando
+        # cuando no lo está, y la reproducibilidad se vuelve una suposición.
+        # Se cuenta el fallo y se deja constancia sin propagar.
+        global _fallos_registro
+        _fallos_registro += 1
+        _log.warning("no se pudo registrar la auditoría (%s): %s — "
+                     "van %d fallo(s) en esta sesión",
+                     type(e).__name__, e, _fallos_registro)
 
 
 def read_audit_log(last_n: int = 20) -> list[dict]:

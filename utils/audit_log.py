@@ -9,12 +9,15 @@ Dylus Lab © 2026
 from __future__ import annotations
 import datetime
 import json
+import logging
 import os
 
 import streamlit as st
 
 _LOG_DIR  = "logs"
 _LOG_FILE = os.path.join(_LOG_DIR, "audit.log")
+
+_log = logging.getLogger(__name__)
 
 
 def _ts() -> str:
@@ -29,14 +32,35 @@ def _session_rol() -> str:
     return st.session_state.get("rol", "—")
 
 
+#: Fallos de escritura acumulados en esta sesión. Este registro es la traza de
+#: ACCESOS —entradas, intentos fallidos, bloqueos—: si deja de escribirse sin
+#: que nadie lo note, un acceso no autorizado no dejaría huella, que es
+#: precisamente lo que se necesitaría para detectarlo.
+_fallos_escritura = 0
+
+
+def fallos_de_escritura() -> int:
+    """Cuántas veces no se pudo escribir la bitácora en esta sesión."""
+    return _fallos_escritura
+
+
 def _write(entry: dict) -> None:
     try:
         os.makedirs(_LOG_DIR, exist_ok=True)
         entry["sid"] = st.session_state.get("session_id", "—")
         with open(_LOG_FILE, "a", encoding="utf-8") as f:
             f.write(json.dumps(entry, ensure_ascii=False) + "\n")
-    except OSError:
-        pass  # nunca romper el flujo de la app por un fallo de log
+    except OSError as e:
+        # Se mantiene el criterio de no romper el flujo por un fallo de
+        # bitácora, pero NO el silencio. Se avisa por el canal de registro del
+        # sistema —nunca a este mismo archivo, que es el que está fallando— y
+        # se cuenta, para que la pérdida de traza sea visible.
+        global _fallos_escritura
+        _fallos_escritura += 1
+        _log.error("no se pudo escribir la bitácora de accesos (%s): %s — "
+                   "van %d fallo(s); el evento «%s» NO quedó registrado",
+                   type(e).__name__, e, _fallos_escritura,
+                   entry.get("event", "?"))
 
 
 # ── Eventos de autenticación ──────────────────────────────────────────────────
