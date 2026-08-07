@@ -48,9 +48,12 @@ Dylus Lab © 2026
 from __future__ import annotations
 
 import streamlit as st
-from utils.session import is_tecnico, is_admin, is_ejecutivo, get_rol
+# `get_rol` salió con el chip de rol del header: con un solo acceso —el
+# Observatorio— el rol ya no distingue nada que el usuario necesite ver.
+from utils.session import is_tecnico, is_admin, is_ejecutivo
 from utils.cache_quira import cargar_snapshot, cargar_gm_snapshot
 from utils.css_tokens import C
+from utils.marca import logo
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -176,31 +179,34 @@ def render_sidebar_nav() -> None:
 # ══════════════════════════════════════════════════════════════════════════════
 
 def _render_gov_header(module_label: str) -> None:
-    """Banda superior con identidad GOV y módulo activo."""
-    rol = get_rol()
-    rol_badge_color = {
-        "Ejecutivo":     "#00D4FF",
-        "Directivo":     "#22C55E",
-        "Administrador": "#F97316",
-    }.get(rol, "#64748B")
+    """Banda superior de cada cajón: marca, dónde estás y qué estás mirando.
 
+    Decía «QUIRA Institucional», que es justo la etiqueta retirada de la portada
+    —«al observatorio entramos por institucional» (Javo · 2026-08-05)—, así que
+    el nombre viejo seguía vivo en el chrome de los 13 cajones.
+
+    Y el chip de ROL sale, por dos razones: los roles que coloreaba
+    (Ejecutivo · Directivo · Administrador) ya no existen —hay un solo acceso,
+    el Observatorio— y ADR-037 ya lo había retirado del Centro por duplicar
+    información que el usuario no necesita. Lo que importa aquí es dónde estás,
+    no cómo te llama el sistema."""
     st.markdown(f"""
 <div style="display:flex;align-items:center;justify-content:space-between;
-            padding:10px 16px;background:rgba(0,212,255,.04);
-            border:1px solid rgba(0,212,255,.1);border-radius:10px;
+            padding:10px 16px;background:{C.VOLCAN_UP};
+            border:1px solid {C.V_BD};border-radius:10px;
             margin-bottom:16px">
-    <div style="display:flex;align-items:center;gap:10px">
-        <span style="font-size:18px">🏛</span>
+    <div style="display:flex;align-items:center;gap:11px">
+        <div style="line-height:0">{logo("marfil", 22)}</div>
         <div>
-            <div style="font-size:13px;font-weight:800;color:#E2E8F0;
-                        letter-spacing:-.01em">QUIRA Institucional</div>
-            <div style="font-size:10px;color:rgba(255,255,255,.35);
+            <div style="font-size:13px;font-weight:800;color:{C.V_TX};
+                        letter-spacing:-.01em">Centro de Inteligencia Territorial</div>
+            <div style="font-size:10px;color:{C.V_TX3};
                         letter-spacing:.04em">{module_label}</div>
         </div>
     </div>
-    <span style="font-size:10px;font-weight:700;color:{rol_badge_color};
-                 background:{rol_badge_color}1A;border:1px solid {rol_badge_color}33;
-                 border-radius:6px;padding:3px 10px;letter-spacing:.04em">{rol}</span>
+    <span style="font:700 9.5px/1 'JetBrains Mono',monospace;color:{C.V_TX3};
+                 border:1px solid {C.V_BD_FUERTE};border-radius:6px;
+                 padding:4px 10px;letter-spacing:.08em">GAD MONTECRISTI</span>
 </div>
     """, unsafe_allow_html=True)
 

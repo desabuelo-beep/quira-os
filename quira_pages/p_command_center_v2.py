@@ -24,21 +24,45 @@ from typing import Any
 
 import streamlit as st
 
+from utils.css_tokens import C
+from utils.marca import logo
 from utils.session import get_rol, logout
 
-UI_VERSION = "UI v2.0-nativo · 2026-06-11"
+UI_VERSION = "UI v2.1 · registro volcánico · 2026-08-06"
 
 # ══════════════════════════════════════════════════════════════════════════════
-# PALETA DE TEMPERATURA (idéntica doctrina v1)
+# ESCALA DE ATENCIÓN — v1.1 (2026-08-06)
 # ══════════════════════════════════════════════════════════════════════════════
-_TEMP: dict[str, dict[str, str]] = {
-    "critico": {"bg": "rgba(239,68,68,.10)",  "bd": "rgba(239,68,68,.45)",  "c": "#EF4444"},
-    "alerta":  {"bg": "rgba(249,115,22,.09)", "bd": "rgba(249,115,22,.40)", "c": "#F97316"},
-    "normal":  {"bg": "rgba(0,212,255,.05)",  "bd": "rgba(0,212,255,.25)",  "c": "#00D4FF"},
-    "verde":   {"bg": "rgba(34,197,94,.07)",  "bd": "rgba(34,197,94,.32)",  "c": "#22C55E"},
-    "funds":   {"bg": "rgba(124,92,252,.10)", "bd": "rgba(124,92,252,.42)", "c": "#7C5CFC"},
-    "dim":     {"bg": "rgba(255,255,255,.02)","bd": "rgba(255,255,255,.08)","c": "#5A6B7E"},
+# El sistema visual tiene TRES atenciones y ninguna dice "bien": no hay color de
+# aprobado porque QUIRA no certifica que la gestión esté bien, certifica qué se
+# puede verificar. La ausencia de señal es ausencia de señal.
+#
+# Las claves de abajo son DATOS de los 13 dominios y por eso se conservan; lo
+# que cambia es a qué traducen. Las traducciones que importan:
+#   · "verde" y "normal" → ambos SIN SEÑAL. Un verde en portada era un veredicto
+#     que la evidencia no sostiene — el mismo error corregido en d08.
+#   · "funds" era púrpura por ser financiamiento: mezclaba CATEGORÍA con ESTADO
+#     en el mismo canal. d02 está condicionado al 58%, así que su atención es
+#     ocre; que sea el dominio de recursos se lee en su nombre, no en su color.
+_ATENCION_DE: dict[str, str] = {
+    "critico": C.CRITICO,
+    "alerta":  C.OCRE,
+    "funds":   C.OCRE,
+    "normal":  C.SIN_SENAL,
+    "verde":   C.SIN_SENAL,
+    "dim":     C.V_TX3,
 }
+
+
+def _temp(clave: str) -> dict[str, str]:
+    """Fondo, borde y color de una atención. Un tinte del 7% y un borde del 30%:
+    la tarjeta se distingue por su borde, no por su fondo (la separación entre
+    volcánico y superficie es de 1,17:1, deliberadamente baja)."""
+    c = _ATENCION_DE.get(clave, C.SIN_SENAL)
+    return {"bg": C.alpha(c, .07), "bd": C.alpha(c, .30), "c": c}
+
+
+_TEMP: dict[str, dict[str, str]] = {k: _temp(k) for k in _ATENCION_DE}
 
 # ══════════════════════════════════════════════════════════════════════════════
 # 13 DOMINIOS — CONCEPTO (campo-4 ADN) + número duro + PREGUNTA (campo-6 ADN)
@@ -192,19 +216,30 @@ for _dm in _DOMAINS_V2:
 # El frame sigue siendo universal a las 6 QUIRAs. La frontera se conserva: QUIRA informa y conecta,
 # no actúa.
 _DIMS = [
-    # Color propio por lente (Javo · 2026-07-16): cada una se reconoce por su acento, igual que
-    # los dominios. Norma queda en gris hasta que la BRN exista — el color se gana al estar viva.
-    {"key": "dim_gob",    "icon": "🏛", "nombre": "Gobierno", "col": "#00D4FF",
+    # "El color se gana al estar viva" (Javo · 2026-07-16) es la regla, y con un
+    # solo acento se cumple mejor que con un color por lente: la que está viva
+    # lleva el acento, las que no, el instrumental. Nada más las distingue porque
+    # nada más hay que distinguir todavía.
+    {"key": "dim_gob",    "icon": "🏛", "nombre": "Gobierno", "col": C.ACENTO,
      "desc": "¿Qué? · la institución, el mandato y sus investigaciones", "dest": "gobierno"},
-    # Territorio e Inteligencia: SIN acceso hasta trabajarlas (Javo · 2026-07-17). Como Norma,
-    # quedan en "próximamente" — el color se gana al estar vivas.
-    {"key": "dim_terr",   "icon": "🗺", "nombre": "Territorio", "col": "#5A6B7E",
+    # Territorio e Inteligencia: SIN acceso hasta trabajarlas (Javo · 2026-07-17).
+    {"key": "dim_terr",   "icon": "🗺", "nombre": "Territorio", "col": C.V_TX3,
      "desc": "¿Dónde? · el cantón en el mapa · el encuentro entre las QUIRAs", "dest": None, "proximamente": True},
-    {"key": "dim_intel",  "icon": "◎", "nombre": "Inteligencia", "col": "#5A6B7E",
+    {"key": "dim_intel",  "icon": "◎", "nombre": "Inteligencia", "col": C.V_TX3,
      "desc": "¿Por qué? · QUIRA IA: lee, explica y anticipa", "dest": None, "proximamente": True},
-    {"key": "dim_brn", "icon": "📖", "nombre": "Norma", "col": "#5A6B7E",
+    {"key": "dim_brn", "icon": "📖", "nombre": "Norma", "col": C.V_TX3,
      "desc": "¿Bajo qué norma? · la ley que sostiene cada verificación", "dest": None, "proximamente": True},
 ]
+
+
+# Ícono alusivo por cajón — reemplaza la numeración: ningún cajón manda sobre
+# otro. Con el color por dominio retirado, el ícono y el nombre son lo que los
+# distingue entre sí; el color quedó libre para decir el estado.
+_ICON: dict[str, str] = {
+    "d01": "🧭", "d02": "💰", "d03": "📜", "d04": "🚨", "d05": "🏢",
+    "d06": "🩺", "d07": "🔍", "d08": "🗳", "d09": "📣", "d10": "🗺",
+    "d11": "📈", "d12": "🤝", "d13": "🌿",
+}
 
 
 def _esc_h(s) -> str:
@@ -232,16 +267,18 @@ def _cargar_gobierno() -> dict:
 def _data() -> dict[str, Any]:
     from quira_pages.p_command_center import _load_data
     d = _load_data()
-    from utils.css_tokens import C
     icpi = d.get("icpi_pct")
     n_al = int(d.get("n_alertas", 0) or 0)
     hold = d.get("hold_avg", 0.0)
     d["icpi_str"]    = f"{icpi:.1f}%" if icpi is not None else "—"
     _parcial = any(t in str(d.get("icpi_clasif", "")).lower() for t in ("parcial", "preliminar"))
-    d["icpi_color"]  = "#F59E0B" if _parcial else (C.sem(icpi) if icpi is not None else "#EF4444")
+    # Sin valor NO es crítico. Antes, un indicador ausente se pintaba de rojo
+    # como si estuviera fuera de umbral; la falta de dato es un resultado de
+    # auditoría, no un veredicto sobre la gestión (Principio Rector).
+    d["icpi_color"]  = C.OCRE if _parcial else C.atencion(icpi)
     d["icpi_sub"]    = d.get('icpi_clasif', '—')
     d["alert_str"]   = str(n_al)
-    d["alert_color"] = "#EF4444" if n_al > 0 else "#22C55E"
+    d["alert_color"] = C.CRITICO if n_al > 0 else C.SIN_SENAL
     d["riesgo_str"]  = (d.get("riesgo_clasif") or "Sin alertas críticas")
     if d["riesgo_str"] in ("—", ""):
         d["riesgo_str"] = "Sin alertas críticas"
@@ -299,13 +336,13 @@ def _css() -> str:
     for k in _DIMS:
         per_card.append(
             f'.st-key-{k["key"]} > div[data-testid="stVerticalBlockBorderWrapper"] '
-            f'{{ background:rgba(255,255,255,.015)!important; '
-            f'border:1px solid rgba(255,255,255,.07)!important; '
+            f'{{ background:{C.VOLCAN_UP}!important; '
+            f'border:1px solid {C.V_BD}!important; '
             f'border-radius:12px!important; }}'
             f'.st-key-go_{k["key"]} button {{ background:transparent!important; '
-            f'border:none!important; color:#8892B0!important; font-size:11px!important; '
+            f'border:none!important; color:{C.V_TX2}!important; font-size:11px!important; '
             f'min-height:26px!important; padding:0 6px!important; }}'
-            f'.st-key-go_{k["key"]} button:hover {{ color:#E8EDF4!important; }}'
+            f'.st-key-go_{k["key"]} button:hover {{ color:{C.ACENTO}!important; }}'
         )
     return f"""
 <style>
@@ -316,7 +353,7 @@ def _css() -> str:
 button[data-testid="collapsedControl"] {{
   display:none!important; width:0!important; min-width:0!important;
 }}
-.stApp {{ background:#080D18!important; }}
+.stApp {{ background:{C.VOLCAN}!important; }}
 .main .block-container, [data-testid="stMainBlockContainer"], div.block-container {{
   max-width:100%!important; padding:0.6rem 1.1rem 0.8rem!important;
 }}
@@ -324,16 +361,77 @@ html, body, .stApp, .stApp * {{ font-family:'Inter',system-ui,sans-serif; }}
 
 /* Header buttons */
 .st-key-btn_salir button {{
-  background:transparent!important; border:1px solid rgba(255,255,255,.14)!important;
-  color:#8892B0!important; font-size:12px!important; border-radius:9px!important;
+  background:transparent!important; border:1px solid {C.V_BD_FUERTE}!important;
+  color:{C.V_TX2}!important; font-size:12px!important; border-radius:9px!important;
 }}
-.st-key-btn_salir button:hover {{ color:#E8EDF4!important; border-color:rgba(255,255,255,.3)!important; }}
+.st-key-btn_salir button:hover {{ color:{C.V_TX}!important;
+  border-color:{C.alpha(C.ACENTO, .55)}!important; }}
 
 /* Compactar gaps verticales */
 div[data-testid="stVerticalBlock"] {{ gap:.45rem!important; }}
 
 {''.join(per_card)}
 </style>"""
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# TARJETA DE DOMINIO — función pura
+# ══════════════════════════════════════════════════════════════════════════════
+
+def cuerpo_tarjeta(dom: dict, color: str) -> str:
+    """HTML del cuerpo de una tarjeta de dominio: alcance · estado · radiografía.
+
+    Pura y sin Streamlit a propósito, para que la maqueta de revisión pueda
+    construir exactamente lo que ve el usuario en vez de una copia del markup
+    que envejecería aparte.
+
+    Estructura tipo FOLIO / MEMORANDO (Javo · 2026-07-14): alcance, estado y
+    radiografía de 3 indicadores macro. El detalle se descubre AL ENTRAR — la
+    tarjeta no es un índice.
+
+    Rejilla de 3 filas fijas (Javo · 2026-07-16): el alcance fluía libre y su
+    largo variable empujaba ESTADO y RADIOGRAFÍA a alturas distintas en cada
+    tarjeta. Con alto fijo en el alcance y la radiografía anclada al fondo, las
+    tres franjas caen SIEMPRE en la misma línea, sea cual sea el texto."""
+    mono = "font-family:'JetBrains Mono',monospace"
+    rm   = dom.get("radiografia_macro", [])
+    est  = dom.get("folio_estado", "")
+    per  = dom.get("periodo", "")
+
+    box = ""
+    if rm:
+        sep = f'<span style="color:{color};opacity:.55;margin:0 6px">→</span>'
+        cells = sep.join(
+            f'<span style="white-space:nowrap"><span style="font-size:7.5px;font-weight:800;'
+            f'letter-spacing:.05em;color:{C.V_TX3}">{_esc_h(lab)}</span> '
+            f'<span style="{mono};font-size:13px;font-weight:900;color:{color}">'
+            f'{_esc_h(val)}</span></span>'
+            for lab, val in rm)
+        box = (f'<div style="{mono};font-size:7.5px;font-weight:800;letter-spacing:.1em;'
+               f'text-transform:uppercase;color:{C.V_TX3};margin-top:11px;margin-bottom:5px">'
+               f'Radiografía documental · métricas de consistencia</div>'
+               f'<div style="border:1px solid {C.alpha(color, .27)};border-radius:6px;'
+               f'padding:9px 8px;text-align:center;'
+               f'background:{C.alpha(color, .05)}">{cells}</div>')
+
+    estado_html = ""
+    if est or per:
+        _p = f' · {_esc_h(per)}' if per else ""
+        estado_html = (f'<div style="{mono};font-size:8.5px;color:{C.V_TX3};'
+                       f'margin-top:10px;letter-spacing:.02em">'
+                       f'<span style="color:{color};font-weight:800">ESTADO:</span> '
+                       f'<b style="color:{C.V_TX2}">{_esc_h(est)}</b>{_p}</div>')
+
+    return (f'<div style="padding:2px 2px 0;display:flex;flex-direction:column;'
+            f'min-height:196px">'
+            f'<div style="height:3px;background:{color};border-radius:2px;opacity:.7;'
+            f'margin-bottom:10px"></div>'
+            f'<div style="{mono};font-size:8px;font-weight:800;letter-spacing:.08em;'
+            f'color:{color};margin-bottom:3px">[ ALCANCE ]</div>'
+            f'<div style="font-size:11px;color:{C.V_TX2};line-height:1.5;height:66px;'
+            f'overflow:hidden">{_esc_h(dom["concepto"])}</div>'
+            f'<div style="margin-top:auto">{estado_html}{box}</div>'
+            f'</div>')
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -355,22 +453,29 @@ def render() -> None:
     _corte = _gob.get("corte") or "Corte Q1-2026"
     h1, h2, h3 = st.columns([6.4, 1.5, 0.9])
     with h1:
+        # La MARCA, no un glifo. Antes decía "⬡ QUIRA" con un hexágono tipográfico
+        # que no es el logo de nada; la Q manteña se lee del activo (`utils/marca`).
         st.markdown(
-            '<div style="display:flex;align-items:center;gap:14px">'
-            '<span style="font-size:21px;font-weight:900;color:#00D4FF;'
-            'letter-spacing:.04em">⬡ QUIRA</span>'
-            '<div style="border-left:1px solid rgba(255,255,255,.12);padding-left:14px">'
-            '<div style="font-size:14px;font-weight:800;color:#E8EDF4">Centro de Inteligencia Territorial</div>'
-            f'<div style="font-size:10.5px;color:#8892B0">GAD Municipal de Montecristi · '
+            '<div style="display:flex;align-items:center;gap:13px">'
+            f'<div style="line-height:0">{logo("marfil", 30)}</div>'
+            f'<span style="font:600 17px/1 Archivo,Inter,sans-serif;letter-spacing:.19em;'
+            f'color:{C.V_TX}">QUIRA</span>'
+            f'<div style="border-left:1px solid {C.V_BD_FUERTE};padding-left:14px">'
+            f'<div style="font-size:14px;font-weight:800;color:{C.V_TX}">'
+            f'Centro de Inteligencia Territorial</div>'
+            f'<div style="font-size:10.5px;color:{C.V_TX2}">GAD Municipal de Montecristi · '
             f'{_esc_h(_corte)}</div></div></div>',
             unsafe_allow_html=True,
         )
     with h2:
+        # Instrumental, no verde: que el sistema esté en línea es un hecho de
+        # operación, no un aprobado sobre la gestión. El sistema no tiene color
+        # de "bien" y este chip era el último que lo usaba.
         st.markdown(
             '<div style="text-align:right;padding-top:8px">'
-            '<span style="font-size:10px;font-weight:700;color:#22C55E;'
-            'border:1px solid rgba(34,197,94,.35);border-radius:12px;'
-            'padding:3px 10px">● EN LÍNEA</span></div>',
+            f'<span style="font:700 10px/1 \'JetBrains Mono\',monospace;color:{C.V_TX3};'
+            f'border:1px solid {C.V_BD_FUERTE};border-radius:12px;letter-spacing:.08em;'
+            f'padding:4px 10px;display:inline-block">● EN LÍNEA</span></div>',
             unsafe_allow_html=True,
         )
     with h3:
@@ -381,10 +486,10 @@ def render() -> None:
     # ── Subtítulo de la franja superior (ADR-037: como ÁREAS DE GESTIÓN lo tiene abajo) ──
     st.markdown(
         '<div style="display:flex;justify-content:space-between;margin:8px 2px 2px">'
-        '<span style="font-size:10.5px;font-weight:800;letter-spacing:.1em;'
-        'color:#00D4FF">▎LECTURA DEL SISTEMA</span>'
-        '<span style="font-size:9.5px;color:#5A6B7E;font-family:\'JetBrains Mono\',monospace">'
-        'qué · dónde · por qué · bajo qué norma</span></div>',
+        f'<span style="font-size:10.5px;font-weight:800;letter-spacing:.1em;'
+        f'color:{C.ACENTO}">▎LECTURA DEL SISTEMA</span>'
+        f'<span style="font-size:9.5px;color:{C.V_TX3};font-family:\'JetBrains Mono\',monospace">'
+        f'qué · dónde · por qué · bajo qué norma</span></div>',
         unsafe_allow_html=True,
     )
 
@@ -408,50 +513,48 @@ def render() -> None:
                                    help=f"Entrar · {dim['nombre']}"):
                         _nav(dim["dest"])
                 with nm:
-                    c = dim.get("col", "#00D4FF")
-                    prox = ('<span style="font-size:8.5px;color:#5A6B7E;margin-left:6px">'
-                            '— próximamente —</span>') if dim.get("proximamente") else ""
+                    c = dim.get("col", C.ACENTO)
+                    prox = (f'<span style="font-size:8.5px;color:{C.V_TX3};margin-left:6px">'
+                            f'— próximamente —</span>') if dim.get("proximamente") else ""
                     st.markdown(
                         f'<div style="padding-top:2px">'
                         f'<div style="font-size:14px;font-weight:800;color:{c}">'
                         f'{dim["nombre"]}{prox}</div>'
                         f'<div style="height:2px;width:34px;background:{c};opacity:.55;'
                         f'border-radius:1px;margin:4px 0 3px"></div>'
-                        f'<div style="font-size:9.5px;color:#8892B0;line-height:1.4;'
+                        f'<div style="font-size:9.5px;color:{C.V_TX2};line-height:1.4;'
                         f'height:26px;overflow:hidden">{dim["desc"]}</div></div>',
                         unsafe_allow_html=True,
                     )
 
     st.markdown(
         '<div style="display:flex;justify-content:space-between;margin:4px 2px 0">'
-        '<span style="font-size:10.5px;font-weight:800;letter-spacing:.1em;'
-        'color:#00D4FF">▎ÁREAS DE GESTIÓN</span>'
-        '<span style="font-size:9.5px;color:#5A6B7E;font-family:\'JetBrains Mono\','
-        'monospace">Montecristi · clic en el ícono para entrar</span></div>',
+        f'<span style="font-size:10.5px;font-weight:800;letter-spacing:.1em;'
+        f'color:{C.ACENTO}">▎ÁREAS DE GESTIÓN</span>'
+        f'<span style="font-size:9.5px;color:{C.V_TX3};font-family:\'JetBrains Mono\','
+        f'monospace">Montecristi · clic en el ícono para entrar</span></div>',
         unsafe_allow_html=True,
     )
 
     # ── Grid · 12 cajones · dimensiones iguales · ÍCONO = entrada ─────────────
-    # Ícono alusivo por cajón (reemplaza la numeración · ningún cajón manda sobre otro)
-    _ICON = {
-        "d01": "🧭", "d02": "💰", "d03": "📜", "d04": "🚨", "d05": "🏢",
-        "d06": "🩺", "d07": "🔍", "d08": "🗳", "d09": "📣", "d10": "🗺",
-        "d11": "📈", "d12": "🤝", "d13": "🌿",
-    }
-    # Color propio por dominio (Javo 2026-07-14 · diferenciación visual por colores)
-    _DOM_COL = {
-        "d01": "#22D3EE", "d02": "#A78BFA", "d03": "#F9AB00", "d04": "#EF5350",
-        "d05": "#26A69A", "d06": "#EC407A", "d07": "#42A5F5", "d08": "#66BB6A",
-        "d09": "#FFA726", "d10": "#8D6E63", "d11": "#FFEE58", "d12": "#AB47BC",
-        "d13": "#9CCC65",
-    }
+    # UN COLOR POR DOMINIO — retirado (2026-08-06).
+    # Había 13 colores, uno por dominio (Javo · 2026-07-14, para diferenciarlos a
+    # simple vista). Dos razones para retirarlo, y la segunda pesa más que la
+    # estética:
+    #   1 · Contradice el acento único de la identidad v1.1 — trece acentos es
+    #       ninguno, y el conjunto leía como un arcoíris genérico.
+    #   2 · Ocupaba el canal del color con una CATEGORÍA, y entonces el color no
+    #       podía decir nada sobre el estado. Ahora el color significa ATENCIÓN:
+    #       mirar la pantalla y ver dónde está el problema, que es para lo que
+    #       sirve un tablero.
+    # Los dominios se distinguen por ícono y por nombre, que ya los tenían.
     for fila in range(0, len(_DOMAINS_V2), 3):
         cols = st.columns(3, gap="small")
         for col, dom in zip(cols, _DOMAINS_V2[fila:fila + 3]):
             with col:
                 with st.container(border=True, key=f"card_{dom['id']}"):
                     t = _TEMP[dom["temp"]]
-                    color = _DOM_COL.get(dom["id"], "#5AA9E6")
+                    color = t["c"]
                     estado = dom.get("estado", "")
                     metric = _metric_of(dom, d)
                     icono = _ICON.get(dom["id"], "◉")
@@ -470,67 +573,26 @@ def render() -> None:
                         st.markdown(
                             f'<div style="font-family:\'JetBrains Mono\',monospace;font-size:7.5px;'
                             f'font-weight:800;letter-spacing:.14em;color:{color};padding-top:6px">DOMINIO</div>'
-                            f'<div style="font-size:13px;font-weight:800;color:#E8EDF4;'
+                            f'<div style="font-size:13px;font-weight:800;color:{C.V_TX};'
                             f'line-height:1.15;margin-top:1px">{dom["nombre"]}</div>',
                             unsafe_allow_html=True,
                         )
-                    # cuerpo: concepto (izq) | métrica + estado (der)
-                    # cuerpo tipo FOLIO / MEMORANDO — documento sellado (Javo 2026-07-14): alcance + estado
-                    # + radiografía de 3 indicadores macro. El detalle se descubre AL ENTRAR (no es un índice).
-                    rm = dom.get("radiografia_macro", [])
-                    est = dom.get("folio_estado", "")
-                    per = dom.get("periodo", "")
-                    mono = "font-family:'JetBrains Mono',monospace"
-                    box = ""
-                    if rm:
-                        sep = f'<span style="color:{color};opacity:.55;margin:0 6px">→</span>'
-                        cells = sep.join(
-                            f'<span style="white-space:nowrap"><span style="font-size:7.5px;font-weight:800;'
-                            f'letter-spacing:.05em;color:#7E8BA3">{lab}</span> '
-                            f'<span style="{mono};font-size:13px;font-weight:900;color:{color}">{val}</span></span>'
-                            for lab, val in rm)
-                        box = (f'<div style="{mono};font-size:7.5px;font-weight:800;letter-spacing:.1em;'
-                               f'text-transform:uppercase;color:#7E8BA3;margin-top:11px;margin-bottom:5px">'
-                               f'Radiografía documental · métricas de consistencia</div>'
-                               f'<div style="border:1px solid {color}45;border-radius:6px;padding:9px 8px;'
-                               f'text-align:center;background:{color}0d">{cells}</div>')
-                    estado_html = ""
-                    if est or per:
-                        _p = f' · {per}' if per else ""
-                        estado_html = (f'<div style="{mono};font-size:8.5px;color:#8494A8;margin-top:10px;'
-                                       f'letter-spacing:.02em"><span style="color:{color};font-weight:800">'
-                                       f'ESTADO:</span> <b style="color:#C4D0E0">{est}</b>{_p}</div>')
-                    # Rejilla de 3 filas fijas (Javo · 2026-07-16): el ALCANCE fluía libre y su
-                    # largo variable empujaba ESTADO y RADIOGRAFÍA a alturas distintas en cada
-                    # tarjeta. Con alto fijo en el alcance y la radiografía anclada al fondo,
-                    # las tres franjas caen SIEMPRE en la misma línea, sea cual sea el texto.
-                    st.markdown(
-                        f'<div style="padding:2px 2px 0;display:flex;flex-direction:column;'
-                        f'min-height:196px">'
-                        f'<div style="height:3px;background:{color};border-radius:2px;opacity:.7;margin-bottom:10px"></div>'
-                        f'<div style="{mono};font-size:8px;font-weight:800;letter-spacing:.08em;color:{color};'
-                        f'margin-bottom:3px">[ ALCANCE ]</div>'
-                        f'<div style="font-size:11px;color:#A8B4C8;line-height:1.5;height:66px;'
-                        f'overflow:hidden">{dom["concepto"]}</div>'
-                        f'<div style="margin-top:auto">{estado_html}{box}</div>'
-                        f'</div>',
-                        unsafe_allow_html=True,
-                    )
+                    st.markdown(cuerpo_tarjeta(dom, color), unsafe_allow_html=True)
                     if dom.get("disabled"):
                         st.markdown(
-                            '<div style="font-size:9.5px;color:#5A6B7E;text-align:center;'
-                            'padding:2px 0">— en construcción —</div>',
+                            f'<div style="font-size:9.5px;color:{C.V_TX3};text-align:center;'
+                            f'padding:2px 0">— en construcción —</div>',
                             unsafe_allow_html=True,
                         )
 
     # ── Footer + stamp de versión ─────────────────────────────────────────────
     st.markdown(
         f'<div style="display:flex;justify-content:space-between;margin-top:6px;'
-        f'padding-top:8px;border-top:1px solid rgba(255,255,255,.06)">'
-        f'<span style="font-size:9.5px;color:#5A6B7E">● Sistema operativo · '
+        f'padding-top:8px;border-top:1px solid {C.V_BD}">'
+        f'<span style="font-size:9.5px;color:{C.V_TX3}">● Sistema operativo · '
         f'GAD Municipal de Montecristi · Corte Q1-2026</span>'
-        f'<span style="font-size:9.5px;color:#5A6B7E">Dylus Lab © 2026 · '
-        f'QUIRA Intelligence · <span style="font-family:\'JetBrains Mono\',monospace;'
+        f'<span style="font-size:9.5px;color:{C.V_TX3}">Dylus Lab © 2026 · '
+        f'QUIRA · <span style="font-family:\'JetBrains Mono\',monospace;'
         f'opacity:.75">{UI_VERSION}</span></span></div>',
         unsafe_allow_html=True,
     )
