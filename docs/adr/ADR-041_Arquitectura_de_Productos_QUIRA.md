@@ -60,7 +60,7 @@ Observatorio… y por otro lado con otra entrada, QUIRA Ciudadana"*.
   (control social)                                          │
                                         consumen ───────────┤
                                         · QUIRA Cooperación / Impact
-                                        · Observatorio
+                                        · QUIRA Institucional
                                         · QUIRA Economic
 ```
 
@@ -74,7 +74,7 @@ niveles sin abrirle una puerta lateral.
 | Fase | Productos | Misión |
 |---|---|---|
 | **1** | **Observatorio** · **QUIRA Ciudadana** | **construir la evidencia** |
-| 2 | QUIRA Cooperación / Impact · Observatorio | ofrecer inteligencia a partir de esa evidencia |
+| 2 | QUIRA Cooperación / Impact · QUIRA Institucional | ofrecer inteligencia a partir de esa evidencia |
 | 3 | QUIRA Economic | inteligencia económica del territorio |
 
 **El orden no es una preferencia: es una restricción.** Javo lo formula así: *"con estas dos

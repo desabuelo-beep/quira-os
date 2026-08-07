@@ -49,13 +49,19 @@ _RETIRADAS = [
     (r"QUIRA\s+Operations", "NOMENCLATURA_CANONICA prohíbe publicarlo",
      "Operaciones", True),
 
-    # Pendiente de decisión de Javo: «QUIRA Institucional» salió de la PORTADA
-    # (2026-08-05) y ADR-041 renombró el producto a «Observatorio», pero el
-    # canon —DOCTRINE, ARQUITECTURA_CANONICA, NOMENCLATURA— sigue usándolo.
-    # Propagar el cambio a los documentos fundacionales no le toca al director.
-    (r"QUIRA\s+Institucional", "salió de la portada y ADR-041 lo renombró; el "
-     "canon todavía lo usa — decisión pendiente",
-     "Observatorio / Centro de Inteligencia Territorial", False),
+    # ⚠️ «QUIRA Institucional» YA NO SE PERSIGUE, y la razón importa
+    # (2026-08-07). El término nombra DOS COSAS y solo una se renombró:
+    #   · el AMBIENTE de observación → hoy Centro / Observatorio;
+    #   · el PRODUCTO DE GESTIÓN para el GAD (ADR-041 §4-ter) → sigue siendo
+    #     «QUIRA Institucional», es un producto de Fase 2 y CONSUME evidencia.
+    # Un reemplazo masivo confundió ambos y llegó a escribir que el GAD «opera
+    # el Observatorio» y que el Observatorio es a la vez entrada de Fase 1 y
+    # consumidor de Fase 2. Cuatro reversiones después, la lección quedó clara:
+    # este término no se persigue automáticamente — se decide caso por caso.
+    #
+    # Y una regla general que salió de ahí: **un ADR sellado no se renombra**.
+    # Registra una decisión con el vocabulario de su momento; cambiarle las
+    # palabras reescribe la decisión.
     (r"Panel\s+del\s+Observatorio", "se renombró al fijarse ADR-042",
      "Consola de Monitoreo", False),
 ]

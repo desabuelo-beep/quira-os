@@ -37,7 +37,7 @@ Cambia narrativa, mercado, posicionamiento, gobernanza del dato y crecimiento.
 Hasta hoy operábamos con una jerarquía implícita:
 
 ```
-Observatorio (raíz)
+QUIRA Institucional (raíz)
   → Ciudadana · Impact · Economic · Cooperación · Operaciones (derivados)
 ```
 
@@ -70,7 +70,7 @@ Es la función interna de Dylus Lab que alimenta el núcleo.
 - NO se vende como UI. Es el motor humano detrás del radar.
 
 ### Capa C — PRODUCTOS (interfaces sobre el mismo motor)
-- **Observatorio** → alcaldes y directivos (la médula del sistema)
+- **QUIRA Institucional** → alcaldes y directivos (la médula del sistema)
 - **QUIRA Ciudadana** → ciudadanía, academia, OSC
 - **QUIRA Impact** → BID, CAF, PNUD, Banco Mundial
 - **QUIRA Economic** → inversión y desarrollo económico local

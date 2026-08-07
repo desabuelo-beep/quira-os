@@ -438,7 +438,7 @@ FASE 1 → QUIRA Operaciones
          ↓
          ADR-026 CERRADO + Bloomberg Firewall CERRADO
          ↓
-FASE 2 → Observatorio
+FASE 2 → QUIRA Institucional
          · Sprint B: 12 puertas diseñadas con taxonomía funcional correcta
          · Cada puerta tiene diseño específico a su Tipo (A/B/C)
          · Narrativa pública basada en evidencia real de los Generadores
