@@ -77,7 +77,7 @@ La cooperación deja de reportar outputs. Empieza a demostrar outcomes territori
 
 ### 2.6. Sector privado e inversión responsable (QUIRA Economy — futuro)
 
-**Dolor**: Empresas, bancos y fondos ESG no tienen inteligencia territorial verificable sobre los 221 municipios ecuatorianos. Las decisiones de inversión responsable se toman con datos dispersos y sin causalidad demostrada.  
+**Dolor**: Empresas, bancos y fondos ESG no tienen inteligencia territorial verificable sobre los 222 municipios ecuatorianos. Las decisiones de inversión responsable se toman con datos dispersos y sin causalidad demostrada.  
 **Valor entregado**: Señales territoriales verificadas — gestión pública longitudinal, brechas de servicio, cumplimiento normativo — como insumo para análisis ESG y decisiones de inversión con impacto demostrable.
 
 El inversor responsable deja de estimar riesgo territorial. Lo mide con evidencia causal.
@@ -158,7 +158,7 @@ Esa cadena ya vale porque:
 Una sola cadena es el prototipo del sistema completo.
 Doce cadenas son el modelo completo de Montecristi.
 Sesenta cadenas (5 municipios × 12 dominios) son la propuesta académica para UEB.
-Dos mil seiscientas cuarenta cadenas (221 municipios × 12 dominios) son la propuesta nacional.
+Dos mil seiscientas cuarenta cadenas (222 municipios × 12 dominios) son la propuesta nacional.
 
 La unidad mínima de valor escala linealmente porque la arquitectura es multi-cantón por diseño.
 

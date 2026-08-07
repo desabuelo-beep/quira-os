@@ -140,7 +140,7 @@ Esto se implementa como filtro en las queries RAG: `WHERE authority_level >= umb
 ### 2. canton_id en Capas C y D → obligatorio
 - Capas A y B: `canton_id = NULL` (conocimiento nacional)
 - Capas C y D: `canton_id = 'MCR'` para Montecristi (primer canton piloto)
-- Esto permite escalar a 221 municipios sin contaminar el kernel nacional
+- Esto permite escalar a 222 municipios sin contaminar el kernel nacional
 
 ### 3. Datos estructurados → tratamiento separado
 Los archivos XLSX/CSV del Holding (presupuestos mensuales, conjuntos de datos LOTAIP) **no son chunks semánticos**.  

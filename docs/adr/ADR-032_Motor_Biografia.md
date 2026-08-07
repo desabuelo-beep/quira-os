@@ -91,7 +91,7 @@ jamás estimada como si fuera dato per-meta.
 **Implicación estratégica:** el valor de QUIRA no reside en su *stack* (reemplazable) sino en el **método**
 —reconstruir, desde fuentes heterogéneas que hablan del mismo hecho, la vida verificable de cada compromiso,
 declarando el nivel de verificabilidad de cada eslabón—. *Las herramientas implementan; el método permanece.*
-Esto es lo publicable (tesis / estándar), lo escalable a los 221 GAD, y lo que ninguna migración tecnológica
+Esto es lo publicable (tesis / estándar), lo escalable a los 222 GAD, y lo que ninguna migración tecnológica
 puede volver obsoleto. La Biografía Administrativa es la contribución de QUIRA a la ciencia de la gestión pública.
 
 ## Objeto Canónico Compartido — se REFERENCIA, no se mueve (Javo + colega · 2026-07-13)

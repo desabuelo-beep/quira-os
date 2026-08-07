@@ -21,7 +21,7 @@ authority:
 > cliente** (ADR-024, ratificado). Vender licencias es *complementario*, no el fin.
 
 **QUIRA es un OBSERVATORIO NACIONAL DE INTEGRIDAD TERRITORIAL.** El fin es el
-barrido progresivo de los 221 GADs del Ecuador. Montecristi no es el cliente #1
+barrido progresivo de los 222 GADs del Ecuador. Montecristi no es el cliente #1
 — es el **MOLDE**: se valida y se pule una vez, y luego se replica nacionalmente
 con **TRES MOTORES DE ADQUISICIÓN** (= los 3 productos de Fase 1; cada producto
 alimenta el observatorio desde su ángulo). Ningún GAD se escapa, coopere o no:
@@ -308,7 +308,7 @@ Se activa cuando el MOLDE Montecristi está mostrable (no antes). Es el corazón
   ya existe para fondos — replicar). Dependencia: créditos API.
 - Extractor PDOT por cantón → base → GeoTwin: **YA CONSTRUIDO** (`pdot_extractor.py` +
   `kb_loader.py`). Una pieza del barrido ya está lista — replica a cualquier cantón.
-- Índice de Opacidad Nacional (221 GADs · se mide por ausencia · sin Gold Master por cantón).
+- Índice de Opacidad Nacional (222 GADs · se mide por ausencia · sin Gold Master por cantón).
 **Motor 2 · Ciudadana:** las 6 fases de Terra (ver Sprint D) — la gente amplía la cobertura.
 **Diferenciador electoral (construir para ventana NOV-2026):**
 - Análisis Plan CNE (promesas de campaña) — semilla ya existe (dom03: 48/66 promesas CNE en PDOT).

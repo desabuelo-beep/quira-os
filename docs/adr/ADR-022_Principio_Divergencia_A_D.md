@@ -180,7 +180,7 @@ Para pasar de SUPPORTED a CONFIRMED, se requiere demostrar:
 1. **El score A↔D es una métrica de producto** — mostrable en la UI como
    indicador de riesgo de gobernanza por municipio
 
-2. **Es replicable a 221 municipios** — el mismo pipeline funciona con
+2. **Es replicable a 222 municipios** — el mismo pipeline funciona con
    cualquier GAD que tenga SIGAD + LOTAIP + RC disponibles
 
 3. **No requiere acceso privilegiado** — toda la evidencia es pública

@@ -16,7 +16,7 @@
 #            causales C3-C9 de cualquier cantón de Ecuador (y LAC).
 #
 # Principio fundacional:
-#   El corpus normativo (QLEP — C1-C2) es NACIONAL y compartido por los 221 municipios.
+#   El corpus normativo (QLEP — C1-C2) es NACIONAL y compartido por los 222 municipios.
 #   La materialización territorial (QTMP — C3-C9) es MUNICIPAL y específica por cantón.
 #   Un mismo schema. 221 instancias. Mismo grafo Neo4j.
 #
@@ -38,7 +38,7 @@
 #   Ejemplo: qtmp_ECU-13-MONTECRISTI_AGUA_POTABLE.yaml
 #
 # ESCALA:
-#   Ecuador:   221 cantones
+#   Ecuador:   222 cantones
 #   LAC:       ~6000 municipios (mismo schema C3-C9 / diferente corpus C1-C2)
 # ============================================================
 
@@ -501,7 +501,7 @@ RESULTADOS:
 # ============================================================
 #
 # Schema:   qtmp_schema.yaml          ← este archivo (v1.1)
-# Registro: qtmp_canton_registry.yaml ← 221 cantones Ecuador
+# Registro: qtmp_canton_registry.yaml ← 222 cantones Ecuador
 # Piloto:   qtmp_ECU-13-MONTECRISTI_AGUA_POTABLE.yaml ← primera instancia
 #           qtmp_ECU-13-MONTECRISTI_EQUIDAD.yaml      ← segunda instancia
 #

@@ -1,6 +1,13 @@
 # Metodología d07 — Verificación de Cumplimiento LOTAIP (rediseño Gold Master)
 
-> **Estado:** PROPUESTA (Capa 2 Metodológica del Protocolo de Curación) · 2026-07-21 · pendiente ratificación Javo
+> **Estado:** APROBADO (Capa 2 Metodológica del Protocolo de Curación) · propuesto 2026-07-21 · **ratificado por Javo 2026-08-07**
+>
+> **Al sellarse, la cadena normativa quedó completa en el corpus** (2026-08-07). Las tres
+> piezas vigentes de la DPE están ingeridas con su huella y ninguna anula a otra:
+> Guía Metodológica (Res. 019, 241 fragmentos) · Instructivo de Parámetros Técnicos
+> (Res. 015, 47) · Instructivo de Monitoreo (42). `app/agents/d07/scoring.py` implementa
+> las reglas del tercero, así que hasta ahora cada puntaje habría citado una norma que el
+> sistema no tenía verificada (Regla 3). Ese bloqueo está levantado.
 > **Nace en el canon, no en el Excel** (Regla 9). Este documento define el modelo; el Excel lo implementa después, sobre copia, con evidencia (Regla de Oro 1).
 
 ## 0 · Por qué se rediseña (diagnóstico que lo motivó)

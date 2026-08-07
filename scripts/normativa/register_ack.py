@@ -14,7 +14,7 @@ PRINCIPIO DE ALCANCE NACIONAL:
   nunca en el ACK Registry.
 
   Laboratorio:  GADMCM — Cantón Montecristi (validación)
-  Destino:      221 municipios del Ecuador (escala)
+  Destino:      222 municipios del Ecuador (escala)
 
   El mismo CE_18 aplica a Quito, Guayaquil, Cuenca y Montecristi por igual.
   Lo que cambia canton a canton es: ¿están cumpliendo con CE_18?

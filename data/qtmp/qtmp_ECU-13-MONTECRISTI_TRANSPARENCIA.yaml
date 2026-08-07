@@ -496,7 +496,7 @@ OBSERVABILIDAD:
       Portal DPE (fuente canónica QUIRA) — Sistema de Publicación de
       Información por Entidades. El portal de la Defensoría del Pueblo
       (transparencia.dpe.gob.ec) consolida el estado de publicación de todos
-      los 221 GADs del Ecuador, incluyendo el GADMCM (establishment_id=937).
+      los 222 GADs del Ecuador, incluyendo el GADMCM (establishment_id=937).
       Observable: 25 numerales LOTAIP 2.0 por mes · fecha de publicación por
       numeral · atraso respecto al plazo legal (día 15 del mes siguiente).
       N4 (2026-06-01): 25/25 numerales presentes en los 16 meses auditados
@@ -510,7 +510,7 @@ OBSERVABILIDAD:
     nota_n4: >
       OBS-QNKC-02 VALIDADA (ADR-015 cerrado). API DPE confirmada O(1):
       /backend/v1/transparency/transparency/active/public?establishment_id=937&year={y}&month={m}.
-      Arquitectura escalable a 221 GADs sin cambio de método.
+      Arquitectura escalable a 222 GADs sin cambio de método.
 
   - id: OBS_TRANS_02_MCR
     fuente_ack: COOTAD_215

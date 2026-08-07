@@ -418,7 +418,7 @@ Entregas:
 **Narrativa CAF:**  
 *"Creamos la primera infraestructura latinoamericana de inteligencia territorial  
 basada en normativa, evidencia y cadena causal verificable.  
-Piloto: Montecristi + 1 GAD. Escala: 221 cantones Ecuador → modelo LAC."*
+Piloto: Montecristi + 1 GAD. Escala: 222 cantones Ecuador → modelo LAC."*
 
 ---
 

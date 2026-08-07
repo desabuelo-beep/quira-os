@@ -327,13 +327,13 @@ Esto es lo que hace que QUIRA pase de ser un dashboard a ser un motor de goberna
 | ACK Knowledge Graph | 6/10 | 10 ACKs cargados · register_ack.py CLI completo · 8/10 chunk_refs · traversal LOTAIP_7→C01 ✅ |
 | Diagnóstico sistémico | 3/10 | Traversal operacional · sin CHS calculado live · sin Neo4j real |
 | Predicción territorial | 1/10 | SAT activo (3 alertas) · GeoTwin pendiente · Sentinel en desarrollo |
-| **Replicabilidad nacional** | **7/10** | Principio Alcance Nacional declarado · canton_id guardrail activo · Kernel+Instancias documentado · 221 municipios destino |
+| **Replicabilidad nacional** | **7/10** | Principio Alcance Nacional declarado · canton_id guardrail activo · Kernel+Instancias documentado · 222 municipios destino |
 
 **Lectura del scorecard (v2):**
 
 El salto más significativo de v1→v2 es el ACK Knowledge Graph (1→6): el registry pasó de ser una propuesta a ser un catálogo operacional con CLI, 10 ACKs, 8 SHA256 verificados y traversal completo demostrado.
 
-La nueva dimensión "Replicabilidad nacional" (7/10) refleja que la decisión más estratégica del sprint no fue técnica sino ontológica: **el campo `canton_id` es arquitectónicamente imposible en el ACK Registry**. La normativa es nacional; los datos operacionales son cantonales. Esta separación — Kernel Nacional + Instancias — es lo que hace que QUIRA sea escalable a 221 municipios sin reimplementación.
+La nueva dimensión "Replicabilidad nacional" (7/10) refleja que la decisión más estratégica del sprint no fue técnica sino ontológica: **el campo `canton_id` es arquitectónicamente imposible en el ACK Registry**. La normativa es nacional; los datos operacionales son cantonales. Esta separación — Kernel Nacional + Instancias — es lo que hace que QUIRA sea escalable a 222 municipios sin reimplementación.
 
 Las brechas que restan: Neo4j sin datos (4/10), diagnóstico sin CHS live (3/10), predicción incipiente (1/10). Estas son exactamente el roadmap operacional de los próximos sprints.
 

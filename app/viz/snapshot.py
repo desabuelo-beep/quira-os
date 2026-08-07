@@ -30,7 +30,7 @@ _ESPECTRO = [
     ("sin_evidencia_publica", "Sin respaldo público", "no publicado"),
     ("contradiccion", "Prueba en contrario", ""),
 ]
-# config por entidad (genérico para 221 GAD; hoy Montecristi = Municipio 001)
+# config por entidad (genérico para 222 GAD; hoy Montecristi = Municipio 001)
 _ENTIDAD = {
     "GAD Montecristi": {"autoridad": "alcalde Jonathan Toro", "cargo": "Alcalde",
                         "canton": "Montecristi", "provincia": "Manabí", "municipio": "001"},

@@ -21,7 +21,7 @@ Lo que cambia canton a canton: ¿están cumpliendo con CE_18?
 ```
 
 **Laboratorio:** GADMCM — Cantón Montecristi (modelado y validación)  
-**Destino:** 221 municipios del Ecuador  
+**Destino:** 222 municipios del Ecuador  
 
 Esta separación no es accidental — es la razón por la que la arquitectura escala.  
 Si se agrega `canton_id` a un ACK, se rompe este principio y el código lo rechazará.
@@ -378,5 +378,5 @@ Migrar a Opción C (JSON + Supabase sync) cuando registry tenga 50+ ACKs.
 ---
 
 *ACK Registry v0.2 · QUIRA Gov · Dylus Lab © 2026*  
-*Laboratorio: Montecristi · Destino: 221 municipios Ecuador*  
+*Laboratorio: Montecristi · Destino: 222 municipios Ecuador*  
 *Primer hito operacional: COMPLETADO 2026-06-01 — LOTAIP_7 → Dom07 → C01/C02*

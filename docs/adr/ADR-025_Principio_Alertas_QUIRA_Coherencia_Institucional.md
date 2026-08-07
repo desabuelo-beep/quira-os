@@ -143,7 +143,7 @@ Esto aplica retroactivamente a la evaluación de HIP-001 (SAT-0.1).
 ## Relación con otros ADRs
 
 - **ADR-023** (3 niveles de cálculo): este ADR no modifica los niveles. Define qué MERECE ser calculado.
-- **ADR-024** (Radar Nacional): la coherencia institucional es lo que QUIRA observa en los 221 GAD.
+- **ADR-024** (Radar Nacional): la coherencia institucional es lo que QUIRA observa en los 222 GAD.
 - **HIP-001** (SAT-0.1): primera hipótesis evaluada bajo este principio.
 
 ---

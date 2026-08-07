@@ -284,7 +284,7 @@ Skill de actualización: `/fondos-radar` (~15 días)
 
 Este rediseño hace D02 más robusto porque:
 1. Elimina Bloomberg violations actuales (ISP/PSG/ITAM como códigos hardcodeados en UI)
-2. Escala a los 221 GADs del Radar Nacional (cada uno con su snapshot de elegibilidad)
+2. Escala a los 222 GADs del Radar Nacional (cada uno con su snapshot de elegibilidad)
 3. Cubre el ecosistema completo de financiamiento (no solo 6 fondos encontrados en un momento)
 4. La dimensión de coaliciones — GAD puede no calificar solo pero sí con una ONG aliada
 
@@ -492,7 +492,7 @@ Fase 0 completa. Los 12 dominios constitucionales están clasificados:
 | ADR-017 (Circuitos) | Diseñó C01, C02, C03 desde la teoría. ADR-026 confirma C01 en código y formaliza C-RDC como circuito nuevo descubierto en arqueología. |
 | ADR-022 (Principio Divergencia A-D) | Principio de separación datos/presentación. ADR-026 añade: los datos A son Generadores, los datos D son síntesis del Sintetizador. |
 | ADR-023 (3 Niveles) | Los 3 niveles son Motor/SO/UI. ADR-026 opera en el nivel SO — describe cómo los dominios se relacionan entre sí dentro de QUIRA. |
-| ADR-024 (Radar Nacional) | QUIRA como radar de 221 GADs. ADR-026 describe la arquitectura interna que hace posible ese radar: Generadores → Sintetizador → Protocolo. |
+| ADR-024 (Radar Nacional) | QUIRA como radar de 222 GADs. ADR-026 describe la arquitectura interna que hace posible ese radar: Generadores → Sintetizador → Protocolo. |
 | ADR-025 (Principio Alertas) | Las alertas detectan rupturas de coherencia. ADR-026 especifica: las rupturas ocurren cuando un Generador falla o cuando la brecha ICM/ICPI supera umbrales. |
 
 ---

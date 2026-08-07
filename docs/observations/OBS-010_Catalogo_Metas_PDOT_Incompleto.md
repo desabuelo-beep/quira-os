@@ -10,7 +10,7 @@ authority:
 > **RESUELTO el mismo día → `ADR-036`.** El canon **no está incompleto por error**: opera sobre
 > un **subconjunto estratégico de 25 metas** que nunca se había explicitado. H12/ICPI se congelan;
 > las 25 se declaran como universo operacional de v1; la ampliación a 66 se aborda como
-> **evolución metodológica** (v2) al escalar a los 221 GAD. Este documento se conserva como
+> **evolución metodológica** (v2) al escalar a los 222 GAD. Este documento se conserva como
 > **acta del hallazgo y del método** (incluido el error de conteo propio).
 
 **Estado:** CERRADO · 2026-07-15 · resuelto por ADR-036 · *(bloqueó la vinculación de d03 durante la sesión)*

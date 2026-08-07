@@ -136,7 +136,7 @@ Mediano plazo (2027 — Post-elecciones):
 
 Largo plazo (2028-2030 — Escalamiento):
   → Metodología QUIRA adoptada como estándar de transparencia en Ecuador
-  → 221 GADs con acceso a métricas QUIRA (no a la metodología interna)
+  → 222 GADs con acceso a métricas QUIRA (no a la metodología interna)
   → QUIRA como infraestructura de investigación pública para universidades ecuatorianas
   → Impacto en políticas públicas verificable por longitudinalidad multi-año
 ```

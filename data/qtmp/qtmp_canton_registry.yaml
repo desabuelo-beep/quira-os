@@ -30,7 +30,7 @@
 #       c.canton_short = $canton_short,
 #       c.estado_qtmp = $estado_qtmp
 #
-# Total: 221 cantones — 24 provincias
+# Total: 222 cantones — 24 provincias
 # ============================================================
 
 version: "1.0"

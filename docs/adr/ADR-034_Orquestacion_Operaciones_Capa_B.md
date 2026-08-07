@@ -8,7 +8,7 @@ authority:
 # ADR-034 · Orquestación de Operaciones — encender la Capa B (el ciclo mensual de dominio)
 
 **Estado:** RATIFICADO · 2026-07-13 (Javo + director técnico · a partir de una propuesta del colega)
-**Contexto de origen:** Javo pregunta cómo QUIRA **opera mensualmente** para 221 GAD (y luego LAC). El
+**Contexto de origen:** Javo pregunta cómo QUIRA **opera mensualmente** para 222 GAD (y luego LAC). El
 colega lo formaliza como "catálogo de *Skills* / QCL". Se adopta la **intuición** (correcta y potente) y se
 **rechaza la envoltura** (renombra lo que ya existe · Regla 7).
 **Relacionado:** ADR-024 (4 capas · **Capa B Operaciones = capacidad, NO producto**) · ADR-031 (5 motores
@@ -18,7 +18,7 @@ tipados · el MCD) · ADR-023 (Regla 1/4 · no recalcular el motor) · ADR-033 (
 
 ## Contexto
 
-La pregunta de Javo: *¿cómo se opera QUIRA, mes a mes, a escala (221 GAD → LAC)?* La respuesta **no** es "más
+La pregunta de Javo: *¿cómo se opera QUIRA, mes a mes, a escala (222 GAD → LAC)?* La respuesta **no** es "más
 pantallas" ni un humano "abriendo el dominio": es **pipelines programados**, por GAD y por período. El colega
 propuso una capa nueva ("Skills/QCL"); el canon la atrapa: eso **renombra** los motores (ADR-031) y describe
 la **Capa A** que ya existe. Lo válido de la propuesta es el **cuándo y el cómo se ejecuta**, no una ontología nueva.
@@ -66,7 +66,7 @@ los produce. La verdad analítica nace en el Excel; el Orquestador solo la mueve
 ## Consecuencia práctica
 El trabajo de **curar cada DOM** (sus dos verdades · ADR-033) **no cambia**. Lo que se añade: una vez curado,
 cada dominio expone un **ciclo mensual** ejecutable. **Primero se curan los DOM; después el Orquestador los
-corre solos**, por GAD, cada mes. Ese es el camino real a 221 GAD → LAC — sin un humano por pantalla.
+corre solos**, por GAD, cada mes. Ese es el camino real a 222 GAD → LAC — sin un humano por pantalla.
 
 ---
 *ADR-034 · Orquestación de Operaciones · Dylus Lab © 2026 · "No se opera el sistema: se ejecutan ciclos programados. El Orquestador enciende la Capa B; los motores ya saben trabajar — ahora trabajan solos, cada mes, para cientos de gobiernos."*

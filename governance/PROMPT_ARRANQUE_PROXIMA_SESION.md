@@ -18,7 +18,7 @@ NO leas docs enteros (Javo financia cada token). Navega con los dumps (`scripts/
 DÓNDE ESTAMOS (resumen · detalle en BOOT §AHORA):
 - Motor Gold Master v6.0 BLINDADO y VIVO (cirugía D.2A · ICPI 27.46% · B33 intacta · pasa governance 30 reglas).
 - Snapshot local `data/gm_snapshot.json` a 27.46% (builder `scripts/_update_snapshot.py` · incluye bloque `vectores`).
-- **d06 (Salud Institucional) COMPLETO y VIVO EN LA NUBE** (quiraholding.streamlit.app): 3 pestañas
+- **d06 (Salud Institucional) COMPLETO y VIVO EN LA NUBE** (quiraintelligence.streamlit.app): 3 pestañas
   (`p_ejecutivo`·`p6_pulso`·`p7_brecha`) + L1 Centro de Mando (`p_command_center`) leen el snapshot local (27.46%) ·
   lenguaje de gobernanza (frontera Regla 2) · cero demo_data · firewall-limpio · botones con `key` único.
 - Hilo conductor documentado (`MAPA_HILO_CONDUCTOR.md`). Seguridad: token GitHub limpio (ya no existe · GCM OAuth).

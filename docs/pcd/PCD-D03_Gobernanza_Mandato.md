@@ -101,7 +101,7 @@ documental · 1 fuera del universo operacional · **canon coherente** · **centi
 
 **Abierto:** las autoridades electas siguen con **7 de 8 sin verificar** (ausencia declarada,
 no defecto) · la ampliación del universo **25 → 66** espera decisión de arquitectura (ADR-036
-§4 · sería v2, al escalar a los 221 GAD — no una corrección).
+§4 · sería v2, al escalar a los 222 GAD — no una corrección).
 
 ---
 *PCD-D03 · Dylus Lab © 2026 · "El dominio que mide la palabra empeñada no podía permitirse una palabra sin respaldo. Encontró 46 promesas que nadie prometió, un rótulo que mentía y un universo que nunca se declaró — y salió con las 76 reales, el canon coherente y su alcance por escrito."*

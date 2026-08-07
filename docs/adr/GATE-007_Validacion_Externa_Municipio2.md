@@ -39,7 +39,7 @@ Eso solo se responde con un segundo municipio.
 **ES** intentar romperlo.
 
 Si sobrevive: QUIRA deja de ser una solución para Montecristi  
-y pasa a ser **una solución para los 221 GAD del Ecuador**.
+y pasa a ser **una solución para los 222 GAD del Ecuador**.
 
 ---
 
@@ -117,7 +117,7 @@ del existente para sus 25 metas PDOT propias.
 Si Gate 7 pasa:
   ADR-022 → CONFIRMED
   ADR-023 → principio general, no solo Montecristi
-  QUIRA   → solución para 221 GAD del Ecuador
+  QUIRA   → solución para 222 GAD del Ecuador
 
 Si Gate 7 falla en algo:
   Hallazgo de qué es específico de Montecristi

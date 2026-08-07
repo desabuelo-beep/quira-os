@@ -33,7 +33,7 @@ Modelo OBS-QNKC-02:
 
 Dom07 dejó de ser un dominio de **autodeclaración** y pasó a ser un dominio de **observación externa**. La fuente que QUIRA consulta para C5a (Existencia) y C5b (Actualidad) ya no es el portal del propio GAD — es el portal del regulador que certifica lo que el GAD publicó.
 
-**La auditoría N4 no solo cierra Dom07.** Valida o falsea OBS-QNKC-02 como hipótesis arquitectónica. Si valida, la consecuencia se extiende a la estrategia de escalamiento de 1 GAD a 221 GADs. Por eso este ADR existe.
+**La auditoría N4 no solo cierra Dom07.** Valida o falsea OBS-QNKC-02 como hipótesis arquitectónica. Si valida, la consecuencia se extiende a la estrategia de escalamiento de 1 GAD a 222 GADs. Por eso este ADR existe.
 
 ---
 
@@ -63,7 +63,7 @@ Es decir: ¿hay documentos que existen y están actualizados pero son incomprens
 
 ### Hipótesis C — OBS-QNKC-02 escala nacionalmente
 
-> ¿Puede DPE actuar como fuente observacional canónica para evaluar los 221 GADs del Ecuador bajo el mismo modelo epistemológico que QUIRA aplica en Montecristi?
+> ¿Puede DPE actuar como fuente observacional canónica para evaluar los 222 GADs del Ecuador bajo el mismo modelo epistemológico que QUIRA aplica en Montecristi?
 
 ```
 Sin DPE como fuente canónica:
@@ -98,7 +98,7 @@ Para que la auditoría N4 cierre este ADR como "OBS-QNKC-02 validada", deben sat
 **Consecuencias:**
 - Dom07 C8 calculado y registrado como C10 record
 - Arquitectura observacional O(1) confirmada para dominios LOTAIP
-- Escalamiento a 221 GADs es viable con un único conector DPE
+- Escalamiento a 222 GADs es viable con un único conector DPE
 - Se activa evaluación de patrón generalizador (ver sección "Patrón de Verificadores Externos" abajo)
 - ADR-015 se cierra con status: **ACEPTADO — OBS-QNKC-02 validada**
 
@@ -253,7 +253,7 @@ C8 = C4 × 0.750  [dimensión acceso]
 |-----------|----------|-----------|
 | **H-A** (P01 operativo) | ¿Puede calcularse C8 con datos reales? | ✅ **CONFIRMADO** — C8 calculado. C4 aún pendiente de verificación directa, pero C5 completo. |
 | **H-B** (OBS-QNKC-01 observable) | ¿Hay casos C5a=1, C5t=0? | ✅ **CONFIRMADO** — 16 meses de evidencia. Documentos existen (C5a=1) pero publicados fuera de plazo (C5t=0). Nueva sub-variable identificada. |
-| **H-C** (OBS-QNKC-02 escala) | ¿DPE es fuente canónica para 221 GADs? | ✅ **CONFIRMADO** — API pública · estructura uniforme · timestamp exacto · datos descargables. Un único conector para 221 entidades. |
+| **H-C** (OBS-QNKC-02 escala) | ¿DPE es fuente canónica para 222 GADs? | ✅ **CONFIRMADO** — API pública · estructura uniforme · timestamp exacto · datos descargables. Un único conector para 221 entidades. |
 
 ---
 
@@ -369,4 +369,4 @@ Si hay un hueco en esta cadena — cualquier eslabón con dato proxy, fallback, 
 ---
 
 *Dylus Lab © 2026 · QUIRA Operaciones*  
-*"Dom07 no está probando Transparencia. Está probando si QUIRA puede utilizar una infraestructura observacional nacional única para evaluar 221 GADs bajo el mismo modelo epistemológico."*
+*"Dom07 no está probando Transparencia. Está probando si QUIRA puede utilizar una infraestructura observacional nacional única para evaluar 222 GADs bajo el mismo modelo epistemológico."*

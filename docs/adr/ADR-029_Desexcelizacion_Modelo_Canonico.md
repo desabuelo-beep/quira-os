@@ -8,15 +8,15 @@ authority:
 # ADR-029 · Desexcelización — el Gold Master es un Modelo Canónico, el Excel es un conector
 
 **Estado:** RATIFICADO · 2026-06-21 (Javo + mesa) · decisión estratégica de escala
-**Contexto de origen:** reconciliación de ruta — Javo: *"El Excel era para validar Montecristi; si escalamos a 221 municipios no es tener 2221 Excel sino un solo sistema."*
-**Relacionado:** ADR-023 (3 niveles · Excel=motor) · ADR-024 (Radar Nacional · 221 GADs) · ADR-027 (3 capas soberanía) · `QUIRA_OS_INVENTARIO_CODIGO.md`
+**Contexto de origen:** reconciliación de ruta — Javo: *"El Excel era para validar Montecristi; si escalamos a 222 municipios no es tener 2221 Excel sino un solo sistema."*
+**Relacionado:** ADR-023 (3 niveles · Excel=motor) · ADR-024 (Radar Nacional · 222 GADs) · ADR-027 (3 capas soberanía) · `QUIRA_OS_INVENTARIO_CODIGO.md`
 
 ---
 
 ## Contexto
 
 El Excel SIAP-ICPI fue el **laboratorio** para validar la metodología en Montecristi (el MOLDE).
-Pensarlo como artefacto **permanente** es el error conceptual: **221 GADs ≠ 221 Exceles** — eso es
+Pensarlo como artefacto **permanente** es el error conceptual: **222 GADs ≠ 221 Exceles** — eso es
 inmantenible. Igual que nadie vende el notebook donde entrenó un modelo: se vende el modelo, no el andamio.
 
 ## Decisión
@@ -55,7 +55,7 @@ Analogía: **Windows opera el computador; Microsoft opera Windows.** Dylus no ad
 
 ## Consecuencias
 
-- **Escalabilidad real:** 221 GADs = 221 **conectores** hacia **1 modelo canónico**, no 221 Exceles.
+- **Escalabilidad real:** 222 GADs = 221 **conectores** hacia **1 modelo canónico**, no 221 Exceles.
 - El Excel deja de ser cuello de botella; se vuelve el primer conector (validación/migración).
 - **Pertenece a la VÍA SISTEMA (S-4), no a la de producto.** NO se ejecuta ahora: primero el MOLDE
   Montecristi mostrable (Sprint D · CAF). La Desexcelización se construye cuando el producto lo permita.

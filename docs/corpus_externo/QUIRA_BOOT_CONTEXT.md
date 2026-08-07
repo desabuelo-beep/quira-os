@@ -14,7 +14,7 @@ QUIRA es un **Sistema Operativo de Coherencia Institucional Municipal** — no u
 
 **Equipo**: Javo (fundador · 15 años sector público Ecuador) · Colega asesor (arquitecto externo senior) · Claude (director técnico · arquitecto/ejecutor)
 
-**Escala objetivo**: 221 municipios Ecuador → 6,000 municipios LAC
+**Escala objetivo**: 222 municipios Ecuador → 6,000 municipios LAC
 
 ---
 

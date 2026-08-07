@@ -18,7 +18,7 @@
 ## Convención de nomenclatura de documentos DPE (fija esta sesión)
 
 **`MON` NO se usa como sigla** — es ambiguo con "Montecristi" (las leyes/normativa son nacionales,
-221 GADs; Montecristi es solo la validación empírica, nunca el sujeto de una sigla normativa).
+222 GADs; Montecristi es solo la validación empírica, nunca el sujeto de una sigla normativa).
 
 | Documento | Sigla adoptada | Estado |
 |---|---|---|

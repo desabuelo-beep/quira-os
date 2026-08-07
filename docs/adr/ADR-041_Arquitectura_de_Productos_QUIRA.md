@@ -230,7 +230,7 @@ evidencia · contradicción*—. Un documento ciudadano no entra ni rechazado ni
 
 ## 8 · Lo que este ADR NO decide, y conviene decirlo
 
-**El costo de operación.** El monitoreo mensual con agentes sobre 221 GAD consume API, y hoy
+**El costo de operación.** El monitoreo mensual con agentes sobre 222 GAD consume API, y hoy
 no hay presupuesto para ello (Javo · 2026-08-05). **Definir la arquitectura no cuesta nada;
 ejecutarla sí.** El Observatorio puede diseñarse y construirse su panel ahora, y arrancar el
 despacho de agentes cuando haya créditos — municipio por municipio, empezando por el molde.

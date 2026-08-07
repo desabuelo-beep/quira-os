@@ -16,7 +16,7 @@ El snapshot generado es un ESQUELETO validable por Panel de Carga.
 Campos financieros (TGI, Ti, devengado) requieren datos del Gold Master Excel.
 Flujo completo:
   1. Correr este script → genera gm_snapshot_{municipio}.json
-  2. Abrir quiraholding.streamlit.app → Panel de Carga → Subir Snapshot
+  2. Abrir quiraintelligence.streamlit.app → Panel de Carga → Subir Snapshot
   3. (Opcional) Enriquecer con datos LOTAIP una vez descargados los CSV
 
 Dylus Lab © 2026
@@ -344,7 +344,7 @@ def main() -> None:
     print()
     print("Siguiente paso:")
     print("  1. Revisa el snapshot y completa los datos financieros si tienes los CSV")
-    print("  2. Sube via Panel de Carga en https://quiraholding.streamlit.app/")
+    print("  2. Sube via Panel de Carga en https://quiraintelligence.streamlit.app/")
     print("     → Rol Tecnico → Panel de Carga → Subir Snapshot")
     print()
     print("Para datos financieros reales (una vez disponibles los CSV):")

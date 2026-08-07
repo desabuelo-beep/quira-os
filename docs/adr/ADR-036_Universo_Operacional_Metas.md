@@ -11,7 +11,7 @@ authority:
 **Contexto de origen:** OBS-010. El "último filtro" de Javo (Plan Plurianual PDOT 2023-2027 ·
 SHA256 `09a2aacc…`) revela que el PDOT tiene **66 metas** y el Gold Master opera con **25**.
 La pregunta era si el canon estaba roto. **No lo está.**
-**Relacionado:** ADR-023 (Regla 1 · fórmula canónica INMUTABLE) · ADR-024 (221 GAD · Capa B) ·
+**Relacionado:** ADR-023 (Regla 1 · fórmula canónica INMUTABLE) · ADR-024 (222 GAD · Capa B) ·
 ADR-034 (el Orquestador) · OBS-010 (el hallazgo) · d01 Planificación · d03 Mandato.
 
 ---
@@ -52,11 +52,11 @@ y exige ADR propio, recalibración y nueva validación empírica. **No entra por
 ### 3. Montecristi es la VALIDACIÓN EMPÍRICA del molde (visión de Javo)
 Montecristi = Municipio 001 = el **molde**. Se cierra con el universo estratégico de 25 metas,
 que es lo que valida el modelo. **Al terminar Montecristi arranca QUIRA Operaciones** (Capa B ·
-ADR-024/034) para incorporar progresivamente los **221 GAD** — y ese escalamiento se hace
+ADR-024/034) para incorporar progresivamente los **222 GAD** — y ese escalamiento se hace
 **corrigiendo el universo total de metas por GAD** (Javo · 2026-07-15).
 
 ```
-v1 · MONTECRISTI (validación empírica)      v2 · 221 GAD (escalamiento)
+v1 · MONTECRISTI (validación empírica)      v2 · 222 GAD (escalamiento)
 PDOT (66)                                    PDOT completo por GAD
    → 25 metas estratégicas                      → universo total de metas
    → ICPI validado          ─── evolución ───→  → ICPI recalibrado
@@ -93,4 +93,4 @@ convierte una posible debilidad en una **decisión arquitectónica transparente 
 exactamente lo que un banco de desarrollo, una contraloría o un GAD tienen derecho a exigir.
 
 ---
-*ADR-036 · Universo Operacional del Modelo · Dylus Lab © 2026 · "El motor no estaba equivocado: estaba callado sobre su propio alcance. v1 valida el molde con 25 metas; v2 escala a 221 GAD con el universo completo. Ampliar no es curar: es evolucionar — y eso se hace con ADR, recalibración y evidencia nueva."*
+*ADR-036 · Universo Operacional del Modelo · Dylus Lab © 2026 · "El motor no estaba equivocado: estaba callado sobre su propio alcance. v1 valida el molde con 25 metas; v2 escala a 222 GAD con el universo completo. Ampliar no es curar: es evolucionar — y eso se hace con ADR, recalibración y evidencia nueva."*

@@ -26,7 +26,7 @@ cadena —**PROMESA → PLAN → PRESUPUESTO → EJECUCIÓN → RESULTADO → TE
 **brechas** entre lo prometido y lo realmente ejecutado.
 
 El GAD (gobierno municipal) es el **sujeto observado, no el cliente**. Empezamos por **Montecristi
-(Municipio 001)** como el "molde", con vocación de cubrir los **221 GAD del Ecuador**.
+(Municipio 001)** como el "molde", con vocación de cubrir los **222 GAD del Ecuador**.
 
 **La diferencia clave:** QUIRA no *calcula* opiniones, **las demuestra documentalmente**. Cada número
 tiene detrás una evidencia verificable (una norma con firma digital, una cédula presupuestaria, un

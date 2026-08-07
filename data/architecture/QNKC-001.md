@@ -4,7 +4,7 @@
 **Versión**: 1.0  
 **Fecha**: 2026-05-30  
 **Proyecto**: QUIRA Gov — QNKC (QUIRA National Knowledge Core)  
-**Alcance**: Ecuador (221 GADs) + LAC (cantones equivalentes)  
+**Alcance**: Ecuador (222 GADs) + LAC (cantones equivalentes)  
 **Estado**: CONGELADO
 
 ---

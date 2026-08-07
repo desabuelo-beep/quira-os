@@ -583,7 +583,7 @@ OBS-QNKC-01 → QUÉ mide C5     (tres dimensiones: C5a · C5b · C5c)
 OBS-QNKC-02 → DÓNDE se verifica C5a/C5b  (portal regulatorio, no institucional)
 ```
 
-**Consecuencia para la replicación a 221 GADs — implicación arquitectónica mayor:**
+**Consecuencia para la replicación a 222 GADs — implicación arquitectónica mayor:**
 
 | Escenario | Fuente C5a/C5b | Costo de calibración |
 |-----------|----------------|----------------------|
@@ -609,10 +609,10 @@ Portal DPE (transparencia.dpe.gob.ec)
       ↓
 Fuente observacional unificada y estandarizada
       ↓
-221 GADs
+222 GADs
 ```
 
-La complejidad de verificación C5a/C5b cambia de O(n) — un conector por cada GAD — a O(1) — una sola consulta a fuente canónica. Esto no es solo una mejora operacional. Cambia el modelo de escalabilidad de QUIRA: el costo de cubrir un nuevo GAD en Dom07 deja de ser proporcional al número de GADs y pasa a ser el costo fijo de un único conector DPE. Para BETA-CORE (Montecristi) es una mejora en robustez de datos. Para la visión de 221 GADs, es la diferencia entre un proyecto inescalable y uno que escala por definición.
+La complejidad de verificación C5a/C5b cambia de O(n) — un conector por cada GAD — a O(1) — una sola consulta a fuente canónica. Esto no es solo una mejora operacional. Cambia el modelo de escalabilidad de QUIRA: el costo de cubrir un nuevo GAD en Dom07 deja de ser proporcional al número de GADs y pasa a ser el costo fijo de un único conector DPE. Para BETA-CORE (Montecristi) es una mejora en robustez de datos. Para la visión de 222 GADs, es la diferencia entre un proyecto inescalable y uno que escala por definición.
 
 **Consecuencia epistemológica — cambio de pregunta bautismal N2 Dom07:**
 
@@ -699,9 +699,9 @@ P07 satisfaría H-QNKC-01 (destruye el falso equivalente "declaración de cumpli
 
 La auditoría N4 respondió dos preguntas simultáneas:
 - **Pregunta operativa:** ¿Cuál es el C8 de Montecristi? — `C8 = C4 × C5a × C5b_acc × C5t × C5c = C4 × 1.00 × 1.00 × 0.00 × 0.75 = 0` (atraso sistémico colapsa la cadena)
-- **Pregunta arquitectónica:** ¿Puede DPE actuar como fuente canónica para 221 GADs? — Sí. O(1) confirmado.
+- **Pregunta arquitectónica:** ¿Puede DPE actuar como fuente canónica para 222 GADs? — Sí. O(1) confirmado.
 
-La segunda tenía alcance mayor y validó: la complejidad de observabilidad Dom07 para 221 GADs es O(1). Resultado completo documentado en `ADR-015_Validacion_OBS-QNKC-02.md` — cerrado con estado ACEPTADO.
+La segunda tenía alcance mayor y validó: la complejidad de observabilidad Dom07 para 222 GADs es O(1). Resultado completo documentado en `ADR-015_Validacion_OBS-QNKC-02.md` — cerrado con estado ACEPTADO.
 
 **Estado post-auditoría N4:** OBS-QNKC-02 = **VALIDADA**. ADR-015 cerrado. Dom07 en estado **Verificado** — pendiente DEC formal (requiere C10 con dato real y carga Neo4j definitiva).
 
@@ -931,7 +931,7 @@ Las dos hipótesis que generan todos los principios del framework están formali
 No significa que no aparecerán nuevos principios. Significa algo más fuerte: todo principio futuro deberá poder derivarse simultáneamente de H-QNKC-01 (falso equivalente que destruye) y H-QNKC-02 (cadena multiplicativa que lo expresa). Si no puede derivarse de ambas, no es un principio del framework — es una OBS-QNKC o una regla de implementación. Ese es el verdadero cierre.
 
 **Estado de los principios para BETA-CORE:**  
-P00 y P01 están formalizados. P02–P05 están programados con sprint conocido y con su estructura multiplicativa pre-formal derivada de H-QNKC-02. OBS-QNKC-01 está implementada en el sistema (estado `INCOMPRENSIBLE` en QTMP + Constitución de Lenguaje) antes de requerir formalización explícita. OBS-QNKC-02 **VALIDADA** (2026-06-01 · ADR-015 cerrado) — el portal regulatorio DPE (transparencia.dpe.gob.ec) es la fuente canónica de C5a/C5b para dominios LOTAIP. N4 confirmó: API pública sin autenticación, 25 numerales/mes, 16 meses de datos longitudinales, arquitectura O(1) verificada para los 221 GADs. Hallazgo crítico adicional: C5b descompuesto en C5b_acc (accesibilidad = 1.00) y C5t (puntualidad = 0.00) — atraso sistémico en todos los meses auditados. No se requieren principios adicionales para cerrar MILESTONE_002.
+P00 y P01 están formalizados. P02–P05 están programados con sprint conocido y con su estructura multiplicativa pre-formal derivada de H-QNKC-02. OBS-QNKC-01 está implementada en el sistema (estado `INCOMPRENSIBLE` en QTMP + Constitución de Lenguaje) antes de requerir formalización explícita. OBS-QNKC-02 **VALIDADA** (2026-06-01 · ADR-015 cerrado) — el portal regulatorio DPE (transparencia.dpe.gob.ec) es la fuente canónica de C5a/C5b para dominios LOTAIP. N4 confirmó: API pública sin autenticación, 25 numerales/mes, 16 meses de datos longitudinales, arquitectura O(1) verificada para los 222 GADs. Hallazgo crítico adicional: C5b descompuesto en C5b_acc (accesibilidad = 1.00) y C5t (puntualidad = 0.00) — atraso sistémico en todos los meses auditados. No se requieren principios adicionales para cerrar MILESTONE_002.
 
 El próximo principio que QUIRA va a necesitar es P02 — en el Sprint de Dom08 (Participación Ciudadana). Aparecerá exactamente cuando el sistema tenga que decidir qué cuenta como C9: si el acta de participación es suficiente, o si se requiere trazar que la participación modificó una decisión concreta de inversión. La estructura multiplicativa pre-formal ya está registrada: `participación_efectiva = Convocatoria × Deliberación × Incidencia_real`.
 

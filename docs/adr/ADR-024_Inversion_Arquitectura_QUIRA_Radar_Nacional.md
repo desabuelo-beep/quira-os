@@ -21,7 +21,7 @@ authority:
 > de inteligencia pública?**
 
 Si la respuesta es la segunda (y los tres convergemos en que lo es), entonces
-quiraintelligence.com es el producto principal y quiraholding.streamlit.app es
+quiraintelligence.com es el producto principal y quiraintelligence.streamlit.app es
 el laboratorio operativo. Este ADR documenta la propuesta; la sesión la ratifica.
 
 Diferencia que está en juego:
@@ -84,7 +84,7 @@ Es la función interna de Dylus Lab que alimenta el núcleo.
   mapa Ecuador · alertas críticas · ejecución · transparencia · contratación · cooperación
 - Luego puede entrar a un GAD: Montecristi · Manta · Cuenca · Quito...
 - Referencia: Bloomberg Government · FiscalNote · OpenGov — pero ecuatoriano
-- **quiraholding.streamlit.app** = el LABORATORIO operativo donde validamos el motor
+- **quiraintelligence.streamlit.app** = el LABORATORIO operativo donde validamos el motor
   antes de escalarlo al Ecuador completo. NO es el producto final.
 
 ## El cambio de modelo de negocio (lo más importante)

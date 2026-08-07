@@ -162,7 +162,7 @@ Registrado como OBS-QNKC-02 en QNKC_PRINCIPIOS_INDEX.
 
 **Consecuencia arquitectónica O(n) → O(1) — validada durante Sprint 4:**
 
-OBS-QNKC-02 produce una reducción en la complejidad de observabilidad para todos los dominios LOTAIP. La verificación C5a/C5b pasa de O(n) — un conector por cada GAD — a O(1) — una sola consulta al portal regulatorio DPE. Para MILESTONE_002 esto es una mejora en robustez. Para la visión de 221 GADs, define el modelo de escalabilidad.
+OBS-QNKC-02 produce una reducción en la complejidad de observabilidad para todos los dominios LOTAIP. La verificación C5a/C5b pasa de O(n) — un conector por cada GAD — a O(1) — una sola consulta al portal regulatorio DPE. Para MILESTONE_002 esto es una mejora en robustez. Para la visión de 222 GADs, define el modelo de escalabilidad.
 
 **N2 Dom07 actualizado — v1.0.1 (enmienda LOTAIP 2.0):**
 
@@ -240,7 +240,7 @@ El hito se alcanza cuando se cumplen **simultáneamente** las siguientes 5 condi
 
 Registro canónico para decisiones futuras de escala:
 
-**El QLEP corpus N1 es nacional.** Las 221 normas base de los 12 dominios aplican a los 221 GAD Municipales de Ecuador sin modificación. La diferencia entre Montecristi y cualquier otro cantón es exclusivamente:
+**El QLEP corpus N1 es nacional.** Las 221 normas base de los 12 dominios aplican a los 222 GAD Municipales de Ecuador sin modificación. La diferencia entre Montecristi y cualquier otro cantón es exclusivamente:
 
 - `CANTON_ID` — identificador del cantón
 - Datos C9 — resultados territoriales verificados (SIGEF, INEC, LOTAIP portal, SENAGUA, etc.)

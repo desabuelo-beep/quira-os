@@ -7,7 +7,7 @@
     "scope": "nacional",
     "descripcion": "Catálogo maestro de Átomos Canónicos de Conocimiento (ACK) — alcance nacional Ecuador. Los ACKs representan normativa constitucional y orgánica aplicable a todos los GADs municipales. El campo canton_id no existe por diseño: la normativa es nacional; los datos operacionales (SIGEF, portales LOTAIP, ejecución) son cantonales y entran en L0 (Excel Canónico), nunca en el ACK Registry.",
     "laboratorio": "GADMCM — Cantón Montecristi",
-    "destino": "221 municipios del Ecuador",
+    "destino": "222 municipios del Ecuador",
     "ultima_actualizacion": "2026-06-02",
     "extractor_default": "QLEP-v1.0",
     "notas_pendientes": [

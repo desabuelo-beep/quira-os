@@ -638,7 +638,7 @@ La hoja de ruta está organizada en tres fases que siguen la lógica de consolid
 
 ### Regla 1 — Un Solo Dominio
 ```
-quiraholding.streamlit.app
+quiraintelligence.streamlit.app
 ```
 No hay subdominios, no hay aplicaciones separadas. Los cuatro ambientes (GOV/Civic/Impact/Ops) conviven en la misma app bajo el mismo dominio.
 

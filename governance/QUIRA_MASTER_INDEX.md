@@ -66,11 +66,11 @@ Fundacional** (Constitución) condiciona a los 3 niveles — no es un peldaño n
 ## 2 · Las 3 columnas del ecosistema (quién hace qué · ADR-024/027/029)
 
 ```
-QUIRA OPERATIONS  (motor de verdad)  ── ingesta · normaliza · calcula · valida · sella
+OPERACIONES  (motor de verdad)  ── ingesta · normaliza · calcula · valida · sella
    │  Gold Master Model + N conectores (SERCOP·CPCCS·CNE·eSIGEF·INEC·PDOT·Excel·API·CSV…)
    │  NUNCA interpreta · NUNCA comunica · solo produce verdad
    ▼
-QUIRA PRODUCTS  (capas de salida)  ── Institucional · Ciudadana · Cooperación · Impact · Economic
+PRODUCTOS  (capas de salida)  ── Institucional · Ciudadana · Cooperación · Impact · Economic
    │  LEEN Operations · aplican firewall · JAMÁS recalculan ni duplican lógica
    ▼
 DYLUS LAB  (laboratorio evolutivo)  ── canon · arquitectura · lenguaje · compilador · CID · firewall · seguridad

@@ -175,7 +175,7 @@ def _procedimiento(marco: dict) -> str:
         '<b>biografía documental</b> a través de los sistemas del Estado —planificación, contratación, '
         'presupuesto— que históricamente operan en <b>silos</b>. Si el rastro se sostiene de extremo a extremo, '
         'hay evidencia pública; si se interrumpe, la evidencia es nula. Nada se infiere: la ausencia de rastro es, '
-        'en sí misma, un resultado. El mismo método es <b>escalable a los 221 gobiernos locales</b>.</p>'
+        'en sí misma, un resultado. El mismo método es <b>escalable a los 222 gobiernos locales</b>.</p>'
         + _cadena()
         + '<p class="qc-p" style="margin-top:13px">Cada afirmación termina con un <b>nivel de evidencia pública</b> '
         '—no un juicio de verdad—: verificable con <b>registro independiente</b>, declarada solo en el <b>informe '
@@ -340,7 +340,7 @@ def _red() -> str:
                      f'<div class="bc">{_esc(c)}</div><div class="bs">{_esc(s)}</div></div>')
     return (f'<p class="qc-p">La innovación no es conectar sistemas: es <b>seguir la biografía del dato</b> a través de '
             f'ellos. Cada aseveración recorre una <b>vida documental</b> —de lo dicho a la integridad verificable— '
-            f'cruzando entidades que operan en silos, de forma <b>escalable a los 221 gobiernos locales</b>:</p>'
+            f'cruzando entidades que operan en silos, de forma <b>escalable a los 222 gobiernos locales</b>:</p>'
             f'<div class="qc-bio">{"".join(nodos)}</div>')
 
 
