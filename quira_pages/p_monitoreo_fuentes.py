@@ -595,6 +595,37 @@ div[data-testid="stVerticalBlock"] {{ gap:.5rem!important; }}
     st.markdown(_franja("CORRIDAS Y VALIDACIÓN HUMANA",
                         "la máquina propone · la persona acredita"),
                 unsafe_allow_html=True)
+
+    # Gasto del mes — ADR-042 §4, pregunta 6. No es contabilidad: escalar de un
+    # municipio a 222 multiplica esta cifra, y conviene conocerla antes de
+    # comprometerla. Una corrida cuyo costo no se sabe no se puede repetir.
+    from datetime import datetime as _dt
+    from app.observatorio.corrida import gasto_del_mes, leer as _leer_corridas
+    _hoy = _dt.now()
+    _g = gasto_del_mes(_hoy.year, _hoy.month)
+    _ultimas = _leer_corridas(limite=6)
+    _calib = sum(1 for c in _ultimas if c.get("tipo") == "calibracion")
+    cg = st.columns(3, gap="small")
+    with cg[0]:
+        st.markdown(_dato(f"${_g['total_usd']:,.2f}", "", "Gasto del mes",
+                          f"{_g['periodo']} · {_g['corridas']} corrida(s) · "
+                          f"promedio ${_g['promedio_usd']:.4f}",
+                          C.V_TX3 if _g["total_usd"] == 0 else C.OCRE),
+                    unsafe_allow_html=True)
+    with cg[1]:
+        st.markdown(_dato(str(_g["corridas"]), "", "Corridas registradas",
+                          "Cada una guarda municipio, fuente, período, "
+                          "procedimiento, versión, modelo y duración — lo "
+                          "necesario para repetirla."),
+                    unsafe_allow_html=True)
+    with cg[2]:
+        st.markdown(_dato(str(_calib), str(len(_ultimas)) if _ultimas else "0",
+                          "De calibración",
+                          "Una corrida de calibración mide el <b>procedimiento</b>, "
+                          "no produce cifras publicables: lo que sale de ella no "
+                          "se publica hasta que el método esté acreditado."),
+                    unsafe_allow_html=True)
+
     filas, pendientes = _corridas()
     cc = st.columns([2.2, 1], gap="small")
     with cc[0]:

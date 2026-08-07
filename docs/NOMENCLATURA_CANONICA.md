@@ -59,7 +59,8 @@ administrador_hash = "<PBKDF2-SHA256 del password>"
 | `gov` | Centro | Centro de Inteligencia Territorial | donde se consulta el conocimiento | ✅ Activo |
 | `obs` | Observatorio | Observatorio de Integridad Territorial | sector público · multilaterales · cooperación | ✅ Activo |
 | `civic` | Ciudadana | QUIRA Ciudadana | ciudadanía · control social | 🔄 **Fase 1** |
-| `impact` | Cooperación | QUIRA Cooperación | bilaterales y multilaterales · financiamiento | ⏳ Fase 2 |
+| `coop` | Cooperación | QUIRA Cooperación | bilaterales y multilaterales · financiamiento | ⏳ Fase 2 |
+| `impact` | — | QUIRA Impact | academia · observatorios · investigadores | 🔒 reservado, sin construir |
 | `ops` | Operaciones | Operaciones | equipo Dylus Lab — **no es producto** | ✅ Activo |
 
 > **Actualizado tras el sello de ADR-041 (2026-08-07).** Tres cambios y su razón:
@@ -73,15 +74,26 @@ administrador_hash = "<PBKDF2-SHA256 del password>"
 >   Institucional» sigue existiendo como PRODUCTO —la licencia de gestión para el GAD,
 >   ADR-041 §4-ter—, que es otra cosa y aún no tiene ambiente.
 >
-> ⚠️ **`impact` arrastra una ambigüedad sin resolver.** La clave dice `impact` y el nombre
-> público dice «Cooperación», porque el canon los trató como uno solo. Son productos
-> distintos: Cooperación responde *«¿qué puede financiarse y con qué instrumento?»*; Impact,
-> *«¿qué pueden investigar y reproducir terceros?»*. Separarlos exige decidir la familia
-> completa — pendiente de un ADR propio, no de este archivo.
+> ✅ **`impact` vs `coop` — subsanado (Javo · 2026-08-07).** La clave decía `impact` y el
+> nombre público «Cooperación», porque el canon los trató como uno solo. Son productos
+> distintos y la diferencia es de **contrato de salida**:
+>
+> · **Cooperación** → *«¿qué puede financiarse, con qué instrumento y bajo qué elegibilidad?»*
+>   Entrega elegibilidad, alineación y seguimiento. Su usuario decide dónde poner recursos.
+> · **Impact** → *«¿qué pueden investigar y reproducir terceros?»* Entrega datos, series,
+>   metodología y trazabilidad. Su usuario produce conocimiento propio.
+>
+> El contenido de ese ambiente siempre fue cooperación, así que la clave pasa a `coop` y
+> **`impact` queda reservado** para cuando el producto exista. `impact` sigue resolviendo a
+> `coop` por el mapa legacy, para no dejar sin destino una sesión ya abierta.
+>
+> Impact **no es un think tank**: no produce conclusiones ni recomienda: produce las
+> condiciones para que otros las produzcan y las verifiquen. Esa frontera protege la
+> independencia epistemológica del sistema y se formalizará en el ADR de familia.
 
 ### Reglas de ambientes
 
-- Los keys internos son en minúsculas: `gov`, `obs`, `civic`, `impact`, `ops`.
+- Los keys internos son en minúsculas: `gov`, `obs`, `civic`, `coop`, `ops`.
 - Los labels son los nombres cortos en lenguaje de administración, nunca códigos internos.
 - Los nombres públicos (landing page) son los nombres de producto.
 - **Nunca** usar un nombre público en lógica de código — solo el key interno.

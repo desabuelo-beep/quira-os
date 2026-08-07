@@ -6,7 +6,7 @@ Dylus Lab © 2026
 ARQUITECTURA 4 AMBIENTES (regla canónica permanente — ver docs/NOMENCLATURA_CANONICA.md):
   🏛 GOV    — Observatorio · Ejecutivo + Técnico · ACTIVO
   🌎 Civic  — QUIRA Ciudadano · acceso público · Fase 3
-  📑 Impact — QUIRA Cooperación · academia/cooperación · Placeholder
+  📑 Coop   — QUIRA Cooperación · bilaterales y multilaterales · Fase 2
   ⚙  OPS   — Operaciones · Operador + Administrador · ACTIVO
 
 ROLES (CONGELADOS — no cambiar sin revisión doctrinal):
@@ -229,7 +229,7 @@ except Exception:
 # ── IMPORTS LAZY — 4 ambientes ────────────────────────────────────────────────
 from quira_pages.env_gov    import render as _render_gov
 from quira_pages.env_civic  import render as _render_civic
-from quira_pages.env_impact import render as _render_impact
+from quira_pages.env_coop   import render as _render_coop
 from quira_pages.env_obs    import render as _render_obs
 from quira_pages.env_ops    import render as _render_ops
 
@@ -262,12 +262,18 @@ ENVIRONMENTS = {
         "badge_color": _C.V_TX3,
         "ops_only":    False,
     },
-    "impact": {
+    # La clave era `impact` y el nombre público «Cooperación» (Javo · 2026-08-07):
+    # el canon trató ambos productos como uno solo y quedaron cruzados. Son
+    # distintos —Cooperación responde «¿qué puede financiarse y con qué
+    # instrumento?»; Impact, «¿qué pueden investigar y reproducir terceros?»— y
+    # el contenido de este ambiente es cooperación, no investigación. La clave
+    # pasa a `coop` y `impact` queda LIBRE para cuando ese producto exista.
+    "coop": {
         "label":       "Cooperación",
         "icon":        "📑",
-        "render":      _render_impact,
+        "render":      _render_coop,
         "roles":       ["Observatorio", "Ejecutivo", "Directivo", "Operador", "Administrador"],
-        "desc":        "Cooperación internacional · Fase 2",
+        "desc":        "Cooperación bilateral y multilateral · Fase 2",
         "badge_color": _C.V_TX3,
         "ops_only":    False,
     },
@@ -299,10 +305,13 @@ ENVIRONMENTS = {
     },
 }
 
-_ENV_ORDER = ["gov", "obs", "civic", "impact", "ops"]
+_ENV_ORDER = ["gov", "obs", "civic", "coop", "ops"]
 
 # Mapa legacy: cualquier ruta del Sprint 1-2 → su ambiente correcto
 _LEGACY: dict[str, str] = {
+    # Clave renombrada (2026-08-07): una sesión abierta en `impact` no debe
+    # quedar sin destino. El nombre queda reservado para el producto Impact.
+    "impact":       "coop",
     # Módulos Sprint 2 → GOV
     "inicio":       "gov",
     "situacion":    "gov",
