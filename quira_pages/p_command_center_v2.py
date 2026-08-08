@@ -472,7 +472,7 @@ def render() -> None:
             f'color:{C.V_TX}">QUIRA</span>'
             f'<div style="border-left:1px solid {C.V_BD_FUERTE};padding-left:14px">'
             f'<div style="font-size:14px;font-weight:800;color:{C.V_TX}">'
-            f'Centro de Inteligencia Territorial</div>'
+            f'QUIRA Observatorio</div>'
             f'<div style="font-size:10.5px;color:{C.V_TX2}">GAD Municipal de Montecristi · '
             f'{_esc_h(_corte)}</div></div></div>',
             unsafe_allow_html=True,

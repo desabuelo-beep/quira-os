@@ -484,8 +484,11 @@ def origen() -> str:
 # ══════════════════════════ QUÉ ES ══════════════════════════
 def que_es() -> str:
     nos = "".join(f'<span class="q-no">{t}</span>' for t in
+                  # «no es solo un observatorio» salió con ADR-045: el producto
+                  # ahora SE LLAMA Observatorio, y negarlo en la misma página
+                  # dejaba al lector sin saber qué está entrando a usar.
                   ("no es un software municipal", "no es una auditoría",
-                   "no es solo un observatorio"))
+                   "no es un ranking"))
     return _sec("Qué es", "Conocimiento verificable, no opinión",
         f'<div class="q-nos">{nos}</div>'
         '<p class="q-p">QUIRA convierte <b>evidencia pública dispersa</b> en conocimiento que '
@@ -629,24 +632,31 @@ def motor() -> str:
 
 # ══════════════════════════ CÓMO FUNCIONA ══════════════════════════
 def como_funciona() -> str:
-    n = [("var(--pizarra)", "Entrada", "Observatorio Nacional",
-          "Monitorea de forma progresiva los sistemas públicos de los 222 municipios."),
-         ("var(--pizarra)", "Entrada", "QUIRA Ciudadana",
-          "Incorpora la evidencia que la ciudadanía aporta desde el territorio."),
-         ("var(--coral)", "Proceso", "Sistema de inteligencia",
-          "Contrasta ambas fuentes contra la norma y reconstruye la cadena."),
-         ("var(--tx)", "Núcleo", "Centro de Inteligencia Territorial",
+    # ADR-045: eran dos «Entradas» —Observatorio y Ciudadana— y un «Núcleo» que
+    # publicaba el nombre interno del Centro. Ahora son las TRES VÍAS DE
+    # ADQUISICIÓN, que es lo que de verdad se distingue, y una sola superficie.
+    n = [("var(--pizarra)", "Captura", "Sistemas públicos",
+          "Revisa de forma progresiva los portales oficiales de los 222 municipios."),
+         ("var(--pizarra)", "Solicitud", "Oficio de acceso",
+          "Cuando el dato no está publicado, se pide por escrito y la entidad responde firmando."),
+         ("var(--pizarra)", "Aporte", "Evidencia del territorio",
+          "Actas, facturas y fotografías que la ciudadanía entrega y el sistema corrobora."),
+         ("var(--coral)", "Proceso", "Contraste contra la norma",
+          "Cada pieza se confronta con la ley y con las demás, y se reconstruye la cadena."),
+         ("var(--tx)", "Superficie", "QUIRA Observatorio",
           "Donde la evidencia se vuelve conocimiento consultable. Único: todo converge aquí.")]
     nodos = "".join(
         f'<div class="q-node" style="--nc:{c}"><span class="q-node-k">{k}</span>'
         f'<div class="q-node-t">{t}</div><div class="q-node-d">{d}</div></div>'
         for c, k, t, d in n)
-    return _sec("Cómo funciona", "Dos fuentes, un solo cuerpo de conocimiento",
+    return _sec("Cómo funciona", "Tres vías, un solo cuerpo de conocimiento",
         f'<div class="q-flow">{nodos}</div>'
-        '<p class="q-p" style="margin-top:14px">Las dos entradas son <b>distintas por '
-        'naturaleza</b>: una detecta la evidencia que ya existe en los sistemas del Estado; la '
-        'otra ayuda a producir la que falta. Ninguna sustituye a la otra, y ambas alimentan el '
-        'mismo cuerpo de conocimiento — no bases separadas que después se contradicen.</p>')
+        '<p class="q-p" style="margin-top:14px">Las tres vías no son intercambiables, y por eso '
+        'se distinguen: la primera <b>encuentra</b> la evidencia que el Estado ya publicó; la '
+        'segunda <b>obliga a producirla</b> cuando falta; la tercera <b>recoge</b> lo que el '
+        'territorio ya tiene en la mano. Cada pieza conserva el registro de por dónde entró, '
+        'porque de eso depende cuánto puede afirmarse sobre ella. Alimentan el mismo cuerpo de '
+        'conocimiento — no bases separadas que después se contradicen.</p>')
 
 
 # ══════════════════════════ ECOSISTEMA ══════════════════════════

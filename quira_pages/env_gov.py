@@ -73,7 +73,7 @@ from utils.marca import logo
 
 _GOV_MODULES: list[tuple[str, str, str, bool]] = [
     # ── Sección Ejecutiva (todos los roles GOV) ────────────────────────────
-    ("inicio",       "🏛",  "Centro de Inteligencia Territorial", False),
+    ("inicio",       "🏛",  "Panorama general",              False),   # ADR-045
     ("situacion",    "📊",  "Situación Institucional",       False),
     ("metas",        "🎯",  "Metas PDOT",                    False),   # Dom03 · ADR-026
     ("alertas",      "🚨",  "Alertas y Riesgos",             False),
@@ -199,7 +199,7 @@ def _render_gov_header(module_label: str) -> None:
         <div style="line-height:0">{logo("marfil", 22)}</div>
         <div>
             <div style="font-size:13px;font-weight:800;color:{C.V_TX};
-                        letter-spacing:-.01em">Centro de Inteligencia Territorial</div>
+                        letter-spacing:-.01em">QUIRA Observatorio</div>
             <div style="font-size:10px;color:{C.V_TX3};
                         letter-spacing:.04em">{module_label}</div>
         </div>
@@ -232,7 +232,7 @@ def _render_inicio() -> None:
             from quira_pages.p_command_center import render as _r1
             _r1()
         except Exception as e1:
-            st.error(f"Centro de Inteligencia Territorial no disponible: {e1}")
+            st.error(f"Panorama general no disponible: {e1}")
 
 
 def _render_situacion() -> None:
@@ -418,7 +418,7 @@ def _render_transparencia_d07() -> None:
 # ── Mapa key → (renderer, label) ─────────────────────────────────────────────
 _MODULE_RENDER: dict[str, tuple] = {
     # Sección Ejecutiva
-    "inicio":       (_render_inicio,       "Centro de Inteligencia Territorial"),
+    "inicio":       (_render_inicio,       "Panorama general"),
     "situacion":    (_render_situacion,    "Situación Institucional"),
     # Etiquetas SIN jerga interna (Regla 2): eran "Metas PDOT · IFE" y "Alertas y Riesgos
     # SAT" — las dos únicas fugas ALTO que el auditor de frontera marcaba en este archivo.
@@ -456,7 +456,7 @@ def render() -> None:
     Ejecutivo (Sprint 1.2):
       · Centro de Inteligencia Territorial único = pantalla principal (HTML canvas full)
       · Sidebar eliminado — navegación por tarjetas onclick
-      · drill-in de dominio → módulo + banda de retorno "← Centro de Inteligencia Territorial"
+      · drill-in de dominio → módulo + banda de retorno "← Panorama general"
       · 'concejo' = Panel Estratégico como dominio (no view separada)
 
     Directivo / Administrador → módulo activo con header de identidad GOV.
@@ -513,7 +513,7 @@ button[data-testid="collapsedControl"] {
   <span style="line-height:0">{logo("marfil", 15)}</span>
   <span style="font-size:9px;color:{C.V_TX3}">›</span>
   <span style="font-size:9px;color:{C.V_TX3};font-weight:700;
-               letter-spacing:.06em;text-transform:uppercase">Centro de Inteligencia Territorial</span>
+               letter-spacing:.06em;text-transform:uppercase">QUIRA Observatorio</span>
   <span style="font-size:9px;color:{C.V_TX3}">›</span>
   <span style="font-size:9px;color:{C.V_TX};font-weight:700;
                letter-spacing:.06em;text-transform:uppercase">{label_drill}</span>
@@ -521,7 +521,7 @@ button[data-testid="collapsedControl"] {
 """, unsafe_allow_html=True)
 
             # Botón funcional de retorno
-            if st.button("← Centro de Inteligencia Territorial", key="exec_back_centro",
+            if st.button("← Panorama general", key="exec_back_centro",
                          use_container_width=False):
                 st.session_state["gov_module"] = "inicio"
                 st.session_state.pop("ejecutivo_modo", None)
@@ -552,7 +552,7 @@ button[data-testid="collapsedControl"] {
                 from quira_pages.p_command_center import render as _ve1
                 _ve1()
             except Exception as e1:
-                st.error(f"Centro de Inteligencia Territorial no disponible: {e1}")
+                st.error(f"Panorama general no disponible: {e1}")
         return
 
     # ── Directivo / Administrador: módulo activo con header GOV ──────────────
@@ -568,7 +568,7 @@ button[data-testid="collapsedControl"] {
         from quira_pages.qinv import render as _r_qinv, label_of as _label_qinv
         _dom = module_key[len("qinv_"):]
         _render_gov_header(_label_qinv(_dom))
-        if st.button("← Centro de Inteligencia Territorial", key="gov_back_centro"):
+        if st.button("← Panorama general", key="gov_back_centro"):
             st.session_state["gov_module"] = "inicio"
             st.rerun()
         _r_qinv(_dom)

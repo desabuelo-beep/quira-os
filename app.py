@@ -244,12 +244,16 @@ from quira_pages.env_ops    import render as _render_ops
 from utils.css_tokens import C as _C
 
 ENVIRONMENTS = {
+    # ADR-045: los ambientes ya no compiten por el nombre de la superficie.
+    # «QUIRA Observatorio» es la marca, fija arriba; cada ítem dice QUÉ HACE.
+    # Antes `gov` se llamaba «Centro» y `obs` «Observatorio», de modo que la
+    # puerta y la sala llevaban nombres distintos y ninguno decía su función.
     "gov": {
-        "label":       "Centro",
-        "icon":        "🏛",
+        "label":       "Dominios",
+        "icon":        "📊",
         "render":      _render_gov,
         "roles":       ["Observatorio", "Ejecutivo", "Directivo", "Administrador"],
-        "desc":        "Centro de Inteligencia Territorial",
+        "desc":        "Los 12 dominios de la gestión municipal",
         "badge_color": _C.ACENTO,
         "ops_only":    False,
     },
@@ -286,11 +290,11 @@ ENVIRONMENTS = {
     #   · Operaciones  → mantenimiento técnico, para cuando algo se rompe.
     # Fusionarlos degradaba el producto principal a herramienta de soporte.
     "obs": {
-        "label":       "Observatorio",
+        "label":       "Cobertura",
         "icon":        "◷",
         "render":      _render_obs,
         "roles":       ["Observatorio", "Ejecutivo", "Directivo", "Administrador"],
-        "desc":        "Observatorio de Integridad Territorial",
+        "desc":        "Qué se observa y en qué estado",
         "badge_color": _C.ACENTO,
         "ops_only":    False,
     },

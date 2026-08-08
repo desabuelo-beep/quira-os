@@ -516,7 +516,7 @@ componentes:
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-043_Familia_QUIRA.md
-    hash: f26b3d9fece5dd3b
+    hash: c0975ebde869dd53
     authority_declared: true
     parent: ADR-041
   - id: ADR-044
@@ -530,7 +530,7 @@ componentes:
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-045_Superficie_Unica_y_Custodias_de_Evidencia.md
-    hash: a9567d51a4263794
+    hash: a9d84d64b010a5c3
     authority_declared: true
     parent: ADR-043
   - id: CANON_PCD-PCD-D01_Planificacion

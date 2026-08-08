@@ -3,7 +3,7 @@
 scripts/enrich_gobierno.py — bloque `gobierno` del snapshot (dimensión ¿QUÉ? · ADR-037)
 ═══════════════════════════════════════════════════════════════════════════════════
 La institución y su mandato: quién gobierna, desde cuándo, hasta cuándo, con qué concejo
-y bajo qué estructura. Alimenta el 1er cajón del Centro de Inteligencia Territorial.
+y bajo qué estructura. Alimenta el 1er cajón del panorama general (QUIRA Observatorio).
 
 FUENTES (todo verificado · nada se inventa · Reglas 1, 3 y 9):
   · Autoridades electas y fechas → Gold Master `SCHEMA_CNE` (cargado por Javo · 2026-07-16)

@@ -4,7 +4,7 @@ authority:
   parent: ADR-043
   constitution_articles: [1, 2, 4, 5]
   type: ARQUITECTONICA
-status: PROPUESTA — pendiente de sello de Javo (ADR-035 §5)
+status: APROBADO — sellado por Javo 2026-08-08 (ADR-035 §5)
 fecha: 2026-08-08
 supersedes:
   - ADR-043 §2 (fila «Adquisición de evidencia»)
@@ -70,6 +70,20 @@ reproducible (corrección de Javo · 2026-08-08). El fundamento no es que «QUIR
 que lo que llega es un documento institucional firmado. **El origen es la entidad; el ciudadano
 fue el vehículo.** Por eso alcanza techo institucional y no parcial.
 
+### 3.1 · Custodia y verificabilidad son dos ejes, no uno
+
+La columna de la derecha dice **techo**, no nivel, y la distinción es operativa:
+
+| | Pregunta que responde | Instrumento |
+|---|---|---|
+| **Custodia** | ¿de dónde vino y qué presenció QUIRA de su adquisición? | las tres filas de arriba |
+| **Verificabilidad** | ¿cuánto podemos afirmar sobre esta evidencia? | la escala de 5 niveles |
+
+La custodia **fija el máximo alcanzable; no asigna el nivel**. Una evidencia de captura directa
+no es «independiente» por serlo: puede quedar en *contradicción* si choca con otra, o en
+*parcial* si está incompleta. Leer la tabla como asignación automática convertiría la
+procedencia en un certificado, que es exactamente lo que QUIRA no hace.
+
 ## 4 · El circuito de adquisición asistida
 
 Norma verificada en corpus (Regla 3):
@@ -104,9 +118,13 @@ al vencimiento, prepara el documento del siguiente escalón.
 promete. La vía judicial queda descrita, no ofrecida, hasta que la **LOGJCC entre al corpus** —
 hoy no está, y sin norma verificada no hay dato.
 
-**La reproducibilidad no depende de la identidad del solicitante.** Lo que se repite es el
-procedimiento —el mismo oficio, a la misma entidad, con el mismo fundamento—, no la persona que
-lo presentó. De ahí una restricción de diseño, más estricta que cualquier obligación legal:
+**La reproducibilidad no depende de la identidad, la permanencia ni la participación posterior
+del ciudadano que activó el procedimiento.** Lo que se repite es el procedimiento —el mismo
+oficio, a la misma entidad, con el mismo fundamento—, no la persona que lo presentó. Si el
+ciudadano abandona el trámite a mitad de camino, la respuesta firmada que ya llegó **sigue siendo
+evidencia institucional válida**: su validez nunca dependió de que él siguiera ahí.
+
+De ahí una restricción de diseño, más estricta que cualquier obligación legal:
 
 - El **contacto del ciudadano es opcional**. Sirve para avisarle del vencimiento; no es condición
   para generar el oficio, ni para que la respuesta entre al corpus.
@@ -216,7 +234,8 @@ un reemplazo masivo produjo cuatro reversiones el 2026-08-07).
   choca con **QUIRA Cooperación**, que sirve a quien **da** el dinero mientras esto serviría a
   quien lo **pide** —distinto usuario y distinta entrega, que por el test de ADR-043 §3 es
   precisamente lo que separa un producto de una vista—. Se decide en su propio ADR, con el mismo
-  test, y **no reabre ADR-044**.
+  test, y **no reabre ADR-044**. Lo único que este ADR sí fija por adelantado: **no se llamará
+  «QUIRA Ciudadana»**, porque sería reinstalar la segunda puerta que acaba de cerrarse.
 
 ---
 *ADR-045 · Dylus Lab © 2026 · supersede ADR-043 §2 · deriva de ADR-043 y ADR-044.*

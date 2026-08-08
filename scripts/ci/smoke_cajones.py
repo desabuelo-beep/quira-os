@@ -33,7 +33,7 @@ sys.path.insert(0, str(_RAIZ))
 # legacy `tecnico` no tiene acceso a ellos: probarlos con ese rol no comprobaba
 # nada — el router lo desviaba al Centro y el fallo era del test, no del código.
 DESTINOS: list[tuple] = [
-    ("inicio", "Centro de Inteligencia Territorial", "Centro de Inteligencia Territorial"),
+    ("inicio", "Panorama general", "QUIRA Observatorio"),
     ("qinv_d01", "d01 · Planificación Estratégica", "Planificación"),
     ("qinv_d02", "d02 · Presupuesto & Financiamiento", "capacidad financiera"),
     ("qinv_d03", "d03 · Gobernanza del Mandato", "mandato"),

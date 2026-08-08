@@ -6,9 +6,19 @@ authority:
   type: ARQUITECTONICA
 status: APROBADO — sellado por Javo (2026-08-07)
 fecha: 2026-08-07
+superseded_partially_by:
+  - ADR-045 (§2, fila «Adquisición de evidencia»)
 ---
 
 # ADR-043 · La familia QUIRA · qué hace que algo sea una QUIRA
+
+> ⚠️ **§2, fila de Adquisición: SUPERADA por ADR-045 (2026-08-08).** Listaba Observatorio y
+> QUIRA Ciudadana como dos entradas paralelas; son una superficie con dos modos de
+> participación. **Todo lo demás sigue vigente**, empezando por el método —el test de
+> pregunta/usuario/entrega del §3—, que es precisamente lo que produjo la corrección al
+> aplicarse a un caso al que no se lo habíamos aplicado.
+>
+> **Este texto NO se corrige aquí** (ADR-044 §4): un ADR sellado no se edita, se supersede.
 
 > **Contexto.** Javo (2026-08-07): *"¿o son muchas QUIRAs y deberíamos definir los alcances
 > de cada una para establecer la familia real?"*. La pregunta correcta no es cuántas hay,

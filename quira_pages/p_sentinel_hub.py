@@ -1,6 +1,6 @@
 """
 QUIRA OS · p_sentinel_hub.py
-Centro de Inteligencia Territorial — Pantalla 0
+QUIRA Observatorio — Pantalla 0
 
 Fuente de datos:
   - Datos institucionales: data/gm_snapshot.json (outputs verificados Gold Master)
@@ -545,7 +545,7 @@ def render():
     # ── Construir HTML completo ─────────────────────────────────────────────
     hdr = page_header(
         "⬡ CONTROL",
-        "Centro de Inteligencia Territorial",
+        "QUIRA Observatorio",
         f"{gad.get('alcalde','–')} · {gad.get('periodo','–')} · TGI {tgi.get('score',0):.2f} — {tgi.get('clasificacion','')}",
         f'<span class="badge badge-amber">⬡ v1.0 RC</span>',
     )
