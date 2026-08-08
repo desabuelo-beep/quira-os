@@ -22,6 +22,12 @@ import re
 import sys
 from pathlib import Path
 
+# La consola de Windows abre en cp1252 y este gate imprime flechas y viñetas: sin
+# esto reventaba con UnicodeEncodeError DESPUÉS de haber calculado sus resultados
+# (2026-08-08). Un gate que muere al informar es un gate que no informa.
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
 RAIZ = Path(__file__).resolve().parents[2]
 
 # Lo que NO se revisa. Todo esto es REGISTRO de trabajo, no canon vivo: deja

@@ -3,8 +3,8 @@
 # GENERADO por scripts/governance/build_registry.py · NO editar a mano.
 # Autoridad: Carta de Gobernanza Art. 1 (Derivación) y Art. 3 (describe, no gobierna).
 # ═══════════════════════════════════════════════════════════════════
-generado: 2026-08-07
-total_activos: 121
+generado: 2026-08-08
+total_activos: 122
 huerfanos: 0   # sin bloque authority: → no pueden promoverse a vigente (Art. 1)
 
 componentes:
@@ -524,6 +524,13 @@ componentes:
     level: 2
     path: docs/adr/ADR-044_Rectificacion_Taxonomia_Heredada.md
     hash: 155cacdf80f19454
+    authority_declared: true
+    parent: ADR-043
+  - id: ADR-045
+    kind: canon_adr
+    level: 2
+    path: docs/adr/ADR-045_Superficie_Unica_y_Custodias_de_Evidencia.md
+    hash: a9567d51a4263794
     authority_declared: true
     parent: ADR-043
   - id: CANON_PCD-PCD-D01_Planificacion

@@ -6,7 +6,8 @@
     "description": "Registro canónico de municipios para QUIRA OS. Fuente de verdad para mapeo entre sistemas externos (DPE, SERCOP, CPCCS, redes sociales) y snapshots internos.",
     "nota_codigos": "municipio_code sigue convención gad.codigo del snapshot (6 dígitos: 2 provincia + 2 cantón + 01). Código INEC verificado solo para Montecristi (código primario). Resto marcados con codigo_inec_verificado: false — confirmar con tablas INEC 2022.",
     "total_municipios": 17,
-    "provincia_principal": "Manabí (13)"
+    "provincia_principal": "Manabí (13)",
+    "lookup_rebuilt": "2026-08-08"
   },
   "municipios": [
     {
@@ -456,6 +457,7 @@
   "lookup": {
     "_nota": "Índices de acceso rápido para evitar O(n) searches en el pipeline",
     "por_ruc": {
+      "1360001010001": "130801",
       "1360000980001": "130901",
       "1360000630001": "130601",
       "1360000550001": "130401",
@@ -471,10 +473,10 @@
       "1360000470001": "130301",
       "1360002920001": "131101",
       "1360001790001": "131601",
-      "1360003300001": "131801",
-      "1360001010001": "130801"
+      "1360003300001": "131801"
     },
     "por_dpe_id": {
+      "937": "130801",
       "936": "130901",
       "934": "130601",
       "932": "130401",
@@ -490,8 +492,7 @@
       "931": "130301",
       "945": "131101",
       "943": "131601",
-      "947": "131801",
-      "937": "130801"
+      "947": "131801"
     }
   }
 }
