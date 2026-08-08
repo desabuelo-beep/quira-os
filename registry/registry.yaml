@@ -4,7 +4,7 @@
 # Autoridad: Carta de Gobernanza Art. 1 (Derivación) y Art. 3 (describe, no gobierna).
 # ═══════════════════════════════════════════════════════════════════
 generado: 2026-08-07
-total_activos: 120
+total_activos: 121
 huerfanos: 0   # sin bloque authority: → no pueden promoverse a vigente (Art. 1)
 
 componentes:
@@ -145,7 +145,7 @@ componentes:
     kind: identity
     level: 0
     path: docs/sprint-c/CONSTITUCION_ONTOLOGICA_QUIRA.md
-    hash: 479a3f8552edb567
+    hash: d54f86a522565e14
     authority_declared: true
     parent: CONSTITUCION-001
   - id: INVENTARIO-CONCEPTOS-001
@@ -383,7 +383,7 @@ componentes:
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-024_Inversion_Arquitectura_QUIRA_Radar_Nacional.md
-    hash: a0ff3d5c2a2fd774
+    hash: ee9799cac6c3da5a
     authority_declared: true
     parent: GOVERNANCE-001
   - id: CANON_ADR-ADR-025_Principio_Alertas_QUIRA_
@@ -519,6 +519,13 @@ componentes:
     hash: f26b3d9fece5dd3b
     authority_declared: true
     parent: ADR-041
+  - id: ADR-044
+    kind: canon_adr
+    level: 2
+    path: docs/adr/ADR-044_Rectificacion_Taxonomia_Heredada.md
+    hash: 155cacdf80f19454
+    authority_declared: true
+    parent: ADR-043
   - id: CANON_PCD-PCD-D01_Planificacion
     kind: canon_pcd
     level: 2

@@ -12,6 +12,21 @@ authority:
 **Proyecto**: QUIRA Gov · Dylus Lab
 **Origen**: Javo (fundador) + síntesis Colega + criterio Claude (director técnico)
 **Supersede parcialmente**: la jerarquía implícita "Institucional = raíz"
+**Superado parcialmente por**: `ADR-044` — ver aviso abajo
+
+---
+
+> ⚠️ **§Capa C SUPERADO por ADR-044 (2026-08-07).** El resto de este documento sigue vigente
+> y su decisión central —el radar nacional como producto, no la vitrina de un municipio—
+> sostiene todo lo que vino después.
+>
+> Lo superado, y solo eso: la lista de productos daba a **Impact** y a **Cooperación** el
+> mismo destinatario, y clasificaba a **QUIRA Ciudadana** como producto cuando es una entrada
+> de evidencia (ADR-041 §4 · ADR-043 §2).
+>
+> **Este texto NO se corrige aquí.** Un ADR sellado registra una decisión tomada con la
+> información de su momento; reescribirlo borraría la evidencia de que el error existió. La
+> rectificación vive en ADR-044, con el razonamiento completo.
 
 ---
 
