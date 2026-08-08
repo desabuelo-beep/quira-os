@@ -97,7 +97,22 @@ CSS = """<style>
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)' opacity='.03'/%3E%3C/svg%3E");
 }
 
-.qw{max-width:880px;margin:0 auto;padding:0 26px;position:relative;z-index:1}
+/* ═══ ANCHOS ═══════════════════════════════════════════════════════════════
+   Javo (2026-08-07): «todo está comprimido en el centro y hay espacios de los
+   lados sin aprovechar». Correcto, pero la solución NO es ensanchar el texto:
+   una línea de más de ~75 caracteres cuesta más de leer porque el ojo pierde
+   el salto de renglón. Es tipografía, no gusto.
+
+   Primera versión: contenedor ancho y texto a 74ch. Javo lo revisó en pantalla
+   grande y volvió a señalar lo mismo — «se siguen viendo muchas partes
+   recogidas a la izquierda dejando espacios inmensos; el texto debe llegar de
+   extremo a extremo». Es su decisión, tomada con el argumento delante.
+
+   Se compensa con INTERLINEADO: a línea larga, más aire entre renglones, que es
+   lo que sostiene el salto de línea cuando la medida crece. */
+:root{--ancho:1180px; --lectura:100%}
+
+.qw{max-width:var(--ancho);margin:0 auto;padding:0 34px;position:relative;z-index:1}
 
 /* ═══ HERO ═══ */
 .q-hero{display:flex;flex-direction:column;align-items:center;text-align:center;
@@ -110,24 +125,56 @@ CSS = """<style>
   color:var(--coral-dp);margin-top:15px;animation:q-in 1s cubic-bezier(.2,.7,.3,1) .2s both}
 .q-cat{font:400 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.22em;color:var(--tx3);
   margin-top:7px;animation:q-in 1s cubic-bezier(.2,.7,.3,1) .26s both}
-.q-tag{font:400 16.5px/1.75 'Inter',sans-serif;color:var(--tx2);max-width:600px;
+.q-tag{font:400 17px/1.8 'Inter',sans-serif;color:var(--tx2);max-width:760px;
   margin-top:26px;animation:q-in 1s cubic-bezier(.2,.7,.3,1) .34s both}
 .q-tag b{color:var(--tx);font-weight:600}
 
 /* ═══ GRECA · separador manteño ═══ */
-.q-greca{max-width:880px;margin:46px auto 0;padding:0 26px;position:relative;z-index:1}
+.q-greca{max-width:var(--ancho);margin:46px auto 0;padding:0 34px;position:relative;z-index:1}
 
 /* ═══ SECCIONES ═══ */
-.q-sec{margin:44px auto 0;max-width:880px;padding:0 26px;position:relative;z-index:1}
-.q-kick{font:700 10px/1 'JetBrains Mono',monospace;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--coral-dp);margin-bottom:12px;display:flex;align-items:center;gap:11px}
-.q-kick::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--bd),transparent)}
+.q-sec{margin:52px auto 0;max-width:var(--ancho);padding:0 34px;position:relative;z-index:1}
+/* ═══ KICKER CON ESCALERA MANTEÑA ══════════════════════════════════════════
+   Javo (2026-08-07): la greca vivía en un separador aparte y el encabezado de
+   sección usaba «una simple línea recta sosa». Se integra el patrón geométrico
+   en el propio título: la escalera sale a IZQUIERDA y DERECHA del texto y lo
+   contiene, en vez de decorar por su cuenta a varios centímetros de distancia.
+
+   El patrón es el mismo escalonado del separador, reducido a un módulo de 34×9
+   que se repite. Va en `background-image` con un SVG en línea —sin peticiones
+   externas— y se recorta al ancho disponible a cada lado. */
+/* Encabezado de sección — ver `_sec()` para el porqué.
+
+   EL TRAZO NO SE INTERRUMPE (Javo · 2026-08-07): «si no, no hay trazabilidad,
+   no hay cadena». La versión anterior repetía el motivo desde el borde exterior
+   y quedaba cortado justo donde debía tocar el título — el punto que importa.
+
+   Dos correcciones: el módulo empieza y termina a la MISMA altura (y=8), así
+   cualquier repetición empalma sin escalón; y cada lado se ancla HACIA EL
+   CENTRO —el izquierdo alineado a la derecha, el derecho a la izquierda—, de
+   modo que el trazo llegue entero al título y el recorte quede en el extremo
+   exterior, donde no se lee como rotura. */
+.q-kick{margin-bottom:18px;display:flex;align-items:center;justify-content:center}
+.q-kick::before,.q-kick::after{content:"";flex:1;height:16px;opacity:.55;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='16' viewBox='0 0 64 16'%3E%3Cpath d='M0 8H8V13H24V3H40V13H56V8H64' fill='none' stroke='%23C1392B' stroke-width='1.5' stroke-linejoin='miter'/%3E%3C/svg%3E");
+  background-repeat:repeat-x}
+.q-kick::before{background-position:right center}
+.q-kick::after{background-position:left center}
+/* El título enhebrado en el hilo: el trazo entra por ambos bordes. */
+.q-kick-t{flex:0 0 auto;font:700 10px/1 'JetBrains Mono',monospace;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--coral-dp);
+  border:1px solid rgba(193,57,43,.34);border-radius:20px;padding:7px 18px;
+  background:var(--sup);white-space:nowrap;position:relative}
+@media(max-width:620px){
+  .q-kick-t{font-size:9px;padding:6px 11px;letter-spacing:.13em}
+}
 .q-h2{font:600 31px/1.2 'Fraunces',Georgia,serif;color:var(--tx);letter-spacing:-.015em;
   margin-bottom:15px}
-.q-p{font:400 15.5px/1.78 'Inter',sans-serif;color:var(--tx2);max-width:730px}
+/* Texto a todo el ancho, con el interlineado subido para sostener la medida. */
+.q-p{font:400 15.5px/1.92 'Inter',sans-serif;color:var(--tx2);max-width:var(--lectura)}
 .q-p b{color:var(--tx);font-weight:600}
-.q-p+.q-p{margin-top:13px}
-.q-cap{font:400 13px/1.7 'Inter',sans-serif;color:var(--tx3);max-width:730px;margin-top:12px}
+.q-p+.q-p{margin-top:15px}
+.q-cap{font:400 13px/1.85 'Inter',sans-serif;color:var(--tx3);max-width:var(--lectura);margin-top:14px}
 .q-cap b{color:var(--tx2)}
 
 /* ═══ ORIGEN ═══ */
@@ -145,24 +192,87 @@ CSS = """<style>
   border:1px solid rgba(193,57,43,.26);border-radius:15px;padding:8px 16px;
   background:var(--coral-bg);white-space:nowrap}
 
-/* ═══ CADENA ═══ */
-.q-cad{display:flex;flex-wrap:wrap;align-items:center;margin:18px 0 4px}
-.q-link{font:600 12px/1 'JetBrains Mono',monospace;color:var(--tx2);border:1px solid var(--bd);
-  border-radius:6px;padding:10px 13px;margin:4px;background:var(--sf)}
-.q-link.on{color:var(--pizarra);border-color:rgba(78,102,116,.4);background:rgba(78,102,116,.09)}
-.q-link small{display:block;font:400 9px/1 'JetBrains Mono';color:var(--tx3);
-  margin-top:4px;letter-spacing:.03em}
-.q-cut{color:var(--coral-dp);font-size:16px;margin:0 4px}
-.q-arw{color:var(--tx3);font-size:13px;margin:0 2px}
+/* ═══ CADENA ═══════════════════════════════════════════════════════════════
+   Javo (2026-08-07): «los bloques deberían ser una sola línea de cadena, no dos
+   niveles, para visualizar la trazabilidad».
+
+   Se rehace como RIEL CONTINUO: los seis eslabones en una fila, unidos por un
+   trazo que no se interrumpe. Así la línea ES la trazabilidad —se lee de un
+   vistazo, sin leer las etiquetas— y su ROTURA es el problema del que habla la
+   sección. Antes, con `flex-wrap`, la cadena caía en dos filas y el corte
+   quedaba a mitad de la primera: la metáfora se perdía justo donde importaba.
+
+   En pantalla estrecha el riel gira a vertical, que es la única forma de
+   mantener seis eslabones legibles sin encogerlos hasta lo ilegible. */
+/* Seis eslabones en un riel. La corrección de Javo (2026-08-07) era de
+   proporción: al ensanchar el contenedor los nodos quedaron anchos y bajos, con
+   texto de 8,5 px aplastado en la esquina y aire muerto alrededor. Ahora son
+   TARJETAS DE PROCESO —altura propia, número de paso legible y tipografía que
+   se lee sin acercarse—. */
+.q-cad{display:flex;align-items:stretch;margin:28px 0 8px}
+.q-link{flex:1 1 0;min-width:0;min-height:104px;border:1px solid var(--bd);
+  border-radius:9px;padding:13px 14px;background:var(--sf);
+  display:flex;flex-direction:column;gap:7px}
+.q-link.on{border-color:rgba(78,102,116,.42);background:rgba(78,102,116,.08)}
+/* El número del paso: ordena la lectura sin competir con el nombre. */
+.q-num{font:700 10px/1 'JetBrains Mono',monospace;letter-spacing:.1em;
+  color:var(--tx3);opacity:.75}
+.q-link.on .q-num{color:var(--pizarra);opacity:1}
+.q-link b{font:600 12.5px/1.32 'Inter',sans-serif;color:var(--tx2);
+  letter-spacing:0;display:block}
+.q-link.on b{color:var(--tx)}
+.q-link small{display:block;font:400 10.5px/1.42 'Inter',sans-serif;
+  color:var(--tx3);margin-top:auto}
+
+/* Unión entre eslabones: un trazo continuo, no una flecha suelta. */
+.q-join{flex:0 0 30px;position:relative;display:flex;align-items:center}
+.q-join::before{content:"";position:absolute;left:0;right:0;height:2px;
+  background:rgba(78,102,116,.42)}
+.q-join::after{content:"›";position:absolute;left:50%;transform:translateX(-50%);
+  color:var(--pizarra);font:700 15px/1 'Inter',sans-serif;
+  background:var(--plano);padding:0 4px}
+
+/* La rotura: el trazo se parte y el corte queda en el acento. */
+.q-join.rota::before{background:linear-gradient(90deg,
+  rgba(78,102,116,.42) 0 30%, transparent 30% 70%, var(--bd) 70% 100%)}
+/* Coral PROFUNDO: el glifo es texto de 15 px y el pleno da 4,05:1 sobre el
+   plano — no alcanza AA. El gate del sistema visual lo detectó. */
+.q-join.rota::after{content:"✕";color:var(--coral-dp);font:700 16px/1 'Inter',sans-serif}
+
+@media(max-width:900px){
+  .q-cad{flex-wrap:wrap;gap:10px}
+  .q-link{flex:1 1 calc(33.333% - 30px);min-height:96px}
+  .q-join{flex:0 0 18px}
+}
+@media(max-width:620px){
+  .q-cad{flex-direction:column}
+  .q-link{flex:1 1 auto;min-height:0}
+  .q-join{flex:0 0 24px;justify-content:center}
+  .q-join::before{left:50%;right:auto;top:0;bottom:0;height:auto;width:2px}
+  .q-join::after{content:"⌄"}
+  .q-join.rota::before{background:linear-gradient(180deg,
+    rgba(78,102,116,.42) 0 30%, transparent 30% 70%, var(--bd) 70% 100%)}
+  .q-join.rota::after{content:"✕"}
+}
 
 /* ═══ FLUJO ═══ */
-.q-flow{display:flex;flex-wrap:wrap;gap:11px;margin:20px 0 6px}
+/* Los cuatro pasos del flujo tenían aspecto de cajas sueltas, sin dirección
+   (Javo · 2026-08-07). Se numeran y se les añade un conector, para que se lea
+   que uno lleva al siguiente y no que están puestos uno al lado del otro. */
+.q-flow{display:flex;flex-wrap:wrap;gap:11px;margin:24px 0 6px;counter-reset:paso}
 .q-node{flex:1 1 178px;border:1px solid var(--bd);border-top:2px solid var(--nc,var(--coral));
-  border-radius:11px;padding:16px 18px;background:var(--sf)}
+  border-radius:11px;padding:16px 18px;background:var(--sf);position:relative;
+  counter-increment:paso}
+.q-node:not(:last-child)::after{content:"›";position:absolute;right:-13px;top:50%;
+  transform:translateY(-50%);color:var(--tx3);font:700 17px/1 'Inter',sans-serif;z-index:2}
 .q-node-k{font:700 8.5px/1 'JetBrains Mono',monospace;letter-spacing:.13em;text-transform:uppercase;
-  color:var(--nc,var(--coral));display:block;margin-bottom:7px}
+  color:var(--nc,var(--coral));display:flex;align-items:center;gap:7px;margin-bottom:8px}
+.q-node-k::before{content:counter(paso,decimal-leading-zero);
+  font:700 9px/1 'JetBrains Mono',monospace;color:var(--tx3);
+  border:1px solid var(--bd);border-radius:4px;padding:3px 5px;letter-spacing:.06em}
 .q-node-t{font:700 14.5px/1.3 'Inter',sans-serif;color:var(--tx);margin-bottom:4px}
 .q-node-d{font:400 12px/1.6 'Inter',sans-serif;color:var(--tx2)}
+@media(max-width:900px){.q-node:not(:last-child)::after{display:none}}
 
 /* ═══ PRODUCTOS ═══ */
 .q-prods{display:flex;flex-direction:column;gap:10px;margin-top:17px}
@@ -172,8 +282,14 @@ CSS = """<style>
 .q-prod-h{display:flex;align-items:baseline;justify-content:space-between;gap:14px;
   flex-wrap:wrap;margin-bottom:3px}
 .q-prod-n{font:600 19px/1.3 'Fraunces',Georgia,serif;color:var(--tx)}
+/* Lo que está activo se distingue de lo que aún no existe: un sello lleno para
+   la Fase 1 y uno atenuado para lo que todavía no se puede sostener. Antes
+   compartían la misma intensidad y parecían igual de disponibles. */
 .q-prod-e{font:700 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.11em;
-  color:var(--pc,var(--coral));white-space:nowrap}
+  color:var(--pc,var(--coral));white-space:nowrap;border:1px solid currentColor;
+  border-radius:20px;padding:4px 11px;opacity:.55}
+.q-prod-e.activo{background:var(--coral);border-color:var(--coral);
+  color:#FFF;opacity:1}
 .q-prod-r{font:500 11.5px/1 'Inter',sans-serif;color:var(--pc,var(--coral));margin-bottom:9px;opacity:.92}
 .q-prod-d{font:400 13.8px/1.72 'Inter',sans-serif;color:var(--tx2)}
 .q-prod-d b{color:var(--tx);font-weight:600}
@@ -212,6 +328,26 @@ CSS = """<style>
 [data-testid="stButton"] button:hover{border-color:var(--coral) !important;
   background:rgba(193,57,43,.1) !important;transform:translateY(-1px) !important}
 [data-testid="stButton"] button p,[data-testid="stButton"] button span{white-space:pre-line !important}
+
+/* ═══ BARRA SUPERIOR ═══════════════════════════════════════════════════════
+   Javo (2026-08-07): «la entrada al observatorio está hasta el final, no es
+   cómodo bajar para ingresar». No solo no es atentatorio: obligar a recorrer
+   toda la página para entrar castiga justamente a quien ya conoce el sitio y
+   vuelve a diario.
+
+   Se resuelve con las DOS cosas, que es el patrón habitual: un acceso discreto
+   arriba para quien ya sabe a qué viene, y el formulario completo al final para
+   quien llega por primera vez y necesita entender antes de que le pidan una
+   contraseña. La portada sigue explicando; deja de obligar. */
+.q-top{position:sticky;top:0;z-index:50;background:rgba(217,224,229,.92);
+  backdrop-filter:blur(9px);border-bottom:1px solid var(--bd)}
+.q-top-in{max-width:var(--ancho);margin:0 auto;padding:9px 34px;display:flex;
+  align-items:center;gap:11px}
+.q-top-n{font:600 13px/1 'Archivo',sans-serif;letter-spacing:.17em;color:var(--tx)}
+.q-top-s{font:400 9px/1 'JetBrains Mono',monospace;letter-spacing:.13em;
+  color:var(--tx3);margin-left:2px}
+.q-top .st-key-top_acceso{margin-left:auto}
+@media(max-width:720px){.q-top-s{display:none}}
 
 div[data-testid="stForm"]{background:var(--sup) !important;
   border:1px solid rgba(193,57,43,.2) !important;border-radius:14px !important;
@@ -276,19 +412,37 @@ button.q-ops:hover,.q-ops-w button:hover{opacity:.85 !important;transform:none !
 
 
 def _sec(kick: str, h2: str, cuerpo: str) -> str:
-    return (f'<div class="q-sec"><div class="q-kick">{kick}</div>'
+    """Una sección: la greca corre de lado a lado y el título va enhebrado.
+
+    Idea de Javo (2026-08-07): cada encabezado es **un eslabón del collar**. La
+    greca manteña recorre el ancho completo y el título queda ensartado en el
+    centro, igual que la pieza labrada en el hilo. No es adorno — es la misma
+    figura que da nombre al proyecto: unidades indivisibles unidas en una cadena
+    cuya integridad depende de que ninguna falte.
+
+    Sustituye dos elementos que se estorbaban: el separador suelto y un kicker
+    con línea recta. Quedaban duplicados y ninguno conectaba nada.
+
+    (La explicación vive aquí y no en el CSS porque los comentarios de la hoja
+    de estilos SÍ viajan al navegador — y el gate de la portada cuenta cuántas
+    veces aparece la palabra del origen en lo que se sirve.)"""
+    return (f'<div class="q-sec">'
+            f'<div class="q-kick"><span class="q-kick-t">{kick}</span></div>'
             f'<div class="q-h2">{h2}</div>{cuerpo}</div>')
 
 
 def greca() -> str:
-    """Separador con la greca escalonada manteña — la pirámide que 'comunica la idea de
-    montaña o cerro'. Aquí sí entra: como sistema gráfico, no cargando el logotipo."""
-    return ('<div class="q-greca"><svg width="100%" height="16" viewBox="0 0 880 16" '
-            'preserveAspectRatio="none">'
-            '<path d="M0 13 L60 13 L60 8 L120 8 L120 3 L180 3 L180 8 L240 8 L240 13 L300 13 '
-            'L300 8 L360 8 L360 3 L420 3 L420 8 L480 8 L480 13 L540 13 L540 8 L600 8 L600 3 '
-            'L660 3 L660 8 L720 8 L720 13 L780 13 L780 8 L840 8 L840 3 L880 3" '
-            'fill="none" stroke="#C1392B" stroke-width="1.6" opacity=".3"/></svg></div>')
+    """RETIRADA como separador suelto (Javo · 2026-08-07): «debe dejar una sola
+    greca, no duplicados».
+
+    El motivo manteño vive ahora en el encabezado de cada sección —donde el
+    título va enhebrado y el trazo lo conecta—, que es donde comunica algo. Como
+    banda independiente entre bloques solo repetía el dibujo sin unir nada, y
+    aparecía dos veces seguidas junto al encabezado.
+
+    Se conserva la función devolviendo vacío porque el controlador podría
+    seguir invocándola: es preferible una llamada inocua a un error de import."""
+    return ""
 
 
 # ══════════════════════════ HERO ══════════════════════════
@@ -352,20 +506,68 @@ def que_es() -> str:
 # órganos de control—, con el sistema del Estado que custodia cada eslabón. El canon NO
 # cambia: cambia el registro, igual que se dice "participación ciudadana" en superficie y
 # no el nombre interno del índice. (Javo · 2026-08-06.)
-_CADENA = [("Mandato electoral", "plan de trabajo · CNE"),
-           ("Planificación territorial", "PDOT · PNBV"),
-           ("Asignación presupuestaria", "presupuesto codificado"),
-           ("Contratación y ejecución", "PAC · devengado"),
-           ("Bienes y servicios", "resultado entregado"),
-           ("Impacto territorial", "cobertura en el territorio")]
+# LA CADENA MADRE — SEIS ESLABONES, y son los del canon.
+#
+# `CONSTITUCION_ONTOLOGICA_QUIRA.md §La cadena madre` la fija literalmente:
+#
+#     PROMESA → PLAN → PRESUPUESTO → EJECUCIÓN → RESULTADO → TERRITORIO
+#      (CNE)   (PDOT)   (cédula)    (devengado)  (cobertura)  (GeoTwin)
+#
+# ⚠️ EL PRESUPUESTO NO SE LEE DEL eSIGEF (Javo · 2026-08-07, corrección de raíz
+# aplicada también a la Constitución Ontológica). QUIRA **no tiene acceso** a
+# ese sistema: es interno de las entidades públicas. El dato sale de la cédula
+# presupuestaria publicada en el portal de transparencia, o de documentos
+# obtenidos por solicitud de acceso a la información que la ciudadanía aporta.
+# Publicar lo contrario describiría una capacidad que el proyecto no tiene.
+#
+# ⚠️ ERROR DE MÉTODO CORREGIDO (2026-08-07). El director la reconstruyó a partir
+# de `plan_render.py`, que es el detalle operativo de UN dominio, y le salieron
+# ocho eslabones inventando pasos que el canon no tiene. La cadena madre es
+# TRANSVERSAL al ecosistema y vive en la Constitución Ontológica, no en d01.
+# Antes de reconstruir algo, se busca en el canon transversal.
+#
+# LOS SISTEMAS NO SON ESLABONES. La Constitución es explícita: «cada eslabón
+# vive en un sistema distinto del Estado, y QUIRA verifica que la integridad se
+# sostenga AL CRUZARLOS» — todos ellos de ACCESO PÚBLICO.
+# Poner Transparencia o SERCOP como pasos diría que el Estado hace transparencia
+# después de contratar, cuando son los registros donde cada paso se comprueba —
+# la misma separación de ADR-042: la cadena es el objeto observado, los silos la
+# alimentan.
+#
+# POA Y PAC SON INSTRUMENTOS DENTRO DE SU ESLABÓN, no eslabones aparte: el POA
+# es la bajada del plan plurianual a operación anual (vive en PLAN) y el PAC
+# pertenece a EJECUCIÓN. Ahí se disuelve la discusión de orden que abrió el
+# director — ambos viven en eslabones distintos y no compiten.
+#
+# Corrección de dato de Javo, esa sí de fondo: «PNBV» es de períodos anteriores.
+# El vigente es el **Plan Nacional de Desarrollo** (CE Art. 280 · COOTAD
+# Art. 215, ambos en el corpus con su huella).
+_CADENA = [("Mandato electoral", "plan de trabajo inscrito · CNE"),
+           ("Planificación territorial", "PDOT · POA · Plan Nacional de Desarrollo"),
+           ("Asignación presupuestaria", "cédula presupuestaria publicada"),
+           ("Contratación y ejecución", "PAC · SERCOP · devengado"),
+           ("Bienes y servicios", "resultado entregado · rendición de cuentas"),
+           ("Impacto territorial", "cobertura verificable en el territorio")]
 
 
 def problema() -> str:
+    # DÓNDE SE CORTA. Los sistemas del Estado documentan el ciclo hasta la
+    # ejecución financiera: hay contratos, hay devengado, hay registro. Lo que
+    # no queda recorrible es qué se entregó y a quién llegó — el hallazgo de
+    # d01 §05: el instrumento declara el 100 % de QUÉ se hace, el 1,1 % de
+    # DÓNDE y el 3,5 % de SOBRE QUIÉN.
+    #
+    # Por eso el corte va antes de «Bienes y servicios» y no antes: sostener que
+    # la cadena se rompe en el presupuesto sería afirmar algo que la evidencia
+    # no dice.
+    _CORTE = 4
     nodos = ""
     for i, (t, s) in enumerate(_CADENA):
         if i:
-            nodos += ('<span class="q-cut">✕</span>' if i == 3 else '<span class="q-arw">→</span>')
-        nodos += (f'<span class="q-link{" on" if i < 3 else ""}">{t}<small>{s}</small></span>')
+            nodos += f'<span class="q-join{" rota" if i == _CORTE else ""}"></span>'
+        nodos += (f'<span class="q-link{" on" if i < _CORTE else ""}">'
+                  f'<span class="q-num">{i + 1:02d}</span>'
+                  f'<b>{t}</b><small>{s}</small></span>')
     return _sec("El problema", "La información existe. La trazabilidad, no siempre",
         '<p class="q-p">Un compromiso inscrito ante la autoridad electoral puede no incorporarse '
         'al plan de desarrollo. La planificación puede no reflejarse en la asignación '
@@ -413,12 +615,12 @@ def motor() -> str:
         'cumple una función acotada —<b>leer, extraer y proponer</b>— y <b>ninguna cifra publicada '
         'proviene de ella</b>.</p>'
         f'<div class="q-duo" style="grid-template-columns:1fr">{cards}</div>'
-        '<p class="q-p" style="margin-top:16px">La separación no es un detalle de arquitectura: '
-        'es lo que hace la métrica <b>reproducible</b> —un tercero con las mismas fuentes obtiene '
-        'el mismo número— y <b>auditable</b> —cada resultado puede rastrearse hasta su fórmula y '
-        'hasta el documento que lo sostiene—. Un modelo generativo no ofrece ninguna de las dos '
-        'cosas: puede dar respuestas distintas a la misma pregunta y no permite reconstruir cómo '
-        'llegó a ellas.</p>'
+        '<p class="q-p" style="margin-top:16px">De esa separación dependen dos propiedades que un '
+        'modelo generativo no puede ofrecer. La primera es la <b>reproducibilidad</b>: un tercero '
+        'con las mismas fuentes obtiene exactamente el mismo número. La segunda es la '
+        '<b>auditabilidad</b>: cada resultado se rastrea hasta su fórmula y hasta el documento que '
+        'lo sostiene. Un modelo de lenguaje puede responder distinto a la misma pregunta, y no '
+        'deja forma de reconstruir cómo llegó a lo que dijo.</p>'
         '<p class="q-cap">Por eso el modelo de cálculo es <b>inspeccionable</b> y sus fórmulas '
         'permanecen estables: si una cifra cambia, es porque cambió la evidencia — nunca porque '
         'cambió el modelo. Es el requisito mínimo para que una medición sirva ante un órgano de '
@@ -454,7 +656,7 @@ _PRODUCTOS = [
      "Monitoreo progresivo de los <b>222 municipios</b> del país, incorporados según su "
      "disponibilidad documental y su ciclo administrativo. Agentes de inteligencia artificial "
      "revisan los sistemas nacionales de información —transparencia activa, contratación pública, rendición de cuentas, portales institucionales— y <b>toda captura se valida antes de publicarse</b>. Insumo directo para monitoreo, evaluación y fortalecimiento de la capacidad institucional.",
-     "FASE 1 · ACTIVO", "var(--coral)"),
+     "", "var(--coral)"),
     ("QUIRA Ciudadana",
      "CivicTech · evidencia social · capilaridad territorial",
      "Una <b>comunidad de control social</b> que nace en Ecuador para crecer hacia América "
@@ -462,7 +664,7 @@ _PRODUCTOS = [
      "—actas, informes, fotografías de obra— y la inteligencia artificial <b>acompaña y "
      "enseña</b>: explica qué acredita cada documento, qué norma lo respalda y cómo encaja en el "
      "mapa de su territorio. No reemplaza al ciudadano: <b>lo fortalece para incidir</b>.",
-     "FASE 1 · EN CONSTRUCCIÓN", "var(--pizarra)"),
+     "", "var(--coral)"),
     ("QUIRA Cooperación",
      "Multilaterales · banca de desarrollo · cooperación bilateral · academia",
      "Evidencia territorial verificada para <b>organismos multilaterales y banca de desarrollo</b> "
@@ -471,18 +673,30 @@ _PRODUCTOS = [
      "civil. Insumo para inversión basada en evidencia y para gestión por resultados. Llega después "
      "por una razón práctica: <b>su valor es la cobertura nacional</b>, y esa cobertura la "
      "construyen antes las dos entradas.",
-     "FASE 2", "var(--tx2)"),
+     "", "var(--tx2)"),
     ("QUIRA Institucional",
      "Gobiernos locales · licencia independiente",
      "Herramientas para que el propio gobierno local <b>gestione lo suyo</b> con la evidencia ya "
      "publicada: ver dónde se corta su cadena documental y corregirlo. Licencia independiente, "
      "con soporte de Dylus Lab y bajo una regla explícita — <b>contratarla no modifica nada de lo "
      "que el Observatorio publica</b> sobre ese municipio.",
-     "FASE 2", "var(--tx2)"),
+     "", "var(--tx2)"),
+    ("QUIRA Impact",
+     "Universidades · observatorios · centros de investigación",
+     "El conocimiento abierto para que <b>terceros lo verifiquen</b>: conjuntos de datos, "
+     "series históricas, metodología documentada y trazabilidad de cada afirmación hasta su "
+     "fuente. No entrega interpretaciones ni recomendaciones —<b>el mérito y la "
+     "responsabilidad de una investigación son de quien la firma</b>—; entrega las "
+     "condiciones para producirla y para comprobarla. Es donde QUIRA demuestra, fuera de "
+     "QUIRA, que lo que afirma resiste el escrutinio.",
+     "", "var(--tx2)"),
     ("QUIRA Economic",
      "Inversión y desarrollo económico local",
-     "Inteligencia económica del territorio sobre la misma base de evidencia verificada.",
-     "FASE 3", "var(--tx3)"),
+     "Inteligencia económica del territorio sobre la misma base de evidencia verificada. "
+     "Se mantiene declarada como <b>línea futura</b> y no como producto disponible: su "
+     "modelo de operación todavía no está definido, y anunciar lo que aún no puede "
+     "sostenerse sería prometer de más.",
+     "", "var(--tx3)"),
 ]
 
 
@@ -490,15 +704,19 @@ def ecosistema() -> str:
     filas = "".join(
         f'<div class="q-prod" style="--pc:{col}">'
         f'<div class="q-prod-h"><span class="q-prod-n">{n}</span>'
-        f'<span class="q-prod-e">{e}</span></div>'
+        f'{f"<span class=\"q-prod-e activo\">{e}</span>" if e else ""}</div>'
         f'<div class="q-prod-r">{r}</div><div class="q-prod-d">{d}</div></div>'
         for n, r, d, e, col in _PRODUCTOS)
     return _sec("El ecosistema", "Un sistema, varias puertas",
-        '<p class="q-p">QUIRA no es un conjunto de aplicaciones independientes: es <b>un solo '
-        'cuerpo de conocimiento</b> al que se entra por puertas distintas. Cada producto cumple '
-        'una función propia dentro del mismo ecosistema, y todos operan sobre la misma base de '
-        'evidencia verificada.</p>'
-        f'<div class="q-prods">{filas}</div>')
+        '<p class="q-p">Bajo estas puertas hay <b>un solo cuerpo de conocimiento</b>. Los dos '
+        'primeros construyen la evidencia; los demás la aprovechan para responder preguntas '
+        'distintas. Todos leen lo mismo, y ninguno sostiene una verdad propia — lo que cambia de '
+        'uno a otro es qué entregan y a quién.</p>'
+        f'<div class="q-prods">{filas}</div>'
+        '<p class="q-cap">Dos capacidades recorren el ecosistema entero sin constituir productos '
+        'aparte: la inteligencia artificial, que explica en lenguaje natural lo que la evidencia '
+        'sostiene y nunca produce las cifras, y la representación territorial, que sitúa cada '
+        'hallazgo en el mapa del cantón.</p>')
 
 
 # ══════════════════════════ MÉTODO ══════════════════════════
@@ -525,13 +743,12 @@ def independencia() -> str:
         'observado, ni por cómo resulta observado. Y esa regla no nace de desconfianza hacia los '
         'gobiernos locales — nace de lo que hace falta para que la evidencia <b>sirva de '
         'algo</b>.</p>'
-        '<p class="q-p">Un informe que un municipio encarga y paga vale poco ante un banco de '
-        'desarrollo, una agencia de cooperación o una universidad: procede de la parte interesada. '
-        'En cambio, un registro <b>reconstruido de forma independiente a partir de fuentes '
-        'públicas</b> resiste esa pregunta. <b>La independencia no está dirigida contra el '
-        'municipio: es justamente lo que vuelve utilizable su evidencia.</b> Un gobierno con buena '
-        'gestión sale <b>beneficiado</b>, porque por primera vez alguien puede demostrar su '
-        'trazabilidad sin que la afirmación provenga de él mismo.</p>'
+        '<p class="q-p">Un informe que el propio municipio encarga y paga tiene poco peso ante un '
+        'banco de desarrollo, una agencia de cooperación o una universidad, porque procede de la '
+        'parte interesada. Un registro reconstruido desde fuentes públicas resiste esa pregunta. '
+        'Y ahí está el punto que suele malinterpretarse: la independencia beneficia sobre todo al '
+        'gobierno con buena gestión, que por primera vez cuenta con alguien capaz de demostrar su '
+        'trazabilidad sin que la afirmación salga de él mismo.</p>'
         '<div class="q-linea"><div class="q-linea-t">Dónde está la línea</div>'
         '<div class="q-linea-g">'
         '<div class="q-linea-c no"><span class="q-linea-k">Nunca</span>'
@@ -541,20 +758,20 @@ def independencia() -> str:
         'Licenciar herramientas para <b>gestionar lo propio</b> con la evidencia ya publicada, con '
         'soporte de Dylus Lab. Contratarlas <b>no cambia una sola línea</b> de lo que el '
         'Observatorio dice de ese municipio.</div></div></div>'
-        '<p class="q-p">El principio es conocido en cualquier sistema de información pública: '
-        '<b>la utilidad de una evidencia depende de que pueda verificarse sin que la entidad '
-        'observada intervenga en su producción, evaluación o publicación</b>. La independencia '
-        'metodológica no es una postura: es la condición técnica que hace utilizable el dato.</p>'
+        '<p class="q-p">El principio rige en cualquier sistema de información pública: una '
+        'evidencia sirve en la medida en que puede verificarse sin que la entidad observada '
+        'intervenga en su producción, su evaluación o su publicación. Se trata de una condición '
+        'técnica antes que de una postura.</p>'
         '<p class="q-p">Con un ejemplo cercano: ningún gobierno local financia al <b>INEC</b> '
         'para modificar una cifra censal, y sin embargo todos usan esa estadística para planificar '
         'y para sustentar sus proyectos ante quien los financia. <b>La estadística es independiente; '
         'las herramientas para trabajar con ella son otra cosa.</b> Separar ambas explícitamente es '
         'lo que permite ofrecer las dos sin que una contamine a la otra.</p>'
-        '<p class="q-cap">Por eso el lenguaje de este sistema es deliberadamente preciso: nunca '
-        'dice que alguien incumplió. Dice qué <b>puede</b> comprobarse con los documentos '
-        'disponibles y qué <b>no</b>. Y cuando encuentra un corte en la cadena, lo que señala casi '
-        'nunca es una falta: es un <b>instrumento de registro que no fue diseñado para dejar '
-        'rastro</b> — algo que se corrige con una decisión administrativa, no con un proceso.</p>')
+        '<p class="q-cap">De ahí que el lenguaje del sistema sea deliberadamente medido. Nunca '
+        'afirma que alguien incumplió; dice qué puede comprobarse con los documentos disponibles '
+        'y qué no. Y cuando aparece un corte en la cadena, lo que suele haber detrás es un '
+        'instrumento de registro que nadie diseñó para dejar rastro — algo que se corrige con una '
+        'decisión administrativa y rara vez con un proceso.</p>')
 
 
 # ══════════════════════════ ACCESO ══════════════════════════
@@ -573,12 +790,26 @@ def trust_badges() -> str:
     return f'<div class="qw"><div class="q-trust">{items}</div></div>'
 
 
+def barra_superior() -> str:
+    """Cabecera fija con la marca. El botón de acceso lo pone el controlador,
+    porque tiene que ser un componente real de Streamlit para poder navegar."""
+    return ('<div class="q-top"><div class="q-top-in">'
+            f'<span style="line-height:0">{_logo("coral", 21)}</span>'
+            '<span class="q-top-n">QUIRA</span>'
+            '<span class="q-top-s">INTELIGENCIA PÚBLICA</span>'
+            '</div></div>')
+
+
 def footer() -> str:
-    import streamlit as _st_v
+    """Pie institucional.
+
+    Sale el sello técnico —«build v6-marfil · st 1.55.0»— por dos razones
+    (Javo · 2026-08-07): no dice nada a un interlocutor institucional, y publica
+    qué versión de qué componente corre en el servidor, que es información que
+    no conviene ofrecer sin necesidad."""
     return (f'<div class="q-footer">{_logo("coral", 26)}<br>'
             f'<b>QUIRA</b> · Dylus Lab © 2026 · Ecuador<br>'
-            f'Infraestructura de conocimiento verificable<br>'
-            f'<span style="opacity:.5">build v6-marfil · st {_st_v.__version__}</span></div>')
+            f'Infraestructura de conocimiento verificable</div>')
 
 
 # ── Compatibilidad hacia atrás ────────────────────────────────────────────────

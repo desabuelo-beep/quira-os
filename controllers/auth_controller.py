@@ -12,7 +12,7 @@ from utils.session    import set_user
 from utils.audit_log  import log_login_ok, log_login_fail, log_lockout
 from views.login_view import (CSS, landing_hero, origen, que_es, problema, como_funciona,
                               motor, ecosistema, humano, independencia, greca,
-                              form_header, trust_badges, footer)
+                              form_header, trust_badges, footer, barra_superior)
 
 
 def _st_key(name: str) -> str:
@@ -28,17 +28,31 @@ _LABEL_ACCESO = "Entrar al Observatorio\n\nCentro de Inteligencia Territorial ·
 
 def run() -> None:
     st.markdown(CSS, unsafe_allow_html=True)
+
+    # ── Barra superior con acceso ─────────────────────────────────────────────
+    # El formulario sigue al final —quien llega por primera vez merece entender
+    # antes de que le pidan una contraseña—, pero obligar a recorrer la página
+    # entera castigaba a quien ya conoce el sitio y vuelve a diario (Javo ·
+    # 2026-08-07). Este atajo lleva al mismo formulario y lo desplaza a la vista.
+    st.markdown(barra_superior(), unsafe_allow_html=True)
+    _, col_top = st.columns([5, 1.15])
+    with col_top:
+        if st.button("Acceder →", key="top_acceso", use_container_width=True,
+                     help="Entrar al Observatorio · equipo Dylus Lab"):
+            st.session_state[_st_key("platform_selected")] = "observatorio"
+            st.rerun()
     # Orden narrativo: quién soy → de dónde vengo → qué hago → qué problema resuelvo →
     # cómo → con qué productos → con qué método → y la aclaración que evita el malentendido.
     # Greca manteña entre bloques: el sistema gráfico secundario. La pirámide
     # escalonada —"la idea de montaña o cerro"— entra aquí, no en el logotipo.
     # `motor` va justo tras `como_funciona`: primero se ve el flujo, después se
     # aclara QUIÉN calcula — que es lo que sostiene la reproducibilidad del dato.
-    for i, bloque in enumerate((landing_hero, origen, que_es, problema,
-                                como_funciona, motor, ecosistema, humano,
-                                independencia)):
-        if i and i % 3 == 0:
-            st.markdown(greca(), unsafe_allow_html=True)
+    # El separador de greca suelto SE RETIRA (Javo · 2026-08-07): la greca pasó
+    # al encabezado de cada sección, donde el título va enhebrado como una
+    # chaquira en el hilo. Mantener las dos duplicaba el motivo y dejaba dos
+    # grecas seguidas sin nada entre ellas.
+    for bloque in (landing_hero, origen, que_es, problema, como_funciona,
+                   motor, ecosistema, humano, independencia):
         st.markdown(bloque(), unsafe_allow_html=True)
 
     _SEL = _st_key("platform_selected")

@@ -58,17 +58,39 @@ va de la promesa al territorio — y encuentra DÓNDE se rompe.**
 ### La cadena madre (la ecuación ontológica)
 ```
 PROMESA  →  PLAN  →  PRESUPUESTO  →  EJECUCIÓN  →  RESULTADO  →  TERRITORIO
-  (CNE)    (PDOT)    (eSIGEF)        (devengado)   (cobertura)   (GeoTwin)
+  (CNE)    (PDOT)    (cédula)       (devengado)   (cobertura)   (GeoTwin)
 
 Cada flecha que se rompe = una BRECHA. QUIRA existe para encontrarlas.
 ```
 
+> ⚠️ **CORRECCIÓN DE RAÍZ (Javo · 2026-08-07): el eslabón PRESUPUESTO NO se lee del eSIGEF.**
+>
+> Este documento decía `(eSIGEF)`, y era un error de acceso, no de nombre: **QUIRA no tiene
+> —ni puede tener— acceso al eSIGEF.** Ese sistema es de uso interno de las entidades
+> públicas. Sostener lo contrario describía una capacidad que el proyecto no posee, y sobre
+> esa descripción se construyó texto público.
+>
+> **De dónde sale realmente el dato presupuestario**, y ambas vías son las canónicas de R-F:
+> 1. **La cédula presupuestaria publicada en el portal de transparencia** como documento
+>    oficial — transparencia activa, vía 1.
+> 2. **Documentos obtenidos por solicitud de acceso a la información pública**, que la
+>    ciudadanía aporta a través de QUIRA Ciudadana — transparencia pasiva, vía 2.
+>
+> El propio repositorio ya lo había constatado sin nombrarlo: `CIRUGIA_GOLD_MASTER_D2A`
+> registra que **el motor leía eSIGEF y estaba vacío**, y que el dato existía en la cédula
+> oficial. La jerarquía que fija el Excel es literal: *«Cédula oficial > eSIGEF > POA»*.
+
 ### El principio rector de la evidencia (elevado a la Constitución · 2026-07-07)
 La cadena madre es una **cadena de integridad INTERSISTÉMICA**: cada eslabón
 (PROMESA·PLAN·PRESUPUESTO·EJECUCIÓN·RESULTADO·TERRITORIO) vive en un **sistema distinto del
-Estado** (CNE·PDOT·eSIGEF·SERCOP·CPCCS·transparencia), y QUIRA verifica que la integridad se
-sostenga **al cruzarlos**. De ahí nació la idea de QUIRA (Javo). El motor la recorre como una
-**cadena de custodia documental** (asesor).
+Estado**, y QUIRA verifica que la integridad se sostenga **al cruzarlos**. De ahí nació la
+idea de QUIRA (Javo). El motor la recorre como una **cadena de custodia documental** (asesor).
+
+Los registros donde cada eslabón se comprueba son **CNE · PDOT · portal de transparencia ·
+SERCOP · CPCCS · portales institucionales**: todos de acceso público. QUIRA observa desde
+fuera y **sin privilegios de acceso** — no consulta sistemas internos del Estado, y esa
+restricción no es una limitación técnica sino la condición que hace su observación
+replicable por cualquiera.
 
 Sobre esa cadena rige un principio inviolable, al nivel de las Reglas de Oro:
 
