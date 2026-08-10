@@ -4,7 +4,7 @@ authority:
   parent: ADR-045
   constitution_articles: [1, 2, 3, 4, 5]
   type: ARQUITECTONICA
-status: PROPUESTA — pendiente de sello de Javo (ADR-035 §5)
+status: APROBADO — sellado por Javo 2026-08-10 (ADR-035 §5)
 fecha: 2026-08-10
 supersedes:
   - ADR-045 §3 (columna «techo de verificabilidad»)

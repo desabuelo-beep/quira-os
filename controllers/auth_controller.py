@@ -11,7 +11,8 @@ from models.auth      import validate_any, AuthError, LockedError, is_locked
 from utils.session    import set_user
 from utils.audit_log  import log_login_ok, log_login_fail, log_lockout
 from views.login_view import (CSS, landing_hero, origen, que_es, problema, como_funciona,
-                              motor, ecosistema, humano, independencia, greca,
+                              dominios, ciudadana, motor, ecosistema, humano,
+                              independencia, greca,
                               form_header, trust_badges, footer, barra_superior)
 
 
@@ -112,8 +113,12 @@ def run() -> None:
     # al encabezado de cada sección, donde el título va enhebrado como una
     # chaquira en el hilo. Mantener las dos duplicaba el motivo y dejaba dos
     # grecas seguidas sin nada entre ellas.
+    # ADR-046: entran `dominios` y `ciudadana`. El orden es narrativo — primero se
+    # ve CÓMO entra la evidencia, después QUÉ se mira con ella, y solo entonces
+    # tiene sentido el enganche ciudadano («aporta y enciende tu territorio»),
+    # que no se entiende sin saber antes qué son los dominios.
     for bloque in (landing_hero, origen, que_es, problema, como_funciona,
-                   motor, ecosistema, humano, independencia):
+                   dominios, ciudadana, motor, ecosistema, humano, independencia):
         st.markdown(bloque(), unsafe_allow_html=True)
 
     selected = st.session_state[_SEL]

@@ -299,6 +299,13 @@ CSS = """<style>
 .q-duo-c{border:1px solid var(--bd);border-radius:11px;padding:18px 21px;background:var(--sf)}
 .q-duo-t{font:700 13px/1.3 'Inter',sans-serif;margin-bottom:6px}
 .q-duo-d{font:400 13px/1.68 'Inter',sans-serif;color:var(--tx2)}
+/* ═══ DOMINIOS ═══ */
+.q-doms{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:17px}
+.q-dom{border:1px solid var(--bd);border-radius:10px;padding:14px 17px;background:var(--sf)}
+.q-dom-n{font:700 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:var(--tx3)}
+.q-dom-t{font:600 14px/1.35 'Inter',sans-serif;color:var(--tx);margin:6px 0 5px}
+.q-dom-d{font:400 12.6px/1.62 'Inter',sans-serif;color:var(--tx2)}
+
 .q-cierre{font:400 17.5px/1.6 'Fraunces',Georgia,serif;color:var(--tx);font-style:italic;
   text-align:center;margin-top:19px;padding-top:17px;border-top:1px solid var(--bd)}
 
@@ -392,7 +399,7 @@ button.q-ops:hover,.q-ops-w button:hover{opacity:.85 !important;transform:none !
 @media(max-width:720px){
   .q-name{font-size:38px;letter-spacing:.14em}.q-h2{font-size:24px}
   .q-tag{font-size:14.5px}.q-p{font-size:14.5px}.q-quote{font-size:17px}
-  .q-prod-n{font-size:17px}.q-duo,.q-trust,.q-linea-g{grid-template-columns:1fr}
+  .q-prod-n{font-size:17px}.q-duo,.q-trust,.q-linea-g,.q-doms{grid-template-columns:1fr}
   .q-hero{padding:42px 18px 20px}.q-sec{margin-top:34px}
 }
 </style>
@@ -495,6 +502,11 @@ def que_es() -> str:
         'puede comprobarse y sostener decisiones. No mide trámites ni obras aisladas: recorre el '
         '<b>ciclo completo de la gestión pública</b> —del mandato electoral al impacto '
         'territorial— y muestra dónde se interrumpe la trazabilidad.</p>'
+        # Declaración de objeto. Faltaba, y es lo que distingue una infraestructura
+        # de observación de un software de control: decir a quién NO se dirige.
+        '<p class="q-p">Su objeto no es auditar al ciudadano ni administrar al municipio. '
+        '<b>Es hacer observable la gestión pública territorial</b> — que es el paso previo a '
+        'cualquier decisión informada sobre ella, la tome quien la tome.</p>'
         '<p class="q-p">Cada afirmación se ancla a un documento — o a la ausencia '
         '<b>documentada</b> de uno. QUIRA <b>no sustituye a los órganos de control ni determina '
         'responsabilidades</b>: establece el <b>nivel de verificabilidad</b> de la evidencia '
@@ -654,9 +666,120 @@ def como_funciona() -> str:
         '<p class="q-p" style="margin-top:14px">Las tres vías no son intercambiables, y por eso '
         'se distinguen: la primera <b>encuentra</b> la evidencia que el Estado ya publicó; la '
         'segunda <b>obliga a producirla</b> cuando falta; la tercera <b>recoge</b> lo que el '
-        'territorio ya tiene en la mano. Cada pieza conserva el registro de por dónde entró, '
-        'porque de eso depende cuánto puede afirmarse sobre ella. Alimentan el mismo cuerpo de '
-        'conocimiento — no bases separadas que después se contradicen.</p>')
+        'territorio ya tiene en la mano. Cada pieza conserva el registro de por dónde entró, y '
+        'todas alimentan el mismo cuerpo de conocimiento — no bases separadas que después se '
+        'contradicen.</p>'
+        # ADR-046 §1: el techo lo fija el documento, no la vía. Antes esta misma
+        # frase decía que de la vía «depende cuánto puede afirmarse», que es
+        # justamente el error que el ADR corrigió.
+        '<p class="q-cap">Lo que determina cuánto puede afirmarse no es <i>quién trajo</i> el '
+        'documento, sino <b>qué acredita el documento</b>. Un acto de la administración firmado '
+        '—electrónicamente o de puño y sello— no deja de serlo porque lo entregue un vecino: '
+        '<b>se verifica el certificado, no el portador</b>.</p>')
+
+
+# ══════════════════════════ LOS 12 DOMINIOS ══════════════════════════
+# Faltaban en la portada, y era el hueco más grande: la página explicaba cómo
+# funciona QUIRA sin decir NUNCA qué mira. Alguien terminaba de leerla sin saber
+# qué iba a encontrar adentro.
+#
+# Cada uno responde «qué inteligencia aporta», no «qué audita» — corrección de
+# Javo (2026-08-10). La diferencia no es de estilo: la portada ya afirma que
+# QUIRA «no sustituye a los órganos de control ni determina responsabilidades»,
+# y anunciarse como auditor la contradiría en la misma página. Además invitaría
+# justo la lectura que ADR-045 §6 recomienda no invitar frente al art. 79 LOPC.
+_DOMINIOS = [
+    ("01", "Planificación estratégica territorial",
+     "Dónde una prioridad del plan deja de tener correspondencia con la programación, el "
+     "presupuesto asignado y lo efectivamente ejecutado."),
+    ("02", "Presupuesto y financiamiento",
+     "Qué distancia hay entre lo codificado y lo devengado, y qué señales anticipan "
+     "subejecución o desfinanciamiento de una meta."),
+    ("03", "Gobernanza del mandato electoral",
+     "Qué compromisos del plan inscrito ante el CNE sobreviven al ciclo administrativo y "
+     "cuáles pierden rastro por el camino."),
+    ("04", "Holding e integración municipal",
+     "Cómo se comportan juntos el municipio y sus entidades adscritas: transferencias, "
+     "dependencia y presión sobre el conjunto."),
+    ("05", "Desarrollo económico territorial",
+     "Dónde se localiza la inversión de fomento productivo y qué intervenciones generan "
+     "continuidad económica en el territorio."),
+    ("06", "Salud institucional",
+     "Si el aparato administrativo puede sostener su operación en el tiempo, y qué "
+     "condiciones comprometen esa continuidad."),
+    ("07", "Transparencia activa",
+     "Si lo publicado permite reconstruir el ciclo administrativo — que es distinto de "
+     "haber cumplido formalmente con publicarlo."),
+    ("08", "Participación ciudadana",
+     "Qué separa la participación procedimental de la incidencia real sobre decisiones y "
+     "presupuesto."),
+    ("09", "Rendición de cuentas",
+     "Qué queda en pie al contrastar lo declarado en el informe anual con los registros "
+     "presupuestarios y de contratación."),
+    ("10", "Servicios e infraestructura",
+     "Dónde se concentra la inversión y dónde persiste el déficit de cobertura, leído "
+     "sobre el territorio y no sobre el total."),
+    ("11", "Inclusión, equidad y género",
+     "Si las políticas dirigidas a grupos de atención prioritaria producen ejecución "
+     "verificable o se quedan en el enunciado."),
+    ("12", "Sostenibilidad y resiliencia",
+     "Qué brecha hay entre la vulnerabilidad del territorio y la capacidad institucional "
+     "de prevenir y responder."),
+]
+
+
+def dominios() -> str:
+    cards = "".join(
+        f'<div class="q-dom"><div class="q-dom-n">{n}</div>'
+        f'<div class="q-dom-t">{t}</div><div class="q-dom-d">{d}</div></div>'
+        for n, t, d in _DOMINIOS)
+    return _sec("Qué se observa", "Doce dominios de la gestión municipal",
+        '<p class="q-p">La gestión de un municipio no se lee en un indicador único. QUIRA la '
+        'recorre por <b>doce dominios</b>, y en cada uno busca lo mismo: <b>dónde se interrumpe '
+        'la correspondencia</b> entre lo que se prometió, lo que se planificó, lo que se '
+        'presupuestó y lo que llegó al territorio.</p>'
+        f'<div class="q-doms">{cards}</div>')
+
+
+# ══════════════════════════ LA CAPA CIUDADANA ══════════════════════════
+# ADR-046 §2: la capa cívica tiene nombre y lugar propios DENTRO del Observatorio.
+# No es una puerta —eso ya se probó vacío— pero tampoco un renglón dentro de «cómo
+# funciona»: es el propósito con el que nació el proyecto.
+#
+# El enganche es la precisión de Javo (§2.4): quien aporta no ayuda al sistema,
+# ENCIENDE SU PROPIO TERRITORIO. Y §2.5 obliga a decir lo otro — que suplir al GAD
+# no lo absuelve—, porque callarlo convertiría el trabajo ciudadano en un servicio
+# gratuito al que incumple.
+_CAPACIDADES = [
+    ("Evidencia territorial",
+     "Actas, informes, facturas, fotografías de obra. El sistema las estructura, registra su "
+     "procedencia y explica qué acredita cada una."),
+    ("Exigibilidad asistida",
+     "Redacta la solicitud de acceso con su fundamento legal, lleva la cuenta del plazo y "
+     "prepara el paso siguiente si la entidad no responde."),
+    ("Inteligencia cívica",
+     "Los doce dominios legibles sin jerga: qué dice cada cifra, de qué documento sale y qué "
+     "norma la respalda."),
+    ("Acción territorial",
+     "Control social e incidencia con expediente. Es la capacidad que el proyecto reconoce y "
+     "todavía no ha construido — y lo dice en vez de anunciarla."),
+]
+
+
+def ciudadana() -> str:
+    cards = "".join(
+        f'<div class="q-duo-c"><div class="q-duo-t" style="color:var(--coral-dp)">{t}</div>'
+        f'<div class="q-duo-d">{d}</div></div>' for t, d in _CAPACIDADES)
+    return _sec("La capa ciudadana", "Aportar la evidencia de tu municipio lo enciende",
+        '<p class="q-p">QUIRA observa 222 municipios, pero <b>solo puede calcular sobre lo que '
+        'existe</b>. Donde un municipio no publica, sus doce dominios se quedan en blanco. Esa '
+        'es la razón concreta por la que alguien aportaría evidencia de su cantón: <b>no es '
+        'ayudar al sistema, es poder ver el propio territorio</b>.</p>'
+        f'<div class="q-duo">{cards}</div>'
+        '<p class="q-cap">Y una regla que conviene decir en voz alta: <b>que la ciudadanía llene '
+        'el hueco no absuelve al municipio de haberlo dejado</b>. La obligación de publicar es de '
+        'la entidad, no de sus habitantes. El dominio se enciende; el incumplimiento queda '
+        'registrado igual.</p>')
 
 
 # ══════════════════════════ ECOSISTEMA ══════════════════════════
