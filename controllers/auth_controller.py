@@ -93,13 +93,13 @@ def run() -> None:
     # inyectar: en vez de llevar al usuario al formulario, se trae el formulario
     # a donde el usuario está mirando.
     st.markdown(barra_superior(), unsafe_allow_html=True)
-    _, col_top = st.columns([5, 1.15])
-    with col_top:
-        if st.button("Acceder →", key="top_acceso", use_container_width=True,
-                     help="Entrar al Observatorio · equipo Dylus Lab"):
-            st.session_state[_SEL] = "observatorio"
-            st.session_state[_ARRIBA] = True
-            st.rerun()
+    # Sin columnas: el CSS saca este botón del flujo y lo ancla a la barra, que es
+    # sticky. Las columnas solo dejaban un hueco vacío bajo la cabecera.
+    if st.button("ACCEDER AL OBSERVATORIO", key="top_acceso",
+                 help="Acceso con credenciales · equipo Dylus Lab"):
+        st.session_state[_SEL] = "observatorio"
+        st.session_state[_ARRIBA] = True
+        st.rerun()
 
     if st.session_state.get(_ARRIBA) and st.session_state[_SEL] == "observatorio":
         _formulario_acceso(_SEL)

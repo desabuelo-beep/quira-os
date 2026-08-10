@@ -353,8 +353,28 @@ CSS = """<style>
 .q-top-n{font:600 13px/1 'Archivo',sans-serif;letter-spacing:.17em;color:var(--tx)}
 .q-top-s{font:400 9px/1 'JetBrains Mono',monospace;letter-spacing:.13em;
   color:var(--tx3);margin-left:2px}
-.q-top .st-key-top_acceso{margin-left:auto}
-@media(max-width:720px){.q-top-s{display:none}}
+/* El botón de acceso VIAJA CON LA BARRA (Javo · 2026-08-10, comparando con la
+   propuesta). `.q-top` ya era sticky, pero el botón nunca estuvo dentro de ella
+   en el DOM: la barra la pinta `st.markdown` y el botón es un widget que va
+   después, así que el selector `.q-top .st-key-top_acceso` no aplicaba nunca y
+   el acceso se perdía al bajar. Se saca del flujo y se ancla al borde derecho
+   del área de lectura, a la altura de la barra. */
+.st-key-top_acceso{position:fixed;z-index:60;width:auto;
+  top:7px;right:max(20px,calc((100vw - var(--ancho))/2 + 34px))}
+.st-key-top_acceso button{background:var(--sf) !important;
+  border:1px solid rgba(193,57,43,.4) !important;color:var(--coral-dp) !important;
+  font:700 10.5px/1 'JetBrains Mono',monospace !important;letter-spacing:.12em !important;
+  padding:9px 18px !important;border-radius:20px !important;min-height:0 !important;
+  box-shadow:0 2px 8px rgba(193,57,43,.08);
+  transition:background .25s,color .25s,border-color .25s,transform .25s}
+.st-key-top_acceso button::before{content:"";width:6px;height:6px;border-radius:50%;
+  background:currentColor;margin-right:8px;flex:0 0 auto}
+.st-key-top_acceso button:hover{background:var(--coral) !important;color:#FFF !important;
+  border-color:var(--coral) !important;transform:translateY(-1px);
+  box-shadow:0 4px 14px rgba(193,57,43,.25)}
+@media(max-width:720px){.q-top-s{display:none}
+  .st-key-top_acceso{top:6px;right:12px}
+  .st-key-top_acceso button{font-size:9px !important;padding:8px 13px !important}}
 
 div[data-testid="stForm"]{background:var(--sup) !important;
   border:1px solid rgba(193,57,43,.2) !important;border-radius:14px !important;
