@@ -661,19 +661,23 @@ def como_funciona() -> str:
 
 # ══════════════════════════ ECOSISTEMA ══════════════════════════
 _PRODUCTOS = [
-    ("Observatorio Nacional de Integridad Territorial",
-     "Evidencia institucional · escala nacional",
+    # ADR-045: «QUIRA Ciudadana» era la segunda entrada de esta lista. Deja de
+    # ser una puerta aparte —no lo era: detrás solo había un cartel de «próxi-
+    # mamente»— y la participación ciudadana pasa a describirse donde de verdad
+    # ocurre, dentro del Observatorio. La capacidad no se pierde; pierde el
+    # portal propio, que es lo que nunca debió tener.
+    ("QUIRA Observatorio",
+     "Superficie pública · evidencia institucional y ciudadana · escala nacional",
      "Monitoreo progresivo de los <b>222 municipios</b> del país, incorporados según su "
      "disponibilidad documental y su ciclo administrativo. Agentes de inteligencia artificial "
-     "revisan los sistemas nacionales de información —transparencia activa, contratación pública, rendición de cuentas, portales institucionales— y <b>toda captura se valida antes de publicarse</b>. Insumo directo para monitoreo, evaluación y fortalecimiento de la capacidad institucional.",
-     "", "var(--coral)"),
-    ("QUIRA Ciudadana",
-     "CivicTech · evidencia social · capilaridad territorial",
-     "Una <b>comunidad de control social</b> que nace en Ecuador para crecer hacia América "
-     "Latina. Personas, organizaciones comunitarias y academia aportan la evidencia que falta "
-     "—actas, informes, fotografías de obra— y la inteligencia artificial <b>acompaña y "
-     "enseña</b>: explica qué acredita cada documento, qué norma lo respalda y cómo encaja en el "
-     "mapa de su territorio. No reemplaza al ciudadano: <b>lo fortalece para incidir</b>.",
+     "revisan los sistemas nacionales de información —transparencia activa, contratación "
+     "pública, rendición de cuentas, portales institucionales— y <b>toda captura se valida "
+     "antes de publicarse</b>. Cuando un dato no está publicado, el sistema arma el "
+     "<b>oficio que obliga a entregarlo</b> y lleva la cuenta del plazo. Y cuando la evidencia "
+     "está en el territorio y no en un portal, la aportan quienes la tienen: personas, "
+     "organizaciones comunitarias y academia suben actas, informes y fotografías de obra, y el "
+     "sistema explica qué acredita cada documento y qué norma lo respalda. <b>No reemplaza al "
+     "ciudadano: lo fortalece para incidir.</b>",
      "", "var(--coral)"),
     ("QUIRA Cooperación",
      "Multilaterales · banca de desarrollo · cooperación bilateral · academia",
@@ -717,11 +721,12 @@ def ecosistema() -> str:
         f'{f"<span class=\"q-prod-e activo\">{e}</span>" if e else ""}</div>'
         f'<div class="q-prod-r">{r}</div><div class="q-prod-d">{d}</div></div>'
         for n, r, d, e, col in _PRODUCTOS)
-    return _sec("El ecosistema", "Un sistema, varias puertas",
-        '<p class="q-p">Bajo estas puertas hay <b>un solo cuerpo de conocimiento</b>. Los dos '
-        'primeros construyen la evidencia; los demás la aprovechan para responder preguntas '
-        'distintas. Todos leen lo mismo, y ninguno sostiene una verdad propia — lo que cambia de '
-        'uno a otro es qué entregan y a quién.</p>'
+    return _sec("El ecosistema", "Una superficie, varios destinatarios",
+        '<p class="q-p">Se entra por un solo lugar. El <b>Observatorio</b> es donde la evidencia '
+        'se construye y se consulta; los demás la aprovechan para responder preguntas distintas, '
+        'cada uno con lo suyo — una universidad no necesita lo mismo que un banco de desarrollo. '
+        'Todos leen <b>un solo cuerpo de conocimiento</b> y ninguno sostiene una verdad propia: '
+        'lo que cambia de uno a otro es qué entregan y a quién.</p>'
         f'<div class="q-prods">{filas}</div>'
         '<p class="q-cap">Dos capacidades recorren el ecosistema entero sin constituir productos '
         'aparte: la inteligencia artificial, que explica en lenguaje natural lo que la evidencia '

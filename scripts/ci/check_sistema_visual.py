@@ -179,6 +179,50 @@ else:
 
 
 # ══════════════════════════════════════════════════════════════════════════════
+# 5 · NINGÚN VERDE DE «BIEN» EN LOS AMBIENTES
+#
+# Hasta 2026-08-08 este gate solo miraba `views/login_view.py`. Pasaba en verde
+# mientras `quira_pages/env_civic.py` usaba #22C55E en cinco sitios — el verde de
+# éxito que el sistema prohíbe expresamente, porque QUIRA mide VERIFICABILIDAD y
+# no bondad: no hay color de «bien». El gate protegía la entrada y dejaba sin
+# vigilar las pantallas donde la gente pasa el tiempo.
+#
+#   «Un gate verde no dice que el sistema esté conforme: dice que lo que ESE
+#    gate inspecciona lo está.» (Colega · 2026-08-08)
+#
+# Se revisan los AMBIENTES, que son la frontera con el usuario. Las visualiza-
+# ciones (mapas, series) quedan fuera a propósito: ahí una rampa de color puede
+# ser legítima y este check produciría ruido en vez de señal.
+# ══════════════════════════════════════════════════════════════════════════════
+_t("5 · Verde de «bien» en los ambientes")
+
+_HEX = re.compile(r"#([0-9a-fA-F]{6})\b")
+
+
+def _es_verde_semaforo(h: str) -> bool:
+    """Verde de éxito: el canal G domina claramente sobre los otros dos.
+
+    Por composición y no por lista: una lista se queda corta en cuanto alguien
+    escribe otro tono, que es exactamente cómo llegó #22C55E."""
+    r, g, b = int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16)
+    return g > r + 30 and g > b + 30
+
+
+_ambientes = sorted(RAIZ.glob("quira_pages/env_*.py"))
+_verdes = 0
+for _amb in _ambientes:
+    _txt = _amb.read_text(encoding="utf-8", errors="replace")
+    _hall = {m.group(0) for m in _HEX.finditer(_txt) if _es_verde_semaforo(m.group(1))}
+    if _hall:
+        _verdes += len(_hall)
+        fallas.append(f"{_amb.name} usa verde de «bien»: {', '.join(sorted(_hall))}")
+if not _ambientes:
+    fallas.append("no se encontró ningún ambiente que revisar — ¿cambió la ruta?")
+elif not _verdes:
+    print(f"   OK  {len(_ambientes)} ambientes, ningún verde de «bien»")
+
+
+# ══════════════════════════════════════════════════════════════════════════════
 print("\n" + "=" * 62)
 for a in avisos:
     print(f"  ·· aviso: {a}")

@@ -16,6 +16,8 @@ from __future__ import annotations
 
 import streamlit as st
 
+from utils.css_tokens import C
+
 
 # ══════════════════════════════════════════════════════════════════════════════
 # CARGA PEREZOSA — por qué existe (2026-08-07)
@@ -127,8 +129,13 @@ def _tab_reliability() -> None:
     ]
 
     for nombre, rel, estado, icon, desc in fuentes:
-        r_color = "#22C55E" if rel >= 0.90 else "#F59E0B" if rel >= 0.70 else "#EF4444"
-        e_color = "#22C55E" if estado == "Operativo" else "#F59E0B" if estado == "Canónico" else "#94A3B8"
+        # Era un semáforo hex a mano —verde/ámbar/rojo— y el sistema visual
+        # prohíbe el verde: QUIRA mide verificabilidad, no bondad, y «bien» no
+        # tiene color (utils/css_tokens · SIN_SENAL). Lo cazó el gate visual el
+        # 2026-08-08, el mismo día que se amplió a los ambientes.
+        r_color = C.atencion(rel * 100, umbral=90, alerta=70)
+        e_color = C.SIN_SENAL if estado == "Operativo" else (
+            C.OCRE if estado == "Canónico" else C.V_TX3)
         st.markdown(
             f'<div style="display:flex;align-items:center;gap:10px;padding:10px 0;'
             f'border-bottom:1px solid rgba(255,255,255,.06)">'
@@ -247,7 +254,7 @@ def _tab_gold_master() -> None:
         ("H10_S8_PARTICIPACIÓN_CPCCS", "✅ Activa",    "25 metas PDOT · evidencia RDC 2023-2024 verificada"),
     ]
     for hoja, estado, nota in hojas_estado:
-        color = "#22C55E" if "✅" in estado else "#F59E0B"
+        color = C.SIN_SENAL if "✅" in estado else C.OCRE
         st.markdown(
             f'<div style="display:flex;justify-content:space-between;align-items:center;'
             f'padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06)">'

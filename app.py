@@ -3,11 +3,15 @@ QUIRA Intelligence — Entry Point · 2026-05-27
 Infraestructura de monitoreo institucional preventivo para GADs del Ecuador.
 Dylus Lab © 2026
 
-ARQUITECTURA 4 AMBIENTES (regla canónica permanente — ver docs/NOMENCLATURA_CANONICA.md):
-  🏛 GOV    — Observatorio · Ejecutivo + Técnico · ACTIVO
-  🌎 Civic  — QUIRA Ciudadano · acceso público · Fase 3
-  📑 Coop   — QUIRA Cooperación · bilaterales y multilaterales · Fase 2
-  ⚙  OPS   — Operaciones · Operador + Administrador · ACTIVO
+UNA SUPERFICIE — QUIRA OBSERVATORIO (ADR-045 · ver docs/NOMENCLATURA_CANONICA.md).
+La marca va arriba y cada ambiente dice QUÉ HACE, sin competir por el nombre:
+  📊 GOV    — Dominios · los 12 dominios de la gestión municipal · ACTIVO
+  ◷  OBS   — Cobertura · qué se observa y en qué estado · ACTIVO
+  📑 Coop   — Cooperación · elegibilidad y financiamiento · Fase 2
+  ⚙  OPS   — Operaciones · mantenimiento técnico, solo Dylus Lab · ACTIVO
+`Civic` se retiró: era la segunda puerta que ADR-045 cerró, y detrás no había
+superficie —solo un cartel de «próximamente». El aporte ciudadano de evidencia
+es la tercera custodia (ADR-045 §3) y vive dentro del Observatorio.
 
 ROLES (CONGELADOS — no cambiar sin revisión doctrinal):
   ejecutivo    → GOV (vista ejecutiva: alcalde, concejales)
@@ -228,7 +232,6 @@ except Exception:
 
 # ── IMPORTS LAZY — 4 ambientes ────────────────────────────────────────────────
 from quira_pages.env_gov    import render as _render_gov
-from quira_pages.env_civic  import render as _render_civic
 from quira_pages.env_coop   import render as _render_coop
 from quira_pages.env_obs    import render as _render_obs
 from quira_pages.env_ops    import render as _render_ops
@@ -257,15 +260,16 @@ ENVIRONMENTS = {
         "badge_color": _C.ACENTO,
         "ops_only":    False,
     },
-    "civic": {
-        "label":       "Ciudadana",
-        "icon":        "🌎",
-        "render":      _render_civic,
-        "roles":       ["Observatorio", "Ejecutivo", "Directivo", "Operador", "Administrador"],
-        "desc":        "QUIRA Ciudadana · control social",
-        "badge_color": _C.V_TX3,
-        "ops_only":    False,
-    },
+    # `civic` RETIRADO (ADR-045 · Javo 2026-08-08). Era la segunda puerta que el
+    # ADR cerró, y la auditoría mostró que detrás no había una segunda superficie:
+    # 44 líneas de HTML estático con el cartel «PRÓXIMAMENTE — EN ROADMAP», sin
+    # datos, sin lógica y sin usuario que pudiera hacer nada ahí. El test de
+    # ADR-043 §3 salía vacío en las tres columnas.
+    #
+    # No se pierde ninguna capacidad: el aporte ciudadano de evidencia es la
+    # TERCERA CUSTODIA de ADR-045 §3 y vive dentro del Observatorio. Se retira el
+    # cartel, no la función. Su `evidence_source`/`reliability_score` no existían
+    # en ningún otro sitio del repo — verificado antes de borrar.
     # La clave era `impact` y el nombre público «Cooperación» (Javo · 2026-08-07):
     # el canon trató ambos productos como uno solo y quedaron cruzados. Son
     # distintos —Cooperación responde «¿qué puede financiarse y con qué
@@ -309,7 +313,7 @@ ENVIRONMENTS = {
     },
 }
 
-_ENV_ORDER = ["gov", "obs", "civic", "coop", "ops"]
+_ENV_ORDER = ["gov", "obs", "coop", "ops"]
 
 # Mapa legacy: cualquier ruta del Sprint 1-2 → su ambiente correcto
 _LEGACY: dict[str, str] = {
