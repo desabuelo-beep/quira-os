@@ -362,6 +362,7 @@ Objetivo: que dentro de un año cualquiera pueda responder *"¿por qué este dom
 |---|---|---|
 | d01 Planificación | [`PCD-D01`](../pcd/PCD-D01_Planificacion.md) ✅ redactado | Cerrado de cabo a rabo · IPE nativo en Excel |
 | d09 Rendición de Cuentas | [`PCD-D09`](../pcd/PCD-D09_Rendicion_Cuentas.md) ✅ redactado | Cerrado · 7 capas · fix cableado `cpccs.fecha_rdc` · canon sin cirugía (sin artefacto) |
+| d06 Salud Institucional | [`PCD-D06`](../pcd/PCD-D06_Salud_Institucional.md) ✅ redactado | Cerrado como **sintetizador** · canon sin cirugía · verde de «bien» retirado del kernel UMI · primer dominio con ausencia accionable (ADR-046 §2.4) · **silo S6 SIGAD declarado abierto** |
 
 ---
 *Protocolo de Curación de Dominio · Dylus Lab © 2026 · asesor externo + Javo + Claude (director técnico).*

@@ -27,13 +27,19 @@ from quira_pages.umi import InvestigacionQUIRA
 _PREGUNTA = "¿Tiene esta institución capacidad para sostener el gobierno?"
 
 
-def _cargar() -> dict:
-    """Lee el cumplimiento institucional real del motor (Gold Master · Regla 1)."""
+def _cargar() -> tuple[dict, str]:
+    """Lee el cumplimiento institucional real del motor (Gold Master · Regla 1).
+
+    Devuelve `(datos, motivo)`. El `except` devolvía `{}` a secas, y entonces un
+    FALLO TÉCNICO era indistinguible de un corte sin datos: las dos cosas
+    pintaban la misma pantalla vacía. Son distintas —una se arregla, la otra se
+    consigue— y ADR-046 §2.4 obliga a decir cuál es (2026-08-10)."""
     try:
         from quira_pages.p_command_center import _load_data
-        return _load_data() or {}
-    except Exception:
-        return {}
+        d = _load_data() or {}
+        return d, ("" if d else "sin_datos")
+    except Exception as e:
+        return {}, f"error_tecnico: {type(e).__name__}"
 
 
 def _bloque(titulo: str, subtitulo: str, modname: str) -> None:
@@ -67,20 +73,44 @@ def _evidencia() -> None:
 
 def render() -> None:
     """QINV-006 · Salud Institucional — primera investigación sobre el kernel UMI."""
-    d = _cargar()
+    d, motivo = _cargar()
     icpi = d.get("icpi_pct")
     clasif = (d.get("icpi_clasif") or "").strip()
     tiene = isinstance(icpi, (int, float))
     icpi_str = f"{icpi:.1f}%" if tiene else "—"
 
     if not tiene:
-        estado, temp, vpct = "—", "dim", None
-        headline = "Sin evidencia cargada para este corte."
-        peritaje = [
-            "La investigación no puede leer sin evidencia del motor (Regla 3): "
-            "cargue el corte para emitir la lectura.",
-        ]
-        conclusion = "Lea la evidencia del corte para la interpretación de QUIRA."
+        # ADR-046 §2.4 · la ausencia se muestra ACCIONABLE. Decía «cargue el
+        # corte», que es una instrucción de operador dirigida a quien no está
+        # mirando la pantalla. Ahora dice QUÉ falta, POR QUÉ falta y CÓMO se
+        # consigue — y distingue el fallo técnico de la evidencia inexistente,
+        # que son problemas distintos con soluciones distintas.
+        estado, temp, vpct = "Sin evidencia", "dim", None
+        if motivo.startswith("error_tecnico"):
+            headline = "La evidencia existe, pero el sistema no pudo leerla."
+            peritaje = [
+                "Esto no es una ausencia de evidencia: es un fallo de lectura del "
+                f"sistema ({motivo.split(': ')[-1]}). El dato del motor no está en duda.",
+                "Se registra como incidencia técnica y no altera lo publicado sobre "
+                "este municipio. Nada se infiere mientras tanto.",
+            ]
+            conclusion = ("Fallo técnico de lectura, no ausencia documental. "
+                          "Corresponde a mantenimiento, no al municipio.")
+        else:
+            headline = "Este municipio todavía no puede leerse."
+            peritaje = [
+                "No hay evidencia suficiente para calcular el cumplimiento "
+                "institucional de este corte. **La ausencia es el resultado**, no un "
+                "error de la pantalla ni un juicio sobre la entidad.",
+                "Falta la cédula presupuestaria del período y los reportes de "
+                "ejecución. Si el municipio no los publicó, pueden pedirse por "
+                "solicitud de acceso a la información pública — o aportarse, si "
+                "alguien ya los tiene.",
+                "Que la evidencia llegue por esa vía **enciende la lectura de este "
+                "territorio**, y deja constancia igualmente de que no estaba publicada.",
+            ]
+            conclusion = ("Sin evidencia no hay afirmación (Regla 3). Lo que falta está "
+                          "identificado y puede conseguirse.")
     else:
         vpct = int(round(icpi))
         # Color = semáforo VISUAL; el estado = la clasificación REAL del motor (no inventada).

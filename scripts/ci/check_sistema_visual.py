@@ -208,10 +208,35 @@ def _es_verde_semaforo(h: str) -> bool:
     return g > r + 30 and g > b + 30
 
 
-_ambientes = sorted(RAIZ.glob("quira_pages/env_*.py"))
+# `umi.py` entra aquí desde 2026-08-10: es el KERNEL de todos los expedientes
+# QINV, y tenía paleta propia con #22C55E. Un gate que vigila los ambientes y
+# deja fuera el módulo que pinta cada dominio protege el marco y no el cuadro.
+_ambientes = sorted(RAIZ.glob("quira_pages/env_*.py")) + [RAIZ / "quira_pages" / "umi.py"]
+_ambientes = [f for f in _ambientes if f.exists()]
+
+
+def _sin_comentarios(ruta) -> str:
+    """El código, sin los comentarios de Python.
+
+    Sin esto el gate se dispara con su propia documentación: al retirar #22C55E
+    de `umi.py` y explicar en un comentario cuál era el color retirado, el check
+    lo volvió a encontrar (2026-08-10). Un comentario de Python no llega al
+    navegador — a diferencia de uno de CSS, que sí, y por eso ese caso se trata
+    al revés en el gate de la portada."""
+    import io
+    import tokenize
+    try:
+        toks = tokenize.generate_tokens(io.StringIO(
+            ruta.read_text(encoding="utf-8", errors="replace")).readline)
+        return "\n".join(t.string for t in toks if t.type != tokenize.COMMENT)
+    except Exception:
+        # Si no tokeniza, se revisa entero: mejor un falso positivo que un hueco.
+        return ruta.read_text(encoding="utf-8", errors="replace")
+
+
 _verdes = 0
 for _amb in _ambientes:
-    _txt = _amb.read_text(encoding="utf-8", errors="replace")
+    _txt = _sin_comentarios(_amb)
     _hall = {m.group(0) for m in _HEX.finditer(_txt) if _es_verde_semaforo(m.group(1))}
     if _hall:
         _verdes += len(_hall)

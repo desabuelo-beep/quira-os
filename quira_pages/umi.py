@@ -37,15 +37,25 @@ from typing import Any, Callable, Sequence
 
 import streamlit as st
 
-# Paleta soberana — consistente con el Centro de Mando v2 (firewall: sin códigos internos)
+from utils.css_tokens import C
+
+# Paleta del kernel de expedientes. Antes era propia —#FF4D4D, #FFB020, #22C55E,
+# #00D4FF— y eso la convertía en una SEGUNDA VERDAD visual: el sistema de color
+# vive en `utils/css_tokens`, y este módulo renderiza TODOS los expedientes QINV,
+# no una pantalla suelta. Hallado curando d06 (2026-08-10).
+#
+# El cambio de fondo es `verde`. El sistema visual no tiene color de «bien»
+# porque QUIRA mide VERIFICABILIDAD, no bondad: decir «verde» sobre un municipio
+# es un juicio de valor que este sistema no puede emitir. Se mapea a SIN_SENAL —
+# no hay nada que señalar aquí—, que es lo que de verdad significa.
 _TEMP: dict[str, str] = {
-    "critico": "#FF4D4D",
-    "alerta": "#FFB020",
-    "normal": "#00D4FF",
-    "verde": "#22C55E",
-    "dim": "#5A6B7E",
+    "critico": C.CRITICO,
+    "alerta":  C.OCRE,
+    "normal":  C.ACENTO,
+    "verde":   C.SIN_SENAL,   # NO es verde. Es «sin señal que reportar».
+    "dim":     C.V_TX3,
 }
-_IA = "#00D4FF"  # el color del perito (QUIRA)
+_IA = C.ACENTO  # el color del perito (QUIRA)
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
