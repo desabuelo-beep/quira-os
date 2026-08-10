@@ -346,8 +346,15 @@ CSS = """<style>
    arriba para quien ya sabe a qué viene, y el formulario completo al final para
    quien llega por primera vez y necesita entender antes de que le pidan una
    contraseña. La portada sigue explicando; deja de obligar. */
-.q-top{position:sticky;top:0;z-index:50;background:rgba(217,224,229,.92);
-  backdrop-filter:blur(9px);border-bottom:1px solid var(--bd)}
+/* FIXED, no sticky (Javo · 2026-08-10: «debe bajar todo»). Era sticky y aun asi
+   se quedaba arriba: Streamlit envuelve cada bloque en contenedores propios, y
+   basta que UNO tenga overflow para que `position:sticky` deje de pegar — no
+   falla, simplemente no hace nada. Con `fixed` la barra sale del flujo y el
+   botón, que ya era fixed, viaja alineado con ella en vez de solo. */
+.q-top{position:fixed;top:0;left:0;right:0;z-index:55;background:rgba(217,224,229,.94);
+  backdrop-filter:blur(11px);border-bottom:1px solid var(--bd)}
+/* La barra ya no ocupa sitio: se lo devolvemos al contenido. */
+[data-testid="stMainBlockContainer"],div.block-container{padding-top:52px !important}
 .q-top-in{max-width:var(--ancho);margin:0 auto;padding:9px 34px;display:flex;
   align-items:center;gap:11px}
 .q-top-n{font:600 13px/1 'Archivo',sans-serif;letter-spacing:.17em;color:var(--tx)}
@@ -360,7 +367,7 @@ CSS = """<style>
    el acceso se perdía al bajar. Se saca del flujo y se ancla al borde derecho
    del área de lectura, a la altura de la barra. */
 .st-key-top_acceso{position:fixed;z-index:60;width:auto;
-  top:7px;right:max(20px,calc((100vw - var(--ancho))/2 + 34px))}
+  top:6px;right:max(20px,calc((100vw - var(--ancho))/2 + 34px))}
 .st-key-top_acceso button{background:var(--sf) !important;
   border:1px solid rgba(193,57,43,.4) !important;color:var(--coral-dp) !important;
   font:700 10.5px/1 'JetBrains Mono',monospace !important;letter-spacing:.12em !important;
@@ -685,7 +692,10 @@ def como_funciona() -> str:
         f'<div class="q-flow">{nodos}</div>'
         '<p class="q-p" style="margin-top:14px">Las tres vías no son intercambiables, y por eso '
         'se distinguen: la primera <b>encuentra</b> la evidencia que el Estado ya publicó; la '
-        'segunda <b>obliga a producirla</b> cuando falta; la tercera <b>recoge</b> lo que el '
+        # «obliga a producirla» atribuía a QUIRA una potestad que no tiene: quien
+        # obliga es la ley, no el sistema. QUIRA solicita, documenta y sigue el
+        # plazo — y esa distinción importa más aquí que en cualquier otra frase.
+        'segunda la <b>solicita y documenta su entrega</b> cuando falta; la tercera <b>recoge</b> lo que el '
         'territorio ya tiene en la mano. Cada pieza conserva el registro de por dónde entró, y '
         'todas alimentan el mismo cuerpo de conocimiento — no bases separadas que después se '
         'contradicen.</p>'
@@ -753,7 +763,10 @@ def dominios() -> str:
         f'<div class="q-dom"><div class="q-dom-n">{n}</div>'
         f'<div class="q-dom-t">{t}</div><div class="q-dom-d">{d}</div></div>'
         for n, t, d in _DOMINIOS)
-    return _sec("Qué se observa", "Doce dominios de la gestión municipal",
+    # «Qué se observa» devolvía a QUIRA a la categoría observatorio/auditor. Los
+    # dominios son mayores que eso: son la ESTRUCTURA con la que se organiza el
+    # conocimiento del territorio, no una lista de cosas que se revisan.
+    return _sec("La estructura", "Doce dominios de conocimiento territorial",
         '<p class="q-p">La gestión de un municipio no se lee en un indicador único. QUIRA la '
         'recorre por <b>doce dominios</b>, y en cada uno busca lo mismo: <b>dónde se interrumpe '
         'la correspondencia</b> entre lo que se prometió, lo que se planificó, lo que se '

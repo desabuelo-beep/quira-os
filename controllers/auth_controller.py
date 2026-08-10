@@ -24,10 +24,9 @@ def _st_key(name: str) -> str:
 # justo el error que Javo señaló ("al observatorio entramos por institucional")—; el ruteo
 # interno NO se toca: sigue entrando al ambiente `gov`. Es la distinción producto/ambiente
 # de ADR-041 §2 aplicada: cambia lo que el mundo ve, no la maquinaria.
-# Decía «Entrar al Observatorio · Centro de Inteligencia Territorial» — los dos
-# nombres en una sola cadena, que es el síntoma que destapó ADR-045: cuando hace
-# falta un segundo nombre para decir una cosa, sobra uno de los dos.
-_LABEL_ACCESO = "Entrar al Observatorio\n\nAcceso con credenciales · equipo Dylus Lab"
+# `_LABEL_ACCESO` se retiró con el botón revelador (2026-08-10). Llegó a decir
+# «Entrar al Observatorio · Centro de Inteligencia Territorial» —los dos nombres
+# en una sola cadena—, y fue el síntoma que destapó ADR-045.
 
 
 def _formulario_acceso(_SEL: str) -> None:
@@ -121,8 +120,6 @@ def run() -> None:
                    dominios, ciudadana, motor, ecosistema, humano, independencia):
         st.markdown(bloque(), unsafe_allow_html=True)
 
-    selected = st.session_state[_SEL]
-
     # ══════════════════════════════════════════════════════════════════════════
     # ACCESO — un solo punto de entrada real
     #
@@ -135,19 +132,17 @@ def run() -> None:
     # Los productos ahora se EXPLICAN en el ecosistema (arriba) en vez de fingir cuatro
     # accesos donde solo uno existe. Cooperación mantiene su vía de contacto abajo.
     # ══════════════════════════════════════════════════════════════════════════
-    _, col_acc, _ = st.columns([1, 2, 1])
-    with col_acc:
-        if st.button(_LABEL_ACCESO, key="card_acceso", use_container_width=True):
-            st.session_state[_SEL] = "observatorio"
-            # Simétrico al atajo de arriba: el formulario aparece donde se pulsó.
-            # Sin esto, quien primero usó la barra y luego bajó hasta aquí no
-            # veía nada — el formulario seguía anclado arriba, fuera de vista.
-            st.session_state.pop(_ARRIBA, None)
-            st.rerun()
-
-    # El formulario del pie solo si NO se dibujó ya arriba: dos formularios en la
-    # misma página comparten `key` y Streamlit levanta DuplicateWidgetID.
-    if selected == "observatorio" and not st.session_state.get(_ARRIBA):
+    # SIN botón revelador (Javo · 2026-08-10: «el accede de abajo, que no lo suba»).
+    # Antes había que pulsar un botón para que apareciera el formulario, y ese
+    # clic disparaba un `st.rerun()` que devolvía al usuario al principio de la
+    # página: pulsabas abajo y acababas arriba. Streamlit no conserva la posición
+    # de scroll entre recargas y no hay forma de pedírselo desde markdown.
+    #
+    # El formulario se dibuja directamente. No hay clic, no hay recarga, no hay
+    # salto — y de paso se ahorra un paso a quien vino solo a entrar.
+    # Solo se omite si el atajo de la barra ya lo puso arriba: dos formularios
+    # comparten `key` y Streamlit levantaría DuplicateWidgetID.
+    if not st.session_state.get(_ARRIBA):
         _formulario_acceso(_SEL)
 
     # ══════════════════════════════════════════════════════════════════════════
