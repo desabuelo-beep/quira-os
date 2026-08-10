@@ -537,7 +537,7 @@ componentes:
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-046_Capa_Civica_y_Techo_por_Acreditacion.md
-    hash: 7e35e96682a853c6
+    hash: 3e8b71a6f0ef90e8
     authority_declared: true
     parent: ADR-045
   - id: CANON_PCD-PCD-D01_Planificacion

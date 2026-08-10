@@ -121,6 +121,49 @@ Cooperación, alcance, idiomas— sigue abierto: sirve a quien **pide** financia
 Cooperación sirve a quien lo **da**, y por el test de ADR-043 §3 esa diferencia todavía debe
 resolverse. Lo que este ADR cierra es que **no se abandona**.
 
+### 2.4 · Por qué aporta la ciudadanía: para ver su propio territorio
+
+Javo (2026-08-10):
+
+> «El fin de que la gente suba su información municipal es para poder **visualizar los resultados
+> en los dominios**.»
+
+Esto responde la pregunta que casi ninguna plataforma de aporte ciudadano responde: **¿por qué se
+tomaría alguien el trabajo?** La respuesta no es altruismo ni «ayudar al sistema». Es reciprocidad
+directa y verificable:
+
+> **QUIRA observa 222 GAD, pero solo calcula sobre lo que existe. Un municipio que no publica
+> tiene sus doce dominios vacíos. Quien aporta la evidencia de su municipio enciende la lectura
+> de su propio territorio.**
+
+Tres consecuencias, y las tres son de diseño, no de discurso:
+
+**1 · La cobertura nacional deja de depender solo de Dylus Lab.** La captura directa alcanza hasta
+donde llega la publicación oficial. Más allá de ese límite, **la ciudadanía puede activar su
+cantón** — que es la única vía realista de llegar a 222 sin depender de la voluntad de 222
+alcaldías.
+
+**2 · Se enlaza con el IOC.** Un municipio opaco tiene índice de opacidad alto y dominios vacíos.
+Su ciudadanía tiene la vía para llenarlos, y cada oficio ignorado en el intento **alimenta el
+propio índice**. La opacidad se vuelve costosa por partida doble.
+
+**3 · Obligación para la UI: la ausencia se muestra, y se muestra accionable.** Un dominio sin
+evidencia no puede quedar en blanco ni en error. Debe decir **qué falta, por qué falta y cómo se
+consigue**. La infraestructura ya existe —los ocho estados de captura de ADR-042 §6 y el nivel
+`sin_evidencia` de la escala— y hasta ahora solo se usaba para informar. Aquí pasa a convocar:
+un dominio vacío es un diagnóstico y una invitación, no una pantalla rota.
+
+### 2.5 · Y una salvaguarda que esto obliga a fijar
+
+**Que la ciudadanía llene el hueco no absuelve al GAD de haberlo dejado.** La transparencia activa
+es obligación de la entidad (LOTAIP), no de sus habitantes.
+
+Por tanto: cuando una evidencia entra por aporte ciudadano supliendo una publicación ausente, el
+**IOC sigue registrando que el GAD no publicó**. El dominio se enciende; el incumplimiento no se
+borra. Sin esta regla el sistema premiaría la opacidad —bastaría con no publicar y esperar a que
+alguien lo haga por uno—, y convertiría el trabajo ciudadano en un servicio gratuito al
+incumplidor.
+
 ## 3 · Lo que no cambia
 
 Una sola superficie · un solo cuerpo de conocimiento · el Centro sigue siendo núcleo sin cartel ·
@@ -137,6 +180,8 @@ sin reclamar el art. 79. ADR-041, ADR-042, ADR-043 y ADR-044, intactos.
 | 4 | Verificación de certificado contra entidad acreditada (NCI-CGE) | ⛔ pendiente |
 | 5 | LCEFEMD al corpus, con LOGJCC y LOPDP | ⛔ pendiente |
 | 6 | Pines territoriales (rojo · morado · verde) de Terra | ⛔ no decidido — no se publican hasta tener ADR |
+| 7 | Dominio sin evidencia: mostrar qué falta y cómo conseguirlo (§2.4) | ⛔ pendiente |
+| 8 | El IOC no se limpia porque la ciudadanía supla la publicación (§2.5) | ⛔ pendiente en el motor |
 
 ---
 *ADR-046 · Dylus Lab © 2026 · supersede ADR-045 §3 y §10 · deriva de ADR-045.*
