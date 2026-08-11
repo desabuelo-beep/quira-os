@@ -823,41 +823,60 @@ def dominios() -> str:
 # ENCIENDE SU PROPIO TERRITORIO. Y §2.5 obliga a decir lo otro — que suplir al GAD
 # no lo absuelve—, porque callarlo convertiría el trabajo ciudadano en un servicio
 # gratuito al que incumple.
+# Seis capacidades en progresión, y el orden es el argumento: leer · comprobar ·
+# exigir · documentar · armar · incidir. Antes eran cuatro y describían lo que la
+# ciudadanía APORTA al sistema; ahora describen lo que la ciudadanía PUEDE HACER
+# con él, que es de lo que trata esta sección.
 _CAPACIDADES = [
-    ("Evidencia territorial",
-     "Actas, informes, facturas, fotografías de obra. El sistema las estructura, registra su "
-     "procedencia y explica qué acredita cada una."),
-    ("Exigibilidad asistida",
-     "Redacta la solicitud de acceso con su fundamento legal, lleva la cuenta del plazo y "
-     "prepara el paso siguiente si la entidad no responde."),
-    ("Inteligencia cívica",
-     "Los doce dominios legibles sin jerga: qué dice cada cifra, de qué documento sale y qué "
-     "norma la respalda."),
-    ("Acción territorial",
-     "Control social e incidencia con expediente. Es la capacidad que el proyecto reconoce y "
-     "todavía no ha construido — y lo dice en vez de anunciarla."),
+    ("01", "Leer el propio territorio",
+     "Los doce dominios sin jerga: qué dice cada cifra, de qué documento sale y qué norma la "
+     "respalda. El objetivo no es depender de QUIRA para entender al Estado — es lo contrario."),
+    ("02", "Comprobar de dónde sale",
+     "Toda afirmación llega hasta su documento de origen. Nadie tiene que creerle a QUIRA: "
+     "puede ir a verificarlo, y por eso la observación es replicable por cualquiera."),
+    ("03", "Exigir lo que falta",
+     "El sistema redacta la solicitud de acceso con su fundamento legal, corre el plazo y "
+     "prepara el escalón siguiente. No hace falta conocer la máquina administrativa para "
+     "empezar a usarla."),
+    ("04", "Documentar el territorio",
+     "Actas, contratos, facturas y fotografías de obra entran con su procedencia registrada. "
+     "No sustituyen a la evidencia institucional: se contrastan con ella."),
+    ("05", "Armar el expediente",
+     "Una observación suelta pesa poco; un expediente trazable pesa distinto. QUIRA relaciona "
+     "documento, hecho, norma, territorio y respuesta institucional en una sola pieza."),
+    ("06", "Seguir e incidir",
+     "Qué se pidió, qué respondió la entidad, qué se comprometió y qué cambió en el territorio. "
+     "Es la capacidad que el proyecto reconoce y aún no ha construido — y lo dice en vez de "
+     "anunciarla."),
 ]
 
 
 def ciudadana() -> str:
     cards = "".join(
-        f'<div class="q-duo-c"><div class="q-duo-t" style="color:var(--coral-dp)">{t}</div>'
-        f'<div class="q-duo-d">{d}</div></div>' for t, d in _CAPACIDADES)
-    # Precisión de Javo (2026-08-10): «los dominios no se encienden solo con la
-    # labor de la ciudadanía, también el Observatorio; ambas encienden con la
-    # información que se va captando». El texto anterior podía leerse como si
-    # encender fuera privilegio de la capa cívica. No lo es: enciende la EVIDENCIA,
-    # venga por donde venga. Lo propio de esta vía es llegar donde la otra no.
-    return _sec("La capa ciudadana", "Donde la publicación no llega, llega el territorio",
-        '<p class="q-p">Un dominio se enciende cuando entra evidencia — <b>por cualquiera de las '
-        'tres vías</b>. El Observatorio enciende todo lo que el Estado publica, y lo hace mes a '
-        'mes sobre los 222 municipios. Pero <b>solo puede calcular sobre lo que existe</b>: donde '
-        'un municipio no publica, esos dominios se quedan en blanco por más que se los revise.</p>'
-        '<p class="q-p">Ahí empieza esta vía. Y de ahí sale la razón concreta por la que alguien '
-        'aportaría evidencia de su cantón: <b>no es ayudar al sistema, es poder ver el propio '
-        'territorio</b> cuando nadie más lo va a encender.</p>'
-        f'<div class="q-duo">{cards}</div>'
-        '<p class="q-cap">Y una regla que conviene decir en voz alta: <b>que la ciudadanía llene '
+        f'<div class="q-dom"><div class="q-dom-n">{n}</div>'
+        f'<div class="q-dom-t">{t}</div><div class="q-dom-d">{d}</div></div>'
+        for n, t, d in _CAPACIDADES)
+    # Corrección de Javo (2026-08-10): esta sección escondía lo más duro de la
+    # dimensión cívica. Definía la capa por la AUSENCIA del Estado —«donde la
+    # publicación no llega»—, y eso la vuelve un parche: existiría solo mientras
+    # el municipio incumpla. Es al revés. La capacidad de conocer, comprobar y
+    # exigir vale igual cuando el municipio publica todo; lo que cambia entonces
+    # es qué se puede hacer con lo publicado, no si hay algo que hacer.
+    return _sec("Ciudadanía", "Del derecho a saber a la capacidad de incidir",
+        '<p class="q-p">QUIRA no trata a la ciudadanía como destinataria de información ni como '
+        'fuente de repuesto cuando el Estado no publica. La incorpora como <b>actor de control '
+        'social sobre la gestión pública territorial</b> — y esa es su dimensión CivicTech: no '
+        'consiste en dejar subir documentos, sino en <b>convertir información pública verificable '
+        'en capacidad para conocer, comprobar, exigir y hacer seguimiento</b>.</p>'
+        '<p class="q-p">La asimetría que corrige es concreta: hoy, quien administra el territorio '
+        'sabe lo que hizo, y quien lo habita depende de que se lo cuenten. <b>QUIRA no sustituye '
+        'la acción ciudadana ni decide qué debe exigirse: le da evidencia para actuar.</b></p>'
+        f'<div class="q-doms">{cards}</div>'
+        '<p class="q-p" style="margin-top:16px">Y hay un efecto directo para quien aporta. Un '
+        'dominio se enciende cuando entra evidencia, por cualquiera de las tres vías; donde el '
+        'municipio no publicó, esa evidencia solo puede venir del territorio. <b>Aportarla no es '
+        'ayudar al sistema: es poder ver el propio cantón</b> cuando nadie más lo va a encender.</p>'
+        '<p class="q-cap">Con una regla que conviene decir en voz alta: <b>que la ciudadanía llene '
         'el hueco no absuelve al municipio de haberlo dejado</b>. La obligación de publicar es de '
         'la entidad, no de sus habitantes. El dominio se enciende; el incumplimiento queda '
         'registrado igual.</p>')
