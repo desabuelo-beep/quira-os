@@ -366,16 +366,20 @@ CSS = """<style>
    después, así que el selector `.q-top .st-key-top_acceso` no aplicaba nunca y
    el acceso se perdía al bajar. Se saca del flujo y se ancla al borde derecho
    del área de lectura, a la altura de la barra. */
+/* Dentro del recuadro, no encima (Javo · 2026-08-10). Sobresalía por arriba y
+   pesaba más que la marca: un acceso no puede gritar más fuerte que el nombre
+   del proyecto. Se alinea al eje de la barra —39 px de alto: 9 + 21 del logo +
+   9— y baja al cuerpo del subtítulo que acompaña al logotipo. */
 .st-key-top_acceso{position:fixed;z-index:60;width:auto;
-  top:6px;right:max(20px,calc((100vw - var(--ancho))/2 + 34px))}
+  top:8px;right:max(16px,calc((100vw - var(--ancho))/2 + 34px))}
 .st-key-top_acceso button{background:var(--sf) !important;
-  border:1px solid rgba(193,57,43,.4) !important;color:var(--coral-dp) !important;
-  font:700 10.5px/1 'JetBrains Mono',monospace !important;letter-spacing:.12em !important;
-  padding:9px 18px !important;border-radius:20px !important;min-height:0 !important;
-  box-shadow:0 2px 8px rgba(193,57,43,.08);
+  border:1px solid rgba(193,57,43,.38) !important;color:var(--coral-dp) !important;
+  font:700 9px/1 'JetBrains Mono',monospace !important;letter-spacing:.13em !important;
+  padding:6px 15px !important;border-radius:18px !important;min-height:0 !important;
+  height:23px !important;box-shadow:0 1px 5px rgba(193,57,43,.07);
   transition:background .25s,color .25s,border-color .25s,transform .25s}
-.st-key-top_acceso button::before{content:"";width:6px;height:6px;border-radius:50%;
-  background:currentColor;margin-right:8px;flex:0 0 auto}
+.st-key-top_acceso button::before{content:"";width:5px;height:5px;border-radius:50%;
+  background:currentColor;margin-right:7px;flex:0 0 auto}
 .st-key-top_acceso button:hover{background:var(--coral) !important;color:#FFF !important;
   border-color:var(--coral) !important;transform:translateY(-1px);
   box-shadow:0 4px 14px rgba(193,57,43,.25)}
@@ -486,9 +490,16 @@ def landing_hero() -> str:
         f'<div class="q-name">QUIRA</div>'
         f'<div class="q-promesa">EVIDENCIA QUE TRANSFORMA</div>'
         f'<div class="q-cat">INTELIGENCIA PÚBLICA · DYLUS LAB · ECUADOR</div>'
+        # Terminaba en «al servicio de gobiernos, ciudadanía, academia y cooperación
+        # internacional». Son DESTINATARIOS, y enumerarlos aquí desplaza la
+        # definición: lo primero que se lee deja de decir qué es QUIRA y pasa a
+        # decir para quién. Se sustituye por lo que hace, y por la frase que cierra
+        # la puerta al malentendido que Javo lleva meses corrigiendo.
         f'<div class="q-tag">Infraestructura de <b>conocimiento verificable</b> para la gestión '
-        f'pública territorial, al servicio de gobiernos, ciudadanía, academia y cooperación '
-        f'internacional.</div></div>')
+        f'pública territorial. Integra evidencia institucional y ciudadana, la relaciona y la '
+        f'contrasta para reconstruir cómo se enlazan el mandato, la planificación, el '
+        f'presupuesto, la ejecución y el territorio.<br><br>'
+        f'<b>QUIRA no administra el territorio. Lo hace observable.</b></div></div>')
 
 
 # ══════════════════════════ ORIGEN ══════════════════════════
@@ -523,12 +534,23 @@ def que_es() -> str:
                   # dejaba al lector sin saber qué está entrando a usar.
                   ("no es un software municipal", "no es una auditoría",
                    "no es un ranking"))
-    return _sec("Qué es", "Conocimiento verificable, no opinión",
+    # La negación se queda, pero como FRONTERA, no como identidad. Reducir QUIRA a
+    # una auditoría es el malentendido que Javo lleva meses corrigiendo y que
+    # reaparece cada vez que la definición se deja implícita: si no se dice qué ES,
+    # el lector completa el hueco con la categoría que ya conoce. Por eso ahora la
+    # definición positiva va PRIMERO y la negación después.
+    return _sec("Qué es", "Una infraestructura, no una herramienta de control",
+        '<p class="q-p"><b>QUIRA es una infraestructura de conocimiento verificable para la '
+        'gestión pública territorial.</b> Articula fuentes, evidencia, reglas normativas, un '
+        'motor de cálculo y validación humana para convertir documentación dispersa en '
+        'conocimiento sobre el territorio que cualquiera puede comprobar hasta su origen.</p>'
         f'<div class="q-nos">{nos}</div>'
-        '<p class="q-p">QUIRA convierte <b>evidencia pública dispersa</b> en conocimiento que '
-        'puede comprobarse y sostener decisiones. No mide trámites ni obras aisladas: recorre el '
-        '<b>ciclo completo de la gestión pública</b> —del mandato electoral al impacto '
-        'territorial— y muestra dónde se interrumpe la trazabilidad.</p>'
+        '<p class="q-p">La diferencia con una auditoría no es de alcance: es de pregunta. Una '
+        'auditoría pregunta <i>¿cumplió?</i> y termina en un dictamen. QUIRA pregunta <b>¿qué '
+        'puede demostrarse sobre lo que ocurrió?</b> y termina en evidencia disponible para que '
+        'otros decidan. No mide trámites ni obras aisladas: recorre el <b>ciclo completo de la '
+        'gestión pública</b> —del mandato electoral al impacto territorial— y muestra dónde se '
+        'interrumpe la trazabilidad.</p>'
         # Declaración de objeto. Faltaba, y es lo que distingue una infraestructura
         # de observación de un software de control: decir a quién NO se dirige.
         '<p class="q-p">Su objeto no es auditar al ciudadano ni administrar al municipio. '
@@ -803,11 +825,19 @@ def ciudadana() -> str:
     cards = "".join(
         f'<div class="q-duo-c"><div class="q-duo-t" style="color:var(--coral-dp)">{t}</div>'
         f'<div class="q-duo-d">{d}</div></div>' for t, d in _CAPACIDADES)
-    return _sec("La capa ciudadana", "Aportar la evidencia de tu municipio lo enciende",
-        '<p class="q-p">QUIRA observa 222 municipios, pero <b>solo puede calcular sobre lo que '
-        'existe</b>. Donde un municipio no publica, sus doce dominios se quedan en blanco. Esa '
-        'es la razón concreta por la que alguien aportaría evidencia de su cantón: <b>no es '
-        'ayudar al sistema, es poder ver el propio territorio</b>.</p>'
+    # Precisión de Javo (2026-08-10): «los dominios no se encienden solo con la
+    # labor de la ciudadanía, también el Observatorio; ambas encienden con la
+    # información que se va captando». El texto anterior podía leerse como si
+    # encender fuera privilegio de la capa cívica. No lo es: enciende la EVIDENCIA,
+    # venga por donde venga. Lo propio de esta vía es llegar donde la otra no.
+    return _sec("La capa ciudadana", "Donde la publicación no llega, llega el territorio",
+        '<p class="q-p">Un dominio se enciende cuando entra evidencia — <b>por cualquiera de las '
+        'tres vías</b>. El Observatorio enciende todo lo que el Estado publica, y lo hace mes a '
+        'mes sobre los 222 municipios. Pero <b>solo puede calcular sobre lo que existe</b>: donde '
+        'un municipio no publica, esos dominios se quedan en blanco por más que se los revise.</p>'
+        '<p class="q-p">Ahí empieza esta vía. Y de ahí sale la razón concreta por la que alguien '
+        'aportaría evidencia de su cantón: <b>no es ayudar al sistema, es poder ver el propio '
+        'territorio</b> cuando nadie más lo va a encender.</p>'
         f'<div class="q-duo">{cards}</div>'
         '<p class="q-cap">Y una regla que conviene decir en voz alta: <b>que la ciudadanía llene '
         'el hueco no absuelve al municipio de haberlo dejado</b>. La obligación de publicar es de '
@@ -877,12 +907,15 @@ def ecosistema() -> str:
         f'{f"<span class=\"q-prod-e activo\">{e}</span>" if e else ""}</div>'
         f'<div class="q-prod-r">{r}</div><div class="q-prod-d">{d}</div></div>'
         for n, r, d, e, col in _PRODUCTOS)
-    return _sec("El ecosistema", "Una superficie, varios destinatarios",
-        '<p class="q-p">Se entra por un solo lugar. El <b>Observatorio</b> es donde la evidencia '
-        'se construye y se consulta; los demás la aprovechan para responder preguntas distintas, '
-        'cada uno con lo suyo — una universidad no necesita lo mismo que un banco de desarrollo. '
-        'Todos leen <b>un solo cuerpo de conocimiento</b> y ninguno sostiene una verdad propia: '
-        'lo que cambia de uno a otro es qué entregan y a quién.</p>'
+    # «Una superficie, varios destinatarios» dejaba a QUIRA a la altura del
+    # Observatorio, como si fueran lo mismo. QUIRA es la infraestructura; el
+    # Observatorio, la superficie pública donde se consulta.
+    return _sec("El ecosistema", "Una infraestructura, distintas superficies de uso",
+        '<p class="q-p">Se entra por un solo lugar. El <b>Observatorio</b> es la superficie '
+        'pública donde la evidencia converge y se consulta; las demás leen esa misma '
+        'infraestructura para responder preguntas distintas — una universidad no necesita lo '
+        'mismo que un banco de desarrollo. Ninguna construye una verdad aparte: <b>hay un solo '
+        'cuerpo de conocimiento</b>, y lo que cambia de una a otra es qué entregan y a quién.</p>'
         f'<div class="q-prods">{filas}</div>'
         '<p class="q-cap">Dos capacidades recorren el ecosistema entero sin constituir productos '
         'aparte: la inteligencia artificial, que explica en lenguaje natural lo que la evidencia '
