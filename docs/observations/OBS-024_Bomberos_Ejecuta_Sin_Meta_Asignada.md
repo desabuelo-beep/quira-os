@@ -39,8 +39,12 @@ Y tiene serie completa en el corpus: **POA 2024-2026 · PAC 2023-2026 · rendici
 
 ## El hallazgo
 
-> **Una entidad del holding municipal ejecuta presupuesto propio declarando alineación al PDOT,
-> y el PDOT no le asigna ninguna meta.**
+> **Una entidad adscrita del holding municipal ejecuta presupuesto propio declarando alineación
+> al PDOT, y la matriz de metas del PDOT no le asigna ninguna meta.**
+>
+> Formulado con precisión tras verificar COOTAD 140 (ver §«¿Hay otra vía?»): **no es que esté
+> desarticulada — es que su articulación no es medible por el instrumento con el que se mide el
+> cumplimiento de metas.**
 
 La cadena se rompe en un punto que ninguna de las dos partes muestra por sí sola: el PDOT dice
 qué hay que lograr y a quién le toca; el POA de Bomberos dice qué hace y cuánto gasta. **Cruzados,
@@ -69,6 +73,65 @@ gestión de riesgos»** — una unidad del GAD, no la entidad que la ejecuta con
    **no entra en el índice por ninguna vía** — ni bien ni mal. Queda fuera del alcance.
 3. **Para el holding (d05):** `H12d_ICPI_POR_ENTIDAD` calcula por entidad. Una entidad sin metas
    asignadas no puede tener cumplimiento medible de plan.
+
+## ¿Hay otra vía legal de articulación? Sí, y hay que decirlo
+
+Pregunta de Javo (2026-08-11): *«¿técnicamente hay otra forma de ligar o articular Bomberos al
+PDOT? No quiero decir estas cosas y que salga por ahí alguna situación que los ligue de otra
+manera».* La pregunta es correcta: **un hallazgo que no agota las vías alternativas es un hallazgo
+frágil.** Se agotaron, y el resultado **matiza la observación sin anularla**.
+
+### La norma que gobierna el caso — verificada
+
+**COOTAD Art. 140** · `SHA256 0dc5f48de6bb9af5f8bd0b595c179b5224842dd0b2531762e858d617c58c8ecb`:
+
+> «La gestión de riesgos […] se gestionará **de manera concurrente y de forma articulada por todos
+> los niveles de gobierno** […] Los cuerpos de bomberos del país **serán considerados como
+> entidades adscritas a los gobiernos autónomos descentralizados municipales**, quienes
+> funcionarán **con autonomía administrativa y financiera, presupuestaria y operativa**.»
+
+De ahí se siguen tres cosas, y las tres importan:
+
+1. **Bomberos es entidad adscrita del GAD.** No es un tercero: pertenece al holding municipal.
+2. **Tiene autonomía presupuestaria por ley.** Ejecutar con presupuesto propio **no es una
+   anomalía**: es exactamente lo que la norma dispone.
+3. **La competencia es concurrente y debe ejercerse de forma articulada.** La articulación es una
+   exigencia legal, pero el artículo **no impone que se instrumente mediante una fila en la matriz
+   de metas del PDOT.**
+
+### Las vías alternativas, evaluadas una por una
+
+| Vía | ¿Existe? | ¿Articula a Bomberos con el PDOT? |
+|---|---|---|
+| **Fila en la matriz plurianual de metas** | no | — |
+| **Tablas de estrategias de articulación del PDOT** (#353, #355) | **sí** | parcialmente: proyecto «Estación Bomberil», estado *sin postulación* |
+| **Alineación declarada en su propio POA** | **sí** | sí: PTDOT 20 · Asentamientos Humanos · Hábitat digno |
+| **Concurrencia por COOTAD 140** | **sí** | sí, por mandato legal directo |
+
+**Conclusión:** Bomberos **sí está articulado al PDOT**, por al menos tres vías. Lo que **no
+existe** es correspondencia en la matriz de metas — que es la única vía con la que el motor puede
+medir cumplimiento de plan.
+
+### Lo que esto cambia en la formulación del hallazgo
+
+> **No es que Bomberos esté desarticulado del PDOT. Es que su articulación no es medible por el
+> instrumento con el que se mide el cumplimiento de metas.**
+
+Eso es más preciso, más difícil de refutar, y sigue siendo un hallazgo: **la trazabilidad
+documental se interrumpe aunque la articulación jurídica exista.**
+
+### Advertencia sobre citas que NO se sostienen
+
+Un aporte externo propuso respaldar el caso con **COESCOP Art. 274** y con **COPLAFIP Arts. 115 y
+116** como fundamento de «modificaciones de inclusión en el PAI». Verificado contra corpus:
+
+- **COESCOP no está ingerida.** Sin SHA no se cita (Regla 3), por correcta que parezca.
+- **COPLAFIP 115 es *Certificación Presupuestaria* y 116 es *Establecimiento de Compromisos***.
+  Ninguno regula modificaciones al PAI. Citarlos así habría sido desmontable en un minuto por
+  cualquier técnico del GAD.
+
+Se registran aquí, no para señalar a nadie, sino porque **este expediente debe mostrar también qué
+fundamento se descartó y por qué**.
 
 ## Lo que NO se concluye
 
