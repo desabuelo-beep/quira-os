@@ -105,6 +105,18 @@ Así que la respuesta a *«todo cableado y ligado al motor determinístico»* es
 solo motor de cálculo**. Cablear la BRN *hacia* el Gold Master habría creado la segunda verdad que
 todo este canon existe para impedir.
 
+La distinción que lo resuelve, y que conviene retener:
+
+> **La BRN puede estar completamente cableada con el sistema sin estar cableada como fuente de
+> cálculo.**
+
+De ahí se sigue lo que Javo quería proteger, y se sostienen **las dos cosas a la vez**: la revisión
+del portal **sí es parte del cálculo canónico** —la variable nace de evidencia observada, pasa por
+la autoridad que corresponda y entra al Gold Master como variable declarada— **y el motor
+matemático sigue siendo uno solo**. La BRN responde después *por qué* esa variable y ese resultado
+tienen fundamento normativo. Observación documental como innovación metodológica, sin segunda
+verdad.
+
 ## 4 · La frontera de escritura canónica
 
 **Ningún proceso escribe una celda arbitraria.** Una cosa es que `d07` sea variable de entrada y
@@ -142,7 +154,7 @@ verificado). En el despliegue público no lo hay.
 | Paso | Dónde |
 |---|---|
 | Captura y registro | aplicación · Consola |
-| Evaluación normativa (BRN) | aplicación |
+| Fundamentación normativa (BRN) | aplicación — **en paralelo, no como paso previo** |
 | Validación humana | aplicación |
 | **Inyección + recálculo** | **entorno autorizado con motor real** — ordenado desde la Consola |
 | Publicación del snapshot | Operaciones |
@@ -193,7 +205,7 @@ regla y la extiende al tramo de inyección y recálculo.
 | 3 | El conector se niega a leer un motor con fórmulas sin recalcular | ⛔ pendiente |
 | 4 | Huella antes/después y prueba de reproducibilidad | ⛔ pendiente |
 | 5 | Snapshots versionados por corte; ninguno se sobrescribe | ⛔ pendiente |
-| 6 | Cadena BRN → variable → Gold Master, explícita por dominio | ⛔ pendiente |
+| 6 | Cadena `evidencia → validación → variable canónica → Gold Master`, con trazabilidad normativa BRN explícita por dominio | ⛔ pendiente |
 | 7 | La Consola gana los mandos de inyección, recálculo y publicación | ⛔ pendiente |
 
 ## 10 · Lo que este ADR NO decide
