@@ -730,8 +730,8 @@ def como_funciona() -> str:
         # «obliga a producirla» atribuía a QUIRA una potestad que no tiene: quien
         # obliga es la ley, no el sistema. QUIRA solicita, documenta y sigue el
         # plazo — y esa distinción importa más aquí que en cualquier otra frase.
-        'segunda la <b>solicita y documenta su entrega</b> cuando falta; la tercera <b>recoge</b> lo que el '
-        'territorio ya tiene en la mano. Cada pieza conserva el registro de por dónde entró, y '
+        'segunda la <b>solicita y documenta su entrega</b> cuando falta; la tercera <b>incorpora</b> la que ya '
+        'existe en el territorio. Cada pieza conserva el registro de por dónde entró, y '
         'todas alimentan el mismo cuerpo de conocimiento — no bases separadas que después se '
         'contradicen.</p>'
         # Lo que antes eran dos cajones más de la fila, en su sitio: no son vías,
@@ -744,7 +744,8 @@ def como_funciona() -> str:
         # justamente el error que el ADR corrigió.
         '<p class="q-cap">Lo que determina cuánto puede afirmarse no es <i>quién trajo</i> el '
         'documento, sino <b>qué acredita el documento</b>. Un acto de la administración firmado '
-        '—electrónicamente o de puño y sello— no deja de serlo porque lo entregue un vecino: '
+        '—con certificado electrónico o de forma manuscrita y sellada— no pierde esa condición '
+        'porque lo entregue un tercero: '
         '<b>se verifica el certificado, no el portador</b>.</p>')
 
 
@@ -784,7 +785,7 @@ _DOMINIOS = [
      "Qué separa la participación procedimental de la incidencia real sobre decisiones y "
      "presupuesto."),
     ("09", "Rendición de cuentas",
-     "Qué queda en pie al contrastar lo declarado en el informe anual con los registros "
+     "Qué sostiene el contraste entre lo declarado en el informe anual y los registros "
      "presupuestarios y de contratación."),
     ("10", "Servicios e infraestructura",
      "Dónde se concentra la inversión y dónde persiste el déficit de cobertura, leído "
@@ -827,27 +828,35 @@ def dominios() -> str:
 # exigir · documentar · armar · incidir. Antes eran cuatro y describían lo que la
 # ciudadanía APORTA al sistema; ahora describen lo que la ciudadanía PUEDE HACER
 # con él, que es de lo que trata esta sección.
+# Nomenclatura de administración pública, no de producto. Los nombres anteriores
+# —«leer el propio territorio», «armar el expediente»— describían bien la función
+# y desentonaban con el aparato constitucional y legal que sostiene el resto:
+# «control social», «exigibilidad» y «participación» son figuras del ordenamiento
+# ecuatoriano, no metáforas (Javo · 2026-08-10).
 _CAPACIDADES = [
-    ("01", "Leer el propio territorio",
-     "Los doce dominios sin jerga: qué dice cada cifra, de qué documento sale y qué norma la "
-     "respalda. El objetivo no es depender de QUIRA para entender al Estado — es lo contrario."),
-    ("02", "Comprobar de dónde sale",
-     "Toda afirmación llega hasta su documento de origen. Nadie tiene que creerle a QUIRA: "
-     "puede ir a verificarlo, y por eso la observación es replicable por cualquiera."),
-    ("03", "Exigir lo que falta",
-     "El sistema redacta la solicitud de acceso con su fundamento legal, corre el plazo y "
-     "prepara el escalón siguiente. No hace falta conocer la máquina administrativa para "
-     "empezar a usarla."),
-    ("04", "Documentar el territorio",
-     "Actas, contratos, facturas y fotografías de obra entran con su procedencia registrada. "
-     "No sustituyen a la evidencia institucional: se contrastan con ella."),
-    ("05", "Armar el expediente",
-     "Una observación suelta pesa poco; un expediente trazable pesa distinto. QUIRA relaciona "
-     "documento, hecho, norma, territorio y respuesta institucional en una sola pieza."),
-    ("06", "Seguir e incidir",
-     "Qué se pidió, qué respondió la entidad, qué se comprometió y qué cambió en el territorio. "
-     "Es la capacidad que el proyecto reconoce y aún no ha construido — y lo dice en vez de "
-     "anunciarla."),
+    ("01", "Acceso y comprensión",
+     "La información territorial se presenta de forma inteligible: qué expresa cada indicador, "
+     "de qué documento proviene y qué norma lo sustenta. La finalidad no es crear dependencia "
+     "de QUIRA para interpretar al Estado, sino la contraria."),
+    ("02", "Verificación y trazabilidad",
+     "Toda afirmación puede contrastarse con su fuente documental, su fecha y la regla "
+     "metodológica que la trata. La observación no pide confianza: admite comprobación por "
+     "terceros."),
+    ("03", "Exigibilidad de información",
+     "Cuando la evidencia necesaria no está disponible, el sistema identifica el requerimiento, "
+     "su fundamento jurídico y el plazo aplicable, y acompaña el seguimiento de la respuesta "
+     "institucional."),
+    ("04", "Evidencia territorial",
+     "Documentación, registros y otros elementos disponibles en el territorio se incorporan al "
+     "proceso de verificación con su procedencia registrada. No reemplazan la evidencia "
+     "institucional: se contrastan con ella."),
+    ("05", "Expediente de control social",
+     "Las evidencias relacionadas se estructuran en un expediente trazable que vincula hechos, "
+     "documentos, obligaciones normativas, territorio y respuestas institucionales."),
+    ("06", "Seguimiento e incidencia",
+     "Qué se requirió, qué respondió la entidad, qué compromiso se asumió y qué se modificó en "
+     "el territorio. Capacidad reconocida en la arquitectura y aún no implementada — se declara "
+     "en lugar de anunciarse."),
 ]
 
 
@@ -862,24 +871,31 @@ def ciudadana() -> str:
     # el municipio incumpla. Es al revés. La capacidad de conocer, comprobar y
     # exigir vale igual cuando el municipio publica todo; lo que cambia entonces
     # es qué se puede hacer con lo publicado, no si hay algo que hacer.
-    return _sec("Ciudadanía", "Del derecho a saber a la capacidad de incidir",
-        '<p class="q-p">QUIRA no trata a la ciudadanía como destinataria de información ni como '
-        'fuente de repuesto cuando el Estado no publica. La incorpora como <b>actor de control '
-        'social sobre la gestión pública territorial</b> — y esa es su dimensión CivicTech: no '
-        'consiste en dejar subir documentos, sino en <b>convertir información pública verificable '
-        'en capacidad para conocer, comprobar, exigir y hacer seguimiento</b>.</p>'
-        '<p class="q-p">La asimetría que corrige es concreta: hoy, quien administra el territorio '
-        'sabe lo que hizo, y quien lo habita depende de que se lo cuenten. <b>QUIRA no sustituye '
-        'la acción ciudadana ni decide qué debe exigirse: le da evidencia para actuar.</b></p>'
+    return _sec("Control social",
+        "Participación ciudadana, control social e incidencia territorial",
+        '<p class="q-p">La gestión pública territorial no se verifica únicamente desde las '
+        'instituciones: también puede observarse, contrastarse y documentarse <b>desde el '
+        'territorio</b>. QUIRA incorpora una <b>dimensión CivicTech</b> orientada a fortalecer '
+        'las capacidades ciudadanas de acceso, comprensión, verificación, control social y '
+        'seguimiento de la gestión pública mediante evidencia trazable.</p>'
+        '<p class="q-p">Esa dimensión no consiste en habilitar la carga de documentos. Consiste '
+        'en <b>reducir la asimetría de información</b> entre quienes administran el territorio y '
+        'quienes tienen derecho a conocerlo: la ciudadanía no es únicamente destinataria de '
+        'información ni fuente auxiliar de documentos — es <b>un actor del control social sobre '
+        'el territorio</b>, figura reconocida por el ordenamiento ecuatoriano.</p>'
         f'<div class="q-doms">{cards}</div>'
-        '<p class="q-p" style="margin-top:16px">Y hay un efecto directo para quien aporta. Un '
-        'dominio se enciende cuando entra evidencia, por cualquiera de las tres vías; donde el '
-        'municipio no publicó, esa evidencia solo puede venir del territorio. <b>Aportarla no es '
-        'ayudar al sistema: es poder ver el propio cantón</b> cuando nadie más lo va a encender.</p>'
-        '<p class="q-cap">Con una regla que conviene decir en voz alta: <b>que la ciudadanía llene '
-        'el hueco no absuelve al municipio de haberlo dejado</b>. La obligación de publicar es de '
-        'la entidad, no de sus habitantes. El dominio se enciende; el incumplimiento queda '
-        'registrado igual.</p>')
+        '<p class="q-p" style="margin-top:16px">La incorporación de evidencia ciudadana <b>no '
+        'traslada a la ciudadanía las obligaciones de transparencia de la entidad pública</b>. '
+        'Cuando un aporte suple una publicación ausente, el sistema registra ambos hechos por '
+        'separado: la evidencia incorporada y la publicación institucional que no estuvo '
+        'disponible. La finalidad no es trasladar a la ciudadanía la responsabilidad de producir '
+        'información pública, sino <b>ampliar su capacidad de conocer y verificar la gestión de '
+        'su propio territorio</b>.</p>'
+        '<p class="q-cap">Y una precisión que ordena todo lo anterior: <b>la evidencia aportada '
+        'no adquiere validez por su origen, sino por su capacidad de ser verificada y contrastada '
+        'con otras fuentes</b>. QUIRA no sustituye la participación ciudadana ni ejerce control '
+        'social en su nombre: provee la infraestructura de conocimiento verificable que permite '
+        'ejercerlos con mayor información, trazabilidad y capacidad de seguimiento.</p>')
 
 
 # ══════════════════════════ ECOSISTEMA ══════════════════════════
