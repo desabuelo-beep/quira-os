@@ -275,10 +275,15 @@ CSS = """<style>
 @media(max-width:900px){.q-node:not(:last-child)::after{display:none}}
 
 /* ═══ PRODUCTOS ═══ */
-.q-prods{display:flex;flex-direction:column;gap:10px;margin-top:17px}
+/* También en hileras de tres: cinco tarjetas apiladas eran cinco pantallas de
+   texto seguidas. En rejilla se comparan de un vistazo, que es justo lo que se
+   quiere de una familia de productos. */
+.q-prods{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:17px}
 .q-prod{border:1px solid var(--bd);border-left:3px solid var(--pc,var(--coral));border-radius:11px;
-  padding:19px 23px;background:var(--sf);transition:transform .25s,background .25s}
-.q-prod:hover{background:rgba(255,255,255,.85);transform:translateX(3px)}
+  padding:18px 20px;background:var(--sf);transition:transform .25s,background .25s;
+  display:flex;flex-direction:column}
+.q-prod:hover{background:rgba(255,255,255,.85);transform:translateY(-2px)}
+@media(max-width:1000px){.q-prods{grid-template-columns:1fr 1fr}}
 .q-prod-h{display:flex;align-items:baseline;justify-content:space-between;gap:14px;
   flex-wrap:wrap;margin-bottom:3px}
 .q-prod-n{font:600 19px/1.3 'Fraunces',Georgia,serif;color:var(--tx)}
@@ -299,12 +304,17 @@ CSS = """<style>
 .q-duo-c{border:1px solid var(--bd);border-radius:11px;padding:18px 21px;background:var(--sf)}
 .q-duo-t{font:700 13px/1.3 'Inter',sans-serif;margin-bottom:6px}
 .q-duo-d{font:400 13px/1.68 'Inter',sans-serif;color:var(--tx2)}
-/* ═══ DOMINIOS ═══ */
-.q-doms{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:17px}
-.q-dom{border:1px solid var(--bd);border-radius:10px;padding:14px 17px;background:var(--sf)}
+/* ═══ DOMINIOS ═══ Hileras de tres (Javo · 2026-08-10, viendo la propuesta): doce
+   en dos columnas eran seis filas de scroll; en tres son cuatro, y la retícula
+   se lee como una tabla de contenidos en vez de como una lista larga. */
+.q-doms{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:17px}
+.q-dom{border:1px solid var(--bd);border-radius:10px;padding:14px 16px;background:var(--sf);
+  display:flex;flex-direction:column;transition:background .22s,border-color .22s}
+.q-dom:hover{background:rgba(255,255,255,.8);border-color:rgba(193,57,43,.24)}
 .q-dom-n{font:700 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:var(--tx3)}
-.q-dom-t{font:600 14px/1.35 'Inter',sans-serif;color:var(--tx);margin:6px 0 5px}
-.q-dom-d{font:400 12.6px/1.62 'Inter',sans-serif;color:var(--tx2)}
+.q-dom-t{font:600 13.5px/1.32 'Inter',sans-serif;color:var(--tx);margin:6px 0 5px}
+.q-dom-d{font:400 12.2px/1.58 'Inter',sans-serif;color:var(--tx2)}
+@media(max-width:1000px){.q-doms{grid-template-columns:1fr 1fr}}
 
 .q-cierre{font:400 17.5px/1.6 'Fraunces',Georgia,serif;color:var(--tx);font-style:italic;
   text-align:center;margin-top:19px;padding-top:17px;border-top:1px solid var(--bd)}
@@ -430,7 +440,8 @@ button.q-ops:hover,.q-ops-w button:hover{opacity:.85 !important;transform:none !
 @media(max-width:720px){
   .q-name{font-size:38px;letter-spacing:.14em}.q-h2{font-size:24px}
   .q-tag{font-size:14.5px}.q-p{font-size:14.5px}.q-quote{font-size:17px}
-  .q-prod-n{font-size:17px}.q-duo,.q-trust,.q-linea-g,.q-doms{grid-template-columns:1fr}
+  .q-prod-n{font-size:17px}
+  .q-duo,.q-trust,.q-linea-g,.q-doms,.q-prods{grid-template-columns:1fr}
   .q-hero{padding:42px 18px 20px}.q-sec{margin-top:34px}
 }
 </style>
@@ -547,8 +558,8 @@ def que_es() -> str:
         f'<div class="q-nos">{nos}</div>'
         '<p class="q-p">La diferencia con una auditoría no es de alcance: es de pregunta. Una '
         'auditoría pregunta <i>¿cumplió?</i> y termina en un dictamen. QUIRA pregunta <b>¿qué '
-        'puede demostrarse sobre lo que ocurrió?</b> y termina en evidencia disponible para que '
-        'otros decidan. No mide trámites ni obras aisladas: recorre el <b>ciclo completo de la '
+        'puede demostrarse sobre lo que ocurrió?</b> y transforma esa evidencia en conocimiento '
+        'verificable para que otros decidan. No mide trámites ni obras aisladas: recorre el <b>ciclo completo de la '
         'gestión pública</b> —del mandato electoral al impacto territorial— y muestra dónde se '
         'interrumpe la trazabilidad.</p>'
         # Declaración de objeto. Faltaba, y es lo que distingue una infraestructura
@@ -858,8 +869,10 @@ _PRODUCTOS = [
      "disponibilidad documental y su ciclo administrativo. Agentes de inteligencia artificial "
      "revisan los sistemas nacionales de información —transparencia activa, contratación "
      "pública, rendición de cuentas, portales institucionales— y <b>toda captura se valida "
-     "antes de publicarse</b>. Cuando un dato no está publicado, el sistema arma el "
-     "<b>oficio que obliga a entregarlo</b> y lleva la cuenta del plazo. Y cuando la evidencia "
+     # Decía «el oficio que obliga a entregarlo» — contradecía, en la misma
+     # página, la corrección de `como_funciona`: quien obliga es la ley.
+     "antes de publicarse</b>. Cuando un dato no está publicado, el sistema <b>prepara la "
+     "solicitud de acceso</b> con su fundamento legal y lleva la cuenta del plazo. Y cuando la evidencia "
      "está en el territorio y no en un portal, la aportan quienes la tienen: personas, "
      "organizaciones comunitarias y academia suben actas, informes y fotografías de obra, y el "
      "sistema explica qué acredita cada documento y qué norma lo respalda. <b>No reemplaza al "
