@@ -49,27 +49,61 @@ Esto responde con precisión a *«toda la lógica matemática debe ser código»
 proceso, sí; las fórmulas, no.** Portarlas sería construir el motor paralelo que CLAUDE.md
 prohíbe expresamente, y destruiría justo lo que se quiere proteger — un único cálculo.
 
-## 3 · Son DOS motores deterministas, no uno
+## 3 · Los motores, y dónde está la autoridad de cálculo
 
-Precisión de Javo (2026-08-11): *«no solo por el Gold Master, sino por todos los otros motores,
-por la BRN y su corpus normativo»*. Es correcto, y el sistema ya los tiene:
+Javo pidió revisar el cableado (2026-08-11) —*«creo que QUIRA tiene 5 motores, pero
+determinísticos 2»*— y la revisión encontró **un error de este mismo ADR**, que se corrige aquí
+antes de sellarlo.
 
-| Motor | Qué determina | Soporte |
-|---|---|---|
-| **Gold Master** | cuánto vale — índices ICPI · TGI · IED · IGP · IOC · IET · PSG | Excel canónico `_TGI` |
-| **BRN** | si la norma se cumple — CNO + RO compiladas, con SHA por eslabón | `docs/brn/*.yaml` + compilador + runtime |
+**Su recuento era correcto.** `ADR-031 §3` declara **cinco motores analíticos tipados**, y
+`ADR-032 §2` confirma que Biografía no es un sexto: es de síntesis.
 
-**Y se encadenan.** `MATRIZ_CABLEADO_CANONICO` ya declara la secuencia por silo: cada fuente
-*verifica* algo y *produce* una variable —`V_LOTAIP`, `V_SERCOP`, `V_eSIGEF`, `T_i`, `SAT-0`—.
-Esa es la cadena real:
+| Motor | Lee de | Responde | Naturaleza |
+|---|---|---|---|
+| **Matemático** | Gold Master | los números | runtime · **supremo** |
+| **Grafos** | Neo4j | las relaciones | runtime |
+| Causal | econometría | qué causó un resultado | laboratorio → promueve |
+| Descubrimiento | K-Means · HDBSCAN · UMAP | patrones y anomalías | **laboratorio, NO runtime** |
+| Prospectivo | simulación | qué pasaría si | laboratorio → runtime |
+
+**Los dos de runtime son Matemático y Grafos** — los que producen hechos, no estimaciones ni
+escenarios. Los otros tres viven en el laboratorio y sus hallazgos vuelven al canon por promoción,
+no por conexión directa.
+
+### 3.1 · La BRN no es un motor de cálculo, y el borrador de este ADR lo dijo mal
+
+La primera redacción afirmaba que hay «dos motores deterministas, Gold Master y BRN», y dibujaba
+esta cadena:
 
 ```
-evidencia → BRN (¿cumple la norma?) → variable canónica V_* → Gold Master (¿cuánto vale?) → índice
+evidencia → BRN (¿cumple?) → variable V_* → Gold Master → índice
 ```
 
-La BRN no es documentación: es el motor que convierte un documento en un hecho normativo
-evaluable. Que su resultado alimente al Gold Master es lo que hace que un índice tenga fundamento
-jurídico y no solo aritmético.
+**Eso viola el límite duro de `ADR-038`**, que es explícito:
+
+> «La BRN **traza** el motor, **NO lo alimenta** (Regla 1 · ADR-023). […] del motor hacia la BRN
+> para explicar; nunca de la BRN hacia el motor para dictar.»
+
+Y `ADR-035` cierra la cuestión en una línea: *«la ley manda, la BRN organiza, el Gold Master
+calcula, QUIRA explica. **Un solo motor.**»* `ADR-038 §140` añade que una BRN que calculara
+métricas *sería* el motor de cálculo — que es precisamente lo que no puede haber dos veces.
+
+**La cadena correcta invierte esa flecha:**
+
+```
+evidencia → validación → variable canónica → Gold Master → índice
+                                                  │
+                                                  └──→ BRN: qué norma lo fundamenta
+```
+
+La BRN es **infraestructura de conocimiento jurídico**: da fundamento normativo a lo que el motor
+calcula, con SHA por eslabón. No produce la cifra ni decide su valor. Que ese fundamento exista es
+lo que separa un índice con base legal de uno meramente aritmético — pero el fundamento **explica**
+el número, no lo dicta.
+
+Así que la respuesta a *«todo cableado y ligado al motor determinístico»* es: sí, **y hacia un
+solo motor de cálculo**. Cablear la BRN *hacia* el Gold Master habría creado la segunda verdad que
+todo este canon existe para impedir.
 
 ## 4 · La frontera de escritura canónica
 
@@ -133,8 +167,15 @@ no la produce, el determinismo se rompió y el sistema debe decirlo** en vez de 
 
 Si un recálculo modifica una cifra ya publicada, **el snapshot anterior no se reemplaza**: se
 versiona y la corrección se declara con su motivo. Enlaza con la exigencia de Javo (2026-08-10) de
-no perder la serie mensual, y añade la razón de fondo: **un sistema que corrige en silencio no es
-auditable**, y la auditabilidad es lo único que QUIRA vende.
+no perder la serie mensual, y la razón de fondo es esta: **un sistema que corrige en silencio
+rompe la trazabilidad**, y sin trazabilidad ninguna afirmación puede comprobarse hasta su origen —
+que es la condición de todo lo que QUIRA produce, no una de sus funciones.
+
+> **Corrección del propio ADR (Javo · 2026-08-11).** La primera redacción decía «la auditabilidad
+> es lo único que QUIRA vende». Es falso y reduce el proyecto a lo que dejó de ser hace meses: una
+> auditoría comprueba cumplimiento y emite dictamen; QUIRA construye conocimiento verificable
+> sobre el territorio, y la trazabilidad es lo que lo sostiene. **La verificabilidad es la
+> condición del producto, no el producto.**
 
 ## 8 · La Consola ordena; no calcula
 
