@@ -275,15 +275,14 @@ CSS = """<style>
 @media(max-width:900px){.q-node:not(:last-child)::after{display:none}}
 
 /* ═══ PRODUCTOS ═══ */
-/* También en hileras de tres: cinco tarjetas apiladas eran cinco pantallas de
-   texto seguidas. En rejilla se comparan de un vistazo, que es justo lo que se
-   quiere de una familia de productos. */
-.q-prods{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:17px}
+/* La familia QUIRA vuelve a columna (Javo · 2026-08-10). Se probó en rejilla de
+   tres y quedó exagerada: estos textos son largos —cada producto explica a quién
+   sirve y qué entrega— y en columnas estrechas se convertían en bloques altos y
+   apretados. La rejilla sirve a las tarjetas breves de dominio, no aquí. */
+.q-prods{display:flex;flex-direction:column;gap:10px;margin-top:17px}
 .q-prod{border:1px solid var(--bd);border-left:3px solid var(--pc,var(--coral));border-radius:11px;
-  padding:18px 20px;background:var(--sf);transition:transform .25s,background .25s;
-  display:flex;flex-direction:column}
-.q-prod:hover{background:rgba(255,255,255,.85);transform:translateY(-2px)}
-@media(max-width:1000px){.q-prods{grid-template-columns:1fr 1fr}}
+  padding:19px 23px;background:var(--sf);transition:transform .25s,background .25s}
+.q-prod:hover{background:rgba(255,255,255,.85);transform:translateX(3px)}
 .q-prod-h{display:flex;align-items:baseline;justify-content:space-between;gap:14px;
   flex-wrap:wrap;margin-bottom:3px}
 .q-prod-n{font:600 19px/1.3 'Fraunces',Georgia,serif;color:var(--tx)}
@@ -441,7 +440,7 @@ button.q-ops:hover,.q-ops-w button:hover{opacity:.85 !important;transform:none !
   .q-name{font-size:38px;letter-spacing:.14em}.q-h2{font-size:24px}
   .q-tag{font-size:14.5px}.q-p{font-size:14.5px}.q-quote{font-size:17px}
   .q-prod-n{font-size:17px}
-  .q-duo,.q-trust,.q-linea-g,.q-doms,.q-prods{grid-template-columns:1fr}
+  .q-duo,.q-trust,.q-linea-g,.q-doms{grid-template-columns:1fr}
   .q-hero{padding:42px 18px 20px}.q-sec{margin-top:34px}
 }
 </style>
@@ -707,16 +706,17 @@ def como_funciona() -> str:
     # ADR-045: eran dos «Entradas» —Observatorio y Ciudadana— y un «Núcleo» que
     # publicaba el nombre interno del Centro. Ahora son las TRES VÍAS DE
     # ADQUISICIÓN, que es lo que de verdad se distingue, y una sola superficie.
+    # Eran CINCO nodos bajo un título que dice «tres vías» (Javo · 2026-08-10).
+    # Los dos últimos —«Proceso» y «Superficie»— no son vías de entrada: son lo
+    # que ocurre DESPUÉS, y ponerlos en la misma fila los presentaba como si
+    # fueran dos modos más de adquirir evidencia. El contraste y el Observatorio
+    # se explican debajo, que es donde corresponde.
     n = [("var(--pizarra)", "Captura", "Sistemas públicos",
           "Revisa de forma progresiva los portales oficiales de los 222 municipios."),
          ("var(--pizarra)", "Solicitud", "Oficio de acceso",
           "Cuando el dato no está publicado, se pide por escrito y la entidad responde firmando."),
          ("var(--pizarra)", "Aporte", "Evidencia del territorio",
-          "Actas, facturas y fotografías que la ciudadanía entrega y el sistema corrobora."),
-         ("var(--coral)", "Proceso", "Contraste contra la norma",
-          "Cada pieza se confronta con la ley y con las demás, y se reconstruye la cadena."),
-         ("var(--tx)", "Superficie", "QUIRA Observatorio",
-          "Donde la evidencia se vuelve conocimiento consultable. Único: todo converge aquí.")]
+          "Actas, facturas y fotografías que la ciudadanía entrega y el sistema corrobora.")]
     nodos = "".join(
         f'<div class="q-node" style="--nc:{c}"><span class="q-node-k">{k}</span>'
         f'<div class="q-node-t">{t}</div><div class="q-node-d">{d}</div></div>'
@@ -732,6 +732,11 @@ def como_funciona() -> str:
         'territorio ya tiene en la mano. Cada pieza conserva el registro de por dónde entró, y '
         'todas alimentan el mismo cuerpo de conocimiento — no bases separadas que después se '
         'contradicen.</p>'
+        # Lo que antes eran dos cajones más de la fila, en su sitio: no son vías,
+        # son lo que ocurre con lo que entra por ellas.
+        '<p class="q-p">Entre, cada pieza se <b>confronta con la norma y con las demás</b>, y se '
+        'reconstruye la cadena. Lo que sobrevive a ese contraste es lo que puede consultarse en '
+        'el <b>Observatorio</b> — la superficie pública donde todo converge.</p>'
         # ADR-046 §1: el techo lo fija el documento, no la vía. Antes esta misma
         # frase decía que de la vía «depende cuánto puede afirmarse», que es
         # justamente el error que el ADR corrigió.
