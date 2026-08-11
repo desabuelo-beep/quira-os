@@ -125,13 +125,34 @@ documental se interrumpe aunque la articulación jurídica exista.**
 Un aporte externo propuso respaldar el caso con **COESCOP Art. 274** y con **COPLAFIP Arts. 115 y
 116** como fundamento de «modificaciones de inclusión en el PAI». Verificado contra corpus:
 
-- **COESCOP no está ingerida.** Sin SHA no se cita (Regla 3), por correcta que parezca.
+- **COESCOP 274 — la referencia era correcta, pero la norma no estaba ingerida.** Sin SHA no se
+  cita (Regla 3). **Subsanado el 2026-08-11 por orden de Javo:** COESCOP entra al corpus completa
+  y la cita queda disponible (ver abajo).
 - **COPLAFIP 115 es *Certificación Presupuestaria* y 116 es *Establecimiento de Compromisos***.
-  Ninguno regula modificaciones al PAI. Citarlos así habría sido desmontable en un minuto por
-  cualquier técnico del GAD.
+  Ninguno regula modificaciones al PAI. **Esa cita sigue sin sostenerse** — citarla así habría
+  sido desmontable en un minuto por cualquier técnico del GAD.
 
-Se registran aquí, no para señalar a nadie, sino porque **este expediente debe mostrar también qué
-fundamento se descartó y por qué**.
+Se registran ambas, no para señalar a nadie, sino porque **este expediente debe mostrar también
+qué fundamento se descartó y por qué** — y porque la distinción importa: una referencia era buena
+y le faltaba el respaldo; la otra no era buena.
+
+### COESCOP Art. 274 — ya verificable
+
+`SHA256 28610b4860ab0bdbb167ebbff092513f87944833e0eb5435fc5401975a4f3e8b`
+
+> «**Naturaleza.**— Los Cuerpos de Bomberos son entidades de derecho público **adscritas a los
+> Gobiernos Autónomos Descentralizados municipales o metropolitanos** […] Contarán con
+> **patrimonio y fondos propios, personalidad jurídica, autonomía administrativa, financiera,
+> presupuestaria y operativa**.»
+
+**Refuerza el hallazgo por partida doble.** Con COOTAD 140 y COESCOP 274 juntos queda establecido
+que Bomberos es *adscrita del GAD* **y** tiene *patrimonio y fondos propios* por mandato de dos
+códigos orgánicos. Es decir: **la autonomía presupuestaria no admite discusión, y la pertenencia
+al holding tampoco.** Lo que sigue sin existir es el vínculo con una meta del PDOT.
+
+Eso cierra la puerta a las dos lecturas fáciles: ni «Bomberos actúa por fuera del GAD» ni «debería
+ejecutar dentro del presupuesto municipal». Ninguna es cierta, y ambas habrían desviado el
+hallazgo hacia una acusación que la evidencia no sostiene.
 
 ## Lo que NO se concluye
 

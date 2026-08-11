@@ -229,6 +229,26 @@ MANIFEST: list[dict] = [
         "circuit_refs":     ["C01","C02","C03"],
     },
     {
+        # Ingresa por OBS-024 (2026-08-11): el caso de Bomberos exigía citar COESCOP
+        # y no estaba en el corpus. Sin SHA no se cita (Regla 3), así que el
+        # hallazgo se sostuvo solo con COOTAD 140 mientras tanto. Javo lo mandó
+        # ingerir para cerrar esa dependencia — es la norma que rige a los cuerpos
+        # de bomberos como entidades de seguridad ciudadana.
+        "archivo":          "COESCOP.docx",
+        "sigla":            "COESCOP",
+        "nombre":           "Código Orgánico de Entidades de Seguridad Ciudadana y Orden Público",
+        "jerarquia":        1,
+        "milestone":        "F0.3",
+        "tipo":             "ley_organica",
+        "dominios":         ["Dom04","Dom06","Dom10","Dom12"],
+        "vigente":          True,
+        "document_class":   "NORMA",
+        "authority_level":  95,
+        "source_entity":    "ASAMBLEA_NAC",
+        "canton_id":        None,
+        "circuit_refs":     ["C01","C02"],
+    },
+    {
         "archivo":          "COOTAD PARA LA SOSTENIBILIDAD Y EFICIENCIA 2026.docx",
         "sigla":            "COOTAD-2026",
         "nombre":           "Reforma al COOTAD — Ley Orgánica para la Sostenibilidad y Eficiencia 2026",

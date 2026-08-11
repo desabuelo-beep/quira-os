@@ -740,7 +740,7 @@ componentes:
     kind: observation
     level: 2
     path: docs/observations/OBS-024_Bomberos_Ejecuta_Sin_Meta_Asignada.md
-    hash: 1d8f4a5447c2e93a
+    hash: 70dd07d9be3ced6b
     authority_declared: true
     parent: ADR-047
   - id: DOMAIN_CATALOG-catalogo_d01_v1.0.0
