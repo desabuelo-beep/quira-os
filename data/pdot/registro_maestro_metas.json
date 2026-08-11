@@ -1,0 +1,606 @@
+{
+ "_meta": {
+  "generado": "2026-08-11",
+  "fuente_metas": "Plan Plurianual PDOT 2023-2027 GAD Montecristi.xlsx · NO OFICIAL · sha256 09a2aacc…",
+  "fuente_verificacion": "PDOT Montecristi 2023-2027 Bicentenario.docx · OFICIAL",
+  "metodo": "cada meta del Excel se busca normalizada en el texto completo del PDOT (2.051.929 car.)",
+  "nota": "Bomberos NO figura como responsable de ninguna meta — ver OBS-024",
+  "total": 66
+ },
+ "metas": [
+  {
+   "id": "M001",
+   "meta": "Incrementar la recuperación de taludes en etapa de cierre para la recu",
+   "sistema": "1. FIS AM",
+   "responsable": "Planificación/ Espacios públicos",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M002",
+   "meta": "Aumentar a 17.32 m²/hab el IVU  hasta el 2027",
+   "sistema": "1. FIS AM",
+   "responsable": "Dirección de Ambiente",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "solo_contraste",
+   "detalle": "sin coincidencia literal — revisar contra la matriz impresa"
+  },
+  {
+   "id": "M003",
+   "meta": "Formular cuatro planes para la acción contra el cambio climático hasta",
+   "sistema": "1. FIS AM",
+   "responsable": "Dirección de Ambiente",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M004",
+   "meta": "Mantener el número de 680 beneficiarios de las campañas de asistencia ",
+   "sistema": "1. FIS AM",
+   "responsable": "Dirección de Ambiente",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M005",
+   "meta": "Mantener el número de 124 beneficiarios de las campañas de esterilizac",
+   "sistema": "1. FIS AM",
+   "responsable": "Dirección de Ambiente",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M006",
+   "meta": "Reducir un 10% la infraestructura susceptibles",
+   "sistema": "1. FIS AM",
+   "responsable": "Planificación/ Unidad de gestión de riesgos",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "parcial",
+   "detalle": "prefijo de 35 caracteres coincide; difiere en redacción o cifras"
+  },
+  {
+   "id": "M007",
+   "meta": "Incrementar anualmente el porcentaje de basura gestionada de 20.118,96",
+   "sistema": "1. FIS AM",
+   "responsable": "Empresa de Aseo",
+   "tipo_ejecutor": "empresa_publica",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M008",
+   "meta": "Incrementar anualmente el porcentaje de basura reciclada  de 331 tn/añ",
+   "sistema": "1. FIS AM",
+   "responsable": "Empresa de Aseo",
+   "tipo_ejecutor": "empresa_publica",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M009",
+   "meta": "Contar con capacidad para disposición final de desechos sólidos hasta ",
+   "sistema": "1. FIS AM",
+   "responsable": "Empresa de Aseo",
+   "tipo_ejecutor": "empresa_publica",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M010",
+   "meta": "Aumentar del 39.25% al 42.38% la cobertura de agua potable en el cantó",
+   "sistema": "2. ASEN",
+   "responsable": "Planificación/ Dirección de agua potable y sanemamiento",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M011",
+   "meta": "Mejorar el índice de la calidad del agua al 100% por cada número de pu",
+   "sistema": "2. ASEN",
+   "responsable": "Planificación/ Dirección de agua potable y sanemamiento",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "solo_contraste",
+   "detalle": "sin coincidencia literal — revisar contra la matriz impresa"
+  },
+  {
+   "id": "M012",
+   "meta": "Mejorar el índice de calidad de la infraestructura de agua potable BUE",
+   "sistema": "2. ASEN",
+   "responsable": "Planificación/ Dirección de agua potable y sanemamiento",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M013",
+   "meta": "Mejorar al 10% el índice de continuidad del servicio de agua potable A",
+   "sistema": "2. ASEN",
+   "responsable": "Planificación/ Dirección de agua potable y sanemamiento",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M014",
+   "meta": "Aumentar del 19.77% a 24.32% la cobertura de alcantarillado sanitario ",
+   "sistema": "2. ASEN",
+   "responsable": "Planificación/ Dirección de agua potable y sanemamiento",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "solo_contraste",
+   "detalle": "sin coincidencia literal — revisar contra la matriz impresa"
+  },
+  {
+   "id": "M015",
+   "meta": "Aumentar hasta el 2027 el número de plantas y estaciones de bombeo ope",
+   "sistema": "2. ASEN",
+   "responsable": "Planificación/ Dirección de agua potable y sanemamiento",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M016",
+   "meta": "Mejorar el índice de calidad de la infraestructura sanitaria BUENO de ",
+   "sistema": "2. ASEN",
+   "responsable": "Planificación/ Dirección de agua potable y sanemamiento",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "parcial",
+   "detalle": "prefijo de 45 caracteres coincide; difiere en redacción o cifras"
+  },
+  {
+   "id": "M017",
+   "meta": "Aumentar la cobertura de redes pluviales de 0.97% a 2% hasta el año 20",
+   "sistema": "2. ASEN",
+   "responsable": "Planificación/ Dirección de agua potable y sanemamiento",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "parcial",
+   "detalle": "prefijo de 35 caracteres coincide; difiere en redacción o cifras"
+  },
+  {
+   "id": "M018",
+   "meta": "Aumentar a 17.32 m²/hab el IVU  hasta el 2027",
+   "sistema": "2. ASEN",
+   "responsable": "Planificación/ Unidad de espacios públicos",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "solo_contraste",
+   "detalle": "sin coincidencia literal — revisar contra la matriz impresa"
+  },
+  {
+   "id": "M019",
+   "meta": "Aumentar a 10.73 m²/hab el índice de equipamiento del Centro Urbano Pr",
+   "sistema": "2. ASEN",
+   "responsable": "Planificación/ Unidad de espacios públicos",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M020",
+   "meta": "Construir 10km hasta el 2027 de 93.65 km de vías en proyección del CUP",
+   "sistema": "2. ASEN",
+   "responsable": "Planificación/ Obras públicas",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M021",
+   "meta": "Incrementar 4 km de vías con tratamiento (aceras y bordillos) del CUP ",
+   "sistema": "2. ASEN",
+   "responsable": "Planificación/ Obras públicas",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M022",
+   "meta": "Incrementar 0.4 km de  vías con tratamiento (aceras y bordillos) en co",
+   "sistema": "2. ASEN",
+   "responsable": "Planificación/ Obras públicas",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M023",
+   "meta": "Incrementar en el CUP 23.77 km de vías con tratamiento medio hasta el ",
+   "sistema": "2. ASEN",
+   "responsable": "Planificación/ Obras públicas",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M024",
+   "meta": "Incrementar en las comunidades rurales 17.56 km de vías con tratamient",
+   "sistema": "2. ASEN",
+   "responsable": "Planificación/ Obras públicas",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M025",
+   "meta": "Incrementar en el CUP el mantenimiento de 43.8 km de vías  hasta el añ",
+   "sistema": "2. ASEN",
+   "responsable": "Planificación/ Obras públicas",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M026",
+   "meta": "Incrementar en las comunidades rurales el mantenimiento de 57.22 km de",
+   "sistema": "2. ASEN",
+   "responsable": "Planificación/ Obras públicas",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M027",
+   "meta": "Incrementar de 1.62 km a 2.62 km de ciclovía al 2027",
+   "sistema": "2. ASEN",
+   "responsable": "Planificación/ Obras públicas",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M028",
+   "meta": "Incrementar la superficie a 10 000 m2 de señalización en vías urbanas ",
+   "sistema": "2. ASEN",
+   "responsable": "Planificación/ Dirección de Tránsito, Transporte y Seguridad Vial",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M029",
+   "meta": "Incrementar a 8 el número de las intersecciones semafóricas hasta el 2",
+   "sistema": "2. ASEN",
+   "responsable": "Planificación/ Dirección de Tránsito, Transporte y Seguridad Vial",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M030",
+   "meta": "Incrementar las revisiones técnicas vehiculares de 4000 en el año 2023",
+   "sistema": "2. ASEN",
+   "responsable": "Planificación/ Dirección de Tránsito, Transporte y Seguridad Vial",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M031",
+   "meta": "Mantener anualmente y hasta el 2027 el servicio de calidad del transpo",
+   "sistema": "2. ASEN",
+   "responsable": "Planificación/ Dirección de Tránsito, Transporte y Seguridad Vial",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M032",
+   "meta": "Mantener anualmente a  40 Instituciones educativas en el programa de E",
+   "sistema": "2. ASEN",
+   "responsable": "Planificación/ Dirección de Tránsito, Transporte y Seguridad Vial",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M033",
+   "meta": "Reducir el déficit habitacional cualitativo de 50 viviendas de interés",
+   "sistema": "2. ASEN",
+   "responsable": "Planificación/ Empresa de Vivienda",
+   "tipo_ejecutor": "empresa_publica",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M034",
+   "meta": "Incrementar anualmente el porcentaje de cobertura de recolección del 9",
+   "sistema": "2. ASEN",
+   "responsable": "Planificación/ Empresa de Aseo",
+   "tipo_ejecutor": "empresa_publica",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M035",
+   "meta": "Incrementar los kilometros de barrios por día de 77.83 km/día en el 20",
+   "sistema": "2. ASEN",
+   "responsable": "Planificación/ Empresa de Aseo",
+   "tipo_ejecutor": "empresa_publica",
+   "verificacion": "solo_contraste",
+   "detalle": "sin coincidencia literal — revisar contra la matriz impresa"
+  },
+  {
+   "id": "M036",
+   "meta": "Incrementar el 10% anualmente de la población atendida en los Servicio",
+   "sistema": "3.SOC",
+   "responsable": "Patronato de Amparo Social",
+   "tipo_ejecutor": "adscrita",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M037",
+   "meta": "Incrementar la población atendida en salud preventiva de 320 en el año",
+   "sistema": "3.SOC",
+   "responsable": "Patronato de Amparo Social",
+   "tipo_ejecutor": "adscrita",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M038",
+   "meta": "Incrementar el número de beneficiarios que acceden a puntos digitales ",
+   "sistema": "3.SOC",
+   "responsable": "Acción Social",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M039",
+   "meta": "Incrementar el número de estudiantes bachilleres que acceden a la plat",
+   "sistema": "3.SOC",
+   "responsable": "Acción Social",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M040",
+   "meta": "Mantener anualmente la participación de grupos de atención prioritaria",
+   "sistema": "3.SOC",
+   "responsable": "Acción Social/ Patronato de Amparo Social",
+   "tipo_ejecutor": "adscrita",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M041",
+   "meta": "Mantener porcentualmente la gestión de las denuncias con el debido pro",
+   "sistema": "3.SOC",
+   "responsable": "Acción Social/ Patronato de Amparo Social",
+   "tipo_ejecutor": "adscrita",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M042",
+   "meta": "Mantener porcentualmente la atención con servicio especializados por v",
+   "sistema": "3.SOC",
+   "responsable": "Acción Social/ Patronato de Amparo Social",
+   "tipo_ejecutor": "adscrita",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M043",
+   "meta": "Incrementar el 15% anualmente desde el año 2023, al 2027 de atenciones",
+   "sistema": "3.SOC",
+   "responsable": "Patronato de Amparo Social",
+   "tipo_ejecutor": "adscrita",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M044",
+   "meta": "Actualizar el inventario patrimonial y catastro cultural al 100% hasta",
+   "sistema": "3.SOC",
+   "responsable": "Dirección de Cultura y Patrimonio",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M045",
+   "meta": "Incrementar el número de participantes por eventos culturales de 8.000",
+   "sistema": "3.SOC",
+   "responsable": "Dirección de Cultura y Patrimonio",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M046",
+   "meta": "Incrementar el número de beneficiarios en eventos deportivos de 400 en",
+   "sistema": "3.SOC",
+   "responsable": "Dirección de Cultura y Patrimonio",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M047",
+   "meta": "Incrementar el número de beneficiarios de programas de formación cultu",
+   "sistema": "3.SOC",
+   "responsable": "Dirección de Cultura y Patrimonio",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M048",
+   "meta": "Incrementar de 0 a 10 los incentivos a artistas u organizaciones de pr",
+   "sistema": "3.SOC",
+   "responsable": "Dirección de Cultura y Patrimonio",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M049",
+   "meta": "Incrementar los beneficiarios de programas y fortalecimiento productiv",
+   "sistema": "4. EC",
+   "responsable": "Dirección de Acción Social",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M050",
+   "meta": "Incrementar los beneficiarios en programas de formación de 1645 en el ",
+   "sistema": "4. EC",
+   "responsable": "Dirección de Acción Social",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M051",
+   "meta": "Incrementar el número de establecimientos con certificación de calidad",
+   "sistema": "4. EC",
+   "responsable": "Dirección de cultura y turismo",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M052",
+   "meta": "Incrementar las visitas anuales de 2700 en el año 2023, a 4300 al 2027",
+   "sistema": "4. EC",
+   "responsable": "Dirección de cultura y turismo",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M053",
+   "meta": "Incrementar los eventos turísticos de 10 en el año 2023, a 22 al 2027",
+   "sistema": "4. EC",
+   "responsable": "Dirección de cultura y turismo",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M054",
+   "meta": "Incrementar el porcentaje de proyectos ejecutados al 80%  al 2027",
+   "sistema": "5. INST",
+   "responsable": "Planificación",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M055",
+   "meta": "Incrementar el porcentaje del sistema de información local del 19,52% ",
+   "sistema": "5. INST",
+   "responsable": "Planificación",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M056",
+   "meta": "Incrementar el número de procesos sistematizados a 9 al 2027",
+   "sistema": "5. INST",
+   "responsable": "Avalúos y Catastros",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M057",
+   "meta": "Incrementar el número de trámites en línea implementados a 37 al año 2",
+   "sistema": "5. INST",
+   "responsable": "Planificación/ TICS",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M058",
+   "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al ",
+   "sistema": "5. INST",
+   "responsable": "Dirección Financiera",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M059",
+   "meta": "Aumentar el nivel de desempeño del personal institucional del 80% en a",
+   "sistema": "5. INST",
+   "responsable": "Talento Humano",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M060",
+   "meta": "Mantener la ejecución anual del Plan de capacitación del 90% hasta el ",
+   "sistema": "5. INST",
+   "responsable": "Talento Humano",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M061",
+   "meta": "Aumentar del 91% de vehículos en funcionamiento en el año 2023, a 95% ",
+   "sistema": "5. INST",
+   "responsable": "Dirección Administrativa/ parque automotor",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M062",
+   "meta": "Aumentar el nivel de conocimiento de la gestión institucional al 55% a",
+   "sistema": "5. INST",
+   "responsable": "Dirección de Comunicación",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M063",
+   "meta": "Aumentar la confianza institucional a 30%  al 2027",
+   "sistema": "5. INST",
+   "responsable": "Dirección de Comunicación",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M064",
+   "meta": "Aumentar la aceptación institucional a 35% al 2027",
+   "sistema": "5. INST",
+   "responsable": "Dirección de Comunicación",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M065",
+   "meta": "Incrementar el número de Unidades Territoriales Participativas de 50 e",
+   "sistema": "5. INST",
+   "responsable": "Planificación Institucional: Participación Ciudadana",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  },
+  {
+   "id": "M066",
+   "meta": "Incrementar las instancias de participación de 2 en el año 2023 a 4 al",
+   "sistema": "5. INST",
+   "responsable": "Planificación Institucional: Participación Ciudadana",
+   "tipo_ejecutor": "gad_directo",
+   "verificacion": "verificada",
+   "detalle": "coincidencia literal en el PDOT"
+  }
+ ]
+}
