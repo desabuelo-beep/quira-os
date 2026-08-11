@@ -369,32 +369,26 @@ CSS = """<style>
 .q-top-n{font:600 13px/1 'Archivo',sans-serif;letter-spacing:.17em;color:var(--tx)}
 .q-top-s{font:400 9px/1 'JetBrains Mono',monospace;letter-spacing:.13em;
   color:var(--tx3);margin-left:2px}
-/* El botón de acceso VIAJA CON LA BARRA (Javo · 2026-08-10, comparando con la
-   propuesta). `.q-top` ya era sticky, pero el botón nunca estuvo dentro de ella
-   en el DOM: la barra la pinta `st.markdown` y el botón es un widget que va
-   después, así que el selector `.q-top .st-key-top_acceso` no aplicaba nunca y
-   el acceso se perdía al bajar. Se saca del flujo y se ancla al borde derecho
-   del área de lectura, a la altura de la barra. */
-/* Dentro del recuadro, no encima (Javo · 2026-08-10). Sobresalía por arriba y
-   pesaba más que la marca: un acceso no puede gritar más fuerte que el nombre
-   del proyecto. Se alinea al eje de la barra —39 px de alto: 9 + 21 del logo +
-   9— y baja al cuerpo del subtítulo que acompaña al logotipo. */
-.st-key-top_acceso{position:fixed;z-index:60;width:auto;
-  top:8px;right:max(16px,calc((100vw - var(--ancho))/2 + 34px))}
-.st-key-top_acceso button{background:var(--sf) !important;
-  border:1px solid rgba(193,57,43,.38) !important;color:var(--coral-dp) !important;
-  font:700 9px/1 'JetBrains Mono',monospace !important;letter-spacing:.13em !important;
-  padding:6px 15px !important;border-radius:18px !important;min-height:0 !important;
-  height:23px !important;box-shadow:0 1px 5px rgba(193,57,43,.07);
+/* El acceso de la barra es un ANCLA, no un botón (Javo · 2026-08-10: «que cuando
+   se da clic al botón, todo baje al final para allí ingresar»).
+   Un `<a href="#acceso">` es HTML nativo: baja hasta el formulario sin recargar,
+   sin `st.rerun()` y sin JavaScript —que Streamlit no ejecuta en markdown—. De
+   paso vuelve DENTRO de la barra en el DOM, que es donde debía estar desde el
+   principio, y deja de necesitar posición fija propia. */
+.q-top-cta{margin-left:auto;display:inline-flex;align-items:center;
+  background:var(--sf);border:1px solid rgba(193,57,43,.38);color:var(--coral-dp);
+  font:700 9px/1 'JetBrains Mono',monospace;letter-spacing:.13em;
+  padding:7px 15px;border-radius:18px;text-decoration:none;white-space:nowrap;
+  box-shadow:0 1px 5px rgba(193,57,43,.07);
   transition:background .25s,color .25s,border-color .25s,transform .25s}
-.st-key-top_acceso button::before{content:"";width:5px;height:5px;border-radius:50%;
+.q-top-cta::before{content:"";width:5px;height:5px;border-radius:50%;
   background:currentColor;margin-right:7px;flex:0 0 auto}
-.st-key-top_acceso button:hover{background:var(--coral) !important;color:#FFF !important;
-  border-color:var(--coral) !important;transform:translateY(-1px);
-  box-shadow:0 4px 14px rgba(193,57,43,.25)}
+.q-top-cta:hover{background:var(--coral);color:#FFF;border-color:var(--coral);
+  transform:translateY(-1px);box-shadow:0 4px 14px rgba(193,57,43,.25)}
+/* Sin esto el ancla deja el formulario tapado por la barra fija. */
+#acceso{scroll-margin-top:64px}
 @media(max-width:720px){.q-top-s{display:none}
-  .st-key-top_acceso{top:6px;right:12px}
-  .st-key-top_acceso button{font-size:9px !important;padding:8px 13px !important}}
+  .q-top-cta{font-size:8.5px;padding:6px 11px;letter-spacing:.1em}}
 
 div[data-testid="stForm"]{background:var(--sup) !important;
   border:1px solid rgba(193,57,43,.2) !important;border-radius:14px !important;
@@ -1013,12 +1007,18 @@ def trust_badges() -> str:
 
 
 def barra_superior() -> str:
-    """Cabecera fija con la marca. El botón de acceso lo pone el controlador,
-    porque tiene que ser un componente real de Streamlit para poder navegar."""
+    """Cabecera fija con la marca y el acceso.
+
+    El acceso volvió aquí dentro (2026-08-10). Estuvo fuera mientras fue un
+    `st.button`, que Streamlit renderiza en su propio bloque y obligaba a
+    posicionarlo por CSS sobre la barra. Como ahora solo tiene que LLEVAR al
+    formulario —no revelarlo—, un ancla basta, y un ancla sí puede vivir dentro
+    del mismo HTML que la marca."""
     return ('<div class="q-top"><div class="q-top-in">'
             f'<span style="line-height:0">{_logo("coral", 21)}</span>'
             '<span class="q-top-n">QUIRA</span>'
             '<span class="q-top-s">INTELIGENCIA PÚBLICA</span>'
+            '<a class="q-top-cta" href="#acceso">ACCEDER AL OBSERVATORIO</a>'
             '</div></div>')
 
 

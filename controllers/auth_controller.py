@@ -30,12 +30,8 @@ def _st_key(name: str) -> str:
 
 
 def _formulario_acceso(_SEL: str) -> None:
-    """Formulario de acceso al Observatorio.
-
-    Vive en una función porque se dibuja en DOS sitios según cómo llegó el
-    usuario: al pie para quien recorrió la página, y arriba para quien usó el
-    atajo de la barra (ver el comentario del bug en `run`). Nunca en ambos a la
-    vez — comparten `key` y Streamlit levantaría DuplicateWidgetID."""
+    """Formulario de acceso al Observatorio. Vive al final de la página y solo
+    ahí: el atajo de la barra es un ancla que baja hasta él (ver `run`)."""
     locked, secs_left = is_locked()
     _, col_form, _ = st.columns([1, 3, 1])
     with col_form:
@@ -59,7 +55,6 @@ def _formulario_acceso(_SEL: str) -> None:
                 log_login_ok(user.key)
                 set_user(usuario=user.key, rol=user.rol, emoji=user.emoji)
                 st.session_state[_SEL] = ""
-                st.session_state.pop(_st_key("acceso_arriba"), None)
                 st.rerun()
             except LockedError as e:
                 log_lockout("unknown")
@@ -75,33 +70,22 @@ def run() -> None:
     _SEL = _st_key("platform_selected")
     if _SEL not in st.session_state:
         st.session_state[_SEL] = ""
-    _ARRIBA = _st_key("acceso_arriba")
 
     # ── Barra superior con acceso ─────────────────────────────────────────────
-    # El formulario sigue al final —quien llega por primera vez merece entender
-    # antes de que le pidan una contraseña—, pero obligar a recorrer la página
-    # entera castigaba a quien ya conoce el sitio y vuelve a diario (Javo ·
-    # 2026-08-07).
+    # El formulario vive AL FINAL y se queda ahí (Javo · 2026-08-10): quien llega
+    # por primera vez merece entender antes de que le pidan una contraseña.
     #
-    # BUG (Javo · 2026-08-08): «el acceso superior no abre nada». Sí abría — el
-    # botón fijaba el estado y recargaba—, pero el formulario aparecía seis
-    # pantallas más abajo y al recargar uno queda arriba: se abría sin que se
-    # viera. El comentario anterior decía que el atajo «lo desplaza a la vista»
-    # y no había nada que lo desplazara; describía la intención, no el hecho.
+    # Historia corta de este atajo, porque costó tres intentos. Primero fijaba un
+    # estado y recargaba: el formulario se abría seis pantallas abajo y no se
+    # veía. Después traía el formulario arriba, junto al botón — funcionaba, pero
+    # partía la página en dos sitios de acceso. Lo que se quería era lo obvio:
+    # que el clic BAJE al formulario.
+    #
     # Streamlit no ejecuta <script> en markdown, así que no hay scroll que
-    # inyectar: en vez de llevar al usuario al formulario, se trae el formulario
-    # a donde el usuario está mirando.
+    # inyectar desde aquí. La solución no necesitaba JavaScript: un `<a href=
+    # "#acceso">` es HTML nativo y salta al ancla sin recarga. El acceso deja de
+    # ser un widget y pasa a ser lo que siempre fue — un enlace.
     st.markdown(barra_superior(), unsafe_allow_html=True)
-    # Sin columnas: el CSS saca este botón del flujo y lo ancla a la barra, que es
-    # sticky. Las columnas solo dejaban un hueco vacío bajo la cabecera.
-    if st.button("ACCEDER AL OBSERVATORIO", key="top_acceso",
-                 help="Acceso con credenciales · equipo Dylus Lab"):
-        st.session_state[_SEL] = "observatorio"
-        st.session_state[_ARRIBA] = True
-        st.rerun()
-
-    if st.session_state.get(_ARRIBA) and st.session_state[_SEL] == "observatorio":
-        _formulario_acceso(_SEL)
     # Orden narrativo: quién soy → de dónde vengo → qué hago → qué problema resuelvo →
     # cómo → con qué productos → con qué método → y la aclaración que evita el malentendido.
     # Greca manteña entre bloques: el sistema gráfico secundario. La pirámide
@@ -132,18 +116,14 @@ def run() -> None:
     # Los productos ahora se EXPLICAN en el ecosistema (arriba) en vez de fingir cuatro
     # accesos donde solo uno existe. Cooperación mantiene su vía de contacto abajo.
     # ══════════════════════════════════════════════════════════════════════════
-    # SIN botón revelador (Javo · 2026-08-10: «el accede de abajo, que no lo suba»).
-    # Antes había que pulsar un botón para que apareciera el formulario, y ese
-    # clic disparaba un `st.rerun()` que devolvía al usuario al principio de la
-    # página: pulsabas abajo y acababas arriba. Streamlit no conserva la posición
-    # de scroll entre recargas y no hay forma de pedírselo desde markdown.
-    #
-    # El formulario se dibuja directamente. No hay clic, no hay recarga, no hay
-    # salto — y de paso se ahorra un paso a quien vino solo a entrar.
-    # Solo se omite si el atajo de la barra ya lo puso arriba: dos formularios
-    # comparten `key` y Streamlit levantaría DuplicateWidgetID.
-    if not st.session_state.get(_ARRIBA):
-        _formulario_acceso(_SEL)
+    # El ancla del atajo de la barra. Va aquí, justo antes del formulario, y el
+    # CSS le da `scroll-margin-top` para que la barra fija no lo tape al saltar.
+    st.markdown('<div id="acceso"></div>', unsafe_allow_html=True)
+    # Sin botón revelador: pulsarlo disparaba un `st.rerun()` y Streamlit no
+    # conserva la posición de scroll entre recargas — pulsabas abajo y acababas
+    # arriba. El formulario se dibuja directo, y quien viene solo a entrar se
+    # ahorra un paso.
+    _formulario_acceso(_SEL)
 
     # ══════════════════════════════════════════════════════════════════════════
     # CONTACTO — vía abierta para quien quiera sumarse antes de la Fase 2
