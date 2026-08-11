@@ -4,7 +4,7 @@
 # Autoridad: Carta de Gobernanza Art. 1 (Derivación) y Art. 3 (describe, no gobierna).
 # ═══════════════════════════════════════════════════════════════════
 generado: 2026-08-11
-total_activos: 124
+total_activos: 125
 huerfanos: 0   # sin bloque authority: → no pueden promoverse a vigente (Art. 1)
 
 componentes:
@@ -540,6 +540,13 @@ componentes:
     hash: 44c1fffe96b108f9
     authority_declared: true
     parent: ADR-045
+  - id: ADR-047
+    kind: canon_adr
+    level: 2
+    path: docs/adr/ADR-047_Ciclo_Cerrado_de_los_Motores_Canonicos.md
+    hash: 9514e53778b9c173
+    authority_declared: true
+    parent: ADR-023
   - id: CANON_PCD-PCD-D01_Planificacion
     kind: canon_pcd
     level: 2
