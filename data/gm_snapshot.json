@@ -1,15 +1,16 @@
 {
  "_meta": {
-  "fuente": "SIAP-ICPI_GOLD_MASTER_v5.6_TGI.xlsx (motor canónico activo) — H73_OUTPUT_API",
+  "fuente": "SIAP-ICPI_GOLD_MASTER_v5.7_TGI.xlsx (motor canónico activo) — H73_OUTPUT_API",
   "fecha_corte": "2026-04-30",
-  "version_excel": "v6.0_D2A_20260615",
+  "version_excel": "v5.7_TGI (promovido 2026-08-11 desde _CANDIDATO_v5.7_IGP3-SATIX-CVI)",
   "hojas_fuente": "H73_OUTPUT_API (interfaz canónica) · H12_MOTOR_ICPI · H15_ICPI_GLOBAL · H21-H24_SAT · H17_IED · H42_IET",
   "advertencia": "Este archivo contiene ÚNICAMENTE outputs institucionales públicos verificados. El Excel Gold Master v5.5 (123 hojas, 931 KB) es la fuente L1 de toda la cadena. Prohibido reemplazar estos valores sin validación analítica en el Excel canónico.",
   "proxima_actualizacion": "Con cédula presupuestaria Q2-2026 (junio 2026)",
   "sincronizado": "2026-06-16 15:14 UTC — refresco canónico desde el vivo corregido (cirugía D.2A · ICPI 27.46% · B33 intacta) vía _update_snapshot.py",
   "decision_arquitectonica": "v5.5 es Gold Master canónico activo. v6.0 es template de referencia sin datos de soporte — no apto para auditoría.",
   "nota_d2a": "Refrescado tras cirugía D.2A (adscritas→SERCOP · semáforo escala+corte · FactorTemporal curva real). Valores curados (parroquias, series) preservados.",
-  "verificacion_2026_08_05": "Contrastado contra el motor v5.6 vía app/connectors/gold_master.py: ICPI 27,4582 · TGI 66,787 (d1..d5 83,20/69,93/59,85/44,79/100,00) · IGP 48,33 — coinciden. La etiqueta anterior decía v5.5 y era el ÚNICO desfase: los valores ya eran los del v5.6."
+  "verificacion_2026_08_05": "Contrastado contra el motor v5.6 vía app/connectors/gold_master.py: ICPI 27,4582 · TGI 66,787 (d1..d5 83,20/69,93/59,85/44,79/100,00) · IGP 48,33 — coinciden. La etiqueta anterior decía v5.5 y era el ÚNICO desfase: los valores ya eran los del v5.6.",
+  "verificacion_2026_08_11": "Los SEIS vectores contrastados contra el motor v5.7 recalculado con Excel: ISP 3,22 · IED 24,94 · IOC 17,71 · IET 44,80 · PSG 2,83 coinciden. IGP NO coincidia (48,33 vs 27,00) y se corrige. ICPI 27,4582% coincide."
  },
  "gad": {
   "nombre": "GAD Municipal de Montecristi",
@@ -419,8 +420,9 @@
    "label": "Eficiencia directiva"
   },
   "igp": {
-   "valor": 48.33,
-   "label": "Participación ciudadana"
+   "valor": 27.0,
+   "label": "Participación ciudadana",
+   "_correccion": "2026-08-11 · era 48,33 y el motor calcula 27,00. La diferencia es IGP_3, RETIRADO por Javo el 2026-07-29 (H20b A8). El snapshot conservaba el valor de tres componentes; el motor promedia dos: (IGP_1 0,54 + IGP_2 0,00)/2 = 0,27. El metadato de verificacion del 2026-08-05 declaraba que coincidian y no era cierto."
   },
   "ioc": {
    "valor": 17.71,
