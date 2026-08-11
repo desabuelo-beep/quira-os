@@ -375,16 +375,24 @@ CSS = """<style>
    sin `st.rerun()` y sin JavaScript —que Streamlit no ejecuta en markdown—. De
    paso vuelve DENTRO de la barra en el DOM, que es donde debía estar desde el
    principio, y deja de necesitar posición fija propia. */
+/* En AZUL PETRÓLEO —`PIZARRA`, que ya estaba en el canon— y no en coral: el
+   coral es el acento de la página entera, y un acceso no debe competir con la
+   marca. Los `!important` no son decorativos: Streamlit estiliza los `<a>` de
+   markdown con su propia regla, y sin ellos el enlace salía azul de navegador y
+   subrayado (Javo · 2026-08-10). */
 .q-top-cta{margin-left:auto;display:inline-flex;align-items:center;
-  background:var(--sf);border:1px solid rgba(193,57,43,.38);color:var(--coral-dp);
+  background:var(--sf);border:1px solid rgba(78,102,116,.42);
+  color:var(--pizarra) !important;text-decoration:none !important;
   font:700 9px/1 'JetBrains Mono',monospace;letter-spacing:.13em;
-  padding:7px 15px;border-radius:18px;text-decoration:none;white-space:nowrap;
-  box-shadow:0 1px 5px rgba(193,57,43,.07);
+  padding:7px 15px;border-radius:18px;white-space:nowrap;
+  box-shadow:0 1px 5px rgba(78,102,116,.09);
   transition:background .25s,color .25s,border-color .25s,transform .25s}
 .q-top-cta::before{content:"";width:5px;height:5px;border-radius:50%;
   background:currentColor;margin-right:7px;flex:0 0 auto}
-.q-top-cta:hover{background:var(--coral);color:#FFF;border-color:var(--coral);
-  transform:translateY(-1px);box-shadow:0 4px 14px rgba(193,57,43,.25)}
+.q-top-cta:hover{background:var(--pizarra);color:#FFF !important;
+  border-color:var(--pizarra);transform:translateY(-1px);
+  box-shadow:0 4px 14px rgba(78,102,116,.26)}
+.q-top-cta:visited{color:var(--pizarra) !important}
 /* Sin esto el ancla deja el formulario tapado por la barra fija. */
 #acceso{scroll-margin-top:64px}
 @media(max-width:720px){.q-top-s{display:none}
