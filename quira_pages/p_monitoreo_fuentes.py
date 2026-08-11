@@ -90,6 +90,10 @@ _GAD_PAIS = 222
 # La secuencia es progresiva por diseño (Javo): se valida el cantón piloto
 # —2025 completo y lo que va de 2026— antes de ampliar el barrido.
 _CANTON_PILOTO = "MONTECRISTI"
+# Código canónico del municipio sobre el que opera la consola. El despacho lo
+# traduce a RUC contra `data/municipality_registry.json` — los guiones de captura
+# identifican entidades por RUC, no por este código.
+_MUNICIPIO_OP = "130801"
 _MESES = ("E", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D")
 
 
@@ -441,6 +445,101 @@ def _tarjeta_silo(silo: dict, operable: bool, motivo: str) -> str:
 # RENDER
 # ══════════════════════════════════════════════════════════════════════════════
 
+# ══════════════════════════════════════════════════════════════════════════════
+# MANDO — de tablero a consola (Javo · 2026-08-10)
+#
+# Hasta aquí este archivo tenía 710 líneas y ningún botón: enseñaba lo que la
+# máquina había hecho y no permitía pedirle nada. El operador del Observatorio
+# necesita ordenar, no solo mirar.
+#
+# Regla que se sigue: **solo hay botón donde hay procedimiento**. Donde no lo
+# hay, se dice por qué. Un botón que no ejecuta nada promete una capacidad
+# inexistente, que es peor que no ofrecerla (ADR-046 §2.4).
+# ══════════════════════════════════════════════════════════════════════════════
+
+def _periodo_por_defecto() -> str:
+    """Mes anterior al actual — la convención del ciclo mensual ya existente
+    (`run_snapshot_mensual.py`: correr el 26 para capturar el mes previo)."""
+    from datetime import date
+    hoy = date.today()
+    y, m = (hoy.year - 1, 12) if hoy.month == 1 else (hoy.year, hoy.month - 1)
+    return f"{y}-{m:02d}"
+
+
+def _mando(silo: dict) -> None:
+    """Los controles de un silo, debajo de su tarjeta."""
+    from app.observatorio import despacho as D
+
+    fuente = silo["id"]
+    puede, motivo = D.puede_ejecutarse(fuente)
+    vivas = D.en_curso()
+    clave = f"{fuente}:{_MUNICIPIO_OP}"
+
+    if not puede:
+        st.caption(f"Sin mando · {motivo}")
+        return
+
+    if clave in vivas:
+        v = vivas[clave]
+        st.caption(f"⏳ En curso desde {v.get('inicio', '?')[:16].replace('T', ' ')} · "
+                   f"corrida {v.get('corrida', '?')}")
+        if st.button("Liberar y reintentar", key=f"lib_{fuente}",
+                     use_container_width=True,
+                     help="Deja de bloquear la fuente. No detiene el proceso si sigue vivo."):
+            D.liberar(fuente, _MUNICIPIO_OP)
+            st.rerun()
+        return
+
+    if st.button("MONITOREAR AHORA", key=f"mon_{fuente}", use_container_width=True,
+                 help=motivo):
+        r = D.despachar(D.Orden(fuente=fuente, municipio=_MUNICIPIO_OP,
+                                periodo=_periodo_por_defecto()))
+        if r.aceptada:
+            st.success(f"{r.motivo} · corrida {r.corrida_id}")
+        else:
+            # El rechazo se MUESTRA. Un despacho que falla en silencio deja al
+            # operador creyendo que ordenó algo que nunca salió.
+            st.warning(r.motivo)
+        st.rerun()
+
+
+def _orden_puntual() -> None:
+    """Análisis puntual: fuente + período elegidos por el operador.
+
+    Existe porque el ciclo mensual cubre la rutina, no el encargo. Las primeras
+    corridas de 2025 y 2026 se hacen así —a mano, una por una— antes de
+    programar nada (Javo · 2026-08-10)."""
+    from app.observatorio import despacho as D
+
+    ejecutables = [s for s in _SILOS if D.puede_ejecutarse(s["id"])[0]]
+    if not ejecutables:
+        return
+
+    st.markdown(_franja("ORDEN PUNTUAL",
+                        "para capturar un período concreto fuera del ciclo mensual"),
+                unsafe_allow_html=True)
+    c = st.columns([2, 1.4, 1.4, 1.5], gap="small")
+    with c[0]:
+        nombres = {s["nombre"]: s["id"] for s in ejecutables}
+        elegido = st.selectbox("Fuente", list(nombres), key="op_fuente",
+                               label_visibility="collapsed")
+    with c[1]:
+        anio = st.selectbox("Año", [2026, 2025, 2024, 2023], key="op_anio",
+                            label_visibility="collapsed")
+    with c[2]:
+        mes = st.selectbox("Mes", [f"{m:02d}" for m in range(1, 13)], key="op_mes",
+                           label_visibility="collapsed")
+    with c[3]:
+        if st.button("EJECUTAR", key="op_run", use_container_width=True, type="primary"):
+            r = D.despachar(D.Orden(fuente=nombres[elegido], municipio=_MUNICIPIO_OP,
+                                    periodo=f"{anio}-{mes}"))
+            (st.success if r.aceptada else st.warning)(
+                f"{r.motivo}{f' · corrida {r.corrida_id}' if r.corrida_id else ''}")
+
+    st.caption("Toda orden queda registrada como corrida de calibración: no publica "
+               "por sí sola. La publicación exige validación (ADR-042).")
+
+
 def render() -> None:
     """Monitoreo de Fuentes — la consola de captura."""
     d = _cifras()
@@ -484,6 +583,9 @@ div[data-testid="stVerticalBlock"] {{ gap:.5rem!important; }}
     for col, (silo, ok, motivo) in zip(list(fila1) + list(fila2), operables):
         with col:
             st.markdown(_tarjeta_silo(silo, ok, motivo), unsafe_allow_html=True)
+            _mando(silo)
+
+    _orden_puntual()
 
     # ── 2 · COBERTURA ────────────────────────────────────────────────────────
     st.markdown(_franja("COBERTURA TERRITORIAL",
