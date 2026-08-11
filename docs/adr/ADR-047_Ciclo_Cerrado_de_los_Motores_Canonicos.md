@@ -10,7 +10,7 @@ fecha: 2026-08-11
 
 # ADR-047 · El ciclo cerrado de los motores canónicos
 
-> **Qué decide.** Cómo la evidencia capturada llega hasta los motores deterministas, dónde se
+> **Qué decide.** Cómo la evidencia capturada llega hasta los motores canónicos, dónde se
 > recalcula, quién autoriza esa escritura y cómo se prueba que el resultado es reproducible.
 > **Qué NO decide.** Nada sobre las fórmulas. `H12!B33` sigue siendo inmutable.
 
@@ -70,6 +70,13 @@ antes de sellarlo.
 escenarios. Los otros tres viven en el laboratorio y sus hallazgos vuelven al canon por promoción,
 no por conexión directa.
 
+**Pero «de runtime» no equivale a «determinista»**, y conviene no deslizarlo. *Determinista* es
+una carga metodológica, no una ubicación: significa que la reproducibilidad está **definida y
+comprobada**, en los términos que exige §6 de este mismo ADR. Hoy solo el **Matemático** la tiene
+formalizada. El de Grafos devuelve lo mismo sobre el mismo grafo, pero **su reproducibilidad no
+está definida ni probada por el canon** — y llamarlo determinista sin esa prueba sería
+exactamente lo que §6 viene a impedir. Se dirá cuando se demuestre.
+
 ### 3.1 · La BRN no es un motor de cálculo, y el borrador de este ADR lo dijo mal
 
 La primera redacción afirmaba que hay «dos motores deterministas, Gold Master y BRN», y dibujaba
@@ -113,9 +120,12 @@ La distinción que lo resuelve, y que conviene retener:
 De ahí se sigue lo que Javo quería proteger, y se sostienen **las dos cosas a la vez**: la revisión
 del portal **sí es parte del cálculo canónico** —la variable nace de evidencia observada, pasa por
 la autoridad que corresponda y entra al Gold Master como variable declarada— **y el motor
-matemático sigue siendo uno solo**. La BRN responde después *por qué* esa variable y ese resultado
-tienen fundamento normativo. Observación documental como innovación metodológica, sin segunda
-verdad.
+matemático sigue siendo uno solo**.
+
+Con una precisión que evita el deslizamiento: **la BRN no interviene en generar esa variable.** La
+produce la evidencia observada más la validación humana; la BRN responde *después* por qué esa
+variable y su resultado tienen fundamento normativo. Observación documental como innovación
+metodológica, sin segunda verdad.
 
 ## 4 · La frontera de escritura canónica
 
