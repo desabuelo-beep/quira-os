@@ -8,8 +8,8 @@ authority:
 # QUIRA · BOOT
 
 > **Único archivo de arranque.** Léelo y NADA más hasta saber en qué vas a trabajar.
-> Lazy loading: carga el detalle SOLO del área que vas a tocar. No leas todo "por si acaso".
-> Mantener bajo 500 tokens · `## AHORA` al cierre · **¿dónde vive una verdad? → `QUIRA_MASTER_INDEX.md`** (Regla #6).
+> Lazy load: carga SOLO el área que vas a tocar. No leas "por si acaso".
+> `## AHORA` al cierre · **¿dónde vive una verdad? → `QUIRA_MASTER_INDEX.md`** (Regla #6).
 
 ## QUÉ ES → `identity/CONSTITUCION_INSTITUCIONAL.md` (CONSTITUCION-001 · raíz `parent:null`)
 > **QUIRA = plataforma de inteligencia pública · infraestructura de conocimiento verificable**
@@ -38,29 +38,29 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 
 ✅ **PCD: d01·d02·d03·d06·d09** · **d08 ENTRABLE** (Asamblea AUTÓNOMA · OBS-012..017).
 🩺 **Curación por DOM (R.8) · `check_health.py`: NO adivinar.**
 🏛️ **GOBERNANZA v1.0:** `identity/`→`governance/`→`marco_teorico/`→Canon→`registry/`.
-🖥️ **d08 WEB** 191→162→**15%** · 66 inverificable · 96 sin-tema.
+🖥️ **d08 WEB** 191→162→**15%** · 66 inverif. · 96 sin-tema.
 🩹 **9 GATES** (`scripts/ci/`) — correr TODOS antes de commitear.
-🔧 **v5.7_TGI** (11-08) · promover = **recalcular y GUARDAR** (sin caché el conector lee vacío) · **IGP 48,33→27,00**.
+🔧 **v5.7_TGI** · promover = **recalcular y GUARDAR** (sin caché el conector lee vacío) · **IGP 48,33→27,00**.
 ⚖️ **ADR-045/046/047**: 1 superficie·3 custodias · techo = **el documento, no el portador** · **recálculo = Operaciones**.
-🚒 **OBS-024** Bomberos: $1,75M sin meta · **OBS-025** `Ei`·`Ci_Manual`·`Competencia_GAD` = **3 manuales**. **Ei NO tocado.**
-📋 **Metas PDOT: 66** (58 verif.) · **0 de Bomberos** · motor cablea **25**.
-🔭 **ADR-042 CONSOLA** (`env_obs`≠`env_ops`) · integra **MATRIZ_CANONICA, NO el GM** · **humano acredita** · 1ª corrida=**calibración**. Ya tiene **mando** (`app/observatorio/despacho.py`).
-🚦 **8 ESTADOS** (`app/observatorio/`): «no existe» ≠ «no pude obtener» ≠ «falló el capturador». **Solo 2 publicables**. Corpus **14.285** (+COESCOP).
+🚒 **OBS-024** Bomberos $1,75M sin meta · **OBS-025/028** `Ei`·`Ci_Manual`·`Competencia_GAD`·`V_eSIGEF`·`V_SERCOP` = **5 manuales**. **Ei NO tocado.**
+📋 **Metas 66** (58 verif.) · **0 Bomberos** · cablea **25** · **OBS-028** meta→partida→devengado (`cruce_poa_cedula.py`) · PDOT vige **05-11-2024** (Ord.07-2024) → **≥2025** · **5/6 ceros `V_eSIGEF` los desmiente la cédula** · unívoca **9/46** · ⛔`no_reconciliado`≠`sin_partida`.
+🔭 **ADR-042 CONSOLA** (`env_obs`≠`env_ops`) · integra **MATRIZ_CANONICA, NO el GM** · **humano acredita** · 1ª corrida=**calibración** · mando: `app/observatorio/despacho.py`.
+🚦 **8 ESTADOS**: «no existe»≠«no pude obtener»≠«falló el capturador». **Solo 2 publicables**. Corpus **14.285**.
 🎨 **Identidad v1.1**: marca = **asset, NO se redibuja** · 1 acento → `login_view.py`.
 🔌 **CABLEADO**: **GM→SILOS→DOM→QUIRA** · **S1·S6·S9 sin DOM** (`MATRIZ_CABLEADO_CANONICO.md`).
-🧨 **OBS-023** brecha ICM↔ICPI **NO citable** · **`SAT-I`=S6 SIGAD**. ⛔ NO redefinir (R.1).
-🚨 **OBS-022** SAT sin BRN → gate `check_sat_brn.py`. ⛔ `SAT-IX`(d08) ≠ `SAT-IX-001`.
+🧨 **OBS-023** brecha ICM↔ICPI **NO citable** · **`SAT-I`=S6 SIGAD**. ⛔NO redefinir (R.1).
+🚨 **OBS-022** SAT sin BRN → `check_sat_brn.py`. ⛔`SAT-IX`(d08)≠`SAT-IX-001`.
 🏛️ **R-C..R-H → `PROTOCOLO_CURACION_DOMINIO.md` §3.**
-🔬 **d01 §05 → OBS-020**: POA 100% QUÉ · **1,1% DÓNDE** · 1 de 1027 ambas. `inverificable` ≠ `no atendido`.
-⚖️ **3 CAPAS**: jurídica (**Guía LOTAIP=LEY**) · operativa (d07) · analítica (**no tramita**). 🧪 H-ARQ-01 HIPÓTESIS ⛔R-E.
-🧠 **DESCUBRIMIENTO NORMATIVO**: 4º de los **5 MCIP**, no motor nuevo. **Laboratorio, NO runtime**. ⛔R-E.
+🔬 **OBS-020** (d01§05): POA 100% QUÉ · **1,1% DÓNDE** · 1/1027 ambas. `inverificable`≠`no atendido`.
+⚖️ **3 CAPAS**: jurídica (**Guía LOTAIP=LEY**) · operativa (d07) · analítica (**no tramita**). 🧪H-ARQ-01 HIPÓTESIS ⛔R-E.
+🧠 **DESCUBRIMIENTO NORMATIVO**: 4º de **5 MCIP**, no motor nuevo. **Laboratorio, NO runtime**. ⛔R-E.
 ⏭️ **JAVO: (1)** 2ª validación v4 (¿retirar `complementaria`?) **(2)** Haiku ~$60/18 meses **(3)** repintado Observatorio.
 
-## ARQUITECTURA — RADAR NACIONAL (ADR-024 ratificado · detalle en el ADR)
+## ARQUITECTURA — RADAR NACIONAL (ADR-024 · detalle en el ADR)
 GAD = sujeto observado, NO cliente. 4 capas: A Núcleo · B Operaciones · C Productos (§LA TESIS · 1 motor) · D Portal `quiraintelligence.com` (radar 222 GAD).
 
-## REGLAS DE ORO → **las 9 viven en `CLAUDE.md`** (se lee siempre · no se duplican aquí)
-Las 2 que más se olvidan: **antes de definir, consultar el Inventario de Conceptos** (¿existe? → DERIVA,
+## REGLAS DE ORO → **las 9 viven en `CLAUDE.md`** (se lee siempre)
+Las 2 más olvidadas: **antes de definir, consultar el Inventario de Conceptos** (¿existe? → DERIVA,
 no redefinas · cierre `/graphify . --update`) · **no congelar teoría antes que el grafo hable** (ADR-019).
 
 ## LAZY LOAD — lee SOLO lo que aplica a tu tarea
