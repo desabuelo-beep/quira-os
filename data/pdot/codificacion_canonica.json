@@ -1,0 +1,742 @@
+{
+ "_meta": {
+  "fuente": "La codificación canónica de QUIRA para las metas del PDOT.md",
+  "sha256": "5f5f70d9714867eb5473d3c64e4d155194c950eb816198d08bb7a42e5d584699",
+  "autor": "Javo · 2026-08-12",
+  "formato": "M-[COMPONENTE]-O[OBJETIVO]-[SECUENCIA]",
+  "componentes": {
+   "BIO": "Biofísico y Ambiental",
+   "ASE": "Asentamientos Humanos y Servicios Públicos",
+   "MOV": "Movilidad, Energía y Conectividad",
+   "SOC": "Sociocultural y Derechos",
+   "ECO": "Económico y Productivo",
+   "POL": "Político-Institucional y Gobernanza"
+  },
+  "advertencia": "BIO/ASE/MOV NO son biológico/asesoramiento/movimiento — ver OBS-026",
+  "verificado": "66 códigos únicos · M001-M066 sin huecos · formato OK · puente 25/25",
+  "nota_M009": "enunciado único con evidencia disjunta — no se fusiona (OBS-026)"
+ },
+ "puente_motor_pdot": [
+  {
+   "codigo_motor": "SC-I-N-01",
+   "id_pdot": "M010",
+   "sin_correlato": false
+  },
+  {
+   "codigo_motor": "SC-L-N-02",
+   "id_pdot": "M059",
+   "sin_correlato": false
+  },
+  {
+   "codigo_motor": "AH-I-X-01",
+   "id_pdot": "M058",
+   "sin_correlato": false
+  },
+  {
+   "codigo_motor": "AH-I-X-02",
+   "id_pdot": "M020",
+   "sin_correlato": false
+  },
+  {
+   "codigo_motor": "AH-I-X-03",
+   "id_pdot": "M037",
+   "sin_correlato": false
+  },
+  {
+   "codigo_motor": "AH-I-N-01",
+   "id_pdot": "M009",
+   "sin_correlato": false
+  },
+  {
+   "codigo_motor": "SC-L-G-01",
+   "id_pdot": "M014",
+   "sin_correlato": false
+  },
+  {
+   "codigo_motor": "AH-I-X-04",
+   "id_pdot": "M057",
+   "sin_correlato": false
+  },
+  {
+   "codigo_motor": "PI-I-G-01",
+   "id_pdot": null,
+   "sin_correlato": true
+  },
+  {
+   "codigo_motor": "AH-C-X-01",
+   "id_pdot": "M040",
+   "sin_correlato": false
+  },
+  {
+   "codigo_motor": "AH-C-X-02",
+   "id_pdot": "M055",
+   "sin_correlato": false
+  },
+  {
+   "codigo_motor": "SC-I-N-03",
+   "id_pdot": "M066",
+   "sin_correlato": false
+  },
+  {
+   "codigo_motor": "FA-I-X-01",
+   "id_pdot": "M006",
+   "sin_correlato": false
+  },
+  {
+   "codigo_motor": "FA-C-X-01",
+   "id_pdot": "M002",
+   "sin_correlato": false
+  },
+  {
+   "codigo_motor": "FA-I-X-02",
+   "id_pdot": "M019",
+   "sin_correlato": false
+  },
+  {
+   "codigo_motor": "FA-L-N-01",
+   "id_pdot": "M044",
+   "sin_correlato": false
+  },
+  {
+   "codigo_motor": "PI-I-G-02",
+   "id_pdot": "M054",
+   "sin_correlato": false
+  },
+  {
+   "codigo_motor": "PI-L-G-01",
+   "id_pdot": "M028",
+   "sin_correlato": false
+  },
+  {
+   "codigo_motor": "EP-L-N-01",
+   "id_pdot": "M033",
+   "sin_correlato": false
+  },
+  {
+   "codigo_motor": "EP-L-X-01",
+   "id_pdot": "M049",
+   "sin_correlato": false
+  },
+  {
+   "codigo_motor": "PI-TUR-01",
+   "id_pdot": "M052",
+   "sin_correlato": false
+  },
+  {
+   "codigo_motor": "PI-TUR-02",
+   "id_pdot": "M053",
+   "sin_correlato": false
+  },
+  {
+   "codigo_motor": "FA-CC-01",
+   "id_pdot": "M003",
+   "sin_correlato": false
+  },
+  {
+   "codigo_motor": "AH-AP-04",
+   "id_pdot": "M013",
+   "sin_correlato": false
+  },
+  {
+   "codigo_motor": "FA-DIS-01",
+   "id_pdot": "M009",
+   "sin_correlato": false
+  }
+ ],
+ "registro": [
+  {
+   "id": "M001",
+   "codigo_quira": "M-BIO-O1-01",
+   "componente": "Biofísico",
+   "meta": "Incrementar la recuperación de taludes en etapa de cierre para la recu...",
+   "responsable": "Planificación/ Espacios públicos",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M002",
+   "codigo_quira": "M-BIO-O1-02",
+   "componente": "Biofísico",
+   "meta": "Aumentar a 17.32 m²/hab el IVU hasta el 2027",
+   "responsable": "Dirección de Ambiente",
+   "ejecutor": "gad_directo",
+   "verificacion": "solo_contraste"
+  },
+  {
+   "id": "M003",
+   "codigo_quira": "M-BIO-O1-03",
+   "componente": "Biofísico",
+   "meta": "Formular cuatro planes para la acción contra el cambio climático hasta...",
+   "responsable": "Dirección de Ambiente",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M004",
+   "codigo_quira": "M-BIO-O1-04",
+   "componente": "Biofísico",
+   "meta": "Mantener el número de 680 beneficiarios de las campañas de asistencia...",
+   "responsable": "Dirección de Ambiente",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M005",
+   "codigo_quira": "M-BIO-O1-05",
+   "componente": "Biofísico",
+   "meta": "Mantener el número de 124 beneficiarios de las campañas de esterilizac...",
+   "responsable": "Dirección de Ambiente",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M006",
+   "codigo_quira": "M-BIO-O1-06",
+   "componente": "Biofísico",
+   "meta": "Reducir un 10% la infraestructura susceptibles...",
+   "responsable": "Planificación/ Unidad de gestión d",
+   "ejecutor": "gad_directo",
+   "verificacion": "parcial"
+  },
+  {
+   "id": "M007",
+   "codigo_quira": "M-ASE-O1-01",
+   "componente": "Asentamientos",
+   "meta": "Incrementar anualmente el porcentaje de basura gestionada de 20.118,96...",
+   "responsable": "Empresa de Aseo",
+   "ejecutor": "empresa_publica",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M008",
+   "codigo_quira": "M-ASE-O1-02",
+   "componente": "Asentamientos",
+   "meta": "Incrementar anualmente el porcentaje de basura reciclada de 331 tn/añ...",
+   "responsable": "Empresa de Aseo",
+   "ejecutor": "empresa_publica",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M009",
+   "codigo_quira": "M-ASE-O1-03",
+   "componente": "Asentamientos",
+   "meta": "Contar con capacidad para disposición final de desechos sólidos hasta...",
+   "responsable": "Empresa de Aseo",
+   "ejecutor": "empresa_publica",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M010",
+   "codigo_quira": "M-ASE-O1-04",
+   "componente": "Asentamientos",
+   "meta": "Aumentar del 39.25% al 42.38% la cobertura de agua potable en el cantó...",
+   "responsable": "Planificación/ Dirección de agua p",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M011",
+   "codigo_quira": "M-ASE-O1-05",
+   "componente": "Asentamientos",
+   "meta": "Mejorar el índice de la calidad del agua al 100% por cada número de pu...",
+   "responsable": "Planificación/ Dirección de agua p",
+   "ejecutor": "gad_directo",
+   "verificacion": "solo_contraste"
+  },
+  {
+   "id": "M012",
+   "codigo_quira": "M-ASE-O1-06",
+   "componente": "Asentamientos",
+   "meta": "Mejorar el índice de calidad de la infraestructura de agua potable BUE...",
+   "responsable": "Planificación/ Dirección de agua p",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M013",
+   "codigo_quira": "M-ASE-O1-07",
+   "componente": "Asentamientos",
+   "meta": "Mejorar al 10% el índice de continuidad del servicio de agua potable A...",
+   "responsable": "Planificación/ Dirección de agua p",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M014",
+   "codigo_quira": "M-ASE-O1-08",
+   "componente": "Asentamientos",
+   "meta": "Aumentar del 19.77% a 24.32% la cobertura de alcantarillado sanitario...",
+   "responsable": "Planificación/ Dirección de agua p",
+   "ejecutor": "gad_directo",
+   "verificacion": "solo_contraste"
+  },
+  {
+   "id": "M015",
+   "codigo_quira": "M-ASE-O1-09",
+   "componente": "Asentamientos",
+   "meta": "Aumentar hasta el 2027 el número de plantas y estaciones de bombeo ope...",
+   "responsable": "Planificación/ Dirección de agua p",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M016",
+   "codigo_quira": "M-ASE-O1-10",
+   "componente": "Asentamientos",
+   "meta": "Mejorar el índice de calidad de la infraestructura sanitaria BUENO de...",
+   "responsable": "Planificación/ Dirección de agua p",
+   "ejecutor": "gad_directo",
+   "verificacion": "parcial"
+  },
+  {
+   "id": "M017",
+   "codigo_quira": "M-ASE-O1-11",
+   "componente": "Asentamientos",
+   "meta": "Aumentar la cobertura de redes pluviales de 0.97% a 2% hasta el año 20...",
+   "responsable": "Planificación/ Dirección de agua p",
+   "ejecutor": "gad_directo",
+   "verificacion": "parcial"
+  },
+  {
+   "id": "M018",
+   "codigo_quira": "M-ASE-O1-12",
+   "componente": "Asentamientos",
+   "meta": "Aumentar a 17.32 m²/hab el IVU hasta el 2027",
+   "responsable": "Planificación/ Unidad de espacios",
+   "ejecutor": "gad_directo",
+   "verificacion": "solo_contraste"
+  },
+  {
+   "id": "M019",
+   "codigo_quira": "M-ASE-O1-13",
+   "componente": "Asentamientos",
+   "meta": "Aumentar a 10.73 m²/hab el índice de equipamiento del Centro Urbano Pr...",
+   "responsable": "Planificación/ Unidad de espacios",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M020",
+   "codigo_quira": "M-MOV-O1-01",
+   "componente": "Movilidad",
+   "meta": "Construir 10km hasta el 2027 de 93.65 km de vías en proyección del CUP...",
+   "responsable": "Planificación/ Obras públicas",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M021",
+   "codigo_quira": "M-MOV-O1-02",
+   "componente": "Movilidad",
+   "meta": "Incrementar 4 km de vías con tratamiento (aceras y bordillos) del CUP...",
+   "responsable": "Planificación/ Obras públicas",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M022",
+   "codigo_quira": "M-MOV-O1-03",
+   "componente": "Movilidad",
+   "meta": "Incrementar 0.4 km de vías con tratamiento (aceras y bordillos) en co...",
+   "responsable": "Planificación/ Obras públicas",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M023",
+   "codigo_quira": "M-MOV-O1-04",
+   "componente": "Movilidad",
+   "meta": "Incrementar en el CUP 23.77 km de vías con tratamiento medio hasta el...",
+   "responsable": "Planificación/ Obras públicas",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M024",
+   "codigo_quira": "M-MOV-O1-05",
+   "componente": "Movilidad",
+   "meta": "Incrementar en las comunidades rurales 17.56 km de vías con tratamient...",
+   "responsable": "Planificación/ Obras públicas",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M025",
+   "codigo_quira": "M-MOV-O1-06",
+   "componente": "Movilidad",
+   "meta": "Incrementar en el CUP el mantenimiento de 43.8 km de vías hasta el añ...",
+   "responsable": "Planificación/ Obras públicas",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M026",
+   "codigo_quira": "M-MOV-O1-07",
+   "componente": "Movilidad",
+   "meta": "Incrementar en las comunidades rurales el mantenimiento de 57.22 km de...",
+   "responsable": "Planificación/ Obras públicas",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M027",
+   "codigo_quira": "M-MOV-O1-08",
+   "componente": "Movilidad",
+   "meta": "Incrementar de 1.62 km a 2.62 km de ciclovía al 2027",
+   "responsable": "Planificación/ Obras públicas",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M028",
+   "codigo_quira": "M-MOV-O1-09",
+   "componente": "Movilidad",
+   "meta": "Incrementar la superficie a 10 000 m2 de señalización en vías urbanas...",
+   "responsable": "Planificación/ Dirección de Tránsi",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M029",
+   "codigo_quira": "M-MOV-O1-10",
+   "componente": "Movilidad",
+   "meta": "Incrementar a 8 el número de las intersecciones semafóricas hasta el 2...",
+   "responsable": "Planificación/ Dirección de Tránsi",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M030",
+   "codigo_quira": "M-MOV-O1-11",
+   "componente": "Movilidad",
+   "meta": "Incrementar las revisiones técnicas vehiculares de 4000 en el año 2023...",
+   "responsable": "Planificación/ Dirección de Tránsi",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M031",
+   "codigo_quira": "M-MOV-O1-12",
+   "componente": "Movilidad",
+   "meta": "Mantener anualmente y hasta el 2027 el servicio de calidad del transpo...",
+   "responsable": "Planificación/ Dirección de Tránsi",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M032",
+   "codigo_quira": "M-MOV-O1-13",
+   "componente": "Movilidad",
+   "meta": "Mantener anualmente a 40 Instituciones educativas en el programa de E...",
+   "responsable": "Planificación/ Dirección de Tránsi",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M033",
+   "codigo_quira": "M-ASE-O2-01",
+   "componente": "Asentamientos",
+   "meta": "Reducir el déficit habitacional cualitativo de 50 viviendas de interés...",
+   "responsable": "Planificación/ Empresa de Vivienda",
+   "ejecutor": "empresa_publica",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M034",
+   "codigo_quira": "M-ASE-O1-14",
+   "componente": "Asentamientos",
+   "meta": "Incrementar anualmente el porcentaje de cobertura de recolección del 9...",
+   "responsable": "Planificación/ Empresa de Aseo",
+   "ejecutor": "empresa_publica",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M035",
+   "codigo_quira": "M-ASE-O1-15",
+   "componente": "Asentamientos",
+   "meta": "Incrementar los kilometros de barrios por día de 77.83 km/día en el 20...",
+   "responsable": "Planificación/ Empresa de Aseo",
+   "ejecutor": "empresa_publica",
+   "verificacion": "solo_contraste"
+  },
+  {
+   "id": "M036",
+   "codigo_quira": "M-SOC-O1-01",
+   "componente": "Sociocultural",
+   "meta": "Incrementar el 10% anualmente de la población atendida en los Servicio...",
+   "responsable": "Patronato de Amparo Social",
+   "ejecutor": "adscrita",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M037",
+   "codigo_quira": "M-SOC-O1-02",
+   "componente": "Sociocultural",
+   "meta": "Incrementar la población atendida en salud preventiva de 320 en el año...",
+   "responsable": "Patronato de Amparo Social",
+   "ejecutor": "adscrita",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M038",
+   "codigo_quira": "M-SOC-O1-03",
+   "componente": "Sociocultural",
+   "meta": "Incrementar el número de beneficiarios que acceden a puntos digitales...",
+   "responsable": "Acción Social",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M039",
+   "codigo_quira": "M-SOC-O1-04",
+   "componente": "Sociocultural",
+   "meta": "Incrementar el número de estudiantes bachilleres que acceden a la plat...",
+   "responsable": "Acción Social",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M040",
+   "codigo_quira": "M-SOC-O1-05",
+   "componente": "Sociocultural",
+   "meta": "Mantener anualmente la participación de grupos de atención prioritaria...",
+   "responsable": "Acción Social/ Patronato de Amparo",
+   "ejecutor": "adscrita",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M041",
+   "codigo_quira": "M-SOC-O1-06",
+   "componente": "Sociocultural",
+   "meta": "Mantener porcentualmente la gestión de las denuncias con el debido pro...",
+   "responsable": "Acción Social/ Patronato de Amparo",
+   "ejecutor": "adscrita",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M042",
+   "codigo_quira": "M-SOC-O1-07",
+   "componente": "Sociocultural",
+   "meta": "Mantener porcentualmente la atención con servicio especializados por v...",
+   "responsable": "Acción Social/ Patronato de Amparo",
+   "ejecutor": "adscrita",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M043",
+   "codigo_quira": "M-SOC-O1-08",
+   "componente": "Sociocultural",
+   "meta": "Incrementar el 15% anualmente desde el año 2023, al 2027 de atenciones...",
+   "responsable": "Patronato de Amparo Social",
+   "ejecutor": "adscrita",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M044",
+   "codigo_quira": "M-SOC-O2-01",
+   "componente": "Sociocultural",
+   "meta": "Actualizar el inventario patrimonial y catastro cultural al 100% hasta...",
+   "responsable": "Dirección de Cultura y Patrimonio",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M045",
+   "codigo_quira": "M-SOC-O2-02",
+   "componente": "Sociocultural",
+   "meta": "Incrementar el número de participantes por eventos culturales de 8.000...",
+   "responsable": "Dirección de Cultura y Patrimonio",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M046",
+   "codigo_quira": "M-SOC-O2-03",
+   "componente": "Sociocultural",
+   "meta": "Incrementar el número de beneficiarios en eventos deportivos de 400 en...",
+   "responsable": "Dirección de Cultura y Patrimonio",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M047",
+   "codigo_quira": "M-SOC-O2-04",
+   "componente": "Sociocultural",
+   "meta": "Incrementar el número de beneficiarios de programas de formación cultu...",
+   "responsable": "Dirección de Cultura y Patrimonio",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M048",
+   "codigo_quira": "M-SOC-O2-05",
+   "componente": "Sociocultural",
+   "meta": "Incrementar de 0 a 10 los incentivos a artistas u organizaciones de pr...",
+   "responsable": "Dirección de Cultura y Patrimonio",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M049",
+   "codigo_quira": "M-ECO-O1-01",
+   "componente": "Económico",
+   "meta": "Incrementar los beneficiarios de programas y fortalecimiento productiv...",
+   "responsable": "Dirección de Acción Social",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M050",
+   "codigo_quira": "M-ECO-O1-02",
+   "componente": "Económico",
+   "meta": "Incrementar los beneficiarios en programas de formación de 1645 en el...",
+   "responsable": "Dirección de Acción Social",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M051",
+   "codigo_quira": "M-ECO-O2-01",
+   "componente": "Económico",
+   "meta": "Incrementar el número de establecimientos con certificación de calidad...",
+   "responsable": "Dirección de cultura y turismo",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M052",
+   "codigo_quira": "M-ECO-O2-02",
+   "componente": "Económico",
+   "meta": "Incrementar las visitas anuales de 2700 en el año 2023, a 4300 al 2027...",
+   "responsable": "Dirección de cultura y turismo",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M053",
+   "codigo_quira": "M-ECO-O2-03",
+   "componente": "Económico",
+   "meta": "Incrementar los eventos turísticos de 10 en el año 2023, a 22 al 2027...",
+   "responsable": "Dirección de cultura y turismo",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M054",
+   "codigo_quira": "M-POL-O1-01",
+   "componente": "Político",
+   "meta": "Incrementar el porcentaje de proyectos ejecutados al 80% al 2027",
+   "responsable": "Planificación",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M055",
+   "codigo_quira": "M-POL-O1-02",
+   "componente": "Político",
+   "meta": "Incrementar el porcentaje del sistema de información local del 19,52%...",
+   "responsable": "Planificación",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M056",
+   "codigo_quira": "M-POL-O1-03",
+   "componente": "Político",
+   "meta": "Incrementar el número de procesos sistematizados a 9 al 2027",
+   "responsable": "Avalúos y Catastros",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M057",
+   "codigo_quira": "M-POL-O1-04",
+   "componente": "Político",
+   "meta": "Incrementar el número de trámites en línea implementados a 37 al año 2...",
+   "responsable": "Planificación/ TICS",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M058",
+   "codigo_quira": "M-POL-O2-01",
+   "componente": "Político",
+   "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al...",
+   "responsable": "Dirección Financiera",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M059",
+   "codigo_quira": "M-POL-O3-01",
+   "componente": "Político",
+   "meta": "Aumentar el nivel de desempeño del personal institucional del 80% en a...",
+   "responsable": "Talento Humano",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M060",
+   "codigo_quira": "M-POL-O3-02",
+   "componente": "Político",
+   "meta": "Mantener la ejecución anual del Plan de capacitación del 90% hasta el...",
+   "responsable": "Talento Humano",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M061",
+   "codigo_quira": "M-POL-O3-03",
+   "componente": "Político",
+   "meta": "Aumentar del 91% de vehículos en funcionamiento en el año 2023, a 95%...",
+   "responsable": "Dirección Administrativa/ parque a",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M062",
+   "codigo_quira": "M-POL-O4-01",
+   "componente": "Político",
+   "meta": "Aumentar el nivel de conocimiento de la gestión institucional al 55% a...",
+   "responsable": "Dirección de Comunicación",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M063",
+   "codigo_quira": "M-POL-O4-02",
+   "componente": "Político",
+   "meta": "Aumentar la confianza institucional a 30% al 2027",
+   "responsable": "Dirección de Comunicación",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M064",
+   "codigo_quira": "M-POL-O4-03",
+   "componente": "Político",
+   "meta": "Aumentar la aceptación institucional a 35% al 2027",
+   "responsable": "Dirección de Comunicación",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M065",
+   "codigo_quira": "M-POL-O5-01",
+   "componente": "Político",
+   "meta": "Incrementar el número de Unidades Territoriales Participativas de 50 e...",
+   "responsable": "Planificación Institucional: Parti",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  },
+  {
+   "id": "M066",
+   "codigo_quira": "M-POL-O5-02",
+   "componente": "Político",
+   "meta": "Incrementar las instancias de participación de 2 en el año 2023 a 4 al...",
+   "responsable": "Planificación Institucional: Parti",
+   "ejecutor": "gad_directo",
+   "verificacion": "verificada"
+  }
+ ]
+}
