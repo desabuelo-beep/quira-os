@@ -1,0 +1,645 @@
+{
+ "_meta": {
+  "generado": "2026-08-11",
+  "estado": "ANDAMIAJE PRELIMINAR — no es un mapa jurídico",
+  "que_es": "Ficha por meta con las normas del corpus que MENCIONAN su materia.",
+  "que_NO_es": "Una clasificación de competencia. La búsqueda es literal y no distingue un artículo que ATRIBUYE una competencia de uno que solo MENCIONA la materia: CE 326 aparece bajo alcantarillado y trata de derechos del trabajo.",
+  "metodo": "búsqueda textual determinista (ILIKE) sobre CE · COOTAD · COPLAFIP · LOPC · COESCOP",
+  "limite_declarado": "titularidad y régimen de gestión quedan en PENDIENTE_JURISTA. Clasificarlos es criterio jurídico y ADR-047 §4 reserva esa autoridad a una persona; ACK_REGISTRY ya tiene revisión de jurista pendiente.",
+  "cobertura": "19 de 25 metas con alguna norma localizada",
+  "sin_coincidencia": [
+   "AH-I-X-01",
+   "AH-I-X-04",
+   "AH-C-X-01",
+   "FA-L-N-01",
+   "PI-I-G-02",
+   "PI-TUR-02"
+  ]
+ },
+ "metas": [
+  {
+   "meta": "SC-I-N-01",
+   "desc": "Agua potable",
+   "competencia_excel": "Exclusiva_Crítica",
+   "ei_actual": 1,
+   "termino": "agua potable",
+   "normas": [
+    {
+     "norma": "CE",
+     "art": 264,
+     "sha": "8a610fc989a2"
+    },
+    {
+     "norma": "CE",
+     "art": 314,
+     "sha": "705144dbdd64"
+    },
+    {
+     "norma": "CE",
+     "art": 318,
+     "sha": "7935e249ea15"
+    },
+    {
+     "norma": "CE",
+     "art": 66,
+     "sha": "d0501b7f3c48"
+    }
+   ],
+   "titularidad": "PENDIENTE_JURISTA",
+   "regimen_gestion": "PENDIENTE_JURISTA"
+  },
+  {
+   "meta": "SC-L-N-02",
+   "desc": "Talento humano",
+   "competencia_excel": "Exclusiva_Importante",
+   "ei_actual": 1,
+   "termino": "talento humano",
+   "normas": [
+    {
+     "norma": "CE",
+     "art": 363,
+     "sha": "81bf1917e50f"
+    },
+    {
+     "norma": "COOTAD",
+     "art": 360,
+     "sha": "6a19c477488f"
+    },
+    {
+     "norma": "COOTAD",
+     "art": 354,
+     "sha": "73e344db420e"
+    },
+    {
+     "norma": "COPLAFIP",
+     "art": 113,
+     "sha": "70c235f494c6"
+    }
+   ],
+   "titularidad": "PENDIENTE_JURISTA",
+   "regimen_gestion": "PENDIENTE_JURISTA"
+  },
+  {
+   "meta": "AH-I-X-01",
+   "desc": "Sostenibilidad financiera",
+   "competencia_excel": "Exclusiva_Importante",
+   "ei_actual": 0.9,
+   "termino": null,
+   "normas": [],
+   "titularidad": "PENDIENTE_JURISTA",
+   "regimen_gestion": "PENDIENTE_JURISTA"
+  },
+  {
+   "meta": "AH-I-X-02",
+   "desc": "Vialidad cantonal",
+   "competencia_excel": "Exclusiva_Crítica",
+   "ei_actual": 1,
+   "termino": "vialidad",
+   "normas": [
+    {
+     "norma": "CE",
+     "art": 264,
+     "sha": "8a610fc989a2"
+    },
+    {
+     "norma": "CE",
+     "art": 314,
+     "sha": "705144dbdd64"
+    },
+    {
+     "norma": "CE",
+     "art": 267,
+     "sha": "84e9f1657c8d"
+    },
+    {
+     "norma": "COOTAD",
+     "art": 41,
+     "sha": "376a30fc49fb"
+    }
+   ],
+   "titularidad": "PENDIENTE_JURISTA",
+   "regimen_gestion": "PENDIENTE_JURISTA"
+  },
+  {
+   "meta": "AH-I-X-03",
+   "desc": "Salud integral",
+   "competencia_excel": "Concurrente_Crítica",
+   "ei_actual": 0.9,
+   "termino": "salud",
+   "normas": [
+    {
+     "norma": "CE",
+     "art": 11,
+     "sha": "4d55c178a648"
+    },
+    {
+     "norma": "CE",
+     "art": 13,
+     "sha": "28581c3f8a17"
+    },
+    {
+     "norma": "CE",
+     "art": 15,
+     "sha": "6a8e0a37a524"
+    },
+    {
+     "norma": "CE",
+     "art": 3,
+     "sha": "82a815446303"
+    }
+   ],
+   "titularidad": "PENDIENTE_JURISTA",
+   "regimen_gestion": "PENDIENTE_JURISTA"
+  },
+  {
+   "meta": "AH-I-N-01",
+   "desc": "Gestión desechos sólidos",
+   "competencia_excel": "Exclusiva_Crítica",
+   "ei_actual": 0.75,
+   "termino": "desechos sólidos",
+   "normas": [
+    {
+     "norma": "CE",
+     "art": 264,
+     "sha": "8a610fc989a2"
+    },
+    {
+     "norma": "CE",
+     "art": 415,
+     "sha": "26e1b563004b"
+    },
+    {
+     "norma": "COOTAD",
+     "art": 55,
+     "sha": "7cba2417d70a"
+    },
+    {
+     "norma": "COOTAD",
+     "art": 137,
+     "sha": "7706e03a01f7"
+    }
+   ],
+   "titularidad": "PENDIENTE_JURISTA",
+   "regimen_gestion": "PENDIENTE_JURISTA"
+  },
+  {
+   "meta": "SC-L-G-01",
+   "desc": "Alcantarillado sanitario",
+   "competencia_excel": "Exclusiva_Crítica",
+   "ei_actual": 0.75,
+   "termino": "alcantarillado",
+   "normas": [
+    {
+     "norma": "CE",
+     "art": 264,
+     "sha": "8a610fc989a2"
+    },
+    {
+     "norma": "CE",
+     "art": 326,
+     "sha": "231cb1f3d29f"
+    },
+    {
+     "norma": "CE",
+     "art": 326,
+     "sha": "d80e250305c3"
+    },
+    {
+     "norma": "COOTAD",
+     "art": 55,
+     "sha": "7cba2417d70a"
+    }
+   ],
+   "titularidad": "PENDIENTE_JURISTA",
+   "regimen_gestion": "PENDIENTE_JURISTA"
+  },
+  {
+   "meta": "AH-I-X-04",
+   "desc": "Modernización administrativa",
+   "competencia_excel": "Exclusiva_Importante",
+   "ei_actual": 0.75,
+   "termino": null,
+   "normas": [],
+   "titularidad": "PENDIENTE_JURISTA",
+   "regimen_gestion": "PENDIENTE_JURISTA"
+  },
+  {
+   "meta": "PI-I-G-01",
+   "desc": "Equipamientos públicos",
+   "competencia_excel": "Exclusiva_Importante",
+   "ei_actual": 1,
+   "termino": "equipamientos",
+   "normas": [
+    {
+     "norma": "CE",
+     "art": 264,
+     "sha": "8a610fc989a2"
+    },
+    {
+     "norma": "CE",
+     "art": 267,
+     "sha": "84e9f1657c8d"
+    },
+    {
+     "norma": "COOTAD",
+     "art": 55,
+     "sha": "7cba2417d70a"
+    },
+    {
+     "norma": "COOTAD",
+     "art": 65,
+     "sha": "6deffbc02e54"
+    }
+   ],
+   "titularidad": "PENDIENTE_JURISTA",
+   "regimen_gestion": "PENDIENTE_JURISTA"
+  },
+  {
+   "meta": "AH-C-X-01",
+   "desc": "Protección derechos sociales",
+   "competencia_excel": "Concurrente_Crítica",
+   "ei_actual": 1,
+   "termino": null,
+   "normas": [],
+   "titularidad": "PENDIENTE_JURISTA",
+   "regimen_gestion": "PENDIENTE_JURISTA"
+  },
+  {
+   "meta": "AH-C-X-02",
+   "desc": "Sistema información territorial",
+   "competencia_excel": "Exclusiva_Importante",
+   "ei_actual": 1,
+   "termino": "información",
+   "normas": [
+    {
+     "norma": "CE",
+     "art": 17,
+     "sha": "a85e97e5c4e5"
+    },
+    {
+     "norma": "CE",
+     "art": 18,
+     "sha": "848f507bcaf4"
+    },
+    {
+     "norma": "CE",
+     "art": 16,
+     "sha": "24c09e3075d2"
+    },
+    {
+     "norma": "CE",
+     "art": 45,
+     "sha": "7076c7cfaf2b"
+    }
+   ],
+   "titularidad": "PENDIENTE_JURISTA",
+   "regimen_gestion": "PENDIENTE_JURISTA"
+  },
+  {
+   "meta": "SC-I-N-03",
+   "desc": "Participación ciudadana",
+   "competencia_excel": "Exclusiva_Importante",
+   "ei_actual": 0.75,
+   "termino": "participación ciudadana",
+   "normas": [
+    {
+     "norma": "CE",
+     "art": 120,
+     "sha": "09a2319f55af"
+    },
+    {
+     "norma": "CE",
+     "art": 131,
+     "sha": "3265c634f72e"
+    },
+    {
+     "norma": "CE",
+     "art": 170,
+     "sha": "1a39273bff0e"
+    },
+    {
+     "norma": "CE",
+     "art": 85,
+     "sha": "87f5e3032a72"
+    }
+   ],
+   "titularidad": "PENDIENTE_JURISTA",
+   "regimen_gestion": "PENDIENTE_JURISTA"
+  },
+  {
+   "meta": "FA-I-X-01",
+   "desc": "Gestión del riesgo",
+   "competencia_excel": "Exclusiva_Importante",
+   "ei_actual": 1,
+   "termino": "gestión de riesgos",
+   "normas": [
+    {
+     "norma": "CE",
+     "art": 340,
+     "sha": "e3d557976246"
+    },
+    {
+     "norma": "CE",
+     "art": 397,
+     "sha": "5b56abd58971"
+    },
+    {
+     "norma": "CE",
+     "art": 375,
+     "sha": "e2e5aafee808"
+    },
+    {
+     "norma": "COOTAD",
+     "art": 140,
+     "sha": "0dc5f48de6bb"
+    }
+   ],
+   "titularidad": "PENDIENTE_JURISTA",
+   "regimen_gestion": "PENDIENTE_JURISTA"
+  },
+  {
+   "meta": "FA-C-X-01",
+   "desc": "Áreas verdes y parques",
+   "competencia_excel": "Exclusiva_Importante",
+   "ei_actual": 1,
+   "termino": "espacios públicos",
+   "normas": [
+    {
+     "norma": "CE",
+     "art": 264,
+     "sha": "8a610fc989a2"
+    },
+    {
+     "norma": "CE",
+     "art": 267,
+     "sha": "84e9f1657c8d"
+    },
+    {
+     "norma": "CE",
+     "art": 329,
+     "sha": "8d32a1b5261e"
+    },
+    {
+     "norma": "CE",
+     "art": 31,
+     "sha": "3bde62de4695"
+    }
+   ],
+   "titularidad": "PENDIENTE_JURISTA",
+   "regimen_gestion": "PENDIENTE_JURISTA"
+  },
+  {
+   "meta": "FA-I-X-02",
+   "desc": "Índice equipamiento urbano",
+   "competencia_excel": "Exclusiva_Importante",
+   "ei_actual": 0.9,
+   "termino": "equipamientos",
+   "normas": [
+    {
+     "norma": "CE",
+     "art": 264,
+     "sha": "8a610fc989a2"
+    },
+    {
+     "norma": "CE",
+     "art": 267,
+     "sha": "84e9f1657c8d"
+    },
+    {
+     "norma": "COOTAD",
+     "art": 55,
+     "sha": "7cba2417d70a"
+    },
+    {
+     "norma": "COOTAD",
+     "art": 65,
+     "sha": "6deffbc02e54"
+    }
+   ],
+   "titularidad": "PENDIENTE_JURISTA",
+   "regimen_gestion": "PENDIENTE_JURISTA"
+  },
+  {
+   "meta": "FA-L-N-01",
+   "desc": "Inventario patrimonial",
+   "competencia_excel": "Exclusiva_Importante",
+   "ei_actual": 0.9,
+   "termino": null,
+   "normas": [],
+   "titularidad": "PENDIENTE_JURISTA",
+   "regimen_gestion": "PENDIENTE_JURISTA"
+  },
+  {
+   "meta": "PI-I-G-02",
+   "desc": "Cumplimiento PDOT/PUGS",
+   "competencia_excel": "Exclusiva_Importante",
+   "ei_actual": 1,
+   "termino": null,
+   "normas": [],
+   "titularidad": "PENDIENTE_JURISTA",
+   "regimen_gestion": "PENDIENTE_JURISTA"
+  },
+  {
+   "meta": "PI-L-G-01",
+   "desc": "Señalización vial",
+   "competencia_excel": "Exclusiva_Importante",
+   "ei_actual": 0.75,
+   "termino": "vialidad",
+   "normas": [
+    {
+     "norma": "CE",
+     "art": 264,
+     "sha": "8a610fc989a2"
+    },
+    {
+     "norma": "CE",
+     "art": 314,
+     "sha": "705144dbdd64"
+    },
+    {
+     "norma": "CE",
+     "art": 267,
+     "sha": "84e9f1657c8d"
+    },
+    {
+     "norma": "COOTAD",
+     "art": 41,
+     "sha": "376a30fc49fb"
+    }
+   ],
+   "titularidad": "PENDIENTE_JURISTA",
+   "regimen_gestion": "PENDIENTE_JURISTA"
+  },
+  {
+   "meta": "EP-L-N-01",
+   "desc": "Vivienda de interés social",
+   "competencia_excel": "Exclusiva_Importante",
+   "ei_actual": 1,
+   "termino": "vivienda",
+   "normas": [
+    {
+     "norma": "CE",
+     "art": 37,
+     "sha": "e77175170612"
+    },
+    {
+     "norma": "CE",
+     "art": 39,
+     "sha": "3c905e56e5bb"
+    },
+    {
+     "norma": "CE",
+     "art": 42,
+     "sha": "28fcc5b1f9bf"
+    },
+    {
+     "norma": "CE",
+     "art": 30,
+     "sha": "3c59f419738c"
+    }
+   ],
+   "titularidad": "PENDIENTE_JURISTA",
+   "regimen_gestion": "PENDIENTE_JURISTA"
+  },
+  {
+   "meta": "EP-L-X-01",
+   "desc": "Fortalecimiento productivo",
+   "competencia_excel": "Concurrente",
+   "ei_actual": 1,
+   "termino": "fomento de las actividades productivas",
+   "normas": [
+    {
+     "norma": "COOTAD",
+     "art": 135,
+     "sha": "103f721dc417"
+    }
+   ],
+   "titularidad": "PENDIENTE_JURISTA",
+   "regimen_gestion": "PENDIENTE_JURISTA"
+  },
+  {
+   "meta": "PI-TUR-01",
+   "desc": "Turismo cantonal",
+   "competencia_excel": "Concurrente",
+   "ei_actual": 1,
+   "termino": "turismo",
+   "normas": [
+    {
+     "norma": "COOTAD",
+     "art": 54,
+     "sha": "53a6cf3041c4"
+    },
+    {
+     "norma": "COOTAD",
+     "art": 64,
+     "sha": "043a92f9aa12"
+    },
+    {
+     "norma": "COOTAD",
+     "art": 84,
+     "sha": "b5b8a33bae72"
+    },
+    {
+     "norma": "COOTAD",
+     "art": 135,
+     "sha": "103f721dc417"
+    }
+   ],
+   "titularidad": "PENDIENTE_JURISTA",
+   "regimen_gestion": "PENDIENTE_JURISTA"
+  },
+  {
+   "meta": "PI-TUR-02",
+   "desc": "Eventos turísticos",
+   "competencia_excel": "Concurrente",
+   "ei_actual": 1,
+   "termino": null,
+   "normas": [],
+   "titularidad": "PENDIENTE_JURISTA",
+   "regimen_gestion": "PENDIENTE_JURISTA"
+  },
+  {
+   "meta": "FA-CC-01",
+   "desc": "Cambio climático",
+   "competencia_excel": "Exclusiva_Importante",
+   "ei_actual": 1,
+   "termino": "cambio climático",
+   "normas": [
+    {
+     "norma": "CE",
+     "art": 414,
+     "sha": "cca51b977821"
+    },
+    {
+     "norma": "COPLAFIP",
+     "art": 64,
+     "sha": "4d2a30abf146"
+    }
+   ],
+   "titularidad": "PENDIENTE_JURISTA",
+   "regimen_gestion": "PENDIENTE_JURISTA"
+  },
+  {
+   "meta": "AH-AP-04",
+   "desc": "Continuidad agua potable",
+   "competencia_excel": "Exclusiva_Crítica",
+   "ei_actual": 1,
+   "termino": "agua potable",
+   "normas": [
+    {
+     "norma": "CE",
+     "art": 264,
+     "sha": "8a610fc989a2"
+    },
+    {
+     "norma": "CE",
+     "art": 314,
+     "sha": "705144dbdd64"
+    },
+    {
+     "norma": "CE",
+     "art": 318,
+     "sha": "7935e249ea15"
+    },
+    {
+     "norma": "CE",
+     "art": 66,
+     "sha": "d0501b7f3c48"
+    }
+   ],
+   "titularidad": "PENDIENTE_JURISTA",
+   "regimen_gestion": "PENDIENTE_JURISTA"
+  },
+  {
+   "meta": "FA-DIS-01",
+   "desc": "Disposición final desechos",
+   "competencia_excel": "Exclusiva_Crítica",
+   "ei_actual": 1,
+   "termino": "desechos sólidos",
+   "normas": [
+    {
+     "norma": "CE",
+     "art": 264,
+     "sha": "8a610fc989a2"
+    },
+    {
+     "norma": "CE",
+     "art": 415,
+     "sha": "26e1b563004b"
+    },
+    {
+     "norma": "COOTAD",
+     "art": 55,
+     "sha": "7cba2417d70a"
+    },
+    {
+     "norma": "COOTAD",
+     "art": 137,
+     "sha": "7706e03a01f7"
+    }
+   ],
+   "titularidad": "PENDIENTE_JURISTA",
+   "regimen_gestion": "PENDIENTE_JURISTA"
+  }
+ ]
+}

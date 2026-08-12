@@ -17,7 +17,7 @@ authority:
 > ⛔ **NO es "auditoría" ni "observatorio"** — función menor y producto (Javo 2026-08-05).
 > Escala: SIAP-ICPI **mide** · QUADRUM **detecta** · **QUIRA EXPLICA la causalidad**.
 
-**3 niveles** (ADR-023 — inmutable): **1 Motor** = Gold Master v5.5 (calcula ICPI/TGI/SAT/MMP · leer vía
+**3 niveles** (ADR-023 — inmutable): **1 Motor** = Gold Master **v5.7_TGI** (calcula ICPI/TGI/SAT/MMP · leer vía
 `app/connectors/gold_master.py` · NUNCA recalcular fuera del Excel) · **2 SO** = QUIRA (ingesta +
 trazabilidad MNT_UUID + evidencia) · **3 UI** = Dashboards + GeoTwin (solo visualizan).
 **MATRIZ_CANONICA** del Excel = ADN compartido: sin ella, dos mundos.
@@ -34,23 +34,27 @@ Define el OBJETO observado, **no a QUIRA** (CAPA 0 + 4 macroejes + 12 dominios):
 PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 3ª pieza: `GOVERNANCE_CHARTER.md`.
 
 ## AHORA (estado vivo · historial → `governance/historico/BOOT_2026-06-17.md`)
-🧭 **ADR-031** cajón=MCD·GM=MCM·**MCIP=5 motores** · **ADR-035/037** IA propone/humano valida · **ADR-038** BRN v2: **Corpus→CNO→RO→SAT**.
-✅ **PCD: d01·d02·d03·d09** · **d08 ENTRABLE** (**Asamblea AUTÓNOMA** · CNO-VIII(8) · **OBS-012..017**).
-🩺 **Canon curado por DOM (R.8), ICPI intacto. `check_health.py`: NO adivinar.**
-🏛️ **GOBERNANZA v1.0:** `identity/`→`governance/`→`marco_teorico/`→Canon→`registry/`. ⚠️ Derivación **solo en lo catalogado**.
-🖥️ **d08 EN WEB** (191→162→**15%**, NO el 48,33): **66 inverificable-instrumento** · **96 sin-tema**.
-🩹 **8 GATES en `scripts/ci/`** — correr TODOS antes de commitear.
-🔭 **ADR-042 CONSOLA**: Observatorio=función · Consola=infraestructura (`env_obs`≠`env_ops`) · integra la **MATRIZ_CANONICA, NO el GM**. Haiku ejecuta·Opus supervisa método·**humano acredita**. 1ª corrida 2025=**calibración**.
-🚦 **8 ESTADOS** (`app/observatorio/`): «no existe» ≠ «no pude obtener» ≠ «capturador falló». **Solo 2 publicables**. DPE ya los emite (antes un timeout = mes no publicado). Cadena DPE completa: 546 frag · corpus 13.906.
-🎨 **Identidad v1.1**: marca = **asset, NO se redibuja** · 1 acento · **plano afuera/volcánico adentro** → `login_view.py`.
-🔌 **CABLEADO** (`MATRIZ_CABLEADO_CANONICO.md`): **GM→SILOS→DOM→QUIRA**. **S1·S6·S9 sin DOM.**
-🧨 **OBS-023 · brecha ICM↔ICPI NO citable:** bug escala `B36` + **DESCALCE PDOT**. **`SAT-I`=S6 SIGAD**. ⛔ NO redefinir (R.1).
-🚨 **OBS-022: SAT sin BRN, deuda 90%→60%.** Gate `check_sat_brn.py`. ⛔ `SAT-IX`(d08) ≠ `SAT-IX-001`(=SAT-V).
-🏛️ **R-C..R-H → `PROTOCOLO_CURACION_DOMINIO.md` §3** (D **se mide, no se parcha** · **E LEY**: solo MCR · **H no comparar horizontes**).
-🔬 **d01 §05** (OBS-020): POA **100% QUÉ · 1,1% DÓNDE · 3,5% QUIÉN · 1 de 1027 ambas**. **148 a 1** externo (hipótesis n=12). `inverificable` ≠ `no atendido`.
+🧭 **ADR-031** MCIP=**5 motores** (runtime: Matemático·Grafos) · **ADR-035/037** IA propone/humano valida · **ADR-038** BRN **traza, no alimenta**.
+✅ **PCD: d01·d02·d03·d06·d09** · **d08 ENTRABLE** (Asamblea AUTÓNOMA · OBS-012..017).
+🩺 **Curación por DOM (R.8) · `check_health.py`: NO adivinar.**
+🏛️ **GOBERNANZA v1.0:** `identity/`→`governance/`→`marco_teorico/`→Canon→`registry/`.
+🖥️ **d08 WEB** 191→162→**15%** · 66 inverificable · 96 sin-tema.
+🩹 **9 GATES** (`scripts/ci/`) — correr TODOS antes de commitear.
+🔧 **v5.7_TGI** (11-08) · promover = **recalcular y GUARDAR** (sin caché el conector lee vacío) · **IGP 48,33→27,00**.
+⚖️ **ADR-045/046/047**: 1 superficie·3 custodias · techo = **el documento, no el portador** · **recálculo = Operaciones**.
+🚒 **OBS-024** Bomberos: $1,75M sin meta · **OBS-025** `Ei`·`Ci_Manual`·`Competencia_GAD` = **3 manuales**. **Ei NO tocado.**
+📋 **Metas PDOT: 66** (58 verif.) · **0 de Bomberos** · motor cablea **25**.
+🔭 **ADR-042 CONSOLA** (`env_obs`≠`env_ops`) · integra **MATRIZ_CANONICA, NO el GM** · **humano acredita** · 1ª corrida=**calibración**. Ya tiene **mando** (`app/observatorio/despacho.py`).
+🚦 **8 ESTADOS** (`app/observatorio/`): «no existe» ≠ «no pude obtener» ≠ «falló el capturador». **Solo 2 publicables**. Corpus **14.285** (+COESCOP).
+🎨 **Identidad v1.1**: marca = **asset, NO se redibuja** · 1 acento → `login_view.py`.
+🔌 **CABLEADO**: **GM→SILOS→DOM→QUIRA** · **S1·S6·S9 sin DOM** (`MATRIZ_CABLEADO_CANONICO.md`).
+🧨 **OBS-023** brecha ICM↔ICPI **NO citable** · **`SAT-I`=S6 SIGAD**. ⛔ NO redefinir (R.1).
+🚨 **OBS-022** SAT sin BRN → gate `check_sat_brn.py`. ⛔ `SAT-IX`(d08) ≠ `SAT-IX-001`.
+🏛️ **R-C..R-H → `PROTOCOLO_CURACION_DOMINIO.md` §3.**
+🔬 **d01 §05 → OBS-020**: POA 100% QUÉ · **1,1% DÓNDE** · 1 de 1027 ambas. `inverificable` ≠ `no atendido`.
 ⚖️ **3 CAPAS**: jurídica (**Guía LOTAIP=LEY**) · operativa (d07) · analítica (**no tramita**). 🧪 H-ARQ-01 HIPÓTESIS ⛔R-E.
 🧠 **DESCUBRIMIENTO NORMATIVO**: 4º de los **5 MCIP**, no motor nuevo. **Laboratorio, NO runtime**. ⛔R-E.
-⏭️ **JAVO: (1)** 2ª validación v4 (¿retirar `complementaria`?) **(2)** promover `_CANDIDATO_v5.7`→`v5.7_TGI` **(3)** Haiku ~$60/18 meses.
+⏭️ **JAVO: (1)** 2ª validación v4 (¿retirar `complementaria`?) **(2)** Haiku ~$60/18 meses **(3)** repintado Observatorio.
 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 ratificado · detalle en el ADR)
 GAD = sujeto observado, NO cliente. 4 capas: A Núcleo · B Operaciones · C Productos (§LA TESIS · 1 motor) · D Portal `quiraintelligence.com` (radar 222 GAD).
