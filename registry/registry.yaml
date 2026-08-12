@@ -4,7 +4,7 @@
 # Autoridad: Carta de Gobernanza Art. 1 (Derivación) y Art. 3 (describe, no gobierna).
 # ═══════════════════════════════════════════════════════════════════
 generado: 2026-08-12
-total_activos: 128
+total_activos: 129
 huerfanos: 0   # sin bloque authority: → no pueden promoverse a vigente (Art. 1)
 
 componentes:
@@ -755,6 +755,13 @@ componentes:
     level: 2
     path: docs/observations/OBS-026_Codificacion_Canonica_Metas_PDOT.md
     hash: 9d38cb2b3f568086
+    authority_declared: true
+    parent: ADR-047
+  - id: OBS-027
+    kind: observation
+    level: 2
+    path: docs/observations/OBS-027_POA_2026_Pierde_Anclaje_A_Meta.md
+    hash: 3ffb0a42dd337826
     authority_declared: true
     parent: ADR-047
   - id: DOMAIN_CATALOG-catalogo_d01_v1.0.0

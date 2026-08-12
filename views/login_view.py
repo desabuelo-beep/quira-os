@@ -75,7 +75,7 @@ CSS = """<style>
   --pizarra:#4E6674;      /* dato sin evidencia · 4,53:1 sobre el plano (AA)  */
   --tx:#18232B;           /* tinta · azul-pizarra profundo                    */
   --tx2:#52616B;
-  --tx3:#8296A2;
+  --tx3:#52646F;
   --bd:#B9C6CD;
   --sf:#F3F6F7;
 }

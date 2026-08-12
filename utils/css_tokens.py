@@ -71,7 +71,9 @@ class C:
     PIZARRA    = "#4E6674"   # Instrumental sobre plano (4,53:1 · AA)
     TX         = "#18232B"   # Texto principal
     TX2        = "#52616B"   # Texto secundario
-    TX3        = "#8296A2"   # Metadatos
+    TX3        = "#52646F"   # 4,62:1 sobre plano — pinta TEXTO (q-cat, q-cap, q-num…),
+    # no gráficos, así que exige AA. Estaba en #8296A2 = 2,30:1 y el gate no lo
+    # veía: medía V_TX3 sobre volcánico, nunca TX3 sobre plano (2026-08-12).   # Metadatos
     BD         = "#B9C6CD"   # Borde
 
     # ── REGISTRO VOLCÁNICO (adentro · el trabajo) ────────────────────────────

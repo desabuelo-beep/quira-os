@@ -66,6 +66,10 @@ EXIGENCIAS = [
     ("PIZARRA",  C.PIZARRA,  C.PLANO,     4.5, "instrumental sobre plano"),
     ("TX",       C.TX,       C.PLANO,     7.0, "texto principal afuera (AAA)"),
     ("TX2",      C.TX2,      C.PLANO,     4.5, "texto secundario afuera"),
+    # TX3 sobre PLANO faltaba: el gate solo medía V_TX3 sobre volcánico, y el
+    # token pinta metadatos en la portada (2,30:1). Lo señaló un colega del GAD
+    # apuntando a otro elemento; al medir apareció este (2026-08-12).
+    ("TX3",      C.TX3,      C.PLANO,     4.5, "metadatos afuera — es TEXTO, exige AA"),
     # El coral pleno es de MARCA y GRÁFICO (logo, greca, bordes): 3:1. Da 4,05:1
     # sobre el plano, así que NO sirve para texto — para eso está CORAL_DP. La
     # landing lo usaba en 7 sitios de texto hasta que este gate lo delató.
