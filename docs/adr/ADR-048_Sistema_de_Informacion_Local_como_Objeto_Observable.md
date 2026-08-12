@@ -4,7 +4,7 @@ authority:
   parent: ADR-041
   constitution_articles: [1, 2, 3, 4, 5]
   type: ARQUITECTONICA
-status: PROPUESTO — pendiente de sello (ADR-035 §5)
+status: APROBADO — sellado por Javo 2026-08-12 con las observaciones del colega (ADR-035 §5)
 fecha: 2026-08-12
 ---
 
@@ -145,6 +145,17 @@ Derivadas del Art. 8 (respaldo documental **y metodológico**) y de lo hallado e
 > `Ei` (OBS-025): una variable que entra al cálculo sin cadena normativa que la sostenga. Primero
 > la doctrina y la evidencia; la métrica, si llega, llega después y con su propio ADR.
 
+⛔ **Candado sobre esta tabla.** Estas ocho dimensiones **no son un índice, ni sus componentes.**
+Ponderarlas, promediarlas o puntuarlas —de la forma que sea— exige **ADR metodológico propio** con
+su cadena de legitimidad construida antes, no después. Sin ese ADR, cualquier cifra derivada de
+esta tabla es inválida por construcción.
+
+Y una precisión que fija el alcance de la observación:
+
+> **QUIRA no certifica que un GAD tenga un «buen» SIL porque encuentre documentos.** Observa
+> evidencia de la capacidad informacional del GAD **según dimensiones normativamente respaldadas**.
+> Hallar documentos no es hallar sistema; hallar sistema no es certificar calidad.
+
 ## 6 · Estados epistemológicos — la regla que este ADR eleva a canon
 
 Un `0/1` no distingue «no ocurrió» de «no encontré». Esa confusión ya produjo daño verificable:
@@ -196,6 +207,20 @@ todos» · «la provincia es una línea imaginaria». Provincia y país son circ
 competencias propias. Lo defendible es que **el cantón es la escala donde el territorio deja de ser
 abstracción**.
 
+### La separación que hay que sostener con disciplina
+
+Este ADR **no establece** —ni permite derivar— que toda información producida por un GAD adquiera
+por ese solo hecho carácter de estadística oficial.
+
+| | Qué es | Quién la rige |
+|---|---|---|
+| **Información oficial local** | la que el GAD produce en el ámbito de sus competencias, con respaldo documental y metodológico (Art. 8) | el GAD, dentro de la norma del SIL |
+| **Estadística oficial nacional** | la del sistema estadístico nacional | órganos rectores · **no el GAD** |
+
+> **Que un dato sea oficial no lo vuelve estadística, y que sea local no lo vuelve menos válido.**
+> Son dos regímenes distintos y el SIL vive en el primero. Confundirlos convertiría a QUIRA en
+> aval de un «INEC municipal», que es exactamente lo que la norma no autoriza.
+
 ## 9 · Prueba metodológica — por qué esto no es una hipótesis
 
 La cadena `meta → partida → devengado` se sometió deliberadamente a los casos **fuera** de las 25
@@ -224,8 +249,12 @@ se rellenó ninguno para mejorar la cobertura.**
 4. `no_reconciliado` **jamás** se publica como incumplimiento.
 5. Evidencia intermediada por QUIRA Institucional: techo `institucional`, custodia declarada.
 6. Este ADR **no crea métrica**. Cualquier índice de capacidad informacional exige ADR propio con
-   cadena normativa verificada, so pena de repetir `Ei`.
-7. Sin norma verificada con SHA, no hay dato (Regla de Oro 3) — **incluida la norma del SIL**.
+   cadena normativa verificada, so pena de repetir `Ei`. Las ocho dimensiones de §5 **no son
+   componentes de un índice** mientras ese ADR no exista.
+7. **Información oficial local ≠ estadística oficial nacional.** Nada aquí autoriza a QUIRA a
+   avalar producción estadística municipal fuera del ámbito de competencias del GAD.
+8. Hallar documentos **no es** hallar sistema; hallar sistema **no es** certificar calidad.
+9. Sin norma verificada con SHA, no hay dato (Regla de Oro 3) — **incluida la norma del SIL**.
 
 ## 11 · Trazabilidad
 
