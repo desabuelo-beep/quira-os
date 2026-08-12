@@ -36,25 +36,24 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 
 ## AHORA (estado vivo · historial → `governance/historico/BOOT_2026-06-17.md`)
 🧭 **ADR-031** MCIP=**5 motores** (runtime: Matemático·Grafos) · **ADR-035/037** IA propone/humano valida · **ADR-038** BRN **traza, no alimenta**.
 ✅ **PCD: d01·d02·d03·d06·d09** · **d08 ENTRABLE** (Asamblea AUTÓNOMA · OBS-012..017).
-🩺 **Curación por DOM (R.8) · `check_health.py`: NO adivinar.**
-🏛️ **GOBERNANZA v1.0:** `identity/`→`governance/`→`marco_teorico/`→Canon→`registry/`.
-🩹 **10 GATES** (`scripts/ci/`) — correr TODOS antes de commitear.
+🩹 **10 GATES** (`scripts/ci/`) — correr TODOS · **Curación por DOM (R.8)** · `check_health.py`: NO adivinar.
 🔧 **v5.7_TGI** · promover = **recalcular y GUARDAR** (sin caché el conector lee vacío) · **IGP 48,33→27,00**.
-⚖️ **ADR-045/046/047**: 1 superficie·3 custodias · techo = **el documento, no el portador** · **recálculo = Operaciones**.
-🏛️ **ADR-048 SIL** (propuesto): **objeto observado, NO dominio** · ⛔ sin fórmula (no repetir `Ei`).
-🚒 **OBS-024** Bomberos $1,75M sin meta · **OBS-025/028** `Ei`·`Ci_Manual`·`Competencia_GAD`·`V_eSIGEF`·`V_SERCOP` = **5 manuales**. **Ei NO tocado.**
-📋 **Metas 66** · cablea **25** · **OBS-028** meta→partida→devengado · PDOT vige **05-11-2024** → **≥2025** · **5/6 ceros `V_eSIGEF` los desmiente la cédula** · ⛔`no_reconciliado`≠`sin_partida`.
-🔭 **ADR-042 CONSOLA** (`env_obs`≠`env_ops`) · integra **MATRIZ_CANONICA, NO el GM** · **humano acredita** · 1ª corrida=**calibración** · mando `despacho.py`.
-🚦 **8 ESTADOS**: «no existe»≠«no pude obtener»≠«falló el capturador». **Solo 2 publicables**. Corpus **14.285**.
+⚖️ **ADR-045/046/047**: 1 superficie·3 custodias · techo = **el documento, no el portador** · recálculo = Operaciones.
+🏛️ **ADR-048 SIL** (SELLADO): **objeto observado, NO dominio** · ⛔ sin fórmula (no repetir `Ei`).
+🔍 **OBS-029**: `V_SERCOP` 0,5 en **42/66** (PAC=puente) · ⛔ captura SERCOP solo **mar-ago 2025** → `1,0`/`0,0` NO derivables · `V_CPCCS` **0/66 citadas en RDC**.
+🚒 **OBS-024** Bomberos $1,75M sin meta · **OBS-025/028** **5 factores manuales** (`Ei`·`Ci_Manual`·`Competencia_GAD`·`V_eSIGEF`≡`V_SERCOP`). **Ei NO tocado.**
+📋 **Metas 66** · cablea **25** · **OBS-028** meta→partida→devengado · PDOT vige **05-11-2024** → **≥2025** · **5/6 ceros `V_eSIGEF` desmentidos** · ⛔`no_reconciliado`≠`sin_partida`.
+🔭 **ADR-042 CONSOLA** (`env_obs`≠`env_ops`) · integra **MATRIZ_CANONICA, NO el GM** · **humano acredita** · mando `despacho.py` · ⏭️ **reejecutar SERCOP + 1ª corrida LOTAIP**.
+🚦 **8 ESTADOS**: «no existe»≠«no pude obtener»≠«falló». **Solo 2 publicables**. Corpus **14.285**.
 🎨 **Identidad v1.1**: marca = **asset, NO se redibuja** · 1 acento → `login_view.py`.
 🔌 **CABLEADO**: **GM→SILOS→DOM→QUIRA** · **S1·S6·S9 sin DOM** (`MATRIZ_CABLEADO_CANONICO.md`).
-🧨 **OBS-023** brecha ICM↔ICPI **NO citable** · **`SAT-I`=S6 SIGAD**. ⛔NO redefinir (R.1).
+🧨 **OBS-023** brecha ICM↔ICPI **NO citable** · **`SAT-I`=S6 SIGAD** ⛔NO redefinir (R.1).
 🚨 **OBS-022** SAT sin BRN → `check_sat_brn.py`. ⛔`SAT-IX`(d08)≠`SAT-IX-001`.
 🏛️ **R-C..R-H → `PROTOCOLO_CURACION_DOMINIO.md` §3.**
-🔬 **OBS-020** (d01§05): POA 100% QUÉ · **1,1% DÓNDE**. `inverificable`≠`no atendido`.
-⚖️ **3 CAPAS**: jurídica (**Guía LOTAIP=LEY**) · operativa (d07) · analítica (**no tramita**). 🧪H-ARQ-01 HIPÓTESIS ⛔R-E.
-🧠 **DESCUBRIMIENTO NORMATIVO**: 4º de **5 MCIP**, no motor nuevo. **Laboratorio, NO runtime**. ⛔R-E.
-⏭️ **JAVO: (1)** 2ª validación v4 (¿retirar `complementaria`?) **(2)** Haiku ~$60/18 meses **(3)** repintado Observatorio.
+🔬 **OBS-020**: POA 100% QUÉ · **1,1% DÓNDE**. `inverificable`≠`no atendido`.
+⚖️ **3 CAPAS**: jurídica (**Guía LOTAIP=LEY**) · operativa (d07) · analítica (**no tramita**). 🧪H-ARQ-01 ⛔R-E.
+🧠 **DESCUBRIMIENTO NORMATIVO**: 4º de **5 MCIP**. **Laboratorio, NO runtime**. ⛔R-E.
+⏭️ **JAVO: (1)** ingesta corpus (ordenanza Word + 2 normas SIL) **(2)** Haiku ~$60/18m **(3)** repintado Observatorio.
 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 · detalle en el ADR)
 GAD = sujeto observado, NO cliente. 4 capas: A Núcleo · B Operaciones · C Productos (§LA TESIS · 1 motor) · D Portal `quiraintelligence.com` (radar 222 GAD).
