@@ -34,15 +34,26 @@ if hasattr(sys.stdout, "reconfigure"):
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
+# ── CONTADOR DE FALLOS DE TRANSPORTE (2026-08-12)
+# Antes, un fallo de red y una respuesta «cero procesos» devolvían ambos `None`, y
+# el llamador no podía distinguirlos: con la API caída el guion imprimía
+# `[OK] 0 procesos` y guardaba el archivo como si fuera una captura válida.
+# **«No existe» ≠ «no pude obtener»** (ADR-042 §6). Un cero así, ingerido al Canon,
+# se vuelve indistinguible de una ausencia real de contratación.
+_RED = {"fallos": 0, "intentos": 0, "ultimo_error": ""}
+
 try:
     import requests
 
     def api_get(url: str, params: dict | None = None, timeout: int = 30) -> Any:
+        _RED["intentos"] += 1
         try:
             r = requests.get(url, params=params or {}, timeout=timeout)
             r.raise_for_status()
             return r.json()
         except Exception as e:
+            _RED["fallos"] += 1
+            _RED["ultimo_error"] = f"{type(e).__name__}: {e}"
             print(f"[WW] GET {url} {params} -> {e}")
             return None
 except ImportError:
@@ -50,6 +61,7 @@ except ImportError:
     import urllib.request
 
     def api_get(url: str, params: dict | None = None, timeout: int = 30) -> Any:
+        _RED["intentos"] += 1
         try:
             if params:
                 url = url + "?" + urllib.parse.urlencode(params)
@@ -57,6 +69,8 @@ except ImportError:
             with urllib.request.urlopen(req, timeout=timeout) as r:
                 return json.loads(r.read().decode("utf-8"))
         except Exception as e:
+            _RED["fallos"] += 1
+            _RED["ultimo_error"] = f"{type(e).__name__}: {e}"
             print(f"[WW] GET {url} -> {e}")
             return None
 
@@ -216,8 +230,25 @@ def main() -> None:
 
     print(f"[>>] SERCOP OCDS: search='{args.search}' buyer='{args.buyer}' year={args.year}")
     block = build_contratacion_block(args.year, args.search, args.buyer)
-    print(f"[OK] {block['n_procesos']} procesos · ${block['total_usd']:,.2f}")
-    print(f"     etapas: {block['conteos_por_etapa']}")
+
+    # ── UNA CAPTURA QUE NO ALCANZÓ LA FUENTE NO ES UNA CAPTURA DE CERO.
+    # Se declara `captura_fallida`, se marca el bloque y se sale con código ≠ 0
+    # para que ningún proceso aguas abajo lo confunda con evidencia de ausencia.
+    fallida = _RED["fallos"] > 0 and block["n_procesos"] == 0
+    block["transporte"] = {"intentos": _RED["intentos"], "fallos": _RED["fallos"],
+                           "ultimo_error": _RED["ultimo_error"]}
+    block["estado_captura"] = "captura_fallida" if fallida else (
+        "parcial_con_fallos" if _RED["fallos"] else "completa")
+
+    if fallida:
+        print(f"[XX] CAPTURA FALLIDA — {_RED['fallos']}/{_RED['intentos']} peticiones no "
+              f"alcanzaron la fuente. NO significa que no existan procesos.")
+        print(f"     último error: {_RED['ultimo_error'][:120]}")
+    else:
+        print(f"[OK] {block['n_procesos']} procesos · ${block['total_usd']:,.2f}")
+        print(f"     etapas: {block['conteos_por_etapa']}")
+        if _RED["fallos"]:
+            print(f"[!!] {_RED['fallos']} petición(es) fallaron: captura PARCIAL, no completa.")
     if block["alertas"]:
         print(f"[!!] Alertas: {', '.join(block['alertas'])}")
 
@@ -225,7 +256,9 @@ def main() -> None:
     out_path.parent.mkdir(parents=True, exist_ok=True)
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(block, f, ensure_ascii=False, indent=2)
-    print(f"[OK] Guardado: {out_path}")
+    print(f"[{'XX' if fallida else 'OK'}] Guardado: {out_path}")
+    if fallida:
+        sys.exit(2)
 
 
 if __name__ == "__main__":
