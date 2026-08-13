@@ -64,6 +64,28 @@ Y su consecuencia, que resume mejor que ninguna otra frase lo que esta capa prot
 > **Una visualización de QUIRA no puede ser fuente de una afirmación que el estado canónico no
 > pueda reconstruir.**
 
+### VIS-INV-002 · la caja no confiere hechos
+
+> **Una etiqueta visual que describa una relación, causa, migración, efecto o significado que no
+> haya sido producida por un motor autorizado deberá clasificarse como interpretación, y nunca
+> podrá presentarse con la misma gramática visual que un hecho documental.**
+
+*(propuesta del colega, 2026-08-12 — adoptada)*. VIS-INV-001 impide que el dibujo **invente datos**.
+Ésta cierra un agujero distinto y más sutil:
+
+> **que el dibujo convierta una interpretación humana en un hecho por el solo acto de ponerla dentro
+> de una caja.**
+
+No es hipotético: ocurrió el mismo día en que se escribió este ADR. El primer objeto canónico
+rotulaba una rama como «TRAZABILIDAD DESVIADA» y afirmaba que *«la trazabilidad no desapareció:
+cambió de destino»*. El hecho medido era otro —95 de 101 actividades con código orgánico, 0 con
+meta—; la lectura la puso el analista. **Con el mismo trazo, el mismo marco y el mismo peso
+tipográfico que las cifras verificadas.**
+
+Un límite honesto de estas invariantes: `verificar_procedencia` detecta un elemento sin dueño, pero
+**no habría detectado esa frase**, porque tenía dueño aparente. La distinción hecho/interpretación
+todavía depende de revisión humana. Conviene saberlo antes de escalar a doce dominios.
+
 ### VIS-INT-001 · integridad de procedencia visual
 
 > **Si un elemento del dibujo no tiene propietario canónico, ese elemento no puede existir.**
@@ -181,6 +203,11 @@ Los estados provienen del motor y de la capa derivada; la gráfica **no inventa 
 | `extraccion_corrupta` | ruptura **de QUIRA** | **QUIRA** | como carencia del GAD |
 | `fuente_no_accesible` | ruptura **de la fuente** | **fuente externa** | como ausencia |
 | `contradiccion` | bifurcación, ambas ramas | — | resuelta a una rama |
+
+⛔ **Ninguna caja puede rotularse «no verificable», «sin datos» ni «no disponible».** Esas fórmulas
+colapsan cuatro situaciones que no son la misma —`sin_evidencia` · `no_reconciliado` ·
+`fuente_no_accesible` · `extraccion_corrupta`— y reintroducen por la puerta del texto el binario que
+esta gramática existe para eliminar. **Se declara cuál de las cuatro es, y por qué.**
 
 > **La trampa más peligrosa de una plataforma de inteligencia pública es que el diseño gráfico
 > convierta un «no sé» en un «no existe».** La columna de atribución existe para impedirlo: quien

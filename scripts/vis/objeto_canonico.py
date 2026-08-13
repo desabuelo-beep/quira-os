@@ -142,9 +142,14 @@ def construir_estado(anio: int = 2026) -> dict:
             # si fuera un hallazgo del propio dibujo — que es exactamente lo que
             # VIS-INV-001 prohíbe, escrito el mismo día.
             "interpretacion": {
-                "texto": ["El identificador presente ancla la actividad a la",
-                          "dirección que la ejecuta; el ausente la anclaba al",
-                          "plan. Lectura del analista, no medición."],
+                # La redacción anterior decía que el identificador «ancla la
+                # actividad a la dirección que la ejecuta». El instrumento
+                # muestra un código; que ese código corresponda a una unidad
+                # responsable de la ejecución es un puente que el documento no
+                # cierra — y la gráfica no debe cerrarlo por nosotros.
+                "texto": ["El código identifica una unidad orgánica dentro del",
+                          "instrumento. Su relación con la ejecución administrativa",
+                          "es lectura analítica, no medición del resultado."],
                 "fuente": "OBS-027 · observación registrada",
                 "tipo": "inferencia"}},
         "rama_operacional": [
@@ -153,7 +158,11 @@ def construir_estado(anio: int = 2026) -> dict:
             {"n": "Indicador",
              "c": f"{sum(1 for r in pai if r['campos'].get('indicador_pdot'))}"
                   f" de {len(pai)} actividades", "e": "sin_evidencia"},
-            {"n": "Resultado", "c": "no verificable", "e": "sin_evidencia"},
+            # «no verificable» englobaba cuatro situaciones que no son la misma:
+            # que la fuente no lo declare, que no se reconcilie, que no se haya
+            # podido capturar o que lo rompiéramos al extraer. Se declara cuál.
+            {"n": "Resultado", "c": "el instrumento no declara meta ni indicador",
+             "e": "sin_evidencia"},
         ],
         "escala": {
             "trazable": trazable, "total_gad": total_gad,
@@ -179,14 +188,18 @@ def construir_estado(anio: int = 2026) -> dict:
 
 
 # ── dibujo ────────────────────────────────────────────────────────────────────
-def _caja(x, y, w, t, c, color, guion="", h=54, detalle=""):
+def _caja(x, y, w, t, c, color, guion="", h=54, detalle="", estado=""):
     d = f' stroke-dasharray="{guion}"' if guion else ""
+    # El estado tipado se muestra literal: quien mira no debe deducir de qué
+    # clase de ausencia se trata a partir del color.
+    badge = (f'<text x="{x+w-14}" y="{y+18}" font-size="9.5" fill="{color}" '
+             f'text-anchor="end" font-family="Consolas, monospace">{estado}</text>') if estado else ""
     extra = (f'<text x="{x+15}" y="{y+51}" font-size="10.5" fill="{color}" '
              f'font-style="italic">{detalle}</text>') if detalle else ""
     return (f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="6" fill="{FONDO}" '
             f'stroke="{color}" stroke-width="1.6"{d}/>'
             f'<text x="{x+15}" y="{y+21}" font-size="13" font-weight="600" fill="{TINTA}">{t}</text>'
-            f'<text x="{x+15}" y="{y+38}" font-size="11.5" fill="{GRIS}">{c}</text>{extra}')
+            f'<text x="{x+15}" y="{y+38}" font-size="11.5" fill="{GRIS}">{c}</text>{badge}{extra}')
 
 
 def _flecha_v(x, y1, y2, color, guion="", aspa=False, et=""):
@@ -270,7 +283,8 @@ def svg(e: dict) -> str:
              f'letter-spacing="0.5">RUTA FINANCIERA · demostrable</text>')
     for i, n in enumerate(e["rama_financiera"]):
         et, col, gui, _ = ROT[n["e"]]
-        p.append(_caja(A, y, ANC, n["n"], n["c"], col, gui))
+        p.append(_caja(A, y, ANC, n["n"], n["c"], col, gui,
+                       estado=n["e"] if n["e"] != "validado" else ""))
         if i < len(e["rama_financiera"]) - 1:
             sig = e["rama_financiera"][i + 1]
             _, col2, gui2, _ = ROT[sig["e"]]
@@ -301,7 +315,7 @@ def svg(e: dict) -> str:
     p.append(f'<text x="{C}" y="{yc-8}" font-size="11" font-weight="700" fill="{ROTO}" '
              f'letter-spacing="0.5">RUTA OPERACIONAL · no demostrable</text>')
     for i, n in enumerate(e["rama_operacional"]):
-        p.append(_caja(C, yc, ANCB, n["n"], n["c"], ROTO, "5 4"))
+        p.append(_caja(C, yc, ANCB, n["n"], n["c"], ROTO, "5 4", estado=n["e"]))
         if i < len(e["rama_operacional"]) - 1:
             p.append(_flecha_v(C + 26, yc + 54, yc + 96, ROTO, "4 5", aspa=True,
                                et="el instrumento no lo declara"))
@@ -354,10 +368,14 @@ def svg(e: dict) -> str:
     p.append(f'<rect x="60" y="{yl}" width="{W-120}" height="94" rx="6" fill="{PANEL}" '
              f'stroke="{BORDE}"/>')
     p.append(f'<text x="78" y="{yl+25}" font-size="13" font-weight="700" fill="{TINTA}">Lectura</text>')
+    # «La articulación es demostrable» afirmaba más de lo probado: articulación
+    # es una cualidad sustantiva, y lo que la evidencia sostiene es que una
+    # CADENA DOCUMENTAL puede reconstruirse. Confundirlas convertiría
+    # trazabilidad en efectividad.
     for k, t in enumerate([
-        "La articulación con los objetivos del plan es demostrable hasta el gasto ejecutado.",
-        "La articulación con las metas no es demostrable: los instrumentos de 2026 no las declaran,",
-        "y el identificador que las sustituye ancla la actividad a la dirección ejecutora, no al plan."]):
+        "La evidencia permite reconstruir esta cadena documental hasta el gasto ejecutado.",
+        "La cadena hacia metas e indicadores no puede reconstruirse: los instrumentos de 2026",
+        "no los declaran. Esto describe lo que los documentos permiten demostrar, no el desempeño."]):
         p.append(f'<text x="78" y="{yl+48+k*19}" font-size="12.5" fill="{TINTA}">{t}</text>')
     p.append(f'<text x="60" y="{yl+114}" font-size="11.5" font-weight="600" fill="{ROTO}">'
              f'Ausencia de evidencia documental. No constituye evidencia de incumplimiento.</text>')
