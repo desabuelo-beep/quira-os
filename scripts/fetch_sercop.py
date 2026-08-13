@@ -40,7 +40,43 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 # `[OK] 0 procesos` y guardaba el archivo como si fuera una captura válida.
 # **«No existe» ≠ «no pude obtener»** (ADR-042 §6). Un cero así, ingerido al Canon,
 # se vuelve indistinguible de una ausencia real de contratación.
-_RED = {"fallos": 0, "intentos": 0, "ultimo_error": ""}
+_RED = {"fallos": 0, "intentos": 0, "ultimo_error": "", "via_curl": 0}
+
+
+def _via_curl(url: str, params: dict | None = None, timeout: int = 45) -> Any:
+    """Reintento con `curl` cuando el cliente de Python no logra el saludo TLS.
+
+    NO es un parche cosmético. El 2026-08-12 se dio por caída la API de SERCOP
+    —«connection reset» en `requests` y en `urllib`, con y sin verificación de
+    certificado— y el mismo endpoint respondía **HTTP 200 con JSON** desde `curl`
+    en la misma máquina y la misma red. La conclusión anterior era falsa: no
+    estaba caída, era el cliente.
+
+    Queda como recordatorio operativo: **antes de declarar una fuente
+    inalcanzable hay que agotar los transportes**, o se registra como «el Estado
+    no publica» lo que en realidad es «mi cliente no negoció»."""
+    import shutil
+    import subprocess
+    import urllib.parse as _up
+    if not shutil.which("curl"):
+        return None
+    if params:
+        url = url + "?" + _up.urlencode(params)
+    try:
+        r = subprocess.run(
+            ["curl", "-sS", "--max-time", str(timeout), "-A", USER_AGENT,
+             "-H", "Accept: application/json", url],
+            capture_output=True, timeout=timeout + 15)
+        if r.returncode != 0 or not r.stdout:
+            return None
+        _RED["via_curl"] += 1
+        return json.loads(r.stdout.decode("utf-8", "replace"))
+    except Exception:
+        return None
+
+
+USER_AGENT = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+              "(KHTML, like Gecko) Chrome/120 Safari/537.36")
 
 try:
     import requests
@@ -52,6 +88,9 @@ try:
             r.raise_for_status()
             return r.json()
         except Exception as e:
+            alt = _via_curl(url, params, timeout)
+            if alt is not None:
+                return alt
             _RED["fallos"] += 1
             _RED["ultimo_error"] = f"{type(e).__name__}: {e}"
             print(f"[WW] GET {url} {params} -> {e}")
@@ -65,10 +104,13 @@ except ImportError:
         try:
             if params:
                 url = url + "?" + urllib.parse.urlencode(params)
-            req = urllib.request.Request(url, headers={"User-Agent": "QUIRA-Scout/1.0"})
+            req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
             with urllib.request.urlopen(req, timeout=timeout) as r:
                 return json.loads(r.read().decode("utf-8"))
         except Exception as e:
+            alt = _via_curl(url, params, timeout)
+            if alt is not None:
+                return alt
             _RED["fallos"] += 1
             _RED["ultimo_error"] = f"{type(e).__name__}: {e}"
             print(f"[WW] GET {url} -> {e}")
