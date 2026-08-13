@@ -51,6 +51,30 @@ class InvarianteRoto(RuntimeError):
     """La extracción produjo algo que contradice lo que se sabe de la fuente."""
 
 
+# ══════════════════════════════════════════════════════════════════════════════
+# ESTADOS, NO APROBADO/REPROBADO
+#
+# La primera versión de este módulo devolvía booleanos, y ese era exactamente el
+# defecto que existe para impedir: un `False` no distingue «el texto está
+# corrupto» de «no pude mirar la fuente» de «se me fue la calibración». Colapsar
+# esas tres cosas en un binario es lo mismo que colapsar `no_reconciliado` con
+# `sin_partida` — un límite del observador disfrazado de defecto del observado.
+#
+# El orden importa: al agregar varios invariantes, **gobierna el peor estado**,
+# y `NO_OBSERVABLE` nunca se degrada a `CORRUPTO`. No haber podido mirar no es
+# un hallazgo sobre lo mirado.
+# ══════════════════════════════════════════════════════════════════════════════
+VALIDADO = "validado"
+PARCIAL = "parcialmente_validado"
+REVISION = "requiere_revision"
+CORRUPTO = "extraccion_corrupta"
+NO_OBSERVABLE = "no_observable"          # no había nada que mirar
+FUENTE_NO_ACCESIBLE = "fuente_no_accesible"
+
+_GRAVEDAD = {VALIDADO: 0, PARCIAL: 1, NO_OBSERVABLE: 2,
+             FUENTE_NO_ACCESIBLE: 3, REVISION: 4, CORRUPTO: 5}
+
+
 class Invariantes:
     def __init__(self, sujeto: str, estricto: bool = True) -> None:
         self.sujeto = sujeto
@@ -58,10 +82,24 @@ class Invariantes:
         self.resultados: list[dict] = []
 
     # ── registro ──────────────────────────────────────────────────────────────
-    def _anotar(self, nombre: str, ok: bool, detalle: str, medido: str = "") -> bool:
+    def _anotar(self, nombre: str, ok: bool, detalle: str, medido: str = "",
+                estado_si_falla: str = REVISION) -> bool:
         self.resultados.append({"invariante": nombre, "ok": ok,
+                                "estado": VALIDADO if ok else estado_si_falla,
                                 "detalle": detalle, "medido": medido})
         return ok
+
+    @property
+    def estado(self) -> str:
+        """El peor estado de los observados. Sin invariantes, no hay veredicto."""
+        if not self.resultados:
+            return NO_OBSERVABLE
+        peor = max((r["estado"] for r in self.resultados),
+                   key=lambda e: _GRAVEDAD.get(e, 0))
+        if peor == VALIDADO:
+            return VALIDADO
+        return PARCIAL if all(r["ok"] or r["estado"] in (NO_OBSERVABLE,)
+                              for r in self.resultados) else peor
 
     # ── invariantes de forma ──────────────────────────────────────────────────
     def columna_con_forma(self, valores, nombre: str, patron: str,
@@ -74,14 +112,15 @@ class Invariantes:
         vs = [str(v).strip() for v in valores if v not in (None, "")]
         if not vs:
             return self._anotar(f"forma:{nombre}", False,
-                                "la columna llegó vacía: no hay nada que validar")
+                                "la columna llegó vacía: no hay nada que validar",
+                                estado_si_falla=NO_OBSERVABLE)
         rx = re.compile(patron)
         n = sum(1 for v in vs if rx.fullmatch(v.replace(" ", "")))
         r = n / len(vs)
         return self._anotar(
             f"forma:{nombre}", r >= minimo,
             f"se esperaba ≥{minimo:.0%} con forma /{patron}/ — probable columna equivocada",
-            f"{r:.0%} ({n}/{len(vs)})")
+            f"{r:.0%} ({n}/{len(vs)})", estado_si_falla=CORRUPTO)
 
     def numeros_parseables(self, valores, nombre: str, minimo: float = 0.8) -> bool:
         """Si una columna numérica devuelve nulos en masa, casi siempre es la
@@ -90,7 +129,8 @@ class Invariantes:
         silencio."""
         total = sum(1 for v in valores if v not in (None, ""))
         if not total:
-            return self._anotar(f"numerico:{nombre}", False, "columna vacía")
+            return self._anotar(f"numerico:{nombre}", False, "columna vacía",
+                                estado_si_falla=NO_OBSERVABLE)
         ok = sum(1 for v in valores if isinstance(v, (int, float)))
         r = ok / total
         return self._anotar(
@@ -111,7 +151,8 @@ class Invariantes:
         español supera holgadamente el 85 %; uno troceado se hunde."""
         muestras = [t for t in textos if t and len(str(t)) > 30][:muestra]
         if not muestras:
-            return self._anotar("texto_legible", False, "sin texto que evaluar")
+            return self._anotar("texto_legible", False, "sin texto que evaluar",
+                                estado_si_falla=NO_OBSERVABLE)
 
         # La primera versión de este invariante exigía ≥3 caracteres y vocal por
         # palabra, y marcó como roto un texto perfectamente sano: el español
@@ -124,7 +165,8 @@ class Invariantes:
         # fragmenta cada término en sílabas sueltas.
         largos = [len(p) for t in muestras for p in re.findall(r"\S+", str(t))]
         if not largos:
-            return self._anotar("texto_legible", False, "sin palabras que medir")
+            return self._anotar("texto_legible", False, "sin palabras que medir",
+                                estado_si_falla=NO_OBSERVABLE)
         media = sum(largos) / len(largos)
         cortas = sum(1 for L in largos if L <= 3) / len(largos)
         # Segunda calibración. Sólo con media y palabras cortas, el gate acusó a
@@ -141,7 +183,8 @@ class Invariantes:
             "texto_legible", ok,
             "texto probablemente destrozado por la conversión — revisar el ORIGINAL",
             f"media {media:.1f} car/palabra · {cortas:.0%} de ≤3 car · "
-            f"{largas:.0%} de ≥6 car ({len(largos)} palabras)")
+            f"{largas:.0%} de ≥6 car ({len(largos)} palabras)",
+            estado_si_falla=CORRUPTO)
 
     def sin_repeticion_sospechosa(self, valores, nombre: str, maximo: float = 0.9) -> bool:
         """Una columna donde casi todo es el mismo valor suele ser una etiqueta
@@ -168,7 +211,8 @@ class Invariantes:
         resultado parcial que aún no sabe que lo es."""
         return self._anotar("transporte", fallos == 0,
                             "hubo fallos de red: el resultado NO puede leerse como ausencia",
-                            f"{fallos}/{intentos} fallidos")
+                            f"{fallos}/{intentos} fallidos",
+                            estado_si_falla=FUENTE_NO_ACCESIBLE)
 
     def coherencia(self, nombre: str, condicion: bool, detalle: str,
                    medido: str = "") -> bool:
@@ -183,11 +227,10 @@ class Invariantes:
     def informe(self, silencioso_si_ok: bool = False) -> bool:
         if not self.rotos and silencioso_si_ok:
             return True
-        estado = "OK" if not self.rotos else "ROTO"
-        print(f"  [{estado}] invariantes · {self.sujeto} "
+        print(f"  [{self.estado}] invariantes · {self.sujeto} "
               f"({len(self.resultados) - len(self.rotos)}/{len(self.resultados)})")
         for r in self.rotos:
-            print(f"      ✗ {r['invariante']}: {r['detalle']}")
+            print(f"      ✗ {r['invariante']} → {r['estado']}: {r['detalle']}")
             print(f"        medido: {r['medido']}")
         return not self.rotos
 
