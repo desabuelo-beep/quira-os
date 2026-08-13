@@ -4,20 +4,34 @@ scripts/vis/objeto_canonico.py — el primer objeto visual canónico de QUIRA
 ══════════════════════════════════════════════════════════════════════════
 POR QUÉ EXISTE (2026-08-12). ADR-049 fija la gramática visual y exige probarla
 sobre un caso real **antes** de tocar la interfaz. Este guion produce ese caso:
-la cadena de 2026 del GAD Montecristi, con su ruptura.
+la cadena de 2026 del GAD Montecristi, con su ruptura y con su desvío.
 
 CÓMO SE PRUEBA VIS-INV-001. La invariante dice que toda representación visual es
 una **proyección determinista del motor**, sin crear ni completar nada. Aquí eso
 no es una promesa: **este módulo no contiene un solo número escrito a mano.**
-Todo se deriva en `construir_estado()` a partir de los extractores, y `svg()`
-sólo sabe dibujar lo que ese estado le entrega. Si el estado no trae una cifra,
-la gráfica no puede inventarla porque no tiene de dónde.
+Todo se deriva en `construir_estado()`; `svg()` sólo sabe dibujar lo que ese
+estado le entrega. Si el estado no trae una cifra, la gráfica no puede
+inventarla porque no tiene de dónde.
 
-LAS DIEZ PREGUNTAS que el objeto debe responder sin explicación verbal (colega,
-2026-08-12): qué es cada nodo · qué es cada arista · cómo se ve `validado` ·
-cómo `sin_evidencia` · cómo `no_reconciliado` · cómo un límite propio de QUIRA ·
-dónde está la procedencia · hecho frente a inferencia · qué pasa con las
-contradicciones · y si se entiende **sin conocer una sola sigla interna**.
+SEGUNDA VERSIÓN (revisión de Javo, misma noche). La primera tenía seis defectos,
+y cinco eran del tipo que este proyecto persigue —decir de más o de menos sin
+que se note—:
+
+  1. La leyenda declaraba un trazo de «límite propio de QUIRA» que **no aparecía
+     en el dibujo**. Una leyenda con un símbolo que nunca se usa proyecta que la
+     captura fue perfecta. Ahora se usa, y en el sitio exacto donde lo es.
+  2. **Faltaba el eslabón de contratación.** El dinero no salta de la partida al
+     devengado: pasa por adjudicación. Omitirlo ocultaba si el gasto tiene
+     proveedor trazable. Se dibuja — y como NO se capturó, se dibuja como límite
+     propio, que es la verdad y de paso resuelve el defecto 1.
+  3. **Faltaba la escala.** «$1.781.928 trazables» sin denominador no dice nada.
+  4. **Las 101 actividades se trataban en bloque**, ocultando que la
+     trazabilidad no desapareció: MIGRÓ al código de actividad orgánica. Ese es
+     el hallazgo, y no estaba dibujado.
+  5. **La flecha de ruptura salía del objetivo**, insinuando que el objetivo
+     carece de meta. La ruptura ocurre en el acoplamiento PAI → meta.
+  6. La procedencia era una nota bibliográfica, no un registro auditable: sin
+     SHA, sin conteos, sin corte.
 
 Uso:  python scripts/vis/objeto_canonico.py [--salida ruta.svg]
 Dylus Lab © 2026
@@ -25,6 +39,7 @@ Dylus Lab © 2026
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import sys
 from pathlib import Path
@@ -35,25 +50,25 @@ sys.path.insert(0, str(RAIZ / "scripts" / "normativa"))
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
-from extraer_cedula import extraer_todo                       # noqa: E402
-from extraer_pai import extraer as extraer_pai                # noqa: E402
-from cruce_poa_cedula import corte_anual, estado_financiero   # noqa: E402
+from extraer_cedula import BASE as BASE_CED, extraer_todo          # noqa: E402
+from extraer_pai import ARCHIVOS, BASE as BASE_PAI, extraer as extraer_pai  # noqa: E402
+from cruce_poa_cedula import corte_anual, estado_financiero        # noqa: E402
 
-# Paleta sobria. La marca es un asset y NO se redibuja (Identidad v1.1).
-TINTA = "#2B3A42"
-PIZARRA = "#4E6674"
-GRIS = "#8A9BA5"
-BORDE = "#D7DEE2"
-FONDO = "#FFFFFF"
-DEMOSTRADO = "#3D6B5A"      # verde apagado · conexión demostrada
-ROTO = "#B4513C"            # terracota · ruptura del observado
-PROPIO = "#8A6D3B"          # ocre · límite de QUIRA, nunca del municipio
+TINTA, GRIS, BORDE, FONDO = "#2B3A42", "#8A9BA5", "#D7DEE2", "#FFFFFF"
+DEMOSTRADO = "#3D6B5A"      # verde apagado · vínculo demostrado
+ROTO = "#B4513C"            # terracota · el observado no lo declara
+PROPIO = "#8A6D3B"          # ocre · límite de QUIRA, jamás del municipio
+PANEL = "#F7F9FA"
+
+
+def _sha(p: Path) -> str:
+    return hashlib.sha256(p.read_bytes()).hexdigest()[:16] if p.exists() else "—"
 
 
 def construir_estado(anio: int = 2026) -> dict:
-    """El estado que la gráfica podrá dibujar. Nada más existe para ella."""
     pai = extraer_pai(anio)
-    corte, mes = corte_anual(extraer_todo(anio), "GAD Montecristi", anio)
+    ced = extraer_todo(anio)
+    corte, mes = corte_anual(ced, "GAD Montecristi", anio)
 
     por_obj: dict[str, set] = {}
     for r in pai:
@@ -61,182 +76,256 @@ def construir_estado(anio: int = 2026) -> dict:
         if o and p:
             por_obj.setdefault(o, set()).add(p)
 
-    con_dev = con_cod = 0
-    devengado_trazable = 0.0
+    # Montos, no sólo conteos: un objetivo puede concentrar casi todo el dinero
+    # y ocho pesar poco. «8 de 9» sin importes engaña sin mentir.
+    grupos = {"con_devengado": [0, 0.0], "con_codificado": [0, 0.0], "sin_evidencia": [0, 0.0]}
     for ps in por_obj.values():
         est = [estado_financiero(corte.get(p))["estado"] for p in ps]
-        if "devengado_positivo" in est:
-            con_dev += 1
-        elif "codificado_sin_devengado" in est:
-            con_cod += 1
-        devengado_trazable += sum((corte.get(p, {}).get("devengado") or 0) for p in ps)
+        monto = sum((corte.get(p, {}).get("devengado") or 0) for p in ps)
+        k = ("con_devengado" if "devengado_positivo" in est else
+             "con_codificado" if "codificado_sin_devengado" in est else "sin_evidencia")
+        grupos[k][0] += 1
+        grupos[k][1] += monto
 
+    trazable = sum(v[1] for v in grupos.values())
+    total_gad = sum(r.get("devengado") or 0 for r in corte.values())
     metas = json.loads((RAIZ / "data" / "pdot" / "registro_maestro_metas.json")
                        .read_text(encoding="utf-8"))["metas"]
-    con_meta = sum(1 for r in pai if r["campos"].get("meta_pdot"))
-    con_ind = sum(1 for r in pai if r["campos"].get("indicador_pdot"))
+    partidas = {p for ps in por_obj.values() for p in ps}
+    con_codigo = sum(1 for r in pai if r["campos"].get("codigo_actividad"))
+    ejemplos = sorted({r["campos"]["codigo_actividad"].split("-")[0]
+                       for r in pai if r["campos"].get("codigo_actividad")})[:4]
+
+    fpai = BASE_PAI / ARCHIVOS[anio]
+    fced = next((c for c in sorted((BASE_CED / f"Presupuestos {anio}" /
+                                    f"GAD Montecristi {anio}").glob("*.xlsx"))
+                 if mes and mes[:3].lower() in c.name.lower()), None)
 
     return {
-        "anio": anio,
-        "corte_cedula": mes,
-        "cadena_demostrada": [
-            {"nodo": "Plan de Desarrollo y Ordenamiento Territorial",
-             "cifra": f"{len(metas)} metas vigentes", "estado": "validado"},
-            {"nodo": "Objetivo estratégico",
-             "cifra": f"{len(por_obj)} declarados", "estado": "validado"},
-            {"nodo": "Plan Anual de Inversiones",
-             "cifra": f"{len(pai)} actividades", "estado": "validado"},
-            {"nodo": "Partida presupuestaria",
-             "cifra": f"{len({p for ps in por_obj.values() for p in ps})} distintas",
-             "estado": "validado"},
-            {"nodo": "Cédula presupuestaria",
-             "cifra": f"{len(corte)} partidas · corte {mes}", "estado": "validado"},
-            {"nodo": "Devengado",
-             "cifra": f"${devengado_trazable:,.0f} trazables", "estado": "validado"},
+        "anio": anio, "corte_cedula": mes,
+        "tronco": [
+            {"n": "Plan de Desarrollo y Ordenamiento Territorial",
+             "c": f"{len(metas)} metas vigentes"},
+            {"n": "Objetivo estratégico", "c": f"{len(por_obj)} declarados"},
+            {"n": "Plan Anual de Inversiones", "c": f"{len(pai)} actividades"},
         ],
-        "cadena_rota": [
-            {"nodo": "Meta", "cifra": f"{con_meta} de {len(pai)} actividades",
-             "estado": "sin_evidencia"},
-            {"nodo": "Indicador", "cifra": f"{con_ind} de {len(pai)} actividades",
-             "estado": "sin_evidencia"},
-            {"nodo": "Resultado", "cifra": "no auditable documentalmente",
-             "estado": "sin_evidencia"},
+        "rama_financiera": [
+            {"n": "Partida presupuestaria", "c": f"{len(partidas)} distintas",
+             "e": "validado"},
+            {"n": "Contratación pública", "c": "no incorporada a este corte",
+             "e": "fuente_no_accesible"},
+            {"n": "Cédula presupuestaria", "c": f"{len(corte)} partidas · corte {mes}",
+             "e": "validado"},
+            {"n": "Devengado", "c": f"${trazable:,.0f}", "e": "validado"},
         ],
-        "detalle_objetivos": {"con_devengado": con_dev, "con_codificado": con_cod,
-                              "sin_evidencia": len(por_obj) - con_dev - con_cod,
-                              "total": len(por_obj)},
-        "universo": {
-            "devengado_total_gad": sum(r.get("devengado") or 0 for r in corte.values()),
-            # ⚠️ Este total es del GAD ENTERO, no «del universo PAI»: el PAI cubre
-            # inversión y no aspira a cubrir el gasto corriente. Rotularlo mal
-            # insinuaría que falta lo que nunca debió estar.
+        "rama_organica": {
+            "n": "Código de actividad orgánica",
+            "c": f"{con_codigo} de {len(pai)} actividades",
+            "detalle": " · ".join(ejemplos), "e": "desviado"},
+        "rama_operacional": [
+            {"n": "Meta", "c": f"{sum(1 for r in pai if r['campos'].get('meta_pdot'))}"
+                               f" de {len(pai)} actividades", "e": "sin_evidencia"},
+            {"n": "Indicador",
+             "c": f"{sum(1 for r in pai if r['campos'].get('indicador_pdot'))}"
+                  f" de {len(pai)} actividades", "e": "sin_evidencia"},
+            {"n": "Resultado", "c": "no verificable", "e": "sin_evidencia"},
+        ],
+        "escala": {
+            "trazable": trazable, "total_gad": total_gad,
+            "pct": (trazable / total_gad * 100) if total_gad else 0,
+            # El total es del GAD ENTERO, no «del universo del Plan de
+            # Inversiones»: el Plan cubre inversión y no aspira al gasto
+            # corriente. Rotularlo mal insinuaría que falta lo que nunca debió
+            # estar — un hallazgo falso nacido de una etiqueta.
             "nota": "el Plan de Inversiones cubre inversión, no el gasto corriente",
         },
+        "objetivos": {k: {"n": v[0], "monto": v[1]} for k, v in grupos.items()},
+        "total_objetivos": len(por_obj),
         "procedencia": [
-            f"Plan Anual de Inversiones {anio} · GAD Montecristi · archivo oficial",
-            f"Cédula presupuestaria · conjunto de datos mensual · corte {mes} {anio}",
-            "Registro de metas · contrastado contra el plan aprobado por ordenanza",
+            {"f": fpai.name, "sha": _sha(fpai), "d": f"{len(pai)} filas · 4 hojas"},
+            {"f": fced.name if fced else f"conjunto de datos {mes} {anio}",
+             "sha": _sha(fced) if fced else "—",
+             "d": f"{len(corte)} partidas · acumulado a {mes}"},
+            {"f": "Ordenanza 07-2024-CM-GADMCM", "sha": "662756aac591b247",
+             "d": "sancionada 05-11-2024 · fija el plan vigente"},
         ],
     }
 
 
 # ── dibujo ────────────────────────────────────────────────────────────────────
-def _nodo(x, y, w, titulo, cifra, color, punteado=False):
-    guion = ' stroke-dasharray="5 4"' if punteado else ""
-    return f"""
-  <rect x="{x}" y="{y}" width="{w}" height="52" rx="6" fill="{FONDO}"
-        stroke="{color}" stroke-width="1.6"{guion}/>
-  <text x="{x+16}" y="{y+21}" font-size="13.5" font-weight="600" fill="{TINTA}">{titulo}</text>
-  <text x="{x+16}" y="{y+39}" font-size="12" fill="{GRIS}">{cifra}</text>"""
+def _caja(x, y, w, t, c, color, guion="", h=54, detalle=""):
+    d = f' stroke-dasharray="{guion}"' if guion else ""
+    extra = (f'<text x="{x+15}" y="{y+51}" font-size="10.5" fill="{color}" '
+             f'font-style="italic">{detalle}</text>') if detalle else ""
+    return (f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="6" fill="{FONDO}" '
+            f'stroke="{color}" stroke-width="1.6"{d}/>'
+            f'<text x="{x+15}" y="{y+21}" font-size="13" font-weight="600" fill="{TINTA}">{t}</text>'
+            f'<text x="{x+15}" y="{y+38}" font-size="11.5" fill="{GRIS}">{c}</text>{extra}')
 
 
-def _arista(x, y1, y2, color, cortada=False, etiqueta=""):
-    if cortada:
-        medio = (y1 + y2) / 2
-        return f"""
-  <line x1="{x}" y1="{y1}" x2="{x}" y2="{medio-9}" stroke="{color}" stroke-width="2"
-        stroke-dasharray="4 5"/>
-  <line x1="{x-8}" y1="{medio-6}" x2="{x+8}" y2="{medio+6}" stroke="{color}" stroke-width="2.4"/>
-  <line x1="{x+8}" y1="{medio-6}" x2="{x-8}" y2="{medio+6}" stroke="{color}" stroke-width="2.4"/>
-  <line x1="{x}" y1="{medio+9}" x2="{x}" y2="{y2}" stroke="{color}" stroke-width="2"
-        stroke-dasharray="4 5"/>
-  <text x="{x+18}" y="{medio+4}" font-size="11.5" fill="{color}" font-weight="600">{etiqueta}</text>"""
-    return f"""
-  <line x1="{x}" y1="{y1}" x2="{x}" y2="{y2-7}" stroke="{color}" stroke-width="2"/>
-  <path d="M{x-5},{y2-8} L{x},{y2} L{x+5},{y2-8}" fill="{color}"/>
-  <text x="{x+18}" y="{(y1+y2)/2+4}" font-size="11.5" fill="{color}">{etiqueta}</text>"""
+def _flecha_v(x, y1, y2, color, guion="", aspa=False, et=""):
+    s = f' stroke-dasharray="{guion}"' if guion else ""
+    if aspa:
+        m = (y1 + y2) / 2
+        return (f'<line x1="{x}" y1="{y1}" x2="{x}" y2="{m-8}" stroke="{color}" stroke-width="2"{s}/>'
+                f'<line x1="{x-7}" y1="{m-5}" x2="{x+7}" y2="{m+5}" stroke="{color}" stroke-width="2.4"/>'
+                f'<line x1="{x+7}" y1="{m-5}" x2="{x-7}" y2="{m+5}" stroke="{color}" stroke-width="2.4"/>'
+                f'<line x1="{x}" y1="{m+8}" x2="{x}" y2="{y2}" stroke="{color}" stroke-width="2"{s}/>'
+                + (f'<text x="{x+14}" y="{m+4}" font-size="10.5" fill="{color}">{et}</text>' if et else ""))
+    return (f'<line x1="{x}" y1="{y1}" x2="{x}" y2="{y2-7}" stroke="{color}" stroke-width="2"{s}/>'
+            f'<path d="M{x-5},{y2-8} L{x},{y2} L{x+5},{y2-8}" fill="{color}"/>'
+            + (f'<text x="{x+14}" y="{(y1+y2)/2+4}" font-size="10.5" fill="{color}">{et}</text>' if et else ""))
 
 
 def svg(e: dict) -> str:
-    W, H = 1000, 1010
-    x0, ancho = 60, 400
-    partes = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" '
-              f'width="{W}" height="{H}" font-family="Segoe UI, Helvetica, Arial, sans-serif">',
-              f'<rect width="{W}" height="{H}" fill="{FONDO}"/>',
-              f'<text x="{x0}" y="46" font-size="21" font-weight="700" fill="{TINTA}">'
-              f'Cadena de evidencia · ejercicio {e["anio"]}</text>',
-              f'<text x="{x0}" y="70" font-size="13.5" fill="{GRIS}">Gobierno Autónomo '
-              f'Descentralizado Municipal del Cantón Montecristi</text>',
-              f'<line x1="{x0}" y1="86" x2="{W-60}" y2="86" stroke="{BORDE}" stroke-width="1"/>']
+    W = 1240
+    A, B, C = 60, 480, 880           # columnas de las tres ramas
+    ANC, ANCB = 380, 300
+    p = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} 1130" width="{W}" '
+         f'height="1130" font-family="Segoe UI, Helvetica, Arial, sans-serif">',
+         f'<rect width="{W}" height="1130" fill="{FONDO}"/>',
+         f'<text x="60" y="46" font-size="21" font-weight="700" fill="{TINTA}">'
+         f'Cadena de evidencia · ejercicio {e["anio"]}</text>',
+         f'<text x="60" y="69" font-size="13" fill="{GRIS}">Gobierno Autónomo Descentralizado '
+         f'Municipal del Cantón Montecristi · corte acumulado a {e["corte_cedula"]}</text>',
+         f'<line x1="60" y1="84" x2="{W-60}" y2="84" stroke="{BORDE}"/>']
 
-    y = 116
-    partes.append(f'<text x="{x0}" y="{y}" font-size="12" font-weight="700" '
-                  f'fill="{DEMOSTRADO}" letter-spacing="0.6">LO QUE PUEDE DEMOSTRARSE</text>')
-    y += 16
-    for i, n in enumerate(e["cadena_demostrada"]):
-        partes.append(_nodo(x0, y, ancho, n["nodo"], n["cifra"], DEMOSTRADO))
-        if i < len(e["cadena_demostrada"]) - 1:
-            partes.append(_arista(x0 + 26, y + 52, y + 92, DEMOSTRADO,
-                                  etiqueta="verificado en la fuente"))
-        y += 92
+    # ── tronco: lo común a todo, en fila
+    yt = 106
+    for i, n in enumerate(e["tronco"]):
+        x = 60 + i * 400
+        p.append(_caja(x, yt, 360, n["n"], n["c"], DEMOSTRADO))
+        if i < 2:
+            p.append(f'<line x1="{x+360}" y1="{yt+27}" x2="{x+393}" y2="{yt+27}" '
+                     f'stroke="{DEMOSTRADO}" stroke-width="2"/>'
+                     f'<path d="M{x+392},{yt+22} L{x+400},{yt+27} L{x+392},{yt+32}" fill="{DEMOSTRADO}"/>')
 
-    # rama rota — arranca del objetivo, que es donde el instrumento la abandona
-    xr = x0 + 540
-    yr = 132 + 92
-    partes.append(f'<text x="{xr}" y="116" font-size="12" font-weight="700" fill="{ROTO}" '
-                  f'letter-spacing="0.6">LO QUE NO PUEDE DEMOSTRARSE</text>')
-    partes.append(f'<path d="M{x0+ancho},{yr+26} L{xr-10},{yr+26}" stroke="{ROTO}" '
-                  f'stroke-width="2" stroke-dasharray="4 5" fill="none"/>')
-    partes.append(f'<path d="M{xr-16},{yr+21} L{xr-6},{yr+26} L{xr-16},{yr+31}" fill="{ROTO}"/>')
-    for i, n in enumerate(e["cadena_rota"]):
-        partes.append(_nodo(xr, yr, 340, n["nodo"], n["cifra"], ROTO, punteado=True))
-        if i < len(e["cadena_rota"]) - 1:
-            partes.append(_arista(xr + 26, yr + 52, yr + 92, ROTO, cortada=True,
-                                  etiqueta="el instrumento no lo declara"))
-        yr += 92
+    # ── bifurcación desde el Plan de Inversiones (no desde el objetivo)
+    yb = yt + 54
+    xpai = 860 + 180
+    p.append(f'<path d="M{xpai},{yb} L{xpai},{yb+26}" stroke="{TINTA}" stroke-width="2"/>')
+    p.append(f'<text x="{xpai+12}" y="{yb+20}" font-size="10.5" fill="{TINTA}" '
+             f'font-weight="600">la cadena se bifurca aquí</text>')
+    for xc, w in ((A, ANC), (B, ANCB), (C, ANCB)):
+        p.append(f'<path d="M{xpai},{yb+26} L{xc+w//2},{yb+26} L{xc+w//2},{yb+52}" '
+                 f'stroke="{TINTA}" stroke-width="2" fill="none"/>'
+                 f'<path d="M{xc+w//2-5},{yb+44} L{xc+w//2},{yb+52} L{xc+w//2+5},{yb+44}" fill="{TINTA}"/>')
 
-    d = e["detalle_objetivos"]
-    yb = yr + 24
-    partes.append(f'<rect x="{xr}" y="{yb}" width="340" height="104" rx="6" '
-                  f'fill="#F7F9FA" stroke="{BORDE}"/>')
-    partes.append(f'<text x="{xr+16}" y="{yb+24}" font-size="12.5" font-weight="600" '
-                  f'fill="{TINTA}">Respaldo financiero de los objetivos</text>')
-    for k, (et, v) in enumerate([("con ejecución certificada", d["con_devengado"]),
-                                 ("con asignación sin ejecutar", d["con_codificado"]),
-                                 ("sin respaldo financiero", d["sin_evidencia"])]):
-        partes.append(f'<text x="{xr+16}" y="{yb+46+k*20}" font-size="12" fill="{GRIS}">'
-                      f'{et}</text>'
-                      f'<text x="{xr+310}" y="{yb+46+k*20}" font-size="12.5" '
-                      f'font-weight="700" fill="{TINTA}" text-anchor="end">'
-                      f'{v} de {d["total"]}</text>')
+    ROT = {"validado": ("verificado en la fuente", DEMOSTRADO, "", False),
+           "fuente_no_accesible": ("captura pendiente — límite de QUIRA", PROPIO, "2 3", False),
+           "sin_evidencia": ("el instrumento no lo declara", ROTO, "4 5", True),
+           "desviado": ("", PROPIO, "2 3", False)}
 
-    # lectura — sin una sola sigla interna
-    yl = max(y, yb + 128) + 14
-    partes.append(f'<rect x="{x0}" y="{yl}" width="{W-120}" height="86" rx="6" '
-                  f'fill="#F7F9FA" stroke="{BORDE}"/>')
-    partes.append(f'<text x="{x0+18}" y="{yl+26}" font-size="13" font-weight="700" '
-                  f'fill="{TINTA}">Lectura</text>')
-    partes.append(f'<text x="{x0+18}" y="{yl+48}" font-size="13" fill="{TINTA}">'
-                  f'La articulación con los objetivos del plan es demostrable hasta el gasto '
-                  f'ejecutado.</text>')
-    partes.append(f'<text x="{x0+18}" y="{yl+68}" font-size="13" fill="{TINTA}">'
-                  f'La articulación con las metas no es demostrable: '
-                  f'<tspan font-weight="700">los instrumentos no las declaran.</tspan></text>')
+    # rama A · financiera
+    y = yb + 52
+    p.append(f'<text x="{A}" y="{y-8}" font-size="11" font-weight="700" fill="{DEMOSTRADO}" '
+             f'letter-spacing="0.5">RUTA FINANCIERA · demostrable</text>')
+    for i, n in enumerate(e["rama_financiera"]):
+        et, col, gui, _ = ROT[n["e"]]
+        p.append(_caja(A, y, ANC, n["n"], n["c"], col, gui))
+        if i < len(e["rama_financiera"]) - 1:
+            sig = e["rama_financiera"][i + 1]
+            _, col2, gui2, _ = ROT[sig["e"]]
+            c2 = col2 if sig["e"] != "validado" else col
+            p.append(_flecha_v(A + 26, y + 54, y + 96, c2, gui2, et=ROT[sig["e"]][0]))
+        y += 96
 
-    yz = yl + 100
-    partes.append(f'<text x="{x0}" y="{yz}" font-size="11.5" fill="{ROTO}" font-weight="600">'
-                  f'Ausencia de evidencia. No constituye evidencia de incumplimiento.</text>')
+    # rama B · orgánica — a dónde se fue la trazabilidad
+    yo = yb + 52
+    o = e["rama_organica"]
+    p.append(f'<text x="{B}" y="{yo-8}" font-size="11" font-weight="700" fill="{PROPIO}" '
+             f'letter-spacing="0.5">TRAZABILIDAD DESVIADA</text>')
+    p.append(_caja(B, yo, ANCB, o["n"], o["c"], PROPIO, "2 3", h=66, detalle=o["detalle"]))
+    p.append(f'<rect x="{B}" y="{yo+82}" width="{ANCB}" height="76" rx="6" fill="{PANEL}" '
+             f'stroke="{BORDE}"/>')
+    for k, t in enumerate(["La trazabilidad no desapareció:", "cambió de destino. El identificador",
+                           "nuevo ancla la actividad a la dirección", "que la ejecuta, no al plan."]):
+        p.append(f'<text x="{B+15}" y="{yo+102+k*17}" font-size="11.5" fill="{TINTA}">{t}</text>')
 
-    # leyenda: la gramática, explícita
-    yg = yz + 26
-    for k, (col, tr, et) in enumerate([
+    # rama C · operacional — rota
+    yc = yb + 52
+    p.append(f'<text x="{C}" y="{yc-8}" font-size="11" font-weight="700" fill="{ROTO}" '
+             f'letter-spacing="0.5">RUTA OPERACIONAL · no demostrable</text>')
+    for i, n in enumerate(e["rama_operacional"]):
+        p.append(_caja(C, yc, ANCB, n["n"], n["c"], ROTO, "5 4"))
+        if i < len(e["rama_operacional"]) - 1:
+            p.append(_flecha_v(C + 26, yc + 54, yc + 96, ROTO, "4 5", aspa=True,
+                               et="el instrumento no lo declara"))
+        yc += 96
+
+    # ── escala: el devengado trazable dentro del universo del GAD
+    ye = 520
+    es = e["escala"]
+    p.append(f'<rect x="{B}" y="{ye}" width="{ANCB+ANCB+80}" height="104" rx="6" '
+             f'fill="{PANEL}" stroke="{BORDE}"/>')
+    p.append(f'<text x="{B+15}" y="{ye+23}" font-size="12.5" font-weight="600" fill="{TINTA}">'
+             f'Escala · qué parte del gasto queda trazada</text>')
+    bw = ANCB + ANCB + 80 - 30
+    p.append(f'<rect x="{B+15}" y="{ye+34}" width="{bw}" height="20" rx="3" fill="#E3E9EC"/>')
+    p.append(f'<rect x="{B+15}" y="{ye+34}" width="{int(bw*es["pct"]/100)}" height="20" rx="3" '
+             f'fill="{DEMOSTRADO}"/>')
+    p.append(f'<text x="{B+15}" y="{ye+72}" font-size="12" fill="{TINTA}">'
+             f'<tspan font-weight="700">${es["trazable"]:,.0f}</tspan> trazados por el Plan de '
+             f'Inversiones · de <tspan font-weight="700">${es["total_gad"]:,.0f}</tspan> devengados '
+             f'por el municipio ({es["pct"]:.0f}%)</text>')
+    p.append(f'<text x="{B+15}" y="{ye+91}" font-size="11" fill="{GRIS}" font-style="italic">'
+             f'{es["nota"]} — el resto no es opacidad.</text>')
+
+    # ── respaldo financiero por objetivo, CON MONTOS
+    yr = ye + 120
+    ob = e["objetivos"]
+    p.append(f'<rect x="{B}" y="{yr}" width="{ANCB+ANCB+80}" height="106" rx="6" '
+             f'fill="{PANEL}" stroke="{BORDE}"/>')
+    p.append(f'<text x="{B+15}" y="{yr+23}" font-size="12.5" font-weight="600" fill="{TINTA}">'
+             f'Respaldo financiero de los {e["total_objetivos"]} objetivos</text>')
+    for k, (cl, et) in enumerate([("con_devengado", "con ejecución certificada"),
+                                  ("con_codificado", "con asignación sin ejecutar"),
+                                  ("sin_evidencia", "sin respaldo financiero")]):
+        v = ob[cl]
+        p.append(f'<text x="{B+15}" y="{yr+46+k*20}" font-size="11.5" fill="{GRIS}">{et}</text>'
+                 f'<text x="{B+430}" y="{yr+46+k*20}" font-size="11.5" fill="{TINTA}" '
+                 f'text-anchor="end">{v["n"]} de {e["total_objetivos"]}</text>'
+                 f'<text x="{B+ANCB+ANCB+65}" y="{yr+46+k*20}" font-size="11.5" '
+                 f'font-weight="700" fill="{TINTA}" text-anchor="end">${v["monto"]:,.0f}</text>')
+
+    # ── lectura
+    yl = 760
+    p.append(f'<rect x="60" y="{yl}" width="{W-120}" height="94" rx="6" fill="{PANEL}" '
+             f'stroke="{BORDE}"/>')
+    p.append(f'<text x="78" y="{yl+25}" font-size="13" font-weight="700" fill="{TINTA}">Lectura</text>')
+    for k, t in enumerate([
+        "La articulación con los objetivos del plan es demostrable hasta el gasto ejecutado.",
+        "La articulación con las metas no es demostrable: los instrumentos de 2026 no las declaran,",
+        "y el identificador que las sustituye ancla la actividad a la dirección ejecutora, no al plan."]):
+        p.append(f'<text x="78" y="{yl+48+k*19}" font-size="12.5" fill="{TINTA}">{t}</text>')
+    p.append(f'<text x="60" y="{yl+114}" font-size="11.5" font-weight="600" fill="{ROTO}">'
+             f'Ausencia de evidencia documental. No constituye evidencia de incumplimiento.</text>')
+
+    # ── leyenda: los tres trazos, los tres presentes en el dibujo
+    yg = yl + 136
+    for k, (col, gui, et) in enumerate([
             (DEMOSTRADO, "", "vínculo demostrado con documento de respaldo"),
-            (ROTO, "4 5", "vínculo no demostrable — el instrumento no lo declara"),
-            (PROPIO, "2 3", "límite de la captura — corresponde a QUIRA, no al municipio")]):
+            (ROTO, "4 5", "vínculo no demostrable — el instrumento observado no lo declara"),
+            (PROPIO, "2 3", "límite de la captura de QUIRA — no es una carencia del municipio")]):
         yy = yg + k * 19
-        partes.append(f'<line x1="{x0}" y1="{yy}" x2="{x0+34}" y2="{yy}" stroke="{col}" '
-                      f'stroke-width="2.4" stroke-dasharray="{tr}"/>')
-        partes.append(f'<text x="{x0+46}" y="{yy+4}" font-size="11.5" fill="{GRIS}">{et}</text>')
+        p.append(f'<line x1="60" y1="{yy}" x2="94" y2="{yy}" stroke="{col}" stroke-width="2.4" '
+                 f'stroke-dasharray="{gui}"/>'
+                 f'<text x="106" y="{yy+4}" font-size="11.5" fill="{GRIS}">{et}</text>')
 
-    yp = yg + 3 * 19 + 14
-    partes.append(f'<line x1="{x0}" y1="{yp}" x2="{W-60}" y2="{yp}" stroke="{BORDE}"/>')
-    partes.append(f'<text x="{x0}" y="{yp+20}" font-size="11" font-weight="700" '
-                  f'fill="{GRIS}">PROCEDENCIA</text>')
-    for k, p in enumerate(e["procedencia"]):
-        partes.append(f'<text x="{x0}" y="{yp+38+k*16}" font-size="11" fill="{GRIS}">· {p}</text>')
-
-    partes.append("</svg>")
-    return "\n".join(partes)
+    # ── procedencia auditable
+    yp = yg + 72
+    p.append(f'<line x1="60" y1="{yp}" x2="{W-60}" y2="{yp}" stroke="{BORDE}"/>')
+    p.append(f'<text x="60" y="{yp+20}" font-size="11" font-weight="700" fill="{GRIS}" '
+             f'letter-spacing="0.5">PROCEDENCIA</text>')
+    for k, pr in enumerate(e["procedencia"]):
+        yy = yp + 38 + k * 17
+        p.append(f'<text x="60" y="{yy}" font-size="10.5" fill="{GRIS}">{pr["f"][:62]}</text>'
+                 f'<text x="720" y="{yy}" font-size="10.5" fill="{GRIS}" '
+                 f'font-family="Consolas, monospace">{pr["sha"]}</text>'
+                 f'<text x="{W-60}" y="{yy}" font-size="10.5" fill="{GRIS}" '
+                 f'text-anchor="end">{pr["d"]}</text>')
+    p.append("</svg>")
+    return "".join(p)
 
 
 def main() -> None:
@@ -247,19 +336,25 @@ def main() -> None:
 
     e = construir_estado(args.anio)
     print(f"ESTADO DERIVADO · {e['anio']} · corte {e['corte_cedula']}")
-    for n in e["cadena_demostrada"]:
-        print(f"   ✓ {n['nodo']:44} {n['cifra']}")
-    for n in e["cadena_rota"]:
-        print(f"   ∅ {n['nodo']:44} {n['cifra']}")
-    print(f"   objetivos: {e['detalle_objetivos']}")
+    for n in e["tronco"]:
+        print(f"   · {n['n']:46} {n['c']}")
+    for n in e["rama_financiera"]:
+        print(f"   {'✓' if n['e']=='validado' else '◌'} {n['n']:46} {n['c']}  [{n['e']}]")
+    o = e["rama_organica"]
+    print(f"   ↻ {o['n']:46} {o['c']}  ({o['detalle']})")
+    for n in e["rama_operacional"]:
+        print(f"   ∅ {n['n']:46} {n['c']}")
+    es = e["escala"]
+    print(f"   escala: ${es['trazable']:,.0f} de ${es['total_gad']:,.0f} = {es['pct']:.0f}%")
+    for k, v in e["objetivos"].items():
+        print(f"   {k:16} {v['n']} obj · ${v['monto']:,.0f}")
 
     out = Path(args.salida)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(svg(e), encoding="utf-8")
-    (out.with_suffix(".json")).write_text(json.dumps(e, ensure_ascii=False, indent=1),
-                                         encoding="utf-8")
-    print(f"\n  → {out}")
-    print(f"  → {out.with_suffix('.json')}  (el estado, sin el cual la gráfica no existe)")
+    out.with_suffix(".json").write_text(json.dumps(e, ensure_ascii=False, indent=1),
+                                        encoding="utf-8")
+    print(f"\n  → {out}\n  → {out.with_suffix('.json')}")
 
 
 if __name__ == "__main__":

@@ -1,68 +1,101 @@
 {
  "anio": 2026,
  "corte_cedula": "abril",
- "cadena_demostrada": [
+ "tronco": [
   {
-   "nodo": "Plan de Desarrollo y Ordenamiento Territorial",
-   "cifra": "66 metas vigentes",
-   "estado": "validado"
+   "n": "Plan de Desarrollo y Ordenamiento Territorial",
+   "c": "66 metas vigentes"
   },
   {
-   "nodo": "Objetivo estratégico",
-   "cifra": "9 declarados",
-   "estado": "validado"
+   "n": "Objetivo estratégico",
+   "c": "9 declarados"
   },
   {
-   "nodo": "Plan Anual de Inversiones",
-   "cifra": "101 actividades",
-   "estado": "validado"
-  },
-  {
-   "nodo": "Partida presupuestaria",
-   "cifra": "26 distintas",
-   "estado": "validado"
-  },
-  {
-   "nodo": "Cédula presupuestaria",
-   "cifra": "135 partidas · corte abril",
-   "estado": "validado"
-  },
-  {
-   "nodo": "Devengado",
-   "cifra": "$1,781,928 trazables",
-   "estado": "validado"
+   "n": "Plan Anual de Inversiones",
+   "c": "101 actividades"
   }
  ],
- "cadena_rota": [
+ "rama_financiera": [
   {
-   "nodo": "Meta",
-   "cifra": "0 de 101 actividades",
-   "estado": "sin_evidencia"
+   "n": "Partida presupuestaria",
+   "c": "26 distintas",
+   "e": "validado"
   },
   {
-   "nodo": "Indicador",
-   "cifra": "0 de 101 actividades",
-   "estado": "sin_evidencia"
+   "n": "Contratación pública",
+   "c": "no incorporada a este corte",
+   "e": "fuente_no_accesible"
   },
   {
-   "nodo": "Resultado",
-   "cifra": "no auditable documentalmente",
-   "estado": "sin_evidencia"
+   "n": "Cédula presupuestaria",
+   "c": "135 partidas · corte abril",
+   "e": "validado"
+  },
+  {
+   "n": "Devengado",
+   "c": "$1,781,928",
+   "e": "validado"
   }
  ],
- "detalle_objetivos": {
-  "con_devengado": 8,
-  "con_codificado": 1,
-  "sin_evidencia": 0,
-  "total": 9
+ "rama_organica": {
+  "n": "Código de actividad orgánica",
+  "c": "95 de 101 actividades",
+  "detalle": "APAA · DCGS · DFIN · DPC",
+  "e": "desviado"
  },
- "universo": {
-  "devengado_total_gad": 7752517.84,
+ "rama_operacional": [
+  {
+   "n": "Meta",
+   "c": "0 de 101 actividades",
+   "e": "sin_evidencia"
+  },
+  {
+   "n": "Indicador",
+   "c": "0 de 101 actividades",
+   "e": "sin_evidencia"
+  },
+  {
+   "n": "Resultado",
+   "c": "no verificable",
+   "e": "sin_evidencia"
+  }
+ ],
+ "escala": {
+  "trazable": 1781928.0100000002,
+  "total_gad": 7752517.84,
+  "pct": 22.985152008369973,
   "nota": "el Plan de Inversiones cubre inversión, no el gasto corriente"
  },
+ "objetivos": {
+  "con_devengado": {
+   "n": 8,
+   "monto": 1781928.0100000002
+  },
+  "con_codificado": {
+   "n": 1,
+   "monto": 0.0
+  },
+  "sin_evidencia": {
+   "n": 0,
+   "monto": 0.0
+  }
+ },
+ "total_objetivos": 9,
  "procedencia": [
-  "Plan Anual de Inversiones 2026 · GAD Montecristi · archivo oficial",
-  "Cédula presupuestaria · conjunto de datos mensual · corte abril 2026",
-  "Registro de metas · contrastado contra el plan aprobado por ordenanza"
+  {
+   "f": "Plan Anual de inversion (PAI) 2026.xlsx",
+   "sha": "964328c8bc88472b",
+   "d": "101 filas · 4 hojas"
+  },
+  {
+   "f": "GAD Montecristi Presupuesto abril 2026.xlsx",
+   "sha": "dbf66ec0d672a403",
+   "d": "135 partidas · acumulado a abril"
+  },
+  {
+   "f": "Ordenanza 07-2024-CM-GADMCM",
+   "sha": "662756aac591b247",
+   "d": "sancionada 05-11-2024 · fija el plan vigente"
+  }
  ]
 }

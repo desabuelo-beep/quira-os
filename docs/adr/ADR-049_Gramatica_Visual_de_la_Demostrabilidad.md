@@ -109,6 +109,21 @@ la efectividad operacional no es auditable documentalmente
 ⚠️ Cada eslabón causal exige respaldo. **Una cadena causal sin evidencia por tramo es una opinión
 dibujada**, y eso es peor que una opinión escrita.
 
+### Relación con los cinco motores (ADR-031) — la puerta que hay que cerrar
+
+**La capa visual no es un motor.** Un motor produce conocimiento; ésta proyecta el que ya existe.
+No compite con los cinco: los explota. Pero la forma III abre un riesgo que conviene clausurar por
+escrito, porque la redacción anterior lo permitía:
+
+> **La gráfica causal no deriva causalidad: representa la que el Motor Causal ya estableció.** Si
+> ningún motor estableció el vínculo, **la forma III no puede dibujarse** — ni «provisionalmente»,
+> ni «como hipótesis visual».
+
+Dibujar una flecha causal que ningún motor produjo sería construir un motor paralelo por la vía
+gráfica, que es exactamente lo que la Regla de Oro 4 prohíbe. Mientras el Motor Causal siga en
+laboratorio y no en runtime (ADR-031 §3), **sólo las formas I y II son admisibles en producto**; la
+III se limita a documentación interna y lleva marca visible de hipótesis.
+
 ## 4 · Vocabulario visual de estados
 
 Los estados provienen del motor y de la capa derivada; la gráfica **no inventa ninguno**:
