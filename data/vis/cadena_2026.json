@@ -25,9 +25,14 @@
    "e": "validado"
   },
   {
-   "n": "Contratación pública",
-   "c": "la fuente no respondió · causa no determinada",
-   "e": "fuente_no_accesible"
+   "n": "Plan Anual de Contratación",
+   "c": "126 ítems · 48 partidas planificadas",
+   "e": "validado"
+  },
+  {
+   "n": "Proceso de contratación",
+   "c": "17 procesos observados · cobertura parcial",
+   "e": "parcialmente_validado"
   },
   {
    "n": "Cédula presupuestaria",
@@ -44,18 +49,24 @@
   {
    "de": 0,
    "a": 1,
-   "e": "fuente_no_accesible",
-   "et": "fuente sin respuesta en 5 de 5 intentos"
+   "e": "validado",
+   "et": "la partida consta en el plan de contratación"
   },
   {
    "de": 1,
    "a": 2,
-   "e": "no_demostrado",
-   "et": "eslabón no incorporado a este corte"
+   "e": "parcialmente_validado",
+   "et": "8 de 48 partidas con proceso observado"
   },
   {
    "de": 2,
    "a": 3,
+   "e": "parcialmente_validado",
+   "et": "captura del estado contractual incompleta"
+  },
+  {
+   "de": 3,
+   "a": 4,
    "e": "validado",
    "et": "verificado en la cédula"
   }

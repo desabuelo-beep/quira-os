@@ -1,0 +1,418 @@
+{
+  "year": 2026,
+  "fuente": "SERCOP OCDS · montecristi",
+  "fecha_corte": "2026-08-12",
+  "n_procesos": 26,
+  "total_usd": 23132331.73,
+  "conteos_por_etapa": {
+    "active": 14,
+    "planning": 10,
+    "complete": 2
+  },
+  "procesos": [
+    {
+      "ocid": "ocds-5wno2w-CPC-GADMCM-2026-01-2896",
+      "tag": [
+        "planning",
+        "tender",
+        "award"
+      ],
+      "fecha": "2026-08-04T12:09:31-05:00",
+      "buyer": "GOBIERNO AUTONOMO DESCENTRALIZADO MUNICIPAL DEL CANTON MONTECRISTI",
+      "partida": "730601",
+      "descripcion": "CPC-GADMCM-2026-01-2896",
+      "metodo": "open",
+      "estado": "active",
+      "proveedor": "MERLO RAMIREZ FRANKLIN ARNULFO",
+      "monto": 29406.63,
+      "monto_tipo": "adjudicado"
+    },
+    {
+      "ocid": "ocds-5wno2w-CPC-MTOP-DDM-2026-003-67578",
+      "tag": [
+        "planning"
+      ],
+      "fecha": "2026-08-04T00:00:00-05:00",
+      "buyer": "DIRECCION DISTRITAL 13D01 - PORTOVIEJO - MANABI - MIT",
+      "partida": "2026.520.0013.0000.24.00.641.001.000.1306.730604.000000.202.8888.8888",
+      "descripcion": "FISCALIZACIÓN PARA LA REHABILITACIÓN Y MANTENIMIENTO DE LA RED VIAL ESTATAL E482, TRAMO MONTECRISTI–JIPIJAPA–LA CADENA, CON UNA LONGITUD DE 96,2 KM, QUE INCLUYE AL SUBTRAMO VIAL E482A CERRO GUAYABAL–LA PILA, DE 5,4 KM, LOCALIZADO EN LA PROVINCIA DE MANABÍ, ALCANZANDO UN TOTAL DE INTERVENCIÓN DE 101,6 KM",
+      "monto": 947055.24,
+      "monto_tipo": "referencial"
+    },
+    {
+      "ocid": "ocds-5wno2w-LICO-BS19-NAPO-2026-00002-85899",
+      "tag": [
+        "planning",
+        "tender",
+        "award",
+        "contract"
+      ],
+      "fecha": "2026-07-01T20:16:11-05:00",
+      "buyer": "BRIGADA DE SELVA No 19 \"NAPO\"",
+      "partida": "2026.070.1038.0000.57.00.000.003.000.2201.530402.000000.002.0000.0000",
+      "descripcion": "LICO-BS19-NAPO-2026-00002-85899",
+      "metodo": "open",
+      "estado": "active",
+      "proveedor": "INGECONSTRU S.A.",
+      "monto": 81705.0884,
+      "monto_tipo": "adjudicado"
+    },
+    {
+      "ocid": "ocds-5wno2w-LICO-BS19-NAPO-2026-00003-85899",
+      "tag": [
+        "planning",
+        "tender",
+        "award"
+      ],
+      "fecha": "2026-07-03T14:20:38-05:00",
+      "buyer": "BRIGADA DE SELVA No 19 \"NAPO\"",
+      "partida": "2026.070.1038.0000.57.00.000.002.000.2201.530402.000000.001.0000.0000",
+      "descripcion": "LICO-BS19-NAPO-2026-00003-85899",
+      "metodo": "open",
+      "estado": "active",
+      "proveedor": "G2CONSTUCTORA S.A.S.",
+      "monto": 145820.0388,
+      "monto_tipo": "adjudicado"
+    },
+    {
+      "ocid": "ocds-5wno2w-LICO-GADMCM-2026-01-2896",
+      "tag": [
+        "planning",
+        "tender",
+        "award"
+      ],
+      "fecha": "2026-07-04T11:25:55-05:00",
+      "buyer": "GOBIERNO AUTONOMO DESCENTRALIZADO MUNICIPAL DEL CANTON MONTECRISTI",
+      "partida": "530402",
+      "descripcion": "LICO-GADMCM-2026-01-2896",
+      "metodo": "open",
+      "estado": "active",
+      "proveedor": "OLARTE MENENDEZ EDUARDO EDISON",
+      "monto": 39737.7335,
+      "monto_tipo": "adjudicado"
+    },
+    {
+      "ocid": "ocds-5wno2w-LICO-GADMCM-2026-02-2896",
+      "tag": [
+        "planning",
+        "tender",
+        "award"
+      ],
+      "fecha": "2026-08-07T13:13:06-05:00",
+      "buyer": "GOBIERNO AUTONOMO DESCENTRALIZADO MUNICIPAL DEL CANTON MONTECRISTI",
+      "partida": "750105",
+      "descripcion": "LICO-GADMCM-2026-02-2896",
+      "metodo": "open",
+      "estado": "active",
+      "proveedor": "CEDEÑO ROLDAN MARIA DOLORES",
+      "monto": 459472.1957,
+      "monto_tipo": "adjudicado"
+    },
+    {
+      "ocid": "ocds-5wno2w-LICO-GADMCM-2026-03-2896",
+      "tag": [
+        "planning"
+      ],
+      "fecha": "2026-07-24T00:00:00-05:00",
+      "buyer": "GOBIERNO AUTONOMO DESCENTRALIZADO MUNICIPAL DEL CANTON MONTECRISTI",
+      "partida": "750105",
+      "descripcion": "MEJORAMIENTO Y ASFALTADO DE VÍAS MEDIANTE TRATAMIENTOSUPERFICIAL BITUMINOSO DOBLE RIEGO Y CARPETA ASFÁLTICA ENVARIOS SECTORES DEL CANTÓN MONTECRISTI",
+      "monto": 799900.5108,
+      "monto_tipo": "referencial"
+    },
+    {
+      "ocid": "ocds-5wno2w-LICO-GADMCM-2026-04-2896",
+      "tag": [
+        "planning"
+      ],
+      "fecha": "2026-08-03T00:00:00-05:00",
+      "buyer": "GOBIERNO AUTONOMO DESCENTRALIZADO MUNICIPAL DEL CANTON MONTECRISTI",
+      "partida": "750104",
+      "descripcion": "MANTENIMIENTO, ADECUACIÓN Y MEJORAMIENTO DE INFRAESTRUCTURA COMUNITARIA EN VARIOS SECTORES RURALES DEL CANTÓN MONTECRISTI",
+      "monto": 132998.0186,
+      "monto_tipo": "referencial"
+    },
+    {
+      "ocid": "ocds-5wno2w-LICO-GADPRLP-2026-00001-134011",
+      "tag": [
+        "planning",
+        "tender",
+        "award"
+      ],
+      "fecha": "2026-05-30T10:31:31-05:00",
+      "buyer": "JUNTA PARROQUIAL LA PILA",
+      "partida": "7.5.01.04",
+      "descripcion": "LICO-GADPRLP-2026-00001-134011",
+      "metodo": "open",
+      "estado": "active",
+      "proveedor": "CEDEÑO DELGADO EDISON PAUL",
+      "monto": 13503.1306,
+      "monto_tipo": "adjudicado"
+    },
+    {
+      "ocid": "ocds-5wno2w-LICO-GADPRLP-2026-00002-134011",
+      "tag": [
+        "planning",
+        "tender",
+        "award"
+      ],
+      "fecha": "2026-07-03T14:21:16-05:00",
+      "buyer": "JUNTA PARROQUIAL LA PILA",
+      "partida": "7.5.01.05",
+      "descripcion": "LICO-GADPRLP-2026-00002-134011",
+      "metodo": "open",
+      "estado": "active",
+      "proveedor": "FLECHER ZAMBRANO JOSE ARTURO",
+      "monto": 148610.296,
+      "monto_tipo": "adjudicado"
+    },
+    {
+      "ocid": "ocds-5wno2w-LICO-MINEDEC-CZ4-2026-002-362824",
+      "tag": [
+        "planning",
+        "tender",
+        "award"
+      ],
+      "fecha": "2026-07-11T11:51:49-05:00",
+      "buyer": "MINISTERIO DE EDUCACION, DEPORTE Y CULTURA ZONA 4",
+      "partida": "2026.140.0024.0000.60.00.009.001.000.1301.750107.000000.202.2004.4139",
+      "descripcion": "LICO-MINEDEC-CZ4-2026-002-362824",
+      "metodo": "open",
+      "estado": "active",
+      "proveedor": "CONSTRUCTORA Y COMERCIALIZADORA CEVALLOS&SANTANA MANASAFETY S.A.",
+      "monto": 117631.4699,
+      "monto_tipo": "adjudicado"
+    },
+    {
+      "ocid": "ocds-5wno2w-LICO-MINEDEC-CZ4-2026-003-362824",
+      "tag": [
+        "planning",
+        "tender",
+        "award"
+      ],
+      "fecha": "2026-07-11T11:51:50-05:00",
+      "buyer": "MINISTERIO DE EDUCACION, DEPORTE Y CULTURA ZONA 4",
+      "partida": "2026.140.0024.0000.60.00.009.001.000.1301.750107.000000.202.2004.4139",
+      "descripcion": "LICO-MINEDEC-CZ4-2026-003-362824",
+      "metodo": "open",
+      "estado": "active",
+      "proveedor": "PARREÑO ESCOBAR JULIO GREGORIO",
+      "monto": 116097.4246,
+      "monto_tipo": "adjudicado"
+    },
+    {
+      "ocid": "ocds-5wno2w-LICS-GADMCM-2026-01-2896",
+      "tag": [
+        "planning"
+      ],
+      "fecha": "2026-05-19T00:00:00-05:00",
+      "buyer": "GOBIERNO AUTONOMO DESCENTRALIZADO MUNICIPAL DEL CANTON MONTECRISTI",
+      "partida": "730607",
+      "descripcion": "SERVICIO PARA LA GESTIÓN DE COBRO PERSUASIVO, PRE COACTIVA Y COACTIVO A LOS DEUDORES DEL GOBIERNO AUTÓNOMO DESCENTRALIZADO DEL CANTÓN MONTECRISTI",
+      "monto": 338066.76,
+      "monto_tipo": "referencial"
+    },
+    {
+      "ocid": "ocds-5wno2w-LICS-GADMCM-2026-02-2896",
+      "tag": [
+        "planning",
+        "tender",
+        "award"
+      ],
+      "fecha": "2026-07-01T20:20:46-05:00",
+      "buyer": "GOBIERNO AUTONOMO DESCENTRALIZADO MUNICIPAL DEL CANTON MONTECRISTI",
+      "partida": "730404",
+      "descripcion": "LICS-GADMCM-2026-02-2896",
+      "metodo": "open",
+      "estado": "complete",
+      "proveedor": "CORRALES ZAMBRANO FRANKLIN XAVIER",
+      "monto": 85913.42,
+      "monto_tipo": "adjudicado"
+    },
+    {
+      "ocid": "ocds-5wno2w-LICS-GADMCM-2026-03-2896",
+      "tag": [
+        "planning",
+        "tender",
+        "award"
+      ],
+      "fecha": "2026-07-21T11:58:33-05:00",
+      "buyer": "GOBIERNO AUTONOMO DESCENTRALIZADO MUNICIPAL DEL CANTON MONTECRISTI",
+      "partida": "730607",
+      "descripcion": "LICS-GADMCM-2026-03-2896",
+      "metodo": "open",
+      "estado": "active",
+      "proveedor": "VILLACIS LOPEZ JORGE HERNAN",
+      "monto": 300000,
+      "monto_tipo": "adjudicado"
+    },
+    {
+      "ocid": "ocds-5wno2w-LICS-GADMCM-2026-04-2896",
+      "tag": [
+        "planning",
+        "tender",
+        "award"
+      ],
+      "fecha": "2026-07-22T12:06:45-05:00",
+      "buyer": "GOBIERNO AUTONOMO DESCENTRALIZADO MUNICIPAL DEL CANTON MONTECRISTI",
+      "partida": "730404",
+      "descripcion": "LICS-GADMCM-2026-04-2896",
+      "metodo": "open",
+      "estado": "active",
+      "proveedor": "MAQUINARIAS Y VEHICULOS S.A. MAVESA",
+      "monto": 211606.5,
+      "monto_tipo": "adjudicado"
+    },
+    {
+      "ocid": "ocds-5wno2w-LICSG-DD13D02S-2026-001-18162",
+      "tag": [
+        "planning"
+      ],
+      "fecha": "2026-03-10T00:00:00-05:00",
+      "buyer": "DIRECCION DISTRITAL DE SALUD N 13D02 JARAMIJO-MANTA-MONTECRISTI",
+      "partida": "2026.320.1336.0000.90.00.000.003.000.1308.570201.000000.001.0000.0000",
+      "descripcion": "?CONTRATACIÓN DE PÓLIZAS DE SEGURO DE INCENDIO Y LÍNEAS ALIADAS, ROBO Y O ASALTO, EQUIPO ELÉCTRICO, ROTURA DE MÁQUINA, RESPONSABILIDAD CIVIL Y VEHÍCULOS PARA LOS BIENES MUEBLES E INMUEBLES DE LA DIRECCIÓN DISTRITAL 13D02 JARAMIJO - MANTA - MONTECRISTI - SALUD?",
+      "monto": 39728.2,
+      "monto_tipo": "referencial"
+    },
+    {
+      "ocid": "ocds-5wno2w-LICSG-GADMCM-2026-01-2896",
+      "tag": [
+        "planning"
+      ],
+      "fecha": "2026-07-23T00:00:00-05:00",
+      "buyer": "GOBIERNO AUTONOMO DESCENTRALIZADO MUNICIPAL DEL CANTON MONTECRISTI",
+      "partida": "570201",
+      "descripcion": "CONTRATACIÓN DE PÓLIZAS DE SEGUROS DE INCENDIO, LUCRO CESANTE POR INCENDIO, ROBO Y O ASALTO, DINERO Y VALORES, EQUIPOS ELECTRÓNICOS, VEHÍCULOS, EQUIPOS Y MAQUINARIAS, ROTURA DE MAQUINARIAS PARA LOS BIENES DEL GOBIERNO AUTÓNOMO DESCENTRALIZADO DEL CANTÓN MONTECRISTI",
+      "monto": 74984.3,
+      "monto_tipo": "referencial"
+    },
+    {
+      "ocid": "ocds-5wno2w-RE-CEPI-MTOP-DDM-2026-001-67578",
+      "tag": [
+        "planning",
+        "tender",
+        "award"
+      ],
+      "fecha": "2026-08-05T12:12:41-05:00",
+      "buyer": "DIRECCION DISTRITAL 13D01 - PORTOVIEJO - MANABI - MIT",
+      "partida": "2026.520.0013.0000.24.00.641.002.000.1301.770201.000000.202.8888.8888-175200000.0000.391053",
+      "descripcion": "RE-CEPI-MTOP-DDM-2026-001-67578",
+      "metodo": "direct",
+      "estado": "active",
+      "proveedor": "CHINA CIVIL ENGINEERING CONSTRUCTION CORPORATION",
+      "monto": 18981408.939,
+      "monto_tipo": "adjudicado"
+    },
+    {
+      "ocid": "ocds-5wno2w-SIE-BS19-NAPO-2026-00014-85899",
+      "tag": [
+        "planning",
+        "tender",
+        "award",
+        "contract"
+      ],
+      "fecha": "2026-08-01T13:31:45-05:00",
+      "buyer": "BRIGADA DE SELVA No 19 \"NAPO\"",
+      "partida": null,
+      "descripcion": "SIE-BS19-NAPO-2026-00014-85899",
+      "metodo": "open",
+      "estado": "active",
+      "proveedor": "IAF INDUSTRIAS INDUSTRIA DE AGUA Y FILTRACION CIA LTDA",
+      "monto": 22990,
+      "monto_tipo": "adjudicado"
+    },
+    {
+      "ocid": "ocds-5wno2w-SIE-EMAIMEP-2026-001-827527",
+      "tag": [
+        "planning"
+      ],
+      "fecha": "2026-02-20T00:00:00-05:00",
+      "buyer": "EMPRESA MUNICIPAL DE ASEO INTEGRAL MONTECRISTI-EP",
+      "partida": "73.05.04",
+      "descripcion": "ALQUILER DE MAQUINARIA PARA MANEJO DE RELLENO SANITARIO, Y DISPOSICIÓN FINAL DE LOS DESECHOS SÓLIDOS NO PELIGROSOS DEL CANTÓN MONTECRISTI, CON ASISTENCIA TÉCNICA Y CUMPLIMIENTO AMBIENTAL",
+      "monto": null,
+      "monto_tipo": "sin_publicar"
+    },
+    {
+      "ocid": "ocds-5wno2w-SIE-EMAIMEP-2026-002-827527",
+      "tag": [
+        "planning",
+        "tender",
+        "award",
+        "contract"
+      ],
+      "fecha": "2026-05-04T16:49:42-05:00",
+      "buyer": "EMPRESA MUNICIPAL DE ASEO INTEGRAL MONTECRISTI-EP",
+      "partida": "76.06.13",
+      "descripcion": "SIE-EMAIMEP-2026-002-827527",
+      "metodo": "open",
+      "estado": "complete",
+      "proveedor": "KENOS ACADEMY S.A.S.",
+      "monto": 33246.5,
+      "monto_tipo": "adjudicado"
+    },
+    {
+      "ocid": "ocds-5wno2w-SIE-GADMCM-2026-02-2896",
+      "tag": [
+        "planning",
+        "tender",
+        "award",
+        "contract"
+      ],
+      "fecha": "2026-07-22T12:07:05-05:00",
+      "buyer": "GOBIERNO AUTONOMO DESCENTRALIZADO MUNICIPAL DEL CANTON MONTECRISTI",
+      "partida": null,
+      "descripcion": "SIE-GADMCM-2026-02-2896",
+      "metodo": "open",
+      "estado": "active",
+      "proveedor": "BAQUE BAQUE GENESIS GABRIELA",
+      "monto": 12449.33,
+      "monto_tipo": "adjudicado"
+    },
+    {
+      "ocid": "ocds-5wno2w-SIE-GADMCM-2026-03-2896",
+      "tag": [
+        "planning"
+      ],
+      "fecha": "2026-08-04T00:00:00-05:00",
+      "buyer": "GOBIERNO AUTONOMO DESCENTRALIZADO MUNICIPAL DEL CANTON MONTECRISTI",
+      "partida": "730204",
+      "descripcion": "SERVICIO ADMINISTRADO DE IMPRESIÓN Y COPIADO CON PROVISIÓN DE EQUIPOS MULTIFUNCIONALES, PARA EL GAD DEL CANTÓN MONTECRISTI",
+      "monto": null,
+      "monto_tipo": "sin_publicar"
+    },
+    {
+      "ocid": "ocds-5wno2w-SIE-GADMCM-2026-04-2896",
+      "tag": [
+        "planning"
+      ],
+      "fecha": "2026-08-04T00:00:00-05:00",
+      "buyer": "GOBIERNO AUTONOMO DESCENTRALIZADO MUNICIPAL DEL CANTON MONTECRISTI",
+      "partida": null,
+      "descripcion": "ADQUISICION DE MATERIAL FILTRANTE PARA TRABAJOS DE MANTENIMIENTO E INTERVENCION EN EL CANTON MONTECRISTI",
+      "monto": null,
+      "monto_tipo": "sin_publicar"
+    },
+    {
+      "ocid": "ocds-5wno2w-SIE-PMASMON-2026-01-362253",
+      "tag": [
+        "planning"
+      ],
+      "fecha": "2026-04-20T00:00:00-05:00",
+      "buyer": "Patronato Municipal de Amparo Social de Montecristi",
+      "partida": "73.02.05.000.00",
+      "descripcion": "SERVICIO DE LOGÍSTICA Y EJECUCIÓN DE ACTIVIDADES PARA EL FORTALECIMIENTO Y  EMPODERAMIENTO DE GRUPOS DE ATENCIÓN PRIORITARIA DEL CANTÓN MONTECRISTI",
+      "monto": null,
+      "monto_tipo": "sin_publicar"
+    }
+  ],
+  "alertas": [],
+  "via_api": "ocds_search_record_union",
+  "transporte": {
+    "intentos": 35,
+    "fallos": 0,
+    "ultimo_error": ""
+  },
+  "estado_captura": "completa"
+}

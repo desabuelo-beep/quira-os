@@ -106,6 +106,27 @@ def construir_estado(anio: int = 2026) -> dict:
     ejemplos = sorted({r["campos"]["codigo_actividad"].split("-")[0]
                        for r in pai if r["campos"].get("codigo_actividad")})[:4]
 
+    # PAC del año: planificación contractual. Fuente en disco, no en la API.
+    pac = json.loads((RAIZ / "data" / "pdot" / "pac_holding.json")
+                     .read_text(encoding="utf-8"))
+    pac_anio = [r for r in pac if r["anio"] == anio]
+    pac_items = len(pac_anio)
+    pac_set = {r["partida"] for r in pac_anio}
+    pac_partidas = len(pac_set)
+
+    # Procesos observados en SERCOP: estado contractual real, cobertura parcial.
+    # NO es «el PAC que no pudimos bajar»: es la otra mitad de la pregunta.
+    try:
+        sc = json.loads((RAIZ / "data" / "scouting" / f"sercop_{anio}_parcial.json")
+                        .read_text(encoding="utf-8"))["procesos"]
+        sc = [x for x in sc if "MONTECRISTI" in (x.get("buyer") or "").upper()]
+    except Exception:
+        sc = []
+    sercop_n = len(sc)
+    sercop_set = {x["partida"][:6] for x in sc
+                  if x.get("partida") and x["partida"][:6].isdigit()}
+    sercop_partidas = len(sercop_set & pac_set)
+
     fpai = BASE_PAI / ARCHIVOS[anio]
     fced = next((c for c in sorted((BASE_CED / f"Presupuestos {anio}" /
                                     f"GAD Montecristi {anio}").glob("*.xlsx"))
@@ -121,6 +142,17 @@ def construir_estado(anio: int = 2026) -> dict:
             {"n": "Plan Anual de Inversiones", "c": f"{len(pai)} actividades",
              "p": "extracción PAI · documental"},
         ],
+        # ── PAC Y SERCOP SON DOS ESLABONES, NO UNO.
+        # La versión anterior los fundía en una caja «Contratación pública» que
+        # decía `fuente_no_accesible`, y eso inducía a leer «no tenemos nada de
+        # contratación». Falso en las dos mitades:
+        #   · el PAC está en disco —586 ítems de las 4 entidades— y demuestra
+        #     QUÉ SE PLANIFICÓ CONTRATAR;
+        #   · de SERCOP hay 17 procesos del holding OBSERVADOS con su estado
+        #     real, cobertura parcial.
+        # Son preguntas distintas y evidencias distintas. Fundirlas convertía un
+        # dato disponible en una ausencia.
+        #
         # ── ATRIBUCIÓN CORREGIDA (2026-08-13), y en la dirección contraria a la
         # de ayer. El 12-ago se rotuló `captura_no_completada` —culpa nuestra—
         # porque la API dejó de responder tras ~60 peticiones propias en una
@@ -140,8 +172,12 @@ def construir_estado(anio: int = 2026) -> dict:
         "rama_financiera": [
             {"n": "Partida presupuestaria", "c": f"{len(partidas)} distintas",
              "e": "validado"},
-            {"n": "Contratación pública", "c": "la fuente no respondió · causa no determinada",
-             "e": "fuente_no_accesible"},
+            {"n": "Plan Anual de Contratación",
+             "c": f"{pac_items} ítems · {pac_partidas} partidas planificadas",
+             "e": "validado"},
+            {"n": "Proceso de contratación",
+             "c": f"{sercop_n} procesos observados · cobertura parcial",
+             "e": "parcialmente_validado"},
             {"n": "Cédula presupuestaria", "c": f"{len(corte)} partidas · corte {mes}",
              "e": "validado"},
             {"n": "Devengado", "c": f"${trazable:,.0f}", "e": "validado"},
@@ -150,11 +186,13 @@ def construir_estado(anio: int = 2026) -> dict:
         # que dice «verificado» saliendo de un nodo no verificado es una
         # afirmación falsa, y en la versión anterior existía exactamente esa.
         "aristas_financiera": [
-            {"de": 0, "a": 1, "e": "fuente_no_accesible",
-             "et": "fuente sin respuesta en 5 de 5 intentos"},
-            {"de": 1, "a": 2, "e": "no_demostrado",
-             "et": "eslabón no incorporado a este corte"},
-            {"de": 2, "a": 3, "e": "validado", "et": "verificado en la cédula"},
+            {"de": 0, "a": 1, "e": "validado",
+             "et": "la partida consta en el plan de contratación"},
+            {"de": 1, "a": 2, "e": "parcialmente_validado",
+             "et": f"{sercop_partidas} de {pac_partidas} partidas con proceso observado"},
+            {"de": 2, "a": 3, "e": "parcialmente_validado",
+             "et": "captura del estado contractual incompleta"},
+            {"de": 3, "a": 4, "e": "validado", "et": "verificado en la cédula"},
         ],
         "rama_organica": {
             "n": "Código de actividad orgánica",
@@ -314,6 +352,7 @@ def svg(e: dict) -> str:
                  f'<path d="M{xc-5},{yb+44} L{xc},{yb+52} L{xc+5},{yb+44}" fill="{TINTA}"/>')
 
     ROT = {"validado": ("verificado en la fuente", DEMOSTRADO, "", False),
+           "parcialmente_validado": ("observado en parte", DEMOSTRADO, "7 3", False),
            "captura_no_completada": ("captura propia no completada", PROPIO, "2 3", False),
            "fuente_no_accesible": ("la fuente no respondió", PROPIO, "2 3", False),
            "no_demostrado": ("eslabón no incorporado", PROPIO, "2 3", False),
@@ -407,7 +446,7 @@ def svg(e: dict) -> str:
 
     # ── lectura
     yl = 760
-    p.append(f'<rect x="60" y="{yl}" width="{W-120}" height="94" rx="6" fill="{PANEL}" '
+    p.append(f'<rect x="60" y="{yl}" width="{W-120}" height="104" rx="6" fill="{PANEL}" '
              f'stroke="{BORDE}"/>')
     p.append(f'<text x="78" y="{yl+25}" font-size="13" font-weight="700" fill="{TINTA}">Lectura</text>')
     # «La articulación es demostrable» afirmaba más de lo probado: articulación
@@ -419,7 +458,13 @@ def svg(e: dict) -> str:
         "La cadena hacia metas e indicadores no puede reconstruirse: los instrumentos de 2026",
         "no los declaran. Esto describe lo que los documentos permiten demostrar, no el desempeño."]):
         p.append(f'<text x="78" y="{yl+48+k*19}" font-size="12.5" fill="{TINTA}">{t}</text>')
-    p.append(f'<text x="60" y="{yl+114}" font-size="11.5" font-weight="600" fill="{ROTO}">'
+    # Cierre epistemológico. El ojo completa la línea, y el lenguaje también: sin
+    # esta frase, «cadena reconstruida hasta el gasto» se lee como «objetivo
+    # cumplido». El objeto debe bloquear esa inferencia por sí mismo.
+    p.append(f'<text x="78" y="{yl+86}" font-size="12.5" font-weight="700" fill="{TINTA}">'
+             f'La reconstrucción documental no implica efectividad, causalidad ni '
+             f'cumplimiento del resultado.</text>')
+    p.append(f'<text x="60" y="{yl+118}" font-size="11.5" font-weight="600" fill="{ROTO}">'
              f'Ausencia de evidencia documental. No constituye evidencia de incumplimiento.</text>')
 
     # ── leyenda: los tres trazos, los tres presentes en el dibujo

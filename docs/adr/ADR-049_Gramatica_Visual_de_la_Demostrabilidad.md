@@ -86,6 +86,39 @@ Un límite honesto de estas invariantes: `verificar_procedencia` detecta un elem
 **no habría detectado esa frase**, porque tenía dueño aparente. La distinción hecho/interpretación
 todavía depende de revisión humana. Conviene saberlo antes de escalar a doce dominios.
 
+### VIS-INV-003 · lo documental no demuestra lo sustantivo
+
+> **El PAC demuestra planificación. SERCOP demuestra el estado del proceso contractual. La
+> ejecución presupuestaria demuestra gasto. Ninguno de los tres, por sí solo ni en cadena,
+> demuestra efectividad, causalidad ni cumplimiento del resultado.**
+>
+> Toda representación de una cadena documental debe **bloquear expresamente** esa inferencia.
+
+*(propuesta del colega, 2026-08-13 — adoptada)*. VIS-INV-001 impide inventar datos; VIS-INV-002
+impide que una interpretación se disfrace de hecho. Ésta cierra la tercera puerta, y es la que un
+lector abre solo:
+
+```
+cadena reconstruida  →  gasto ejecutado  →  ¿objetivo cumplido?
+                                            ↑ el lector completa esto
+```
+
+**El ojo completa la línea, y el lenguaje también.** Por eso el objeto canónico cierra con la
+frase, no como nota al pie sino como parte de la lectura: *«La reconstrucción documental no
+implica efectividad, causalidad ni cumplimiento del resultado.»*
+
+⚠️ **Corolario operativo:** dos eslabones que responden preguntas distintas **no se funden en una
+caja**. El objeto v6 mostraba «Contratación pública · fuente no accesible», y eso inducía a leer
+«no hay nada de contratación» cuando el plan de contratación estaba en disco —586 ítems de las
+cuatro entidades— y había 17 procesos observados con su estado real. **Fundir dos evidencias
+distintas convirtió un dato disponible en una ausencia.**
+
+| Eslabón | Qué demuestra | Estado 2026 |
+|---|---|---|
+| Plan Anual de Contratación | qué se planificó contratar | disponible |
+| Proceso en SERCOP | en qué estado está ese proceso | observado en parte |
+| Cédula · devengado | qué se ejecutó financieramente | disponible |
+
 ### VIS-INT-001 · integridad de procedencia visual
 
 > **Si un elemento del dibujo no tiene propietario canónico, ese elemento no puede existir.**
