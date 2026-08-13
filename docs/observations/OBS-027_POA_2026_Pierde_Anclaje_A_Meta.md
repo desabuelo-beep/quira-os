@@ -79,7 +79,64 @@ De ahí una matriz de cuatro estados, en lugar de un binario cumple/no cumple:
 Esto además resuelve el caso de **Bomberos** (OBS-024) sin forzarlo: articula por objetivo aunque
 no tenga meta asignada. Deja de ser una contradicción y pasa a ser una casilla legítima.
 
-## Un segundo hallazgo, y este es nuestro
+## Confirmado por una segunda fuente: el PAI 2026 tampoco declara meta
+
+*(2026-08-12)* Quedaba abierta una posibilidad razonable: que la meta viviera en otro instrumento
+del mismo año. El **Plan Anual de Inversiones** era el candidato natural — ordena la inversión y
+trae la partida. Verificado sobre los originales:
+
+| Año | filas | objetivo | **META** | indicador | partida | cód. actividad |
+|---|---|---|---|---|---|---|
+| PAI 2023 | 104 | 104 | **0** | 0 | 104 | 0 |
+| PAI 2025 | 109 | 109 | **109** | 109 | 109 | 0 |
+| **PAI 2026** | **101** | **93** | **0** | **0** | **95** | **95** |
+
+> **En 2026 la meta desaparece de toda la cadena operativa —POA y PAI—, no de una hoja suelta.**
+
+### Y un cambio que dice más que la ausencia
+
+**El mismo instrumento que elimina la meta introduce el `CÓDIGO DE LA ACTIVIDAD`** (`APAA-01`,
+`OOPP-25`), presente en 95 de 101 filas y ausente en 2023 y 2025.
+
+No se perdió trazabilidad sin más: **se movió del plan a la organización.** El identificador nuevo
+ancla la actividad a la dirección que la ejecuta; el que se fue la anclaba al plan que debía
+cumplir. Es un objeto de gestión con llave propia —lo que OBS-026 echaba en falta— pero apuntando
+al organigrama en vez de al PDOT.
+
+### Lo que sí se puede afirmar de 2026
+
+Cruzado el PAI 2026 contra la cédula del GAD (corte abril, acumulada):
+
+| | objetivos |
+|---|---|
+| Con **devengado certificado** | **8 / 9** |
+| Con codificado sin devengado | 1 / 9 |
+| **Sin evidencia financiera** | **0** |
+
+Los nueve objetivos estratégicos del PAI tienen respaldo financiero verificable; alcanzan
+**$1.781.928** de los $7.752.518 devengados al corte —el 23 %, coherente con que el PAI cubra
+inversión y no el presupuesto entero—.
+
+> **Formulación admisible:** *el POA y el PAI 2026 presentan articulación estratégica con el PDOT,
+> verificable hasta el devengado; el instrumento no declara anclaje explícito a metas, por lo que
+> la trazabilidad operacional hacia metas no es demostrable desde ninguno de los dos.*
+>
+> ⛔ **No admisible:** «el POA 2026 no está articulado al PDOT». La primera afirmación está
+> respaldada por lo hallado; la segunda es más fuerte de lo que la evidencia permite.
+
+### Nota de método: un desalineamiento que no dio error
+
+Sólo la primera de las cuatro hojas del PAI 2026 trae títulos; las demás arrancan en datos. Una de
+ellas —`Table 3`— viene **corrida una columna** por celdas combinadas que la exportación abrió.
+Heredar el mapa de títulos tal cual leía el objetivo de desarrollo como objetivo estratégico y el
+grupo de gasto como partida, **sin producir un solo error**: las filas salían completas y
+equivocadas. Se detectó porque aparecían «objetivos estratégicos» llamados *Montecristi Natural y
+Protegido*, que son objetivos de desarrollo.
+
+Corregido anclando por la partida de 6 dígitos, reconocible por su forma. **De 12 objetivos
+contaminados a 9 reales.**
+
+## Un tercer hallazgo, y este es nuestro
 
 Antes de llegar aquí, el corpus mostraba el POA del GAD con **53 % de texto roto** —columnas de
 tabla leídas carácter a carácter— y eso llevó a concluir que el POA «no anclaba». **Era un defecto
