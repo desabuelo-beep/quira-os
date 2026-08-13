@@ -62,7 +62,10 @@ PANEL = "#F7F9FA"
 
 
 def _sha(p: Path) -> str:
-    return hashlib.sha256(p.read_bytes()).hexdigest()[:16] if p.exists() else "—"
+    # 16 de los 64 caracteres. Rotularlo «SHA-256» a secas sería inexacto ante
+    # una revisión estricta: el prefijo declara el truncamiento.
+    return ("sha256:" + hashlib.sha256(p.read_bytes()).hexdigest()[:16]
+            if p.exists() else "—")
 
 
 def construir_estado(anio: int = 2026) -> dict:
@@ -78,14 +81,20 @@ def construir_estado(anio: int = 2026) -> dict:
 
     # Montos, no sólo conteos: un objetivo puede concentrar casi todo el dinero
     # y ocho pesar poco. «8 de 9» sin importes engaña sin mentir.
-    grupos = {"con_devengado": [0, 0.0], "con_codificado": [0, 0.0], "sin_evidencia": [0, 0.0]}
+    grupos = {"con_devengado": [0, 0.0, 0.0], "con_codificado": [0, 0.0, 0.0],
+              "sin_evidencia": [0, 0.0, 0.0]}
     for ps in por_obj.values():
         est = [estado_financiero(corte.get(p))["estado"] for p in ps]
         monto = sum((corte.get(p, {}).get("devengado") or 0) for p in ps)
+        # El codificado se lleva aparte: un objetivo con presupuesto asignado y
+        # cero gastado NO es lo mismo que uno sin un dólar asignado, y mostrar
+        # sólo «$0» los confundía.
+        codif = sum((corte.get(p, {}).get("codificado") or 0) for p in ps)
         k = ("con_devengado" if "devengado_positivo" in est else
              "con_codificado" if "codificado_sin_devengado" in est else "sin_evidencia")
         grupos[k][0] += 1
         grupos[k][1] += monto
+        grupos[k][2] += codif
 
     trazable = sum(v[1] for v in grupos.values())
     total_gad = sum(r.get("devengado") or 0 for r in corte.values())
@@ -93,6 +102,7 @@ def construir_estado(anio: int = 2026) -> dict:
                        .read_text(encoding="utf-8"))["metas"]
     partidas = {p for ps in por_obj.values() for p in ps}
     con_codigo = sum(1 for r in pai if r["campos"].get("codigo_actividad"))
+    sin_codigo = len(pai) - con_codigo      # las que faltan NO se dejan en el aire
     ejemplos = sorted({r["campos"]["codigo_actividad"].split("-")[0]
                        for r in pai if r["campos"].get("codigo_actividad")})[:4]
 
@@ -120,7 +130,7 @@ def construir_estado(anio: int = 2026) -> dict:
         ],
         "rama_organica": {
             "n": "Código de actividad orgánica",
-            "c": f"{con_codigo} de {len(pai)} actividades",
+            "c": f"{con_codigo} con código orgánico · {sin_codigo} sin identificador",
             "detalle": " · ".join(ejemplos), "e": "desviado"},
         "rama_operacional": [
             {"n": "Meta", "c": f"{sum(1 for r in pai if r['campos'].get('meta_pdot'))}"
@@ -139,14 +149,15 @@ def construir_estado(anio: int = 2026) -> dict:
             # estar — un hallazgo falso nacido de una etiqueta.
             "nota": "el Plan de Inversiones cubre inversión, no el gasto corriente",
         },
-        "objetivos": {k: {"n": v[0], "monto": v[1]} for k, v in grupos.items()},
+        "objetivos": {k: {"n": v[0], "monto": v[1], "codificado": v[2]}
+                      for k, v in grupos.items()},
         "total_objetivos": len(por_obj),
         "procedencia": [
             {"f": fpai.name, "sha": _sha(fpai), "d": f"{len(pai)} filas · 4 hojas"},
             {"f": fced.name if fced else f"conjunto de datos {mes} {anio}",
              "sha": _sha(fced) if fced else "—",
              "d": f"{len(corte)} partidas · acumulado a {mes}"},
-            {"f": "Ordenanza 07-2024-CM-GADMCM", "sha": "662756aac591b247",
+            {"f": "Ordenanza 07-2024-CM-GADMCM", "sha": "sha256:662756aac591b247",
              "d": "sancionada 05-11-2024 · fija el plan vigente"},
         ],
     }
@@ -201,15 +212,24 @@ def svg(e: dict) -> str:
                      f'<path d="M{x+392},{yt+22} L{x+400},{yt+27} L{x+392},{yt+32}" fill="{DEMOSTRADO}"/>')
 
     # ── bifurcación desde el Plan de Inversiones (no desde el objetivo)
+    # BIFURCACIÓN EN T. La versión anterior trazaba tres codos independientes desde
+    # el mismo origen, y se superponían: el trazo llegaba cortado a las cajas. Un
+    # conector partido sugiere una derivación incierta donde la derivación es un
+    # hecho — la geometría también afirma.
     yb = yt + 54
     xpai = 860 + 180
-    p.append(f'<path d="M{xpai},{yb} L{xpai},{yb+26}" stroke="{TINTA}" stroke-width="2"/>')
+    ramales = [A + ANC // 2, B + ANCB // 2, C + ANCB // 2]
+    y_bus = yb + 26
+    p.append(f'<path d="M{xpai},{yb} L{xpai},{y_bus}" stroke="{TINTA}" stroke-width="2"/>')
     p.append(f'<text x="{xpai+12}" y="{yb+20}" font-size="10.5" fill="{TINTA}" '
              f'font-weight="600">la cadena se bifurca aquí</text>')
-    for xc, w in ((A, ANC), (B, ANCB), (C, ANCB)):
-        p.append(f'<path d="M{xpai},{yb+26} L{xc+w//2},{yb+26} L{xc+w//2},{yb+52}" '
-                 f'stroke="{TINTA}" stroke-width="2" fill="none"/>'
-                 f'<path d="M{xc+w//2-5},{yb+44} L{xc+w//2},{yb+52} L{xc+w//2+5},{yb+44}" fill="{TINTA}"/>')
+    p.append(f'<line x1="{min(ramales)}" y1="{y_bus}" x2="{max(max(ramales), xpai)}" '
+             f'y2="{y_bus}" stroke="{TINTA}" stroke-width="2" stroke-linecap="round"/>')
+    for xc in ramales:
+        p.append(f'<circle cx="{xc}" cy="{y_bus}" r="3" fill="{TINTA}"/>'
+                 f'<line x1="{xc}" y1="{y_bus}" x2="{xc}" y2="{yb+44}" stroke="{TINTA}" '
+                 f'stroke-width="2"/>'
+                 f'<path d="M{xc-5},{yb+44} L{xc},{yb+52} L{xc+5},{yb+44}" fill="{TINTA}"/>')
 
     ROT = {"validado": ("verificado en la fuente", DEMOSTRADO, "", False),
            "fuente_no_accesible": ("captura pendiente — límite de QUIRA", PROPIO, "2 3", False),
@@ -277,16 +297,23 @@ def svg(e: dict) -> str:
     p.append(f'<rect x="{B}" y="{yr}" width="{ANCB+ANCB+80}" height="106" rx="6" '
              f'fill="{PANEL}" stroke="{BORDE}"/>')
     p.append(f'<text x="{B+15}" y="{yr+23}" font-size="12.5" font-weight="600" fill="{TINTA}">'
-             f'Respaldo financiero de los {e["total_objetivos"]} objetivos</text>')
+             f'Respaldo financiero de los {e["total_objetivos"]} objetivos</text>'
+             f'<text x="{B+ANCB+ANCB+65}" y="{yr+23}" font-size="10" fill="{GRIS}" '
+             f'text-anchor="end">devengado · si no hay, codificado</text>')
     for k, (cl, et) in enumerate([("con_devengado", "con ejecución certificada"),
                                   ("con_codificado", "con asignación sin ejecutar"),
                                   ("sin_evidencia", "sin respaldo financiero")]):
         v = ob[cl]
+        # «$0» a secas no distingue un objetivo con presupuesto asignado y sin
+        # gastar de uno que no tiene un dólar. Cuando no hay devengado, manda el
+        # codificado.
+        cifra = (f'${v["monto"]:,.0f}' if v["monto"] else
+                 (f'${v["codificado"]:,.0f} asignado' if v["codificado"] else "sin asignación"))
         p.append(f'<text x="{B+15}" y="{yr+46+k*20}" font-size="11.5" fill="{GRIS}">{et}</text>'
                  f'<text x="{B+430}" y="{yr+46+k*20}" font-size="11.5" fill="{TINTA}" '
                  f'text-anchor="end">{v["n"]} de {e["total_objetivos"]}</text>'
                  f'<text x="{B+ANCB+ANCB+65}" y="{yr+46+k*20}" font-size="11.5" '
-                 f'font-weight="700" fill="{TINTA}" text-anchor="end">${v["monto"]:,.0f}</text>')
+                 f'font-weight="700" fill="{TINTA}" text-anchor="end">{cifra}</text>')
 
     # ── lectura
     yl = 760
@@ -316,7 +343,9 @@ def svg(e: dict) -> str:
     yp = yg + 72
     p.append(f'<line x1="60" y1="{yp}" x2="{W-60}" y2="{yp}" stroke="{BORDE}"/>')
     p.append(f'<text x="60" y="{yp+20}" font-size="11" font-weight="700" fill="{GRIS}" '
-             f'letter-spacing="0.5">PROCEDENCIA</text>')
+             f'letter-spacing="0.5">PROCEDENCIA</text>'
+             f'<text x="720" y="{yp+20}" font-size="9.5" fill="{GRIS}" '
+             f'letter-spacing="0.4">HASH · SHA-256 truncado a 16 de 64</text>')
     for k, pr in enumerate(e["procedencia"]):
         yy = yp + 38 + k * 17
         p.append(f'<text x="60" y="{yy}" font-size="10.5" fill="{GRIS}">{pr["f"][:62]}</text>'

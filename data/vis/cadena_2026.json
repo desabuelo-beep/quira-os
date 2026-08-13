@@ -39,7 +39,7 @@
  ],
  "rama_organica": {
   "n": "Código de actividad orgánica",
-  "c": "95 de 101 actividades",
+  "c": "95 con código orgánico · 6 sin identificador",
   "detalle": "APAA · DCGS · DFIN · DPC",
   "e": "desviado"
  },
@@ -69,32 +69,35 @@
  "objetivos": {
   "con_devengado": {
    "n": 8,
-   "monto": 1781928.0100000002
+   "monto": 1781928.0100000002,
+   "codificado": 30261323.63
   },
   "con_codificado": {
    "n": 1,
-   "monto": 0.0
+   "monto": 0.0,
+   "codificado": 38100.0
   },
   "sin_evidencia": {
    "n": 0,
-   "monto": 0.0
+   "monto": 0.0,
+   "codificado": 0.0
   }
  },
  "total_objetivos": 9,
  "procedencia": [
   {
    "f": "Plan Anual de inversion (PAI) 2026.xlsx",
-   "sha": "964328c8bc88472b",
+   "sha": "sha256:964328c8bc88472b",
    "d": "101 filas · 4 hojas"
   },
   {
    "f": "GAD Montecristi Presupuesto abril 2026.xlsx",
-   "sha": "dbf66ec0d672a403",
+   "sha": "sha256:dbf66ec0d672a403",
    "d": "135 partidas · acumulado a abril"
   },
   {
    "f": "Ordenanza 07-2024-CM-GADMCM",
-   "sha": "662756aac591b247",
+   "sha": "sha256:662756aac591b247",
    "d": "sancionada 05-11-2024 · fija el plan vigente"
   }
  ]
