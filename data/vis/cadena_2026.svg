@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1010" width="1000" height="1010" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+<rect width="1000" height="1010" fill="#FFFFFF"/>
+<text x="60" y="46" font-size="21" font-weight="700" fill="#2B3A42">Cadena de evidencia · ejercicio 2026</text>
+<text x="60" y="70" font-size="13.5" fill="#8A9BA5">Gobierno Autónomo Descentralizado Municipal del Cantón Montecristi</text>
+<line x1="60" y1="86" x2="940" y2="86" stroke="#D7DEE2" stroke-width="1"/>
+<text x="60" y="116" font-size="12" font-weight="700" fill="#3D6B5A" letter-spacing="0.6">LO QUE PUEDE DEMOSTRARSE</text>
+
+  <rect x="60" y="132" width="400" height="52" rx="6" fill="#FFFFFF"
+        stroke="#3D6B5A" stroke-width="1.6"/>
+  <text x="76" y="153" font-size="13.5" font-weight="600" fill="#2B3A42">Plan de Desarrollo y Ordenamiento Territorial</text>
+  <text x="76" y="171" font-size="12" fill="#8A9BA5">66 metas vigentes</text>
+
+  <line x1="86" y1="184" x2="86" y2="217" stroke="#3D6B5A" stroke-width="2"/>
+  <path d="M81,216 L86,224 L91,216" fill="#3D6B5A"/>
+  <text x="104" y="208.0" font-size="11.5" fill="#3D6B5A">verificado en la fuente</text>
+
+  <rect x="60" y="224" width="400" height="52" rx="6" fill="#FFFFFF"
+        stroke="#3D6B5A" stroke-width="1.6"/>
+  <text x="76" y="245" font-size="13.5" font-weight="600" fill="#2B3A42">Objetivo estratégico</text>
+  <text x="76" y="263" font-size="12" fill="#8A9BA5">9 declarados</text>
+
+  <line x1="86" y1="276" x2="86" y2="309" stroke="#3D6B5A" stroke-width="2"/>
+  <path d="M81,308 L86,316 L91,308" fill="#3D6B5A"/>
+  <text x="104" y="300.0" font-size="11.5" fill="#3D6B5A">verificado en la fuente</text>
+
+  <rect x="60" y="316" width="400" height="52" rx="6" fill="#FFFFFF"
+        stroke="#3D6B5A" stroke-width="1.6"/>
+  <text x="76" y="337" font-size="13.5" font-weight="600" fill="#2B3A42">Plan Anual de Inversiones</text>
+  <text x="76" y="355" font-size="12" fill="#8A9BA5">101 actividades</text>
+
+  <line x1="86" y1="368" x2="86" y2="401" stroke="#3D6B5A" stroke-width="2"/>
+  <path d="M81,400 L86,408 L91,400" fill="#3D6B5A"/>
+  <text x="104" y="392.0" font-size="11.5" fill="#3D6B5A">verificado en la fuente</text>
+
+  <rect x="60" y="408" width="400" height="52" rx="6" fill="#FFFFFF"
+        stroke="#3D6B5A" stroke-width="1.6"/>
+  <text x="76" y="429" font-size="13.5" font-weight="600" fill="#2B3A42">Partida presupuestaria</text>
+  <text x="76" y="447" font-size="12" fill="#8A9BA5">26 distintas</text>
+
+  <line x1="86" y1="460" x2="86" y2="493" stroke="#3D6B5A" stroke-width="2"/>
+  <path d="M81,492 L86,500 L91,492" fill="#3D6B5A"/>
+  <text x="104" y="484.0" font-size="11.5" fill="#3D6B5A">verificado en la fuente</text>
+
+  <rect x="60" y="500" width="400" height="52" rx="6" fill="#FFFFFF"
+        stroke="#3D6B5A" stroke-width="1.6"/>
+  <text x="76" y="521" font-size="13.5" font-weight="600" fill="#2B3A42">Cédula presupuestaria</text>
+  <text x="76" y="539" font-size="12" fill="#8A9BA5">135 partidas · corte abril</text>
+
+  <line x1="86" y1="552" x2="86" y2="585" stroke="#3D6B5A" stroke-width="2"/>
+  <path d="M81,584 L86,592 L91,584" fill="#3D6B5A"/>
+  <text x="104" y="576.0" font-size="11.5" fill="#3D6B5A">verificado en la fuente</text>
+
+  <rect x="60" y="592" width="400" height="52" rx="6" fill="#FFFFFF"
+        stroke="#3D6B5A" stroke-width="1.6"/>
+  <text x="76" y="613" font-size="13.5" font-weight="600" fill="#2B3A42">Devengado</text>
+  <text x="76" y="631" font-size="12" fill="#8A9BA5">$1,781,928 trazables</text>
+<text x="600" y="116" font-size="12" font-weight="700" fill="#B4513C" letter-spacing="0.6">LO QUE NO PUEDE DEMOSTRARSE</text>
+<path d="M460,250 L590,250" stroke="#B4513C" stroke-width="2" stroke-dasharray="4 5" fill="none"/>
+<path d="M584,245 L594,250 L584,255" fill="#B4513C"/>
+
+  <rect x="600" y="224" width="340" height="52" rx="6" fill="#FFFFFF"
+        stroke="#B4513C" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <text x="616" y="245" font-size="13.5" font-weight="600" fill="#2B3A42">Meta</text>
+  <text x="616" y="263" font-size="12" fill="#8A9BA5">0 de 101 actividades</text>
+
+  <line x1="626" y1="276" x2="626" y2="287.0" stroke="#B4513C" stroke-width="2"
+        stroke-dasharray="4 5"/>
+  <line x1="618" y1="290.0" x2="634" y2="302.0" stroke="#B4513C" stroke-width="2.4"/>
+  <line x1="634" y1="290.0" x2="618" y2="302.0" stroke="#B4513C" stroke-width="2.4"/>
+  <line x1="626" y1="305.0" x2="626" y2="316" stroke="#B4513C" stroke-width="2"
+        stroke-dasharray="4 5"/>
+  <text x="644" y="300.0" font-size="11.5" fill="#B4513C" font-weight="600">el instrumento no lo declara</text>
+
+  <rect x="600" y="316" width="340" height="52" rx="6" fill="#FFFFFF"
+        stroke="#B4513C" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <text x="616" y="337" font-size="13.5" font-weight="600" fill="#2B3A42">Indicador</text>
+  <text x="616" y="355" font-size="12" fill="#8A9BA5">0 de 101 actividades</text>
+
+  <line x1="626" y1="368" x2="626" y2="379.0" stroke="#B4513C" stroke-width="2"
+        stroke-dasharray="4 5"/>
+  <line x1="618" y1="382.0" x2="634" y2="394.0" stroke="#B4513C" stroke-width="2.4"/>
+  <line x1="634" y1="382.0" x2="618" y2="394.0" stroke="#B4513C" stroke-width="2.4"/>
+  <line x1="626" y1="397.0" x2="626" y2="408" stroke="#B4513C" stroke-width="2"
+        stroke-dasharray="4 5"/>
+  <text x="644" y="392.0" font-size="11.5" fill="#B4513C" font-weight="600">el instrumento no lo declara</text>
+
+  <rect x="600" y="408" width="340" height="52" rx="6" fill="#FFFFFF"
+        stroke="#B4513C" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <text x="616" y="429" font-size="13.5" font-weight="600" fill="#2B3A42">Resultado</text>
+  <text x="616" y="447" font-size="12" fill="#8A9BA5">no auditable documentalmente</text>
+<rect x="600" y="524" width="340" height="104" rx="6" fill="#F7F9FA" stroke="#D7DEE2"/>
+<text x="616" y="548" font-size="12.5" font-weight="600" fill="#2B3A42">Respaldo financiero de los objetivos</text>
+<text x="616" y="570" font-size="12" fill="#8A9BA5">con ejecución certificada</text><text x="910" y="570" font-size="12.5" font-weight="700" fill="#2B3A42" text-anchor="end">8 de 9</text>
+<text x="616" y="590" font-size="12" fill="#8A9BA5">con asignación sin ejecutar</text><text x="910" y="590" font-size="12.5" font-weight="700" fill="#2B3A42" text-anchor="end">1 de 9</text>
+<text x="616" y="610" font-size="12" fill="#8A9BA5">sin respaldo financiero</text><text x="910" y="610" font-size="12.5" font-weight="700" fill="#2B3A42" text-anchor="end">0 de 9</text>
+<rect x="60" y="698" width="880" height="86" rx="6" fill="#F7F9FA" stroke="#D7DEE2"/>
+<text x="78" y="724" font-size="13" font-weight="700" fill="#2B3A42">Lectura</text>
+<text x="78" y="746" font-size="13" fill="#2B3A42">La articulación con los objetivos del plan es demostrable hasta el gasto ejecutado.</text>
+<text x="78" y="766" font-size="13" fill="#2B3A42">La articulación con las metas no es demostrable: <tspan font-weight="700">los instrumentos no las declaran.</tspan></text>
+<text x="60" y="798" font-size="11.5" fill="#B4513C" font-weight="600">Ausencia de evidencia. No constituye evidencia de incumplimiento.</text>
+<line x1="60" y1="824" x2="94" y2="824" stroke="#3D6B5A" stroke-width="2.4" stroke-dasharray=""/>
+<text x="106" y="828" font-size="11.5" fill="#8A9BA5">vínculo demostrado con documento de respaldo</text>
+<line x1="60" y1="843" x2="94" y2="843" stroke="#B4513C" stroke-width="2.4" stroke-dasharray="4 5"/>
+<text x="106" y="847" font-size="11.5" fill="#8A9BA5">vínculo no demostrable — el instrumento no lo declara</text>
+<line x1="60" y1="862" x2="94" y2="862" stroke="#8A6D3B" stroke-width="2.4" stroke-dasharray="2 3"/>
+<text x="106" y="866" font-size="11.5" fill="#8A9BA5">límite de la captura — corresponde a QUIRA, no al municipio</text>
+<line x1="60" y1="895" x2="940" y2="895" stroke="#D7DEE2"/>
+<text x="60" y="915" font-size="11" font-weight="700" fill="#8A9BA5">PROCEDENCIA</text>
+<text x="60" y="933" font-size="11" fill="#8A9BA5">· Plan Anual de Inversiones 2026 · GAD Montecristi · archivo oficial</text>
+<text x="60" y="949" font-size="11" fill="#8A9BA5">· Cédula presupuestaria · conjunto de datos mensual · corte abril 2026</text>
+<text x="60" y="965" font-size="11" fill="#8A9BA5">· Registro de metas · contrastado contra el plan aprobado por ordenanza</text>
+</svg>

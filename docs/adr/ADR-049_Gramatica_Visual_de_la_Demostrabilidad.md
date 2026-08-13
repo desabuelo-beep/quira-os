@@ -32,10 +32,30 @@ Esto no es hipotético. La curación de agosto 2026 produjo hallazgos cuya natur
 exactamente esa: cadenas que llegan hasta cierto punto y **no más allá**. Presentarlos como
 continuidad destruiría el hallazgo.
 
-## 2 · La regla rectora
+## 2 · Las dos reglas fundacionales
 
-> **La gráfica nunca debe saber más que el Gold Master.**
-> *(formulación del colega, 2026-08-12 — se adopta literal)*
+> **Regla 1 — La gráfica nunca debe saber más que el Gold Master.**
+> **Regla 2 — Lo que no puede demostrarse debe permanecer visible como no demostrable.**
+> *(formulación del colega, 2026-08-12 — se adoptan literales)*
+
+La primera impide que QUIRA **invente**. La segunda impide que QUIRA **esconda**. Juntas producen
+algo infrecuente en un sistema de información pública: **una visualización capaz de decir «no sé».**
+
+### VIS-INV-001 · invariante arquitectónica
+
+> **Toda representación visual debe ser una proyección determinista del estado vigente del Gold
+> Master. Ningún componente visual puede crear, completar, inferir, reinterpretar u ocultar
+> evidencia.**
+
+No es una recomendación de estilo: es una restricción de flujo. La información viaja en un solo
+sentido y **la gráfica no vuelve hacia arriba a buscar lo que le falta**:
+
+```
+fuentes → extracción → validación → reconciliación → GOLD MASTER → visualización
+```
+
+Si un componente visual necesita un dato que el motor no produjo, **ese dato no existe** — no se
+calcula en la capa gráfica, no se pide a otra fuente, no se estima. Se dibuja su ausencia.
 
 De ahí, sin margen de interpretación:
 
@@ -93,16 +113,26 @@ dibujada**, y eso es peor que una opinión escrita.
 
 Los estados provienen del motor y de la capa derivada; la gráfica **no inventa ninguno**:
 
-| Estado | Trazo | Nunca |
-|---|---|---|
-| `validado` | continuo | — |
-| `parcialmente_validado` | continuo atenuado | como pleno |
-| `no_reconciliado` | **cortado**, con marca | como cero |
-| `sin_evidencia` | vacío rotulado | omitido |
-| `ejecución_no_atribuible` | punteado | como atribuido |
-| `extraccion_corrupta` | marca de defecto **propio** | como carencia del GAD |
-| `fuente_no_accesible` | marca de captura | como ausencia |
-| `contradiccion` | bifurcación | resuelta a una rama |
+**La visualización no interpreta silenciosamente ningún estado.** Cada uno tiene una lectura fija y
+—esto es lo decisivo— **declara a quién pertenece la ruptura**:
+
+| Estado del motor | Lectura visual | Ruptura atribuible a | Nunca |
+|---|---|---|---|
+| `validado` | conexión demostrada | — | — |
+| `parcialmente_validado` | conexión degradada | — | como plena |
+| `requiere_revision` | conexión advertida | **QUIRA** | como demostrada |
+| `no_reconciliado` | conexión rota | **QUIRA** (procedimiento) | como incumplimiento |
+| `sin_evidencia` | vacío declarado | **observado** | como cero |
+| `no_observable` | zona no observable | ninguno | como ausencia |
+| `ejecución_no_atribuible` | vínculo débil, punteado | — | como atribuido |
+| `extraccion_corrupta` | ruptura **de QUIRA** | **QUIRA** | como carencia del GAD |
+| `fuente_no_accesible` | ruptura **de la fuente** | **fuente externa** | como ausencia |
+| `contradiccion` | bifurcación, ambas ramas | — | resuelta a una rama |
+
+> **La trampa más peligrosa de una plataforma de inteligencia pública es que el diseño gráfico
+> convierta un «no sé» en un «no existe».** La columna de atribución existe para impedirlo: quien
+> mira debe poder distinguir, sin leer una nota al pie, si la cadena se rompió en el municipio, en
+> la fuente o en nosotros.
 
 > **`extraccion_corrupta` y `fuente_no_accesible` señalan a QUIRA, no al municipio.** Deben verse
 > distintos de todo lo demás: son límites del observador. Confundirlos con hallazgos es la falla
