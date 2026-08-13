@@ -115,9 +115,11 @@ def construir_estado(anio: int = 2026) -> dict:
         "anio": anio, "corte_cedula": mes,
         "tronco": [
             {"n": "Plan de Desarrollo y Ordenamiento Territorial",
-             "c": f"{len(metas)} metas vigentes"},
-            {"n": "Objetivo estratégico", "c": f"{len(por_obj)} declarados"},
-            {"n": "Plan Anual de Inversiones", "c": f"{len(pai)} actividades"},
+             "c": f"{len(metas)} metas vigentes", "p": "registro maestro · documental"},
+            {"n": "Objetivo estratégico", "c": f"{len(por_obj)} declarados",
+             "p": "extracción PAI · documental"},
+            {"n": "Plan Anual de Inversiones", "c": f"{len(pai)} actividades",
+             "p": "extracción PAI · documental"},
         ],
         "rama_financiera": [
             {"n": "Partida presupuestaria", "c": f"{len(partidas)} distintas",
@@ -131,7 +133,20 @@ def construir_estado(anio: int = 2026) -> dict:
         "rama_organica": {
             "n": "Código de actividad orgánica",
             "c": f"{con_codigo} con código orgánico · {sin_codigo} sin identificador",
-            "detalle": " · ".join(ejemplos), "e": "desviado"},
+            "detalle": " · ".join(ejemplos), "e": "desviado",
+            "p": "extracción PAI · documental",
+            # HECHO e INTERPRETACIÓN, separados. El conteo es medido; la lectura
+            # de que «la trazabilidad migró del plan al organigrama» es una
+            # inferencia del analista registrada en OBS-027, no la salida de
+            # ningún motor. La versión anterior de este panel la presentaba como
+            # si fuera un hallazgo del propio dibujo — que es exactamente lo que
+            # VIS-INV-001 prohíbe, escrito el mismo día.
+            "interpretacion": {
+                "texto": ["El identificador presente ancla la actividad a la",
+                          "dirección que la ejecuta; el ausente la anclaba al",
+                          "plan. Lectura del analista, no medición."],
+                "fuente": "OBS-027 · observación registrada",
+                "tipo": "inferencia"}},
         "rama_operacional": [
             {"n": "Meta", "c": f"{sum(1 for r in pai if r['campos'].get('meta_pdot'))}"
                                f" de {len(pai)} actividades", "e": "sin_evidencia"},
@@ -186,6 +201,19 @@ def _flecha_v(x, y1, y2, color, guion="", aspa=False, et=""):
     return (f'<line x1="{x}" y1="{y1}" x2="{x}" y2="{y2-7}" stroke="{color}" stroke-width="2"{s}/>'
             f'<path d="M{x-5},{y2-8} L{x},{y2} L{x+5},{y2-8}" fill="{color}"/>'
             + (f'<text x="{x+14}" y="{(y1+y2)/2+4}" font-size="10.5" fill="{color}">{et}</text>' if et else ""))
+
+
+def verificar_procedencia(e: dict) -> list[str]:
+    """VIS-INT-001 · si un elemento del dibujo no tiene propietario canónico, ese
+    elemento no puede existir. Es una regla más fuerte que «la gráfica no
+    calcula»: obliga a que cada cifra pueda señalar de quién es."""
+    huerfanos = []
+    for n in e["tronco"] + e["rama_financiera"] + e["rama_operacional"] + [e["rama_organica"]]:
+        if not n.get("p") and not n.get("e"):
+            huerfanos.append(n["n"])
+    if not e.get("procedencia"):
+        huerfanos.append("procedencia")
+    return huerfanos
 
 
 def svg(e: dict) -> str:
@@ -254,13 +282,19 @@ def svg(e: dict) -> str:
     yo = yb + 52
     o = e["rama_organica"]
     p.append(f'<text x="{B}" y="{yo-8}" font-size="11" font-weight="700" fill="{PROPIO}" '
-             f'letter-spacing="0.5">TRAZABILIDAD DESVIADA</text>')
+             f'letter-spacing="0.5">IDENTIFICADOR PRESENTE EN EL INSTRUMENTO</text>')
     p.append(_caja(B, yo, ANCB, o["n"], o["c"], PROPIO, "2 3", h=66, detalle=o["detalle"]))
-    p.append(f'<rect x="{B}" y="{yo+82}" width="{ANCB}" height="76" rx="6" fill="{PANEL}" '
-             f'stroke="{BORDE}"/>')
-    for k, t in enumerate(["La trazabilidad no desapareció:", "cambió de destino. El identificador",
-                           "nuevo ancla la actividad a la dirección", "que la ejecuta, no al plan."]):
-        p.append(f'<text x="{B+15}" y="{yo+102+k*17}" font-size="11.5" fill="{TINTA}">{t}</text>')
+    itp = o["interpretacion"]
+    # Marco punteado y rótulo explícito: lo de dentro NO es una medición. Sin esta
+    # distinción, el dibujo afirmaría por su cuenta lo que ningún motor estableció.
+    p.append(f'<rect x="{B}" y="{yo+82}" width="{ANCB}" height="96" rx="6" fill="{PANEL}" '
+             f'stroke="{GRIS}" stroke-dasharray="3 3"/>')
+    p.append(f'<text x="{B+15}" y="{yo+100}" font-size="9.5" font-weight="700" fill="{GRIS}" '
+             f'letter-spacing="0.6">INTERPRETACIÓN — NO ES MEDICIÓN</text>')
+    for k, linea in enumerate(itp["texto"]):
+        p.append(f'<text x="{B+15}" y="{yo+119+k*16}" font-size="11" fill="{TINTA}" '
+                 f'font-style="italic">{linea}</text>')
+    p.append(f'<text x="{B+15}" y="{yo+170}" font-size="9.5" fill="{GRIS}">{itp["fuente"]}</text>')
 
     # rama C · operacional — rota
     yc = yb + 52
@@ -364,6 +398,13 @@ def main() -> None:
     args = ap.parse_args()
 
     e = construir_estado(args.anio)
+    huerfanos = verificar_procedencia(e)
+    if huerfanos:
+        print(f"[XX] VIS-INT-001 · {len(huerfanos)} elemento(s) sin propietario canónico:")
+        for h in huerfanos:
+            print(f"      · {h}")
+        sys.exit(2)
+    print("[OK] VIS-INT-001 · todo elemento tiene propietario canónico")
     print(f"ESTADO DERIVADO · {e['anio']} · corte {e['corte_cedula']}")
     for n in e["tronco"]:
         print(f"   · {n['n']:46} {n['c']}")

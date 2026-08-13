@@ -34,18 +34,56 @@ continuidad destruiría el hallazgo.
 
 ## 2 · Las dos reglas fundacionales
 
-> **Regla 1 — La gráfica nunca debe saber más que el Gold Master.**
+> **Regla 1 — La gráfica nunca puede saber más que el estado canónico autorizado por el Gold
+> Master, los motores y sus capas derivadas.**
 > **Regla 2 — Lo que no puede demostrarse debe permanecer visible como no demostrable.**
 > *(formulación del colega, 2026-08-12 — se adoptan literales)*
+
+La Regla 1 nació como *«nunca más que el Gold Master»* y hubo que ampliarla el mismo día: el motor
+fija el valor, pero **el estado de demostrabilidad, la procedencia y el límite de captura los
+establecen otros componentes autorizados**, y con la formulación estrecha habrían quedado fuera.
 
 La primera impide que QUIRA **invente**. La segunda impide que QUIRA **esconda**. Juntas producen
 algo infrecuente en un sistema de información pública: **una visualización capaz de decir «no sé».**
 
 ### VIS-INV-001 · invariante arquitectónica
 
-> **Toda representación visual debe ser una proyección determinista del estado vigente del Gold
-> Master. Ningún componente visual puede crear, completar, inferir, reinterpretar u ocultar
-> evidencia.**
+> **Ninguna representación visual puede introducir una entidad, relación, estado, valor, causalidad
+> o grado de certeza que no exista previamente en el estado canónico o en una capa derivada
+> autorizada por el motor correspondiente.**
+
+*(formulación endurecida por el colega, 2026-08-12)*. La versión anterior decía «del Gold Master» y
+**se quedaba corta**: el motor fija el valor, pero el estado de demostrabilidad, la procedencia, el
+límite de captura y la distinción hecho/inferencia los establecen otros componentes autorizados.
+Escrito de aquel modo, alguien podría objetar *«ese dato no está en el Excel, no puede aparecer»* —
+cuando sí puede, **si un motor autorizado lo produjo**. Y a la inversa, cerraba mal la puerta de
+*«como sería útil mostrarlo, lo calculamos aquí»*.
+
+Y su consecuencia, que resume mejor que ninguna otra frase lo que esta capa protege:
+
+> **Una visualización de QUIRA no puede ser fuente de una afirmación que el estado canónico no
+> pueda reconstruir.**
+
+### VIS-INT-001 · integridad de procedencia visual
+
+> **Si un elemento del dibujo no tiene propietario canónico, ese elemento no puede existir.**
+
+Para cada elemento visual debe poder responderse: qué dato representa · de qué estado proviene ·
+qué componente lo produjo o autorizó · cuál es su procedencia · qué estado tiene · qué
+transformación visual se le aplicó · si esa transformación altera su significado. Y a la pregunta
+*«¿hay información visual sin propietario canónico?»* la respuesta debe ser **no**.
+
+Es una regla más fuerte que «la gráfica no calcula»: obliga a que cada cifra pueda **señalar de
+quién es**. Implementada en `scripts/vis/objeto_canonico.py::verificar_procedencia`, que aborta la
+generación si algún elemento queda huérfano.
+
+| Elemento | Propietario |
+|---|---|
+| importes y proporciones | Motor Matemático · estado canónico |
+| cadenas y vínculos entre instrumentos | Motor de Grafos · capa derivada |
+| `sin_evidencia`, `no_reconciliado`, límites de captura | validación de evidencia |
+| procedencia, SHA, corte, conteos | registro de procedencia |
+| relaciones causales | **Motor Causal — y sólo si las estableció** |
 
 No es una recomendación de estilo: es una restricción de flujo. La información viaja en un solo
 sentido y **la gráfica no vuelve hacia arriba a buscar lo que le falta**:

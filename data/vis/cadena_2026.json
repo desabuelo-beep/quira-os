@@ -4,15 +4,18 @@
  "tronco": [
   {
    "n": "Plan de Desarrollo y Ordenamiento Territorial",
-   "c": "66 metas vigentes"
+   "c": "66 metas vigentes",
+   "p": "registro maestro · documental"
   },
   {
    "n": "Objetivo estratégico",
-   "c": "9 declarados"
+   "c": "9 declarados",
+   "p": "extracción PAI · documental"
   },
   {
    "n": "Plan Anual de Inversiones",
-   "c": "101 actividades"
+   "c": "101 actividades",
+   "p": "extracción PAI · documental"
   }
  ],
  "rama_financiera": [
@@ -41,7 +44,17 @@
   "n": "Código de actividad orgánica",
   "c": "95 con código orgánico · 6 sin identificador",
   "detalle": "APAA · DCGS · DFIN · DPC",
-  "e": "desviado"
+  "e": "desviado",
+  "p": "extracción PAI · documental",
+  "interpretacion": {
+   "texto": [
+    "El identificador presente ancla la actividad a la",
+    "dirección que la ejecuta; el ausente la anclaba al",
+    "plan. Lectura del analista, no medición."
+   ],
+   "fuente": "OBS-027 · observación registrada",
+   "tipo": "inferencia"
+  }
  },
  "rama_operacional": [
   {
