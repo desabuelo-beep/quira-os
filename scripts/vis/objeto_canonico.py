@@ -121,16 +121,27 @@ def construir_estado(anio: int = 2026) -> dict:
             {"n": "Plan Anual de Inversiones", "c": f"{len(pai)} actividades",
              "p": "extracción PAI · documental"},
         ],
-        # `captura_no_completada`, NO `fuente_no_accesible`. La distinción no es
-        # semántica: la API de contratación dejó de responder tras ~60
-        # peticiones nuestras en una hora. **El límite lo puso QUIRA, no la
-        # fuente.** Rotularlo `fuente_no_accesible` señalaba hacia afuera una
-        # responsabilidad propia, que es justo lo que ADR-049 §4 prohíbe.
+        # ── ATRIBUCIÓN CORREGIDA (2026-08-13), y en la dirección contraria a la
+        # de ayer. El 12-ago se rotuló `captura_no_completada` —culpa nuestra—
+        # porque la API dejó de responder tras ~60 peticiones propias en una
+        # hora, y parecía saturación. La medición del día siguiente no lo
+        # sostiene:
+        #
+        #   · falla desde DOS REDES distintas, en DOS DÍAS distintos;
+        #   · falla en TODOS los endpoints, incluida la raíz del host;
+        #   · corta SIEMPRE entre 20,0 y 20,6 s — 5 de 5 intentos espaciados.
+        #
+        # Un corte metronómico a 20 s no es saturación: la saturación produce
+        # patrones erráticos. Pero **no se puede determinar desde aquí si el
+        # límite es del servidor o de la ruta**, así que tampoco se afirma.
+        # `fuente_no_accesible` con la incertidumbre declarada es lo único que la
+        # evidencia sostiene — y asumir culpa propia sin pruebas distorsiona el
+        # hallazgo igual que atribuirla al observado.
         "rama_financiera": [
             {"n": "Partida presupuestaria", "c": f"{len(partidas)} distintas",
              "e": "validado"},
-            {"n": "Contratación pública", "c": "captura propia no completada",
-             "e": "captura_no_completada"},
+            {"n": "Contratación pública", "c": "la fuente no respondió · causa no determinada",
+             "e": "fuente_no_accesible"},
             {"n": "Cédula presupuestaria", "c": f"{len(corte)} partidas · corte {mes}",
              "e": "validado"},
             {"n": "Devengado", "c": f"${trazable:,.0f}", "e": "validado"},
@@ -139,8 +150,8 @@ def construir_estado(anio: int = 2026) -> dict:
         # que dice «verificado» saliendo de un nodo no verificado es una
         # afirmación falsa, y en la versión anterior existía exactamente esa.
         "aristas_financiera": [
-            {"de": 0, "a": 1, "e": "captura_no_completada",
-             "et": "captura propia pendiente"},
+            {"de": 0, "a": 1, "e": "fuente_no_accesible",
+             "et": "fuente sin respuesta en 5 de 5 intentos"},
             {"de": 1, "a": 2, "e": "no_demostrado",
              "et": "eslabón no incorporado a este corte"},
             {"de": 2, "a": 3, "e": "validado", "et": "verificado en la cédula"},
@@ -304,6 +315,7 @@ def svg(e: dict) -> str:
 
     ROT = {"validado": ("verificado en la fuente", DEMOSTRADO, "", False),
            "captura_no_completada": ("captura propia no completada", PROPIO, "2 3", False),
+           "fuente_no_accesible": ("la fuente no respondió", PROPIO, "2 3", False),
            "no_demostrado": ("eslabón no incorporado", PROPIO, "2 3", False),
            "sin_evidencia": ("el instrumento no lo declara", ROTO, "4 5", True),
            "desviado": ("", PROPIO, "2 3", False)}

@@ -26,8 +26,8 @@
   },
   {
    "n": "Contratación pública",
-   "c": "captura propia no completada",
-   "e": "captura_no_completada"
+   "c": "la fuente no respondió · causa no determinada",
+   "e": "fuente_no_accesible"
   },
   {
    "n": "Cédula presupuestaria",
@@ -44,8 +44,8 @@
   {
    "de": 0,
    "a": 1,
-   "e": "captura_no_completada",
-   "et": "captura propia pendiente"
+   "e": "fuente_no_accesible",
+   "et": "fuente sin respuesta en 5 de 5 intentos"
   },
   {
    "de": 1,
