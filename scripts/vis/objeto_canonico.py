@@ -121,14 +121,29 @@ def construir_estado(anio: int = 2026) -> dict:
             {"n": "Plan Anual de Inversiones", "c": f"{len(pai)} actividades",
              "p": "extracción PAI · documental"},
         ],
+        # `captura_no_completada`, NO `fuente_no_accesible`. La distinción no es
+        # semántica: la API de contratación dejó de responder tras ~60
+        # peticiones nuestras en una hora. **El límite lo puso QUIRA, no la
+        # fuente.** Rotularlo `fuente_no_accesible` señalaba hacia afuera una
+        # responsabilidad propia, que es justo lo que ADR-049 §4 prohíbe.
         "rama_financiera": [
             {"n": "Partida presupuestaria", "c": f"{len(partidas)} distintas",
              "e": "validado"},
-            {"n": "Contratación pública", "c": "no incorporada a este corte",
-             "e": "fuente_no_accesible"},
+            {"n": "Contratación pública", "c": "captura propia no completada",
+             "e": "captura_no_completada"},
             {"n": "Cédula presupuestaria", "c": f"{len(corte)} partidas · corte {mes}",
              "e": "validado"},
             {"n": "Devengado", "c": f"${trazable:,.0f}", "e": "validado"},
+        ],
+        # Las aristas se declaran aparte porque TAMBIÉN tienen estado. Una arista
+        # que dice «verificado» saliendo de un nodo no verificado es una
+        # afirmación falsa, y en la versión anterior existía exactamente esa.
+        "aristas_financiera": [
+            {"de": 0, "a": 1, "e": "captura_no_completada",
+             "et": "captura propia pendiente"},
+            {"de": 1, "a": 2, "e": "no_demostrado",
+             "et": "eslabón no incorporado a este corte"},
+            {"de": 2, "a": 3, "e": "validado", "et": "verificado en la cédula"},
         ],
         "rama_organica": {
             "n": "Código de actividad orgánica",
@@ -226,6 +241,21 @@ def verificar_procedencia(e: dict) -> list[str]:
             huerfanos.append(n["n"])
     if not e.get("procedencia"):
         huerfanos.append("procedencia")
+
+    # ── COHERENCIA ARISTA↔NODO (extensión de VIS-INT-001)
+    # No basta con que cada caja tenga el estado correcto: **las relaciones entre
+    # cajas también deben respetarlos**. La versión anterior dibujaba una flecha
+    # que decía «verificado en la fuente» saliendo de un nodo cuyo propio estado
+    # declaraba que la fuente no se había obtenido. Un lector externo leía
+    # «contratación → cédula: verificado» justo donde no había nada verificado.
+    ok = {"validado", "parcialmente_validado"}
+    nodos = e["rama_financiera"]
+    for a in e.get("aristas_financiera", []):
+        if a["e"] in ok and not (nodos[a["de"]]["e"] in ok and nodos[a["a"]]["e"] in ok):
+            huerfanos.append(
+                f'arista {nodos[a["de"]]["n"]} → {nodos[a["a"]]["n"]}: declara '
+                f'«{a["e"]}» con extremos en '
+                f'«{nodos[a["de"]]["e"]}» / «{nodos[a["a"]]["e"]}»')
     return huerfanos
 
 
@@ -273,23 +303,23 @@ def svg(e: dict) -> str:
                  f'<path d="M{xc-5},{yb+44} L{xc},{yb+52} L{xc+5},{yb+44}" fill="{TINTA}"/>')
 
     ROT = {"validado": ("verificado en la fuente", DEMOSTRADO, "", False),
-           "fuente_no_accesible": ("captura pendiente — límite de QUIRA", PROPIO, "2 3", False),
+           "captura_no_completada": ("captura propia no completada", PROPIO, "2 3", False),
+           "no_demostrado": ("eslabón no incorporado", PROPIO, "2 3", False),
            "sin_evidencia": ("el instrumento no lo declara", ROTO, "4 5", True),
            "desviado": ("", PROPIO, "2 3", False)}
 
     # rama A · financiera
     y = yb + 52
     p.append(f'<text x="{A}" y="{y-8}" font-size="11" font-weight="700" fill="{DEMOSTRADO}" '
-             f'letter-spacing="0.5">RUTA FINANCIERA · demostrable</text>')
+             f'letter-spacing="0.5">RUTA FINANCIERA · evidencia parcial</text>')
     for i, n in enumerate(e["rama_financiera"]):
-        et, col, gui, _ = ROT[n["e"]]
+        _, col, gui, _ = ROT[n["e"]]
         p.append(_caja(A, y, ANC, n["n"], n["c"], col, gui,
                        estado=n["e"] if n["e"] != "validado" else ""))
-        if i < len(e["rama_financiera"]) - 1:
-            sig = e["rama_financiera"][i + 1]
-            _, col2, gui2, _ = ROT[sig["e"]]
-            c2 = col2 if sig["e"] != "validado" else col
-            p.append(_flecha_v(A + 26, y + 54, y + 96, c2, gui2, et=ROT[sig["e"]][0]))
+        ar = next((a for a in e["aristas_financiera"] if a["de"] == i), None)
+        if ar:
+            _, cA, gA, _ = ROT[ar["e"]]
+            p.append(_flecha_v(A + 26, y + 54, y + 96, cA, gA, et=ar["et"]))
         y += 96
 
     # rama B · orgánica — a dónde se fue la trazabilidad

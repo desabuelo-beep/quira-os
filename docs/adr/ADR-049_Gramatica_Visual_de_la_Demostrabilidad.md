@@ -99,6 +99,22 @@ Es una regla más fuerte que «la gráfica no calcula»: obliga a que cada cifra
 quién es**. Implementada en `scripts/vis/objeto_canonico.py::verificar_procedencia`, que aborta la
 generación si algún elemento queda huérfano.
 
+#### Coherencia arista ↔ nodo *(extensión, colega 2026-08-12)*
+
+> **Toda arista debe ser compatible con los estados de sus nodos y con el estado canónico de la
+> relación que representa. Una arista no podrá declarar `validado`, «verificado» ni continuidad
+> equivalente cuando alguno de sus extremos, o la relación canónica correspondiente, se encuentre
+> en un estado incompatible.**
+
+No basta con que cada caja tenga el estado correcto: **las relaciones entre cajas también deben
+respetarlos.** El objeto v4 dibujaba una flecha rotulada «verificado en la fuente» **saliendo de un
+nodo cuyo propio estado declaraba que la fuente no se había obtenido**. Un lector externo leía
+«contratación → cédula: verificado» exactamente donde no había nada verificado.
+
+Verificado como prueba permanente: al reintroducir esa arista, el gate la rechaza —
+`arista Contratación pública → Cédula presupuestaria: declara «validado» con extremos en
+«captura_no_completada» / «validado»`.
+
 | Elemento | Propietario |
 |---|---|
 | importes y proporciones | Motor Matemático · estado canónico |
@@ -201,13 +217,20 @@ Los estados provienen del motor y de la capa derivada; la gráfica **no inventa 
 | `no_observable` | zona no observable | ninguno | como ausencia |
 | `ejecución_no_atribuible` | vínculo débil, punteado | — | como atribuido |
 | `extraccion_corrupta` | ruptura **de QUIRA** | **QUIRA** | como carencia del GAD |
-| `fuente_no_accesible` | ruptura **de la fuente** | **fuente externa** | como ausencia |
+| `captura_no_completada` | captura propia inconclusa | **QUIRA** | como fallo de la fuente |
+| `fuente_no_accesible` | la fuente externa no respondió | **fuente externa** | como ausencia |
 | `contradiccion` | bifurcación, ambas ramas | — | resuelta a una rama |
 
 ⛔ **Ninguna caja puede rotularse «no verificable», «sin datos» ni «no disponible».** Esas fórmulas
 colapsan cuatro situaciones que no son la misma —`sin_evidencia` · `no_reconciliado` ·
 `fuente_no_accesible` · `extraccion_corrupta`— y reintroducen por la puerta del texto el binario que
 esta gramática existe para eliminar. **Se declara cuál de las cuatro es, y por qué.**
+
+⚠️ **`captura_no_completada` y `fuente_no_accesible` no son sinónimos, y confundirlos desplaza la
+culpa.** El objeto v4 rotulaba el eslabón de contratación como `fuente_no_accesible` cuando la
+verdad era otra: la API dejó de responder **tras unas sesenta peticiones nuestras en una hora**. El
+límite lo puso QUIRA. Señalar hacia afuera una responsabilidad propia es la forma más silenciosa de
+falsear un hallazgo — y jurídicamente no significan lo mismo.
 
 > **La trampa más peligrosa de una plataforma de inteligencia pública es que el diseño gráfico
 > convierta un «no sé» en un «no existe».** La columna de atribución existe para impedirlo: quien

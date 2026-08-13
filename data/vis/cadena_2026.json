@@ -26,8 +26,8 @@
   },
   {
    "n": "Contratación pública",
-   "c": "no incorporada a este corte",
-   "e": "fuente_no_accesible"
+   "c": "captura propia no completada",
+   "e": "captura_no_completada"
   },
   {
    "n": "Cédula presupuestaria",
@@ -38,6 +38,26 @@
    "n": "Devengado",
    "c": "$1,781,928",
    "e": "validado"
+  }
+ ],
+ "aristas_financiera": [
+  {
+   "de": 0,
+   "a": 1,
+   "e": "captura_no_completada",
+   "et": "captura propia pendiente"
+  },
+  {
+   "de": 1,
+   "a": 2,
+   "e": "no_demostrado",
+   "et": "eslabón no incorporado a este corte"
+  },
+  {
+   "de": 2,
+   "a": 3,
+   "e": "validado",
+   "et": "verificado en la cédula"
   }
  ],
  "rama_organica": {
