@@ -7,8 +7,9 @@ authority:
 
 # ADR-040 · ACK `LOTAIP_19` construido sobre versión anterior de la ley
 
-**Estado:** REGISTRADO · pendiente de reconstrucción · 2026-07-22 (hallazgo director técnico ·
-formalización propuesta por el colega)
+**Estado:** ⛔ **REVERTIDO — EL HALLAZGO ERA FALSO** · verificado contra el original 2026-08-17.
+Registrado el 2026-07-22 (director técnico · formalizado por el colega); **desmentido por la fuente
+primaria**. El ACK y el Catálogo estaban correctos; **este ADR era el error**. Ver §Reversión.
 **Contexto de origen:** al reconstruir el estándar oficial de d07 (Fase 0, arqueología normativa
 DPE), se comparó el ACK `LOTAIP_19` (`data/acks/lotaip_f02.yaml`, extraído 2026-05-30 vía QLEP v1.2)
 contra el texto literal del Art. 19 de la LOTAIP vigente en el corpus (verificado 2026-07-22).
@@ -53,4 +54,63 @@ deriva el ACK corregido — una sola fuente de verdad, no dos reconstrucciones i
 puedan divergir entre sí.
 
 ---
-*ADR-040 · Dylus Lab © 2026*
+
+## Reversión · 2026-08-17
+
+**Este ADR afirmó algo falso y bloqueó trabajo durante veintiséis días.**
+
+Javo (2026-08-17): *«hay que corregir ese problema de ADR-040, está mal; tenemos ley actualizada y
+hay que hacerlo con lo vigente, si no es incoherente»*. Al ir a rehacer el ACK apareció lo
+contrario de lo esperado.
+
+### La verificación, sobre el original y no sobre el corpus
+
+`Normativa_Word/LOTAIP.docx`, Art. 19, contando **por nivel de lista** —24 párrafos en nivel 0;
+los cuatro sub-incisos de audiencias en nivel 1—:
+
+| Numeral | Texto vigente |
+|---|---|
+| **18** | **Detalle de los convenios nacionales o internacionales** que celebre la entidad… |
+| **19** | **Un detalle actualizado de los donativos oficiales y protocolares**… |
+| **20** | **Registro de Activos de Información**, que contenga información solicitada con frecuencia… |
+
+> **El Art. 19 de la LOTAIP 2023 tiene 24 numerales, y los tres que este ADR declaró «de la ley de
+> 2004» están en el texto vigente.**
+
+El ACK decía «Transparencia Activa 24 Ítems Obligatorios» y el Catálogo Canónico mapea `CD-18`
+Convenios, `CD-19` Donativos y `CD-20` Registro de Activos a esos mismos numerales. **Ambos eran
+correctos.**
+
+### De dónde salió el error
+
+El archivo de la guía se llama, literalmente, `guia-para-el-cumplimiento-entidades-obligadas-LOTAIP
+**2015 ANTIGUA**, ya que tiene formularios.docx`. **Esa guía sí es de una versión anterior** — y
+este ADR lo dice: *«la misma que ya se identificó como base de `GUIA-LOTAIP-ENT`»*.
+
+El error fue **extender esa conclusión al ACK sin contrastarlo contra el texto de la ley**. Un
+documento contaminado hizo sospechosos a sus vecinos.
+
+Y hay una trampa que estuvo a punto de repetir el error hoy: contar los numerales **sobre el
+corpus** devuelve 31, porque el troceado con solapamiento duplica incisos —«Mecanismos de rendición
+de cuentas» aparece dos veces, «Formularios» dos veces—. Sólo el original permite contar.
+
+### La regla que queda
+
+> **Un documento contaminado no contamina a los que están cerca.** La sospecha se hereda; **la
+> conclusión, no**. Cada pieza se verifica contra su propia fuente primaria.
+
+Es OBS-030 un nivel más arriba: **antes de atribuir un defecto, falsar que el defecto sea de la
+inferencia propia.** Aquí no se dañó a un municipio — se dañó el propio canon, y bloqueó el cierre
+del Catálogo durante casi un mes.
+
+### Estado corregido
+
+| Campo | Valor |
+|---|---|
+| `data/acks/lotaip_f02.yaml` → `LOTAIP_19` | **correcto · no requiere reconstrucción** |
+| `data/d07/catalogo_cd_d07_v1.0.0.yaml` | **correcto · 24 numerales + `CD-A24` (Art. 24 GAD)** |
+| Bloqueo sobre el Catálogo CD-XX | **levantado** |
+| Fuente de la verificación | `LOTAIP.docx` · Art. 19 · 24 numerales en nivel de lista 0 |
+
+---
+*ADR-040 · Dylus Lab © 2026 · revertido por la fuente primaria, no por opinión.*
