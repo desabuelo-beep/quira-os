@@ -8436,44 +8436,6 @@
   }
  },
  {
-  "n_item": "18",
-  "partida": "730505",
-  "cpc": "942110011",
-  "tipo_compra": "Servicio",
-  "descripcion": "SERVICIO DE TRANSPORTE DE DESECHOS SÓLIDOS EN RUTAS DE RECOLECCIÓN DE LA EMPRESA MUNICIPAL DE ASEO INTEGRAL MONTECRISTI-EP",
-  "cantidad": "1.00",
-  "unidad": "",
-  "costo_unitario": "90,768.0000",
-  "total": "90,768.00",
-  "partida_declarada": "73.05.05",
-  "entidad": "Empresa Pública de Aseo",
-  "anio": 2024,
-  "_procedencia": {
-   "archivo": "Aseo EP - PAC 2024.docx",
-   "tabla": 1,
-   "fila": 3
-  }
- },
- {
-  "n_item": "19",
-  "partida": "730505",
-  "cpc": "548000014",
-  "tipo_compra": "Servicio",
-  "descripcion": "SERVICIO DE ALQUILER DE VOLQUETAS PARA EL CUMPLIMIMIENTO DE TAREAS OPERATIVAS Servicio de Alquiler de dos volquetas de 8m3 para atender el servicio emergente de recolección",
-  "cantidad": "1.00",
-  "unidad": "",
-  "costo_unitario": "6,400.0000",
-  "total": "6,400.00",
-  "partida_declarada": "7.3.05.05",
-  "entidad": "Empresa Pública de Aseo",
-  "anio": 2024,
-  "_procedencia": {
-   "archivo": "Aseo EP - PAC 2024.docx",
-   "tabla": 1,
-   "fila": 4
-  }
- },
- {
   "n_item": "1",
   "partida": "840107",
   "cpc": "452200016",
@@ -8889,6 +8851,614 @@
    "archivo": "Aseo EP - PAC 2026.docx",
    "tabla": 2,
    "fila": 13
+  }
+ },
+ {
+  "n_item": "1",
+  "partida": "840107",
+  "cpc": "452300035",
+  "tipo_compra": "Bien",
+  "descripcion": "ADQUISICIÓN DE UN COMPUTADOR PARA LA EMPRESA DE ASEO MONTECRISTI EP",
+  "cantidad": "1.00",
+  "unidad": "",
+  "costo_unitario": "892.8571",
+  "total": "892.86",
+  "partida_declarada": "8.4.01.07",
+  "entidad": "Empresa Pública de Aseo",
+  "anio": 2024,
+  "_procedencia": {
+   "archivo": "PAC 2024 Aseo EP.docx",
+   "tabla": 1,
+   "fila": 6
+  }
+ },
+ {
+  "n_item": "2",
+  "partida": "840105",
+  "cpc": "491130023",
+  "tipo_compra": "Bien",
+  "descripcion": "ADQUISICIÓN DE UNA CAMIONETA PARA TRASLADO DE PERSONAL",
+  "cantidad": "1.00",
+  "unidad": "",
+  "costo_unitario": "17,776.0400",
+  "total": "17,776.04",
+  "partida_declarada": "8.4.01.05",
+  "entidad": "Empresa Pública de Aseo",
+  "anio": 2024,
+  "_procedencia": {
+   "archivo": "PAC 2024 Aseo EP.docx",
+   "tabla": 1,
+   "fila": 7
+  }
+ },
+ {
+  "n_item": "3",
+  "partida": "840105",
+  "cpc": "491140012",
+  "tipo_compra": "Bien",
+  "descripcion": "ADQUISICIÓN DE 3 RECOLECTORES Y 3 CAMIONES PARA LA EMPRESA MUNICIPAL DE ASEO INTEGRAL MONTECRISTI EP",
+  "cantidad": "1.00",
+  "unidad": "",
+  "costo_unitario": "180,000.0000",
+  "total": "180,000.00",
+  "partida_declarada": "840105",
+  "entidad": "Empresa Pública de Aseo",
+  "anio": 2024,
+  "_procedencia": {
+   "archivo": "PAC 2024 Aseo EP.docx",
+   "tabla": 1,
+   "fila": 8
+  }
+ },
+ {
+  "n_item": "4",
+  "partida": "840104",
+  "cpc": "444500011",
+  "tipo_compra": "Bien",
+  "descripcion": "ADQUISICIÓN DE UNA MAQUINARIA TIPO TRACTOR PARA REALIZAR TRABAJOS OPERATIVOS",
+  "cantidad": "1.00",
+  "unidad": "",
+  "costo_unitario": "178,571.4290",
+  "total": "178,571.43",
+  "partida_declarada": "8.4.01.04",
+  "entidad": "Empresa Pública de Aseo",
+  "anio": 2024,
+  "_procedencia": {
+   "archivo": "PAC 2024 Aseo EP.docx",
+   "tabla": 1,
+   "fila": 9
+  }
+ },
+ {
+  "n_item": "5",
+  "partida": "770201",
+  "cpc": "713310012",
+  "tipo_compra": "Servicio",
+  "descripcion": "CONTRATACIÓN DE SEGURO PARA VEHÍCULO",
+  "cantidad": "1.00",
+  "unidad": "",
+  "costo_unitario": "4,378.5400",
+  "total": "4,378.54",
+  "partida_declarada": "7.7.02.01",
+  "entidad": "Empresa Pública de Aseo",
+  "anio": 2024,
+  "_procedencia": {
+   "archivo": "PAC 2024 Aseo EP.docx",
+   "tabla": 1,
+   "fila": 10
+  }
+ },
+ {
+  "n_item": "6",
+  "partida": "731406",
+  "cpc": "4292100116",
+  "tipo_compra": "Bien",
+  "descripcion": "ADQUISICIÓN DE HERRAMIENTAS QUE SERÁN UTILIZADAS POR EL PERSONAL OPERATIVO EN SU TRABAJO EN CAMPO",
+  "cantidad": "1.00",
+  "unidad": "",
+  "costo_unitario": "7,552.6696",
+  "total": "7,552.67",
+  "partida_declarada": "7.3.14.06",
+  "entidad": "Empresa Pública de Aseo",
+  "anio": 2024,
+  "_procedencia": {
+   "archivo": "PAC 2024 Aseo EP.docx",
+   "tabla": 1,
+   "fila": 11
+  }
+ },
+ {
+  "n_item": "7",
+  "partida": "730813",
+  "cpc": "871410018",
+  "tipo_compra": "Servicio",
+  "descripcion": "SERVICIO DE MANTENIMIENTO PREVENTIVO Y CORRECTIVO DE LA FLOTA VEHICULAR DE LA EMPRESA MUNICIPAL DE ASEO INTEGRAL MONTECRISTI-EP",
+  "cantidad": "1.00",
+  "unidad": "",
+  "costo_unitario": "29,828.0000",
+  "total": "29,828.00",
+  "partida_declarada": "73.08.13",
+  "entidad": "Empresa Pública de Aseo",
+  "anio": 2024,
+  "_procedencia": {
+   "archivo": "PAC 2024 Aseo EP.docx",
+   "tabla": 1,
+   "fila": 12
+  }
+ },
+ {
+  "n_item": "8",
+  "partida": "730813",
+  "cpc": "36113001116",
+  "tipo_compra": "Bien",
+  "descripcion": "ADQUISICIÓN DE NEUMÁTICOS PARA VEHÍCULOS DE LA EMPRESA DE ASEO MONTECRISTI EP",
+  "cantidad": "1.00",
+  "unidad": "",
+  "costo_unitario": "19,592.6000",
+  "total": "19,592.60",
+  "partida_declarada": "7.3.08.13",
+  "entidad": "Empresa Pública de Aseo",
+  "anio": 2024,
+  "_procedencia": {
+   "archivo": "PAC 2024 Aseo EP.docx",
+   "tabla": 1,
+   "fila": 13
+  }
+ },
+ {
+  "n_item": "9",
+  "partida": "730813",
+  "cpc": "491290112",
+  "tipo_compra": "Bien",
+  "descripcion": "ADQUISICIÓN DE FILTROS, ACCESORIOS Y CONTRATACIÓN DEL SERVICIO DE MANTENIMIENTO PARA LOS VEHÍCULOS QUE FORMAN PARTE DE LA EMPRESA",
+  "cantidad": "1.00",
+  "unidad": "",
+  "costo_unitario": "63,958.7000",
+  "total": "63,958.70",
+  "partida_declarada": "7.3.08.13",
+  "entidad": "Empresa Pública de Aseo",
+  "anio": 2024,
+  "_procedencia": {
+   "archivo": "PAC 2024 Aseo EP.docx",
+   "tabla": 1,
+   "fila": 14
+  }
+ },
+ {
+  "n_item": "10",
+  "partida": "730813",
+  "cpc": "491290112",
+  "tipo_compra": "Bien",
+  "descripcion": "ADQUISICIÓN DE REPUESTOS, ACCESORIOS Y FILTROS PARA EL MANTENIMIENTO PREVENTIVO Y CORRECTIVO PARA LOS VEHICULOS RECOLECTORES DEL PARQUE AUTOMOTOR DE LA EMPRESA MUNICIPAL DE ASEO INTEGRAL MONTECRISTI-EP",
+  "cantidad": "1.00",
+  "unidad": "",
+  "costo_unitario": "6,025.5000",
+  "total": "6,025.50",
+  "partida_declarada": "7.3.08.13",
+  "entidad": "Empresa Pública de Aseo",
+  "anio": 2024,
+  "_procedencia": {
+   "archivo": "PAC 2024 Aseo EP.docx",
+   "tabla": 1,
+   "fila": 15
+  }
+ },
+ {
+  "n_item": "11",
+  "partida": "730805",
+  "cpc": "321930012",
+  "tipo_compra": "Bien",
+  "descripcion": "ADQUISICIÓN DE MATERIALES DE ASEO",
+  "cantidad": "1.00",
+  "unidad": "",
+  "costo_unitario": "4,477.9375",
+  "total": "4,477.94",
+  "partida_declarada": "7.3.08.05",
+  "entidad": "Empresa Pública de Aseo",
+  "anio": 2024,
+  "_procedencia": {
+   "archivo": "PAC 2024 Aseo EP.docx",
+   "tabla": 2,
+   "fila": 1
+  }
+ },
+ {
+  "n_item": "12",
+  "partida": "730803",
+  "cpc": "871410018",
+  "tipo_compra": "Servicio",
+  "descripcion": "SERVICIO DE MANTENIMIENTO PREVENTIVO Y CORRECTIVO DE LA FLOTA VEHICULAR DE LA EMPRESA MUNICIPAL DE ASEO INTEGRAL MONTECRISTI-EP",
+  "cantidad": "1.00",
+  "unidad": "",
+  "costo_unitario": "16,428.0000",
+  "total": "16,428.00",
+  "partida_declarada": "73.08.03",
+  "entidad": "Empresa Pública de Aseo",
+  "anio": 2024,
+  "_procedencia": {
+   "archivo": "PAC 2024 Aseo EP.docx",
+   "tabla": 2,
+   "fila": 2
+  }
+ },
+ {
+  "n_item": "13",
+  "partida": "730803",
+  "cpc": "333800211",
+  "tipo_compra": "Bien",
+  "descripcion": "ADQUISICIÓN DE LUBRICANTES PARA PROLONGAR LA VIDA ÚTIL DE LOS SISTEMAS DE LA FLOTA VEHICULAR DE LA EMPRESA MUNICIPAL DE ASEO INTEGRAL MONTECRISTI-EP",
+  "cantidad": "1.00",
+  "unidad": "",
+  "costo_unitario": "22,128.6500",
+  "total": "22,128.65",
+  "partida_declarada": "7.3.08.03",
+  "entidad": "Empresa Pública de Aseo",
+  "anio": 2024,
+  "_procedencia": {
+   "archivo": "PAC 2024 Aseo EP.docx",
+   "tabla": 2,
+   "fila": 3
+  }
+ },
+ {
+  "n_item": "14",
+  "partida": "730803",
+  "cpc": "333800211",
+  "tipo_compra": "Bien",
+  "descripcion": "ADQUISICIÓN DE LUBRICANTES PARA EL MANTENIMIENTO PREVENTIVO DE LOS VEHÍCULOS QUE REALIZAN LA RECOLECCIÓN",
+  "cantidad": "1.00",
+  "unidad": "",
+  "costo_unitario": "5,077.0300",
+  "total": "5,077.03",
+  "partida_declarada": "7.3.08.03",
+  "entidad": "Empresa Pública de Aseo",
+  "anio": 2024,
+  "_procedencia": {
+   "archivo": "PAC 2024 Aseo EP.docx",
+   "tabla": 2,
+   "fila": 4
+  }
+ },
+ {
+  "n_item": "15",
+  "partida": "730802",
+  "cpc": "4817001110",
+  "tipo_compra": "Bien",
+  "descripcion": "ADQUISICIÓN EQUIPOS DE PROTECCIÓN PERSONAL EPP PARA EL PERSONAL OPERATIVO DE LA EMPRESA MUNICIPAL DE ASEO INTEGRAL MONTECRISTI EP",
+  "cantidad": "1.00",
+  "unidad": "",
+  "costo_unitario": "35,982.4600",
+  "total": "35,982.46",
+  "partida_declarada": "73.08.02",
+  "entidad": "Empresa Pública de Aseo",
+  "anio": 2024,
+  "_procedencia": {
+   "archivo": "PAC 2024 Aseo EP.docx",
+   "tabla": 2,
+   "fila": 5
+  }
+ },
+ {
+  "n_item": "16",
+  "partida": "730802",
+  "cpc": "2822500121",
+  "tipo_compra": "Bien",
+  "descripcion": "ADQUISICIÓN DE ROPA DE TRABAJO PARA EL PERSONAL OPERATIVO DE LA EMPRESA DE ASEO MONTECRISTI EP",
+  "cantidad": "1.00",
+  "unidad": "",
+  "costo_unitario": "8,495.6800",
+  "total": "8,495.68",
+  "partida_declarada": "7.3.08.02",
+  "entidad": "Empresa Pública de Aseo",
+  "anio": 2024,
+  "_procedencia": {
+   "archivo": "PAC 2024 Aseo EP.docx",
+   "tabla": 2,
+   "fila": 6
+  }
+ },
+ {
+  "n_item": "17",
+  "partida": "730702",
+  "cpc": "831410511",
+  "tipo_compra": "Servicio",
+  "descripcion": "Servicio de un Sistema de Gestión de Control Integral,Administrativo y Operacional de Higiene integrado de maneranativa con el Modelo TRB, para la Empresa Municipal de AseoIntegral Montecristi EP",
+  "cantidad": "1.00",
+  "unidad": "",
+  "costo_unitario": "210,095.0000",
+  "total": "210,095.00",
+  "partida_declarada": "73.07.02",
+  "entidad": "Empresa Pública de Aseo",
+  "anio": 2024,
+  "_procedencia": {
+   "archivo": "PAC 2024 Aseo EP.docx",
+   "tabla": 2,
+   "fila": 7
+  }
+ },
+ {
+  "n_item": "18",
+  "partida": "730505",
+  "cpc": "942110011",
+  "tipo_compra": "Servicio",
+  "descripcion": "SERVICIO DE TRANSPORTE DE DESECHOS SÓLIDOS EN RUTAS DE RECOLECCIÓN DE LA EMPRESA MUNICIPAL DE ASEO INTEGRAL MONTECRISTI-EP",
+  "cantidad": "1.00",
+  "unidad": "",
+  "costo_unitario": "90,768.0000",
+  "total": "90,768.00",
+  "partida_declarada": "73.05.05",
+  "entidad": "Empresa Pública de Aseo",
+  "anio": 2024,
+  "_procedencia": {
+   "archivo": "PAC 2024 Aseo EP.docx",
+   "tabla": 2,
+   "fila": 8
+  }
+ },
+ {
+  "n_item": "19",
+  "partida": "730505",
+  "cpc": "548000014",
+  "tipo_compra": "Servicio",
+  "descripcion": "SERVICIO DE ALQUILER DE VOLQUETAS PARA EL CUMPLIMIMIENTO DE TAREAS OPERATIVAS",
+  "cantidad": "1.00",
+  "unidad": "",
+  "costo_unitario": "6,400.0000",
+  "total": "6,400.00",
+  "partida_declarada": "7.3.05.05",
+  "entidad": "Empresa Pública de Aseo",
+  "anio": 2024,
+  "_procedencia": {
+   "archivo": "PAC 2024 Aseo EP.docx",
+   "tabla": 2,
+   "fila": 9
+  }
+ },
+ {
+  "n_item": "20",
+  "partida": "730504",
+  "cpc": "548000014",
+  "tipo_compra": "Servicio",
+  "descripcion": "Servicio de Alquiler de dos volquetas de 8m3 para atender el servicio emergente de recolección y transporte de residuos sólidos no peligrosos como respaldo al servicio regular efectuado en el cantón Montecristi de acuerdo con el artículo 326 de la Constitución de la República del Ecuador",
+  "cantidad": "1.00",
+  "unidad": "",
+  "costo_unitario": "11,200.0000",
+  "total": "11,200.00",
+  "partida_declarada": "73.05.04",
+  "entidad": "Empresa Pública de Aseo",
+  "anio": 2024,
+  "_procedencia": {
+   "archivo": "PAC 2024 Aseo EP.docx",
+   "tabla": 2,
+   "fila": 10
+  }
+ },
+ {
+  "n_item": "21",
+  "partida": "730504",
+  "cpc": "871410018",
+  "tipo_compra": "Servicio",
+  "descripcion": "SERVICIO DE MANTENIMIENTO PREVENTIVO Y CORRECTIVO DE LA FLOTA VEHICULAR DE LA EMPRESA MUNICIPAL DE ASEO INTEGRAL MONTECRISTI-EP",
+  "cantidad": "1.00",
+  "unidad": "",
+  "costo_unitario": "19,620.0000",
+  "total": "19,620.00",
+  "partida_declarada": "73.05.04",
+  "entidad": "Empresa Pública de Aseo",
+  "anio": 2024,
+  "_procedencia": {
+   "archivo": "PAC 2024 Aseo EP.docx",
+   "tabla": 3,
+   "fila": 1
+  }
+ },
+ {
+  "n_item": "22",
+  "partida": "730504",
+  "cpc": "548000014",
+  "tipo_compra": "Servicio",
+  "descripcion": "SERVICIO DE ALQUILER DE MAQUINARIA PESADA PARA EL TENDIDO, HOMOGENEIZACIÓN Y SOTERRAMIENTO DE LOS DESECHOS COMUNES CAPTADOS EN EL VERTEDERO MUNICIPAL DEL CANTÓN MONTECRISTI",
+  "cantidad": "1.00",
+  "unidad": "",
+  "costo_unitario": "54,750.0000",
+  "total": "54,750.00",
+  "partida_declarada": "73.05.04",
+  "entidad": "Empresa Pública de Aseo",
+  "anio": 2024,
+  "_procedencia": {
+   "archivo": "PAC 2024 Aseo EP.docx",
+   "tabla": 3,
+   "fila": 2
+  }
+ },
+ {
+  "n_item": "23",
+  "partida": "730405",
+  "cpc": "871410032",
+  "tipo_compra": "Servicio",
+  "descripcion": "CONTRATACIÓN EL SERVICIO DE LAVADA ASPIRADA PULVERIZADA DE VEHÍCULOS DE LA EMPRESA DE ASEO MONTECRISTI EP",
+  "cantidad": "1.00",
+  "unidad": "",
+  "costo_unitario": "6,300.0000",
+  "total": "6,300.00",
+  "partida_declarada": "7.3.04.05",
+  "entidad": "Empresa Pública de Aseo",
+  "anio": 2024,
+  "_procedencia": {
+   "archivo": "PAC 2024 Aseo EP.docx",
+   "tabla": 3,
+   "fila": 3
+  }
+ },
+ {
+  "n_item": "24",
+  "partida": "730405",
+  "cpc": "871410312",
+  "tipo_compra": "Servicio",
+  "descripcion": "CONTRATACIÓN EL SERVICIO DE VULCANIZADORA PARA MANTENIMIENTO DE LOS NEUMÁTICOS DE LOS VEHÍCULOS DE LA EMPRESA DE ASEO MONTECRISTI EP",
+  "cantidad": "1.00",
+  "unidad": "",
+  "costo_unitario": "3,000.0000",
+  "total": "3,000.00",
+  "partida_declarada": "7.3.04.05",
+  "entidad": "Empresa Pública de Aseo",
+  "anio": 2024,
+  "_procedencia": {
+   "archivo": "PAC 2024 Aseo EP.docx",
+   "tabla": 3,
+   "fila": 4
+  }
+ },
+ {
+  "n_item": "25",
+  "partida": "730255",
+  "cpc": "612910013",
+  "tipo_compra": "Servicio",
+  "descripcion": "PROVISIÓN DE COMBUSTIBLE PARA LOS VEHÍCULOS DE LA EMPRESA DE ASEO MONTECRISTI EP MES DE ABRIL 2024",
+  "cantidad": "1.00",
+  "unidad": "",
+  "costo_unitario": "4,419.1300",
+  "total": "4,419.13",
+  "partida_declarada": "7.3.02.55",
+  "entidad": "Empresa Pública de Aseo",
+  "anio": 2024,
+  "_procedencia": {
+   "archivo": "PAC 2024 Aseo EP.docx",
+   "tabla": 3,
+   "fila": 5
+  }
+ },
+ {
+  "n_item": "26",
+  "partida": "730255",
+  "cpc": "612910013",
+  "tipo_compra": "Servicio",
+  "descripcion": "PROVISIÓN DE COMBUSTIBLE PARA LOS VEHÍCULOS DE LA EMPRESA DE ASEO MONTECRISTI EP MES DE ENERO 2024",
+  "cantidad": "1.00",
+  "unidad": "",
+  "costo_unitario": "3,312.2000",
+  "total": "3,312.20",
+  "partida_declarada": "7.3.02.55",
+  "entidad": "Empresa Pública de Aseo",
+  "anio": 2024,
+  "_procedencia": {
+   "archivo": "PAC 2024 Aseo EP.docx",
+   "tabla": 3,
+   "fila": 6
+  }
+ },
+ {
+  "n_item": "27",
+  "partida": "730255",
+  "cpc": "612910013",
+  "tipo_compra": "Servicio",
+  "descripcion": "PROVISIÓN DE COMBUSTIBLE PARA LOS VEHÍCULOS DE LA EMPRESA DE ASEO MONTECRISTI EP MES DE FEBRERO 2024",
+  "cantidad": "1.00",
+  "unidad": "",
+  "costo_unitario": "2,247.0800",
+  "total": "2,247.08",
+  "partida_declarada": "7.3.02.55",
+  "entidad": "Empresa Pública de Aseo",
+  "anio": 2024,
+  "_procedencia": {
+   "archivo": "PAC 2024 Aseo EP.docx",
+   "tabla": 3,
+   "fila": 7
+  }
+ },
+ {
+  "n_item": "28",
+  "partida": "730255",
+  "cpc": "612910013",
+  "tipo_compra": "Servicio",
+  "descripcion": "PROVISIÓN DE COMBUSTIBLE PARA LOS VEHÍCULOS DE LA EMPRESA DE ASEO MONTECRISTI EP MES DE MARZO 2024",
+  "cantidad": "1.00",
+  "unidad": "",
+  "costo_unitario": "2,147.4000",
+  "total": "2,147.40",
+  "partida_declarada": "7.3.02.55",
+  "entidad": "Empresa Pública de Aseo",
+  "anio": 2024,
+  "_procedencia": {
+   "archivo": "PAC 2024 Aseo EP.docx",
+   "tabla": 3,
+   "fila": 8
+  }
+ },
+ {
+  "n_item": "29",
+  "partida": "730255",
+  "cpc": "612910013",
+  "tipo_compra": "Servicio",
+  "descripcion": "SERVICIO DE PROVISIÓN DE COMBUSTIBLE PARA LA FLOTAVEHICULAR DE LA EMPRESA MUNICIPAL DE ASEO INTEGRALMONTECRISTI-EP",
+  "cantidad": "1.00",
+  "unidad": "",
+  "costo_unitario": "41,258.8600",
+  "total": "41,258.86",
+  "partida_declarada": "7.3.02.55",
+  "entidad": "Empresa Pública de Aseo",
+  "anio": 2024,
+  "_procedencia": {
+   "archivo": "PAC 2024 Aseo EP.docx",
+   "tabla": 3,
+   "fila": 9
+  }
+ },
+ {
+  "n_item": "30",
+  "partida": "730209",
+  "cpc": "8531002110",
+  "tipo_compra": "Servicio",
+  "descripcion": "CONTRATACIÓN SERVICIO DE FUMIGACIÓN DESINFECCIÓN DEL VERTEDERO DEL CANTÓN MONTECRISTI",
+  "cantidad": "1.00",
+  "unidad": "",
+  "costo_unitario": "17,942.8600",
+  "total": "17,942.86",
+  "partida_declarada": "7.3.02.09",
+  "entidad": "Empresa Pública de Aseo",
+  "anio": 2024,
+  "_procedencia": {
+   "archivo": "PAC 2024 Aseo EP.docx",
+   "tabla": 3,
+   "fila": 10
+  }
+ },
+ {
+  "n_item": "31",
+  "partida": "730105",
+  "cpc": "841600311",
+  "tipo_compra": "Servicio",
+  "descripcion": "ADQUIRIR EQUIPOS DE RASTREO SATELITAL GPS PARA LOS VEHÍCULOS DE LA EMPRESA DE ASEO MONTECRISTI EP",
+  "cantidad": "1.00",
+  "unidad": "",
+  "costo_unitario": "3,875.0000",
+  "total": "3,875.00",
+  "partida_declarada": "7.3.01.05",
+  "entidad": "Empresa Pública de Aseo",
+  "anio": 2024,
+  "_procedencia": {
+   "archivo": "PAC 2024 Aseo EP.docx",
+   "tabla": 3,
+   "fila": 11
+  }
+ },
+ {
+  "n_item": "32",
+  "partida": "570201",
+  "cpc": "713340113",
+  "tipo_compra": "Servicio",
+  "descripcion": "CONTRATACIÓN DE PÓLIZAS DE SEGURO CONTRA INCENDIO, RAYO, ROBO HURTO EQUIPO ELECTRÓNICO",
+  "cantidad": "1.00",
+  "unidad": "",
+  "costo_unitario": "122.8000",
+  "total": "122.80",
+  "partida_declarada": "5.7.02.01",
+  "entidad": "Empresa Pública de Aseo",
+  "anio": 2024,
+  "_procedencia": {
+   "archivo": "PAC 2024 Aseo EP.docx",
+   "tabla": 3,
+   "fila": 12
   }
  },
  {

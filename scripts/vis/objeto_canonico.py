@@ -116,15 +116,28 @@ def construir_estado(anio: int = 2026) -> dict:
 
     # Procesos observados en SERCOP: estado contractual real, cobertura parcial.
     # NO es «el PAC que no pudimos bajar»: es la otra mitad de la pregunta.
+    # El holding son CUATRO entidades nombradas, no «lo que contenga MONTECRISTI».
+    # El filtro anterior dejaba pasar la Dirección Distrital de Salud
+    # Jaramijó-Manta-Montecristi, que es del Ministerio de Salud. Un proceso
+    # ajeno colado en el denominador contamina toda la razón que se calcule
+    # sobre él — y nadie lo habría notado mirando el dibujo.
+    HOLDING = ("GOBIERNO AUTONOMO DESCENTRALIZADO MUNICIPAL DEL CANTON MONTECRISTI",
+               "MUNICIPIO DE MONTECRISTI",
+               "EMPRESA MUNICIPAL DE ASEO INTEGRAL MONTECRISTI-EP",
+               "CUERPO DE BOMBEROS DE MONTECRISTI",
+               "PATRONATO MUNICIPAL DE AMPARO SOCIAL DE MONTECRISTI")
     try:
-        sc = json.loads((RAIZ / "data" / "scouting" / f"sercop_{anio}_parcial.json")
-                        .read_text(encoding="utf-8"))["procesos"]
-        sc = [x for x in sc if "MONTECRISTI" in (x.get("buyer") or "").upper()]
+        crudo = json.loads((RAIZ / "data" / "scouting" / f"sercop_{anio}_parcial.json")
+                           .read_text(encoding="utf-8"))["procesos"]
     except Exception:
-        sc = []
-    sercop_n = len(sc)
+        crudo = []
+    sc = [x for x in crudo
+          if " ".join((x.get("buyer") or "").upper().split()) in HOLDING]
+    sercop_capturados = len(crudo)          # universo de la consulta
+    sercop_n = len(sc)                      # los que son del holding
     sercop_set = {x["partida"][:6] for x in sc
                   if x.get("partida") and x["partida"][:6].isdigit()}
+    sercop_con_partida = len(sercop_set)    # los que tienen partida reconciliable
     sercop_partidas = len(sercop_set & pac_set)
 
     fpai = BASE_PAI / ARCHIVOS[anio]
@@ -176,7 +189,7 @@ def construir_estado(anio: int = 2026) -> dict:
              "c": f"{pac_items} ítems · {pac_partidas} partidas planificadas",
              "e": "validado"},
             {"n": "Proceso de contratación",
-             "c": f"{sercop_n} procesos observados · cobertura parcial",
+             "c": f"{sercop_n} del holding · de {sercop_capturados} capturados",
              "e": "parcialmente_validado"},
             {"n": "Cédula presupuestaria", "c": f"{len(corte)} partidas · corte {mes}",
              "e": "validado"},
@@ -189,7 +202,8 @@ def construir_estado(anio: int = 2026) -> dict:
             {"de": 0, "a": 1, "e": "validado",
              "et": "la partida consta en el plan de contratación"},
             {"de": 1, "a": 2, "e": "parcialmente_validado",
-             "et": f"{sercop_partidas} de {pac_partidas} partidas con proceso observado"},
+             "et": f"{sercop_partidas} de {sercop_con_partida} partidas observadas "
+                   f"constan en el plan"},
             {"de": 2, "a": 3, "e": "parcialmente_validado",
              "et": "captura del estado contractual incompleta"},
             {"de": 3, "a": 4, "e": "validado", "et": "verificado en la cédula"},
