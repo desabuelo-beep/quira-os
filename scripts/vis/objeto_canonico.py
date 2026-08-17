@@ -166,6 +166,14 @@ def construir_estado(anio: int = 2026) -> dict:
         # Son preguntas distintas y evidencias distintas. Fundirlas convertía un
         # dato disponible en una ausencia.
         #
+        # ── ATRIBUCIÓN CORREGIDA POR TERCERA VEZ (2026-08-17), y ahora con la
+        # causa medida. El 12-ago se rotuló `captura_no_completada` (culpa
+        # nuestra por saturación); el 13-ago se cambió a `fuente_no_accesible`
+        # (la fuente no responde). **Las dos eran falsas.** La causa real:
+        # una VPN activa con MTU 1420 sobre una ruta que admite ~1300 — el
+        # saludo TLS se perdía y el TCP pasaba. Ni la fuente ni la saturación:
+        # el instrumento. Ver OBS-030.
+        #
         # ── ATRIBUCIÓN CORREGIDA (2026-08-13), y en la dirección contraria a la
         # de ayer. El 12-ago se rotuló `captura_no_completada` —culpa nuestra—
         # porque la API dejó de responder tras ~60 peticiones propias en una

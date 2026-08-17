@@ -1,0 +1,1786 @@
+{
+ "_meta": {
+  "generado": "2026-08-17",
+  "fuente": "https://datosabiertos.compraspublicas.gob.ec/PLATAFORMA/api/record",
+  "transporte": {
+   "intentos": 86,
+   "fallos": 3,
+   "seguidos": 3,
+   "ultimo": "RuntimeError: sin respuesta"
+  },
+  "regla": "trayectoria tal como la publica la fuente · adjudicado ≠ meta cumplida (ADR-049 VIS-INV-003)"
+ },
+ "expedientes": [
+  {
+   "ocid": "ocds-5wno2w-CE-20250002852975-2896",
+   "tag": [
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "complete",
+   "tender_titulo": "Orden de compra CE-20250002852975",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "ASOCIACIÓN DE PRODUCCIÓN TEXTIL 10 DE AGOSTO"
+   ],
+   "fecha": "2025-05-16T00:00:00-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-CE-20250002852976-2896",
+   "tag": [
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "complete",
+   "tender_titulo": "Orden de compra CE-20250002852976",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "ASOCIACIÓN DE PRODUCCIÓN TEXTIL VILLA HERMOSA \"ASOPROVISA\""
+   ],
+   "fecha": "2025-05-16T00:00:00-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-CE-20250002854684-2896",
+   "tag": [
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "complete",
+   "tender_titulo": "Orden de compra CE-20250002854684",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "ASOCIACION DE PRODUCCION TEXTIL Y MODA GIRASOL"
+   ],
+   "fecha": "2025-05-20T00:00:00-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-CE-20250002870923-2896",
+   "tag": [
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "complete",
+   "tender_titulo": "Orden de compra CE-20250002870923",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "ASOCIACIÓN DE PRODUCCIÓN TEXTIL CHONE LINDO \"ASOPROTEXCHOLIN\""
+   ],
+   "fecha": "2025-06-16T00:00:00-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-CE-20250002930906-2896",
+   "tag": [
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "complete",
+   "tender_titulo": "Orden de compra CE-20250002930906",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "ASOCIACION DE CONFECCIONES EN TEXTILES Y ARTESANIAS"
+   ],
+   "fecha": "2025-10-22T00:00:00-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-CE-20250002930907-2896",
+   "tag": [
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "complete",
+   "tender_titulo": "Orden de compra CE-20250002930907",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "ASOCIACION DE PRODUCCION   TEXTIL MARICAR  ASOPROMARICAR"
+   ],
+   "fecha": "2025-10-22T00:00:00-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-CE-20250002930908-2896",
+   "tag": [
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "complete",
+   "tender_titulo": "Orden de compra CE-20250002930908",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "ASOCIACIÓN DE PRODUCCIÓN TEXTIL ARTESANOS DE CORTE Y CONFECCIÓN DE TARQUI \"ASOCORTAR\""
+   ],
+   "fecha": "2025-10-22T00:00:00-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-CE-20250002930909-2896",
+   "tag": [
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "complete",
+   "tender_titulo": "Orden de compra CE-20250002930909",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "ASOCIACIÓN DE PRODUCCIÓN TEXTIL POR EL PROGRESO \"ASOPROTEXPRO\""
+   ],
+   "fecha": "2025-10-22T00:00:00-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-CE-20250002930910-2896",
+   "tag": [
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "complete",
+   "tender_titulo": "Orden de compra CE-20250002930910",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "ASOCIACION DE PRODUCCION TEXTIL PORTOTEX ASOTEXPO"
+   ],
+   "fecha": "2025-10-22T00:00:00-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-CE-20250002930911-2896",
+   "tag": [
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "complete",
+   "tender_titulo": "Orden de compra CE-20250002930911",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "ASOCIACION DE PRODUCCION TEXTIL PROGRESANDO JUNTOS POR CHONE ASOPROTEXCHONE"
+   ],
+   "fecha": "2025-10-22T00:00:00-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-CE-20250002930912-2896",
+   "tag": [
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "complete",
+   "tender_titulo": "Orden de compra CE-20250002930912",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "CASANOVA PACHAY YERITZA DAYANA"
+   ],
+   "fecha": "2025-10-22T00:00:00-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-CE-20250002930913-2896",
+   "tag": [
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "complete",
+   "tender_titulo": "Orden de compra CE-20250002930913",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "MUÑOZ MERA LIVIDA MARIA"
+   ],
+   "fecha": "2025-10-22T00:00:00-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-CE-20250002930914-2896",
+   "tag": [
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "complete",
+   "tender_titulo": "Orden de compra CE-20250002930914",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "PACHAY DELGADO MARY ALEXANDRA"
+   ],
+   "fecha": "2025-10-22T00:00:00-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-CE-20250002930915-2896",
+   "tag": [
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "complete",
+   "tender_titulo": "Orden de compra CE-20250002930915",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "INDUSTRIA TOFFLOR INTOFF S.A.S."
+   ],
+   "fecha": "2025-10-22T00:00:00-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-CE-20250002930916-2896",
+   "tag": [
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "complete",
+   "tender_titulo": "Orden de compra CE-20250002930916",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "Perez  Jorge Antonio"
+   ],
+   "fecha": "2025-10-22T00:00:00-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-CE-20250002959675-2896",
+   "tag": [
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "complete",
+   "tender_titulo": "Orden de compra CE-20250002959675",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "ASOCIACION DE SERVICIOS COMUNITARIOS DEL CANTON MANTA"
+   ],
+   "fecha": "2025-12-18T00:00:00-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-COTO-GADMCM-2025-01-2896",
+   "tag": [
+    "planning",
+    "tender",
+    "award"
+   ],
+   "partida": "750501",
+   "partida_declarada": "750501",
+   "monto_planificado": 341733.401,
+   "tender_status": "active",
+   "tender_titulo": "COTO-GADMCM-2025-01-2896",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "CONSTRUCTORA Y DISEÑOS PALMA CEVALLOS CONDIPACE CIA.LTDA."
+   ],
+   "fecha": "2025-08-16T12:54:21-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-COTS-GADMCM-2025-01-2896",
+   "tag": [
+    "planning",
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "730607",
+   "partida_declarada": "730607",
+   "monto_planificado": 373963.71,
+   "tender_status": "active",
+   "tender_titulo": "COTS-GADMCM-2025-01-2896",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "VILLACIS LOPEZ JORGE HERNAN"
+   ],
+   "fecha": "2025-05-16T07:53:25-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-COTS-GADMCM-2025-02-2896",
+   "tag": [
+    "planning"
+   ],
+   "partida": "730607",
+   "partida_declarada": "730607",
+   "monto_planificado": 154704.6,
+   "tender_status": null,
+   "tender_titulo": null,
+   "n_adjudicaciones": 0,
+   "proveedores": [],
+   "fecha": "2025-04-30T00:00:00-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-COTS-GADMCM-2025-03-2896",
+   "tag": [
+    "planning",
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "730607",
+   "partida_declarada": "730607",
+   "monto_planificado": 154704.6,
+   "tender_status": "active",
+   "tender_titulo": "COTS-GADMCM-2025-03-2896",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "BASTIDAS TORO HECTOR RAUL"
+   ],
+   "fecha": "2025-08-15T12:52:45-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-COTS-GADMCM-2025-04-2896",
+   "tag": [
+    "planning",
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "730404",
+   "partida_declarada": "730404",
+   "monto_planificado": 104084.85,
+   "tender_status": "active",
+   "tender_titulo": "COTS-GADMCM-2025-04-2896",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "MAQUINARIAS Y VEHICULOS S.A. MAVESA"
+   ],
+   "fecha": "2025-08-12T18:10:22-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-LICO-GADMCM-2025-02-2896",
+   "tag": [
+    "planning",
+    "tender",
+    "award"
+   ],
+   "partida": "750104",
+   "partida_declarada": "750104",
+   "monto_planificado": 161540.0773,
+   "tender_status": "active",
+   "tender_titulo": "LICO-GADMCM-2025-02-2896",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "FLECHER ZAMBRANO JOSE ARTURO"
+   ],
+   "fecha": "2025-12-23T16:16:41-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-LICO-GADMCM-2025-04-2896",
+   "tag": [
+    "planning",
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "750104",
+   "partida_declarada": "750104",
+   "monto_planificado": 267482.9464,
+   "tender_status": "active",
+   "tender_titulo": "LICO-GADMCM-2025-04-2896",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "CONSTRUCTORA Y DISEÑOS PALMA CEVALLOS CONDIPACE CIA.LTDA."
+   ],
+   "fecha": "2026-05-28T10:37:12-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-LICO-GADMCM-2025-05-2896",
+   "tag": [
+    "planning",
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "750103",
+   "partida_declarada": "750103",
+   "monto_planificado": 96905.5444,
+   "tender_status": "active",
+   "tender_titulo": "LICO-GADMCM-2025-05-2896",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "CEDEÑO GOROZABEL LUIS ALFREDO"
+   ],
+   "fecha": "2026-02-05T07:16:37-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-LICO-GADMCM-2025-06-2896",
+   "tag": [
+    "planning",
+    "tender",
+    "award"
+   ],
+   "partida": "750105",
+   "partida_declarada": "750105",
+   "monto_planificado": 449932.3401,
+   "tender_status": "active",
+   "tender_titulo": "LICO-GADMCM-2025-06-2896",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "QUIJIJE ALVIA KLEBER JAVIER"
+   ],
+   "fecha": "2026-01-09T06:39:57-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-LICO-GADMCM-2025-07-2896",
+   "tag": [
+    "planning"
+   ],
+   "partida": "730402",
+   "partida_declarada": "730402",
+   "monto_planificado": 33943.16,
+   "tender_status": null,
+   "tender_titulo": null,
+   "n_adjudicaciones": 0,
+   "proveedores": [],
+   "fecha": "2025-12-01T00:00:00-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-LICO-GADMCM-2025-08-2896",
+   "tag": [
+    "planning",
+    "tender",
+    "award"
+   ],
+   "partida": "750104",
+   "partida_declarada": "750104",
+   "monto_planificado": 163421.2556,
+   "tender_status": "active",
+   "tender_titulo": "LICO-GADMCM-2025-08-2896",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "FRANCO ANCHUNDIA DARWIN JOSE"
+   ],
+   "fecha": "2026-01-10T06:42:38-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-LICO-GADMCM-2025-09-2896",
+   "tag": [
+    "planning"
+   ],
+   "partida": "730607",
+   "partida_declarada": "730607",
+   "monto_planificado": 19453.695,
+   "tender_status": null,
+   "tender_titulo": null,
+   "n_adjudicaciones": 0,
+   "proveedores": [],
+   "fecha": "2025-12-12T00:00:00-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-LICO-GADMCM-2025-11-2896",
+   "tag": [
+    "planning",
+    "tender",
+    "award"
+   ],
+   "partida": "730402",
+   "partida_declarada": "730402",
+   "monto_planificado": 33943.16,
+   "tender_status": "active",
+   "tender_titulo": "LICO-GADMCM-2025-11-2896",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "MERO MEZONES CARLOS ALBERTO"
+   ],
+   "fecha": "2026-01-24T06:59:45-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-LICO-GADMCM-2025-13-2896",
+   "tag": [
+    "planning",
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "750104",
+   "partida_declarada": "750104",
+   "monto_planificado": 84800.037,
+   "tender_status": "active",
+   "tender_titulo": "LICO-GADMCM-2025-13-2896",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "PAREDES GARCIA MARCOS AUGUSTO"
+   ],
+   "fecha": "2026-05-27T18:20:32-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-LICS-GADMCM-2025-01-2896",
+   "tag": [
+    "planning"
+   ],
+   "partida": "730404",
+   "partida_declarada": "730404",
+   "monto_planificado": 30000,
+   "tender_status": null,
+   "tender_titulo": null,
+   "n_adjudicaciones": 0,
+   "proveedores": [],
+   "fecha": "2025-12-31T00:00:00-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-LICSG-GADMCM-2025-01-2896",
+   "tag": [
+    "planning",
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "570201",
+   "partida_declarada": "01.01.01.A100.110.2025.570201.000.13.09.02.A13.99.",
+   "monto_planificado": 76786.29,
+   "tender_status": "active",
+   "tender_titulo": "LICSG-GADMCM-2025-01-2896",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "SEGUROS ALIANZA S A"
+   ],
+   "fecha": "2026-01-27T07:02:48-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-LICSG-GADMCM-2025-02-2896",
+   "tag": [
+    "planning",
+    "tender",
+    "award"
+   ],
+   "partida": "770201",
+   "partida_declarada": "770201",
+   "monto_planificado": 23764.8,
+   "tender_status": "active",
+   "tender_titulo": "LICSG-GADMCM-2025-02-2896",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "SEGUROS DEL PICHINCHA S. A. COMPAÑIA DE SEGUROS Y REASEGUROS"
+   ],
+   "fecha": "2025-12-26T16:10:39-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-MCO-GADMCM-2025-01-2896",
+   "tag": [
+    "planning",
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "750501",
+   "partida_declarada": "750501",
+   "monto_planificado": 61124.453,
+   "tender_status": "active",
+   "tender_titulo": "MCO-GADMCM-2025-01-2896",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "FRANCO ANCHUNDIA DARWIN JOSE"
+   ],
+   "fecha": "2025-11-11T15:00:18-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-MCS-GADMCM-2025-01-2896",
+   "tag": [
+    "planning",
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "730813",
+   "partida_declarada": "730813",
+   "monto_planificado": 63300.72,
+   "tender_status": "active",
+   "tender_titulo": "MCS-GADMCM-2025-01-2896",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "CORRALES ZAMBRANO FRANKLIN XAVIER"
+   ],
+   "fecha": "2025-08-22T13:48:52-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-MCS-GADMCM-2025-02-2896",
+   "tag": [
+    "planning",
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "730204",
+   "partida_declarada": "730204",
+   "monto_planificado": 49500,
+   "tender_status": "active",
+   "tender_titulo": "MCS-GADMCM-2025-02-2896",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "PALACIOS MERO GYSELLA GYNATTA"
+   ],
+   "fecha": "2026-02-04T07:11:58-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-MCS-GADMCM-2025-03-2896",
+   "tag": [
+    "planning",
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "730249",
+   "partida_declarada": "730249",
+   "monto_planificado": 26540,
+   "tender_status": "active",
+   "tender_titulo": "MCS-GADMCM-2025-03-2896",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "SANTOS BARCIA YANINA CECIBEL"
+   ],
+   "fecha": "2025-08-12T18:19:57-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-MCS-GADMCM-2025-04-2896",
+   "tag": [
+    "planning",
+    "tender"
+   ],
+   "partida": "730249",
+   "partida_declarada": "730249",
+   "monto_planificado": 34925,
+   "tender_status": "active",
+   "tender_titulo": "MCS-GADMCM-2025-04-2896",
+   "n_adjudicaciones": 0,
+   "proveedores": [],
+   "fecha": "2025-08-20T13:31:58-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-RE-CEP-GADMCM-2025-02-2896",
+   "tag": [
+    "planning"
+   ],
+   "partida": "750104",
+   "partida_declarada": "750104",
+   "monto_planificado": 23851.44,
+   "tender_status": null,
+   "tender_titulo": null,
+   "n_adjudicaciones": 0,
+   "proveedores": [],
+   "fecha": "2025-11-19T00:00:00-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-RE-CEP-GADMCM-2025-03-2896",
+   "tag": [
+    "planning",
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "750104",
+   "partida_declarada": "750104",
+   "monto_planificado": 23851.44,
+   "tender_status": "active",
+   "tender_titulo": "RE-CEP-GADMCM-2025-03-2896",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "EMPRESA PUBLICA MUNICIPAL DE HABITAT Y VIVIENDA DEL CANTON MONTECRISTI MONTEHOGAR-EP"
+   ],
+   "fecha": "2026-02-11T07:21:55-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-RE-OACL-GADMCM-2025-01-2896",
+   "tag": [
+    "planning",
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "730249",
+   "partida_declarada": "730249",
+   "monto_planificado": 70679,
+   "tender_status": "active",
+   "tender_titulo": "RE-OACL-GADMCM-2025-01-2896",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "MOLINA MOREIRA MARIA MAGDALENA"
+   ],
+   "fecha": "2025-12-24T16:13:56-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-RE-OACL-GADMCM-2025-02-2896",
+   "tag": [
+    "planning",
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "730601",
+   "partida_declarada": "730601",
+   "monto_planificado": 13900,
+   "tender_status": "active",
+   "tender_titulo": "RE-OACL-GADMCM-2025-02-2896",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "BRAVO POZO GLADYS LORENA"
+   ],
+   "fecha": "2026-05-27T18:31:15-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-RE-RA-GADMCM-2025-02-2896",
+   "tag": [
+    "planning",
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "730813",
+   "partida_declarada": "730813",
+   "monto_planificado": 14913.45,
+   "tender_status": "active",
+   "tender_titulo": "RE-RA-GADMCM-2025-02-2896",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "AMBACAR CIA. LTDA."
+   ],
+   "fecha": "2025-12-24T16:13:58-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-SIE-GADMCM-2025-01-2896",
+   "tag": [
+    "planning",
+    "tender"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "active",
+   "tender_titulo": "SIE-GADMCM-2025-01-2896",
+   "n_adjudicaciones": 0,
+   "proveedores": [],
+   "fecha": "2025-04-09T07:58:14-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-SIE-GADMCM-2025-02-2896",
+   "tag": [
+    "planning",
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "active",
+   "tender_titulo": "SIE-GADMCM-2025-02-2896",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "MOLINA PRUNA GALO ALBERTO"
+   ],
+   "fecha": "2025-05-23T10:35:58-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-SIE-GADMCM-2025-022-2896",
+   "tag": [
+    "planning",
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "active",
+   "tender_titulo": "SIE-GADMCM-2025-022-2896",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "AGUAS DEL ECUADOR ADE CIA.LTDA"
+   ],
+   "fecha": "2026-05-27T18:36:12-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-SIE-GADMCM-2025-023-2896",
+   "tag": [
+    "planning",
+    "tender"
+   ],
+   "partida": "730505",
+   "partida_declarada": "730505",
+   "monto_planificado": null,
+   "tender_status": "active",
+   "tender_titulo": "SIE-GADMCM-2025-023-2896",
+   "n_adjudicaciones": 0,
+   "proveedores": [],
+   "fecha": "2026-01-21T06:58:42-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-SIE-GADMCM-2025-03-2896",
+   "tag": [
+    "planning",
+    "tender",
+    "award",
+    "contract",
+    "implementation"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "active",
+   "tender_titulo": "SIE-GADMCM-2025-03-2896",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "BRIONES PICO EDISON ANDRES"
+   ],
+   "fecha": "2025-11-12T15:06:33-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-SIE-GADMCM-2025-04-2896",
+   "tag": [
+    "planning",
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "active",
+   "tender_titulo": "SIE-GADMCM-2025-04-2896",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "Coello Valdivieso Luis Arturo"
+   ],
+   "fecha": "2025-07-23T12:08:58-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-SIE-GADMCM-2025-05-2896",
+   "tag": [
+    "planning"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": null,
+   "tender_titulo": null,
+   "n_adjudicaciones": 0,
+   "proveedores": [],
+   "fecha": "2025-07-17T00:00:00-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-SIE-GADMCM-2025-08-2896",
+   "tag": [
+    "planning",
+    "tender",
+    "award"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "active",
+   "tender_titulo": "SIE-GADMCM-2025-08-2896",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "CAÑARTE PICO DANIELA STEFANYA"
+   ],
+   "fecha": "2026-05-27T18:36:12-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-SIE-GADMCM-2025-10-2896",
+   "tag": [
+    "planning",
+    "tender"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "active",
+   "tender_titulo": "SIE-GADMCM-2025-10-2896",
+   "n_adjudicaciones": 0,
+   "proveedores": [],
+   "fecha": "2025-12-05T15:41:53-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-SIE-GADMCM-2025-11-2896",
+   "tag": [
+    "planning",
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "active",
+   "tender_titulo": "SIE-GADMCM-2025-11-2896",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "YENCHONG FIGUEROA CARLOS XAVIER"
+   ],
+   "fecha": "2026-02-06T07:18:33-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-SIE-GADMCM-2025-12-2896",
+   "tag": [
+    "planning",
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "active",
+   "tender_titulo": "SIE-GADMCM-2025-12-2896",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "ATIENCIA LOZADA FRANCISCO JAVIER"
+   ],
+   "fecha": "2026-02-26T07:47:50-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-SIE-GADMCM-2025-13-2896",
+   "tag": [
+    "planning",
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "730204",
+   "partida_declarada": "730204",
+   "monto_planificado": null,
+   "tender_status": "active",
+   "tender_titulo": "SIE-GADMCM-2025-13-2896",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "CETECO-COPIXEROX COMERCIO DE EQUIPOS XEROGRAFICOS YSERVICIO TECNICO S.A."
+   ],
+   "fecha": "2026-02-19T07:30:09-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-SIE-GADMCM-2025-14-2896",
+   "tag": [
+    "planning",
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "530702",
+   "partida_declarada": "530702",
+   "monto_planificado": null,
+   "tender_status": "active",
+   "tender_titulo": "SIE-GADMCM-2025-14-2896",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "REDES S.A. REDESA"
+   ],
+   "fecha": "2026-03-04T08:05:53-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-SIE-GADMCM-2025-16-2896",
+   "tag": [
+    "planning",
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "530105",
+   "partida_declarada": "530105",
+   "monto_planificado": null,
+   "tender_status": "active",
+   "tender_titulo": "SIE-GADMCM-2025-16-2896",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "DELGADO QUIJIJE ERIKA JOSEFA"
+   ],
+   "fecha": "2026-02-14T07:31:57-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-SIE-GADMCM-2025-17-2896",
+   "tag": [
+    "planning",
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "active",
+   "tender_titulo": "SIE-GADMCM-2025-17-2896",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "COLCHA ORTIZ MARIA PATRICIA"
+   ],
+   "fecha": "2026-05-28T10:38:36-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-SIE-GADMCM-2025-18-2896",
+   "tag": [
+    "planning",
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "active",
+   "tender_titulo": "SIE-GADMCM-2025-18-2896",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "REDES S.A. REDESA"
+   ],
+   "fecha": "2026-03-07T08:34:15-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-SIE-GADMCM-2025-19-2896",
+   "tag": [
+    "planning",
+    "tender",
+    "award"
+   ],
+   "partida": "530204",
+   "partida_declarada": "530204",
+   "monto_planificado": null,
+   "tender_status": "active",
+   "tender_titulo": "SIE-GADMCM-2025-19-2896",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "VIASSEN C.A."
+   ],
+   "fecha": "2026-02-11T07:22:05-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-SIE-GADMCM-2025-20-2896",
+   "tag": [
+    "planning",
+    "tender",
+    "award"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "active",
+   "tender_titulo": "SIE-GADMCM-2025-20-2896",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "MEGAROK S.A."
+   ],
+   "fecha": "2026-01-31T07:15:16-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-SIE-GADMCM-2025-21-2896",
+   "tag": [
+    "planning",
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "730504",
+   "partida_declarada": "730504",
+   "monto_planificado": null,
+   "tender_status": "active",
+   "tender_titulo": "SIE-GADMCM-2025-21-2896",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "RAMON ESPERANZA E HIJOS RAMESHI S.A."
+   ],
+   "fecha": "2026-05-27T18:36:13-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-SIE-GADMCM-2025-24-2896",
+   "tag": [
+    "planning",
+    "tender",
+    "award"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "active",
+   "tender_titulo": "SIE-GADMCM-2025-24-2896",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "TOAPANTA CHILLOGALLO SARA MERCEDES"
+   ],
+   "fecha": "2026-02-06T07:18:33-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-SIE-GADMCM-2025-25-2896",
+   "tag": [
+    "planning"
+   ],
+   "partida": "730101",
+   "partida_declarada": "730101",
+   "monto_planificado": null,
+   "tender_status": null,
+   "tender_titulo": null,
+   "n_adjudicaciones": 0,
+   "proveedores": [],
+   "fecha": "2025-12-31T00:00:00-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-SIE-GADMCM-2025-26-2896",
+   "tag": [
+    "planning"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": null,
+   "tender_titulo": null,
+   "n_adjudicaciones": 0,
+   "proveedores": [],
+   "fecha": "2025-12-31T00:00:00-05:00",
+   "estado_captura": "completa",
+   "anio": "2025",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-CE-20260002962335-2896",
+   "tag": [
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "complete",
+   "tender_titulo": "Orden de compra CE-20260002962335",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "PONCE ALAY SONIA MARIELA"
+   ],
+   "fecha": "2026-01-09T00:00:00-05:00",
+   "estado_captura": "completa",
+   "anio": "2026",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-CE-20260002962474-2896",
+   "tag": [
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "complete",
+   "tender_titulo": "Orden de compra CE-20260002962474",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "ASOCIACIÓN DE PRODUCCIÓN TEXTIL JELMAKE PORTOVIEJO ASOPORJELPOR"
+   ],
+   "fecha": "2026-01-13T00:00:00-05:00",
+   "estado_captura": "completa",
+   "anio": "2026",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-CE-20260002967143-2896",
+   "tag": [
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "complete",
+   "tender_titulo": "Orden de compra CE-20260002967143",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "ASOCIACION DE CONFECCIONES EN TEXTILES Y ARTESANIAS"
+   ],
+   "fecha": "2026-01-30T00:00:00-05:00",
+   "estado_captura": "completa",
+   "anio": "2026",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-CE-20260003013868-2896",
+   "tag": [
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "complete",
+   "tender_titulo": "Orden de compra CE-20260003013868",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "PONCE ALAY SONIA MARIELA"
+   ],
+   "fecha": "2026-03-27T00:00:00-05:00",
+   "estado_captura": "completa",
+   "anio": "2026",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-CE-20260003029706-2896",
+   "tag": [
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "complete",
+   "tender_titulo": "Orden de compra CE-20260003029706",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "ASOCIACION DE PRODUCCION   TEXTIL POR UN MEJOR DESARROLLO  ASOPROMEJOR"
+   ],
+   "fecha": "2026-04-16T00:00:00-05:00",
+   "estado_captura": "completa",
+   "anio": "2026",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-CE-20260003045706-2896",
+   "tag": [
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "complete",
+   "tender_titulo": "Orden de compra CE-20260003045706",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "ASOCIACIÓN DE PRODUCCIÓN TEXTIL LA AURORA \"ASOPROLAUR\""
+   ],
+   "fecha": "2026-05-12T00:00:00-05:00",
+   "estado_captura": "completa",
+   "anio": "2026",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-CE-20260003045707-2896",
+   "tag": [
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "complete",
+   "tender_titulo": "Orden de compra CE-20260003045707",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "ASOCIACIÓN DE PRODUCCIÓN TEXTIL PONTE LO NUESTRO ECUADOR \"ASOPROTEXPONT\""
+   ],
+   "fecha": "2026-05-12T00:00:00-05:00",
+   "estado_captura": "completa",
+   "anio": "2026",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-CE-20260003045708-2896",
+   "tag": [
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "complete",
+   "tender_titulo": "Orden de compra CE-20260003045708",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "PONCE ALAY SONIA MARIELA"
+   ],
+   "fecha": "2026-05-12T00:00:00-05:00",
+   "estado_captura": "completa",
+   "anio": "2026",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-CE-20260003049886-2896",
+   "tag": [
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "complete",
+   "tender_titulo": "Orden de compra CE-20260003049886",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "ASOCIACION DE PRODUCCION   TEXTIL POR UN MEJOR DESARROLLO  ASOPROMEJOR"
+   ],
+   "fecha": "2026-05-19T00:00:00-05:00",
+   "estado_captura": "completa",
+   "anio": "2026",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-CE-20260003050588-2896",
+   "tag": [
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "complete",
+   "tender_titulo": "Orden de compra CE-20260003050588",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "ALCIVAR ROSS DOLORES MARILU"
+   ],
+   "fecha": "2026-05-20T00:00:00-05:00",
+   "estado_captura": "completa",
+   "anio": "2026",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-CE-20260003050589-2896",
+   "tag": [
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "complete",
+   "tender_titulo": "Orden de compra CE-20260003050589",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "ASOCIACIÓN DE PRODUCCIÓN TEXTIL ASARI SONRISA APROTASARI"
+   ],
+   "fecha": "2026-05-20T00:00:00-05:00",
+   "estado_captura": "completa",
+   "anio": "2026",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-CE-20260003057011-2896",
+   "tag": [
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "complete",
+   "tender_titulo": "Orden de compra CE-20260003057011",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "REYES CHAVEZ GUSTAVO NAPOLEON"
+   ],
+   "fecha": "2026-06-03T00:00:00-05:00",
+   "estado_captura": "completa",
+   "anio": "2026",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-CE-20260003059242-2896",
+   "tag": [
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "complete",
+   "tender_titulo": "Orden de compra CE-20260003059242",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "VILLA CANTOS MARIA GABRIELA"
+   ],
+   "fecha": "2026-06-08T00:00:00-05:00",
+   "estado_captura": "completa",
+   "anio": "2026",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-CE-20260003078266-2896",
+   "tag": [
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "complete",
+   "tender_titulo": "Orden de compra CE-20260003078266",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "ASOCIACIÓN DE PRODUCCIÓN TEXTIL POR EL PROGRESO \"ASOPROTEXPRO\""
+   ],
+   "fecha": "2026-07-08T00:00:00-05:00",
+   "estado_captura": "completa",
+   "anio": "2026",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-CE-20260003088843-2896",
+   "tag": [
+    "tender",
+    "award",
+    "contract"
+   ],
+   "partida": "",
+   "partida_declarada": "",
+   "monto_planificado": null,
+   "tender_status": "complete",
+   "tender_titulo": "Orden de compra CE-20260003088843",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "ASOCIACIÓN DE PRODUCCIÓN TEXTIL CONFECCIONES COLIBRI \"ASOPROCIQUE\""
+   ],
+   "fecha": "2026-07-28T00:00:00-05:00",
+   "estado_captura": "completa",
+   "anio": "2026",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-LICO-GADMCM-2026-01-2896",
+   "tag": [
+    "planning",
+    "tender",
+    "award"
+   ],
+   "partida": "530402",
+   "partida_declarada": "530402",
+   "monto_planificado": 39912.6735,
+   "tender_status": "active",
+   "tender_titulo": "LICO-GADMCM-2026-01-2896",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "OLARTE MENENDEZ EDUARDO EDISON"
+   ],
+   "fecha": "2026-07-04T11:25:55-05:00",
+   "estado_captura": "completa",
+   "anio": "2026",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-LICO-GADMCM-2026-02-2896",
+   "tag": [
+    "planning",
+    "tender",
+    "award"
+   ],
+   "partida": "750105",
+   "partida_declarada": "750105",
+   "monto_planificado": 499997.2682,
+   "tender_status": "active",
+   "tender_titulo": "LICO-GADMCM-2026-02-2896",
+   "n_adjudicaciones": 1,
+   "proveedores": [
+    "CEDEÑO ROLDAN MARIA DOLORES"
+   ],
+   "fecha": "2026-08-07T13:13:06-05:00",
+   "estado_captura": "completa",
+   "anio": "2026",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-LICO-GADMCM-2026-05-2896",
+   "tag": [
+    "planning"
+   ],
+   "partida": "750103",
+   "partida_declarada": "750103",
+   "monto_planificado": 264366.7514,
+   "tender_status": null,
+   "tender_titulo": null,
+   "n_adjudicaciones": 0,
+   "proveedores": [],
+   "fecha": "2026-08-13T00:00:00-05:00",
+   "estado_captura": "completa",
+   "anio": "2026",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-LICS-GADMCM-2026-01-2896",
+   "estado_captura": "no_alcanzada",
+   "anio": "2026",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-LICS-GADMCM-2026-02-2896",
+   "estado_captura": "no_alcanzada",
+   "anio": "2026",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-LICS-GADMCM-2026-03-2896",
+   "estado_captura": "no_alcanzada",
+   "anio": "2026",
+   "entidad": "GAD Montecristi"
+  },
+  {
+   "ocid": "ocds-5wno2w-LICS-GADMCM-2026-04-2896",
+   "anio": "2026",
+   "entidad": "GAD Montecristi",
+   "estado_captura": "no_alcanzada"
+  },
+  {
+   "ocid": "ocds-5wno2w-LICS-GADMCM-2026-05-2896",
+   "anio": "2026",
+   "entidad": "GAD Montecristi",
+   "estado_captura": "no_alcanzada"
+  },
+  {
+   "ocid": "ocds-5wno2w-LICSG-GADMCM-2026-01-2896",
+   "anio": "2026",
+   "entidad": "GAD Montecristi",
+   "estado_captura": "no_alcanzada"
+  },
+  {
+   "ocid": "ocds-5wno2w-SIE-GADMCM-2026-03-2896",
+   "anio": "2026",
+   "entidad": "GAD Montecristi",
+   "estado_captura": "no_alcanzada"
+  },
+  {
+   "ocid": "ocds-5wno2w-SIE-GADMCM-2026-04-2896",
+   "anio": "2026",
+   "entidad": "GAD Montecristi",
+   "estado_captura": "no_alcanzada"
+  }
+ ]
+}

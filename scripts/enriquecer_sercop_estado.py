@@ -35,6 +35,7 @@ import json
 import subprocess
 import sys
 import time
+import re
 import urllib.parse
 from pathlib import Path
 
@@ -72,6 +73,23 @@ def expediente(ocid: str, timeout: int = 45) -> dict | None:
         return None
 
 
+def _partida6(bruto) -> str:
+    """La partida en 6 dígitos, también aquí.
+
+    SERCOP publica `planning.budget.id` a veces corrido (`750105`) y a veces
+    como código estructurado completo
+    (`01.01.01.A100.110.2025.570201.000…`), donde los primeros seis dígitos son
+    el programa. Tomarlo tal cual dejaba una partida sin normalizar entre 44 —y
+    esa **no cruzaba con el PAC**, apareciendo como proceso fuera del plan
+    cuando el defecto era del lector. La misma normalización que `extraer_pac`."""
+    s = str(bruto or "").split("/")[0]
+    m = re.search(r"20(?:2[3-6])\D{0,3}(\d{6})", s)
+    if m:
+        return m.group(1)
+    d = re.sub(r"\D", "", s)
+    return d[:6] if len(d) >= 6 else ""
+
+
 def leer(rec: dict, ocid: str) -> dict:
     rels = (rec or {}).get("releases") or []
     if not rels:
@@ -93,7 +111,8 @@ def leer(rec: dict, ocid: str) -> dict:
         # distinto de `award` sin `contract`, y colapsarlos perdería justo lo
         # que se quiere observar.
         "tag": r.get("tag") or [],
-        "partida": str(bud.get("id") or ""),
+        "partida": _partida6(bud.get("id")),
+        "partida_declarada": str(bud.get("id") or ""),
         "monto_planificado": (bud.get("amount") or {}).get("amount"),
         "tender_status": t.get("status"),
         "tender_titulo": t.get("title"),
