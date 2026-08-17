@@ -1,0 +1,958 @@
+{
+ "_meta": {
+  "fuente": "LOTAIP - Instructivo-monitoreo-transparencia-activa-2024.docx",
+  "sha256": "9cd14fae86b4b5f040abd9c1e8bcae230fe2d1d85975bce8ce93f648e76beb49",
+  "norma": "Instructivo para evaluar el nivel de cumplimiento de los parámetros técnicos de la transparencia activa · v1.0 julio 2024",
+  "emisor": "Defensoría del Pueblo de Ecuador",
+  "alcance": "obligaciones generales art. 19 LOTAIP y específicas arts. 20-30",
+  "nota": "vara del órgano rector · QUIRA no evalúa con criterio propio"
+ },
+ "criterios": [
+  {
+   "condicion": "Información completa y actualizada",
+   "descripcion": "La información está publicada, es accesible y se encuentra actualizada y completa",
+   "calificacion": "1,0",
+   "_procedencia": {
+    "tabla": 1,
+    "fila": 2
+   }
+  },
+  {
+   "condicion": "Información incompleta o desactualizada",
+   "descripcion": "La información está publicada, es accesible pero no se encuentra actualizada o no está completa",
+   "calificacion": "0,5",
+   "_procedencia": {
+    "tabla": 1,
+    "fila": 3
+   }
+  },
+  {
+   "condicion": "Sin información",
+   "descripcion": "La información no está publicada o es inaccesible",
+   "calificacion": "0,0",
+   "_procedencia": {
+    "tabla": 1,
+    "fila": 4
+   }
+  },
+  {
+   "condicion": "Tres estrellas",
+   "descripcion": "Publicación de datos estructurados en formatos no propietarios, incluye archivos tipo: CSV delimitado por comas",
+   "calificacion": "1",
+   "_procedencia": {
+    "tabla": 2,
+    "fila": 2
+   }
+  },
+  {
+   "condicion": "Sin información",
+   "descripcion": "La información no está publicada o es inaccesible",
+   "calificacion": "0",
+   "_procedencia": {
+    "tabla": 2,
+    "fila": 3
+   }
+  },
+  {
+   "condicion": "Información registrada dentro del plazo",
+   "descripcion": "Registro de información que haya sido generada o custodiada al cierre del mes inmediato anterior en el PNT hasta el quince (15) de cada mes o siguiente día laborable.",
+   "calificacion": "1",
+   "_procedencia": {
+    "tabla": 3,
+    "fila": 2
+   }
+  },
+  {
+   "condicion": "Información registrada fuera del plazo",
+   "descripcion": "Registro de información que haya sido generada o custodiada al cierre del mes inmediato anterior en el PNT luego del quince (15) de cada mes o siguiente día laborable.",
+   "calificacion": "0",
+   "_procedencia": {
+    "tabla": 3,
+    "fila": 3
+   }
+  },
+  {
+   "parametro": "Estado de verificables(1)",
+   "condicion": "Los documentos o sistemas verificables a los que se accede mediante los enlaces que constan en los formatos de estructura de datos abiertos, son de libre acceso, corresponden a la información que se reporta, y son legible.",
+   "calificacion": "SI",
+   "_procedencia": {
+    "tabla": 6,
+    "fila": 2
+   }
+  },
+  {
+   "parametro": "Estado de verificables(1)",
+   "condicion": "Los documentos o sistemas verificables a los que se accede mediante los enlaces que constan en los formatos de estructura de datos abiertos, no son de libre acceso o no corresponden a la información que se reporta o no es legible.",
+   "calificacion": "NO",
+   "_procedencia": {
+    "tabla": 6,
+    "fila": 3
+   }
+  },
+  {
+   "parametro": "Vigencia de la información",
+   "condicion": "La información publicada está vigente",
+   "calificacion": "SI",
+   "_procedencia": {
+    "tabla": 6,
+    "fila": 4
+   }
+  },
+  {
+   "parametro": "Vigencia de la información",
+   "condicion": "La información publicada no está vigente",
+   "calificacion": "NO",
+   "_procedencia": {
+    "tabla": 6,
+    "fila": 5
+   }
+  },
+  {
+   "parametro": "Validez de la información",
+   "condicion": "Los datos son válidos",
+   "calificacion": "SI",
+   "_procedencia": {
+    "tabla": 6,
+    "fila": 6
+   }
+  },
+  {
+   "parametro": "Validez de la información",
+   "condicion": "Los datos no son válidos",
+   "calificacion": "NO",
+   "_procedencia": {
+    "tabla": 6,
+    "fila": 7
+   }
+  }
+ ],
+ "obligaciones": [
+  {
+   "articulo": "19",
+   "numeral": "16",
+   "descripcion": "Índice de información clasificada como reservada señalando el número de resolución, la fecha de clasificación y período de vigencia",
+   "formato_difusion": "Información clasificada como reservada",
+   "_procedencia": {
+    "tabla": 4,
+    "fila": 2
+   }
+  },
+  {
+   "articulo": "19",
+   "numeral": "18",
+   "descripcion": "Detalle de los convenios nacionales o internacionales que celebre la entidad con personas naturales o jurídicas",
+   "formato_difusion": "Convenios nacionales o internacionales",
+   "_procedencia": {
+    "tabla": 4,
+    "fila": 3
+   }
+  },
+  {
+   "articulo": "21",
+   "numeral": "1, 2, 4, 5",
+   "descripcion": "Ministerio de Energía y Minas. Además de lo establecido en el artículo 19 de la presente Ley, el Ministerio de Energía y Minas se asegurará que, en la publicación de los contratos o licencias de extracción, explotación, exploración y operación de recursos naturales no renovables se señale expresamente: 1. Nombre de la empresa a cargo de la extracción o explotación; 2. Tipo de contrato suscrito entre el Estado y la empresa; 3. Todos los pagos que la empresa hace al Estado, ya sea por concepto de regalías, impuestos, entre otros; 4. Destino de los recursos que genera la explotación; y, 5. Tipos de materiales metálicos, no metálicos o hidrocarburos que se extraerán en las zonas concesionadas a las empresas públicas o privadas; costos referenciales de la explotación; márgenes de ganancia; pagos o transferencias que la Empresa haya acordado hacer a la comunidad, como consecuencia de la consulta previa, libre e informada",
+   "formato_difusion": "Información de empresas a cargo de la extracción, explotación y exploración de recursos naturales no renovables",
+   "_procedencia": {
+    "tabla": 4,
+    "fila": 4
+   }
+  },
+  {
+   "articulo": "19",
+   "numeral": "3",
+   "descripcion": "Las remuneraciones salariales, incluyendo todo ingreso adicional correspondiente a todo el personal del organismo, dependencia y/o persona jurídica.",
+   "formato_difusion": "Remuneraciones salariales del personal",
+   "_procedencia": {
+    "tabla": 5,
+    "fila": 2
+   }
+  },
+  {
+   "articulo": "19",
+   "numeral": "6",
+   "descripcion": "Información total sobre el presupuesto anual que administra la entidad, así como el asignado a cada área, programa o función, especificando ingresos, gastos, financiamiento y resultados operativos de conformidad con los clasificadores presupuestales, así como liquidación del presupuesto, especificando destinatarios de la entrega de recursos públicos",
+   "formato_difusion": "Presupuesto que administra la entidad",
+   "_procedencia": {
+    "tabla": 5,
+    "fila": 3
+   }
+  },
+  {
+   "numeral": "1",
+   "descripcion": "Estructura orgánica funcional, base legal que la rige, regulaciones y procedimientos internos aplicables a la entidad; así como las metas y objetivos de las unidades administrativas de conformidad con sus programas operativos.",
+   "formato_difusion": "1. Estructura orgánica funcional",
+   "completa_y_actualizada": "1",
+   "datos_abiertos": "SI",
+   "_procedencia": {
+    "tabla": 7,
+    "fila": 2
+   }
+  },
+  {
+   "numeral": "1",
+   "descripcion": "Estructura orgánica funcional, base legal que la rige, regulaciones y procedimientos internos aplicables a la entidad; así como las metas y objetivos de las unidades administrativas de conformidad con sus programas operativos.",
+   "formato_difusion": "2. Base legal que la rige y regulaciones y procedimientos internos aplicables a la entidad",
+   "completa_y_actualizada": "1",
+   "datos_abiertos": "SI",
+   "_procedencia": {
+    "tabla": 7,
+    "fila": 3
+   }
+  },
+  {
+   "numeral": "1",
+   "descripcion": "Estructura orgánica funcional, base legal que la rige, regulaciones y procedimientos internos aplicables a la entidad; así como las metas y objetivos de las unidades administrativas de conformidad con sus programas operativos.",
+   "formato_difusion": "3. Metas y objetivos de las unidades administrativas de conformidad con los programas operativos",
+   "completa_y_actualizada": "1",
+   "datos_abiertos": "SI",
+   "_procedencia": {
+    "tabla": 7,
+    "fila": 4
+   }
+  },
+  {
+   "numeral": "2",
+   "descripcion": "Directorio completo del organismo, dependencia y/o persona jurídica, así como el distributivo del personal y su cargo.",
+   "formato_difusion": "Directorio y distributivo de personal",
+   "completa_y_actualizada": "1",
+   "_procedencia": {
+    "tabla": 7,
+    "fila": 5
+   }
+  },
+  {
+   "numeral": "3",
+   "descripcion": "Las remuneraciones salariales, incluyendo todo ingreso adicional correspondiente a todo el personal del organismo, dependencia y/o persona jurídica.",
+   "formato_difusion": "Remuneraciones salariales del personal",
+   "completa_y_actualizada": "1",
+   "registro_en_plazo": "SI",
+   "_procedencia": {
+    "tabla": 7,
+    "fila": 6
+   }
+  },
+  {
+   "numeral": "4",
+   "descripcion": "Un detalle de los funcionarios que gocen de licencia de servicio y de comisión de servicio",
+   "formato_difusion": "Funcionarios con licencia de servicio o comisión de servicio",
+   "completa_y_actualizada": "1",
+   "_procedencia": {
+    "tabla": 7,
+    "fila": 7
+   }
+  },
+  {
+   "numeral": "5",
+   "descripcion": "Servicios que brinda la entidad y las formas de acceder a ellos, horarios de atención y demás indicaciones necesarias.",
+   "formato_difusion": "Servicios que brinda la entidad, y formularios y formatos de solicitudes",
+   "completa_y_actualizada": "1",
+   "datos_abiertos": "SI",
+   "_procedencia": {
+    "tabla": 7,
+    "fila": 8
+   }
+  },
+  {
+   "numeral": "22",
+   "descripcion": "Formularios y formatos de solicitudes que se requieran para los trámites inherentes en su campo de acción, con sus debidas instrucciones;",
+   "formato_difusion": "Servicios que brinda la entidad, y formularios y formatos de solicitudes",
+   "completa_y_actualizada": "1",
+   "datos_abiertos": "SI",
+   "_procedencia": {
+    "tabla": 8,
+    "fila": 2
+   }
+  },
+  {
+   "numeral": "6",
+   "descripcion": "Información total sobre el presupuesto anual que administra la entidad, así como el asignado a cada área, programa o función, especificando ingresos, gastos, financiamiento y resultados operativos de conformidad con los clasificadores presupuestales, así como liquidación del presupuesto, especificando destinatarios de la entrega de recursos públicos",
+   "formato_difusion": "Presupuesto que administra la entidad",
+   "completa_y_actualizada": "1",
+   "registro_en_plazo": "SI",
+   "_procedencia": {
+    "tabla": 8,
+    "fila": 3
+   }
+  },
+  {
+   "numeral": "7",
+   "descripcion": "Resultados definitivos de las auditorías internas y gubernamentales al ejercicio presupuestario y estudios financieros anuales",
+   "formato_difusion": "Resultados definitivos de las auditorías internas y gubernamentales",
+   "completa_y_actualizada": "1",
+   "datos_abiertos": "SI",
+   "_procedencia": {
+    "tabla": 8,
+    "fila": 4
+   }
+  },
+  {
+   "numeral": "8",
+   "descripcion": "Información completa y detallada sobre los procesos precontractuales, contractuales, de adjudicación y liquidación, de las contrataciones de obras, adquisición de bienes, prestación de servicios, arrendamientos mercantiles, etc., celebrados por la entidad con personas naturales o jurídicas, incluidos concesiones, permisos o autorizaciones; especificando objetivos, características, montos, proveedores y subcontratos",
+   "formato_difusion": "Procesos precontractuales, contractuales, de adjudicación y liquidación",
+   "completa_y_actualizada": "1",
+   "datos_abiertos": "SI",
+   "_procedencia": {
+    "tabla": 8,
+    "fila": 5
+   }
+  },
+  {
+   "numeral": "9",
+   "descripcion": "Listado de las empresas y personas, jurídicas o naturales, que han incumplido contratos con dicha entidad, número de contrato y su monto",
+   "formato_difusion": "Empresas y personas, jurídicas o naturales, que han incumplido contratos",
+   "completa_y_actualizada": "1",
+   "datos_abiertos": "SI",
+   "_procedencia": {
+    "tabla": 8,
+    "fila": 6
+   }
+  },
+  {
+   "numeral": "10",
+   "descripcion": "Planes y programas de la entidad en ejecución",
+   "formato_difusion": "Planes y programas",
+   "completa_y_actualizada": "1",
+   "datos_abiertos": "SI",
+   "_procedencia": {
+    "tabla": 9,
+    "fila": 2
+   }
+  },
+  {
+   "numeral": "11",
+   "descripcion": "Detalle de los contratos de crédito externos o internos; se señalará la fuente de los fondos con los que se pagarán esos créditos. Cuando se trate de préstamos o contratos de financiamiento, se hará constar expresamente el objetivo del endeudamiento, fecha de suscripción y renovación, nombres del deudor, acreedor y ejecutor, las operaciones y contratos de crédito, los montos, plazo, costos financieros o tipos de interés, tasa de interés y fondos con los que se cancelará la obligación, desembolsos efectuados o por efectuar, conforme lo establecen las leyes que regulan esta materia",
+   "formato_difusion": "Contratos de crédito externos o internos",
+   "completa_y_actualizada": "1",
+   "datos_abiertos": "SI",
+   "_procedencia": {
+    "tabla": 9,
+    "fila": 3
+   }
+  },
+  {
+   "numeral": "12",
+   "descripcion": "Mecanismos de rendición de cuentas a las personas tales como metas e informes de gestión e indicadores de desempeño",
+   "formato_difusion": "Mecanismos de rendición de cuentas",
+   "completa_y_actualizada": "1",
+   "datos_abiertos": "SI",
+   "_procedencia": {
+    "tabla": 9,
+    "fila": 4
+   }
+  },
+  {
+   "numeral": "13",
+   "descripcion": "Viáticos, informes de trabajo y justificativos de movilización nacional o internacional de las autoridades, dignatarios, servidoras y servidores públicos",
+   "formato_difusion": "Viáticos, informes de trabajo y justificativos de movilización",
+   "completa_y_actualizada": "1",
+   "datos_abiertos": "SI",
+   "_procedencia": {
+    "tabla": 9,
+    "fila": 5
+   }
+  },
+  {
+   "numeral": "14",
+   "descripcion": "Nombre, dirección, teléfono de la oficina y dirección electrónica de las y los responsables del acceso de información pública del organismo, dependencia y/o persona jurídica",
+   "formato_difusion": "Datos de las personas responsables del acceso de información pública",
+   "completa_y_actualizada": "1",
+   "datos_abiertos": "SI",
+   "_procedencia": {
+    "tabla": 9,
+    "fila": 6
+   }
+  },
+  {
+   "numeral": "15",
+   "descripcion": "Texto íntegro de todos los contratos colectivos vigentes del organismo, dependencia y/o persona jurídica, así como sus anexos y reformas",
+   "formato_difusion": "Contratos colectivos vigentes",
+   "completa_y_actualizada": "1",
+   "datos_abiertos": "SI",
+   "_procedencia": {
+    "tabla": 9,
+    "fila": 7
+   }
+  },
+  {
+   "numeral": "16",
+   "descripcion": "Índice de información clasificada como reservada señalando el número de resolución, la fecha de clasificación y período de vigencia",
+   "formato_difusion": "Información clasificada como reservada",
+   "completa_y_actualizada": "1",
+   "datos_abiertos": "SI",
+   "_procedencia": {
+    "tabla": 10,
+    "fila": 2
+   }
+  },
+  {
+   "numeral": "17",
+   "descripcion": "detalle de las audiencias y reuniones sostenidas por las autoridades electas de todos los niveles de gobierno, funcionarios del nivel jerárquico superior de las instituciones públicas y máximos representantes de los demás sujetos obligados en esta Ley que tengan por objeto: La elaboración, modificación, derogación o rechazo de actos administrativos, proyectos de ley y leyes, como también de las decisiones que adopten los obligados en esta Ley. La elaboración, tramitación, aprobación, modificación, derogación o rechazo de acuerdos, resoluciones o decisiones de la Asamblea Nacional o sus miembros, incluidas sus Comisiones. La celebración, modificación o terminación a cualquier título, de contratos que realicen los sujetos obligados señalados en esta Ley y que sean necesarios para su funcionamiento. El diseño, implementación y evaluación de políticas, planes y programas efectuados por los sujetos obligados señalados en esta Ley, a quienes correspondan estas funciones. En dicho detalle se deberá indicar, en particular, la persona, organización o entidad con quien se sostuvo la audiencia o reunión,",
+   "formato_difusion": "Audiencias y reuniones sostenidas por las autoridades electas de todos los niveles de gobierno, funcionarios del nivel jerárquico superior de las instituciones públicas y máximos representantes de los demás sujetos obligados",
+   "completa_y_actualizada": "1",
+   "datos_abiertos": "SI",
+   "_procedencia": {
+    "tabla": 10,
+    "fila": 3
+   }
+  },
+  {
+   "descripcion": "la individualización de los asistentes o personas presentes en la respectiva audiencia o reunión, el lugar y fecha de su realización y la materia específica tratada. Se exceptúa lo determinado como información confidencial o reservada",
+   "_procedencia": {
+    "tabla": 11,
+    "fila": 2
+   }
+  },
+  {
+   "numeral": "18",
+   "descripcion": "Detalle de los convenios nacionales o internacionales que celebre la entidad con personas naturales o jurídicas",
+   "formato_difusion": "Convenios nacionales o internacionales",
+   "completa_y_actualizada": "1",
+   "datos_abiertos": "SI",
+   "_procedencia": {
+    "tabla": 11,
+    "fila": 3
+   }
+  },
+  {
+   "numeral": "19",
+   "descripcion": "Un detalle actualizado de los donativos oficiales y protocolares que reciban los sujetos obligados establecidos en esta Ley, con ocasión del ejercicio de sus funciones. En dichos registros deberá singularizarse el regalo o donativo recibido, la fecha y ocasión de su recepción y la individualización de la persona natural o jurídica de la cual procede",
+   "formato_difusion": "Donativos oficiales y protocolares",
+   "completa_y_actualizada": "1",
+   "datos_abiertos": "SI",
+   "_procedencia": {
+    "tabla": 11,
+    "fila": 4
+   }
+  },
+  {
+   "numeral": "20",
+   "descripcion": "Registro de Activos de Información, que contenga información solicitada con frecuencia, y otra información complementaria que de carácter obligatorio deban cumplir los sujetos obligados, de acuerdo con los parámetros establecidos por la Defensoría del Pueblo",
+   "formato_difusion": "Registro de activos de información",
+   "completa_y_actualizada": "1",
+   "datos_abiertos": "SI",
+   "_procedencia": {
+    "tabla": 11,
+    "fila": 5
+   }
+  },
+  {
+   "numeral": "21",
+   "descripcion": "Políticas públicas o cualquier información que afecte a un grupo específico, en todas sus fases",
+   "formato_difusion": "Políticas públicas o cualquier información que afecte a un grupo específico",
+   "completa_y_actualizada": "1",
+   "datos_abiertos": "SI",
+   "_procedencia": {
+    "tabla": 11,
+    "fila": 6
+   }
+  },
+  {
+   "numeral": "23",
+   "descripcion": "Datos de las personas servidoras públicas incorporadas en cumplimiento de las acciones afirmativas de cuotas laborales en la legislación nacional, como el caso de las personas con discapacidad y sustitutos y de los pueblos y nacionalidades indígenas y afrodescendientes",
+   "formato_difusion": "Acciones afirmativas de cuotas laborales",
+   "completa_y_actualizada": "1",
+   "datos_abiertos": "SI",
+   "_procedencia": {
+    "tabla": 12,
+    "fila": 2
+   }
+  },
+  {
+   "numeral": "24",
+   "descripcion": "Otra información que la entidad considere relevante para el ejercicio del derecho de acceso a la información pública, la participación ciudadana y el control social, en especial la que permita el seguimiento a la consecución de los Objetivos de Desarrollo Sostenible",
+   "formato_difusion": "Información relevante para el ejercicio del derecho de acceso a la información pública, la participación ciudadana y el control social",
+   "completa_y_actualizada": "1",
+   "datos_abiertos": "SI",
+   "_procedencia": {
+    "tabla": 12,
+    "fila": 3
+   }
+  },
+  {
+   "numeral": "Valor de la calificación de obligaciones específicas",
+   "descripcion": "24,00",
+   "_procedencia": {
+    "tabla": 12,
+    "fila": 4
+   }
+  },
+  {
+   "numeral": "Porcentaje de cumplimiento de las obligaciones específicas",
+   "descripcion": "100%",
+   "_procedencia": {
+    "tabla": 12,
+    "fila": 5
+   }
+  },
+  {
+   "numeral": "1",
+   "descripcion": "Ministerio de Economía y Finanzas. Además de lo establecido en el artículo 19 de la presente ley, el Ministerio de Economía y Finanzas o el que haga sus veces deberá incluir en su sitio web, la siguiente información de forma desglosada, siguiendo estándares y buenas prácticas de publicación de datos abiertos para transparencia presupuestaria: 1. Información sobre el origen y distribución de los recursos que forman parte del Presupuesto General del Estado; 2. Información detallada de la ejecución del Presupuesto General del Estado; 3. Reprocesamiento de la información presupuestaria histórica, permitiendo que esta pueda ser comparada con la vigente; y, 4. Información sobre la estructura patrimonial del país, identificando los activos y los pasivos existentes del Estado. El detalle de esta información será el mismo que se exige a las instituciones obligadas, es decir, a nivel de ítem presupuestario. Toda operación que implique el acceso y uso de recursos públicos debe contar con su respaldo documental",
+   "formato_difusion": "1. Información sobre el origen y distribución de los recursos del Presupuesto General del Estado (PGE)",
+   "completa_y_actualizada": "1",
+   "_procedencia": {
+    "tabla": 13,
+    "fila": 2
+   }
+  },
+  {
+   "numeral": "2",
+   "descripcion": "Ministerio de Economía y Finanzas. Además de lo establecido en el artículo 19 de la presente ley, el Ministerio de Economía y Finanzas o el que haga sus veces deberá incluir en su sitio web, la siguiente información de forma desglosada, siguiendo estándares y buenas prácticas de publicación de datos abiertos para transparencia presupuestaria: 1. Información sobre el origen y distribución de los recursos que forman parte del Presupuesto General del Estado; 2. Información detallada de la ejecución del Presupuesto General del Estado; 3. Reprocesamiento de la información presupuestaria histórica, permitiendo que esta pueda ser comparada con la vigente; y, 4. Información sobre la estructura patrimonial del país, identificando los activos y los pasivos existentes del Estado. El detalle de esta información será el mismo que se exige a las instituciones obligadas, es decir, a nivel de ítem presupuestario. Toda operación que implique el acceso y uso de recursos públicos debe contar con su respaldo documental",
+   "formato_difusion": "2. Información detallada de la ejecución del Presupuesto General del Estado (PGE) del Presupuesto General del Estado",
+   "completa_y_actualizada": "1",
+   "_procedencia": {
+    "tabla": 13,
+    "fila": 3
+   }
+  },
+  {
+   "numeral": "3",
+   "descripcion": "Ministerio de Economía y Finanzas. Además de lo establecido en el artículo 19 de la presente ley, el Ministerio de Economía y Finanzas o el que haga sus veces deberá incluir en su sitio web, la siguiente información de forma desglosada, siguiendo estándares y buenas prácticas de publicación de datos abiertos para transparencia presupuestaria: 1. Información sobre el origen y distribución de los recursos que forman parte del Presupuesto General del Estado; 2. Información detallada de la ejecución del Presupuesto General del Estado; 3. Reprocesamiento de la información presupuestaria histórica, permitiendo que esta pueda ser comparada con la vigente; y, 4. Información sobre la estructura patrimonial del país, identificando los activos y los pasivos existentes del Estado. El detalle de esta información será el mismo que se exige a las instituciones obligadas, es decir, a nivel de ítem presupuestario. Toda operación que implique el acceso y uso de recursos públicos debe contar con su respaldo documental",
+   "formato_difusion": "3. Reprocesamiento de la información presupuestaria histórica, permitiendo que esta pueda ser comparada con la vigente",
+   "completa_y_actualizada": "1",
+   "_procedencia": {
+    "tabla": 13,
+    "fila": 4
+   }
+  },
+  {
+   "numeral": "4",
+   "descripcion": "Ministerio de Economía y Finanzas. Además de lo establecido en el artículo 19 de la presente ley, el Ministerio de Economía y Finanzas o el que haga sus veces deberá incluir en su sitio web, la siguiente información de forma desglosada, siguiendo estándares y buenas prácticas de publicación de datos abiertos para transparencia presupuestaria: 1. Información sobre el origen y distribución de los recursos que forman parte del Presupuesto General del Estado; 2. Información detallada de la ejecución del Presupuesto General del Estado; 3. Reprocesamiento de la información presupuestaria histórica, permitiendo que esta pueda ser comparada con la vigente; y, 4. Información sobre la estructura patrimonial del país, identificando los activos y los pasivos existentes del Estado. El detalle de esta información será el mismo que se exige a las instituciones obligadas, es decir, a nivel de ítem presupuestario. Toda operación que implique el acceso y uso de recursos públicos debe contar con su respaldo documental",
+   "formato_difusion": "4. Información sobre la estructura patrimonial del país, identificando los activos y los pasivos existentes del Estado",
+   "completa_y_actualizada": "1",
+   "_procedencia": {
+    "tabla": 13,
+    "fila": 5
+   }
+  },
+  {
+   "numeral": "Valor de la calificación de obligaciones específicas",
+   "descripcion": "4,00",
+   "_procedencia": {
+    "tabla": 13,
+    "fila": 6
+   }
+  },
+  {
+   "numeral": "Porcentaje de cumplimiento de las obligaciones específicas",
+   "descripcion": "100%",
+   "_procedencia": {
+    "tabla": 13,
+    "fila": 7
+   }
+  },
+  {
+   "numeral": "1,2,4,5",
+   "descripcion": "Ministerio de Energía y Minas. Además de lo establecido en el artículo 19 de la presente Ley, el Ministerio de Energía y Minas se asegurará que, en la publicación de los contratos o licencias de extracción, explotación, exploración y operación de recursos naturales no renovables se señale expresamente: 1. Nombre de la empresa a cargo de la extracción o explotación; 2. Tipo de contrato suscrito entre el Estado y la empresa; 3. Todos los pagos que la empresa hace al Estado, ya sea por concepto de regalías, impuestos, entre otros; 4. Destino de los recursos que genera la explotación; y, 5. Tipos de materiales metálicos, no metálicos o hidrocarburos que se extraerán en las zonas concesionadas a las empresas públicas o privadas; costos referenciales de la explotación; márgenes de ganancia; pagos o transferencias que la Empresa haya acordado hacer a la comunidad, como consecuencia de la consulta previa, libre e informada",
+   "formato_difusion": "1. Información de empresas a cargo de la extracción, explotación y exploración de recursos naturales no renovables (1)",
+   "completa_y_actualizada": "1",
+   "datos_abiertos": "SI",
+   "_procedencia": {
+    "tabla": 14,
+    "fila": 2
+   }
+  },
+  {
+   "numeral": "5",
+   "descripcion": "Ministerio de Energía y Minas. Además de lo establecido en el artículo 19 de la presente Ley, el Ministerio de Energía y Minas se asegurará que, en la publicación de los contratos o licencias de extracción, explotación, exploración y operación de recursos naturales no renovables se señale expresamente: 1. Nombre de la empresa a cargo de la extracción o explotación; 2. Tipo de contrato suscrito entre el Estado y la empresa; 3. Todos los pagos que la empresa hace al Estado, ya sea por concepto de regalías, impuestos, entre otros; 4. Destino de los recursos que genera la explotación; y, 5. Tipos de materiales metálicos, no metálicos o hidrocarburos que se extraerán en las zonas concesionadas a las empresas públicas o privadas; costos referenciales de la explotación; márgenes de ganancia; pagos o transferencias que la Empresa haya acordado hacer a la comunidad, como consecuencia de la consulta previa, libre e informada",
+   "formato_difusion": "2. Todos los pagos que la empresa hace al Estado, ya sea por concepto de regalías, impuesto, entre otros. Pagos o transferencias que la empresa haya acordado hacer a la comunidad, como consecuencia de la consulta previa, libre e informada",
+   "completa_y_actualizada": "1",
+   "_procedencia": {
+    "tabla": 14,
+    "fila": 3
+   }
+  },
+  {
+   "numeral": "3",
+   "descripcion": "Ministerio de Energía y Minas. Además de lo establecido en el artículo 19 de la presente Ley, el Ministerio de Energía y Minas se asegurará que, en la publicación de los contratos o licencias de extracción, explotación, exploración y operación de recursos naturales no renovables se señale expresamente: 1. Nombre de la empresa a cargo de la extracción o explotación; 2. Tipo de contrato suscrito entre el Estado y la empresa; 3. Todos los pagos que la empresa hace al Estado, ya sea por concepto de regalías, impuestos, entre otros; 4. Destino de los recursos que genera la explotación; y, 5. Tipos de materiales metálicos, no metálicos o hidrocarburos que se extraerán en las zonas concesionadas a las empresas públicas o privadas; costos referenciales de la explotación; márgenes de ganancia; pagos o transferencias que la Empresa haya acordado hacer a la comunidad, como consecuencia de la consulta previa, libre e informada",
+   "formato_difusion": "3. Costos referenciales de la explotación y márgenes de ganancia",
+   "completa_y_actualizada": "1",
+   "_procedencia": {
+    "tabla": 14,
+    "fila": 4
+   }
+  },
+  {
+   "numeral": "Valor de la calificación de obligaciones específicas",
+   "descripcion": "3,00",
+   "formato_difusion": "1,00",
+   "_procedencia": {
+    "tabla": 14,
+    "fila": 5
+   }
+  },
+  {
+   "numeral": "Porcentaje de cumplimiento de las obligaciones específicas",
+   "descripcion": "100%",
+   "_procedencia": {
+    "tabla": 14,
+    "fila": 6
+   }
+  },
+  {
+   "numeral": "SIN NÚMERO",
+   "descripcion": "Además de la información señalada en esta Ley publicarán adicionalmente la información procesal y el texto íntegro de las sentencias ejecutoriadas, salvo los casos expresamente prohibidos por la ley. En los casos que versen sobre derechos colectivos de pueblos y nacionalidades indígenas, se lo hará adicionalmente en su idioma",
+   "formato_difusion": "Información procesal y el texto íntegro de las sentencias ejecutoriadas",
+   "completa_y_actualizada": "1",
+   "datos_abiertos": "SI",
+   "_procedencia": {
+    "tabla": 15,
+    "fila": 2
+   }
+  },
+  {
+   "numeral": "Valor de la calificación de obligaciones específicas",
+   "descripcion": "1,00",
+   "_procedencia": {
+    "tabla": 15,
+    "fila": 3
+   }
+  },
+  {
+   "numeral": "Porcentaje de cumplimiento de las obligaciones específicas",
+   "descripcion": "100%",
+   "_procedencia": {
+    "tabla": 15,
+    "fila": 4
+   }
+  },
+  {
+   "numeral": "SIN NÚMERO",
+   "descripcion": "Función de Transparencia y Control Social. El Consejo de Participación Ciudadana y Control Social, la Defensoría del Pueblo, Contraloría General del Estado, Superintendencias y todo organismo de control, adicionalmente, publicarán el texto íntegro de las resoluciones ejecutoriadas, así como sus informes producidos en todas sus jurisdicciones",
+   "formato_difusion": "Resoluciones ejecutoriadas, así como informes producidos en todas sus jurisdicciones",
+   "completa_y_actualizada": "1",
+   "datos_abiertos": "SI",
+   "_procedencia": {
+    "tabla": 16,
+    "fila": 2
+   }
+  },
+  {
+   "numeral": "Valor de la calificación de obligaciones específicas",
+   "descripcion": "1,00",
+   "_procedencia": {
+    "tabla": 16,
+    "fila": 3
+   }
+  },
+  {
+   "numeral": "Porcentaje de cumplimiento de las obligaciones específicas",
+   "descripcion": "100%",
+   "_procedencia": {
+    "tabla": 16,
+    "fila": 4
+   }
+  },
+  {
+   "numeral": "SIN NÚMERO",
+   "descripcion": "Gobiernos Autónomos Descentralizados. Además de la información señalada en esta Ley, los organismos seccionales, mensualmente, informarán a las personas, a través del portal informático web u otro medio digital que posea, de las resoluciones que adopten, mediante la publicación de las actas de las respectivas sesiones de estos cuerpos colegiados, comisiones y consejo, incluyendo lo correspondiente a procesos legislativos, así como sus planes de desarrollo local, y en los casos que corresponda, los planes de uso y gestión de suelo, protegiendo de forma integral los aspectos que gocen de confidencialidad o reserva, para evitar conflicto de intereses. Se incluirá además la descripción específica de los trámites y requisitos que debe cumplir el interesado para tener acceso a los servicios que preste el respectivo Gobierno Autónomo Descentralizado y sus empresas públicas",
+   "formato_difusion": "1. Publicación de documentos correspondientes a procesos legislativos e instrumentos de planificación",
+   "completa_y_actualizada": "1",
+   "datos_abiertos": "SI",
+   "_procedencia": {
+    "tabla": 17,
+    "fila": 2
+   }
+  },
+  {
+   "numeral": "SIN NÚMERO",
+   "descripcion": "Gobiernos Autónomos Descentralizados. Además de la información señalada en esta Ley, los organismos seccionales, mensualmente, informarán a las personas, a través del portal informático web u otro medio digital que posea, de las resoluciones que adopten, mediante la publicación de las actas de las respectivas sesiones de estos cuerpos colegiados, comisiones y consejo, incluyendo lo correspondiente a procesos legislativos, así como sus planes de desarrollo local, y en los casos que corresponda, los planes de uso y gestión de suelo, protegiendo de forma integral los aspectos que gocen de confidencialidad o reserva, para evitar conflicto de intereses. Se incluirá además la descripción específica de los trámites y requisitos que debe cumplir el interesado para tener acceso a los servicios que preste el respectivo Gobierno Autónomo Descentralizado y sus empresas públicas",
+   "formato_difusion": "2. Publicación de las actas de las respectivas sesiones de estos cuerpos colegiados, comisiones y concejo",
+   "completa_y_actualizada": "1",
+   "datos_abiertos": "SI",
+   "_procedencia": {
+    "tabla": 17,
+    "fila": 3
+   }
+  },
+  {
+   "numeral": "Valor de la calificación de obligaciones específicas",
+   "descripcion": "2,00",
+   "_procedencia": {
+    "tabla": 17,
+    "fila": 4
+   }
+  },
+  {
+   "numeral": "Porcentaje de cumplimiento de las obligaciones específicas",
+   "descripcion": "100%",
+   "_procedencia": {
+    "tabla": 17,
+    "fila": 5
+   }
+  },
+  {
+   "numeral": "SIN NÚMERO",
+   "descripcion": "Banco Central del Ecuador. - El Banco Central del Ecuador publicará, además, los indicadores e información relevante de su competencia de fácil acceso y comprensión para la ciudadanía en general",
+   "formato_difusion": "Indicadores e información relevante de su competencia",
+   "completa_y_actualizada": "1",
+   "datos_abiertos": "SI",
+   "_procedencia": {
+    "tabla": 18,
+    "fila": 2
+   }
+  },
+  {
+   "numeral": "Valor de la calificación de obligaciones específicas",
+   "descripcion": "1,00",
+   "_procedencia": {
+    "tabla": 18,
+    "fila": 3
+   }
+  },
+  {
+   "numeral": "Porcentaje de cumplimiento de las obligaciones específicas",
+   "descripcion": "100%",
+   "_procedencia": {
+    "tabla": 18,
+    "fila": 4
+   }
+  },
+  {
+   "numeral": "1,2,3",
+   "descripcion": "Asamblea Nacional. Además de la información señalada en esta Ley, la Asamblea Nacional publicará y actualizará semanalmente en su página web lo siguiente: 1. Los textos completos de todos los proyectos de ley y enmiendas o reformas constitucionales que sean presentados ante la Asamblea Nacional, señalando la Comisión Especializada Permanente u Ocasional asignada, la fecha de presentación, el código; el nombre del proponente del proyecto; documentos relacionados al proyecto; y, el estado; 2. Listado completo y actualizado de los distintos proyectos",
+   "formato_difusion": "1. Proyectos de ley y enmiendas o reformas constitucionales",
+   "completa_y_actualizada": "1",
+   "datos_abiertos": "SI",
+   "_procedencia": {
+    "tabla": 19,
+    "fila": 2
+   }
+  },
+  {
+   "numeral": "4",
+   "descripcion": "Asamblea Nacional. Además de la información señalada en esta Ley, la Asamblea Nacional publicará y actualizará semanalmente en su página web lo siguiente: 1. Los textos completos de todos los proyectos de ley y enmiendas o reformas constitucionales que sean presentados ante la Asamblea Nacional, señalando la Comisión Especializada Permanente u Ocasional asignada, la fecha de presentación, el código; el nombre del proponente del proyecto; documentos relacionados al proyecto; y, el estado; 2. Listado completo y actualizado de los distintos proyectos",
+   "formato_difusion": "2. Actas de constatación de quórum de las y los asambleístas a las sesiones del Pleno y de las Comisiones Especializadas Permanentes u Ocasionales",
+   "completa_y_actualizada": "1",
+   "datos_abiertos": "SI",
+   "_procedencia": {
+    "tabla": 19,
+    "fila": 3
+   }
+  },
+  {
+   "numeral": "11",
+   "formato_difusion": "8. Declaraciones de interés de las y los legisladores principales y suplentes",
+   "completa_y_actualizada": "1",
+   "datos_abiertos": "SI",
+   "_procedencia": {
+    "tabla": 20,
+    "fila": 2
+   }
+  },
+  {
+   "numeral": "Valor de la calificación de obligaciones específicas",
+   "descripcion": "8,00",
+   "formato_difusion": "7,00",
+   "_procedencia": {
+    "tabla": 20,
+    "fila": 3
+   }
+  },
+  {
+   "numeral": "Porcentaje de cumplimiento de las obligaciones específicas",
+   "descripcion": "100%",
+   "_procedencia": {
+    "tabla": 20,
+    "fila": 4
+   }
+  },
+  {
+   "numeral": "SIN NÚMERO",
+   "descripcion": "Función Electoral.- Además de la información señalada en esta Ley, el Consejo Nacional Electoral en el término de sesenta (60) días, contados a partir de la fecha de recepción de los informes de gasto electoral, presentados por las o los directores de las diferentes campañas electorales, agrupaciones políticas o candidatos, deberá publicar en su sitio web los montos recibidos y gastados en cada campaña; así como las actas escaneadas de cada junta y recinto electoral, incluidas las firmas, nombres apellidos y números de cédula de cada uno de los miembros; y los planes de trabajo de los candidatos y las candidatas a las distintas elecciones, y los resultados de los procesos electorales en formatos de datos abiertos.",
+   "formato_difusion": "1. Montos recibidos y gastados en las campañas electorales",
+   "completa_y_actualizada": "1",
+   "_procedencia": {
+    "tabla": 21,
+    "fila": 2
+   }
+  },
+  {
+   "numeral": "SIN NÚMERO",
+   "descripcion": "Función Electoral.- Además de la información señalada en esta Ley, el Consejo Nacional Electoral en el término de sesenta (60) días, contados a partir de la fecha de recepción de los informes de gasto electoral, presentados por las o los directores de las diferentes campañas electorales, agrupaciones políticas o candidatos, deberá publicar en su sitio web los montos recibidos y gastados en cada campaña; así como las actas escaneadas de cada junta y recinto electoral, incluidas las firmas, nombres apellidos y números de cédula de cada uno de los miembros; y los planes de trabajo de los candidatos y las candidatas a las distintas elecciones, y los resultados de los procesos electorales en formatos de datos abiertos.",
+   "formato_difusion": "2. Gastos de campañas",
+   "completa_y_actualizada": "1",
+   "_procedencia": {
+    "tabla": 21,
+    "fila": 3
+   }
+  },
+  {
+   "numeral": "SIN NÚMERO",
+   "descripcion": "Función Electoral.- Además de la información señalada en esta Ley, el Consejo Nacional Electoral en el término de sesenta (60) días, contados a partir de la fecha de recepción de los informes de gasto electoral, presentados por las o los directores de las diferentes campañas electorales, agrupaciones políticas o candidatos, deberá publicar en su sitio web los montos recibidos y gastados en cada campaña; así como las actas escaneadas de cada junta y recinto electoral, incluidas las firmas, nombres apellidos y números de cédula de cada uno de los miembros; y los planes de trabajo de los candidatos y las candidatas a las distintas elecciones, y los resultados de los procesos electorales en formatos de datos abiertos.",
+   "formato_difusion": "3. Actas escaneadas de cada junta y recinto electoral, incluidas las firmas, nombres apellidos y números de cédula de cada uno de los miembros",
+   "completa_y_actualizada": "1",
+   "datos_abiertos": "SI",
+   "_procedencia": {
+    "tabla": 21,
+    "fila": 4
+   }
+  },
+  {
+   "numeral": "SIN NÚMERO",
+   "descripcion": "Función Electoral.- Además de la información señalada en esta Ley, el Consejo Nacional Electoral en el término de sesenta (60) días, contados a partir de la fecha de recepción de los informes de gasto electoral, presentados por las o los directores de las diferentes campañas electorales, agrupaciones políticas o candidatos, deberá publicar en su sitio web los montos recibidos y gastados en cada campaña; así como las actas escaneadas de cada junta y recinto electoral, incluidas las firmas, nombres apellidos y números de cédula de cada uno de los miembros; y los planes de trabajo de los candidatos y las candidatas a las distintas elecciones, y los resultados de los procesos electorales en formatos de datos abiertos.",
+   "formato_difusion": "4. Planes de trabajo de los candidatos y las candidatas a las distintas elecciones",
+   "completa_y_actualizada": "1",
+   "datos_abiertos": "SI",
+   "_procedencia": {
+    "tabla": 21,
+    "fila": 5
+   }
+  },
+  {
+   "numeral": "SIN NÚMERO",
+   "formato_difusion": "5. Resultados de los procesos electorales",
+   "completa_y_actualizada": "1",
+   "_procedencia": {
+    "tabla": 22,
+    "fila": 2
+   }
+  },
+  {
+   "numeral": "Valor de la calificación de obligaciones específicas",
+   "descripcion": "5,00",
+   "formato_difusion": "2,00",
+   "_procedencia": {
+    "tabla": 22,
+    "fila": 3
+   }
+  },
+  {
+   "numeral": "Porcentaje de cumplimiento de las obligaciones específicas",
+   "descripcion": "100%",
+   "_procedencia": {
+    "tabla": 22,
+    "fila": 4
+   }
+  },
+  {
+   "numeral": "SIN NÚMERO",
+   "descripcion": "El Tribunal Contencioso Electoral publicará adicionalmente el texto íntegro de las sentencias ejecutoriadas",
+   "formato_difusion": "Texto íntegro de las sentencias ejecutoriadas",
+   "completa_y_actualizada": "1",
+   "datos_abiertos": "SI",
+   "_procedencia": {
+    "tabla": 23,
+    "fila": 2
+   }
+  },
+  {
+   "numeral": "Valor de la calificación de obligaciones específicas",
+   "descripcion": "1,00",
+   "_procedencia": {
+    "tabla": 23,
+    "fila": 3
+   }
+  },
+  {
+   "numeral": "Porcentaje de cumplimiento de las obligaciones específicas",
+   "descripcion": "100%",
+   "_procedencia": {
+    "tabla": 23,
+    "fila": 4
+   }
+  },
+  {
+   "numeral": "SIN NÚMERO",
+   "descripcion": "Información pública de los Partidos y Organizaciones Políticas. Todos los partidos y organizaciones políticas que reciben recursos del Estado deberán publicar anualmente en forma electrónica, sus informes acerca del uso detallado de los fondos públicos a ellos asignados",
+   "formato_difusion": "Informe del uso detallado de los fondos públicos asignados",
+   "completa_y_actualizada": "1",
+   "datos_abiertos": "SI",
+   "_procedencia": {
+    "tabla": 24,
+    "fila": 2
+   }
+  },
+  {
+   "numeral": "Valor de la calificación de obligaciones específicas",
+   "descripcion": "1,00",
+   "_procedencia": {
+    "tabla": 24,
+    "fila": 3
+   }
+  },
+  {
+   "numeral": "Porcentaje de cumplimiento de las obligaciones específicas",
+   "descripcion": "100%",
+   "_procedencia": {
+    "tabla": 24,
+    "fila": 4
+   }
+  },
+  {
+   "numeral": "SIN NÚMERO",
+   "descripcion": "Información pública de las Empresas Públicas. Todas las empresas públicas deberán publicar la información financiera y contable del ejercicio fiscal anterior; la información mensual sobre la ejecución presupuestaria de la",
+   "formato_difusion": "1. Informes generados por la empresa pública",
+   "completa_y_actualizada": "1",
+   "datos_abiertos": "SI",
+   "_procedencia": {
+    "tabla": 25,
+    "fila": 2
+   }
+  },
+  {
+   "numeral": "SIN NÚMERO",
+   "descripcion": "empresa; el informe de rendición de cuentas de los administradores; los estudios comparativos de los dos últimos ejercicios fiscales; sus reglamentos internos; las actas de sus sesiones de Directorio, protegiendo los aspectos que gocen de confidencialidad; y el estado o secuencia de los trámites o petitorios que hagan los usuarios o consumidores; así como información sobre el estado de cuenta relativo al pago por consumo o por servicios",
+   "formato_difusion": "2. Actas de las sesiones de directorio, protegiendo los aspectos que gocen de confidencialidad",
+   "completa_y_actualizada": "1",
+   "datos_abiertos": "SI",
+   "_procedencia": {
+    "tabla": 26,
+    "fila": 2
+   }
+  },
+  {
+   "numeral": "SIN NÚMERO",
+   "descripcion": "empresa; el informe de rendición de cuentas de los administradores; los estudios comparativos de los dos últimos ejercicios fiscales; sus reglamentos internos; las actas de sus sesiones de Directorio, protegiendo los aspectos que gocen de confidencialidad; y el estado o secuencia de los trámites o petitorios que hagan los usuarios o consumidores; así como información sobre el estado de cuenta relativo al pago por consumo o por servicios",
+   "formato_difusion": "3. Estado o secuencia de los trámites o petitorios que hagan los usuarios o consumidores",
+   "completa_y_actualizada": "1",
+   "datos_abiertos": "SI",
+   "_procedencia": {
+    "tabla": 26,
+    "fila": 3
+   }
+  },
+  {
+   "numeral": "Valor de la calificación de obligaciones específicas",
+   "descripcion": "3,00",
+   "_procedencia": {
+    "tabla": 26,
+    "fila": 4
+   }
+  },
+  {
+   "numeral": "Porcentaje de cumplimiento de las obligaciones específicas",
+   "descripcion": "100%",
+   "_procedencia": {
+    "tabla": 26,
+    "fila": 5
+   }
+  },
+  {
+   "numeral": "SIN NÚMERO",
+   "descripcion": "Información pública del Instituto Ecuatoriano de Seguridad Social. Además de la información señalada en esta Ley, el Instituto ecuatoriano de Seguridad Social publicará en su página web, anualmente, dentro de los primeros treinta (30) días de cada ejercicio fiscal, los estados financieros detallados que incluyan sus balances y los cálculos actuariales con los que cuente hasta ese momento, que evidencien el origen y destino de los recursos presupuestarios, así como la evolución de su patrimonio hasta la separación completa de cada uno de los patrimonios de los seguros administrados por la institución",
+   "formato_difusion": "Estados financieros detallados que incluyan sus balances y los cálculos actuariales",
+   "completa_y_actualizada": "1",
+   "datos_abiertos": "SI",
+   "_procedencia": {
+    "tabla": 27,
+    "fila": 2
+   }
+  },
+  {
+   "numeral": "Valor de la calificación de obligaciones específicas",
+   "descripcion": "1,00",
+   "_procedencia": {
+    "tabla": 27,
+    "fila": 3
+   }
+  },
+  {
+   "numeral": "Porcentaje de cumplimiento de las obligaciones específicas",
+   "descripcion": "100%",
+   "_procedencia": {
+    "tabla": 27,
+    "fila": 4
+   }
+  }
+ ]
+}

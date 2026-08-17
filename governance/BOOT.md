@@ -38,20 +38,18 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 
 ✅ **PCD: d01·d02·d03·d06·d09** · **d08 ENTRABLE** (Asamblea AUTÓNOMA · OBS-012..017).
 🩹 **12 GATES** — correr TODOS · **Curación por DOM (R.8)** · `check_health.py`: NO adivinar.
 🧬 **INVARIANTES** (`normativa/invariantes.py`): la extracción declara qué la hace correcta · **estados, NO bool** · corpus 69/69.
-📑 **PAC del holding**: 586 ítems · 4 entidades · `data/pdot/pac_holding.json` · ⛔ **el `.docx` gana al `.pdf`**.
+📑 **PAC holding** 586 ít. · **SERCOP 265+75 por comprador** · fases planificado→…→contrato · ⛔ `.docx` gana al `.pdf`.
+⚖️ **d07 LOTAIP · la vara es del RECTOR**: Instructivo DPE jul-2024 → `data/lotaip/matriz_normativa.json` · **13 criterios 1,0/0,5/0,0** · 84 obligaciones (art.19 + 20-30). ⛔ **contar archivos NO es medir cumplimiento**.
 🎨 **ADR-049 visual**: *la gráfica nunca sabe más que el motor* · **la ausencia se dibuja** · VIS-INV-001/002/003.
 ⛏️ **ADR-050 CANTERA**: **hereda capacidades, NO productos** · R0-R3 · **nada sin prueba contra caso real** · `docs/registry/CANTERA.md`.
 🔧 **v5.7_TGI** · promover = **recalcular y GUARDAR** (sin caché el conector lee vacío) · **IGP 48,33→27,00**.
 ⚖️ **ADR-045/046/047**: 1 superficie·3 custodias · techo = **el documento, no el portador** · recálculo = Operaciones.
 🏛️ **ADR-048 SIL** (SELLADO): **objeto observado, NO dominio** · ⛔ sin fórmula (no repetir `Ei`).
-🔍 **OBS-029**: `V_SERCOP` 0,5 en **42/66** (PAC=puente) · `V_CPCCS` **0/66 citadas en RDC**.
 🚒 **OBS-024** Bomberos $1,75M sin meta · **OBS-025/028** **5 factores manuales** (`Ei`·`Ci_Manual`·`Competencia_GAD`·`V_eSIGEF`≡`V_SERCOP`). **Ei NO tocado.**
 📋 **Metas 66** · cablea **25** · **OBS-028** meta→partida→devengado · PDOT vige **05-11-2024** → **≥2025** · **5/6 ceros `V_eSIGEF` desmentidos**.
 🔭 **ADR-042 CONSOLA** (`env_obs`≠`env_ops`) · **MATRIZ_CANONICA, NO el GM** · **humano acredita** · `despacho.py` · ⏭️ **1ª corrida LOTAIP**.
 🚦 **8 ESTADOS**: «no existe»≠«no pude obtener»≠«falló». **Solo 2 publicables**.
 🔬 **OBS-030 OBSERVADOR AUDITABLE**: 6 días declarando inaccesible un portal que funcionaba — era **una VPN, MTU 1420 sobre ruta 1300**. ⛔ **antes de culpar a la fuente, falsar el instrumento** (¿otro dispositivo? ¿TCP sí y TLS no? ¿qué interfaz? ¿MTU?) → si no, `instrumento_no_descartado`.
-🔌 **CABLEADO**: **GM→SILOS→DOM→QUIRA** · **S1·S6·S9 sin DOM**.
-🚨 **OBS-022** SAT sin BRN → `check_sat_brn.py`. ⛔`SAT-IX`(d08)≠`SAT-IX-001`.
 ⏭️ **JAVO: (1)** ingesta corpus (ordenanza Word + 2 normas SIL) **(2)** Haiku ~$60/18m **(3)** repintado Observatorio.
 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 · detalle en el ADR)

@@ -1,0 +1,2100 @@
+{
+ "_meta": {
+  "generado": "2026-08-17",
+  "fuente": "https://transparencia.dpe.gob.ec/backend/v1/transparency/transparency/active/public",
+  "regla": "URL listada ≠ URL accesible · ausencia ≠ incumplimiento",
+  "transporte": {
+   "intentos": 49,
+   "fallos": 46,
+   "seguidos": 46,
+   "ultimo": "RuntimeError: "
+  }
+ },
+ "entidades": {
+  "937": {
+   "nombre": "GAD Montecristi",
+   "anios": {
+    "2025": {
+     "n_archivos": 144,
+     "meses_con_datos": [
+      1,
+      2,
+      3
+     ],
+     "numerales": [
+      "Art. 24 Gobiernos Autónomos Descentralizados",
+      "Numeral 1.1",
+      "Numeral 1.2",
+      "Numeral 1.3",
+      "Numeral 12",
+      "Numeral 14",
+      "Numeral 15",
+      "Numeral 16",
+      "Numeral 17",
+      "Numeral 18",
+      "Numeral 19",
+      "Numeral 2",
+      "Numeral 20",
+      "Numeral 21",
+      "Numeral 23",
+      "Numeral 24",
+      "Numeral 3",
+      "Numeral 4",
+      "Numeral 5-22",
+      "Numeral 8",
+      "Numeral 9"
+     ],
+     "registros": [
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 1.1",
+       "obligacion": "Estructura orgánica",
+       "archivo": "1_1-estructura-organica- METADATOS.csv",
+       "descripcion": "Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%201.1/2025/1/Metadatos.csv",
+       "publicado": "2025-02-14T11:33:42.075129-05:00",
+       "verificacion": {
+        "estado": "no_verificable",
+        "nota": "no se alcanzó el servidor — NO significa que falte el documento"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 1.1",
+       "obligacion": "Estructura orgánica",
+       "archivo": "1_1-estructura-organica- CONJUNTO DE DATOS.csv",
+       "descripcion": "1.Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%201.1/2025/1/1.Conjunto%20de%20datos.csv",
+       "publicado": "2025-02-14T11:33:42.077254-05:00",
+       "verificacion": {
+        "estado": "no_verificable",
+        "nota": "no se alcanzó el servidor — NO significa que falte el documento"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 1.1",
+       "obligacion": "Estructura orgánica",
+       "archivo": "1_1-estructura-organica- DICCIONARIO.csv",
+       "descripcion": "Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%201.1/2025/1/Diccionario.csv",
+       "publicado": "2025-02-14T11:33:42.080885-05:00",
+       "verificacion": {
+        "estado": "no_verificable",
+        "nota": "no se alcanzó el servidor — NO significa que falte el documento"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 1.2",
+       "obligacion": "Base Legal regulaciones procedimientos internos",
+       "archivo": "1-2-base-legal-regulaciones-procedimientos-internos- DICCIONARIO.csv",
+       "descripcion": "Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%201.2/2025/1/Diccionario.csv",
+       "publicado": "2025-02-14T12:00:20.222919-05:00",
+       "verificacion": {
+        "estado": "no_verificable",
+        "nota": "no se alcanzó el servidor — NO significa que falte el documento"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 1.2",
+       "obligacion": "Base Legal regulaciones procedimientos internos",
+       "archivo": "1-2-base-legal-regulaciones-procedimientos-internos- CONJUNTO DE DATOS (1).csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%201.2/2025/1/Conjunto%20de%20datos.csv",
+       "publicado": "2025-02-14T12:00:20.224847-05:00",
+       "verificacion": {
+        "estado": "no_verificable",
+        "nota": "no se alcanzó el servidor — NO significa que falte el documento"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 1.2",
+       "obligacion": "Base Legal regulaciones procedimientos internos",
+       "archivo": "1-2-base-legal-regulaciones-procedimientos-internos- METADATOS (4).csv",
+       "descripcion": "Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%201.2/2025/1/Metadatos.csv",
+       "publicado": "2025-02-14T12:00:20.229227-05:00",
+       "verificacion": {
+        "estado": "no_verificable",
+        "nota": "no se alcanzó el servidor — NO significa que falte el documento"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 12",
+       "obligacion": "Mecanismos rendicion cuentas",
+       "archivo": "12. Mecanismos rendicion cuentas_ENERO(conjuntoDatos).csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%2012/2025/1/Conjunto%20de%20datos.csv",
+       "publicado": "2025-02-17T10:08:34.344993-05:00",
+       "verificacion": {
+        "estado": "no_verificable",
+        "nota": "no se alcanzó el servidor — NO significa que falte el documento"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 12",
+       "obligacion": "Mecanismos rendicion cuentas",
+       "archivo": "12. Mecanismos rendicion cuentas_ENERO(diccionario).csv",
+       "descripcion": "Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%2012/2025/1/Diccionario.csv",
+       "publicado": "2025-02-17T10:08:34.344668-05:00",
+       "verificacion": {
+        "estado": "no_verificable",
+        "nota": "no se alcanzó el servidor — NO significa que falte el documento"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 12",
+       "obligacion": "Mecanismos rendicion cuentas",
+       "archivo": "12. Mecanismos rendicion cuentas_ENERO(metadatos).csv",
+       "descripcion": "Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%2012/2025/1/Metadatos.csv",
+       "publicado": "2025-02-17T10:08:34.350081-05:00",
+       "verificacion": {
+        "estado": "no_verificable",
+        "nota": "no se alcanzó el servidor — NO significa que falte el documento"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 1.3",
+       "obligacion": "Metas y Objetivos",
+       "archivo": "1-4_metas-y-objetivos_unidades_ENERO(conjuntoDatos).csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%201.3/2025/1/Conjunto%20de%20datos.csv",
+       "publicado": "2025-02-17T10:02:22.623909-05:00",
+       "verificacion": {
+        "estado": "no_verificable",
+        "nota": "no se alcanzó el servidor — NO significa que falte el documento"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 1.3",
+       "obligacion": "Metas y Objetivos",
+       "archivo": "1-4_metas-y-objetivos_unidades_ENERO(diccionario).csv",
+       "descripcion": "3. Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%201.3/2025/1/3.%20Diccionario.csv",
+       "publicado": "2025-02-17T10:02:22.625500-05:00",
+       "verificacion": {
+        "estado": "no_verificable",
+        "nota": "no se alcanzó el servidor — NO significa que falte el documento"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 1.3",
+       "obligacion": "Metas y Objetivos",
+       "archivo": "1-4_metas-y-objetivos_unidades_ENERO(metadatos).csv",
+       "descripcion": "2. Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%201.3/2025/1/2.%20Metadatos.csv",
+       "publicado": "2025-02-17T10:02:22.627994-05:00",
+       "verificacion": {
+        "estado": "no_verificable",
+        "nota": "no se alcanzó el servidor — NO significa que falte el documento"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 14",
+       "obligacion": "Responsables del acceso de informacion publica",
+       "archivo": "14. CONJUNTO DE DATOS.csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%2014/2025/1/Conjunto%20de%20datos.csv",
+       "publicado": "2025-02-14T12:48:55.256774-05:00",
+       "verificacion": {
+        "estado": "no_verificable",
+        "nota": "no se alcanzó el servidor — NO significa que falte el documento"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 14",
+       "obligacion": "Responsables del acceso de informacion publica",
+       "archivo": "14. DICCIONARIO.csv",
+       "descripcion": "Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%2014/2025/1/Diccionario.csv",
+       "publicado": "2025-02-14T12:48:55.256939-05:00",
+       "verificacion": {
+        "estado": "no_verificable",
+        "nota": "no se alcanzó el servidor — NO significa que falte el documento"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 14",
+       "obligacion": "Responsables del acceso de informacion publica",
+       "archivo": "14. Metadatos.csv",
+       "descripcion": "Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%2014/2025/1/Metadatos.csv",
+       "publicado": "2025-02-14T12:48:55.258270-05:00",
+       "verificacion": {
+        "estado": "no_verificable",
+        "nota": "no se alcanzó el servidor — NO significa que falte el documento"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 15",
+       "obligacion": "Texto integro de los contratos colectivos vigentes y reformas",
+       "archivo": "15-texto-integro-de-los-contratos-colectivos-vigentes-y-reformas - METADATOS (2).csv",
+       "descripcion": "Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%2015/2025/1/Metadatos.csv",
+       "publicado": "2025-02-14T12:49:23.788455-05:00",
+       "verificacion": {
+        "estado": "no_verificable",
+        "nota": "no se alcanzó el servidor — NO significa que falte el documento"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 15",
+       "obligacion": "Texto integro de los contratos colectivos vigentes y reformas",
+       "archivo": "15-texto-integro-de-los-contratos-colectivos-vigentes-y-reformas - DICCIONARIO.csv",
+       "descripcion": "Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%2015/2025/1/Diccionario.csv",
+       "publicado": "2025-02-14T12:49:23.795769-05:00",
+       "verificacion": {
+        "estado": "no_verificable",
+        "nota": "no se alcanzó el servidor — NO significa que falte el documento"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 15",
+       "obligacion": "Texto integro de los contratos colectivos vigentes y reformas",
+       "archivo": "15-texto-integro-de-los-contratos-colectivos-vigentes-y-reformas - CONJUNTO DE DATOS (2).csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%2015/2025/1/Conjunto%20de%20datos.csv",
+       "publicado": "2025-02-14T12:49:23.795886-05:00",
+       "verificacion": {
+        "estado": "no_verificable",
+        "nota": "no se alcanzó el servidor — NO significa que falte el documento"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 18",
+       "obligacion": "Detalles de convenios nacionales e internacionales",
+       "archivo": "18-detalle-de-convenios-nacionales-e-internacionales- CONJUNTO DE DATOS (2).csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%2018/2025/1/Conjunto%20de%20datos.csv",
+       "publicado": "2025-02-14T12:54:42.519261-05:00",
+       "verificacion": {
+        "estado": "no_verificable",
+        "nota": "no se alcanzó el servidor — NO significa que falte el documento"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 18",
+       "obligacion": "Detalles de convenios nacionales e internacionales",
+       "archivo": "18-detalle-de-convenios-nacionales-e-internacionales- DICCIONARIO.csv",
+       "descripcion": "Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%2018/2025/1/Diccionario.csv",
+       "publicado": "2025-02-14T12:54:42.521606-05:00",
+       "verificacion": {
+        "estado": "no_verificable",
+        "nota": "no se alcanzó el servidor — NO significa que falte el documento"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 18",
+       "obligacion": "Detalles de convenios nacionales e internacionales",
+       "archivo": "18-detalle-de-convenios-nacionales-e-internacionales- METADATOS (2).csv",
+       "descripcion": "Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%2018/2025/1/Metadatos.csv",
+       "publicado": "2025-02-14T12:54:42.546873-05:00",
+       "verificacion": {
+        "estado": "no_verificable",
+        "nota": "no se alcanzó el servidor — NO significa que falte el documento"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 19",
+       "obligacion": "Detalle donativos oficiales y protocolares",
+       "archivo": "19-detalle-donativos-oficiales-y-protocolares - enero2.csv",
+       "descripcion": "Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%2019/2025/1/Metadatos.csv",
+       "publicado": "2025-02-14T12:55:14.546333-05:00",
+       "verificacion": {
+        "estado": "no_verificable",
+        "nota": "no se alcanzó el servidor — NO significa que falte el documento"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 19",
+       "obligacion": "Detalle donativos oficiales y protocolares",
+       "archivo": "19-detalle-donativos-oficiales-y-protocolares - enero1.csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%2019/2025/1/Conjunto%20de%20datos.csv",
+       "publicado": "2025-02-14T12:55:14.549775-05:00",
+       "verificacion": {
+        "estado": "no_verificable",
+        "nota": "no se alcanzó el servidor — NO significa que falte el documento"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 19",
+       "obligacion": "Detalle donativos oficiales y protocolares",
+       "archivo": "19-detalle-donativos-oficiales-y-protocolares - enero3.csv",
+       "descripcion": "Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%2019/2025/1/Diccionario.csv",
+       "publicado": "2025-02-14T12:55:14.583287-05:00",
+       "verificacion": {
+        "estado": "no_verificable",
+        "nota": "no se alcanzó el servidor — NO significa que falte el documento"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 2",
+       "obligacion": "Directorio y distributivo personal de la entidad",
+       "archivo": "2_1-2_2-directorio-y-distributivo-personal-de-la-entidad- METADATOS.csv",
+       "descripcion": "Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%202/2025/1/Metadatos.csv",
+       "publicado": "2025-02-14T12:06:29.762436-05:00",
+       "verificacion": {
+        "estado": "no_verificable",
+        "nota": "no se alcanzó el servidor — NO significa que falte el documento"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 2",
+       "obligacion": "Directorio y distributivo personal de la entidad",
+       "archivo": "2_1-2_2-directorio-y-distributivo-personal-de-la-entidad- DICCIONARIO.csv",
+       "descripcion": "Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%202/2025/1/Diccionario.csv",
+       "publicado": "2025-02-14T12:06:29.772280-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 2",
+       "obligacion": "Directorio y distributivo personal de la entidad",
+       "archivo": "2_1-2_2-directorio-y-distributivo-personal-de-la-entidad- CONJUNTO DE DATOS.csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%202/2025/1/Conjunto%20de%20datos.csv",
+       "publicado": "2025-02-14T12:06:29.788873-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 21",
+       "obligacion": "Politicas publicas o informacion grupo especifico",
+       "archivo": "21-politicas-publicas-o-informacion-grupo-especifico_ENERO(conjuntoDatos).csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%2021/2025/1/Conjunto%20de%20datos.csv",
+       "publicado": "2025-02-17T10:09:09.713573-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 21",
+       "obligacion": "Politicas publicas o informacion grupo especifico",
+       "archivo": "21-politicas-publicas-o-informacion-grupo-especifico_ENERO(metadatos).csv",
+       "descripcion": "Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%2021/2025/1/Metadatos.csv",
+       "publicado": "2025-02-17T10:09:09.717822-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 21",
+       "obligacion": "Politicas publicas o informacion grupo especifico",
+       "archivo": "21-politicas-publicas-o-informacion-grupo-especifico_ENERO(diccionario).csv",
+       "descripcion": "Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%2021/2025/1/Diccionario.csv",
+       "publicado": "2025-02-17T10:09:09.720463-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 23",
+       "obligacion": "Detalle personas servidoras publicas con acciones afirmativas",
+       "archivo": "23-detalle-personas-servidoras-publicas-con-acciones-afirmativas- CONJUNTO DE DATOS.csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%2023/2025/1/Conjunto%20de%20datos.csv",
+       "publicado": "2025-02-14T12:57:31.370205-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 23",
+       "obligacion": "Detalle personas servidoras publicas con acciones afirmativas",
+       "archivo": "23-detalle-personas-servidoras-publicas-con-acciones-afirmativas- DICCIONARIO.csv",
+       "descripcion": "Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%2023/2025/1/Diccionario.csv",
+       "publicado": "2025-02-14T12:57:31.374119-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 23",
+       "obligacion": "Detalle personas servidoras publicas con acciones afirmativas",
+       "archivo": "23-detalle-personas-servidoras-publicas-con-acciones-afirmativas- METADATOS.csv",
+       "descripcion": "Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%2023/2025/1/Metadatos.csv",
+       "publicado": "2025-02-14T12:57:31.387024-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 24",
+       "obligacion": "Informacion relevante para el ejercicio de derechos ODS",
+       "archivo": "24-informacion-relevante-para-el-ejercicio-de-derechos-ods_ENERO(conjuntoDatos).csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%2024/2025/1/Conjunto%20de%20datos.csv",
+       "publicado": "2025-02-17T10:09:59.442330-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 24",
+       "obligacion": "Informacion relevante para el ejercicio de derechos ODS",
+       "archivo": "24-informacion-relevante-para-el-ejercicio-de-derechos-ods_ENERO(diccionario).csv",
+       "descripcion": "Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%2024/2025/1/Diccionario.csv",
+       "publicado": "2025-02-17T10:09:59.444760-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 24",
+       "obligacion": "Informacion relevante para el ejercicio de derechos ODS",
+       "archivo": "24-informacion-relevante-para-el-ejercicio-de-derechos-ods_ENERO(metadatos).csv",
+       "descripcion": "Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%2024/2025/1/Metadatos.csv",
+       "publicado": "2025-02-17T10:09:59.448615-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 3",
+       "obligacion": "Remuneraciones ingresos adicionales",
+       "archivo": "3-remuneraciones-ingresos-adicionales- DICCIONARIO.csv",
+       "descripcion": "Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%203/2025/1/Diccionario.csv",
+       "publicado": "2025-02-17T10:13:32.354872-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 3",
+       "obligacion": "Remuneraciones ingresos adicionales",
+       "archivo": "3-remuneraciones-ingresos-adicionales- METADATOS.csv",
+       "descripcion": "Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%203/2025/1/Metadatos.csv",
+       "publicado": "2025-02-17T10:13:32.355741-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 3",
+       "obligacion": "Remuneraciones ingresos adicionales",
+       "archivo": "3-remuneraciones-ingresos-adicionales- CONJUNTO DE DATOS.csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%203/2025/1/Conjunto%20de%20datos.csv",
+       "publicado": "2025-02-17T10:13:32.367949-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 4",
+       "obligacion": "Detalle Licencia y comisiones",
+       "archivo": "4-detalle-licencia-comisiones DICCIONARIO.csv",
+       "descripcion": "3. Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%204/2025/1/3.%20Diccionario.csv",
+       "publicado": "2025-02-14T12:38:26.898081-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 4",
+       "obligacion": "Detalle Licencia y comisiones",
+       "archivo": "4-detalle-licencia-comisiones CONJUNTO DE DATOS.csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%204/2025/1/Conjunto%20de%20datos.csv",
+       "publicado": "2025-02-14T12:38:26.920447-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 4",
+       "obligacion": "Detalle Licencia y comisiones",
+       "archivo": "4-detalle-licencia-comisiones METADATOS.csv",
+       "descripcion": "2. Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%204/2025/1/2.%20Metadatos.csv",
+       "publicado": "2025-02-14T12:38:26.922686-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 5-22",
+       "obligacion": "-Servicios formularios formatos tramites",
+       "archivo": "5.22 Diccionario.csv",
+       "descripcion": "Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%205-22/2025/1/Diccionario.csv",
+       "publicado": "2025-02-14T12:39:47.713213-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 5-22",
+       "obligacion": "-Servicios formularios formatos tramites",
+       "archivo": "5.22 Metadatos.csv",
+       "descripcion": "Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%205-22/2025/1/Metadatos.csv",
+       "publicado": "2025-02-14T12:39:47.713029-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 5-22",
+       "obligacion": "-Servicios formularios formatos tramites",
+       "archivo": "5.22Conjunto de Datos Enero.csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%205-22/2025/1/Conjunto%20de%20datos.csv",
+       "publicado": "2025-02-14T12:39:47.714094-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 9",
+       "obligacion": "Listado de empresas y personas que han incumplido contratos",
+       "archivo": "9-listado-de-empresas-y-personas-que-han-incumplido-contratos-enero1.csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%209/2025/1/Conjunto%20de%20datos.csv",
+       "publicado": "2025-02-14T12:46:37.716528-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 9",
+       "obligacion": "Listado de empresas y personas que han incumplido contratos",
+       "archivo": "9-listado-de-empresas-y-personas-que-han-incumplido-contratos-enero3.csv",
+       "descripcion": "Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%209/2025/1/Diccionario.csv",
+       "publicado": "2025-02-14T12:46:37.719103-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 1,
+       "mes_nombre": "enero",
+       "numeral": "Numeral 9",
+       "obligacion": "Listado de empresas y personas que han incumplido contratos",
+       "archivo": "9-listado-de-empresas-y-personas-que-han-incumplido-contratos-enero2.csv",
+       "descripcion": "Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%209/2025/1/Metadatos.csv",
+       "publicado": "2025-02-14T12:46:37.719590-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 2,
+       "mes_nombre": "febrero",
+       "numeral": "Numeral 1.1",
+       "obligacion": "Estructura orgánica",
+       "archivo": "1_1-estructura-organica CONJUNTO DE DATOS.csv",
+       "descripcion": "1.Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%201.1/2025/2/1.Conjunto%20de%20datos.csv",
+       "publicado": "2025-03-13T03:58:13.850712-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 2,
+       "mes_nombre": "febrero",
+       "numeral": "Numeral 1.1",
+       "obligacion": "Estructura orgánica",
+       "archivo": "1_1-estructura-organica DICCIONARIO.csv",
+       "descripcion": "Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%201.1/2025/2/Diccionario.csv",
+       "publicado": "2025-03-13T03:58:13.845757-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 2,
+       "mes_nombre": "febrero",
+       "numeral": "Numeral 1.1",
+       "obligacion": "Estructura orgánica",
+       "archivo": "1_1-estructura-organica METADATOS.csv",
+       "descripcion": "Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%201.1/2025/2/Metadatos.csv",
+       "publicado": "2025-03-13T03:58:13.866611-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 2,
+       "mes_nombre": "febrero",
+       "numeral": "Numeral 1.2",
+       "obligacion": "Base Legal regulaciones procedimientos internos",
+       "archivo": "1-2-base-legal-regulaciones-procedimientos-internos- metadatos.csv",
+       "descripcion": "Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%201.2/2025/2/Metadatos.csv",
+       "publicado": "2025-03-13T04:00:34.637612-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 2,
+       "mes_nombre": "febrero",
+       "numeral": "Numeral 1.2",
+       "obligacion": "Base Legal regulaciones procedimientos internos",
+       "archivo": "1-2-base-legal-regulaciones-procedimientos-internos- Diccionario de datos.csv",
+       "descripcion": "Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%201.2/2025/2/Diccionario.csv",
+       "publicado": "2025-03-13T04:00:34.639862-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 2,
+       "mes_nombre": "febrero",
+       "numeral": "Numeral 1.2",
+       "obligacion": "Base Legal regulaciones procedimientos internos",
+       "archivo": "1-2-base-legal-regulaciones-procedimientos-internos- Base de datos.csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%201.2/2025/2/Conjunto%20de%20datos.csv",
+       "publicado": "2025-03-13T04:00:34.652557-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 2,
+       "mes_nombre": "febrero",
+       "numeral": "Numeral 12",
+       "obligacion": "Mecanismos rendicion cuentas",
+       "archivo": "12. Mecanismos rendicion cuentas_FEBRERO(conjuntodedatos).csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%2012/2025/2/Conjunto%20de%20datos.csv",
+       "publicado": "2025-03-13T04:14:36.235401-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 2,
+       "mes_nombre": "febrero",
+       "numeral": "Numeral 12",
+       "obligacion": "Mecanismos rendicion cuentas",
+       "archivo": "12. Mecanismos rendicion cuentas_FEBRERO(metadatos).csv",
+       "descripcion": "Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%2012/2025/2/Metadatos.csv",
+       "publicado": "2025-03-13T04:14:36.237476-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 2,
+       "mes_nombre": "febrero",
+       "numeral": "Numeral 12",
+       "obligacion": "Mecanismos rendicion cuentas",
+       "archivo": "12. Mecanismos rendicion cuentas_FEBRERO(diccionario).csv",
+       "descripcion": "Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%2012/2025/2/Diccionario.csv",
+       "publicado": "2025-03-13T04:14:36.239442-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 2,
+       "mes_nombre": "febrero",
+       "numeral": "Numeral 18",
+       "obligacion": "Detalles de convenios nacionales e internacionales",
+       "archivo": "18-detalle-de-convenios-nacionales-e-internacionales- Diccionario de datos.csv",
+       "descripcion": "Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%2018/2025/2/Diccionario.csv",
+       "publicado": "2025-03-13T04:32:22.649725-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 2,
+       "mes_nombre": "febrero",
+       "numeral": "Numeral 18",
+       "obligacion": "Detalles de convenios nacionales e internacionales",
+       "archivo": "18-detalle-de-convenios-nacionales-e-internacionales- Metadatos.csv",
+       "descripcion": "Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%2018/2025/2/Metadatos.csv",
+       "publicado": "2025-03-13T04:32:22.663545-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 2,
+       "mes_nombre": "febrero",
+       "numeral": "Numeral 18",
+       "obligacion": "Detalles de convenios nacionales e internacionales",
+       "archivo": "18-detalle-de-convenios-nacionales-e-internacionales- Base de datos.csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%2018/2025/2/Conjunto%20de%20datos.csv",
+       "publicado": "2025-03-13T04:32:22.664318-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 2,
+       "mes_nombre": "febrero",
+       "numeral": "Numeral 19",
+       "obligacion": "Detalle donativos oficiales y protocolares",
+       "archivo": "19-detalle-donativos-oficiales-y-protocolares - DICCIONARIO.csv",
+       "descripcion": "Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%2019/2025/2/Diccionario.csv",
+       "publicado": "2025-03-13T04:32:49.087665-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 2,
+       "mes_nombre": "febrero",
+       "numeral": "Numeral 19",
+       "obligacion": "Detalle donativos oficiales y protocolares",
+       "archivo": "19-detalle-donativos-oficiales-y-protocolares - METADATOS.csv",
+       "descripcion": "Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%2019/2025/2/Metadatos.csv",
+       "publicado": "2025-03-13T04:32:49.091091-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 2,
+       "mes_nombre": "febrero",
+       "numeral": "Numeral 19",
+       "obligacion": "Detalle donativos oficiales y protocolares",
+       "archivo": "19-detalle-donativos-oficiales-y-protocolares - CONJUNTO DE DATOS.csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%2019/2025/2/Conjunto%20de%20datos.csv",
+       "publicado": "2025-03-13T04:32:49.100918-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 2,
+       "mes_nombre": "febrero",
+       "numeral": "Numeral 2",
+       "obligacion": "Directorio y distributivo personal de la entidad",
+       "archivo": "2_1-2_2-directorio-y-distributivo-personal-de-la-entidad DICCIONARIO.csv",
+       "descripcion": "Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%202/2025/2/Diccionario.csv",
+       "publicado": "2025-03-13T04:06:03.325915-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 2,
+       "mes_nombre": "febrero",
+       "numeral": "Numeral 2",
+       "obligacion": "Directorio y distributivo personal de la entidad",
+       "archivo": "2_1-2_2-directorio-y-distributivo-personal-de-la-entidad METADATOS.csv",
+       "descripcion": "Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%202/2025/2/Metadatos.csv",
+       "publicado": "2025-03-13T04:06:03.325208-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 2,
+       "mes_nombre": "febrero",
+       "numeral": "Numeral 2",
+       "obligacion": "Directorio y distributivo personal de la entidad",
+       "archivo": "2_1-2_2-directorio-y-distributivo-personal-de-la-entidad CONJUNTO DE DATOS.csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%202/2025/2/Conjunto%20de%20datos.csv",
+       "publicado": "2025-03-13T04:06:03.348061-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 2,
+       "mes_nombre": "febrero",
+       "numeral": "Numeral 21",
+       "obligacion": "Politicas publicas o informacion grupo especifico",
+       "archivo": "21-politicas-publicas-o-informacion-grupo-especifico_FEBRERO(conjuntodedatos).csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%2021/2025/2/Conjunto%20de%20datos.csv",
+       "publicado": "2025-03-13T04:35:56.494063-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 2,
+       "mes_nombre": "febrero",
+       "numeral": "Numeral 21",
+       "obligacion": "Politicas publicas o informacion grupo especifico",
+       "archivo": "21-politicas-publicas-o-informacion-grupo-especifico_FEBRERO(diccionario).csv",
+       "descripcion": "Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%2021/2025/2/Diccionario.csv",
+       "publicado": "2025-03-13T04:35:56.495011-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 2,
+       "mes_nombre": "febrero",
+       "numeral": "Numeral 21",
+       "obligacion": "Politicas publicas o informacion grupo especifico",
+       "archivo": "21-politicas-publicas-o-informacion-grupo-especifico_FEBRERO(metadatos).csv",
+       "descripcion": "Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%2021/2025/2/Metadatos.csv",
+       "publicado": "2025-03-13T04:35:56.496371-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 2,
+       "mes_nombre": "febrero",
+       "numeral": "Numeral 23",
+       "obligacion": "Detalle personas servidoras publicas con acciones afirmativas",
+       "archivo": "23-detalle-personas-servidoras-publicas-con-acciones-afirmativas DICCIONARIO.csv",
+       "descripcion": "Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%2023/2025/2/Diccionario.csv",
+       "publicado": "2025-03-13T04:36:23.860817-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 2,
+       "mes_nombre": "febrero",
+       "numeral": "Numeral 23",
+       "obligacion": "Detalle personas servidoras publicas con acciones afirmativas",
+       "archivo": "23-detalle-personas-servidoras-publicas-con-acciones-afirmativas METADATOS.csv",
+       "descripcion": "Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%2023/2025/2/Metadatos.csv",
+       "publicado": "2025-03-13T04:36:23.877940-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 2,
+       "mes_nombre": "febrero",
+       "numeral": "Numeral 23",
+       "obligacion": "Detalle personas servidoras publicas con acciones afirmativas",
+       "archivo": "23-detalle-personas-servidoras-publicas-con-acciones-afirmativas CONJUNTO DE DATOS.csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%2023/2025/2/Conjunto%20de%20datos.csv",
+       "publicado": "2025-03-13T04:36:23.893057-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 2,
+       "mes_nombre": "febrero",
+       "numeral": "Numeral 24",
+       "obligacion": "Informacion relevante para el ejercicio de derechos ODS",
+       "archivo": "24-informacion-relevante-para-el-ejercicio-de-derechos-ods_FEBRERO(metadatos).csv",
+       "descripcion": "Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%2024/2025/2/Metadatos.csv",
+       "publicado": "2025-03-13T04:37:16.245310-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 2,
+       "mes_nombre": "febrero",
+       "numeral": "Numeral 24",
+       "obligacion": "Informacion relevante para el ejercicio de derechos ODS",
+       "archivo": "24-informacion-relevante-para-el-ejercicio-de-derechos-ods_FEBRERO(conjuntodedatos).csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%2024/2025/2/Conjunto%20de%20datos.csv",
+       "publicado": "2025-03-13T04:37:16.245591-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 2,
+       "mes_nombre": "febrero",
+       "numeral": "Numeral 24",
+       "obligacion": "Informacion relevante para el ejercicio de derechos ODS",
+       "archivo": "24-informacion-relevante-para-el-ejercicio-de-derechos-ods_FEBRERO(diccionario).csv",
+       "descripcion": "Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%2024/2025/2/Diccionario.csv",
+       "publicado": "2025-03-13T04:37:16.256232-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 2,
+       "mes_nombre": "febrero",
+       "numeral": "Numeral 3",
+       "obligacion": "Remuneraciones ingresos adicionales",
+       "archivo": "3-remuneraciones-ingresos-adicionales DICCIONARIO.csv",
+       "descripcion": "Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%203/2025/2/Diccionario.csv",
+       "publicado": "2025-03-13T04:07:27.679142-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 2,
+       "mes_nombre": "febrero",
+       "numeral": "Numeral 3",
+       "obligacion": "Remuneraciones ingresos adicionales",
+       "archivo": "3-remuneraciones-ingresos-adicionales CONJUNTO DE DATOS.csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%203/2025/2/Conjunto%20de%20datos.csv",
+       "publicado": "2025-03-13T04:07:27.692854-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 2,
+       "mes_nombre": "febrero",
+       "numeral": "Numeral 3",
+       "obligacion": "Remuneraciones ingresos adicionales",
+       "archivo": "3-remuneraciones-ingresos-adicionales METADATOS.csv",
+       "descripcion": "Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%203/2025/2/Metadatos.csv",
+       "publicado": "2025-03-13T04:07:27.696457-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 2,
+       "mes_nombre": "febrero",
+       "numeral": "Numeral 4",
+       "obligacion": "Detalle Licencia y comisiones",
+       "archivo": "4-detalle-licencia-comisiones DICCIONARIO.csv",
+       "descripcion": "3. Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%204/2025/2/3.%20Diccionario.csv",
+       "publicado": "2025-03-13T04:08:20.773052-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 2,
+       "mes_nombre": "febrero",
+       "numeral": "Numeral 4",
+       "obligacion": "Detalle Licencia y comisiones",
+       "archivo": "4-detalle-licencia-comisiones CONJUNTO DE DATOS.csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%204/2025/2/Conjunto%20de%20datos.csv",
+       "publicado": "2025-03-13T04:08:20.787985-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 2,
+       "mes_nombre": "febrero",
+       "numeral": "Numeral 4",
+       "obligacion": "Detalle Licencia y comisiones",
+       "archivo": "4-detalle-licencia-comisiones METADATOS.csv",
+       "descripcion": "2. Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%204/2025/2/2.%20Metadatos.csv",
+       "publicado": "2025-03-13T04:08:20.989932-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 2,
+       "mes_nombre": "febrero",
+       "numeral": "Numeral 5-22",
+       "obligacion": "-Servicios formularios formatos tramites",
+       "archivo": "5.22 Diccionario Febrero.csv",
+       "descripcion": "Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%205-22/2025/2/Diccionario.csv",
+       "publicado": "2025-03-13T04:09:04.083635-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 2,
+       "mes_nombre": "febrero",
+       "numeral": "Numeral 5-22",
+       "obligacion": "-Servicios formularios formatos tramites",
+       "archivo": "5.22Conjunto de Datos Febrero.csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%205-22/2025/2/Conjunto%20de%20datos.csv",
+       "publicado": "2025-03-13T04:09:04.083948-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 2,
+       "mes_nombre": "febrero",
+       "numeral": "Numeral 5-22",
+       "obligacion": "-Servicios formularios formatos tramites",
+       "archivo": "5.22 Metadatos Febrero.csv",
+       "descripcion": "Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%205-22/2025/2/Metadatos.csv",
+       "publicado": "2025-03-13T04:09:04.084348-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 2,
+       "mes_nombre": "febrero",
+       "numeral": "Numeral 8",
+       "obligacion": "Procesos de contratación publica",
+       "archivo": "Diccionario (1).csv",
+       "descripcion": "Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%208/2025/2/Diccionario.csv",
+       "publicado": "2025-03-20T05:17:24.906882-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 2,
+       "mes_nombre": "febrero",
+       "numeral": "Numeral 8",
+       "obligacion": "Procesos de contratación publica",
+       "archivo": "Conjunto de datos (1).csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%208/2025/2/Conjunto%20de%20datos.csv",
+       "publicado": "2025-03-20T05:17:24.911038-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 2,
+       "mes_nombre": "febrero",
+       "numeral": "Numeral 8",
+       "obligacion": "Procesos de contratación publica",
+       "archivo": "Metadatos (3).csv",
+       "descripcion": "Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%208/2025/2/Metadatos.csv",
+       "publicado": "2025-03-20T05:17:24.927187-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 2,
+       "mes_nombre": "febrero",
+       "numeral": "Numeral 9",
+       "obligacion": "Listado de empresas y personas que han incumplido contratos",
+       "archivo": "9-listado-de-empresas-y-personas-que-han-incumplido-contratos-febrero-CONJUNTO DE DATOS.csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%209/2025/2/Conjunto%20de%20datos.csv",
+       "publicado": "2025-03-13T04:12:53.691715-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 2,
+       "mes_nombre": "febrero",
+       "numeral": "Numeral 9",
+       "obligacion": "Listado de empresas y personas que han incumplido contratos",
+       "archivo": "9-listado-de-empresas-y-personas-que-han-incumplido-contratos-febrero-METADATOS.csv",
+       "descripcion": "Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%209/2025/2/Metadatos.csv",
+       "publicado": "2025-03-13T04:12:53.704381-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 2,
+       "mes_nombre": "febrero",
+       "numeral": "Numeral 9",
+       "obligacion": "Listado de empresas y personas que han incumplido contratos",
+       "archivo": "9-listado-de-empresas-y-personas-que-han-incumplido-contratos-febrero-DICCIONARIO.csv",
+       "descripcion": "Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%209/2025/2/Diccionario.csv",
+       "publicado": "2025-03-13T04:12:53.716709-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
+       "obligacion": "obligación específica",
+       "archivo": "1. Conjunto de datos (Resoluciones) (1).csv",
+       "descripcion": "1. Conjunto de datos (Resoluciones)",
+       "url": "/media/transparencia/1360001010001/Art.%2024%20Gobiernos%20Auto%CC%81nomos%20Descentralizados/2025/3/1.%20Conjunto%20de%20datos%20(Resoluciones).csv",
+       "publicado": "2025-04-14T10:40:54.274897-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
+       "obligacion": "obligación específica",
+       "archivo": "2. Diccionario (Actas) (1).csv",
+       "descripcion": "2. Diccionario (Actas)",
+       "url": "/media/transparencia/1360001010001/Art.%2024%20Gobiernos%20Auto%CC%81nomos%20Descentralizados/2025/3/2.%20Diccionario%20(Actas).csv",
+       "publicado": "2025-04-14T10:40:54.283661-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
+       "obligacion": "obligación específica",
+       "archivo": "2. Metadatos (Actas) (1).csv",
+       "descripcion": "2. Metadatos (Actas)",
+       "url": "/media/transparencia/1360001010001/Art.%2024%20Gobiernos%20Auto%CC%81nomos%20Descentralizados/2025/3/2.%20Metadatos%20(Actas).csv",
+       "publicado": "2025-04-14T10:40:54.293059-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
+       "obligacion": "obligación específica",
+       "archivo": "2. Conjunto de datos (Actas) (1).csv",
+       "descripcion": "2. Conjunto de datos (Actas)",
+       "url": "/media/transparencia/1360001010001/Art.%2024%20Gobiernos%20Auto%CC%81nomos%20Descentralizados/2025/3/2.%20Conjunto%20de%20datos%20(Actas).csv",
+       "publicado": "2025-04-14T10:40:54.302320-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
+       "obligacion": "obligación específica",
+       "archivo": "1. Metadatos (Resoluciones) (1).csv",
+       "descripcion": "1. Metadatos (Resoluciones)",
+       "url": "/media/transparencia/1360001010001/Art.%2024%20Gobiernos%20Auto%CC%81nomos%20Descentralizados/2025/3/1.%20Metadatos%20(Resoluciones).csv",
+       "publicado": "2025-04-14T10:40:54.314269-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
+       "obligacion": "obligación específica",
+       "archivo": "1. Diccionario (Resoluciones) (1) (1).csv",
+       "descripcion": "1. Diccionario (Resoluciones)",
+       "url": "/media/transparencia/1360001010001/Art.%2024%20Gobiernos%20Auto%CC%81nomos%20Descentralizados/2025/3/1.%20Diccionario%20(Resoluciones).csv",
+       "publicado": "2025-04-14T10:40:54.326836-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 1.1",
+       "obligacion": "Estructura orgánica",
+       "archivo": "1_1-estructura-organica - conjunto de datos.csv",
+       "descripcion": "1.Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%201.1/2025/3/1.Conjunto%20de%20datos.csv",
+       "publicado": "2025-04-08T10:21:32.507684-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 1.1",
+       "obligacion": "Estructura orgánica",
+       "archivo": "1_1-estructura-organica - diccionario.csv",
+       "descripcion": "Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%201.1/2025/3/Diccionario.csv",
+       "publicado": "2025-04-08T10:21:32.513161-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 1.1",
+       "obligacion": "Estructura orgánica",
+       "archivo": "1_1-estructura-organica - METADATOS.csv",
+       "descripcion": "Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%201.1/2025/3/Metadatos.csv",
+       "publicado": "2025-04-08T10:21:32.513434-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 1.2",
+       "obligacion": "Base Legal regulaciones procedimientos internos",
+       "archivo": "1-2-base-legal-regulaciones-procedimientos-internos- DICCIONARIO DE DATOS.csv",
+       "descripcion": "Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%201.2/2025/3/Diccionario.csv",
+       "publicado": "2025-04-08T10:22:04.962331-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 1.2",
+       "obligacion": "Base Legal regulaciones procedimientos internos",
+       "archivo": "1-2-base-legal-regulaciones-procedimientos-internos- METADATOS.csv",
+       "descripcion": "Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%201.2/2025/3/Metadatos.csv",
+       "publicado": "2025-04-08T10:22:04.979338-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 1.2",
+       "obligacion": "Base Legal regulaciones procedimientos internos",
+       "archivo": "1-2-base-legal-regulaciones-procedimientos-internos- CONJUNTO DE DATOS .csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%201.2/2025/3/Conjunto%20de%20datos.csv",
+       "publicado": "2025-04-08T10:22:04.997036-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 14",
+       "obligacion": "Responsables del acceso de informacion publica",
+       "archivo": "14. METADATOS.csv",
+       "descripcion": "Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%2014/2025/3/Metadatos.csv",
+       "publicado": "2025-04-08T10:38:16.839781-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 14",
+       "obligacion": "Responsables del acceso de informacion publica",
+       "archivo": "14. DICCIONARIO.csv",
+       "descripcion": "Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%2014/2025/3/Diccionario.csv",
+       "publicado": "2025-04-08T10:38:16.839586-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 14",
+       "obligacion": "Responsables del acceso de informacion publica",
+       "archivo": "Conjunto de datos (2).csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%2014/2025/3/Conjunto%20de%20datos.csv",
+       "publicado": "2025-04-08T10:38:16.841087-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 15",
+       "obligacion": "Texto integro de los contratos colectivos vigentes y reformas",
+       "archivo": "15-texto-integro-de-los-contratos-colectivos-vigentes-y-reformas - DICCIONARIO DE DATOS.csv",
+       "descripcion": "Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%2015/2025/3/Diccionario.csv",
+       "publicado": "2025-04-08T10:38:35.610658-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 15",
+       "obligacion": "Texto integro de los contratos colectivos vigentes y reformas",
+       "archivo": "15-texto-integro-de-los-contratos-colectivos-vigentes-y-reformas - METADATOS.csv",
+       "descripcion": "Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%2015/2025/3/Metadatos.csv",
+       "publicado": "2025-04-08T10:38:35.611009-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 15",
+       "obligacion": "Texto integro de los contratos colectivos vigentes y reformas",
+       "archivo": "15-texto-integro-de-los-contratos-colectivos-vigentes-y-reformas - CONJUNTO DE DATOS.csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%2015/2025/3/Conjunto%20de%20datos.csv",
+       "publicado": "2025-04-08T10:38:35.612514-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 16",
+       "obligacion": "Índice información reservada",
+       "archivo": "Conjunto de datos (5).csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%2016/2025/3/Conjunto%20de%20datos.csv",
+       "publicado": "2025-04-08T14:18:32.780273-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 16",
+       "obligacion": "Índice información reservada",
+       "archivo": "16. METADATOS.csv",
+       "descripcion": "Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%2016/2025/3/Metadatos.csv",
+       "publicado": "2025-04-08T14:18:32.787847-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 16",
+       "obligacion": "Índice información reservada",
+       "archivo": "Diccionario (2).csv",
+       "descripcion": "Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%2016/2025/3/Diccionario.csv",
+       "publicado": "2025-04-08T14:18:32.789381-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 17",
+       "obligacion": "Audiencias y reuniones autoridades",
+       "archivo": "Conjunto de datos (6).csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%2017/2025/3/Conjunto%20de%20datos.csv",
+       "publicado": "2025-04-08T14:21:58.767392-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 17",
+       "obligacion": "Audiencias y reuniones autoridades",
+       "archivo": "17. Metadatos.csv",
+       "descripcion": "Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%2017/2025/3/Metadatos.csv",
+       "publicado": "2025-04-08T14:21:58.770082-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 17",
+       "obligacion": "Audiencias y reuniones autoridades",
+       "archivo": "Diccionario (3).csv",
+       "descripcion": "Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%2017/2025/3/Diccionario.csv",
+       "publicado": "2025-04-08T14:21:58.785056-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 18",
+       "obligacion": "Detalles de convenios nacionales e internacionales",
+       "archivo": "18-detalle-de-convenios-nacionales-e-internacionales- DICCIONARIO DE DATOS.csv",
+       "descripcion": "Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%2018/2025/3/Diccionario.csv",
+       "publicado": "2025-04-08T10:44:45.337348-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 18",
+       "obligacion": "Detalles de convenios nacionales e internacionales",
+       "archivo": "18-detalle-de-convenios-nacionales-e-internacionales- CONJUNTO DE DATOS.csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%2018/2025/3/Conjunto%20de%20datos.csv",
+       "publicado": "2025-04-08T10:44:45.338359-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 18",
+       "obligacion": "Detalles de convenios nacionales e internacionales",
+       "archivo": "18-detalle-de-convenios-nacionales-e-internacionales- METADATOS.csv",
+       "descripcion": "Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%2018/2025/3/Metadatos.csv",
+       "publicado": "2025-04-08T10:44:45.341934-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 19",
+       "obligacion": "Detalle donativos oficiales y protocolares",
+       "archivo": "19-detalle-donativos-oficiales-y-protocolares....csv",
+       "descripcion": "Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%2019/2025/3/Diccionario.csv",
+       "publicado": "2025-04-08T10:45:13.135841-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 19",
+       "obligacion": "Detalle donativos oficiales y protocolares",
+       "archivo": "19-detalle-donativos-oficiales-y-protocolares..csv",
+       "descripcion": "Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%2019/2025/3/Metadatos.csv",
+       "publicado": "2025-04-08T10:45:13.167631-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 19",
+       "obligacion": "Detalle donativos oficiales y protocolares",
+       "archivo": "19-detalle-donativos-oficiales-y-protocolares.csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%2019/2025/3/Conjunto%20de%20datos.csv",
+       "publicado": "2025-04-08T10:45:13.169478-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 2",
+       "obligacion": "Directorio y distributivo personal de la entidad",
+       "archivo": "2_1-2_2-directorio-y-distributivo-personal-de-la-entidad- metadatos.csv",
+       "descripcion": "Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%202/2025/3/Metadatos.csv",
+       "publicado": "2025-04-08T10:22:28.081248-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 2",
+       "obligacion": "Directorio y distributivo personal de la entidad",
+       "archivo": "2_1-2_2-directorio-y-distributivo-personal-de-la-entidad- diccionario.csv",
+       "descripcion": "Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%202/2025/3/Diccionario.csv",
+       "publicado": "2025-04-08T10:22:28.081829-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 2",
+       "obligacion": "Directorio y distributivo personal de la entidad",
+       "archivo": "2_1-2_2-directorio-y-distributivo-personal-de-la-entidad- conjunto de datos.csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%202/2025/3/Conjunto%20de%20datos.csv",
+       "publicado": "2025-04-08T10:22:28.099461-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 20",
+       "obligacion": "Registro de activos de informacion frecuente y complementaria",
+       "archivo": "20. METADATOS.csv",
+       "descripcion": "Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%2020/2025/3/Metadatos.csv",
+       "publicado": "2025-04-08T14:24:36.451224-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 20",
+       "obligacion": "Registro de activos de informacion frecuente y complementaria",
+       "archivo": "Diccionario (4).csv",
+       "descripcion": "Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%2020/2025/3/Diccionario.csv",
+       "publicado": "2025-04-08T14:24:36.455069-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 20",
+       "obligacion": "Registro de activos de informacion frecuente y complementaria",
+       "archivo": "Conjunto de datos (7).csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%2020/2025/3/Conjunto%20de%20datos.csv",
+       "publicado": "2025-04-08T14:24:36.459304-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 23",
+       "obligacion": "Detalle personas servidoras publicas con acciones afirmativas",
+       "archivo": "23-detalle-personas-servidoras-publicas-con-acciones-afirmativas - conjunto de datos.csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%2023/2025/3/Conjunto%20de%20datos.csv",
+       "publicado": "2025-04-08T10:46:14.489872-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 23",
+       "obligacion": "Detalle personas servidoras publicas con acciones afirmativas",
+       "archivo": "23-detalle-personas-servidoras-publicas-con-acciones-afirmativas - diccionario.csv",
+       "descripcion": "Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%2023/2025/3/Diccionario.csv",
+       "publicado": "2025-04-08T10:46:14.491400-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 23",
+       "obligacion": "Detalle personas servidoras publicas con acciones afirmativas",
+       "archivo": "23-detalle-personas-servidoras-publicas-con-acciones-afirmativas - metadatos.csv",
+       "descripcion": "Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%2023/2025/3/Metadatos.csv",
+       "publicado": "2025-04-08T10:46:14.492765-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 3",
+       "obligacion": "Remuneraciones ingresos adicionales",
+       "archivo": "3-remuneraciones-ingresos-adicionales - conjunto de datos.csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%203/2025/3/Conjunto%20de%20datos.csv",
+       "publicado": "2025-04-08T10:22:49.636091-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 3",
+       "obligacion": "Remuneraciones ingresos adicionales",
+       "archivo": "3-remuneraciones-ingresos-adicionales - diccionario.csv",
+       "descripcion": "Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%203/2025/3/Diccionario.csv",
+       "publicado": "2025-04-08T10:22:49.636782-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 3",
+       "obligacion": "Remuneraciones ingresos adicionales",
+       "archivo": "3-remuneraciones-ingresos-adicionales - metadatos.csv",
+       "descripcion": "Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%203/2025/3/Metadatos.csv",
+       "publicado": "2025-04-08T10:22:49.638285-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 4",
+       "obligacion": "Detalle Licencia y comisiones",
+       "archivo": "4-detalle-licencia-comisiones - conjunto de datos.csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%204/2025/3/Conjunto%20de%20datos.csv",
+       "publicado": "2025-04-08T10:26:57.363745-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 4",
+       "obligacion": "Detalle Licencia y comisiones",
+       "archivo": "4-detalle-licencia-comisiones - diccionario.csv",
+       "descripcion": "3. Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%204/2025/3/3.%20Diccionario.csv",
+       "publicado": "2025-04-08T10:26:57.386169-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 4",
+       "obligacion": "Detalle Licencia y comisiones",
+       "archivo": "4-detalle-licencia-comisiones - metadatos.csv",
+       "descripcion": "2. Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%204/2025/3/2.%20Metadatos.csv",
+       "publicado": "2025-04-08T10:26:57.404278-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 5-22",
+       "obligacion": "-Servicios formularios formatos tramites",
+       "archivo": "5.22 Metadatos.csv",
+       "descripcion": "Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%205-22/2025/3/Metadatos.csv",
+       "publicado": "2025-04-08T10:27:14.657418-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 5-22",
+       "obligacion": "-Servicios formularios formatos tramites",
+       "archivo": "5.22 Diccionario.csv",
+       "descripcion": "Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%205-22/2025/3/Diccionario.csv",
+       "publicado": "2025-04-08T10:27:14.656871-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 5-22",
+       "obligacion": "-Servicios formularios formatos tramites",
+       "archivo": "5.22 Conjunto de Datos.csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%205-22/2025/3/Conjunto%20de%20datos.csv",
+       "publicado": "2025-04-08T10:27:14.657115-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 8",
+       "obligacion": "Procesos de contratación publica",
+       "archivo": "8. Procesos de contratación publica (2).csv",
+       "descripcion": "Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%208/2025/3/Diccionario.csv",
+       "publicado": "2025-04-08T10:29:33.745048-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 8",
+       "obligacion": "Procesos de contratación publica",
+       "archivo": "8. Procesos de contratación publica.csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%208/2025/3/Conjunto%20de%20datos.csv",
+       "publicado": "2025-04-08T10:29:33.746435-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 8",
+       "obligacion": "Procesos de contratación publica",
+       "archivo": "8. Procesos de contratación publica (3).csv",
+       "descripcion": "Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%208/2025/3/Metadatos.csv",
+       "publicado": "2025-04-08T10:29:33.748536-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 9",
+       "obligacion": "Listado de empresas y personas que han incumplido contratos",
+       "archivo": "9. Listado de empresas y personas que han incumplido contratos.csv",
+       "descripcion": "Conjunto de datos",
+       "url": "/media/transparencia/1360001010001/Numeral%209/2025/3/Conjunto%20de%20datos.csv",
+       "publicado": "2025-04-08T10:36:28.598670-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 9",
+       "obligacion": "Listado de empresas y personas que han incumplido contratos",
+       "archivo": "9. Listado de empresas y personas que han incumplido contratos.....csv",
+       "descripcion": "Diccionario",
+       "url": "/media/transparencia/1360001010001/Numeral%209/2025/3/Diccionario.csv",
+       "publicado": "2025-04-08T10:36:28.606513-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      },
+      {
+       "anio": 2025,
+       "mes": 3,
+       "mes_nombre": "marzo",
+       "numeral": "Numeral 9",
+       "obligacion": "Listado de empresas y personas que han incumplido contratos",
+       "archivo": "9. Listado de empresas y personas que han incumplido contratos...csv",
+       "descripcion": "Metadatos",
+       "url": "/media/transparencia/1360001010001/Numeral%209/2025/3/Metadatos.csv",
+       "publicado": "2025-04-08T10:36:28.611317-05:00",
+       "verificacion": {
+        "estado": "no_comprobada"
+       }
+      }
+     ]
+    },
+    "2026": {
+     "n_archivos": 0,
+     "meses_con_datos": [],
+     "numerales": [],
+     "registros": []
+    }
+   }
+  }
+ }
+}
