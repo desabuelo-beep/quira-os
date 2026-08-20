@@ -63,6 +63,44 @@ def _write(entry: dict) -> None:
                    entry.get("event", "?"))
 
 
+# ── Llegada al portal · antes de autenticarse ─────────────────────────────────
+# POR QUÉ (2026-08-18). Javo, tras publicar el landing: *«están ingresando a QUIRA
+# y no sé quiénes ni cómo»*. La bitácora sólo empezaba en el LOGIN, de modo que
+# todo el tráfico que llega a la puerta y no entra era invisible — y es
+# justamente el que interesa cuando se acaba de publicar en una red.
+#
+# SE REGISTRA LA PROCEDENCIA, NO A LA PERSONA. Ni IP, ni huella de navegador, ni
+# identificador persistente: sólo de dónde viene el enlace (UTM) y qué sesión
+# anónima abrió. Un sistema que audita transparencia pública no puede rastrear a
+# quien lo visita — y menos con herramientas de terceros. La analítica externa se
+# descartó por eso y porque enviaría el dato fuera del control de Dylus Lab.
+
+def log_landing(utm: dict | None = None) -> None:
+    """Una llegada al portal público. Se llama UNA vez por sesión."""
+    if st.session_state.get("_landing_registrado"):
+        return
+    st.session_state["_landing_registrado"] = True
+    u = {k: v for k, v in (utm or {}).items() if v}
+    _write({"ts": _ts(), "event": "LANDING",
+            "origen": u.get("utm_source", "directo"),
+            "campana": u.get("utm_campaign", "—"),
+            "medio": u.get("utm_medium", "—")})
+
+
+def leer_utm(params) -> dict:
+    """Extrae los parámetros de campaña del enlace (`?utm_source=linkedin`).
+
+    Sólo lee las cinco claves estándar y descarta el resto: un parámetro
+    arbitrario en la URL no debe acabar en la bitácora."""
+    permitidas = ("utm_source", "utm_medium", "utm_campaign",
+                  "utm_content", "utm_term")
+    try:
+        return {k: str(params.get(k, ""))[:40] for k in permitidas
+                if params.get(k)}
+    except Exception:                                    # noqa: BLE001
+        return {}
+
+
 # ── Eventos de autenticación ──────────────────────────────────────────────────
 
 def log_login_ok(usuario: str) -> None:

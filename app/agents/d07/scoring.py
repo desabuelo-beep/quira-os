@@ -45,9 +45,20 @@ class ScoreCD:
 
 
 def evaluar_cd(cd_id: str, ev: EvidenciaCD,
-               fecha_monitoreo: _dt.date | None = None) -> ScoreCD:
-    """Instructivo Tabla 0 (CTA) · Tabla 1 (ETA) · Tabla 2 (RP) · Tabla 5 (CI)."""
+               fecha_monitoreo: _dt.date | None = None,
+               formatos_abiertos: set[str] | None = None,
+               dia_limite: int | None = None) -> ScoreCD:
+    """Instructivo Tabla 0 (CTA) · Tabla 1 (ETA) · Tabla 2 (RP) · Tabla 5 (CI).
+
+    PARÁMETROS NORMATIVOS (2026-08-18 · ADR-051). `formatos_abiertos` y `dia_limite`
+    los declara la Regla Operativa y los pasa el orquestador. Los valores del
+    Instructivo 2024 quedan como respaldo para que este motor siga siendo usable
+    de forma aislada —así se probó durante meses—, pero **en una corrida real mandan
+    los de la RO**: si el órgano rector cambia el plazo, cambia la regla y no este
+    archivo. Antes ambos estaban escritos aquí y no había forma de saberlo desde fuera."""
     fecha_monitoreo = fecha_monitoreo or _dt.date.today()
+    formatos_abiertos = formatos_abiertos or _TRES_ESTRELLAS
+    dia_limite = dia_limite if dia_limite is not None else 15
     obs: list[str] = []
 
     if not ev.existe:
@@ -67,13 +78,13 @@ def evaluar_cd(cd_id: str, ev: EvidenciaCD,
             obs.append("Desactualizada: la fecha del dato no es del mes anterior.")
 
     fmt = (ev.formato_archivo or "").lower().lstrip(".")
-    eta = 1 if fmt in _TRES_ESTRELLAS else 0
+    eta = 1 if fmt in formatos_abiertos else 0
     if not eta:
         obs.append(f"Datos no abiertos (formato '{fmt or '—'}' < 3★ requeridas).")
 
-    rp = 1 if (ev.fecha_registro and ev.fecha_registro.day <= 15) else 0
+    rp = 1 if (ev.fecha_registro and ev.fecha_registro.day <= dia_limite) else 0
     if not rp:
-        obs.append("Registro fuera del plazo (posterior al día 15).")
+        obs.append(f"Registro fuera del plazo (posterior al día {dia_limite}).")
 
     ci = 1 if (ev.enlaces_vivos and ev.vigencia_ok and ev.validez_ok) else 0
     if not ci:

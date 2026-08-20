@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QUIRA · Infraestructura de Conocimiento Verificable</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+    :root {
+      --coral: #C1392B;        /* Spondylus · Único acento identitario */
+      --coral-cl: #D4715F;     /* Spondylus claro */
+      --coral-dp: #8E2419;     /* Spondylus profundo */
+      --coral-bg: rgba(193, 57, 43, 0.06);
+      --coral-glow: rgba(193, 57, 43, 0.18);
+      --plano: #D9E0E5;        /* Base · Papel de levantamiento */
+      --sup: #F3F6F7;          /* Superficie de tarjeta */
+      --carril: #C2CDD4;       /* Ausencia de evidencia */
+      --pizarra: #4E6674;      /* Dato sin evidencia */
+      --tx: #18232B;           /* Tinta · azul-pizarra profundo */
+      --tx2: #52616B;
+      --tx3: #8296A2;
+      --bd: #B9C6CD;
+      --sf: #F3F6F7;
+      --ancho: 1180px;
+      --lectura: 100%;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--plano);
+      color: var(--tx);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* Textura de papel topográfico / plano auditado */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)' opacity='.03'/%3E%3C/svg%3E");
+    }
+
+    /* Fondo radial sutil Spondylus */
+    .q-bg-glow {
+      position: fixed;
+      top: 0; left: 0; right: 0; height: 500px;
+      background: radial-gradient(ellipse 58% 34% at 50% -8%, rgba(193,57,43,.065) 0%, transparent 65%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .qw {
+      max-width: var(--ancho);
+      margin: 0 auto;
+      padding: 0 34px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ═══ BARRA SUPERIOR (STICKY NAVBAR ENHANCED) ═══ */
+    .q-top {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(217, 224, 229, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--bd);
+      transition: all 0.3s ease;
+    }
+
+    .q-top-in {
+      max-width: var(--ancho);
+      margin: 0 auto;
+      padding: 11px 34px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .q-top-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .q-top-n {
+      font: 700 15px/1 'Archivo', sans-serif;
+      letter-spacing: 0.18em;
+      color: var(--tx);
+    }
+
+    .q-top-s {
+      font: 500 9.5px/1 'JetBrains Mono', monospace;
+      letter-spacing: 0.14em;
+      color: var(--tx3);
+      border-left: 1px solid var(--bd);
+      padding-left: 10px;
+      text-transform: uppercase;
+    }
+
+    .q-top-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .q-btn-access {
+      background: var(--sf);
+      border: 1px solid rgba(193, 57, 43, 0.4);
+      color: var(--coral-dp);
+      font: 700 11px/1 'JetBrains Mono', monospace;
+      letter-spacing: 0.12em;
+      padding: 9px 18px;
+      border-radius: 20px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 2px 8px rgba(193, 57, 43, 0.08);
+    }
+
+    .q-btn-access:hover {
+      background: var(--coral);
+      color: #FFF;
+      border-color: var(--coral);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(193, 57, 43, 0.25);
+    }
+
+    .q-btn-access::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    /* ═══ HERO ═══ */
+    .q-hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 68px 26px 36px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .q-hero-logo-wrap {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      animation: q-in 1s cubic-bezier(.2,.7,.3,1) both;
+    }
+
+    /* Resplandor sutil arqueológico alrededor del Isotipo */
+    .q-hero-logo-wrap::after {
+      content: "";
+      position: absolute;
+      inset: -15px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(193,57,43,.12) 0%, transparent 70%);
+      z-index: -1;
+      animation: pulse-glow 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulse-glow {
+      from { opacity: 0.5; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1.08); }
+    }
+
+    @keyframes q-in {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    .q-name {
+      font: 700 58px/1 'Archivo', sans-serif;
+      letter-spacing: 0.2em;
+      color: var(--tx);
+      margin: 24px 0 0;
+      animation: q-in 1s cubic-bezier(.2,.7,.3,1) 0.1s both;
+    }
+
+    .q-promesa {
+      font: 600 12px/1 'JetBrains Mono', monospace;
+      letter-spacing: 0.28em;
+      color: var(--coral-dp);
+      margin-top: 16px;
+      animation: q-in 1s cubic-bezier(.2,.7,.3,1) 0.2s both;
+      background: var(--coral-bg);
+      border: 1px solid rgba(193,57,43,0.18);
+      padding: 6px 16px;
+      border-radius: 20px;
+    }
+
+    .q-cat {
+      font: 500 10px/1 'JetBrains Mono', monospace;
+      letter-spacing: 0.24em;
+      color: var(--tx3);
+      margin-top: 12px;
+      animation: q-in 1s cubic-bezier(.2,.7,.3,1) 0.26s both;
+    }
+
+    .q-tag {
+      font: 400 18px/1.8 'Inter', sans-serif;
+      color: var(--tx2);
+      max-width: 780px;
+      margin-top: 28px;
+      animation: q-in 1s cubic-bezier(.2,.7,.3,1) 0.34s both;
+    }
+
+    .q-tag b {
+      color: var(--tx);
+      font-weight: 600;
+    }
+
+    /* ═══ SECCIONES & KICKER MANTEÑO ═══ */
+    .q-sec {
+      margin: 56px auto 0;
+      max-width: var(--ancho);
+      padding: 0 34px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .q-kick {
+      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .q-kick::before, .q-kick::after {
+      content: "";
+      flex: 1;
+      height: 16px;
+      opacity: 0.6;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='16' viewBox='0 0 64 16'%3E%3Cpath d='M0 8H8V13H24V3H40V13H56V8H64' fill='none' stroke='%23C1392B' stroke-width='1.5' stroke-linejoin='miter'/%3E%3C/svg%3E");
+      background-repeat: repeat-x;
+    }
+
+    .q-kick::before { background-position: right center; }
+    .q-kick::after { background-position: left center; }
+
+    .q-kick-t {
+      flex: 0 0 auto;
+      font: 700 10.5px/1 'JetBrains Mono', monospace;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--coral-dp);
+      border: 1px solid rgba(193, 57, 43, 0.38);
+      border-radius: 20px;
+      padding: 8px 20px;
+      background: var(--sup);
+      white-space: nowrap;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+
+    .q-h2 {
+      font: 600 32px/1.25 'Fraunces', Georgia, serif;
+      color: var(--tx);
+      letter-spacing: -0.015em;
+      margin-bottom: 16px;
+    }
+
+    .q-p {
+      font: 400 16px/1.92 'Inter', sans-serif;
+      color: var(--tx2);
+      max-width: var(--lectura);
+    }
+
+    .q-p b {
+      color: var(--tx);
+      font-weight: 600;
+    }
+
+    .q-p + .q-p {
+      margin-top: 16px;
+    }
+
+    /* ═══ ORIGEN CON DIAGRAMA ESQUEMÁTICO INTEGRADO (NUEVO PROTOTIPO) ═══ */
+    .q-origen-card {
+      border: 1px solid var(--bd);
+      border-left: 4px solid var(--coral);
+      border-radius: 14px;
+      padding: 32px;
+      background: linear-gradient(110deg, var(--coral-bg) 0%, transparent 60%), var(--sf);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .q-quote {
+      font: 400 21px/1.6 'Fraunces', Georgia, serif;
+      color: var(--tx);
+      font-style: italic;
+      margin-bottom: 18px;
+    }
+
+    .q-quote em {
+      color: var(--coral-dp);
+      font-style: italic;
+    }
+
+    .q-txt {
+      font: 400 15px/1.8 'Inter', sans-serif;
+      color: var(--tx2);
+    }
+
+    .q-txt b {
+      color: var(--tx);
+      font-weight: 600;
+    }
+
+    /* Esquema Arqueológico Interactivo / Visualizador */
+    .q-archeo-schematic {
+      border: 1px solid var(--bd);
+      background: var(--plano);
+      border-radius: 10px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .q-archeo-caption {
+      font: 700 9px/1.4 'JetBrains Mono', monospace;
+      letter-spacing: 0.14em;
+      color: var(--pizarra);
+      text-transform: uppercase;
+      margin-top: 12px;
+    }
+
+    /* ═══ NEGACIONES ═══ */
+    .q-nos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .q-no {
+      font: 600 12px/1 'JetBrains Mono', monospace;
+      color: var(--coral-dp);
+      border: 1px solid rgba(193,57,43,0.3);
+      border-radius: 16px;
+      padding: 9px 18px;
+      background: var(--coral-bg);
+    }
+
+    /* ═══ CADENA DE TRAZABILIDAD DINÁMICA (CON ANIMACIÓN & ESTADO INTERACTIVO) ═══ */
+    .q-cad-wrap {
+      margin: 32px 0 12px;
+      position: relative;
+    }
+
+    .q-cad {
+      display: flex;
+      align-items: stretch;
+    }
+
+    .q-link {
+      flex: 1 1 0;
+      min-width: 0;
+      min-height: 110px;
+      border: 1px solid var(--bd);
+      border-radius: 10px;
+      padding: 15px 14px;
+      background: var(--sf);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: all 0.3s cubic-bezier(0.2,0.8,0.2,1);
+      position: relative;
+    }
+
+    .q-link.on {
+      border-color: rgba(78, 102, 116, 0.45);
+      background: rgba(78, 102, 116, 0.08);
+      box-shadow: 0 4px 12px rgba(78, 102, 116, 0.06);
+    }
+
+    .q-link.on:hover {
+      transform: translateY(-2px);
+      border-color: var(--pizarra);
+    }
+
+    .q-link.broken-node {
+      border-color: rgba(193, 57, 43, 0.4);
+      background: rgba(193, 57, 43, 0.04);
+    }
+
+    .q-num {
+      font: 700 10.5px/1 'JetBrains Mono', monospace;
+      letter-spacing: 0.1em;
+      color: var(--tx3);
+    }
+
+    .q-link.on .q-num {
+      color: var(--pizarra);
+    }
+
+    .q-link b {
+      font: 600 13px/1.32 'Inter', sans-serif;
+      color: var(--tx2);
+    }
+
+    .q-link.on b {
+      color: var(--tx);
+    }
+
+    .q-link small {
+      display: block;
+      font: 400 11px/1.45 'Inter', sans-serif;
+      color: var(--tx3);
+      margin-top: auto;
+    }
+
+    /* Uniones en Riel */
+    .q-join {
+      flex: 0 0 32px;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .q-join::before {
+      content: "";
+      position: absolute;
+      left: 0; right: 0;
+      height: 2px;
+      background: rgba(78, 102, 116, 0.45);
+    }
+
+    .q-join::after {
+      content: "›";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--pizarra);
+      font: 700 16px/1 'Inter', sans-serif;
+      background: var(--plano);
+      padding: 0 4px;
+    }
+
+    /* Rotura visual dramatizada */
+    .q-join.rota::before {
+      background: linear-gradient(90deg, rgba(78,102,116,.45) 0 30%, transparent 30% 70%, var(--bd) 70% 100%);
+    }
+
+    .q-join.rota::after {
+      content: "✕";
+      color: var(--coral);
+      font: 800 16px/1 'Inter', sans-serif;
+      animation: pulse-break 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-break {
+      0%, 100% { transform: translateX(-50%) scale(1); opacity: 1; }
+      50% { transform: translateX(-50%) scale(1.25); opacity: 0.8; }
+    }
+
+    /* ═══ EL CÁLCULO (TRES PILARES REFRENADOS) ═══ */
+    .q-duo {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .q-duo-c {
+      border: 1px solid var(--bd);
+      border-radius: 12px;
+      padding: 22px;
+      background: var(--sf);
+      transition: transform 0.25s;
+    }
+
+    .q-duo-c:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.04);
+    }
+
+    .q-duo-t {
+      font: 700 14px/1.3 'Inter', sans-serif;
+      margin-bottom: 8px;
+    }
+
+    .q-duo-d {
+      font: 400 13.5px/1.7 'Inter', sans-serif;
+      color: var(--tx2);
+    }
+
+    /* ═══ PRODUCTOS DE ECOSISTEMA CON ACORDEÓN / TABS (OPTIMIZACIÓN MÓVIL/DESKTOP) ═══ */
+    .q-prods {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .q-prod {
+      border: 1px solid var(--bd);
+      border-left: 4px solid var(--pc, var(--coral));
+      border-radius: 12px;
+      padding: 22px 26px;
+      background: var(--sf);
+      transition: all 0.25s ease;
+    }
+
+    .q-prod:hover {
+      background: #FFF;
+      transform: translateX(4px);
+      box-shadow: 0 4px 18px rgba(0,0,0,0.04);
+    }
+
+    .q-prod-h {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 4px;
+    }
+
+    .q-prod-n {
+      font: 600 20px/1.3 'Fraunces', Georgia, serif;
+      color: var(--tx);
+    }
+
+    .q-prod-e {
+      font: 700 9.5px/1 'JetBrains Mono', monospace;
+      letter-spacing: 0.12em;
+      color: var(--pc, var(--coral));
+      border: 1px solid currentColor;
+      border-radius: 20px;
+      padding: 5px 12px;
+      opacity: 0.65;
+    }
+
+    .q-prod-e.activo {
+      background: var(--coral);
+      border-color: var(--coral);
+      color: #FFF;
+      opacity: 1;
+    }
+
+    .q-prod-r {
+      font: 500 12px/1 'Inter', sans-serif;
+      color: var(--pc, var(--coral));
+      margin-bottom: 10px;
+      opacity: 0.95;
+    }
+
+    .q-prod-d {
+      font: 400 14px/1.75 'Inter', sans-serif;
+      color: var(--tx2);
+    }
+
+    .q-prod-d b {
+      color: var(--tx);
+      font-weight: 600;
+    }
+
+    /* ═══ LA LÍNEA INNEGOCIABLE ═══ */
+    .q-linea {
+      border: 1px solid var(--bd);
+      border-radius: 14px;
+      padding: 24px 28px;
+      margin: 24px 0;
+      background: var(--sf);
+    }
+
+    .q-linea-t {
+      font: 700 10.5px/1 'JetBrains Mono', monospace;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--tx3);
+      margin-bottom: 16px;
+    }
+
+    .q-linea-g {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .q-linea-c {
+      border-radius: 10px;
+      padding: 18px 20px;
+      font: 400 14px/1.7 'Inter', sans-serif;
+      color: var(--tx2);
+    }
+
+    .q-linea-c b { color: var(--tx); font-weight: 600; }
+
+    .q-linea-c.no {
+      border: 1px solid rgba(193,57,43,0.3);
+      background: var(--coral-bg);
+    }
+
+    .q-linea-c.si {
+      border: 1px solid rgba(78,102,116,0.35);
+      background: rgba(78,102,116,0.07);
+    }
+
+    .q-linea-k {
+      display: block;
+      font: 700 10px/1 'JetBrains Mono', monospace;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .q-linea-c.no .q-linea-k { color: var(--coral-dp); }
+    .q-linea-c.si .q-linea-k { color: var(--pizarra); }
+
+    /* ═══ TARJETA DE ACCESO & SEGUIMIENTO (FORMULARIO) ═══ */
+    .q-access-sec {
+      margin-top: 60px;
+      background: var(--sup);
+      border: 1px solid rgba(193, 57, 43, 0.25);
+      border-radius: 16px;
+      padding: 36px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .q-form-t {
+      font: 700 11px/1 'JetBrains Mono', monospace;
+      color: var(--tx3);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      text-align: center;
+      margin-bottom: 14px;
+    }
+
+    .q-form-box {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .q-input-group label {
+      display: block;
+      font: 700 10.5px/1 'JetBrains Mono', monospace;
+      color: var(--tx2);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 6px;
+    }
+
+    .q-input-group input {
+      width: 100%;
+      padding: 12px 16px;
+      background: #FFF;
+      border: 1px solid var(--bd);
+      border-radius: 8px;
+      font-size: 15px;
+      color: var(--tx);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .q-input-group input:focus {
+      border-color: var(--coral);
+    }
+
+    .q-btn-submit {
+      background: var(--coral);
+      color: #FFF;
+      font: 700 13px/1 'JetBrains Mono', monospace;
+      letter-spacing: 0.12em;
+      border: none;
+      border-radius: 10px;
+      padding: 16px;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 8px;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .q-btn-submit:hover {
+      background: var(--coral-dp);
+      transform: translateY(-1px);
+    }
+
+    /* ═══ FOOTER ═══ */
+    .q-footer {
+      text-align: center;
+      padding: 32px 24px 40px;
+      font: 400 12px/1.95 'JetBrains Mono', monospace;
+      color: var(--tx3);
+      border-top: 1px solid var(--bd);
+      margin-top: 48px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .q-footer b { color: var(--tx2); }
+
+    /* ═══ RESPONSIVE ═══ */
+    @media(max-width: 900px) {
+      .q-origen-card { grid-template-columns: 1fr; }
+      .q-duo { grid-template-columns: 1fr; }
+      .q-cad { flex-wrap: wrap; gap: 10px; }
+      .q-link { flex: 1 1 calc(33.333% - 30px); min-height: 96px; }
+      .q-join { flex: 0 0 18px; }
+    }
+
+    @media(max-width: 680px) {
+      .q-name { font-size: 42px; letter-spacing: 0.14em; }
+      .q-h2 { font-size: 25px; }
+      .q-tag { font-size: 15px; }
+      .q-linea-g { grid-template-columns: 1fr; }
+      .q-cad { flex-direction: column; }
+      .q-link { flex: 1 1 auto; }
+      .q-join { flex: 0 0 24px; justify-content: center; }
+      .q-join::before { left: 50%; right: auto; top: 0; bottom: 0; height: auto; width: 2px; }
+      .q-join::after { content: "⌄"; }
+      .q-join.rota::before { background: linear-gradient(180deg, rgba(78,102,116,.45) 0 30%, transparent 30% 70%, var(--bd) 70% 100%); }
+      .q-join.rota::after { content: "✕"; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="q-bg-glow"></div>
+
+  <!-- ═══ BARRA SUPERIOR FIJA ═══ -->
+  <header class="q-top">
+    <div class="q-top-in">
+      <a href="#" class="q-top-brand">
+        <svg width="22" height="24" viewBox="0 0 150 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g fill="#C1392B">
+            <path d="m26.1 18v109h61.5l13.4 18.5h38.6v-10.5h-33l-28.1-39.1h-19.6v-47.1h47.9v47.1h-17.1l7.4 10.3h20.9v-67.1h-70.2v66.9h25.5l6.9 10.8h-43.2v-88.1h91.2v88.1h-24.1l7.8 10.2h27.7v-109h-113.5z"/>
+            <circle cx="82.8" cy="72.6" r="11"/>
+          </g>
+        </svg>
+        <span class="q-top-n">QUIRA</span>
+        <span class="q-top-s">DYLUS LAB · ECUADOR</span>
+      </a>
+      <div class="q-top-actions">
+        <a href="#acceso" class="q-btn-access">ACCEDER AL OBSERVATORIO</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══ HERO PRINCIPAL ═══ -->
+  <section class="q-hero">
+    <div class="q-hero-logo-wrap">
+      <svg width="86" height="92" viewBox="0 0 150 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="QUIRA">
+        <g fill="#C1392B">
+          <path d="m26.1 18v109h61.5l13.4 18.5h38.6v-10.5h-33l-28.1-39.1h-19.6v-47.1h47.9v47.1h-17.1l7.4 10.3h20.9v-67.1h-70.2v66.9h25.5l6.9 10.8h-43.2v-88.1h91.2v88.1h-24.1l7.8 10.2h27.7v-109h-113.5z"/>
+          <circle cx="82.8" cy="72.6" r="11"/>
+        </g>
+      </svg>
+    </div>
+    <h1 class="q-name">QUIRA</h1>
+    <div class="q-promesa">EVIDENCIA QUE TRANSFORMA</div>
+    <div class="q-cat">INTELIGENCIA PÚBLICA · DYLUS LAB · ECUADOR</div>
+    <p class="q-tag">
+      Infraestructura de <b>conocimiento verificable</b> para la gestión pública territorial, al servicio de gobiernos, ciudadanía, academia y cooperación internacional.
+    </p>
+  </section>
+
+  <!-- ═══ ORIGEN: CHISPA CONCEPTUAL Y DOCTRINA DE DISEÑO ═══ -->
+  <section class="q-sec">
+    <div class="q-kick"><span class="q-kick-t">El Origen Manteño</span></div>
+    <h2 class="q-h2">El estándar de valor e integridad territorial</h2>
+    
+    <div class="q-origen">
+      <div class="q-quote">
+        QUIRA toma su nombre de la tradición manteña asociada a la <em>chaquira</em> de <em>Spondylus</em>: una unidad de valor cuya integridad dependía de cada una de sus piezas.
+      </div>
+      <div class="q-txt">
+        Para la cultura manteño-huancavilca, la <b>chaquira</b> no era un ornamento: era una unidad indivisible de valor e intercambio. QUIRA traslada esa lógica al entorno digital: cada documento público, registro presupuestario o respuesta institucional constituye una <b>unidad de evidencia</b>; el sistema las enhebra en una <b>cadena verificable de integridad territorial</b>. Ningún dato aislado sostiene el control social, y la trazabilidad del Estado no existe sin la suma de todos.<br><br>
+        El isotipo incorpora la <b>espiral cuadrada de tradición manteña</b>. Su trazado continuo en ángulo recto representa el <b>recorrido auditable de la evidencia hasta su origen documental</b>; en el núcleo, el nodo central resguarda la unidad indivisible que sostiene la cadena.
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CÓMO FUNCIONA: DOS VÍAS, TRES CUSTODIAS (ADR-045) ═══ -->
+  <section class="q-sec">
+    <div class="q-kick"><span class="q-kick-t">Cómo Funciona</span></div>
+    <h2 class="q-h2">Dos vías de ingesta, tres custodias de evidencia</h2>
+    
+    <p class="q-p">
+      <b>QUIRA Observatorio</b> es la superficie única que integra dos vías de ingesta de evidencia en tres custodias bien diferenciadas:
+    </p>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:14px; margin-top:16px;">
+      <div style="border:1px solid var(--bd); border-radius:10px; padding:16px; background:var(--sf);">
+        <div style="font:700 10.5px/1 'JetBrains Mono',monospace; color:var(--pizarra); margin-bottom:6px;">VÍA 1 · CAPTURA DIRECTA</div>
+        <div style="font:600 14px/1.3 'Inter',sans-serif; color:var(--tx); margin-bottom:4px;">Sistemas Abiertos del Estado</div>
+        <div style="font:400 12.5px/1.6 'Inter',sans-serif; color:var(--tx2);">Monitoreo progresivo mensual sobre SERCOP, Defensoría (LOTAIP), CPCCS y portales institucionales.</div>
+      </div>
+      <div style="border:1px solid var(--bd); border-radius:10px; padding:16px; background:var(--sf);">
+        <div style="font:700 10.5px/1 'JetBrains Mono',monospace; color:var(--coral-dp); margin-bottom:6px;">VÍA 2 · ADQUISICIÓN ASISTIDA</div>
+        <div style="font:600 14px/1.3 'Inter',sans-serif; color:var(--tx); margin-bottom:4px;">Oficios Firmados (LOTAIP)</div>
+        <div style="font:400 12.5px/1.6 'Inter',sans-serif; color:var(--tx2);">Solicitudes asistidas a la entidad con respuesta institucional firmada electrónicamente.</div>
+      </div>
+      <div style="border:1px solid var(--bd); border-radius:10px; padding:16px; background:var(--sf);">
+        <div style="font:700 10.5px/1 'JetBrains Mono',monospace; color:var(--tx3); margin-bottom:6px;">VÍA 2 · APORTE DIRECTO</div>
+        <div style="font:700 14px/1.3 'Inter',sans-serif; color:var(--tx); margin-bottom:4px;">Evidencia Territorial</div>
+        <div style="font:400 12.5px/1.6 'Inter',sans-serif; color:var(--tx2);">Aportes comunitarios y sociales clasificados en la escala de verificabilidad de 5 niveles.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ VISOR CONCEPTUAL DE LOS 12 DOMINIOS (SIN DATOS HARDCODED NI ETIQUETAS COMERCIALES) ═══ -->
+  <section class="q-sec">
+    <div class="q-kick"><span class="q-kick-t">Estructura del Canon</span></div>
+    <h2 class="q-h2">Los 12 Dominios de la Gestión Municipal</h2>
+    <p class="q-p" style="margin-bottom:20px;">
+      El conocimiento del territorio no se mide de forma abstracta: se audita a través de <b>12 dominios de gestión pública</b>. Cada uno define un marco conceptual estricto de verificación documental sobre el ciclo municipal.
+    </p>
+
+    <!-- GRILLA CONCEPTUAL DE LOS 12 DOMINIOS -->
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:14px; margin-top:16px;">
+      
+      <!-- d01 Planificación -->
+      <div style="border:1px solid var(--bd); border-left:3px solid var(--pizarra); border-radius:10px; padding:18px; background:var(--sf);">
+        <div style="font:700 15px/1.3 'Inter',sans-serif; color:var(--tx); margin-bottom:6px;">Planificación Estratégica</div>
+        <div style="font:400 13px/1.6 'Inter',sans-serif; color:var(--tx2);">
+          Verifica la consistencia entre la planificación territorial (PDOT), la programación operativa (POA), la asignación presupuestaria y la ejecución real.
+        </div>
+      </div>
+
+      <!-- d02 Presupuesto -->
+      <div style="border:1px solid var(--bd); border-left:3px solid var(--pizarra); border-radius:10px; padding:18px; background:var(--sf);">
+        <div style="font:700 15px/1.3 'Inter',sans-serif; color:var(--tx); margin-bottom:6px;">Presupuesto & Financiamiento</div>
+        <div style="font:400 13px/1.6 'Inter',sans-serif; color:var(--tx2);">
+          Evalúa la capacidad del cantón de captar, mover y ejecutar recursos a tiempo — y de apalancar capital externo sin caer en subejecución.
+        </div>
+      </div>
+
+      <!-- d03 Mandato Electoral -->
+      <div style="border:1px solid var(--bd); border-left:3px solid var(--pizarra); border-radius:10px; padding:18px; background:var(--sf);">
+        <div style="font:700 15px/1.3 'Inter',sans-serif; color:var(--tx); margin-bottom:6px;">Gobernanza del Mandato Electoral</div>
+        <div style="font:400 13px/1.6 'Inter',sans-serif; color:var(--tx2);">
+          Contrasta el plan de trabajo inscrito ante la autoridad electoral (CNE) contra la programación y ejecución real del plan de gobierno.
+        </div>
+      </div>
+
+      <!-- d04 Holding Municipal -->
+      <div style="border:1px solid var(--bd); border-left:3px solid var(--pizarra); border-radius:10px; padding:18px; background:var(--sf);">
+        <div style="font:700 15px/1.3 'Inter',sans-serif; color:var(--tx); margin-bottom:6px;">Holding e Integración Municipal</div>
+        <div style="font:400 13px/1.6 'Inter',sans-serif; color:var(--tx2);">
+          Mide el desempeño coordinado de las entidades adscritas del municipio (empresas públicas, Bomberos, Patronato).
+        </div>
+      </div>
+
+      <!-- d05 Desarrollo Económico -->
+      <div style="border:1px solid var(--bd); border-left:3px solid var(--pizarra); border-radius:10px; padding:18px; background:var(--sf);">
+        <div style="font:700 15px/1.3 'Inter',sans-serif; color:var(--tx); margin-bottom:6px;">Desarrollo Económico Territorial</div>
+        <div style="font:400 13px/1.6 'Inter',sans-serif; color:var(--tx2);">
+          Analiza la vitalidad económica del territorio: capacidad de sostener producción, empleo y cadenas de valor locales.
+        </div>
+      </div>
+
+      <!-- d06 Salud Institucional -->
+      <div style="border:1px solid var(--bd); border-left:3px solid var(--coral-dp); border-radius:10px; padding:18px; background:var(--sf);">
+        <div style="font:700 15px/1.3 'Inter',sans-serif; color:var(--tx); margin-bottom:6px;">Salud Institucional</div>
+        <div style="font:400 13px/1.6 'Inter',sans-serif; color:var(--tx2);">
+          Evalúa el estado de fondo del aparato público: su capacidad de sostener el cumplimiento de sus funciones en el tiempo.
+        </div>
+      </div>
+
+      <!-- d07 Transparencia -->
+      <div style="border:1px solid var(--bd); border-left:3px solid var(--pizarra); border-radius:10px; padding:18px; background:var(--sf);">
+        <div style="font:700 15px/1.3 'Inter',sans-serif; color:var(--tx); margin-bottom:6px;">Transparencia Activa</div>
+        <div style="font:400 13px/1.6 'Inter',sans-serif; color:var(--tx2);">
+          Contrasta la obligación legal de publicar (LOTAIP) frente a la capacidad real de sostener una gestión auditable.
+        </div>
+      </div>
+
+      <!-- d08 Participación Ciudadana -->
+      <div style="border:1px solid var(--bd); border-left:3px solid var(--pizarra); border-radius:10px; padding:18px; background:var(--sf);">
+        <div style="font:700 15px/1.3 'Inter',sans-serif; color:var(--tx); margin-bottom:6px;">Participación Ciudadana</div>
+        <div style="font:400 13px/1.6 'Inter',sans-serif; color:var(--tx2);">
+          Mide la incidencia real de la ciudadanía en las decisiones públicas y el cumplimiento de los mecanismos constitucionales.
+        </div>
+      </div>
+
+      <!-- d09 Rendición de Cuentas -->
+      <div style="border:1px solid var(--bd); border-left:3px solid var(--pizarra); border-radius:10px; padding:18px; background:var(--sf);">
+        <div style="font:700 15px/1.3 'Inter',sans-serif; color:var(--tx); margin-bottom:6px;">Rendición de Cuentas</div>
+        <div style="font:400 13px/1.6 'Inter',sans-serif; color:var(--tx2);">
+          Espacio de fiscalización y control social que contrasta la asignación aprobada contra la ejecución devengada.
+        </div>
+      </div>
+
+      <!-- d10 Cobertura de Servicios -->
+      <div style="border:1px solid var(--bd); border-left:3px solid var(--pizarra); border-radius:10px; padding:18px; background:var(--sf);">
+        <div style="font:700 15px/1.3 'Inter',sans-serif; color:var(--tx); margin-bottom:6px;">Cobertura de Servicios & Infraestructura</div>
+        <div style="font:400 13px/1.6 'Inter',sans-serif; color:var(--tx2);">
+          Evalúa el acceso real a servicios básicos desde el territorio y la localización del déficit estructural.
+        </div>
+      </div>
+
+      <!-- d11 Inclusión y Equidad -->
+      <div style="border:1px solid var(--bd); border-left:3px solid var(--pizarra); border-radius:10px; padding:18px; background:var(--sf);">
+        <div style="font:700 15px/1.3 'Inter',sans-serif; color:var(--tx); margin-bottom:6px;">Inclusión, Equidad y Género</div>
+        <div style="font:400 13px/1.6 'Inter',sans-serif; color:var(--tx2);">
+          Mide la capacidad del municipio de cerrar las brechas de los grupos de atención prioritaria en el territorio.
+        </div>
+      </div>
+
+      <!-- d12 Sostenibilidad Ambiental -->
+      <div style="border:1px solid var(--bd); border-left:3px solid var(--pizarra); border-radius:10px; padding:18px; background:var(--sf);">
+        <div style="font:700 15px/1.3 'Inter',sans-serif; color:var(--tx); margin-bottom:6px;">Sostenibilidad y Resiliencia Ambiental</div>
+        <div style="font:400 13px/1.6 'Inter',sans-serif; color:var(--tx2);">
+          Equilibrio entre las presiones ambientales y la capacidad del municipio de conservar sus recursos y gestionar riesgos.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ EL PROBLEMA & RIEL DE TRAZABILIDAD DINÁMICO ═══ -->
+  <section class="q-sec">
+    <div class="q-kick"><span class="q-kick-t">El Problema</span></div>
+    <h2 class="q-h2">La información existe. La trazabilidad, no siempre</h2>
+    
+    <p class="q-p">
+      Un compromiso inscrito ante la autoridad electoral puede no incorporarse al plan de desarrollo. La planificación puede no reflejarse en la asignación presupuestaria. El presupuesto puede ejecutarse sin que conste <b>dónde</b> ni <b>sobre qué población</b>. Cada eslabón del ciclo de la gestión pública vive en un <b>sistema distinto del Estado</b>, y ninguno fue diseñado para interoperar con los otros.
+    </p>
+
+    <!-- RIEL CONTINUO DE TRAZABILIDAD -->
+    <div class="q-cad-wrap">
+      <div class="q-cad">
+        <span class="q-link on">
+          <span class="q-num">01</span>
+          <b>Mandato electoral</b>
+          <small>plan de trabajo inscrito · CNE</small>
+        </span>
+        <span class="q-join"></span>
+        <span class="q-link on">
+          <span class="q-num">02</span>
+          <b>Planificación territorial</b>
+          <small>PDOT · POA · Plan Nacional de Desarrollo</small>
+        </span>
+        <span class="q-join"></span>
+        <span class="q-link on">
+          <span class="q-num">03</span>
+          <b>Asignación presupuestaria</b>
+          <small>cédula presupuestaria publicada</small>
+        </span>
+        <span class="q-join"></span>
+        <span class="q-link on">
+          <span class="q-num">04</span>
+          <b>Contratación y ejecución</b>
+          <small>PAC · SERCOP · devengado</small>
+        </span>
+        
+        <!-- ROTURA DRAMATIZADA -->
+        <span class="q-join rota" title="La cadena se interrumpe aquí: ausencia de documento verificable"></span>
+        
+        <span class="q-link broken-node">
+          <span class="q-num" style="color:var(--coral-dp)">05 [CORTE]</span>
+          <b style="color:var(--coral-dp)">Bienes y servicios</b>
+          <small>resultado entregado sin respaldo auditable</small>
+        </span>
+        <span class="q-join"></span>
+        <span class="q-link">
+          <span class="q-num">06</span>
+          <b>Impacto territorial</b>
+          <small>cobertura verificable en el territorio</small>
+        </span>
+      </div>
+    </div>
+
+    <p class="q-p">
+      El problema rara vez es la ausencia de datos: es que <b>la cadena de valor público se interrumpe</b> en algún punto y nadie puede señalar dónde. QUIRA la reconstruye documento por documento y, cuando encuentra el corte, <b>lo nombra</b> — que es la condición para que el monitoreo y la evaluación dejen de depender de la declaración de la propia entidad.
+    </p>
+  </section>
+
+  <!-- ═══ EL CÁLCULO (4 CAPAS: FUENTE -> IA -> MOTOR -> VALIDACIÓN) ═══ -->
+  <section class="q-sec">
+    <div class="q-kick"><span class="q-kick-t">El Cálculo</span></div>
+    <h2 class="q-h2">La cifra no la produce la inteligencia artificial</h2>
+    
+    <p class="q-p">
+      Conviene precisarlo, porque hoy casi todo sistema declara usar inteligencia artificial y eso ha vuelto la afirmación poco informativa. En QUIRA la IA cumple una función acotada —<b>leer, extraer y proponer</b>— y <b>ninguna cifra publicada proviene de ella</b>.
+    </p>
+
+    <div class="q-duo" style="grid-template-columns: repeat(4, 1fr);">
+      <div class="q-duo-c" style="border-left:4px solid var(--pizarra)">
+        <div class="q-duo-t" style="color:var(--pizarra)">1. Fuente Oficial</div>
+        <div class="q-duo-d">
+          Documento institucional público capturado directamente desde los portales del Estado (LOTAIP, SERCOP, CNE, CPCCS).
+        </div>
+      </div>
+      <div class="q-duo-c" style="border-left:4px solid #8E2419">
+        <div class="q-duo-t" style="color:#8E2419">2. La Inteligencia Artificial</div>
+        <div class="q-duo-d">
+          Lee documentos, extrae, clasifica y <b>propone</b> correspondencias. Trabaja sobre volúmenes que ninguna persona podría revisar.
+        </div>
+      </div>
+      <div class="q-duo-c" style="border-left:4px solid #18232B">
+        <div class="q-duo-t" style="color:#18232B">3. Motor Determinista</div>
+        <div class="q-duo-d">
+          <b>No es un LLM.</b> Es un motor matemático: mismas entradas, mismo resultado, siempre. Cada indicador tiene su fórmula explícita.
+        </div>
+      </div>
+      <div class="q-duo-c" style="border-left:4px solid #4E6674">
+        <div class="q-duo-t" style="color:#4E6674">4. Validación Humana</div>
+        <div class="q-duo-d">
+          Contrasta cada propuesta automatizada contra la fuente documental y la acredita. Ninguna cifra existe sin ese paso.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ECOSISTEMA DE PRODUCTOS (ADR-043 / ADR-045) ═══ -->
+  <section class="q-sec">
+    <div class="q-kick"><span class="q-kick-t">El Ecosistema</span></div>
+    <h2 class="q-h2">Un solo cuerpo de conocimiento, varias puertas</h2>
+    <p class="q-p" style="margin-bottom:18px;">
+      <i>Una misma evidencia puede servir a distintos usuarios; lo que cambia es la entrega, no la evidencia ni sus resultados.</i>
+    </p>
+
+    <div class="q-prods">
+      <div class="q-prod" style="--pc:var(--coral)">
+        <div class="q-prod-h">
+          <span class="q-prod-n">QUIRA Observatorio</span>
+          <span class="q-prod-e activo">FASE 1 · ACTIVO</span>
+        </div>
+        <div class="q-prod-r">Superficie pública única · evidencia institucional y social</div>
+        <div class="q-prod-d">
+          La <b>superficie de observación territorial única</b>. Integra el monitoreo progresivo de los <b>222 municipios</b> del país y las vías de adquisición asistida y aporte social en un solo cuerpo de conocimiento verificable. Toda captura se valida antes de publicarse.
+        </div>
+      </div>
+
+      <div class="q-prod" style="--pc:var(--tx2)">
+        <div class="q-prod-h">
+          <span class="q-prod-n">QUIRA Cooperación</span>
+          <span class="q-prod-e">FASE 2 · EN DESARROLLO</span>
+        </div>
+        <div class="q-prod-r">Multilaterales · banca de desarrollo · cooperación bilateral</div>
+        <div class="q-prod-d">
+          Evidencia territorial verificada para <b>organismos multilaterales</b> (CAF, BID, Banco Mundial, PNUD) y <b>agencias de cooperación</b> (GIZ, AECID, JICA, KOICA). Insumo directo para inversión basada en evidencia y gestión por resultados.
+        </div>
+      </div>
+
+      <div class="q-prod" style="--pc:var(--tx2)">
+        <div class="q-prod-h">
+          <span class="q-prod-n">QUIRA Impact</span>
+          <span class="q-prod-e">FASE 2 · EN DESARROLLO</span>
+        </div>
+        <div class="q-prod-r">Universidades · observatorios · centros de investigación · escrutinio público</div>
+        <div class="q-prod-d">
+          El conocimiento abierto para que <b>terceros lo verifiquen</b>: conjuntos de datos, series históricas, metodología documentada y trazabilidad reproducible de cada afirmación hasta su fuente. No entrega opiniones ni rankings ideológicos —<b>el mérito y la responsabilidad de la investigación son de quien la firma</b>.
+        </div>
+      </div>
+
+      <div class="q-prod" style="--pc:var(--tx2)">
+        <div class="q-prod-h">
+          <span class="q-prod-n">QUIRA Institucional</span>
+          <span class="q-prod-e">FASE 2 · EN DESARROLLO</span>
+        </div>
+        <div class="q-prod-r">Gobiernos locales · licencia independiente de gestión</div>
+        <div class="q-prod-d">
+          Herramientas para que el propio gobierno local <b>gestione lo suyo</b> con la evidencia ya publicada: ver dónde se corta su cadena documental y corregirlo. Licencia independiente, con soporte de Dylus Lab — <b>contratarla no modifica una sola línea</b> de lo que el Observatorio publica sobre ese municipio.
+        </div>
+      </div>
+
+      <div class="q-prod" style="--pc:var(--tx3)">
+        <div class="q-prod-h">
+          <span class="q-prod-n">QUIRA Economic</span>
+          <span class="q-prod-e">FASE 3 · LÍNEA FUTURA</span>
+        </div>
+        <div class="q-prod-r">Inversión y desarrollo económico local</div>
+        <div class="q-prod-d">
+          Inteligencia económica del territorio sobre la misma base de evidencia verificada. Declarada formalmente como <b>línea futura</b> (ADR-043): su modelo de operación y sostenibilidad no se anuncia antes de poder sostenerse con rigor.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ DÓNDE ESTÁ LA LÍNEA (INDEPENDENCIA) ═══ -->
+  <section class="q-sec">
+    <div class="q-kick"><span class="q-kick-t">Independencia</span></div>
+    <h2 class="q-h2">Independencia y servicio no se estorban</h2>
+    
+    <div class="q-linea">
+      <div class="q-linea-t">La línea innegociable de QUIRA</div>
+      <div class="q-linea-g">
+        <div class="q-linea-c no">
+          <span class="q-linea-k">Nunca</span>
+          Pagar por ser observado, por la evaluación o por lo que se publica. La observación no se contrata, no se negocia y no se retira.
+        </div>
+        <div class="q-linea-c si">
+          <span class="q-linea-k">Sí, y con gusto</span>
+          Licenciar herramientas para <b>gestionar lo propio</b> con la evidencia ya publicada. Contratarlas <b>no cambia una sola línea</b> de lo publicado.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ACCESO OPERATIVO / CONSOLA DE ADMINISTRACIÓN ═══ -->
+  <section id="acceso" class="q-sec">
+    <div class="q-access-sec">
+      <div class="q-form-t">ACCESO OPERATIVO</div>
+      <div class="q-badge">Consola de administración · Dylus Lab</div>
+      
+      <form class="q-form-box" onsubmit="event.preventDefault(); alert('Verificando clave de acceso...');">
+        <div class="q-input-group">
+          <label>Contraseña</label>
+          <input type="password" placeholder="••••••••••••" required>
+        </div>
+        <button type="submit" class="q-btn-submit">ACCEDER →</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="q-footer">
+    <svg width="24" height="26" viewBox="0 0 150 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="QUIRA">
+      <g fill="#C1392B">
+        <path d="m26.1 18v109h61.5l13.4 18.5h38.6v-10.5h-33l-28.1-39.1h-19.6v-47.1h47.9v47.1h-17.1l7.4 10.3h20.9v-67.1h-70.2v66.9h25.5l6.9 10.8h-43.2v-88.1h91.2v88.1h-24.1l7.8 10.2h27.7v-109h-113.5z"/>
+        <circle cx="82.8" cy="72.6" r="11"/>
+      </g>
+    </svg>
+    <br><br>
+    <b>QUIRA</b> · Dylus Lab © 2026 · Ecuador<br>
+    Infraestructura de Conocimiento Verificable
+  </footer>
+
+</body>
+</html>

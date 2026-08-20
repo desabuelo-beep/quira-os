@@ -1,0 +1,26 @@
+{
+ "_meta": {
+  "que_es": "Perfil del sujeto observado. Reúne la identidad que hasta 2026-08-19 vivía repartida en 11 puntos del código (OBS-032).",
+  "regla": "el instrumento RECIBE un sujeto; no lo contiene",
+  "creado": "2026-08-19",
+  "orden": "los 222 GAD se declaran aquí, uno por archivo; el código no cambia"
+ },
+ "codigo_territorial": "130801",
+ "nombre": "GAD Municipal del Cantón Montecristi",
+ "nombre_corto": "Montecristi",
+ "provincia": "Manabí",
+ "papel": "laboratorio de apropiación · Municipio 001 · el molde, no el destinatario",
+
+ "identidad_en_fuentes": {
+  "dpe_entidad_id": 937,
+  "dpe_entidad_nombre": "GAD Montecristi",
+  "dominio_web": "montecristi.gob.ec",
+  "dominios_asociados": ["cloud.montecristi.gob.ec"]
+ },
+
+ "notas": {
+  "dpe_entidad_id": "identificador del sujeto en la API de la Defensoría del Pueblo. Estaba escrito a mano en dos scripts, uno como int y otro como string.",
+  "dominio_web": "sirve para dos cosas distintas que no deben confundirse: reconocer contenido publicado por el propio sujeto (no es ausencia) y clasificar la procedencia institucional de un enlace.",
+  "dominios_asociados": "servicios del mismo sujeto en otro subdominio. El Nextcloud del GAD sirve el visor en /s/XXXX y el archivo en /s/XXXX/download."
+ }
+}

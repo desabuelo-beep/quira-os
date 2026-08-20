@@ -1,0 +1,12 @@
+{
+ "_meta": {
+  "numeral": "Numeral 18",
+  "transporte": {
+   "intentos": 0,
+   "fallos": 0,
+   "seguidos": 0
+  },
+  "regla": "se abre el documento enlazado; un escaneo se declara no_procesable en vez de suponer su contenido"
+ },
+ "documentos": []
+}

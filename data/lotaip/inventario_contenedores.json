@@ -1,0 +1,615 @@
+{
+ "_meta": {
+  "generado": "2026-08-18",
+  "regla": "la existencia de un enlace no acredita la existencia ni la naturaleza del documento exigido",
+  "limite": "este inventario responde QUÉ ES cada artefacto; si cumple lo decide la Regla Operativa, no este módulo",
+  "transporte": {
+   "intentos": 0,
+   "fallos": 0,
+   "seguidos": 0
+  }
+ },
+ "artefactos": [
+  {
+   "url": "https://cloud.montecristi.gob.ec/index.php/s/5DpXc2D4rj4cWyi",
+   "numeral": "Numeral 1.1",
+   "tipo_declarado": "application/zip",
+   "referencias": 11,
+   "captura": "descargado",
+   "estado": "inspeccionado",
+   "sha256": "1413d445dc171fc0593ce9a2ae9112274df35914fd7a38c1625efcf65068cdc1",
+   "bytes": 246606,
+   "firma": "zip",
+   "naturaleza_material": "contenedor",
+   "contenedor": true,
+   "artefactos_internos": 1,
+   "extensiones_internas": {
+    ".xls": 1
+   },
+   "internos_con_texto": 1,
+   "carpetas": [
+    "Orgánico"
+   ],
+   "declarado_vs_material": "coincide"
+  },
+  {
+   "url": "https://cloud.montecristi.gob.ec/index.php/s/5amqeGPGiMtyyqT",
+   "numeral": "Numeral 17",
+   "tipo_declarado": "application/zip",
+   "referencias": 1,
+   "captura": "descargado",
+   "estado": "inspeccionado",
+   "sha256": "e358dccac8a5c6e11ecf9171e0d9d21ea72cef569d6b8e7c6c6633b892fb9294",
+   "bytes": 1361698,
+   "firma": "zip",
+   "naturaleza_material": "contenedor",
+   "contenedor": true,
+   "artefactos_internos": 2,
+   "extensiones_internas": {
+    ".png": 2
+   },
+   "internos_con_texto": 0,
+   "carpetas": [
+    "24 DE ABRIL"
+   ],
+   "declarado_vs_material": "coincide"
+  },
+  {
+   "url": "https://cloud.montecristi.gob.ec/index.php/s/7JnMGDTcqtJa4tb",
+   "numeral": "Numeral 17",
+   "tipo_declarado": "application/zip",
+   "referencias": 1,
+   "captura": "descargado",
+   "estado": "inspeccionado",
+   "sha256": "bae15bdfea5cb0c8a6a1e56ac202b0c0219729c5d038330e0309662d9864c060",
+   "bytes": 1407538,
+   "firma": "zip",
+   "naturaleza_material": "contenedor",
+   "contenedor": true,
+   "artefactos_internos": 3,
+   "extensiones_internas": {
+    ".jpg": 3
+   },
+   "internos_con_texto": 0,
+   "carpetas": [
+    "21 DE ABRIL"
+   ],
+   "declarado_vs_material": "coincide"
+  },
+  {
+   "url": "https://cloud.montecristi.gob.ec/index.php/s/BQ8mFjYL4BYCaCq",
+   "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
+   "tipo_declarado": "application/zip",
+   "referencias": 2,
+   "captura": "descargado",
+   "estado": "inspeccionado",
+   "sha256": "1d9d982864dc8cd02917b6a6251d49618adf1d241ac59dc71cd82727d02e16b5",
+   "bytes": 6130696,
+   "firma": "zip",
+   "naturaleza_material": "contenedor",
+   "contenedor": true,
+   "artefactos_internos": 8,
+   "extensiones_internas": {
+    ".pdf": 8
+   },
+   "internos_con_texto": 8,
+   "carpetas": [
+    "RESOLUCIONES CP"
+   ],
+   "declarado_vs_material": "coincide"
+  },
+  {
+   "url": "https://cloud.montecristi.gob.ec/index.php/s/By6HT9XfaJedLxt",
+   "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
+   "tipo_declarado": "application/zip",
+   "referencias": 5,
+   "captura": "descargado",
+   "estado": "inspeccionado",
+   "sha256": "6def521fb7626a6abb1bee325f9845886caf01aa4d9523eb37785f6af8191f5b",
+   "bytes": 89936305,
+   "firma": "zip",
+   "naturaleza_material": "contenedor",
+   "contenedor": true,
+   "artefactos_internos": 144,
+   "extensiones_internas": {
+    ".pdf": 144
+   },
+   "internos_con_texto": 144,
+   "carpetas": [
+    "RESOLUCIONES 2026\\RESOLUCIONES ADM",
+    "RESOLUCIONES 2026\\RESOLUCIONES CP",
+    "RESOLUCIONES 2026\\RESOLUCIONES LEGISLATIVAS"
+   ],
+   "declarado_vs_material": "coincide"
+  },
+  {
+   "url": "https://cloud.montecristi.gob.ec/index.php/s/CE5L8kFKZnBX8Q7",
+   "numeral": "Numeral 21",
+   "tipo_declarado": "application/zip",
+   "referencias": 25,
+   "captura": "descargado",
+   "estado": "inspeccionado",
+   "sha256": "c67a43f01ec2a3668cafd33d83a96dfb415bcf0d5eb7b99053c1a93d35f11289",
+   "bytes": 243528,
+   "firma": "zip",
+   "naturaleza_material": "contenedor",
+   "contenedor": true,
+   "artefactos_internos": 5,
+   "extensiones_internas": {
+    ".pdf": 5
+   },
+   "internos_con_texto": 5,
+   "carpetas": [
+    "21_politicas-publicas-o-informacion-grupo-especifico"
+   ],
+   "declarado_vs_material": "coincide"
+  },
+  {
+   "url": "https://cloud.montecristi.gob.ec/index.php/s/D7FjtaATeR3kXXE",
+   "numeral": "Numeral 17",
+   "tipo_declarado": "application/zip",
+   "referencias": 1,
+   "captura": "descargado",
+   "estado": "inspeccionado",
+   "sha256": "b1a24096f29593f9283aad9404e050b7ab9becd0beb2d618c717a4f53c72e0ab",
+   "bytes": 1081483,
+   "firma": "zip",
+   "naturaleza_material": "contenedor",
+   "contenedor": true,
+   "artefactos_internos": 1,
+   "extensiones_internas": {
+    ".png": 1
+   },
+   "internos_con_texto": 0,
+   "carpetas": [
+    "9 DE ABRIL"
+   ],
+   "declarado_vs_material": "coincide"
+  },
+  {
+   "url": "https://cloud.montecristi.gob.ec/index.php/s/DLGyrrZgwjdTwSq",
+   "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
+   "tipo_declarado": "application/zip",
+   "referencias": 1,
+   "captura": "descargado",
+   "estado": "inspeccionado",
+   "sha256": "db750c1e9b6e1b8dc0f82ffa82b3d275bd3e054758acc9f9f6cc9f8afc5288b3",
+   "bytes": 6788792,
+   "firma": "zip",
+   "naturaleza_material": "contenedor",
+   "contenedor": true,
+   "artefactos_internos": 7,
+   "extensiones_internas": {
+    ".pdf": 7
+   },
+   "internos_con_texto": 7,
+   "carpetas": [
+    "RESOLUCIONES LEGISLATIVAS"
+   ],
+   "declarado_vs_material": "coincide"
+  },
+  {
+   "url": "https://cloud.montecristi.gob.ec/index.php/s/FYKjJ8JN2zrc8tw",
+   "numeral": "Numeral 17",
+   "tipo_declarado": "application/zip",
+   "referencias": 1,
+   "captura": "descargado",
+   "estado": "inspeccionado",
+   "sha256": "38a2546a1da3817f6453038831734125f83aff45f3b36ea993f02c016d833c8b",
+   "bytes": 1759334,
+   "firma": "zip",
+   "naturaleza_material": "contenedor",
+   "contenedor": true,
+   "artefactos_internos": 2,
+   "extensiones_internas": {
+    ".png": 2
+   },
+   "internos_con_texto": 0,
+   "carpetas": [
+    "15 DE ABRIL"
+   ],
+   "declarado_vs_material": "coincide"
+  },
+  {
+   "url": "https://cloud.montecristi.gob.ec/index.php/s/GHxEgPLzXGLJbgL",
+   "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
+   "tipo_declarado": "application/zip",
+   "referencias": 10,
+   "captura": "descargado",
+   "estado": "inspeccionado",
+   "sha256": "ebb2ccbbbb9df0d74c27fc1f20caffb78a4f05623eafaeb58ee751e4c48be65a",
+   "bytes": 213140962,
+   "firma": "zip",
+   "naturaleza_material": "contenedor",
+   "contenedor": true,
+   "artefactos_internos": 306,
+   "extensiones_internas": {
+    ".pdf": 306
+   },
+   "internos_con_texto": 306,
+   "carpetas": [
+    "RESOLUCIONES 2025",
+    "RESOLUCIONES 2025\\RESOLUCIONES ADM 2025",
+    "RESOLUCIONES 2025\\RESOLUCIONES CP 2025",
+    "RESOLUCIONES 2025\\RESOLUCIONES LEGISLATIVAS 2025"
+   ],
+   "declarado_vs_material": "coincide"
+  },
+  {
+   "url": "https://cloud.montecristi.gob.ec/index.php/s/NjgMALc25JqoweX",
+   "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
+   "tipo_declarado": "application/zip",
+   "referencias": 2,
+   "captura": "descargado",
+   "estado": "inspeccionado",
+   "sha256": "035c2c9081eece44e0be0b401892df750afa75b2dbce4bb7a3184182f89483e9",
+   "bytes": 129146041,
+   "firma": "zip",
+   "naturaleza_material": "contenedor",
+   "contenedor": true,
+   "artefactos_internos": 194,
+   "extensiones_internas": {
+    ".pdf": 194
+   },
+   "internos_con_texto": 194,
+   "carpetas": [
+    "RESOLUCIONES CP 2025"
+   ],
+   "declarado_vs_material": "coincide"
+  },
+  {
+   "url": "https://cloud.montecristi.gob.ec/index.php/s/XT7pfD6YAzZpa3F",
+   "numeral": "Numeral 17",
+   "tipo_declarado": "application/zip",
+   "referencias": 10,
+   "captura": "descargado",
+   "estado": "inspeccionado",
+   "sha256": "ae4d0ab4a400d0f4d1d5b5bc34bbc2844fe51b90579038bbd9ceae434081aa76",
+   "bytes": 74879785,
+   "firma": "zip",
+   "naturaleza_material": "contenedor",
+   "contenedor": true,
+   "artefactos_internos": 194,
+   "extensiones_internas": {
+    ".jpeg": 89,
+    ".jpg": 83,
+    ".png": 21,
+    ".mp4": 1
+   },
+   "internos_con_texto": 0,
+   "carpetas": [
+    "Anexos Reuniones\\2025\\ABRIL\\1 DE ABRIL",
+    "Anexos Reuniones\\2025\\ABRIL\\10 DE ABRIL",
+    "Anexos Reuniones\\2025\\ABRIL\\15 DE ABRIL",
+    "Anexos Reuniones\\2025\\ABRIL\\2 DE ABRIL",
+    "Anexos Reuniones\\2025\\ABRIL\\21 DE ABRIL",
+    "Anexos Reuniones\\2025\\ABRIL\\23 DE ABRIL",
+    "Anexos Reuniones\\2025\\ABRIL\\24 DE ABRIL",
+    "Anexos Reuniones\\2025\\ABRIL\\7 DE ABRIL"
+   ],
+   "declarado_vs_material": "coincide"
+  },
+  {
+   "url": "https://cloud.montecristi.gob.ec/index.php/s/XZFsyai6HqZFpES",
+   "numeral": "Numeral 17",
+   "tipo_declarado": "application/zip",
+   "referencias": 1,
+   "captura": "descargado",
+   "estado": "inspeccionado",
+   "sha256": "dfbf4509848a5249710a66c6cdd7e1670547313e03e7602f54c608ae47bfad70",
+   "bytes": 1979462,
+   "firma": "zip",
+   "naturaleza_material": "contenedor",
+   "contenedor": true,
+   "artefactos_internos": 3,
+   "extensiones_internas": {
+    ".png": 3
+   },
+   "internos_con_texto": 0,
+   "carpetas": [
+    "10 DE ABRIL"
+   ],
+   "declarado_vs_material": "coincide"
+  },
+  {
+   "url": "https://cloud.montecristi.gob.ec/index.php/s/YcM2B6TSGKtCDAE",
+   "numeral": "Numeral 17",
+   "tipo_declarado": "application/zip",
+   "referencias": 2,
+   "captura": "descargado",
+   "estado": "inspeccionado",
+   "sha256": "072ff76c1ad824de7ca9ed526582c90fed9954625e74f309207dbd29a21ca7b9",
+   "bytes": 1729785,
+   "firma": "zip",
+   "naturaleza_material": "contenedor",
+   "contenedor": true,
+   "artefactos_internos": 6,
+   "extensiones_internas": {
+    ".jpeg": 6
+   },
+   "internos_con_texto": 0,
+   "carpetas": [
+    "ABRIL 2026"
+   ],
+   "declarado_vs_material": "coincide"
+  },
+  {
+   "url": "https://cloud.montecristi.gob.ec/index.php/s/aWKby86sKX59AtB",
+   "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
+   "tipo_declarado": "application/zip",
+   "referencias": 1,
+   "captura": "descargado",
+   "estado": "inspeccionado",
+   "sha256": "9548182155ce70c75ecf68d33722a2276a00a9196d1228630ceb54fb6330e1f9",
+   "bytes": 2488969,
+   "firma": "zip",
+   "naturaleza_material": "contenedor",
+   "contenedor": true,
+   "artefactos_internos": 3,
+   "extensiones_internas": {
+    ".pdf": 3
+   },
+   "internos_con_texto": 3,
+   "carpetas": [
+    "RESOLUCIONES LEGISLATIVAS"
+   ],
+   "declarado_vs_material": "coincide"
+  },
+  {
+   "url": "https://cloud.montecristi.gob.ec/index.php/s/b3KC7Xse87m8w6g",
+   "numeral": "Numeral 17",
+   "tipo_declarado": "application/zip",
+   "referencias": 2,
+   "captura": "descargado",
+   "estado": "inspeccionado",
+   "sha256": "311b9a4f178f96b12087060bfac555997665964d9ee53d02dd4f591db75909bd",
+   "bytes": 10326590,
+   "firma": "zip",
+   "naturaleza_material": "contenedor",
+   "contenedor": true,
+   "artefactos_internos": 35,
+   "extensiones_internas": {
+    ".jpg": 31,
+    ".jpeg": 2,
+    ".png": 2
+   },
+   "internos_con_texto": 0,
+   "carpetas": [
+    "MAYO"
+   ],
+   "declarado_vs_material": "coincide"
+  },
+  {
+   "url": "https://cloud.montecristi.gob.ec/index.php/s/bDSPDNrRrwndoaY",
+   "numeral": "Numeral 21",
+   "tipo_declarado": "application/zip",
+   "referencias": 10,
+   "captura": "descargado",
+   "estado": "inspeccionado",
+   "sha256": "f48100577c43075e0517b808c038a91d36722df3a87d820e5628aac7cc6c75c4",
+   "bytes": 282,
+   "firma": "zip",
+   "naturaleza_material": "contenedor",
+   "contenedor": true,
+   "artefactos_internos": 0,
+   "extensiones_internas": {},
+   "internos_con_texto": 0,
+   "carpetas": [],
+   "declarado_vs_material": "coincide"
+  },
+  {
+   "url": "https://cloud.montecristi.gob.ec/index.php/s/crPct2TEwqoqpgE",
+   "numeral": "Numeral 17",
+   "tipo_declarado": "application/zip",
+   "referencias": 1,
+   "captura": "descargado",
+   "estado": "inspeccionado",
+   "sha256": "0bcc1a7de89f0b1e8b63859a8f08f9165b11302bc6177741ad94341a274041cf",
+   "bytes": 2750278,
+   "firma": "zip",
+   "naturaleza_material": "contenedor",
+   "contenedor": true,
+   "artefactos_internos": 4,
+   "extensiones_internas": {
+    ".jpg": 3,
+    ".png": 1
+   },
+   "internos_con_texto": 0,
+   "carpetas": [
+    "1 DE ABRIL"
+   ],
+   "declarado_vs_material": "coincide"
+  },
+  {
+   "url": "https://cloud.montecristi.gob.ec/index.php/s/eGx86WpBcYEmskH",
+   "numeral": "Numeral 20",
+   "tipo_declarado": "application/zip",
+   "referencias": 5,
+   "captura": "descargado",
+   "estado": "inspeccionado",
+   "sha256": "b363428770e309c34c251a62322177d4fd6672ef63a953332dcb7c741385b897",
+   "bytes": 844772,
+   "firma": "zip",
+   "naturaleza_material": "contenedor",
+   "contenedor": true,
+   "artefactos_internos": 2,
+   "extensiones_internas": {
+    ".jpeg": 1,
+    ".pdf": 1
+   },
+   "internos_con_texto": 1,
+   "carpetas": [
+    "Cumplimiento a la LOTAIP - informe anual"
+   ],
+   "declarado_vs_material": "coincide"
+  },
+  {
+   "url": "https://cloud.montecristi.gob.ec/index.php/s/fQJKX58dGBAzLWo",
+   "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
+   "tipo_declarado": "application/zip",
+   "referencias": 5,
+   "captura": "descargado",
+   "estado": "inspeccionado",
+   "sha256": "0a578720296e8d3a7fb2da8c094ea4bea587b01684531a2da220526a3ae2360e",
+   "bytes": 1319090,
+   "firma": "zip",
+   "naturaleza_material": "contenedor",
+   "contenedor": true,
+   "artefactos_internos": 2,
+   "extensiones_internas": {
+    ".pdf": 2
+   },
+   "internos_con_texto": 2,
+   "carpetas": [
+    "ACTAS"
+   ],
+   "declarado_vs_material": "coincide"
+  },
+  {
+   "url": "https://cloud.montecristi.gob.ec/index.php/s/fxjMN7DLY9os9X4",
+   "numeral": "Numeral 20",
+   "tipo_declarado": "application/zip",
+   "referencias": 14,
+   "captura": "descargado",
+   "estado": "inspeccionado",
+   "sha256": "b48f08085454c3c23ccd16568af88502787c24b7d0bafb2405fa804e4ebf998e",
+   "bytes": 179091,
+   "firma": "zip",
+   "naturaleza_material": "contenedor",
+   "contenedor": true,
+   "artefactos_internos": 2,
+   "extensiones_internas": {
+    ".jpg": 2
+   },
+   "internos_con_texto": 0,
+   "carpetas": [
+    "Cumplimiento a la LOTAIP - informe anual"
+   ],
+   "declarado_vs_material": "coincide"
+  },
+  {
+   "url": "https://cloud.montecristi.gob.ec/index.php/s/pw6ep4oRe4K6WAa",
+   "numeral": "Numeral 1.2",
+   "tipo_declarado": "application/zip",
+   "referencias": 16,
+   "captura": "descargado",
+   "estado": "inspeccionado",
+   "sha256": "4315c3dd5589057015851b160bc1d850f9b6ea7b29ad0b4782eac65b1466f661",
+   "bytes": 500000000,
+   "firma": "zip_ilegible",
+   "posible_truncado_por_limite": true,
+   "naturaleza_material": "no_identificado",
+   "declarado_vs_material": "coincide"
+  },
+  {
+   "url": "https://cloud.montecristi.gob.ec/index.php/s/sdHzwYQpzSbJbWo",
+   "numeral": "Numeral 17",
+   "tipo_declarado": "application/zip",
+   "referencias": 1,
+   "captura": "descargado",
+   "estado": "inspeccionado",
+   "sha256": "9dc69e20a8b290e30e15ab5fb3fbc02993a4ecdb45a3bca1af20629994422272",
+   "bytes": 329800,
+   "firma": "zip",
+   "naturaleza_material": "contenedor",
+   "contenedor": true,
+   "artefactos_internos": 2,
+   "extensiones_internas": {
+    ".png": 2
+   },
+   "internos_con_texto": 0,
+   "carpetas": [
+    "23 DE ABRIL"
+   ],
+   "declarado_vs_material": "coincide"
+  },
+  {
+   "url": "https://cloud.montecristi.gob.ec/index.php/s/w4GC9F2c7DSJNxQ",
+   "numeral": "Numeral 17",
+   "tipo_declarado": "application/zip",
+   "referencias": 1,
+   "captura": "descargado",
+   "estado": "inspeccionado",
+   "sha256": "76641422298c560f5339d80e74343d9109b8e8acf128399922a5efcffeee3dbe",
+   "bytes": 1530056,
+   "firma": "zip",
+   "naturaleza_material": "contenedor",
+   "contenedor": true,
+   "artefactos_internos": 2,
+   "extensiones_internas": {
+    ".png": 2
+   },
+   "internos_con_texto": 0,
+   "carpetas": [
+    "8 DE ABRIL"
+   ],
+   "declarado_vs_material": "coincide"
+  },
+  {
+   "url": "https://cloud.montecristi.gob.ec/index.php/s/xLGkEaBQpMwg9J9",
+   "numeral": "Numeral 17",
+   "tipo_declarado": "application/zip",
+   "referencias": 1,
+   "captura": "descargado",
+   "estado": "inspeccionado",
+   "sha256": "853dc6401e4b98b4cca902896e605d6b12741c174fdff4fe5ff9ff09ae0f2288",
+   "bytes": 1911731,
+   "firma": "zip",
+   "naturaleza_material": "contenedor",
+   "contenedor": true,
+   "artefactos_internos": 3,
+   "extensiones_internas": {
+    ".png": 3
+   },
+   "internos_con_texto": 0,
+   "carpetas": [
+    "2 DE ABRIL"
+   ],
+   "declarado_vs_material": "coincide"
+  },
+  {
+   "url": "https://cloud.montecristi.gob.ec/index.php/s/xbYDmZrFy4yCSP8",
+   "numeral": "Numeral 14",
+   "tipo_declarado": "application/zip",
+   "referencias": 12,
+   "captura": "descargado",
+   "estado": "inspeccionado",
+   "sha256": "51561cedb3833a6459016f2e87e38d773e1b9d1822863ef7c2ce460d76d300ea",
+   "bytes": 673994,
+   "firma": "zip",
+   "naturaleza_material": "contenedor",
+   "contenedor": true,
+   "artefactos_internos": 1,
+   "extensiones_internas": {
+    ".pdf": 1
+   },
+   "internos_con_texto": 1,
+   "carpetas": [
+    "Acuerdo o resolución de creación del Comité de Transparencia  "
+   ],
+   "declarado_vs_material": "coincide"
+  },
+  {
+   "url": "https://cloud.montecristi.gob.ec/index.php/s/xofrxzJcJwHTASw",
+   "numeral": "Numeral 17",
+   "tipo_declarado": "application/zip",
+   "referencias": 1,
+   "captura": "descargado",
+   "estado": "inspeccionado",
+   "sha256": "7446dfd233b0d1c89142bb171ff71746dad845c117af2d765635067d35ae0c02",
+   "bytes": 201155,
+   "firma": "zip",
+   "naturaleza_material": "contenedor",
+   "contenedor": true,
+   "artefactos_internos": 3,
+   "extensiones_internas": {
+    ".jpeg": 3
+   },
+   "internos_con_texto": 0,
+   "carpetas": [
+    "7 DE ABRIL"
+   ],
+   "declarado_vs_material": "coincide"
+  }
+ ]
+}

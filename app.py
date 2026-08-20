@@ -217,6 +217,16 @@ init_session()
 check_session_expiry()
 
 if not is_authenticated():
+    # Llegada al portal · antes de autenticarse (2026-08-18). Hasta hoy la
+    # bitácora empezaba en el LOGIN, así que todo el tráfico que llega a la
+    # puerta y no entra era invisible — justo el que interesa tras publicar el
+    # landing. Se registra la PROCEDENCIA del enlace, nunca a la persona: sin IP,
+    # sin huella de navegador, sin identificador persistente.
+    try:
+        from utils.audit_log import leer_utm, log_landing
+        log_landing(leer_utm(st.query_params))
+    except Exception:                                    # noqa: BLE001
+        pass          # la bitácora nunca bloquea el acceso al portal
     render_login()
     st.stop()
 

@@ -1,0 +1,179 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# CNO-VII-002 · Obligación Específica de Transparencia de los GAD (art. 24 LOTAIP)
+#
+# POR QUÉ EXISTE (2026-08-18). Javo, señalando lo que el monitoreo no veía:
+#   «La norma manda a publicar las sesiones de concejo, no solo los resúmenes. […] Por QUIRA
+#    sabemos que el PAC fue reformado, y no existen las resoluciones de alcaldía donde se
+#    contemplan esas reformas: deberían estar allí, en la sección de actas de sesiones de
+#    concejo y de alcaldía. Ese es el universo para el GAD de ese literal.»
+#
+# La comprobación le dio la razón, y de forma contundente: se abrieron 254 documentos del
+# art. 24 y **ninguno es un acta**. Son 199 resoluciones administrativas de Alcaldía y 52
+# certificados de resoluciones de sesión. En la sección que la guía reserva a las actas, 51
+# documentos y cero actas. El propio documento delata la ausencia: entre sus resoluciones
+# figura «Aprobar el Acta de Sesión Ordinaria Nro. 099» — el acta existe, el Concejo la
+# aprueba, y lo que se publica es la constancia de que se aprobó.
+#
+# POR QUÉ VA APARTE DE CNO-VII-001, y no es una comodidad de archivo. El art. 19 impone
+# obligaciones GENERALES a todo sujeto obligado; el art. 24 impone obligaciones ESPECÍFICAS
+# a los GAD, con un universo documental propio —los actos de sus dos órganos— que ningún
+# otro sujeto obligado tiene. Mezclarlas haría que el indicador del art. 19 cargara con
+# exigencias que no le pertenecen (colega, 2026-08-18).
+#
+# LOS DOS ÓRGANOS, que es el punto que Javo subraya. El GAD municipal produce actos por dos
+# vías distintas y ambas caen en este literal:
+#   · el CONCEJO, órgano legislativo — ordenanzas, acuerdos y resoluciones legislativas;
+#   · la ALCALDÍA, máxima autoridad ejecutiva — resoluciones administrativas.
+# Una reforma al PAC se aprueba por resolución; si el instrumento reformado no aparece, el
+# hallazgo no es «falta un archivo»: es que la cadena documental del gasto pierde su acto de
+# autorización. Ahí se ve por qué d07 es la ventana de los demás dominios.
+#
+# ESTADO: PROPUESTA — pendiente de aprobación formal de Javo (ADR-035 §5).
+# ═══════════════════════════════════════════════════════════════════════════════
+id: CNO-VII-002
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [1, 2, 3, 9]
+  type: NORMATIVA
+version: "1.0"
+titulo: Obligación Específica de Transparencia de los Gobiernos Autónomos Descentralizados
+objeto: >-
+  el deber de los GAD de publicar mensualmente los documentos de sus procesos legislativos e
+  instrumentos de planificación —incluido el plan de desarrollo y ordenamiento territorial— y
+  las actas de las sesiones de sus cuerpos colegiados, comisiones y concejos.
+dominio_normativo: transparencia_y_acceso_a_la_informacion
+
+# ── La cadena · puro Derecho · SHA por eslabón (Regla 3) ──────────────────────────
+# Verificada contra el corpus vigente el 2026-08-18.
+#
+# NOTA DE MÉTODO: se buscó un eslabón del COOTAD que impusiera expresamente el deber de
+# levantar acta de cada sesión y **no se halló con ese fraseo en el corpus**; el art. 295,
+# que parecía candidato, está DEROGADO. No se fuerza: la obligación de publicar el acta la
+# impone directamente el art. 24 de la LOTAIP, y los artículos del COOTAD entran por lo que
+# sí dicen — de qué órgano emana cada clase de acto.
+cadena:
+  - rol: fundamento_constitucional
+    norma: CE
+    articulo: "18"
+    sha256: 848f507bcaf4
+    sumilla: "derecho a acceder libremente a la información generada en entidades públicas"
+
+  - rol: sujeto_territorial
+    norma: CE
+    articulo: "238"
+    sha256: 6ddc15afcbce
+    sumilla: "los GAD gozan de autonomía política, administrativa y financiera"
+
+  - rol: derecho
+    norma: LOTAIP
+    articulo: "7"
+    sha256: c00cfe8b0841
+    sumilla: "derecho de acceso a la información pública, sin justificar su uso"
+
+  - rol: sujetos_obligados
+    norma: LOTAIP
+    articulo: "8"
+    sha256: bc543e0023c7
+    sumilla: "sujetos obligados; los GAD quedan comprendidos"
+
+  - rol: obligacion_central
+    norma: LOTAIP
+    articulo: "24"
+    sha256: 0e2435346ae1
+    sumilla: >-
+      obligación específica de los GAD: informar MENSUALMENTE, además de lo señalado en la
+      ley, sobre procesos legislativos, instrumentos de planificación y actas de sesiones
+
+  - rol: organo_legislativo
+    norma: COOTAD
+    articulo: "57"
+    sha256: 4875f6818644
+    sumilla: >-
+      atribuciones del concejo municipal — de aquí emanan las ordenanzas, acuerdos y
+      resoluciones legislativas que este literal obliga a publicar
+
+  - rol: organo_ejecutivo
+    norma: COOTAD
+    articulo: "60"
+    sha256: 5662b1a9a1f7
+    sumilla: >-
+      atribuciones del alcalde — de aquí emanan las resoluciones administrativas, que
+      integran el mismo universo documental del literal
+
+  - rol: instrumento_de_planificacion
+    norma: ACUERDO-PDOT-2023
+    articulo: null
+    sha256: 2df413e9b190
+    sumilla: >-
+      guía de formulación/actualización de los Planes de Desarrollo y Ordenamiento
+      Territorial — el PDOT que la guía metodológica manda incluir expresamente
+
+  - rol: desarrollo_reglamentario
+    norma: RLOTAIP
+    articulo: "11"
+    sha256: 9bcde25f3ac3
+    sumilla: >-
+      condiciones de la publicación: clara, legible y completa, en datos abiertos, sin
+      requisito que limite el acceso ni la descarga
+
+  - rol: metodologia
+    norma: GUIA-LOTAIP-MEC
+    articulo: null
+    sha256: ba3630ea55ee
+    sumilla: >-
+      desarrollo del art. 24: los dos conjuntos de datos y sus campos — «Tipo de sesión:
+      ordinaria o extraordinaria» y «Enlace para ver y descargar el acta»
+
+  - rol: metodo_de_evaluacion
+    norma: INST-LOTAIP-MON
+    articulo: null
+    sha256: 76e448d3b8bc
+    sumilla: "obligaciones generales y específicas: alcance de los artículos 20 al 30"
+
+  - rol: consecuencia
+    norma: LOTAIP
+    articulo: "42"
+    sha256: ae8004ee019f
+    sumilla: "sanciones administrativas por el incumplimiento de las obligaciones de la ley"
+
+# ── Estado y ciclo de vida ────────────────────────────────────────────────────────
+estado: propuesta
+vigencia:
+  desde: "2023-02-07"
+  hasta: null
+derogaciones:
+  reemplaza_a: null
+  reemplazada_por: null
+
+# ── Dependencias (MDN · bidireccional) ────────────────────────────────────────────
+deriva_ro:
+  - RO-VII-003                    # universo documental del art. 24
+
+# ── Naturaleza observacional ──────────────────────────────────────────────────────
+# Igual que CNO-VII-001, este literal es una VENTANA: no crea la obligación de sesionar ni
+# de resolver —eso es COOTAD—, sino el deber de hacer verificable lo resuelto. Su ceguera
+# afecta a otros dominios de forma directa y demostrada: una reforma al PAC se aprueba por
+# resolución, y si la resolución no se publica, d01 pierde el acto que autoriza el cambio.
+observa_capas:
+  - obligacion_art24: "sección 1 · procesos legislativos e instrumentos de planificación"
+    capa: planificacion
+    ack: LOTAIP_24
+    alimenta_dominio: d01
+    nota: "incluye el PDOT y las resoluciones que reforman instrumentos como el PAC"
+  - obligacion_art24: "sección 2 · actas de las sesiones"
+    capa: accountability
+    ack: LOTAIP_24
+    alimenta_dominio: d09
+    nota: "el acta acredita la deliberación; la resolución sólo su producto"
+
+# ── Validación humana (ADR-035 §5) ────────────────────────────────────────────────
+validacion:
+  propuesta_por: "BRN (cadena verificada contra corpus 2026-08-18)"
+  validada_por: null
+  fecha_validacion: null
+notas: >-
+  Aporte de esta cadena al molde: es la primera que distingue el ÓRGANO del que emana cada
+  clase de acto. Sin esa distinción, un monitoreo cuenta 254 documentos y los da por buenos;
+  con ella, se ve que 199 son de la Alcaldía, 52 son certificados de resolución del Concejo y
+  ninguno es el acta que el literal exige. La diferencia entre acta y resolución no la decide
+  el lector: la decide la norma, y por eso vive aquí y no en el código.

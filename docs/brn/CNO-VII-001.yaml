@@ -1,0 +1,197 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# CNO-VII-001 · Obligación de Transparencia Activa del GAD
+# Sexto dominio incorporado a la BRN — y el que corrige un error de método, no sólo un vacío.
+#
+# POR QUÉ EXISTE (2026-08-18). Javo detuvo el trabajo de d07 con un reparo de fondo:
+#   «NO es de inventarse nada, todo está en las leyes y metodologías. […] No olvide la BRN,
+#    CNO, etc., y lo que aterriza la norma al DOM: eso es la base, por eso estábamos
+#    trabajando mal.»
+# Tenía razón. d07 se había construido leyendo la Guía Metodológica DIRECTAMENTE desde
+# Python y derivando allí sus propios criterios —periodicidad, campos, umbral de plazo—.
+# Eso viola el contrato BRN: el glosario define el DOM como la unidad que «consume RO/SAT;
+# NO conoce Derecho directamente». Sin CNO no hay cadena jurídica con SHA, y sin RO no hay
+# umbral declarado: cada criterio aplicado era, en rigor, una interpretación del director.
+# Esta CNO devuelve el Derecho a donde el canon manda que viva.
+#
+# NATURALEZA JURÍDICA — y aquí está el estrés arquitectónico que aporta d07.
+# El ACK `lotaip_f02.yaml` (QLEP v1.2b) ya había registrado la distinción decisiva:
+#
+#   «LOTAIP no crea obligaciones sustantivas. LOTAIP crea VENTANAS OBSERVACIONALES sobre
+#    obligaciones que ya existen en CE/COOTAD. CE_12 + COOTAD_137 crean la obligación de dar
+#    agua potable; LOTAIP_19_6 OBSERVA si esa obligación se ejecutó, vía presupuesto publicado.»
+#
+# Por eso esta cadena es distinta de todas las anteriores: CNO-I, III, IV, VIII y IX modelan
+# obligaciones SUSTANTIVAS. Ésta modela una obligación INSTRUMENTAL —publicar— cuyo
+# incumplimiento no sólo lesiona el derecho de acceso: **ciega a los demás dominios**. Es la
+# formulación de Javo (2026-08-18): *«de este DOM depende toda la información que entra a todo
+# el sistema de QUIRA; si este DOM no cumple, QUIRA no podrá desarrollar su labor»*.
+#
+# ALCANCE. Sólo el art. 19 (obligaciones generales de transparencia activa). El art. 24
+# —obligación específica de los GAD, actas y resoluciones— es otra naturaleza y va en
+# CNO-VII-002. La transparencia pasiva (SAIP) y el deber de difusión y capacitación, en las
+# siguientes. Se separan porque jurídicamente son distintas, no por comodidad.
+#
+# ESTADO: PROPUESTA — pendiente de aprobación formal de Javo (ADR-035 §5). El director NO
+# promueve a vigente.
+# ═══════════════════════════════════════════════════════════════════════════════
+id: CNO-VII-001
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [1, 2, 3, 9]
+  type: NORMATIVA
+version: "1.0"
+titulo: Obligación de Transparencia Activa del GAD
+objeto: >-
+  el deber de los sujetos obligados de publicar y mantener actualizada, de forma permanente y
+  periódica, la información mínima que la ley enumera, en formato de datos abiertos, accesible
+  sin requisito que limite su descarga, y registrada dentro del plazo que fija el órgano rector.
+dominio_normativo: transparencia_y_acceso_a_la_informacion
+
+# ── La cadena · puro Derecho · SHA por eslabón (Regla 3) ──────────────────────────
+# Verificada contra el corpus vigente el 2026-08-18: 12/12 eslabones.
+#
+# HISTORIAL DE SUBSANACIÓN (2026-08-18 · cerrado, no abierto). Al construir esta cadena se
+# detectó que el chunk `beb5bb18162f` llevaba `articulo_num=19` de LOTAIP siendo un considerando
+# que cita el artículo 19.2 del Pacto Internacional de Derechos Civiles y Políticos: el chunker
+# había tomado la cita por el artículo del fragmento. Fundar la cadena ahí habría repetido el
+# error de ADR-040, que bloqueó el Catálogo 26 días.
+#
+# El artículo real es `810ae0fcffd1`. La incidencia se corrigió el mismo día en el corpus —ocho
+# chunks del preámbulo de LOTAIP y RLOTAIP pasaron a `articulo_num: null`, con respaldo y
+# reversión en `data/backups/corpus_articulo_num_20260818.json`— tras comprobar que ninguna CNO
+# citaba esos SHA. Verificación posterior: 13 cadenas, 13 íntegras, 75 eslabones, 0 fallos.
+# NO se tocaron `COOTAD 443` ni `RCOA-AMB 77`: arrastran la cola del artículo anterior pero sí
+# contienen su propio encabezado, y corregir de más también corrompe.
+cadena:
+  - rol: fundamento_constitucional
+    norma: CE
+    articulo: "18"
+    sha256: 848f507bcaf4
+    sumilla: "derecho a acceder libremente a la información generada en entidades públicas"
+
+  - rol: garantia_jurisdiccional
+    norma: CE
+    articulo: "91"
+    sha256: 094de44c7215
+    sumilla: "acción de acceso a la información pública ante la negativa o la información incompleta"
+
+  - rol: derecho
+    norma: LOTAIP
+    articulo: "7"
+    sha256: c00cfe8b0841
+    sumilla: "derecho de acceso a la información pública, sin necesidad de justificar su uso"
+
+  - rol: sujetos_obligados
+    norma: LOTAIP
+    articulo: "8"
+    sha256: bc543e0023c7
+    sumilla: "sujetos obligados; los GAD quedan comprendidos entre ellos"
+
+  - rol: obligaciones_generales
+    norma: LOTAIP
+    articulo: "9"
+    sha256: 9651406f7059
+    sumilla: "obligaciones de promover, garantizar y difundir la información pública"
+
+  - rol: obligacion_central
+    norma: LOTAIP
+    articulo: "19"
+    sha256: 810ae0fcffd1
+    sumilla: "transparencia activa: información mínima de publicación obligatoria (24 numerales)"
+
+  - rol: custodia
+    norma: LOTAIP
+    articulo: "10"
+    sha256: 99f8d82d0f33
+    sumilla: "custodia profesional de la información pública; el archivo es condición del acceso"
+
+  - rol: desarrollo_reglamentario
+    norma: RLOTAIP
+    articulo: "11"
+    sha256: 9bcde25f3ac3
+    sumilla: >-
+      condiciones de la publicación: visible desde el portal principal, clara, legible y
+      completa, en datos abiertos y sin requisito que limite el acceso ni la descarga
+
+  - rol: medio_de_publicacion
+    norma: RLOTAIP
+    articulo: "12"
+    sha256: 897fd80d43e4
+    sumilla: "portal informático web institucional y portal nacional del órgano rector"
+
+  - rol: metodologia
+    norma: GUIA-LOTAIP-MEC
+    articulo: null
+    sha256: 8c29e4461fbf
+    sumilla: >-
+      registro en el conjunto de datos, diccionario y metadatos; fórmula admitida para
+      declarar la ausencia (NO APLICA / INFORMACIÓN NO DISPONIBLE, sin comillas)
+
+  - rol: metodo_de_evaluacion
+    norma: INST-LOTAIP-MON
+    articulo: null
+    sha256: 08f924274797
+    sumilla: >-
+      subíndice de transparencia activa: promedio de condiciones de transparencia, estructura
+      de datos abiertos, registro dentro del plazo y calidad de la información
+
+  - rol: consecuencia
+    norma: LOTAIP
+    articulo: "42"
+    sha256: ae8004ee019f
+    sumilla: "sanciones administrativas por el incumplimiento de las obligaciones de la ley"
+
+# ── Estado y ciclo de vida ────────────────────────────────────────────────────────
+estado: propuesta                 # propuesta | vigente | en_reforma | derogada
+vigencia:
+  desde: "2023-02-07"             # LOTAIP · RO 245, segundo suplemento
+  hasta: null
+derogaciones:
+  reemplaza_a: null               # la LOTAIP de 2004 rige hasta 2023-02-07; su normativa
+                                  # secundaria (Res. 007-DPE-CGAJ de 2015) NO integra esta
+                                  # cadena: regulaba el art. 7 de la ley derogada.
+  reemplazada_por: null
+
+# ── Dependencias (MDN · bidireccional) ────────────────────────────────────────────
+deriva_ro:
+  - RO-VII-001                    # cumplimiento de publicación por período exigible
+  - RO-VII-002                    # calidad de la información publicada
+
+# ── Naturaleza observacional · el rasgo propio de este dominio ────────────────────
+# Registrado como dato del modelo, no como comentario: los numerales del art. 19 son
+# ventanas sobre obligaciones sustantivas de OTROS dominios. Un numeral sin publicar no
+# es sólo un incumplimiento de d07 — es una ceguera de d01/d02/d09 sobre su propia materia.
+observa_capas:
+  - numeral: "6"
+    capa: financiera
+    ack: LOTAIP_19_6
+    alimenta_dominio: d02
+  - numeral: "8"
+    capa: contratacion
+    ack: LOTAIP_19_8
+    alimenta_dominio: d01
+  - numeral: "10"
+    capa: planificacion
+    ack: LOTAIP_19_10
+    alimenta_dominio: d01
+  - numeral: "12"
+    capa: accountability
+    ack: LOTAIP_19_12
+    alimenta_dominio: d09
+  - numeral: "21"
+    capa: contratacion
+    ack: LOTAIP_19_21
+    alimenta_dominio: d01
+
+# ── Validación humana (ADR-035 §5) ────────────────────────────────────────────────
+validacion:
+  propuesta_por: "BRN (extracción asistida · cadena verificada contra corpus 2026-08-18)"
+  validada_por: null              # sólo Javo promueve a vigente
+  fecha_validacion: null
+notas: >-
+  Estrés arquitectónico que aporta d07: es la primera cadena de naturaleza INSTRUMENTAL y
+  OBSERVACIONAL del catálogo. Las cinco anteriores modelan obligaciones sustantivas —gastar,
+  planificar, rendir cuentas—; ésta modela el deber de hacer visible lo que las otras hacen.
+  Si el molde la representa sin tocar compilador ni runtime, queda demostrado que el contrato
+  BRN v2.1 soporta también las reglas de segundo orden. Además incorpora `observa_capas`, que
+  materializa en el MDN la dependencia que hasta ahora vivía sólo en los ACK.

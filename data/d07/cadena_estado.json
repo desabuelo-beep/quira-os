@@ -1,0 +1,72 @@
+{
+ "captura": {
+  "insumos": {},
+  "salidas": {
+   "data/lotaip/dpe_montecristi.json": "e32fb79734a19321278aba7af05b263cd92f02edaf0c71e426ba85551b8b7ccf"
+  },
+  "sellado": "2026-08-19T15:26:41"
+ },
+ "descarga": {
+  "insumos": {
+   "data/lotaip/dpe_montecristi.json": "e32fb79734a19321278aba7af05b263cd92f02edaf0c71e426ba85551b8b7ccf"
+  },
+  "salidas": {
+   "data/lotaip/descargas_indice.json": "3d556f2f35030d8f432bedfa7ba29757ce99bc1e8ae5fe9323fbfbf9bec43c9d"
+  },
+  "sellado": "2026-08-19T15:26:41"
+ },
+ "contenido": {
+  "insumos": {
+   "data/lotaip/descargas_indice.json": "3d556f2f35030d8f432bedfa7ba29757ce99bc1e8ae5fe9323fbfbf9bec43c9d"
+  },
+  "salidas": {
+   "data/lotaip/contenido.json": "f3d18a38cdc96993b4ed2afcdaff3fea5a204527e3493eeed9a6cb8935b15e3c"
+  },
+  "sellado": "2026-08-19T22:38:49",
+  "ejecutada_por": "agente",
+  "confianza_del_ejecutor": "autodeclarado",
+  "sujeto": "130801 Montecristi",
+  "sujeto_huella": "e187a12ade35259772a1b729391e28470a3d0b505444d810c48f3c6f790e6ae0"
+ },
+ "enlaces": {
+  "insumos": {
+   "data/lotaip/contenido.json": "f3d18a38cdc96993b4ed2afcdaff3fea5a204527e3493eeed9a6cb8935b15e3c"
+  },
+  "salidas": {
+   "data/lotaip/enlaces.json": "1475446c5a21b26802cea7f37926794a41deeb9fa3c969936ddfbbf38c3ef3a9"
+  },
+  "sellado": "2026-08-19T15:26:41"
+ },
+ "inventario": {
+  "insumos": {
+   "data/lotaip/enlaces.json": "1475446c5a21b26802cea7f37926794a41deeb9fa3c969936ddfbbf38c3ef3a9"
+  },
+  "salidas": {
+   "data/lotaip/inventario_documental.json": "f39c64ad952f304b11bdd8fa43a7869c3fd58f5aacf13b2ea29c484e78f34f90"
+  },
+  "sellado": "2026-08-19T15:26:41"
+ },
+ "contenedores": {
+  "insumos": {
+   "data/lotaip/inventario_documental.json": "f39c64ad952f304b11bdd8fa43a7869c3fd58f5aacf13b2ea29c484e78f34f90"
+  },
+  "salidas": {
+   "data/lotaip/contenido_contenedores.json": "14f3b3267acdc815932fa5b7261a4b1946149e704246f8cffefcc5f05dd97ef4"
+  },
+  "sellado": "2026-08-19T22:17:34",
+  "ejecutada_por": "agente",
+  "confianza_del_ejecutor": "autodeclarado",
+  "sujeto": "130801 Montecristi",
+  "sujeto_huella": "e187a12ade35259772a1b729391e28470a3d0b505444d810c48f3c6f790e6ae0"
+ },
+ "documentos": {
+  "insumos": {
+   "data/lotaip/descargas_indice.json": "3d556f2f35030d8f432bedfa7ba29757ce99bc1e8ae5fe9323fbfbf9bec43c9d"
+  },
+  "salidas": {
+   "data/lotaip/documentos_n10.json": "8f464c4fd806d65ddb1f941dffee12db3bfd69be6e0e19e876f6a03ae82a3d2d"
+  },
+  "sellado": "2026-08-19T18:38:53",
+  "ejecutada_por": "agente"
+ }
+}

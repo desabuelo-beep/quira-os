@@ -36,7 +36,12 @@ if sys.stdout and hasattr(sys.stdout, "buffer"):
 # ── RUTAS CANÓNICAS ───────────────────────────────────────────────────────────
 
 _ROOT          = Path(__file__).parent.parent
-_VAULT_ROOT    = Path(r"C:\Proyectos\QUIRA\knowledge_base\QUIRA_KB_Montecristi")
+try:
+    from config import VAULT_DIR as _VAULT_BASE
+except Exception:                                        # noqa: BLE001
+    import os as _os
+    _VAULT_BASE = Path(_os.environ.get("QUIRA_VAULT", "."))
+_VAULT_ROOT    = _VAULT_BASE
 _GM_PATH       = Path(r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT\SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx")
 _VAULT_MODULE  = _VAULT_ROOT / "08_EJECUCION"   # D3_EJECUCION — motor analítico
 _ARCH_MODULE   = _VAULT_ROOT / "00_CORE"          # meta-arquitectura

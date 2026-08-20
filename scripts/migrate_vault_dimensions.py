@@ -31,7 +31,12 @@ from pathlib import Path
 
 # ── RUTAS ────────────────────────────────────────────────────────────────────
 BASE_DIR   = Path(__file__).parent.parent
-VAULT      = Path(r"C:\Proyectos\QUIRA\knowledge_base\QUIRA_KB_Montecristi")
+try:
+    from config import VAULT_DIR as _VAULT_BASE
+except Exception:                                        # noqa: BLE001
+    import os as _os
+    _VAULT_BASE = Path(_os.environ.get("QUIRA_VAULT", "."))
+VAULT      = _VAULT_BASE
 SCHEMA_PATH = BASE_DIR / "data" / "vault_schema.json"
 BACKUP_DIR = BASE_DIR / "data" / "vault_backup_p2"
 LOG_PATH   = BASE_DIR / "data" / "migration_p2_log.json"

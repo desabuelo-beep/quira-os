@@ -48,12 +48,20 @@ logger = logging.getLogger(__name__)
 SOURCE_ID   = "gold_master"
 RELIABILITY = 0.99   # Fuente máxima confiabilidad — datos certificados
 
-# Rutas canónicas (se pueden sobreescribir por config)
-_DEFAULT_GOLD_MASTER_V6 = Path(
-    r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT"
-    r"\TGI_GOLD_MASTER_v6.0_20260525.xlsx"
-)
-_PROYECT = Path(r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT")
+# Rutas canónicas. La carpeta de los documentos se recibe de `config.DATOS_DIR`
+# —declarada UNA vez y configurable con `QUIRA_DATOS`— en vez de escribirse aquí.
+# Hasta el 2026-08-19 este conector, que es la puerta canónica al Gold Master,
+# llevaba dentro el escritorio de una persona: en cualquier otro equipo no
+# encontraba el motor (OBS-032).
+try:
+    from config import DATOS_DIR as _PROYECT
+except Exception:                                        # noqa: BLE001
+    # Sin `config` importable (script suelto, prueba aislada), la frontera sigue
+    # siendo declarable por entorno. Lo que no vuelve es la ruta fija.
+    import os as _os
+    _PROYECT = Path(_os.environ.get("QUIRA_DATOS", "."))
+
+_DEFAULT_GOLD_MASTER_V6 = _PROYECT / "TGI_GOLD_MASTER_v6.0_20260525.xlsx"
 _DEFAULT_GOLD_MASTER_V55 = _PROYECT / "SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx"
 
 

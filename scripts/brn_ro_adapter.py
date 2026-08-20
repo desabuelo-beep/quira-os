@@ -21,7 +21,16 @@ from dataclasses import dataclass, field
 # VERSIÓN DEL CONTRATO INTERNO (colega · 2026-07-20) — independiente del formato YAML externo y del
 # artifact_schema. Un YAML de RO v3 puede seguir traduciéndose a ROModel 2.0 sin tocar el compilador:
 # esa es la fuerza de la frontera. Solo sube si cambia la FORMA del modelo interno (romper aguas abajo).
-CONTRATO_VERSION = "2.0"
+#
+# 2.1 (2026-08-18 · ADR-051): se añade `parametros`. Hasta aquí el modelo sólo entregaba la métrica,
+# los tramos de umbral y el método — suficiente para una regla de umbral (d02) o de congruencia
+# (d03). d07 rompió ese supuesto: su regla operativa lleva periodicidad POR CONJUNTO, plazo de
+# registro, formatos admitidos, fórmulas literales de ausencia y dimensiones materiales. Sin
+# exponerlos, el dominio no tenía de dónde consumirlos y volvía a derivarlos en Python — que es
+# exactamente lo que ADR-051 vino a prohibir.
+#
+# El campo lleva default y va al final: ningún consumidor existente cambia.
+CONTRATO_VERSION = "2.1"
 
 
 @dataclass(frozen=True)
@@ -47,6 +56,10 @@ class ROModel:
     consume: tuple[str, ...]        # a quién alimenta (nunca el motor)
     opera_en: str | None
     estado: str
+    # Parámetros operativos declarados por la RO, tal como el canon los fija. El DOM los CONSUME;
+    # no los deduce ni los deriva de la ley (ADR-051 §2). Va al final y con default para no alterar
+    # a ningún consumidor anterior del contrato.
+    parametros: dict = field(default_factory=dict)
 
 
 def adaptar(ro: dict) -> ROModel:
@@ -71,6 +84,10 @@ def adaptar(ro: dict) -> ROModel:
         consume=tuple(ro.get("consume") or []),
         opera_en=ro.get("opera_en"),
         estado=ro.get("estado", "propuesta"),
+        # Se entrega el bloque completo: el adaptador NO decide qué parámetro es relevante para
+        # cada dominio — eso lo declara la propia RO. Filtrar aquí reintroduciría criterio en la
+        # infraestructura, que es donde menos debe vivir.
+        parametros=dict(p),
     )
 
 

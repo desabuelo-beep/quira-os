@@ -367,6 +367,93 @@ def _tab_config() -> None:
 # Entry point
 # ══════════════════════════════════════════════════════════════════════════════
 
+def _tab_accesos() -> None:
+    """Quién entra al sistema, desde cuándo y con qué resultado.
+
+    POR QUÉ EXISTE (2026-08-18). Javo, tras publicar el landing: *«están
+    ingresando a QUIRA y no sé qué, ni quiénes, ni cómo»*. La bitácora llevaba
+    dos meses registrándolo todo —343 eventos, tres intentos fallidos— pero sólo
+    podía leerse abriendo el archivo a mano. **Un control que nadie mira no es un
+    control**, y por eso esta sección es lectura pura: no añade telemetría, no
+    instala analítica de terceros, muestra lo que el sistema ya escribe."""
+    from utils.accesos import (FALLOS_PARA_ALERTA, VENTANA_ALERTA_MIN,
+                               integridad, resumir)
+    from utils.css_tokens import C
+
+    r = resumir()
+    integ = integridad()
+
+    # El estado de la propia bitácora va PRIMERO. Si el registro dejó de
+    # escribirse, todo lo que se muestre debajo está incompleto y quien lo lea
+    # debe saberlo antes de sacar conclusiones.
+    if integ.get("estado") != "OK":
+        st.error(f"Bitácora: **{integ['estado']}** — {integ.get('detalle', '')}. "
+                 f"Los datos de abajo pueden estar incompletos.")
+    if r.total == 0:
+        st.info("Todavía no hay eventos registrados.")
+        return
+
+    # Un pico de fallos en poco tiempo distingue a alguien que teclea mal de
+    # alguien que prueba contraseñas. Va arriba porque es lo único accionable.
+    if r.alertas:
+        st.error(f"**{len(r.alertas)} episodio(s) de intentos concentrados** "
+                 f"(≥{FALLOS_PARA_ALERTA} fallos en {VENTANA_ALERTA_MIN} min)")
+        for a in r.alertas:
+            st.markdown(f"- `{a['desde']}` → `{a['hasta']}` · **{a['fallos']} fallos** "
+                        f"· usuario(s): {', '.join(a['usuarios'])}")
+    else:
+        st.success(f"Sin intentos concentrados. Los {r.fallos} fallos registrados "
+                   f"están dispersos en el período — patrón de error de tecleo, "
+                   f"no de intento sistemático.")
+
+    c1, c2, c3, c4 = st.columns(4)
+    c1.metric("Accesos concedidos", r.accesos_ok)
+    c2.metric("Intentos fallidos", r.fallos)
+    c3.metric("Bloqueos", r.bloqueos)
+    c4.metric("Llegadas al portal", r.landings)
+    st.caption(f"Período registrado: {r.desde} → {r.hasta} · "
+               f"{r.total} eventos · último hace {integ.get('dias_sin_actividad', '—')} día(s)")
+
+    izq, der = st.columns(2)
+    with izq:
+        st.markdown("**Quién entró**")
+        if r.usuarios:
+            for u, n in r.usuarios.items():
+                st.markdown(f"<div style='font-size:12px;color:{C.V_TX2}'>"
+                            f"<b>{u}</b> · {n} acceso(s)</div>",
+                            unsafe_allow_html=True)
+        else:
+            st.caption("sin accesos concedidos en el período")
+
+        st.markdown("<div style='height:10px'></div>", unsafe_allow_html=True)
+        st.markdown("**De dónde llegan al portal**")
+        if r.origenes:
+            for o, n in r.origenes.items():
+                st.markdown(f"<div style='font-size:12px;color:{C.V_TX2}'>"
+                            f"<b>{o}</b> · {n}</div>", unsafe_allow_html=True)
+        else:
+            st.caption("aún no hay llegadas registradas — se contarán en cuanto "
+                       "el portal se abra con un enlace de campaña (`?utm_source=…`)")
+
+    with der:
+        st.markdown("**Qué se consulta**")
+        for m, n in r.modulos.items():
+            st.markdown(f"<div style='font-size:12px;color:{C.V_TX2}'>"
+                        f"<b>{m}</b> · {n} vista(s)</div>", unsafe_allow_html=True)
+
+    with st.expander(f"Últimos {len(r.ultimos)} eventos"):
+        st.dataframe(
+            [{"cuándo": str(e.get("ts", ""))[:16], "evento": e.get("event", ""),
+              "usuario": e.get("usuario", e.get("origen", "—")),
+              "detalle": e.get("motivo", e.get("page", e.get("campana", "")))}
+             for e in r.ultimos],
+            use_container_width=True, hide_index=True)
+
+    st.caption("No se registran direcciones IP, huellas de navegador ni "
+               "identificadores persistentes de visitante. Sólo la procedencia "
+               "declarada del enlace y la actividad de las sesiones autenticadas.")
+
+
 def render() -> None:
     """OPERACIONES — mantenimiento técnico del sistema (Javo · 2026-08-06).
 
@@ -403,6 +490,7 @@ def render() -> None:
         "⚡ Procesos":                 _tab_pipeline,
         "📦 Cargas":                   _tab_snapshots,
         "📡 Confiabilidad de fuentes": _tab_reliability,
+        "🔐 Accesos":                  _tab_accesos,
         "📋 Motor de cálculo":         _tab_gold_master,
         "⚙ Configuración":             _tab_config,
     }

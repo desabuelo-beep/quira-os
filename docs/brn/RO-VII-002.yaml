@@ -1,0 +1,174 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# RO-VII-002 · Regla Operativa derivada de CNO-VII-001
+# Cobertura material: que lo publicado acredite lo que la obligación manda hacer visible.
+#
+# POR QUÉ EXISTE (2026-08-18). Javo desarmó una medición que daba el presupuesto por cumplido:
+#   «En el mismo presupuesto la norma establece ingreso y egresos. El GAD solo reporta egresos.
+#    […] Sería algarete si Quira deja ese análisis tan básico.»
+# La comprobación le dio la razón: los ocho períodos publicados del numeral 6 traen CERO filas
+# de ingreso. RO-VII-001 lo calificaba correcto —el archivo existe, tiene los 14 campos, llega
+# en plazo y en formato abierto—. Publicación impecable, dimensión ausente.
+#
+# QUÉ SEPARA ESTA RO DE LA ANTERIOR, y por qué son dos y no una:
+#   RO-VII-001 mide con la vara del ÓRGANO RECTOR (SITA). Es su calificación, no la nuestra.
+#   RO-VII-002 verifica la COBERTURA MATERIAL con fundamento en el propio enunciado de la
+#   obligación y en el Reglamento Art. 11 («clara, legible y COMPLETA»). Es una observación de
+#   QUIRA sobre la evidencia, y por eso NO entra en el SITA: mezclarlas haría pasar un hallazgo
+#   propio por una calificación de la Defensoría.
+#
+# LA REGLA QUE GOBIERNA SU RIGOR — asimetría deliberada:
+#   Hallar la dimensión prueba que está. NO hallarla NO prueba que falte.
+# Una versión previa buscaba el término en los encabezados y declaró ausentes los cinco
+# componentes del numeral 8; estaban todos, con otro nombre: «Objetivos» se publica como
+# `OBJETO DEL PROCESO`, «Proveedores» como `IDENTIFICACIÓN DEL CONTRATISTA`. Cinco hallazgos
+# falsos de golpe. Desde entonces la ausencia SÓLO se declara cuando existe una regla objetiva
+# —hoy, un instrumento al que la propia norma remita—. Sin ella: `no_determinable`, que es un
+# límite del método y nunca un cargo contra el sujeto obligado.
+#
+# ESTADO: PROPUESTA — pendiente de aprobación formal de Javo (ADR-035 §5).
+# ═══════════════════════════════════════════════════════════════════════════════
+id: RO-VII-002
+authority:
+  parent: CNO-VII-001
+  constitution_articles: [1, 3, 9]
+  type: NORMATIVA
+version: "1.0"
+deriva_de: CNO-VII-001 v1.0
+
+# ── Definición de la métrica (qué se mide) ────────────────────────────────────────
+metrica:
+  nombre: Pct_Cobertura_Material
+  unidad: porcentaje
+  descripcion: >-
+    proporción de dimensiones materialmente acreditadas sobre las dimensiones DETERMINABLES
+    que la obligación enumera para el conjunto. Las no determinables se excluyen del
+    denominador: un componente que no sabemos comprobar no es un componente incumplido.
+
+# ── Parámetros operativos ─────────────────────────────────────────────────────────
+parametros:
+  umbral: 100
+  # DESAMBIGUACIÓN OBLIGATORIA (colega · 2026-08-18). `umbral` es el nombre que el contrato de
+  # la plataforma da a este parámetro y el adaptador lo lee de ahí, así que se conserva. Pero
+  # aquí NO significa «a partir de este valor, aprueba»: significa que la cobertura debe ser
+  # COMPLETA sobre las dimensiones determinables. Se declara expresamente porque acabamos de
+  # sacar los criterios normativos de Python — no vale volver a esconderlos bajo un nombre
+  # ambiguo en YAML.
+  umbral_semantica:
+    tipo: exigencia_de_integridad
+    lectura: "toda dimensión determinable debe quedar acreditada"
+    no_es: "puntaje mínimo de aprobación ni corte de calificación"
+
+  # Caso 0/0 · qué ocurre cuando NINGUNA dimensión es determinable. Sin esta declaración, el
+  # módulo tendría que decidirlo en tiempo de ejecución, y eso devolvería el criterio al
+  # código: exactamente lo que esta RO existe para impedir.
+  caso_sin_dimensiones_determinables:
+    estado: no_determinable
+    score: null
+    excluye_del_promedio: true
+    razon: >-
+      un conjunto cuyas dimensiones no pueden comprobarse con un instrumento normativo no
+      puntúa ni a favor ni en contra: contarlo como 0 imputaría una carencia que no se probó,
+      y contarlo como 100 acreditaría una cobertura que no se verificó
+
+  frecuencia: por_periodo_publicado
+
+  # Origen de las dimensiones: SÓLO el texto literal de la obligación (decisión de Javo,
+  # 2026-08-18). No se derivan de catálogos externos ni se infieren de los datos observados.
+  # Método de derivación: la enumeración que abre el conector «especificando», más el
+  # complemento aditivo «así como». Se descartó `incluyendo`, que producía ruido: del numeral 3
+  # extraía «dependencia y/o persona jurídica», un complemento del sujeto obligado.
+  origen_dimensiones: texto_literal_de_la_obligacion
+  conectores_de_enumeracion: [especificando]
+  conectores_aditivos: ["así como"]
+
+  # Dimensiones por conjunto. CD-06 las traía declaradas en el catálogo canónico desde julio y
+  # nadie las había medido nunca; el derivador las reproduce exactamente, y ése es su control:
+  # un extractor que no recupera la única respuesta conocida no puede proponer las demás.
+  dimensiones:
+    CD-06:
+      lista: [Ingresos, Gastos, Financiamiento, Resultados_operativos, Liquidacion]
+      fundamento: >-
+        «…especificando ingresos, gastos, financiamiento y resultados operativos de conformidad
+        con los clasificadores presupuestales, así como liquidación del presupuesto…»
+      instrumento_de_verificacion: clasificador_presupuestario
+    CD-08:
+      lista: [Objetivos, Caracteristicas, Montos, Proveedores, Subcontratos]
+      fundamento: "«…especificando objetivos, características, montos, proveedores y subcontratos»"
+      instrumento_de_verificacion: null
+
+  # El clasificador se habilita SÓLO porque la obligación del numeral 6 remite a él de forma
+  # expresa. No se extrapola a otros conjuntos: usarlo donde la norma no lo invoca sería traer
+  # criterio de fuera, que es justo lo que esta RO existe para impedir.
+  clasificador_presupuestario:
+    habilitado_cuando: "la obligación menciona «clasificadores presupuestales»"
+    grupos:
+      Ingresos: ["1", "2"]
+      Financiamiento: ["3", "9"]
+      Gastos: ["5", "6", "7", "8"]
+    regla_de_lectura: "primer dígito del código de cuenta o partida"
+
+# ── Método (cómo se evalúa) ───────────────────────────────────────────────────────
+metodo:
+  tipo: verificacion_de_cobertura_material
+  estados:
+    - id: cubierto
+      descripcion: "la evidencia acredita la dimensión"
+    - id: no_hallado
+      descripcion: >-
+        la evidencia NO la acredita, comprobado con el instrumento al que la norma remite.
+        Es el único estado que constituye hallazgo.
+    - id: no_determinable
+      descripcion: >-
+        no hay instrumento normativo que permita decidirlo con esta evidencia. NO es ausencia:
+        es un límite declarado del método.
+  criterios:
+    - id: presencia_por_instrumento
+      obligatorio: true
+      descripcion: >-
+        cuando la obligación remite a un instrumento (p. ej. el clasificador presupuestario),
+        la dimensión se comprueba con él y su ausencia SÍ se declara
+    - id: presencia_por_mencion
+      obligatorio: false
+      descripcion: >-
+        hallar el término en encabezados o valores prueba presencia; su ausencia NO prueba
+        carencia, porque la evidencia puede nombrar la dimensión de otro modo
+      asimetrico: true
+
+# ── Escalamiento · los tres niveles semánticos (formulación del colega, adoptada) ──
+# Impide que un hecho verificable se convierta solo en una acusación jurídica.
+niveles:
+  - id: hecho_verificable
+    ejemplo: "el conjunto de datos contiene únicamente registros de egreso"
+  - id: hallazgo_de_verificabilidad
+    ejemplo: "no fue posible acreditar la dimensión Ingresos en el recurso analizado"
+  - id: posible_incumplimiento
+    requiere_todas:
+      - "la obligación concreta está asociada al campo"
+      - "la obligación es inequívoca"
+      - "la evidencia demuestra la ausencia"
+      - "no existe excepción aplicable"
+      - "no existe recurso oficial alternativo que la acredite"
+      - "no existe declaración normativa válida de ausencia"
+    decide: motor_normativo          # nunca este módulo
+
+consecuencia: >-
+  Hallazgo de cobertura material: la dimensión que la obligación enumera no queda acreditada
+  por la evidencia publicada. NO equivale a incumplimiento mientras no se satisfagan las seis
+  condiciones de escalamiento; se registra como pendiente de verificación.
+
+# ── SAT que esta RO produce ───────────────────────────────────────────────────────
+produce: []
+motivo_sin_sat: >-
+  no existe señal de transparencia en SAT_Catalogo. Además, esta RO produce una observación
+  propia de QUIRA y no la calificación del órgano rector: aunque existiera la señal, entraría
+  por separado del SITA.
+
+consume: []
+opera_en: d07
+
+# ── Estado y trazabilidad ─────────────────────────────────────────────────────────
+estado: propuesta
+validacion:
+  propuesta_por: "BRN (dimensiones derivadas del texto literal · control reproducido sobre CD-06)"
+  validada_por: null
+  fecha_validacion: null

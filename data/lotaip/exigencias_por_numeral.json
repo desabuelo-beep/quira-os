@@ -1,0 +1,1785 @@
+{
+ "_meta": {
+  "fuente": "LOTAIP - guia-metodologica-mecanismos.docx",
+  "sha256": "4c76ad8934bef620ef3b486cb30e199ffcf5985c8f0feed66953b9ddcceee019",
+  "norma": "Guía metodológica para el cumplimiento de las obligaciones de transparencia · Defensoría del Pueblo del Ecuador",
+  "alcance": "art. 19 LOTAIP — obligaciones generales de transparencia activa",
+  "regla": "lo que el corpus dice se reproduce; lo que no dice se marca no_sustentado. QUIRA no completa la vara con conocimiento general.",
+  "advertencia": "esta matriz NO puntúa a nadie. Es la exigencia normativa contra la cual se confronta la evidencia observada."
+ },
+ "numerales": [
+  {
+   "numeral": "1.1",
+   "obligacion": "Estructura orgánica funcional, base legal que la rige, regulaciones y procedimientos internos aplicables a la entidad; así como las metas y objetivos de las unidades administrativas de conformidad con sus programas operativos",
+   "obligacion_estado": "transcrita_en_el_numeral_matriz",
+   "campos_exigidos": [
+    "Nivel superior",
+    "Unidad",
+    "Nivel de los procesos de la estructura"
+   ],
+   "campos_estado": "declarados",
+   "periodicidad": {
+    "estado": "no_sustentado",
+    "literal": null,
+    "contenidos": []
+   },
+   "_procedencia": {
+    "capitulo": "II",
+    "parrafo_inicio": 174,
+    "parrafo_fin": 182,
+    "parrafo_campos": 177,
+    "parrafo_periodicidad": null,
+    "parrafo_obligacion": 169
+   },
+   "estructura_formal": {
+    "estado": "remitida_a_recurso_externo",
+    "remisiones": [
+     {
+      "que": "​estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1wI9dE9zSsJ6xe1Aagm-t85wkm-RQ9ssO/edit#gid=1576500252"
+     },
+     {
+      "que": "​metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1wI9dE9zSsJ6xe1Aagm-t85wkm-RQ9ssO/edit#gid=1632894668"
+     },
+     {
+      "que": "​diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1wI9dE9zSsJ6xe1Aagm-t85wkm-RQ9ssO/edit#gid=509693900"
+     },
+     {
+      "que": "​estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1oMnCy2uLNcSdaksTLz7MNvYy5J-F1CF6/edit#gid=1098359934"
+     },
+     {
+      "que": "​metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1oMnCy2uLNcSdaksTLz7MNvYy5J-F1CF6/edit#gid=290281242"
+     },
+     {
+      "que": "​diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1oMnCy2uLNcSdaksTLz7MNvYy5J-F1CF6/edit#gid=1339501666"
+     },
+     {
+      "que": "​estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1ccckAd9AHHjBVmjx8r7KMpCe4nPenC05Q7IjwfoNmho/edit#gid=900389743"
+     },
+     {
+      "que": "​metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1ccckAd9AHHjBVmjx8r7KMpCe4nPenC05Q7IjwfoNmho/edit#gid=1577040811"
+     },
+     {
+      "que": "​diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1ccckAd9AHHjBVmjx8r7KMpCe4nPenC05Q7IjwfoNmho/edit#gid=1180243980"
+     }
+    ],
+    "nota": "el anexo del capítulo IX no publica los campos: enlaza hojas de cálculo externas. Fuera del corpus, no verificables por SHA."
+   }
+  },
+  {
+   "numeral": "1.2",
+   "obligacion": "Estructura orgánica funcional, base legal que la rige, regulaciones y procedimientos internos aplicables a la entidad; así como las metas y objetivos de las unidades administrativas de conformidad con sus programas operativos",
+   "obligacion_estado": "transcrita_en_el_numeral_matriz",
+   "campos_exigidos": [
+    "Tipo de documento (base legal, regulación o procedimiento interno)",
+    "Descripción de la base legal, regulación o procedimiento interno",
+    "Enlace a la base legal, regulación o procedimiento interno"
+   ],
+   "campos_estado": "declarados",
+   "periodicidad": {
+    "literal": "La actualización de los metadatos de este conjunto de datos será mensual y la periodicidad de generación de sus contenidos, será semestral o anual, acorde a la vigencia de las normas externas e internas.",
+    "metadatos": "mensual",
+    "contenidos": [
+     "semestral",
+     "anual"
+    ],
+    "estado": "condicionada",
+    "condicion": null
+   },
+   "_procedencia": {
+    "capitulo": "II",
+    "parrafo_inicio": 182,
+    "parrafo_fin": 201,
+    "parrafo_campos": 193,
+    "parrafo_periodicidad": 199,
+    "parrafo_obligacion": 169
+   },
+   "estructura_formal": {
+    "estado": "remitida_a_recurso_externo",
+    "remisiones": [
+     {
+      "que": "​estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1wI9dE9zSsJ6xe1Aagm-t85wkm-RQ9ssO/edit#gid=1576500252"
+     },
+     {
+      "que": "​metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1wI9dE9zSsJ6xe1Aagm-t85wkm-RQ9ssO/edit#gid=1632894668"
+     },
+     {
+      "que": "​diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1wI9dE9zSsJ6xe1Aagm-t85wkm-RQ9ssO/edit#gid=509693900"
+     },
+     {
+      "que": "​estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1oMnCy2uLNcSdaksTLz7MNvYy5J-F1CF6/edit#gid=1098359934"
+     },
+     {
+      "que": "​metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1oMnCy2uLNcSdaksTLz7MNvYy5J-F1CF6/edit#gid=290281242"
+     },
+     {
+      "que": "​diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1oMnCy2uLNcSdaksTLz7MNvYy5J-F1CF6/edit#gid=1339501666"
+     },
+     {
+      "que": "​estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1ccckAd9AHHjBVmjx8r7KMpCe4nPenC05Q7IjwfoNmho/edit#gid=900389743"
+     },
+     {
+      "que": "​metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1ccckAd9AHHjBVmjx8r7KMpCe4nPenC05Q7IjwfoNmho/edit#gid=1577040811"
+     },
+     {
+      "que": "​diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1ccckAd9AHHjBVmjx8r7KMpCe4nPenC05Q7IjwfoNmho/edit#gid=1180243980"
+     }
+    ],
+    "nota": "el anexo del capítulo IX no publica los campos: enlaza hojas de cálculo externas. Fuera del corpus, no verificables por SHA."
+   }
+  },
+  {
+   "numeral": "1.3",
+   "obligacion": "Estructura orgánica funcional, base legal que la rige, regulaciones y procedimientos internos aplicables a la entidad; así como las metas y objetivos de las unidades administrativas de conformidad con sus programas operativos",
+   "obligacion_estado": "transcrita_en_el_numeral_matriz",
+   "campos_exigidos": [
+    "Unidad",
+    "Objetivo",
+    "Indicador",
+    "Meta cuantificable",
+    "Enlace al sistema de gestión de planificación para verificación de los indicadores y metas cuantificables por procesos o niveles"
+   ],
+   "campos_estado": "declarados",
+   "periodicidad": {
+    "literal": "La actualización de los metadatos del conjunto de datos será mensual y la periodicidad de generación de sus contenidos, será semestral o anual, según varíen las estructuras orgánicas institucionales.",
+    "metadatos": "mensual",
+    "contenidos": [
+     "semestral",
+     "anual"
+    ],
+    "estado": "condicionada",
+    "condicion": "según varía"
+   },
+   "_procedencia": {
+    "capitulo": "II",
+    "parrafo_inicio": 201,
+    "parrafo_fin": 215,
+    "parrafo_campos": 204,
+    "parrafo_periodicidad": 213,
+    "parrafo_obligacion": 169
+   },
+   "estructura_formal": {
+    "estado": "remitida_a_recurso_externo",
+    "remisiones": [
+     {
+      "que": "​estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1wI9dE9zSsJ6xe1Aagm-t85wkm-RQ9ssO/edit#gid=1576500252"
+     },
+     {
+      "que": "​metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1wI9dE9zSsJ6xe1Aagm-t85wkm-RQ9ssO/edit#gid=1632894668"
+     },
+     {
+      "que": "​diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1wI9dE9zSsJ6xe1Aagm-t85wkm-RQ9ssO/edit#gid=509693900"
+     },
+     {
+      "que": "​estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1oMnCy2uLNcSdaksTLz7MNvYy5J-F1CF6/edit#gid=1098359934"
+     },
+     {
+      "que": "​metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1oMnCy2uLNcSdaksTLz7MNvYy5J-F1CF6/edit#gid=290281242"
+     },
+     {
+      "que": "​diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1oMnCy2uLNcSdaksTLz7MNvYy5J-F1CF6/edit#gid=1339501666"
+     },
+     {
+      "que": "​estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1ccckAd9AHHjBVmjx8r7KMpCe4nPenC05Q7IjwfoNmho/edit#gid=900389743"
+     },
+     {
+      "que": "​metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1ccckAd9AHHjBVmjx8r7KMpCe4nPenC05Q7IjwfoNmho/edit#gid=1577040811"
+     },
+     {
+      "que": "​diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1ccckAd9AHHjBVmjx8r7KMpCe4nPenC05Q7IjwfoNmho/edit#gid=1180243980"
+     }
+    ],
+    "nota": "el anexo del capítulo IX no publica los campos: enlaza hojas de cálculo externas. Fuera del corpus, no verificables por SHA."
+   }
+  },
+  {
+   "numeral": "2",
+   "obligacion": "El directorio completo del organismo, dependencia y/o persona jurídica, así como el distributivo del personal y su cargo",
+   "obligacion_estado": "transcrita",
+   "campos_exigidos": [
+    "Número secuencial de la información que se registra en cada celda para dar a conocer el total de la nómina institucional",
+    "Apellidos y nombres del personal de la entidad que labora o presta servicios especializados",
+    "Puesto institucional",
+    "Unidad o nivel superior a la que pertenece",
+    "Dirección institucional",
+    "Ciudad en la que labora",
+    "Teléfono institucional",
+    "Extensión telefónica",
+    "Correo electrónico institucional"
+   ],
+   "campos_estado": "declarados",
+   "periodicidad": {
+    "literal": "La actualización de los metadatos de este conjunto de datos y la periodicidad de generación de sus contenidos será mensual.",
+    "metadatos": "mensual",
+    "contenidos": [
+     "mensual"
+    ],
+    "estado": "declarada",
+    "condicion": null
+   },
+   "_procedencia": {
+    "capitulo": "II",
+    "parrafo_inicio": 215,
+    "parrafo_fin": 244,
+    "parrafo_campos": 229,
+    "parrafo_periodicidad": 242
+   },
+   "estructura_formal": {
+    "estado": "remitida_a_recurso_externo",
+    "remisiones": [
+     {
+      "que": "​estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/14tk2ENC8QTnPAJPtSkL6aSXUlYmO2ka3/edit#gid=1865959602"
+     },
+     {
+      "que": "​metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/14tk2ENC8QTnPAJPtSkL6aSXUlYmO2ka3/edit#gid=1295006418"
+     },
+     {
+      "que": "​diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/14tk2ENC8QTnPAJPtSkL6aSXUlYmO2ka3/edit#gid=1567200708"
+     }
+    ],
+    "nota": "el anexo del capítulo IX no publica los campos: enlaza hojas de cálculo externas. Fuera del corpus, no verificables por SHA."
+   }
+  },
+  {
+   "numeral": "3",
+   "obligacion": "Las remuneraciones salariales, incluyendo todo ingreso adicional correspondiente a todo el personal del organismo, dependencia y/o persona jurídica",
+   "obligacion_estado": "transcrita",
+   "campos_exigidos": [
+    "Numeración secuencial con el propósito de dar a conocer el total de la nómina institucional",
+    "Puesto institucional",
+    "Régimen laboral al que pertenece",
+    "Número de partida presupuestaria",
+    "Grado jerárquico o escala al que pertenece el puesto",
+    "Remuneración mensual unificada",
+    "Remuneración unificada (anual)",
+    "Décima tercera remuneración",
+    "Décima cuarta remuneración",
+    "Horas suplementarias y extraordinarias",
+    "Encargos y subrogaciones",
+    "Total ingresos adicionales"
+   ],
+   "campos_estado": "declarados",
+   "periodicidad": {
+    "estado": "no_sustentado",
+    "literal": null,
+    "contenidos": []
+   },
+   "_procedencia": {
+    "capitulo": "II",
+    "parrafo_inicio": 244,
+    "parrafo_fin": 275,
+    "parrafo_campos": 253,
+    "parrafo_periodicidad": null
+   },
+   "estructura_formal": {
+    "estado": "remitida_a_recurso_externo",
+    "remisiones": [
+     {
+      "que": "​estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1SzHAFdSiAoANonvj4itc6AWCl6Y8mO1E/edit#gid=1002222975"
+     },
+     {
+      "que": "​metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1SzHAFdSiAoANonvj4itc6AWCl6Y8mO1E/edit#gid=1642408453"
+     },
+     {
+      "que": "​diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1SzHAFdSiAoANonvj4itc6AWCl6Y8mO1E/edit#gid=1214088968"
+     }
+    ],
+    "nota": "el anexo del capítulo IX no publica los campos: enlaza hojas de cálculo externas. Fuera del corpus, no verificables por SHA."
+   }
+  },
+  {
+   "numeral": "4",
+   "obligacion": "Un detalle de los funcionarios que gocen de licencia de servicio y de comisión de servicio",
+   "obligacion_estado": "transcrita",
+   "campos_exigidos": [
+    "Nombres y apellidos",
+    "Puesto institucional",
+    "Fecha de inicio de la licencia o comisión de servicio",
+    "Fecha en la que finaliza la licencia de servicio o la comisión de servicio",
+    "Entidad o país de destino de la persona a la que se otorga la licencia de servicio o la comisión de servicio",
+    "Tipo de licencia de servicio o de comisión de servicio"
+   ],
+   "campos_estado": "declarados",
+   "periodicidad": {
+    "literal": "La actualización de los metadatos de este conjunto de datos y la periodicidad de generación de sus contenidos será mensual.",
+    "metadatos": "mensual",
+    "contenidos": [
+     "mensual"
+    ],
+    "estado": "declarada",
+    "condicion": null
+   },
+   "_procedencia": {
+    "capitulo": "II",
+    "parrafo_inicio": 275,
+    "parrafo_fin": 296,
+    "parrafo_campos": 281,
+    "parrafo_periodicidad": 291
+   },
+   "estructura_formal": {
+    "estado": "remitida_a_recurso_externo",
+    "remisiones": [
+     {
+      "que": "​estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1ueo4UlAmycUNhvbFaD9HV7jVQg5jADMOJq3PSwXH5cs/edit#gid=1643096507"
+     },
+     {
+      "que": "​metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1ueo4UlAmycUNhvbFaD9HV7jVQg5jADMOJq3PSwXH5cs/edit#gid=862727604"
+     },
+     {
+      "que": "​diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1ueo4UlAmycUNhvbFaD9HV7jVQg5jADMOJq3PSwXH5cs/edit#gid=704242082"
+     }
+    ],
+    "nota": "el anexo del capítulo IX no publica los campos: enlaza hojas de cálculo externas. Fuera del corpus, no verificables por SHA."
+   }
+  },
+  {
+   "numeral": "5",
+   "obligacion": "Los servicios que brinda la entidad y las formas de acceder a ellos, horarios de atención y demás indicaciones necesarias",
+   "obligacion_estado": "transcrita",
+   "campos_exigidos": [
+    "Denominación del servicio público que se brinda",
+    "Enlace para acceder al reporte del servicio",
+    "Número de personas que acceden mensualmente al servicio institucional",
+    "Enlace para descargar el formulario o formato del servicio (impreso) / correo electrónico para solicitar el servicio",
+    "Enlace para el servicio por internet (en línea)",
+    "Porcentaje de satisfacción sobre el uso del servicio"
+   ],
+   "campos_estado": "declarados",
+   "periodicidad": {
+    "literal": "La actualización de los metadatos de este conjunto de datos y la periodicidad de generación de sus contenidos será mensual.",
+    "metadatos": "mensual",
+    "contenidos": [
+     "mensual"
+    ],
+    "estado": "declarada",
+    "condicion": null
+   },
+   "_procedencia": {
+    "capitulo": "II",
+    "parrafo_inicio": 296,
+    "parrafo_fin": 326,
+    "parrafo_campos": 307,
+    "parrafo_periodicidad": 324
+   },
+   "comparte_conjunto_con": [
+    "5",
+    "22"
+   ],
+   "estructura_formal": {
+    "estado": "no_declarada",
+    "remisiones": [],
+    "nota": "el anexo del capítulo IX no publica los campos: enlaza hojas de cálculo externas. Fuera del corpus, no verificables por SHA."
+   }
+  },
+  {
+   "numeral": "6",
+   "obligacion": "Información total sobre el presupuesto anual que administra la entidad, así como el asignado a cada área, programa o función, especificando ingresos, gastos, financiamiento y resultados operativos de conformidad con los clasificadores presupuestales, así como liquidación del presupuesto, especificando destinatarios de la entrega de recursos públicos",
+   "obligacion_estado": "transcrita",
+   "campos_exigidos": [
+    "Código de la cuenta o subcuenta contable",
+    "Categoría de la cuenta o subcuenta contable",
+    "Descripción de la cuenta o subcuenta contable",
+    "Monto asignado",
+    "Monto modificado que corresponde a las reformas realizadas",
+    "Monto codificado",
+    "Monto certificado",
+    "Monto comprometido",
+    "Monto devengado",
+    "Monto pagado",
+    "Saldo por comprometer",
+    "Saldo por devengar",
+    "Saldo por pagar",
+    "Porcentaje de ejecución"
+   ],
+   "campos_estado": "declarados",
+   "periodicidad": {
+    "literal": "La actualización de los metadatos de este conjunto de datos y la periodicidad de generación de sus contenidos será mensual.",
+    "metadatos": "mensual",
+    "contenidos": [
+     "mensual"
+    ],
+    "estado": "declarada",
+    "condicion": null
+   },
+   "_procedencia": {
+    "capitulo": "II",
+    "parrafo_inicio": 326,
+    "parrafo_fin": 354,
+    "parrafo_campos": 332,
+    "parrafo_periodicidad": 352
+   },
+   "estructura_formal": {
+    "estado": "remitida_a_recurso_externo",
+    "remisiones": [
+     {
+      "que": "​estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1UGMgzLqqAJoMrp5w5y4CJD3cSiv1k2vw/edit#gid=233185298"
+     },
+     {
+      "que": "​metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1UGMgzLqqAJoMrp5w5y4CJD3cSiv1k2vw/edit#gid=1529348421"
+     },
+     {
+      "que": "​diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1UGMgzLqqAJoMrp5w5y4CJD3cSiv1k2vw/edit#gid=244958535"
+     }
+    ],
+    "nota": "el anexo del capítulo IX no publica los campos: enlaza hojas de cálculo externas. Fuera del corpus, no verificables por SHA."
+   }
+  },
+  {
+   "numeral": "7",
+   "obligacion": "Los resultados definitivos de las auditorías internas y gubernamentales al ejercicio presupuestario y estudios financieros anuales",
+   "obligacion_estado": "transcrita",
+   "campos_exigidos": [
+    "Número secuencial",
+    "Número del informe de auditoría aprobado",
+    "Tipo de examen aprobado",
+    "Nombre del examen aprobado",
+    "Período analizado",
+    "Área o proceso auditado",
+    "Enlace para descargar el informe específico",
+    "Enlace para descargar el reporte de seguimiento al cumplimiento de recomendaciones del informe de auditoría",
+    "Información adicional sobre el informe de auditoría"
+   ],
+   "campos_estado": "declarados",
+   "periodicidad": {
+    "literal": "La actualización de los metadatos de este conjunto de datos y la periodicidad de generación de sus contenidos será mensual.",
+    "metadatos": "mensual",
+    "contenidos": [
+     "mensual"
+    ],
+    "estado": "declarada",
+    "condicion": null
+   },
+   "_procedencia": {
+    "capitulo": "II",
+    "parrafo_inicio": 354,
+    "parrafo_fin": 385,
+    "parrafo_campos": 361,
+    "parrafo_periodicidad": 381
+   },
+   "estructura_formal": {
+    "estado": "remitida_a_recurso_externo",
+    "remisiones": [
+     {
+      "que": "​estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1lqfuLTfBLTfvFOCDF7lcMuX0a9K4PrIP/edit#gid=151625910"
+     },
+     {
+      "que": "​metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1lqfuLTfBLTfvFOCDF7lcMuX0a9K4PrIP/edit#gid=1642358669"
+     },
+     {
+      "que": "​diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1lqfuLTfBLTfvFOCDF7lcMuX0a9K4PrIP/edit#gid=2028963751"
+     }
+    ],
+    "nota": "el anexo del capítulo IX no publica los campos: enlaza hojas de cálculo externas. Fuera del corpus, no verificables por SHA."
+   }
+  },
+  {
+   "numeral": "8",
+   "obligacion": "Información completa y detallada sobre los procesos precontractuales, contractuales, de adjudicación y liquidación, de las contrataciones de obras, adquisición de bienes, prestación de servicios, arrendamientos mercantiles, etc., celebrados por la entidad con personas naturales o jurídicas, incluidos concesiones, permisos o autorizaciones; especificando objetivos, características, montos, proveedores y subcontratos",
+   "obligacion_estado": "transcrita",
+   "campos_exigidos": [
+    "Fecha de publicación del proceso en el Portal de Compras Públicas",
+    "Código del proceso de contratación",
+    "Tipo del proceso de contratación",
+    "Objeto del proceso de contratación",
+    "Presupuesto referencial (USD) del proceso de contratación",
+    "Partida presupuestaria",
+    "Monto de la adjudicación (USD) del proceso de contratación",
+    "Etapa de la contratación",
+    "RUC de la empresa o persona contratista",
+    "Enlace para descargar el proceso de contratación desde el Portal de Compras Públicas"
+   ],
+   "campos_estado": "declarados",
+   "periodicidad": {
+    "literal": "La actualización de los metadatos de este conjunto de datos y la periodicidad de generación de sus contenidos será mensual.",
+    "metadatos": "mensual",
+    "contenidos": [
+     "mensual"
+    ],
+    "estado": "declarada",
+    "condicion": null
+   },
+   "_procedencia": {
+    "capitulo": "II",
+    "parrafo_inicio": 385,
+    "parrafo_fin": 412,
+    "parrafo_campos": 394,
+    "parrafo_periodicidad": 408
+   },
+   "estructura_formal": {
+    "estado": "remitida_a_recurso_externo",
+    "remisiones": [
+     {
+      "que": "​estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1YV6OI9MIi7onOP-ozSbKioaf1Jdi_b5d/edit#gid=344472528"
+     },
+     {
+      "que": "​metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1YV6OI9MIi7onOP-ozSbKioaf1Jdi_b5d/edit#gid=2048404962"
+     },
+     {
+      "que": "​diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1YV6OI9MIi7onOP-ozSbKioaf1Jdi_b5d/edit#gid=1148650959"
+     }
+    ],
+    "nota": "el anexo del capítulo IX no publica los campos: enlaza hojas de cálculo externas. Fuera del corpus, no verificables por SHA."
+   }
+  },
+  {
+   "numeral": "9",
+   "obligacion": "Listado de las empresas y personas, jurídicas o naturales, que han incumplido contratos con dicha entidad, número de contrato y su monto",
+   "obligacion_estado": "transcrita",
+   "campos_exigidos": [
+    "Número secuencial",
+    "RUC / Número de identificación de la empresa o persona contratista",
+    "Número del contrato / código del proceso de contratación fallido o incumplido",
+    "Monto del contrato incumplido",
+    "Fecha desde la que rige la prohibición para contratar",
+    "Fecha hasta que permanecerá la prohibición para contratar"
+   ],
+   "campos_estado": "declarados",
+   "periodicidad": {
+    "literal": "La actualización de los metadatos de este conjunto de datos y la periodicidad de generación de sus contenidos será mensual.",
+    "metadatos": "mensual",
+    "contenidos": [
+     "mensual"
+    ],
+    "estado": "declarada",
+    "condicion": null
+   },
+   "_procedencia": {
+    "capitulo": "II",
+    "parrafo_inicio": 412,
+    "parrafo_fin": 427,
+    "parrafo_campos": 418,
+    "parrafo_periodicidad": 425
+   },
+   "estructura_formal": {
+    "estado": "remitida_a_recurso_externo",
+    "remisiones": [
+     {
+      "que": "​estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1ihoBvUvc08e0Cc2dHJtrTFrdXcZZ2zuJ/edit#gid=487408490"
+     },
+     {
+      "que": "​metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1ihoBvUvc08e0Cc2dHJtrTFrdXcZZ2zuJ/edit#gid=632918940"
+     },
+     {
+      "que": "​diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1ihoBvUvc08e0Cc2dHJtrTFrdXcZZ2zuJ/edit#gid=1222066257"
+     }
+    ],
+    "nota": "el anexo del capítulo IX no publica los campos: enlaza hojas de cálculo externas. Fuera del corpus, no verificables por SHA."
+   }
+  },
+  {
+   "numeral": "10",
+   "obligacion": "Planes y programas de la entidad en ejecución",
+   "obligacion_estado": "transcrita",
+   "campos_exigidos": [
+    "Nombre del plan, proyecto o programa",
+    "Período para el que rige",
+    "Monto presupuestado, programado y aprobado",
+    "Enlace para descargar el plan, proyecto o programa completo",
+    "Enlace al estado de avance en el que se encuentra el plan, proyecto o programa"
+   ],
+   "campos_estado": "declarados",
+   "periodicidad": {
+    "literal": "La actualización de los metadatos de este conjunto de datos y la periodicidad de generación de sus contenidos será mensual.",
+    "metadatos": "mensual",
+    "contenidos": [
+     "mensual"
+    ],
+    "estado": "declarada",
+    "condicion": null
+   },
+   "_procedencia": {
+    "capitulo": "II",
+    "parrafo_inicio": 427,
+    "parrafo_fin": 450,
+    "parrafo_campos": 438,
+    "parrafo_periodicidad": 448
+   },
+   "estructura_formal": {
+    "estado": "remitida_a_recurso_externo",
+    "remisiones": [
+     {
+      "que": "​estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1h48dRVpKhjkvLnxSA0ZqLvFmTlnq6lDj/edit#gid=131742255"
+     },
+     {
+      "que": "​metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1h48dRVpKhjkvLnxSA0ZqLvFmTlnq6lDj/edit#gid=1941392777"
+     },
+     {
+      "que": "​diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1h48dRVpKhjkvLnxSA0ZqLvFmTlnq6lDj/edit#gid=549809484"
+     }
+    ],
+    "nota": "el anexo del capítulo IX no publica los campos: enlaza hojas de cálculo externas. Fuera del corpus, no verificables por SHA."
+   }
+  },
+  {
+   "numeral": "11",
+   "obligacion": "El detalle de los contratos de crédito externos o internos; se señalará la fuente de los fondos con los que se pagarán esos créditos. Cuando se trate de préstamos o contratos de financiamiento, se hará constar expresamente el objetivo del endeudamiento, fecha de suscripción y renovación, nombres del deudor, acreedor y ejecutor, las operaciones y contratos de crédito, los montos, plazo, costos financieros o tipos de interés, tasa de interés y fondos con los que se cancelará la obligación, desembolsos efectuados o por efectuar, conforme lo establecen las leyes que regulan esta materia",
+   "obligacion_estado": "transcrita",
+   "campos_exigidos": [
+    "Tipo de contrato",
+    "Objeto",
+    "Fecha de suscripción o renovación",
+    "Nombre deudor",
+    "Nombre acreedor",
+    "Nombre ejecutor",
+    "Tasa de interés (%)",
+    "Plazo de duración del crédito",
+    "Fondo con los que se cancelará la obligación crediticia",
+    "Enlace para descargar el contrato de crédito externo o interno",
+    "Monto del préstamo recibido o contrato",
+    "Desembolsos efectuados",
+    "Desembolsos por efectuar"
+   ],
+   "campos_estado": "declarados",
+   "periodicidad": {
+    "literal": "La actualización de los metadatos de este conjunto de datos y la periodicidad de generación de sus contenidos será mensual.",
+    "metadatos": "mensual",
+    "contenidos": [
+     "mensual"
+    ],
+    "estado": "declarada",
+    "condicion": null
+   },
+   "_procedencia": {
+    "capitulo": "II",
+    "parrafo_inicio": 450,
+    "parrafo_fin": 483,
+    "parrafo_campos": 462,
+    "parrafo_periodicidad": 478
+   },
+   "estructura_formal": {
+    "estado": "remitida_a_recurso_externo",
+    "remisiones": [
+     {
+      "que": "​estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1yNjJHrvIZVd9241tHIIFSl3FvGuPGu-r/edit#gid=1413444589"
+     },
+     {
+      "que": "​metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1yNjJHrvIZVd9241tHIIFSl3FvGuPGu-r/edit#gid=979803850"
+     },
+     {
+      "que": "​diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1yNjJHrvIZVd9241tHIIFSl3FvGuPGu-r/edit#gid=1194020223"
+     },
+     {
+      "que": "​estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1cGhbx44P5vkhURdxF69xMIRnyAOurNKA/edit#gid=1032333509"
+     },
+     {
+      "que": "​metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1cGhbx44P5vkhURdxF69xMIRnyAOurNKA/edit#gid=1349708329"
+     },
+     {
+      "que": "​diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1cGhbx44P5vkhURdxF69xMIRnyAOurNKA/edit#gid=1423019457"
+     }
+    ],
+    "nota": "el anexo del capítulo IX no publica los campos: enlaza hojas de cálculo externas. Fuera del corpus, no verificables por SHA."
+   }
+  },
+  {
+   "numeral": "12",
+   "obligacion": "Mecanismos de rendición de cuentas a las personas tales como metas e informes de gestión e indicadores de desempeño",
+   "obligacion_estado": "transcrita",
+   "campos_exigidos": [
+    "Nombre del mecanismo",
+    "Número de resolución o certificado asociado al mecanismo",
+    "Período de presentación del mecanismo de rendición de cuentas",
+    "Enlace para acceder a la información detallada"
+   ],
+   "campos_estado": "declarados",
+   "periodicidad": {
+    "estado": "no_sustentado",
+    "literal": null,
+    "contenidos": []
+   },
+   "_procedencia": {
+    "capitulo": "II",
+    "parrafo_inicio": 483,
+    "parrafo_fin": 498,
+    "parrafo_campos": 491,
+    "parrafo_periodicidad": null
+   },
+   "estructura_formal": {
+    "estado": "no_declarada",
+    "remisiones": [],
+    "nota": "el anexo del capítulo IX no publica los campos: enlaza hojas de cálculo externas. Fuera del corpus, no verificables por SHA."
+   }
+  },
+  {
+   "numeral": "13",
+   "obligacion": "Los viáticos, informes de trabajo y justificativos de movilización nacional o internacional de las autoridades, dignatarios, servidoras y servidores públicos",
+   "obligacion_estado": "transcrita",
+   "campos_exigidos": [
+    "Nombres y apellidos",
+    "Puesto institucional",
+    "Tipo de movilización (nacional o internacional)",
+    "Fecha de inicio del viaje",
+    "Fecha de fin del viaje",
+    "Motivo del viaje",
+    "Valor del viático",
+    "Enlace para descargar el informe de actividades y justificativos"
+   ],
+   "campos_estado": "declarados",
+   "periodicidad": {
+    "literal": "La actualización de los metadatos de este conjunto de datos y la periodicidad de generación de sus contenidos será mensual.",
+    "metadatos": "mensual",
+    "contenidos": [
+     "mensual"
+    ],
+    "estado": "declarada",
+    "condicion": null
+   },
+   "_procedencia": {
+    "capitulo": "II",
+    "parrafo_inicio": 498,
+    "parrafo_fin": 524,
+    "parrafo_campos": 504,
+    "parrafo_periodicidad": 522
+   },
+   "estructura_formal": {
+    "estado": "remitida_a_recurso_externo",
+    "remisiones": [
+     {
+      "que": "​estructura del conjunto de los datos",
+      "url": "https://docs.google.com/spreadsheets/d/1u_BRkbIVR9rWcc6hqU03F6kGYPLOZT_q/edit#gid=582835253"
+     },
+     {
+      "que": "​metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1u_BRkbIVR9rWcc6hqU03F6kGYPLOZT_q/edit#gid=390944048"
+     },
+     {
+      "que": "​diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1u_BRkbIVR9rWcc6hqU03F6kGYPLOZT_q/edit#gid=679955033"
+     },
+     {
+      "que": "​reporte de las entidades a la defensoria del pueblo",
+      "url": "https://docs.google.com/spreadsheets/d/1u_BRkbIVR9rWcc6hqU03F6kGYPLOZT_q/edit#gid=1642117216"
+     },
+     {
+      "que": "​estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1KYTeceVM5qR98yduCRVGd3dibZxlT3_S/edit#gid=1261450597"
+     },
+     {
+      "que": "​metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1KYTeceVM5qR98yduCRVGd3dibZxlT3_S/edit#gid=1568995659"
+     },
+     {
+      "que": "​diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1KYTeceVM5qR98yduCRVGd3dibZxlT3_S/edit#gid=2002979327"
+     }
+    ],
+    "nota": "el anexo del capítulo IX no publica los campos: enlaza hojas de cálculo externas. Fuera del corpus, no verificables por SHA."
+   }
+  },
+  {
+   "numeral": "14",
+   "obligacion": "El nombre, dirección, teléfono de la oficina y dirección electrónica de las y los responsables del acceso de información pública del organismo, dependencia y/o persona jurídica",
+   "obligacion_estado": "transcrita",
+   "campos_exigidos": [
+    "Nombres y apellidos",
+    "Denominación del puesto",
+    "Responsable del acceso a la información pública",
+    "Dirección de la oficina",
+    "Número telefónico",
+    "Extensión telefónica",
+    "Correo electrónico"
+   ],
+   "campos_estado": "declarados",
+   "periodicidad": {
+    "literal": "La actualización de los metadatos de este conjunto de datos y la periodicidad de generación de sus contenidos será mensual.",
+    "metadatos": "mensual",
+    "contenidos": [
+     "mensual"
+    ],
+    "estado": "declarada",
+    "condicion": null
+   },
+   "_procedencia": {
+    "capitulo": "II",
+    "parrafo_inicio": 524,
+    "parrafo_fin": 546,
+    "parrafo_campos": 532,
+    "parrafo_periodicidad": 544
+   },
+   "estructura_formal": {
+    "estado": "no_declarada",
+    "remisiones": [],
+    "nota": "el anexo del capítulo IX no publica los campos: enlaza hojas de cálculo externas. Fuera del corpus, no verificables por SHA."
+   }
+  },
+  {
+   "numeral": "15",
+   "obligacion": "Texto íntegro de todos los contratos colectivos vigentes del organismo, dependencia y/o persona jurídica, así como sus anexos y reformas",
+   "obligacion_estado": "transcrita",
+   "campos_exigidos": [
+    "Denominación de la organización sindical",
+    "Fecha de suscripción del contrato",
+    "Enlace para descargar el contrato colectivo original",
+    "Fecha de la última reforma o revisión",
+    "Enlace para descargar todas las reformas completas del contrato colectivo"
+   ],
+   "campos_estado": "declarados",
+   "periodicidad": {
+    "literal": "La actualización de los metadatos de este conjunto de datos y la periodicidad de generación de sus contenidos será mensual.",
+    "metadatos": "mensual",
+    "contenidos": [
+     "mensual"
+    ],
+    "estado": "declarada",
+    "condicion": null
+   },
+   "_procedencia": {
+    "capitulo": "II",
+    "parrafo_inicio": 546,
+    "parrafo_fin": 567,
+    "parrafo_campos": 552,
+    "parrafo_periodicidad": 565
+   },
+   "estructura_formal": {
+    "estado": "remitida_a_recurso_externo",
+    "remisiones": [
+     {
+      "que": "​estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/19wKQKczhexDWE0xF79dQGg09oisg1n4n/edit#gid=1773304192"
+     },
+     {
+      "que": "​metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/19wKQKczhexDWE0xF79dQGg09oisg1n4n/edit#gid=120688630"
+     },
+     {
+      "que": "​diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/19wKQKczhexDWE0xF79dQGg09oisg1n4n/edit#gid=167966036"
+     }
+    ],
+    "nota": "el anexo del capítulo IX no publica los campos: enlaza hojas de cálculo externas. Fuera del corpus, no verificables por SHA."
+   }
+  },
+  {
+   "numeral": "16",
+   "obligacion": "Índice de información clasificada como reservada señalando el número de resolución, la fecha de clasificación y período de vigencia",
+   "obligacion_estado": "transcrita",
+   "campos_exigidos": [
+    "Tema",
+    "Número de resolución",
+    "Fecha de la clasificación de la información reservada",
+    "Período de vigencia de la clasificación de la reserva",
+    "Enlace para descargar la resolución de clasificación de información reservada"
+   ],
+   "campos_estado": "declarados",
+   "periodicidad": {
+    "literal": "La actualización de los metadatos de este conjunto de datos será mensual y la periodicidad de generación de sus contenidos será semestral o anual, según corresponda a la actualización de la información.",
+    "metadatos": "mensual",
+    "contenidos": [
+     "semestral",
+     "anual"
+    ],
+    "estado": "condicionada",
+    "condicion": "según varía"
+   },
+   "_procedencia": {
+    "capitulo": "II",
+    "parrafo_inicio": 567,
+    "parrafo_fin": 582,
+    "parrafo_campos": 573,
+    "parrafo_periodicidad": 572
+   },
+   "estructura_formal": {
+    "estado": "remitida_a_recurso_externo",
+    "remisiones": [
+     {
+      "que": "​estructura del conjunto de los datos",
+      "url": "https://docs.google.com/spreadsheets/d/1YFdCMQfa1J5p3cLegNwhs_3J5IP_k_PukFksLFciXas/edit#gid=0"
+     },
+     {
+      "que": "​metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1YFdCMQfa1J5p3cLegNwhs_3J5IP_k_PukFksLFciXas/edit#gid=259415078"
+     },
+     {
+      "que": "​diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1YFdCMQfa1J5p3cLegNwhs_3J5IP_k_PukFksLFciXas/edit#gid=1100035284"
+     }
+    ],
+    "nota": "el anexo del capítulo IX no publica los campos: enlaza hojas de cálculo externas. Fuera del corpus, no verificables por SHA."
+   }
+  },
+  {
+   "numeral": "17",
+   "obligacion": "Un detalle de las audiencias y reuniones sostenidas por las autoridades electas de todos los niveles de gobierno, funcionarios del nivel jerárquico superior de las instituciones públicas y máximos representantes de los demás sujetos obligados en esta Ley que tengan por objeto: La elaboración, modificación, derogación o rechazo de actos administrativos, proyectos de ley y leyes, como también de las decisiones que adopten los obligados en esta Ley. La elaboración, tramitación, aprobación, modificación, derogación o rechazo de acuerdos, resoluciones o decisiones de la Asamblea Nacional o sus miembros, incluidas sus Comisiones. La celebración, modificación o terminación a cualquier título, de contratos que realicen los sujetos obligados señalados en esta Ley y que sean necesarios para su funcionamiento. El diseño, implementación y evaluación de políticas, planes y programas efectuados por los sujetos obligados señalados en esta Ley, a quienes correspondan estas funciones. En dicho detalle se deberá indicar, en particular, la persona, organización o entidad con quien se sostuvo la audiencia o reunión, la individualización de los asistentes o personas presentes en la respectiva audiencia o reunión, el lugar y fecha de su realización y la materia específica tratada. Se exceptúa lo determinado como información confidencial o reservada",
+   "obligacion_estado": "transcrita",
+   "campos_exigidos": [
+    "Nombres, apellidos y puesto institucional de las personas participantes de la entidad que reporta",
+    "Nombres, apellidos y entidad de las personas que participan en la audiencia o reunión",
+    "Asunto o descripción de la audiencia / reunión",
+    "Fecha de la audiencia / reunión",
+    "Duración de la audiencia / reunión",
+    "Modalidad (presencial, virtual, híbrida)",
+    "Lugar de la audiencia / reunión7",
+    "Enlace para descargar el registro de asistencia de las personas que participaron en las reuniones según el detalle de fecha"
+   ],
+   "campos_estado": "declarados",
+   "periodicidad": {
+    "literal": "La actualización de los metadatos de este conjunto de datos y la periodicidad de generación de sus contenidos será mensual.",
+    "metadatos": "mensual",
+    "contenidos": [
+     "mensual"
+    ],
+    "estado": "declarada",
+    "condicion": null
+   },
+   "_procedencia": {
+    "capitulo": "II",
+    "parrafo_inicio": 582,
+    "parrafo_fin": 635,
+    "parrafo_campos": 598,
+    "parrafo_periodicidad": 609
+   },
+   "estructura_formal": {
+    "estado": "remitida_a_recurso_externo",
+    "remisiones": [
+     {
+      "que": "​estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1FKBoVxfR8h0BG3OKd71K1fMwoWlnGjpb/edit#gid=1509778785"
+     },
+     {
+      "que": "​metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1FKBoVxfR8h0BG3OKd71K1fMwoWlnGjpb/edit#gid=1441053326"
+     },
+     {
+      "que": "​diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1FKBoVxfR8h0BG3OKd71K1fMwoWlnGjpb/edit#gid=557845321"
+     }
+    ],
+    "nota": "el anexo del capítulo IX no publica los campos: enlaza hojas de cálculo externas. Fuera del corpus, no verificables por SHA."
+   }
+  },
+  {
+   "numeral": "18",
+   "obligacion": "Detalle de los convenios nacionales o internacionales que celebre la entidad con personas naturales o jurídicas",
+   "obligacion_estado": "transcrita",
+   "campos_exigidos": [
+    "Tipo de convenio",
+    "Fecha de suscripción del convenio",
+    "Objeto del convenio",
+    "Nombre de la organización o persona jurídica con quien se suscribe el convenio",
+    "Plazo de duración del convenio",
+    "Enlace para descargar el convenio completo"
+   ],
+   "campos_estado": "declarados",
+   "periodicidad": {
+    "literal": "La actualización de los metadatos de este conjunto de datos será mensual y la periodicidad de la publicación de generación de sus contenidos será semestral.",
+    "metadatos": "mensual",
+    "contenidos": [
+     "semestral"
+    ],
+    "estado": "declarada",
+    "condicion": null
+   },
+   "_procedencia": {
+    "capitulo": "II",
+    "parrafo_inicio": 635,
+    "parrafo_fin": 654,
+    "parrafo_campos": 642,
+    "parrafo_periodicidad": 652
+   },
+   "estructura_formal": {
+    "estado": "remitida_a_recurso_externo",
+    "remisiones": [
+     {
+      "que": "sin etiqueta",
+      "url": "https://docs.google.com/spreadsheets/d/1clYdqY89jp08OnxcGmxBqs3ieCVWwJLt/edit#gid"
+     },
+     {
+      "que": "sin etiqueta",
+      "url": "https://docs.google.com/spreadsheets/d/1clYdqY89jp08OnxcGmxBqs3ieCVWwJLt/edit#gid"
+     },
+     {
+      "que": "sin etiqueta",
+      "url": "https://docs.google.com/spreadsheets/d/1clYdqY89jp08OnxcGmxBqs3ieCVWwJLt/edit#gid"
+     }
+    ],
+    "nota": "el anexo del capítulo IX no publica los campos: enlaza hojas de cálculo externas. Fuera del corpus, no verificables por SHA."
+   }
+  },
+  {
+   "numeral": "19",
+   "obligacion": "Un detalle actualizado de los donativos oficiales y protocolares que reciban los sujetos obligados establecidos en esta Ley, con ocasión del ejercicio de sus funciones. En dichos registros deberá singularizarse el regalo o donativo recibido, la fecha y ocasión de su recepción y la individualización de la persona natural o jurídica de la cual procede",
+   "obligacion_estado": "transcrita",
+   "campos_exigidos": [
+    "Fecha de recepción del donativo o regalo",
+    "Descripción del donativo o regalo",
+    "Ocasión o motivo de la donación o regalo",
+    "Persona natural o jurídica de la que procede la donación o regalo",
+    "Enlace para descargar el documento mediante el cual se oficializa la recepción del regalo o donativo"
+   ],
+   "campos_estado": "declarados",
+   "periodicidad": {
+    "literal": "La actualización de los metadatos de este conjunto de datos y la periodicidad de generación de sus contenidos será mensual.",
+    "metadatos": "mensual",
+    "contenidos": [
+     "mensual"
+    ],
+    "estado": "declarada",
+    "condicion": null
+   },
+   "_procedencia": {
+    "capitulo": "II",
+    "parrafo_inicio": 654,
+    "parrafo_fin": 673,
+    "parrafo_campos": 662,
+    "parrafo_periodicidad": 671
+   },
+   "estructura_formal": {
+    "estado": "remitida_a_recurso_externo",
+    "remisiones": [
+     {
+      "que": "​estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/14ZX1yQlt4OaL-rxDZMZkiCN8FTdZV-9I/edit#gid=1557156793"
+     },
+     {
+      "que": "sin etiqueta",
+      "url": "https://docs.google.com/spreadsheets/d/14ZX1yQlt4OaL-rxDZMZkiCN8FTdZV-9I/edit#gid=2133228655"
+     },
+     {
+      "que": "sin etiqueta",
+      "url": "https://docs.google.com/spreadsheets/d/14ZX1yQlt4OaL-rxDZMZkiCN8FTdZV-9I/edit#gid=953878104"
+     }
+    ],
+    "nota": "el anexo del capítulo IX no publica los campos: enlaza hojas de cálculo externas. Fuera del corpus, no verificables por SHA."
+   }
+  },
+  {
+   "numeral": "20",
+   "obligacion": "Registro de Activos de Información, que contenga información solicitada con frecuencia, y otra información complementaria que de carácter obligatorio deban cumplir los sujetos obligados, de acuerdo con los parámetros establecidos por la Defensoría del Pueblo",
+   "obligacion_estado": "transcrita",
+   "campos_exigidos": [
+    "Tema de la información requerida con frecuencia",
+    "Número de ocasiones en las que la información fue requerida",
+    "Enlace para descargar el detalle de la información solicitada frecuentemente",
+    "Enlace para descargar la solicitud de información complementaria que haya sido solicitada de forma recurrente"
+   ],
+   "campos_estado": "declarados",
+   "periodicidad": {
+    "literal": "La actualización de los metadatos de este conjunto de datos y la periodicidad de generación de sus contenidos será mensual.",
+    "metadatos": "mensual",
+    "contenidos": [
+     "mensual"
+    ],
+    "estado": "declarada",
+    "condicion": null
+   },
+   "_procedencia": {
+    "capitulo": "II",
+    "parrafo_inicio": 673,
+    "parrafo_fin": 690,
+    "parrafo_campos": 682,
+    "parrafo_periodicidad": 688
+   },
+   "estructura_formal": {
+    "estado": "remitida_a_recurso_externo",
+    "remisiones": [
+     {
+      "que": "​estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1gEZgGPZBKzLbcdNdBDGnx0APRlOrLxQ6/edit#gid=176560768"
+     },
+     {
+      "que": "​metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1gEZgGPZBKzLbcdNdBDGnx0APRlOrLxQ6/edit#gid=1000996350"
+     },
+     {
+      "que": "​diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1gEZgGPZBKzLbcdNdBDGnx0APRlOrLxQ6/edit#gid=1084964026"
+     }
+    ],
+    "nota": "el anexo del capítulo IX no publica los campos: enlaza hojas de cálculo externas. Fuera del corpus, no verificables por SHA."
+   }
+  },
+  {
+   "numeral": "21",
+   "obligacion": "Políticas públicas o cualquier información que afecte a un grupo específico, en todas sus fases",
+   "obligacion_estado": "transcrita",
+   "campos_exigidos": [
+    "Grupo específico",
+    "Nombre de la política pública",
+    "Fase de la política pública",
+    "Fecha",
+    "Enlace a informe"
+   ],
+   "campos_estado": "declarados",
+   "periodicidad": {
+    "literal": "La actualización de los metadatos de este conjunto de datos será mensual y la periodicidad de generación de sus contenidos será trimestral.",
+    "metadatos": "mensual",
+    "contenidos": [
+     "trimestral"
+    ],
+    "estado": "declarada",
+    "condicion": null
+   },
+   "_procedencia": {
+    "capitulo": "II",
+    "parrafo_inicio": 690,
+    "parrafo_fin": 709,
+    "parrafo_campos": 696,
+    "parrafo_periodicidad": 707
+   },
+   "estructura_formal": {
+    "estado": "remitida_a_recurso_externo",
+    "remisiones": [
+     {
+      "que": "​estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1aUxuBAv1NwjEu-Z0e93RgnLcL9vw_-GR/edit#gid=1789768325"
+     },
+     {
+      "que": "sin etiqueta",
+      "url": "https://docs.google.com/spreadsheets/d/1aUxuBAv1NwjEu-Z0e93RgnLcL9vw_-GR/edit#gid=831599311"
+     },
+     {
+      "que": "​diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1aUxuBAv1NwjEu-Z0e93RgnLcL9vw_-GR/edit#gid=854022911"
+     }
+    ],
+    "nota": "el anexo del capítulo IX no publica los campos: enlaza hojas de cálculo externas. Fuera del corpus, no verificables por SHA."
+   }
+  },
+  {
+   "numeral": "23",
+   "obligacion": "Datos de las personas servidoras públicas incorporadas en cumplimiento de las acciones afirmativas de cuotas laborales en la legislación nacional, como el caso de las personas con discapacidad y sustitutos y de los pueblos y nacionalidades indígenas y afrodescendientes",
+   "obligacion_estado": "transcrita",
+   "campos_exigidos": [
+    "Número de personas con la acción afirmativa específica",
+    "Acción afirmativa específica"
+   ],
+   "campos_estado": "declarados",
+   "periodicidad": {
+    "literal": "La actualización de los metadatos de este conjunto de datos será mensual y la periodicidad de generación de sus contenidos será trimestral.",
+    "metadatos": "mensual",
+    "contenidos": [
+     "trimestral"
+    ],
+    "estado": "declarada",
+    "condicion": null
+   },
+   "_procedencia": {
+    "capitulo": "II",
+    "parrafo_inicio": 709,
+    "parrafo_fin": 726,
+    "parrafo_campos": 716,
+    "parrafo_periodicidad": 724
+   },
+   "estructura_formal": {
+    "estado": "remitida_a_recurso_externo",
+    "remisiones": [
+     {
+      "que": "​estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1QNznEoVsERDoeFpywkaGMzYi_bfEQITk/edit#gid=1814147413"
+     },
+     {
+      "que": "​metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1QNznEoVsERDoeFpywkaGMzYi_bfEQITk/edit#gid=897301688"
+     },
+     {
+      "que": "​diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1QNznEoVsERDoeFpywkaGMzYi_bfEQITk/edit#gid=1576634660"
+     }
+    ],
+    "nota": "el anexo del capítulo IX no publica los campos: enlaza hojas de cálculo externas. Fuera del corpus, no verificables por SHA."
+   }
+  },
+  {
+   "numeral": "24",
+   "obligacion": "Otra información que la entidad considere relevante para el ejercicio del derecho de acceso a la información pública, la participación ciudadana y el control social, en especial la que permita el seguimiento a la consecución de los Objetivos de Desarrollo Sostenible",
+   "obligacion_estado": "transcrita",
+   "campos_exigidos": [
+    "Información relevante",
+    "Enlace para descargar la información relevante"
+   ],
+   "campos_estado": "declarados",
+   "periodicidad": {
+    "literal": "La actualización de los metadatos de este conjunto de datos será mensual y la periodicidad de generación de sus contenidos será semestral o anual, según corresponda a la generación de la información.",
+    "metadatos": "mensual",
+    "contenidos": [
+     "semestral",
+     "anual"
+    ],
+    "estado": "condicionada",
+    "condicion": "según varía"
+   },
+   "_procedencia": {
+    "capitulo": "II",
+    "parrafo_inicio": 726,
+    "parrafo_fin": 743,
+    "parrafo_campos": 732,
+    "parrafo_periodicidad": 741
+   },
+   "estructura_formal": {
+    "estado": "remitida_a_recurso_externo",
+    "remisiones": [
+     {
+      "que": "​estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1dXM9hIT7La2qzCxccliyU-djZ-XedK8z/edit#gid=1662156215"
+     },
+     {
+      "que": "​metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1dXM9hIT7La2qzCxccliyU-djZ-XedK8z/edit#gid=1115643717"
+     },
+     {
+      "que": "​diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1dXM9hIT7La2qzCxccliyU-djZ-XedK8z/edit#gid=1791785871"
+     },
+     {
+      "que": "​estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1-caJvOorcUQYQ3Hs1TSBLWZUiZw5DeUf/edit#gid=662856781"
+     },
+     {
+      "que": "sin etiqueta",
+      "url": "https://docs.google.com/spreadsheets/d/1-caJvOorcUQYQ3Hs1TSBLWZUiZw5DeUf/edit#gid=1428319960"
+     },
+     {
+      "que": "sin etiqueta",
+      "url": "https://docs.google.com/spreadsheets/d/1-caJvOorcUQYQ3Hs1TSBLWZUiZw5DeUf/edit#gid=752998898"
+     },
+     {
+      "que": "​estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1-caJvOorcUQYQ3Hs1TSBLWZUiZw5DeUf/edit#gid=1334719944"
+     },
+     {
+      "que": "sin etiqueta",
+      "url": "https://docs.google.com/spreadsheets/d/1-caJvOorcUQYQ3Hs1TSBLWZUiZw5DeUf/edit#gid=608568977"
+     },
+     {
+      "que": "sin etiqueta",
+      "url": "https://docs.google.com/spreadsheets/d/1-caJvOorcUQYQ3Hs1TSBLWZUiZw5DeUf/edit#gid=2144671624"
+     },
+     {
+      "que": "​estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1-caJvOorcUQYQ3Hs1TSBLWZUiZw5DeUf/edit#gid=1464585486"
+     },
+     {
+      "que": "sin etiqueta",
+      "url": "https://docs.google.com/spreadsheets/d/1-caJvOorcUQYQ3Hs1TSBLWZUiZw5DeUf/edit#gid=1856583894"
+     },
+     {
+      "que": "sin etiqueta",
+      "url": "https://docs.google.com/spreadsheets/d/1-caJvOorcUQYQ3Hs1TSBLWZUiZw5DeUf/edit#gid=2100215999"
+     },
+     {
+      "que": "​estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1-caJvOorcUQYQ3Hs1TSBLWZUiZw5DeUf/edit#gid=409195399"
+     },
+     {
+      "que": "​metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1gAsjgbdQdZVj3kke836j-M0qJffLFVp6/edit#gid=858086357"
+     },
+     {
+      "que": "​diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1gAsjgbdQdZVj3kke836j-M0qJffLFVp6/edit#gid=1981019263"
+     },
+     {
+      "que": "sin etiqueta",
+      "url": "https://docs.google.com/spreadsheets/d/1gAsjgbdQdZVj3kke836j-"
+     },
+     {
+      "que": "​metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1gAsjgbdQdZVj3kke836j-M0qJffLFVp6/edit#gid=2026155981"
+     },
+     {
+      "que": "​diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1gAsjgbdQdZVj3kke836j-M0qJffLFVp6/edit#gid=858086357"
+     },
+     {
+      "que": "​estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1gAsjgbdQdZVj3kke836j-M0qJffLFVp6/edit#gid=1981019263"
+     },
+     {
+      "que": "​metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1gAsjgbdQdZVj3kke836j-M0qJffLFVp6/edit#gid=1831468168"
+     },
+     {
+      "que": "​diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1gAsjgbdQdZVj3kke836j-M0qJffLFVp6/edit#gid=772717396"
+     },
+     {
+      "que": "​estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1gAsjgbdQdZVj3kke836j-M0qJffLFVp6/edit#gid=1280841750"
+     },
+     {
+      "que": "​metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1gAsjgbdQdZVj3kke836j-M0qJffLFVp6/edit#gid=141977899"
+     },
+     {
+      "que": "​diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1gAsjgbdQdZVj3kke836j-M0qJffLFVp6/edit#gid=1950722191"
+     },
+     {
+      "que": "​estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1tWuXHmFhpSAetJYTOZG1zdgQxT1FS7Av/edit#gid=88941053"
+     },
+     {
+      "que": "​metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1tWuXHmFhpSAetJYTOZG1zdgQxT1FS7Av/edit#gid=73259506"
+     },
+     {
+      "que": "​diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1tWuXHmFhpSAetJYTOZG1zdgQxT1FS7Av/edit#gid=131043570"
+     },
+     {
+      "que": "​estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1LFpEC1m-x58723MNVYxq153h_Dc9Fihs/edit#gid=1807108489"
+     },
+     {
+      "que": "​metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1LFpEC1m-x58723MNVYxq153h_Dc9Fihs/edit#gid=806637198"
+     },
+     {
+      "que": "​diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1LFpEC1m-x58723MNVYxq153h_Dc9Fihs/edit#gid=357742472"
+     },
+     {
+      "que": "​estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1RLh0aTjBq7atUs9w-UvHdcKK08imP2O2/edit#gid=1912906557"
+     },
+     {
+      "que": "​metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1RLh0aTjBq7atUs9w-UvHdcKK08imP2O2/edit#gid=579586177"
+     },
+     {
+      "que": "​diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1RLh0aTjBq7atUs9w-UvHdcKK08imP2O2/edit#gid=311085754"
+     },
+     {
+      "que": "​estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1TSK-2_CtxyC2e-IHkRLmBn1UdtQ09z6G/edit#gid=2027445391"
+     },
+     {
+      "que": "​metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1TSK-2_CtxyC2e-IHkRLmBn1UdtQ09z6G/edit#gid=9408413"
+     },
+     {
+      "que": "​diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1TSK-2_CtxyC2e-IHkRLmBn1UdtQ09z6G/edit#gid=853881966"
+     },
+     {
+      "que": "estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1TSK-2_CtxyC2e-IHkRLmBn1UdtQ09z6G/edit#gid=2027445391"
+     },
+     {
+      "que": "metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1TSK-2_CtxyC2e-IHkRLmBn1UdtQ09z6G/edit#gid=9408413"
+     },
+     {
+      "que": "diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1TSK-2_CtxyC2e-IHkRLmBn1UdtQ09z6G/edit#gid=853881966"
+     },
+     {
+      "que": "estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1mZIkP28nvd5SYBRimH5rwQJp2OtK0Vmm/edit#gid=711653033"
+     },
+     {
+      "que": "metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1mZIkP28nvd5SYBRimH5rwQJp2OtK0Vmm/edit#gid=1906614124"
+     },
+     {
+      "que": "diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1mZIkP28nvd5SYBRimH5rwQJp2OtK0Vmm/edit#gid=1982199191"
+     },
+     {
+      "que": "estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1swT4oZtqDwa_RtHEVo-w3wS_N6iVOyw1/edit#gid=1685527854"
+     },
+     {
+      "que": "metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1swT4oZtqDwa_RtHEVo-w3wS_N6iVOyw1/edit#gid=57199213"
+     },
+     {
+      "que": "diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1swT4oZtqDwa_RtHEVo-w3wS_N6iVOyw1/edit#gid=1449762807"
+     },
+     {
+      "que": "sin etiqueta",
+      "url": "https://docs.google.com/spreadsheets/d/1swT4oZtqDwa_RtHEVo-w3wS_N6iVOyw1/edit#gid=273982191"
+     },
+     {
+      "que": "metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1swT4oZtqDwa_RtHEVo-w3wS_N6iVOyw1/edit#gid=1284814262"
+     },
+     {
+      "que": "diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1swT4oZtqDwa_RtHEVo-w3wS_N6iVOyw1/edit#gid=770664315"
+     },
+     {
+      "que": "estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1swT4oZtqDwa_RtHEVo-w3wS_N6iVOyw1/edit#gid=945762379"
+     },
+     {
+      "que": "metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1swT4oZtqDwa_RtHEVo-w3wS_N6iVOyw1/edit#gid=1031410571"
+     },
+     {
+      "que": "diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1swT4oZtqDwa_RtHEVo-w3wS_N6iVOyw1/edit#gid=1200776935"
+     },
+     {
+      "que": "estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1swT4oZtqDwa_RtHEVo-w3wS_N6iVOyw1/edit#gid=869473103"
+     },
+     {
+      "que": "metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1swT4oZtqDwa_RtHEVo-w3wS_N6iVOyw1/edit#gid=703125238"
+     },
+     {
+      "que": "diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1swT4oZtqDwa_RtHEVo-w3wS_N6iVOyw1/edit#gid=101204539"
+     },
+     {
+      "que": "estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1swT4oZtqDwa_RtHEVo-w3wS_N6iVOyw1/edit#gid=1244364226"
+     },
+     {
+      "que": "metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1swT4oZtqDwa_RtHEVo-w3wS_N6iVOyw1/edit#gid=1886926461"
+     },
+     {
+      "que": "diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1swT4oZtqDwa_RtHEVo-w3wS_N6iVOyw1/edit#gid=479169974"
+     },
+     {
+      "que": "estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1swT4oZtqDwa_RtHEVo-w3wS_N6iVOyw1/edit#gid=527328232"
+     },
+     {
+      "que": "metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1swT4oZtqDwa_RtHEVo-w3wS_N6iVOyw1/edit#gid=161557138"
+     },
+     {
+      "que": "diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1swT4oZtqDwa_RtHEVo-w3wS_N6iVOyw1/edit#gid=2046082395"
+     },
+     {
+      "que": "estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1swT4oZtqDwa_RtHEVo-w3wS_N6iVOyw1/edit#gid=1833118159"
+     },
+     {
+      "que": "metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1swT4oZtqDwa_RtHEVo-w3wS_N6iVOyw1/edit#gid=1212524391"
+     },
+     {
+      "que": "diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1swT4oZtqDwa_RtHEVo-w3wS_N6iVOyw1/edit#gid=2046082395"
+     },
+     {
+      "que": "estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1swT4oZtqDwa_RtHEVo-w3wS_N6iVOyw1/edit#gid=1753724885"
+     },
+     {
+      "que": "metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1swT4oZtqDwa_RtHEVo-w3wS_N6iVOyw1/edit#gid=377301971"
+     },
+     {
+      "que": "diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1swT4oZtqDwa_RtHEVo-w3wS_N6iVOyw1/edit#gid=1532875773"
+     },
+     {
+      "que": "estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/13Ds2jrIpoXTcNhXF-uTxpKx7lkzID2kK/edit#gid=334475168"
+     },
+     {
+      "que": "metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/13Ds2jrIpoXTcNhXF-uTxpKx7lkzID2kK/edit#gid=84094120"
+     },
+     {
+      "que": "diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/13Ds2jrIpoXTcNhXF-uTxpKx7lkzID2kK/edit#gid=868250437"
+     },
+     {
+      "que": "estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/13Ds2jrIpoXTcNhXF-uTxpKx7lkzID2kK/edit#gid=1020845006"
+     },
+     {
+      "que": "metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/13Ds2jrIpoXTcNhXF-uTxpKx7lkzID2kK/edit#gid=1843831516"
+     },
+     {
+      "que": "diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/13Ds2jrIpoXTcNhXF-uTxpKx7lkzID2kK/edit#gid=832069655"
+     },
+     {
+      "que": "estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/13Ds2jrIpoXTcNhXF-uTxpKx7lkzID2kK/edit#gid=135398799"
+     },
+     {
+      "que": "metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/13Ds2jrIpoXTcNhXF-uTxpKx7lkzID2kK/edit#gid=1809619954"
+     },
+     {
+      "que": "diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/13Ds2jrIpoXTcNhXF-uTxpKx7lkzID2kK/edit#gid=952659298"
+     },
+     {
+      "que": "estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/13Ds2jrIpoXTcNhXF-uTxpKx7lkzID2kK/edit#gid=1126535271"
+     },
+     {
+      "que": "metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/13Ds2jrIpoXTcNhXF-uTxpKx7lkzID2kK/edit#gid=2080917116"
+     },
+     {
+      "que": "diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/13Ds2jrIpoXTcNhXF-uTxpKx7lkzID2kK/edit#gid=540819293"
+     },
+     {
+      "que": "estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/13Ds2jrIpoXTcNhXF-uTxpKx7lkzID2kK/edit#gid=1712062929"
+     },
+     {
+      "que": "metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/13Ds2jrIpoXTcNhXF-uTxpKx7lkzID2kK/edit#gid=1585049009"
+     },
+     {
+      "que": "diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/13Ds2jrIpoXTcNhXF-uTxpKx7lkzID2kK/edit#gid=144985729"
+     },
+     {
+      "que": "sin etiqueta",
+      "url": "https://docs.google.com/spreadsheets/d/1lF84GYBSNdHzIzcWIWgrmq8PxDFnlud4/edit#gid"
+     },
+     {
+      "que": "sin etiqueta",
+      "url": "https://docs.google.com/spreadsheets/d/1lF84GYBSNdHzIzcWIWgrmq8PxDFnlud4/edit#gid"
+     },
+     {
+      "que": "sin etiqueta",
+      "url": "https://docs.google.com/spreadsheets/d/1lF84GYBSNdHzIzcWIWgrmq8PxDFnlud4/edit#gid"
+     },
+     {
+      "que": "estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/11pMKnRXXKtsu0g5q4WsqE9WJc-1VWruf/edit#gid=853030173"
+     },
+     {
+      "que": "metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/11pMKnRXXKtsu0g5q4WsqE9WJc-1VWruf/edit#gid=891302761"
+     },
+     {
+      "que": "diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/11pMKnRXXKtsu0g5q4WsqE9WJc-1VWruf/edit#gid=985185416"
+     },
+     {
+      "que": "estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1Q-w-Q3I5BXs0f_u74-7K8l9EkuFdzplz/edit#gid=1539183552"
+     },
+     {
+      "que": "sin etiqueta",
+      "url": "https://docs.google.com/spreadsheets/d/1Q-w-Q3I5BXs0f_u74-7K8l9EkuFdzplz/edit#gid=1678149565"
+     },
+     {
+      "que": "diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1Q-w-Q3I5BXs0f_u74-7K8l9EkuFdzplz/edit#gid=848566911"
+     },
+     {
+      "que": "estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1Q-w-Q3I5BXs0f_u74-7K8l9EkuFdzplz/edit#gid=1656055268"
+     },
+     {
+      "que": "sin etiqueta",
+      "url": "https://docs.google.com/spreadsheets/d/1Q-w-Q3I5BXs0f_u74-7K8l9EkuFdzplz/edit#gid=482571831"
+     },
+     {
+      "que": "diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1Q-w-Q3I5BXs0f_u74-7K8l9EkuFdzplz/edit#gid=579694332"
+     },
+     {
+      "que": "estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1Q-w-Q3I5BXs0f_u74-7K8l9EkuFdzplz/edit#gid=1128229450"
+     },
+     {
+      "que": "sin etiqueta",
+      "url": "https://docs.google.com/spreadsheets/d/1Q-w-Q3I5BXs0f_u74-7K8l9EkuFdzplz/edit#gid=2059466822"
+     },
+     {
+      "que": "diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1Q-w-Q3I5BXs0f_u74-7K8l9EkuFdzplz/edit#gid=1269984101"
+     },
+     {
+      "que": "estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/12iGT6oXnM2yXxt56CV3PLg-0mlnuZIeg/edit#gid=964059250"
+     },
+     {
+      "que": "metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/12iGT6oXnM2yXxt56CV3PLg-0mlnuZIeg/edit#gid=1826818401"
+     },
+     {
+      "que": "diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/12iGT6oXnM2yXxt56CV3PLg-0mlnuZIeg/edit#gid=1678478279"
+     },
+     {
+      "que": "estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1hTnZG2ku4v5vaQDdMY6MoGnc_hKVLoWz/edit#gid=1912906557"
+     },
+     {
+      "que": "metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1hTnZG2ku4v5vaQDdMY6MoGnc_hKVLoWz/edit#gid=579586177"
+     },
+     {
+      "que": "diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1hTnZG2ku4v5vaQDdMY6MoGnc_hKVLoWz/edit#gid=311085754"
+     },
+     {
+      "que": "estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1MugUBTPYaSM5pVvu3sSuHTZItvc2x7ux/edit#gid=1912906557"
+     },
+     {
+      "que": "metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1MugUBTPYaSM5pVvu3sSuHTZItvc2x7ux/edit#gid=579586177"
+     },
+     {
+      "que": "diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1MugUBTPYaSM5pVvu3sSuHTZItvc2x7ux/edit#gid=311085754"
+     },
+     {
+      "que": "estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/15okmxNwKqsa-QsOZ13cKLeResI0e-oHOde0xiei5Xns/edit#gid=293705797"
+     },
+     {
+      "que": "sin etiqueta",
+      "url": "https://docs.google.com/spreadsheets/d/15okmxNwKqsa-QsOZ13cKLeResI0e-oHOde0xiei5Xns/edit#gid=564486292"
+     },
+     {
+      "que": "diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/15okmxNwKqsa-QsOZ13cKLeResI0e-oHOde0xiei5Xns/edit#gid=393933511"
+     },
+     {
+      "que": "estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/10gzWpXtg1qmfbdFqE-aZo8uFF-NNAjF4q8y4aqwRkS8/edit#gid=293705797"
+     },
+     {
+      "que": "metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/10gzWpXtg1qmfbdFqE-aZo8uFF-NNAjF4q8y4aqwRkS8/edit#gid=564486292"
+     },
+     {
+      "que": "diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/10gzWpXtg1qmfbdFqE-aZo8uFF-NNAjF4q8y4aqwRkS8/edit#gid=393933511"
+     },
+     {
+      "que": "carta iberoamericana de gobierno abierto. (28 y 29 de octubre de 2016).",
+      "url": "https://clad.org/wp-content/uploads/2020/07/Carta-Iberoamericana-de-Gobierno-Abierto-07-2016.pdf"
+     },
+     {
+      "que": "ministerio de telecomunicaciones y de la sociedad de la informacion. (2020). guia de datos abiertos.",
+      "url": "https://www.gobiernoelectronico.gob.ec/wp-content/uploads/2021/03/Guia-Datos-Abiertos-con-portada.pdf"
+     }
+    ],
+    "nota": "el anexo del capítulo IX no publica los campos: enlaza hojas de cálculo externas. Fuera del corpus, no verificables por SHA."
+   }
+  }
+ ],
+ "n_anexo": 22,
+ "regla_de_ausencia": {
+  "literal": "Cuando no se pueda registrar información en cualquiera de los campos del Conjunto de Datos, se escribirá NO APLICA o INFORMACIÓN NO DISPONIBLE, según corresponda, sin utilizar comillas […].",
+  "formulas_admitidas": [
+   "NO APLICA",
+   "INFORMACIÓN NO DISPONIBLE"
+  ],
+  "sin_comillas": true,
+  "exige_ademas": "nota aclaratoria en el archivo diccionario de datos (Instructivo de monitoreo · cap. VI de la guía)",
+  "_procedencia": {
+   "capitulo": "VI",
+   "parrafo": 1574
+  }
+ },
+ "articulo_24_gad": {
+  "articulo": "24",
+  "sujeto_obligado": "Gobiernos Autónomos Descentralizados",
+  "obligacion": "Gobiernos Autónomos Descentralizados. Además de la información señalada en esta Ley, los organismos seccionales, mensualmente, informarán a las personas, a través del portal informático web u otro medio digital que posea, de las resoluciones que adopten, mediante la publicación de las actas de las respectivas sesiones de estos cuerpos colegiados, comisiones y consejo, incluyendo lo correspondiente a procesos legislativos, así como sus planes de desarrollo local, y en los casos que corresponda, los planes de uso y gestión de suelo, protegiendo de forma integral los aspectos que gocen de confidencialidad o reserva, para evitar conflicto de intereses. Se incluirá además la descripción específica de los trámites y requisitos que debe cumplir el interesado para tener acceso a los servicios que preste el respectivo Gobierno Autónomo Descentralizado y sus empresas públicas",
+  "secciones": [
+   {
+    "seccion": "1",
+    "titulo": "Publicación de documentos correspondientes a procesos legislativos e instrumentos de planificación",
+    "campos": [
+     "Fecha en la que se emitió la resolución, ordenanza, reglamento o plan.",
+     "GAD o entidad",
+     "Tipo: resolución, ordenanza, reglamento, plan, etc.",
+     "Título del documento emitido",
+     "Enlace para acceder al texto completo de la normativa o plan emitido, y documentos de trabajo previo a la emisión."
+    ],
+    "_parrafo": 954,
+    "incluye_expresamente": "Para esta sección del artículo, los GAD incluirán también la información de los Planes de Desarrollo y Ordenamiento Territorial y el Plan de Uso y Gestión del Suelo generados conforme la normativa legal vigente, y aprobados en el órgano legislativo del GAD."
+   },
+   {
+    "seccion": "2",
+    "titulo": "Publicación de las actas de las respectivas sesiones de estos cuerpos colegiados, comisiones y concejo",
+    "campos": [
+     "Fecha del acta",
+     "GAD o entidad",
+     "Tipo de sesión: ordinaria o extraordinaria",
+     "Título del acta",
+     "Enlace para ver y descargar el acta"
+    ],
+    "_parrafo": 968
+   }
+  ],
+  "periodicidad": {
+   "literal": "La actualización de los metadatos de este conjunto de datos y la periodicidad de generación de sus contenidos será mensual.",
+   "metadatos": "mensual",
+   "contenidos": [
+    "mensual"
+   ],
+   "estado": "declarada",
+   "condicion": null
+  },
+  "_procedencia": {
+   "capitulo": "II",
+   "parrafo_inicio": 949,
+   "parrafo_fin": 984
+  },
+  "nota": "obligación específica: NO se agrega a la matriz del art. 19"
+ }
+}

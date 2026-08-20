@@ -35,7 +35,7 @@ Streamlit + Python + Claude Haiku + Neo4j + Supabase. 3 Cerebros: C1 Corpus · C
 UI 3 capas: L1 Centro de Mando · L2 Dashboards dominio · L3 GeoTwin. Router: `env_gov.py` (puro).
 
 ## COMMITS
-`[área]: descripción en español` + trailer `Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>`
+`[área]: descripción en español` + trailer `Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>`
 
 ## CIERRE DE SESIÓN (obligatorio antes de "listo")
 1. Actualiza `governance/BOOT.md` §AHORA (gate, último commit, siguiente paso). Si cambió arquitectura → ADR.

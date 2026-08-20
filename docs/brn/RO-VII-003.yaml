@@ -1,0 +1,155 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# RO-VII-003 · Regla Operativa derivada de CNO-VII-002
+# El universo documental del art. 24: qué clase de acto exige la norma, y qué se publica.
+#
+# POR QUÉ EXISTE (2026-08-18). ADR-051 dejó una deuda declarada: `documentos.py` conservaba
+# la lista de clases de acto —acta, resolución, ordenanza— dentro del código. Eso SÍ es
+# criterio normativo: la diferencia entre un acta y una resolución la hace la ley, no el
+# lector. No se migró junto con las demás porque su fundamento es el art. 24, que entonces no
+# tenía cadena. Con `CNO-VII-002` cerrada, esta RO la salda.
+#
+# LO QUE HACE VERIFICABLE. La guía metodológica desarrolla el art. 24 en dos conjuntos, y el
+# campo del segundo es inequívoco: «Enlace para ver y descargar **el acta**». Lo publicado son
+# certificados de resolución. Sobre 254 documentos abiertos: 199 resoluciones administrativas,
+# 52 certificados de sesión, **cero actas**.
+#
+# Y hay un segundo hallazgo que sólo aparece al abrir los documentos: el campo obligatorio
+# «Tipo de sesión: ordinaria o extraordinaria» se publica con el valor «Resolución
+# Legislativa», que no es un tipo de sesión. El dato correcto está DENTRO del PDF, no en el
+# conjunto de datos que se registra ante el órgano rector.
+#
+# ESTADO: PROPUESTA — pendiente de aprobación formal de Javo (ADR-035 §5).
+# ═══════════════════════════════════════════════════════════════════════════════
+id: RO-VII-003
+authority:
+  parent: CNO-VII-002
+  constitution_articles: [1, 3, 9]
+  type: NORMATIVA
+version: "1.0"
+deriva_de: CNO-VII-002 v1.0
+
+# ── Definición de la métrica ──────────────────────────────────────────────────────
+metrica:
+  nombre: Pct_Universo_Documental_Acreditado
+  unidad: porcentaje
+  descripcion: >-
+    proporción de documentos publicados cuya CLASE DE ACTO corresponde a la que el literal
+    exige para su sección, sobre el total de documentos analizables del período
+
+# ── Parámetros operativos ─────────────────────────────────────────────────────────
+parametros:
+  umbral: 100
+  # Misma desambiguación que RO-VII-002: `umbral` es el nombre que exige el contrato de la
+  # plataforma, no un corte de aprobación. Aquí significa que el literal no admite sustituir
+  # la clase de acto exigida por otra, por próxima que parezca.
+  umbral_semantica:
+    tipo: exigencia_de_correspondencia
+    lectura: "el documento publicado debe ser el acto que la norma nombra"
+    no_es: "puntaje mínimo de aprobación"
+  frecuencia: mensual              # el art. 24 dice «los organismos seccionales, mensualmente»
+
+  # Clases de acto que la norma DISTINGUE. No son sinónimos ni grados de un mismo documento:
+  # el acta recoge el desarrollo íntegro de la sesión —debate, intervenciones, votación— y la
+  # resolución es sólo su producto. Publicar una por otra cambia radicalmente lo que el
+  # ciudadano puede verificar, y por eso la lista vive aquí y no en un módulo de Python.
+  clases_de_acto:
+    - id: acta_de_sesion
+      patron: '^\s*ACTA\b|ACTA\s+DE\s+(?:LA\s+)?SESI[ÓO]N\s+N'
+      descripcion: "acta de la sesión: desarrollo íntegro de lo actuado"
+    - id: resoluciones_de_sesion
+      patron: 'RESOLUCIONES\s+DE\s+LA\s+SESI[ÓO]N'
+      descripcion: "certificado de las resoluciones adoptadas — NO es el acta"
+    - id: resolucion_administrativa
+      patron: 'RESOLUCI[ÓO]N\s+ADMINISTRATIVA'
+      descripcion: "acto de la máxima autoridad ejecutiva (Alcaldía · COOTAD art. 60)"
+    - id: resolucion_legislativa
+      patron: 'RESOLUCI[ÓO]N\s+LEGISLATIVA'
+      descripcion: "acto del órgano legislativo (Concejo · COOTAD art. 57)"
+    - id: ordenanza
+      patron: '\bORDENANZA\b'
+      descripcion: "norma cantonal de carácter general"
+    - id: reglamento
+      patron: '\bREGLAMENTO\b'
+      descripcion: "norma de desarrollo interno"
+    - id: convocatoria
+      patron: 'CONVOCATORIA\s+A\s+SESI[ÓO]N'
+      descripcion: "citación previa; no acredita lo actuado"
+    - id: plan_o_instrumento
+      patron: 'PLAN\s+DE\s+DESARROLLO|ORDENAMIENTO\s+TERRITORIAL|\bPDOT\b'
+      descripcion: "instrumento de planificación territorial"
+
+  # Qué clase exige CADA sección del literal. Sale del campo que la guía enuncia para el
+  # conjunto: si el campo dice «Enlace para ver y descargar el acta», lo exigido es el acta.
+  clase_exigida_por_seccion:
+    "1":
+      nombre: "procesos legislativos e instrumentos de planificación"
+      admite: [resolucion_administrativa, resolucion_legislativa, ordenanza,
+               reglamento, plan_o_instrumento]
+      incluye_expresamente: "el plan de desarrollo y ordenamiento territorial (PDOT)"
+    "2":
+      nombre: "actas de las respectivas sesiones"
+      admite: [acta_de_sesion]
+      no_sustituible_por: [resoluciones_de_sesion, convocatoria]
+      fundamento_campo: "«Enlace para ver y descargar el acta» · guía metodológica, art. 24"
+
+  # El campo «Tipo de sesión» sólo admite estos dos valores. Publicar otra cosa no es un
+  # matiz de redacción: deja sin declarar un dato que la norma pide expresamente.
+  tipos_de_sesion_admitidos: [ordinaria, extraordinaria]
+
+  # Las sesiones llevan numeración correlativa, de modo que un salto en la serie señala una
+  # sesión cuya documentación no se publicó. Es verificable sin interpretar nada.
+  serie_correlativa:
+    aplica_a_seccion: "2"
+    patron: 'SESI[ÓO]N\s+(?:ORDINARIA|EXTRAORDINARIA)\s+N[ROº°.\s]*(\d{1,4})'
+    minimo_para_evaluar: 3          # con menos de tres no hay serie que interrumpir
+
+# ── Método ────────────────────────────────────────────────────────────────────────
+metodo:
+  tipo: verificacion_de_universo_documental
+  criterios:
+    - id: clase_de_acto
+      obligatorio: true
+      descripcion: >-
+        el documento enlazado pertenece a la clase que el literal exige para su sección
+    - id: correspondencia_metadato_documento
+      obligatorio: true
+      descripcion: >-
+        el tipo de sesión declarado en el conjunto de datos coincide con el que acredita el
+        documento; si el conjunto publica un valor ajeno a los admitidos, el campo queda sin
+        declarar aunque la celda no esté vacía
+    - id: continuidad_de_la_serie
+      obligatorio: false
+      descripcion: >-
+        la numeración correlativa de sesiones no presenta saltos sin documentación publicada
+    - id: procesabilidad
+      obligatorio: false
+      descripcion: >-
+        el documento permite lectura de su contenido; un escaneo sin texto se declara
+        `no_procesable` y NO se afirma nada sobre lo que contiene
+
+  # Sin OCR, un documento escaneado no se juzga. Suponer su contenido sería inventar
+  # evidencia — el error que toda esta arquitectura existe para impedir.
+  documento_no_procesable:
+    estado: no_determinable
+    excluye_del_promedio: true
+    razon: "no se transcribe lo que no se pudo leer"
+
+consecuencia: >-
+  Hallazgo de universo documental: el literal exige una clase de acto y la evidencia publicada
+  acredita otra. NO equivale a incumplimiento mientras no se satisfagan las seis condiciones de
+  escalamiento declaradas en RO-VII-002; se registra como pendiente de verificación ante el
+  sujeto obligado, que puede acreditar el documento por otra vía.
+
+# ── SAT que esta RO produce ───────────────────────────────────────────────────────
+produce: []
+motivo_sin_sat: "no existe señal de transparencia en SAT_Catalogo; no se genera desde la BRN"
+
+consume: []
+opera_en: d07
+
+# ── Estado y trazabilidad ─────────────────────────────────────────────────────────
+estado: propuesta
+validacion:
+  propuesta_por: "BRN (clases y secciones extraídas de la guía metodológica · art. 24)"
+  validada_por: null
+  fecha_validacion: null

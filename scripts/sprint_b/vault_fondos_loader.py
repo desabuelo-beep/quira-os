@@ -32,7 +32,12 @@ import yaml
 sys.stdout.reconfigure(encoding="utf-8")
 
 ROOT = Path(__file__).resolve().parents[2]
-VAULT = Path(r"C:\Proyectos\QUIRA\knowledge_base\QUIRA_KB_Montecristi\06_Fuentes_Financiamiento")
+try:
+    from config import VAULT_DIR as _VAULT_BASE
+except Exception:                                        # noqa: BLE001
+    import os as _os
+    _VAULT_BASE = Path(_os.environ.get("QUIRA_VAULT", "."))
+VAULT = _VAULT_BASE / "06_Fuentes_Financiamiento"
 
 # archivo → (emisor_codigo, emisor_nombre, es_nuevo_probable)
 NOTAS: dict[str, tuple[str, str]] = {

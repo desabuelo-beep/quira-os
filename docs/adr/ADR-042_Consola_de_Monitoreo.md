@@ -206,6 +206,127 @@ como incumplimiento: calificar jurídicamente no le corresponde a QUIRA.
 Esta tabla es la aplicación operativa del Principio Rector: *la ausencia de evidencia es
 un RESULTADO de auditoría, nunca autorización para inferir hechos*.
 
+### 6-bis · Regla de atribución de evidencia — falsar el mecanismo antes de culpar al objeto
+
+La tabla anterior clasifica los estados. Esta regla dice **qué hacer antes de asignarlos**:
+
+> **Antes de atribuir un fallo al objeto observado, debe falsarse el mecanismo que produjo la
+> afirmación sobre ese objeto.**
+> *(formulación del colega, 2026-08-19 · adoptada)*
+
+Vive aquí, en el nivel normativo, y no dentro de una observación concreta: se aplica igual al Gold
+Master, al CNE, al CPCCS, al SERCOP, al portal de un GAD y a cualquier verificador futuro, sin
+necesidad de redactar doctrina nueva cada vez. Las observaciones que la originaron son su
+**evidencia histórica**, no su enunciado:
+
+| | Lo que el mecanismo afirmó | Lo que se probó al falsarlo |
+|---|---|---|
+| **OBS-030** | «el portal de la Defensoría está caído» durante seis días | funcionaba; el defecto era una VPN en el observador |
+| **OBS-031** | «al Gold Master le faltan 14 claves» durante tres meses | 30/30 reglas OK; el defecto estaba en el aparato de prueba |
+
+Es la misma epistemología en dos niveles: en el primero se equivocaba el instrumento de captura,
+en el segundo el instrumento de verificación. En ambos, **la culpa viajaba hacia afuera** — hacia
+el sujeto observado o hacia el artefacto canónico— y en ambos el error era propio.
+
+**Por qué es una regla de atribución y no una práctica de QA.** Un fallo mal atribuido no produce
+un error técnico: produce una **afirmación falsa sobre un tercero**, y en este sistema esos
+terceros son instituciones públicas. La Regla de Oro 1 (*Excel = Estado*) queda protegida por el
+mismo mecanismo: ante nueve pruebas en rojo, el camino natural era «corrijamos el Excel», y se
+habría modificado un artefacto sano para satisfacer una prueba obsoleta.
+
+**Corolario de grado epistemológico** (colega, 2026-08-19):
+
+> **Una afirmación de fallo no puede tener mayor grado epistemológico que el mecanismo que la
+> produjo.**
+
+Ante `Gold Master 30/30 OK` y `pruebas FAIL`, la lectura correcta no es «el Excel es sospechoso»
+sino:
+
+    la afirmación «el Excel falla»       → sospechosa
+    el verificador que la produjo        → bajo revisión
+
+Y es generalizable a toda la cadena. Cuando QUIRA afirma **«el GAD no publicó X»**, debe poder
+responder, capa por capa:
+
+    ¿qué fuente?              ¿qué captura?          ¿qué estado de adquisición?
+    ¿qué evidencia?           ¿qué verificador?      ¿qué prueba de ese verificador?
+    ¿sobre qué sujeto?
+
+**Si alguna capa no puede responder, la afirmación se degrada** —al estado que la evidencia sí
+sostiene— en lugar de fabricar certeza. Es la contrapartida exacta del Principio Rector: así como
+la ausencia de evidencia no autoriza a inferir hechos sobre el sujeto, la ausencia de procedencia
+no autoriza a inferir solidez sobre la propia afirmación.
+
+Esta regla ya opera en código: una capacidad con sello de ejecución pero **sin sujeto declarado**
+no se eleva a «ejecutada» — baja a «capacidad», y lo dice.
+
+**No basta con que exista evidencia: debe existir evidencia que responda la cadena
+pertinente.** La regla es ejecutable, no una recomendación — vive en
+`app/agents/procedencia.py` y toda afirmación de un DOM pasa por ella:
+
+| Peso | Qué afirma | Capas que exige |
+|---|---|---|
+| `hecho_verificable` | algo **del sujeto observado** | las siete |
+| `hallazgo_de_verificabilidad` | algo de **nuestra capacidad de verificar** | fuente · captura · estado · sujeto |
+| `no_determinable` | nada | — |
+
+La capa `prueba_del_verificador` **se comprueba, no se cree**: citar una prueba inexistente
+acreditaría un criterio sin nada que lo respalde. Y cuando una afirmación se degrada, el registro
+dice **desde qué peso y qué capas lo impidieron** — «se degradó» sin causa es media respuesta, y
+la mitad que falta es la accionable.
+
+**LA REGLA, en su formulación final** (colega, 2026-08-19):
+
+> **QUIRA no completa una afirmación cuando la cadena de evidencia está incompleta: la degrada
+> hasta el máximo grado que la evidencia permite sostener. Ninguna transformación de evidencia
+> puede aumentar el grado epistemológico ni perder el sujeto de la afirmación.**
+
+**Deuda declarada y medida — el vínculo prueba↔verificador.** La escala completa es
+`declarado ≠ existente ≠ ejecutado ≠ exitoso`, y hoy sólo se cubren los dos primeros escalones:
+la cadena comprueba que la prueba **exista**, no que **corresponda** al verificador que dice
+respaldar. Hoy cualquier prueba real acredita cualquier verificador. Queda fijado en
+`test_05_la_prueba_deberia_estar_vinculada_al_verificador_que_respalda`, que documenta el hueco
+en verde: el día que el vínculo sea comprobable, se invierte la aserción y pasa a defender la
+regla en vez de registrar su ausencia. Es la misma epistemología que se le exige al GAD, aplicada
+a nosotros.
+
+### La asimetría: cuándo se degrada y cuándo se bloquea
+
+Los ataques del 2026-08-19 separaron dos cosas que la escala «bueno/malo» confundía:
+
+    FALTA DE EVIDENCIA          →  DEGRADACIÓN   la afirmación pesa menos
+    CONTRADICCIÓN DE IDENTIDAD  →  BLOQUEO       la afirmación no se emite
+
+Falta de fuerza epistemológica no es lo mismo que atribución incorrecta. Ante una cadena
+incompleta todavía queda conocimiento parcialmente sostenible —«no fue posible acreditarlo» es un
+resultado de auditoría legítimo—. Ante evidencia de otro sujeto no hay nada que sostener: **el
+sistema no tiene derecho a transformar evidencia de A en conocimiento sobre B.**
+
+Y la distinción que lo hizo visible:
+
+> **Integridad del artefacto ≠ integridad de la atribución.** El SHA demuestra que el archivo no
+> cambió; no demuestra que ese archivo corresponda al sujeto que QUIRA dice estar observando.
+
+**Los dos ataques que lo probaron.** Ambos dejaban todos los gates en verde y la corrida
+`COMPLETED`:
+
+| | Ataque | Antes | Ahora |
+|---|---|---|---|
+| 8 | alterar el sujeto del sello | mide 130801 y afirma sobre 130802 | `BLOCKED` |
+| 9 | cambiar `dpe_entidad_id` sin tocar el nombre | mide con evidencia de la entidad 937 declarando observar la 999 | `BLOCKED` |
+
+El segundo entró por donde el primer arreglo no miraba: el gate comparaba una **etiqueta legible**
+y el nombre no cambia al cambiar el identificador en la fuente. De ahí `sujeto.huella()`: *una
+etiqueta identifica para leer; una huella identifica para verificar.*
+
+**La invariante de identidad epistemológica**, hermana del invariante estructural que impide
+construir una afirmación ejecutada sin sujeto:
+
+    sujeto_sello = sujeto_activo = sujeto_de_la_afirmación
+
+**Corolario operativo.** Una prueba que falla siempre no protege nada: un rojo permanente es
+funcionalmente idéntico a no tener prueba, con el agravante de que aparenta cobertura.
+
 ## 7 · La relación fuente↔dominio es de muchos a muchos
 
 **No** existe correspondencia rígida `SERCOP → d02`. Una fuente aporta evidencia a varios

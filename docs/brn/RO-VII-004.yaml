@@ -1,0 +1,141 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# RO-VII-004 · Regla Operativa derivada de CNO-VII-003
+# Atención de solicitudes de acceso: plazo, entrega y motivación de la negativa.
+#
+# QUÉ OPERACIONALIZA. La transparencia pasiva no se mide contando archivos: se mide sobre un
+# PROCEDIMIENTO con plazo. Sus hechos observables son cuatro —se presentó, se respondió, en
+# qué término, y si se negó, con qué motivación— y ninguno existe hasta que alguien ejerce el
+# derecho. Esa dependencia de un acto ciudadano se declara aquí, no se disimula.
+#
+# LA DIFERENCIA QUE HABILITA, y es la razón de fondo para modelarla. Hasta hoy d07 sólo podía
+# afirmar «no está publicado». Con esta regla puede distinguir:
+#
+#     no hallado en transparencia activa   →  la ausencia no está probada
+#     solicitado y no entregado en plazo   →  la ausencia SÍ está probada
+#
+# Es la distinción de ADR-042 §6 llevada al procedimiento: «no existe» ≠ «no pude obtener».
+# Una negativa documentada es un hecho de peso jurídico muy distinto a un hueco en un portal.
+#
+# ESTADO: PROPUESTA — pendiente de aprobación formal de Javo (ADR-035 §5).
+# ═══════════════════════════════════════════════════════════════════════════════
+id: RO-VII-004
+authority:
+  parent: CNO-VII-003
+  constitution_articles: [1, 3, 9]
+  type: NORMATIVA
+version: "1.0"
+deriva_de: CNO-VII-003 v1.0
+
+# ── Definición de la métrica ──────────────────────────────────────────────────────
+metrica:
+  nombre: Pct_Solicitudes_Atendidas_En_Plazo
+  unidad: porcentaje
+  descripcion: >-
+    proporción de solicitudes de acceso respondidas dentro del término legal —entregando la
+    información o denegándola con motivación— sobre el total de solicitudes con plazo vencido
+
+# ── Parámetros operativos ─────────────────────────────────────────────────────────
+parametros:
+  umbral: 100
+  umbral_semantica:
+    tipo: exigencia_de_integridad
+    lectura: "toda solicitud con plazo vencido debe tener respuesta"
+    no_es: "puntaje mínimo de aprobación"
+  frecuencia: por_solicitud
+
+  # Plazo del art. 34, literal. La prórroga NO es discrecional: exige causa justificada E
+  # informada a la persona solicitante. Una prórroga no comunicada no extiende el término.
+  plazo_respuesta:
+    dias: 10
+    prorroga_dias: 5
+    prorroga_condiciones:
+      - "causa debidamente justificada"
+      - "informada a la persona solicitante"
+    literal: >-
+      «Toda solicitud de acceso a la información pública deberá ser respondida en el plazo de
+      diez (10) días, que puede prorrogarse por cinco (5) días más, por causas debidamente
+      justificadas e informadas a la persona solicitante»
+    fuente: LOTAIP
+    articulo: "34"
+
+  # Contenido mínimo de la solicitud (art. 32). Se declara porque una solicitud incompleta no
+  # activa el plazo, y confundirlo produciría un incumplimiento imputado al sujeto obligado
+  # por un defecto de la petición.
+  contenido_minimo_solicitud:
+    - "identificación de la persona solicitante"
+    - "información de contacto para recibir notificaciones"
+    - "descripción precisa de la información solicitada"
+    - "formato físico o digital en que se desea la entrega"
+
+  # Lo que la ley NO obliga (art. 35): generar información que no se posee. Un «no existe»
+  # motivado es respuesta válida; lo que no es válido es el silencio.
+  no_obliga_a:
+    - "producir información inexistente"
+    - "procesar o sistematizar datos que no se tengan en esa forma"
+
+  # Gratuidad (RLOTAIP art. 15): el costo es excepcional. Cobrar por acceder es, por defecto,
+  # una barrera — y el Reglamento art. 11 prohíbe requisitos que limiten el acceso.
+  gratuidad:
+    regla: gratuito
+    excepcion: "costos de reproducción, de carácter excepcional y justificado"
+
+  # Efecto de la falta de contestación (art. 36): el silencio no es una respuesta neutra.
+  silencio_administrativo:
+    equivale_a: denegacion
+    habilita:
+      - "gestión oficiosa ante el órgano rector"
+      - "acción constitucional de acceso a la información (CE art. 91)"
+
+# ── Método ────────────────────────────────────────────────────────────────────────
+metodo:
+  tipo: verificacion_de_procedimiento
+  unidad_de_evaluacion: solicitud_con_plazo_vencido
+  criterios:
+    - id: respuesta_en_plazo
+      obligatorio: true
+      descripcion: "la respuesta se emitió dentro de los 10 días, o de la prórroga válida"
+    - id: prorroga_valida
+      obligatorio: false
+      descripcion: >-
+        si hubo prórroga, consta la causa justificada Y la comunicación al solicitante; sin
+        ambas, el término aplicable sigue siendo el original
+    - id: entrega_o_motivacion
+      obligatorio: true
+      descripcion: >-
+        se entregó lo solicitado, o la negativa invoca una causal legal y está motivada; una
+        negativa sin motivación equivale a no responder
+    - id: entrega_parcial_correcta
+      obligatorio: false
+      descripcion: >-
+        cuando el documento contiene información reservada y pública, se entregó la parte
+        pública (art. 37) — la reserva de una porción no justifica negar el conjunto
+
+  # Sin solicitudes registradas NO hay incumplimiento: hay ausencia de ejercicio del derecho.
+  # Confundirlos convertiría el silencio ciudadano en falta del sujeto obligado.
+  caso_sin_solicitudes:
+    estado: no_observable
+    score: null
+    excluye_del_promedio: true
+    razon: >-
+      la obligación sólo se activa con una solicitud presentada; sin ellas, el
+      procedimiento no ha sido puesto a prueba y nada puede afirmarse
+
+consecuencia: >-
+  Hallazgo de atención: la solicitud no fue respondida dentro del término legal, o la
+  negativa carece de motivación. El silencio equivale a denegación (art. 36) y habilita la
+  gestión oficiosa ante el órgano rector y la acción constitucional; QUIRA registra el hecho
+  verificable, no ejerce ninguna de las dos vías.
+
+# ── SAT que esta RO produce ───────────────────────────────────────────────────────
+produce: []
+motivo_sin_sat: "no existe señal de transparencia en SAT_Catalogo; no se genera desde la BRN"
+
+consume: []
+opera_en: d07
+
+# ── Estado y trazabilidad ─────────────────────────────────────────────────────────
+estado: propuesta
+validacion:
+  propuesta_por: "BRN (parámetros extraídos del capítulo VI de la LOTAIP · corpus 2026-08-18)"
+  validada_por: null
+  fecha_validacion: null

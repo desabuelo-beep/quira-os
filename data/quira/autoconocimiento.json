@@ -1,0 +1,123 @@
+{
+ "_meta": {
+  "que_es": "perímetro de lo que QUIRA sabe hacer, derivado de su propia evidencia",
+  "derivado": "2026-08-19T22:38:49",
+  "sha256_estado": "7f6a2c0ede4a9473cf478e0cec3783fb99582265994251ead9116f5a4849dfd3",
+  "fuentes": [
+   "sellos de ejecución de cada dominio (cadena_estado.json)",
+   "perfiles de sujeto (data/sujetos/)",
+   "existencia real de las pruebas nombradas (tests/)"
+  ],
+  "advertencia_de_lectura": "NO DECLARADO MANUALMENTE · DERIVADO POR QUIRA. Ninguna línea de este documento es una afirmación de sus autores: todas salen de artefactos sellados. Si una capacidad no figura como reproducible, los resultados que haya producido son material de ingeniería y no observación atribuible (ADR-051 §2c)."
+ },
+ "que_se_hacer": [
+  "captura",
+  "descarga",
+  "contenido",
+  "enlaces",
+  "inventario",
+  "contenedores",
+  "documentos"
+ ],
+ "que_ejecute": [
+  "contenido",
+  "contenedores"
+ ],
+ "demuestro_que_reproduzco": [
+  "contenido"
+ ],
+ "sobre_que_sujetos": [
+  "130801 Montecristi"
+ ],
+ "que_todavia_no_se_hacer": [
+  "captura: el código existe, pero no hay registro de que QUIRA lo haya ejecutado",
+  "descarga: el código existe, pero no hay registro de que QUIRA lo haya ejecutado",
+  "enlaces: el código existe, pero no hay registro de que QUIRA lo haya ejecutado",
+  "inventario: el código existe, pero no hay registro de que QUIRA lo haya ejecutado",
+  "contenedores: QUIRA la ejecutó (2026-08-19T22:17:34) · sin prueba de reproducibilidad declarada",
+  "documentos: hay registro de ejecución pero SIN sujeto declarado · la afirmación se degrada en vez de suponer el ámbito"
+ ],
+ "atribuible_a_id_asistida": [
+  "captura",
+  "descarga",
+  "enlaces",
+  "inventario",
+  "contenedores",
+  "documentos"
+ ],
+ "advertencia": "Las capacidades que no figuran como reproducibles pueden haber producido resultados correctos durante el desarrollo. Esos resultados son material de ingeniería: no constituyen observación atribuible al sistema (ADR-051 §2c).",
+ "resumen": {
+  "total": 7,
+  "por_grado": {
+   "ausente": 0,
+   "capacidad": 5,
+   "ejecucion": 1,
+   "validado": 1
+  },
+  "operativas": 1,
+  "proporcion_operativa": 0.143,
+  "limite_declarado": [
+   "captura",
+   "descarga",
+   "enlaces",
+   "inventario",
+   "contenedores",
+   "documentos"
+  ],
+  "sujetos_acreditados": [
+   "130801 Montecristi"
+  ],
+  "alcance": "acreditado sobre 1 sujeto(s): 130801 Montecristi"
+ },
+ "afirmaciones": [
+  {
+   "capacidad": "captura",
+   "dominio": "d07",
+   "grado": "capacidad",
+   "sujeto": "",
+   "fundamento": "el código existe, pero no hay registro de que QUIRA lo haya ejecutado"
+  },
+  {
+   "capacidad": "descarga",
+   "dominio": "d07",
+   "grado": "capacidad",
+   "sujeto": "",
+   "fundamento": "el código existe, pero no hay registro de que QUIRA lo haya ejecutado"
+  },
+  {
+   "capacidad": "contenido",
+   "dominio": "d07",
+   "grado": "validado",
+   "sujeto": "130801 Montecristi",
+   "fundamento": "QUIRA la ejecutó (2026-08-19T22:38:49) y «test_quira_reconstruye_sus_derivados_sin_ayuda» la reproduce desde cero"
+  },
+  {
+   "capacidad": "enlaces",
+   "dominio": "d07",
+   "grado": "capacidad",
+   "sujeto": "",
+   "fundamento": "el código existe, pero no hay registro de que QUIRA lo haya ejecutado"
+  },
+  {
+   "capacidad": "inventario",
+   "dominio": "d07",
+   "grado": "capacidad",
+   "sujeto": "",
+   "fundamento": "el código existe, pero no hay registro de que QUIRA lo haya ejecutado"
+  },
+  {
+   "capacidad": "contenedores",
+   "dominio": "d07",
+   "grado": "ejecucion",
+   "sujeto": "130801 Montecristi",
+   "fundamento": "QUIRA la ejecutó (2026-08-19T22:17:34) · sin prueba de reproducibilidad declarada"
+  },
+  {
+   "capacidad": "documentos",
+   "dominio": "d07",
+   "grado": "capacidad",
+   "sujeto": "",
+   "fundamento": "hay registro de ejecución pero SIN sujeto declarado · la afirmación se degrada en vez de suponer el ámbito"
+  }
+ ]
+}

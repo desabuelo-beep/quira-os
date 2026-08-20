@@ -1,0 +1,184 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# RO-VII-001 · Regla Operativa derivada de CNO-VII-001
+# El Subíndice de Transparencia Activa, con la vara del órgano rector — no con la nuestra.
+#
+# POR QUÉ EXISTE (2026-08-18). Hasta hoy d07 aplicaba estos mismos criterios, pero vivían
+# repartidos en código Python: la periodicidad la derivaba un script leyendo la Guía, el plazo
+# del día 15 estaba escrito a mano en `scoring.py`, y las fórmulas de ausencia admitidas eran
+# una constante de módulo. Javo lo llamó por su nombre: *«no es de inventarse nada, todo está
+# en las leyes y metodologías»*. Un criterio normativo que sólo existe dentro de un script no
+# es norma: es interpretación del programador con apariencia de norma.
+#
+# Esta RO saca esos parámetros del código y los pone donde el contrato BRN manda, con su
+# fundamento citado eslabón por eslabón. A partir de aquí el DOM los CONSUME; no los deduce.
+#
+# LO QUE **NO** SE HACE AQUÍ, y es deliberado:
+#   · No se inventa un SAT. `SAT_Catalogo` no registra ninguna señal de transparencia, y la
+#     Regla 1 manda leer y rutear, nunca generarlas desde la BRN; ADR-031 advierte además que
+#     fusionar señales por parecido de nombre corrompe el canon. `produce: []`.
+#   · No se fija umbral de aprobación. El Instructivo define cómo se califica, no a partir de
+#     qué valor un GAD "aprueba". Poner un corte sería añadir una consecuencia que la norma no
+#     establece.
+#
+# ESTADO: PROPUESTA — pendiente de aprobación formal de Javo (ADR-035 §5).
+# ═══════════════════════════════════════════════════════════════════════════════
+id: RO-VII-001
+authority:
+  parent: CNO-VII-001
+  constitution_articles: [1, 3, 9]
+  type: NORMATIVA
+version: "1.0"
+deriva_de: CNO-VII-001 v1.0
+
+# ── Definición de la métrica (qué se mide) ────────────────────────────────────────
+# El nombre y la fórmula son del órgano rector, no de QUIRA: Instructivo de Monitoreo de
+# Transparencia Activa (DPE, 2024), sección «Subíndice de Transparencia Activa».
+metrica:
+  nombre: SITA
+  nombre_largo: Subíndice de Transparencia Activa
+  unidad: porcentaje
+  formula: "(CTA + ETA + RP + CI) / 4"
+  fuente: INST-LOTAIP-MON
+  sha256_fuente: 08f924274797
+
+# ── Parámetros operativos (con qué valores) ───────────────────────────────────────
+parametros:
+  frecuencia: mensual             # el registro es mensual; la periodicidad del CONTENIDO
+                                  # varía por conjunto y se declara abajo, porque la norma
+                                  # la fija numeral por numeral y no de forma uniforme.
+
+  # Plazo de registro · Instructivo 2024. ⚠️ La Resolución 007-DPE-CGAJ (2015) decía «hasta el
+  # 10», pero regulaba el art. 7 de la LOTAIP de 2004 y no integra esta cadena. Rige el 15.
+  plazo_registro:
+    dia_limite: 15
+    regla: "hasta el quince (15) de cada mes o siguiente día laborable"
+    referencia_contenido: "información generada o custodiada al cierre del mes inmediato anterior"
+    fuente: INST-LOTAIP-MON
+
+  # Formatos que el Instructivo reconoce como datos abiertos (Tabla 2 · «Tres estrellas»).
+  formatos_datos_abiertos: [csv, tsv, xml, json, ods]
+
+  # Fórmulas ADMITIDAS para declarar ausencia (Guía §VI · Instructivo). La forma importa:
+  # el Instructivo manda «verificar que en éste se encuentre colocado los textos», que es una
+  # comprobación de forma. `no disponible` NO es `INFORMACIÓN NO DISPONIBLE`, y esta RO no
+  # autoriza a traducir una por otra: la equivalencia semántica reintroduce interpretación.
+  formulas_ausencia_admitidas: ["NO APLICA", "INFORMACIÓN NO DISPONIBLE"]
+  ausencia_sin_comillas: true
+  ausencia_exige_nota_en_diccionario: true
+
+  # Muestreo del propio órgano rector para los parámetros cualitativos (Instructivo, nota 3).
+  # Se declara porque cambia lo que significa el resultado: no es censo, es muestra normada.
+  muestreo_cualitativo:
+    aplica_desde_filas: 4
+    filas_a_verificar: 3
+    modo: aleatorio
+
+  # Periodicidad del CONTENIDO por conjunto de datos. NO es uniforme y ésa fue la causa del
+  # peor error de medición de d07: exigir doce publicaciones a un numeral trimestral fabrica
+  # ocho faltas que la norma no impone. Fuente: Guía Metodológica, cap. II, por numeral.
+  # `null` = la Guía NO la declara → el conjunto NO se evalúa en temporalidad (no_determinable).
+  periodicidad_contenido:
+    CD-01: por_subnumeral        # 1.1 sin declarar · 1.2 y 1.3 semestral o anual
+    CD-02: mensual
+    CD-03: null
+    CD-04: mensual
+    CD-05: mensual               # conjunto compartido numerales 5 y 22
+    CD-06: mensual
+    CD-07: mensual
+    CD-08: mensual
+    CD-09: mensual
+    CD-10: mensual
+    CD-11: mensual
+    CD-12: null
+    CD-13: mensual
+    CD-14: mensual
+    CD-15: mensual
+    CD-16: [semestral, anual]    # la norma admite ambas «según varíen los contenidos»
+    CD-17: mensual
+    CD-18: semestral
+    CD-19: mensual
+    CD-20: mensual
+    CD-21: trimestral
+    CD-23: trimestral
+    CD-24: [semestral, anual]
+
+  # Cuando la norma admite dos cadencias, se mide con la MENOS exigente: la condición que
+  # decide entre ambas —que el contenido varíe— es un hecho que el observador no presencia.
+  cadencia_condicionada: menos_exigente
+
+# ── Método (cómo se evalúa · algoritmo conceptual, NO parámetros) ──────────────────
+metodo:
+  tipo: verificacion_de_publicacion_y_calidad
+  unidad_de_evaluacion: conjunto_de_datos_por_periodo_exigible
+  # Un período exigido y NO publicado califica CERO y entra al promedio. Omitirlo premiaba al
+  # que no publica: con los períodos ausentes fuera, el resultado de 2025 daba 0,97 teniendo
+  # dos conjuntos sin una sola publicación en todo el año.
+  periodos_no_publicados: califican_cero
+  criterios:
+    - id: CTA
+      nombre: Condiciones de transparencia activa
+      obligatorio: true
+      escala: [1.0, 0.5, 0.0]
+      descripcion: >-
+        1,0 publicada, accesible, completa y actualizada · 0,5 publicada y accesible pero
+        incompleta o desactualizada · 0,0 no publicada o inaccesible (Instructivo, Tabla 1)
+    - id: ETA
+      nombre: Estructura de datos abiertos
+      obligatorio: true
+      escala: [1, 0]
+      descripcion: "1 datos estructurados en formato no propietario · 0 sin información (Tabla 2)"
+    - id: RP
+      nombre: Registro dentro del plazo
+      obligatorio: true
+      escala: [1, 0]
+      descripcion: "1 registrado hasta el día 15 · 0 fuera de plazo (Tabla 3)"
+    - id: CI
+      nombre: Calidad de la información
+      obligatorio: true
+      escala: [1, 0]
+      descripcion: >-
+        se compone de tres verificaciones cualitativas (Tabla 6): estado de verificables,
+        vigencia y validez
+      subcriterios:
+        - id: estado_verificables
+          descripcion: >-
+            los documentos o sistemas a los que llevan los enlaces son accesibles. Un enlace
+            que exige sesión NO satisface este criterio: el Reglamento Art. 11 prohíbe
+            requisitos que limiten el acceso o la descarga.
+          excepcion: >-
+            si el conjunto declaró ausencia con la fórmula admitida, la falta de enlace no
+            penaliza (Instructivo, nota 1)
+        - id: vigencia
+          aplica_a: [CD-16, CD-18]
+          descripcion: >-
+            los formatos con fecha de inicio y plazo deben estar dentro de su vigencia
+            (Instructivo, Tabla 4)
+        - id: validez
+          aplica_a: [CD-03, CD-06]
+          descripcion: >-
+            los valores que dependen unos de otros deben ser aritméticamente coherentes
+            (Instructivo, Tabla 5)
+
+consecuencia: >-
+  Observación de cumplimiento: el conjunto de datos sin publicación acreditada en un período
+  exigible, o publicado sin satisfacer los parámetros del órgano rector, queda registrado como
+  pendiente de subsanación. La calificación jurídica del incumplimiento corresponde a la
+  Defensoría del Pueblo (LOTAIP Art. 42); esta RO produce hechos verificables, no sanciones.
+
+# ── SAT que esta RO produce ───────────────────────────────────────────────────────
+# NINGUNO, y se declara expresamente. `SAT_Catalogo` no registra una señal de transparencia.
+# Inventar `SAT-VII` para cerrar el molde sería generar una señal desde la BRN — exactamente
+# lo que la Regla 1 prohíbe y lo que ADR-031 advierte. Si el dominio justifica una señal nueva,
+# se abre su especificación como se hizo con SAT-IX en d08, y sólo entonces esta RO la produce.
+produce: []
+motivo_sin_sat: "no existe señal de transparencia en SAT_Catalogo; no se genera desde la BRN"
+
+consume: []
+opera_en: d07                     # Transparencia y Acceso a la Información
+
+# ── Estado y trazabilidad ─────────────────────────────────────────────────────────
+estado: propuesta                 # propuesta | vigente | obsoleta | retirada
+validacion:
+  propuesta_por: "BRN (parámetros extraídos del Instructivo y la Guía · corpus verificado 2026-08-18)"
+  validada_por: null              # sólo Javo promueve a vigente (ADR-035 §5)
+  fecha_validacion: null

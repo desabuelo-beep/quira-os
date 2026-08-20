@@ -34,23 +34,29 @@ Define el OBJETO observado, **no a QUIRA** (CAPA 0 + 4 macroejes + 12 dominios):
 PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 3ª pieza: `GOVERNANCE_CHARTER.md`.
 
 ## AHORA (estado vivo · historial → `governance/historico/BOOT_2026-06-17.md`)
-🧭 **ADR-031** MCIP=**5 motores** (runtime: Matemático·Grafos) · **ADR-035/037** IA propone/humano valida · **ADR-038** BRN **traza, no alimenta**.
-✅ **PCD: d01·d02·d03·d06·d09** · **d08 ENTRABLE** (Asamblea AUTÓNOMA · OBS-012..017).
-🩹 **12 GATES** — correr TODOS · **Curación por DOM (R.8)** · `check_health.py`: NO adivinar.
-🧬 **INVARIANTES** (`normativa/invariantes.py`): la extracción declara qué la hace correcta · **estados, NO bool** · corpus 69/69.
-📑 **PAC holding** 586 ít. · **SERCOP 265+75 por comprador** · fases planificado→…→contrato · ⛔ `.docx` gana al `.pdf`.
-⚖️ **d07 LOTAIP · la vara es del RECTOR**: Instructivo DPE jul-2024 → `data/lotaip/matriz_normativa.json` · **13 criterios 1,0/0,5/0,0** · 84 obligaciones (art.19 + 20-30). ⛔ **contar archivos NO es medir cumplimiento**.
-🎨 **ADR-049 visual**: *la gráfica nunca sabe más que el motor* · **la ausencia se dibuja** · VIS-INV-001/002/003.
-⛏️ **ADR-050 CANTERA**: **hereda capacidades, NO productos** · R0-R3 · **nada sin prueba contra caso real** · `docs/registry/CANTERA.md`.
-🔧 **v5.7_TGI** · promover = **recalcular y GUARDAR** (sin caché el conector lee vacío) · **IGP 48,33→27,00**.
-⚖️ **ADR-045/046/047**: 1 superficie·3 custodias · techo = **el documento, no el portador** · recálculo = Operaciones.
-🏛️ **ADR-048 SIL** (SELLADO): **objeto observado, NO dominio** · ⛔ sin fórmula (no repetir `Ei`).
-🚒 **OBS-024** Bomberos $1,75M sin meta · **OBS-025/028** **5 factores manuales** (`Ei`·`Ci_Manual`·`Competencia_GAD`·`V_eSIGEF`≡`V_SERCOP`). **Ei NO tocado.**
-📋 **Metas 66** · cablea **25** · **OBS-028** meta→partida→devengado · PDOT vige **05-11-2024** → **≥2025** · **5/6 ceros `V_eSIGEF` desmentidos**.
-🔭 **ADR-042 CONSOLA** (`env_obs`≠`env_ops`) · **MATRIZ_CANONICA, NO el GM** · **humano acredita** · `despacho.py` · ⏭️ **1ª corrida LOTAIP**.
-🚦 **8 ESTADOS**: «no existe»≠«no pude obtener»≠«falló». **Solo 2 publicables**.
-🔬 **OBS-030 OBSERVADOR AUDITABLE**: 6 días declarando inaccesible un portal que funcionaba — era **una VPN, MTU 1420 sobre ruta 1300**. ⛔ **antes de culpar a la fuente, falsar el instrumento** (¿otro dispositivo? ¿TCP sí y TLS no? ¿qué interfaz? ¿MTU?) → si no, `instrumento_no_descartado`.
-⏭️ **JAVO: (1)** ingesta corpus (ordenanza Word + 2 normas SIL) **(2)** Haiku ~$60/18m **(3)** repintado Observatorio.
+🧭 **ADR-031** MCIP=5 motores · **035/037** IA propone/humano valida · **038** BRN **traza, no alimenta**.
+✅ **PCD: d01·d02·d03·d06·d09** · d08 ENTRABLE · **d07 en curación**.
+🩹 **12 GATES** · Curación por DOM (R.8) · **estados, NO bool** · corpus 69/69.
+📑 **PAC** 586 · **SERCOP 265+75** · ⛔ `.docx` gana al `.pdf`.
+⚖️ **d07 EN LA BRN**: `CNO-VII-001..004` **46/46 SHA** + `RO-VII-001..005` **propuesta**. ⛔ el DOM **consume RO, NO lee la ley** — el error de raíz.
+📡 **MEDICIÓN**: **SITA 2025 0,46 · 2026 0,84** · **0 actas** · num.6 **sin ingresos 8/8** · num.10 **8/8 enlaces 404**.
+🧹 **CORPUS**: 8 chunks de preámbulo fingían artículo (LOTAIP 19 = Pacto Int.).
+🧪 **ADR-042 §6-bis**: falta evidencia→**degrada** · identidad contradictoria→**BLOQUEA** · el SHA prueba el archivo, NO la atribución.
+🎨 **ADR-049**: *la gráfica nunca sabe más que el motor*.
+⛏️ **ADR-050 CANTERA**: hereda capacidades, NO productos · nada sin prueba.
+🔧 **v5.7_TGI** · promover = **recalcular y GUARDAR** · **IGP 48,33→27,00**.
+⚖️ **ADR-045/046/047**: 1 superficie·3 custodias · techo = **el documento**.
+🖥️ **OBS-032**: `QUIRA_DATOS`/`QUIRA_VAULT` = frontera 1 vez · **0 rutas personales** · 50 por migrar.
+🏛️ **ADR-048 SIL**: **objeto observado, NO dominio** · ⛔ sin fórmula.
+🚒 **OBS-024/025/028**: Bomberos $1,75M sin meta · 5 factores manuales · ⛔**Ei**.
+📋 **Metas 66/cablea 25** · PDOT **05-11-2024** → **≥2025**.
+🔭 **ADR-042 CONSOLA** (`env_obs`≠`env_ops`) · **MATRIZ_CANONICA, NO el GM**.
+🚦 **8 ESTADOS**: «no existe»≠«no pude obtener»≠«falló». Solo 2 publicables.
+🤖 **ADR-051 §12**: 5 dimensiones (capacidad·**sujeto**·ejecución·evidencia·validación) · sin sujeto **NO se construye** la afirmación · perímetro propio SELLADO.
+🔌 **`reglas.py` = ÚNICA puerta a la norma**: cadencia·plazo·formatos·ausencia del canon · gate **REGLAS** · **58 pruebas d07**.
+🔐 **PANEL ACCESOS** (→Ops): bitácora 2 meses sin leerse · alerta por fallos concentrados.
+⚠️ **d07**: los 636 = `material_de_ingenieria` **en su propio `_meta`**, NO observación · el sujeto vivía en 11 puntos → `data/sujetos/` · OCR **10 únicos**.
+⛔ **EL NOMBRE DEL ENLACE NO ES EVIDENCIA** — 3×: «acta»→certificado · «asistencia»→fotos · muestra OCR→fotos.
 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 · detalle en el ADR)
 GAD = sujeto observado, NO cliente. 4 capas: A Núcleo · B Operaciones · C Productos (§LA TESIS · 1 motor) · D Portal `quiraintelligence.com` (radar 222 GAD).

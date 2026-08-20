@@ -1,0 +1,827 @@
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles:
+  - 1
+  - 9
+  type: TECNICA
+catalogo: CATALOGO_CANONICO_CD_D07
+version: 1.1.0
+dominio: d07
+fuente_verdad: true
+alcance: GAD_municipal
+algoritmo:
+  formula: SITA = (CTA+ETA+RP+CI)/4
+  parametros:
+    CTA: 1.0/0.5/0.0
+    ETA: 1/0
+    RP: 1/0
+    CI: SI/NO
+  referencia: METODOLOGIA_D07_CUMPLIMIENTO_LOTAIP.md §4b
+conjuntos_datos:
+- id: CD-01
+  numeral_ley: '1'
+  nombre: Estructura orgánica + base legal + metas
+  normativa: true
+  operativa: false
+  empirica: false
+  componentes:
+  - '1.1'
+  - '1.2'
+  - '1.3'
+  obligacion_literal: Estructura orgánica funcional, base legal que la rige, regulaciones y procedimientos
+    internos aplicables a la entidad; así como las metas y objetivos de las unidades administrativas de
+    conformidad con sus programas operativos
+  subnumerales:
+  - numeral: '1.1'
+    campos_exigidos:
+    - Nivel superior
+    - Unidad
+    - Nivel de los procesos de la estructura
+    periodicidad:
+      estado: no_sustentado
+      literal: null
+      contenidos: &id001 []
+  - numeral: '1.2'
+    campos_exigidos:
+    - Tipo de documento (base legal, regulación o procedimiento interno)
+    - Descripción de la base legal, regulación o procedimiento interno
+    - Enlace a la base legal, regulación o procedimiento interno
+    periodicidad:
+      literal: La actualización de los metadatos de este conjunto de datos será mensual y la periodicidad
+        de generación de sus contenidos, será semestral o anual, acorde a la vigencia de las normas externas
+        e internas.
+      metadatos: mensual
+      contenidos: &id002
+      - semestral
+      - anual
+      estado: condicionada
+      condicion: null
+  - numeral: '1.3'
+    campos_exigidos:
+    - Unidad
+    - Objetivo
+    - Indicador
+    - Meta cuantificable
+    - Enlace al sistema de gestión de planificación para verificación de los indicadores y metas cuantificables
+      por procesos o niveles
+    periodicidad:
+      literal: La actualización de los metadatos del conjunto de datos será mensual y la periodicidad
+        de generación de sus contenidos, será semestral o anual, según varíen las estructuras orgánicas
+        institucionales.
+      metadatos: mensual
+      contenidos: &id003
+      - semestral
+      - anual
+      estado: condicionada
+      condicion: según varía
+  campos_exigidos:
+  - Nivel superior
+  - Unidad
+  - Nivel de los procesos de la estructura
+  - Tipo de documento (base legal, regulación o procedimiento interno)
+  - Descripción de la base legal, regulación o procedimiento interno
+  - Enlace a la base legal, regulación o procedimiento interno
+  - Unidad
+  - Objetivo
+  - Indicador
+  - Meta cuantificable
+  - Enlace al sistema de gestión de planificación para verificación de los indicadores y metas cuantificables
+    por procesos o niveles
+  periodicidad:
+    estado: por_subnumeral
+    detalle:
+      '1.1': *id001
+      '1.2': *id002
+      '1.3': *id003
+- id: CD-02
+  numeral_ley: '2'
+  nombre: Directorio y distributivo de personal
+  normativa: true
+  operativa: true
+  empirica: false
+  guia:
+    chunk_id: 14338
+    sha256: 47d5c63d41
+  obligacion_literal: El directorio completo del organismo, dependencia y/o persona jurídica, así como
+    el distributivo del personal y su cargo
+  periodicidad:
+    literal: La actualización de los metadatos de este conjunto de datos y la periodicidad de generación
+      de sus contenidos será mensual.
+    metadatos: mensual
+    contenidos:
+    - mensual
+    estado: declarada
+    condicion: null
+  campos_exigidos:
+  - Número secuencial de la información que se registra en cada celda para dar a conocer el total de la
+    nómina institucional
+  - Apellidos y nombres del personal de la entidad que labora o presta servicios especializados
+  - Puesto institucional
+  - Unidad o nivel superior a la que pertenece
+  - Dirección institucional
+  - Ciudad en la que labora
+  - Teléfono institucional
+  - Extensión telefónica
+  - Correo electrónico institucional
+  componentes:
+  - Distributivo
+  componentes_origen: derivados del texto literal de la obligación
+- id: CD-03
+  numeral_ley: '3'
+  nombre: Remuneraciones salariales
+  normativa: true
+  operativa: true
+  empirica: false
+  guia:
+    chunk_id: 14339
+    sha256: fbbcdf5f0e
+  obligacion_literal: Las remuneraciones salariales, incluyendo todo ingreso adicional correspondiente
+    a todo el personal del organismo, dependencia y/o persona jurídica
+  periodicidad:
+    estado: no_sustentado
+    literal: null
+    contenidos: []
+  campos_exigidos:
+  - Numeración secuencial con el propósito de dar a conocer el total de la nómina institucional
+  - Puesto institucional
+  - Régimen laboral al que pertenece
+  - Número de partida presupuestaria
+  - Grado jerárquico o escala al que pertenece el puesto
+  - Remuneración mensual unificada
+  - Remuneración unificada (anual)
+  - Décima tercera remuneración
+  - Décima cuarta remuneración
+  - Horas suplementarias y extraordinarias
+  - Encargos y subrogaciones
+  - Total ingresos adicionales
+  componentes_origen: la obligación no enumera dimensiones
+- id: CD-04
+  numeral_ley: '4'
+  nombre: Licencias/comisión de servicio
+  normativa: true
+  operativa: true
+  empirica: false
+  guia:
+    chunk_id: 14340
+    sha256: d9d1a19288
+  obligacion_literal: Un detalle de los funcionarios que gocen de licencia de servicio y de comisión de
+    servicio
+  periodicidad:
+    literal: La actualización de los metadatos de este conjunto de datos y la periodicidad de generación
+      de sus contenidos será mensual.
+    metadatos: mensual
+    contenidos:
+    - mensual
+    estado: declarada
+    condicion: null
+  campos_exigidos:
+  - Nombres y apellidos
+  - Puesto institucional
+  - Fecha de inicio de la licencia o comisión de servicio
+  - Fecha en la que finaliza la licencia de servicio o la comisión de servicio
+  - Entidad o país de destino de la persona a la que se otorga la licencia de servicio o la comisión de
+    servicio
+  - Tipo de licencia de servicio o de comisión de servicio
+  componentes_origen: la obligación no enumera dimensiones
+- id: CD-05
+  numeral_ley: 5+22
+  nombre: Servicios + formularios de trámites
+  normativa: true
+  operativa: true
+  empirica: false
+  guia:
+    chunk_id: 14341
+    sha256: 5e27a9a3d7
+  obligacion_literal: Los servicios que brinda la entidad y las formas de acceder a ellos, horarios de
+    atención y demás indicaciones necesarias
+  periodicidad:
+    literal: La actualización de los metadatos de este conjunto de datos y la periodicidad de generación
+      de sus contenidos será mensual.
+    metadatos: mensual
+    contenidos:
+    - mensual
+    estado: declarada
+    condicion: null
+  campos_exigidos:
+  - Denominación del servicio público que se brinda
+  - Enlace para acceder al reporte del servicio
+  - Número de personas que acceden mensualmente al servicio institucional
+  - Enlace para descargar el formulario o formato del servicio (impreso) / correo electrónico para solicitar
+    el servicio
+  - Enlace para el servicio por internet (en línea)
+  - Porcentaje de satisfacción sobre el uso del servicio
+  componentes_origen: la obligación no enumera dimensiones
+- id: CD-06
+  numeral_ley: '6'
+  nombre: Presupuesto Institucional
+  normativa: true
+  operativa: true
+  empirica: true
+  guia:
+    chunk_id: 14342
+    sha256: 9b50ff1592
+  componentes:
+  - Ingresos
+  - Gastos
+  - Financiamiento
+  - Resultados_operativos
+  - Liquidacion
+  obligacion_literal: Información total sobre el presupuesto anual que administra la entidad, así como
+    el asignado a cada área, programa o función, especificando ingresos, gastos, financiamiento y resultados
+    operativos de conformidad con los clasificadores presupuestales, así como liquidación del presupuesto,
+    especificando destinatarios de la entrega de recursos públicos
+  periodicidad:
+    literal: La actualización de los metadatos de este conjunto de datos y la periodicidad de generación
+      de sus contenidos será mensual.
+    metadatos: mensual
+    contenidos:
+    - mensual
+    estado: declarada
+    condicion: null
+  campos_exigidos:
+  - Código de la cuenta o subcuenta contable
+  - Categoría de la cuenta o subcuenta contable
+  - Descripción de la cuenta o subcuenta contable
+  - Monto asignado
+  - Monto modificado que corresponde a las reformas realizadas
+  - Monto codificado
+  - Monto certificado
+  - Monto comprometido
+  - Monto devengado
+  - Monto pagado
+  - Saldo por comprometer
+  - Saldo por devengar
+  - Saldo por pagar
+  - Porcentaje de ejecución
+  componentes_derivados_del_literal:
+  - Ingresos
+  - Gastos
+  - Financiamiento
+  - Resultados_operativos
+  - Liquidacion
+- id: CD-07
+  numeral_ley: '7'
+  nombre: Auditorías internas/gubernamentales
+  normativa: true
+  operativa: true
+  empirica: false
+  guia:
+    chunk_id: 14343
+    sha256: e9f4d38340
+  obligacion_literal: Los resultados definitivos de las auditorías internas y gubernamentales al ejercicio
+    presupuestario y estudios financieros anuales
+  periodicidad:
+    literal: La actualización de los metadatos de este conjunto de datos y la periodicidad de generación
+      de sus contenidos será mensual.
+    metadatos: mensual
+    contenidos:
+    - mensual
+    estado: declarada
+    condicion: null
+  campos_exigidos:
+  - Número secuencial
+  - Número del informe de auditoría aprobado
+  - Tipo de examen aprobado
+  - Nombre del examen aprobado
+  - Período analizado
+  - Área o proceso auditado
+  - Enlace para descargar el informe específico
+  - Enlace para descargar el reporte de seguimiento al cumplimiento de recomendaciones del informe de
+    auditoría
+  - Información adicional sobre el informe de auditoría
+  componentes_origen: la obligación no enumera dimensiones
+- id: CD-08
+  numeral_ley: '8'
+  nombre: Contratación (precontractual→liquidación)
+  normativa: true
+  operativa: true
+  empirica: false
+  guia:
+    chunk_id: 14344
+    sha256: be252c5009
+  obligacion_literal: Información completa y detallada sobre los procesos precontractuales, contractuales,
+    de adjudicación y liquidación, de las contrataciones de obras, adquisición de bienes, prestación de
+    servicios, arrendamientos mercantiles, etc., celebrados por la entidad con personas naturales o jurídicas,
+    incluidos concesiones, permisos o autorizaciones; especificando objetivos, características, montos,
+    proveedores y subcontratos
+  periodicidad:
+    literal: La actualización de los metadatos de este conjunto de datos y la periodicidad de generación
+      de sus contenidos será mensual.
+    metadatos: mensual
+    contenidos:
+    - mensual
+    estado: declarada
+    condicion: null
+  campos_exigidos:
+  - Fecha de publicación del proceso en el Portal de Compras Públicas
+  - Código del proceso de contratación
+  - Tipo del proceso de contratación
+  - Objeto del proceso de contratación
+  - Presupuesto referencial (USD) del proceso de contratación
+  - Partida presupuestaria
+  - Monto de la adjudicación (USD) del proceso de contratación
+  - Etapa de la contratación
+  - RUC de la empresa o persona contratista
+  - Enlace para descargar el proceso de contratación desde el Portal de Compras Públicas
+  componentes:
+  - Objetivos
+  - Caracteristicas
+  - Montos
+  - Proveedores
+  - Subcontratos
+  componentes_origen: derivados del texto literal de la obligación
+- id: CD-09
+  numeral_ley: '9'
+  nombre: Empresas que incumplieron contratos
+  normativa: true
+  operativa: true
+  empirica: false
+  guia:
+    chunk_id: 14345
+    sha256: ec64c0df9d
+  obligacion_literal: Listado de las empresas y personas, jurídicas o naturales, que han incumplido contratos
+    con dicha entidad, número de contrato y su monto
+  periodicidad:
+    literal: La actualización de los metadatos de este conjunto de datos y la periodicidad de generación
+      de sus contenidos será mensual.
+    metadatos: mensual
+    contenidos:
+    - mensual
+    estado: declarada
+    condicion: null
+  campos_exigidos:
+  - Número secuencial
+  - RUC / Número de identificación de la empresa o persona contratista
+  - Número del contrato / código del proceso de contratación fallido o incumplido
+  - Monto del contrato incumplido
+  - Fecha desde la que rige la prohibición para contratar
+  - Fecha hasta que permanecerá la prohibición para contratar
+  componentes_origen: la obligación no enumera dimensiones
+- id: CD-10
+  numeral_ley: '10'
+  nombre: Planes y programas
+  normativa: true
+  operativa: true
+  empirica: false
+  guia:
+    chunk_id: 14346
+    sha256: c51d4955ac
+  obligacion_literal: Planes y programas de la entidad en ejecución
+  periodicidad:
+    literal: La actualización de los metadatos de este conjunto de datos y la periodicidad de generación
+      de sus contenidos será mensual.
+    metadatos: mensual
+    contenidos:
+    - mensual
+    estado: declarada
+    condicion: null
+  campos_exigidos:
+  - Nombre del plan, proyecto o programa
+  - Período para el que rige
+  - Monto presupuestado, programado y aprobado
+  - Enlace para descargar el plan, proyecto o programa completo
+  - Enlace al estado de avance en el que se encuentra el plan, proyecto o programa
+  componentes_origen: la obligación no enumera dimensiones
+- id: CD-11
+  numeral_ley: '11'
+  nombre: Contratos de crédito
+  normativa: true
+  operativa: true
+  empirica: false
+  guia:
+    chunk_id: 14347
+    sha256: cf2ef7f783
+  obligacion_literal: El detalle de los contratos de crédito externos o internos; se señalará la fuente
+    de los fondos con los que se pagarán esos créditos. Cuando se trate de préstamos o contratos de financiamiento,
+    se hará constar expresamente el objetivo del endeudamiento, fecha de suscripción y renovación, nombres
+    del deudor, acreedor y ejecutor, las operaciones y contratos de crédito, los montos, plazo, costos
+    financieros o tipos de interés, tasa de interés y fondos con los que se cancelará la obligación, desembolsos
+    efectuados o por efectuar, conforme lo establecen las leyes que regulan esta materia
+  periodicidad:
+    literal: La actualización de los metadatos de este conjunto de datos y la periodicidad de generación
+      de sus contenidos será mensual.
+    metadatos: mensual
+    contenidos:
+    - mensual
+    estado: declarada
+    condicion: null
+  campos_exigidos:
+  - Tipo de contrato
+  - Objeto
+  - Fecha de suscripción o renovación
+  - Nombre deudor
+  - Nombre acreedor
+  - Nombre ejecutor
+  - Tasa de interés (%)
+  - Plazo de duración del crédito
+  - Fondo con los que se cancelará la obligación crediticia
+  - Enlace para descargar el contrato de crédito externo o interno
+  - Monto del préstamo recibido o contrato
+  - Desembolsos efectuados
+  - Desembolsos por efectuar
+  componentes_origen: la obligación no enumera dimensiones
+- id: CD-12
+  numeral_ley: '12'
+  nombre: Mecanismos de rendición de cuentas
+  normativa: true
+  operativa: true
+  empirica: false
+  guia:
+    chunk_id: 14348
+    sha256: 1fc319d264
+  obligacion_literal: Mecanismos de rendición de cuentas a las personas tales como metas e informes de
+    gestión e indicadores de desempeño
+  periodicidad:
+    estado: no_sustentado
+    literal: null
+    contenidos: []
+  campos_exigidos:
+  - Nombre del mecanismo
+  - Número de resolución o certificado asociado al mecanismo
+  - Período de presentación del mecanismo de rendición de cuentas
+  - Enlace para acceder a la información detallada
+  componentes_origen: la obligación no enumera dimensiones
+- id: CD-13
+  numeral_ley: '13'
+  nombre: Viáticos
+  normativa: true
+  operativa: true
+  empirica: false
+  guia:
+    chunk_id: 14349
+    sha256: 414116b17d
+  obligacion_literal: Los viáticos, informes de trabajo y justificativos de movilización nacional o internacional
+    de las autoridades, dignatarios, servidoras y servidores públicos
+  periodicidad:
+    literal: La actualización de los metadatos de este conjunto de datos y la periodicidad de generación
+      de sus contenidos será mensual.
+    metadatos: mensual
+    contenidos:
+    - mensual
+    estado: declarada
+    condicion: null
+  campos_exigidos:
+  - Nombres y apellidos
+  - Puesto institucional
+  - Tipo de movilización (nacional o internacional)
+  - Fecha de inicio del viaje
+  - Fecha de fin del viaje
+  - Motivo del viaje
+  - Valor del viático
+  - Enlace para descargar el informe de actividades y justificativos
+  componentes_origen: la obligación no enumera dimensiones
+- id: CD-14
+  numeral_ley: '14'
+  nombre: Responsable de acceso a la información
+  normativa: true
+  operativa: true
+  empirica: false
+  guia:
+    chunk_id: 14350
+    sha256: 123c0c355d
+  obligacion_literal: El nombre, dirección, teléfono de la oficina y dirección electrónica de las y los
+    responsables del acceso de información pública del organismo, dependencia y/o persona jurídica
+  periodicidad:
+    literal: La actualización de los metadatos de este conjunto de datos y la periodicidad de generación
+      de sus contenidos será mensual.
+    metadatos: mensual
+    contenidos:
+    - mensual
+    estado: declarada
+    condicion: null
+  campos_exigidos:
+  - Nombres y apellidos
+  - Denominación del puesto
+  - Responsable del acceso a la información pública
+  - Dirección de la oficina
+  - Número telefónico
+  - Extensión telefónica
+  - Correo electrónico
+  componentes_origen: la obligación no enumera dimensiones
+- id: CD-15
+  numeral_ley: '15'
+  nombre: Contratos colectivos vigentes
+  normativa: true
+  operativa: true
+  empirica: false
+  guia:
+    chunk_id: 14351
+    sha256: e7c409c65c
+  obligacion_literal: Texto íntegro de todos los contratos colectivos vigentes del organismo, dependencia
+    y/o persona jurídica, así como sus anexos y reformas
+  periodicidad:
+    literal: La actualización de los metadatos de este conjunto de datos y la periodicidad de generación
+      de sus contenidos será mensual.
+    metadatos: mensual
+    contenidos:
+    - mensual
+    estado: declarada
+    condicion: null
+  campos_exigidos:
+  - Denominación de la organización sindical
+  - Fecha de suscripción del contrato
+  - Enlace para descargar el contrato colectivo original
+  - Fecha de la última reforma o revisión
+  - Enlace para descargar todas las reformas completas del contrato colectivo
+  componentes_origen: la obligación no enumera dimensiones
+- id: CD-16
+  numeral_ley: '16'
+  nombre: Índice de información reservada
+  normativa: true
+  operativa: true
+  empirica: false
+  guia:
+    chunk_id: 14352
+    sha256: a7bd15f17f
+  obligacion_literal: Índice de información clasificada como reservada señalando el número de resolución,
+    la fecha de clasificación y período de vigencia
+  periodicidad:
+    literal: La actualización de los metadatos de este conjunto de datos será mensual y la periodicidad
+      de generación de sus contenidos será semestral o anual, según corresponda a la actualización de
+      la información.
+    metadatos: mensual
+    contenidos:
+    - semestral
+    - anual
+    estado: condicionada
+    condicion: según varía
+  campos_exigidos:
+  - Tema
+  - Número de resolución
+  - Fecha de la clasificación de la información reservada
+  - Período de vigencia de la clasificación de la reserva
+  - Enlace para descargar la resolución de clasificación de información reservada
+  componentes_origen: la obligación no enumera dimensiones
+- id: CD-17
+  numeral_ley: '17'
+  nombre: Audiencias y reuniones de autoridades
+  normativa: true
+  operativa: true
+  empirica: false
+  guia:
+    chunk_id: 14353
+    sha256: 46eab0be54
+  obligacion_literal: 'Un detalle de las audiencias y reuniones sostenidas por las autoridades electas
+    de todos los niveles de gobierno, funcionarios del nivel jerárquico superior de las instituciones
+    públicas y máximos representantes de los demás sujetos obligados en esta Ley que tengan por objeto:
+    La elaboración, modificación, derogación o rechazo de actos administrativos, proyectos de ley y leyes,
+    como también de las decisiones que adopten los obligados en esta Ley. La elaboración, tramitación,
+    aprobación, modificación, derogación o rechazo de acuerdos, resoluciones o decisiones de la Asamblea
+    Nacional o sus miembros, incluidas sus Comisiones. La celebración, modificación o terminación a cualquier
+    título, de contratos que realicen los sujetos obligados señalados en esta Ley y que sean necesarios
+    para su funcionamiento. El diseño, implementación y evaluación de políticas, planes y programas efectuados
+    por los sujetos obligados señalados en esta Ley, a quienes correspondan estas funciones. En dicho
+    detalle se deberá indicar, en particular, la persona, organización o entidad con quien se sostuvo
+    la audiencia o reunión, la individualización de los asistentes o personas presentes en la respectiva
+    audiencia o reunión, el lugar y fecha de su realización y la materia específica tratada. Se exceptúa
+    lo determinado como información confidencial o reservada'
+  periodicidad:
+    literal: La actualización de los metadatos de este conjunto de datos y la periodicidad de generación
+      de sus contenidos será mensual.
+    metadatos: mensual
+    contenidos:
+    - mensual
+    estado: declarada
+    condicion: null
+  campos_exigidos:
+  - Nombres, apellidos y puesto institucional de las personas participantes de la entidad que reporta
+  - Nombres, apellidos y entidad de las personas que participan en la audiencia o reunión
+  - Asunto o descripción de la audiencia / reunión
+  - Fecha de la audiencia / reunión
+  - Duración de la audiencia / reunión
+  - Modalidad (presencial, virtual, híbrida)
+  - Lugar de la audiencia / reunión7
+  - Enlace para descargar el registro de asistencia de las personas que participaron en las reuniones
+    según el detalle de fecha
+  componentes_origen: la obligación no enumera dimensiones
+- id: CD-18
+  numeral_ley: '18'
+  nombre: Convenios nacionales/internacionales
+  normativa: true
+  operativa: true
+  empirica: false
+  guia:
+    chunk_id: 14354
+    sha256: 984b95ca6d
+  obligacion_literal: Detalle de los convenios nacionales o internacionales que celebre la entidad con
+    personas naturales o jurídicas
+  periodicidad:
+    literal: La actualización de los metadatos de este conjunto de datos será mensual y la periodicidad
+      de la publicación de generación de sus contenidos será semestral.
+    metadatos: mensual
+    contenidos:
+    - semestral
+    estado: declarada
+    condicion: null
+  campos_exigidos:
+  - Tipo de convenio
+  - Fecha de suscripción del convenio
+  - Objeto del convenio
+  - Nombre de la organización o persona jurídica con quien se suscribe el convenio
+  - Plazo de duración del convenio
+  - Enlace para descargar el convenio completo
+  componentes_origen: la obligación no enumera dimensiones
+- id: CD-19
+  numeral_ley: '19'
+  nombre: Donativos oficiales y protocolares
+  normativa: true
+  operativa: true
+  empirica: false
+  guia:
+    chunk_id: 14355
+    sha256: bcb7cbd47a
+  obligacion_literal: Un detalle actualizado de los donativos oficiales y protocolares que reciban los
+    sujetos obligados establecidos en esta Ley, con ocasión del ejercicio de sus funciones. En dichos
+    registros deberá singularizarse el regalo o donativo recibido, la fecha y ocasión de su recepción
+    y la individualización de la persona natural o jurídica de la cual procede
+  periodicidad:
+    literal: La actualización de los metadatos de este conjunto de datos y la periodicidad de generación
+      de sus contenidos será mensual.
+    metadatos: mensual
+    contenidos:
+    - mensual
+    estado: declarada
+    condicion: null
+  campos_exigidos:
+  - Fecha de recepción del donativo o regalo
+  - Descripción del donativo o regalo
+  - Ocasión o motivo de la donación o regalo
+  - Persona natural o jurídica de la que procede la donación o regalo
+  - Enlace para descargar el documento mediante el cual se oficializa la recepción del regalo o donativo
+  componentes_origen: la obligación no enumera dimensiones
+- id: CD-20
+  numeral_ley: '20'
+  nombre: Registro de activos de información
+  normativa: true
+  operativa: true
+  empirica: false
+  guia:
+    chunk_id: 14356
+    sha256: a93dda6314
+  obligacion_literal: Registro de Activos de Información, que contenga información solicitada con frecuencia,
+    y otra información complementaria que de carácter obligatorio deban cumplir los sujetos obligados,
+    de acuerdo con los parámetros establecidos por la Defensoría del Pueblo
+  periodicidad:
+    literal: La actualización de los metadatos de este conjunto de datos y la periodicidad de generación
+      de sus contenidos será mensual.
+    metadatos: mensual
+    contenidos:
+    - mensual
+    estado: declarada
+    condicion: null
+  campos_exigidos:
+  - Tema de la información requerida con frecuencia
+  - Número de ocasiones en las que la información fue requerida
+  - Enlace para descargar el detalle de la información solicitada frecuentemente
+  - Enlace para descargar la solicitud de información complementaria que haya sido solicitada de forma
+    recurrente
+  componentes_origen: la obligación no enumera dimensiones
+- id: CD-21
+  numeral_ley: '21'
+  nombre: Políticas públicas / grupo específico
+  normativa: true
+  operativa: true
+  empirica: false
+  guia:
+    chunk_id: 14357
+    sha256: 17bbfd0611
+  obligacion_literal: Políticas públicas o cualquier información que afecte a un grupo específico, en
+    todas sus fases
+  periodicidad:
+    literal: La actualización de los metadatos de este conjunto de datos será mensual y la periodicidad
+      de generación de sus contenidos será trimestral.
+    metadatos: mensual
+    contenidos:
+    - trimestral
+    estado: declarada
+    condicion: null
+  campos_exigidos:
+  - Grupo específico
+  - Nombre de la política pública
+  - Fase de la política pública
+  - Fecha
+  - Enlace a informe
+  componentes_origen: la obligación no enumera dimensiones
+- id: CD-23
+  numeral_ley: '23'
+  nombre: Cuotas laborales (discapacidad/pueblos)
+  normativa: true
+  operativa: true
+  empirica: false
+  guia:
+    chunk_id: 14358
+    sha256: 14b51ad72f
+  obligacion_literal: Datos de las personas servidoras públicas incorporadas en cumplimiento de las acciones
+    afirmativas de cuotas laborales en la legislación nacional, como el caso de las personas con discapacidad
+    y sustitutos y de los pueblos y nacionalidades indígenas y afrodescendientes
+  periodicidad:
+    literal: La actualización de los metadatos de este conjunto de datos será mensual y la periodicidad
+      de generación de sus contenidos será trimestral.
+    metadatos: mensual
+    contenidos:
+    - trimestral
+    estado: declarada
+    condicion: null
+  campos_exigidos:
+  - Número de personas con la acción afirmativa específica
+  - Acción afirmativa específica
+  componentes_origen: la obligación no enumera dimensiones
+- id: CD-24
+  numeral_ley: '24'
+  nombre: Información relevante adicional (ODS)
+  normativa: true
+  operativa: true
+  empirica: false
+  guia:
+    chunk_id: 14359
+    sha256: f64155a202
+  obligacion_literal: Otra información que la entidad considere relevante para el ejercicio del derecho
+    de acceso a la información pública, la participación ciudadana y el control social, en especial la
+    que permita el seguimiento a la consecución de los Objetivos de Desarrollo Sostenible
+  periodicidad:
+    literal: La actualización de los metadatos de este conjunto de datos será mensual y la periodicidad
+      de generación de sus contenidos será semestral o anual, según corresponda a la generación de la
+      información.
+    metadatos: mensual
+    contenidos:
+    - semestral
+    - anual
+    estado: condicionada
+    condicion: según varía
+  campos_exigidos:
+  - Información relevante
+  - Enlace para descargar la información relevante
+  componentes_origen: la obligación no enumera dimensiones
+- id: CD-A24
+  numeral_ley: Art.24
+  nombre: Ordenanzas/actas de sesión/contratación
+  normativa: true
+  operativa: false
+  empirica: false
+  periodicidad:
+    literal: La actualización de los metadatos de este conjunto de datos y la periodicidad de generación
+      de sus contenidos será mensual.
+    metadatos: mensual
+    contenidos:
+    - mensual
+    estado: declarada
+    condicion: null
+  campos_exigidos:
+  - Fecha en la que se emitió la resolución, ordenanza, reglamento o plan.
+  - GAD o entidad
+  - 'Tipo: resolución, ordenanza, reglamento, plan, etc.'
+  - Título del documento emitido
+  - Enlace para acceder al texto completo de la normativa o plan emitido, y documentos de trabajo previo
+    a la emisión.
+  - Fecha del acta
+  - GAD o entidad
+  - 'Tipo de sesión: ordinaria o extraordinaria'
+  - Título del acta
+  - Enlace para ver y descargar el acta
+  secciones:
+  - seccion: '1'
+    titulo: Publicación de documentos correspondientes a procesos legislativos e instrumentos de planificación
+    campos:
+    - Fecha en la que se emitió la resolución, ordenanza, reglamento o plan.
+    - GAD o entidad
+    - 'Tipo: resolución, ordenanza, reglamento, plan, etc.'
+    - Título del documento emitido
+    - Enlace para acceder al texto completo de la normativa o plan emitido, y documentos de trabajo previo
+      a la emisión.
+  - seccion: '2'
+    titulo: Publicación de las actas de las respectivas sesiones de estos cuerpos colegiados, comisiones
+      y concejo
+    campos:
+    - Fecha del acta
+    - GAD o entidad
+    - 'Tipo de sesión: ordinaria o extraordinaria'
+    - Título del acta
+    - Enlace para ver y descargar el acta
+  obligacion_literal: Gobiernos Autónomos Descentralizados. Además de la información señalada en esta
+    Ley, los organismos seccionales, mensualmente, informarán a las personas, a través del portal informático
+    web u otro medio digital que posea, de las resoluciones que adopten, mediante la publicación de las
+    actas de las respectivas sesiones de estos cuerpos colegiados, comisiones y consejo, incluyendo lo
+    correspondiente a procesos legislativos, así como sus planes de desarrollo local, y en los casos que
+    corresponda, los planes de uso y gestión de suelo, protegiendo de forma integral los aspectos que
+    gocen de confidencialidad o reserva, para evitar conflicto de intereses. Se incluirá además la descripción
+    específica de los trámites y requisitos que debe cumplir el interesado para tener acceso a los servicios
+    que preste el respectivo Gobierno Autónomo Descentralizado y sus empresas públicas
+vara_normativa:
+  fuente: LOTAIP - guia-metodologica-mecanismos.docx
+  sha256_fuente: 4c76ad8934bef620ef3b486cb30e199ffcf5985c8f0feed66953b9ddcceee019
+  sha256_matriz: e5f753f73a4b44df92d8c860ac705d377df50f1871fc367d09096320db92ed03
+  emisor: Defensoría del Pueblo del Ecuador
+  nota: 'periodicidad, campos y regla de ausencia extraídos de la Guía Metodológica. Lo que la guía no
+    declara queda no_sustentado: no se completa con conocimiento general sobre LOTAIP.'
+regla_ausencia:
+  literal: Cuando no se pueda registrar información en cualquiera de los campos del Conjunto de Datos,
+    se escribirá NO APLICA o INFORMACIÓN NO DISPONIBLE, según corresponda, sin utilizar comillas […].
+  formulas_admitidas:
+  - NO APLICA
+  - INFORMACIÓN NO DISPONIBLE
+  sin_comillas: true
+  exige_ademas: nota aclaratoria en el archivo diccionario de datos (Instructivo de monitoreo · cap. VI
+    de la guía)
+  _procedencia:
+    capitulo: VI
+    parrafo: 1574

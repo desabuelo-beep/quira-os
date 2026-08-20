@@ -1,0 +1,185 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# CNO-VII-003 · Obligación de Transparencia Pasiva (acceso a información a petición)
+#
+# POR QUÉ EXISTE (2026-08-18). Las dos cadenas anteriores modelan lo que el sujeto obligado
+# debe publicar POR INICIATIVA PROPIA. Ésta modela lo otro: lo que debe entregar CUANDO
+# ALGUIEN LO PIDE. Son mecanismos distintos y la ley los separa en capítulos distintos —el VI
+# es «Transparencia Pasiva»—, con procedimiento, plazo y causales de denegación propios.
+#
+# POR QUÉ IMPORTA PARA QUIRA, y no es un añadido de completitud. La transparencia activa tiene
+# un límite estructural: sólo hace visible lo que la norma enumeró de antemano. Cuando la
+# evidencia que un dominio necesita NO está entre los 24 numerales —el detalle de una partida,
+# el respaldo de una reforma, el acta que no se publicó— la vía es la solicitud. Sin esta
+# cadena, d07 sólo sabría decir «no está publicado»; con ella puede decir además **qué camino
+# existe para obtenerlo y en qué plazo debe responderse**.
+#
+# Es también la vía que convierte una ausencia en un hecho probado: si la información se pidió
+# formalmente y no se entregó dentro del plazo, la ausencia deja de ser «no hallada» y pasa a
+# ser una negativa documentada. Esa diferencia es exactamente la que ADR-042 §6 exige sostener.
+#
+# LO QUE ESTA CADENA **NO** HABILITA. QUIRA no presenta solicitudes por su cuenta ni actúa como
+# peticionario: modela la obligación para poder observarla. Quién solicita, cuándo y con qué
+# propósito es decisión de las personas, no del sistema.
+#
+# ESTADO: PROPUESTA — pendiente de aprobación formal de Javo (ADR-035 §5).
+# ═══════════════════════════════════════════════════════════════════════════════
+id: CNO-VII-003
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [1, 2, 3, 9]
+  type: NORMATIVA
+version: "1.0"
+titulo: Obligación de Transparencia Pasiva del Sujeto Obligado
+objeto: >-
+  el deber de atender las solicitudes de acceso a la información pública dentro del plazo
+  legal, de forma gratuita, entregando lo solicitado o motivando su denegación conforme a las
+  causales taxativas que la ley establece.
+dominio_normativo: transparencia_y_acceso_a_la_informacion
+
+# ── La cadena · puro Derecho · SHA por eslabón (Regla 3) ──────────────────────────
+# Verificada contra el corpus vigente el 2026-08-18.
+cadena:
+  - rol: fundamento_constitucional
+    norma: CE
+    articulo: "18"
+    sha256: 848f507bcaf4
+    sumilla: "derecho a acceder libremente a la información generada en entidades públicas"
+
+  - rol: garantia_jurisdiccional
+    norma: CE
+    articulo: "91"
+    sha256: 094de44c7215
+    sumilla: >-
+      acción de acceso a la información pública ante la negativa expresa o tácita, o cuando
+      la información entregada sea incompleta o poco fidedigna
+
+  - rol: derecho
+    norma: LOTAIP
+    articulo: "7"
+    sha256: c00cfe8b0841
+    sumilla: "derecho de acceso a la información pública, sin necesidad de justificar su uso"
+
+  - rol: sujetos_obligados
+    norma: LOTAIP
+    articulo: "8"
+    sha256: bc543e0023c7
+    sumilla: "sujetos obligados; los GAD quedan comprendidos entre ellos"
+
+  - rol: obligacion_central
+    norma: LOTAIP
+    articulo: "32"
+    sha256: a2d6442772d4
+    sumilla: >-
+      capítulo VI · transparencia pasiva: solicitud y contenido mínimo de la petición de
+      acceso a la información pública
+
+  - rol: entrega
+    norma: LOTAIP
+    articulo: "33"
+    sha256: "171398460cb6"
+    sumilla: "los sujetos obligados deben propiciar la entrega de la información solicitada"
+
+  - rol: plazo
+    norma: LOTAIP
+    articulo: "34"
+    sha256: 7e6fb9b6d0e8
+    sumilla: "plazo dentro del cual toda solicitud de acceso debe ser atendida"
+
+  - rol: alcance
+    norma: LOTAIP
+    articulo: "35"
+    sha256: 1592a681693f
+    sumilla: >-
+      la solicitud no obliga a generar información que no se posea: se entrega la que existe
+      en los términos en que se encuentra
+
+  - rol: causales_de_denegacion
+    norma: LOTAIP
+    articulo: "36"
+    sha256: e51dec6d4956
+    sumilla: "la denegación debe ser motivada y sujetarse a las causales de la ley"
+
+  - rol: entrega_parcial
+    norma: LOTAIP
+    articulo: "37"
+    sha256: fe76b33fe22d
+    sumilla: >-
+      cuando un documento contiene información reservada y pública, se entrega la parte
+      pública — la reserva de una porción no bloquea el resto
+
+  - rol: remision_a_transparencia_activa
+    norma: LOTAIP
+    articulo: "38"
+    sha256: e0bdaceee1fa
+    sumilla: >-
+      tratamiento de la información solicitada que ya se encuentra publicada en el enlace de
+      transparencia — el vínculo explícito entre la vía pasiva y la activa
+
+  - rol: desarrollo_reglamentario
+    norma: RLOTAIP
+    articulo: "13"
+    sha256: 54dad2d3fd47
+    sumilla: "desarrollo reglamentario de la transparencia pasiva"
+
+  - rol: desconcentracion
+    norma: RLOTAIP
+    articulo: "14"
+    sha256: 9bbb0149a489
+    sumilla: >-
+      desconcentración de la atención: la solicitud no puede rebotarse entre dependencias
+      del propio sujeto obligado
+
+  - rol: gratuidad
+    norma: RLOTAIP
+    articulo: "15"
+    sha256: a4fd0a0b8064
+    sumilla: "gratuidad del acceso y carácter excepcional de cualquier costo"
+
+  - rol: metodo_de_evaluacion
+    norma: INST-LOTAIP-PAR
+    articulo: null
+    sha256: 9ad9e0f6e6a6
+    sumilla: >-
+      Resolución 015-DPE-CGAJ-2024: instructivo para la aplicación de los parámetros de
+      acceso a la información pública
+
+  - rol: consecuencia
+    norma: LOTAIP
+    articulo: "42"
+    sha256: ae8004ee019f
+    sumilla: "sanciones administrativas por el incumplimiento de las obligaciones de la ley"
+
+# ── Estado y ciclo de vida ────────────────────────────────────────────────────────
+estado: propuesta
+vigencia:
+  desde: "2023-02-07"
+  hasta: null
+derogaciones:
+  reemplaza_a: null
+  reemplazada_por: null
+
+# ── Dependencias (MDN · bidireccional) ────────────────────────────────────────────
+deriva_ro:
+  - RO-VII-004                    # atención de solicitudes: plazo, entrega y motivación
+
+# ── Relación con la transparencia activa ──────────────────────────────────────────
+# El art. 38 enlaza expresamente ambas vías, y de ahí sale el rasgo propio de esta cadena:
+# la vía pasiva es el RECURSO cuando la activa no alcanza. Para los demás dominios eso
+# significa que una ausencia en transparencia activa no es necesariamente el final del
+# camino — es el punto donde empieza otro.
+complementa:
+  - CNO-VII-001                   # transparencia activa · art. 19
+  - CNO-VII-002                   # obligación específica de GAD · art. 24
+
+# ── Validación humana (ADR-035 §5) ────────────────────────────────────────────────
+validacion:
+  propuesta_por: "BRN (cadena verificada contra corpus 2026-08-18)"
+  validada_por: null
+  fecha_validacion: null
+notas: >-
+  Aporte de esta cadena: es la primera del catálogo cuyo hecho observable NO es un documento
+  publicado sino un PROCEDIMIENTO con plazo —solicitud, respuesta, denegación motivada—. Eso
+  la vuelve observable sólo cuando alguien ejerce el derecho, y por tanto su medición depende
+  de un acto ciudadano que el sistema no controla. Se modela igualmente porque sin ella d07
+  no puede distinguir «no está publicado» de «se pidió y no se entregó», que son hechos de
+  peso jurídico muy distinto.

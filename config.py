@@ -11,13 +11,39 @@ Dylus Lab © 2026
 import os
 from pathlib import Path
 
+# ── LA FRONTERA ENTRE EL CÓDIGO Y LOS DOCUMENTOS ──────────────────────────────
+# Los documentos fuente y el Gold Master viven FUERA del repositorio, y eso es
+# deliberado: el repo es privado y los documentos del sujeto observado no se
+# suben. Lo que no era deliberado es que esa frontera estuviera **escrita a mano
+# en 54 puntos de 49 archivos** (OBS-032, 2026-08-19), incluido este.
+#
+# Se declara UNA vez y se recibe del entorno. El valor por defecto conserva la
+# máquina donde hoy vive el proyecto —nada se rompe— pero deja de ser la única
+# posible: en otro equipo o en un servidor basta `QUIRA_DATOS=/ruta/a/los/datos`.
+DATOS_DIR = Path(os.environ.get(
+    "QUIRA_DATOS",
+    r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT"))
+
+# La bóveda de conocimiento territorial vive en OTRA raíz externa, y estaba
+# escrita a mano en tres scripts distintos. Misma decisión arquitectónica, mismo
+# defecto: replicada en vez de parametrizada (OBS-032).
+VAULT_DIR = Path(os.environ.get(
+    "QUIRA_VAULT",
+    r"C:\Proyectos\QUIRA\knowledge_base\QUIRA_KB_Montecristi"))
+
 # ── MODO CLOUD ────────────────────────────────────────────────────────────────
-# En Streamlit Community Cloud no hay Excel local.
-# La app detecta esto automáticamente y usa demo_data.py como fuente de verdad.
-IS_CLOUD = not os.path.exists(r"C:\Users\DELL")
+# En Streamlit Community Cloud no hay Excel local y la app usa `demo_data.py`.
+#
+# ⚠️ ANTES ESTO PREGUNTABA SI EXISTÍA EL DISCO DE UNA PERSONA (`C:/Users/DELL`).
+# Es decir: en cualquier otro ordenador del mundo —incluido un servidor propio—
+# QUIRA se declaraba «en la nube» y pasaba a datos de demostración **sin avisar**.
+# Un sistema que se degrada en silencio al cambiar de máquina no es portable: es
+# una instalación local que finge serlo. Ahora la pregunta es la correcta: ¿están
+# los datos donde se declaró que están?
+IS_CLOUD = not DATOS_DIR.exists()
 
 # ── PATHS EXCEL (solo relevante en desarrollo local) ──────────────────────────
-BASE_EXCEL = r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT"
+BASE_EXCEL = str(DATOS_DIR)
 
 # Gold Master canónico (v5.5 — bautizado 2026-05-26) — fuente de verdad absoluta
 GOLD_MASTER_VERSION = "v5.5_TGI"

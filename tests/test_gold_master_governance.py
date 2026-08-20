@@ -84,9 +84,20 @@ def _crear_excel_mock(hojas: list[str], filas_api: list[tuple] | None = None) ->
         return ws
 
     def _getitem(nombre):
-        if nombre == "G6.1_OUTPUT_API":
+        # ⚠️ CORREGIDO 2026-08-19. El mock sólo respondía a `G6.1_OUTPUT_API` y
+        # `G1.1_CONFIG`, que son del template **v6.0**. El canónico activo es
+        # v5.5 y usa `H73_OUTPUT_API` / `H82_CONFIG_PARAMS`; el validador ya
+        # había migrado. Resultado: el mock devolvía una hoja vacía, las 14
+        # claves salían «ausentes» y 9 pruebas fallaban desde entonces.
+        #
+        # La lección importa más que el arreglo: **una prueba que falla siempre
+        # no protege nada.** Durante ese tiempo el contrato del Gold Master no
+        # estaba verificado por nadie, y el fallo constante se leía como ruido.
+        # Se conservan ambos nombres porque el validador acepta los dos, y ese
+        # camino de compatibilidad también debe quedar cubierto.
+        if nombre in ("H73_OUTPUT_API", "G6.1_OUTPUT_API"):
             return _ws_mock_g61()
-        if nombre == "G1.1_CONFIG":
+        if nombre in ("H82_CONFIG_PARAMS", "G1.1_CONFIG"):
             return _ws_mock_g11()
         return _ws_mock_generico()
 
@@ -178,13 +189,17 @@ class TestValidarGoldMaster:
         """Falta de hoja requerida debe generar ERROR."""
         ruta = tmp_path / "gm.xlsx"
         ruta.write_bytes(b"dummy")
-        hojas_incompletas = [h for h in HOJAS_REQUERIDAS_V6 if h != "G3.3_D3_EJECUCION_GAD"]
+        # La hoja a quitar se toma de la lista REAL: fijarla a mano («G3.3…»)
+        # hacía que el filtro no quitara nada cuando el canon cambió de
+        # nomenclatura, y la prueba pasaba a comprobar el vacío.
+        faltante = HOJAS_REQUERIDAS_V6[0]
+        hojas_incompletas = [h for h in HOJAS_REQUERIDAS_V6 if h != faltante]
         wb_mock = _crear_excel_mock(hojas_incompletas)
         mock_openpyxl.load_workbook.return_value = wb_mock
 
         resultados = validar_gold_master(str(ruta))
         reglas_error = [r.regla for r in resultados if r.es_error()]
-        assert "hoja_requerida:G3.3_D3_EJECUCION_GAD" in reglas_error
+        assert f"hoja_requerida:{faltante}" in reglas_error
 
     @patch("app.services.gold_master_governance.openpyxl")
     def test_claves_api_presentes_dan_ok(self, mock_openpyxl, tmp_path):
@@ -276,25 +291,32 @@ class TestValidarGoldMaster:
         assert r_ver.estado == "OK"
 
     @patch("app.services.gold_master_governance.openpyxl")
-    def test_version_no_v6_da_alerta(self, mock_openpyxl, tmp_path):
+    def test_version_fuera_del_canon_da_alerta(self, mock_openpyxl, tmp_path):
+        """⚠️ REESCRITA 2026-08-19. Se llamaba `test_version_no_v6_da_alerta` y
+        exigía que **v5.5 alertara** por no ser v6.0. Pero v5.5 es el canónico
+        activo: la prueba defendía una premisa que el canon ya había derogado, y
+        el validador tenía razón al devolver OK.
+
+        Lo que sí debe alertar es una versión que **no pertenece a ninguna serie
+        reconocida** — ahí el archivo abierto no es el Gold Master que se cree
+        estar leyendo, y eso no puede pasar en silencio."""
         ruta = tmp_path / "gm.xlsx"
         ruta.write_bytes(b"dummy")
-        # Simular G1.1 con versión v5.5
         wb_mock = _crear_excel_mock(HOJAS_REQUERIDAS_V6)
-        ws_g11 = MagicMock()
-        ws_g11.iter_rows.return_value = iter([
-            ("VERSION_GOLD_MASTER", "v5.5", "Versión antigua")
+        ws_cfg = MagicMock()
+        ws_cfg.iter_rows.return_value = iter([
+            ("VERSION_SISTEMA", "v3.2", "Serie ajena al canon vigente")
         ])
+        base = _crear_excel_mock(HOJAS_REQUERIDAS_V6)
         wb_mock.__getitem__.side_effect = lambda n: (
-            ws_g11 if n == "G1.1_CONFIG"
-            else _crear_excel_mock(HOJAS_REQUERIDAS_V6)[n]
+            ws_cfg if n in ("H82_CONFIG_PARAMS", "G1.1_CONFIG") else base[n]
         )
         mock_openpyxl.load_workbook.return_value = wb_mock
 
         resultados = validar_gold_master(str(ruta))
         r_ver = next((r for r in resultados if r.regla == "version_declarada"), None)
         assert r_ver is not None
-        assert r_ver.es_alerta()
+        assert r_ver.es_alerta(), "una versión fuera del canon no puede pasar como OK"
 
     @patch("app.services.gold_master_governance.openpyxl")
     def test_resultado_incluye_multiple_categorias(self, mock_openpyxl, tmp_path):
@@ -711,12 +733,17 @@ class TestConstantesModulo:
     def test_hojas_requeridas_no_vacio(self):
         assert len(HOJAS_REQUERIDAS_V6) > 0
 
-    def test_hojas_requeridas_contiene_g61_output_api(self):
-        assert "G6.1_OUTPUT_API" in HOJAS_REQUERIDAS_V6
+    def test_hojas_requeridas_contiene_la_interfaz_publica(self):
+        """La hoja del contrato es `H73_OUTPUT_API` (v5.5 canónico activo). La
+        prueba anterior exigía `G6.1_OUTPUT_API`, del template v6.0 que **no es
+        el canónico** — y por eso fallaba desde la migración del validador."""
+        assert "H73_OUTPUT_API" in HOJAS_REQUERIDAS_V6
 
-    def test_hojas_requeridas_contiene_todas_g3x(self):
-        hojas_d1_d5 = [h for h in HOJAS_REQUERIDAS_V6 if h.startswith("G3.")]
-        assert len(hojas_d1_d5) >= 5  # G3.1 a G3.7
+    def test_hojas_requeridas_cubren_las_fuentes_de_dominio(self):
+        """El canónico v5.5 nombra sus hojas de dominio con prefijo `H`, no
+        `G3.x`: eSIGEF (Ti holding) y CPCCS (rendición de cuentas)."""
+        assert any(h.startswith("H07") for h in HOJAS_REQUERIDAS_V6)
+        assert any(h.startswith("H10") for h in HOJAS_REQUERIDAS_V6)
 
     def test_claves_output_api_no_vacio(self):
         assert len(CLAVES_OUTPUT_API_REQUERIDAS) > 0

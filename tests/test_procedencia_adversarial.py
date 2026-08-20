@@ -1,0 +1,368 @@
+# -*- coding: utf-8 -*-
+"""
+tests/test_procedencia_adversarial.py — atacar la cadena, no confirmarla
+════════════════════════════════════════════════════════════════════════════════
+POR QUÉ EXISTE (2026-08-19). El colega, tras ver `procedencia.py` funcionando:
+
+> *«El siguiente paso debería ser cerrar el mecanismo con pruebas adversariales,
+> no añadir más arquitectura. Si esos casos quedan fijados, `procedencia.py`
+> deja de ser "código nuevo que parece funcionar" y pasa a ser una pieza
+> canónica demostrada.»*
+
+Tiene razón, y hay evidencia de por qué: en dos turnos consecutivos el mismo
+defecto —acreditar algo por declarado en vez de por comprobado— entró primero
+por el sujeto y después por la prueba del verificador. Un mecanismo que sólo se
+prueba con sus casos felices no protege de eso.
+
+Cada prueba de este archivo intenta **romper** la cadena de un modo distinto. La
+regla que todas defienden:
+
+> **QUIRA no completa una afirmación cuando la cadena de evidencia está
+> incompleta: la degrada hasta el máximo grado que la evidencia permite
+> sostener. Ninguna transformación puede aumentar el grado ni perder el sujeto.**
+
+Dylus Lab © 2026
+"""
+from __future__ import annotations
+
+import sys
+from pathlib import Path
+
+import pytest
+
+RAIZ = Path(__file__).resolve().parents[1]
+if str(RAIZ) not in sys.path:
+    sys.path.insert(0, str(RAIZ))
+
+from app.agents import apropiacion as A                  # noqa: E402
+from app.agents import procedencia as P                  # noqa: E402
+
+_PRUEBA_REAL = "test_cadencia_trimestral_no_exige_doce_periodos"
+
+COMPLETA = dict(
+    fuente="Portal Nacional de Transparencia · Defensoría del Pueblo",
+    captura="2026-08-19T10:00",
+    estado_adquisicion="descargado",
+    evidencia="e4585f7c44d7216b",
+    verificador="componentes.verificar_cobertura",
+    prueba_del_verificador=_PRUEBA_REAL,
+    sujeto="130801 Montecristi",
+)
+
+
+# ── 7 · el caso feliz, primero: si esto no pasa, lo demás no significa nada ─────
+def test_07_con_las_siete_capas_conserva_el_grado_maximo():
+    s = P.sostener("el conjunto no acredita la dimensión exigida",
+                   P.Procedencia(**COMPLETA))
+    assert s.peso == P.HECHO_VERIFICABLE
+    assert s.habla_del_sujeto is True
+    assert not s.degradada_desde and not s.faltan
+
+
+# ── 1 · el sujeto no puede desaparecer al transformar ───────────────────────────
+def test_01_el_sujeto_no_sobrevive_a_su_propia_desaparicion():
+    """Si el sujeto se pierde en una transformación, la afirmación no puede
+    seguir siendo `ejecutada` ni `validada`. Es el defecto real que tuvo
+    `grados()`: el sello lo traía y la etiqueta lo perdía."""
+    with pytest.raises(A.AfirmacionSinSujeto):
+        A.Afirmacion("x", A.VALIDADO, "fundamento", "d07", "")
+    with pytest.raises(A.AfirmacionSinSujeto):
+        A.Afirmacion("x", A.EJECUCION, "fundamento", "d07", "")
+
+    # Y en la cadena: sin sujeto no se sostiene ni el peso intermedio.
+    sin = P.Procedencia(**{**COMPLETA, "sujeto": ""})
+    s = P.sostener("x", sin)
+    assert s.peso == P.NO_DETERMINABLE
+    assert "sujeto" in s.faltan
+
+
+# ── 2 · sin evidencia conservada no se habla del sujeto ─────────────────────────
+def test_02_sin_evidencia_no_se_afirma_sobre_el_sujeto():
+    """Se capturó, se supo en qué estado terminó, pero no quedó artefacto. Se
+    puede decir que no fue posible acreditarlo; no lo que el GAD hizo."""
+    s = P.sostener("x", P.Procedencia(**{**COMPLETA, "evidencia": ""}))
+    assert s.peso == P.HALLAZGO_DE_VERIFICABILIDAD
+    assert s.faltan == ["evidencia"]
+
+
+# ── 3 · sin verificador, la evidencia no se interpretó ──────────────────────────
+def test_03_sin_verificador_la_evidencia_no_dice_nada_por_si_sola():
+    """Un archivo descargado no es un hallazgo. Alguien —un componente— tuvo que
+    interpretarlo, y ese componente debe poder nombrarse."""
+    s = P.sostener("x", P.Procedencia(**{**COMPLETA, "verificador": ""}))
+    assert s.peso == P.HALLAZGO_DE_VERIFICABILIDAD
+    assert "verificador" in s.faltan
+
+
+# ── 4 · la prueba declarada debe EXISTIR ────────────────────────────────────────
+def test_04_una_prueba_inexistente_no_respalda_nada():
+    """`declarado ≠ existente`. Citar una prueba que no está es el equivalente
+    exacto de citar un artículo de ley inexistente (Regla de Oro 3)."""
+    s = P.sostener("x", P.Procedencia(
+        **{**COMPLETA, "prueba_del_verificador": "test_inventado_que_no_existe"}))
+    assert s.peso == P.HALLAZGO_DE_VERIFICABILIDAD
+    assert s.faltan == ["prueba_del_verificador"]
+
+
+# ── 6 · fuente sin captura: no se observó, se supuso ────────────────────────────
+def test_06_una_fuente_que_nunca_se_consulto_no_sostiene_observacion():
+    """Saber de dónde vendría el dato no es haberlo ido a buscar. Sin captura no
+    hay observación: hay expectativa."""
+    s = P.sostener("x", P.Procedencia(**{**COMPLETA, "captura": ""}))
+    assert s.peso == P.NO_DETERMINABLE, (
+        "sin captura no puede afirmarse ni siquiera un hallazgo de verificabilidad")
+    assert "captura" in s.faltan
+
+
+# ── la degradación nunca puede ir hacia arriba ──────────────────────────────────
+def test_ninguna_transformacion_puede_subir_el_grado():
+    """El sistema puede bajar el peso de una afirmación; jamás subirlo. Pedir
+    `no_determinable` sobre una cadena completa no la degrada —el peso sostenible
+    es el que es— pero tampoco debe reportarse como ascenso."""
+    s = P.sostener("x", P.Procedencia(**COMPLETA), P.NO_DETERMINABLE)
+    assert s.peso == P.HECHO_VERIFICABLE
+    assert s.degradada_desde == "", "no existe la degradación hacia arriba"
+
+    # Y una cadena pobre no mejora por pretender menos.
+    pobre = P.Procedencia(fuente="DPE", sujeto="130801")
+    for pretendido in (P.HECHO_VERIFICABLE, P.HALLAZGO_DE_VERIFICABILIDAD,
+                       P.NO_DETERMINABLE):
+        assert P.sostener("x", pobre, pretendido).peso == P.NO_DETERMINABLE
+
+
+# ── 5 · el vínculo prueba↔verificador · DEUDA DECLARADA ─────────────────────────
+def test_05_la_prueba_deberia_estar_vinculada_al_verificador_que_respalda():
+    """⚠️ ESTA PRUEBA DOCUMENTA UN HUECO ABIERTO, y por eso no falla.
+
+    El colega lo anticipó (2026-08-19):
+
+    > *«No basta que el identificador de la prueba exista; la prueba debe ser
+    > ejecutable y estar vinculada al mecanismo que dice respaldar. De lo
+    > contrario, mañana podría aparecer una prueba cualquiera: el archivo
+    > existe, pero no demuestra que el verificador sea correcto.»*
+
+    Hoy la cadena comprueba **existencia**, no **correspondencia**: cualquier
+    prueba real acredita cualquier verificador. La escala completa es
+    `declarado ≠ existente ≠ ejecutado ≠ exitoso`, y sólo cubrimos los dos
+    primeros escalones.
+
+    La prueba se deja escrita, verde y explícita: cuando el vínculo sea
+    comprobable, se invierte la aserción y pasa a defender la regla en vez de
+    documentar su ausencia."""
+    ajena = P.Procedencia(**{**COMPLETA,
+                            "verificador": "un.modulo.que.nada.tiene.que.ver",
+                            "prueba_del_verificador": _PRUEBA_REAL})
+    s = P.sostener("x", ajena)
+    assert s.peso == P.HECHO_VERIFICABLE, (
+        "hoy pasa; el día que el vínculo sea comprobable, este assert debe "
+        "invertirse a HALLAZGO_DE_VERIFICABILIDAD")
+
+
+# ── 8 · cambiar el sujeto después del sello ─────────────────────────────────────
+def test_08_medir_con_evidencia_de_otro_sujeto_DETIENE_la_corrida():
+    """EL AGUJERO QUE ESTA PRUEBA ENCONTRÓ, y es el más grave de los ocho.
+
+    Antes de escribirla, alterar el sujeto del sello dejaba **todo en verde**:
+
+        pendientes()  → ninguna
+        gates         → ninguno en rojo
+        corrida       → COMPLETED
+        informe       → «reproducible sobre 130802 OtroMunicipio»
+
+    …mientras medía a 130801. El sistema habría atribuido a un municipio lo
+    observado en otro, con todos los archivos en su sitio y sin un solo error.
+
+    No se degrada: se DETIENE. Una medición con evidencia de otro sujeto no es
+    un resultado más débil — es una afirmación falsa sobre un tercero, y eso no
+    se publica atenuado."""
+    import json
+    from app.agents.d07 import etapas as E
+    from app.agents.d07.orquestador import ejecutar
+
+    ruta = E._SELLO_CADENA
+    if not ruta.exists():
+        pytest.skip("no hay sello de cadena en este entorno")
+    respaldo = ruta.read_bytes()
+    try:
+        d = json.loads(respaldo)
+        clave = next((k for k, v in d.items() if v.get("sujeto")), None)
+        if not clave:
+            pytest.skip("ningún sello registra sujeto todavía")
+        d[clave]["sujeto"] = "999999 MunicipioAjeno"
+        ruta.write_text(json.dumps(d, ensure_ascii=False, indent=1),
+                        encoding="utf-8")
+
+        assert clave in E.pendientes(), (
+            "la evidencia de otro sujeto no puede considerarse al día")
+
+        c = ejecutar(2025, list(range(1, 13)))
+        gate = next((g for g in c.gates if g.nombre == "SUJETO"), None)
+        assert gate is not None and not gate.ok, "el gate SUJETO no detuvo nada"
+        assert c.estado == "BLOCKED"
+        assert not c.resultados, "no puede publicarse un resultado en este estado"
+    finally:
+        ruta.write_bytes(respaldo)
+
+
+def test_08b_sin_discordancia_el_gate_no_estorba():
+    """Un gate que detiene siempre es tan inútil como uno que nunca detiene."""
+    from app.agents.d07.orquestador import ejecutar
+    c = ejecutar(2025, list(range(1, 13)))
+    gate = next((g for g in c.gates if g.nombre == "SUJETO"), None)
+    assert gate is not None and gate.ok
+    assert c.estado == "COMPLETED"
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# FAMILIA B · ataques END-TO-END sobre la identidad del sujeto
+# ══════════════════════════════════════════════════════════════════════════════
+# El colega, tras el caso 8 (2026-08-19):
+#
+# > *«¿Dónde más puede cambiar la identidad del sujeto entre una capa y la
+# > siguiente sin que el sistema lo detecte? No hace falta adivinar la
+# > respuesta. Hay que atacarlo.»*
+#
+# Se atacó. Apareció una segunda puerta, y por eso estas pruebas existen.
+
+def test_09_cambiar_la_identidad_en_la_fuente_DETIENE_la_corrida():
+    """SEGUNDO AGUJERO, y entró justo por donde el gate no miraba.
+
+    El gate `SUJETO` comparaba una etiqueta legible —«130801 Montecristi»—.
+    Cambiar `dpe_entidad_id` de 937 a 999 **no altera esa etiqueta**: el código
+    territorial y el nombre siguen iguales. Resultado del ataque, antes del
+    cierre:
+
+        entidad activa  999
+        evidencia       de la entidad 937
+        pendientes()    ninguna
+        gates en rojo   ninguno
+        corrida         COMPLETED · SITA 0,4646
+
+    QUIRA habría medido a un GAD con la evidencia de otro, y el número tenía
+    buena cara. La lección: **una etiqueta identifica para leer; una huella
+    identifica para verificar.**"""
+    import json
+    from app.agents import sujeto as S
+    from app.agents.d07 import etapas as E
+    from app.agents.d07.orquestador import ejecutar
+
+    perfil = S._SUJETOS / f"{S.POR_DEFECTO}.json"
+    if not perfil.exists():
+        pytest.skip("sin perfil de sujeto en este entorno")
+    respaldo = perfil.read_bytes()
+    try:
+        d = json.loads(respaldo)
+        d["identidad_en_fuentes"]["dpe_entidad_id"] = 999
+        perfil.write_text(json.dumps(d, ensure_ascii=False, indent=1),
+                          encoding="utf-8")
+        S.cargar.cache_clear()
+
+        assert E.pendientes(), "la evidencia de otra entidad no está al día"
+        c = ejecutar(2025, list(range(1, 13)))
+        gate = next((g for g in c.gates if g.nombre == "SUJETO"), None)
+        assert gate is not None and not gate.ok
+        assert c.estado == "BLOCKED" and not c.resultados
+    finally:
+        perfil.write_bytes(respaldo)
+        S.cargar.cache_clear()
+
+
+def test_10_la_huella_cubre_toda_la_identidad_en_fuentes():
+    """La huella debe cambiar ante CUALQUIER alteración de la identidad, no sólo
+    ante el identificador. El dominio web también decide qué se considera
+    publicación propia del sujeto: si cambia, la evidencia anterior ya no
+    corresponde."""
+    import json
+    from app.agents import sujeto as S
+
+    perfil = S._SUJETOS / f"{S.POR_DEFECTO}.json"
+    if not perfil.exists():
+        pytest.skip("sin perfil de sujeto en este entorno")
+    respaldo = perfil.read_bytes()
+    original = S.huella()
+    try:
+        for campo, valor in (("dpe_entidad_id", 999),
+                             ("dominio_web", "otro-gad.gob.ec"),
+                             ("dominios_asociados", ["x.gob.ec"])):
+            d = json.loads(respaldo)
+            d["identidad_en_fuentes"][campo] = valor
+            perfil.write_text(json.dumps(d, ensure_ascii=False, indent=1),
+                              encoding="utf-8")
+            S.cargar.cache_clear()
+            assert S.huella() != original, (
+                f"alterar «{campo}» no cambió la huella: la identidad quedaría "
+                f"sin proteger por ese lado")
+    finally:
+        perfil.write_bytes(respaldo)
+        S.cargar.cache_clear()
+    assert S.huella() == original, "la huella debe ser estable si nada cambió"
+
+
+def test_11_los_artefactos_derivados_no_declaran_su_sujeto():
+    """⚠️ HUECO MEDIDO Y DECLARADO — la prueba fija el estado, no lo aprueba.
+
+    Respuesta a la pregunta del colega —*«¿dónde más puede cambiar la identidad
+    del sujeto entre una capa y la siguiente?»*— tras auditar los nueve puntos
+    de transición de la cadena:
+
+        [ok] perfil del sujeto        huella + gate SUJETO
+        [ok] sello de la cadena       gate SUJETO (etiqueta + huella)
+        [~~] captura de la fuente     lleva entidades{937}, sin huella
+        [XX] índice de descargas      no declara sujeto
+        [XX] análisis de contenido    no declara sujeto
+        [XX] inventario documental    no declara sujeto
+        [XX] contenido contenedores   no declara sujeto
+        [~~] corridas persistidas     Corrida.municipio, sin huella
+        [ok] autoconocimiento         derivado del sello
+
+    Hoy la cadena los protege **indirectamente**: alterar la identidad invalida
+    el sello y el gate `SUJETO` detiene la corrida. Pero un artefacto leído
+    FUERA de la cadena —copiado, compartido, ingerido por otro dominio— no dice
+    de quién es. Con 222 GAD produciendo los mismos nombres de archivo, esa
+    ambigüedad deja de ser teórica.
+
+    El trinquete: los cuatro pueden bajar, no subir."""
+    import json
+    ARTEFACTOS_SIN_SUJETO_TOLERADOS = 4
+    rutas = ["data/lotaip/descargas_indice.json",
+             "data/lotaip/contenido.json",
+             "data/lotaip/inventario_documental.json",
+             "data/lotaip/contenido_contenedores.json"]
+    sin_declarar = []
+    for r in rutas:
+        p = RAIZ / r
+        if not p.exists():
+            continue
+        meta = json.loads(p.read_text(encoding="utf-8")).get("_meta", {})
+        if not any(k in meta for k in ("sujeto", "sujeto_huella",
+                                       "codigo_territorial")):
+            sin_declarar.append(r)
+    assert len(sin_declarar) <= ARTEFACTOS_SIN_SUJETO_TOLERADOS, (
+        f"más artefactos dejaron de declarar su sujeto: {sin_declarar}")
+
+
+def test_12_sin_atacar_no_puede_leerse_como_seguro():
+    """El colega lo puso en rojo (2026-08-19):
+
+    > *«"Sin atacar" no puede convertirse en "seguro" por defecto. Eso debería
+    > entrar directamente en el autoconocimiento de QUIRA.»*
+
+    Es el mismo error que el sistema acaba de descubrir a nivel de sujeto,
+    ahora a nivel de plataforma: confundir ausencia de contradicción con
+    evidencia de validez. Un dominio sin defensas no las resistió — no las
+    tiene."""
+    from app.agents import apropiacion as A
+    c = A.cobertura_de_la_plataforma()
+    estados = {f["dominio"]: f["estado"] for f in c["dominios"]}
+
+    assert estados.get("d07") == A.PROTEGIDO_Y_ATACADO
+    # Y ninguno de los otros puede figurar como protegido sin tener las defensas.
+    for dom, est in estados.items():
+        if dom == "d07":
+            continue
+        assert est != A.PROTEGIDO_Y_ATACADO, (
+            f"{dom} figura como atacado sin pruebas adversariales propias")
+
+    # La afirmación publicable nombra el alcance, nunca la plataforma entera.
+    assert "d07" in c["afirmacion_sostenible"]
+    assert "los demás dominios permanecen sin evidencia" in c["afirmacion_sostenible"]

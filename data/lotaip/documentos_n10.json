@@ -1,0 +1,124 @@
+{
+ "_meta": {
+  "numeral": "Numeral 10",
+  "transporte": {
+   "intentos": 8,
+   "fallos": 8,
+   "seguidos": 8
+  },
+  "generado": "2026-08-19",
+  "conjuntos_de_datos": 5,
+  "limite_aplicado": null,
+  "completo": false,
+  "no_intentados": 7,
+  "corte_por_fuente_caida": true,
+  "regla": "se abre el documento enlazado; un escaneo se declara no_procesable en vez de suponer su contenido"
+ },
+ "documentos": [
+  {
+   "anio": "2026",
+   "mes": 1,
+   "seccion": "resoluciones",
+   "url": "https://cloud.montecristi.gob.ec/index.php/s/yMP8KMEfCQf6e95",
+   "estado": "no_accesible"
+  },
+  {
+   "anio": "2026",
+   "mes": 1,
+   "seccion": "resoluciones",
+   "url": "https://cloud.montecristi.gob.ec/index.php/s/HdE352StjtkDpRP",
+   "estado": "no_accesible"
+  },
+  {
+   "anio": "2026",
+   "mes": 1,
+   "seccion": "resoluciones",
+   "url": "https://cloud.montecristi.gob.ec/index.php/s/PFy5xPjWiwM7wqd",
+   "estado": "no_accesible"
+  },
+  {
+   "anio": "2026",
+   "mes": 2,
+   "seccion": "resoluciones",
+   "url": "https://cloud.montecristi.gob.ec/index.php/s/yMP8KMEfCQf6e95",
+   "estado": "no_accesible"
+  },
+  {
+   "anio": "2026",
+   "mes": 2,
+   "seccion": "resoluciones",
+   "url": "https://cloud.montecristi.gob.ec/index.php/s/HdE352StjtkDpRP",
+   "estado": "no_accesible"
+  },
+  {
+   "anio": "2026",
+   "mes": 2,
+   "seccion": "resoluciones",
+   "url": "https://cloud.montecristi.gob.ec/index.php/s/PFy5xPjWiwM7wqd",
+   "estado": "no_accesible"
+  },
+  {
+   "anio": "2026",
+   "mes": 3,
+   "seccion": "resoluciones",
+   "url": "https://cloud.montecristi.gob.ec/index.php/s/yMP8KMEfCQf6e95",
+   "estado": "no_accesible"
+  },
+  {
+   "anio": "2026",
+   "mes": 3,
+   "seccion": "resoluciones",
+   "url": "https://cloud.montecristi.gob.ec/index.php/s/HdE352StjtkDpRP",
+   "estado": "no_accesible"
+  },
+  {
+   "anio": "2026",
+   "mes": 3,
+   "seccion": "resoluciones",
+   "url": "https://cloud.montecristi.gob.ec/index.php/s/PFy5xPjWiwM7wqd",
+   "estado": "no_intentado_por_corte_de_fuente"
+  },
+  {
+   "anio": "2026",
+   "mes": 4,
+   "seccion": "resoluciones",
+   "url": "https://cloud.montecristi.gob.ec/index.php/s/yMP8KMEfCQf6e95",
+   "estado": "no_intentado_por_corte_de_fuente"
+  },
+  {
+   "anio": "2026",
+   "mes": 4,
+   "seccion": "resoluciones",
+   "url": "https://cloud.montecristi.gob.ec/index.php/s/HdE352StjtkDpRP",
+   "estado": "no_intentado_por_corte_de_fuente"
+  },
+  {
+   "anio": "2026",
+   "mes": 4,
+   "seccion": "resoluciones",
+   "url": "https://cloud.montecristi.gob.ec/index.php/s/PFy5xPjWiwM7wqd",
+   "estado": "no_intentado_por_corte_de_fuente"
+  },
+  {
+   "anio": "2026",
+   "mes": 5,
+   "seccion": "resoluciones",
+   "url": "https://cloud.montecristi.gob.ec/index.php/s/yMP8KMEfCQf6e95",
+   "estado": "no_intentado_por_corte_de_fuente"
+  },
+  {
+   "anio": "2026",
+   "mes": 5,
+   "seccion": "resoluciones",
+   "url": "https://cloud.montecristi.gob.ec/index.php/s/HdE352StjtkDpRP",
+   "estado": "no_intentado_por_corte_de_fuente"
+  },
+  {
+   "anio": "2026",
+   "mes": 5,
+   "seccion": "resoluciones",
+   "url": "https://cloud.montecristi.gob.ec/index.php/s/PFy5xPjWiwM7wqd",
+   "estado": "no_intentado_por_corte_de_fuente"
+  }
+ ]
+}

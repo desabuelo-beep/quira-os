@@ -98,3 +98,21 @@ sprint-a-verify-*.png
 prototypes/
 docs/superpowers/
 gm_snapshot*.bak
+
+# ── DESCARGAS LOTAIP (21 MB reproducibles desde el portal de la DPE) ──────────
+# Los CSV publicados por el sujeto obligado. El repo guarda su SHA256 y el
+# analisis, no los binarios: la fuente es publica y la descarga es repetible.
+data/lotaip/descargas/
+data/lotaip/.descarga.tmp
+
+# ── EVIDENCIA BINARIA DESCARGADA (1,9 GB · NUNCA al repo) ─────────────────────
+# Los documentos que el sujeto obligado publica: PDF, ZIP, imágenes y los
+# artefactos internos de los contenedores. Son **reproducibles desde la fuente
+# publica** y su identidad ya vive en los indices JSON, que si se versionan:
+# cada objeto queda registrado con su SHA256, su procedencia y su estado de
+# captura. El repo guarda la CADENA DE CUSTODIA, no la carga.
+data/lotaip/artefactos/
+data/lotaip/documentos/
+data/cantera/
+data/lotaip/.enlace.tmp
+data/lotaip/.huerfanos.txt

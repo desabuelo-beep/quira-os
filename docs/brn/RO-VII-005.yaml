@@ -1,0 +1,123 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# RO-VII-005 · Regla Operativa derivada de CNO-VII-004
+# Difusión y capacitación: tres veces al año, y hoy nadie lo está mirando.
+#
+# QUÉ OPERACIONALIZA. La obligación más fácil de verificar del dominio entero —una cuenta al
+# año— y la única que ningún monitoreo estaba comprobando. El Reglamento art. 10 no admite
+# lectura ambigua: «por lo menos TRES VECES AL AÑO».
+#
+# POR QUÉ IMPORTA. Un sujeto obligado puede publicar impecablemente los 24 numerales y
+# mantener a su población sin saber que ese derecho existe. La transparencia que nadie sabe
+# ejercer es una forma silenciosa de opacidad, y esta regla es la que permite nombrarla.
+#
+# ⚠️ HOY NO ES MEDIBLE, Y ESO SE DECLARA ANTES DE MEDIR. Ningún numeral del art. 19 recoge
+# esta actividad: el portal de la DPE ni la acredita ni la desmiente. Mientras no exista
+# fuente verificada, el resultado es `no_observable` — **nunca «no cumple»**. Un GAD que sí
+# capacita no puede aparecer incumpliendo porque el observador mira donde no está el dato.
+# Es la lección de OBS-030 aplicada por adelantado: primero se descarta el instrumento.
+#
+# ESTADO: PROPUESTA — pendiente de aprobación formal de Javo (ADR-035 §5).
+# ═══════════════════════════════════════════════════════════════════════════════
+id: RO-VII-005
+authority:
+  parent: CNO-VII-004
+  constitution_articles: [1, 3, 9]
+  type: NORMATIVA
+version: "1.0"
+deriva_de: CNO-VII-004 v1.0
+
+# ── Definición de la métrica ──────────────────────────────────────────────────────
+metrica:
+  nombre: Pct_Programas_Difusion_Acreditados
+  unidad: porcentaje
+  descripcion: >-
+    proporción de programas de difusión y capacitación acreditados documentalmente sobre el
+    mínimo anual que exige el Reglamento
+
+# ── Parámetros operativos ─────────────────────────────────────────────────────────
+parametros:
+  umbral: 100
+  umbral_semantica:
+    tipo: exigencia_de_frecuencia_minima
+    lectura: "deben acreditarse al menos tres programas en el ejercicio"
+    no_es: "puntaje mínimo de aprobación"
+  frecuencia: anual
+
+  frecuencia_minima:
+    veces_por_anio: 3
+    literal: >-
+      «Los programas de difusión y capacitación dirigidos a promocionar el derecho de acceso
+      a la información pública deberán ser realizados por los sujetos obligados por lo menos
+      tres veces al año»
+    fuente: RLOTAIP
+    articulo: "10"
+
+  # Los DOS destinatarios que la norma distingue. Capacitar sólo hacia adentro no satisface
+  # la obligación: el Reglamento nombra expresamente a las personas a las que la entidad sirve.
+  destinatarios:
+    - id: servidores
+      descripcion: "las y los servidores de la institución"
+      prioridad_declarada: >-
+        «se considerará primordialmente a las y los servidores de carrera, con la finalidad de
+        asegurar la permanencia de las políticas de transparencia en el tiempo»
+    - id: poblacion_servida
+      descripcion: >-
+        las personas naturales y jurídicas a las cuales la entidad se encuentra destinada a
+        servir
+
+  # Evidencia que acreditaría un programa. Se enumera para que la búsqueda tenga criterio y
+  # no dependa de lo que a cada quien le parezca suficiente.
+  evidencia_admisible:
+    - "convocatoria o invitación pública al programa"
+    - "registro de asistencia"
+    - "informe o memoria de la actividad"
+    - "material de capacitación con fecha"
+
+# ── Método ────────────────────────────────────────────────────────────────────────
+metodo:
+  tipo: verificacion_de_frecuencia
+  unidad_de_evaluacion: ejercicio_anual
+  criterios:
+    - id: frecuencia_minima
+      obligatorio: true
+      descripcion: "se acreditan al menos tres programas en el año"
+    - id: cobertura_de_destinatarios
+      obligatorio: false
+      descripcion: >-
+        los programas alcanzan a ambos destinatarios; capacitar sólo al personal interno deja
+        sin cubrir la mitad que la norma nombra
+
+  # ⚠️ EL ESTADO POR DEFECTO ES `no_observable`, y es deliberado. Hasta que exista fuente
+  # verificada, el dominio NO afirma nada sobre esta obligación. Poner cero equivaldría a
+  # imputar un incumplimiento por una ceguera propia.
+  observabilidad:
+    estado_por_defecto: no_observable
+    score: null
+    excluye_del_promedio: true
+    razon: >-
+      ningún numeral del artículo 19 recoge esta actividad; el portal de transparencia no la
+      acredita ni la desmiente
+    vias_para_habilitar:
+      - "informe mensual del Comité de Transparencia a la máxima autoridad (Instructivo)"
+      - "portal institucional del GAD · sección de noticias o capacitaciones"
+      - "solicitud de acceso a la información por la vía de RO-VII-004"
+
+consecuencia: >-
+  Hallazgo de frecuencia: el ejercicio no acredita el mínimo de programas de difusión que
+  exige el Reglamento. Mientras la obligación permanezca `no_observable` por falta de fuente,
+  NO se emite hallazgo alguno: la ausencia de evidencia sobre la actividad no es evidencia de
+  su ausencia.
+
+# ── SAT que esta RO produce ───────────────────────────────────────────────────────
+produce: []
+motivo_sin_sat: "no existe señal de transparencia en SAT_Catalogo; no se genera desde la BRN"
+
+consume: []
+opera_en: d07
+
+# ── Estado y trazabilidad ─────────────────────────────────────────────────────────
+estado: propuesta
+validacion:
+  propuesta_por: "BRN (hallazgo de la lectura completa del Reglamento · corpus 2026-08-18)"
+  validada_por: null
+  fecha_validacion: null

@@ -1,0 +1,3980 @@
+{
+ "run_id": "RUN-D07-2026-08-18-0002",
+ "estado": "COMPLETED",
+ "municipio": "montecristi",
+ "anio": 2025,
+ "meses": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12
+ ],
+ "canon": {
+  "vara_sha": "e5f753f73a4b44df92d8c860ac705d377df50f1871fc367d09096320db92ed03",
+  "catalogo_sha": "2483221dd31d94d10766ed01886262d8b31d484e3728b4a0abfdd24f8b43ed57",
+  "sello": "2026-08-17",
+  "numerales": 25,
+  "campos_exigidos": 162
+ },
+ "gates": [
+  {
+   "gate": "CANON",
+   "ok": true,
+   "detalle": "vara e5f753f73a4b44df… coincide con el sello"
+  },
+  {
+   "gate": "CATALOGO",
+   "ok": true,
+   "detalle": "catálogo v1.1.0 2483221dd31d94d1…"
+  },
+  {
+   "gate": "EVIDENCIA",
+   "ok": true,
+   "detalle": "546 archivos indexados para 2025"
+  },
+  {
+   "gate": "INTEGRIDAD",
+   "ok": true,
+   "detalle": "546/546 rutas únicas · 0 sin SHA"
+  }
+ ],
+ "sita": {
+  "CTA": 0.4271,
+  "ETA": 0.4833,
+  "RP": 0.4625,
+  "CI": 0.4792,
+  "SITA": 0.463
+ },
+ "resultados": [
+  {
+   "cd": "CD-01",
+   "periodo": "2025-01",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-01",
+   "periodo": "2025-02",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-01",
+   "periodo": "2025-03",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-01",
+   "periodo": "2025-04",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-01",
+   "periodo": "2025-05",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-01",
+   "periodo": "2025-06",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-01",
+   "periodo": "2025-07",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-01",
+   "periodo": "2025-08",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-01",
+   "periodo": "2025-09",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-01",
+   "periodo": "2025-10",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-01",
+   "periodo": "2025-11",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-01",
+   "periodo": "2025-12",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-02",
+   "periodo": "2025-01",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "00d1dc8e8fa5a64c82963031d4e49e287450477ee5c145543717664823a99dd0",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%202/2025/1/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-02",
+   "periodo": "2025-02",
+   "sita": 0.875,
+   "cta": 0.5,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "9a6f8f27bdaa09aa59861789d5cf9416e46f5b7e34d4ac4b3e516eed0f0b7690",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%202/2025/2/Conjunto%20de%20datos.csv",
+   "obs": [
+    "Desactualizada: la fecha del dato no es del mes anterior."
+   ]
+  },
+  {
+   "cd": "CD-02",
+   "periodo": "2025-03",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "45bf8aa6363b0d03eb7e5f5f521fdcf01cc12c7b26dd55e0c0f52d9c43c506c2",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%202/2025/3/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-02",
+   "periodo": "2025-04",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-02",
+   "periodo": "2025-05",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "056de23bea649501392727ca4c9a5759ffe99c023210e86c492d9362b5063b75",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%202/2025/5/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-02",
+   "periodo": "2025-06",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "fe3f1c151d2b3b96b9f33afe9a94efc7dea4fd8868d5f08905430f637424fd69",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%202/2025/6/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-02",
+   "periodo": "2025-07",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-02",
+   "periodo": "2025-08",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "036c0f570e20cce3ff428d63874fb2d61f6af7303332797f609ce6c3e527fb9e",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%202/2025/8/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-02",
+   "periodo": "2025-09",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "bbc10bd636bb5ad864b250ab1edc04afa3c5e857295f1e44159fef3f6598412f",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%202/2025/9/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-02",
+   "periodo": "2025-10",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "2466b9a8093fb727dc374cddf967655bc28f55846be2b6ee1e7b6c8bd92201fe",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%202/2025/10/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-02",
+   "periodo": "2025-11",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "afaa11e73d4550bd3dd511ab77285f04c5f87e570ea4ad65da52fa8623b07614",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%202/2025/11/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-02",
+   "periodo": "2025-12",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "1503cceae8c8155320bc6265c7579134b97403c3c88cf32236a7f13e4320e124",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%202/2025/12/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-03",
+   "periodo": "2025-01",
+   "sita": 0.75,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 0,
+   "ci": 1,
+   "sha256": "a3314b783c637c3db3f7945a74d7480710d327336ea6e268db8cebab409ad4e5",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%203/2025/1/Conjunto%20de%20datos.csv",
+   "obs": [
+    "Registro fuera del plazo (posterior al día 15)."
+   ]
+  },
+  {
+   "cd": "CD-03",
+   "periodo": "2025-02",
+   "sita": 0.875,
+   "cta": 0.5,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "1edee89392b0c1248efe29622ce2af2c343704225a433f156c655e96283eca4c",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%203/2025/2/Conjunto%20de%20datos.csv",
+   "obs": [
+    "Desactualizada: la fecha del dato no es del mes anterior."
+   ]
+  },
+  {
+   "cd": "CD-03",
+   "periodo": "2025-03",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "3e6350970fb27f7264432b9b576f4d2fc83899fa64b35bc98d04f0640855fc04",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%203/2025/3/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-03",
+   "periodo": "2025-04",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-03",
+   "periodo": "2025-05",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "76e93096315766fc76f14394a4d8fa252aaccc0215cc6f2d0b38c5c2cec29fc8",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%203/2025/5/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-03",
+   "periodo": "2025-06",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "1193fb54a2cd9e046b266a7cc78a76aff534cba7df23642559954f2c10ee3755",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%203/2025/6/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-03",
+   "periodo": "2025-07",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-03",
+   "periodo": "2025-08",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "2f8fba0e22208fc086ab87ba51bad4a27ffc6cd64697f3e8583ea5a45c4e4672",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%203/2025/8/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-03",
+   "periodo": "2025-09",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "d460d90ce831c03020a9abffa4af5fe22f242bbde429e7badf4424a8082f2e91",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%203/2025/9/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-03",
+   "periodo": "2025-10",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "090b4838cd6894b8939c4a03da13889eedf55a8db74c58ceff168a158ca9b417",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%203/2025/10/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-03",
+   "periodo": "2025-11",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "9ca410caa00a4023beb35fb6e90d4401bf0608cb73ff47c5ceb34d8cebca18ae",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%203/2025/11/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-03",
+   "periodo": "2025-12",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "33578f268c414105d4fb6d368a14ee63e66814065ab937bf752a7c42cad89771",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%203/2025/12/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-04",
+   "periodo": "2025-01",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "3566f3992a30fdd30d0c2f59723e26e36e8ffce1e04d930dd87b13aca9942142",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%204/2025/1/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-04",
+   "periodo": "2025-02",
+   "sita": 0.875,
+   "cta": 0.5,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "7e227062257b00ca84bf61fe37f79c0b82a2df1eb03b609d14df451c6a2f7dd6",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%204/2025/2/Conjunto%20de%20datos.csv",
+   "obs": [
+    "Desactualizada: la fecha del dato no es del mes anterior."
+   ]
+  },
+  {
+   "cd": "CD-04",
+   "periodo": "2025-03",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "4ebfa41db2d1201221703fb96e2ef091d5a4fee27002f64445b9a512c893483c",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%204/2025/3/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-04",
+   "periodo": "2025-04",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-04",
+   "periodo": "2025-05",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "a2b7c3bd4fd0e834c5e57799b4426c58cbd6c6ace0de814d61d06699266cd42b",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%204/2025/5/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-04",
+   "periodo": "2025-06",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "6265e331408141bc2259b6690f4e4719e28fcb0c958dae2da3bdfb9e6111e1f1",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%204/2025/6/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-04",
+   "periodo": "2025-07",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-04",
+   "periodo": "2025-08",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "6265e331408141bc2259b6690f4e4719e28fcb0c958dae2da3bdfb9e6111e1f1",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%204/2025/8/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-04",
+   "periodo": "2025-09",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "6265e331408141bc2259b6690f4e4719e28fcb0c958dae2da3bdfb9e6111e1f1",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%204/2025/9/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-04",
+   "periodo": "2025-10",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "6265e331408141bc2259b6690f4e4719e28fcb0c958dae2da3bdfb9e6111e1f1",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%204/2025/10/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-04",
+   "periodo": "2025-11",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "6265e331408141bc2259b6690f4e4719e28fcb0c958dae2da3bdfb9e6111e1f1",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%204/2025/11/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-04",
+   "periodo": "2025-12",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "443e79d2292a103b69c2736c401dd2570f277663cde5dabb9aecb3cef7f4188e",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%204/2025/12/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-05",
+   "periodo": "2025-01",
+   "sita": 0.875,
+   "cta": 0.5,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "19488cb21d77ccc7316c911a84171ef34c473280b3d46b0019ec21c581f91552",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%205-22/2025/1/Conjunto%20de%20datos.csv",
+   "obs": [
+    "Desactualizada: la fecha del dato no es del mes anterior."
+   ]
+  },
+  {
+   "cd": "CD-05",
+   "periodo": "2025-02",
+   "sita": 0.875,
+   "cta": 0.5,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "47fc412d92222e26cd8f307dd99e5f37e8cfa5af72abd6af5ec701ccbe9dadb3",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%205-22/2025/2/Conjunto%20de%20datos.csv",
+   "obs": [
+    "Desactualizada: la fecha del dato no es del mes anterior."
+   ]
+  },
+  {
+   "cd": "CD-05",
+   "periodo": "2025-03",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "366e8e5da109396294cf7d51caafdc0d439bb9bc7bb41cce5147b8cfa577e4e6",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%205-22/2025/3/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-05",
+   "periodo": "2025-04",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "bac6230d523bb534cc2b7a6d90c7c2801f66b41c01277861d98f6acfdff5be64",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%205-22/2025/4/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-05",
+   "periodo": "2025-05",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "e122c3e5a0da620d84668671584d75142dc52816df3405da4cb650674e3a2a70",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%205-22/2025/5/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-05",
+   "periodo": "2025-06",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "963eb1cb589897aebb5821cbc2f962e5c373b95ec6795f32f2a3a9fd584e989e",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%205-22/2025/6/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-05",
+   "periodo": "2025-07",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "3e620361ebef940be49c5340771a6b32c31e3225952b6dc5f8d4a36cefa96bc2",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%205-22/2025/7/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-05",
+   "periodo": "2025-08",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "5409e724866197ee50f548a3cd8ec7a24d0eacd89e13089a1527fe83bf4821e7",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%205-22/2025/8/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-05",
+   "periodo": "2025-09",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "f6be065866bb6089eae068c1a9a945ed33bed98b131cea55a544ae11f13ed0b9",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%205-22/2025/9/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-05",
+   "periodo": "2025-10",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "1a352de106222d4086a3042b485e95a838414f093aa1f623f746d44bba82e593",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%205-22/2025/10/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-05",
+   "periodo": "2025-11",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-05",
+   "periodo": "2025-12",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-06",
+   "periodo": "2025-01",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-06",
+   "periodo": "2025-02",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-06",
+   "periodo": "2025-03",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-06",
+   "periodo": "2025-04",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-06",
+   "periodo": "2025-05",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-06",
+   "periodo": "2025-06",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-06",
+   "periodo": "2025-07",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-06",
+   "periodo": "2025-08",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-06",
+   "periodo": "2025-09",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-06",
+   "periodo": "2025-10",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "e4585f7c44d7216b74d624b2aa836f62d60651ba588d631fbd1111cfbe8d3312",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%206/2025/10/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-06",
+   "periodo": "2025-11",
+   "sita": 0.875,
+   "cta": 0.5,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "ece1e0c3f3ace6d1997cc920042f7632b2b4c6d82e0181b40b27cc331b20fc1b",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%206/2025/11/Conjunto%20de%20datos.csv",
+   "obs": [
+    "Desactualizada: la fecha del dato no es del mes anterior."
+   ]
+  },
+  {
+   "cd": "CD-06",
+   "periodo": "2025-12",
+   "sita": 0.875,
+   "cta": 0.5,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "e1ae77cc438a3c023cbf22a2f23ddf22bba792b8e370fc9f0e67ec7264f395d6",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%206/2025/12/Conjunto%20de%20datos.csv",
+   "obs": [
+    "Desactualizada: la fecha del dato no es del mes anterior."
+   ]
+  },
+  {
+   "cd": "CD-07",
+   "periodo": "2025-01",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-07",
+   "periodo": "2025-02",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-07",
+   "periodo": "2025-03",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-07",
+   "periodo": "2025-04",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-07",
+   "periodo": "2025-05",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-07",
+   "periodo": "2025-06",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-07",
+   "periodo": "2025-07",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-07",
+   "periodo": "2025-08",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-07",
+   "periodo": "2025-09",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-07",
+   "periodo": "2025-10",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-07",
+   "periodo": "2025-11",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-07",
+   "periodo": "2025-12",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-08",
+   "periodo": "2025-01",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-08",
+   "periodo": "2025-02",
+   "sita": 0.75,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 0,
+   "ci": 1,
+   "sha256": "3e54df7e086b6f6b4c49442642fef0c9b1564b1da9c63eba89c374b072985477",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%208/2025/2/Conjunto%20de%20datos.csv",
+   "obs": [
+    "Registro fuera del plazo (posterior al día 15)."
+   ]
+  },
+  {
+   "cd": "CD-08",
+   "periodo": "2025-03",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-08",
+   "periodo": "2025-04",
+   "sita": 0.875,
+   "cta": 0.5,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "819c7a48836895e22d8d3717a0b799dec3d254567de06660a48b2a71cd34dc72",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%208/2025/4/Conjunto%20de%20datos.csv",
+   "obs": [
+    "Desactualizada: la fecha del dato no es del mes anterior."
+   ]
+  },
+  {
+   "cd": "CD-08",
+   "periodo": "2025-05",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-08",
+   "periodo": "2025-06",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-08",
+   "periodo": "2025-07",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-08",
+   "periodo": "2025-08",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-08",
+   "periodo": "2025-09",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "403d47b4130aca19db7d63690cb1bcd2c56058ad53c6e4957b5bbfa3f5895cfd",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%208/2025/9/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-08",
+   "periodo": "2025-10",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "5eb9c21081d63819d463a174e710b08f47b4c5cb2141bd9fb28b10712470afca",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%208/2025/10/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-08",
+   "periodo": "2025-11",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "a5152826fe1855f691375c04cb543432b3156f0f40673dd0e6bbf45e9ee33b51",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%208/2025/11/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-08",
+   "periodo": "2025-12",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "0a9b0cf5e8fca9cf4bb4e707c19f7f41f225d23e8b4a85996ebe763737ca2282",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%208/2025/12/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-09",
+   "periodo": "2025-01",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-09",
+   "periodo": "2025-02",
+   "sita": 0.875,
+   "cta": 0.5,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "f4372ecb1fbd9ce2b09a63648fd77752d74008f4d51bee373a88c620a7a2852a",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%209/2025/2/Conjunto%20de%20datos.csv",
+   "obs": [
+    "Desactualizada: la fecha del dato no es del mes anterior."
+   ]
+  },
+  {
+   "cd": "CD-09",
+   "periodo": "2025-03",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-09",
+   "periodo": "2025-04",
+   "sita": 0.875,
+   "cta": 0.5,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "4382f686aa11f0caf557ab31f9f85e95b7c5ac470211959376f83c760bd988ba",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%209/2025/4/Conjunto%20de%20datos.csv",
+   "obs": [
+    "Desactualizada: la fecha del dato no es del mes anterior."
+   ]
+  },
+  {
+   "cd": "CD-09",
+   "periodo": "2025-05",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-09",
+   "periodo": "2025-06",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-09",
+   "periodo": "2025-07",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-09",
+   "periodo": "2025-08",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "8314d757551146a28336269f5bb2d23470a95c8d0ba70d55ced55d9910bd3ebb",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%209/2025/8/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-09",
+   "periodo": "2025-09",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-09",
+   "periodo": "2025-10",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "8314d757551146a28336269f5bb2d23470a95c8d0ba70d55ced55d9910bd3ebb",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%209/2025/10/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-09",
+   "periodo": "2025-11",
+   "sita": 0.875,
+   "cta": 0.5,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "8314d757551146a28336269f5bb2d23470a95c8d0ba70d55ced55d9910bd3ebb",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%209/2025/11/Conjunto%20de%20datos.csv",
+   "obs": [
+    "Desactualizada: la fecha del dato no es del mes anterior."
+   ]
+  },
+  {
+   "cd": "CD-09",
+   "periodo": "2025-12",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "ec739cb181625102f2c70fd18f96cff4e73c13b66b848396dd6ffd83457bc476",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%209/2025/12/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-10",
+   "periodo": "2025-01",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-10",
+   "periodo": "2025-02",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-10",
+   "periodo": "2025-03",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-10",
+   "periodo": "2025-04",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-10",
+   "periodo": "2025-05",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-10",
+   "periodo": "2025-06",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-10",
+   "periodo": "2025-07",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-10",
+   "periodo": "2025-08",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-10",
+   "periodo": "2025-09",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-10",
+   "periodo": "2025-10",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-10",
+   "periodo": "2025-11",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-10",
+   "periodo": "2025-12",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-11",
+   "periodo": "2025-01",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-11",
+   "periodo": "2025-02",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-11",
+   "periodo": "2025-03",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-11",
+   "periodo": "2025-04",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-11",
+   "periodo": "2025-05",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-11",
+   "periodo": "2025-06",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-11",
+   "periodo": "2025-07",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-11",
+   "periodo": "2025-08",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-11",
+   "periodo": "2025-09",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-11",
+   "periodo": "2025-10",
+   "sita": 0.875,
+   "cta": 0.5,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "4fd10fbb738f8d028a4d70d1a9e2af8d2301d68023967e29cd9ac24d236c55d1",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2011/2025/10/Conjunto%20de%20datos.csv",
+   "obs": [
+    "Desactualizada: la fecha del dato no es del mes anterior."
+   ]
+  },
+  {
+   "cd": "CD-11",
+   "periodo": "2025-11",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-11",
+   "periodo": "2025-12",
+   "sita": 0.875,
+   "cta": 0.5,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "73fec0bc3a8c19d91fcdcf82d08eb3e8599e726cb76e0b65f80ac420a059538f",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2011/2025/12/Conjunto%20de%20datos.csv",
+   "obs": [
+    "Desactualizada: la fecha del dato no es del mes anterior."
+   ]
+  },
+  {
+   "cd": "CD-12",
+   "periodo": "2025-01",
+   "sita": 0.75,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 0,
+   "ci": 1,
+   "sha256": "07a449f410fc668ddc24370640a787e4e6464105d76f8507d2eeddc78fcf6c9c",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2012/2025/1/Conjunto%20de%20datos.csv",
+   "obs": [
+    "Registro fuera del plazo (posterior al día 15)."
+   ]
+  },
+  {
+   "cd": "CD-12",
+   "periodo": "2025-02",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "f58459b9da6b0180605478e7f8274d2f74f7a12d6fb77b55c0dd50a8bd28c235",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2012/2025/2/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-12",
+   "periodo": "2025-03",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-12",
+   "periodo": "2025-04",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-12",
+   "periodo": "2025-05",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-12",
+   "periodo": "2025-06",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-12",
+   "periodo": "2025-07",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-12",
+   "periodo": "2025-08",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-12",
+   "periodo": "2025-09",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-12",
+   "periodo": "2025-10",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-12",
+   "periodo": "2025-11",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-12",
+   "periodo": "2025-12",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-13",
+   "periodo": "2025-01",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-13",
+   "periodo": "2025-02",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-13",
+   "periodo": "2025-03",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-13",
+   "periodo": "2025-04",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-13",
+   "periodo": "2025-05",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-13",
+   "periodo": "2025-06",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-13",
+   "periodo": "2025-07",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-13",
+   "periodo": "2025-08",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-13",
+   "periodo": "2025-09",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-13",
+   "periodo": "2025-10",
+   "sita": 0.875,
+   "cta": 0.5,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "dfc9c7e9cb8ba58471d36f992caf8e12ce7d30aa076923201985618324ff9d42",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2013/2025/10/Conjunto%20de%20datos.csv",
+   "obs": [
+    "Desactualizada: la fecha del dato no es del mes anterior."
+   ]
+  },
+  {
+   "cd": "CD-13",
+   "periodo": "2025-11",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-13",
+   "periodo": "2025-12",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-14",
+   "periodo": "2025-01",
+   "sita": 0.875,
+   "cta": 0.5,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "95afc32af17b3ed20e63b0fd6426240a65f67bf5fec03bb7e68ad05131140e0a",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2014/2025/1/Conjunto%20de%20datos.csv",
+   "obs": [
+    "Desactualizada: la fecha del dato no es del mes anterior."
+   ]
+  },
+  {
+   "cd": "CD-14",
+   "periodo": "2025-02",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-14",
+   "periodo": "2025-03",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "fbf0218a7dcc54bf2636ba1755b277e1c36a469e9ec933bd913a18b49e14db0f",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2014/2025/3/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-14",
+   "periodo": "2025-04",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "ac0fdee336e70d3ab50914dff521dd16430f8712efde19ac01a5c40684df70d6",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2014/2025/4/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-14",
+   "periodo": "2025-05",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "ac0fdee336e70d3ab50914dff521dd16430f8712efde19ac01a5c40684df70d6",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2014/2025/5/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-14",
+   "periodo": "2025-06",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "ac0fdee336e70d3ab50914dff521dd16430f8712efde19ac01a5c40684df70d6",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2014/2025/6/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-14",
+   "periodo": "2025-07",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "ac0fdee336e70d3ab50914dff521dd16430f8712efde19ac01a5c40684df70d6",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2014/2025/7/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-14",
+   "periodo": "2025-08",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "ac0fdee336e70d3ab50914dff521dd16430f8712efde19ac01a5c40684df70d6",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2014/2025/8/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-14",
+   "periodo": "2025-09",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "ac0fdee336e70d3ab50914dff521dd16430f8712efde19ac01a5c40684df70d6",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2014/2025/9/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-14",
+   "periodo": "2025-10",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "ac0fdee336e70d3ab50914dff521dd16430f8712efde19ac01a5c40684df70d6",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2014/2025/10/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-14",
+   "periodo": "2025-11",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-14",
+   "periodo": "2025-12",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-15",
+   "periodo": "2025-01",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "e1d5499a4cc0ffd1d1de85ee28b9d47cf1f68bf4cdf91e7524f6c3410978b438",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2015/2025/1/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-15",
+   "periodo": "2025-02",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-15",
+   "periodo": "2025-03",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "dd86b35c26a0220ba7283ca624115242b02ce56a629f435923859ace8c70059a",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2015/2025/3/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-15",
+   "periodo": "2025-04",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "dd86b35c26a0220ba7283ca624115242b02ce56a629f435923859ace8c70059a",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2015/2025/4/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-15",
+   "periodo": "2025-05",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "dd86b35c26a0220ba7283ca624115242b02ce56a629f435923859ace8c70059a",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2015/2025/5/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-15",
+   "periodo": "2025-06",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "dd86b35c26a0220ba7283ca624115242b02ce56a629f435923859ace8c70059a",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2015/2025/6/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-15",
+   "periodo": "2025-07",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "dd86b35c26a0220ba7283ca624115242b02ce56a629f435923859ace8c70059a",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2015/2025/7/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-15",
+   "periodo": "2025-08",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "dd86b35c26a0220ba7283ca624115242b02ce56a629f435923859ace8c70059a",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2015/2025/8/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-15",
+   "periodo": "2025-09",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "dd86b35c26a0220ba7283ca624115242b02ce56a629f435923859ace8c70059a",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2015/2025/9/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-15",
+   "periodo": "2025-10",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-15",
+   "periodo": "2025-11",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "dd86b35c26a0220ba7283ca624115242b02ce56a629f435923859ace8c70059a",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2015/2025/11/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-15",
+   "periodo": "2025-12",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "fca29780cc7f987afeb4ac833247d23685390a501cde07139fc02c5172a65dd1",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2015/2025/12/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-16",
+   "periodo": "2025-12",
+   "sita": 0.875,
+   "cta": 0.5,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "390c1f67923dcb1bf638c03178fe107b5fe9a621d2c811466e24eb6c24a76a6c",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2016/2025/3/Conjunto%20de%20datos.csv",
+   "obs": [
+    "Desactualizada: la fecha del dato no es del mes anterior."
+   ]
+  },
+  {
+   "cd": "CD-17",
+   "periodo": "2025-01",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-17",
+   "periodo": "2025-02",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-17",
+   "periodo": "2025-03",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "de2c63843993674928a99bcc84da32afe1f82b5ce2e2e4cfaabc83f9569e628a",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2017/2025/3/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-17",
+   "periodo": "2025-04",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "7b9eb48d9cfef1dc1d803a7322c44715ecad3aa502c0ff8629828b04d0c2d0cc",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2017/2025/4/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-17",
+   "periodo": "2025-05",
+   "sita": 0.75,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 0,
+   "sha256": "d01d27732907b3992c1d16da584cf717ca0143a353659a2908bc35c5d8513e17",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2017/2025/5/Conjunto%20de%20datos.csv",
+   "obs": [
+    "Calidad: enlace roto, fuera de vigencia o valores incoherentes."
+   ]
+  },
+  {
+   "cd": "CD-17",
+   "periodo": "2025-06",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "032593a23be1b7f0f1aaab1372e5cdb6fee15b12747a1fa195a51b63de55d33b",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2017/2025/6/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-17",
+   "periodo": "2025-07",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "343f2cdd72b150d405dc2a2f9f42176164e6e3a99eead892b317bf78e5dc1e43",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2017/2025/7/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-17",
+   "periodo": "2025-08",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "02770ecbc55849cc9092e6aca64075f0359a42bcf01b78b21a6bece3d8450ef6",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2017/2025/8/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-17",
+   "periodo": "2025-09",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "cc4fb225bb0562e7f17e9b18a6e704407360e2e5c7624f74162591d713c7dfe4",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2017/2025/9/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-17",
+   "periodo": "2025-10",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "6ecb246a8f83c13289ce681328278b4b51fd4a2f41365700e8f1029dfc0f3b20",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2017/2025/10/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-17",
+   "periodo": "2025-11",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-17",
+   "periodo": "2025-12",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-18",
+   "periodo": "2025-06",
+   "sita": 0.875,
+   "cta": 0.5,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "5ba8a47e308604e245d9f1c18debe608439c593bf2c6ab7bc28fe34d92a410ff",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2018/2025/1/Conjunto%20de%20datos.csv",
+   "obs": [
+    "Desactualizada: la fecha del dato no es del mes anterior."
+   ]
+  },
+  {
+   "cd": "CD-18",
+   "periodo": "2025-12",
+   "sita": 0.875,
+   "cta": 0.5,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "d4ae6f77505472528e9b9ca8e062f81799dcaaeb1bd9165a9abdcb6e5ba902ec",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2018/2025/7/Conjunto%20de%20datos.csv",
+   "obs": [
+    "Desactualizada: la fecha del dato no es del mes anterior."
+   ]
+  },
+  {
+   "cd": "CD-19",
+   "periodo": "2025-01",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-19",
+   "periodo": "2025-02",
+   "sita": 0.875,
+   "cta": 0.5,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "32af51810d79a68d75add67627568d88820523d1ce1cfe468ea06dcb845bc232",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2019/2025/2/Conjunto%20de%20datos.csv",
+   "obs": [
+    "Desactualizada: la fecha del dato no es del mes anterior."
+   ]
+  },
+  {
+   "cd": "CD-19",
+   "periodo": "2025-03",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-19",
+   "periodo": "2025-04",
+   "sita": 0.875,
+   "cta": 0.5,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "32af51810d79a68d75add67627568d88820523d1ce1cfe468ea06dcb845bc232",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2019/2025/4/Conjunto%20de%20datos.csv",
+   "obs": [
+    "Desactualizada: la fecha del dato no es del mes anterior."
+   ]
+  },
+  {
+   "cd": "CD-19",
+   "periodo": "2025-05",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-19",
+   "periodo": "2025-06",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-19",
+   "periodo": "2025-07",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-19",
+   "periodo": "2025-08",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-19",
+   "periodo": "2025-09",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-19",
+   "periodo": "2025-10",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-19",
+   "periodo": "2025-11",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "32af51810d79a68d75add67627568d88820523d1ce1cfe468ea06dcb845bc232",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2019/2025/11/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-19",
+   "periodo": "2025-12",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "aa8002d6f7f63832e515a945b41113c345577cff0565aec7dd55f908f22533dd",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2019/2025/12/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-20",
+   "periodo": "2025-01",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-20",
+   "periodo": "2025-02",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-20",
+   "periodo": "2025-03",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "ab1fe1fbf01defc0ac4f96aaecfbab1744b0070bb0a5e59c11e2ecd13e4a2ff6",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2020/2025/3/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-20",
+   "periodo": "2025-04",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "2d9b04513de479d49b176a873c1cab5a8874af18e31b182284c6893b13989a04",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2020/2025/4/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-20",
+   "periodo": "2025-05",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "2d9b04513de479d49b176a873c1cab5a8874af18e31b182284c6893b13989a04",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2020/2025/5/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-20",
+   "periodo": "2025-06",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "2d9b04513de479d49b176a873c1cab5a8874af18e31b182284c6893b13989a04",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2020/2025/6/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-20",
+   "periodo": "2025-07",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "2d9b04513de479d49b176a873c1cab5a8874af18e31b182284c6893b13989a04",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2020/2025/7/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-20",
+   "periodo": "2025-08",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "2d9b04513de479d49b176a873c1cab5a8874af18e31b182284c6893b13989a04",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2020/2025/8/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-20",
+   "periodo": "2025-09",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "2d9b04513de479d49b176a873c1cab5a8874af18e31b182284c6893b13989a04",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2020/2025/9/Conjunto%20de%20datos.csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-20",
+   "periodo": "2025-10",
+   "sita": 0.875,
+   "cta": 0.5,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "2d9b04513de479d49b176a873c1cab5a8874af18e31b182284c6893b13989a04",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2020/2025/10/Conjunto%20de%20datos.csv",
+   "obs": [
+    "Desactualizada: la fecha del dato no es del mes anterior."
+   ]
+  },
+  {
+   "cd": "CD-20",
+   "periodo": "2025-11",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-20",
+   "periodo": "2025-12",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-21",
+   "periodo": "2025-03",
+   "sita": 0.625,
+   "cta": 0.5,
+   "eta": 1,
+   "rp": 0,
+   "ci": 1,
+   "sha256": "40829ced389ec57523283d4bc2cded87976302c1cf6f351f8e4beabac34f12e7",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2021/2025/1/Conjunto%20de%20datos.csv",
+   "obs": [
+    "Desactualizada: la fecha del dato no es del mes anterior.",
+    "Registro fuera del plazo (posterior al día 15)."
+   ]
+  },
+  {
+   "cd": "CD-21",
+   "periodo": "2025-TRI2",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-21",
+   "periodo": "2025-TRI3",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-21",
+   "periodo": "2025-TRI4",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-23",
+   "periodo": "2025-03",
+   "sita": 0.875,
+   "cta": 0.5,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "85b587e13eb9142e6d226afe46fed257abcab66e5171bb6fd3a8a5524c21e9d7",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2023/2025/1/Conjunto%20de%20datos.csv",
+   "obs": [
+    "Desactualizada: la fecha del dato no es del mes anterior."
+   ]
+  },
+  {
+   "cd": "CD-23",
+   "periodo": "2025-06",
+   "sita": 0.875,
+   "cta": 0.5,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "7be0f6966e24acb53402ee4295d5779ef0a2a3bb5cc246e4b1ec2081a6fc92e2",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2023/2025/5/Conjunto%20de%20datos.csv",
+   "obs": [
+    "Desactualizada: la fecha del dato no es del mes anterior."
+   ]
+  },
+  {
+   "cd": "CD-23",
+   "periodo": "2025-09",
+   "sita": 0.875,
+   "cta": 0.5,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "7be0f6966e24acb53402ee4295d5779ef0a2a3bb5cc246e4b1ec2081a6fc92e2",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2023/2025/8/Conjunto%20de%20datos.csv",
+   "obs": [
+    "Desactualizada: la fecha del dato no es del mes anterior."
+   ]
+  },
+  {
+   "cd": "CD-23",
+   "periodo": "2025-12",
+   "sita": 0.875,
+   "cta": 0.5,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "7be0f6966e24acb53402ee4295d5779ef0a2a3bb5cc246e4b1ec2081a6fc92e2",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2023/2025/10/Conjunto%20de%20datos.csv",
+   "obs": [
+    "Desactualizada: la fecha del dato no es del mes anterior."
+   ]
+  },
+  {
+   "cd": "CD-24",
+   "periodo": "2025-12",
+   "sita": 0.625,
+   "cta": 0.5,
+   "eta": 1,
+   "rp": 0,
+   "ci": 1,
+   "sha256": "fec51b50e58b1e6a10027d6f0c4160a7c469456f30e0f49d1989fd7c880ae7ee",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Numeral%2024/2025/1/Conjunto%20de%20datos.csv",
+   "obs": [
+    "Desactualizada: la fecha del dato no es del mes anterior.",
+    "Registro fuera del plazo (posterior al día 15)."
+   ]
+  },
+  {
+   "cd": "CD-A24",
+   "periodo": "2025-01",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-A24",
+   "periodo": "2025-02",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-A24",
+   "periodo": "2025-03",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "f385c13126a3b82b98e53868d290f760eb2248f379cdb878778a0300c43aa889",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Art.%2024%20Gobiernos%20Auto%CC%81nomos%20Descentralizados/2025/3/1.%20Conjunto%20de%20datos%20(Resoluciones).csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-A24",
+   "periodo": "2025-04",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "870a9b4bc975e9c1a1c0cc34cc05c741c5c909a1f9397c8a7a050cf1b742a818",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Art.%2024%20Gobiernos%20Auto%CC%81nomos%20Descentralizados/2025/4/2.%20Conjunto%20de%20datos%20(Actas).csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-A24",
+   "periodo": "2025-05",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "73893eb103ddd7c07fffba302d06610d95f835e72e1d08303b43fec1f0f80e2e",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Art.%2024%20Gobiernos%20Auto%CC%81nomos%20Descentralizados/2025/5/1.%20Conjunto%20de%20datos%20(Resoluciones).csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-A24",
+   "periodo": "2025-06",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "5e7dba1a4bc05d6d292886de2fcd62f4294910666bcd95f7caa5c887c64764fd",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Art.%2024%20Gobiernos%20Auto%CC%81nomos%20Descentralizados/2025/6/2.%20Conjunto%20de%20datos%20(Actas).csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-A24",
+   "periodo": "2025-07",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "2f86d913c94cedbfe45ecc93ef9c3fe75c89707d22e3ad5f73e7ddce415d5ecc",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Art.%2024%20Gobiernos%20Auto%CC%81nomos%20Descentralizados/2025/7/1.%20Conjunto%20de%20datos%20(Resoluciones).csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-A24",
+   "periodo": "2025-08",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "486e84bc26c191a405a1c0ee16e8bfcaa1e6f901809ddade110dfb33e6bde021",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Art.%2024%20Gobiernos%20Auto%CC%81nomos%20Descentralizados/2025/8/1.%20Conjunto%20de%20datos%20(Resoluciones).csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-A24",
+   "periodo": "2025-09",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "201d7e85bb1a37aadb8aa6af63795f2dd46a35f1ea9ef7fb6ad3baf60940ea06",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Art.%2024%20Gobiernos%20Auto%CC%81nomos%20Descentralizados/2025/9/1.%20Conjunto%20de%20datos%20(Resoluciones).csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-A24",
+   "periodo": "2025-10",
+   "sita": 1.0,
+   "cta": 1.0,
+   "eta": 1,
+   "rp": 1,
+   "ci": 1,
+   "sha256": "92e7a05fa7e97ba0160ee70764349d70dc2408c3a1fd8fc4a42ddd7718707b20",
+   "url": "https://transparencia.dpe.gob.ec/backend/v1/transparency/media/transparencia/1360001010001/Art.%2024%20Gobiernos%20Auto%CC%81nomos%20Descentralizados/2025/10/2.%20Conjunto%20de%20datos%20(Actas).csv",
+   "obs": []
+  },
+  {
+   "cd": "CD-A24",
+   "periodo": "2025-11",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  },
+  {
+   "cd": "CD-A24",
+   "periodo": "2025-12",
+   "sita": 0.0,
+   "cta": 0.0,
+   "eta": 0,
+   "rp": 0,
+   "ci": 0,
+   "sha256": null,
+   "url": null,
+   "obs": [
+    "Sin información: el conjunto no está publicado en el portal."
+   ]
+  }
+ ],
+ "hallazgos": [
+  {
+   "tipo": "temporalidad",
+   "nivel": "no_determinable",
+   "cd": "CD-01",
+   "periodo": "2025",
+   "razon": "periodicidad declarada por sub-numeral",
+   "meses_con_publicacion": []
+  },
+  {
+   "tipo": "temporalidad",
+   "nivel": "hallazgo_verificable",
+   "cd": "CD-02",
+   "periodo": "2025",
+   "cadencia": "mensual",
+   "razon_cadencia": "cadencia única",
+   "periodos_exigidos": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "periodos_faltantes": [
+    4,
+    7
+   ],
+   "meses_con_publicacion": [
+    1,
+    2,
+    3,
+    5,
+    6,
+    8,
+    9,
+    10,
+    11,
+    12
+   ]
+  },
+  {
+   "tipo": "temporalidad",
+   "nivel": "no_determinable",
+   "cd": "CD-03",
+   "periodo": "2025",
+   "razon": "la guía no declara periodicidad de contenidos",
+   "meses_con_publicacion": [
+    1,
+    2,
+    3,
+    5,
+    6,
+    8,
+    9,
+    10,
+    11,
+    12
+   ]
+  },
+  {
+   "tipo": "temporalidad",
+   "nivel": "hallazgo_verificable",
+   "cd": "CD-04",
+   "periodo": "2025",
+   "cadencia": "mensual",
+   "razon_cadencia": "cadencia única",
+   "periodos_exigidos": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "periodos_faltantes": [
+    4,
+    7
+   ],
+   "meses_con_publicacion": [
+    1,
+    2,
+    3,
+    5,
+    6,
+    8,
+    9,
+    10,
+    11,
+    12
+   ]
+  },
+  {
+   "tipo": "temporalidad",
+   "nivel": "hallazgo_verificable",
+   "cd": "CD-05",
+   "periodo": "2025",
+   "cadencia": "mensual",
+   "razon_cadencia": "cadencia única",
+   "periodos_exigidos": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "periodos_faltantes": [
+    11,
+    12
+   ],
+   "meses_con_publicacion": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ]
+  },
+  {
+   "tipo": "cobertura_material",
+   "nivel": "hallazgo_verificable",
+   "cd": "CD-06",
+   "periodo": "2025-10",
+   "componente": "Ingresos",
+   "detalle": {
+    "estado": "no_hallado",
+    "filas": 0,
+    "prueba": "códigos del clasificador que empiezan en 1/2",
+    "observado": {
+     "5": 58,
+     "7": 70,
+     "8": 5,
+     "9": 4
+    },
+    "fundamento": "la obligación remite a los clasificadores presupuestales"
+   },
+   "nota": "el canon exige esta dimensión y la evidencia no la acredita. NO equivale a incumplimiento: la calificación normativa la decide el motor jurídico."
+  },
+  {
+   "tipo": "cobertura_material",
+   "nivel": "hallazgo_verificable",
+   "cd": "CD-06",
+   "periodo": "2025-11",
+   "componente": "Ingresos",
+   "detalle": {
+    "estado": "no_hallado",
+    "filas": 0,
+    "prueba": "códigos del clasificador que empiezan en 1/2",
+    "observado": {
+     "5": 59,
+     "7": 71,
+     "8": 5,
+     "9": 4
+    },
+    "fundamento": "la obligación remite a los clasificadores presupuestales"
+   },
+   "nota": "el canon exige esta dimensión y la evidencia no la acredita. NO equivale a incumplimiento: la calificación normativa la decide el motor jurídico."
+  },
+  {
+   "tipo": "cobertura_material",
+   "nivel": "hallazgo_verificable",
+   "cd": "CD-06",
+   "periodo": "2025-12",
+   "componente": "Ingresos",
+   "detalle": {
+    "estado": "no_hallado",
+    "filas": 0,
+    "prueba": "códigos del clasificador que empiezan en 1/2",
+    "observado": {
+     "5": 59,
+     "7": 71,
+     "8": 5,
+     "9": 4
+    },
+    "fundamento": "la obligación remite a los clasificadores presupuestales"
+   },
+   "nota": "el canon exige esta dimensión y la evidencia no la acredita. NO equivale a incumplimiento: la calificación normativa la decide el motor jurídico."
+  },
+  {
+   "tipo": "temporalidad",
+   "nivel": "hallazgo_verificable",
+   "cd": "CD-06",
+   "periodo": "2025",
+   "cadencia": "mensual",
+   "razon_cadencia": "cadencia única",
+   "periodos_exigidos": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "periodos_faltantes": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "meses_con_publicacion": [
+    10,
+    11,
+    12
+   ]
+  },
+  {
+   "tipo": "temporalidad",
+   "nivel": "sin_publicacion_alguna",
+   "cd": "CD-07",
+   "periodo": "2025",
+   "cadencia": "mensual",
+   "razon_cadencia": "cadencia única",
+   "periodos_exigidos": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "periodos_faltantes": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "meses_con_publicacion": []
+  },
+  {
+   "tipo": "temporalidad",
+   "nivel": "hallazgo_verificable",
+   "cd": "CD-08",
+   "periodo": "2025",
+   "cadencia": "mensual",
+   "razon_cadencia": "cadencia única",
+   "periodos_exigidos": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "periodos_faltantes": [
+    1,
+    3,
+    5,
+    6,
+    7,
+    8
+   ],
+   "meses_con_publicacion": [
+    2,
+    4,
+    9,
+    10,
+    11,
+    12
+   ]
+  },
+  {
+   "tipo": "temporalidad",
+   "nivel": "hallazgo_verificable",
+   "cd": "CD-09",
+   "periodo": "2025",
+   "cadencia": "mensual",
+   "razon_cadencia": "cadencia única",
+   "periodos_exigidos": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "periodos_faltantes": [
+    1,
+    3,
+    5,
+    6,
+    7,
+    9
+   ],
+   "meses_con_publicacion": [
+    2,
+    4,
+    8,
+    10,
+    11,
+    12
+   ]
+  },
+  {
+   "tipo": "temporalidad",
+   "nivel": "sin_publicacion_alguna",
+   "cd": "CD-10",
+   "periodo": "2025",
+   "cadencia": "mensual",
+   "razon_cadencia": "cadencia única",
+   "periodos_exigidos": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "periodos_faltantes": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "meses_con_publicacion": []
+  },
+  {
+   "tipo": "temporalidad",
+   "nivel": "hallazgo_verificable",
+   "cd": "CD-11",
+   "periodo": "2025",
+   "cadencia": "mensual",
+   "razon_cadencia": "cadencia única",
+   "periodos_exigidos": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "periodos_faltantes": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    11
+   ],
+   "meses_con_publicacion": [
+    10,
+    12
+   ]
+  },
+  {
+   "tipo": "temporalidad",
+   "nivel": "no_determinable",
+   "cd": "CD-12",
+   "periodo": "2025",
+   "razon": "la guía no declara periodicidad de contenidos",
+   "meses_con_publicacion": [
+    1,
+    2
+   ]
+  },
+  {
+   "tipo": "temporalidad",
+   "nivel": "hallazgo_verificable",
+   "cd": "CD-13",
+   "periodo": "2025",
+   "cadencia": "mensual",
+   "razon_cadencia": "cadencia única",
+   "periodos_exigidos": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "periodos_faltantes": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    11,
+    12
+   ],
+   "meses_con_publicacion": [
+    10
+   ]
+  },
+  {
+   "tipo": "temporalidad",
+   "nivel": "hallazgo_verificable",
+   "cd": "CD-14",
+   "periodo": "2025",
+   "cadencia": "mensual",
+   "razon_cadencia": "cadencia única",
+   "periodos_exigidos": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "periodos_faltantes": [
+    2,
+    11,
+    12
+   ],
+   "meses_con_publicacion": [
+    1,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ]
+  },
+  {
+   "tipo": "temporalidad",
+   "nivel": "hallazgo_verificable",
+   "cd": "CD-15",
+   "periodo": "2025",
+   "cadencia": "mensual",
+   "razon_cadencia": "cadencia única",
+   "periodos_exigidos": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "periodos_faltantes": [
+    2,
+    10
+   ],
+   "meses_con_publicacion": [
+    1,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    11,
+    12
+   ]
+  },
+  {
+   "tipo": "temporalidad",
+   "nivel": "hallazgo_verificable",
+   "cd": "CD-17",
+   "periodo": "2025",
+   "cadencia": "mensual",
+   "razon_cadencia": "cadencia única",
+   "periodos_exigidos": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "periodos_faltantes": [
+    1,
+    2,
+    11,
+    12
+   ],
+   "meses_con_publicacion": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ]
+  },
+  {
+   "tipo": "temporalidad",
+   "nivel": "hallazgo_verificable",
+   "cd": "CD-19",
+   "periodo": "2025",
+   "cadencia": "mensual",
+   "razon_cadencia": "cadencia única",
+   "periodos_exigidos": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "periodos_faltantes": [
+    1,
+    3,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "meses_con_publicacion": [
+    2,
+    4,
+    11,
+    12
+   ]
+  },
+  {
+   "tipo": "temporalidad",
+   "nivel": "hallazgo_verificable",
+   "cd": "CD-20",
+   "periodo": "2025",
+   "cadencia": "mensual",
+   "razon_cadencia": "cadencia única",
+   "periodos_exigidos": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "periodos_faltantes": [
+    1,
+    2,
+    11,
+    12
+   ],
+   "meses_con_publicacion": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ]
+  },
+  {
+   "tipo": "temporalidad",
+   "nivel": "hallazgo_verificable",
+   "cd": "CD-21",
+   "periodo": "2025",
+   "cadencia": "trimestral",
+   "razon_cadencia": "cadencia única",
+   "periodos_exigidos": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "periodos_faltantes": [
+    2,
+    3,
+    4
+   ],
+   "meses_con_publicacion": [
+    1
+   ]
+  },
+  {
+   "tipo": "temporalidad",
+   "nivel": "hallazgo_verificable",
+   "cd": "CD-A24",
+   "periodo": "2025",
+   "cadencia": "mensual",
+   "razon_cadencia": "cadencia única",
+   "periodos_exigidos": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "periodos_faltantes": [
+    1,
+    2,
+    11,
+    12
+   ],
+   "meses_con_publicacion": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ]
+  }
+ ],
+ "ejecutado": "2026-08-18T08:14:43",
+ "sin_ia": true
+}

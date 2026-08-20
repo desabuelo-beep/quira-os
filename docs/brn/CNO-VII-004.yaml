@@ -1,0 +1,139 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# CNO-VII-004 · Obligación de Difusión y Capacitación en Acceso a la Información
+#
+# POR QUÉ EXISTE (2026-08-18). Apareció al leer el Reglamento completo, que hasta ese día
+# nadie había abierto en este proyecto. El art. 10 impone una obligación concreta, contable y
+# que ningún monitoreo estaba mirando:
+#
+#     «Los programas de difusión y capacitación dirigidos a promocionar el derecho de acceso
+#      a la información pública deberán ser realizados por los sujetos obligados POR LO MENOS
+#      TRES VECES AL AÑO.»
+#
+# Es la obligación más fácil de verificar de todo el dominio —una cuenta al año— y estaba
+# completamente fuera del radar. Javo lo había advertido en general: *«No tomamos una porción
+# pequeña de ley y las metodologías para operativizar; eso es mentir, esconder la verdad.»*
+#
+# QUÉ LA HACE DISTINTA DE LAS TRES ANTERIORES. Las otras cadenas observan INFORMACIÓN: qué se
+# publica, con qué campos, en qué plazo. Ésta observa una ACTIVIDAD: que la entidad enseñe a
+# la ciudadanía y a sus propios servidores cómo ejercer el derecho. Su evidencia no es un
+# conjunto de datos sino un registro de actos —convocatorias, listas de asistencia, informes—,
+# y por eso su punto de verificación natural no es el portal de datos abiertos.
+#
+# Y hay una razón de fondo para no omitirla: un sujeto obligado puede publicar impecablemente
+# los 24 numerales y aun así mantener a su población sin saber que ese derecho existe. La
+# transparencia que nadie sabe ejercer es una forma silenciosa de opacidad.
+#
+# LÍMITE DECLARADO DE ENTRADA. La evidencia de esta obligación **no está en el portal de la
+# DPE**: no hay un numeral del art. 19 que la recoja. Se modela igualmente —la obligación
+# existe— pero su verificación exigirá otra fuente, y mientras no la haya el estado correcto
+# es `no_observable`, nunca «no cumple».
+#
+# ESTADO: PROPUESTA — pendiente de aprobación formal de Javo (ADR-035 §5).
+# ═══════════════════════════════════════════════════════════════════════════════
+id: CNO-VII-004
+authority:
+  parent: GOVERNANCE-001
+  constitution_articles: [1, 2, 3, 9]
+  type: NORMATIVA
+version: "1.0"
+titulo: Obligación de Difusión y Capacitación en el Derecho de Acceso a la Información
+objeto: >-
+  el deber de los sujetos obligados de realizar programas de difusión y capacitación sobre el
+  derecho de acceso a la información pública, al menos tres veces al año, dirigidos tanto a
+  sus servidores como a las personas a las que sirven.
+dominio_normativo: transparencia_y_acceso_a_la_informacion
+
+# ── La cadena · puro Derecho · SHA por eslabón (Regla 3) ──────────────────────────
+# Verificada contra el corpus vigente el 2026-08-18.
+#
+# NOTA DE MÉTODO: la cadena es CORTA a propósito. Se buscaron eslabones adicionales en la
+# LOTAIP sobre capacitación y sólo aparecieron referencias a las atribuciones del órgano
+# rector (art. 13) y a disposiciones transitorias — ninguna impone el deber al sujeto
+# obligado. La obligación la crea el Reglamento, y así se declara. Alargar la cadena con
+# artículos que no la sostienen sería aparentar fundamento donde hay uno solo, que es
+# suficiente.
+cadena:
+  - rol: fundamento_constitucional
+    norma: CE
+    articulo: "18"
+    sha256: 848f507bcaf4
+    sumilla: "derecho a acceder libremente a la información generada en entidades públicas"
+
+  - rol: derecho
+    norma: LOTAIP
+    articulo: "7"
+    sha256: c00cfe8b0841
+    sumilla: "derecho de acceso a la información pública, sin necesidad de justificar su uso"
+
+  - rol: obligacion_marco
+    norma: LOTAIP
+    articulo: "9"
+    sha256: "9651406f7059"
+    sumilla: >-
+      obligaciones de los sujetos obligados: promover, garantizar y difundir el derecho de
+      acceso a la información pública
+
+  - rol: obligacion_central
+    norma: RLOTAIP
+    articulo: "10"
+    sha256: 9b6f9c43b1de
+    sumilla: >-
+      programas de difusión y capacitación al menos TRES VECES AL AÑO, dirigidos a las y los
+      servidores de la institución y a las personas a las que sirve; en la planificación se
+      considerará primordialmente a las y los servidores de carrera
+
+  - rol: acompanamiento_del_rector
+    norma: LOTAIP
+    articulo: "13"
+    sha256: 8af16cd0515d
+    sumilla: >-
+      atribuciones de la Defensoría del Pueblo — acompaña aleatoriamente estas actividades
+      (RLOTAIP art. 10, inciso final)
+
+  - rol: consecuencia
+    norma: LOTAIP
+    articulo: "42"
+    sha256: ae8004ee019f
+    sumilla: "sanciones administrativas por el incumplimiento de las obligaciones de la ley"
+
+# ── Estado y ciclo de vida ────────────────────────────────────────────────────────
+estado: propuesta
+vigencia:
+  desde: "2024-01-24"             # Reglamento General · Decreto 124 · R.O. Suplemento 484
+  hasta: null
+derogaciones:
+  reemplaza_a: null
+  reemplazada_por: null
+
+# ── Dependencias (MDN · bidireccional) ────────────────────────────────────────────
+deriva_ro:
+  - RO-VII-005                    # frecuencia mínima anual de programas de difusión
+
+# ── Observabilidad · declarada antes de medir ─────────────────────────────────────
+# Se registra aquí, y no en un comentario, porque condiciona lo que el dominio puede afirmar:
+# mientras no exista fuente, el estado es `no_observable` y NUNCA «no cumple». Un sujeto
+# obligado que sí capacita no puede aparecer incumpliendo porque nadie mira donde debe.
+observabilidad:
+  estado: fuente_no_identificada
+  motivo: >-
+    ningún numeral del art. 19 recoge esta actividad, de modo que el portal de transparencia
+    de la DPE no la acredita ni la desmiente
+  vias_candidatas:
+    - "informes del Comité de Transparencia (Instructivo · informe mensual a la máxima autoridad)"
+    - "portal institucional del GAD · sección de noticias o capacitaciones"
+    - "solicitud de acceso a la información por la vía de CNO-VII-003"
+  regla: "sin fuente verificada, el resultado es no_observable — no se infiere incumplimiento"
+
+# ── Validación humana (ADR-035 §5) ────────────────────────────────────────────────
+validacion:
+  propuesta_por: "BRN (hallada al leer el Reglamento completo · cadena verificada 2026-08-18)"
+  validada_por: null
+  fecha_validacion: null
+notas: >-
+  Aporte de esta cadena: es la primera del dominio cuya obligación NO produce un documento
+  publicable como resultado natural, y la primera que se modela sabiendo de antemano que hoy
+  no es observable. Se incorpora igual por dos razones. La primera, que una obligación no
+  deja de existir porque no tengamos con qué verla; omitirla del canon la volvería invisible
+  también para el futuro. La segunda, que declarar `fuente_no_identificada` es información
+  útil: señala exactamente qué hay que conseguir para cerrar el dominio, en vez de dejar un
+  hueco que nadie recuerda.
