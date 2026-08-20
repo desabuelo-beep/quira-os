@@ -38,7 +38,7 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 
 ✅ **PCD: d01·d02·d03·d06·d09** · d08 ENTRABLE · **d07 en curación**.
 🩹 **12 GATES** · Curación por DOM (R.8) · **estados, NO bool**.
 📑 **PAC** 586 · **SERCOP 265+75** · ⛔ `.docx` gana al `.pdf`.
-⚖️ **d07 EN LA BRN**: `CNO-VII-001..004` **46/46 SHA** + `RO-VII-001..005` **propuesta**. ⛔ el DOM **consume RO, NO lee la ley** — el error de raíz.
+⚖️ **d07 EN LA BRN**: `CNO-VII-001..004` **46/46 SHA** + `RO-VII-001..005` **propuesta**. ⛔ el DOM **consume RO, NO lee la ley**.
 📡 **MEDICIÓN**: **SITA 2025 0,4448** (era 0,4646: se contaba bueno lo no mirado) · **0 actas** · num.6 **sin ingresos 8/8**.
 🧹 **CORPUS**: 8 chunks de preámbulo fingían artículo (LOTAIP 19 = Pacto).
 🧪 **ADR-042 §6-bis**: falta evidencia→**degrada** · identidad contradictoria→**BLOQUEA** · el SHA prueba el archivo, NO la atribución.
@@ -52,10 +52,11 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 
 🔭 **ADR-042 CONSOLA** (`env_obs`≠`env_ops`) · **MATRIZ_CANONICA, NO el GM**.
 🚦 **8 ESTADOS**: «no existe»≠«no pude obtener»≠«falló».
 🤖 **ADR-051 §12**: 5 dimensiones (capacidad·**sujeto**·ejecución·evidencia·validación) · sin sujeto **NO se construye** la afirmación · perímetro propio SELLADO.
-🔌 **`reglas.py` = ÚNICA puerta a la norma**: cadencia·plazo·formatos del canon · gate **REGLAS** · **472 pruebas**.
+🔌 **`reglas.py` = ÚNICA puerta a la norma** · gate **REGLAS** · **478 pruebas**.
 🔐 **PANEL ACCESOS** (→Ops): bitácora 2 meses sin leerse · alerta por fallos concentrados.
-📐 **MATRIZ (Javo)**: portal = **materialización de obligaciones** · ⛔ ausencia≠incumplimiento · **105 condiciones** que la vara no veía.
-🧾 **SCORING vs Instructivo**: SITA·CTA·ETA·RP ✅ · **CI mal**: exigía los 3 cualitativos a todos (Anexo 1: vigencia 16·18 · validez 3·6). ⛔ NO tocar SITA hasta cerrar la vara.
+📐 **MATRIZ (Javo)**: portal = **materialización de obligaciones** · ⛔ ausencia≠incumplimiento · **105 segmentos**: 89 candidatas·7 orient.·9 fragm. ⏳ **Capa 2B con Javo**.
+🏷️ **§6-quater**: *número correcto con etiqueta incorrecta = número falso* · todo agregado va con su desglose.
+🧾 **SCORING vs Instructivo**: SITA·CTA·ETA·RP ✅ · **CI mal** (Anexo 1 asigna 1×1). ⛔ NO tocar SITA hasta cerrar la vara.
 ⛔ **EL NOMBRE DEL ENLACE NO ES EVIDENCIA** — 3×: «acta»→certificado · «asistencia»→fotos.
 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 · detalle en el ADR)

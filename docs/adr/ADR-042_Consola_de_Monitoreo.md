@@ -324,6 +324,24 @@ construir una afirmación ejecutada sin sujeto:
 
     sujeto_sello = sujeto_activo = sujeto_de_la_afirmación
 
+### 6-quater · El rótulo de una cifra es parte de su evidencia
+
+> **Un número correcto con una etiqueta incorrecta es un número falso.**
+> *(regla transversal · colega, 2026-08-20)*
+
+No es una advertencia de estilo. En un sistema de acreditación **el significado de una cifra forma
+parte de la evidencia de esa cifra**: `16 orientaciones` y `7 orientaciones + 9 fragmentos` tienen
+el mismo valor aritmético y no tienen el mismo significado epistemológico. El primero afirma que
+la Guía faculta dieciséis veces; el segundo, que faculta siete y que nueve unidades ni siquiera
+son condiciones.
+
+El caso que la originó: al publicar la extracción de condiciones se rotularon dos poblaciones donde
+había tres, y nueve fragmentos de continuación viajaron contados como orientaciones. La aritmética
+del reporte no cuadraba con la de las categorías, y esa discrepancia fue lo único que lo delató.
+
+**Consecuencia operativa.** Toda cifra agregada que publique QUIRA debe poder descomponerse en las
+poblaciones que la forman, y el desglose se publica junto al total — no bajo demanda.
+
 ### 6-ter · La clasificación automática descubre; no interpreta
 
 > **La clasificación automática de una condición normativa es una inferencia instrumental y no
