@@ -1,0 +1,740 @@
+{
+ "_meta": {
+  "que_es": "matriz de trazabilidad normativa-documental: la relación verificable entre obligación, objeto exigible, evidencia y afirmación sobre el sujeto",
+  "regla": "la ausencia de un artefacto no constituye incumplimiento: constituye ausencia de evidencia respecto de una obligación cuya materialización esperada fue determinada por el corpus",
+  "limite": "este módulo NO califica jurídicamente · describe la relación entre obligación y evidencia",
+  "generado": "2026-08-20",
+  "sujeto": "130801 Montecristi",
+  "sujeto_huella": "e187a12ade35259772a1b729391e28470a3d0b505444d810c48f3c6f790e6ae0",
+  "anio": 2025,
+  "obligaciones": 26
+ },
+ "relaciones": [
+  {
+   "numeral": "1.1",
+   "obligacion": "Estructura orgánica funcional, base legal que la rige, regulaciones y procedimientos internos aplicables a la entidad; así como las metas y objetivos de las unidades administrativas de conformidad con sus programas opera",
+   "procedencia_normativa": {
+    "capitulo": "II",
+    "parrafo_inicio": 174,
+    "parrafo_fin": 182,
+    "parrafo_campos": 177,
+    "parrafo_periodicidad": null,
+    "parrafo_obligacion": 169
+   },
+   "campos_exigidos": 3,
+   "campos_reconocidos": [
+    "Nivel superior",
+    "Unidad",
+    "Nivel de los procesos de la estructura"
+   ],
+   "campos_no_reconocidos": [],
+   "periodicidad_declarada": false,
+   "artefactos_hallados": 30,
+   "estado_materializacion": "materializada",
+   "peso_de_la_afirmacion": "hecho_verificable",
+   "explicacion": "Verificado sobre 130801 Montecristi: la información proviene de Portal Nacional de Transparencia · Defensoría del Pueblo, se conserva el documento obtenido y el criterio aplicado está respaldado por una prueba.",
+   "nota": "la evidencia acredita los campos que la obligación enumera"
+  },
+  {
+   "numeral": "1.2",
+   "obligacion": "Estructura orgánica funcional, base legal que la rige, regulaciones y procedimientos internos aplicables a la entidad; así como las metas y objetivos de las unidades administrativas de conformidad con sus programas opera",
+   "procedencia_normativa": {
+    "capitulo": "II",
+    "parrafo_inicio": 182,
+    "parrafo_fin": 201,
+    "parrafo_campos": 193,
+    "parrafo_periodicidad": 199,
+    "parrafo_obligacion": 169
+   },
+   "campos_exigidos": 3,
+   "campos_reconocidos": [
+    "Tipo de documento (base legal, regulación o procedimiento interno)",
+    "Enlace a la base legal, regulación o procedimiento interno"
+   ],
+   "campos_no_reconocidos": [
+    "Descripción de la base legal, regulación o procedimiento interno"
+   ],
+   "periodicidad_declarada": true,
+   "artefactos_hallados": 33,
+   "estado_materializacion": "materializacion_parcial",
+   "peso_de_la_afirmacion": "hecho_verificable",
+   "explicacion": "Verificado sobre 130801 Montecristi: la información proviene de Portal Nacional de Transparencia · Defensoría del Pueblo, se conserva el documento obtenido y el criterio aplicado está respaldado por una prueba.",
+   "nota": "2/3 campos reconocidos por nombre"
+  },
+  {
+   "numeral": "1.3",
+   "obligacion": "Estructura orgánica funcional, base legal que la rige, regulaciones y procedimientos internos aplicables a la entidad; así como las metas y objetivos de las unidades administrativas de conformidad con sus programas opera",
+   "procedencia_normativa": {
+    "capitulo": "II",
+    "parrafo_inicio": 201,
+    "parrafo_fin": 215,
+    "parrafo_campos": 204,
+    "parrafo_periodicidad": 213,
+    "parrafo_obligacion": 169
+   },
+   "campos_exigidos": 5,
+   "campos_reconocidos": [
+    "Unidad",
+    "Objetivo",
+    "Indicador",
+    "Meta cuantificable",
+    "Enlace al sistema de gestión de planificación para verificación de los indicadores y metas cuantificables por procesos o niveles"
+   ],
+   "campos_no_reconocidos": [],
+   "periodicidad_declarada": true,
+   "artefactos_hallados": 3,
+   "estado_materializacion": "materializada",
+   "peso_de_la_afirmacion": "hecho_verificable",
+   "explicacion": "Verificado sobre 130801 Montecristi: la información proviene de Portal Nacional de Transparencia · Defensoría del Pueblo, se conserva el documento obtenido y el criterio aplicado está respaldado por una prueba.",
+   "nota": "la evidencia acredita los campos que la obligación enumera"
+  },
+  {
+   "numeral": "2",
+   "obligacion": "El directorio completo del organismo, dependencia y/o persona jurídica, así como el distributivo del personal y su cargo",
+   "procedencia_normativa": {
+    "capitulo": "II",
+    "parrafo_inicio": 215,
+    "parrafo_fin": 244,
+    "parrafo_campos": 229,
+    "parrafo_periodicidad": 242
+   },
+   "campos_exigidos": 9,
+   "campos_reconocidos": [
+    "Apellidos y nombres del personal de la entidad que labora o presta servicios especializados",
+    "Puesto institucional",
+    "Dirección institucional",
+    "Ciudad en la que labora",
+    "Teléfono institucional",
+    "Extensión telefónica",
+    "Correo electrónico institucional"
+   ],
+   "campos_no_reconocidos": [
+    "Número secuencial de la información que se registra en cada celda para dar a conocer el total de la nómina institucional",
+    "Unidad o nivel superior a la que pertenece"
+   ],
+   "periodicidad_declarada": true,
+   "artefactos_hallados": 30,
+   "estado_materializacion": "materializacion_parcial",
+   "peso_de_la_afirmacion": "hecho_verificable",
+   "explicacion": "Verificado sobre 130801 Montecristi: la información proviene de Portal Nacional de Transparencia · Defensoría del Pueblo, se conserva el documento obtenido y el criterio aplicado está respaldado por una prueba.",
+   "nota": "7/9 campos reconocidos por nombre"
+  },
+  {
+   "numeral": "3",
+   "obligacion": "Las remuneraciones salariales, incluyendo todo ingreso adicional correspondiente a todo el personal del organismo, dependencia y/o persona jurídica",
+   "procedencia_normativa": {
+    "capitulo": "II",
+    "parrafo_inicio": 244,
+    "parrafo_fin": 275,
+    "parrafo_campos": 253,
+    "parrafo_periodicidad": null
+   },
+   "campos_exigidos": 12,
+   "campos_reconocidos": [
+    "Numeración secuencial con el propósito de dar a conocer el total de la nómina institucional",
+    "Puesto institucional",
+    "Régimen laboral al que pertenece",
+    "Número de partida presupuestaria",
+    "Grado jerárquico o escala al que pertenece el puesto",
+    "Remuneración mensual unificada",
+    "Remuneración unificada (anual)",
+    "Décima cuarta remuneración",
+    "Horas suplementarias y extraordinarias",
+    "Encargos y subrogaciones",
+    "Total ingresos adicionales"
+   ],
+   "campos_no_reconocidos": [
+    "Décima tercera remuneración"
+   ],
+   "periodicidad_declarada": false,
+   "artefactos_hallados": 30,
+   "estado_materializacion": "materializacion_parcial",
+   "peso_de_la_afirmacion": "hecho_verificable",
+   "explicacion": "Verificado sobre 130801 Montecristi: la información proviene de Portal Nacional de Transparencia · Defensoría del Pueblo, se conserva el documento obtenido y el criterio aplicado está respaldado por una prueba.",
+   "nota": "11/12 campos reconocidos por nombre"
+  },
+  {
+   "numeral": "4",
+   "obligacion": "Un detalle de los funcionarios que gocen de licencia de servicio y de comisión de servicio",
+   "procedencia_normativa": {
+    "capitulo": "II",
+    "parrafo_inicio": 275,
+    "parrafo_fin": 296,
+    "parrafo_campos": 281,
+    "parrafo_periodicidad": 291
+   },
+   "campos_exigidos": 6,
+   "campos_reconocidos": [
+    "Puesto institucional",
+    "Entidad o país de destino de la persona a la que se otorga la licencia de servicio o la comisión de servicio",
+    "Tipo de licencia de servicio o de comisión de servicio"
+   ],
+   "campos_no_reconocidos": [
+    "Nombres y apellidos",
+    "Fecha de inicio de la licencia o comisión de servicio",
+    "Fecha en la que finaliza la licencia de servicio o la comisión de servicio"
+   ],
+   "periodicidad_declarada": true,
+   "artefactos_hallados": 30,
+   "estado_materializacion": "materializacion_parcial",
+   "peso_de_la_afirmacion": "hecho_verificable",
+   "explicacion": "Verificado sobre 130801 Montecristi: la información proviene de Portal Nacional de Transparencia · Defensoría del Pueblo, se conserva el documento obtenido y el criterio aplicado está respaldado por una prueba.",
+   "nota": "3/6 campos reconocidos por nombre"
+  },
+  {
+   "numeral": "5",
+   "obligacion": "Los servicios que brinda la entidad y las formas de acceder a ellos, horarios de atención y demás indicaciones necesarias",
+   "procedencia_normativa": {
+    "capitulo": "II",
+    "parrafo_inicio": 296,
+    "parrafo_fin": 326,
+    "parrafo_campos": 307,
+    "parrafo_periodicidad": 324
+   },
+   "campos_exigidos": 6,
+   "campos_reconocidos": [
+    "Denominación del servicio público que se brinda",
+    "Enlace para acceder al reporte del servicio",
+    "Número de personas que acceden mensualmente al servicio institucional",
+    "Enlace para descargar el formulario o formato del servicio (impreso) / correo electrónico para solicitar el servicio",
+    "Enlace para el servicio por internet (en línea)"
+   ],
+   "campos_no_reconocidos": [
+    "Porcentaje de satisfacción sobre el uso del servicio"
+   ],
+   "periodicidad_declarada": true,
+   "artefactos_hallados": 30,
+   "estado_materializacion": "materializacion_parcial",
+   "peso_de_la_afirmacion": "hecho_verificable",
+   "explicacion": "Verificado sobre 130801 Montecristi: la información proviene de Portal Nacional de Transparencia · Defensoría del Pueblo, se conserva el documento obtenido y el criterio aplicado está respaldado por una prueba.",
+   "nota": "5/6 campos reconocidos por nombre"
+  },
+  {
+   "numeral": "6",
+   "obligacion": "Información total sobre el presupuesto anual que administra la entidad, así como el asignado a cada área, programa o función, especificando ingresos, gastos, financiamiento y resultados operativos de conformidad con los ",
+   "procedencia_normativa": {
+    "capitulo": "II",
+    "parrafo_inicio": 326,
+    "parrafo_fin": 354,
+    "parrafo_campos": 332,
+    "parrafo_periodicidad": 352
+   },
+   "campos_exigidos": 14,
+   "campos_reconocidos": [
+    "Código de la cuenta o subcuenta contable",
+    "Categoría de la cuenta o subcuenta contable",
+    "Descripción de la cuenta o subcuenta contable",
+    "Monto asignado",
+    "Monto modificado que corresponde a las reformas realizadas",
+    "Monto codificado",
+    "Monto certificado",
+    "Monto comprometido",
+    "Monto devengado",
+    "Monto pagado",
+    "Saldo por comprometer",
+    "Saldo por devengar",
+    "Saldo por pagar",
+    "Porcentaje de ejecución"
+   ],
+   "campos_no_reconocidos": [],
+   "periodicidad_declarada": true,
+   "artefactos_hallados": 9,
+   "estado_materializacion": "materializada",
+   "peso_de_la_afirmacion": "hecho_verificable",
+   "explicacion": "Verificado sobre 130801 Montecristi: la información proviene de Portal Nacional de Transparencia · Defensoría del Pueblo, se conserva el documento obtenido y el criterio aplicado está respaldado por una prueba.",
+   "nota": "la evidencia acredita los campos que la obligación enumera"
+  },
+  {
+   "numeral": "7",
+   "obligacion": "Los resultados definitivos de las auditorías internas y gubernamentales al ejercicio presupuestario y estudios financieros anuales",
+   "procedencia_normativa": {
+    "capitulo": "II",
+    "parrafo_inicio": 354,
+    "parrafo_fin": 385,
+    "parrafo_campos": 361,
+    "parrafo_periodicidad": 381
+   },
+   "campos_exigidos": 9,
+   "campos_reconocidos": [],
+   "campos_no_reconocidos": [
+    "Número secuencial",
+    "Número del informe de auditoría aprobado",
+    "Tipo de examen aprobado",
+    "Nombre del examen aprobado",
+    "Período analizado",
+    "Área o proceso auditado",
+    "Enlace para descargar el informe específico",
+    "Enlace para descargar el reporte de seguimiento al cumplimiento de recomendaciones del informe de auditoría",
+    "Información adicional sobre el informe de auditoría"
+   ],
+   "periodicidad_declarada": true,
+   "artefactos_hallados": 0,
+   "estado_materializacion": "sin_evidencia_hallada",
+   "peso_de_la_afirmacion": "hallazgo_de_verificabilidad",
+   "explicacion": "No fue posible acreditar el contenido: Portal Nacional de Transparencia · Defensoría del Pueblo respondió con estado «sin_publicacion_registrada». Se registra la limitación, no una conclusión sobre 130801 Montecristi. Falta responder: ¿qué artefacto quedó, con qué identidad? ¿qué componente la interpretó? ¿qué prueba respalda esa interpretación?",
+   "nota": "no se halló publicación para esta obligación en el período. Ausencia de evidencia, NO incumplimiento: la calificación jurídica corresponde al motor normativo."
+  },
+  {
+   "numeral": "8",
+   "obligacion": "Información completa y detallada sobre los procesos precontractuales, contractuales, de adjudicación y liquidación, de las contrataciones de obras, adquisición de bienes, prestación de servicios, arrendamientos mercantil",
+   "procedencia_normativa": {
+    "capitulo": "II",
+    "parrafo_inicio": 385,
+    "parrafo_fin": 412,
+    "parrafo_campos": 394,
+    "parrafo_periodicidad": 408
+   },
+   "campos_exigidos": 10,
+   "campos_reconocidos": [
+    "Fecha de publicación del proceso en el Portal de Compras Públicas",
+    "Código del proceso de contratación",
+    "Objeto del proceso de contratación",
+    "Partida presupuestaria",
+    "Etapa de la contratación"
+   ],
+   "campos_no_reconocidos": [
+    "Tipo del proceso de contratación",
+    "Presupuesto referencial (USD) del proceso de contratación",
+    "Monto de la adjudicación (USD) del proceso de contratación",
+    "RUC de la empresa o persona contratista",
+    "Enlace para descargar el proceso de contratación desde el Portal de Compras Públicas"
+   ],
+   "periodicidad_declarada": true,
+   "artefactos_hallados": 27,
+   "estado_materializacion": "materializacion_parcial",
+   "peso_de_la_afirmacion": "hecho_verificable",
+   "explicacion": "Verificado sobre 130801 Montecristi: la información proviene de Portal Nacional de Transparencia · Defensoría del Pueblo, se conserva el documento obtenido y el criterio aplicado está respaldado por una prueba.",
+   "nota": "5/10 campos reconocidos por nombre"
+  },
+  {
+   "numeral": "9",
+   "obligacion": "Listado de las empresas y personas, jurídicas o naturales, que han incumplido contratos con dicha entidad, número de contrato y su monto",
+   "procedencia_normativa": {
+    "capitulo": "II",
+    "parrafo_inicio": 412,
+    "parrafo_fin": 427,
+    "parrafo_campos": 418,
+    "parrafo_periodicidad": 425
+   },
+   "campos_exigidos": 6,
+   "campos_reconocidos": [
+    "Monto del contrato incumplido",
+    "Fecha desde la que rige la prohibición para contratar",
+    "Fecha hasta que permanecerá la prohibición para contratar"
+   ],
+   "campos_no_reconocidos": [
+    "Número secuencial",
+    "RUC / Número de identificación de la empresa o persona contratista",
+    "Número del contrato / código del proceso de contratación fallido o incumplido"
+   ],
+   "periodicidad_declarada": true,
+   "artefactos_hallados": 30,
+   "estado_materializacion": "materializacion_parcial",
+   "peso_de_la_afirmacion": "hecho_verificable",
+   "explicacion": "Verificado sobre 130801 Montecristi: la información proviene de Portal Nacional de Transparencia · Defensoría del Pueblo, se conserva el documento obtenido y el criterio aplicado está respaldado por una prueba.",
+   "nota": "3/6 campos reconocidos por nombre"
+  },
+  {
+   "numeral": "10",
+   "obligacion": "Planes y programas de la entidad en ejecución",
+   "procedencia_normativa": {
+    "capitulo": "II",
+    "parrafo_inicio": 427,
+    "parrafo_fin": 450,
+    "parrafo_campos": 438,
+    "parrafo_periodicidad": 448
+   },
+   "campos_exigidos": 5,
+   "campos_reconocidos": [],
+   "campos_no_reconocidos": [
+    "Nombre del plan, proyecto o programa",
+    "Período para el que rige",
+    "Monto presupuestado, programado y aprobado",
+    "Enlace para descargar el plan, proyecto o programa completo",
+    "Enlace al estado de avance en el que se encuentra el plan, proyecto o programa"
+   ],
+   "periodicidad_declarada": true,
+   "artefactos_hallados": 0,
+   "estado_materializacion": "sin_evidencia_hallada",
+   "peso_de_la_afirmacion": "hallazgo_de_verificabilidad",
+   "explicacion": "No fue posible acreditar el contenido: Portal Nacional de Transparencia · Defensoría del Pueblo respondió con estado «sin_publicacion_registrada». Se registra la limitación, no una conclusión sobre 130801 Montecristi. Falta responder: ¿qué artefacto quedó, con qué identidad? ¿qué componente la interpretó? ¿qué prueba respalda esa interpretación?",
+   "nota": "no se halló publicación para esta obligación en el período. Ausencia de evidencia, NO incumplimiento: la calificación jurídica corresponde al motor normativo."
+  },
+  {
+   "numeral": "11",
+   "obligacion": "El detalle de los contratos de crédito externos o internos; se señalará la fuente de los fondos con los que se pagarán esos créditos. Cuando se trate de préstamos o contratos de financiamiento, se hará constar expresamen",
+   "procedencia_normativa": {
+    "capitulo": "II",
+    "parrafo_inicio": 450,
+    "parrafo_fin": 483,
+    "parrafo_campos": 462,
+    "parrafo_periodicidad": 478
+   },
+   "campos_exigidos": 13,
+   "campos_reconocidos": [
+    "Tipo de contrato",
+    "Objeto",
+    "Fecha de suscripción o renovación",
+    "Nombre deudor",
+    "Nombre acreedor",
+    "Nombre ejecutor",
+    "Plazo de duración del crédito",
+    "Enlace para descargar el contrato de crédito externo o interno",
+    "Desembolsos efectuados",
+    "Desembolsos por efectuar"
+   ],
+   "campos_no_reconocidos": [
+    "Tasa de interés (%)",
+    "Fondo con los que se cancelará la obligación crediticia",
+    "Monto del préstamo recibido o contrato"
+   ],
+   "periodicidad_declarada": true,
+   "artefactos_hallados": 6,
+   "estado_materializacion": "materializacion_parcial",
+   "peso_de_la_afirmacion": "hecho_verificable",
+   "explicacion": "Verificado sobre 130801 Montecristi: la información proviene de Portal Nacional de Transparencia · Defensoría del Pueblo, se conserva el documento obtenido y el criterio aplicado está respaldado por una prueba.",
+   "nota": "10/13 campos reconocidos por nombre"
+  },
+  {
+   "numeral": "12",
+   "obligacion": "Mecanismos de rendición de cuentas a las personas tales como metas e informes de gestión e indicadores de desempeño",
+   "procedencia_normativa": {
+    "capitulo": "II",
+    "parrafo_inicio": 483,
+    "parrafo_fin": 498,
+    "parrafo_campos": 491,
+    "parrafo_periodicidad": null
+   },
+   "campos_exigidos": 4,
+   "campos_reconocidos": [
+    "Nombre del mecanismo",
+    "Período de presentación del mecanismo de rendición de cuentas",
+    "Enlace para acceder a la información detallada"
+   ],
+   "campos_no_reconocidos": [
+    "Número de resolución o certificado asociado al mecanismo"
+   ],
+   "periodicidad_declarada": false,
+   "artefactos_hallados": 6,
+   "estado_materializacion": "materializacion_parcial",
+   "peso_de_la_afirmacion": "hecho_verificable",
+   "explicacion": "Verificado sobre 130801 Montecristi: la información proviene de Portal Nacional de Transparencia · Defensoría del Pueblo, se conserva el documento obtenido y el criterio aplicado está respaldado por una prueba.",
+   "nota": "3/4 campos reconocidos por nombre"
+  },
+  {
+   "numeral": "13",
+   "obligacion": "Los viáticos, informes de trabajo y justificativos de movilización nacional o internacional de las autoridades, dignatarios, servidoras y servidores públicos",
+   "procedencia_normativa": {
+    "capitulo": "II",
+    "parrafo_inicio": 498,
+    "parrafo_fin": 524,
+    "parrafo_campos": 504,
+    "parrafo_periodicidad": 522
+   },
+   "campos_exigidos": 8,
+   "campos_reconocidos": [
+    "Puesto institucional",
+    "Tipo de movilización (nacional o internacional)",
+    "Fecha de inicio del viaje",
+    "Fecha de fin del viaje",
+    "Motivo del viaje",
+    "Valor del viático"
+   ],
+   "campos_no_reconocidos": [
+    "Nombres y apellidos",
+    "Enlace para descargar el informe de actividades y justificativos"
+   ],
+   "periodicidad_declarada": true,
+   "artefactos_hallados": 3,
+   "estado_materializacion": "materializacion_parcial",
+   "peso_de_la_afirmacion": "hecho_verificable",
+   "explicacion": "Verificado sobre 130801 Montecristi: la información proviene de Portal Nacional de Transparencia · Defensoría del Pueblo, se conserva el documento obtenido y el criterio aplicado está respaldado por una prueba.",
+   "nota": "6/8 campos reconocidos por nombre"
+  },
+  {
+   "numeral": "14",
+   "obligacion": "El nombre, dirección, teléfono de la oficina y dirección electrónica de las y los responsables del acceso de información pública del organismo, dependencia y/o persona jurídica",
+   "procedencia_normativa": {
+    "capitulo": "II",
+    "parrafo_inicio": 524,
+    "parrafo_fin": 546,
+    "parrafo_campos": 532,
+    "parrafo_periodicidad": 544
+   },
+   "campos_exigidos": 7,
+   "campos_reconocidos": [
+    "Nombres y apellidos",
+    "Denominación del puesto",
+    "Dirección de la oficina",
+    "Número telefónico",
+    "Extensión telefónica",
+    "Correo electrónico"
+   ],
+   "campos_no_reconocidos": [
+    "Responsable del acceso a la información pública"
+   ],
+   "periodicidad_declarada": true,
+   "artefactos_hallados": 27,
+   "estado_materializacion": "materializacion_parcial",
+   "peso_de_la_afirmacion": "hecho_verificable",
+   "explicacion": "Verificado sobre 130801 Montecristi: la información proviene de Portal Nacional de Transparencia · Defensoría del Pueblo, se conserva el documento obtenido y el criterio aplicado está respaldado por una prueba.",
+   "nota": "6/7 campos reconocidos por nombre"
+  },
+  {
+   "numeral": "15",
+   "obligacion": "Texto íntegro de todos los contratos colectivos vigentes del organismo, dependencia y/o persona jurídica, así como sus anexos y reformas",
+   "procedencia_normativa": {
+    "capitulo": "II",
+    "parrafo_inicio": 546,
+    "parrafo_fin": 567,
+    "parrafo_campos": 552,
+    "parrafo_periodicidad": 565
+   },
+   "campos_exigidos": 5,
+   "campos_reconocidos": [
+    "Enlace para descargar el contrato colectivo original",
+    "Enlace para descargar todas las reformas completas del contrato colectivo"
+   ],
+   "campos_no_reconocidos": [
+    "Denominación de la organización sindical",
+    "Fecha de suscripción del contrato",
+    "Fecha de la última reforma o revisión"
+   ],
+   "periodicidad_declarada": true,
+   "artefactos_hallados": 30,
+   "estado_materializacion": "materializacion_parcial",
+   "peso_de_la_afirmacion": "hecho_verificable",
+   "explicacion": "Verificado sobre 130801 Montecristi: la información proviene de Portal Nacional de Transparencia · Defensoría del Pueblo, se conserva el documento obtenido y el criterio aplicado está respaldado por una prueba.",
+   "nota": "2/5 campos reconocidos por nombre"
+  },
+  {
+   "numeral": "16",
+   "obligacion": "Índice de información clasificada como reservada señalando el número de resolución, la fecha de clasificación y período de vigencia",
+   "procedencia_normativa": {
+    "capitulo": "II",
+    "parrafo_inicio": 567,
+    "parrafo_fin": 582,
+    "parrafo_campos": 573,
+    "parrafo_periodicidad": 572
+   },
+   "campos_exigidos": 5,
+   "campos_reconocidos": [
+    "Tema",
+    "Número de resolución",
+    "Fecha de la clasificación de la información reservada",
+    "Período de vigencia de la clasificación de la reserva",
+    "Enlace para descargar la resolución de clasificación de información reservada"
+   ],
+   "campos_no_reconocidos": [],
+   "periodicidad_declarada": true,
+   "artefactos_hallados": 24,
+   "estado_materializacion": "materializada",
+   "peso_de_la_afirmacion": "hecho_verificable",
+   "explicacion": "Verificado sobre 130801 Montecristi: la información proviene de Portal Nacional de Transparencia · Defensoría del Pueblo, se conserva el documento obtenido y el criterio aplicado está respaldado por una prueba.",
+   "nota": "la evidencia acredita los campos que la obligación enumera"
+  },
+  {
+   "numeral": "17",
+   "obligacion": "Un detalle de las audiencias y reuniones sostenidas por las autoridades electas de todos los niveles de gobierno, funcionarios del nivel jerárquico superior de las instituciones públicas y máximos representantes de los d",
+   "procedencia_normativa": {
+    "capitulo": "II",
+    "parrafo_inicio": 582,
+    "parrafo_fin": 635,
+    "parrafo_campos": 598,
+    "parrafo_periodicidad": 609
+   },
+   "campos_exigidos": 8,
+   "campos_reconocidos": [
+    "Nombres, apellidos y puesto institucional de las personas participantes de la entidad que reporta",
+    "Asunto o descripción de la audiencia / reunión",
+    "Duración de la audiencia / reunión",
+    "Modalidad (presencial, virtual, híbrida)",
+    "Lugar de la audiencia / reunión7"
+   ],
+   "campos_no_reconocidos": [
+    "Nombres, apellidos y entidad de las personas que participan en la audiencia o reunión",
+    "Fecha de la audiencia / reunión",
+    "Enlace para descargar el registro de asistencia de las personas que participaron en las reuniones según el detalle de fecha"
+   ],
+   "periodicidad_declarada": true,
+   "artefactos_hallados": 24,
+   "estado_materializacion": "materializacion_parcial",
+   "peso_de_la_afirmacion": "hecho_verificable",
+   "explicacion": "Verificado sobre 130801 Montecristi: la información proviene de Portal Nacional de Transparencia · Defensoría del Pueblo, se conserva el documento obtenido y el criterio aplicado está respaldado por una prueba.",
+   "nota": "5/8 campos reconocidos por nombre"
+  },
+  {
+   "numeral": "18",
+   "obligacion": "Detalle de los convenios nacionales o internacionales que celebre la entidad con personas naturales o jurídicas",
+   "procedencia_normativa": {
+    "capitulo": "II",
+    "parrafo_inicio": 635,
+    "parrafo_fin": 654,
+    "parrafo_campos": 642,
+    "parrafo_periodicidad": 652
+   },
+   "campos_exigidos": 6,
+   "campos_reconocidos": [
+    "Tipo de convenio",
+    "Objeto del convenio",
+    "Enlace para descargar el convenio completo"
+   ],
+   "campos_no_reconocidos": [
+    "Fecha de suscripción del convenio",
+    "Nombre de la organización o persona jurídica con quien se suscribe el convenio",
+    "Plazo de duración del convenio"
+   ],
+   "periodicidad_declarada": true,
+   "artefactos_hallados": 30,
+   "estado_materializacion": "materializacion_parcial",
+   "peso_de_la_afirmacion": "hecho_verificable",
+   "explicacion": "Verificado sobre 130801 Montecristi: la información proviene de Portal Nacional de Transparencia · Defensoría del Pueblo, se conserva el documento obtenido y el criterio aplicado está respaldado por una prueba.",
+   "nota": "3/6 campos reconocidos por nombre"
+  },
+  {
+   "numeral": "19",
+   "obligacion": "Un detalle actualizado de los donativos oficiales y protocolares que reciban los sujetos obligados establecidos en esta Ley, con ocasión del ejercicio de sus funciones. En dichos registros deberá singularizarse el regalo",
+   "procedencia_normativa": {
+    "capitulo": "II",
+    "parrafo_inicio": 654,
+    "parrafo_fin": 673,
+    "parrafo_campos": 662,
+    "parrafo_periodicidad": 671
+   },
+   "campos_exigidos": 5,
+   "campos_reconocidos": [
+    "Fecha de recepción del donativo o regalo",
+    "Descripción del donativo o regalo",
+    "Ocasión o motivo de la donación o regalo",
+    "Persona natural o jurídica de la que procede la donación o regalo"
+   ],
+   "campos_no_reconocidos": [
+    "Enlace para descargar el documento mediante el cual se oficializa la recepción del regalo o donativo"
+   ],
+   "periodicidad_declarada": true,
+   "artefactos_hallados": 30,
+   "estado_materializacion": "materializacion_parcial",
+   "peso_de_la_afirmacion": "hecho_verificable",
+   "explicacion": "Verificado sobre 130801 Montecristi: la información proviene de Portal Nacional de Transparencia · Defensoría del Pueblo, se conserva el documento obtenido y el criterio aplicado está respaldado por una prueba.",
+   "nota": "4/5 campos reconocidos por nombre"
+  },
+  {
+   "numeral": "20",
+   "obligacion": "Registro de Activos de Información, que contenga información solicitada con frecuencia, y otra información complementaria que de carácter obligatorio deban cumplir los sujetos obligados, de acuerdo con los parámetros est",
+   "procedencia_normativa": {
+    "capitulo": "II",
+    "parrafo_inicio": 673,
+    "parrafo_fin": 690,
+    "parrafo_campos": 682,
+    "parrafo_periodicidad": 688
+   },
+   "campos_exigidos": 4,
+   "campos_reconocidos": [
+    "Tema de la información requerida con frecuencia",
+    "Enlace para descargar el detalle de la información solicitada frecuentemente"
+   ],
+   "campos_no_reconocidos": [
+    "Número de ocasiones en las que la información fue requerida",
+    "Enlace para descargar la solicitud de información complementaria que haya sido solicitada de forma recurrente"
+   ],
+   "periodicidad_declarada": true,
+   "artefactos_hallados": 24,
+   "estado_materializacion": "materializacion_parcial",
+   "peso_de_la_afirmacion": "hecho_verificable",
+   "explicacion": "Verificado sobre 130801 Montecristi: la información proviene de Portal Nacional de Transparencia · Defensoría del Pueblo, se conserva el documento obtenido y el criterio aplicado está respaldado por una prueba.",
+   "nota": "2/4 campos reconocidos por nombre"
+  },
+  {
+   "numeral": "21",
+   "obligacion": "Políticas públicas o cualquier información que afecte a un grupo específico, en todas sus fases",
+   "procedencia_normativa": {
+    "capitulo": "II",
+    "parrafo_inicio": 690,
+    "parrafo_fin": 709,
+    "parrafo_campos": 696,
+    "parrafo_periodicidad": 707
+   },
+   "campos_exigidos": 5,
+   "campos_reconocidos": [
+    "Grupo específico",
+    "Fase de la política pública",
+    "Fecha",
+    "Enlace a informe"
+   ],
+   "campos_no_reconocidos": [
+    "Nombre de la política pública"
+   ],
+   "periodicidad_declarada": true,
+   "artefactos_hallados": 6,
+   "estado_materializacion": "materializacion_parcial",
+   "peso_de_la_afirmacion": "hecho_verificable",
+   "explicacion": "Verificado sobre 130801 Montecristi: la información proviene de Portal Nacional de Transparencia · Defensoría del Pueblo, se conserva el documento obtenido y el criterio aplicado está respaldado por una prueba.",
+   "nota": "4/5 campos reconocidos por nombre"
+  },
+  {
+   "numeral": "23",
+   "obligacion": "Datos de las personas servidoras públicas incorporadas en cumplimiento de las acciones afirmativas de cuotas laborales en la legislación nacional, como el caso de las personas con discapacidad y sustitutos y de los puebl",
+   "procedencia_normativa": {
+    "capitulo": "II",
+    "parrafo_inicio": 709,
+    "parrafo_fin": 726,
+    "parrafo_campos": 716,
+    "parrafo_periodicidad": 724
+   },
+   "campos_exigidos": 2,
+   "campos_reconocidos": [
+    "Número de personas con la acción afirmativa específica",
+    "Acción afirmativa específica"
+   ],
+   "campos_no_reconocidos": [],
+   "periodicidad_declarada": true,
+   "artefactos_hallados": 30,
+   "estado_materializacion": "materializada",
+   "peso_de_la_afirmacion": "hecho_verificable",
+   "explicacion": "Verificado sobre 130801 Montecristi: la información proviene de Portal Nacional de Transparencia · Defensoría del Pueblo, se conserva el documento obtenido y el criterio aplicado está respaldado por una prueba.",
+   "nota": "la evidencia acredita los campos que la obligación enumera"
+  },
+  {
+   "numeral": "24",
+   "obligacion": "Otra información que la entidad considere relevante para el ejercicio del derecho de acceso a la información pública, la participación ciudadana y el control social, en especial la que permita el seguimiento a la consecu",
+   "procedencia_normativa": {
+    "capitulo": "II",
+    "parrafo_inicio": 726,
+    "parrafo_fin": 743,
+    "parrafo_campos": 732,
+    "parrafo_periodicidad": 741
+   },
+   "campos_exigidos": 2,
+   "campos_reconocidos": [
+    "Información relevante",
+    "Enlace para descargar la información relevante"
+   ],
+   "campos_no_reconocidos": [],
+   "periodicidad_declarada": true,
+   "artefactos_hallados": 6,
+   "estado_materializacion": "materializada",
+   "peso_de_la_afirmacion": "hecho_verificable",
+   "explicacion": "Verificado sobre 130801 Montecristi: la información proviene de Portal Nacional de Transparencia · Defensoría del Pueblo, se conserva el documento obtenido y el criterio aplicado está respaldado por una prueba.",
+   "nota": "la evidencia acredita los campos que la obligación enumera"
+  },
+  {
+   "numeral": "Art.24",
+   "obligacion": "Gobiernos Autónomos Descentralizados. Además de la información señalada en esta Ley, los organismos seccionales, mensualmente, informarán a las personas, a través del portal informático web u otro medio digital que posea",
+   "procedencia_normativa": {
+    "capitulo": "II",
+    "parrafo_inicio": 949,
+    "parrafo_fin": 984
+   },
+   "campos_exigidos": 0,
+   "campos_reconocidos": [],
+   "campos_no_reconocidos": [],
+   "periodicidad_declarada": true,
+   "artefactos_hallados": 48,
+   "estado_materializacion": "materializada",
+   "peso_de_la_afirmacion": "hecho_verificable",
+   "explicacion": "Verificado sobre 130801 Montecristi: la información proviene de Portal Nacional de Transparencia · Defensoría del Pueblo, se conserva el documento obtenido y el criterio aplicado está respaldado por una prueba.",
+   "nota": "la evidencia acredita los campos que la obligación enumera"
+  }
+ ],
+ "sin_obligacion_identificada": []
+}

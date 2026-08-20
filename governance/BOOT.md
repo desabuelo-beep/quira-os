@@ -53,10 +53,10 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 
 🔭 **ADR-042 CONSOLA** (`env_obs`≠`env_ops`) · **MATRIZ_CANONICA, NO el GM**.
 🚦 **8 ESTADOS**: «no existe»≠«no pude obtener»≠«falló». Solo 2 publicables.
 🤖 **ADR-051 §12**: 5 dimensiones (capacidad·**sujeto**·ejecución·evidencia·validación) · sin sujeto **NO se construye** la afirmación · perímetro propio SELLADO.
-🔌 **`reglas.py` = ÚNICA puerta a la norma**: cadencia·plazo·formatos·ausencia del canon · gate **REGLAS** · **58 pruebas d07**.
+🔌 **`reglas.py` = ÚNICA puerta a la norma**: cadencia·plazo·formatos del canon · gate **REGLAS** · **472 pruebas**.
 🔐 **PANEL ACCESOS** (→Ops): bitácora 2 meses sin leerse · alerta por fallos concentrados.
-⚠️ **d07**: los 636 = `material_de_ingenieria` **en su propio `_meta`**, NO observación · el sujeto vivía en 11 puntos → `data/sujetos/` · OCR **10 únicos**.
-⛔ **EL NOMBRE DEL ENLACE NO ES EVIDENCIA** — 3×: «acta»→certificado · «asistencia»→fotos · muestra OCR→fotos.
+📐 **MATRIZ (Javo)**: el portal NO es colección de archivos sino **materialización de obligaciones** · unidad *obligación↔evidencia* · ⛔ **ausencia ≠ incumplimiento** · 26: 7·17·2.
+⛔ **EL NOMBRE DEL ENLACE NO ES EVIDENCIA** — 3×: «acta»→certificado · «asistencia»→fotos.
 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 · detalle en el ADR)
 GAD = sujeto observado, NO cliente. 4 capas: A Núcleo · B Operaciones · C Productos (§LA TESIS · 1 motor) · D Portal `quiraintelligence.com` (radar 222 GAD).

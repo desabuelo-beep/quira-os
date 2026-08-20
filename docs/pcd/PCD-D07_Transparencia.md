@@ -337,6 +337,54 @@ Nextcloud a `/download`, y dos enlaces se comprobaron por vía independiente con
 resultado. El servidor del GAD responde —devuelve 25.886 bytes de HTML—; **lo que no existe es
 el recurso compartido**. Los 7 restantes quedan **sin verificar**, no «inaccesibles».
 
+### Qué ES el universo documental · corrección de Javo, 2026-08-20
+
+El director propuso analizar los 636 artefactos «por numeral o por artefacto», y ofreció declarar
+como dato que **los artefactos sin obligación asociada revelarían que el GAD publica lo que la
+norma no le pide**. Javo lo corrigió de raíz:
+
+> *«Si todo lo que sube el GAD obedece específicamente a lo que exige la LOTAIP, su reglamento y
+> los documentos metodológicos que tenemos en el corpus, no se puede separar los artefactos de los
+> numerales: están transversalizados por la normativa legal vigente y sus procedimientos técnicos,
+> que también son ley. Los GAD responden en ese portal única y exclusivamente al cumplimiento de
+> esta normativa, y con ello al derecho constitucional a la información pública.»*
+>
+> **«El universo de información de transparencia activa del GAD no debe interpretarse como una
+> colección arbitraria de archivos, sino como una materialización documental de obligaciones
+> normativas y procedimentales.»**
+
+Tenía razón, y el error era doble. El primero, de método: «por numeral» y «por artefacto» son
+técnicas de recorrido, no la estructura del fenómeno. El segundo, más grave y del tipo que este
+dominio existe para impedir: **presumir en vez de determinar**. Un artefacto que no se asocia a
+una obligación puede significar cuatro cosas distintas —que no hallamos la relación normativa, que
+existe una obligación transversal, que es materialización complementaria, o que efectivamente no
+es exigido— y sólo la cuarta es «el GAD publica lo que nadie le pide». Presentarla como la única
+lectura habría sido inventar un hallazgo.
+
+**La unidad analítica** (formulación del colega, adoptada):
+
+> El universo documental de transparencia activa de un GAD no constituye una colección arbitraria
+> de archivos, sino la materialización documental de obligaciones jurídicas, normativas y
+> procedimentales que concretan el deber de transparencia activa y el derecho de acceso a la
+> información pública. **La unidad analítica no es el archivo aislado ni el numeral aislado, sino
+> la relación verificable entre obligación, objeto de información, materialización documental,
+> evidencia y afirmación sobre el sujeto.**
+
+    ordenamiento normativo → obligación → objeto exigible → materialización
+        → publicación → accesibilidad → actualidad → evidencia → verificación
+        → afirmación sobre el sujeto
+
+Y su consecuencia inmediata, que impide repetir con los documentos el error que se acaba de
+corregir con los enlaces:
+
+> **La ausencia de un artefacto no constituye por sí misma incumplimiento: constituye ausencia de
+> evidencia respecto de una obligación cuya materialización esperada debe haber sido previamente
+> determinada por el corpus normativo y procedimental aplicable.**
+
+Lo que QUIRA no decide es **qué información debería existir** — eso lo fija el ordenamiento. QUIRA
+determina, a partir del corpus, qué debía materializarse, cómo debía publicarse, y qué puede
+afirmarse sobre lo que efectivamente encuentra.
+
 ### Pendientes — adquisición de dato, no cómputo pendiente
 
 - **Inventario documental completo:** falta abrir el universo restante y descomprimir los 27 ZIP.
