@@ -1,0 +1,314 @@
+﻿# ═══════════════════════════════════════════════════════════════════════════════
+# CAPA 2 · CONDICIONES NORMATIVAS · pilotos numeral 6 y numerales 5-22
+# ═══════════════════════════════════════════════════════════════════════════════
+# POR QUÉ ESTE ARCHIVO (2026-08-20). El colega, tras cerrar la extracción:
+#
+#   «El próximo entregable realmente valioso es una Capa 2 completa y
+#   manualmente validada para los numerales 6 y 5-22, no una expansión
+#   automática a los otros 24. Una vez que esos dos casos sobrevivan, ahí sí se
+#   puede convertir su estructura en patrón reproducible.»
+#
+# QUÉ ES Y QUÉ NO ES. Es el MODELO de la condición normativa, aplicado a los dos
+# casos que Javo trajo. Lo que está modelado —prescripción atómica,
+# subrequisitos, objeto al que aplica, materialización esperada, evidencia
+# admisible— es estructura de análisis, no interpretación jurídica.
+#
+# Los campos `tipo_validado` y `exigible_validado` están en **null a propósito**:
+# los llena la revisión jurídica (Capa 2B), no este archivo. Mientras sigan en
+# null, ninguna condición de aquí puede alimentar cumplimiento ni SITA.
+#
+# LA CADENA QUE ESTE MODELO SIRVE:
+#   condición validada → prescripción atómica → materialización esperada
+#     → evidencia admisible → verificador → afirmación
+#
+# Y la regla que lo gobierna (ADR-042 §6-ter): el algoritmo descubre y
+# estructura; el canon determina; la evidencia demuestra.
+# ═══════════════════════════════════════════════════════════════════════════════
+
+_meta:
+  estado: propuesta
+  capa: "2 · condiciones normativas de exigibilidad"
+  fuente: "LOTAIP - guia-metodologica-mecanismos.docx"
+  sha256_fuente: "4c76ad8934bef620ef3b486cb30e199ffcf5985c8f0feed66953b9ddcceee019"
+  alcance: "2 numerales piloto de 26 · patrón a validar antes de propagar"
+  regla: >-
+    lo modelado es estructura de análisis. La naturaleza jurídica de cada
+    condición (tipo y exigibilidad) la determina la revisión, no este archivo.
+  pendiente_de: "validación jurídica · VALIDACION_JURIDICA_condiciones.csv"
+
+# ── ESQUEMA · qué lleva una condición normativa ────────────────────────────────
+# Formulado por el colega, 2026-08-20. Se documenta aquí para que el patrón sea
+# legible sin abrir código.
+_esquema:
+  id: "identificador estable · trazable al párrafo de origen"
+  parrafo: "número de párrafo en la Guía · permite auditar hasta el texto"
+  texto: "el segmento normativo literal · no se parafrasea"
+  tipo_propuesto: "clasificación A-G derivada del modo verbal"
+  tipo_validado: "← lo fija la revisión jurídica"
+  exigible_validado: "← lo fija la revisión jurídica"
+  prescripcion_atomica: "qué manda, en una sola oración"
+  subrequisitos: "las prescripciones que contiene dentro, si las hay"
+  objeto_al_que_aplica: "sobre qué recae: el conjunto de datos, un documento…"
+  materializacion_esperada: "qué debería existir para acreditarla"
+  evidencia_admisible: "qué artefacto permitiría verificarla"
+  verificador: "el componente que la comprobaría · null si no existe todavía"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PILOTO A · NUMERAL 6 — presupuesto
+# ═══════════════════════════════════════════════════════════════════════════════
+# Javo lo trajo como caso: la Guía no sólo lista 14 campos. Añade la fuente
+# documental y la regla de cálculo, y es esta última la que sostiene el hallazgo
+# de que el GAD reporta egresos y no ingresos.
+numeral_6:
+  obligacion_articulo: >-
+    Información total sobre el presupuesto anual que administra la entidad, así
+    como el asignado a cada área, programa o función, especificando ingresos,
+    gastos, financiamiento y resultados operativos de conformidad con los
+    clasificadores presupuestales, así como liquidación del presupuesto,
+    especificando destinatarios de la entrega de recursos públicos
+  campos_del_conjunto: 14
+  periodicidad: mensual
+
+  condiciones:
+    - id: C6-D01
+      parrafo: 330
+      texto: >-
+        En el presupuesto institucional, se consideran los datos de la cédula
+        presupuestaria mensual institucional y la del presupuesto liquidado.
+      tipo_propuesto: D_fuente_documental_exigida
+      tipo_validado: null
+      exigible_validado: null
+      prescripcion_atomica: >-
+        la información presupuestaria debe provenir de dos fuentes: la cédula
+        presupuestaria mensual institucional y la del presupuesto liquidado
+      subrequisitos:
+        - cédula presupuestaria mensual institucional
+        - cédula del presupuesto liquidado
+      objeto_al_que_aplica: el conjunto de datos del numeral 6
+      materializacion_esperada: >-
+        publicación que refleje AMBAS fuentes. Una sola de las dos no acredita
+        la condición: la Guía las enumera juntas.
+      evidencia_admisible:
+        - conjunto de datos con filas atribuibles a la cédula mensual
+        - conjunto de datos o documento con la liquidación presupuestaria
+      verificador: null           # no existe todavía
+      nota: >-
+        HALLAZGO POSIBLE, NO AFIRMADO: si sólo se publica una de las dos
+        fuentes, la condición estaría parcialmente materializada. Determinarlo
+        exige leer el contenido, no el nombre del archivo.
+
+    - id: C6-C01
+      parrafo: 351
+      texto: >-
+        Para obtener el porcentaje de ejecución presupuestaria, las entidades
+        tomarán los montos del codificado de ingresos y para los gastos se
+        tomará la información del devengado, de esta manera se brindará
+        información completa de la ejecución presupuestaria a la población.
+      tipo_propuesto: C_regla_de_calculo
+      tipo_validado: null
+      exigible_validado: null
+      prescripcion_atomica: >-
+        el porcentaje de ejecución se calcula con el CODIFICADO para ingresos y
+        el DEVENGADO para gastos
+      subrequisitos:
+        - los ingresos se reportan por su monto codificado
+        - los gastos se reportan por su monto devengado
+        - el resultado debe informar la ejecución COMPLETA, ambos lados
+      objeto_al_que_aplica: >-
+        el campo «Porcentaje de ejecución» y las filas de ingresos y gastos que
+        lo sustentan
+      materializacion_esperada: >-
+        el conjunto de datos debe contener filas de INGRESOS con monto
+        codificado y filas de GASTOS con monto devengado. Publicar sólo el lado
+        del gasto deja la condición sin materializar.
+      evidencia_admisible:
+        - filas del conjunto de datos clasificables como ingreso
+        - filas del conjunto de datos clasificables como gasto
+        - coherencia entre el porcentaje publicado y los montos declarados
+      verificador: null
+      nota: >-
+        ESTA ES LA CONDICIÓN QUE SOSTIENE EL HALLAZGO DE JAVO. Antes de
+        extraerla, «el GAD no reporta ingresos» era una observación suya sin
+        regla normativa detrás. Ahora tiene su párrafo, su SHA y su cita.
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PILOTO B · NUMERALES 5 y 22 — servicios y formularios
+# ═══════════════════════════════════════════════════════════════════════════════
+# DOS obligaciones jurídicas distintas que la Guía desarrolla en un mismo bloque
+# y publica en un solo conjunto de datos. La clave de publicación identifica el
+# contenedor; la obligación normativa determina la unidad de evaluación.
+numerales_5_y_22:
+  obligacion_articulo_5: >-
+    Los servicios que brinda la entidad y las formas de acceder a ellos,
+    horarios de atención y demás indicaciones necesarias
+  obligacion_articulo_22: >-
+    Formularios y formatos de solicitudes que se requieran para los trámites
+    inherentes en su campo de acción, con sus debidas instrucciones
+  campos_del_conjunto: 6
+  periodicidad: mensual
+  nota_bloque: >-
+    la Guía asigna los 6 campos AL BLOQUE y no los reparte entre ambos
+    numerales. QUIRA tampoco lo hace: es silencio del corpus, no decisión
+    nuestra.
+
+  condiciones:
+    - id: C522-C01
+      parrafo: 304
+      texto: >-
+        Se debe totalizar el número de personas que acceden mensualmente a los
+        servicios, así como el número acumulativo de quienes accedieron a cada
+        servicio, sumatoria que deberá corresponder hasta el mes de reporte de
+        la información.
+      tipo_propuesto: C_regla_de_calculo
+      tipo_validado: null
+      exigible_validado: null
+      prescripcion_atomica: >-
+        deben publicarse DOS cifras de acceso por servicio: la mensual y la
+        acumulada hasta el mes de reporte
+      subrequisitos:
+        - total mensual de personas que acceden a cada servicio
+        - total acumulado hasta el mes reportado
+        - el acumulado debe corresponder al mes de reporte (coherencia temporal)
+      objeto_al_que_aplica: >-
+        el campo «Número de personas que acceden mensualmente al servicio
+        institucional»
+      materializacion_esperada: >-
+        el conjunto de datos debe permitir leer ambas cifras. Un único número
+        sin distinguir mensual de acumulado no acredita la condición.
+      evidencia_admisible:
+        - columna o columnas con el dato mensual
+        - columna o columnas con el acumulado
+        - consistencia del acumulado entre meses sucesivos
+      verificador: null
+
+    - id: C522-B01
+      parrafo: 316
+      texto: >-
+        En cuanto a los servicios que brinda, se debe incluir la atención de las
+        solicitudes de acceso a la información pública.
+      tipo_propuesto: B_exigencia_material
+      tipo_validado: null
+      exigible_validado: null
+      prescripcion_atomica: >-
+        la atención de solicitudes de acceso a la información pública debe
+        figurar como uno de los servicios publicados
+      subrequisitos: []
+      objeto_al_que_aplica: la lista de servicios del conjunto de datos
+      materializacion_esperada: >-
+        una fila del conjunto de datos cuya denominación corresponda a la
+        atención de solicitudes de acceso a la información pública
+      evidencia_admisible:
+        - fila del conjunto con esa denominación o equivalente
+      verificador: null
+      nota: >-
+        cuidado con la búsqueda literal: la lección del numeral 8 vale aquí.
+        Hallar el término prueba presencia; NO hallarlo no prueba ausencia.
+
+    - id: C522-B02
+      parrafo: 317
+      texto: >-
+        En cuanto al enlace para acceder al reporte del servicio, los sujetos
+        obligados deberán generar un documento en el que se especifique
+        información relacionada con: la descripción del servicio; a quién está
+        dirigido; requisitos para acceder al servicio; procedimiento para
+        acceder al servicio; costo del servicio; oficinas que ofrecen el
+        servicio; horarios de atención; tiempo estimado de respuesta.
+      tipo_propuesto: B_exigencia_material
+      tipo_validado: null
+      exigible_validado: null
+      prescripcion_atomica: >-
+        debe existir un documento de reporte por servicio, y ese documento debe
+        contener ocho informaciones determinadas
+      subrequisitos:
+        - descripción del servicio
+        - a quién está dirigido
+        - requisitos para acceder al servicio
+        - procedimiento para acceder al servicio
+        - costo del servicio
+        - oficinas que ofrecen el servicio
+        - horarios de atención
+        - tiempo estimado de respuesta
+      objeto_al_que_aplica: >-
+        el documento al que remite el campo «Enlace para acceder al reporte del
+        servicio» — NO el campo en sí
+      materializacion_esperada: >-
+        un documento por servicio, accesible desde el enlace publicado, cuyo
+        contenido cubra los ocho puntos
+      evidencia_admisible:
+        - el documento enlazado, abierto y leído
+        - presencia verificable de cada uno de los ocho contenidos
+      verificador: null
+      nota: >-
+        CASO CANÓNICO DE ATOMIZACIÓN. El motor comprobaba que la COLUMNA
+        existiera; la norma exige que el DOCUMENTO ENLAZADO contenga ocho cosas.
+        campo presente ≠ requisito satisfecho.
+
+    - id: C522-G01
+      parrafo: 317
+      texto: >-
+        Esta información podrá reportarse en cualquier formato que considere la
+        entidad, de preferencia en uno editable.
+      tipo_propuesto: G_orientacion_no_exigible
+      tipo_validado: null
+      exigible_validado: null
+      prescripcion_atomica: >-
+        el formato del documento queda a criterio de la entidad, con preferencia
+        por uno editable
+      subrequisitos: []
+      objeto_al_que_aplica: el FORMATO del documento de C522-B02
+      materializacion_esperada: null
+      evidencia_admisible: []
+      verificador: null
+      nota: >-
+        FACULTAD ACCESORIA, SEPARADA DE SU OBLIGACIÓN. Vive en el mismo párrafo
+        que C522-B02 y el clasificador llegó a usarla para degradar toda la
+        obligación a «no exigible». Se aísla aquí para que no vuelva a ocurrir:
+        una facultad sobre la FORMA no toca la exigibilidad del CONTENIDO.
+
+    - id: C522-F01
+      parrafo: 318
+      texto: >-
+        Si la entidad no dispone de una encuesta para medir la satisfacción de
+        las personas que acceden a los servicios, deberá establecer un
+        compromiso para elaborar una que pueda enlazar a los canales mediante
+        los cuales la población accede a estos y hasta cumplir con este objetivo.
+      tipo_propuesto: F_condicion_procedimental
+      tipo_validado: null
+      exigible_validado: null
+      prescripcion_atomica: >-
+        si no hay encuesta de satisfacción, debe existir un compromiso formal de
+        elaborarla
+      subrequisitos:
+        - antecedente · la entidad no dispone de encuesta
+        - consecuencia · debe establecer un compromiso de elaborarla
+        - el compromiso rige hasta que el objetivo se cumpla
+      objeto_al_que_aplica: el campo «Porcentaje de satisfacción sobre el uso del servicio»
+      materializacion_esperada: >-
+        o bien el porcentaje de satisfacción publicado, o bien la constancia del
+        compromiso de elaborar la encuesta. La ausencia de AMBOS deja la
+        condición sin materializar.
+      evidencia_admisible:
+        - dato de satisfacción en el conjunto
+        - documento o declaración con el compromiso
+      verificador: null
+      nota: >-
+        condición de dos salidas: la norma admite dos materializaciones
+        alternativas. Exigir sólo la primera inventaría una obligación.
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# LO QUE ESTE PATRÓN YA PERMITE DECIR, Y LO QUE NO
+# ═══════════════════════════════════════════════════════════════════════════════
+_alcance:
+  permite:
+    - "distinguir la obligación del campo que la transporta"
+    - "separar una facultad accesoria de la obligación que la acompaña"
+    - "reconocer condiciones con dos materializaciones alternativas (C522-F01)"
+    - "señalar qué evidencia haría falta para acreditar cada condición"
+  no_permite_todavia:
+    - "afirmar cumplimiento o incumplimiento · falta la validación jurídica"
+    - "alimentar SITA · la vara sigue incompleta en los otros 24 numerales"
+    - "propagar el patrón · antes deben sobrevivir estos dos casos"
+  siguiente_paso: >-
+    validación jurídica de estos 7 registros (tipo y exigibilidad). Si el patrón
+    sobrevive, se aplica a los 24 numerales restantes; si no, se corrige aquí
+    antes de multiplicar el error por 24.
