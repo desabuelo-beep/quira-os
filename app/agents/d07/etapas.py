@@ -103,6 +103,7 @@ ETAPAS = [
         "args": [],
         "produce": ["data/lotaip/enlaces.json"],
         "consume": ["data/lotaip/contenido.json"],
+        "bandera_rehacer": "--rehacer",
         "descripcion": "comprueba que los enlaces entreguen el documento",
     },
     {
@@ -301,10 +302,18 @@ def ejecutar_etapa(etapa: dict, forzar: bool = False) -> ResultadoEtapa:
         return ResultadoEtapa(eid, "omitida", salidas=etapa["produce"],
                               detalle=razon)
 
+    # Forzar la etapa debe forzar el TRABAJO, no sólo saltarse el «al día». Los
+    # scripts que reanudan desde su salida anterior necesitan que se les diga
+    # explícitamente; sin esto, `forzar=True` producía una etapa «ejecutada» que
+    # se había copiado a sí misma (2026-08-19).
+    args_efectivos = list(etapa["args"])
+    if forzar and etapa.get("bandera_rehacer"):
+        args_efectivos.append(etapa["bandera_rehacer"])
+
     t0 = time.perf_counter()
     try:
         r = subprocess.run(
-            [sys.executable, str(_SCRIPTS / etapa["script"]), *etapa["args"]],
+            [sys.executable, str(_SCRIPTS / etapa["script"]), *args_efectivos],
             cwd=str(RAIZ), capture_output=True,
             timeout=TIMEOUT.get(eid, 900))
         seg = round(time.perf_counter() - t0, 1)

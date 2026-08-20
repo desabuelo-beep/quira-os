@@ -30,6 +30,7 @@ Dylus Lab © 2026
 from __future__ import annotations
 
 import argparse
+import datetime as _dt
 import json
 import ssl
 import sys
@@ -164,7 +165,7 @@ def main() -> None:
     args = ap.parse_args()
 
     print("REPOSITORIO LOTAIP · portal del GAD Montecristi\n")
-    salida = {"_meta": {"generado": "2026-08-12", "fuente": API_LOCAL,
+    salida = {"_meta": {"generado": _dt.date.today().isoformat(), "fuente": API_LOCAL,
                         "regla": "URL listada ≠ URL accesible · fallo de red ≠ no publicado"},
               "anios": {}}
 

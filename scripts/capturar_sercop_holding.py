@@ -33,6 +33,7 @@ Dylus Lab © 2026
 from __future__ import annotations
 
 import argparse
+import datetime as _dt
 import json
 import shutil
 import subprocess
@@ -173,7 +174,7 @@ def main() -> None:
         sys.exit(2)
 
     print("SERCOP · HOLDING MUNICIPAL DE MONTECRISTI · captura por comprador\n")
-    salida = {"_meta": {"generado": "2026-08-12", "fuente": API,
+    salida = {"_meta": {"generado": _dt.date.today().isoformat(), "fuente": API,
                         "metodo": "search_ocds por buyer · unión y deduplicación por ocid",
                         "advertencia": "`search` por palabra clave captura <1/3 — no usar"},
               "anios": {}}

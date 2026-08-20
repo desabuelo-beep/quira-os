@@ -62,6 +62,8 @@ from pathlib import Path
 from .scoring import EvidenciaCD
 
 RAIZ = Path(__file__).resolve().parents[3]
+
+from app.agents import sujeto as _S            # noqa: E402
 _INDICE = RAIZ / "data" / "lotaip" / "descargas_indice.json"
 _CONTENIDO = RAIZ / "data" / "lotaip" / "contenido.json"
 _ENLACES = RAIZ / "data" / "lotaip" / "enlaces.json"
@@ -286,8 +288,19 @@ def levantar_evidencia_local(cd_id: str, anio: int, mes: int) -> EvidenciaCD:
             for u in re.findall(r"https?://[^\s;,\"']+", c or "")]
     comprobados = [d["enlaces"].get(u.rstrip(".,;)")) for u in urls]
     comprobados = [e for e in comprobados if e]
+    # ⚠️ SÓLO PENALIZA LO QUE ES DEL SUJETO OBLIGADO (2026-08-20). El cálculo
+    # no miraba la procedencia: un enlace del GAD hacia SERCOP que devolviera
+    # `acceso_restringido` le restaba calidad **al GAD**. Hoy sale bien por
+    # casualidad —los 11 enlaces caídos son todos suyos— pero el día que una
+    # fuente de tercero se degrade, Montecristi pagaría por ella.
+    #
+    # Es ADR-042 §6 aplicado al scoring: `fuente_no_disponible` habla de la
+    # fuente, no del sujeto. La disponibilidad del portal de SERCOP no es un
+    # hecho sobre la gestión de Montecristi.
+    _dominios_propios = _S.dominios()
     rotos = [e for e in comprobados
-             if e.get("estado") in ("enlace_roto", "acceso_restringido")]
+             if e.get("estado") in ("enlace_roto", "acceso_restringido")
+             and any(d in (e.get("url") or "") for d in _dominios_propios)]
     enlaces_vivos = not rotos
 
     # `vigencia_ok`: el dato declarado corresponde al período publicado. Sin fecha

@@ -44,6 +44,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import io
+import datetime as _dt
 import json
 import sys
 import zipfile
@@ -266,7 +267,7 @@ def main() -> None:
 
     p.write_text(json.dumps({"_meta": {
         **_clase,
-        "generado": "2026-08-18",
+        "generado": _dt.date.today().isoformat(),
         "regla": "publicación ≠ artefacto físico · ambos niveles se conservan",
         "limite": "registra QUÉ ES cada artefacto; si cumple lo decide la RO",
         "sondeo_paginas": PAGINAS_SONDEO,

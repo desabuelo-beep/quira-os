@@ -31,6 +31,7 @@ Dylus Lab © 2026
 from __future__ import annotations
 
 import argparse
+import datetime as _dt
 import json
 import subprocess
 import sys
@@ -174,7 +175,7 @@ def main() -> None:
 
     SALIDA.parent.mkdir(parents=True, exist_ok=True)
     SALIDA.write_text(json.dumps(
-        {"_meta": {"generado": "2026-08-17", "fuente": API,
+        {"_meta": {"generado": _dt.date.today().isoformat(), "fuente": API,
                    "transporte": dict(_RED),
                    "regla": "trayectoria tal como la publica la fuente · "
                             "adjudicado ≠ meta cumplida (ADR-049 VIS-INV-003)"},

@@ -22,7 +22,7 @@
   "salidas": {
    "data/lotaip/contenido.json": "f3d18a38cdc96993b4ed2afcdaff3fea5a204527e3493eeed9a6cb8935b15e3c"
   },
-  "sellado": "2026-08-19T22:38:49",
+  "sellado": "2026-08-20T09:40:44",
   "ejecutada_por": "agente",
   "confianza_del_ejecutor": "autodeclarado",
   "sujeto": "130801 Montecristi",
@@ -33,27 +33,35 @@
    "data/lotaip/contenido.json": "f3d18a38cdc96993b4ed2afcdaff3fea5a204527e3493eeed9a6cb8935b15e3c"
   },
   "salidas": {
-   "data/lotaip/enlaces.json": "1475446c5a21b26802cea7f37926794a41deeb9fa3c969936ddfbbf38c3ef3a9"
+   "data/lotaip/enlaces.json": "2a1bb4593b61059b73be7fa1aa0044572055bcf7ddc19aa05c56849ea3c70dd8"
   },
-  "sellado": "2026-08-19T15:26:41"
+  "sellado": "2026-08-20T08:53:52",
+  "ejecutada_por": "agente",
+  "confianza_del_ejecutor": "autodeclarado",
+  "sujeto": "130801 Montecristi",
+  "sujeto_huella": "e187a12ade35259772a1b729391e28470a3d0b505444d810c48f3c6f790e6ae0"
  },
  "inventario": {
   "insumos": {
-   "data/lotaip/enlaces.json": "1475446c5a21b26802cea7f37926794a41deeb9fa3c969936ddfbbf38c3ef3a9"
+   "data/lotaip/enlaces.json": "2a1bb4593b61059b73be7fa1aa0044572055bcf7ddc19aa05c56849ea3c70dd8"
   },
   "salidas": {
-   "data/lotaip/inventario_documental.json": "f39c64ad952f304b11bdd8fa43a7869c3fd58f5aacf13b2ea29c484e78f34f90"
+   "data/lotaip/inventario_documental.json": "770b6c8780e3aadb974ab728d0d3ce4d99beeb29761143afae1c6a9596b35fed"
   },
-  "sellado": "2026-08-19T15:26:41"
+  "sellado": "2026-08-20T09:18:05",
+  "ejecutada_por": "agente",
+  "confianza_del_ejecutor": "autodeclarado",
+  "sujeto": "130801 Montecristi",
+  "sujeto_huella": "e187a12ade35259772a1b729391e28470a3d0b505444d810c48f3c6f790e6ae0"
  },
  "contenedores": {
   "insumos": {
-   "data/lotaip/inventario_documental.json": "f39c64ad952f304b11bdd8fa43a7869c3fd58f5aacf13b2ea29c484e78f34f90"
+   "data/lotaip/inventario_documental.json": "770b6c8780e3aadb974ab728d0d3ce4d99beeb29761143afae1c6a9596b35fed"
   },
   "salidas": {
-   "data/lotaip/contenido_contenedores.json": "14f3b3267acdc815932fa5b7261a4b1946149e704246f8cffefcc5f05dd97ef4"
+   "data/lotaip/contenido_contenedores.json": "1638b74b086d03a415a00f8fb3c741508949d5dce102011b7f725e9011ed5b28"
   },
-  "sellado": "2026-08-19T22:17:34",
+  "sellado": "2026-08-20T09:19:18",
   "ejecutada_por": "agente",
   "confianza_del_ejecutor": "autodeclarado",
   "sujeto": "130801 Montecristi",

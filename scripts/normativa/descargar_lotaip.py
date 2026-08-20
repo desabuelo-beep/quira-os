@@ -39,6 +39,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import datetime as _dt
 import json
 import re
 import subprocess
@@ -230,7 +231,7 @@ def main() -> None:
         print("    Antes de leerlo como falta de publicación: descartar el instrumento (OBS-030).")
 
     INDICE.write_text(json.dumps(
-        {"_meta": {"generado": "2026-08-17", "fuente": BASE_ARCHIVOS,
+        {"_meta": {"generado": _dt.date.today().isoformat(), "fuente": BASE_ARCHIVOS,
                    "transporte": dict(_RED), "total": len(out),
                    "regla": "integridad y SHA256 · el contenido se juzga aparte",
                    "nota": "los binarios no van al repo: son públicos y reproducibles"},

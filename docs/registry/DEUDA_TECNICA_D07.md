@@ -93,6 +93,34 @@ se publica en vez de suponerse.
 **Dónde está fijado.** `apropiacion.cobertura_de_la_plataforma()`, derivado del código de cada
 dominio y de las pruebas adversariales que lo nombran. Nadie declara «protegido».
 
+## 3-bis · CERRADO el 2026-08-19 · la reanudación se saltaba el trabajo
+
+**Encontrado al acreditar la etapa `enlaces`**, que es exactamente para lo que servía acreditarla.
+
+`verificar_enlaces_lotaip.py` reanuda desde su salida anterior y copiaba cualquier registro cuyo
+estado no fuera `no_verificable`. Eso incluía **`no_intentado_por_corte_de_fuente`** — un estado
+que no dice nada del enlace: dice que nuestro instrumento se detuvo aquella vez.
+
+    corrida del 17-ago   135 enlaces cortados por un fallo transitorio de SERCOP
+    corridas siguientes  copian el «no intentado» → NUNCA se reintentan
+    y con ellos          417 «accesibles» se arrastran sin reverificar
+
+La corrida de acreditación lo delató por el reloj: **10 segundos para 576 enlaces**, con 8
+intentos registrados en el transporte. Una etapa que se declaraba `ejecutada` sin haber ejecutado
+— `declarado ≠ ejecutado`, cometido por nosotros mismos mientras lo perseguíamos en el GAD.
+
+**La regla que queda:** *se reutiliza lo que dice algo del enlace; se reintenta lo que dice algo
+de nuestro instrumento.* Y `forzar=True` ahora llega hasta el script (`--rehacer`), no se queda en
+saltarse el «al día».
+
+Fijado en `test_un_corte_de_fuente_no_condena_al_enlace_para_siempre` y
+`test_forzar_una_etapa_fuerza_su_trabajo_no_solo_su_estado`.
+
+**Nota sobre los 135.** Son de `compraspublicas.gob.ec` (SERCOP), no del GAD: enlaces a procesos
+de contratación que el sujeto obligado publica. Su inaccesibilidad, si se confirma, **no es un
+hallazgo sobre Montecristi** sino sobre la disponibilidad de una fuente de tercero (ADR-042 §6:
+`fuente_no_disponible` no dice nada del sujeto).
+
 ## 4 · Portabilidad — 50 puntos de frontera replicada
 
 `personal 0 / 0` · `frontera_fija 50 / 50` (`scripts/ci/check_portabilidad.py`). Ninguno es una

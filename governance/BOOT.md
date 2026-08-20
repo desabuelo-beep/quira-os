@@ -39,8 +39,8 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 
 🩹 **12 GATES** · Curación por DOM (R.8) · **estados, NO bool** · corpus 69/69.
 📑 **PAC** 586 · **SERCOP 265+75** · ⛔ `.docx` gana al `.pdf`.
 ⚖️ **d07 EN LA BRN**: `CNO-VII-001..004` **46/46 SHA** + `RO-VII-001..005` **propuesta**. ⛔ el DOM **consume RO, NO lee la ley** — el error de raíz.
-📡 **MEDICIÓN**: **SITA 2025 0,46 · 2026 0,84** · **0 actas** · num.6 **sin ingresos 8/8** · num.10 **8/8 enlaces 404**.
-🧹 **CORPUS**: 8 chunks de preámbulo fingían artículo (LOTAIP 19 = Pacto Int.).
+📡 **MEDICIÓN**: **SITA 2025 0,4448** (era 0,4646: se contaba bueno lo no mirado) · **0 actas** · num.6 **sin ingresos 8/8** · 11 enlaces caídos.
+🧹 **CORPUS**: 8 chunks de preámbulo fingían artículo (LOTAIP 19 = Pacto).
 🧪 **ADR-042 §6-bis**: falta evidencia→**degrada** · identidad contradictoria→**BLOQUEA** · el SHA prueba el archivo, NO la atribución.
 🎨 **ADR-049**: *la gráfica nunca sabe más que el motor*.
 ⛏️ **ADR-050 CANTERA**: hereda capacidades, NO productos · nada sin prueba.

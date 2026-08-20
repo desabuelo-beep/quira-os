@@ -379,6 +379,39 @@ degrada** a `capacidad` en vez de suponer el ámbito.
 > *(síntesis del colega, 2026-08-19 · adoptada — une OBS-030, OBS-031, OBS-032, ADR-042 §6-bis y
 > este ADR sin añadir doctrina nueva)*
 
+### 12-bis · El estado de una etapa no acredita el trabajo de esa etapa
+
+Hallazgo del 2026-08-19, al intentar acreditar `enlaces`. La etapa devolvió `ejecutada`, código 0,
+sin error alguno — y había hecho **8 comprobaciones de 576** en 10,1 segundos. El script reanudaba
+desde su propia salida anterior y `forzar=True` no llegaba hasta él.
+
+> **La acreditación de una etapa no puede provenir de su estado final; debe poder demostrarse que
+> el trabajo que ese estado afirma ocurrió efectivamente.**
+> *(formulación del colega, 2026-08-19 · adoptada)*
+
+Es la deuda `declarado ≠ existente ≠ ejecutado ≠ exitoso` encontrada **dentro del propio mecanismo
+de verificación**, y en una forma más fina que la enunciada:
+
+    «ejecutada»  ≠  «el trabajo fue ejecutado en ESTA corrida»
+
+**Consecuencia operativa.** Un artefacto que consolida resultados de varias corridas debe declarar,
+registro por registro, a qué población pertenece:
+
+| Población | Qué significa | ¿Cuenta como verificado? |
+|---|---|---|
+| `comprobado_en_esta_corrida` | se fue a la red ahora | sí |
+| `reutilizado_de_corrida_previa` | vale, pero no se comprobó hoy | sí, declarándolo |
+| `no_intentado_en_esta_corrida` | no dice nada del recurso | **no** |
+
+El recuento de «verificados» se construye desde las dos primeras, nunca escondiendo cuál es cuál.
+Y el contador de peticiones reales a la red se publica junto al total, porque fue el reloj —no el
+estado— el que delató la corrida vacía.
+
+**Corolario sobre la reutilización.** *Se reutiliza lo que dice algo del recurso; se reintenta lo
+que dice algo de nuestro instrumento.* `no_intentado_por_corte_de_fuente` era heredado como si
+fuera un resultado, y eso condenaba a 135 enlaces a no verificarse **nunca más** en ninguna corrida
+futura.
+
 ### 13 · El perímetro propio es un artefacto, no una pantalla
 
 `app/agents/apropiacion.py::sellar_autoconocimiento` deriva y persiste

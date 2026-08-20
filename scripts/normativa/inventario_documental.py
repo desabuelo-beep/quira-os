@@ -44,6 +44,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import datetime as _dt
 import json
 import subprocess
 import sys
@@ -367,7 +368,7 @@ def main() -> None:
     p = Path(args.json)
     p.parent.mkdir(parents=True, exist_ok=True)
     p.write_text(json.dumps({"_meta": {
-        "generado": "2026-08-18",
+        "generado": _dt.date.today().isoformat(),
         "regla": "la existencia de un enlace no acredita la existencia ni la "
                  "naturaleza del documento exigido",
         "limite": "este inventario responde QUÉ ES cada artefacto; si cumple lo "

@@ -958,3 +958,116 @@ def test_los_hallazgos_de_la_corrida_llevan_su_cadena():
         assert h.get("procedencia"), f"hallazgo sin cadena: {h['tipo']}"
         assert h.get("explicacion"), "un hallazgo sin explicación no es auditable"
         assert h["procedencia"].get("sujeto"), "no se afirma sin decir sobre quién"
+
+
+def test_un_corte_de_fuente_no_condena_al_enlace_para_siempre():
+    """EL DEFECTO, ENCONTRADO AL ACREDITAR LA ETAPA (2026-08-19).
+
+    La verificación de enlaces reanuda desde su salida anterior, y copiaba
+    cualquier registro cuyo estado no fuera `no_verificable`. Eso incluía
+    `no_intentado_por_corte_de_fuente` — que **no dice nada del enlace**: dice
+    que nuestro instrumento se detuvo aquella vez.
+
+    Consecuencia real: 135 enlaces cortados por un fallo transitorio de SERCOP
+    el 17-ago quedaban condenados a no intentarse nunca más, porque cada corrida
+    copiaba el «no intentado» de la anterior. Y con ellos se arrastraban 417
+    «accesibles» sin reverificar: una corrida de **10 segundos** declaraba haber
+    comprobado 576 enlaces habiendo intentado **8**.
+
+    La regla que esto fija: **se reutiliza lo que dice algo del enlace; se
+    reintenta lo que dice algo de nuestro instrumento.**"""
+    fuente = (RAIZ / "scripts" / "normativa" /
+              "verificar_enlaces_lotaip.py").read_text(encoding="utf-8")
+    assert "NO_REUTILIZABLES" in fuente
+    i = fuente.index("NO_REUTILIZABLES = (")
+    bloque = fuente[i:i + 220]
+    assert "no_intentado_por_corte_de_fuente" in bloque, (
+        "un corte de fuente es una limitación nuestra, no un resultado: debe "
+        "reintentarse en la corrida siguiente")
+
+
+def test_forzar_una_etapa_fuerza_su_trabajo_no_solo_su_estado():
+    """`forzar=True` saltaba el «al día» pero no llegaba al script, que reanudaba
+    desde su propia salida. La etapa terminaba en `ejecutada` sin haber
+    ejecutado: `declarado ≠ ejecutado`, cometido por nosotros."""
+    from app.agents.d07 import etapas as E
+    enlaces = next(e for e in E.ETAPAS if e["id"] == "enlaces")
+    assert enlaces.get("bandera_rehacer") == "--rehacer"
+    fuente = (RAIZ / "app" / "agents" / "d07" / "etapas.py").read_text(encoding="utf-8")
+    assert "bandera_rehacer" in fuente and "args_efectivos" in fuente
+
+
+def test_cada_enlace_declara_si_se_comprobo_en_esta_corrida():
+    """ADR-051 §12-bis. El JSON de enlaces ya demostró poder mentir por
+    omisión: 576 registros con **8 comprobaciones reales** parecían una
+    verificación completa, y sólo el reloj lo delató.
+
+    Ahora cada registro dice a qué población pertenece, para que el recuento de
+    «verificados» no pueda construirse mezclando lo comprobado hoy con lo
+    heredado y con lo que nunca se intentó."""
+    import json
+    ruta = RAIZ / "data" / "lotaip" / "enlaces.json"
+    if not ruta.exists():
+        pytest.skip("sin verificación de enlaces en este entorno")
+    fuente = (RAIZ / "scripts" / "normativa" /
+              "verificar_enlaces_lotaip.py").read_text(encoding="utf-8")
+    for poblacion in ("comprobado_en_esta_corrida",
+                      "reutilizado_de_corrida_previa",
+                      "no_intentado_en_esta_corrida"):
+        assert poblacion in fuente, f"falta declarar la población «{poblacion}»"
+    # Y el transporte debe publicarse: es la prueba independiente del trabajo.
+    meta = json.loads(ruta.read_text(encoding="utf-8"))["_meta"]
+    assert "transporte" in meta and "intentos" in meta["transporte"]
+
+
+def test_ningun_artefacto_declara_su_fecha_a_mano():
+    """Un artefacto rehecho hoy que dice haberse generado hace dos días miente
+    sobre su propia procedencia — y la fecha de generación ES procedencia: la
+    capa «captura» de ADR-042 §6-bis. Se encontró en 9 scripts, incluido el
+    inventario que se acababa de regenerar."""
+    import re
+    patron = re.compile(r'"generado":\s*"20\d\d-\d\d-\d\d"')
+    culpables = []
+    for base in ("scripts", "app"):
+        for f in (RAIZ / base).rglob("*.py"):
+            if patron.search(f.read_text(encoding="utf-8", errors="replace")):
+                culpables.append(str(f.relative_to(RAIZ)))
+    assert not culpables, f"fecha de generación escrita a mano en: {culpables}"
+
+
+def test_un_enlace_roto_de_un_tercero_no_penaliza_al_sujeto():
+    """ADR-042 §6 aplicado al scoring. Los conjuntos del GAD enlazan a SERCOP,
+    CPCCS y otros portales del Estado. Si uno de ésos cae, la calidad de la
+    información **del GAD** no puede bajar por ello: `fuente_no_disponible`
+    habla de la fuente, no del sujeto.
+
+    El cálculo de `enlaces_vivos` no miraba la procedencia. El 2026-08-20 salía
+    bien por casualidad —los 11 enlaces caídos eran todos de Montecristi— pero
+    el día que SERCOP devolviera `acceso_restringido`, Montecristi habría pagado
+    por ello."""
+    fuente = (RAIZ / "app" / "agents" / "d07" /
+              "evidencia.py").read_text(encoding="utf-8")
+    i = fuente.index("rotos = [e for e in comprobados")
+    bloque = fuente[i:i + 320]
+    assert "_dominios_propios" in bloque, (
+        "el cálculo de enlaces rotos debe acotarse a los dominios del sujeto "
+        "obligado; si no, una caída de SERCOP baja la nota del GAD")
+
+
+def test_los_enlaces_caidos_hoy_son_todos_del_sujeto_obligado():
+    """Verificación del dato que sostiene el SITA 2025 actual: los 11 enlaces
+    que penalizan calidad pertenecen a Montecristi, no a terceros. Si esto
+    cambia, el número debe volver a explicarse antes de publicarse."""
+    import json
+    ruta = RAIZ / "data" / "lotaip" / "enlaces.json"
+    if not ruta.exists():
+        pytest.skip("sin verificación de enlaces en este entorno")
+    from app.agents import sujeto as S
+    en = json.loads(ruta.read_text(encoding="utf-8"))["enlaces"]
+    penalizan = [e for e in en
+                 if e.get("estado") in ("enlace_roto", "acceso_restringido")]
+    ajenos = [e for e in penalizan
+              if not any(d in (e.get("url") or "") for d in S.dominios())]
+    assert not ajenos, (
+        f"{len(ajenos)} enlaces de terceros estarían penalizando al sujeto: "
+        f"{[e.get('procedencia') for e in ajenos]}")

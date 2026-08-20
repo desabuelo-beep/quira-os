@@ -35,6 +35,7 @@ Dylus Lab © 2026
 from __future__ import annotations
 
 import argparse
+import datetime as _dt
 import json
 import re
 import sys
@@ -302,7 +303,7 @@ def construir(anio: int) -> dict:
 
     return {
         "_meta": {
-            "generado": "2026-08-12", "anio": anio,
+            "generado": _dt.date.today().isoformat(), "anio": anio,
             "capa": "DERIVADA · no sustituye ninguna fuente",
             "poa": POA_POR_ANIO[anio], "corte_cedula": mes,
             "umbral_prefijo": UMBRAL_PREFIJO,

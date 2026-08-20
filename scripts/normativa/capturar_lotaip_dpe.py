@@ -30,6 +30,7 @@ Dylus Lab © 2026
 from __future__ import annotations
 
 import argparse
+import datetime as _dt
 import json
 import subprocess
 import sys
@@ -165,7 +166,7 @@ def main() -> None:
     args = ap.parse_args()
 
     print("REPOSITORIO LOTAIP · Defensoría del Pueblo\n")
-    salida = {"_meta": {"generado": "2026-08-17", "fuente": API,
+    salida = {"_meta": {"generado": _dt.date.today().isoformat(), "fuente": API,
                         "regla": "URL listada ≠ URL accesible · "
                                  "ausencia ≠ incumplimiento"},
               "entidades": {}}

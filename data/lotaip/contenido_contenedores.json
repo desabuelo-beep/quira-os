@@ -3,7 +3,7 @@
   "clase_epistemologica": "material_de_ingenieria",
   "significa": "Producido durante I+D para construir, probar o calibrar el sistema. Puede ser exacto y aun así NO sostiene una afirmación sobre el sujeto observado: sirve como fixture, caso límite o regresión.",
   "por_que": "la cadena de adquisición que lo produjo aún no está acreditada como reproducible sobre este sujeto",
-  "generado": "2026-08-18",
+  "generado": "2026-08-20",
   "regla": "publicación ≠ artefacto físico · ambos niveles se conservan",
   "limite": "registra QUÉ ES cada artefacto; si cumple lo decide la RO",
   "sondeo_paginas": 8,

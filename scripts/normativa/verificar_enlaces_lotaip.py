@@ -37,6 +37,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import datetime as _dt
 import io
 import json
 import re
@@ -225,6 +226,8 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--limite", type=int, default=0, help="0 = todos")
     ap.add_argument("--solo-gad", action="store_true")
+    ap.add_argument("--rehacer", action="store_true",
+                    help="ignora el resultado previo y vuelve a comprobar todo")
     args = ap.parse_args()
 
     urls = recolectar()
@@ -246,25 +249,61 @@ def main() -> None:
     print()
 
     previo = {}
-    if SALIDA.exists():
+    if SALIDA.exists() and not args.rehacer:
         previo = {e["url"]: e for e in
                   json.loads(SALIDA.read_text(encoding="utf-8"))["enlaces"]}
 
+    # ⚠️ QUÉ SE PUEDE REUTILIZAR Y QUÉ NO (2026-08-19). La reanudación copiaba
+    # cualquier registro anterior cuyo estado no fuera `no_verificable`, y eso
+    # incluía `no_intentado_por_corte_de_fuente` — un estado que NO es un
+    # resultado sobre el enlace, sino una limitación NUESTRA de aquella corrida.
+    #
+    # Consecuencia real: 135 enlaces cortados por un fallo transitorio de SERCOP
+    # el 17-ago quedaban condenados a no intentarse **nunca más**, en ninguna
+    # corrida futura, porque cada una copiaba el «no intentado» de la anterior.
+    # Y con ellos, los 417 «accesibles» se arrastraban sin reverificar: una
+    # corrida de 10 segundos declaraba haber comprobado 576 enlaces habiendo
+    # intentado 8.
+    #
+    # La regla: se reutiliza lo que dice algo DEL ENLACE; se reintenta lo que
+    # dice algo de nuestro instrumento.
+    NO_REUTILIZABLES = (None, "no_verificable", "no_intentado_por_corte_de_fuente")
+
+    # ⚠️ TRES POBLACIONES QUE NO SE PUEDEN MEZCLAR (colega, 2026-08-19):
+    #
+    #   1 comprobado_en_esta_corrida   se fue a la red AHORA
+    #   2 reutilizado_de_corrida_previa  vale, pero no se comprobó hoy
+    #   3 no_intentado_por_corte        no dice nada del enlace
+    #
+    # Cada registro declara a cuál pertenece, porque el JSON final ya demostró
+    # poder mentir por omisión: 576 registros con 8 comprobaciones reales
+    # parecían una verificación completa. **El número de «verificados» sólo se
+    # construye desde 1 + 2, y aun así dejando visible cuál es cuál.**
+    COMPROBADO = "comprobado_en_esta_corrida"
+    REUTILIZADO = "reutilizado_de_corrida_previa"
+    NO_INTENTADO = "no_intentado_en_esta_corrida"
+
     out = []
     for i, u in enumerate(claves, 1):
-        if u in previo and previo[u].get("estado") not in (None, "no_verificable"):
-            out.append(previo[u])
+        if u in previo and previo[u].get("estado") not in NO_REUTILIZABLES:
+            reg = dict(previo[u])
+            reg["origen_del_dato"] = REUTILIZADO
+            reg["comprobado_el"] = previo[u].get("comprobado_el", "")
+            out.append(reg)
             continue
         if _RED["seguidos"] >= MAX_FALLOS_SEGUIDOS:
             out.append({"url": u, "procedencia": procedencia(u),
                         "estado": "no_intentado_por_corte_de_fuente",
+                        "origen_del_dato": NO_INTENTADO,
                         "referencias": len(urls[u])})
             continue
         d = comprobar(u)
         d.update({"url": u, "procedencia": procedencia(u),
                   "forma": forma_del_enlace(u),
                   "referencias": len(urls[u]),
-                  "citado_en": urls[u][:4]})
+                  "citado_en": urls[u][:4],
+                  "origen_del_dato": COMPROBADO,
+                  "comprobado_el": _dt.datetime.now().isoformat(timespec="seconds")})
         out.append(d)
         if i % 100 == 0:
             print(f"   {i}/{len(claves)} · fallos {_RED['fallos']}", flush=True)
@@ -312,7 +351,7 @@ def main() -> None:
         print("    Antes de leerlo como enlace roto: descartar el instrumento (OBS-030).")
 
     SALIDA.write_text(json.dumps(
-        {"_meta": {"generado": "2026-08-17", "transporte": dict(_RED),
+        {"_meta": {"generado": _dt.date.today().isoformat(), "transporte": dict(_RED),
                    "urls_unicas": len(claves), "referencias": total_ref,
                    "regla": "enlace alojado en el dominio del GAD = información "
                             "oficial (Javo, 2026-08-17)",
