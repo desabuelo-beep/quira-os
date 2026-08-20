@@ -102,3 +102,47 @@ def test_una_obligacion_sin_periodicidad_declarada_no_la_inventa():
         "porque la Guía no lo hace")
     for o in sin_declarar:
         assert o.periodicidad.get("estado") in (None, "no_sustentado")
+
+
+def test_el_numeral_22_existe_como_obligacion_propia():
+    """LO QUE JAVO ENCONTRÓ (2026-08-20), y era un defecto del extractor.
+
+    > *«El 5-22 son dos cosas que se piden: por un lado el formulario para
+    > acceso a la información pública y por otro la evidencia de los servicios
+    > brindados. Y así cada literal tiene su propia forma, reglamentada.»*
+
+    La vara **no tenía el numeral 22**. El extractor fusionaba el bloque porque
+    la guía lo desarrolla junto al 5, con un solo conjunto de datos — y un
+    comentario mío afirmaba que separarlos «inventaría dos exigencias donde la
+    norma pone una». La norma pone dos, y la guía las transcribe por separado:
+
+        [293] Números 5 y 22                          ← encabezado plural
+        [296] «Los servicios que brinda la entidad…»   (ibidem, número 5)
+        [297] «Formularios y formatos de solicitudes…» (ibidem, número 22)
+
+    Fusionar la publicación NO fusiona la obligación. Mientras estuvieron
+    fundidas era **imposible** sostener el hallazgo que la norma permite:
+    «publica los servicios pero no los formularios»."""
+    obligaciones = {o.numeral: o for o in M.cargar_obligaciones()}
+    assert "22" in obligaciones, "el numeral 22 desapareció de la vara otra vez"
+    o22 = obligaciones["22"]
+    assert "ormulario" in o22.texto, (
+        "el numeral 22 debe traer su obligación literal, no la del 5")
+    assert "ervicio" in obligaciones["5"].texto
+    assert o22.texto != obligaciones["5"].texto, "son dos obligaciones distintas"
+
+
+def test_los_campos_del_bloque_compartido_no_se_reparten_por_nuestra_cuenta():
+    """La guía asigna SEIS campos al bloque 5-22 y **no dice cuáles
+    corresponden a cada numeral**. Repartirlos por criterio propio sería
+    completar la norma — precisamente lo que la vara existe para no hacer.
+
+    Se declara el estado y se deja el reparto como lo que es: un silencio del
+    corpus, no una decisión de QUIRA."""
+    obligaciones = {o.numeral: o for o in M.cargar_obligaciones()}
+    for num in ("5", "22"):
+        d = obligaciones[num]
+        assert d.campos_exigidos, f"el numeral {num} llegó sin campos"
+    # Ambos heredan los mismos campos del bloque, y eso se declara.
+    assert (obligaciones["5"].campos_exigidos ==
+            obligaciones["22"].campos_exigidos)

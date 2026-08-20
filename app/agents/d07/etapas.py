@@ -398,6 +398,9 @@ NO_SON_ETAPAS = {
                  "regenera sola — un sistema que se reescribe su propio patrón "
                  "no mide nada",
         "scripts": ["extraer_exigencias_lotaip.py", "extraer_matriz_lotaip.py",
+                    # produce la matriz de calificación del Anexo 1 del
+                    # Instructivo: qué parámetros evalúa cada numeral
+                    "extraer_matriz_calificacion.py",
                     "enriquecer_catalogo_d07.py", "register_ack.py",
                     "manifest.py", "validate_f01.py"],
     },

@@ -2,15 +2,15 @@
  "_meta": {
   "que": "sello de la vara normativa LOTAIP · art. 19",
   "por_que": "congelada durante la fase probatoria. Si el analisis contradice la matriz se abre incidencia de corpus; NO se corrige la matriz en silencio.",
-  "sellada": "2026-08-17",
+  "sellada": "2026-08-20",
   "resellada": "2026-08-17 · incorporado art. 24 GAD"
  },
  "archivo": "data/lotaip/exigencias_por_numeral.json",
- "sha256": "e5f753f73a4b44df92d8c860ac705d377df50f1871fc367d09096320db92ed03",
+ "sha256": "408eec79df947d30ed43ba85cb80f9a887bd2b8aeedaccc5c60e070caa278db4",
  "fuente_normativa": "LOTAIP - guia-metodologica-mecanismos.docx",
  "sha256_fuente": "4c76ad8934bef620ef3b486cb30e199ffcf5985c8f0feed66953b9ddcceee019",
- "numerales": 25,
- "campos_exigidos": 162,
+ "numerales": 26,
+ "campos_exigidos": 168,
  "regla_de_ausencia": [
   "NO APLICA",
   "INFORMACIÓN NO DISPONIBLE"
@@ -22,5 +22,13 @@
    "mensual"
   ],
   "nota": "obligacion especifica de GAD · matriz separada del art. 19"
- }
+ },
+ "_historial": [
+  {
+   "sha256_anterior": "e5f753f73a4b44df92d8c860ac705d377df50f1871fc367d09096320db92ed03",
+   "resellada": "2026-08-20",
+   "motivo": "el numeral 22 (formularios y formatos de solicitudes) no existia en la vara: el extractor fundia el bloque 5-22 en una sola obligacion. La guia transcribe DOS obligaciones (parrafos 296 y 297) bajo un encabezado plural «Numeros 5 y 22» y les asigna un solo conjunto de datos. Fusionar la publicacion NO fusiona la obligacion.",
+   "quien_lo_hallo": "Javo, 2026-08-20"
+  }
+ ]
 }

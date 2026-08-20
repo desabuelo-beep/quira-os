@@ -339,7 +339,10 @@ def _medir(c: Corrida, meses: list[int]) -> None:
             # rector mueve el plazo o admite otro formato, cambia la regla.
             s = evaluar_cd(cd_id, ev, fecha_monitoreo=corte,
                            formatos_abiertos=R.formatos_datos_abiertos(),
-                           dia_limite=R.dia_limite_registro())
+                           dia_limite=R.dia_limite_registro(),
+                           # Qué parámetros cualitativos evalúa el Instructivo
+                           # para ESTE conjunto. No son los mismos para todos.
+                           parametros_cualitativos=R.parametros_cualitativos(cd_id))
             scores_anio.append(s)
             if not ev.existe:
                 c.resultados.append({

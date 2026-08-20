@@ -385,6 +385,45 @@ Lo que QUIRA no decide es **qué información debería existir** — eso lo fija
 determina, a partir del corpus, qué debía materializarse, cómo debía publicarse, y qué puede
 afirmarse sobre lo que efectivamente encuentra.
 
+### Auditoría del scoring contra el Instructivo · 2026-08-20
+
+Javo ordenó la verificación que faltaba:
+
+> *«Sincerar todo en base a la norma y las metodologías para no inventarnos nada. Este DOM debe
+> quedar impoluto e inexpugnable como base para los demás.»*
+
+Se confrontó `scoring.py` contra el **Instructivo para evaluar el nivel de cumplimiento de los
+parámetros técnicos de la transparencia activa** (DPE 2024), parámetro por parámetro.
+
+| | Instructivo | Motor | |
+|---|---|---|---|
+| **SITA** | `(CTA+ETA+RP+CI)/4`, «promedio de los valores promedio de cada parámetro» (§Subíndice, párr. 268) | idéntico | ✅ |
+| **CTA** | 1,0 completa y actualizada · **0,5 incompleta O desactualizada** · 0,0 sin información (Tabla 1) | idéntico | ✅ |
+| **ETA** | 1 tres estrellas · 0 sin información (Tabla 2) | idéntico | ✅ |
+| **RP** | 1 dentro del plazo · 0 fuera (Tabla 3) | idéntico | ✅ |
+| **CI** | tres parámetros **asignados numeral por numeral** (Anexo 1) | los exigía **todos a todos** | ⛔ |
+
+**El defecto.** El Anexo 1 del Instructivo trae una matriz de calificación que declara, para cada
+numeral, qué parámetros cualitativos se evalúan:
+
+    estado_de_verificables      20 de 24 numerales — NO al 2, 3, 4 ni 6
+    vigencia_de_la_informacion  sólo a los numerales 16 y 18
+    validez_de_la_informacion   sólo a los numerales 3 y 6
+
+El motor exigía los tres a los 24. Un conjunto al que la norma no le pide vigencia perdía calidad
+por no tenerla: **un castigo inventado por el instrumento**, exactamente lo que este dominio
+existe para no hacer.
+
+**Impacto medido.** Sobre la evidencia de 2025 el SITA no se movió —los `CI = 0` de Montecristi
+vienen de verificables caídos, que sí le aplican—, pero la corrección impide el castigo injusto en
+cualquier corrida futura y en los otros 221 GAD. La matriz se extrajo a `matriz_calificacion.json`
+con el SHA del Instructivo, y los parámetros llegan al motor **desde la RO**, nunca desde el
+código (Regla de Oro 9).
+
+**Y una confirmación independiente.** El Anexo 1 lista los **numerales 5 y 22 como filas
+separadas**, con sus propias descripciones. La misma Defensoría los evalúa por separado — lo que
+respalda por otra vía la corrección que Javo hizo ese mismo día sobre la vara.
+
 ### Pendientes — adquisición de dato, no cómputo pendiente
 
 - **Inventario documental completo:** falta abrir el universo restante y descomprimir los 27 ZIP.

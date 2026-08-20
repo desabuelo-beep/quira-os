@@ -68,9 +68,23 @@ SUBNUMERALES_1 = {
     "Metas y objetivos de las unidades administrativas": "1.3",
 }
 
-# Un numeral puede compartir conjunto de datos con otro: la guía desarrolla el 5
-# (servicios) y el 22 (formularios) en un mismo bloque, con una sola lista de campos y
-# una sola periodicidad. Separarlos inventaría dos exigencias donde la norma pone una.
+# ⚠️ ESTE COMENTARIO DECÍA LO CONTRARIO, Y ERA FALSO (corregido 2026-08-20). Decía
+# que «separarlos inventaría dos exigencias donde la norma pone una». La norma pone
+# DOS: el art. 19 numeral 5 manda los servicios que brinda la entidad, y el numeral 22
+# manda los formularios y formatos de solicitudes. La guía los desarrolla en un mismo
+# bloque —encabezado literal «Números 5 y 22», párrafo 293— y les asigna **un solo
+# conjunto de datos**, pero eso es una decisión de PUBLICACIÓN, no una fusión de las
+# obligaciones.
+#
+# Javo lo señaló con un caso: *«el 5-22 son dos cosas que se piden: por un lado el
+# formulario para acceso a la información pública y por otro la evidencia de los
+# servicios brindados»*. Y aportó evidencia comparativa dentro del mismo holding: el
+# Patronato publica los servicios como manda la norma; el GAD no.
+#
+# La regla que queda (colega, 2026-08-20): **la clave de publicación identifica el
+# contenedor de transparencia; la obligación normativa determina la unidad de
+# evaluación.** Fundirlas impedía para siempre decir «publica los servicios pero no
+# los formularios», que es exactamente el hallazgo que la norma permite sostener.
 COMPARTIDOS = {"5": ["5", "22"]}
 
 
@@ -211,12 +225,15 @@ def _leer_bloque(ps, b: dict) -> dict:
     p0, p1 = b["desde"], b["hasta"]
     enunciado, campos, periodo, en_campos = None, [], None, False
     p_campos = p_periodo = None
+    # Un bloque compartido transcribe DOS obligaciones, una por numeral. Quedarse
+    # con la primera perdía la del numeral 22 para siempre.
+    transcritas: list[str] = []
 
     for i in range(p0, p1):
         t, s = ps[i]
         if not t:
             continue
-        if enunciado is None and t.startswith(("“", '"')):
+        if t.startswith(("“", '"')):
             # La transcripción puede abarcar VARIOS párrafos: los numerales 8
             # (contratación) y 17 (audiencias) abren comilla y la cierran dos o tres
             # párrafos después. Exigir el cierre en el mismo párrafo dejaba sin
@@ -232,8 +249,11 @@ def _leer_bloque(ps, b: dict) -> dict:
                     break
             crudo = _txt(" ".join(trozos))
             m = re.match(r'^[“"](.+?)[”"]', crudo)
-            enunciado = _txt(m.group(1)) if m else (crudo.lstrip('“"') if not cerro else None)
-            if enunciado:
+            hallado = _txt(m.group(1)) if m else (crudo.lstrip('“"') if not cerro else None)
+            if hallado:
+                transcritas.append(hallado)
+                if enunciado is None:
+                    enunciado = hallado
                 continue
         if s == "Heading 2" and _norm(t).startswith("conjunto de datos"):
             en_campos, p_campos = True, i
@@ -270,7 +290,41 @@ def _leer_bloque(ps, b: dict) -> dict:
     }
     if b["numeral"] in COMPARTIDOS:
         d["comparte_conjunto_con"] = COMPARTIDOS[b["numeral"]]
+        d["obligaciones_transcritas"] = transcritas
     return d
+
+
+def _expandir_compartidos(numerales: list[dict]) -> list[dict]:
+    """Un bloque que desarrolla dos numerales produce DOS obligaciones.
+
+    Comparten conjunto de datos, campos y periodicidad —así lo manda la guía— pero
+    cada una conserva su enunciado literal y su identidad. **La guía NO reparte los
+    seis campos entre ambos numerales**, y eso se declara como lo que es: un dato
+    sobre la norma, no una decisión nuestra."""
+    fuera = []
+    for d in numerales:
+        comparte = d.get("comparte_conjunto_con")
+        if not comparte or len(comparte) < 2:
+            fuera.append(d)
+            continue
+        transcritas = d.pop("obligaciones_transcritas", []) or []
+        for k, num in enumerate(comparte):
+            copia = json.loads(json.dumps(d))
+            copia["numeral"] = num
+            if k < len(transcritas):
+                copia["obligacion"] = transcritas[k]
+                copia["obligacion_estado"] = "transcrita"
+            elif num != d["numeral"]:
+                copia["obligacion"] = None
+                copia["obligacion_estado"] = "no_sustentado"
+            copia["campos_estado"] = "declarados_para_el_bloque_compartido"
+            copia["nota_compartido"] = (
+                f"la guía desarrolla los numerales {' y '.join(comparte)} en un mismo "
+                f"bloque y les asigna un solo conjunto de datos. Los campos y la "
+                f"periodicidad son del BLOQUE; la guía no los reparte entre ambas "
+                f"obligaciones, y QUIRA no lo hace por ella.")
+            fuera.append(copia)
+    return fuera
 
 
 def _anexo(ps: list[tuple[str, str]]) -> dict:
@@ -312,7 +366,7 @@ def extraer() -> dict:
     ps = [(p.text.strip(), p.style.name) for p in doc.paragraphs]
 
     bloques = _bloques_cap2(ps)
-    numerales = [_leer_bloque(ps, b) for b in bloques]
+    numerales = _expandir_compartidos([_leer_bloque(ps, b) for b in bloques])
 
     # El bloque `1` sólo transcribe el enunciado del artículo; el desarrollo vive en
     # 1.1/1.2/1.3. Se propaga la transcripción a los tres y el bloque suelto se retira:

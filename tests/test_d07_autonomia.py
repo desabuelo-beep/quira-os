@@ -1071,3 +1071,98 @@ def test_los_enlaces_caidos_hoy_son_todos_del_sujeto_obligado():
     assert not ajenos, (
         f"{len(ajenos)} enlaces de terceros estarían penalizando al sujeto: "
         f"{[e.get('procedencia') for e in ajenos]}")
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# AUDITORÍA DEL SCORING CONTRA EL INSTRUCTIVO · 2026-08-20
+# ══════════════════════════════════════════════════════════════════════════════
+# Javo: *«Sincerar todo en base a la norma y las metodologías para no
+# inventarnos nada. Este DOM debe quedar impoluto e inexpugnable como base para
+# los demás.»*
+#
+# Se confrontó `scoring.py` contra el Instructivo DPE 2024, parámetro por
+# parámetro. Tres de cuatro coincidían. El cuarto no.
+
+def test_los_parametros_cualitativos_no_aplican_a_todos_los_conjuntos():
+    """EL DEFECTO QUE LA AUDITORÍA ENCONTRÓ. `CI` exigía los tres parámetros
+    cualitativos a TODOS los conjuntos. El Anexo 1 del Instructivo los asigna
+    uno por uno:
+
+        estado_de_verificables      20 de 24 — NO al 2, 3, 4 ni 6
+        vigencia_de_la_informacion  sólo a los numerales 16 y 18
+        validez_de_la_informacion   sólo a los numerales 3 y 6
+
+    Exigir un parámetro que la norma no aplica degrada la calificación del
+    sujeto observado por una regla que nadie escribió."""
+    from app.agents.d07 import reglas as R
+    # Los que la norma exime de todo criterio cualitativo.
+    assert R.parametros_cualitativos("CD-02") == []
+    assert R.parametros_cualitativos("CD-04") == []
+    # Vigencia: sólo dos numerales en todo el artículo 19.
+    assert "vigencia_de_la_informacion" in R.parametros_cualitativos("CD-16")
+    assert "vigencia_de_la_informacion" in R.parametros_cualitativos("CD-18")
+    assert "vigencia_de_la_informacion" not in R.parametros_cualitativos("CD-09")
+    # Validez: sólo el 3 (remuneraciones) y el 6 (presupuesto).
+    assert "validez_de_la_informacion" in R.parametros_cualitativos("CD-03")
+    assert "validez_de_la_informacion" in R.parametros_cualitativos("CD-06")
+    assert "validez_de_la_informacion" not in R.parametros_cualitativos("CD-01")
+
+
+def test_un_conjunto_sin_parametros_cualitativos_no_pierde_calidad():
+    """Si el Instructivo no le asigna ninguno, la calidad no se degrada por
+    criterios cualitativos: no hay ninguno que aplicar. Suponerlos sería
+    inventarlos, y era lo que ocurría."""
+    from app.agents.d07 import reglas as R
+    from app.agents.d07.scoring import EvidenciaCD, evaluar_cd
+    ev = EvidenciaCD(existe=True, formato_archivo="csv", campos_completos=True,
+                     fecha_dato=_dt.date(2025, 1, 31),
+                     fecha_registro=_dt.date(2025, 2, 10),
+                     enlaces_vivos=True, vigencia_ok=False, validez_ok=False)
+    corte = _dt.date(2025, 2, 20)
+    # CD-02: el Instructivo no le asigna parámetros cualitativos.
+    s = evaluar_cd("CD-02", ev, fecha_monitoreo=corte,
+                   parametros_cualitativos=R.parametros_cualitativos("CD-02"))
+    assert s.ci == 1, "se le exigió un criterio que la norma no le aplica"
+    # CD-03: sí le exige validez, y la evidencia no la tiene.
+    s3 = evaluar_cd("CD-03", ev, fecha_monitoreo=corte,
+                    parametros_cualitativos=R.parametros_cualitativos("CD-03"))
+    assert s3.ci == 0, "la validez SÍ le aplica al numeral 3 y debe pesar"
+
+
+def test_la_formula_del_sita_es_la_del_instructivo():
+    """Verificada contra el texto literal (Instructivo §Subíndice de
+    Transparencia Activa, párrafo 268):
+
+        SITA [%] = (CTA+ETA+RP+CI)/4
+
+    y «el SITA será el promedio de los valores promedio de cada parámetro» —es
+    decir, se promedia cada parámetro sobre los conjuntos y luego los cuatro
+    entre sí; no se promedian SITAs individuales."""
+    from app.agents.d07.scoring import ScoreCD, calcular_sita
+    s = calcular_sita([ScoreCD("A", 1.0, 1, 1, 1, []),
+                       ScoreCD("B", 0.5, 0, 1, 0, []),
+                       ScoreCD("C", 0.0, 0, 0, 0, [])])
+    assert s["CTA"] == round((1.0 + 0.5 + 0.0) / 3, 4)
+    assert s["ETA"] == round((1 + 0 + 0) / 3, 4)
+    assert s["SITA"] == round((s["CTA"] + s["ETA"] + s["RP"] + s["CI"]) / 4, 4)
+
+
+def test_cta_admite_el_medio_punto_del_instructivo():
+    """Tabla 1 del Instructivo: información **incompleta O desactualizada** vale
+    0,5 — no 0. Un motor binario habría castigado como ausencia lo que la norma
+    puntúa a la mitad."""
+    from app.agents.d07.scoring import EvidenciaCD, evaluar_cd
+    base = dict(existe=True, formato_archivo="csv",
+                fecha_registro=_dt.date(2025, 2, 10),
+                enlaces_vivos=True, vigencia_ok=True, validez_ok=True)
+    corte = _dt.date(2025, 2, 20)
+    completa = evaluar_cd("CD-02", EvidenciaCD(**base, campos_completos=True,
+                                               fecha_dato=_dt.date(2025, 1, 31)),
+                          fecha_monitoreo=corte, parametros_cualitativos=[])
+    incompleta = evaluar_cd("CD-02", EvidenciaCD(**base, campos_completos=False,
+                                                 fecha_dato=_dt.date(2025, 1, 31)),
+                            fecha_monitoreo=corte, parametros_cualitativos=[])
+    ausente = evaluar_cd("CD-02", EvidenciaCD(
+        existe=False, formato_archivo=None, campos_completos=False,
+        fecha_dato=None, fecha_registro=None), fecha_monitoreo=corte)
+    assert (completa.cta, incompleta.cta, ausente.cta) == (1.0, 0.5, 0.0)

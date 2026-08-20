@@ -1,0 +1,351 @@
+{
+ "_meta": {
+  "fuente": "LOTAIP - Instructivo-monitoreo-transparencia-activa-2024.docx",
+  "sha256": "9cd14fae86b4b5f040abd9c1e8bcae230fe2d1d85975bce8ce93f648e76beb49",
+  "norma": "Instructivo para evaluar el nivel de cumplimiento de los parámetros técnicos de la transparencia activa · Defensoría del Pueblo, 2024",
+  "seccion": "Anexo No. 1 · Formatos de evaluación",
+  "regla": "lo que la tabla marca se registra; lo que deja en blanco se declara NO APLICABLE. QUIRA no reparte ni completa.",
+  "por_que": "el motor exigía los tres parámetros cualitativos a todos los numerales; el Instructivo los asigna uno por uno",
+  "generado": "2026-08-20",
+  "numerales": 24,
+  "filas_del_anexo": 26
+ },
+ "numerales": [
+  {
+   "numeral": "1",
+   "formatos": [
+    "1. Estructura orgánica funcional",
+    "2.  Base  legal  que  la  rige  y\nregulaciones\ty\tprocedimientos internos aplicables a la entidad",
+    "3. Metas y objetivos de las unidades administrativas de conformidad con\nlos programas operativos"
+   ],
+   "parametros_cuantitativos": [
+    "informacion_completa_y_actualizada",
+    "datos_abiertos",
+    "registro_dentro_del_plazo"
+   ],
+   "parametros_cualitativos_aplicables": [
+    "estado_de_verificables"
+   ]
+  },
+  {
+   "numeral": "2",
+   "formatos": [
+    "Directorio y distributivo de personal"
+   ],
+   "parametros_cuantitativos": [
+    "informacion_completa_y_actualizada",
+    "datos_abiertos",
+    "registro_dentro_del_plazo"
+   ],
+   "parametros_cualitativos_aplicables": []
+  },
+  {
+   "numeral": "3",
+   "formatos": [
+    "Remuneraciones\tsalariales\tdel personal"
+   ],
+   "parametros_cuantitativos": [
+    "informacion_completa_y_actualizada",
+    "datos_abiertos",
+    "registro_dentro_del_plazo"
+   ],
+   "parametros_cualitativos_aplicables": [
+    "validez_de_la_informacion"
+   ]
+  },
+  {
+   "numeral": "4",
+   "formatos": [
+    "Funcionarios con licencia de servicio\no comisión de servicio"
+   ],
+   "parametros_cuantitativos": [
+    "informacion_completa_y_actualizada",
+    "datos_abiertos",
+    "registro_dentro_del_plazo"
+   ],
+   "parametros_cualitativos_aplicables": []
+  },
+  {
+   "numeral": "5",
+   "formatos": [
+    "Servicios que brinda la entidad, y formularios y formatos de solicitudes"
+   ],
+   "parametros_cuantitativos": [
+    "informacion_completa_y_actualizada",
+    "datos_abiertos",
+    "registro_dentro_del_plazo"
+   ],
+   "parametros_cualitativos_aplicables": [
+    "estado_de_verificables"
+   ]
+  },
+  {
+   "numeral": "6",
+   "formatos": [
+    "Presupuesto que administra la entidad"
+   ],
+   "parametros_cuantitativos": [
+    "informacion_completa_y_actualizada",
+    "datos_abiertos",
+    "registro_dentro_del_plazo"
+   ],
+   "parametros_cualitativos_aplicables": [
+    "validez_de_la_informacion"
+   ]
+  },
+  {
+   "numeral": "7",
+   "formatos": [
+    "Resultados\tdefinitivos\tde\tlas auditorías internas y gubernamentales"
+   ],
+   "parametros_cuantitativos": [
+    "informacion_completa_y_actualizada",
+    "datos_abiertos",
+    "registro_dentro_del_plazo"
+   ],
+   "parametros_cualitativos_aplicables": [
+    "estado_de_verificables"
+   ]
+  },
+  {
+   "numeral": "8",
+   "formatos": [
+    "Procesos\tprecontractuales, contractuales, de adjudicación y liquidación"
+   ],
+   "parametros_cuantitativos": [
+    "informacion_completa_y_actualizada",
+    "datos_abiertos",
+    "registro_dentro_del_plazo"
+   ],
+   "parametros_cualitativos_aplicables": [
+    "estado_de_verificables"
+   ]
+  },
+  {
+   "numeral": "9",
+   "formatos": [
+    "Empresas y personas, jurídicas o naturales, que han incumplido contratos"
+   ],
+   "parametros_cuantitativos": [
+    "informacion_completa_y_actualizada",
+    "datos_abiertos",
+    "registro_dentro_del_plazo"
+   ],
+   "parametros_cualitativos_aplicables": [
+    "estado_de_verificables"
+   ]
+  },
+  {
+   "numeral": "10",
+   "formatos": [
+    "Planes y programas"
+   ],
+   "parametros_cuantitativos": [
+    "informacion_completa_y_actualizada",
+    "datos_abiertos",
+    "registro_dentro_del_plazo"
+   ],
+   "parametros_cualitativos_aplicables": [
+    "estado_de_verificables"
+   ]
+  },
+  {
+   "numeral": "11",
+   "formatos": [
+    "Contratos de crédito externos o internos"
+   ],
+   "parametros_cuantitativos": [
+    "informacion_completa_y_actualizada",
+    "datos_abiertos",
+    "registro_dentro_del_plazo"
+   ],
+   "parametros_cualitativos_aplicables": [
+    "estado_de_verificables"
+   ]
+  },
+  {
+   "numeral": "12",
+   "formatos": [
+    "Mecanismos de rendición de cuentas"
+   ],
+   "parametros_cuantitativos": [
+    "informacion_completa_y_actualizada",
+    "datos_abiertos",
+    "registro_dentro_del_plazo"
+   ],
+   "parametros_cualitativos_aplicables": [
+    "estado_de_verificables"
+   ]
+  },
+  {
+   "numeral": "13",
+   "formatos": [
+    "Viáticos, informes de trabajo y justificativos de movilización"
+   ],
+   "parametros_cuantitativos": [
+    "informacion_completa_y_actualizada",
+    "datos_abiertos",
+    "registro_dentro_del_plazo"
+   ],
+   "parametros_cualitativos_aplicables": [
+    "estado_de_verificables"
+   ]
+  },
+  {
+   "numeral": "14",
+   "formatos": [
+    "Datos de las personas responsables del acceso de información pública"
+   ],
+   "parametros_cuantitativos": [
+    "informacion_completa_y_actualizada",
+    "datos_abiertos",
+    "registro_dentro_del_plazo"
+   ],
+   "parametros_cualitativos_aplicables": [
+    "estado_de_verificables"
+   ]
+  },
+  {
+   "numeral": "15",
+   "formatos": [
+    "Contratos colectivos vigentes"
+   ],
+   "parametros_cuantitativos": [
+    "informacion_completa_y_actualizada",
+    "datos_abiertos",
+    "registro_dentro_del_plazo"
+   ],
+   "parametros_cualitativos_aplicables": [
+    "estado_de_verificables"
+   ]
+  },
+  {
+   "numeral": "16",
+   "formatos": [
+    "Información\tclasificada\tcomo reservada"
+   ],
+   "parametros_cuantitativos": [
+    "informacion_completa_y_actualizada",
+    "datos_abiertos",
+    "registro_dentro_del_plazo"
+   ],
+   "parametros_cualitativos_aplicables": [
+    "estado_de_verificables",
+    "vigencia_de_la_informacion"
+   ]
+  },
+  {
+   "numeral": "17",
+   "formatos": [
+    "Audiencias y reuniones sostenidas por las autoridades electas de todos los niveles de gobierno, funcionarios del nivel jerárquico superior de las instituciones públicas y máximos r"
+   ],
+   "parametros_cuantitativos": [
+    "informacion_completa_y_actualizada",
+    "datos_abiertos",
+    "registro_dentro_del_plazo"
+   ],
+   "parametros_cualitativos_aplicables": [
+    "estado_de_verificables"
+   ]
+  },
+  {
+   "numeral": "18",
+   "formatos": [
+    "Convenios\tnacionales\to internacionales"
+   ],
+   "parametros_cuantitativos": [
+    "informacion_completa_y_actualizada",
+    "datos_abiertos",
+    "registro_dentro_del_plazo"
+   ],
+   "parametros_cualitativos_aplicables": [
+    "estado_de_verificables",
+    "vigencia_de_la_informacion"
+   ]
+  },
+  {
+   "numeral": "19",
+   "formatos": [
+    "Donativos oficiales y protocolares"
+   ],
+   "parametros_cuantitativos": [
+    "informacion_completa_y_actualizada",
+    "datos_abiertos",
+    "registro_dentro_del_plazo"
+   ],
+   "parametros_cualitativos_aplicables": [
+    "estado_de_verificables"
+   ]
+  },
+  {
+   "numeral": "20",
+   "formatos": [
+    "Registro de activos de información"
+   ],
+   "parametros_cuantitativos": [
+    "informacion_completa_y_actualizada",
+    "datos_abiertos",
+    "registro_dentro_del_plazo"
+   ],
+   "parametros_cualitativos_aplicables": [
+    "estado_de_verificables"
+   ]
+  },
+  {
+   "numeral": "21",
+   "formatos": [
+    "Políticas\tpúblicas\to\tcualquier\ninformación que afecte a un grupo específico"
+   ],
+   "parametros_cuantitativos": [
+    "informacion_completa_y_actualizada",
+    "datos_abiertos",
+    "registro_dentro_del_plazo"
+   ],
+   "parametros_cualitativos_aplicables": [
+    "estado_de_verificables"
+   ]
+  },
+  {
+   "numeral": "22",
+   "formatos": [
+    "Servicios que brinda la entidad, y formularios y formatos de solicitudes"
+   ],
+   "parametros_cuantitativos": [
+    "informacion_completa_y_actualizada",
+    "datos_abiertos",
+    "registro_dentro_del_plazo"
+   ],
+   "parametros_cualitativos_aplicables": [
+    "estado_de_verificables"
+   ]
+  },
+  {
+   "numeral": "23",
+   "formatos": [
+    "Acciones afirmativas de cuotas laborales"
+   ],
+   "parametros_cuantitativos": [
+    "informacion_completa_y_actualizada",
+    "datos_abiertos",
+    "registro_dentro_del_plazo"
+   ],
+   "parametros_cualitativos_aplicables": [
+    "estado_de_verificables"
+   ]
+  },
+  {
+   "numeral": "24",
+   "formatos": [
+    "Información relevante para el ejercicio del derecho de acceso a la información pública, la participación ciudadana y el control social"
+   ],
+   "parametros_cuantitativos": [
+    "informacion_completa_y_actualizada",
+    "datos_abiertos",
+    "registro_dentro_del_plazo"
+   ],
+   "parametros_cualitativos_aplicables": [
+    "estado_de_verificables"
+   ]
+  }
+ ]
+}

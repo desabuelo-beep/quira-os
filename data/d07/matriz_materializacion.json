@@ -7,7 +7,7 @@
   "sujeto": "130801 Montecristi",
   "sujeto_huella": "e187a12ade35259772a1b729391e28470a3d0b505444d810c48f3c6f790e6ae0",
   "anio": 2025,
-  "obligaciones": 26
+  "obligaciones": 27
  },
  "relaciones": [
   {
@@ -184,6 +184,34 @@
   {
    "numeral": "5",
    "obligacion": "Los servicios que brinda la entidad y las formas de acceder a ellos, horarios de atención y demás indicaciones necesarias",
+   "procedencia_normativa": {
+    "capitulo": "II",
+    "parrafo_inicio": 296,
+    "parrafo_fin": 326,
+    "parrafo_campos": 307,
+    "parrafo_periodicidad": 324
+   },
+   "campos_exigidos": 6,
+   "campos_reconocidos": [
+    "Denominación del servicio público que se brinda",
+    "Enlace para acceder al reporte del servicio",
+    "Número de personas que acceden mensualmente al servicio institucional",
+    "Enlace para descargar el formulario o formato del servicio (impreso) / correo electrónico para solicitar el servicio",
+    "Enlace para el servicio por internet (en línea)"
+   ],
+   "campos_no_reconocidos": [
+    "Porcentaje de satisfacción sobre el uso del servicio"
+   ],
+   "periodicidad_declarada": true,
+   "artefactos_hallados": 30,
+   "estado_materializacion": "materializacion_parcial",
+   "peso_de_la_afirmacion": "hecho_verificable",
+   "explicacion": "Verificado sobre 130801 Montecristi: la información proviene de Portal Nacional de Transparencia · Defensoría del Pueblo, se conserva el documento obtenido y el criterio aplicado está respaldado por una prueba.",
+   "nota": "5/6 campos reconocidos por nombre"
+  },
+  {
+   "numeral": "22",
+   "obligacion": "Formularios y formatos de solicitudes que se requieran para los trámites inherentes en su campo de acción, con sus debidas instrucciones",
    "procedencia_normativa": {
     "capitulo": "II",
     "parrafo_inicio": 296,

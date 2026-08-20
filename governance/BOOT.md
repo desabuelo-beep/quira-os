@@ -36,26 +36,27 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 
 ## AHORA (estado vivo · historial → `governance/historico/BOOT_2026-06-17.md`)
 🧭 **ADR-031** MCIP=5 motores · **035/037** IA propone/humano valida · **038** BRN **traza, no alimenta**.
 ✅ **PCD: d01·d02·d03·d06·d09** · d08 ENTRABLE · **d07 en curación**.
-🩹 **12 GATES** · Curación por DOM (R.8) · **estados, NO bool** · corpus 69/69.
+🩹 **12 GATES** · Curación por DOM (R.8) · **estados, NO bool**.
 📑 **PAC** 586 · **SERCOP 265+75** · ⛔ `.docx` gana al `.pdf`.
 ⚖️ **d07 EN LA BRN**: `CNO-VII-001..004` **46/46 SHA** + `RO-VII-001..005` **propuesta**. ⛔ el DOM **consume RO, NO lee la ley** — el error de raíz.
-📡 **MEDICIÓN**: **SITA 2025 0,4448** (era 0,4646: se contaba bueno lo no mirado) · **0 actas** · num.6 **sin ingresos 8/8** · 11 enlaces caídos.
+📡 **MEDICIÓN**: **SITA 2025 0,4448** (era 0,4646: se contaba bueno lo no mirado) · **0 actas** · num.6 **sin ingresos 8/8**.
 🧹 **CORPUS**: 8 chunks de preámbulo fingían artículo (LOTAIP 19 = Pacto).
 🧪 **ADR-042 §6-bis**: falta evidencia→**degrada** · identidad contradictoria→**BLOQUEA** · el SHA prueba el archivo, NO la atribución.
-🎨 **ADR-049**: *la gráfica nunca sabe más que el motor*.
-⛏️ **ADR-050 CANTERA**: hereda capacidades, NO productos · nada sin prueba.
+🎨 **ADR-049**: *la gráfica no sabe más que el motor*.
+⛏️ **ADR-050 CANTERA**: hereda capacidades, NO productos.
 🔧 **v5.7_TGI** · promover = **recalcular y GUARDAR** · **IGP 48,33→27,00**.
 ⚖️ **ADR-045/046/047**: 1 superficie·3 custodias · techo = **el documento**.
-🖥️ **OBS-032**: `QUIRA_DATOS`/`QUIRA_VAULT` = frontera 1 vez · **0 rutas personales** · 50 por migrar.
+🖥️ **OBS-032**: `QUIRA_DATOS`/`QUIRA_VAULT` = frontera 1 vez · **0 rutas personales**.
 🏛️ **ADR-048 SIL**: **objeto observado, NO dominio** · ⛔ sin fórmula.
 🚒 **OBS-024/025/028**: Bomberos $1,75M sin meta · 5 factores manuales · ⛔**Ei**.
 📋 **Metas 66/cablea 25** · PDOT **05-11-2024** → **≥2025**.
 🔭 **ADR-042 CONSOLA** (`env_obs`≠`env_ops`) · **MATRIZ_CANONICA, NO el GM**.
-🚦 **8 ESTADOS**: «no existe»≠«no pude obtener»≠«falló». Solo 2 publicables.
+🚦 **8 ESTADOS**: «no existe»≠«no pude obtener»≠«falló».
 🤖 **ADR-051 §12**: 5 dimensiones (capacidad·**sujeto**·ejecución·evidencia·validación) · sin sujeto **NO se construye** la afirmación · perímetro propio SELLADO.
 🔌 **`reglas.py` = ÚNICA puerta a la norma**: cadencia·plazo·formatos del canon · gate **REGLAS** · **472 pruebas**.
 🔐 **PANEL ACCESOS** (→Ops): bitácora 2 meses sin leerse · alerta por fallos concentrados.
-📐 **MATRIZ (Javo)**: el portal NO es colección de archivos sino **materialización de obligaciones** · unidad *obligación↔evidencia* · ⛔ **ausencia ≠ incumplimiento** · 26: 7·17·2.
+📐 **MATRIZ (Javo)**: portal = **materialización de obligaciones** · unidad *obligación↔evidencia* · ⛔ ausencia≠incumplimiento.
+🧾 **SCORING vs Instructivo**: SITA·CTA·ETA·RP ✅ · **CI mal**: exigía los 3 cualitativos a todos (Anexo 1: vigencia 16·18 · validez 3·6).
 ⛔ **EL NOMBRE DEL ENLACE NO ES EVIDENCIA** — 3×: «acta»→certificado · «asistencia»→fotos.
 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 · detalle en el ADR)

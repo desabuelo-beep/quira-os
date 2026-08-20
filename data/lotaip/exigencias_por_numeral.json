@@ -379,7 +379,7 @@
     "Enlace para el servicio por internet (en línea)",
     "Porcentaje de satisfacción sobre el uso del servicio"
    ],
-   "campos_estado": "declarados",
+   "campos_estado": "declarados_para_el_bloque_compartido",
    "periodicidad": {
     "literal": "La actualización de los metadatos de este conjunto de datos y la periodicidad de generación de sus contenidos será mensual.",
     "metadatos": "mensual",
@@ -400,9 +400,63 @@
     "5",
     "22"
    ],
+   "nota_compartido": "la guía desarrolla los numerales 5 y 22 en un mismo bloque y les asigna un solo conjunto de datos. Los campos y la periodicidad son del BLOQUE; la guía no los reparte entre ambas obligaciones, y QUIRA no lo hace por ella.",
    "estructura_formal": {
     "estado": "no_declarada",
     "remisiones": [],
+    "nota": "el anexo del capítulo IX no publica los campos: enlaza hojas de cálculo externas. Fuera del corpus, no verificables por SHA."
+   }
+  },
+  {
+   "numeral": "22",
+   "obligacion": "Formularios y formatos de solicitudes que se requieran para los trámites inherentes en su campo de acción, con sus debidas instrucciones",
+   "obligacion_estado": "transcrita",
+   "campos_exigidos": [
+    "Denominación del servicio público que se brinda",
+    "Enlace para acceder al reporte del servicio",
+    "Número de personas que acceden mensualmente al servicio institucional",
+    "Enlace para descargar el formulario o formato del servicio (impreso) / correo electrónico para solicitar el servicio",
+    "Enlace para el servicio por internet (en línea)",
+    "Porcentaje de satisfacción sobre el uso del servicio"
+   ],
+   "campos_estado": "declarados_para_el_bloque_compartido",
+   "periodicidad": {
+    "literal": "La actualización de los metadatos de este conjunto de datos y la periodicidad de generación de sus contenidos será mensual.",
+    "metadatos": "mensual",
+    "contenidos": [
+     "mensual"
+    ],
+    "estado": "declarada",
+    "condicion": null
+   },
+   "_procedencia": {
+    "capitulo": "II",
+    "parrafo_inicio": 296,
+    "parrafo_fin": 326,
+    "parrafo_campos": 307,
+    "parrafo_periodicidad": 324
+   },
+   "comparte_conjunto_con": [
+    "5",
+    "22"
+   ],
+   "nota_compartido": "la guía desarrolla los numerales 5 y 22 en un mismo bloque y les asigna un solo conjunto de datos. Los campos y la periodicidad son del BLOQUE; la guía no los reparte entre ambas obligaciones, y QUIRA no lo hace por ella.",
+   "estructura_formal": {
+    "estado": "remitida_a_recurso_externo",
+    "remisiones": [
+     {
+      "que": "​estructura del conjunto de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1SmQZtRmaJRVZmmBWkqnO6evJZ8r56ySd/edit#gid=1027257024"
+     },
+     {
+      "que": "​metadatos",
+      "url": "https://docs.google.com/spreadsheets/d/1SmQZtRmaJRVZmmBWkqnO6evJZ8r56ySd/edit#gid=102743060"
+     },
+     {
+      "que": "​diccionario de datos",
+      "url": "https://docs.google.com/spreadsheets/d/1SmQZtRmaJRVZmmBWkqnO6evJZ8r56ySd/edit#gid=1479723271"
+     }
+    ],
     "nota": "el anexo del capítulo IX no publica los campos: enlaza hojas de cálculo externas. Fuera del corpus, no verificables por SHA."
    }
   },

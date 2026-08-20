@@ -46,9 +46,41 @@ parametros:
   frecuencia: mensual             # el registro es mensual; la periodicidad del CONTENIDO
                                   # varía por conjunto y se declara abajo, porque la norma
                                   # la fija numeral por numeral y no de forma uniforme.
+  # ── Parámetros cualitativos · Anexo 1 del Instructivo DPE 2024 ──────────────
+  # ⚠️ EL MOTOR LOS EXIGÍA TODOS A TODOS. El Instructivo los asigna uno por uno:
+  #   estado_de_verificables      20 de 24 numerales — NO al 2, 3, 4 ni 6
+  #   vigencia_de_la_informacion  sólo a los numerales 16 y 18
+  #   validez_de_la_informacion   sólo a los numerales 3 y 6
+  # Exigir un parámetro que la norma no aplica penaliza al sujeto observado por
+  # una regla que nadie escribió. Javo: «aquí no nos inventamos nada, todo está
+  # listo en los documentos técnicos de la DPE» (2026-08-20).
+  # Fuente: Instructivo 2024, Anexo 1 · sha256 9cd14fae86b4b5f040abd9c1…
+  parametros_cualitativos_por_cd:
+    CD-01: ["estado_de_verificables"]
+    CD-02: []
+    CD-03: ["validez_de_la_informacion"]
+    CD-04: []
+    CD-05: ["estado_de_verificables"]   # union de los numerales 5 y 22, que el Anexo 1 lista por separado
+    CD-06: ["validez_de_la_informacion"]
+    CD-07: ["estado_de_verificables"]
+    CD-08: ["estado_de_verificables"]
+    CD-09: ["estado_de_verificables"]
+    CD-10: ["estado_de_verificables"]
+    CD-11: ["estado_de_verificables"]
+    CD-12: ["estado_de_verificables"]
+    CD-13: ["estado_de_verificables"]
+    CD-14: ["estado_de_verificables"]
+    CD-15: ["estado_de_verificables"]
+    CD-16: ["estado_de_verificables", "vigencia_de_la_informacion"]
+    CD-17: ["estado_de_verificables"]
+    CD-18: ["estado_de_verificables", "vigencia_de_la_informacion"]
+    CD-19: ["estado_de_verificables"]
+    CD-20: ["estado_de_verificables"]
+    CD-21: ["estado_de_verificables"]
+    CD-23: ["estado_de_verificables"]
+    CD-24: ["estado_de_verificables"]
+    CD-A24: []   # el Anexo 1 del Instructivo no incluye este articulo: no le asigna parametros cualitativos
 
-  # Plazo de registro · Instructivo 2024. ⚠️ La Resolución 007-DPE-CGAJ (2015) decía «hasta el
-  # 10», pero regulaba el art. 7 de la LOTAIP de 2004 y no integra esta cadena. Rige el 15.
   plazo_registro:
     dia_limite: 15
     regla: "hasta el quince (15) de cada mes o siguiente día laborable"

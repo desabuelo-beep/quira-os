@@ -44,10 +44,18 @@ class ScoreCD:
         return round((self.cta + self.eta + self.rp + self.ci) / 4, 4)
 
 
+# Si nadie pasa los parámetros, se usan los tres: es el comportamiento anterior y
+# el lado SEGURO del error para un motor usado de forma aislada. En una corrida
+# real siempre llegan de la RO.
+_PARAMETROS_POR_DEFECTO = ("estado_de_verificables", "vigencia_de_la_informacion",
+                           "validez_de_la_informacion")
+
+
 def evaluar_cd(cd_id: str, ev: EvidenciaCD,
                fecha_monitoreo: _dt.date | None = None,
                formatos_abiertos: set[str] | None = None,
-               dia_limite: int | None = None) -> ScoreCD:
+               dia_limite: int | None = None,
+               parametros_cualitativos: list[str] | None = None) -> ScoreCD:
     """Instructivo Tabla 0 (CTA) · Tabla 1 (ETA) · Tabla 2 (RP) · Tabla 5 (CI).
 
     PARÁMETROS NORMATIVOS (2026-08-18 · ADR-051). `formatos_abiertos` y `dia_limite`
@@ -86,9 +94,27 @@ def evaluar_cd(cd_id: str, ev: EvidenciaCD,
     if not rp:
         obs.append(f"Registro fuera del plazo (posterior al día {dia_limite}).")
 
-    ci = 1 if (ev.enlaces_vivos and ev.vigencia_ok and ev.validez_ok) else 0
-    if not ci:
-        obs.append("Calidad: enlace roto, fuera de vigencia o valores incoherentes.")
+    # ⚠️ CI SE CALCULABA CON LOS TRES PARÁMETROS SIEMPRE (corregido 2026-08-20).
+    # El Anexo 1 del Instructivo los asigna numeral por numeral: `vigencia` sólo
+    # a los numerales 16 y 18, `validez` sólo a 3 y 6, `estado de verificables` a
+    # 20 de 24. Exigirlos todos a todos degradaba la calidad de conjuntos a los
+    # que la norma no les aplica esos criterios — un castigo inventado por el
+    # instrumento, que es justo lo que este dominio existe para no hacer.
+    #
+    # Los parámetros llegan de la RO, nunca de aquí (Regla de Oro 9).
+    aplicables = (list(parametros_cualitativos) if parametros_cualitativos is not None
+                  else _PARAMETROS_POR_DEFECTO)
+    _mide = {"estado_de_verificables": ev.enlaces_vivos,
+             "vigencia_de_la_informacion": ev.vigencia_ok,
+             "validez_de_la_informacion": ev.validez_ok}
+    fallidos = [k for k in aplicables if not _mide.get(k, True)]
+    ci = 0 if fallidos else 1
+    if fallidos:
+        obs.append("Calidad: " + ", ".join(
+            {"estado_de_verificables": "el verificable no entrega el documento",
+             "vigencia_de_la_informacion": "la información no está vigente",
+             "validez_de_la_informacion": "los datos no son válidos"}[k]
+            for k in fallidos) + ".")
 
     return ScoreCD(cd_id, cta, eta, rp, ci, obs)
 

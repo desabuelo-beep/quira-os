@@ -157,6 +157,22 @@ def periodos_no_publicados_califican_cero() -> bool:
     return m.get("periodos_no_publicados") == "califican_cero"
 
 
+def parametros_cualitativos(cd_id: str) -> list[str]:
+    """Qué parámetros cualitativos evalúa el Instructivo para ESTE conjunto.
+
+    ⚠️ NO SON LOS MISMOS PARA TODOS, y el motor los exigía todos a todos hasta
+    la auditoría del 2026-08-20. El Anexo 1 del Instructivo los asigna uno por
+    uno: `vigencia` sólo a los numerales 16 y 18, `validez` sólo a 3 y 6,
+    `estado de verificables` a 20 de 24. Exigir un parámetro que la norma no
+    aplica es penalizar al sujeto por una regla que nadie escribió.
+
+    Lista vacía = el Instructivo no le asigna ninguno. Entonces la calidad de la
+    información **no se degrada por criterios cualitativos**: no hay ninguno que
+    aplicar, y suponerlos sería inventarlos."""
+    d = _param(RO_CUMPLIMIENTO, "parametros_cualitativos_por_cd") or {}
+    return list(d.get(cd_id) or ())
+
+
 # ── RO-VII-002 · cobertura material ─────────────────────────────────────────────
 def dimensiones(cd_id: str) -> list[str]:
     """Dimensiones que la obligación enumera para el conjunto. Vacío = la norma
