@@ -1,0 +1,1437 @@
+{
+ "_meta": {
+  "fuente": "LOTAIP - guia-metodologica-mecanismos.docx",
+  "sha256": "4c76ad8934bef620ef3b486cb30e199ffcf5985c8f0feed66953b9ddcceee019",
+  "norma": "Guía metodológica integral · Defensoría del Pueblo",
+  "que_es": "las condiciones de exigibilidad que la Guía establece en prosa, fuera de la lista de campos del conjunto de datos",
+  "por_que": "la vara capturaba enunciado + campos + periodicidad. Las condiciones quedaban fuera: 105 párrafos, entre ellos la regla del codificado de ingresos (numeral 6) y los ocho contenidos del reporte de servicio (numeral 5-22)",
+  "taxonomia": {
+   "A_exigencia_estructural": "qué debe contener el conjunto de datos",
+   "B_exigencia_material": "condición que exige que determinada información sustantiva exista, se publique, sea accesible o pueda constatarse en la materialización esperada, con independencia de la denominación formal del campo que la transporte",
+   "C_regla_de_calculo": "cómo debe obtenerse o contrastarse un valor",
+   "D_fuente_documental_exigida": "de dónde debe provenir la información",
+   "E_periodicidad": "cada cuánto debe generarse o actualizarse",
+   "F_condicion_procedimental": "qué debe hacer la entidad ante determinada situación",
+   "G_orientacion_no_exigible": "posibilidad, recomendación o mecanismo facultativo · NO exigible"
+  },
+  "regla_de_clasificacion": "se deriva del MODO VERBAL con que la Guía enuncia la condición, no del criterio del lector. «deberá» obliga; «podrá» faculta. Cada clasificación trae el indicio que la produjo.",
+  "limite": "clasificación PROPUESTA y revisable · el criterio jurídico final no lo fija este script",
+  "generado": "2026-08-20"
+ },
+ "numerales": [
+  {
+   "numeral": "1.1",
+   "condiciones": [
+    {
+     "id": "C11-B01",
+     "parrafo": 175,
+     "texto": "Para el cumplimiento de los contenidos sobre la estructura orgánica funcional y las metas y objetivos de las unidades administrativas de conformidad con sus programas operativos, se debe garantizar el registro de la siguiente información en el formato de conjunto de datos:",
+     "tipo": "B_exigencia_material",
+     "indicio": "se debe",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    }
+   ],
+   "n_condiciones": 1,
+   "n_exigibles": 1,
+   "n_fragmentos": 0,
+   "n_subrequisitos": 0
+  },
+  {
+   "numeral": "1.2",
+   "condiciones": [
+    {
+     "id": "C12-B01",
+     "parrafo": 182,
+     "texto": "2 Base legal que la rige y regulaciones y procedimientos internos aplicables a la entidad",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C12-B02",
+     "parrafo": 183,
+     "texto": "Los contenidos de la base legal que rige a la entidad conservarán la jerarquía de la norma, de conformidad con lo dispuesto en el artículo 425 de la Constitución de la República del Ecuador.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C12-B03",
+     "parrafo": 184,
+     "texto": "En ese contexto, se deberá listar la Constitución de la República del Ecuador; tratados y convenios internacionales; códigos; leyes orgánicas; leyes ordinarias; ordenanzas; decretos",
+     "tipo": "B_exigencia_material",
+     "indicio": "debera",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C12-B04",
+     "parrafo": 188,
+     "texto": "ejecutivos relacionados con la entidad; reglamento de leyes; ordenanzas municipales; acuerdos; resoluciones; y demás normas que se relacionen con la creación de la entidad y de las competencias u obligaciones asignadas. Únicamente se deberán detallar las normas que rigen para la entidad y que se encuentran vigentes.",
+     "tipo": "B_exigencia_material",
+     "indicio": "deberan",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": true
+    },
+    {
+     "id": "C12-B05",
+     "parrafo": 189,
+     "texto": "Como regulaciones y procedimientos internos registrarán las normas internas como resoluciones, reglamentos, manuales, guías, instructivos, etc., que hayan sido emitidas por la máxima autoridad institucional y que sean de cumplimiento obligatorio para todo el personal de la entidad.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C12-B06",
+     "parrafo": 190,
+     "texto": "En el formato de conjunto de datos, los sujetos obligados primero describirán la base legal que rige a la entidad y posteriormente, procederá a registrar las regulaciones y procedimientos internos.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C12-B07",
+     "parrafo": 191,
+     "texto": "La información que deberá registrarse en el formato de conjunto de datos será la siguiente:",
+     "tipo": "B_exigencia_material",
+     "indicio": "debera",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    }
+   ],
+   "n_condiciones": 7,
+   "n_exigibles": 6,
+   "n_fragmentos": 1,
+   "n_subrequisitos": 0
+  },
+  {
+   "numeral": "1.3",
+   "condiciones": [
+    {
+     "id": "C13-B01",
+     "parrafo": 201,
+     "texto": "3 Metas y objetivos de las unidades administrativas de conformidad con los programas operativos",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C13-B02",
+     "parrafo": 202,
+     "texto": "Si la entidad no cuenta con un sistema para la gestión de planificación, elaborará un documento que alojará en el servidor institucional para que genere el enlace para descarga de la información y colocarlo en el campo del conjunto de datos.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    }
+   ],
+   "n_condiciones": 2,
+   "n_exigibles": 2,
+   "n_fragmentos": 0,
+   "n_subrequisitos": 0
+  },
+  {
+   "numeral": "2",
+   "condiciones": [
+    {
+     "id": "C2-A01",
+     "parrafo": 219,
+     "texto": "Para cumplir con el directorio completo de la entidad y el distributivo de personal es necesario que se describa la nómina o listado de todo el personal que labora en la entidad. Este reporte deberá ser el mismo que maneja la entidad y que se armonizará en función del orden de las celdas que contiene el formato del conjunto de datos, en donde también se describirá el personal completo que labora bajo las distintas modalidades como nombramientos definitivos y provisionales, contratos de servicios ocasionales, incluidas aquellas personas que laboran bajo contrato de servicios profesionales que cumplen las 8 horas de trabajo y que permanecen la jornada completa en la entidad, de conformidad con la normativa laboral vigente en el país.",
+     "tipo": "A_exigencia_estructural",
+     "indicio": "formato del conjunto de datos",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C2-B02",
+     "parrafo": 220,
+     "texto": "Se incluirá a las autoridades que conforman los cuerpos colegiados, de directorios, comisiones y de juntas parroquiales, etc. Para el personal que trabaja en campo y que por las características de sus funciones es de carácter operativo y no administrativo, se deberá colocar el correo electrónico, teléfono y piso en donde se ubica la oficina de la jefa o jefe inmediato.",
+     "tipo": "B_exigencia_material",
+     "indicio": "se incluira",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C2-B03",
+     "parrafo": 221,
+     "texto": "Se recuerda que los regímenes laborales que rigen en el país son el Código del Trabajo (CT) y la Ley Orgánica del Servicio Público (LOSEP). Deberá consignar la información relacionada con la modalidad laboral y el estado del puesto de acuerdo con la realidad institucional.",
+     "tipo": "B_exigencia_material",
+     "indicio": "debera",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C2-B04",
+     "parrafo": 222,
+     "texto": "La descripción de la información deberá ceñirse al Estatuto Orgánico por Procesos o al Reglamento Orgánico Funcional en cuanto a la descripción de los puestos y unidades",
+     "tipo": "B_exigencia_material",
+     "indicio": "debera",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C2-B05",
+     "parrafo": 226,
+     "texto": "institucionales. Las escalas y niveles ocupacionales serán las que consten en el documento legal que se encuentre vigente para la entidad.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": true
+    },
+    {
+     "id": "C2-A06",
+     "parrafo": 227,
+     "texto": "Esta información considerará la descripción conservando el orden alfabético para facilitar su ubicación de manera organizada para el uso de las personas que la usarán. El formato del conjunto de datos describirá la siguiente información:",
+     "tipo": "A_exigencia_estructural",
+     "indicio": "formato del conjunto de datos",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C2-B07",
+     "parrafo": 241,
+     "texto": "Si existen personas servidoras públicas que se encuentren subrogando o en encargo de funciones de otro puesto institucional, se registrará la información real en el mes que se produce la novedad y se dejará constancia en la celda del estado del puesto. Sí en el transcurso del mes reportado se generan cambios de desvinculación o ingresos de nuevo personal, se actualizará la información dentro del mismo mes en el que se producen.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    }
+   ],
+   "n_condiciones": 7,
+   "n_exigibles": 6,
+   "n_fragmentos": 1,
+   "n_subrequisitos": 0
+  },
+  {
+   "numeral": "3",
+   "condiciones": [
+    {
+     "id": "C3-A01",
+     "parrafo": 251,
+     "texto": "El formato del conjunto de datos registrará la información que se describe a continuación:",
+     "tipo": "A_exigencia_estructural",
+     "indicio": "formato del conjunto de datos",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C3-B02",
+     "parrafo": 268,
+     "texto": "Las remuneraciones mensuales serán detalladas por cada puesto de trabajo y la unificada multiplicada por 12 meses.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C3-B03",
+     "parrafo": 269,
+     "texto": "En la celda para la remuneración de la jornada especial diferenciada (mensual), únicamente se registrará información en el caso de que exista norma expresa alguna que afecte a la remuneración mensual unificada o cuando exista personal especializado que por disposición legal se someta a esta particularidad.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C3-B04",
+     "parrafo": 270,
+     "texto": "Los ingresos adicionales contendrán los valores de forma prorrateada, de acuerdo con lo que se devengue en el mes en el que se actualiza la información. Las remuneraciones deben ponerse en valor unitario y no por el número de puestos existentes por cada denominación.",
+     "tipo": "B_exigencia_material",
+     "indicio": "deben",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C3-G05",
+     "parrafo": 271,
+     "texto": "Se aclara que, en el formato de conjunto de datos, no se podrá aplicar fórmula alguna ya que impedirá la generación de la información en datos abiertos.",
+     "tipo": "G_orientacion_no_exigible",
+     "indicio": "podra",
+     "exigible": false,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    }
+   ],
+   "n_condiciones": 5,
+   "n_exigibles": 4,
+   "n_fragmentos": 0,
+   "n_subrequisitos": 0
+  },
+  {
+   "numeral": "4",
+   "condiciones": [
+    {
+     "id": "C4-A01",
+     "parrafo": 279,
+     "texto": "El formato del conjunto de datos registrará la información que se describe a continuación:",
+     "tipo": "A_exigencia_estructural",
+     "indicio": "formato del conjunto de datos",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C4-B02",
+     "parrafo": 290,
+     "texto": "El tipo de licencia de servicio o de comisión de servicio contempla todas las modalidades de licencia sin remuneración, comisión de servicio con remuneración, y comisión de servicio sin remuneración establecidos en la normativa vigente.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    }
+   ],
+   "n_condiciones": 2,
+   "n_exigibles": 2,
+   "n_fragmentos": 0,
+   "n_subrequisitos": 0
+  },
+  {
+   "numeral": "5",
+   "condiciones": [
+    {
+     "id": "C5-G01",
+     "parrafo": 298,
+     "texto": "Se detallará los servicios que brinda la entidad, formularios y formatos de solicitudes para los trámites que permita a las personas conocer el procedimiento de cada uno y acceder a ellos. Es importante que la información de los servicios se redacte en",
+     "tipo": "G_orientacion_no_exigible",
+     "indicio": "es importante que",
+     "exigible": false,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C5-B02",
+     "parrafo": 302,
+     "texto": "lenguaje sencillo y claro, de tal manera que se evite el uso de terminología técnica que pudieran causar dificultad para su comprensión.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": true
+    },
+    {
+     "id": "C5-B03",
+     "parrafo": 303,
+     "texto": "Las entidades que difunden sus servicios mediante la plataforma https://www.gob.ec/, tienen gran avance en la descripción de cada uno de los servicios institucionales, ya que disponen de información como los requisitos, procedimiento, horarios de atención, incluido los formularios y el acceso a los servicios en línea.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C5-C04",
+     "parrafo": 304,
+     "texto": "Se debe totalizar el número de personas que acceden mensualmente a los servicios, así como el número acumulativo de quienes accedieron a cada servicio, sumatoria que deberá corresponder hasta el mes de reporte de la información.",
+     "tipo": "C_regla_de_calculo",
+     "indicio": "totalizar",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C5-D05",
+     "parrafo": 305,
+     "texto": "Para cumplir a cabalidad con los enunciados exigidos en la ley, los sujetos obligados deben describir la denominación de cada servicio público con base en la siguiente información en el formato del conjunto de datos:",
+     "tipo": "D_fuente_documental_exigida",
+     "indicio": "con base en",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C5-B06",
+     "parrafo": 316,
+     "texto": "En cuanto a los servicios que brinda, se debe incluir la atención de las solicitudes de acceso a la información pública.",
+     "tipo": "B_exigencia_material",
+     "indicio": "se debe",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C5-B07",
+     "parrafo": 317,
+     "texto": "En cuanto al enlace para acceder al reporte del servicio, los sujetos obligados deberán generar un documento en el que se especifique información relacionada con: la descripción del servicio; a quién está dirigido; requisitos para acceder al servicio; procedimiento para acceder al servicio; costo del servicio; oficinas que ofrecen el servicio; horarios de atención; tiempo estimado de respuesta. Esta información podrá reportarse en cualquier formato que considere la entidad, de preferencia en uno editable.",
+     "tipo": "B_exigencia_material",
+     "indicio": "deberan",
+     "exigible": true,
+     "subrequisitos": [
+      "la descripción del servicio",
+      "a quién está dirigido",
+      "requisitos para acceder al servicio",
+      "procedimiento para acceder al servicio",
+      "costo del servicio",
+      "oficinas que ofrecen el servicio",
+      "horarios de atención",
+      "tiempo estimado de respuesta"
+     ],
+     "n_subrequisitos": 8,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C5-F08",
+     "parrafo": 318,
+     "texto": "Si la entidad no dispone de una encuesta para medir la satisfacción de las personas que acceden a los servicios, deberá establecer un compromiso para elaborar una que pueda",
+     "tipo": "F_condicion_procedimental",
+     "indicio": "si la entidad no dispone de una encuesta para medir la satisfaccion de las personas que acceden a los servicios, debera",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C5-B09",
+     "parrafo": 322,
+     "texto": "enlazar a los canales mediante los cuales la población accede a estos y hasta cumplir con este objetivo.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": true
+    },
+    {
+     "id": "C5-G10",
+     "parrafo": 323,
+     "texto": "Con la finalidad de priorizar y dinamizar los servicios institucionales, las entidades podrán establecer acciones para difundir sus servicios a través del Portal Único de Trámites Ciudadanos: https://www.gob.ec/, que contribuirá a facilitar el acceso de las personas a esta información trascendental para promover la incidencia de la sociedad civil en la gestión pública.",
+     "tipo": "G_orientacion_no_exigible",
+     "indicio": "podran",
+     "exigible": false,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    }
+   ],
+   "n_condiciones": 10,
+   "n_exigibles": 6,
+   "n_fragmentos": 2,
+   "n_subrequisitos": 8
+  },
+  {
+   "numeral": "22",
+   "condiciones": [
+    {
+     "id": "C22-G01",
+     "parrafo": 298,
+     "texto": "Se detallará los servicios que brinda la entidad, formularios y formatos de solicitudes para los trámites que permita a las personas conocer el procedimiento de cada uno y acceder a ellos. Es importante que la información de los servicios se redacte en",
+     "tipo": "G_orientacion_no_exigible",
+     "indicio": "es importante que",
+     "exigible": false,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C22-B02",
+     "parrafo": 302,
+     "texto": "lenguaje sencillo y claro, de tal manera que se evite el uso de terminología técnica que pudieran causar dificultad para su comprensión.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": true
+    },
+    {
+     "id": "C22-B03",
+     "parrafo": 303,
+     "texto": "Las entidades que difunden sus servicios mediante la plataforma https://www.gob.ec/, tienen gran avance en la descripción de cada uno de los servicios institucionales, ya que disponen de información como los requisitos, procedimiento, horarios de atención, incluido los formularios y el acceso a los servicios en línea.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C22-C04",
+     "parrafo": 304,
+     "texto": "Se debe totalizar el número de personas que acceden mensualmente a los servicios, así como el número acumulativo de quienes accedieron a cada servicio, sumatoria que deberá corresponder hasta el mes de reporte de la información.",
+     "tipo": "C_regla_de_calculo",
+     "indicio": "totalizar",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C22-D05",
+     "parrafo": 305,
+     "texto": "Para cumplir a cabalidad con los enunciados exigidos en la ley, los sujetos obligados deben describir la denominación de cada servicio público con base en la siguiente información en el formato del conjunto de datos:",
+     "tipo": "D_fuente_documental_exigida",
+     "indicio": "con base en",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C22-B06",
+     "parrafo": 316,
+     "texto": "En cuanto a los servicios que brinda, se debe incluir la atención de las solicitudes de acceso a la información pública.",
+     "tipo": "B_exigencia_material",
+     "indicio": "se debe",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C22-B07",
+     "parrafo": 317,
+     "texto": "En cuanto al enlace para acceder al reporte del servicio, los sujetos obligados deberán generar un documento en el que se especifique información relacionada con: la descripción del servicio; a quién está dirigido; requisitos para acceder al servicio; procedimiento para acceder al servicio; costo del servicio; oficinas que ofrecen el servicio; horarios de atención; tiempo estimado de respuesta. Esta información podrá reportarse en cualquier formato que considere la entidad, de preferencia en uno editable.",
+     "tipo": "B_exigencia_material",
+     "indicio": "deberan",
+     "exigible": true,
+     "subrequisitos": [
+      "la descripción del servicio",
+      "a quién está dirigido",
+      "requisitos para acceder al servicio",
+      "procedimiento para acceder al servicio",
+      "costo del servicio",
+      "oficinas que ofrecen el servicio",
+      "horarios de atención",
+      "tiempo estimado de respuesta"
+     ],
+     "n_subrequisitos": 8,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C22-F08",
+     "parrafo": 318,
+     "texto": "Si la entidad no dispone de una encuesta para medir la satisfacción de las personas que acceden a los servicios, deberá establecer un compromiso para elaborar una que pueda",
+     "tipo": "F_condicion_procedimental",
+     "indicio": "si la entidad no dispone de una encuesta para medir la satisfaccion de las personas que acceden a los servicios, debera",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C22-B09",
+     "parrafo": 322,
+     "texto": "enlazar a los canales mediante los cuales la población accede a estos y hasta cumplir con este objetivo.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": true
+    },
+    {
+     "id": "C22-G10",
+     "parrafo": 323,
+     "texto": "Con la finalidad de priorizar y dinamizar los servicios institucionales, las entidades podrán establecer acciones para difundir sus servicios a través del Portal Único de Trámites Ciudadanos: https://www.gob.ec/, que contribuirá a facilitar el acceso de las personas a esta información trascendental para promover la incidencia de la sociedad civil en la gestión pública.",
+     "tipo": "G_orientacion_no_exigible",
+     "indicio": "podran",
+     "exigible": false,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    }
+   ],
+   "n_condiciones": 10,
+   "n_exigibles": 6,
+   "n_fragmentos": 2,
+   "n_subrequisitos": 8
+  },
+  {
+   "numeral": "6",
+   "condiciones": [
+    {
+     "id": "C6-D01",
+     "parrafo": 330,
+     "texto": "En el presupuesto institucional, se consideran los datos de la cédula presupuestaria mensual institucional y la del presupuesto liquidado. En el conjunto de datos se registrará el siguiente contenido:",
+     "tipo": "D_fuente_documental_exigida",
+     "indicio": "se consideran los datos",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C6-C02",
+     "parrafo": 351,
+     "texto": "Para obtener el porcentaje de ejecución presupuestaria, las entidades tomarán los montos del codificado de ingresos y para los gastos se tomará la información del devengado, de esta manera se brindará información completa de la ejecución presupuestaria a la población.",
+     "tipo": "C_regla_de_calculo",
+     "indicio": "para obtener",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    }
+   ],
+   "n_condiciones": 2,
+   "n_exigibles": 2,
+   "n_fragmentos": 0,
+   "n_subrequisitos": 0
+  },
+  {
+   "numeral": "7",
+   "condiciones": [
+    {
+     "id": "C7-B01",
+     "parrafo": 358,
+     "texto": "Los informes de auditorías internas y gubernamentales que se reportan en el presente artículo mostrarán a la población, el nivel de cumplimiento de recomendaciones de los informes auditados, sean estos gubernamentales o internas con lo cual aportan al fortalecimiento de la gestión institucional en cuanto a la administración de los recursos públicos.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C7-A02",
+     "parrafo": 359,
+     "texto": "La información que se registrará en el formato del conjunto de datos son los siguientes:",
+     "tipo": "A_exigencia_estructural",
+     "indicio": "formato del conjunto de datos",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C7-B03",
+     "parrafo": 376,
+     "texto": "Para descargar el informe de auditoría específico deberá direccionarse hacia el enlace denominado Informes Aprobados del sitio web de la Contraloría General del Estado, en el que de manera específica permitirá la descarga a cada uno de los informes.",
+     "tipo": "B_exigencia_material",
+     "indicio": "debera",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C7-B04",
+     "parrafo": 377,
+     "texto": "El reporte de seguimiento al cumplimiento de recomendaciones de los informes de auditorías corresponderá a aquellas recomendaciones que se encuentren pendientes y de las que mensualmente se habilitará un enlace para conocer los avances sobre su cumplimiento. El documento que se mostrará en la descarga deberá contener información precisa que describa lo siguiente: Número del informe auditado; descripción de la recomendación específica; denominación del puesto institucional y unidad o área responsable de cumplir la recomendación; el estado en el que se encuentra la recomendación; las acciones cumplidas o archivos que evidencie los avances en el cumplimiento de la recomendación; y, descripción de las acciones reportadas en el mes de registro de la información.",
+     "tipo": "B_exigencia_material",
+     "indicio": "debera",
+     "exigible": true,
+     "subrequisitos": [
+      "Número del informe auditado",
+      "descripción de la recomendación específica",
+      "denominación del puesto institucional y unidad o área responsable de cumplir la recomendación",
+      "el estado en el que se encuentra la recomendación",
+      "las acciones cumplidas o archivos que evidencie los avances en el cumplimiento de la recomendación",
+      "y, descripción de las acciones reportadas en el mes de registro de la información"
+     ],
+     "n_subrequisitos": 6,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C7-B05",
+     "parrafo": 378,
+     "texto": "Una vez que la o las recomendaciones hayan sido cumplidas, dejarán de ser reportadas y se continuará con el seguimiento a las que se encuentren pendientes de cumplimiento.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C7-B06",
+     "parrafo": 379,
+     "texto": "En relación con las auditorías internas o gubernamentales que se encuentren en curso no se reportarán mientras se encuentre en esta etapa.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C7-B07",
+     "parrafo": 380,
+     "texto": "En cuanto a la información adicional sobre el informe de auditoría, se precisarán aspectos importantes que sean necesarios y que permitirá conocer más acerca del cumplimiento de una recomendación determinada.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    }
+   ],
+   "n_condiciones": 7,
+   "n_exigibles": 7,
+   "n_fragmentos": 0,
+   "n_subrequisitos": 6
+  },
+  {
+   "numeral": "8",
+   "condiciones": [
+    {
+     "id": "C8-B01",
+     "parrafo": 391,
+     "texto": "de servicios, arrendamientos mercantiles, etc., celebrados por la entidad con personas naturales o jurídicas, incluidos concesiones, permisos o autorizaciones; especificando objetivos, características, montos, proveedores y subcontratos” (ibidem, número 8).",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": true
+    },
+    {
+     "id": "C8-B02",
+     "parrafo": 392,
+     "texto": "Para los procesos de contratación pública, se registrará la información que se describe con el siguiente contenido:",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C8-B03",
+     "parrafo": 407,
+     "texto": "Se registran todas las contrataciones en las diferentes modalidades que la entidad haya procesado en el mes de reporte incluida aquellos procesos que se hayan declarado desiertos dentro del mes.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    }
+   ],
+   "n_condiciones": 3,
+   "n_exigibles": 2,
+   "n_fragmentos": 1,
+   "n_subrequisitos": 0
+  },
+  {
+   "numeral": "9",
+   "condiciones": [
+    {
+     "id": "C9-B01",
+     "parrafo": 416,
+     "texto": "Para el reporte de empresas y personas que han incumplido contratos, se registrará la siguiente información en el formato de conjunto de datos:",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    }
+   ],
+   "n_condiciones": 1,
+   "n_exigibles": 1,
+   "n_fragmentos": 0,
+   "n_subrequisitos": 0
+  },
+  {
+   "numeral": "10",
+   "condiciones": [
+    {
+     "id": "C10-B01",
+     "parrafo": 431,
+     "texto": "Los contenidos de los planes y programas en ejecución serán aquellos aprobados por el órgano rector de la planificación nacional, así como los planes, proyectos y programas que formen parte del Plan Anual de Inversiones (PAI) de la entidad.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C10-D02",
+     "parrafo": 432,
+     "texto": "Se registrarán los planes, proyectos o programas que las entidades mantengan y que sean financiados con los recursos de su propio presupuesto, a través de asignaciones estatales o provenientes de recursos por autogestión planificados dentro de la Programación Anual de Planificación (PAP) o del Plan Operativo Anual (POA), debidamente aprobados para el ejercicio fiscal o se refieran a proyectos de arrastre de años anteriores.",
+     "tipo": "D_fuente_documental_exigida",
+     "indicio": "provenientes de",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C10-B03",
+     "parrafo": 433,
+     "texto": "Se registran también los planes de carácter estratégico de la entidad.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C10-A04",
+     "parrafo": 434,
+     "texto": "La información que se deberá registrar en el formato del conjunto de datos será la siguiente:",
+     "tipo": "A_exigencia_estructural",
+     "indicio": "formato del conjunto de datos",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C10-B05",
+     "parrafo": 446,
+     "texto": "El enlace para descargar el plan, proyecto o programa corresponderá al documento completo aprobado por la Secretaría Nacional de Planificación cuando corresponda o por la misma entidad con los recursos propios o de autogestión.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C10-G06",
+     "parrafo": 447,
+     "texto": "En el enlace del estado de avance del plan, programa o proyecto se podrá cumplir mediante la descripción de información que refleje los niveles de ejecución.",
+     "tipo": "G_orientacion_no_exigible",
+     "indicio": "podra",
+     "exigible": false,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    }
+   ],
+   "n_condiciones": 6,
+   "n_exigibles": 5,
+   "n_fragmentos": 0,
+   "n_subrequisitos": 0
+  },
+  {
+   "numeral": "11",
+   "condiciones": [
+    {
+     "id": "C11-B01",
+     "parrafo": 454,
+     "texto": "Para los créditos externos e internos, se considerará la información que refleje las operaciones crediticias internacionales y nacionales que se encuentran vigentes.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C11-B02",
+     "parrafo": 455,
+     "texto": "Los créditos externos se refieren a aquellos que son financiados por organismos internacionales tales como BID, CAF, Banco Mundial, FMI, entre otras.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C11-B03",
+     "parrafo": 456,
+     "texto": "De igual forma, los créditos internos se refieren a aquellos que son financiados por instituciones crediticias nacionales como Banco de Desarrollo del Ecuador, BanEcuador, Ministerio de Finanzas, etc.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C11-A04",
+     "parrafo": 460,
+     "texto": "Para cumplir con lo dispuesto en el presente artículo, se registrará la información en el formato del conjunto de datos como se describe a continuación:",
+     "tipo": "A_exigencia_estructural",
+     "indicio": "formato del conjunto de datos",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    }
+   ],
+   "n_condiciones": 4,
+   "n_exigibles": 4,
+   "n_fragmentos": 0,
+   "n_subrequisitos": 0
+  },
+  {
+   "numeral": "12",
+   "condiciones": [
+    {
+     "id": "C12-B01",
+     "parrafo": 484,
+     "texto": "Para los mecanismos de rendición de cuentas se asegurará registrar la información relacionada con el formulario del informe de rendición de cuentas presentado al Consejo de Participación Ciudadana y Control Social (CPCCS) del ejercicio fiscal anterior; el certificado y reportes de los literales a), b), c) y d) del informe anual sobre el cumplimiento del derecho",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C12-B02",
+     "parrafo": 488,
+     "texto": "humano de acceso a la información pública del ejercicio fiscal anterior presentado a la Defensoría del Pueblo, a través de la herramienta tecnológica defensorial. Respecto al literal",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": true
+    },
+    {
+     "id": "C12-A03",
+     "parrafo": 489,
+     "texto": "c) se obtendrá el certificado de cumplimiento y el reporte correspondiente al primer semestre; y, para el segundo semestre se obtendrá el reporte del literal c) en referencia con lo que se cumplirá el literal d) del citado artículo 11 de la LOTAIP. Para registrar la información antes descrita en el formato del conjunto de datos se procederá con los siguientes contenidos:",
+     "tipo": "A_exigencia_estructural",
+     "indicio": "formato del conjunto de datos",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": true
+    },
+    {
+     "id": "C12-B04",
+     "parrafo": 496,
+     "texto": "Así también, es obligatorio para todos los sujetos obligados garantizar el acceso a los informes anuales consolidados nacionales sobre el derecho humano de acceso a la información pública, según disposiciones de la LOTAIP desde el enlace del sitio web de la Defensoría del Pueblo: https://www.dpe.gob.ec/cumplimiento-lotaip/",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    }
+   ],
+   "n_condiciones": 4,
+   "n_exigibles": 2,
+   "n_fragmentos": 2,
+   "n_subrequisitos": 0
+  },
+  {
+   "numeral": "13",
+   "condiciones": [
+    {
+     "id": "C13-A01",
+     "parrafo": 502,
+     "texto": "Los viáticos, informes de trabajo y justificativos de movilización nacional e internacional, deberán cumplir con los contenidos que se describen a continuación en el formato del conjunto de datos:",
+     "tipo": "A_exigencia_estructural",
+     "indicio": "formato del conjunto de datos",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C13-B02",
+     "parrafo": 518,
+     "texto": "Los nombres y apellidos de las personas servidoras públicas se describirán conservando el orden alfabético, de tal manera que se facilite la búsqueda de información por parte de las personas que la usarán.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C13-B03",
+     "parrafo": 519,
+     "texto": "El informe de actividades y productos alcanzados deberá estar acompañado de la solicitud de viáticos de tal manera que se muestre la información completa sobre los antecedentes que motivan la movilización nacional o internacional.",
+     "tipo": "B_exigencia_material",
+     "indicio": "debera",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C13-B04",
+     "parrafo": 520,
+     "texto": "Los justificativos de las movilizaciones para cumplir actividades institucionales, descargará el expediente completo que contenga la documentación organizada de los viáticos nacionales e internacionales, con el propósito de que se visualice todo el proceso de aprobación, específicamente aquellos que no pueden faltar y que son: facturas de hospedaje, alimentación y otros, además de los pases a bordo si la movilización se realiza en transporte aéreo; copia de los pasajes terrestres de ser el caso y salvoconducto si la movilización se realiza en vehículo institucional.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C13-B05",
+     "parrafo": 521,
+     "texto": "Para el caso de los justificativos de los viáticos internacionales se contará con los documentos que acrediten invitaciones o convocatorias a reuniones y/o actos oficiales de las que la entidad, a través de su máxima autoridad o a quien se delegue para el efecto y asista ya sea con recursos institucionales o financiados por los organismos convocantes.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    }
+   ],
+   "n_condiciones": 5,
+   "n_exigibles": 5,
+   "n_fragmentos": 0,
+   "n_subrequisitos": 0
+  },
+  {
+   "numeral": "14",
+   "condiciones": [
+    {
+     "id": "C14-A01",
+     "parrafo": 528,
+     "texto": "Para el contenido de las personas responsables del acceso a la información pública, se registrará la información que se describe en el formato del conjunto de datos manteniendo el orden correspondiente:",
+     "tipo": "A_exigencia_estructural",
+     "indicio": "formato del conjunto de datos",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C14-B02",
+     "parrafo": 542,
+     "texto": "Para el cumplimiento del presente artículo, es indispensable que se describa la información de la máxima autoridad institucional, así como de la persona que preside el comité de transparencia que constará en el acuerdo o resolución emitida para tal propósito; y, de ser el caso, para entidades que cuentan con procesos desconcentrados a través de acto administrativo, de las personas representantes en territorio que hayan sido delegadas para responder las solicitudes de acceso a la información pública.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C14-B03",
+     "parrafo": 543,
+     "texto": "Para las entidades en las que se haya nombrado un Oficial de Transparencia conforme el procedimiento establecido en el artículo 7 del Reglamento General de la LOTAIP, se registran los datos de la máxima autoridad y de la persona designada como Oficial de Transparencia.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    }
+   ],
+   "n_condiciones": 3,
+   "n_exigibles": 3,
+   "n_fragmentos": 0,
+   "n_subrequisitos": 0
+  },
+  {
+   "numeral": "15",
+   "condiciones": [
+    {
+     "id": "C15-A01",
+     "parrafo": 550,
+     "texto": "Para los contratos colectivos vigentes, se detallará la información correspondiente a la organización sindical debidamente aprobada, para lo cual cumplirá con la información constante en el formato del conjunto de datos y que se describe a continuación:",
+     "tipo": "A_exigencia_estructural",
+     "indicio": "formato del conjunto de datos",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C15-B02",
+     "parrafo": 563,
+     "texto": "La descarga del contrato colectivo original será completo en su integridad, de tal manera que se conozcan los antecedentes y los beneficios que se lograron con la aprobación de la organización sindical. Las reformas completas del contrato colectivo permitirán conocer las conquistas logradas por las personas trabajadoras de las entidades que cuentan con mecanismos de organización laboral.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C15-B03",
+     "parrafo": 564,
+     "texto": "En el caso de que en la entidad no exista contrato colectivo, se dejará expresa constancia de este particular a través de NO APLICA.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    }
+   ],
+   "n_condiciones": 3,
+   "n_exigibles": 3,
+   "n_fragmentos": 0,
+   "n_subrequisitos": 0
+  },
+  {
+   "numeral": "16",
+   "condiciones": [
+    {
+     "id": "C16-B01",
+     "parrafo": 571,
+     "texto": "Sobre el índice de información clasificada como reservada, se contará con la resolución de clasificación de información reservada, la fecha de clasificación y el período de vigencia de la reserva.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    }
+   ],
+   "n_condiciones": 1,
+   "n_exigibles": 1,
+   "n_fragmentos": 0,
+   "n_subrequisitos": 0
+  },
+  {
+   "numeral": "17",
+   "condiciones": [
+    {
+     "id": "C17-B01",
+     "parrafo": 591,
+     "texto": "En dicho detalle se deberá indicar, en particular, la persona, organización o entidad con quien se sostuvo la audiencia o reunión, la individualización de los asistentes o personas presentes en la respectiva audiencia o reunión, el lugar y fecha de su realización y la materia específica tratada. Se exceptúa lo determinado como información confidencial o reservada” (ibidem, número 17).",
+     "tipo": "B_exigencia_material",
+     "indicio": "debera",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C17-C02",
+     "parrafo": 592,
+     "texto": "El contenido del presente número sobre las audiencias y reuniones contará con información de las agendas institucionales, para lo cual tomarán en consideración lo determinado en los literales a), b), c) y d) de este contenido.",
+     "tipo": "C_regla_de_calculo",
+     "indicio": "tomaran",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C17-B03",
+     "parrafo": 593,
+     "texto": "Respecto a las personas participantes de la entidad que reporta, se considerarán los nombres y apellidos de las autoridades electas, funcionarios del nivel jerárquico superior y/o máximos representantes de los demás sujetos obligados, que participan en la audiencia / reunión.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C17-A04",
+     "parrafo": 594,
+     "texto": "La información que se registrará en el formato del conjunto de datos mantendrá el orden cronológico descendente de fechas (desde la más actual a la más antigua) y será la que se describe a continuación:",
+     "tipo": "A_exigencia_estructural",
+     "indicio": "formato del conjunto de datos",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C17-B05",
+     "parrafo": 608,
+     "texto": "En relación con la descripción de la audiencia o reunión, se describirá de manera específica la pretensión de la interacción entre instituciones, autoridades y personas, así como los compromisos alcanzados que motivarán nuevas reuniones hasta lograr el objetivo propuesto.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    }
+   ],
+   "n_condiciones": 5,
+   "n_exigibles": 5,
+   "n_fragmentos": 0,
+   "n_subrequisitos": 0
+  },
+  {
+   "numeral": "18",
+   "condiciones": [
+    {
+     "id": "C18-B01",
+     "parrafo": 639,
+     "texto": "Para el registro de los convenios nacionales o internacionales, los sujetos obligados registrarán información que refleje los vínculos de la entidad con organismos nacionales o internacionales para que, a través de alianzas estratégicas se contribuya al desarrollo de acciones y procesos que fortalezcan la gestión institucional.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C18-A02",
+     "parrafo": 640,
+     "texto": "La información que registrarán los sujetos obligados a la LOTAIP en el formato del conjunto de datos será la siguiente:",
+     "tipo": "A_exigencia_estructural",
+     "indicio": "formato del conjunto de datos",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C18-B03",
+     "parrafo": 651,
+     "texto": "Si la entidad no dispone de convenios nacionales o internacionales, se dejará expresa constancia de este particular mediante NO APLICA.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    }
+   ],
+   "n_condiciones": 3,
+   "n_exigibles": 3,
+   "n_fragmentos": 0,
+   "n_subrequisitos": 0
+  },
+  {
+   "numeral": "19",
+   "condiciones": [
+    {
+     "id": "C19-A01",
+     "parrafo": 661,
+     "texto": "En relación con los donativos oficiales y protocolares, la información que se registrará en el formato del conjunto de datos será la siguiente:",
+     "tipo": "A_exigencia_estructural",
+     "indicio": "formato del conjunto de datos",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C19-B02",
+     "parrafo": 669,
+     "texto": "Para la recepción de donativos o regalos de índole oficial o protocolar, los sujetos obligados deberán elaborar un instrumento legal, a fin de que exista un procedimiento para el registro de estos dentro de la institución que incluya su custodia y conservación.",
+     "tipo": "B_exigencia_material",
+     "indicio": "deberan",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C19-B03",
+     "parrafo": 670,
+     "texto": "Si la entidad no ha recibido donativos oficiales y protocolares, se dejará expresa constancia de este particular a través de NO APLICA.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    }
+   ],
+   "n_condiciones": 3,
+   "n_exigibles": 3,
+   "n_fragmentos": 0,
+   "n_subrequisitos": 0
+  },
+  {
+   "numeral": "20",
+   "condiciones": [
+    {
+     "id": "C20-G01",
+     "parrafo": 677,
+     "texto": "El registro de activos de información frecuente y complementaria permitirá que la población conozca aquella que es requerida de manera recurrente y complementaria a las solicitudes de información pública, dándole a los sujetos obligados la oportunidad de generar estrategias y/o acciones para dar respuestas a este tipo de demandas ciudadanas; así como realizar un análisis de la frecuencia de solicitud sobre un tipo de información que no está accesible de manera permanente, con lo cual podrá reducir la recurrencia en los pedidos de cierta información.",
+     "tipo": "G_orientacion_no_exigible",
+     "indicio": "podra",
+     "exigible": false,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C20-A02",
+     "parrafo": 681,
+     "texto": "Para cumplir con lo descrito en el presente número se registrará la siguiente información en el formato del conjunto de datos:",
+     "tipo": "A_exigencia_estructural",
+     "indicio": "formato del conjunto de datos",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    }
+   ],
+   "n_condiciones": 2,
+   "n_exigibles": 1,
+   "n_fragmentos": 0,
+   "n_subrequisitos": 0
+  },
+  {
+   "numeral": "21",
+   "condiciones": [
+    {
+     "id": "C21-C01",
+     "parrafo": 694,
+     "texto": "Para cumplir con los contenidos de políticas públicas o información que afecte a un grupo específico, se tomará en consideración las disposiciones de la Constitución de la República del Ecuador respecto de los derechos de las personas y los derechos de la naturaleza, con énfasis en los grupos de atención prioritaria. La información para registrar en el formato del conjunto de datos será la que se describe a continuación:",
+     "tipo": "C_regla_de_calculo",
+     "indicio": "se tomara",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C21-B02",
+     "parrafo": 705,
+     "texto": "En la fase de la política pública se reportará sobre la ejecución o implementación, seguimiento y evaluación o publicación, según corresponda. También se registrarán las acciones y buenas prácticas de actores sociales e interinstitucionales que vigilan el cumplimiento de la política pública.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C21-B03",
+     "parrafo": 706,
+     "texto": "El informe de la política pública corresponderá a los avances en su implantación y contendrá información que refleje los resultados parciales o totales alcanzados. Así mismo, contendrá los aspectos trascendentales de la incidencia para mejorar la calidad de vida de las personas o de un grupo específico.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    }
+   ],
+   "n_condiciones": 3,
+   "n_exigibles": 3,
+   "n_fragmentos": 0,
+   "n_subrequisitos": 0
+  },
+  {
+   "numeral": "23",
+   "condiciones": [
+    {
+     "id": "C23-B01",
+     "parrafo": 713,
+     "texto": "Las acciones afirmativas o positivas son medidas que se han establecido en la normativa vigente para reivindicar los derechos de personas o grupos con la finalidad de eliminar o reducir desigualdades que pueden afectar la calidad o el desarrollo de sus proyectos de vida. Estas acciones pretenden estrechar la brecha de desigualdad en cuanto a género, temas de orden sociocultural o económico, así como de cualquier grupo de atención prioritaria.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C23-A02",
+     "parrafo": 714,
+     "texto": "Para reportar a las personas servidoras públicas con acciones afirmativas o positivas, se cumplirá con la siguiente descripción en el formato del conjunto de datos:",
+     "tipo": "A_exigencia_estructural",
+     "indicio": "formato del conjunto de datos",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C23-B03",
+     "parrafo": 722,
+     "texto": "La descripción de las personas servidoras públicas con acciones afirmativas o positivas, mantendrá el orden alfabético correspondiente para facilitar la ubicación de la información.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C23-B04",
+     "parrafo": 723,
+     "texto": "Para registrar las acciones afirmativas de los grupos de atención prioritaria o de cuotas laborales contemplados en la legislación nacional que se presentan de manera periódica al Ministerio del Trabajo, además incluirá la calificación de sustitutos de personas con discapacidad, de conformidad con el Acuerdo Ministerial No. 180 publicado en el Registro Oficial 336 del 27 de septiembre de 2018.",
+     "tipo": "B_exigencia_material",
+     "indicio": "(sin indicio verbal · revisar a mano)",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    }
+   ],
+   "n_condiciones": 4,
+   "n_exigibles": 4,
+   "n_fragmentos": 0,
+   "n_subrequisitos": 0
+  },
+  {
+   "numeral": "24",
+   "condiciones": [
+    {
+     "id": "C24-A01",
+     "parrafo": 730,
+     "texto": "Sobre la información relevante para el ejercicio del derecho de acceso a la información pública, la participación ciudadana y el control social, los sujetos obligados registrarán los siguientes contenidos en el formato del conjunto de datos:",
+     "tipo": "A_exigencia_estructural",
+     "indicio": "formato del conjunto de datos",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    },
+    {
+     "id": "C24-B02",
+     "parrafo": 737,
+     "texto": "Los sujetos obligados habilitarán el enlace para la descarga del documento que contiene Agenda 2030 y los Objetivos de Desarrollo Sostenible (ODS); así como el acceso al reporte sobre el seguimiento a la consecución de los ODS aplicables a la entidad; y, el registro de buenas prácticas para promover la participación ciudadana y el control social. Para los sujetos obligados que han adoptado planes de acción de Gobierno/Estado Abierto o instrumentos análogos deberán registrarlo en este conjunto de datos, a fin de que la Defensoría del Pueblo de Ecuador, realice el seguimiento y supervise la publicación de la",
+     "tipo": "B_exigencia_material",
+     "indicio": "deberan",
+     "exigible": true,
+     "subrequisitos": [],
+     "n_subrequisitos": 0,
+     "fragmento_de_continuacion": false
+    }
+   ],
+   "n_condiciones": 2,
+   "n_exigibles": 2,
+   "n_fragmentos": 0,
+   "n_subrequisitos": 0
+  }
+ ]
+}

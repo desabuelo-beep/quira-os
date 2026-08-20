@@ -46,7 +46,6 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 
 ⛏️ **ADR-050 CANTERA**: hereda capacidades, NO productos.
 🔧 **v5.7_TGI** · promover = **recalcular y GUARDAR** · **IGP 48,33→27,00**.
 ⚖️ **ADR-045/046/047**: 1 superficie·3 custodias · techo = **el documento**.
-🖥️ **OBS-032**: `QUIRA_DATOS`/`QUIRA_VAULT` = frontera 1 vez · **0 rutas personales**.
 🏛️ **ADR-048 SIL**: **objeto observado, NO dominio** · ⛔ sin fórmula.
 🚒 **OBS-024/025/028**: Bomberos $1,75M sin meta · 5 factores manuales · ⛔**Ei**.
 📋 **Metas 66/cablea 25** · PDOT **05-11-2024** → **≥2025**.
@@ -55,8 +54,8 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 
 🤖 **ADR-051 §12**: 5 dimensiones (capacidad·**sujeto**·ejecución·evidencia·validación) · sin sujeto **NO se construye** la afirmación · perímetro propio SELLADO.
 🔌 **`reglas.py` = ÚNICA puerta a la norma**: cadencia·plazo·formatos del canon · gate **REGLAS** · **472 pruebas**.
 🔐 **PANEL ACCESOS** (→Ops): bitácora 2 meses sin leerse · alerta por fallos concentrados.
-📐 **MATRIZ (Javo)**: portal = **materialización de obligaciones** · unidad *obligación↔evidencia* · ⛔ ausencia≠incumplimiento.
-🧾 **SCORING vs Instructivo**: SITA·CTA·ETA·RP ✅ · **CI mal**: exigía los 3 cualitativos a todos (Anexo 1: vigencia 16·18 · validez 3·6).
+📐 **MATRIZ (Javo)**: portal = **materialización de obligaciones** · ⛔ ausencia≠incumplimiento · **105 condiciones** que la vara no veía.
+🧾 **SCORING vs Instructivo**: SITA·CTA·ETA·RP ✅ · **CI mal**: exigía los 3 cualitativos a todos (Anexo 1: vigencia 16·18 · validez 3·6). ⛔ NO tocar SITA hasta cerrar la vara.
 ⛔ **EL NOMBRE DEL ENLACE NO ES EVIDENCIA** — 3×: «acta»→certificado · «asistencia»→fotos.
 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 · detalle en el ADR)

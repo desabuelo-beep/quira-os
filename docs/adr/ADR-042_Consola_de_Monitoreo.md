@@ -324,6 +324,41 @@ construir una afirmación ejecutada sin sujeto:
 
     sujeto_sello = sujeto_activo = sujeto_de_la_afirmación
 
+### 6-ter · La clasificación automática descubre; no interpreta
+
+> **La clasificación automática de una condición normativa es una inferencia instrumental y no
+> constituye interpretación jurídica. Toda condición que pueda alterar la exigibilidad, el alcance
+> o la imputación de una obligación debe ser susceptible de revisión y trazabilidad hasta su
+> segmento normativo de origen.**
+> *(formulación del colega, 2026-08-20 · adoptada)*
+
+**Por qué hizo falta escribirla.** Al extraer las condiciones de exigibilidad de la Guía se
+clasificaron 105 segmentos por su modo verbal —«deberá» obliga, «podrá» faculta—. El método es
+bueno para **descubrir**; no basta para **determinar**. Dos fallos lo demostraron el mismo día:
+
+1. Un párrafo con «los sujetos obligados **deberán** generar un documento […] Esta información
+   **podrá** reportarse en cualquier formato» se clasificó como **facultad**. El «podrá» gobierna
+   la forma; la obligación estaba intacta, con ocho requisitos dentro. *Una facultad accesoria no
+   degrada una obligación explícita.*
+2. La corrección de ese fallo **no se aplicó durante tres intentos**: el `` de la expresión se
+   escribió como byte de retroceso al pasar por el shell. El patrón existía, se leía correcto y no
+   coincidía con nada. `declarado ≠ ejecutado`, en su forma más literal.
+
+**Y un párrafo no es una condición.** El segmento 317 contiene una obligación, ocho requisitos
+materiales y una facultad de forma. La unidad correcta es el **segmento normativo con significado
+prescriptivo**, no la unidad tipográfica.
+
+**Consecuencias operativas.** Las 105 se llaman **condiciones candidatas a exigibilidad**, nacen
+en estado `PENDIENTE` y se publican en una tabla de auditoría con ID trazable al párrafo de
+origen. La categoría «exigencia material» recibió definición positiva para dejar de ser el cajón
+residual del clasificador. Y el recuento se publica en **tres poblaciones** —candidatas,
+orientaciones, fragmentos de continuación— porque presentarlo en dos hizo que 9 fragmentos
+viajaran contados como orientaciones: un número correcto con el rótulo equivocado, que es un
+número falso.
+
+    el algoritmo descubre y estructura · el canon determina · la evidencia demuestra
+    el verificador acredita · el scoring aparece al final
+
 **Corolario operativo.** Una prueba que falla siempre no protege nada: un rojo permanente es
 funcionalmente idéntico a no tener prueba, con el agravante de que aparenta cobertura.
 

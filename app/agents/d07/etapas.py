@@ -401,6 +401,9 @@ NO_SON_ETAPAS = {
                     # produce la matriz de calificación del Anexo 1 del
                     # Instructivo: qué parámetros evalúa cada numeral
                     "extraer_matriz_calificacion.py",
+                    # extrae las condiciones de exigibilidad en prosa: la Capa 2
+                    # que la vara de campos no capturaba (105 segmentos)
+                    "extraer_condiciones_exigibilidad.py",
                     "enriquecer_catalogo_d07.py", "register_ack.py",
                     "manifest.py", "validate_f01.py"],
     },
