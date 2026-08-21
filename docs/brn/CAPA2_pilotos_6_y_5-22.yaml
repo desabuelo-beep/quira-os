@@ -34,7 +34,8 @@ _meta:
   regla: >-
     lo modelado es estructura de análisis. La naturaleza jurídica de cada
     condición (tipo y exigibilidad) la determina la revisión, no este archivo.
-  pendiente_de: "validación jurídica · VALIDACION_JURIDICA_condiciones.csv"
+  validado: "2026-08-20 · revisión técnico-jurídica del colega · 6 exigibles, 1 no exigible"
+  pendiente_de: "confirmación de Javo, si desea revisarlo · y propagación a los 24 restantes"
 
 # ── ESQUEMA · qué lleva una condición normativa ────────────────────────────────
 # Formulado por el colega, 2026-08-20. Se documenta aquí para que el patrón sea
@@ -45,7 +46,7 @@ _esquema:
   texto: "el segmento normativo literal · no se parafrasea"
   tipo_propuesto: "clasificación A-G derivada del modo verbal"
   tipo_validado: "← lo fija la revisión jurídica"
-  exigible_validado: "← lo fija la revisión jurídica"
+  exigible_validado: "← lo fija la revisión jurídica · SIEMPRE entre comillas: YAML lee `no` como booleano False y `si` como cadena, y esa asimetría ya rompió una prueba"
   prescripcion_atomica: "qué manda, en una sola oración"
   subrequisitos: "las prescripciones que contiene dentro, si las hay"
   objeto_al_que_aplica: "sobre qué recae: el conjunto de datos, un documento…"
@@ -76,11 +77,18 @@ numeral_6:
         En el presupuesto institucional, se consideran los datos de la cédula
         presupuestaria mensual institucional y la del presupuesto liquidado.
       tipo_propuesto: D_fuente_documental_exigida
-      tipo_validado: null
-      exigible_validado: null
+      tipo_validado: D_fuente_documental_exigida
+      exigible_validado: "si"
+      validado_por: "revisión técnico-jurídica · colega · 2026-08-20"
       prescripcion_atomica: >-
-        la información presupuestaria debe provenir de dos fuentes: la cédula
-        presupuestaria mensual institucional y la del presupuesto liquidado
+        el conjunto de datos debe considerar información correspondiente a la
+        cédula presupuestaria mensual institucional y al presupuesto liquidado
+      correccion_de_la_revision: >-
+        la formulación anterior decía «la información debe PROVENIR de dos
+        fuentes», y eso es más fuerte que el texto: la Guía dice «se consideran
+        los datos de…». La corrección evita que QUIRA convierta una regla de
+        consideración documental en una afirmación sobre la procedencia causal
+        de cada dato.
       subrequisitos:
         - cédula presupuestaria mensual institucional
         - cédula del presupuesto liquidado
@@ -105,15 +113,23 @@ numeral_6:
         tomará la información del devengado, de esta manera se brindará
         información completa de la ejecución presupuestaria a la población.
       tipo_propuesto: C_regla_de_calculo
-      tipo_validado: null
-      exigible_validado: null
+      tipo_validado: C_regla_de_calculo
+      exigible_validado: "si"
+      validado_por: "revisión técnico-jurídica · colega · 2026-08-20"
       prescripcion_atomica: >-
-        el porcentaje de ejecución se calcula con el CODIFICADO para ingresos y
-        el DEVENGADO para gastos
+        para obtener el porcentaje de ejecución presupuestaria se utilizará el
+        monto codificado de ingresos y el monto devengado de gastos
       subrequisitos:
-        - los ingresos se reportan por su monto codificado
-        - los gastos se reportan por su monto devengado
-        - el resultado debe informar la ejecución COMPLETA, ambos lados
+        - existen datos de ingresos con monto codificado que permiten el cálculo
+        - existen datos de gastos con monto devengado que permiten el cálculo
+        - el porcentaje publicado es reproducible a partir de ambos
+      correccion_de_la_revision: >-
+        los subrequisitos anteriores decían «los ingresos SE REPORTAN por su
+        monto codificado», y eso excede la norma: el párrafo prescribe cómo
+        OBTENER EL PORCENTAJE DE EJECUCIÓN, no que todo ingreso del conjunto
+        adopte necesariamente ese estado de medición.
+        **Regla de cálculo ≠ obligación independiente sobre cada dato.**
+        Diferencia pequeña en lenguaje, decisiva para un sistema de acreditación.
       objeto_al_que_aplica: >-
         el campo «Porcentaje de ejecución» y las filas de ingresos y gastos que
         lo sustentan
@@ -160,8 +176,13 @@ numerales_5_y_22:
         servicio, sumatoria que deberá corresponder hasta el mes de reporte de
         la información.
       tipo_propuesto: C_regla_de_calculo
-      tipo_validado: null
-      exigible_validado: null
+      tipo_validado: C_regla_de_calculo
+      exigible_validado: "si"
+      validado_por: "revisión técnico-jurídica · colega · 2026-08-20"
+      observacion_de_la_revision: >-
+        la condición contiene SIMULTÁNEAMENTE una exigencia de información
+        (mensual y acumulada) y una regla de correspondencia temporal del
+        acumulado. Es otra prueba de que un párrafo no equivale a una condición.
       prescripcion_atomica: >-
         deben publicarse DOS cifras de acceso por servicio: la mensual y la
         acumulada hasta el mes de reporte
@@ -187,8 +208,9 @@ numerales_5_y_22:
         En cuanto a los servicios que brinda, se debe incluir la atención de las
         solicitudes de acceso a la información pública.
       tipo_propuesto: B_exigencia_material
-      tipo_validado: null
-      exigible_validado: null
+      tipo_validado: B_exigencia_material
+      exigible_validado: "si"
+      validado_por: "revisión técnico-jurídica · colega · 2026-08-20"
       prescripcion_atomica: >-
         la atención de solicitudes de acceso a la información pública debe
         figurar como uno de los servicios publicados
@@ -214,8 +236,14 @@ numerales_5_y_22:
         acceder al servicio; costo del servicio; oficinas que ofrecen el
         servicio; horarios de atención; tiempo estimado de respuesta.
       tipo_propuesto: B_exigencia_material
-      tipo_validado: null
-      exigible_validado: null
+      tipo_validado: B_exigencia_material
+      exigible_validado: "si"
+      validado_por: "revisión técnico-jurídica · colega · 2026-08-20"
+      observacion_de_la_revision: >-
+        el registro más importante de los siete. La columna «Enlace para acceder
+        al reporte del servicio» puede existir perfectamente y el documento al
+        que apunta carecer de tres de los ocho contenidos. Demuestra que la
+        Capa 1 y la Capa 2 miden objetos DISTINTOS.
       prescripcion_atomica: >-
         debe existir un documento de reporte por servicio, y ese documento debe
         contener ocho informaciones determinadas
@@ -249,8 +277,10 @@ numerales_5_y_22:
         Esta información podrá reportarse en cualquier formato que considere la
         entidad, de preferencia en uno editable.
       tipo_propuesto: G_orientacion_no_exigible
-      tipo_validado: null
-      exigible_validado: null
+      tipo_validado: G_orientacion_no_exigible
+      exigible_validado: "no"
+      validado_por: "revisión técnico-jurídica · colega · 2026-08-20"
+      es_test_obligatorio_del_clasificador: true
       prescripcion_atomica: >-
         el formato del documento queda a criterio de la entidad, con preferencia
         por uno editable
@@ -273,31 +303,55 @@ numerales_5_y_22:
         compromiso para elaborar una que pueda enlazar a los canales mediante
         los cuales la población accede a estos y hasta cumplir con este objetivo.
       tipo_propuesto: F_condicion_procedimental
-      tipo_validado: null
-      exigible_validado: null
+      tipo_validado: F_condicion_procedimental
+      exigible_validado: "si"
+      condicion_de_activacion: "la entidad no dispone de encuesta de satisfacción"
+      validado_por: "revisión técnico-jurídica · colega · 2026-08-20"
       prescripcion_atomica: >-
-        si no hay encuesta de satisfacción, debe existir un compromiso formal de
-        elaborarla
+        si la entidad no dispone de encuesta de satisfacción, debe establecer un
+        compromiso de elaborarla, vigente hasta cumplir el objetivo
       subrequisitos:
         - antecedente · la entidad no dispone de encuesta
         - consecuencia · debe establecer un compromiso de elaborarla
         - el compromiso rige hasta que el objetivo se cumpla
       objeto_al_que_aplica: el campo «Porcentaje de satisfacción sobre el uso del servicio»
       materializacion_esperada: >-
-        o bien el porcentaje de satisfacción publicado, o bien la constancia del
-        compromiso de elaborar la encuesta. La ausencia de AMBOS deja la
-        condición sin materializar.
+        BIFURCACIÓN CONDICIONADA, no opción discrecional:
+        SI existe encuesta → opera la medición de satisfacción;
+        SI NO existe → debe constar el compromiso de elaborarla.
+        La entidad no elige libremente entre ambas: el antecedente determina
+        cuál corresponde. La ausencia de la que corresponde deja la condición
+        sin materializar.
       evidencia_admisible:
         - dato de satisfacción en el conjunto
         - documento o declaración con el compromiso
       verificador: null
-      nota: >-
-        condición de dos salidas: la norma admite dos materializaciones
-        alternativas. Exigir sólo la primera inventaría una obligación.
+      correccion_de_la_revision: >-
+        la formulación anterior decía «o porcentaje, o compromiso», y eso induce
+        a leerlo como dos opciones elegibles por la entidad. No lo son: es una
+        bifurcación gobernada por un antecedente de hecho. La distinción es
+        decisiva para el futuro verificador, que debe comprobar PRIMERO si
+        existe encuesta y sólo después qué materialización corresponde exigir.
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # LO QUE ESTE PATRÓN YA PERMITE DECIR, Y LO QUE NO
 # ═══════════════════════════════════════════════════════════════════════════════
+_validacion_capa_2b:
+  fecha: 2026-08-20
+  revisor: "colega · revisión técnico-jurídica"
+  resultado:
+    exigibles: 6      # C6-D01 · C6-C01 · C522-C01 · C522-B01 · C522-B02 · C522-F01
+    no_exigibles: 1   # C522-G01
+  salvedad: >-
+    «6 exigibles» NO es el número definitivo de exigencias jurídicas. Seguimos
+    en la transición segmento → condición → prescripción atómica → subrequisito,
+    y el objetivo de esta fase es justamente descubrir si una condición
+    aparentemente única contiene varias prescripciones independientes. El caso
+    C522-B02 demuestra que sí: una obligación con ocho requisitos dentro.
+  pendiente: >-
+    revisión de Javo, si desea confirmarla. Esta validación es del equipo
+    técnico-jurídico; no sustituye su criterio sobre el fondo normativo.
+
 _alcance:
   permite:
     - "distinguir la obligación del campo que la transporta"

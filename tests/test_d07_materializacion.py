@@ -146,3 +146,69 @@ def test_los_campos_del_bloque_compartido_no_se_reparten_por_nuestra_cuenta():
     # Ambos heredan los mismos campos del bloque, y eso se declara.
     assert (obligaciones["5"].campos_exigidos ==
             obligaciones["22"].campos_exigidos)
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# CAPA 2 · el caso 317 como test obligatorio del clasificador
+# ══════════════════════════════════════════════════════════════════════════════
+
+def test_una_facultad_accesoria_no_degrada_una_obligacion_explicita():
+    """TEST OBLIGATORIO DEL CLASIFICADOR (colega, 2026-08-20).
+
+    El párrafo 317 de la Guía contiene **`deberán` y `podrá` a la vez**:
+
+        «los sujetos obligados DEBERÁN generar un documento en el que se
+        especifique: descripción del servicio; […] tiempo estimado de respuesta.
+        Esta información PODRÁ reportarse en cualquier formato»
+
+    El clasificador lo leyó como facultad no exigible y convirtió una obligación
+    con ocho requisitos dentro en una recomendación. El «podrá» gobierna sólo el
+    formato; la obligación de generar el documento y sus ocho contenidos queda
+    intacta.
+
+    Este caso queda fijado porque es el único de los 105 que mezcla ambos modos
+    verbales, y porque su fallo no era técnico sino jurídico: habría eximido al
+    sujeto observado de una obligación real."""
+    import importlib.util
+    ruta = RAIZ / "scripts" / "normativa" / "extraer_condiciones_exigibilidad.py"
+    spec = importlib.util.spec_from_file_location("ce", ruta)
+    ce = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(ce)
+
+    caso_317 = (
+        "En cuanto al enlace para acceder al reporte del servicio, los sujetos "
+        "obligados deberán generar un documento en el que se especifique "
+        "información relacionada con: la descripción del servicio; a quién está "
+        "dirigido; requisitos para acceder al servicio. Esta información podrá "
+        "reportarse en cualquier formato que considere la entidad.")
+    tipo, _ = ce.clasificar(caso_317)
+    assert tipo != ce.ORIENTACION, (
+        "una facultad sobre el FORMATO no puede degradar la obligación sobre el "
+        "CONTENIDO — eximiría al sujeto de una obligación real")
+
+    # Y la facultad pura sí debe reconocerse como tal.
+    facultad = "las entidades podrán establecer acciones para difundir sus servicios"
+    assert ce.clasificar(facultad)[0] == ce.ORIENTACION
+
+
+def test_los_pilotos_de_capa2_estan_validados_y_trazables():
+    """Cada condición de los pilotos debe declarar quién la validó y poder
+    remontarse a su párrafo de origen. Sin eso, una clasificación jurídica sería
+    indistinguible de una inferencia del algoritmo (ADR-042 §6-ter)."""
+    import yaml
+    ruta = RAIZ / "docs" / "brn" / "CAPA2_pilotos_6_y_5-22.yaml"
+    if not ruta.exists():
+        pytest.skip("sin pilotos de Capa 2 en este entorno")
+    d = yaml.safe_load(ruta.read_text(encoding="utf-8"))
+    cs = d["numeral_6"]["condiciones"] + d["numerales_5_y_22"]["condiciones"]
+    assert len(cs) == 7
+    for c in cs:
+        assert c["tipo_validado"], f"{c['id']} sin validar"
+        assert c["exigible_validado"] in ("si", "no"), f"{c['id']} sin exigibilidad"
+        assert c.get("validado_por"), f"{c['id']} no dice quién lo validó"
+        assert c["parrafo"], f"{c['id']} sin trazabilidad al texto de origen"
+    # La bifurcación condicionada debe declarar su antecedente.
+    f01 = next(c for c in cs if c["id"] == "C522-F01")
+    assert f01.get("condicion_de_activacion"), (
+        "una condición procedimental sin antecedente declarado se leería como "
+        "opción discrecional de la entidad")

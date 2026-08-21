@@ -324,6 +324,19 @@ construir una afirmación ejecutada sin sujeto:
 
     sujeto_sello = sujeto_activo = sujeto_de_la_afirmación
 
+### 6-quinquies · Búsqueda lexical ≠ acreditación de ausencia
+
+> **Hallar un término prueba presencia; no hallarlo NO prueba ausencia.**
+
+La asimetría ya evitó cinco hallazgos falsos en el numeral 8 —«Objetivos» se publicaba como
+`OBJETO DEL PROCESO`, «Proveedores» como `IDENTIFICACIÓN DEL CONTRATISTA`— y vuelve a ser
+decisiva en la Capa 2: una condición material como «debe incluirse la atención de solicitudes de
+acceso a la información pública» puede estar satisfecha bajo cualquier denominación equivalente.
+
+Por eso la definición de **exigencia material** termina en *«con independencia de la denominación
+formal del campo que la transporte»*: la obligación recae sobre la información, no sobre el rótulo
+que la nombra.
+
 ### 6-quater · El rótulo de una cifra es parte de su evidencia
 
 > **Un número correcto con una etiqueta incorrecta es un número falso.**
