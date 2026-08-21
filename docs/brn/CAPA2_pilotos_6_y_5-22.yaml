@@ -25,6 +25,28 @@
 # estructura; el canon determina; la evidencia demuestra.
 # ═══════════════════════════════════════════════════════════════════════════════
 
+# ── CONTRATO DEL MODELO · congelado 2026-08-20 ─────────────────────────────────
+# El aprendizaje metodológico central de este tramo, en una línea:
+#
+#     segmento  ≠  condición  ≠  exigencia jurídica
+#
+# Tres unidades, tres espacios de nombres, tres conteos que no se colapsan:
+#
+#   segmento    unidad TEXTUAL de la Guía        · vive en el CSV  · id CN-Xnn
+#   condición   unidad ANALÍTICA por atomización · vive en el YAML · id propio
+#   exigencia   unidad JURÍDICA                  · sólo la validación la fija
+#
+# Las cardinalidades entre segmento y condición son de MUCHOS A MUCHOS:
+#   · un segmento puede originar VARIAS condiciones   (317 → B02 + G01)
+#   · una condición puede citar VARIOS segmentos      (bloque 5-22 compartido)
+#
+# Por eso `segmento_origen` es una lista, y por eso los ids no se reconcilian.
+_contrato:
+  namespaces_separados: true
+  cardinalidad_segmento_condicion: "muchos a muchos"
+  fuente_madre: "data/lotaip/VALIDACION_JURIDICA_condiciones.csv · NO se edita"
+  lugar_de_la_atomizacion: "este archivo"
+
 _meta:
   estado: propuesta
   capa: "2 · condiciones normativas de exigibilidad"
@@ -42,9 +64,10 @@ _meta:
 # legible sin abrir código.
 _esquema:
   id: >-
-    identificador de la CONDICIÓN ATOMIZADA. NO coincide necesariamente con el
-    id del segmento del CSV: son dos cosas distintas y confundirlas rompe la
-    trazabilidad (ver `segmento_origen`).
+    identificador de la CONDICIÓN ATOMIZADA, en su propio espacio de nombres.
+    Que no coincida con el id del segmento NO es un defecto a reconciliar: son
+    dos namespaces distintos y deben permanecer separados. Intentar igualarlos
+    mezclaría la unidad textual con la unidad analítica.
   segmento_origen: >-
     id(s) del segmento en VALIDACION_JURIDICA_condiciones.csv del que proviene
     esta condición. Puede haber VARIOS —cuando la Guía desarrolla dos numerales
@@ -79,7 +102,7 @@ numeral_6:
 
   condiciones:
     - id: C6-D01
-      segmento_origen: ["C6-D01"]        # CSV · mismo id, 1:1
+      segmento_origen: ["C6-D01"]        # coincidencia casual de nombre: 1 segmento → 1 condición
       parrafo: 330
       texto: >-
         En el presupuesto institucional, se consideran los datos de la cédula
@@ -114,7 +137,7 @@ numeral_6:
         exige leer el contenido, no el nombre del archivo.
 
     - id: C6-C01
-      segmento_origen: ["C6-C02"]        # ⚠️ el CSV lo llama C6-C02
+      segmento_origen: ["C6-C02"]        # ids distintos y así debe ser: namespaces separados
       parrafo: 351
       texto: >-
         Para obtener el porcentaje de ejecución presupuestaria, las entidades
@@ -178,7 +201,7 @@ numerales_5_y_22:
 
   condiciones:
     - id: C522-C01
-      segmento_origen: ["C5-C04", "C22-C04"]   # el bloque emite uno por numeral
+      segmento_origen: ["C5-C04", "C22-C04"]   # 2 segmentos → 1 condición (bloque compartido)
       parrafo: 304
       texto: >-
         Se debe totalizar el número de personas que acceden mensualmente a los
@@ -284,10 +307,11 @@ numerales_5_y_22:
         campo presente ≠ requisito satisfecho.
 
     - id: C522-G01
-      segmento_origen: ["C5-B07", "C22-B07"]   # ⚠️ NACE DE LA ATOMIZACIÓN:
-      # el CSV clasifica el segmento entero como B. Esta facultad no existe
-      # como fila del CSV — sólo aparece al separar la obligación de su
-      # facultad accesoria. Es la prueba de que un segmento produce N condiciones.
+      segmento_origen: ["C5-B07", "C22-B07"]   # NACE DE LA ATOMIZACIÓN
+      # El CSV clasifica el segmento 317 entero como B. Esta facultad no tiene
+      # fila propia: aparece al separar la obligación de su facultad accesoria.
+      # Junto con C522-B02 forma el fixture canónico de la transformación:
+      #     2 segmentos (C5-B07, C22-B07) → 1 texto → 2 condiciones
       parrafo: 317
       texto: >-
         Esta información podrá reportarse en cualquier formato que considere la

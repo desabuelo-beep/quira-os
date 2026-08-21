@@ -214,14 +214,27 @@ def test_los_pilotos_de_capa2_estan_validados_y_trazables():
         "opción discrecional de la entidad")
 
 
-def test_cada_condicion_declara_de_que_segmento_proviene():
-    """ADR-042 §6-sexies · `ID de segmento ≠ ID de condición atomizada`.
+def test_la_relacion_segmento_condicion_es_de_muchos_a_muchos():
+    """ADR-042 §6-sexies · las TRES invariantes del contrato (colega, 2026-08-20).
 
-    La verificación cruzada del colega encontró que los dos artefactos de la
-    Capa 2 usaban identificadores distintos para lo mismo: el párrafo 351 es
-    `C6-C02` en el CSV y `C6-C01` en el YAML. Sin el vínculo explícito, la
-    trazabilidad se rompe justo donde más hace falta — cuando un segmento se
-    desdobla en varias condiciones."""
+    No basta con comprobar que `segmento_origen` exista. Hay que demostrar la
+    transformación, porque es donde se pierden o se inflan las cuentas:
+
+        1 · todo segmento citado existe en la fuente madre
+        2 · un mismo segmento puede originar VARIAS condiciones
+        3 · una condición puede citar VARIOS segmentos
+
+    El caso 317 es el fixture canónico de las tres a la vez:
+
+        CSV     C5-B07  ─┐
+                          ├── un solo texto (párrafo 317)
+                C22-B07 ─┘
+        YAML    C522-B02 ─┐
+                          ├── dos condiciones tras atomizar
+                C522-G01 ─┘
+
+    Y los identificadores NO se reconcilian: `C6-C01` (condición) y `C6-C02`
+    (segmento) viven en espacios de nombres distintos a propósito."""
     import csv
     import yaml
     ruta = RAIZ / "docs" / "brn" / "CAPA2_pilotos_6_y_5-22.yaml"
@@ -234,6 +247,7 @@ def test_cada_condicion_declara_de_que_segmento_proviene():
     with csv_ruta.open(encoding="utf-8-sig") as f:
         segmentos = {r["id"] for r in csv.DictReader(f, delimiter=";")}
 
+    # ── invariante 1 · todo segmento citado existe en la fuente madre ──────────
     for c in cs:
         origen = c.get("segmento_origen")
         assert origen, f"{c['id']} no declara de qué segmento proviene"
@@ -241,10 +255,30 @@ def test_cada_condicion_declara_de_que_segmento_proviene():
             assert s in segmentos, (
                 f"{c['id']} cita el segmento «{s}», que no está en el CSV")
 
-    # Un segmento puede producir VARIAS condiciones: es la atomización.
-    # El párrafo 317 da la obligación y su facultad accesoria por separado.
+    # ── invariante 2 · un segmento origina VARIAS condiciones ──────────────────
+    por_segmento = {}
+    for c in cs:
+        for s in c["segmento_origen"]:
+            por_segmento.setdefault(s, []).append(c["id"])
+    multiples = {s: v for s, v in por_segmento.items() if len(v) > 1}
+    assert multiples, (
+        "ninguna condición comparte segmento: la atomización no está "
+        "representada y el modelo no demuestra su razón de ser")
+    assert set(multiples.get("C5-B07", [])) == {"C522-B02", "C522-G01"}
+
+    # ── invariante 3 · una condición cita VARIOS segmentos ─────────────────────
+    compartidas = [c for c in cs if len(c["segmento_origen"]) > 1]
+    assert compartidas, (
+        "ninguna condición cita más de un segmento: el bloque compartido 5-22 "
+        "no está representado")
+
+    # ── y los namespaces NO se reconcilian ─────────────────────────────────────
+    c6 = next(c for c in cs if c["id"] == "C6-C01")
+    assert c6["segmento_origen"] == ["C6-C02"], (
+        "el id de condición y el de segmento son distintos A PROPÓSITO: "
+        "igualarlos mezclaría la unidad textual con la analítica")
+
+    # El fixture canónico, completo.
     del_317 = [c for c in cs if c["parrafo"] == 317]
-    assert len(del_317) == 2, (
-        "el segmento 317 debe producir DOS condiciones: la obligación con sus "
-        "ocho requisitos y la facultad sobre el formato")
+    assert len(del_317) == 2
     assert {c["exigible_validado"] for c in del_317} == {"si", "no"}

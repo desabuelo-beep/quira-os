@@ -358,6 +358,22 @@ habría perdido; contarla dos veces habría inflado el universo.
     Guía → segmento → condición atomizada → subrequisito
          → materialización esperada → evidencia → verificador → afirmación
 
+**Los identificadores NO se reconcilian.** `C6-C01` (condición) y `C6-C02` (segmento) viven en
+espacios de nombres distintos **a propósito**: igualarlos mezclaría la unidad textual con la
+analítica. La relación entre ambos es de **muchos a muchos** y se declara, no se deduce:
+
+    C5-B07  ─┐                          ┌─ C522-B02   la obligación y sus 8 requisitos
+              ├── párrafo 317 ──────────┤
+    C22-B07 ─┘                          └─ C522-G01   la facultad sobre el formato
+
+Ese cuadro es el fixture canónico del modelo: dos segmentos que refieren un solo texto, y dos
+condiciones que salen de él con exigibilidad opuesta. Tres invariantes lo defienden — todo
+segmento citado existe en la fuente madre, un segmento puede originar varias condiciones, y una
+condición puede citar varios segmentos.
+
+**El CSV es fuente madre y no se edita.** La transformación analítica vive en el YAML. Escribir en
+el CSV que «existen 6 exigencias» colapsaría las tres unidades en una.
+
 ### 6-quinquies · Búsqueda lexical ≠ acreditación de ausencia
 
 > **Hallar un término prueba presencia; no hallarlo NO prueba ausencia.**
