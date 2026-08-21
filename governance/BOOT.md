@@ -54,9 +54,10 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 
 🤖 **ADR-051 §12**: 5 dimensiones (capacidad·**sujeto**·ejecución·evidencia·validación) · sin sujeto **NO se construye** la afirmación · perímetro propio SELLADO.
 🔌 **`reglas.py` = ÚNICA puerta a la norma** · gate **REGLAS** · **478 pruebas**.
 🔐 **PANEL ACCESOS** (→Ops): bitácora 2 meses sin leerse · alerta por fallos concentrados.
-📐 **MATRIZ (Javo)**: portal = **materialización de obligaciones** · ⛔ ausencia≠incumplimiento · **105 segmentos**: 89 candidatas·7 orient.·9 fragm. ⏳ **Capa 2B con Javo**.
-🏷️ **§6-quater**: *número correcto con etiqueta incorrecta = número falso* · todo agregado va con su desglose.
-🧾 **SCORING vs Instructivo**: SITA·CTA·ETA·RP ✅ · **CI mal** (Anexo 1 asigna 1×1). ⛔ NO tocar SITA hasta cerrar la vara.
+📐 **MATRIZ (Javo)**: portal = **materialización de obligaciones** · ⛔ ausencia≠incumplimiento · 105 segm: 89·7·9 ⏳ Capa 2B.
+🏷️ **§6-quater**: *número correcto con etiqueta incorrecta = número falso*.
+🧬 **§6-sexies**: **segmento ≠ condición ≠ exigencia** · 105 segm → 7 cond. piloto (6 exigibles).
+🧾 **SCORING vs Instructivo**: SITA·CTA·ETA·RP ✅ · **CI mal** (Anexo 1 asigna 1×1). ⛔ NO tocar SITA.
 ⛔ **EL NOMBRE DEL ENLACE NO ES EVIDENCIA** — 3×: «acta»→certificado · «asistencia»→fotos.
 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 · detalle en el ADR)

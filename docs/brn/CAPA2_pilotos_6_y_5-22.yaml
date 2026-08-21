@@ -41,7 +41,14 @@ _meta:
 # Formulado por el colega, 2026-08-20. Se documenta aquí para que el patrón sea
 # legible sin abrir código.
 _esquema:
-  id: "identificador estable · trazable al párrafo de origen"
+  id: >-
+    identificador de la CONDICIÓN ATOMIZADA. NO coincide necesariamente con el
+    id del segmento del CSV: son dos cosas distintas y confundirlas rompe la
+    trazabilidad (ver `segmento_origen`).
+  segmento_origen: >-
+    id(s) del segmento en VALIDACION_JURIDICA_condiciones.csv del que proviene
+    esta condición. Puede haber VARIOS —cuando la Guía desarrolla dos numerales
+    en un mismo bloque— y un mismo segmento puede producir VARIAS condiciones.
   parrafo: "número de párrafo en la Guía · permite auditar hasta el texto"
   texto: "el segmento normativo literal · no se parafrasea"
   tipo_propuesto: "clasificación A-G derivada del modo verbal"
@@ -72,6 +79,7 @@ numeral_6:
 
   condiciones:
     - id: C6-D01
+      segmento_origen: ["C6-D01"]        # CSV · mismo id, 1:1
       parrafo: 330
       texto: >-
         En el presupuesto institucional, se consideran los datos de la cédula
@@ -106,6 +114,7 @@ numeral_6:
         exige leer el contenido, no el nombre del archivo.
 
     - id: C6-C01
+      segmento_origen: ["C6-C02"]        # ⚠️ el CSV lo llama C6-C02
       parrafo: 351
       texto: >-
         Para obtener el porcentaje de ejecución presupuestaria, las entidades
@@ -169,6 +178,7 @@ numerales_5_y_22:
 
   condiciones:
     - id: C522-C01
+      segmento_origen: ["C5-C04", "C22-C04"]   # el bloque emite uno por numeral
       parrafo: 304
       texto: >-
         Se debe totalizar el número de personas que acceden mensualmente a los
@@ -203,6 +213,7 @@ numerales_5_y_22:
       verificador: null
 
     - id: C522-B01
+      segmento_origen: ["C5-B06", "C22-B06"]
       parrafo: 316
       texto: >-
         En cuanto a los servicios que brinda, se debe incluir la atención de las
@@ -227,6 +238,7 @@ numerales_5_y_22:
         Hallar el término prueba presencia; NO hallarlo no prueba ausencia.
 
     - id: C522-B02
+      segmento_origen: ["C5-B07", "C22-B07"]
       parrafo: 317
       texto: >-
         En cuanto al enlace para acceder al reporte del servicio, los sujetos
@@ -272,6 +284,10 @@ numerales_5_y_22:
         campo presente ≠ requisito satisfecho.
 
     - id: C522-G01
+      segmento_origen: ["C5-B07", "C22-B07"]   # ⚠️ NACE DE LA ATOMIZACIÓN:
+      # el CSV clasifica el segmento entero como B. Esta facultad no existe
+      # como fila del CSV — sólo aparece al separar la obligación de su
+      # facultad accesoria. Es la prueba de que un segmento produce N condiciones.
       parrafo: 317
       texto: >-
         Esta información podrá reportarse en cualquier formato que considere la
@@ -296,6 +312,7 @@ numerales_5_y_22:
         una facultad sobre la FORMA no toca la exigibilidad del CONTENIDO.
 
     - id: C522-F01
+      segmento_origen: ["C5-F08", "C22-F08"]
       parrafo: 318
       texto: >-
         Si la entidad no dispone de una encuesta para medir la satisfacción de

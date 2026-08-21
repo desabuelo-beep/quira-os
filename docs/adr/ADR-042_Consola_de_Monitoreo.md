@@ -324,6 +324,40 @@ construir una afirmación ejecutada sin sujeto:
 
     sujeto_sello = sujeto_activo = sujeto_de_la_afirmación
 
+### 6-sexies · Segmento ≠ condición ≠ exigencia · el triple principio
+
+Verificación cruzada del colega entre los dos artefactos de la Capa 2 (2026-08-20). Encontró que
+los identificadores divergían y que un segmento había producido dos condiciones. De ahí tres
+desigualdades que **no pueden colapsarse nunca**:
+
+    105 segmentos     ≠  105 condiciones
+     89 candidatas    ≠   89 exigencias
+      7 condiciones   ≠    7 exigencias jurídicas definitivas
+
+**Por qué las tres son distintas.** Un segmento es una unidad **textual** de la Guía. Una condición
+es una unidad **analítica** producto de la atomización. Una exigencia es una unidad **jurídica**,
+que sólo la validación determina. Entre cada par hay una operación que puede cambiar el número:
+
+| Operación | Efecto sobre el conteo |
+|---|---|
+| bloque compartido | un segmento se emite **dos veces** (numerales 5 y 22 del mismo párrafo) |
+| atomización | un segmento produce **N condiciones** (el 317 dio obligación + facultad) |
+| validación jurídica | una condición puede resultar **no exigible**, o desdoblarse |
+
+**La regla operativa:** `ID de segmento normativo ≠ ID de condición atomizada`. El primero
+identifica el material extraído de la Guía; el segundo, la unidad de análisis resultante. Toda
+condición declara su `segmento_origen` — que puede ser más de uno — y sin ese vínculo la
+trazabilidad se rompe en cuanto un segmento se desdobla.
+
+**El caso que lo demuestra.** El párrafo 317 vive en el CSV como `C5-B07` y `C22-B07`, ambos
+clasificados `B_exigencia_material`. Al atomizarlo produce `C522-B02` (la obligación con ocho
+requisitos) y `C522-G01` (la facultad sobre el formato). **`C522-G01` no existe como fila del CSV**:
+nace de separar la obligación de su facultad accesoria. Contar filas del CSV como exigencias la
+habría perdido; contarla dos veces habría inflado el universo.
+
+    Guía → segmento → condición atomizada → subrequisito
+         → materialización esperada → evidencia → verificador → afirmación
+
 ### 6-quinquies · Búsqueda lexical ≠ acreditación de ausencia
 
 > **Hallar un término prueba presencia; no hallarlo NO prueba ausencia.**

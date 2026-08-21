@@ -212,3 +212,39 @@ def test_los_pilotos_de_capa2_estan_validados_y_trazables():
     assert f01.get("condicion_de_activacion"), (
         "una condición procedimental sin antecedente declarado se leería como "
         "opción discrecional de la entidad")
+
+
+def test_cada_condicion_declara_de_que_segmento_proviene():
+    """ADR-042 §6-sexies · `ID de segmento ≠ ID de condición atomizada`.
+
+    La verificación cruzada del colega encontró que los dos artefactos de la
+    Capa 2 usaban identificadores distintos para lo mismo: el párrafo 351 es
+    `C6-C02` en el CSV y `C6-C01` en el YAML. Sin el vínculo explícito, la
+    trazabilidad se rompe justo donde más hace falta — cuando un segmento se
+    desdobla en varias condiciones."""
+    import csv
+    import yaml
+    ruta = RAIZ / "docs" / "brn" / "CAPA2_pilotos_6_y_5-22.yaml"
+    csv_ruta = RAIZ / "data" / "lotaip" / "VALIDACION_JURIDICA_condiciones.csv"
+    if not (ruta.exists() and csv_ruta.exists()):
+        pytest.skip("faltan artefactos de Capa 2 en este entorno")
+
+    d = yaml.safe_load(ruta.read_text(encoding="utf-8"))
+    cs = d["numeral_6"]["condiciones"] + d["numerales_5_y_22"]["condiciones"]
+    with csv_ruta.open(encoding="utf-8-sig") as f:
+        segmentos = {r["id"] for r in csv.DictReader(f, delimiter=";")}
+
+    for c in cs:
+        origen = c.get("segmento_origen")
+        assert origen, f"{c['id']} no declara de qué segmento proviene"
+        for s in origen:
+            assert s in segmentos, (
+                f"{c['id']} cita el segmento «{s}», que no está en el CSV")
+
+    # Un segmento puede producir VARIAS condiciones: es la atomización.
+    # El párrafo 317 da la obligación y su facultad accesoria por separado.
+    del_317 = [c for c in cs if c["parrafo"] == 317]
+    assert len(del_317) == 2, (
+        "el segmento 317 debe producir DOS condiciones: la obligación con sus "
+        "ocho requisitos y la facultad sobre el formato")
+    assert {c["exigible_validado"] for c in del_317} == {"si", "no"}
