@@ -371,6 +371,15 @@ condiciones que salen de él con exigibilidad opuesta. Tres invariantes lo defie
 segmento citado existe en la fuente madre, un segmento puede originar varias condiciones, y una
 condición puede citar varios segmentos.
 
+**Y el universo documental no es una unidad normativa.** El colega, al cerrar el tramo:
+
+> **Los 636 no son 636 unidades normativas. Son unidades institucionales sobre las cuales,
+> posteriormente, se confrontará evidencia contra un instrumento normativo ya congelado.**
+
+Escrito para impedir que el tamaño del universo vuelva a contaminar la definición de la unidad de
+análisis — que es exactamente lo que ocurrió cuando se propuso recorrer «los 636 por numeral o por
+artefacto».
+
 **El CSV es fuente madre y no se edita.** La transformación analítica vive en el YAML. Escribir en
 el CSV que «existen 6 exigencias» colapsaría las tres unidades en una.
 
