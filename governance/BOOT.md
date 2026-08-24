@@ -45,8 +45,6 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 
 🎨 **ADR-049**: *la gráfica no sabe más que el motor*.
 ⛏️ **ADR-050 CANTERA**: hereda capacidades, NO productos.
 🔧 **v5.7_TGI** · promover = **recalcular y GUARDAR** · **IGP 48,33→27,00**.
-⚖️ **ADR-045/046/047**: 1 superficie·3 custodias · techo = **el documento**.
-🏛️ **ADR-048 SIL**: **objeto observado, NO dominio** · ⛔ sin fórmula.
 🚒 **OBS-024/025/028**: Bomberos $1,75M sin meta · 5 factores manuales · ⛔**Ei**.
 📋 **Metas 66/cablea 25** · PDOT **05-11-2024** → **≥2025**.
 🔭 **ADR-042 CONSOLA** (`env_obs`≠`env_ops`) · **MATRIZ_CANONICA, NO el GM**.
@@ -55,8 +53,8 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 
 🔌 **`reglas.py` = ÚNICA puerta a la norma** · gate **REGLAS**.
 🔐 **PANEL ACCESOS** (→Ops): bitácora 2 meses sin leerse · alerta por fallos concentrados.
 📐 **MATRIZ (Javo)**: portal = **materialización de obligaciones** · ⛔ ausencia≠incumplimiento · 7 cond. piloto validadas.
-🏷️ **§6-quater**: *número correcto con etiqueta incorrecta = número falso*.
-🧬 **§6-sexies**: **segmento ≠ condición ≠ exigencia** · ⛔ los 636 NO son unidades normativas.
+🪞 **ADR-052** (⛔ NO toca CAPA 0): **naturaleza del objeto ≠ estado de la evidencia** · `no_documental` sólo lo declara el CORPUS.
+🧬 **§6-sexies**: **segmento ≠ condición ≠ exigencia** · ⛔ los 636 NO son unidades normativas · *etiqueta incorrecta = número falso*.
 ➡️ **SIGUIENTE**: Capa 2 a los 24 numerales · luego Capa 3 (los 636).
 🧾 **SCORING vs Instructivo**: SITA·CTA·ETA·RP ✅ · **CI mal** (Anexo 1 asigna 1×1). ⛔ NO tocar SITA aún.
 ⛔ **EL NOMBRE DEL ENLACE NO ES EVIDENCIA** — 3×: «acta»→certificado · «asistencia»→fotos.
