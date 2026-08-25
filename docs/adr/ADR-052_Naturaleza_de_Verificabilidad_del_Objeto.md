@@ -164,6 +164,43 @@ y el indicador termina gobernando al objeto que pretendía observar.
 
 ---
 
+### 6 · La secuencia sólo se recorre en un sentido
+
+    naturaleza → evidencia → resultado
+
+**Nunca al revés.** QUIRA no puede observar un resultado de auditoría y deducir desde allí la
+naturaleza del objeto: eso permitiría reclasificar un objeto *después* de haber fallado la
+búsqueda, que es el error 2 en su forma más peligrosa. La prohibición es estructural —
+`Naturaleza` es inmutable y `evaluar_ausencia` la recibe ya construida.
+
+### 7 · La invariante, y su prueba de estrés
+
+> **La ausencia de evidencia sólo puede evaluarse cuando existe una expectativa normativa previa de
+> materialización documental.**
+> *(colega, 2026-08-20)*
+
+No se declara: se demuestra. `app/agents/procedencia.py` implementa la dimensión como función pura
+—sin conexión a d07, a la matriz ni a ningún scoring— y **siete pruebas la someten a los cuatro
+casos límite que el colega fijó**:
+
+| | Caso | Naturaleza | Evidencia | Resultado exigido | |
+|---|---|---|---|---|---|
+| **1** | objeto inequívocamente documental | documental | existe / no existe | con_evidencia / sin_evidencia | ✅ |
+| **2** | evidencia indirecta o trabajosa | documental | no hallada | **sin_evidencia**, no `no_documental` | ✅ |
+| **3** | sin materialización esperada en el corpus | no_documental | no aplica | `sin_materializacion_documental_exigible` | ✅ |
+| **4** | **el sujeto no publicó lo que debía** | documental | ninguna | **`sin_evidencia`, JAMÁS `no_documental`** | ✅ |
+
+**El caso 4 es el que decide si la categoría sirve.** Si un incumplimiento pudiera terminar en
+`no_documental`, la dimensión dejaría de proteger al observado y pasaría a exonerarlo. La defensa
+no está en la buena voluntad de quien clasifica: está en el **orden**. La naturaleza se deriva de
+si el corpus declara materialización esperada, y esa decisión se toma **antes** de mirar si hay
+evidencia. Que no haya documento no puede entrar en ella.
+
+Las otras tres pruebas cierran la barrera: ni el motor, ni el sujeto observado, ni el operador
+pueden construir un objeto `no_documental` —lanza `NaturalezaUsurpada`—; ni siquiera el corpus
+puede hacerlo sin declarar su fundamento; y los dos vocabularios se verifican **disjuntos**, para
+que `no_documental` no pueda reaparecer nunca dentro de la lista de estados de evidencia.
+
 ## Consecuencias
 
 ### Lo que este ADR NO hace

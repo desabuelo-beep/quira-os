@@ -172,3 +172,104 @@ def explicar(s: Sostenida) -> str:
     faltan = " ".join(PREGUNTA[c] for c in s.faltan)
     return (f"No determinable: la cadena de procedencia no responde — {faltan} "
             f"Se degrada la afirmación en lugar de completarla por inferencia.")
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# NATURALEZA DE VERIFICABILIDAD DEL OBJETO · ADR-052
+# ══════════════════════════════════════════════════════════════════════════════
+# Javo, 2026-08-20, mirando veinte años adelante:
+#
+# > *«Sin esa categoría, tu propio sistema empuja al municipio a dejar de hacer
+# > lo que no puede documentar. Con ella, distingues el vacío que acusa del
+# > vacío que no acusa.»*
+#
+# NO ES UN SEXTO ESTADO DE LA EVIDENCIA. Es una dimensión ANTERIOR que decide si
+# la evidencia siquiera es evaluable. La secuencia sólo se recorre en un sentido:
+#
+#     naturaleza → evidencia → resultado
+#
+# y nunca al revés: QUIRA no puede observar un resultado y deducir desde allí la
+# naturaleza del objeto. Esa sería la autoexoneración perfecta.
+#
+# LA INVARIANTE (colega, 2026-08-20):
+#
+#     **La ausencia de evidencia sólo puede evaluarse cuando existe una
+#     expectativa normativa previa de materialización documental.**
+#
+# Y las tres proposiciones que NO se colapsan:
+#
+#     no encontré evidencia            ← habla del proceso de búsqueda
+#     ≠ no existe evidencia esperable  ← habla del sujeto observado
+#     ≠ el objeto no admite verificación documental bajo este instrumento
+#                                      ← habla de la relación objeto/instrumento
+
+VERIFICABLE_DOCUMENTALMENTE = "verificable_documentalmente"
+NO_DOCUMENTAL = "no_documental"
+
+# Quién puede declarar la naturaleza. La lista tiene UN elemento a propósito.
+_AUTORIZADO_A_DECLARAR = ("corpus_normativo",)
+
+# Resultado cuando el objeto no admite verificación documental. NO es un estado
+# de la evidencia: es la constancia de que no había evidencia que esperar.
+SIN_MATERIALIZACION_EXIGIBLE = "sin_materializacion_documental_exigible"
+
+
+class NaturalezaUsurpada(RuntimeError):
+    """Alguien que no es el corpus normativo intentó declarar un objeto como no
+    verificable documentalmente. Si el motor pudiera hacerlo, se autoexoneraría
+    de todo lo que no sabe medir; si pudiera el sujeto observado, sería la
+    puerta trasera. La excepción existe para que el intento no pase callado."""
+
+
+@dataclass(frozen=True)
+class Naturaleza:
+    """Si el objeto admite verificación documental bajo ESTE instrumento.
+
+    `fundamento` no es decorativo: es lo que permite auditar la clasificación
+    hasta el corpus. Sin él no se construye."""
+    clase: str
+    declarada_por: str
+    fundamento: str
+
+    def __post_init__(self):
+        if self.clase == NO_DOCUMENTAL:
+            if self.declarada_por not in _AUTORIZADO_A_DECLARAR:
+                raise NaturalezaUsurpada(
+                    f"«{self.declarada_por}» no puede declarar un objeto "
+                    f"no_documental · sólo {_AUTORIZADO_A_DECLARAR[0]}")
+            if not self.fundamento:
+                raise NaturalezaUsurpada(
+                    "no_documental sin fundamento en el corpus: sería una "
+                    "exoneración sin causa declarada")
+
+    @property
+    def admite_evidencia(self) -> bool:
+        return self.clase == VERIFICABLE_DOCUMENTALMENTE
+
+
+def naturaleza_del_objeto(materializacion_esperada: str | None,
+                          declarada_por: str = "corpus_normativo",
+                          fundamento: str = "") -> Naturaleza:
+    """La naturaleza se DERIVA de si el corpus declara materialización esperada.
+
+    No es una etiqueta que alguien elija: si la norma declara qué debería
+    existir, el objeto es verificable documentalmente. Si no la declara —y sólo
+    el corpus puede no declararla— el objeto no tiene evidencia que esperar."""
+    if materializacion_esperada:
+        return Naturaleza(VERIFICABLE_DOCUMENTALMENTE, "corpus_normativo",
+                          f"el corpus declara materialización esperada: "
+                          f"{materializacion_esperada[:120]}")
+    return Naturaleza(NO_DOCUMENTAL, declarada_por, fundamento)
+
+
+def evaluar_ausencia(n: Naturaleza, hay_evidencia: bool) -> str:
+    """Qué resultado produce la ausencia de evidencia, según la naturaleza.
+
+    ⚠️ AQUÍ VIVE LA DEFENSA. Un motor que sólo mira `hay_evidencia` produce
+    `sin_evidencia` en los dos casos, y con eso convierte una propiedad del
+    objeto en una imputación al sujeto. La pregunta correcta va antes:
+    **¿había una evidencia documental normativamente esperable?**"""
+    if not n.admite_evidencia:
+        # No se dice «buscamos y no encontramos». Se dice algo anterior.
+        return SIN_MATERIALIZACION_EXIGIBLE
+    return "con_evidencia" if hay_evidencia else "sin_evidencia"

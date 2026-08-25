@@ -53,7 +53,7 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 
 🔌 **`reglas.py` = ÚNICA puerta a la norma** · gate **REGLAS**.
 🔐 **PANEL ACCESOS** (→Ops): bitácora 2 meses sin leerse · alerta por fallos concentrados.
 📐 **MATRIZ (Javo)**: portal = **materialización de obligaciones** · ⛔ ausencia≠incumplimiento · 7 cond. piloto validadas.
-🪞 **ADR-052** (⛔ NO toca CAPA 0): **naturaleza del objeto ≠ estado de la evidencia** · `no_documental` sólo lo declara el CORPUS.
+🪞 **ADR-052** (⛔ NO toca CAPA 0): **naturaleza del objeto ≠ estado de la evidencia** · `no_documental` sólo lo declara el CORPUS · 7 pruebas: no publicar ≠ no exigible.
 🧬 **§6-sexies**: **segmento ≠ condición ≠ exigencia** · ⛔ los 636 NO son unidades normativas · *etiqueta incorrecta = número falso*.
 ➡️ **SIGUIENTE**: Capa 2 a los 24 numerales · luego Capa 3 (los 636).
 🧾 **SCORING vs Instructivo**: SITA·CTA·ETA·RP ✅ · **CI mal** (Anexo 1 asigna 1×1). ⛔ NO tocar SITA aún.
