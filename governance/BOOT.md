@@ -36,29 +36,29 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 
 ## AHORA (estado vivo · historial → `governance/historico/`)
 🧭 **ADR-031** MCIP=5 motores · **035/037** IA propone/humano valida · **038** BRN **traza, no alimenta**.
 ✅ **PCD: d01·d02·d03·d06·d09** · d08 ENTRABLE · **d07 en curación**.
-🩹 **12 GATES** · Curación por DOM (R.8) · **estados, NO bool** · 494 pruebas.
+🩹 **12 GATES** · Curación por DOM (R.8) · **estados, NO bool** · 500 pruebas.
 📑 **PAC** 586 · **SERCOP 265+75** · ⛔ `.docx` gana al `.pdf`.
-⚖️ **d07 BRN**: `CNO-VII-001..004` **46/46 SHA** + `RO-VII-001..005` propuesta. ⛔ el DOM **consume RO, NO lee la ley**.
-📡 **SITA 2025 0,4448** (era 0,4646: contaba bueno lo no mirado) · **0 actas**.
+⚖️ **d07 BRN**: `CNO-VII-001..004` **46/46 SHA** + `RO-VII-001..005`. ⛔ el DOM **consume RO, NO lee la ley**.
+📡 **SITA 2025 0,4448** (era 0,4646) · **0 actas** · num.6 sin ingresos.
 🧹 **CORPUS**: 8 chunks de preámbulo fingían artículo (LOTAIP 19 = Pacto).
 🧪 **§6-bis**: falta evidencia→**degrada** · identidad contradictoria→**BLOQUEA** · el SHA prueba el archivo, NO la atribución.
-🎨 **ADR-049**: *la gráfica no sabe más que el motor*.
-⛏️ **ADR-050 CANTERA**: hereda capacidades, NO productos.
+🚦 **8 ESTADOS**: «no existe»≠«no pude obtener»≠«falló».
+🎨 **ADR-049** *la gráfica no sabe más que el motor* · ⛏️ **050 CANTERA**: hereda capacidades, NO productos.
 🔧 **v5.7_TGI** · promover = **recalcular y GUARDAR** · **IGP 48,33→27,00**.
 🚒 **OBS-024/025/028**: Bomberos $1,75M sin meta · 5 factores manuales · ⛔**Ei**.
 📋 **Metas 66/cablea 25** · PDOT **05-11-2024**→**≥2025**.
-🔭 **ADR-042 CONSOLA** (`env_obs`≠`env_ops`) · **MATRIZ_CANONICA, NO el GM**.
-🚦 **8 ESTADOS**: «no existe»≠«no pude obtener»≠«falló».
+🔭 **ADR-042** (`env_obs`≠`env_ops`) · **MATRIZ_CANONICA, NO el GM**.
 🤖 **ADR-051 §12**: 5 dim. (capacidad·**sujeto**·ejecución·evidencia·validación) · sin sujeto NO hay afirmación.
-🔌 **ÚNICA puerta**: `reglas.py`→norma (gate **REGLAS**) · `config.DATOS_DIR`→datos: **0 rutas fijas** (54→0).
-🔐 **PANEL ACCESOS** (→Ops): bitácora 2 meses sin leerse · alerta por concentración.
-📐 **MATRIZ (Javo)**: portal = **materialización de obligaciones** · ⛔ ausencia≠incumplimiento · 7 cond. piloto ✅.
+🔌 **ÚNICA puerta**: `reglas.py`→norma (gate **REGLAS**) · `config.DATOS_DIR`→datos: **0 rutas fijas**.
+🔐 **PANEL ACCESOS**: bitácora 2 meses sin leerse · alerta por concentración.
+📐 **MATRIZ (Javo)**: portal = **materialización de obligaciones** · ⛔ ausencia≠incumplimiento · 7 cond. ✅.
 🪞 **ADR-052** (⛔ NO toca CAPA 0): **naturaleza ≠ estado de la evidencia** · `no_documental` sólo lo declara el CORPUS · ⛔ no publicar ≠ no exigible.
 🧬 **§6-sexies**: **segmento ≠ condición ≠ exigencia** · *etiqueta incorrecta = número falso*.
 ➡️ **SIGUIENTE**: Capa 2 a los 24 numerales (⏸ valid. jurídica de 105) · luego los 636.
-🧾 **SCORING vs Instr.**: SITA·CTA·ETA·RP ✅ · **CI mal** (Anexo 1 asigna 1×1). ⛔ NO tocar SITA aún.
-⛔ **EL NOMBRE NO ES EVIDENCIA** — 3× GAD · **1× nosotros**: 85 ensayos en `provenance/`.
+🧾 **SCORING vs Instr.**: SITA·CTA·ETA·RP ✅ · **CI mal** (Anexo 1: 1×1). ⛔ NO tocar SITA.
+⛔ **EL NOMBRE NO ES EVIDENCIA** — 3× GAD · **1× nosotros**: 85 ensayos.
 🧷 **PROCEDENCIA nace en el GENERADOR**, sin reloj · ⛔ estamparla luego re-ejecuta la cadena.
+🚧 **TEST ≠ OPERACIÓN**: `conftest` corta subprocess/red · efecto real se declara (2).
 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 · detalle en el ADR)
 GAD = sujeto observado, NO cliente. 4 capas: A Núcleo · B Operaciones · C Productos (§LA TESIS · 1 motor) · D Portal `quiraintelligence.com` (radar 222 GAD).

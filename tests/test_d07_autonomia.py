@@ -512,6 +512,10 @@ def test_un_analisis_que_se_corto_solo_no_se_declara_completo():
 # capacidad». Todo lo demás —que corra, que devuelva 0, que escriba un archivo—
 # lo cumple igual un script que alguien ejecuta a mano.
 
+@pytest.mark.efecto_real(
+    "borra un derivado y deja que la cadena lo reconstruya: el trabajo real NO "
+    "es un medio para probar otra cosa, es exactamente lo que esta prueba "
+    "demuestra. Eliminarlo la vaciaría de contenido.")
 def test_quira_reconstruye_sus_derivados_sin_ayuda():
     """Se borra un derivado real y se comprueba que el agente lo rehace **igual**.
 
@@ -898,13 +902,28 @@ def test_un_artefacto_declara_su_naturaleza_epistemologica():
 def test_la_portabilidad_tiene_trinquete_por_clase():
     """OBS-032 · el colega: *«54 rutas absolutas no equivale a 54 defectos»*.
     Una frontera legítima replicada y una ruta al disco de alguien son problemas
-    distintos y se cuentan por separado; mezclarlas oculta el progreso real."""
-    import subprocess
-    r = subprocess.run([sys.executable, str(RAIZ / "scripts" / "ci" / "check_portabilidad.py")],
-                       cwd=str(RAIZ), capture_output=True, timeout=180)
-    assert r.returncode == 0, (
-        "el sistema se ató más a una máquina concreta:\n" +
-        (r.stdout or b"").decode("utf-8", "replace")[-600:])
+    distintos y se cuentan por separado; mezclarlas oculta el progreso real.
+
+    SE IMPORTA, NO SE LANZA (2026-08-25 · deuda 4-ter). Antes esto abría un
+    subproceso para correr un script que sólo recorre archivos y cuenta. El
+    resultado era idéntico y el coste, un `spawn` que la prueba no necesitaba:
+    una capacidad de actuar sobre el mundo abierta sin motivo. La regla que
+    queda: **si el efecto se puede eliminar, se elimina; sólo se declara el que
+    es inherente a lo que la prueba demuestra.**"""
+    import importlib.util
+
+    ruta = RAIZ / "scripts" / "ci" / "check_portabilidad.py"
+    spec = importlib.util.spec_from_file_location("_check_portabilidad", ruta)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+
+    from collections import Counter
+    por_clase = Counter(h[2] for h in mod.recorrer())
+    excedidas = {c: (por_clase.get(c, 0), tope)
+                 for c, tope in mod.TOPE.items() if por_clase.get(c, 0) > tope}
+    assert not excedidas, (
+        f"el sistema se ató más a una máquina concreta: {excedidas} "
+        f"(clase: actual / tope). El trinquete sólo admite bajar.")
 
 
 # ══════════════════════════════════════════════════════════════════════════════

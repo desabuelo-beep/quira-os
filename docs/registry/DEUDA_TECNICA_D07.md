@@ -233,17 +233,76 @@ reloj, reproducible), ambas verificadas contra regresión inyectada.
 **Daño a los datos: ninguno.** Comprobado: 422/5/3/6/1/139 estados de enlaces idénticos, y
 936/936/422/935 registros intactos.
 
-## 4-ter · ABIERTA · una prueba puede disparar trabajo real
+## 4-ter · CERRADA el 2026-08-25 · una prueba ya no puede actuar sobre el mundo
 
-**Lo reveló la cuelga anterior, y no lo causó.** `test_08b` llama a `orquestador.ejecutar()`, que si
-la cadena se ve desactualizada **re-ejecuta etapas**: analizar 936 archivos, y `verificar_enlaces`
-llegó a intentar salida de red (`intentos: 1, fallos: 1`).
+**Lo reveló la cuelga anterior, y no lo causó.** `test_08b` llamaba a `orquestador.ejecutar()`, que
+al ver la cadena desalineada **re-ejecutaba etapas**: analizar 936 archivos, y `verificar_enlaces`
+llegó a intentar salida de red.
 
-Una suite de pruebas no debe poder golpear una fuente externa ni lanzar minutos de cómputo. Hoy sólo
-lo evita que la cadena esté alineada — es decir, **la suerte**.
+Javo le dio el encuadre que lo convierte en prioridad, y no en higiene:
 
-**Condición de cierre.** Que las etapas no puedan ejecutarse bajo pruebas salvo declaración
-explícita, y que la corrida de `test_08b` sea sobre evidencia fija.
+> *«Una prueba que puede salir a la red, descargar, regenerar o modificar artefactos deja de ser una
+> observación controlada y puede contaminar aquello que pretende verificar.»*
+
+Y la simetría con el fallo de procedencia, que es lo que los hace la misma familia:
+
+| | |
+|---|---|
+| procedencia | el mecanismo de observación modificó **el objeto observado** |
+| `test_08b` | el mecanismo de observación podía modificar **el mundo que observa** |
+
+> **El observador no puede alterar en silencio aquello cuya integridad pretende demostrar.**
+
+### El inventario, antes de tocar un solo test
+
+|  |  |
+|---|---|
+| red (directa, en-proceso) | **0** — ninguna prueba la llama |
+| subprocess | 1 |
+| escrituras | 57 en 4 archivos |
+| generador / orquestador | 8 y 8, en 2 archivos |
+| `conftest.py` | **no existía** — ningún punto de aislamiento |
+
+El hallazgo que fijó el diseño: **la red no se alcanza en-proceso, se hereda.**
+
+    test → orquestador.ejecutar() → preparar_evidencia()
+         → ejecutar_etapa() → subprocess → script → curl
+
+Por eso bloquear sockets no habría servido de nada —el hijo tiene su propio proceso— y el único
+estrangulamiento real es el `spawn` (`app/agents/d07/etapas.py:337`). Los sockets se cierran igual,
+como defensa en profundidad.
+
+### Qué quedó
+
+`tests/conftest.py`, fixture `autouse`: **prohibido por defecto, permitido si se declara.**
+
+    @pytest.mark.efecto_real("por qué lo necesita")
+
+Con la frontera cerrada, **2 de 494** pruebas la cruzaban. Una se **eliminó** —lanzaba un subproceso
+para correr un script puro; ahora lo importa—; la otra se **declaró**, porque reconstruir un derivado
+es literalmente lo que demuestra. Regla: *si el efecto se puede eliminar, se elimina; sólo se declara
+el que es inherente.* Trinquete en 2 declarantes, contados **con AST** —la primera versión contaba 3,
+porque sumaba una línea de ejemplo dentro de un docstring: *etiqueta incorrecta = número falso*,
+esta vez contra el propio guard.
+
+Y `test_08b` **no falló**: hoy no cruza la frontera porque la cadena está alineada. Eso confirma el
+diagnóstico —era la suerte— y ahora, si se desalinea, se detiene en 4 segundos con causa legible en
+vez de colgarse.
+
+### El guard también se ataca
+
+Tres regresiones inyectadas, las tres detectadas:
+
+| ataque | resultado |
+|---|---|
+| quitar el `autouse` | 4 pruebas en rojo |
+| ensanchar el `except` de `ejecutar_etapa` a `Exception` | 1 en rojo |
+| una prueba se da permiso sin justificarlo | 1 en rojo |
+
+El segundo es el que más importa: era la forma de anular la defensa **sin tocarla** — la excepción
+se convertía en un plácido «etapa fallida» y nada se ponía rojo.
+
+**500 pruebas · check_health TODO OK.**
 
 ## 5 · Lo que sigue abierto del dominio, no de la técnica
 
