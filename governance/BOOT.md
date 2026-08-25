@@ -12,15 +12,8 @@ authority:
 > `## AHORA` al cierre · **¿dónde vive una verdad? → `QUIRA_MASTER_INDEX.md`** (Regla #6).
 
 ## QUÉ ES → `identity/CONSTITUCION_INSTITUCIONAL.md` (CONSTITUCION-001 · raíz `parent:null`)
-> **QUIRA = plataforma de inteligencia pública · infraestructura de conocimiento verificable**
-> (Plataforma · Método · Patrimonio Cognitivo) para gobiernos, ciudadanía, academia, cooperación.
 > ⛔ **NO es "auditoría" ni "observatorio"** — función menor y producto (Javo 2026-08-05).
 > Escala: SIAP-ICPI **mide** · QUADRUM **detecta** · **QUIRA EXPLICA la causalidad**.
-
-**3 niveles** (ADR-023 — inmutable): **1 Motor** = Gold Master **v5.7_TGI** (calcula ICPI/TGI/SAT/MMP · leer vía
-`app/connectors/gold_master.py` · NUNCA recalcular fuera del Excel) · **2 SO** = QUIRA (ingesta +
-trazabilidad MNT_UUID + evidencia) · **3 UI** = Dashboards + GeoTwin (solo visualizan).
-**MATRIZ_CANONICA** del Excel = ADN compartido: sin ella, dos mundos.
 
 ## 🎯 LA TESIS — no olvidar
 **QUIRA NO vende software a municipios. El GAD es SUJETO OBSERVADO, no cliente.**
