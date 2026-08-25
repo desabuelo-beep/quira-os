@@ -19,7 +19,14 @@ import sys
 import openpyxl
 import pdfplumber
 
-BASE = r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT"
+try:
+    from config import DATOS_DIR as _DATOS
+except Exception:                                        # noqa: BLE001
+    import os as _os
+    from pathlib import Path as _P
+    _DATOS = _P(_os.environ.get("QUIRA_DATOS", "."))
+
+BASE = str(_DATOS)
 POA = BASE + r"\Holding_Municipal_Montecristi\POA 2023-2026\GAD Montecristi\GAD Montecristi POA 2026.pdf"
 TGI = BASE + r"\SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx"
 WORK = BASE + r"\SIAP-ICPI_GOLD_MASTER_v5.5_WORK_20260623_CANON-SPRINT.xlsx"

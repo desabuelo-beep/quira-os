@@ -20,7 +20,14 @@ import pathlib
 import re
 from typing import Any
 
-_CARPETA = pathlib.Path(r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT\Holding_Municipal_Montecristi\Participación Ciudadana")
+try:
+    from config import DATOS_DIR as _DATOS
+except Exception:                                        # noqa: BLE001
+    import os as _os
+    from pathlib import Path as _P
+    _DATOS = _P(_os.environ.get("QUIRA_DATOS", "."))
+
+_CARPETA = pathlib.Path(str(_DATOS / "Holding_Municipal_Montecristi" / "Participación Ciudadana"))
 _RE_RESOLUCION = re.compile(r"\bresoluci[oó]n\b", re.IGNORECASE)
 
 

@@ -121,11 +121,18 @@ de contratación que el sujeto obligado publica. Su inaccesibilidad, si se confi
 hallazgo sobre Montecristi** sino sobre la disponibilidad de una fuente de tercero (ADR-042 §6:
 `fuente_no_disponible` no dice nada del sujeto).
 
-## 4 · Portabilidad — 50 puntos de frontera replicada
+## 4 · Portabilidad — 25 puntos de frontera replicada (eran 54)
 
-`personal 0 / 0` · `frontera_fija 50 / 50` (`scripts/ci/check_portabilidad.py`). Ninguno es una
-ruta al disco de una persona; los 50 son la frontera legítima hacia `ProyecT/` escrita a mano en
-vez de recibirse de `config.DATOS_DIR`. Migración mecánica, de a una, con trinquete descendente.
+`personal 0 / 0` · `frontera_fija 25 / 25` (`scripts/ci/check_portabilidad.py`).
+
+**Avance del 2026-08-20: 50 → 25.** Migración por lotes a `config.DATOS_DIR`, en dos patrones
+distintos: `Path(r"…ProyecT…")` (7 archivos) y cadena cruda `r"…ProyecT…"` conservando el tipo
+`str` (17 archivos). Suite verde en cada lote.
+
+**Los 25 restantes no se forzaron.** La inserción automática del import rompía la sintaxis en esos
+archivos, `ast.parse` los rechazó y **no se escribieron** — fallar seguro antes que dejar 25
+archivos con sintaxis inválida. Quedan para revisión manual, con el trinquete ya bajado a 25 para
+que el avance no se pierda.
 
 ## 5 · Lo que sigue abierto del dominio, no de la técnica
 

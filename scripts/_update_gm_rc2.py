@@ -14,7 +14,14 @@ from openpyxl.styles import Font, PatternFill, Alignment
 from copy import copy
 import hashlib, datetime
 
-GM_PATH  = r'C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT\SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx'
+try:
+    from config import DATOS_DIR as _DATOS
+except Exception:                                        # noqa: BLE001
+    import os as _os
+    from pathlib import Path as _P
+    _DATOS = _P(_os.environ.get("QUIRA_DATOS", "."))
+
+GM_PATH  = str(_DATOS / "SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx")
 NOW      = '2026-05-18T22:00:00Z'
 
 # ── HELPERS ───────────────────────────────────────────────────────────────────

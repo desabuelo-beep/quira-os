@@ -62,7 +62,11 @@ AMBITOS = ("scripts", "app", "quira_pages", "utils")
 #
 # 2026-08-19 · tras declarar `DATOS_DIR` y `VAULT_DIR` en `config.py` y migrar
 # el conector canónico del Gold Master y los tres accesos a la bóveda.
-TOPE = {"frontera_fija": 50, "personal": 0}
+# 2026-08-20 · migracion por lotes: 50 → 25. Los 25 restantes tienen el
+# import en un lugar donde la insercion automatica rompia la sintaxis; se
+# dejan para revision manual antes que forzarlos (el `ast.parse` los
+# rechazo y NO se escribieron: fallar seguro es la conducta correcta).
+TOPE = {"frontera_fija": 25, "personal": 0}
 
 
 def clasificar(linea: str) -> str | None:

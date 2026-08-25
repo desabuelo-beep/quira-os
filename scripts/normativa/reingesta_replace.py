@@ -31,12 +31,18 @@ import tomllib
 from datetime import datetime, timezone
 from pathlib import Path
 
+try:
+    from config import DATOS_DIR as _DATOS
+except Exception:                                        # noqa: BLE001
+    import os as _os
+    _DATOS = Path(_os.environ.get("QUIRA_DATOS", "."))
+
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 REPO = Path(__file__).resolve().parent.parent.parent
 SECRETS = REPO / ".streamlit" / "secrets.toml"
-WORD_DIR = Path(r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT\Normativa_Word")
+WORD_DIR = _DATOS / "Normativa_Word"
 MANIFIESTO_PATH = REPO / "docs" / "architecture" / "MANIFIESTO_REEMPLAZO_CORPUS.json"
 
 sys.path.insert(0, str(REPO))

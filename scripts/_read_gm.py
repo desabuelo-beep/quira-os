@@ -1,8 +1,15 @@
 
 import openpyxl, sys
+
+try:
+    from config import DATOS_DIR as _DATOS
+except Exception:                                        # noqa: BLE001
+    import os as _os
+    from pathlib import Path as _P
+    _DATOS = _P(_os.environ.get("QUIRA_DATOS", "."))
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
-GM = r'C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT\SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx'
+GM = str(_DATOS / "SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx")
 wb = openpyxl.load_workbook(GM, data_only=True)
 
 def show(name, head=5, tail=5):

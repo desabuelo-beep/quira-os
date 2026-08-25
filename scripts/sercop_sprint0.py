@@ -28,6 +28,12 @@ import urllib.request
 import urllib.parse
 from datetime import datetime, timezone
 from pathlib import Path
+
+try:
+    from config import DATOS_DIR as _DATOS
+except Exception:                                        # noqa: BLE001
+    import os as _os
+    _DATOS = Path(_os.environ.get("QUIRA_DATOS", "."))
 from typing import Any
 
 if hasattr(sys.stdout, "reconfigure"):
@@ -37,7 +43,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 # ── CONSTANTES ────────────────────────────────────────────────────────────────
 API_BASE   = "https://datosabiertos.compraspublicas.gob.ec/PLATAFORMA/api"
-GOLD_MASTER = Path(r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT\SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx")
+GOLD_MASTER = _DATOS / "SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx"
 H06_SHEET   = "H06_S4_CONTRATACIÓN_SERCOP"
 H06_ZONA_CRUDA_ROW = 66   # fila 1-indexed donde empieza la Zona Cruda
 

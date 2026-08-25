@@ -14,7 +14,14 @@ import shutil
 
 import openpyxl
 
-BASE = r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT"
+try:
+    from config import DATOS_DIR as _DATOS
+except Exception:                                        # noqa: BLE001
+    import os as _os
+    from pathlib import Path as _P
+    _DATOS = _P(_os.environ.get("QUIRA_DATOS", "."))
+
+BASE = str(_DATOS)
 CEDULA = (BASE + r"\Holding_Municipal_Montecristi\Cedulas Presupuestarias 2023-2026"
           r"\Presupuestos 2026\GAD Montecristi 2026\GAD Montecristi Presupuesto abril 2026.xlsx")
 TGI = BASE + r"\SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx"

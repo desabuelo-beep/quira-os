@@ -34,10 +34,17 @@ from datetime import date, datetime
 
 import openpyxl
 
+try:
+    from config import DATOS_DIR as _DATOS
+except Exception:                                        # noqa: BLE001
+    import os as _os
+    from pathlib import Path as _P
+    _DATOS = _P(_os.environ.get("QUIRA_DATOS", "."))
+
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
-EXCEL = r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT\SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx"
+EXCEL = str(_DATOS / "SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx")
 SNAP = os.path.join(os.path.dirname(__file__), "..", "data", "gm_snapshot.json")
 SECRETS = os.path.join(os.path.dirname(__file__), "..", ".streamlit", "secrets.toml")
 

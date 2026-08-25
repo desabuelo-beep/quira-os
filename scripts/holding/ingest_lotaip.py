@@ -38,6 +38,12 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
+try:
+    from config import DATOS_DIR as _DATOS
+except Exception:                                        # noqa: BLE001
+    import os as _os
+    _DATOS = Path(_os.environ.get("QUIRA_DATOS", "."))
+
 ROOT = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(ROOT))
 
@@ -52,7 +58,7 @@ st.secrets = _F()
 
 from sentinel.db_config import get_connection
 
-HOLDING_BASE = Path(r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT\Holding_Municipal_Montecristi")
+HOLDING_BASE = _DATOS / "Holding_Municipal_Montecristi"
 PRESUP_BASE  = HOLDING_BASE / "Presupuestos 2023-2026"
 VERSION      = "lotaip-v1.0"
 NOW          = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")

@@ -33,7 +33,14 @@ sys.path.insert(0, str(_ROOT / "scripts"))
 import ingest as ing                       # modelo local de embeddings (offline)
 from extract_poa_pdf import extract_poa
 
-EXCEL = r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT\SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx"
+try:
+    from config import DATOS_DIR as _DATOS
+except Exception:                                        # noqa: BLE001
+    import os as _os
+    from pathlib import Path as _P
+    _DATOS = _P(_os.environ.get("QUIRA_DATOS", "."))
+
+EXCEL = str(_DATOS / "SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx")
 SNAP = _ROOT / "data" / "gm_snapshot.json"
 
 TH_ATENDIDO = 0.62     # candidato fuerte

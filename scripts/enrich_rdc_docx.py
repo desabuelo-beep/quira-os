@@ -22,8 +22,15 @@ from docx.oxml.text.paragraph import CT_P
 from docx.table import Table
 from docx.text.paragraph import Paragraph
 
+try:
+    from config import DATOS_DIR as _DATOS
+except Exception:                                        # noqa: BLE001
+    import os as _os
+    from pathlib import Path as _P
+    _DATOS = _P(_os.environ.get("QUIRA_DATOS", "."))
+
 SNAP = os.path.join(os.path.dirname(__file__), "..", "data", "gm_snapshot.json")
-DOCX = r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT\Holding_Municipal_Montecristi\Rendición de cuentas 2023-2025\GAD Montecristi"
+DOCX = str(_DATOS / "Holding_Municipal_Montecristi" / "Rendición de cuentas 2023-2025" / "GAD Montecristi")
 ARCHIVOS = {
     "2023": "GAD Monteristi Rendición de cuentas 2023.docx",
     "2024": "GAD Monteristi Rendición de cuentas 2024.docx",

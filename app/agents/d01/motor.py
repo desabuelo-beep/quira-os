@@ -18,8 +18,15 @@ from __future__ import annotations
 import pathlib
 from typing import Any
 
+try:
+    from config import DATOS_DIR as _DATOS
+except Exception:                                        # noqa: BLE001
+    import os as _os
+    from pathlib import Path as _P
+    _DATOS = _P(_os.environ.get("QUIRA_DATOS", "."))
+
 _GM_DEFAULT = pathlib.Path(
-    r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT\SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx"
+    str(_DATOS / "SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx")
 )
 _HOJA = "H16b_IPE"
 # Celdas verificadas 2026-07-22 (PCD-D01: el IPE real curado vive en B15, no en

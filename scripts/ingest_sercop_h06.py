@@ -23,7 +23,14 @@ import openpyxl
 
 from scripts.fetch_sercop import build_contratacion_block
 
-BASE = r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT"
+try:
+    from config import DATOS_DIR as _DATOS
+except Exception:                                        # noqa: BLE001
+    import os as _os
+    from pathlib import Path as _P
+    _DATOS = _P(_os.environ.get("QUIRA_DATOS", "."))
+
+BASE = str(_DATOS)
 TGI = BASE + r"\SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx"
 WORK = BASE + r"\SIAP-ICPI_GOLD_MASTER_v5.5_WORK_20260624_SERCOP.xlsx"
 

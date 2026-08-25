@@ -13,6 +13,12 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
+try:
+    from config import DATOS_DIR as _DATOS
+except Exception:                                        # noqa: BLE001
+    import os as _os
+    _DATOS = Path(_os.environ.get("QUIRA_DATOS", "."))
+
 REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO))
 try:
@@ -20,7 +26,7 @@ try:
 except Exception:
     pass
 
-PROYECT = Path(r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT")
+PROYECT = _DATOS
 LIVE = PROYECT / "SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx"
 FREEZE = PROYECT / "SIAP-ICPI_GOLD_MASTER_v5.5_FREEZE_20260526.xlsx"
 SAMPLE = 10  # muestra de celdas distintas por hoja

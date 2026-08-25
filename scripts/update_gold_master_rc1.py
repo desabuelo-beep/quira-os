@@ -11,12 +11,19 @@ import sys
 import shutil
 
 try:
+    from config import DATOS_DIR as _DATOS
+except Exception:                                        # noqa: BLE001
+    import os as _os
+    from pathlib import Path as _P
+    _DATOS = _P(_os.environ.get("QUIRA_DATOS", "."))
+
+try:
     import openpyxl
 except ImportError:
     sys.exit("ERROR: openpyxl not installed. Run: pip install openpyxl")
 
-SRC = r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT\SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx"
-BAK = r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT\SIAP-ICPI_GOLD_MASTER_v5.5_TGI_BACKUP_PRE_RC1.xlsx"
+SRC = str(_DATOS / "SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx")
+BAK = str(_DATOS / "SIAP-ICPI_GOLD_MASTER_v5.5_TGI_BACKUP_PRE_RC1.xlsx")
 
 # ── 1. BACKUP ─────────────────────────────────────────────────────────────────
 shutil.copy2(SRC, BAK)

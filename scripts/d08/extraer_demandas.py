@@ -37,11 +37,17 @@ import unicodedata
 from datetime import date
 from pathlib import Path
 
+try:
+    from config import DATOS_DIR as _DATOS
+except Exception:                                        # noqa: BLE001
+    import os as _os
+    _DATOS = Path(_os.environ.get("QUIRA_DATOS", "."))
+
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 REPO = Path(__file__).resolve().parents[2]
-BASE = Path(r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT\Holding_Municipal_Montecristi\Participación Ciudadana")
+BASE = _DATOS / "Holding_Municipal_Montecristi" / "Participación Ciudadana"
 PP = BASE / "Presupuesto participativo 2024-2026" / "Word"
 AUD = BASE / "Audiencias Públicas"
 

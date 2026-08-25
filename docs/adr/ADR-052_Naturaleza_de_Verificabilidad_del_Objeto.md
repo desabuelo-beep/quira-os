@@ -7,7 +7,7 @@ authority:
 
 # ADR-052 · La naturaleza del objeto no es un estado de la evidencia
 
-**Estado:** PROPUESTO · 2026-08-20 — pendiente de aprobación de Javo (ADR-035 §5)
+**Estado:** PROPUESTO · mecanismo DEMOSTRADO · 2026-08-20 — pendiente de aprobación de Javo (ADR-035 §5)
 **No toca** la Constitución Ontológica. Declara la separación que ésta necesitaría **antes** de
 poder incorporar la propuesta que lo originó, y la condición bajo la cual se promovería.
 **Relacionado:** CAPA 0 (Principio Rector) · ADR-042 §6 (semántica de estados) · Regla de Oro 3.
@@ -209,6 +209,29 @@ que `no_documental` no pueda reaparecer nunca dentro de la lista de estados de e
 - **No añade un sexto estado** a la lista de verificabilidad.
 - **No toca SITA, ICPI ni ningún scoring.** Esto es ontología; los motores heredan, no al revés.
 - **No se aplica a d07**, donde previsiblemente no tiene casos.
+
+### Lo demostrado y lo que sigue pendiente — la distinción que no se puede perder
+
+> **Haber demostrado que el mecanismo es seguro no es haber demostrado que `no_documental` existe
+> como caso jurídico real.**
+> *(colega, 2026-08-20)*
+
+Lo primero está probado; lo segundo no. Y separarlos importa porque, sin esa línea, **la prueba de
+implementación se convertiría accidentalmente en evidencia normativa** — que es precisamente el
+tipo de deslizamiento que este ADR existe para impedir, cometido sobre el ADR mismo.
+
+    decisión arquitectónica    CONGELADA
+    mecanismo mínimo           DEMOSTRADO      procedencia.py · función pura
+    cuatro invariantes         PROBADAS        7 pruebas · commit 617be6d
+    aplicación a d07           NO
+    scoring                    NO
+    caso jurídico real         PENDIENTE       ← no lo aporta esta prueba
+    promoción a CAPA 0         PENDIENTE
+
+Los objetos de las pruebas son **construcciones de laboratorio**: sirven para demostrar que el
+mecanismo no puede ser usurpado ni recorrido al revés, no para acreditar que exista en el
+ordenamiento ecuatoriano un objeto normativo cuya materialización documental no sea exigible.
+Buscar ese caso pertenece a la expansión metodológica, no a esta decisión arquitectónica.
 
 ### Condición de promoción a la Constitución
 

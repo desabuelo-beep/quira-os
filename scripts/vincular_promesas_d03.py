@@ -32,7 +32,14 @@ import re
 
 import openpyxl
 
-COPIA = r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT\_TRABAJO_d03_promesas.xlsx"
+try:
+    from config import DATOS_DIR as _DATOS
+except Exception:                                        # noqa: BLE001
+    import os as _os
+    from pathlib import Path as _P
+    _DATOS = _P(_os.environ.get("QUIRA_DATOS", "."))
+
+COPIA = str(_DATOS / "_TRABAJO_d03_promesas.xlsx")
 
 # ── PROPUESTA · id_nuevo: (meta_pdot, score, tipo) ────────────────────────────
 # Justificación = el "sistema" de la meta en H04 (Agua, Vialidad, Salud, Turismo…).

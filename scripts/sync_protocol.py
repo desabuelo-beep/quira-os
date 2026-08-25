@@ -27,6 +27,12 @@ import subprocess
 import sys
 from datetime import datetime
 from pathlib import Path
+
+try:
+    from config import DATOS_DIR as _DATOS
+except Exception:                                        # noqa: BLE001
+    import os as _os
+    _DATOS = Path(_os.environ.get("QUIRA_DATOS", "."))
 from typing import Optional
 
 # Fix Windows cp1252 console encoding for emoji/Unicode in print statements
@@ -42,7 +48,7 @@ except Exception:                                        # noqa: BLE001
     import os as _os
     _VAULT_BASE = Path(_os.environ.get("QUIRA_VAULT", "."))
 _VAULT_ROOT    = _VAULT_BASE
-_GM_PATH       = Path(r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT\SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx")
+_GM_PATH       = _DATOS / "SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx"
 _VAULT_MODULE  = _VAULT_ROOT / "08_EJECUCION"   # D3_EJECUCION — motor analítico
 _ARCH_MODULE   = _VAULT_ROOT / "00_CORE"          # meta-arquitectura
 

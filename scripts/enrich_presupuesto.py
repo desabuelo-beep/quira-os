@@ -23,7 +23,14 @@ import re
 
 import openpyxl
 
-EXCEL = r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT\SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx"
+try:
+    from config import DATOS_DIR as _DATOS
+except Exception:                                        # noqa: BLE001
+    import os as _os
+    from pathlib import Path as _P
+    _DATOS = _P(_os.environ.get("QUIRA_DATOS", "."))
+
+EXCEL = str(_DATOS / "SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx")
 SNAP = os.path.join(os.path.dirname(__file__), "..", "data", "gm_snapshot.json")
 
 _HCODE = re.compile(r"\bH\d{1,2}[a-z]?\b")
