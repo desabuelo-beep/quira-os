@@ -432,8 +432,31 @@ class SnapshotPipeline:
         }
 
     def _step_emit_provenance(self, snapshot: dict, dry_run: bool) -> Path | None:
-        """Emite JSON de provenance para auditoría y trazabilidad."""
-        logger.info("PASO 9 → emit_provenance()")
+        """Emite el JSON de procedencia de la corrida.
+
+        UN ENSAYO NO SE GUARDA DONDE SE GUARDA LA OBSERVACIÓN (2026-08-25).
+        Hasta hoy, seco y real escribían **en el mismo directorio y con el mismo
+        patrón de nombre**; la diferencia vivía sólo dentro del archivo, en un
+        campo. El recuento del día lo puso en números:
+
+            85 corridas en seco · 4 reales
+
+        Es decir: el 95 % de la carpeta de procedencia del sujeto observado no
+        observó nada. Quien la barriera con un glob obtenía 89 registros que
+        *parecen* procedencia de 130801 — y ninguna herramienta se lo habría
+        advertido, porque el nombre del archivo prometía lo que el contenido no
+        cumplía.
+
+        Es el mismo error que este dominio persigue afuera —«el nombre del
+        enlace no es evidencia», tres veces contra el GAD— cometido aquí contra
+        nosotros mismos. Un `dry_run` no dice nada del sujeto: dice que
+        ejercitamos el instrumento.
+
+        La distinción ya estaba **declarada** en el dato (`dry_run`); lo que
+        faltaba era que la **estructura la respetara**. Nada nace en Python
+        (Regla 9): esto sólo obliga al disco a decir lo que el campo ya decía.
+        """
+        logger.info("PASO 11 → emit_provenance()")   # era «PASO 9»: etiqueta falsa
         try:
             provenance = {
                 "run_id":         snapshot["_pipeline"]["run_id"],
@@ -459,8 +482,11 @@ class SnapshotPipeline:
             }
 
             prov_dir = cfg.SNAPSHOTS_DIR / self.municipio_code / "provenance"
+            if dry_run:                       # el ensayo no se mezcla con la observación
+                prov_dir = prov_dir / "ensayos"
             prov_dir.mkdir(parents=True, exist_ok=True)
-            prov_path = prov_dir / f"provenance_{snapshot['_pipeline']['run_id']}.json"
+            prefijo = "ensayo" if dry_run else "provenance"
+            prov_path = prov_dir / f"{prefijo}_{snapshot['_pipeline']['run_id']}.json"
             with open(prov_path, "w", encoding="utf-8") as f:
                 json.dump(provenance, f, ensure_ascii=False, indent=2)
             logger.info(f"  Provenance → {prov_path}")

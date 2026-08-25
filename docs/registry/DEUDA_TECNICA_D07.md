@@ -150,6 +150,43 @@ cuatro pasadas en vez de una.
 Verificado tras cada lote: 488 pruebas verdes · 742 archivos sin error de sintaxis · el conector
 canónico del Gold Master y los manifiestos importando y resolviendo.
 
+## 4-bis · CERRADO el 2026-08-25 · 85 ensayos guardados como procedencia del sujeto
+
+**Encontrado al cerrar la portabilidad**, no buscándolo: dos JSON sin rastrear en
+`data/snapshots/130801/provenance/`. Al contar la carpeta entera:
+
+    85 corridas en seco  ·  4 reales
+
+El 95 % de la procedencia del sujeto observado **no observó nada**. Todas se llamaban igual
+—`provenance_130801_<fecha>.json`—, vivían en el mismo directorio, y la única diferencia era un
+campo `dry_run` dentro del archivo.
+
+**Por qué cuenta como defecto y no como desorden.** Es el mismo error que este dominio persigue
+afuera —*el nombre del artefacto no es evidencia de lo que promete*, anotado tres veces contra el
+GAD— cometido aquí contra nosotros mismos. Y en el sentido más grave de los dos: no inventa un
+incumplimiento del sujeto, pero **fabrica actividad propia**. Cualquier consumidor futuro —otro
+dominio, la cantera, un auditor con un `glob`— habría leído 89 observaciones donde había 4.
+
+**La distinción ya estaba declarada** en el dato (`dry_run` existía desde siempre). Lo que faltaba
+era que la **estructura la respetara**: nada nace en Python (Regla 9), esto sólo obliga al disco a
+decir lo que el campo ya decía.
+
+| | antes | ahora |
+|---|---|---|
+| destino | mismo directorio | `provenance/` · `provenance/ensayos/` |
+| nombre | `provenance_…` ambos | `provenance_…` · `ensayo_…` |
+| distinguible | leyendo el interior | por ubicación **y** por nombre |
+
+Los 85 se separaron con `git mv` —reversible y auditable en el historial—; las 4 observaciones
+reales siguen donde estaban, lo cual **también se prueba**: separar no puede volverse esconder.
+
+**Dónde está fijado.** `tests/test_ensayo_vs_observacion.py`, cuatro pruebas. Verificadas contra
+regresión inyectada: al devolver un `dry_run` al directorio principal, fallan. Un guard que no se
+intentó romper no es un guard (OBS-031).
+
+**De paso:** el log del emisor anunciaba «PASO 9» siendo el 11. *Etiqueta incorrecta = número
+falso* (§6-sexies) aplica también a los pasos.
+
 ## 5 · Lo que sigue abierto del dominio, no de la técnica
 
 - **Los 636 artefactos** — clasificados como `material_de_ingenieria` en su propio `_meta`. Se
