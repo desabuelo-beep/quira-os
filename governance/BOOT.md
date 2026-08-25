@@ -33,13 +33,13 @@ Cooperación · Impact · F3 = Economic. **Operaciones NO es producto.** Licenci
 Define el OBJETO observado, **no a QUIRA** (CAPA 0 + 4 macroejes + 12 dominios): CONGRUENCIA
 PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 3ª pieza: `GOVERNANCE_CHARTER.md`.
 
-## AHORA (estado vivo · historial → `governance/historico/BOOT_2026-06-17.md`)
+## AHORA (estado vivo · historial → `governance/historico/`)
 🧭 **ADR-031** MCIP=5 motores · **035/037** IA propone/humano valida · **038** BRN **traza, no alimenta**.
 ✅ **PCD: d01·d02·d03·d06·d09** · d08 ENTRABLE · **d07 en curación**.
-🩹 **12 GATES** · Curación por DOM (R.8) · **estados, NO bool** · 481 pruebas.
+🩹 **12 GATES** · Curación por DOM (R.8) · **estados, NO bool** · 488 pruebas.
 📑 **PAC** 586 · **SERCOP 265+75** · ⛔ `.docx` gana al `.pdf`.
 ⚖️ **d07 EN LA BRN**: `CNO-VII-001..004` **46/46 SHA** + `RO-VII-001..005` **propuesta**. ⛔ el DOM **consume RO, NO lee la ley**.
-📡 **MEDICIÓN**: **SITA 2025 0,4448** (era 0,4646: se contaba bueno lo no mirado) · **0 actas** · num.6 sin ingresos.
+📡 **MEDICIÓN**: **SITA 2025 0,4448** (era 0,4646: bueno lo no mirado) · **0 actas** · num.6 sin ingresos.
 🧹 **CORPUS**: 8 chunks de preámbulo fingían artículo (LOTAIP 19 = Pacto).
 🧪 **§6-bis**: falta evidencia→**degrada** · identidad contradictoria→**BLOQUEA** · el SHA prueba el archivo, NO la atribución.
 🎨 **ADR-049**: *la gráfica no sabe más que el motor*.
@@ -49,15 +49,15 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 
 📋 **Metas 66/cablea 25** · PDOT **05-11-2024** → **≥2025**.
 🔭 **ADR-042 CONSOLA** (`env_obs`≠`env_ops`) · **MATRIZ_CANONICA, NO el GM**.
 🚦 **8 ESTADOS**: «no existe»≠«no pude obtener»≠«falló».
-🤖 **ADR-051 §12**: 5 dim. (capacidad·**sujeto**·ejecución·evidencia·validación) · sin sujeto NO se construye la afirmación.
-🔌 **`reglas.py` = ÚNICA puerta a la norma** · gate **REGLAS**.
+🤖 **ADR-051 §12**: 5 dim. (capacidad·**sujeto**·ejecución·evidencia·validación) · sin sujeto NO hay afirmación.
+🔌 **ÚNICA puerta**: `reglas.py`→norma (gate **REGLAS**) · `config.DATOS_DIR`→datos: **0 rutas fijas** (54→0).
 🔐 **PANEL ACCESOS** (→Ops): bitácora 2 meses sin leerse · alerta por fallos concentrados.
-📐 **MATRIZ (Javo)**: portal = **materialización de obligaciones** · ⛔ ausencia≠incumplimiento · 7 cond. piloto validadas.
-🪞 **ADR-052** (⛔ NO toca CAPA 0): **naturaleza del objeto ≠ estado de la evidencia** · `no_documental` sólo lo declara el CORPUS · 7 pruebas: no publicar ≠ no exigible.
-🧬 **§6-sexies**: **segmento ≠ condición ≠ exigencia** · ⛔ los 636 NO son unidades normativas · *etiqueta incorrecta = número falso*.
-➡️ **SIGUIENTE**: Capa 2 a los 24 numerales · luego Capa 3 (los 636).
+📐 **MATRIZ (Javo)**: portal = **materialización de obligaciones** · ⛔ ausencia≠incumplimiento  · 7 cond. piloto ✅.
+🪞 **ADR-052** (⛔ NO toca CAPA 0): **naturaleza del objeto ≠ estado de la evidencia** · `no_documental` sólo lo declara el CORPUS · ⛔ no publicar ≠ no exigible.
+🧬 **§6-sexies**: **segmento ≠ condición ≠ exigencia** · ⛔ los 636 NO son unidades · *etiqueta incorrecta = número falso*.
+➡️ **SIGUIENTE**: Capa 2 a los 24 numerales (⏸ valid. jurídica de 105) · luego los 636.
 🧾 **SCORING vs Instructivo**: SITA·CTA·ETA·RP ✅ · **CI mal** (Anexo 1 asigna 1×1). ⛔ NO tocar SITA aún.
-⛔ **EL NOMBRE DEL ENLACE NO ES EVIDENCIA** — 3×: «acta»→certificado · «asistencia»→fotos.
+⛔ **EL NOMBRE DEL ENLACE NO ES EVIDENCIA** — 3×: «acta»→certificado, «asistencia»→fotos.
 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 · detalle en el ADR)
 GAD = sujeto observado, NO cliente. 4 capas: A Núcleo · B Operaciones · C Productos (§LA TESIS · 1 motor) · D Portal `quiraintelligence.com` (radar 222 GAD).

@@ -121,18 +121,34 @@ de contratación que el sujeto obligado publica. Su inaccesibilidad, si se confi
 hallazgo sobre Montecristi** sino sobre la disponibilidad de una fuente de tercero (ADR-042 §6:
 `fuente_no_disponible` no dice nada del sujeto).
 
-## 4 · Portabilidad — 25 puntos de frontera replicada (eran 54)
+## 4 · Portabilidad — CERRADA el 2026-08-25 (eran 54 puntos)
 
-`personal 0 / 0` · `frontera_fija 25 / 25` (`scripts/ci/check_portabilidad.py`).
+`personal 0 / 0` · `frontera_fija 0 / 0` (`scripts/ci/check_portabilidad.py`).
 
-**Avance del 2026-08-20: 50 → 25.** Migración por lotes a `config.DATOS_DIR`, en dos patrones
-distintos: `Path(r"…ProyecT…")` (7 archivos) y cadena cruda `r"…ProyecT…"` conservando el tipo
-`str` (17 archivos). Suite verde en cada lote.
+**La frontera hacia `ProyecT/` ya no está escrita a mano en ningún punto.** Se recibe de
+`config.DATOS_DIR`, que la toma de `QUIRA_DATOS`. El guard deja de medir una deuda y pasa a
+defender una propiedad: **QUIRA corre en cualquier máquina que declare dónde están sus datos.**
 
-**Los 25 restantes no se forzaron.** La inserción automática del import rompía la sintaxis en esos
-archivos, `ast.parse` los rechazó y **no se escribieron** — fallar seguro antes que dejar 25
-archivos con sintaxis inválida. Quedan para revisión manual, con el trinquete ya bajado a 25 para
-que el avance no se pierda.
+    54 → 50 → 25 → 3 → 0
+
+Cuatro patrones distintos, descubiertos uno a uno porque cada lote revelaba el siguiente:
+
+| Patrón | Archivos | Por qué falló el anterior |
+|---|---|---|
+| `Path(r"…ProyecT…")` | 7 | — |
+| cadena cruda `r"…"` conservando `str` | 17 | no llevaba `Path()` |
+| **concatenación implícita multilínea** | 20 | la sustitución dejaba `str(…)` seguido de una cadena → error de sintaxis |
+| constante sin imports previos | 2 | el bloque de imports no existía; el import va tras el docstring |
+
+Y un tercer punto que no era código: un **docstring documentaba la ruta absoluta** como si fuera la
+fuente de verdad. Corregido a `$QUIRA_DATOS/…`.
+
+**Ningún lote se forzó.** Cada uno pasó por `ast.parse` antes de escribirse; los archivos que no
+compilaban **no se tocaron**. Fallar seguro antes que terminar rápido — y por eso el recorrido tomó
+cuatro pasadas en vez de una.
+
+Verificado tras cada lote: 488 pruebas verdes · 742 archivos sin error de sintaxis · el conector
+canónico del Gold Master y los manifiestos importando y resolviendo.
 
 ## 5 · Lo que sigue abierto del dominio, no de la técnica
 

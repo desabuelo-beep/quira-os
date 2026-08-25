@@ -18,6 +18,13 @@ from pathlib import Path
 from datetime import date
 
 try:
+    from config import DATOS_DIR as _DATOS
+except Exception:                                        # noqa: BLE001
+    import os as _os
+    from pathlib import Path as _P
+    _DATOS = _P(_os.environ.get("QUIRA_DATOS", "."))
+
+try:
     from openpyxl import Workbook
     from openpyxl.styles import (
         Font, PatternFill, Alignment, Border, Side, numbers
@@ -29,8 +36,7 @@ except ImportError:
 
 # ── Rutas ──────────────────────────────────────────────────────────────────────
 OUTPUT_PATH = Path(
-    r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT"
-    r"\TGI_GOLD_MASTER_v6.0_20260525.xlsx"
+    str(_DATOS / "TGI_GOLD_MASTER_v6.0_20260525.xlsx")
 )
 
 # ── Paleta de colores QUIRA ────────────────────────────────────────────────────

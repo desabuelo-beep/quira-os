@@ -22,8 +22,14 @@ from pathlib import Path
 
 import pandas as pd
 
-_BASE = Path(r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT\Holding_Municipal_Montecristi"
-             r"\Literal D servicios institucionales\Patronato")
+try:
+    from config import DATOS_DIR as _DATOS
+except Exception:                                        # noqa: BLE001
+    import os as _os
+    from pathlib import Path as _P
+    _DATOS = _P(_os.environ.get("QUIRA_DATOS", "."))
+
+_BASE = Path(str(_DATOS / "Holding_Municipal_Montecristi" / "Literal D servicios institucionales" / "Patronato"))
 
 
 def _num(v) -> float | None:

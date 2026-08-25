@@ -20,6 +20,13 @@ Dylus Lab © 2026
 import sys
 import os
 
+try:
+    from config import DATOS_DIR as _DATOS
+except Exception:                                        # noqa: BLE001
+    import os as _os
+    from pathlib import Path as _P
+    _DATOS = _P(_os.environ.get("QUIRA_DATOS", "."))
+
 # ── Path setup — apunta al root del proyecto QUIRA OS ─────────────────────────
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
@@ -40,8 +47,7 @@ from sentinel.db_ops        import ingest_cedula, get_existing_hashes
 
 # ── CONSTANTES ────────────────────────────────────────────────────────────────
 BASE = (
-    r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT\Obsidian"
-    r"\GAD Montecritis\Holding Municipal MOntecristi\Presupuesto 2025"
+    str(_DATOS / "Obsidian" / "GAD Montecritis" / "Holding Municipal MOntecristi" / "Presupuesto 2025")
 )
 
 MESES_NUM = {

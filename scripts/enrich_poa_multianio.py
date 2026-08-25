@@ -24,7 +24,14 @@ from difflib import SequenceMatcher
 
 import openpyxl
 
-POA_DIR = r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT\Holding_Municipal_Montecristi\POA 2023-2026\GAD Montecristi"
+try:
+    from config import DATOS_DIR as _DATOS
+except Exception:                                        # noqa: BLE001
+    import os as _os
+    from pathlib import Path as _P
+    _DATOS = _P(_os.environ.get("QUIRA_DATOS", "."))
+
+POA_DIR = str(_DATOS / "Holding_Municipal_Montecristi" / "POA 2023-2026" / "GAD Montecristi")
 OUT = os.path.join(os.path.dirname(__file__), "..", "data", "poa_multianio.json")
 
 # esquema por año (col idx · descubierto por inspección de la fuente):
@@ -158,9 +165,7 @@ def main() -> None:
                 a["meta_ancla"] = ancla[a["partida"]]
 
     # ── ejecución 2025 (cédula de cierre LOTAIP diciembre) por partida económica ──
-    CED_2025 = (r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT\Holding_Municipal_Montecristi"
-                r"\Cedulas Presupuestarias 2023-2026\Presupuestos 2025\GAD Montecristi"
-                r"\2025-Diciembre-Numeral 6-6. Conjunto de datos_nov.csv.xlsx")
+    CED_2025 = (str(_DATOS / "Holding_Municipal_Montecristi" / "Cedulas Presupuestarias 2023-2026" / "Presupuestos 2025" / "GAD Montecristi" / "2025-Diciembre-Numeral 6-6. Conjunto de datos_nov.csv.xlsx"))
     ejec: dict = {}
     try:
         wsx = openpyxl.load_workbook(CED_2025, read_only=True, data_only=True)["Sheet1"]

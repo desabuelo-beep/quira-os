@@ -47,6 +47,13 @@ import sys
 import unicodedata
 from pathlib import Path
 
+try:
+    from config import DATOS_DIR as _DATOS
+except Exception:                                        # noqa: BLE001
+    import os as _os
+    from pathlib import Path as _P
+    _DATOS = _P(_os.environ.get("QUIRA_DATOS", "."))
+
 RAIZ = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(Path(__file__).parent))
 
@@ -55,8 +62,7 @@ if hasattr(sys.stdout, "reconfigure"):
 
 from invariantes import Invariantes                    # noqa: E402
 
-FUENTE = Path(r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT\Normativa_Word"
-              r"\LOTAIP - guia-metodologica-mecanismos.docx")
+FUENTE = Path(str(_DATOS / "Normativa_Word" / "LOTAIP - guia-metodologica-mecanismos.docx"))
 
 # Los tres sub-bloques del numeral 1. La guía los desarrolla por separado porque el
 # numeral 1 del art. 19 manda tres cosas distintas en una sola frase, y la Defensoría

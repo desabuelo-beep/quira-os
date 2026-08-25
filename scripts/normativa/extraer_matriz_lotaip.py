@@ -50,6 +50,13 @@ import sys
 import unicodedata
 from pathlib import Path
 
+try:
+    from config import DATOS_DIR as _DATOS
+except Exception:                                        # noqa: BLE001
+    import os as _os
+    from pathlib import Path as _P
+    _DATOS = _P(_os.environ.get("QUIRA_DATOS", "."))
+
 RAIZ = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(Path(__file__).parent))
 
@@ -58,8 +65,7 @@ if hasattr(sys.stdout, "reconfigure"):
 
 from invariantes import Invariantes                    # noqa: E402
 
-FUENTE = Path(r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT\Normativa_Word"
-              r"\LOTAIP - Instructivo-monitoreo-transparencia-activa-2024.docx")
+FUENTE = Path(str(_DATOS / "Normativa_Word" / "LOTAIP - Instructivo-monitoreo-transparencia-activa-2024.docx"))
 
 # Encabezado normalizado → campo. Los títulos traen tabulaciones y saltos dentro
 # de la celda («Información completa\ty actualizada»), así que se comparan

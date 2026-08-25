@@ -10,6 +10,13 @@ Pipeline:
 Dylus Lab © 2026
 """
 import sys, os, io, re
+
+try:
+    from config import DATOS_DIR as _DATOS
+except Exception:                                        # noqa: BLE001
+    import os as _os
+    from pathlib import Path as _P
+    _DATOS = _P(_os.environ.get("QUIRA_DATOS", "."))
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 # ── st.secrets fuera de Streamlit ─────────────────────────────────────────────
@@ -32,8 +39,7 @@ from sentinel.db_ops        import ingest_cedula, get_existing_hashes
 
 # ── RUTAS ─────────────────────────────────────────────────────────────────────
 BASE_PATRONATO = (
-    r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT\Obsidian"
-    r"\GAD Montecritis\Holding Municipal MOntecristi\Presupuesto 2025\Patronato"
+    str(_DATOS / "Obsidian" / "GAD Montecritis" / "Holding Municipal MOntecristi" / "Presupuesto 2025" / "Patronato")
 )
 
 MANIFEST_PDF = [

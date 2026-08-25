@@ -4,7 +4,7 @@ manifest_holding.py — Inventario del Holding Municipal Montecristi
 QUIRA Gov · Capa C (Instrumento Territorial) + Capa D (Evidencia Observacional)
 Dylus Lab © 2026
 
-Fuente: C:\\Users\\DELL\\Desktop\\Javo\\Dylus Lab\\ProyecT\\Holding_Municipal_Montecristi
+Fuente: $QUIRA_DATOS/Holding_Municipal_Montecristi (config.DATOS_DIR)
 Canton: MCR (Montecristi)
 
 Entidades del Holding:
@@ -34,9 +34,14 @@ Capa D — EVIDENCIA_OBSERVACIONAL:
   Plan gobierno CNE authority_level=15  evidence_type=None
 """
 
-HOLDING_BASE = (
-    r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT\Holding_Municipal_Montecristi"
-)
+try:
+    from config import DATOS_DIR as _DATOS
+except Exception:                                        # noqa: BLE001
+    import os as _os
+    from pathlib import Path as _P
+    _DATOS = _P(_os.environ.get("QUIRA_DATOS", "."))
+
+HOLDING_BASE = str(_DATOS / "Holding_Municipal_Montecristi")
 
 # Fases Gate 6.5 — Dos Circuitos (OBS-007)
 #

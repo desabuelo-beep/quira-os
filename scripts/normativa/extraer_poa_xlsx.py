@@ -26,11 +26,17 @@ import argparse
 import sys
 from pathlib import Path
 
+try:
+    from config import DATOS_DIR as _DATOS
+except Exception:                                        # noqa: BLE001
+    import os as _os
+    from pathlib import Path as _P
+    _DATOS = _P(_os.environ.get("QUIRA_DATOS", "."))
+
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
-BASE = Path(r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT\Holding_Municipal_Montecristi"
-            r"\POA 2023-2026\GAD Montecristi")
+BASE = Path(str(_DATOS / "Holding_Municipal_Montecristi" / "POA 2023-2026" / "GAD Montecristi"))
 
 # ══════════════════════════════════════════════════════════════════════════════
 # MAPEO POR AÑO

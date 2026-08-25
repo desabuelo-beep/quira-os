@@ -22,9 +22,14 @@ Campos v2.0 (Schema Star — ADR-021):
   circuit_refs     : lista de circuitos QTMP relacionados
 """
 
-NORMATIVA_BASE = (
-    r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT\Normativa_Word"
-)
+try:
+    from config import DATOS_DIR as _DATOS
+except Exception:                                        # noqa: BLE001
+    import os as _os
+    from pathlib import Path as _P
+    _DATOS = _P(_os.environ.get("QUIRA_DATOS", "."))
+
+NORMATIVA_BASE = str(_DATOS / "Normativa_Word")
 
 # ── MANIFIESTO ────────────────────────────────────────────────────────────────
 # Cada entrada: archivo relativo a NORMATIVA_BASE, con metadatos completos.

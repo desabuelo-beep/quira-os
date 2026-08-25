@@ -36,6 +36,13 @@ import hashlib
 import sys
 from pathlib import Path
 
+try:
+    from config import DATOS_DIR as _DATOS
+except Exception:                                        # noqa: BLE001
+    import os as _os
+    from pathlib import Path as _P
+    _DATOS = _P(_os.environ.get("QUIRA_DATOS", "."))
+
 RAIZ = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(Path(__file__).parent))
 sys.path.insert(0, str(RAIZ))
@@ -45,8 +52,7 @@ if hasattr(sys.stdout, "reconfigure"):
 
 from invariantes import Invariantes                            # noqa: E402
 
-BASE_POA = Path(r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT"
-                r"\Holding_Municipal_Montecristi\POA 2023-2026")
+BASE_POA = Path(str(_DATOS / "Holding_Municipal_Montecristi" / "POA 2023-2026"))
 
 
 # ══════════════════════════════════════════════════════════════════════════════

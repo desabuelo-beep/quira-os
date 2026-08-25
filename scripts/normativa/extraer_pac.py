@@ -35,6 +35,13 @@ import re
 import sys
 from pathlib import Path
 
+try:
+    from config import DATOS_DIR as _DATOS
+except Exception:                                        # noqa: BLE001
+    import os as _os
+    from pathlib import Path as _P
+    _DATOS = _P(_os.environ.get("QUIRA_DATOS", "."))
+
 RAIZ = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(Path(__file__).parent))
 
@@ -43,8 +50,7 @@ if hasattr(sys.stdout, "reconfigure"):
 
 from invariantes import Invariantes                       # noqa: E402
 
-BASE = Path(r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT"
-            r"\Holding_Municipal_Montecristi\PAC 2023-2026")
+BASE = Path(str(_DATOS / "Holding_Municipal_Montecristi" / "PAC 2023-2026"))
 
 ENTIDADES = {"GAD Montecristi": "GAD Montecristi", "Aseo EP": "Empresa Pública de Aseo",
              "Bomberos": "Cuerpo de Bomberos", "Patronato": "Patronato"}

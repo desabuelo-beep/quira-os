@@ -21,8 +21,14 @@ import zipfile
 from functools import lru_cache
 from pathlib import Path
 
-_BASE = Path(r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT\Holding_Municipal_Montecristi"
-             r"\Rendición de cuentas 2023-2025")
+try:
+    from config import DATOS_DIR as _DATOS
+except Exception:                                        # noqa: BLE001
+    import os as _os
+    from pathlib import Path as _P
+    _DATOS = _P(_os.environ.get("QUIRA_DATOS", "."))
+
+_BASE = Path(str(_DATOS / "Holding_Municipal_Montecristi" / "Rendición de cuentas 2023-2025"))
 
 # entidad -> plantilla de nombre de archivo (los nombres del holding no son uniformes)
 _ARCHIVO = {

@@ -19,8 +19,14 @@ import zipfile
 from functools import lru_cache
 from pathlib import Path
 
-_BASE = Path(r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT\Holding_Municipal_Montecristi"
-             r"\PAC 2023-2026\GAD Montecristi")
+try:
+    from config import DATOS_DIR as _DATOS
+except Exception:                                        # noqa: BLE001
+    import os as _os
+    from pathlib import Path as _P
+    _DATOS = _P(_os.environ.get("QUIRA_DATOS", "."))
+
+_BASE = Path(str(_DATOS / "Holding_Municipal_Montecristi" / "PAC 2023-2026" / "GAD Montecristi"))
 
 # cada proceso empieza en su tipo de compra (ancla robusta del PAC-SERCOP)
 _TIPO = re.compile(r"(?=(?:Bien|Servicio|Obra|Consultor[ií]a))")

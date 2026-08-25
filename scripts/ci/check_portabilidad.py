@@ -62,11 +62,18 @@ AMBITOS = ("scripts", "app", "quira_pages", "utils")
 #
 # 2026-08-19 · tras declarar `DATOS_DIR` y `VAULT_DIR` en `config.py` y migrar
 # el conector canónico del Gold Master y los tres accesos a la bóveda.
-# 2026-08-20 · migracion por lotes: 50 → 25. Los 25 restantes tienen el
-# import en un lugar donde la insercion automatica rompia la sintaxis; se
-# dejan para revision manual antes que forzarlos (el `ast.parse` los
-# rechazo y NO se escribieron: fallar seguro es la conducta correcta).
-TOPE = {"frontera_fija": 25, "personal": 0}
+# TRINQUETE EN CERO (2026-08-25). La frontera hacia `ProyecT/` ya no está
+# escrita a mano en ningún punto: se recibe de `config.DATOS_DIR`, que a su vez
+# la toma de `QUIRA_DATOS`. Este guard deja de medir una deuda y pasa a defender
+# una propiedad: **QUIRA corre en cualquier máquina que declare dónde están sus
+# datos.**
+#
+# El recorrido, por si alguien lo necesita: 54 → 50 → 25 → 3 → 0, en cuatro
+# patrones distintos que hubo que descubrir uno a uno —`Path(r"…")`, cadena
+# cruda, concatenación implícita multilínea, y constante sin imports previos—.
+# Ninguno se forzó: cada lote pasó por `ast.parse` antes de escribirse, y los
+# que no compilaban NO se tocaron.
+TOPE = {"frontera_fija": 0, "personal": 0}
 
 
 def clasificar(linea: str) -> str | None:

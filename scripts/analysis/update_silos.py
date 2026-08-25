@@ -32,12 +32,18 @@ import sys
 from pathlib import Path
 from datetime import datetime
 
+try:
+    from config import DATOS_DIR as _DATOS
+except Exception:                                        # noqa: BLE001
+    import os as _os
+    from pathlib import Path as _P
+    _DATOS = _P(_os.environ.get("QUIRA_DATOS", "."))
+
 ROOT = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(ROOT))
 
 GOLD_MASTER_PATH = Path(
-    r"C:\Users\DELL\Desktop\Javo\Dylus Lab\ProyecT"
-    r"\SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx"
+    str(_DATOS / "SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx")
 )
 
 import toml, streamlit as st
