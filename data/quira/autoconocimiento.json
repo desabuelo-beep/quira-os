@@ -1,8 +1,8 @@
 {
  "_meta": {
   "que_es": "perímetro de lo que QUIRA sabe hacer, derivado de su propia evidencia",
-  "derivado": "2026-08-25T12:37:00",
-  "sha256_estado": "8a7922c6bc0726dee728522c7aa2470897781a08400aa6bedb8b2aedc11c79e9",
+  "derivado": "2026-08-25T14:28:35",
+  "sha256_estado": "56f6e522d71cc737441d012ef103026ea936e9de6d25f95e2d7477d6b80f0541",
   "fuentes": [
    "sellos de ejecución de cada dominio (cadena_estado.json)",
    "perfiles de sujeto (data/sujetos/)",
@@ -34,8 +34,8 @@
  "que_todavia_no_se_hacer": [
   "captura: el código existe, pero no hay registro de que QUIRA lo haya ejecutado",
   "descarga: el código existe, pero no hay registro de que QUIRA lo haya ejecutado",
-  "enlaces: QUIRA la ejecutó (2026-08-20T08:53:52) · sin prueba de reproducibilidad declarada",
-  "inventario: QUIRA la ejecutó (2026-08-20T09:18:05) · sin prueba de reproducibilidad declarada",
+  "enlaces: QUIRA la ejecutó (2026-08-25T12:44:13) · sin prueba de reproducibilidad declarada",
+  "inventario: QUIRA la ejecutó (2026-08-25T12:43:05) · sin prueba de reproducibilidad declarada",
   "contenedores: QUIRA la ejecutó (2026-08-20T09:19:18) · sin prueba de reproducibilidad declarada",
   "documentos: hay registro de ejecución pero SIN sujeto declarado · la afirmación se degrada en vez de suponer el ámbito"
  ],
@@ -91,21 +91,21 @@
    "dominio": "d07",
    "grado": "validado",
    "sujeto": "130801 Montecristi",
-   "fundamento": "QUIRA la ejecutó (2026-08-25T12:37:00) y «test_quira_reconstruye_sus_derivados_sin_ayuda» la reproduce desde cero"
+   "fundamento": "QUIRA la ejecutó (2026-08-25T14:28:35) y «test_quira_reconstruye_sus_derivados_sin_ayuda» la reproduce desde cero"
   },
   {
    "capacidad": "enlaces",
    "dominio": "d07",
    "grado": "ejecucion",
    "sujeto": "130801 Montecristi",
-   "fundamento": "QUIRA la ejecutó (2026-08-20T08:53:52) · sin prueba de reproducibilidad declarada"
+   "fundamento": "QUIRA la ejecutó (2026-08-25T12:44:13) · sin prueba de reproducibilidad declarada"
   },
   {
    "capacidad": "inventario",
    "dominio": "d07",
    "grado": "ejecucion",
    "sujeto": "130801 Montecristi",
-   "fundamento": "QUIRA la ejecutó (2026-08-20T09:18:05) · sin prueba de reproducibilidad declarada"
+   "fundamento": "QUIRA la ejecutó (2026-08-25T12:43:05) · sin prueba de reproducibilidad declarada"
   },
   {
    "capacidad": "contenedores",

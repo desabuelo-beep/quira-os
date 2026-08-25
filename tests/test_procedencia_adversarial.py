@@ -321,24 +321,128 @@ def test_11_los_artefactos_derivados_no_declaran_su_sujeto():
     de quién es. Con 222 GAD produciendo los mismos nombres de archivo, esa
     ambigüedad deja de ser teórica.
 
-    El trinquete: los cuatro pueden bajar, no subir."""
+    ✅ CERRADO el 2026-08-25. Los cuatro llevan ahora su procedencia dentro, y
+    la estampa `_sellar()` —no un script aparte— en el mismo acto en que sella
+    la cadena, de modo que sujeto sellado y sujeto estampado no pueden diverger.
+
+    Pero NO se cerró en 4/4, y esa es la parte que importa:
+
+        [ok] contenido.json                el sello acredita 130801
+        [ok] inventario_documental.json    el sello acredita 130801
+        [ok] contenido_contenedores.json   el sello acredita 130801
+        [!!] descargas_indice.json         SU ETAPA NO ACREDITÓ SUJETO
+
+    La etapa `descarga` se selló el 2026-08-19, antes de que la cadena exigiera
+    declarar sujeto. Yo sé que es de Montecristi; **la cadena no lo acreditó**.
+    Escribir «130801» ahí porque lo sé habría convertido un artefacto sin
+    procedencia en uno que aparenta tenerla — el error exacto que este archivo
+    entero persigue. Así que el artefacto declara su propio hueco, y se cierra
+    cuando la etapa se vuelva a correr bajo el mecanismo de sujeto.
+
+    Lo que ahora se defiende es más fuerte que «tienen sujeto»:
+
+        **ningún artefacto guarda SILENCIO sobre su sujeto** — o lo declara, o
+        declara por qué no puede."""
     import json
-    ARTEFACTOS_SIN_SUJETO_TOLERADOS = 4
     rutas = ["data/lotaip/descargas_indice.json",
              "data/lotaip/contenido.json",
              "data/lotaip/inventario_documental.json",
              "data/lotaip/contenido_contenedores.json"]
-    sin_declarar = []
+    mudos, sin_acreditar = [], []
     for r in rutas:
         p = RAIZ / r
         if not p.exists():
             continue
-        meta = json.loads(p.read_text(encoding="utf-8")).get("_meta", {})
-        if not any(k in meta for k in ("sujeto", "sujeto_huella",
-                                       "codigo_territorial")):
-            sin_declarar.append(r)
-    assert len(sin_declarar) <= ARTEFACTOS_SIN_SUJETO_TOLERADOS, (
-        f"más artefactos dejaron de declarar su sujeto: {sin_declarar}")
+        proc = json.loads(p.read_text(encoding="utf-8")).get("_meta", {}).get(
+            "procedencia")
+        if not proc:
+            mudos.append(r)
+        elif not proc.get("sujeto"):
+            sin_acreditar.append((r, proc.get("estado")))
+
+    assert not mudos, (
+        f"artefactos que no dicen nada de su sujeto: {mudos}. Un archivo sale "
+        f"de la cadena en cuanto alguien lo copia; ahí la protección indirecta "
+        f"del gate SUJETO ya no lo alcanza.")
+
+    # Trinquete sobre lo que la cadena NO acreditó: puede bajar, nunca subir.
+    assert len(sin_acreditar) <= 1, (
+        f"más etapas dejaron de acreditar sujeto: {sin_acreditar}")
+
+
+def test_11b_la_procedencia_nace_en_el_generador_no_se_estampa_despues():
+    """EL ERROR QUE ESTA PRUEBA IMPIDE REPETIR (2026-08-25).
+
+    El primer intento estampó la procedencia desde `_sellar()`, después de que
+    el generador escribiera el archivo. Parecía inofensivo. No lo era:
+
+        estampo contenido.json   →  su SHA cambia
+        la etapa que lo consume  →  «mi insumo cambió» →  se re-ejecuta
+        re-ejecutarse            →  reanalizar 936 archivos, salir a la red
+
+    Tres etapas quedaron desalineadas y la suite se colgó. **El acto de
+    registrar la procedencia alteró aquello cuya identidad registraba.**
+
+    El sitio correcto es el generador: ahí el archivo nace con su procedencia
+    dentro, y el SHA que la cadena mide después ya la incluye. Nadie tiene que
+    acordarse de estampar, y nada se mueve bajo los pies de la cadena."""
+    import json
+
+    fuente = (RAIZ / "app/agents/d07/etapas.py").read_text(encoding="utf-8")
+    cuerpo = fuente[fuente.index("def _sellar("):]
+    cuerpo = cuerpo[:cuerpo.index("\ndef ")]
+    llamadas = [ln for ln in cuerpo.splitlines()
+                if "_estampar_procedencia(" in ln and not ln.strip().startswith("#")]
+    assert not llamadas, (
+        f"el sellador volvió a escribir dentro de los artefactos: {llamadas}. "
+        f"Eso cambia el SHA que él mismo acaba de medir y desalinea la cadena.")
+
+    # Y que los generadores sí la escriban, que es la otra mitad del contrato.
+    sin_declarar = []
+    for script, etapa in (("descargar_lotaip.py", "descarga"),
+                          ("analizar_contenido_lotaip.py", "contenido"),
+                          ("verificar_enlaces_lotaip.py", "enlaces"),
+                          ("inventario_documental.py", "inventario"),
+                          ("inventario_contenido.py", "contenedores")):
+        t = (RAIZ / "scripts" / "normativa" / script).read_text(encoding="utf-8")
+        if f'_procedencia("{etapa}")' not in t:
+            sin_declarar.append(script)
+    assert not sin_declarar, (
+        f"generadores que producen un artefacto mudo sobre su sujeto: "
+        f"{sin_declarar}")
+
+
+def test_11c_la_procedencia_del_artefacto_es_reproducible():
+    """SIN RELOJ DENTRO, y es deliberado.
+
+    Un derivado debe reconstruirse byte a byte desde su evidencia
+    —`test_quira_reconstruye_sus_derivados_sin_ayuda`—. Una marca de tiempo
+    dentro del artefacto lo volvería irreproducible para siempre: cada corrida
+    daría un archivo distinto sin que nada hubiera cambiado.
+
+    El **cuándo** pertenece al sello de la cadena; el **de quién**, al
+    artefacto. Meter el reloj aquí ya costó un fallo real."""
+    import json
+
+    from app.agents import procedencia as P
+
+    a = P.de_generacion("contenido", "130801 Montecristi", "abc123")
+    b = P.de_generacion("contenido", "130801 Montecristi", "abc123")
+    assert a == b, "dos llamadas iguales dieron resultados distintos"
+
+    prohibidas = {"sellado", "generado", "fecha", "timestamp", "cuando"}
+    for art in ("data/lotaip/contenido.json", "data/lotaip/enlaces.json",
+                "data/lotaip/inventario_documental.json",
+                "data/lotaip/contenido_contenedores.json"):
+        p = RAIZ / art
+        if not p.exists():
+            continue
+        proc = json.loads(p.read_text(encoding="utf-8")).get(
+            "_meta", {}).get("procedencia", {})
+        intrusas = prohibidas & set(proc)
+        assert not intrusas, (
+            f"{art} guarda un reloj en su procedencia ({intrusas}): deja de "
+            f"poder reconstruirse byte a byte")
 
 
 def test_12_sin_atacar_no_puede_leerse_como_seguro():

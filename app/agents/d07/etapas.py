@@ -204,6 +204,28 @@ def _sellar(etapa: dict) -> None:
     escribir igual». La fecha de modificación no sabe esa diferencia; el SHA sí,
     y con 222 municipios esa diferencia son horas de red que no hay que gastar."""
     s = _leer_sello()
+    sujeto, huella = _sujeto_actual(), _huella_actual()
+    # ⛔ AQUÍ SE LLAMABA A `_estampar_procedencia()`, y fue un error (2026-08-25).
+    #
+    # La intención era buena: que el artefacto llevara dentro de quién es. El
+    # efecto no lo fue. Estampar **modifica el archivo**, y modificar el archivo
+    # **cambia su SHA**. Ese SHA es justo lo que la etapa siguiente tiene
+    # sellado como identidad de su insumo. Resultado en cadena:
+    #
+    #     estampo contenido.json  →  su SHA cambia
+    #     la etapa que lo consume →  «mi insumo cambió»  →  se re-ejecuta
+    #     re-ejecutarse           →  analizar 936 archivos, salir a la red
+    #
+    # Tres etapas quedaron desalineadas y una prueba se colgó re-analizando el
+    # corpus entero. La lección, que es del mismo tipo que las que este dominio
+    # persigue afuera: **el acto de registrar la procedencia alteró aquello
+    # cuya identidad registraba.** Un observador que modifica lo observado.
+    #
+    # La procedencia sigue estampada en los artefactos y `procedencia_del_
+    # artefacto()` sigue disponible en `app/agents/procedencia.py`. Lo que se
+    # revierte es que sea un EFECTO COLATERAL del sellado. El sitio correcto es
+    # cada generador, escribiéndola al producir el archivo —antes de que nadie
+    # mida su SHA—, y eso es trabajo aparte (deuda #2-bis).
     s[etapa["id"]] = {
         "insumos": {i: _sha(i) for i in etapa.get("consume", [])},
         "salidas": {o: _sha(o) for o in etapa["produce"]},
@@ -222,10 +244,10 @@ def _sellar(etapa: dict) -> None:
         # …y SOBRE QUIÉN. «Sé descargar conjuntos de datos» y «sé descargarlos
         # del portal de Montecristi» no son la misma afirmación (colega,
         # 2026-08-19): sin el sujeto, el grado miente por omisión.
-        "sujeto": _sujeto_actual(),
+        "sujeto": sujeto,
         # La etiqueta es para leer; la huella es para verificar. Sin ella,
         # cambiar la identidad en la fuente pasaba inadvertido (ataque 2026-08-19).
-        "sujeto_huella": _huella_actual(),
+        "sujeto_huella": huella,
     }
     _SELLO_CADENA.parent.mkdir(parents=True, exist_ok=True)
     _SELLO_CADENA.write_text(json.dumps(s, ensure_ascii=False, indent=1),

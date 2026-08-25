@@ -1,5 +1,11 @@
 {
  "_meta": {
+  "procedencia": {
+   "etapa": "inventario",
+   "sujeto": "130801 Montecristi",
+   "sujeto_huella": "e187a12ade35259772a1b729391e28470a3d0b505444d810c48f3c6f790e6ae0",
+   "acreditada_por": "la cadena que produjo la etapa"
+  },
   "generado": "2026-08-18",
   "regla": "la existencia de un enlace no acredita la existencia ni la naturaleza del documento exigido",
   "limite": "este inventario responde QUÉ ES cada artefacto; si cumple lo decide la Regla Operativa, no este módulo",

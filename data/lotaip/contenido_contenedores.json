@@ -1,5 +1,11 @@
 {
  "_meta": {
+  "procedencia": {
+   "etapa": "contenedores",
+   "sujeto": "130801 Montecristi",
+   "sujeto_huella": "e187a12ade35259772a1b729391e28470a3d0b505444d810c48f3c6f790e6ae0",
+   "acreditada_por": "la cadena que produjo la etapa"
+  },
   "clase_epistemologica": "material_de_ingenieria",
   "significa": "Producido durante I+D para construir, probar o calibrar el sistema. Puede ser exacto y aun así NO sostiene una afirmación sobre el sujeto observado: sirve como fixture, caso límite o regresión.",
   "por_que": "la cadena de adquisición que lo produjo aún no está acreditada como reproducible sobre este sujeto",

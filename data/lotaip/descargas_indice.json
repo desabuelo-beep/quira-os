@@ -1,5 +1,11 @@
 {
  "_meta": {
+  "procedencia": {
+   "etapa": "descarga",
+   "estado": "sujeto_no_acreditado_por_la_cadena",
+   "por_que": "la etapa se produjo sin declarar sujeto",
+   "no_significa": "que el artefacto no sea del sujeto observado; significa que su cadena no lo acreditó, y eso no se suple con lo que el operador recuerde"
+  },
   "generado": "2026-08-17",
   "fuente": "https://transparencia.dpe.gob.ec/backend/v1/transparency",
   "transporte": {

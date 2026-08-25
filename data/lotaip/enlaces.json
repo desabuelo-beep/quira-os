@@ -1,11 +1,17 @@
 {
  "_meta": {
-  "generado": "2026-08-17",
+  "procedencia": {
+   "etapa": "enlaces",
+   "sujeto": "130801 Montecristi",
+   "sujeto_huella": "e187a12ade35259772a1b729391e28470a3d0b505444d810c48f3c6f790e6ae0",
+   "acreditada_por": "la cadena que produjo la etapa"
+  },
+  "generado": "2026-08-25",
   "transporte": {
-   "intentos": 576,
+   "intentos": 1,
    "fallos": 1,
-   "seguidos": 0,
-   "ultimo": "RuntimeError: curl: (56) schannel: server closed abruptly (missing close_notify)\r\n"
+   "seguidos": 1,
+   "ultimo": "RuntimeError: curl: (60) schannel: SNI or certificate check failed: SEC_E_WRONG_PRINCIPAL (0x8"
   },
   "urls_unicas": 576,
   "referencias": 1581,
@@ -49,7 +55,9 @@
      "numeral": "Numeral 8",
      "archivo": "8-Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 401,
@@ -74,7 +82,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 401,
@@ -93,7 +103,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 401,
@@ -118,7 +130,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 401,
@@ -137,7 +151,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 401,
@@ -156,7 +172,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-2. Conjunto de datos - Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -177,7 +195,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -198,7 +218,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -219,7 +241,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -240,7 +264,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -261,7 +287,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -282,7 +310,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -303,7 +333,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -324,7 +356,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -345,7 +379,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -366,7 +402,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -387,7 +425,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -408,7 +448,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -429,7 +471,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -450,7 +494,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -471,7 +517,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -492,7 +540,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -519,7 +569,9 @@
      "numeral": "Numeral 18",
      "archivo": "18-detalle-de-convenios-nacionales-e-internacionales - CONJUNTO DE DATOS.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -540,7 +592,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -561,7 +615,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -582,7 +638,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -603,7 +661,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -624,7 +684,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art. 24.1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -663,7 +725,9 @@
      "numeral": "Numeral 1.1",
      "archivo": "1_1-estructura-organica- METADATOS.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -684,7 +748,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art. 24.1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -705,7 +771,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-2. Conjunto de datos-Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -726,7 +794,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-2. Conjunto de datos - Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -747,7 +817,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -768,7 +840,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -789,7 +863,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -810,7 +886,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -831,7 +909,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "Art. 24-2 Conjunto de datos - Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -852,7 +932,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art. 24.1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -873,7 +955,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -894,7 +978,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-2. Conjunto de datos - Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -915,7 +1001,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1 Conjunto de datos  - Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -936,7 +1024,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -957,7 +1047,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -978,7 +1070,9 @@
      "numeral": "Numeral 17",
      "archivo": "17-Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -999,7 +1093,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "Art. 24-1-Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1020,7 +1116,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1041,7 +1139,9 @@
      "numeral": "Numeral 18",
      "archivo": "18-detalle-de-convenios-nacionales-e-internacionales- CONJUNTO DE DATOS.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1062,7 +1162,9 @@
      "numeral": "Numeral 17",
      "archivo": "17-Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1083,7 +1185,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "Art. 24-2 Conjunto de datos - Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1104,7 +1208,9 @@
      "numeral": "Numeral 17",
      "archivo": "17-Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1125,7 +1231,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1146,7 +1254,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1 Conjunto de datos  - Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1167,7 +1277,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1 Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1188,7 +1300,9 @@
      "numeral": "Numeral 17",
      "archivo": "17-Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1209,7 +1323,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1230,7 +1346,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art. 24.2. Conjunto de datos -Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1251,7 +1369,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1272,7 +1392,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24- 2. Conjunto de datos - Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1293,7 +1415,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-2. Conjunto de datos - Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1314,7 +1438,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1335,7 +1461,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1356,7 +1484,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1377,7 +1507,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1398,7 +1530,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1419,7 +1553,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1440,7 +1576,9 @@
      "numeral": "Numeral 17",
      "archivo": "17-Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1479,7 +1617,9 @@
      "numeral": "Numeral 1.2",
      "archivo": "1-2-base-legal-regulaciones-procedimientos-internos- CONJUNTO DE DATOS.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1500,7 +1640,9 @@
      "numeral": "Numeral 17",
      "archivo": "17-Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1521,7 +1663,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-2. Conjunto de datos - Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1542,7 +1686,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1563,7 +1709,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1584,7 +1732,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1605,7 +1755,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1626,7 +1778,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1647,7 +1801,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-2. Conjunto de datos - Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1668,7 +1824,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-2. Conjunto de datos - Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1689,7 +1847,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1 Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1728,7 +1888,9 @@
      "numeral": "Numeral 12",
      "archivo": "12. Mecanismos rendicion cuentas(2)__Conjunto de datos .csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1749,7 +1911,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1770,7 +1934,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1 Conjunto de datos  - Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1797,7 +1963,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "1. Diccionario (Resoluciones) (1) (1).csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1818,7 +1986,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1839,7 +2009,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1878,7 +2050,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Diccionario - Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1899,7 +2073,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1938,7 +2114,9 @@
      "numeral": "Numeral 1.2",
      "archivo": "1-2-base-legal-regulaciones-procedimientos-internos- CONJUNTO DE DATOS.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1959,7 +2137,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -1998,7 +2178,9 @@
      "numeral": "Numeral 21",
      "archivo": "21. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2019,7 +2201,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2040,7 +2224,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2061,7 +2247,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24- 2. Conjunto de datos - Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2082,7 +2270,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2103,7 +2293,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2124,7 +2316,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2145,7 +2339,9 @@
      "numeral": "Numeral 18",
      "archivo": "18-detalle-de-convenios-nacionales-e-internacionales .csv CONJUNTO DE DATOS.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2166,7 +2362,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2187,7 +2385,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art. 24. 2. Diccionario - Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2208,7 +2408,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "2. Conjunto de datos (Actas) (1).csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2229,7 +2431,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1 Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2250,7 +2454,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art. 24.1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2271,7 +2477,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2292,7 +2500,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2313,7 +2523,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2334,7 +2546,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2355,7 +2569,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2376,7 +2592,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2397,7 +2615,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1 Conjunto de datos  - Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2418,7 +2638,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2439,7 +2661,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2460,7 +2684,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2481,7 +2707,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-2. Conjunto de datos - Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2502,7 +2730,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-2. Conjunto de datos - Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2523,7 +2753,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2544,7 +2776,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2565,7 +2799,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2586,7 +2822,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2607,7 +2845,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2628,7 +2868,9 @@
      "numeral": "Numeral 18",
      "archivo": "18-detalle-de-convenios-nacionales-e-internacionales .csv CONJUNTO DE DATOS.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2667,7 +2909,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1 Diccionario - Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2688,7 +2932,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1 Conjunto de datos  - Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2709,7 +2955,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2730,7 +2978,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2751,7 +3001,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art. 24. 1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2772,7 +3024,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2793,7 +3047,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1 Conjunto de datos  - Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2814,7 +3070,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art. 24.1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2835,7 +3093,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art. 24.1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2856,7 +3116,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 404,
@@ -2893,7 +3155,9 @@
      "numeral": "Numeral 10",
      "archivo": "10. Planes y programas(2)__Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2914,7 +3178,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2935,7 +3201,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2956,7 +3224,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-2. Conjunto de datos - Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2977,7 +3247,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -2998,7 +3270,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3019,7 +3293,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3040,7 +3316,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3061,7 +3339,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3082,7 +3362,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "1. Conjunto de datos (Resoluciones) (1).csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3103,7 +3385,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3124,7 +3408,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art. 24.1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3145,7 +3431,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3166,7 +3454,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3187,7 +3477,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1 Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3208,7 +3500,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1 Conjunto de datos  - Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3229,7 +3523,9 @@
      "numeral": "Numeral 18",
      "archivo": "18-detalle-de-convenios-nacionales-e-internacionales- CONJUNTO DE DATOS.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3250,7 +3546,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3271,7 +3569,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3292,7 +3592,9 @@
      "numeral": "Numeral 17",
      "archivo": "17-Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3313,7 +3615,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "Art. 24-1-Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3334,7 +3638,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3355,7 +3661,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3376,7 +3684,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3397,7 +3707,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-2. Conjunto de datos - Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3418,7 +3730,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3439,7 +3753,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3460,7 +3776,9 @@
      "numeral": "Numeral 17",
      "archivo": "17-Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3481,7 +3799,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3508,7 +3828,9 @@
      "numeral": "Numeral 17",
      "archivo": "17-Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3529,7 +3851,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art. 24.2. Conjunto de datos -Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3550,7 +3874,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1 Conjunto de datos  - Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3577,7 +3903,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art. 24. 1. Diccionario - Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3598,7 +3926,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3619,7 +3949,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3640,7 +3972,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3661,7 +3995,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 404,
@@ -3698,7 +4034,9 @@
      "numeral": "Numeral 10",
      "archivo": "10. Planes y programas(2)__Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3719,7 +4057,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3740,7 +4080,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3761,7 +4103,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24- 2. Conjunto de datos - Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3782,7 +4126,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-2 Conjunto de datos -Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3803,7 +4149,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "Art. 24-1-Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3824,7 +4172,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3845,7 +4195,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1 Conjunto de datos  - Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3866,7 +4218,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art. 24. 1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3887,7 +4241,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3908,7 +4264,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3929,7 +4287,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art. 24. 1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3950,7 +4310,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3971,7 +4333,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "1. Conjunto de datos (Resoluciones) (1).csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -3992,7 +4356,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-2. Conjunto de datos - Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4013,7 +4379,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art. 24.1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4034,7 +4402,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4055,7 +4425,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4076,7 +4448,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "2. Conjunto de datos (Actas) (1).csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4097,7 +4471,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4118,7 +4494,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4139,7 +4517,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4160,7 +4540,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4199,7 +4581,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4220,7 +4604,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art. 24. 1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4241,7 +4627,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art. 24.1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4262,7 +4650,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4289,7 +4679,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art. 24. 1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4310,7 +4702,9 @@
      "numeral": "Numeral 18",
      "archivo": "18-detalle-de-convenios-nacionales-e-internacionales- Base de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4331,7 +4725,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art. 24.2. Conjunto de datos -Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4358,7 +4754,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "1. Conjunto de datos (Resoluciones) (1).csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4379,7 +4777,9 @@
      "numeral": "Numeral 17",
      "archivo": "17-Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4406,7 +4806,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4427,7 +4829,9 @@
      "numeral": "Numeral 17",
      "archivo": "17-Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4448,7 +4852,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art. 24. 1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4469,7 +4875,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1 Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4490,7 +4898,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "1. Conjunto de datos (Resoluciones) (1).csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4511,7 +4921,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1Conjunto de datos - Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4532,7 +4944,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4553,7 +4967,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4574,7 +4990,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1 Conjunto de datos  - Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4595,7 +5013,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4622,7 +5042,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "1. Conjunto de datos (Resoluciones) (1).csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4643,7 +5065,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "Art. 24-1-Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4664,7 +5088,9 @@
      "numeral": "Numeral 17",
      "archivo": "17-Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4685,7 +5111,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4706,7 +5134,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art. 24. 2. Conjunto de datos - Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4745,7 +5175,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Diccionario.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4766,7 +5198,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1 Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4787,7 +5221,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-2. Conjunto de datos - Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4808,7 +5244,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4829,7 +5267,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4850,7 +5290,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art. 24. 1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4871,7 +5313,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4892,7 +5336,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4913,7 +5359,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4934,7 +5382,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4955,7 +5405,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4976,7 +5428,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -4997,7 +5451,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24- 2. Conjunto de datos - Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5018,7 +5474,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5045,7 +5503,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Diccionario.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5066,7 +5526,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5087,7 +5549,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5108,7 +5572,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5129,7 +5595,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1 Conjunto de datos  - Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5150,7 +5618,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art. 24. 2. Conjunto de datos - Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5171,7 +5641,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5192,7 +5664,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5213,7 +5687,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-2. Conjunto de datos - Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5234,7 +5710,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1 Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5255,7 +5733,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5276,7 +5756,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "1. Conjunto de datos (Resoluciones) (1).csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5297,7 +5779,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5318,7 +5802,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art. 24.2. Conjunto de datos -Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5339,7 +5825,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "Art. 24-1-Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5360,7 +5848,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1 Conjunto de datos  - Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5387,7 +5877,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5408,7 +5900,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5429,7 +5923,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5450,7 +5946,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5471,7 +5969,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5492,7 +5992,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-2. Diccionario - Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5513,7 +6015,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1 Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5534,7 +6038,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "Art. 24-1-Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5555,7 +6061,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5576,7 +6084,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5597,7 +6107,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5618,7 +6130,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5645,7 +6159,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5684,7 +6200,9 @@
      "numeral": "Numeral 21",
      "archivo": "Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5705,7 +6223,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5726,7 +6246,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "Art. 24-1-Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5747,7 +6269,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5768,7 +6292,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5795,7 +6321,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5816,7 +6344,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5837,7 +6367,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5858,7 +6390,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1 Conjunto de datos  - Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5879,7 +6413,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5900,7 +6436,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-2. Conjunto de datos - Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5921,7 +6459,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5942,7 +6482,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5963,7 +6505,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -5984,7 +6528,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6005,7 +6551,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6026,7 +6574,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6047,7 +6597,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6068,7 +6620,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art. 24. 2. Conjunto de datos - Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6089,7 +6643,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "Art. 24-1-Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6110,7 +6666,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "Art. 24-2 Conjunto de datos - Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6131,7 +6689,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6152,7 +6712,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6173,7 +6735,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art. 24.1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6194,7 +6758,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6215,7 +6781,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6236,7 +6804,9 @@
      "numeral": "Numeral 17",
      "archivo": "17-Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6275,7 +6845,9 @@
      "numeral": "Numeral 20",
      "archivo": "20- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6296,7 +6868,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6335,7 +6909,9 @@
      "numeral": "Numeral 15",
      "archivo": "15-texto-integro-de-los-contratos-colectivos-vigentes-y-reformas - CONJUNTO DE DATOS .csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6356,7 +6932,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1 Conjunto de datos  - Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6395,7 +6973,9 @@
      "numeral": "Numeral 12",
      "archivo": "12. Mecanismos rendicion cuentas(2)__Conjunto de datos .csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6434,7 +7014,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-2. Diccionario - Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6455,7 +7037,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "2. Conjunto de datos (Actas) (1).csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6476,7 +7060,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6497,7 +7083,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6536,7 +7124,9 @@
      "numeral": "Numeral 20",
      "archivo": "20. Diccionario.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6557,7 +7147,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art. 24.1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6578,7 +7170,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6599,7 +7193,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6620,7 +7216,9 @@
      "numeral": "Numeral 18",
      "archivo": "18-detalle-de-convenios-nacionales-e-internacionales .xlsx- CONJUNTO DE DATOS.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6641,7 +7239,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6662,7 +7262,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6683,7 +7285,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "1. Conjunto de datos (Resoluciones) (1).csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6704,7 +7308,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6725,7 +7331,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6746,7 +7354,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "1. Conjunto de datos (Resoluciones) (1).csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6767,7 +7377,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art. 24.1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6788,7 +7400,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6809,7 +7423,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24- 2. Conjunto de datos - Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6830,7 +7446,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6851,7 +7469,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art. 24. 1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6872,7 +7492,9 @@
      "numeral": "Numeral 18",
      "archivo": "18-detalle-de-convenios-nacionales-e-internacionales- CONJUNTO DE DATOS.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6893,7 +7515,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-2. Conjunto de datos-Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6914,7 +7538,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "Art. 24-1-Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6935,7 +7561,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1 Conjunto de datos  - Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6956,7 +7584,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -6977,7 +7607,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7016,7 +7648,9 @@
      "numeral": "Numeral 1.1",
      "archivo": "1_1-estructura-organica metadatos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7037,7 +7671,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7058,7 +7694,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art. 24.1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7079,7 +7717,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1 Conjunto de datos  - Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7100,7 +7740,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-2. Conjunto de datos - Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7121,7 +7763,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-2. Conjunto de datos - Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7142,7 +7786,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "1. Conjunto de datos (Resoluciones) (1).csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7163,7 +7809,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7184,7 +7832,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24- 2. Conjunto de datos - Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7205,7 +7855,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-2. Conjunto de datos - Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7226,7 +7878,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7247,7 +7901,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1 Conjunto de datos  - Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7268,7 +7924,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7289,7 +7947,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1 Conjunto de datos  - Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7310,7 +7970,9 @@
      "numeral": "Numeral 18",
      "archivo": "18-detalle-de-convenios-nacionales-e-internacionales  CONJUNTO DE DATOS.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7331,7 +7993,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1 Conjunto de datos  - Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7352,7 +8016,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art. 24. 1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7373,7 +8039,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7394,7 +8062,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7415,7 +8085,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7436,7 +8108,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art. 24. 1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7457,7 +8131,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7478,7 +8154,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7499,7 +8177,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7520,7 +8200,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art. 24.1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7541,7 +8223,9 @@
      "numeral": "Numeral 18",
      "archivo": "18-detalle-de-convenios-nacionales-e-internacionales  CONJUNTO DE DATOS.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7562,7 +8246,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1Conjunto de datos - Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7583,7 +8269,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7604,7 +8292,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-2. Conjunto de datos - Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7625,7 +8315,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "Art. 24-1-Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7646,7 +8338,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7667,7 +8361,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art. 24. 1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7688,7 +8384,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "Art. 24-1-Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7709,7 +8407,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7730,7 +8430,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7751,7 +8453,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art. 24.2. Conjunto de datos -Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7772,7 +8476,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7793,7 +8499,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7814,7 +8522,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7841,7 +8551,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7880,7 +8592,9 @@
      "numeral": "Numeral 1.2",
      "archivo": "1-2-base-legal-regulaciones-procedimientos-internos- CONJUNTO DE DATOS.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7901,7 +8615,9 @@
      "numeral": "Numeral 17",
      "archivo": "17-Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7922,7 +8638,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1 Conjunto de datos  - Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7943,7 +8661,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7964,7 +8684,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -7985,7 +8707,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8006,7 +8730,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8027,7 +8753,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1 Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8048,7 +8776,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8069,7 +8799,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8090,7 +8822,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8111,7 +8845,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8138,7 +8874,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1Conjunto de datos - Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8159,7 +8897,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8180,7 +8920,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8201,7 +8943,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8222,7 +8966,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8243,7 +8989,9 @@
      "numeral": "Numeral 18",
      "archivo": "18-detalle-de-convenios-nacionales-e-internacionales- CONJUNTO DE DATOS.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8264,7 +9012,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8285,7 +9035,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8306,7 +9058,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "2. Conjunto de datos (Actas) (1).csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8327,7 +9081,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8348,7 +9104,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8369,7 +9127,9 @@
      "numeral": "Numeral 17",
      "archivo": "17-Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8396,7 +9156,9 @@
      "numeral": "Numeral 18",
      "archivo": "18-detalle-de-convenios-nacionales-e-internacionales .csv CONJUNTO DE DATOS.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8417,7 +9179,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8438,7 +9202,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1 Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8459,7 +9225,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8480,7 +9248,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8501,7 +9271,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8522,7 +9294,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8543,7 +9317,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "Art. 24-2 Conjunto de datos - Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8564,7 +9340,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8585,7 +9363,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8606,7 +9386,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8627,7 +9409,9 @@
      "numeral": "Numeral 18",
      "archivo": "18-detalle-de-convenios-nacionales-e-internacionales- CONJUNTO DE DATOS.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8648,7 +9432,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8669,7 +9455,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art. 24. 1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8690,7 +9478,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8711,7 +9501,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8732,7 +9524,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8753,7 +9547,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-2. Conjunto de datos-Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8774,7 +9570,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1 Conjunto de datos  - Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8795,7 +9593,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8816,7 +9616,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8855,7 +9657,9 @@
      "numeral": "Numeral 14",
      "archivo": "14- Metadatos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8876,7 +9680,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1Conjunto de datos - Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8897,7 +9703,9 @@
      "numeral": "Numeral 17",
      "archivo": "17. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8918,7 +9726,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8939,7 +9749,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "Art. 24-2 Conjunto de datos - Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8960,7 +9772,9 @@
      "numeral": "Numeral 17",
      "archivo": "17-Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -8987,7 +9801,9 @@
      "numeral": "Numeral 18",
      "archivo": "18-detalle-de-convenios-nacionales-e-internacionales - CONJUNTO DE DATOS.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 404,
@@ -9024,7 +9840,9 @@
      "numeral": "Numeral 10",
      "archivo": "10. Planes y programas(2)__Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -9045,7 +9863,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "1. Conjunto de datos (Resoluciones) (1).csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -9066,7 +9886,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art. 24.1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -9087,7 +9909,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -9108,7 +9932,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art. 24.2. Conjunto de datos -Actas.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -9129,7 +9955,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -9150,7 +9978,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art. 24. 1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -9171,7 +10001,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -9192,7 +10024,9 @@
      "numeral": "Numeral 17",
      "archivo": "17-Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -9213,7 +10047,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -9234,7 +10070,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -9255,7 +10093,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "1. Conjunto de datos (Resoluciones) (1).csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -9276,7 +10116,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "Art. 24-1-Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -9297,7 +10139,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -9318,7 +10162,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -9339,7 +10185,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -9360,7 +10208,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -9387,7 +10237,9 @@
      "numeral": "Numeral 18",
      "archivo": "18-detalle-de-convenios-nacionales-e-internacionales - CONJUNTO DE DATOS.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -9408,7 +10260,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -9429,7 +10283,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art-24-1. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -9450,7 +10306,9 @@
      "numeral": "Numeral 17",
      "archivo": "17- Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -9471,7 +10329,9 @@
      "numeral": "Art. 24 Gobiernos Autónomos Descentralizados",
      "archivo": "art. 24. 1. Conjunto de datos -Resol.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -9496,7 +10356,9 @@
      "numeral": "Numeral 12",
      "archivo": "12. Mecanismos rendicion cuentas_FEBRERO(diccionario).csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 404,
@@ -9533,7 +10395,9 @@
      "numeral": "Numeral 14",
      "archivo": "14. Metadatos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 404,
@@ -9558,7 +10422,9 @@
      "numeral": "Numeral 12",
      "archivo": "12. Mecanismos rendicion cuentas_ENERO(diccionario).csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 404,
@@ -9595,7 +10461,9 @@
      "numeral": "Numeral 12",
      "archivo": "Metadatos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -9633,7 +10501,9 @@
      "numeral": "Numeral 5-22",
      "archivo": "5.22 Conjunto de Datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -9671,11 +10541,13 @@
      "numeral": "Numeral 1.2",
      "archivo": "1-2-base-legal-regulaciones-procedimientos-internos- CONJUNTO DE DATOS (1).csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "estado": "no_verificable",
-   "detalle": "RuntimeError: curl: (56) schannel: server closed abruptly (missing close_notify)\r\n",
+   "detalle": "RuntimeError: curl: (60) schannel: SNI or certificate check failed: SEC_E_WRONG_PRINCIPAL (0x8",
    "nota": "no se alcanzó el servidor — NO significa que falte el documento",
    "url": "https://www.bce.ec/images/transparencia2022/juridico/reglamentogeneralalaleyorganicadelsistemanacionaldecontratacionpublica3.pdf",
    "procedencia": "Banco Central",
@@ -9706,7 +10578,9 @@
      "numeral": "Numeral 1.2",
      "archivo": "1-2-base-legal-regulaciones-procedimientos-internos- CONJUNTO DE DATOS.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "comprobado_en_esta_corrida",
+   "comprobado_el": "2026-08-25T12:44:13"
   },
   {
    "http": 200,
@@ -9725,7 +10599,9 @@
      "numeral": "Numeral 8",
      "archivo": "Metadatos (3).csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -9756,7 +10632,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -9787,7 +10665,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -9818,7 +10698,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -9849,7 +10731,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -9886,7 +10770,9 @@
      "numeral": "Numeral 9",
      "archivo": "9.2 Metadatos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -9917,7 +10803,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -9954,7 +10842,9 @@
      "numeral": "Numeral 8",
      "archivo": "8.1 DIRECCION ADMINISTRATIVA-SEPTIEMBRE-Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -9979,7 +10869,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -10016,7 +10908,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -10053,7 +10947,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -10090,7 +10986,9 @@
      "numeral": "Numeral 8",
      "archivo": "8.1 DIRECCION ADMINISTRATIVA-SEPTIEMBRE-Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -10127,7 +11025,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -10158,7 +11058,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -10195,7 +11097,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -10220,7 +11124,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -10251,7 +11157,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -10276,7 +11184,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -10295,7 +11205,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -10314,7 +11226,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -10351,7 +11265,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -10388,7 +11304,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -10425,7 +11343,9 @@
      "numeral": "Numeral 8",
      "archivo": "8.1 DIRECCION ADMINISTRATIVA-SEPTIEMBRE-Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -10444,7 +11364,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -10481,7 +11403,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -10506,7 +11430,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -10537,7 +11463,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -10562,7 +11490,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -10587,7 +11517,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -10618,7 +11550,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -10637,7 +11571,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -10662,7 +11598,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -10681,7 +11619,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -10706,7 +11646,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -10731,7 +11673,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -10762,7 +11706,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -10799,7 +11745,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -10824,7 +11772,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -10861,7 +11811,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Procesos de contratación publica junio ADMINISTRATIVO-.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -10886,7 +11838,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -10923,7 +11877,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -10948,7 +11904,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -10967,7 +11925,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -10986,7 +11946,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -11011,7 +11973,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -11030,7 +11994,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -11067,7 +12033,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Procesos de contratación publica julio ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -11104,7 +12072,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -11141,7 +12111,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -11178,7 +12150,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -11197,7 +12171,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -11222,7 +12198,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -11259,7 +12237,9 @@
      "numeral": "Numeral 8",
      "archivo": "8.1 DIRECCION ADMINISTRATIVA-SEPTIEMBRE-Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -11284,7 +12264,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -11321,7 +12303,9 @@
      "numeral": "Numeral 8",
      "archivo": "8.1 DIRECCION ADMINISTRATIVA-SEPTIEMBRE-Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -11358,7 +12342,9 @@
      "numeral": "Numeral 8",
      "archivo": "8.1 DIRECCION ADMINISTRATIVA-SEPTIEMBRE-Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -11395,7 +12381,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -11420,7 +12408,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -11457,7 +12447,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -11476,7 +12468,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -11501,7 +12495,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -11532,7 +12528,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -11569,7 +12567,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -11594,7 +12594,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -11613,7 +12615,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -11638,7 +12642,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -11675,7 +12681,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -11706,7 +12714,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -11731,7 +12741,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -11762,7 +12774,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -11781,7 +12795,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -11818,7 +12834,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Procesos de contratación publica (3).csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -11855,7 +12873,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -11880,7 +12900,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -11899,7 +12921,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -11936,7 +12960,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -11955,7 +12981,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -11992,7 +13020,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -12017,7 +13047,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -12042,7 +13074,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -12061,7 +13095,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -12080,7 +13116,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -12105,7 +13143,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -12130,7 +13170,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -12167,7 +13209,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -12198,7 +13242,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -12223,7 +13269,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -12242,7 +13290,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -12267,7 +13317,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -12304,7 +13356,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -12323,7 +13377,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -12360,7 +13416,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Procesos de contratación publica julio ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -12397,7 +13455,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -12416,7 +13476,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -12435,7 +13497,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -12472,7 +13536,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -12491,7 +13557,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -12516,7 +13584,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -12535,7 +13605,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -12554,7 +13626,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -12573,7 +13647,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -12592,7 +13668,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -12629,7 +13707,9 @@
      "numeral": "Numeral 8",
      "archivo": "8.1 DIRECCION ADMINISTRATIVA-SEPTIEMBRE-Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -12666,7 +13746,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -12691,7 +13773,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -12710,7 +13794,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -12735,7 +13821,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -12754,7 +13842,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -12779,7 +13869,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -12798,7 +13890,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -12835,7 +13929,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -12854,7 +13950,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -12873,7 +13971,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -12910,7 +14010,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Procesos de contratación publica julio ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -12947,7 +14049,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -12966,7 +14070,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -12991,7 +14097,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -13022,7 +14130,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -13041,7 +14151,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -13060,7 +14172,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -13097,7 +14211,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -13116,7 +14232,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -13135,7 +14253,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -13154,7 +14274,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -13173,7 +14295,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -13210,7 +14334,9 @@
      "numeral": "Numeral 8",
      "archivo": "8.1 DIRECCION ADMINISTRATIVA-SEPTIEMBRE-Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -13247,7 +14373,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -13266,7 +14394,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -13285,7 +14415,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -13310,7 +14442,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -13329,7 +14463,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -13366,7 +14502,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -13391,7 +14529,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -13428,7 +14568,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -13453,7 +14595,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -13490,7 +14634,9 @@
      "numeral": "Numeral 8",
      "archivo": "8.1 DIRECCION ADMINISTRATIVA-SEPTIEMBRE-Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -13527,7 +14673,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -13558,7 +14706,9 @@
      "numeral": "Numeral 8",
      "archivo": "8. Conjunto de datos ADMINISTRATIVO.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -13595,7 +14745,9 @@
      "numeral": "Numeral 1.2",
      "archivo": "1-2-base-legal-regulaciones-procedimientos-internos- CONJUNTO DE DATOS.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -13632,7 +14784,9 @@
      "numeral": "Numeral 1.2",
      "archivo": "1-2-base-legal-regulaciones-procedimientos-internos- CONJUNTO DE DATOS.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -13669,7 +14823,9 @@
      "numeral": "Numeral 1.2",
      "archivo": "1-2-base-legal-regulaciones-procedimientos-internos- CONJUNTO DE DATOS.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   },
   {
    "http": 200,
@@ -13706,7 +14862,9 @@
      "numeral": "Numeral 1.2",
      "archivo": "1-2-base-legal-regulaciones-procedimientos-internos- CONJUNTO DE DATOS.csv"
     }
-   ]
+   ],
+   "origen_del_dato": "reutilizado_de_corrida_previa",
+   "comprobado_el": ""
   }
  ]
 }

@@ -273,3 +273,62 @@ def evaluar_ausencia(n: Naturaleza, hay_evidencia: bool) -> str:
         # No se dice «buscamos y no encontramos». Se dice algo anterior.
         return SIN_MATERIALIZACION_EXIGIBLE
     return "con_evidencia" if hay_evidencia else "sin_evidencia"
+
+
+# ── LA PROCEDENCIA VIAJA CON EL ARTEFACTO ─────────────────────────────────────
+# 2026-08-25 · deuda #2 del registro d07. Formulación del colega:
+#
+#   *«La procedencia debe viajar con el artefacto hasta el límite en que el
+#   artefacto pueda ser consumido independientemente de la cadena que lo
+#   produjo.»*
+#
+# Hasta hoy, cuatro artefactos derivados de d07 no decían de quién eran. La
+# cadena los protegía **indirectamente** —alterar la identidad invalida el sello
+# y el gate SUJETO detiene la corrida—, pero un archivo copiado, adjuntado o
+# ingerido por otro dominio sale de la cadena y pierde esa protección. Con 222
+# GAD produciendo `inventario_documental.json`, la ambigüedad deja de ser
+# teórica.
+#
+# ⚠️ LO QUE ESTE MECANISMO NO HACE: escribir el sujeto que el operador sabe. Lee
+# el que la CADENA acreditó al producir esa etapa. Si la cadena no lo acreditó,
+# **lo dice**; no lo rellena. Rellenarlo convertiría un artefacto sin
+# procedencia en uno que aparenta tenerla — el error exacto que el módulo entero
+# existe para impedir.
+SUJETO_NO_ACREDITADO = "sujeto_no_acreditado_por_la_cadena"
+ETAPA_NO_SELLADA = "etapa_no_sellada"
+
+
+def de_generacion(etapa: str, sujeto: str, huella: str) -> dict:
+    """Lo que un artefacto puede decir de su propio sujeto. **Determinista.**
+
+    ⚠️ SIN MARCA DE TIEMPO, y es deliberado. Un derivado tiene que poder
+    reconstruirse byte a byte desde su evidencia —`test_quira_reconstruye_sus_
+    derivados_sin_ayuda` lo exige—, y un reloj dentro del archivo lo haría
+    irreproducible para siempre. El **cuándo** pertenece al sello de la cadena;
+    el **de quién**, al artefacto. Meter el reloj aquí costó un fallo real.
+
+    Si no hay sujeto que acreditar, se dice; no se rellena. Escribir el sujeto
+    que el operador recuerda convertiría un artefacto sin procedencia en uno
+    que aparenta tenerla — el error exacto que este módulo existe para impedir."""
+    if not sujeto or not huella:
+        return {
+            "etapa": etapa,
+            "estado": SUJETO_NO_ACREDITADO,
+            "por_que": "la etapa se produjo sin declarar sujeto",
+            "no_significa": "que el artefacto no sea del sujeto observado; "
+                            "significa que su cadena no lo acreditó, y eso no "
+                            "se suple con lo que el operador recuerde",
+        }
+    return {"etapa": etapa, "sujeto": sujeto, "sujeto_huella": huella,
+            "acreditada_por": "la cadena que produjo la etapa"}
+
+
+def procedencia_del_artefacto(etapa: str, sello: dict) -> dict:
+    """La misma declaración, cuando el sujeto se lee del sello en vez de
+    recibirse. Para artefactos ya producidos, cuya cadena ya está sellada."""
+    e = (sello or {}).get(etapa)
+    if not isinstance(e, dict):
+        return {"etapa": etapa, "estado": ETAPA_NO_SELLADA,
+                "no_significa": "que el artefacto carezca de sujeto; significa "
+                                "que ninguna cadena registró haberlo producido"}
+    return de_generacion(etapa, e.get("sujeto"), e.get("sujeto_huella"))

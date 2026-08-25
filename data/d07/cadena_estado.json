@@ -11,18 +11,26 @@
    "data/lotaip/dpe_montecristi.json": "e32fb79734a19321278aba7af05b263cd92f02edaf0c71e426ba85551b8b7ccf"
   },
   "salidas": {
-   "data/lotaip/descargas_indice.json": "3d556f2f35030d8f432bedfa7ba29757ce99bc1e8ae5fe9323fbfbf9bec43c9d"
+   "data/lotaip/descargas_indice.json": "8f32e2e21166df3f668132e79103541587652c6f4b7a93bd993449325bba7894"
   },
-  "sellado": "2026-08-19T15:26:41"
+  "sellado": "2026-08-19T15:26:41",
+  "realineado_sin_reejecutar": {
+   "cuando": "2026-08-25",
+   "por_que": "el estampado de procedencia cambió el SHA sin alterar lo que esta etapa deriva de su insumo",
+   "comprobado": {
+    "data/lotaip/descargas_indice.json": "identico"
+   },
+   "no_significa": "que la etapa se haya vuelto a ejecutar"
+  }
  },
  "contenido": {
   "insumos": {
-   "data/lotaip/descargas_indice.json": "3d556f2f35030d8f432bedfa7ba29757ce99bc1e8ae5fe9323fbfbf9bec43c9d"
+   "data/lotaip/descargas_indice.json": "8f32e2e21166df3f668132e79103541587652c6f4b7a93bd993449325bba7894"
   },
   "salidas": {
-   "data/lotaip/contenido.json": "f3d18a38cdc96993b4ed2afcdaff3fea5a204527e3493eeed9a6cb8935b15e3c"
+   "data/lotaip/contenido.json": "2bab2e0a55161dd9bad697ee2591b83127e807a9b7c6c3af7ef5723f884b49f7"
   },
-  "sellado": "2026-08-25T12:37:00",
+  "sellado": "2026-08-25T14:28:35",
   "ejecutada_por": "agente",
   "confianza_del_ejecutor": "autodeclarado",
   "sujeto": "130801 Montecristi",
@@ -30,12 +38,15 @@
  },
  "enlaces": {
   "insumos": {
-   "data/lotaip/contenido.json": "f3d18a38cdc96993b4ed2afcdaff3fea5a204527e3493eeed9a6cb8935b15e3c"
+   "data/lotaip/contenido.json": "2bab2e0a55161dd9bad697ee2591b83127e807a9b7c6c3af7ef5723f884b49f7"
   },
   "salidas": {
-   "data/lotaip/enlaces.json": "2a1bb4593b61059b73be7fa1aa0044572055bcf7ddc19aa05c56849ea3c70dd8"
+   "data/lotaip/enlaces.json": "73be55b963285aa3b909c87ca1c0ec85e2d2d1b3cd75cfd98e53200333ac92f5"
   },
-  "sellado": "2026-08-20T08:53:52",
+  "procedencia_estampada_en": [
+   "data/lotaip/enlaces.json"
+  ],
+  "sellado": "2026-08-25T12:44:13",
   "ejecutada_por": "agente",
   "confianza_del_ejecutor": "autodeclarado",
   "sujeto": "130801 Montecristi",
@@ -43,38 +54,66 @@
  },
  "inventario": {
   "insumos": {
-   "data/lotaip/enlaces.json": "2a1bb4593b61059b73be7fa1aa0044572055bcf7ddc19aa05c56849ea3c70dd8"
+   "data/lotaip/enlaces.json": "73be55b963285aa3b909c87ca1c0ec85e2d2d1b3cd75cfd98e53200333ac92f5"
   },
   "salidas": {
-   "data/lotaip/inventario_documental.json": "770b6c8780e3aadb974ab728d0d3ce4d99beeb29761143afae1c6a9596b35fed"
+   "data/lotaip/inventario_documental.json": "f7327974c706d297e6518baf9a04fe6b42c00a412cb8cd07120ee07c2323f133"
   },
-  "sellado": "2026-08-20T09:18:05",
+  "procedencia_estampada_en": [
+   "data/lotaip/inventario_documental.json"
+  ],
+  "sellado": "2026-08-25T12:43:05",
   "ejecutada_por": "agente",
   "confianza_del_ejecutor": "autodeclarado",
   "sujeto": "130801 Montecristi",
-  "sujeto_huella": "e187a12ade35259772a1b729391e28470a3d0b505444d810c48f3c6f790e6ae0"
+  "sujeto_huella": "e187a12ade35259772a1b729391e28470a3d0b505444d810c48f3c6f790e6ae0",
+  "realineado_sin_reejecutar": {
+   "cuando": "2026-08-25",
+   "por_que": "el estampado de procedencia cambió el SHA sin alterar lo que esta etapa deriva de su insumo",
+   "comprobado": {
+    "data/lotaip/enlaces.json": "hallazgos identicos (576 enlaces, 6 estados)"
+   },
+   "no_significa": "que la etapa se haya vuelto a ejecutar"
+  }
  },
  "contenedores": {
   "insumos": {
-   "data/lotaip/inventario_documental.json": "770b6c8780e3aadb974ab728d0d3ce4d99beeb29761143afae1c6a9596b35fed"
+   "data/lotaip/inventario_documental.json": "f7327974c706d297e6518baf9a04fe6b42c00a412cb8cd07120ee07c2323f133"
   },
   "salidas": {
-   "data/lotaip/contenido_contenedores.json": "1638b74b086d03a415a00f8fb3c741508949d5dce102011b7f725e9011ed5b28"
+   "data/lotaip/contenido_contenedores.json": "911b93610951521a28949f9c6f18ecd7f4a07e3f77ad6a8b2348849bd46a1ea1"
   },
   "sellado": "2026-08-20T09:19:18",
   "ejecutada_por": "agente",
   "confianza_del_ejecutor": "autodeclarado",
   "sujeto": "130801 Montecristi",
-  "sujeto_huella": "e187a12ade35259772a1b729391e28470a3d0b505444d810c48f3c6f790e6ae0"
+  "sujeto_huella": "e187a12ade35259772a1b729391e28470a3d0b505444d810c48f3c6f790e6ae0",
+  "realineado_sin_reejecutar": {
+   "cuando": "2026-08-25",
+   "por_que": "el estampado de procedencia cambió el SHA sin alterar lo que esta etapa deriva de su insumo",
+   "comprobado": {
+    "data/lotaip/inventario_documental.json": "identico",
+    "data/lotaip/contenido_contenedores.json": "identico"
+   },
+   "no_significa": "que la etapa se haya vuelto a ejecutar"
+  }
  },
  "documentos": {
   "insumos": {
-   "data/lotaip/descargas_indice.json": "3d556f2f35030d8f432bedfa7ba29757ce99bc1e8ae5fe9323fbfbf9bec43c9d"
+   "data/lotaip/descargas_indice.json": "8f32e2e21166df3f668132e79103541587652c6f4b7a93bd993449325bba7894"
   },
   "salidas": {
    "data/lotaip/documentos_n10.json": "8f464c4fd806d65ddb1f941dffee12db3bfd69be6e0e19e876f6a03ae82a3d2d"
   },
   "sellado": "2026-08-19T18:38:53",
-  "ejecutada_por": "agente"
+  "ejecutada_por": "agente",
+  "realineado_sin_reejecutar": {
+   "cuando": "2026-08-25",
+   "por_que": "el estampado de procedencia cambió el SHA sin alterar lo que esta etapa deriva de su insumo",
+   "comprobado": {
+    "data/lotaip/descargas_indice.json": "identico"
+   },
+   "no_significa": "que la etapa se haya vuelto a ejecutar"
+  }
  }
 }

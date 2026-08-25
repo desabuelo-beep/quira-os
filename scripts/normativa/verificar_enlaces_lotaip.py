@@ -56,6 +56,21 @@ RAIZ = Path(__file__).resolve().parents[2]
 if str(RAIZ) not in sys.path:
     sys.path.insert(0, str(RAIZ))
 from app.agents import sujeto as _S                       # noqa: E402
+
+def _procedencia(etapa: str) -> dict:
+    """De quién es este artefacto. Se escribe AL GENERARLO, no después.
+
+    Estamparlo más tarde —desde el sellador de la cadena— cambia el SHA del
+    archivo ya medido y hace que las etapas siguientes crean que su insumo
+    cambió: se re-ejecutan y la cadena entra en cascada. Costó una corrida
+    colgada (2026-08-25). Aquí el archivo nace con su procedencia dentro."""
+    try:
+        from app.agents import procedencia as _P, sujeto as _S
+        return _P.de_generacion(etapa, f"{_S.POR_DEFECTO} {_S.nombre_corto()}",
+                                _S.huella())
+    except Exception:                                        # noqa: BLE001
+        return {"etapa": etapa, "estado": "sujeto_no_acreditado_por_la_cadena"}
+
 INDICE = RAIZ / "data" / "lotaip" / "descargas_indice.json"
 SALIDA = RAIZ / "data" / "lotaip" / "enlaces.json"
 UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
@@ -351,7 +366,8 @@ def main() -> None:
         print("    Antes de leerlo como enlace roto: descartar el instrumento (OBS-030).")
 
     SALIDA.write_text(json.dumps(
-        {"_meta": {"generado": _dt.date.today().isoformat(), "transporte": dict(_RED),
+        {"_meta": {"procedencia": _procedencia("enlaces"),
+                   "generado": _dt.date.today().isoformat(), "transporte": dict(_RED),
                    "urls_unicas": len(claves), "referencias": total_ref,
                    "regla": "enlace alojado en el dominio del GAD = información "
                             "oficial (Javo, 2026-08-17)",

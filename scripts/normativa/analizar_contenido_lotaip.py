@@ -65,6 +65,21 @@ if hasattr(sys.stdout, "reconfigure"):
 
 from invariantes import Invariantes                    # noqa: E402
 
+def _procedencia(etapa: str) -> dict:
+    """De quién es este artefacto. Se escribe AL GENERARLO, no después.
+
+    Estamparlo más tarde —desde el sellador de la cadena— cambia el SHA del
+    archivo ya medido y hace que las etapas siguientes crean que su insumo
+    cambió: se re-ejecutan y la cadena entra en cascada. Costó una corrida
+    colgada (2026-08-25). Aquí el archivo nace con su procedencia dentro."""
+    try:
+        from app.agents import procedencia as _P, sujeto as _S
+        return _P.de_generacion(etapa, f"{_S.POR_DEFECTO} {_S.nombre_corto()}",
+                                _S.huella())
+    except Exception:                                        # noqa: BLE001
+        return {"etapa": etapa, "estado": "sujeto_no_acreditado_por_la_cadena"}
+
+
 INDICE = RAIZ / "data" / "lotaip" / "descargas_indice.json"
 EXIGENCIAS = RAIZ / "data" / "lotaip" / "exigencias_por_numeral.json"
 SELLO = RAIZ / "data" / "lotaip" / "VARA_SELLO.json"
@@ -392,6 +407,7 @@ def main() -> None:
         p = Path(args.json)
         p.parent.mkdir(parents=True, exist_ok=True)
         p.write_text(json.dumps({"_meta": {
+            "procedencia": _procedencia("contenido"),
             "vara": "data/lotaip/exigencias_por_numeral.json (congelada)",
             "evidencia": "data/lotaip/descargas_indice.json",
             "reglas": [

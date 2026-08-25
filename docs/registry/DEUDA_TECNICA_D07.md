@@ -187,6 +187,64 @@ intentó romper no es un guard (OBS-031).
 **De paso:** el log del emisor anunciaba «PASO 9» siendo el 11. *Etiqueta incorrecta = número
 falso* (§6-sexies) aplica también a los pasos.
 
+## 2-bis · CERRADA el 2026-08-25 · los artefactos ya declaran su sujeto
+
+Cierra la deuda #2, y **no en 4/4** — que es la parte que importa:
+
+| artefacto | sujeto |
+|---|---|
+| `contenido.json` · `enlaces.json` · `inventario_documental.json` · `contenido_contenedores.json` | 130801 Montecristi, acreditado por la cadena |
+| `descargas_indice.json` | ⛔ **su etapa no acreditó sujeto** |
+
+La etapa `descarga` se selló el 2026-08-19, antes de que la cadena exigiera sujeto. Sabemos que es
+de Montecristi; **la cadena no lo acreditó**. Escribirlo «porque lo sabemos» habría convertido un
+artefacto sin procedencia en uno que aparenta tenerla. Declara su hueco y se cierra cuando la etapa
+vuelva a correr.
+
+Lo que se defiende ahora es más fuerte que «tienen sujeto»: **ninguno guarda silencio** — o lo
+declara, o declara por qué no puede.
+
+### El error que costó la sesión, y vale más que el arreglo
+
+El primer intento estampó la procedencia desde `_sellar()`, **después** de que el generador
+escribiera el archivo. Parecía inofensivo:
+
+    estampo contenido.json   →  su SHA cambia
+    la etapa que lo consume  →  «mi insumo cambió»  →  se re-ejecuta
+    re-ejecutarse            →  reanalizar 936 archivos, salir a la red
+
+Tres etapas quedaron desalineadas y la suite se colgó re-analizando el corpus.
+
+> **El acto de registrar la procedencia alteró aquello cuya identidad registraba.**
+> Un observador que modifica lo observado.
+
+Es el mismo género de error que este dominio persigue afuera, cometido por el módulo cuyo propósito
+es impedirlo. **El sitio correcto es el generador**: ahí el archivo nace con su procedencia dentro y
+el SHA que la cadena mide después ya la incluye. Nadie tiene que acordarse de estampar.
+
+Y un segundo hallazgo, cazado por `test_quira_reconstruye_sus_derivados_sin_ayuda`: la procedencia
+llevaba **marca de tiempo**, lo que volvía el derivado irreproducible para siempre. El *cuándo*
+pertenece al sello; el *de quién*, al artefacto. La prueba de autonomía detectó que se había escrito
+a mano algo que el sistema no sabía regenerar — exactamente para lo que existe.
+
+**Dónde queda fijado.** `test_11b` (nace en el generador, no se estampa después), `test_11c` (sin
+reloj, reproducible), ambas verificadas contra regresión inyectada.
+
+**Daño a los datos: ninguno.** Comprobado: 422/5/3/6/1/139 estados de enlaces idénticos, y
+936/936/422/935 registros intactos.
+
+## 4-ter · ABIERTA · una prueba puede disparar trabajo real
+
+**Lo reveló la cuelga anterior, y no lo causó.** `test_08b` llama a `orquestador.ejecutar()`, que si
+la cadena se ve desactualizada **re-ejecuta etapas**: analizar 936 archivos, y `verificar_enlaces`
+llegó a intentar salida de red (`intentos: 1, fallos: 1`).
+
+Una suite de pruebas no debe poder golpear una fuente externa ni lanzar minutos de cómputo. Hoy sólo
+lo evita que la cadena esté alineada — es decir, **la suerte**.
+
+**Condición de cierre.** Que las etapas no puedan ejecutarse bajo pruebas salvo declaración
+explícita, y que la corrida de `test_08b` sea sobre evidencia fija.
+
 ## 5 · Lo que sigue abierto del dominio, no de la técnica
 
 - **Los 636 artefactos** — clasificados como `material_de_ingenieria` en su propio `_meta`. Se

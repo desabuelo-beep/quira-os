@@ -51,6 +51,21 @@ import zipfile
 from collections import Counter, defaultdict
 from pathlib import Path
 
+def _procedencia(etapa: str) -> dict:
+    """De quién es este artefacto. Se escribe AL GENERARLO, no después.
+
+    Estamparlo más tarde —desde el sellador de la cadena— cambia el SHA del
+    archivo ya medido y hace que las etapas siguientes crean que su insumo
+    cambió: se re-ejecutan y la cadena entra en cascada. Costó una corrida
+    colgada (2026-08-25). Aquí el archivo nace con su procedencia dentro."""
+    try:
+        from app.agents import procedencia as _P, sujeto as _S
+        return _P.de_generacion(etapa, f"{_S.POR_DEFECTO} {_S.nombre_corto()}",
+                                _S.huella())
+    except Exception:                                        # noqa: BLE001
+        return {"etapa": etapa, "estado": "sujeto_no_acreditado_por_la_cadena"}
+
+
 RAIZ = Path(__file__).resolve().parents[2]
 INVENTARIO = RAIZ / "data" / "lotaip" / "inventario_documental.json"
 CACHE = RAIZ / "data" / "lotaip" / "artefactos"
@@ -266,6 +281,7 @@ def main() -> None:
         _clase = {"clase_epistemologica": "material_de_ingenieria"}
 
     p.write_text(json.dumps({"_meta": {
+        "procedencia": _procedencia("contenedores"),
         **_clase,
         "generado": _dt.date.today().isoformat(),
         "regla": "publicación ≠ artefacto físico · ambos niveles se conservan",
