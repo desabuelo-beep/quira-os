@@ -37,15 +37,14 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 
 🧭 **ADR-031** MCIP=5 motores · **035/037** IA propone/humano valida · **038** BRN **traza, no alimenta**.
 ✅ **PCD: d01·d02·d03·d06·d09** · d08 ENTRABLE · **d07 en curación**.
 🩹 **12 GATES** · Curación por DOM (R.8) · **estados, NO bool** · 500 pruebas.
-📑 **PAC** 586 · **SERCOP 265+75** · ⛔ `.docx` gana al `.pdf`.
+📑 ⛔ `.docx` gana al `.pdf`.
 ⚖️ **d07 BRN**: `CNO-VII-001..004` **46/46 SHA** + `RO-VII-001..005`. ⛔ el DOM **consume RO, NO lee la ley**.
 📡 **SITA 2025 0,4448** (era 0,4646) · **0 actas** · num.6 sin ingresos.
 🧹 **CORPUS**: 8 chunks de preámbulo fingían artículo (LOTAIP 19 = Pacto).
 🧪 **§6-bis**: falta evidencia→**degrada** · identidad contradictoria→**BLOQUEA** · el SHA prueba el archivo, NO la atribución.
 🚦 **8 ESTADOS**: «no existe»≠«no pude obtener»≠«falló».
 🎨 **ADR-049** *la gráfica no sabe más que el motor* · ⛏️ **050 CANTERA**: hereda capacidades, NO productos.
-🔧 **v5.7_TGI** · promover = **recalcular y GUARDAR** · **IGP 48,33→27,00**.
-🚒 **OBS-024/025/028**: Bomberos $1,75M sin meta · 5 factores manuales · ⛔**Ei**.
+🔧 **v5.7_TGI** · promover = **recalcular y GUARDAR**.
 📋 **Metas 66/cablea 25** · PDOT **05-11-2024**→**≥2025**.
 🔭 **ADR-042** (`env_obs`≠`env_ops`) · **MATRIZ_CANONICA, NO el GM**.
 🤖 **ADR-051 §12**: 5 dim. (capacidad·**sujeto**·ejecución·evidencia·validación) · sin sujeto NO hay afirmación.
