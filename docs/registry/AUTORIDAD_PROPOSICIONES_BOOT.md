@@ -301,7 +301,12 @@ el testimonio del propio fundador.
    ✅ **DEC-0012** (2026-08-26). Javo autorizó tocar lo aprobado para subsanar.
 2. ~~¿#1 se escribe en la Constitución que el código ya cita?~~ ✅ **No hizo falta: ya estaba**
    (Preámbulo · Art. 8 · Art. 14 · Cierre). La Constitución no se enmendó.
-3. ¿`check_epistemico` pasa de detector a gate de CI? — **sigue abierta**
+3. ~~¿`check_epistemico` pasa de detector a gate de CI?~~ ✅ **Sí, y el trabajo no fue
+   engancharlo sino hacerlo enganchable.** `--estricto` ya existía; lo que faltaba era que
+   no bloqueara por ruido. Auditadas sus 4 señales una a una: **las 4 eran falsos
+   positivos**. Se separó ⛔ERROR (viola el canon · bloquea) de ·SEÑAL (pregunta de juicio ·
+   nunca bloquea), y el gate vive ahora en `tests/test_nivel_epistemico.py` — importado, no
+   lanzado, para no cruzar la frontera de efectos de 4-ter.
 4. ¿#5 se **restaura** como Regla de Oro, o se eleva a ADR propio?
 5. ~~¿#6 se convierte en regla, o basta con que BOOT apunte al artefacto vigente?~~
    ✅ **Ninguna de las dos: la regla YA está escrita dentro del artefacto** (`INVENTARIO_CONCEPTOS_
@@ -320,12 +325,14 @@ eliminar»; el número tiene que poder reconstruirse)*
 |---|---|---|---|---|
 | 1 y 2 | #1 identidad | **DEC-0012** (2026-08-26) | `CONSTITUCION-001` Preámbulo · Art. 8 · Art. 14 · Cierre | corregidos `GOVERNANCE_CHARTER §4.4` y `HOJA_DE_RUTA §0`; Constitución **sin enmendar** |
 | 6 | F1/F2/F3 | lectura de ADR-041 (2026-08-26) | **ADR-041 §4**, sellado 2026-08-07, y `ADR-043 §7` que remite a él | BOOT precisa la cita a «§4»; se retiró una **acusación falsa** del propio registro |
+| 5 | #6 Inventario | lectura del artefacto (2026-08-26) | `INVENTARIO-CONCEPTOS-001` — **la regla está en su línea 33** | BOOT apunta al hogar real; corregidas 2 citas a una «Regla 6» renumerada |
+| 3 | `check_epistemico` | auditoría señal por señal (2026-08-26) | ninguna nueva — el modo `--estricto` ya existía | 4 falsos positivos suprimidos · separado ERROR/SEÑAL · gate en `tests/test_nivel_epistemico.py` |
 
-    ABIERTAS: 3   ← reconstruible, no declarado
+    ABIERTAS: 2   ← reconstruible, no declarado
 
 | decisión | qué agrupa | por qué es UNA |
 |---|---|---|
-| **3** | `check_epistemico` de detector a gate de CI | una sola acción técnica |
+| ~~**3**~~ | ~~`check_epistemico` a gate~~ ✅ cerrada 2026-08-26 | — |
 | **4** | **#5** «no congelar teoría» — restaurar o elevar | una sola proposición |
 | **7** | **#2** genealogía SIAP→QUADRUM→QUIRA **y #3** meta-regla ontológica | ambas preguntan *dónde vive esta memoria*; se decide el criterio una vez y se aplica a las dos |
 
