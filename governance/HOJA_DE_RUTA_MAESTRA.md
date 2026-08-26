@@ -20,7 +20,9 @@ authority:
 > **QUIRA NO vende software a municipios. El GAD es SUJETO OBSERVADO, no
 > cliente** (ADR-024, ratificado). Vender licencias es *complementario*, no el fin.
 
-**QUIRA es un OBSERVATORIO NACIONAL DE INTEGRIDAD TERRITORIAL.** El fin es el
+**QUIRA es una INFRAESTRUCTURA DE CONOCIMIENTO VERIFICABLE para la gestión
+pública territorial.** El **Observatorio Nacional de Integridad Territorial** es
+**una de sus interfaces** (Const. Art. 14 · DEC-0012), y a través de él el fin es el
 barrido progresivo de los 222 GADs del Ecuador. Montecristi no es el cliente #1
 — es el **MOLDE**: se valida y se pule una vez, y luego se replica nacionalmente
 con **TRES MOTORES DE ADQUISICIÓN** (= los 3 productos de Fase 1; cada producto

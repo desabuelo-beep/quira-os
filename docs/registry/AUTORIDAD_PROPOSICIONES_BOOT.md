@@ -75,7 +75,7 @@ Con tres estados posibles, y sólo tres:
 
 | # | proposición | naturaleza | estado | evidencia verificada |
 |---|---|---|---|---|
-| 1 | «NO es auditoría ni observatorio» | identidad + guard conceptual | **conflicto activo** | ver §1 |
+| 1 | «NO es auditoría ni observatorio» | identidad + guard conceptual | ✅ **RESUELTO** DEC-0012 | ver §1 |
 | 2 | SIAP → QUADRUM → QUIRA | genealogía | memoria histórica | testimonio Javo 2026-08-25 |
 | 3 | «define el OBJETO, no a QUIRA» | meta-regla ontológica | **C** | sólo en BOOT |
 | 4 | Seccionales 29-NOV-2026 | estado estratégico temporal | §AHORA | testimonio Javo 2026-08-25 |
@@ -83,9 +83,28 @@ Con tres estados posibles, y sólo tres:
 | 6 | «Inventario de Conceptos → DERIVA» | regla de procedimiento | **B** | ver §6 |
 | F | F1/F2/F3 | taxonomía de fases | **C** | ver §F |
 
-## §1 · El caso más delicado: divergencia entre capas de autoridad
+## §1 · RESUELTO el 2026-08-26 · DEC-0012
 
-**No es que falte una frase en la Constitución. Es que dos capas se contradicen.**
+> **La Constitución ya lo decía.** No hizo falta enmendarla ni crear canon: hizo falta **leerla**.
+>
+> | fuente | qué ya establecía |
+> |---|---|
+> | Preámbulo | «QUIRA es una plataforma de inteligencia pública… **infraestructura de conocimiento verificable**» |
+> | Art. 8 | su función es «**exclusivamente** organizar, preservar e interpretar evidencia» |
+> | Art. 14 | «Interfaces: … **observación** …» — la observación **ya figuraba como interfaz** |
+> | Cierre | «Su identidad **no reside en sus interfaces**» |
+>
+> Los dos artefactos de `governance/` no necesitaban una decisión nueva: **contradecían a su propio
+> padre en el árbol de autoridad**, y el Art. 20 exige que todo derivado sea compatible. Corregirlos
+> no alteró canon — lo restituyó. Los artículos de la Constitución **siguen intactos**.
+>
+> Lección para las seis restantes: **antes de preguntar qué autoridad hace falta, comprobar si la
+> autoridad existente ya lo cubre.** Este caso parecía necesitar rango constitucional nuevo y sólo
+> necesitaba lectura.
+
+*El diagnóstico original se conserva abajo porque explica por qué se propagaba.*
+
+**No era que faltara una frase en la Constitución. Era que dos capas se contradecían.**
 
     governance/GOVERNANCE_CHARTER.md:176    «QUIRA ES un Observatorio Nacional…»
     governance/HOJA_DE_RUTA_MAESTRA.md:23   «QUIRA ES un OBSERVATORIO NACIONAL…»  (Javo · 2026-06-12)
@@ -106,9 +125,17 @@ QUIRA es un observatorio. No lo inventa — lo lee.
     app/viz/render/plan_render.py:836  la atribuye a CONSTITUCION-001
     scripts/ci/check_epistemico.py:79  detector: «no auditoría (CONSTITUCION-001)»
 
-El código **ya la trata como norma constitucional**; lo que falta es que el texto de la Constitución
-la contenga. Dato para la decisión: `check_epistemico.py` **detecta pero no bloquea, y no está
-enganchado a CI** — hoy depende de que alguien lo corra a mano.
+El código **ya la trata como norma constitucional**; ~~lo que falta es que el texto de la
+Constitución la contenga~~.
+
+> ⛔ **ESA ÚLTIMA FRASE ERA FALSA, y se conserva tachada a propósito.** El texto constitucional
+> **sí la contenía** —Preámbulo, Art. 8, Art. 14, Cierre— y nadie lo había comprobado: se dio por
+> hecho que faltaba porque la búsqueda de una formulación literal no la encontró. Es, una vez más,
+> **coincidencia textual ≠ contenido**, esta vez en sentido inverso: no un falso positivo, sino un
+> falso vacío. Verificar que algo falta exige el mismo rigor que verificar que está.
+
+Dato que sigue vigente: `check_epistemico.py` **detecta pero no bloquea, y no está enganchado a
+CI** — hoy depende de que alguien lo corra a mano.
 
 ⚠️ **Y aquí aplica la misma regla que a §5, por simetría: que el código la ejecute no la convierte
 en canon.** Es evidencia de que se la trata como tal —fuerte, porque está en el producto que ve el
@@ -173,10 +200,11 @@ el testimonio del propio fundador.
 
 ## Decisiones pendientes — ninguna la toma este registro
 
-1. ¿La corrección de agosto (#1) baja a `GOVERNANCE_CHARTER` y `HOJA_DE_RUTA_MAESTRA`? Son
-   **congelados** (Regla 5): requiere aprobación explícita.
-2. ¿#1 se escribe en la Constitución que el código ya cita?
-3. ¿`check_epistemico` pasa de detector a gate de CI?
+1. ~~¿La corrección de agosto (#1) baja a `GOVERNANCE_CHARTER` y `HOJA_DE_RUTA_MAESTRA`?~~
+   ✅ **DEC-0012** (2026-08-26). Javo autorizó tocar lo aprobado para subsanar.
+2. ~~¿#1 se escribe en la Constitución que el código ya cita?~~ ✅ **No hizo falta: ya estaba**
+   (Preámbulo · Art. 8 · Art. 14 · Cierre). La Constitución no se enmendó.
+3. ¿`check_epistemico` pasa de detector a gate de CI? — **sigue abierta**
 4. ¿#5 se **restaura** como Regla de Oro, o se eleva a ADR propio?
 5. ¿#6 se convierte en regla, o basta con que BOOT apunte al artefacto vigente?
 6. ¿La taxonomía F1/F2/F3 se lleva a ADR-041/043, o BOOT deja de atribuírsela?

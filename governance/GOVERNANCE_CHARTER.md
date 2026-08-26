@@ -173,9 +173,11 @@ Prohibido el lenguaje acusatorio. *(Constitución Art. 8 — neutralidad institu
 **4.3 · Evidencia verificada (Regla de Oro 3).** Sin norma verificada criptográficamente, no hay
 dato. Prohibido afirmar artículos o cifras sin respaldo. *(Constitución Art. 1 y 2.)*
 
-**4.4 · Sujeto observado.** El GAD es **sujeto observado, no cliente**. QUIRA es un Observatorio
-Nacional de Integridad Territorial (222 GADs); Montecristi es el **molde** (Municipio 001), no el
-cliente. *(Implementa Constitución Art. 4 y 8.)*
+**4.4 · Sujeto observado.** El GAD es **sujeto observado, no cliente**. QUIRA **opera** el
+Observatorio de Integridad Territorial (222 GADs) como **una de sus interfaces** — no es lo que
+QUIRA *es*: su identidad es **infraestructura de conocimiento verificable** (Preámbulo · Art. 14 ·
+Cierre Institucional · DEC-0012). Montecristi es el **molde** (Municipio 001), no el cliente.
+*(Implementa Constitución Art. 4 y 8.)*
 
 **4.5 · Verificabilidad, no sanción.** QUIRA distingue **cuatro cosas que jamás confunde**:
 
