@@ -159,6 +159,63 @@ la atribuya a `CONSTITUCION-001` es una **atribución hecha desde el código**, 
 género de vínculo no verificado que este registro documenta en BOOT. La diferencia con #5 es de
 grado, no de naturaleza: allí la evidencia es histórica, aquí es operante.
 
+## §2 y §3 · EVIDENCIA PREPARADA (2026-08-26) — no decidida
+
+> Javo pidió **preparar la evidencia**, no resolver. Lo que sigue es lo que se comprobó, con sus
+> rutas. **Ninguna de las dos queda decidida aquí.**
+
+### ⚠️ Primer hallazgo: la decisión 7 agrupaba dos casos de naturaleza distinta
+
+Se unieron porque ambas preguntan *«dónde vive esta memoria»*. Al reunir la evidencia resulta que
+**no comparten respuesta**:
+
+| | #3 meta-regla ontológica | #2 genealogía |
+|---|---|---|
+| ¿autoridad viva que la cubra? | ✅ **sí** | ⛔ **no** |
+| qué queda por hacer | corregir un puntero | decidir dónde vive |
+| quién puede resolverlo | ya está resuelto en el canon | **sólo Javo** |
+
+Agruparlas fue razonable con la información de entonces; mantenerlas juntas ahora haría que una
+resolviera a la otra por arrastre — exactamente lo que el colega advirtió para #5.
+
+### §3 · «define el OBJETO, no a QUIRA» — CUBIERTA por autoridad existente
+
+`identity/CONSTITUCION_INSTITUCIONAL.md`, §*Relación con la Constitución Ontológica*:
+
+> *«La Ontológica define el **objeto observado** (el GAD, sus 4 macroejes y 13 dominios); esta
+> define el **sujeto observador** (QUIRA y su gobernanza del conocimiento). Ambas son L0.»*
+
+Cubre la proposición **y dice más** que BOOT: no sólo que la Ontológica no define a QUIRA, sino
+qué define cada una de las dos. **Cuarto caso** resuelto por autoridad preexistente.
+
+**Defecto colateral medido — BOOT dice «12 dominios», el total vigente es 13.** Y no es error de
+nadie: la Ontológica lo explica en su L292 —*«13 DOMINIOS (12 originales + d13 Ambiente vía
+Mutabilidad)»*—. Ambos números son correctos en su contexto; BOOT declara **el original donde
+debería declarar el vigente**. Otro caso de referencia que sobrevivió al cambio de lo referido.
+
+### §2 · genealogía SIAP → QUADRUM → QUIRA — rastro sólido, hogar inexistente
+
+Lo que Javo declaró (2026-08-25) tiene respaldo documental, y más del que él recordaba:
+
+| evidencia | qué prueba |
+|---|---|
+| `docs/corpus_externo/Metodologia SIAP-ICPI Final.md` | *«SIAP-ICPI v2.0 · Sistema de Integridad Algorítmica y Planificación Intersistémica · **QUADRUM GovTech** · Ronald Javier Delgado Santana · Abril 2026»* — **el documento fundacional, firmado con el nombre antiguo** |
+| `QTMP` = **Q**uadrum **T**erritorial **M**eta-**P**attern | QUADRUM **no desapareció: vive fosilizado en vocabulario canónico actual** (`CLAUDE.md` Regla 2 lo protege del firewall) |
+| `H36_QUADRUM_BRIDGE` | una hoja del Gold Master lleva el nombre antiguo |
+| `docs/ciudadana/TERRA_*_origen.md` | ~230 KB de especificaciones de la etapa **TERRA** |
+
+**Pero ninguno es un registro de genealogía, y ninguno tiene frontmatter de autoridad.** Existe el
+rastro; no existe la declaración. Es memoria dispersa en artefactos cuyo propósito era otro.
+
+⚠️ **Y la memoria se está perdiendo mientras tanto**: Javo escribió *«Quadrum (no sé, se construyó
+algo con ese nombre antiguo)»* — el fundador ya no recuerda con certeza qué fue, y el documento que
+lo prueba lleva su propia firma. **Ésa es la razón para que la decisión no espere indefinidamente**,
+y es un dato, no una opinión.
+
+**Candidatos de hogar, sin recomendar ninguno:** `marco_teorico/MARCO_TEORICO_QUIRA.md`
+(`MARCO-TEORICO-001`, vigente) · `governance/historico/` (existe y se usa) · un registro nuevo.
+Elegir es gobernanza.
+
 ## §5 · El caso GENUINO — test A+B+C+D, y no lo resuelve la autoridad existente
 
 Tras tres casos consecutivos resueltos por autoridad preexistente, éste **no**. Y eso importa:
