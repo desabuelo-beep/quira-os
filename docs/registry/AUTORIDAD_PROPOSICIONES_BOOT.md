@@ -110,6 +110,13 @@ El código **ya la trata como norma constitucional**; lo que falta es que el tex
 la contenga. Dato para la decisión: `check_epistemico.py` **detecta pero no bloquea, y no está
 enganchado a CI** — hoy depende de que alguien lo corra a mano.
 
+⚠️ **Y aquí aplica la misma regla que a §5, por simetría: que el código la ejecute no la convierte
+en canon.** Es evidencia de que se la trata como tal —fuerte, porque está en el producto que ve el
+ciudadano—, no de que alguien la decidiera con la autoridad para hacerlo. Que `plan_render.py:836`
+la atribuya a `CONSTITUCION-001` es una **atribución hecha desde el código**, exactamente el mismo
+género de vínculo no verificado que este registro documenta en BOOT. La diferencia con #5 es de
+grado, no de naturaleza: allí la evidencia es histórica, aquí es operante.
+
 ## §5 · Tuvo rango — y eso es evidencia, no vigencia
 
 Consta que lo tuvo:
