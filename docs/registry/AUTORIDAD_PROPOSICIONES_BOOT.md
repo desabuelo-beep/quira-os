@@ -94,7 +94,7 @@ Con tres estados posibles, y sólo tres:
 | 2 | SIAP → QUADRUM → QUIRA | genealogía | memoria histórica | testimonio Javo 2026-08-25 |
 | 3 | «define el OBJETO, no a QUIRA» | meta-regla ontológica | **C** | sólo en BOOT |
 | 4 | Seccionales 29-NOV-2026 | estado estratégico temporal | §AHORA | testimonio Javo 2026-08-25 |
-| 5 | «no congelar teoría antes que el grafo hable» | regla metodológica | **B — tuvo rango** | ver §5 |
+| 5 | «no congelar teoría antes que el grafo hable» | regla metodológica | **B — el caso GENUINO** | ver §5 |
 | 6 | «Inventario de Conceptos → DERIVA» | regla de procedimiento | ✅ **RESUELTO** — regla propia del artefacto | ver §6 |
 | F | F1/F2/F3 | taxonomía de fases | ✅ **RESUELTO** — ADR-041 §4 ya la declara | ver §F |
 
@@ -159,23 +159,55 @@ la atribuya a `CONSTITUCION-001` es una **atribución hecha desde el código**, 
 género de vínculo no verificado que este registro documenta en BOOT. La diferencia con #5 es de
 grado, no de naturaleza: allí la evidencia es histórica, aquí es operante.
 
-## §5 · Tuvo rango — y eso es evidencia, no vigencia
+## §5 · El caso GENUINO — test A+B+C+D, y no lo resuelve la autoridad existente
 
-Consta que lo tuvo:
+Tras tres casos consecutivos resueltos por autoridad preexistente, éste **no**. Y eso importa:
+si los cuatro se hubieran resuelto igual, habría que sospechar que se están forzando las
+equivalencias.
 
-    governance/historico/BOOT_2026-06-17.md        Regla de Oro #4
-    governance/historico/QUIRA_STATE_2026-06-03.md Regla #6
+| | pregunta | resultado |
+|---|---|---|
+| **A** | ¿existe hoy una formulación viva? | ⚠️ **sólo aplicada a un caso**, no como regla |
+| **B** | ¿tiene autoridad declarada? | ✅ `ADR-019` es ARQUITECTONICA |
+| **C** | ¿esa autoridad cubre la **regla metodológica**? | ⛔ **NO** |
+| **D** | ¿la evidencia histórica demuestra una **decisión** de rango? | ⛔ demuestra **uso**, no decisión |
 
-Dejó de figurar cuando `CLAUDE.md` reescribió las nueve. **Eso no la devuelve al canon**: no hay
-constancia de que su salida fuera una decisión, ni de que fuera un descuido. Ambas lecturas caben
-en la evidencia, y elegir entre ellas es gobernanza, no lectura.
+### Lo único vivo que existe: una aplicación, no la norma
 
-Lo que sí cambia respecto a una proposición nueva: **restaurar y crear no son la misma decisión**
-ni requieren la misma deliberación. El precedente informa; no resuelve.
+`ADR-019` §Decisión Provisional, punto 5:
 
-**ADR-019 no es su fuente: es su caso de aplicación.** El texto original decía *«ADR-019 a propósito
-en SUPPORTED»*; el ADR sigue hoy en `STRONGLY_SUPPORTED`, mantenido sin confirmar como demostración
-viva de la regla. Al comprimirse, el paréntesis pasó a leerse como atribución de autoría.
+> *«**No renombrar Dom08 ni Dom09** — los nombres canónicos permanecen **hasta que el grafo
+> hable**.»*
+
+Usa la fórmula, y **eso confirma con cita textual lo que este registro ya sostenía**: ADR-019 es el
+**caso de aplicación** de la regla, no su fuente. Aplica la regla a Dom08/Dom09 mientras el propio
+ADR sigue en `STRONGLY_SUPPORTED`; no la establece como norma general del sistema.
+
+*(Nota: la búsqueda anterior de «congelar» en ADR-019 dio 0 y de ahí se concluyó que no la
+contenía. La contenía —con otra formulación—. Otro falso vacío, el sexto de la sesión.)*
+
+### La equivalencia que NO se aceptó, y por qué se declara
+
+`governance/GOVERNANCE_CHARTER.md:148` dice: *«el Authority Graph evoluciona por necesidad real,
+**no por completitud teórica**»*. Suena a la misma regla y **no lo es**: habla del **grafo de
+autoridad documental** y de no inflarlo para subir una métrica. #5 habla de **diferir la teoría
+hasta que la evidencia estructural la sostenga**. Parientes, no equivalentes.
+
+⚠️ **Aceptarla habría producido un cuarto «resuelto por autoridad existente» falso** — y con él, una
+confirmación falsa de la hipótesis que la sesión venía verificando. La presión para encontrar el
+patrón otra vez es exactamente lo que hace peligrosa la cuarta comprobación.
+
+### Qué queda, entonces
+
+| consta | no consta |
+|---|---|
+| fue Regla de Oro #4 (`BOOT_2026-06-17`) y #6 (`QUIRA_STATE_2026-06-03`) | que su salida de las nueve fuera una **decisión** |
+| `ADR-019` la aplica hoy a un caso concreto, con autoridad | que exista una **formulación general vigente** con autoridad |
+| se sigue invocando en BOOT | que alguien le haya otorgado o retirado rango |
+
+**Es el único de los cinco casos que requiere una decisión real de gobernanza**, y sigue siendo la
+que este registro no toma: ¿se **restaura** (hay precedente) o se **eleva** a ADR propio (rango
+distinto)? Restaurar y crear no son la misma decisión.
 
 ## §6 · RESUELTO el 2026-08-26 · la regla estaba dentro del propio artefacto
 
@@ -289,7 +321,19 @@ eliminar»; el número tiene que poder reconstruirse)*
 | 1 y 2 | #1 identidad | **DEC-0012** (2026-08-26) | `CONSTITUCION-001` Preámbulo · Art. 8 · Art. 14 · Cierre | corregidos `GOVERNANCE_CHARTER §4.4` y `HOJA_DE_RUTA §0`; Constitución **sin enmendar** |
 | 6 | F1/F2/F3 | lectura de ADR-041 (2026-08-26) | **ADR-041 §4**, sellado 2026-08-07, y `ADR-043 §7` que remite a él | BOOT precisa la cita a «§4»; se retiró una **acusación falsa** del propio registro |
 
-    ABIERTAS: 4     (3 · check_epistemico como gate · 4 · #5 · 5 · #6 · 7 · genealogía y meta-regla)
+    ABIERTAS: 3   ← reconstruible, no declarado
+
+| decisión | qué agrupa | por qué es UNA |
+|---|---|---|
+| **3** | `check_epistemico` de detector a gate de CI | una sola acción técnica |
+| **4** | **#5** «no congelar teoría» — restaurar o elevar | una sola proposición |
+| **7** | **#2** genealogía SIAP→QUADRUM→QUIRA **y #3** meta-regla ontológica | ambas preguntan *dónde vive esta memoria*; se decide el criterio una vez y se aplica a las dos |
+
+⚠️ **El contador se reconstruye desde esta tabla, no se declara.** Al cerrar #6 y F1/F2/F3 se
+escribió en prosa «quedan #5, #3, #2/#7 y el gate» — cuatro elementos para un contador de tres,
+porque **#3 se enumeró dos veces**: suelto y dentro de #2/#7. El número era correcto; la
+enumeración no. *(colega, 2026-08-26: «todo número de estado debe poder reconstruirse desde sus
+elementos, no sólo coincidir con ellos»)*
 
 **Hasta que se resuelvan, `§AHORA` no debe podarse más.** Con 564 bytes de margen el espacio dejó
 de ser el problema; la integridad de autoridad no. La siguiente modificación de BOOT debería venir
