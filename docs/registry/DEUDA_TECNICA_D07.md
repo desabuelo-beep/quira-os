@@ -304,6 +304,22 @@ se convertía en un plácido «etapa fallida» y nada se ponía rojo.
 
 **500 pruebas · check_health TODO OK.**
 
+## 4-quater · CERRADO el 2026-08-26 · el guard moría al informar
+
+`check_epistemico.py` llamaba a `relative_to(_RAIZ)` para imprimir su cabecera. Si la carpeta
+auditada estaba **fuera del repositorio** —un fixture en un temporal, por ejemplo—, lanzaba
+`ValueError` **después de haber recorrido todo el corpus**: calculaba el resultado y moría al
+mostrarlo.
+
+El propio archivo lleva desde su primera versión el comentario que lo condena, escrito para otro
+fallo idéntico —la consola de Windows en cp1252—:
+
+> *«un gate que muere al informar es un gate que no informa»*
+
+**El mismo defecto, dos veces, en el mismo archivo.** Se anota como deuda del guard y no como parte
+de la decisión de gobernanza que lo convirtió en gate: son cosas distintas, y mezclarlas habría
+hecho parecer que el gate se activó con un defecto abierto.
+
 ## 5 · Lo que sigue abierto del dominio, no de la técnica
 
 - **Los 636 artefactos** — clasificados como `material_de_ingenieria` en su propio `_meta`. Se

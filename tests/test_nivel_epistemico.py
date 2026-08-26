@@ -77,6 +77,55 @@ def test_el_texto_que_lee_el_ciudadano_no_viola_el_canon():
         "\n  ".join(violaciones))
 
 
+def test_el_gate_se_comporta_como_debe_ante_casos_conocidos(tmp_path):
+    """LA PRUEBA DE COMPORTAMIENTO, independiente del corpus real.
+
+    Sin ella, `test_el_texto_que_lee_el_ciudadano_no_viola_el_canon` sólo dice
+    que **hoy** `app/viz/render` está limpio: si mañana ese código se vaciara o
+    se moviera, pasaría trivialmente sin detectar nada. Probar el corpus no es
+    probar el detector.
+
+    Los seis casos son los que se auditaron a mano el 2026-08-26 —tres
+    violaciones reales y tres falsos positivos que costaron el gate—. Estaban
+    verificados en un fixture temporal que se borró al terminar; aquí quedan
+    fijados. *(Precisión del colega: «si sólo fueron pruebas manuales, yo
+    registraría esa diferencia».)*"""
+    mod = _detector()
+    CASOS = [
+        # (texto, ¿debe bloquear?, por qué)
+        ("QUIRA es una auditoria de la gestion municipal del canton",
+         True, "predica «auditoría» de QUIRA — CONSTITUCION-001 lo excluye"),
+        ("El municipio incumplio la norma de transparencia del periodo",
+         True, "lenguaje acusatorio — Regla de Oro 2"),
+        ("El municipio debe corregir su plan operativo antes del cierre",
+         True, "el sistema ordenando al GAD — QUIRA informa, no actúa"),
+        ("cada afirmacion sin registro constituye una imposibilidad de auditoría",
+         False, "«auditoría» predica del documento, no de QUIRA"),
+        ("La rendición de cuentas es el acto anual y obligatorio de la autoridad",
+         False, "describe un deber que fija la ley; no lo impone QUIRA"),
+        ("Período Informe Fecha Lugar Asistentes Componentes",
+         False, "cabecera de tabla: no afirma nada"),
+    ]
+    # ⚠️ Para los falsos positivos se exige CERO hallazgos de cualquier nivel, no
+    # sólo cero ERROR. La primera versión miraba únicamente los ERROR y por eso no
+    # detectó el ataque que retiraba `_OBLIGACION_AJENA`: esa supresión evita una
+    # señal de nivel SEÑAL, invisible para un contador de errores. Un guard que
+    # sólo vigila lo que bloquea deja sin proteger todo lo que hace legible el
+    # informe — y un informe ilegible acaba desactivado igual que un gate que grita.
+    fallos = []
+    for texto, debe_bloquear, por_que in CASOS:
+        f = tmp_path / "caso.py"
+        f.write_text(f'X = {texto!r}\n', encoding="utf-8")
+        if debe_bloquear:
+            if not _errores(mod, tmp_path):
+                fallos.append(f"NO bloqueó y debía: «{texto[:52]}…» — {por_que}")
+        else:
+            todos = sum(len(v) for v in mod.revisar(tmp_path).values())
+            if todos:
+                fallos.append(f"marcó y NO debía: «{texto[:52]}…» — {por_que}")
+    assert not fallos, "el gate cambió de comportamiento:\n  " + "\n  ".join(fallos)
+
+
 def test_el_gate_distingue_error_de_pregunta():
     """LA PRUEBA QUE HACE HONESTO AL GATE.
 

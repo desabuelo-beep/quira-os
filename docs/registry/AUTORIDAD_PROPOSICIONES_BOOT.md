@@ -326,7 +326,14 @@ eliminar»; el número tiene que poder reconstruirse)*
 | 1 y 2 | #1 identidad | **DEC-0012** (2026-08-26) | `CONSTITUCION-001` Preámbulo · Art. 8 · Art. 14 · Cierre | corregidos `GOVERNANCE_CHARTER §4.4` y `HOJA_DE_RUTA §0`; Constitución **sin enmendar** |
 | 6 | F1/F2/F3 | lectura de ADR-041 (2026-08-26) | **ADR-041 §4**, sellado 2026-08-07, y `ADR-043 §7` que remite a él | BOOT precisa la cita a «§4»; se retiró una **acusación falsa** del propio registro |
 | 5 | #6 Inventario | lectura del artefacto (2026-08-26) | `INVENTARIO-CONCEPTOS-001` — **la regla está en su línea 33** | BOOT apunta al hogar real; corregidas 2 citas a una «Regla 6» renumerada |
-| 3 | `check_epistemico` | auditoría señal por señal (2026-08-26) | ninguna nueva — el modo `--estricto` ya existía | 4 falsos positivos suprimidos · separado ERROR/SEÑAL · gate en `tests/test_nivel_epistemico.py` |
+| 3 | `check_epistemico` | auditoría señal por señal (2026-08-26) | ninguna nueva — el modo `--estricto` ya existía | **gate SELECTIVO**: bloquea sólo ⛔ERROR; ·SEÑAL queda como revisión humana |
+
+> ⚠️ **La decisión 3 NO es «el detector pasó a ser gate».** La formulación precisa, y conviene que
+> sobreviva a esta sesión: *se convirtió un detector epistemológico en un **gate selectivo**, que
+> bloquea únicamente lo clasificado `ERROR` y conserva `SEÑAL` como materia de revisión humana.*
+> Sin ese matiz, dentro de unos meses alguien leerá «gate» y supondrá que toda señal epistémica
+> detiene el trabajo. El motivo de esa arquitectura está medido: **el primer conjunto de señales
+> tenía 100 % de falsos positivos.** *(precisión del colega, 2026-08-26)*
 
     ABIERTAS: 2   ← reconstruible, no declarado
 
