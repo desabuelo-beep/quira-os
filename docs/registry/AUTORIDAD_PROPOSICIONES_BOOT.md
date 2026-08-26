@@ -11,6 +11,38 @@ fecha: 2026-08-25
 > **Este registro NO decide nada.** Reúne la evidencia para que la decisión de gobernanza tenga
 > sobre qué decidirse. Ninguna de sus filas autoriza a mover una línea de `governance/BOOT.md`.
 
+## La regla que gobierna la lectura de este registro
+
+> **Que exista evidencia de que una proposición tuvo rango NO significa que vuelva a estar
+> vigente.** *(colega, 2026-08-25)*
+
+Es la misma distinción que el dominio le exige al sujeto observado, aplicada a nosotros: **la
+evidencia informa la decisión; no la sustituye.** Un registro que la olvidara reintroduciría por la
+puerta de atrás justo lo que existe para impedir — canon aparecido sin que nadie lo decidiera.
+
+De ahí tres corolarios que este registro **no** puede saltarse:
+
+| se ha comprobado que… | …y aun así |
+|---|---|
+| #5 fue Regla de Oro #4 | eso es **genealogía de autoridad**, no una decisión de restauración |
+| ADR-041/043 tienen autoridad sobre los productos | **no la transfieren** a la agrupación F1/F2/F3 |
+| `INVENTARIO-CONCEPTOS-001` está vigente | eso **no hace vigente** la regla «consultarlo antes de definir» |
+
+## Dónde encaja este registro
+
+    BOOT           «esto es lo que el operador debe saber»
+    ESTE REGISTRO  «esto creemos que BOOT dice · qué evidencia lo respalda · quién debe decidirlo»
+    ADR / CONSTITUCIÓN  «esto ya fue decidido»
+
+El ciclo que esa separación rompe, y que esta sesión persiguió entera:
+
+    BOOT → atribución → falsa autoridad → compresión → canon aparente
+         → construcción sobre una premisa que nadie decidió
+
+El flujo correcto queda:
+
+    fuente primaria → proposición → registro de autoridad → decisión de Javo → canon → BOOT lo refleja
+
 *(Sin `constitution_articles`: la propia Constitución declara dos numeraciones incompatibles
 —Art. 0-30 y Art. 1-21, siendo la B la oficial y la otra derogada— y no verifiqué cuál cubre este
 registro. No se citan artículos que no se comprobaron.)*
@@ -47,7 +79,7 @@ Con tres estados posibles, y sólo tres:
 | 2 | SIAP → QUADRUM → QUIRA | genealogía | memoria histórica | testimonio Javo 2026-08-25 |
 | 3 | «define el OBJETO, no a QUIRA» | meta-regla ontológica | **C** | sólo en BOOT |
 | 4 | Seccionales 29-NOV-2026 | estado estratégico temporal | §AHORA | testimonio Javo 2026-08-25 |
-| 5 | «no congelar teoría antes que el grafo hable» | regla metodológica | **B — degradada** | ver §5 |
+| 5 | «no congelar teoría antes que el grafo hable» | regla metodológica | **B — tuvo rango** | ver §5 |
 | 6 | «Inventario de Conceptos → DERIVA» | regla de procedimiento | **B** | ver §6 |
 | F | F1/F2/F3 | taxonomía de fases | **C** | ver §F |
 
@@ -78,15 +110,19 @@ El código **ya la trata como norma constitucional**; lo que falta es que el tex
 la contenga. Dato para la decisión: `check_epistemico.py` **detecta pero no bloquea, y no está
 enganchado a CI** — hoy depende de que alguien lo corra a mano.
 
-## §5 · No es huérfana: es canon perdido en una reescritura
+## §5 · Tuvo rango — y eso es evidencia, no vigencia
 
-Tuvo rango, y consta:
+Consta que lo tuvo:
 
     governance/historico/BOOT_2026-06-17.md        Regla de Oro #4
     governance/historico/QUIRA_STATE_2026-06-03.md Regla #6
 
-Desapareció cuando `CLAUDE.md` reescribió las nueve. **Restaurar canon perdido y crear canon nuevo
-no son la misma decisión** ni requieren la misma autoridad.
+Dejó de figurar cuando `CLAUDE.md` reescribió las nueve. **Eso no la devuelve al canon**: no hay
+constancia de que su salida fuera una decisión, ni de que fuera un descuido. Ambas lecturas caben
+en la evidencia, y elegir entre ellas es gobernanza, no lectura.
+
+Lo que sí cambia respecto a una proposición nueva: **restaurar y crear no son la misma decisión**
+ni requieren la misma deliberación. El precedente informa; no resuelve.
 
 **ADR-019 no es su fuente: es su caso de aplicación.** El texto original decía *«ADR-019 a propósito
 en SUPPORTED»*; el ADR sigue hoy en `STRONGLY_SUPPORTED`, mantenido sin confirmar como demostración
@@ -140,7 +176,24 @@ el testimonio del propio fundador.
 7. ¿Dónde vive la genealogía (#2) y la meta-regla ontológica (#3)?
 
 **Hasta que se resuelvan, `§AHORA` no debe podarse más.** Con 564 bytes de margen el espacio dejó
-de ser el problema; la integridad de autoridad no.
+de ser el problema; la integridad de autoridad no. La siguiente modificación de BOOT debería venir
+**después** de una decisión de gobernanza, nunca antes.
+
+## Fuera de alcance — un frente distinto, anotado para que no contamine éste
+
+Al escribir este registro apareció que la Constitución Institucional declara **dos numeraciones
+incompatibles** (Art. 0-30 y Art. 1-21, oficial la B, derogada la otra). Hay **105 artefactos** con
+`constitution_articles` en su cabecera.
+
+    105 artefactos → constitution_articles → ¿numeración A o B?
+                  → ¿artículo vigente? → ¿referencia realmente aplicable?
+
+Podría ser una **clase completa de falsos vínculos de autoridad** — la misma familia de todo lo
+hallado aquí: referencias que parecen válidas porque el identificador existe. **No se ha medido.**
+
+⛔ No pertenece a este registro y no debe mezclarse con las siete decisiones de arriba: aquéllas son
+proposiciones individuales; esto sería una auditoría transversal del árbol. Se anota para que no se
+pierda, no para resolverse aquí.
 
 ---
 *Registro de autoridad · Dylus Lab © 2026 · reúne evidencia, no decide canon.*
