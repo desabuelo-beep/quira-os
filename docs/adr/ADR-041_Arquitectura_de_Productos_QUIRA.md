@@ -270,6 +270,13 @@ sistema que no se puede encender.
 > **decisión registrada**, no un metadato desactualizado que se desmiente a sí mismo. La frase
 > anterior se cita aquí para que conste qué decía.
 >
-> **Por qué no era inocuo:** quien leyera el pie concluiría que ADR-041 no rige, y con él dejaría de
-> regir la **taxonomía de fases del §4** — que es la autoridad de F1/F2/F3 y a la que `ADR-043 §7`
-> remite expresamente. Un metadato falso sobre el estado puede derogar de hecho un canon vigente.
+> **Por qué no era inocuo** — separando lo probado de lo inferido, que no es lo mismo:
+>
+> · **Hecho comprobado:** el pie contradecía al frontmatter, y dos lectores podían llegar a
+>   conclusiones opuestas sobre la vigencia de este ADR según qué parte leyeran.
+> · **Inferencia (no regla):** un lector que se guiara por el pie dejaría de tener por vigente la
+>   **taxonomía de fases del §4** — la autoridad de F1/F2/F3, a la que `ADR-043 §7` remite.
+>
+> ⚠️ Lo segundo es una **conclusión operativa de quien corrige, no una norma del sistema**: nadie ha
+> decidido que un metadato de estado pueda derogar canon, y este ADR no lo establece. Se anota como
+> riesgo observado (colega, 2026-08-26).

@@ -31,7 +31,13 @@ Eso indica que **el conocimiento fundacional está disperso**, no que faltara. E
 hace visible la genealogía completa para que no se repita.
 
 > **Regla:** antes de "crear" un concepto, **se consulta este inventario**. Si ya existe, se
-> **declara y opera**, no se reinventa (Regla de Oro 6: *deriva, no redefinas*).
+> **declara y opera**, no se reinventa — *deriva, no redefinas*.
+>
+> 📌 *(Corrección 2026-08-26: aquí se citaba «Regla de Oro 6», y la nº 6 es hoy «Repo
+> PRIVADO»; la lista se renumeró y la cita quedó apuntando a otra regla. **Esta regla no
+> necesita prestada la autoridad de ninguna otra: es propia de este inventario**, que es
+> `INVENTARIO-CONCEPTOS-001`, vigente. Emparentada con la Regla de Oro **7** —anti-inflación
+> del canon—, que sí trata de conceptos que sólo renombran.)*
 
 ## Mapa de Gobernanza Metodológica
 

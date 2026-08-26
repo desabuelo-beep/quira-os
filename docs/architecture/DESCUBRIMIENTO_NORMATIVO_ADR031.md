@@ -109,7 +109,7 @@ candidato · Destino = backlog, nunca auto-aprobación.
 > inventar un motor: es **instrumentarlo**.
 
 **Por eso NO se llama MDN, MDCN ni SDNA: es el Motor de Descubrimiento** (ADR-031 §3), operando el
-concepto **C10** (Inventario 7) — *deriva, no redefinas* (Regla 6).
+concepto **C10** (Inventario 7) — *deriva, no redefinas* (regla propia de `INVENTARIO-CONCEPTOS-001`; se citaba «Regla 6», hoy renumerada — corregido 2026-08-26).
 
 ## 2 · Qué hace, en una frase
 

@@ -57,8 +57,8 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 
 GAD = sujeto observado, NO cliente. 4 capas: A Núcleo · B Operaciones · C Productos (§LA TESIS · 1 motor) · D Portal `quiraintelligence.com` (radar 222 GAD).
 
 ## REGLAS DE ORO → **las 9 viven en `CLAUDE.md`** (se lee siempre)
-Las 2 más olvidadas: **antes de definir, consultar el Inventario de Conceptos** (¿existe? → DERIVA,
-no redefinas · cierre `/graphify . --update`) · **no congelar teoría antes que el grafo hable** (ADR-019).
+⚠️ Estas 2 **NO están entre las 9**: **antes de definir** → `marco_teorico/INVENTARIO_CONCEPTOS_FUNDACIONALES.md`
+(**deriva, no redefinas** · cierre `/graphify . --update`) · «no congelar teoría antes que el grafo hable» (⏳ sin hogar).
 
 ## LAZY LOAD — lee SOLO lo que aplica a tu tarea
 | Si vas a... | Lee primero |

@@ -25,14 +25,23 @@ De ahí tres corolarios que este registro **no** puede saltarse:
 | se ha comprobado que… | …y aun así |
 |---|---|
 | #5 fue Regla de Oro #4 | eso es **genealogía de autoridad**, no una decisión de restauración |
-| `INVENTARIO-CONCEPTOS-001` está vigente | eso **no hace vigente** la regla «consultarlo antes de definir» |
 | el código ejecuta #1 en el producto | eso demuestra **tratamiento**, no decisión originaria |
 
-> ⛔ **Aquí figuraba un tercer corolario que resultó FALSO**, y se retira dejando constancia:
-> *«ADR-041/043 tienen autoridad sobre los productos → no la transfieren a la agrupación F1/F2/F3»*.
-> El principio es correcto, **pero el ejemplo no**: `ADR-041 §4` **sí declara** la agrupación en
-> fases. Ver §F. Ilustrar una regla verdadera con un caso falso la vuelve inservible — y peor, la
-> hace parecer demostrada.
+> ⛔ **DOS DE LOS TRES COROLARIOS ORIGINALES ERAN FALSOS.** Se retiran con constancia, porque el
+> modo en que fallaron enseña más que el principio que ilustraban:
+>
+> | corolario retirado | por qué era falso |
+> |---|---|
+> | *«ADR-041/043 no transfieren autoridad a F1/F2/F3»* | `ADR-041 §4` **sí declara** la agrupación en fases (§F) |
+> | *«que el Inventario esté vigente no hace vigente la regla»* | la regla **está escrita dentro del propio Inventario**, línea 33 (§6) |
+>
+> El principio general de ambos era correcto —autoridad sobre X no se transfiere a Y—, **pero
+> ninguno de los dos casos lo demostraba**. Y los dos fallaron por la misma causa: se afirmó qué
+> contenía un artefacto **sin haberlo leído entero**.
+>
+> Ilustrar una regla verdadera con un caso falso no sólo la deja sin apoyo: **la hace parecer
+> demostrada**. Es una forma más de fabricar autoridad, y la cometió el registro escrito para
+> impedirlo.
 
 ## Dónde encaja este registro
 
@@ -86,7 +95,7 @@ Con tres estados posibles, y sólo tres:
 | 3 | «define el OBJETO, no a QUIRA» | meta-regla ontológica | **C** | sólo en BOOT |
 | 4 | Seccionales 29-NOV-2026 | estado estratégico temporal | §AHORA | testimonio Javo 2026-08-25 |
 | 5 | «no congelar teoría antes que el grafo hable» | regla metodológica | **B — tuvo rango** | ver §5 |
-| 6 | «Inventario de Conceptos → DERIVA» | regla de procedimiento | **B** | ver §6 |
+| 6 | «Inventario de Conceptos → DERIVA» | regla de procedimiento | ✅ **RESUELTO** — regla propia del artefacto | ver §6 |
 | F | F1/F2/F3 | taxonomía de fases | ✅ **RESUELTO** — ADR-041 §4 ya la declara | ver §F |
 
 ## §1 · RESUELTO el 2026-08-26 · DEC-0012
@@ -168,16 +177,41 @@ ni requieren la misma deliberación. El precedente informa; no resuelve.
 en SUPPORTED»*; el ADR sigue hoy en `STRONGLY_SUPPORTED`, mantenido sin confirmar como demostración
 viva de la regla. Al comprimirse, el paréntesis pasó a leerse como atribución de autoría.
 
-## §6 · Artefacto autorizado ≠ regla que ordena usarlo
+## §6 · RESUELTO el 2026-08-26 · la regla estaba dentro del propio artefacto
 
-`marco_teorico/INVENTARIO_CONCEPTOS_FUNDACIONALES.md` — `INVENTARIO-CONCEPTOS-001`, `status:
-vigente`, autoridad `MARCO-TEORICO-001`, 13.651 b. **BOOT lo referencia 0 veces.**
+Test A+B+C del colega, y los tres dan positivo:
 
-La regla «consultarlo antes de definir» no está ni en él ni en `CLAUDE.md`. Son **dos objetos
-normativos distintos**: el artefacto tiene autoridad; la regla que obliga a consultarlo, no.
+| | | |
+|---|---|---|
+| **A** | ¿existe el artefacto? | ✅ `marco_teorico/INVENTARIO_CONCEPTOS_FUNDACIONALES.md` |
+| **B** | ¿tiene autoridad real? | ✅ `INVENTARIO-CONCEPTOS-001` · `status: vigente` · ← `MARCO-TEORICO-001` |
+| **C** | ¿establece la regla de consultarlo? | ✅ **sí, en su línea 33** |
 
-Restricción medida para esa decisión: **`CLAUDE.md` está en 3944 / 4000 bytes.** La vía «meterla
-entre las Reglas de Oro» está cerrada hoy sin podar `CLAUDE.md` primero.
+> *«**Regla:** antes de "crear" un concepto, **se consulta este inventario**. Si ya existe, se
+> **declara y opera**, no se reinventa.»*
+
+**No hacía falta convertirla en Regla de Oro ni elevarla a ADR.** La regla es **propia del artefacto
+que la ejecuta**, y ese artefacto tiene autoridad vigente. Lo único que fallaba era el puntero:
+BOOT la presentaba como una de «las 9 que viven en `CLAUDE.md`», y no está entre ellas.
+
+### El defecto que apareció al verificar: citas por número a una lista renumerada
+
+La regla se citaba a sí misma como *«Regla de Oro 6: deriva, no redefinas»*. Pero:
+
+    Regla de Oro 6 HOY  =  «Repo PRIVADO. Credenciales solo en secrets.toml»
+
+Dos artefactos vigentes —`INVENTARIO_CONCEPTOS_FUNDACIONALES` y `DESCUBRIMIENTO_NORMATIVO_ADR031`—
+citaban ese número. La lista se renumeró y las citas quedaron apuntando a otra regla. Corregidas
+para que apunten a la autoridad real, dejando constancia de qué decían.
+
+⚠️ **Tercer caso del mismo patrón**, y ya no parece casualidad:
+
+    Constitución       dos numeraciones (Art. 0-30 · Art. 1-21) → `constitution_articles` dudosos
+    ADR-041            frontmatter «APROBADO» · pie «sin sellar»
+    Reglas de Oro      citas por número a una lista que se renumeró
+
+**Las referencias por número sobreviven a los cambios de la lista que numeran.** Es la misma
+familia que el resto de la sesión: el vínculo *parece* válido porque el identificador existe.
 
 ## §F · RESUELTO el 2026-08-26 · ~~«aquí BOOT fabrica canon»~~ — **la acusación era mía y era falsa**
 
@@ -237,7 +271,9 @@ el testimonio del propio fundador.
    (Preámbulo · Art. 8 · Art. 14 · Cierre). La Constitución no se enmendó.
 3. ¿`check_epistemico` pasa de detector a gate de CI? — **sigue abierta**
 4. ¿#5 se **restaura** como Regla de Oro, o se eleva a ADR propio?
-5. ¿#6 se convierte en regla, o basta con que BOOT apunte al artefacto vigente?
+5. ~~¿#6 se convierte en regla, o basta con que BOOT apunte al artefacto vigente?~~
+   ✅ **Ninguna de las dos: la regla YA está escrita dentro del artefacto** (`INVENTARIO_CONCEPTOS_
+   FUNDACIONALES.md:33`). No hizo falta crear Regla de Oro ni ADR. BOOT ahora apunta a su hogar.
 6. ~~¿La taxonomía F1/F2/F3 se lleva a ADR-041/043, o BOOT deja de atribuírsela?~~
    ✅ **Ninguna de las dos: ADR-041 §4 ya la declara** y ADR-043 §7 remite a él. La atribución de
    BOOT era correcta; el error era mío. Sólo se precisó la cita a «ADR-041 §4».
