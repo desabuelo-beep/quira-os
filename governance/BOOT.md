@@ -51,6 +51,7 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 
 ⛔ **EL NOMBRE NO ES EVIDENCIA** — 3× GAD · **1× nosotros**: 85 ensayos.
 🧷 **PROCEDENCIA nace en el GENERADOR**, sin reloj · ⛔ estamparla luego re-ejecuta la cadena.
 🚧 **TEST ≠ OPERACIÓN**: `conftest` corta subprocess/red · efecto real se declara (2).
+🗳️ **SECCIONALES 29-NOV-2026** (alcaldes·prefectos·juntas): ventana para que la gente verifique su alcaldía · ⛔ **la fecha NO manda**: primero impoluto.
 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 · detalle en el ADR)
 GAD = sujeto observado, NO cliente. 4 capas: A Núcleo · B Operaciones · C Productos (§LA TESIS · 1 motor) · D Portal `quiraintelligence.com` (radar 222 GAD).
