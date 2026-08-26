@@ -68,6 +68,7 @@ no redefinas · cierre `/graphify . --update`) · **no congelar teoría antes qu
 | Leer métricas del Gold Master | `app/connectors/gold_master.py` → NO recalcular |
 | Construcción/UI/dom | `docs/REFERENCE.md` |
 | SIL · capacidad informacional | `docs/adr/ADR-048` (SNPD-056-2015 Arts.2·6·8) |
+| Autoridad de una proposición de BOOT | `docs/registry/AUTORIDAD_PROPOSICIONES_BOOT.md` (REGISTRO · decisiones abiertas) |
 
 ## INFRA (credenciales en `.streamlit/secrets.toml` local, NUNCA al repo)
 Neo4j AuraDB `8dc8519a` (user=DB=instance ID) · Supabase `normativa_corpus` · repo PRIVADO.
