@@ -25,8 +25,14 @@ De ahí tres corolarios que este registro **no** puede saltarse:
 | se ha comprobado que… | …y aun así |
 |---|---|
 | #5 fue Regla de Oro #4 | eso es **genealogía de autoridad**, no una decisión de restauración |
-| ADR-041/043 tienen autoridad sobre los productos | **no la transfieren** a la agrupación F1/F2/F3 |
 | `INVENTARIO-CONCEPTOS-001` está vigente | eso **no hace vigente** la regla «consultarlo antes de definir» |
+| el código ejecuta #1 en el producto | eso demuestra **tratamiento**, no decisión originaria |
+
+> ⛔ **Aquí figuraba un tercer corolario que resultó FALSO**, y se retira dejando constancia:
+> *«ADR-041/043 tienen autoridad sobre los productos → no la transfieren a la agrupación F1/F2/F3»*.
+> El principio es correcto, **pero el ejemplo no**: `ADR-041 §4` **sí declara** la agrupación en
+> fases. Ver §F. Ilustrar una regla verdadera con un caso falso la vuelve inservible — y peor, la
+> hace parecer demostrada.
 
 ## Dónde encaja este registro
 
@@ -81,7 +87,7 @@ Con tres estados posibles, y sólo tres:
 | 4 | Seccionales 29-NOV-2026 | estado estratégico temporal | §AHORA | testimonio Javo 2026-08-25 |
 | 5 | «no congelar teoría antes que el grafo hable» | regla metodológica | **B — tuvo rango** | ver §5 |
 | 6 | «Inventario de Conceptos → DERIVA» | regla de procedimiento | **B** | ver §6 |
-| F | F1/F2/F3 | taxonomía de fases | **C** | ver §F |
+| F | F1/F2/F3 | taxonomía de fases | ✅ **RESUELTO** — ADR-041 §4 ya la declara | ver §F |
 
 ## §1 · RESUELTO el 2026-08-26 · DEC-0012
 
@@ -173,18 +179,43 @@ normativos distintos**: el artefacto tiene autoridad; la regla que obliga a cons
 Restricción medida para esa decisión: **`CLAUDE.md` está en 3944 / 4000 bytes.** La vía «meterla
 entre las Reglas de Oro» está cerrada hoy sin podar `CLAUDE.md` primero.
 
-## §F · Aquí BOOT fabrica canon
+## §F · RESUELTO el 2026-08-26 · ~~«aquí BOOT fabrica canon»~~ — **la acusación era mía y era falsa**
 
-BOOT dice *«**ADR-041 (sellado)**: F1 = Observatorio · Ciudadana · F2 = … · F3 = Economic»*.
+> ⛔ **ESTE APARTADO CONTENÍA UNA ACUSACIÓN FALSA CONTRA BOOT. Se conserva corregido, no borrado.**
 
-    docs/adr/ADR-041   APROBADO, sellado por Javo, parent CONSTITUCION-001  →  F1/F2/F3: 0
-    docs/adr/ADR-043   APROBADO, sellado por Javo, parent ADR-041           →  F1/F2/F3: 0
+Decía que BOOT «presta el sello de un ADR que no la contiene». **Es al revés: BOOT cita
+correctamente.** Buscando `F1`, `F2`, `F3` como cadenas no las encontré en ADR-041, y de ese vacío
+concluí fabricación de canon. Al **leer el ADR completo**, la taxonomía está en su **§4**, con otra
+nomenclatura:
 
-Los **productos** tienen canon sellado. Su **agrupación en tres fases** sólo existe en
-`docs/QUIRA_DOCTRINE_v1.md`, que **no tiene frontmatter de autoridad**. BOOT le presta el sello de
-un ADR que no la contiene.
+| BOOT abrevia | ADR-041 §4 declara |
+|---|---|
+| F1 = Observatorio · Ciudadana (ENTRADAS de evidencia) | **Fase 1** = Observatorio · QUIRA Ciudadana — «construir la evidencia» |
+| F2 = Institucional · Cooperación · Impact | **Fase 2** = Cooperación / Impact · Institucional |
+| F3 = Economic | **Fase 3** = QUIRA Economic |
+| Operaciones NO es producto | «Operaciones desaparece de la lista de productos. Nunca lo fue» |
 
-⛔ Que los productos estén aprobados **no arrastra** la taxonomía de fases.
+Y **ADR-043 §7 lo ratifica sin ambigüedad**: *«El orden de fases lo fija ADR-041 §4.»* La autoridad
+existe, está sellada (Javo · 2026-08-07) y deriva de `CONSTITUCION-001`.
+
+**No había desalineación siquiera: sólo una abreviatura.** «F1» por «Fase 1».
+
+### Por qué este error importa más que los otros
+
+Es la **quinta vez** en la sesión que se confunde coincidencia textual con presencia semántica —y
+la primera en que el resultado fue **acusar a un artefacto de fabricar autoridad**. El registro
+escrito para impedir que se invente canon estuvo a punto de provocar que se «corrigiera» una cita
+que era correcta.
+
+    buscar la etiqueta   → no aparece → concluir que no existe   ⛔
+    leer la proposición  → aparece con otro nombre → verificar   ✅
+
+Es exactamente la regla que el colega formuló antes de esta ronda, y que evitó el daño:
+
+> *«No busques "F1/F2/F3"; busca la proposición semántica que F1/F2/F3 pretende representar.»*
+
+**Única mejora pendiente, y es menor:** BOOT cita «ADR-041 (sellado)» sin apuntar al §4. Añadir la
+sección haría la cita verificable en un paso en vez de dos. No es un defecto de autoridad.
 
 ## Lo que esta ronda enseñó, y conviene no repetir
 
@@ -207,8 +238,22 @@ el testimonio del propio fundador.
 3. ¿`check_epistemico` pasa de detector a gate de CI? — **sigue abierta**
 4. ¿#5 se **restaura** como Regla de Oro, o se eleva a ADR propio?
 5. ¿#6 se convierte en regla, o basta con que BOOT apunte al artefacto vigente?
-6. ¿La taxonomía F1/F2/F3 se lleva a ADR-041/043, o BOOT deja de atribuírsela?
+6. ~~¿La taxonomía F1/F2/F3 se lleva a ADR-041/043, o BOOT deja de atribuírsela?~~
+   ✅ **Ninguna de las dos: ADR-041 §4 ya la declara** y ADR-043 §7 remite a él. La atribución de
+   BOOT era correcta; el error era mío. Sólo se precisó la cita a «ADR-041 §4».
 7. ¿Dónde vive la genealogía (#2) y la meta-regla ontológica (#3)?
+
+### Trazabilidad de los cierres — el contador no basta
+
+*(colega: «un estado agregado sin trazabilidad vuelve a introducir el problema que intentamos
+eliminar»; el número tiene que poder reconstruirse)*
+
+| decisión | caso | resuelta por | qué autoridad la cubría | acción derivada |
+|---|---|---|---|---|
+| 1 y 2 | #1 identidad | **DEC-0012** (2026-08-26) | `CONSTITUCION-001` Preámbulo · Art. 8 · Art. 14 · Cierre | corregidos `GOVERNANCE_CHARTER §4.4` y `HOJA_DE_RUTA §0`; Constitución **sin enmendar** |
+| 6 | F1/F2/F3 | lectura de ADR-041 (2026-08-26) | **ADR-041 §4**, sellado 2026-08-07, y `ADR-043 §7` que remite a él | BOOT precisa la cita a «§4»; se retiró una **acusación falsa** del propio registro |
+
+    ABIERTAS: 4     (3 · check_epistemico como gate · 4 · #5 · 5 · #6 · 7 · genealogía y meta-regla)
 
 **Hasta que se resuelvan, `§AHORA` no debe podarse más.** Con 564 bytes de margen el espacio dejó
 de ser el problema; la integridad de autoridad no. La siguiente modificación de BOOT debería venir

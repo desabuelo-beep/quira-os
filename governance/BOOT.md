@@ -18,7 +18,7 @@ authority:
 ## 🎯 LA TESIS — no olvidar
 **QUIRA NO vende software a municipios. El GAD es SUJETO OBSERVADO, no cliente.**
 El **Observatorio de Integridad Territorial** es UN PRODUCTO, no la identidad: lleva QUIRA a los 222 GAD. Montecristi = el MOLDE.
-**ADR-041 (sellado)**: F1 = **Observatorio · Ciudadana** (ENTRADAS de evidencia) · F2 = Institucional ·
+**ADR-041 §4 (sellado)**: F1 = **Observatorio · Ciudadana** (ENTRADAS de evidencia) · F2 = Institucional ·
 Cooperación · Impact · F3 = Economic. **Operaciones NO es producto.** Licencia de gestión al GAD SÍ
 (§4-ter): no es cliente de la OBSERVACIÓN. ⛔ NO se presenta hasta operar varios GAD.
 

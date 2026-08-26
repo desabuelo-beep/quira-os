@@ -257,4 +257,19 @@ Confundir ambas cosas llevaría a no construir nada por falta de fondos, o a con
 sistema que no se puede encender.
 
 ---
-*ADR-041 · Dylus Lab © 2026 · decisión de Javo · deriva de CONSTITUCION-001 · propuesta, sin sellar.*
+*ADR-041 · Dylus Lab © 2026 · decisión de Javo · deriva de CONSTITUCION-001 ·*
+***APROBADO — sellado por Javo (2026-08-07).***
+
+> 📌 **Corrección de estado (2026-08-26).** Este pie decía *«propuesta, sin sellar»* y
+> **contradecía al frontmatter del propio documento**, que declara `APROBADO — sellado por Javo
+> (2026-08-07)`. Quedó del borrador y no se actualizó al sellarse; el §7 confirma el sello, con sus
+> consecuencias marcadas «✅ propagado (2026-08-07)».
+>
+> **Se corrige el estado, no el contenido.** Ninguna decisión, formulación ni tabla de este ADR se
+> ha tocado — la regla de ADR-043 §6-bis (*«un ADR sellado no se edita, se supersede»*) protege la
+> **decisión registrada**, no un metadato desactualizado que se desmiente a sí mismo. La frase
+> anterior se cita aquí para que conste qué decía.
+>
+> **Por qué no era inocuo:** quien leyera el pie concluiría que ADR-041 no rige, y con él dejaría de
+> regir la **taxonomía de fases del §4** — que es la autoridad de F1/F2/F3 y a la que `ADR-043 §7`
+> remite expresamente. Un metadato falso sobre el estado puede derogar de hecho un canon vigente.
