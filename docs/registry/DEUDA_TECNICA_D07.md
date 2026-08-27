@@ -16,7 +16,7 @@ fecha: 2026-08-19
 > de memoria. Cada entrada trae **su medición, su prueba y su condición de cierre** — ninguna es
 > una impresión.
 
-## 1 · El vínculo prueba↔verificador · `declarado ≠ existente ≠ ejecutado ≠ exitoso`
+## 1 · CERRADA · el vínculo prueba↔verificador
 
 **Qué falta.** La cadena de procedencia comprueba que la prueba citada **exista**; no que
 **corresponda** al verificador que dice respaldar. Hoy cualquier prueba real acredita cualquier
@@ -38,6 +38,39 @@ autoridad para señalarlo afuera.
 
 **Condición de cierre.** Cuando el vínculo sea comprobable, se invierte la aserción de esa prueba:
 pasa de registrar la ausencia de la regla a defenderla.
+
+### ✅ CERRADA el 2026-08-26 — y el hueco no era teórico
+
+    declarado → EXISTENTE → CORRESPONDE → ejecutado → exitoso
+                └─ antes ─┘  └─ ahora ─┘   └── sigue faltando ──┘
+
+**El caso real, en producción.** `materializacion.py:220` declaraba que el verificador
+`materializacion.evaluar` estaba respaldado por `test_la_ausencia_de_artefacto_no_es_incumplimiento`.
+Esa prueba es correcta y valiosa —comprueba que los **nombres** de los estados no califiquen
+jurídicamente— pero **nunca llama a `evaluar()`**. Prueba real, verificador real, ninguna relación
+entre ambos. Y al buscar una que sí lo ejercitara: **no existía ninguna.**
+
+**El mecanismo.** `apropiacion.respalda()` deriva la correspondencia del **AST de la función de
+prueba**: si no nombra al verificador, no puede estar respaldándolo. Se analiza la función, no el
+archivo — uno con veinte pruebas mencionaría el verificador aunque lo ejercitara otra distinta.
+*La mención no es el uso*, séptima vez en la sesión.
+
+**Lo que se arregló, no sólo se detectó.** Se escribió
+`test_evaluar_no_afirma_incumplimiento_cuando_no_halla_evidencia`, que ejercita `evaluar()` sobre el
+caso que más importa —sin evidencia hallada, donde el instrumento podría deslizarse de «no lo hallé»
+a «no existe»— y se corrigió la referencia.
+
+**Y salieron dos fixtures con el par CRUZADO** que llevaban meses pasando porque sólo se comprobaba
+la existencia: el `COMPLETA` de las adversariales («componentes.verificar_cobertura» respaldado por
+la prueba de `_periodos_del_anio`) y otro en `test_d07_autonomia`. Ambos corregidos a pares reales.
+
+**Verificado en los tres pares de producción**: 2 estaban bien vinculados, 1 no. Y la degradación
+funciona en ambos sentidos —el par correcto sostiene `hecho_verificable`, el cruzado degrada a
+`hallazgo_de_verificabilidad`—.
+
+⚠️ **Se cierra el escalón 3 de 4, y se dice.** Que la prueba nombre al verificador no demuestra que
+lo ejecute con casos significativos ni que su aserción dependa del resultado. Lo que falta queda
+declarado, no supuesto.
 
 ## 2 · Artefactos que no declaran su sujeto
 

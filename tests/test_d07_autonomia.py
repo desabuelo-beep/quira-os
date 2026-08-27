@@ -955,13 +955,24 @@ def test_una_prueba_inexistente_no_acredita_la_interpretacion():
     mismo defecto ya cerrado en la escalera de apropiación, que aquí habría
     vuelto a entrar por otra puerta."""
     from app.agents import procedencia as P
+    # 2026-08-26 · el verificador decía «componentes» y la prueba era la de
+    # `_periodos_del_anio`: otro par CRUZADO que pasaba porque sólo se comprobaba
+    # la existencia. Al cerrar la deuda #1 dejó de pasar, que es exactamente lo
+    # que debía ocurrir. Ahora el par corresponde.
     base = dict(fuente="DPE", captura="x", estado_adquisicion="descargado",
-                evidencia="sha256…", verificador="componentes", sujeto="130801")
+                evidencia="sha256…", verificador="orquestador._periodos_del_anio",
+                sujeto="130801")
     falsa = P.Procedencia(**base, prueba_del_verificador="test_que_no_existe")
     assert P.sostener("x", falsa).peso == P.HALLAZGO_DE_VERIFICABILIDAD
     real = P.Procedencia(**base,
                          prueba_del_verificador="test_cadencia_trimestral_no_exige_doce_periodos")
     assert P.sostener("x", real).peso == P.HECHO_VERIFICABLE
+
+    # Y el caso nuevo: prueba que EXISTE pero no respalda a este verificador.
+    cruzada = P.Procedencia(**{**base, "verificador": "materializacion.evaluar"},
+                            prueba_del_verificador="test_cadencia_trimestral_no_exige_doce_periodos")
+    assert P.sostener("x", cruzada).peso == P.HALLAZGO_DE_VERIFICABILIDAD, (
+        "una prueba real que no ejercita ESTE verificador no puede acreditarlo")
 
 
 def test_los_hallazgos_de_la_corrida_llevan_su_cadena():

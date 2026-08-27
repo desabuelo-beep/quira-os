@@ -218,8 +218,14 @@ def _procedencia_de(o: Obligacion, artefactos: list[dict]) -> P.Procedencia:
                             "descarga_incompleta"),
         evidencia=con_sha[0]["sha256"][:16] if con_sha else "",
         verificador="materializacion.evaluar" if con_sha else "",
+        # 2026-08-26 · deuda #1. Apuntaba a `test_la_ausencia_de_artefacto_no_es_
+        # incumplimiento`, que comprueba los NOMBRES de los estados y nunca llama a
+        # `evaluar()`. Prueba real, verificador real, sin relación entre ambos —y
+        # ninguna otra prueba lo ejercitaba. `respalda()` ahora exige que la prueba
+        # nombre al verificador, así que esta referencia degradaba la afirmación.
         prueba_del_verificador=(
-            "test_la_ausencia_de_artefacto_no_es_incumplimiento" if con_sha else ""),
+            "test_evaluar_no_afirma_incumplimiento_cuando_no_halla_evidencia"
+            if con_sha else ""),
         sujeto=f"{S.POR_DEFECTO} {S.nombre_corto()}",
     )
 

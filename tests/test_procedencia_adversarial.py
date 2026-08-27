@@ -37,6 +37,11 @@ if str(RAIZ) not in sys.path:
 from app.agents import apropiacion as A                  # noqa: E402
 from app.agents import procedencia as P                  # noqa: E402
 
+# El par verificador↔prueba del fixture estaba CRUZADO —«componentes.verificar_
+# cobertura» respaldado por la prueba de `_periodos_del_anio`— y nadie lo notaba
+# porque la cadena sólo comprobaba que la prueba EXISTIERA. Al cerrar la deuda #1
+# (2026-08-26) el propio fixture pasó a degradar. Ahora es un par real y vinculado.
+_VERIFICADOR_REAL = "orquestador._periodos_del_anio"
 _PRUEBA_REAL = "test_cadencia_trimestral_no_exige_doce_periodos"
 
 COMPLETA = dict(
@@ -44,7 +49,7 @@ COMPLETA = dict(
     captura="2026-08-19T10:00",
     estado_adquisicion="descargado",
     evidencia="e4585f7c44d7216b",
-    verificador="componentes.verificar_cobertura",
+    verificador=_VERIFICADOR_REAL,
     prueba_del_verificador=_PRUEBA_REAL,
     sujeto="130801 Montecristi",
 )
@@ -131,31 +136,38 @@ def test_ninguna_transformacion_puede_subir_el_grado():
 
 
 # ── 5 · el vínculo prueba↔verificador · DEUDA DECLARADA ─────────────────────────
-def test_05_la_prueba_deberia_estar_vinculada_al_verificador_que_respalda():
-    """⚠️ ESTA PRUEBA DOCUMENTA UN HUECO ABIERTO, y por eso no falla.
+def test_05_la_prueba_debe_respaldar_al_verificador_que_dice_acreditar():
+    """✅ HUECO CERRADO el 2026-08-26. La aserción se invirtió, como estaba
+    previsto en su condición de cierre.
 
-    El colega lo anticipó (2026-08-19):
+    El colega lo anticipó el 2026-08-19:
 
-    > *«No basta que el identificador de la prueba exista; la prueba debe ser
-    > ejecutable y estar vinculada al mecanismo que dice respaldar. De lo
-    > contrario, mañana podría aparecer una prueba cualquiera: el archivo
-    > existe, pero no demuestra que el verificador sea correcto.»*
+    > *«No basta que el identificador de la prueba exista; la prueba debe estar
+    > vinculada al mecanismo que dice respaldar. De lo contrario, mañana podría
+    > aparecer una prueba cualquiera: el archivo existe, pero no demuestra que
+    > el verificador sea correcto.»*
 
-    Hoy la cadena comprueba **existencia**, no **correspondencia**: cualquier
-    prueba real acredita cualquier verificador. La escala completa es
-    `declarado ≠ existente ≠ ejecutado ≠ exitoso`, y sólo cubrimos los dos
-    primeros escalones.
+    Y no era hipotético. En producción, `materializacion.py` declaraba
+    `materializacion.evaluar` respaldado por una prueba que comprueba los
+    NOMBRES de los estados y **nunca llama a `evaluar()`** — y ninguna otra lo
+    ejercitaba. Se escribió la prueba que faltaba y se corrigió la referencia.
 
-    La prueba se deja escrita, verde y explícita: cuando el vínculo sea
-    comprobable, se invierte la aserción y pasa a defender la regla en vez de
-    documentar su ausencia."""
+    La correspondencia se **deriva** del AST de la función de prueba: si no
+    nombra al verificador, no puede estar respaldándolo.
+
+    ⚠️ Se cierra el escalón 3 de 4. `declarado ≠ existente ≠ CORRESPONDE ≠
+    ejecutado ≠ exitoso`: que la prueba nombre al verificador no demuestra que
+    lo ejecute con casos significativos. Lo que falta queda dicho, no supuesto."""
     ajena = P.Procedencia(**{**COMPLETA,
-                            "verificador": "un.modulo.que.nada.tiene.que.ver",
-                            "prueba_del_verificador": _PRUEBA_REAL})
+                            "verificador": "un.modulo.que.nada.tiene.que.ver"})
     s = P.sostener("x", ajena)
-    assert s.peso == P.HECHO_VERIFICABLE, (
-        "hoy pasa; el día que el vínculo sea comprobable, este assert debe "
-        "invertirse a HALLAZGO_DE_VERIFICABILIDAD")
+    assert s.peso == P.HALLAZGO_DE_VERIFICABILIDAD, (
+        "una prueba que no nombra al verificador no puede acreditarlo")
+    assert "prueba_del_verificador" in s.faltan
+
+    # Y el caso legítimo sigue sosteniéndose: no se cerró la puerta a todos.
+    assert P.sostener("x", P.Procedencia(**COMPLETA)).peso == P.HECHO_VERIFICABLE
+
 
 
 # ── 8 · cambiar el sujeto después del sello ─────────────────────────────────────

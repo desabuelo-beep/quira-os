@@ -50,6 +50,42 @@ def test_la_ausencia_de_artefacto_no_es_incumplimiento():
     assert M.SIN_EVIDENCIA == "sin_evidencia_hallada"
 
 
+def test_evaluar_no_afirma_incumplimiento_cuando_no_halla_evidencia():
+    """CIERRA LA DEUDA #1 EN SU CASO REAL (2026-08-26).
+
+    `materializacion.py` declaraba que el verificador `materializacion.evaluar`
+    estaba respaldado por `test_la_ausencia_de_artefacto_no_es_incumplimiento`.
+    Aquella prueba es correcta y valiosa —comprueba que los NOMBRES de los
+    estados no califiquen jurídicamente—, pero **nunca llama a `evaluar()`**:
+    prueba real, verificador real, y ninguna relación entre ambos. Y al buscarlo
+    apareció lo peor: **ninguna prueba lo ejercitaba.**
+
+    Ésta sí lo ejercita, y sobre el caso que más importa: cuando NO hay
+    evidencia. Es donde el instrumento podría deslizarse de «no lo hallé» a «no
+    existe», que es el error que este dominio persigue en el GAD.
+
+    `respalda()` la reconoce porque la nombra: la correspondencia se deriva del
+    AST, no se declara."""
+    o = M.Obligacion(numeral="10", texto="planes y programas en ejecución",
+                     campos_exigidos=["nombre", "objetivo"],
+                     periodicidad={}, procedencia_normativa={})
+
+    r = M.evaluar(o, 2025, {})          # sin evidencia alguna
+    assert r.estado == M.SIN_EVIDENCIA, (
+        "sin publicación hallada el estado debe ser SIN_EVIDENCIA")
+    assert "NO incumplimiento" in r.nota, (
+        "la nota debe decir expresamente que la ausencia no es incumplimiento")
+    for prohibido in ("incumple", "infringe", "viola", "ilegal", "sanción"):
+        assert prohibido not in r.nota.lower(), (
+            f"la nota de `evaluar` califica jurídicamente con «{prohibido}»")
+
+    # Y con evidencia pero sin ningún campo exigido: PARCIAL, tampoco falta.
+    r2 = M.evaluar(o, 2025, {"10": [{"archivo": "x.csv", "sha256": "abc"}]})
+    assert r2.estado in (M.PARCIAL, M.MATERIALIZADA, M.NO_DETERMINABLE)
+    assert r2.estado != M.SIN_EVIDENCIA, (
+        "con publicación hallada no puede decirse que no hay evidencia")
+
+
 def test_la_unidad_es_la_relacion_no_el_archivo_ni_el_numeral():
     """La matriz se construye desde la obligación, con la evidencia entrando
     como materialización — no al revés. Cada relación debe poder responder qué

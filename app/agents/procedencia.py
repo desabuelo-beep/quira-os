@@ -120,8 +120,16 @@ def _responde(p: Procedencia, capa: str) -> bool:
     if not valor:
         return False
     if capa == "prueba_del_verificador":
-        from app.agents.apropiacion import existe_prueba
-        return existe_prueba(valor)
+        # 2026-08-26 · deuda #1. Antes bastaba con que la prueba EXISTIERA, y eso
+        # dejaba que cualquier prueba real acreditara cualquier verificador. Ahora
+        # se exige además que la prueba **nombre al verificador que dice
+        # respaldar**: la correspondencia se deriva del AST de la función, no se
+        # declara. Sin verificador declarado no hay nada que corresponder, y la
+        # capa se responde sólo si la prueba existe.
+        from app.agents.apropiacion import existe_prueba, respalda
+        if not existe_prueba(valor):
+            return False
+        return respalda(valor, p.verificador) if p.verificador else True
     return True
 
 

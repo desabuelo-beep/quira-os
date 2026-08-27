@@ -195,6 +195,51 @@ def existe_prueba(nombre: str) -> bool:
     return False
 
 
+def respalda(prueba: str, verificador: str) -> bool:
+    """¿Esa prueba acredita a ESE verificador, o sólo existe? (2026-08-26)
+
+    Cierra la deuda #1. `existe_prueba` comprobaba el escalón 2 de cuatro:
+
+        declarado → EXISTENTE → corresponde → ejecutado → exitoso
+                    └── hasta aquí llegaba ──┘
+
+    Y el hueco no era teórico. En producción, `materializacion.py` declaraba que
+    `materializacion.evaluar` estaba respaldado por
+    `test_la_ausencia_de_artefacto_no_es_incumplimiento` — una prueba que
+    verifica que los NOMBRES de los estados no califiquen jurídicamente y que
+    **nunca llama a `evaluar()`**. Prueba real, verificador real, y ninguna
+    relación entre ambos.
+
+    LA CORRESPONDENCIA SE DERIVA, no se declara: una prueba que ejercita un
+    verificador tiene que **nombrarlo** en su cuerpo. Se analiza el AST de la
+    función —no el texto del archivo— porque un archivo con veinte pruebas
+    mencionaría el verificador aunque lo ejercitara otra distinta. *La mención
+    no es el uso*, que es la lección que esta sesión repitió siete veces.
+
+    ⚠️ Sigue siendo el escalón 3 de 4. Que la prueba nombre al verificador no
+    demuestra que lo ejecute con casos significativos, ni que su aserción
+    dependa del resultado. Se cierra un escalón, y se dice cuál."""
+    import ast
+
+    objetivo = verificador.split(".")[-1]
+    if not objetivo:
+        return False
+    for f in (RAIZ / "tests").rglob("test_*.py"):
+        try:
+            texto = f.read_text(encoding="utf-8", errors="replace")
+            if f"def {prueba}(" not in texto:
+                continue
+            fn = next(n for n in ast.walk(ast.parse(texto))
+                      if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef))
+                      and n.name == prueba)
+        except (SyntaxError, StopIteration, OSError):
+            continue
+        usados = {n.id for n in ast.walk(fn) if isinstance(n, ast.Name)}
+        usados |= {n.attr for n in ast.walk(fn) if isinstance(n, ast.Attribute)}
+        return objetivo in usados
+    return False
+
+
 def derivar(capacidad: str, *, hay_codigo: bool, ejecutada_por_el_agente: bool,
             prueba: str | None, dominio: str = "", sujeto: str = "") -> "Afirmacion":
     """La escalera, aplicada a una capacidad cualquiera.
