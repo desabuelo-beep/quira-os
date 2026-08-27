@@ -67,6 +67,53 @@ los mismos nombres, la ambigüedad deja de ser teórica.
 **Dónde está fijado.** `test_11_los_artefactos_derivados_no_declaran_su_sujeto` — trinquete en 4:
 pueden bajar, no subir.
 
+### CERRADA del todo el 2026-08-26 — y no re-ejecutando
+
+Quedaba **uno**: `descargas_indice.json`, cuya etapa se selló antes de que la cadena exigiera
+sujeto. El colega marcó el riesgo antes de tocarlo:
+
+> *«Que una prueba pueda regenerar el archivo no demuestra que la etapa deba volver a ejecutarse
+> ahora. La ejecución es evidencia de mecanismo; la autorización para modificar un artefacto
+> histórico es otra cuestión.»*
+
+Tenía razón: re-ejecutar habría **sustituido evidencia histórica** por evidencia nueva para
+conseguir el estado que queríamos ver. Había tres salidas y dos eran malas:
+
+    re-ejecutar      → sustituir la evidencia de agosto
+    escribir 130801  → fabricar procedencia con lo que el operador sabe
+    DERIVARLO        → leer lo que la evidencia ya contiene   ← ésta
+
+**Las 936 URLs son `transparencia.dpe.gob.ec/…/1360001010001/…`, y ése es el RUC del sujeto.**
+936 de 936, sin ningún otro RUC en el artefacto. El sujeto no se declaró: **se derivó**, con su
+comprobación reproducible escrita dentro del propio `_meta`. Y el sello de la etapa **sigue
+diciendo `sujeto: None`**, que es la verdad: la cadena no lo acreditó, lo acredita el contenido.
+
+`procedencia.por_derivacion()` exige `fundamento` y `comprobacion`; sin ambos lanza
+`NaturalezaUsurpada`, porque derivar sin comprobación es declarar con otro nombre.
+
+## 2-ter · CERRADO el 2026-08-26 · el RUC no estaba huellado
+
+**Apareció al acreditar lo anterior**, buscando en la evidencia lo que el sello no decía.
+
+`huella()` promete en su propia docstring *«se huella todo aquello con lo que se va a la fuente»*.
+No era cierto:
+
+    huellado      dpe_entidad_id · dpe_entidad_nombre · dominio_web · dominios_asociados
+    NO huellado   el RUC — y es con lo que QUIRA va realmente a la Defensoría
+
+Cambiar el RUC no alteraba la huella. **Es el mismo ataque que motivó la huella** —`dpe_entidad_id`
+937→999, 2026-08-19— en un campo que se olvidó: QUIRA habría descargado de otra entidad con todos
+los gates en verde.
+
+Cerrado declarando el RUC en `identidad_en_fuentes`. La huella cambió
+(`e187a12a…` → `fe11fb1e…`) y **eso es lo correcto**: la identidad no cambió, se completó su
+declaración. Las 4 etapas afectadas se re-huellaron **con fundamento escrito en el sello**
+(`rehuellado`), conservando la huella anterior y declarando que no se re-ejecutó nada.
+
+**Dónde está fijado.** `test_09b_TODO_lo_que_va_a_la_fuente_esta_huellado`, que **deriva** los
+campos del perfil en vez de fijarlos a mano: una lista escrita repetiría el olvido en cuanto se
+añada el siguiente identificador.
+
 ## 3 · Cinco dominios sin la defensa, y sin atacar
 
 ```

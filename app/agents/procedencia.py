@@ -323,6 +323,43 @@ def de_generacion(etapa: str, sujeto: str, huella: str) -> dict:
             "acreditada_por": "la cadena que produjo la etapa"}
 
 
+SUJETO_DERIVADO_DE_LA_EVIDENCIA = "sujeto_derivado_de_la_evidencia"
+
+
+def por_derivacion(etapa: str, sujeto: str, huella: str, fundamento: str,
+                   comprobacion: str) -> dict:
+    """Tercera vía de acreditación: **ni el sello lo declaró, ni el operador lo
+    escribe — la evidencia misma lo contiene** (2026-08-26).
+
+    Nació de un caso concreto: `descargas_indice.json` se produjo antes de que
+    la cadena exigiera sujeto, así que su sello dice `None`. Quedaban tres
+    salidas, y dos eran malas:
+
+        re-ejecutar la etapa   → sustituye evidencia histórica por evidencia
+                                 nueva para conseguir el estado que queremos ver
+        escribir «130801»      → fabricar procedencia con lo que el operador sabe
+        DERIVARLO              → leer lo que la evidencia ya contiene
+
+    La diferencia con `de_generacion` está en quién responde: allí responde la
+    cadena que lo produjo; aquí responde **el propio contenido del artefacto**, y
+    por eso `comprobacion` es obligatoria y debe ser reproducible por un tercero.
+    Sin ella esto sería declarar con otro nombre.
+
+    ⚠️ NO sustituye al sello. Un artefacto derivado dice de quién es; no dice que
+    su cadena lo acreditara. Son afirmaciones distintas y el campo las separa."""
+    if not (fundamento and comprobacion):
+        raise NaturalezaUsurpada(
+            "derivar el sujeto sin fundamento ni comprobación reproducible es "
+            "declararlo — que es exactamente lo que este módulo impide")
+    return {"etapa": etapa, "sujeto": sujeto, "sujeto_huella": huella,
+            "estado": SUJETO_DERIVADO_DE_LA_EVIDENCIA,
+            "acreditada_por": "el contenido del propio artefacto",
+            "fundamento": fundamento,
+            "comprobacion": comprobacion,
+            "no_significa": "que la cadena que lo produjo acreditara el sujeto; "
+                            "su sello sigue diciendo que no lo hizo"}
+
+
 def procedencia_del_artefacto(etapa: str, sello: dict) -> dict:
     """La misma declaración, cuando el sujeto se lee del sello en vez de
     recibirse. Para artefactos ya producidos, cuya cadena ya está sellada."""

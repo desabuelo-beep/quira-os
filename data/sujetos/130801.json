@@ -10,17 +10,19 @@
  "nombre_corto": "Montecristi",
  "provincia": "Manabí",
  "papel": "laboratorio de apropiación · Municipio 001 · el molde, no el destinatario",
-
  "identidad_en_fuentes": {
   "dpe_entidad_id": 937,
   "dpe_entidad_nombre": "GAD Montecristi",
   "dominio_web": "montecristi.gob.ec",
-  "dominios_asociados": ["cloud.montecristi.gob.ec"]
+  "dominios_asociados": [
+   "cloud.montecristi.gob.ec"
+  ],
+  "ruc": "1360001010001"
  },
-
  "notas": {
   "dpe_entidad_id": "identificador del sujeto en la API de la Defensoría del Pueblo. Estaba escrito a mano en dos scripts, uno como int y otro como string.",
   "dominio_web": "sirve para dos cosas distintas que no deben confundirse: reconocer contenido publicado por el propio sujeto (no es ausencia) y clasificar la procedencia institucional de un enlace.",
-  "dominios_asociados": "servicios del mismo sujeto en otro subdominio. El Nextcloud del GAD sirve el visor en /s/XXXX y el archivo en /s/XXXX/download."
+  "dominios_asociados": "servicios del mismo sujeto en otro subdominio. El Nextcloud del GAD sirve el visor en /s/XXXX y el archivo en /s/XXXX/download.",
+  "ruc": "con lo que QUIRA va REALMENTE a la fuente: las 936 URLs de descarga son transparencia.dpe.gob.ec/…/1360001010001/…. No estaba huellado, asi que cambiarlo no invalidaba la huella — el mismo agujero del ataque de 2026-08-19 (dpe_entidad_id 937→999), en otro campo (cerrado 2026-08-26)."
  }
 }

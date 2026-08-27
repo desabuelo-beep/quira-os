@@ -2,9 +2,13 @@
  "_meta": {
   "procedencia": {
    "etapa": "descarga",
-   "estado": "sujeto_no_acreditado_por_la_cadena",
-   "por_que": "la etapa se produjo sin declarar sujeto",
-   "no_significa": "que el artefacto no sea del sujeto observado; significa que su cadena no lo acreditó, y eso no se suple con lo que el operador recuerde"
+   "sujeto": "130801 Montecristi",
+   "sujeto_huella": "fe11fb1e6d5c64bf8095aebae2c4d03598dfc3df634270b504e00dec84cc963c",
+   "estado": "sujeto_derivado_de_la_evidencia",
+   "acreditada_por": "el contenido del propio artefacto",
+   "fundamento": "las 936 URLs de descarga apuntan a transparencia.dpe.gob.ec/…/1360001010001/…, y 1360001010001 es el RUC del sujeto observado; no aparece ningún otro RUC en el artefacto",
+   "comprobacion": "sum(1 for r in archivos if '1360001010001' in r['url']) == len(archivos) == 936",
+   "no_significa": "que la cadena que lo produjo acreditara el sujeto; su sello sigue diciendo que no lo hizo"
   },
   "generado": "2026-08-17",
   "fuente": "https://transparencia.dpe.gob.ec/backend/v1/transparency",

@@ -11,7 +11,7 @@
    "data/lotaip/dpe_montecristi.json": "e32fb79734a19321278aba7af05b263cd92f02edaf0c71e426ba85551b8b7ccf"
   },
   "salidas": {
-   "data/lotaip/descargas_indice.json": "8f32e2e21166df3f668132e79103541587652c6f4b7a93bd993449325bba7894"
+   "data/lotaip/descargas_indice.json": "73758228c369117342ab78a6e892fb0529055e803d6356b7ac15aaa1ead02674"
   },
   "sellado": "2026-08-19T15:26:41",
   "realineado_sin_reejecutar": {
@@ -25,23 +25,23 @@
  },
  "contenido": {
   "insumos": {
-   "data/lotaip/descargas_indice.json": "8f32e2e21166df3f668132e79103541587652c6f4b7a93bd993449325bba7894"
+   "data/lotaip/descargas_indice.json": "73758228c369117342ab78a6e892fb0529055e803d6356b7ac15aaa1ead02674"
   },
   "salidas": {
-   "data/lotaip/contenido.json": "2bab2e0a55161dd9bad697ee2591b83127e807a9b7c6c3af7ef5723f884b49f7"
+   "data/lotaip/contenido.json": "5d9cc0a4e13ee7505acd960be81d1528b4c24900f1924440f57ee1391d565ab7"
   },
-  "sellado": "2026-08-27T15:11:34",
+  "sellado": "2026-08-27T15:25:09",
   "ejecutada_por": "agente",
   "confianza_del_ejecutor": "autodeclarado",
   "sujeto": "130801 Montecristi",
-  "sujeto_huella": "e187a12ade35259772a1b729391e28470a3d0b505444d810c48f3c6f790e6ae0"
+  "sujeto_huella": "fe11fb1e6d5c64bf8095aebae2c4d03598dfc3df634270b504e00dec84cc963c"
  },
  "enlaces": {
   "insumos": {
-   "data/lotaip/contenido.json": "2bab2e0a55161dd9bad697ee2591b83127e807a9b7c6c3af7ef5723f884b49f7"
+   "data/lotaip/contenido.json": "5d9cc0a4e13ee7505acd960be81d1528b4c24900f1924440f57ee1391d565ab7"
   },
   "salidas": {
-   "data/lotaip/enlaces.json": "73be55b963285aa3b909c87ca1c0ec85e2d2d1b3cd75cfd98e53200333ac92f5"
+   "data/lotaip/enlaces.json": "b3d0f3a17fadfc2092afe92a6a231eb8fee727eda9fbf84bdbef74a5d131364b"
   },
   "procedencia_estampada_en": [
    "data/lotaip/enlaces.json"
@@ -50,14 +50,21 @@
   "ejecutada_por": "agente",
   "confianza_del_ejecutor": "autodeclarado",
   "sujeto": "130801 Montecristi",
-  "sujeto_huella": "e187a12ade35259772a1b729391e28470a3d0b505444d810c48f3c6f790e6ae0"
+  "sujeto_huella": "fe11fb1e6d5c64bf8095aebae2c4d03598dfc3df634270b504e00dec84cc963c",
+  "huella_anterior": "e187a12ade35259772a1b729391e28470a3d0b505444d810c48f3c6f790e6ae0",
+  "rehuellado": {
+   "cuando": "2026-08-26",
+   "por_que": "se declaró el RUC en `identidad_en_fuentes`; NO cambió el sujeto, se completó su declaración",
+   "el_sujeto_es_el_mismo": "las 936 URLs de descarga ya llevaban ese RUC: la evidencia se produjo con esta identidad, sólo que una parte de ella no estaba huellada",
+   "no_significa": "que estas etapas se hayan vuelto a ejecutar"
+  }
  },
  "inventario": {
   "insumos": {
-   "data/lotaip/enlaces.json": "73be55b963285aa3b909c87ca1c0ec85e2d2d1b3cd75cfd98e53200333ac92f5"
+   "data/lotaip/enlaces.json": "b3d0f3a17fadfc2092afe92a6a231eb8fee727eda9fbf84bdbef74a5d131364b"
   },
   "salidas": {
-   "data/lotaip/inventario_documental.json": "f7327974c706d297e6518baf9a04fe6b42c00a412cb8cd07120ee07c2323f133"
+   "data/lotaip/inventario_documental.json": "b343777b73cd0aed89faf49bb6d33db909313f3f16e68612e55edaa3858ddbaf"
   },
   "procedencia_estampada_en": [
    "data/lotaip/inventario_documental.json"
@@ -66,7 +73,7 @@
   "ejecutada_por": "agente",
   "confianza_del_ejecutor": "autodeclarado",
   "sujeto": "130801 Montecristi",
-  "sujeto_huella": "e187a12ade35259772a1b729391e28470a3d0b505444d810c48f3c6f790e6ae0",
+  "sujeto_huella": "fe11fb1e6d5c64bf8095aebae2c4d03598dfc3df634270b504e00dec84cc963c",
   "realineado_sin_reejecutar": {
    "cuando": "2026-08-25",
    "por_que": "el estampado de procedencia cambió el SHA sin alterar lo que esta etapa deriva de su insumo",
@@ -74,20 +81,27 @@
     "data/lotaip/enlaces.json": "hallazgos identicos (576 enlaces, 6 estados)"
    },
    "no_significa": "que la etapa se haya vuelto a ejecutar"
+  },
+  "huella_anterior": "e187a12ade35259772a1b729391e28470a3d0b505444d810c48f3c6f790e6ae0",
+  "rehuellado": {
+   "cuando": "2026-08-26",
+   "por_que": "se declaró el RUC en `identidad_en_fuentes`; NO cambió el sujeto, se completó su declaración",
+   "el_sujeto_es_el_mismo": "las 936 URLs de descarga ya llevaban ese RUC: la evidencia se produjo con esta identidad, sólo que una parte de ella no estaba huellada",
+   "no_significa": "que estas etapas se hayan vuelto a ejecutar"
   }
  },
  "contenedores": {
   "insumos": {
-   "data/lotaip/inventario_documental.json": "f7327974c706d297e6518baf9a04fe6b42c00a412cb8cd07120ee07c2323f133"
+   "data/lotaip/inventario_documental.json": "b343777b73cd0aed89faf49bb6d33db909313f3f16e68612e55edaa3858ddbaf"
   },
   "salidas": {
-   "data/lotaip/contenido_contenedores.json": "911b93610951521a28949f9c6f18ecd7f4a07e3f77ad6a8b2348849bd46a1ea1"
+   "data/lotaip/contenido_contenedores.json": "987d40cf8e4919c33f02ab71c86d9493f349f572b2ab2b50a894a4f019a2c096"
   },
   "sellado": "2026-08-20T09:19:18",
   "ejecutada_por": "agente",
   "confianza_del_ejecutor": "autodeclarado",
   "sujeto": "130801 Montecristi",
-  "sujeto_huella": "e187a12ade35259772a1b729391e28470a3d0b505444d810c48f3c6f790e6ae0",
+  "sujeto_huella": "fe11fb1e6d5c64bf8095aebae2c4d03598dfc3df634270b504e00dec84cc963c",
   "realineado_sin_reejecutar": {
    "cuando": "2026-08-25",
    "por_que": "el estampado de procedencia cambió el SHA sin alterar lo que esta etapa deriva de su insumo",
@@ -96,11 +110,18 @@
     "data/lotaip/contenido_contenedores.json": "identico"
    },
    "no_significa": "que la etapa se haya vuelto a ejecutar"
+  },
+  "huella_anterior": "e187a12ade35259772a1b729391e28470a3d0b505444d810c48f3c6f790e6ae0",
+  "rehuellado": {
+   "cuando": "2026-08-26",
+   "por_que": "se declaró el RUC en `identidad_en_fuentes`; NO cambió el sujeto, se completó su declaración",
+   "el_sujeto_es_el_mismo": "las 936 URLs de descarga ya llevaban ese RUC: la evidencia se produjo con esta identidad, sólo que una parte de ella no estaba huellada",
+   "no_significa": "que estas etapas se hayan vuelto a ejecutar"
   }
  },
  "documentos": {
   "insumos": {
-   "data/lotaip/descargas_indice.json": "8f32e2e21166df3f668132e79103541587652c6f4b7a93bd993449325bba7894"
+   "data/lotaip/descargas_indice.json": "73758228c369117342ab78a6e892fb0529055e803d6356b7ac15aaa1ead02674"
   },
   "salidas": {
    "data/lotaip/documentos_n10.json": "8f464c4fd806d65ddb1f941dffee12db3bfd69be6e0e19e876f6a03ae82a3d2d"

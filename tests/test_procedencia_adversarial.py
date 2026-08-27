@@ -267,6 +267,54 @@ def test_09_cambiar_la_identidad_en_la_fuente_DETIENE_la_corrida():
         S.cargar.cache_clear()
 
 
+def test_09b_TODO_lo_que_va_a_la_fuente_esta_huellado():
+    """EL AGUJERO QUE QUEDABA DEL ATAQUE DE 2026-08-19, hallado el 2026-08-26.
+
+    `huella()` promete en su propia docstring: *«se huella todo aquello con lo
+    que se va a la fuente»*. No era cierto. Se huellaban `dpe_entidad_id`,
+    `dominio_web` y los dominios asociados — **pero no el RUC**, y el RUC es
+    con lo que QUIRA va realmente a la Defensoría: las 936 URLs de descarga son
+    `transparencia.dpe.gob.ec/…/1360001010001/…`.
+
+    Cambiarlo no alteraba la huella. Es **el mismo ataque que motivó la huella**
+    —`dpe_entidad_id` 937→999— en un campo que se olvidó. Se descubrió al
+    acreditar `descargas_indice.json`, buscando en la evidencia lo que el sello
+    no decía.
+
+    La prueba no fija una lista de campos: **deriva** los que el artefacto usa
+    para ir a la fuente y exige que ninguno sea invisible a la huella. Fijar la
+    lista a mano repetiría el olvido en cuanto se añada el siguiente."""
+    import json
+
+    from app.agents import sujeto as S
+
+    perfil = S._SUJETOS / f"{S.POR_DEFECTO}.json"
+    respaldo = perfil.read_bytes()
+    base = S.huella()
+    identidad = json.loads(respaldo.decode("utf-8"))["identidad_en_fuentes"]
+
+    invisibles = []
+    try:
+        for campo, valor in identidad.items():
+            d = json.loads(respaldo.decode("utf-8"))
+            d["identidad_en_fuentes"][campo] = (
+                "___alterado___" if not isinstance(valor, list) else ["___alterado___"])
+            perfil.write_text(json.dumps(d, ensure_ascii=False, indent=1),
+                              encoding="utf-8")
+            S.cargar.cache_clear()
+            if S.huella() == base:
+                invisibles.append(campo)
+    finally:
+        perfil.write_bytes(respaldo)
+        S.cargar.cache_clear()
+
+    assert not invisibles, (
+        f"campos de la identidad que la huella NO ve: {invisibles}. Cambiarlos "
+        f"dejaría a QUIRA midiendo a otra entidad con todos los gates en verde "
+        f"— exactamente el ataque de 2026-08-19.")
+    assert S.huella() == base, "la huella no volvió a su valor tras restaurar"
+
+
 def test_10_la_huella_cubre_toda_la_identidad_en_fuentes():
     """La huella debe cambiar ante CUALQUIER alteración de la identidad, no sólo
     ante el identificador. El dominio web también decide qué se considera
