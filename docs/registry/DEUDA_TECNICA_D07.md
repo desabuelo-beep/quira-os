@@ -140,6 +140,50 @@ se publica en vez de suponerse.
 **Dónde está fijado.** `apropiacion.cobertura_de_la_plataforma()`, derivado del código de cada
 dominio y de las pruebas adversariales que lo nombran. Nadie declara «protegido».
 
+### CORREGIDA el 2026-08-26 · «sin defensa» era cierto, pero no era la verdad completa
+
+El colega puso la pregunta correcta antes de tocar nada:
+
+> *«¿Los cinco dominios carecen realmente de defensa, o carecen de una defensa que mi inventario
+> actual reconoce?»*
+
+**Las dos comprobaciones, y la segunda es la que faltaba:**
+
+**1 · ¿Carecen de defensa?** Sí — y ahora comprobado **por propiedad, no por nombre**. El inventario
+buscaba `_SELLO_CADENA`, `sujeto_huella`, `gate SUJETO`, `_sujeto_actual`: **los nombres de la
+implementación de d07**. Preguntar eso es «¿tiene el código de d07?», no «¿protege la identidad?».
+Se volvió a medir buscando la propiedad —comparar identidad, detener por sujeto, hashear identidad,
+validar procedencia— y el resultado se confirma: **ninguno la tiene, ni con otros nombres**.
+
+*(Y el inventario tenía dos falsos positivos latentes: las 2 señales de «sellar» en d08 hablaban de
+sellar un índice en el Gold Master, nada que ver con la cadena.)*
+
+**2 · ¿Están siquiera conectados?** **No.**
+
+    d07                      5 importadores reales del paquete
+    d01 d02 d03 d08 d09      0
+
+Las 25-35 menciones de «d02», «d09»… en la UI son **al dominio como etiqueta** —*«réplica del molde
+de d01/d02/d09»*—, no imports del paquete. *La mención no es el uso*, por séptima vez en la sesión.
+Y el único importador de `d01` era `app/agents/_template/`, una plantilla.
+
+> `no_protegido` se lee como **«existe y está expuesto»**. La verdad era **«existe y no está
+> conectado»**: 49 KB de código de dominio que nadie invoca.
+
+**La distinción corta en dos direcciones**, y por eso no es cosmética: el riesgo de HOY es menor del
+que el registro sugería, y el de MAÑANA es idéntico —llegará intacto el día que se integren—.
+Confundirlas lleva o a alarmarse de más, o, peor, a integrarlos sin exigirles la defensa.
+
+**Qué se hizo, y qué NO.** Se añadió el estado `no_integrado`, **derivado** de quién importa el
+paquete. **No se implementaron las defensas en los cinco**: construir defensa para código que nadie
+invoca es prematuro, y la exigencia correcta es que el inventario lo diga solo el día que se
+conecten. Verificado adversarialmente: al añadir un importador a `d02` pasa a `no_protegido`; al
+quitarlo vuelve a `no_integrado`.
+
+**Dónde está fijado.** `test_12b_no_integrado_no_es_lo_mismo_que_desprotegido`. Y de paso se corrigió
+`test_12`, que comprobaba la **frase literal** de la afirmación en vez de su propiedad: al mejorar la
+redacción falló sin que nada se hubiera roto.
+
 ## 3-bis · CERRADO el 2026-08-19 · la reanudación se saltaba el trabajo
 
 **Encontrado al acreditar la etapa `enlaces`**, que es exactamente para lo que servía acreditarla.

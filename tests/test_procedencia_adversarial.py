@@ -516,5 +516,50 @@ def test_12_sin_atacar_no_puede_leerse_como_seguro():
             f"{dom} figura como atacado sin pruebas adversariales propias")
 
     # La afirmación publicable nombra el alcance, nunca la plataforma entera.
-    assert "d07" in c["afirmacion_sostenible"]
-    assert "los demás dominios permanecen sin evidencia" in c["afirmacion_sostenible"]
+    #
+    # ⚠️ Antes se comprobaba la frase literal «los demás dominios permanecen sin
+    # evidencia». Eso ataba la prueba a una REDACCIÓN, no a una propiedad: al
+    # mejorar la afirmación —para que dijera además que esos dominios ni siquiera
+    # están integrados— la prueba falló sin que nada se hubiera roto. Se comprueba
+    # la propiedad (2026-08-26).
+    afirmacion = c["afirmacion_sostenible"]
+    assert "d07" in afirmacion, "la afirmación debe nombrar dónde está demostrado"
+    for dom, est in estados.items():
+        if est != A.PROTEGIDO_Y_ATACADO:
+            assert dom in afirmacion, (
+                f"{dom} no figura en la afirmación: un dominio sin el mecanismo "
+                f"demostrado no puede quedar fuera del relato, o la afirmación "
+                f"se leería como si cubriera la plataforma entera")
+
+
+def test_12b_no_integrado_no_es_lo_mismo_que_desprotegido():
+    """LA DISTINCIÓN QUE LA DEUDA #3 NO HACÍA (2026-08-26).
+
+    El registro decía «cinco dominios sin la defensa», y era cierto: se comprobó
+    por PROPIEDAD —ninguno compara identidad, ninguno detiene por sujeto, ninguno
+    huella— y no por los nombres de d07, que es como se había medido antes.
+
+    Pero al medir la integración apareció lo que la etiqueta ocultaba: **ningún
+    módulo importa esos cinco paquetes.** `no_protegido` se lee como «existe y
+    está expuesto»; la verdad era «existe y no está conectado».
+
+    La distinción corta en dos direcciones, y por eso no es cosmética: el riesgo
+    de hoy es menor del que el registro sugería, y el de mañana es idéntico.
+    Confundirlas lleva o a alarmarse de más, o —peor— a integrarlos sin exigirles
+    la defensa.
+
+    Lo que esta prueba defiende es que el estado **se deriva**: el día que
+    alguien importe uno de esos paquetes, el inventario debe decir «expuesto»
+    sin que nadie tenga que acordarse de cambiarlo."""
+    from app.agents import apropiacion as A
+
+    for f in A.cobertura_de_la_plataforma()["dominios"]:
+        if f["estado"] in (A.NO_INTEGRADO, A.NO_PROTEGIDO):
+            assert "importadores" in f, (
+                f"{f['dominio']} no declara cuántos módulos lo importan: sin ese "
+                f"dato, «no protegido» y «no integrado» son indistinguibles")
+            esperado = A.NO_INTEGRADO if f["importadores"] == 0 else A.NO_PROTEGIDO
+            assert f["estado"] == esperado, (
+                f"{f['dominio']}: estado «{f['estado']}» con "
+                f"{f['importadores']} importadores — el estado no se está "
+                f"derivando de la integración real")

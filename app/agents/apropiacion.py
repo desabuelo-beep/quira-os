@@ -419,7 +419,56 @@ PROTEGIDO_SIN_ATACAR = "protegido_sin_atacar"
 NO_PROTEGIDO = "no_protegido"
 SIN_DETERMINAR = "no_determinable"
 
+# ── «NO PROTEGIDO» NO ERA LA VERDAD COMPLETA (2026-08-26 · deuda #3) ──────────
+# El registro decía «cinco dominios sin la defensa». Es cierto y se comprobó por
+# PROPIEDAD y no por nombre —ninguno compara identidad, ninguno detiene por
+# sujeto, ninguno huella—. Pero al medir la integración apareció lo que la
+# etiqueta ocultaba:
+#
+#     d07                        5 importadores reales del paquete
+#     d01 d02 d03 d08 d09        0
+#
+# `no_protegido` se lee como «existe y está expuesto». La verdad es **«existe y
+# no está conectado»**: 49 KB de código de dominio que nadie invoca. Un paquete
+# que nadie llama no puede medir hoy a un sujeto con evidencia de otro.
+#
+# La distinción corta en dos direcciones y por eso importa: el riesgo de HOY es
+# menor de lo que el registro sugería, y el de MAÑANA es idéntico — llegará
+# intacto el día que se integren. Confundirlas llevaría o a alarmarse de más, o
+# a integrarlos sin exigirles la defensa.
+#
+# *Etiqueta incorrecta = número falso* (§6-sexies), aplicado a nuestro propio
+# inventario de defensa.
+NO_INTEGRADO = "no_integrado"
+
 _DEFENSAS = ("_SELLO_CADENA", "sujeto_huella", "gate SUJETO", "_sujeto_actual")
+
+
+def _quien_importa(dominio: str) -> list[str]:
+    """Qué módulos importan de verdad el paquete de este dominio.
+
+    Se busca el **import del paquete**, no la aparición de la cadena «d02»: la
+    UI menciona los dominios como etiqueta —«réplica del molde de d01/d02/d09»—
+    y contar eso daría 25-35 falsos usos por dominio. Es el mismo error que esta
+    sesión encontró seis veces: *la mención no es el uso*."""
+    import re
+
+    patron = re.compile(
+        rf"from\s+app\.agents\.{dominio}\b"
+        rf"|import\s+app\.agents\.{dominio}\b"
+        rf"|from\s+app\.agents\s+import\s+[^\n]*\b{dominio}\b")
+    fuera = []
+    for f in RAIZ.rglob("*.py"):
+        s = f.as_posix()
+        if (f"agents/{dominio}/" in s or "worktrees" in s
+                or ".venv" in s or "__pycache__" in s or "_template" in s):
+            continue
+        try:
+            if patron.search(f.read_text(encoding="utf-8", errors="replace")):
+                fuera.append(s)
+        except OSError:
+            continue
+    return fuera
 
 
 def cobertura_de_defensa(dominio: str) -> dict:
@@ -445,10 +494,22 @@ def cobertura_de_defensa(dominio: str) -> dict:
                        for ln in txt.splitlines() if ln.startswith("def test_")]
 
     if not tiene:
+        # ¿está siquiera conectado? Se DERIVA de quién importa su paquete, no se
+        # declara. Un dominio que nadie invoca no está expuesto hoy: está inerte.
+        importadores = _quien_importa(dominio)
+        if not importadores:
+            return {"dominio": dominio, "estado": NO_INTEGRADO, "defensas": [],
+                    "ataques_ejecutados": len(ataques), "importadores": 0,
+                    "fundamento": "ningún módulo importa este paquete: no tiene "
+                                  "las defensas, y tampoco está conectado al "
+                                  "sistema — la defensa se le debe exigir el día "
+                                  "que se integre, no antes"}
         return {"dominio": dominio, "estado": NO_PROTEGIDO, "defensas": [],
                 "ataques_ejecutados": len(ataques),
-                "fundamento": "no se halló ninguna de las defensas de identidad "
-                              "de sujeto en el código del dominio"}
+                "importadores": len(importadores),
+                "fundamento": f"lo importan {len(importadores)} módulos y no se "
+                              f"halló ninguna defensa de identidad de sujeto: "
+                              f"está en uso y expuesto"}
     if not ataques:
         return {"dominio": dominio, "estado": PROTEGIDO_SIN_ATACAR,
                 "defensas": tiene, "ataques_ejecutados": 0,
@@ -476,9 +537,21 @@ def cobertura_de_la_plataforma(dominios: list[str] | None = None) -> dict:
     return {
         "dominios": filas,
         "por_estado": por_estado,
-        "afirmacion_sostenible": (
+        # La afirmación se COMPONE del estado medido, no se redacta a mano. La
+        # versión anterior decía «los demás permanecen sin evidencia de haber
+        # pasado por ese mecanismo» — cierto, pero omitía que ni siquiera están
+        # conectados, y eso hacía leer como riesgo vivo lo que es código inerte.
+        "afirmacion_sostenible": " ".join(filter(None, [
             "QUIRA ha demostrado un mecanismo de integridad de sujeto en " +
-            ", ".join(por_estado.get(PROTEGIDO_Y_ATACADO, ["ninguno"])) +
-            "; los demás dominios permanecen sin evidencia de haber pasado por "
-            "ese mecanismo."),
+            ", ".join(por_estado.get(PROTEGIDO_Y_ATACADO, ["ninguno"])) + ".",
+            ("Los dominios " + ", ".join(por_estado[NO_INTEGRADO]) +
+             " no tienen ese mecanismo Y NO ESTÁN INTEGRADOS —ningún módulo los "
+             "importa—: no están expuestos hoy, y la defensa se les debe exigir "
+             "al conectarlos.") if por_estado.get(NO_INTEGRADO) else "",
+            ("⚠️ " + ", ".join(por_estado[NO_PROTEGIDO]) + " SÍ están en uso y "
+             "sin defensa.") if por_estado.get(NO_PROTEGIDO) else "",
+            ("Sin atacar: " + ", ".join(por_estado[PROTEGIDO_SIN_ATACAR]) +
+             " — resistir no está demostrado, sólo no refutado.")
+            if por_estado.get(PROTEGIDO_SIN_ATACAR) else "",
+        ])),
     }
