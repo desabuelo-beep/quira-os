@@ -137,7 +137,7 @@ cadena:
     sumilla: "sanciones administrativas por el incumplimiento de las obligaciones de la ley"
 
 # ── Estado y ciclo de vida ────────────────────────────────────────────────────────
-estado: propuesta
+estado: vigente
 vigencia:
   desde: "2023-02-07"
   hasta: null
@@ -169,8 +169,8 @@ observa_capas:
 # ── Validación humana (ADR-035 §5) ────────────────────────────────────────────────
 validacion:
   propuesta_por: "BRN (cadena verificada contra corpus 2026-08-18)"
-  validada_por: null
-  fecha_validacion: null
+  validada_por: "Javo (Ronald Javier Delgado Santana) · fundador · ADR-035 §5"
+  fecha_validacion: "2026-08-26"
 notas: >-
   Aporte de esta cadena al molde: es la primera que distingue el ÓRGANO del que emana cada
   clase de acto. Sin esa distinción, un monitoreo cuenta 254 documentos y los da por buenos;

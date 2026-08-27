@@ -142,7 +142,7 @@ cadena:
     sumilla: "sanciones administrativas por el incumplimiento de las obligaciones de la ley"
 
 # ── Estado y ciclo de vida ────────────────────────────────────────────────────────
-estado: propuesta                 # propuesta | vigente | en_reforma | derogada
+estado: vigente                 # propuesta | vigente | en_reforma | derogada
 vigencia:
   desde: "2023-02-07"             # LOTAIP · RO 245, segundo suplemento
   hasta: null
@@ -186,8 +186,8 @@ observa_capas:
 # ── Validación humana (ADR-035 §5) ────────────────────────────────────────────────
 validacion:
   propuesta_por: "BRN (extracción asistida · cadena verificada contra corpus 2026-08-18)"
-  validada_por: null              # sólo Javo promueve a vigente
-  fecha_validacion: null
+  validada_por: "Javo (Ronald Javier Delgado Santana) · fundador · ADR-035 §5"
+  fecha_validacion: "2026-08-26"
 notas: >-
   Estrés arquitectónico que aporta d07: es la primera cadena de naturaleza INSTRUMENTAL y
   OBSERVACIONAL del catálogo. Las cinco anteriores modelan obligaciones sustantivas —gastar,

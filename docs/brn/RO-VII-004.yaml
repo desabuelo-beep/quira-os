@@ -134,8 +134,8 @@ consume: []
 opera_en: d07
 
 # ── Estado y trazabilidad ─────────────────────────────────────────────────────────
-estado: propuesta
+estado: vigente
 validacion:
   propuesta_por: "BRN (parámetros extraídos del capítulo VI de la LOTAIP · corpus 2026-08-18)"
-  validada_por: null
-  fecha_validacion: null
+  validada_por: "Javo (Ronald Javier Delgado Santana) · fundador · ADR-035 §5"
+  fecha_validacion: "2026-08-26"

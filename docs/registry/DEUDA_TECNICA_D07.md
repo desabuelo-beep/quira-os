@@ -453,7 +453,11 @@ hecho parecer que el gate se activó con un defecto abierto.
 - **OCR** — 10 escaneos únicos, ningún motor instalado.
 - **Prueba A de origen** — `fuente → captura → descarga → SHA`, escrita y desactivada
   (`QUIRA_PRUEBA_DE_ORIGEN=1`).
-- **Promoción a `vigente`** de las 9 piezas de d07 — decisión de Javo (ADR-035 §5).
+- ~~**Promoción a `vigente`** de las 9 piezas de d07~~ ✅ **HECHA el 2026-08-26.** Javo validó
+  —*«promuevo las 9 piezas de d07 a vigente»*—, que es exactamente lo que ADR-035 §5 exige: *«la IA
+  propone; el humano valida»*. Las 9 (`CNO-VII-001..004` + `RO-VII-001..005`) pasan a `vigente` con
+  `validada_por` y `fecha_validacion` registradas. **3 líneas por archivo, ni una más**: no se tocó
+  contenido, genealogía, autoridad ni sellos. Las piezas `VIII` (d08) quedaron intactas.
 
 ---
 *Registro de deuda d07 · Dylus Lab © 2026 · lo que falta, con su medición y su condición de cierre.*

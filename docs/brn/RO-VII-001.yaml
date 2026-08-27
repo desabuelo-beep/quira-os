@@ -209,8 +209,8 @@ consume: []
 opera_en: d07                     # Transparencia y Acceso a la Información
 
 # ── Estado y trazabilidad ─────────────────────────────────────────────────────────
-estado: propuesta                 # propuesta | vigente | obsoleta | retirada
+estado: vigente                 # propuesta | vigente | obsoleta | retirada
 validacion:
   propuesta_por: "BRN (parámetros extraídos del Instructivo y la Guía · corpus verificado 2026-08-18)"
-  validada_por: null              # sólo Javo promueve a vigente (ADR-035 §5)
-  fecha_validacion: null
+  validada_por: "Javo (Ronald Javier Delgado Santana) · fundador · ADR-035 §5"
+  fecha_validacion: "2026-08-26"

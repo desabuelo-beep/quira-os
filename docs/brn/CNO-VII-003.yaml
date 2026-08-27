@@ -150,7 +150,7 @@ cadena:
     sumilla: "sanciones administrativas por el incumplimiento de las obligaciones de la ley"
 
 # ── Estado y ciclo de vida ────────────────────────────────────────────────────────
-estado: propuesta
+estado: vigente
 vigencia:
   desde: "2023-02-07"
   hasta: null
@@ -174,8 +174,8 @@ complementa:
 # ── Validación humana (ADR-035 §5) ────────────────────────────────────────────────
 validacion:
   propuesta_por: "BRN (cadena verificada contra corpus 2026-08-18)"
-  validada_por: null
-  fecha_validacion: null
+  validada_por: "Javo (Ronald Javier Delgado Santana) · fundador · ADR-035 §5"
+  fecha_validacion: "2026-08-26"
 notas: >-
   Aporte de esta cadena: es la primera del catálogo cuyo hecho observable NO es un documento
   publicado sino un PROCEDIMIENTO con plazo —solicitud, respuesta, denegación motivada—. Eso

@@ -31,7 +31,7 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 
 ✅ **PCD: d01·d02·d03·d06·d09** · d08 ENTRABLE · **d07 en curación**.
 🩹 **12 GATES** · Curación por DOM (R.8) · **estados, NO bool** · 500 pruebas.
 📑 ⛔ `.docx` gana al `.pdf`.
-⚖️ **d07 BRN**: `CNO-VII-001..004` **46/46 SHA** + `RO-VII-001..005`. ⛔ el DOM **consume RO, NO lee la ley**.
+⚖️ **d07 BRN VIGENTE** (Javo 26-08): `CNO-VII-001..004` **46/46 SHA** + `RO-VII-001..005`. ⛔ el DOM **consume RO, NO lee la ley**.
 📡 **SITA 2025 0,4448** (era 0,4646) · **0 actas** · num.6 sin ingresos.
 🧹 **CORPUS**: 8 chunks de preámbulo fingían artículo (LOTAIP 19 = Pacto).
 🧪 **§6-bis**: falta evidencia→**degrada** · identidad contradictoria→**BLOQUEA** · el SHA prueba el archivo, NO la atribución.
