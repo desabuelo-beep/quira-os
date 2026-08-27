@@ -91,8 +91,8 @@ Con tres estados posibles, y sólo tres:
 | # | proposición | naturaleza | estado | evidencia verificada |
 |---|---|---|---|---|
 | 1 | «NO es auditoría ni observatorio» | identidad + guard conceptual | ✅ **RESUELTO** DEC-0012 | ver §1 |
-| 2 | SIAP → QUADRUM → QUIRA | genealogía | memoria histórica | testimonio Javo 2026-08-25 |
-| 3 | «define el OBJETO, no a QUIRA» | meta-regla ontológica | **C** | sólo en BOOT |
+| 2 | SIAP → QUADRUM → QUIRA | genealogía | ⏳ **evidencia conservada**, rango sin decidir | `docs/registry/GENEALOGIA_QUIRA.md` |
+| 3 | «define el OBJETO, no a QUIRA» | meta-regla ontológica | ✅ **RESUELTO** — la Constitución la cubre | ver §2 y §3 |
 | 4 | Seccionales 29-NOV-2026 | estado estratégico temporal | §AHORA | testimonio Javo 2026-08-25 |
 | 5 | «no congelar teoría antes que el grafo hable» | regla metodológica | **B — el caso GENUINO** | ver §5 |
 | 6 | «Inventario de Conceptos → DERIVA» | regla de procedimiento | ✅ **RESUELTO** — regla propia del artefacto | ver §6 |
@@ -371,7 +371,13 @@ el testimonio del propio fundador.
 6. ~~¿La taxonomía F1/F2/F3 se lleva a ADR-041/043, o BOOT deja de atribuírsela?~~
    ✅ **Ninguna de las dos: ADR-041 §4 ya la declara** y ADR-043 §7 remite a él. La atribución de
    BOOT era correcta; el error era mío. Sólo se precisó la cita a «ADR-041 §4».
-7. ¿Dónde vive la genealogía (#2) y la meta-regla ontológica (#3)?
+7. **DESAGREGADA** al reunir la evidencia — eran dos casos distintos:
+   · **#3** ✅ cubierta por `CONSTITUCION_INSTITUCIONAL` §Relación con la Ontológica. Corregido de
+     paso: BOOT decía «12 dominios», el vigente es 13 (12 + d13 vía Mutabilidad). Las tres
+     autoridades ya coinciden.
+   · **#2** ⏳ **sigue abierta.** La evidencia se conservó en `docs/registry/GENEALOGIA_QUIRA.md`
+     —porque el fundador ya no la recuerda y la fuente se erosiona— pero **conservar no es
+     decidir**: dónde vive canónicamente y con qué rango lo decide Javo.
 
 ### Trazabilidad de los cierres — el contador no basta
 
@@ -392,7 +398,7 @@ eliminar»; el número tiene que poder reconstruirse)*
 > detiene el trabajo. El motivo de esa arquitectura está medido: **el primer conjunto de señales
 > tenía 100 % de falsos positivos.** *(precisión del colega, 2026-08-26)*
 
-    ABIERTAS: 2   ← reconstruible, no declarado
+    ABIERTAS: 2   ← #4 (=#5) y #7-parte-#2 · reconstruible, no declarado
 
 | decisión | qué agrupa | por qué es UNA |
 |---|---|---|
