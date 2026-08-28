@@ -1,16 +1,30 @@
 ---
+id: GENEALOGIA-001
+kind: marco_teorico
+level: 1
+status: vigente
 authority:
-  parent: GOVERNANCE-001
-  type: REGISTRO
-estado: ABIERTO — conserva evidencia; el rango de esta memoria NO está decidido
+  parent: MARCO-TEORICO-001
+  constitution_articles: [9]
+  type: NORMATIVA
+autoria: "Javo — testimonio del fundador (2026-08-25) · evidencia compilada por la dirección técnica"
+owner: Dylus Lab
+version: "1.0"
 fecha: 2026-08-26
 ---
 
 # Genealogía de QUIRA — SIAP-ICPI → QUADRUM → TERRA → QUIRA
 
-> ⛔ **Este registro NO decide dónde debe vivir canónicamente esta memoria ni qué rango merece.**
-> Eso es la decisión #2 del registro de autoridad, y sigue abierta. Aquí sólo se **conserva** el
-> rastro, que es una acción distinta y que no requiere la decisión.
+> ✅ **DECIDIDO por Javo el 2026-08-26:** *«avancemos con la genealogía #2, que viva en el marco
+> teórico»*. Este documento deja de ser un registro que conserva evidencia y pasa a ser **parte del
+> marco teórico**, bajo `MARCO-TEORICO-001` — cuyo padre declara su propia autoría como *«Javo —
+> postulados y conceptos originales (tesis de grado + marco epistémico 2026-05)»*, que es
+> exactamente el origen que esta genealogía documenta.
+>
+> *Sobre `constitution_articles: [9]`* — se cita **sólo el que puede defenderse**: el Art. 9 manda
+> conservar «la cadena completa de trazabilidad hacia la evidencia que la sustenta», y eso es lo que
+> este documento hace con la identidad del propio proyecto. No se citan los demás artículos del
+> hermano `INVENTARIO-CONCEPTOS-001` porque no se comprobó que apliquen.
 
 ## Por qué existe, y por qué ahora
 
@@ -55,17 +69,15 @@ es una etapa, y las tres siguen operando.
 Es exactamente lo que Javo dijo —*«son criterios de la primera QUIRA»*— y no se entendía sin la
 genealogía delante.
 
-## Lo que este registro deja sin decidir
+## Lo que sigue sin decidir
 
-1. **Dónde vive canónicamente** esta memoria: `marco_teorico/MARCO_TEORICO_QUIRA.md` (vigente,
-   `MARCO-TEORICO-001`), `governance/historico/`, o este mismo registro elevado. **Sin recomendar.**
-2. **Qué rango** merece: ninguno, REGISTRO, o parte del marco teórico.
-3. Si `QTMP` y `H36_QUADRUM_BRIDGE` deben conservar el nombre antiguo o renombrarse. *(Ojo: la
-   Regla de Oro 7 —anti-inflación— pesa en contra de renombrar por estética, y `INVENTARIO-
-   CONCEPTOS-001` ordena derivar antes que redefinir.)*
+1. Si `QTMP` y `H36_QUADRUM_BRIDGE` deben conservar el nombre antiguo o renombrarse. *(La Regla de
+   Oro 7 —anti-inflación— pesa en contra de renombrar por estética, y `INVENTARIO-CONCEPTOS-001`
+   ordena derivar antes que redefinir. No se toca sin decisión.)*
 
-⚠️ **Que este registro exista no le otorga rango a lo que contiene.** Es la misma distinción que el
-registro de autoridad estableció para #5: conservar evidencia no es decidir sobre ella.
+⚠️ **Que esta genealogía sea ahora marco teórico no convierte en canon cada afirmación que contiene
+sobre el pasado.** Documenta un linaje con su evidencia; no otorga rango retroactivo a las etapas
+que describe. La distinción se mantiene, sólo que ahora el documento tiene hogar.
 
 ---
-*Registro de genealogía · Dylus Lab © 2026 · conserva memoria, no crea autoridad.*
+*GENEALOGIA-001 · marco teórico · Dylus Lab © 2026 · documenta el linaje con su evidencia.*

@@ -69,7 +69,7 @@ GAD = sujeto observado, NO cliente. 4 capas: A Núcleo · B Operaciones · C Pro
 | Construcción/UI/dom | `docs/REFERENCE.md` |
 | SIL · capacidad informacional | `docs/adr/ADR-048` (SNPD-056-2015 Arts.2·6·8) |
 | Autoridad de una proposición de BOOT | `docs/registry/AUTORIDAD_PROPOSICIONES_BOOT.md` (REGISTRO · decisiones abiertas) |
-| De dónde viene un nombre antiguo | `docs/registry/GENEALOGIA_QUIRA.md` (REGISTRO · SIAP·QUADRUM·TERRA) |
+| De dónde viene un nombre antiguo | `marco_teorico/GENEALOGIA_QUIRA.md` (SIAP·QUADRUM·TERRA) |
 
 ## INFRA (credenciales en `.streamlit/secrets.toml` local, NUNCA al repo)
 Neo4j AuraDB `8dc8519a` (user=DB=instance ID) · Supabase `normativa_corpus` · repo PRIVADO.

@@ -91,7 +91,7 @@ Con tres estados posibles, y sólo tres:
 | # | proposición | naturaleza | estado | evidencia verificada |
 |---|---|---|---|---|
 | 1 | «NO es auditoría ni observatorio» | identidad + guard conceptual | ✅ **RESUELTO** DEC-0012 | ver §1 |
-| 2 | SIAP → QUADRUM → QUIRA | genealogía | ⏳ **evidencia conservada**, rango sin decidir | `docs/registry/GENEALOGIA_QUIRA.md` |
+| 2 | SIAP → QUADRUM → QUIRA | genealogía | ✅ **RESUELTO** — Javo: «que viva en el marco teórico» | `marco_teorico/GENEALOGIA_QUIRA.md` |
 | 3 | «define el OBJETO, no a QUIRA» | meta-regla ontológica | ✅ **RESUELTO** — la Constitución la cubre | ver §2 y §3 |
 | 4 | Seccionales 29-NOV-2026 | estado estratégico temporal | §AHORA | testimonio Javo 2026-08-25 |
 | 5 | «no congelar teoría antes que el grafo hable» | regla metodológica | **B — el caso GENUINO** | ver §5 |
@@ -375,9 +375,11 @@ el testimonio del propio fundador.
    · **#3** ✅ cubierta por `CONSTITUCION_INSTITUCIONAL` §Relación con la Ontológica. Corregido de
      paso: BOOT decía «12 dominios», el vigente es 13 (12 + d13 vía Mutabilidad). Las tres
      autoridades ya coinciden.
-   · **#2** ⏳ **sigue abierta.** La evidencia se conservó en `docs/registry/GENEALOGIA_QUIRA.md`
-     —porque el fundador ya no la recuerda y la fuente se erosiona— pero **conservar no es
-     decidir**: dónde vive canónicamente y con qué rango lo decide Javo.
+   · **#2** ✅ **RESUELTA el 2026-08-26.** Javo: *«avancemos con la genealogía #2, que viva en el
+     marco teórico»*. Pasa a `marco_teorico/GENEALOGIA_QUIRA.md` como `GENEALOGIA-001`, bajo
+     `MARCO-TEORICO-001` — cuyo padre ya declaraba su autoría como «tesis de grado + marco
+     epistémico», que es el origen que la genealogía documenta. **La evidencia se había conservado
+     antes de la decisión, y la decisión llegó después: ése era el orden correcto.**
 
 ### Trazabilidad de los cierres — el contador no basta
 
@@ -398,7 +400,7 @@ eliminar»; el número tiene que poder reconstruirse)*
 > detiene el trabajo. El motivo de esa arquitectura está medido: **el primer conjunto de señales
 > tenía 100 % de falsos positivos.** *(precisión del colega, 2026-08-26)*
 
-    ABIERTAS: 2   ← #4 (=#5) y #7-parte-#2 · reconstruible, no declarado
+    ABIERTAS: 1   ← sólo #4 (=#5) · reconstruible, no declarado
 
 | decisión | qué agrupa | por qué es UNA |
 |---|---|---|
