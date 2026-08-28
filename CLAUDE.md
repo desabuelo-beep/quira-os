@@ -23,16 +23,16 @@ Detalle: `docs/adr/ADR-023` (3 niveles, inmutable).
 7. **Anti-inflación del canon.** Si un concepto SOLO renombra, no entra: debe añadir capacidad, eliminar ambigüedad o reducir complejidad.
 8. **Segunda ingeniería.** Se cura **dominio por dominio**, del canon a la UI, por las 7 capas; cada uno cierra con su `PCD-DXX`. Protocolo: `docs/architecture/PROTOCOLO_CURACION_DOMINIO.md`.
 9. **Ningún cambio nace en Python.** Todo cambio conceptual nace en el **canon**; Python solo implementa.
+10. **No congelar teoría antes que el grafo hable.** Una hipótesis no se cierra hasta que la evidencia estructural la sostenga: `ADR-019` sigue `STRONGLY_SUPPORTED` a propósito.
 
 ## PROHIBICIONES
 NUNCA: hardcodear sin snapshot · agregar un dominio que no pase el **Protocolo de Expansión Ontológica**
 (6 condiciones · Constitución §Mutabilidad) · agregar items al sidebar Ejecutivo · exponer QTMP/ACK IDs en UI ·
-lenguaje acusatorio (incumplió/violó/ilegal) · inventar artículos de ley · **modificar la fórmula canónica
-(H12!B33)** · construir un motor de cálculo paralelo al Gold Master.
+lenguaje acusatorio (incumplió/violó/ilegal) · inventar artículos de ley · construir un motor de
+cálculo paralelo al Gold Master.
 
 ## ARQUITECTURA (detalle en `docs/REFERENCE.md`)
 Streamlit + Python + Claude Haiku + Neo4j + Supabase. 3 Cerebros: C1 Corpus · C2 Grafo · C3 Razonamiento.
-UI 3 capas: L1 Centro de Mando · L2 Dashboards dominio · L3 GeoTwin. Router: `env_gov.py` (puro).
 
 ## COMMITS
 `[área]: descripción en español` + trailer `Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>`
@@ -44,5 +44,4 @@ UI 3 capas: L1 Centro de Mando · L2 Dashboards dominio · L3 GeoTwin. Router: `
 NO crees nuevos docs de estado — BOOT.md es la única fuente viva.
 
 ---
-*CLAUDE.md v4.1 — mínimo, sin redundancia con BOOT · Dylus Lab © 2026*
-*Mapa completo de archivos: tabla LAZY LOAD en `governance/BOOT.md`. Nada se perdió.*
+*CLAUDE.md v4.2 · mapa de archivos → LAZY LOAD en `governance/BOOT.md` · Dylus Lab © 2026*

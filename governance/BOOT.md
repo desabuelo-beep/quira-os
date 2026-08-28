@@ -56,9 +56,9 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 · detalle en el ADR)
 GAD = sujeto observado, NO cliente. 4 capas: A Núcleo · B Operaciones · C Productos (§LA TESIS · 1 motor) · D Portal `quiraintelligence.com` (radar 222 GAD).
 
-## REGLAS DE ORO → **las 9 viven en `CLAUDE.md`** (se lee siempre)
-⚠️ Estas 2 **NO están entre las 9**: **antes de definir** → `marco_teorico/INVENTARIO_CONCEPTOS_FUNDACIONALES.md`
-(**deriva, no redefinas** · cierre `/graphify . --update`) · «no congelar teoría antes que el grafo hable» (⏳ sin hogar).
+## REGLAS DE ORO → **las 10 viven en `CLAUDE.md`** (se lee siempre)
+⚠️ **NO está entre las 10**: **antes de definir** → `marco_teorico/INVENTARIO_CONCEPTOS_FUNDACIONALES.md`
+(**deriva, no redefinas** · cierre `/graphify . --update`). La #10 se restauró el 26-08.
 
 ## LAZY LOAD — lee SOLO lo que aplica a tu tarea
 | Si vas a... | Lee primero |

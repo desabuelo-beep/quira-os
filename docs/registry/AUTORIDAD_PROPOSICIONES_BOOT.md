@@ -94,7 +94,7 @@ Con tres estados posibles, y sólo tres:
 | 2 | SIAP → QUADRUM → QUIRA | genealogía | ✅ **RESUELTO** — Javo: «que viva en el marco teórico» | `marco_teorico/GENEALOGIA_QUIRA.md` |
 | 3 | «define el OBJETO, no a QUIRA» | meta-regla ontológica | ✅ **RESUELTO** — la Constitución la cubre | ver §2 y §3 |
 | 4 | Seccionales 29-NOV-2026 | estado estratégico temporal | §AHORA | testimonio Javo 2026-08-25 |
-| 5 | «no congelar teoría antes que el grafo hable» | regla metodológica | **B — el caso GENUINO** | ver §5 |
+| 5 | «no congelar teoría antes que el grafo hable» | regla metodológica | ✅ **RESUELTO** — Javo la RESTAURA como Regla de Oro 10 | ver §5 |
 | 6 | «Inventario de Conceptos → DERIVA» | regla de procedimiento | ✅ **RESUELTO** — regla propia del artefacto | ver §6 |
 | F | F1/F2/F3 | taxonomía de fases | ✅ **RESUELTO** — ADR-041 §4 ya la declara | ver §F |
 
@@ -364,7 +364,12 @@ el testimonio del propio fundador.
    positivos**. Se separó ⛔ERROR (viola el canon · bloquea) de ·SEÑAL (pregunta de juicio ·
    nunca bloquea), y el gate vive ahora en `tests/test_nivel_epistemico.py` — importado, no
    lanzado, para no cruzar la frontera de efectos de 4-ter.
-4. ¿#5 se **restaura** como Regla de Oro, o se eleva a ADR propio?
+4. ~~¿#5 se **restaura** como Regla de Oro, o se eleva a ADR propio?~~ ✅ **RESTAURADA** el
+   2026-08-26. Javo: *«restaure #5 como Regla de Oro, pode CLAUDE.md lo necesario»*. Entra como
+   **#10, no en su número histórico** (#4 en 2026-06-17, #6 en 2026-06-03): renumerar habría roto
+   las citas vivas a las reglas 1-9 — el defecto que esta misma sesión encontró con «Regla de Oro
+   6». **La decisión no la forzó la restricción técnica**: Javo decidió restaurar y la poda de
+   `CLAUDE.md` fue consecuencia, no causa.
 5. ~~¿#6 se convierte en regla, o basta con que BOOT apunte al artefacto vigente?~~
    ✅ **Ninguna de las dos: la regla YA está escrita dentro del artefacto** (`INVENTARIO_CONCEPTOS_
    FUNDACIONALES.md:33`). No hizo falta crear Regla de Oro ni ADR. BOOT ahora apunta a su hogar.
@@ -400,12 +405,12 @@ eliminar»; el número tiene que poder reconstruirse)*
 > detiene el trabajo. El motivo de esa arquitectura está medido: **el primer conjunto de señales
 > tenía 100 % de falsos positivos.** *(precisión del colega, 2026-08-26)*
 
-    ABIERTAS: 1   ← sólo #4 (=#5) · reconstruible, no declarado
+    ABIERTAS: 0   ← las 7 decisiones cerradas · reconstruible desde la tabla
 
 | decisión | qué agrupa | por qué es UNA |
 |---|---|---|
 | ~~**3**~~ | ~~`check_epistemico` a gate~~ ✅ cerrada 2026-08-26 | — |
-| **4** | **#5** «no congelar teoría» — restaurar o elevar | una sola proposición |
+| ~~**4**~~ | ~~#5 restaurar o elevar~~ ✅ **RESTAURADA como Regla de Oro 10** | — |
 | **7** | **#2** genealogía SIAP→QUADRUM→QUIRA **y #3** meta-regla ontológica | ambas preguntan *dónde vive esta memoria*; se decide el criterio una vez y se aplica a las dos |
 
 ⚠️ **El contador se reconstruye desde esta tabla, no se declara.** Al cerrar #6 y F1/F2/F3 se
