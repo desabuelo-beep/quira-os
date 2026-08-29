@@ -239,9 +239,37 @@ paquete, y nadie lo registró como deuda.**
 implementar**. Luego la persistencia no es lo que impide integrar: se integra por el orquestador,
 y los cinco no tienen orquestador ni etapas. Tienen otro molde: `catalogo·fuentes·motor·persistencia`.
 
-**4 · Una duplicación LATENTE, no activa.** `d09` es el único donde el motor del paquete y los
-scripts leen **las mismas hojas** del Gold Master (`H10c·H31·H34b`). Hoy no hay dos verdades porque
-nadie llama al motor. **Las habría el día que se integre sin retirar el script.**
+**4 · ~~Una duplicación LATENTE~~ — ERA UN FALSO POSITIVO MÍO, corregido el mismo día.**
+
+Reporté que en `d09` el motor del paquete y los scripts leían las mismas hojas (`H10c·H31·H34b`) y
+que eso sería duplicación al integrar. **Es falso: el motor DELEGA, no reimplementa.**
+
+    app/agents/d09/motor.py
+        _ENRICHER_PATH = pathlib.Path("scripts/enrich_rdc.py")
+        docstring: «envolviendo `scripts/enrich_rdc.py::build_block()`
+                    (mismo patrón que d01/d02/d03)»
+
+Las hojas coincidían porque el motor **las nombra al documentar de dónde vienen**, no porque las
+lea por su cuenta. Conté nombres en el texto y lo llamé duplicación de lógica: *coincidencia textual
+≠ duplicación*, el noveno caso del mismo error en la sesión — y esta vez en una afirmación ya
+escrita, que por eso se corrige aquí en vez de borrarse.
+
+**Y eso cambia el riesgo del refactor a la baja: no hay dos caminos a la misma verdad.**
+
+### La arquitectura real, y está DECLARADA
+
+`governance/QUIRA_MASTER_INDEX.md` (ARQUITECTONICA) ya fija los roles, y no son dos arquitecturas
+compitiendo sino **capas con función distinta**:
+
+| capa | qué es | según el MASTER_INDEX |
+|---|---|---|
+| `scripts/enrich_*.py` | **motor real** que lee el Gold Master | *«motor real: `scripts/enrich_presupuesto.py`»* · *«el enricher YA existía, no se reimplementó»* |
+| `app/agents/dXX/` | **la forma** del pipeline de dominio | *«cómo se implementa el pipeline de un DOM (código)»* |
+| snapshot → UI | lo persistido y su lectura | `PCD-D09`: *«la corrección fue aguas arriba (canon→snapshot)»* |
+
+Los paquetes **envuelven** al motor; no lo sustituyen ni lo duplican. Lo que falta para que sean el
+camino productivo es el **enganche a la UI** y la **Fase 5** (`persistencia.guardar`, pendiente en
+los seis). Ninguna de las dos exige retirar nada.
 
 ### Por qué esto no se ejecuta sin ADR
 
