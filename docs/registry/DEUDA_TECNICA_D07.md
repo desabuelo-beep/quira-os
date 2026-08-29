@@ -213,7 +213,45 @@ invoca es prematuro, y la exigencia correcta es que el inventario lo diga solo e
 conecten. Verificado adversarialmente: al añadir un importador a `d02` pasa a `no_protegido`; al
 quitarlo vuelve a `no_integrado`.
 
-**Dónde está fijado.** `test_12b_no_integrado_no_es_lo_mismo_que_desprotegido`. Y de paso se corrigió
+**Dónde está fijado.** `test_12b_no_integrado_no_es_lo_mismo_que_desprotegido`.
+
+### 3-ter · MEDIDO el 2026-08-26 · «integrar» no es lo que la etiqueta sugería
+
+Javo pidió avanzar con la integración. Antes de conectar nada se midió qué significa, y el
+resultado desplaza el encargo — **no es una deuda técnica: es un cambio de arquitectura**.
+
+**1 · El pipeline productivo NO son los paquetes.** Es `scripts/enrich_*.py → snapshot → UI`, y
+`PCD-D09` lo dice con todas las letras: *«UI (`m_rdc.py`): sin cambio de código en esta pasada — la
+corrección fue aguas arriba (**canon→snapshot**)»*. Los paquetes `app/agents/dXX/` son la
+**migración al patrón de plataforma** —lo declaran sus propios `__init__`— hecha en paralelo.
+
+**2 · Ningún PCD declara la integración como pendiente.** Se buscó en los seis expedientes de
+curación: sus «pendientes honestos» son de **adquisición de dato** (NLP sobre el video de la
+rendición, actas, contenido mínimo), no de conexión. **Los dominios se cerraron sin integrar el
+paquete, y nadie lo registró como deuda.**
+
+**3 · La Fase 5 falta en LOS SEIS, incluido el que sí está integrado.**
+
+    d01 3 · d02 2 · d03 2 · d07 3 · d08 2 · d09 3   funciones `NotImplementedError`
+    y `persistencia.guardar` es una de ellas en los SEIS
+
+`d07` está integrado —`env_obs.py` lo usa vía `etapas`/`ejecutar`— **con su `guardar` sin
+implementar**. Luego la persistencia no es lo que impide integrar: se integra por el orquestador,
+y los cinco no tienen orquestador ni etapas. Tienen otro molde: `catalogo·fuentes·motor·persistencia`.
+
+**4 · Una duplicación LATENTE, no activa.** `d09` es el único donde el motor del paquete y los
+scripts leen **las mismas hojas** del Gold Master (`H10c·H31·H34b`). Hoy no hay dos verdades porque
+nadie llama al motor. **Las habría el día que se integre sin retirar el script.**
+
+### Por qué esto no se ejecuta sin ADR
+
+Sustituir el pipeline que hoy produce los datos de la UI es un **cambio conceptual**, y la Regla de
+Oro 9 es explícita: *«Ningún cambio nace en Python. Todo cambio conceptual nace en el canon; Python
+solo implementa»*. Integrar los cinco tocaría la UI que funciona, los scripts que producen y los
+paquetes con la Fase 5 abierta — con riesgo real sobre lo que hoy sirve.
+
+⛔ **No se integró nada.** Lo que corresponde es un ADR que decida si el pipeline canónico pasa a ser
+el de los paquetes, y con qué orden de migración. La medición está hecha; la decisión no es técnica. Y de paso se corrigió
 `test_12`, que comprobaba la **frase literal** de la afirmación en vez de su propiedad: al mejorar la
 redacción falló sin que nada se hubiera roto.
 
