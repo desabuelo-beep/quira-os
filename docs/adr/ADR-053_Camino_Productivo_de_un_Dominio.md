@@ -139,6 +139,24 @@ Hoy hay **reuso de fuente**, no **consulta entre agentes**. Y el catálogo muest
 puerta a cuatro verdades sobre el mismo documento — exactamente lo que el sistema entero existe para
 impedir. Que `d02` **pregunte** a `d07` en lugar de re-derivar la cierra.
 
+### Qué se pregunta — y esto va antes que cualquier condición técnica
+
+*(Precisión del colega, 2026-08-26, sobre la primera redacción de este §6-bis.)*
+
+    ✅  «d07 tiene evidencia para sostener X respecto de este sujeto»
+    ⛔  «d07 dice que X es verdadero, por tanto d02 puede asumirlo»
+
+La primera conserva la genealogía. **La segunda crea el atajo epistemológico que QUIRA existe para
+impedir**: convertiría a un dominio en fuente de verdad para otro, y ningún producto QUIRA es fuente
+independiente de verdad (`ADR-043 §3`, regla 3).
+
+La primera redacción de este apartado fijaba las dos condiciones técnicas —procedencia y no ascenso
+de grado— **pero no decía sobre qué se pregunta**. Un implementador podía cumplir ambas y seguir
+preguntando por la verdad. Se corrige antes del sello, que es cuando todavía se puede.
+
+> **QUIRA no es una colección de agentes conversando entre sí: es un sistema de dominios que
+> comparten evidencia gobernada.** *(formulación del colega)*
+
 ### Se propone: un contrato de consulta, con dos condiciones innegociables
 
 **1 · La respuesta lleva su procedencia. No es un booleano.**
