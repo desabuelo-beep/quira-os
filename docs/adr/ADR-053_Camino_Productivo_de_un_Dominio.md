@@ -107,6 +107,72 @@ motor sólo lee, y es el único de los cinco con un importador (aunque sea `_tem
 conviene llegar con el patrón ya probado. `d08` último: su `fuentes.extraer_aportes_de_acta` está
 sin implementar y depende de adquisición que no existe.
 
+## 6-bis · Consulta entre dominios — un agente pregunta, no re-deriva
+
+*(Incorporado por decisión de Javo, 2026-08-26. La propuesta es suya.)*
+
+### La mitad que ya existe
+
+Javo planteó que cada dominio fuera **un agente único** con capacidades internas, en vez de un
+conjunto de scripts. **`d07` ya lo es**, y el `META_CATALOGO_AGENTES` lo declara:
+
+> *«Orquestador d07 — ✅ `orquestador.py` · **patrón replicable a todo DOM** · **plantilla para
+> d01/d02/d03/d08/d09**»*
+
+    ejecutar(anio, meses, guardar) → corrida con run_id, gates y hallazgos
+
+Un punto de entrada que orquesta captura → descarga → análisis → scoring y devuelve un contrato
+único. **Eso no se decide aquí: ya está construido y declarado replicable.** El §4 de este ADR sólo
+lo convierte en el camino productivo.
+
+### La mitad que NO existe, y es el aporte
+
+    consultas dominio → dominio, medidas en el código:   NINGUNA
+    memoria compartida (`MISMA_FUENTE_QUE`, Neo4j):      3 archivos en scripts/
+
+Hoy hay **reuso de fuente**, no **consulta entre agentes**. Y el catálogo muestra por qué importa:
+
+> *Budget Agent — reutilizable: «**YA compartido**» — lo usan: **d01 + d02 + d07 + d09**»*
+> *eSIGEF (Fuente) — «**d02 = d01 Presupuesto = d07 CD-06** (misma cédula)»*
+
+**Cuatro dominios miran la misma cédula presupuestaria y cada uno deriva su propia lectura.** Es la
+puerta a cuatro verdades sobre el mismo documento — exactamente lo que el sistema entero existe para
+impedir. Que `d02` **pregunte** a `d07` en lugar de re-derivar la cierra.
+
+### Se propone: un contrato de consulta, con dos condiciones innegociables
+
+**1 · La respuesta lleva su procedencia. No es un booleano.**
+
+Si `d07` responde *«publicada y auditable»*, `d02` heredaría una afirmación cuya cadena no
+construyó, y afirmaría sobre el sujeto con evidencia que no puede acreditar. Es la **deuda #2
+llevada al plano inter-dominio**: la procedencia debe viajar con el artefacto hasta donde el
+artefacto se consuma — y aquí se consume en otro dominio.
+
+    ⛔ d07.responde(...) → True
+    ✅ d07.responde(...) → Sostenida(peso, procedencia, sujeto, faltan)
+
+**2 · Cruzar la frontera NO puede subir el grado.**
+
+Si `d07` sostiene un `hallazgo_de_verificabilidad` y `d02` lo consume como `hecho_verificable`, el
+grado subió sin evidencia nueva. `test_ninguna_transformacion_puede_subir_el_grado` ya lo prohíbe
+**dentro** de un dominio; el cruce no puede ser la forma de saltárselo. El peso que entra es, como
+máximo, el que salió.
+
+⚠️ **Sin estas dos condiciones, la consulta inter-dominio empeoraría el sistema**: propagaría
+afirmaciones sin cadena y permitiría que un grado ascendiera al cambiar de dominio. Con ellas,
+elimina un riesgo que hoy existe y nadie estaba mirando.
+
+### Por qué va en este ADR y no en uno aparte
+
+Son **la misma decisión en dos planos**: el §4 dice *quién ejecuta*; esto dice *cómo se hablan*.
+Separarlas obligaría a abrir un ADR-054 dentro de un mes para algo que pertenece aquí — y el
+`MASTER_INDEX` advierte contra multiplicar rectores: *«si una verdad no tiene rector claro → es
+deuda de gobernanza, **no señal de construir un doc más**»*.
+
+**Condición de implementación:** el contrato de consulta **no se construye hasta que haya dos
+dominios migrados** que puedan hablarse de verdad. Antes de eso sería una interfaz sin interlocutor
+— y esta sesión ya midió lo que cuesta construir capas que nadie invoca.
+
 ## 7 · Lo que este ADR NO decide
 
 - **Si se completa la Fase 5** (`persistencia.guardar`, pendiente en los seis). Es ortogonal: `d07`
@@ -114,6 +180,9 @@ sin implementar y depende de adquisición que no existe.
 - **Si los cinco deben adoptar el molde de `d07`** (orquestador + etapas) o conservar el suyo.
 - **Qué pasa con los `scripts/enrich_*` a largo plazo.** Aquí se decide que no se retiran; su
   destino final es otra decisión.
+- **La forma exacta del contrato de consulta** (§6-bis): se fija su obligación —procedencia y no
+  ascenso de grado— pero no su firma ni su transporte. Se diseña con dos dominios migrados delante,
+  no antes.
 - **El calendario.** Depende de la ventana de noviembre, y ahí manda la prioridad de Javo:
   *«no hay problema si no alcanzamos; lo imperante es dejar QUIRA impoluta e inexpugnable»*.
 
