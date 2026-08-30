@@ -520,12 +520,23 @@ def test_12_sin_atacar_no_puede_leerse_como_seguro():
     estados = {f["dominio"]: f["estado"] for f in c["dominios"]}
 
     assert estados.get("d07") == A.PROTEGIDO_Y_ATACADO
-    # Y ninguno de los otros puede figurar como protegido sin tener las defensas.
+
+    # ⚠️ Antes esto decía «ningún dominio SALVO d07 puede figurar como atacado».
+    # Era el estado de agosto codificado como si fuera la propiedad: al cerrar el
+    # piloto de d01 con sus siete ataques (ADR-053), la prueba falló sin que nada
+    # se hubiera roto —d01 SÍ tiene pruebas adversariales propias—. Se comprueba
+    # la propiedad: **nadie figura como atacado sin un archivo que lo ataque**
+    # (2026-08-26, tercera vez que este mismo test confunde estado con propiedad).
+    con_ataques = {f.stem.split("_")[1] for f in (RAIZ / "tests").glob("test_*adversarial*.py")
+                   if f.stem.count("_") >= 2}
     for dom, est in estados.items():
-        if dom == "d07":
+        if est != A.PROTEGIDO_Y_ATACADO:
             continue
-        assert est != A.PROTEGIDO_Y_ATACADO, (
-            f"{dom} figura como atacado sin pruebas adversariales propias")
+        propio = (RAIZ / "tests" / f"test_{dom}_adversarial.py").exists()
+        generico = any(f".{dom}" in f.read_text(encoding="utf-8", errors="replace")
+                       for f in (RAIZ / "tests").glob("test_*adversarial*.py"))
+        assert propio or generico, (
+            f"{dom} figura como atacado y ninguna prueba adversarial lo ejercita")
 
     # La afirmación publicable nombra el alcance, nunca la plataforma entera.
     #
