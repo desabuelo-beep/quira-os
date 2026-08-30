@@ -4,13 +4,14 @@ authority:
   parent: GOVERNANCE-001
   constitution_articles: [5, 9]
   type: ARQUITECTONICA
-status: PROPUESTA — pendiente de sello de Javo (ADR-035 §5)
+status: APROBADO — sellado por Javo (2026-08-26)
 fecha: 2026-08-26
 ---
 
 # ADR-053 · Cuál es el camino productivo de un dominio
 
-> **Propone la dirección técnica; decide Javo.** La IA no fija arquitectura (ADR-035 §5).
+> **Propuesto por la dirección técnica · SELLADO por Javo el 2026-08-26** — *«sello el ADR-053,
+> adelante con d01»*. La IA propone; el humano valida (ADR-035 §5).
 
 ## 1 · Por qué se abre, y por qué no se abrió antes
 
@@ -227,4 +228,4 @@ dominios migrados** que puedan hablarse de verdad. Antes de eso sería una inter
 
 ---
 *ADR-053 · Dylus Lab © 2026 · propuesto por la dirección técnica sobre la medición del 2026-08-26 ·
-deriva de GOVERNANCE-001 · **sin sellar**.*
+deriva de GOVERNANCE-001 · **sellado por Javo 2026-08-26**.*

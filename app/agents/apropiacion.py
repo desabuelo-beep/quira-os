@@ -486,7 +486,31 @@ SIN_DETERMINAR = "no_determinable"
 # inventario de defensa.
 NO_INTEGRADO = "no_integrado"
 
-_DEFENSAS = ("_SELLO_CADENA", "sujeto_huella", "gate SUJETO", "_sujeto_actual")
+# ── SE MIDE LA PROPIEDAD, NO EL NOMBRE (2026-08-26 · ADR-053, piloto d01) ────
+# La versión anterior buscaba cuatro cadenas literales —`_SELLO_CADENA`,
+# `sujeto_huella`, `gate SUJETO`, `_sujeto_actual`—, que son los **nombres de la
+# implementación de d07**. Preguntar eso es «¿tiene el código de d07?», no
+# «¿protege la identidad del sujeto?».
+#
+# El defecto quedó documentado en la deuda #3 como falso negativo latente, y al
+# migrar `d01` se volvió real: d01 lee el perfil del sujeto y estampa procedencia
+# —tiene la defensa— y el inventario lo reportaba `defensas=[]`, porque usa
+# `S.huella()` y no la cadena `sujeto_huella`.
+#
+# Ahora cada defensa es una PROPIEDAD con sus formas conocidas. Un dominio que la
+# implemente con otro vocabulario se reconoce igual; uno que no la tenga, sigue
+# sin reconocerse.
+_DEFENSAS: dict[str, str] = {
+    # El import puede venir en cualquier forma —`sujeto as S`, junto a otros
+    # módulos en la misma línea—, así que se busca el import, no una redacción.
+    # Un patrón literal ya dio falso negativo con d01, que importa
+    # `procedencia as P, sujeto as S` y quedaba sin reconocer.
+    "identidad_del_sujeto": r"import[^\n]*\bsujeto\b|sujeto\.huella"
+                            r"|_sujeto_actual|sujeto_huella|\.huella\(\)",
+    "procedencia_declarada": r"de_generacion|por_derivacion|procedencia",
+    "sello_de_cadena": r"_SELLO_CADENA|cadena_estado|_sellar\(",
+    "gate_que_detiene": r"gate SUJETO|raise .{0,30}(Sujeto|Usurpada)",
+}
 
 
 def _quien_importa(dominio: str) -> list[str]:
@@ -529,7 +553,9 @@ def cobertura_de_defensa(dominio: str) -> dict:
 
     fuente = "\n".join(f.read_text(encoding="utf-8", errors="replace")
                        for f in carpeta.glob("*.py"))
-    tiene = [d for d in _DEFENSAS if d in fuente]
+    import re as _re
+    tiene = [nombre for nombre, patron in _DEFENSAS.items()
+             if _re.search(patron, fuente, _re.I)]
 
     ataques = []
     for f in (RAIZ / "tests").glob("test_*adversarial*.py"):
