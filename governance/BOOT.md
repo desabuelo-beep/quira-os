@@ -29,12 +29,11 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 
 ## AHORA (estado vivo · historial → `governance/historico/`)
 🧭 **ADR-031** MCIP=5 motores · **035/037** IA propone/humano valida · **038** BRN **traza, no alimenta**.
 ✅ **PCD: d01·d02·d03·d06·d09** · d08 ENTRABLE · **d07 en curación**.
-🩹 **12 GATES** · Curación por DOM (R.8) · **estados, NO bool** · 565 pruebas.
+🩹 **12 GATES** · Curación por DOM (R.8) · **estados, NO bool** · 580 pruebas.
 📑 ⛔ `.docx` gana al `.pdf`.
 ⚖️ **d07 BRN VIGENTE** (Javo 26-08): `CNO-VII-001..004` **46/46 SHA** + `RO-VII-001..005`. ⛔ el DOM **consume RO, NO lee la ley**.
 📡 **SITA 2025 0,4448** (era 0,4646) · **0 actas** · num.6 sin ingresos.
-🧹 **CORPUS**: 8 chunks de preámbulo fingían artículo (LOTAIP 19 = Pacto).
-🧪 **§6-bis**: falta evidencia→**degrada** · identidad contradictoria→**BLOQUEA** · el SHA prueba el archivo, NO la atribución.
+🧪 **§6-bis**: falta evidencia→**degrada** · identidad contradictoria→**BLOQUEA** · el SHA prueba el archivo, NO la atribución (esc.4/7 lo cierran).
 🚦 **8 ESTADOS**: «no existe»≠«no pude obtener»≠«falló».
 🎨 **ADR-049** *la gráfica no sabe más que el motor* · ⛏️ **050 CANTERA**: hereda capacidades, NO productos.
 🔧 **v5.7_TGI** · promover = **recalcular y GUARDAR**.
@@ -48,10 +47,11 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 
 🧬 **§6-sexies**: **segmento ≠ condición ≠ exigencia** · *etiqueta incorrecta = número falso*.
 ➡️ **SIGUIENTE**: Capa 2 a los 24 numerales (⏸ valid. jurídica de 105) · luego los 636.
 🧾 **SCORING vs Instr.**: SITA·CTA·ETA·RP ✅ · **CI mal** (Anexo 1: 1×1). ⛔ NO tocar SITA.
-⛔ **EL NOMBRE NO ES EVIDENCIA** — 3× GAD · **1× nosotros**: 85 ensayos.
-🧷 **PROCEDENCIA nace en el GENERADOR**, sin reloj · ⛔ estamparla luego re-ejecuta la cadena.
+🧷 **PROCEDENCIA**: nace en el GENERADOR sin reloj (⛔ estamparla luego re-ejecuta la cadena) · **POR AFIRMACIÓN, no por dominio** (d09).
 🚧 **TEST ≠ OPERACIÓN**: `conftest` corta subprocess/red · efecto real se declara (2).
-🧱 **ADR-053**: DOM = **agente gobernado** · d01+d02+d03 migrados y atacados · **consulta d01↔d02 VIVA** (evidencia, NUNCA verdad) · esc.4 evidencia↔artefacto · **esc.5-6 CERRADOS**: se LEE a quien ejecutó (⛔ no se ejecuta) · el testimonio **CADUCA** con el SHA.
+🧱 **ADR-053**: DOM = **agente gobernado** · d01·d02·d03·d09 migrados+atacados · **consulta d01↔d02 VIVA**: evidencia, NUNCA verdad.
+🪜 **ESCALERA 4·5·6·7**: evidencia↔artefacto · se LEE a quien ejecutó (⛔ no ejecutar), **CADUCA** · **lo leído ≠ la fuente**: el derivado señala origen.
+⛔ **ENRICHER SIN FUENTE ABORTA**: vacío vuelve «no accedí» en «no hubo».
 🗳️ **SECCIONALES 29-NOV-2026** (alcaldes·prefectos·juntas): ventana para que la gente verifique su alcaldía · ⛔ **la fecha NO manda**: primero impoluto.
 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 · detalle en el ADR)

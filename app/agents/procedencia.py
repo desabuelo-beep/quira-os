@@ -101,6 +101,32 @@ class Procedencia:
     # una propiedad del contrato de evidencia (colega).
     artefacto: str = ""
 
+    # ── ESCALÓN 7 · de qué evidencia deriva esta evidencia ──────────────────
+    # Tampoco es una capa. Es **el escalón 4 aplicado un tramo más arriba**, y
+    # esa simetría es toda su justificación: el 4 necesitó un par (hash +
+    # artefacto) para responder «¿la evidencia es la que leí?»; el 7 necesita el
+    # mismo par para responder «¿y de dónde salió lo que leí?».
+    #
+    # Lo abrió d09 (2026-08-30), que fue el primer dominio donde lo leído NO es
+    # la fuente sino un derivado de ella:
+    #
+    #     DOCX 2023/24/25 → enrich_rdc_docx → gm_snapshot.json → d09.motor
+    #     └──── tramo 1: el escalón 7 ────┘   └─ tramo 2: el escalón 4 ─┘
+    #
+    # Acreditar el snapshot demuestra que se leyó bien el snapshot. **No
+    # demuestra que el snapshot venga de los DOCX que dice.** Mientras sólo
+    # existió el escalón 4, ese salto era invisible: una evidencia derivada
+    # acreditaba igual que una de primera mano, y la diferencia entre ambas es
+    # justamente la que este sistema le mide al sujeto observado.
+    #
+    # LA ARIDAD SE RESUELVE SOLA AL BAJAR A LA AFIRMACIÓN. Tres DOCX parecen
+    # exigir tres orígenes, hasta que se recuerda que una procedencia sostiene
+    # UNA afirmación: «la rendición de 2023 tuvo N asistentes» deriva de un
+    # único archivo. La procedencia es por afirmación, no por dominio — d01..d03
+    # lo escondieron porque cada uno tenía una fuente y una métrica.
+    deriva_de: str = ""
+    origen_sha: str = ""
+
     def capas_respondidas(self) -> list[str]:
         return [c for c in _CAPAS if getattr(self, c)]
 
@@ -179,6 +205,42 @@ def prueba_respaldo_vigente(p: Procedencia) -> bool | None:
     return ejecucion.fue_exitosa(p.prueba_del_verificador)
 
 
+def origen_corresponde(p: Procedencia) -> bool | None:
+    """¿El artefacto del que deriva la evidencia sigue siendo el mismo? (esc. 7)
+
+    Misma forma y mismas consecuencias que `evidencia_corresponde`, un tramo más
+    arriba. `None` cuando la procedencia no declara origen: **la mayoría de las
+    evidencias son de primera mano y no derivan de nada**, así que exigirlo a
+    todas convertiría lo normal en sospechoso. Sólo quien declara que deriva de
+    algo se somete a esta comprobación.
+
+    `False` cuando el origen ya no está o cambió: entonces lo leído puede seguir
+    siendo íntegro —el escalón 4 lo dirá— pero **ya no puede decirse de dónde
+    vino**, y eso es exactamente lo que este escalón acredita."""
+    if not p.deriva_de or not p.origen_sha:
+        return None
+    import hashlib
+    from pathlib import Path as _P
+    ruta = _P(p.deriva_de)
+    if not ruta.exists():
+        return False
+    h = hashlib.sha256()
+    with ruta.open("rb") as f:
+        for bloque in iter(lambda: f.read(1 << 20), b""):
+            h.update(bloque)
+    return h.hexdigest().startswith(p.origen_sha)
+
+
+def de_primera_mano(p: Procedencia) -> bool:
+    """Si lo leído es la fuente misma o un derivado de ella.
+
+    No es un juicio de calidad: una evidencia derivada puede estar mejor
+    acreditada que una de primera mano. Es una propiedad que quien lea la
+    afirmación **tiene derecho a conocer**, y que hasta d09 no se podía ni
+    formular."""
+    return not p.deriva_de
+
+
 def _responde(p: Procedencia, capa: str) -> bool:
     """¿La capa está respondida DE VERDAD?
 
@@ -195,6 +257,12 @@ def _responde(p: Procedencia, capa: str) -> bool:
         # procedencia declara el artefacto, la correspondencia se COMPRUEBA;
         # si no lo declara, se acepta por existencia como antes, y ese hueco
         # queda visible en `evidencia_corresponde()` devolviendo None.
+        # ESCALÓN 7 junto al 4: si la evidencia dice derivar de algo que ya no
+        # corresponde, la capa no se responde. No se exige declarar origen —la
+        # evidencia de primera mano no deriva de nada—, pero **declararlo y que
+        # no cuadre sí degrada**: es peor que no haberlo dicho.
+        if origen_corresponde(p) is False:
+            return False
         return evidencia_corresponde(p) is not False
     if capa == "prueba_del_verificador":
         # 2026-08-26 · deuda #1. Antes bastaba con que la prueba EXISTIERA, y eso

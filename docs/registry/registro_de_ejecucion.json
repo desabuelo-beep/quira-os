@@ -1,6 +1,6 @@
 {
  "_lease": "testimonio de una corrida de pytest. NO lo produce QUIRA sobre sí misma: lo produce el ejecutor, y QUIRA lo lee. Caduca cuando el archivo de la prueba cambia.",
- "commit": "d32be40",
+ "commit": "8e6a7f6",
  "arbol_limpio": false,
  "pruebas": {
   "tests/test_consulta_interdominio_adversarial.py::test_00_d02_puede_preguntar_a_d01_y_recibir_evidencia": {
@@ -602,6 +602,81 @@
    "resultado": "passed",
    "archivo": "tests/test_d07_materializacion.py",
    "archivo_sha256": "6d1f472305ba697f"
+  },
+  "tests/test_d09_agente.py::test_ataque_equivalencia_d09_no_transforma_lo_que_lee": {
+   "resultado": "passed",
+   "archivo": "tests/test_d09_agente.py",
+   "archivo_sha256": "e8b7325c3ec63fef"
+  },
+  "tests/test_d09_agente.py::test_ataque_escalon7_un_origen_falseado_degrada": {
+   "resultado": "passed",
+   "archivo": "tests/test_d09_agente.py",
+   "archivo_sha256": "e8b7325c3ec63fef"
+  },
+  "tests/test_d09_agente.py::test_ataque_escalon7_un_origen_que_ya_no_esta_degrada_SOLO_la_serie": {
+   "resultado": "passed",
+   "archivo": "tests/test_d09_agente.py",
+   "archivo_sha256": "e8b7325c3ec63fef"
+  },
+  "tests/test_d09_agente.py::test_ataque_evidencia_un_hash_ajeno_degrada": {
+   "resultado": "passed",
+   "archivo": "tests/test_d09_agente.py",
+   "archivo_sha256": "e8b7325c3ec63fef"
+  },
+  "tests/test_d09_agente.py::test_ataque_grado_no_sube_sin_evidencia": {
+   "resultado": "passed",
+   "archivo": "tests/test_d09_agente.py",
+   "archivo_sha256": "e8b7325c3ec63fef"
+  },
+  "tests/test_d09_agente.py::test_ataque_identidad_alterar_el_sujeto_cambia_lo_afirmado": {
+   "resultado": "passed",
+   "archivo": "tests/test_d09_agente.py",
+   "archivo_sha256": "e8b7325c3ec63fef"
+  },
+  "tests/test_d09_agente.py::test_ataque_inflacion_la_serie_no_puede_acreditarse_con_el_excel": {
+   "resultado": "passed",
+   "archivo": "tests/test_d09_agente.py",
+   "archivo_sha256": "e8b7325c3ec63fef"
+  },
+  "tests/test_d09_agente.py::test_d09_lee_la_fidelidad_sin_recalcularla": {
+   "resultado": "passed",
+   "archivo": "tests/test_d09_agente.py",
+   "archivo_sha256": "e8b7325c3ec63fef"
+  },
+  "tests/test_d09_agente.py::test_d09_lee_la_serie_sin_recalcularla": {
+   "resultado": "passed",
+   "archivo": "tests/test_d09_agente.py",
+   "archivo_sha256": "e8b7325c3ec63fef"
+  },
+  "tests/test_d09_agente.py::test_el_cable_documental_no_escribe_si_no_accede_a_los_informes": {
+   "resultado": "passed",
+   "archivo": "tests/test_d09_agente.py",
+   "archivo_sha256": "e8b7325c3ec63fef"
+  },
+  "tests/test_d09_agente.py::test_el_cable_no_asume_el_directorio_actual_como_raiz_de_datos": {
+   "resultado": "passed",
+   "archivo": "tests/test_d09_agente.py",
+   "archivo_sha256": "e8b7325c3ec63fef"
+  },
+  "tests/test_d09_agente.py::test_el_escalon_7_comprueba_el_informe_de_origen": {
+   "resultado": "passed",
+   "archivo": "tests/test_d09_agente.py",
+   "archivo_sha256": "e8b7325c3ec63fef"
+  },
+  "tests/test_d09_agente.py::test_la_serie_se_declara_derivada_y_la_fidelidad_de_primera_mano": {
+   "resultado": "passed",
+   "archivo": "tests/test_d09_agente.py",
+   "archivo_sha256": "e8b7325c3ec63fef"
+  },
+  "tests/test_d09_agente.py::test_las_dos_afirmaciones_no_comparten_procedencia": {
+   "resultado": "passed",
+   "archivo": "tests/test_d09_agente.py",
+   "archivo_sha256": "e8b7325c3ec63fef"
+  },
+  "tests/test_d09_agente.py::test_un_periodo_ausente_no_se_afirma_como_falta_de_rendicion": {
+   "resultado": "passed",
+   "archivo": "tests/test_d09_agente.py",
+   "archivo_sha256": "e8b7325c3ec63fef"
   },
   "tests/test_ensayo_vs_observacion.py::test_el_emisor_separa_por_estructura_no_por_confianza": {
    "resultado": "passed",

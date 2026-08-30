@@ -6476,6 +6476,20 @@
           "score": 0.466
         }
       ]
+    },
+    "_origen_serie": {
+      "2023": {
+        "archivo": "Holding_Municipal_Montecristi/Rendición de cuentas 2023-2025/GAD Montecristi/GAD Monteristi Rendición de cuentas 2023.docx",
+        "sha256": "299e29c53aa52c8c"
+      },
+      "2024": {
+        "archivo": "Holding_Municipal_Montecristi/Rendición de cuentas 2023-2025/GAD Montecristi/GAD Monteristi Rendición de cuentas 2024.docx",
+        "sha256": "97e5ad0c6e53ee14"
+      },
+      "2025": {
+        "archivo": "Holding_Municipal_Montecristi/Rendición de cuentas 2023-2025/GAD Montecristi/GAD Monteristi Rendición de cuentas 2025.docx",
+        "sha256": "7614e427db06cf03"
+      }
     }
   },
   "presupuesto_dom": {
