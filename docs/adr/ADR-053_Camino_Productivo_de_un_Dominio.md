@@ -101,11 +101,32 @@ no crearlo.
 `d01` es el de menor radio: su métrica ya está resuelta en el Gold Master (IPE nativo `H16b`), su
 motor sólo lee, y es el único de los cinco con un importador (aunque sea `_template`).
 
-    d01 (piloto) → d03 → d02 → d09 → d08
+    d01 (piloto) → d02 → d03 → d09 → d08
 
 `d09` va tarde a propósito: es el más heterogéneo —dos fuentes, una de ellas snapshot persistido— y
 conviene llegar con el patrón ya probado. `d08` último: su `fuentes.extraer_aportes_de_acta` está
 sin implementar y depende de adquisición que no existe.
+
+### Por qué `d02` es el segundo y no `d03` — corregido antes del sello
+
+La primera versión de este ADR ponía `d03` segundo, por ser el de menor radio. **Medido contra el
+`META_CATALOGO_AGENTES`, ese orden no producía nada:**
+
+    d01 ↔ d03   comparten   sólo el «Orquestador d07» — la plantilla, no una fuente
+    d01 ↔ d02   comparten   7 fuentes reales: Budget Agent · eSIGEF · SERCOP Agent ·
+                            Portal Navigator · Cobertura Material · Trazabilidad
+                            Biográfica · Cadena de Adquisición
+
+`d03` **no comparte ninguna fuente con nadie**: su único vínculo con los demás dominios es la
+plantilla del orquestador. Migrarlo segundo cumpliría la condición del §6-bis —«dos dominios
+migrados»— **de forma puramente formal: los dos primeros no tendrían nada que preguntarse**, y la
+primera interacción real se aplazaría hasta el tercero.
+
+`d01 ↔ d02` comparten además **la cédula presupuestaria**, que es exactamente el caso que Javo
+planteó al proponer la consulta inter-dominio. El eje real es `d01 ↔ d02 ↔ d07`.
+
+> **Un orden de migración no se elige sólo por facilidad, sino por qué permite observar.** Poner
+> primero lo más fácil habría retrasado la única evidencia que puede fijar el contrato del §6-bis.
 
 ## 6-bis · Consulta entre dominios — un agente pregunta, no re-deriva
 
