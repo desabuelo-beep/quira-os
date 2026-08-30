@@ -94,24 +94,27 @@ def test_ataque_GM_la_evidencia_viaja_con_la_respuesta_y_no_se_sustituye():
     """La evidencia declarada tiene que ser la del artefacto que produjo el
     número. Sustituirla dejaría una afirmación cuyo respaldo no existe.
 
-    ⚠️ HUECO CONOCIDO Y DECLARADO, el mismo de d01/d07 (deuda #1, escalón 4): la
-    cadena comprueba que la evidencia EXISTA como dato, no que corresponda al
-    artefacto leído. Se fija en verde para que el día que se cierre, esta
-    aserción se invierta — y entonces sustituirla degradará."""
+    ✅ ESCALÓN 4 CERRADO el 2026-08-30. La respuesta que cruza la frontera ya
+    no sólo declara un hash: declara **con qué artefacto se comprueba**, y la
+    cadena lo verifica. Sustituir el hash degrada la afirmación en origen."""
     if not _hay_gm():
         pytest.skip("Gold Master no accesible")
 
     r = D01.atender(_consulta_real())
     real = r.evidencia_sha256
-    sustituida = dataclasses.replace(r, evidencia_sha256="0000000000000000")
-
     assert real != "0000000000000000"
-    # Hoy el consumo no lo detecta: el hueco está en la cadena, no en la frontera.
-    assert consumir(sustituida).peso == P.HECHO_VERIFICABLE, (
-        "hoy pasa; cuando la evidencia se verifique contra el artefacto leído, "
-        "este assert debe invertirse")
-    # Lo que SÍ se defiende hoy: la respuesta no puede quedarse sin evidencia.
-    assert r.evidencia_sha256, "una respuesta sin evidencia no es transferible"
+
+    # La afirmación que viaja declara su artefacto y corresponde.
+    assert r.sostenida.procedencia.artefacto, (
+        "la respuesta cruza la frontera sin decir con qué comprobar su evidencia")
+    assert P.evidencia_corresponde(r.sostenida.procedencia) is True
+
+    # ASERCIÓN INVERTIDA: un hash ajeno sobre el mismo artefacto ya no acredita.
+    falseada = dataclasses.replace(r.sostenida.procedencia,
+                                   evidencia="0000000000000000")
+    assert P.evidencia_corresponde(falseada) is False
+    assert P.sostener("x", falseada).peso == P.HALLAZGO_DE_VERIFICABILIDAD, (
+        "una evidencia sustituida debe degradar la afirmación antes de cruzar")
 
 
 # ── ATAQUE 3 · G → G+1 · el grado ─────────────────────────────────────────────

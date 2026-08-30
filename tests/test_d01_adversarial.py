@@ -128,13 +128,18 @@ def test_ataque_2b_la_evidencia_no_se_puede_declarar_a_mano(tmp_path):
         sujeto=f"{S.POR_DEFECTO} {S.nombre_corto()}")
     s = P.sostener("el IPE es 0.42", falsa)
 
-    # ⚠️ HUECO CONOCIDO Y DECLARADO, igual que en d07 (deuda #1, escalón 4):
-    # la cadena comprueba que la evidencia EXISTA como dato, no que corresponda
-    # al artefacto que se leyó. Esta prueba lo fija en verde para que el día que
-    # se cierre, la aserción se invierta.
+    # ✅ ESCALÓN 4 CERRADO el 2026-08-30. Esta procedencia NO declara artefacto,
+    # así que sigue acreditando por existencia — el residuo conocido.
     assert s.peso == P.HECHO_VERIFICABLE, (
-        "hoy pasa; cuando la evidencia se verifique contra el artefacto leído, "
-        "este assert debe invertirse a HALLAZGO_DE_VERIFICABILIDAD")
+        "sin artefacto declarado se acredita por existencia: residuo bajo "
+        "trinquete en `test_escalon4_evidencia`")
+
+    # Y AQUÍ LA ASERCIÓN INVERTIDA: en cuanto la procedencia declara con qué
+    # artefacto se comprueba, el hash ajeno deja de acreditar.
+    con_artefacto = P.Procedencia(**{**vars(falsa), "artefacto": str(a)})
+    s2 = P.sostener("el IPE es 0.42", con_artefacto)
+    assert s2.peso == P.HALLAZGO_DE_VERIFICABILIDAD, (
+        "declarando el artefacto, un hash que no es el suyo debe degradar")
     assert real != "0000000000000000", "la evidencia real no puede ser el relleno"
 
 

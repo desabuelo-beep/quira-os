@@ -72,6 +72,37 @@ funciona en ambos sentidos —el par correcto sostiene `hecho_verificable`, el c
 lo ejecute con casos significativos ni que su aserción dependa del resultado. Lo que falta queda
 declarado, no supuesto.
 
+### ✅ ESCALÓN 4 CERRADO el 2026-08-30 — porque apareció tres veces
+
+    declarado → existente → corresponde → CORRESPONDE AL ARTEFACTO → exitoso
+                                          └──── se cierra aquí ────┘
+
+El mismo hueco salió en **d07, en d01 y en la frontera d01↔d02**. El colega lo dictaminó: *«ya no es
+una imperfección localizada de un dominio; es una propiedad del contrato de evidencia»*.
+
+**La proposición cerrada:** una evidencia sólo sostiene una afirmación si el hash declarado
+corresponde al artefacto que el verificador realmente leyó.
+
+`Procedencia.artefacto` — y **no es una octava capa**: las siete de ADR-042 §6-bis no cambian, es el
+respaldo de la cuarta. Hay una prueba que lo fija, porque contarlo como capa habría dejado a toda
+procedencia existente con un hueco que nadie le exigió.
+
+| caso | resultado |
+|---|---|
+| `artefacto A → hash A` | ✅ sostiene |
+| `artefacto A → hash B` | ⛔ **degrada** |
+| artefacto que ya no está | ⛔ **degrada** |
+| sin artefacto declarado | ⚠️ acredita por existencia — **residuo** |
+
+**El residuo se declara, no se esconde.** `evidencia_corresponde()` devuelve `None` —no `False`—
+cuando no hay artefacto: no declararlo **no prueba que el hash sea falso**, lo hace incomprobable.
+Decir `False` acusaría de falsa una evidencia que sólo es no verificable, que es el error que este
+dominio persigue afuera. Exigirlo a todos habría roto toda `Procedencia` viva; queda bajo trinquete
+en `test_los_dominios_migrados_declaran_su_artefacto`.
+
+**Dos aserciones invertidas**, las que estaban en verde documentando el hueco: la de d01 y la de la
+frontera inter-dominio. Ahora defienden la regla en vez de registrar su ausencia.
+
 ## 2 · Artefactos que no declaran su sujeto
 
 **Medido el 2026-08-19** sobre los nueve puntos de transición de la cadena:

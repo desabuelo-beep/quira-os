@@ -61,6 +61,11 @@ EXIGE = {
     NO_DETERMINABLE: (),
 }
 
+# Las SIETE capas de ADR-042 §6-bis, en orden. `artefacto` no está aquí a
+# propósito: no es una capa, es el respaldo de `evidencia`.
+_CAPAS = ("fuente", "captura", "estado_adquisicion", "evidencia",
+          "verificador", "prueba_del_verificador", "sujeto")
+
 PREGUNTA = {
     "fuente": "¿de qué fuente institucional se habla?",
     "captura": "¿se intentó traerla, y cuándo?",
@@ -86,11 +91,21 @@ class Procedencia:
     prueba_del_verificador: str = ""
     sujeto: str = ""
 
+    # ── ESCALÓN 4 · con qué se comprueba que la evidencia es la que se leyó ──
+    # NO es una octava capa: las siete son las de ADR-042 §6-bis y no cambian.
+    # Es el respaldo de la CUARTA. Sin esto, `evidencia` sólo decía «existe un
+    # hash»; con esto puede decir «este hash es el del artefacto que leí».
+    #
+    # Se cerró el 2026-08-30 porque el mismo hueco apareció TRES veces —d07, d01
+    # y la frontera d01↔d02—, y ahí dejó de ser una imperfección local para ser
+    # una propiedad del contrato de evidencia (colega).
+    artefacto: str = ""
+
     def capas_respondidas(self) -> list[str]:
-        return [f.name for f in fields(self) if getattr(self, f.name)]
+        return [c for c in _CAPAS if getattr(self, c)]
 
     def capas_sin_responder(self) -> list[str]:
-        return [f.name for f in fields(self) if not getattr(self, f.name)]
+        return [c for c in _CAPAS if not getattr(self, c)]
 
 
 @dataclass
@@ -109,6 +124,39 @@ class Sostenida:
         return self.peso == HECHO_VERIFICABLE
 
 
+def evidencia_corresponde(p: Procedencia) -> bool | None:
+    """¿El hash declarado es el del artefacto que se leyó? (escalón 4)
+
+        artefacto A → hash A → lectura A → evidencia A     ✅
+        artefacto A → hash B → lectura A → evidencia B     ⛔
+        artefacto A → hash A → lectura B → evidencia A     ⛔
+
+    Devuelve `None` cuando la procedencia **no declara artefacto**: entonces no
+    se puede afirmar ni negar la correspondencia, y decir `False` acusaría de
+    falsa una evidencia que sólo es incomprobable. Es la misma distinción que el
+    dominio le exige al sujeto observado — *«no lo encontré» ≠ «no existe»*.
+
+    Un artefacto que ya no está, o que cambió desde la lectura, devuelve `False`
+    **y es correcto**: la afirmación ya no puede verificarse contra lo que hay.
+    Puede ser que el hash fuera falso o que el artefacto se moviera; en ambos
+    casos QUIRA deja de poder sostenerla con ese respaldo, y eso es lo que se
+    reporta — no cuál de las dos cosas pasó."""
+    if not p.artefacto or not p.evidencia:
+        return None
+    import hashlib
+    from pathlib import Path as _P
+    ruta = _P(p.artefacto)
+    if not ruta.exists():
+        return False
+    h = hashlib.sha256()
+    with ruta.open("rb") as f:
+        for bloque in iter(lambda: f.read(1 << 20), b""):
+            h.update(bloque)
+    # El hash declarado suele venir truncado: se compara por prefijo, que es
+    # lo que se guardó, no por igualdad de longitud.
+    return h.hexdigest().startswith(p.evidencia)
+
+
 def _responde(p: Procedencia, capa: str) -> bool:
     """¿La capa está respondida DE VERDAD?
 
@@ -119,6 +167,13 @@ def _responde(p: Procedencia, capa: str) -> bool:
     valor = getattr(p, capa)
     if not valor:
         return False
+    if capa == "evidencia":
+        # ESCALÓN 4 (2026-08-30). Antes bastaba con que el hash existiera como
+        # dato — cualquier cadena acreditaba cualquier lectura. Si la
+        # procedencia declara el artefacto, la correspondencia se COMPRUEBA;
+        # si no lo declara, se acepta por existencia como antes, y ese hueco
+        # queda visible en `evidencia_corresponde()` devolviendo None.
+        return evidencia_corresponde(p) is not False
     if capa == "prueba_del_verificador":
         # 2026-08-26 · deuda #1. Antes bastaba con que la prueba EXISTIERA, y eso
         # dejaba que cualquier prueba real acreditara cualquier verificador. Ahora

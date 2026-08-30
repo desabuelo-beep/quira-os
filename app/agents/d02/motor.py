@@ -112,6 +112,8 @@ def sostener_isp():
             captura=_dt.date.today().isoformat(),
             estado_adquisicion="leido_del_motor",
             evidencia=m["evidencia_sha256"],
+            # ESCALÓN 4: el Gold Master que el enricher abrió, no el que se suponga.
+            artefacto=str(pathlib.Path(_cargar_enricher().EXCEL)),
             verificador="d02.motor.leer_metricas",
             prueba_del_verificador="test_d02_lee_las_capacidades_sin_recalcularlas",
             sujeto=f"{S.POR_DEFECTO} {S.nombre_corto()}",

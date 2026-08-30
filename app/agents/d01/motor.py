@@ -146,6 +146,8 @@ def sostener_ipe(gold_master_path: str | pathlib.Path | None = None):
             captura=_dt.date.today().isoformat(),
             estado_adquisicion="leido_del_motor",
             evidencia=m["evidencia_sha256"],
+            # ESCALÓN 4: con qué se comprueba que ese hash es el del Excel leído.
+            artefacto=str(path),
             verificador="d01.motor.leer_metricas",
             prueba_del_verificador="test_d01_lee_el_ipe_sin_recalcularlo",
             sujeto=f"{S.POR_DEFECTO} {S.nombre_corto()}",
