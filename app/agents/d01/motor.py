@@ -92,6 +92,32 @@ def _procedencia_de_lectura() -> dict[str, Any]:
         return {"etapa": "d01.motor", "estado": "sujeto_no_acreditado_por_la_cadena"}
 
 
+def atender(consulta):
+    """Responde a otro dominio con **evidencia, no con verdad** (ADR-053 §6-bis).
+
+    Primera implementación real del contrato inter-dominio, y la más pequeña que
+    resuelve el caso: d02 evalúa sostenibilidad presupuestaria y necesita saber
+    qué parte de la inversión está vinculada a metas del POA — un dato que d01
+    ya sostiene y que d02 tendría que re-derivar del mismo Gold Master.
+
+    Lo que devuelve no es `0.9557`: es la afirmación completa de d01, con su
+    sujeto, su evidencia y su grado. **Si d01 no puede sostenerla, la respuesta
+    lo dice** en vez de entregar un número sin respaldo."""
+    from app.agents.consulta import Respuesta
+
+    s = sostener_ipe()
+    m = leer_metricas()
+    return Respuesta(
+        consulta=consulta,
+        sostenida=s,
+        evidencia_sha256=m.get("evidencia_sha256", ""),
+        motor_sha256="",          # d01 lee el Excel directo: no hay delegado
+        extra={"cobertura_metas_poa": m.get("cobertura_metas_poa"),
+               "inversion_vinculada_usd": m.get("inversion_vinculada_usd")}
+        if m.get("status") == "ok" else {},
+    )
+
+
 def sostener_ipe(gold_master_path: str | pathlib.Path | None = None):
     """El IPE **como afirmación con su cadena**, no como número suelto.
 
