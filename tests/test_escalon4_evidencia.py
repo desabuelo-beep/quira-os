@@ -10,8 +10,10 @@ frontera d01↔d02— y ahí dejó de ser una imperfección local. El colega:
 > existe. Necesitamos que pueda demostrar que es la evidencia que realmente
 > leyó.»*
 
-    declarado → existente → corresponde → CORRESPONDE AL ARTEFACTO → exitoso
-                └── ya estaba ──┘         └──── esto se cierra aquí ────┘
+    declarado → existente → corresponde → CORRESPONDE AL ARTEFACTO → ejecutado → exitoso
+                └── ya estaba ──┘         └── esto se cierra aquí ──┘  └ escalón 5 ┘
+
+(Los dos últimos se cerraron el mismo día, en `test_escalon5_ejecucion.py`.)
 
 LA PROPOSICIÓN QUE SE CIERRA:
 

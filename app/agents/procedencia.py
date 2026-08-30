@@ -157,6 +157,28 @@ def evidencia_corresponde(p: Procedencia) -> bool | None:
     return h.hexdigest().startswith(p.evidencia)
 
 
+def prueba_respaldo_vigente(p: Procedencia) -> bool | None:
+    """¿Consta que la prueba citada corrió, y que pasó? (escalones 5 y 6)
+
+        declarado → existente → corresponde → CORRESPONDE AL ARTEFACTO
+                  → EJECUTADO → EXITOSO
+                    └──────── esto ────────┘
+
+    Devuelve `None` cuando no hay testimonio vigente, y ese `None` es la misma
+    distinción del escalón 4: **nadie registró la corrida ≠ consta que falló**.
+    Un `False` aquí significa algo mucho más fuerte y bastante raro — hay
+    constancia de que la prueba que dice respaldar al verificador **no lo
+    respalda**, porque corrió y no pasó.
+
+    No se ejecuta nada para saberlo. Se lee el registro de quien ejecutó, que es
+    la Regla de Oro 4 aplicada a un hecho sobre nosotros mismos: si el dato
+    existe en el artefacto del ejecutor, ningún módulo lo vuelve a producir."""
+    if not p.prueba_del_verificador:
+        return None
+    from app.agents import ejecucion
+    return ejecucion.fue_exitosa(p.prueba_del_verificador)
+
+
 def _responde(p: Procedencia, capa: str) -> bool:
     """¿La capa está respondida DE VERDAD?
 
@@ -183,6 +205,14 @@ def _responde(p: Procedencia, capa: str) -> bool:
         # capa se responde sólo si la prueba existe.
         from app.agents.apropiacion import existe_prueba, respalda
         if not existe_prueba(valor):
+            return False
+        # ESCALONES 5 y 6 (2026-08-30). Si hay testimonio vigente de que la
+        # prueba corrió y NO pasó, la capa deja de responderse: citar como
+        # respaldo algo que consta que falla es peor que no citar nada, porque
+        # aparenta acreditación donde hay constancia de lo contrario. Sin
+        # testimonio se acredita como antes —el residuo queda medido en
+        # `ejecucion.cobertura()`, no escondido—, igual que el escalón 4.
+        if prueba_respaldo_vigente(p) is False:
             return False
         return respalda(valor, p.verificador) if p.verificador else True
     return True

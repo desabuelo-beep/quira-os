@@ -1,0 +1,2832 @@
+{
+ "_lease": "testimonio de una corrida de pytest. NO lo produce QUIRA sobre sí misma: lo produce el ejecutor, y QUIRA lo lee. Caduca cuando el archivo de la prueba cambia.",
+ "commit": "d32be40",
+ "arbol_limpio": false,
+ "pruebas": {
+  "tests/test_consulta_interdominio_adversarial.py::test_00_d02_puede_preguntar_a_d01_y_recibir_evidencia": {
+   "resultado": "passed",
+   "archivo": "tests/test_consulta_interdominio_adversarial.py",
+   "archivo_sha256": "c701f1773a805ee4"
+  },
+  "tests/test_consulta_interdominio_adversarial.py::test_ataque_A_a_B_una_respuesta_de_otro_sujeto_no_se_consume": {
+   "resultado": "passed",
+   "archivo": "tests/test_consulta_interdominio_adversarial.py",
+   "archivo_sha256": "c701f1773a805ee4"
+  },
+  "tests/test_consulta_interdominio_adversarial.py::test_ataque_GM_la_evidencia_viaja_con_la_respuesta_y_no_se_sustituye": {
+   "resultado": "passed",
+   "archivo": "tests/test_consulta_interdominio_adversarial.py",
+   "archivo_sha256": "c701f1773a805ee4"
+  },
+  "tests/test_consulta_interdominio_adversarial.py::test_ataque_G_mas_1_cruzar_la_frontera_no_eleva_el_grado": {
+   "resultado": "passed",
+   "archivo": "tests/test_consulta_interdominio_adversarial.py",
+   "archivo_sha256": "c701f1773a805ee4"
+  },
+  "tests/test_consulta_interdominio_adversarial.py::test_ataque_verdad_la_respuesta_nunca_afirma_que_algo_sea_cierto": {
+   "resultado": "passed",
+   "archivo": "tests/test_consulta_interdominio_adversarial.py",
+   "archivo_sha256": "c701f1773a805ee4"
+  },
+  "tests/test_d01_adversarial.py::test_ataque_1_alterar_el_sujeto_cambia_lo_que_d01_puede_afirmar": {
+   "resultado": "passed",
+   "archivo": "tests/test_d01_adversarial.py",
+   "archivo_sha256": "489076fe62cd7f32"
+  },
+  "tests/test_d01_adversarial.py::test_ataque_2_dos_gold_master_distintos_no_pueden_dar_la_misma_evidencia": {
+   "resultado": "passed",
+   "archivo": "tests/test_d01_adversarial.py",
+   "archivo_sha256": "489076fe62cd7f32"
+  },
+  "tests/test_d01_adversarial.py::test_ataque_2b_la_evidencia_no_se_puede_declarar_a_mano": {
+   "resultado": "passed",
+   "archivo": "tests/test_d01_adversarial.py",
+   "archivo_sha256": "489076fe62cd7f32"
+  },
+  "tests/test_d01_adversarial.py::test_ataque_3_no_se_puede_subir_el_grado_de_una_lectura_fallida": {
+   "resultado": "passed",
+   "archivo": "tests/test_d01_adversarial.py",
+   "archivo_sha256": "489076fe62cd7f32"
+  },
+  "tests/test_d01_adversarial.py::test_ataque_3b_quitar_la_prueba_degrada_la_afirmacion_de_d01": {
+   "resultado": "passed",
+   "archivo": "tests/test_d01_adversarial.py",
+   "archivo_sha256": "489076fe62cd7f32"
+  },
+  "tests/test_d01_adversarial.py::test_ataque_4_d01_devuelve_lo_ESCRITO_aunque_sea_absurdo": {
+   "resultado": "passed",
+   "archivo": "tests/test_d01_adversarial.py",
+   "archivo_sha256": "489076fe62cd7f32"
+  },
+  "tests/test_d01_adversarial.py::test_ataque_4b_si_falta_la_hoja_no_se_inventa_el_numero": {
+   "resultado": "passed",
+   "archivo": "tests/test_d01_adversarial.py",
+   "archivo_sha256": "489076fe62cd7f32"
+  },
+  "tests/test_d01_agente.py::test_d01_declara_sobre_quien_lee": {
+   "resultado": "passed",
+   "archivo": "tests/test_d01_agente.py",
+   "archivo_sha256": "2d62b160e056e99e"
+  },
+  "tests/test_d01_agente.py::test_d01_lee_el_ipe_sin_recalcularlo": {
+   "resultado": "passed",
+   "archivo": "tests/test_d01_agente.py",
+   "archivo_sha256": "2d62b160e056e99e"
+  },
+  "tests/test_d01_agente.py::test_d01_sostiene_el_ipe_con_su_cadena_completa": {
+   "resultado": "passed",
+   "archivo": "tests/test_d01_agente.py",
+   "archivo_sha256": "2d62b160e056e99e"
+  },
+  "tests/test_d01_agente.py::test_la_migracion_no_cambio_un_solo_numero": {
+   "resultado": "passed",
+   "archivo": "tests/test_d01_agente.py",
+   "archivo_sha256": "2d62b160e056e99e"
+  },
+  "tests/test_d01_agente.py::test_la_procedencia_de_d01_es_reproducible": {
+   "resultado": "passed",
+   "archivo": "tests/test_d01_agente.py",
+   "archivo_sha256": "2d62b160e056e99e"
+  },
+  "tests/test_d01_agente.py::test_si_no_hay_motor_d01_no_afirma_sobre_el_sujeto": {
+   "resultado": "passed",
+   "archivo": "tests/test_d01_agente.py",
+   "archivo_sha256": "2d62b160e056e99e"
+  },
+  "tests/test_d02_adversarial.py::test_ataque_1_d02_no_puede_afirmar_sobre_un_sujeto_alterado": {
+   "resultado": "passed",
+   "archivo": "tests/test_d02_adversarial.py",
+   "archivo_sha256": "ac03cb48d1befae8"
+  },
+  "tests/test_d02_adversarial.py::test_ataque_3_d02_no_sube_el_grado_sin_evidencia": {
+   "resultado": "passed",
+   "archivo": "tests/test_d02_adversarial.py",
+   "archivo_sha256": "ac03cb48d1befae8"
+  },
+  "tests/test_d02_adversarial.py::test_ataque_4_d02_no_transforma_lo_que_el_enricher_produce": {
+   "resultado": "passed",
+   "archivo": "tests/test_d02_adversarial.py",
+   "archivo_sha256": "ac03cb48d1befae8"
+  },
+  "tests/test_d02_adversarial.py::test_ataque_5_cambiar_el_enricher_cambia_la_evidencia_declarada": {
+   "resultado": "passed",
+   "archivo": "tests/test_d02_adversarial.py",
+   "archivo_sha256": "ac03cb48d1befae8"
+  },
+  "tests/test_d02_agente.py::test_d01_y_d02_leen_el_mismo_gold_master": {
+   "resultado": "passed",
+   "archivo": "tests/test_d02_agente.py",
+   "archivo_sha256": "11e5037d6fbe0899"
+  },
+  "tests/test_d02_agente.py::test_d02_declara_sobre_quien_lee_y_sin_reloj": {
+   "resultado": "passed",
+   "archivo": "tests/test_d02_agente.py",
+   "archivo_sha256": "11e5037d6fbe0899"
+  },
+  "tests/test_d02_agente.py::test_d02_lee_las_capacidades_sin_recalcularlas": {
+   "resultado": "passed",
+   "archivo": "tests/test_d02_agente.py",
+   "archivo_sha256": "11e5037d6fbe0899"
+  },
+  "tests/test_d02_agente.py::test_d02_sostiene_el_isp_con_su_cadena_completa": {
+   "resultado": "passed",
+   "archivo": "tests/test_d02_agente.py",
+   "archivo_sha256": "11e5037d6fbe0899"
+  },
+  "tests/test_d02_agente.py::test_la_evidencia_de_un_motor_que_delega_incluye_al_delegado": {
+   "resultado": "passed",
+   "archivo": "tests/test_d02_agente.py",
+   "archivo_sha256": "11e5037d6fbe0899"
+  },
+  "tests/test_d03_agente.py::test_ataque_equivalencia_d03_no_transforma_lo_que_el_enricher_produce": {
+   "resultado": "passed",
+   "archivo": "tests/test_d03_agente.py",
+   "archivo_sha256": "6c008ef1d813d83a"
+  },
+  "tests/test_d03_agente.py::test_ataque_evidencia_un_hash_ajeno_degrada": {
+   "resultado": "passed",
+   "archivo": "tests/test_d03_agente.py",
+   "archivo_sha256": "6c008ef1d813d83a"
+  },
+  "tests/test_d03_agente.py::test_ataque_grado_no_sube_sin_evidencia": {
+   "resultado": "passed",
+   "archivo": "tests/test_d03_agente.py",
+   "archivo_sha256": "6c008ef1d813d83a"
+  },
+  "tests/test_d03_agente.py::test_ataque_identidad_alterar_el_sujeto_cambia_lo_afirmado": {
+   "resultado": "passed",
+   "archivo": "tests/test_d03_agente.py",
+   "archivo_sha256": "6c008ef1d813d83a"
+  },
+  "tests/test_d03_agente.py::test_d03_declara_sujeto_artefacto_y_no_lleva_reloj": {
+   "resultado": "passed",
+   "archivo": "tests/test_d03_agente.py",
+   "archivo_sha256": "6c008ef1d813d83a"
+  },
+  "tests/test_d03_agente.py::test_d03_lee_el_mandato_sin_recalcularlo": {
+   "resultado": "passed",
+   "archivo": "tests/test_d03_agente.py",
+   "archivo_sha256": "6c008ef1d813d83a"
+  },
+  "tests/test_d03_agente.py::test_los_tres_dominios_migrados_leen_el_mismo_gold_master": {
+   "resultado": "passed",
+   "archivo": "tests/test_d03_agente.py",
+   "archivo_sha256": "6c008ef1d813d83a"
+  },
+  "tests/test_d07_autonomia.py::test_a_quira_adquiere_desde_la_fuente_sin_intervencion": {
+   "resultado": "skipped",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_b_cada_artefacto_interno_conserva_a_su_contenedor": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_c_las_publicaciones_no_se_pierden_al_deduplicar": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_cada_enlace_declara_si_se_comprobo_en_esta_corrida": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_cadencia_trimestral_no_exige_doce_periodos": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_cobertura_no_inventa_ausencias_por_busqueda_literal": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_cobertura_si_declara_ausencia_cuando_la_norma_da_regla": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_codificacion_dos_antes_que_latin1": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_columna_util_si_algun_dato_la_ocupa": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_columnas_vacias_al_final_no_cuentan_como_campos": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_cta_admite_el_medio_punto_del_instructivo": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_d_una_captura_que_fallo_no_es_una_ausencia": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_delimitador_no_se_decide_contando_separadores": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_el_caso_cero_sobre_cero_lo_decide_la_norma": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_el_certificado_de_resoluciones_no_sustituye_al_acta": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_el_clasificador_documental_distingue_acta_de_certificado": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_el_clasificador_no_vive_en_el_modulo": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_el_dominio_consume_la_cadencia_de_la_regla_operativa": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_el_grado_de_apropiacion_se_deriva_y_no_se_declara": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_el_orquestador_declara_lo_que_adquirio_por_su_cuenta": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_el_perimetro_propio_se_sella_y_es_estable": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_el_plazo_de_respuesta_sale_de_la_ley_no_del_codigo": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_el_silencio_equivale_a_denegacion": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_el_sistema_no_se_ata_mas_a_un_escritorio": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_el_sistema_responde_por_si_mismo_que_sabe_y_que_no": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_el_sujeto_observado_no_crece_dentro_del_instrumento": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_escalar_a_incumplimiento_exige_las_seis_condiciones": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_fecha_admite_los_formatos_de_la_fuente[-None]": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_fecha_admite_los_formatos_de_la_fuente[2025-01-31-esperado1]": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_fecha_admite_los_formatos_de_la_fuente[31-01-2025-esperado2]": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_fecha_admite_los_formatos_de_la_fuente[31/1/2025-esperado0]": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_fecha_admite_los_formatos_de_la_fuente[sin fecha-None]": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_forzar_una_etapa_fuerza_su_trabajo_no_solo_su_estado": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_la_corrida_declara_si_sus_reglas_estan_vigentes": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_la_difusion_exige_tres_veces_al_ano": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_la_formula_del_sita_es_la_del_instructivo": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_la_frontera_de_datos_se_declara_una_sola_vez": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_la_identidad_del_sujeto_tiene_una_sola_puerta": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_la_norma_admite_dos_cadencias_y_la_regla_decide_cual": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_la_portabilidad_tiene_trinquete_por_clase": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_la_vara_normativa_no_se_regenera_sola": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_las_clases_de_acto_no_viven_en_el_modulo": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_lo_que_mira_a_la_fuente_caduca_por_calendario": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_lo_que_no_se_puede_observar_no_se_califica_como_incumplido": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_lo_que_nunca_se_produjo_no_se_da_por_hecho": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_los_enlaces_caidos_hoy_son_todos_del_sujeto_obligado": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_los_hallazgos_de_la_corrida_llevan_su_cadena": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_los_parametros_cualitativos_no_aplican_a_todos_los_conjuntos": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_metadatos_no_se_confunden_con_conjunto_de_datos": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_ningun_artefacto_declara_su_fecha_a_mano": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_ningun_programa_queda_sin_clasificar": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_ninguna_etapa_declara_un_programa_inexistente": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_no_se_puede_construir_una_afirmacion_ejecutada_sin_sujeto": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_numeral_5_22_es_un_solo_conjunto": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_parametros_normativos_vienen_de_la_ro_no_del_codigo": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_periodo_no_publicado_puntua_cero_y_no_se_omite": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_quira_reconstruye_sus_derivados_sin_ayuda": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_registro_posterior_al_dia_15_pierde_rp": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_rehacer_una_etapa_no_invalida_a_las_que_dependen_de_ella": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_sin_regla_operativa_el_dominio_no_improvisa": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_sin_solicitudes_no_hay_incumplimiento": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_sin_verificador_no_se_afirma_sobre_el_sujeto": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_subnumerales_no_se_miden_como_cobertura_material": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_tipo_de_sesion_solo_admite_los_valores_de_la_norma": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_tramo_parcial_no_exige_periodos_no_vencidos": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_un_analisis_que_se_corto_solo_no_se_declara_completo": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_un_artefacto_declara_su_naturaleza_epistemologica": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_un_conjunto_sin_parametros_cualitativos_no_pierde_calidad": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_un_corte_de_fuente_no_condena_al_enlace_para_siempre": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_un_enlace_roto_de_un_tercero_no_penaliza_al_sujeto": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_un_escaneo_no_se_transcribe_ni_se_supone": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_una_capacidad_reproducible_declara_sobre_quien_lo_es": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_una_descarga_nueva_invalida_el_analisis_viejo": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_una_ejecucion_sin_sujeto_se_degrada_en_vez_de_suponer": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_autonomia.py::test_una_prueba_inexistente_no_acredita_la_interpretacion": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_autonomia.py",
+   "archivo_sha256": "bb070772937b9b56"
+  },
+  "tests/test_d07_materializacion.py::test_el_numeral_22_existe_como_obligacion_propia": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_materializacion.py",
+   "archivo_sha256": "6d1f472305ba697f"
+  },
+  "tests/test_d07_materializacion.py::test_el_numeral_5_22_es_un_solo_conjunto_en_el_portal": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_materializacion.py",
+   "archivo_sha256": "6d1f472305ba697f"
+  },
+  "tests/test_d07_materializacion.py::test_evaluar_no_afirma_incumplimiento_cuando_no_halla_evidencia": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_materializacion.py",
+   "archivo_sha256": "6d1f472305ba697f"
+  },
+  "tests/test_d07_materializacion.py::test_la_ausencia_de_artefacto_no_es_incumplimiento": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_materializacion.py",
+   "archivo_sha256": "6d1f472305ba697f"
+  },
+  "tests/test_d07_materializacion.py::test_la_relacion_segmento_condicion_es_de_muchos_a_muchos": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_materializacion.py",
+   "archivo_sha256": "6d1f472305ba697f"
+  },
+  "tests/test_d07_materializacion.py::test_la_unidad_es_la_relacion_no_el_archivo_ni_el_numeral": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_materializacion.py",
+   "archivo_sha256": "6d1f472305ba697f"
+  },
+  "tests/test_d07_materializacion.py::test_lo_que_no_se_asocia_a_una_obligacion_no_se_interpreta": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_materializacion.py",
+   "archivo_sha256": "6d1f472305ba697f"
+  },
+  "tests/test_d07_materializacion.py::test_los_campos_del_bloque_compartido_no_se_reparten_por_nuestra_cuenta": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_materializacion.py",
+   "archivo_sha256": "6d1f472305ba697f"
+  },
+  "tests/test_d07_materializacion.py::test_los_pilotos_de_capa2_estan_validados_y_trazables": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_materializacion.py",
+   "archivo_sha256": "6d1f472305ba697f"
+  },
+  "tests/test_d07_materializacion.py::test_una_facultad_accesoria_no_degrada_una_obligacion_explicita": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_materializacion.py",
+   "archivo_sha256": "6d1f472305ba697f"
+  },
+  "tests/test_d07_materializacion.py::test_una_obligacion_sin_periodicidad_declarada_no_la_inventa": {
+   "resultado": "passed",
+   "archivo": "tests/test_d07_materializacion.py",
+   "archivo_sha256": "6d1f472305ba697f"
+  },
+  "tests/test_ensayo_vs_observacion.py::test_el_emisor_separa_por_estructura_no_por_confianza": {
+   "resultado": "passed",
+   "archivo": "tests/test_ensayo_vs_observacion.py",
+   "archivo_sha256": "9cc5613dfb9234bc"
+  },
+  "tests/test_ensayo_vs_observacion.py::test_el_nombre_del_archivo_tambien_lo_declara": {
+   "resultado": "passed",
+   "archivo": "tests/test_ensayo_vs_observacion.py",
+   "archivo_sha256": "9cc5613dfb9234bc"
+  },
+  "tests/test_ensayo_vs_observacion.py::test_las_observaciones_reales_siguen_donde_estaban": {
+   "resultado": "passed",
+   "archivo": "tests/test_ensayo_vs_observacion.py",
+   "archivo_sha256": "9cc5613dfb9234bc"
+  },
+  "tests/test_ensayo_vs_observacion.py::test_ningun_ensayo_se_hace_pasar_por_observacion": {
+   "resultado": "passed",
+   "archivo": "tests/test_ensayo_vs_observacion.py",
+   "archivo_sha256": "9cc5613dfb9234bc"
+  },
+  "tests/test_escalon4_evidencia.py::test_el_artefacto_no_es_una_octava_capa": {
+   "resultado": "passed",
+   "archivo": "tests/test_escalon4_evidencia.py",
+   "archivo_sha256": "2de8e63536a9a13c"
+  },
+  "tests/test_escalon4_evidencia.py::test_el_hash_correcto_del_artefacto_leido_sostiene": {
+   "resultado": "passed",
+   "archivo": "tests/test_escalon4_evidencia.py",
+   "archivo_sha256": "2de8e63536a9a13c"
+  },
+  "tests/test_escalon4_evidencia.py::test_los_dominios_migrados_declaran_su_artefacto": {
+   "resultado": "passed",
+   "archivo": "tests/test_escalon4_evidencia.py",
+   "archivo_sha256": "2de8e63536a9a13c"
+  },
+  "tests/test_escalon4_evidencia.py::test_sin_artefacto_no_se_afirma_ni_se_niega_la_correspondencia": {
+   "resultado": "passed",
+   "archivo": "tests/test_escalon4_evidencia.py",
+   "archivo_sha256": "2de8e63536a9a13c"
+  },
+  "tests/test_escalon4_evidencia.py::test_un_artefacto_que_ya_no_esta_DEGRADA": {
+   "resultado": "passed",
+   "archivo": "tests/test_escalon4_evidencia.py",
+   "archivo_sha256": "2de8e63536a9a13c"
+  },
+  "tests/test_escalon4_evidencia.py::test_un_hash_que_no_es_del_artefacto_DEGRADA": {
+   "resultado": "passed",
+   "archivo": "tests/test_escalon4_evidencia.py",
+   "archivo_sha256": "2de8e63536a9a13c"
+  },
+  "tests/test_escalon5_ejecucion.py::test_ataque_basta_una_parametrizacion_fallida_para_no_acreditar": {
+   "resultado": "passed",
+   "archivo": "tests/test_escalon5_ejecucion.py",
+   "archivo_sha256": "772ee29a901af35d"
+  },
+  "tests/test_escalon5_ejecucion.py::test_ataque_caducado_devuelve_None_y_no_False": {
+   "resultado": "passed",
+   "archivo": "tests/test_escalon5_ejecucion.py",
+   "archivo_sha256": "772ee29a901af35d"
+  },
+  "tests/test_escalon5_ejecucion.py::test_ataque_un_archivo_que_ya_no_existe_no_acredita": {
+   "resultado": "passed",
+   "archivo": "tests/test_escalon5_ejecucion.py",
+   "archivo_sha256": "772ee29a901af35d"
+  },
+  "tests/test_escalon5_ejecucion.py::test_ataque_un_nombre_parecido_no_hereda_el_testimonio": {
+   "resultado": "passed",
+   "archivo": "tests/test_escalon5_ejecucion.py",
+   "archivo_sha256": "772ee29a901af35d"
+  },
+  "tests/test_escalon5_ejecucion.py::test_ataque_un_registro_ausente_no_degrada_la_cadena": {
+   "resultado": "passed",
+   "archivo": "tests/test_escalon5_ejecucion.py",
+   "archivo_sha256": "772ee29a901af35d"
+  },
+  "tests/test_escalon5_ejecucion.py::test_ataque_un_registro_ilegible_no_afirma_ni_acusa": {
+   "resultado": "passed",
+   "archivo": "tests/test_escalon5_ejecucion.py",
+   "archivo_sha256": "772ee29a901af35d"
+  },
+  "tests/test_escalon5_ejecucion.py::test_ataque_un_testimonio_de_otra_version_del_codigo_CADUCA": {
+   "resultado": "passed",
+   "archivo": "tests/test_escalon5_ejecucion.py",
+   "archivo_sha256": "772ee29a901af35d"
+  },
+  "tests/test_escalon5_ejecucion.py::test_ataque_un_testimonio_no_puede_borrar_a_otro": {
+   "resultado": "passed",
+   "archivo": "tests/test_escalon5_ejecucion.py",
+   "archivo_sha256": "772ee29a901af35d"
+  },
+  "tests/test_escalon5_ejecucion.py::test_el_registro_real_habla_de_esta_suite": {
+   "resultado": "passed",
+   "archivo": "tests/test_escalon5_ejecucion.py",
+   "archivo_sha256": "772ee29a901af35d"
+  },
+  "tests/test_escalon5_ejecucion.py::test_la_cadena_degrada_cuando_consta_que_la_prueba_falla": {
+   "resultado": "passed",
+   "archivo": "tests/test_escalon5_ejecucion.py",
+   "archivo_sha256": "772ee29a901af35d"
+  },
+  "tests/test_escalon5_ejecucion.py::test_ningun_dominio_migrado_se_apoya_en_una_prueba_que_consta_que_falla": {
+   "resultado": "passed",
+   "archivo": "tests/test_escalon5_ejecucion.py",
+   "archivo_sha256": "772ee29a901af35d"
+  },
+  "tests/test_escalon5_ejecucion.py::test_sin_testimonio_no_se_afirma_ni_se_niega": {
+   "resultado": "passed",
+   "archivo": "tests/test_escalon5_ejecucion.py",
+   "archivo_sha256": "772ee29a901af35d"
+  },
+  "tests/test_escalon5_ejecucion.py::test_un_testimonio_de_fallo_DEGRADA_la_afirmacion": {
+   "resultado": "passed",
+   "archivo": "tests/test_escalon5_ejecucion.py",
+   "archivo_sha256": "772ee29a901af35d"
+  },
+  "tests/test_escalon5_ejecucion.py::test_un_testimonio_vigente_acredita_que_corrio_y_que_paso": {
+   "resultado": "passed",
+   "archivo": "tests/test_escalon5_ejecucion.py",
+   "archivo_sha256": "772ee29a901af35d"
+  },
+  "tests/test_escalon5_ejecucion.py::test_una_prueba_omitida_no_cuenta_como_exito": {
+   "resultado": "passed",
+   "archivo": "tests/test_escalon5_ejecucion.py",
+   "archivo_sha256": "772ee29a901af35d"
+  },
+  "tests/test_escalon5_ejecucion.py::test_una_prueba_parametrizada_si_hereda_su_testimonio": {
+   "resultado": "passed",
+   "archivo": "tests/test_escalon5_ejecucion.py",
+   "archivo_sha256": "772ee29a901af35d"
+  },
+  "tests/test_escalon5_ejecucion.py::test_verificar_la_ejecucion_no_ejecuta_nada": {
+   "resultado": "passed",
+   "archivo": "tests/test_escalon5_ejecucion.py",
+   "archivo_sha256": "772ee29a901af35d"
+  },
+  "tests/test_frontera_de_efectos.py::test_el_marcador_realmente_abre_la_frontera": {
+   "resultado": "passed",
+   "archivo": "tests/test_frontera_de_efectos.py",
+   "archivo_sha256": "c95c693f4c7ef1eb"
+  },
+  "tests/test_frontera_de_efectos.py::test_el_permiso_de_efecto_real_es_excepcional": {
+   "resultado": "passed",
+   "archivo": "tests/test_frontera_de_efectos.py",
+   "archivo_sha256": "c95c693f4c7ef1eb"
+  },
+  "tests/test_frontera_de_efectos.py::test_la_frontera_se_aplica_a_todas_sin_que_nadie_la_active": {
+   "resultado": "passed",
+   "archivo": "tests/test_frontera_de_efectos.py",
+   "archivo_sha256": "c95c693f4c7ef1eb"
+  },
+  "tests/test_frontera_de_efectos.py::test_la_ruta_QUE_NOS_COLGO_queda_cortada_en_seco": {
+   "resultado": "passed",
+   "archivo": "tests/test_frontera_de_efectos.py",
+   "archivo_sha256": "c95c693f4c7ef1eb"
+  },
+  "tests/test_frontera_de_efectos.py::test_una_prueba_no_declarada_no_puede_abrir_la_red": {
+   "resultado": "passed",
+   "archivo": "tests/test_frontera_de_efectos.py",
+   "archivo_sha256": "c95c693f4c7ef1eb"
+  },
+  "tests/test_frontera_de_efectos.py::test_una_prueba_no_declarada_no_puede_lanzar_un_subproceso": {
+   "resultado": "passed",
+   "archivo": "tests/test_frontera_de_efectos.py",
+   "archivo_sha256": "c95c693f4c7ef1eb"
+  },
+  "tests/test_gold_master_governance.py::TestConstantesModulo::test_claves_output_api_contiene_icpi_tgi": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestConstantesModulo::test_claves_output_api_contiene_sat_requeridos": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestConstantesModulo::test_claves_output_api_contiene_tgi_d1_d5": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestConstantesModulo::test_claves_output_api_no_vacio": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestConstantesModulo::test_hojas_requeridas_contiene_la_interfaz_publica": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestConstantesModulo::test_hojas_requeridas_cubren_las_fuentes_de_dominio": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestConstantesModulo::test_hojas_requeridas_no_vacio": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestHelpers::test_calcular_sha256_archivo_vacio": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestHelpers::test_calcular_sha256_correcto": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestHelpers::test_calcular_sha256_determinista": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestHelpers::test_calcular_sha256_longitud": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestHelpers::test_resolver_ruta_con_argumento_explicito": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestHelpers::test_resolver_ruta_con_path_object": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestHelpers::test_resolver_ruta_ninguna_usa_fallback": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestObtenerChangelogGm::test_changelog_detecta_version_activa": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestObtenerChangelogGm::test_changelog_existente_retorna_versiones": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestObtenerChangelogGm::test_changelog_inexistente_retorna_error": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestObtenerChangelogGm::test_changelog_json_malformado_retorna_error": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestObtenerChangelogGm::test_changelog_retorna_estructura_completa": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestObtenerChangelogGm::test_changelog_sin_version_activa": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestObtenerChangelogGm::test_changelog_vacio_retorna_lista_vacia": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestObtenerEstadoGm::test_archivo_inexistente_retorna_no_disponible": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestObtenerEstadoGm::test_estado_cuenta_errores_validacion": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestObtenerEstadoGm::test_estado_disponible_con_archivo": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestObtenerEstadoGm::test_estado_estructura_completa": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestObtenerEstadoGm::test_estado_retorna_nombre_archivo": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestObtenerEstadoGm::test_estado_retorna_sha256": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestObtenerEstadoGm::test_estado_retorna_total_hojas": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestRespaldarGoldMaster::test_archivo_inexistente_retorna_error": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestRespaldarGoldMaster::test_respaldo_crea_archivo_firma_json": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestRespaldarGoldMaster::test_respaldo_crea_carpeta_destino_si_no_existe": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestRespaldarGoldMaster::test_respaldo_estructura_completa_retorno": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestRespaldarGoldMaster::test_respaldo_exitoso_crea_archivo": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestRespaldarGoldMaster::test_respaldo_firma_contiene_campos_requeridos": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestRespaldarGoldMaster::test_respaldo_genera_sha256": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestRespaldarGoldMaster::test_respaldo_nombre_incluye_fecha": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestRespaldarGoldMaster::test_respaldo_retorna_fecha_iso": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestRespaldarGoldMaster::test_respaldo_retorna_tamano": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestRespaldarGoldMaster::test_sha256_es_correcto": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestResultadoValidacion::test_campos_completos": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestResultadoValidacion::test_campos_opcionales_por_defecto": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestResultadoValidacion::test_categoria_contrato_api": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestResultadoValidacion::test_instancia_alerta": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestResultadoValidacion::test_instancia_error": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestResultadoValidacion::test_instancia_ok": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestValidarGoldMaster::test_apertura_fallida_retorna_error": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestValidarGoldMaster::test_archivo_inexistente_retorna_error": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestValidarGoldMaster::test_archivo_inexistente_termina_temprano": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestValidarGoldMaster::test_clave_api_con_valor_none_da_alerta": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestValidarGoldMaster::test_clave_api_faltante_da_error": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestValidarGoldMaster::test_claves_api_presentes_dan_ok": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestValidarGoldMaster::test_hoja_faltante_da_error": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestValidarGoldMaster::test_rango_metrica_correcto_da_ok": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestValidarGoldMaster::test_rango_metrica_fuera_de_rango_da_error": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestValidarGoldMaster::test_resultado_incluye_multiple_categorias": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestValidarGoldMaster::test_todas_hojas_presentes_dan_ok": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestValidarGoldMaster::test_version_fuera_del_canon_da_alerta": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_gold_master_governance.py::TestValidarGoldMaster::test_version_v6_da_ok": {
+   "resultado": "passed",
+   "archivo": "tests/test_gold_master_governance.py",
+   "archivo_sha256": "9fe12fe4650bb99d"
+  },
+  "tests/test_longitudinal_engine.py::TestBuildMetricTrend::test_empty_history_returns_empty": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestBuildMetricTrend::test_icpi_series": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestBuildMetricTrend::test_missing_metric_returns_none": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestBuildMetricTrend::test_nested_metric_riesgo_ponderado": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestBuildRCMTable::test_d3_ti_converts_ratio_to_pct": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestBuildRCMTable::test_empty_history_returns_empty_table": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestBuildRCMTable::test_multiple_snapshots_correct_order": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestBuildRCMTable::test_none_icpi_handled": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestBuildRCMTable::test_sat_iv_mitigated_when_not_in_activas": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestBuildRCMTable::test_sat_iv_sin_datos_when_not_evaluated": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestBuildRCMTable::test_single_snapshot_returns_one_row": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestDedupSnapshots::test_different_dates_both_kept": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestDedupSnapshots::test_limit_is_respected": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestDedupSnapshots::test_oldest_first_ordering": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestDedupSnapshots::test_same_fecha_keeps_latest": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestDetectTrend::test_all_nones_returns_insufficient": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestDetectTrend::test_deterioro_when_delta_le_minus_1": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestDetectTrend::test_estable_when_within_threshold": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestDetectTrend::test_exact_threshold_is_mejora": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestDetectTrend::test_insufficient_data_with_empty_list": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestDetectTrend::test_insufficient_data_with_one_value": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestDetectTrend::test_just_below_threshold_is_estable": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestDetectTrend::test_mejora_when_delta_ge_1": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestDetectTrend::test_nones_are_ignored": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestDetectTrend::test_two_values_sufficient": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestGetLongitudinalSummary::test_error_on_exception_returns_safe_dict": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestGetLongitudinalSummary::test_icpi_series_populated": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestGetLongitudinalSummary::test_icpi_trend_mejora": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestGetLongitudinalSummary::test_last_icpi_pct": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestGetLongitudinalSummary::test_last_period_label": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestGetLongitudinalSummary::test_last_riesgo": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestGetLongitudinalSummary::test_last_sat_activas_count": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestGetLongitudinalSummary::test_no_error_key_when_ok": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestGetLongitudinalSummary::test_no_snapshots_returns_error": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestGetLongitudinalSummary::test_rcm_table_populated": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestGetLongitudinalSummary::test_returns_correct_n_periodos": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestGetNested::test_missing_key_returns_default": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestGetNested::test_missing_nested_key_returns_none": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestGetNested::test_nested_three_levels": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestGetNested::test_nested_two_levels": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestGetNested::test_non_dict_at_path_returns_default": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestGetNested::test_simple_key": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestGetSnapshotHistory::test_deduplication_applied": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestGetSnapshotHistory::test_empty_dir_returns_empty_list": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestGetSnapshotHistory::test_loads_local_files_when_supabase_fails": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestPeriodLabel::test_diciembre": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestPeriodLabel::test_enero_2025": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestPeriodLabel::test_invalid_date_returns_raw": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestPeriodLabel::test_mayo_2026": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestPeriodLabel::test_missing_fecha_returns_desconocido": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestSnapTimestamp::test_fallback_to_fecha_corte": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestSnapTimestamp::test_invalid_returns_datetime_min": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_longitudinal_engine.py::TestSnapTimestamp::test_parses_iso_with_offset": {
+   "resultado": "passed",
+   "archivo": "tests/test_longitudinal_engine.py",
+   "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_naturaleza_verificabilidad.py::test_caso1_un_objeto_documental_sigue_comportandose_como_antes": {
+   "resultado": "passed",
+   "archivo": "tests/test_naturaleza_verificabilidad.py",
+   "archivo_sha256": "764662ed6cee1b9b"
+  },
+  "tests/test_naturaleza_verificabilidad.py::test_caso2_la_evidencia_dificil_no_convierte_el_objeto_en_no_documental": {
+   "resultado": "passed",
+   "archivo": "tests/test_naturaleza_verificabilidad.py",
+   "archivo_sha256": "764662ed6cee1b9b"
+  },
+  "tests/test_naturaleza_verificabilidad.py::test_caso3_un_objeto_sin_materializacion_esperada_no_produce_hallazgo": {
+   "resultado": "passed",
+   "archivo": "tests/test_naturaleza_verificabilidad.py",
+   "archivo_sha256": "764662ed6cee1b9b"
+  },
+  "tests/test_naturaleza_verificabilidad.py::test_caso4_no_publicar_lo_debido_termina_en_sin_evidencia_jamas_en_no_documental": {
+   "resultado": "passed",
+   "archivo": "tests/test_naturaleza_verificabilidad.py",
+   "archivo_sha256": "764662ed6cee1b9b"
+  },
+  "tests/test_naturaleza_verificabilidad.py::test_el_estado_del_objeto_y_el_de_la_evidencia_no_comparten_vocabulario": {
+   "resultado": "passed",
+   "archivo": "tests/test_naturaleza_verificabilidad.py",
+   "archivo_sha256": "764662ed6cee1b9b"
+  },
+  "tests/test_naturaleza_verificabilidad.py::test_la_secuencia_solo_se_recorre_en_un_sentido": {
+   "resultado": "passed",
+   "archivo": "tests/test_naturaleza_verificabilidad.py",
+   "archivo_sha256": "764662ed6cee1b9b"
+  },
+  "tests/test_naturaleza_verificabilidad.py::test_ni_el_motor_ni_el_sujeto_pueden_declarar_no_documental": {
+   "resultado": "passed",
+   "archivo": "tests/test_naturaleza_verificabilidad.py",
+   "archivo_sha256": "764662ed6cee1b9b"
+  },
+  "tests/test_nivel_epistemico.py::test_el_gate_distingue_error_de_pregunta": {
+   "resultado": "passed",
+   "archivo": "tests/test_nivel_epistemico.py",
+   "archivo_sha256": "79eb5082cbdcb787"
+  },
+  "tests/test_nivel_epistemico.py::test_el_gate_se_comporta_como_debe_ante_casos_conocidos": {
+   "resultado": "passed",
+   "archivo": "tests/test_nivel_epistemico.py",
+   "archivo_sha256": "79eb5082cbdcb787"
+  },
+  "tests/test_nivel_epistemico.py::test_el_texto_que_lee_el_ciudadano_no_viola_el_canon": {
+   "resultado": "passed",
+   "archivo": "tests/test_nivel_epistemico.py",
+   "archivo_sha256": "79eb5082cbdcb787"
+  },
+  "tests/test_nivel_epistemico.py::test_las_tres_supresiones_siguen_puestas": {
+   "resultado": "passed",
+   "archivo": "tests/test_nivel_epistemico.py",
+   "archivo_sha256": "79eb5082cbdcb787"
+  },
+  "tests/test_pipeline_smoke.py::TestLogger::test_get_logger_idempotent": {
+   "resultado": "passed",
+   "archivo": "tests/test_pipeline_smoke.py",
+   "archivo_sha256": "e6d4346f19b535e7"
+  },
+  "tests/test_pipeline_smoke.py::TestLogger::test_get_logger_returns_logger": {
+   "resultado": "passed",
+   "archivo": "tests/test_pipeline_smoke.py",
+   "archivo_sha256": "e6d4346f19b535e7"
+  },
+  "tests/test_pipeline_smoke.py::TestLogger::test_logger_does_not_propagate": {
+   "resultado": "passed",
+   "archivo": "tests/test_pipeline_smoke.py",
+   "archivo_sha256": "e6d4346f19b535e7"
+  },
+  "tests/test_pipeline_smoke.py::TestPipelineSmoke::test_dry_run_completes": {
+   "resultado": "passed",
+   "archivo": "tests/test_pipeline_smoke.py",
+   "archivo_sha256": "e6d4346f19b535e7"
+  },
+  "tests/test_pipeline_smoke.py::TestPipelineSmoke::test_dry_run_skips_save": {
+   "resultado": "passed",
+   "archivo": "tests/test_pipeline_smoke.py",
+   "archivo_sha256": "e6d4346f19b535e7"
+  },
+  "tests/test_pipeline_smoke.py::TestPipelineSmoke::test_gad_codigo_montecristi": {
+   "resultado": "passed",
+   "archivo": "tests/test_pipeline_smoke.py",
+   "archivo_sha256": "e6d4346f19b535e7"
+  },
+  "tests/test_pipeline_smoke.py::TestPipelineSmoke::test_icpi_loaded_from_gold_master": {
+   "resultado": "passed",
+   "archivo": "tests/test_pipeline_smoke.py",
+   "archivo_sha256": "e6d4346f19b535e7"
+  },
+  "tests/test_pipeline_smoke.py::TestPipelineSmoke::test_sat_evaluates_and_activates": {
+   "resultado": "passed",
+   "archivo": "tests/test_pipeline_smoke.py",
+   "archivo_sha256": "e6d4346f19b535e7"
+  },
+  "tests/test_pipeline_smoke.py::TestPipelineSmoke::test_snapshot_has_required_top_keys": {
+   "resultado": "passed",
+   "archivo": "tests/test_pipeline_smoke.py",
+   "archivo_sha256": "e6d4346f19b535e7"
+  },
+  "tests/test_pipeline_smoke.py::TestPipelineSmoke::test_traceability_score_positive": {
+   "resultado": "passed",
+   "archivo": "tests/test_pipeline_smoke.py",
+   "archivo_sha256": "e6d4346f19b535e7"
+  },
+  "tests/test_pipeline_smoke.py::TestPipelineSmoke::test_validation_passes": {
+   "resultado": "passed",
+   "archivo": "tests/test_pipeline_smoke.py",
+   "archivo_sha256": "e6d4346f19b535e7"
+  },
+  "tests/test_procedencia_adversarial.py::test_01_el_sujeto_no_sobrevive_a_su_propia_desaparicion": {
+   "resultado": "passed",
+   "archivo": "tests/test_procedencia_adversarial.py",
+   "archivo_sha256": "757396940ea4c953"
+  },
+  "tests/test_procedencia_adversarial.py::test_02_sin_evidencia_no_se_afirma_sobre_el_sujeto": {
+   "resultado": "passed",
+   "archivo": "tests/test_procedencia_adversarial.py",
+   "archivo_sha256": "757396940ea4c953"
+  },
+  "tests/test_procedencia_adversarial.py::test_03_sin_verificador_la_evidencia_no_dice_nada_por_si_sola": {
+   "resultado": "passed",
+   "archivo": "tests/test_procedencia_adversarial.py",
+   "archivo_sha256": "757396940ea4c953"
+  },
+  "tests/test_procedencia_adversarial.py::test_04_una_prueba_inexistente_no_respalda_nada": {
+   "resultado": "passed",
+   "archivo": "tests/test_procedencia_adversarial.py",
+   "archivo_sha256": "757396940ea4c953"
+  },
+  "tests/test_procedencia_adversarial.py::test_05_la_prueba_debe_respaldar_al_verificador_que_dice_acreditar": {
+   "resultado": "passed",
+   "archivo": "tests/test_procedencia_adversarial.py",
+   "archivo_sha256": "757396940ea4c953"
+  },
+  "tests/test_procedencia_adversarial.py::test_06_una_fuente_que_nunca_se_consulto_no_sostiene_observacion": {
+   "resultado": "passed",
+   "archivo": "tests/test_procedencia_adversarial.py",
+   "archivo_sha256": "757396940ea4c953"
+  },
+  "tests/test_procedencia_adversarial.py::test_07_con_las_siete_capas_conserva_el_grado_maximo": {
+   "resultado": "passed",
+   "archivo": "tests/test_procedencia_adversarial.py",
+   "archivo_sha256": "757396940ea4c953"
+  },
+  "tests/test_procedencia_adversarial.py::test_08_medir_con_evidencia_de_otro_sujeto_DETIENE_la_corrida": {
+   "resultado": "passed",
+   "archivo": "tests/test_procedencia_adversarial.py",
+   "archivo_sha256": "757396940ea4c953"
+  },
+  "tests/test_procedencia_adversarial.py::test_08b_sin_discordancia_el_gate_no_estorba": {
+   "resultado": "passed",
+   "archivo": "tests/test_procedencia_adversarial.py",
+   "archivo_sha256": "757396940ea4c953"
+  },
+  "tests/test_procedencia_adversarial.py::test_09_cambiar_la_identidad_en_la_fuente_DETIENE_la_corrida": {
+   "resultado": "passed",
+   "archivo": "tests/test_procedencia_adversarial.py",
+   "archivo_sha256": "757396940ea4c953"
+  },
+  "tests/test_procedencia_adversarial.py::test_09b_TODO_lo_que_va_a_la_fuente_esta_huellado": {
+   "resultado": "passed",
+   "archivo": "tests/test_procedencia_adversarial.py",
+   "archivo_sha256": "757396940ea4c953"
+  },
+  "tests/test_procedencia_adversarial.py::test_10_la_huella_cubre_toda_la_identidad_en_fuentes": {
+   "resultado": "passed",
+   "archivo": "tests/test_procedencia_adversarial.py",
+   "archivo_sha256": "757396940ea4c953"
+  },
+  "tests/test_procedencia_adversarial.py::test_11_los_artefactos_derivados_no_declaran_su_sujeto": {
+   "resultado": "passed",
+   "archivo": "tests/test_procedencia_adversarial.py",
+   "archivo_sha256": "757396940ea4c953"
+  },
+  "tests/test_procedencia_adversarial.py::test_11b_la_procedencia_nace_en_el_generador_no_se_estampa_despues": {
+   "resultado": "passed",
+   "archivo": "tests/test_procedencia_adversarial.py",
+   "archivo_sha256": "757396940ea4c953"
+  },
+  "tests/test_procedencia_adversarial.py::test_11c_la_procedencia_del_artefacto_es_reproducible": {
+   "resultado": "passed",
+   "archivo": "tests/test_procedencia_adversarial.py",
+   "archivo_sha256": "757396940ea4c953"
+  },
+  "tests/test_procedencia_adversarial.py::test_12_sin_atacar_no_puede_leerse_como_seguro": {
+   "resultado": "passed",
+   "archivo": "tests/test_procedencia_adversarial.py",
+   "archivo_sha256": "757396940ea4c953"
+  },
+  "tests/test_procedencia_adversarial.py::test_12b_no_integrado_no_es_lo_mismo_que_desprotegido": {
+   "resultado": "passed",
+   "archivo": "tests/test_procedencia_adversarial.py",
+   "archivo_sha256": "757396940ea4c953"
+  },
+  "tests/test_procedencia_adversarial.py::test_ninguna_transformacion_puede_subir_el_grado": {
+   "resultado": "passed",
+   "archivo": "tests/test_procedencia_adversarial.py",
+   "archivo_sha256": "757396940ea4c953"
+  },
+  "tests/test_reliability_tracker.py::TestBuildReliabilityReport::test_avg_reliability_is_float": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestBuildReliabilityReport::test_dashboard_length": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestBuildReliabilityReport::test_error_is_none_on_success": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestBuildReliabilityReport::test_error_returned_on_exception": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestBuildReliabilityReport::test_history_length": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestBuildReliabilityReport::test_n_errors_counts_error_sources": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestBuildReliabilityReport::test_n_ok_counts_ok_sources": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestBuildReliabilityReport::test_returns_required_keys": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestEffectiveReliability::test_handles_string_number": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestEffectiveReliability::test_one_is_valid": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestEffectiveReliability::test_rounds_to_4_decimals": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestEffectiveReliability::test_uses_base_when_snap_none": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestEffectiveReliability::test_uses_base_when_snap_out_of_range_high": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestEffectiveReliability::test_uses_base_when_snap_out_of_range_low": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestEffectiveReliability::test_uses_snap_value_when_valid": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestEffectiveReliability::test_zero_is_valid": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestFuentesCatalog::test_cpccs_lower_than_dpe_and_sercop": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestFuentesCatalog::test_gold_master_highest_reliability": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestFuentesCatalog::test_has_four_sources": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestFuentesCatalog::test_known_keys": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestFuentesCatalog::test_reliability_base_range": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestFuentesCatalog::test_required_keys_present": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestGetReliabilityDashboard::test_gold_master_highest_reliability": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestGetReliabilityDashboard::test_handles_load_exception_gracefully": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestGetReliabilityDashboard::test_label_assigned": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestGetReliabilityDashboard::test_no_snapshot_uses_base_reliability": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestGetReliabilityDashboard::test_required_keys_in_each_entry": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestGetReliabilityDashboard::test_returns_four_entries": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestGetReliabilityDashboard::test_status_propagated": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestGetReliabilityDashboard::test_uses_snapshot_reliability_over_base": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestGetReliabilityHistory::test_correct_length": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestGetReliabilityHistory::test_empty_history_returns_empty_list": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestGetReliabilityHistory::test_fuentes_has_all_sources": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestGetReliabilityHistory::test_oldest_first_order_preserved": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestGetReliabilityHistory::test_required_keys": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestGetReliabilityHistory::test_returns_list": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestGetReliabilityHistory::test_source_reliability_in_fuentes": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestGetReliabilityHistory::test_traceability_score_propagated": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestGetSourceData::test_empty_snap_returns_defaults": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestGetSourceData::test_extracts_error_field": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestGetSourceData::test_extracts_known_source": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestGetSourceData::test_unknown_source_returns_defaults": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestGetSourceHealth::test_all_values_are_valid_states": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestGetSourceHealth::test_error_status_is_error": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestGetSourceHealth::test_ok_high_reliability_is_ok": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestGetSourceHealth::test_ok_low_reliability_is_degraded": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestGetSourceHealth::test_returns_dict_with_four_keys": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestGetSourceHealth::test_unknown_status_is_unknown": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestGetTraceabilityTrend::test_correct_length": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestGetTraceabilityTrend::test_empty_history_returns_empty_list": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestGetTraceabilityTrend::test_none_traz_propagated": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestGetTraceabilityTrend::test_returns_list_of_tuples": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestGetTraceabilityTrend::test_scores_match_snapshots": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestReliabilityLabel::test_critico": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestReliabilityLabel::test_excelente": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestReliabilityLabel::test_funcional": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestReliabilityLabel::test_limitado": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_reliability_tracker.py::TestReliabilityLabel::test_muy_bueno": {
+   "resultado": "passed",
+   "archivo": "tests/test_reliability_tracker.py",
+   "archivo_sha256": "f15b33fd3ba345ac"
+  },
+  "tests/test_sat_evaluator.py::TestEvaluateSAT::test_alto_riesgo_con_ejecucion_muy_baja": {
+   "resultado": "passed",
+   "archivo": "tests/test_sat_evaluator.py",
+   "archivo_sha256": "3c18cf866c26379f"
+  },
+  "tests/test_sat_evaluator.py::TestEvaluateSAT::test_clasif_riesgo_valid": {
+   "resultado": "passed",
+   "archivo": "tests/test_sat_evaluator.py",
+   "archivo_sha256": "3c18cf866c26379f"
+  },
+  "tests/test_sat_evaluator.py::TestEvaluateSAT::test_empty_snapshot_doesnt_crash": {
+   "resultado": "passed",
+   "archivo": "tests/test_sat_evaluator.py",
+   "archivo_sha256": "3c18cf866c26379f"
+  },
+  "tests/test_sat_evaluator.py::TestEvaluateSAT::test_no_sat_iii_con_ejecucion_alta": {
+   "resultado": "passed",
+   "archivo": "tests/test_sat_evaluator.py",
+   "archivo_sha256": "3c18cf866c26379f"
+  },
+  "tests/test_sat_evaluator.py::TestEvaluateSAT::test_returns_required_keys": {
+   "resultado": "passed",
+   "archivo": "tests/test_sat_evaluator.py",
+   "archivo_sha256": "3c18cf866c26379f"
+  },
+  "tests/test_sat_evaluator.py::TestEvaluateSAT::test_riesgo_ponderado_range": {
+   "resultado": "passed",
+   "archivo": "tests/test_sat_evaluator.py",
+   "archivo_sha256": "3c18cf866c26379f"
+  },
+  "tests/test_sat_evaluator.py::TestEvaluateSAT::test_sat_iii_activa_con_ejecucion_baja": {
+   "resultado": "passed",
+   "archivo": "tests/test_sat_evaluator.py",
+   "archivo_sha256": "3c18cf866c26379f"
+  },
+  "tests/test_sat_evaluator.py::TestEvaluateSAT::test_total_activas_equals_len_activas": {
+   "resultado": "passed",
+   "archivo": "tests/test_sat_evaluator.py",
+   "archivo_sha256": "3c18cf866c26379f"
+  },
+  "tests/test_sat_evaluator.py::TestRiskClassification::test_alto": {
+   "resultado": "passed",
+   "archivo": "tests/test_sat_evaluator.py",
+   "archivo_sha256": "3c18cf866c26379f"
+  },
+  "tests/test_sat_evaluator.py::TestRiskClassification::test_bajo": {
+   "resultado": "passed",
+   "archivo": "tests/test_sat_evaluator.py",
+   "archivo_sha256": "3c18cf866c26379f"
+  },
+  "tests/test_sat_evaluator.py::TestRiskClassification::test_boundary_alto_critico": {
+   "resultado": "passed",
+   "archivo": "tests/test_sat_evaluator.py",
+   "archivo_sha256": "3c18cf866c26379f"
+  },
+  "tests/test_sat_evaluator.py::TestRiskClassification::test_boundary_bajo_medio": {
+   "resultado": "passed",
+   "archivo": "tests/test_sat_evaluator.py",
+   "archivo_sha256": "3c18cf866c26379f"
+  },
+  "tests/test_sat_evaluator.py::TestRiskClassification::test_boundary_medio_alto": {
+   "resultado": "passed",
+   "archivo": "tests/test_sat_evaluator.py",
+   "archivo_sha256": "3c18cf866c26379f"
+  },
+  "tests/test_sat_evaluator.py::TestRiskClassification::test_critico": {
+   "resultado": "passed",
+   "archivo": "tests/test_sat_evaluator.py",
+   "archivo_sha256": "3c18cf866c26379f"
+  },
+  "tests/test_sat_evaluator.py::TestRiskClassification::test_medio": {
+   "resultado": "passed",
+   "archivo": "tests/test_sat_evaluator.py",
+   "archivo_sha256": "3c18cf866c26379f"
+  },
+  "tests/test_sat_evaluator.py::TestRiskClassification::test_zero_is_bajo": {
+   "resultado": "passed",
+   "archivo": "tests/test_sat_evaluator.py",
+   "archivo_sha256": "3c18cf866c26379f"
+  },
+  "tests/test_sat_evaluator.py::TestSATCatalog::test_all_sat_have_codigo": {
+   "resultado": "passed",
+   "archivo": "tests/test_sat_evaluator.py",
+   "archivo_sha256": "3c18cf866c26379f"
+  },
+  "tests/test_sat_evaluator.py::TestSATCatalog::test_all_sat_have_required_fields": {
+   "resultado": "passed",
+   "archivo": "tests/test_sat_evaluator.py",
+   "archivo_sha256": "3c18cf866c26379f"
+  },
+  "tests/test_sat_evaluator.py::TestSATCatalog::test_catalog_not_empty": {
+   "resultado": "passed",
+   "archivo": "tests/test_sat_evaluator.py",
+   "archivo_sha256": "3c18cf866c26379f"
+  },
+  "tests/test_sat_evaluator.py::TestSATCatalog::test_peso_severidad_range": {
+   "resultado": "passed",
+   "archivo": "tests/test_sat_evaluator.py",
+   "archivo_sha256": "3c18cf866c26379f"
+  },
+  "tests/test_sat_evaluator.py::TestSATCatalog::test_sat_dimensions_valid": {
+   "resultado": "passed",
+   "archivo": "tests/test_sat_evaluator.py",
+   "archivo_sha256": "3c18cf866c26379f"
+  },
+  "tests/test_sat_evaluator.py::TestSATCatalog::test_sat_iii_exists": {
+   "resultado": "passed",
+   "archivo": "tests/test_sat_evaluator.py",
+   "archivo_sha256": "3c18cf866c26379f"
+  },
+  "tests/test_sat_evaluator.py::TestSATCatalog::test_sat_iv_exists": {
+   "resultado": "passed",
+   "archivo": "tests/test_sat_evaluator.py",
+   "archivo_sha256": "3c18cf866c26379f"
+  },
+  "tests/test_sat_evaluator.py::TestSATCatalog::test_sat_tipos_valid": {
+   "resultado": "passed",
+   "archivo": "tests/test_sat_evaluator.py",
+   "archivo_sha256": "3c18cf866c26379f"
+  },
+  "tests/test_snapshot_diff.py::TestCasosBorde::test_ambos_snapshots_vacios": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCasosBorde::test_campos_cambiados_campo_nombre": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCasosBorde::test_clasif_riesgo_fallback_si_riesgo_ponderado_none": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCasosBorde::test_field_diff_direccion_mejora_positivo": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCasosBorde::test_historial_d3_lista_vacia_no_activa_sat_iii": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCasosBorde::test_sat_activas_vacias_en_ambos_no_falla": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCasosBorde::test_snap_a_vacio_no_falla": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCasosBorde::test_snap_b_vacio_no_falla": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestClasificar::test_deterioro_delta_exactamente_menos_1pp": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestClasificar::test_deterioro_delta_mayor_a_1pp": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestClasificar::test_estable_delta_cero": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestClasificar::test_estable_delta_menor_1pp_negativo": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestClasificar::test_estable_delta_menor_1pp_positivo": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestClasificar::test_mejora_delta_exactamente_1pp": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestClasificar::test_mejora_delta_mayor_1pp": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestClasificar::test_recuperacion_condicion_exacta": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestClasificar::test_recuperacion_no_activa_si_icpi_a_sobre_60": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestClasificar::test_recuperacion_no_activa_si_icpi_b_bajo_65": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestClasificar::test_ruptura_delta_exactamente_menos_10": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestClasificar::test_ruptura_delta_mayor_a_10": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestClasificar::test_ruptura_tiene_prioridad_sobre_deterioro": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestClasificar::test_sin_delta_insuficiente_datos": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCompareSnapshotsAlertas::test_alertas_mitigadas_detectadas": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCompareSnapshotsAlertas::test_alertas_nuevas_detectadas": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCompareSnapshotsAlertas::test_formato_dicts_sat_alertas": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCompareSnapshotsAlertas::test_sin_cambios_alertas_ambas_listas_vacias": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCompareSnapshotsAlertas::test_todas_alertas_mitigadas": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCompareSnapshotsClasificacion::test_deterioro_delta_exacto_menos_1pp": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCompareSnapshotsClasificacion::test_deterioro_entre_1_y_10pp": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCompareSnapshotsClasificacion::test_estable_sin_variacion": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCompareSnapshotsClasificacion::test_estable_variacion_menor_1pp": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCompareSnapshotsClasificacion::test_icpi_como_porcentaje_directo": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCompareSnapshotsClasificacion::test_insuficiente_datos_sin_icpi": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCompareSnapshotsClasificacion::test_insuficiente_datos_solo_snap_b_sin_icpi": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCompareSnapshotsClasificacion::test_mejora_delta_exacto_1pp": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCompareSnapshotsClasificacion::test_mejora_delta_mayor_1pp": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCompareSnapshotsClasificacion::test_recuperacion_desde_zona_critica": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCompareSnapshotsClasificacion::test_ruptura_caida_10pp": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCompareSnapshotsClasificacion::test_ruptura_caida_mayor_10pp": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCompareSnapshotsMetadatos::test_campos_cambiados_incluye_icpi": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCompareSnapshotsMetadatos::test_campos_cambiados_vacio_si_mismo_snapshot": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCompareSnapshotsMetadatos::test_d3_delta_none_si_sin_datos": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCompareSnapshotsMetadatos::test_d3_ti_delta_calculado": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCompareSnapshotsMetadatos::test_diff_result_es_instancia_correcta": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCompareSnapshotsMetadatos::test_periodo_a_y_b_correctos": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCompareSnapshotsMetadatos::test_riesgo_a_y_b": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCompareSnapshotsNotas::test_alertas_nuevas_en_notas": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCompareSnapshotsNotas::test_d3_critico_severo_genera_nota": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCompareSnapshotsNotas::test_deterioro_genera_nota": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCompareSnapshotsNotas::test_estable_sin_alertas_puede_no_generar_notas": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCompareSnapshotsNotas::test_icpi_bajo_50_genera_nota_ruptura_sistemica": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCompareSnapshotsNotas::test_mejora_genera_nota": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCompareSnapshotsNotas::test_recuperacion_genera_nota": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCompareSnapshotsNotas::test_ruptura_genera_nota_protocolo": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCompareSnapshotsNotas::test_sat_iii_genera_nota_legal": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCompareSnapshotsSatIII::test_sat_iii_activa_con_historial_3_periodos": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCompareSnapshotsSatIII::test_sat_iii_no_activa_d3_sobre_umbral": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCompareSnapshotsSatIII::test_sat_iii_no_activa_historial_insuficiente": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestCompareSnapshotsSatIII::test_sat_iii_no_activa_sin_historial": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestDetectReincidenceFromHistory::test_clasificacion_seq_correcta_mejora_deterioro": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestDetectReincidenceFromHistory::test_clasificacion_seq_longitud_correcta": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestDetectReincidenceFromHistory::test_lista_vacia_devuelve_estado_limpio": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestDetectReincidenceFromHistory::test_racha_rota_en_medio_no_activa": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestDetectReincidenceFromHistory::test_snapshot_d3_none_excluido_de_valores_d3": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestDetectReincidenceFromHistory::test_tres_snapshots_d3_bajo_activa_sat_iii": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestDetectReincidenceFromHistory::test_tres_snapshots_d3_sobre_60_no_activa": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestDetectReincidenceFromHistory::test_un_solo_snapshot_no_activa_sat_iii": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestDetectReincidenceFromHistory::test_valores_d3_extraidos_correctamente": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestDetectarSatIII::test_con_historial_3_periodos_bajo_60": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestDetectarSatIII::test_con_historial_exactamente_60_no_activa": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestDetectarSatIII::test_con_historial_no_consecutivos": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestDetectarSatIII::test_con_historial_solo_2_periodos_bajo_60": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestDetectarSatIII::test_historial_insuficiente_largo": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestDetectarSatIII::test_historial_largo_solo_ultimos_3_cuentan": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestDetectarSatIII::test_historial_vacio_no_activa": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestDetectarSatIII::test_sin_historial_no_activa": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestFieldDiff::test_cambio_insignificante_devuelve_none": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestFieldDiff::test_cambio_string": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestFieldDiff::test_deterioro_numerica": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestFieldDiff::test_mejora_numerica": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestFieldDiff::test_none_a_valor": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestFieldDiff::test_valor_a_none": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestFieldDiff::test_valores_iguales_devuelve_none": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestGenerarNotas::test_alertas_mitigadas_en_nota": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestGenerarNotas::test_alertas_nuevas_en_nota": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestGenerarNotas::test_clasificacion_estable_sin_extras_devuelve_lista": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestGenerarNotas::test_d3_severo_menos_40_nota": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestGenerarNotas::test_icpi_menos_50_nota_ruptura_sistemica": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestGenerarNotas::test_ruptura_produce_nota_con_delta": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestGenerarNotas::test_sat_iii_produce_nota_copfp": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestGetHelper::test_empty_dict": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestGetHelper::test_missing_key_returns_default": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestGetHelper::test_missing_nested_returns_default": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestGetHelper::test_nested_three_levels": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestGetHelper::test_nested_two_levels": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestGetHelper::test_none_parent_returns_default": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestGetHelper::test_top_level_key": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestGetHelper::test_value_none_returns_default": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestPctHelper::test_already_pct_passthrough": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestPctHelper::test_negative_ratio": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestPctHelper::test_none_returns_none": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestPctHelper::test_one_ratio": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestPctHelper::test_ratio_to_pct": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestPctHelper::test_zero_ratio": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestSatActivas::test_formato_alertas_solo_activas": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestSatActivas::test_formato_lista_dicts_con_codigo": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestSatActivas::test_formato_lista_strings": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestSatActivas::test_normaliza_a_mayusculas": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_diff.py::TestSatActivas::test_sin_sat_devuelve_vacio": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_diff.py",
+   "archivo_sha256": "636d925e31118939"
+  },
+  "tests/test_snapshot_validation.py::TestInvalidSnapshot::test_gad_codigo_non_numeric": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_validation.py",
+   "archivo_sha256": "e43608447a6c95f7"
+  },
+  "tests/test_snapshot_validation.py::TestInvalidSnapshot::test_gad_codigo_too_short": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_validation.py",
+   "archivo_sha256": "e43608447a6c95f7"
+  },
+  "tests/test_snapshot_validation.py::TestInvalidSnapshot::test_missing_fecha_corte": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_validation.py",
+   "archivo_sha256": "e43608447a6c95f7"
+  },
+  "tests/test_snapshot_validation.py::TestInvalidSnapshot::test_missing_gad_nombre": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_validation.py",
+   "archivo_sha256": "e43608447a6c95f7"
+  },
+  "tests/test_snapshot_validation.py::TestInvalidSnapshot::test_missing_top_keys": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_validation.py",
+   "archivo_sha256": "e43608447a6c95f7"
+  },
+  "tests/test_snapshot_validation.py::TestInvalidSnapshot::test_missing_version_excel": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_validation.py",
+   "archivo_sha256": "e43608447a6c95f7"
+  },
+  "tests/test_snapshot_validation.py::TestInvalidSnapshot::test_tgi_null_without_fuente": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_validation.py",
+   "archivo_sha256": "e43608447a6c95f7"
+  },
+  "tests/test_snapshot_validation.py::TestInvalidSnapshot::test_tgi_score_above_100": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_validation.py",
+   "archivo_sha256": "e43608447a6c95f7"
+  },
+  "tests/test_snapshot_validation.py::TestInvalidSnapshot::test_tgi_score_negative": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_validation.py",
+   "archivo_sha256": "e43608447a6c95f7"
+  },
+  "tests/test_snapshot_validation.py::TestValidSnapshot::test_codigo_6_digits": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_validation.py",
+   "archivo_sha256": "e43608447a6c95f7"
+  },
+  "tests/test_snapshot_validation.py::TestValidSnapshot::test_gold_master_fuente_allows_null_score": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_validation.py",
+   "archivo_sha256": "e43608447a6c95f7"
+  },
+  "tests/test_snapshot_validation.py::TestValidSnapshot::test_minimal_valid": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_validation.py",
+   "archivo_sha256": "e43608447a6c95f7"
+  },
+  "tests/test_snapshot_validation.py::TestValidSnapshot::test_tgi_score_boundaries": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_validation.py",
+   "archivo_sha256": "e43608447a6c95f7"
+  },
+  "tests/test_snapshot_validation.py::TestValidSnapshot::test_with_tgi_score": {
+   "resultado": "passed",
+   "archivo": "tests/test_snapshot_validation.py",
+   "archivo_sha256": "e43608447a6c95f7"
+  },
+  "tests/test_top.py::TestCalcularTop::test_bomberos_sobre_ritmo": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestCalcularTop::test_ep_aseo_sobre_ritmo": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestCalcularTop::test_gad_inversion_ruptura": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestCalcularTop::test_patronato_sobre_ritmo": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestCalcularTop::test_redondeo_a_1_decimal": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestCalcularTop::test_top_negativo_retorna_cero": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestCalcularTop::test_top_puede_superar_100": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestCalcularTop::test_top_q4_identidad": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestCalcularTop::test_top_quarter_desconocido_fallback_q1": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestCalcularTopDesdeCorte::test_equivale_a_calcular_con_q1": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestCalcularTopDesdeCorte::test_gad_inversion_montecristi": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestClasificarTop::test_100_es_sostenible": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestClasificarTop::test_bajo_alerta_es_ruptura": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestClasificarTop::test_bajo_atencion_es_alerta": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestClasificarTop::test_bajo_sostenible_es_atencion": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestClasificarTop::test_cero_es_ruptura": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestClasificarTop::test_color_alerta": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestClasificarTop::test_color_atencion": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestClasificarTop::test_color_es_hex": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestClasificarTop::test_color_ruptura": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestClasificarTop::test_color_sostenible": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestClasificarTop::test_exactamente_100_no_es_sobre_ritmo": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestClasificarTop::test_resultado_tiene_todos_los_campos": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestClasificarTop::test_sobre_ritmo_flag": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestClasificarTop::test_sobre_ritmo_no_muestra_numero": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestClasificarTop::test_top_display_capeado_a_100": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestClasificarTop::test_top_display_cero": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestClasificarTop::test_umbral_exacto_alerta": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestClasificarTop::test_umbral_exacto_atencion": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestClasificarTop::test_umbral_exacto_sostenible": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestGoldAssertionsMontecristi::test_gold_master_q1_2026[Cuerpo de Bomberos-19.43-sostenible-149.5]": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestGoldAssertionsMontecristi::test_gold_master_q1_2026[EP Aseo-18.17-sostenible-139.8]": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestGoldAssertionsMontecristi::test_gold_master_q1_2026[GAD Municipal-1.05-ruptura-8.1]": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestGoldAssertionsMontecristi::test_gold_master_q1_2026[Patronato Municipal-19.56-sostenible-150.5]": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestGoldAssertionsMontecristi::test_holding_contraste_narrativo": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestNarrativaIA::test_atencion_menciona_monitoreo": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestNarrativaIA::test_gad_ruptura_menciona_entidad": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestNarrativaIA::test_gad_ruptura_menciona_top": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestNarrativaIA::test_no_contiene_porcentaje_ficticio": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestNarrativaIA::test_patronato_sobre_ritmo_lenguaje": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestNarrativaIA::test_retorna_string": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestNarrativaIA::test_ruptura_menciona_urgencia": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestQuarterDesdeCorte::test_corte_canonico_q1_2026": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestQuarterDesdeCorte::test_corte_canonico_q3_2025": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestQuarterDesdeCorte::test_corte_canonico_q4_2027": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestQuarterDesdeCorte::test_corte_con_q_en_upper": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestQuarterDesdeCorte::test_corte_malformado_fallback_q1": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestTopEntidad::test_campos_ecosistema_presentes": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestTopEntidad::test_gad_inversion_ruptura_q1_2026": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestTopEntidad::test_nombre_vacio_no_falla": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestTopEntidad::test_patronato_sobre_ritmo_q1_2026": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestWQ::test_wq_keys_completos": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestWQ::test_wq_monotono": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestWQ::test_wq_q1_letargo_administrativo": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestWQ::test_wq_q4_cierre_fiscal": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  },
+  "tests/test_top.py::TestWQ::test_wq_q4_igual_a_uno": {
+   "resultado": "passed",
+   "archivo": "tests/test_top.py",
+   "archivo_sha256": "7bb21aed81e1e3ca"
+  }
+ }
+}

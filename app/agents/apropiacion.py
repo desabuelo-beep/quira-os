@@ -198,10 +198,15 @@ def existe_prueba(nombre: str) -> bool:
 def respalda(prueba: str, verificador: str) -> bool:
     """¿Esa prueba acredita a ESE verificador, o sólo existe? (2026-08-26)
 
-    Cierra la deuda #1. `existe_prueba` comprobaba el escalón 2 de cuatro:
+    Cierra la deuda #1. `existe_prueba` comprobaba el escalón 2 de seis:
 
-        declarado → EXISTENTE → corresponde → ejecutado → exitoso
+        declarado → EXISTENTE → corresponde → corresponde al artefacto
+                  → ejecutado → exitoso
                     └── hasta aquí llegaba ──┘
+
+    Los cuatro restantes se cerraron después: el artefacto en `procedencia.
+    evidencia_corresponde` y los dos últimos en `app/agents/ejecucion.py`
+    (2026-08-30). La escalera ya no tiene peldaños abiertos.
 
     Y el hueco no era teórico. En producción, `materializacion.py` declaraba que
     `materializacion.evaluar` estaba respaldado por
@@ -216,9 +221,13 @@ def respalda(prueba: str, verificador: str) -> bool:
     mencionaría el verificador aunque lo ejercitara otra distinta. *La mención
     no es el uso*, que es la lección que esta sesión repitió siete veces.
 
-    ⚠️ Sigue siendo el escalón 3 de 4. Que la prueba nombre al verificador no
-    demuestra que lo ejecute con casos significativos, ni que su aserción
-    dependa del resultado. Se cierra un escalón, y se dice cuál."""
+    ⚠️ Este es el escalón 3, y lo que NO demuestra sigue igual de abierto que el
+    día que se escribió: que la prueba nombre al verificador no dice que lo
+    ejercite con casos significativos, ni que su aserción dependa del resultado.
+    Cerrar los escalones 5 y 6 —consta que corrió, consta que pasó— tampoco lo
+    dice: **una prueba trivial pasa igual de bien que una exigente.** La escalera
+    completa acredita procedencia del respaldo, no su calidad, y confundirlas
+    sería la inflación silenciosa contra la que existe todo este módulo."""
     import ast
 
     objetivo = verificador.split(".")[-1]
