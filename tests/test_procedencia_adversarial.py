@@ -521,22 +521,28 @@ def test_12_sin_atacar_no_puede_leerse_como_seguro():
 
     assert estados.get("d07") == A.PROTEGIDO_Y_ATACADO
 
-    # ⚠️ Antes esto decía «ningún dominio SALVO d07 puede figurar como atacado».
-    # Era el estado de agosto codificado como si fuera la propiedad: al cerrar el
-    # piloto de d01 con sus siete ataques (ADR-053), la prueba falló sin que nada
-    # se hubiera roto —d01 SÍ tiene pruebas adversariales propias—. Se comprueba
-    # la propiedad: **nadie figura como atacado sin un archivo que lo ataque**
-    # (2026-08-26, tercera vez que este mismo test confunde estado con propiedad).
-    con_ataques = {f.stem.split("_")[1] for f in (RAIZ / "tests").glob("test_*adversarial*.py")
-                   if f.stem.count("_") >= 2}
-    for dom, est in estados.items():
-        if est != A.PROTEGIDO_Y_ATACADO:
+    # ⚠️ CUARTA VEZ QUE ESTE TEST SE ROMPE POR LO MISMO, y la causa raíz no era
+    # ninguna de las tres correcciones anteriores: **reimplementaba la detección
+    # de ataques con nombres de archivo**, en paralelo al inventario. Cada vez que
+    # el inventario mejoró —contar propiedad, no nombre— esta copia se quedó atrás:
+    #
+    #   1ª  «sólo d07 puede estar atacado»          ← el estado de agosto como propiedad
+    #   2ª  buscaba `test_<dom>_adversarial.py`     ← el nombre del archivo
+    #   3ª  añadía búsqueda genérica en esos mismos archivos
+    #   4ª  d03 trae sus ataques en `test_d03_agente.py` y no lo veía
+    #
+    # Se deja de reimplementar: se comprueba la PROPIEDAD sobre el dato que el
+    # inventario ya deriva. Dos formas de contar lo mismo divergen siempre — es
+    # el mismo principio que impide dos caminos a la misma verdad (2026-08-30).
+    for fila in c["dominios"]:
+        if fila["estado"] != A.PROTEGIDO_Y_ATACADO:
             continue
-        propio = (RAIZ / "tests" / f"test_{dom}_adversarial.py").exists()
-        generico = any(f".{dom}" in f.read_text(encoding="utf-8", errors="replace")
-                       for f in (RAIZ / "tests").glob("test_*adversarial*.py"))
-        assert propio or generico, (
-            f"{dom} figura como atacado y ninguna prueba adversarial lo ejercita")
+        assert fila.get("ataques_ejecutados", 0) > 0, (
+            f"{fila['dominio']} figura como atacado con 0 ataques ejecutados: "
+            f"«sin atacar» se estaría leyendo como «seguro»")
+        assert fila.get("defensas"), (
+            f"{fila['dominio']} figura como atacado sin defensa alguna que "
+            f"pudiera resistir el ataque")
 
     # La afirmación publicable nombra el alcance, nunca la plataforma entera.
     #

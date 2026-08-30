@@ -557,12 +557,28 @@ def cobertura_de_defensa(dominio: str) -> dict:
     tiene = [nombre for nombre, patron in _DEFENSAS.items()
              if _re.search(patron, fuente, _re.I)]
 
+    # ── SE CUENTAN ATAQUES, NO ARCHIVOS «adversarial» (2026-08-30) ───────────
+    # La versión anterior sólo miraba `test_*adversarial*.py`. Al migrar d03 —que
+    # trae sus ataques dentro de `test_d03_agente.py`— el inventario reportó
+    # **0 ataques donde había 4**. Es el mismo defecto de siempre: medir el
+    # nombre del archivo en vez de la propiedad.
+    #
+    # Un ataque es una prueba que intenta romper una defensa, y eso lo declara el
+    # nombre de la FUNCIÓN. Se cuentan las funciones de ataque de cualquier
+    # archivo que ejercite el dominio, más las de los archivos adversariales
+    # —donde el archivo entero es el ataque y las funciones no siempre lo dicen.
     ataques = []
-    for f in (RAIZ / "tests").glob("test_*adversarial*.py"):
+    for f in (RAIZ / "tests").glob("test_*.py"):
         txt = f.read_text(encoding="utf-8", errors="replace")
-        if f".{dominio}" in txt or f"/{dominio}" in txt:
-            ataques = [ln.split("(")[0].replace("def ", "").strip()
-                       for ln in txt.splitlines() if ln.startswith("def test_")]
+        if f".{dominio}" not in txt and f"/{dominio}" not in txt:
+            continue
+        adversarial = "adversarial" in f.stem
+        for ln in txt.splitlines():
+            if not ln.startswith("def test_"):
+                continue
+            nombre = ln.split("(")[0].replace("def ", "").strip()
+            if adversarial or "ataque" in nombre.lower():
+                ataques.append(nombre)
 
     if not tiene:
         # ¿está siquiera conectado? Se DERIVA de quién importa su paquete, no se

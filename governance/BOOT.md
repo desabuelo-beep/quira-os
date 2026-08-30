@@ -29,7 +29,7 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 
 ## AHORA (estado vivo · historial → `governance/historico/`)
 🧭 **ADR-031** MCIP=5 motores · **035/037** IA propone/humano valida · **038** BRN **traza, no alimenta**.
 ✅ **PCD: d01·d02·d03·d06·d09** · d08 ENTRABLE · **d07 en curación**.
-🩹 **12 GATES** · Curación por DOM (R.8) · **estados, NO bool** · 540 pruebas.
+🩹 **12 GATES** · Curación por DOM (R.8) · **estados, NO bool** · 547 pruebas.
 📑 ⛔ `.docx` gana al `.pdf`.
 ⚖️ **d07 BRN VIGENTE** (Javo 26-08): `CNO-VII-001..004` **46/46 SHA** + `RO-VII-001..005`. ⛔ el DOM **consume RO, NO lee la ley**.
 📡 **SITA 2025 0,4448** (era 0,4646) · **0 actas** · num.6 sin ingresos.
@@ -51,7 +51,7 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 
 ⛔ **EL NOMBRE NO ES EVIDENCIA** — 3× GAD · **1× nosotros**: 85 ensayos.
 🧷 **PROCEDENCIA nace en el GENERADOR**, sin reloj · ⛔ estamparla luego re-ejecuta la cadena.
 🚧 **TEST ≠ OPERACIÓN**: `conftest` corta subprocess/red · efecto real se declara (2).
-🧱 **ADR-053**: DOM = **agente gobernado** · d01+d02 migrados y atacados · **consulta d01↔d02 VIVA** (evidencia, NUNCA verdad) · esc.4: la evidencia **corresponde al artefacto**.
+🧱 **ADR-053**: DOM = **agente gobernado** · d01+d02+d03 migrados y atacados · **consulta d01↔d02 VIVA** (evidencia, NUNCA verdad) · esc.4: la evidencia **corresponde al artefacto**.
 🗳️ **SECCIONALES 29-NOV-2026** (alcaldes·prefectos·juntas): ventana para que la gente verifique su alcaldía · ⛔ **la fecha NO manda**: primero impoluto.
 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 · detalle en el ADR)
