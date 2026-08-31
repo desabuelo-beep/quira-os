@@ -125,6 +125,36 @@ def _umbrales(ro: dict) -> list[dict]:
     return [t for t in v if isinstance(t, dict)] if isinstance(v, list) else []
 
 
+# Valores que NO se pueden buscar en código sin ahogar la señal en ruido: `100`
+# aparece en cualquier porcentaje, `0`/`1` en cualquier índice, `3` en cualquier
+# rango. Se declaran como límite del detector en vez de fingir que los cubre —
+# un inventario que no dice qué NO puede ver está afirmando de más.
+_INDISTINGUIBLES = {0, 1, 100, 0.0, 0.5, 1.0}
+
+
+def parametros_de(ro: dict) -> list[dict]:
+    """TODO parámetro numérico que la RO declara, no sólo los tramos de vigencia.
+
+    El primer detector sólo miraba `vigencia_operativa[].umbral` y por eso sólo
+    podía ver el caso de d02. Los demás dominios declaran su parámetro en
+    `parametros.umbral`, en plazos, en escalas — y ninguno de esos se estaba
+    buscando: el detector tenía el mismo defecto que perseguía."""
+    salida: list[dict] = []
+
+    def caminar(o, ruta=""):
+        if isinstance(o, dict):
+            for k, v in o.items():
+                caminar(v, f"{ruta}.{k}")
+        elif isinstance(o, list):
+            for i, v in enumerate(o):
+                caminar(v, f"{ruta}[{i}]")
+        elif isinstance(o, (int, float)) and not isinstance(o, bool):
+            salida.append({"ruta": ruta.lstrip("."), "valor": o})
+
+    caminar({k: v for k, v in ro.items() if k in ("parametros", "produce")})
+    return salida
+
+
 def _vinculo_con_el_motor(dominio: str, ro_ids: list[str],
                           ros: dict) -> tuple[str, list[str], list[dict]]:
     """Por cuál de las tres vías —si alguna— llega la RO hasta el código.
@@ -147,19 +177,22 @@ def _vinculo_con_el_motor(dominio: str, ro_ids: list[str],
 
         # Vía 3 · el parámetro normativo duplicado en el código.
         for rid in ro_ids:
-            for tramo in _umbrales(ros.get(rid, {})):
-                u = tramo.get("umbral")
-                if u is None:
+            ro = ros.get(rid, {})
+            tramos = {t.get("umbral"): t for t in _umbrales(ro)}
+            for par in parametros_de(ro):
+                u = par["valor"]
+                if u in _INDISTINGUIBLES:
                     continue
-                for m in re.finditer(rf"\b{re.escape(str(u))}\b", txt):
+                for m in re.finditer(rf"(?<![\w.]){re.escape(str(u))}(?![\w.])", txt):
                     linea = txt[:m.start()].count("\n") + 1
                     ctx = txt.splitlines()[linea - 1].strip()[:90]
-                    if re.search(r"umbral|piso|minim|m[ií]nimo|techo|limite",
-                                 ctx, re.I):
-                        copias.append({"ro": rid, "umbral": u, "archivo": rel,
-                                       "linea": linea, "contexto": ctx,
-                                       "desde": tramo.get("desde"),
-                                       "hasta": tramo.get("hasta")})
+                    if not re.search(r"umbral|piso|m[ií]nim|techo|limite|plazo|"
+                                     r"dias|plena|plen[oa]|plazo|plaz", ctx, re.I):
+                        continue
+                    t = tramos.get(u, {})
+                    copias.append({"ro": rid, "umbral": u, "ruta": par["ruta"],
+                                   "archivo": rel, "linea": linea, "contexto": ctx,
+                                   "desde": t.get("desde"), "hasta": t.get("hasta")})
         if any(rid in txt for rid in ro_ids):
             citan.append(rel)
             if re.search(r"docs[/\\]brn|BRN_DIR", txt):
@@ -249,14 +282,32 @@ def estado_canonico(dominio: str) -> dict:
             cno_vigentes.append(cid)
 
     vinculo, archivos, copias = _vinculo_con_el_motor(dominio, list(mios), mios)
+    no_verif = [{"ro": rid, "ruta": p["ruta"], "valor": p["valor"]}
+                for rid, ro in mios.items() for p in parametros_de(ro)
+                if p["valor"] in _INDISTINGUIBLES]
     return {
         "dominio": dominio,
+        # ⚠️ LIMPIO ≠ NO COMPROBABLE, y confundirlos sería repetir adentro el
+        # error que el dominio persigue afuera. d03 declara umbral 85 —un valor
+        # buscable— y no aparece copiado: está limpio **y demostrado**. d01 y d09
+        # declaran 100, indistinguible del ruido: no se halló nada porque no se
+        # pudo buscar. La segunda no es una absolución.
+        "veredicto_parametros": (
+            "con_copias" if copias else
+            "no_comprobable" if no_verif else
+            "limpio_comprobado" if mios else "sin_ro"),
         # EL UNIVERSO, DECLARADO. Sin esto una afirmación no es comprobable:
         # nadie sabría sobre qué se hizo. Los tres errores de 2026-08-30 fueron
         # el mismo — afirmar sobre un universo que no se declaró.
         "universo": [p.relative_to(RAIZ).as_posix() for p in universo_del_dominio(dominio)],
         "parametros_copiados": copias,
         "copias_caducas": copias_caducas(copias, mios),
+        # EL LÍMITE DEL DETECTOR, declarado junto al resultado. Estos parámetros
+        # existen en la RO y **no se pueden buscar en código**: su valor es
+        # indistinguible del ruido. Decir que el dominio está limpio sin decir
+        # esto sería afirmar sobre un universo recortado en silencio — el error
+        # que este módulo entero existe para no repetir.
+        "parametros_no_verificables": no_verif,
         "cno": sorted(cno_ids),
         "cno_vigentes": cno_vigentes,
         "cno_huerfanos": huerfanos,

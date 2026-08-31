@@ -211,3 +211,56 @@ def test_nadie_lee_todavia_el_puente_compilado():
     assert leen == [], (
         f"{leen} empezó a leer el compilado — actualizar el hallazgo: la vía "
         f"canónica de ADR-038/039 dejó de estar sin tráfico")
+
+
+# ── BARRIDO DE PARÁMETROS COPIADOS · d01·d03·d07·d08·d09 (2026-08-30) ────────
+def test_d03_esta_limpio_Y_ESO_ES_DEMOSTRABLE():
+    """d03 declara `umbral: 85` — un valor **buscable** — y no aparece copiado en
+    su universo. Es el único veredicto de limpieza que se sostiene: hay algo que
+    buscar, se buscó, y no está."""
+    e = C.estado_canonico("d03")
+    assert e["veredicto_parametros"] == "limpio_comprobado"
+    assert e["parametros_copiados"] == []
+    assert e["parametros_no_verificables"] == [], (
+        "si a d03 le apareciera un parámetro indistinguible, su limpieza dejaría "
+        "de estar demostrada y pasaría a ser sólo no comprobable")
+
+
+def test_ataque_limpio_no_es_lo_mismo_que_no_comprobable():
+    """LA DISTINCIÓN QUE SALVA EL INVENTARIO DE MENTIR.
+
+    d01 y d09 declaran `umbral: 100`, indistinguible de cualquier porcentaje del
+    código. No se halló copia **porque no se pudo buscar**, y eso no es una
+    absolución. Colapsar ambos casos en «limpio» sería exactamente el error que
+    el dominio persigue afuera: *«no lo encontré» ≠ «no existe»*."""
+    for dom in ("d01", "d09"):
+        e = C.estado_canonico(dom)
+        assert e["veredicto_parametros"] == "no_comprobable", (
+            f"{dom} se está declarando limpio sin poder demostrarlo")
+        assert e["parametros_no_verificables"], (
+            f"{dom} debe declarar QUÉ parámetros no pudo buscar")
+
+
+def test_la_obsolescencia_programada_es_un_caso_aislado():
+    """El resultado del barrido, con trinquete. Sólo d02 tiene copias que
+    caducan. Si mañana apareciera otra, esta prueba obliga a mirarla en vez de
+    dejarla pasar entre las que ya se conocen."""
+    c = C.cobertura_canonica()
+    con_caducas = sorted({x["archivo"].split("/")[-1] and f["dominio"]
+                          for f in c["dominios"] for x in f["copias_caducas"]})
+    assert con_caducas == ["d02"], (
+        f"apareció obsolescencia programada fuera de d02: {con_caducas}")
+
+
+def test_d07_replica_su_plazo_normativo_como_respaldo():
+    """MATIZ, no acusación. d07 **sí** carga su RO, y aun así
+    `scoring.py` fija `else 15` cuando el plazo no llega. Un respaldo que repite
+    el valor normativo hace que, si la RO deja de leerse, el sistema siga
+    calculando en silencio con el número viejo en lugar de detenerse — el mismo
+    patrón del cable que escribía vacío al no hallar su fuente."""
+    e = C.estado_canonico("d07")
+    assert e["vinculo_con_el_motor"] == C.CARGA, "d07 dejó de cargar su RO"
+    respaldo = [c for c in e["parametros_copiados"]
+                if c["archivo"].endswith("scoring.py")]
+    assert respaldo, "dejó de verse el respaldo del día 15 en d07/scoring.py"
+    assert not e["copias_caducas"], "el plazo de d07 no tiene tramo futuro"

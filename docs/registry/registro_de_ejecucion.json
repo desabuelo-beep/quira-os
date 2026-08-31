@@ -1,77 +1,97 @@
 {
  "_lease": "testimonio de una corrida de pytest. NO lo produce QUIRA sobre sí misma: lo produce el ejecutor, y QUIRA lo lee. Caduca cuando el archivo de la prueba cambia.",
- "commit": "40f0037",
+ "commit": "2205812",
  "arbol_limpio": false,
  "pruebas": {
   "tests/test_canon_derivado.py::test_ataque_citar_la_regla_no_cuenta_como_cargarla": {
    "resultado": "passed",
    "archivo": "tests/test_canon_derivado.py",
-   "archivo_sha256": "b3602ab3e1d73bb1"
+   "archivo_sha256": "7507ad57aef39d5b"
   },
   "tests/test_canon_derivado.py::test_ataque_d02_no_puede_volver_a_reportarse_como_el_peor_caso": {
    "resultado": "passed",
    "archivo": "tests/test_canon_derivado.py",
-   "archivo_sha256": "b3602ab3e1d73bb1"
+   "archivo_sha256": "7507ad57aef39d5b"
   },
   "tests/test_canon_derivado.py::test_ataque_el_inventario_no_recuenta_los_ataques_por_su_cuenta": {
    "resultado": "passed",
    "archivo": "tests/test_canon_derivado.py",
-   "archivo_sha256": "b3602ab3e1d73bb1"
+   "archivo_sha256": "7507ad57aef39d5b"
   },
   "tests/test_canon_derivado.py::test_ataque_el_universo_de_un_dominio_no_es_su_carpeta": {
    "resultado": "passed",
    "archivo": "tests/test_canon_derivado.py",
-   "archivo_sha256": "b3602ab3e1d73bb1"
+   "archivo_sha256": "7507ad57aef39d5b"
+  },
+  "tests/test_canon_derivado.py::test_ataque_limpio_no_es_lo_mismo_que_no_comprobable": {
+   "resultado": "passed",
+   "archivo": "tests/test_canon_derivado.py",
+   "archivo_sha256": "7507ad57aef39d5b"
   },
   "tests/test_canon_derivado.py::test_ataque_un_cno_sin_RO_no_puede_desaparecer_del_inventario": {
    "resultado": "passed",
    "archivo": "tests/test_canon_derivado.py",
-   "archivo_sha256": "b3602ab3e1d73bb1"
+   "archivo_sha256": "7507ad57aef39d5b"
   },
   "tests/test_canon_derivado.py::test_ataque_un_dominio_sin_RO_no_se_reporta_como_incumplidor": {
    "resultado": "passed",
    "archivo": "tests/test_canon_derivado.py",
-   "archivo_sha256": "b3602ab3e1d73bb1"
+   "archivo_sha256": "7507ad57aef39d5b"
   },
   "tests/test_canon_derivado.py::test_ataque_una_copia_caduca_se_detecta_antes_de_su_fecha": {
    "resultado": "passed",
    "archivo": "tests/test_canon_derivado.py",
-   "archivo_sha256": "b3602ab3e1d73bb1"
+   "archivo_sha256": "7507ad57aef39d5b"
+  },
+  "tests/test_canon_derivado.py::test_d03_esta_limpio_Y_ESO_ES_DEMOSTRABLE": {
+   "resultado": "passed",
+   "archivo": "tests/test_canon_derivado.py",
+   "archivo_sha256": "7507ad57aef39d5b"
   },
   "tests/test_canon_derivado.py::test_d07_es_el_unico_que_carga_el_yaml_de_su_regla": {
    "resultado": "passed",
    "archivo": "tests/test_canon_derivado.py",
-   "archivo_sha256": "b3602ab3e1d73bb1"
+   "archivo_sha256": "7507ad57aef39d5b"
+  },
+  "tests/test_canon_derivado.py::test_d07_replica_su_plazo_normativo_como_respaldo": {
+   "resultado": "passed",
+   "archivo": "tests/test_canon_derivado.py",
+   "archivo_sha256": "7507ad57aef39d5b"
   },
   "tests/test_canon_derivado.py::test_el_inventario_deriva_el_dominio_del_canon_y_no_del_numeral": {
    "resultado": "passed",
    "archivo": "tests/test_canon_derivado.py",
-   "archivo_sha256": "b3602ab3e1d73bb1"
+   "archivo_sha256": "7507ad57aef39d5b"
   },
   "tests/test_canon_derivado.py::test_el_inventario_responde_lo_que_hoy_nadie_podia_consultar": {
    "resultado": "passed",
    "archivo": "tests/test_canon_derivado.py",
-   "archivo_sha256": "b3602ab3e1d73bb1"
+   "archivo_sha256": "7507ad57aef39d5b"
   },
   "tests/test_canon_derivado.py::test_la_afirmacion_distingue_las_tres_vias": {
    "resultado": "passed",
    "archivo": "tests/test_canon_derivado.py",
-   "archivo_sha256": "b3602ab3e1d73bb1"
+   "archivo_sha256": "7507ad57aef39d5b"
   },
   "tests/test_canon_derivado.py::test_la_afirmacion_se_compone_del_estado_medido": {
    "resultado": "passed",
    "archivo": "tests/test_canon_derivado.py",
-   "archivo_sha256": "b3602ab3e1d73bb1"
+   "archivo_sha256": "7507ad57aef39d5b"
+  },
+  "tests/test_canon_derivado.py::test_la_obsolescencia_programada_es_un_caso_aislado": {
+   "resultado": "passed",
+   "archivo": "tests/test_canon_derivado.py",
+   "archivo_sha256": "7507ad57aef39d5b"
   },
   "tests/test_canon_derivado.py::test_los_sha_coinciden_con_la_matriz_de_cobertura": {
    "resultado": "passed",
    "archivo": "tests/test_canon_derivado.py",
-   "archivo_sha256": "b3602ab3e1d73bb1"
+   "archivo_sha256": "7507ad57aef39d5b"
   },
   "tests/test_canon_derivado.py::test_nadie_lee_todavia_el_puente_compilado": {
    "resultado": "passed",
    "archivo": "tests/test_canon_derivado.py",
-   "archivo_sha256": "b3602ab3e1d73bb1"
+   "archivo_sha256": "7507ad57aef39d5b"
   },
   "tests/test_consulta_interdominio_adversarial.py::test_00_d02_puede_preguntar_a_d01_y_recibir_evidencia": {
    "resultado": "passed",
