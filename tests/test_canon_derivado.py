@@ -57,7 +57,7 @@ def test_los_sha_coinciden_con_la_matriz_de_cobertura():
         assert esperado in texto, f"la matriz ya no declara {esperado} para {dom}"
 
 
-def test_d07_es_el_unico_que_carga_su_regla_operativa():
+def test_d07_es_el_unico_que_carga_el_yaml_de_su_regla():
     """El estado medido hoy, con trinquete hacia arriba: si otro dominio empieza
     a cargarla, esta prueba lo obliga a constar; si d07 dejara de hacerlo, se
     entera alguien. No juzga si la implementa bien — dice si la tiene delante."""
@@ -65,7 +65,7 @@ def test_d07_es_el_unico_que_carga_su_regla_operativa():
     cargan = [f["dominio"] for f in c["dominios"]
               if f["vinculo_con_el_motor"] == C.CARGA]
     assert "d07" in cargan
-    assert set(c["con_ro_vigente_sin_cargarla"]) >= {"d09"}, (
+    assert set(c["sin_vinculo_efectivo"]) >= {"d09"}, (
         "d09 tiene RO-IX-001 vigente; si dejara de aparecer aquí sería porque "
         "empezó a cargarla — y eso hay que celebrarlo, no esconderlo")
 
@@ -123,7 +123,7 @@ def test_ataque_un_dominio_sin_RO_no_se_reporta_como_incumplidor():
     c = C.cobertura_canonica()
     for fila in c["dominios"]:
         if not fila["ro_vigentes"]:
-            assert fila["dominio"] not in c["con_ro_vigente_sin_cargarla"]
+            assert fila["dominio"] not in c["sin_vinculo_efectivo"]
 
 
 def test_la_afirmacion_se_compone_del_estado_medido():
@@ -131,7 +131,7 @@ def test_la_afirmacion_se_compone_del_estado_medido():
     texto fijo sobreviviría a la corrección del defecto que describe."""
     c = C.cobertura_canonica()
     frase = c["afirmacion_sostenible"]
-    for d in c["con_ro_vigente_sin_cargarla"]:
+    for d in c["sin_vinculo_efectivo"]:
         assert d in frase, f"{d} no aparece en la afirmación que lo describe"
     assert "d07" in frase
 
@@ -144,3 +144,70 @@ def test_el_inventario_responde_lo_que_hoy_nadie_podia_consultar():
     assert e["sha_sellados"] == 10                  # ¿está sellado?
     assert e["ro_vigentes"] == ["RO-IX-001"]        # ¿hay regla operativa?
     assert e["vinculo_con_el_motor"] != C.CARGA     # ¿el motor la obedece?
+
+
+# ── ATAQUES NACIDOS DE LA ACUSACIÓN FALSA A d02 (2026-08-30) ─────────────────
+def test_ataque_el_universo_de_un_dominio_no_es_su_carpeta():
+    """REGRESIÓN del error que hizo acusar a d02 injustamente.
+
+    El universo de d02 no es `app/agents/d02/`: es eso **más
+    `scripts/enrich_presupuesto.py`**, donde su motor delega y donde vive el
+    parámetro. Mirar sólo la carpeta dejaba fuera justo el archivo que importaba.
+    Los scripts delegados se derivan del código, no de una lista escrita a mano."""
+    u = C.universo_del_dominio("d02")
+    rel = [p.as_posix() for p in u]
+    assert any("scripts/enrich_presupuesto.py" in r for r in rel), (
+        "el universo volvió a reducirse a la carpeta del paquete")
+    assert any("app/agents/d02/motor.py" in r for r in rel)
+
+
+def test_ataque_d02_no_puede_volver_a_reportarse_como_el_peor_caso():
+    """La acusación falsa, fijada como regresión.
+
+    El inventario dijo que d02 «ni siquiera nombra su RO», sugiriendo el peor
+    estado de todos. Falso: `ADR-038/039` definen que la RO de d02 se
+    **materializa por compilación**, y d02 es el que mejor se ajusta a ese
+    diseño. Medir una sola vía convirtió un dominio conforme en el acusado."""
+    e = C.estado_canonico("d02")
+    assert e["vinculo_con_el_motor"] != C.AUSENTE, (
+        "el inventario volvió a medir una sola vía de consumo")
+    assert e["ro_vigentes"] == ["RO-IV-001"]
+    assert C._familia_a_dominio()["IV"] == "d02"
+
+
+def test_ataque_una_copia_caduca_se_detecta_antes_de_su_fecha():
+    """LA ALARMA, no el inventario.
+
+    `enrich_presupuesto.py` fija 65 y `RO-IV-001` declara 65 hasta 2026-12-31 y
+    **70 desde 2027-01-01**. Hoy no hay error de dato; el 1 de enero de 2027 lo
+    habrá y nada avisaría. Detectarlo antes es la diferencia entre saber que algo
+    se rompió y saber que va a romperse."""
+    e = C.estado_canonico("d02")
+    caducas = e["copias_caducas"]
+    assert caducas, "dejó de verse la copia del umbral COOTAD"
+    assert any(c["archivo"].endswith("enrich_presupuesto.py") for c in caducas)
+    una = next(c for c in caducas if c["umbral"] == 65)
+    assert 70 in una["cambia_a"], f"no ve el tramo futuro: {una}"
+
+
+def test_la_afirmacion_distingue_las_tres_vias():
+    """La frase ya no puede decir «no cargan su RO» a secas: debe decir POR CUÁL
+    vía llega cada dominio. Una acusación sin universo declarado es lo que hubo
+    que retirar."""
+    f = C.cobertura_canonica()["afirmacion_sostenible"]
+    assert "carga_el_yaml" in f and "d07" in f
+    assert "parametro_copiado" in f and "d02" in f
+    assert "65" in f and "70" in f, "la alarma de caducidad no llega a la frase"
+
+
+def test_nadie_lee_todavia_el_puente_compilado():
+    """El hallazgo estructural, con trinquete al revés: las 13 RO están
+    compiladas en `snapshot["brn_cno"]` con `umbral_vigente` y
+    `vigencia_operativa` —el puente está tendido, firmado y al día— y ningún
+    motor lo cruza. El día que uno lo haga, esta prueba lo obliga a constar."""
+    c = C.cobertura_canonica()
+    leen = [f["dominio"] for f in c["dominios"]
+            if f["vinculo_con_el_motor"] == C.COMPILADO]
+    assert leen == [], (
+        f"{leen} empezó a leer el compilado — actualizar el hallazgo: la vía "
+        f"canónica de ADR-038/039 dejó de estar sin tráfico")

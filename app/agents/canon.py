@@ -44,12 +44,25 @@ AGENTES = RAIZ / "app" / "agents"
 # —«estados, NO bool» es regla del sistema— porque la diferencia entre citar y
 # cargar es precisamente la que se perdió de vista: `d09/fuentes.py` nombra
 # RO-IX-001 en un docstring, y eso no es obedecerla.
-CARGA = "carga_la_ro"          # el paquete abre el YAML en tiempo de ejecución
+CARGA = "carga_el_yaml"        # el paquete abre `docs/brn/*.yaml` en ejecución
+COMPILADO = "lee_el_compilado"  # lee `snapshot["brn_cno"]` o `brn_manifest.json`
+COPIADO = "parametro_copiado"  # tiene un literal que la RO también declara
 CITA = "solo_la_cita"          # el id aparece en prosa o como etiqueta
 AUSENTE = "no_la_nombra"       # ni siquiera eso
 SIN_RO = "sin_ro_vigente"      # no hay RO que consumir todavía
 
-_ORDEN = (AUSENTE, CITA, CARGA)
+# ⚠️ TRES VÍAS, NO UNA — y esto fue un error de este módulo, no de los dominios.
+# La primera versión medía sólo `CARGA` y con eso acusó a d01·d02·d03·d09 de «no
+# cargar su RO». Falso: el canon define OTRA vía. `ADR-039`: *«el umbral 65% se
+# especifica sólo en la RO-IV-001; el compilador lo materializa»*, y `ADR-038`
+# quiere que «el Gold Master sólo conozca RO-IV-001 y la BRN le responda
+# variable/fórmula/umbral». d02 —el que peor salía— es el que MEJOR se ajusta al
+# diseño previsto.
+#
+# Las 13 RO están compiladas en `snapshot["brn_cno"]` con `umbral_vigente` y
+# `vigencia_operativa`. El puente está tendido, firmado y al día. Lo que el
+# inventario corregido mide es si alguien lo cruza.
+_ORDEN = (AUSENTE, CITA, COPIADO, COMPILADO, CARGA)
 
 
 @lru_cache(maxsize=1)
@@ -80,32 +93,100 @@ def _sha_de_la_cadena(cno: dict) -> tuple[int, int]:
     return con, len(cadena)
 
 
-def _vinculo_con_el_motor(dominio: str, ro_ids: list[str]) -> tuple[str, list[str]]:
-    """¿El paquete del dominio carga su RO, la cita, o la ignora?
+def universo_del_dominio(dominio: str) -> list[Path]:
+    """TODO el código que un dominio ejecuta — no sólo su carpeta.
 
-    Se deriva del código, no de una declaración. `carga` exige que algún módulo
-    del paquete abra el directorio del BRN **y** nombre la RO: cualquiera de las
-    dos cosas por separado se queda en `cita`, porque leer otro YAML no es leer
-    su regla, y nombrarla en un comentario no es consultarla."""
+    ⚠️ ESTE FUE EL ERROR. El universo de d02 no es `app/agents/d02/`: es eso
+    **más `scripts/enrich_presupuesto.py`**, donde su motor delega. Mirar sólo la
+    carpeta dejaba fuera exactamente el archivo donde vive el parámetro. Un
+    inventario que no declara su universo puede afirmar cualquier cosa, porque
+    nadie sabe sobre qué la afirmó.
+
+    Los scripts delegados se DERIVAN del código del paquete —el `_ENRICHER_PATH`
+    que el motor abre—, no de una lista escrita a mano que envejecería."""
     paq = AGENTES / dominio
-    if not ro_ids:
-        return SIN_RO, []
     if not paq.is_dir():
-        return AUSENTE, []
-
-    citan, carga = [], False
-    for f in paq.rglob("*.py"):
-        if "__pycache__" in f.parts:
-            continue
+        return []
+    propios = [f for f in paq.rglob("*.py") if "__pycache__" not in f.parts]
+    delegados: set[Path] = set()
+    for f in propios:
         txt = f.read_text(encoding="utf-8", errors="replace")
-        if not any(rid in txt for rid in ro_ids):
-            continue
-        citan.append(f.name)
-        if re.search(r"docs[/\\]brn|BRN_DIR|brn\b.*\.yaml", txt):
-            carga = True
-    if not citan:
-        return AUSENTE, []
-    return (CARGA if carga else CITA), sorted(citan)
+        for rel in re.findall(r'"(scripts/[\w/]+\.py)"', txt):
+            if (RAIZ / rel).exists():
+                delegados.add(RAIZ / rel)
+    return propios + sorted(delegados)
+
+
+def _umbrales(ro: dict) -> list[dict]:
+    """Los tramos de vigencia que la RO declara. Un umbral con fecha futura es
+    una bomba de relojería si alguien lo copió: coincide hoy y miente mañana."""
+    par = ro.get("parametros") or {}
+    v = par.get("vigencia_operativa")
+    return [t for t in v if isinstance(t, dict)] if isinstance(v, list) else []
+
+
+def _vinculo_con_el_motor(dominio: str, ro_ids: list[str],
+                          ros: dict) -> tuple[str, list[str], list[dict]]:
+    """Por cuál de las tres vías —si alguna— llega la RO hasta el código.
+
+    Devuelve la vía MÁS FUERTE encontrada, los archivos que la nombran y los
+    parámetros que parecen copiados. La copia se reporta como **señal con su
+    ubicación**, nunca como veredicto: un número puede coincidir por azar, y
+    decidir si es una copia exige leer el código — es la misma separación
+    ⛔ERROR/·SEÑAL del gate epistémico."""
+    if not ro_ids:
+        return SIN_RO, [], []
+    archivos = universo_del_dominio(dominio)
+    if not archivos:
+        return AUSENTE, [], []
+
+    citan, via, copias = [], AUSENTE, []
+    for f in archivos:
+        txt = f.read_text(encoding="utf-8", errors="replace")
+        rel = f.relative_to(RAIZ).as_posix()
+
+        # Vía 3 · el parámetro normativo duplicado en el código.
+        for rid in ro_ids:
+            for tramo in _umbrales(ros.get(rid, {})):
+                u = tramo.get("umbral")
+                if u is None:
+                    continue
+                for m in re.finditer(rf"\b{re.escape(str(u))}\b", txt):
+                    linea = txt[:m.start()].count("\n") + 1
+                    ctx = txt.splitlines()[linea - 1].strip()[:90]
+                    if re.search(r"umbral|piso|minim|m[ií]nimo|techo|limite",
+                                 ctx, re.I):
+                        copias.append({"ro": rid, "umbral": u, "archivo": rel,
+                                       "linea": linea, "contexto": ctx,
+                                       "desde": tramo.get("desde"),
+                                       "hasta": tramo.get("hasta")})
+        if any(rid in txt for rid in ro_ids):
+            citan.append(rel)
+            if re.search(r"docs[/\\]brn|BRN_DIR", txt):
+                via = CARGA
+            elif via != CARGA:
+                via = CITA
+        if via not in (CARGA,) and re.search(r"brn_cno|brn_manifest", txt):
+            via = COMPILADO
+    if via == AUSENTE and copias:
+        via = COPIADO
+    return via, sorted(set(citan)), copias
+
+
+def copias_caducas(copias: list[dict], ros: dict) -> list[dict]:
+    """Copias que coinciden HOY y dejarán de coincidir en una fecha conocida.
+
+    El caso de d02: `enrich_presupuesto.py` fija 65 y `RO-IV-001` declara 65
+    hasta 2026-12-31 y **70 desde 2027-01-01**. Hoy no hay error de dato; el 1
+    de enero de 2027 lo habrá, y nada avisaría. Poder decirlo antes es la
+    diferencia entre un inventario y una alarma."""
+    fuera = []
+    for c in copias:
+        tramos = _umbrales(ros.get(c["ro"], {}))
+        futuros = {t.get("umbral") for t in tramos if t.get("umbral") != c["umbral"]}
+        if futuros:
+            fuera.append({**c, "cambia_a": sorted(x for x in futuros if x is not None)})
+    return fuera
 
 
 def _familia(pieza_id: str) -> str:
@@ -167,9 +248,15 @@ def estado_canonico(dominio: str) -> dict:
         if cno.get("estado") == "vigente":
             cno_vigentes.append(cid)
 
-    vinculo, archivos = _vinculo_con_el_motor(dominio, list(mios))
+    vinculo, archivos, copias = _vinculo_con_el_motor(dominio, list(mios), mios)
     return {
         "dominio": dominio,
+        # EL UNIVERSO, DECLARADO. Sin esto una afirmación no es comprobable:
+        # nadie sabría sobre qué se hizo. Los tres errores de 2026-08-30 fueron
+        # el mismo — afirmar sobre un universo que no se declaró.
+        "universo": [p.relative_to(RAIZ).as_posix() for p in universo_del_dominio(dominio)],
+        "parametros_copiados": copias,
+        "copias_caducas": copias_caducas(copias, mios),
         "cno": sorted(cno_ids),
         "cno_vigentes": cno_vigentes,
         "cno_huerfanos": huerfanos,
@@ -209,23 +296,35 @@ def cobertura_canonica(dominios: list[str] | None = None) -> dict:
         e["estado_de_defensa"] = defensa.get(d, {}).get("estado", "")
         filas.append(e)
 
-    huerfanos = [f["dominio"] for f in filas
-                 if f["ro_vigentes"] and f["vinculo_con_el_motor"] != CARGA]
+    sin_vinculo = [f["dominio"] for f in filas
+                   if f["ro_vigentes"] and f["vinculo_con_el_motor"] in (CITA, AUSENTE)]
     return {
         "dominios": filas,
-        "con_ro_vigente_sin_cargarla": sorted(huerfanos),
+        "sin_vinculo_efectivo": sorted(sin_vinculo),
         "cno_sin_ro": sorted(c for f in filas for c in f["cno_huerfanos"]),
-        "afirmacion_sostenible": _afirmar(filas, huerfanos),
+        "copias_caducas": [c for f in filas for c in f["copias_caducas"]],
+        "afirmacion_sostenible": _afirmar(filas, sin_vinculo),
     }
 
 
-def _afirmar(filas: list[dict], huerfanos: list[str]) -> str:
+def _afirmar(filas: list[dict], sin_vinculo: list[str]) -> str:
     """La frase se COMPONE del estado medido; no se escribe a mano."""
-    cargan = [f["dominio"] for f in filas if f["vinculo_con_el_motor"] == CARGA]
-    base = (f"Consumen su Regla Operativa en tiempo de ejecución: "
-            f"{', '.join(cargan) or 'ninguno'}.")
-    if not huerfanos:
-        return base + " Ningún dominio tiene canon vigente sin consumirlo."
-    return (base + f" Tienen RO vigente y NO la cargan: {', '.join(huerfanos)} — "
-            f"su motor puede coincidir con la regla, pero no la está leyendo, "
-            f"así que la coincidencia no está garantizada por nada.")
+    por_via: dict[str, list[str]] = {}
+    for f in filas:
+        por_via.setdefault(f["vinculo_con_el_motor"], []).append(f["dominio"])
+    partes = [f"{v}: {', '.join(sorted(d))}" for v, d in sorted(por_via.items())]
+    base = "Vía por la que cada dominio alcanza su Regla Operativa — " + " · ".join(partes) + "."
+
+    caducas = [c for f in filas for c in f["copias_caducas"]]
+    if caducas:
+        base += (" ⚠️ Parámetros normativos duplicados en el código que cambiarán "
+                 "de valor en una fecha ya declarada por la RO: " +
+                 ", ".join(f"{c['archivo']}:{c['linea']} ({c['umbral']}→"
+                           f"{'/'.join(str(x) for x in c['cambia_a'])} el "
+                           f"{[t for t in [c.get('hasta')] if t] or ['?']}) "
+                           for c in caducas) +
+                 " — coinciden hoy y dejarán de coincidir sin que nada avise.")
+    if sin_vinculo:
+        base += (f" Sin vínculo efectivo con su RO: {', '.join(sin_vinculo)} — la "
+                 f"nombran o la ignoran, pero no la consultan.")
+    return base
