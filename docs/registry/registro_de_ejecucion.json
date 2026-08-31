@@ -1,47 +1,77 @@
 {
  "_lease": "testimonio de una corrida de pytest. NO lo produce QUIRA sobre sí misma: lo produce el ejecutor, y QUIRA lo lee. Caduca cuando el archivo de la prueba cambia.",
- "commit": "f5b1d8b",
+ "commit": "8c6b1f3",
  "arbol_limpio": false,
  "pruebas": {
   "tests/test_arquitectura_derivada.py::test_ADR_039_es_el_unico_posterior_a_la_autoridad_sin_constancia": {
    "resultado": "passed",
    "archivo": "tests/test_arquitectura_derivada.py",
-   "archivo_sha256": "5fdfbaabf180ca1a"
+   "archivo_sha256": "9ee480bd1c07b132"
+  },
+  "tests/test_arquitectura_derivada.py::test_ataque_centralidad_no_es_vigencia": {
+   "resultado": "passed",
+   "archivo": "tests/test_arquitectura_derivada.py",
+   "archivo_sha256": "9ee480bd1c07b132"
+  },
+  "tests/test_arquitectura_derivada.py::test_ataque_el_corpus_referente_incluye_donde_viven_las_reglas": {
+   "resultado": "passed",
+   "archivo": "tests/test_arquitectura_derivada.py",
+   "archivo_sha256": "9ee480bd1c07b132"
+  },
+  "tests/test_arquitectura_derivada.py::test_ataque_el_inventario_no_se_cuenta_a_si_mismo": {
+   "resultado": "passed",
+   "archivo": "tests/test_arquitectura_derivada.py",
+   "archivo_sha256": "9ee480bd1c07b132"
   },
   "tests/test_arquitectura_derivada.py::test_ataque_el_modulo_no_puede_declarar_vigencia": {
    "resultado": "passed",
    "archivo": "tests/test_arquitectura_derivada.py",
-   "archivo_sha256": "5fdfbaabf180ca1a"
+   "archivo_sha256": "9ee480bd1c07b132"
   },
   "tests/test_arquitectura_derivada.py::test_ataque_lo_pendiente_no_se_confunde_con_lo_no_constatado": {
    "resultado": "passed",
    "archivo": "tests/test_arquitectura_derivada.py",
-   "archivo_sha256": "5fdfbaabf180ca1a"
+   "archivo_sha256": "9ee480bd1c07b132"
+  },
+  "tests/test_arquitectura_derivada.py::test_ataque_mencion_no_es_autoridad": {
+   "resultado": "passed",
+   "archivo": "tests/test_arquitectura_derivada.py",
+   "archivo_sha256": "9ee480bd1c07b132"
   },
   "tests/test_arquitectura_derivada.py::test_ataque_no_hay_imputacion_retroactiva": {
    "resultado": "passed",
    "archivo": "tests/test_arquitectura_derivada.py",
-   "archivo_sha256": "5fdfbaabf180ca1a"
+   "archivo_sha256": "9ee480bd1c07b132"
   },
   "tests/test_arquitectura_derivada.py::test_ataque_una_calificacion_de_evidencia_no_es_un_ADR_sin_validar": {
    "resultado": "passed",
    "archivo": "tests/test_arquitectura_derivada.py",
-   "archivo_sha256": "5fdfbaabf180ca1a"
+   "archivo_sha256": "9ee480bd1c07b132"
+  },
+  "tests/test_arquitectura_derivada.py::test_el_descubrimiento_es_por_rol_no_por_territorio": {
+   "resultado": "passed",
+   "archivo": "tests/test_arquitectura_derivada.py",
+   "archivo_sha256": "9ee480bd1c07b132"
+  },
+  "tests/test_arquitectura_derivada.py::test_el_principio_de_ADR_007_gobierna_aunque_su_ADR_no_se_cite": {
+   "resultado": "passed",
+   "archivo": "tests/test_arquitectura_derivada.py",
+   "archivo_sha256": "9ee480bd1c07b132"
   },
   "tests/test_arquitectura_derivada.py::test_el_universo_son_los_dos_directorios": {
    "resultado": "passed",
    "archivo": "tests/test_arquitectura_derivada.py",
-   "archivo_sha256": "5fdfbaabf180ca1a"
+   "archivo_sha256": "9ee480bd1c07b132"
   },
   "tests/test_arquitectura_derivada.py::test_la_afirmacion_dice_lo_que_NO_puede_afirmar": {
    "resultado": "passed",
    "archivo": "tests/test_arquitectura_derivada.py",
-   "archivo_sha256": "5fdfbaabf180ca1a"
+   "archivo_sha256": "9ee480bd1c07b132"
   },
   "tests/test_arquitectura_derivada.py::test_ninguna_referencia_apunta_a_un_ADR_inexistente": {
    "resultado": "passed",
    "archivo": "tests/test_arquitectura_derivada.py",
-   "archivo_sha256": "5fdfbaabf180ca1a"
+   "archivo_sha256": "9ee480bd1c07b132"
   },
   "tests/test_canon_derivado.py::test_ataque_citar_la_regla_no_cuenta_como_cargarla": {
    "resultado": "passed",

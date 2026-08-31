@@ -61,6 +61,57 @@ RAIZ = Path(__file__).resolve().parents[2]
 # y este módulo NO la responde: los cuenta a todos y declara la partición.
 ADR_DIRS = (RAIZ / "docs" / "adr", RAIZ / "docs" / "corpus_externo")
 
+# ── DESCUBRIMIENTO POR ROL, NO POR TERRITORIO ────────────────────────────────
+# El colega, tras el hallazgo de los doce: *«¿cómo descubre QUIRA un ADR,
+# independientemente de dónde esté almacenado? […] `docs/adr/` no puede volver a
+# ser tratado como sinónimo de universo ADR»*.
+#
+# Por eso el universo NO es una lista de carpetas: es el repositorio entero,
+# menos exclusiones **declaradas una por una**. Así, un ADR guardado mañana en un
+# tercer territorio aparece solo; y si algo se excluye, se sabe por qué.
+_EXCLUIDOS = (
+    (".claude/worktrees", "copias de trabajo de otras ramas: duplican el original"),
+    ("skills/", "plantillas de herramientas de terceros — `ADR-FORMAT.md` explica "
+                "cómo escribir un ADR; no es una decisión de QUIRA"),
+    ("node_modules", "dependencias externas"),
+)
+
+
+def territorios() -> dict:
+    """Dónde vive de hecho cada ADR, y qué se excluyó a propósito.
+
+    Que la arquitectura documental tenga **más de un territorio físico** es en
+    sí una propiedad arquitectónica, y hasta hoy no estaba registrada en ningún
+    sitio: se descubrió porque un inventario acusó en falso."""
+    encontrados: dict[str, list[str]] = {}
+    excluidos: list[dict] = []
+    for f in sorted(RAIZ.rglob("ADR-*.md")):
+        rel = f.relative_to(RAIZ).as_posix()
+        motivo = next((m for pat, m in _EXCLUIDOS if pat in rel), "")
+        if motivo:
+            excluidos.append({"archivo": rel, "motivo": motivo})
+            continue
+        encontrados.setdefault(str(f.parent.relative_to(RAIZ).as_posix()), []).append(rel)
+    return {"territorios": {k: len(v) for k, v in sorted(encontrados.items())},
+            "excluidos": excluidos,
+            "declarados_en_el_modulo": [d.relative_to(RAIZ).as_posix() for d in ADR_DIRS]}
+
+
+# ── TIPOS DE RELACIÓN ────────────────────────────────────────────────────────
+# *«mención ≠ referencia ≠ dependencia ≠ consumo ≠ autoridad»*. Un simple
+# `referenciado=True` es lo que produjo cuatro falsos positivos hoy: la mención
+# hipotética de `ADR-054`, la RO citada en un docstring, el puente compilado que
+# existe sin que nadie lo cruce.
+MENCION = "mencion"                    # el id aparece, sin más
+AUTORIDAD = "autoridad_invocada"       # se cita como fundamento de algo
+EN_CODIGO = "referenciado_en_codigo"   # vive en un .py
+EN_CANON = "referenciado_en_canon"     # vive en un CNO/RO
+EN_COMPILADO = "referenciado_en_artefacto_compilado"
+
+_PATRON_AUTORIDAD = (r"(?:conforme a|seg[uú]n|por mandato de|en aplicaci[oó]n de|"
+                     r"fundamento|autoridad|deriva de|exigid[oa] por)\s*[«\"'`(]?\s*ADR-{n}"
+                     r"|ADR-{n}\s*§")
+
 # La norma que introdujo la exigencia de validación humana registrada. Todo lo
 # anterior a ella se lee sin retroactividad (ver docstring).
 AUTORIDAD_VALIDACION = "ADR-035"
@@ -168,6 +219,85 @@ def referencias_no_resueltas() -> list[dict]:
             fuera.append({"desde": yo, "referencia": cid,
                           "contexto": (m.group(0).strip() if m else "")[:118]})
     return fuera
+
+
+@lru_cache(maxsize=1)
+def _corpus_referente() -> list[tuple[str, str]]:
+    """Todo lo que puede referirse a un ADR: canon, código, artefactos compilados.
+
+    El universo de referentes se declara aquí y se barre entero — no se pregunta
+    «¿lo cita el código?» sino «¿quién lo cita, y de qué manera?»."""
+    piezas = []
+    # ⚠️ `*.md` DE LA RAÍZ INCLUIDO, y faltaba. La primera versión barría docs/,
+    # app/, scripts/, governance/ e identity/ — y dejaba fuera `CLAUDE.md`, que
+    # es donde viven las Reglas de Oro. Se notó porque el patrón «ningún script
+    # lo recalcula» dio 0 artefactos siendo una de las reglas más citadas del
+    # sistema: el universo del corpus referente estaba tan incompleto como el de
+    # los ADR, y por la misma razón — se listaron carpetas en vez de derivarlas.
+    for patron in ("*.md", "docs/**/*.md", "docs/brn/*.yaml", "app/**/*.py",
+                   "scripts/**/*.py", "governance/*.md", "identity/*.md",
+                   "data/brn_manifest.json", "data/brn_config.json"):
+        for f in RAIZ.glob(patron):
+            rel = f.relative_to(RAIZ).as_posix()
+            # El inventario no se cuenta a sí mismo: este módulo nombra ADR en
+            # sus comentarios y se colaría como «referente», inflando la
+            # centralidad de lo que él mismo está midiendo. Mismo principio que
+            # `arbol_limpio` en el registrador — un dato que se incluye a sí
+            # mismo deja de informar.
+            if any(p in rel for p in ("__pycache__", "worktrees", "node_modules",
+                                      "app/agents/arquitectura.py")):
+                continue
+            try:
+                piezas.append((rel, f.read_text(encoding="utf-8", errors="replace")))
+            except OSError:
+                continue
+    return piezas
+
+
+def rol_observable(adr_id: str) -> dict:
+    """Qué lugar ocupa REALMENTE un ADR en la red, sin declarar si gobierna.
+
+    El colega lo pidió así tras el hallazgo de `ADR-007`: *«No "gobierna porque
+    Javo dice que gobierna", sino: ¿qué artefactos lo tratan como autoridad?
+    ¿qué artefactos dependen de él?»*. Si resulta citado por el canon, por el
+    compilador y por otros ADR, hay **evidencia de centralidad** aunque nadie le
+    ponga todavía la etiqueta política de vigente.
+
+    ⚠️ Centralidad no es vigencia. Un ADR muy citado puede estar derogado, y uno
+    poco citado puede ser fundacional. Esto mide presencia en la red, nada más —
+    y decirlo es parte de no afirmar de más."""
+    n = adr_id.split("-")[-1]
+    aut = re.compile(_PATRON_AUTORIDAD.format(n=n), re.I)
+    rel: dict[str, list[str]] = {}
+    for ruta, texto in _corpus_referente():
+        if adr_id not in texto:
+            continue
+        if ruta.endswith((f"{adr_id}.md",)) or f"/{adr_id}_" in f"/{ruta}":
+            continue                                   # no se cita a sí mismo
+        tipos = [MENCION]
+        if aut.search(texto):
+            tipos.append(AUTORIDAD)
+        if ruta.endswith(".py"):
+            tipos.append(EN_CODIGO)
+        elif "/brn/" in ruta and ruta.endswith(".yaml"):
+            tipos.append(EN_CANON)
+        elif ruta.startswith("data/"):
+            tipos.append(EN_COMPILADO)
+        for t in tipos:
+            rel.setdefault(t, []).append(ruta)
+    return {
+        "id": adr_id,
+        "relaciones": {k: sorted(set(v)) for k, v in rel.items()},
+        "artefactos_que_lo_refieren": len({r for v in rel.values() for r in v}),
+        "lo_invocan_como_autoridad": len(rel.get(AUTORIDAD, [])),
+    }
+
+
+def centralidad() -> list[dict]:
+    """Los ADR ordenados por presencia observable en la red. NO por importancia."""
+    filas = [rol_observable(a["id"]) for a in todos()]
+    return sorted(filas, key=lambda r: (-r["lo_invocan_como_autoridad"],
+                                        -r["artefactos_que_lo_refieren"], r["id"]))
 
 
 def cobertura_arquitectonica() -> dict:

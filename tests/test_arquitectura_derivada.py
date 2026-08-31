@@ -129,3 +129,85 @@ def test_la_afirmacion_dice_lo_que_NO_puede_afirmar():
     f = A.cobertura_arquitectonica()["afirmacion_sostenible"]
     assert "No se afirma cuáles gobiernan hoy" in f
     assert "no consta ≠ no se validó" in f
+
+
+# ── PROPIEDAD 6-7 · ROL OBSERVABLE Y TIPOS DE RELACIÓN (2026-08-31) ──────────
+def test_el_descubrimiento_es_por_rol_no_por_territorio():
+    """El colega, tras el hallazgo de los doce: *«¿cómo descubre QUIRA un ADR,
+    independientemente de dónde esté almacenado?»*.
+
+    El universo se barre del repositorio entero menos exclusiones declaradas, no
+    de una lista de carpetas. Si mañana aparece un ADR en un tercer territorio,
+    se ve solo — que es justo lo que no ocurrió con `corpus_externo/`."""
+    t = A.territorios()
+    assert len(t["territorios"]) >= 2, (
+        "la arquitectura documental tiene más de un territorio físico y eso es "
+        "una propiedad, no un accidente")
+    assert sum(t["territorios"].values()) >= 53
+    for e in t["excluidos"]:
+        assert e["motivo"], f"exclusión sin motivo declarado: {e['archivo']}"
+
+
+def test_ataque_el_inventario_no_se_cuenta_a_si_mismo():
+    """`arquitectura.py` nombra decenas de ADR en sus comentarios. Si entrara en
+    su propio corpus referente, inflaría la centralidad de lo que está midiendo
+    — el mismo defecto que `arbol_limpio` tuvo en el registrador."""
+    rutas = {r for r, _ in A._corpus_referente()}
+    assert "app/agents/arquitectura.py" not in rutas
+    r7 = A.rol_observable("ADR-007")
+    for lista in r7["relaciones"].values():
+        assert not any("arquitectura.py" in x for x in lista)
+
+
+def test_ataque_el_corpus_referente_incluye_donde_viven_las_reglas():
+    """REGRESIÓN de un universo incompleto detectado por su propio resultado.
+
+    El corpus barría docs/, app/, scripts/, governance/ e identity/ — y dejaba
+    fuera `CLAUDE.md`, donde viven las Reglas de Oro. Se notó porque «ningún
+    script lo recalcula» dio 0 artefactos siendo de lo más citado del sistema."""
+    rutas = {r for r, _ in A._corpus_referente()}
+    assert "CLAUDE.md" in rutas, "volvió a quedar fuera el archivo de las reglas"
+
+
+def test_ataque_centralidad_no_es_vigencia():
+    """`ADR-035` es el más referido de todos. Eso NO lo declara vigente, y el
+    módulo no puede insinuarlo: un ADR muy citado puede estar derogado y uno
+    fundacional puede no citarse nunca — que es exactamente el caso de ADR-007."""
+    top = A.centralidad()[0]
+    assert top["id"] == "ADR-035", f"cambió el más central: {top['id']}"
+    assert "vigente" not in top and "gobierna" not in top
+    fuente = (RAIZ / "app" / "agents" / "arquitectura.py").read_text(encoding="utf-8")
+    assert "Centralidad no es vigencia" in fuente
+
+
+def test_el_principio_de_ADR_007_gobierna_aunque_su_ADR_no_se_cite():
+    """EL HALLAZGO QUE LA PREGUNTA ORIGINAL NO PODÍA DAR.
+
+    Se preguntó «¿ADR-007 gobierna?» — que le pide a la memoria humana lo que
+    debe derivarse. Medido: su identificador aparece en 2 artefactos, ambos
+    dentro de su propio territorio; y su principio —«Regla de Oro 1»— aparece en
+    decenas. **El principio gobierna; el artefacto que lo fundó no se cita.**
+    La regla viaja desacoplada de su decisión de origen."""
+    import re
+
+    r = A.rol_observable("ADR-007")
+    assert r["lo_invocan_como_autoridad"] == 0, (
+        "si alguien empezara a invocar ADR-007 como autoridad, hay que decirlo")
+    con_regla = sum(1 for _, txt in A._corpus_referente()
+                    if re.search(r"Regla 1/4|Regla de Oro 1", txt, re.I))
+    assert con_regla >= 20, f"el principio aparece en {con_regla} artefactos"
+    assert con_regla > r["artefactos_que_lo_refieren"] * 5, (
+        "el principio debe estar mucho más presente que su identificador")
+
+
+def test_ataque_mencion_no_es_autoridad():
+    """*«mención ≠ referencia ≠ dependencia ≠ consumo ≠ autoridad»*. Un simple
+    `referenciado=True` produjo cuatro falsos positivos hoy. Los tipos deben
+    separarse: hay ADR mencionados que nadie invoca como fundamento."""
+    solo_mencion = [r for r in A.centralidad()
+                    if r["artefactos_que_lo_refieren"] > 0
+                    and r["lo_invocan_como_autoridad"] == 0]
+    assert solo_mencion, (
+        "ningún ADR está sólo mencionado: los tipos de relación colapsaron")
+    for r in solo_mencion[:3]:
+        assert A.AUTORIDAD not in r["relaciones"]
