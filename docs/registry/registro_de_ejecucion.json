@@ -1,6 +1,6 @@
 {
  "_lease": "testimonio de una corrida de pytest. NO lo produce QUIRA sobre sí misma: lo produce el ejecutor, y QUIRA lo lee. Caduca cuando el archivo de la prueba cambia.",
- "commit": "2205812",
+ "commit": "8b1eb9c",
  "arbol_limpio": false,
  "pruebas": {
   "tests/test_canon_derivado.py::test_ataque_citar_la_regla_no_cuenta_como_cargarla": {
@@ -1487,6 +1487,51 @@
    "resultado": "passed",
    "archivo": "tests/test_longitudinal_engine.py",
    "archivo_sha256": "fbf6f8fd6c615bb4"
+  },
+  "tests/test_meta_integridad.py::test_el_universo_declarado_coincide_con_lo_hallado[apropiacion.cobertura_de_la_plataforma]": {
+   "resultado": "passed",
+   "archivo": "tests/test_meta_integridad.py",
+   "archivo_sha256": "1a87023f8d60f00a"
+  },
+  "tests/test_meta_integridad.py::test_el_universo_declarado_coincide_con_lo_hallado[canon.cobertura_canonica]": {
+   "resultado": "passed",
+   "archivo": "tests/test_meta_integridad.py",
+   "archivo_sha256": "1a87023f8d60f00a"
+  },
+  "tests/test_meta_integridad.py::test_el_universo_declarado_coincide_con_lo_hallado[ejecucion.cobertura]": {
+   "resultado": "passed",
+   "archivo": "tests/test_meta_integridad.py",
+   "archivo_sha256": "1a87023f8d60f00a"
+  },
+  "tests/test_meta_integridad.py::test_hay_inventarios_que_auditar": {
+   "resultado": "passed",
+   "archivo": "tests/test_meta_integridad.py",
+   "archivo_sha256": "1a87023f8d60f00a"
+  },
+  "tests/test_meta_integridad.py::test_la_regla_alcanza_a_los_inventarios_futuros": {
+   "resultado": "passed",
+   "archivo": "tests/test_meta_integridad.py",
+   "archivo_sha256": "1a87023f8d60f00a"
+  },
+  "tests/test_meta_integridad.py::test_ningun_inventario_confunde_no_hallado_con_inexistente": {
+   "resultado": "passed",
+   "archivo": "tests/test_meta_integridad.py",
+   "archivo_sha256": "1a87023f8d60f00a"
+  },
+  "tests/test_meta_integridad.py::test_todo_inventario_declara_su_universo[apropiacion.cobertura_de_la_plataforma]": {
+   "resultado": "passed",
+   "archivo": "tests/test_meta_integridad.py",
+   "archivo_sha256": "1a87023f8d60f00a"
+  },
+  "tests/test_meta_integridad.py::test_todo_inventario_declara_su_universo[canon.cobertura_canonica]": {
+   "resultado": "passed",
+   "archivo": "tests/test_meta_integridad.py",
+   "archivo_sha256": "1a87023f8d60f00a"
+  },
+  "tests/test_meta_integridad.py::test_todo_inventario_declara_su_universo[ejecucion.cobertura]": {
+   "resultado": "passed",
+   "archivo": "tests/test_meta_integridad.py",
+   "archivo_sha256": "1a87023f8d60f00a"
   },
   "tests/test_naturaleza_verificabilidad.py::test_caso1_un_objeto_documental_sigue_comportandose_como_antes": {
    "resultado": "passed",

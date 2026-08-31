@@ -182,4 +182,20 @@ def cobertura(registro: dict | None = None) -> dict:
         "caducadas": len(pruebas) - vigentes,
         "commit": reg.get("commit", ""),
         "arbol_limpio": reg.get("arbol_limpio"),
+        # EL UNIVERSO, DECLARADO (2026-08-31 · Capa 0). Este inventario es el
+        # más fácil de leer de más: dice cuántas pruebas tienen testimonio, no
+        # cuántas existen. Si nadie registró una corrida, «0 vigentes» no
+        # significa que nada funcione — significa que nadie miró.
+        "universo": {
+            "que": "pruebas con testimonio en el registro de ejecución",
+            "donde": str(REGISTRO.relative_to(RAIZ)) if REGISTRO.is_relative_to(RAIZ) else str(REGISTRO),
+            "como": "JUnit XML de pytest, anclado al SHA del archivo de cada prueba",
+            "hallados": len(pruebas),
+            "fuera_de_alcance": [
+                "pruebas que existen y nunca se registraron: no aparecen aquí, "
+                "y su ausencia NO es evidencia de que fallen",
+                "el testimonio caduca al cambiar el archivo: 'caducadas' mide "
+                "desactualización del registro, no defectos del código",
+            ],
+        },
     }

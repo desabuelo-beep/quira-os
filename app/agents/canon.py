@@ -351,6 +351,25 @@ def cobertura_canonica(dominios: list[str] | None = None) -> dict:
                    if f["ro_vigentes"] and f["vinculo_con_el_motor"] in (CITA, AUSENTE)]
     return {
         "dominios": filas,
+        # EL UNIVERSO DEL INVENTARIO ENTERO, no sólo el de cada dominio. Este
+        # módulo declaraba el universo por fila y no el suyo propio: sabía sobre
+        # qué archivos miraba cada dominio, pero no decía **qué dominios pudo no
+        # haber visto**. La regla se cumple hacia dentro y no hacia sí misma.
+        "universo": {
+            "que": "dominios reclamados por alguna RO, más los que tienen paquete",
+            "donde": "docs/brn/*.yaml + app/agents/d*/",
+            "como": "`opera_en` de cada RO (declarado por el canon) unido al "
+                    "listado de directorios; el numeral romano NUNCA se usa "
+                    "para inferir el dominio",
+            "hallados": len(filas),
+            "fuera_de_alcance": [
+                "CNO cuya familia romana ninguna RO reclama: sin `opera_en` que "
+                "los ancle, no se les puede asignar dominio y no aparecen",
+                "parámetros de valor indistinguible del ruido (0·1·100·0.5): "
+                "se listan en `parametros_no_verificables`, no se buscan",
+                "vías de consumo distintas de las tres medidas, si existieran",
+            ],
+        },
         "sin_vinculo_efectivo": sorted(sin_vinculo),
         "cno_sin_ro": sorted(c for f in filas for c in f["cno_huerfanos"]),
         "copias_caducas": [c for f in filas for c in f["copias_caducas"]],

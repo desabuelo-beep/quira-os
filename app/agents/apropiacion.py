@@ -633,6 +633,22 @@ def cobertura_de_la_plataforma(dominios: list[str] | None = None) -> dict:
     return {
         "dominios": filas,
         "por_estado": por_estado,
+        # EL UNIVERSO, DECLARADO (2026-08-31 · Capa 0). Tres diagnósticos falsos
+        # salieron el mismo día de afirmar sobre universos que nadie declaró. La
+        # regla nació de ellos y **no se había aplicado a este inventario**: un
+        # mecanismo de meta-integridad que se exceptúa a sí mismo no es una
+        # regla, es una costumbre.
+        "universo": {
+            "que": "dominios con paquete propio en app/agents/",
+            "donde": "app/agents/d*/",
+            "como": "listado del directorio; NO una lista escrita a mano",
+            "hallados": len(filas),
+            "fuera_de_alcance": [
+                "dominios sin carpeta propia — si existieran, no se verían",
+                "los ataques se cuentan sobre tests/*.py: una prueba fuera de "
+                "ese directorio no cuenta como ataque",
+            ],
+        },
         # La afirmación se COMPONE del estado medido, no se redacta a mano. La
         # versión anterior decía «los demás permanecen sin evidencia de haber
         # pasado por ese mecanismo» — cierto, pero omitía que ni siquiera están
