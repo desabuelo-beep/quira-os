@@ -199,6 +199,13 @@ def cobertura(registro: dict | None = None) -> dict:
             "donde": str(REGISTRO.relative_to(RAIZ)) if REGISTRO.is_relative_to(RAIZ) else str(REGISTRO),
             "como": "JUnit XML de pytest, anclado al SHA del archivo de cada prueba",
             "hallados": len(pruebas),
+            "mecanismo": {
+                "tipo": "derivado",
+                "operacion": "leer_registro",
+                "por_que": "el conjunto sale del testimonio que produjo pytest, no de una lista propia",
+            },
+            "exclusiones": [],
+
             "fuera_de_alcance": [
                 "pruebas que existen y nunca se registraron: no aparecen aquí, "
                 "y su ausencia NO es evidencia de que fallen",

@@ -321,6 +321,25 @@ def cobertura_arquitectonica() -> dict:
                     "normaliza, porque ningún artefacto declara la equivalencia "
                     "entre los nombres de las tres épocas",
             "hallados": len(filas),
+            # ⚠️ EXHAUSTIVIDAD DERIVADA ≠ SELECCIÓN DELIBERADA (colega,
+            # 2026-08-31). Una lista escrita a mano **no siempre es un defecto**:
+            # una exclusión explícita como `ADR-FORMAT.md` debe ser manual,
+            # porque es una decisión de alcance. Lo peligroso es que una
+            # enumeración manual pretenda ser el universo. Por eso el
+            # descubrimiento se deriva y las exclusiones se declaran, cada una
+            # con su motivo — la medicina no puede ser peor que la enfermedad.
+            "mecanismo": {
+                "tipo": "derivado",
+                "operacion": "rglob",
+                "por_que": "se barre el repositorio entero y se restan "
+                           "exclusiones nombradas; `docs/adr/` dejó de ser "
+                           "sinónimo de «universo ADR» el día que aparecieron "
+                           "doce en otro territorio",
+            },
+            "exclusiones": [
+                {"patron": p, "motivo": m,
+                 "autoridad": "decisión de alcance de este módulo, revisable"}
+                for p, m in _EXCLUIDOS],
             "fuera_de_alcance": [
                 "decisiones de arquitectura que no se registraron como ADR: no "
                 "existen para este inventario",

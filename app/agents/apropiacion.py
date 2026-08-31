@@ -643,6 +643,13 @@ def cobertura_de_la_plataforma(dominios: list[str] | None = None) -> dict:
             "donde": "app/agents/d*/",
             "como": "listado del directorio; NO una lista escrita a mano",
             "hallados": len(filas),
+            "mecanismo": {
+                "tipo": "derivado",
+                "operacion": "iterdir",
+                "por_que": "el conjunto sale de recorrer el directorio, no de una lista escrita: una enumeracion manual no puede pretender exhaustividad",
+            },
+            "exclusiones": [],
+
             "fuera_de_alcance": [
                 "dominios sin carpeta propia — si existieran, no se verían",
                 "los ataques se cuentan sobre tests/*.py: una prueba fuera de "

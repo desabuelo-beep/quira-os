@@ -362,6 +362,13 @@ def cobertura_canonica(dominios: list[str] | None = None) -> dict:
                     "listado de directorios; el numeral romano NUNCA se usa "
                     "para inferir el dominio",
             "hallados": len(filas),
+            "mecanismo": {
+                "tipo": "derivado",
+                "operacion": "glob",
+                "por_que": "los dominios salen de `opera_en` en las RO y del listado de paquetes; ninguna lista fija los enumera",
+            },
+            "exclusiones": [],
+
             "fuera_de_alcance": [
                 "CNO cuya familia romana ninguna RO reclama: sin `opera_en` que "
                 "los ancle, no se les puede asignar dominio y no aparecen",

@@ -41,7 +41,8 @@ RAIZ = Path(__file__).resolve().parents[1]
 if str(RAIZ) not in sys.path:
     sys.path.insert(0, str(RAIZ))
 
-_CAMPOS = ("que", "donde", "como", "hallados", "fuera_de_alcance")
+_CAMPOS = ("que", "donde", "como", "hallados", "fuera_de_alcance",
+           "mecanismo", "exclusiones")
 
 
 def inventarios() -> list[tuple[str, object]]:
@@ -147,3 +148,72 @@ def test_la_regla_alcanza_a_los_inventarios_futuros():
             "ejecucion.cobertura",
             "canon.cobertura_canonica"} <= set(nombres), (
         f"la introspección dejó de alcanzar a alguno de los tres: {nombres}")
+
+
+# ── EXHAUSTIVIDAD DERIVADA ≠ SELECCIÓN DELIBERADA (2026-08-31) ───────────────
+@pytest.mark.parametrize("nombre", [n for n, _ in inventarios()])
+def test_un_universo_exhaustivo_debe_derivarse_no_enumerarse(nombre):
+    """LA REGLA QUE CIERRA LA CAPA 0, con el matiz que la salva de ser absurda.
+
+    El director propuso prohibir toda lista escrita a mano. El colega lo corrigió:
+
+    > *«Una lista manual no siempre es un defecto. Una exclusión explícita como
+    > `ADR-FORMAT.md` puede y debe ser manual: representa una decisión de
+    > alcance. Lo peligroso es que una lista manual pretenda exhaustividad.»*
+
+    Así que no se prohíbe enumerar: se prohíbe **enumerar y llamarlo universo**.
+    Quien declare `tipo: derivado` debe nombrar la operación que lo descubre, y
+    esa operación tiene que existir de verdad en su código — la declaración no
+    se cree, se comprueba."""
+    fn = dict(inventarios())[nombre]
+    mod_nombre = nombre.split(".")[0]
+    m = fn()["universo"]["mecanismo"]
+    assert m["tipo"] in ("derivado", "explicitamente_limitado"), m
+    assert m.get("por_que"), f"{nombre}: mecanismo sin justificar"
+
+    if m["tipo"] == "derivado":
+        fuente = (RAIZ / "app" / "agents" / f"{mod_nombre}.py").read_text(encoding="utf-8")
+        assert m["operacion"] in fuente, (
+            f"{nombre} declara descubrir por «{m['operacion']}» y esa operación "
+            f"no aparece en su código: la declaración no se cree, se comprueba")
+
+
+@pytest.mark.parametrize("nombre", [n for n, _ in inventarios()])
+def test_toda_exclusion_declara_motivo_y_autoridad(nombre):
+    """La contracara: excluir está permitido, **excluir en silencio no**. Una
+    exclusión sin motivo es indistinguible de un olvido, y fue precisamente un
+    olvido —`corpus_externo/`— el que costó el 23% del universo."""
+    fn = dict(inventarios())[nombre]
+    for e in fn()["universo"]["exclusiones"]:
+        assert e.get("motivo"), f"{nombre}: exclusión sin motivo → {e}"
+        assert e.get("autoridad"), (
+            f"{nombre}: exclusión sin autoridad — quién decidió dejarlo fuera "
+            f"es parte de la decisión → {e}")
+
+
+def test_la_leccion_se_enuncia_sin_extrapolar():
+    """El colega corrigió también el LENGUAJE del hallazgo, y esa corrección es
+    parte de la disciplina:
+
+    > *«No diría todavía "los universos derivados nunca fallan". La propia
+    > disciplina que estamos construyendo exige no extrapolar más allá de lo
+    > atacado.»*
+
+    Lo demostrado es acotado: **en los inventarios auditados hasta ahora**, cada
+    universo fijado a mano que pretendía exhaustividad resultó incompleto —los
+    enrichers, los CNO de d08, el universo de d02, los territorios de ADR, el
+    corpus referente—; los derivados no han producido todavía ese fallo. Que no
+    lo hayan producido no es que no puedan."""
+    for nombre, fn in inventarios():
+        u = fn()["universo"]
+        assert u["fuera_de_alcance"], (
+            f"{nombre} afirma no tener límites — ninguno lo ha conseguido aún")
+        # Y el límite no puede enunciarse como una garantía: un inventario que
+        # promete infalibilidad deja de invitar a que lo ataquen, que es lo
+        # único que hasta ahora ha encontrado algo.
+        texto = " ".join(str(x) for x in u["fuera_de_alcance"]).lower()
+        for absoluto in ("nunca falla", "siempre completo", "garantiza",
+                         "exhaustivo y definitivo"):
+            assert absoluto not in texto, (
+                f"{nombre} promete «{absoluto}» en sus límites: eso es lo "
+                f"contrario de declarar un límite")
