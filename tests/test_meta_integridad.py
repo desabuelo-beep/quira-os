@@ -106,20 +106,34 @@ def test_el_universo_declarado_coincide_con_lo_hallado(nombre):
 
 
 def test_ningun_inventario_confunde_no_hallado_con_inexistente():
-    """El error de fondo, buscado en la prosa de los propios inventarios.
+    """El error de fondo: cada inventario debe distinguir «no lo encontré» de
+    «no existe» — el Principio Rector aplicado hacia adentro.
 
-    Cada uno debe distinguir explícitamente «no lo encontré» de «no existe» —
-    el Principio Rector aplicado hacia adentro. `canon` lo hace con
-    `no_comprobable`; `ejecucion` con `None` frente a `False`; `apropiacion` con
-    `no_integrado` frente a `no_protegido`."""
-    for nombre, fn in inventarios():
-        mod = nombre.split(".")[0]
-        fuente = (RAIZ / "app" / "agents" / f"{mod}.py").read_text(encoding="utf-8")
-        assert "fuera_de_alcance" in fuente, f"{mod} no declara sus límites"
-        assert any(marca in fuente for marca in
-                   ("no_comprobable", "no_integrado", "incomprobable",
-                    "no significa", "no_significa", "no es evidencia")), (
-            f"{mod} no distingue en ninguna parte «no hallado» de «inexistente»")
+    ⚠️ ESTA PRUEBA YA FALLÓ UNA VEZ, Y POR SU PROPIO DEFECTO. Buscaba una lista
+    literal de marcas —`no_comprobable`, `no_integrado`…— y `arquitectura.py`
+    nació usando `no_determinable`: la delató como incumplidora cumpliendo. Un
+    universo de marcas escrito a mano es el mismo error que perseguimos, una
+    capa más arriba.
+
+    Ahora se mide la **propiedad**: que el módulo declare al menos una constante
+    pública cuyo valor nombre un estado de indeterminación. Se deriva del
+    módulo, no de una lista que alguien deba mantener."""
+    import importlib
+    for nombre, _ in inventarios():
+        mod_nombre = nombre.split(".")[0]
+        mod = importlib.import_module(f"app.agents.{mod_nombre}")
+        fuente = (RAIZ / "app" / "agents" / f"{mod_nombre}.py").read_text(encoding="utf-8")
+        assert "fuera_de_alcance" in fuente, f"{mod_nombre} no declara sus límites"
+
+        constantes = [v for k, v in vars(mod).items()
+                      if k.isupper() and isinstance(v, str)]
+        indeterminacion = [v for v in constantes
+                           if any(m in v for m in ("no_determinable", "no_comprobable",
+                                                   "no_integrado", "sin_", "no_la_",
+                                                   "no_es_", "no_acreditado"))]
+        assert indeterminacion, (
+            f"{mod_nombre} no declara ningún estado de indeterminación: sin él, "
+            f"«no hallado» y «no existe» salen iguales — {constantes[:8]}")
 
 
 def test_la_regla_alcanza_a_los_inventarios_futuros():

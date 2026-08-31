@@ -144,6 +144,14 @@ def registrar(xml: Path, salida: Path = SALIDA) -> dict:
 
 
 def main(argv: list[str]) -> int:
+    # La consola de Windows no siempre habla UTF-8 y el resumen lleva
+    # simbolos: sin esto el script muere DESPUES de escribir el registro,
+    # dando por fallida una corrida que si se guardo.
+    try:
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    except Exception:                                    # noqa: BLE001
+        pass
+
     if len(argv) > 1:
         xml = Path(argv[1])
         if not xml.exists():

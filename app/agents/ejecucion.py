@@ -56,6 +56,14 @@ PASO = "passed"
 FALLO = "failed"
 OMITIDA = "skipped"
 
+# Los dos estados en que este módulo **no puede afirmar nada**, con nombre
+# propio. Vivían como literales sueltos dentro de `estado()`, y eso los hacía
+# invisibles para quien inspeccionara el módulo: la distinción existía en el
+# código y no estaba declarada. Un estado de indeterminación sin nombre es un
+# estado que nadie puede citar.
+SIN_TESTIMONIO = "sin_testimonio"          # nadie registró la corrida
+TESTIMONIO_CADUCADO = "testimonio_caducado"  # el registro habla de otro código
+
 
 @lru_cache(maxsize=None)
 def _sha_archivo(ruta: Path) -> str:
@@ -167,8 +175,8 @@ def estado(nombre: str, registro: dict | None = None) -> str:
     if exito is False:
         return "fallida"
     if _entradas(nombre, reg):
-        return "testimonio_caducado"
-    return "sin_testimonio"
+        return TESTIMONIO_CADUCADO
+    return SIN_TESTIMONIO
 
 
 def cobertura(registro: dict | None = None) -> dict:
