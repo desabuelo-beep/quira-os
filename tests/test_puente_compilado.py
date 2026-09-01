@@ -95,9 +95,9 @@ def test_el_estado_del_catalogo_se_deriva_y_no_se_escribe():
     assert "estado_catalogo" not in brn, (
         "volvió el campo único que colapsaba piezas y acto de compilación")
     assert brn["estado_piezas_cno"] and brn["estado_piezas_ro"]
-    assert brn["validacion_humana_del_catalogo"] == "no_consta", (
-        "si el catálogo se validó, debe registrar QUIÉN y CUÁNDO — no pasar a "
-        "un «sí» sin sello")
+    sello = brn["validacion_humana_del_catalogo"]
+    assert isinstance(sello, dict), (
+        "el sello volvió a ser una cadena suelta: debe registrar QUIÉN y CUÁNDO")
     fuente = (RAIZ / "scripts" / "brn_cno.py").read_text(encoding="utf-8")
     assert '"estado_catalogo": "propuesta' not in fuente, (
         "el literal volvió al compilador")
@@ -180,3 +180,69 @@ def test_la_frontera_de_la_BRN_sigue_declarada():
     assert "REGLA" in doctrina["_doctrina"] and "ADR-035" in doctrina["_doctrina"]
     assert "MDN" in doctrina["_modelo"], (
         "el modelo de dependencias normativas dejó de declararse")
+
+
+# ── EL SELLO HUMANO DEL CATÁLOGO · ADR-035 §5 (2026-09-01) ───────────────────
+def test_el_catalogo_lleva_sello_humano_con_nombre_y_fecha():
+    """Javo: *«selle el catálogo director, con mi nombre y fecha»*.
+
+    El colega puso la condición que lo hace válido: el sello acredita el **acto
+    de compilación** y su correspondencia con el canon — no convierte las piezas
+    en vigentes ni a la BRN en autoridad sobre el Gold Master."""
+    brn = _brn()
+    if brn is None:
+        pytest.skip("no está el snapshot")
+    s = brn["validacion_humana_del_catalogo"]
+    assert s["estado"] == "validado"
+    assert s["validado_por"] == "Javo"
+    assert s["fecha_validacion"] == "2026-09-01", (
+        "la fecha debe ser la del sello real, no la de una compilación anterior")
+    assert "NO convierte" in s.get("alcance", ""), (
+        "el sello dejó de declarar su límite")
+
+
+def test_el_compilador_no_puede_firmar_su_propio_sello():
+    """LA PROPIEDAD QUE HACE QUE EL SELLO VALGA ALGO.
+
+    Si el compilador escribiera el sello, **cada recompilación lo renovaría
+    sola** — y un sello que se firma solo no acredita nada: sería el literal que
+    vino a sustituir, con otro disfraz. Vive en `docs/registry/` como acto de
+    gobernanza, y el compilador sólo lo LEE."""
+    fuente = (RAIZ / "scripts" / "brn_cno.py").read_text(encoding="utf-8")
+    assert "_leer_sello" in fuente
+    assert "sello_catalogo_brn.json" in fuente
+    # No debe haber ninguna escritura hacia el artefacto de sello.
+    for linea in fuente.splitlines():
+        if "sello" in linea.lower() and ("write_text" in linea or "json.dump" in linea):
+            raise AssertionError(f"el compilador escribe el sello: {linea.strip()}")
+
+
+def test_el_sello_caduca_si_cambia_el_canon_que_valido():
+    """EL SELLO ESTÁ ATADO AL CANON QUE VALIDÓ — mecanismo del escalón 5.
+
+    Si el canon de entrada cambia, el sello describe **otra compilación** y el
+    catálogo vuelve a `no_consta`, conservando quién y cuándo firmó el anterior.
+    Un testimonio que no caduca es un testimonio que dejó de mirar el objeto.
+
+    Se comprueba sin tocar disco: se invoca el lector con un canon distinto."""
+    import importlib.util as iu
+
+    ruta = RAIZ / "scripts" / "brn_cno.py"
+    spec = iu.spec_from_file_location("_brn_mod", ruta)
+    mod = iu.module_from_spec(spec)
+    try:
+        spec.loader.exec_module(mod)
+    except Exception:                                    # noqa: BLE001
+        pytest.skip("el compilador no es importable en aislamiento")
+
+    brn = _brn()
+    if brn is None:
+        pytest.skip("no está el snapshot")
+    vigente = mod._leer_sello(brn["canon_sha256"])
+    assert vigente["estado"] == "validado"
+
+    caducado = mod._leer_sello("0000000000000000")
+    assert caducado["estado"] == "no_consta", (
+        "el sello sigue valiendo para un canon que no validó")
+    assert caducado.get("sello_caducado_de") == "Javo", (
+        "al caducar debe conservarse quién firmó el sello anterior")

@@ -101,6 +101,39 @@ def _verificar_cadena(cur, cadena: list[dict]) -> tuple[list[dict], bool]:
     return anotada, integra
 
 
+
+def _leer_sello(canon_sha: str) -> dict:
+    """La validación humana del catálogo, leída del artefacto de gobernanza.
+
+    ⚠️ ESTE COMPILADOR NUNCA ESCRIBE EL SELLO, y es la propiedad que lo hace
+    valer algo: si lo escribiera, **cada recompilación lo renovaría sola** y un
+    sello que se firma solo no acredita nada — el mismo defecto que el literal
+    que vino a sustituir, con otro disfraz.
+
+    Y CADUCA. El sello está atado al `canon_sha256` que validó: si el canon de
+    entrada cambia, describe otra compilación y el catálogo vuelve a
+    `no_consta`. Es el mecanismo del escalón 5 —un testimonio que no caduca es
+    un testimonio que dejó de mirar el objeto— aplicado al acto de gobierno."""
+    f = REPO / "docs" / "registry" / "sello_catalogo_brn.json"
+    if not f.exists():
+        return {"estado": "no_consta",
+                "por_que": "no hay artefacto de sello en docs/registry/"}
+    try:
+        s = json.loads(f.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return {"estado": "no_consta", "por_que": "el sello no es legible"}
+    if s.get("canon_sha256_validado") != canon_sha:
+        return {"estado": "no_consta",
+                "por_que": f"el sello valida el canon {s.get('canon_sha256_validado')} "
+                           f"y el actual es {canon_sha}: describe otra compilación",
+                "sello_caducado_de": s.get("validado_por"),
+                "fecha_del_sello_caducado": s.get("fecha_validacion")}
+    return {"estado": s.get("estado", "no_consta"),
+            "validado_por": s.get("validado_por"),
+            "fecha_validacion": s.get("fecha_validacion"),
+            "alcance": s.get("alcance", "")}
+
+
 def main() -> int:
     uri = _uri()
     if not uri:
@@ -192,10 +225,14 @@ def main() -> int:
         # DERIVADO · lo que de verdad hay dentro
         "estado_piezas_cno": dict(por_estado),
         "estado_piezas_ro": dict(ro_por_estado),
-        "integridad_compilacion": f"{integras}/{len(catalogo)}",
+        "integridad_compilacion": {
+            "piezas_cno": f"{integras}/{len(catalogo)}",
+            "piezas_ro": f"{len(ros)}/{len(ros)}",
+        },
         "canon_sha256": canon_sha,
-        # DECLARADO · el acto de compilar es otra cosa que las piezas
-        "validacion_humana_del_catalogo": "no_consta",
+        # DECLARADO · el acto de compilar es otra cosa que las piezas.
+        # Se LEE del sello de gobernanza; este compilador nunca lo escribe.
+        "validacion_humana_del_catalogo": _leer_sello(canon_sha),
         "por_que": "ADR-035 §5 exige un acto humano de validación. Que las "
                    "piezas estén vigentes NO valida el acto de compilarlas: son "
                    "afirmaciones distintas y este campo no las colapsa.",

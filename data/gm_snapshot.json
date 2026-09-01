@@ -8181,9 +8181,17 @@
       "vigente": 10,
       "propuesta": 3
     },
-    "integridad_compilacion": "16/16",
+    "integridad_compilacion": {
+      "piezas_cno": "16/16",
+      "piezas_ro": "13/13"
+    },
     "canon_sha256": "59be1b69b8e033c9",
-    "validacion_humana_del_catalogo": "no_consta",
+    "validacion_humana_del_catalogo": {
+      "estado": "validado",
+      "validado_por": "Javo",
+      "fecha_validacion": "2026-09-01",
+      "alcance": "Valida el ACTO de compilación y su correspondencia con el canon. NO convierte a la BRN en autoridad sobre el Gold Master: la BRN explica y traza, el motor sigue siendo autónomo (Reglas de Oro 1 y 4)."
+    },
     "por_que": "ADR-035 §5 exige un acto humano de validación. Que las piezas estén vigentes NO valida el acto de compilarlas: son afirmaciones distintas y este campo no las colapsa.",
     "cno": [
       {

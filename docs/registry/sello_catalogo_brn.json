@@ -1,0 +1,11 @@
+{
+  "_que_es": "El acto de gobierno que ADR-035 §5 exige: la validación humana del CATÁLOGO BRN compilado. NO valida las piezas —cada CNO y RO lleva su propio estado, derivado— sino la correspondencia entre el compilado y el canon de entrada.",
+  "_por_que_vive_aparte": "Si el sello lo escribiera el compilador, cada recompilación lo renovaría sola y un sello que se firma solo no acredita nada. Vive en un artefacto de gobernanza que el compilador LEE y nunca escribe.",
+  "_caduca": "El sello está atado al `canon_sha256` que validó. Si el canon de entrada cambia, este sello describe otra compilación y el catálogo vuelve a `no_consta` — el mismo mecanismo del escalón 5: un testimonio que no caduca es un testimonio que dejó de mirar el objeto.",
+  "estado": "validado",
+  "validado_por": "Javo",
+  "fecha_validacion": "2026-09-01",
+  "canon_sha256_validado": "59be1b69b8e033c9",
+  "alcance": "Valida el ACTO de compilación y su correspondencia con el canon. NO convierte a la BRN en autoridad sobre el Gold Master: la BRN explica y traza, el motor sigue siendo autónomo (Reglas de Oro 1 y 4).",
+  "no_significa": "que las 8 CNO y 3 RO en estado `propuesta` pasen a vigentes. El estado de cada pieza se deriva de su propio YAML y ningún sello del catálogo lo altera."
+}

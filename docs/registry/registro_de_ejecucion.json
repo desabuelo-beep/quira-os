@@ -1,6 +1,6 @@
 {
  "_lease": "testimonio de una corrida de pytest. NO lo produce QUIRA sobre sí misma: lo produce el ejecutor, y QUIRA lo lee. Caduca cuando el archivo de la prueba cambia.",
- "commit": "91ce239",
+ "commit": "84b233a",
  "arbol_limpio": false,
  "pruebas": {
   "tests/test_acoplamiento_observable.py::test_ataque_el_grafo_no_decide_si_lo_no_declarado_esta_mal": {
@@ -2068,35 +2068,50 @@
    "archivo": "tests/test_procedencia_adversarial.py",
    "archivo_sha256": "757396940ea4c953"
   },
+  "tests/test_puente_compilado.py::test_el_catalogo_lleva_sello_humano_con_nombre_y_fecha": {
+   "resultado": "passed",
+   "archivo": "tests/test_puente_compilado.py",
+   "archivo_sha256": "ef63388e103799cd"
+  },
   "tests/test_puente_compilado.py::test_el_compilado_refleja_el_canon_en_disco": {
    "resultado": "passed",
    "archivo": "tests/test_puente_compilado.py",
-   "archivo_sha256": "9ddb6b1f504a9b45"
+   "archivo_sha256": "ef63388e103799cd"
+  },
+  "tests/test_puente_compilado.py::test_el_compilador_no_puede_firmar_su_propio_sello": {
+   "resultado": "passed",
+   "archivo": "tests/test_puente_compilado.py",
+   "archivo_sha256": "ef63388e103799cd"
   },
   "tests/test_puente_compilado.py::test_el_estado_del_catalogo_se_deriva_y_no_se_escribe": {
    "resultado": "passed",
    "archivo": "tests/test_puente_compilado.py",
-   "archivo_sha256": "9ddb6b1f504a9b45"
+   "archivo_sha256": "ef63388e103799cd"
   },
   "tests/test_puente_compilado.py::test_el_puente_lleva_la_cadena_normativa_completa": {
    "resultado": "passed",
    "archivo": "tests/test_puente_compilado.py",
-   "archivo_sha256": "9ddb6b1f504a9b45"
+   "archivo_sha256": "ef63388e103799cd"
+  },
+  "tests/test_puente_compilado.py::test_el_sello_caduca_si_cambia_el_canon_que_valido": {
+   "resultado": "passed",
+   "archivo": "tests/test_puente_compilado.py",
+   "archivo_sha256": "ef63388e103799cd"
   },
   "tests/test_puente_compilado.py::test_la_frontera_de_la_BRN_sigue_declarada": {
    "resultado": "passed",
    "archivo": "tests/test_puente_compilado.py",
-   "archivo_sha256": "9ddb6b1f504a9b45"
+   "archivo_sha256": "ef63388e103799cd"
   },
   "tests/test_puente_compilado.py::test_ningun_motor_cruza_el_puente_todavia": {
    "resultado": "passed",
    "archivo": "tests/test_puente_compilado.py",
-   "archivo_sha256": "9ddb6b1f504a9b45"
+   "archivo_sha256": "ef63388e103799cd"
   },
   "tests/test_puente_compilado.py::test_un_compilado_desfasado_ya_no_puede_pasar_inadvertido": {
    "resultado": "passed",
    "archivo": "tests/test_puente_compilado.py",
-   "archivo_sha256": "9ddb6b1f504a9b45"
+   "archivo_sha256": "ef63388e103799cd"
   },
   "tests/test_recorrido_icpi.py::test_Ei_es_un_literal_sin_definicion_en_el_canon": {
    "resultado": "passed",
