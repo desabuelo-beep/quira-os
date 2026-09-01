@@ -217,3 +217,41 @@ def test_la_leccion_se_enuncia_sin_extrapolar():
             assert absoluto not in texto, (
                 f"{nombre} promete «{absoluto}» en sus límites: eso es lo "
                 f"contrario de declarar un límite")
+
+
+# ── UN MECANISMO DE COBERTURA NO ES AUTORIDAD SOBRE SU PROPIA COBERTURA ──────
+def test_un_gate_no_puede_acreditar_su_propia_cobertura():
+    r"""LA REGLA QUE C2 OBLIGÓ A AÑADIR A C0 (colega, 2026-08-31):
+
+    > *«Un mecanismo de cobertura no puede ser autoridad sobre su propia
+    > cobertura. […] 0 hallazgos ≠ 0 problemas si el universo no está
+    > demostrado.»*
+
+    `check_portabilidad.py` reporta **0 rutas fijas · objetivo cumplido** desde
+    hace meses. Su patrón `_ABSOLUTA` incluye `Proyectos` y detectaría
+    perfectamente `C:\Proyectos\QUIRA\...` — **falla el universo, no el
+    detector**: `AMBITOS` no incluye `sentinel/`, donde hay tres.
+
+    Y `AMBITOS` no lleva motivo declarado, a diferencia de `_FRONTERA` y
+    `_ABSOLUTA`, que sí lo llevan justo encima. Por eso **no se puede determinar
+    si la exclusión fue decisión u omisión** — y esa indeterminación es el
+    hallazgo, no las rutas.
+
+    ⚠️ Esta prueba FIJA el estado, no lo repara. Ampliar `AMBITOS` movería un
+    trinquete de 0 a 3 y eso es gobernanza. El día que se decida —incluir
+    sentinel, o declarar por qué queda fuera— habrá que invertirla, y que haya
+    que tocarla es la señal."""
+    gate = (RAIZ / "scripts" / "ci" / "check_portabilidad.py").read_text(encoding="utf-8")
+
+    # El detector sí sabe reconocer la ruta: lo que no la alcanza es el universo.
+    assert "Proyectos" in gate, "el patrón dejó de cubrir rutas de perfil"
+    assert "sentinel" not in gate, (
+        "sentinel entró al gate: el hallazgo cambió y hay que reescribir esto")
+
+    # El universo se enumera a mano y sin justificar, que es lo que C0 prohíbe
+    # a los inventarios y todavía no exige a los gates de CI.
+    i = gate.find("AMBITOS = ")
+    contexto_previo = gate[max(0, i - 220):i]
+    assert "#" not in contexto_previo.split("\n")[-2], (
+        "AMBITOS ya declara motivo: entonces la exclusión es deliberada y el "
+        "hallazgo pasa de «indeterminable» a «decidido»")

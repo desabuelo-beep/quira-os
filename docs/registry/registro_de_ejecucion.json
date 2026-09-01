@@ -1,6 +1,6 @@
 {
  "_lease": "testimonio de una corrida de pytest. NO lo produce QUIRA sobre sí misma: lo produce el ejecutor, y QUIRA lo lee. Caduca cuando el archivo de la prueba cambia.",
- "commit": "e62abb3",
+ "commit": "0cffd4d",
  "arbol_limpio": false,
  "pruebas": {
   "tests/test_acoplamiento_observable.py::test_ataque_el_grafo_no_decide_si_lo_no_declarado_esta_mal": {
@@ -1596,122 +1596,127 @@
   "tests/test_meta_integridad.py::test_el_universo_declarado_coincide_con_lo_hallado[acoplamiento.cobertura_de_acoplamiento]": {
    "resultado": "passed",
    "archivo": "tests/test_meta_integridad.py",
-   "archivo_sha256": "f424d348fd16df2f"
+   "archivo_sha256": "cbf446c5f12ac2ec"
   },
   "tests/test_meta_integridad.py::test_el_universo_declarado_coincide_con_lo_hallado[apropiacion.cobertura_de_la_plataforma]": {
    "resultado": "passed",
    "archivo": "tests/test_meta_integridad.py",
-   "archivo_sha256": "f424d348fd16df2f"
+   "archivo_sha256": "cbf446c5f12ac2ec"
   },
   "tests/test_meta_integridad.py::test_el_universo_declarado_coincide_con_lo_hallado[arquitectura.cobertura_arquitectonica]": {
    "resultado": "passed",
    "archivo": "tests/test_meta_integridad.py",
-   "archivo_sha256": "f424d348fd16df2f"
+   "archivo_sha256": "cbf446c5f12ac2ec"
   },
   "tests/test_meta_integridad.py::test_el_universo_declarado_coincide_con_lo_hallado[canon.cobertura_canonica]": {
    "resultado": "passed",
    "archivo": "tests/test_meta_integridad.py",
-   "archivo_sha256": "f424d348fd16df2f"
+   "archivo_sha256": "cbf446c5f12ac2ec"
   },
   "tests/test_meta_integridad.py::test_el_universo_declarado_coincide_con_lo_hallado[ejecucion.cobertura]": {
    "resultado": "passed",
    "archivo": "tests/test_meta_integridad.py",
-   "archivo_sha256": "f424d348fd16df2f"
+   "archivo_sha256": "cbf446c5f12ac2ec"
   },
   "tests/test_meta_integridad.py::test_hay_inventarios_que_auditar": {
    "resultado": "passed",
    "archivo": "tests/test_meta_integridad.py",
-   "archivo_sha256": "f424d348fd16df2f"
+   "archivo_sha256": "cbf446c5f12ac2ec"
   },
   "tests/test_meta_integridad.py::test_la_leccion_se_enuncia_sin_extrapolar": {
    "resultado": "passed",
    "archivo": "tests/test_meta_integridad.py",
-   "archivo_sha256": "f424d348fd16df2f"
+   "archivo_sha256": "cbf446c5f12ac2ec"
   },
   "tests/test_meta_integridad.py::test_la_regla_alcanza_a_los_inventarios_futuros": {
    "resultado": "passed",
    "archivo": "tests/test_meta_integridad.py",
-   "archivo_sha256": "f424d348fd16df2f"
+   "archivo_sha256": "cbf446c5f12ac2ec"
   },
   "tests/test_meta_integridad.py::test_ningun_inventario_confunde_no_hallado_con_inexistente": {
    "resultado": "passed",
    "archivo": "tests/test_meta_integridad.py",
-   "archivo_sha256": "f424d348fd16df2f"
+   "archivo_sha256": "cbf446c5f12ac2ec"
   },
   "tests/test_meta_integridad.py::test_toda_exclusion_declara_motivo_y_autoridad[acoplamiento.cobertura_de_acoplamiento]": {
    "resultado": "passed",
    "archivo": "tests/test_meta_integridad.py",
-   "archivo_sha256": "f424d348fd16df2f"
+   "archivo_sha256": "cbf446c5f12ac2ec"
   },
   "tests/test_meta_integridad.py::test_toda_exclusion_declara_motivo_y_autoridad[apropiacion.cobertura_de_la_plataforma]": {
    "resultado": "passed",
    "archivo": "tests/test_meta_integridad.py",
-   "archivo_sha256": "f424d348fd16df2f"
+   "archivo_sha256": "cbf446c5f12ac2ec"
   },
   "tests/test_meta_integridad.py::test_toda_exclusion_declara_motivo_y_autoridad[arquitectura.cobertura_arquitectonica]": {
    "resultado": "passed",
    "archivo": "tests/test_meta_integridad.py",
-   "archivo_sha256": "f424d348fd16df2f"
+   "archivo_sha256": "cbf446c5f12ac2ec"
   },
   "tests/test_meta_integridad.py::test_toda_exclusion_declara_motivo_y_autoridad[canon.cobertura_canonica]": {
    "resultado": "passed",
    "archivo": "tests/test_meta_integridad.py",
-   "archivo_sha256": "f424d348fd16df2f"
+   "archivo_sha256": "cbf446c5f12ac2ec"
   },
   "tests/test_meta_integridad.py::test_toda_exclusion_declara_motivo_y_autoridad[ejecucion.cobertura]": {
    "resultado": "passed",
    "archivo": "tests/test_meta_integridad.py",
-   "archivo_sha256": "f424d348fd16df2f"
+   "archivo_sha256": "cbf446c5f12ac2ec"
   },
   "tests/test_meta_integridad.py::test_todo_inventario_declara_su_universo[acoplamiento.cobertura_de_acoplamiento]": {
    "resultado": "passed",
    "archivo": "tests/test_meta_integridad.py",
-   "archivo_sha256": "f424d348fd16df2f"
+   "archivo_sha256": "cbf446c5f12ac2ec"
   },
   "tests/test_meta_integridad.py::test_todo_inventario_declara_su_universo[apropiacion.cobertura_de_la_plataforma]": {
    "resultado": "passed",
    "archivo": "tests/test_meta_integridad.py",
-   "archivo_sha256": "f424d348fd16df2f"
+   "archivo_sha256": "cbf446c5f12ac2ec"
   },
   "tests/test_meta_integridad.py::test_todo_inventario_declara_su_universo[arquitectura.cobertura_arquitectonica]": {
    "resultado": "passed",
    "archivo": "tests/test_meta_integridad.py",
-   "archivo_sha256": "f424d348fd16df2f"
+   "archivo_sha256": "cbf446c5f12ac2ec"
   },
   "tests/test_meta_integridad.py::test_todo_inventario_declara_su_universo[canon.cobertura_canonica]": {
    "resultado": "passed",
    "archivo": "tests/test_meta_integridad.py",
-   "archivo_sha256": "f424d348fd16df2f"
+   "archivo_sha256": "cbf446c5f12ac2ec"
   },
   "tests/test_meta_integridad.py::test_todo_inventario_declara_su_universo[ejecucion.cobertura]": {
    "resultado": "passed",
    "archivo": "tests/test_meta_integridad.py",
-   "archivo_sha256": "f424d348fd16df2f"
+   "archivo_sha256": "cbf446c5f12ac2ec"
+  },
+  "tests/test_meta_integridad.py::test_un_gate_no_puede_acreditar_su_propia_cobertura": {
+   "resultado": "passed",
+   "archivo": "tests/test_meta_integridad.py",
+   "archivo_sha256": "cbf446c5f12ac2ec"
   },
   "tests/test_meta_integridad.py::test_un_universo_exhaustivo_debe_derivarse_no_enumerarse[acoplamiento.cobertura_de_acoplamiento]": {
    "resultado": "passed",
    "archivo": "tests/test_meta_integridad.py",
-   "archivo_sha256": "f424d348fd16df2f"
+   "archivo_sha256": "cbf446c5f12ac2ec"
   },
   "tests/test_meta_integridad.py::test_un_universo_exhaustivo_debe_derivarse_no_enumerarse[apropiacion.cobertura_de_la_plataforma]": {
    "resultado": "passed",
    "archivo": "tests/test_meta_integridad.py",
-   "archivo_sha256": "f424d348fd16df2f"
+   "archivo_sha256": "cbf446c5f12ac2ec"
   },
   "tests/test_meta_integridad.py::test_un_universo_exhaustivo_debe_derivarse_no_enumerarse[arquitectura.cobertura_arquitectonica]": {
    "resultado": "passed",
    "archivo": "tests/test_meta_integridad.py",
-   "archivo_sha256": "f424d348fd16df2f"
+   "archivo_sha256": "cbf446c5f12ac2ec"
   },
   "tests/test_meta_integridad.py::test_un_universo_exhaustivo_debe_derivarse_no_enumerarse[canon.cobertura_canonica]": {
    "resultado": "passed",
    "archivo": "tests/test_meta_integridad.py",
-   "archivo_sha256": "f424d348fd16df2f"
+   "archivo_sha256": "cbf446c5f12ac2ec"
   },
   "tests/test_meta_integridad.py::test_un_universo_exhaustivo_debe_derivarse_no_enumerarse[ejecucion.cobertura]": {
    "resultado": "passed",
    "archivo": "tests/test_meta_integridad.py",
-   "archivo_sha256": "f424d348fd16df2f"
+   "archivo_sha256": "cbf446c5f12ac2ec"
   },
   "tests/test_naturaleza_verificabilidad.py::test_caso1_un_objeto_documental_sigue_comportandose_como_antes": {
    "resultado": "passed",
