@@ -374,3 +374,70 @@ def _afirmar(filas: list[dict], sin_constancia: list[str],
         base += (f" ⚠️ Posteriores a la autoridad y aun así sin constancia: "
                  f"{', '.join(posteriores)} — ahí la exigencia ya regía.")
     return base
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# LAS CUATRO FRONTERAS · P6 comprobada contra proposiciones, no contra suposiciones
+# ══════════════════════════════════════════════════════════════════════════════
+# Exigencia metodológica del colega, y es la que da validez al ataque:
+#
+# > *«La frontera arquitectónica en sí misma debe tratarse como un dato de
+# > entrada para la prueba, mientras que el repositorio determina si la
+# > implementación se ajusta a ella. La prueba no puede utilizar el mismo
+# > artefacto de implementación como su propia autoridad.»*
+#
+# Por eso cada frontera cita SU AUTORIDAD —un ADR— y la conformidad se mide en
+# el código. Esta lista es manual **a propósito**: es una selección deliberada de
+# cuatro proposiciones declaradas, no un universo exhaustivo de fronteras. La
+# regla de C0 prohíbe lo segundo, no lo primero.
+CONTRADICHO = "contradicho_por_evidencia"
+DECLARADO_Y_OBSERVABLE = "declarado_y_observable"
+
+_FRONTERAS = (
+    ("Observatorio ≠ Centro",
+     "ADR-041 §3 — «los productos posteriores no son otra fuente: consumen»; "
+     "el primer diagrama los ponía escribiendo directo al Centro y se corrigió",
+     "quira_pages/env_obs.py", "centro", "ausente"),
+    ("Consola ≠ producto",
+     "ADR-042 — la consola es monitoreo, no un producto del catálogo",
+     "quira_pages/env_obs.py", "_consola", "presente"),
+    ("OPS ≠ producto",
+     "ADR-041 tabla de planos — «Mantenimiento · Operaciones — Dylus Lab, uso "
+     "interno · no, y no es producto»",
+     "quira_pages/env_ops.py", "interna", "presente"),
+    ("Gold Master = única fuente de cálculo",
+     "ADR-023 (inmutable) + Regla de Oro 1/4 — «si un número existe en el "
+     "Excel, ningún script lo recalcula»",
+     "app/agents/d01/motor.py", "recalcul", "presente"),
+)
+
+
+def fronteras() -> list[dict]:
+    """La matriz de evidencia de las cuatro fronteras declaradas.
+
+    ⚠️ NO convierte ningún resultado en «arquitectura inválida». El resultado
+    útil es la **relación de evidencia**: qué está declarado, qué se observa, y
+    qué no se puede determinar. Decidir si una divergencia es un defecto exige
+    gobernanza, no análisis."""
+    salida = []
+    for nombre, autoridad, archivo, marca, esperado in _FRONTERAS:
+        f = RAIZ / archivo
+        texto = f.read_text(encoding="utf-8", errors="replace") if f.exists() else ""
+        hallada = bool(texto) and marca.lower() in texto.lower()
+        # ⚠️ CADA FRONTERA DECLARA QUÉ SIGNIFICA HALLAR SU MARCA. En «Observatorio
+        # ≠ Centro» conforme es NO encontrarla; en «OPS ≠ producto» conforme es
+        # SÍ encontrar la declaración de uso interno. Un booleano cuya semántica
+        # se invierte según la fila es ilegible — y es el mismo defecto de «bool
+        # en vez de estados» que este sistema corrige en todas partes.
+        if not texto:
+            estado = NO_DETERMINABLE
+        elif (esperado == "presente") == hallada:
+            estado = DECLARADO_Y_OBSERVABLE
+        else:
+            estado = CONTRADICHO
+        salida.append({
+            "frontera": nombre, "autoridad": autoridad, "medido_en": archivo,
+            "marca_buscada": marca, "conforme_si": esperado,
+            "marca_hallada": hallada, "estado": estado,
+        })
+    return salida

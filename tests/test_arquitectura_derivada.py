@@ -211,3 +211,78 @@ def test_ataque_mencion_no_es_autoridad():
         "ningún ADR está sólo mencionado: los tipos de relación colapsaron")
     for r in solo_mencion[:3]:
         assert A.AUTORIDAD not in r["relaciones"]
+
+
+# ── LAS CUATRO FRONTERAS · P6 contra proposiciones declaradas (2026-08-31) ────
+def test_cada_frontera_cita_su_autoridad_y_no_se_mide_a_si_misma():
+    """LA EXIGENCIA METODOLÓGICA DEL COLEGA, sin la cual el ataque no vale:
+
+    > *«La frontera arquitectónica debe tratarse como dato de entrada, mientras
+    > que el repositorio determina si la implementación se ajusta a ella. La
+    > prueba no puede utilizar el mismo artefacto de implementación como su
+    > propia autoridad.»*
+
+    Cada frontera cita un ADR y se mide en un archivo de código distinto. Si la
+    autoridad y la evidencia salieran del mismo sitio, el código estaría
+    acreditándose solo — que es justo lo que pasó con `check_portabilidad`."""
+    for f in A.fronteras():
+        assert f["autoridad"], f"{f['frontera']} sin autoridad citada"
+        assert "ADR" in f["autoridad"] or "Regla" in f["autoridad"]
+        assert f["medido_en"].endswith(".py"), (
+            "la conformidad debe medirse en código, no en la documentación que "
+            "la declara")
+
+
+def test_la_matriz_no_usa_un_bool_de_semantica_invertida():
+    """En «Observatorio ≠ Centro» conforme es **no** hallar la marca; en «OPS ≠
+    producto» conforme es **sí** hallarla. Un booleano que significa lo
+    contrario según la fila es ilegible, y es el mismo defecto de «bool en vez
+    de estados» que el sistema corrige en todas partes."""
+    for f in A.fronteras():
+        assert f["conforme_si"] in ("presente", "ausente")
+        assert f["estado"] in (A.DECLARADO_Y_OBSERVABLE, A.CONTRADICHO,
+                               A.NO_DETERMINABLE)
+
+
+def test_las_cuatro_fronteras_declaradas_se_observan_en_el_codigo():
+    """LA MATRIZ DE EVIDENCIA, con trinquete. Ninguna de las cuatro está
+    contradicha hoy:
+
+        Observatorio ≠ Centro   env_obs no menciona el Centro
+        Consola ≠ producto      la consola se importa DENTRO de un ambiente
+        OPS ≠ producto          «nunca visible para el municipio · Operator/Admin»
+        GM = única fuente       d01 declara «NO recalcula», y no hay aritmética
+
+    ⚠️ Esto NO dice que la arquitectura sea correcta: dice que estas cuatro
+    proposiciones no están contradichas por la evidencia observable. Son cuatro
+    de un universo mayor que nadie ha enumerado."""
+    contradichas = [f["frontera"] for f in A.fronteras()
+                    if f["estado"] == A.CONTRADICHO]
+    assert not contradichas, f"frontera contradicha por el código: {contradichas}"
+
+
+def test_el_gold_master_no_se_recalcula_aunque_se_lea_directo():
+    """LA DISTINCIÓN QUE SALVA A d01 Y d08 DE UNA ACUSACIÓN FALSA.
+
+    Ambos leen el Excel con `load_workbook` sin pasar por
+    `app/connectors/gold_master.py`, la puerta canónica. Eso es una **desviación
+    de vía**, y está declarada en los dos: d01 la registra como deuda
+    («exponer el IPE en H73 sería cirugía del Gold Master · Javo: sin tocar el
+    ICPI») y d08 dice «el IGP NO se recalcula. Aquí solo se LEE para
+    diagnóstico».
+
+    La regla dura —Regla 1/4, *ningún script recalcula*— **se cumple**: cero
+    operaciones aritméticas sobre celdas en ambos. Leer por otra puerta no es
+    recalcular, y confundirlas habría producido el sexto falso positivo."""
+    import re
+
+    for mod in ("app/agents/d01/motor.py", "app/agents/d08/motor.py"):
+        fuente = (RAIZ / mod).read_text(encoding="utf-8")
+        cuerpo = "\n".join(ln for ln in fuente.splitlines()
+                           if not ln.strip().startswith("#"))
+        aritmetica = re.findall(r"\bsum\(|\* *100\b|/ *len\(", cuerpo)
+        assert not aritmetica, (
+            f"{mod} hace aritmética sobre lo leído: eso sí sería recalcular "
+            f"→ {aritmetica}")
+        assert re.search(r"NO recalcul|no se recalcula|NUNCA recalcula", fuente, re.I), (
+            f"{mod} dejó de declarar que no recalcula")
