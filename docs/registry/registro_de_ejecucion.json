@@ -1,6 +1,6 @@
 {
  "_lease": "testimonio de una corrida de pytest. NO lo produce QUIRA sobre sí misma: lo produce el ejecutor, y QUIRA lo lee. Caduca cuando el archivo de la prueba cambia.",
- "commit": "84b233a",
+ "commit": "5369e33",
  "arbol_limpio": false,
  "pruebas": {
   "tests/test_acoplamiento_observable.py::test_ataque_el_grafo_no_decide_si_lo_no_declarado_esta_mal": {
@@ -127,6 +127,66 @@
    "resultado": "passed",
    "archivo": "tests/test_arquitectura_derivada.py",
    "archivo_sha256": "4473af40e2b79188"
+  },
+  "tests/test_brn_lector.py::test_ataque_10_el_grado_no_sube_al_cruzar_la_frontera": {
+   "resultado": "passed",
+   "archivo": "tests/test_brn_lector.py",
+   "archivo_sha256": "924bd8ffba03d741"
+  },
+  "tests/test_brn_lector.py::test_ataque_11_integro_no_es_lo_mismo_que_validado": {
+   "resultado": "passed",
+   "archivo": "tests/test_brn_lector.py",
+   "archivo_sha256": "924bd8ffba03d741"
+  },
+  "tests/test_brn_lector.py::test_ataque_1_canon_alterado_invalida_el_sello": {
+   "resultado": "passed",
+   "archivo": "tests/test_brn_lector.py",
+   "archivo_sha256": "924bd8ffba03d741"
+  },
+  "tests/test_brn_lector.py::test_ataque_2_un_hash_falsificado_no_se_acredita_a_si_mismo": {
+   "resultado": "passed",
+   "archivo": "tests/test_brn_lector.py",
+   "archivo_sha256": "924bd8ffba03d741"
+  },
+  "tests/test_brn_lector.py::test_ataque_3_el_limite_del_lector_esta_declarado": {
+   "resultado": "passed",
+   "archivo": "tests/test_brn_lector.py",
+   "archivo_sha256": "924bd8ffba03d741"
+  },
+  "tests/test_brn_lector.py::test_ataque_4_sin_sello_es_no_consta_no_un_error": {
+   "resultado": "passed",
+   "archivo": "tests/test_brn_lector.py",
+   "archivo_sha256": "924bd8ffba03d741"
+  },
+  "tests/test_brn_lector.py::test_ataque_5_una_pieza_propuesta_sigue_propuesta": {
+   "resultado": "passed",
+   "archivo": "tests/test_brn_lector.py",
+   "archivo_sha256": "924bd8ffba03d741"
+  },
+  "tests/test_brn_lector.py::test_ataque_6_integridad_cno_alterada_no_engaña": {
+   "resultado": "passed",
+   "archivo": "tests/test_brn_lector.py",
+   "archivo_sha256": "924bd8ffba03d741"
+  },
+  "tests/test_brn_lector.py::test_ataque_7_integridad_ro_alterada_no_engaña": {
+   "resultado": "passed",
+   "archivo": "tests/test_brn_lector.py",
+   "archivo_sha256": "924bd8ffba03d741"
+  },
+  "tests/test_brn_lector.py::test_ataque_8_un_catalogo_ilegible_falla_explicitamente": {
+   "resultado": "passed",
+   "archivo": "tests/test_brn_lector.py",
+   "archivo_sha256": "924bd8ffba03d741"
+  },
+  "tests/test_brn_lector.py::test_ataque_9_el_lector_tampoco_escribe_el_sello": {
+   "resultado": "passed",
+   "archivo": "tests/test_brn_lector.py",
+   "archivo_sha256": "924bd8ffba03d741"
+  },
+  "tests/test_brn_lector.py::test_el_catalogo_esta_al_dia_y_sellado": {
+   "resultado": "passed",
+   "archivo": "tests/test_brn_lector.py",
+   "archivo_sha256": "924bd8ffba03d741"
   },
   "tests/test_canon_derivado.py::test_ataque_citar_la_regla_no_cuenta_como_cargarla": {
    "resultado": "passed",

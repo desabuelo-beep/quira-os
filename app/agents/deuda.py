@@ -71,10 +71,10 @@ _DEUDAS = (
          no_es="una divergencia de resultados: es una divergencia de referencia "
                "que se volverá de resultados en cuanto las versiones difieran"),
     dict(id="D-003", gravedad=DESACOPLA, capa="C1", dueño="Javo",
-         estado="PARCIAL 2026-09-01 · catálogo recompilado y su estado ya se "
-                "deriva (los dos primeros hallazgos, cerrados). Falta el lector "
-                "verificable y su consumidor: el puente sigue sin cruzarse, "
-                "ahora por decisión y no por caducidad",
+         estado="RESUELTA 2026-09-01 · catálogo recompilado, estado derivado, "
+                "sellado por Javo con caducidad atada al canon, y lector "
+                "verificable con 11 ataques. El puente ya se puede cruzar: "
+                "falta conectar un consumidor, que es trabajo de dominio",
          que="D-003 NO era «el motor no consulta la BRN». Medido: el catálogo "
              "estaba desfasado —9 piezas de d07 con estado anterior— y se "
              "declaraba `propuesta` por un literal inmóvil. Cruzarlo habría "
