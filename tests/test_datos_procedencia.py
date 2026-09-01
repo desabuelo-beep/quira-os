@@ -205,3 +205,52 @@ def test_el_estado_de_la_capa_3_es_el_demostrado():
     # D · el límite sigue declarado, no disimulado
     limites = " ".join(c["universo"]["fuera_de_alcance"]).lower()
     assert "csv" in limites and "no está medida" in limites
+
+
+# ── LA EVIDENCIA PRIMARIA VIVE FUERA DEL REPOSITORIO (2026-09-01) ────────────
+def test_el_universo_declara_que_la_evidencia_primaria_esta_fuera():
+    """CORRECCIÓN DE JAVO, y es la décima vez del mismo patrón:
+
+    > *«para trabajar el Excel canónico Gold Master, eso se construyó con los
+    > documentos de la carpeta local»* — `Holding_Municipal_Montecristi`, con
+    > documentos de la web del GAD, pedidos de acceso a la información, SERCOP y
+    > CPCCS.
+
+    C3 midió `data/` del repositorio. La evidencia primaria **no está ahí**. Y
+    el sistema sí conocía ese territorio —`config.DATOS_DIR` apunta a él y
+    `check_portabilidad` lo llama «la frontera»—: quien no lo miró fue este
+    módulo. Ahora el límite está escrito en el universo."""
+    limites = " ".join(D.cobertura_de_datos()["universo"]["fuera_de_alcance"])
+    assert "Holding_Municipal_Montecristi" in limites
+    assert "EVIDENCIA PRIMARIA" in limites.upper()
+
+
+def test_los_documentos_no_hallados_son_no_determinables_no_ausentes():
+    """APLICACIÓN DE LA REGLA 2 DE C0 A ESTE PROPIO MÓDULO.
+
+    De 258 documentos oficiales, el barrido señala 36. Los otros 204 **no se
+    llaman «sin trazabilidad»**: este instrumento sólo lee JSON/YAML del
+    repositorio y busca por nombre — el Gold Master es `.xlsx`, como 91 de esos
+    documentos, y no se abre aquí.
+
+    Leer el silencio del instrumento como ausencia es exactamente lo que la
+    sesión acaba de prohibir, y costó un falso positivo hace dos turnos."""
+    e = D.evidencia_primaria()
+    if e.get("estado") == "no_determinable":
+        import pytest
+        pytest.skip(e["por_que"])
+    assert e["documentos"] >= 250
+    assert e["citados_por_artefactos"] + e["no_determinables"] >= e["documentos"] - 20
+    assert "no determinables" in e["limite"], (
+        "el resultado dejó de declarar que los no hallados son indeterminados")
+    assert "sin trazabilidad" in e["limite"], (
+        "debe decir EXPLÍCITAMENTE lo que NO significa el número")
+
+
+def test_la_raiz_de_evidencia_primaria_se_deriva_de_config():
+    """0 rutas fijas: el territorio se alcanza por `config.DATOS_DIR`, nunca
+    escribiendo el disco de una persona — la regla que `sentinel/` incumple y
+    que este módulo no puede empezar a incumplir también."""
+    fuente = (RAIZ / "app" / "agents" / "datos.py").read_text(encoding="utf-8")
+    assert "from config import DATOS_DIR" in fuente
+    assert "C:\\Users" not in fuente and "C:/Users" not in fuente

@@ -171,6 +171,11 @@ def cobertura_de_datos() -> dict:
                 "correcto — sólo que el artefacto la lleva",
                 "una identidad distinta puede ser correcta para su época: este "
                 "módulo observa la sucesión, no juzga los valores",
+                "⚠️ LA EVIDENCIA PRIMARIA DEL GOLD MASTER NO ESTÁ EN `data/`: son "
+                "258 documentos oficiales en `Holding_Municipal_Montecristi` "
+                "—web del GAD, pedidos de acceso a la información, SERCOP, "
+                "CPCCS— y este universo no los incluye. Se miden aparte, en "
+                "`evidencia_primaria()`",
             ],
         },
         "afirmacion_sostenible": _afirmar(arts, por_estado, ident, conviven),
@@ -256,4 +261,81 @@ def cadena_de_captura() -> dict:
         "registros_sin_binario": sorted(set(claves) - enel_disco)[:10],
         "como_se_reconstruye": "el nombre del .bin es sha256(url)[:16] — la "
                                "procedencia viaja en el nombre del artefacto",
+    }
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# LA EVIDENCIA PRIMARIA VIVE FUERA DEL REPOSITORIO · corrección de Javo
+# ══════════════════════════════════════════════════════════════════════════════
+# > *«documentos oficiales no sólo hemos sacado de transparencia… construimos la
+# > carpeta Holding_Municipal_Montecristi con los documentos oficiales sacados de
+# > la página web del GAD y los pedidos de acceso a la información pública y de
+# > otros portales como SERCOP y CPCCS. Lo del DOM de transparencia es ahora, en
+# > la construcción del DOM; pero para trabajar el Excel canónico Gold Master,
+# > eso se construyó con los documentos de la carpeta local.»*
+#
+# C3 midió `data/` del repositorio. **La evidencia primaria del Gold Master no
+# está ahí**: son 258 documentos —91 xlsx, 59 PDF, 52 docx, 564 MB— organizados
+# por dominio (Cédulas Presupuestarias, POA, PAC, Participación, Rendición).
+#
+# Décima vez el mismo patrón de la sesión: un territorio entero fuera del
+# universo. Y el sistema sí lo conocía —`config.DATOS_DIR` apunta ahí y
+# `check_portabilidad` lo llama «la frontera»—; quien no lo miró fue este módulo.
+def raiz_de_evidencia_primaria() -> Path | None:
+    """El territorio de los documentos oficiales. **Derivado de `config`**, nunca
+    escrito: el sistema tiene trinquete en 0 rutas fijas."""
+    try:
+        from config import DATOS_DIR
+        h = Path(DATOS_DIR) / "Holding_Municipal_Montecristi"
+        return h if h.is_dir() else None
+    except Exception:                                    # noqa: BLE001
+        return None
+
+
+def evidencia_primaria() -> dict:
+    """Cuántos documentos oficiales puede señalar el sistema — y cuántos no sabe.
+
+    ⚠️ APLICACIÓN DE LA REGLA 2 DE C0 A SÍ MISMO. Este barrido sólo lee JSON y
+    YAML del repositorio, y busca por **nombre de archivo**. El Gold Master es un
+    `.xlsx` —como 91 de estos documentos— y no se abre aquí. Por eso los no
+    hallados NO se llaman «sin trazabilidad»: se llaman `no_determinable`, y el
+    motivo viaja con el número. Decir lo contrario sería leer el silencio del
+    instrumento como ausencia, que es el error que este sistema acaba de fijar
+    como prohibido."""
+    H = raiz_de_evidencia_primaria()
+    if H is None:
+        return {"estado": "no_determinable",
+                "por_que": "no se alcanza la raíz de evidencia primaria desde config"}
+    docs = [f for f in H.rglob("*") if f.is_file()]
+    nombres = {f.name for f in docs}
+    citados: set[str] = set()
+    quien: dict[str, int] = {}
+    for f in list(DATOS.rglob("*.json")) + list(DATOS.rglob("*.yaml")):
+        if "backups" in f.as_posix():
+            continue
+        try:
+            t = f.read_text(encoding="utf-8", errors="replace")
+        except OSError:
+            continue
+        hits = {n for n in nombres if n in t}
+        if hits:
+            quien[f.relative_to(RAIZ).as_posix()] = len(hits)
+            citados |= hits
+    return {
+        "raiz": H.name,
+        "documentos": len(docs),
+        "citados_por_artefactos": len(citados),
+        "no_determinables": len(nombres) - len(citados),
+        "quien_los_cita": dict(sorted(quien.items(), key=lambda x: -x[1])[:8]),
+        "por_carpeta": {d.name: sum(1 for _ in d.rglob("*") if _.is_file())
+                        for d in sorted(H.iterdir()) if d.is_dir()},
+        "limite": "sólo se buscó el NOMBRE del documento dentro de JSON/YAML del "
+                  "repositorio. El Gold Master es .xlsx y no se abre aquí, como "
+                  "tampoco los 91 xlsx de este territorio: los no hallados son "
+                  "**no determinables**, no documentos sin trazabilidad",
+        "segundo_limite": "buena parte de estos documentos se vectorizó al corpus "
+                          "de Supabase —«pero no están todos», Javo— y este "
+                          "instrumento NO consulta ese corpus. Un documento "
+                          "ausente aquí puede estar trazado allí, y este módulo "
+                          "no puede saberlo sin conexión",
     }
