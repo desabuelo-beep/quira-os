@@ -1,6 +1,6 @@
 {
  "_lease": "testimonio de una corrida de pytest. NO lo produce QUIRA sobre sí misma: lo produce el ejecutor, y QUIRA lo lee. Caduca cuando el archivo de la prueba cambia.",
- "commit": "43d06e5",
+ "commit": "d354811",
  "arbol_limpio": false,
  "pruebas": {
   "tests/test_acoplamiento_observable.py::test_ataque_el_grafo_no_decide_si_lo_no_declarado_esta_mal": {
@@ -1109,7 +1109,7 @@
    "archivo_sha256": "c95c693f4c7ef1eb"
   },
   "tests/test_frontera_de_efectos.py::test_el_permiso_de_efecto_real_es_excepcional": {
-   "resultado": "failed",
+   "resultado": "passed",
    "archivo": "tests/test_frontera_de_efectos.py",
    "archivo_sha256": "c95c693f4c7ef1eb"
   },
@@ -2051,22 +2051,22 @@
   "tests/test_recorrido_icpi.py::test_Ei_es_un_literal_sin_definicion_en_el_canon": {
    "resultado": "passed",
    "archivo": "tests/test_recorrido_icpi.py",
-   "archivo_sha256": "713843cec41666bd"
+   "archivo_sha256": "fd91cc23c56eec94"
   },
   "tests/test_recorrido_icpi.py::test_el_eslabon_Ti_llega_a_un_documento_primario_declarado": {
    "resultado": "passed",
    "archivo": "tests/test_recorrido_icpi.py",
-   "archivo_sha256": "713843cec41666bd"
+   "archivo_sha256": "fd91cc23c56eec94"
   },
   "tests/test_recorrido_icpi.py::test_el_parametro_llamado_total_es_el_tamano_de_la_muestra": {
    "resultado": "passed",
    "archivo": "tests/test_recorrido_icpi.py",
-   "archivo_sha256": "713843cec41666bd"
+   "archivo_sha256": "fd91cc23c56eec94"
   },
   "tests/test_recorrido_icpi.py::test_la_formula_del_ICPI_es_la_declarada": {
    "resultado": "passed",
    "archivo": "tests/test_recorrido_icpi.py",
-   "archivo_sha256": "713843cec41666bd"
+   "archivo_sha256": "fd91cc23c56eec94"
   },
   "tests/test_reliability_tracker.py::TestBuildReliabilityReport::test_avg_reliability_is_float": {
    "resultado": "passed",

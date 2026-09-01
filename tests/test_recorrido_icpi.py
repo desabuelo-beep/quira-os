@@ -62,7 +62,6 @@ def _gm():
         return None
 
 
-@pytest.mark.efecto_real
 def test_la_formula_del_ICPI_es_la_declarada():
     """El punto de partida, literal y sin evaluar. `H12!B33` es la fuente única
     del ICPI y su fórmula es inmutable (Regla de Oro 1)."""
@@ -76,7 +75,6 @@ def test_la_formula_del_ICPI_es_la_declarada():
     wb.close()
 
 
-@pytest.mark.efecto_real
 def test_el_parametro_llamado_total_es_el_tamano_de_la_muestra():
     """EL HALLAZGO DEL RECORRIDO, fijado con trinquete.
 
@@ -103,7 +101,6 @@ def test_el_parametro_llamado_total_es_el_tamano_de_la_muestra():
         f"faltaban, actualizar este hallazgo — dejó de ser una muestra")
 
 
-@pytest.mark.efecto_real
 def test_Ei_es_un_literal_sin_definicion_en_el_canon():
     """El segundo hallazgo, independiente del primero. `Eᵢ` participa en el
     numerador del ICPI y es un **valor escrito a mano en las 25 filas**: no tiene
@@ -125,7 +122,6 @@ def test_Ei_es_un_literal_sin_definicion_en_el_canon():
     wb.close()
 
 
-@pytest.mark.efecto_real
 def test_el_eslabon_Ti_llega_a_un_documento_primario_declarado():
     """LO QUE SÍ SE RECONSTRUYE. De los seis insumos, `Tᵢ` es el único que
     retrocede hasta un documento nombrado: `H07_S5_FINANCIERO_eSIGEF` declara en
