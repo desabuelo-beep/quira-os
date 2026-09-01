@@ -306,7 +306,11 @@ def evidencia_primaria() -> dict:
     if H is None:
         return {"estado": "no_determinable",
                 "por_que": "no se alcanza la raíz de evidencia primaria desde config"}
-    docs = [f for f in H.rglob("*") if f.is_file()]
+    # ⚠️ RUIDO DEL SISTEMA DE ARCHIVOS, excluido con motivo. `desktop.ini` no es
+    # un documento oficial del GAD: contarlo infla el universo con basura de
+    # Windows y ensucia cualquier porcentaje que se derive de él.
+    docs = [f for f in H.rglob("*")
+            if f.is_file() and f.name.lower() not in ("desktop.ini", "thumbs.db")]
     nombres = {f.name for f in docs}
     citados: set[str] = set()
     quien: dict[str, int] = {}
@@ -323,7 +327,15 @@ def evidencia_primaria() -> dict:
             citados |= hits
     return {
         "raiz": H.name,
+        # ⚠️ LA UNIDAD, DECLARADA. El colega detectó la incoherencia: 258 − 36
+        # da 222 y yo reportaba 204. Ninguno era «documentos sin trazabilidad»
+        # — la métrica contaba **nombres únicos** (240, porque 18 se repiten en
+        # varias carpetas) y no lo decía. Una cifra sin unidad declarada no es
+        # comparable con nada, ni siquiera consigo misma.
+        "unidad": "nombres de archivo únicos; un mismo nombre en dos carpetas "
+                  "cuenta una vez",
         "documentos": len(docs),
+        "nombres_unicos": len(nombres),
         "citados_por_artefactos": len(citados),
         "no_determinables": len(nombres) - len(citados),
         "quien_los_cita": dict(sorted(quien.items(), key=lambda x: -x[1])[:8]),
@@ -333,6 +345,21 @@ def evidencia_primaria() -> dict:
                   "repositorio. El Gold Master es .xlsx y no se abre aquí, como "
                   "tampoco los 91 xlsx de este territorio: los no hallados son "
                   "**no determinables**, no documentos sin trazabilidad",
+        "territorios_no_inspeccionados": [
+            {"territorio": "Supabase · corpus vectorial",
+             "estado": "declarado_no_inspeccionado",
+             "por_que": "territorio externo; no se consulta sin autorización "
+                        "explícita de Javo. La pregunta C3 pendiente es si el "
+                        "corpus conserva identidad suficiente del documento para "
+                        "volver a la evidencia primaria — vectorizar resuelve "
+                        "recuperación semántica, no trazabilidad"},
+            {"territorio": "Obsidian · notas de QUIRA",
+             "estado": "declarado_no_inspeccionado",
+             "por_que": "Javo: «quedó corto… allí se quedó info de QUIRA que "
+                        "creo también se toca en la documentación canónica, pero "
+                        "desfasada». Territorio conocido, ubicación no declarada "
+                        "en el repositorio y contenido posiblemente superado"},
+        ],
         "segundo_limite": "buena parte de estos documentos se vectorizó al corpus "
                           "de Supabase —«pero no están todos», Javo— y este "
                           "instrumento NO consulta ese corpus. Un documento "

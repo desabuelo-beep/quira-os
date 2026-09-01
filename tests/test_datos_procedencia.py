@@ -239,8 +239,11 @@ def test_los_documentos_no_hallados_son_no_determinables_no_ausentes():
     if e.get("estado") == "no_determinable":
         import pytest
         pytest.skip(e["por_que"])
-    assert e["documentos"] >= 250
-    assert e["citados_por_artefactos"] + e["no_determinables"] >= e["documentos"] - 20
+    # 249, no 258: al excluir `desktop.ini` el universo bajó 9. Esta prueba
+    # falló al hacerlo — y ése era su trabajo: un umbral que no se entera de que
+    # el universo cambió no está midiendo nada.
+    assert e["documentos"] >= 240
+    assert e["citados_por_artefactos"] + e["no_determinables"] == e["nombres_unicos"]
     assert "no determinables" in e["limite"], (
         "el resultado dejó de declarar que los no hallados son indeterminados")
     assert "sin trazabilidad" in e["limite"], (
@@ -254,3 +257,46 @@ def test_la_raiz_de_evidencia_primaria_se_deriva_de_config():
     fuente = (RAIZ / "app" / "agents" / "datos.py").read_text(encoding="utf-8")
     assert "from config import DATOS_DIR" in fuente
     assert "C:\\Users" not in fuente and "C:/Users" not in fuente
+
+
+def test_la_metrica_declara_su_unidad_y_excluye_el_ruido():
+    """UNA CIFRA SIN UNIDAD NO ES COMPARABLE NI CONSIGO MISMA.
+
+    El colega detectó la incoherencia: 258 − 36 = 222 y yo reportaba 204.
+    Ninguno era «documentos sin trazabilidad» — la métrica contaba **nombres
+    únicos** (18 se repiten en varias carpetas) y no lo decía.
+
+    Y el universo incluía `desktop.ini`: ruido de Windows contado como documento
+    oficial del GAD, inflando cualquier porcentaje derivado."""
+    e = D.evidencia_primaria()
+    if e.get("estado") == "no_determinable":
+        import pytest
+        pytest.skip(e["por_que"])
+    assert e["unidad"], "la métrica no declara en qué unidad cuenta"
+    assert "nombres" in e["unidad"]
+    assert e["nombres_unicos"] <= e["documentos"], (
+        "más nombres únicos que documentos: la unidad se rompió")
+    assert e["citados_por_artefactos"] + e["no_determinables"] == e["nombres_unicos"], (
+        "las partes no suman el total en su propia unidad")
+    H = D.raiz_de_evidencia_primaria()
+    if H:
+        assert not any(f.name.lower() == "desktop.ini"
+                       for f in H.rglob("*") if f.is_file()) or e["documentos"] < 258, (
+            "volvió a contarse el ruido del sistema de archivos")
+
+
+def test_los_territorios_no_inspeccionados_se_declaran_sin_veredicto():
+    """Supabase y Obsidian son **territorios conocidos y no consultados**. Su
+    estado no es «cumple» ni «falla»: es `declarado_no_inspeccionado`, con el
+    motivo escrito. Un territorio del que se sabe que existe y no se mira debe
+    constar — callarlo es lo que hizo que `corpus_externo/` costara el 23% del
+    universo de ADR."""
+    e = D.evidencia_primaria()
+    if e.get("estado") == "no_determinable":
+        import pytest
+        pytest.skip(e["por_que"])
+    ts = {t["territorio"].split(" ·")[0]: t for t in e["territorios_no_inspeccionados"]}
+    assert {"Supabase", "Obsidian"} <= set(ts)
+    for t in ts.values():
+        assert t["estado"] == "declarado_no_inspeccionado"
+        assert t["por_que"], f"territorio sin motivo declarado: {t}"
