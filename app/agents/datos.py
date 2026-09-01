@@ -1,0 +1,200 @@
+"""
+app/agents/datos.py — CAPA 3 · qué procedencia llevan los artefactos de datos
+================================================================================
+POR QUÉ ES OTRA CAPA. `procedencia.py` modela la procedencia de **una
+afirmación** —«d01 dice que el IPE es X»—. C3 pregunta por la de **los
+artefactos**: los 2.213 archivos de `data/`. La deuda #2 de esta sesión ya lo
+enunció y sólo se resolvió para cinco:
+
+> *«La procedencia debe viajar con el artefacto hasta el límite en que el
+> artefacto pueda ser consumido independientemente de la cadena que lo produjo.»*
+
+EL HALLAZGO DE ESTA CAPA, y no es una acusación:
+
+    1360000430001    27 ensayos · 2026-05-25 → 2026-06-16
+    1360001010001   158 ensayos · 2026-08-18 → 2026-09-01
+                    NO se solapan — sucesión limpia
+
+**La identidad del sujeto tiene versiones.** El perfil declara hoy
+`ruc = 1360001010001`, y su propia nota registra que el campo *«no estaba
+huellado»* y se cerró el 2026-08-26. Los 27 artefactos anteriores llevan el RUC
+previo — y son **correctos para su época**.
+
+Lo que falta no es corregirlos: es que **ningún artefacto declara bajo qué
+versión de la identidad se produjo**. Hoy se reconstruye por la fecha, lo que
+exige que alguien recuerde cuándo cambió. Es el mismo patrón que los ADR
+anteriores a ADR-035: *no consta ≠ defecto*, y convertirlo en imputación
+retroactiva sería el error que este observatorio prohíbe.
+
+⚠️ LÍMITE DEL DETECTOR, aprendido en el intento anterior. Buscar una lista de
+marcas —`_procedencia`, `_meta`…— produjo 221 falsos positivos: `ack_registry`
+lleva `meta` sin guion, `cadena_estado` guarda sus sellos dentro de las etapas, y
+los 185 ensayos declaran `dry_run: true`, que la lista no contemplaba. Se busca
+por **patrón y a profundidad**, y aun así el resultado se llama «sin marca
+hallada», no «sin procedencia».
+
+Dylus Lab © 2026
+"""
+from __future__ import annotations
+
+import collections
+import json
+import re
+from functools import lru_cache
+from pathlib import Path
+
+RAIZ = Path(__file__).resolve().parents[2]
+DATOS = RAIZ / "data"
+
+CON_MARCA = "con_marca_de_procedencia"
+ENSAYO = "ensayo_declarado"
+SIN_MARCA = "sin_marca_hallada"
+ILEGIBLE = "ilegible"
+
+# PATRÓN, no lista cerrada: cualquier clave que hable de origen, sello o
+# identidad. Una lista escrita a mano es lo que produjo el falso positivo.
+_PATRON_PROCEDENCIA = re.compile(
+    r"sha|fuente|origen|proceden|sujeto|generado|firma|sello|captura|"
+    r"_meta|^meta$|clase_epist|artifact|deriva|dry_run|run_id|ruc", re.I)
+
+_EXCLUIDOS = (
+    ("backups/", "copias de seguridad: duplican artefactos ya contados"),
+    ("__pycache__", "artefactos de compilación"),
+)
+
+
+def _marcas(o, prof: int = 0) -> list[str]:
+    """Claves de procedencia a cualquier profundidad (hasta 3 niveles).
+
+    La procedencia de un artefacto puede vivir dentro de sus etapas y no en la
+    raíz — `cadena_estado.json` guarda sus sellos en `captura`, `descarga`… y
+    mirar sólo el primer nivel lo daba por huérfano."""
+    if prof > 3:
+        return []
+    out: list[str] = []
+    if isinstance(o, dict):
+        for k, v in o.items():
+            if isinstance(k, str) and _PATRON_PROCEDENCIA.search(k):
+                out.append(k)
+            out += _marcas(v, prof + 1)
+    elif isinstance(o, list):
+        for v in o[:20]:
+            out += _marcas(v, prof + 1)
+    return out
+
+
+@lru_cache(maxsize=1)
+def artefactos_json() -> list[dict]:
+    """Cada JSON de `data/` con lo que se puede decir de su procedencia."""
+    salida = []
+    for f in sorted(DATOS.rglob("*.json")):
+        rel = f.relative_to(RAIZ).as_posix()
+        if any(p in rel for p, _ in _EXCLUIDOS):
+            continue
+        try:
+            d = json.loads(f.read_text(encoding="utf-8", errors="replace"))
+        except Exception:                                # noqa: BLE001
+            salida.append({"artefacto": rel, "estado": ILEGIBLE, "marcas": []})
+            continue
+        m = _marcas(d)
+        es_ensayo = isinstance(d, dict) and d.get("dry_run") is True
+        salida.append({
+            "artefacto": rel,
+            "estado": ENSAYO if es_ensayo else (CON_MARCA if m else SIN_MARCA),
+            "marcas": sorted(set(m))[:6],
+            "sujeto_declarado": (d.get("ruc") or d.get("municipio_code") or "")
+                                if isinstance(d, dict) else "",
+            "fecha": (str(d.get("generated_at") or "")[:10]
+                      if isinstance(d, dict) else ""),
+        })
+    return salida
+
+
+def identidades_del_sujeto() -> list[dict]:
+    """Qué identidades del sujeto aparecen en los artefactos, y cuándo.
+
+    ⚠️ Que un artefacto lleve una identidad distinta de la vigente **no es un
+    defecto**: puede ser correcto para su época. Lo que este método permite es
+    ver si las versiones se suceden —sucesión limpia— o conviven, que sería
+    mucho más grave: dos identidades activas a la vez sobre el mismo sujeto."""
+    por: dict[str, list[str]] = collections.defaultdict(list)
+    for a in artefactos_json():
+        ruc = str(a.get("sujeto_declarado") or "")
+        if re.fullmatch(r"\d{10,13}", ruc) and a.get("fecha"):
+            por[ruc].append(a["fecha"])
+    filas = []
+    for ruc, fechas in por.items():
+        fs = sorted(fechas)
+        filas.append({"identidad": ruc, "artefactos": len(fs),
+                      "desde": fs[0], "hasta": fs[-1]})
+    filas.sort(key=lambda r: r["desde"])
+    for i in range(1, len(filas)):
+        filas[i]["solapa_con_anterior"] = filas[i]["desde"] <= filas[i - 1]["hasta"]
+    if filas:
+        filas[0]["solapa_con_anterior"] = False
+    return filas
+
+
+def cobertura_de_datos() -> dict:
+    """La capa 3, con su universo declarado (C0 lo exige)."""
+    arts = artefactos_json()
+    por_estado = collections.Counter(a["estado"] for a in arts)
+    ident = identidades_del_sujeto()
+    conviven = [i for i in ident if i.get("solapa_con_anterior")]
+    return {
+        "artefactos": len(arts),
+        "por_estado": dict(por_estado),
+        "identidades_del_sujeto": ident,
+        "identidades_que_conviven": [i["identidad"] for i in conviven],
+        "sin_marca": [a["artefacto"] for a in arts if a["estado"] == SIN_MARCA],
+        "universo": {
+            "que": "artefactos JSON del directorio de datos",
+            "donde": "data/**/*.json",
+            "como": "búsqueda de claves de procedencia por PATRÓN y hasta 3 "
+                    "niveles de profundidad, no por una lista de nombres",
+            "hallados": len(arts),
+            "mecanismo": {
+                "tipo": "derivado",
+                "operacion": "rglob",
+                "por_que": "se recorre el árbol de datos; ninguna lista enumera "
+                           "los artefactos",
+            },
+            "exclusiones": [
+                {"patron": p, "motivo": m,
+                 "autoridad": "decisión de alcance de este módulo, revisable"}
+                for p, m in _EXCLUIDOS],
+            "fuera_de_alcance": [
+                "los 943 CSV, 774 .bin, 16 PDF y 13 xlsx de `data/`: este "
+                "detector sólo lee JSON, así que la mayoría del volumen NO está "
+                "medida",
+                "hallar una clave de procedencia no dice que su contenido sea "
+                "correcto — sólo que el artefacto la lleva",
+                "una identidad distinta puede ser correcta para su época: este "
+                "módulo observa la sucesión, no juzga los valores",
+            ],
+        },
+        "afirmacion_sostenible": _afirmar(arts, por_estado, ident, conviven),
+    }
+
+
+def _afirmar(arts, por_estado, ident, conviven) -> str:
+    base = (f"De {len(arts)} artefactos JSON de datos, "
+            f"{por_estado.get(CON_MARCA, 0)} llevan alguna marca de procedencia, "
+            f"{por_estado.get(ENSAYO, 0)} se declaran ensayos (`dry_run`) y "
+            f"{por_estado.get(SIN_MARCA, 0)} no muestran ninguna. **Los CSV, "
+            f"binarios y hojas de cálculo —la mayor parte del volumen— no están "
+            f"medidos.**")
+    if len(ident) > 1:
+        base += (f" Se observan {len(ident)} identidades del sujeto en los "
+                 f"artefactos fechados: " +
+                 " · ".join(f"{i['identidad']} ({i['desde']}→{i['hasta']})"
+                            for i in ident) + ".")
+        base += (" No se solapan: la sucesión es limpia y cada artefacto puede "
+                 "ser correcto para su época."
+                 if not conviven else
+                 f" ⚠️ CONVIVEN: {', '.join(i['identidad'] for i in conviven)} — "
+                 f"dos identidades activas a la vez sobre el mismo sujeto.")
+        base += (" Lo que ningún artefacto declara es **bajo qué versión de la "
+                 "identidad se produjo**: hoy se reconstruye por la fecha, y eso "
+                 "exige recordar cuándo cambió.")
+    return base

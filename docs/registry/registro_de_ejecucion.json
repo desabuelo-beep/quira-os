@@ -1,6 +1,6 @@
 {
  "_lease": "testimonio de una corrida de pytest. NO lo produce QUIRA sobre sí misma: lo produce el ejecutor, y QUIRA lo lee. Caduca cuando el archivo de la prueba cambia.",
- "commit": "5eecc0d",
+ "commit": "2296194",
  "arbol_limpio": false,
  "pruebas": {
   "tests/test_acoplamiento_observable.py::test_ataque_el_grafo_no_decide_si_lo_no_declarado_esta_mal": {
@@ -893,6 +893,31 @@
    "archivo": "tests/test_d09_agente.py",
    "archivo_sha256": "e8b7325c3ec63fef"
   },
+  "tests/test_datos_procedencia.py::test_ataque_el_detector_busca_por_patron_y_a_profundidad": {
+   "resultado": "passed",
+   "archivo": "tests/test_datos_procedencia.py",
+   "archivo_sha256": "4f0e6cd90657210d"
+  },
+  "tests/test_datos_procedencia.py::test_ataque_un_ensayo_no_es_un_artefacto_sin_procedencia": {
+   "resultado": "passed",
+   "archivo": "tests/test_datos_procedencia.py",
+   "archivo_sha256": "4f0e6cd90657210d"
+  },
+  "tests/test_datos_procedencia.py::test_el_ruc_vigente_es_el_ultimo_de_la_sucesion": {
+   "resultado": "passed",
+   "archivo": "tests/test_datos_procedencia.py",
+   "archivo_sha256": "4f0e6cd90657210d"
+  },
+  "tests/test_datos_procedencia.py::test_el_universo_declara_que_no_mide_la_mayor_parte_del_volumen": {
+   "resultado": "passed",
+   "archivo": "tests/test_datos_procedencia.py",
+   "archivo_sha256": "4f0e6cd90657210d"
+  },
+  "tests/test_datos_procedencia.py::test_las_identidades_del_sujeto_se_suceden_y_no_conviven": {
+   "resultado": "passed",
+   "archivo": "tests/test_datos_procedencia.py",
+   "archivo_sha256": "4f0e6cd90657210d"
+  },
   "tests/test_ensayo_vs_observacion.py::test_el_emisor_separa_por_estructura_no_por_confianza": {
    "resultado": "passed",
    "archivo": "tests/test_ensayo_vs_observacion.py",
@@ -1633,6 +1658,11 @@
    "archivo": "tests/test_meta_integridad.py",
    "archivo_sha256": "cbf446c5f12ac2ec"
   },
+  "tests/test_meta_integridad.py::test_el_universo_declarado_coincide_con_lo_hallado[datos.cobertura_de_datos]": {
+   "resultado": "passed",
+   "archivo": "tests/test_meta_integridad.py",
+   "archivo_sha256": "cbf446c5f12ac2ec"
+  },
   "tests/test_meta_integridad.py::test_el_universo_declarado_coincide_con_lo_hallado[ejecucion.cobertura]": {
    "resultado": "passed",
    "archivo": "tests/test_meta_integridad.py",
@@ -1678,6 +1708,11 @@
    "archivo": "tests/test_meta_integridad.py",
    "archivo_sha256": "cbf446c5f12ac2ec"
   },
+  "tests/test_meta_integridad.py::test_toda_exclusion_declara_motivo_y_autoridad[datos.cobertura_de_datos]": {
+   "resultado": "passed",
+   "archivo": "tests/test_meta_integridad.py",
+   "archivo_sha256": "cbf446c5f12ac2ec"
+  },
   "tests/test_meta_integridad.py::test_toda_exclusion_declara_motivo_y_autoridad[ejecucion.cobertura]": {
    "resultado": "passed",
    "archivo": "tests/test_meta_integridad.py",
@@ -1699,6 +1734,11 @@
    "archivo_sha256": "cbf446c5f12ac2ec"
   },
   "tests/test_meta_integridad.py::test_todo_inventario_declara_su_universo[canon.cobertura_canonica]": {
+   "resultado": "passed",
+   "archivo": "tests/test_meta_integridad.py",
+   "archivo_sha256": "cbf446c5f12ac2ec"
+  },
+  "tests/test_meta_integridad.py::test_todo_inventario_declara_su_universo[datos.cobertura_de_datos]": {
    "resultado": "passed",
    "archivo": "tests/test_meta_integridad.py",
    "archivo_sha256": "cbf446c5f12ac2ec"
@@ -1729,6 +1769,11 @@
    "archivo_sha256": "cbf446c5f12ac2ec"
   },
   "tests/test_meta_integridad.py::test_un_universo_exhaustivo_debe_derivarse_no_enumerarse[canon.cobertura_canonica]": {
+   "resultado": "passed",
+   "archivo": "tests/test_meta_integridad.py",
+   "archivo_sha256": "cbf446c5f12ac2ec"
+  },
+  "tests/test_meta_integridad.py::test_un_universo_exhaustivo_debe_derivarse_no_enumerarse[datos.cobertura_de_datos]": {
    "resultado": "passed",
    "archivo": "tests/test_meta_integridad.py",
    "archivo_sha256": "cbf446c5f12ac2ec"
