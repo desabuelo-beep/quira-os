@@ -46,6 +46,11 @@ DESACOPLA = "el_canon_no_gobierna_al_motor"     # la regla existe y no se aplica
 CIEGA = "un_instrumento_no_ve_su_territorio"    # cobertura declarada de menos
 DESFASA = "el_canon_dice_algo_que_el_codigo_no" # divergencia declarado/real
 
+# El estado que este registro NO puede negar: que existan deudas no encontradas.
+# Sin una constante que lo nombre, «6 deudas» se leería como «hay 6», y este
+# registro recoge — no barre. La Capa 0 lo detectó en cuanto nació el módulo.
+SIN_BARRER = "sin_barrer_puede_haber_mas"
+
 _DEUDAS = (
     dict(id="D-001", gravedad=FALSEA, capa="C1/C3", dueño="Javo",
          que="El ICPI se declara `ICPI_GLOBAL_SISTEMA` y se calcula sobre 25 "
@@ -114,6 +119,7 @@ def cobertura_de_deuda() -> dict:
         "deudas": filas,
         "por_gravedad": por_gravedad,
         "sin_ataque_localizado": sin_ataque,
+        "exhaustividad": SIN_BARRER,
         "universo": {
             "que": "deudas declaradas de la macro-auditoría C0→C3",
             "donde": "app/agents/deuda.py, contrastado con tests/",

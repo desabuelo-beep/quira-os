@@ -1,6 +1,6 @@
 {
  "_lease": "testimonio de una corrida de pytest. NO lo produce QUIRA sobre sí misma: lo produce el ejecutor, y QUIRA lo lee. Caduca cuando el archivo de la prueba cambia.",
- "commit": "d99f7a4",
+ "commit": "367d64f",
  "arbol_limpio": false,
  "pruebas": {
   "tests/test_acoplamiento_observable.py::test_ataque_el_grafo_no_decide_si_lo_no_declarado_esta_mal": {
@@ -1744,7 +1744,7 @@
    "archivo_sha256": "447f200d435e21a7"
   },
   "tests/test_meta_integridad.py::test_ningun_inventario_confunde_no_hallado_con_inexistente": {
-   "resultado": "failed",
+   "resultado": "passed",
    "archivo": "tests/test_meta_integridad.py",
    "archivo_sha256": "447f200d435e21a7"
   },
