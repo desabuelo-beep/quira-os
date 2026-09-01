@@ -1,6 +1,6 @@
 {
  "_lease": "testimonio de una corrida de pytest. NO lo produce QUIRA sobre sí misma: lo produce el ejecutor, y QUIRA lo lee. Caduca cuando el archivo de la prueba cambia.",
- "commit": "2296194",
+ "commit": "1614986",
  "arbol_limpio": false,
  "pruebas": {
   "tests/test_acoplamiento_observable.py::test_ataque_el_grafo_no_decide_si_lo_no_declarado_esta_mal": {
@@ -893,30 +893,50 @@
    "archivo": "tests/test_d09_agente.py",
    "archivo_sha256": "e8b7325c3ec63fef"
   },
+  "tests/test_datos_procedencia.py::test_ataque_buscar_una_ruta_literal_no_demuestra_ausencia": {
+   "resultado": "passed",
+   "archivo": "tests/test_datos_procedencia.py",
+   "archivo_sha256": "cc4b412d635a5fe7"
+  },
   "tests/test_datos_procedencia.py::test_ataque_el_detector_busca_por_patron_y_a_profundidad": {
    "resultado": "passed",
    "archivo": "tests/test_datos_procedencia.py",
-   "archivo_sha256": "4f0e6cd90657210d"
+   "archivo_sha256": "cc4b412d635a5fe7"
   },
   "tests/test_datos_procedencia.py::test_ataque_un_ensayo_no_es_un_artefacto_sin_procedencia": {
    "resultado": "passed",
    "archivo": "tests/test_datos_procedencia.py",
-   "archivo_sha256": "4f0e6cd90657210d"
+   "archivo_sha256": "cc4b412d635a5fe7"
+  },
+  "tests/test_datos_procedencia.py::test_el_json_ilegible_es_un_formulario_humano_sin_consumidor": {
+   "resultado": "passed",
+   "archivo": "tests/test_datos_procedencia.py",
+   "archivo_sha256": "cc4b412d635a5fe7"
   },
   "tests/test_datos_procedencia.py::test_el_ruc_vigente_es_el_ultimo_de_la_sucesion": {
    "resultado": "passed",
    "archivo": "tests/test_datos_procedencia.py",
-   "archivo_sha256": "4f0e6cd90657210d"
+   "archivo_sha256": "cc4b412d635a5fe7"
   },
   "tests/test_datos_procedencia.py::test_el_universo_declara_que_no_mide_la_mayor_parte_del_volumen": {
    "resultado": "passed",
    "archivo": "tests/test_datos_procedencia.py",
-   "archivo_sha256": "4f0e6cd90657210d"
+   "archivo_sha256": "cc4b412d635a5fe7"
   },
   "tests/test_datos_procedencia.py::test_las_identidades_del_sujeto_se_suceden_y_no_conviven": {
    "resultado": "passed",
    "archivo": "tests/test_datos_procedencia.py",
-   "archivo_sha256": "4f0e6cd90657210d"
+   "archivo_sha256": "cc4b412d635a5fe7"
+  },
+  "tests/test_datos_procedencia.py::test_los_binarios_capturados_pueden_volver_a_su_url_de_origen": {
+   "resultado": "passed",
+   "archivo": "tests/test_datos_procedencia.py",
+   "archivo_sha256": "cc4b412d635a5fe7"
+  },
+  "tests/test_datos_procedencia.py::test_ningun_artefacto_declara_bajo_que_version_de_identidad_se_produjo": {
+   "resultado": "passed",
+   "archivo": "tests/test_datos_procedencia.py",
+   "archivo_sha256": "cc4b412d635a5fe7"
   },
   "tests/test_ensayo_vs_observacion.py::test_el_emisor_separa_por_estructura_no_por_confianza": {
    "resultado": "passed",

@@ -99,3 +99,82 @@ def test_el_universo_declara_que_no_mide_la_mayor_parte_del_volumen():
     limites = " ".join(D.cobertura_de_datos()["universo"]["fuera_de_alcance"]).lower()
     assert "csv" in limites and "no está medida" in limites
     assert "mayor parte del volumen" in D.cobertura_de_datos()["afirmacion_sostenible"]
+
+
+# ── A · LA CADENA DE CAPTURA · ¿puede el artefacto volver a su origen? ────────
+def test_los_binarios_capturados_pueden_volver_a_su_url_de_origen():
+    """LA PREGUNTA FUERTE DE C3, y la respuesta es sí de la forma más sólida
+    posible: **el nombre del `.bin` es el SHA-256 de su URL de origen**.
+
+        clave = hashlib.sha256(url.encode()).hexdigest()[:16]
+
+    422 binarios, 422 registros con URL, correspondencia 422/422 en ambas
+    direcciones. La procedencia viaja en el nombre del archivo."""
+    c = D.cadena_de_captura()
+    if c["estado"] == "no_determinable":
+        import pytest
+        pytest.skip(c["por_que"])
+    assert c["estado"] == D.RESUELTA
+    assert c["correspondencia"] == c["binarios"] == c["registros_con_url"]
+    assert not c["binarios_sin_registro"] and not c["registros_sin_binario"]
+
+
+def test_ataque_buscar_una_ruta_literal_no_demuestra_ausencia():
+    """REGRESIÓN DE UN FALSO POSITIVO PROPIO, y de los más instructivos.
+
+    La primera búsqueda concluyó «422 binarios sin registro de procedencia».
+    Buscó `data/lotaip/artefactos` como texto literal — y el código la
+    **compone**: `CACHE = RAIZ / "data" / "lotaip" / "artefactos"`. El grafo de
+    acoplamiento ya declaraba ese límite —83% de rutas no resolubles— y el
+    ataque siguiente lo ignoró al interpretar su propio resultado.
+
+    **Declarar un límite no sirve de nada si no se respeta al leer.**"""
+    productor = (RAIZ / "scripts" / "normativa" / "inventario_contenido.py").read_text(encoding="utf-8")
+    assert 'CACHE = RAIZ / "data" / "lotaip" / "artefactos"' in productor, (
+        "cambió la forma de componer la ruta: revisar si el hallazgo sigue")
+    assert "hashlib.sha256(c[\"url\"].encode()).hexdigest()[:16]" in productor, (
+        "cambió la derivación de la clave: la procedencia ya no viajaría en el "
+        "nombre del artefacto")
+
+
+# ── B · EL ARTEFACTO QUE EL MECANISMO NO PUEDE INTERPRETAR ────────────────────
+def test_el_json_ilegible_es_un_formulario_humano_sin_consumidor():
+    """No «hay un JSON corrupto», sino **«hay un artefacto que el mecanismo
+    actual no puede interpretar»** — y su naturaleza importa.
+
+    `data/validacion_reconciliacion_2025.json` se declara «Muestra para
+    validación humana · reconciliación PAC↔POA 2025 · llenar
+    revision_humana=OK/ERROR». Falla porque una respuesta quedó **sin comillas**
+    (`"revision_humana": ok`), y ningún código lo consume.
+
+    ⚠️ NO SE REPARA. Que el formato pedido a un humano sea JSON —que se rompe
+    con unas comillas— es una decisión de diseño, no un error a parchear aquí."""
+    f = RAIZ / "data" / "validacion_reconciliacion_2025.json"
+    if not f.exists():
+        import pytest
+        pytest.skip("el artefacto ya no está")
+    crudo = f.read_text(encoding="utf-8", errors="replace")
+    assert "validación humana" in crudo and "revision_humana" in crudo
+    ilegibles = [a for a in D.artefactos_json() if a["estado"] == D.ILEGIBLE]
+    assert len(ilegibles) == 1, f"cambió el conjunto de ilegibles: {ilegibles}"
+
+
+# ── C · IDENTIDAD TEMPORAL, generalizada ─────────────────────────────────────
+def test_ningun_artefacto_declara_bajo_que_version_de_identidad_se_produjo():
+    """LA PROPIEDAD GENERALIZABLE, más allá del caso Montecristi:
+
+    > cuando cambia un atributo que participa en la identificación del sujeto,
+    > ¿los artefactos históricos conservan explícitamente la versión de
+    > identidad bajo la cual fueron producidos?
+
+    Hoy **no**. Se reconstruye por la fecha, lo que exige recordar cuándo
+    cambió. Esta prueba fija ese estado: el día que un artefacto declare su
+    versión de identidad, habrá que reescribirla — y ése será el progreso."""
+    con_version = [a for a in D.artefactos_json()
+                   if any("version_identidad" in m or "identidad_vigente" in m
+                          for m in a.get("marcas", []))]
+    assert not con_version, (
+        f"{len(con_version)} artefactos ya declaran su versión de identidad: "
+        f"actualizar el hallazgo, esto dejó de ser una carencia")
+    assert len(D.identidades_del_sujeto()) >= 2, (
+        "sin al menos dos identidades observadas, la propiedad no es medible aquí")

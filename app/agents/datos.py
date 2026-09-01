@@ -198,3 +198,62 @@ def _afirmar(arts, por_estado, ident, conviven) -> str:
                  "identidad se produjo**: hoy se reconstruye por la fecha, y eso "
                  "exige recordar cuándo cambió.")
     return base
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# LA CADENA DE CAPTURA · ¿puede un artefacto volver a su origen?
+# ══════════════════════════════════════════════════════════════════════════════
+# La pregunta fuerte de C3, formulada por el colega:
+#
+# > *«¿Puede el sistema reconstruir de manera observable la cadena
+# > artefacto → captura → URL/origen → sujeto/periodo?»*
+#
+# Para los 422 binarios de LOTAIP la respuesta es SÍ, y de la forma más fuerte
+# posible: **el nombre del archivo es el SHA-256 de su URL de origen**.
+#
+#     clave = hashlib.sha256(url.encode()).hexdigest()[:16]
+#     p = CACHE / f"{clave}.bin"
+#
+# El artefacto lleva su procedencia en el nombre, y la correspondencia con
+# `inventario_documental.json` es 422/422 en ambas direcciones.
+#
+# ⚠️ ESTE MÉTODO NACIÓ DE UN FALSO POSITIVO PROPIO, y conviene que quede escrito.
+# La primera búsqueda concluyó «422 binarios sin registro de procedencia»: buscó
+# la ruta `data/lotaip/artefactos` como texto literal, y el código la **compone**
+# (`CACHE = RAIZ / "data" / "lotaip" / "artefactos"`). Era exactamente el límite
+# que el grafo de acoplamiento ya declaraba —83% de rutas no resolubles— y que
+# el ataque siguiente ignoró al interpretar. **Declarar un límite no sirve si no
+# se respeta al leer el resultado.**
+RESUELTA = "procedencia_resuelta"
+DECLARADA_NO_RESUELTA = "procedencia_declarada_no_resuelta"
+SIN_REGISTRO = "sin_registro_de_procedencia"
+
+_INVENTARIO = DATOS / "lotaip" / "inventario_documental.json"
+_CACHE_BIN = DATOS / "lotaip" / "artefactos"
+
+
+def cadena_de_captura() -> dict:
+    """Si los binarios capturados pueden volver a su URL de origen.
+
+    `sin_registro` NO significa «sin procedencia»: significa que este mecanismo
+    no halló un registro que permita reconstruirla."""
+    import hashlib
+
+    if not _INVENTARIO.exists() or not _CACHE_BIN.is_dir():
+        return {"estado": "no_determinable",
+                "por_que": "no está el inventario o la caché de artefactos"}
+    inv = json.loads(_INVENTARIO.read_text(encoding="utf-8")).get("artefactos", [])
+    enel_disco = {p.stem for p in _CACHE_BIN.glob("*.bin")}
+    claves = {hashlib.sha256(a["url"].encode()).hexdigest()[:16]: a
+              for a in inv if a.get("url")}
+    casan = enel_disco & set(claves)
+    return {
+        "estado": RESUELTA if casan and not (enel_disco - set(claves)) else SIN_REGISTRO,
+        "binarios": len(enel_disco),
+        "registros_con_url": len(claves),
+        "correspondencia": len(casan),
+        "binarios_sin_registro": sorted(enel_disco - set(claves))[:10],
+        "registros_sin_binario": sorted(set(claves) - enel_disco)[:10],
+        "como_se_reconstruye": "el nombre del .bin es sha256(url)[:16] — la "
+                               "procedencia viaja en el nombre del artefacto",
+    }
