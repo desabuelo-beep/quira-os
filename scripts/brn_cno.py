@@ -154,6 +154,33 @@ def main() -> int:
 
     cur.connection.close()
 
+    # ── EL ESTADO DEL CATÁLOGO SE DERIVA · D-003 (2026-09-01) ────────────────
+    # Aquí había un literal: `"propuesta · pendiente de validación humana"`,
+    # fijo. Ninguna validación podía moverlo — un campo que nunca puede ser
+    # verdadero no informa. Y mentía: el 26-ago se promovieron a `vigente` las
+    # nueve piezas de d07 y el catálogo del 19-ago seguía llamándolas propuesta.
+    #
+    # Javo: *«que herede el estado de sus piezas»*. El colega, a la vez:
+    # *«la validación de las piezas y la validación del acto de compilación son
+    # cosas distintas»*. **Las dos cosas son ciertas y caben juntas**: el estado
+    # de las piezas se DERIVA —deja de mentir— y la validación humana del
+    # catálogo se declara aparte, porque ADR-035 §5 exige un acto humano que
+    # ningún conteo puede sustituir.
+    from collections import Counter
+    import hashlib
+
+    por_estado = Counter(c["estado"] for c in catalogo)
+    ro_por_estado = Counter(r["estado"] for c in catalogo for r in c["deriva_ro"])
+
+    # HUELLA DEL CANON DE ENTRADA. Con esto, un compilado desfasado deja de ser
+    # invisible: quien lo lea puede rehacer el hash de `docs/brn/` y saber si
+    # describe el canon de hoy. Es el escalón 7 aplicado al compilador — el
+    # derivado señala el origen del que salió.
+    h = hashlib.sha256()
+    for f in sorted(BRN_DIR.glob("*.yaml")):
+        h.update(f.name.encode()); h.update(f.read_bytes())
+    canon_sha = h.hexdigest()[:16]
+
     bloque = {
         "_fuente": "Canon BRN (docs/brn/*.yaml) verificado contra el corpus (SHA256)",
         "_doctrina": "El nodo es la REGLA (CNO), no el artículo. La cadena íntegra o no entra "
@@ -162,7 +189,16 @@ def main() -> int:
         "fecha": date.today().isoformat(),
         "total_cno": len(catalogo), "cadenas_integras": integras,
         "total_ro": len(ros),
-        "estado_catalogo": "propuesta · pendiente de validación humana (ADR-035 §5)",
+        # DERIVADO · lo que de verdad hay dentro
+        "estado_piezas_cno": dict(por_estado),
+        "estado_piezas_ro": dict(ro_por_estado),
+        "integridad_compilacion": f"{integras}/{len(catalogo)}",
+        "canon_sha256": canon_sha,
+        # DECLARADO · el acto de compilar es otra cosa que las piezas
+        "validacion_humana_del_catalogo": "no_consta",
+        "por_que": "ADR-035 §5 exige un acto humano de validación. Que las "
+                   "piezas estén vigentes NO valida el acto de compilarlas: son "
+                   "afirmaciones distintas y este campo no las colapsa.",
         "cno": catalogo,
     }
     snap = json.loads(SNAP.read_text(encoding="utf-8"))

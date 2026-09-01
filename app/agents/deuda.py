@@ -71,9 +71,14 @@ _DEUDAS = (
          no_es="una divergencia de resultados: es una divergencia de referencia "
                "que se volverá de resultados en cuanto las versiones difieran"),
     dict(id="D-003", gravedad=DESACOPLA, capa="C1", dueño="Javo",
-         que="`RO-IX-001` está vigente y `d09/motor.py` no la consulta. Y las 13 "
-             "RO están compiladas en `snapshot['brn_cno']` — el puente existe, "
-             "firmado y al día, y ningún motor lo cruza.",
+         estado="PARCIAL 2026-09-01 · catálogo recompilado y su estado ya se "
+                "deriva (los dos primeros hallazgos, cerrados). Falta el lector "
+                "verificable y su consumidor: el puente sigue sin cruzarse, "
+                "ahora por decisión y no por caducidad",
+         que="D-003 NO era «el motor no consulta la BRN». Medido: el catálogo "
+             "estaba desfasado —9 piezas de d07 con estado anterior— y se "
+             "declaraba `propuesta` por un literal inmóvil. Cruzarlo habría "
+             "acoplado nueve motores a un artefacto caducado.",
          ataque="test_d07_es_el_unico_que_carga_el_yaml_de_su_regla",
          no_es="negligencia de cuatro dominios: es una vía canónica construida "
                "que nadie usa"),

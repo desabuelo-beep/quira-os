@@ -8169,11 +8169,22 @@
     "_fuente": "Canon BRN (docs/brn/*.yaml) verificado contra el corpus (SHA256)",
     "_doctrina": "El nodo es la REGLA (CNO), no el artículo. La cadena íntegra o no entra (Regla 3). La IA propone, el humano valida (ADR-035 §5).",
     "_modelo": "MDN — Modelo de Dependencias Normativas (ADR-038 §9): CNO ↔ RO ↔ SAT.",
-    "fecha": "2026-08-19",
+    "fecha": "2026-09-01",
     "total_cno": 16,
     "cadenas_integras": 16,
     "total_ro": 13,
-    "estado_catalogo": "propuesta · pendiente de validación humana (ADR-035 §5)",
+    "estado_piezas_cno": {
+      "vigente": 8,
+      "propuesta": 8
+    },
+    "estado_piezas_ro": {
+      "vigente": 10,
+      "propuesta": 3
+    },
+    "integridad_compilacion": "16/16",
+    "canon_sha256": "59be1b69b8e033c9",
+    "validacion_humana_del_catalogo": "no_consta",
+    "por_que": "ADR-035 §5 exige un acto humano de validación. Que las piezas estén vigentes NO valida el acto de compilarlas: son afirmaciones distintas y este campo no las colapsa.",
     "cno": [
       {
         "id": "CNO-I-001",
@@ -8592,7 +8603,7 @@
         "version": "1.0",
         "titulo": "Obligación de Transparencia Activa del GAD",
         "dominio_normativo": "transparencia_y_acceso_a_la_informacion",
-        "estado": "propuesta",
+        "estado": "vigente",
         "cadena_integra": true,
         "n_eslabones": 12,
         "cadena": [
@@ -8702,7 +8713,7 @@
             "vigencia_operativa": null,
             "consume": [],
             "opera_en": "d07",
-            "estado": "propuesta"
+            "estado": "vigente"
           },
           {
             "id": "RO-VII-002",
@@ -8712,7 +8723,7 @@
             "vigencia_operativa": null,
             "consume": [],
             "opera_en": "d07",
-            "estado": "propuesta"
+            "estado": "vigente"
           }
         ],
         "vigencia": {
@@ -8725,7 +8736,7 @@
         "version": "1.0",
         "titulo": "Obligación Específica de Transparencia de los Gobiernos Autónomos Descentralizados",
         "dominio_normativo": "transparencia_y_acceso_a_la_informacion",
-        "estado": "propuesta",
+        "estado": "vigente",
         "cadena_integra": true,
         "n_eslabones": 12,
         "cadena": [
@@ -8835,7 +8846,7 @@
             "vigencia_operativa": null,
             "consume": [],
             "opera_en": "d07",
-            "estado": "propuesta"
+            "estado": "vigente"
           }
         ],
         "vigencia": {
@@ -8848,7 +8859,7 @@
         "version": "1.0",
         "titulo": "Obligación de Transparencia Pasiva del Sujeto Obligado",
         "dominio_normativo": "transparencia_y_acceso_a_la_informacion",
-        "estado": "propuesta",
+        "estado": "vigente",
         "cadena_integra": true,
         "n_eslabones": 16,
         "cadena": [
@@ -8990,7 +9001,7 @@
             "vigencia_operativa": null,
             "consume": [],
             "opera_en": "d07",
-            "estado": "propuesta"
+            "estado": "vigente"
           }
         ],
         "vigencia": {
@@ -9003,7 +9014,7 @@
         "version": "1.0",
         "titulo": "Obligación de Difusión y Capacitación en el Derecho de Acceso a la Información",
         "dominio_normativo": "transparencia_y_acceso_a_la_informacion",
-        "estado": "propuesta",
+        "estado": "vigente",
         "cadena_integra": true,
         "n_eslabones": 6,
         "cadena": [
@@ -9065,7 +9076,7 @@
             "vigencia_operativa": null,
             "consume": [],
             "opera_en": "d07",
-            "estado": "propuesta"
+            "estado": "vigente"
           }
         ],
         "vigencia": {

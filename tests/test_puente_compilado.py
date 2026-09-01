@@ -73,28 +73,39 @@ def test_el_puente_lleva_la_cadena_normativa_completa():
     assert brn["cadenas_integras"] == brn["total_cno"]
 
 
-def test_el_estado_del_catalogo_es_un_literal_que_nadie_puede_cambiar():
-    """HALLAZGO 1 de D-003, con trinquete invertido.
+def test_el_estado_del_catalogo_se_deriva_y_no_se_escribe():
+    """HALLAZGO 1 · CERRADO, y la prueba se invirtió — la señal acordada.
 
-    `scripts/brn_cno.py` escribe el estado del catálogo como texto fijo. Ninguna
-    validación humana puede moverlo: el campo nunca podrá decir otra cosa. El
-    día que se derive, esta prueba fallará — y ése será el arreglo."""
+    Decía que `estado_catalogo` era un literal que ninguna validación podía
+    mover. Ahora el catálogo **deriva** lo que de verdad hay dentro y declara
+    aparte lo que sólo un humano puede afirmar:
+
+        estado_piezas_cno / estado_piezas_ro   derivados del canon
+        integridad_compilacion                 16/16
+        canon_sha256                           huella de la entrada
+        validacion_humana_del_catalogo         «no_consta» — no se inventa
+
+    Javo pidió que heredara el estado de sus piezas; el colega advirtió que
+    validar las piezas no valida el acto de compilarlas. **Las dos cosas eran
+    ciertas**: lo derivable se deriva y lo que exige un acto humano se declara
+    pendiente, sin colapsar una afirmación en la otra (ADR-035 §5)."""
+    brn = _brn()
+    if brn is None:
+        pytest.skip("no está el snapshot")
+    assert "estado_catalogo" not in brn, (
+        "volvió el campo único que colapsaba piezas y acto de compilación")
+    assert brn["estado_piezas_cno"] and brn["estado_piezas_ro"]
+    assert brn["validacion_humana_del_catalogo"] == "no_consta", (
+        "si el catálogo se validó, debe registrar QUIÉN y CUÁNDO — no pasar a "
+        "un «sí» sin sello")
     fuente = (RAIZ / "scripts" / "brn_cno.py").read_text(encoding="utf-8")
-    assert '"estado_catalogo": "propuesta' in fuente, (
-        "el estado del catálogo ya no es un literal: actualizar D-003")
-    # Y el contraste: el estado de cada CNO SÍ se deriva del YAML de origen.
-    assert 'cno.get("estado"' in fuente, (
-        "el compilador dejó de respetar el estado declarado por cada pieza")
+    assert '"estado_catalogo": "propuesta' not in fuente, (
+        "el literal volvió al compilador")
 
-
-def test_el_compilado_esta_desactualizado_respecto_del_canon():
-    """HALLAZGO 2 de D-003, y explica por qué nadie debería cruzar todavía.
-
-    Las 9 piezas de d07 se promovieron a `vigente` el 26-ago; el compilado es
-    del 19-ago y las tiene como `propuesta`. Un motor que leyera este puente hoy
-    recibiría el estado anterior a una promoción que Javo ya validó.
-
-    El día que se recompile, esta prueba fallará."""
+def test_el_compilado_refleja_el_canon_en_disco():
+    """HALLAZGO 2 · CERRADO. El compilado del 19-ago tenía como `propuesta` las
+    nueve piezas de d07 que Javo promovió el 26-ago. Recompilado, cero piezas
+    difieren."""
     import glob
 
     import yaml
@@ -102,24 +113,41 @@ def test_el_compilado_esta_desactualizado_respecto_del_canon():
     brn = _brn()
     if brn is None:
         pytest.skip("no está el snapshot")
-    compilado = {c["id"]: c.get("estado") for c in brn["cno"]}
-    compilado.update({r["id"]: r.get("estado")
-                      for c in brn["cno"] for r in c.get("deriva_ro", [])})
+    comp = {c["id"]: c["estado"] for c in brn["cno"]}
+    comp.update({r["id"]: r["estado"] for c in brn["cno"] for r in c["deriva_ro"]})
     difieren = []
     for f in glob.glob(str(RAIZ / "docs" / "brn" / "*.yaml")):
         d = yaml.safe_load(Path(f).read_text(encoding="utf-8"))
-        if not isinstance(d, dict) or not d.get("id"):
-            continue
-        if d["id"] in compilado and compilado[d["id"]] != d.get("estado"):
+        if isinstance(d, dict) and d.get("id") in comp and comp[d["id"]] != d.get("estado"):
             difieren.append(d["id"])
-    assert difieren, (
-        "el compilado ya coincide con el canon en disco: se recompiló y D-003 "
-        "avanzó — actualizar el hallazgo")
-    assert all(x.endswith(tuple(f"-VII-00{n}" for n in range(1, 6)))
-               for x in difieren), (
-        f"divergen piezas fuera de d07, que no se explican por la promoción del "
-        f"26-ago: {difieren}")
+    assert not difieren, f"el compilado volvió a desfasarse del canon: {difieren}"
 
+
+def test_un_compilado_desfasado_ya_no_puede_pasar_inadvertido():
+    """LA MEJORA QUE HACE EL HALLAZGO IMPOSIBLE DE OCULTAR, propuesta por el
+    colega: el catálogo guarda la **huella del canon de entrada**.
+
+    Antes, un compilado viejo sólo se detectaba comparando pieza por pieza y
+    sabiendo qué se había promovido. Ahora basta rehacer el hash de
+    `docs/brn/`: si no coincide con `canon_sha256`, el compilado describe otro
+    canon. Es el escalón 7 aplicado al compilador — **el derivado señala el
+    origen del que salió**, igual que el nombre del `.bin` señala su URL.
+
+    ⚠️ Que el hash difiera NO significa que el compilado esté mal: significa que
+    describe una entrada distinta de la actual. La distinción de siempre."""
+    import hashlib
+
+    brn = _brn()
+    if brn is None:
+        pytest.skip("no está el snapshot")
+    assert brn.get("canon_sha256"), "el catálogo dejó de declarar su entrada"
+    h = hashlib.sha256()
+    for f in sorted((RAIZ / "docs" / "brn").glob("*.yaml")):
+        h.update(f.name.encode()); h.update(f.read_bytes())
+    assert brn["canon_sha256"] == h.hexdigest()[:16], (
+        f"el compilado describe un canon distinto del que hay en disco: "
+        f"declara {brn['canon_sha256']}, el canon actual es {h.hexdigest()[:16]} "
+        f"— recompilar con `python scripts/brn_cno.py`")
 
 def test_ningun_motor_cruza_el_puente_todavia():
     """HALLAZGO 3. Y no cruzarlo **no era negligencia**: hacerlo hoy sería
