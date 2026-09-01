@@ -1,6 +1,6 @@
 {
  "_lease": "testimonio de una corrida de pytest. NO lo produce QUIRA sobre sí misma: lo produce el ejecutor, y QUIRA lo lee. Caduca cuando el archivo de la prueba cambia.",
- "commit": "d354811",
+ "commit": "d99f7a4",
  "arbol_limpio": false,
  "pruebas": {
   "tests/test_acoplamiento_observable.py::test_ataque_el_grafo_no_decide_si_lo_no_declarado_esta_mal": {
@@ -1713,6 +1713,11 @@
    "archivo": "tests/test_meta_integridad.py",
    "archivo_sha256": "447f200d435e21a7"
   },
+  "tests/test_meta_integridad.py::test_el_universo_declarado_coincide_con_lo_hallado[deuda.cobertura_de_deuda]": {
+   "resultado": "passed",
+   "archivo": "tests/test_meta_integridad.py",
+   "archivo_sha256": "447f200d435e21a7"
+  },
   "tests/test_meta_integridad.py::test_el_universo_declarado_coincide_con_lo_hallado[ejecucion.cobertura]": {
    "resultado": "passed",
    "archivo": "tests/test_meta_integridad.py",
@@ -1739,7 +1744,7 @@
    "archivo_sha256": "447f200d435e21a7"
   },
   "tests/test_meta_integridad.py::test_ningun_inventario_confunde_no_hallado_con_inexistente": {
-   "resultado": "passed",
+   "resultado": "failed",
    "archivo": "tests/test_meta_integridad.py",
    "archivo_sha256": "447f200d435e21a7"
   },
@@ -1764,6 +1769,11 @@
    "archivo_sha256": "447f200d435e21a7"
   },
   "tests/test_meta_integridad.py::test_toda_exclusion_declara_motivo_y_autoridad[datos.cobertura_de_datos]": {
+   "resultado": "passed",
+   "archivo": "tests/test_meta_integridad.py",
+   "archivo_sha256": "447f200d435e21a7"
+  },
+  "tests/test_meta_integridad.py::test_toda_exclusion_declara_motivo_y_autoridad[deuda.cobertura_de_deuda]": {
    "resultado": "passed",
    "archivo": "tests/test_meta_integridad.py",
    "archivo_sha256": "447f200d435e21a7"
@@ -1794,6 +1804,11 @@
    "archivo_sha256": "447f200d435e21a7"
   },
   "tests/test_meta_integridad.py::test_todo_inventario_declara_su_universo[datos.cobertura_de_datos]": {
+   "resultado": "passed",
+   "archivo": "tests/test_meta_integridad.py",
+   "archivo_sha256": "447f200d435e21a7"
+  },
+  "tests/test_meta_integridad.py::test_todo_inventario_declara_su_universo[deuda.cobertura_de_deuda]": {
    "resultado": "passed",
    "archivo": "tests/test_meta_integridad.py",
    "archivo_sha256": "447f200d435e21a7"
@@ -1834,6 +1849,11 @@
    "archivo_sha256": "447f200d435e21a7"
   },
   "tests/test_meta_integridad.py::test_un_universo_exhaustivo_debe_derivarse_no_enumerarse[datos.cobertura_de_datos]": {
+   "resultado": "passed",
+   "archivo": "tests/test_meta_integridad.py",
+   "archivo_sha256": "447f200d435e21a7"
+  },
+  "tests/test_meta_integridad.py::test_un_universo_exhaustivo_debe_derivarse_no_enumerarse[deuda.cobertura_de_deuda]": {
    "resultado": "passed",
    "archivo": "tests/test_meta_integridad.py",
    "archivo_sha256": "447f200d435e21a7"
@@ -2051,22 +2071,37 @@
   "tests/test_recorrido_icpi.py::test_Ei_es_un_literal_sin_definicion_en_el_canon": {
    "resultado": "passed",
    "archivo": "tests/test_recorrido_icpi.py",
-   "archivo_sha256": "fd91cc23c56eec94"
+   "archivo_sha256": "98e8c2b54ad23a99"
   },
   "tests/test_recorrido_icpi.py::test_el_eslabon_Ti_llega_a_un_documento_primario_declarado": {
    "resultado": "passed",
    "archivo": "tests/test_recorrido_icpi.py",
-   "archivo_sha256": "fd91cc23c56eec94"
+   "archivo_sha256": "98e8c2b54ad23a99"
+  },
+  "tests/test_recorrido_icpi.py::test_el_motor_lee_la_version_que_el_canon_declara": {
+   "resultado": "passed",
+   "archivo": "tests/test_recorrido_icpi.py",
+   "archivo_sha256": "98e8c2b54ad23a99"
   },
   "tests/test_recorrido_icpi.py::test_el_parametro_llamado_total_es_el_tamano_de_la_muestra": {
    "resultado": "passed",
    "archivo": "tests/test_recorrido_icpi.py",
-   "archivo_sha256": "fd91cc23c56eec94"
+   "archivo_sha256": "98e8c2b54ad23a99"
+  },
+  "tests/test_recorrido_icpi.py::test_el_registro_no_pretende_ser_exhaustivo": {
+   "resultado": "passed",
+   "archivo": "tests/test_recorrido_icpi.py",
+   "archivo_sha256": "98e8c2b54ad23a99"
   },
   "tests/test_recorrido_icpi.py::test_la_formula_del_ICPI_es_la_declarada": {
    "resultado": "passed",
    "archivo": "tests/test_recorrido_icpi.py",
-   "archivo_sha256": "fd91cc23c56eec94"
+   "archivo_sha256": "98e8c2b54ad23a99"
+  },
+  "tests/test_recorrido_icpi.py::test_toda_deuda_declarada_tiene_su_ataque_localizado": {
+   "resultado": "passed",
+   "archivo": "tests/test_recorrido_icpi.py",
+   "archivo_sha256": "98e8c2b54ad23a99"
   },
   "tests/test_reliability_tracker.py::TestBuildReliabilityReport::test_avg_reliability_is_float": {
    "resultado": "passed",

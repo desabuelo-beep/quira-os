@@ -138,3 +138,55 @@ def test_el_eslabon_Ti_llega_a_un_documento_primario_declarado():
     doc = str(ws.cell(row=11, column=2).value)
     assert "Cédula" in doc and "2026" in doc, f"cambió la fuente declarada: {doc}"
     wb.close()
+
+
+# ── EL REGISTRO DE DEUDA · una deuda no se declara sola ──────────────────────
+def test_toda_deuda_declarada_tiene_su_ataque_localizado():
+    """LA REGLA QUE HACE ÚTIL EL REGISTRO. Sin prueba asociada, una deuda es una
+    nota que envejece — y este sistema ya sabe lo que pasa con las notas. Con
+    ataque, el día que se subsane **la prueba falla**, y ese fallo es la señal.
+
+    Se comprueba que el ataque EXISTE en disco, no que esté escrito en el
+    registro: nombrar una prueba inexistente sería acreditar sin nada detrás, el
+    mismo defecto que la escalera de apropiación cerró en su escalón 2."""
+    from app.agents import deuda as D
+
+    c = D.cobertura_de_deuda()
+    assert c["deudas"], "el registro de deuda quedó vacío"
+    assert not c["sin_ataque_localizado"], (
+        f"deudas sin prueba que las fije: {c['sin_ataque_localizado']}")
+
+
+def test_el_registro_no_pretende_ser_exhaustivo():
+    """C0 · regla 1 aplicada a la deuda. Un registro de deudas **no se barre**:
+    alguien las encuentra y las declara. Presentarlo como completo diría que el
+    resto del sistema está limpio, y las capas C4–C7 ni siquiera se han mirado."""
+    from app.agents import deuda as D
+
+    u = D.cobertura_de_deuda()["universo"]
+    assert u["mecanismo"]["tipo"] == "explicitamente_limitado"
+    limites = " ".join(u["fuera_de_alcance"])
+    assert "no barre" in limites and "C4" in limites
+
+
+def test_el_motor_lee_la_version_que_el_canon_declara():
+    """DEUDA D-002, fijada con trinquete invertido.
+
+    BOOT declara `v5.7_TGI`; el código abre `v5.5_TGI`. Hoy las dos versiones
+    coinciden en metas e ICPI —verificado hasta el último decimal—, así que el
+    desfase no cambia ninguna cifra todavía. El día que se alineen, esta prueba
+    fallará y habrá que celebrarlo."""
+    boot = (RAIZ / "governance" / "BOOT.md").read_text(encoding="utf-8", errors="replace")
+    import re
+    m = re.search(r"v(\d\.\d)_TGI", boot)
+    assert m, "BOOT dejó de declarar la versión del Gold Master"
+    canon = m.group(1)
+    conector = (RAIZ / "app" / "connectors" / "gold_master.py")
+    if not conector.exists():
+        pytest.skip("no está el conector canónico")
+    usada = re.findall(r"GOLD_MASTER_v(\d\.\d)", conector.read_text(encoding="utf-8"))
+    if not usada:
+        pytest.skip("el conector no fija versión en su código")
+    assert canon != usada[0], (
+        f"el canon dice v{canon} y el conector ya usa v{usada[0]}: el desfase "
+        f"se cerró — actualizar D-002, dejó de ser deuda")
