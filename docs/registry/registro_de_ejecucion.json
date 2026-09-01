@@ -1,8 +1,43 @@
 {
  "_lease": "testimonio de una corrida de pytest. NO lo produce QUIRA sobre sí misma: lo produce el ejecutor, y QUIRA lo lee. Caduca cuando el archivo de la prueba cambia.",
- "commit": "aa52414",
+ "commit": "e62abb3",
  "arbol_limpio": false,
  "pruebas": {
+  "tests/test_acoplamiento_observable.py::test_ataque_el_grafo_no_decide_si_lo_no_declarado_esta_mal": {
+   "resultado": "passed",
+   "archivo": "tests/test_acoplamiento_observable.py",
+   "archivo_sha256": "41777fc93c7f5ab2"
+  },
+  "tests/test_acoplamiento_observable.py::test_ataque_el_modulo_no_se_cuenta_a_si_mismo": {
+   "resultado": "passed",
+   "archivo": "tests/test_acoplamiento_observable.py",
+   "archivo_sha256": "41777fc93c7f5ab2"
+  },
+  "tests/test_acoplamiento_observable.py::test_ataque_lo_no_resoluble_no_desaparece_del_grafo": {
+   "resultado": "passed",
+   "archivo": "tests/test_acoplamiento_observable.py",
+   "archivo_sha256": "41777fc93c7f5ab2"
+  },
+  "tests/test_acoplamiento_observable.py::test_ataque_un_modo_de_apertura_no_es_un_artefacto": {
+   "resultado": "passed",
+   "archivo": "tests/test_acoplamiento_observable.py",
+   "archivo_sha256": "41777fc93c7f5ab2"
+  },
+  "tests/test_acoplamiento_observable.py::test_el_gate_de_portabilidad_no_cubre_sentinel": {
+   "resultado": "passed",
+   "archivo": "tests/test_acoplamiento_observable.py",
+   "archivo_sha256": "41777fc93c7f5ab2"
+  },
+  "tests/test_acoplamiento_observable.py::test_el_grafo_se_deriva_del_AST_no_del_texto": {
+   "resultado": "passed",
+   "archivo": "tests/test_acoplamiento_observable.py",
+   "archivo_sha256": "41777fc93c7f5ab2"
+  },
+  "tests/test_acoplamiento_observable.py::test_las_rutas_compuestas_se_resuelven": {
+   "resultado": "passed",
+   "archivo": "tests/test_acoplamiento_observable.py",
+   "archivo_sha256": "41777fc93c7f5ab2"
+  },
   "tests/test_arquitectura_derivada.py::test_ADR_039_es_el_unico_posterior_a_la_autoridad_sin_constancia": {
    "resultado": "passed",
    "archivo": "tests/test_arquitectura_derivada.py",
@@ -1558,6 +1593,11 @@
    "archivo": "tests/test_longitudinal_engine.py",
    "archivo_sha256": "fbf6f8fd6c615bb4"
   },
+  "tests/test_meta_integridad.py::test_el_universo_declarado_coincide_con_lo_hallado[acoplamiento.cobertura_de_acoplamiento]": {
+   "resultado": "passed",
+   "archivo": "tests/test_meta_integridad.py",
+   "archivo_sha256": "f424d348fd16df2f"
+  },
   "tests/test_meta_integridad.py::test_el_universo_declarado_coincide_con_lo_hallado[apropiacion.cobertura_de_la_plataforma]": {
    "resultado": "passed",
    "archivo": "tests/test_meta_integridad.py",
@@ -1598,6 +1638,11 @@
    "archivo": "tests/test_meta_integridad.py",
    "archivo_sha256": "f424d348fd16df2f"
   },
+  "tests/test_meta_integridad.py::test_toda_exclusion_declara_motivo_y_autoridad[acoplamiento.cobertura_de_acoplamiento]": {
+   "resultado": "passed",
+   "archivo": "tests/test_meta_integridad.py",
+   "archivo_sha256": "f424d348fd16df2f"
+  },
   "tests/test_meta_integridad.py::test_toda_exclusion_declara_motivo_y_autoridad[apropiacion.cobertura_de_la_plataforma]": {
    "resultado": "passed",
    "archivo": "tests/test_meta_integridad.py",
@@ -1618,6 +1663,11 @@
    "archivo": "tests/test_meta_integridad.py",
    "archivo_sha256": "f424d348fd16df2f"
   },
+  "tests/test_meta_integridad.py::test_todo_inventario_declara_su_universo[acoplamiento.cobertura_de_acoplamiento]": {
+   "resultado": "passed",
+   "archivo": "tests/test_meta_integridad.py",
+   "archivo_sha256": "f424d348fd16df2f"
+  },
   "tests/test_meta_integridad.py::test_todo_inventario_declara_su_universo[apropiacion.cobertura_de_la_plataforma]": {
    "resultado": "passed",
    "archivo": "tests/test_meta_integridad.py",
@@ -1634,6 +1684,11 @@
    "archivo_sha256": "f424d348fd16df2f"
   },
   "tests/test_meta_integridad.py::test_todo_inventario_declara_su_universo[ejecucion.cobertura]": {
+   "resultado": "passed",
+   "archivo": "tests/test_meta_integridad.py",
+   "archivo_sha256": "f424d348fd16df2f"
+  },
+  "tests/test_meta_integridad.py::test_un_universo_exhaustivo_debe_derivarse_no_enumerarse[acoplamiento.cobertura_de_acoplamiento]": {
    "resultado": "passed",
    "archivo": "tests/test_meta_integridad.py",
    "archivo_sha256": "f424d348fd16df2f"
