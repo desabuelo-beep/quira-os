@@ -1,6 +1,6 @@
 {
  "_lease": "testimonio de una corrida de pytest. NO lo produce QUIRA sobre sí misma: lo produce el ejecutor, y QUIRA lo lee. Caduca cuando el archivo de la prueba cambia.",
- "commit": "367d64f",
+ "commit": "f91702a",
  "arbol_limpio": false,
  "pruebas": {
   "tests/test_acoplamiento_observable.py::test_ataque_el_grafo_no_decide_si_lo_no_declarado_esta_mal": {
@@ -2071,37 +2071,42 @@
   "tests/test_recorrido_icpi.py::test_Ei_es_un_literal_sin_definicion_en_el_canon": {
    "resultado": "passed",
    "archivo": "tests/test_recorrido_icpi.py",
-   "archivo_sha256": "98e8c2b54ad23a99"
+   "archivo_sha256": "846ed7fc5f598a80"
   },
   "tests/test_recorrido_icpi.py::test_el_eslabon_Ti_llega_a_un_documento_primario_declarado": {
    "resultado": "passed",
    "archivo": "tests/test_recorrido_icpi.py",
-   "archivo_sha256": "98e8c2b54ad23a99"
+   "archivo_sha256": "846ed7fc5f598a80"
   },
   "tests/test_recorrido_icpi.py::test_el_motor_lee_la_version_que_el_canon_declara": {
    "resultado": "passed",
    "archivo": "tests/test_recorrido_icpi.py",
-   "archivo_sha256": "98e8c2b54ad23a99"
+   "archivo_sha256": "846ed7fc5f598a80"
   },
   "tests/test_recorrido_icpi.py::test_el_parametro_llamado_total_es_el_tamano_de_la_muestra": {
    "resultado": "passed",
    "archivo": "tests/test_recorrido_icpi.py",
-   "archivo_sha256": "98e8c2b54ad23a99"
+   "archivo_sha256": "846ed7fc5f598a80"
   },
   "tests/test_recorrido_icpi.py::test_el_registro_no_pretende_ser_exhaustivo": {
    "resultado": "passed",
    "archivo": "tests/test_recorrido_icpi.py",
-   "archivo_sha256": "98e8c2b54ad23a99"
+   "archivo_sha256": "846ed7fc5f598a80"
   },
   "tests/test_recorrido_icpi.py::test_la_formula_del_ICPI_es_la_declarada": {
    "resultado": "passed",
    "archivo": "tests/test_recorrido_icpi.py",
-   "archivo_sha256": "98e8c2b54ad23a99"
+   "archivo_sha256": "846ed7fc5f598a80"
+  },
+  "tests/test_recorrido_icpi.py::test_la_version_se_resuelve_y_no_se_escribe": {
+   "resultado": "passed",
+   "archivo": "tests/test_recorrido_icpi.py",
+   "archivo_sha256": "846ed7fc5f598a80"
   },
   "tests/test_recorrido_icpi.py::test_toda_deuda_declarada_tiene_su_ataque_localizado": {
    "resultado": "passed",
    "archivo": "tests/test_recorrido_icpi.py",
-   "archivo_sha256": "98e8c2b54ad23a99"
+   "archivo_sha256": "846ed7fc5f598a80"
   },
   "tests/test_reliability_tracker.py::TestBuildReliabilityReport::test_avg_reliability_is_float": {
    "resultado": "passed",

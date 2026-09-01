@@ -38,8 +38,18 @@ except Exception:                                        # noqa: BLE001
     import os as _os
     from pathlib import Path as _P
     _DATOS = _P(_os.environ.get("QUIRA_DATOS", "."))
+def _gold_master_vigente() -> str:
+    """El Gold Master VIGENTE, resuelto por `config` (sufijo `_TGI`,
+    versión más alta). Antes aquí había un literal `v5.5` y por eso este
+    módulo leía una versión que el canon ya había superado — D-002."""
+    try:
+        from config import SIAP_PATH
+        return str(SIAP_PATH)
+    except Exception:                                    # noqa: BLE001
+        return str(_DATOS / "SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx")
 
-_EXCEL = pathlib.Path(str(_DATOS / "SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx"))
+
+_EXCEL = pathlib.Path(_gold_master_vigente())
 _HOJA_IGP = "H20b_IGP_GOBERNANZA_PARTICIPATIVA"
 
 # Componentes del IGP y su dominio real (OBS-015)

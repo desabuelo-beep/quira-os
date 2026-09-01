@@ -43,8 +43,18 @@ except Exception:                                        # noqa: BLE001
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+def _gold_master_vigente() -> str:
+    """El Gold Master VIGENTE, resuelto por `config` (sufijo `_TGI`,
+    versión más alta). Antes aquí había un literal `v5.5` y por eso este
+    módulo leía una versión que el canon ya había superado — D-002."""
+    try:
+        from config import SIAP_PATH
+        return str(SIAP_PATH)
+    except Exception:                                    # noqa: BLE001
+        return str(_DATOS / "SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx")
 
-EXCEL = str(_DATOS / "SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx")
+
+EXCEL = _gold_master_vigente()
 SNAP = os.path.join(os.path.dirname(__file__), "..", "data", "gm_snapshot.json")
 SECRETS = os.path.join(os.path.dirname(__file__), "..", ".streamlit", "secrets.toml")
 

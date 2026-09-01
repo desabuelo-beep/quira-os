@@ -42,8 +42,18 @@ except Exception:                                        # noqa: BLE001
 ROOT = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(ROOT))
 
+def _gold_master_vigente() -> str:
+    """El Gold Master VIGENTE, resuelto por `config` (sufijo `_TGI`,
+    versión más alta). Antes aquí había un literal `v5.5` y por eso este
+    módulo leía una versión que el canon ya había superado — D-002."""
+    try:
+        from config import SIAP_PATH
+        return str(SIAP_PATH)
+    except Exception:                                    # noqa: BLE001
+        return str(_DATOS / "SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx")
+
 GOLD_MASTER_PATH = Path(
-    str(_DATOS / "SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx")
+    _gold_master_vigente()
 )
 
 import toml, streamlit as st

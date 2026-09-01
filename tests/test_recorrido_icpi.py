@@ -170,23 +170,49 @@ def test_el_registro_no_pretende_ser_exhaustivo():
 
 
 def test_el_motor_lee_la_version_que_el_canon_declara():
-    """DEUDA D-002, fijada con trinquete invertido.
+    """D-002 · CERRADA, y la prueba se invirtió — que era la señal acordada.
 
-    BOOT declara `v5.7_TGI`; el código abre `v5.5_TGI`. Hoy las dos versiones
-    coinciden en metas e ICPI —verificado hasta el último decimal—, así que el
-    desfase no cambia ninguna cifra todavía. El día que se alineen, esta prueba
-    fallará y habrá que celebrarlo."""
-    boot = (RAIZ / "governance" / "BOOT.md").read_text(encoding="utf-8", errors="replace")
+    Decía «BOOT declara v5.7 y el código abre v5.5»; ahora exige lo contrario.
+    La raíz estaba en `config.py`, la puerta única a los datos, que fijaba
+    `GOLD_MASTER_VERSION = "v5.5_TGI"` a mano: **once archivos replicaban lo que
+    ella declaraba** mientras `app/connectors/gold_master.py` ya resolvía bien.
+    El sistema tenía dos respuestas a «¿cuál es mi Gold Master?».
+
+    La regla de autoridad la dio Javo —*«debe terminar en TGI para ser tomada
+    por el sistema, y lo que cambia es 5.6, 5.7…»*— y ahora se **resuelve** en un
+    solo lugar: sufijo `_TGI`, se excluyen `_FREEZE`/`_`/`~$`, gana la versión
+    numérica más alta.
+
+    ⚠️ Verificado antes de migrar: las cifras NO se movieron. IPE
+    0.9557408659866722, cobertura 0.96, ICPI 0.27458226534062735 — idénticas en
+    v5.5 y v5.7. La reparación alineó la fuente sin tocar un solo resultado."""
     import re
+
+    import config
+
+    boot = (RAIZ / "governance" / "BOOT.md").read_text(encoding="utf-8", errors="replace")
     m = re.search(r"v(\d\.\d)_TGI", boot)
     assert m, "BOOT dejó de declarar la versión del Gold Master"
-    canon = m.group(1)
-    conector = (RAIZ / "app" / "connectors" / "gold_master.py")
-    if not conector.exists():
-        pytest.skip("no está el conector canónico")
-    usada = re.findall(r"GOLD_MASTER_v(\d\.\d)", conector.read_text(encoding="utf-8"))
-    if not usada:
-        pytest.skip("el conector no fija versión en su código")
-    assert canon != usada[0], (
-        f"el canon dice v{canon} y el conector ya usa v{usada[0]}: el desfase "
-        f"se cerró — actualizar D-002, dejó de ser deuda")
+    assert config.GOLD_MASTER_VERSION == f"v{m.group(1)}_TGI", (
+        f"el canon declara v{m.group(1)}_TGI y config resuelve "
+        f"{config.GOLD_MASTER_VERSION}: el desfase volvió")
+
+
+def test_la_version_se_resuelve_y_no_se_escribe():
+    """El trinquete de D-002. Si alguien vuelve a fijar la versión a mano, el
+    sistema tendrá otra vez dos respuestas a la misma pregunta."""
+    # ⚠️ SE COMPRUEBA LA ASIGNACIÓN, NO EL TEXTO. La primera versión buscaba
+    # el literal `GOLD_MASTER_VERSION = "v5` en todo el archivo y lo encontró
+    # **en el comentario que documenta la reparación**: el texto no es el
+    # código, otra vez. Se mira la línea que asigna de verdad.
+    fuente = (RAIZ / "config.py").read_text(encoding="utf-8")
+    assert "_resolver_gold_master_vigente" in fuente
+    asignaciones = [ln.strip() for ln in fuente.splitlines()
+                    if ln.startswith("GOLD_MASTER_VERSION")]
+    assert asignaciones, "config dejó de exponer GOLD_MASTER_VERSION"
+    assert all("_resolver_gold_master_vigente()" in a for a in asignaciones), (
+        f"la versión volvió a escribirse a mano: {asignaciones}")
+    literales = [f for f in (RAIZ / "scripts").glob("enrich_*.py")
+                 if "GOLD_MASTER_v5.5_TGI.xlsx" in f.read_text(encoding="utf-8")
+                 and "_gold_master_vigente" not in f.read_text(encoding="utf-8")]
+    assert not literales, f"enrichers que volvieron al literal: {literales}"

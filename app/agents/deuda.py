@@ -62,6 +62,8 @@ _DEUDAS = (
                "ponderadores suman 1.0000 sobre esas 25. Es el ALCANCE lo que "
                "no corresponde al nombre"),
     dict(id="D-002", gravedad=DESFASA, capa="C1", dueño="Javo",
+         estado="RESUELTA 2026-09-01 · config resuelve por sufijo _TGI y "
+                "9 módulos migrados; cifras verificadas idénticas antes de migrar",
          que="BOOT declara `v5.7_TGI` y el código abre `v5.5_TGI` en 24 sitios. "
              "Las dos versiones coinciden hoy en metas e ICPI, así que el "
              "desfase no cambia ninguna cifra — todavía.",

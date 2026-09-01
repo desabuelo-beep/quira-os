@@ -45,9 +45,48 @@ IS_CLOUD = not DATOS_DIR.exists()
 # ── PATHS EXCEL (solo relevante en desarrollo local) ──────────────────────────
 BASE_EXCEL = str(DATOS_DIR)
 
-# Gold Master canónico (v5.5 — bautizado 2026-05-26) — fuente de verdad absoluta
-GOLD_MASTER_VERSION = "v5.5_TGI"
-SIAP_PATH = os.path.join(BASE_EXCEL, "SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx")
+# ── GOLD MASTER VIGENTE · SE RESUELVE, NO SE ESCRIBE ──────────────────────────
+# Aquí estaba la raíz de D-002 (2026-09-01). Esta puerta fijaba
+# `GOLD_MASTER_VERSION = "v5.5_TGI"` a mano, y **once archivos replicaban lo que
+# ella declaraba** — enrichers, motores y pipeline—, mientras BOOT declaraba
+# v5.7 y `app/connectors/gold_master.py` ya resolvía correctamente por patrón.
+# El sistema tenía dos respuestas a «¿cuál es mi Gold Master?» y la mayoría del
+# código leía la equivocada.
+#
+# LA REGLA DE AUTORIDAD, declarada por Javo (2026-09-01):
+#
+#   > *«debe terminar en TGI para ser tomada por el sistema, y lo que cambia es
+#   > 5.6, 5.7, etc. La versión final aprobada es v5.7_TGI.»*
+#
+# Es decir: **el sufijo `_TGI` marca el slot vivo y el número ordena**. Eso es
+# derivable sin intervención humana, que era la pregunta del colega —*«¿puede
+# QUIRA demostrar cuál Gold Master es la autoridad vigente y por qué?»*—. Ahora
+# sí, y en un solo lugar: duplicar la regla habría reproducido el defecto que la
+# creó.
+def _resolver_gold_master_vigente() -> "tuple[str, str]":
+    """`(version, ruta)` del Gold Master vigente. Devuelve el histórico si no
+    hay ninguno resoluble — y entonces el sistema sigue funcionando con lo que
+    siempre usó, en vez de quedarse sin motor."""
+    import re
+    historico = ("v5.5_TGI", os.path.join(BASE_EXCEL,
+                                          "SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx"))
+    if not DATOS_DIR.is_dir():
+        return historico
+    validos = []
+    for f in DATOS_DIR.glob("SIAP-ICPI_GOLD_MASTER_v*_TGI.xlsx"):
+        # Un respaldo jamás debe volverse canónico por accidente.
+        if f.name.startswith(("_", "~$")) or "_FREEZE" in f.name.upper():
+            continue
+        m = re.search(r"_v(\d+)\.(\d+)_TGI", f.name)
+        if m:
+            validos.append(((int(m.group(1)), int(m.group(2))), f))
+    if not validos:
+        return historico
+    mayor, ruta = max(validos, key=lambda x: x[0])
+    return f"v{mayor[0]}.{mayor[1]}_TGI", str(ruta)
+
+
+GOLD_MASTER_VERSION, SIAP_PATH = _resolver_gold_master_vigente()
 GOLD_MASTER_PATH = SIAP_PATH  # alias explícito para gold_master_governance.py
 
 # Fallback por nombre con fecha (copia de trabajo previa — 2026-05-18)
