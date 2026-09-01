@@ -178,3 +178,30 @@ def test_ningun_artefacto_declara_bajo_que_version_de_identidad_se_produjo():
         f"actualizar el hallazgo, esto dejó de ser una carencia")
     assert len(D.identidades_del_sujeto()) >= 2, (
         "sin al menos dos identidades observadas, la propiedad no es medible aquí")
+
+
+# ── C3 CONSOLIDADA · los cuatro estados, juntos ──────────────────────────────
+def test_el_estado_de_la_capa_3_es_el_demostrado():
+    """LA CONSOLIDACIÓN, tal como el colega la fijó — y ninguno de los cuatro
+    estados es automáticamente un «defecto»:
+
+        A  BIN → índice → origen     procedencia_resuelta   422/422
+        B  JSON ilegible             ilegible               1
+        C  identidad temporal        no versionada          demostrado
+        D  resto del universo        NO medido              declarado
+
+    Esa disciplina —no convertir un estado en acusación— es lo que hizo que esta
+    capa produjera más evidencia y menos falsos positivos que ninguna otra."""
+    c = D.cobertura_de_datos()
+    cadena = D.cadena_de_captura()
+
+    # A · resuelta y completa
+    assert cadena["estado"] == D.RESUELTA and cadena["correspondencia"] == 422
+    # B · exactamente un ilegible, y no se llama «corrupto»
+    assert c["por_estado"].get(D.ILEGIBLE, 0) == 1
+    # C · identidades en sucesión, sin versión declarada en el artefacto
+    assert len(c["identidades_del_sujeto"]) >= 2
+    assert not c["identidades_que_conviven"]
+    # D · el límite sigue declarado, no disimulado
+    limites = " ".join(c["universo"]["fuera_de_alcance"]).lower()
+    assert "csv" in limites and "no está medida" in limites

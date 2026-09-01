@@ -255,3 +255,33 @@ def test_un_gate_no_puede_acreditar_su_propia_cobertura():
     assert "#" not in contexto_previo.split("\n")[-2], (
         "AMBITOS ya declara motivo: entonces la exclusión es deliberada y el "
         "hallazgo pasa de «indeterminable» a «decidido»")
+
+
+# ── UN LÍMITE DECLARADO TAMBIÉN DEBE RESPETARSE AL INTERPRETAR ───────────────
+def test_un_instrumento_no_deja_leer_su_silencio_como_ausencia():
+    """LA SEGUNDA REGLA DE C0, y es distinta de la primera (colega, 2026-08-31):
+
+    > *«Un límite declarado por el instrumento también debe respetarse al
+    > interpretar sus resultados. […] El universo puede estar correctamente
+    > declarado y aun así el analista puede interpretar como exhaustivo algo que
+    > el propio instrumento reconoce que no puede resolver.»*
+
+    En la primera regla el universo estaba **mal declarado**. Aquí estaba
+    **bien** declarado —«501 de 597 rutas no se resuelven»— y el analista lo
+    ignoró al leer: concluyó que 422 binarios no tenían registro cuando su
+    productor componía la ruta. Ningún inventario había fallado; falló la
+    lectura.
+
+    Por eso el guardián no vive en la prosa del docstring, donde nadie lo
+    consulta: **el instrumento se niega a sostener una ausencia** mientras le
+    queden rutas sin resolver."""
+    from app.agents import acoplamiento as K
+
+    r = K.puede_afirmarse_ausencia("lotaip/artefactos")
+    assert r["veredicto"] == K.NO_DETERMINABLE, (
+        "el grafo volvió a sostener una ausencia que no puede demostrar")
+    assert r["por_que"] and r["donde_mirar"], (
+        "una negativa sin decir dónde mirar no es accionable")
+
+    # Y sigue pudiendo afirmar lo positivo: un uso observado es un uso observado.
+    assert K.puede_afirmarse_ausencia("data/gm_snapshot.json")["veredicto"] == "usado"

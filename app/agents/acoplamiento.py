@@ -304,3 +304,39 @@ def _afirmar(g, arts, no_declarados, sin_resolver) -> str:
         f"deuda, arquitectura antigua o falso positivo, y decidirlo exige "
         f"gobernanza, no análisis."
     )
+
+
+def puede_afirmarse_ausencia(artefacto: str) -> dict:
+    """¿Puede este grafo sostener que **nadie** toca un artefacto?
+
+    NACIÓ DE UN ERROR DEL ANALISTA, NO DEL INSTRUMENTO (2026-08-31). El grafo
+    declaraba honestamente su límite —«501 de 597 rutas no se resuelven
+    estáticamente»— y aun así se interpretó un «no lo encuentro» como «nadie lo
+    usa»: se concluyó que 422 binarios estaban sin registro cuando su productor
+    componía la ruta (`CACHE = RAIZ / "data" / "lotaip" / "artefactos"`).
+
+    > **Un límite declarado por el instrumento también debe respetarse al
+    > interpretar sus resultados.**
+
+    Es una regla distinta de la anterior. Allí el universo estaba mal declarado;
+    aquí estaba **bien** declarado y el analista lo ignoró al leer. Por eso el
+    guardián no vive en la prosa: mientras queden rutas sin resolver, este
+    método **se niega** a sostener una ausencia."""
+    g = grafo()
+    sin_resolver = [a for a in g if not a["resuelto"]]
+    tocado_por = sorted({a["desde"] for a in g
+                         if a["resuelto"] and artefacto in a["hacia"]})
+    if tocado_por:
+        return {"artefacto": artefacto, "veredicto": "usado",
+                "tocado_por": tocado_por}
+    if sin_resolver:
+        return {
+            "artefacto": artefacto,
+            "veredicto": NO_DETERMINABLE,
+            "por_que": f"{len(sin_resolver)} operaciones construyen su ruta de "
+                       f"forma no resoluble: este grafo NO puede sostener que "
+                       f"nadie lo toque",
+            "donde_mirar": sorted({a["desde"] for a in sin_resolver})[:8],
+        }
+    return {"artefacto": artefacto, "veredicto": "no_usado",
+            "por_que": "todas las rutas del repositorio se resolvieron"}
