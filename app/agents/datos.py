@@ -292,6 +292,20 @@ def raiz_de_evidencia_primaria() -> Path | None:
         return None
 
 
+def _es_artefacto_del_sistema(f: Path) -> bool:
+    """¿Es un artefacto del sistema de archivos y no un documento?
+
+    Se decide por **atributos del archivo**, no por su nombre: OCULTO y SISTEMA
+    a la vez. Donde el SO no expone atributos —Linux, macOS— cae al último
+    recurso de los nombres conocidos, y eso queda declarado como límite en vez
+    de fingir que la clasificación es universal."""
+    st = f.stat()
+    attr = getattr(st, "st_file_attributes", None)
+    if attr is not None:
+        return bool(attr & 0x2) and bool(attr & 0x4)     # HIDDEN ∧ SYSTEM
+    return f.name.lower() in ("desktop.ini", "thumbs.db", ".ds_store")
+
+
 def evidencia_primaria() -> dict:
     """Cuántos documentos oficiales puede señalar el sistema — y cuántos no sabe.
 
@@ -306,11 +320,17 @@ def evidencia_primaria() -> dict:
     if H is None:
         return {"estado": "no_determinable",
                 "por_que": "no se alcanza la raíz de evidencia primaria desde config"}
-    # ⚠️ RUIDO DEL SISTEMA DE ARCHIVOS, excluido con motivo. `desktop.ini` no es
-    # un documento oficial del GAD: contarlo infla el universo con basura de
-    # Windows y ensucia cualquier porcentaje que se derive de él.
-    docs = [f for f in H.rglob("*")
-            if f.is_file() and f.name.lower() not in ("desktop.ini", "thumbs.db")]
+    # ⚠️ SE EXCLUYE POR CLASIFICACIÓN, NO POR LISTA DE NOMBRES (colega,
+    # 2026-09-01): *«si haces `if name == "desktop.ini": exclude`, volverías a
+    # crear el mismo problema metodológico que ya has encontrado varias veces»*.
+    #
+    # La propiedad que los identifica es del sistema de archivos —atributo
+    # OCULTO **y** SISTEMA—, no su nombre. Verificado: los 9 archivos con esos
+    # atributos son exactamente los 9 `desktop.ini`, y un archivo de sistema
+    # futuro con otro nombre quedaría capturado igual.
+    fisicos = [f for f in H.rglob("*") if f.is_file()]
+    excluidos = [f for f in fisicos if _es_artefacto_del_sistema(f)]
+    docs = [f for f in fisicos if f not in set(excluidos)]
     nombres = {f.name for f in docs}
     citados: set[str] = set()
     quien: dict[str, int] = {}
@@ -332,10 +352,21 @@ def evidencia_primaria() -> dict:
         # — la métrica contaba **nombres únicos** (240, porque 18 se repiten en
         # varias carpetas) y no lo decía. Una cifra sin unidad declarada no es
         # comparable con nada, ni siquiera consigo misma.
-        "unidad": "nombres de archivo únicos; un mismo nombre en dos carpetas "
-                  "cuenta una vez",
+        # TRES UNIDADES SEPARADAS, cada una con su nombre. Restar entre ellas
+        # produce números que parecen correctos y no significan nada.
+        "archivos_fisicos": len(fisicos),
+        "excluidos_por_clasificacion": [
+            {"archivo": f.name, "carpeta": f.parent.name,
+             "clase": "artefacto_del_sistema_de_archivos",
+             "motivo": "atributo OCULTO+SISTEMA: configuración de carpeta del "
+                       "SO, no evidencia primaria del GAD"}
+            for f in excluidos],
         "documentos": len(docs),
         "nombres_unicos": len(nombres),
+        # Numerador y denominador en la MISMA unidad: nombres.
+        "unidad_de_trazabilidad": "nombres de archivo únicos",
+        "nombres_con_trazabilidad": len(citados),
+        "nombres_no_determinables": len(nombres) - len(citados),
         "citados_por_artefactos": len(citados),
         "no_determinables": len(nombres) - len(citados),
         "quien_los_cita": dict(sorted(quien.items(), key=lambda x: -x[1])[:8]),

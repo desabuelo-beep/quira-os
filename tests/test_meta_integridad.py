@@ -285,3 +285,54 @@ def test_un_instrumento_no_deja_leer_su_silencio_como_ausencia():
 
     # Y sigue pudiendo afirmar lo positivo: un uso observado es un uso observado.
     assert K.puede_afirmarse_ausencia("data/gm_snapshot.json")["veredicto"] == "usado"
+
+
+# ── TERCERA REGLA · UNIDAD ───────────────────────────────────────────────────
+def test_una_metrica_no_combina_unidades_distintas():
+    """LA TERCERA REGLA DE C0 (colega, 2026-09-01), que completa la familia:
+
+        1 · ALCANCE          no afirmar sobre lo que no fue incluido
+        2 · DETERMINABILIDAD no convertir un límite del instrumento en ausencia
+        3 · UNIDAD           no combinar numerador y denominador de unidades
+                             distintas
+
+    Nació de un número mío. Reporté «204 documentos sin trazabilidad»: la resta
+    era **correcta dentro de una unidad que nunca declaré** —240 nombres únicos
+    menos 36—, y presentarla como documentos la volvía falsa. Sustituirla por
+    222 (258 − 36) habría sido igual de incorrecto: mezcla archivos con nombres.
+
+    Ahora los tres contadores viven separados y sólo se restan los homogéneos."""
+    from app.agents import datos as D
+
+    e = D.evidencia_primaria()
+    if e.get("estado") == "no_determinable":
+        import pytest
+        pytest.skip(e["por_que"])
+    assert e["unidad_de_trazabilidad"] == "nombres de archivo únicos"
+    assert (e["nombres_con_trazabilidad"] + e["nombres_no_determinables"]
+            == e["nombres_unicos"]), "la resta cruza unidades"
+    assert e["archivos_fisicos"] >= e["documentos"] >= e["nombres_unicos"], (
+        "los tres contadores dejaron de ser consistentes entre sí")
+    assert (e["archivos_fisicos"] - len(e["excluidos_por_clasificacion"])
+            == e["documentos"]), "los excluidos no explican la diferencia"
+
+
+def test_lo_excluido_se_clasifica_no_se_enumera():
+    """*«La prueba debe comprobar la clasificación, no simplemente una lista de
+    nombres prohibidos»* — colega. Un `if name == "desktop.ini"` sería la misma
+    lista escrita a mano que esta sesión lleva diez casos desmontando.
+
+    Se excluye por **atributo del sistema de archivos** (OCULTO ∧ SISTEMA), que
+    es una propiedad del objeto y no de su nombre. Verificado: identifica
+    exactamente los mismos 9, y capturaría uno futuro con otro nombre."""
+    from app.agents import datos as D
+
+    fuente = (RAIZ / "app" / "agents" / "datos.py").read_text(encoding="utf-8")
+    assert "st_file_attributes" in fuente, (
+        "la exclusión volvió a decidirse por el nombre del archivo")
+    e = D.evidencia_primaria()
+    if e.get("estado") == "no_determinable":
+        import pytest
+        pytest.skip(e["por_que"])
+    for x in e["excluidos_por_clasificacion"]:
+        assert x["clase"] and x["motivo"], f"exclusión sin clasificar: {x}"

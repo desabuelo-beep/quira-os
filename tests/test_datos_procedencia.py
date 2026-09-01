@@ -272,8 +272,10 @@ def test_la_metrica_declara_su_unidad_y_excluye_el_ruido():
     if e.get("estado") == "no_determinable":
         import pytest
         pytest.skip(e["por_que"])
-    assert e["unidad"], "la métrica no declara en qué unidad cuenta"
-    assert "nombres" in e["unidad"]
+    # El campo se llamaba `unidad` y pasó a `unidad_de_trazabilidad` al separar
+    # los tres contadores: esta prueba lo detectó, que es lo que debía hacer.
+    assert e["unidad_de_trazabilidad"], "la métrica no declara en qué unidad cuenta"
+    assert "nombres" in e["unidad_de_trazabilidad"]
     assert e["nombres_unicos"] <= e["documentos"], (
         "más nombres únicos que documentos: la unidad se rompió")
     assert e["citados_por_artefactos"] + e["no_determinables"] == e["nombres_unicos"], (
