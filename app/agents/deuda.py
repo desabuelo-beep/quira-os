@@ -158,6 +158,12 @@ _DEUDAS = (
                "desconocido. Primero correr cada gate a mano, después enganchar "
                "el que ya esté verde"),
     dict(id="D-008", gravedad=CIEGA, capa="C2/C6", dueño="Javo",
+         medicion="39 archivos detectados por el barrido → clasificación → 9 en "
+                  "`app/viz/` excluidos CON motivo escrito · 3 en `_deprecated` "
+                  "· 1 con los verdes oficiales de la ONU (`p11_ods`) · **25 "
+                  "páginas vivas y ruteadas** que requieren curación. Las cifras "
+                  "NO son intercambiables: decir «D-008 = 39 páginas» fabricaría "
+                  "una precisión que la medición no sostiene (aviso del colega)",
          que="`check_sistema_visual` vigila 5 ambientes + `umi.py` y ahí no hay "
              "verde. Pero esos ambientes ENRUTAN a 25 páginas vivas que sí lo "
              "usan —`p_ejecutivo`, `p_command_center`, `p_concejo`, `m_rdc`…—. "
@@ -173,6 +179,24 @@ _DEUDAS = (
                "verdes oficiales de Naciones Unidas, que son identidad ajena y "
                "no un juicio de «bien». Cada uno de los 25 exige decidir QUÉ "
                "dice ese verde, y eso es curación de dominio, no un barrido"),
+    dict(id="D-009", gravedad=FALSEA, capa="C6", dueño="Javo",
+         que="El patrón que el colega nombró tras el «48,33 %»: **derivado "
+             "narrativo desacoplado de la fuente canónica**. Medido para saber "
+             "si fue aislado — no lo fue: **23 cifras de dominio escritas dentro "
+             "de texto publicado, en 11 superficies vivas**. «Salud "
+             "presupuestaria 14.58% bajo umbral COOTAD 65%», «Participación "
+             "27.98%», «Cobertura agua 34.9% → 65% al 2027», «Fidelidad 72.73%: "
+             "48/66 promesas CNE». Ninguna declara su fuente, y el 48,33 "
+             "demostró qué pasa entonces: la cifra no se entera de que su fuente "
+             "cambió, y sigue publicándose 22 días.",
+         ataque="test_las_cifras_de_dominio_en_texto_publicado_estan_contadas",
+         no_es="23 cifras falsas. NO se afirma que ninguna esté mal: se afirma "
+               "que ninguna puede saberlo. Cada una exige determinar si es dato "
+               "vivo, referencia histórica legítima o resto de la maqueta —y esa "
+               "distinción es curación de dominio, no un reemplazo masivo. "
+               "Tampoco cubre CSS ni cifras enteras (100%, 65%): el barrido se "
+               "limitó a decimales dentro de prosa de dominio para no inflar el "
+               "hallazgo con falsos positivos"),
 )
 
 

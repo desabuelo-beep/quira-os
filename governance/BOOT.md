@@ -30,15 +30,15 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 
 🧭 **031** MCIP=5 motores · **035/037** IA propone/humano valida · **038** BRN **traza, no alimenta**.
 ✅ **PCD: d01·d02·d03·d06·d09** · d08 ENTRABLE · **d07 en curación**.
 🩹 **12 gates + suite EN CI** · exit **2 = no determinable** · deudas → `deuda.py`
+📚 **doctrina con verificador → `doctrina.py`** · lo que sale de AHORA no se pierde: **cambia de custodio**. Sin verificador, se queda aquí.
 📑 ⛔ `.docx` gana al `.pdf`.
 ⚖️ **CANON**: ⛔ DOM **consume RO, NO lee la ley** · estado derivado → `canon.py` (consúltalo, NO lo escribas) · ⛔ **d01·d03·d09: RO NO cargada** (d07·d02 sí) · **VIII propuesta → d08 mide, NO dictamina** (D-6).
 📡 **SITA 2025 0,4448** · **0 actas** · num.6 sin ingresos.
 🧪 **§6-bis**: falta evidencia→**degrada** · identidad contradictoria→**BLOQUEA** · el SHA prueba el archivo, NO la atribución (esc.4/7 lo cierran).
-🚦 **8 ESTADOS**: «no existe»≠«no pude obtener»≠«falló».
 🎨 **049/050**: la gráfica no sabe más que el motor · CANTERA hereda capacidades, NO productos.
 🔧 **v5.7_TGI** · promover = **recalcular y GUARDAR**.
 📋 **Metas 66/cablea 25** (D-001) · PDOT **≥2025**.
-🔭 **042** (`env_obs`≠`env_ops`) · **MATRIZ_CANONICA, NO el GM**.
+🔭 **MATRIZ_CANONICA, NO el GM**.
 🤖 **051 §12**: 5 dim. (capacidad·**sujeto**·ejecución·evidencia·validación) · sin sujeto NO hay afirmación.
 🔌 **ÚNICA puerta**: `reglas.py`→norma (gate **REGLAS**) · `config.DATOS_DIR`→datos: **3 en sentinel**, gate deriva universo.
 🔐 **PANEL ACCESOS**: bitácora 2 meses sin leerse · alerta por concentración.
@@ -47,8 +47,8 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 
 🧬 **§6-sexies**: **segmento ≠ condición ≠ exigencia** · *etiqueta incorrecta = número falso*.
 ➡️ **SIGUIENTE**: Capa 2 a los 24 numerales (⏸ valid. jurídica de 105) · luego los 636.
 🧾 **SCORING vs Instr.**: SITA·CTA·ETA·RP ✅ · **CI mal** (Anexo 1: 1×1). ⛔ NO tocar SITA.
-🧷 **PROCEDENCIA**: nace en el GENERADOR sin reloj (⛔ estamparla luego re-ejecuta la cadena) · **POR AFIRMACIÓN, no por dominio** (d09).
-🚧 **TEST ≠ OPERACIÓN**: `conftest` corta subprocess/red · efecto real y **evidencia ausente se DECLARAN**.
+🧷 **PROCEDENCIA POR AFIRMACIÓN**, no por dominio (d09).
+🚧 **evidencia ausente se DECLARA** (skip ≠ aprobado).
 🧱 **053**: DOM = **agente gobernado** · d01·d02·d03·d09 migrados+atacados · **consulta d01↔d02 VIVA**: evidencia, NUNCA verdad.
 🪜 **ESCALERA 4-7**: evidencia↔artefacto · se LEE a quien ejecutó (⛔ no ejecutar), **CADUCA** · **lo leído ≠ la fuente**: el derivado señala origen.
 ⛔ **ENRICHER SIN FUENTE ABORTA**: vacío vuelve «no accedí» en «no hubo».
