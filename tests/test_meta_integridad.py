@@ -386,6 +386,75 @@ def test_el_circuito_ejecuta_los_gates_y_la_suite():
             f"eso, un verde acreditaría también lo que nunca miró")
 
 
+def test_el_gate_de_sintaxis_compila_contra_la_version_de_CI():
+    """EL PRIMER CI REAL LO ENCONTRÓ, y por eso valía la pena mirarlo.
+
+    Tras enganchar los gates (D-007), el primer run falló con tres
+    `SyntaxError` que en local NO existían: `views/login_view.py`,
+    `quira_pages/p_gestion.py` y `quira_pages/p_alertas.py` usaban un backslash
+    dentro de la expresión de una f-string. PEP 701 lo admite desde 3.12; el
+    runner corre 3.11 y lo rechaza.
+
+        local (3.13)  →  verde · 480 archivos, 0 con error
+        CI    (3.11)  →  rojo  · 3 con error, y una es la pantalla de acceso
+
+    El gate no mentía: decía la verdad sobre el intérprete que lo ejecutaba. Y
+    esa verdad no era la que importaba — es la misma lección de D-004 en otra
+    dimensión: **el universo estaba bien, la referencia no**.
+
+    La versión de destino se DERIVA del workflow, no se copia aquí: copiarla
+    sería otra cifra escrita a mano esperando a quedarse atrás (D-009)."""
+    from importlib import util as _util
+
+    ruta = RAIZ / "scripts" / "ci" / "check_health.py"
+    spec = _util.spec_from_file_location("_check_health", ruta)
+    mod = _util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+
+    destino = mod._version_de_ci()
+    assert destino is not None, (
+        "el gate ya no puede leer la versión de CI del workflow: volvería a "
+        "compilar contra el intérprete local y a dar verdes que CI no comparte")
+
+    wf = (RAIZ / ".github" / "workflows" / "quira-health.yml").read_text(encoding="utf-8")
+    assert f'"{destino[0]}.{destino[1]}"' in wf, "la versión no salió del workflow"
+
+    fuente = ruta.read_text(encoding="utf-8")
+    assert "_feature_version" in fuente, (
+        "el gate volvió a compilar con la versión del intérprete que lo corre")
+    assert "NO acredita el runtime de CI" in fuente, (
+        "si `_feature_version` no está disponible, el gate debe DECIR que se "
+        "degradó: un chequeo degradado en silencio es peor que uno ausente")
+
+
+def test_todo_el_codigo_rastreado_compila_en_la_version_de_CI():
+    """El estado, con trinquete. Los tres se repararon sacando el HTML fuera de
+    la f-string —comillas simples, que HTML acepta— y el barrido completo dio
+    cero: eran los únicos en 480 archivos."""
+    # ⚠️ SIN `git ls-files`, y no por comodidad: la frontera de efectos detuvo
+    # la primera versión de esta prueba por lanzar un subproceso (conftest ·
+    # deuda 4-ter). El universo se deriva con las MISMAS exclusiones que usa
+    # `check_health`, para que la prueba y el gate midan lo mismo.
+    _FUERA = {".venv", "venv", "node_modules", "__pycache__", "historico", "worktrees"}
+    archivos = [p for p in RAIZ.rglob("*.py") if not (set(p.parts) & _FUERA)]
+    assert len(archivos) > 400, "el universo de archivos se derivó mal"
+
+    rotos = []
+    for p in archivos:
+        r = p.relative_to(RAIZ).as_posix()
+        try:
+            compile(p.read_text(encoding="utf-8", errors="replace"), r, "exec",
+                    _feature_version=11)
+        except SyntaxError as e:
+            rotos.append(f"{r}:{e.lineno} — {e.msg}")
+        except TypeError:
+            pytest.skip("este intérprete no admite `_feature_version`: la "
+                        "comprobación no es posible aquí, y NO es un aprobado")
+    assert not rotos, (
+        "código que no compila en la versión de CI —el local, más nuevo, no lo "
+        "ve—: " + " · ".join(rotos))
+
+
 def test_ataque_el_gate_visual_vigila_la_puerta_no_las_habitaciones():
     """D-008 · LA REINCIDENCIA, y es lo que la hace grave.
 

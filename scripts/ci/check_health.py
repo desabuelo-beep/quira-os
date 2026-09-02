@@ -156,23 +156,78 @@ def check_no_secrets() -> list[str]:
     return errors
 
 
+def _version_de_ci() -> tuple[int, int] | None:
+    """La versión de Python que CI usa, LEÍDA del workflow — no copiada aquí.
+
+    Si se escribiera a mano, sería una copia que se queda atrás en cuanto el
+    workflow cambie: el patrón que produjo el «48,33 %». Se deriva."""
+    wf = ROOT / ".github" / "workflows" / "quira-health.yml"
+    if not wf.exists():
+        return None
+    m = re.search(r'python-version:\s*"?(\d+)\.(\d+)"?',
+                  wf.read_text(encoding="utf-8", errors="replace"))
+    return (int(m.group(1)), int(m.group(2))) if m else None
+
+
 def check_python_syntax() -> list[str]:
-    import py_compile
+    """Compila con la versión de CI, no con la del intérprete que corre.
+
+    ⚠️ NACIÓ DE UN FALLO REAL (2026-09-02). El primer CI tras enganchar los
+    gates falló con tres `SyntaxError` que en local NO existían: `login_view`,
+    `p_gestion` y `p_alertas` usaban un backslash dentro de la expresión de una
+    f-string. PEP 701 lo permite desde 3.12; el runner usa 3.11 y lo rechaza.
+
+        local (3.13)  →  verde
+        CI    (3.11)  →  rojo, y una de las tres es la pantalla de acceso
+
+    El gate decía la verdad sobre el Python que lo ejecutaba, y esa verdad no
+    era la que importaba. `compile(..., _feature_version=N)` permite comprobar
+    la versión de destino desde cualquier intérprete moderno.
+
+    Si `_feature_version` no está disponible —es API privada de CPython— NO se
+    finge la comprobación: se cae a la versión del intérprete y se DICE, porque
+    un chequeo degradado en silencio es peor que uno ausente."""
     errors = []
+    destino = _version_de_ci()
     print("\n[3/4] Sintaxis Python")
+
+    modo = f"contra Python {destino[0]}.{destino[1]} (el de CI)" if destino else \
+           f"contra {sys.version_info.major}.{sys.version_info.minor} (local)"
     py_files = [
         p for p in ROOT.rglob("*.py")
         if not (set(p.parts) & {".venv", "venv", "node_modules", "__pycache__", "historico"})
     ]
     bad = 0
+    degradado = False
     for p in py_files:
         try:
-            py_compile.compile(str(p), doraise=True)
-        except py_compile.PyCompileError as e:
-            errors.append(f"Error de sintaxis: {p.relative_to(ROOT)} — {e.msg}")
+            src = p.read_text(encoding="utf-8", errors="replace")
+        except Exception:                                    # noqa: BLE001
+            continue
+        try:
+            if destino:
+                compile(src, str(p), "exec", _feature_version=destino[1])
+            else:
+                compile(src, str(p), "exec")
+        except TypeError:            # `_feature_version` no existe en este intérprete
+            degradado = True
+            destino = None
+            try:
+                compile(src, str(p), "exec")
+            except SyntaxError as e:
+                errors.append(f"Error de sintaxis: {p.relative_to(ROOT)} — {e.msg} (L{e.lineno})")
+                print(f"   >> {p.relative_to(ROOT)}")
+                bad += 1
+        except SyntaxError as e:
+            errors.append(f"Error de sintaxis: {p.relative_to(ROOT)} — {e.msg} (L{e.lineno})")
             print(f"   >> {p.relative_to(ROOT)}")
             bad += 1
-    print(f"   {'OK' if bad == 0 else '>>'} — {len(py_files)} archivos, {bad} con error")
+
+    if degradado:
+        print("   [--] no se pudo fijar la versión de destino: se comprobó contra "
+              "el intérprete local, y eso NO acredita el runtime de CI")
+    print(f"   {'OK' if bad == 0 else '>>'} — {len(py_files)} archivos, {bad} con "
+          f"error · {modo}")
     return errors
 
 

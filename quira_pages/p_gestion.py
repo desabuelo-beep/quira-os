@@ -254,14 +254,23 @@ def _tab_timeline() -> None:
         border  = "2px solid #1A4A8C" if is_last else "1px solid #DCE3F0"
         bg      = "#F0F4FF" if is_last else "#FAFBFF"
 
+        _bloque_arrow = ("<div style='font-size:0.83rem;color:#555;"
+                         "margin-top:2px'>" + arrow + "</div>") if arrow else ""
+        _bloque_nota = ("<div style='font-size:0.82rem;color:#777;"
+                        "font-style:italic;margin-top:4px'>› "
+                        + nota + "</div>") if nota else ""
         st.markdown(
             f"<div style='border-left:{border};padding:8px 16px;margin-bottom:6px;"
             f"background:{bg};border-radius:0 6px 6px 0'>"
             f"<div style='font-size:0.78rem;color:#888;margin-bottom:2px'>"
             f"📅 {ts} &nbsp;·&nbsp; {nivel_lbl or actor}</div>"
             f"<div style='font-weight:700;color:#1A4A8C;font-size:0.92rem'>{evento}</div>"
-            f"{'<div style=\"font-size:0.83rem;color:#555;margin-top:2px\">' + arrow + '</div>' if arrow else ''}"
-            f"{'<div style=\"font-size:0.82rem;color:#777;font-style:italic;margin-top:4px\">› ' + nota + '</div>' if nota else ''}"
+            # ⚠️ El HTML se arma FUERA de la f-string. Python ≤3.11 prohíbe el
+            # backslash dentro de la expresión (PEP 701 lo admite desde 3.12), y
+            # el CI corre 3.11: aquí no compilaba, mientras el local con 3.13
+            # decía que sí.
+            f"{_bloque_arrow}"
+            f"{_bloque_nota}"
             f"</div>",
             unsafe_allow_html=True,
         )

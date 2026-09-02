@@ -959,7 +959,11 @@ def ecosistema() -> str:
     filas = "".join(
         f'<div class="q-prod" style="--pc:{col}">'
         f'<div class="q-prod-h"><span class="q-prod-n">{n}</span>'
-        f'{f"<span class=\"q-prod-e activo\">{e}</span>" if e else ""}</div>'
+        # ⚠️ COMILLAS SIMPLES EN EL HTML, NO ESCAPADAS. Python ≤3.11 prohíbe el
+        # backslash dentro de la expresión de una f-string (PEP 701 lo permite
+        # desde 3.12). El CI corre 3.11 y este archivo no compilaba allí — el
+        # local, con 3.13, decía que sí. HTML acepta ambas comillas.
+        f'''{f"<span class='q-prod-e activo'>{e}</span>" if e else ""}</div>'''
         f'<div class="q-prod-r">{r}</div><div class="q-prod-d">{d}</div></div>'
         for n, r, d, e, col in _PRODUCTOS)
     # «Una superficie, varios destinatarios» dejaba a QUIRA a la altura del

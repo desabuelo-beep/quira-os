@@ -330,7 +330,14 @@ def _build_html(
         _chip("Críticas", data["n_error"], ERROR)
         + _chip("Advertencias", data["n_warning"], WARNING)
     )
-    summary = f'<div class="alert-summary">{chips or "<span style=\"color:var(--green);font-size:13px;font-weight:700\">Sin alertas activas</span>"}</div>'
+    # ⚠️ El fallback sale de la f-string: Python ≤3.11 no admite backslash en la
+    # expresión, y el CI corre 3.11. Nota para D-008: este texto usa
+    # `var(--green)` —verde de «bien»— y esta página está fuera del universo del
+    # gate visual. NO se cambia aquí: el color es decisión de curación, no de
+    # compatibilidad, y mezclarlas escondería una en la otra.
+    _sin_alertas = ('<span style="color:var(--green);font-size:13px;'
+                    'font-weight:700">Sin alertas activas</span>')
+    summary = f'<div class="alert-summary">{chips or _sin_alertas}</div>'
 
     # Empty state
     if not alerts:
