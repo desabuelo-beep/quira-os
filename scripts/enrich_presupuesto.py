@@ -59,6 +59,55 @@ def _num(v):
         return None
 
 
+
+def _umbral_de_la_regla() -> dict:
+    """El umbral COOTAD, **leído del puente BRN verificable** — no copiado.
+
+    D-005 era: `65` escrito aquí mientras `RO-IV-001` declara 65 hasta
+    2026-12-31 y **70 desde 2027-01-01**. Hoy coincidían; el 1 de enero de 2027
+    dejarían de coincidir y nada avisaría.
+
+    Detectar la copia caduca era el remedio; **hacerla imposible** es la cura:
+    d02 deja de tener el valor y lo pide al lector, que sólo lo entrega si la
+    pieza está vigente, el catálogo al día y el sello acredita (las tres).
+
+    ⚠️ SI NO ES CONSUMIBLE, NO SE INVENTA UN NÚMERO. Se devuelve `None` con el
+    motivo, y quien lea el bloque sabrá que el umbral no está acreditado en vez
+    de recibir un valor que nadie respalda. Volver aquí al literal como respaldo
+    reintroduciría exactamente la deuda que este cambio cierra.
+
+    Y el lector NO es un segundo motor: dice qué regla hay, con qué estado y qué
+    procedencia. La lógica de dominio sigue siendo de d02 (ADR-047)."""
+    try:
+        import sys as _s
+        from pathlib import Path as _P
+        _r = str(_P(__file__).resolve().parents[1])
+        if _r not in _s.path:
+            _s.path.insert(0, _r)
+        from app.agents import brn_lector as _L
+        regla = _L.regla("RO-IV-001")
+    except Exception as e:                               # noqa: BLE001
+        return {"valor": None, "estado": "no_determinable",
+                "por_que": f"no se alcanzó el puente BRN: {type(e).__name__}"}
+
+    if regla is None:
+        return {"valor": None, "estado": "no_consta",
+                "por_que": "RO-IV-001 no está en el catálogo compilado"}
+    if not regla.es_consumible_como_vigente:
+        return {"valor": None, "estado": "no_consumible",
+                "por_que": f"pieza «{regla.estado_pieza}» · catálogo al día: "
+                           f"{regla.catalogo_al_dia} · sello acredita: "
+                           f"{regla.sello.acredita if regla.sello else False}"}
+    return {"valor": regla.umbral_vigente,
+            "estado": "consumible",
+            "regla": regla.id,
+            "variable": regla.variable,
+            "vigencia_operativa": regla.vigencia_operativa,
+            "deriva_de": regla.deriva_de,
+            "procedencia": "puente BRN verificable · sello "
+                           f"{regla.sello.validado_por} {regla.sello.fecha}"}
+
+
 def build_block() -> dict:
     wb = openpyxl.load_workbook(EXCEL, read_only=True, data_only=True)
 
@@ -84,7 +133,7 @@ def build_block() -> dict:
         # Piso TRANSITORIO 2026 (65%) de la regla de asignación mínima prioritaria — COOTAD-2026
         # Art. 198.1 fija la regla plena en 70%; la Disposición Transitoria Primera fija el piso del
         # 65% con seguimiento desde el 1-dic-2026. NO es el Art. 192 (ese es "monto a transferir 21%").
-        "umbral_cootad": 65,
+        "umbral_cootad": _umbral_de_la_regla(),
     }
 
     # ── ① EJECUCIÓN PRESUPUESTARIA (H07 eSIGEF) ───────────────────────────────

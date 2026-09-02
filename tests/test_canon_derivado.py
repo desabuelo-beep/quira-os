@@ -182,12 +182,15 @@ def test_ataque_una_copia_caduca_se_detecta_antes_de_su_fecha():
     **70 desde 2027-01-01**. Hoy no hay error de dato; el 1 de enero de 2027 lo
     habrá y nada avisaría. Detectarlo antes es la diferencia entre saber que algo
     se rompió y saber que va a romperse."""
+    # D-005 · CERRADA POR CONSTRUCCIÓN. d02 ya no tiene el umbral: lo pide al
+    # puente BRN verificable, que sólo lo entrega si la pieza está vigente, el
+    # catálogo al día y el sello acredita. **No hay copia que pueda caducar.**
     e = C.estado_canonico("d02")
-    caducas = e["copias_caducas"]
-    assert caducas, "dejó de verse la copia del umbral COOTAD"
-    assert any(c["archivo"].endswith("enrich_presupuesto.py") for c in caducas)
-    una = next(c for c in caducas if c["umbral"] == 65)
-    assert 70 in una["cambia_a"], f"no ve el tramo futuro: {una}"
+    assert not e["copias_caducas"], (
+        f"reapareció una copia caduca en d02: {e['copias_caducas']}")
+    fuente = (RAIZ / "scripts" / "enrich_presupuesto.py").read_text(encoding="utf-8")
+    assert "_umbral_de_la_regla()" in fuente, (
+        "d02 dejó de pedir el umbral al puente")
 
 
 def test_la_afirmacion_distingue_las_tres_vias():
@@ -196,8 +199,13 @@ def test_la_afirmacion_distingue_las_tres_vias():
     que retirar."""
     f = C.cobertura_canonica()["afirmacion_sostenible"]
     assert "carga_el_yaml" in f and "d07" in f
-    assert "parametro_copiado" in f and "d02" in f
-    assert "65" in f and "70" in f, "la alarma de caducidad no llega a la frase"
+    # D-005 CERRADA (2026-09-01): d02 dejó de copiar el umbral y lo pide al
+    # puente BRN. La alarma de caducidad desapareció de la frase porque **ya no
+    # hay nada que alarmar** — ésa era la señal acordada.
+    assert "parametro_copiado" not in f, (
+        "volvió una copia de parámetro: alguna deuda se reabrió")
+    assert "65" not in f and "70" not in f, (
+        "la alarma de caducidad volvió: hay un umbral copiado otra vez")
 
 
 def test_nadie_lee_todavia_el_puente_compilado():
@@ -246,10 +254,12 @@ def test_la_obsolescencia_programada_es_un_caso_aislado():
     caducan. Si mañana apareciera otra, esta prueba obliga a mirarla en vez de
     dejarla pasar entre las que ya se conocen."""
     c = C.cobertura_canonica()
-    con_caducas = sorted({x["archivo"].split("/")[-1] and f["dominio"]
-                          for f in c["dominios"] for x in f["copias_caducas"]})
-    assert con_caducas == ["d02"], (
-        f"apareció obsolescencia programada fuera de d02: {con_caducas}")
+    # Antes era «sólo d02»; ahora es **ninguno**: el único caso del sistema
+    # se cerró haciéndolo IMPOSIBLE, no detectándolo mejor.
+    c = C.cobertura_canonica()
+    con_caducas = sorted({f["dominio"] for f in c["dominios"] if f["copias_caducas"]})
+    assert con_caducas == [], (
+        f"apareció obsolescencia programada: {con_caducas}")
 
 
 def test_d07_replica_su_plazo_normativo_como_respaldo():

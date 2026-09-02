@@ -155,6 +155,26 @@ def parametros_de(ro: dict) -> list[dict]:
     return salida
 
 
+
+def _solo_codigo(fuente: str) -> str:
+    """El archivo sin docstrings ni comentarios — para no confundir la
+    documentación de un umbral con su duplicación.
+
+    ⚠️ NACIÓ DE UN FALSO POSITIVO PROPIO. Al conectar d02 al puente quedaron
+    tres «copias» que eran un docstring y dos comentarios explicando la norma:
+    *«Piso TRANSITORIO 2026 (65%)…»*. Documentar un umbral no lo duplica: lo
+    explica. El texto no es el código, otra vez.
+
+    Las líneas se conservan —se sustituyen por vacías— para que los números
+    reportados sigan siendo los del archivo real."""
+    def _blanquear(m):
+        return "\n" * m.group(0).count("\n")
+
+    sin_doc = re.sub(r'("""|\'\'\')[\s\S]*?\1', _blanquear, fuente)
+    return "\n".join("" if ln.strip().startswith("#") else ln
+                     for ln in sin_doc.splitlines())
+
+
 def _vinculo_con_el_motor(dominio: str, ro_ids: list[str],
                           ros: dict) -> tuple[str, list[str], list[dict]]:
     """Por cuál de las tres vías —si alguna— llega la RO hasta el código.
@@ -172,8 +192,17 @@ def _vinculo_con_el_motor(dominio: str, ro_ids: list[str],
 
     citan, via, copias = [], AUSENTE, []
     for f in archivos:
-        txt = f.read_text(encoding="utf-8", errors="replace")
+        crudo = f.read_text(encoding="utf-8", errors="replace")
         rel = f.relative_to(RAIZ).as_posix()
+
+        # ⚠️ UN COMENTARIO NO ES UNA COPIA. Al conectar d02 al puente quedaron
+        # tres «copias» que eran un docstring y dos comentarios explicando la
+        # norma —«Piso TRANSITORIO 2026 (65%)…»—. Documentar el umbral no lo
+        # duplica: lo explica. El texto no es el código, otra vez.
+        #
+        # Se buscan los parámetros SOLO en líneas ejecutables: fuera docstrings
+        # y fuera comentarios. Lo que queda tras esta poda es código de verdad.
+        txt = _solo_codigo(crudo)
 
         # Vía 3 · el parámetro normativo duplicado en el código.
         for rid in ro_ids:
@@ -193,13 +222,17 @@ def _vinculo_con_el_motor(dominio: str, ro_ids: list[str],
                     copias.append({"ro": rid, "umbral": u, "ruta": par["ruta"],
                                    "archivo": rel, "linea": linea, "contexto": ctx,
                                    "desde": t.get("desde"), "hasta": t.get("hasta")})
-        if any(rid in txt for rid in ro_ids):
+        # ⚠️ LA PODA VALE SOLO PARA LOS PARÁMETROS. Citar una RO en un docstring
+        # ES citarla —eso es lo que `solo_la_cita` significa— y medir el vínculo
+        # sobre el texto podado degradó a d07 de `carga_el_yaml` a `solo_la_cita`
+        # en cuanto se introdujo. El vínculo se mide sobre el crudo.
+        if any(rid in crudo for rid in ro_ids):
             citan.append(rel)
-            if re.search(r"docs[/\\]brn|BRN_DIR", txt):
+            if re.search(r"docs[/\\]brn|BRN_DIR", crudo):
                 via = CARGA
             elif via != CARGA:
                 via = CITA
-        if via not in (CARGA,) and re.search(r"brn_cno|brn_manifest", txt):
+        if via not in (CARGA,) and re.search(r"brn_cno|brn_manifest", crudo):
             via = COMPILADO
     if via == AUSENTE and copias:
         via = COPIADO

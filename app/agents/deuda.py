@@ -91,6 +91,9 @@ _DEUDAS = (
          no_es="una infracción demostrada: `AMBITOS` no declara motivo, así que "
                "no se puede saber si la exclusión fue decisión u omisión"),
     dict(id="D-005", gravedad=FALSEA, capa="C1", dueño="Javo",
+         estado="RESUELTA 2026-09-01 · d02 dejó de tener el umbral y lo pide al "
+                "puente BRN verificable. No se detecta mejor la copia caduca: "
+                "no puede haberla. Cero copias caducas en todo el sistema",
          que="`enrich_presupuesto.py` fija el umbral 65 en cuatro lugares y "
              "`RO-IV-001` declara 65 hasta 2026-12-31 y **70 desde "
              "2027-01-01**. Hoy coinciden.",
