@@ -22,7 +22,7 @@ FRONTERA d08/d09 (corrección de naturaleza · Javo): los aportes de este domini
 de las INSTANCIAS de participación (actas de presupuesto participativo, audiencias,
 cabildos). Los aportes al informe de rendición son control social — viven en su dominio.
 
-POR QUÉ NO SE PINTA EL ÍNDICE MADRE: el snapshot trae el vector del motor (48,33%) y el
+POR QUÉ NO SE PINTA EL ÍNDICE MADRE: el snapshot trae el vector del motor y el
 cajón lo deja fuera a propósito. Publicar un porcentaje cuya composición no se puede
 explicar al lector sería un número sin fundamento verificable (Regla 3). Queda en el
 bloque para cuando su composición se documente; la radiografía de este dominio son las
@@ -402,6 +402,29 @@ def _senal(d: dict) -> str:
     s = d.get("senal") or {}
     if not s.get("denominador"):
         return ""
+
+    # D-006 · SIN UMBRAL ACREDITADO NO HAY VEREDICTO, y eso se DICE.
+    # La medición es de d08 y se sostiene sola; el umbral viene de RO-VIII-003,
+    # que está en «propuesta». Encender la señal exigiría una autoridad que la
+    # regla todavía no tiene. Ocultar el bloque habría convertido «no puedo
+    # decidir» en «no hay nada que ver» — el error que este dominio existe para
+    # no cometer.
+    if s.get("estado_umbral") == "no_consumible" or s.get("umbral") is None:
+        return (
+            '<p class="qc-p">Esta señal vigila que lo priorizado por la ciudadanía en el '
+            'presupuesto participativo se incorpore a la planificación operativa, como manda '
+            'la ley. <b>Hoy la medición existe y el umbral que la activaría no está '
+            'acreditado</b>, de modo que se publica lo medido y no el veredicto.</p>'
+            f'<div class="d8-sen" style="border-left-color:var(--tx3)">'
+            f'<div class="d8-sen-h"><span class="d8-sen-t">{_esc(s.get("nombre", ""))}</span>'
+            f'<span class="d8-sen-e" style="color:var(--tx3)">&#9679; SIN UMBRAL ACREDITADO</span></div>'
+            f'<div style="font-size:11.5px;color:var(--tx2);line-height:1.45;margin:4px 0 2px">'
+            f'Medición: <b>{s["numerador"]} de {s["denominador"]}</b> '
+            f'({s.get("valor", 0) * 100:.1f}%) sin correspondencia verificable.</div>'
+            f'<div style="font-size:11px;color:var(--tx3);line-height:1.45;margin-top:6px">'
+            f'{_esc(s.get("por_que", ""))}</div></div>'
+            f'<p class="qc-cap" style="margin-top:10px">{_esc(s.get("frontera", ""))}</p>')
+
     val, umb = s.get("valor", 0), s.get("umbral", 0)
     activa = val >= umb
     col = "#F9AB00" if activa else "#1E8E3E"

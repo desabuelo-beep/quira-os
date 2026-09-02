@@ -29,15 +29,15 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 
 ## AHORA (estado vivo · historial → `governance/historico/`)
 🧭 **031** MCIP=5 motores · **035/037** IA propone/humano valida · **038** BRN **traza, no alimenta**.
 ✅ **PCD: d01·d02·d03·d06·d09** · d08 ENTRABLE · **d07 en curación**.
-🩹 **12/12 gates verdes en local · 1 corre en CI (D-007)** · deudas → `deuda.py`
+🩹 **12/12 gates verdes · 1 en CI (D-007)** · deudas → `deuda.py`
 📑 ⛔ `.docx` gana al `.pdf`.
-⚖️ **CANON**: ⛔ DOM **consume RO, NO lee la ley** · estado derivado → `canon.py` (consúltalo, NO lo escribas) · ⛔ **d01·d02·d03·d09: RO vigente NO cargada** (solo d07) · 7 CNO-VIII sin RO.
+⚖️ **CANON**: ⛔ DOM **consume RO, NO lee la ley** · estado derivado → `canon.py` (consúltalo, NO lo escribas) · ⛔ **d01·d03·d09: RO NO cargada** (d07·d02 sí) · **VIII propuesta → d08 mide, NO dictamina** (D-6).
 📡 **SITA 2025 0,4448** · **0 actas** · num.6 sin ingresos.
 🧪 **§6-bis**: falta evidencia→**degrada** · identidad contradictoria→**BLOQUEA** · el SHA prueba el archivo, NO la atribución (esc.4/7 lo cierran).
 🚦 **8 ESTADOS**: «no existe»≠«no pude obtener»≠«falló».
 🎨 **049/050**: la gráfica no sabe más que el motor · CANTERA hereda capacidades, NO productos.
 🔧 **v5.7_TGI** · promover = **recalcular y GUARDAR**.
-📋 **Metas 66/cablea 25** · PDOT **05-11-2024**→**≥2025**.
+📋 **Metas 66/cablea 25** (D-001) · PDOT **≥2025**.
 🔭 **042** (`env_obs`≠`env_ops`) · **MATRIZ_CANONICA, NO el GM**.
 🤖 **051 §12**: 5 dim. (capacidad·**sujeto**·ejecución·evidencia·validación) · sin sujeto NO hay afirmación.
 🔌 **ÚNICA puerta**: `reglas.py`→norma (gate **REGLAS**) · `config.DATOS_DIR`→datos: **3 en sentinel**, gate deriva universo.

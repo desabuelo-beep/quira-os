@@ -114,12 +114,30 @@ def _naturaleza_verificacion(cat: dict) -> dict[str, str]:
 
 def _senal_ro003(ro: dict) -> dict:
     """La señal preventiva que RO-VIII-003 declara producir (ADR-038 §1b: umbral y peso
-    viven en la regla, no en el Excel — el motor solo la refleja)."""
+    viven en la regla, no en el Excel — el motor solo la refleja).
+
+    ⚠️ D-006 · EL UMBRAL SE PUBLICA SOLO SI LA REGLA ESTÁ ACREDITADA (2026-09-02).
+
+    Este enricher hacía bien la mitad difícil: leía el YAML de la regla en vez de
+    copiar el número, que es la vía canónica `carga_el_yaml`. Pero tomaba
+    `umbral_activacion: 0.50` **sin mirar que `RO-VIII-003` está en `estado:
+    propuesta` con `validada_por: null`** — y el snapshot publicaba una señal
+    ENCENDIDA (0,848 ≥ 0,50) sobre una regla que el canon declara no acreditada.
+
+        D-005 fue: el umbral correcto, pero copiado.
+        D-006 es: el umbral bien leído, de una regla que nadie validó.
+
+    La reparación NO es promover la regla —eso es canon y lo decide Javo—, ni
+    fabricar un umbral. Es respetar el estado: el puente BRN dice si la regla
+    puede consumirse, y si no puede, **la medición se publica y el veredicto no**.
+
+    Y la frontera de ADR-047 se mantiene: el lector certifica la CONDICIÓN de
+    consumo; el detalle de la señal sigue viniendo del YAML, que es de d08. El
+    puente no interpreta la regla, sólo dice si está acreditada."""
     prod = (ro.get("produce") or [{}])[0]
     med = prod.get("medicion_2026") or {}
-    return {
+    base = {
         "nombre": prod.get("nombre", ""),
-        "umbral": float(prod.get("umbral_activacion") or 0),
         "valor": float(med.get("valor") or 0),
         "numerador": int(med.get("numerador") or 0),
         "denominador": int(med.get("denominador") or 0),
@@ -127,6 +145,25 @@ def _senal_ro003(ro: dict) -> dict:
         "frontera": ("No acredita desatención: acredita ausencia de habilitación documental. "
                      "La causa dominante es que el instrumento no localiza el gasto."),
     }
+
+    sys.path.insert(0, str(_RAIZ))
+    from app.agents import brn_lector as L                  # noqa: PLC0415
+
+    r = L.regla("RO-VIII-003")
+    if r is None or not r.es_consumible_como_vigente:
+        estado = getattr(r, "estado_pieza", "ausente_del_catalogo")
+        # La medición SÍ se publica: 162 de 191 es un hecho de d08, verificable
+        # contra el POA. Lo que no se publica es el veredicto «señal activa»,
+        # que es lo que carecía de autoridad. Callar las dos cosas habría
+        # convertido «no puedo decidir» en «no hay nada que ver».
+        return {**base, "umbral": None, "estado_umbral": "no_consumible",
+                "por_que": (f"RO-VIII-003 está en «{estado}» y el umbral de "
+                            f"activación no puede sostener un veredicto público. "
+                            f"La medición se mantiene; la decisión de encender la "
+                            f"señal exige una regla acreditada.")}
+    return {**base, "umbral": float(prod.get("umbral_activacion") or 0),
+            "estado_umbral": "consumible",
+            "por_que": f"RO-VIII-003 vigente y acreditada por {r.sello.validado_por}"}
 
 
 def construir() -> dict:
@@ -239,7 +276,10 @@ def main() -> int:
     print(f"  sin correlato (vinc): {ef['vinculantes_por_estado']['sin_correlato']}")
     print(f"    · inverificable por el instrumento : {ca['inverificable_instrumento']}")
     print(f"    · sin correspondencia temática     : {ca['sin_correspondencia_tematica']}")
-    print(f"  señal preventiva    : {bloque['senal']['valor']:.3f} (umbral {bloque['senal']['umbral']})")
+    _s = bloque["senal"]
+    _u = (f"umbral {_s['umbral']}" if _s.get("umbral") is not None
+          else f"SIN UMBRAL ACREDITADO · {_s.get('estado_umbral')}")
+    print(f"  señal preventiva    : {_s['valor']:.3f} ({_u})")
     return 0
 
 

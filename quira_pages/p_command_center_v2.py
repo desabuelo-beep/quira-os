@@ -133,7 +133,7 @@ _DOMAINS_V2: list[dict[str, Any]] = [
         "id": "d08", "num": "08", "nombre": "Participación Ciudadana",
         "concepto": "La incidencia real de la ciudadanía en las decisiones públicas — "
                     "no cuántos talleres hubo, sino cuánto cambiaron lo que se decidió.",
-        # La métrica de portada NO es el índice del motor (48,33%): su composición no se
+        # La métrica de portada NO es el índice del motor: su composición no se
         # puede explicar todavía y el cajón la deja fuera por eso mismo (Regla 3). Se
         # publica lo que sí se sostiene documento a documento — la correspondencia
         # acreditada sobre lo que la ley hace exigible: 29 de 191.

@@ -14,6 +14,7 @@ Dylus Lab © 2026
 """
 import streamlit as st
 from data.loader import load_all
+from utils.cache_quira import cargar_gm_snapshot
 from utils.session import is_tecnico
 from quira_pages.html_engine import render_page, page_header
 
@@ -429,15 +430,34 @@ def render() -> None:
 </div>"""
 
         # IGP nota metodológica
+        # ⚠️ D-006 · LA NOTA SE DERIVA DEL MOTOR, NO SE ESCRIBE (2026-09-02).
+        #
+        # Decía, en HTML publicado: «promedio de 3 componentes: asambleas CPCCS
+        # (54%) + presupuesto participativo + fidelidad narrativa (91%) =
+        # 48.33%». Javo RETIRÓ el tercer componente el 2026-07-29 (H20b A8) y el
+        # motor promedia dos: (0,54 + 0,00) / 2 = 0,27. La corrección se registró
+        # en el snapshot el 2026-08-11 y esta nota siguió publicando el método
+        # retirado y su resultado durante 22 días.
+        #
+        # No es una cifra desactualizada por descuido de nadie: es una cifra
+        # ESCRITA A MANO, y por eso no se enteró de que su fuente había cambiado.
+        # Ahora sale del snapshot y arrastra su propia corrección.
+        _igp = ((cargar_gm_snapshot() or {}).get("vectores") or {}).get("igp") or {}
+        _val = _igp.get("valor")
+        _corr = _igp.get("_correccion", "")
+        _cuerpo = (
+            f"Participación ciudadana = <strong>{_val:.2f}%</strong>, del motor."
+            if isinstance(_val, (int, float)) else
+            "El motor no entregó el vector de participación: no se publica un "
+            "valor en su lugar."
+        )
         igp_nota = f"""
 <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);
             border-radius:10px;padding:12px 14px;margin-top:12px;
             font-size:10px;color:var(--muted);line-height:1.7">
   <strong style="color:var(--white)">Participación ciudadana — Nota metodológica</strong><br>
-  Participación ref 2025 = 27.98% · registros de gobernanza participativa<br>
-  Participación 2026 Q1 = promedio de 3 componentes:
-  asambleas CPCCS (54%) + presupuesto participativo (pendiente actualización post-PP) +
-  fidelidad narrativa (91%) = 48.33% · Clasificación: en transición
+  {_cuerpo}<br>
+  {_corr}
 </div>"""
 
         tab1_content = resumen_html + f"""

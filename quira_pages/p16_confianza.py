@@ -1,6 +1,7 @@
 """
 QUIRA OS — P-16 Participación Ciudadana (cajón d08)
-Headline = participación del snapshot vivo (cargar_gm_snapshot · vectores.igp = 48.33%), coherente con la tarjeta L1.
+Headline = participación del snapshot vivo (`cargar_gm_snapshot` · `vectores.igp`), coherente con la tarjeta L1.
+NO se escribe el valor aquí: era 48,33 y el motor calcula 27,00 desde que Javo retiró IGP_3 (2026-07-29).
 Mecanismos = hechos cuantitativos reales (actas PP, CPCCS, veedurías): textura cualitativa, NO aritmética del headline.
 Scores de mecanismos derivados de hechos cuantitativos en "avance":
   Asambleas:   2/7   × 100 = 28.6% → 29
@@ -129,7 +130,8 @@ def render() -> None:
     gm         = cargar_gm_snapshot()
     show_tech  = is_tecnico()
     parroquias = data.get("parroquias", [])
-    # Participacion: cifra madre del motor vivo (vectores.igp = 48.33), NO del demo (coherencia tarjeta L1)
+    # Participacion: cifra madre del motor vivo (`vectores.igp`), NO del demo (coherencia tarjeta L1).
+    # El valor NO se cita en el comentario: cambió el 2026-08-11 y un comentario no se entera.
     igp_val    = ((gm or {}).get("vectores", {}).get("igp") or {}).get("valor")
     if igp_val is None:
         igp_val = data.get("indices", {}).get("IGP", {}).get("valor", 0.0)

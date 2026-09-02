@@ -108,11 +108,30 @@ _DEUDAS = (
              "2027-01-01**. Hoy coinciden.",
          ataque="test_ataque_una_copia_caduca_se_detecta_antes_de_su_fecha",
          no_es="un error actual: es una obsolescencia con fecha conocida"),
-    dict(id="D-006", gravedad=DESACOPLA, capa="C1", dueño="Javo",
-         que="Siete `CNO-VIII-00x` no son reclamados por ninguna RO: cadenas "
-             "normativas modeladas que nunca llegaron a regla operativa.",
-         ataque="test_ataque_un_cno_sin_RO_no_puede_desaparecer_del_inventario",
-         no_es="canon incorrecto: es canon que no llegó a la etapa siguiente"),
+    dict(id="D-006", gravedad=FALSEA, capa="C1/C3", dueño="Javo",
+         estado="RESUELTA 2026-09-02 · Y EL ENUNCIADO ERA OTRO. Medido antes de "
+                "tocar: los 7 CNO-VIII son `participacion_y_control_social` "
+                "entero —el canon de d08, declarado ENTRABLE en BOOT— y todo el "
+                "bloque VIII está en `propuesta`. PENDIENTE + DECLARADO ≠ DEUDA: "
+                "siete cadenas sin RO en un dominio sin curar es el estado "
+                "esperado. La deuda estaba al lado y era peor: d08 CONSUMÍA "
+                "`RO-VIII-003` en `propuesta` y publicaba su umbral. Ahora pide "
+                "la consumibilidad al puente; sin regla acreditada publica la "
+                "medición y NO el veredicto. Los 7 siguen visibles: no se "
+                "fabricó ninguna RO para hacer desaparecer el hallazgo",
+         que="Enunciado original: «siete `CNO-VIII-00x` no son reclamados por "
+             "ninguna RO». Enunciado real: `enrich_participacion.py` leía bien "
+             "el YAML —vía canónica, no copia— pero tomaba `umbral_activacion: "
+             "0.50` sin mirar `estado: propuesta` / `validada_por: null`, y el "
+             "snapshot publicaba una señal ENCENDIDA (0,848 ≥ 0,50) sobre regla "
+             "no acreditada. Además `p16_gobernanza` publicaba una nota con "
+             "«48.33%» y el método de 3 componentes que Javo retiró el "
+             "2026-07-29: 22 días contradiciendo al motor, que calcula 27,00.",
+         ataque="test_d08_no_publica_un_veredicto_sobre_una_regla_no_acreditada",
+         no_es="canon que no llegó a la etapa siguiente —eso era el enunciado "
+               "viejo y se cayó al medirlo—. Tampoco es que falten siete reglas: "
+               "fabricarlas para que un inventario dé cero habría sido peor que "
+               "la deuda"),
     dict(id="D-007", gravedad=CIEGA, capa="C2", dueño="Javo",
          que="Al cerrar D-004 apareció la misma falla un nivel arriba: de 12 "
              "gates en `scripts/ci/`, **sólo `check_health.py` se ejecuta** en "
