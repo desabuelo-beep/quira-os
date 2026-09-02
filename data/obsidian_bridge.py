@@ -30,7 +30,20 @@ except ImportError:
     _YAML_OK = False
 
 # ── RUTAS ─────────────────────────────────────────────────────────────────────
-_VAULT_DEFAULT = Path(r"C:\Proyectos\QUIRA\knowledge_base\QUIRA_KB_Montecristi")
+# D-004 (2026-09-01): aquí había una ruta absoluta al disco de una persona,
+# duplicando lo que `config.VAULT_DIR` ya declara y recibe del entorno. Vivía
+# fuera del universo del gate de portabilidad —que reportaba «0 rutas fijas»— y
+# por eso nadie la veía. La única puerta a los datos es `config` (gate REGLAS).
+def _vault_por_defecto() -> Path:
+    try:
+        from config import VAULT_DIR
+        return Path(VAULT_DIR)
+    except Exception:                                    # noqa: BLE001
+        import os
+        return Path(os.environ.get("QUIRA_VAULT", "."))
+
+
+_VAULT_DEFAULT = _vault_por_defecto()
 _REGISTRY_PATH = Path(__file__).parent / "vault_registry.json"
 _SCHEMA_PATH   = Path(__file__).parent / "vault_schema.json"
 

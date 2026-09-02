@@ -98,29 +98,42 @@ def test_ataque_el_grafo_no_decide_si_lo_no_declarado_esta_mal():
 
 
 # ── EL HALLAZGO · P7 ──────────────────────────────────────────────────────────
-def test_el_gate_de_portabilidad_no_cubre_sentinel():
-    """SEXTA VEZ EL MISMO PATRÓN: una lista escrita a mano que pretende ser el
-    universo.
+def test_el_gate_de_portabilidad_deriva_su_universo():
+    """D-004 · CERRADA, y la prueba se invirtió — la señal acordada.
 
-    `check_portabilidad.py` declara `AMBITOS = ("scripts", "app",
-    "quira_pages", "utils")` y reporta **0 rutas fijas · objetivo cumplido**.
-    `sentinel/` tiene 73 archivos `.py`, no está en la lista, y contiene tres
-    lecturas con ruta absoluta al disco de una persona —halladas por el grafo de
-    acoplamiento, no por el gate—.
+    Decía: `AMBITOS = ("scripts","app","quira_pages","utils")` y el gate
+    reportaba «0 rutas fijas» sin mirar `sentinel/`, donde había tres. Su patrón
+    SÍ las detectaba: **fallaba el universo, no el detector**.
 
-    ⚠️ Esta prueba **fija el hallazgo, no lo repara**: ampliar `AMBITOS` movería
-    el trinquete de 0 a 3 y eso es una decisión de gobernanza. Cuando se decida,
-    esta prueba debe invertirse — y que haya que tocarla es justamente la señal
-    de que algo cambió."""
+    Medido: con el universo derivado aparecían **9 hallazgos donde el gate veía
+    0**. Cuatro quedaron fuera por exclusión declarada —`config.py` ES la puerta;
+    `tests/` cita rutas para vetarlas—, una se reparó en el acto
+    (`data/obsidian_bridge.py` duplicaba `config.VAULT_DIR`) y quedan tres en
+    `sentinel/`, territorio legado declarado.
+
+    ⚠️ EL TOPE SUBIÓ DE 0 A 3 Y NO ES UNA REGRESIÓN: el sistema no se ató más a
+    una máquina, el instrumento dejó de ser ciego. Un número que sube porque el
+    universo creció no es lo mismo que uno que sube porque el defecto creció, y
+    confundirlos incentivaría a no mirar."""
     gate = (RAIZ / "scripts" / "ci" / "check_portabilidad.py").read_text(encoding="utf-8")
-    assert 'AMBITOS = ("scripts", "app", "quira_pages", "utils")' in gate, (
-        "cambió el universo del gate: revisar si el hallazgo sigue vigente")
-    assert (RAIZ / "sentinel").is_dir()
-    assert "sentinel" not in gate, "sentinel entró al gate: actualizar el hallazgo"
+    assert "AMBITOS = (" not in gate, (
+        "volvió la lista de carpetas escrita a mano")
+    assert "_EXCLUIDOS" in gate and "RAIZ.rglob" in gate, (
+        "el universo dejó de derivarse")
+    # Excluir está permitido; excluir en silencio no.
+    import re
+    for pat, motivo in re.findall(r'\("([^"]+)",\s*"([^"]{10,})', gate):
+        assert motivo.strip(), f"exclusión sin motivo: {pat}"
+    assert '"personal": 3' in gate, (
+        "el tope cambió: si bajó, D-004 avanzó y hay que actualizar esto")
 
+
+def test_las_rutas_absolutas_que_quedan_son_de_sentinel():
+    """Lo que el gate ve ahora, con nombre y sitio. Bajan a cero cuando
+    `sentinel/` se absorba —`ARQUITECTURA_CANONICA §6.2`— o cuando esas tres
+    reciban la ruta de `config.VAULT_DIR`."""
     absolutas = [a for a in K.grafo()
-                 if a["resuelto"] and (a["hacia"][1:3] == ":\\" or a["hacia"][1:3] == ":/")]
-    assert absolutas, "dejaron de verse las rutas absolutas"
+                 if a["resuelto"] and a["hacia"][1:3] in (":\\", ":/")]
     assert all(a["desde"].startswith("sentinel/") for a in absolutas), (
         f"aparecieron rutas absolutas fuera de sentinel/: "
         f"{[a['desde'] for a in absolutas if not a['desde'].startswith('sentinel/')]}")

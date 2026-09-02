@@ -83,11 +83,20 @@ _DEUDAS = (
          no_es="negligencia de cuatro dominios: es una vía canónica construida "
                "que nadie usa"),
     dict(id="D-004", gravedad=CIEGA, capa="C2", dueño="Javo",
+         estado="RESUELTA 2026-09-02 · el gate dejó de enumerar carpetas y "
+                "deriva su universo de `RAIZ.rglob`, restando `_EXCLUIDOS` con "
+                "motivo escrito al lado. Aparecieron 9 hallazgos donde veía 0: "
+                "4 excluidos por decisión declarada —`config.py` ES la puerta, "
+                "`tests/` cita rutas para vetarlas—, 1 reparado en el acto "
+                "(`data/obsidian_bridge.py` duplicaba `config.VAULT_DIR`) y 3 "
+                "en `sentinel/`, territorio legado. El tope subió de 0 a 3 y NO "
+                "es regresión: el sistema no se ató más a una máquina, el "
+                "instrumento dejó de ser ciego",
          que="`check_portabilidad.py` reporta «0 rutas fijas · objetivo "
              "cumplido» sobre `AMBITOS` que no incluye `sentinel/` —73 archivos "
              "con tres rutas absolutas al disco de una persona—. Su patrón SÍ "
              "las detectaría: falla el universo, no el detector.",
-         ataque="test_el_gate_de_portabilidad_no_cubre_sentinel",
+         ataque="test_el_gate_de_portabilidad_deriva_su_universo",
          no_es="una infracción demostrada: `AMBITOS` no declara motivo, así que "
                "no se puede saber si la exclusión fue decisión u omisión"),
     dict(id="D-005", gravedad=FALSEA, capa="C1", dueño="Javo",
@@ -104,6 +113,19 @@ _DEUDAS = (
              "normativas modeladas que nunca llegaron a regla operativa.",
          ataque="test_ataque_un_cno_sin_RO_no_puede_desaparecer_del_inventario",
          no_es="canon incorrecto: es canon que no llegó a la etapa siguiente"),
+    dict(id="D-007", gravedad=CIEGA, capa="C2", dueño="Javo",
+         que="Al cerrar D-004 apareció la misma falla un nivel arriba: de 12 "
+             "gates en `scripts/ci/`, **sólo `check_health.py` se ejecuta** en "
+             "un workflow, y `pytest` no es paso de ninguno — las 33 pruebas no "
+             "corren en CI. Un gate ciego al menos corre; uno que no se ejecuta "
+             "acredita cero hallazgos POR NO EXISTIR, y su verde es el silencio "
+             "de nadie preguntando.",
+         ataque="test_ataque_un_gate_que_no_se_ejecuta_no_acredita_nada",
+         no_es="algo que yo pueda reparar: `.github/workflows/*` está congelado "
+               "(Regla de Oro 5) y engancharlo es decisión de Javo. Tampoco es "
+               "«enganchar los 11 de golpe»: eso daría un CI rojo de origen "
+               "desconocido. Primero correr cada gate a mano, después enganchar "
+               "el que ya esté verde"),
 )
 
 
@@ -121,12 +143,21 @@ def deudas() -> list[dict]:
 def cobertura_de_deuda() -> dict:
     """Qué está abierto, con qué gravedad y con qué ataque lo fija."""
     filas = deudas()
+    # ⚠️ ABIERTAS Y RESUELTAS SE DERIVAN, NO SE CUENTAN A MANO. La primera
+    # versión afirmaba «ninguna reparada» en prosa fija y siguió diciéndolo con
+    # cuatro ya cerradas: el mismo defecto que este registro persigue, dentro
+    # del registro mismo.
+    resueltas = [d["id"] for d in filas if d.get("estado", "").startswith("RESUELTA")]
+    abiertas = [d["id"] for d in filas if d["id"] not in resueltas]
     por_gravedad: dict[str, list[str]] = {}
     for d in filas:
-        por_gravedad.setdefault(d["gravedad"], []).append(d["id"])
+        if d["id"] in abiertas:
+            por_gravedad.setdefault(d["gravedad"], []).append(d["id"])
     sin_ataque = [d["id"] for d in filas if not d["prueba_en"]]
     return {
         "deudas": filas,
+        "abiertas": abiertas,
+        "resueltas": resueltas,
         "por_gravedad": por_gravedad,
         "sin_ataque_localizado": sin_ataque,
         "exhaustividad": SIN_BARRER,
@@ -157,17 +188,18 @@ def cobertura_de_deuda() -> dict:
                 "han auditado: su ausencia aquí no significa que estén limpias",
             ],
         },
-        "afirmacion_sostenible": _afirmar(filas, por_gravedad),
+        "afirmacion_sostenible": _afirmar(filas, abiertas, resueltas, por_gravedad),
     }
 
 
-def _afirmar(filas, por_gravedad) -> str:
+def _afirmar(filas, abiertas, resueltas, por_gravedad) -> str:
     return (
-        f"{len(filas)} deudas declaradas y ninguna reparada — por decisión: "
-        f"medir antes de tocar. " +
+        f"{len(filas)} deudas declaradas · {len(resueltas)} resueltas "
+        f"({', '.join(resueltas) or '—'}) · {len(abiertas)} abiertas. " +
         " · ".join(f"{g}: {', '.join(ids)}" for g, ids in sorted(por_gravedad.items())) +
         ". Cada una nombra la prueba que la fija, así que el día que se subsane "
-        "**la prueba fallará** y ese fallo será la señal. Lo que este registro "
-        "NO dice es que no haya más: recoge lo encontrado, no barre el sistema, "
-        "y las capas C4–C7 siguen sin auditar."
+        "**la prueba falla** y ese fallo es la señal — así se cerraron D-002 a "
+        "D-005, y así apareció D-007 al cerrar D-004. Lo que este registro NO "
+        "dice es que no haya más: recoge lo encontrado, no barre el sistema, y "
+        "las capas C4–C7 siguen sin auditar."
     )

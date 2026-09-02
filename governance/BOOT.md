@@ -29,10 +29,10 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 
 ## AHORA (estado vivo · historial → `governance/historico/`)
 🧭 **031** MCIP=5 motores · **035/037** IA propone/humano valida · **038** BRN **traza, no alimenta**.
 ✅ **PCD: d01·d02·d03·d06·d09** · d08 ENTRABLE · **d07 en curación**.
-🩹 **12 GATES** · Curación por DOM (R.8) · **estados, NO bool** 
+🩹 **12 gates · 1 corre (D-007)** · deudas → `deuda.py` · **estados, NO bool**
 📑 ⛔ `.docx` gana al `.pdf`.
 ⚖️ **CANON**: ⛔ DOM **consume RO, NO lee la ley** · estado derivado → `canon.py` (consúltalo, NO lo escribas) · ⛔ **d01·d02·d03·d09: RO vigente NO cargada** (solo d07) · 7 CNO-VIII sin RO.
-📡 **SITA 2025 0,4448** (era 0,4646) · **0 actas** · num.6 sin ingresos.
+📡 **SITA 2025 0,4448** · **0 actas** · num.6 sin ingresos.
 🧪 **§6-bis**: falta evidencia→**degrada** · identidad contradictoria→**BLOQUEA** · el SHA prueba el archivo, NO la atribución (esc.4/7 lo cierran).
 🚦 **8 ESTADOS**: «no existe»≠«no pude obtener»≠«falló».
 🎨 **049/050**: la gráfica no sabe más que el motor · CANTERA hereda capacidades, NO productos.
@@ -40,7 +40,7 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 
 📋 **Metas 66/cablea 25** · PDOT **05-11-2024**→**≥2025**.
 🔭 **042** (`env_obs`≠`env_ops`) · **MATRIZ_CANONICA, NO el GM**.
 🤖 **051 §12**: 5 dim. (capacidad·**sujeto**·ejecución·evidencia·validación) · sin sujeto NO hay afirmación.
-🔌 **ÚNICA puerta**: `reglas.py`→norma (gate **REGLAS**) · `config.DATOS_DIR`→datos: **0 rutas fijas**.
+🔌 **ÚNICA puerta**: `reglas.py`→norma (gate **REGLAS**) · `config.DATOS_DIR`→datos: **3 en sentinel**, gate deriva universo.
 🔐 **PANEL ACCESOS**: bitácora 2 meses sin leerse · alerta por concentración.
 📐 **MATRIZ (Javo)**: portal = **materialización de obligaciones** · ⛔ ausencia≠incumplimiento · 7 cond. ✅.
 🪞 **052** (⛔ NO toca CAPA 0): **naturaleza ≠ estado de la evidencia** · `no_documental` sólo lo declara el CORPUS · ⛔ no publicar ≠ no exigible.
@@ -59,7 +59,7 @@ GAD = sujeto observado, NO cliente. 4 capas: A Núcleo · B Operaciones · C Pro
 
 ## REGLAS DE ORO → **las 10 viven en `CLAUDE.md`** (se lee siempre)
 ⚠️ **NO está entre las 10**: **antes de definir** → `marco_teorico/INVENTARIO_CONCEPTOS_FUNDACIONALES.md`
-(**deriva, no redefinas** · cierre `/graphify . --update`). La #10 se restauró el 26-08.
+(**deriva, no redefinas** · cierre `/graphify . --update`).
 
 ## LAZY LOAD — lee SOLO lo que aplica a tu tarea
 | Si vas a... | Lee primero |

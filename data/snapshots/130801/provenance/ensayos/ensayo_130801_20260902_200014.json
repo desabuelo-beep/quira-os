@@ -1,0 +1,62 @@
+{
+  "run_id": "130801_20260902_200014",
+  "generated_at": "2026-09-02T20:00:14.018719+00:00",
+  "municipio_code": "130801",
+  "municipio_name": "GAD Municipal de Montecristi",
+  "ruc": "1360001010001",
+  "year": 2026,
+  "dry_run": true,
+  "doctrine": {
+    "framework": "TGI Territorial",
+    "dimensions": [
+      "D1",
+      "D2",
+      "D3",
+      "D4",
+      "D5"
+    ],
+    "sat_enabled": true,
+    "icpi_enabled": true,
+    "rc_m_enabled": false,
+    "quira_layer": "Q1"
+  },
+  "sources": {
+    "dpe": {
+      "status": "ok",
+      "reliability": 0.95,
+      "error": null
+    },
+    "sercop": {
+      "status": "ok",
+      "reliability": 0.9,
+      "error": null
+    },
+    "cpccs": {
+      "status": "ok",
+      "reliability": 0.8,
+      "error": null
+    },
+    "social": {
+      "status": "placeholder",
+      "reliability": 0.0,
+      "error": null
+    },
+    "gold_master": {
+      "status": "ok",
+      "reliability": 0.99,
+      "error": null
+    }
+  },
+  "scores": {
+    "traceability_score": 89.5,
+    "coverage_score": 1.0,
+    "source_confidence": 0.895
+  },
+  "missing_dimensions": [
+    "D5-evidencia-publica"
+  ],
+  "validation": {
+    "status": "ok",
+    "errors": []
+  }
+}

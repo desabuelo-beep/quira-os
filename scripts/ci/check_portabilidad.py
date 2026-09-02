@@ -49,7 +49,33 @@ _ABSOLUTA = re.compile(
 # La carpeta de documentos que vive fuera del repositorio a propósito.
 _FRONTERA = "ProyecT"
 
-AMBITOS = ("scripts", "app", "quira_pages", "utils")
+# ── EL UNIVERSO SE DERIVA · D-004 (2026-09-01) ───────────────────────────────
+# Aquí había cuatro carpetas enumeradas a mano. `sentinel/` —73 archivos con
+# rutas absolutas reales— no estaba en la lista, y el gate llevaba meses
+# reportando «0 rutas fijas · objetivo cumplido». Su patrón SÍ las detectaba:
+# **fallaba el universo, no el detector.**
+#
+# Y este mismo archivo ya llevaba escrita la lección que le faltó aplicarse:
+# *«un tope que no se midió es una suposición con apariencia de control»*. Midió
+# el tope y no midió el universo.
+#
+# Ahora se barre todo el repositorio menos exclusiones DECLARADAS con motivo —
+# excluir está permitido; excluir en silencio no—. Medido con el universo
+# derivado: 9 hallazgos donde el gate veía 0.
+_EXCLUIDOS = (
+    ("config.py", "ES la puerta: aquí la frontera se declara UNA vez y se "
+                  "recibe del entorno. Que la ruta viva aquí es el diseño, no "
+                  "el defecto (gate REGLAS · 0 rutas fijas fuera de config)"),
+    ("tests/", "las pruebas citan rutas para PROHIBIRLAS —una asercion que "
+               "veta el prefijo de un perfil— y en docstrings que explican "
+               "un hallazgo. Mencionar una ruta para vetarla no es depender "
+               "de ella"),
+    (".claude", "copias de trabajo y configuración del entorno"),
+    (".agents", "herramientas de asistencia, no código de QUIRA"),
+    ("node_modules", "dependencias externas"),
+    ("__pycache__", "artefactos de compilación"),
+    ("historial_gold_master", "archivo histórico, no código vivo"),
+)
 
 # TRINQUETE: puede bajar, nunca subir. Se separa por clase porque cada una se
 # resuelve de forma distinta y mezclarlas oculta el progreso real.
@@ -73,7 +99,30 @@ AMBITOS = ("scripts", "app", "quira_pages", "utils")
 # cruda, concatenación implícita multilínea, y constante sin imports previos—.
 # Ninguno se forzó: cada lote pasó por `ast.parse` antes de escribirse, y los
 # que no compilaban NO se tocaron.
-TOPE = {"frontera_fija": 0, "personal": 0}
+# ⚠️ EL TOPE SUBE DE 0 A 3, Y NO ES UNA REGRESIÓN (2026-09-01 · D-004).
+#
+# El sistema NO se ató más a una máquina: **el instrumento dejó de ser ciego.**
+# Las tres rutas de `sentinel/` existían desde antes y este gate no las miraba
+# porque `AMBITOS` no incluía ese territorio. Al derivar el universo aparecieron.
+#
+#     un número que sube porque el universo creció
+#     ≠ un número que sube porque el defecto creció
+#
+# Confundirlas haría lo peor posible: incentivar a no mirar, porque mirar
+# «empeora la métrica». El trinquete se refunda sobre el piso medido, y desde
+# aquí sólo puede bajar.
+#
+# QUÉ SON LAS TRES · `sentinel/` es **paquete legado declarado** —su propio
+# `__init__` lo dice y `ARQUITECTURA_CANONICA.md §6.2` fija su absorción—, y las
+# tres apuntan a la bóveda de conocimiento que `config.VAULT_DIR` ya declara.
+# Bajan a 0 cuando sentinel se absorba o cuando esas tres reciban la ruta de
+# `config`, lo que ocurra antes.
+#
+# De las 9 que el universo derivado encontró, 4 quedaron fuera por exclusión
+# declarada —`config.py` es la puerta, `tests/` cita rutas para vetarlas—, 1 se
+# reparó en el acto (`data/obsidian_bridge.py` duplicaba `VAULT_DIR`), y 1 más
+# era de `sentinel/` en un archivo que no repite la constante.
+TOPE = {"frontera_fija": 0, "personal": 3}
 
 
 def clasificar(linea: str) -> str | None:
@@ -83,18 +132,24 @@ def clasificar(linea: str) -> str | None:
 
 
 def recorrer() -> list[tuple[str, int, str, str]]:
+    """Barre TODO el repositorio menos las exclusiones declaradas.
+
+    Cada exclusión lleva su motivo: una exclusión sin justificar es
+    indistinguible de un olvido, y fue un olvido —`sentinel/`— el que dejó
+    a este gate reportando cero durante meses."""
     fuera = []
-    for ambito in AMBITOS:
-        base = RAIZ / ambito
-        if not base.exists():
+    for f in RAIZ.rglob("*.py"):
+        rel = f.relative_to(RAIZ).as_posix()
+        if any(pat in rel for pat, _ in _EXCLUIDOS):
             continue
-        for f in base.rglob("*.py"):
-            for i, ln in enumerate(f.read_text(encoding="utf-8",
-                                               errors="replace").splitlines(), 1):
-                clase = clasificar(ln)
-                if clase:
-                    fuera.append((str(f.relative_to(RAIZ)).replace(_B, "/"),
-                                  i, clase, ln.strip()[:70]))
+        try:
+            lineas = f.read_text(encoding="utf-8", errors="replace").splitlines()
+        except OSError:
+            continue
+        for i, ln in enumerate(lineas, 1):
+            clase = clasificar(ln)
+            if clase:
+                fuera.append((rel, i, clase, ln.strip()[:70]))
     return fuera
 
 

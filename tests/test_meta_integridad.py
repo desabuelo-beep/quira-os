@@ -32,6 +32,7 @@ from __future__ import annotations
 
 import importlib
 import inspect
+import re
 import sys
 from pathlib import Path
 
@@ -237,24 +238,33 @@ def test_un_gate_no_puede_acreditar_su_propia_cobertura():
     si la exclusión fue decisión u omisión** — y esa indeterminación es el
     hallazgo, no las rutas.
 
-    ⚠️ Esta prueba FIJA el estado, no lo repara. Ampliar `AMBITOS` movería un
-    trinquete de 0 a 3 y eso es gobernanza. El día que se decida —incluir
-    sentinel, o declarar por qué queda fuera— habrá que invertirla, y que haya
-    que tocarla es la señal."""
+    ⚠️ SUBSANADO 2026-09-02 · D-004, y esta prueba se invirtió: era la señal
+    pactada. La versión anterior decía «`sentinel` NO puede aparecer en el gate»
+    y hoy exige lo contrario. Lo que NO cambió es la regla de C0 — sólo cambió
+    quién la cumple.
+
+    El gate ya no enumera carpetas: **deriva su universo** de `RAIZ.rglob` y
+    resta `_EXCLUIDOS`, donde cada exclusión lleva su motivo escrito al lado.
+    Excluir sigue permitido; excluir en silencio, no — porque el silencio es
+    justo lo que impide distinguir la decisión de la omisión.
+
+    El trinquete pasó de 0 a 3 y eso NO es una regresión: el sistema no se ató
+    más a una máquina, el instrumento dejó de ser ciego."""
     gate = (RAIZ / "scripts" / "ci" / "check_portabilidad.py").read_text(encoding="utf-8")
 
-    # El detector sí sabe reconocer la ruta: lo que no la alcanza es el universo.
+    # El detector sí sabía reconocer la ruta: lo que no la alcanzaba era el universo.
     assert "Proyectos" in gate, "el patrón dejó de cubrir rutas de perfil"
-    assert "sentinel" not in gate, (
-        "sentinel entró al gate: el hallazgo cambió y hay que reescribir esto")
 
-    # El universo se enumera a mano y sin justificar, que es lo que C0 prohíbe
-    # a los inventarios y todavía no exige a los gates de CI.
-    i = gate.find("AMBITOS = ")
-    contexto_previo = gate[max(0, i - 220):i]
-    assert "#" not in contexto_previo.split("\n")[-2], (
-        "AMBITOS ya declara motivo: entonces la exclusión es deliberada y el "
-        "hallazgo pasa de «indeterminable» a «decidido»")
+    # 1 · El universo se deriva, no se enumera.
+    assert "AMBITOS = (" not in gate, "volvió la lista de carpetas escrita a mano"
+    assert "RAIZ.rglob" in gate, "el gate dejó de derivar su universo"
+
+    # 2 · Y toda exclusión lleva motivo: sin él no se puede saber si fue decisión.
+    assert "_EXCLUIDOS" in gate, "desapareció el registro de exclusiones"
+    exclusiones = re.findall(r'\("([^"]+)",\s*"([^"]*)"', gate)
+    assert exclusiones, "no se pudo leer ninguna exclusión: cambió su forma"
+    mudas = [p for p, motivo in exclusiones if len(motivo.strip()) < 20]
+    assert not mudas, f"exclusiones sin motivo declarado: {mudas}"
 
 
 # ── UN LÍMITE DECLARADO TAMBIÉN DEBE RESPETARSE AL INTERPRETAR ───────────────
@@ -336,3 +346,48 @@ def test_lo_excluido_se_clasifica_no_se_enumera():
         pytest.skip(e["por_que"])
     for x in e["excluidos_por_clasificacion"]:
         assert x["clase"] and x["motivo"], f"exclusión sin clasificar: {x}"
+
+
+# ── EL MISMO PATRÓN, UN NIVEL ARRIBA · D-007 ─────────────────────────────────
+def test_ataque_un_gate_que_no_se_ejecuta_no_acredita_nada():
+    """D-007 · EL HALLAZGO QUE APARECIÓ AL CERRAR D-004, y es el séptimo caso del
+    mismo patrón en dos días.
+
+    D-004 era un gate con el universo mal declarado: veía 0 porque no miraba
+    `sentinel/`. Al repararlo salió la pregunta obvia —*¿y los demás gates?*— y
+    la respuesta es peor que el defecto original:
+
+        12 gates en `scripts/ci/` · **1 se ejecuta en CI**
+        33 archivos de prueba · **`pytest` no es un paso de ningún workflow**
+
+    Un gate ciego al menos corre y puede acertar por accidente. Un gate que no
+    se ejecuta acredita cero hallazgos **por no existir**, y su verde es el
+    silencio de nadie preguntando. Es la forma extrema de la regla de C0: no ya
+    un mecanismo que es autoridad sobre su propia cobertura, sino uno cuya
+    cobertura es cero y nadie lo sabe.
+
+    ⚠️ ESTA PRUEBA FIJA EL ESTADO, NO LO REPARA, y esta vez por una razón que no
+    es sólo de método: `.github/workflows/*` está **congelado** (Regla de Oro 5)
+    y engancharlo es decisión de Javo, no mía. Enganchar 11 gates de golpe sobre
+    un repositorio que nunca los corrió tampoco es una mejora: es un CI rojo de
+    origen desconocido. El orden correcto es correr cada uno a mano, ver qué
+    dice, y engancharlo cuando esté en verde.
+
+    El día que se enganche, esta prueba falla — y ese fallo es la señal."""
+    gates = sorted(p.name for p in (RAIZ / "scripts" / "ci").glob("check_*.py"))
+    pasos: list[str] = []
+    for w in (RAIZ / ".github" / "workflows").glob("*.y*ml"):
+        pasos += re.findall(r"^\s*run:\s*(.+)$",
+                            w.read_text(encoding="utf-8", errors="replace"), re.M)
+
+    ejecutados = {g for g in gates if any(g in c for c in pasos)}
+    assert len(gates) >= 12, "el inventario de gates se derivó mal"
+    assert ejecutados == {"check_health.py"}, (
+        f"cambió qué gates corren en CI: ahora {sorted(ejecutados)}. Si CRECIÓ, "
+        f"D-007 avanzó y hay que actualizar esta prueba y el registro de deuda")
+
+    # `pytest` aparece en `claude.yml`, pero como permiso de herramienta del bot
+    # —`Bash(python -m pytest *)`—, no como paso de CI. Medir la palabra habría
+    # dado un falso positivo; se mide el paso `run:`, que es lo que se ejecuta.
+    assert not [c for c in pasos if "pytest" in c], (
+        "la suite entró a CI: D-007 avanzó y esta prueba debe invertirse")
