@@ -169,7 +169,7 @@ def test_el_registro_no_pretende_ser_exhaustivo():
     assert "no barre" in limites and "C4" in limites
 
 
-def test_el_motor_lee_la_version_que_el_canon_declara():
+def test_el_motor_lee_la_version_que_el_canon_declara(gold_master):
     """D-002 · CERRADA, y la prueba se invirtió — que era la señal acordada.
 
     Decía «BOOT declara v5.7 y el código abre v5.5»; ahora exige lo contrario.

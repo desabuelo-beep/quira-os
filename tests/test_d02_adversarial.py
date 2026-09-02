@@ -33,7 +33,7 @@ def _hay_motor() -> bool:
 
 
 # ── ATAQUE 1 · IDENTIDAD ──────────────────────────────────────────────────────
-def test_ataque_1_d02_no_puede_afirmar_sobre_un_sujeto_alterado():
+def test_ataque_1_d02_no_puede_afirmar_sobre_un_sujeto_alterado(gold_master):
     if not _hay_motor():
         pytest.skip("enricher no accesible")
     perfil = S._SUJETOS / f"{S.POR_DEFECTO}.json"
@@ -53,7 +53,7 @@ def test_ataque_1_d02_no_puede_afirmar_sobre_un_sujeto_alterado():
 
 
 # ── ATAQUE 5 · DELEGACIÓN · el que sólo existe en d02 ─────────────────────────
-def test_ataque_5_cambiar_el_enricher_cambia_la_evidencia_declarada(tmp_path):
+def test_ataque_5_cambiar_el_enricher_cambia_la_evidencia_declarada(gold_master, tmp_path):
     """EL ATAQUE PROPIO DE UN MOTOR QUE DELEGA.
 
     Si el enricher cambia, la afirmación **no puede seguir declarando la misma
@@ -81,7 +81,7 @@ def test_ataque_5_cambiar_el_enricher_cambia_la_evidencia_declarada(tmp_path):
 
 
 # ── ATAQUE 3 · GRADO ──────────────────────────────────────────────────────────
-def test_ataque_3_d02_no_sube_el_grado_sin_evidencia():
+def test_ataque_3_d02_no_sube_el_grado_sin_evidencia(gold_master):
     vacia = P.Procedencia(fuente="Gold Master vía enricher",
                           sujeto=f"{S.POR_DEFECTO} {S.nombre_corto()}")
     for pretendido in (P.HECHO_VERIFICABLE, P.HALLAZGO_DE_VERIFICABILIDAD):
@@ -102,7 +102,7 @@ def test_ataque_3_d02_no_sube_el_grado_sin_evidencia():
 
 
 # ── ATAQUE 4 · EQUIVALENCIA · ¿lee o transforma? ──────────────────────────────
-def test_ataque_4_d02_no_transforma_lo_que_el_enricher_produce():
+def test_ataque_4_d02_no_transforma_lo_que_el_enricher_produce(gold_master):
     """La versión de d02 del ataque del colega. Aquí no se puede fabricar un
     Gold Master falso —la ruta la fija el enricher—, así que se compara contra
     la fuente directa: **lo que d02 devuelve debe ser idénticamente lo que

@@ -50,7 +50,7 @@ def _hay_motor() -> bool:
 
 
 # ── CRITERIO 3 · el verificador tiene quien lo respalde ───────────────────────
-def test_d09_lee_la_fidelidad_sin_recalcularla():
+def test_d09_lee_la_fidelidad_sin_recalcularla(gold_master):
     """Acredita `d09.motor.leer_metricas` para la mitad VIVA: se lee del Gold
     Master vía enricher, no se deriva (Reglas de Oro 1 y 4)."""
     if not _hay_motor():
@@ -64,7 +64,7 @@ def test_d09_lee_la_fidelidad_sin_recalcularla():
         assert clave in m, f"falta «{clave}»"
 
 
-def test_d09_lee_la_serie_sin_recalcularla():
+def test_d09_lee_la_serie_sin_recalcularla(gold_master):
     """Acredita el mismo verificador para la mitad PERSISTIDA, que es otra cosa:
     tres informes documentales que d09 no vuelve a extraer."""
     if not _hay_motor():
@@ -79,7 +79,7 @@ def test_d09_lee_la_serie_sin_recalcularla():
 
 
 # ── LA PROPIEDAD NUEVA · una procedencia por afirmación ───────────────────────
-def test_las_dos_afirmaciones_no_comparten_procedencia():
+def test_las_dos_afirmaciones_no_comparten_procedencia(gold_master):
     """EL HALLAZGO DE d09. Dos afirmaciones del mismo dominio, con evidencias
     distintas, comprobadas contra artefactos distintos. Si compartieran
     procedencia, la más débil quedaría vestida con la credencial de la más
@@ -96,7 +96,7 @@ def test_las_dos_afirmaciones_no_comparten_procedencia():
     assert P.evidencia_corresponde(ser) is True
 
 
-def test_la_serie_se_declara_derivada_y_la_fidelidad_de_primera_mano():
+def test_la_serie_se_declara_derivada_y_la_fidelidad_de_primera_mano(gold_master):
     if not _hay_motor():
         pytest.skip("fuentes de d09 no accesibles")
 
@@ -117,7 +117,7 @@ def test_el_escalon_7_comprueba_el_informe_de_origen():
 
 
 # ── ATAQUES ───────────────────────────────────────────────────────────────────
-def test_ataque_identidad_alterar_el_sujeto_cambia_lo_afirmado():
+def test_ataque_identidad_alterar_el_sujeto_cambia_lo_afirmado(gold_master):
     if not _hay_motor():
         pytest.skip("fuentes de d09 no accesibles")
     perfil = S._SUJETOS / f"{S.POR_DEFECTO}.json"
@@ -168,7 +168,7 @@ def test_ataque_escalon7_un_origen_falseado_degrada():
     assert P.sostener("x", falseada).peso == P.HALLAZGO_DE_VERIFICABILIDAD
 
 
-def test_ataque_inflacion_la_serie_no_puede_acreditarse_con_el_excel():
+def test_ataque_inflacion_la_serie_no_puede_acreditarse_con_el_excel(gold_master):
     """El ataque directo a la propiedad nueva: vestir la afirmación derivada con
     el artefacto de la de primera mano. El hash del snapshot no corresponde al
     Gold Master, así que la sustitución se detecta."""
@@ -182,7 +182,7 @@ def test_ataque_inflacion_la_serie_no_puede_acreditarse_con_el_excel():
     assert P.sostener("x", inflada).peso == P.HALLAZGO_DE_VERIFICABILIDAD
 
 
-def test_ataque_evidencia_un_hash_ajeno_degrada():
+def test_ataque_evidencia_un_hash_ajeno_degrada(gold_master):
     if not _hay_motor():
         pytest.skip("fuentes de d09 no accesibles")
     s = M.sostener_fidelidad()
@@ -197,7 +197,7 @@ def test_ataque_grado_no_sube_sin_evidencia():
         assert P.sostener("x", vacia, pretendido).peso == P.NO_DETERMINABLE
 
 
-def test_ataque_equivalencia_d09_no_transforma_lo_que_lee():
+def test_ataque_equivalencia_d09_no_transforma_lo_que_lee(gold_master):
     """Ni del enricher vivo ni del snapshot. Un redondeo de más sería recalcular."""
     if not _hay_motor():
         pytest.skip("fuentes de d09 no accesibles")
@@ -210,7 +210,7 @@ def test_ataque_equivalencia_d09_no_transforma_lo_que_lee():
     assert m["aportes_total"] == snap["aportes"]["total"]
 
 
-def test_un_periodo_ausente_no_se_afirma_como_falta_de_rendicion():
+def test_un_periodo_ausente_no_se_afirma_como_falta_de_rendicion(gold_master):
     """La distinción que da sentido al dominio entero, aplicada a sí mismo: que
     un periodo no esté en lo leído **no dice que el GAD no rindiera cuentas**."""
     if not _hay_motor():

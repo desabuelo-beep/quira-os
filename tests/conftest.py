@@ -129,6 +129,30 @@ CAPTURA = "data/lotaip/artefactos"
 
 
 @pytest.fixture
+def gold_master():
+    """Salta la prueba si el Gold Master no se resolvió, diciendo por qué.
+
+    ⚠️ LO ENCONTRÓ EL PRIMER CI REAL (2026-09-02), y la simulación previa no
+    podía: se hizo sobre un clon local, y `config.DATOS_DIR` apunta por defecto
+    a `ProyecT/` —fuera del repositorio, pero **presente en esta máquina**—. El
+    clon heredaba el entorno del que intentaba independizarse. En el runner no
+    existe, y 23 pruebas fallaron con `FileNotFoundError`.
+
+    El Excel ES el motor (Regla de Oro 1) y vive fuera del repositorio a
+    propósito. Que no esté en CI no es un defecto: lo era que las pruebas no lo
+    declararan.
+
+    Para reproducir CI en local:  `QUIRA_DATOS=<carpeta vacía> pytest`"""
+    import config
+    if not getattr(config, "GOLD_MASTER_RESUELTO", False):
+        pytest.skip(
+            f"Gold Master no resuelto en {config.DATOS_DIR}: vive fuera del "
+            f"repositorio (Regla 1) y este entorno no lo tiene. NO es un "
+            f"aprobado — es una verificación no realizada.")
+    return config.SIAP_PATH
+
+
+@pytest.fixture
 def evidencia_capturada():
     """Salta la prueba si la evidencia local no está, diciendo por qué.
 

@@ -41,7 +41,7 @@ def _hay_motor() -> bool:
 
 
 # ── CRITERIO 3 · el verificador tiene quien lo respalde ───────────────────────
-def test_d02_lee_las_capacidades_sin_recalcularlas():
+def test_d02_lee_las_capacidades_sin_recalcularlas(gold_master):
     """LA PRUEBA QUE ACREDITA A `d02.motor.leer_metricas`.
 
     `sostener_isp()` declara este nombre, y `respalda()` comprueba por AST que
@@ -65,7 +65,7 @@ def test_d02_lee_las_capacidades_sin_recalcularlas():
 
 
 # ── CRITERIOS 1 y 2 · identidad y procedencia ─────────────────────────────────
-def test_d02_declara_sobre_quien_lee_y_sin_reloj():
+def test_d02_declara_sobre_quien_lee_y_sin_reloj(gold_master):
     if not _hay_motor():
         pytest.skip("enricher no accesible")
     from app.agents import sujeto as S
@@ -78,7 +78,7 @@ def test_d02_declara_sobre_quien_lee_y_sin_reloj():
 
 
 # ── LO QUE d02 AÑADE AL MOLDE ─────────────────────────────────────────────────
-def test_la_evidencia_de_un_motor_que_delega_incluye_al_delegado():
+def test_la_evidencia_de_un_motor_que_delega_incluye_al_delegado(gold_master):
     """Si sólo se registrara el Gold Master, dos afirmaciones producidas por
     enrichers distintos —una con el bug del ISP y otra sin él— declararían la
     misma evidencia y darían números distintos. **La identidad de quien lee es
@@ -97,7 +97,7 @@ def test_la_evidencia_de_un_motor_que_delega_incluye_al_delegado():
     assert m["motor_sha256"] in s.procedencia.fuente
 
 
-def test_d02_sostiene_el_isp_con_su_cadena_completa():
+def test_d02_sostiene_el_isp_con_su_cadena_completa(gold_master):
     if not _hay_motor():
         pytest.skip("enricher no accesible")
     s = M.sostener_isp()

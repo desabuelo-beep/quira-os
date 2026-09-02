@@ -63,13 +63,29 @@ BASE_EXCEL = str(DATOS_DIR)
 # QUIRA demostrar cuál Gold Master es la autoridad vigente y por qué?»*—. Ahora
 # sí, y en un solo lugar: duplicar la regla habría reproducido el defecto que la
 # creó.
-def _resolver_gold_master_vigente() -> "tuple[str, str]":
-    """`(version, ruta)` del Gold Master vigente. Devuelve el histórico si no
-    hay ninguno resoluble — y entonces el sistema sigue funcionando con lo que
-    siempre usó, en vez de quedarse sin motor."""
+def _resolver_gold_master_vigente() -> "tuple[str, str, bool]":
+    """`(version, ruta, resuelto)` del Gold Master vigente.
+
+    Devuelve el histórico si no hay ninguno resoluble — y entonces el sistema
+    sigue funcionando con lo que siempre usó, en vez de quedarse sin motor.
+
+    ⚠️ Y DEVUELVE `resuelto=False` CUANDO ESO PASA (2026-09-02). El fallback
+    operativo es correcto: la app no debe morir porque el Excel no esté a mano.
+    Lo que NO era correcto es que el sistema afirmara `GOLD_MASTER_VERSION =
+    "v5.5_TGI"` sin haber encontrado nada — «no lo encontré» convertido en «es
+    la v5.5», que es justo lo que este sistema existe para no hacer.
+
+    Lo encontró el primer CI real: en el runner, sin el Excel —vive fuera del
+    repositorio—, `test_el_motor_lee_la_version_que_el_canon_declara` falló
+    diciendo «el desfase volvió». No había vuelto D-002: el gate estaba
+    comparando el canon contra un valor que nadie resolvió.
+
+    Quien necesite saberlo consulta `GOLD_MASTER_RESUELTO`. El fallback sigue
+    ahí; lo que ya no hay es la afirmación silenciosa."""
     import re
     historico = ("v5.5_TGI", os.path.join(BASE_EXCEL,
-                                          "SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx"))
+                                          "SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx"),
+                 False)
     if not DATOS_DIR.is_dir():
         return historico
     validos = []
@@ -83,10 +99,10 @@ def _resolver_gold_master_vigente() -> "tuple[str, str]":
     if not validos:
         return historico
     mayor, ruta = max(validos, key=lambda x: x[0])
-    return f"v{mayor[0]}.{mayor[1]}_TGI", str(ruta)
+    return f"v{mayor[0]}.{mayor[1]}_TGI", str(ruta), True
 
 
-GOLD_MASTER_VERSION, SIAP_PATH = _resolver_gold_master_vigente()
+GOLD_MASTER_VERSION, SIAP_PATH, GOLD_MASTER_RESUELTO = _resolver_gold_master_vigente()
 GOLD_MASTER_PATH = SIAP_PATH  # alias explícito para gold_master_governance.py
 
 # Fallback por nombre con fecha (copia de trabajo previa — 2026-05-18)

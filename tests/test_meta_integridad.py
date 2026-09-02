@@ -427,6 +427,58 @@ def test_el_gate_de_sintaxis_compila_contra_la_version_de_CI():
         "degradó: un chequeo degradado en silencio es peor que uno ausente")
 
 
+def test_config_no_afirma_una_version_que_no_resolvio():
+    """EL SEGUNDO HALLAZGO DEL PRIMER CI REAL, y es el más fino de los dos.
+
+    Sin el Gold Master a mano —vive fuera del repositorio, Regla de Oro 1—
+    `config` caía al histórico y exponía `GOLD_MASTER_VERSION = "v5.5_TGI"`
+    **sin haber encontrado nada**. En el runner eso hizo fallar al gate de
+    D-002 con «el desfase volvió»: no había vuelto, el gate comparaba el canon
+    contra un valor que nadie resolvió.
+
+    El fallback operativo es correcto y se conserva: la app no debe morir
+    porque el Excel no esté. Lo que no puede es afirmar en silencio. «No lo
+    encontré» ≠ «es la v5.5» — la misma distinción que `check_extraccion`
+    aprendió el mismo día con su `2 · no determinable`."""
+    import config
+
+    assert hasattr(config, "GOLD_MASTER_RESUELTO"), (
+        "config volvió a exponer la versión sin decir si la resolvió")
+    assert isinstance(config.GOLD_MASTER_RESUELTO, bool)
+
+    fuente = (RAIZ / "config.py").read_text(encoding="utf-8")
+    assert "GOLD_MASTER_RESUELTO = _resolver_gold_master_vigente()" in fuente or \
+           "GOLD_MASTER_RESUELTO = _resolver" in fuente, (
+        "el estado de resolución dejó de derivarse del resolvedor")
+
+    # Y el fallback sigue existiendo: quitarlo dejaría a la app sin motor.
+    assert "historico" in fuente and "no hay ninguno resoluble" in fuente
+
+
+def test_hay_forma_declarada_de_reproducir_el_entorno_de_CI():
+    """LO QUE FALTABA, y por lo que la primera simulación no valió.
+
+    El «clon limpio» heredaba el entorno del que intentaba independizarse:
+    `config.DATOS_DIR` apunta por defecto a `ProyecT/`, fuera del repositorio
+    pero presente en esta máquina. Clonar el repo no aísla de lo que está
+    fuera del repo.
+
+    La forma de reproducir CI tiene que estar escrita donde alguien la
+    encuentre, o la próxima simulación volverá a mentir:
+
+        QUIRA_DATOS=<carpeta vacía> python -m pytest tests/ -q
+    """
+    conftest = (RAIZ / "tests" / "conftest.py").read_text(encoding="utf-8")
+    assert "QUIRA_DATOS" in conftest, (
+        "desapareció la instrucción para reproducir el entorno de CI")
+
+    wf = (RAIZ / ".github" / "workflows" / "quira-health.yml").read_text(encoding="utf-8")
+    assert "QUIRA_DATOS" in wf, "el workflow dejó de decir cómo reproducirlo"
+
+    # El fixture existe y es el que sostiene la declaración.
+    assert "def gold_master(" in conftest
+
+
 def test_todo_el_codigo_rastreado_compila_en_la_version_de_CI():
     """El estado, con trinquete. Los tres se repararon sacando el HTML fuera de
     la f-string —comillas simples, que HTML acepta— y el barrido completo dio

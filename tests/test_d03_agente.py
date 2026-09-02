@@ -40,7 +40,7 @@ def _hay_motor() -> bool:
 
 
 # ── CRITERIO 3 · el verificador tiene quien lo respalde ───────────────────────
-def test_d03_lee_el_mandato_sin_recalcularlo():
+def test_d03_lee_el_mandato_sin_recalcularlo(gold_master):
     """Acredita a `d03.motor.leer_metricas`. La propiedad: d03 **lee** lo que el
     enricher produce (Reglas de Oro 1 y 4), no lo deriva."""
     if not _hay_motor():
@@ -56,7 +56,7 @@ def test_d03_lee_el_mandato_sin_recalcularlo():
 
 
 # ── CRITERIOS 1, 2 y 4 (escalón) ──────────────────────────────────────────────
-def test_d03_declara_sujeto_artefacto_y_no_lleva_reloj():
+def test_d03_declara_sujeto_artefacto_y_no_lleva_reloj(gold_master):
     if not _hay_motor():
         pytest.skip("enricher no accesible")
 
@@ -72,7 +72,7 @@ def test_d03_declara_sujeto_artefacto_y_no_lleva_reloj():
 
 
 # ── ATAQUES ───────────────────────────────────────────────────────────────────
-def test_ataque_identidad_alterar_el_sujeto_cambia_lo_afirmado():
+def test_ataque_identidad_alterar_el_sujeto_cambia_lo_afirmado(gold_master):
     if not _hay_motor():
         pytest.skip("enricher no accesible")
     perfil = S._SUJETOS / f"{S.POR_DEFECTO}.json"
@@ -90,7 +90,7 @@ def test_ataque_identidad_alterar_el_sujeto_cambia_lo_afirmado():
     assert antes != despues
 
 
-def test_ataque_evidencia_un_hash_ajeno_degrada():
+def test_ataque_evidencia_un_hash_ajeno_degrada(gold_master):
     """El escalón 4, que d03 recibe cerrado de fábrica."""
     if not _hay_motor():
         pytest.skip("enricher no accesible")
@@ -102,7 +102,7 @@ def test_ataque_evidencia_un_hash_ajeno_degrada():
     assert P.sostener("x", falseada).peso == P.HALLAZGO_DE_VERIFICABILIDAD
 
 
-def test_ataque_equivalencia_d03_no_transforma_lo_que_el_enricher_produce():
+def test_ataque_equivalencia_d03_no_transforma_lo_que_el_enricher_produce(gold_master):
     """Lo devuelto debe ser idénticamente lo que `build_block()` produjo. Un solo
     redondeo de más sería recalcular."""
     if not _hay_motor():
