@@ -126,6 +126,22 @@ _DEUDAS = (
                "«enganchar los 11 de golpe»: eso daría un CI rojo de origen "
                "desconocido. Primero correr cada gate a mano, después enganchar "
                "el que ya esté verde"),
+    dict(id="D-008", gravedad=CIEGA, capa="C2/C6", dueño="Javo",
+         que="`check_sistema_visual` vigila 5 ambientes + `umi.py` y ahí no hay "
+             "verde. Pero esos ambientes ENRUTAN a 25 páginas vivas que sí lo "
+             "usan —`p_ejecutivo`, `p_command_center`, `p_concejo`, `m_rdc`…—. "
+             "El gate protege la puerta y deja sin mirar las habitaciones. Ya le "
+             "pasó el 2026-08-08 —cubría sólo `login_view` mientras `env_civic` "
+             "usaba #22C55E en cinco sitios— y su propio comentario lo cuenta: "
+             "«protegía la entrada y dejaba sin vigilar las pantallas donde la "
+             "gente pasa el tiempo». Se amplió a los ambientes, que son otra vez "
+             "la entrada. **Reincidencia del mismo defecto un nivel adentro.**",
+         ataque="test_ataque_el_gate_visual_vigila_la_puerta_no_las_habitaciones",
+         no_es="26 infracciones: `app/viz/` (9) está excluido CON motivo escrito "
+               "—una rampa de color puede ser legítima— y `p11_ods` usa los "
+               "verdes oficiales de Naciones Unidas, que son identidad ajena y "
+               "no un juicio de «bien». Cada uno de los 25 exige decidir QUÉ "
+               "dice ese verde, y eso es curación de dominio, no un barrido"),
 )
 
 

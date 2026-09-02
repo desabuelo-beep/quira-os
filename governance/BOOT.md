@@ -29,7 +29,7 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 
 ## AHORA (estado vivo · historial → `governance/historico/`)
 🧭 **031** MCIP=5 motores · **035/037** IA propone/humano valida · **038** BRN **traza, no alimenta**.
 ✅ **PCD: d01·d02·d03·d06·d09** · d08 ENTRABLE · **d07 en curación**.
-🩹 **12 gates · 1 corre (D-007)** · deudas → `deuda.py` · **estados, NO bool**
+🩹 **12/12 gates verdes en local · 1 corre en CI (D-007)** · deudas → `deuda.py`
 📑 ⛔ `.docx` gana al `.pdf`.
 ⚖️ **CANON**: ⛔ DOM **consume RO, NO lee la ley** · estado derivado → `canon.py` (consúltalo, NO lo escribas) · ⛔ **d01·d02·d03·d09: RO vigente NO cargada** (solo d07) · 7 CNO-VIII sin RO.
 📡 **SITA 2025 0,4448** · **0 actas** · num.6 sin ingresos.

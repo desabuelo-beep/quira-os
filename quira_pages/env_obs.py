@@ -88,15 +88,24 @@ def _panel_adquisicion() -> None:
             grados = E.autonomia()
         except Exception:                               # noqa: BLE001
             grados = {}
-        _ETIQUETA = {"validado": ("Reproducible", "#22C55E"),
-                     "ejecucion": ("El sistema la ejecuta", "#38BDF8"),
-                     "capacidad": ("Sin ejecución registrada", "#94A3B8"),
-                     "ausente": ("No disponible", "#EF4444")}
+        # ⚠️ COLORES DEL CANON, NO INVENTADOS (2026-09-02). Aquí había seis hex
+        # sueltos —#22C55E para «Reproducible» y para «al día», #38BDF8, #94A3B8,
+        # #EF4444, #F59E0B— y el verde es el que el sistema prohíbe: QUIRA mide
+        # VERIFICABILIDAD, no bondad. No hay color de «bien».
+        #
+        # Lo dice la paleta misma: `C.atencion(96)` devuelve el gris instrumental,
+        # no un verde. **Lo correcto no se celebra: se deja de señalar.** Por eso
+        # «Reproducible» y «al día» son SIN_SENAL, lo pendiente es ALERTA y lo
+        # ausente es CRITICO. Los cuatro grados conservan sus etiquetas.
+        _ETIQUETA = {"validado": ("Reproducible", C.SIN_SENAL),
+                     "ejecucion": ("El sistema la ejecuta", C.V_TX2),
+                     "capacidad": ("Sin ejecución registrada", C.SIN_SENAL),
+                     "ausente": ("No disponible", C.CRITICO)}
 
         for _id, v in estado.items():
-            color = "#22C55E" if v["al_dia"] else "#F59E0B"
+            color = C.SIN_SENAL if v["al_dia"] else C.ALERTA
             if not v["script_disponible"]:
-                color = "#EF4444"
+                color = C.CRITICO
             edad = f'{v["edad_dias"]} días' if v["edad_dias"] is not None else "nunca"
             g = grados.get(_id, {}).get("grado", "capacidad")
             txt_g, col_g = _ETIQUETA.get(g, _ETIQUETA["capacidad"])
@@ -278,7 +287,10 @@ def _tab_monitoreo() -> None:
     for g in corrida.gates:
         st.markdown(
             f'<div style="font-size:11px;color:{C.V_TX2};margin:2px 0">'
-            f'<span style="color:{"#22C55E" if g.ok else "#EF4444"}">'
+            # El gate que pasa no se pinta de verde: el ✓ ya lo dice, y pintarlo
+            # convertiría «este gate no encontró nada» en «esto está bien» — que
+            # es justo lo que un gate NO puede acreditar (C0 · D-004).
+            f'<span style="color:{C.SIN_SENAL if g.ok else C.CRITICO}">'
             f'{"✓" if g.ok else "✗"}</span>  <b>{g.nombre.title()}</b> — '
             f'{g.detalle}</div>', unsafe_allow_html=True)
 

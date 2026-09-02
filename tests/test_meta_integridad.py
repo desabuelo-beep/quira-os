@@ -391,3 +391,66 @@ def test_ataque_un_gate_que_no_se_ejecuta_no_acredita_nada():
     # dado un falso positivo; se mide el paso `run:`, que es lo que se ejecuta.
     assert not [c for c in pasos if "pytest" in c], (
         "la suite entró a CI: D-007 avanzó y esta prueba debe invertirse")
+
+
+def test_ataque_el_gate_visual_vigila_la_puerta_no_las_habitaciones():
+    """D-008 · LA REINCIDENCIA, y es lo que la hace grave.
+
+    `check_sistema_visual` ya cayó en esto el 2026-08-08: cubría sólo
+    `views/login_view.py` y pasaba en verde mientras `env_civic.py` usaba
+    #22C55E en cinco sitios. Su propio comentario guarda la lección —*«el gate
+    protegía la entrada y dejaba sin vigilar las pantallas donde la gente pasa
+    el tiempo»*— y la reparación fue ampliarlo a los 5 ambientes.
+
+    Pero los ambientes **son otra vez la entrada**: `env_gov`, `env_ops` y
+    `qinv` enrutan a 25 páginas vivas que sí usan verde de «bien». La lección se
+    aplicó al caso, no al patrón.
+
+    ⚠️ NO SON 26 INFRACCIONES, y la diferencia es la de siempre en esta capa:
+    `app/viz/` está excluido CON motivo escrito —una rampa de color puede ser
+    legítima en un mapa— y `p11_ods` usa los verdes oficiales de Naciones
+    Unidas, que son identidad ajena y no un juicio de bondad. Un barrido que no
+    distinga eso rompería lo correcto junto con lo incorrecto.
+
+    Esta prueba fija el estado. El día que el gate mire las páginas, falla."""
+    gate = (RAIZ / "scripts" / "ci" / "check_sistema_visual.py").read_text(encoding="utf-8")
+    assert 'glob("quira_pages/env_*.py")' in gate, (
+        "cambió cómo el gate arma su universo: si CRECIÓ, D-008 avanzó")
+
+    def _verde_de_bien(h: str) -> bool:
+        r, g, b = int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16)
+        return g > r + 30 and g > b + 30          # el mismo criterio del gate
+
+    def _codigo(p) -> str:
+        """Sin comentarios, con la misma poda que el gate — y por la misma razón.
+
+        El gate la añadió el 2026-08-10 tras dispararse con su propia
+        documentación: al retirar #22C55E de `umi.py` y explicar en un
+        comentario cuál era el color retirado, volvió a encontrarlo. Esta
+        prueba repitió el caso hoy, con el comentario que escribí en
+        `env_obs.py` al aplicarle la paleta. Un `#` de Python no llega al
+        navegador."""
+        import io
+        import tokenize
+        try:
+            toks = tokenize.generate_tokens(io.StringIO(
+                p.read_text(encoding="utf-8", errors="replace")).readline)
+            return "\n".join(t.string for t in toks if t.type != tokenize.COMMENT)
+        except Exception:                                   # noqa: BLE001
+            return p.read_text(encoding="utf-8", errors="replace")
+
+    vigilados = {p.name for p in (RAIZ / "quira_pages").glob("env_*.py")} | {"umi.py"}
+    hex_ = re.compile(r"#([0-9a-fA-F]{6})\b")
+    fuera = [p.name for p in (RAIZ / "quira_pages").glob("*.py")
+             if p.name not in vigilados
+             and any(_verde_de_bien(h) for h in hex_.findall(_codigo(p)))]
+
+    # Los ambientes vigilados están limpios — y esa limpieza es justamente lo
+    # que hace creíble un verde que no cubre donde está el problema.
+    for p in (RAIZ / "quira_pages").glob("env_*.py"):
+        assert not any(_verde_de_bien(h) for h in hex_.findall(_codigo(p))), (
+            f"volvió el verde a un ambiente vigilado: {p.name}")
+
+    assert len(fuera) >= 15, (
+        f"quedan {len(fuera)} páginas con verde fuera del universo del gate. Si "
+        f"BAJÓ, D-008 avanzó y hay que actualizar el registro: {sorted(fuera)}")

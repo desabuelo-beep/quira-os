@@ -46,14 +46,27 @@ _EXCLUIR = ("historico", "__pycache__", ".venv", "graphify-out", "worktrees",
 # `bloquea=False` se reserva para lo que depende de una DECISIÓN que aún no se
 # ha tomado. Un gate que falla por algo que nadie resolvió obliga a apagarlo, y
 # un gate apagado no vigila nada. Esos casos se informan y no detienen el paso.
+# Cada regla lleva un 5º campo `salvo`: el uso en el que el término NO es un
+# error, con su motivo escrito. Nació de un falso positivo real (2026-09-02) y
+# la lección es la de siempre en este sistema: **se persigue el sentido, no la
+# palabra**. Un `None` significa «esta regla no admite excepción», no «nadie lo
+# pensó»: la diferencia entre decisión y omisión es justo lo que D-004 cerró.
 _RETIRADAS = [
     # Errores verificables: bloquean.
     (r"quiraholding\.streamlit\.app", "el despliegue cambió de subdominio",
-     "quiraintelligence.streamlit.app", True),
+     "quiraintelligence.streamlit.app", True, None),
+    # ⚠️ EL FALSO POSITIVO QUE ORIGINÓ `salvo`. Este gate llevaba meses sin
+    # ejecutarse (D-007) y al correrlo bloqueó por «los otros 221 GAD» en
+    # PCD-D07. Pero 222 − Montecristi = 221: la frase es ARITMÉTICAMENTE
+    # CORRECTA. Lo que el canon prohíbe es afirmar que el TOTAL es 221, no
+    # nombrar el complemento. El patrón medía el número; el error está en el
+    # papel que el número ocupa en la frase.
     (r"\b221\s+(?:GAD|municipios|cantones)", "son 222 desde la ley del 8-oct-2024",
-     "222", True),
+     "222", True,
+     (r"(?:otros|restantes|dem[áa]s)\s+221",
+      "«los otros 221» es el complemento de 222 menos Montecristi, no el total")),
     (r"QUIRA\s+Operations", "NOMENCLATURA_CANONICA prohíbe publicarlo",
-     "Operaciones", True),
+     "Operaciones", True, None),
 
     # ⚠️ «QUIRA Institucional» YA NO SE PERSIGUE, y la razón importa
     # (2026-08-07). El término nombra DOS COSAS y solo una se renombró:
@@ -69,7 +82,7 @@ _RETIRADAS = [
     # Registra una decisión con el vocabulario de su momento; cambiarle las
     # palabras reescribe la decisión.
     (r"Panel\s+del\s+Observatorio", "se renombró al fijarse ADR-042",
-     "Consola de Monitoreo", False),
+     "Consola de Monitoreo", False, None),
 ]
 
 _EXT_TEXTO = {".md", ".py", ".yaml", ".yml", ".json", ".toml"}
@@ -107,9 +120,14 @@ def main() -> int:
             continue
 
         lineas = texto.splitlines()
-        for patron, motivo, reemplazo, bloquea in _RETIRADAS:
+        for patron, motivo, reemplazo, bloquea, salvo in _RETIRADAS:
             for m in re.finditer(patron, texto, re.I):
                 n = texto[:m.start()].count("\n")
+                # El uso legítimo declarado, si la regla tiene uno. Se comprueba
+                # sobre la LÍNEA —no sobre la vecindad— porque «los otros 221»
+                # es una propiedad de la frase, no del párrafo.
+                if salvo and re.search(salvo[0], lineas[n], re.I):
+                    continue
                 # Mencionar un término para decir que se retiró NO es usarlo.
                 # Se mira la línea y su vecindad: los comentarios que explican
                 # un cambio suelen nombrar el término viejo a propósito, y
