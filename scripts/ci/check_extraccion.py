@@ -33,6 +33,11 @@ from invariantes import Invariantes            # noqa: E402
 
 MUESTRA_POR_DOC = 60
 
+# Tercer código de salida, y no es una convención inventada aquí: es la doctrina
+# de los 8 estados aplicada al propio instrumento. Un gate que no pudo mirar no
+# está bien ni está mal — está **no determinado**, y el circuito debe verlo.
+NO_DETERMINABLE = 2
+
 
 def main() -> int:
     print("=" * 70)
@@ -51,9 +56,27 @@ def main() -> int:
         # Sin corpus alcanzable no hay nada que auditar, y **un gate no debe
         # fallar por no poder mirar**: eso confundiría «no pude comprobar» con
         # «está mal», que es justo lo que este gate existe para evitar.
+        #
+        # ⚠️ PERO DEVOLVÍA 0, Y ÉSE ES EL ERROR SIMÉTRICO (D-007 · 2026-09-02).
+        # Al replicar CI en un clon limpio —sin `secrets.toml`, que no se
+        # rastrea— este gate imprimía «nada que verificar» y **salía verde**.
+        # Enganchado a CI habría acreditado un corpus legible para siempre sin
+        # haberlo mirado nunca: exactamente el defecto de D-004, en su forma
+        # más pura.
+        #
+        # La casa ya tenía la respuesta y el gate no se la aplicaba a sí mismo:
+        # **8 estados, no bool**. «No existe» ≠ «no pude obtener» ≠ «falló».
+        #
+        #     0 · verificado, sin hallazgos
+        #     1 · verificado, hay hallazgos
+        #     2 · NO DETERMINABLE — no se pudo mirar
+        #
+        # El 2 no bloquea el pipeline, pero tampoco dice que esté bien: obliga a
+        # que el circuito lo muestre como lo que es.
         print(f"  [--] corpus no alcanzable ({type(e).__name__}); nada que verificar")
+        print("  ESTADO: no_determinable — este gate NO acredita el corpus hoy.")
         print("=" * 70)
-        return 0
+        return NO_DETERMINABLE
 
     cur = cn.cursor()
     cur.execute("""select norma_sigla, count(*) from normativa_corpus

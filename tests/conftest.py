@@ -50,9 +50,11 @@ from __future__ import annotations
 
 import socket
 import subprocess
+from pathlib import Path
 
 import pytest
 
+_RAIZ = Path(__file__).resolve().parents[1]
 MARCADOR = "efecto_real"
 
 
@@ -107,3 +109,40 @@ def frontera_de_efectos(request, monkeypatch):
                         _prohibir("abrir una conexión de red"), raising=False)
     monkeypatch.setattr(socket, "create_connection",
                         _prohibir("abrir una conexión de red"), raising=False)
+
+
+# ── LA EVIDENCIA QUE EL REPOSITORIO NO CONTIENE ──────────────────────────────
+# D-007 · 2026-09-02. Al replicar CI en un clon limpio, tres pruebas fallaron —no
+# por un defecto del código, sino porque exigen los 422 artefactos capturados del
+# portal, y `.gitignore:114` excluye `data/lotaip/artefactos/` del repositorio
+# **por decisión**: son la captura, no el sistema.
+#
+# El defecto no estaba en el .gitignore ni en el código: estaba en que las
+# pruebas **no declaraban esa dependencia**. Dos de ellas ni la mencionaban, y la
+# tercera miraba la SALIDA que iba a rehacer en vez de la EVIDENCIA con la que la
+# rehace — un guardián apuntando al sitio equivocado.
+#
+# ⚠️ UN SKIP NO ES UN APROBADO, y por eso este guardián comprueba la AUSENCIA DEL
+# DATO, nunca atrapa un fallo. Si la evidencia está y la prueba falla, falla: lo
+# que se salta es la comprobación imposible, no la incómoda.
+CAPTURA = "data/lotaip/artefactos"
+
+
+@pytest.fixture
+def evidencia_capturada():
+    """Salta la prueba si la evidencia local no está, diciendo por qué.
+
+    Se pide como argumento —`def test_x(evidencia_capturada):`— y así la
+    dependencia queda **en la firma de la prueba**, visible sin leer el cuerpo.
+    Ésa es la mitad del arreglo: la otra era que existiera.
+
+    En la máquina donde vive la captura, estas pruebas corren enteras y son de
+    las más exigentes que tiene el sistema. En CI se saltan y **el informe lo
+    dice**: un verde de CI acredita lo que CI pudo mirar, no todo (C0 · D-004)."""
+    carpeta = _RAIZ / CAPTURA
+    if not carpeta.exists() or not any(carpeta.glob("*.bin")):
+        pytest.skip(
+            f"evidencia capturada ausente ({CAPTURA}): .gitignore la excluye del "
+            f"repositorio por decisión, así que esta comprobación no es posible "
+            f"aquí. NO es un aprobado — es una verificación no realizada.")
+    return carpeta

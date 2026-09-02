@@ -349,48 +349,41 @@ def test_lo_excluido_se_clasifica_no_se_enumera():
 
 
 # ── EL MISMO PATRÓN, UN NIVEL ARRIBA · D-007 ─────────────────────────────────
-def test_ataque_un_gate_que_no_se_ejecuta_no_acredita_nada():
-    """D-007 · EL HALLAZGO QUE APARECIÓ AL CERRAR D-004, y es el séptimo caso del
-    mismo patrón en dos días.
+def test_el_circuito_ejecuta_los_gates_y_la_suite():
+    """D-007 · CERRADA, y esta prueba se invirtió: era la señal pactada.
 
-    D-004 era un gate con el universo mal declarado: veía 0 porque no miraba
-    `sentinel/`. Al repararlo salió la pregunta obvia —*¿y los demás gates?*— y
-    la respuesta es peor que el defecto original:
+    Decía: *«12 gates en `scripts/ci/`, 1 se ejecuta en CI; 33 archivos de
+    prueba, `pytest` no es paso de ningún workflow»*. Un gate ciego al menos
+    corre y puede acertar por accidente; uno que no se ejecuta acredita cero
+    hallazgos **por no existir**, y su verde es el silencio de nadie
+    preguntando.
 
-        12 gates en `scripts/ci/` · **1 se ejecuta en CI**
-        33 archivos de prueba · **`pytest` no es un paso de ningún workflow**
+    No se enganchó a ciegas. Se replicó CI —clon limpio del repositorio, venv
+    virgen, el shell exacto de GitHub— y aparecieron las tres trampas que un
+    enganche ingenuo habría vuelto un CI rojo el primer día: tres pruebas que
+    exigían evidencia que `.gitignore` excluye por decisión, un gate que salía
+    VERDE diciendo «nada que verificar», y tres dependencias que
+    `requirements.txt` no declara.
 
-    Un gate ciego al menos corre y puede acertar por accidente. Un gate que no
-    se ejecuta acredita cero hallazgos **por no existir**, y su verde es el
-    silencio de nadie preguntando. Es la forma extrema de la regla de C0: no ya
-    un mecanismo que es autoridad sobre su propia cobertura, sino uno cuya
-    cobertura es cero y nadie lo sabe.
-
-    ⚠️ ESTA PRUEBA FIJA EL ESTADO, NO LO REPARA, y esta vez por una razón que no
-    es sólo de método: `.github/workflows/*` está **congelado** (Regla de Oro 5)
-    y engancharlo es decisión de Javo, no mía. Enganchar 11 gates de golpe sobre
-    un repositorio que nunca los corrió tampoco es una mejora: es un CI rojo de
-    origen desconocido. El orden correcto es correr cada uno a mano, ver qué
-    dice, y engancharlo cuando esté en verde.
-
-    El día que se enganche, esta prueba falla — y ese fallo es la señal."""
+    ⚠️ Y EL VERDE DE CI NO ACREDITA TODO, que es lo que impide que este cierre
+    reintroduzca el defecto que cierra: lo no determinable y lo saltado se
+    cuentan y se anuncian. Un mecanismo de cobertura no es autoridad sobre su
+    propia cobertura, tampoco cuando el mecanismo es el circuito entero."""
     gates = sorted(p.name for p in (RAIZ / "scripts" / "ci").glob("check_*.py"))
-    pasos: list[str] = []
-    for w in (RAIZ / ".github" / "workflows").glob("*.y*ml"):
-        pasos += re.findall(r"^\s*run:\s*(.+)$",
-                            w.read_text(encoding="utf-8", errors="replace"), re.M)
+    wf = (RAIZ / ".github" / "workflows" / "quira-health.yml").read_text(encoding="utf-8")
 
-    ejecutados = {g for g in gates if any(g in c for c in pasos)}
     assert len(gates) >= 12, "el inventario de gates se derivó mal"
-    assert ejecutados == {"check_health.py"}, (
-        f"cambió qué gates corren en CI: ahora {sorted(ejecutados)}. Si CRECIÓ, "
-        f"D-007 avanzó y hay que actualizar esta prueba y el registro de deuda")
+    # El bucle recorre `scripts/ci/check_*.py`: el universo se DERIVA, no se
+    # enumera. Es la lección de D-004 aplicada al circuito que corre los gates.
+    assert "for g in scripts/ci/check_*.py" in wf, (
+        "el workflow volvió a enumerar gates a mano, o dejó de correrlos")
+    assert "python -m pytest tests/" in wf, "la suite salió de CI"
 
-    # `pytest` aparece en `claude.yml`, pero como permiso de herramienta del bot
-    # —`Bash(python -m pytest *)`—, no como paso de CI. Medir la palabra habría
-    # dado un falso positivo; se mide el paso `run:`, que es lo que se ejecuta.
-    assert not [c for c in pasos if "pytest" in c], (
-        "la suite entró a CI: D-007 avanzó y esta prueba debe invertirse")
+    # Los tres estados, no dos: un gate que no pudo mirar no es un gate que pasó.
+    for marca in ("NO DETERMINABLE", "no determinables", "saltadas"):
+        assert marca in wf, (
+            f"CI dejó de declarar lo que no pudo verificar: falta «{marca}». Sin "
+            f"eso, un verde acreditaría también lo que nunca miró")
 
 
 def test_ataque_el_gate_visual_vigila_la_puerta_no_las_habitaciones():

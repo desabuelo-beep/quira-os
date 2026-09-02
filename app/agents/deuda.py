@@ -133,13 +133,25 @@ _DEUDAS = (
                "fabricarlas para que un inventario dé cero habría sido peor que "
                "la deuda"),
     dict(id="D-007", gravedad=CIEGA, capa="C2", dueño="Javo",
+         estado="RESUELTA 2026-09-02 · Javo autorizó tocar lo congelado con una "
+                "condición —no dañar lo que funciona— y por eso NO se enganchó a "
+                "ciegas: se replicó CI en clon limpio + venv virgen + el shell "
+                "exacto de GitHub. Ahí aparecieron las 3 trampas que habrían "
+                "dado un CI rojo el primer día: 3 pruebas exigían evidencia que "
+                "`.gitignore:114` excluye por decisión (hoy la piden por fixture "
+                "y se saltan diciendo por qué), `check_extraccion` salía VERDE "
+                "diciendo «nada que verificar» (hoy devuelve 2 · no "
+                "determinable), y `requirements.txt` no declara pytest/pyyaml/"
+                "pdfplumber. Verificado: 715 pasan · 5 saltadas con motivo · 11 "
+                "gates verdes · 1 no determinable. Y el verde de CI NO acredita "
+                "todo: lo saltado y lo no determinable se cuentan y se anuncian",
          que="Al cerrar D-004 apareció la misma falla un nivel arriba: de 12 "
              "gates en `scripts/ci/`, **sólo `check_health.py` se ejecuta** en "
              "un workflow, y `pytest` no es paso de ninguno — las 33 pruebas no "
              "corren en CI. Un gate ciego al menos corre; uno que no se ejecuta "
              "acredita cero hallazgos POR NO EXISTIR, y su verde es el silencio "
              "de nadie preguntando.",
-         ataque="test_ataque_un_gate_que_no_se_ejecuta_no_acredita_nada",
+         ataque="test_el_circuito_ejecuta_los_gates_y_la_suite",
          no_es="algo que yo pueda reparar: `.github/workflows/*` está congelado "
                "(Regla de Oro 5) y engancharlo es decisión de Javo. Tampoco es "
                "«enganchar los 11 de golpe»: eso daría un CI rojo de origen "

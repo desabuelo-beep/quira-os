@@ -181,7 +181,7 @@ def test_ningun_artefacto_declara_bajo_que_version_de_identidad_se_produjo():
 
 
 # ── C3 CONSOLIDADA · los cuatro estados, juntos ──────────────────────────────
-def test_el_estado_de_la_capa_3_es_el_demostrado():
+def test_el_estado_de_la_capa_3_es_el_demostrado(evidencia_capturada):
     """LA CONSOLIDACIÓN, tal como el colega la fijó — y ninguno de los cuatro
     estados es automáticamente un «defecto»:
 

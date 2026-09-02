@@ -162,7 +162,7 @@ def test_cobertura_no_inventa_ausencias_por_busqueda_literal():
         f"la búsqueda literal volvió a declarar ausencias: {cob.no_hallados}")
 
 
-def test_cobertura_si_declara_ausencia_cuando_la_norma_da_regla():
+def test_cobertura_si_declara_ausencia_cuando_la_norma_da_regla(evidencia_capturada):
     """El numeral 6 remite expresamente a «los clasificadores presupuestales», y
     ahí sí hay regla objetiva: el primer dígito del código. Los ocho períodos
     publicados traen cero filas de los grupos 1 y 2 — ingresos."""
@@ -170,6 +170,14 @@ def test_cobertura_si_declara_ausencia_cuando_la_norma_da_regla():
     cob = verificar_cobertura("CD-06", 2025, 10)
     if not cob.por_componente:
         pytest.skip("sin evidencia descargada para el período")
+    # El guardián de arriba cubre «no hay componentes»; faltaba éste: sin los CSV
+    # el componente SÍ aparece, con estado `no_determinable` — y el instrumento
+    # tiene razón en no declarar ausencia sin poder mirar. Exigirle `Ingresos` en
+    # `no_hallados` sería pedirle justo lo que se le prohíbe (D-007).
+    if all(c.get("estado") == "no_determinable"
+           for c in cob.por_componente.values()):
+        pytest.skip("los componentes son no determinables aquí: sin evidencia, "
+                    "el instrumento se niega a declarar ausencia — y hace bien")
     assert "Ingresos" in cob.no_hallados
     assert cob.por_componente["Gastos"]["estado"] == "cubierto"
 
@@ -516,7 +524,7 @@ def test_un_analisis_que_se_corto_solo_no_se_declara_completo():
     "borra un derivado y deja que la cadena lo reconstruya: el trabajo real NO "
     "es un medio para probar otra cosa, es exactamente lo que esta prueba "
     "demuestra. Eliminarlo la vaciaría de contenido.")
-def test_quira_reconstruye_sus_derivados_sin_ayuda():
+def test_quira_reconstruye_sus_derivados_sin_ayuda(evidencia_capturada):
     """Se borra un derivado real y se comprueba que el agente lo rehace **igual**.
 
     Por qué se compara el SHA y no sólo que el archivo reaparezca: un
@@ -529,6 +537,9 @@ def test_quira_reconstruye_sus_derivados_sin_ayuda():
     """
     from app.agents.d07 import etapas as E
 
+    # El guardián miraba la SALIDA que iba a rehacer, no la EVIDENCIA con la que
+    # la rehace: en un clon limpio el derivado existe (está en git) pero los CSV
+    # capturados no, y la reconstrucción salía distinta en un byte (D-007).
     etapa = next(e for e in E.ETAPAS if e["id"] == "contenido")
     destino = RAIZ / etapa["produce"][0]
     if not destino.exists():

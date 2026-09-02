@@ -1,8 +1,44 @@
 name: QUIRA · Health Check
 
-# Guardián ligero de salud del proyecto. Corre en cada push/PR.
-# Protege lo que importa: arranque liviano, sin secretos, sintaxis válida.
-# NO conecta a Supabase/Neo4j/Excel — sin credenciales, ~30 segundos.
+# Guardián de salud del proyecto. Corre en cada push/PR.
+# Protege lo que importa: arranque liviano, sin secretos, sintaxis válida,
+# los doce gates de verificación y la suite completa.
+# NO conecta a Supabase/Neo4j/Excel — sin credenciales.
+#
+# ─────────────────────────────────────────────────────────────────────────────
+# D-007 · 2026-09-02 · POR QUÉ ESTE ARCHIVO CAMBIÓ, ESTANDO CONGELADO
+#
+# Hasta hoy este workflow corría UN gate de doce, y `pytest` no era paso de
+# ningún workflow: las 720 pruebas —incluidos todos los ataques que fijan las
+# deudas— no se ejecutaban en ninguna parte. Un gate que no corre acredita cero
+# hallazgos POR NO EXISTIR, y su verde es el silencio de nadie preguntando.
+#
+# Javo autorizó tocar lo congelado con una condición: «no dañar nada de lo que
+# tenemos listo y funciona». Por eso NO se enganchó a ciegas. Se replicó CI en
+# un clon limpio del repositorio y un entorno virgen —que es lo que GitHub hace
+# de verdad— y ahí aparecieron las trampas que un enganche ingenuo habría
+# convertido en un CI rojo el primer día:
+#
+#   · tres pruebas exigían `data/lotaip/artefactos/`, que `.gitignore:114`
+#     excluye POR DECISIÓN. No fallaba el código: fallaba que la dependencia no
+#     estuviera declarada. Hoy la piden por fixture y se saltan diciendo por qué.
+#   · `check_extraccion` salía VERDE imprimiendo «nada que verificar» cuando no
+#     alcanzaba el corpus. Enganchado así habría acreditado para siempre un
+#     corpus que nunca miró — el defecto de D-004 en su forma más pura. Hoy
+#     devuelve 2: no determinable.
+#   · `requirements.txt` no incluye `pytest`, `pyyaml` ni `pdfplumber`, que la
+#     suite y los gates sí necesitan. Se instalan explícitos.
+#
+# Verificado antes de escribir esto: 715 pruebas pasan y 5 se saltan con motivo,
+# 11 gates en verde y 1 no determinable, en clon limpio + venv limpio.
+#
+# LOS TRES CÓDIGOS DE SALIDA, que son la doctrina de los 8 estados aplicada al
+# propio instrumento — «no existe» ≠ «no pude obtener» ≠ «falló»:
+#
+#     0 · verificado, sin hallazgos
+#     1 · verificado, hay hallazgos     → detiene
+#     2 · NO DETERMINABLE, no pudo mirar → avisa, no detiene, y SE VE
+# ─────────────────────────────────────────────────────────────────────────────
 
 on:
   push:
@@ -15,6 +51,12 @@ on:
       - "sentinel/**"
       - "app/**"
       - "docs/**"
+      - "tests/**"
+      - "quira_pages/**"
+      - "utils/**"
+      - "views/**"
+      - "components/**"
+      - "data/**"
       - "*.py"
   pull_request:
     branches: [main]
@@ -22,9 +64,9 @@ on:
 
 jobs:
   health:
-    name: Arranque + Secretos + Sintaxis
+    name: Arranque + Secretos + Sintaxis + Gates + Suite
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 15
     permissions:
       contents: read
 
@@ -38,7 +80,11 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+          cache: pip
 
+      # `check_health` corre ANTES de instalar nada: sólo usa la biblioteca
+      # estándar, y que siga siendo así es parte de lo que protege. Si un día
+      # necesitara un paquete, este orden lo delata.
       - name: QUIRA Health Check
         run: python scripts/ci/check_health.py
 
@@ -52,3 +98,54 @@ jobs:
             fi
           done
           echo "OK — ningún archivo sensible está rastreado"
+
+      # `requirements.txt` es lo que necesita la APLICACIÓN. Los tres de después
+      # son lo que necesitan las PRUEBAS y los gates, y no estaban declarados en
+      # ningún sitio hasta que CI obligó a mirarlo.
+      - name: Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip --quiet
+          pip install -r requirements.txt pytest pyyaml pdfplumber --quiet
+
+      - name: Gates de verificación
+        run: |
+          fallos=0; nodet=0; ok=0
+          for g in scripts/ci/check_*.py; do
+            if [ "$g" = "scripts/ci/check_health.py" ]; then continue; fi  # ya corrió
+            set +e; python "$g" > /tmp/salida.txt 2>&1; c=$?; set -e
+            case $c in
+              0) ok=$((ok+1)); echo "  [ok]   $g" ;;
+              2) nodet=$((nodet+1))
+                 echo "::warning file=$g::NO DETERMINABLE — este gate no pudo verificar, y por tanto NO acredita nada"
+                 tail -6 /tmp/salida.txt ;;
+              *) fallos=$((fallos+1))
+                 echo "::error file=$g::el gate encontró hallazgos (exit $c)"
+                 cat /tmp/salida.txt ;;
+            esac
+          done
+          echo ""
+          echo "gates: $ok verificados · $nodet no determinables · $fallos con hallazgos"
+          # Lo que CI NO pudo mirar se dice en voz alta: un verde acredita lo
+          # inspeccionado, nunca el resto (C0 · un mecanismo de cobertura no es
+          # autoridad sobre su propia cobertura).
+          if [ $nodet -gt 0 ]; then
+            echo "::notice::$nodet gate(s) no determinables: el verde de este CI NO los cubre"
+          fi
+          exit $fallos
+
+      - name: Suite de pruebas
+        run: |
+          set +e
+          python -m pytest tests/ -q -p no:randomly --tb=short -rs > /tmp/pytest.txt 2>&1
+          c=$?
+          set -e
+          tail -40 /tmp/pytest.txt
+          # Las saltadas se cuentan y se nombran: en CI faltan la evidencia
+          # capturada y las credenciales, así que algunas comprobaciones no son
+          # posibles aquí. Un skip NO es un aprobado, y callarlo convertiría
+          # «no verificado» en «verificado» — el error que este sistema persigue.
+          s=$(grep -oE '[0-9]+ skipped' /tmp/pytest.txt | head -1 | cut -d' ' -f1 || true)
+          if [ -n "$s" ] && [ "$s" != "0" ]; then
+            echo "::notice::$s prueba(s) saltadas por falta de evidencia local: el verde de este CI no las cubre"
+          fi
+          exit $c

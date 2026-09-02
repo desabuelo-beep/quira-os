@@ -29,7 +29,7 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 
 ## AHORA (estado vivo · historial → `governance/historico/`)
 🧭 **031** MCIP=5 motores · **035/037** IA propone/humano valida · **038** BRN **traza, no alimenta**.
 ✅ **PCD: d01·d02·d03·d06·d09** · d08 ENTRABLE · **d07 en curación**.
-🩹 **12/12 gates verdes · 1 en CI (D-007)** · deudas → `deuda.py`
+🩹 **12 gates + suite EN CI** · exit **2 = no determinable** · deudas → `deuda.py`
 📑 ⛔ `.docx` gana al `.pdf`.
 ⚖️ **CANON**: ⛔ DOM **consume RO, NO lee la ley** · estado derivado → `canon.py` (consúltalo, NO lo escribas) · ⛔ **d01·d03·d09: RO NO cargada** (d07·d02 sí) · **VIII propuesta → d08 mide, NO dictamina** (D-6).
 📡 **SITA 2025 0,4448** · **0 actas** · num.6 sin ingresos.
@@ -48,11 +48,11 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 
 ➡️ **SIGUIENTE**: Capa 2 a los 24 numerales (⏸ valid. jurídica de 105) · luego los 636.
 🧾 **SCORING vs Instr.**: SITA·CTA·ETA·RP ✅ · **CI mal** (Anexo 1: 1×1). ⛔ NO tocar SITA.
 🧷 **PROCEDENCIA**: nace en el GENERADOR sin reloj (⛔ estamparla luego re-ejecuta la cadena) · **POR AFIRMACIÓN, no por dominio** (d09).
-🚧 **TEST ≠ OPERACIÓN**: `conftest` corta subprocess/red · el efecto real se declara.
+🚧 **TEST ≠ OPERACIÓN**: `conftest` corta subprocess/red · efecto real y **evidencia ausente se DECLARAN**.
 🧱 **053**: DOM = **agente gobernado** · d01·d02·d03·d09 migrados+atacados · **consulta d01↔d02 VIVA**: evidencia, NUNCA verdad.
 🪜 **ESCALERA 4-7**: evidencia↔artefacto · se LEE a quien ejecutó (⛔ no ejecutar), **CADUCA** · **lo leído ≠ la fuente**: el derivado señala origen.
 ⛔ **ENRICHER SIN FUENTE ABORTA**: vacío vuelve «no accedí» en «no hubo».
-🗳️ **SECCIONALES 29-NOV-2026** (alcaldes·prefectos·juntas): ventana para que la gente verifique su alcaldía · ⛔ **la fecha NO manda**: primero impoluto.
+🗳️ **SECCIONALES 29-NOV-2026**: ventana para verificar su alcaldía · ⛔ **la fecha NO manda**: primero impoluto.
 
 ## ARQUITECTURA — RADAR NACIONAL (ADR-024 · detalle en el ADR)
 GAD = sujeto observado, NO cliente. 4 capas: A Núcleo · B Operaciones · C Productos (§LA TESIS · 1 motor) · D Portal `quiraintelligence.com` (radar 222 GAD).
