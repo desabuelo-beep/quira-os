@@ -147,7 +147,105 @@ empieza a parecer una regla implícita de todo el Gold Master.
 
 ---
 
-## 6 · Lo que esta ficha NO responde
+## 6 · Las dos preguntas de Javo, medidas  `GM-Ω-ICPI-002/006`
+
+> *«¿pesa más el agua potable por necesidades de extrema urgencia, o todo debe valer
+> igual si se planifica? … no se puede puntuar al mismo nivel si una obra está
+> planificada y publicada pero nunca adjudicada o ejecutada»*
+
+### 6.1 · ¿Debe pesar más el agua? — el motor ya lo hace, y con fuente
+
+`H14!A4` declara la escala: **«R_i_raw: 1,5 = Exclusiva Crítica (agua/alcantarillado) ·
+1,0 = Exclusiva Importante · 0,5 = Concurrente»**, y **cada meta cita su norma** en la
+columna `Justificación R_i`:
+
+| Meta | Competencia | R_i_raw | Fuente citada |
+|---|---|---|---|
+| Agua potable | Exclusiva_Crítica | 1,5 | COOTAD Art. 55d |
+| Vialidad | Exclusiva_Crítica | 1,5 | COOTAD Art. 55f |
+| Talento humano | Exclusiva_Importante | 1,0 | COOTAD Art. 57 |
+| Salud integral | Concurrente_Crítica | 0,5 | COOTAD Art. 135 |
+
+**Esto está bien hecho y hay que decirlo:** la desigualdad de peso no nace del criterio
+del analista, sino de la competencia que el COOTAD asigna al GAD. Es la Regla de Oro 3
+aplicada a la ponderación — y es lo que impide que QUIRA fije política pública decidiendo
+por su cuenta qué importa más.
+
+**PERO la magnitud la decide el dinero.** `H14!A3`: *«P_i = Peso financiero
+normalizado»*. El denominador es `P_i × R_i`, de modo que el índice pondera por
+**presupuesto × relevancia jurídica**. Consecuencia medible:
+
+- `SC-L-N-02` (talento humano, R=1,0) tiene **P_i = 0,3079** — mayor que
+  `SC-I-N-01` (agua potable, R=1,5) con **P_i = 0,2736**.
+- `SC-I-N-03` (participación ciudadana) tiene **P_i = 0,001**: es prácticamente
+  invisible en el índice porque mueve poco presupuesto.
+
+> **Una meta de derecho fundamental con poco presupuesto pesa casi nada.** El agua
+> termina primera (34,9 %) porque su R la compensa, pero el orden de magnitud lo fija el
+> gasto, no el derecho. Si eso es deliberado, debe declararse; si no lo es, es deuda.
+
+### 6.2 · Las etapas de la obra — el vocabulario existe y está inerte
+
+`H13` filas 8-11 definen **tres niveles por verificador**, con criterio escrito:
+
+```
+V_SERCOP   1,0 adjudicado publicado  ·  0,5 registrado NO adjudicado  ·  0,0 sin proceso
+V_eSIGEF   1,0 devengado > 0         ·  0,5 codificado SIN devengar   ·  0,0 sin registro
+V_LOTAIP   1,0 documento accesible   ·  0,5 URL no accesible          ·  0,0 sin URL
+V_CPCCS    1,0 mencionada con evid.  ·  0,5 mencionada sin evidencia  ·  0,0 no mencionada
+```
+
+**Medido: ninguna de las 25 metas usa el 0,5 en ningún verificador.** Todo está en 0 o
+en 1. La escala que distingue *publicado* de *adjudicado* está documentada, tiene
+criterio, y no se aplica.
+
+Y aunque se aplicara, **la fórmula de `V_i` la ignoraría**:
+
+```
+=SI(O(V_eSIGEF=0, V_SERCOP=0), 0, SI(O(V_LOTAIP=1, V_CPCCS=1), 1, 0.5))
+```
+
+Un `V_eSIGEF = 0,5` —codificado, nunca pagado— **no es 0**, así que pasa al segundo `SI`
+y, si hay transparencia, sale **`V_i = 1,0`**: puntúa igual que una obra devengada.
+
+**Y la cadena no llega al final.** `V_eSIGEF = 1,0` significa *devengado*, es decir
+**pagado** — no *recibido*, no *funcionando*. Entre «se pagó» y «la obra sirve» hay un
+tramo que el índice no observa: acta de entrega-recepción, informe de fiscalización,
+puesta en servicio.
+
+    planificado → publicado → adjudicado → codificado → devengado → RECIBIDO → EN SERVICIO
+    └── fuera (V_POA no entra) ──┘         └── modelado ──┘        └── no modelado ──┘
+
+> La intuición de Javo es correcta y el modelo ya tiene la mitad de la respuesta: sabe
+> distinguir las etapas, decidió no usarlas, y no observa el tramo final.
+
+### 6.3 · HALLAZGO GRAVE — el ICPI 2026 lee verificaciones de 2025
+
+`H12!D6`, la fórmula que trae `V_i` a cada meta del motor vigente:
+
+```
+=IFERROR(VLOOKUP(A6, H13_VARIABLES_Vi!$A:$F, 6, FALSE), "⚠️ Vi NO ENCONTRADO")
+```
+
+La columna 6 del rango `A:F` es **`F`**. Y `H13!F24`, su cabecera, dice: **`Vi_2025`**.
+La sección que la contiene, `H13!A23`, se titula: *«VALORES Vi DE REFERENCIA 2025 (para
+verificar ICPI_Real_2025…)»*.
+
+**Barrida la hoja completa: no existe ninguna otra tabla de `V_i`.** Es la única, y el
+motor 2026 la consume como su verificación vigente.
+
+> El ICPI publicado como **2026** toma su dimensión de verificación intersistémica de una
+> tabla que el propio Gold Master rotula **de referencia 2025**, y que fue construida
+> para verificar el índice del año anterior.
+
+Es «período mezclado» en el sentido exacto del protocolo GM-Ω. No se afirma que sea un
+error —puede que `V_i` se considere estable entre años, o que la actualización esté
+pendiente— pero **eso no está declarado en ninguna parte**, y un índice anual que lee
+verificaciones del año previo debe decirlo en su propia cara.
+
+---
+
+## 7 · Lo que esta ficha NO responde
 
 - **Procedencia documental completa** (`GM-Ω-ICPI-005`): falta bajar de `H14`, `H13`,
   `H07b` y `H01 §M` hasta el documento y la fuente institucional de cada valor.
@@ -160,7 +258,7 @@ empieza a parecer una regla implícita de todo el Gold Master.
 
 ---
 
-## 7 · Dictamen preliminar (no es el dictamen)
+## 8 · Dictamen preliminar (no es el dictamen)
 
 **El motor está bien construido y puede estar midiendo mal el fenómeno.** Son dos cosas
 distintas y ambas son ciertas:
@@ -170,5 +268,12 @@ distintas y ambas son ciertas:
 | **Matemática** — ¿la fórmula calcula lo que dice? | ✅ reproducible, verificada, con axioma propio |
 | **Epistemológica** — ¿la variable significa lo que dice? | 🔴 `V_i=0` significa dos cosas incompatibles |
 | **Empírica** — ¿la evidencia permite afirmarlo? | 🟡 sí para OBRA; para SERVICIO/NORMATIVO la evidencia existe (LOTAIP/CPCCS) y el índice la ignora |
+| **Temporal** — ¿el período de la evidencia es el del índice? | 🔴 el ICPI 2026 lee `Vi_2025` |
+
+**Los tres hallazgos comparten una raíz**: el modelo tiene el vocabulario para hacer las
+distinciones correctas —naturaleza de la meta, etapas de la contratación, período de la
+verificación— y en los tres casos **el vocabulario está declarado y no se aplica**. No es
+un motor mal construido: es un motor cuya semántica quedó a medio implementar, y nadie
+podía verlo porque la aritmética siempre cerró.
 
 *Dylus Lab © 2026 · GM-Ω Fase 0 · no modifica el Gold Master*
