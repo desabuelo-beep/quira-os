@@ -151,7 +151,11 @@ jobs:
       - name: Suite de pruebas
         run: |
           set +e
-          python -m pytest tests/ -q -p no:randomly --tb=line -rs > /tmp/pytest.txt 2>&1
+          # `-rfs`, no `-rs`: la primera versión pedía sólo el resumen de
+          # SALTADAS, y con 57 skips el `tail -40` los mostraba a todos y a
+          # ningún fallo. El instrumento dejaba fuera justo lo que hacía falta
+          # leer — el mismo defecto que persigue, en su propia salida.
+          python -m pytest tests/ -q -p no:randomly --tb=line -rfs > /tmp/pytest.txt 2>&1
           c=$?
           set -e
           # Los fallos PRIMERO y completos. La versión anterior sólo hacía
