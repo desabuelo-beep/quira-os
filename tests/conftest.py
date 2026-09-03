@@ -145,7 +145,15 @@ def gold_master():
     REPRODUCIR CI EN LOCAL — las dos mitades, y hacen falta las dos:
 
         git clone <repo> /tmp/ci && cd /tmp/ci     # sin lo que .gitignore excluye
+        python scripts/ci/check_health.py          # compila contra la versión de CI
         QUIRA_DATOS=<carpeta vacía> pytest tests/  # sin lo que vive fuera del repo
+
+    ⚠️ LAS TRES, no dos. La simulación con clon + variable dio verde y el CI
+    cayó igual: una f-string con comillas anidadas —legal desde PEP 701, y esta
+    máquina corre 3.13— no compila en el 3.11 del runner. `pytest` no lo ve
+    porque nunca importa esa pantalla; `check_health` sí, porque COMPILA contra
+    la versión que el workflow declara. Correr la suite no es comprobar que el
+    código compila.
 
     Clonar solo no basta: `config.DATOS_DIR` apunta fuera del repositorio y el
     clon seguiría leyendo el Gold Master de esta máquina. Poner la variable sola

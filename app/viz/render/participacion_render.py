@@ -262,10 +262,21 @@ def _vitalidad(d: dict) -> str:
                     f'<div class="l">{_esc(l)}</div></div>' for k, x, l in comp)
     serie = ""
     if expediente:
+        # ⚠️ SIN F-STRING ANIDADA. La primera versión llevaba comillas simples
+        # dentro de una f-string delimitada por comillas simples: legal desde
+        # PEP 701 (Python 3.12), y esta máquina corre 3.13 — pero el runner usa
+        # 3.11 y no compila. Es el MISMO defecto que ya tumbó un CI el 02-sep,
+        # cometido otra vez por el mismo motivo: lo que aquí pasa, allí no.
+        # `check_health` lo cazó porque compila contra la versión que el
+        # workflow declara; la simulación local no, porque sólo corría pytest.
+        def _docs(e):
+            n = e.get("n_documentos")
+            return f' · {n} documento(s) en expediente' if n else ''
+
         filas = "".join(
             f'<div class="d8-cau-i"><span class="d8-cau-d" style="background:var(--ind)"></span>'
             f'<div><b>{_esc(e["mecanismo"])}</b> — {_esc(str(e.get("cobertura") or "sin cobertura declarada"))}'
-            f'{f" · {e['n_documentos']} documento(s) en expediente" if e.get("n_documentos") else ""}</div></div>'
+            f'{_docs(e)}</div></div>'
             for e in expediente)
         serie = (f'<p class="qc-cap" style="margin-top:13px">Lo que este dominio SÍ tiene de suyo: el expediente '
                  f'documental de sus propios mecanismos. La asistencia a las jornadas de rendición '

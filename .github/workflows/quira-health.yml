@@ -43,7 +43,12 @@ name: QUIRA · Health Check
 # REPRODUCIR ESTE ENTORNO EN LOCAL — hacen falta las DOS mitades:
 #
 #     git clone <repo> /tmp/ci && cd /tmp/ci      # sin lo que .gitignore excluye
+#     python scripts/ci/check_health.py           # compila contra 3.11, el de aquí
 #     QUIRA_DATOS=<carpeta vacía> pytest tests/   # sin lo que vive fuera del repo
+#
+# SON TRES PASOS, no dos (2026-09-03): la simulación de dos dio verde y el CI
+# cayó por una f-string con comillas anidadas que 3.13 acepta y 3.11 no. pytest
+# no lo ve —nunca importa esa pantalla—; check_health sí, porque COMPILA.
 #
 # Clonar solo no basta —`config.DATOS_DIR` apunta fuera y el clon seguiría
 # leyendo el Gold Master de la máquina— y la variable sola tampoco: los 422
