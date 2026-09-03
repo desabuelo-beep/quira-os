@@ -162,10 +162,7 @@ _DEUDAS = (
                 "pdfplumber. ⚠️ Y LA SIMULACIÓN NO BASTÓ: el primer CI real "
                 "encontró 3 más —sintaxis de Python 3.11, el clon que heredaba "
                 "`ProyecT/` de la máquina, y la huella del canon que dependía "
-                "del disco—. **CERRADA de verdad el 2026-09-02 con el primer CI "
-                "VERDE de la historia del repositorio** (427 runs, 0 exitosos "
-                "hasta ese momento): 674 pasan · 61 saltadas · 0 fallos · 10 "
-                "gates verificados · 1 no determinable. Y el verde NO acredita "
+                "del disco—. **CERRADA el 2026-09-02.** La API de GitHub registraba 427 ejecuciones históricas y NINGUNA con conclusión `success`; hoy registra ejecuciones consecutivas en verde. El estado que acredita NO es «todo verificado»: suite 674 PASS / 61 SKIP · gates 10 verificados / 1 no determinable / 0 con hallazgos. Y el verde NO acredita "
                 "todo: lo saltado y lo no determinable se cuentan y se anuncian",
          que="Al cerrar D-004 apareció la misma falla un nivel arriba: de 12 "
              "gates en `scripts/ci/`, **sólo `check_health.py` se ejecuta** en "
@@ -202,6 +199,25 @@ _DEUDAS = (
                "no un juicio de «bien». Cada uno de los 25 exige decidir QUÉ "
                "dice ese verde, y eso es curación de dominio, no un barrido"),
     dict(id="D-009", gravedad=FALSEA, capa="C6", dueño="Javo",
+         medicion_2="⚠️ EL HALLAZGO YA EXISTÍA, DOCUMENTADO Y SIN ESCALAR. "
+                    "`docs/architecture/AUDITORIA_MIGRACION_D1.5.md` lo tituló "
+                    "«EL ENEMIGO: verdades simultáneas en lugares distintos», "
+                    "hizo el mapa cajón→pantalla→fuente y señaló las 3 que "
+                    "CONTRADICEN al motor (d05 Holding 68.7% vs ~17% · d08 IGP "
+                    "27.98% · d12 PSG 12.83% vs 2.83%). Nunca llegó a este "
+                    "registro. Una auditoría que no escala al mecanismo que "
+                    "persigue las deudas es una nota que envejece — lo mismo "
+                    "que este módulo existe para impedir.",
+         caso_abierto_IGP="TRES valores simultáneos para el mismo índice, cada "
+                          "uno con procedencia documental: **27,98** (dump "
+                          "`H00 D39` y glosario «IGP valor 2025», hardcodeado "
+                          "en el L1) · **48,33** (lo que el snapshot publicaba "
+                          "hasta el 2026-08-11) · **27,00** (lo que el motor "
+                          "calcula hoy, tras retirar IGP_3 el 2026-07-29). No "
+                          "lo resuelve el código: CUÁL es el IGP vigente es "
+                          "canon, y lo decide Javo. Aquí queda declarado con "
+                          "sus tres procedencias para que la decisión sea "
+                          "sobre hechos y no sobre memoria.",
          que="El patrón que el colega nombró tras el «48,33 %»: **derivado "
              "narrativo desacoplado de la fuente canónica**. Medido para saber "
              "si fue aislado — no lo fue: **11 superficies vivas publican cifras "

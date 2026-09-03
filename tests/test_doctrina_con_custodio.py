@@ -264,20 +264,45 @@ def test_las_cifras_de_dominio_en_texto_publicado_estan_contadas():
     # ambas plataformas. Se exige que lo hallado esté DENTRO de ella: si
     # aparece una superficie nueva, la prueba la nombra. Que una conocida no se
     # detecte en un sistema concreto no es señal de nada.
-    CONOCIDAS = {
-        "quira_pages/env_gov.py", "quira_pages/m_planificacion.py",
-        "quira_pages/p10_inversion.py", "quira_pages/p11_ods.py",
-        "quira_pages/p14_eficiencia.py", "quira_pages/p17_rdc.py",
-        "quira_pages/p19_genero.py", "quira_pages/p3_congruencias.py",
-        "quira_pages/p8_metas.py", "quira_pages/p9_sat.py",
-        "quira_pages/p_command_center.py", "quira_pages/p_concejo.py",
-        "quira_pages/p_sentinel_hub.py",
+    # CADA SUPERFICIE CON SU CLASIFICACIÓN, no una lista de nombres. La
+    # taxonomía es del colega y la fuente del mapa es `AUDITORIA_MIGRACION_D1.5`
+    # —que ya había hecho el trabajo cajón→pantalla→fuente y NUNCA llegó al
+    # registro de deudas—. Sólo dos estados son defecto.
+    #
+    # ⚠️ `demo` NO es un aprobado: significa que la pantalla lee `load_all` /
+    # `demo_data` y su cifra es de maqueta. Es legítimo mientras esté
+    # DECLARADO, y deja de serlo el día que se publique como si fuera medición.
+    # Igual `referencia` e `historica`: valen porque alguien lo declaró, no
+    # porque nadie las haya mirado.
+    CLASIFICADAS = {
+        # superficie                        clasificación   (fuente del juicio)
+        "quira_pages/p11_ods.py":           "demo",         # D1.5: d01 load_all
+        "quira_pages/p8_metas.py":          "demo",         # D1.5: d03 load_all
+        "quira_pages/p9_sat.py":            "demo",         # D1.5: d04 load_all
+        "quira_pages/p17_rdc.py":           "demo",         # D1.5: d09 load_all
+        "quira_pages/p19_genero.py":        "demo",         # D1.5: d12 load_all
+        "quira_pages/p14_eficiencia.py":    "demo",         # D1.5: contaminación
+        "quira_pages/p3_congruencias.py":   "demo",         # D1.5: contaminación
+        "quira_pages/p10_inversion.py":     "demo",         # D1.5: contaminación
+        "quira_pages/m_planificacion.py":   "pendiente",    # no está en D1.5
+        "quira_pages/env_gov.py":           "pendiente",    # rótulo de cajón
+        "quira_pages/p_command_center.py":  "pendiente",    # D1.5: L1 parcial real
+        "quira_pages/p_concejo.py":         "pendiente",    # D1.5: real
+        "quira_pages/p_sentinel_hub.py":    "pendiente",
     }
     archivos = {h.split(":")[0] for h in halladas}
-    nuevas = sorted(archivos - CONOCIDAS)
+    nuevas = sorted(archivos - set(CLASIFICADAS))
     assert not nuevas, (
-        f"superficies nuevas publicando cifras escritas a mano: {nuevas}. "
-        f"Publicar un número sin declarar su fuente es cómo nació el 48,33")
+        f"superficies nuevas publicando cifras sin clasificar: {nuevas}. "
+        f"Publicar un número sin declarar su relación con una fuente vigente "
+        f"es cómo nació el 48,33")
     assert archivos, (
         "el barrido no encontró ninguna: o D-009 se curó entera —y hay que "
         "actualizar el registro— o el filtro dejó de mirar")
+
+    # Y el estado de la deuda es lo que FALTA por clasificar, no lo hallado.
+    sin_clasificar = sorted(s for s in archivos
+                            if CLASIFICADAS[s] == "pendiente")
+    assert len(sin_clasificar) <= 5, (
+        f"crecieron las superficies sin clasificar: {sin_clasificar}. D-009 se "
+        f"cierra clasificando, no barriendo")
