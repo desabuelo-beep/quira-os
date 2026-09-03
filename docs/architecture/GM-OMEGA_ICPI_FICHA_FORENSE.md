@@ -509,11 +509,41 @@ Si la delegación intra-GAD ya no penaliza, entonces **las 5 metas en 0,75 y las
 | 0,90 | sostenibilidad financiera · **salud integral** · equipamiento urbano · **inventario patrimonial** | dos involucran a otra institución del Estado (Ministerio de Salud, INPC) |
 | 1,00 | las 16 restantes, **incluidas dos de EP Aseo y Patronato** | coherente con la corrección |
 
-El razonamiento de Javo apunta a un criterio nuevo y defendible: **la fricción de
-autonomía existe cuando interviene OTRA institucionalidad —otro nivel de gobierno u otra
-función del Estado—, no cuando el GAD se organiza internamente.** Con esa regla, el 0,90
-de salud integral (concurrente con el Ministerio) y el de patrimonio (INPC) se explican
-solos. Los cinco valores en 0,75 quedarían por explicar.
+⚠️ **AQUÍ PROPUSE UN CRITERIO Y ERA UNA HIPÓTESIS MÍA, NO UN HALLAZGO.** Escribí que
+«la fricción existe cuando interviene otra institucionalidad», y el colega lo frenó:
+
+> *«no debemos pasar de "la regla de la tesis fue superada" a "el nuevo criterio es 0,90
+> cuando interviene otra institucionalidad". Eso último todavía sería una hipótesis
+> nuestra, no un hecho medido.»*
+
+Tiene razón, y es el mismo exceso que esta auditoría lleva cometiendo: **inferir una
+regla desde los datos y enunciarla como si estuviera medida**. Que el 0,90 de salud y el
+de patrimonio *encajen* con esa hipótesis no la demuestra — encajar no es derivar, y con
+25 casos y tres valores posibles, cualquier hipótesis encuentra algunos que la respaldan.
+
+    «La regla anterior fue descartada»  ≠  «ya conocemos la regla nueva».
+
+### `E_i` clasificado por capas (propuesta del colega, adoptada)
+
+| Elemento | Estado |
+|---|---|
+| Existencia de `E_i` como variable | ✅ `VERIFICADO` |
+| Definición conceptual (fricción de autonomía) | ✅ `VERIFICADO` — tesis |
+| Regla histórica 1,00 / 0,90 / 0,75 | ✅ `VERIFICADO` — **como regla histórica** |
+| Razón para abandonar la penalización a adscritas | ✅ `VERIFICADO` — evolución declarada por Javo |
+| Valores actuales de cada meta | ✅ `VERIFICADO` — como valores del Gold Master |
+| **Regla que produce hoy cada 0,75 / 0,90 / 1,00** | 🔴 **`NOT_DETERMINABLE`** |
+| Modalidad institucional de cada meta | 🔴 `NOT_DETERMINABLE` |
+| Nueva especificación canónica de `E_i` | ⬜ **pendiente de decisión GM-Ω** |
+
+**Y por eso `E_i` NO entra todavía a 007.** El colega lo formula con precisión: sería
+*«hacer un análisis de sensibilidad de una variable cuya regla de asignación no está
+identificada — matemáticamente elegante y epistemológicamente débil»*. Antes hace falta
+**007-B0 · genealogía de `E_i`**, con la misma prueba de biografía: ¿se puede reconstruir
+por qué vale 0,75 sin mirar el resultado esperado? Hoy la respuesta es no.
+
+Los cinco valores en 0,75 y los cuatro en 0,90 quedan **sin criterio identificado**, y
+eso es lo que hay que decir — no una explicación que los acomode.
 
 **Declararlo es lo que falta.** Sin criterio escrito, la próxima auditoría —o el GAD
 número 47— no podrá saber por qué una meta vale 0,75 y otra 1,00. Es el mismo patrón

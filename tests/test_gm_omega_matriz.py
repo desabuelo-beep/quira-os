@@ -126,3 +126,50 @@ def test_la_incoherencia_de_E_i_se_señala_sin_declararla_defecto():
     assert "NO demuestra un defecto" in fuente or "NO es un defecto demostrado" in fuente, (
         "el generador dejó de declarar que la incoherencia no es un defecto "
         "probado: sin esa salvedad, una inferencia se leería como veredicto")
+
+
+def test_ser_entidad_adscrita_no_determina_E_i():
+    """DOC-008 · el principio que emergió de la corrección de Javo:
+
+        QUIRA no debe penalizar la arquitectura administrativa legítima; debe
+        penalizar la pérdida verificable de integridad, control o trazabilidad.
+
+    Javo lo planteó primero —«castigar al GAD por derivar una obra a EP Aseo no
+    es viable: es la misma institucionalidad»— y el colega lo formalizó. Una EP
+    municipal puede ejecutar una obra MEJOR trazada que una dirección interna:
+
+        adscrita  ≠  menor integridad
+        delegada  ≠  menor desempeño
+
+    Y armoniza `E_i` con el resto: si delegar debilitara la trazabilidad, `V_i`
+    ya lo mediría —verifica el rastro REAL en los cuatro silos—. Penalizar por
+    el organigrama sería meter **estructura institucional como proxy de
+    desempeño**, e imputar por presunción donde el sistema exige evidencia.
+
+    ⚠️ SE VERIFICA LA PROPIEDAD, no un valor concreto: que pertenecer a una
+    entidad adscrita NO determine `E_i`. Basta con que alguna meta de adscrita
+    tenga autonomía plena para demostrar que el motor no las castiga por serlo.
+
+    Y esto NO afirma que la regla vigente sea correcta —su criterio está
+    `NOT_DETERMINABLE` (§7-ter)—: afirma que la regla histórica, la que
+    penalizaba el organigrama, ya no se aplica."""
+    import re
+    txt = _MATRIZ.read_text(encoding="utf-8")
+
+    # Metas cuya línea de E_i menciona una entidad adscrita, con su valor.
+    adscritas = []
+    for m in re.finditer(r"\| `E_i` \| `H12![A-Z]+\d+` \| ([\d.]+) \| [^|]+\| ([^|]+)\|", txt):
+        valor, ent = float(m.group(1)), m.group(2)
+        if any(x in ent for x in ("Patronato", "Bomberos", "EP Aseo")):
+            adscritas.append(valor)
+
+    assert adscritas, (
+        "no se localizó ninguna meta de entidad adscrita: cambió el formato de "
+        "la matriz y esta prueba dejó de mirar lo que dice mirar")
+    assert max(adscritas) == 1.0, (
+        f"ninguna meta de entidad adscrita alcanza E_i = 1,0 (máximo {max(adscritas)}). "
+        f"El motor volvió a penalizar el organigrama en vez de la pérdida "
+        f"verificable de trazabilidad — y esa la mide `V_i`, no `E_i`")
+    assert len(set(adscritas)) > 1, (
+        "todas las metas de adscritas tienen el mismo E_i: ser adscrita volvió "
+        "a determinar el valor")

@@ -114,6 +114,18 @@ _DOCTRINA = (
                      "el pie afirmaba «el único registro disponible» cuando 31 "
                      "actas propias declaran registro anexo: lo que falta es su "
                      "digitalización, no el registro"),
+    dict(id="DOC-008", custodia=GATE,
+         regla="QUIRA no penaliza la ARQUITECTURA ADMINISTRATIVA legítima: "
+               "penaliza la pérdida VERIFICABLE de integridad, control o "
+               "trazabilidad. Una EP municipal es la misma institucionalidad "
+               "del GAD, y puede ejecutar mejor trazada que una dirección",
+         fuente="Javo 2026-09-03 —«es la misma institucionalidad, NO otro nivel "
+                "de gobierno»— · formalizado por el colega",
+         verificador="test_ser_entidad_adscrita_no_determina_E_i",
+         por_que_ahi="si delegar debilitara la trazabilidad, `V_i` ya lo mediría "
+                     "sobre el rastro REAL; penalizar por el organigrama sería "
+                     "usar estructura institucional como proxy de desempeño, e "
+                     "imputar por presunción donde el sistema exige evidencia"),
     dict(id="DOC-006", custodia=GATE,
          regla="Lo PENDIENTE declarado no se confunde con lo NO CONSTATADO — "
                "tres estados, no dos",
