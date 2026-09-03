@@ -545,6 +545,51 @@ por qué vale 0,75 sin mirar el resultado esperado? Hoy la respuesta es no.
 Los cinco valores en 0,75 y los cuatro en 0,90 quedan **sin criterio identificado**, y
 eso es lo que hay que decir — no una explicación que los acomode.
 
+### 007-B0 · Genealogía de `E_i`: cuándo nació cada valor
+
+El colega añadió la pregunta temporal —*«si los valores fueron asignados manualmente
+durante una versión posterior, eso explicaría por qué la tesis tiene una regla y el GM
+otra distribución»*—. Se midió sobre **siete versiones del Gold Master**:
+
+| Versión | Fecha | `E_i` |
+|---|---|---|
+| `ECIAP v1.1` | 10-may-2026 | ya los actuales |
+| `v4.1` | 14-may | idénticos |
+| `v5.0` · `v5.4` · `v5.5` | 16 a 30-may | idénticos |
+| candidato `v5.7` | 30-jul | idénticos |
+| **`v5.7` vigente** | hoy | **idénticos** |
+
+**Metas cuyo `E_i` cambió entre versiones: 0 de 25.**
+
+La hipótesis de la asignación posterior **queda descartada**: los valores nacieron con la
+primera versión conservada y no se tocaron en cuatro meses. Y la tesis es de **abril**,
+anterior a todas.
+
+> **La regla escrita y los valores implementados nunca coincidieron.** No hubo un evento
+> de cambio que explique la divergencia: la divergencia nació con la implementación
+> misma.
+
+Eso matiza lo que Javo recordaba —«por eso lo cambié»—: lo que cambió fue **la doctrina**,
+no los valores. O el cambio ocurrió antes de que existiera cualquier Gold Master
+conservado, y entonces **no queda rastro de él**.
+
+Dato de linaje que aparece de paso: la cabecera de `ECIAP v1.1` dice **«ECIAP-EGG-7.8 by
+GNOMIKA»**. El motor tiene un linaje anterior a QUIRA —y anterior incluso a SIAP—, lo que
+conecta con la observación de Javo sobre el nombre «ICPI» viniendo de TERRA/QUADRUM.
+
+### Clasificación de las 25 metas (taxonomía A/B/C/D del colega)
+
+| | Casos | |
+|---|---|---|
+| **A · RECONSTRUIBLE** — fuente + regla + dato | **0** | no hay regla que produzca los valores |
+| **B · REGLA CONOCIDA / DATO FALTANTE** | **0** | la regla de la tesis existe pero **fue superada**; la vigente no está escrita |
+| **C · VALOR CONOCIDO / REGLA NO RECONSTRUIBLE** | **25** | 🔴 `NOT_DETERMINABLE` |
+| **D · CONTRADICCIÓN DOCUMENTAL** | **0** | no hay fuente que declare la modalidad de cada meta, así que nada puede contradecirla |
+
+**Ninguna de las 25 pasa la prueba de biografía**: no se puede reconstruir por qué una
+meta recibió 0,75 sin mirar el resultado. `E_i` es la única variable del ICPI en esa
+situación.
+
 **Declararlo es lo que falta.** Sin criterio escrito, la próxima auditoría —o el GAD
 número 47— no podrá saber por qué una meta vale 0,75 y otra 1,00. Es el mismo patrón
 que esta auditoría lleva encontrando toda la sesión, sólo que al revés: aquí **la mejora

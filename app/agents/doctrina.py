@@ -115,10 +115,18 @@ _DOCTRINA = (
                      "actas propias declaran registro anexo: lo que falta es su "
                      "digitalización, no el registro"),
     dict(id="DOC-008", custodia=GATE,
-         regla="QUIRA no penaliza la ARQUITECTURA ADMINISTRATIVA legítima: "
-               "penaliza la pérdida VERIFICABLE de integridad, control o "
-               "trazabilidad. Una EP municipal es la misma institucionalidad "
-               "del GAD, y puede ejecutar mejor trazada que una dirección",
+         regla="AFILIACIÓN NO IMPLICA E_i REDUCIDO · pertenecer a una entidad "
+               "adscrita (EP municipal, patronato) NO determina por sí solo un "
+               "coeficiente menor. Es la mitad estrecha y demostrable del "
+               "principio: QUIRA penaliza la pérdida VERIFICABLE de integridad, "
+               "no la arquitectura administrativa legítima",
+         alcance_del_verificador="⚠️ ACOTADO POR EL COLEGA. Que existan adscritas "
+               "con E_i=1,00 demuestra que la adscripción no implica "
+               "penalización automática; NO demuestra que «la arquitectura "
+               "legítima nunca es penalizada» —eso exigiría conocer la regla de "
+               "asignación vigente, que está NOT_DETERMINABLE—. El test prueba "
+               "una propiedad más estrecha y perfectamente defendible, que es "
+               "mejor que intentar demostrar más de lo que mide",
          fuente="Javo 2026-09-03 —«es la misma institucionalidad, NO otro nivel "
                 "de gobierno»— · formalizado por el colega",
          verificador="test_ser_entidad_adscrita_no_determina_E_i",
@@ -126,6 +134,17 @@ _DOCTRINA = (
                      "sobre el rastro REAL; penalizar por el organigrama sería "
                      "usar estructura institucional como proxy de desempeño, e "
                      "imputar por presunción donde el sistema exige evidencia"),
+    dict(id="DOC-009", custodia=GATE,
+         regla="No inferir la REGLA GENERADORA de un dato a partir del patrón "
+               "observado en sus resultados. `datos → patrón → hipótesis` NO "
+               "equivale a `regla → datos`. Cuando una explicación encaja, "
+               "primero se pregunta qué evidencia demuestra que ESA era la "
+               "regla; si no existe, permanece hipótesis",
+         fuente="el colega, 2026-09-03 · GM-Ω, tras cazar al director "
+                "infiriendo el criterio de E_i desde sus valores",
+         verificador="test_ninguna_regla_generadora_se_infiere_del_patron_de_sus_resultados",
+         por_que_ahi="con 25 casos y tres valores posibles, cualquier hipótesis "
+                     "encuentra algunos que la respaldan: encajar no es derivar"),
     dict(id="DOC-006", custodia=GATE,
          regla="Lo PENDIENTE declarado no se confunde con lo NO CONSTATADO — "
                "tres estados, no dos",

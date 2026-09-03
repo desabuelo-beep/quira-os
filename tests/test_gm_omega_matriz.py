@@ -173,3 +173,42 @@ def test_ser_entidad_adscrita_no_determina_E_i():
     assert len(set(adscritas)) > 1, (
         "todas las metas de adscritas tienen el mismo E_i: ser adscrita volvió "
         "a determinar el valor")
+
+
+def test_ninguna_regla_generadora_se_infiere_del_patron_de_sus_resultados():
+    """DOC-009 · el principio metodológico central de GM-Ω, que el colega fijó
+    tras cazarme infiriendo una regla desde los datos:
+
+        No inferir la regla generadora de un dato a partir del patrón observado
+        en sus resultados.
+
+            datos → patrón → hipótesis    ≠    regla → datos
+
+    Yo había escrito que «la fricción existe cuando interviene otra
+    institucionalidad» porque el 0,90 de salud (Ministerio) y el de patrimonio
+    (INPC) encajaban. **Encajar no es derivar**: con 25 casos y tres valores
+    posibles, cualquier hipótesis encuentra respaldo.
+
+        Cuando una explicación encaja con los datos, primero se pregunta qué
+        evidencia demuestra que ESA era la regla. Si no existe, la explicación
+        permanece hipótesis.
+
+    ⚠️ SE VERIFICA SOBRE EL ARTEFACTO, no sobre la intención: que la matriz y la
+    ficha declaren `NOT_DETERMINABLE` donde la regla no se pudo reconstruir, en
+    vez de ofrecer una explicación que acomode los valores. El día que alguien
+    escriba ahí un criterio, tendrá que traer su fuente — o esta prueba caerá."""
+    matriz = _MATRIZ.read_text(encoding="utf-8")
+    ficha = (RAIZ / "docs" / "architecture" /
+             "GM-OMEGA_ICPI_FICHA_FORENSE.md").read_text(encoding="utf-8")
+
+    assert "NOT_DETERMINABLE" in ficha, (
+        "la ficha dejó de declarar que la regla vigente de E_i no se pudo "
+        "reconstruir: sin esa declaración, el silencio se lee como que sí se sabe")
+    assert "ERA UNA HIPÓTESIS MÍA" in ficha, (
+        "desapareció la constancia de que el criterio propuesto era una "
+        "hipótesis. Borrarla convertiría una conjetura en un hallazgo, que es "
+        "exactamente lo que este principio prohíbe")
+    # Y la matriz no debe ofrecer un criterio para E_i que no esté demostrado.
+    bloque = matriz.split("## Las 150 celdas")[0]
+    assert "PARCIALMENTE_VERIFICADO" in bloque, (
+        "E_i perdió su estado declarado en la matriz")
