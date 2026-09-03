@@ -153,10 +153,12 @@ def gold_master():
     simulación hizo lo primero y prometió 715/5; el runner dio 33 fallos."""
     import config
     if not getattr(config, "GOLD_MASTER_RESUELTO", False):
+        # No se imprime `config.DATOS_DIR`: es la ruta personal de una máquina y
+        # el log de CI se lee desde fuera. Basta con decir QUÉ falta y por qué.
         pytest.skip(
-            f"Gold Master no resuelto en {config.DATOS_DIR}: vive fuera del "
-            f"repositorio (Regla 1) y este entorno no lo tiene. NO es un "
-            f"aprobado — es una verificación no realizada.")
+            "Gold Master no resuelto: vive fuera del repositorio (Regla de Oro "
+            "1) y este entorno no lo tiene. NO es un aprobado — es una "
+            "verificación no realizada.")
     return config.SIAP_PATH
 
 
