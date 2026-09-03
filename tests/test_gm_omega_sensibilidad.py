@@ -231,6 +231,62 @@ def test_la_coherencia_de_V_se_verifica_contra_la_regla_no_se_afirma():
         f"distinguía de E_i, y hay que auditarlo como se auditó aquél")
 
 
+def test_la_robustez_de_categoria_declara_de_donde_salen_sus_umbrales():
+    """007-X mide si la CATEGORÍA aguanta los contrafactuales. Esa medición tiene
+    un supuesto: que los umbrales `0,9 / 0,7 / 0,4 / 0,2` significan algo.
+
+    Javo aportó el contexto —la escala AVEP es invención de Dylus Lab, ajustada
+    después a la normativa— y auditarla dio esto: la norma sostiene el
+    CONSTRUCTO (`COPFP Art. 41`) pero **no los CORTES**, que son una decisión
+    metodológica propia. Es legítimo —los umbrales de un índice compuesto casi
+    nunca salen de una norma— y por eso mismo debe estar **declarado**: hoy la
+    escala se presenta con la autoridad de un umbral legal, y de ella depende la
+    emisión de un Certificado (`H01!C59`, AVEP ≥ 70 %).
+
+    ⚠️ SE VERIFICA QUE EL SUPUESTO ESTÉ DICHO, no que la escala sea correcta.
+    Una medición de robustez que no declara contra qué mide la robustez afirma
+    de más."""
+    txt = _DOC.read_text(encoding="utf-8")
+    assert "007-X-bis" in txt, (
+        "desapareció la auditoría de procedencia de la escala AVEP: sin ella, "
+        "007-X mide la estabilidad de una categoría cuyos cortes nadie justificó")
+    bloque = txt.split("007-X-bis")[1].split("## Concentración")[0]
+    assert "CONSTRUCTO" in bloque and "CORTES" in bloque, (
+        "se perdió la distinción entre lo que la norma sí sostiene (por qué "
+        "medir congruencia) y lo que no (dónde cortar en 70 o en 40)")
+    assert "dice que la escala esté mal" in bloque.lower(), (
+        "desapareció la salvedad. Sin ella, «los cortes no tienen norma» se lee "
+        "como «los cortes están mal», y son cosas distintas")
+
+
+def test_V_y_E_no_comparten_la_naturaleza_de_su_vacio():
+    """DOC-011 · el resultado que más lejos llega de todo 007, y no es un número.
+
+    `V` y `E` están ambas incompletas y **no tienen el mismo problema**:
+
+        V   regla vigente + regla histórica + motivo del cambio +
+            25 de 25 valores reproducibles     → LÍMITE DE RECONSTRUCCIÓN
+        E   valores, y ninguna regla que los produzca
+                                               → AUSENCIA DE REGLA GENERADORA
+
+    El primero es una situación sana para una auditoría: se puede decir con
+    precisión qué se sabe, qué no y por qué. El segundo no admite esa frase.
+
+    ⚠️ SE VERIFICA QUE LA DISTINCIÓN SIGA DECLARADA, no que sea correcta —eso lo
+    juzga 011—. Colapsarla llevaría a uno de dos errores simétricos: sospechar
+    de todo el motor por lo que falla en una variable, o dar por buena una
+    ausencia porque las demás sí documentan."""
+    txt = _DOC.read_text(encoding="utf-8")
+    bloque = txt.split("## 007-B")[1].split("## 007-C")[0]
+    for marca in ("límite de reconstrucción", "ausencia de regla generadora"):
+        assert marca in bloque.lower(), (
+            f"desapareció «{marca}» del contraste V↔E. Sin los dos nombres, los "
+            f"dos vacíos vuelven a leerse como el mismo problema")
+    assert "25 de 25" in bloque, (
+        "desapareció la contrapartida positiva: que V sí reproduce su regla en "
+        "las 25 metas es la mitad que sostiene la distinción")
+
+
 def test_el_vocabulario_publicado_del_ICPI_corresponde_al_motor():
     """⚠️ ATAQUE DE D-011 · fija el estado, no lo aprueba.
 
@@ -264,11 +320,25 @@ def test_el_vocabulario_publicado_del_ICPI_corresponde_al_motor():
 
 def test_la_jerarquia_de_sensibilidad_esta_declarada():
     """El resultado central de 007, y el que reordena 011: el ICPI es robusto a
-    la ponderación y frágil a su forma matemática. Si el documento deja de
-    decirlo, `011` se sentaría a discutir los ponderadores —que casi no mueven
-    el índice— creyendo que discute lo importante."""
+    baja sensibilidad a las ponderaciones ENSAYADAS y alta a la arquitectura de
+    agregación. Si el documento deja de decirlo, `011` se sentaría a discutir los
+    ponderadores —que casi no mueven el índice— creyendo que discute lo
+    importante.
+
+    ⚠️ Y se vigila la FORMULACIÓN, no sólo el orden. La primera versión decía que
+    el índice era «frágil a su forma matemática», y eso contrabandeaba un juicio:
+    sugería que multiplicar es un defecto. `007-D` no demuestra que multiplicar
+    esté mal — demuestra que multiplicar es **determinante**. Sólo la segunda
+    afirmación está medida, y la palabra «ensayadas» acota el alcance a las
+    cuatro alternativas que se probaron."""
     txt = _DOC.read_text(encoding="utf-8")
     assert "## La jerarquía de sensibilidad" in txt
+    assert "ENSAYADAS" in txt, (
+        "la conclusión perdió el acotamiento: se probaron cuatro alternativas de "
+        "peso, no todas las posibles, y afirmar sin ese límite es afirmar de más")
+    assert "no demuestra que multiplicar" in txt.lower() or (
+        "**no demuestra que multiplicar esté mal**" in txt), (
+        "desapareció la salvedad de que 007-D mide determinación, no defecto")
     orden = [f for f in ("007-D", "007-B", "007-A", "007-C")
              if f"`{f}`" in txt.split("## La jerarquía")[1].split("## 007-X")[0]]
     assert orden[0] == "007-D", (

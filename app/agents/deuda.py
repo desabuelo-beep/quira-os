@@ -253,8 +253,16 @@ _DEUDAS = (
                "producto no tiene vocabulario para recibir esa negativa, y "
                "publica el mensaje interno en vez de traducirlo. Tampoco es "
                "«poner una categoría igualmente»: sería fabricar una lectura "
-               "anual que el corte no sostiene. La cura es que la UI sepa decir "
-               "«todavía no comparable» en lenguaje de administración pública"),
+               "anual que el corte no sostiene. ⚙️ LA CURA, especificada: **dos "
+               "campos donde hoy hay uno** — `estado_determinabilidad` "
+               "(CORTE_PARCIAL · ANUAL_COMPLETO) y `clasificacion_avep` "
+               "(NO_EMITIDA · la categoría). Un estado de disponibilidad del "
+               "indicador se convirtió en una categoría sustantiva, y la "
+               "doctrina de QUIRA separa `dato → estado epistemológico → "
+               "interpretación → producto`. Con los dos campos, la UI puede "
+               "decir en lenguaje de administración pública que la lectura anual "
+               "todavía no es comparable, sin inventar categoría ni publicar la "
+               "jerga del motor"),
     dict(id="D-010", gravedad=FALSEA, capa="C1/C4", dueño="Javo",
          que="Javo preguntó si el IGP está metodológicamente bien armado para "
              "representar la gobernanza participativa cantonal. Medido en el "

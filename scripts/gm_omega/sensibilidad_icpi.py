@@ -179,10 +179,54 @@ def leer_motor() -> dict:
             elif k == "ICPI_CLASIFICACION":
                 api["clasificacion"] = h73v.cell(row=r, column=2).value
 
+    avep = procedencia_avep(wf)
+
     wf.close(); wv.close()
     return {"metas": metas, "factor": factor, "mes": mes, "ti_raw": ti_raw,
             "hojas_rotulo": rotulo, "nota_factor": nota_factor, "api": api,
-            "consumidores": _consumidores_de_clasificacion()}
+            "avep": avep, "consumidores": _consumidores_de_clasificacion()}
+
+
+def procedencia_avep(wf) -> dict:
+    """¿De dónde salen los umbrales de la escala AVEP, y dónde vive la escala?
+
+    Javo aportó el contexto que hacía falta: **AVEP es invención de Dylus Lab**,
+    ajustada después a lo que la normativa pública exigía. Eso convierte a `007-X`
+    —la robustez de la CATEGORÍA— en una medición con un supuesto que hay que
+    hacer explícito: los umbrales `0,9 / 0,7 / 0,4 / 0,2`.
+
+    Se mide, sin inferir: en cuántas hojas está COPIADA la escala, si alguna
+    celda cita una norma junto a ella, y si las etiquetas divergen entre copias.
+    """
+    ETIQUETAS = ("Excelencia en Gobernanza", "Gestión por Mandato",
+                 "Transición Crítica", "Gestión por Ocurrencia",
+                 "Ruptura Sistémica")
+    NORMA = re.compile(r"(COOTAD|COPFP|LOTAIP|LOPC|Constituci[oó]n|Acuerdo \d|"
+                       r"Art\.\s*\d|Resoluci[oó]n|SENPLADES|CGE|Norma de Control)")
+    copias, con_norma, variantes = set(), [], set()
+    for nombre in wf.sheetnames:
+        h = wf[nombre]
+        for fila in h.iter_rows(min_row=1, max_row=min(h.max_row, 60),
+                                max_col=min(h.max_column, 15)):
+            for c in fila:
+                v = c.value
+                if not isinstance(v, str) or len(v) < 8:
+                    continue
+                tocadas = [e for e in ETIQUETAS if e in v]
+                if len(tocadas) >= 3:            # una copia de la escala entera
+                    copias.add(nombre)
+                    if NORMA.search(v):
+                        con_norma.append(f"{nombre}!{c.coordinate}")
+                    # ⚠️ La divergencia del nivel superior SÓLO se busca DENTRO
+                    # de una copia de la escala. La primera versión barría todo
+                    # el libro y devolvió «Excelencia en Equidad» —de otro
+                    # índice— como si AVEP hubiera divergido. Era DOC-009 otra
+                    # vez: un patrón que encaja no es el hecho que parece.
+                    m = re.search(r"Excelencia en (\w+)", v)
+                    if m:
+                        variantes.add(m.group(1))
+    return {"copias": sorted(copias), "con_norma": con_norma,
+            "variantes_nivel_alto": sorted(variantes)}
 
 
 def _consumidores_de_clasificacion() -> list[str]:
@@ -456,8 +500,8 @@ def _escribir(d, base, esc, cat_base, saltan, truncadas, t_sin_tope, sumaR) -> N
     A("")
     A("> La pregunta con la que arrancó `007` era si el ICPI mide la integridad "
       "de la cadena de gestión o está fuertemente condicionado por cómo "
-      "repartimos el peso presupuestario y jurídico. **La respuesta es que el "
-      "peso casi no lo condiciona.** Lo que lo condiciona es su álgebra.")
+      "repartimos el peso presupuestario y jurídico. La respuesta es que el peso "
+      "**apenas** lo condiciona, y su álgebra **lo gobierna**.")
     A("")
     A("| Decisión metodológica | Rango que abre | Peor caso | Mejor caso |")
     A("|---|---:|---:|---:|")
@@ -468,14 +512,40 @@ def _escribir(d, base, esc, cat_base, saltan, truncadas, t_sin_tope, sumaR) -> N
       f"cambiar la estructura algebraica mueve el índice hasta "
       f"**{rangos[0][0]:.1f} puntos**, mientras que redistribuir todo el peso "
       f"—o eliminarlo del todo— lo mueve "
-      f"**{[r for r, f, *_ in rangos if f == 'A'][0]:.1f}**. El ICPI es "
-      "**robusto a la ponderación y frágil a su propia forma matemática**.")
+      f"**{[r for r, f, *_ in rangos if f == 'A'][0]:.1f}**.")
+    A("")
+    A("### La conclusión, formulada con precisión")
+    A("")
+    A("> **El ICPI presenta baja sensibilidad a las alternativas de ponderación "
+      "ENSAYADAS y alta sensibilidad a la arquitectura algebraica de agregación. "
+      "Por tanto, la validez sustantiva del índice depende mucho más de la "
+      "justificación teórica de su estructura multiplicativa que de la elección "
+      "entre las ponderaciones evaluadas.**")
+    A("")
+    A("⚠️ **La formulación importa, y la primera versión era peor.** Decir que "
+      "el índice es «frágil a su forma matemática» suena a diagnóstico y en "
+      "realidad contrabandea un juicio: sugiere que la multiplicatividad es un "
+      "defecto. `007-D` **no demuestra que multiplicar esté mal** — demuestra "
+      "que multiplicar es **altamente determinante**. Son dos afirmaciones "
+      "distintas y sólo la segunda está medida.")
+    A("")
+    A("Y las dos precisiones del enunciado no son adorno:")
+    A("")
+    A("- **«ensayadas»** — se probaron cuatro alternativas de peso, no todas las "
+      "posibles. Una ponderación radicalmente distinta podría mover más. Lo "
+      "medido es lo medido.")
+    A("- **«validez sustantiva»** — lo que está en juego no es qué número sale, "
+      "sino si el número significa lo que el constructo promete.")
     A("")
     A("Eso reordena `011`: la discusión sobre si el agua potable debe pesar más "
       "que un taller —legítima, y respondida por `P·R`— resulta ser de "
-      "**segundo orden** frente a la pregunta de si las seis dimensiones deben "
-      "multiplicarse. La decisión grande del motor nunca estuvo en los "
-      "ponderadores.")
+      "**segundo orden** frente a la pregunta de primer orden, que es:")
+    A("")
+    A("> **¿Qué teoría de la integridad representa realmente "
+      "`J = P·R·V·E·T·C`, y qué la fundamenta?**")
+    A("")
+    A("La estructura multiplicativa no queda impugnada por `007`. Queda "
+      "**obligada a demostrar por qué debe existir**.")
     A("")
 
     # ── tabla maestra ────────────────────────────────────────────────────────
@@ -515,6 +585,91 @@ def _escribir(d, base, esc, cat_base, saltan, truncadas, t_sin_tope, sumaR) -> N
       "preliminar (no comparable con umbral anual)». Las categorías de esta tabla "
       "son **las que el motor emitiría al cierre**, calculadas con sus mismos "
       "umbrales. No son lo que el motor dice hoy.")
+    A("")
+
+    # ── 007-X-bis · la procedencia de la propia escala ───────────────────────
+    av = d["avep"]
+    A("### ★ 007-X-bis · ¿Y de dónde salen los umbrales?")
+    A("")
+    A("Javo aportó el contexto que faltaba: **la escala AVEP es invención de "
+      "Dylus Lab**, ajustada después a lo que la normativa pública exigía. Eso "
+      "obliga a hacer explícito un supuesto que toda esta sección arrastraba: "
+      "**`007-X` mide la robustez de la categoría contra unos umbrales cuya "
+      "procedencia no estaba auditada.** Auditada ahora, esto es lo que hay.")
+    A("")
+    A("**1 · La norma sostiene el CONSTRUCTO, no los CORTES.** La tesis titula "
+      "un apartado «Baremo AVEP — Interpretación jurídica» y lo que fundamenta "
+      "allí es *por qué* medir congruencia: `COPFP Art. 41` —el PDOT es la "
+      "directriz **principal**, luego una inversión no alineada es jurídicamente "
+      "cuestionable—. Las variables sí tienen norma citada (`P_i` → COPFP 54; "
+      "`R_i` → COOTAD 54-55 + Constitución 3, 12, 66). **Dónde cortar en 70 o en "
+      "40 no la tiene.**")
+    A("")
+    if av["copias"]:
+        A(f"**2 · La escala está COPIADA en {len(av['copias'])} hojas** "
+          + ", ".join(f"`{h}`" for h in av["copias"][:8])
+          + (" …" if len(av["copias"]) > 8 else "") + ", y "
+          + (f"**{len(av['con_norma'])}** de esas copias cita una norma."
+             if av["con_norma"] else
+             "**ninguna de esas copias cita una norma**, mientras que los "
+             "umbrales de inversión del mismo libro sí citan COOTAD."))
+        A("")
+    A("   Y la copia no es accidental: `H01!A30` **instruye a copiarla "
+      "literalmente**. Viene de un incidente real que `H01!A28` conserva —")
+    A("")
+    A("   > «AVEP NO es una función de Excel. NO existe `=AVEP()`. Si se escribe "
+      "`=AVEP(...)` el resultado será `#¿NOMBRE?` y el ecosistema fallará.»")
+    A("")
+    A("   El motor confundió la escala con una fórmula, y la solución adoptada "
+      "—replicar el `IF` en todas las hojas— **resolvió el síntoma y consolidó "
+      "la causa**: una capa de interpretación quedó incrustada dentro del "
+      "cálculo, y duplicada. Cambiar un umbral hoy exige editar N celdas a mano.")
+    A("")
+    if len(av["variantes_nivel_alto"]) > 1:
+        A(f"**3 · Y ya divergió**: el nivel superior aparece como "
+          + " y ".join(f"«Excelencia en {v}»" for v in av["variantes_nivel_alto"])
+          + ". Es el precio de la copia literal.")
+        A("")
+    A("**3 · El acrónimo tiene DOS biografías, y una etiqueta cambió.** En las "
+      "tesis, `AVEP` se expande de dos maneras —«**A**lineación, **V**inculación, "
+      "**E**jecución, **P**ublicación» y «**A**lfaro **V**irtus **E**scala de "
+      "**P**onderación»—, la segunda un nombre propio; y el nivel superior pasó "
+      "de «Excelencia en **Trazabilidad**» (tesis) a «Excelencia en "
+      "**Gobernanza**» (motor). Los rangos, en cambio, **coinciden exactamente**: "
+      "0-19 · 20-39 · 40-69 · 70-89 · 90-100. La escala del motor sí reproduce la "
+      "de la tesis; lo que se movió fue el vocabulario.")
+    A("")
+    A("**4 · La tesis nunca dijo que fuera una fórmula.** La llama «Baremo de "
+      "Valoración» y «Baremo de **Interpretación**», y dice que los resultados "
+      "«se **contrastan** con» él. La doctrina correcta ya estaba escrita antes "
+      "que el motor:")
+    A("")
+    A("   ```")
+    A("   dato → estado epistemológico → INTERPRETACIÓN → producto")
+    A("                                      ↑ aquí vive AVEP")
+    A("   ```")
+    A("")
+    A("**5 · Qué significa esto para LATAM (`010`).** Aquí está la tensión que "
+      "Javo intuye, y tiene salida:")
+    A("")
+    A("| | Anclar los cortes a normativa local | Mantenerlos propios |")
+    A("|---|---|---|")
+    A("| Defensa en Ecuador | fuerte (hay norma) | exige argumento teórico |")
+    A("| Viaje a LATAM | ❌ no viaja: se recalibra por país | ✅ viaja |")
+    A("")
+    A("   La salida no es elegir una: es **separar las capas**. El constructo se "
+      "ancla a norma —y esa parte es local por naturaleza—; los **cortes** son "
+      "una decisión metodológica propia, explícita y **calibrable por país**. "
+      "Que es justamente la arquitectura núcleo/adaptador que `010` tiene que "
+      "demostrar.")
+    A("")
+    A("⚠️ **Nada de esto dice que la escala esté mal.** Los umbrales de un índice "
+      "compuesto casi nunca salen de una norma: son una decisión metodológica, y "
+      "es legítima. Lo que `007-X-bis` establece es que **hoy se presenta con la "
+      "misma autoridad que un umbral legal y no la tiene**, que vive en la capa "
+      "equivocada, y que de ella depende un Certificado (`H01!C59` fija la "
+      "emisión en AVEP ≥ 70 %). Una escala con consecuencia contractual necesita "
+      "procedencia declarada. → `011`.")
     A("")
 
     # ── concentración ────────────────────────────────────────────────────────
@@ -591,20 +746,36 @@ def _escribir(d, base, esc, cat_base, saltan, truncadas, t_sin_tope, sumaR) -> N
     d_a4 = next(e["delta"] for e in esc if e["id"] == "A4")
     d_a1 = next(e["delta"] for e in esc if e["id"] == "A1")
     d_a2 = next(e["delta"] for e in esc if e["id"] == "A2")
-    A(f"### `A3` da exactamente el baseline, y no es una coincidencia numérica")
+    A("### ★ HALLAZGO DE INVARIANCIA DE ESCALA")
     A("")
-    A(f"`A3` se desvía {abs(d_a3):.0e} pp. Eso no es «casi igual»: es **cero "
-      "algebraico**. Multiplicar todos los pesos por una constante no cambia una "
-      "media ponderada —`Σ(cK·S)/Σ(cK) = Σ(K·S)/Σ(K)`— y normalizar `R` por la "
-      "suma es exactamente eso.")
+    A(f"`A3` se desvía {abs(d_a3):.0e} pp del baseline. Eso no es «casi igual»: "
+      "es **cero algebraico**, y no es un resultado empírico de este conjunto de "
+      "datos — es una **propiedad del estimador**. La demostración cabe en tres "
+      "líneas:")
     A("")
-    A("La consecuencia es una **propiedad demostrada del motor**, no una "
-      "observación: **la escala de `R_i` es irrelevante para el ICPI; sólo "
-      "importa su forma relativa entre metas.** Que `R` se normalice por el "
-      "máximo teórico y `P` por la suma es, por tanto, una inconsistencia de "
-      "presentación —dos variables que parecen comparables y no lo son— sin "
-      "ningún efecto sobre el resultado. Es de las pocas cosas que `011` puede "
-      "cerrar sin discutir.")
+    A("```")
+    A("        K_i = P_i · R_i                        peso vigente")
+    A("       R'_i = R_i / ΣR                         normalizar R por la suma")
+    A("       K'_i = P_i · R_i / ΣR = (1/ΣR) · K_i    una constante común")
+    A("")
+    A("   ICPI(K') = Σ(cK_i·S_i) / Σ(cK_i)")
+    A("            = c·Σ(K_i·S_i) / c·Σ(K_i)")
+    A("            = ICPI(K)                          ∎")
+    A("```")
+    A("")
+    A("Toda transformación de `R` que sea una constante multiplicativa común "
+      "deja el ICPI **exactamente igual**. De ahí se siguen dos cosas:")
+    A("")
+    A("1. **La escala de `R_i` es irrelevante para el índice; sólo importa su "
+      "forma relativa entre metas.** Que `R` se normalice por el máximo teórico "
+      "y `P` por la suma es una inconsistencia de presentación —dos variables "
+      "que parecen comparables y no lo son— **sin ningún efecto sobre el "
+      "resultado**. `011` puede cerrarlo sin discutirlo.")
+    A("2. Y una **falsa preocupación queda eliminada**: no hay que decidir cómo "
+      "normalizar `R`, porque la decisión no existe. Saber qué transformaciones "
+      "son irrelevantes *por construcción* es tan parte de auditar un estimador "
+      "como saber cuáles lo mueven — y es lo que separa correr escenarios de "
+      "entender el instrumento.")
     A("")
     A("### La respuesta a la pregunta de Javo")
     A("")
@@ -719,6 +890,39 @@ def _escribir(d, base, esc, cat_base, saltan, truncadas, t_sin_tope, sumaR) -> N
         A("")
     except StopIteration:
         pass
+    A("### ★ DOS VACÍOS DE NATURALEZA DISTINTA — `V` no tiene el problema de `E`")
+    A("")
+    A("Este es el resultado que más lejos llega de todo `007`, y no es un "
+      "número. Puestos uno al lado del otro, `V` y `E` **no tienen el mismo "
+      "problema**, y tratarlos igual sería el error:")
+    A("")
+    A("| | `V_i` | `E_i` |")
+    A("|---|---|---|")
+    A("| Definición del constructo | ✅ existe | ✅ existe |")
+    A("| Regla vigente documentada | ✅ `H13!B16-B20` | ❌ no consta |")
+    A("| Regla histórica documentada | ✅ fragmento en `H13!B21` | ✅ tesis: 1 · 0,90 · 0,75 |")
+    A("| Explicación del cambio | ✅ y con su motivo | ❌ ninguna |")
+    A("| Valores reproducibles contra su regla | ✅ 25 de 25 | ❌ ninguno |")
+    A("| **Naturaleza del vacío** | **límite de reconstrucción** | **ausencia de regla generadora** |")
+    A("")
+    A("`V` está en una situación **sana para una auditoría**: hay genealogía, y "
+      "hay un límite explícito de lo que sabemos. Se puede decir con precisión "
+      "qué se sabe, qué no, y por qué. `E` no: existe la variable, existe una "
+      "regla histórica en la tesis, existe la corrección de Javo sobre no "
+      "penalizar la afiliación, existen los valores — y **no existe evidencia "
+      "preservada que permita reconstruir la regla que produjo esos valores**.")
+    A("")
+    A("> Un vacío de trazabilidad se clasifica por su **naturaleza**, no por su "
+      "tamaño. «No puedo reconstruirlo del todo» y «no hay nada que "
+      "reconstruir» exigen auditorías distintas y admiten conclusiones "
+      "distintas.")
+    A("")
+    A("Y de ahí se sigue, retroactivamente, que **fue correcto dejar `E_i` fuera "
+      "de `007`**: hacer sensibilidad sobre una variable cuya regla generadora "
+      "se desconoce habría producido números impecables sobre una premisa "
+      "epistemológicamente vacía. Elegante y sin fundamento — que es la forma "
+      "más difícil de detectar un error.")
+    A("")
     A("**Y hay que separar dos cosas que 007 no mezcla.** `V` como **regla** —qué "
       "significa verificación intersistémica— y `V` como **evidencia** —si lo "
       "capturado satisface esa regla—. Este documento mide sólo la **sensibilidad "
@@ -875,13 +1079,39 @@ def _escribir(d, base, esc, cat_base, saltan, truncadas, t_sin_tope, sumaR) -> N
           "categoría de gobernanza hay una frase que no lo es. Dos: esa frase "
           "está escrita en **lenguaje interno** —«no comparable con umbral "
           "anual»— y cruza al producto, que es justo lo que el Bloomberg "
-          "Firewall existe para impedir. **Este es el único de los tres "
-          "hallazgos que toca al usuario final**, y por eso es el primero que "
-          "`011` debe resolver.")
+          "Firewall existe para impedir.")
+        A("")
+        A("   ### ⚠️ Y este hallazgo pesa MÁS que el del rótulo `0,27 %`")
+        A("")
+        A("   El `0,27 %` es real pero se queda dentro del libro. Este **cruza "
+          "la frontera entre motor y producto**, que es de otra categoría "
+          "arquitectónica. El motor *sabe* que está en corte parcial —y hace "
+          "bien en negarse a clasificar—, pero esa condición interna termina "
+          "**presentada como si fuera una categoría de gestión**. Es "
+          "exactamente lo que la doctrina de QUIRA separa:")
+        A("")
+        A("   ```")
+        A("   dato → estado epistemológico → interpretación → producto")
+        A("   ```")
+        A("")
+        A("   Un estado de disponibilidad del indicador se convirtió en una "
+          "categoría sustantiva. La cura no es «poner una categoría igualmente» "
+          "—sería fabricar una lectura anual que el corte no sostiene—, sino "
+          "**dos campos donde hoy hay uno**:")
+        A("")
+        A("   ```")
+        A("   estado_determinabilidad = CORTE_PARCIAL      (o ANUAL_COMPLETO)")
+        A("   clasificacion_avep      = NO_EMITIDA         (o la categoría)")
+        A("   ```")
+        A("")
+        A("   Con eso, la UI puede decir en lenguaje de administración pública "
+          "que la lectura anual todavía no es comparable, sin inventar una "
+          "categoría ni publicar la jerga del motor. Queda especificado en "
+          "`D-011`; no se implementa aquí, porque `007` observa.")
     A("")
-    A("Los tres van al dictamen `011`. Ninguno se corrige aquí: `007` observa. "
-      "Pero el tercero no puede esperar a `011` sin que alguien lo sepa, y por "
-      "eso queda escrito aquí y en el registro de deudas.")
+    A("Los tres van al dictamen `011`. Ninguno se corrige aquí. Pero el tercero "
+      "no puede esperar a `011` sin que alguien lo sepa, y por eso queda escrito "
+      "aquí y en el registro de deudas.")
     A("")
     A("---")
     A(f"*GM-Ω-ICPI-007 · {len(esc)} escenarios · baseline congelado 27,4582 % · "

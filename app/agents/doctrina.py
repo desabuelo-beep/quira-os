@@ -145,6 +145,23 @@ _DOCTRINA = (
          verificador="test_ninguna_regla_generadora_se_infiere_del_patron_de_sus_resultados",
          por_que_ahi="con 25 casos y tres valores posibles, cualquier hipótesis "
                      "encuentra algunos que la respaldan: encajar no es derivar"),
+    dict(id="DOC-011", custodia=GATE,
+         regla="Un vacío de trazabilidad se clasifica por su NATURALEZA, no por "
+               "su tamaño. «No puedo reconstruirlo del todo» —hay genealogía y "
+               "un límite explícito— NO es «no hay nada que reconstruir» —no "
+               "existe evidencia preservada de la regla generadora—. Exigen "
+               "auditorías distintas y admiten conclusiones distintas",
+         fuente="el colega, 2026-09-03 · GM-Ω-ICPI-007, al contrastar V_i "
+                "contra E_i",
+         verificador="test_V_y_E_no_comparten_la_naturaleza_de_su_vacio",
+         por_que_ahi="`V` tiene regla vigente, regla histórica, motivo del "
+                     "cambio y 25 de 25 valores reproducibles: su vacío es un "
+                     "LÍMITE DE RECONSTRUCCIÓN, y eso es sano para una "
+                     "auditoría. `E` tiene valores y ninguna regla que los "
+                     "produzca: su vacío es AUSENCIA DE REGLA GENERADORA. "
+                     "Tratarlos igual llevaría a sospechar de todo el motor por "
+                     "lo que falla en una variable — o, al revés, a dar por "
+                     "buena una ausencia porque otras variables sí documentan"),
     dict(id="DOC-010", custodia=GATE,
          regla="Un contrafactual no sale del laboratorio. Toda cifra producida "
                "por un escenario de auditoría lleva sus TRES etiquetas "

@@ -14,7 +14,7 @@ Baseline reproducido por el laboratorio: **27.458227 %** (desvío 1.11e-16 respe
 
 ## La jerarquía de sensibilidad
 
-> La pregunta con la que arrancó `007` era si el ICPI mide la integridad de la cadena de gestión o está fuertemente condicionado por cómo repartimos el peso presupuestario y jurídico. **La respuesta es que el peso casi no lo condiciona.** Lo que lo condiciona es su álgebra.
+> La pregunta con la que arrancó `007` era si el ICPI mide la integridad de la cadena de gestión o está fuertemente condicionado por cómo repartimos el peso presupuestario y jurídico. La respuesta es que el peso **apenas** lo condiciona, y su álgebra **lo gobierna**.
 
 | Decisión metodológica | Rango que abre | Peor caso | Mejor caso |
 |---|---:|---:|---:|
@@ -23,9 +23,24 @@ Baseline reproducido por el laboratorio: **27.458227 %** (desvío 1.11e-16 respe
 | `007-A` · el peso  `P × R` | **3.54 pp** | -2.37 pp | +1.17 pp |
 | `007-C` · el tope de `T` | **0.47 pp** | +0.00 pp | +0.47 pp |
 
-Ordenado así, el resultado es inequívoco y **no era el esperado**: cambiar la estructura algebraica mueve el índice hasta **51.3 puntos**, mientras que redistribuir todo el peso —o eliminarlo del todo— lo mueve **3.5**. El ICPI es **robusto a la ponderación y frágil a su propia forma matemática**.
+Ordenado así, el resultado es inequívoco y **no era el esperado**: cambiar la estructura algebraica mueve el índice hasta **51.3 puntos**, mientras que redistribuir todo el peso —o eliminarlo del todo— lo mueve **3.5**.
 
-Eso reordena `011`: la discusión sobre si el agua potable debe pesar más que un taller —legítima, y respondida por `P·R`— resulta ser de **segundo orden** frente a la pregunta de si las seis dimensiones deben multiplicarse. La decisión grande del motor nunca estuvo en los ponderadores.
+### La conclusión, formulada con precisión
+
+> **El ICPI presenta baja sensibilidad a las alternativas de ponderación ENSAYADAS y alta sensibilidad a la arquitectura algebraica de agregación. Por tanto, la validez sustantiva del índice depende mucho más de la justificación teórica de su estructura multiplicativa que de la elección entre las ponderaciones evaluadas.**
+
+⚠️ **La formulación importa, y la primera versión era peor.** Decir que el índice es «frágil a su forma matemática» suena a diagnóstico y en realidad contrabandea un juicio: sugiere que la multiplicatividad es un defecto. `007-D` **no demuestra que multiplicar esté mal** — demuestra que multiplicar es **altamente determinante**. Son dos afirmaciones distintas y sólo la segunda está medida.
+
+Y las dos precisiones del enunciado no son adorno:
+
+- **«ensayadas»** — se probaron cuatro alternativas de peso, no todas las posibles. Una ponderación radicalmente distinta podría mover más. Lo medido es lo medido.
+- **«validez sustantiva»** — lo que está en juego no es qué número sale, sino si el número significa lo que el constructo promete.
+
+Eso reordena `011`: la discusión sobre si el agua potable debe pesar más que un taller —legítima, y respondida por `P·R`— resulta ser de **segundo orden** frente a la pregunta de primer orden, que es:
+
+> **¿Qué teoría de la integridad representa realmente `J = P·R·V·E·T·C`, y qué la fundamenta?**
+
+La estructura multiplicativa no queda impugnada por `007`. Queda **obligada a demostrar por qué debe existir**.
 
 ## 007-X · Robustez de clasificación
 
@@ -62,6 +77,38 @@ Escenarios que **cambian la categoría** — sensibilidad decisional, no sólo n
 ⚠️ **El baseline está a 7.46 puntos porcentuales del umbral de 20 %.** Esa distancia es la que convierte cualquier decisión metodológica de este documento en una decisión sobre la categoría publicable, y no sólo sobre un decimal.
 
 ⚠️ Y una precisión que cambia cómo se lee toda esta tabla: **hoy el motor NO emite categoría.** `H12!B34` la condiciona a `H07!B22>=12` —doce meses de corte— y el corte vigente es el mes **4**, así que la celda devuelve «Corte parcial · lectura preliminar (no comparable con umbral anual)». Las categorías de esta tabla son **las que el motor emitiría al cierre**, calculadas con sus mismos umbrales. No son lo que el motor dice hoy.
+
+### ★ 007-X-bis · ¿Y de dónde salen los umbrales?
+
+Javo aportó el contexto que faltaba: **la escala AVEP es invención de Dylus Lab**, ajustada después a lo que la normativa pública exigía. Eso obliga a hacer explícito un supuesto que toda esta sección arrastraba: **`007-X` mide la robustez de la categoría contra unos umbrales cuya procedencia no estaba auditada.** Auditada ahora, esto es lo que hay.
+
+**1 · La norma sostiene el CONSTRUCTO, no los CORTES.** La tesis titula un apartado «Baremo AVEP — Interpretación jurídica» y lo que fundamenta allí es *por qué* medir congruencia: `COPFP Art. 41` —el PDOT es la directriz **principal**, luego una inversión no alineada es jurídicamente cuestionable—. Las variables sí tienen norma citada (`P_i` → COPFP 54; `R_i` → COOTAD 54-55 + Constitución 3, 12, 66). **Dónde cortar en 70 o en 40 no la tiene.**
+
+**2 · La escala está COPIADA en 11 hojas** `H01_PARÁMETROS`, `H02_GLOSARIO_QUIRA`, `H12_MOTOR_ICPI_CANÓNICO`, `H12b_MOTOR_IBSC`, `H12c_ICPI_HISTÓRICO_ANUAL`, `H16b_IPE`, `H17_IED`, `H18_ITAM` …, y **ninguna de esas copias cita una norma**, mientras que los umbrales de inversión del mismo libro sí citan COOTAD.
+
+   Y la copia no es accidental: `H01!A30` **instruye a copiarla literalmente**. Viene de un incidente real que `H01!A28` conserva —
+
+   > «AVEP NO es una función de Excel. NO existe `=AVEP()`. Si se escribe `=AVEP(...)` el resultado será `#¿NOMBRE?` y el ecosistema fallará.»
+
+   El motor confundió la escala con una fórmula, y la solución adoptada —replicar el `IF` en todas las hojas— **resolvió el síntoma y consolidó la causa**: una capa de interpretación quedó incrustada dentro del cálculo, y duplicada. Cambiar un umbral hoy exige editar N celdas a mano.
+
+**4 · La tesis nunca dijo que fuera una fórmula.** La llama «Baremo de Valoración» y «Baremo de **Interpretación**», y dice que los resultados «se **contrastan** con» él. La doctrina correcta ya estaba escrita antes que el motor:
+
+   ```
+   dato → estado epistemológico → INTERPRETACIÓN → producto
+                                      ↑ aquí vive AVEP
+   ```
+
+**5 · Qué significa esto para LATAM (`010`).** Aquí está la tensión que Javo intuye, y tiene salida:
+
+| | Anclar los cortes a normativa local | Mantenerlos propios |
+|---|---|---|
+| Defensa en Ecuador | fuerte (hay norma) | exige argumento teórico |
+| Viaje a LATAM | ❌ no viaja: se recalibra por país | ✅ viaja |
+
+   La salida no es elegir una: es **separar las capas**. El constructo se ancla a norma —y esa parte es local por naturaleza—; los **cortes** son una decisión metodológica propia, explícita y **calibrable por país**. Que es justamente la arquitectura núcleo/adaptador que `010` tiene que demostrar.
+
+⚠️ **Nada de esto dice que la escala esté mal.** Los umbrales de un índice compuesto casi nunca salen de una norma: son una decisión metodológica, y es legítima. Lo que `007-X-bis` establece es que **hoy se presenta con la misma autoridad que un umbral legal y no la tiene**, que vive en la capa equivocada, y que de ella depende un Certificado (`H01!C59` fija la emisión en AVEP ≥ 70 %). Una escala con consecuencia contractual necesita procedencia declarada. → `011`.
 
 ## Concentración del resultado (baseline)
 
@@ -111,11 +158,24 @@ Y **6 metas aportan exactamente 0 al numerador** mientras siguen ocupando 12.80 
 | `A3` | P × R con R normalizado por la suma | 27.4582 % | +0.0000 pp | 🟠 Gestión por Ocurrencia | R por suma en vez de por el máximo teórico 1,725 |
 | `A4` | peso uniforme (todas las metas valen igual) | 26.8488 % | -0.6094 pp | 🟠 Gestión por Ocurrencia | la pregunta literal de Javo: ¿todo debe valer igual? |
 
-### `A3` da exactamente el baseline, y no es una coincidencia numérica
+### ★ HALLAZGO DE INVARIANCIA DE ESCALA
 
-`A3` se desvía 6e-15 pp. Eso no es «casi igual»: es **cero algebraico**. Multiplicar todos los pesos por una constante no cambia una media ponderada —`Σ(cK·S)/Σ(cK) = Σ(K·S)/Σ(K)`— y normalizar `R` por la suma es exactamente eso.
+`A3` se desvía 6e-15 pp del baseline. Eso no es «casi igual»: es **cero algebraico**, y no es un resultado empírico de este conjunto de datos — es una **propiedad del estimador**. La demostración cabe en tres líneas:
 
-La consecuencia es una **propiedad demostrada del motor**, no una observación: **la escala de `R_i` es irrelevante para el ICPI; sólo importa su forma relativa entre metas.** Que `R` se normalice por el máximo teórico y `P` por la suma es, por tanto, una inconsistencia de presentación —dos variables que parecen comparables y no lo son— sin ningún efecto sobre el resultado. Es de las pocas cosas que `011` puede cerrar sin discutir.
+```
+        K_i = P_i · R_i                        peso vigente
+       R'_i = R_i / ΣR                         normalizar R por la suma
+       K'_i = P_i · R_i / ΣR = (1/ΣR) · K_i    una constante común
+
+   ICPI(K') = Σ(cK_i·S_i) / Σ(cK_i)
+            = c·Σ(K_i·S_i) / c·Σ(K_i)
+            = ICPI(K)                          ∎
+```
+
+Toda transformación de `R` que sea una constante multiplicativa común deja el ICPI **exactamente igual**. De ahí se siguen dos cosas:
+
+1. **La escala de `R_i` es irrelevante para el índice; sólo importa su forma relativa entre metas.** Que `R` se normalice por el máximo teórico y `P` por la suma es una inconsistencia de presentación —dos variables que parecen comparables y no lo son— **sin ningún efecto sobre el resultado**. `011` puede cerrarlo sin discutirlo.
+2. Y una **falsa preocupación queda eliminada**: no hay que decidir cómo normalizar `R`, porque la decisión no existe. Saber qué transformaciones son irrelevantes *por construcción* es tan parte de auditar un estimador como saber cuáles lo mueven — y es lo que separa correr escenarios de entender el instrumento.
 
 ### La respuesta a la pregunta de Javo
 
@@ -175,6 +235,25 @@ La lectura correcta **no** es «el motor antiguo daba 16 %». Es esta:
 > El fragmento que el libro conserva de la regla anterior es **insuficiente para reconstruir el pasado**, y el margen de esa insuficiencia vale dos categorías AVEP.
 
 Es `DOC-009` en su forma más útil: la nota de `H13!B21` **parece** documentar la regla anterior y en realidad documenta sólo por qué se abandonó. Dos auditorías igual de rigurosas, partiendo del mismo libro, reconstruirían historias distintas — y ninguna de las dos podría demostrar la suya.
+
+### ★ DOS VACÍOS DE NATURALEZA DISTINTA — `V` no tiene el problema de `E`
+
+Este es el resultado que más lejos llega de todo `007`, y no es un número. Puestos uno al lado del otro, `V` y `E` **no tienen el mismo problema**, y tratarlos igual sería el error:
+
+| | `V_i` | `E_i` |
+|---|---|---|
+| Definición del constructo | ✅ existe | ✅ existe |
+| Regla vigente documentada | ✅ `H13!B16-B20` | ❌ no consta |
+| Regla histórica documentada | ✅ fragmento en `H13!B21` | ✅ tesis: 1 · 0,90 · 0,75 |
+| Explicación del cambio | ✅ y con su motivo | ❌ ninguna |
+| Valores reproducibles contra su regla | ✅ 25 de 25 | ❌ ninguno |
+| **Naturaleza del vacío** | **límite de reconstrucción** | **ausencia de regla generadora** |
+
+`V` está en una situación **sana para una auditoría**: hay genealogía, y hay un límite explícito de lo que sabemos. Se puede decir con precisión qué se sabe, qué no, y por qué. `E` no: existe la variable, existe una regla histórica en la tesis, existe la corrección de Javo sobre no penalizar la afiliación, existen los valores — y **no existe evidencia preservada que permita reconstruir la regla que produjo esos valores**.
+
+> Un vacío de trazabilidad se clasifica por su **naturaleza**, no por su tamaño. «No puedo reconstruirlo del todo» y «no hay nada que reconstruir» exigen auditorías distintas y admiten conclusiones distintas.
+
+Y de ahí se sigue, retroactivamente, que **fue correcto dejar `E_i` fuera de `007`**: hacer sensibilidad sobre una variable cuya regla generadora se desconoce habría producido números impecables sobre una premisa epistemológicamente vacía. Elegante y sin fundamento — que es la forma más difícil de detectar un error.
 
 **Y hay que separar dos cosas que 007 no mezcla.** `V` como **regla** —qué significa verificación intersistémica— y `V` como **evidencia** —si lo capturado satisface esa regla—. Este documento mide sólo la **sensibilidad del resultado** a la elección de arquitectura. Cuál de las dos representa mejor el constructo que QUIRA quiere medir es una pregunta de `011`.
 
@@ -255,9 +334,26 @@ Aparecieron al leer el motor para montar el laboratorio. No son contrafactuales:
 
    Y **5 superficies del producto** consumen ese campo: `quira_pages/p6_pulso.py`, `quira_pages/p7_brecha.py`, `quira_pages/p_command_center.py`, `quira_pages/p_concejo.py`, `quira_pages/p_ejecutivo.py`.
 
-   Son dos problemas encadenados. Uno: donde debería haber una categoría de gobernanza hay una frase que no lo es. Dos: esa frase está escrita en **lenguaje interno** —«no comparable con umbral anual»— y cruza al producto, que es justo lo que el Bloomberg Firewall existe para impedir. **Este es el único de los tres hallazgos que toca al usuario final**, y por eso es el primero que `011` debe resolver.
+   Son dos problemas encadenados. Uno: donde debería haber una categoría de gobernanza hay una frase que no lo es. Dos: esa frase está escrita en **lenguaje interno** —«no comparable con umbral anual»— y cruza al producto, que es justo lo que el Bloomberg Firewall existe para impedir.
 
-Los tres van al dictamen `011`. Ninguno se corrige aquí: `007` observa. Pero el tercero no puede esperar a `011` sin que alguien lo sepa, y por eso queda escrito aquí y en el registro de deudas.
+   ### ⚠️ Y este hallazgo pesa MÁS que el del rótulo `0,27 %`
+
+   El `0,27 %` es real pero se queda dentro del libro. Este **cruza la frontera entre motor y producto**, que es de otra categoría arquitectónica. El motor *sabe* que está en corte parcial —y hace bien en negarse a clasificar—, pero esa condición interna termina **presentada como si fuera una categoría de gestión**. Es exactamente lo que la doctrina de QUIRA separa:
+
+   ```
+   dato → estado epistemológico → interpretación → producto
+   ```
+
+   Un estado de disponibilidad del indicador se convirtió en una categoría sustantiva. La cura no es «poner una categoría igualmente» —sería fabricar una lectura anual que el corte no sostiene—, sino **dos campos donde hoy hay uno**:
+
+   ```
+   estado_determinabilidad = CORTE_PARCIAL      (o ANUAL_COMPLETO)
+   clasificacion_avep      = NO_EMITIDA         (o la categoría)
+   ```
+
+   Con eso, la UI puede decir en lenguaje de administración pública que la lectura anual todavía no es comparable, sin inventar una categoría ni publicar la jerga del motor. Queda especificado en `D-011`; no se implementa aquí, porque `007` observa.
+
+Los tres van al dictamen `011`. Ninguno se corrige aquí. Pero el tercero no puede esperar a `011` sin que alguien lo sepa, y por eso queda escrito aquí y en el registro de deudas.
 
 ---
 *GM-Ω-ICPI-007 · 16 escenarios · baseline congelado 27,4582 % · el Gold Master no se modificó · Dylus Lab © 2026*

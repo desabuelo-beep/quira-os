@@ -818,33 +818,110 @@ la reimplementación y el motor, no el efecto de cada decisión.
 | `007-A` · el peso `P × R` | 3,54 pp | 🟢 |
 | `007-C` · el tope de `T` | 0,47 pp | 🟢 |
 
-**El ICPI es robusto a la ponderación y frágil a su propia forma matemática.** La pregunta
-con la que arrancó `007` —si el índice estaba condicionado por cómo repartimos el peso
-presupuestario y jurídico— tiene respuesta: **no lo está**. Con peso uniforme el índice se
-mueve 0,61 pp; cambiando el álgebra, 51.
+> **El ICPI presenta baja sensibilidad a las alternativas de ponderación ENSAYADAS y alta
+> sensibilidad a la arquitectura algebraica de agregación. Por tanto, la validez sustantiva
+> del índice depende mucho más de la justificación teórica de su estructura multiplicativa
+> que de la elección entre las ponderaciones evaluadas.**
 
-Eso reordena `011`: la discusión sobre si el agua potable debe pesar más que un taller
-—legítima, y que `P·R` ya resuelve— es de **segundo orden** frente a si las dimensiones
-deben multiplicarse. La ponderación decide **a quién se mira**; el álgebra decide **cuánto sale**.
+⚠️ **La formulación importa.** Decir que el índice es «frágil a su forma matemática» suena a
+diagnóstico y contrabandea un juicio: sugiere que multiplicar es un defecto. **`007-D` no
+demuestra que multiplicar esté mal — demuestra que multiplicar es determinante.** Sólo lo
+segundo está medido. Y «ensayadas» acota: se probaron cuatro alternativas de peso, no todas.
 
-### Cuatro resultados que el dictamen necesita
+Eso reordena `011`. La discusión sobre si el agua potable debe pesar más que un taller
+—legítima, y que `P·R` ya resuelve— es de **segundo orden** frente a la pregunta de primer
+orden: **¿qué teoría de la integridad representa realmente `J = P·R·V·E·T·C`, y qué la
+fundamenta?** La estructura multiplicativa no queda impugnada: queda **obligada a demostrar
+por qué debe existir**.
 
-1. **`A3 = A0` exactamente, y es un teorema, no una coincidencia.** Normalizar `R` por la
-   suma multiplica todos los pesos por una constante, y una constante se cancela en una
-   media ponderada. Luego **la escala de `R_i` es irrelevante para el ICPI**: sólo importa
-   su forma relativa. Que `R` se normalice por el máximo teórico y `P` por la suma es una
-   inconsistencia de presentación sin efecto sobre el resultado — de lo poco que `011`
-   puede cerrar sin discutir.
-2. **`V_i` sí tiene biografía, y es la contrapartida de `E_i`.** El libro conserva la regla
-   vigente (`H13!B16-B20`), la regla anterior y por qué cambió (`H13!B21`). Las **25 metas
-   obedecen la regla documentada**, una por una (`B1 = B0`). `E_i` es la excepción del
-   motor, no su norma — y decirlo es tan parte de la auditoría como señalar lo que falla.
-3. **Pero la regla anterior de `V` no es reconstruible, y el margen vale dos categorías.**
-   Sus dos lecturas posibles dan 16,64 % y 28,41 %: de «Ruptura Sistémica» a «Gestión por
-   Ocurrencia». La nota de `H13!B21` **parece** documentar la regla anterior y en realidad
-   sólo documenta por qué se abandonó. `DOC-009` aplicado a `V`.
-4. **El baseline está a 7,46 puntos de cambiar de categoría** (umbral 20 %). Cualquier
-   decisión de `011` es una decisión sobre la categoría publicable, no sobre un decimal.
+### ★ HALLAZGO DE INVARIANCIA DE ESCALA
+
+`A3 = A0` con desvío `1e-16`. **No es un resultado empírico de este conjunto de datos: es
+una propiedad del estimador.**
+
+```
+       K_i = P_i · R_i                        peso vigente
+      R'_i = R_i / ΣR                         normalizar R por la suma
+      K'_i = P_i · R_i / ΣR = (1/ΣR) · K_i    una constante común
+
+  ICPI(K') = Σ(cK_i·S_i) / Σ(cK_i) = c·Σ(K_i·S_i) / c·Σ(K_i) = ICPI(K)   ∎
+```
+
+Toda transformación de `R` que sea una constante multiplicativa común deja el ICPI
+**exactamente igual**. Luego **la escala de `R_i` es irrelevante; sólo importa su forma
+relativa entre metas**, y que `R` se normalice por el máximo teórico y `P` por la suma es
+una inconsistencia de presentación **sin efecto sobre el resultado**. `011` la cierra sin
+discutirla — y una falsa preocupación queda eliminada: no hay que decidir cómo normalizar
+`R`, porque la decisión no existe.
+
+Saber qué transformaciones son irrelevantes **por construcción** es tanto parte de auditar
+un estimador como saber cuáles lo mueven. Es lo que separa correr escenarios de entender el
+instrumento.
+
+### ★ DOS VACÍOS DE NATURALEZA DISTINTA — `V` no tiene el problema de `E`
+
+El resultado que más lejos llega de todo `007`, y no es un número (`DOC-011`).
+
+| | `V_i` | `E_i` |
+|---|---|---|
+| Definición del constructo | ✅ existe | ✅ existe |
+| Regla vigente documentada | ✅ `H13!B16-B20` | ❌ no consta |
+| Regla histórica documentada | ✅ fragmento en `H13!B21` | ✅ tesis: 1 · 0,90 · 0,75 |
+| Explicación del cambio | ✅ y con su motivo | ❌ ninguna |
+| Valores reproducibles contra su regla | ✅ **25 de 25** | ❌ ninguno |
+| **Naturaleza del vacío** | **límite de reconstrucción** | **ausencia de regla generadora** |
+
+`V` está en una situación **sana para una auditoría**: hay genealogía y hay un límite
+explícito de lo que sabemos. `E` no admite esa frase. **Un vacío de trazabilidad se clasifica
+por su naturaleza, no por su tamaño**, y de ahí se sigue retroactivamente que fue correcto
+dejar `E_i` fuera de `007`: hacer sensibilidad sobre una variable cuya regla generadora se
+desconoce habría producido números impecables sobre una premisa vacía — elegante y sin
+fundamento, que es la forma más difícil de detectar un error.
+
+⚠️ Pero **la regla anterior de `V` tampoco es reconstruible, y el margen vale dos
+categorías**: sus dos lecturas posibles dan 16,64 % y 28,41 %, de «Ruptura Sistémica» a
+«Gestión por Ocurrencia». `H13!B21` **parece** documentar la regla anterior y sólo documenta
+por qué se abandonó. `DOC-009` aplicado a `V`.
+
+### ★ 007-X-bis · La escala AVEP no tiene la procedencia que aparenta
+
+Javo aportó el contexto que faltaba: **AVEP es invención de Dylus Lab**, ajustada después a
+lo que la normativa pública exigía. Eso obliga a explicitar el supuesto que `007-X`
+arrastraba —mide la robustez de la categoría contra umbrales sin auditar—. Auditados:
+
+- **La norma sostiene el CONSTRUCTO, no los CORTES.** La tesis fundamenta *por qué* medir
+  congruencia (`COPFP Art. 41`: el PDOT es directriz **principal**), y las variables sí citan
+  norma (`P_i` → COPFP 54; `R_i` → COOTAD 54-55 + Constitución 3, 12, 66). **Dónde cortar en
+  70 o en 40, no.** En todo el Gold Master, **ninguna** de las 11 copias de la escala cita
+  una norma — mientras los umbrales de inversión del mismo libro sí citan COOTAD.
+- **Está copiada en 11 hojas por instrucción explícita** (`H01!A30`), y la instrucción nació
+  de un incidente que `H01!A28` conserva: *«AVEP NO es una función de Excel. NO existe
+  `=AVEP()`»*. El motor confundió la escala con una fórmula, y replicar el `IF` en todas las
+  hojas **resolvió el síntoma y consolidó la causa**: una capa de interpretación quedó
+  incrustada en el cálculo, y duplicada.
+- **La tesis nunca dijo que fuera una fórmula.** La llama «Baremo de **Interpretación**», y
+  dice que los resultados «se **contrastan** con» él. La doctrina correcta ya estaba escrita
+  antes que el motor: `dato → estado epistemológico → INTERPRETACIÓN → producto`.
+- **El acrónimo tiene dos biografías** —«Alineación, Vinculación, Ejecución, Publicación» y
+  «Alfaro Virtus Escala de Ponderación»— y el nivel superior pasó de «Excelencia en
+  Trazabilidad» (tesis) a «Excelencia en Gobernanza» (motor). Los **rangos coinciden
+  exactamente**: lo que se movió fue el vocabulario.
+
+⚠️ **Nada de esto dice que la escala esté mal.** Los umbrales de un índice compuesto casi
+nunca salen de una norma: son una decisión metodológica legítima. Lo que se establece es que
+**hoy se presenta con la autoridad de un umbral legal y no la tiene**, que vive en la capa
+equivocada, y que de ella depende un Certificado (`H01!C59` fija la emisión en AVEP ≥ 70 %).
+
+**Y para LATAM (`010`) la tensión tiene salida.** Anclar los cortes a normativa local los
+hace fuertes en Ecuador e intransferibles; mantenerlos propios los hace viajar y obliga a
+defenderlos teóricamente. No hay que elegir: **se separan las capas**. El constructo se ancla
+a norma —y esa parte es local por naturaleza—; los cortes son decisión propia, explícita y
+**calibrable por país**. Es la arquitectura núcleo/adaptador que `010` debe demostrar.
+
+### Y el baseline está a 7,46 puntos de cambiar de categoría
+
+(umbral 20 %). Cualquier decisión de `011` es una decisión sobre la categoría publicable, no
+sobre un decimal.
 
 ### Y lo que la estructura significa en lenguaje llano
 
@@ -898,6 +975,22 @@ distintas y ambas son ciertas:
 | **Empírica** — ¿la evidencia permite afirmarlo? | 🟡 sí para OBRA; para SERVICIO/NORMATIVO la evidencia existe (LOTAIP/CPCCS) y el índice la ignora |
 | **Temporal** — ¿el período de la evidencia es el del índice? | 🔴 el ICPI 2026 lee `Vi_2025` |
 | **Estructural** — ¿la forma matemática está justificada? | 🔴 es la decisión más consecuente del motor (51 pp) y no está argumentada en ninguna parte del libro (`007-D`) |
+
+### El mapa de GM-Ω, y qué es `011` de verdad
+
+| | Pregunta |
+|---|---|
+| **001-006** | ¿qué es el ICPI, de dónde salen sus variables y qué problemas de trazabilidad tiene? |
+| **007** | ¿qué decisiones matemáticas gobiernan realmente su comportamiento? |
+| **008** | ¿qué tan completo es el universo que estamos midiendo? |
+| **009** | ¿puede un actor optimizar el indicador sin mejorar la realidad? |
+| **010** | ¿qué parte del constructo es ecuatoriana y qué parte puede viajar a LATAM? |
+| **011** | **¿existe fundamento matemático, epistemológico, empírico y normativo suficiente para conservar el ICPI tal como está, corregirlo, potenciarlo o rediseñarlo?** |
+
+⚠️ **`011` dejó de ser un dictamen sobre el Excel.** Después de `007` es el **dictamen de
+validez del constructo ICPI**: el Excel es donde vive el motor, pero lo que está en juicio es
+si el índice mide lo que dice medir y si su forma matemática está fundamentada. Es un cambio
+de objeto, no de alcance.
 
 **Los tres hallazgos comparten una raíz**: el modelo tiene el vocabulario para hacer las
 distinciones correctas —naturaleza de la meta, etapas de la contratación, período de la
