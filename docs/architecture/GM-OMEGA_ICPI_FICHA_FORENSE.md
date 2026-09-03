@@ -428,10 +428,27 @@ La validación tendría que venir de fuera de esa serie.
 
 ## 7-ter · MATRIZ DE PROCEDENCIA  `GM-Ω-ICPI-004`
 
-La matriz es 25 × 6 = 150 celdas, pero **el patrón de origen es idéntico dentro de cada
-variable**: las 25 metas comparten la misma forma de fórmula. Por eso la biografía se
-levanta por variable, con sus excepciones nombradas — 150 filas con la misma respuesta
-serían volumen, no evidencia.
+**Las 150 celdas, una por una, están en
+[`GM-OMEGA_ICPI_MATRIZ_004.md`](GM-OMEGA_ICPI_MATRIZ_004.md)** — derivada del Gold
+Master por `scripts/gm_omega/matriz_procedencia_icpi.py`, no escrita a mano.
+
+⚠️ La primera versión de esta sección comprimió las 150 celdas en 6 patrones. El colega
+lo corrigió: *«el patrón por variable no sustituye la trazabilidad de las 150 celdas»*, y
+tenía razón — comprimir responde «cómo se calcula esta variable», no «por qué ESTA meta
+tiene ESTE número». Y escribir la tabla a mano habría reproducido el patrón del
+«48,33 %» dentro de la auditoría que lo persigue: se DERIVA cada vez.
+
+### Estado provisional de trazabilidad (acordado con el colega · NO son veredictos)
+
+| Var | Estado | Por qué |
+|---|---|---|
+| `P_i` `R_i` `C_i` | `provenance provisionally verified` | referencia o fórmula, con norma citada en `R_i` |
+| `T_i` | `provenance verified · sensitivity pending` | origen claro; el tope `MIN(1,…)` se juzga en 007 |
+| `V_i` | 🔴 `TEMPORAL SEMANTIC GAP` | la columna leída se llama `Vi_2025` |
+| `E_i` | 🔴 `UNTRACEABLE · provenance gap` | 25 literales sin fórmula ni fuente |
+
+El resumen por variable se conserva abajo porque el patrón **sí** es idéntico dentro de
+cada una, y saberlo es parte del hallazgo.
 
 | Var | Origen (25/25) | Trazable | Período | Naturaleza |
 |---|---|---|---|---|
@@ -535,6 +552,74 @@ evidencia de origen sin mirar primero el resultado esperado?»*
 
 **Cuatro de seis son reproducibles de forma independiente.** Una lo es con la salvedad de
 su calibración, y una no lo es en absoluto.
+
+---
+
+## 7-quinquies · QUÉ SIGNIFICA UN CERO  `GM-Ω-ICPI-006`
+
+El colega anunció que aquí estaría la conexión profunda entre el ICPI, el IGP y la regla
+de QUIRA. La hay, y es más estructural de lo que parecía.
+
+**Medido sobre el motor completo:**
+
+```
+ceros en las 150 celdas del ICPI      6   — y los SEIS son V_i
+celdas vacías                          0
+celdas con «N/A», «no aplica»,
+«pendiente» o «sin dato» en las
+cuatro hojas del núcleo                0
+```
+
+### El hallazgo
+
+> **El motor del ICPI no tiene vocabulario para la ausencia. Sólo tiene números.**
+
+No es que confunda «no ejecutó» con «no aplica»: es que **no puede distinguirlos**,
+porque no existe ninguna representación para lo segundo. Cuando algo no se puede
+determinar, el único valor disponible es `0`.
+
+Y en una estructura multiplicativa eso no es «un valor bajo»:
+
+```
+J_i = P_i × R_i × V_i × E_i × T_i × C_i     un cero ANULA la meta entera
+K_i = P_i × R_i                             pero la meta sigue pesando completa
+```
+
+**Un cero en `V`, `E`, `T` o `C` convierte a la meta en peso puro sin aporte** — la
+penalización máxima que el modelo puede aplicar. Es el aniquilador, no un valor pequeño.
+
+### Lo que sí está declarado, y lo que no
+
+Para `V_i`, la tesis **lo declara y lo fundamenta**:
+
+> *«Cuando `V_i = 0`, el sistema NO está castigando al GAD; está aplicando las normas
+> vigentes: si el contrato no está en SERCOP viola LOSNCP Art. 7 […] sin evidencia
+> pública verificable, la transacción no existe para efectos de certificación.»*
+
+Eso es una decisión metodológica explícita y defendible. **El problema no es el cero: es
+que sólo hay una forma de decirlo.** Cuatro situaciones ontológicamente distintas
+comparten representación:
+
+| Situación real | Cómo se representa | ¿Debería? |
+|---|---|---|
+| ejecutó y no dejó rastro | `0` | ✅ sí — es el caso que la tesis quiere castigar |
+| no ejecutó | `0` | ✅ sí |
+| **no puede dejar ese rastro** (meta normativa o de servicio) | `0` | 🔴 no |
+| **no se pudo verificar** (fuente caída, dato pendiente) | `0` | 🔴 no |
+
+Las dos últimas son las que la Capa 0 de QUIRA prohíbe expresamente colapsar. **El canon
+del proyecto exige ocho estados y su motor tiene uno.**
+
+### La conexión con el IGP
+
+D-010 encontró exactamente lo mismo en el otro índice auditado: `IGP_2 = 0` con la nota
+«actualizar cuando PP 2026 esté disponible» — un pendiente pesando como un cero, mientras
+d08 tenía 191 demandas documentadas.
+
+> **Dos de dos índices auditados carecen de vocabulario para la ausencia.** Ya no es un
+> caso: es una propiedad del Gold Master como artefacto. Una hoja de cálculo representa
+> magnitudes, y la epistemología de QUIRA necesita representar *estados de conocimiento*.
+> Ese desajuste no se arregla cambiando una fórmula.
 
 ---
 
