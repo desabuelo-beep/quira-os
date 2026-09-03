@@ -314,7 +314,7 @@ perdió el eslabón que certifica que la obra existe.
 
 | # | Tesis fundacional | Gold Master v5.7 | Veredicto |
 |---|---|---|---|
-| 1 | `V_i = V_POA ∧ V_SERCOP ∧ V_LOTAIP ∧ V_CPCCS` — **AND de cuatro silos** | `V_POA` **excluido**, `V_eSIGEF` **añadido**, y el AND sustituido por veto-de-dos + OR-de-dos | **divergente**; el cambio del AND no tiene justificación escrita |
+| 1 | `V_i = V_POA ∧ V_SERCOP ∧ V_LOTAIP ∧ V_CPCCS` — **AND de silos** ⚠️ *ver §7-bis: la tesis de licenciatura define CINCO, con eSIGEF* | `V_POA` excluido y el AND sustituido por veto-de-dos + OR-de-dos | **divergente en el AND**; eSIGEF resultó ser evolución documentada, no divergencia |
 | 2 | Criterio `V_LOTAIP` = *«PDF contrato descargable **+ acta entrega-recepción**»* | *«Documento en URL pública — accesible»* | **se perdió la entrega** |
 | 3 | Criterio `V_SERCOP` = estado **«Adjudicado» o «Finalizado»** (vs. Desierto/Cancelado) | *«Proceso adjudicado publicado»* | «Finalizado» dejó de distinguirse |
 | 4 | **Compromiso NO cuenta** — *«promesa, no materialización»* | `V_eSIGEF = 0,5` (codificado sin devengar) **pasa el veto** y con transparencia da `V_i = 1,0` | **divergente**: la promesa puntúa como la ejecución |
@@ -355,6 +355,70 @@ Montecristi, con **27,4582 %**, cae en *Gestión por Ocurrencia*. Es el mismo r�
 Eso convierte a GM-Ω de «auditoría en busca de errores» en algo más útil: **la
 reconstrucción de un estándar que el propio proyecto se fijó y que su motor dejó de
 cumplir.**
+
+---
+
+## 7-bis · ACTA DE NACIMIENTO METODOLÓGICA  `GM-Ω-ICPI-001 · cerrado`
+
+### El testigo documental: son DOS, y difieren
+
+Javo aportó tres tesis advirtiendo que no sabía en qué se diferenciaban. **Sí importa**,
+y el escalón 7 de la escalera se aplica aquí: *lo leído ≠ la fuente*. La primera pasada
+de esta ficha leyó **una** y afirmó sobre las tres.
+
+| Documento | Extensión | Qué aporta |
+|---|---|---|
+| **«MACRO TRAYECTO DE VIDA · más antigua completa»** | 324.939 car | **operacionalización completa**: fases del ciclo presupuestario, acta entrega-recepción (×9), «promesa no materialización», «muestra estratégica» |
+| **«DE LICENCIATURA · menos punitiva»** | 110.988 car | fórmula íntegra + **`V_i` con CINCO silos** y su fundamento constitucional |
+| «borrador inicial punitivo» | 112.677 car | sin fórmula ni definiciones operacionales — descartado como testigo |
+
+**No se contradicen: se complementan**, y cada una tiene algo que la otra no.
+
+⚠️ **CORRECCIÓN A LA PASADA ANTERIOR.** Esta ficha afirmó que el motor «añadió eSIGEF,
+que no estaba en la definición original». **Es falso.** La tesis de licenciatura define:
+
+> `V_i = V_POA ∧ V_SERCOP ∧ **V_eSIGEF** ∧ V_LOTAIP ∧ V_CPCCS`
+> *«Es la variable más importante del modelo porque operacionaliza el artículo 18 de la
+> Constitución —derecho a información verificada— y el artículo 7 de la LOTAIP.»*
+
+eSIGEF **sí** estaba. La divergencia real es otra y más estrecha.
+
+### Identidad reconstruida
+
+| Elemento | Reconstrucción |
+|---|---|
+| Nombre | Índice de **Congruencia Programática e Intersistémica** |
+| Constructo | congruencia entre mandato programático y trazabilidad intersistémica |
+| Contraparte | **ICM** auto-reportado por el GAD en SIGAD |
+| Unidad de análisis | la meta |
+| Universo | **muestra estratégica** de metas del PDOT |
+| Finalidad | detectar congruencia o **ruptura documental** del mandato |
+| Naturaleza | **determinística, no inferencial** — censo del universo analizado |
+| Escala | AVEP · 5 rangos, de «Ruptura Sistémica» a «Excelencia en Trazabilidad» |
+| Propósito anti-gaming | que metas pequeñas no compensen metas estratégicas paralizadas |
+| Lo que NO debe medir | eficiencia del gasto (vive en ISP y d05) · participación (d08) · control social (d09) |
+| Estado | **baseline congelado: 27,4582 %** |
+
+### Matriz de genealogía  `TESIS → GOLD MASTER`, con la clasificación del colega
+
+| # | Divergencia | Clasificación | Evidencia |
+|---|---|---|---|
+| 1 | eSIGEF entre los silos | ✅ **EVOLUCIÓN JUSTIFICADA** | está en la tesis de licenciatura |
+| 2 | `V_POA` excluido | 🟡 **ADAPTACIÓN DOCUMENTADA** | `H13!A3`: *«V_POA (S3) NO entra — es verificador de programación, no de ejecución»* |
+| 3 | AND → veto-de-dos + OR-de-dos | 🟡 **ADAPTACIÓN PARCIALMENTE DOCUMENTADA** | `H13!B21` justifica el paso desde una fórmula **intermedia** (`SI(suma≥2;0,5)`, en `H02!B80`), **no desde el AND original**. El tramo AND → conteo no tiene razón escrita |
+| 4 | Criterio LOTAIP pierde el **acta entrega-recepción** | 🔴 **PÉRDIDA DE ESPECIFICACIÓN** | sin justificación en ninguna celda ni documento |
+| 5 | Criterio SERCOP pierde el estado **«Finalizado»** | 🔴 **PÉRDIDA DE ESPECIFICACIÓN** | sin justificación |
+| 6 | `V_eSIGEF = 0,5` (compromiso) pasa el veto | 🔴 **PÉRDIDA LATENTE** | la tesis lo excluye —«promesa, no materialización»—; hoy ninguna meta usa 0,5, así que el defecto está inactivo pero armado |
+| 7 | `T_i` uniforme en 19 de 25 | ⬜ **NO DETERMINABLE** | falta establecer si es ratio global deliberado o carencia de granularidad |
+| 8 | Etiqueta `Total_Metas_PDOT` sobre una muestra | 🔴 **PÉRDIDA DE ESPECIFICACIÓN** | la tesis dice «muestra estratégica»; el rótulo promete el total |
+
+### Una observación sobre el método de calibración
+
+`H13!B21` dice que la fórmula se corrigió porque *«los valores Vi_2025 canónicos prueban
+que AH-I-X-02 tiene Vi=0.0»*. Es decir: **la regla se ajustó para reproducir un resultado
+conocido.** Es una práctica legítima de calibración —y honesta, porque está escrita— pero
+conviene nombrarla: cuando la regla se ajusta al caso, el caso deja de poder validarla.
+La validación tendría que venir de fuera de esa serie.
 
 ---
 
