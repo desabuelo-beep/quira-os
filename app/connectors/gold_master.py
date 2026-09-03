@@ -117,6 +117,28 @@ def _resolver_gold_master() -> Path:
 # Gold Master canónico activo — se resuelve por contenido de carpeta, no por nombre fijo
 _DEFAULT_GOLD_MASTER = _resolver_gold_master()
 
+# ⚠️ Y SI NO RESOLVIÓ, SE DICE (D-002 · 2026-09-03). El colega puso la pregunta
+# exacta: *«¿puede este código producir un objeto que parezca provenir del Gold
+# Master vigente cuando el Gold Master no fue resuelto?»*
+#
+# Medido: esta puerta NO emite versión —sólo usa el nombre para filtrar
+# candidatos y para el log—, así que no puede declarar una procedencia falsa.
+# Pero sí devolvía la ruta histórica v5.5 con la misma cara que una resuelta, y
+# ese archivo ya no existe: quien la recibiera creería tener el slot vivo.
+#
+# No se cambia el retorno —romperlo afectaría a todo consumidor—: se añade la
+# constancia. Es lo mismo que `config.GOLD_MASTER_RESUELTO` hizo el 02-sep, y la
+# misma distinción de siempre: «no lo encontré» no es «es la v5.5».
+GOLD_MASTER_RESUELTO = (
+    _DEFAULT_GOLD_MASTER != _DEFAULT_GOLD_MASTER_V55
+    and _DEFAULT_GOLD_MASTER.exists()
+)
+if not GOLD_MASTER_RESUELTO:
+    logger.warning(
+        "[GoldMaster] NO RESUELTO — se devuelve la ruta histórica %s, que no es "
+        "el slot vivo. Quien la consuma debe tratarla como «no determinable», "
+        "nunca como el Gold Master vigente.", _DEFAULT_GOLD_MASTER.name)
+
 # Hoja de salida API — v5.5 canónico (v6.0 template como fallback)
 _OUTPUT_API_SHEET     = "H73_OUTPUT_API"    # v5.5 canónico activo
 _OUTPUT_API_SHEET_V6  = "G6.1_OUTPUT_API"  # v6.0 fallback (template)

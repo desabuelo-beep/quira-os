@@ -93,7 +93,13 @@ def test_el_parametro_llamado_total_es_el_tamano_de_la_muestra():
 
     `Total_Metas_PDOT = 25` — y las 25 fueron una muestra inicial que nunca se
     amplió. El día que se acoplen las demás, este número subirá y la prueba
-    fallará: **y ese fallo será el progreso**, no una regresión."""
+    fallará: **y ese fallo será el progreso**, no una regresión.
+
+    ⚠️ ESTE ATAQUE TAMBIÉN ABRÍA v5.5 POR SU NOMBRE (hallado 2026-09-03). El
+    ataque que fija LA DEUDA MADRE leía un Gold Master que sólo vive en
+    `historial_gold_master/`. Se descubrió al reparar `_gm()`: hasta entonces
+    caía en el `except` y devolvía `None`, y el skip lo tapaba. **La cifra madre
+    tenía su trinquete puesto sobre un archivo inexistente.**"""
     wb = _gm()
     if wb is None:
         pytest.skip("Gold Master no accesible")
@@ -102,13 +108,13 @@ def test_el_parametro_llamado_total_es_el_tamano_de_la_muestra():
     assert etiqueta == "Total_Metas_PDOT", f"cambió la etiqueta: {etiqueta}"
     wb.close()
 
-    wb2 = _gm()
     import openpyxl
-    from config import DATOS_DIR
-    v = openpyxl.load_workbook(Path(DATOS_DIR) / "SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx",
-                               data_only=True, read_only=True)
+
+    import config
+    v = openpyxl.load_workbook(Path(config.SIAP_PATH), data_only=True,
+                               read_only=True)
     total = v["H04_S2_PLANIFICACIÓN_PDOT"].cell(row=7, column=2).value
-    v.close(); wb2.close()
+    v.close()
     assert total == 25, (
         f"Total_Metas_PDOT pasó de 25 a {total}: si se acoplaron las metas que "
         f"faltaban, actualizar este hallazgo — dejó de ser una muestra")
@@ -245,7 +251,17 @@ def test_el_snapshot_no_declara_una_procedencia_escrita_a_mano():
     versión sólo vive en `historial_gold_master/`, **las cuatro pruebas del
     recorrido del ICPI, la cifra madre, se saltaban en silencio**—, y
     `gold_master.py` afirmaba en un comentario «v5.5 es el Gold Master canónico
-    activo», falso desde el 01-sep."""
+    activo», falso desde el 01-sep.
+
+    ⚠️ SON DOS PROPIEDADES Y VAN SEPARADAS (exigencia del colega). Esta prueba
+    verifica la A —ausencia de hardcode activo—, que es **siempre
+    determinable**: se lee código, no hace falta Gold Master. La B —coherencia
+    entre lo declarado y la fuente— vive en la prueba de al lado, porque sólo
+    puede comprobarse donde el Gold Master existe.
+
+    Mezclarlas fue mi error, y el ataque me lo enseñó: en el entorno de CI la
+    comparación acusaba al snapshot de señalar otro origen cuando lo que
+    ocurría es que **no había con qué comparar**."""
     fuente = (RAIZ / "app" / "pipelines" / "snapshot_pipeline.py").read_text(
         encoding="utf-8")
     cuerpo = fuente.split('"version_excel"')[1].split("\n")[0]
@@ -255,23 +271,92 @@ def test_el_snapshot_no_declara_una_procedencia_escrita_a_mano():
     assert "GOLD_MASTER_VERSION" in cuerpo, (
         "la procedencia dejó de derivarse de `config`")
 
-    # Y el snapshot en disco declara la versión que `config` resuelve hoy.
-    #
-    # ⚠️ SÓLO SI CONFIG RESOLVIÓ ALGO, y esta condición me la enseñó la propia
-    # prueba: en el entorno de CI —sin Gold Master— `config` cae al histórico
-    # v5.5 y la comparación acusaba al snapshot de señalar otro origen. No lo
-    # señalaba: **no había con qué comparar**. Contrastar contra un valor que
-    # nadie resolvió es el mismo defecto que `GOLD_MASTER_RESUELTO` vino a
-    # cerrar, cometido por el ataque que lo verifica.
+
+def test_la_puerta_canonica_declara_si_resolvio():
+    """PROPIEDAD A-bis · la pregunta que el colega puso sobre los fallbacks:
+
+    > *«¿Puede este código producir un objeto que parezca provenir del Gold
+    > Master vigente cuando el Gold Master no fue resuelto?»*
+
+    Medido: `gold_master.py` NO emite versión —usa el nombre sólo para filtrar
+    candidatos y para el log—, así que no puede declarar una procedencia falsa.
+    Pero devolvía la ruta histórica v5.5 con la misma cara que una resuelta, y
+    ese archivo ya no existe en el slot: quien la recibiera creería tener el
+    Gold Master vigente.
+
+    No se cambió el retorno —romperlo afectaría a todo consumidor—: se añadió la
+    constancia, igual que `config` el 02-sep. «No lo encontré» no es «es la
+    v5.5»."""
+    from app.connectors import gold_master as G
+
+    assert hasattr(G, "GOLD_MASTER_RESUELTO"), (
+        "la puerta canónica dejó de declarar si resolvió: un fallback sin "
+        "constancia vuelve a parecer autoridad vigente")
+    fuente = (RAIZ / "app" / "connectors" / "gold_master.py").read_text(
+        encoding="utf-8")
+    assert "_DEFAULT_GOLD_MASTER != _DEFAULT_GOLD_MASTER_V55" in fuente, (
+        "la constancia dejó de distinguir el fallback histórico del slot vivo")
+
+
+def test_la_procedencia_declarada_coincide_con_la_fuente(gold_master):
+    """PROPIEDAD B · sólo determinable donde el Gold Master existe.
+
+    El fixture la salta —diciéndolo— en los entornos que no lo tienen, en vez
+    de compararla contra el fallback histórico. Un contraste contra un valor que
+    nadie resolvió no es una verificación: es una coincidencia buscada."""
     import json
 
     import config
-    if not getattr(config, "GOLD_MASTER_RESUELTO", False):
-        return                      # no determinable aquí: no se afirma nada
-
     meta = json.loads((RAIZ / "data" / "gm_snapshot.json").read_text(
         encoding="utf-8"))["_meta"]
     declarada = str(meta.get("version_excel", ""))
     assert config.GOLD_MASTER_VERSION in declarada, (
         f"el snapshot declara «{declarada}» y config resuelve "
         f"«{config.GOLD_MASTER_VERSION}»: el derivado señala otro origen")
+
+
+def test_el_IGP_declara_su_alcance_y_no_computa_pendientes_como_cero(gold_master):
+    """D-010 · la pregunta de Javo, medida en la fuente.
+
+    > *«si revisa el IGP, es también ver si metodológicamente está bien armado
+    > para representar todo este universo de gobernanza participativa
+    > cantonal… si digo tonterías y atento contra el proyecto, dígalo.»*
+
+    No era una tontería. En `H20b` del Gold Master v5.7 aparecen dos cosas:
+
+    1 · **ALCANCE.** El «Índice de Gobernanza Participativa» mide DOS
+        componentes —Asamblea CPCCS y Presupuesto Participativo— mientras el
+        canon de QUIRA modela SIETE mecanismos y d08 los documenta enteros. Es
+        el patrón de D-001: `Total_Metas_PDOT` que son 25 de 66.
+
+    2 · **UN PENDIENTE ENTRA COMO CERO.** `IGP_2 = 0` con la nota «Actualizar
+        desde H10b cuando PP 2026 esté disponible», y pesa la mitad del
+        promedio. Mientras tanto d08 tiene 191 demandas de PP 2026 medidas. La
+        ausencia de dato está funcionando como valor, y el sujeto observado
+        carga con la diferencia — lo contrario de lo que este sistema es.
+
+    ⚠️ ESTA PRUEBA NO REPARA NADA. La fórmula vive en el Gold Master y su
+    corrección es cirugía sobre copia con evidencia (Regla de Oro 1), decisión
+    de Javo. Fija el estado para que el día que se amplíe o se distinga el
+    pendiente del cero, falle — y ese fallo sea la señal."""
+    import openpyxl
+
+    wb = openpyxl.load_workbook(gold_master, read_only=True, data_only=True)
+    ws = wb["H20b_IGP_GOBERNANZA_PARTIC"]
+    componentes = {ws.cell(row=r, column=1).value: ws.cell(row=r, column=2).value
+                   for r in range(6, 9)}
+    nota_igp2 = ws.cell(row=7, column=3).value
+    wb.close()
+
+    vivos = [k for k, v in componentes.items() if k and "RETIRADO" not in str(k)]
+    assert len(vivos) == 2, (
+        f"cambió el número de componentes del IGP: {vivos}. Si CRECIÓ, D-010 "
+        f"avanzó y hay que actualizar el registro con qué mecanismos entraron")
+
+    assert componentes.get("IGP_2_Presupuesto_Participativo") == 0, (
+        "IGP_2 dejó de ser 0: si se incorporó el dato de PP 2026, D-010 avanzó "
+        "y el índice ya no arrastra un pendiente como valor")
+    assert nota_igp2 and "cuando PP 2026" in str(nota_igp2), (
+        "desapareció la nota que declara que IGP_2 está PENDIENTE. Sin ella, el "
+        "0 se lee como «no hubo participación» — y d08 tiene 191 demandas de PP "
+        "2026 documentadas que dicen lo contrario")

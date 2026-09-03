@@ -210,6 +210,29 @@ _DEUDAS = (
                "verdes oficiales de Naciones Unidas, que son identidad ajena y "
                "no un juicio de «bien». Cada uno de los 25 exige decidir QUÉ "
                "dice ese verde, y eso es curación de dominio, no un barrido"),
+    dict(id="D-010", gravedad=FALSEA, capa="C1/C4", dueño="Javo",
+         que="Javo preguntó si el IGP está metodológicamente bien armado para "
+             "representar la gobernanza participativa cantonal. Medido en el "
+             "Gold Master v5.7 (`H20b`), aparecen DOS cosas distintas. "
+             "**(1) ALCANCE**: el «Índice de Gobernanza Participativa» mide 2 "
+             "componentes —Asamblea CPCCS y Presupuesto Participativo— y el "
+             "canon de QUIRA modela 7 mecanismos (Sistema Cantonal, Asamblea, "
+             "Consejo de Planificación, Audiencia Pública, PP, Cabildo Popular, "
+             "Silla Vacía), que d08 documenta enteros. Es el patrón de D-001: "
+             "un nombre que promete el universo sobre un alcance que es una "
+             "parte. **(2) UN PENDIENTE ENTRA COMO CERO**: `IGP_2 = 0` con la "
+             "nota «Actualizar desde H10b cuando PP 2026 esté disponible», y "
+             "ese 0 pesa la mitad del promedio: IGP = (0,54 + 0)/2 = 0,27. "
+             "Mientras tanto d08 tiene **191 demandas de PP 2026** medidas y "
+             "trazadas. La ausencia de dato está funcionando como valor.",
+         ataque="test_el_IGP_declara_su_alcance_y_no_computa_pendientes_como_cero",
+         no_es="un error de cálculo: la fórmula hace exactamente lo que declara "
+               "y `H20b` documenta el cambio metodológico con su fecha y su "
+               "motivo. Tampoco es una acusación al GAD — al contrario: el "
+               "hallazgo es que el índice puede estar penalizando al sujeto por "
+               "un dato que QUIRA todavía no incorporó. Y NO se toca: la "
+               "fórmula vive en el Gold Master, su corrección es cirugía sobre "
+               "copia con evidencia (Regla de Oro 1) y la decide Javo"),
     dict(id="D-009", gravedad=FALSEA, capa="C6", dueño="Javo",
          medicion_2="⚠️ EL HALLAZGO YA EXISTÍA, DOCUMENTADO Y SIN ESCALAR. "
                     "`docs/architecture/AUDITORIA_MIGRACION_D1.5.md` lo tituló "
