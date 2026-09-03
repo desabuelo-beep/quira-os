@@ -59,6 +59,11 @@ on:
   push:
     branches: [main]
     paths:
+      # ⚠️ EL PROPIO WORKFLOW, y faltaba (2026-09-02). Un commit que sólo tocaba
+      # este archivo NO disparaba nada: el instrumento no se observaba a sí
+      # mismo, y cualquier cambio al CI llegaba a `main` sin haberse ejecutado
+      # ni una vez. Es el patrón de D-004 en el último sitio donde quedaba.
+      - ".github/workflows/**"
       - "CLAUDE.md"
       - ".claude/**"
       - "governance/**"
