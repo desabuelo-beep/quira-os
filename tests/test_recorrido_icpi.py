@@ -51,15 +51,28 @@ if str(RAIZ) not in sys.path:
 
 
 def _gm():
-    try:
-        import openpyxl
-        from config import DATOS_DIR
-        p = Path(DATOS_DIR) / "SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx"
-        if not p.exists():
-            return None
-        return openpyxl.load_workbook(p, data_only=False, read_only=True)
-    except Exception:                                    # noqa: BLE001
+    """El Gold Master vigente, POR LA PUERTA CANÓNICA.
+
+    ⚠️ D-002 VOLVÍA POR AQUÍ (hallado 2026-09-03). Este helper abría
+    `SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx` **escrito a mano** mientras `config`
+    resuelve v5.7 por sufijo `_TGI`. El cierre de D-002 migró nueve módulos y
+    esta prueba conservó el literal — y como v5.5 sólo vive en
+    `historial_gold_master/`, las cuatro pruebas que dependen de este helper se
+    saltaban en silencio: **el recorrido del ICPI, la cifra madre, llevaba sin
+    verificarse contra el motor y nadie lo veía**.
+
+    Y el `except Exception: return None` era la otra mitad del defecto:
+    convertía «no pude abrirlo» en «no está», que es la distinción de los 8
+    estados. Ahora sólo se traga lo que de verdad significa ausencia; un fallo
+    al abrir un archivo que SÍ existe se propaga, porque eso no es un skip: es
+    un problema."""
+    import openpyxl
+
+    import config
+    p = Path(config.SIAP_PATH)
+    if not getattr(config, "GOLD_MASTER_RESUELTO", False) or not p.exists():
         return None
+    return openpyxl.load_workbook(p, data_only=False, read_only=True)
 
 
 def test_la_formula_del_ICPI_es_la_declarada():
@@ -216,3 +229,49 @@ def test_la_version_se_resuelve_y_no_se_escribe():
                  if "GOLD_MASTER_v5.5_TGI.xlsx" in f.read_text(encoding="utf-8")
                  and "_gold_master_vigente" not in f.read_text(encoding="utf-8")]
     assert not literales, f"enrichers que volvieron al literal: {literales}"
+
+
+def test_el_snapshot_no_declara_una_procedencia_escrita_a_mano():
+    """D-002 NO ESTABA CERRADA, y lo destapó una pregunta sobre el IGP.
+
+    Se declaró resuelta con «9 módulos migrados» y quedaban literales vivos. El
+    peor: `snapshot_pipeline` estampaba `version_excel: v5.5_TGI` en el `_meta`.
+    El snapshot publicado decía la verdad porque alguien la corrigió a mano —
+    pero la PRÓXIMA regeneración habría vuelto a declarar un origen que no era
+    el suyo, y el `_meta` es justamente lo que acredita de dónde salió todo lo
+    demás. Escalón 7 roto en el sitio que más duele.
+
+    Los otros dos: este mismo archivo abría `v5.5` escrito a mano —y como esa
+    versión sólo vive en `historial_gold_master/`, **las cuatro pruebas del
+    recorrido del ICPI, la cifra madre, se saltaban en silencio**—, y
+    `gold_master.py` afirmaba en un comentario «v5.5 es el Gold Master canónico
+    activo», falso desde el 01-sep."""
+    fuente = (RAIZ / "app" / "pipelines" / "snapshot_pipeline.py").read_text(
+        encoding="utf-8")
+    cuerpo = fuente.split('"version_excel"')[1].split("\n")[0]
+    assert "SIAP-ICPI_GOLD_MASTER" not in cuerpo, (
+        "el pipeline volvió a estampar el nombre del Excel a mano: el derivado "
+        "declararía un origen que puede no ser el suyo")
+    assert "GOLD_MASTER_VERSION" in cuerpo, (
+        "la procedencia dejó de derivarse de `config`")
+
+    # Y el snapshot en disco declara la versión que `config` resuelve hoy.
+    #
+    # ⚠️ SÓLO SI CONFIG RESOLVIÓ ALGO, y esta condición me la enseñó la propia
+    # prueba: en el entorno de CI —sin Gold Master— `config` cae al histórico
+    # v5.5 y la comparación acusaba al snapshot de señalar otro origen. No lo
+    # señalaba: **no había con qué comparar**. Contrastar contra un valor que
+    # nadie resolvió es el mismo defecto que `GOLD_MASTER_RESUELTO` vino a
+    # cerrar, cometido por el ataque que lo verifica.
+    import json
+
+    import config
+    if not getattr(config, "GOLD_MASTER_RESUELTO", False):
+        return                      # no determinable aquí: no se afirma nada
+
+    meta = json.loads((RAIZ / "data" / "gm_snapshot.json").read_text(
+        encoding="utf-8"))["_meta"]
+    declarada = str(meta.get("version_excel", ""))
+    assert config.GOLD_MASTER_VERSION in declarada, (
+        f"el snapshot declara «{declarada}» y config resuelve "
+        f"«{config.GOLD_MASTER_VERSION}»: el derivado señala otro origen")

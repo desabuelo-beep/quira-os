@@ -334,7 +334,16 @@ class SnapshotPipeline:
                 "generated_at":    self.timestamp.isoformat(),
                 "year":            self.year,
                 "fecha_corte":     self.timestamp.date().isoformat(),
-                "version_excel":   "SIAP-ICPI_GOLD_MASTER_v5.5_TGI",
+                # ⚠️ LA PROCEDENCIA SE DERIVA, NO SE ESCRIBE (D-002 · 2026-09-03).
+                # Aquí había `"SIAP-ICPI_GOLD_MASTER_v5.5_TGI"` literal, y el
+                # motor lee v5.7 desde el cierre de D-002. El snapshot publicado
+                # dice la verdad porque alguien la corrigió a mano — pero la
+                # PRÓXIMA regeneración habría vuelto a estampar v5.5, y un
+                # derivado que declara un origen que no es el suyo rompe el
+                # escalón 7 de la escalera en el sitio donde más duele: el
+                # `_meta` que acredita de dónde salió todo lo demás.
+                "version_excel":   getattr(cfg, "GOLD_MASTER_VERSION", "no_determinable"),
+                "version_excel_resuelta": getattr(cfg, "GOLD_MASTER_RESUELTO", False),
                 "gold_master_ok":  sources.get("gold_master", {}).get("status") == "ok",
             },
             "gad": {

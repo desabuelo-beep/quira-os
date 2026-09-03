@@ -89,6 +89,9 @@ def _resolver_gold_master() -> Path:
          de Excel). Un respaldo jamás debe convertirse en canónico por accidente.
       3. Entre los válidos gana la versión más alta, numérica: v5.10 > v5.9.
       4. Sin coincidencias → nombre histórico v5.5 (el contrato documentado arriba).
+         ⚠️ Ese archivo YA NO EXISTE en el slot: la ruta devuelta entonces no
+         resuelve, y quien la reciba debe tratarla como «no determinable», no
+         como «es la v5.5» (mismo defecto que `config` corrigió el 02-sep).
     """
     if not _PROYECT.is_dir():
         return _DEFAULT_GOLD_MASTER_V55
@@ -246,7 +249,10 @@ def _resolve_path() -> Path | None:
             return Path(gm_path)
     except ImportError:
         pass
-    # v5.5 es el Gold Master canónico activo
+    # ⚠️ v5.5 NO es el canónico activo desde el cierre de D-002: lo es el que
+    # `_resolver_gold_master()` encuentre por sufijo `_TGI`, hoy v5.7. Este
+    # camino sólo se toma sin `config` importable, y v5.5 ya no está en disco
+    # —vive en `historial_gold_master/`—: es un respaldo histórico, no el slot.
     if _DEFAULT_GOLD_MASTER_V55.exists():
         return _DEFAULT_GOLD_MASTER_V55
     # v6.0 como fallback (template de referencia)
