@@ -128,11 +128,21 @@ def canon_sha_actual() -> str:
     """La huella del canon de HOY, recalculada — nunca leída del artefacto.
 
     Si se confiara en el `canon_sha256` que el propio catálogo declara, un
-    catálogo alterado se acreditaría a sí mismo. El lector rehace la cuenta."""
+    catálogo alterado se acreditaría a sí mismo. El lector rehace la cuenta.
+
+    ⚠️ NORMALIZA LOS FINALES DE LÍNEA, igual que el compilador y por la misma
+    razón: `read_bytes()` crudo hacía que la huella dependiera del sistema de
+    archivos —CRLF en Windows, LF en el runner—, y el mismo canon daba dos
+    resultados. Lo destapó el primer CI real: allí el catálogo se declaraba
+    desactualizado y d02 dejaba de consumir su umbral.
+
+    Las dos cuentas TIENEN que hacerse igual. Si el compilador normaliza y el
+    lector no, nunca coinciden y el catálogo queda desactualizado para siempre
+    — que es exactamente lo que pasó entre el arreglo del compilador y éste."""
     h = hashlib.sha256()
     for f in sorted(_BRN_DIR.glob("*.yaml")):
         h.update(f.name.encode())
-        h.update(f.read_bytes())
+        h.update(f.read_bytes().replace(b"\r\n", b"\n"))
     return h.hexdigest()[:16]
 
 

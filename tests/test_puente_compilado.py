@@ -134,19 +134,26 @@ def test_un_compilado_desfasado_ya_no_puede_pasar_inadvertido():
     origen del que salió**, igual que el nombre del `.bin` señala su URL.
 
     ⚠️ Que el hash difiera NO significa que el compilado esté mal: significa que
-    describe una entrada distinta de la actual. La distinción de siempre."""
-    import hashlib
+    describe una entrada distinta de la actual. La distinción de siempre.
+
+    ⚠️ Y LA CUENTA SE PIDE, NO SE REPITE (2026-09-02). Esta prueba rehacía el
+    hash con su propio `read_bytes()`, así que había TRES implementaciones de la
+    misma huella: compilador, lector y prueba. Cuando se normalizaron los
+    finales de línea —el SHA dependía del sistema de archivos y el sello de Javo
+    no viajaba fuera de su máquina— dos se corrigieron y ésta se quedó atrás,
+    acusando de desfase a un catálogo que estaba al día.
+
+    Una prueba que reimplementa lo que verifica comprueba su propia copia."""
+    from app.agents import brn_lector as L
 
     brn = _brn()
     if brn is None:
         pytest.skip("no está el snapshot")
     assert brn.get("canon_sha256"), "el catálogo dejó de declarar su entrada"
-    h = hashlib.sha256()
-    for f in sorted((RAIZ / "docs" / "brn").glob("*.yaml")):
-        h.update(f.name.encode()); h.update(f.read_bytes())
-    assert brn["canon_sha256"] == h.hexdigest()[:16], (
+    actual = L.canon_sha_actual()
+    assert brn["canon_sha256"] == actual, (
         f"el compilado describe un canon distinto del que hay en disco: "
-        f"declara {brn['canon_sha256']}, el canon actual es {h.hexdigest()[:16]} "
+        f"declara {brn['canon_sha256']}, el canon actual es {actual} "
         f"— recompilar con `python scripts/brn_cno.py`")
 
 def test_ningun_motor_cruza_el_puente_todavia():
@@ -195,8 +202,16 @@ def test_el_catalogo_lleva_sello_humano_con_nombre_y_fecha():
     s = brn["validacion_humana_del_catalogo"]
     assert s["estado"] == "validado"
     assert s["validado_por"] == "Javo"
-    assert s["fecha_validacion"] == "2026-09-01", (
+    # 2026-09-02: RENOVACIÓN del sello del 01-sep sobre un canon IDÉNTICO. No
+    # cambió el canon —el último commit en `docs/brn/` es anterior al sello—:
+    # cambió la forma de medirlo, porque la huella dependía del sistema de
+    # archivos y no viajaba. El sello lo dice en `renovacion_de`, y esa
+    # constancia es lo que impide leer esto como una validación nueva.
+    assert s["fecha_validacion"] == "2026-09-02", (
         "la fecha debe ser la del sello real, no la de una compilación anterior")
+    assert s.get("renovacion_de"), (
+        "una renovación de sello sin constancia de qué renueva es un sello "
+        "nuevo disfrazado: debe decir cuál caducó y por qué")
     assert "NO convierte" in s.get("alcance", ""), (
         "el sello dejó de declarar su límite")
 

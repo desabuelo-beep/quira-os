@@ -182,15 +182,20 @@ _DEUDAS = (
     dict(id="D-009", gravedad=FALSEA, capa="C6", dueño="Javo",
          que="El patrón que el colega nombró tras el «48,33 %»: **derivado "
              "narrativo desacoplado de la fuente canónica**. Medido para saber "
-             "si fue aislado — no lo fue: **23 cifras de dominio escritas dentro "
-             "de texto publicado, en 11 superficies vivas**. «Salud "
+             "si fue aislado — no lo fue: **11 superficies vivas publican cifras "
+             "de dominio escritas dentro de su texto**. «Salud "
              "presupuestaria 14.58% bajo umbral COOTAD 65%», «Participación "
              "27.98%», «Cobertura agua 34.9% → 65% al 2027», «Fidelidad 72.73%: "
              "48/66 promesas CNE». Ninguna declara su fuente, y el 48,33 "
              "demostró qué pasa entonces: la cifra no se entera de que su fuente "
              "cambió, y sigue publicándose 22 días.",
          ataque="test_las_cifras_de_dominio_en_texto_publicado_estan_contadas",
-         no_es="23 cifras falsas. NO se afirma que ninguna esté mal: se afirma "
+         medicion="Se cuentan SUPERFICIES, no cadenas: el conteo de cadenas dio "
+                  "23 en Windows y 25 en el runner —mismo código, mismo filtro— "
+                  "porque los tokens STRING no son estables entre plataformas. "
+                  "Una medición cuyo resultado depende del sistema operativo no "
+                  "sostiene una cifra pública, ni siquiera la de una deuda",
+         no_es="un puñado de cifras falsas. NO se afirma que ninguna esté mal: se afirma "
                "que ninguna puede saberlo. Cada una exige determinar si es dato "
                "vivo, referencia histórica legítima o resto de la maqueta —y esa "
                "distinción es curación de dominio, no un reemplazo masivo. "

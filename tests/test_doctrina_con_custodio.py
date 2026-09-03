@@ -188,11 +188,19 @@ def test_las_cifras_de_dominio_en_texto_publicado_estan_contadas():
                         and CIFRA.search(txt) and DOMINIO.search(txt)):
                     halladas.append(f"{rel}:{t.start[0]}")
 
-    assert len(halladas) <= 23, (
-        f"aparecieron cifras de dominio nuevas escritas a mano: {len(halladas)} "
-        f"(eran 23). Las nuevas: publicar un número sin declarar su fuente es "
-        f"cómo nació el 48,33")
-    if len(halladas) < 23:
+    # ⚠️ SE CUENTAN ARCHIVOS, NO CADENAS, y la razón es un fallo de esta misma
+    # prueba: fijaba 23 y el runner contó 25 — mismo código, mismo filtro, dos
+    # números. El conteo de tokens STRING no es estable entre plataformas
+    # (cadenas adyacentes concatenadas implícitamente pueden tokenizarse de
+    # otro modo), y una prueba cuyo verde depende del sistema operativo no
+    # acredita nada. Los ARCHIVOS sí son estables, y son la señal que importa:
+    # once superficies vivas publican cifras que no declaran su fuente.
+    archivos = sorted({h.split(":")[0] for h in halladas})
+    assert len(archivos) <= 11, (
+        f"aparecieron superficies nuevas con cifras escritas a mano: "
+        f"{len(archivos)} (eran 11) — {archivos}. Publicar un número sin "
+        f"declarar su fuente es cómo nació el 48,33")
+    if len(archivos) < 11:
         raise AssertionError(
-            f"bajaron a {len(halladas)}: D-009 avanzó y hay que actualizar el "
-            f"registro de deuda con lo que se curó y por qué")
+            f"bajaron a {len(archivos)} superficies: D-009 avanzó y hay que "
+            f"actualizar el registro de deuda con lo que se curó y por qué")

@@ -4,8 +4,16 @@
   "_caduca": "El sello está atado al `canon_sha256` que validó. Si el canon de entrada cambia, este sello describe otra compilación y el catálogo vuelve a `no_consta` — el mismo mecanismo del escalón 5: un testimonio que no caduca es un testimonio que dejó de mirar el objeto.",
   "estado": "validado",
   "validado_por": "Javo",
-  "fecha_validacion": "2026-09-01",
-  "canon_sha256_validado": "59be1b69b8e033c9",
+  "fecha_validacion": "2026-09-02",
+  "canon_sha256_validado": "f9fa18c6f3b8bb9b",
   "alcance": "Valida el ACTO de compilación y su correspondencia con el canon. NO convierte a la BRN en autoridad sobre el Gold Master: la BRN explica y traza, el motor sigue siendo autónomo (Reglas de Oro 1 y 4).",
-  "no_significa": "que las 8 CNO y 3 RO en estado `propuesta` pasen a vigentes. El estado de cada pieza se deriva de su propio YAML y ningún sello del catálogo lo altera."
+  "no_significa": "que las 8 CNO y 3 RO en estado `propuesta` pasen a vigentes. El estado de cada pieza se deriva de su propio YAML y ningún sello del catálogo lo altera.",
+  "renovacion_de": {
+    "sello_anterior": "2026-09-01 · Javo · canon_sha256 59be1b69b8e033c9",
+    "por_que_caduco": "El `canon_sha256` se calculaba sobre los bytes tal como están en disco, y los 30 YAML llevan CRLF en Windows y LF en el runner de CI. El MISMO canon producía dos huellas: 59be1b69b8e033c9 aquí y f9fa18c6f3b8bb9b allá. Lo destapó el primer CI real de QUIRA: en el runner el catálogo se declaraba desactualizado, este sello «describía otra compilación» y d02 dejaba de consumir su umbral. El mecanismo hizo lo correcto — se negó a acreditar lo no acreditado.",
+    "que_cambio": "SÓLO la forma de medir: la huella se calcula ahora sobre el contenido con finales de línea normalizados, en el compilador y en el lector. El canon NO cambió — el último commit que tocó `docs/brn/` es c014e2a, anterior al sello del 2026-09-01, y no hay cambios pendientes: los 30 archivos son los mismos que Javo validó.",
+    "por_que_importa": "Regla de Oro 3: sin norma verificada (SHA256) no hay dato. Una huella que depende del sistema de archivos sólo verifica en la máquina donde se calculó, y QUIRA aspira a 222 GAD en máquinas distintas. La verificación tiene que viajar o no es verificación.",
+    "naturaleza": "Renovación de la MISMA validación sobre el MISMO canon, expresada en una huella que viaja. No es una validación nueva de contenido nuevo — y por eso se deja constancia aquí en vez de sustituir el registro en silencio.",
+    "autorizado_por": "Javo, 2026-09-02, al presentársele la divergencia medida entre las dos huellas."
+  }
 }

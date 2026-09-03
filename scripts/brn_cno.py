@@ -128,10 +128,17 @@ def _leer_sello(canon_sha: str) -> dict:
                            f"y el actual es {canon_sha}: describe otra compilación",
                 "sello_caducado_de": s.get("validado_por"),
                 "fecha_del_sello_caducado": s.get("fecha_validacion")}
-    return {"estado": s.get("estado", "no_consta"),
-            "validado_por": s.get("validado_por"),
-            "fecha_validacion": s.get("fecha_validacion"),
-            "alcance": s.get("alcance", "")}
+    fuera = {"estado": s.get("estado", "no_consta"),
+             "validado_por": s.get("validado_por"),
+             "fecha_validacion": s.get("fecha_validacion"),
+             "alcance": s.get("alcance", "")}
+    # Si el sello es una RENOVACIÓN, la constancia viaja con él. Sin esto, el
+    # snapshot mostraría una fecha nueva sobre el mismo canon y nadie podría
+    # saber si hubo una validación nueva o la misma expresada de otro modo —
+    # que es la diferencia entre acreditar y parecer acreditado.
+    if s.get("renovacion_de"):
+        fuera["renovacion_de"] = s["renovacion_de"]
+    return fuera
 
 
 def main() -> int:
@@ -209,9 +216,28 @@ def main() -> int:
     # invisible: quien lo lea puede rehacer el hash de `docs/brn/` y saber si
     # describe el canon de hoy. Es el escalón 7 aplicado al compilador — el
     # derivado señala el origen del que salió.
+    # ⚠️ SE NORMALIZAN LOS FINALES DE LÍNEA, Y NO ES UN DETALLE (2026-09-02).
+    #
+    # `read_bytes()` crudo hacía que el SHA dependiera del SISTEMA DE ARCHIVOS:
+    # los 30 YAML tienen CRLF en Windows y LF en el runner de CI, así que el
+    # mismo canon producía dos huellas distintas:
+    #
+    #     Windows (CRLF) → 59be1b69b8e033c9   ← el que Javo selló
+    #     Linux   (LF)   → f9fa18c6f3b8bb9b
+    #
+    # El primer CI real lo destapó: en el runner el catálogo se declaraba
+    # «desactualizado», el sello «describía otra compilación» y **d02 dejaba de
+    # consumir el umbral**. El mecanismo hizo lo correcto — se negó a consumir
+    # lo no acreditado—. Lo que estaba mal es lo que medía: la representación
+    # en disco, no el contenido.
+    #
+    # Y la Regla de Oro 3 —«sin norma verificada (SHA256) no hay dato»— exige
+    # que la verificación VIAJE: QUIRA aspira a 222 GAD, en máquinas distintas.
+    # Una huella que sólo vale en un escritorio no verifica nada fuera de él.
     h = hashlib.sha256()
     for f in sorted(BRN_DIR.glob("*.yaml")):
-        h.update(f.name.encode()); h.update(f.read_bytes())
+        h.update(f.name.encode())
+        h.update(f.read_bytes().replace(b"\r\n", b"\n"))
     canon_sha = h.hexdigest()[:16]
 
     bloque = {
