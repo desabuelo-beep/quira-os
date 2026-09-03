@@ -444,8 +444,33 @@ tiene ESTE número». Y escribir la tabla a mano habría reproducido el patrón 
 |---|---|---|
 | `P_i` `R_i` `C_i` | `provenance provisionally verified` | referencia o fórmula, con norma citada en `R_i` |
 | `T_i` | `provenance verified · sensitivity pending` | origen claro; el tope `MIN(1,…)` se juzga en 007 |
-| `V_i` | 🔴 `TEMPORAL SEMANTIC GAP` | la columna leída se llama `Vi_2025` |
-| `E_i` | 🔴 `UNTRACEABLE · provenance gap` | 25 literales sin fórmula ni fuente |
+| `V_i` | 🔴 `TEMPORAL_SEMANTIC_GAP` | la columna leída se llama `Vi_2025` |
+| `E_i` | 🟡 `PARCIALMENTE_VERIFICADO` | la **regla existe** en la tesis (COOTAD 54 · NCI 200-04); lo que no consta en el libro es la MODALIDAD de cada meta |
+
+⚠️ **`E_i` estuvo clasificado aquí como `UNTRACEABLE`, y era afirmar más de lo medido.**
+El colega lo frenó: *«una cosa es "no tiene procedencia declarada en el Gold Master" y
+otra muy distinta "es epistemológicamente imposible de rastrear"»*. Agotada la búsqueda:
+no deriva de `Competencia_GAD` —`Exclusiva_Crítica` toma 0,75 y 1—, no deriva de la
+entidad ejecutora —EP Aseo toma los tres valores—, **pero la tesis SÍ define su regla**:
+
+| Modalidad de ejecución | `E_i` | |
+|---|---|---|
+| directa por direcciones del GAD | 1,00 | control total, rendición directa |
+| compartida por convenio interinstitucional | 0,90 | responsabilidad compartida |
+| **delegación a entidad adscrita** (EP municipal, patronato) | **0,75** | fricción por autonomía administrativa |
+
+Y la tesis añade una aclaración que conviene conservar: *«`E_i` no penaliza la delegación
+como mala práctica […] reconoce que cuando la ejecución se delega, la trazabilidad
+directa del GAD sobre esa inversión se debilita»*.
+
+**Al contrastar la regla con los valores aparece una incoherencia: 5 de las 6 metas
+ejecutadas por entidades adscritas tienen `E_i` distinto de 0,75.** Sólo `AH-I-N-01`
+(EP Aseo, 0,75) concuerda.
+
+⚠️ **No se declara defecto**, y la distinción importa: la entidad se infiere de la
+columna de `T_i` —el mejor proxy del libro— y la **modalidad real** de ejecución no
+consta en ninguna celda. Señalar dónde la regla documentada y el valor no concuerdan es
+medir; llamarlo error sería afirmar sobre lo que no se midió.
 
 El resumen por variable se conserva abajo porque el patrón **sí** es idéntico dentro de
 cada una, y saberlo es parte del hallazgo.
@@ -572,7 +597,13 @@ cuatro hojas del núcleo                0
 
 ### El hallazgo
 
-> **El motor del ICPI no tiene vocabulario para la ausencia. Sólo tiene números.**
+> **En el núcleo operacional auditado del ICPI —las cuatro hojas que lo alimentan— no
+> existe representación explícita de estados de ausencia, no aplicabilidad o
+> indeterminación: los valores observados son numéricos.**
+
+⚠️ La primera redacción decía «el motor del Gold Master no tiene vocabulario para la
+ausencia». El colega acotó bien: eso **extrapola de cuatro hojas a las 123** del libro.
+Lo medido son cuatro; lo afirmado, cuatro.
 
 No es que confunda «no ejecutó» con «no aplica»: es que **no puede distinguirlos**,
 porque no existe ninguna representación para lo segundo. Cuando algo no se puede
@@ -616,10 +647,30 @@ D-010 encontró exactamente lo mismo en el otro índice auditado: `IGP_2 = 0` co
 «actualizar cuando PP 2026 esté disponible» — un pendiente pesando como un cero, mientras
 d08 tenía 191 demandas documentadas.
 
-> **Dos de dos índices auditados carecen de vocabulario para la ausencia.** Ya no es un
-> caso: es una propiedad del Gold Master como artefacto. Una hoja de cálculo representa
+> **Dos de dos índices auditados carecen de vocabulario para la ausencia.** Dos de dos no
+> es «el Gold Master entero» —eso está por medir— pero ya no es un caso aislado. Una hoja de cálculo representa
 > magnitudes, y la epistemología de QUIRA necesita representar *estados de conocimiento*.
 > Ese desajuste no se arregla cambiando una fórmula.
+
+### La pregunta que queda abierta, y la salida que no es «sustituir ceros por NA»
+
+El colega la formula con precisión: **¿el cero es una propiedad matemática o una
+propiedad epistemológica?** En `V_i` puede ser perfectamente intencional —«no hay
+evidencia documental suficiente → no certifico»— y eso NO es lo mismo que «no ocurrió».
+El ICPI original parece haber querido exactamente lo primero.
+
+Por eso la reparación futura probablemente no sea reemplazar los ceros. Sería separar el
+valor del estado:
+
+```
+VALOR = 0      ESTADO = CERTIFICABLE_CERO     ← lo que la tesis quiere castigar
+VALOR = null   ESTADO = NO_APLICABLE          ← meta normativa o de servicio
+VALOR = null   ESTADO = PENDIENTE             ← el caso del IGP_2
+VALOR = null   ESTADO = NO_DETERMINABLE       ← fuente caída
+```
+
+Así se conserva la matemática histórica donde corresponde y se impide que el motor
+confunda **el estado del fenómeno** con **el estado del conocimiento**.
 
 ---
 

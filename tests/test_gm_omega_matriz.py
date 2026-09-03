@@ -91,5 +91,38 @@ def test_el_hallazgo_de_E_i_lo_encuentra_el_propio_generador():
         f"hay {literales} celdas sin origen declarado y eran 25 (todas `E_i`). "
         f"Si BAJÓ, alguien le dio biografía a E_i y hay que actualizar la ficha; "
         f"si SUBIÓ, otra variable perdió la suya")
-    assert "UNTRACEABLE" in txt, (
+    # ⚠️ E_i estuvo clasificado como UNTRACEABLE y era afirmar más de lo medido.
+    # Agotada la búsqueda —no deriva de `Competencia_GAD` ni de la entidad, pero
+    # la TESIS sí define su regla (COOTAD 54 · NCI 200-04)— el estado correcto es
+    # PARCIALMENTE_VERIFICADO: la regla existe; lo que falta en el libro es la
+    # MODALIDAD de ejecución de cada meta. «Sin fuente declarada aquí» no es
+    # «sin fuente».
+    assert "PARCIALMENTE_VERIFICADO" in txt, (
         "el estado provisional de E_i dejó de declararse")
+    assert "UNTRACEABLE" not in txt.split("## Las 150 celdas")[0].replace(
+        "UNTRACEABLE             hay valor", ""), (
+        "volvió a clasificarse E_i como UNTRACEABLE sin agotar la búsqueda")
+
+
+def test_la_incoherencia_de_E_i_se_señala_sin_declararla_defecto():
+    """La comprobación cruzada que pidió el colega: contrastar el valor asignado
+    contra la regla de la tesis, dada la entidad que ejecuta la meta.
+
+    Resultado: **5 de 6 metas ejecutadas por entidades adscritas** tienen `E_i`
+    distinto del 0,75 que la regla pide para la delegación.
+
+    ⚠️ Y NO SE DECLARA DEFECTO, que es la mitad importante. La entidad se infiere
+    de la columna de `T_i` —el mejor proxy del libro— y la MODALIDAD real
+    (directa · convenio · delegación) no consta en ninguna celda. Señalar dónde
+    la regla documentada y el valor no concuerdan es medir; llamarlo error sería
+    afirmar sobre lo que no se midió."""
+    txt = _MATRIZ.read_text(encoding="utf-8")
+    alertas = txt.count("adscrita) y la regla de la tesis pide")
+    assert alertas == 5, (
+        f"las metas con E_i incoherente pasaron de 5 a {alertas}. Si BAJÓ, "
+        f"alguien alineó E_i con la regla o declaró la modalidad; si SUBIÓ, "
+        f"apareció otra")
+    fuente = _SCRIPT.read_text(encoding="utf-8")
+    assert "NO demuestra un defecto" in fuente or "NO es un defecto demostrado" in fuente, (
+        "el generador dejó de declarar que la incoherencia no es un defecto "
+        "probado: sin esa salvedad, una inferencia se leería como veredicto")

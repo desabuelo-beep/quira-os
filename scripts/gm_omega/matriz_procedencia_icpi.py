@@ -47,16 +47,42 @@ _VARIABLES = {
     9: ("C_i", "Trazabilidad Orgánica"),
 }
 
-# Clasificación provisional acordada con el colega (2026-09-03). NO son
-# veredictos: son estados de la auditoría mientras GM-Ω-ICPI-011 no dictamine.
+# ── ESTADOS DE PROCEDENCIA (taxonomía del colega, 2026-09-03) ────────────────
+# NO son veredictos: son estados de la auditoría mientras GM-Ω-ICPI-011 no
+# dictamine. Y la distinción entre los dos últimos es la que el colega exigió:
+#
+#   VERIFICADO              la cadena completa es reconstruible
+#   PARCIALMENTE_VERIFICADO fórmula y fuente inmediata conocidas; falta la
+#                           fuente documental o la justificación metodológica
+#   NO_DETERMINABLE         no se puede reconstruir la cadena
+#   UNTRACEABLE             hay valor y NO existe fuente identificable
+#                           **después de agotar las fuentes razonables**
+#   TEMPORAL_SEMANTIC_GAP   la fuente existe, pero su período o función no está
+#                           correctamente declarado
+#
+# ⚠️ `E_i` estuvo clasificado aquí como UNTRACEABLE, y era afirmar más de lo
+# medido. Se agotó la búsqueda: no deriva de `Competencia_GAD` (Exclusiva_Crítica
+# toma 0,75 y 1), no deriva de la entidad ejecutora (EP Aseo toma los tres
+# valores) — pero **la tesis SÍ define su regla**, con COOTAD Art. 54 y NCI
+# 200-04 CGE: directa 1,00 · convenio 0,90 · delegación a adscrita 0,75. Luego
+# la regla existe y lo que no consta en el libro es la MODALIDAD de cada meta.
 _ESTADO = {
-    "P_i": ("provenance provisionally verified", "referencia directa a H14!G"),
-    "R_i": ("provenance provisionally verified", "fórmula + norma citada por meta"),
-    "V_i": ("TEMPORAL SEMANTIC GAP", "la columna leída se llama `Vi_2025`"),
-    "E_i": ("UNTRACEABLE · provenance gap", "literal sin fórmula ni fuente en el libro"),
-    "T_i": ("provenance verified · sensitivity pending", "ratio por ENTIDAD ejecutora"),
-    "C_i": ("provenance provisionally verified", "VLOOKUP a TBL_CALIBRACION_Ci"),
+    "P_i": ("PARCIALMENTE_VERIFICADO", "referencia directa a H14!G; falta la "
+                                       "cédula presupuestaria por meta"),
+    "R_i": ("VERIFICADO", "fórmula + artículo del COOTAD citado meta a meta"),
+    "V_i": ("TEMPORAL_SEMANTIC_GAP", "la columna leída se llama `Vi_2025`"),
+    "E_i": ("PARCIALMENTE_VERIFICADO", "regla documentada en la tesis (COOTAD 54 "
+                                       "· NCI 200-04); la MODALIDAD por meta no "
+                                       "consta en el Gold Master"),
+    "T_i": ("VERIFICADO · sensibilidad pendiente", "ratio por ENTIDAD ejecutora; "
+                                                   "el tope MIN(1,…) se juzga en 007"),
+    "C_i": ("PARCIALMENTE_VERIFICADO", "VLOOKUP a TBL_CALIBRACION_Ci; falta la "
+                                       "regla que calibra la tabla"),
 }
+
+# La regla de la tesis para E_i, para poder contrastarla — no para aplicarla.
+_ADSCRITAS = {"ENTE-02 Patronato", "ENTE-03 Bomberos", "ENTE-04 EP Aseo"}
+_E_ESPERADA_ADSCRITA = 0.75
 
 # Qué entidad ejecutora representa cada columna de `Ti_norm_2026` (H07b fila 20).
 _ENTIDAD_TI = {"B": "ENTE-01 GAD central", "C": "ENTE-02 Patronato",
@@ -82,6 +108,14 @@ def construir() -> list[dict]:
     wv = openpyxl.load_workbook(config.SIAP_PATH, data_only=True, read_only=True)
     hf, hv = wf["H12_MOTOR_ICPI_CANÓNICO"], wv["H12_MOTOR_ICPI_CANÓNICO"]
 
+    # Entidad ejecutora de cada meta, según de qué columna de `Ti_norm_2026`
+    # toma su ratio. Es el mejor proxy disponible en el libro, y se declara como
+    # proxy: la MODALIDAD de ejecución (directa/convenio/delegada) no consta.
+    entidad_meta = {
+        str(hv.cell(row=r, column=1).value):
+            _entidad_de(hf.cell(row=r, column=6).value) for r in range(6, 31)
+    }
+
     filas = []
     for r in range(6, 31):                       # las 25 metas del motor
         meta = hv.cell(row=r, column=1).value
@@ -90,13 +124,25 @@ def construir() -> list[dict]:
             valor = hv.cell(row=r, column=col).value
             es_literal = not (isinstance(formula, str) and formula.startswith("="))
             estado, por_que = _ESTADO[var]
+
+            # COMPROBACIÓN CRUZADA que pidió el colega: ¿el valor de `E_i`
+            # concuerda con la regla de la tesis, dada la entidad que ejecuta?
+            # No demuestra un defecto —la modalidad real no consta— pero señala
+            # dónde la regla documentada y el valor asignado no concuerdan.
+            alerta = ""
+            if var == "E_i":
+                ent = entidad_meta.get(str(meta), "—")
+                if ent in _ADSCRITAS and valor != _E_ESPERADA_ADSCRITA:
+                    alerta = (f"⚠️ lo ejecuta {ent} (adscrita) y la regla de la "
+                              f"tesis pide {_E_ESPERADA_ADSCRITA}")
+
             filas.append({
                 "meta": str(meta), "var": var, "nombre": nombre,
                 "celda": f"H12!{hf.cell(row=r, column=col).coordinate}",
                 "valor": valor,
                 "origen": "LITERAL (sin origen declarado)" if es_literal else str(formula),
-                "entidad": _entidad_de(formula) if var == "T_i" else "—",
-                "estado": estado, "por_que": por_que,
+                "entidad": entidad_meta.get(str(meta), "—") if var in ("T_i", "E_i") else "—",
+                "estado": estado, "por_que": por_que, "alerta": alerta,
             })
     wf.close(); wv.close()
     return filas
@@ -134,8 +180,9 @@ def main() -> int:
         for f in [x for x in filas if x["meta"] == meta]:
             v = f["valor"]
             v = f"{v:.6f}" if isinstance(v, float) else str(v)
+            ent = f"{f['entidad']} {f['alerta']}".strip()
             out.append(f"| `{f['var']}` | `{f['celda']}` | {v} | "
-                       f"`{f['origen'][:72]}` | {f['entidad']} |")
+                       f"`{f['origen'][:72]}` | {ent} |")
         out.append("")
 
     _SALIDA.write_text("\n".join(out) + "\n", encoding="utf-8")
@@ -144,6 +191,12 @@ def main() -> int:
     literales = [f for f in filas if f["origen"].startswith("LITERAL")]
     print(f"celdas sin origen declarado: {len(literales)} "
           f"({', '.join(sorted({f['var'] for f in literales}))})")
+    alertas = [f for f in filas if f["alerta"]]
+    if alertas:
+        print(f"E_i incoherente con la regla de la tesis: {len(alertas)} "
+              f"→ {', '.join(f['meta'] for f in alertas)}")
+        print("  ⚠️ NO es un defecto demostrado: la MODALIDAD real de ejecución "
+              "no consta en el libro, y la entidad se infiere de la columna de T_i.")
     return 0
 
 
