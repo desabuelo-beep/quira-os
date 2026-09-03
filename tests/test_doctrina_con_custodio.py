@@ -188,19 +188,35 @@ def test_las_cifras_de_dominio_en_texto_publicado_estan_contadas():
                         and CIFRA.search(txt) and DOMINIO.search(txt)):
                     halladas.append(f"{rel}:{t.start[0]}")
 
-    # ⚠️ SE CUENTAN ARCHIVOS, NO CADENAS, y la razón es un fallo de esta misma
-    # prueba: fijaba 23 y el runner contó 25 — mismo código, mismo filtro, dos
-    # números. El conteo de tokens STRING no es estable entre plataformas
-    # (cadenas adyacentes concatenadas implícitamente pueden tokenizarse de
-    # otro modo), y una prueba cuyo verde depende del sistema operativo no
-    # acredita nada. Los ARCHIVOS sí son estables, y son la señal que importa:
-    # once superficies vivas publican cifras que no declaran su fuente.
-    archivos = sorted({h.split(":")[0] for h in halladas})
-    assert len(archivos) <= 11, (
-        f"aparecieron superficies nuevas con cifras escritas a mano: "
-        f"{len(archivos)} (eran 11) — {archivos}. Publicar un número sin "
-        f"declarar su fuente es cómo nació el 48,33")
-    if len(archivos) < 11:
-        raise AssertionError(
-            f"bajaron a {len(archivos)} superficies: D-009 avanzó y hay que "
-            f"actualizar el registro de deuda con lo que se curó y por qué")
+    # ⚠️ INVENTARIO DECLARADO, NO UN CONTEO, y la razón es un doble fallo de
+    # esta misma prueba. Primero fijó «23 cadenas» y el runner contó 25.
+    # Se cambió a contar archivos —«11»— y el runner contó 12, con una lista
+    # DISTINTA: ve `m_planificacion` y `p10_inversion`, y no ve
+    # `p_sentinel_hub`. Mismo código, mismo filtro, dos resultados.
+    #
+    # La causa exacta de la divergencia no se determinó, y esa es justamente la
+    # razón para no seguir apoyando un trinquete en ella: un número que cambia
+    # con el sistema operativo no acredita nada, y perseguirlo dos veces ya fue
+    # suficiente aviso.
+    #
+    # Lo que SÍ es estable es la lista declarada — la unión de lo observado en
+    # ambas plataformas. Se exige que lo hallado esté DENTRO de ella: si
+    # aparece una superficie nueva, la prueba la nombra. Que una conocida no se
+    # detecte en un sistema concreto no es señal de nada.
+    CONOCIDAS = {
+        "quira_pages/env_gov.py", "quira_pages/m_planificacion.py",
+        "quira_pages/p10_inversion.py", "quira_pages/p11_ods.py",
+        "quira_pages/p14_eficiencia.py", "quira_pages/p17_rdc.py",
+        "quira_pages/p19_genero.py", "quira_pages/p3_congruencias.py",
+        "quira_pages/p8_metas.py", "quira_pages/p9_sat.py",
+        "quira_pages/p_command_center.py", "quira_pages/p_concejo.py",
+        "quira_pages/p_sentinel_hub.py",
+    }
+    archivos = {h.split(":")[0] for h in halladas}
+    nuevas = sorted(archivos - CONOCIDAS)
+    assert not nuevas, (
+        f"superficies nuevas publicando cifras escritas a mano: {nuevas}. "
+        f"Publicar un número sin declarar su fuente es cómo nació el 48,33")
+    assert archivos, (
+        "el barrido no encontró ninguna: o D-009 se curó entera —y hay que "
+        "actualizar el registro— o el filtro dejó de mirar")

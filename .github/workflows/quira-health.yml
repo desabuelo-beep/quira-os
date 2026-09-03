@@ -40,12 +40,18 @@ name: QUIRA · Health Check
 #     PRESENTE en la máquina de Javo. En el runner no existe, y 23 pruebas
 #     cayeron con `FileNotFoundError`. Hoy declaran su dependencia por fixture.
 #
-# REPRODUCIR ESTE ENTORNO EN LOCAL, que es lo que faltaba:
+# REPRODUCIR ESTE ENTORNO EN LOCAL — hacen falta las DOS mitades:
 #
-#     QUIRA_DATOS=<carpeta vacía> python -m pytest tests/ -q
+#     git clone <repo> /tmp/ci && cd /tmp/ci      # sin lo que .gitignore excluye
+#     QUIRA_DATOS=<carpeta vacía> pytest tests/   # sin lo que vive fuera del repo
 #
-# Verificado así antes de escribir esto: 680 pasan y 53 se saltan con motivo,
-# cero fallos. Con el Gold Master presente: 732 pasan y 1 se salta.
+# Clonar solo no basta —`config.DATOS_DIR` apunta fuera y el clon seguiría
+# leyendo el Gold Master de la máquina— y la variable sola tampoco: los 422
+# artefactos capturados siguen en disco. La primera simulación hizo lo primero,
+# prometió 715/5, y el runner dio 33 fallos.
+#
+# Verificado con las dos: 674 pasan, 61 se saltan con motivo, cero fallos.
+# Con todo presente en la máquina de Javo: 734 pasan y 1 se salta.
 #
 # LOS TRES CÓDIGOS DE SALIDA, que son la doctrina de los 8 estados aplicada al
 # propio instrumento — «no existe» ≠ «no pude obtener» ≠ «falló»:

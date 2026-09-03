@@ -142,7 +142,15 @@ def gold_master():
     propósito. Que no esté en CI no es un defecto: lo era que las pruebas no lo
     declararan.
 
-    Para reproducir CI en local:  `QUIRA_DATOS=<carpeta vacía> pytest`"""
+    REPRODUCIR CI EN LOCAL — las dos mitades, y hacen falta las dos:
+
+        git clone <repo> /tmp/ci && cd /tmp/ci     # sin lo que .gitignore excluye
+        QUIRA_DATOS=<carpeta vacía> pytest tests/  # sin lo que vive fuera del repo
+
+    Clonar solo no basta: `config.DATOS_DIR` apunta fuera del repositorio y el
+    clon seguiría leyendo el Gold Master de esta máquina. Poner la variable sola
+    tampoco: los 422 artefactos capturados siguen en disco. La primera
+    simulación hizo lo primero y prometió 715/5; el runner dio 33 fallos."""
     import config
     if not getattr(config, "GOLD_MASTER_RESUELTO", False):
         pytest.skip(

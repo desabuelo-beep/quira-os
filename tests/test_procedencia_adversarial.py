@@ -171,7 +171,7 @@ def test_05_la_prueba_debe_respaldar_al_verificador_que_dice_acreditar():
 
 
 # ── 8 · cambiar el sujeto después del sello ─────────────────────────────────────
-def test_08_medir_con_evidencia_de_otro_sujeto_DETIENE_la_corrida():
+def test_08_medir_con_evidencia_de_otro_sujeto_DETIENE_la_corrida(evidencia_capturada):
     """EL AGUJERO QUE ESTA PRUEBA ENCONTRÓ, y es el más grave de los ocho.
 
     Antes de escribirla, alterar el sujeto del sello dejaba **todo en verde**:
@@ -216,7 +216,7 @@ def test_08_medir_con_evidencia_de_otro_sujeto_DETIENE_la_corrida():
         ruta.write_bytes(respaldo)
 
 
-def test_08b_sin_discordancia_el_gate_no_estorba():
+def test_08b_sin_discordancia_el_gate_no_estorba(evidencia_capturada):
     """Un gate que detiene siempre es tan inútil como uno que nunca detiene."""
     from app.agents.d07.orquestador import ejecutar
     c = ejecutar(2025, list(range(1, 13)))
@@ -236,7 +236,7 @@ def test_08b_sin_discordancia_el_gate_no_estorba():
 #
 # Se atacó. Apareció una segunda puerta, y por eso estas pruebas existen.
 
-def test_09_cambiar_la_identidad_en_la_fuente_DETIENE_la_corrida():
+def test_09_cambiar_la_identidad_en_la_fuente_DETIENE_la_corrida(evidencia_capturada):
     """SEGUNDO AGUJERO, y entró justo por donde el gate no miraba.
 
     El gate `SUJETO` comparaba una etiqueta legible —«130801 Montecristi»—.

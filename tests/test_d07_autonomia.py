@@ -986,7 +986,7 @@ def test_una_prueba_inexistente_no_acredita_la_interpretacion():
         "una prueba real que no ejercita ESTE verificador no puede acreditarlo")
 
 
-def test_los_hallazgos_de_la_corrida_llevan_su_cadena():
+def test_los_hallazgos_de_la_corrida_llevan_su_cadena(evidencia_capturada):
     """Ningún hallazgo puede salir de una corrida sin decir de dónde viene. Es
     lo que permite responder «¿en qué se basa QUIRA para decir esto?» sin
     reconstruirlo a mano meses después."""
