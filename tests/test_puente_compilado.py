@@ -261,3 +261,110 @@ def test_el_sello_caduca_si_cambia_el_canon_que_valido():
         "el sello sigue valiendo para un canon que no validó")
     assert caducado.get("sello_caducado_de") == "Javo", (
         "al caducar debe conservarse quién firmó el sello anterior")
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# UNA SOLA FUNCIÓN DEFINE LA IDENTIDAD CRIPTOGRÁFICA DEL CANON
+# ══════════════════════════════════════════════════════════════════════════════
+def test_la_identidad_del_canon_tiene_una_sola_implementacion():
+    """DOCTRINA QUE EL COLEGA FIJÓ TRAS EL CASO CRLF (2026-09-02):
+
+    > *«Una sola función debe definir la identidad criptográfica del canon. Si
+    > compilador y lector la calculan por separado, el sistema puede declarar
+    > "el sello no corresponde" cuando la divergencia está en el código que
+    > calcula la identidad.»*
+
+    Y no era hipotético. Había TRES implementaciones —compilador, lector y una
+    prueba—. Al normalizar los finales de línea se corrigieron dos, y la tercera
+    acusó de desfase a un catálogo que estaba al día. El sistema dijo la verdad
+    sobre lo que medía; lo que medía estaba mal en un sitio de tres.
+
+    EL UNIVERSO SE DERIVA: se barren los `.py` del repositorio buscando el
+    patrón —un `sha256` alimentado con los YAML de `docs/brn/`— en vez de
+    comprobar una lista de archivos conocidos, que es justo el defecto que
+    D-004 cerró."""
+    import re
+
+    _FUERA = {".venv", "venv", "node_modules", "__pycache__", "historico",
+              "worktrees", "_deprecated"}
+    # El patrón: un hash alimentado con el contenido de los YAML del canon.
+    PATRON = re.compile(
+        r"hashlib\.sha256\(\)[\s\S]{0,400}?glob\(\s*[\"']\*\.yaml"
+        r"|glob\(\s*[\"']\*\.yaml[\s\S]{0,300}?\.update\(",
+        re.M)
+
+    implementan = []
+    for f in RAIZ.rglob("*.py"):
+        if set(f.parts) & _FUERA:
+            continue
+        try:
+            txt = f.read_text(encoding="utf-8", errors="replace")
+        except OSError:
+            continue
+        if PATRON.search(txt):
+            implementan.append(f.relative_to(RAIZ).as_posix())
+
+    assert implementan == ["app/agents/brn_lector.py"], (
+        f"la identidad del canon se calcula en más de un sitio: {implementan}. "
+        f"El día que dos divergan, el sistema acusará al sello de no "
+        f"corresponder cuando lo que no corresponde es el código que mide")
+
+
+def test_el_compilador_pide_la_identidad_en_vez_de_calcularla():
+    """La otra mitad: que el compilador NO tenga la suya. Sin esto, la prueba
+    de arriba pasaría el día que el compilador dejara de calcular el hash… y
+    también el día que dejara de escribirlo."""
+    fuente = (RAIZ / "scripts" / "brn_cno.py").read_text(encoding="utf-8")
+    assert "from app.agents.brn_lector import canon_sha_actual" in fuente
+    assert "canon_sha = canon_sha_actual()" in fuente
+
+    # Y las dos cuentas dan lo mismo sobre el canon de hoy.
+    import json
+
+    from app.agents import brn_lector as L
+    brn = json.loads((RAIZ / "data" / "gm_snapshot.json").read_text(
+        encoding="utf-8"))["brn_cno"]
+    assert brn["canon_sha256"] == L.canon_sha_actual()
+
+
+def test_la_huella_del_canon_no_depende_del_sistema_de_archivos(tmp_path, monkeypatch):
+    """EL ATAQUE QUE FIJA EL CASO CRLF, y es el que impide que vuelva.
+
+    Los 30 YAML llevan CRLF en Windows y LF en el runner. Con `read_bytes()`
+    crudo el mismo canon daba 59be1b69b8e033c9 aquí y f9fa18c6f3b8bb9b allá:
+    una identidad semánticamente idéntica y criptográficamente distinta según
+    la máquina. Incompatible con una infraestructura verificable portable —
+    Regla de Oro 3: sin norma verificada no hay dato, y QUIRA va a 222 GAD.
+
+    ⚠️ SE USA LA FUNCIÓN REAL SOBRE DOS COPIAS, y no un hash propio. La primera
+    versión de esta prueba calculaba la huella por su cuenta para comparar — y
+    el ataque de arriba la cazó en el acto: **era la cuarta implementación**,
+    escrita mientras se redactaba la regla que las prohíbe. Un hash propio aquí
+    habría probado que hashear crudo depende de CRLF (obvio) en vez de que
+    `canon_sha_actual` no depende (la propiedad que importa)."""
+    from app.agents import brn_lector as L
+
+    origen = sorted((RAIZ / "docs" / "brn").glob("*.yaml"))
+    assert origen, "no hay canon que medir"
+
+    def _copiar(destino, con_crlf: bool):
+        destino.mkdir(parents=True, exist_ok=True)
+        for f in origen:
+            b = f.read_bytes().replace(b"\r\n", b"\n")
+            if con_crlf:
+                b = b.replace(b"\n", b"\r\n")
+            (destino / f.name).write_bytes(b)
+        return destino
+
+    lf = _copiar(tmp_path / "lf", con_crlf=False)
+    crlf = _copiar(tmp_path / "crlf", con_crlf=True)
+
+    monkeypatch.setattr(L, "_BRN_DIR", lf)
+    huella_lf = L.canon_sha_actual()
+    monkeypatch.setattr(L, "_BRN_DIR", crlf)
+    huella_crlf = L.canon_sha_actual()
+
+    assert huella_lf == huella_crlf, (
+        f"la huella del canon volvió a depender de los finales de línea "
+        f"(LF {huella_lf} ≠ CRLF {huella_crlf}): el sello dejaría de valer al "
+        f"cruzar de sistema operativo, y con él la verificación de los 222 GAD")

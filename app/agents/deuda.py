@@ -51,6 +51,23 @@ DESFASA = "el_canon_dice_algo_que_el_codigo_no" # divergencia declarado/real
 # registro recoge — no barre. La Capa 0 lo detectó en cuanto nació el módulo.
 SIN_BARRER = "sin_barrer_puede_haber_mas"
 
+# ── ESTADO DE UNA CIFRA PUBLICADA (D-009 · taxonomía del colega, 2026-09-03) ──
+# La deuda NO es «hay números escritos a mano»: eso no está demostrado y sería
+# una acusación, no una medición. La deuda es:
+#
+#     hay afirmaciones numéricas publicadas cuya relación con una fuente
+#     vigente no está formalmente establecida.
+#
+# Curar una cifra es CLASIFICARLA, no reemplazarla. Sólo dos de estos siete
+# estados son defecto; los demás son usos legítimos que hay que poder declarar.
+CIFRA_AUTORIDAD = "deriva_de_una_fuente_canonica_vigente"
+CIFRA_DERIVADA = "se_calcula_desde_datos_canonicos"
+CIFRA_REFERENCIA = "ilustrativa_o_metodologica_declarada"
+CIFRA_HISTORICA = "se_conserva_por_razon_documental"
+CIFRA_DEMO = "valor_explicitamente_demostrativo"
+CIFRA_SIN_TRAZA = "no_se_pudo_establecer_su_origen"        # ← defecto
+CIFRA_CONTRADICTORIA = "contradice_la_fuente_vigente"      # ← defecto grave
+
 _DEUDAS = (
     dict(id="D-001", gravedad=FALSEA, capa="C1/C3", dueño="Javo",
          que="El ICPI se declara `ICPI_GLOBAL_SISTEMA` y se calcula sobre 25 "
@@ -200,6 +217,11 @@ _DEUDAS = (
                   "porque los tokens STRING no son estables entre plataformas. "
                   "Una medición cuyo resultado depende del sistema operativo no "
                   "sostiene una cifra pública, ni siquiera la de una deuda",
+         como_se_cura="CLASIFICANDO cada cifra, no reemplazándola: autoridad · "
+                      "derivada · referencia · histórica · demo · sin traza · "
+                      "contradictoria. Sólo las dos últimas son defecto. El "
+                      "48,33 era CONTRADICTORIA —publicaba un método retirado— "
+                      "y por eso se reparó; las demás exigen mirar una por una",
          no_es="un puñado de cifras falsas. NO se afirma que ninguna esté mal: se afirma "
                "que ninguna puede saberlo. Cada una exige determinar si es dato "
                "vivo, referencia histórica legítima o resto de la maqueta —y esa "

@@ -141,6 +141,83 @@ def test_el_tope_de_boot_sigue_siendo_una_decision_y_no_un_estorbo():
 
 
 # ── D-009 · EL PATRÓN 48,33 EN EL RESTO DEL SISTEMA ──────────────────────────
+def _descubrir_cifras(raiz, carpetas):
+    """DESCUBRE superficies con cifras de dominio en su texto publicado.
+
+    ⚠️ EL UNIVERSO SE DERIVA DEL DISCO, no de una lista. El colega marcó el
+    riesgo con precisión:
+
+    > *«Un inventario declarado puede convertirse en una lista blanca que se
+    > autoconsidera completa: superficie nueva → no está en el inventario → el
+    > detector la ignora → test verde.»*
+
+    Por eso el orden es DESCUBRIR → COMPARAR, nunca al revés. Esta función no
+    conoce el inventario; lo comparan sus llamadores. Y hay un ataque que la
+    ejercita sobre una superficie sembrada, porque afirmar la política no es
+    demostrarla.
+
+    ⚠️ LÍMITE REAL, y no se disimula: el DETECTOR ve un decimal con `%` dentro
+    de prosa de dominio. NO ve «doce coma ocho por ciento», ni una cifra
+    compuesta en variables, ni un número sin unidad. Que no encuentre una
+    superficie no prueba que no la haya — «no hallado» ≠ «no existe», también
+    aquí."""
+    import io
+    import re
+    import tokenize
+
+    CIFRA = re.compile(r"\d{1,3}[.,]\d{1,2}\s*%")
+    CSS = re.compile(r"[{};:]\s*$|width|height|rgba|linear-gradient|@import|"
+                     r"viewBox|flex|margin|padding", re.I)
+    DOMINIO = re.compile(r"presupuest|particip|cobertura|meta|ejecu|salud|"
+                         r"umbral|ICPI|IED|ICODS|autonom", re.I)
+
+    halladas = []
+    for d in carpetas:
+        base = raiz / d
+        if not base.exists():
+            continue
+        for f in base.rglob("*.py"):
+            rel = f.relative_to(raiz).as_posix()
+            if "__pycache__" in rel or "_deprecated" in rel:
+                continue
+            try:
+                toks = list(tokenize.generate_tokens(io.StringIO(
+                    f.read_text(encoding="utf-8", errors="replace")).readline))
+            except Exception:                               # noqa: BLE001
+                continue
+            for t in toks:
+                if t.type != tokenize.STRING:
+                    continue
+                txt = " ".join(t.string.split())
+                if (len(txt) <= 400 and not CSS.search(txt)
+                        and CIFRA.search(txt) and DOMINIO.search(txt)):
+                    halladas.append(f"{rel}:{t.start[0]}")
+    return halladas
+
+
+def test_ataque_una_superficie_nueva_no_puede_esconderse_del_detector(tmp_path):
+    """LA POLÍTICA, DEMOSTRADA — exigencia del colega, y tenía razón en pedirla.
+
+    Que el detector descubra en vez de filtrar es una afirmación sobre el
+    código; hasta que no se ejercita, es sólo una intención. Aquí se siembra
+    una superficie que NO está en ningún inventario y se comprueba que aparece.
+
+    Si algún día alguien invirtiera el orden —recorrer el inventario en vez del
+    disco— esta prueba lo cazaría, y sería el único aviso: el resto seguiría en
+    verde justamente porque habría dejado de mirar."""
+    falsa = tmp_path / "quira_pages"
+    falsa.mkdir()
+    (falsa / "p_inventada.py").write_text(
+        'ALERTA = "Salud presupuestaria 14.58% bajo umbral COOTAD"\n',
+        encoding="utf-8")
+
+    halladas = _descubrir_cifras(tmp_path, ("quira_pages",))
+    assert any("p_inventada.py" in h for h in halladas), (
+        "el detector no vio una superficie nueva: si recorre un inventario en "
+        "vez del disco, deja de ser un detector y pasa a ser una lista blanca")
+
+
+
 def test_las_cifras_de_dominio_en_texto_publicado_estan_contadas():
     """D-009 · la microauditoría que pidió el colega: *¿el caso 48,33 fue
     aislado o es sistémico?*
@@ -169,24 +246,8 @@ def test_las_cifras_de_dominio_en_texto_publicado_estan_contadas():
     DOMINIO = re.compile(r"presupuest|particip|cobertura|meta|ejecu|salud|"
                          r"umbral|ICPI|IED|ICODS|autonom", re.I)
 
-    halladas = []
-    for d in ("quira_pages", "views", "components", "app/viz"):
-        for f in (RAIZ / d).rglob("*.py"):
-            rel = f.relative_to(RAIZ).as_posix()
-            if "__pycache__" in rel or "_deprecated" in rel:
-                continue
-            try:
-                toks = list(tokenize.generate_tokens(io.StringIO(
-                    f.read_text(encoding="utf-8", errors="replace")).readline))
-            except Exception:                               # noqa: BLE001
-                continue
-            for t in toks:
-                if t.type != tokenize.STRING:
-                    continue
-                txt = " ".join(t.string.split())
-                if (len(txt) <= 400 and not CSS.search(txt)
-                        and CIFRA.search(txt) and DOMINIO.search(txt)):
-                    halladas.append(f"{rel}:{t.start[0]}")
+    halladas = _descubrir_cifras(RAIZ, ("quira_pages", "views", "components",
+                                        "app/viz"))
 
     # ⚠️ INVENTARIO DECLARADO, NO UN CONTEO, y la razón es un doble fallo de
     # esta misma prueba. Primero fijó «23 cadenas» y el runner contó 25.

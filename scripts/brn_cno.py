@@ -216,29 +216,29 @@ def main() -> int:
     # invisible: quien lo lea puede rehacer el hash de `docs/brn/` y saber si
     # describe el canon de hoy. Es el escalón 7 aplicado al compilador — el
     # derivado señala el origen del que salió.
-    # ⚠️ SE NORMALIZAN LOS FINALES DE LÍNEA, Y NO ES UN DETALLE (2026-09-02).
+    # ⚠️ LA HUELLA SE PIDE, NO SE CALCULA AQUÍ (2026-09-02).
     #
-    # `read_bytes()` crudo hacía que el SHA dependiera del SISTEMA DE ARCHIVOS:
-    # los 30 YAML tienen CRLF en Windows y LF en el runner de CI, así que el
-    # mismo canon producía dos huellas distintas:
+    # Había DOS implementaciones de la misma identidad —ésta y la del lector— y
+    # una tercera dentro de una prueba. Cuando hubo que normalizar los finales
+    # de línea, se corrigieron dos y la tercera acusó de desfase a un catálogo
+    # que estaba al día. El colega lo fijó como doctrina:
     #
-    #     Windows (CRLF) → 59be1b69b8e033c9   ← el que Javo selló
-    #     Linux   (LF)   → f9fa18c6f3b8bb9b
+    #     Una sola función debe definir la identidad criptográfica del canon.
     #
-    # El primer CI real lo destapó: en el runner el catálogo se declaraba
-    # «desactualizado», el sello «describía otra compilación» y **d02 dejaba de
-    # consumir el umbral**. El mecanismo hizo lo correcto — se negó a consumir
-    # lo no acreditado—. Lo que estaba mal es lo que medía: la representación
-    # en disco, no el contenido.
+    # Si compilador y lector la calculan por separado, el día que divergan el
+    # sistema dirá «el sello no corresponde» cuando lo que no corresponde es el
+    # código que mide. La autoridad vive en el LECTOR porque es quien verifica;
+    # el compilador la consume.
     #
-    # Y la Regla de Oro 3 —«sin norma verificada (SHA256) no hay dato»— exige
-    # que la verificación VIAJE: QUIRA aspira a 222 GAD, en máquinas distintas.
-    # Una huella que sólo vale en un escritorio no verifica nada fuera de él.
-    h = hashlib.sha256()
-    for f in sorted(BRN_DIR.glob("*.yaml")):
-        h.update(f.name.encode())
-        h.update(f.read_bytes().replace(b"\r\n", b"\n"))
-    canon_sha = h.hexdigest()[:16]
+    # POR QUÉ NORMALIZA (y esto lo documenta `canon_sha_actual`): `read_bytes()`
+    # crudo ataba la huella al sistema de archivos —CRLF aquí, LF en el runner—
+    # y el mismo canon daba 59be1b69b8e033c9 y f9fa18c6f3b8bb9b. La Regla de Oro
+    # 3 exige que la verificación VIAJE: QUIRA aspira a 222 GAD, en máquinas
+    # distintas, y una huella que sólo vale en un escritorio no verifica fuera.
+    sys.path.insert(0, str(REPO))
+    from app.agents.brn_lector import canon_sha_actual   # noqa: PLC0415
+
+    canon_sha = canon_sha_actual()
 
     bloque = {
         "_fuente": "Canon BRN (docs/brn/*.yaml) verificado contra el corpus (SHA256)",

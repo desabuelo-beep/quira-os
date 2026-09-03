@@ -29,7 +29,7 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 
 ## AHORA (estado vivo · historial → `governance/historico/`)
 🧭 **031** MCIP=5 motores · **035/037** IA propone/humano valida · **038** BRN **traza, no alimenta**.
 ✅ **PCD: d01·d02·d03·d06·d09** · d08 ENTRABLE · **d07 en curación**.
-🩹 **CI VERDE** (1º de 428) · 12 gates + suite · exit **2 = no determinable** · deudas → `deuda.py`
+🩹 **gates + suite EN CI** · 3 estados: ok · hallazgo · **2 = no determinable** · deudas → `deuda.py`
 📚 **doctrina con verificador → `doctrina.py`** · lo que sale de AHORA no se pierde: **cambia de custodio**. Sin verificador, se queda aquí.
 📑 ⛔ `.docx` gana al `.pdf`.
 ⚖️ **CANON**: ⛔ DOM **consume RO, NO lee la ley** · estado derivado → `canon.py` (consúltalo, NO lo escribas) · ⛔ **d01·d03·d09: RO NO cargada** (d07·d02 sí) · **VIII propuesta → d08 mide, NO dictamina** (D-6).
