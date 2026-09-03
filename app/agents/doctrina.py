@@ -145,6 +145,20 @@ _DOCTRINA = (
          verificador="test_ninguna_regla_generadora_se_infiere_del_patron_de_sus_resultados",
          por_que_ahi="con 25 casos y tres valores posibles, cualquier hipótesis "
                      "encuentra algunos que la respaldan: encajar no es derivar"),
+    dict(id="DOC-010", custodia=GATE,
+         regla="Un contrafactual no sale del laboratorio. Toda cifra producida "
+               "por un escenario de auditoría lleva sus TRES etiquetas "
+               "—MATEMÁTICAMENTE REPRODUCIBLE · METODOLÓGICAMENTE CONTRAFACTUAL "
+               "· NO AUTORIZADO PARA PUBLICACIÓN— y ninguna puede aparecer en "
+               "una superficie del producto mientras el dictamen no la adopte",
+         fuente="el colega, 2026-09-03 · GM-Ω-ICPI-007, al abrir 16 escenarios "
+                "sobre la cifra madre",
+         verificador="test_ningun_contrafactual_se_filtro_a_las_superficies",
+         por_que_ahi="el riesgo no es hipotético: es el «48,33 %», un número de "
+                     "trabajo que sobrevivió a su contexto y siguió publicándose "
+                     "22 días. Una auditoría que genera cifras nuevas multiplica "
+                     "ese riesgo, y el custodio busca los valores REALES leídos "
+                     "del documento derivado, no una lista escrita a mano"),
     dict(id="DOC-006", custodia=GATE,
          regla="Lo PENDIENTE declarado no se confunde con lo NO CONSTATADO — "
                "tres estados, no dos",

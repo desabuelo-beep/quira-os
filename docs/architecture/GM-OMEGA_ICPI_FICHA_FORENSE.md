@@ -797,6 +797,82 @@ confunda **el estado del fenómeno** con **el estado del conocimiento**.
 
 ---
 
+## 7-sexies · SENSIBILIDAD — qué decisión mueve el índice  `GM-Ω-ICPI-007 · cerrado`
+
+> **Los 16 escenarios completos están en
+> [`GM-OMEGA_ICPI_SENSIBILIDAD_007.md`](GM-OMEGA_ICPI_SENSIBILIDAD_007.md)**, derivado del
+> Gold Master por `scripts/gm_omega/sensibilidad_icpi.py`. Cada cifra de ese documento es
+> **METODOLÓGICAMENTE CONTRAFACTUAL** y **NO AUTORIZADA PARA PUBLICACIÓN** (`DOC-010`).
+> El único ICPI publicable sigue siendo **27,4582 %** hasta el dictamen `011`.
+
+El laboratorio reproduce `H12!B33` con un desvío de `1,1e-16` —cero de coma flotante— antes
+de mover ninguna pieza. Sin esa reproducción exacta, los deltas medirían la distancia entre
+la reimplementación y el motor, no el efecto de cada decisión.
+
+### La jerarquía, que invierte la pregunta de partida
+
+| Decisión | Rango que abre | |
+|---|---:|---|
+| `007-D` · la estructura algebraica | **51,26 pp** | 🔴 |
+| `007-B` · la especificación de `V` | 12,41 pp | 🟠 |
+| `007-A` · el peso `P × R` | 3,54 pp | 🟢 |
+| `007-C` · el tope de `T` | 0,47 pp | 🟢 |
+
+**El ICPI es robusto a la ponderación y frágil a su propia forma matemática.** La pregunta
+con la que arrancó `007` —si el índice estaba condicionado por cómo repartimos el peso
+presupuestario y jurídico— tiene respuesta: **no lo está**. Con peso uniforme el índice se
+mueve 0,61 pp; cambiando el álgebra, 51.
+
+Eso reordena `011`: la discusión sobre si el agua potable debe pesar más que un taller
+—legítima, y que `P·R` ya resuelve— es de **segundo orden** frente a si las dimensiones
+deben multiplicarse. La ponderación decide **a quién se mira**; el álgebra decide **cuánto sale**.
+
+### Cuatro resultados que el dictamen necesita
+
+1. **`A3 = A0` exactamente, y es un teorema, no una coincidencia.** Normalizar `R` por la
+   suma multiplica todos los pesos por una constante, y una constante se cancela en una
+   media ponderada. Luego **la escala de `R_i` es irrelevante para el ICPI**: sólo importa
+   su forma relativa. Que `R` se normalice por el máximo teórico y `P` por la suma es una
+   inconsistencia de presentación sin efecto sobre el resultado — de lo poco que `011`
+   puede cerrar sin discutir.
+2. **`V_i` sí tiene biografía, y es la contrapartida de `E_i`.** El libro conserva la regla
+   vigente (`H13!B16-B20`), la regla anterior y por qué cambió (`H13!B21`). Las **25 metas
+   obedecen la regla documentada**, una por una (`B1 = B0`). `E_i` es la excepción del
+   motor, no su norma — y decirlo es tan parte de la auditoría como señalar lo que falla.
+3. **Pero la regla anterior de `V` no es reconstruible, y el margen vale dos categorías.**
+   Sus dos lecturas posibles dan 16,64 % y 28,41 %: de «Ruptura Sistémica» a «Gestión por
+   Ocurrencia». La nota de `H13!B21` **parece** documentar la regla anterior y en realidad
+   sólo documenta por qué se abandonó. `DOC-009` aplicado a `V`.
+4. **El baseline está a 7,46 puntos de cambiar de categoría** (umbral 20 %). Cualquier
+   decisión de `011` es una decisión sobre la categoría publicable, no sobre un decimal.
+
+### Y lo que la estructura significa en lenguaje llano
+
+Con `S = V·E·T·C`, una meta con las cuatro dimensiones en 0,75 —«va aceptablemente en
+todo»— puntúa **0,32**. Seis metas aportan exactamente 0 al numerador ocupando el 12,80 %
+del denominador, y **entre ellas están las de máxima relevancia jurídica**: `FA-DIS-01`
+(R=1,0000) y `AH-AP-04` (R=0,8696). El motor las reconoce como competencia exclusiva
+crítica y acto seguido las anula.
+
+Que eso sea correcto —una obra crítica sin verificación no debería puntuar— o excesivo
+—desaparece del índice justo la meta que más importaba vigilar— **es la decisión de `011`**.
+Lo que `007` demuestra es que esa decisión existe, que nunca se argumentó en el libro, y
+que es la más consecuente de todo el motor.
+
+### Tres hallazgos colaterales del sondeo
+
+No son contrafactuales: son **estado observado**, y por tanto citables.
+
+- **El rótulo del ICPI imprime `0,27 %` en 69 hojas** del libro (`E1 = ROUND(B33,2)&"%"`,
+  con `B33` en escala 0-1). **No llega a la UI** —`H73!ICPI_GLOBAL_PCT` corrige la escala—,
+  pero un auditor externo que abra el Gold Master ve 0,27 % en cada cabecera.
+- **La brecha ICM–ICPI resta escalas incompatibles** (`B36 = B35 − B33`, 0-100 menos 0-1)
+  y la clasifica contra umbrales de 30 y 15. El veredicto «✅ Brecha mínima» es
+  estructuralmente inalcanzable de otro modo: no es un resultado, es el único desenlace.
+- **La clasificación AVEP no se emite y ese silencio SÍ cruza al producto** → **`D-011`**.
+
+---
+
 ## 8 · Lo que esta ficha NO responde
 
 - **Procedencia documental completa** (`GM-Ω-ICPI-005`): falta bajar de `H14`, `H13`,
@@ -821,6 +897,7 @@ distintas y ambas son ciertas:
 | **Epistemológica** — ¿la variable significa lo que dice? | 🔴 `V_i=0` significa dos cosas incompatibles |
 | **Empírica** — ¿la evidencia permite afirmarlo? | 🟡 sí para OBRA; para SERVICIO/NORMATIVO la evidencia existe (LOTAIP/CPCCS) y el índice la ignora |
 | **Temporal** — ¿el período de la evidencia es el del índice? | 🔴 el ICPI 2026 lee `Vi_2025` |
+| **Estructural** — ¿la forma matemática está justificada? | 🔴 es la decisión más consecuente del motor (51 pp) y no está argumentada en ninguna parte del libro (`007-D`) |
 
 **Los tres hallazgos comparten una raíz**: el modelo tiene el vocabulario para hacer las
 distinciones correctas —naturaleza de la meta, etapas de la contratación, período de la

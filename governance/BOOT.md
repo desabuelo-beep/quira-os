@@ -48,7 +48,7 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 
 ➡️ **SIGUIENTE**: Capa 2 a los 24 numerales (⏸ valid. jurídica de 105) · luego los 636.
 🧾 **SCORING vs Instr.**: SITA·CTA·ETA·RP ✅ · **CI mal** (Anexo 1: 1×1). ⛔ NO tocar SITA.
 🧷 **PROCEDENCIA POR AFIRMACIÓN**, no por dominio (d09).
-🚧 **evidencia ausente se DECLARA** (skip ≠ aprobado).
+🔬 **GM-Ω 001-007 ✅** `GM-OMEGA_ICPI_FICHA_FORENSE.md` · ICPI **27,4582 % CONGELADO** hasta 011 · ⛔ el Excel NO se toca.
 🧱 **053**: DOM = **agente gobernado** · d01·d02·d03·d09 migrados+atacados · **consulta d01↔d02 VIVA**: evidencia, NUNCA verdad.
 🪜 **ESCALERA 4-7**: evidencia↔artefacto · se LEE a quien ejecutó (⛔ no ejecutar), **CADUCA** · **lo leído ≠ la fuente**: el derivado señala origen.
 ⛔ **ENRICHER SIN FUENTE ABORTA**: vacío vuelve «no accedí» en «no hubo».
