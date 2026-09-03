@@ -74,6 +74,16 @@ _DEUDAS = (
              "metas que fueron una muestra inicial. `H04!B7` las etiqueta "
              "`Total_Metas_PDOT`. El trabajo de ampliación al total no aparece "
              "en v5.5, v5.7 ni v6.0, y Javo confirma que no lo encuentra.",
+         genealogia="⚠️ GM-Ω REDUJO ESTA DEUDA (2026-09-03). La tesis "
+                    "fundacional —`tesis historicas/`, aportada por Javo— define "
+                    "la fórmula con «n = Número de metas en la **MUESTRA "
+                    "ESTRATÉGICA** del PDOT». **La metodología nunca prometió el "
+                    "total.** Fue el Gold Master el que rotuló la celda "
+                    "`Total_Metas_PDOT` en `H04!B7`. El alcance sigue siendo 25 "
+                    "de 66 y eso limita lo que el ICPI puede afirmar, pero D-001 "
+                    "deja de ser «el motor miente sobre su universo» y pasa a ser "
+                    "«una celda está mal rotulada». La honestidad estaba en el "
+                    "origen; se perdió al escribir la etiqueta.",
          ataque="test_el_parametro_llamado_total_es_el_tamano_de_la_muestra",
          no_es="un error de cálculo: el motor hace lo que dice y los "
                "ponderadores suman 1.0000 sobre esas 25. Es el ALCANCE lo que "

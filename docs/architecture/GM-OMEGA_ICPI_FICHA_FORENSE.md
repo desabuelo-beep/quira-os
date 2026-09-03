@@ -18,6 +18,22 @@ GM-Ω-ICPI-011 y lo decide Javo.
 
 ---
 
+## REGLA GM-Ω-ICPI-000 · el baseline se congela
+
+    Mientras GM-Ω-ICPI-011 no emita dictamen:
+      ICPI_2026_ACTUAL = 27,4582 %
+      · no se modifica
+      · no se recalcula con reglas alternativas
+      · no se publica una cifra «corregida»
+      · no se sustituye una metodología por otra durante el diagnóstico
+      · las simulaciones son contrafactuales y NO constituyen resultado oficial
+
+Propuesta del colega y adoptada: evita que la auditoría se contamine con su propia
+propuesta. Precisamente porque ahora sabemos reproducir la cifra, es cuando más hay que
+dejarla quieta.
+
+---
+
 ## 1 · Identidad y árbol matemático  `GM-Ω-ICPI-001/003`
 
 Fuente única: **`H12_MOTOR_ICPI_CANÓNICO!B33`**, declarada en `C33`:
@@ -245,7 +261,104 @@ verificaciones del año previo debe decirlo en su propia cara.
 
 ---
 
-## 7 · Lo que esta ficha NO responde
+## 7 · GENEALOGÍA — la intención documental original  `GM-Ω-ICPI-001`
+
+El colega puso la condición: *«no convertir anomalía en veredicto sin reconstruir la
+regla que la produjo»*. Javo aportó la fuente primigenia —las tesis con que nació QUIRA,
+`tesis historicas/`— y ahí está la intención, con fundamentación jurídica variable por
+variable.
+
+### 7.1 · Lo que el ICPI dice ser
+
+> **ICPI = Índice de CONGRUENCIA PROGRAMÁTICA E INTERSISTÉMICA**
+> *«calculado mediante auditoría algorítmica del SIAP»*, como contraparte del **ICM**
+> auto-reportado por el GAD en SIGAD. La tesis investiga **la brecha ICM − ICPI**, y la
+> declara sustantiva si supera **30 puntos**.
+
+**No es un índice de cumplimiento.** Mide si lo programado es *congruente* a través de
+los sistemas transaccionales del Estado. Eso reencuadra el «veto» de la sección 2: exigir
+presencia en los silos **no es un accidente, es el constructo**.
+
+Y es **determinístico, no inferencial**: *«opera sobre el universo exacto de datos
+devengados registrados en e-SIGEF para las metas incluidas en la muestra estratégica.
+Las brechas no son estimaciones con margen de error; son hechos fácticos.»*
+
+### 7.2 · Las seis variables, con su nombre y su ley
+
+| Var | Nombre original | Fundamento citado |
+|---|---|---|
+| `P_i` | Coeficiente de **Peso Presupuestario** | COPFP Art. 54 |
+| `R_i` | Coeficiente de **Relevancia Normativa** | COOTAD 54-55 + CE 3, 12, 66 |
+| `V_i` | **Inmutabilidad Documental** (Filtro de Interoperabilidad Cero) | CE 18 · LOTAIP 7 · NCI 410-11 CGE · LOSNCP 7 |
+| `E_i` | Coeficiente de **Fricción de Autonomía** | ejecución directa vs delegada |
+| `T_i` | **Materialización Temporal** | COPFP 115-117 · Acuerdo 067 MEF |
+| `C_i` | **Trazabilidad Orgánica** (imputabilidad responsable) | — |
+
+**`P_i` tiene justificación anti-gaming explícita**, y responde por adelantado a la
+Prueba 6 del colega:
+
+> *«Esto impide que metas de bajo costo ($5K en talleres) inflen artificialmente el
+> índice mientras metas estratégicas ($8.5M en alcantarillado) permanecen paralizadas.»*
+
+**`R_i` tiene jerarquía constitucional declarada**, y responde a la pregunta de Javo:
+
+> *«Un GAD que cumple 80 % en cultura pero 20 % en agua potable tiene peor ICPI que uno
+> con 80 % en agua y 20 % en cultura. Esto refleja la jerarquía legal: no todas las
+> competencias valen igual.»*
+
+### 7.3 · LAS DIVERGENCIAS — diseño 2026-04 vs. motor v5.7
+
+Aquí está lo que GM-Ω vino a buscar. **La metodología original es más exigente que su
+implementación**, y en los cinco casos la diferencia va en la misma dirección: se
+perdió el eslabón que certifica que la obra existe.
+
+| # | Tesis fundacional | Gold Master v5.7 | Veredicto |
+|---|---|---|---|
+| 1 | `V_i = V_POA ∧ V_SERCOP ∧ V_LOTAIP ∧ V_CPCCS` — **AND de cuatro silos** | `V_POA` **excluido**, `V_eSIGEF` **añadido**, y el AND sustituido por veto-de-dos + OR-de-dos | **divergente**; el cambio del AND no tiene justificación escrita |
+| 2 | Criterio `V_LOTAIP` = *«PDF contrato descargable **+ acta entrega-recepción**»* | *«Documento en URL pública — accesible»* | **se perdió la entrega** |
+| 3 | Criterio `V_SERCOP` = estado **«Adjudicado» o «Finalizado»** (vs. Desierto/Cancelado) | *«Proceso adjudicado publicado»* | «Finalizado» dejó de distinguirse |
+| 4 | **Compromiso NO cuenta** — *«promesa, no materialización»* | `V_eSIGEF = 0,5` (codificado sin devengar) **pasa el veto** y con transparencia da `V_i = 1,0` | **divergente**: la promesa puntúa como la ejecución |
+| 5 | `T_i = Devengado al 31/12 / Codificado Vigente` — ratio **por meta** | 19 de 25 comparten `0,3035` | probable ratio global; contradice la granularidad declarada |
+
+### 7.4 · Y D-001 se reduce: era la etiqueta, no el método
+
+La tesis declara, en la definición de la fórmula:
+
+> **«n = Número de metas en la MUESTRA ESTRATÉGICA del PDOT»**
+
+**La metodología nunca prometió el total.** Fue el Gold Master el que rotuló esa celda
+`Total_Metas_PDOT` (`H04!B7`). El alcance sigue siendo 25 de 66 y eso limita lo que el
+ICPI puede afirmar — pero **D-001 deja de ser «el motor miente sobre su universo» y pasa
+a ser «una celda está mal rotulada»**. La honestidad estaba en el origen; se perdió al
+escribir la etiqueta.
+
+### 7.5 · El baremo AVEP, y de dónde salió «Gestión por Ocurrencia»
+
+| Rango | Categoría | Señal para CGE/CPCCS |
+|---|---|---|
+| 90-100 % | Excelencia en Trazabilidad | Certificación de calidad |
+| 70-89 % | Gestión por Mandato | Monitoreo rutinario |
+| 40-69 % | Transición Crítica | Auditoría focalizada |
+| **20-39 %** | **Gestión por Ocurrencia** | Auditoría integral |
+| 0-19 % | Ruptura Sistémica | Intervención inmediata |
+
+Montecristi, con **27,4582 %**, cae en *Gestión por Ocurrencia*. Es el mismo rótulo que
+`H20b!C11` usa para el IGP de 2025 — el vocabulario es coherente en todo el sistema.
+
+### 7.6 · La conclusión que cambia el dictamen
+
+> **El Gold Master no tiene una metodología equivocada: tiene una metodología correcta
+> implementada a medias.** En los cinco puntos divergentes, la tesis era MÁS exigente —
+> pedía POA, acta de entrega-recepción, estado «Finalizado», y excluía la promesa. La
+> implementación relajó cada uno de esos requisitos sin dejar constancia de por qué.
+
+Eso convierte a GM-Ω de «auditoría en busca de errores» en algo más útil: **la
+reconstrucción de un estándar que el propio proyecto se fijó y que su motor dejó de
+cumplir.**
+
+---
+
+## 8 · Lo que esta ficha NO responde
 
 - **Procedencia documental completa** (`GM-Ω-ICPI-005`): falta bajar de `H14`, `H13`,
   `H07b` y `H01 §M` hasta el documento y la fuente institucional de cada valor.
@@ -258,7 +371,7 @@ verificaciones del año previo debe decirlo en su propia cara.
 
 ---
 
-## 8 · Dictamen preliminar (no es el dictamen)
+## 9 · Dictamen preliminar (no es el dictamen)
 
 **El motor está bien construido y puede estar midiendo mal el fenómeno.** Son dos cosas
 distintas y ambas son ciertas:
