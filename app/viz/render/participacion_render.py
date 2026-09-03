@@ -246,20 +246,32 @@ def _hallazgo_audiencias(d: dict) -> str:
 def _vitalidad(d: dict) -> str:
     v = d.get("vitalidad") or {}
     comp = v.get("componentes") or []
-    dato = v.get("dato_disponible") or []
+    # ⚠️ AQUÍ SE PINTABA LA ASISTENCIA A LAS JORNADAS DE RENDICIÓN (Javo,
+    # 2026-09-03). El mismo gráfico —201 · 261 · 322— salía en el cajón de
+    # rendición y en éste, y un lector veía «participación creciente» en dos
+    # dominios distintos con un dato que sólo pertenece a uno. El acta de
+    # rendición es primigenia de d09; aquí no es ni siquiera evidencia del
+    # mecanismo que esta dimensión mide.
+    #
+    # Y el pie afirmaba «el único registro de asistencia disponible». Es falso:
+    # 31 actas de mecanismos PROPIOS declaran registro anexo. Lo que falta es su
+    # digitalización, no el registro — y decir «no hay» donde hay «hay,
+    # escaneado» convierte un límite del instrumento en una ausencia del sujeto.
+    expediente = v.get("expediente_propio") or []
     cards = "".join(f'<div class="d8-vc-i"><div class="k">{_esc(k)}</div><div class="d">{_esc(x)}</div>'
                     f'<div class="l">{_esc(l)}</div></div>' for k, x, l in comp)
     serie = ""
-    if dato:
-        mx = max(x["asistentes"] for x in dato) or 1
-        barras = "".join(
-            f'<div class="d8-as"><div class="d8-as-n">{x["asistentes"]}</div>'
-            f'<div class="d8-as-b" style="height:{18 + 62 * x["asistentes"] / mx:.0f}px"></div>'
-            f'<div class="d8-as-y">{_esc(x["periodo"])}</div></div>' for x in dato)
-        serie = (f'<p class="qc-cap" style="margin-top:13px">El único registro de asistencia disponible hoy —el de '
-                 f'las jornadas de rendición— muestra participación <b>creciente</b>. Es un indicio, no la '
-                 f'dimensión: mide cuántos asistieron, no la diversidad que la ley exige.</p>'
-                 f'<div class="d8-asis">{barras}</div>')
+    if expediente:
+        filas = "".join(
+            f'<div class="d8-cau-i"><span class="d8-cau-d" style="background:var(--ind)"></span>'
+            f'<div><b>{_esc(e["mecanismo"])}</b> — {_esc(str(e.get("cobertura") or "sin cobertura declarada"))}'
+            f'{f" · {e['n_documentos']} documento(s) en expediente" if e.get("n_documentos") else ""}</div></div>'
+            for e in expediente)
+        serie = (f'<p class="qc-cap" style="margin-top:13px">Lo que este dominio SÍ tiene de suyo: el expediente '
+                 f'documental de sus propios mecanismos. La asistencia a las jornadas de rendición '
+                 f'<b>no se muestra aquí</b> —pertenece al cajón de rendición de cuentas—: presentarla en esta '
+                 f'dimensión haría pasar un dato ajeno por una medición propia.</p>'
+                 f'<div class="d8-cau-l" style="margin-top:9px">{filas}</div>')
     return (
         '<p class="qc-p">Un mecanismo puede cumplirse en la forma y estar <b>vacío</b>. En un cantón de cerca de '
         'cien mil habitantes, unas decenas de participantes es una señal democrática distinta a la que sugiere el '

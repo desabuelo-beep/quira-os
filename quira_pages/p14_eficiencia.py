@@ -15,7 +15,9 @@ DIRECCIONES = [
     {"id": "DAF",   "nombre": "Dirección Administrativa Fin.",  "score": 55.3, "sat": True,  "procesos": 31, "nota": "Salud presupuestaria 14.58% · coactivas pendientes · 5 sin verificación"},
     {"id": "DPM",   "nombre": "Dirección de Planificación",     "score": 51.2, "sat": True,  "procesos": 22, "nota": "4 metas PDOT sin PAC · PDOT actualización pendiente"},
     {"id": "DGA",   "nombre": "Dirección Gestión Ambiental",    "score": 48.7, "sat": False, "procesos": 12, "nota": "GEF elegible · plan residuos sin aprobar"},
-    {"id": "DGOV",  "nombre": "Dirección de Gobernanza",        "score": 41.5, "sat": False, "procesos": 9,  "nota": "Participación 27.98% · 2 parroquias sin voz activa"},
+    {"id": "DGOV",  "nombre": "Dirección de Gobernanza",        "score": 41.5, "sat": False, "procesos": 9,  # D-009 · pantalla de maqueta (AUDITORIA_MIGRACION_D1.5: `load_all`). La
+     # cifra no es medición: se rotula para que no se lea como tal.
+     "nota": "[demo] Participación ref. 2025: 27.98% · 2 parroquias sin voz activa"},
     {"id": "DAPS",  "nombre": "Dir. Administrativa y Servicios","score": 38.2, "sat": True,  "procesos": 28, "nota": "6 procesos sin SHA-256 · PAC desactualizado"},
     {"id": "DCOM",  "nombre": "Dirección de Comunicación",      "score": 35.7, "sat": False, "procesos": 8,  "nota": "LOTAIP parcial · portal 48% contenido desactualizado"},
     {"id": "DGAD",  "nombre": "Dir. Atención Ciudadana",        "score": 29.8, "sat": False, "procesos": 15, "nota": "Tiempo respuesta 8.2 días vs meta 3 días"},

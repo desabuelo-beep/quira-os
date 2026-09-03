@@ -152,3 +152,74 @@ def test_ataque_el_indice_madre_no_se_queda_atras_de_su_fuente():
     assert publicado.get("valor") == fuente.get("valor"), (
         f"el bloque publica {publicado.get('valor')} y su fuente dice "
         f"{fuente.get('valor')}: hay que reejecutar enrich_participacion.py")
+
+
+# ── LA FRONTERA DOCUMENTAL d08 ↔ d09 ─────────────────────────────────────────
+def test_d08_no_ilustra_su_vitalidad_con_evidencia_de_d09():
+    """EL HALLAZGO DE JAVO (2026-09-03), y lo llamó garrafal con razón.
+
+    `enrich_participacion.py` leía `snap["rendicion"]["serie"]` —el bloque de
+    d09— y pintaba la asistencia a las JORNADAS DE RENDICIÓN como indicio de
+    vitalidad democrática. El mismo gráfico —201 · 261 · 322— salía en los dos
+    cajones, y un lector veía «participación creciente» en dos dominios
+    distintos con un dato que sólo pertenece a uno.
+
+    La regla que el colega fijó a partir de esto:
+
+        Un documento puede ser evidencia para un dominio sin ser documento
+        primigenio de ese dominio.
+
+    El acta de rendición es primigenia de d09. Para d08 no es ni siquiera
+    evidencia del mecanismo que esa dimensión mide.
+
+    ⚠️ Y LA AFIRMACIÓN DE AUSENCIA ERA FALSA, que es lo más grave: el pie decía
+    «el único registro de asistencia disponible». Medido sobre la carpeta del
+    Holding: **31 actas de mecanismos PROPIOS declaran registro anexo** —28
+    audiencias, 2 de PP, 1 cabildo— y sólo una lo expresa en cifras. No falta el
+    registro: falta su digitalización. Decir «no hay» donde hay «hay,
+    escaneado» convierte un límite del instrumento en una ausencia del sujeto."""
+    # ⚠️ SE MIDE EL CÓDIGO, NO EL TEXTO. La primera versión de esta prueba
+    # falló contra el comentario que explica qué se retiró —«aquí se leía
+    # snap["rendicion"]["serie"]»—. Es el mismo falso positivo que ya cazó al
+    # gate visual y a `canon.py`: documentar un defecto no es cometerlo, y una
+    # prueba que lo confunde obliga a corregir sin poder explicar.
+    import io
+    import tokenize
+
+    ruta = RAIZ / "scripts" / "enrich_participacion.py"
+    toks = tokenize.generate_tokens(io.StringIO(
+        ruta.read_text(encoding="utf-8")).readline)
+    codigo = "\n".join(t.string for t in toks if t.type != tokenize.COMMENT)
+    lecturas = [ln for ln in codigo.splitlines()
+                if 'get("rendicion")' in ln or '["rendicion"]' in ln]
+    assert not lecturas, (
+        f"d08 volvió a leer el bloque de d09: {lecturas}. La evidencia de "
+        f"rendición no puede ilustrar una dimensión de participación")
+
+    v = _bloque()["vitalidad"]
+    assert "dato_disponible" not in v, (
+        "volvió el campo que traía la asistencia de las jornadas de rendición")
+    assert v.get("expediente_propio"), (
+        "d08 dejó de mostrar su expediente propio: sin él, la dimensión queda "
+        "sin nada que la sostenga y vuelve la tentación de tomarlo prestado")
+    assert "digitalización" in v.get("bloqueo", ""), (
+        "el bloqueo dejó de decir que lo que falta es la DIGITALIZACIÓN del "
+        "registro, no el registro")
+
+
+def test_el_render_no_publica_asistencia_ajena():
+    """La otra mitad: que el gráfico no vuelva por la puerta de la vista.
+
+    Se comprueba la frase que sólo ese pie tenía, no el concepto: nombrar la
+    rendición al explicar POR QUÉ no se usa aquí es legítimo — y de hecho el
+    bloque nuevo lo hace."""
+    fuente = (RAIZ / "app" / "viz" / "render" / "participacion_render.py").read_text(
+        encoding="utf-8")
+    cuerpo = fuente.split("def _vitalidad")[1].split("\ndef ")[0]
+    assert "El único registro de asistencia disponible" not in cuerpo, (
+        "volvió la afirmación de ausencia que 31 actas contradicen")
+    assert 'x["asistentes"]' not in cuerpo, (
+        "volvió el gráfico de asistencia a las jornadas de rendición")
+    assert "no se muestra aquí" in cuerpo, (
+        "el render dejó de declarar por qué la asistencia de rendición no está "
+        "en esta dimensión — y sin decirlo, su ausencia parece un olvido")

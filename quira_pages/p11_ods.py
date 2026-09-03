@@ -128,7 +128,8 @@ ODS_CATALOGO = [
     {
         "num": 16, "nombre": "Paz, Justicia e Instituciones",
         "estado": "VINCULADO", "color": "#00689D",
-        "vinculo": "CPCCS · Participación 27.98% · rendición de cuentas · LOTAIP",
+        # D-009 · el año estaba en un comentario del código y no en lo publicado.
+        "vinculo": "CPCCS · Participación 27.98% (referencia 2025) · rendición de cuentas · LOTAIP",
         "meta_pdot": "Participación ≥ 60% · 75 UT activas · RDC validado CPCCS",
         "score": 28,          # IGP_REF_2025=27.98% · fuente H73_OUTPUT_API (redondeado)
     },

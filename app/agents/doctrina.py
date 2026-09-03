@@ -104,6 +104,16 @@ _DOCTRINA = (
          verificador="test_d02_declara_sobre_quien_lee_y_sin_reloj",
          por_que_ahi="un reloj dentro del declarante hace que el mecanismo de "
                      "observación modifique el objeto observado"),
+    dict(id="DOC-007", custodia=GATE,
+         regla="Un documento puede ser EVIDENCIA para un dominio sin ser su "
+               "documento PRIMIGENIO. d08 no ilustra su vitalidad con la "
+               "asistencia a las jornadas de rendición: esa acta es de d09",
+         fuente="Javo 2026-09-03 · frontera formalizada por el colega",
+         verificador="test_d08_no_ilustra_su_vitalidad_con_evidencia_de_d09",
+         por_que_ahi="el mismo gráfico —201·261·322— salía en los dos cajones, y "
+                     "el pie afirmaba «el único registro disponible» cuando 31 "
+                     "actas propias declaran registro anexo: lo que falta es su "
+                     "digitalización, no el registro"),
     dict(id="DOC-006", custodia=GATE,
          regla="Lo PENDIENTE declarado no se confunde con lo NO CONSTATADO — "
                "tres estados, no dos",

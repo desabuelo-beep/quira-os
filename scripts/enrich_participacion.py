@@ -229,7 +229,36 @@ def construir() -> dict:
     }
 
     # ── 3 · VITALIDAD DEMOCRÁTICA — declarada en diseño, no se rellena ──────────
-    serie_rdc = (snap.get("rendicion") or {}).get("serie") or []
+    # ⚠️ AQUÍ SE LEÍA `snap["rendicion"]["serie"]` — EL BLOQUE DE d09 (Javo,
+    # 2026-09-03). La dimensión de vitalidad de d08 se ilustraba con la
+    # asistencia a las JORNADAS DE RENDICIÓN DE CUENTAS: 201 · 261 · 322. Por eso
+    # el mismo gráfico aparecía en las dos pantallas midiendo fenómenos
+    # distintos, y un lector veía «participación creciente» en dos dominios con
+    # un solo dato que sólo pertenece a uno.
+    #
+    #     Un documento puede ser evidencia para un dominio sin ser documento
+    #     primigenio de ese dominio.  (regla fijada por el colega)
+    #
+    # El acta de rendición es primigenia de d09. Para d08 sería —como mucho—
+    # evidencia relacionada, y ni siquiera del mecanismo que esta dimensión mide.
+    #
+    # Y LA AFIRMACIÓN DE AUSENCIA ERA IMPRECISA, que es lo más grave: el bloque
+    # decía «el único registro de asistencia disponible». Medido sobre la carpeta
+    # del Holding: **31 actas de mecanismos PROPIOS de d08 declaran registro de
+    # asistencia anexo** —28 audiencias, 2 de PP, 1 cabildo— y sólo UNA lo
+    # expresa numéricamente. No falta el registro: falta su digitalización. Decir
+    # «no hay» donde hay «hay, escaneado» convierte un límite del instrumento en
+    # una ausencia del sujeto, que es justo lo que este dominio existe para no
+    # hacer.
+    #
+    # Ahora la dimensión se ilustra con LO PROPIO: cuántas instancias tienen
+    # expediente documental, del catálogo de d08 —su SSoT— y no del vecino.
+    con_expediente = [
+        {"mecanismo": _MECANISMOS.get(i["mecanismo"], (i["mecanismo"], ""))[0],
+         "cobertura": i["cobertura"], "n_documentos": i["n_documentos"]}
+        for i in _instancias_del_catalogo(cat)
+        if i["cobertura"] or i["n_documentos"]
+    ]
     vitalidad = {
         "estado": "diseno",
         "motivo": ("El índice nace en el motor del canon, no en esta plataforma (Regla 1/4). "
@@ -240,10 +269,16 @@ def construir() -> dict:
             ("Equidad de género", "participación por género", "LOPC 57"),
             ("Equidad generacional", "participación por grupo etario", "LOPC 57"),
         ],
-        "dato_disponible": [{"periodo": s.get("periodo"), "asistentes": s.get("asistentes")}
-                            for s in serie_rdc if s.get("asistentes")],
-        "bloqueo": ("Las hojas de registro de audiencias están escaneadas: sin digitalización "
-                    "certificada no son dato probatorio."),
+        "expediente_propio": con_expediente,
+        "bloqueo": ("El expediente de los mecanismos propios EXISTE —31 actas declaran "
+                    "registro de asistencia anexo y sólo una lo expresa en cifras—, pero "
+                    "esos anexos son hojas de firmas escaneadas: sin digitalización "
+                    "certificada no son dato probatorio. Lo que falta no es el registro: "
+                    "es su transcripción verificable."),
+        "por_que_no_se_toma_de_rdc": (
+            "La asistencia a las jornadas de rendición es evidencia de d09, no de "
+            "este dominio. Ilustrar aquí con ese número haría pasar un dato ajeno "
+            "por una medición propia."),
     }
 
     return {

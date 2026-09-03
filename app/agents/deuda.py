@@ -234,6 +234,20 @@ _DEUDAS = (
                "fórmula vive en el Gold Master, su corrección es cirugía sobre "
                "copia con evidencia (Regla de Oro 1) y la decide Javo"),
     dict(id="D-009", gravedad=FALSEA, capa="C6", dueño="Javo",
+         estado="EN CURACIÓN · las 4 superficies del IGP curadas 2026-09-03. La "
+                "cura NO fue cambiar 27,98 por 27,00: el motor expone DOS "
+                "variables en `H73_OUTPUT_API` —`IGP_2026_ACTUAL` 0,27 e "
+                "`IGP_REF_2025` 0,2798— y el snapshot sólo publicaba la primera. "
+                "Por eso cuatro pantallas escribieron la segunda a mano. Ahora "
+                "el snapshot publica `vectores.igp_ref_2025` con su período "
+                "dentro de la etiqueta, y cada superficie pide la variable que "
+                "le toca: `p16_gobernanza` pedía el índice VIGENTE y lo rotulaba "
+                "«referencia 2025» —hoy pide la de 2025 y sin fallback: si el "
+                "motor no la entrega, dice «no disponible»—; `p9_sat` ponía el "
+                "dato de 2025 dentro de «RDC 2026»; `p11_ods` tenía el año en un "
+                "comentario y no en lo publicado; `p14_eficiencia` es maqueta y "
+                "ahora lo rotula. Quedan las 8 superficies `demo` y las "
+                "`pendiente` por clasificar",
          medicion_2="⚠️ EL HALLAZGO YA EXISTÍA, DOCUMENTADO Y SIN ESCALAR. "
                     "`docs/architecture/AUDITORIA_MIGRACION_D1.5.md` lo tituló "
                     "«EL ENEMIGO: verdades simultáneas en lugares distintos», "

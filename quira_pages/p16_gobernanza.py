@@ -275,7 +275,22 @@ def render() -> None:
     pp_2025    = data.get("pp_2025", {})
     pp_2026    = data.get("pp_2026", {})
     indices    = data["indices"]
-    igp_ref    = indices.get("IGP", {}).get("valor", 27.98)
+    # ⚠️ D-009 · LA VARIABLE, NO EL NÚMERO (2026-09-03). Esta línea pedía
+    # `indices["IGP"]["valor"]` —el índice VIGENTE— y lo rotulaba «referencia
+    # 2025» en tres sitios. Y su valor por defecto era `27.98` escrito a mano,
+    # que es precisamente la referencia 2025: el literal decía la verdad que la
+    # variable no traía.
+    #
+    # No son dos versiones del mismo número. El motor expone DOS variables en
+    # `H73_OUTPUT_API` —`IGP_2026_ACTUAL` = 0,27 e `IGP_REF_2025` = 0,2798— y el
+    # snapshot ahora publica ambas. Una pantalla que dice «2025» debe pedir la
+    # de 2025: es la Regla 1 aplicada a la etiqueta, y §6-sexies —«etiqueta
+    # incorrecta = número falso»— aplicado al período.
+    #
+    # Sin fallback numérico: si el motor no la entrega, no se inventa.
+    _vec_ref = ((cargar_gm_snapshot() or {}).get("vectores") or {}).get("igp_ref_2025") or {}
+    igp_ref    = _vec_ref.get("valor")
+    _igp_txt   = f"{igp_ref:.2f}%" if isinstance(igp_ref, (int, float)) else "no disponible"
 
     # KPIs header
     n_parr_voz = sum(1 for p in parroquias
@@ -287,7 +302,7 @@ def render() -> None:
     hdr = page_header(
         "GOBERNANZA PARTICIPATIVA",
         "Participación Ciudadana · Control Social",
-        f"PP 2026: {fichas_2026} fichas · Participación ref 2025: {igp_ref:.2f}% · "
+        f"PP 2026: {fichas_2026} fichas · Participación ref 2025: {_igp_txt} · "
         f"RDC 2026: en preparación (informe jun-2026) · Alerta: Sin señal",
         '<span class="badge badge-cyan">🗳️ Ciclo PP Completo</span>',
     )
@@ -307,7 +322,7 @@ def render() -> None:
   <div style="background:rgba(0,212,255,.06);border:1px solid rgba(0,212,255,.2);
               border-radius:12px;padding:16px;text-align:center">
     <div style="font-size:38px;font-weight:900;color:var(--cyan);
-                font-family:var(--mono)">{igp_ref:.1f}<span style="font-size:16px">%</span></div>
+                font-family:var(--mono)">{_igp_txt}</div>
     <div style="font-size:10px;font-weight:700;color:var(--cyan);margin-top:4px">PARTICIPACIÓN · REF 2025</div>
     <div style="font-size:9px;color:var(--muted);margin-top:3px">Gobernanza participativa</div>
   </div>
@@ -483,7 +498,7 @@ def render() -> None:
                 st.session_state["sentinel_pregunta_auto"] = (
                     f"El PP 2026 de Montecristi registró {fichas_2026} fichas ciudadanas "
                     f"en 7 parroquias (tendencia +{tendencia}% vs PP2025). "
-                    f"La participación ciudadana referencia 2025 es {igp_ref:.2f}%. "
+                    f"La participación ciudadana referencia 2025 es {_igp_txt}. "
                     "Las prioridades ciudadanas son: agua potable, áreas verdes, vialidad, salud, aseo. "
                     "¿Qué estrategia concreta recomiendas para que el PP 2027 incremente la participación "
                     "en las parroquias con menor actividad y vincule mejor las fichas con partidas POA verificables?"

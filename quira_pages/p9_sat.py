@@ -43,7 +43,13 @@ RIESGO_MATRIX = [
         "nivel": "ALERTA",
         "color": "amber",
         "items": [
-            "Participación ciudadana 27.98% · CPCCS V=0 en RDC 2026",
+            # ⚠️ D-009 · CONTRADICCIÓN DE PERÍODO (2026-09-03). Decía «Participación
+        # ciudadana 27.98% · CPCCS V=0 en RDC 2026»: el 27,98 es
+        # `IGP_REF_2025` —la referencia de 2025, celda H20b!B11— y estaba
+        # dentro de un contexto de 2026. El valor era correcto y la etiqueta
+        # falsa, que en este sistema es lo mismo que un número falso
+        # (§6-sexies). El índice vigente 2026 es 27,00 y es OTRA variable.
+        "Participación ciudadana: referencia 2025 = 27.98% (IGP_REF_2025) · CPCCS V=0 en RDC 2026",
             "2 parroquias sin voz: Isabel Muentes · Aníbal San Andrés",
         ],
     },

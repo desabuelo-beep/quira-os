@@ -50,9 +50,31 @@ def main() -> int:
 
     # ── _meta ──────────────────────────────────────────────────────────────────
     m = snap.setdefault("_meta", {})
-    m["fuente"]        = "SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx (slot vivo · CONTENIDO v6.0 corregido D.2A) — H73_OUTPUT_API"
+    # ⚠️ LA PROCEDENCIA SE DERIVA, NO SE ESCRIBE (D-002 · 2026-09-03).
+    #
+    # Aquí había DOS literales: `fuente` decía «v5.5_TGI (slot vivo · CONTENIDO
+    # v6.0 corregido D.2A)» y `version_excel` decía «v6.0_D2A_20260615». El
+    # motor que este mismo script acaba de leer es v5.7_TGI. Es decir: cada
+    # ejecución estampaba una procedencia falsa —no una bomba de relojería como
+    # la de `snapshot_pipeline`, sino un hecho consumado— y el `_meta` es
+    # justamente lo que acredita de dónde salió todo lo demás.
+    #
+    # Lo cazó `test_la_procedencia_declarada_coincide_con_la_fuente` en la
+    # primera ejecución tras repararlo en el otro archivo: el ataque sirvió para
+    # lo que fue escrito.
+    #
+    # La etiqueta descriptiva del contenido («corregido D.2A») se conserva
+    # aparte: describe QUÉ trae el libro, no de qué archivo salió. Mezclar las
+    # dos cosas en un campo fue lo que permitió que una sobreviviera a la otra.
+    import config as _cfg
+    _ver = getattr(_cfg, "GOLD_MASTER_VERSION", "no_determinable")
+    _resuelto = getattr(_cfg, "GOLD_MASTER_RESUELTO", False)
+    m["fuente"]        = (f"{os.path.basename(str(_cfg.SIAP_PATH))} — H73_OUTPUT_API"
+                          if _resuelto else "Gold Master no resuelto — H73_OUTPUT_API")
     m["fecha_corte"]   = raw.get("PERIODO_CORTE", m.get("fecha_corte"))
-    m["version_excel"] = "v6.0_D2A_20260615"
+    m["version_excel"] = _ver
+    m["version_excel_resuelta"] = _resuelto
+    m["contenido"]     = "v6.0 corregido D.2A (adscritas→SERCOP · semáforo escala+corte)"
     m["sincronizado"]  = f"{datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')} — refresco canónico desde el vivo corregido (cirugía D.2A · ICPI 27.46% · B33 intacta) vía _update_snapshot.py"
     m["nota_d2a"]      = "Refrescado tras cirugía D.2A (adscritas→SERCOP · semáforo escala+corte · FactorTemporal curva real). Valores curados (parroquias, series) preservados."
 
@@ -90,6 +112,22 @@ def main() -> int:
         "isp": {"valor": _pct("ISP_SALUD_PRESUP"),   "label": "Salud presupuestaria"},
         "ied": {"valor": _pct("IED_GLOBAL"),          "label": "Eficiencia directiva"},
         "igp": {"valor": _pct("IGP_2026_ACTUAL"),     "label": "Participación ciudadana"},
+        # ⚠️ LA REFERENCIA 2025 SE PUBLICA, Y POR ESO ESTÁ AQUÍ (D-009 ·
+        # 2026-09-03). El motor expone DOS variables en H73 —`IGP_2026_ACTUAL` e
+        # `IGP_REF_2025`— y el snapshot sólo traía la primera. Cuatro pantallas
+        # necesitaban la segunda y, al no encontrarla, la escribieron a mano:
+        # así nació «Participación 27.98%» sin año, y «27.98% · RDC 2026», que
+        # pone un dato de 2025 en contexto de 2026.
+        #
+        # No son dos versiones del mismo número: son DOS VARIABLES DISTINTAS,
+        # cada una con su celda y su período —`H20b!B9` y `H20b!B11`, esta
+        # última rotulada «Gobernanza por Ocurrencia 2025»—. La etiqueta lleva
+        # el año dentro para que ninguna superficie pueda publicarla sin él.
+        "igp_ref_2025": {"valor": _pct("IGP_REF_2025"),
+                         "label": "Participación ciudadana · referencia 2025",
+                         "periodo": 2025,
+                         "no_es": "el índice vigente: la composición de 2025 "
+                                  "incluía IGP_3 (MFN), retirado el 2026-07-29"},
         "ioc": {"valor": _pct("IOC_OPACIDAD"),        "label": "Opacidad informativa"},
         "iet": {"valor": _pct("IET_PERCAPITA_PEOR"),  "label": "Equidad territorial"},
         "psg": {"valor": _pct("PSG_EJECUCION"),       "label": "Presupuesto con enfoque de género"},
