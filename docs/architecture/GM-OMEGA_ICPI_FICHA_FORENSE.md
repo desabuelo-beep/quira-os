@@ -143,9 +143,13 @@ veinte metas menores juntas. Cualquier lectura de «el ICPI subió» debe saberl
 seis tienen valor propio (tres en 1,0 y dos en 0,656).
 
 Es decir: la variable que representa *ejecución* aplica un valor global a la gran
-mayoría de metas. El índice discrimina por P, R, V, E y C — pero en T, para el 76 % de
-las metas, todas valen lo mismo. Habrá que determinar si eso es un dato agregado
-legítimo (ejecución presupuestaria global del GAD) o una carencia de dato por meta.
+mayoría de metas.
+
+⚠️ **RESUELTO EN §7-ter.1 — NO era una carencia.** `T_i` mide ejecución **por ENTIDAD
+EJECUTORA**, no por meta: 19 metas las ejecuta el GAD central (0,3035), 2 el Patronato
+(0,6560) y 3 EP Aseo (1,0). Coincide con la tesis, que define `T_i = Devengado /
+Codificado` — un ratio institucional. Se conserva este párrafo con su corrección al lado
+porque la secuencia del hallazgo es parte de la evidencia.
 
 ---
 
@@ -419,6 +423,118 @@ que AH-I-X-02 tiene Vi=0.0»*. Es decir: **la regla se ajustó para reproducir u
 conocido.** Es una práctica legítima de calibración —y honesta, porque está escrita— pero
 conviene nombrarla: cuando la regla se ajusta al caso, el caso deja de poder validarla.
 La validación tendría que venir de fuera de esa serie.
+
+---
+
+## 7-ter · MATRIZ DE PROCEDENCIA  `GM-Ω-ICPI-004`
+
+La matriz es 25 × 6 = 150 celdas, pero **el patrón de origen es idéntico dentro de cada
+variable**: las 25 metas comparten la misma forma de fórmula. Por eso la biografía se
+levanta por variable, con sus excepciones nombradas — 150 filas con la misma respuesta
+serían volumen, no evidencia.
+
+| Var | Origen (25/25) | Trazable | Período | Naturaleza |
+|---|---|---|---|---|
+| `P_i` | `=H14_PONDERADORES!G{n}` | ✅ referencia directa | codificado vigente | DERIVADO |
+| `R_i` | `=H14_PONDERADORES!F{n}` → `(R_raw × Bono)/1,725` | ✅ fórmula + norma citada por meta | permanente | NORMATIVO |
+| `V_i` | `VLOOKUP(A{n}, H13!$A:$F, 6)` → columna **`Vi_2025`** | ✅ trazable | **2025** | 🔴 **HISTÓRICO usado como ACTUAL** |
+| `E_i` | **literal** (16 enteros + 9 decimales) | 🔴 **sin fórmula, sin referencia, sin fuente en el libro** | — | ⬜ NO DETERMINABLE |
+| `T_i` | `=H07b!B20` (19) · `!C20` (2) · `!E20` (3) | ✅ pero **por ENTIDAD**, no por meta | 2026 vivo | ACTUAL |
+| `C_i` | `VLOOKUP(A{n}, H01!$A$189:$G$213, 6)` | ✅ trazable | — | DERIVADO |
+
+### 7-ter.1 · `T_i` resuelto: mide la ENTIDAD, no la meta
+
+⚠️ **CORRECCIÓN A LA SECCIÓN 4 de esta ficha.** Ahí se dijo que 19 de 25 metas comparten
+`T_i` y que «habrá que determinar si es un agregado legítimo o una carencia de dato».
+**Es lo primero, y es deliberado.** La fila `Ti_norm_2026` de `H07b` tiene una columna
+por entidad ejecutora:
+
+| Columna | Valor | Entidad | Metas |
+|---|---|---|---|
+| `B20` | 0,3035 | ENTE-01 **GAD central** | 19 |
+| `C20` | 0,6560 | ENTE-02 Patronato | 2 |
+| `E20` | 1,0000 | ENTE-04 EP Aseo | 3 |
+
+Coincide con la tesis, que define `T_i = Devengado / Codificado` — un ratio **de la
+entidad**, no de la meta. No es falta de granularidad: es la unidad de medida elegida.
+
+**Lo que sí exige declaración**: una meta bien ejecutada dentro de una entidad con baja
+ejecución global **hereda el ratio de su entidad**. Es defendible —la ejecución
+presupuestaria es institucional— pero significa que `T_i` no premia ni castiga la meta:
+premia o castiga a quien la ejecuta.
+
+### 7-ter.2 · El tope que borra información
+
+```
+Ti_norm = MIN(1, Ti_raw / FactorTemporal)        FactorTemporal = mes/12
+```
+
+El `MIN(1, …)` es correcto —no se ejecuta más del 100 %— pero **satura**: EP Aseo llega
+a `1,0000` exacto, y en ese punto «justo a ritmo» y «muy por delante» se vuelven
+indistinguibles. Tres de las 25 metas están en el tope.
+
+### 7-ter.3 · `E_i` es el único componente sin biografía
+
+**Las 25 celdas de `E_i` son literales.** No hay fórmula, no hay referencia, no hay
+fuente citada en el libro. Y es la única de las seis variables en esa situación.
+
+Lo notable es que **podría derivarse**: `H14` ya trae `Competencia_GAD` por meta
+—`Exclusiva_Crítica`, `Exclusiva_Importante`, `Concurrente_Crítica`— y `E_i` es
+justamente el «Coeficiente de Fricción de Autonomía» (1,0 autónomo · 0,9 compartido ·
+0,75 difuso). El dato para derivarlo existe a dos columnas de distancia.
+
+> No se afirma que los valores sean incorrectos: se afirma que **no son verificables
+> desde el libro**. Es el único punto del árbol donde la cadena `celda → regla → fuente`
+> se interrumpe.
+
+---
+
+## 7-quater · TEMPORALIDAD Y DETERMINABILIDAD  `GM-Ω-ICPI-005`
+
+Clasificación temporal de cada insumo, con la taxonomía del colega:
+
+| Insumo | Período real | Se presenta como | Estado |
+|---|---|---|---|
+| `P_i` | codificado vigente | actual | ✅ `ACTUAL` |
+| `R_i` | permanente (norma) | actual | ✅ `NORMATIVO` |
+| **`V_i`** | **2025** | 2026 | 🔴 **`HISTÓRICO` presentado como `ACTUAL`** |
+| `T_i` | 2026 Ene-Abr, normalizado | actual | ✅ `ACTUAL` |
+| `C_i` | tabla de calibración | actual | ✅ `DERIVADO` |
+| `E_i` | — | actual | ⬜ `NO_DETERMINABLE` |
+
+**Un solo insumo de seis rompe la coherencia temporal, y es `V_i`** — pero es
+precisamente la variable que la tesis llama *«la más importante del modelo»*.
+
+### Datos PROXY y SIMULADOS: dónde están y dónde NO
+
+`H07b` contiene, en la serie histórica **2023**, dos valores declarados como no
+observados: `D16 = "PROXY 77%"` (Bomberos) y `E16 = "SIMULADO-MPE"` (EP Aseo).
+
+**Verificado: no entran en el ICPI 2026.** El motor consume la fila 20
+(`Ti_norm_2026`), que deriva de la fila 19 (año 2026). Los simulados viven en la fila 16
+y sólo alimentarían el índice si se activara el escalón `Ti_Hist` de la jerarquía
+adaptativa.
+
+> Es un riesgo **armado pero inactivo**, igual que el `0,5` del compromiso: la ruta
+> existe, hoy nadie la toma, y el día que se tome introducirá un valor simulado en la
+> cifra madre sin que nada lo declare.
+
+### Prueba de biografía del dato — el resultado
+
+El colega la formuló así: *«si borro el número de la celda, ¿puedo reconstruirlo desde su
+evidencia de origen sin mirar primero el resultado esperado?»*
+
+| Variable | ¿Reconstruible sin mirar el resultado? |
+|---|---|
+| `P_i` | ✅ desde el presupuesto codificado por meta |
+| `R_i` | ✅ desde el COOTAD — la norma está citada celda a celda |
+| `V_i` | 🟡 sí, **pero la regla que los combina se calibró contra el resultado 2025** (`H13!B21`) |
+| `E_i` | 🔴 **no**: no hay de dónde |
+| `T_i` | ✅ desde las cédulas eSIGEF/LOTAIP, con fuente citada por año |
+| `C_i` | ✅ desde `TBL_CALIBRACION_Ci` |
+
+**Cuatro de seis son reproducibles de forma independiente.** Una lo es con la salvedad de
+su calibración, y una no lo es en absoluto.
 
 ---
 
