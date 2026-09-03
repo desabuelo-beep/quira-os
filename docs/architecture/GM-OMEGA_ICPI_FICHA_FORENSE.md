@@ -472,6 +472,54 @@ columna de `T_i` —el mejor proxy del libro— y la **modalidad real** de ejecu
 consta en ninguna celda. Señalar dónde la regla documentada y el valor no concuerdan es
 medir; llamarlo error sería afirmar sobre lo que no se midió.
 
+#### Y la incoherencia no era un error: era una corrección de Javo
+
+> *«castigar la institucionalidad del GAD solo por derivar una obra del GAD a EP Aseo o
+> al Patronato, y castigar a la entidad adscrita, no es técnicamente viable: es la misma
+> institucionalidad. NO es otro nivel de gobierno. Por eso lo cambié.»*
+
+**Tiene razón, y su corrección es más coherente con QUIRA que la regla original.** Dos
+argumentos, y el segundo es de doctrina:
+
+1 · **Institucional.** Una EP municipal o un patronato se crean por ordenanza del propio
+GAD, su directorio lo preside el Alcalde y su presupuesto se consolida. Otro nivel de
+gobierno sería la prefectura, un ministerio o una junta parroquial. Penalizar al GAD por
+usar la figura que la ley le concede penaliza **una forma de organización, no un
+resultado**.
+
+2 · **Doble conteo, y contra la propia doctrina.** Si delegar debilitara la
+trazabilidad, **`V_i` ya lo mediría**: verifica el rastro real en SERCOP, eSIGEF, LOTAIP
+y CPCCS. Si la EP no deja rastro, `V_i` lo detecta. Con la regla de la tesis, `E_i`
+penalizaría el mismo fenómeno **por presunción** mientras `V_i` lo penaliza **por
+evidencia** — y QUIRA existe para lo segundo. Presumir que «una EP rastrea peor» es
+imputar sin verificar.
+
+**Clasificación corregida:** no es `PÉRDIDA DE ESPECIFICACIÓN` sino
+**`EVOLUCIÓN DELIBERADA · sin documentar`**. La decisión es correcta; lo que falta es su
+constancia.
+
+#### Lo que queda pendiente, y es una pregunta para Javo
+
+Si la delegación intra-GAD ya no penaliza, entonces **las 5 metas en 0,75 y las 4 en
+0,90 necesitan otro criterio**, y ése no consta en ninguna celda:
+
+| `E_i` | Metas | Patrón visible |
+|---|---|---|
+| 0,75 | desechos sólidos · alcantarillado · modernización administrativa · participación ciudadana · señalización vial | ninguno identificable desde el libro |
+| 0,90 | sostenibilidad financiera · **salud integral** · equipamiento urbano · **inventario patrimonial** | dos involucran a otra institución del Estado (Ministerio de Salud, INPC) |
+| 1,00 | las 16 restantes, **incluidas dos de EP Aseo y Patronato** | coherente con la corrección |
+
+El razonamiento de Javo apunta a un criterio nuevo y defendible: **la fricción de
+autonomía existe cuando interviene OTRA institucionalidad —otro nivel de gobierno u otra
+función del Estado—, no cuando el GAD se organiza internamente.** Con esa regla, el 0,90
+de salud integral (concurrente con el Ministerio) y el de patrimonio (INPC) se explican
+solos. Los cinco valores en 0,75 quedarían por explicar.
+
+**Declararlo es lo que falta.** Sin criterio escrito, la próxima auditoría —o el GAD
+número 47— no podrá saber por qué una meta vale 0,75 y otra 1,00. Es el mismo patrón
+que esta auditoría lleva encontrando toda la sesión, sólo que al revés: aquí **la mejora
+es la que no dejó rastro**.
+
 El resumen por variable se conserva abajo porque el patrón **sí** es idéntico dentro de
 cada una, y saberlo es parte del hallazgo.
 
