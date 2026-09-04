@@ -75,8 +75,8 @@ _ETAPAS = [
     ("GM-Ω", "009", "¿Se puede optimizar el índice sin mejorar la realidad?",
      _ABIERTO, ""),
     ("GM-Ω", "010", "Transferibilidad LATAM · núcleo vs adaptador", _ABIERTO, ""),
-    ("GM-Ω", "011-A", "**Unidad de análisis: ¿qué es `i`?**", _BLOQ,
-     "⚠️ 008-R la añadió · PREVIA al álgebra"),
+    ("GM-Ω", "011-A", "Unidad de análisis · ¿qué es `i`?", _CURSO,
+     "★ genealogía RESUELTA: era PROMESA CNE → META PDOT «pues era mandato» (Javo) · falta DECLARARLA en el canon"),
     ("GM-Ω", "011-B", "Regla de correspondencia PDOT → ICPI (1:1·N:1·1:N·N:N)",
      _BLOQ, "011-A"),
     ("GM-Ω", "011-C", "Operación matemática · ¿qué operación corresponde a esa "

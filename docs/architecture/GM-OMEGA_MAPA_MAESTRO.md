@@ -94,7 +94,7 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | GM-Ω | `v2` | Universo completo del PDOT (66) — decisión de Javo | ⛔ | 011 · 008-R · exige ADR propio y recalibración (ADR-036 §4) |
 | GM-Ω | `009` | ¿Se puede optimizar el índice sin mejorar la realidad? | ⬜ |  |
 | GM-Ω | `010` | Transferibilidad LATAM · núcleo vs adaptador | ⬜ |  |
-| GM-Ω | `011-A` | **Unidad de análisis: ¿qué es `i`?** | ⛔ | ⚠️ 008-R la añadió · PREVIA al álgebra |
+| GM-Ω | `011-A` | Unidad de análisis · ¿qué es `i`? | 🔄 | ★ genealogía RESUELTA: era PROMESA CNE → META PDOT «pues era mandato» (Javo) · falta DECLARARLA en el canon |
 | GM-Ω | `011-B` | Regla de correspondencia PDOT → ICPI (1:1·N:1·1:N·N:N) | ⛔ | 011-A |
 | GM-Ω | `011-C` | Operación matemática · ¿qué operación corresponde a esa unidad? ⚠️ N:1 NO implica agregación numérica | ⛔ | 011-A · 011-B · 008 · 009 · 010 |
 | TF | `T1` | Inventario de nombres propios | ✅ |  |
@@ -123,9 +123,9 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | Deudas declaradas | 12 |
 | Deudas resueltas | 6 |
 | Deudas abiertas | **6** |
-| Reglas de doctrina con custodio | 21 |
-| Pruebas que las fijan | 381 |
-| Documentos GM-Ω | 8 |
+| Reglas de doctrina con custodio | 22 |
+| Pruebas que las fijan | 382 |
+| Documentos GM-Ω | 9 |
 
 ### Deudas abiertas
 
@@ -141,6 +141,7 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 ### Documentos de la auditoría
 
 - [`GM-OMEGA_CONTRATO_INDICE_DOMINIO.md`](GM-OMEGA_CONTRATO_INDICE_DOMINIO.md)
+- [`GM-OMEGA_GENEALOGIA_DOCUMENTAL.md`](GM-OMEGA_GENEALOGIA_DOCUMENTAL.md)
 - [`GM-OMEGA_ICPI_COBERTURA_008.md`](GM-OMEGA_ICPI_COBERTURA_008.md)
 - [`GM-OMEGA_ICPI_FICHA_FORENSE.md`](GM-OMEGA_ICPI_FICHA_FORENSE.md)
 - [`GM-OMEGA_ICPI_MATRIZ_004.md`](GM-OMEGA_ICPI_MATRIZ_004.md)

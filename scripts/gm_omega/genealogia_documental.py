@@ -328,11 +328,21 @@ def _escribir(docs) -> None:
       "ninguna razón metodológica. El identificador entra en el cálculo como si "
       "fuera una magnitud.")
     A("")
-    A("### Ahí está POR QUÉ `E_i` cambió")
+    A("### La transición está documentada · su MOTIVO no")
     A("")
-    A("No fue capricho ni deriva: **alguien vio que multiplicar por un ID de "
-      "entidad no tenía sentido y lo convirtió en coeficiente**. La cadena "
-      "queda así:")
+    A("⚠️ **Una versión anterior de este expediente escribió «ahí está por qué "
+      "`E_i` cambió: alguien vio que multiplicar por un ID no tenía sentido».** "
+      "Eso es una **hipótesis causal**, no un hecho: ninguna fuente dice que se "
+      "cambiara por esa razón. Es la explicación elegante que va más allá de la "
+      "evidencia — el mismo error que `DOC-009` y `DOC-019` persiguen.")
+    A("")
+    A("**La formulación correcta:**")
+    A("")
+    A("> La transición de `E_i` desde identificador de entidad hacia coeficiente "
+      "**está documentada**; la **motivación causal** de esa transformación "
+      "permanece **NO DETERMINABLE** salvo evidencia explícita.")
+    A("")
+    A("Y la secuencia observada es ésta:")
     A("")
     A("| # | Estado de `E_i` | Fuente | Fecha |")
     A("|---|---|---|---|")
@@ -358,15 +368,79 @@ def _escribir(docs) -> None:
     A("v5.7     H12!B33 = B31/B32                              ← sin ×100")
     A("```")
     A("")
-    A("Esto **cierra un hallazgo abierto de `007`**: el rótulo «ICPI 2026: "
-      "0,27 %» que aparece en 69 hojas del Gold Master no era un descuido de "
-      "presentación. Es **la pérdida de un factor que la fórmula original "
-      "tenía**, y las cabeceras siguieron rotulando en porcentaje un valor que "
-      "dejó de estarlo.")
+    A("⚠️ **Y aquí también hay que frenar.** Una versión anterior llamó a esto "
+      "«la pérdida de un factor». **El cambio de escala está demostrado; su "
+      "carácter, no.** Hay dos lecturas y la evidencia no elige entre ellas:")
     A("")
-    A("La capa API lo compensa (`H73!ICPI_GLOBAL_PCT = B33*100`), así que la UI "
-      "publica bien. Pero el motor perdió el `×100` en algún punto entre abril "
-      "y v5.7, y **nadie lo notó porque el parche estaba aguas abajo**.")
+    A("| | |")
+    A("|---|---|")
+    A("| **A · cambio semántico intencional** | el motor pasó a almacenar el "
+      "ICPI como **proporción** (`0,274582`) y la presentación lo convierte. "
+      "No hay pérdida matemática: hay cambio de representación interna |")
+    A("| **B · pérdida accidental** | `B33` pretendía ser porcentaje y el `×100` "
+      "se eliminó sin actualizar superficies ni documentación. Entonces sí es un "
+      "defecto de representación |")
+    A("")
+    A("**Formulación correcta:**")
+    A("")
+    A("> El `×100` presente en la especificación histórica no está en la "
+      "expresión canónica actual de `B33`. **El cambio de escala interna está "
+      "demostrado; su carácter intencional o accidental permanece pendiente de "
+      "determinación.**")
+    A("")
+    A("Lo que `007-X` sí probó es que **existe una inconsistencia real de "
+      "rotulado** —69 cabeceras imprimen «0,27 %»—, y eso es compatible con "
+      "ambas lecturas: en A sería un rótulo mal actualizado; en B, la huella del "
+      "factor perdido. La capa API compensa (`H73!ICPI_GLOBAL_PCT = B33*100`) y "
+      "por eso la UI publica bien.")
+    A("")
+
+    A("## ★★★ `011-A` RESUELTO EN SU GENEALOGÍA · `i` era una PROMESA")
+    A("")
+    A("El `ANEXO_M_ICPI_DINAMICO_PROFESIONAL` —«Formalización del Algoritmo "
+      "ICPI Dinámico», febrero— formaliza:")
+    A("")
+    A("```")
+    A("ICPI(t) = [Σᵢ (Vᵢ(t) × Pᵢ × Eᵢ × Tᵢ(t) × Rᵢ) / Σᵢ (Pᵢ × Rᵢ)] × 100")
+    A("")
+    A("«Si Vᵢ(t) = 0 → Contribución_PROMESA_i = 0»")
+    A("«la regla de anulación documental garantiza que ausencia de evidencia")
+    A(" invalida PROMESA independientemente de otros factores»")
+    A("```")
+    A("")
+    A("**`i` indexaba PROMESAS del Plan de Trabajo del CNE**, no metas del PDOT. "
+      "Y la calculadora QUADRUM lo confirma desde el dato: su columna se llama "
+      "`PROMESA_CNE` y sus identificadores son `A-001`…`A-020`.")
+    A("")
+    A("### Y el motivo lo declara Javo")
+    A("")
+    A("> **«Comenzamos tomando el plan CNE como promesa original; luego "
+      "replanteamos con PDOT pues era mandato.»**")
+    A("> — Javo, 2026-09-04")
+    A("")
+    A("**No fue deriva: fue una mejora metodológica.** El plan de campaña es una "
+      "promesa; el PDOT es el **instrumento vinculante** —`COPFP Art. 41`: «los "
+      "planes de desarrollo son las directrices principales»—. Medir la "
+      "congruencia contra lo que obliga jurídicamente es más defendible que "
+      "medirla contra lo que sólo se ofreció.")
+    A("")
+    A("Y explica por qué la tesis define la unidad de análisis como la "
+      "**trayectoria** `Plan de Trabajo → PDOT → POA → SIGAD`: **la promesa no "
+      "desapareció, se convirtió en el eslabón anterior.**")
+    A("")
+    A("### Estado de `011-A`")
+    A("")
+    A("| | |")
+    A("|---|---|")
+    A("| Unidad histórica de `i` | **DEMOSTRADA** · promesa CNE (`ANEXO M` + calculadora) |")
+    A("| Motivo del cambio | **DECLARADO** por Javo · el PDOT es mandato |")
+    A("| Unidad vigente de `i` | meta del PDOT — **operando, pero sin declaración formal en el canon** |")
+    A("| Si una unidad agrega varias metas (`008-R`) | **PENDIENTE** · `011-B` |")
+    A("")
+    A("⚠️ `011-A` deja de ser una pregunta abierta y pasa a ser **un acto "
+      "pendiente**: la unidad ya está decidida y opera; lo que falta es "
+      "**declararla en el canon con su genealogía**. Que es un trabajo mucho "
+      "menor que decidirla desde cero.")
     A("")
 
     A("## ★★ POR QUÉ NO HAY DOCUMENTO · la evolución fue conversacional")
