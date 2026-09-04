@@ -1,0 +1,683 @@
+{
+  "_meta": {
+    "generado": "2026-09-03 · GM-Ω-008-R",
+    "regla": "identidad literal → semántica controlada → AMBIGUA",
+    "advertencia": "catálogo de TRABAJO; las ambiguas exigen resolución humana contra el documento"
+  },
+  "cadena_procedencia": {
+    "pdf_portal": {
+      "archivo": "PDOT GAD Montecristi 2023-2027.pdf",
+      "sha256": "3810ad062903138fdbeb851294db9af1ce2d1f2c739d6a8d941a4bdd82f9a2a8"
+    },
+    "word_conversion": {
+      "archivo": "PLAN PLURIANUAL DE INVERSIONES GAD Montecristi PDOT.docx",
+      "sha256": "02996b6d2c4ee108beae135ede6d7090364bbcda66ef097f8dc0d080f4eb7531"
+    },
+    "xlsx_tabulacion": {
+      "archivo": "Plan Plurianual PDOT 2023-2027 GAD Montecristi.xlsx",
+      "sha256": "09a2aaccca4bc90d829397a368254255b2b6a1b59ee9ac4ad6df3a4783c435c0"
+    }
+  },
+  "filas": [
+    {
+      "sistema": "1. FIS AM",
+      "fila": 4,
+      "meta": "Incrementar la recuperación de taludes en etapa de cierre para la recuperación de ecosistemas a 25 Ha hasta el año 2027.",
+      "id_icpi": "",
+      "tipo": "cifras ambiguas",
+      "estado": "AMBIGUA",
+      "score": 0.0,
+      "obs": "empatan EP-L-N-01, PI-TUR-01, PI-TUR-02"
+    },
+    {
+      "sistema": "1. FIS AM",
+      "fila": 9,
+      "meta": "Aumentar a 17.32 m²/hab el IVU  hasta el 2027",
+      "id_icpi": "",
+      "tipo": "cifras ambiguas",
+      "estado": "AMBIGUA",
+      "score": 0.0,
+      "obs": "empatan FA-C-X-01, EP-L-N-01, PI-TUR-01"
+    },
+    {
+      "sistema": "1. FIS AM",
+      "fila": 11,
+      "meta": "Formular cuatro planes para la acción contra el cambio climático hasta el 2027",
+      "id_icpi": "",
+      "tipo": "cifras ambiguas",
+      "estado": "AMBIGUA",
+      "score": 0.0,
+      "obs": "empatan EP-L-N-01, PI-TUR-01, PI-TUR-02"
+    },
+    {
+      "sistema": "1. FIS AM",
+      "fila": 12,
+      "meta": "Mantener el número de 680 beneficiarios de las campañas de asistencia médica veterinaria dentro del Plan para la protección y conviviencia de la Fauna Urbana hasta el 2027",
+      "id_icpi": "",
+      "tipo": "cifras ambiguas",
+      "estado": "AMBIGUA",
+      "score": 0.0,
+      "obs": "empatan EP-L-N-01, PI-TUR-01, PI-TUR-02"
+    },
+    {
+      "sistema": "1. FIS AM",
+      "fila": 14,
+      "meta": "Mantener el número de 124 beneficiarios de las campañas de esterilizaciones dentro del Plan para la protección y conviviencia de la Fauna Urbana hasta el 2027",
+      "id_icpi": "",
+      "tipo": "cifras ambiguas",
+      "estado": "AMBIGUA",
+      "score": 0.0,
+      "obs": "empatan EP-L-N-01, PI-TUR-01, PI-TUR-02"
+    },
+    {
+      "sistema": "1. FIS AM",
+      "fila": 16,
+      "meta": "Reducir un 10% la infraestructura susceptibles",
+      "id_icpi": "",
+      "tipo": "no encontrada",
+      "estado": "NO_RECONCILIADA",
+      "score": 0.0,
+      "obs": ""
+    },
+    {
+      "sistema": "1. FIS AM",
+      "fila": 23,
+      "meta": "Incrementar anualmente el porcentaje de basura gestionada de 20.118,96 tn/año en el 2023 a 23.086,94 tn/año al 2027",
+      "id_icpi": "",
+      "tipo": "cifras ambiguas",
+      "estado": "AMBIGUA",
+      "score": 0.0,
+      "obs": "empatan AH-I-N-01, PI-TUR-02, EP-L-N-01"
+    },
+    {
+      "sistema": "1. FIS AM",
+      "fila": 24,
+      "meta": "Incrementar anualmente el porcentaje de basura reciclada  de 331 tn/año en el 2023 a 583,77 tn/año al 2027",
+      "id_icpi": "PI-TUR-02",
+      "tipo": "cifras",
+      "estado": "RECONCILIADA",
+      "score": 0.5,
+      "obs": "cifras comunes: 2023, 2027"
+    },
+    {
+      "sistema": "1. FIS AM",
+      "fila": 25,
+      "meta": "Contar con capacidad para disposición final de desechos sólidos hasta el 2027",
+      "id_icpi": "",
+      "tipo": "cifras ambiguas",
+      "estado": "AMBIGUA",
+      "score": 0.0,
+      "obs": "empatan EP-L-N-01, PI-TUR-01, PI-TUR-02"
+    },
+    {
+      "sistema": "2. ASEN",
+      "fila": 4,
+      "meta": "Aumentar del 39.25% al 42.38% la cobertura de agua potable en el cantón hasta el 2027",
+      "id_icpi": "SC-I-N-01",
+      "tipo": "cifras",
+      "estado": "RECONCILIADA",
+      "score": 0.667,
+      "obs": "cifras comunes: 39.25, 42.38"
+    },
+    {
+      "sistema": "2. ASEN",
+      "fila": 5,
+      "meta": "Mejorar el índice de la calidad del agua al 100% por cada número de puntos cumpliendo la norma INEN 1108 hasta el 2027",
+      "id_icpi": "",
+      "tipo": "cifras ambiguas",
+      "estado": "AMBIGUA",
+      "score": 0.0,
+      "obs": "empatan SC-I-N-01, PI-TUR-02, FA-CC-01"
+    },
+    {
+      "sistema": "2. ASEN",
+      "fila": 6,
+      "meta": "Mejorar el índice de calidad de la infraestructura de agua potable BUENO de 22.74% al 41.64% hasta el año 2027",
+      "id_icpi": "SC-I-N-01",
+      "tipo": "cifras",
+      "estado": "RECONCILIADA",
+      "score": 0.667,
+      "obs": "cifras comunes: 22.74, 41.64"
+    },
+    {
+      "sistema": "2. ASEN",
+      "fila": 7,
+      "meta": "Mejorar al 10% el índice de continuidad del servicio de agua potable ALTO de 2 a 3 días por semana hasta el año 2027",
+      "id_icpi": "",
+      "tipo": "cifras ambiguas",
+      "estado": "AMBIGUA",
+      "score": 0.0,
+      "obs": "empatan PI-TUR-02, FA-CC-01, AH-AP-04"
+    },
+    {
+      "sistema": "2. ASEN",
+      "fila": 8,
+      "meta": "Aumentar del 19.77% a 24.32% la cobertura de alcantarillado sanitario en el cantón hasta el 2027",
+      "id_icpi": "SC-L-G-01",
+      "tipo": "cifras",
+      "estado": "RECONCILIADA",
+      "score": 0.667,
+      "obs": "cifras comunes: 19.77, 24.32"
+    },
+    {
+      "sistema": "2. ASEN",
+      "fila": 9,
+      "meta": "Aumentar hasta el 2027 el número de plantas y estaciones de bombeo operativas: 8/11 estaciones de bombeo al 72%, 9/12 PTAR al 75%, 2/6 cámaras Recolectoras al 33%",
+      "id_icpi": "SC-L-G-01",
+      "tipo": "cifras",
+      "estado": "RECONCILIADA",
+      "score": 0.333,
+      "obs": "cifras comunes: 72, 75"
+    },
+    {
+      "sistema": "2. ASEN",
+      "fila": 10,
+      "meta": "Mejorar el índice de calidad de la infraestructura sanitaria BUENO de 23.02% al 33.02% hasta el año 2027",
+      "id_icpi": "",
+      "tipo": "cifras ambiguas",
+      "estado": "AMBIGUA",
+      "score": 0.0,
+      "obs": "empatan EP-L-N-01, PI-TUR-01, PI-TUR-02"
+    },
+    {
+      "sistema": "2. ASEN",
+      "fila": 11,
+      "meta": "Aumentar la cobertura de redes pluviales de 0.97% a 2% hasta el año 2027",
+      "id_icpi": "",
+      "tipo": "cifras ambiguas",
+      "estado": "AMBIGUA",
+      "score": 0.0,
+      "obs": "empatan EP-L-N-01, PI-TUR-01, PI-TUR-02"
+    },
+    {
+      "sistema": "2. ASEN",
+      "fila": 12,
+      "meta": "Aumentar a 17.32 m²/hab el IVU  hasta el 2027",
+      "id_icpi": "",
+      "tipo": "cifras ambiguas",
+      "estado": "AMBIGUA",
+      "score": 0.0,
+      "obs": "empatan FA-C-X-01, EP-L-N-01, PI-TUR-01"
+    },
+    {
+      "sistema": "2. ASEN",
+      "fila": 13,
+      "meta": "Aumentar a 10.73 m²/hab el índice de equipamiento del Centro Urbano Principal hasta el 2027",
+      "id_icpi": "",
+      "tipo": "cifras ambiguas",
+      "estado": "AMBIGUA",
+      "score": 0.0,
+      "obs": "empatan FA-I-X-02, EP-L-N-01, PI-TUR-01"
+    },
+    {
+      "sistema": "2. ASEN",
+      "fila": 19,
+      "meta": "Construir 10km hasta el 2027 de 93.65 km de vías en proyección del CUP",
+      "id_icpi": "",
+      "tipo": "cifras ambiguas",
+      "estado": "AMBIGUA",
+      "score": 0.0,
+      "obs": "empatan PI-TUR-02, FA-CC-01, AH-AP-04"
+    },
+    {
+      "sistema": "2. ASEN",
+      "fila": 20,
+      "meta": "Incrementar 4 km de vías con tratamiento (aceras y bordillos) del CUP hasta el 2027",
+      "id_icpi": "",
+      "tipo": "cifras ambiguas",
+      "estado": "AMBIGUA",
+      "score": 0.0,
+      "obs": "empatan EP-L-N-01, PI-TUR-01, PI-TUR-02"
+    },
+    {
+      "sistema": "2. ASEN",
+      "fila": 21,
+      "meta": "Incrementar 0.4 km de  vías con tratamiento (aceras y bordillos) en comunidades rurales al 2027",
+      "id_icpi": "",
+      "tipo": "cifras ambiguas",
+      "estado": "AMBIGUA",
+      "score": 0.0,
+      "obs": "empatan EP-L-N-01, PI-TUR-01, PI-TUR-02"
+    },
+    {
+      "sistema": "2. ASEN",
+      "fila": 22,
+      "meta": "Incrementar en el CUP 23.77 km de vías con tratamiento medio hasta el año 2027",
+      "id_icpi": "",
+      "tipo": "cifras ambiguas",
+      "estado": "AMBIGUA",
+      "score": 0.0,
+      "obs": "empatan AH-I-X-02, EP-L-N-01, PI-TUR-01"
+    },
+    {
+      "sistema": "2. ASEN",
+      "fila": 23,
+      "meta": "Incrementar en las comunidades rurales 17.56 km de vías con tratamiento medio hasta el año 2027",
+      "id_icpi": "",
+      "tipo": "cifras ambiguas",
+      "estado": "AMBIGUA",
+      "score": 0.0,
+      "obs": "empatan EP-L-N-01, PI-TUR-01, PI-TUR-02"
+    },
+    {
+      "sistema": "2. ASEN",
+      "fila": 24,
+      "meta": "Incrementar en el CUP el mantenimiento de 43.8 km de vías  hasta el año 2027",
+      "id_icpi": "",
+      "tipo": "cifras ambiguas",
+      "estado": "AMBIGUA",
+      "score": 0.0,
+      "obs": "empatan AH-I-X-02, EP-L-N-01, PI-TUR-01"
+    },
+    {
+      "sistema": "2. ASEN",
+      "fila": 25,
+      "meta": "Incrementar en las comunidades rurales el mantenimiento de 57.22 km de vías hasta el año 2027",
+      "id_icpi": "",
+      "tipo": "cifras ambiguas",
+      "estado": "AMBIGUA",
+      "score": 0.0,
+      "obs": "empatan AH-I-X-02, EP-L-N-01, PI-TUR-01"
+    },
+    {
+      "sistema": "2. ASEN",
+      "fila": 26,
+      "meta": "Incrementar de 1.62 km a 2.62 km de ciclovía al 2027",
+      "id_icpi": "",
+      "tipo": "cifras ambiguas",
+      "estado": "AMBIGUA",
+      "score": 0.0,
+      "obs": "empatan EP-L-N-01, PI-TUR-01, PI-TUR-02"
+    },
+    {
+      "sistema": "2. ASEN",
+      "fila": 27,
+      "meta": "Incrementar la superficie a 10 000 m2 de señalización en vías urbanas hasta el 2027",
+      "id_icpi": "",
+      "tipo": "cifras ambiguas",
+      "estado": "AMBIGUA",
+      "score": 0.0,
+      "obs": "empatan PI-TUR-02, FA-CC-01, AH-AP-04"
+    },
+    {
+      "sistema": "2. ASEN",
+      "fila": 28,
+      "meta": "Incrementar a 8 el número de las intersecciones semafóricas hasta el 2027",
+      "id_icpi": "",
+      "tipo": "cifras ambiguas",
+      "estado": "AMBIGUA",
+      "score": 0.0,
+      "obs": "empatan EP-L-N-01, PI-TUR-01, PI-TUR-02"
+    },
+    {
+      "sistema": "2. ASEN",
+      "fila": 29,
+      "meta": "Incrementar las revisiones técnicas vehiculares de 4000 en el año 2023, a 20000 al 2027",
+      "id_icpi": "",
+      "tipo": "cifras ambiguas",
+      "estado": "AMBIGUA",
+      "score": 0.0,
+      "obs": "empatan PI-TUR-02, PI-L-G-01, EP-L-N-01"
+    },
+    {
+      "sistema": "2. ASEN",
+      "fila": 30,
+      "meta": "Mantener anualmente y hasta el 2027 el servicio de calidad del transporte en categoría bueno con el 60% de aceptación",
+      "id_icpi": "PI-TUR-01",
+      "tipo": "cifras",
+      "estado": "RECONCILIADA",
+      "score": 1.0,
+      "obs": "cifras comunes: 2027, 6"
+    },
+    {
+      "sistema": "2. ASEN",
+      "fila": 31,
+      "meta": "Mantener anualmente a  40 Instituciones educativas en el programa de Educación Vial cantonal",
+      "id_icpi": "",
+      "tipo": "por debajo del umbral",
+      "estado": "AMBIGUA",
+      "score": 0.3,
+      "obs": "mejor candidato PI-L-G-01 — insuficiente"
+    },
+    {
+      "sistema": "2. ASEN",
+      "fila": 32,
+      "meta": "Reducir el déficit habitacional cualitativo de 50 viviendas de interés social hasta el año 2027",
+      "id_icpi": "EP-L-N-01",
+      "tipo": "cifras",
+      "estado": "RECONCILIADA",
+      "score": 1.0,
+      "obs": "cifras comunes: 2027, 5"
+    },
+    {
+      "sistema": "2. ASEN",
+      "fila": 34,
+      "meta": "Incrementar anualmente el porcentaje de cobertura de recolección del 91.95% al año 2023 a 97.95% al 2027",
+      "id_icpi": "",
+      "tipo": "cifras ambiguas",
+      "estado": "AMBIGUA",
+      "score": 0.0,
+      "obs": "empatan FA-I-X-02, PI-TUR-02, EP-L-N-01"
+    },
+    {
+      "sistema": "2. ASEN",
+      "fila": 35,
+      "meta": "Incrementar los kilometros de barrios por día de 77.83 km/día en el 2023 a 81.07 km/días al 2027",
+      "id_icpi": "",
+      "tipo": "cifras ambiguas",
+      "estado": "AMBIGUA",
+      "score": 0.0,
+      "obs": "empatan FA-I-X-02, PI-TUR-02, EP-L-N-01"
+    },
+    {
+      "sistema": "3.SOC",
+      "fila": 4,
+      "meta": "Incrementar el 10% anualmente de la población atendida en los Servicios de Salud Municipal hasta el 2027",
+      "id_icpi": "",
+      "tipo": "cifras ambiguas",
+      "estado": "AMBIGUA",
+      "score": 0.0,
+      "obs": "empatan PI-TUR-02, FA-CC-01, AH-AP-04"
+    },
+    {
+      "sistema": "3.SOC",
+      "fila": 5,
+      "meta": "Incrementar la población atendida en salud preventiva de 320 en el año 2023, a 480 al 2027",
+      "id_icpi": "PI-TUR-02",
+      "tipo": "cifras",
+      "estado": "RECONCILIADA",
+      "score": 0.5,
+      "obs": "cifras comunes: 2023, 2027"
+    },
+    {
+      "sistema": "3.SOC",
+      "fila": 7,
+      "meta": "Incrementar el número de beneficiarios que acceden a puntos digitales de 19265 en el año 2023, a 23265 al 2027",
+      "id_icpi": "PI-TUR-02",
+      "tipo": "cifras",
+      "estado": "RECONCILIADA",
+      "score": 0.5,
+      "obs": "cifras comunes: 2023, 2027"
+    },
+    {
+      "sistema": "3.SOC",
+      "fila": 8,
+      "meta": "Incrementar el número de estudiantes bachilleres que acceden a la plataforma de acceso a la Universidad de 900 en el año 2023, a 1100 al 2027",
+      "id_icpi": "PI-TUR-02",
+      "tipo": "cifras",
+      "estado": "RECONCILIADA",
+      "score": 0.5,
+      "obs": "cifras comunes: 2023, 2027"
+    },
+    {
+      "sistema": "3.SOC",
+      "fila": 10,
+      "meta": "Mantener anualmente la participación de grupos de atención prioritaria y otros grupos sociales en la capacitaciones del 70% desde el año 2023 hasta el 2027",
+      "id_icpi": "PI-TUR-02",
+      "tipo": "cifras",
+      "estado": "RECONCILIADA",
+      "score": 0.667,
+      "obs": "cifras comunes: 2023, 2027"
+    },
+    {
+      "sistema": "3.SOC",
+      "fila": 11,
+      "meta": "Mantener porcentualmente la gestión de las denuncias con el debido procesos en el 75% desde el año 2023 hasta el 2027",
+      "id_icpi": "PI-TUR-02",
+      "tipo": "cifras",
+      "estado": "RECONCILIADA",
+      "score": 0.667,
+      "obs": "cifras comunes: 2023, 2027"
+    },
+    {
+      "sistema": "3.SOC",
+      "fila": 12,
+      "meta": "Mantener porcentualmente la atención con servicio especializados por violencia intrafamiliar y de género con su debido procesos al 75% desde el año 2023 hasta el 2027",
+      "id_icpi": "PI-TUR-02",
+      "tipo": "cifras",
+      "estado": "RECONCILIADA",
+      "score": 0.667,
+      "obs": "cifras comunes: 2023, 2027"
+    },
+    {
+      "sistema": "3.SOC",
+      "fila": 13,
+      "meta": "Incrementar el 15% anualmente desde el año 2023, al 2027 de atenciones en programas para grupos de atención prioritaria",
+      "id_icpi": "PI-TUR-02",
+      "tipo": "cifras",
+      "estado": "RECONCILIADA",
+      "score": 0.667,
+      "obs": "cifras comunes: 2023, 2027"
+    },
+    {
+      "sistema": "3.SOC",
+      "fila": 14,
+      "meta": "Actualizar el inventario patrimonial y catastro cultural al 100% hasta el año 2026",
+      "id_icpi": "FA-L-N-01",
+      "tipo": "cifras",
+      "estado": "RECONCILIADA",
+      "score": 1.0,
+      "obs": "cifras comunes: 1, 2026"
+    },
+    {
+      "sistema": "3.SOC",
+      "fila": 15,
+      "meta": "Incrementar el número de participantes por eventos culturales de 8.000 en el año 2023, a 10.000 al 2027",
+      "id_icpi": "PI-TUR-02",
+      "tipo": "cifras",
+      "estado": "RECONCILIADA",
+      "score": 0.75,
+      "obs": "cifras comunes: 1, 2023, 2027"
+    },
+    {
+      "sistema": "3.SOC",
+      "fila": 17,
+      "meta": "Incrementar el número de beneficiarios en eventos deportivos de 400 en el año 2023, a 500 al 2027",
+      "id_icpi": "",
+      "tipo": "cifras ambiguas",
+      "estado": "AMBIGUA",
+      "score": 0.0,
+      "obs": "empatan EP-L-N-01, PI-TUR-02, PI-TUR-01"
+    },
+    {
+      "sistema": "3.SOC",
+      "fila": 19,
+      "meta": "Incrementar el número de beneficiarios de programas de formación cultural de 400 en el año 2023, a 700 al 2027",
+      "id_icpi": "PI-TUR-02",
+      "tipo": "cifras",
+      "estado": "RECONCILIADA",
+      "score": 0.5,
+      "obs": "cifras comunes: 2023, 2027"
+    },
+    {
+      "sistema": "3.SOC",
+      "fila": 20,
+      "meta": "Incrementar de 0 a 10 los incentivos a artistas u organizaciones de programas de fomento cultural al 2027",
+      "id_icpi": "",
+      "tipo": "cifras ambiguas",
+      "estado": "AMBIGUA",
+      "score": 0.0,
+      "obs": "empatan PI-TUR-02, FA-CC-01, AH-AP-04"
+    },
+    {
+      "sistema": "4. EC",
+      "fila": 4,
+      "meta": "Incrementar los beneficiarios de programas y fortalecimiento productivo de 200 en el año 2023, a 900 al 2027",
+      "id_icpi": "PI-TUR-02",
+      "tipo": "cifras",
+      "estado": "RECONCILIADA",
+      "score": 0.5,
+      "obs": "cifras comunes: 2023, 2027"
+    },
+    {
+      "sistema": "4. EC",
+      "fila": 5,
+      "meta": "Incrementar los beneficiarios en programas de formación de 1645 en el año 2023, a 3100 al 2027",
+      "id_icpi": "PI-TUR-02",
+      "tipo": "cifras",
+      "estado": "RECONCILIADA",
+      "score": 0.5,
+      "obs": "cifras comunes: 2023, 2027"
+    },
+    {
+      "sistema": "4. EC",
+      "fila": 7,
+      "meta": "Incrementar el número de establecimientos con certificación de calidad Montecristi Ciudad Creativa de 0 a 60 al 2027",
+      "id_icpi": "PI-TUR-01",
+      "tipo": "cifras",
+      "estado": "RECONCILIADA",
+      "score": 1.0,
+      "obs": "cifras comunes: 2027, 6"
+    },
+    {
+      "sistema": "4. EC",
+      "fila": 8,
+      "meta": "Incrementar las visitas anuales de 2700 en el año 2023, a 4300 al 2027",
+      "id_icpi": "PI-TUR-02",
+      "tipo": "cifras",
+      "estado": "RECONCILIADA",
+      "score": 0.5,
+      "obs": "cifras comunes: 2023, 2027"
+    },
+    {
+      "sistema": "4. EC",
+      "fila": 10,
+      "meta": "Incrementar los eventos turísticos de 10 en el año 2023, a 22 al 2027",
+      "id_icpi": "PI-TUR-02",
+      "tipo": "cifras",
+      "estado": "RECONCILIADA",
+      "score": 1.0,
+      "obs": "cifras comunes: 1, 2023, 2027, 22"
+    },
+    {
+      "sistema": "5. INST",
+      "fila": 4,
+      "meta": "Incrementar el porcentaje de proyectos ejecutados al 80%  al 2027",
+      "id_icpi": "",
+      "tipo": "cifras ambiguas",
+      "estado": "AMBIGUA",
+      "score": 0.0,
+      "obs": "empatan EP-L-N-01, PI-TUR-01, PI-TUR-02"
+    },
+    {
+      "sistema": "5. INST",
+      "fila": 6,
+      "meta": "Incrementar el porcentaje del sistema de información local del 19,52% en el año 2023, a 80% al 2027",
+      "id_icpi": "",
+      "tipo": "cifras ambiguas",
+      "estado": "AMBIGUA",
+      "score": 0.0,
+      "obs": "empatan AH-C-X-02, PI-I-G-02, PI-TUR-02"
+    },
+    {
+      "sistema": "5. INST",
+      "fila": 7,
+      "meta": "Incrementar el número de procesos sistematizados a 9 al 2027",
+      "id_icpi": "",
+      "tipo": "cifras ambiguas",
+      "estado": "AMBIGUA",
+      "score": 0.0,
+      "obs": "empatan EP-L-N-01, PI-TUR-01, PI-TUR-02"
+    },
+    {
+      "sistema": "5. INST",
+      "fila": 8,
+      "meta": "Incrementar el número de trámites en línea implementados a 37 al año 2027",
+      "id_icpi": "",
+      "tipo": "cifras ambiguas",
+      "estado": "AMBIGUA",
+      "score": 0.0,
+      "obs": "empatan EP-L-N-01, PI-TUR-01, PI-TUR-02"
+    },
+    {
+      "sistema": "5. INST",
+      "fila": 9,
+      "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al 2027",
+      "id_icpi": "",
+      "tipo": "cifras ambiguas",
+      "estado": "AMBIGUA",
+      "score": 0.0,
+      "obs": "empatan AH-I-X-01, PI-TUR-02, EP-L-N-01"
+    },
+    {
+      "sistema": "5. INST",
+      "fila": 10,
+      "meta": "Aumentar el nivel de desempeño del personal institucional del 80% en al año 2023, a 90% al 2027",
+      "id_icpi": "",
+      "tipo": "cifras ambiguas",
+      "estado": "AMBIGUA",
+      "score": 0.0,
+      "obs": "empatan PI-TUR-02, SC-L-N-02, EP-L-N-01"
+    },
+    {
+      "sistema": "5. INST",
+      "fila": 11,
+      "meta": "Mantener la ejecución anual del Plan de capacitación del 90% hasta el 2027.",
+      "id_icpi": "",
+      "tipo": "cifras ambiguas",
+      "estado": "AMBIGUA",
+      "score": 0.0,
+      "obs": "empatan EP-L-N-01, PI-TUR-01, PI-TUR-02"
+    },
+    {
+      "sistema": "5. INST",
+      "fila": 12,
+      "meta": "Aumentar del 91% de vehículos en funcionamiento en el año 2023, a 95% desde el 2024 manteniendo la métrica hasta el 2027.",
+      "id_icpi": "PI-TUR-02",
+      "tipo": "cifras",
+      "estado": "RECONCILIADA",
+      "score": 0.4,
+      "obs": "cifras comunes: 2023, 2027"
+    },
+    {
+      "sistema": "5. INST",
+      "fila": 13,
+      "meta": "Aumentar el nivel de conocimiento de la gestión institucional al 55% al 2027",
+      "id_icpi": "",
+      "tipo": "cifras ambiguas",
+      "estado": "AMBIGUA",
+      "score": 0.0,
+      "obs": "empatan EP-L-N-01, PI-TUR-01, PI-TUR-02"
+    },
+    {
+      "sistema": "5. INST",
+      "fila": 14,
+      "meta": "Aumentar la confianza institucional a 30%  al 2027",
+      "id_icpi": "",
+      "tipo": "cifras ambiguas",
+      "estado": "AMBIGUA",
+      "score": 0.0,
+      "obs": "empatan EP-L-N-01, PI-TUR-01, PI-TUR-02"
+    },
+    {
+      "sistema": "5. INST",
+      "fila": 15,
+      "meta": "Aumentar la aceptación institucional a 35% al 2027",
+      "id_icpi": "",
+      "tipo": "cifras ambiguas",
+      "estado": "AMBIGUA",
+      "score": 0.0,
+      "obs": "empatan EP-L-N-01, PI-TUR-01, PI-TUR-02"
+    },
+    {
+      "sistema": "5. INST",
+      "fila": 16,
+      "meta": "Incrementar el número de Unidades Territoriales Participativas de 50 en el año 2023, a 100 al 2027",
+      "id_icpi": "PI-TUR-02",
+      "tipo": "cifras",
+      "estado": "RECONCILIADA",
+      "score": 0.75,
+      "obs": "cifras comunes: 1, 2023, 2027"
+    },
+    {
+      "sistema": "5. INST",
+      "fila": 17,
+      "meta": "Incrementar las instancias de participación de 2 en el año 2023 a 4 al 2024 manteniendo estas instancias activadas hasta el 2027",
+      "id_icpi": "PI-TUR-02",
+      "tipo": "cifras",
+      "estado": "RECONCILIADA",
+      "score": 0.667,
+      "obs": "cifras comunes: 2023, 2027"
+    }
+  ]
+}

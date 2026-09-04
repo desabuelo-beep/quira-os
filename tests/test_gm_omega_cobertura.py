@@ -106,31 +106,44 @@ def test_ocho_reconoce_que_el_ADR_ya_habia_decidido():
     assert "ADR-036" in txt and "RATIFICADO" in txt
 
 
-def test_el_denominador_declara_que_es_oficial_y_por_que():
-    """La corrección de Javo, fijada: **«no remitido formalmente» ≠ «no
-    oficial»**.
+def test_la_procedencia_separa_los_tres_atributos_que_no_son_lo_mismo():
+    """⚠️ ESTA PRUEBA NACIÓ MAL Y SE CORRIGIÓ. Su primera versión exigía que el
+    catálogo dijera `OFICIAL`, porque esta auditoría había aplicado al `.xlsx`
+    una aclaración de Javo que se refería al documento del portal. Eran archivos
+    distintos.
 
-    El PDOT se obtuvo del portal del GAD. `LOTAIP Art. 7` obliga a publicarlo y
-    el canon sostiene que el portal es materialización de una obligación —
-    degradar lo publicado a «no oficial» anularía toda la transparencia activa,
-    incluida `V_LOTAIP`, que puntúa 1,0 por «documento en URL pública».
+    La cadena real, reconstruida a la tercera:
 
-    ⚠️ Y la reserva se conserva por OTRA razón: lo leído es el Plan Plurianual
-    `.xlsx` y la fuente canónica de metas es el PDOT aprobado. Escalón 7: **lo
-    leído ≠ la fuente**. Oficial y provisional a la vez, sin contradicción."""
+        Portal GAD · Transparencia (LOTAIP) · sección PDOT
+          └── PDF publicado                    ← ORIGINAL OFICIAL
+                └── Word · conversión propia
+                      └── Excel · tabulación   ← este catálogo
+
+    Y de ahí la propiedad que sí hay que vigilar: **tres atributos que no deben
+    colapsarse en la palabra «oficial»** —
+
+        PUBLICADO en el portal   ·   VÁLIDO como insumo   ·   FUENTE CANÓNICA
+
+    El `.xlsx` es válido (SHA verificado), no publicado, y no es la fuente
+    canónica de metas. Las tres cosas a la vez, sin contradicción."""
     if not _PDOT.exists():
         pytest.skip("no está el catálogo del PDOT")
     proc = json.loads(_PDOT.read_text(encoding="utf-8")).get("_procedencia", {})
-    assert proc.get("caracter", "").startswith("OFICIAL"), (
-        "el catálogo volvió a clasificar como «no oficial» un documento "
-        "obtenido del portal del GAD. Esa etiqueta confunde el CANAL con el "
-        "CARÁCTER del documento, y aplicada en serie anularía la transparencia "
-        "activa que el propio modelo puntúa")
-    assert "_caracter_anterior" in proc, (
-        "se perdió la etiqueta anterior. La corrección de una procedencia "
-        "conserva lo que decía antes (DOC-015): sin eso, nadie puede auditar "
-        "que la clasificación cambió ni por qué")
-    assert "escalón 7" in proc.get("verificabilidad", "").lower(), (
-        "la reserva sobre el denominador dejó de decir su razón real: no es la "
-        "oficialidad, es que lo leído fue el Plan Plurianual y no el PDOT "
-        "aprobado")
+
+    assert proc.get("publicado_en_portal") is False, (
+        "el catálogo dejó de declarar que el .xlsx NO está publicado. Sin ese "
+        "campo se vuelve a confundir con el PDF del portal, que sí lo está")
+    assert proc.get("documento_publicado"), (
+        "no se declara CUÁL es el documento publicado. Decir que éste no lo es "
+        "sin nombrar el que sí, deja la cadena a medias")
+    assert "fuente_canonica_de_metas" in proc, (
+        "desapareció la distinción entre el insumo tabulado y la fuente "
+        "canónica de metas (el PDOT aprobado)")
+    for historico in ("_caracter_anterior", "_caracter_v2_erroneo"):
+        assert historico in proc, (
+            f"se perdió `{historico}`. Una procedencia corregida conserva lo "
+            f"que decía antes —incluidas las correcciones equivocadas— o nadie "
+            f"puede auditar cómo se llegó a la etiqueta actual (DOC-015)")
+    assert "TRES atributos" in proc.get("verificabilidad", ""), (
+        "la verificabilidad dejó de explicar por qué es parcial. La razón no es "
+        "la oficialidad: es que lo leído no es la fuente canónica (escalón 7)")

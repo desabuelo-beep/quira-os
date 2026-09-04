@@ -2,13 +2,18 @@
   "_procedencia": {
     "fuente": "Plan Plurianual PDOT 2023-2027 GAD Montecristi.xlsx",
     "sha256": "09a2aaccca4bc90d829397a368254255b2b6a1b59ee9ac4ad6df3a4783c435c0",
-    "caracter": "OFICIAL — obtenido del portal público del GAD. Javo (2026-09-03) corrigió la etiqueta anterior: «no remitido formalmente» describe el CANAL, no el carácter del documento. LOTAIP Art. 7 obliga a publicarlo y el canon de QUIRA sostiene que el portal es materialización de una obligación — degradar lo publicado a «no oficial» anularía toda la transparencia activa, incluida V_LOTAIP.",
-    "verificabilidad": "parcial — NO por su oficialidad, sino porque lo leído es el Plan Plurianual .xlsx y la fuente canónica de metas es el PDOT aprobado (escalón 7: lo leído ≠ la fuente). Requiere corroboración contra las tablas #341-352 del PDOT Bicentenario.",
+    "caracter": "DERIVADO DE TRABAJO — válido, NO publicado. Javo (2026-09-03) precisó que el documento del portal es el Word/PDF; este .xlsx no está en la web del GAD. Corrige una rectificación previa que lo etiquetó OFICIAL aplicando al archivo equivocado una aclaración que se refería al .docx.",
+    "verificabilidad": "parcial · TRES atributos que no deben colapsarse: (1) PUBLICADO en el portal — no, lo está el .docx; (2) VÁLIDO como insumo — sí, SHA verificado; (3) FUENTE CANÓNICA de metas — no, lo es el PDOT aprobado. Escalón 7: lo leído ≠ la fuente.",
     "corroborar_contra": "PDOT MOntecristi 2023-2027 Bicentenario.docx · tablas #341-352",
     "extraido": "2026-08-11",
     "uso_autorizado": "insumo de trabajo para clasificar Ei. NO es fuente canónica de metas.",
     "_caracter_anterior": "NO OFICIAL — el GAD no lo remitió formalmente (Javo · 2026-08-11)",
-    "_corregido": "2026-09-03 · GM-Ω-ICPI-008 · autoridad: Javo"
+    "_corregido": "2026-09-03 · GM-Ω-008-R · autoridad: Javo · segunda rectificación: la primera confundió el archivo",
+    "_caracter_v2_erroneo": "OFICIAL — obtenido del portal público del GAD. Javo (2026-09-03) corrigió la etiqueta anterior: «no remitido formalmente» describe el CANAL, no el carácter del documento. LOTAIP Art. 7 obliga a publicarlo y el canon de QUIRA sostiene que el portal es materialización de una obligación — degradar lo publicado a «no oficial» anularía toda la transparencia activa, incluida V_LOTAIP.",
+    "publicado_en_portal": false,
+    "documento_publicado": "PLAN PLURIANUAL DE INVERSIONES GAD Montecristi PDOT.docx · ProyecT/Varios/Oficiales/",
+    "sha256_documento_publicado": "02996b6d2c4ee108beae135ede6d7090364bbcda66ef097f8dc0d080f4eb7531",
+    "fuente_canonica_de_metas": "PDOT Montecristi 2023-2027 Bicentenario.docx · tablas #341-352 — sigue sin corroborar"
   },
   "total_metas": 66,
   "metas": [
