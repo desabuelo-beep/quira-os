@@ -215,6 +215,55 @@ def test_el_identificador_es_estable_y_el_nombre_puede_migrar():
         "renombrar, cuando es sólo el mecanismo que lo hará posible sin pérdida")
 
 
+def test_la_ontologia_gobierna_a_la_implementacion_no_al_reves():
+    """DOC-016 · el principio rector de `T3-T6`.
+
+        No se cambia la ontología de un indicador para hacerla coincidir con su
+        implementación; se corrige la implementación para hacerla coincidir con
+        la ontología validada.
+
+    Protege de un error muy fácil de cometer: descubrir que la fórmula hace A y
+    rebautizar A como si siempre hubiera sido el propósito.
+
+    ⚠️ Y esta auditoría estuvo a punto de cometerlo. Llegó a plantear una
+    disyuntiva —«congruencia → quitar la multiplicatividad; integridad → el
+    nombre se queda corto»— que el título de la tesis disuelve: *«Sistema de
+    INTEGRIDAD Algorítmica Preventiva: Modelo de CONGRUENCIA Intersistémica»*
+    contiene ambas palabras como **dos niveles**, no como alternativas. La
+    constancia de esa corrección debe sobrevivir en el artefacto."""
+    doc = (RAIZ / "docs" / "architecture" /
+           "GM-OMEGA_CONTRATO_INDICE_DOMINIO.md").read_text(encoding="utf-8")
+    assert "falso dilema" in doc.lower(), (
+        "desapareció la corrección del planteamiento anterior. Sin ella, la "
+        "disyuntiva congruencia/integridad volvería a leerse como si fuera real")
+    assert "SIAP" in doc and "dos niveles" in doc.lower(), (
+        "se perdió la arquitectura de dos niveles del título fundacional: el "
+        "SISTEMA persigue integridad, el MODELO mide congruencia")
+    assert "semántica de la multiplicación" in doc.lower(), (
+        "011 volvió a plantearse como una elección de palabra. Lo que debe "
+        "juzgar es qué significa que un factor sea cero, no qué nombre encaja")
+
+
+def test_ningun_dominio_se_declara_cerrado_sin_pasar_el_refactor():
+    """Regla de Javo, con consecuencia inmediata: `d01`, `d06` y `d09` figuran
+    como cerrados, pero se cerraron bajo un canon ANTERIOR a `DOC-013`,
+    `DOC-014` y al contrato índice→dominio.
+
+    Es el principio que gobierna todo GM-Ω —**un mecanismo de cobertura no es
+    autoridad sobre su propia cobertura**— aplicado a los expedientes de
+    curación: un PCD cerrado acredita las siete capas que revisó, no las
+    preguntas que aún no se hacían.
+
+    ⚠️ NO invalida esos cierres. Los reclasifica: «cerrado bajo canon anterior»
+    es un tercer estado, y su reapertura es barata."""
+    doc = (RAIZ / "docs" / "architecture" /
+           "GM-OMEGA_CONTRATO_INDICE_DOMINIO.md").read_text(encoding="utf-8")
+    assert "cerrado bajo canon anterior" in doc.lower(), (
+        "desapareció el tercer estado de los dominios curados. Sin él, un PCD "
+        "cerrado antes del Terminology Freeze parecería acreditar preguntas "
+        "que nadie le hizo")
+
+
 def test_ICPI_conserva_el_nombre_de_la_tesis():
     """El nombre del constructo no se toca, y la razón es de trazabilidad, no de
     gusto: «Índice de Congruencia Programática e Intersistémica» es el nombre de

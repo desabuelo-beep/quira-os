@@ -79,6 +79,7 @@
 | `QUIRA` | ARTEFACTO | PÚBLICO | identity/CONSTITUCION_INSTITUCIONAL.md | 825 | 59 |
 | `Dylus Lab` | ARTEFACTO | PÚBLICO | identity/ | 794 | 60 |
 | `Gold Master` | ARTEFACTO | TÉCNICO | ADR-023 · METODOLOGIA_GOLD_MASTER.md | 392 | 18 |
+| `SIAP` | ARTEFACTO | HISTÓRICO | tesis · da nombre al Gold Master | 358 | 7 |
 | `AVEP` ⚠️ | SIN_CATEGORÍA | HISTÓRICO | ⚠️ ninguna autoridad vigente lo define | 71 | 3 |
 
 ## La segunda dimensión · capa de presentación
@@ -162,30 +163,30 @@ Detectadas en canon, `config.py` y `BOOT.md`, excluidas las normas e institucion
 | Sigla | Archivos de canon donde aparece |
 |---|---:|
 | `IET` | 24 |
-| `SIAP` | 23 |
 | `IRS` | 17 |
 | `ICM` | 6 |
 | `PMV` | 4 |
-| `EJECUTA` | 3 |
-| `BDE` | 3 |
 | `PROGAPSA` | 3 |
+| `BDE` | 3 |
+| `EJECUTA` | 3 |
 | `ACTIVA` | 3 |
 | `CORREL` | 3 |
-| `NORTH` | 3 |
 | `ALTO` | 3 |
+| `NORTH` | 3 |
 | `CPFP` | 3 |
 | `BOOT` | 2 |
 | `DPE` | 2 |
 | `PRIVADO` | 2 |
-| `VER` | 2 |
 | `UNESCO` | 2 |
 | `RIPS` | 2 |
+| `VER` | 2 |
 | `CRE` | 2 |
-| `PLAZO` | 2 |
 | `RIESGO` | 2 |
+| `PLAZO` | 2 |
 | `OUTPUTS` | 2 |
 | `DATOS` | 2 |
 | `SOBRE` | 2 |
+| `EMAI` | 2 |
 
 ## ⚠️ Hallazgo de propina · siglas normativas mal formadas
 
@@ -204,4 +205,4 @@ Lo detectó el inventario terminológico, no una revisión normativa — que es 
 - **No construye el baremo parametrizable.** La arquitectura `país · institución · versión · constructo · umbrales · etiquetas · fundamento · vigencia` es un **patrón metodológico disponible**, no un componente obligatorio. Construirlo antes de saber si hace falta sería infringir `DOC-013` en el mismo documento que lo declara.
 
 ---
-*GM-Ω · Terminology Freeze T1-T2 · 42 nombres clasificados · ningún código modificado · Dylus Lab © 2026*
+*GM-Ω · Terminology Freeze T1-T2 · 43 nombres clasificados · ningún código modificado · Dylus Lab © 2026*

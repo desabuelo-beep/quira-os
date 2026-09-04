@@ -85,9 +85,9 @@ _DOMINIOS = {
 # el nombre: que un índice se mencione en una página no prueba que ese sea su
 # dominio canónico.
 _CONTRATO = [
-    ("ICPI", _PENDIENTE, _PENDIENTE, _PENDIENTE,
-     "⚠️ el indicador nuclear del Gold Master no tiene dominio declarado — y es "
-     "posible que la respuesta correcta sea que es TRANSVERSAL, no de un dominio"),
+    ("ICPI", "d06", _PENDIENTE, _PENDIENTE,
+     "PCD-D06 §Diccionario campo 6 · «Ancla en ICPI» — ⚠️ y d06 está cerrado "
+     "como SINTETIZADOR, lo que hace compatible la hipótesis transversal"),
     ("IPE", "d01", "PRIMARIO",
      "¿Qué proporción del gasto ejecutado está vinculada a metas del PDOT?",
      "PCD-D01 · cerrado · fórmula nativa en H16b"),
@@ -207,16 +207,86 @@ def _escribir(filas, total, faltan, dom_sin_preg) -> None:
 
     A("## ⚠️ El caso `ICPI` merece párrafo propio")
     A("")
-    A("**El indicador nuclear del Gold Master no tiene dominio declarado.** Y "
-      "antes de asignarle uno conviene considerar que la respuesta correcta "
-      "quizá sea que **no pertenece a ninguno**: si el ICPI mide la congruencia "
-      "de la cadena completa —planificación, presupuesto, contratación, "
-      "ejecución, transparencia, rendición— entonces es **transversal**, y "
-      "meterlo en un dominio lo empequeñecería.")
+    A("**Sí tenía dominio declarado, y estaba donde Javo recordaba**: `PCD-D06 "
+      "Salud Institucional` lo fija como su ancla —*«Ancla en ICPI — "
+      "cumplimiento sostenible de gobierno»*—. Lo que faltaba no era la "
+      "decisión: era el **artefacto que la hiciera legible sin abrir el "
+      "expediente de un dominio**. Eso es exactamente lo que este contrato es.")
     A("")
-    A("Eso conecta con la corrección de `T1-T2`: el ICPI es **indicador nuclear "
-      "del Gold Master**, no «el centro de QUIRA». Puede ser nuclear y "
-      "transversal a la vez — pero hay que **declararlo**, no dejarlo implícito.")
+    A("Y el hallazgo interesante es que **la asignación no cierra la pregunta**, "
+      "la afina: `d06` está cerrado **como sintetizador** —un dominio que agrega "
+      "lo que otros producen—, así que alojar allí un indicador **transversal** "
+      "no es una contradicción sino la forma natural de hacerlo. Las dos cosas "
+      "pueden ser ciertas a la vez:")
+    A("")
+    A("> `ICPI` = **indicador nuclear transversal del Gold Master**, con "
+      "residencia canónica en `d06` por ser el dominio sintetizador.")
+    A("")
+    A("⚠️ Se deja como **denominación provisional**, no como decisión. Para "
+      "declararlo transversal hace falta responder algo que todavía no está "
+      "escrito: **¿la pregunta que responde el ICPI pertenece a un dominio, o "
+      "evalúa la relación ENTRE dominios?** Consumir datos de varios silos no "
+      "basta —un indicador puede leer de todas partes y aun así responder una "
+      "pregunta local—. La celda `pregunta` sigue `POR_DECLARAR` a propósito.")
+    A("")
+
+    A("## ★ El título de la tesis disuelve el falso dilema")
+    A("")
+    A("Javo aportó el título completo del documento fundacional:")
+    A("")
+    A("> **Arquitectura del Sistema de Integridad Algorítmica Preventiva "
+      "(SIAP): Modelo de Congruencia Intersistémica** para la Trazabilidad y "
+      "Alineación POA-PDOT en los GAD del Ecuador.")
+    A("")
+    A("Ese título **contiene las dos palabras**, y no como sinónimos: como "
+      "**dos niveles de una misma arquitectura**.")
+    A("")
+    A("```")
+    A("   SIAP   Sistema de INTEGRIDAD Algorítmica Preventiva   ← el propósito")
+    A("     └── ICPI   Modelo de CONGRUENCIA Intersistémica     ← lo que mide")
+    A("```")
+    A("")
+    A("Esto **corrige un planteamiento anterior de esta auditoría**. Se había "
+      "formulado como disyuntiva —«si el constructo es congruencia hay que "
+      "quitar la multiplicatividad; si es integridad conjunta, el nombre se "
+      "queda corto»— y era demasiado rápido. La multiplicatividad puede ser "
+      "**perfectamente coherente con un constructo de congruencia** si la "
+      "teoría establece que la congruencia efectiva **exige simultáneamente** "
+      "determinadas condiciones. Integridad y congruencia no compiten por el "
+      "nombre: una es el sistema, la otra es el modelo.")
+    A("")
+    A("Lo que `011` debe juzgar, entonces, **no es qué palabra encaja mejor**, "
+      "sino la **semántica de la multiplicación**:")
+    A("")
+    A("> ¿Qué relación teórica existe entre `P`, `R`, `V`, `E`, `T` y `C`, y qué "
+      "significa que uno de ellos sea cero? Si `V=0` —«no pude verificar "
+      "documentalmente»— anula toda la contribución de una meta, el índice no "
+      "está diciendo «esta meta no es congruente»: está diciendo «la "
+      "congruencia **certificable** de esta unidad es nula porque falta una "
+      "condición necesaria». Puede ser defendible. Hay que demostrarlo.")
+    A("")
+    A("Y `SIAP` resultó tener **dos expansiones** en las tesis —«Sistema de "
+      "Integridad Algorítmica Preventiva» y «Sistema Integral de Auditoría y "
+      "Planificación»—: la misma deriva semántica de `AVEP`, en la sigla que da "
+      "nombre al propio Gold Master.")
+    A("")
+
+    A("## ⚠️ Ningún dominio está cerrado hasta pasar este refactor")
+    A("")
+    A("Regla de Javo, y tiene consecuencia inmediata sobre este contrato: "
+      "`d01`, `d06` y `d09` figuran como **cerrados**, pero se cerraron bajo un "
+      "canon **anterior** al Terminology Freeze — antes de que existieran "
+      "`DOC-013` (higiene ontológica), `DOC-014` (capas de presentación) y este "
+      "contrato. Su cierre es válido **para lo que entonces se auditó**, y no "
+      "acredita lo que entonces no se preguntaba.")
+    A("")
+    A("Es el mismo principio que gobierna todo GM-Ω: **un mecanismo de "
+      "cobertura no es autoridad sobre su propia cobertura**. Un PCD cerrado "
+      "acredita las siete capas que revisó, no las preguntas que aún no se "
+      "hacían. Por eso el estado correcto de esos tres no es «cerrado» ni "
+      "«abierto», sino **cerrado bajo canon anterior** — y su reapertura es "
+      "barata: sólo necesitan declarar su pregunta rectora y la residencia de "
+      "sus índices, que es lo que este contrato pide.")
     A("")
 
     A("## Lo que este contrato NO hace")

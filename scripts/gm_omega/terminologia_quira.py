@@ -95,6 +95,15 @@ _INVENTARIO = [
      "fuente canónica de verdad analítica reproducible · NO es «base de datos»"),
     ("Dylus Lab", "ARTEFACTO", "identity/",
      "PÚBLICO", "el laboratorio que construye QUIRA"),
+    # ⚠️ El huérfano nº 2 del primer inventario (23 apariciones), resuelto por
+    # Javo — y con la MISMA deriva que AVEP: la sigla sobrevivió, el nombre
+    # completo divergió. Las tesis lo expanden de dos maneras incompatibles.
+    ("SIAP", "ARTEFACTO", "tesis · da nombre al Gold Master",
+     "HISTÓRICO",
+     "⚠️ DOS expansiones: «Sistema de Integridad Algorítmica Preventiva» "
+     "(tesis antigua) y «Sistema Integral de Auditoría y Planificación» "
+     "(borrador inicial). Sistema antecesor de QUIRA · sobrevive en el nombre "
+     "del archivo `SIAP-ICPI_GOLD_MASTER_v5.7_TGI.xlsx`"),
 
     # Funciones de adquisición
     ("Observatorio", "FUNCIÓN", "ADR-041 §4",

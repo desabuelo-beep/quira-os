@@ -145,6 +145,22 @@ _DOCTRINA = (
          verificador="test_ninguna_regla_generadora_se_infiere_del_patron_de_sus_resultados",
          por_que_ahi="con 25 casos y tres valores posibles, cualquier hipótesis "
                      "encuentra algunos que la respaldan: encajar no es derivar"),
+    dict(id="DOC-016", custodia=GATE,
+         regla="No se cambia la ONTOLOGÍA de un indicador para hacerla coincidir "
+               "con su IMPLEMENTACIÓN; se corrige la implementación para "
+               "hacerla coincidir con la ontología validada. Descubrir que la "
+               "fórmula hace A no autoriza a rebautizar A como si siempre "
+               "hubiera sido el propósito",
+         fuente="el colega, 2026-09-03 · principio rector de T3-T6, tras frenar "
+                "una disyuntiva prematura entre «congruencia» e «integridad»",
+         verificador="test_la_ontologia_gobierna_a_la_implementacion_no_al_reves",
+         por_que_ahi="el título de la tesis —«Sistema de INTEGRIDAD Algorítmica "
+                     "Preventiva: Modelo de CONGRUENCIA Intersistémica»— "
+                     "contiene ambas palabras como dos NIVELES, no como "
+                     "alternativas. La disyuntiva que esta auditoría llegó a "
+                     "plantear era falsa, y de haberla resuelto «eligiendo "
+                     "nombre» habríamos adaptado la ontología al álgebra que "
+                     "todavía no está fundamentada"),
     dict(id="DOC-015", custodia=GATE,
          regla="IDENTIFICADOR ESTABLE ≠ NOMBRE CANÓNICO. El identificador de un "
                "objeto —`ICPI`— NO cambia nunca: lo usan el código, el Gold "
