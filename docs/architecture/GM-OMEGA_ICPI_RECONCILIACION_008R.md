@@ -170,7 +170,18 @@ Por eso `011` deja de ser sólo «validación del constructo» y pasa a **tres p
 |---|---|
 | **011-A** · unidad de análisis | ¿qué es `i`? meta documental · meta operacional · unidad programática · intervención · agregado · otra |
 | **011-B** · regla de correspondencia | ¿cómo se relacionan `PDOT_documental → ICPI_operacional`? Y deben poder coexistir **1:1 · N:1 · 1:N · N:N · NO DETERMINABLE** — no se obliga al universo a encajar en una sola relación |
-| **011-C** · consecuencia algebraica | conocida la unidad, ¿son coherentes con ella la estructura multiplicativa y la ponderación `P·R`? **En ese orden, no al revés** (`DOC-016`) |
+| **011-C** · operación matemática | ¿**qué operación** corresponde a esa unidad, y son coherentes con ella la multiplicatividad y `P·R`? **En ese orden, no al revés** (`DOC-016`) |
+
+⚠️ **`011-B` y `011-C` no se mezclan, y la distinción es fina pero decisiva**: una relación `N:1` **no implica** que exista una operación matemática de agregación. Puede haber tres metas documentales correspondiendo a una unidad operacional **sin que sus valores se hayan agregado numéricamente** — porque se tomó una como representante, porque se midió sólo un aspecto, o porque la unidad se definió antes que las metas.
+
+En `SC-I-N-01` esa diferencia puede ser todo el asunto: que la celda **mencione** las tres cifras no prueba que las tres **entren** en el cálculo. Estructura de correspondencia y operación aritmética son preguntas separadas, y responderlas juntas produciría una respuesta elegante y probablemente falsa.
+
+> ### ⚖️ REGLA DE HIERRO hasta `011-A`
+> **No se recalcula el ICPI «para ver qué pasa» mientras no esté definido qué es `i`.** Antes de ese punto cualquier recálculo sería matemáticamente impecable y epistemológicamente inútil. → `DOC-020`
+
+Y conviene decir con precisión qué ha ocurrido, porque es más modesto y más útil de lo que parece:
+
+> **008-R no ha roto el ICPI.** Ha demostrado que todavía no sabemos con suficiente precisión **qué objeto está midiendo**. Ésa es exactamente la pregunta que `011` debe resolver.
 
 ### La consecuencia para v2, que es lo que 008-R venía a preparar
 
@@ -182,6 +193,18 @@ Para v2, cada meta operacional debe guardar **el texto íntegro de cada meta doc
 > **Ninguna unidad operacional de v2 podrá existir sin declarar su correspondencia con una o más unidades documentales del universo PDOT, conservando el texto fuente, el identificador, la localización documental y la relación de correspondencia.**
 >
 > Y si una unidad representa varias metas, **debe poder demostrarse que representa esas metas y por qué la agregación es metodológicamente válida** — no basta con listarlas.
+>
+> **La correspondencia es un DATO del modelo, no una inferencia del motor** (`DOC-020`). Debe existir declarada y auditable:
+>
+> ```
+> META_DOCUMENTAL
+>       ↓
+> RELACIÓN_DE_CORRESPONDENCIA   1:1 · N:1 · 1:N · N:N · NO_DETERMINABLE
+>       ↓                        + evidencia
+> UNIDAD_OPERACIONAL
+> ```
+>
+> Ningún algoritmo de similitud —textual, numérica o semántica— puede establecer una correspondencia canónica. Produce **candidatos**; una persona los **confirma**. Incluido el de este mismo informe: su catálogo es **insumo de trabajo, no canon**.
 
 Eso convierte el problema descubierto en una **capacidad estructural de QUIRA**, no en una reparación artesanal de Montecristi: el día que se cargue el GAD 002, la condición ya estará puesta.
 

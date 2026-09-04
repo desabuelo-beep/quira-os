@@ -290,10 +290,20 @@ def main() -> int:
           f"duplicadas: {dup_fuera}")
 
     _CATALOGO.write_text(json.dumps({
-        "_meta": {"generado": "2026-09-03 · GM-Ω-008-R",
-                  "regla": "identidad literal → semántica controlada → AMBIGUA",
-                  "advertencia": "catálogo de TRABAJO; las ambiguas exigen "
-                                 "resolución humana contra el documento"},
+        "_meta": {
+            "generado": "2026-09-03 · GM-Ω-008-R",
+            "estatus": "INSUMO DE TRABAJO — NO ES CANON",
+            "regla": "identidad literal → cifras → semántica controlada → AMBIGUA",
+            "doc_020": (
+                "⚠️ La correspondencia documental-operacional es un DATO "
+                "EXPLÍCITO del modelo, no una inferencia del motor. Lo que "
+                "contiene este archivo son CANDIDATOS producidos por un "
+                "algoritmo de similitud: ninguno es canónico hasta que una "
+                "persona lo confirme contra el documento. Un método que acierta "
+                "a veces no es una autoridad."),
+            "advertencia": "las ambiguas exigen resolución humana contra el "
+                           "documento; las RECONCILIADAS también requieren "
+                           "confirmación antes de entrar a v2"},
         "cadena_procedencia": {
             "pdf_portal": {"archivo": _PDF.name, "sha256": _sha(_PDF)},
             "word_conversion": {"archivo": _DOCX.name, "sha256": _sha(_DOCX)},
@@ -604,9 +614,35 @@ def _escribir(m66, m25, filas, rec, amb, nor, huerfanas25, en_pub, origen_pub,
       "`PDOT_documental → ICPI_operacional`? Y deben poder coexistir **1:1 · "
       "N:1 · 1:N · N:N · NO DETERMINABLE** — no se obliga al universo a encajar "
       "en una sola relación |")
-    A("| **011-C** · consecuencia algebraica | conocida la unidad, ¿son "
-      "coherentes con ella la estructura multiplicativa y la ponderación `P·R`? "
-      "**En ese orden, no al revés** (`DOC-016`) |")
+    A("| **011-C** · operación matemática | ¿**qué operación** corresponde a esa "
+      "unidad, y son coherentes con ella la multiplicatividad y `P·R`? **En ese "
+      "orden, no al revés** (`DOC-016`) |")
+    A("")
+    A("⚠️ **`011-B` y `011-C` no se mezclan, y la distinción es fina pero "
+      "decisiva**: una relación `N:1` **no implica** que exista una operación "
+      "matemática de agregación. Puede haber tres metas documentales "
+      "correspondiendo a una unidad operacional **sin que sus valores se hayan "
+      "agregado numéricamente** — porque se tomó una como representante, porque "
+      "se midió sólo un aspecto, o porque la unidad se definió antes que las "
+      "metas.")
+    A("")
+    A("En `SC-I-N-01` esa diferencia puede ser todo el asunto: que la celda "
+      "**mencione** las tres cifras no prueba que las tres **entren** en el "
+      "cálculo. Estructura de correspondencia y operación aritmética son "
+      "preguntas separadas, y responderlas juntas produciría una respuesta "
+      "elegante y probablemente falsa.")
+    A("")
+    A("> ### ⚖️ REGLA DE HIERRO hasta `011-A`")
+    A("> **No se recalcula el ICPI «para ver qué pasa» mientras no esté "
+      "definido qué es `i`.** Antes de ese punto cualquier recálculo sería "
+      "matemáticamente impecable y epistemológicamente inútil. → `DOC-020`")
+    A("")
+    A("Y conviene decir con precisión qué ha ocurrido, porque es más modesto y "
+      "más útil de lo que parece:")
+    A("")
+    A("> **008-R no ha roto el ICPI.** Ha demostrado que todavía no sabemos con "
+      "suficiente precisión **qué objeto está midiendo**. Ésa es exactamente la "
+      "pregunta que `011` debe resolver.")
     A("")
 
     A("### La consecuencia para v2, que es lo que 008-R venía a preparar")
@@ -630,6 +666,22 @@ def _escribir(m66, m25, filas, rec, amb, nor, huerfanas25, en_pub, origen_pub,
     A("> Y si una unidad representa varias metas, **debe poder demostrarse que "
       "representa esas metas y por qué la agregación es metodológicamente "
       "válida** — no basta con listarlas.")
+    A(">")
+    A("> **La correspondencia es un DATO del modelo, no una inferencia del "
+      "motor** (`DOC-020`). Debe existir declarada y auditable:")
+    A(">")
+    A("> ```")
+    A("> META_DOCUMENTAL")
+    A(">       ↓")
+    A("> RELACIÓN_DE_CORRESPONDENCIA   1:1 · N:1 · 1:N · N:N · NO_DETERMINABLE")
+    A(">       ↓                        + evidencia")
+    A("> UNIDAD_OPERACIONAL")
+    A("> ```")
+    A(">")
+    A("> Ningún algoritmo de similitud —textual, numérica o semántica— puede "
+      "establecer una correspondencia canónica. Produce **candidatos**; una "
+      "persona los **confirma**. Incluido el de este mismo informe: su catálogo "
+      "es **insumo de trabajo, no canon**.")
     A("")
     A("Eso convierte el problema descubierto en una **capacidad estructural de "
       "QUIRA**, no en una reparación artesanal de Montecristi: el día que se "

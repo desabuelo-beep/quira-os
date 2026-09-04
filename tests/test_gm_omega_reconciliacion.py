@@ -59,6 +59,58 @@ def test_el_hallazgo_N1_no_se_generaliza_a_regla():
         "lo hay")
 
 
+def test_el_catalogo_de_correspondencias_es_insumo_no_canon():
+    """DOC-020 · la correspondencia es un DATO del modelo, no una inferencia.
+
+    008-R escribió un algoritmo que empareja por cifras y acertó en un caso
+    comprobable. **El riesgo es justamente ése**: que un método que funciona a
+    veces se convierta en autoridad. Si el motor puede «descubrir» que dos metas
+    corresponden, la trazabilidad deja de ser un dato y pasa a ser una hipótesis
+    con formato de tabla.
+
+    ⚠️ Se vigila el propio artefacto de esta auditoría: su catálogo produce
+    CANDIDATOS, y ninguno es canónico hasta que una persona lo confirme contra
+    el documento — las reconciliadas incluidas."""
+    if not _CAT.exists():
+        pytest.skip("aún no se generó el catálogo")
+    meta = json.loads(_CAT.read_text(encoding="utf-8")).get("_meta", {})
+    assert meta.get("estatus", "").startswith("INSUMO DE TRABAJO"), (
+        "el catálogo dejó de declararse insumo. Un archivo de correspondencias "
+        "sin ese sello acaba citándose como canon, y entonces una inferencia "
+        "algorítmica se vuelve trazabilidad oficial")
+    assert "doc_020" in meta, (
+        "desapareció la advertencia de DOC-020 del propio catálogo")
+    txt = _DOC.read_text(encoding="utf-8")
+    assert "RELACIÓN_DE_CORRESPONDENCIA" in txt, (
+        "se perdió el contrato: la correspondencia debe existir como dato "
+        "declarado con su tipo de relación y su evidencia")
+    assert "No se recalcula el ICPI" in txt, (
+        "desapareció la regla de hierro. Recalcular antes de saber qué es `i` "
+        "daría un número impecable y epistemológicamente inútil")
+
+
+def test_correspondencia_y_operacion_no_se_mezclan():
+    """La distinción fina del asesor, y puede ser todo el asunto en SC-I-N-01:
+
+        una relación N:1 NO implica que exista una operación matemática de
+        agregación.
+
+    Tres metas documentales pueden corresponder a una unidad operacional **sin
+    que sus valores se hayan agregado numéricamente** — porque se tomó una como
+    representante, porque se midió un solo aspecto, o porque la unidad se
+    definió antes que las metas.
+
+    ⚠️ Que la celda MENCIONE tres cifras no prueba que las tres ENTREN en el
+    cálculo. Responder ambas preguntas juntas daría una respuesta elegante y
+    probablemente falsa."""
+    txt = _DOC.read_text(encoding="utf-8")
+    assert "no implica** que exista una operación" in txt, (
+        "se perdió la separación entre correspondencia (011-B) y operación "
+        "matemática (011-C). Mezclarlas convierte una relación estructural en "
+        "una afirmación sobre el cálculo, que es otra cosa")
+    assert "011-B" in txt and "011-C" in txt
+
+
 def test_la_unidad_de_analisis_queda_planteada_a_011():
     """Lo que 008-R le entrega a `011`, y que no estaba en su lista.
 

@@ -66,7 +66,7 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | GM-Ω | `010` | Transferibilidad LATAM · núcleo vs adaptador | ⬜ |  |
 | GM-Ω | `011-A` | **Unidad de análisis: ¿qué es `i`?** | ⛔ | ⚠️ 008-R la añadió · PREVIA al álgebra |
 | GM-Ω | `011-B` | Regla de correspondencia PDOT → ICPI (1:1·N:1·1:N·N:N) | ⛔ | 011-A |
-| GM-Ω | `011-C` | Consecuencia algebraica · ¿son `P·R` y la multiplicatividad coherentes con esa unidad? | ⛔ | 011-A · 011-B · 008 · 009 · 010 |
+| GM-Ω | `011-C` | Operación matemática · ¿qué operación corresponde a esa unidad? ⚠️ N:1 NO implica agregación numérica | ⛔ | 011-A · 011-B · 008 · 009 · 010 |
 | TF | `T1` | Inventario de nombres propios | ✅ |  |
 | TF | `T2` | Clasificación ontológica + capa de presentación | ✅ |  |
 | TF | `T3` | Contrato índice → dominio → rol → pregunta → capa | 🔄 | se llena con la curación de cada dominio |
@@ -93,8 +93,8 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | Deudas declaradas | 12 |
 | Deudas resueltas | 6 |
 | Deudas abiertas | **6** |
-| Reglas de doctrina con custodio | 19 |
-| Pruebas que las fijan | 378 |
+| Reglas de doctrina con custodio | 20 |
+| Pruebas que las fijan | 380 |
 | Documentos GM-Ω | 8 |
 
 ### Deudas abiertas

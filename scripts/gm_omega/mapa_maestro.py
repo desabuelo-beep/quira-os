@@ -79,8 +79,8 @@ _ETAPAS = [
      "⚠️ 008-R la añadió · PREVIA al álgebra"),
     ("GM-Ω", "011-B", "Regla de correspondencia PDOT → ICPI (1:1·N:1·1:N·N:N)",
      _BLOQ, "011-A"),
-    ("GM-Ω", "011-C", "Consecuencia algebraica · ¿son `P·R` y la "
-     "multiplicatividad coherentes con esa unidad?", _BLOQ,
+    ("GM-Ω", "011-C", "Operación matemática · ¿qué operación corresponde a esa "
+     "unidad? ⚠️ N:1 NO implica agregación numérica", _BLOQ,
      "011-A · 011-B · 008 · 009 · 010"),
 
     ("TF", "T1", "Inventario de nombres propios", _HECHO, ""),

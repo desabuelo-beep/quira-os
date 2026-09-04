@@ -145,6 +145,24 @@ _DOCTRINA = (
          verificador="test_ninguna_regla_generadora_se_infiere_del_patron_de_sus_resultados",
          por_que_ahi="con 25 casos y tres valores posibles, cualquier hipótesis "
                      "encuentra algunos que la respaldan: encajar no es derivar"),
+    dict(id="DOC-020", custodia=GATE,
+         regla="La CORRESPONDENCIA entre una unidad documental y una unidad "
+               "operacional es un DATO EXPLÍCITO del modelo, declarado y "
+               "auditable — nunca una inferencia del motor. Ningún algoritmo de "
+               "similitud textual, numérica o semántica puede establecer una "
+               "correspondencia canónica: produce CANDIDATOS que una persona "
+               "confirma. Y de ahí la regla de hierro: **no se recalcula el "
+               "ICPI «para ver qué pasa» hasta que 011-A defina qué es `i`**",
+         fuente="el colega, 2026-09-03 · precisión final sobre el contrato v2",
+         verificador="test_el_catalogo_de_correspondencias_es_insumo_no_canon",
+         por_que_ahi="008-R escribió un algoritmo que empareja por cifras y "
+                     "acertó en un caso comprobable. El riesgo es justamente "
+                     "ése: que un método que funciona a veces se convierta en "
+                     "autoridad. Si el motor puede «descubrir» que dos metas "
+                     "corresponden, la trazabilidad deja de ser un dato y pasa "
+                     "a ser una hipótesis con formato de tabla. Y recalcular "
+                     "antes de saber qué representa `i` daría un número "
+                     "matemáticamente impecable y epistemológicamente inútil"),
     dict(id="DOC-019", custodia=GATE,
          regla="Un caso demostrado NO autoriza la regla general. «Existe al "
                "menos un X» y «todos son X» son afirmaciones distintas, y sólo "

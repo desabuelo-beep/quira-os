@@ -1,8 +1,10 @@
 {
   "_meta": {
     "generado": "2026-09-03 · GM-Ω-008-R",
-    "regla": "identidad literal → semántica controlada → AMBIGUA",
-    "advertencia": "catálogo de TRABAJO; las ambiguas exigen resolución humana contra el documento"
+    "estatus": "INSUMO DE TRABAJO — NO ES CANON",
+    "regla": "identidad literal → cifras → semántica controlada → AMBIGUA",
+    "doc_020": "⚠️ La correspondencia documental-operacional es un DATO EXPLÍCITO del modelo, no una inferencia del motor. Lo que contiene este archivo son CANDIDATOS producidos por un algoritmo de similitud: ninguno es canónico hasta que una persona lo confirme contra el documento. Un método que acierta a veces no es una autoridad.",
+    "advertencia": "las ambiguas exigen resolución humana contra el documento; las RECONCILIADAS también requieren confirmación antes de entrar a v2"
   },
   "cadena_procedencia": {
     "pdf_portal": {
