@@ -65,7 +65,7 @@ _CATEGORIAS = {
     "SIN_CATEGORÍA": "⚠️ no responde a «¿qué tipo de objeto QUIRA soy?»",
 }
 
-# ── LA SEGUNDA DIMENSIÓN · VISIBILIDAD ───────────────────────────────────────
+# ── LA SEGUNDA DIMENSIÓN · CAPA DE PRESENTACIÓN ───────────────────────────────────────
 # Un nombre no se define sólo por QUÉ ES, sino por EN QUÉ CAPA debe ser visible.
 # Sin esta dimensión el inventario obliga a una decisión binaria —publicar o
 # esconder— y la respuesta correcta casi nunca es binaria.
@@ -75,7 +75,7 @@ _CATEGORIAS = {
 # decisión ya la tomó la arquitectura de dominios y no se relitiga aquí. Lo que
 # esta dimensión decide es en qué CAPA DE LECTURA aparece cada nombre dentro de
 # su dominio — no si el índice se publica.
-_VISIBILIDAD = {
+_CAPA_PRESENTACION = {
     "PÚBLICO": "lenguaje de administración pública · primera capa de lectura",
     "INSTITUCIONAL": "ficha metodológica · segunda capa, al abrir el indicador",
     "TÉCNICO": "trazabilidad forense · tercera capa, usuario institucional",
@@ -418,7 +418,7 @@ def _escribir(filas, sueltos, sin_cat, sin_uso) -> None:
 
     A("## T1-T4 · Inventario clasificado")
     A("")
-    A("| Nombre | Categoría | Visibilidad | Autoridad que lo define | Archivos | En producto |")
+    A("| Nombre | Categoría | Capa | Autoridad que lo define | Archivos | En producto |")
     A("|---|---|---|---|---:|---:|")
     orden = {c: i for i, c in enumerate(_CATEGORIAS)}
     for f in sorted(filas, key=lambda x: (orden.get(x["cat"], 99), -x["archivos"])):
@@ -427,11 +427,11 @@ def _escribir(filas, sueltos, sin_cat, sin_uso) -> None:
         A(f"| `{f['nombre']}`{marca} | {f['cat']} | {f['vis']} | {f['autoridad']} | "
           f"{f['archivos']} | {sup} |")
     A("")
-    A("## La segunda dimensión · visibilidad")
+    A("## La segunda dimensión · capa de presentación")
     A("")
     A("| Capa | Qué significa |")
     A("|---|---|")
-    for v, desc in _VISIBILIDAD.items():
+    for v, desc in _CAPA_PRESENTACION.items():
         A(f"| **{v}** | {desc} |")
     A("")
     A("⚠️ **No es un filtro de publicación**, y el matiz decide todo lo demás. "

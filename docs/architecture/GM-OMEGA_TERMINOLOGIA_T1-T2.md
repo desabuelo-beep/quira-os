@@ -36,32 +36,32 @@
 
 ## T1-T4 · Inventario clasificado
 
-| Nombre | Categoría | Visibilidad | Autoridad que lo define | Archivos | En producto |
+| Nombre | Categoría | Capa | Autoridad que lo define | Archivos | En producto |
 |---|---|---|---|---:|---:|
 | `LOTAIP` | FUENTE | PÚBLICO | LOTAIP Art. 7 | 249 | 19 |
-| `CPCCS` | FUENTE | PÚBLICO | LOPC Art. 88 | 215 | 18 |
+| `CPCCS` | FUENTE | PÚBLICO | LOPC Art. 88 | 217 | 18 |
 | `SERCOP` | FUENTE | PÚBLICO | LOSNCP | 206 | 10 |
 | `eSIGEF` | FUENTE | PÚBLICO | COPFP · MEF | 199 | 17 |
 | `SIGAD` | FUENTE | PÚBLICO | SENPLADES | 94 | 1 |
-| `PDOT` | EVIDENCIA | PÚBLICO | COOTAD · COPFP Art. 41 | 415 | 26 |
+| `PDOT` | EVIDENCIA | PÚBLICO | COOTAD · COPFP Art. 41 | 417 | 26 |
 | `R_i` | VARIABLE | TÉCNICO | tesis · H14!F | 15 | — |
 | `P_i` | VARIABLE | TÉCNICO | tesis · H14!G | 13 | — |
 | `V_i` | VARIABLE | TÉCNICO | tesis · H13!F | 13 | — |
-| `E_i` | VARIABLE | TÉCNICO | ⚠️ NOT_DETERMINABLE (007-B0) | 12 | — |
+| `E_i` | VARIABLE | TÉCNICO | ⚠️ NOT_DETERMINABLE (007-B0) | 13 | — |
 | `T_i` | VARIABLE | TÉCNICO | H07b!fila 20 | 10 | — |
 | `C_i` | VARIABLE | TÉCNICO | H01 TBL_CALIBRACION_Ci | 10 | — |
-| `ICPI` | INDICADOR | INSTITUCIONAL | tesis (abril 2026) · H12!B33 | 355 | 12 |
-| `TGI` | INDICADOR | INTERNO | 01_TGI_FRAMEWORK.md | 341 | 6 |
-| `IGP` | INDICADOR | INSTITUCIONAL | H20b | 75 | 6 |
-| `IFE` | INDICADOR | INSTITUCIONAL | H16 | 71 | 6 |
-| `PSG` | INDICADOR | INSTITUCIONAL | H16c | 70 | 6 |
-| `IED` | INDICADOR | INSTITUCIONAL | 06_IED_DIRECTIVO.md | 68 | 4 |
-| `ITAM` | INDICADOR | INSTITUCIONAL | H18 | 48 | 1 |
-| `IPE` | INDICADOR | INSTITUCIONAL | H16b · PCD-D01 | 37 | 1 |
-| `MMP` | INDICADOR | INTERNO | 08_MMP_MENSUAL.md | 33 | 1 |
-| `ICODS` | INDICADOR | INSTITUCIONAL | H20 | 30 | 2 |
-| `IEF` | INDICADOR | INSTITUCIONAL | H20c | 17 | — |
-| `IBSC` | INDICADOR | TÉCNICO | H12b_MOTOR_IBSC | 11 | 1 |
+| `ICPI` | INDICADOR | INSTITUCIONAL | tesis (abril 2026) · H12!B33 | 357 | 12 |
+| `TGI` | INDICADOR | INTERNO | 01_TGI_FRAMEWORK.md | 343 | 6 |
+| `IGP` | INDICADOR | INSTITUCIONAL | H20b | 77 | 6 |
+| `IFE` | INDICADOR | INSTITUCIONAL | H16 | 74 | 6 |
+| `PSG` | INDICADOR | INSTITUCIONAL | H16c | 73 | 6 |
+| `IED` | INDICADOR | INSTITUCIONAL | 06_IED_DIRECTIVO.md | 70 | 4 |
+| `ITAM` | INDICADOR | INSTITUCIONAL | H18 | 51 | 1 |
+| `IPE` | INDICADOR | INSTITUCIONAL | H16b · PCD-D01 | 40 | 1 |
+| `MMP` | INDICADOR | INTERNO | 08_MMP_MENSUAL.md | 35 | 1 |
+| `ICODS` | INDICADOR | INSTITUCIONAL | H20 | 33 | 2 |
+| `IEF` | INDICADOR | INSTITUCIONAL | H20c | 20 | — |
+| `IBSC` | INDICADOR | TÉCNICO | H12b_MOTOR_IBSC | 14 | 1 |
 | `NOT_DETERMINABLE` | ESTADO | INSTITUCIONAL | Constitución CAPA 0 | 8 | — |
 | `TEMPORAL_SEMANTIC_GAP` | ESTADO | TÉCNICO | GM-Ω taxonomía | 7 | — |
 | `UNTRACEABLE` | ESTADO | TÉCNICO | GM-Ω taxonomía | 5 | — |
@@ -73,15 +73,15 @@
 | `GeoTwin` | CAPA | PÚBLICO | QTMP | 80 | 7 |
 | `QUIRA IA` | CAPA | PÚBLICO | ADR-035/037 | 55 | 2 |
 | `Motor` | FUNCIÓN | TÉCNICO | H12_MOTOR_ICPI_CANÓNICO · ADR-023 | 226 | 12 |
-| `Ciudadana` | FUNCIÓN | PÚBLICO | ADR-041 §4 | 158 | 16 |
+| `Ciudadana` | FUNCIÓN | PÚBLICO | ADR-041 §4 | 160 | 16 |
 | `Observatorio` | FUNCIÓN | PÚBLICO | ADR-041 §4 | 53 | 8 |
 | `Consola` | FUNCIÓN | INTERNO | ADR-042 | 15 | 1 |
-| `QUIRA` | ARTEFACTO | PÚBLICO | identity/CONSTITUCION_INSTITUCIONAL.md | 823 | 59 |
-| `Dylus Lab` | ARTEFACTO | PÚBLICO | identity/ | 792 | 60 |
-| `Gold Master` | ARTEFACTO | TÉCNICO | ADR-023 · METODOLOGIA_GOLD_MASTER.md | 390 | 18 |
-| `AVEP` ⚠️ | SIN_CATEGORÍA | HISTÓRICO | ⚠️ ninguna autoridad vigente lo define | 69 | 3 |
+| `QUIRA` | ARTEFACTO | PÚBLICO | identity/CONSTITUCION_INSTITUCIONAL.md | 825 | 59 |
+| `Dylus Lab` | ARTEFACTO | PÚBLICO | identity/ | 794 | 60 |
+| `Gold Master` | ARTEFACTO | TÉCNICO | ADR-023 · METODOLOGIA_GOLD_MASTER.md | 392 | 18 |
+| `AVEP` ⚠️ | SIN_CATEGORÍA | HISTÓRICO | ⚠️ ninguna autoridad vigente lo define | 71 | 3 |
 
-## La segunda dimensión · visibilidad
+## La segunda dimensión · capa de presentación
 
 | Capa | Qué significa |
 |---|---|
@@ -151,7 +151,7 @@ Y sin esa tabla, **ninguna verificación automática es posible**: ni ésta, ni 
 
 no es indicador, ni fuente, ni variable, ni estado, ni producto, ni capa. Nació como nombre de un eje conceptual, derivó a fórmula copiada en 11 hojas, y hoy existen DOS versiones incompatibles (D-012)
 
-Vive en **69 archivos**, de los cuales **3 son superficies del producto** (`components/avep_badge.py`, `components/gauge.py`, `components/sentinel.py`).
+Vive en **71 archivos**, de los cuales **3 son superficies del producto** (`components/avep_badge.py`, `components/gauge.py`, `components/sentinel.py`).
 
 **Que se haya propagado no demuestra que deba existir: demuestra que se propagó.** Y ésa es exactamente la distinción que `DOC-013` introduce.
 
@@ -166,26 +166,26 @@ Detectadas en canon, `config.py` y `BOOT.md`, excluidas las normas e institucion
 | `IRS` | 17 |
 | `ICM` | 6 |
 | `PMV` | 4 |
-| `PROGAPSA` | 3 |
 | `EJECUTA` | 3 |
 | `BDE` | 3 |
+| `PROGAPSA` | 3 |
 | `ACTIVA` | 3 |
 | `CORREL` | 3 |
-| `ALTO` | 3 |
 | `NORTH` | 3 |
+| `ALTO` | 3 |
 | `CPFP` | 3 |
 | `BOOT` | 2 |
 | `DPE` | 2 |
 | `PRIVADO` | 2 |
-| `RIPS` | 2 |
 | `VER` | 2 |
 | `UNESCO` | 2 |
+| `RIPS` | 2 |
 | `CRE` | 2 |
 | `PLAZO` | 2 |
 | `RIESGO` | 2 |
 | `OUTPUTS` | 2 |
-| `SOBRE` | 2 |
 | `DATOS` | 2 |
+| `SOBRE` | 2 |
 
 ## ⚠️ Hallazgo de propina · siglas normativas mal formadas
 

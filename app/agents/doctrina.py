@@ -145,6 +145,25 @@ _DOCTRINA = (
          verificador="test_ninguna_regla_generadora_se_infiere_del_patron_de_sus_resultados",
          por_que_ahi="con 25 casos y tres valores posibles, cualquier hipótesis "
                      "encuentra algunos que la respaldan: encajar no es derivar"),
+    dict(id="DOC-015", custodia=GATE,
+         regla="IDENTIFICADOR ESTABLE ≠ NOMBRE CANÓNICO. El identificador de un "
+               "objeto —`ICPI`— NO cambia nunca: lo usan el código, el Gold "
+               "Master y toda referencia previa. El nombre desarrollado SÍ puede "
+               "evolucionar, con su versión, su vigencia y su nombre histórico "
+               "conservado. Migrar un nombre no debe costar trazabilidad, y con "
+               "esta separación no la cuesta",
+         fuente="Javo, 2026-09-03 —«si debería considerar la migración, pero "
+                "sin perder la trazabilidad que se ha creado a partir del "
+                "nombre histórico»—",
+         verificador="test_el_identificador_es_estable_y_el_nombre_puede_migrar",
+         por_que_ahi="es el mecanismo del basónimo en nomenclatura científica: "
+                     "una especie se renombra, el nombre original queda "
+                     "registrado y ninguna cita anterior se rompe. Sin esta "
+                     "separación, «renombrar» y «conservar la genealogía» "
+                     "parecen excluyentes y obligan a elegir. Con ella, el "
+                     "orden correcto es posible: PRIMERO se decide qué mide el "
+                     "constructo (011), DESPUÉS cómo se llama — nunca al revés, "
+                     "que sería poner etiqueta nueva a contenido no auditado"),
     dict(id="DOC-014", custodia=GATE,
          regla="NOMBRE TÉCNICO ≠ NOMBRE DE PRESENTACIÓN. Un indicador se publica "
                "en TRES capas —pregunta pública · ficha metodológica · "

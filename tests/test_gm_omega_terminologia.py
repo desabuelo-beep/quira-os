@@ -102,10 +102,10 @@ def test_todo_indicador_publicable_declara_su_capa_de_lectura():
 
     ⚠️ SE VERIFICA QUE CADA NOMBRE DECLARE SU CAPA, no que la capa sea la
     acertada — eso se afina en `T3-T5` y se ejecuta en `T6`."""
-    from scripts.gm_omega.terminologia_quira import _INVENTARIO, _VISIBILIDAD
+    from scripts.gm_omega.terminologia_quira import _INVENTARIO, _CAPA_PRESENTACION
 
     for nombre, _cat, _aut, vis, _nota in _INVENTARIO:
-        assert vis in _VISIBILIDAD, (
+        assert vis in _CAPA_PRESENTACION, (
             f"`{nombre}` declara la visibilidad «{vis}», que no está entre las "
             f"capas de lectura. Inventar una capa para acomodar un nombre es la "
             f"misma inflación que DOC-013 prohíbe, un piso más arriba")
@@ -144,6 +144,75 @@ def test_el_mapeo_indice_dominio_se_declara_ausente_no_se_inventa():
     assert "escrita a mano" in txt, (
         "desapareció la salvedad sobre la lista de superficies. Sin ella, un "
         "índice ausente de la tabla parecería ausente del producto")
+
+
+def test_el_contrato_no_rellena_celdas_por_inferencia():
+    """`T3-T5` · el contrato ÍNDICE → DOMINIO → ROL → PREGUNTA → CAPA.
+
+    Existe porque el mapeo vive en el diseño y no en un artefacto verificable.
+    Su valor depende enteramente de una disciplina: **sólo se declara lo que
+    tiene autoridad documental**. Un contrato completo por suposición sería
+    `DOC-009` a escala de arquitectura — y peor que no tenerlo, porque parecería
+    verificado.
+
+    ⚠️ SE VERIFICA QUE LAS CELDAS SIN AUTORIDAD SIGAN MARCADAS, no que estén
+    llenas. Que falte el 62 % es hoy el estado real y honesto del canon."""
+    from scripts.gm_omega.contrato_indice_dominio import (_CONTRATO, _DOMINIOS,
+                                                          _PENDIENTE, _ROLES)
+    assert _CONTRATO, "el contrato quedó vacío"
+
+    for idx, _dom, rol, _preg, autoridad in _CONTRATO:
+        assert autoridad, (
+            f"`{idx}` no dice de dónde sale su asignación. Una celda sin "
+            f"autoridad es una suposición con formato de tabla")
+        assert rol in _ROLES, (
+            f"`{idx}` declara el rol «{rol}», que no está en la taxonomía de "
+            f"roles")
+
+    pendientes = sum(1 for _i, d, r, p, _a in _CONTRATO
+                     for v in (d, r, p) if v == _PENDIENTE)
+    assert pendientes > 0, (
+        "el contrato ya no tiene celdas POR_DECLARAR. Si de verdad se "
+        "completó, cada asignación nueva debe citar el PCD, ADR o decisión que "
+        "la sostiene — y esta prueba debe pasar a verificar ESO, no la ausencia")
+
+    sin_pregunta = [c for c, (_n, _e, q) in _DOMINIOS.items() if q == _PENDIENTE]
+    assert sin_pregunta, (
+        "todos los dominios declaran ya su pregunta. Excelente — pero entonces "
+        "hay que comprobar que cada una sale de su PCD, no del script")
+
+
+def test_el_identificador_es_estable_y_el_nombre_puede_migrar():
+    """DOC-015 · el mecanismo que hace segura la migración que Javo plantea.
+
+        identificador    ICPI                     ← nunca cambia
+        nombre canónico  Índice de Congruencia…   ← puede evolucionar
+        nombre histórico (conservado con su período)
+
+    Es el basónimo de la nomenclatura científica: la especie se renombra, el
+    nombre original queda registrado, ninguna cita anterior se rompe. Sin esta
+    separación, «renombrar» y «conservar la genealogía» parecen excluyentes.
+
+    ⚠️ Y NO AUTORIZA A RENOMBRAR. El orden no se invierte: primero `011` decide
+    qué mide el constructo, después cómo se llama. Cambiar el nombre para que
+    encaje con el álgebra sería poner etiqueta nueva a contenido no auditado."""
+    from scripts.gm_omega.contrato_indice_dominio import _CONTRATO
+    from scripts.gm_omega.terminologia_quira import _INVENTARIO
+
+    ids_contrato = {c[0] for c in _CONTRATO}
+    ids_inventario = {n for n, cat, *_r in _INVENTARIO if cat == "INDICADOR"}
+    assert ids_contrato == ids_inventario, (
+        f"el identificador de un indicador difiere entre el inventario y el "
+        f"contrato: {ids_contrato ^ ids_inventario}. El identificador es "
+        f"justamente lo que NO puede variar entre artefactos — si varía, deja "
+        f"de servir para lo único que existe: sostener las referencias")
+
+    contrato_doc = (RAIZ / "docs" / "architecture" /
+                    "GM-OMEGA_CONTRATO_INDICE_DOMINIO.md").read_text(encoding="utf-8")
+    assert "primero se decide qué mide el constructo, después cómo se llama" in (
+        contrato_doc.lower()), (
+        "desapareció el orden. Sin él, DOC-015 se leería como permiso para "
+        "renombrar, cuando es sólo el mecanismo que lo hará posible sin pérdida")
 
 
 def test_ICPI_conserva_el_nombre_de_la_tesis():
