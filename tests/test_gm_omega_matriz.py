@@ -123,9 +123,19 @@ def test_la_incoherencia_de_E_i_se_señala_sin_declararla_defecto():
         f"alguien alineó E_i con la regla o declaró la modalidad; si SUBIÓ, "
         f"apareció otra")
     fuente = _SCRIPT.read_text(encoding="utf-8")
-    assert "NO demuestra un defecto" in fuente or "NO es un defecto demostrado" in fuente, (
-        "el generador dejó de declarar que la incoherencia no es un defecto "
-        "probado: sin esa salvedad, una inferencia se leería como veredicto")
+    # ⚠️ REFORMULADO 2026-09-04. Los documentos de abril demostraron que existen
+    # DOS definiciones de `E_i` —A: control del director (la que cita `H12!A4`);
+    # B: fricción por delegación (la tesis)—. Estos 5 casos no son «incoherencia
+    # del motor»: sólo divergen bajo B, y el motor implementa A. La salvedad
+    # sigue siendo obligatoria, pero ahora dice otra cosa.
+    assert "divergencia entre definiciones A y B" in fuente or (
+        "NO un defecto" in fuente), (
+        "el generador dejó de declarar que esos 5 casos son una divergencia "
+        "entre dos definiciones documentadas y no un defecto del motor. Sin esa "
+        "salvedad, una diferencia genealógica se leería como veredicto")
+    assert "H12!A4" in fuente, (
+        "desapareció la referencia a la celda donde el motor CITA la definición "
+        "que implementa. Sin ella no se puede saber contra qué regla medir")
 
 
 def test_ser_entidad_adscrita_no_determina_E_i():

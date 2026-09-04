@@ -83,6 +83,36 @@ def test_boot_lleva_al_mapa():
         "que Javo pidió evitar")
 
 
+def test_el_refactor_separa_lo_que_restaura_de_lo_que_crea():
+    """DOC-021 · antes de decidir: ¿esto lo resuelve la tesis?
+
+    Javo lo planteó —*«tenemos la tesis, y todo el constructo metodológico allí
+    claro; eso es lo que estamos corrigiendo»*— y es cierto en lo esencial. Pero
+    no todo lo que el refactor toca estaba ahí:
+
+        RESTAURAR  la tesis tenía la respuesta y la implementación la perdió
+                   (`P_i`, `E_i`, AVEP como baremo, «muestra estratégica»…)
+        CREAR      la tesis no la tiene y hay que decidirla
+                   (criterio de las 25, qué es `i`, umbrales AVEP, LATAM…)
+
+    ⚠️ LA DISTINCIÓN ES OPERATIVA. Esta auditoría cometió los dos errores en
+    direcciones opuestas: dudó de `P_i`, que la tesis explicaba, y declaró
+    `UNTRACEABLE` a `E_i`, cuya regla la tesis define. Buscar en la tesis una
+    respuesta que no está lleva a inventarla; decidir por cuenta propia algo que
+    la tesis ya resolvió rompe la genealogía."""
+    txt = _MAPA.read_text(encoding="utf-8")
+    assert "RESTAURAR" in txt and "CREAR" in txt, (
+        "desapareció la separación entre lo que el refactor restaura de la "
+        "tesis y lo que decide por primera vez. Sin ella, una decisión nueva "
+        "puede presentarse como si viniera del documento fundacional")
+    assert "¿esto lo resuelve la tesis?" in txt, (
+        "se perdió la pregunta que ordena cada decisión del refactor")
+    assert "se declara que es una decisión nueva" in txt, (
+        "desapareció la obligación de declarar lo que se crea. Una decisión "
+        "nueva presentada como hallazgo falsea la genealogía — que es "
+        "precisamente lo que GM-Ω reconstruyó")
+
+
 def test_ninguna_etapa_se_declara_cerrada_sin_custodio():
     """Regla 1 del mapa. Una etapa `✅` sin prueba que la fije acredita cero por
     no existir — es el defecto que `D-004` documentó en el propio CI, donde un

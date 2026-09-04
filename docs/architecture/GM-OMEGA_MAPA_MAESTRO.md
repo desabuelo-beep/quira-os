@@ -7,6 +7,36 @@
 >
 > Es la misma deuda que esta auditoría persigue en todo lo demás —conocimiento que existe en el diseño y no en algo verificable— con un agravante: **de éste dependía no repetir trabajo.**
 
+## Qué está corrigiendo este refactor · RESTAURAR vs. CREAR
+
+Javo: *«tenemos la tesis, y todo el constructo metodológico allí claro […] eso es lo que estamos corrigiendo con este refactor»*. Es cierto en lo esencial, **y hay un matiz operativo**: no todo lo que el refactor toca estaba en la tesis.
+
+### 🔵 RESTAURAR — la tesis tenía la respuesta y la implementación la perdió
+
+| | La tesis decía | El motor hizo |
+|---|---|---|
+| `P_i` | antídoto anti-gaming, explicado | correcto — la auditoría lo dudó y la tesis la corrigió |
+| `E_i` | regla con `COOTAD 54 · NCI 200-04` | valores que no la siguen |
+| AVEP | «Baremo de **Interpretación**» | fórmula `IF` copiada en 11 hojas |
+| universo | «muestra **estratégica**» | rotulado `Total_Metas_PDOT` |
+| nombre | `SIAP` integridad ⊃ `ICPI` congruencia | se perdió la jerarquía |
+| `V_i` | regla de tres niveles con núcleo | documentada, **no implementada** |
+
+### 🟠 CREAR — la tesis NO tiene la respuesta, y hay que decidirla
+
+| | Por qué no está en la tesis |
+|---|---|
+| Criterio de selección de las 25 | lo declaró Javo en 2026-09-03, no el documento |
+| **Qué es `i`** (`011-A`) | la tesis habla de metas; no resuelve la unidad documental que contiene tres |
+| Umbrales de AVEP | ni la tesis ni ninguna norma los fundamenta |
+| Transferibilidad LATAM (`010`) | no era pregunta de una tesis sobre Montecristi |
+| Capas de presentación (`DOC-014`) | no existía el producto cuando se escribió |
+| Arquitectura de dominios (`T3-R`) | posterior a la tesis |
+
+⚠️ **La distinción es operativa, no filosófica.** Buscar en la tesis una respuesta que no está lleva a inventarla; decidir por cuenta propia algo que la tesis ya resolvió rompe la genealogía. Esta auditoría cometió los dos errores —dudó de `P_i`, que la tesis explicaba; y declaró `UNTRACEABLE` a `E_i`, cuya regla la tesis define—.
+
+> **Antes de decidir cualquier punto del refactor: ¿esto lo resuelve la tesis?** Si sí, se restaura y se cita. Si no, se decide **y se declara que es una decisión nueva**, no un hallazgo.
+
 ## Los cinco frentes
 
 | Frente | Qué pregunta responde | Depende de | ¿Puede avanzar ahora? |
@@ -93,8 +123,8 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | Deudas declaradas | 12 |
 | Deudas resueltas | 6 |
 | Deudas abiertas | **6** |
-| Reglas de doctrina con custodio | 20 |
-| Pruebas que las fijan | 380 |
+| Reglas de doctrina con custodio | 21 |
+| Pruebas que las fijan | 381 |
 | Documentos GM-Ω | 8 |
 
 ### Deudas abiertas

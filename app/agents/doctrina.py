@@ -145,6 +145,23 @@ _DOCTRINA = (
          verificador="test_ninguna_regla_generadora_se_infiere_del_patron_de_sus_resultados",
          por_que_ahi="con 25 casos y tres valores posibles, cualquier hipótesis "
                      "encuentra algunos que la respaldan: encajar no es derivar"),
+    dict(id="DOC-021", custodia=GATE,
+         regla="Antes de decidir cualquier punto del refactor: **¿esto lo "
+               "resuelve la tesis?** Si SÍ, se RESTAURA y se cita — la "
+               "implementación se corrige hacia el documento fundacional. Si "
+               "NO, se DECIDE y **se declara que es una decisión nueva**, no un "
+               "hallazgo ni una restauración",
+         fuente="Javo, 2026-09-03 —«tenemos la tesis, y todo el constructo "
+                "metodológico allí claro; eso es lo que estamos corrigiendo»—, "
+                "con el matiz de que no todo lo que el refactor toca estaba ahí",
+         verificador="test_el_refactor_separa_lo_que_restaura_de_lo_que_crea",
+         por_que_ahi="esta auditoría cometió los DOS errores en direcciones "
+                     "opuestas: dudó de `P_i` —que la tesis explicaba como "
+                     "antídoto anti-gaming— y declaró `UNTRACEABLE` a `E_i`, "
+                     "cuya regla la tesis define con COOTAD 54 y NCI 200-04. "
+                     "Buscar en la tesis una respuesta que no está lleva a "
+                     "inventarla; decidir por cuenta propia algo que la tesis "
+                     "ya resolvió rompe la genealogía que 001-008 reconstruyó"),
     dict(id="DOC-020", custodia=GATE,
          regla="La CORRESPONDENCIA entre una unidad documental y una unidad "
                "operacional es un DATO EXPLÍCITO del modelo, declarado y "

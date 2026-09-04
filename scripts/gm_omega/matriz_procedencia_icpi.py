@@ -71,9 +71,17 @@ _ESTADO = {
                                        "cédula presupuestaria por meta"),
     "R_i": ("VERIFICADO", "fórmula + artículo del COOTAD citado meta a meta"),
     "V_i": ("TEMPORAL_SEMANTIC_GAP", "la columna leída se llama `Vi_2025`"),
-    "E_i": ("PARCIALMENTE_VERIFICADO", "regla documentada en la tesis (COOTAD 54 "
-                                       "· NCI 200-04); la MODALIDAD por meta no "
-                                       "consta en el Gold Master"),
+    # ⚠️ ACTUALIZADO 2026-09-04 · los documentos de abril cerraron el hueco.
+    # `Metodologia_SIAP_ICPI.docx` (TERRA/QUADRUM) define «Eᵢ — Autonomía
+    # Orgánica: el CONTROL DEL DIRECTOR sobre la ejecución. 1.0 autónomo · 0.9
+    # compartido · 0.75 difuso», y `H12!A4` la cita TEXTUALMENTE. La regla está
+    # VERIFICADA; lo que falta es el insumo para auditar su aplicación por meta.
+    #
+    # Esta auditoría había contrastado los valores contra OTRA definición —la de
+    # la tesis, fricción por delegación con COOTAD 54— y por eso «no cuadraban».
+    "E_i": ("REGLA_VERIFICADA · aplicación pendiente",
+            "«Autonomía Orgánica» definida en Metodologia_SIAP_ICPI (abril) y "
+            "citada en H12!A4; el CONTROL DEL DIRECTOR por meta no consta"),
     "T_i": ("VERIFICADO · sensibilidad pendiente", "ratio por ENTIDAD ejecutora; "
                                                    "el tope MIN(1,…) se juzga en 007"),
     "C_i": ("PARCIALMENTE_VERIFICADO", "VLOOKUP a TBL_CALIBRACION_Ci; falta la "
@@ -129,12 +137,24 @@ def construir() -> list[dict]:
             # concuerda con la regla de la tesis, dada la entidad que ejecuta?
             # No demuestra un defecto —la modalidad real no consta— pero señala
             # dónde la regla documentada y el valor asignado no concuerdan.
+            # ⚠️ REFORMULADA 2026-09-04. Antes decía «la regla de la tesis pide
+            # 0,75» y se leía como una incoherencia del motor. No lo es: son DOS
+            # DEFINICIONES distintas de `E_i` conviviendo en la genealogía —
+            #
+            #   A · Metodologia_SIAP_ICPI (abril) → CONTROL DEL DIRECTOR
+            #       1,0 autónomo · 0,9 compartido · 0,75 difuso  ← la que cita H12!A4
+            #   B · tesis → FRICCIÓN POR DELEGACIÓN (COOTAD 54 · NCI 200-04)
+            #       1,0 directa · 0,90 convenio · 0,75 adscrita
+            #
+            # El motor implementa A. Estos casos sólo divergen bajo B, y esa
+            # divergencia es EVIDENCIA GENEALÓGICA, no un defecto.
             alerta = ""
             if var == "E_i":
                 ent = entidad_meta.get(str(meta), "—")
                 if ent in _ADSCRITAS and valor != _E_ESPERADA_ADSCRITA:
-                    alerta = (f"⚠️ lo ejecuta {ent} (adscrita) y la regla de la "
-                              f"tesis pide {_E_ESPERADA_ADSCRITA}")
+                    alerta = (f"↔ lo ejecuta {ent} (adscrita) y la regla de la "
+                              f"tesis pide {_E_ESPERADA_ADSCRITA} — divergencia "
+                              f"entre definiciones A y B, no defecto")
 
             filas.append({
                 "meta": str(meta), "var": var, "nombre": nombre,
@@ -193,10 +213,11 @@ def main() -> int:
           f"({', '.join(sorted({f['var'] for f in literales}))})")
     alertas = [f for f in filas if f["alerta"]]
     if alertas:
-        print(f"E_i incoherente con la regla de la tesis: {len(alertas)} "
+        print(f"E_i · divergencia entre definiciones A y B: {len(alertas)} "
               f"→ {', '.join(f['meta'] for f in alertas)}")
-        print("  ⚠️ NO es un defecto demostrado: la MODALIDAD real de ejecución "
-              "no consta en el libro, y la entidad se infiere de la columna de T_i.")
+        print("  ↔ El motor implementa la definición A (control del director, "
+              "H12!A4). Bajo la B (fricción por delegación, tesis) estos casos")
+        print("    darían otro valor. Es evidencia genealógica, NO un defecto.")
     return 0
 
 

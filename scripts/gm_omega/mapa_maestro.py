@@ -174,6 +174,47 @@ def _escribir(deu, docs, n_doc, n_test, hechas) -> None:
       "agravante: **de éste dependía no repetir trabajo.**")
     A("")
 
+    A("## Qué está corrigiendo este refactor · RESTAURAR vs. CREAR")
+    A("")
+    A("Javo: *«tenemos la tesis, y todo el constructo metodológico allí claro "
+      "[…] eso es lo que estamos corrigiendo con este refactor»*. Es cierto en "
+      "lo esencial, **y hay un matiz operativo**: no todo lo que el refactor "
+      "toca estaba en la tesis.")
+    A("")
+    A("### 🔵 RESTAURAR — la tesis tenía la respuesta y la implementación la perdió")
+    A("")
+    A("| | La tesis decía | El motor hizo |")
+    A("|---|---|---|")
+    A("| `P_i` | antídoto anti-gaming, explicado | correcto — la auditoría lo "
+      "dudó y la tesis la corrigió |")
+    A("| `E_i` | regla con `COOTAD 54 · NCI 200-04` | valores que no la siguen |")
+    A("| AVEP | «Baremo de **Interpretación**» | fórmula `IF` copiada en 11 hojas |")
+    A("| universo | «muestra **estratégica**» | rotulado `Total_Metas_PDOT` |")
+    A("| nombre | `SIAP` integridad ⊃ `ICPI` congruencia | se perdió la jerarquía |")
+    A("| `V_i` | regla de tres niveles con núcleo | documentada, **no implementada** |")
+    A("")
+    A("### 🟠 CREAR — la tesis NO tiene la respuesta, y hay que decidirla")
+    A("")
+    A("| | Por qué no está en la tesis |")
+    A("|---|---|")
+    A("| Criterio de selección de las 25 | lo declaró Javo en 2026-09-03, no el documento |")
+    A("| **Qué es `i`** (`011-A`) | la tesis habla de metas; no resuelve la unidad documental que contiene tres |")
+    A("| Umbrales de AVEP | ni la tesis ni ninguna norma los fundamenta |")
+    A("| Transferibilidad LATAM (`010`) | no era pregunta de una tesis sobre Montecristi |")
+    A("| Capas de presentación (`DOC-014`) | no existía el producto cuando se escribió |")
+    A("| Arquitectura de dominios (`T3-R`) | posterior a la tesis |")
+    A("")
+    A("⚠️ **La distinción es operativa, no filosófica.** Buscar en la tesis una "
+      "respuesta que no está lleva a inventarla; decidir por cuenta propia algo "
+      "que la tesis ya resolvió rompe la genealogía. Esta auditoría cometió los "
+      "dos errores —dudó de `P_i`, que la tesis explicaba; y declaró "
+      "`UNTRACEABLE` a `E_i`, cuya regla la tesis define—.")
+    A("")
+    A("> **Antes de decidir cualquier punto del refactor: ¿esto lo resuelve la "
+      "tesis?** Si sí, se restaura y se cita. Si no, se decide **y se declara "
+      "que es una decisión nueva**, no un hallazgo.")
+    A("")
+
     A("## Los cinco frentes")
     A("")
     A("| Frente | Qué pregunta responde | Depende de | ¿Puede avanzar ahora? |")
