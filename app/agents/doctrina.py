@@ -145,6 +145,23 @@ _DOCTRINA = (
          verificador="test_ninguna_regla_generadora_se_infiere_del_patron_de_sus_resultados",
          por_que_ahi="con 25 casos y tres valores posibles, cualquier hipótesis "
                      "encuentra algunos que la respaldan: encajar no es derivar"),
+    dict(id="DOC-013", custodia=GATE,
+         regla="QUIRA no conserva conceptos por HERENCIA; conserva únicamente "
+               "conceptos que cumplen una FUNCIÓN VERIFICABLE en su "
+               "arquitectura. Que un nombre se haya propagado por el "
+               "repositorio no demuestra que deba existir: demuestra que se "
+               "propagó. Y todo nombre debe poder responder «¿qué tipo de "
+               "objeto QUIRA soy?» — fuente · evidencia · variable · indicador "
+               "· estado · producto · capa · función · artefacto",
+         fuente="Javo, 2026-09-03 —«si no aporta a QUIRA solo infla»— elevado "
+                "por el colega de criterio de canon a higiene ontológica",
+         verificador="test_todo_nombre_propio_declara_su_categoria_ontologica",
+         por_que_ahi="es la Regla de Oro 7 (anti-inflación del canon) aplicada "
+                     "al VOCABULARIO, y con una salvaguarda que la separa de "
+                     "destruir evidencia: un concepto puede morir como "
+                     "componente activo SIN desaparecer de la historia de "
+                     "QUIRA. AVEP es el caso que la produjo — se propagó a 67 "
+                     "archivos sin responder a ninguna categoría"),
     dict(id="DOC-012", custodia=GATE,
          regla="Un PORCENTAJE no tiene significado semántico por sí mismo. El "
                "significado de sus rangos depende del constructo que mide, de la "
