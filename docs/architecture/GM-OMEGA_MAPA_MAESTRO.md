@@ -123,8 +123,8 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | Deudas declaradas | 12 |
 | Deudas resueltas | 6 |
 | Deudas abiertas | **6** |
-| Reglas de doctrina con custodio | 22 |
-| Pruebas que las fijan | 382 |
+| Reglas de doctrina con custodio | 23 |
+| Pruebas que las fijan | 383 |
 | Documentos GM-Ω | 9 |
 
 ### Deudas abiertas

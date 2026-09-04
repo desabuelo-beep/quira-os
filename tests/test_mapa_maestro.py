@@ -115,6 +115,38 @@ def test_el_refactor_separa_lo_que_restaura_de_lo_que_crea():
         "precisamente lo que GM-Ω reconstruyó")
 
 
+def test_un_cambio_de_unidad_con_las_tres_condiciones_no_es_deriva():
+    """DOC-023 · la unidad `i` cambió, y eso no es un defecto.
+
+        i = PROMESA del Plan CNE  →  i = META del PDOT
+
+    Se cumplen las tres condiciones: razón metodológica declarada por Javo
+    —anclar la evaluación en el instrumento que OPERACIONALIZA el mandato—,
+    definición operacional vigente, y genealogía reconstruida (`ANEXO M` de
+    febrero + calculadora QUADRUM).
+
+    ⚠️ Y AQUÍ ESTA AUDITORÍA COMETIÓ UN ERROR JURÍDICO GRAVE: escribió que «el
+    plan de campaña no obliga jurídicamente». Es falso, y contradice a `d03
+    Gobernanza del Mandato Electoral`, que existe precisamente porque el Plan
+    CNE **sí** es vinculante. Ambos instrumentos obligan; el PDOT es donde el
+    mandato se vuelve medible. La constancia del error se conserva."""
+    doc = (RAIZ / "docs" / "architecture" /
+           "GM-OMEGA_GENEALOGIA_DOCUMENTAL.md")
+    if not doc.exists():
+        pytest.skip("aún no se generó el expediente genealógico")
+    txt = doc.read_text(encoding="utf-8")
+    assert "CORRECCIÓN JURÍDICA" in txt, (
+        "desapareció la corrección del error jurídico. Sin ella queda "
+        "circulando en el expediente que el Plan CNE no obliga — falso, y "
+        "contrario al canon de d03")
+    assert "OPERACIONALIZA el mandato" in txt, (
+        "se perdió la formulación correcta del cambio de unidad: es "
+        "metodológica, no jurídica. Ambos instrumentos son vinculantes")
+    assert "constituye evidencia de identidad" in txt, (
+        "desapareció el blindaje de los tres universos: 77/76 CNE ≠ 66 PDOT ≠ "
+        "25 GM. La coincidencia numérica del 66 ya engañó una vez")
+
+
 def test_las_decisiones_conversacionales_se_declaran_deuda():
     """DOC-022 · lo que sostiene el motor y vive sólo en una conversación.
 

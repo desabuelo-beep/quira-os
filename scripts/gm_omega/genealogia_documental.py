@@ -302,6 +302,66 @@ def _escribir(docs) -> None:
       "de lo que era sería el peor desenlace posible.")
     A("")
 
+    A("## ★★★ EL ÚLTIMO HUECO, CERRADO · `C_i` entró el 27-ABR-2026")
+    A("")
+    A("No estaba en ningún documento externo: **estaba en el propio Gold "
+      "Master**, fechado y firmado. `H01!A94`:")
+    A("")
+    A("> ★ **`Ci` DETERMINISTA v1.0 (Javo Delgado Santana, 27-Abr-2026)**: `Ci` "
+      "arranca en 1.00. Deducciones legales Sección L calculan `Ci` final. "
+      "`Ci_Base` columna E es FÓRMULA de Sección M — NO hardcodeado.")
+    A("")
+    A("Y `H01!A172` declara el constructo completo:")
+    A("")
+    A("> ★ **MOTOR DETERMINISTA `Ci`: abandona valoración heurística.** "
+      "`Ci = MÁX(0.50, 1.00 − Σ penalizaciones)`. Marco legal: **LOSNCP + COPFP "
+      "+ CGE + CPCCS**. **Principio de inocencia: todo proceso nace `Ci=1.00`.**")
+    A("")
+    A("| | |")
+    A("|---|---|")
+    A("| **Qué es** | `H01!A93` · «TABLA Ci — **Calidad de Proceso Orgánico por meta**» |")
+    A("| **Fecha** | **27 de abril de 2026** |")
+    A("| **Autor** | Javo Delgado Santana |")
+    A("| **Fórmula** | `Ci = MÁX(0.50, 1.00 − Σ penalizaciones)` |")
+    A("| **Marco legal** | LOSNCP · COPFP · CGE · CPCCS |")
+    A("| **Principio** | **inocencia** — todo proceso nace en 1.00 |")
+    A("| **Evolución declarada** | «abandona valoración heurística» → de "
+      "`Ci_Manual_2025` a motor determinista |")
+    A("")
+    A("### La ventana se cierra a 24 días")
+    A("")
+    A("```")
+    A("  3-abr-2026   ANEXO L QUADRUM v5.0   → 5 factores · SIN C_i")
+    A(" 27-abr-2026   Ci DETERMINISTA v1.0   → entra C_i · 6 factores")
+    A(" 10-may-2026   primer Gold Master conservado (ECIAP v1.1)")
+    A("```")
+    A("")
+    A("**`C_i` no fue una incorporación silenciosa ni sin fundamento.** Tiene "
+      "fecha, autor, fórmula, marco legal y un principio explícito. Lo que no "
+      "existía era un **artefacto que lo reuniera** — vivía dentro de una celda "
+      "de parámetros del Excel, y por eso trece documentos externos no lo "
+      "encontraron.")
+    A("")
+    A("### ⚠️ Y un hallazgo colateral: `C_i` opera hoy con su FALLBACK")
+    A("")
+    A("`H01!A187` y `A215`:")
+    A("")
+    A("> «INF-01..04 **VACÍOS al inicio** — los ingresa el analista SIAP-ICPI "
+      "con evidencia. NUNCA inventar infracciones.» […] «`Ci_Manual_2025` = "
+      "**REAL-HEURÍSTICO**. `Ci_Calculado` usa `Ci_Manual_2025` como **fallback** "
+      "cuando no hay infracciones → preserva `ICPI_Axioma=69.9309%`»")
+    A("")
+    A("Es decir: **el motor determinista existe pero no tiene infracciones "
+      "cargadas**, así que `C_i` devuelve hoy los valores heurísticos de la "
+      "calibración retrospectiva 2025 (`1.00`×11 · `0.90`×9 · `0.75`×5).")
+    A("")
+    A("⚠️ **Y eso está bien hecho, no es un defecto**: la alternativa —inventar "
+      "infracciones para alimentar el motor— es exactamente lo que `A187` "
+      "prohíbe. El fallback es la forma correcta de decir «no hay evidencia de "
+      "infracción» sin fabricarla. Lo que `011` debe juzgar es si un valor "
+      "heurístico de 2025 es el fallback adecuado para 2026.")
+    A("")
+
     A("## ★★★ LA GENEALOGÍA DE `E_i`, RECONSTRUIDA")
     A("")
     A("El `ANEXO L MANUAL TÉCNICO QUADRUM v5.0` —**3 de abril de 2026**, "
@@ -418,29 +478,86 @@ def _escribir(docs) -> None:
       "replanteamos con PDOT pues era mandato.»**")
     A("> — Javo, 2026-09-04")
     A("")
-    A("**No fue deriva: fue una mejora metodológica.** El plan de campaña es una "
-      "promesa; el PDOT es el **instrumento vinculante** —`COPFP Art. 41`: «los "
-      "planes de desarrollo son las directrices principales»—. Medir la "
-      "congruencia contra lo que obliga jurídicamente es más defendible que "
-      "medirla contra lo que sólo se ofreció.")
+    A("### ⚠️⚠️ CORRECCIÓN JURÍDICA · un error de esta auditoría")
+    A("")
+    A("Esta dirección escribió que **«el plan de campaña no obliga "
+      "jurídicamente»**. **Es falso**, y además contradice un dominio ya curado "
+      "de QUIRA. Javo:")
+    A("")
+    A("> **«El plan CNE SÍ es vinculante legalmente, es ley, su cumplimiento "
+      "también. El plan CNE se funde en el PDOT, así lo establece la normativa "
+      "—COPFP, COOTAD, ley electoral—. Eso quedó definido en `d03 Gobernanza "
+      "del Mandato Electoral`.»**")
+    A("")
+    A("El error es doble: afirmé una tesis de derecho ecuatoriano sin fuente, y "
+      "lo hice **contra el canon del propio sistema** — `d03` existe "
+      "precisamente para sostener la exigibilidad del mandato electoral. Si el "
+      "Plan CNE no obligara, `d03` no tendría objeto.")
+    A("")
+    A("**La formulación correcta del cambio de unidad no es jurídica, es "
+      "metodológica:**")
+    A("")
+    A("> La unidad evolucionó de la promesa electoral individual hacia la meta "
+      "del PDOT porque el equipo decidió que la evaluación del cumplimiento "
+      "debía anclarse en el **instrumento de planificación territorial que "
+      "OPERACIONALIZA el mandato de gobierno**. Ambos instrumentos son "
+      "vinculantes; el PDOT es donde el mandato se vuelve medible.")
+    A("")
+    A("Y eso es exactamente lo que Javo declaró —«pues era mandato»— sin "
+      "necesidad de inventarle una causalidad jurídica adicional.")
     A("")
     A("Y explica por qué la tesis define la unidad de análisis como la "
       "**trayectoria** `Plan de Trabajo → PDOT → POA → SIGAD`: **la promesa no "
       "desapareció, se convirtió en el eslabón anterior.**")
     A("")
-    A("### Estado de `011-A`")
+    A("### ⚠️ TRES UNIVERSOS QUE NO SON INTERCAMBIABLES")
     A("")
-    A("| | |")
-    A("|---|---|")
-    A("| Unidad histórica de `i` | **DEMOSTRADA** · promesa CNE (`ANEXO M` + calculadora) |")
-    A("| Motivo del cambio | **DECLARADO** por Javo · el PDOT es mandato |")
-    A("| Unidad vigente de `i` | meta del PDOT — **operando, pero sin declaración formal en el canon** |")
-    A("| Si una unidad agrega varias metas (`008-R`) | **PENDIENTE** · `011-B` |")
+    A("| Universo | Cantidad | Naturaleza |")
+    A("|---|---:|---|")
+    A("| Plan de Trabajo CNE | **77** · **76** tras exclusión (`ADR-036 §5`) | promesas electorales |")
+    A("| PDOT 2023-2027 | **66** | metas documentales |")
+    A("| Gold Master v1 | **25** | unidades operacionales |")
     A("")
-    A("⚠️ `011-A` deja de ser una pregunta abierta y pasa a ser **un acto "
-      "pendiente**: la unidad ya está decidida y opera; lo que falta es "
-      "**declararla en el canon con su genealogía**. Que es un trabajo mucho "
-      "menor que decidirla desde cero.")
+    A("> **La coincidencia numérica histórica entre «66 promesas CNE» y «66 "
+      "metas PDOT» NO constituye evidencia de identidad entre ambos universos.**")
+    A("")
+    A("Y no es una precaución teórica: `PCD-D03` ya lo probó —")
+    A("")
+    A("> «**46 de las 66 promesas no salieron del Plan CNE.** Nadie las ingestó: "
+      "aparecieron. Tres mencionaban **otros cantones** (Sucre, Jaramijó, "
+      "Crucita)» — detectadas por Javo, antes que ningún análisis.")
+    A("")
+    A("Las «66 promesas» del índice histórico eran **espurias**. El número 66 "
+      "coincidiendo en dos universos distintos fue una trampa real, y ya cazó a "
+      "alguien una vez.")
+    A("")
+
+    A("### Estado de `011-A`, en tres partes")
+    A("")
+    A("| | Estado | |")
+    A("|---|---|---|")
+    A("| **011-A1** · genealogía de la unidad | ✅ **CERRADO** | `promesa CNE → meta PDOT`, con motivo `DECLARADO` por Javo |")
+    A("| **011-A2** · unidad vigente del cálculo | 🔄 **POR FORMALIZAR** | opera con metas PDOT; el canon no lo declara |")
+    A("| **011-A3** · relación con la unidad documental | ⛔ **PENDIENTE** | pasa a `011-B` · hay al menos un `N:1` demostrado |")
+    A("")
+    A("`011-A2` necesita que el canon diga algo como: *«unidad operacional "
+      "vigente del ICPI: meta PDOT individual identificada por su ID canónico "
+      "del Gold Master»* — un acto, no una investigación.")
+    A("")
+    A("> ### `DOC-023` · un cambio de unidad no es una inconsistencia")
+    A("> **La evolución de la unidad `i` no debe interpretarse automáticamente "
+      "como inconsistencia metodológica.** Un cambio de unidad puede ser una "
+      "revisión conceptual válida si existen: una **razón metodológica "
+      "explícita**, una **nueva definición operacional** y una **trazabilidad** "
+      "que permita reconstruir la genealogía.")
+    A(">")
+    A("> Aquí se cumplen las tres. Lo que faltaba era la tercera, y este "
+      "expediente la construye.")
+    A("")
+    A("⚠️ Y una precisión sobre el alcance del `ANEXO M`: **no demuestra que el "
+      "ICPI «siempre fue sobre promesas»**. Demuestra que **en esa versión de "
+      "febrero** `i` era una promesa. La diferencia parece pequeña y es "
+      "exactamente la disciplina que permitió encontrar todo lo demás.")
     A("")
 
     A("## ★★ POR QUÉ NO HAY DOCUMENTO · la evolución fue conversacional")

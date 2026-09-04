@@ -145,6 +145,27 @@ _DOCTRINA = (
          verificador="test_ninguna_regla_generadora_se_infiere_del_patron_de_sus_resultados",
          por_que_ahi="con 25 casos y tres valores posibles, cualquier hipótesis "
                      "encuentra algunos que la respaldan: encajar no es derivar"),
+    dict(id="DOC-023", custodia=GATE,
+         regla="La evolución de la UNIDAD DE ANÁLISIS no es automáticamente una "
+               "inconsistencia metodológica. Un cambio de unidad es una "
+               "revisión conceptual VÁLIDA si existen tres cosas: razón "
+               "metodológica explícita, nueva definición operacional, y "
+               "trazabilidad que permita reconstruir la genealogía. Sin las "
+               "tres, es deriva",
+         fuente="el colega, 2026-09-04 · GM-Ω-011-A, al reconstruir el paso de "
+                "`i` = promesa CNE a `i` = meta PDOT",
+         verificador="test_un_cambio_de_unidad_con_las_tres_condiciones_no_es_deriva",
+         por_que_ahi="el ICPI cambió su unidad de análisis y esta auditoría "
+                     "estuvo a punto de tratarlo como defecto. No lo es: Javo "
+                     "declaró la razón —anclar la evaluación en el instrumento "
+                     "que OPERACIONALIZA el mandato—, la definición operacional "
+                     "existe, y la genealogía quedó reconstruida. ⚠️ Y la "
+                     "auditoría cometió aquí un error jurídico grave: escribió "
+                     "que «el plan de campaña no obliga jurídicamente», lo que "
+                     "es falso y contradice a `d03 Gobernanza del Mandato "
+                     "Electoral` — que existe precisamente porque el Plan CNE "
+                     "SÍ es vinculante. Ambos instrumentos obligan; el PDOT es "
+                     "donde el mandato se vuelve medible"),
     dict(id="DOC-022", custodia=GATE,
          regla="Una decisión que SOSTIENE EL MOTOR y vive sólo en una "
                "conversación es una decisión FUERA DEL CANON. El resultado "
