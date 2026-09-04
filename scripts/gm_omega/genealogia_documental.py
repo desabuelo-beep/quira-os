@@ -37,6 +37,10 @@ if hasattr(sys.stdout, "reconfigure"):
 
 _SALIDA = _RAIZ / "docs" / "architecture" / "GM-OMEGA_GENEALOGIA_DOCUMENTAL.md"
 _FUENTE = _RAIZ.parent / "tesis historicas" / "documentos antiguos"
+# ⚠️ Segunda carpeta, hallada el 2026-09-04 siguiendo una pista del chat
+# «Profundo»: contiene el ANEXO L de ABRIL y el anexo 0 de FEBRERO — el
+# material más antiguo conservado, y el que reconstruyó la genealogía de E_i.
+_FUENTE2 = _RAIZ.parent / "ProyecT" / "Terra archivo historico"
 
 # Los ocho huecos que la auditoría dejó abiertos y que abril podría cerrar.
 _TEMAS = {
@@ -80,10 +84,11 @@ def _texto(p: Path) -> str:
 
 
 def barrer() -> list[dict]:
-    if not _FUENTE.exists():
+    if not (_FUENTE.exists() or _FUENTE2.exists()):
         return []
     out = []
-    for p in sorted(_FUENTE.iterdir()):
+    fuentes = [q for f in (_FUENTE, _FUENTE2) if f.exists() for q in sorted(f.iterdir())]
+    for p in fuentes:
         if p.suffix.lower() not in (".docx", ".csv"):
             continue
         txt = _texto(p)
@@ -295,6 +300,73 @@ def _escribir(docs) -> None:
       "entonces **`011-A` tiene que decidirlo** — no descubrirlo. Y fabricar "
       "una definición retrospectiva para que la fórmula parezca más coherente "
       "de lo que era sería el peor desenlace posible.")
+    A("")
+
+    A("## ★★★ LA GENEALOGÍA DE `E_i`, RECONSTRUIDA")
+    A("")
+    A("El `ANEXO L MANUAL TÉCNICO QUADRUM v5.0` —**3 de abril de 2026**, "
+      "hallado en `ProyecT/Terra archivo historico/`— documenta la fórmula y la "
+      "función que la implementa:")
+    A("")
+    A("```")
+    A("ICPI = [Σ(Vi × Pi × Ei × Ti × Ri) / Σ(Pi × Ri)] × 100")
+    A("")
+    A("def calcular_ICPI_dinamico(promesas_df):")
+    A("    - Vi: float (0.0, 0.5, 1.0) - Verificación documental")
+    A("    - Pi: float               - Peso presupuestario normalizado")
+    A("    - Ei: int (1-5)           - ENTIDAD CUSTODIO RESPONSABLE   ⚠️")
+    A("    - Ti: float (0.0-1.0)     - Avance temporal")
+    A("    - Ri: float (0.5-1.5)     - Relevancia constitucional")
+    A("```")
+    A("")
+    A("> **En abril, `E_i` no era un coeficiente: era un IDENTIFICADOR de "
+      "entidad custodio —un entero de 1 a 5— multiplicándose dentro del "
+      "producto.**")
+    A("")
+    A("Y eso es matemáticamente incoherente: una meta ejecutada por la entidad "
+      "`5` valdría **cinco veces** más que una idéntica de la entidad `1`, sin "
+      "ninguna razón metodológica. El identificador entra en el cálculo como si "
+      "fuera una magnitud.")
+    A("")
+    A("### Ahí está POR QUÉ `E_i` cambió")
+    A("")
+    A("No fue capricho ni deriva: **alguien vio que multiplicar por un ID de "
+      "entidad no tenía sentido y lo convirtió en coeficiente**. La cadena "
+      "queda así:")
+    A("")
+    A("| # | Estado de `E_i` | Fuente | Fecha |")
+    A("|---|---|---|---|")
+    A("| 1 | `int (1-5)` · **identificador** de entidad custodio | `ANEXO L QUADRUM v5.0` | **3-abr-2026** |")
+    A("| 2 | «Autonomía Orgánica» · `1.0 / 0.9 / 0.75` — **control del director** | `Metodologia_SIAP_ICPI` | abril |")
+    A("| 3 | coeficiente `1 · 0.9 · 0.5` en 20 promesas | calculadora QUADRUM | s/f |")
+    A("| 4 | «Fricción de Autonomía» · `COOTAD 54 · NCI 200-04` | tesis | s/f |")
+    A("| 5 | `1 / 0.90 / 0.75`, citando **«autónomo/compartido/difuso»** | `H12!A4` + 25 literales | v5.7 |")
+    A("")
+    A("El motor actual cita el estado **2**. La tesis describe el **4**. Y esta "
+      "auditoría comparó los valores contra el 4 cuando el motor implementa el "
+      "2 — de ahí que «no cuadraran».")
+    A("")
+    A("⚠️ **Límite de lo afirmado**: el `ANEXO L` **especifica** esa función; "
+      "que llegara a ejecutarse con `Ei` entero no está demostrado. Lo "
+      "demostrado es qué decía la especificación de abril.")
+    A("")
+
+    A("## ★★★ Y LA FÓRMULA ORIGINAL SÍ TENÍA EL `× 100`")
+    A("")
+    A("```")
+    A("abril    ICPI = [Σ(Vi × Pi × Ei × Ti × Ri) / Σ(Pi × Ri)] × 100")
+    A("v5.7     H12!B33 = B31/B32                              ← sin ×100")
+    A("```")
+    A("")
+    A("Esto **cierra un hallazgo abierto de `007`**: el rótulo «ICPI 2026: "
+      "0,27 %» que aparece en 69 hojas del Gold Master no era un descuido de "
+      "presentación. Es **la pérdida de un factor que la fórmula original "
+      "tenía**, y las cabeceras siguieron rotulando en porcentaje un valor que "
+      "dejó de estarlo.")
+    A("")
+    A("La capa API lo compensa (`H73!ICPI_GLOBAL_PCT = B33*100`), así que la UI "
+      "publica bien. Pero el motor perdió el `×100` en algún punto entre abril "
+      "y v5.7, y **nadie lo notó porque el parche estaba aguas abajo**.")
     A("")
 
     A("## ★★ POR QUÉ NO HAY DOCUMENTO · la evolución fue conversacional")

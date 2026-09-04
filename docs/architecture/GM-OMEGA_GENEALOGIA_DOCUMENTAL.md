@@ -106,6 +106,52 @@ Coincide con `TERMINOLOGY_ORIGIN_v1.md`, que lo define como *«la obligación t�
 
 > Si los documentos históricos tampoco resuelven qué representa `i`, entonces **`011-A` tiene que decidirlo** — no descubrirlo. Y fabricar una definición retrospectiva para que la fórmula parezca más coherente de lo que era sería el peor desenlace posible.
 
+## ★★★ LA GENEALOGÍA DE `E_i`, RECONSTRUIDA
+
+El `ANEXO L MANUAL TÉCNICO QUADRUM v5.0` —**3 de abril de 2026**, hallado en `ProyecT/Terra archivo historico/`— documenta la fórmula y la función que la implementa:
+
+```
+ICPI = [Σ(Vi × Pi × Ei × Ti × Ri) / Σ(Pi × Ri)] × 100
+
+def calcular_ICPI_dinamico(promesas_df):
+    - Vi: float (0.0, 0.5, 1.0) - Verificación documental
+    - Pi: float               - Peso presupuestario normalizado
+    - Ei: int (1-5)           - ENTIDAD CUSTODIO RESPONSABLE   ⚠️
+    - Ti: float (0.0-1.0)     - Avance temporal
+    - Ri: float (0.5-1.5)     - Relevancia constitucional
+```
+
+> **En abril, `E_i` no era un coeficiente: era un IDENTIFICADOR de entidad custodio —un entero de 1 a 5— multiplicándose dentro del producto.**
+
+Y eso es matemáticamente incoherente: una meta ejecutada por la entidad `5` valdría **cinco veces** más que una idéntica de la entidad `1`, sin ninguna razón metodológica. El identificador entra en el cálculo como si fuera una magnitud.
+
+### Ahí está POR QUÉ `E_i` cambió
+
+No fue capricho ni deriva: **alguien vio que multiplicar por un ID de entidad no tenía sentido y lo convirtió en coeficiente**. La cadena queda así:
+
+| # | Estado de `E_i` | Fuente | Fecha |
+|---|---|---|---|
+| 1 | `int (1-5)` · **identificador** de entidad custodio | `ANEXO L QUADRUM v5.0` | **3-abr-2026** |
+| 2 | «Autonomía Orgánica» · `1.0 / 0.9 / 0.75` — **control del director** | `Metodologia_SIAP_ICPI` | abril |
+| 3 | coeficiente `1 · 0.9 · 0.5` en 20 promesas | calculadora QUADRUM | s/f |
+| 4 | «Fricción de Autonomía» · `COOTAD 54 · NCI 200-04` | tesis | s/f |
+| 5 | `1 / 0.90 / 0.75`, citando **«autónomo/compartido/difuso»** | `H12!A4` + 25 literales | v5.7 |
+
+El motor actual cita el estado **2**. La tesis describe el **4**. Y esta auditoría comparó los valores contra el 4 cuando el motor implementa el 2 — de ahí que «no cuadraran».
+
+⚠️ **Límite de lo afirmado**: el `ANEXO L` **especifica** esa función; que llegara a ejecutarse con `Ei` entero no está demostrado. Lo demostrado es qué decía la especificación de abril.
+
+## ★★★ Y LA FÓRMULA ORIGINAL SÍ TENÍA EL `× 100`
+
+```
+abril    ICPI = [Σ(Vi × Pi × Ei × Ti × Ri) / Σ(Pi × Ri)] × 100
+v5.7     H12!B33 = B31/B32                              ← sin ×100
+```
+
+Esto **cierra un hallazgo abierto de `007`**: el rótulo «ICPI 2026: 0,27 %» que aparece en 69 hojas del Gold Master no era un descuido de presentación. Es **la pérdida de un factor que la fórmula original tenía**, y las cabeceras siguieron rotulando en porcentaje un valor que dejó de estarlo.
+
+La capa API lo compensa (`H73!ICPI_GLOBAL_PCT = B33*100`), así que la UI publica bien. Pero el motor perdió el `×100` en algún punto entre abril y v5.7, y **nadie lo notó porque el parche estaba aguas abajo**.
+
 ## ★★ POR QUÉ NO HAY DOCUMENTO · la evolución fue conversacional
 
 Javo lo aclaró y resuelve el hueco que 13 documentos no llenaron:
@@ -169,6 +215,8 @@ No hace falta todo: hay **cuatro decisiones** cuya justificación está sin recu
 
 | Documento | Copiado | Caracteres | Temas con material |
 |---|---|---:|---|
+| `anexo 0.docx` | 2026-02-11 | 36708 | `TERRA/QUADRUM` |
+| `ANEXO L MANUAL TECNICO QUADRUM FINAL v5.0.do` | 2026-04-03 | 83097 | `P_i · evolución`, `R_i · evolución`, `fórmula`, `TERRA/QUADRUM` |
 | `Documento doctrinal.docx` | 2026-09-04 | 23912 | — |
 | `historial conversacional de Quira.docx` | 2026-09-04 | 95189 | `universo 25/66`, `TERRA/QUADRUM` |
 | `historico construccion quira.docx` | 2026-09-04 | 358314 | `E_i · regla`, `P_i · evolución`, `AVEP · origen`, `fórmula`, `TERRA/QUADRUM` |
@@ -182,6 +230,36 @@ No hace falta todo: hay **cuatro decisiones** cuya justificación está sin recu
 | `QUADRUM_ICPI_Calculadora (1).csv` | 2026-09-04 | 2437 | `P_i · evolución` |
 | `sprint 1.docx` | 2026-09-04 | 8479 | — |
 | `Ultima conversacion Director Claude.docx` | 2026-09-04 | 31934 | `AVEP · origen` |
+
+### `anexo 0.docx` · 2026-02-11
+
+**TERRA/QUADRUM**
+
+- …nvestigador Principal: Ronald Javier Delgado Santana Creador Metodología ICPI y Protocolo QUADRUM Febrero 2026 Versión 2.0 Documento Confidencial 0.1. INGENIERÍA FINANCIERA: La viabilidad financiera de QUADRUM se sustenta en modelos de apalancamiento de capital de cooperación. 0.1.1. Principio de Ad…
+- …ón 2.0 Documento Confidencial 0.1. INGENIERÍA FINANCIERA: La viabilidad financiera de QUADRUM se sustenta en modelos de apalancamiento de capital de cooperación. 0.1.1. Principio de Adicionalidad (OCDE) El capital extranjero genera adicionalidad sin sustituir presupuesto municipal. 0.1.2. Ratio de A…
+- …. Ratio de Apalancamiento 45:1 Ratio 45:1 alcanzable: Medellín sin blockchain logró 35:1, QUADRUM justifica +10 puntos BASE METODOLÓGICA DEL MODELO DE APALANCAMIENTO La viabilidad financiera del Proyecto QUADRUM no se sustenta en el gasto corriente del GAD, sino en la aplicación técnica de modelos d…
+
+### `ANEXO L MANUAL TECNICO QUADRUM FINAL v5.0.docx` · 2026-04-03
+
+**P_i · evolución**
+
+- …entales APIs REST Públicas: SERCOP (compraspublicas.gob.ec), SNI (sni.gob.ec) Parseo LOTAIP: Extracción cédulas presupuestarias, fichas proyecto, POA No hay integración directa a eSIGEF/SIGAD internos, sino consulta de portales públicos + LOTAIP. L.4.2. Output JSON Estructurado Ejemplo de salida est…
+- …mesa: str - Vi: float (0.0, 0.5, 1.0) - Verificación documental - Pi: float - Peso presupuestario normalizado - Ei: int (1-5) - Entidad custodio responsable - Ti: float (0.0-1.0) - Avance temporal - Ri: float (0.5-1.5) - Relevancia constitucional Returns: dict…
+
+**R_i · evolución**
+
+- …ad custodio responsable - Ti: float (0.0-1.0) - Avance temporal - Ri: float (0.5-1.5) - Relevancia constitucional Returns: dict: { 'icpi': float (0-100), 'timestamp': datetime, 'promesas_totales': int, 'promesas_verificadas': int, 'desglose_…
+
+**fórmula**
+
+- …n la tesis. L.6.1. Implementación de la Fórmula ICPI Fórmula matemática original (tesis): ICPI = [Σ(Vi × Pi × Ei × Ti × Ri) / Σ(Pi × Ri)] × 100 Código Python operacionalizado: def calcular_ICPI_dinamico(promesas_df): """ Calcula ICPI según fórmula validada tesis ULEAM Args: promesas_df (panda…
+- …la Fórmula ICPI Fórmula matemática original (tesis): ICPI = [Σ(Vi × Pi × Ei × Ti × Ri) / Σ(Pi × Ri)] × 100 Código Python operacionalizado: def calcular_ICPI_dinamico(promesas_df): """ Calcula ICPI según fórmula validada tesis ULEAM Args: promesas_df (pandas.DataFrame): DataFrame con co…
+
+**TERRA/QUADRUM**
+
+- …ANEXO L MANUAL TÉCNICO QUADRUM De la Metodología a la Implementación Arquitectura Técnica de Verificación Cruzada y Detección Automática de Incoherencias ──────────────────────────────────────────────────────────── Investigador Principal: Ron…
+- …nvestigador Principal: Ronald Javier Delgado Santana Creador Metodología ICPI y Protocolo QUADRUM Febrero 2026 ÍNDICE GENERAL PARTE I: FUNDAMENTOS METODOLÓGICOS L.1. Propósito y Alcance del Protocolo L.2. Del SIAP-ICPI a QUADRUM: Evolución de la Transparencia L.3. Arquitectura de los 13 Sistemas de …
+- …I: FUNDAMENTOS METODOLÓGICOS L.1. Propósito y Alcance del Protocolo L.2. Del SIAP-ICPI a QUADRUM: Evolución de la Transparencia L.3. Arquitectura de los 13 Sistemas de Verificación Cruzada PARTE II: MÓDULOS TÉCNICOS AUTOMATIZADOS L.4. Módulo 1: Ingesta Automática de Datos (Scraping y APIs) L.5. Módu…
 
 ### `historial conversacional de Quira.docx` · 2026-09-04
 
@@ -381,4 +459,4 @@ No hace falta todo: hay **cuatro decisiones** cuya justificación está sin recu
 - **No descarta la definición B** ni ningún documento histórico: la divergencia entre versiones **es** el objeto de estudio.
 
 ---
-*GM-Ω · Expediente genealógico · 13 documentos barridos · el Gold Master no se modificó · Dylus Lab © 2026*
+*GM-Ω · Expediente genealógico · 15 documentos barridos · el Gold Master no se modificó · Dylus Lab © 2026*
