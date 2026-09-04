@@ -30,7 +30,7 @@ De las **66 metas** del Excel, **41** se localizan en el texto del documento pub
 
 🔴 **La correspondencia es baja.** Antes de usar esta tabulación como universo documental hay que explicar la diferencia.
 
-## 3 · ★ EL HALLAZGO · el motor AGREGA, no selecciona
+## 3 · ★ EL HALLAZGO · la unidad de las 25 no es la unidad de las 66
 
 La reconciliación por palabras daba **7 de 66** y parecía un problema de calidad de datos. No lo era. Al mirar un caso concreto apareció otra cosa:
 
@@ -46,22 +46,38 @@ PDOT · TRES metas distintas
    22.74% al 41.64%…»
 ```
 
-> **El Gold Master no seleccionó 25 metas de 66: agregó las 66 en 25.**
+Una unidad del motor recoge las cifras de **tres metas documentales**. La señal es inequívoca —los números viajan intactos del PDOT a la celda— y cambiar el emparejamiento de palabras a cifras subió las reconciliadas de **7 a 25** y bajó las no encontradas de **46 a 1**.
 
-Y las **cifras lo prueban**: viajan intactas del PDOT a la celda del motor. Cambiando la señal de emparejamiento de palabras a cifras, las reconciliadas pasaron de **7 a 25** y las no encontradas de **46 a 1**.
+### ⚠️ Lo que esto demuestra, y lo que NO
 
-### Qué invalida esto
+Una primera versión de este informe concluyó que **«el motor agregó las 66 en 25»**. **Era demasiado fuerte**, y los propios números de aquí lo desmienten: no se puede afirmar que las 25 agreguen las 66 y a la vez que **19 de las 25 no tienen componentes atribuidas**.
 
-| Se venía diciendo | Lo que es |
+Es `DOC-009` en su forma más difícil de ver: **convertir una señal fuerte en una regla general**. Un caso demostrado de `N:1` no demuestra que todas las relaciones lo sean.
+
+| | |
 |---|---|
-| `25 ⊂ 66` · subconjunto | **`25 = agregación de 66`** · mapeo N:1 |
-| `66 − 25 = 41` metas excluidas | **la resta no describe nada** |
-| «cobertura del 37,88 %» | **una meta operacional puede cubrir varias documentales** |
-| «41 metas fuera del universo» | **no hay partición que hacer** |
+| **DEMOSTRADO** | la relación **no es necesariamente 1:1**, y existe al menos un caso inequívoco de correspondencia `N:1` |
+| **NO DEMOSTRADO** | que las 66 estén íntegramente distribuidas entre las 25 · que cada una de las 25 sea un agregado · cuáles son los componentes de cada una |
 
-**La pregunta de 008-R estaba mal planteada** —y no por quien la formuló: la suposición de subconjunto la compartíamos todos, incluido `ADR-036`, que dice «las 25 existen todas en el PDOT». Sigue siendo cierto, pero con un matiz que cambia su alcance: existen **como agregación de sus metas**, no como selección literal de 25 de ellas.
+### Y Javo lo precisa desde el otro lado
 
-⚠️ Y esto **no contradice el criterio que Javo declaró** —mayor monto económico—: se agregaron las metas de los proyectos de mayor peso. Lo que cambia es la aritmética con la que se describía el resultado.
+> **«Cada meta se tomó de manera individual. No tomamos en consideración que una meta puede ser 3, como el caso del agua. Sólo tomamos 25 y las trabajamos.»**
+> — Javo, 2026-09-03
+
+Eso cierra la interpretación correcta, y **no es agregación por diseño**: la selección fue **individual** —25 metas por monto—, y lo que ocurrió es que **la unidad con la que se seleccionó no coincidía con la unidad del documento**. Donde el PDOT tenía tres metas de agua potable, se tomó «agua potable» como una.
+
+No es un error de ejecución: es una **condición que nadie estableció porque nadie sabía que hacía falta establecerla**. Y sólo aparece cuando se intenta reconciliar meta a meta, que es lo que nunca se había hecho.
+
+### Qué queda invalidado igualmente
+
+| Se venía diciendo | Estado |
+|---|---|
+| `66 − 25 = 41` metas excluidas | **la resta no describe nada** — no hay partición mientras la unidad no coincida |
+| «cobertura del 37,88 %» | **no publicable**: numerador y denominador cuentan objetos distintos |
+| `25 ⊂ 66` como subconjunto limpio | **no sostenible** |
+| `25 = agregación de 66` | **tampoco demostrado** |
+
+La suposición de subconjunto la compartíamos todos, incluido `ADR-036` —«las 25 existen todas en el PDOT»—. Sigue siendo probablemente cierto; lo que 008-R muestra es que **existir en el PDOT y corresponder a una meta del PDOT no son lo mismo**.
 
 ## 4 · La reconciliación 66 ↔ 25, con la señal correcta
 
@@ -100,7 +116,10 @@ Bajo el modelo de **agregación** esto se lee distinto: no significa que falten 
 
 ## Lo que 008-R entrega, y lo que deja abierto
 
-**El objetivo original NO se alcanzó, y ésa es la conclusión.** Se buscaba la partición `66 → 25 + 41`. No existe: el motor **agrega**, no selecciona, así que no hay 41 metas excluidas que identificar. La pregunta era irresoluble tal como estaba planteada, y demostrarlo vale más que la tabla que se esperaba.
+> ### ESTADO · RECONCILIACIÓN PARCIAL · HALLAZGO ESTRUCTURAL
+> **008-R NO queda cerrada.** La correspondencia exhaustiva `66 ↔ 25` permanece **no reconciliada**, y forzarla habría sido inventar datos.
+
+**El objetivo original no se alcanzó.** Se buscaba la partición `66 → 25 + 41` y no se pudo producir — pero no por falta de método: porque **la unidad de las 25 no coincide con la unidad de las 66**, y mientras eso no se resuelva no hay partición que hacer. Demostrar por qué la pregunta era irresoluble vale más que la tabla que se esperaba.
 
 **Lo que sí entrega:**
 
@@ -114,6 +133,25 @@ Bajo el modelo de **agregación** esto se lee distinto: no significa que falten 
 - **40 metas AMBIGUAS.** No se fuerzan: cada una necesita ojo humano contra el documento. Un catálogo con ambigüedades declaradas es utilizable; uno con coincidencias inventadas, no — y afinar más el algoritmo habría empezado a producir las segundas.
 - **19 metas operacionales sin componentes atribuidas.** Es lo que v2 no puede heredar sin resolver.
 - **El escalón 7 no está cerrado**: 41 de 66 se localizan literalmente en el documento publicado. El resto exige revisar esas metas concretas — la conversión PDF→Word altera saltos y guiones, y la comparación es literal.
+
+### ★ Y una pregunta que 008-R le entrega a 011
+
+Si una unidad del motor puede corresponder a varias metas documentales, entonces hay algo que la auditoría venía dando por sabido y no lo está:
+
+> **¿Qué es exactamente `i` en `J_i = P_i × R_i × V_i × E_i × T_i × C_i`?**
+
+Toda la auditoría ha hablado de `i` como **una meta del PDOT**. Si `i` puede ser un agregado —o una unidad construida por el modelo que no coincide con ninguna meta documental— entonces cambia la lectura de cada factor:
+
+| Factor | Si `i` es un agregado |
+|---|---|
+| `P_i` | ¿el monto de qué? ¿suma de las componentes? |
+| `R_i` | ¿la relevancia jurídica de cuál de ellas? |
+| `V_i` | ¿verificado si lo están todas, o alguna? |
+| `T_i` | ¿el avance de qué unidad temporal? |
+| `ΣK_i` | el denominador pondera **unidades**, no metas |
+| **27,4582 %** | «congruencia» **de qué objeto** |
+
+**Esto no dice que la fórmula esté mal.** Dice que `011` no puede dictaminar sobre el constructo sin declarar antes **cuál es su unidad de análisis** — meta del PDOT, agregado programático, unidad de intervención, o construcción propia del modelo. Es una pregunta previa a la del álgebra, y no estaba en la lista.
 
 ### La consecuencia para v2, que es lo que 008-R venía a preparar
 

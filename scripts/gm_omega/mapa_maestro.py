@@ -68,15 +68,15 @@ _ETAPAS = [
     ("GM-Ω", "007", "Sensibilidad A·B·C·D·X + X-bis", _HECHO, ""),
     ("GM-Ω", "008", "Cobertura real del universo medido", _HECHO,
      "veredicto: JUSTIFICADA EN v1 · criterio = mayor monto (Javo)"),
-    ("GM-Ω", "008-R", "Reconciliación meta a meta 66 ↔ 25", _HECHO,
-     "★ el motor AGREGA, no selecciona · la partición 66→25+41 no existe"),
+    ("GM-Ω", "008-R", "Reconciliación meta a meta 66 ↔ 25", _CURSO,
+     "PARCIAL · caso N:1 demostrado · correspondencia exhaustiva sin reconciliar"),
     ("GM-Ω", "v2", "Universo completo del PDOT (66) — decisión de Javo", _BLOQ,
      "011 · 008-R · exige ADR propio y recalibración (ADR-036 §4)"),
     ("GM-Ω", "009", "¿Se puede optimizar el índice sin mejorar la realidad?",
      _ABIERTO, ""),
     ("GM-Ω", "010", "Transferibilidad LATAM · núcleo vs adaptador", _ABIERTO, ""),
-    ("GM-Ω", "011", "**Dictamen de validez del constructo**", _BLOQ,
-     "008 · 009 · 010"),
+    ("GM-Ω", "011", "**Dictamen de validez del constructo + UNIDAD DE ANÁLISIS**",
+     _BLOQ, "008 · 009 · 010 · ⚠️ 008-R le añadió: ¿qué es `i`?"),
 
     ("TF", "T1", "Inventario de nombres propios", _HECHO, ""),
     ("TF", "T2", "Clasificación ontológica + capa de presentación", _HECHO, ""),
@@ -181,7 +181,7 @@ def _escribir(deu, docs, n_doc, n_test, hechas) -> None:
     A("")
     A("```")
     A("  AHORA, en paralelo — nada de esto se bloquea entre sí")
-    A("  ├── GM-Ω 008-R reconciliación meta a meta 66 ↔ 25  ← desbloquea v2")
+    A("  ├── GM-Ω 008-R resolver las 40 ambiguas · 66↔25  ← desbloquea v2")
     A("  ├── GM-Ω 009   gaming: ¿se optimiza el índice sin mejorar la realidad?")
     A("  ├── GM-Ω 010   transferibilidad LATAM")
     A("  ├── T3-R R0    diagnóstico de los 13 dominios")

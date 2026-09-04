@@ -145,6 +145,22 @@ _DOCTRINA = (
          verificador="test_ninguna_regla_generadora_se_infiere_del_patron_de_sus_resultados",
          por_que_ahi="con 25 casos y tres valores posibles, cualquier hipótesis "
                      "encuentra algunos que la respaldan: encajar no es derivar"),
+    dict(id="DOC-019", custodia=GATE,
+         regla="Un caso demostrado NO autoriza la regla general. «Existe al "
+               "menos un X» y «todos son X» son afirmaciones distintas, y sólo "
+               "la primera la sostiene una evidencia puntual. Antes de "
+               "generalizar hay que comprobar que los propios datos no lo "
+               "desmientan",
+         fuente="el colega, 2026-09-03 · GM-Ω-008-R, al frenar la conclusión "
+                "«el motor agregó las 66 en 25»",
+         verificador="test_el_hallazgo_N1_no_se_generaliza_a_regla",
+         por_que_ahi="008-R encontró un caso inequívoco de correspondencia N:1 "
+                     "—una unidad del motor con las cifras de tres metas del "
+                     "PDOT— y esta dirección concluyó que el motor agregaba las "
+                     "66 en 25. Los propios números del informe lo desmentían: "
+                     "19 de las 25 no tienen componentes atribuidas. Es DOC-009 "
+                     "en su forma más difícil de ver, porque la señal era "
+                     "fuerte y la conclusión, elegante"),
     dict(id="DOC-018", custodia=GATE,
          regla="La justificación del UNIVERSO OPERACIONAL no implica la "
                "justificación de su MECANISMO DE SELECCIÓN. Decidir con "

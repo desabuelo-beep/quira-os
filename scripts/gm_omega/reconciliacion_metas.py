@@ -5,6 +5,9 @@ scripts/gm_omega/reconciliacion_metas.py — GM-Ω-ICPI-008-R
     Reconciliación META A META del universo del PDOT contra el universo
     operacional del ICPI, y verificación de la cadena de procedencia completa.
 
+    ESTADO: RECONCILIACIÓN PARCIAL · la correspondencia exhaustiva 66 ↔ 25
+    permanece NO RECONCILIADA, y forzarla habría sido inventar datos.
+
     POR QUÉ. `008` dejó una sola reserva abierta: **no existe un catálogo
     canónico que enlace las 66 metas documentales con las 25 operacionales.**
     La resta `66−25=41` es aritmética correcta, pero la IDENTIDAD de esas 41 no
@@ -94,8 +97,9 @@ def _cifras(t: str) -> set[str]:
     """Las CIFRAS de una meta — el identificador más fuerte que tienen.
 
     ⚠️ ESTE FUE EL HALLAZGO QUE REFORMULÓ 008-R. El cruce por palabras daba 7
-    de 66 y parecía un problema de calidad de datos. No lo era: el Gold Master
-    **agrega** varias metas del PDOT en una sola meta operacional —
+    de 66 y parecía un problema de calidad de datos. No lo era: **la unidad con
+    la que se seleccionaron las 25 no coincide con la unidad del documento**, y
+    hay al menos un caso inequívoco de correspondencia N:1 —
 
         GM  `SC-I-N-01`  «Agua potable: cobertura 39.25%→42.38%; calidad 100%;
                           infraestructura BUENA 22.74%→41.64%»
@@ -171,11 +175,14 @@ def texto_publicado() -> tuple[str, str]:
 
 # ═════════════════════════════════════════════════════════════════════════════
 def reconciliar(m66: list[dict], m25: list[dict]) -> list[dict]:
-    """Reconciliación **N:1** — varias metas del PDOT pueden agregarse en una
-    sola meta operacional del motor. Tres señales, en orden de fuerza.
+    """Reconciliación que ADMITE `N:1` — varias metas del PDOT pueden
+    corresponder a una sola unidad del motor. Tres señales, en orden de fuerza.
 
-    ⚠️ La relación NO es `25 ⊂ 66`. Es `25 = agregación de las 66`, y por eso
-    `66 − 25 = 41` nunca describió nada: no hay partición que hacer."""
+    ⚠️ Admitir N:1 no es afirmar que TODAS lo sean. Está demostrado que la
+    relación no es necesariamente 1:1; que las 66 estén íntegramente
+    distribuidas entre las 25 **no lo está** —19 unidades siguen sin componentes
+    atribuidas—. Por eso `66 − 25 = 41` no describe nada, y por eso tampoco se
+    escribe «25 = agregación de 66»: sería generalizar desde un caso."""
     n25 = [{**m, "_n": _norm(m["desc"]), "_t": _tokens(m["desc"]),
             "_c": _cifras(m["desc"])} for m in m25]
     filas = []
@@ -370,7 +377,7 @@ def _escribir(m66, m25, filas, rec, amb, nor, huerfanas25, en_pub, origen_pub,
           "universo documental hay que explicar la diferencia.")
     A("")
 
-    A("## 3 · ★ EL HALLAZGO · el motor AGREGA, no selecciona")
+    A("## 3 · ★ EL HALLAZGO · la unidad de las 25 no es la unidad de las 66")
     A("")
     A("La reconciliación por palabras daba **7 de 66** y parecía un problema de "
       "calidad de datos. No lo era. Al mirar un caso concreto apareció otra cosa:")
@@ -387,30 +394,62 @@ def _escribir(m66, m25, filas, rec, amb, nor, huerfanas25, en_pub, origen_pub,
     A("   22.74% al 41.64%…»")
     A("```")
     A("")
-    A("> **El Gold Master no seleccionó 25 metas de 66: agregó las 66 en 25.**")
+    A("Una unidad del motor recoge las cifras de **tres metas documentales**. La "
+      "señal es inequívoca —los números viajan intactos del PDOT a la celda— y "
+      "cambiar el emparejamiento de palabras a cifras subió las reconciliadas "
+      "de **7 a 25** y bajó las no encontradas de **46 a 1**.")
     A("")
-    A("Y las **cifras lo prueban**: viajan intactas del PDOT a la celda del "
-      "motor. Cambiando la señal de emparejamiento de palabras a cifras, las "
-      "reconciliadas pasaron de **7 a 25** y las no encontradas de **46 a 1**.")
+    A("### ⚠️ Lo que esto demuestra, y lo que NO")
     A("")
-    A("### Qué invalida esto")
+    A("Una primera versión de este informe concluyó que **«el motor agregó las "
+      "66 en 25»**. **Era demasiado fuerte**, y los propios números de aquí lo "
+      "desmienten: no se puede afirmar que las 25 agreguen las 66 y a la vez "
+      f"que **{len(huerfanas25)} de las 25 no tienen componentes atribuidas**.")
     A("")
-    A("| Se venía diciendo | Lo que es |")
+    A("Es `DOC-009` en su forma más difícil de ver: **convertir una señal fuerte "
+      "en una regla general**. Un caso demostrado de `N:1` no demuestra que "
+      "todas las relaciones lo sean.")
+    A("")
+    A("| | |")
     A("|---|---|")
-    A("| `25 ⊂ 66` · subconjunto | **`25 = agregación de 66`** · mapeo N:1 |")
-    A("| `66 − 25 = 41` metas excluidas | **la resta no describe nada** |")
-    A("| «cobertura del 37,88 %» | **una meta operacional puede cubrir varias documentales** |")
-    A("| «41 metas fuera del universo» | **no hay partición que hacer** |")
+    A("| **DEMOSTRADO** | la relación **no es necesariamente 1:1**, y existe al "
+      "menos un caso inequívoco de correspondencia `N:1` |")
+    A("| **NO DEMOSTRADO** | que las 66 estén íntegramente distribuidas entre "
+      "las 25 · que cada una de las 25 sea un agregado · cuáles son los "
+      "componentes de cada una |")
     A("")
-    A("**La pregunta de 008-R estaba mal planteada** —y no por quien la "
-      "formuló: la suposición de subconjunto la compartíamos todos, incluido "
-      "`ADR-036`, que dice «las 25 existen todas en el PDOT». Sigue siendo "
-      "cierto, pero con un matiz que cambia su alcance: existen **como "
-      "agregación de sus metas**, no como selección literal de 25 de ellas.")
+    A("### Y Javo lo precisa desde el otro lado")
     A("")
-    A("⚠️ Y esto **no contradice el criterio que Javo declaró** —mayor monto "
-      "económico—: se agregaron las metas de los proyectos de mayor peso. Lo "
-      "que cambia es la aritmética con la que se describía el resultado.")
+    A("> **«Cada meta se tomó de manera individual. No tomamos en consideración "
+      "que una meta puede ser 3, como el caso del agua. Sólo tomamos 25 y las "
+      "trabajamos.»**")
+    A("> — Javo, 2026-09-03")
+    A("")
+    A("Eso cierra la interpretación correcta, y **no es agregación por diseño**: "
+      "la selección fue **individual** —25 metas por monto—, y lo que ocurrió es "
+      "que **la unidad con la que se seleccionó no coincidía con la unidad del "
+      "documento**. Donde el PDOT tenía tres metas de agua potable, se tomó "
+      "«agua potable» como una.")
+    A("")
+    A("No es un error de ejecución: es una **condición que nadie estableció "
+      "porque nadie sabía que hacía falta establecerla**. Y sólo aparece cuando "
+      "se intenta reconciliar meta a meta, que es lo que nunca se había hecho.")
+    A("")
+    A("### Qué queda invalidado igualmente")
+    A("")
+    A("| Se venía diciendo | Estado |")
+    A("|---|---|")
+    A("| `66 − 25 = 41` metas excluidas | **la resta no describe nada** — no hay "
+      "partición mientras la unidad no coincida |")
+    A("| «cobertura del 37,88 %» | **no publicable**: numerador y denominador "
+      "cuentan objetos distintos |")
+    A("| `25 ⊂ 66` como subconjunto limpio | **no sostenible** |")
+    A("| `25 = agregación de 66` | **tampoco demostrado** |")
+    A("")
+    A("La suposición de subconjunto la compartíamos todos, incluido `ADR-036` "
+      "—«las 25 existen todas en el PDOT»—. Sigue siendo probablemente cierto; "
+      "lo que 008-R muestra es que **existir en el PDOT y corresponder a una "
+      "meta del PDOT no son lo mismo**.")
     A("")
 
     A("## 4 · La reconciliación 66 ↔ 25, con la señal correcta")
@@ -468,11 +507,15 @@ def _escribir(m66, m25, filas, rec, amb, nor, huerfanas25, en_pub, origen_pub,
 
     A("## Lo que 008-R entrega, y lo que deja abierto")
     A("")
-    A("**El objetivo original NO se alcanzó, y ésa es la conclusión.** Se buscaba "
-      "la partición `66 → 25 + 41`. No existe: el motor **agrega**, no "
-      "selecciona, así que no hay 41 metas excluidas que identificar. La "
-      "pregunta era irresoluble tal como estaba planteada, y demostrarlo vale "
-      "más que la tabla que se esperaba.")
+    A("> ### ESTADO · RECONCILIACIÓN PARCIAL · HALLAZGO ESTRUCTURAL")
+    A("> **008-R NO queda cerrada.** La correspondencia exhaustiva `66 ↔ 25` "
+      "permanece **no reconciliada**, y forzarla habría sido inventar datos.")
+    A("")
+    A("**El objetivo original no se alcanzó.** Se buscaba la partición "
+      "`66 → 25 + 41` y no se pudo producir — pero no por falta de método: "
+      "porque **la unidad de las 25 no coincide con la unidad de las 66**, y "
+      "mientras eso no se resuelva no hay partición que hacer. Demostrar por "
+      "qué la pregunta era irresoluble vale más que la tabla que se esperaba.")
     A("")
     A("**Lo que sí entrega:**")
     A("")
@@ -498,6 +541,34 @@ def _escribir(m66, m25, filas, rec, amb, nor, huerfanas25, en_pub, origen_pub,
       "el documento publicado. El resto exige revisar esas metas concretas — la "
       "conversión PDF→Word altera saltos y guiones, y la comparación es literal.")
     A("")
+    A("### ★ Y una pregunta que 008-R le entrega a 011")
+    A("")
+    A("Si una unidad del motor puede corresponder a varias metas documentales, "
+      "entonces hay algo que la auditoría venía dando por sabido y no lo está:")
+    A("")
+    A("> **¿Qué es exactamente `i` en `J_i = P_i × R_i × V_i × E_i × T_i × C_i`?**")
+    A("")
+    A("Toda la auditoría ha hablado de `i` como **una meta del PDOT**. Si `i` "
+      "puede ser un agregado —o una unidad construida por el modelo que no "
+      "coincide con ninguna meta documental— entonces cambia la lectura de cada "
+      "factor:")
+    A("")
+    A("| Factor | Si `i` es un agregado |")
+    A("|---|---|")
+    A("| `P_i` | ¿el monto de qué? ¿suma de las componentes? |")
+    A("| `R_i` | ¿la relevancia jurídica de cuál de ellas? |")
+    A("| `V_i` | ¿verificado si lo están todas, o alguna? |")
+    A("| `T_i` | ¿el avance de qué unidad temporal? |")
+    A("| `ΣK_i` | el denominador pondera **unidades**, no metas |")
+    A("| **27,4582 %** | «congruencia» **de qué objeto** |")
+    A("")
+    A("**Esto no dice que la fórmula esté mal.** Dice que `011` no puede "
+      "dictaminar sobre el constructo sin declarar antes **cuál es su unidad de "
+      "análisis** — meta del PDOT, agregado programático, unidad de "
+      "intervención, o construcción propia del modelo. Es una pregunta previa a "
+      "la del álgebra, y no estaba en la lista.")
+    A("")
+
     A("### La consecuencia para v2, que es lo que 008-R venía a preparar")
     A("")
     A("**El Gold Master no conserva el texto de las metas del PDOT, sólo un "

@@ -28,28 +28,56 @@ _CAT = RAIZ / "data" / "pdot" / "catalogo_reconciliacion_66.json"
 _SCRIPT = RAIZ / "scripts" / "gm_omega" / "reconciliacion_metas.py"
 
 
-def test_el_hallazgo_de_agregacion_no_se_pierde():
-    """★ Lo que 008-R descubrió, y que reformula todo lo dicho sobre cobertura.
+def test_el_hallazgo_N1_no_se_generaliza_a_regla():
+    """DOC-019 · un caso demostrado no autoriza la regla general.
 
-        El Gold Master no seleccionó 25 metas de 66: AGREGÓ las 66 en 25.
+    008-R encontró un caso inequívoco: `SC-I-N-01` —«Agua potable: cobertura
+    39.25%→42.38%; calidad 100%; infraestructura 22.74%→41.64%»— lleva las
+    cifras de TRES metas del PDOT.
 
-    `SC-I-N-01` —«Agua potable: cobertura 39.25%→42.38%; calidad 100%;
-    infraestructura BUENA 22.74%→41.64%»— contiene TRES metas del PDOT, y sus
-    cifras lo prueban: viajan intactas del documento a la celda del motor.
+    ⚠️ Y ESTA DIRECCIÓN CONCLUYÓ «el motor agregó las 66 en 25». Era demasiado
+    fuerte, y los propios números del informe lo desmentían: 19 de las 25 no
+    tienen componentes atribuidas. No se puede afirmar las dos cosas.
 
-    ⚠️ Si esto se pierde, vuelve la aritmética falsa: `66−25=41 excluidas`,
-    «cobertura del 37,88 %», «las 41 metas fuera». Ninguna de esas frases
-    describe nada — no hay partición que hacer."""
+    Es `DOC-009` en su forma más difícil de ver, porque la señal era fuerte y la
+    conclusión, elegante. Esta prueba vigila las dos mitades: que el hallazgo
+    siga —con su evidencia— y que la generalización NO vuelva."""
     txt = _DOC.read_text(encoding="utf-8")
-    assert "AGREGA, no selecciona" in txt, (
-        "desapareció el hallazgo central de 008-R. Sin él vuelve la lectura de "
-        "subconjunto, que es falsa")
-    assert "la resta no describe nada" in txt, (
-        "se perdió la consecuencia: `66 − 25 = 41` no identifica metas "
-        "excluidas, porque la relación es N:1 y no una partición")
     assert "39.25" in txt, (
-        "desapareció el caso que lo demuestra. El hallazgo sin su evidencia "
-        "vuelve a ser una afirmación que hay que creer")
+        "desapareció el caso que demuestra la correspondencia N:1. Un hallazgo "
+        "sin su evidencia vuelve a ser una afirmación que hay que creer")
+    assert "DEMOSTRADO" in txt and "NO DEMOSTRADO" in txt, (
+        "se perdió la separación entre lo demostrado —existe un caso N:1— y lo "
+        "no demostrado —que las 66 estén distribuidas entre las 25—")
+    assert "`25 = agregación de 66` | **tampoco demostrado**" in txt, (
+        "volvió la generalización: afirmar que las 25 agregan las 66 contradice "
+        "que 19 de ellas no tengan componentes atribuidas. Un caso no es la "
+        "regla (DOC-019)")
+    assert "RECONCILIACIÓN PARCIAL" in txt, (
+        "008-R se declaró cerrada. La correspondencia exhaustiva 66↔25 sigue "
+        "sin reconciliar, y darla por cerrada dejaría un hueco creyendo que no "
+        "lo hay")
+
+
+def test_la_unidad_de_analisis_queda_planteada_a_011():
+    """Lo que 008-R le entrega a `011`, y que no estaba en su lista.
+
+    Si una unidad del motor puede corresponder a varias metas documentales,
+    entonces hay algo que toda la auditoría venía dando por sabido:
+
+        ¿qué es exactamente `i` en `J_i = P_i × R_i × V_i × E_i × T_i × C_i`?
+
+    Se ha hablado de `i` como «una meta del PDOT». Si puede ser un agregado,
+    cambia la lectura de cada factor y del denominador — y por tanto de qué
+    objeto afirma congruencia el 27,4582 %.
+
+    ⚠️ No dice que la fórmula esté mal. Dice que **la unidad de análisis es una
+    pregunta previa a la del álgebra**."""
+    txt = _DOC.read_text(encoding="utf-8")
+    assert "¿Qué es exactamente `i`" in txt, (
+        "desapareció la pregunta de la unidad de análisis. Sin ella, 011 "
+        "dictaminaría sobre el constructo sin saber sobre qué objeto se calcula")
+    assert "unidad de análisis" in txt
 
 
 def test_la_reconciliacion_no_fuerza_coincidencias():
