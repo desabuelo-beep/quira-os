@@ -90,6 +90,41 @@ Que la tesis diga «estudio el flujo» no dice si `i` es una meta, un agregado o
 
 Coincide con `TERMINOLOGY_ORIGIN_v1.md`, que lo define como *«la obligación técnica y legal de que cada meta de inversión esté ineludiblemente anclada a una unidad administrativa específica […] el antídoto contra la burocracia diluida»*. `C_i` **sí tiene genealogía conceptual documentada** — lo que no tiene es presencia en el ICPI original de cinco factores.
 
+## ⚠️ El barrido de los dos documentos grandes dio NEGATIVO
+
+`historico construccion quira.docx` (358 KB · 6.194 párrafos) y `memoriaa algo quira.docx` (74 KB) son **historiales de construcción del software**, no documentos metodológicos: sprints, QLEP, Neo4j, GeoTwin, TERRA Ciudadana. Se buscaron en ellos:
+
+| Buscado | Resultado |
+|---|---|
+| Primera aparición de la **fórmula de 6 factores** | ❌ nada |
+| Primera aparición de la **fórmula de 5 factores** | ❌ nada |
+| **Definición operacional de `i`** | ❌ nada |
+| Incorporación de `C_i` al producto | ❌ sólo su concepto, ya conocido |
+| Transición TERRA/QUADRUM → QUIRA | 🟡 menciones, sin decisión metodológica |
+
+**Es un resultado, no un fracaso.** Lo que establece es que **el documento que explica la transición del ICPI de cinco a seis factores no está en este corpus**. Y la consecuencia es la que el asesor anticipó:
+
+> Si los documentos históricos tampoco resuelven qué representa `i`, entonces **`011-A` tiene que decidirlo** — no descubrirlo. Y fabricar una definición retrospectiva para que la fórmula parezca más coherente de lo que era sería el peor desenlace posible.
+
+## Tabla de genealogía
+
+⚠️ **Las fechas salen del CONTENIDO, no del sistema de ficheros.** Donde no hay fecha fiable se escribe `NO DETERMINABLE`, nunca el `mtime`.
+
+| Elemento | Versión histórica | Evidencia | Cambio | Justificación | Estado |
+|---|---|---|---|---|---|
+| `P_i` | `PRESUPUESTO_ASIGNADO / TOTAL` | calculadora QUADRUM | → normalizado Σ=1 sobre 25 | **no hallada** | 🟡 cambio documentado, motivo no |
+| `R_i` | `0.5 · 1 · 1.5` crudo | calculadora QUADRUM | → normalizado por máximo 1,725 | **no hallada** | 🟡 ídem |
+| `V_i` | 3 niveles con núcleo financiero | `H13!B16-B21` | regla anterior `suma≥2` → actual | ✅ **documentada en el libro** | 🟢 con límite de reconstrucción |
+| `E_i` | **A**: control del director (abril) · **B**: fricción por delegación (tesis) | `Metodologia_SIAP_ICPI` · `metodologia.docx` · `H12!A4` | dos definiciones coexistentes | **no hallada** | 🟡 regla verificada, aplicación pendiente |
+| `T_i` | ratio por entidad | `H07b` | curva de pacing sustituyó a `mes/12` | **no hallada** · la nota quedó desfasada | 🟡 |
+| `C_i` | **ausente** del ICPI original | calculadora QUADRUM (5 factores) | **incorporación posterior** | ❌ **NO HALLADA** | 🔴 el hueco principal |
+| `i` | «flujo informativo/programático» (unidad de INVESTIGACIÓN) | `ICPI.docx` | — | — | 🔴 unidad de CÁLCULO sin declarar |
+| Fórmula | `Pi·Vi·Ei·Ti·Ri` (5) | calculadora QUADRUM | → `Pi·Ri·Vi·Ei·Ti·Ci` (6) | ❌ **NO HALLADA** | 🔴 |
+| AVEP | eje conceptual → 4 niveles | `TERMINOLOGY_ORIGIN_v1` | → 5 niveles + fórmula `IF` ×11 hojas | 🟡 el incidente sí (`H01!A28`) | 🟡 |
+| Universo | «muestra estratégica» | tesis | → 25 rotuladas `Total_Metas_PDOT` | ✅ criterio: mayor monto (Javo) | 🟢 |
+
+**Fecha interna más antigua localizada en el corpus: `2026-05-16`** (Gold Master v5.4). El material de abril existe —la metodología TERRA/QUADRUM— pero **entre abril y el 10 de mayo no hay ningún artefacto conservado**, y ahí es donde ocurrieron los cambios que esta tabla no puede justificar.
+
 ## Barrido documental
 
 ⚠️ **La columna «copiado» NO es la fecha del documento.** Todos los archivos se trasladaron a esta carpeta el mismo día, así que el sistema de ficheros dice `2026-09-04` para material que es de enero o de abril. **La fecha real vive en el contenido** —`Metodologia_SIAP_ICPI.docx` se identifica como TERRA/QUADRUM © 2026 y su copia en Drive está fechada el 25 de abril—. Ordenar la genealogía por `mtime` produciría una cronología falsa.
