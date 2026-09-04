@@ -1,344 +1,346 @@
 {
- "_procedencia": {
-  "fuente": "Plan Plurianual PDOT 2023-2027 GAD Montecristi.xlsx",
-  "sha256": "09a2aaccca4bc90d829397a368254255b2b6a1b59ee9ac4ad6df3a4783c435c0",
-  "caracter": "NO OFICIAL — el GAD no lo remitió formalmente (Javo · 2026-08-11)",
-  "verificabilidad": "parcial — requiere corroboración contra el PDOT aprobado",
-  "corroborar_contra": "PDOT MOntecristi 2023-2027 Bicentenario.docx · tablas #341-352",
-  "extraido": "2026-08-11",
-  "uso_autorizado": "insumo de trabajo para clasificar Ei. NO es fuente canónica de metas."
- },
- "total_metas": 66,
- "metas": [
-  {
-   "sistema": "1. FIS AM",
-   "meta": "Incrementar la recuperación de taludes en etapa de cierre para la recu",
-   "resp": "Planificación/ Espacios públicos"
-  },
-  {
-   "sistema": "1. FIS AM",
-   "meta": "Aumentar a 17.32 m²/hab el IVU  hasta el 2027",
-   "resp": "Dirección de Ambiente"
-  },
-  {
-   "sistema": "1. FIS AM",
-   "meta": "Formular cuatro planes para la acción contra el cambio climático hasta",
-   "resp": "Dirección de Ambiente"
-  },
-  {
-   "sistema": "1. FIS AM",
-   "meta": "Mantener el número de 680 beneficiarios de las campañas de asistencia ",
-   "resp": "Dirección de Ambiente"
-  },
-  {
-   "sistema": "1. FIS AM",
-   "meta": "Mantener el número de 124 beneficiarios de las campañas de esterilizac",
-   "resp": "Dirección de Ambiente"
-  },
-  {
-   "sistema": "1. FIS AM",
-   "meta": "Reducir un 10% la infraestructura susceptibles",
-   "resp": "Planificación/ Unidad de gestión de riesgos"
-  },
-  {
-   "sistema": "1. FIS AM",
-   "meta": "Incrementar anualmente el porcentaje de basura gestionada de 20.118,96",
-   "resp": "Empresa de Aseo"
-  },
-  {
-   "sistema": "1. FIS AM",
-   "meta": "Incrementar anualmente el porcentaje de basura reciclada  de 331 tn/añ",
-   "resp": "Empresa de Aseo"
-  },
-  {
-   "sistema": "1. FIS AM",
-   "meta": "Contar con capacidad para disposición final de desechos sólidos hasta ",
-   "resp": "Empresa de Aseo"
-  },
-  {
-   "sistema": "2. ASEN",
-   "meta": "Aumentar del 39.25% al 42.38% la cobertura de agua potable en el cantó",
-   "resp": "Planificación/ Dirección de agua potable y sanemamiento"
-  },
-  {
-   "sistema": "2. ASEN",
-   "meta": "Mejorar el índice de la calidad del agua al 100% por cada número de pu",
-   "resp": "Planificación/ Dirección de agua potable y sanemamiento"
-  },
-  {
-   "sistema": "2. ASEN",
-   "meta": "Mejorar el índice de calidad de la infraestructura de agua potable BUE",
-   "resp": "Planificación/ Dirección de agua potable y sanemamiento"
-  },
-  {
-   "sistema": "2. ASEN",
-   "meta": "Mejorar al 10% el índice de continuidad del servicio de agua potable A",
-   "resp": "Planificación/ Dirección de agua potable y sanemamiento"
-  },
-  {
-   "sistema": "2. ASEN",
-   "meta": "Aumentar del 19.77% a 24.32% la cobertura de alcantarillado sanitario ",
-   "resp": "Planificación/ Dirección de agua potable y sanemamiento"
-  },
-  {
-   "sistema": "2. ASEN",
-   "meta": "Aumentar hasta el 2027 el número de plantas y estaciones de bombeo ope",
-   "resp": "Planificación/ Dirección de agua potable y sanemamiento"
-  },
-  {
-   "sistema": "2. ASEN",
-   "meta": "Mejorar el índice de calidad de la infraestructura sanitaria BUENO de ",
-   "resp": "Planificación/ Dirección de agua potable y sanemamiento"
-  },
-  {
-   "sistema": "2. ASEN",
-   "meta": "Aumentar la cobertura de redes pluviales de 0.97% a 2% hasta el año 20",
-   "resp": "Planificación/ Dirección de agua potable y sanemamiento"
-  },
-  {
-   "sistema": "2. ASEN",
-   "meta": "Aumentar a 17.32 m²/hab el IVU  hasta el 2027",
-   "resp": "Planificación/ Unidad de espacios públicos"
-  },
-  {
-   "sistema": "2. ASEN",
-   "meta": "Aumentar a 10.73 m²/hab el índice de equipamiento del Centro Urbano Pr",
-   "resp": "Planificación/ Unidad de espacios públicos"
-  },
-  {
-   "sistema": "2. ASEN",
-   "meta": "Construir 10km hasta el 2027 de 93.65 km de vías en proyección del CUP",
-   "resp": "Planificación/ Obras públicas"
-  },
-  {
-   "sistema": "2. ASEN",
-   "meta": "Incrementar 4 km de vías con tratamiento (aceras y bordillos) del CUP ",
-   "resp": "Planificación/ Obras públicas"
-  },
-  {
-   "sistema": "2. ASEN",
-   "meta": "Incrementar 0.4 km de  vías con tratamiento (aceras y bordillos) en co",
-   "resp": "Planificación/ Obras públicas"
-  },
-  {
-   "sistema": "2. ASEN",
-   "meta": "Incrementar en el CUP 23.77 km de vías con tratamiento medio hasta el ",
-   "resp": "Planificación/ Obras públicas"
-  },
-  {
-   "sistema": "2. ASEN",
-   "meta": "Incrementar en las comunidades rurales 17.56 km de vías con tratamient",
-   "resp": "Planificación/ Obras públicas"
-  },
-  {
-   "sistema": "2. ASEN",
-   "meta": "Incrementar en el CUP el mantenimiento de 43.8 km de vías  hasta el añ",
-   "resp": "Planificación/ Obras públicas"
-  },
-  {
-   "sistema": "2. ASEN",
-   "meta": "Incrementar en las comunidades rurales el mantenimiento de 57.22 km de",
-   "resp": "Planificación/ Obras públicas"
-  },
-  {
-   "sistema": "2. ASEN",
-   "meta": "Incrementar de 1.62 km a 2.62 km de ciclovía al 2027",
-   "resp": "Planificación/ Obras públicas"
-  },
-  {
-   "sistema": "2. ASEN",
-   "meta": "Incrementar la superficie a 10 000 m2 de señalización en vías urbanas ",
-   "resp": "Planificación/ Dirección de Tránsito, Transporte y Seguridad Vial"
-  },
-  {
-   "sistema": "2. ASEN",
-   "meta": "Incrementar a 8 el número de las intersecciones semafóricas hasta el 2",
-   "resp": "Planificación/ Dirección de Tránsito, Transporte y Seguridad Vial"
-  },
-  {
-   "sistema": "2. ASEN",
-   "meta": "Incrementar las revisiones técnicas vehiculares de 4000 en el año 2023",
-   "resp": "Planificación/ Dirección de Tránsito, Transporte y Seguridad Vial"
-  },
-  {
-   "sistema": "2. ASEN",
-   "meta": "Mantener anualmente y hasta el 2027 el servicio de calidad del transpo",
-   "resp": "Planificación/ Dirección de Tránsito, Transporte y Seguridad Vial"
-  },
-  {
-   "sistema": "2. ASEN",
-   "meta": "Mantener anualmente a  40 Instituciones educativas en el programa de E",
-   "resp": "Planificación/ Dirección de Tránsito, Transporte y Seguridad Vial"
-  },
-  {
-   "sistema": "2. ASEN",
-   "meta": "Reducir el déficit habitacional cualitativo de 50 viviendas de interés",
-   "resp": "Planificación/ Empresa de Vivienda"
-  },
-  {
-   "sistema": "2. ASEN",
-   "meta": "Incrementar anualmente el porcentaje de cobertura de recolección del 9",
-   "resp": "Planificación/ Empresa de Aseo"
-  },
-  {
-   "sistema": "2. ASEN",
-   "meta": "Incrementar los kilometros de barrios por día de 77.83 km/día en el 20",
-   "resp": "Planificación/ Empresa de Aseo"
-  },
-  {
-   "sistema": "3.SOC",
-   "meta": "Incrementar el 10% anualmente de la población atendida en los Servicio",
-   "resp": "Patronato de Amparo Social"
-  },
-  {
-   "sistema": "3.SOC",
-   "meta": "Incrementar la población atendida en salud preventiva de 320 en el año",
-   "resp": "Patronato de Amparo Social"
-  },
-  {
-   "sistema": "3.SOC",
-   "meta": "Incrementar el número de beneficiarios que acceden a puntos digitales ",
-   "resp": "Acción Social"
-  },
-  {
-   "sistema": "3.SOC",
-   "meta": "Incrementar el número de estudiantes bachilleres que acceden a la plat",
-   "resp": "Acción Social"
-  },
-  {
-   "sistema": "3.SOC",
-   "meta": "Mantener anualmente la participación de grupos de atención prioritaria",
-   "resp": "Acción Social/ Patronato de Amparo Social"
-  },
-  {
-   "sistema": "3.SOC",
-   "meta": "Mantener porcentualmente la gestión de las denuncias con el debido pro",
-   "resp": "Acción Social/ Patronato de Amparo Social"
-  },
-  {
-   "sistema": "3.SOC",
-   "meta": "Mantener porcentualmente la atención con servicio especializados por v",
-   "resp": "Acción Social/ Patronato de Amparo Social"
-  },
-  {
-   "sistema": "3.SOC",
-   "meta": "Incrementar el 15% anualmente desde el año 2023, al 2027 de atenciones",
-   "resp": "Patronato de Amparo Social"
-  },
-  {
-   "sistema": "3.SOC",
-   "meta": "Actualizar el inventario patrimonial y catastro cultural al 100% hasta",
-   "resp": "Dirección de Cultura y Patrimonio"
-  },
-  {
-   "sistema": "3.SOC",
-   "meta": "Incrementar el número de participantes por eventos culturales de 8.000",
-   "resp": "Dirección de Cultura y Patrimonio"
-  },
-  {
-   "sistema": "3.SOC",
-   "meta": "Incrementar el número de beneficiarios en eventos deportivos de 400 en",
-   "resp": "Dirección de Cultura y Patrimonio"
-  },
-  {
-   "sistema": "3.SOC",
-   "meta": "Incrementar el número de beneficiarios de programas de formación cultu",
-   "resp": "Dirección de Cultura y Patrimonio"
-  },
-  {
-   "sistema": "3.SOC",
-   "meta": "Incrementar de 0 a 10 los incentivos a artistas u organizaciones de pr",
-   "resp": "Dirección de Cultura y Patrimonio"
-  },
-  {
-   "sistema": "4. EC",
-   "meta": "Incrementar los beneficiarios de programas y fortalecimiento productiv",
-   "resp": "Dirección de Acción Social"
-  },
-  {
-   "sistema": "4. EC",
-   "meta": "Incrementar los beneficiarios en programas de formación de 1645 en el ",
-   "resp": "Dirección de Acción Social"
-  },
-  {
-   "sistema": "4. EC",
-   "meta": "Incrementar el número de establecimientos con certificación de calidad",
-   "resp": "Dirección de cultura y turismo"
-  },
-  {
-   "sistema": "4. EC",
-   "meta": "Incrementar las visitas anuales de 2700 en el año 2023, a 4300 al 2027",
-   "resp": "Dirección de cultura y turismo"
-  },
-  {
-   "sistema": "4. EC",
-   "meta": "Incrementar los eventos turísticos de 10 en el año 2023, a 22 al 2027",
-   "resp": "Dirección de cultura y turismo"
-  },
-  {
-   "sistema": "5. INST",
-   "meta": "Incrementar el porcentaje de proyectos ejecutados al 80%  al 2027",
-   "resp": "Planificación"
-  },
-  {
-   "sistema": "5. INST",
-   "meta": "Incrementar el porcentaje del sistema de información local del 19,52% ",
-   "resp": "Planificación"
-  },
-  {
-   "sistema": "5. INST",
-   "meta": "Incrementar el número de procesos sistematizados a 9 al 2027",
-   "resp": "Avalúos y Catastros"
-  },
-  {
-   "sistema": "5. INST",
-   "meta": "Incrementar el número de trámites en línea implementados a 37 al año 2",
-   "resp": "Planificación/ TICS"
-  },
-  {
-   "sistema": "5. INST",
-   "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al ",
-   "resp": "Dirección Financiera"
-  },
-  {
-   "sistema": "5. INST",
-   "meta": "Aumentar el nivel de desempeño del personal institucional del 80% en a",
-   "resp": "Talento Humano"
-  },
-  {
-   "sistema": "5. INST",
-   "meta": "Mantener la ejecución anual del Plan de capacitación del 90% hasta el ",
-   "resp": "Talento Humano"
-  },
-  {
-   "sistema": "5. INST",
-   "meta": "Aumentar del 91% de vehículos en funcionamiento en el año 2023, a 95% ",
-   "resp": "Dirección Administrativa/ parque automotor"
-  },
-  {
-   "sistema": "5. INST",
-   "meta": "Aumentar el nivel de conocimiento de la gestión institucional al 55% a",
-   "resp": "Dirección de Comunicación"
-  },
-  {
-   "sistema": "5. INST",
-   "meta": "Aumentar la confianza institucional a 30%  al 2027",
-   "resp": "Dirección de Comunicación"
-  },
-  {
-   "sistema": "5. INST",
-   "meta": "Aumentar la aceptación institucional a 35% al 2027",
-   "resp": "Dirección de Comunicación"
-  },
-  {
-   "sistema": "5. INST",
-   "meta": "Incrementar el número de Unidades Territoriales Participativas de 50 e",
-   "resp": "Planificación Institucional: Participación Ciudadana"
-  },
-  {
-   "sistema": "5. INST",
-   "meta": "Incrementar las instancias de participación de 2 en el año 2023 a 4 al",
-   "resp": "Planificación Institucional: Participación Ciudadana"
-  }
- ]
+  "_procedencia": {
+    "fuente": "Plan Plurianual PDOT 2023-2027 GAD Montecristi.xlsx",
+    "sha256": "09a2aaccca4bc90d829397a368254255b2b6a1b59ee9ac4ad6df3a4783c435c0",
+    "caracter": "OFICIAL — obtenido del portal público del GAD. Javo (2026-09-03) corrigió la etiqueta anterior: «no remitido formalmente» describe el CANAL, no el carácter del documento. LOTAIP Art. 7 obliga a publicarlo y el canon de QUIRA sostiene que el portal es materialización de una obligación — degradar lo publicado a «no oficial» anularía toda la transparencia activa, incluida V_LOTAIP.",
+    "verificabilidad": "parcial — NO por su oficialidad, sino porque lo leído es el Plan Plurianual .xlsx y la fuente canónica de metas es el PDOT aprobado (escalón 7: lo leído ≠ la fuente). Requiere corroboración contra las tablas #341-352 del PDOT Bicentenario.",
+    "corroborar_contra": "PDOT MOntecristi 2023-2027 Bicentenario.docx · tablas #341-352",
+    "extraido": "2026-08-11",
+    "uso_autorizado": "insumo de trabajo para clasificar Ei. NO es fuente canónica de metas.",
+    "_caracter_anterior": "NO OFICIAL — el GAD no lo remitió formalmente (Javo · 2026-08-11)",
+    "_corregido": "2026-09-03 · GM-Ω-ICPI-008 · autoridad: Javo"
+  },
+  "total_metas": 66,
+  "metas": [
+    {
+      "sistema": "1. FIS AM",
+      "meta": "Incrementar la recuperación de taludes en etapa de cierre para la recu",
+      "resp": "Planificación/ Espacios públicos"
+    },
+    {
+      "sistema": "1. FIS AM",
+      "meta": "Aumentar a 17.32 m²/hab el IVU  hasta el 2027",
+      "resp": "Dirección de Ambiente"
+    },
+    {
+      "sistema": "1. FIS AM",
+      "meta": "Formular cuatro planes para la acción contra el cambio climático hasta",
+      "resp": "Dirección de Ambiente"
+    },
+    {
+      "sistema": "1. FIS AM",
+      "meta": "Mantener el número de 680 beneficiarios de las campañas de asistencia ",
+      "resp": "Dirección de Ambiente"
+    },
+    {
+      "sistema": "1. FIS AM",
+      "meta": "Mantener el número de 124 beneficiarios de las campañas de esterilizac",
+      "resp": "Dirección de Ambiente"
+    },
+    {
+      "sistema": "1. FIS AM",
+      "meta": "Reducir un 10% la infraestructura susceptibles",
+      "resp": "Planificación/ Unidad de gestión de riesgos"
+    },
+    {
+      "sistema": "1. FIS AM",
+      "meta": "Incrementar anualmente el porcentaje de basura gestionada de 20.118,96",
+      "resp": "Empresa de Aseo"
+    },
+    {
+      "sistema": "1. FIS AM",
+      "meta": "Incrementar anualmente el porcentaje de basura reciclada  de 331 tn/añ",
+      "resp": "Empresa de Aseo"
+    },
+    {
+      "sistema": "1. FIS AM",
+      "meta": "Contar con capacidad para disposición final de desechos sólidos hasta ",
+      "resp": "Empresa de Aseo"
+    },
+    {
+      "sistema": "2. ASEN",
+      "meta": "Aumentar del 39.25% al 42.38% la cobertura de agua potable en el cantó",
+      "resp": "Planificación/ Dirección de agua potable y sanemamiento"
+    },
+    {
+      "sistema": "2. ASEN",
+      "meta": "Mejorar el índice de la calidad del agua al 100% por cada número de pu",
+      "resp": "Planificación/ Dirección de agua potable y sanemamiento"
+    },
+    {
+      "sistema": "2. ASEN",
+      "meta": "Mejorar el índice de calidad de la infraestructura de agua potable BUE",
+      "resp": "Planificación/ Dirección de agua potable y sanemamiento"
+    },
+    {
+      "sistema": "2. ASEN",
+      "meta": "Mejorar al 10% el índice de continuidad del servicio de agua potable A",
+      "resp": "Planificación/ Dirección de agua potable y sanemamiento"
+    },
+    {
+      "sistema": "2. ASEN",
+      "meta": "Aumentar del 19.77% a 24.32% la cobertura de alcantarillado sanitario ",
+      "resp": "Planificación/ Dirección de agua potable y sanemamiento"
+    },
+    {
+      "sistema": "2. ASEN",
+      "meta": "Aumentar hasta el 2027 el número de plantas y estaciones de bombeo ope",
+      "resp": "Planificación/ Dirección de agua potable y sanemamiento"
+    },
+    {
+      "sistema": "2. ASEN",
+      "meta": "Mejorar el índice de calidad de la infraestructura sanitaria BUENO de ",
+      "resp": "Planificación/ Dirección de agua potable y sanemamiento"
+    },
+    {
+      "sistema": "2. ASEN",
+      "meta": "Aumentar la cobertura de redes pluviales de 0.97% a 2% hasta el año 20",
+      "resp": "Planificación/ Dirección de agua potable y sanemamiento"
+    },
+    {
+      "sistema": "2. ASEN",
+      "meta": "Aumentar a 17.32 m²/hab el IVU  hasta el 2027",
+      "resp": "Planificación/ Unidad de espacios públicos"
+    },
+    {
+      "sistema": "2. ASEN",
+      "meta": "Aumentar a 10.73 m²/hab el índice de equipamiento del Centro Urbano Pr",
+      "resp": "Planificación/ Unidad de espacios públicos"
+    },
+    {
+      "sistema": "2. ASEN",
+      "meta": "Construir 10km hasta el 2027 de 93.65 km de vías en proyección del CUP",
+      "resp": "Planificación/ Obras públicas"
+    },
+    {
+      "sistema": "2. ASEN",
+      "meta": "Incrementar 4 km de vías con tratamiento (aceras y bordillos) del CUP ",
+      "resp": "Planificación/ Obras públicas"
+    },
+    {
+      "sistema": "2. ASEN",
+      "meta": "Incrementar 0.4 km de  vías con tratamiento (aceras y bordillos) en co",
+      "resp": "Planificación/ Obras públicas"
+    },
+    {
+      "sistema": "2. ASEN",
+      "meta": "Incrementar en el CUP 23.77 km de vías con tratamiento medio hasta el ",
+      "resp": "Planificación/ Obras públicas"
+    },
+    {
+      "sistema": "2. ASEN",
+      "meta": "Incrementar en las comunidades rurales 17.56 km de vías con tratamient",
+      "resp": "Planificación/ Obras públicas"
+    },
+    {
+      "sistema": "2. ASEN",
+      "meta": "Incrementar en el CUP el mantenimiento de 43.8 km de vías  hasta el añ",
+      "resp": "Planificación/ Obras públicas"
+    },
+    {
+      "sistema": "2. ASEN",
+      "meta": "Incrementar en las comunidades rurales el mantenimiento de 57.22 km de",
+      "resp": "Planificación/ Obras públicas"
+    },
+    {
+      "sistema": "2. ASEN",
+      "meta": "Incrementar de 1.62 km a 2.62 km de ciclovía al 2027",
+      "resp": "Planificación/ Obras públicas"
+    },
+    {
+      "sistema": "2. ASEN",
+      "meta": "Incrementar la superficie a 10 000 m2 de señalización en vías urbanas ",
+      "resp": "Planificación/ Dirección de Tránsito, Transporte y Seguridad Vial"
+    },
+    {
+      "sistema": "2. ASEN",
+      "meta": "Incrementar a 8 el número de las intersecciones semafóricas hasta el 2",
+      "resp": "Planificación/ Dirección de Tránsito, Transporte y Seguridad Vial"
+    },
+    {
+      "sistema": "2. ASEN",
+      "meta": "Incrementar las revisiones técnicas vehiculares de 4000 en el año 2023",
+      "resp": "Planificación/ Dirección de Tránsito, Transporte y Seguridad Vial"
+    },
+    {
+      "sistema": "2. ASEN",
+      "meta": "Mantener anualmente y hasta el 2027 el servicio de calidad del transpo",
+      "resp": "Planificación/ Dirección de Tránsito, Transporte y Seguridad Vial"
+    },
+    {
+      "sistema": "2. ASEN",
+      "meta": "Mantener anualmente a  40 Instituciones educativas en el programa de E",
+      "resp": "Planificación/ Dirección de Tránsito, Transporte y Seguridad Vial"
+    },
+    {
+      "sistema": "2. ASEN",
+      "meta": "Reducir el déficit habitacional cualitativo de 50 viviendas de interés",
+      "resp": "Planificación/ Empresa de Vivienda"
+    },
+    {
+      "sistema": "2. ASEN",
+      "meta": "Incrementar anualmente el porcentaje de cobertura de recolección del 9",
+      "resp": "Planificación/ Empresa de Aseo"
+    },
+    {
+      "sistema": "2. ASEN",
+      "meta": "Incrementar los kilometros de barrios por día de 77.83 km/día en el 20",
+      "resp": "Planificación/ Empresa de Aseo"
+    },
+    {
+      "sistema": "3.SOC",
+      "meta": "Incrementar el 10% anualmente de la población atendida en los Servicio",
+      "resp": "Patronato de Amparo Social"
+    },
+    {
+      "sistema": "3.SOC",
+      "meta": "Incrementar la población atendida en salud preventiva de 320 en el año",
+      "resp": "Patronato de Amparo Social"
+    },
+    {
+      "sistema": "3.SOC",
+      "meta": "Incrementar el número de beneficiarios que acceden a puntos digitales ",
+      "resp": "Acción Social"
+    },
+    {
+      "sistema": "3.SOC",
+      "meta": "Incrementar el número de estudiantes bachilleres que acceden a la plat",
+      "resp": "Acción Social"
+    },
+    {
+      "sistema": "3.SOC",
+      "meta": "Mantener anualmente la participación de grupos de atención prioritaria",
+      "resp": "Acción Social/ Patronato de Amparo Social"
+    },
+    {
+      "sistema": "3.SOC",
+      "meta": "Mantener porcentualmente la gestión de las denuncias con el debido pro",
+      "resp": "Acción Social/ Patronato de Amparo Social"
+    },
+    {
+      "sistema": "3.SOC",
+      "meta": "Mantener porcentualmente la atención con servicio especializados por v",
+      "resp": "Acción Social/ Patronato de Amparo Social"
+    },
+    {
+      "sistema": "3.SOC",
+      "meta": "Incrementar el 15% anualmente desde el año 2023, al 2027 de atenciones",
+      "resp": "Patronato de Amparo Social"
+    },
+    {
+      "sistema": "3.SOC",
+      "meta": "Actualizar el inventario patrimonial y catastro cultural al 100% hasta",
+      "resp": "Dirección de Cultura y Patrimonio"
+    },
+    {
+      "sistema": "3.SOC",
+      "meta": "Incrementar el número de participantes por eventos culturales de 8.000",
+      "resp": "Dirección de Cultura y Patrimonio"
+    },
+    {
+      "sistema": "3.SOC",
+      "meta": "Incrementar el número de beneficiarios en eventos deportivos de 400 en",
+      "resp": "Dirección de Cultura y Patrimonio"
+    },
+    {
+      "sistema": "3.SOC",
+      "meta": "Incrementar el número de beneficiarios de programas de formación cultu",
+      "resp": "Dirección de Cultura y Patrimonio"
+    },
+    {
+      "sistema": "3.SOC",
+      "meta": "Incrementar de 0 a 10 los incentivos a artistas u organizaciones de pr",
+      "resp": "Dirección de Cultura y Patrimonio"
+    },
+    {
+      "sistema": "4. EC",
+      "meta": "Incrementar los beneficiarios de programas y fortalecimiento productiv",
+      "resp": "Dirección de Acción Social"
+    },
+    {
+      "sistema": "4. EC",
+      "meta": "Incrementar los beneficiarios en programas de formación de 1645 en el ",
+      "resp": "Dirección de Acción Social"
+    },
+    {
+      "sistema": "4. EC",
+      "meta": "Incrementar el número de establecimientos con certificación de calidad",
+      "resp": "Dirección de cultura y turismo"
+    },
+    {
+      "sistema": "4. EC",
+      "meta": "Incrementar las visitas anuales de 2700 en el año 2023, a 4300 al 2027",
+      "resp": "Dirección de cultura y turismo"
+    },
+    {
+      "sistema": "4. EC",
+      "meta": "Incrementar los eventos turísticos de 10 en el año 2023, a 22 al 2027",
+      "resp": "Dirección de cultura y turismo"
+    },
+    {
+      "sistema": "5. INST",
+      "meta": "Incrementar el porcentaje de proyectos ejecutados al 80%  al 2027",
+      "resp": "Planificación"
+    },
+    {
+      "sistema": "5. INST",
+      "meta": "Incrementar el porcentaje del sistema de información local del 19,52% ",
+      "resp": "Planificación"
+    },
+    {
+      "sistema": "5. INST",
+      "meta": "Incrementar el número de procesos sistematizados a 9 al 2027",
+      "resp": "Avalúos y Catastros"
+    },
+    {
+      "sistema": "5. INST",
+      "meta": "Incrementar el número de trámites en línea implementados a 37 al año 2",
+      "resp": "Planificación/ TICS"
+    },
+    {
+      "sistema": "5. INST",
+      "meta": "Incrementar el 43.35% de autonomía financiera en el 2023 al 45.30% al ",
+      "resp": "Dirección Financiera"
+    },
+    {
+      "sistema": "5. INST",
+      "meta": "Aumentar el nivel de desempeño del personal institucional del 80% en a",
+      "resp": "Talento Humano"
+    },
+    {
+      "sistema": "5. INST",
+      "meta": "Mantener la ejecución anual del Plan de capacitación del 90% hasta el ",
+      "resp": "Talento Humano"
+    },
+    {
+      "sistema": "5. INST",
+      "meta": "Aumentar del 91% de vehículos en funcionamiento en el año 2023, a 95% ",
+      "resp": "Dirección Administrativa/ parque automotor"
+    },
+    {
+      "sistema": "5. INST",
+      "meta": "Aumentar el nivel de conocimiento de la gestión institucional al 55% a",
+      "resp": "Dirección de Comunicación"
+    },
+    {
+      "sistema": "5. INST",
+      "meta": "Aumentar la confianza institucional a 30%  al 2027",
+      "resp": "Dirección de Comunicación"
+    },
+    {
+      "sistema": "5. INST",
+      "meta": "Aumentar la aceptación institucional a 35% al 2027",
+      "resp": "Dirección de Comunicación"
+    },
+    {
+      "sistema": "5. INST",
+      "meta": "Incrementar el número de Unidades Territoriales Participativas de 50 e",
+      "resp": "Planificación Institucional: Participación Ciudadana"
+    },
+    {
+      "sistema": "5. INST",
+      "meta": "Incrementar las instancias de participación de 2 en el año 2023 a 4 al",
+      "resp": "Planificación Institucional: Participación Ciudadana"
+    }
+  ]
 }

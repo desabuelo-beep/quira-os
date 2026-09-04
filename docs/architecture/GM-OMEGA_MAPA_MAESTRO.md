@@ -59,7 +59,7 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | GM-Ω | `005` | Temporalidad y determinabilidad | ✅ |  |
 | GM-Ω | `006` | Semántica del cero | ✅ |  |
 | GM-Ω | `007` | Sensibilidad A·B·C·D·X + X-bis | ✅ |  |
-| GM-Ω | `008` | Cobertura real del universo medido | ⬜ |  |
+| GM-Ω | `008` | Cobertura real del universo medido | ✅ | veredicto: LIMITADA PERO JUSTIFICADA · 2 reservas |
 | GM-Ω | `009` | ¿Se puede optimizar el índice sin mejorar la realidad? | ⬜ |  |
 | GM-Ω | `010` | Transferibilidad LATAM · núcleo vs adaptador | ⬜ |  |
 | GM-Ω | `011` | **Dictamen de validez del constructo** | ⛔ | 008 · 009 · 010 |
@@ -80,7 +80,7 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | 2ING | `d02·d03` | Presupuesto · Gobernanza del Mandato | ⬜ |  |
 | 2ING | `d04·d05·d10-d13` | Sellados · sin construir | ⬜ |  |
 
-**12 de 27 etapas cerradas.**
+**13 de 27 etapas cerradas.**
 
 ## Estado derivado de las fuentes vivas
 
@@ -89,9 +89,9 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | Deudas declaradas | 12 |
 | Deudas resueltas | 6 |
 | Deudas abiertas | **6** |
-| Reglas de doctrina con custodio | 16 |
-| Pruebas que las fijan | 368 |
-| Documentos GM-Ω | 6 |
+| Reglas de doctrina con custodio | 17 |
+| Pruebas que las fijan | 373 |
+| Documentos GM-Ω | 7 |
 
 ### Deudas abiertas
 
@@ -107,6 +107,7 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 ### Documentos de la auditoría
 
 - [`GM-OMEGA_CONTRATO_INDICE_DOMINIO.md`](GM-OMEGA_CONTRATO_INDICE_DOMINIO.md)
+- [`GM-OMEGA_ICPI_COBERTURA_008.md`](GM-OMEGA_ICPI_COBERTURA_008.md)
 - [`GM-OMEGA_ICPI_FICHA_FORENSE.md`](GM-OMEGA_ICPI_FICHA_FORENSE.md)
 - [`GM-OMEGA_ICPI_MATRIZ_004.md`](GM-OMEGA_ICPI_MATRIZ_004.md)
 - [`GM-OMEGA_ICPI_SENSIBILIDAD_007.md`](GM-OMEGA_ICPI_SENSIBILIDAD_007.md)
@@ -120,4 +121,4 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 3. **Este mapa se deriva.** El día que alguien lo edite a mano, dejará de reflejar el estado real sin que nada avise, y volveremos exactamente al punto que motivó escribirlo.
 
 ---
-*QUIRA · Mapa Maestro · 12/27 etapas cerradas · 6 deudas abiertas · Dylus Lab © 2026*
+*QUIRA · Mapa Maestro · 13/27 etapas cerradas · 6 deudas abiertas · Dylus Lab © 2026*

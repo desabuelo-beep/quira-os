@@ -145,6 +145,23 @@ _DOCTRINA = (
          verificador="test_ninguna_regla_generadora_se_infiere_del_patron_de_sus_resultados",
          por_que_ahi="con 25 casos y tres valores posibles, cualquier hipótesis "
                      "encuentra algunos que la respaldan: encajar no es derivar"),
+    dict(id="DOC-017", custodia=GATE,
+         regla="La CONSECUENCIA PRÁCTICA de un ADR ratificado necesita custodio. "
+               "Un ADR que ordena algo —«toda publicación debe declarar su "
+               "alcance»— y no deja prueba que lo verifique es una decisión que "
+               "existe en el papel y no en el producto. Ratificar no es ejecutar",
+         fuente="GM-Ω-ICPI-008, 2026-09-03 · el ADR-036 §1 obliga a declarar el "
+                "universo operacional en d01/d03 y aparece en 0 superficies",
+         verificador="test_el_alcance_del_ICPI_se_declara_donde_el_ADR_lo_exige",
+         por_que_ahi="es «un gate que no corre acredita cero» (D-004) aplicado a "
+                     "las decisiones de arquitectura. El ADR-036 convirtió una "
+                     "debilidad en una decisión transparente y defendible — pero "
+                     "sólo dentro del propio ADR: el usuario que lee el ICPI en "
+                     "una superficie sigue recibiendo un índice que se presenta "
+                     "como global sobre un universo del que nadie le informa. Es "
+                     "el patrón del «48,33 %» invertido: allí una cifra retirada "
+                     "seguía publicándose; aquí una declaración obligatoria "
+                     "nunca llegó a publicarse"),
     dict(id="DOC-016", custodia=GATE,
          regla="No se cambia la ONTOLOGÍA de un indicador para hacerla coincidir "
                "con su IMPLEMENTACIÓN; se corrige la implementación para "
